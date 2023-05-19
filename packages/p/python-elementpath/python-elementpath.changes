@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri May 12 05:56:30 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove BuildRequire xmlschema to avoid dependency cycle
+
+-------------------------------------------------------------------
+Wed May 10 09:18:23 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 4.1.2:
+  * Add support for Python 3.12
+  * Fix self shortcut operator (adding is_schema_node() to node classes)
+- 4.1.1:
+  * Simplify type annotations for XSD datatypes
+  * Full test coverage of sequence type functions with bugfixes
+- 4.1.0:
+  * Refactor XPath function call (context=None only as keyword argument)
+  * Add external function support (issue #60)
+  * Some fixes to string representation and source property of tokens
+  * Extend documentation and tests
+  * Clean XSD datatypes hierarchy
+- 4.0.1:
+  * Fix packaging: include py.typed in package data
+  * Revert to comparison between xs:QName instances and strings
+  * Fix atomization with XSD typed data (list types have to be atomized)
+- 4.0.0:
+  * First XPath 3.1 implementation (without UCA collation support)
+
+-------------------------------------------------------------------
 Fri Apr 21 12:24:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

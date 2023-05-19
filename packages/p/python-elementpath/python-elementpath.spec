@@ -16,12 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
 %{?sle15_python_module_pythons}
 Name:           python-elementpath
-Version:        3.0.2
+Version:        4.1.2
 Release:        0
 Summary:        XPath 1.0/20 parsers and selectors for ElementTree and lxml
 License:        MIT
@@ -54,12 +53,19 @@ rm tests/test_schema_proxy.py
 
 %check
 # test_compare_strings_function depends on LOCALE to produce proper results
+donttest="test_compare_strings_function"
 # test_hashing is arch specific and overflows on 32bit platforms
-%pytest -k 'not test_compare_strings_function and not test_hashing'
+donttest+=" or test_hashing"
+# tests that depends on xmlschema so ignore it to
+# avoid dependency cycle
+donttest+=" or test_validate_analyzed_string"
+donttest+=" or test_validate_json_to_xml"
+%pytest -k "not ($donttest)"
 
 %files %{python_files}
 %doc CHANGELOG.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/elementpath
+%{python_sitelib}/elementpath-%{version}*-info
 
 %changelog

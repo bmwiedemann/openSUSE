@@ -184,4 +184,30 @@
     <comment></comment>
     <requestid>1081935</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>24eb1e47c76e25745b73beaf7e9afed8</srcmd5>
+    <version>4.1.2</version>
+    <time>1684490112</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove BuildRequire xmlschema to avoid dependency cycle
+- Update to 4.1.2:
+  * Add support for Python 3.12
+  * Fix self shortcut operator (adding is_schema_node() to node classes)
+- 4.1.1:
+  * Simplify type annotations for XSD datatypes
+  * Full test coverage of sequence type functions with bugfixes
+- 4.1.0:
+  * Refactor XPath function call (context=None only as keyword argument)
+  * Add external function support (issue #60)
+  * Some fixes to string representation and source property of tokens
+  * Extend documentation and tests
+  * Clean XSD datatypes hierarchy
+- 4.0.1:
+  * Fix packaging: include py.typed in package data
+  * Revert to comparison between xs:QName instances and strings
+  * Fix atomization with XSD typed data (list types have to be atomized)
+- 4.0.0:
+  * First XPath 3.1 implementation (without UCA collation support)</comment>
+    <requestid>1086658</requestid>
+  </revision>
 </revisionlist>
