@@ -1,7 +1,7 @@
 #
 # spec file for package nghttp2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,11 +21,8 @@
 %global soname_asio libnghttp2_asio
 %global sover_asio 1
 %global flavor @BUILD_FLAVOR@%{nil}
-# libnghttp2_asio has been deprecated in this repository due to maintenance
-# issue and will be removed at the end of 2022
-%bcond_with asio
 Name:           nghttp2
-Version:        1.52.0
+Version:        1.53.0
 Release:        0
 Summary:        Implementation of Hypertext Transfer Protocol version 2 in C
 License:        MIT
@@ -36,6 +33,8 @@ Source1:        baselibs.conf
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
+BuildRequires:  libboost_system-devel
+BuildRequires:  libboost_thread-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -49,15 +48,7 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
 %ifnarch ppc %{arm}
-%if 0%{?sle_version} >= 150000 && 0%{?is_opensuse}
 BuildRequires:  pkgconfig(jemalloc)
-%endif
-%endif
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_system-devel
-BuildRequires:  libboost_thread-devel
-%else
-BuildRequires:  boost-devel
 %endif
 
 %description
@@ -77,14 +68,6 @@ Group:          System/Libraries
 Shared C libraries for implementation of Hypertext Transfer Protocol
 version 2.
 
-%package -n %{soname_asio}%{sover_asio}
-Summary:        Shared library for nghttp2
-Group:          System/Libraries
-
-%description -n %{soname_asio}%{sover_asio}
-Shared libraries for asynchronous implementation of Hypertext Transfer
-Protocol version 2.
-
 %package -n python3-nghttp2
 Summary:        Python3 bindings for nghttp2
 Group:          Development/Libraries/Python
@@ -102,15 +85,6 @@ Provides:       %{name}-devel
 %description -n %{soname}-devel
 Development files for usage with libnghttp2, which implements
 Hypertext Transfer Protocol version 2.
-
-%package -n %{soname_asio}-devel
-Summary:        Development files for nghttp2
-Group:          Development/Languages/C and C++
-Requires:       %{soname_asio}%{sover_asio} = %{version}
-
-%description -n %{soname_asio}-devel
-Development files for usage with libnghttp2_aio, which implements
-asynchronous Hypertext Transfer Protocol version 2.
 
 %package doc
 Summary:        Documentation for nghttp2
@@ -130,7 +104,6 @@ autoreconf -fiv
 %configure \
   --disable-static        \
   --disable-silent-rules  \
-  %{?with_asio:--enable-asio-lib} %{!?with_asio: --disable-asio-lib} \
   --enable-app            \
   %{nil}
 %make_build all
@@ -150,12 +123,7 @@ rm -rf %{buildroot}%{_mandir}/man1/* \
 # One test fails if python-sphinx is not present
 %make_build check ||:
 
-%post -n %{soname}-%{sover} -p /sbin/ldconfig
-%postun -n %{soname}-%{sover} -p /sbin/ldconfig
-%if %{with asio}
-%post -n %{soname_asio}%{sover_asio} -p /sbin/ldconfig
-%postun -n %{soname_asio}%{sover_asio} -p /sbin/ldconfig
-%endif
+%ldconfig_scriptlets -n %{soname}-%{sover}
 
 %files
 %{_bindir}/deflatehd
@@ -175,17 +143,5 @@ rm -rf %{buildroot}%{_mandir}/man1/* \
 %{_includedir}/%{name}/%{name}*.h
 %{_libdir}/%{soname}.so
 %{_libdir}/pkgconfig/%{soname}.pc
-
-%if %{with asio}
-%files -n %{soname_asio}%{sover_asio}
-%license COPYING
-%{_libdir}/%{soname_asio}.so.%{sover_asio}*
-
-%files -n %{soname_asio}-devel
-%dir %{_includedir}/%{name}/
-%{_includedir}/%{name}/asio_http2*.h
-%{_libdir}/%{soname_asio}.so
-%{_libdir}/pkgconfig/%{soname_asio}.pc
-%endif
 
 %changelog

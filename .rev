@@ -698,4 +698,13 @@
     <comment></comment>
     <requestid>1079718</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>f823c178c382500be418f2de9b283f49</srcmd5>
+    <version>1.53.0</version>
+    <time>1684490081</time>
+    <user>dimstar_suse</user>
+    <comment> Update to version 1.53.0:
+  * https://nghttp2.org/blog/2023/05/10/nghttp2-v1-53-0/</comment>
+    <requestid>1087728</requestid>
+  </revision>
 </revisionlist>
