@@ -1,5 +1,5 @@
 #
-# spec file for package python-hatch-fancy-pypi-readme
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -16,8 +16,16 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %{?sle15_python_module_pythons}
-Name:           python-hatch-fancy-pypi-readme
+Name:           python-hatch-fancy-pypi-readme%{psuffix}
 Version:        22.8.0
 Release:        0
 Summary:        Fancy PyPI READMEs with Hatch
@@ -30,9 +38,12 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-generators
 BuildRequires:  python-rpm-macros
+%if %{with test}
 # SECTION test
+BuildRequires:  %{python_module hatch-fancy-pypi-readme >= %version}
 BuildRequires:  %{python_module pytest}
 # /SECTION
+%endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Provides:       python-hatch_fancy_pypi_readme = %{version}-%{release}
@@ -62,13 +73,17 @@ release? You've come to the right place!
 %pyproject_wheel
 
 %install
+%if !%{with test}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/hatch-fancy-pypi-readme
+%endif
 
 %check
+%if %{with test}
 #test_end_to_end want's to have a hatchling wheel
 %pytest --ignore tests/test_end_to_end.py
+%endif
 
 %post
 %python_install_alternative hatch-fancy-pypi-readme
@@ -76,11 +91,13 @@ release? You've come to the right place!
 %postun
 %python_uninstall_alternative hatch-fancy-pypi-readme
 
+%if !%{with test}
 %files %{python_files}
 %license LICENSE.txt
 %doc README.md
 %python_alternative %{_bindir}/hatch-fancy-pypi-readme
 %{python_sitelib}/hatch_fancy_pypi_readme
 %{python_sitelib}/hatch_fancy_pypi_readme-%{version}*-info
+%endif
 
 %changelog

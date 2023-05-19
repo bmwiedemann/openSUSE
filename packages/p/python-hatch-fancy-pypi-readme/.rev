@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>1081503</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>52e5382611165e6bfa61ac908f6f6641</srcmd5>
+    <version>22.8.0</version>
+    <time>1684490128</time>
+    <user>dimstar_suse</user>
+    <comment>- break dependency cycle between attrs (pulled by pytest) and pytest-hatch-fancy-pypi-readme</comment>
+    <requestid>1087558</requestid>
+  </revision>
 </revisionlist>
