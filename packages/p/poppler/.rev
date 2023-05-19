@@ -1992,4 +1992,18 @@ New upstream release</comment>
   * pdfsig: Support --help</comment>
     <requestid>1077058</requestid>
   </revision>
+  <revision rev="194" vrev="1">
+    <srcmd5>4bc6befacba80dc1b0fd8b8f4db75f7f</srcmd5>
+    <version>23.05.0</version>
+    <time>1684490092</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.05.0:
+  * Fix crash when filling some forms
+  * Set SigFlags when signing unsigned signature
+  * Add some infrastructure code to support multiple signing
+    backends
+  * Fix potential stack overflow in PostScriptFunction::parseCode
+  * Fix some minor uninitialised memory reads</comment>
+    <requestid>1087797</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 18 12:12:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.05.0:
+  * Fix crash when filling some forms
+  * Set SigFlags when signing unsigned signature
+  * Add some infrastructure code to support multiple signing
+    backends
+  * Fix potential stack overflow in PostScriptFunction::parseCode
+  * Fix some minor uninitialised memory reads
+
+-------------------------------------------------------------------
 Mon Apr  3 19:47:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.04.0:
