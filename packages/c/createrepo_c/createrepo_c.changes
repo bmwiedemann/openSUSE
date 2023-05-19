@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 18 11:32:19 UTC 2023 - Jiri Srain <jsrain@suse.com>
+
+- disable DeltaRPM for ALP
+
+-------------------------------------------------------------------
 Fri Feb 24 16:13:36 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - Precompile the python bytecode to avoid lingering files on package removal.
 

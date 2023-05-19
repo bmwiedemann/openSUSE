@@ -26,7 +26,7 @@
 %bcond_with tests
 %endif
 
-%if 0%{?sle_version} >= 160000 || 0%{?suse_version} >= 1550
+%if 0%{?sle_version} >= 170000 || 0%{?suse_version} >= 1650
 # Enable enhanced DeltaRPM support
 %bcond_without drpm
 %else
