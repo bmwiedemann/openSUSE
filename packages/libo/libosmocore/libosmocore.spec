@@ -1,7 +1,7 @@
 #
 # spec file for package libosmocore
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libosmocore
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        The Open Source Mobile Communications Core Library
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -112,13 +112,13 @@ transcoding routines.
 This subpackage contains libraries and header files for developing
 applications that want to make use of libosmocoding.
 
-%package -n libosmocore19
+%package -n libosmocore20
 Summary:        Osmocom core library
 # crc16.c has GPL2-only clauses, the rest (*.c) is GPL-2.0+
 License:        GPL-2.0-only AND GPL-2.0-or-later
 Group:          System/Libraries
 
-%description -n libosmocore19
+%description -n libosmocore20
 libosmocore is a library with various utility functions shared
 between OpenBSC and OsmocomBB.
 
@@ -127,7 +127,7 @@ Summary:        Development files for the Osmocom core library
 # crc16.h has GPL2-only clauses, the rest (*.h) is GPL-2.0+
 License:        GPL-2.0-only AND GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Requires:       libosmocore19 = %version
+Requires:       libosmocore20 = %version
 Requires:       libtalloc-devel
 
 %description -n libosmocore-devel
@@ -220,6 +220,28 @@ protocol definitions for a series of protocols.
 
 This subpackage contains libraries and header files for developing
 applications that want to make use of libosmogsm.
+
+%package -n libosmoisdn0
+Summary:        Osmo ISDN utility library
+License:        GPL-2.0-or-later
+Group:          System/Libraries
+
+%description -n libosmoisdn0
+The libosmocore library contains various utility functions, a
+collection of common code used in various ISDN related sub-projects
+inside the Osmocom family of projects. It includes an I.460
+sub-channel multiplex and a generic LAPD core.
+
+%package -n libosmoisdn-devel
+Summary:        Development files for the Osmo ISDN utility library
+License:        GPL-2.0-or-later
+Group:          Development/Libraries/C and C++
+
+%description -n libosmoisdn-devel
+The libosmocore library contains various utility functions, a
+collection of common code used in various ISDN related sub-projects
+inside the Osmocom family of projects. It includes an I.460
+sub-channel multiplex and a generic LAPD core.
 
 %package -n libosmosim2
 Summary:        Osmocom SIM card related utility library
@@ -323,8 +345,8 @@ find "%buildroot/%_libdir" -type f -name "*.la" -delete
 %postun -n libosmocodec0 -p /sbin/ldconfig
 %post   -n libosmocoding0 -p /sbin/ldconfig
 %postun -n libosmocoding0 -p /sbin/ldconfig
-%post   -n libosmocore19 -p /sbin/ldconfig
-%postun -n libosmocore19 -p /sbin/ldconfig
+%post   -n libosmocore20 -p /sbin/ldconfig
+%postun -n libosmocore20 -p /sbin/ldconfig
 %post   -n libosmoctrl0 -p /sbin/ldconfig
 %postun -n libosmoctrl0 -p /sbin/ldconfig
 %post   -n libosmogb14 -p /sbin/ldconfig
@@ -361,7 +383,7 @@ find "%buildroot/%_libdir" -type f -name "*.la" -delete
 %_libdir/libosmocoding.so
 %_libdir/pkgconfig/libosmocoding.pc
 
-%files -n libosmocore19
+%files -n libosmocore20
 %_libdir/libosmocore.so.*
 
 %files -n libosmocore-devel
@@ -403,6 +425,16 @@ find "%buildroot/%_libdir" -type f -name "*.la" -delete
 %_includedir/%name/osmocom/crypt/
 %_libdir/libosmogsm.so
 %_libdir/pkgconfig/libosmogsm.pc
+
+%files -n libosmoisdn0
+%_libdir/libosmoisdn.so.*
+
+%files -n libosmoisdn-devel
+%dir %_includedir/%name/
+%dir %_includedir/%name/osmocom/
+%_includedir/%name/osmocom/isdn/
+%_libdir/libosmoisdn.so
+%_libdir/pkgconfig/libosmoisdn.pc
 
 %files -n libosmosim2
 %_libdir/libosmosim.so.*

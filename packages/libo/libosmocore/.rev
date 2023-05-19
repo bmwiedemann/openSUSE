@@ -239,4 +239,12 @@
     <comment>- Drop double build require on lksctp</comment>
     <requestid>994505</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>e12b05088ee7738bfc699dbb7878d981</srcmd5>
+    <version>1.8.0</version>
+    <time>1684490134</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.8.0</comment>
+    <requestid>1087820</requestid>
+  </revision>
 </revisionlist>
