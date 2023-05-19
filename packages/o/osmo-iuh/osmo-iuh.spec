@@ -1,7 +1,7 @@
 #
 # spec file for package osmo-iuh
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           osmo-iuh
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)
 License:        AGPL-3.0-or-later AND GPL-2.0-or-later
@@ -32,13 +32,13 @@ BuildRequires:  pkg-config >= 0.20
 # python3 for asn1tostruct.py
 BuildRequires:  python3
 BuildRequires:  pkgconfig(libasn1c) >= 0.9.30
-BuildRequires:  pkgconfig(libosmo-netif) >= 1.2.0
-BuildRequires:  pkgconfig(libosmo-sigtran) >= 1.6.0
-BuildRequires:  pkgconfig(libosmocore) >= 1.7.0
-BuildRequires:  pkgconfig(libosmoctrl) >= 1.7.0
-BuildRequires:  pkgconfig(libosmogb) >= 1.7.0
-BuildRequires:  pkgconfig(libosmogsm) >= 1.7.0
-BuildRequires:  pkgconfig(libosmovty) >= 1.7.0
+BuildRequires:  pkgconfig(libosmo-netif) >= 1.3.0
+BuildRequires:  pkgconfig(libosmo-sigtran) >= 1.7.0
+BuildRequires:  pkgconfig(libosmocore) >= 1.8.0
+BuildRequires:  pkgconfig(libosmoctrl) >= 1.8.0
+BuildRequires:  pkgconfig(libosmogb) >= 1.8.0
+BuildRequires:  pkgconfig(libosmogsm) >= 1.8.0
+BuildRequires:  pkgconfig(libosmovty) >= 1.8.0
 
 %description
 Osmocom code for the Iuh interface (HNBAP, RUA, RANAP)
@@ -60,18 +60,18 @@ Requires:       libosmo-hnbap0 = %version-%release
 This subpackage contains libraries and header files for developing
 applications that want to make use of libosmo-hnbap.
 
-%package -n libosmo-ranap5
+%package -n libosmo-ranap7
 Summary:        Radio Access Network Application Part library
 Group:          System/Libraries
 
-%description -n libosmo-ranap5
+%description -n libosmo-ranap7
 Osmocom code for the Radio Access Network Application Part of the Iu-h
 interface.
 
 %package -n libosmo-ranap-devel
 Summary:        Header files for the Osmocom RANAP library
 Group:          Development/Libraries/C and C++
-Requires:       libosmo-ranap5 = %version-%release
+Requires:       libosmo-ranap7 = %version-%release
 
 %description -n libosmo-ranap-devel
 Osmocom code for the Radio Access Network Application Part of the Iu-h
@@ -142,8 +142,8 @@ fi
 
 %post   -n libosmo-hnbap0 -p /sbin/ldconfig
 %postun -n libosmo-hnbap0 -p /sbin/ldconfig
-%post   -n libosmo-ranap5 -p /sbin/ldconfig
-%postun -n libosmo-ranap5 -p /sbin/ldconfig
+%post   -n libosmo-ranap7 -p /sbin/ldconfig
+%postun -n libosmo-ranap7 -p /sbin/ldconfig
 %post   -n libosmo-rua0 -p /sbin/ldconfig
 %postun -n libosmo-rua0 -p /sbin/ldconfig
 %post   -n libosmo-sabp1 -p /sbin/ldconfig
@@ -160,7 +160,7 @@ fi
 %_libdir/libosmo-hnbap.so
 %_libdir/pkgconfig/libosmo-hnbap.pc
 
-%files -n libosmo-ranap5
+%files -n libosmo-ranap7
 %_libdir/libosmo-ranap.so.*
 
 %files -n libosmo-ranap-devel
