@@ -76,6 +76,8 @@ Patch2:         0001-Don-t-change-permissions-of-dev-hugepages.patch
 Patch3:         0001-Use-double-hash-for-OVS_USER_ID-comment.patch
 # PATCH-FEATURE-UPSTREAM install-ovsdb-tools.patch -- Install some tools required for building OVN
 Patch4:         install-ovsdb-tools.patch
+# PATCH-FIX-UPSTREAM CVE-2023-1668.patch
+Patch5:         CVE-2023-1668.patch
 #OVN patches
 # PATCH-FIX-OPENSUSE: 0001-Run-ovn-as-openvswitch-openvswitch.patch
 Patch20:        0001-Run-ovn-as-openvswitch-openvswitch.patch
@@ -410,6 +412,7 @@ Devel libraries and headers for Open Virtual Network.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 # remove python/ovs/dirs.py - this is generated from template to have proper paths
 rm python/ovs/dirs.py
 cd %{ovn_dir}
