@@ -32,6 +32,7 @@ Summary:        Hatch plugin for versioning with your preferred VCS
 License:        MIT
 URL:            https://github.com/ofek/hatch-vcs
 Source:         https://files.pythonhosted.org/packages/source/h/hatch_vcs/hatch_vcs-%{version}.tar.gz
+Patch1:         https://github.com/ofek/hatch-vcs/commit/47364faf5563df0eaa631ed10383817762c6b547.patch#/setuptools7x-tests.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 # https://github.com/ofek/hatch-vcs/issues/8
@@ -57,7 +58,7 @@ BuildRequires:  git
 This provides a plugin for Hatch that uses your preferred version control system (like Git) to determine project versions.
 
 %prep
-%autosetup -n hatch_vcs-%{version}
+%autosetup -p1 -n hatch_vcs-%{version}
 
 %build
 %pyproject_wheel
