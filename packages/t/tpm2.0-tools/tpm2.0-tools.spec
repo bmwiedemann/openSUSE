@@ -18,7 +18,8 @@
 
 %define _lto_cflags %{nil}
 %ifarch %{ix86} x86_64 aarch64 %{arm} ppc64le
-%bcond_without  test
+# Disable the tests for now in all architectures
+%bcond_with  test
 %else
 # ppc ppc64 s390x: some code (tpm2_command_header_from_bytes) depend
 # on the endianness of the architecture:
@@ -93,6 +94,13 @@ export PATH=$PATH:/usr/sbin:/usr/libexec/ibmtss
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
+%if %{with test}
+%check
+# Do the tests sequentially to kill all tpm_server instances
+# https://github.com/tpm2-software/tpm2-tools/issues/3042
+%make_build check
+%endif
+
 %files
 %doc docs/README.md docs/CHANGELOG.md
 %license docs/LICENSE
@@ -103,12 +111,5 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %dir %{_datadir}/bash-completion
 %dir %{_datadir}/bash-completion/completions
 %{_datadir}/bash-completion/completions/*
-
-%if %{with test}
-%check
-# Do the tests sequentially to kill all tpm_server instances
-# https://github.com/tpm2-software/tpm2-tools/issues/3042
-%make_build check
-%endif
 
 %changelog

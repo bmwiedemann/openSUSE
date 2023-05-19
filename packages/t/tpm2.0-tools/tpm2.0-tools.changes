@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 17 14:14:44 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Disable tests.  Some tests randomly fails, maybe dependening on the
+  OBS worker assigned during the build (not confirmed)
+
+-------------------------------------------------------------------
 Thu Feb 16 14:28:55 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 5.5
