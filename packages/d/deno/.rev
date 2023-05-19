@@ -847,4 +847,40 @@
 </comment>
     <requestid>1087713</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b1ccd6c2a24c03f104b16e085e6ebc2b</srcmd5>
+    <version>1.33.4</version>
+    <time>1684490144</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.33.4:
+  * fix(ext/web): Request higher-resolution timer on Windows if
+    user requests setTimeout w/short delay (#19149)
+  * feat(node/crypto): Builtin Diffie-Hellman Groups (#19137)
+  * feat(node/crypto): Diffie Hellman Support (#18943)
+  * fix(cli/napi): handle finalizers (#19168)
+  * fix(deno/upgrade): allow --version vX.Y.Z (#19139)
+  * fix(dts): move BroadcastChannel type to lib.deno.unstable.d.ts (#19108)
+  * fix(ext/http): Ensure cancelled requests don't crash Deno.serve (#19154)
+  * fix(ext/node): fix whatwg url formatting (#19146)
+  * fix(ext/node): make nodeGlobalThis configurable (#19163)
+  * fix(ext/webidl): change createPromiseConverter (#16367)
+  * fix(ext/websocket): order of ws writes (#19131)
+  * fix(fetch): Correctly decode multipart/form-data names
+    and filenames (#19145)
+  * fix(kv): kv.close() interrupts in-flight operations (#19076)
+  * fix(lsp): increase default max heap size to 3Gb (#19115)
+  * fix(napi): BigInt related APIs (#19174)
+  * fix(node): export diagnostics_channel module (#19167)
+  * fix(node): export punycode module (#19151)
+  * fix(node): support passing parent stdio streams (#19171)
+  * fix(npm): add performance.markResourceTiming sham (#19123)
+  * fix(npm): improved optional dependency support (#19135)
+  * fix(runtime): Box the main future to avoid blowing up the stack (#19155)
+  * fix(runtime): Example hello_runtime panic (#19125)
+  * fix: support &quot;fetch&quot; over HTTPS for IP addresses (#18499)
+- add deno-rm-upgrade-cmd.patch
+  * this removes the `deno upgrade` command
+</comment>
+    <requestid>1087858</requestid>
+  </revision>
 </revisionlist>

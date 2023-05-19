@@ -1,0 +1,184 @@
+diff --git a/cli/main.rs.1 b/cli/main.rs
+index 031ab07..4f3b05c 100644
+--- a/cli/main.rs.1
++++ b/cli/main.rs
+@@ -204,9 +204,6 @@ async fn run_subcommand(flags: Flags) -> Result<i32, AnyError> {
+       let types = tsc::get_types_declaration_file_text(flags.unstable);
+       display::write_to_stdout_ignore_sigpipe(types.as_bytes())
+     }),
+-    DenoSubcommand::Upgrade(upgrade_flags) => spawn_subcommand(async {
+-      tools::upgrade::upgrade(flags, upgrade_flags).await
+-    }),
+     DenoSubcommand::Vendor(vendor_flags) => spawn_subcommand(async {
+       tools::vendor::vendor(flags, vendor_flags).await
+     }),
+diff --git a/cli/args/flags.rs.1 b/cli/args/flags.rs
+index fa28241..5ef386a 100644
+--- a/cli/args/flags.rs.1
++++ b/cli/args/flags.rs
+@@ -229,7 +220,6 @@ pub enum DenoSubcommand {
+   Task(TaskFlags),
+   Test(TestFlags),
+   Types,
+-  Upgrade(UpgradeFlags),
+   Vendor(VendorFlags),
+ }
+ 
+@@ -531,7 +521,7 @@ impl Flags {
+         std::env::current_dir().ok()
+       }
+       Bundle(_) | Completions(_) | Doc(_) | Fmt(_) | Init(_) | Install(_)
+-      | Uninstall(_) | Lsp | Lint(_) | Types | Upgrade(_) | Vendor(_) => None,
++      | Uninstall(_) | Lsp | Lint(_) | Types | Vendor(_) => None,
+     }
+   }
+ 
+@@ -662,7 +652,6 @@ pub fn flags_from_vec(args: Vec<String>) -> clap::error::Result<Flags> {
+       "test" => test_parse(&mut flags, &mut m),
+       "types" => types_parse(&mut flags, &mut m),
+       "uninstall" => uninstall_parse(&mut flags, &mut m),
+-      "upgrade" => upgrade_parse(&mut flags, &mut m),
+       "vendor" => vendor_parse(&mut flags, &mut m),
+       _ => unreachable!(),
+     }
+@@ -760,7 +749,6 @@ fn clap_root() -> Command {
+     .subcommand(task_subcommand())
+     .subcommand(test_subcommand())
+     .subcommand(types_subcommand())
+-    .subcommand(upgrade_subcommand())
+     .subcommand(vendor_subcommand())
+     .long_about(DENO_HELP)
+     .after_help(ENV_VARIABLES_HELP)
+@@ -1769,56 +1757,6 @@ The declaration file could be saved and used for typing information.",
+     )
+ }
+ 
+-fn upgrade_subcommand() -> Command {
+-  Command::new("upgrade")
+-    .about("Upgrade deno executable to given version")
+-    .long_about(
+-      "Upgrade deno executable to the given version.
+-Defaults to latest.
+-
+-The version is downloaded from
+-https://github.com/denoland/deno/releases
+-and is used to replace the current executable.
+-
+-If you want to not replace the current Deno executable but instead download an
+-update to a different location, use the --output flag
+-
+-  deno upgrade --output $HOME/my_deno",
+-    )
+-    .arg(
+-      Arg::new("version")
+-        .long("version")
+-        .help("The version to upgrade to"),
+-    )
+-    .arg(
+-      Arg::new("output")
+-        .long("output")
+-        .help("The path to output the updated version to")
+-        .value_parser(value_parser!(PathBuf))
+-        .value_hint(ValueHint::FilePath),
+-    )
+-    .arg(
+-      Arg::new("dry-run")
+-        .long("dry-run")
+-        .help("Perform all checks without replacing old exe")
+-        .action(ArgAction::SetTrue),
+-    )
+-    .arg(
+-      Arg::new("force")
+-        .long("force")
+-        .short('f')
+-        .help("Replace current exe even if not out-of-date")
+-        .action(ArgAction::SetTrue),
+-    )
+-    .arg(
+-      Arg::new("canary")
+-        .long("canary")
+-        .help("Upgrade to canary builds")
+-        .action(ArgAction::SetTrue),
+-    )
+-    .arg(ca_file_arg())
+-}
+-
+ fn vendor_subcommand() -> Command {
+   Command::new("vendor")
+     .about("Vendor remote modules into a local directory")
+@@ -2953,23 +2891,6 @@ fn types_parse(flags: &mut Flags, _matches: &mut ArgMatches) {
+   flags.subcommand = DenoSubcommand::Types;
+ }
+ 
+-fn upgrade_parse(flags: &mut Flags, matches: &mut ArgMatches) {
+-  ca_file_arg_parse(flags, matches);
+-
+-  let dry_run = matches.get_flag("dry-run");
+-  let force = matches.get_flag("force");
+-  let canary = matches.get_flag("canary");
+-  let version = matches.remove_one::<String>("version");
+-  let output = matches.remove_one::<PathBuf>("output");
+-  flags.subcommand = DenoSubcommand::Upgrade(UpgradeFlags {
+-    dry_run,
+-    force,
+-    canary,
+-    version,
+-    output,
+-  });
+-}
+-
+ fn vendor_parse(flags: &mut Flags, matches: &mut ArgMatches) {
+   ca_file_arg_parse(flags, matches);
+   config_args_parse(flags, matches);
+@@ -3338,25 +3259,6 @@ mod tests {
+     assert_eq!(flags2, flags);
+   }
+ 
+-  #[test]
+-  fn upgrade() {
+-    let r = flags_from_vec(svec!["deno", "upgrade", "--dry-run", "--force"]);
+-    let flags = r.unwrap();
+-    assert_eq!(
+-      flags,
+-      Flags {
+-        subcommand: DenoSubcommand::Upgrade(UpgradeFlags {
+-          force: true,
+-          dry_run: true,
+-          canary: false,
+-          version: None,
+-          output: None,
+-        }),
+-        ..Flags::default()
+-      }
+-    );
+-  }
+-
+   #[test]
+   fn version() {
+     let r = flags_from_vec(svec!["deno", "--version"]);
+@@ -5977,25 +5879,6 @@ mod tests {
+     );
+   }
+ 
+-  #[test]
+-  fn upgrade_with_ca_file() {
+-    let r = flags_from_vec(svec!["deno", "upgrade", "--cert", "example.crt"]);
+-    assert_eq!(
+-      r.unwrap(),
+-      Flags {
+-        subcommand: DenoSubcommand::Upgrade(UpgradeFlags {
+-          force: false,
+-          dry_run: false,
+-          canary: false,
+-          version: None,
+-          output: None,
+-        }),
+-        ca_data: Some(CaData::File("example.crt".to_owned())),
+-        ..Flags::default()
+-      }
+-    );
+-  }
+-
+   #[test]
+   fn cache_with_cafile() {
+     let r = flags_from_vec(svec![
