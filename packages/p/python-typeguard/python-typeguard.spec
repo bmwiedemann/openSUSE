@@ -20,17 +20,20 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-typeguard
-Version:        2.13.3
+Version:        4.0.0
 Release:        0
 Summary:        Library for runtime checking of Python types
 License:        MIT
 URL:            https://github.com/agronholm/typeguard
 Source0:        https://files.pythonhosted.org/packages/source/t/typeguard/typeguard-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools_scm >= 1.7.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+Requires:       python-importlib-metadata >= 3.6
+Requires:       python-typing-extensions >= 4.4.0
 %python_subpackages
 
 %description
@@ -40,10 +43,10 @@ This library provides run-time type checking for functions defined with PEP 484 
 %setup -q -n typeguard-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -51,6 +54,7 @@ This library provides run-time type checking for functions defined with PEP 484 
 
 %files %{python_files}
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/typeguard
+%{python_sitelib}/typeguard-*.dist-info/
 
 %changelog
