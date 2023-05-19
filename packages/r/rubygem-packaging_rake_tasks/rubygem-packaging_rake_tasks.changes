@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 16 13:55:04 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Added support for multi build packages in "build_dependencies:*"
+  rake tasks (related to bsc#1211319)
+- 1.5.3
+
+-------------------------------------------------------------------
+Mon Mar  6 09:06:07 UTC 2023 - Martin Vidner <mvidner@suse.com>
+
+- Stop using File.exists? which no longer works in Ruby 3.2
+  (bsc#1206419)
+- 1.5.2
+
+-------------------------------------------------------------------
 Thu Sep  2 08:45:04 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - "rake osc:build" - added a workaround for broken

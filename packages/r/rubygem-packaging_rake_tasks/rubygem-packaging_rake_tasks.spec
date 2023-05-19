@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-packaging_rake_tasks
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rubygem-packaging_rake_tasks
-Version:        1.5.1
+Version:        1.5.3
 Release:        0
 %define mod_name packaging_rake_tasks
 %define mod_full_name %{mod_name}-%{version}
