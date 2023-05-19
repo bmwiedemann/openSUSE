@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  3 03:17:36 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch use-packaging.patch:
+  * Use packaging.Version, stops packages relying on this to fail. 
+
+-------------------------------------------------------------------
 Fri Apr 21 12:31:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

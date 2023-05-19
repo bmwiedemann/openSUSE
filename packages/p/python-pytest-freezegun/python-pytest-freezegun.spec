@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-pytest-freezegun
@@ -24,9 +23,10 @@ Version:        0.4.2
 Release:        0
 Summary:        Fixtures in freeze_time
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/ktosiek/pytest-freezegun
 Source:         https://github.com/ktosiek/pytest-freezegun/archive/%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#ktosiek/pytest-freezegun#39
+Patch0:         use-packaging.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -44,7 +44,7 @@ BuildRequires:  %{python_module pytest >= 3.0.0}
 Wrap tests with fixtures in freeze_time
 
 %prep
-%setup -q -n pytest-freezegun-%{version}
+%autosetup -p1 -n pytest-freezegun-%{version}
 
 %build
 %python_build
@@ -59,6 +59,8 @@ Wrap tests with fixtures in freeze_time
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytest_freezegun.py
+%pycache_only %{python_sitelib}/__pycache__/pytest_freezegun*.pyc
+%{python_sitelib}/pytest_freezegun-%{version}*info
 
 %changelog
