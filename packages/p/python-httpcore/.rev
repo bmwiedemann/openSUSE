@@ -107,4 +107,17 @@
     <comment></comment>
     <requestid>1081481</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>767872617ff2a2dc814761810b00a892</srcmd5>
+    <version>0.17.0</version>
+    <time>1684490101</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.17.0:
+  * Add DEBUG level logging. (#648)
+  * Respect HTTP/2 max concurrent streams when settings updates
+    are sent by server. (#652)
+  * Increase the allowable HTTP header size to 100kB. (#647)
+  * Add `retries` option to SOCKS proxy classes. (#643)</comment>
+    <requestid>1084216</requestid>
+  </revision>
 </revisionlist>
