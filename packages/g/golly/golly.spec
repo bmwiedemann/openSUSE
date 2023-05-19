@@ -41,17 +41,15 @@ Key features:
 - Supports both bounded and unbounded universes.
 - Supports various topologies (plane, torus, Klein bottle, etc.).
 - Supports multi-state universes (cells can have up to 256 states).
-- Includes QuickLife, a fast, memory-efficient algorithm.
-- Use the HashLife algorithm to see large patterns evolve at huge time scales.
+- Includes the QuickLife algorithm.
+- Uses the HashLife algorithm to see large patterns evolve at huge time scales.
 - Supports many different rules, including Wolfram's 1D rules, WireWorld, Generations, and John von Neumann's 29-state CA.
-- Use the RuleLoader algorithm to load your own rules.
-- Responsive even while generating or garbage collecting.
+- Uses the RuleLoader algorithm to load custom rules.
 - Reads RLE, macrocell, Life 1.05/1.06, dblife, and MCell files.
 - Can also read common graphic formats: BMP, PNG, GIF, TIFF.
 - Can extract patterns, scripts and rules from zip files.
-- Download files from online archives.
-- Includes a state-of-the-art pattern collection.
-- Fast loading of large patterns.
+- Downloads files from online archives.
+- Includes a pattern collection.
 - Paste in patterns from the clipboard.
 - Unlimited undo/redo.
 - Unbounded zooming out for astronomical patterns.
