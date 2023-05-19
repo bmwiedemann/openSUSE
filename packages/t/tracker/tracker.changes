@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat May 13 11:23:38 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.5.2:
+  + Fix several possible crashers.
+  + Fix bashisms in doc generation scripts.
+  + Fix ISO8601 date strings in cursors on Darwin.
+  + Plug leak.
+- Add 63ea8f1a.patch: Revert build: Detect appropriate strftime()
+  year modifier at build time. Revert upstream commit for now as it
+  breaks build for i586.
+
+-------------------------------------------------------------------
 Tue Apr 25 16:34:18 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.5.1:

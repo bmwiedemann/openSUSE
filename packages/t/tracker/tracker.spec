@@ -21,13 +21,15 @@
 %define RPMTrackerAPI 3_0
 
 Name:           tracker
-Version:        3.5.1
+Version:        3.5.2
 Release:        0
 Summary:        Object database, tag/metadata database, search tool and indexer
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://wiki.gnome.org/Projects/Tracker
 Source0:        https://download.gnome.org/sources/tracker/3.5/%{name}-%{version}.tar.xz
+# PATCH-FIX-OPENSUSE 63ea8f1a.patch -- Revert build: Detect appropriate strftime() year modifier at build time
+Patch0:         https://gitlab.gnome.org/GNOME/tracker/-/commit/63ea8f1a.patch
 
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
@@ -134,7 +136,8 @@ This subpackage contains the data files for the Tracker miners.
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -N
+%patch0 -R -p1
 
 %build
 %meson \
