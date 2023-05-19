@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 18 11:36:43 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.2.3
+  * ctrl: take both address and port from vty config
+
+-------------------------------------------------------------------
 Wed Aug  3 18:34:44 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.2.2
