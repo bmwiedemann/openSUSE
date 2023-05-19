@@ -644,6 +644,7 @@ unsorted:
   - aopalliance 
   - aopalliance-javadoc 
   - apache-arrow 
+  - apache-arrow-acero-devel-static 
   - apache-arrow-dataset-devel-static 
   - apache-arrow-devel 
   - apache-arrow-devel-static 
@@ -731,9 +732,6 @@ unsorted:
   - apache-parquet-utils 
   - apache-pdfbox 
   - apache-pdfbox-javadoc 
-  - apache-plasma-devel 
-  - apache-plasma-devel-static 
-  - apache-plasma-server 
   - apache-portlet-1_0-api 
   - apache-portlet-1_0-api-javadoc 
   - apache-resource-bundles 
@@ -2447,7 +2445,6 @@ unsorted:
   - coredns-for-k8s1.27 
   - coredns-for-k8s1.27-extras 
   - corepack18 
-  - corepack19 
   - corepack20 
   - coreutils-single 
   - coreutils-testsuite 
@@ -10726,8 +10723,9 @@ unsorted:
   - libarmnnTfLiteParser24-opencl 
   - libarpack2 
   - libarprec0 
-  - libarrow1100 
-  - libarrow_dataset1100 
+  - libarrow1200 
+  - libarrow_acero1200 
+  - libarrow_dataset1200 
   - libart_lgpl-devel 
   - libart_lgpl_2-2 
   - libasan4 
@@ -13868,24 +13866,24 @@ unsorted:
   - libosmo-mgcp-devel 
   - libosmo-mslookup-devel 
   - libosmo-mslookup0 
-  - libosmo-mtp-1_6_0 
+  - libosmo-mtp-1_7_0 
   - libosmo-mtp-devel 
-  - libosmo-octoi0 
+  - libosmo-octoi1 
   - libosmo-ranap-devel 
-  - libosmo-ranap5 
+  - libosmo-ranap7 
   - libosmo-rspro-devel 
   - libosmo-rspro1 
   - libosmo-rua-devel 
   - libosmo-rua0 
   - libosmo-sabp-devel 
   - libosmo-sabp1 
-  - libosmo-sccp-1_6_0 
+  - libosmo-sccp-1_7_0 
   - libosmo-sccp-devel 
   - libosmo-sigtran-devel 
   - libosmo-sigtran7 
   - libosmo-simtrace2-1 
   - libosmo-simtrace2-devel 
-  - libosmo-xua-1_6_0 
+  - libosmo-xua-1_7_0 
   - libosmo-xua-devel 
   - libosmoabis-devel 
   - libosmoabis10 
@@ -13895,7 +13893,7 @@ unsorted:
   - libosmocoding0 
   - libosmocore-devel 
   - libosmocore-tools 
-  - libosmocore19 
+  - libosmocore20 
   - libosmoctrl-devel 
   - libosmoctrl0 
   - libosmodsp0 
@@ -13903,8 +13901,10 @@ unsorted:
   - libosmogb14 
   - libosmogsm-devel 
   - libosmogsm18 
+  - libosmoisdn-devel 
+  - libosmoisdn0 
   - libosmonetif-devel 
-  - libosmonetif8 
+  - libosmonetif11 
   - libosmosdr0 
   - libosmosim-devel 
   - libosmosim2 
@@ -13966,7 +13966,7 @@ unsorted:
   - libparpack2-openmpi2 
   - libparpack2-openmpi3 
   - libparpack2-openmpi4 
-  - libparquet1100 
+  - libparquet1200 
   - libparserutils-devel 
   - libparserutils0 
   - libparted-fs-resize0-32bit 
@@ -14057,7 +14057,6 @@ unsorted:
   - libplacebo264-32bit 
   - libplanarity0 
   - libplank1 
-  - libplasma1100 
   - libplayerctl2 
   - libplib0 
   - libplist++-2_0-3 
@@ -14144,7 +14143,7 @@ unsorted:
   - libpoppler-qt5-devel 
   - libpoppler-qt6-3 
   - libpoppler-qt6-devel 
-  - libpoppler127-32bit 
+  - libpoppler128-32bit 
   - libportal-devel 
   - libportal-gtk3-devel 
   - libportal-gtk4-devel 
@@ -18554,9 +18553,6 @@ unsorted:
   - nodejs18 
   - nodejs18-devel 
   - nodejs18-docs 
-  - nodejs19 
-  - nodejs19-devel 
-  - nodejs19-docs 
   - nodejs20-devel 
   - nodejs20-docs 
   - noisetorch 
@@ -18821,7 +18817,6 @@ unsorted:
   - npkg 
   - npm-default 
   - npm18 
-  - npm19 
   - npth-devel 
   - nqp 
   - nrpe 
@@ -26110,6 +26105,7 @@ unsorted:
   - python310-url-normalize 
   - python310-urlextract 
   - python310-urlgrabber 
+  - python310-urllib3_1 
   - python310-urwid 
   - python310-usbsdmux 
   - python310-user-agents 
@@ -29530,6 +29526,7 @@ unsorted:
   - python311-urlextract 
   - python311-urlgrabber 
   - python311-urllib3 
+  - python311-urllib3_1 
   - python311-urwid 
   - python311-usbsdmux 
   - python311-user-agents 
@@ -33012,6 +33009,7 @@ unsorted:
   - python39-urlextract 
   - python39-urlgrabber 
   - python39-urllib3 
+  - python39-urllib3_1 
   - python39-urwid 
   - python39-usbsdmux 
   - python39-user-agents 
