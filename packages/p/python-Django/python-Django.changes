@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu May  4 07:02:58 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 4.2.1
+  + CVE-2023-31047: Potential bypass of validation when uploading multiple files using one form field
+  + Bugfixes
+    * Fixed a regression in Django 4.2 that caused a crash of
+      QuerySet.defer() when deferring fields by attribute names
+    * Fixed a regression in Django 4.2 that caused a crash of
+      SearchVector function with % characters
+    * Fixed a regression in Django 4.2 that caused aggregation over
+      query that uses explicit grouping to group against the wrong
+      columns
+    * Reallowed, following a regression in Django 4.2, setting the
+      "cursor_factory" option in OPTIONS on PostgreSQL
+    * Enforced UTF-8 client encoding on PostgreSQL, following a
+      regression in Django 4.2
+    * Fixed a regression in Django 4.2 where i18n_patterns() didn’t
+      respect the prefix_default_language argument when a fallback
+      language of the default language was used
+    * Fixed a regression in Django 4.2 where translated URLs of the
+      default language from i18n_patterns() with
+      prefix_default_language set to False raised 404 errors for a
+      request with a different language
+    * Fixed a regression in Django 4.2 where creating copies and deep
+      copies of HttpRequest, HttpResponse, and their subclasses didn’t
+      always work correctly
+    * Fixed a regression in Django 4.2 where timesince and timeuntil
+      template filters returned incorrect results for a datetime with
+      a non-UTC timezone when a time difference is less than 1 day
+    * Fixed a regression in Django 4.2 that caused a crash of
+      SearchHeadline function with psycopg 3
+    * Fixed a regression in Django 4.2 that caused incorrect
+      ClearableFileInput margins in the admin
+    * Fixed a regression in Django 4.2 where breadcrumbs didn’t appear
+      on admin site app index views
+    * Made squashing migrations reduce AddIndex, RemoveIndex,
+      RenameIndex, and CreateModel operations which allows removing a
+      deprecated Meta.index_together option from historical migrations
+      and use Meta.indexes instead
+
+-------------------------------------------------------------------
 Thu Apr  6 06:38:13 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update minimal dependency versions. 
