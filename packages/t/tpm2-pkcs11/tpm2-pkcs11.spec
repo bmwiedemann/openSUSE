@@ -50,33 +50,19 @@ BuildRequires:  pkgconfig(tss2-mu)
 BuildRequires:  pkgconfig(tss2-rc)
 BuildRequires:  pkgconfig(tss2-tctildr)
 BuildRequires:  pkgconfig(yaml-0.1)
+# Merge both subpackages
+Provides:       libtpm2_pkcs11-0 = %{version}
+Obsoletes:      libtpm2_pkcs11-0 < %{version}
+Provides:       tpm2-pkcs11-devel = %{version}
+Obsoletes:      tpm2-pkcs11-devel < %{version}
 %{?python_enable_dependency_generator}
 
 %description
-PKCS #11 is a Public-Key Cryptography Standard that defines a standard method to
-access cryptographic services from tokens/devices such as hardware security
-modules (HSM), smart cards, etc. This project uses a TPM2 device
-as the cryptographic token.
+tpm2-pkcs11 is a plugin shared library implementing the PKCS #11
+Cryptographic Token Interface (Cryptoki) C API atop of TPM2 devices.
 
-%package -n libtpm2_pkcs11-0
-Summary:        A PKCS#11 interface for TPM2 hardware
-Group:          System/Libraries
-Requires:       %{name} = %{version}
-
-%description -n libtpm2_pkcs11-0
-PKCS #11 is a Public-Key Cryptography Standard that defines a standard method to
-access cryptographic services from tokens/devices such as hardware security
-modules (HSM), smart cards, etc. This project uses a TPM2 device
-as the cryptographic token.
-
-%package devel
-Summary:        Development files for %{name}
-Group:          Development/Libraries/C and C++
-Requires:       libtpm2_pkcs11-0 = %{version}
-Provides:       libtpm2_pkcs11-devel = %{version}-%{release}
-
-%description devel
-Headers and libraries to build software against %{name}.
+%dnl "make install" copies no .h files, a strong indicator that this project is
+%dnl an (SLPP-exempt) plugin rather than a "normal" shared library.
 
 %prep
 %autosetup
@@ -96,27 +82,22 @@ cd tools
 %python_install
 %fdupes %{buildroot}
 
-%post -n libtpm2_pkcs11-0 -p /sbin/ldconfig
-%postun -n libtpm2_pkcs11-0 -p /sbin/ldconfig
+%post -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %files
 %license LICENSE
 %doc docs/*
 %dir %{_datadir}/p11-kit/modules
 %dir %{_datadir}/p11-kit
+%dir %{_libdir}/pkcs11
 %{_datadir}/p11-kit/modules/tpm2_pkcs11.module
 %{_sysconfdir}/tpm2_pkcs11
 %{_bindir}/tpm2_ptool
 %{python_sitelib}/tpm2_pkcs11
 %{python_sitelib}/*.egg-info
-
-%files -n libtpm2_pkcs11-0
-%dir %{_libdir}/pkcs11
 %{_libdir}/pkcs11/libtpm2_pkcs11.so.%{so_ver}*
-
-%files devel
-%dir %{_libdir}/pkcs11
-%{_libdir}/pkgconfig/tpm2-pkcs11.pc
 %{_libdir}/pkcs11/libtpm2_pkcs11.so
+%{_libdir}/pkgconfig/tpm2-pkcs11.pc
 
 %changelog
