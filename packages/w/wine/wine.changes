@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May 19 02:03:25 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Recommend pipewire-alsa instead of alsa-plugins-pulse because
+  pipewire-alsa has replaced alsa-plugins-pulse by default in
+  Tumbleweed now.
+
+-------------------------------------------------------------------
+Sat May 13 07:29:50 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 8.8 release
+  - More work towards full PE support in the PostScript driver.
+  - Initial support for loading ARM64EC modules.
+  - More work on IME restructuration.
+  - Various bug fixes.
+- update staging to 8.8 release
+
+-------------------------------------------------------------------
 Thu May 11 14:47:54 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - add a _constraints

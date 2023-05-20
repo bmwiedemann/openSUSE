@@ -4778,4 +4778,16 @@
     <comment>- add a _constraints</comment>
     <requestid>1086572</requestid>
   </revision>
+  <revision rev="408" vrev="1">
+    <srcmd5>55efdcf053c96b11ea625e518ba6a61f</srcmd5>
+    <version>8.8</version>
+    <time>1684596209</time>
+    <user>dimstar_suse</user>
+    <comment>Recommend pipewire-alsa instead of alsa-plugins-pulse because pipewire-alsa has replaced (and also conflicts with) alsa-plugins-pulse by default in Tumbleweed now.
+
+As of right now, the recommends would simply do nothing as pipewire-alsa is installed by default on most systems and will prevent the installation of alsa-plugins-pulse. So I woulö suggest we just recommend pipewire-alsa instead.
+
+If you have any suggestions for improvement, please let me know! (forwarded request 1087863 from DarkWav)</comment>
+    <requestid>1087900</requestid>
+  </revision>
 </revisionlist>

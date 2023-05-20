@@ -29,8 +29,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 8.7
-Version:        8.7
+%define realver 8.8
+Version:        8.8
 Release:        0
 
 %if "%{flavor}" != ""
@@ -137,7 +137,7 @@ BuildRequires:  pkgconfig(zlib)
 Summary:        An MS Windows Emulator
 License:        LGPL-2.1-or-later
 Group:          System/Emulators/PC
-URL:            http://www.winehq.org/
+URL:            https://www.winehq.org/
 Source0:        https://dl.winehq.org/wine/source/8.x/%{projectname}-%{realver}.tar.xz
 Source41:       wine.keyring
 Source42:       https://dl.winehq.org/wine/source/8.x/%{projectname}-%{realver}.tar.xz.sign
@@ -157,8 +157,8 @@ Conflicts:      wine-mono < 7.2.0
 # not packaged in distro...
 Recommends:     wine-mono
 Recommends:     alsa-plugins
-Recommends:     alsa-plugins-pulse
 Recommends:     dosbox
+Recommends:     pipewire-alsa
 Recommends:     winetricks
 Requires:       samba-winbind
 %ifarch x86_64
@@ -168,7 +168,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc armv7l armv7hl aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 8.7
+%define staging_version 8.8
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel
@@ -310,7 +310,7 @@ echo "  +^/usr/lib/wine/i386-unix" >> %SOURCE7
 grep SONAME_ config.log
 grep SONAME_ config.log|grep -v 'so"'|sed -e 's/^.*\(".*"\).*$/ requires \1/;'|sort -u >>%SOURCE7
 echo " recommends \"libpulse0-32bit\""	>> %SOURCE7
-echo " recommends \"alsa-plugins-pulse-32bit\""	>> %SOURCE7
+echo " recommends \"pipewire-alsa-32bit\""	>> %SOURCE7
 echo " recommends \"alsa-plugins-32bit\""	>> %SOURCE7
 echo " recommends \"Mesa-libGL1-32bit\""	>> %SOURCE7
 %if 0%{?suse_version} >= 1330
