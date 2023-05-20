@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 18 13:50:48 UTC 2023 - schwab@linux-m68k.org
+
+- Update to version 1.14.9+136+g2cf5a78:
+  * Don't inhibit EOL conversion for oauth2.el.
+  * Use `ash' instead of `lsh'
+  * Fix CCL lexical analyzer fails to parse quoted-string
+  * Add redirect URI for Gmail
+  * Update docstring syntax
+  * * README: Update requirements.  Wide int feature is required.
+
+-------------------------------------------------------------------
 Tue May 24 12:19:44 UTC 2022 - tiwai@suse.com
 
 - Update to version 1.14.9+130+g289e5bbd66f6:
