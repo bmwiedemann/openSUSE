@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Sat May 13 06:26:46 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v22.1.2
+  * Changes of version 22.1.2
+    = Add characters:
+      ~ COMBINING TRIPLE DOT (U+1AB4).
+      ~ COMBINING TRIPLE ACUTE ACCENT (U+1ACB).
+      ~ GIMEL SYMBOL (U+2137) (#1708).
+      ~ DALET SYMBOL (U+2138) (#1708).
+      ~ ROTATED CAPITAL Q (U+213A) (#1704).
+      ~ LATIN EPIGRAPHIC LETTER SIDEWAYS I (U+A7F7) (#1704).
+      ~ CYRILLIC CAPITAL LETTER ZEMLYA (U+A640) ... CYRILLIC SMALL
+        LETTER DZELO (U+A643).
+      ~ CYRILLIC CAPITAL LETTER NEUTRAL YER (U+A64E).
+      ~ CYRILLIC SMALL LETTER NEUTRAL YER (U+A64F).
+      ~ CYRILLIC CAPITAL LETTER REVERSED TSE (U+A660) ... CYRILLIC
+        LETTER MULTIOCULAR O (U+A66E).
+      ~ CYRILLIC CAPITAL LETTER CROSSED O (U+A69A).
+      ~ CYRILLIC SMALL LETTER CROSSED O (U+A69B).
+      ~ LATIN SMALL LETTER BARRED E (U+AB33).
+      ~ MONOGRAM FOR EARTH (U+1D300) ... TETRAGRAM FOR FOSTERING
+        (U+1D365).
+      ~ LATIN SMALL LETTER T WITH HOOK AND RETROFLEX HOOK
+        (U+1DF09).
+      ~ LATIN SMALL LETTER ESH WITH DOUBLE BAR (U+1DF0B).
+      ~ LATIN SMALL LETTER ESH WITH DOUBLE BAR AND CURL (U+1DF0C).
+    = Fix glyph of MODIFIER LETTER RAISED INVERTED EXCLAMATION MARK
+      (U+A71E) and MODIFIER LETTER LOW INVERTED EXCLAMATION MARK
+      (U+A71F).
+    = Improve glyphs of MODIFIER LETTER GLOTTAL STOP (U+02C0) and
+      MODIFIER LETTER REVERSED GLOTTAL STOP (U+02C1) for better
+      disambiguation against MODIFIER LETTER SMALL REVERSED GLOTTAL
+      STOP (U+02E4).
+    = Fix glyphs of AUSTRAL SIGN (U+20B3) and SOM SIGN (U+20C0).
+    = Fix glyph of COMBINING ASTERISK ABOVE (U+20F0).
+    = Fix glyphs of RING EQUAL TO (U+2257) and EQUALS WITH ASTERISK
+      (U+2A6E).
+    = Fix glyph of IDENTICAL WITH DOT ABOVE (U+2A67).
+    = Fix variant application of cv87 to U+0298.
+    = Disunify glyphs of LATIN LETTER SMALL CAPITAL BARRED B
+      (U+1D03) and MODIFIER LETTER CAPITAL BARRED B (U+1D2F) from
+      LATIN CAPITAL LETTER B WITH STROKE (U+0243).
+    = Fix variant assignments of italic long S under SS17 and SS18.
+    = Fix variant assignments of italic eszet under SS12, SS17, and
+      SS18.
+    = Fix broken shape of double-struck d (#1716), ff ligature
+      (#1717).
+    = Fix random broken placement of Decimal Exponent (#1718).
+
+-------------------------------------------------------------------
+Sat May  6 09:43:27 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v22.1.1
+  * Changes of version 22.1.1
+    = Add Characters
+      ~ CYRILLIC CAPITAL LETTER KOMI DE (U+0500) ... CYRILLIC
+        LITTLE LETTER KOMI DJE (U+0503).
+      ~ CYRILLIC CAPITAL LETTER KOMI SJE (U+050C) ... CYRILLIC
+        LITTLE LETTER KOMI TJE (U+050F).
+      ~ COMBINING NUMBER SIGN ABOVE (U+1AC6).
+      ~ COMBINING INVERTED DOUBLE ARCH ABOVE (U+1AC7).
+      ~ COMBINING PLUS SIGN ABOVE (U+1AC8).
+      ~ COMBINING UP TACK ABOVE (U+1DF5).
+      ~ WORD JOINER (U+2060).
+      ~ FUNCTION APPLICATION (U+2061).
+      ~ INVISIBLE TIMES (U+2062).
+      ~ INVISIBLE SEPARATOR (U+2063).
+      ~ INVISIBLE PLUS (U+2064).
+      ~ COMBINING ASTERISK ABOVE (U+20F0).
+      ~ WHITE LEFT POINTING INDEX (U+261C) (#1696).
+      ~ WHITE UP POINTING INDEX (U+261D) (#1696).
+      ~ WHITE RIGHT POINTING INDEX (U+261E) (#1696).
+      ~ WHITE DOWN POINTING INDEX (U+261F) (#1696).
+      ~ COMBINING CYRILLIC LETTER DJERV (U+2DF8).
+      ~ CYRILLIC CAPITAL LETTER DJERV (U+A648).
+      ~ CYRILLIC SMALL LETTER DJERV (U+A649).
+      ~ CYRILLIC CAPITAL LETTER TWE (U+A68C).
+      ~ CYRILLIC LITTLE LETTER TWE (U+A68D).
+      ~ LATIN SMALL LETTER STIRRUP R (U+AB45).
+      ~ LATIN SMALL LETTER BASELINE ESH (U+AB4D).
+      ~ LATIN SMALL LIGATURE FF (U+FB00) (#1497).
+      ~ LATIN SMALL LIGATURE FFI (U+FB03) (#1497).
+      ~ LATIN SMALL LIGATURE FFL (U+FB04) (#1497).
+      ~ LATIN SMALL LIGATURE LONG S T (U+FB05) (#1497).
+      ~ LATIN SMALL LIGATURE ST (U+FB06) (#1497).
+      ~ NEUTRAL FACE (U+1F610).
+      ~ FACE WITHOUT MOUTH (U+1F636).
+      ~ SLIGHTLY FROWNING FACE (U+1F641).
+      ~ SLIGHTLY SMILING FACE (U+1F642).
+      ~ UPSIDE-DOWN FACE (U+1F643).
+    = Fix broken shape of CYRILLIC SMALL LETTER KOMI ZJE (U+0505)
+      under quasi-proportionals (#1695).
+    = Fix width of NARROW NO-BREAK SPACE (U+202F) under
+      quasi-proportionals.
+    = Fix glyph of GREEK TONOS (U+0384).
+    = Disunify COMBINING GRAVE TONE MARK (U+0340) and COMBINING
+      ACUTE TONE MARK (U+0341) from Greek Varia and Greek Oxia as
+      they are actually intended for Vietnamese.
+    = Improve mark placement of LATIN SMALL LETTER H WITH
+      CIRCUMFLEX (U+0125), LATIN SMALL LETTER K WITH CARON
+      (U+01E9), LATIN SMALL LETTER H WITH CARON (U+021F), and LATIN
+      SMALL LETTER H WITH DOT ABOVE (U+1E23).
+
+-------------------------------------------------------------------
 Sun Apr 23 15:50:32 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v22.1.0
