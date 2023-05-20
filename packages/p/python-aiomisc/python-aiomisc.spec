@@ -29,6 +29,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-colorlog >= 6.0
+Requires:       python-logging-journald
 Suggests:       python-aiohttp >= 3
 Suggests:       python-aiohttp-asgi >= 0.5.2
 Suggests:       python-croniter >= 1.3.8
