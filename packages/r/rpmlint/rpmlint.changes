@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 17 12:41:26 UTC 2023 - matthias.gerstner@suse.com
+
+- Update to version 2.4.0+git20230517.2e069e5c:
+  * dbus-services: rename com.deepin.api to org.deepin.dde (bsc#1211376)
+
+-------------------------------------------------------------------
 Tue May 09 13:07:19 UTC 2023 - matthias.gerstner@suse.com
 
 - Update to version 2.4.0+git20230509.6f11a918:

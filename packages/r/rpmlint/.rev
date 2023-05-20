@@ -4482,4 +4482,13 @@ oddjob-gpupdate isn't blocked)</comment>
   * sudoers-whitelist: adjust monitoring-plugins-smart (bsc#1211003)</comment>
     <requestid>1085720</requestid>
   </revision>
+  <revision rev="450" vrev="1">
+    <srcmd5>d2efd62d84b22ec0433d3ea440e717c9</srcmd5>
+    <version>2.4.0+git20230517.2e069e5c</version>
+    <time>1684596206</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git20230517.2e069e5c:
+  * dbus-services: rename com.deepin.api to org.deepin.dde (bsc#1211376)</comment>
+    <requestid>1087652</requestid>
+  </revision>
 </revisionlist>
