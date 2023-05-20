@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 17 12:43:18 UTC 2023 - matthias.gerstner@suse.com
+
+- Update to version 1550+20230517.ab68b2d:
+  * rename com.deepin.api to org.deepin.dde (bsc#1211376)
+
+-------------------------------------------------------------------
 Tue Mar 07 13:08:18 UTC 2023 - wolfgang.frisch@suse.com
 
 - Update to version 1550+20230307.7f42172:

@@ -2057,4 +2057,13 @@ for 12.3</comment>
     <comment></comment>
     <requestid>1069934</requestid>
   </revision>
+  <revision rev="222" vrev="1">
+    <srcmd5>ddbb0629a4b1c81eea5d2065aea51bd7</srcmd5>
+    <version>1550+20230517.ab68b2d</version>
+    <time>1684596206</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1550+20230517.ab68b2d:
+  * rename com.deepin.api to org.deepin.dde (bsc#1211376)</comment>
+    <requestid>1087651</requestid>
+  </revision>
 </revisionlist>
