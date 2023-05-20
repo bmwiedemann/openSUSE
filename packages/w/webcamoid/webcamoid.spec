@@ -45,14 +45,14 @@ BuildRequires:  cmake(Qt5DBus) >= 5.15
 BuildRequires:  cmake(Qt5OpenGL) >= 5.15
 BuildRequires:  cmake(Qt5QuickControls2) >= 5.15
 BuildRequires:  cmake(Qt5Svg) >= 5.15
-BuildRequires:  pkgconfig(libavcodec) >= 58.7.100
-BuildRequires:  pkgconfig(libavdevice) >= 57.0.0
-BuildRequires:  pkgconfig(libavformat) >= 58.0.102
-BuildRequires:  pkgconfig(libavutil) >= 56.6.100
+BuildRequires:  pkgconfig(libavcodec) < 59
+BuildRequires:  pkgconfig(libavdevice)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse-simple)
 BuildRequires:  pkgconfig(libspa-0.2)
-BuildRequires:  pkgconfig(libswscale) >= 5.0.101
+BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(libvlc)

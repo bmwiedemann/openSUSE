@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 19 14:46:08 UTC 2023 - Dave Plater <davejplater@gmail.com>
+
+- Build with ffmpeg-4 to fix factory build
+
+-------------------------------------------------------------------
 Tue Aug 23 06:43:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add FFmpeg 5 compatibility change:
