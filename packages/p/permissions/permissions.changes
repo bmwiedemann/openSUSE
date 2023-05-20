@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 16 11:05:25 UTC 2023 - matthias.gerstner@suse.com
+
+- Update to version 20230516:
+  * common permissions: add icingaweb2 setgid directory (bsc#1211314)
+
+-------------------------------------------------------------------
 Mon Apr 24 13:06:36 UTC 2023 - wolfgang.frisch@suse.com
 
 - Update to version 20230424:

@@ -1461,4 +1461,13 @@ https://lists.opensuse.org/archives/list/packaging@lists.opensuse.org/message/5F
     <comment></comment>
     <requestid>1083983</requestid>
   </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>ccec89493b49176bfc7962d308656ffa</srcmd5>
+    <version>1699_20230516</version>
+    <time>1684596203</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230516:
+  * common permissions: add icingaweb2 setgid directory (bsc#1211314)</comment>
+    <requestid>1087401</requestid>
+  </revision>
 </revisionlist>
