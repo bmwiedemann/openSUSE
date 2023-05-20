@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat May 20 07:58:07 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.14.1~git.20230329:
+  * Update lharc.c (#38)
+  * Update header.c
+  * lha-test20: test-tmp-stdout must be in utf8, even on non-utf8 systems.
+  * Fix lha-test20 to count errors correctly.
+  * Fix test20 to be timezone independent
+  * Change spaces to tab.
+  * fix #31
+
+-------------------------------------------------------------------
 Wed Feb 26 09:38:00 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.14.1~git.20191005:

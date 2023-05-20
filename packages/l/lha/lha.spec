@@ -1,7 +1,7 @@
 #
 # spec file for package lha
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           lha
-Version:        1.14.1~git.20191005
+Version:        1.14.1~git.20230329
 Release:        0
 Summary:        Pack Program
 License:        SUSE-Public-Domain
-Group:          Productivity/Archiving/Compression
 URL:            http://lha.sourceforge.jp/
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  autoconf
