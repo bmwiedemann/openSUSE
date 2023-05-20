@@ -1,4 +1,129 @@
 -------------------------------------------------------------------
+Fri May 19 12:57:29 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.102.0
+  * Support for self-service integration in the Fusion Apps as a Service service
+  * The models `AttachExistingInstanceDetails`, `CreateNewInstanceDetails`,
+    `CreateOicServiceInstanceDetails`, `CreateServiceInstanceDetails`,
+    `FawAdminInfoDetails` and `CreateOaxServiceInstanceDetails` were removed from
+    the Fusion Apps as a Service service
+  * The property `action` was removed from the `ServiceAttachment` model in the
+    Fusion Apps as a Service service
+  * The property `action` was removed from the `CreateServiceAttachmentDetails`
+    model in the Fusion Apps as a Service service
+- from version 2.101.0
+  * Support for the Access Governance service
+  * Support for creating, updating, listing and downloading one-off patches in the Database service
+  * Support for changing disaster recovery configurations of
+    remote autonomous databases in the Database service
+  * Support for scheduling automatic backups in the Database service
+  * Support for provisioning Software-Defined Data Centers (SDDCs) using standard
+    bare metal shapes, with Block Storage as the datastore, in the VMWare Solution service
+  * Support for parity with the configuration options of the Compute service
+    in the Compute Autoscaling service
+  * The Data Connectivity Management service was removed from the SDK
+- from version 2.100.0
+  * Support for calling Oracle Cloud Infrastructure services in the eu-jovanovac-1 region
+  * Support for bring-your-own-license TLS and ORDS certificates in the Database service
+  * Support for tags in the Stack Monitoring service
+  * Support for GPU shapes for model deployments in the Data Science service
+  * Support for returning networking details of instances in the Visual Builder service
+  * Support for high-memory VMs in the Compute service
+  * Support for integrating with the Integration Cloud service in the Process Automation service
+  * Support for managing on-demand node upgrades in node pools in the
+    Container Engine for Kubernetes service
+  * The model `UpdateVirtualNodeDetails` was removed from the Container Engine for Kubernetes service
+  * The property `type` in the `DiscoveryDetails` model in the Application Migration service
+    was fixed to no longer support `UNKNOWN_ENUM_VALUE`. Instead, a `ValueError` will be raised
+    if this property is assigned a value that it does not support.
+  * The property `protocol` in the `IdentityProvider` model in the Identity Data Plane service was
+    fixed to no longer support `UNKNOWN_ENUM_VALUE`. Instead, a `ValueError` will be raised if
+    this property is assigned a value that it does not support.
+  * The properties `lifecycle_state`, `kind`, and `last_execution_status` in the `Rule` model in the
+    Log Analytics service were fixed to no longer support `UNKNOWN_ENUM_VALUE`. Instead, a `ValueError`
+    will be raised if these properties are assigned a value that they do not support.
+  * The properties `type` and `lifecycle_state` in the `Parameter` model in the Digital Assistant
+    service were fixed to no longer support `UNKNOWN_ENUM_VALUE`. Instead, a `ValueError` will be
+    raised if these properties are assigned a value that they do not support.
+  * The property `model_type` in the `AbstractField`, `ConnectionDetails`, `Filter`, `Operation`, and
+    `Source` models in the Data Integration service was fixed to no longer support `UNKNOWN_ENUM_VALUE`.
+    Instead, a `ValueError` will be raised if this property is assigned a value that it does not support.
+  * The property `baseline_ocpu_utilization` in the `LaunchInstanceShapeConfigDetails` model in the
+    Compute service was fixed to no longer support `UNKNOWN_ENUM_VALUE`. Instead, a `ValueError` will
+    be raised if this property is assigned a value that it does not support.
+  * The property `type` in the `AssetSource`, `AssetSourceCredentials`, and `AssetSourceSummary` models
+    in the Cloud Migration service was fixed to no longer support `UNKNOWN_ENUM_VALUE`. Instead, a
+    `ValueError` will be raised if this property is assigned a value that it does not support.
+  * The property `lifecycle_state` in the `AssetSource`, `AssetSourceConnection`, `AssetSourceSummary`,
+    `DiscoverySchedule`, and `DiscoveryScheduleSummary` models in the Cloud Migration service was fixed
+    to no longer support `UNKNOWN_ENUM_VALUE`. Instead, a `ValueError` will be raised if this property
+    is assigned a value that it does not support.
+  * The property `connection_type` in the `AssetSourceConnection` model in the Cloud Migration Service
+    was fixed to no longer support `UNKNOWN_ENUM_VALUE`. Instead, a `ValueError` will be raised if this
+    property is assigned a value that it does not support.
+- from version 2.99.1
+  * Support for enabling mTLS authentication with Listener and for providing custom value for TLS port
+    and Non-TLS Port during AVM Cluster Creation in Database service
+  * Support for usedDataStorageSizeInGbs property for autonomous database in the Database service
+  * Support for csiNumber organization in Tenant Manager Control Plane service
+  * Support for creating and updating an infrastructure with LACP support in Database service
+  * Support for changePrivateEndpointOutboundConnection operation in Integration Cloud service
+  * Support for Enable Process in Integration Cloud service
+  * Support for Disaster Recovery, DR enablement, switchover, and failover feature in Fusion Apps service
+  * Support for discovery and monitoring of External Exadata infrastructure in Database Management Service
+- from version 2.99.0
+  * Support for private endpoints in the Digital Assistant service
+  * Support for canceling backups in the Database service
+  * Support for improved labeling of key/value pairs in the Data Labeling service
+  * Support for retries by default on operations of the Digital Assistant service
+  * The property `opc_retry_token` was removed from the models `configure_digital_assistant_parameters`,
+    `rotate_channel_keys`, `start_channel`, `stop_channel` in the Digital Assistant service
+  * The property `lifetime_logical_clock` was removed from the models `Record`, `Dataset` and `Annotation`
+    in the Digital Assistant service
+  * The property `digital_assistant_id` was renamed to `id` in the `list_digital_assistants` model
+    in the Digital Assistant service
+  * The property `is_latest_skill_only` was renamed to `is_latest_version_only` in the `list_packages`
+    method in the Digital Assistant service
+  * The property `skill_id` was renamed to `id` in the `list_skills` model in the Digital Assistant service
+  * The properties `authorization_endpoint_url` and `subject_claim` were made optional in the
+    `AuthenticationProvider` model in the Digital Assistant service
+- Refresh patches for new version
+  * ops_relax-python-depends.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
+Tue Apr 18 10:47:41 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.98.0
+  * Support for rotation of certificates on autonomous VM clusters on Exadata
+    Cloud at Customer in the Database service
+  * Support for ACD and OKV wallet naming for autonomous databases and dedicated
+    autonomous databases on Exadata Cloud at Customer in the Database service
+  * Support for Exadata cloud service application virtual IPs (VIPs) in the Database service
+  * Support for additional manageability features for large sensitive
+    data models and masking policies in the Data Safe service
+  * Support for getting user profile details and assignments
+    for databases and fleets in the Data Safe service
+  * Support for enabling ADDM spotlight for databases in the Operations Insights service
+  * The property `additional_database_status` was removed from the models `AutonomousDatabase`,
+    `AutonomousDatabaseSummary`, `AutonomousDataWarehouse`and `AutonomousDataWarehouseSummary`
+    in the Database service
+- from version 2.97.0
+  * Support for pre-emptible worker nodes in the Container Engine for Kubernetes service
+  * Support for larger data storage (now up to 128TB) in the MySQL Database service
+  * Support for HTTP health checks for HTTPS backend sets in the Load Balancer service
+  * The property `backend_set_name` was made required in the `ForwardToBackendSet`
+    model in the Load Balancer service
+- from version 2.96.1
+  * Support for ACD and OKV wallet naming for autonomous databases and dedicated
+    autonomous databases on Exadata Cloud at Customer in the Database service
+  * Support for validating the credentials of a connection in the DevOps service
+  * Support for GoldenGate Replicat performance profiles when creating
+    a migration in the Database Migration service
+  * Support for connection diagnostics on registered databases in the Database Migration service
+  * Support for launching bare metal instances in an RDMA network in the Compute service
+
+-------------------------------------------------------------------
 Mon Mar 27 07:51:10 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.96.0

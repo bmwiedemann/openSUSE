@@ -18,7 +18,7 @@
 
 %bcond_without python2
 Name:           python-oci-sdk
-Version:        2.96.0
+Version:        2.102.0
 Release:        0
 Summary:        Oracle Cloud Infrastructure Python SDK
 License:        Apache-2.0 OR UPL-1.0
@@ -42,6 +42,7 @@ Requires:       python-python-dateutil >= 2.5.3
 Requires:       python-pytz >= 2016.10
 Requires:       python-requests
 Requires:       python-six
+Requires:       python-urllib3 < 2
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyJWT}
@@ -56,6 +57,7 @@ BuildRequires:  %{python_module python-dateutil >= 2.5.3}
 BuildRequires:  %{python_module pytz >= 2016.10}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module urllib3 < 2}
 BuildRequires:  %{python_module vcrpy >= 2.0.1}
 %if %{with python2}
 BuildRequires:  python-configparser
