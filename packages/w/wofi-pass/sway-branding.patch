@@ -1,24 +1,15 @@
 ---
- wofi-pass |    4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ wofi-pass |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 --- a/wofi-pass
 +++ b/wofi-pass
-@@ -91,7 +91,7 @@ fi
- cd "${PASSWORD_STORE_DIR:-$HOME/.password-store}"
- password_files="$(find . -name "*.gpg" | sed "s/^\.\/\(.*\)\.gpg$/\1/")"
+@@ -13,7 +13,7 @@ head=0
+ TYPE_CMD="wl-copy"
  
--password=$(printf '%s\n' "$password_files" | wofi --dmenu)
-+password=$(printf '%s\n' "$password_files" | wofi --dmenu --style=/etc/wofi/style.css)
- [ -n "$password" ] || exit
- if [ "$head" -eq 1 ]; then
- 	_pass_get "password" | $TYPE_CMD
-@@ -100,7 +100,7 @@ fi
- 
- field_list="$(_parse_fields)"
- if [ "$autotype" -ne 1 ]; then
--	field=$(printf '%s\n' "$field_list" | wofi --dmenu)
-+	field=$(printf '%s\n' "$field_list" | wofi --dmenu --style=/etc/wofi/style.css)
- 	if [ "$field" != "autotype" ]; then
- 		_pass_get "$field" | $TYPE_CMD
- 		exit
+ if [ -x "$(command -v -p wofi 2>/dev/null)" ] ; then
+-    menu_cmd='wofi --dmenu'
++    menu_cmd='wofi --dmenu --style=/etc/wofi/style.css'
+ else
+     menu_cmd='rofi -dmenu'
+ fi

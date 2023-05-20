@@ -17,13 +17,12 @@
 
 
 Name:           wofi-pass
-Version:        0.0~git.1646651169.572c0ef
+Version:        0.0~git.1684513404.072991c
 Release:        0
 Summary:        Wofi frontend for pass
 License:        GPL-2.0-only
 URL:            https://gitlab.com/muhq/wofi-pass
 Source0:        wofi-pass-%{version}.tar.gz
-Source99:       wofi-pass-rpmlintrc
 # PATCH-FEATURE-OPENSUSE sway-branding.patch mcepl@suse.com
 # Use branding stylesheet in /etc/wofi/style.css
 Patch0:         sway-branding.patch
@@ -44,7 +43,7 @@ passmenu does, but shows a second dialogue that lets the user
 choose which field to copy/print.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 :

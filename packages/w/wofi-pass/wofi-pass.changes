@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 19 16:28:44 UTC 2023 - mcepl@cepl.eu
+
+- Update to version 0.0~git.1684513404.072991c:
+  * Allow alternative use of rofi, if wofi is not available.
+  * remove useless and not escaped EOL marker
+  * remove bashism
+  * fix single field selection
+  * only prompt for the field if there are more than one
+- Remove wofi-pass-rpmlintrc as it is not needed anymore.
+
+-------------------------------------------------------------------
 Mon Jan 23 16:14:28 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Add sway-branding.patch which uses the stylesheet it provides

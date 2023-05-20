@@ -34,4 +34,19 @@
 </comment>
     <requestid>1062191</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f7fdbab3f006cfc557b457ddc5fff72e</srcmd5>
+    <version>0.0~git.1684513404.072991c</version>
+    <time>1684596214</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0~git.1684513404.072991c:
+  * Allow alternative use of rofi, if wofi is not available.
+  * remove useless and not escaped EOL marker
+  * remove bashism
+  * fix single field selection
+  * only prompt for the field if there are more than one
+- Remove wofi-pass-rpmlintrc as it is not needed anymore.
+</comment>
+    <requestid>1087972</requestid>
+  </revision>
 </revisionlist>
