@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 18 21:42:44 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+
+- Updated to 0.254
+  * Dropped file mame-ppc64le.patch.
+  * https://mametesters.org/changelog_page.php
+
+-------------------------------------------------------------------
 Wed Apr 12 01:17:44 UTC 2023 - Илья Индиго <ilya@ilya.cf>
 
 - Disabled gold and enabled 32bit and aarch64 archs with null optflags.

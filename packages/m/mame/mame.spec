@@ -16,7 +16,7 @@
 #
 
 
-%define ver     253
+%define ver     254
 Name:           mame
 Version:        0.%{ver}
 Release:        0
@@ -66,9 +66,6 @@ BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(zlib)
 Requires:       %{name}-data = %{version}
 Suggests:       %{name}-tools = %{version}
-%ifarch ppc ppc64 ppc64le
-Patch5:         %{name}-ppc64le.patch
-%endif
 %if 0%{?sle_version} > 150000 && 0%{?sle_version} < 160000
 BuildRequires:  gcc11
 BuildRequires:  gcc11-c++
@@ -109,7 +106,7 @@ rm -r 3rdparty/{asio,compat,dxsdk,expat,glm,libflac,libjpeg,portaudio,portmidi,p
 MY_OPT_FLAGS=$(echo %{optflags} | sed -re 's@-g($|[0-9])@-g1@g; s@-g\s@-g1 @g')
 sed -i "s@-Wall -Wextra -Os \$(MPARAM)@$MY_OPT_FLAGS@" 3rdparty/genie/build/gmake.linux/genie.make
 sed -i "s@-s -rdynamic@$LDFLAGS -rdynamic@" 3rdparty/genie/build/gmake.linux/genie.make
-%ifarch i586 ppc armv6hl armv7hl aarch64_ilp32 aarch64
+%ifarch i586 ppc ppc64 ppc64le armv6hl armv7hl aarch64
 MY_OPT_FLAGS=''
 %endif
 
