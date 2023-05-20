@@ -1,6 +1,6 @@
 <services>
   <service mode="disabled" name="obs_scm">
-    <param name="url">git@github.com:jca02266/lha.git</param>
+    <param name="url">https://github.com/jca02266/lha.git</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">lha</param>
