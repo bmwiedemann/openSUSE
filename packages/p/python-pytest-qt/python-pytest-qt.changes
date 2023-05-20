@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 20 08:32:01 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Skip failing exception tests with pyside6
+  * gh#pytest-dev/pytest-qt#488
+- Use PEP517
+
+-------------------------------------------------------------------
 Wed Nov 30 12:26:35 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove python_module macro definition

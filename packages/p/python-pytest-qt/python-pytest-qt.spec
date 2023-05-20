@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == ""
 %define psuffix %{nil}
@@ -56,6 +55,8 @@ BuildConflicts: %{python_module qt5}
 # pyside is for the primary python3 flavor only
 %define pythons python3
 %define test_qtapi pyside6
+# invalid traceback gh#pytest-dev/pytest-qt#488
+%define testflavorargs --ignore tests/test_exceptions.py
 %bcond_without test
 BuildRequires:  %{python_module pyside6}
 BuildConflicts: %{python_module PyQt6}
@@ -72,8 +73,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/pytest-qt
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-qt/pytest-qt-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210608
@@ -110,12 +113,12 @@ dos2unix LICENSE
 
 %if ! %{with test}
 %build
-%python_build
+%pyproject_wheel
 %endif
 
 %if ! %{with test}
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -123,7 +126,7 @@ dos2unix LICENSE
 %check
 export QT_QPA_PLATFORM=offscreen
 export PYTEST_QT_API=%{test_qtapi}
-%pytest
+%pytest %{?testflavorargs}
 %endif
 
 %if ! %{with test}
@@ -131,7 +134,7 @@ export PYTEST_QT_API=%{test_qtapi}
 %license LICENSE
 %doc CHANGELOG.rst README.rst
 %{python_sitelib}/pytestqt
-%{python_sitelib}/pytest_qt-%{version}-py*.egg-info
+%{python_sitelib}/pytest_qt-%{version}.dist-info
 %endif
 
 %changelog
