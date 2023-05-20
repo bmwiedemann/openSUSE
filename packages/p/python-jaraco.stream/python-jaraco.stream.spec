@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.stream
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,6 @@
 
 
 %define _name   jaraco.stream
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-jaraco.stream
 Version:        3.0.3
 Release:        0
@@ -40,10 +38,11 @@ BuildRequires:  %{python_module more-itertools}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 # SECTION documentation requirements
-BuildRequires:  %{python_module Sphinx}
-BuildRequires:  %{python_module jaraco.packaging >= 8.2}
-BuildRequires:  %{python_module pylons-sphinx-themes}
-BuildRequires:  %{python_module rst.linker >= 1.9}
+BuildRequires:  python3-Sphinx
+# Require offline feature introduced in  gh#jaraco/jaraco.packaging#11
+BuildRequires:  python3-jaraco.packaging >= 9.2
+BuildRequires:  python3-pylons-sphinx-themes
+BuildRequires:  python3-rst.linker >= 1.9
 # /SECTION
 %python_subpackages
 
@@ -64,16 +63,15 @@ rm -rf jaraco.stream.egg-info
 
 %build
 %pyproject_wheel
+export JARACO_PACKAGING_SPHINX_WHEEL=./dist/jaraco.stream-%{version}-py3-none-any.whl
+sphinx-build -b html docs/ build/sphinx/html/
+rm -r build/sphinx/html/{.buildinfo,.doctrees}
 
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
 
 %check
-#  work around for gh#pytest-dev/pytest#3396 until gh#pytest-dev/pytest#10088 lands in a pytest release
-touch jaraco/__init__.py
-cp -r %{python3_sitelib}/jaraco/* jaraco/
 %pytest
 
 %files %{python_files}
