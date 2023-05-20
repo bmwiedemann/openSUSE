@@ -17,7 +17,7 @@
 
 
 Name:           emacs-apel
-Version:        10.8+80+g6947dc4
+Version:        10.8+81+g82eb232
 Release:        0
 Summary:        A Portable Emacs Library
 License:        GPL-2.0-or-later
