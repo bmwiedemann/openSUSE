@@ -3336,6 +3336,7 @@ BuildFlags: onlybuild:unifdef
 BuildFlags: onlybuild:unixODBC
 BuildFlags: onlybuild:unzip
 BuildFlags: onlybuild:update-alternatives
+BuildFlags: onlybuild:dpkg:update-alternatives
 BuildFlags: onlybuild:update-bootloader-rpm-macros
 BuildFlags: onlybuild:update-desktop-files
 BuildFlags: onlybuild:upower
