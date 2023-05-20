@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 16 08:13:00 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- updated to 2.69
+  - An audit was performed on libcap and friends by https://x41-dsec.de/ (blog) . The audit (final report, 2023-05-10) was sponsored by the the Open Source Technology Improvement Fund, https://ostif.org/ (blog). Five issues were found. Four of them are addressed in this release. Each issue was labeled in the audit results as follows:
+    - LCAP-CR-23-01 (SEVERITY) LOW (CVE-2023-2602) - found by David Gstir (bsc#1211418)
+    - LCAP-CR-23-02 (SEVERITY) MEDIUM (CVE-2023-2603) - found by Richard Weinberger (bsc#1211419)
+    - LCAP-CR-23-100 (SEVERITY) NONE
+    - LCAP-CR-23-101 (SEVERITY) NONE
+    - LCAP-CR-23-102 (SEVERITY) NONE
+  - Man page style improvement from Emanuele Torre
+
+-------------------------------------------------------------------
 Thu Mar 30 07:55:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.68:

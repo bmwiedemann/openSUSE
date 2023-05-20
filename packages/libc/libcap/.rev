@@ -539,4 +539,19 @@
   * Eliminate use of vendor directory</comment>
     <requestid>1075562</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>8094aa139aa09ddc1d38217ff9aeaba1</srcmd5>
+    <version>2.69</version>
+    <time>1684596202</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.69
+  - An audit was performed on libcap and friends by https://x41-dsec.de/ (blog) . The audit (final report, 2023-05-10) was sponsored by the the Open Source Technology Improvement Fund, https://ostif.org/ (blog). Five issues were found. Four of them are addressed in this release. Each issue was labeled in the audit results as follows:
+    - LCAP-CR-23-01 (SEVERITY) LOW (CVE-2023-2602) - found by David Gstir (bsc#1211418)
+    - LCAP-CR-23-02 (SEVERITY) MEDIUM (CVE-2023-2603) - found by Richard Weinberger (bsc#1211419)
+    - LCAP-CR-23-100 (SEVERITY) NONE
+    - LCAP-CR-23-101 (SEVERITY) NONE
+    - LCAP-CR-23-102 (SEVERITY) NONE
+  - Man page style improvement from Emanuele Torre (forwarded request 1087355 from msmeissn)</comment>
+    <requestid>1087357</requestid>
+  </revision>
 </revisionlist>
