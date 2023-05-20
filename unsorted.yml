@@ -15335,7 +15335,6 @@ unsorted:
   - libtotem_pg5-32bit 
   - libtoxcore2 
   - libtpl-extensions3 
-  - libtpm2_pkcs11-0 
   - libtpm_unseal1 
   - libtpms-devel 
   - libtracecmd-devel 
@@ -23323,6 +23322,7 @@ unsorted:
   - python310-asdf-coordinates-schemas 
   - python310-asdf-standard 
   - python310-asdf-transform-schemas 
+  - python310-asdf-unit-schemas 
   - python310-asdf-wcs-schemas 
   - python310-ase 
   - python310-asgiref 
@@ -26641,6 +26641,7 @@ unsorted:
   - python311-asdf-coordinates-schemas 
   - python311-asdf-standard 
   - python311-asdf-transform-schemas 
+  - python311-asdf-unit-schemas 
   - python311-asdf-wcs-schemas 
   - python311-ase 
   - python311-asgiref 
@@ -29744,7 +29745,6 @@ unsorted:
   - python38-idle 
   - python38-lalpulsar 
   - python38-lalsimulation 
-  - python38-pyheif 
   - python38-sanlock 
   - python38-testsuite 
   - python38-tk 
@@ -30105,6 +30105,7 @@ unsorted:
   - python39-asdf-coordinates-schemas 
   - python39-asdf-standard 
   - python39-asdf-transform-schemas 
+  - python39-asdf-unit-schemas 
   - python39-asdf-wcs-schemas 
   - python39-ase 
   - python39-asgiref 
@@ -44498,7 +44499,6 @@ unsorted:
   - tpm-tools-pkcs11 
   - tpm2-0-tss-devel 
   - tpm2-pkcs11 
-  - tpm2-pkcs11-devel 
   - tpm2-tss-engine 
   - tpm2-tss-engine-bash-completion 
   - tpm2-tss-engine-devel 
