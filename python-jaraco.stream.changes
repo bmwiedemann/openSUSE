@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 12 13:07:37 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Replace removed sphinx_build setuptools hook with build-sphinx
+  * requires feature enhancement of python-jaraco.packaging
+    gh#jaraco/jaraco.packaging#11
+- Remove obsolete pytest workaround
+
+-------------------------------------------------------------------
 Mon Aug 29 13:32:52 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.0.3
