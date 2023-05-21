@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun May 21 01:38:40 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1684511766.434312e:
+  * Make retention periods for jobs outside groups configurable
+  * Improve documentation of cleanup under "Getting started"
+  * Add tests for cleanup of groupless job results
+  * Fix issues in the structuring of cleanup-related documentation
+  * Fix sporadic failure in t/ui/18-tests-details.t
+  * Remove slash from the path if base_url ends with one
+  * Fix warning related to use of `@_` in signatured subroutine
+  * Remove codecov token again after problem fixed
+  * Only output JSON when using --json-output
+  * Explicitly check parameters for scheduling CI jobs
+  * Require PR-ID in webhook and improve validation
+
+-------------------------------------------------------------------
 Fri May 12 15:12:30 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1683890027.16a2697:
