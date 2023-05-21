@@ -1,8 +1,22 @@
 -------------------------------------------------------------------
+Sat May 20 15:04:02 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.7.1:
+  * fix: update curl long values (#70)
+  * fix headers/body order (#55)
+  * Update install method for Homebrew (#57)
+  * Bump golang.org/x/crypto from 0.0.0-20180524125353-159ae71589f3 to 0.1.0 (#66)
+  * Bump golang.org/x/sys from 0.0.0-20191026070338-33540a1f6037 to 0.1.0 (#65)
+  * Remove macOS binary of curlie (#61)
+  * Document --pretty (#56)
+  * doc: add webinstall.dev instructions (#58)
+
+- added patch upgrade-go-version-and-x-sys-to-latest.patch to bump dependency
+
+-------------------------------------------------------------------
 Mon Jan  9 10:48:08 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - changed minimal Go version to 1.13
-
 
 -------------------------------------------------------------------
 Mon Dec 26 18:21:37 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
