@@ -4711,7 +4711,7 @@
     <package name="yast2-samba-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
     <package name="yast2-samba-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
     <package name="yast2-scanner" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="yast2-schema-default" supportstatus="unsupported"/> <!-- reason: dvd:autoyast2 -->
+    <package name="yast2-schema" supportstatus="unsupported"/> <!-- reason: dvd:autoyast2 -->
     <package name="yast2-security" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="yast2-services-manager" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="yast2-slp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
