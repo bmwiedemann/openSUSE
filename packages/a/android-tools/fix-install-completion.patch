@@ -28,7 +28,7 @@ diff -ruN a/vendor/adb/adb.bash b/vendor/adb/adb.bash
          _init_completion || return
      fi
  
-@@ -435,7 +435,7 @@
+@@ -455,7 +455,7 @@
      fi
  
      # Since we're probably doing file completion here, don't add a space after.
@@ -37,7 +37,7 @@ diff -ruN a/vendor/adb/adb.bash b/vendor/adb/adb.bash
          compopt -o nospace
      fi
  
-@@ -451,7 +451,7 @@
+@@ -471,7 +471,7 @@
      xspec=$2
  
      # Since we're probably doing file completion here, don't add a space after.
@@ -46,7 +46,7 @@ diff -ruN a/vendor/adb/adb.bash b/vendor/adb/adb.bash
          compopt -o plusdirs
          if [[ "${xspec}" == "" ]]; then
              COMPREPLY=( ${COMPREPLY[@]:-} $(compgen -f -- "${cur}") )
-@@ -492,7 +492,7 @@
+@@ -512,7 +512,7 @@
  }
  
  
