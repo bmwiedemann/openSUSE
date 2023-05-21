@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 19 09:21:26 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.2.1:
+  * fsck.exfat: Repair zero size directory.
+  * fsck.exfat: Four small clean-ups.
+
+-------------------------------------------------------------------
 Fri Oct 28 13:37:51 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.2.0:

@@ -135,4 +135,14 @@
   * tune.exfat: Fix bitmap entry corruption when adding new volume lablel.</comment>
     <requestid>1031970</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4aa9cd28243d71bc14bf0dcaf22d3289</srcmd5>
+    <version>1.2.1</version>
+    <time>1684688893</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.1:
+  * fsck.exfat: Repair zero size directory.
+  * fsck.exfat: Four small clean-ups.</comment>
+    <requestid>1087932</requestid>
+  </revision>
 </revisionlist>
