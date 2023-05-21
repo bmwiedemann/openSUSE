@@ -17,13 +17,13 @@
 
 
 Name:           mujs
-Version:        1.3.2
+Version:        1.3.3
 Release:        0
 Summary:        An embeddable Javascript interpreter
 License:        AGPL-3.0-or-later
 Group:          Development/Languages/C and C++
 URL:            https://mujs.com
-Source0:        https://mujs.com/downloads/%{name}-%{version}.tar.xz
+Source0:        https://mujs.com/downloads/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
 %if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(readline)
@@ -56,6 +56,7 @@ This package provides the MuJS static library.
 %license COPYING
 %doc AUTHORS README
 %{_bindir}/%{name}
+%{_bindir}/%{name}-pp
 
 %files devel
 %license COPYING
