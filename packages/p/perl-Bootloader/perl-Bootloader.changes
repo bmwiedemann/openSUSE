@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Fri May 19 14:15:25 UTC 2023 - wfeldt@opensuse.org
+
+- no not install kexec-bootloader
+- 1.1
+
+--------------------------------------------------------------------
+Fri May 19 14:08:30 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#144
+- add default-settings script
+- add new kexec-bootloader
+- add --default-settings option (bsc#1211082)
+
+--------------------------------------------------------------------
 Mon Apr 24 17:38:14 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/perl-bootloader#143
