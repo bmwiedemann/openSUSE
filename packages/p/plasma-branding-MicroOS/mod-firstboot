@@ -31,13 +31,22 @@ if [ "$?" != 0 ] ; then
 fi
 qdbus-qt5 $dbusRef Set "" value 4
 
+qdbus-qt5 $dbusRef setLabelText "Installing Ark"
+/usr/bin/flatpak install --user --noninteractive flathub org.kde.ark
+if [ "$?" != 0 ] ; then
+	kdialog --error \
+          "Installing Ark Failed"
+	exit 1
+fi
+qdbus-qt5 $dbusRef Set "" value 5
+
 qdbus-qt5 $dbusRef setLabelText "Setting Default Browser"
 kwriteconfig5 --file ~/.config/kdeglobals --group General --key BrowserApplication org.mozilla.firefox.desktop
-qdbus-qt5 $dbusRef Set "" value 5
+qdbus-qt5 $dbusRef Set "" value 6
 
 qdbus-qt5 $dbusRef setLabelText "Cleaning up"
 rm ~/.config/autostart/mod-firstboot.desktop
-qdbus-qt5 $dbusRef Set "" value 6
+qdbus-qt5 $dbusRef Set "" value 7
 
 if [ "$?" != 0 ] ; then
         kdialog --error \

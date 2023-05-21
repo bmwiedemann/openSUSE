@@ -35,7 +35,7 @@ Requires:       libqt5-qdbus
 Requires:       sound-theme-freedesktop
 Requires:       transactional-update
 Conflicts:      gnome-branding-MicroOS
-Version:        20230420
+Version:        20230519
 Release:        0
 
 %description

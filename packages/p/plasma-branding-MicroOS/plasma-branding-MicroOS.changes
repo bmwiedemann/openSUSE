@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 19 15:18:45 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add Ark to default flatpak installation script (boo#1211555)
+- 20230519
+
+-------------------------------------------------------------------
 Thu Apr 20 10:48:13 UTC 2023 - Richard Brown <rbrown@suse.com>
 
 - Remove unneeded cleanup of desktop drop-in
