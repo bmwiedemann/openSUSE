@@ -29,6 +29,7 @@ BuildRequires:  %{python_module base > 3.6}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 61.2.0}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wcwidth}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -79,6 +80,6 @@ The main use cases of the library are:
 %doc README.md
 %python_alternative %{_bindir}/tabulate
 %{python_sitelib}/tabulate
-%{python_sitelib}/tabulate-*dist-info
+%{python_sitelib}/tabulate-%{version}.dist-info
 
 %changelog

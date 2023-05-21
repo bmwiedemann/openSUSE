@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 19 07:19:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- build with setuptools_scm 
+
+-------------------------------------------------------------------
 Fri Apr 21 12:37:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
