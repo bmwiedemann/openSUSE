@@ -4292,4 +4292,14 @@ Other Notable Changes
 - Refresh netdata-logrotate-su.patch</comment>
     <requestid>1086588</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>1c09cb43112f423d95ba48f7abbede49</srcmd5>
+    <version>1.39.1</version>
+    <time>1684688949</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.39.1 (go.d.plugin 0.53.0)
+  See https://github.com/netdata/netdata/releases/tag/v1.39.1
+  and https://github.com/netdata/go.d.plugin/releases/tag/v0.53.0</comment>
+    <requestid>1088133</requestid>
+  </revision>
 </revisionlist>
