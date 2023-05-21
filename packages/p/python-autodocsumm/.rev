@@ -100,4 +100,13 @@
   * pin build of docs to sphinx&lt;=7.0</comment>
     <requestid>1086130</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>671c750a3052796d79529c46b0c3b110</srcmd5>
+    <version>0.2.11</version>
+    <time>1684688908</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed the license tag to Apache-2.0
+</comment>
+    <requestid>1087978</requestid>
+  </revision>
 </revisionlist>

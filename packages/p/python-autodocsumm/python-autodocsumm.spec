@@ -16,19 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-autodocsumm
 Version:        0.2.11
 Release:        0
 Summary:        Extended sphinx autodoc including automatic autosummaries
-License:        GPL-2.0-only
+License:        Apache-2.0
 URL:            https://github.com/Chilipp/autodocsumm
 Source:         https://github.com/Chilipp/autodocsumm/archive/v%{version}.tar.gz#/autodocsumm-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module versioneer}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx >= 2.2
@@ -44,19 +43,19 @@ BuildRequires:  %{python_module pytest}
 Extended sphinx autodoc including automatic autosummaries
 
 %prep
-%setup -q -n autodocsumm-%{version}
+%autosetup -p1 -n autodocsumm-%{version}
 # Remove guard from Sphinx version
 sed -i 's/,<5.0//' setup.py
 
 %build
-%python_build
+%pyproject_wheel
+
+%install
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
-
-%install
-%python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.rst
