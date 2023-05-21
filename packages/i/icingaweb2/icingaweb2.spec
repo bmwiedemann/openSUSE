@@ -28,6 +28,7 @@ Group:          System/Monitoring
 URL:            https://icinga.com
 Source0:        https://github.com/Icinga/icingaweb2/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}-additions.tar.gz
+Source10:       %{name}-php-fpm.conf
 Source90:       README.SUSE
 Source99:       %{name}-rpmlintrc
 BuildArch:      noarch
@@ -72,15 +73,18 @@ Requires:       %{php}-pgsql
 %define php_unsupported_version 8.2
 
 %if 0%{?suse_version}
-%define wwwconfigdir    %{_sysconfdir}/apache2/conf.d
-%define wwwuser         wwwrun
-%define php             php
-%define php_runtime     mod_php_any
-%define php_common      %{php}
-%define php_cli         %{php}
+%define wwwconfigdir      %{_sysconfdir}/apache2/conf.d
+%define wwwuser           wwwrun
+%define php               php
+##%%define php_major_version %%(php -r "echo PHP_MAJOR_VERSION;")
+%define php_major_version 8
+%define php_runtime       mod_php_any
+%define php_common        %{php}
+%define php_cli           %{php}
 # extra requirements on openSUSE
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools
+BuildRequires:  php
 BuildRequires:  config(krb5)
 Requires:       %{php}-ldap
 Requires:       %{php}-mysql
@@ -97,8 +101,14 @@ Conflicts:      php53
 %{?suse_version:Requires(pre):  pwdutils}
 
 Requires:       %{php_common} >= %{php_version}
+%if 0%{?suse_version}
+BuildRequires:  php%{php_major_version}-fpm
+Requires:       (mod_php_any >= %{php_version} or php-fpm)
+%else
 Requires:       %{php_runtime} >= %{php_version}
 Conflicts:      %{php_runtime} >= %{php_unsupported_version}
+%endif
+
 %if 0%{?suse_version}
 Requires:       apache2
 %endif
@@ -139,11 +149,22 @@ Group:          System/Monitoring
 %{?rhel:Requires(pre):          shadow-utils}
 %{?suse_version:Requires(pre):  pwdutils}
 %if 0%{?suse_version} > 1320
+PreReq:         permissions
 Requires(pre):  system-user-wwwrun
 %endif
 
 %description common
 Common files for Icinga Web 2 and the Icinga CLI.
+
+%package php-fpm
+Summary:        PHP FPM configuration for %{name}
+Group:          Productivity/Networking/Web/Utilities
+%requires_eq	%{php_major_version}-fpm >= %{php_version}
+#Requires:	%%{name}-apparmor
+Requires:       %{name} = %{version}
+
+%description php-fpm
+This package contains the PHP FPM configuration file to run %{name} with php-fpm.
 
 %package -n php-Icinga
 Summary:        Icinga Web 2 PHP library
@@ -283,6 +304,7 @@ cp -p packages/selinux/icingaweb2.{fc,if,te} selinux
 %if 0%{?suse_version}
 # rpmlint
 find . -type f "(" -name "*.css" -o -name "*.html" -o -name "*.json" -o -name "*.svg" -o -name "*.txt" -o -name "README" ")" -exec chmod -x "{}" "+"
+sed -i '1d' library/vendor/JShrink/SOURCE
 %endif
 
 %build
@@ -299,7 +321,7 @@ cd -
 
 %install
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/{%{basedir}/{modules,library/vendor,public},%{bindir},%{configdir}/modules,%{storagedir},%{logdir},%{phpdir},%{wwwconfigdir},%{_datadir}/bash-completion/completions,%{docsdir}}
+mkdir -p %{buildroot}/{%{basedir}/{modules,library/vendor,public},%{bindir},%{configdir}/{enabledModules,modules},%{storagedir},%{logdir},%{phpdir},%{wwwconfigdir},%{_datadir}/bash-completion/completions,%{docsdir}}
 cp -prv application doc %{buildroot}/%{basedir}
 cp -pv etc/bash_completion.d/icingacli %{buildroot}/%{_datadir}/bash-completion/completions/icingacli
 cp -prv modules/{monitoring,setup,doc,translation,migrate} %{buildroot}/%{basedir}/modules
@@ -331,6 +353,10 @@ cd -
 #/usr/sbin/hardlink -cv %%{buildroot}%%{_datadir}/selinux
 %endif
 %if 0%{?suse_version}
+# fpm
+mkdir -p %{buildroot}%{_sysconfdir}/php%{php_major_version}/fpm/php-fpm.d
+cp -avL %{SOURCE10} %{buildroot}%{_sysconfdir}/php%{php_major_version}/fpm/php-fpm.d/%{name}.conf
+# fdupes
 %fdupes %{buildroot}/%{basedir}/library
 %endif
 
@@ -363,6 +389,12 @@ if [ -x %{_sbindir}/a2enmod ]; then
     a2enmod -q "php${php_version}" || a2enmod "php${php_version}"
   fi
 fi
+
+%verifyscript common
+%verify_permissions -e %{configdir}/enabledModules
+
+%post common
+%set_permissions %{configdir}/enabledModules
 
 %files
 %defattr(-,root,root)
@@ -403,6 +435,11 @@ exit 0
 %attr(0770,root,%{icingawebgroup}) %dir %{storagedir}
 %attr(0770,root,%{icingawebgroup}) %config(noreplace) %dir %{configdir}
 %attr(0770,root,%{icingawebgroup}) %config(noreplace) %dir %{configdir}/modules
+%verify(not mode caps) %attr(2770,root,%{icingawebgroup}) %{configdir}/enabledModules
+%attr(2770,root,%{icingawebgroup}) %dir %{configdir}/enabledModules
+
+%files php-fpm
+%config(noreplace) %{_sysconfdir}/php%{php_major_version}/fpm/php-fpm.d/%{name}.conf
 
 %files -n php-Icinga
 %defattr(-,root,root)

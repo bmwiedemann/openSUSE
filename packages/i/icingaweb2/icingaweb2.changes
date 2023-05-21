@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May  9 11:02:10 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add subpackge php-fpm with php-fpm configuration.
+- Remove max php version restrictions for suse.
+- Fix rights for /etc/icingaweb2/enabledModules directory 
+  as upstream use.
+
+-------------------------------------------------------------------
 Thu Jan 26 17:03:20 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.11.4
