@@ -93,4 +93,17 @@
     <comment>- Updote to 1.6.0</comment>
     <requestid>1066955</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6731eeb7a5a33f5ce72b79877cd2c2f7</srcmd5>
+    <version>1.6.1</version>
+    <time>1684688944</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.1
+  * Fix circles parsing to non-closed paths
+    #gh/mathandy/svgpathtools#198
+  * path.transform: Arc sweep is reversed by negative scale
+    #gh/mathandy/svgpathtools#200
+  * return error if Path.point() cannot be computed</comment>
+    <requestid>1088124</requestid>
+  </revision>
 </revisionlist>

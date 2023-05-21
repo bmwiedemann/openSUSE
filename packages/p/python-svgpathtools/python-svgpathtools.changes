@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May 21 12:16:43 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.6.1
+  * Fix circles parsing to non-closed paths
+    #gh/mathandy/svgpathtools#198
+  * path.transform: Arc sweep is reversed by negative scale
+    #gh/mathandy/svgpathtools#200
+  * return error if Path.point() cannot be computed
+
+-------------------------------------------------------------------
 Tue Feb 21 09:51:58 UTC 2023 - Mia Herkt <mia@0x0.st>
 
 - Updote to 1.6.0

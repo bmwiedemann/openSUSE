@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python36 1
 Name:           python-svgpathtools
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        Tools for manipulating and analyzing SVG Path objects and Bézier curves
 License:        MIT
@@ -62,6 +61,6 @@ analyzing SVG Path objects and Bézier curves.
 %files %{python_files}
 %license LICENSE.txt LICENSE2.txt
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/svgpathtools*
 
 %changelog
