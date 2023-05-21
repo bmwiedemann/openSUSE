@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat May 20 14:24:08 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 11.0.0:
+  * If you try to close the program while the conversion is in progress, the program will ask for confirmation
+  * Added a menu item to delete the source files for successfully converted disks
+  * Small fixes to the algorithm for creating per track CUE files
+  * Improved diagnostics of erroneous situations:
+  * Error if tracks overwrite files (taking into account the template)
+  * Error if there are tracks with the same track number and creating files in the same directory. The pattern doesn't matter
+  * Warning if any disks use the same CUE file
+  * Warning if any disks use the same audio file
+  * Fix: The program show an error when the source files are located on slow network drives
+  * Fix: The program show an error on WV files larger than 2 gigabytes
+  * Minor fixes
+  * Translations updated
+
+-------------------------------------------------------------------
 Tue Jan 24 09:45:43 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 10.0.0:
