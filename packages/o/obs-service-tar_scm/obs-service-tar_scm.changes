@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 19 14:37:24 UTC 2023 - adrian@suse.de
+
+- Update to version 0.10.36:
+  * fix broken tar ball from 0.10.35 release
+
+-------------------------------------------------------------------
+Fri May 19 12:24:20 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- Update to version 0.10.35
+  * Avoid getting confused by _scmsync.obsinfo files
+
+-------------------------------------------------------------------
 Thu Nov 03 09:09:46 UTC 2022 - FSchreiner@suse.com
 
 - Update to version 0.10.34.1667392550.026bf0e:

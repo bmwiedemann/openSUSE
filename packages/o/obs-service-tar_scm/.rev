@@ -1418,4 +1418,16 @@ Mon Feb  13 15:52:19 GMT 2012 - aspiers@suse.com
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1035037</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>dc1c3e4d86e692b8b68ce1f3d5cd89db</srcmd5>
+    <version>0.10.36</version>
+    <time>1684688899</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10.36:
+  * fix broken tar ball from 0.10.35 release
+
+- Update to version 0.10.35
+  * Avoid getting confused by _scmsync.obsinfo files</comment>
+    <requestid>1087953</requestid>
+  </revision>
 </revisionlist>
