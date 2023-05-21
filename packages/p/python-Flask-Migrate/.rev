@@ -88,4 +88,20 @@
 - Switch to %pyunittest macro for running the testsuite.</comment>
     <requestid>1056124</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0951e38304b9dd80fb715513f08eccd7</srcmd5>
+    <version>4.0.4</version>
+    <time>1684688942</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.4:
+  * Correctly obtain database URL with SQLAlchemy 2.0
+  * Remove legacy future import in Alembic templates
+  * Add SQLAlchemy 1.4 and 2.0 to the test matrix
+  * Switch to pytest as test runner
+  * Support &quot;check&quot; command
+  * Do not use deprecated functions in Flask-SQLAlchemy 3.0
+  * Stop building Python 3.6 
+  * Remove tests from pypi package</comment>
+    <requestid>1088117</requestid>
+  </revision>
 </revisionlist>

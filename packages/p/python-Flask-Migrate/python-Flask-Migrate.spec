@@ -16,8 +16,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-Flask-Migrate
-Version:        4.0.0
+Version:        4.0.4
 Release:        0
 Summary:        SQLAlchemy database migrations for Flask applications using Alembic
 License:        MIT
@@ -27,13 +28,14 @@ Source:         https://files.pythonhosted.org/packages/source/F/Flask-Migrate/F
 Patch0:         add-custom-template.patch
 BuildRequires:  %{python_module Flask >= 0.9}
 BuildRequires:  %{python_module Flask-SQLAlchemy >= 1.0}
-BuildRequires:  %{python_module alembic >= 0.7}
+BuildRequires:  %{python_module alembic >= 1.9.0}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Flask >= 0.9
 Requires:       python-Flask-SQLAlchemy >= 1.0
-Requires:       python-alembic >= 0.7
+Requires:       python-alembic >= 1.9.0
 BuildArch:      noarch
 %python_subpackages
 

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May 21 09:11:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.4:
+  * Correctly obtain database URL with SQLAlchemy 2.0
+  * Remove legacy future import in Alembic templates
+  * Add SQLAlchemy 1.4 and 2.0 to the test matrix
+  * Switch to pytest as test runner
+  * Support "check" command
+  * Do not use deprecated functions in Flask-SQLAlchemy 3.0
+  * Stop building Python 3.6 
+  * Remove tests from pypi package
+
+-------------------------------------------------------------------
 Thu Jan  5 06:44:33 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.0.0:
