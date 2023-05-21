@@ -165,4 +165,41 @@
   * gh#asdf-format/asdf#1214 (forwarded request 1030519 from bnavigator)</comment>
     <requestid>1030520</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b0bb689f6d8ce36c913409a24ea41c92</srcmd5>
+    <version>2.15.0</version>
+    <time>1684688916</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.15.0
+  * Add AsdfProvisionalAPIWarning to warn developers of new
+    features that may undergo breaking changes but are likely to be
+    included as stable features (without this warning) in a future
+    version of ASDF [#1295]
+  * Add AsdfDeprecationWarning to AsdfFile.blocks [#1336]
+  * Document policy for ASDF release cycle including when support
+    for ASDF versions end. Also document dependency support policy.
+    [#1323]
+  * Update lower pins on numpy (per release policy), packaging, and
+    pyyaml to ones that we can successfully build and test against.
+    [#1360]
+  * Provide more informative filename when failing to open a file
+    [#1357]
+  * Add new plugin type for custom schema validators. [#1328]
+  * Add AsdfDeprecationWarning to asdf.types.CustomType [#1359]
+  * Throw more useful error when provided with a path containing an
+    extra leading slash [#1356]
+  * Add AsdfDeprecationWarning to AsdfInFits. Support for reading
+    and writing ASDF in fits files is being moved to stdatamodels.
+    [#1337]
+  * Add AsdfDeprecationWarning to asdf.resolver [#1362]
+  * Add AsdfDeprecationWarning to
+    asdf.tests.helpers.assert_extension_correctness [#1388]
+  * Add AsdfDeprecationWarning to asdf.type_index [#1403]
+  * Add warning to use of asdftool extract and remove-hdu about
+    deprecation and impending removal [#1411]
+  * Deprecate AsdfFile attributes that use the legacy extension api
+    [#1417]
+  * Add AsdfDeprecationWarning to asdf.types [#1401] (forwarded request 1087849 from bnavigator)</comment>
+    <requestid>1087850</requestid>
+  </revision>
 </revisionlist>

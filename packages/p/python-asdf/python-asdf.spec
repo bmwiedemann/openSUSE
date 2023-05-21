@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,32 +25,31 @@
 %bcond_with test
 %endif
 
+%{?sle15_python_module_pythons}
 Name:           python-asdf%{psuffix}
-Version:        2.13.0
+Version:        2.15.0
 Release:        0
 Summary:        Python tools to handle ASDF files
 License:        BSD-2-Clause AND BSD-3-Clause
 URL:            https://github.com/asdf-format/asdf
 Source0:        https://files.pythonhosted.org/packages/source/a/asdf/asdf-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM  asdf-pr1185+pr1203-fix-jsonschema.patch gh#asdf-format/asdf#1185, gh#asdf-format/asdf#1203
-Patch0:         asdf-pr1185+pr1203-fix-jsonschema.patch
-# PATCH-FIX-UPSTREAM  asdf-pr1214-installed-packages.patch gh#asdf-format/asdf#1214
-Patch1:         asdf-pr1214-installed-packages.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 42}
+BuildRequires:  %{python_module setuptools >= 60}
 BuildRequires:  %{python_module setuptools_scm >= 3.4}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PyYAML >= 3.10
+Requires:       python-PyYAML >= 5.4.1
 Requires:       python-asdf-standard >= 1.0.1
-Requires:       python-asdf-transform-schemas >= 0.2.2
+Requires:       python-asdf-transform-schemas >= 0.3
+Requires:       python-asdf-unit-schemas >= 0.1
+Requires:       python-importlib-metadata >= 4.11.4
 Requires:       python-jmespath >= 0.6.2
-Requires:       python-jsonschema >= 4.0.1
-Requires:       python-numpy >= 1.10
-Requires:       python-packaging >= 16.0
+Requires:       python-numpy >= 1.20
+Requires:       python-packaging >= 19
 Requires:       python-semantic_version >= 2.8
+Requires:       (python-jsonschema >= 4.0.1 with python-jsonschema < 4.18)
 %if 0%{?python_version_nodots} < 39
 Requires:       python-importlib-resources >= 3
 %endif
@@ -60,16 +59,18 @@ Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 %if %{with test}
+BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module asdf = %{version}}
 BuildRequires:  %{python_module astropy >= 5.0.4}
-BuildRequires:  %{python_module gwcs}
-BuildRequires:  %{python_module lz4}
+BuildRequires:  %{python_module fsspec >= 2022.8.2}
+BuildRequires:  %{python_module gwcs >= 0.18.3}
+BuildRequires:  %{python_module lz4 >= 0.10}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest-doctestplus}
 BuildRequires:  %{python_module pytest-openfiles >= 0.3.1}
 BuildRequires:  %{python_module pytest-remotedata}
-BuildRequires:  %{python_module pytest-sugar}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests}
 %endif
 # /SECTION
 %python_subpackages
@@ -83,8 +84,8 @@ Python implementation of the ASDF Standard.
 %autosetup -p1 -n asdf-%{version}
 sed -i -e '/^#!\//, 1d' asdf/extern/RangeHTTPServer.py
 chmod a-x asdf/extern/RangeHTTPServer.py
-sed -i 's/\r$//' asdf/tests/data/example_schema.json
-chmod a-x asdf/tests/data/example_schema.json
+sed -i 's/\r$//' asdf/_tests/data/example_schema.json
+chmod a-x asdf/_tests/data/example_schema.json
 sed -i '/addopts/ s/--color=yes//' pyproject.toml
 
 %build
