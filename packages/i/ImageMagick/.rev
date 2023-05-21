@@ -3595,4 +3595,14 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
 - https://github.com/ImageMagick/Website/blob/main/ChangeLog.md#711-8---2023-04-22</comment>
     <requestid>1084570</requestid>
   </revision>
+  <revision rev="273" vrev="1">
+    <srcmd5>06e4d7220e1f9a7ae567ab8522f42769</srcmd5>
+    <version>7.1.1.9</version>
+    <time>1684688882</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.1.1.9:
+  * support for Oklab
+  https://github.com/ImageMagick/Website/blob/main/ChangeLog.md#711-9---2023-05-14 (forwarded request 1087795 from dirkmueller)</comment>
+    <requestid>1087892</requestid>
+  </revision>
 </revisionlist>
