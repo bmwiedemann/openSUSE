@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May 18 19:33:32 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.4.0
+  * Update pins for asdf, asdf-coordinates-schemas, numpy, and
+    packaging. [#164]
+  * Add serialization support for non-VOunits. [#142]
+  * Add serialization support for MagUnit based units. [#146]
+  * Document and add assert_model_roundtrip and
+    assert_table_roundtrip to
+  * asdf_astropy.testing.helpers. [#170]
+
+-------------------------------------------------------------------
+Thu May 18 16:09:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- set sle15_python_module_pythons for building with newer python stack on SLE15
+
+-------------------------------------------------------------------
 Tue Dec  6 00:26:43 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Fix builddeps

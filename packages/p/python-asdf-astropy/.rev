@@ -75,4 +75,19 @@ This is just to get rid of the build failure in d:l:p. It is not suitable for an
   * Fix bug in preserving the ``dtype`` of ``Quantity`` objects.</comment>
     <requestid>1040470</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b71c4e6822ba189b261d1da4c27d9e80</srcmd5>
+    <version>0.4.0</version>
+    <time>1684688918</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.0
+  * Update pins for asdf, asdf-coordinates-schemas, numpy, and
+    packaging. [#164]
+  * Add serialization support for non-VOunits. [#142]
+  * Add serialization support for MagUnit based units. [#146]
+  * Document and add assert_model_roundtrip and
+    assert_table_roundtrip to
+  * asdf_astropy.testing.helpers. [#170] (forwarded request 1087851 from bnavigator)</comment>
+    <requestid>1087852</requestid>
+  </revision>
 </revisionlist>
