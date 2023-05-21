@@ -1,7 +1,7 @@
 #
 # spec file for package docbook_3
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,9 +36,9 @@ Release:        0
 ### Version macros are defined so I can use them below,
 ### don't use macros for "Source:" and "Patch:" values.
 %define dtd30 docbk30.zip
-Source0:        http://www.oasis-open.org/docbook/docbook/3.0/docbk30.zip
+Source0:        https://docbook.org/sgml/3.0/docbk30.zip
 %define dtd31 docbk31.zip
-Source1:        http://www.oasis-open.org/docbook/docbook/3.1/docbk31.zip
+Source1:        https://docbook.org/sgml/3.1/docbk31.zip
 # Docu now to be found at http://www.oasis-open.org/docbook/documentation/
 %define docu dbhset.tar.gz
 Source2:        http://www.ora.com/davenport/dbdoc/dbhset.tar.gz
@@ -61,7 +61,7 @@ Source12:       CATALOG.gnome
 Patch0:         docbk30.dif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-Url:            http://www.oasis-open.org/docbook/
+URL:            http://www.oasis-open.org/docbook/
 
 %description
 This package contains version 3.0 and 3.1 and an XML version.  It is
