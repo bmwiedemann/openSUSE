@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 20 09:34:05 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Provide the PyPI name: python-oci
+- Use pep517 macros instead of deprecated direct setup.py calls
+- Update deps patch
+- Add rpmlintrc for devendored package requirements
+
+-------------------------------------------------------------------
 Fri May 19 12:57:29 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.102.0

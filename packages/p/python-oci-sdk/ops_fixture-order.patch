@@ -1,6 +1,7 @@
-diff -Nru oci-python-sdk-2.17.2.orig/tests/unit/test_basic_api_calls.py oci-python-sdk-2.17.2/tests/unit/test_basic_api_calls.py
---- oci-python-sdk-2.17.2.orig/tests/unit/test_basic_api_calls.py	2020-07-07 23:40:28.000000000 +0200
-+++ oci-python-sdk-2.17.2/tests/unit/test_basic_api_calls.py	2020-07-14 11:04:06.710713773 +0200
+Index: oci-python-sdk-2.102.0/tests/unit/test_basic_api_calls.py
+===================================================================
+--- oci-python-sdk-2.102.0.orig/tests/unit/test_basic_api_calls.py
++++ oci-python-sdk-2.102.0/tests/unit/test_basic_api_calls.py
 @@ -5,7 +5,7 @@
  import oci
  
@@ -10,7 +11,7 @@ diff -Nru oci-python-sdk-2.17.2.orig/tests/unit/test_basic_api_calls.py oci-pyth
      response = identity.list_users(config["tenancy"])
  
      assert response is not None
-@@ -31,7 +31,7 @@
+@@ -31,7 +31,7 @@ def test_vcn_list_instances(compute, con
      assert response.request_id is not None
  
  
@@ -19,10 +20,11 @@ diff -Nru oci-python-sdk-2.17.2.orig/tests/unit/test_basic_api_calls.py oci-pyth
      response = identity.list_users(config["tenancy"], limit=1)
  
      assert response is not None
-diff -Nru oci-python-sdk-2.17.2.orig/tests/unit/test_waiters.py oci-python-sdk-2.17.2/tests/unit/test_waiters.py
---- oci-python-sdk-2.17.2.orig/tests/unit/test_waiters.py	2020-07-07 23:40:28.000000000 +0200
-+++ oci-python-sdk-2.17.2/tests/unit/test_waiters.py	2020-07-14 11:04:11.938762342 +0200
-@@ -109,7 +109,7 @@
+Index: oci-python-sdk-2.102.0/tests/unit/test_waiters.py
+===================================================================
+--- oci-python-sdk-2.102.0.orig/tests/unit/test_waiters.py
++++ oci-python-sdk-2.102.0/tests/unit/test_waiters.py
+@@ -112,7 +112,7 @@ def test_wait_multiple_states(virtual_ne
      assert total_time < 60 * 5
  
  
@@ -31,7 +33,7 @@ diff -Nru oci-python-sdk-2.17.2.orig/tests/unit/test_waiters.py oci-python-sdk-2
      # Create User
      request = oci.identity.models.CreateUserDetails()
      request.compartment_id = config["tenancy"]
-@@ -132,7 +132,7 @@
+@@ -135,7 +135,7 @@ def test_invalid_operation(identity, con
          oci.wait_until(identity, response, 'not a real property', 'test')
  
  
@@ -40,7 +42,7 @@ diff -Nru oci-python-sdk-2.17.2.orig/tests/unit/test_waiters.py oci-python-sdk-2
      description = 'test user'
      request = oci.identity.models.CreateUserDetails()
      request.compartment_id = config["tenancy"]
-@@ -152,7 +152,7 @@
+@@ -155,7 +155,7 @@ def test_already_in_state(identity, conf
      identity.delete_user(user_id)
  
  
@@ -49,7 +51,7 @@ diff -Nru oci-python-sdk-2.17.2.orig/tests/unit/test_waiters.py oci-python-sdk-2
      description = 'test user'
      request = oci.identity.models.CreateUserDetails()
      request.compartment_id = config["tenancy"]
-@@ -183,7 +183,7 @@
+@@ -182,7 +182,7 @@ def test_property_and_eval_function_prov
      assert str(ve.value) == 'Invalid wait_until configuration - can not provide both evaluate_response function and property argument, only one should be specified'
  
  
@@ -58,7 +60,7 @@ diff -Nru oci-python-sdk-2.17.2.orig/tests/unit/test_waiters.py oci-python-sdk-2
      user_id = None
      try:
          description = 'test user'
-@@ -207,7 +207,7 @@
+@@ -206,7 +206,7 @@ def test_eval_function_lambda(identity,
              identity.delete_user(user_id)
  
  

@@ -25,34 +25,36 @@ License:        Apache-2.0 OR UPL-1.0
 Group:          Development/Languages/Python
 URL:            https://github.com/oracle/oci-python-sdk
 Source:         %{url}/archive/v%{version}.tar.gz#/oci-python-sdk-%{version}.tar.gz
+Source99:       python-oci-sdk.rpmlintrc
 Patch0:         ops_relax-python-depends.patch
 Patch1:         ops_fixture-order.patch
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PyJWT
 Requires:       python-certifi
 Requires:       python-circuitbreaker >= 1.3.1
-Requires:       python-cryptography
-Requires:       python-httpsig_cffi
+Requires:       python-cryptography >= 3.2.1
 Requires:       python-pyOpenSSL >= 17.5.0
-Requires:       python-python-dateutil < 3.0.0
 Requires:       python-python-dateutil >= 2.5.3
 Requires:       python-pytz >= 2016.10
+# SECTION devendored packages
+Requires:       python-PyJWT
+Requires:       python-httpsig_cffi
 Requires:       python-requests
 Requires:       python-six
 Requires:       python-urllib3 < 2
+# /SECTION
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyJWT}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module circuitbreaker >= 1.3.1}
-BuildRequires:  %{python_module cryptography}
+BuildRequires:  %{python_module cryptography >= 3.2.1}
 BuildRequires:  %{python_module httpsig_cffi}
 BuildRequires:  %{python_module pyOpenSSL >= 17.5.0}
 BuildRequires:  %{python_module pytest > 4.1.0}
-BuildRequires:  %{python_module python-dateutil < 3.0.0}
 BuildRequires:  %{python_module python-dateutil >= 2.5.3}
 BuildRequires:  %{python_module pytz >= 2016.10}
 BuildRequires:  %{python_module requests}
@@ -60,12 +62,14 @@ BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module urllib3 < 2}
 BuildRequires:  %{python_module vcrpy >= 2.0.1}
 %if %{with python2}
-BuildRequires:  python-configparser
+BuildRequires:  python-configparser >= 4.0.2
 %endif
 # /SECTION
 %ifpython2
-Requires:       python-configparser
+Requires:       python-configparser >= 4.0.2
 %endif
+# The PyPI name is just oci
+Provides:       python-oci = %{version}-%{release}
 %python_subpackages
 
 %description
@@ -85,14 +89,13 @@ sed -i 's/oci\._vendor\.//' src/oci/*.py src/oci/auth/*.py src/oci/auth/signers/
 sed -i 's/from . import vcr_mods//' tests/test_config_container.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %check
-export PYTHONDONTWRITEBYTECODE=1
-%pytest tests/unit tests/integ -s
+%pytest tests/unit tests/integ -s -rs
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
