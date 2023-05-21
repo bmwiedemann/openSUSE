@@ -222,4 +222,13 @@
     <comment>- Update to release 3.14.1</comment>
     <requestid>1074452</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>a056b2b538f52ae4f726dd68547df588</srcmd5>
+    <version>3.14.1</version>
+    <time>1684688876</time>
+    <user>dimstar_suse</user>
+    <comment>- update the license tag matching the code (LGPL-2.1-only and
+  GPL-2.0-only)</comment>
+    <requestid>1087847</requestid>
+  </revision>
 </revisionlist>
