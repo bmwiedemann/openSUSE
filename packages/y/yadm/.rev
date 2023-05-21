@@ -12,4 +12,12 @@ ML Post : https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/th
 </comment>
     <requestid>963885</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>14e16cd8b43bca10082c80c199aa0b0f</srcmd5>
+    <version>3.2.2</version>
+    <time>1684688921</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088056</requestid>
+  </revision>
 </revisionlist>

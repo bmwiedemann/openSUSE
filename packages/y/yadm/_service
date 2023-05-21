@@ -6,7 +6,7 @@
     <param name="url">https://github.com/TheLocehiliosan/yadm.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">3.2.1</param>
+    <param name="revision">3.2.2</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
@@ -14,6 +14,10 @@
     <param name="changesauthor">stigpro@outlook.fr</param>
   </service>
   <service mode="disabled" name="tar" />
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
   <service mode="disabled" name="set_version"/>
 </services>
 

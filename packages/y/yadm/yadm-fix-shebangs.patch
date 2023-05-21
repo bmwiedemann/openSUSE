@@ -1,3 +1,13 @@
+diff --git a/contrib/commands/yadm-untracked b/contrib/commands/yadm-untracked
+index 0374247..edabe09 100755
+--- a/contrib/commands/yadm-untracked
++++ b/contrib/commands/yadm-untracked
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env bash
++#!/usr/bin/bash
+ 
+ # To run: `yadm-untracked <config-file>`
+ #
 diff --git a/contrib/hooks/encrypt_with_checksums/post_encrypt b/contrib/hooks/encrypt_with_checksums/post_encrypt
 index 5bb7cde..93f4798 100755
 --- a/contrib/hooks/encrypt_with_checksums/post_encrypt
@@ -29,16 +39,16 @@ index d8778c1..5bbfafa 100755
  # yadm - Yet Another Dotfiles Manager
  # Copyright (C) 2015-2021 Tim Byrne and Martin Zuther
 diff --git a/yadm b/yadm
-index 97a56c1..e1c7d7d 100755
+index 003d954..34d5a30 100755
 --- a/yadm
 +++ b/yadm
 @@ -1,4 +1,4 @@
 -#!/bin/sh
 +#!/usr/bin/bash
  # yadm - Yet Another Dotfiles Manager
- # Copyright (C) 2015-2022 Tim Byrne
+ # Copyright (C) 2015-2023 Tim Byrne
  
-@@ -17,9 +17,11 @@
+@@ -17,9 +17,9 @@
  
  # shellcheck shell=bash
  # execute script with bash (shebang line is /bin/sh for portability)
@@ -48,8 +58,9 @@ index 97a56c1..e1c7d7d 100755
 +#if [ -z "$BASH_VERSION" ]; then
 +#  [ "$YADM_TEST" != 1 ] && exec bash "$0" "$@"
 +#fi
-+# Packager note : This interferes with rpmlint
-+
  
- VERSION=3.2.1
+ VERSION=3.2.2
  
+-- 
+2.40.1
+

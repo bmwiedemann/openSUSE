@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May 20 12:54:01 UTC 2023 - stigpro@outlook.fr
+
+- Update to version 3.2.2:
+  * Update version number and update documentation
+  * Adjust markdown creation for new version of groff
+  * Create tests for underscores in distro/family
+  * Accept _ as space substitutes
+  * Remove superfluous space
+  * Document OCI switch
+  * Support docker-like OCI engines
+- Update yadm-fix-shebangs.patch: Fix line skew
+- Compress install archive to minimize file size
+
+-------------------------------------------------------------------
 Tue Mar 22 09:11:49 UTC 2022 - Nicolas FORMICHELLA <stigpro@outlook.fr>
 
 - Fix specfile to conform to packaging guidelines

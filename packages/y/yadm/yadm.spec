@@ -1,7 +1,7 @@
 #
 # spec file for package yadm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           yadm
-Version:        3.2.1
+Version:        3.2.2
 Release:        0%{?dist}
 Summary:        Yet Another Dotfiles Manager
 License:        GPL-3.0-only
 Group:          Development/Tools/Version Control
 URL:            https://yadm.io
-Source0:        %{name}-%{version}.tar
+Source0:        %{name}-%{version}.tar.gz
 Source99:       %{name}-rpmlintrc
 Patch0:         %{name}-fix-makefile.patch
 Patch1:         %{name}-fix-shebangs.patch
