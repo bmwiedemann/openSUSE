@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat May 20 13:03:18 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 12.3:
+  * Add custom notes to sync configurations
+  * Highlight comparison and sync buttons
+  * Show sync stats in config panel tool tip
+  * Update config panel sync info even if cancelled
+  * Support FTP listing format missing owner/group
+  * Fixed "Class not registered" error during installation
+  * Propagate process priority of launcher executable
+  * Fixed config panel metadata being reset after renaming
+  * Fixed config panel keyboard cursor after deletion/rename
+  * Improved small icon resolution for high-DPI monitors
+- Update icons to be 128x128
+- Add missing Animals.dat file
+- Drop FreeFileSync-fix-error.patch
+
+-------------------------------------------------------------------
+Tue May  9 14:32:29 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 12.2:
+  * Fixed temporary access error when creating multiple folders in parallel
+  * Log failure to copy folder attributes as warning only
+  * Enable UTF-8, even if FTP server does not advertize in FEAT (vsftpd)
+  * Fixed drag and drop for non-ASCII folders (macOS)
+  * Explicitly detect MTP path without existence check
+  * Fixed crash when parsing SFTP package from stream
+  * Fixed missing COM initialization for MTP path parsing
+- Add FreeFileSync-fix-error.patch to fix build with gcc13.
+
+-------------------------------------------------------------------
 Fri Feb 17 08:10:43 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 12.0:

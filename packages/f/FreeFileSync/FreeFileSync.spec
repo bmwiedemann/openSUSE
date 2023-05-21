@@ -17,7 +17,7 @@
 
 
 Name:           FreeFileSync
-Version:        12.0
+Version:        12.3
 Release:        0
 Summary:        Backup software to synchronize files and folders
 License:        GPL-3.0-or-later
@@ -28,6 +28,7 @@ Source1:        %{name}.desktop
 Source2:        %{name}.png
 Source3:        RealTimeSync.desktop
 Source4:        RealTimeSync.png
+Source5:        Animal.dat
 Patch0:         FreeFileSync-build.patch
 Patch1:         FreeFileSync-resources.patch
 Patch2:         FreeFileSync-icon-loader.patch
@@ -71,7 +72,6 @@ mkdir FreeFileSync/Build/Bin
 
 %build
 export TMPDIR=/tmp # necessary since 11.0
-export CXXFLAGS="%{optflags}"
 %if 0%{?suse_version} < 1590
   export CC="gcc-12"
   export CXX="g++-12"
@@ -89,15 +89,14 @@ mkdir -p %{buildroot}%{_bindir}
 install -t %{buildroot}%{_bindir} Bin/%{name}
 
 mkdir -p %{buildroot}%{_datadir}/%{name}
-cp -rT  Resources %{buildroot}%{_datadir}/%{name}
+cp -rT Resources %{buildroot}%{_datadir}/%{name}
+install -Dm 0644 %SOURCE5 %{buildroot}%{_datadir}/%{name}
 
 find "%{buildroot}%{_datadir}/%{name}" -type f -print0 | xargs -0 chmod 644
-#%%make_install
 
 # RealTimeSync
 mkdir -p %{buildroot}%{_bindir}
 install -t %{buildroot}%{_bindir} Bin/RealTimeSync
-#%%make_install
 popd
 
 # desktop

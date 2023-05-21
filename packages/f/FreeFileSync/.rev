@@ -148,4 +148,12 @@ It would be nice to have this application available in the default repos. </comm
     <comment></comment>
     <requestid>1066553</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>77a1a6abc50bc64c00704f4c28ee3cd1</srcmd5>
+    <version>12.3</version>
+    <time>1684688933</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088077</requestid>
+  </revision>
 </revisionlist>

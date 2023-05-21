@@ -1,7 +1,8 @@
-diff -Naur FreeFileSync_11.23_Source_orig/FreeFileSync/Source/base/icon_loader.cpp FreeFileSync_11.23_Source/FreeFileSync/Source/base/icon_loader.cpp
---- FreeFileSync_11.23_Source_orig/FreeFileSync/Source/base/icon_loader.cpp	2022-07-23 15:18:28.000000000 +0200
-+++ FreeFileSync_11.23_Source/FreeFileSync/Source/base/icon_loader.cpp	2022-08-26 15:59:38.453852879 +0200
-@@ -227,7 +227,7 @@
+Index: FreeFileSync-12.3/FreeFileSync/Source/base/icon_loader.cpp
+===================================================================
+--- FreeFileSync-12.3.orig/FreeFileSync/Source/base/icon_loader.cpp
++++ FreeFileSync-12.3/FreeFileSync/Source/base/icon_loader.cpp
+@@ -227,7 +227,7 @@ FileIconHolder fff::getFileIcon(const Zs
      //the remaining icon types won't block!
      assert(GDK_IS_PIXBUF(gicon) || G_IS_THEMED_ICON(gicon) || G_IS_EMBLEMED_ICON(gicon));
  
