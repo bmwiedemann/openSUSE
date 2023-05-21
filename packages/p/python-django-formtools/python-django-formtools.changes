@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May 21 09:13:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.1:
+  * Fixed a regression causing a recursion error when getting
+    ``get_form_list()`` from a form condition (#220).
+  * Removed Python 3.6 support and added Python 3.11 to test
+    matrix.
+  * Dropped testing for Django < 3.2 and confirmed support for
+    Django 4.2.
+
+-------------------------------------------------------------------
 Fri Jan  6 22:01:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4:
