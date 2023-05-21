@@ -272,4 +272,45 @@
     <comment></comment>
     <requestid>1082031</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>07c1fabe67cbf4f21504245f8ab6dcf4</srcmd5>
+    <version>2.7.0</version>
+    <time>1684688906</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.7.0
+  * Add classifier for Python 3.11 by @eseifert in #818
+  * Add Algorithm.compute_hash_digest and use it to implement at_hash validation example by @sirosen in #775
+  * fix: use datetime.datetime.timestamp function to have a milliseconds by @daillouf in #821
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #825
+  * Custom header configuration in jwk client by @thundercat1 in #823
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #828
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #833
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #835
+  * Add PyJWT._{de,en}code_payload hooks by @akx in #829
+  * Add sort_headers parameter to api_jwt.encode by @evroon in #832
+  * Make mypy configuration stricter and improve typing by @akx in #830
+  * Bump actions/stale from 6 to 7 by @dependabot in #840
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #838
+  * Add more types by @Viicos in #843
+  * Differentiate between two errors by @irdkwmnsb in #809
+  * Fix _validate_iat validation by @Viicos in #847
+  * Improve error messages when cryptography isn't installed by @Viicos in #846
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #852
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #855
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #859
+  * Make Algorithm an abstract base class by @Viicos in #845
+  * docs: correct mistake in the changelog about verify param by @gbillig in #866
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #868
+  * Bump actions/stale from 7 to 8 by @dependabot in #872
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #874
+  * Add a timeout for PyJWKClient requests by @daviddavis in #875
+  * Add client connection error exception by @daviddavis in #876
+  * Add complete types to take all allowed keys into account by @Viicos in #873
+  * [pre-commit.ci] pre-commit autoupdate by @pre-commit-ci in #878
+  * Build and upload PyPI package by @jpadilla in #884
+  * Fix for issue #862 - ignore invalid keys in a jwks. by @timw6n in #863
+  * Add as_dict option to Algorithm.to_jwk by @fluxth in #881
+</comment>
+    <requestid>1087975</requestid>
+  </revision>
 </revisionlist>

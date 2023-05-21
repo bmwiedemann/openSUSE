@@ -16,11 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-PyJWT
-Version:        2.6.0
+Version:        2.7.0
 Release:        0
 Summary:        JSON Web Token implementation in Python
 License:        MIT
@@ -28,12 +27,14 @@ Group:          Development/Languages/Python
 URL:            https://github.com/progrium/pyjwt
 Source:         https://files.pythonhosted.org/packages/source/P/PyJWT/PyJWT-%{version}.tar.gz
 BuildRequires:  %{python_module cryptography >= 3.3.1}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module typing-extensions}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography >= 3.3.1
-Requires:       python-setuptools
+Requires:       python-typing-extensions
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
@@ -46,12 +47,13 @@ A Python implementation of JSON Web Token draft 01.
 %setup -q -n PyJWT-%{version}
 
 %build
-%python_build
+%pyproject_wheel
+
 #remove shebang from all non executable files
 find ./ -type f -name "*.py" -perm 644 -exec sed -i -e '1{\@^#!%{_bindir}/env python@d}' {} \;
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
