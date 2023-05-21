@@ -1,6 +1,0 @@
-<package name="yast2-schema-micro" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="openSUSE:Factory" package="yast2-schema-default"/>
-  <bcntsynctag>yast2-schema-default</bcntsynctag>
-</package>
