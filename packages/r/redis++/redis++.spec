@@ -18,13 +18,12 @@
 
 %define sover 1
 Name:           redis++
-Version:        1.3.7
+Version:        1.3.8
 Release:        0
 Summary:        C++ client for Redis
 License:        Apache-2.0
 URL:            https://github.com/sewenew/redis-plus-plus
 Source0:        https://github.com/sewenew/redis-plus-plus/archive/%{version}.tar.gz
-Patch0:         fix-missing-include.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
@@ -69,6 +68,9 @@ sed -i -e '/DESTINATION.*/s/lib/%{_lib}/' CMakeLists.txt
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %post -n lib%{name}%{sover} -p /sbin/ldconfig
 %postun -n lib%{name}%{sover} -p /sbin/ldconfig
