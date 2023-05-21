@@ -102,4 +102,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1087342 from glaubitz)</comment>
     <requestid>1087469</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c2032dc1e2910459fa4b30c70ac3aec9</srcmd5>
+    <version>1.7.1</version>
+    <time>1684693018</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.7.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1087905 from glaubitz)</comment>
+    <requestid>1088127</requestid>
+  </revision>
 </revisionlist>
