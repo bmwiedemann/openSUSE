@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri May 12 08:07:51 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.91.2
+
+- Update 2.91.2
+  Docteam 920 metadata part3 by @tomschr in #546:
+  - Correct copy-and-paste error for twitter:*
+  - Use <meta name="..."> instead of <meta property="...">
+
+-------------------------------------------------------------------
+Tue May  9 11:47:05 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.91.1
+
+- Update 2.91.1
+  - Improve social media (Twitter OpenGraph) (#544)
+
+-------------------------------------------------------------------
+Mon May  8 13:35:16 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.91.0
+
+- Update 2.91.0
+  - DOCTEAM-633: Preparing SUSE header changes by @tomschr in #531
+  - Metadata for HTML output by @tomschr in #542
+  - Include XML files into GitHub statistics
+
+
+-------------------------------------------------------------------
 Tue Apr 18 09:10:46 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.90.0
 
 - Update 2.90.0
