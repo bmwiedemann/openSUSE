@@ -17,7 +17,7 @@
 
 
 Name:           flom
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        Distributed Lock Manager
 License:        GPL-2.0-only
@@ -59,10 +59,6 @@ This package contains the files required to build programs with FLoM.
 
 %prep
 %autosetup -p1
-# No network interface in OBS builds, seem to be only used for docs and tests.
-# We would normally patch configure.ac and regenerate the files, but they are
-# not portable to our versions.
-sed -i -e '/find a valid network interface/,+15d' configure
 
 %build
 %configure \
@@ -71,6 +67,7 @@ sed -i -e '/find a valid network interface/,+15d' configure
 	--disable-java \
 	--disable-php \
 	--disable-python \
+	--disable-testcases \
 	%{nil}
 %make_build
 
