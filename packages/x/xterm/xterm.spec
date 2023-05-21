@@ -19,7 +19,7 @@
 %define splitbin 0%{?suse_version} >= 1300
 
 Name:           xterm
-Version:        379
+Version:        380
 Release:        0
 Summary:        The basic X terminal program
 License:        MIT

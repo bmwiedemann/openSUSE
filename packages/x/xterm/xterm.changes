@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu May 18 13:17:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 380:
+  * reduce compiler warnings in configure script.
+  * simplify  the  change for sixelScrolling
+  * add  xterm+focus  and  report+da2,  update  report+version building
+    blocks in terminfo, from post-ncurses 6.4
+  * drop  the  -title  option  from uxterm and koi8rxterm, because that
+    interferes  with  deriving  the  default  title  from the -e option
+    (Debian  #1031837).  Compensate for this by using the -class option
+    to derive a default title.
+  * improve  description of readline 2003 mode in ctlseqs.ms
+  * other improvements to status-line feature (report by Thomas Wolff):
+      + clear status line on DECCOLM
+      + ignore DECSASD if no previous DECSSDT
+      + allow  DECSSDT 1  immediately  after  DECSSDT 2, i.e., without
+        switching back to host mode.
+  * adjust  RequestResize  to avoid shrinking screen when using DECCOLM
+    while the status-line is active (report/patch by Thomas Wolff).
+  * disallow wrapping before the beginning of the screen, to the end of
+    the screen, for cursor-back sequences (Redhat #2182357).
+  * modify  makefile  to  install the 16x16 xpm files (report by Harald
+    Dunkel).
+  * update test-package to reflect resolution of Debian #906901.
+  * change default of showMissingGlyphs to True.
+  * improve handling of double-sized characters when those happen to be
+    missing from the bitmap font and/or are fullwidth.
+  * pointer/overflow fixes (reported by David Leadbeater):
+    + improve  limit-checks  for control-sequence numeric parameters
+      in SIXEL graphics.
+    + add  null-pointer  checks  in  WriteNow macro to handle a case
+      where  SS2  or  SS3  might  be  in  effect  while processing a
+      combining character.
+    + disallow  ReGIS  reporting  for character-set names containing
+      characters other than alphanumerics or underscore.
+    + implement  TrueType fallback font for double-sized characters,
+      including  Unicode  fullwidth.  Also  add  limitFontHeight  to
+      provide    for    configuring    the    distinction    between
+      slightly-oversized glyphs and double-sized glyphs.
+  * configure script improvements:
+      + check for nfsd_t
+  * fix a typo in the underline cursor thickness derivation
+
+-------------------------------------------------------------------
 Tue Mar  7 07:41:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 379:
