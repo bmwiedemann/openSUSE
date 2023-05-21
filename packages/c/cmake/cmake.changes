@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 19 07:20:35 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.26.4:
+  * Some implementation updates were made to support ecosystem changes
+    and/or fix regressions.
+
+-------------------------------------------------------------------
 Mon May  8 01:18:45 UTC 2023 - Neal Gompa <ngompa@opensuse.org>
 
 - macros: Drop "-Wl,--no-undefined" as it breaks packages that
