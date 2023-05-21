@@ -98,8 +98,8 @@ Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
 URL:            https://www.python.org/
-Source0:        http://www.python.org/ftp/python/%{folderversion}/%{tarname}.tar.xz
-Source1:        http://www.python.org/ftp/python/%{folderversion}/%{tarname}.tar.xz.asc
+Source0:        https://www.python.org/ftp/python/%{folderversion}/%{tarname}.tar.xz
+Source1:        https://www.python.org/ftp/python/%{folderversion}/%{tarname}.tar.xz.asc
 Source2:        baselibs.conf
 Source3:        README.SUSE
 Source7:        macros.python3
@@ -165,6 +165,12 @@ Patch37:        98437-sphinx.locale._-as-gettext-in-pyspecific.patch
 # blocklist bypass via the urllib.parse component when supplying
 # a URL that starts with blank characters
 Patch38:        CVE-2023-24329-blank-URL-bypass.patch
+# PATCH-FIX-UPSTREAM CVE-2007-4559-filter-tarfile_extractall.patch bsc#1203750 mcepl@suse.com
+# Implement PEP-706 to filter outcome of the tarball extracing
+Patch39:        CVE-2007-4559-filter-tarfile_extractall.patch
+# PATCH-FIX-UPSTREAM 99366-patch.dict-can-decorate-async.patch bsc#[0-9]+ mcepl@suse.com
+# Patch for gh#python/cpython#98086
+Patch40:        99366-patch.dict-can-decorate-async.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -424,6 +430,8 @@ other applications.
 %patch35 -p1
 %patch37 -p1
 %patch38 -p1
+%patch39 -p1
+%patch40 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
@@ -546,6 +554,11 @@ EXCLUDE="$EXCLUDE test_faulthandler"
 # some tests break in QEMU
 %if 0%{?qemu_user_space_build}
 EXCLUDE="$EXCLUDE test_faulthandler test_multiprocessing_forkserver test_multiprocessing_spawn test_os test_posix test_signal test_socket test_subprocess"
+%endif
+
+# gh#python/cpython#81350
+%if 0%{?suse_version} <= 1500
+EXCLUDE="$EXCLUDE test_capi"
 %endif
 
 # This test (part of test_uuid) requires real network interfaces
