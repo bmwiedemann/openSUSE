@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 19 12:17:15 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- Update to version 20.2.0:
+  * http: prevent writing to the body when not allowed by HTTP spec
+  * sea: add option to disable the experimental SEA warning
+  * test_runner: add skip, todo, and only shorthands to test
+  * url: add value argument to URLSearchParams has and delete methods
+
+For details see,
+https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V20.md#20.2.0
+
+-------------------------------------------------------------------
 Mon May 15 14:03:24 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - fix_ci_tests.patch: increase default timeout on unit tests

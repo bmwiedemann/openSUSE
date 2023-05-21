@@ -28,4 +28,18 @@
   on some platforms, like s390x in Factory. (bsc#1211407)</comment>
     <requestid>1087356</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2ce83eab2aea545945eb405af752fd0a</srcmd5>
+    <version>20.2.0</version>
+    <time>1684688903</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20.2.0:
+  * http: prevent writing to the body when not allowed by HTTP spec
+  * sea: add option to disable the experimental SEA warning
+  * test_runner: add skip, todo, and only shorthands to test
+  * url: add value argument to URLSearchParams has and delete methods
+For details see,
+https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V20.md#20.2.0</comment>
+    <requestid>1087954</requestid>
+  </revision>
 </revisionlist>
