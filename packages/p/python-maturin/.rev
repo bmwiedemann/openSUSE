@@ -836,4 +836,34 @@
     gh#PyO3/maturin#1347</comment>
     <requestid>1085456</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>0e818be4ebe22e63f9f80bf65bca6075</srcmd5>
+    <version>0.15.3</version>
+    <time>1684688946</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.15.3:
+  * Fix cross-compile to Apple universal2 in the other platform
+    gh#PyO3/maturin#1613
+  * Remove serde(flatten) to improve error messages
+    gh#PyO3/maturin#1616
+  * Allow syn 2.0
+    gh#PyO3/maturin#1617
+  * describe the need for module-name
+    gh#PyO3/maturin#1604
+  * Add PEP 517 config_settings support
+    gh#PyO3/maturin#1619
+  * Keep file mode on Unix
+    gh#PyO3/maturin#1622
+- Changes in v0.15.2:
+  * Remove bors
+    gh#PyO3/maturin#1602
+  * When determining the python module name, use pyproject.toml
+    project.name over Cargo.toml package.name.
+    gh#PyO3/maturin#1608
+  * Warn on missing python-source contents
+    gh#PyO3/maturin#1607
+  * Fix rewriting dev-dependencies in sdist
+    gh#PyO3/maturin#1610</comment>
+    <requestid>1088131</requestid>
+  </revision>
 </revisionlist>
