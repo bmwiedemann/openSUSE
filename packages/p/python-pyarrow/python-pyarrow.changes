@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Thu May 18 07:28:28 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 12.0.0
+  ## Compatibility notes:
+  * Plasma has been removed in this release (GH-33243). In
+    addition, the deprecated serialization module in PyArrow was
+    also removed (GH-29705). IPC (Inter-Process Communication)
+    functionality of pyarrow or the standard library pickle should
+    be used instead.
+  * The deprecated use_async keyword has been removed from the
+    dataset module (GH-30774)
+  * Minimum Cython version to build PyArrow from source has been
+    raised to 0.29.31 (GH-34933). In addition, PyArrow can now be
+    compiled using Cython 3 (GH-34564).
+  ## New features:
+  * A new pyarrow.acero module with initial bindings for the Acero
+    execution engine has been added (GH-33976)
+  * A new canonical extension type for fixed shaped tensor data has
+    been defined. This is exposed in PyArrow as the
+    FixedShapeTensorType (GH-34882, GH-34956)
+  * Run-End Encoded arrays binding has been implemented (GH-34686,
+    GH-34568)
+  * Method is_nan has been added to Array, ChunkedArray and
+    Expression (GH-34154)
+  * Dataframe interchange protocol has been implemented for
+    RecordBatch (GH-33926)
+  ## Other improvements:
+  * Extension arrays can now be concatenated (GH-31868)
+  * get_partition_keys helper function is implemented in the
+    dataset module to access the partitioning field’s key/value
+    from the partition expression of a certain dataset fragment
+    (GH-33825)
+  * PyArrow Array objects can now be accepted by the pa.array()
+    constructor (GH-34411)
+  * The default row group size when writing parquet files has been
+    changed (GH-34280)
+  * RecordBatch has the select() method implemented (GH-34359)
+  * New method drop_column on the pyarrow.Table supports passing a
+    single column as a string (GH-33377)
+  * User-defined tabular functions, which are a user-functions
+    implemented in Python that return a stateful stream of tabular
+    data, are now also supported (GH-32916)
+  * Arrow Archery tool now includes linting of the Cython files
+    (GH-31905)
+  * Breaking Change: Reorder output fields of “group_by” node so
+    that keys/segment keys come before aggregates (GH-33616)
+  ## Relevant bug fixes:
+  * Acero can now detect and raise an error in case a join
+    operation needs too much bytes of key data (GH-34474)
+  * Fix for converting non-sequence object in pa.array() (GH-34944)
+  * Fix erroneous table conversion to pandas if table includes an
+    extension array that does not implement to_pandas_dtype
+    (GH-34906)
+  * Reading from a closed ArrayStreamBatchReader now returns
+    invalid status instead of segfaulting (GH-34165)
+  * array() now returns pyarrow.Array and not pyarrow.ChunkedArray
+    for columns with __arrow_array__ method and only one chunk so
+    that the conversion of pandas dataframe with categorical column
+    of dtype string[pyarrow] does not fail (GH-33727)
+  * Custom type mapper in to_pandas now converts index dtypes
+    together with column dtypes (GH-34283)
+
+-------------------------------------------------------------------
 Wed Mar 29 13:25:55 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Fix tests expecting the jemalloc backend which was disabled in

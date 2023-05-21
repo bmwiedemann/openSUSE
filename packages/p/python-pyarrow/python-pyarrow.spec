@@ -19,7 +19,7 @@
 %bcond_with xsimd
 %define plainpython python
 Name:           python-pyarrow
-Version:        11.0.0
+Version:        12.0.0
 Release:        0
 Summary:        Python library for Apache Arrow
 License:        Apache-2.0 AND BSD-3-Clause AND BSD-2-Clause AND MIT
@@ -30,13 +30,14 @@ Source:         https://files.pythonhosted.org/packages/source/p/pyarrow/pyarrow
 Source10:       LICENSE.txt
 Source11:       NOTICE.txt
 Source99:       python-pyarrow.rpmlintrc
-BuildRequires:  %{python_module Cython >= 0.29}
+BuildRequires:  %{python_module Cython >= 0.29.31}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.16.6}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  apache-arrow-acero-devel-static = %{version}
 BuildRequires:  apache-arrow-dataset-devel-static = %{version}
 BuildRequires:  apache-arrow-devel = %{version}
 BuildRequires:  apache-arrow-devel-static = %{version}
@@ -45,6 +46,7 @@ BuildRequires:  apache-parquet-devel-static = %{version}
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  libzstd-devel-static
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -53,14 +55,12 @@ BuildRequires:  pkgconfig(bzip2) >= 1.0.8
 BuildRequires:  pkgconfig(gmock) >= 1.10
 BuildRequires:  pkgconfig(gtest) >= 1.10
 Requires:       python-numpy >= 1.16.6
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 # SECTION test requirements
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pandas}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-lazy-fixture}
 BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -80,11 +80,11 @@ analytics. Many popular projects use Arrow to ship columnar
 data efficiently or as the basis for analytic engines.
 
 %package devel
-Summary: Python library for Apache Arrow - header files
-Requires: python-Cython
-Requires: python-pyarrow = %{version}
-Requires: %plainpython(abi) = %python_version
-Supplements: (python-devel and python-pyarrow)
+Summary:        Python library for Apache Arrow - header files
+Requires:       python-Cython
+Requires:       python-pyarrow = %{version}
+Requires:       %plainpython(abi) = %python_version
+Supplements:    (python-devel and python-pyarrow)
 
 %description devel
 Python library for Apache Arrow.
@@ -121,13 +121,14 @@ export PYARROW_CMAKE_OPTIONS=" \
 
 %install
 %pyproject_install
-%python_clone -a %{buildroot}%{_bindir}/plasma_store
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 pushd ..
 # Unexpected additional warning
 donttest="test_env_var"
+# flaky
+donttest="$donttest or test_total_bytes_allocated"
 %ifarch %{ix86} %{arm32}
 # tests conversion to 64bit datatypes
 donttest="$donttest or test_conversion"
@@ -141,18 +142,12 @@ donttest="$donttest or test_python_file_large_seeks"
 donttest="$donttest or test_schema_sizeof"
 %endif
 %pytest_arch --pyargs pyarrow -n auto -k "not ($donttest)"
+%pytest_arch --pyargs pyarrow -n auto -k "$donttest" || :
 popd
-
-%post
-%python_install_alternative plasma_store
-
-%postun
-%python_uninstall_alternative plasma_store
 
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt NOTICE.txt
-%python_alternative %{_bindir}/plasma_store
 %{python_sitearch}/pyarrow
 %exclude %{python_sitearch}/pyarrow/include
 %exclude %{python_sitearch}/pyarrow/src

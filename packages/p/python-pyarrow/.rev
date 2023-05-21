@@ -9,4 +9,41 @@
 https://datapythonista.me/blog/pandas-20-and-the-arrow-revolution-part-i</comment>
     <requestid>1075676</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9255e6f4c2acf1d0fb4aa151006c72bc</srcmd5>
+    <version>12.0.0</version>
+    <time>1684688915</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 12.0.0
+  ## Compatibility notes:
+  * Plasma has been removed in this release (GH-33243). In
+    addition, the deprecated serialization module in PyArrow was
+    also removed (GH-29705). IPC (Inter-Process Communication)
+    functionality of pyarrow or the standard library pickle should
+    be used instead.
+  * The deprecated use_async keyword has been removed from the
+    dataset module (GH-30774)
+  * Minimum Cython version to build PyArrow from source has been
+    raised to 0.29.31 (GH-34933). In addition, PyArrow can now be
+    compiled using Cython 3 (GH-34564).
+  ## New features:
+  * A new pyarrow.acero module with initial bindings for the Acero
+    execution engine has been added (GH-33976)
+  * A new canonical extension type for fixed shaped tensor data has
+    been defined. This is exposed in PyArrow as the
+    FixedShapeTensorType (GH-34882, GH-34956)
+  * Run-End Encoded arrays binding has been implemented (GH-34686,
+    GH-34568)
+  * Method is_nan has been added to Array, ChunkedArray and
+    Expression (GH-34154)
+  * Dataframe interchange protocol has been implemented for
+    RecordBatch (GH-33926)
+  ## Other improvements:
+  * Extension arrays can now be concatenated (GH-31868)
+  * get_partition_keys helper function is implemented in the
+    dataset module to access the partitioning field’s key/value
+    from the partition expression of a certain dataset fragment
+    (GH-33825) (forwarded request 1087838 from bnavigator)</comment>
+    <requestid>1087841</requestid>
+  </revision>
 </revisionlist>
