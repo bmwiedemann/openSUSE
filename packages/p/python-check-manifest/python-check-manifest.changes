@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May 20 16:04:45 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Do not require bzr (breezy) for tests: fails in Factory, we're
+  the only user
+- PEP517
+- Fix tomli runtime requirement
+
+-------------------------------------------------------------------
 Mon Apr  3 01:45:34 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded {Build,}Requires on pep517. 

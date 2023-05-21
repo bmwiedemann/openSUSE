@@ -24,8 +24,6 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-check-manifest%{psuffix}
 Version:        0.49
 Release:        0
@@ -35,12 +33,16 @@ Group:          Development/Languages/Python
 URL:            https://github.com/mgedmin/check-manifest
 Source:         https://files.pythonhosted.org/packages/source/c/check-manifest/check-manifest-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-build
+Requires:       python-build >= 0.1
 Requires:       python-setuptools
-Requires:       python-toml
+%if 0%{?python_version_nodots} < 311
+Requires:       python-tomli
+%endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     git-core > 2.11
@@ -51,12 +53,10 @@ Suggests:       mercurial
 Suggests:       subversion
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module build}
-BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module check-manifest = %{version}}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module toml}
-BuildRequires:  %{python_module wheel}
-BuildRequires:  bzr
+# breezy (the bzr replacement) currently fails in Factory, we're the only user, don't require it.
+# BuildRequires:  bzr
 BuildRequires:  git-core > 2.11
 BuildRequires:  mercurial
 BuildRequires:  subversion
@@ -75,11 +75,11 @@ sed -i '1{\,^#!%{_bindir}/env python,d}' check_manifest.py
 chmod -x check_manifest.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/check-manifest
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
@@ -87,13 +87,8 @@ chmod -x check_manifest.py
 %check
 %if %{with test}
 export LANG=en_US.UTF-8
-# test_build_sdist uses pip which likes to use internet to resolve versions
-# test_python_from_path fails on Leap only
-skip='test_build_sdist or test_python_from_path'
-%if 0%{?python_version_nodots} <= 36
-# E       TypeError: tuple indices must be integers or slices, not str
-skip="$skip or test_extra_ignore_args or test_ignore_bad_ideas_args"
-%endif
+# uses pip which likes to use internet to resolve versions
+skip='test_build_sdist'
 # Fix tests https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1023597
 git config --global --add protocol.file.allow always
 %pytest -rs -k "not ($skip)"
@@ -110,7 +105,9 @@ git config --global --add protocol.file.allow always
 %doc CHANGES.rst README.rst
 %license LICENSE.rst
 %python_alternative %{_bindir}/check-manifest
-%{python_sitelib}/*
+%{python_sitelib}/check_manifest.py*
+%pycache_only %{python_sitelib}/__pycache__/check_manifest*.pyc
+%{python_sitelib}/check_manifest-%{version}.dist-info
 %endif
 
 %changelog
