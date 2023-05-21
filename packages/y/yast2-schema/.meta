@@ -1,0 +1,5 @@
+<package name="yast2-schema" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="YaST:Head" package="yast2-schema"/>
+</package>
