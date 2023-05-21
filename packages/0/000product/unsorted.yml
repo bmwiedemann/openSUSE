@@ -7950,6 +7950,7 @@ unsorted:
   - icingaweb2-module-incubator 
   - icingaweb2-module-ipl 
   - icingaweb2-module-reactbundle 
+  - icingaweb2-php-fpm 
   - icingaweb2-vendor-HTMLPurifier 
   - icingaweb2-vendor-JShrink 
   - icingaweb2-vendor-Parsedown 
@@ -23624,6 +23625,7 @@ unsorted:
   - python310-azure-mgmt-security 
   - python310-azure-mgmt-securitydevops 
   - python310-azure-mgmt-securityinsight 
+  - python310-azure-mgmt-selfhelp 
   - python310-azure-mgmt-serialconsole 
   - python310-azure-mgmt-servermanager 
   - python310-azure-mgmt-servicebus 
@@ -26945,6 +26947,7 @@ unsorted:
   - python311-azure-mgmt-security 
   - python311-azure-mgmt-securitydevops 
   - python311-azure-mgmt-securityinsight 
+  - python311-azure-mgmt-selfhelp 
   - python311-azure-mgmt-serialconsole 
   - python311-azure-mgmt-servermanager 
   - python311-azure-mgmt-servicebus 
@@ -30410,6 +30413,7 @@ unsorted:
   - python39-azure-mgmt-security 
   - python39-azure-mgmt-securitydevops 
   - python39-azure-mgmt-securityinsight 
+  - python39-azure-mgmt-selfhelp 
   - python39-azure-mgmt-serialconsole 
   - python39-azure-mgmt-servermanager 
   - python39-azure-mgmt-servicebus 
@@ -45014,6 +45018,8 @@ unsorted:
   - uncommons-maths-javadoc 
   - uncrustify 
   - unetbootin 
+  - ungoogled-chromium 
+  - ungoogled-chromium-chromedriver 
   - unibilium-devel 
   - unicode-blocks 
   - unicode-emoji 
@@ -46218,6 +46224,7 @@ unsorted:
   - yast2-rmt 
   - yast2-samba-provision 
   - yast2-schema-collection 
+  - yast2-schema-default 
   - yast2-schema-micro 
   - yast2-slide-show 
   - yast2-slp-server 
