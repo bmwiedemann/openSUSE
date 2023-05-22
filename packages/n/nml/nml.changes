@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 22 09:44:03 UTC 2023 - Jan Baier <jbaier@suse.com>
+
+- update to 0.7.3
+  * Change: Extend vehicle random bits to 16. by @PeterN in #288
+  * Support extended object/station/roadstop limits (draft) by @andythenorth in #287
+  * Codechange: [Actions] Use 'gh' to upload release assets by @glx22 in #284
+  * Add: STAT_ALL_TILES constant for use instead of 0xFF by @Brickblock1 in #283
+  * Fix: [Actions] nmlc version could not be determined during regression by @glx22 in #285
+  * Add: Support for {FORCE} string command by @glx22 in #289
+  * Add: --no-32bpp and --no-extra-zoom option to skip some alternative sprites by @glx22 in #286
+  * Update: changelog for 0.7.3 by @glx22 in #291
+
+-------------------------------------------------------------------
 Tue Apr 18 00:55:51 UTC 2023 - Jan Baier <jbaier@suse.com>
 
 - update to 0.7.2

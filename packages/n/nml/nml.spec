@@ -17,7 +17,7 @@
 
 
 Name:           nml
-Version:        0.7.2
+Version:        0.7.3
 Release:        0
 Summary:        NewGRF Meta Language
 License:        GPL-2.0-or-later
@@ -26,13 +26,12 @@ URL:            http://dev.openttdcoop.org/projects/nml
 Source:         https://github.com/OpenTTD/nml/releases/download/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  gcc
 BuildRequires:  python3-devel
-# We need the required packages also on building for regression tests:
-BuildRequires:  python3-Pillow
-BuildRequires:  python3-ply
 BuildRequires:  python3-setuptools
-Requires:       python3-Pillow
+# We need the required packages also on building for regression tests:
+BuildRequires:  python3-Pillow >= 3.4
+BuildRequires:  python3-ply
+Requires:       python3-Pillow >= 3.4
 Requires:       python3-ply
-Requires:       python3-setuptools
 Provides:       nmlc = %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
