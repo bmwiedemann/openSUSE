@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 19 20:58:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.8.1:
+  * Fixed an issue with the depend mode in combination with `--`
+    on the command line for Clang-based compilers. +
+  * Improved knowledge about MSVC debug flags so that non-debug
+    `/Z*` options are once again supported. +
+  * Ccache no longer treats `/Zi` as unsupported for clang-cl.
+  * Made the output format of `ccache -k max_size` parsable by
+    ccache itself. +
+  * Added a remote file storage example with URL-encoded spaces.
+
+-------------------------------------------------------------------
 Mon Mar 13 18:54:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.8:
