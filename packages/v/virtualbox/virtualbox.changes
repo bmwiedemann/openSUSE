@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun May 14 16:51:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update python311.patch: remove changes that only work on 
+  Tumbleweed 
+
+-------------------------------------------------------------------
+Sat May 13 20:07:37 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
+
+- Patch python311.patch fails on Leap 15.4 and Leap 15.5. Change spec file so thqt it is only
+  applied for Tumbleweed. 
+
+-------------------------------------------------------------------
+Fri May 12 20:35:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update python311.patch to also detect vboxpython module with python 3.11
+
+-------------------------------------------------------------------
 Mon May  8 18:26:38 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
 
 - Update fix_7.0.6_locking_problems.patch for Vagrent/virtualbox startup problems boo#1209727

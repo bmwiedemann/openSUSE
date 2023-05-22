@@ -1,8 +1,8 @@
-diff --git a/configure b/configure
-index 0872ec4c..037680e0 100755
---- a/configure
-+++ b/configure
-@@ -2132,7 +2132,7 @@ extern "C" int main(void)
+Index: VirtualBox-7.0.8/configure
+===================================================================
+--- VirtualBox-7.0.8.orig/configure
++++ VirtualBox-7.0.8/configure
+@@ -2137,7 +2137,7 @@ extern "C" int main(void)
  }
  EOF
    found=
@@ -11,11 +11,11 @@ index 0872ec4c..037680e0 100755
    for p in $PYTHONDIR; do
      for d in $SUPPYTHONLIBS; do
        for b in lib/x86_64-linux-gnu lib/i386-linux-gnu lib64 lib/64 lib; do
-diff --git a/src/VBox/Installer/linux/routines.sh b/src/VBox/Installer/linux/routines.sh
-index 08e06358..44eba726 100644
---- a/src/VBox/Installer/linux/routines.sh
-+++ b/src/VBox/Installer/linux/routines.sh
-@@ -446,7 +446,7 @@ maybe_run_python_bindings_installer() {
+Index: VirtualBox-7.0.8/src/VBox/Installer/linux/routines.sh
+===================================================================
+--- VirtualBox-7.0.8.orig/src/VBox/Installer/linux/routines.sh
++++ VirtualBox-7.0.8/src/VBox/Installer/linux/routines.sh
+@@ -444,7 +444,7 @@ maybe_run_python_bindings_installer() {
      # the VirtualBox API bindings. Needs to prevent double installs which waste
      # quite a bit of time.
      PYTHONS=""
@@ -24,3 +24,14 @@ index 08e06358..44eba726 100644
          if [ "`$p -c 'import sys
  if sys.version_info >= (2, 6) and (sys.version_info < (3, 0) or sys.version_info >= (3, 3)):
      print(\"test\")' 2> /dev/null`" != "test" ]; then
+--- VirtualBox-7.0.8.orig/src/libs/xpcom18a4/python/Makefile.kmk
++++ VirtualBox-7.0.8/src/libs/xpcom18a4/python/Makefile.kmk
+@@ -753,7 +753,7 @@ ifdef VBOX_PYTHONDEF_INC
+   # TODO: ASSUMING that we don't need a different headers for pymalloc
+   #       ('m' builds < 3.8) and CRT malloc.
+   #
+-  VBOX_PYTHON_LIMITED_API_VER := $(firstword $(foreach ver, 35 36 38 39 310   34 33 \
++  VBOX_PYTHON_LIMITED_API_VER := $(firstword $(foreach ver, 35 36 38 39 310 311   34 33 \
+   	,$(if-expr defined(VBOX_PYTHON$(ver)_INC),$(ver),)$(if-expr defined(VBOX_PYTHON$(ver)M_INC),$(ver)M,)))
+   ifneq ($(VBOX_PYTHON_LIMITED_API_VER),)
+    DLLS += VBoxPython3
