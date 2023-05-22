@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun May 21 19:24:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.11.7
+  * Fix easyname provider (update action) (#1442)
+- Release 3.11.6
+  * Fix hetzner provider with large list of entries (#1389)
+- Release 3.11.5
+  * Fix upsertRecordSet in yandex provider (#1423)
+- Release 3.11.4
+  * Better management of domain zone id in yandex provider (#1338)
+  * Fix create record action on glesys provider (#1356)
+  * Fix create multiple TXT records for the same name in azure
+    provider (#1359)
+- Release 3.11.3
+  * Add porkbun provider (#1283)
+- Release 3.11.2
+  * Add support of record update without an identifier in yandex
+    provider (#1253)
+- Release 3.11.1
+  * Improve the Oracle Cloud DNS (oci) provider on the
+    authentication mechanism (#1251)
+  * Add API documentation to Oracle Cloud DNS (#1247)
+- Release 3.11.0
+  * Add namecom provider (#1212)
+  * Fix TLD with two parts for namecheap provider (#1237)
+  * Fix entity__name parsing in easyname provider (#1230)
+- Release 3.10.0
+  * Add --zone-id CLI flag for route53 provider
+  * Add yandexcloud provider dedicated to Yandex Cloud solution
+    (#1213)
+  * Improve documentation with auto-generation
+  * Clarify that yandex provider supports Yandex PDD only (#1211)
+  * Use UUIDs in aliyun provider to avoid nonce collisions
+- Release 3.9.5
+  * Add misaka provider (#1205 #556)
+  * Fix yandex provider for MX/SRV records (#1201)
+  * Fix joker provider by using POST requests instead of GET
+    (#1201)
+- Update BuildRequirements: full poetry is not needed
+
+-------------------------------------------------------------------
 Mon Jul 11 02:21:58 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove BuildRequires/Recommends on zeep, due to softlayer-zeep.
