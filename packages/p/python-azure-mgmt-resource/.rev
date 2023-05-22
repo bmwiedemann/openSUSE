@@ -232,4 +232,15 @@
 - Update Requires from setup.py (forwarded request 1074936 from glaubitz)</comment>
     <requestid>1074991</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>6f6cd7b2388780af02f6de168bec7a9e</srcmd5>
+    <version>23.0.1</version>
+    <time>1684754086</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 23.0.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1088297 from glaubitz)</comment>
+    <requestid>1088299</requestid>
+  </revision>
 </revisionlist>
