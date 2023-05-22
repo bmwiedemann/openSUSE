@@ -995,4 +995,12 @@ numbers for further reference.
     <comment></comment>
     <requestid>1083031</requestid>
   </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>f894565a613ee29260177cb5e4082b05</srcmd5>
+    <version>7.5.0</version>
+    <time>1684754061</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1088153</requestid>
+  </revision>
 </revisionlist>

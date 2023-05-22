@@ -15,12 +15,20 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%{?sle15_python_module_pythons}
 %if 0%{?suse_version} < 1550
 # Leap15, SLES15
-%define pythons python310
+%if %pythons == "python310"
 %define ansible_python python310
 %define ansible_python_executable python3.10
 %define ansible_python_sitelib %python310_sitelib
+%endif
+%if %pythons == "python311"
+%define ansible_python python311
+%define ansible_python_executable python3.11
+%define ansible_python_sitelib %python311_sitelib
+%endif
 %else
 # Tumbleweed
 %define pythons python3

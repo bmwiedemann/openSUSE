@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun May 14 19:10:10 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- modify %if-condition to allow building for python3.10 or
+  python3.11 on SLES15
+
+-------------------------------------------------------------------
+Fri May  5 07:12:35 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- change python version on Leap15/SLES15 to python3.11 to use the
+  new stack supported by SUSE
+
+-------------------------------------------------------------------
 Wed Apr 26 12:00:09 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 7.5.0:
