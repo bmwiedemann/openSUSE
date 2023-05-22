@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 21 08:58:13 UTC 2023 - Fusion Future <qydwhotmail@gmail.com>
+
+- Add patch to avoid incorrect notification IDs from the notification
+  plugin (kde#447385):
+  * Use-org-freedesktop-DBus-Monitoring-to-monitor-notifications.patch
+
+-------------------------------------------------------------------
 Tue May  9 10:46:49 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.1

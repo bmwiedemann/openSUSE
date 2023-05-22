@@ -29,6 +29,8 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 Source100:      kdeconnect-kde.SuSEfirewall
+#PATCH-FIX-UPSTREAM kde#447385
+Patch0:         Use-org-freedesktop-DBus-Monitoring-to-monitor-notifications.patch
 BuildRequires:  cmake >= 3.0
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
@@ -61,6 +63,7 @@ BuildRequires:  cmake(Qt5QuickControls2)
 BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  cmake(Qt5WaylandClient)
 BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(libfakekey)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xkbcommon)
