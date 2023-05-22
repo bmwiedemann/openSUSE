@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 16 21:23:42 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- GNU wget 1.21.4:
+  * Document --retry-on-host-error in help text
+  * Increase read buffer size to 64k.
+    This should speed up downloads on gigabit and faster connections
+  * Update deprecated option '--html-extension' to
+    '--adjust-extension' in documentation
+
+-------------------------------------------------------------------
 Sat Feb 26 18:31:07 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU wget 1.21.3:
