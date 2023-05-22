@@ -1215,4 +1215,17 @@ PubCloud:
   visibility in SCC.</comment>
     <requestid>1082660</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>1c8992fc89628c3372d36e36f67f962f</srcmd5>
+    <version>2.13</version>
+    <time>1684754092</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.13
+  * Handle X-Original-URI header, partial fix for bsc#1211398
+  * New endpoint to handle SUMa CLI tool PAYG/BYOS check
+  * Additional API paths for SUMa PAYG for RMT
+  * Allow access to SUMa Client Tools and Proxy channels if product is SUMA_Server
+  * Handle system token for BYOS instances in the cloud</comment>
+    <requestid>1088331</requestid>
+  </revision>
 </revisionlist>
