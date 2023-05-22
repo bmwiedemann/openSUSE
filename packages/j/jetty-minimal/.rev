@@ -135,4 +135,12 @@
     <comment></comment>
     <requestid>1084662</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e63ce60e6a0ffe0a0730a8a083912613</srcmd5>
+    <version>9.4.51</version>
+    <time>1684754057</time>
+    <user>dimstar_suse</user>
+    <comment>Security fixes</comment>
+    <requestid>1088154</requestid>
+  </revision>
 </revisionlist>

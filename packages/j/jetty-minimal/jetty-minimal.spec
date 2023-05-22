@@ -18,10 +18,10 @@
 
 
 %global base_name jetty
-%global addver  .v20220622
+%global addver  .v20230217
 %define src_name %{base_name}.project-%{base_name}-%{version}%{addver}
 Name:           %{base_name}-minimal
-Version:        9.4.48
+Version:        9.4.51
 Release:        0
 Summary:        Java Webserver and Servlet Container
 License:        Apache-2.0 OR EPL-1.0
@@ -368,6 +368,8 @@ sed -i '/^\s*\*.*<script>/d' jetty-util/src/main/java/org/eclipse/jetty/util/res
 
 # Distribution tests require internet access, so disable
 %pom_disable_module test-distribution tests
+
+%pom_change_dep org.apache.directory.api: :::test jetty-jaas
 
 # missing conscrypt
 %pom_disable_module jetty-alpn-conscrypt-server jetty-alpn

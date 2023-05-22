@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun May 21 05:09:16 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 9.4.51.v20230217
+  * Fixes of 9.4.49.v20220914:
+    + #8578 - getRequestURL can append "null" if getRequestURI is
+      unspecified in an authority-form request-target
+    + #8493 - Review HTTP client feature setRemoveIdleDestinations
+  * Fixes of 9.4.50.v20221201:
+    + #8774 - Added SizeLimitHandler
+    + #8678 - Jetty client is not responding to GO_AWAY packet
+      received from (Jetty) Server and continue to send traffic on
+      same connection
+  * Fixes of 9.4.51.v20230217:
+    + #9352 - Update / Fix CookieCutter
+    + #9345 - Backport Multipart Fix for CVE-2023-26048, bsc#1210620
+    + #9352 - Backport Cookie Parsing Fix for CVE-2023-26049,
+      bsc#1210621
+
+-------------------------------------------------------------------
 Fri Jul  8 15:15:05 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 9.4.48.v20220622

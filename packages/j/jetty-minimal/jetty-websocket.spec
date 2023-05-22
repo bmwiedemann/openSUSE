@@ -18,10 +18,10 @@
 
 
 %global base_name jetty
-%global addver  .v20220622
+%global addver  .v20230217
 %define src_name %{base_name}.project-%{base_name}-%{version}%{addver}
 Name:           %{base_name}-websocket
-Version:        9.4.48
+Version:        9.4.51
 Release:        0
 Summary:        The websocket modules for Jetty
 License:        Apache-2.0 OR EPL-1.0
