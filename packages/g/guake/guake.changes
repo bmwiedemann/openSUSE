@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May 21 19:18:26 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix missing dependency on PyYAML (boo#1211574)
+
+-------------------------------------------------------------------
 Tue Nov 29 09:13:55 UTC 2022 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 3.9.0:
