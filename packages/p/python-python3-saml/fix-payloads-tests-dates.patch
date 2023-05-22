@@ -1,0 +1,39 @@
+From bd65578e5a21494c89320094c61c1c77250bea33 Mon Sep 17 00:00:00 2001
+From: Sixto Martin <pitbulk@gmail.com>
+Date: Sat, 13 May 2023 09:51:33 +0200
+Subject: [PATCH] Fix payloads of tests that had expiration dates on May 2023
+
+---
+ tests/data/logout_requests/invalids/invalid_issuer.xml        |    2 +-
+ tests/data/logout_requests/invalids/invalid_issuer.xml.base64 |    2 +-
+ tests/data/logout_requests/invalids/no_nameId.xml             |    2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+--- a/tests/data/logout_requests/invalids/invalid_issuer.xml
++++ b/tests/data/logout_requests/invalids/invalid_issuer.xml
+@@ -5,7 +5,7 @@
+                      Version="2.0"
+                      IssueInstant="2013-12-10T04:39:31Z"
+                      Destination="http://stuff.com/endpoints/endpoints/sls.php"
+-                     NotOnOrAfter="2023-05-10T04:39:31Z"
++                     NotOnOrAfter="2053-05-10T04:39:31Z"
+                      >
+     <saml:Issuer>https://example.hello.com/access/saml</saml:Issuer>
+     <saml:NameID SPNameQualifier="https://example.hello.com/access/saml"
+--- a/tests/data/logout_requests/invalids/invalid_issuer.xml.base64
++++ b/tests/data/logout_requests/invalids/invalid_issuer.xml.base64
+@@ -1 +1 @@
+-jZPfb4IwEMffTfwfDO9CW8BJoxgTt8XEyTaXPexl6coxSaBlXFn881dwP3yQxT411+v3+7n2brY4lMXoE2rMtZo71CXOIh4OZijKouIb/a4b8wgfDaAZ2UyFvDuZO02tuBaYI1eiBORG8t3ybsOZS3hVa6OlLpzhYHRu/Qn9ryMQoTYWrE9ovZo7yfZ6k9yut6+MhtNAyjQTUvgTQYNQQBSRIGCpTKPJWwYTQkMKfWLPP49grXsNERtYKzRCGZtIqD+mbEzJEwm4H3GfvvTdXNkXzJUwncPemIp7Hpomy1ypSw9UWulcGTzZYYFuta/6BLfaJCqpl5mBukVh/piEF6HEx3j3x7yrqI5bIrRIcBBlVYC7h6LQHZqQEtDS2OSZd3rlVGVr/269Gu3u281DI4o8y1usi2TPcd7ouhSmvz2oS7tIno6zLpU3CiuQrW96TjD+7RMKtiUkZRHQbMqYnJJoQqa2YSjxZQjA5JUUQOV3tcfS2pnwzgxF/AU=
+\ No newline at end of file
++jZPLboMwEEX3kfIPiH3A5pEGKyGKlLZCSkPbVF10U7lmaJDApoyp8vk1pI8sQhWvrPH43jP2zHx5qErrExoslFzY1CH2Mh6P5sirsmYb9a5a/QgfLaC2TKZE1p8s7LaRTHEskEleATIt2G51t2GeQ1jdKK2EKu3xyDq3/oT+1+GI0GgDNiSUrBd2ur3epLfJ9tWj4SwQIsu54P6U0yDkEEUkCLxMZNH0LYcpoSGFIbHnn0cw1oOGiC0kEjWX2iQS6k+oN6HkiQTMj5hPX4Zurs0LFpLr3mGvdc1cF3Wb545QlQsyq1UhNZ7ssESn3tdDglulU5k2q1xD06GE/oSEF6HEx3j/x6yvqIk7IjRIcOBVXYKzh7JUPRoXAtDQmOS5e3rlVGVr/i5ZW7v7bvPQ8rLIiw7rItlznDeqqbgebg/q0D5SZJO8T2WtxBpE55udE4x/+4SCaQlBvQhoPvM8MSPRlMxMw1DiixDAE1eCAxXf1R5L62bCPTMU8Rc=
+--- a/tests/data/logout_requests/invalids/no_nameId.xml
++++ b/tests/data/logout_requests/invalids/no_nameId.xml
+@@ -5,7 +5,7 @@
+                      Version="2.0"
+                      IssueInstant="2013-12-10T04:39:31Z"
+                      Destination="http://stuff.com/endpoints/endpoints/sls.php"
+-                     NotOnOrAfter="2023-05-10T04:39:31Z"
++                     NotOnOrAfter="2053-05-10T04:39:31Z"
+                      >
+     <saml:Issuer>https://example.hello.com/access/saml</saml:Issuer>
+ </samlp:LogoutRequest>

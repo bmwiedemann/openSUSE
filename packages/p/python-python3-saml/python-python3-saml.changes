@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun May 14 20:32:35 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.15.0:
+  - #317 Handle unicode characters gracefully in python 2
+  - #338 Fix WantAuthnRequestsSigned parser
+  - #339 Add Poetry support
+  - Remove version restriction on lxml dependency
+  - Updated Django demo to 4.X (only py3 compatible)
+  - Updated Travis file. Forced lxml to be installed using
+    no-validate_binary
+  - Removed references to OneLogin from documentation
+- Add fix-payloads-tests-dates.patch
+  (gh#SAML-Toolkits/python3-saml#271).
+
+-------------------------------------------------------------------
 Fri Dec 30 13:03:38 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Clean up SPEC file
