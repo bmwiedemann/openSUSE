@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 22 05:45:35 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.15.3:
+  * fix(build): expand build args (#3633) (#3637)
+  * fix: release-2.15 (#3636)
+  * fix: endpoints command (#3630)
+  * doc: add more context on errors (#3591) (#3592)
+
+-------------------------------------------------------------------
 Fri May 05 05:06:34 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.15.2:
