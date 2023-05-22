@@ -115,4 +115,12 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="18" vrev="829">
+    <srcmd5>0e373ac9c6e9fbe17672f02c14710b26</srcmd5>
+    <version>2000.11.03</version>
+    <time>1684754044</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise spec file</comment>
+    <requestid>1088023</requestid>
+  </revision>
 </revisionlist>

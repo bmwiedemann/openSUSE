@@ -1,7 +1,7 @@
 #
 # spec file for package iso_ent
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,62 +12,59 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define regcat %{_bindir}/sgml-register-catalog
+%define ke_pkg ISOEnts.zip
 Name:           iso_ent
-BuildRequires:  sgml-skel
-BuildRequires:  unzip
-BuildArch:      noarch
-Provides:       iso-ent
-Provides:       iso-entities
-%define regcat /usr/bin/sgml-register-catalog
-PreReq:         %{regcat}
 Version:        2000.11.03
 Release:        0
 Summary:        Character Entity Sets for ISO 8879:1986
 License:        SUSE-Permissive
-Group:          Productivity/Publishing/SGML
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%define ke_pkg ISOEnts.zip
 Source0:        http://www.oasis-open.org/cover/ISOEnts.zip
 Source1:        ISOgrk5.gz
-Patch:          iso_ent.dif
+Patch0:         iso_ent.dif
+BuildRequires:  sgml-skel
+BuildRequires:  unzip
+Requires(pre):  %{regcat}
+Provides:       iso-ent
+Provides:       iso-entities
+BuildArch:      noarch
 
 %description
 Character entity sets for ISO 8879:1986.
-
 
 %define INSTALL install -m755 -s
 %define INSTALL_DIR install -d -m755
 %define INSTALL_DATA install -m644
 %define sgml_dir %{_datadir}/sgml
-%define sgml_config_dir /var/lib/sgml
+%define sgml_config_dir %{_localstatedir}/lib/sgml
 
 %prep
-%setup -n %{name} -c -T
+%setup -q -n %{name} -c -T
 unzip -aq $RPM_SOURCE_DIR/%{ke_pkg}
 cp -p $RPM_SOURCE_DIR/ISOgrk5.gz .
 gunzip ISOgrk5.gz
-%patch -p1
+%patch0 -p1
 
 %build
 
 %install
-root=$RPM_BUILD_ROOT
+root=%{buildroot}
 # sgml_dir=${root}%{_datadir}/sgml
 # sgml_dir_config=${root}/var/lib/sgml
-sgml_dir_iso=$RPM_BUILD_ROOT%{sgml_dir}/iso-ent
-sgml_dir_ISO=$RPM_BUILD_ROOT%{sgml_dir}/ISO_8879:1986/entities
-%{INSTALL_DIR} $RPM_BUILD_ROOT%{sgml_config_dir}
-%{INSTALL_DIR} $RPM_BUILD_ROOT%{sgml_dir}/iso-ent
-%{INSTALL_DIR} $RPM_BUILD_ROOT%{sgml_dir}/{ISO_8879:1986,ISO_9573-15:1993}/entities
-%{INSTALL_DATA} ISO* $RPM_BUILD_ROOT%{sgml_dir}/iso-ent
-%{INSTALL_DATA} CATALOG $RPM_BUILD_ROOT%{sgml_config_dir}/CATALOG.iso_ent
-pushd $RPM_BUILD_ROOT%{sgml_dir}
-ln -sf ../../../var/lib/sgml/CATALOG.iso_ent CATALOG.iso_ent
-rm -f ISO_8879-1986 
+sgml_dir_iso=%{buildroot}%{sgml_dir}/iso-ent
+sgml_dir_ISO=%{buildroot}%{sgml_dir}/ISO_8879:1986/entities
+%{INSTALL_DIR} %{buildroot}%{sgml_config_dir}
+%{INSTALL_DIR} %{buildroot}%{sgml_dir}/iso-ent
+%{INSTALL_DIR} %{buildroot}%{sgml_dir}/{ISO_8879:1986,ISO_9573-15:1993}/entities
+%{INSTALL_DATA} ISO* %{buildroot}%{sgml_dir}/iso-ent
+%{INSTALL_DATA} CATALOG %{buildroot}%{sgml_config_dir}/CATALOG.iso_ent
+pushd %{buildroot}%{sgml_dir}
+ln -sf ../../..%{_localstatedir}/lib/sgml/CATALOG.iso_ent CATALOG.iso_ent
+rm -f ISO_8879-1986
 ln -s ISO_8879:1986 ISO_8879-1986
 popd
 pushd ${sgml_dir_ISO}
@@ -92,11 +89,11 @@ ln -s ../../iso-ent/ISOnum Numeric_and_Special_Graphic
 ln -s ../../iso-ent/ISOpub Publishing
 ln -s ../../iso-ent/ISOtech General_Technical
 popd
-pushd $RPM_BUILD_ROOT%{sgml_dir}
+pushd %{buildroot}%{sgml_dir}
 rm -f ISO_9573-15-1993
 ln -s ISO_9573-15:1993 ISO_9573-15-1993
 popd
-pushd $RPM_BUILD_ROOT%{sgml_dir}/ISO_9573-15:1993/entities
+pushd %{buildroot}%{sgml_dir}/ISO_9573-15:1993/entities
 rm -f * 2>/dev/null
 ln -s ../../iso-ent/ISOgrk5 Extra_Classical_Greek_Letters
 popd
@@ -117,13 +114,9 @@ if [  "$1" = "0" -a -x %{regcat} ]; then
   done
 fi
 
-%clean
-rm -fr $RPM_BUILD_ROOT
-
 %files
-%defattr(-, root, root)
 # %doc README.SuSE
-%config /var/lib/sgml/CATALOG.iso_ent
+%config %{_localstatedir}/lib/sgml/CATALOG.iso_ent
 %{sgml_dir}/CATALOG.iso_ent
 %{sgml_dir}/iso-ent
 %{sgml_dir}/ISO_8879-1986
