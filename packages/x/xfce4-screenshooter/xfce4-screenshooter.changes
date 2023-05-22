@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 17 17:40:28 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 1.10.4
+  * Fix warning about checking file permissions
+  * Refactor supported image formats handling (!49)
+  * Add support to AVIF (#109)
+  * Add support to JPEG XL (#108)
+  * Check if the pixbuf-loader supports writing
+  * Restrict file permission if not saved in a user-owned directory (#2)
+  * Save preferences when plugin finalizes screenshot (#96)
+  * Fix screenshot finalize behavior for plugin
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Jan 13 16:26:50 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to 1.10.3
