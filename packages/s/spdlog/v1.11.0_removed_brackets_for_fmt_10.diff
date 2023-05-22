@@ -1,0 +1,214 @@
+diff --git a/tests/test_daily_logger.cpp b/tests/test_daily_logger.cpp
+index c6e685de..82f28941 100644
+--- a/tests/test_daily_logger.cpp
++++ b/tests/test_daily_logger.cpp
+@@ -87,19 +87,19 @@ TEST_CASE("daily_logger with custom calculator", "[daily_logger]")
+  * File name calculations
+  */
+ 
+-TEST_CASE("rotating_file_sink::calc_filename1", "[rotating_file_sink]]")
++TEST_CASE("rotating_file_sink::calc_filename1", "[rotating_file_sink]")
+ {
+     auto filename = spdlog::sinks::rotating_file_sink_st::calc_filename(SPDLOG_FILENAME_T("rotated.txt"), 3);
+     REQUIRE(filename == SPDLOG_FILENAME_T("rotated.3.txt"));
+ }
+ 
+-TEST_CASE("rotating_file_sink::calc_filename2", "[rotating_file_sink]]")
++TEST_CASE("rotating_file_sink::calc_filename2", "[rotating_file_sink]")
+ {
+     auto filename = spdlog::sinks::rotating_file_sink_st::calc_filename(SPDLOG_FILENAME_T("rotated"), 3);
+     REQUIRE(filename == SPDLOG_FILENAME_T("rotated.3"));
+ }
+ 
+-TEST_CASE("rotating_file_sink::calc_filename3", "[rotating_file_sink]]")
++TEST_CASE("rotating_file_sink::calc_filename3", "[rotating_file_sink]")
+ {
+     auto filename = spdlog::sinks::rotating_file_sink_st::calc_filename(SPDLOG_FILENAME_T("rotated.txt"), 0);
+     REQUIRE(filename == SPDLOG_FILENAME_T("rotated.txt"));
+@@ -110,7 +110,7 @@ TEST_CASE("rotating_file_sink::calc_filename3", "[rotating_file_sink]]")
+ 
+ #    include <regex>
+ 
+-TEST_CASE("daily_file_sink::daily_filename_calculator", "[daily_file_sink]]")
++TEST_CASE("daily_file_sink::daily_filename_calculator", "[daily_file_sink]")
+ {
+     // daily_YYYY-MM-DD_hh-mm.txt
+     auto filename =
+@@ -123,7 +123,7 @@ TEST_CASE("daily_file_sink::daily_filename_calculator", "[daily_file_sink]]")
+ }
+ #endif
+ 
+-TEST_CASE("daily_file_sink::daily_filename_format_calculator", "[daily_file_sink]]")
++TEST_CASE("daily_file_sink::daily_filename_format_calculator", "[daily_file_sink]")
+ {
+     std::tm tm = spdlog::details::os::localtime();
+     // example-YYYY-MM-DD.log
+diff --git a/tests/test_errors.cpp b/tests/test_errors.cpp
+index 896e5b0a..939f1aeb 100644
+--- a/tests/test_errors.cpp
++++ b/tests/test_errors.cpp
+@@ -22,7 +22,7 @@ protected:
+     }
+ };
+ 
+-TEST_CASE("default_error_handler", "[errors]]")
++TEST_CASE("default_error_handler", "[errors]")
+ {
+     prepare_logdir();
+     spdlog::filename_t filename = SPDLOG_FILENAME_T(SIMPLE_LOG);
+@@ -40,7 +40,7 @@ TEST_CASE("default_error_handler", "[errors]]")
+ 
+ struct custom_ex
+ {};
+-TEST_CASE("custom_error_handler", "[errors]]")
++TEST_CASE("custom_error_handler", "[errors]")
+ {
+     prepare_logdir();
+     spdlog::filename_t filename = SPDLOG_FILENAME_T(SIMPLE_LOG);
+@@ -54,7 +54,7 @@ TEST_CASE("custom_error_handler", "[errors]]")
+     require_message_count(SIMPLE_LOG, 2);
+ }
+ 
+-TEST_CASE("default_error_handler2", "[errors]]")
++TEST_CASE("default_error_handler2", "[errors]")
+ {
+     spdlog::drop_all();
+     auto logger = spdlog::create<failing_sink>("failed_logger");
+@@ -62,7 +62,7 @@ TEST_CASE("default_error_handler2", "[errors]]")
+     REQUIRE_THROWS_AS(logger->info("Some message"), custom_ex);
+ }
+ 
+-TEST_CASE("flush_error_handler", "[errors]]")
++TEST_CASE("flush_error_handler", "[errors]")
+ {
+     spdlog::drop_all();
+     auto logger = spdlog::create<failing_sink>("failed_logger");
+@@ -70,7 +70,7 @@ TEST_CASE("flush_error_handler", "[errors]]")
+     REQUIRE_THROWS_AS(logger->flush(), custom_ex);
+ }
+ 
+-TEST_CASE("async_error_handler", "[errors]]")
++TEST_CASE("async_error_handler", "[errors]")
+ {
+     prepare_logdir();
+     std::string err_msg("log failed with some msg");
+@@ -98,7 +98,7 @@ TEST_CASE("async_error_handler", "[errors]]")
+ }
+ 
+ // Make sure async error handler is executed
+-TEST_CASE("async_error_handler2", "[errors]]")
++TEST_CASE("async_error_handler2", "[errors]")
+ {
+     prepare_logdir();
+     std::string err_msg("This is async handler error message");
+diff --git a/tests/test_file_helper.cpp b/tests/test_file_helper.cpp
+index 1d947078..dd3ca4f8 100644
+--- a/tests/test_file_helper.cpp
++++ b/tests/test_file_helper.cpp
+@@ -15,7 +15,7 @@ static void write_with_helper(file_helper &helper, size_t howmany)
+     helper.flush();
+ }
+ 
+-TEST_CASE("file_helper_filename", "[file_helper::filename()]]")
++TEST_CASE("file_helper_filename", "[file_helper::filename()]")
+ {
+     prepare_logdir();
+ 
+@@ -25,7 +25,7 @@ TEST_CASE("file_helper_filename", "[file_helper::filename()]]")
+     REQUIRE(helper.filename() == target_filename);
+ }
+ 
+-TEST_CASE("file_helper_size", "[file_helper::size()]]")
++TEST_CASE("file_helper_size", "[file_helper::size()]")
+ {
+     prepare_logdir();
+     spdlog::filename_t target_filename = SPDLOG_FILENAME_T(TEST_FILENAME);
+@@ -39,7 +39,7 @@ TEST_CASE("file_helper_size", "[file_helper::size()]]")
+     REQUIRE(get_filesize(TEST_FILENAME) == expected_size);
+ }
+ 
+-TEST_CASE("file_helper_reopen", "[file_helper::reopen()]]")
++TEST_CASE("file_helper_reopen", "[file_helper::reopen()]")
+ {
+     prepare_logdir();
+     spdlog::filename_t target_filename = SPDLOG_FILENAME_T(TEST_FILENAME);
+@@ -51,7 +51,7 @@ TEST_CASE("file_helper_reopen", "[file_helper::reopen()]]")
+     REQUIRE(helper.size() == 0);
+ }
+ 
+-TEST_CASE("file_helper_reopen2", "[file_helper::reopen(false)]]")
++TEST_CASE("file_helper_reopen2", "[file_helper::reopen(false)]")
+ {
+     prepare_logdir();
+     spdlog::filename_t target_filename = SPDLOG_FILENAME_T(TEST_FILENAME);
+@@ -78,7 +78,7 @@ static void test_split_ext(const spdlog::filename_t::value_type *fname, const sp
+     REQUIRE(ext == expected_ext);
+ }
+ 
+-TEST_CASE("file_helper_split_by_extension", "[file_helper::split_by_extension()]]")
++TEST_CASE("file_helper_split_by_extension", "[file_helper::split_by_extension()]")
+ {
+     test_split_ext(SPDLOG_FILENAME_T("mylog.txt"), SPDLOG_FILENAME_T("mylog"), SPDLOG_FILENAME_T(".txt"));
+     test_split_ext(SPDLOG_FILENAME_T(".mylog.txt"), SPDLOG_FILENAME_T(".mylog"), SPDLOG_FILENAME_T(".txt"));
+diff --git a/tests/test_file_logging.cpp b/tests/test_file_logging.cpp
+index 1c7a1853..7a7119ad 100644
+--- a/tests/test_file_logging.cpp
++++ b/tests/test_file_logging.cpp
+@@ -6,7 +6,7 @@
+ #define SIMPLE_LOG "test_logs/simple_log"
+ #define ROTATING_LOG "test_logs/rotating_log"
+ 
+-TEST_CASE("simple_file_logger", "[simple_logger]]")
++TEST_CASE("simple_file_logger", "[simple_logger]")
+ {
+     prepare_logdir();
+     spdlog::filename_t filename = SPDLOG_FILENAME_T(SIMPLE_LOG);
+@@ -23,7 +23,7 @@ TEST_CASE("simple_file_logger", "[simple_logger]]")
+     REQUIRE(file_contents(SIMPLE_LOG) == spdlog::fmt_lib::format("Test message 1{}Test message 2{}", default_eol, default_eol));
+ }
+ 
+-TEST_CASE("flush_on", "[flush_on]]")
++TEST_CASE("flush_on", "[flush_on]")
+ {
+     prepare_logdir();
+     spdlog::filename_t filename = SPDLOG_FILENAME_T(SIMPLE_LOG);
+@@ -44,7 +44,7 @@ TEST_CASE("flush_on", "[flush_on]]")
+             spdlog::fmt_lib::format("Should not be flushed{}Test message 1{}Test message 2{}", default_eol, default_eol, default_eol));
+ }
+ 
+-TEST_CASE("rotating_file_logger1", "[rotating_logger]]")
++TEST_CASE("rotating_file_logger1", "[rotating_logger]")
+ {
+     prepare_logdir();
+     size_t max_size = 1024 * 10;
+@@ -60,7 +60,7 @@ TEST_CASE("rotating_file_logger1", "[rotating_logger]]")
+     require_message_count(ROTATING_LOG, 10);
+ }
+ 
+-TEST_CASE("rotating_file_logger2", "[rotating_logger]]")
++TEST_CASE("rotating_file_logger2", "[rotating_logger]")
+ {
+     prepare_logdir();
+     size_t max_size = 1024 * 10;
+@@ -100,7 +100,7 @@ TEST_CASE("rotating_file_logger2", "[rotating_logger]]")
+ }
+ 
+ // test that passing max_size=0 throws
+-TEST_CASE("rotating_file_logger3", "[rotating_logger]]")
++TEST_CASE("rotating_file_logger3", "[rotating_logger]")
+ {
+     prepare_logdir();
+     size_t max_size = 0;
+diff --git a/tests/test_macros.cpp b/tests/test_macros.cpp
+index 2aeeecff..36537958 100644
+--- a/tests/test_macros.cpp
++++ b/tests/test_macros.cpp
+@@ -10,7 +10,7 @@
+ 
+ #define TEST_FILENAME "test_logs/simple_log"
+ 
+-TEST_CASE("debug and trace w/o format string", "[macros]]")
++TEST_CASE("debug and trace w/o format string", "[macros]")
+ {
+ 
+     prepare_logdir();

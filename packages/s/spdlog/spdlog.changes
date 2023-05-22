@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May 20 12:51:48 UTC 2023 - Bernd Ritter <comrad@posteo.de>
+
+- Applied three patches from upstream after update to dependency fmt 1.10 broke test in daily_file_sink #2735
+  * patch 0ca574ae168820da0268b3ec7607ca7b33024d05.patch add support for a changed symbol in fmt 1.10.0
+  * patch v1.11.0_removed_brackets_for_fmt_10.diff removes duplicate brackets from unit tests
+  * patch tt4g-fix-2735.diff solves the failing tests due to a now redundant workaround
+
+-------------------------------------------------------------------
 Wed Nov  2 22:51:57 UTC 2022 - Bernd Ritter <comrad@posteo.de>
 
 - Update to version 1.11.0

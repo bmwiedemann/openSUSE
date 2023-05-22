@@ -1,7 +1,7 @@
 #
 # spec file for package spdlog
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,12 @@ Summary:        C++ logging library
 License:        MIT
 URL:            https://github.com/gabime/spdlog
 Source0:        https://github.com/gabime/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM 0ca574ae168820da0268b3ec7607ca7b33024d05.patch
+Patch0:         0ca574ae168820da0268b3ec7607ca7b33024d05.patch
+# PATCH-FIX-UPSTREAM v1.11.0_removed_brackets_for_fmt_10.diff
+Patch1:         v1.11.0_removed_brackets_for_fmt_10.diff
+# PATCH-FIX-UPSTREAM tt4g-fix-2735.diff
+Patch2:         tt4g-fix-2735.diff
 Source99:       baselibs.conf
 BuildRequires:  cmake >= 3.10
 %if 0%{?suse_version} > 1500

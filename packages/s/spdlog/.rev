@@ -379,4 +379,16 @@
 </comment>
     <requestid>1032966</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>dcbe7d086f8a32082450e0e55bbd9fca</srcmd5>
+    <version>1.11.0</version>
+    <time>1684754045</time>
+    <user>dimstar_suse</user>
+    <comment>- Applied three patches from upstream after update to dependency fmt 1.10 broke test in daily_file_sink #2735
+  * patch 0ca574ae168820da0268b3ec7607ca7b33024d05.patch add support for a changed symbol in fmt 1.10.0
+  * patch v1.11.0_removed_brackets_for_fmt_10.diff removes duplicate brackets from unit tests
+  * patch tt4g-fix-2735.diff solves the failing tests due to a now redundant workaround
+</comment>
+    <requestid>1088053</requestid>
+  </revision>
 </revisionlist>
