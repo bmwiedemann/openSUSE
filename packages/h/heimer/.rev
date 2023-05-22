@@ -202,4 +202,20 @@
     stutter</comment>
     <requestid>1075679</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>53cd2fb5eb0ea85e49724a168e059ec3</srcmd5>
+    <version>4.2.0</version>
+    <time>1684754066</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.2.0:
+  New features:
+  * Automatic zoom-to-fit on search
+  * Enable clear button on search text edit
+  Other:
+  * Add small padding on the edge label text field
+  * Don't zoom to fit on cleared search if used has unselected all nodes
+  * Remove shadow effects from edges that are not completely visible while dragging
+- Drop heimer-4.1.0-remove-range.patch</comment>
+    <requestid>1088260</requestid>
+  </revision>
 </revisionlist>

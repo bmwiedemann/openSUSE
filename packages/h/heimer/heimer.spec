@@ -18,15 +18,13 @@
 
 
 Name:           heimer
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        Mind map, diagram, and note-taking tool
 License:        CC-BY-SA-3.0 AND GPL-3.0-only
 Group:          Productivity/Office/Other
 URL:            https://github.com/juzzlin/Heimer
 Source0:        https://github.com/juzzlin/Heimer/archive/refs/tags/%{version}.tar.gz
-# PATCH-FIX-OPENSUSE: mvetter@suse.com - Contains upstream d6b60c and 5b39a2 to remove range. See gh/juzzlin/Heimer#242
-Patch0:         heimer-4.1.0-remove-range.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -60,7 +58,6 @@ suitable diagrams. Features:
 
 %prep
 %setup -q -n Heimer-%{version}
-%patch0 -p1
 
 %build
 %cmake
