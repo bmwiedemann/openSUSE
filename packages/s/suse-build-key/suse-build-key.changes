@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 15 09:44:20 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- updated with all current changes
+  - gpg-pubkey-3fa1d6ce-63c9481c.asc: Upcoming SLE RSA 4096 bit signing key.
+  - gpg-pubkey-25db7ae0-645bae34.asc: New SLE RSA 4096 bit backup signing key. 
+  - gpg-pubkey-09d9ea69-645b99ce.asc: New ALP RSA 4096 bit signing key.
+  - gpg-pubkey-73f03759-626bd414.asc: New ALP RSA 4096 bit backup signing key.
+  - suse_ptf_key.asc: switch to use current RSA 2048 bit key
+  - suse_ptf_4096_key.asc: upcoming RSA 4096 bit key for SUSE PTFs.
+  - build-container-8fd6c337-63c94b45.asc: New SLE RSA 4096 bit container signing key (GPG format).
+  - build-container-8fd6c337-63c94b45.pem: New SLE RSA 4096 bit container signing key (PEM format).
+
+-------------------------------------------------------------------
 Fri Jun 11 09:49:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - remove dumpsigs for SLE12+ (rpm 4.x) (bsc#1186827)
