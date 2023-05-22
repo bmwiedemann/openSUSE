@@ -564,6 +564,7 @@ cat >%{buildroot}%{_sysconfdir}/products.d/openSUSE.prod << EOF
   <cpeid>cpe:/o:opensuse:opensuse:20230521</cpeid>
   <productline>openSUSE</productline>
   <register>
+    <target>openSUSE-Tumbleweed-x86_64</target>
     <pool>
     </pool>
     <updates>
