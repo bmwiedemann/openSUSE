@@ -19,7 +19,7 @@
 %bcond_without python2
 %{?sle15_python_module_pythons}
 Name:           python-trustme
-Version:        0.9.0
+Version:        1.0.0
 Release:        0
 Summary:        Fake CA provider for Python tests
 License:        Apache-2.0 OR MIT

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May 14 16:33:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.0:
+  * Support for ECDSA keys in certificates and use them by default.
+    The type of key used for certificates can be controlled by the
+    key_type parameter on the multiple methods that generate
+    certificates. ECDSA certificates as they can be generated
+    significantly faster.
+  * Support for Python 3.10 and 3.11 (#372, 574) 
+
+-------------------------------------------------------------------
 Fri Apr 21 12:38:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
