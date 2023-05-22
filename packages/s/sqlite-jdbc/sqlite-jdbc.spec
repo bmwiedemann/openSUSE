@@ -17,7 +17,7 @@
 
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
-%global version 3.41.2.1
+%global version 3.41.2.2
 %global amalgamation_version 3410200
 %global debug_package %{nil}
 Name:           sqlite-jdbc
@@ -61,11 +61,19 @@ API documentation for %{name}.
 
 %prep
 %setup -q
-%{mvn_file} : %{name}
+
 %pom_remove_plugin org.sonatype.plugins:nexus-staging-maven-plugin
+%pom_remove_plugin com.diffplug.spotless:spotless-maven-plugin
+%pom_remove_dep org.graalvm.sdk:graal-sdk
+
+sed -i -e '/org\.graalvm\.sdk/ d' src/main/java9/module-info.java
+rm src/main/java9/org/sqlite/nativeimage/SqliteJdbcFeature.java
+
 dos2unix SQLiteJDBC.wiki
 mkdir target
 cp %{SOURCE1} target/sqlite-$(sed -e 's/^version=//' VERSION)-amal.zip
+
+%{mvn_file} : %{name}
 
 %build
 %make_build native
@@ -77,7 +85,7 @@ cp %{SOURCE1} target/sqlite-$(sed -e 's/^version=//' VERSION)-amal.zip
 
 %files -f .mfiles
 %license LICENSE* NOTICE
-%doc CHANGELOG README.md USAGE.md SQLiteJDBC.wiki
+%doc CHANGELOG README.adoc {USAGE,SECURITY}.md SQLiteJDBC.wiki
 
 %files javadoc -f .mfiles-javadoc
 %license LICENSE* NOTICE
