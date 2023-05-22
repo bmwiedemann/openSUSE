@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May 20 14:18:26 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to release 9.12:
+  * Explicitly reject overly long tun device names.
+  * Increase maximum input size from stdin (#579).
+  * Ignore 0.0.0.0 as NBNS address (!446, vpnc-scripts#58).
+  * Fix stray (null) in URL path after Pulse authentication (4023bd95).
+  * Fix config XML parsing mistake that left GlobalProtect ESP non-working in v9.10 (!475).
+  * Fix case sensitivity in GPST header matching (!474).
+
+-------------------------------------------------------------------
 Mon May  8 05:51:41 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to release 9.10:

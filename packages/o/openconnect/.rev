@@ -385,4 +385,12 @@ No LGPL-2.1 &quot;only&quot; licenses found. Fedora also uses LGPL-2.1 &quot;or 
     <comment></comment>
     <requestid>1085415</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>f349c472c8f03c08955ad8c79590c290</srcmd5>
+    <version>9.12</version>
+    <time>1684754046</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088063</requestid>
+  </revision>
 </revisionlist>

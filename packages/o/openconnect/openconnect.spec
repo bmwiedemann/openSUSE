@@ -18,7 +18,7 @@
 
 %define libname libopenconnect5
 Name:           openconnect
-Version:        9.10
+Version:        9.12
 Release:        0
 Summary:        Client for Cisco AnyConnect VPN
 License:        LGPL-2.1-or-later
@@ -149,7 +149,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man8/*
 %{_sbindir}/openconnect
 %dir %{_sysconfdir}/openconnect
-%attr(0755,root,root) %{_sysconfdir}/openconnect/vpnc-script
+%config %attr(0755,root,root) %{_sysconfdir}/openconnect/vpnc-script
 
 %files -n %{libname}
 %license COPYING.LGPL
