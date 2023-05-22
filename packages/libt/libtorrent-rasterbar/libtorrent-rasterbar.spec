@@ -23,7 +23,7 @@
 %bcond_with     examples
 %bcond_with     tests
 Name:           libtorrent-rasterbar
-Version:        2.0.8
+Version:        2.0.9
 Release:        0
 Summary:        A C++ implementation of the BitTorrent protocol
 License:        BSD-3-Clause
