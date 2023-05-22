@@ -8,4 +8,41 @@
 will require a prefer-line in prjconf. The released pre-3 package should be the preferred one</comment>
     <requestid>1056165</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>758ad9fc47cd6f986a87c4518fe4a1bf</srcmd5>
+    <version>3.0.0~b2</version>
+    <time>1684754054</time>
+    <user>dimstar_suse</user>
+    <comment>- add sle15_python_module_pythons (jsc#PED-68)
+
+- Update to 3.0.0~b2
+  # Features added
+  * C++ declarations for &lt;cmath&gt;, &lt;numbers&gt; and std::any were
+    added. Patches by Jonathan Helgert and Maximilien Colange.
+    (Github issues #5262, #5309, #5314)
+  # Bugs fixed
+  * Unintended internal exception handling lead to a visible
+    performance regression for nogil memoryview code in 3.0.0b1.
+    (Github issue #5324)
+  * None default arguments for arguments with fused memoryview
+    types could select a different implementation in 3.0 than in
+    0.29.x. The selection behaviour is generally considered
+    suboptimal but was at least reverted to the old behaviour for
+    now. (Github issue #5297)
+  * The new complex vs. floating point behaviour of the ** power
+    operator accidentally added a dependency on the GIL, which was
+    really only required on failures. (Github issue #5287)
+  * from cython cimport … as … could lead to imported names not
+    being found in annotations. Patch by Chia-Hsiang Cheng. (Github
+    issue #5235)
+  * Generated NumPy ufuncs could crash for large arrays due to
+    incorrect GIL handling. (Github issue #5328)
+  * Very long Python integer constants could exceed the maximum C
+    name length of MSVC. Patch by 0dminnimda. (Github issue #5290)
+  * cimport_from_pyx could miss some declarations. Patch by
+    Chia-Hsiang Cheng. (Github issue #5318)
+  * Fully qualified C++ names prefixed by a cimported module name
+    could fail to compile. Patch by Chia-Hsiang Cheng. (Github</comment>
+    <requestid>1088304</requestid>
+  </revision>
 </revisionlist>

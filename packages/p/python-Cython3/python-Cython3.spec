@@ -17,13 +17,15 @@
 
 
 %bcond_with test
-%define pversion 3.0.0a11
+%{?sle15_python_module_pythons}
+%define pversion 3.0.0b2
 Name:           python-Cython3
-Version:        3.0.0~a11
+Version:        3.0.0~b2
 Release:        0
 Summary:        The Cython compiler for writing C extensions for the Python language
 License:        Apache-2.0
 URL:            https://cython.org/
+# SourceRepository: https://github.com/cython/cython
 Source:         https://files.pythonhosted.org/packages/source/C/Cython/Cython-%{pversion}.tar.gz
 Source1:        python-Cython-rpmlintrc
 BuildRequires:  %{python_module devel}
