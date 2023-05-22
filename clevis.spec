@@ -68,7 +68,6 @@ LUKS integration for Clevis.
 %package systemd
 Summary:        Systemd integration for Clevis
 Requires:       %{name}-luks = %{version}
-Requires:       ncat
 Requires:       systemd
 
 %description systemd
@@ -140,21 +139,26 @@ This package provides Bash completion for Clevis.
 %{_mandir}/man1/clevis-encrypt-*.1%{?ext_man}
 
 %files luks
+%license COPYING
 %{_bindir}/clevis-luks-*
 %{_mandir}/man[17]/clevis-luks-*.[17]%{?ext_man}
 
 %files systemd
+%license COPYING
 %{_libexecdir}/clevis-luks-askpass
 %{_unitdir}/*
 
 %files dracut
+%license COPYING
 %{_prefix}/lib/dracut/modules.d/**
 
 %files udisks2
+%license COPYING
 %{_libexecdir}/clevis-luks-udisks2
 %{_sysconfdir}/xdg/autostart/clevis-luks-udisks2.desktop
 
 %files bash-completion
+%license COPYING
 %{_datadir}/bash-completion/completions/clevis
 
 %changelog
