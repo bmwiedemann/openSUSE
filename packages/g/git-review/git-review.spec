@@ -1,7 +1,7 @@
 #
 # spec file for package git-review
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,13 +30,13 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-fixtures >= 0.3.14
 BuildRequires:  python3-pbr
+BuildRequires:  python3-pip
 BuildRequires:  python3-requests >= 1.1
-BuildRequires:  python3-setuptools
 BuildRequires:  python3-stestr
+BuildRequires:  python3-wheel
 Requires:       python3-requests >= 1.1
-Requires:       python3-setuptools
-Provides:       python3-git-review = %version
-Obsoletes:      python3-git-review < %version
+Provides:       python3-git-review = %{version}
+Obsoletes:      python3-git-review < %{version}
 BuildArch:      noarch
 
 %description
@@ -49,10 +49,10 @@ review.
 %autosetup -p1 -n git-review-%{version}
 
 %build
-%python3_build
+%python3_pyproject_wheel
 
 %install
-%python3_install
+%python3_pyproject_install
 %fdupes %{buildroot}%{python3_sitelib}
 
 %check
@@ -65,7 +65,8 @@ review.
 %files
 %license LICENSE
 %doc AUTHORS README.rst
-%{python3_sitelib}/*
+%{python3_sitelib}/git_review
+%{python3_sitelib}/git_review-%{version}*-info
 %{_bindir}/git-review
 %{_mandir}/man1/git-review.1%{?ext_man}
 
