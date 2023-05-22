@@ -4,13 +4,14 @@
     <product>
       <vendor>openSUSE</vendor>
       <name>openSUSE</name>
-      <version>20230521</version>
+      <version>20230522</version>
       <release>0</release>
 
       <productline>openSUSE</productline>
 
       <!-- Ensure we have valid distrotarget - used by "zypper tos" - boo#977052 -->
       <register>
+        <target>openSUSE-Tumbleweed-x86_64</target>
         <updates>
           <distrotarget arch="x86_64">openSUSE-Tumbleweed-x86_64</distrotarget>
           <distrotarget arch="s390x">openSUSE-Tumbleweed-s390x</distrotarget>
