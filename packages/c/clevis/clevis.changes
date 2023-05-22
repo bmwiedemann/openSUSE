@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 22 10:00:00 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- drop ncat requirement from clevis-systemd (boo#1211580)
+
+-------------------------------------------------------------------
 Tue Apr 11 15:42:34 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - updated to v19
