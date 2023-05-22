@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May 20 10:34:07 UTC 2023 - pdostal@suse.com
+
+- Update to version 1.30.0:
+  * feat: better error messages for no matching remotes
+  * chore: Updating snapcraft info
+  * feat: add new changelog command
+  * fix(ci): Fixed issue with API deprecation for CI lint
+  * chore: stop overwriting config file in test
+
+-------------------------------------------------------------------
 Sun May 14 06:08:50 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.29.4:
