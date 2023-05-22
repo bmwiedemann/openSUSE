@@ -1,4 +1,12 @@
+-------------------------------------------------------------------
+Mon May 22 06:24:38 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
+- Update to 1.12.5:
+  * Fix #123 crash on canvas created with chafa_canvas_new_similar()
+  * Fix #141 distortion when rowstride is not a multiple of 4
+  * Fix missing comma in --help output
+
+-------------------------------------------------------------------
 Sun Nov 13 20:17:11 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.12.4:

@@ -348,4 +348,16 @@
       introduction of --animate.</comment>
     <requestid>1035537</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d110088c260f09d00498774e7592e2a5</srcmd5>
+    <version>1.12.5</version>
+    <time>1684754070</time>
+    <user>dimstar_suse</user>
+    <comment>
+- Update to 1.12.5:
+  * Fix #123 crash on canvas created with chafa_canvas_new_similar()
+  * Fix #141 distortion when rowstride is not a multiple of 4
+  * Fix missing comma in --help output</comment>
+    <requestid>1088257</requestid>
+  </revision>
 </revisionlist>
