@@ -16,12 +16,19 @@
 #
 
 
+%{?sle15_python_module_pythons}
 %if 0%{?suse_version} < 1550
 # Leap15, SLES15
-%define pythons python310
+%if %pythons == "python310"
 %define ansible_python python310
 %define ansible_python_executable python3.10
 %define ansible_python_sitelib %python310_sitelib
+%endif
+%if %pythons == "python311"
+%define ansible_python python311
+%define ansible_python_executable python3.11
+%define ansible_python_sitelib %python311_sitelib
+%endif
 %else
 # Tumbleweed
 %define pythons python3
@@ -31,7 +38,7 @@
 %endif
 
 Name:           ansible-core
-Version:        2.14.5
+Version:        2.15.0
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later
@@ -48,6 +55,7 @@ BuildRequires:  %{ansible_python}-base >= 3.9
 BuildRequires:  %{ansible_python}-setuptools
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# importlib_resources not required, as we are using python 3.10 or higher
 # SECTION test requirements
 BuildRequires:  %{ansible_python}-botocore
 BuildRequires:  %{ansible_python}-Jinja2 >= 3.0.0
@@ -58,15 +66,15 @@ BuildRequires:  %{ansible_python}-packaging
 BuildRequires:  %{ansible_python}-pytest
 BuildRequires:  %{ansible_python}-pytz
 # https://github.com/ansible/ansible/blob/devel/requirements.txt
-BuildRequires:  (%{ansible_python}-resolvelib >= 0.5.3 with %{ansible_python}-resolvelib < 0.10.0)
+BuildRequires:  (%{ansible_python}-resolvelib >= 0.5.3 with %{ansible_python}-resolvelib < 1.1.0)
 # /SECTION
 Requires:       %{ansible_python}-Jinja2 >= 3.0.0
 Requires:       %{ansible_python}-PyYAML >= 5.1
 Requires:       %{ansible_python}-cryptography
 Requires:       %{ansible_python}-packaging
 # https://github.com/ansible/ansible/blob/devel/requirements.txt
-Requires:       %{ansible_python}-resolvelib < 0.10.0
-Requires:       (%{ansible_python}-resolvelib >= 0.5.3 with %{ansible_python}-resolvelib < 0.10.0)
+# importlib_resources not required, as we are using python 3.10 or higher
+Requires:       (%{ansible_python}-resolvelib >= 0.5.3 with %{ansible_python}-resolvelib < 1.1.0)
 
 %description
 Ansible is a radically simple IT automation system. It handles
@@ -159,6 +167,11 @@ mkdir -p %{buildroot}%{_sysconfdir}/ansible/roles/
 # resp. https://bugzilla.opensuse.org/show_bug.cgi?id=1137479
 mkdir -p %{buildroot}%{ansible_python_sitelib}/ansible/galaxy/data/default/role/{files,templates}
 
+# fix shebangs in scripts
+sed -i "1{/python3/d;}" %{buildroot}/%{ansible_python_sitelib}/ansible/cli/*.py
+sed -i "1{/python3/d;}" %{buildroot}/%{ansible_python_sitelib}/ansible/cli/scripts/ansible_connection_cli_stub.py
+sed -i "1{/python3/d;}" %{buildroot}/%{ansible_python_sitelib}/ansible/modules/hostname.py
+
 cp examples/hosts %{buildroot}%{_sysconfdir}/ansible/
 cp examples/ansible.cfg %{buildroot}%{_sysconfdir}/ansible/
 mkdir -p %{buildroot}/%{_mandir}/man1/
@@ -171,7 +184,7 @@ cp -pr docs/docsite/rst .
 #python3 bin/ansible-test units -v --python %%{python3_version}
 
 %files
-%doc README.rst changelogs/CHANGELOG-v2.14.rst changelogs/CHANGELOG.rst changelogs/changelog.yaml
+%doc README.rst changelogs/CHANGELOG-v2.15.rst changelogs/CHANGELOG.rst changelogs/changelog.yaml
 %license COPYING licenses/Apache-License.txt licenses/MIT-license.txt licenses/PSF-license.txt licenses/simplified_bsd.txt
 %{_bindir}/ansible
 %{_bindir}/ansible-config

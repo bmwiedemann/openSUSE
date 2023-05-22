@@ -105,4 +105,20 @@
     <comment></comment>
     <requestid>1083850</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>55d65c890efebe4be6a3fa73d7f4e3b7</srcmd5>
+    <version>2.15.0</version>
+    <time>1684754080</time>
+    <user>dimstar_suse</user>
+    <comment>- major update to 2.15.0:
+  https://github.com/ansible/ansible/blob/v2.15.0/changelogs/
+  CHANGELOG-v2.15.rst
+
+- modify %if-condition to allow building for python3.10 or
+  python3.11 on SLES15
+
+- change python version on Leap15/SLES15 to python3.11 to use the
+  new stack supported by SUSE</comment>
+    <requestid>1088276</requestid>
+  </revision>
 </revisionlist>

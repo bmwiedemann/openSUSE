@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon May 15 19:29:21 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- major update to 2.15.0:
+  https://github.com/ansible/ansible/blob/v2.15.0/changelogs/
+  CHANGELOG-v2.15.rst
+
+-------------------------------------------------------------------
+Sun May 14 19:08:37 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- modify %if-condition to allow building for python3.10 or
+  python3.11 on SLES15
+
+-------------------------------------------------------------------
+Fri May  5 07:11:16 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- change python version on Leap15/SLES15 to python3.11 to use the
+  new stack supported by SUSE
+
+-------------------------------------------------------------------
 Mon May  1 08:49:07 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - BuildRequire python3.9 to follow upstream (does not matter on
