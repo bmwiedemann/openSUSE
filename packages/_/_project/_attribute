@@ -25,7 +25,7 @@
   boo#1205020: '20221104'
   boo#1205032: '20221110'
   boo#1205312: '20221113'
-  boo#1205314: '20230521'
+  boo#1205314: '20230522'
   boo#1205362: '20221113'
   boo#1205363: '20230119'
   boo#1205425: '20221120'
@@ -54,7 +54,7 @@
   boo#1207524: '20230125'
   boo#1207567: '20230125'
   boo#1207892: '20230306'
-  boo#1207940: '20230521'
+  boo#1207940: '20230522'
   boo#1207988: '20230207'
   boo#1208170: '20230313'
   boo#1208217: '20230213'
@@ -92,20 +92,20 @@
   boo#1210976: '20230502'
   boo#1211068: '20230510'
   boo#1211161: '20230508'
-  boo#1211163: '20230521'
+  boo#1211163: '20230522'
   boo#1211353: '20230521'
   boo#1211476: '20230521'
   boo#1211566: '20230521'
   boo#12345: '20221004'
   boo#978027: '20230213'
   bsc#1161276: '20221027'
-  bsc#1198101: '20230521'
+  bsc#1198101: '20230522'
   bsc#1204279: '20221021'
   bsc#1205897: '20230521'
   poo#112649: '20230302'
   poo#113075: '20221214'
   poo#113492: '20221102'
-  poo#115133: '20230518'
+  poo#115133: '20230522'
   poo#115274: '20221003'
   poo#115694: '20221128'
   poo#116704: '20221010'
@@ -175,7 +175,7 @@
   poo#128069: '20230420'
   poo#128213: '20230426'
   poo#128249: '20230502'
-  poo#128384: '20230521'
+  poo#128384: '20230522'
   poo#128387: '20230502'
   poo#128402: '20230517'
   poo#128549: '20230509'
@@ -222,7 +222,7 @@ installcheck-ignore-conflicts = lua53-devel lua51-devel gcc-go lua53 lua51 busyb
 allowed-missing-32bit-binaries-importing = audit-secondary bash coreutils curl-mini dbus-1-x11 ft2demos gamin gdb gettext-runtime-mini krb5-mini librtas librtas-doc libselinux-bindings LibVNCServer llvm lvm2 lvm2-clvm openssl openucx postgresql10 postgresql96 psl-make-dafsa python-libxml2-python python-magic python-rpm python-semanage strace syslinux systemd-mini util-linux-systemd
 
 # packages in here are rebuild if their buildinfo changed
-rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-branding-openSUSE xfce4-branding-openSUSE installation-images:openSUSE installation-images:MicroOS rpmlint rpmlint-mini perf bpftool wsl-appx yast2-schema-default yast2-schema-micro
+rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-branding-openSUSE xfce4-branding-openSUSE installation-images:openSUSE installation-images:MicroOS rpmlint rpmlint-mini perf bpftool wsl-appx yast2-schema:default yast2-schema:micro
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OpenQAMapping">
@@ -527,9 +527,9 @@ set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
     <value>failed: ''
-published: '20230520'
-publishing: '20230520'
-testing: '20230521'
+published: '20230521'
+publishing: '20230521'
+testing: '20230522'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
