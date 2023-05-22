@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue May 16 19:22:03 UTC 2023 - Victorhck <victorhck@opensuse.org>
+
+- Update to 3.5
+  Improvements and Bug Fixes:
+  * New data sources for FilmAffinity, iTunes Search, and Gaming History were added.
+  * Colnect can now be searched for comic books, sports cards, and video game results.
+  * Screenshots were added to results from IGDB, MobyGames, and TheGamesDB.
+  * The data sources for AMS Mathematical Review, Dark Horse Comics, KinoPoisk, and IBS were updated.
+  * The label catalog number is an option for Discogs results (kde#452548).
+  * Importing DataCrow files in exported XML format was added (kde#451138).
+  * Collections can now be saved as empty template files, for later reuse (kde#450043).
+  * New reports with an Image Grid and single entry per page were added (kde#452552).
+  * A command-line option for importing PDF files was added.
+  * An explicit filter rule for Bool fields was added.
+  * Allowing regular expressions in the quick filter became an option (kde#450517).
+  * A transparent background is now used in the initial view (kde#461777).
+  * The https scheme is now supported for SRU sources (kde#463438).
+  * The active filter is retained when selecting an entry (kde#462337).
+  * Support for reading EPUB files with KFileMetaData was added (kde#450192).
+  * The link color for entry templates can now be configured (kde#467150).
+  * The SRU and z39.50 information for the US Library of Congress was updated.
+  * Removed Fix-build-with-older-Qt-versions.patch, since it's included in source code.
+
+-------------------------------------------------------------------
 Wed Feb  8 21:22:03 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 3.4.6
