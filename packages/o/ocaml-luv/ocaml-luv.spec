@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-luv
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ ExclusiveArch:  do-not-build
 
 %define     pkg ocaml-luv
 Name:           %pkg%nsuffix
-Version:        0.5.11
+Version:        0.5.12
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Binding to libuv cross-platform asynchronous I/O
@@ -40,9 +40,8 @@ Source0:        %pkg-%version.tar.xz
 Patch0:         %pkg.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20220222
+BuildRequires:  ocaml-rpm-macros >= 20230101
 BuildRequires:  ocamlfind(ctypes)
-BuildRequires:  ocamlfind(result)
 BuildRequires:  pkgconfig(libuv)
 
 %if "%build_flavor" == "testsuite"
