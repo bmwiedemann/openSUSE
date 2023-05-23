@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 23 07:55:25 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.28.3:
+  * Update ruff's config for the removal of keep-runtime-typing.
+
+-------------------------------------------------------------------
 Thu May 18 07:49:58 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.28.2:
