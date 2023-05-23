@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 23 07:48:57 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Restrict urllib3 to < 2, due to boto. 
+
+-------------------------------------------------------------------
 Tue Feb  7 14:29:01 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.10.2:

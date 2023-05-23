@@ -45,7 +45,7 @@ BuildRequires:  %{python_module pytest-xprocess}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module redis}
-BuildRequires:  %{python_module urllib3}
+BuildRequires:  %{python_module urllib3 < 2}
 BuildRequires:  memcached
 # /SECTION
 %python_subpackages
