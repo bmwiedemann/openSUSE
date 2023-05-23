@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Tue May  9 11:09:44 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update 1.29.130:
+  * api-change:``glue``: Support large worker types G.4x and G.8x for Glue Spark
+  * api-change:``guardduty``: Add AccessDeniedException 403 Error message code to support 3 Tagging
+    related APIs
+  * api-change:``iotsitewise``: Provide support for 20,000 max results for
+    GetAssetPropertyValueHistory/BatchGetAssetPropertyValueHistory and 15 minute aggregate resolution
+    for GetAssetPropertyAggregates/BatchGetAssetPropertyAggregates
+  * api-change:``sts``: Documentation updates for AWS Security Token Service.
+- from version 1.29.129
+  * api-change:``ec2``: This release adds support the inf2 and trn1n instances. inf2 instances are
+    purpose built for deep learning inference while trn1n instances are powered by AWS Trainium
+    accelerators and they build on the capabilities of Trainium-powered trn1 instances.
+  * api-change:``inspector2``: Amazon Inspector now allows customers to search its vulnerability
+    intelligence database if any of the Inspector scanning types are activated.
+  * api-change:``mediatailor``: This release adds support for AFTER_LIVE_EDGE mode configuration for
+    avail suppression, and adding a fill-policy setting that sets the avail suppression to
+    PARTIAL_AVAIL or FULL_AVAIL_ONLY when AFTER_LIVE_EDGE is enabled.
+  * api-change:``sqs``: Revert previous SQS protocol change.
+- from version 1.29.128
+  * bugfix:``sqs``: Rolled back recent change to wire format protocol
+- from version 1.29.127
+  * api-change:``cloudwatch``: Update cloudwatch client to latest version
+  * api-change:``config``: Updated ResourceType enum with new resource types onboarded by AWS Config
+    in April 2023.
+  * api-change:``connect``: Remove unused InvalidParameterException from CreateParticipant API
+  * api-change:``ecs``: Documentation update for new error type NamespaceNotFoundException for
+    CreateCluster and UpdateCluster
+  * api-change:``network-firewall``: This release adds support for the Suricata REJECT option in
+    midstream exception configurations.
+  * api-change:``opensearch``: DescribeDomainNodes: A new API that provides configuration information
+    for nodes part of the domain
+  * api-change:``quicksight``: Add support for Topic, Dataset parameters and VPC
+  * api-change:``rekognition``: This release adds a new attribute FaceOccluded. Additionally, you can
+    now select attributes individually (e.g. ["DEFAULT", "FACE_OCCLUDED", "AGE_RANGE"] instead of
+    ["ALL"]), which can reduce response time.
+  * api-change:``s3``: Documentation updates for Amazon S3
+  * api-change:``sagemaker``: We added support for ml.inf2 and ml.trn1 family of instances on Amazon
+    SageMaker for deploying machine learning (ML) models for Real-time and Asynchronous inference. You
+    can use these instances to achieve high performance at a low cost for generative artificial
+    intelligence (AI) models.
+  * api-change:``securityhub``: Add support for Finding History.
+  * api-change:``sqs``: This release enables customers to call SQS using AWS JSON-1.0 protocol.
+- from version 1.29.126
+  * api-change:``appsync``: Private API support for AWS AppSync. With Private APIs, you can now
+    create GraphQL APIs that can only be accessed from your Amazon Virtual Private Cloud ("VPC").
+  * api-change:``ec2``: Adds an SDK paginator for GetNetworkInsightsAccessScopeAnalysisFindings
+  * api-change:``inspector2``: This feature provides deep inspection for linux based instance
+  * api-change:``iottwinmaker``: This release adds a field for GetScene API to return error code and
+    message from dependency services.
+  * api-change:``network-firewall``: AWS Network Firewall now supports policy level HOME_NET variable
+    overrides.
+  * api-change:``opensearch``: Amazon OpenSearch Service adds the option to deploy a domain across
+    multiple Availability Zones, with each AZ containing a complete copy of data and with nodes in one
+    AZ acting as a standby. This option provides 99.99% availability and consistent performance in the
+    event of infrastructure failure.
+  * api-change:``wellarchitected``: This release deepens integration with AWS Service Catalog
+    AppRegistry to improve workload resource discovery.
+
+-------------------------------------------------------------------
 Wed May  3 15:01:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.29.125:
