@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 23 07:30:23 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.10.5:
+  * vendor: update buildkit to v0.11@348e79dfed17
+  * docs: refactor bake file reference
+
+-------------------------------------------------------------------
 Tue Mar 07 05:43:58 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.10.4:
