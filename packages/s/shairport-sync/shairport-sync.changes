@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May 21 20:32:51 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 4.2.
+  Changelog: https://github.com/mikebrady/shairport-sync/releases/tag/4.2
+  * This release consists of enhancements and important bug fixes to
+    Shairport Sync Version 4.1. For information on the new features of 4.1,
+    including AirPlay 2 support, please see the Version 4.1 Release Note.
+
+-------------------------------------------------------------------
 Sat May  6 20:32:49 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Enable build with alsa support.
