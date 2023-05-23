@@ -19,7 +19,7 @@
 %global commit_hx3compat f1f18201e5c0479cb5adf5f6028788b37f37b730
 
 Name:           haxe
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Summary:        Multiplatform programming language
 License:        GPL-2.0+ and MIT
@@ -32,7 +32,6 @@ Source0:        https://github.com/HaxeFoundation/%{name}/archive/%{version}.tar
 Source1:        https://github.com/HaxeFoundation/haxelib/archive/%{commit_haxelib}.tar.gz#/haxelib-%{commit_haxelib}.tar.gz
 Source2:        https://github.com/HaxeFoundation/hx3compat/archive/%{commit_hx3compat}.tar.gz#/hx3compat-%{commit_hx3compat}.tar.gz
 
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  help2man
 BuildRequires:  neko-devel >= 2.3.0
 BuildRequires:  neko >= 2.3.0
@@ -42,6 +41,7 @@ BuildRequires:  ocamlfind(camlp5)
 BuildRequires:  ocamlfind(extlib)
 BuildRequires:  ocamlfind(findlib)
 BuildRequires:  ocamlfind(luv)
+BuildRequires:  ocaml-luv-devel >= 0.5.12
 BuildRequires:  ocamlfind(ptmap)
 BuildRequires:  ocamlfind(sedlex)
 BuildRequires:  ocamlfind(sha)
@@ -94,7 +94,6 @@ help2man ./haxelib --help-option=help --version-option=version --no-info --outpu
 %{buildroot}%{_bindir}/haxelib version
 
 %files
-%defattr(-,root,root)
 %doc README.md extra/LICENSE.txt extra/CHANGES.txt extra/CONTRIB.txt
 %{_bindir}/haxe
 %{_bindir}/haxelib

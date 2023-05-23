@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed May  3 07:16:44 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove old specfile constructs
+
+-------------------------------------------------------------------
+Tue May  2 20:21:45 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 4.3.1
+  * Breaking changes:
+    * all : namespace message reporting defines (gh#HaxeFoundation/haxe#11142)
+  * General improvements:
+    * all : support deprecation for defines
+  * Bugfixes:
+    * all : fix --times with compilation server (gh#HaxeFoundation/haxe#11091)
+    * all : fix default type parameters not respecting imports (gh#HaxeFoundation/haxe#11161)
+    * all : fix bytecode bindings issues (gh#HaxeFoundation/haxe#11098)
+    * macro : allow local statics in macro functions (gh#HaxeFoundation/haxe#11096)
+    * cpp : fix AtomicInt warnings on cppia (gh#HaxeFoundation/haxe#11105)
+    * cpp : fix deprecated implicit casts of cpp.Int64 (gh#HaxeFoundation/haxe#10998)
+    * cpp : add white space around template type syntax (gh#HaxeFoundation/haxe#11107)
+    * java : don't check native signatures on extern functions (gh#HaxeFoundation/haxe#11131)
+    * lua : remove non existent luautf8 charCodeAt extern (gh#HaxeFoundation/haxe#11097)
+
+-------------------------------------------------------------------
 Tue May  2 06:42:38 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Require the mbedtls-devel version to be lower than 3.0.0

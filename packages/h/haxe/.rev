@@ -331,4 +331,12 @@ We're in the process of easing the installation process across different Linux d
     <comment></comment>
     <requestid>1084124</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>46ffd900012cbc342a1fc9cdb899221a</srcmd5>
+    <version>4.3.1</version>
+    <time>1684846418</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1086031</requestid>
+  </revision>
 </revisionlist>
