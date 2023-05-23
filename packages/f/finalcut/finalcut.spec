@@ -1,7 +1,7 @@
 #
 # spec file for package finalcut
 #
-# Copyright (c) 2020 by Markus Gans
+# Copyright (c) 2023 by Markus Gans
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 %define sover   0
 Name:           finalcut
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        Console widget library
 License:        LGPL-3.0-or-later
@@ -114,7 +114,7 @@ Special X11 bitmap font used by FINAL CUT to display graphic objects.
 
 %build
 autoreconf -vif
-export CPPFLAGS="%{optflags} -Wall -Wextra -Wpedantic"
+export CPPFLAGS="%{optflags} -Wall -Wextra -Wpedantic -flto"
 %ifnarch %ix86 x86_64
 export CPPFLAGS="$CPPFLAGS -Wno-error=unused-parameter"
 %endif
@@ -142,7 +142,7 @@ cp -p examples/Makefile.gcc %{buildroot}%{_libdir}/%{name}/examples
 cp -p final/font/40-finalcut-newfont.conf %{buildroot}/usr/share/fontconfig/conf.avail
 ln -s /usr/share/fontconfig/conf.avail/40-finalcut-newfont.conf %{buildroot}/etc/fonts/conf.d/40-finalcut-newfont.conf
 rm -f %{buildroot}%{_libdir}/libfinal.la
-rm %{buildroot}%{_docdir}/%{name}/ChangeLog %{buildroot}%{_docdir}/%{name}/COPYING.LESSER
+rm %{buildroot}%{_docdir}/%{name}/ChangeLog
 # Add config for X font path
 mkdir -p %{buildroot}%{_datadir}/X11/xorg.conf.d
 cat <<EOF > %{buildroot}%{_datadir}/X11/xorg.conf.d/80-finalcut-bitmap-fonts.conf
@@ -155,6 +155,9 @@ for i in .fonts-config-timestamp encodings.dir fonts.dir fonts.scale; do
     > %{buildroot}%{_miscfontsdir}/finalcut/$i
 done
 
+%clean
+%{__rm} -rf %{buildroot}
+
 %post -n libfinal%{sover} -p /sbin/ldconfig
 %postun -n libfinal%{sover} -p /sbin/ldconfig
 
@@ -162,9 +165,9 @@ done
 
 %files -n libfinal-devel
 %if 0%{?sle_version} > 120200 || 0%{?suse_version} > 1500
-%license COPYING.LESSER
+%license LICENSE
 %else
-%doc COPYING.LESSER
+%doc LICENSE
 %endif
 %doc ChangeLog README.md
 %exclude %{_docdir}/%{name}/examples
