@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May 20 06:14:41 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 3.2.2
+  * Major version upgrade, expect API breakage
+  * Too many changes since 2.6.0 to list here, for a full changelog
+    please visit:
+    https://github.com/httpie/httpie/blob/master/CHANGELOG.md
+- Disable more tests that fail in OBS
+- Update dependencies
+- Update fdupes deduplication
+- Add bash and fish completion support
+
+-------------------------------------------------------------------
 Tue Apr 26 06:14:41 UTC 2022 - pgajdos@suse.com
 
 - python3-mock is not required for build
