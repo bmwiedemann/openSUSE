@@ -73,7 +73,7 @@ use ocl-icd for ICD functionality.
 
 %build
 ./bootstrap
-%configure
+%configure --enable-official-khronos-headers
 %make_build stamp-generator stamp-generator-dummy
 %make_build
 
