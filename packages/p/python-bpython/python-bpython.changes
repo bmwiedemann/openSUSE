@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 23 08:55:21 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Stop calling setup.py build_sphinx, switch to sphinx-build, and also
+  build manual pages. 
+
+-------------------------------------------------------------------
 Mon Jan 23 14:39:42 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to version 0.24

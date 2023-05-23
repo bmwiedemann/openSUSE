@@ -16,8 +16,6 @@
 #
 
 
-%define         skip_python2 1
-%define         skip_python36 1
 %bcond_without     test
 Name:           python-bpython
 Version:        0.24
@@ -94,10 +92,18 @@ Documentation and help files for %{name}.
 
 %build
 %pyproject_wheel
-%python_exec setup.py build_sphinx && rm build/sphinx/html/.buildinfo # HTML documentation
+# Build HTML documentation
+sphinx-build doc/sphinx/source build/sphinx/html && rm build/sphinx/html/.buildinfo
+# .. and the manual pages
+sphinx-build -b man doc/sphinx/source build/sphinx/man
 
 %install
 %pyproject_install
+# install manual pages by hand, for now: gh#bpython/bpython/issues/987
+mkdir -p %{buildroot}%{_mandir}/man1
+mkdir %{buildroot}%{_mandir}/man5
+mv build/sphinx/man/bpython.1 %{buildroot}/%{_mandir}/man1
+mv build/sphinx/man/bpython-config.5 %{buildroot}/%{_mandir}/man5
 
 %python_clone -a %{buildroot}%{_bindir}/bpython
 %python_clone -a %{buildroot}%{_bindir}/bpython-curses
