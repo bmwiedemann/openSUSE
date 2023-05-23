@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 19 15:36:55 UTC 2023 - José Iván López González <jlopez@suse.com>
+
+- Add bus_id for DASD (gh#yast/yast-storage-ng#1339,
+  gh#openSUSE/agama#578).
+- 4.6.10
+
+-------------------------------------------------------------------
 Wed May 17 11:45:26 UTC 2023 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - GuidedProposal: allow Agama to configure exactly what to do with
