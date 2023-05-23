@@ -47,7 +47,7 @@ ExclusiveArch:  do_not_build
 %define adwaitaqt_version 1.4.2
 
 Name:           QGnomePlatform%{?name_suffix}
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        A better Qt application inclusion under GNOME
 #
@@ -73,8 +73,6 @@ Group:          System/GUI/GNOME
 URL:            https://github.com/FedoraQt/QGnomePlatform/
 Source:         %{url}/archive/%{version}.tar.gz#/QGnomePlatform-%{version}.tar.gz
 Patch0:         fix-XSetTransientForHint.patch
-# PATCH-FIX-UPSTREAM 0001-fix-qt-6.5-compilation.patch -- Fix build with qt-6.5
-Patch1:         0001-fix-qt-6.5-compilation.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -93,6 +91,7 @@ BuildRequires:  cmake(AdwaitaQt) >= %{adwaitaqt_version}
 BuildRequires:  cmake(Qt5Core) >= %{qt_min_version}
 BuildRequires:  cmake(Qt5DBus) >= %{qt_min_version}
 BuildRequires:  cmake(Qt5Gui) >= %{qt_min_version}
+BuildRequires:  cmake(Qt5QuickControls2) >= %{qt_min_version}
 BuildRequires:  cmake(Qt5ThemeSupport)
 BuildRequires:  cmake(Qt5WaylandClient) >= %{qt_min_version}
 BuildRequires:  cmake(Qt5Widgets) >= %{qt_min_version}
@@ -112,6 +111,7 @@ BuildRequires:  cmake(AdwaitaQt6) >= %{adwaitaqt_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt_min_version}
+BuildRequires:  cmake(Qt6QuickControls2) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6WaylandClient) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt_min_version}
 Supplements:    (libQt6Gui6 and gnome-session)
@@ -120,11 +120,34 @@ Supplements:    (libQt6Gui6 and gnome-session)
 # Runtime Dependencies
 #
 Requires:       adwaita-%{flavor}
+# Make all flavors depend on the same color schemes subpackage. (see below)
+Requires:       QGnomePlatform-colorschemes
 
 %description
 QGnomePlatform is a Qt Platform Theme designed to use as many of the GNOME
 settings as possible in unmodified Qt applications. It allows Qt applications
 to fit into the environment as well as possible.
+
+#
+# All flavors of QGnomePlaform depend on the same color scheme files.
+# In order to avoid duplicatate production of the same package,
+# we only produce the color schemes package when building the qt5 flavor.
+# When removing the Qt5 flavor from this package, please ensure that the
+# color schemes package is produced in another flavor's build instead.
+#
+
+# Only produce the color schemes package when building the qt5 flavor. (see above)
+%if 0%{?qt5}
+%package -n QGnomePlatform-colorschemes
+Summary:        Color schemes for QGnomePlatform
+Group:          System/Libraries
+BuildArch:      noarch
+
+%description -n QGnomePlatform-colorschemes
+QGnomePlatform is a Qt Platform Theme designed to use as many of the GNOME
+settings as possible in unmodified Qt applications. It allows Qt applications
+to fit into the environment as well as possible.
+%endif
 
 %prep
 %autosetup -p1 -n QGnomePlatform-%{version}
@@ -151,6 +174,10 @@ to fit into the environment as well as possible.
 %else
 %cmake_install
 %endif
+# Only produce the color schemes package when building the qt5 flavor. (see above)
+%if ! 0%{?qt5}
+rm -r %{buildroot}%{_datadir}/color-schemes
+%endif
 
 %files
 %doc README.md
@@ -161,5 +188,15 @@ to fit into the environment as well as possible.
 %dir %{_qt_plugindir}/platformthemes
 %{_qt_plugindir}/platformthemes/libqgnomeplatformtheme.so
 %{_qt_plugindir}/wayland-decoration-client/libqgnomeplatformdecoration.so
+
+# Only produce the color schemes package when building the qt5 flavor. (see above)
+%if 0%{?qt5}
+%files -n QGnomePlatform-colorschemes
+%dir %{_datadir}/color-schemes
+%{_datadir}/color-schemes/Adwaita.colors
+%{_datadir}/color-schemes/AdwaitaDark.colors
+%{_datadir}/color-schemes/AdwaitaHighcontrast.colors
+%{_datadir}/color-schemes/AdwaitaHighcontrastInverse.colors
+%endif
 
 %changelog

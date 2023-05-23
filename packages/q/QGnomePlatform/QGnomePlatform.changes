@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu May 11 14:31:26 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 0.9.1:
+  + Changes:
+    - Thinner border between window and decorations
+    - Added support for KColorScheme using Adwaita-like color
+      schemes
+    - Added integration for QtQuick Controls2 applications
+    - Added support for color-scheme in GSettings backend
+    - Implemented reasonable icon fallback - depends on Qt change
+      476542
+    - Qt6: implemented support for QPlatformTheme::MouseCursorSize
+      and QPlatformTheme::MouseCursorTheme
+  + Fixes:
+    - Do not crash when GSettings shema is not found
+    - Respect QT_STYLE_OVERRIDE env variable
+    - Fixed titlebar dimming on Wayland
+    - Fixed regression in rendering titlebar on vanilla Qt
+- Drop 0001-fix-qt-6.5-compilation.patch as it is included in
+  version 0.9.1
+- Adjust fix-XSetTransientForHint.patch for version 0.9.1
+- Split QGnomePlatform's new color schemes into a new package
+  called "QGnomePlatform-colorschemes"
+
+-------------------------------------------------------------------
 Thu Apr  6 17:53:47 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
 
 - Add 0001-fix-qt-6.5-compilation.patch to fix a compilation
