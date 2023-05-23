@@ -217,4 +217,20 @@ Fixes the failing builds for ansible-lint (see SR#1006256)</comment>
     <comment></comment>
     <requestid>1082188</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>190a919e2e17f464e74cbd5caa9934d0</srcmd5>
+    <version>6.16.2</version>
+    <time>1684846443</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.16.2:
+- adjust BuildRequires and Requires to actual requirements,
+  especially python-ansible-compat &gt;= 4.0.1
+- properly set the version, so 'ansible-lint --version' gives the
+  right information
+- update to 6.16.1:
+- modify %if-condition to allow building for python3.10 or
+  python3.11 on SLES15
+- update to 6.16.0:</comment>
+    <requestid>1088380</requestid>
+  </revision>
 </revisionlist>

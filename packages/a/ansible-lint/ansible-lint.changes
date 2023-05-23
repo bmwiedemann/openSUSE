@@ -1,4 +1,135 @@
 -------------------------------------------------------------------
+Mon May 22 05:39:01 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.16.2:
+  * Bugfixes
+    - Update test dependencies (#3470) @ssbarnea
+    - Fix and document installing of requirements.yml files (#3471)
+      @ssbarnea
+    - Do not ever exclude files given as arguments (#3468)
+      @ssbarnea
+    - Ensure we return error if argument gives are not present
+      (#3467) @ssbarnea
+    - Allow rules to expose all tags they can produce (#3464)
+      @ssbarnea
+    - Enable var-name rule to detect read-only variables (#3462)
+      @ssbarnea
+    - Add Oracle Enterprise Linux 7.* (#3463) @Rylon
+    - Fix for var-naming rule to not break on include_tasks and
+      vars (#3458) @ajinkyau
+    - var-naming now prevents use of Ansible reserved names (#3460)
+      @ssbarnea
+    - Ensure that we also lint files from git submodules (#3431)
+      @ssbarnea
+    - Adding 2.16 to the list of allowed ansible-core versions in
+      meta-runtime rule (#3455) @alisonlhart 
+
+-------------------------------------------------------------------
+Wed May 17 09:06:08 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- adjust BuildRequires and Requires to actual requirements,
+  especially python-ansible-compat >= 4.0.1
+- properly set the version, so 'ansible-lint --version' gives the
+  right information
+
+-------------------------------------------------------------------
+Tue May 16 09:10:11 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.16.1:
+  * Bugfixes
+    - Update lock file to use ansible-core 2.15.0 (#3449) @ssbarnea
+    - Install requirements from galaxy.yml and
+      tests/requirements.yml (#3446) @ssbarnea
+    - Add Kali Linux as a supported platform (#3448) @mcdonnnj
+    - Do not trigger no_handler upon complex conditions (#3437)
+      @klaus-tux
+    - Hide warning about unique filter originating from core
+      (#3436) @ssbarnea
+    - Relax ruamel-yaml requirements (#3433) @ssbarnea
+    - Suggest correct alternative for `with_filetree` (#3432)
+      @ErwinJanssen
+    - Upgrade var-naming rule to include role name prefix (#3422)
+      @ssbarnea
+    - Fix exception when using reformatting on scalars (#3423)
+      @ssbarnea
+    - Find and lint imported playbooks (#3413) @ajinkyau
+
+-------------------------------------------------------------------
+Mon May 15 12:25:40 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- modify %if-condition to allow building for python3.10 or
+  python3.11 on SLES15
+
+-------------------------------------------------------------------
+Tue May  9 10:55:17 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.16.0:
+  * Minor Changes
+    - Capture python warnings and report some of them as matches
+      (#3324) @ssbarnea
+    - Capture and hide ansible core warnings by default (#3361)
+      @ssbarnea
+    - Remove progressive mode (#3350) @ssbarnea
+    - Enforce use of lineno variable name inside the library
+      (#3326) @ssbarnea
+  * Bugfixes
+    - Add Amazon Linux 2023 as a supported platform (#3405)
+      @artis3n
+    - Capture python warnings and report some of them as matches
+      (#3324) @ssbarnea
+    - Fix missing required arguments issue from args rule (#3402)
+      @ajinkyau
+    - Change matchtask to receive a Task instance (#3403) @ssbarnea
+    - Require ruamel.yaml>=0.17.24 (#3406) @ssbarnea
+    - Avoid exception when trying to load invalid text files
+      (#3399) @ssbarnea
+    - Fix ansible collection path detection (#3398) @ssbarnea
+    - ruff: Address FBT002 (#3389) @shatakshiiii
+    - More pathlib adoption (#3390) @ssbarnea
+    - Avoid dropping comments on YAML transformation (#3392)
+      @ssbarnea
+    - Correct docs on navigator schema location (#3394) @yajo
+    - Fix changelog schema for connection plugins (#3388) @Qalthos
+    - Migrate from os.path to pathlib (#3384) @ssbarnea
+    - Remove resolvelib from requirements lock (#3387) @ssbarnea
+    - Make cwd use pathlib (#3383) @ssbarnea
+    - ruff: Address PGH (#3380) @ssbarnea
+    - ruff: Address A (#3379) @ssbarnea
+    - ruff: Address B (#3377) @ssbarnea
+    - ruff: Address SLF (#3372) @ssbarnea
+    - ruff: Address `SIM` (#3373) @shatakshiiii
+    - ruff: Address EXE (#3367) @ssbarnea
+    - ruff: Address BLE (#3368) @shatakshiiii
+    - ruff: Address INP and PLW (#3366) @ssbarnea
+    - Add initial handling of submodules to contribution docs
+      (#3362) @klaus-tux
+    - ruff: Address T and RET (#3364) @ssbarnea
+    - Find "changed" not only in first "when" condition (#3358)
+      @klaus-tux
+    - ruff: fix S rule (#3363) @ssbarnea
+    - Make MatchError a dataclass (#3345) @ssbarnea
+    - Remove `EM` from ruff ignores (#3356) @shatakshiiii
+    - Mock jinja filters to prevent templating errors (#3355)
+      @ssbarnea
+    - Update schema files (#3354) @ssbarnea
+    - Add Fedora 38 to meta.json schema file (#3353)
+      @Marek-Mantaj-Mobica
+    - Remove `RUF` from ruff ignores (#3346) @ajinkyau
+    - Remove `G` from ruff ignores (#3332) @shatakshiiii
+    - Remove `ISC` from ruff ignores (#3342) @shatakshiiii
+    - Remove `C` from ruff ignores (#3343) @ajinkyau
+    - Make linter configuration a dataclass (#3334) @ssbarnea
+    - Remove `N` from ruff ignores (#3328) @shatakshiiii
+    - Remove useless . from additional_dependencies in pre-commit
+      hook (#3327) @trallnag
+
+-------------------------------------------------------------------
+Fri May  5 07:16:18 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- change python version on Leap15/SLES15 to python3.11 to use the
+  new stack supported by SUSE
+
+-------------------------------------------------------------------
 Fri Apr 21 12:54:36 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.15.0:

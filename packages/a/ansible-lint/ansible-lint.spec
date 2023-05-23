@@ -16,13 +16,22 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%{?sle15_python_module_pythons}
 %if 0%{?suse_version} < 1550
 # Leap15, SLES15
+%if %pythons == "python310"
 %define ansible_python python310
 %define ansible_python_executable python3.10
 %define ansible_python_sitelib %python310_sitelib
+%endif
+%if %pythons == "python311"
+%define ansible_python python311
+%define ansible_python_executable python3.11
+%define ansible_python_sitelib %python311_sitelib
+%endif
 %else
 # Tumbleweed
+%define pythons python3
 %define ansible_python python3
 %define ansible_python_executable python3
 %define ansible_python_sitelib %python3_sitelib
@@ -31,7 +40,7 @@
 %global lib_name ansiblelint
 %{?python_enable_dependency_generator}
 Name:           ansible-lint
-Version:        6.15.0
+Version:        6.16.2
 Release:        0%{?dist}
 Summary:        Best practices checker for Ansible
 License:        MIT
@@ -58,36 +67,39 @@ BuildRequires:  %{ansible_python}-flake8
 
 # Add runtime requirements (unless required for tests)
 # to make sure this only builds if they are present
-BuildRequires:  ansible-core >= 2.14
-BuildRequires:  %{ansible_python}-ansible-compat >= 2.2.5
-BuildRequires:  %{ansible_python}-enrich >= 1.2.6
-BuildRequires:  %{ansible_python}-filelock >= 3.8.0
-BuildRequires:  %{ansible_python}-jsonschema >= 4.17.0
+# https://github.com/ansible/ansible-lint/blob/main/.config/requirements-lock.txt
+BuildRequires:  ansible-core >= 2.15
+BuildRequires:  %{ansible_python}-ansible-compat >= 4.0.1
+BuildRequires:  %{ansible_python}-black >= 23.3.0
+BuildRequires:  %{ansible_python}-enrich >= 1.2.7
+BuildRequires:  %{ansible_python}-filelock >= 3.12.0
+BuildRequires:  %{ansible_python}-jsonschema >= 4.17.3
 BuildRequires:  %{ansible_python}-packaging >= 21.3
-BuildRequires:  %{ansible_python}-PyYAML >= 5.4.1
-BuildRequires:  %{ansible_python}-rich >= 12.0.0
-BuildRequires:  (%{ansible_python}-ruamel.yaml >= 0.17.21 and %{ansible_python}-ruamel.yaml < 0.18)
-BuildRequires:  %{ansible_python}-subprocess-tee
+BuildRequires:  %{ansible_python}-PyYAML >= 6.0
+BuildRequires:  %{ansible_python}-rich >= 13.3.5
+BuildRequires:  (%{ansible_python}-ruamel.yaml >= 0.17.26 and %{ansible_python}-ruamel.yaml < 0.18)
+BuildRequires:  %{ansible_python}-subprocess-tee >= 0.4.1
 BuildRequires:  %{ansible_python}-tenacity
-BuildRequires:  %{ansible_python}-wcmatch >= 8.3.2
-BuildRequires:  %{ansible_python}-yamllint >= 1.26.3
+BuildRequires:  %{ansible_python}-wcmatch >= 8.4.1
+BuildRequires:  %{ansible_python}-yamllint >= 1.31.0
 
 #
-Requires:       ansible-core >= 2.14
-Requires:       %{ansible_python}-ansible-compat >= 2.2.5
-Requires:       %{ansible_python}-black >= 22.8.0
-Requires:       %{ansible_python}-bracex
+# https://github.com/ansible/ansible-lint/blob/main/.config/requirements-lock.txt
+Requires:       ansible-core >= 2.15
+Requires:       %{ansible_python}-ansible-compat >= 4.0.1
+Requires:       %{ansible_python}-black >= 23.3.0
+Requires:       %{ansible_python}-bracex >= 2.2.1
 Requires:       %{ansible_python}-enrich >= 1.2.6
-Requires:       %{ansible_python}-filelock
+Requires:       %{ansible_python}-filelock  >= 3.12.0
 Requires:       %{ansible_python}-jsonschema >= 4.17.0
 Requires:       %{ansible_python}-packaging >= 21.3
-Requires:       %{ansible_python}-PyYAML  >= 5.4.1
-Requires:       %{ansible_python}-rich >= 12.0.0
-Requires:       (%{ansible_python}-ruamel.yaml >= 0.17.21 and %{ansible_python}-ruamel.yaml < 0.18)
-Requires:       %{ansible_python}-subprocess-tee
+Requires:       %{ansible_python}-PyYAML  >= 6.0
+Requires:       %{ansible_python}-rich >= 13.3.5
+Requires:       (%{ansible_python}-ruamel.yaml >= 0.17.26 and %{ansible_python}-ruamel.yaml < 0.18)
+Requires:       %{ansible_python}-subprocess-tee >= 0.4.1
 Requires:       %{ansible_python}-tenacity
-Requires:       %{ansible_python}-wcmatch >= 8.3.2
-Requires:       %{ansible_python}-yamllint >= 1.26.3
+Requires:       %{ansible_python}-wcmatch >= 8.4.1
+Requires:       %{ansible_python}-yamllint >= 1.31.0
 
 %description
 Checks playbooks for practices and behavior that could potentially be improved.
@@ -97,6 +109,7 @@ Checks playbooks for practices and behavior that could potentially be improved.
 sed -i '/^dynamic/d' pyproject.toml
 sed -i '/^description/a version = "%{version}"' pyproject.toml
 sed -i '1{/\/usr\/bin\/env python/d;}' src/ansiblelint/__main__.py
+sed -i '/__version__ =/ s/0.1.dev1/%{version}/' src/ansiblelint/version.py
 
 %build
 %{ansible_python_executable} -mpip wheel --no-deps --disable-pip-version-check --use-pep517 --no-build-isolation --progress-bar off --verbose --wheel-dir ./build/ .
