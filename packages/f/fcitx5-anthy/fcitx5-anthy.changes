@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 22 11:39:12 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- Update to 5.0.14
+  * Add all size of icon for anthy
+  * replace uint with unsigned int
+  * Fix custom kana/nicola table loading
+
+-------------------------------------------------------------------
 Sun Nov 20 10:24:27 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 5.0.13

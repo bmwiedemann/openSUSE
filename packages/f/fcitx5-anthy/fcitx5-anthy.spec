@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-anthy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-anthy
-Version:        5.0.13
+Version:        5.0.14
 Release:        0
 Summary:        Anthy Wrapper for Fcitx5
 License:        GPL-2.0-or-later
@@ -60,7 +60,9 @@ Anthy Wrapper for Fcitx5.
 %{_fcitx5_imconfdir}/anthy.conf
 %{_fcitx5_datadir}/anthy
 %{_datadir}/icons/hicolor/*/status/org.fcitx.Fcitx5.fcitx-anthy*
+%{_datadir}/icons/hicolor/*/apps/org.fcitx.Fcitx5.fcitx-anthy*
 %{_datadir}/icons/hicolor/*/status/fcitx-anthy*
+%{_datadir}/icons/hicolor/*/apps/fcitx-anthy*
 %{_datadir}/metainfo/org.fcitx.Fcitx5.Addon.Anthy.metainfo.xml
 
 %changelog
