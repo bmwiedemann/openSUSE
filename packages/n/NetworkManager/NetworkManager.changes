@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 13 16:50:57 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add nm-runstatedir.patch: to correct rundir from /var/run to /run
+  for systemd FHS compatibility
+
+-------------------------------------------------------------------
 Thu Apr 20 18:23:33 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.42.6:
