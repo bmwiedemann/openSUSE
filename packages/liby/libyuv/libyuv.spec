@@ -1,7 +1,7 @@
 #
 # spec file for package libyuv
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 
 
 Name:           libyuv
-Version:        20220920+f9fda6e
+Version:        20230517+a377993
 Release:        0
 Summary:        YUV scaling and conversion library
 License:        BSD-3-Clause
-Group:          Productivity/Multimedia/Other
+Group:          Productivity/Graphics/Other
 URL:            https://chromium.googlesource.com/libyuv/libyuv/
 Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
@@ -29,39 +29,47 @@ Source99:       baselibs.conf
 Patch0:         Use-a-proper-so-version.patch
 Patch1:         Link-against-shared-library.patch
 Patch2:         Disable-static-library.patch
-Patch3:         Don-t-install-conversion-tool.patch
+Patch3:         Install-missing-yuvconstants-binary.patch
 Patch4:         Use-library-suffix-during-installation.patch
-Patch5:         Link-main-library-against-libjpeg.patch
+Patch5:         cmake-minimum-required.patch
+Patch6:         convert_test-little-endian.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(libjpeg)
 
 %description
-libyuv is an open source project that includes YUV scaling and conversion functionality.
-- Scale YUV to prepare content for compression, with point, bilinear or box filter.
-- Convert to YUV from webcam formats for compression.
-- Convert to RGB formats for rendering/effects.
-- Rotate by 90/180/270 degrees to adjust for mobile devices in portrait mode.
-- Optimized for SSSE3/AVX2 on x86/x64.
-- Optimized for Neon on Arm.
-- Optimized for MSA on Mips.
+libyuv is a project for YUV image scaling and conversion. It can
+convert between RGB and YUV, scale images with point/bilinear/box
+filter, rotate by 90/180/270°, and offers SSE/NEON/MSA acceleration.
 
 %package -n libyuv0
 Summary:        YUV scaling and conversion library
 Group:          System/Libraries
 
 %description -n libyuv0
-libyuv is an open source project that includes YUV scaling and conversion functionality.
+libyuv is a project for YUV image scaling and conversion.
 
 %package devel
 Summary:        Development files for the YUV scaling and conversion library
 Group:          Development/Libraries/C and C++
-Requires:       libyuv0 = %{version}
+Requires:       libyuv0%{_isa} = %{version}
 
 %description devel
 This package contains the development files
-for the YUV scaling and conversion library
+for the YUV scaling and conversion library.
+
+%package tools
+Summary:        Command line utilities from libyuv
+Group:          Productivity/Graphics/Other
+
+%description tools
+libyuv is a project for YUV image scaling and conversion. It can
+convert between RGB and YUV, scale images with point/bilinear/box
+filter, rotate by 90/180/270°, and offers SSE/NEON/MSA acceleration.
+
+This package contains the yuvconvert and yuvconstants commandline programs.
 
 %prep
 %autosetup -p1
@@ -74,20 +82,29 @@ exec_prefix=\${prefix}
 includedir=%{_includedir}
 libdir=%{_libdir}
 
-Name:  %{name}
+Name:           %{name}
 Description:  %{summary}
-Version:  ${rversion}
+Version:        ${rversion}
 Libs:  -lyuv
 EOF
 
-%cmake
+# Compile all unit tests, not only the default set.
+export CFLAGS="%{optflags} -DENABLE_ROW_TESTS -DENABLE_FULL_TESTS"
+export CXXFLAGS="$CFLAGS"
+
+OUR_CMAKE_FLAGS=' -DCMAKE_SKIP_RPATH:BOOL=ON ' #do not put bogus runpath in installed executables
+OUR_CMAKE_FLAGS+=' -DUNIT_TEST:BOOL=ON '
+%cmake $OUR_CMAKE_FLAGS
 %cmake_build
 
 %install
 %cmake_install
-install -Dm0644 %{name}.pc %{buildroot}%{_libdir}/pkgconfig/%{name}.pc
+install -pDm0644 %{name}.pc %{buildroot}%{_libdir}/pkgconfig/%{name}.pc
 
 %ldconfig_scriptlets -n libyuv0
+
+%check
+LD_LIBRARY_PATH=$PWD/build ./build/libyuv_unittest
 
 %files -n libyuv0
 %{_libdir}/libyuv.so.*
@@ -98,5 +115,9 @@ install -Dm0644 %{name}.pc %{buildroot}%{_libdir}/pkgconfig/%{name}.pc
 %{_includedir}/%{name}
 %{_includedir}/%{name}.h
 %{_libdir}/pkgconfig/%{name}.pc
+
+%files tools
+%{_bindir}/yuvconvert
+%{_bindir}/yuvconstants
 
 %changelog

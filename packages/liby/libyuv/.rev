@@ -40,4 +40,34 @@
     <comment></comment>
     <requestid>1031572</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5c821714ce95bdffd36c5b8fe58dc7a2</srcmd5>
+    <version>20230517+a377993</version>
+    <time>1684846415</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim redundancies and compact descriptions.
+- Update to snapshot 20230517+a377993:
+  * ARGBToI420Alpha function to convert ARGB to I420 with Alpha
+  * Enable I{422,444}AlphaToARGBRow_RVV &amp; ARGBAttentuateRow_RVV
+  * Bump version and apply clang format
+  * Enable ARGBToYMatrixRow_RVV/RGBAToYMatrixRow_RVV/RGBToYMatrixRow_RVV
+  * Enable RVV if qemu is detected
+  * Add ARGBToRAWRow_RVV, ARGBToRGB24Row_RVV, RGB24ToARGBRow_RVV
+  * YUY2ToNV12 using YUY2ToY and YUY2ToNVUV
+  * Remove old cipd clobber gclient hook.
+  * Roll chromium_revision 004bde16df..28dca358ed (1051775:1052960)
+  * Roll chromium_revision 7d683aeda8..004bde16df (1050091:1051775)
+  * [code-health] Migrate presubmit to python3
+  * Enable unlimited data for YUV to RGB
+  * Roll chromium_revision 829c6df33d..7d683aeda8 (945687:1050098th 
+- Add libyuv-tools package
+- Run test suite in %check
+- drop Don-t-install-conversion-tool.patch
+- add Install-missing-yuvconstants-binary.patch
+- add cmake-minimum-required.patch
+- drop Link-main-library-against-libjpeg.patch applied upstream
+- add convert_test-little-endian.patch
+</comment>
+    <requestid>1088432</requestid>
+  </revision>
 </revisionlist>
