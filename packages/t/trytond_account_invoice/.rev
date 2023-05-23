@@ -219,4 +219,12 @@
     <comment>bugfix release</comment>
     <requestid>1077916</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>f8bfb1f447a031ca05eef722e9f55f8f</srcmd5>
+    <version>6.0.12</version>
+    <time>1684846525</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix</comment>
+    <requestid>1088642</requestid>
+  </revision>
 </revisionlist>
