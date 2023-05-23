@@ -33,7 +33,7 @@ Name:           sysprof%{_name_suffix}
 Version:        3.48.0
 Release:        0
 Summary:        A system-wide Linux profiler
-License:        GPL-3.0-or-later AND LGPL-2.1-or-later
+License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Development/Tools/Debuggers
 URL:            https://wiki.gnome.org/Apps/Sysprof
 Source0:        https://download.gnome.org/sources/sysprof/3.48/sysprof-%{version}.tar.xz
