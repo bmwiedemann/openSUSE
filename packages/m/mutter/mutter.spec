@@ -36,6 +36,8 @@ Patch1:         mutter-disable-cvt-s390x.patch
 Patch2:         mutter-window-actor-Special-case-shaped-Java-windows.patch
 # PATCH-FIX-UPSTREAM mutter-crash-meta_context_terminate.patch bsc#1199382 glgo#GNOME/mutter#2267 xwang@suse.com -- Fix SIGSEGV in meta_context_terminate
 Patch3:         mutter-crash-meta_context_terminate.patch
+# PATCH-FIX-UPSTREAM mutter-fix-wacom-tablet-crash.patch bsc#1211413 glgo#GNOME/mutter#2796 alynx.zhou@suse.com -- Fix x11 error of input configuration.
+Patch4:         mutter-fix-wacom-tablet-crash.patch
 
 ## SLE-only patches start at 1000
 # PATCH-FEATURE-SLE mutter-SLE-bell.patch FATE#316042 bnc#889218 idonmez@suse.com -- make audible bell work out of the box.

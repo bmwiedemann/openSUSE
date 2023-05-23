@@ -1782,4 +1782,14 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
     <comment></comment>
     <requestid>1085779</requestid>
   </revision>
+  <revision rev="203" vrev="2">
+    <srcmd5>31ba3eb352ebd3827b4b49dd9cee9b4d</srcmd5>
+    <version>44.1+2</version>
+    <time>1684846409</time>
+    <user>dimstar_suse</user>
+    <comment>- Add mutter-fix-wacom-tablet-crash.patch: Use clutter error trap
+  to fix x11 error of some input device configuration like wacom
+  tablet (bsc#1211413, glgo#GNOME/mutter#2796). (forwarded request 1087507 from AZhou)</comment>
+    <requestid>1088409</requestid>
+  </revision>
 </revisionlist>

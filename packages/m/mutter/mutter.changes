@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 17 03:01:48 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add mutter-fix-wacom-tablet-crash.patch: Use clutter error trap
+  to fix x11 error of some input device configuration like wacom
+  tablet (bsc#1211413, glgo#GNOME/mutter#2796).
+
+-------------------------------------------------------------------
 Tue May 09 09:30:19 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 44.1+2:

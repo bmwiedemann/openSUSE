@@ -1,0 +1,116 @@
+diff --unified --recursive --text --new-file --color mutter-44.1+2.old/src/backends/x11/meta-input-settings-x11.c mutter-44.1+2.new/src/backends/x11/meta-input-settings-x11.c
+--- mutter-44.1+2.old/src/backends/x11/meta-input-settings-x11.c	2023-05-05 03:08:50.000000000 +0800
++++ mutter-44.1+2.new/src/backends/x11/meta-input-settings-x11.c	2023-05-17 12:08:22.732865538 +0800
+@@ -58,28 +58,18 @@
+   return meta_input_settings_get_backend (settings);
+ }
+ 
+-static MetaDisplay *
+-get_display (MetaInputSettings *settings)
+-{
+-  MetaBackend *backend = get_backend (settings);
+-  MetaContext *context = meta_backend_get_context (backend);
+-
+-  return meta_context_get_display (context);
+-}
+-
+ static void
+ device_handle_free (gpointer user_data)
+ {
+   DeviceHandle *handle = user_data;
+   MetaInputSettings *settings = handle->settings;
+-  MetaDisplay *display = get_display (settings);
+   MetaBackend *backend = get_backend (settings);
+   Display *xdisplay = meta_backend_x11_get_xdisplay (META_BACKEND_X11 (backend));
+   XDevice *xdev = user_data;
+ 
+-  meta_x11_error_trap_push (display->x11_display);
++  meta_clutter_x11_trap_x_errors ();
+   XCloseDevice (xdisplay, xdev);
+-  meta_x11_error_trap_pop (display->x11_display);
++  meta_clutter_x11_untrap_x_errors ();
+ 
+   g_free (handle);
+ }
+@@ -88,7 +78,6 @@
+ device_ensure_xdevice (MetaInputSettings  *settings,
+                        ClutterInputDevice *device)
+ {
+-  MetaDisplay *display = get_display (settings);
+   MetaBackend *backend = get_backend (settings);
+   Display *xdisplay = meta_backend_x11_get_xdisplay (META_BACKEND_X11 (backend));
+   int device_id = meta_input_device_x11_get_device_id (device);
+@@ -98,9 +87,9 @@
+   if (xdev)
+     return xdev;
+ 
+-  meta_x11_error_trap_push (display->x11_display);
++  meta_clutter_x11_trap_x_errors ();
+   xdev = XOpenDevice (xdisplay, device_id);
+-  meta_x11_error_trap_pop (display->x11_display);
++  meta_clutter_x11_untrap_x_errors ();
+ 
+   if (xdev)
+     {
+@@ -619,16 +608,12 @@
+                                             ClutterInputDevice    *device,
+                                             GDesktopTabletMapping  mapping)
+ {
+-  MetaDisplay *display = get_display (settings);
+   MetaBackend *backend = get_backend (settings);
+   Display *xdisplay = meta_backend_x11_get_xdisplay (META_BACKEND_X11 (backend));
+   XDevice *xdev;
+ 
+-  if (!display)
+-    return;
+-
+   /* Grab the puke bucket! */
+-  meta_x11_error_trap_push (display->x11_display);
++  meta_clutter_x11_trap_x_errors ();
+   xdev = device_ensure_xdevice (settings, device);
+   if (xdev)
+     {
+@@ -637,11 +622,7 @@
+                       Absolute : Relative);
+     }
+ 
+-  if (meta_x11_error_trap_pop_with_return (display->x11_display))
+-    {
+-      g_warning ("Could not set tablet mapping for %s",
+-                 clutter_input_device_get_device_name (device));
+-    }
++  meta_clutter_x11_untrap_x_errors ();
+ }
+ 
+ static gboolean
+@@ -776,16 +757,12 @@
+                                                GDesktopStylusButtonAction  secondary,
+                                                GDesktopStylusButtonAction  tertiary)
+ {
+-  MetaDisplay *display = get_display (settings);
+   MetaBackend *backend = get_backend (settings);
+   Display *xdisplay = meta_backend_x11_get_xdisplay (META_BACKEND_X11 (backend));
+   XDevice *xdev;
+ 
+-  if (!display)
+-    return;
+-
+   /* Grab the puke bucket! */
+-  meta_x11_error_trap_push (display->x11_display);
++  meta_clutter_x11_trap_x_errors ();
+   xdev = device_ensure_xdevice (settings, device);
+   if (xdev)
+     {
+@@ -803,11 +780,7 @@
+       XSetDeviceButtonMapping (xdisplay, xdev, map, G_N_ELEMENTS (map));
+     }
+ 
+-  if (meta_x11_error_trap_pop_with_return (display->x11_display))
+-    {
+-      g_warning ("Could not set stylus button map for %s",
+-                 clutter_input_device_get_device_name (device));
+-    }
++  meta_clutter_x11_untrap_x_errors ();
+ }
+ 
+ static void
