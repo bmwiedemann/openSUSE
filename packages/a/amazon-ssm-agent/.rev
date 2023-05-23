@@ -258,4 +258,18 @@
   * Added instance id verification to registration process</comment>
     <requestid>1079758</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>073dbf4f315283acfc36fb6678ffed14</srcmd5>
+    <version>3.2.923.0</version>
+    <time>1684846475</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.2.923.0
+  * Update Dockerfile Go version to 1.19
+  * Add reporting of MGS connection status
+  * Add support for updating to agent version marked stable
+  * Add status code to MGS ack and send on message process failure
+  * Update golangci-lint configuration
+  * Add e2e tag to session shell tests (forwarded request 1088358 from glaubitz)</comment>
+    <requestid>1088513</requestid>
+  </revision>
 </revisionlist>

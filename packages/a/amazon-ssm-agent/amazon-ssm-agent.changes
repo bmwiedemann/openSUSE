@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May 22 11:49:08 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.2.923.0
+  * Update Dockerfile Go version to 1.19
+  * Add reporting of MGS connection status
+  * Add support for updating to agent version marked stable
+  * Add status code to MGS ack and send on message process failure
+  * Update golangci-lint configuration
+  * Add e2e tag to session shell tests
+
+-------------------------------------------------------------------
 Sun Apr 16 13:07:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.815.0:
