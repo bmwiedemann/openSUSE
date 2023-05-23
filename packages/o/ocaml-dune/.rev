@@ -334,4 +334,12 @@ I will submit the packages one by one once this is accepted.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1071157</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>696baa1688421defe2daf65079a644fb</srcmd5>
+    <version>3.7.1</version>
+    <time>1684846420</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1086689</requestid>
+  </revision>
 </revisionlist>
