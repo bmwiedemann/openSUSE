@@ -259,4 +259,24 @@
     <comment></comment>
     <requestid>1032111</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>86e2c9daf0562f02fe0ecf163fdbb1da</srcmd5>
+    <version>1.2.10</version>
+    <time>1684846412</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.10:
+  + Improved cancellation handling.
+  + Support SAML/SSO authentication for some VPN protocols.
+  + Allow useragent override.
+  + Support webkit2gtk-4.1.
+  + Allow choosing certificates/keys from PKCS#11 tokens.
+  + Allow custom interface name.
+  + Allow UDP connectivity to be disabled.
+  + Support multi-certificate authentication for AnyConnect.
+  + Fix hangs with external browsers which spam stdout.
+  + Updated translations.
+- Drop dbus-location.patch: Fixed upstream.
+- Add pkgconfig(webkit2gtk-4.1) BuildRequires: New dependency. (forwarded request 1087696 from iznogood)</comment>
+    <requestid>1088410</requestid>
+  </revision>
 </revisionlist>

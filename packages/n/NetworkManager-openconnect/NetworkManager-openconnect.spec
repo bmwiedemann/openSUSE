@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-openconnect
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           NetworkManager-openconnect
-Version:        1.2.8
+Version:        1.2.10
 Release:        0
 Summary:        NetworkManager VPN support for OpenConnect
 License:        GPL-2.0-or-later AND LGPL-2.1-only
@@ -25,11 +25,11 @@ Group:          Productivity/Networking/System
 URL:            http://www.gnome.org/projects/NetworkManager
 Source0:        https://download.gnome.org/sources/NetworkManager-openconnect/1.2/%{name}-%{version}.tar.xz
 Source1:        system-user-nm-openconnect.conf
-Patch0:         dbus-location.patch
+
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  libtool
 BuildRequires:  intltool
+BuildRequires:  libtool
 BuildRequires:  libxml2-tools
 BuildRequires:  pkgconfig
 BuildRequires:  sysuser-tools
@@ -42,6 +42,7 @@ BuildRequires:  pkgconfig(libnma-gtk4) >= 1.8.33
 BuildRequires:  pkgconfig(libsecret-unstable)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(openconnect) >= 3.02
+BuildRequires:  pkgconfig(webkit2gtk-4.1)
 Requires:       %{name}-frontend
 Requires:       NetworkManager >= 1.1.0
 Requires:       openconnect
@@ -96,7 +97,7 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/
 %{_sysusersdir}/system-user-nm-openconnect.conf
 
 %files gnome
-%{_datadir}/appdata/network-manager-openconnect.metainfo.xml
+%{_datadir}/metainfo/network-manager-openconnect.metainfo.xml
 %{_libexecdir}/nm-openconnect-auth-dialog
 %{_libdir}/NetworkManager/libnm-vpn-plugin-openconnect-editor.so
 %{_libdir}/NetworkManager/libnm-gtk4-vpn-plugin-openconnect-editor.so
