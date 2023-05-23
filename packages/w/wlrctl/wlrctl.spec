@@ -29,6 +29,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(scdoc)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(xkbcommon)
+# Build failure on arch with unsigned char - https://todo.sr.ht/~brocellous/wlrctl/4
+ExclusiveArch: %{ix86} x86_64
 
 %description
 wlrctl is a command line utility for miscellaneous wlroots Wayland extensions.

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 23 07:34:30 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable build on arch with unsigned char
+  See: https://todo.sr.ht/~brocellous/wlrctl/4
+
+-------------------------------------------------------------------
 Tue May 16 10:42:25 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.2.2:
