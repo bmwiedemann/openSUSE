@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-poetry%{psuffix}
-Version:        1.4.2
+Version:        1.5.0
 Release:        0
 Summary:        Python dependency management and packaging
 License:        MIT
@@ -35,23 +35,20 @@ Group:          Development/Languages/Python
 URL:            https://python-poetry.org/
 # PyPI sdist doesnt contain tests
 Source:         https://github.com/python-poetry/poetry/archive/%{version}.tar.gz#/poetry-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM poetry-pr7893-unpin-requests-toolbelt.patch gh#python-poetry/poetry#7893
-Patch0:         poetry-pr7893-unpin-requests-toolbelt.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core = 1.5.2}
+BuildRequires:  %{python_module poetry-core = 1.6.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-CacheControl >= 0.12.9
 Requires:       python-build >= 0.10.0
-Requires:       python-cachy >= 0.3.0
 Requires:       python-cleo >= 2.0.0
 Requires:       python-crashtest >= 0.4.1
 Requires:       python-dulwich >= 0.21.2
 Requires:       python-filelock >= 3.8.0
 Requires:       python-html5lib >= 1.0
-Requires:       python-poetry-core = 1.5.2
-Requires:       python-poetry-plugin-export >= 1.3.0
+Requires:       python-poetry-core = 1.6.0
+Requires:       python-poetry-plugin-export >= 1.3.1
 %if 0%{?python_version_nodots} < 310
 Requires:       python-importlib-metadata >= 4.4
 %endif
@@ -62,7 +59,7 @@ Requires:       python-lockfile >= 0.12.2
 Requires:       python-packaging >= 20.4
 Requires:       python-pexpect >= 4.7.0
 Requires:       python-pkginfo >= 1.9.4
-Requires:       python-platformdirs >= 2.5.2
+Requires:       python-platformdirs >= 3.0.0
 Requires:       python-pyproject-hooks >= 1.0.0
 Requires:       python-requests >= 2.18
 Requires:       python-shellingham >= 1.5
@@ -72,7 +69,7 @@ Requires:       python-tomli >= 2.0.1
 %endif
 Requires:       python-trove-classifiers >= 2022.5.19
 Requires:       python-urllib3 >= 1.26.0
-Requires:       python-virtualenv >= 20.4.7
+Requires:       python-virtualenv >= 20.22
 Requires:       (python-tomlkit >= 0.11.4 with python-tomlkit < 1.0)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -80,7 +77,8 @@ Recommends:     git-core
 Recommends:     python-devel
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module deepdiff >= 6.2}
+BuildRequires:  %{python_module cachy >= 0.3.0}
+BuildRequires:  %{python_module deepdiff >= 6.3}
 BuildRequires:  %{python_module httpretty >= 1.0}
 # Required because deepdiff > 6.2.3
 BuildRequires:  %{python_module orjson}
@@ -98,8 +96,7 @@ Python dependency management and packaging made easy.
 
 %prep
 %autosetup -p1 -n poetry-%{version}
-for f in console/commands/source/update.py \
-         console/events/console_events.py \
+for f in console/events/console_events.py \
          layouts/standard.py; do
   [ -e src/poetry/$f ] || exit 1 # file does not exist
   [ ! -s src/poetry/$f ] && echo "# empty module" >> src/poetry/$f || exit 2 # file is not empty
@@ -119,6 +116,7 @@ done
 %check
 # can't install setuptools from PyPI (no network)
 donttest="test_uninstall_git_package_nspkg_pth_cleanup or test_builder_setup_generation_runs_with_pip_editable"
+donttest="$donttest or test_installer_with_pypi_repository"
 # does not find the expected packages in venv
 donttest="$donttest or test_executor_should_write_pep610_url_references"
 donttest="$donttest or test_prepare_directory or test_prepare_sdist"

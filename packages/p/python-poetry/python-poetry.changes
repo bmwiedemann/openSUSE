@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Mon May 22 20:32:37 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.5.0
+  ## Added
+  * Introduce the new source priorities explicit and supplemental
+    (#7658, #6879).
+  * Introduce the option to configure the priority of the implicit
+    PyPI source (#7801).
+  * Add handling for corrupt cache files (#7453).
+  * Improve caching of URL and git dependencies (#7693, #7473).
+  * Add option to skip installing directory dependencies (#6845,
+    #7923).
+  * Add --executable option to poetry env info (#7547).
+  * Add --top-level option to poetry show (#7415).
+  * Add --lock option to poetry remove (#7917).
+  * Add experimental POETRY_REQUESTS_TIMEOUT option (#7081).
+  * Improve performance of wheel inspection by avoiding unnecessary
+    file copy operations (#7916).
+  ## Changed
+  * Remove the old deprecated installer and the corresponding
+    setting experimental.new-installer (#7356).
+  * Introduce priority key for sources and deprecate flags default
+    and secondary (#7658).
+  * Deprecate poetry run <entry point> if the entry point was not
+    previously installed via poetry install (#7606).
+  * Only write the lock file if the installation succeeds (#7498).
+  * Do not write the unused package category into the lock file
+    (#7637).
+  ## Fixed
+  * Fix an issue where Poetry's internal pyproject.toml continually
+    grows larger with empty lines (#7705).
+  * Fix an issue where Poetry crashes due to corrupt cache files
+    (#7453).
+  * Fix an issue where the Retry-After in HTTP responses was not
+    respected and retries were handled inconsistently (#7072).
+  * Fix an issue where Poetry silently ignored invalid groups
+    (#7529).
+  * Fix an issue where Poetry does not find a compatible Python
+    version if not given explicitly (#7771).
+  * Fix an issue where the direct_url.json of an editable install
+    from a git dependency was invalid (#7473).
+  * Fix an issue where error messages from build backends were not
+    decoded correctly (#7781).
+  * Fix an infinite loop when adding certain dependencies (#7405).
+  * Fix an issue where pre-commit hooks skip pyproject.toml files
+    in subdirectories (#7239).
+  * Fix an issue where pre-commit hooks do not use the expected
+    Python version (#6989).
+  * Fix an issue where an unclear error message is printed if the
+    project name is the same as one of its dependencies (#7757).
+  * Fix an issue where poetry install returns a zero exit status
+    even though the build script failed (#7812).
+  * Fix an issue where an existing .venv was not used if in-project
+    was not set (#7792).
+  * Fix an issue where multiple extras passed to poetry add were
+    not parsed correctly (#7836).
+  * Fix an issue where poetry shell did not send a newline to fish
+    (#7884).
+  * Fix an issue where poetry update --lock printed operations that
+    were not executed (#7915).
+  * Fix an issue where poetry add --lock did perform a full update
+    of all dependencies (#7920).
+  * Fix an issue where poetry shell did not work with nushell
+    (#7919).
+  * Fix an issue where subprocess calls failed on Python 3.7
+    (#7932).
+  * Fix an issue where keyring was called even though the password
+    was stored in an environment variable (#7928).
+- Drop poetry-pr7893-unpin-requests-toolbelt.patch
+
+-------------------------------------------------------------------
 Mon May  8 20:28:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Sync requests-toolbelt clamps with python metadata
