@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 15 18:48:33 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.26.1:
+  * meson build: drop desktop-file/appdata-file argument.
+  * Add GTK Style Class to context menu.
+  * Update translations.
+
+-------------------------------------------------------------------
 Wed Aug 11 02:28:14 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.26.0
