@@ -3,6 +3,8 @@
     <param name="scm">git</param>
     <param name="url">https://github.com/flipperdevices/qFlipper</param>
     <param name="revision">dev</param>
+    <param name="versionrewrite-pattern">^([0-9.]+)-(rc)</param>
+    <param name="versionrewrite-replacement">\1~\2</param>
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%ct.%h</param>
     <param name="changesgenerate">enable</param>
   </service>

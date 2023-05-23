@@ -17,7 +17,7 @@
 
 
 Name:           qFlipper
-Version:        1.2.2+git7.1672595968.84566a5
+Version:        1.3.1~rc1+git1.1684488882.0199220
 Release:        0
 Summary:        Graphical desktop application for updating Flipper Zero firmware
 License:        GPL-3.0-or-later
