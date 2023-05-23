@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 22 09:55:26 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- Update to 5.0.17
+  * pinyin dictionary manager now have a button open the user dictionary
+    directory
+  * hide shuang pin option in pinyin config
+  * table allow keypad key as selection key
+
+-------------------------------------------------------------------
 Sun Nov 20 10:24:34 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 5.0.16
