@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Mon May 22 05:42:53 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.0.5:
+  * Bugfixes
+    - Improve requirements.yml detection (#275) @ssbarnea
+- update to 4.0.4:
+  * Bugfixes
+    - Allow use of * version on dependencies (#268) @ssbarnea
+- update to 4.0.3:
+  * Bugfixes
+    - Automatically install tests/requirements.yml when found
+      (#266) @ssbarnea
+    - Also install requirements from galaxy.yml files (#265)
+      @ssbarnea
+    - Include original message in AnsibleWarning (#264) @ssbarnea
+- update to 4.0.2:
+  * Bugfixes
+    - Revert to previous behavior for ansible_collections_path
+      (#261) @ajinkyau
+- update to 4.0.1 (4.0.0 does not exist):
+  * Major Changes
+    - Rename Runtime.exec to Runtime.run (#256) @ssbarnea
+    - Introduce use of JSON recursive type (#253) @ssbarnea
+    - ruff: Make optional arguments keyword-only (#251) @ssbarnea
+    - Finish pathlib migration (#245) @ssbarnea
+    - Make Runtime.project_dir use Path (#244) @ssbarnea
+    - Migrate some functions to use Path (#243) @ssbarnea
+    - Make Runtime.cache_dir use Path (#240) @ssbarnea
+    - Remove support for py38 (#239) @ssbarnea
+  * Minor Changes
+    - Monkeypatch ansible core Display.warning (#238) @ssbarnea
+  * Bugfixes
+    - Use YAML safe loader instead of full loader (#255) @ssbarnea
+    - Use dataclass sorting for json schema errors (#254) @ssbarnea
+    - ruff: Address more skips (#249) @ssbarnea
+    - ruff: address TRY and T201 (#248) @ssbarnea
+    - ruff: Address EM (#247) @ssbarnea
+    - Convert more code to pathlib (#242) @ssbarnea
+
+-------------------------------------------------------------------
+Fri May 19 07:25:35 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- change python version on Leap15/SLES15 to python3.11 to use the
+  new stack supported by SUSE
+
+-------------------------------------------------------------------
+Tue May 16 09:43:46 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- rework %if condition to work with new sle15_python_module_pythons
+  macro on SLES15/Leap15
+
+-------------------------------------------------------------------
 Fri Apr 14 06:54:22 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 3.0.2:

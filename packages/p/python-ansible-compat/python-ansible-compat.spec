@@ -16,17 +16,15 @@
 #
 
 
-%if 0%{?suse_version} < 1550
-# Leap15, SLES15
-%define pythons python310
-%else
+%{?sle15_python_module_pythons}
+%if 0%{?suse_version} >= 1650
 # Tumbleweed
 # only works with the python version which the package 'ansible' uses
 %define pythons python3
 %endif
 
 Name:           python-ansible-compat
-Version:        3.0.2
+Version:        4.0.5
 Release:        0
 Summary:        Compatibility shim for Ansible 2.9 and newer
 License:        MIT
@@ -42,7 +40,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module flaky}
-BuildRequires:  %{python_module jsonschema >= 4.6.0}
+BuildRequires:  %{python_module jsonschema >= 4.17.3}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module subprocess-tee >= 0.4.1}
 BuildRequires:  ansible-core >= 2.12
