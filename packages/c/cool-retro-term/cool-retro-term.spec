@@ -25,7 +25,6 @@ License:        GPL-3.0-or-later
 Group:          System/X11/Terminals
 URL:            https://github.com/Swordfish90/cool-retro-term
 Source:         https://github.com/Swordfish90/cool-retro-term/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         cool-retro-term-disable-bundled-qmltermwidget.patch
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  pkgconfig
@@ -34,10 +33,8 @@ BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Widgets)
-Requires:       libqt5-qtgraphicaleffects
-Requires:       libqt5-qtquickcontrols2
-Requires:       qmltermwidget >= 0.2.0
 Recommends:     int10h-oldschoolpc-fonts
+Conflicts:       qmltermwidget
 
 %description
 cool-retro-term is a terminal emulator which tries to mimic the look and feel
@@ -46,7 +43,6 @@ customizable, and reasonably lightweight.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %qmake5
@@ -64,5 +60,7 @@ install -Dpm 0644 packaging/debian/cool-retro-term.1 %{buildroot}/%{_mandir}/man
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/*/%{name}.png
 %{_mandir}/man1/%{name}.1%{?ext_man}
+%{_libdir}/qt5/qml/QMLTermWidget/*
+%dir %{_libdir}/qt5/qml/QMLTermWidget
 
 %changelog

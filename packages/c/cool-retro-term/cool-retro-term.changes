@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 29 03:20:15 UTC 2023 - Erico Mendonca <erico.mendonca@suse.com>
+
+- Removed cool-retro-term-disable-bundled-qmltermwidget.patch
+- Recompiled with internal QmlTermWidget from author's repository.
+- Removed unnecessary Requires statements that caused rpmlint warnings.
+
+-------------------------------------------------------------------
 Fri May  6 09:04:25 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.2.0
