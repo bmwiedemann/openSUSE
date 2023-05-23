@@ -801,7 +801,7 @@ Prefer: -python39-magic -python310-magic
 Prefer: -gcr3-ssh-agent -gcr3-viewer
 
 # have choice for python3-Cython: python310-Cython python310-Cython3
-Prefer: -python310-Cython3 python39-Cython3 -python38-Cython3 -python311-Cython3
+Prefer: -python310-Cython3 python39-Cython3 -python311-Cython3
 
 # have choice for ntp-daemon: chrony ntp ntpsec
 Prefer: chrony
@@ -1589,11 +1589,6 @@ BuildFlags: onlybuild:Modules
 BuildFlags: onlybuild:NetworkManager
 BuildFlags: onlybuild:NetworkManager-branding:openSUSE
 BuildFlags: onlybuild:SDL2
-BuildFlags: onlybuild:libxmp
-BuildFlags: onlybuild:opusfile
-BuildFlags: onlybuild:libmikmod
-BuildFlags: onlybuild:libmodplug
-BuildFlags: onlybuild:SDL_gfx
 BuildFlags: onlybuild:SDL2_Pango
 BuildFlags: onlybuild:SDL2_gfx
 BuildFlags: onlybuild:SDL2_image
@@ -1603,11 +1598,13 @@ BuildFlags: onlybuild:SDL2_sound
 BuildFlags: onlybuild:SDL2_ttf
 BuildFlags: onlybuild:SDL_Pango
 BuildFlags: onlybuild:SDL_bgi
+BuildFlags: onlybuild:SDL_gfx
 BuildFlags: onlybuild:SDL_image
 BuildFlags: onlybuild:SDL_mixer
 BuildFlags: onlybuild:SDL_net
 BuildFlags: onlybuild:SDL_sound
 BuildFlags: onlybuild:SDL_ttf
+BuildFlags: onlybuild:a52dec
 BuildFlags: onlybuild:aaa_base
 BuildFlags: onlybuild:accountsservice
 BuildFlags: onlybuild:acl
@@ -1616,8 +1613,8 @@ BuildFlags: onlybuild:adolc
 BuildFlags: onlybuild:adwaita-icon-theme
 BuildFlags: onlybuild:alsa
 BuildFlags: onlybuild:alsa-oss
-BuildFlags: onlybuild:alsa-ucm-conf
 BuildFlags: onlybuild:alsa-plugins
+BuildFlags: onlybuild:alsa-ucm-conf
 BuildFlags: onlybuild:alsa-utils
 BuildFlags: onlybuild:ant
 BuildFlags: onlybuild:antlr:antlr-bootstrap
@@ -1629,6 +1626,7 @@ BuildFlags: onlybuild:apache2:prefork
 BuildFlags: onlybuild:apitrace
 BuildFlags: onlybuild:apparmor
 BuildFlags: onlybuild:apparmor-rpm-macros
+BuildFlags: onlybuild:apparmor:libapparmor
 BuildFlags: onlybuild:appstream-glib
 BuildFlags: onlybuild:apr
 BuildFlags: onlybuild:apr-util
@@ -1759,6 +1757,7 @@ BuildFlags: onlybuild:dotconf
 BuildFlags: onlybuild:double-conversion
 BuildFlags: onlybuild:doxygen
 BuildFlags: onlybuild:dpkg
+BuildFlags: onlybuild:dpkg:update-alternatives
 BuildFlags: onlybuild:dracut
 BuildFlags: onlybuild:drpm
 BuildFlags: onlybuild:dtc
@@ -1790,8 +1789,8 @@ BuildFlags: onlybuild:fdupes
 BuildFlags: onlybuild:ffado
 BuildFlags: onlybuild:ffmpeg-4
 BuildFlags: onlybuild:ffmpeg-5
-BuildFlags: onlybuild:ffmpeg-6
 BuildFlags: onlybuild:ffmpeg-5:ffmpeg-5-mini
+BuildFlags: onlybuild:ffmpeg-6
 BuildFlags: onlybuild:ffmpeg-6:ffmpeg-6-mini
 BuildFlags: onlybuild:ffnvcodec
 BuildFlags: onlybuild:fftw3:standard
@@ -1923,11 +1922,11 @@ BuildFlags: onlybuild:gsl:serial
 BuildFlags: onlybuild:gsound
 BuildFlags: onlybuild:gssdp
 BuildFlags: onlybuild:gstreamer
-BuildFlags: onlybuild:gstreamer-plugins-good
-BuildFlags: onlybuild:gstreamer-plugins-ugly
-BuildFlags: onlybuild:gstreamer-plugins-libav
 BuildFlags: onlybuild:gstreamer-plugins-bad
 BuildFlags: onlybuild:gstreamer-plugins-base
+BuildFlags: onlybuild:gstreamer-plugins-good
+BuildFlags: onlybuild:gstreamer-plugins-libav
+BuildFlags: onlybuild:gstreamer-plugins-ugly
 BuildFlags: onlybuild:gtk-doc
 BuildFlags: onlybuild:gtk2
 BuildFlags: onlybuild:gtk2-engines
@@ -1957,7 +1956,6 @@ BuildFlags: onlybuild:hwloc
 BuildFlags: onlybuild:hyphen
 BuildFlags: onlybuild:ibmswtpm2
 BuildFlags: onlybuild:ibmtss
-BuildFlags: onlybuild:libtpms
 BuildFlags: onlybuild:ibus
 BuildFlags: onlybuild:iceauth
 BuildFlags: onlybuild:icmake
@@ -2062,7 +2060,6 @@ BuildFlags: onlybuild:libaio
 BuildFlags: onlybuild:libalternatives
 BuildFlags: onlybuild:libao
 BuildFlags: onlybuild:libaom
-BuildFlags: onlybuild:apparmor:libapparmor
 BuildFlags: onlybuild:libarchive
 BuildFlags: onlybuild:libass
 BuildFlags: onlybuild:libassuan
@@ -2109,6 +2106,8 @@ BuildFlags: onlybuild:libdmx
 BuildFlags: onlybuild:libdovi
 BuildFlags: onlybuild:libdrm
 BuildFlags: onlybuild:libdv
+BuildFlags: onlybuild:libdvdread
+BuildFlags: onlybuild:libdwarf
 BuildFlags: onlybuild:libeconf
 BuildFlags: onlybuild:libedit
 BuildFlags: onlybuild:libepoxy
@@ -2165,8 +2164,11 @@ BuildFlags: onlybuild:libmd
 BuildFlags: onlybuild:libmetalink
 BuildFlags: onlybuild:libmicrodns
 BuildFlags: onlybuild:libmicrohttpd
+BuildFlags: onlybuild:libmikmod
 BuildFlags: onlybuild:libmnl
+BuildFlags: onlybuild:libmodplug
 BuildFlags: onlybuild:libmodulemd
+BuildFlags: onlybuild:libmpeg2
 BuildFlags: onlybuild:libmspack
 BuildFlags: onlybuild:libmysofa
 BuildFlags: onlybuild:libndp
@@ -2220,7 +2222,6 @@ BuildFlags: onlybuild:libqt5-qttools
 BuildFlags: onlybuild:libqt5-qtvirtualkeyboard
 BuildFlags: onlybuild:libqt5-qtwayland
 BuildFlags: onlybuild:libqt5-qtwebchannel
-BuildFlags: onlybuild:snobol4
 BuildFlags: onlybuild:libqt5-qtwebsockets
 BuildFlags: onlybuild:libqt5-qtx11extras
 BuildFlags: onlybuild:libqt5-qtxmlpatterns
@@ -2241,6 +2242,7 @@ BuildFlags: onlybuild:libselinux:libselinux-bindings
 BuildFlags: onlybuild:libsemanage
 BuildFlags: onlybuild:libsepol
 BuildFlags: onlybuild:libserf
+BuildFlags: onlybuild:libshout
 BuildFlags: onlybuild:libsigc++2
 BuildFlags: onlybuild:libsigsegv
 BuildFlags: onlybuild:libslirp
@@ -2259,6 +2261,7 @@ BuildFlags: onlybuild:libthai
 BuildFlags: onlybuild:libtheora
 BuildFlags: onlybuild:libtirpc
 BuildFlags: onlybuild:libtool
+BuildFlags: onlybuild:libtpms
 BuildFlags: onlybuild:libunbound-devel-mini
 BuildFlags: onlybuild:libunistring
 BuildFlags: onlybuild:libunwind
@@ -2291,6 +2294,7 @@ BuildFlags: onlybuild:libxml++30
 BuildFlags: onlybuild:libxml2
 BuildFlags: onlybuild:libxml2:python
 BuildFlags: onlybuild:libxmlb
+BuildFlags: onlybuild:libxmp
 BuildFlags: onlybuild:libxshmfence
 BuildFlags: onlybuild:libxslt
 BuildFlags: onlybuild:libyaml
@@ -2343,12 +2347,12 @@ BuildFlags: onlybuild:meson
 BuildFlags: onlybuild:metis:serial
 BuildFlags: onlybuild:mingw32-binutils:mingw32-cross-binutils
 BuildFlags: onlybuild:mingw32-cross-cmake
-BuildFlags: onlybuild:mingw32-gcc:mingw32-cross-gcc
-BuildFlags: onlybuild:mingw32-gcc:mingw32-cross-gcc-bootstrap
-BuildFlags: onlybuild:mingw32-pkgconf:mingw32-cross-pkgconf
 BuildFlags: onlybuild:mingw32-cross-wine
 BuildFlags: onlybuild:mingw32-filesystem
+BuildFlags: onlybuild:mingw32-gcc:mingw32-cross-gcc
+BuildFlags: onlybuild:mingw32-gcc:mingw32-cross-gcc-bootstrap
 BuildFlags: onlybuild:mingw32-headers
+BuildFlags: onlybuild:mingw32-pkgconf:mingw32-cross-pkgconf
 BuildFlags: onlybuild:mingw32-runtime
 BuildFlags: onlybuild:mingw32-winpthreads
 BuildFlags: onlybuild:mingw32-zlib
@@ -2387,7 +2391,6 @@ BuildFlags: onlybuild:nginx-macros
 BuildFlags: onlybuild:ninja
 BuildFlags: onlybuild:nlohmann_json
 BuildFlags: onlybuild:nodejs-common
-BuildFlags: onlybuild:nodejs19
 BuildFlags: onlybuild:nodejs20
 BuildFlags: onlybuild:npth
 BuildFlags: onlybuild:nss-mdns
@@ -2406,6 +2409,7 @@ BuildFlags: onlybuild:openblas:pthreads
 BuildFlags: onlybuild:openblas:serial
 BuildFlags: onlybuild:opencc
 BuildFlags: onlybuild:opencl-headers
+BuildFlags: onlybuild:opencore-amr
 BuildFlags: onlybuild:openexr
 BuildFlags: onlybuild:openjade
 BuildFlags: onlybuild:openjpeg2
@@ -2421,6 +2425,7 @@ BuildFlags: onlybuild:openssl-1_1
 BuildFlags: onlybuild:openssl-3
 BuildFlags: onlybuild:openvswitch
 BuildFlags: onlybuild:opus
+BuildFlags: onlybuild:opusfile
 BuildFlags: onlybuild:orc
 BuildFlags: onlybuild:oxygen-gtk2
 BuildFlags: onlybuild:p11-kit
@@ -2790,7 +2795,6 @@ BuildFlags: onlybuild:python-async_timeout
 BuildFlags: onlybuild:python-atspi
 BuildFlags: onlybuild:python-attrs
 BuildFlags: onlybuild:python-backports.entry_points_selectable
-BuildFlags: onlybuild:python:python-base
 BuildFlags: onlybuild:python-bcrypt
 BuildFlags: onlybuild:python-beniget
 BuildFlags: onlybuild:python-betamax
@@ -2894,8 +2898,8 @@ BuildFlags: onlybuild:python-isodate
 BuildFlags: onlybuild:python-isoduration
 BuildFlags: onlybuild:python-itsdangerous
 BuildFlags: onlybuild:python-jaraco.classes
-BuildFlags: onlybuild:python-jaraco.envs
 BuildFlags: onlybuild:python-jaraco.context
+BuildFlags: onlybuild:python-jaraco.envs
 BuildFlags: onlybuild:python-jaraco.functools
 BuildFlags: onlybuild:python-jaraco.packaging
 BuildFlags: onlybuild:python-jeepney
@@ -2943,7 +2947,6 @@ BuildFlags: onlybuild:python-path
 BuildFlags: onlybuild:python-pathspec
 BuildFlags: onlybuild:python-pbr
 BuildFlags: onlybuild:python-pefile
-BuildFlags: onlybuild:python-pep517
 BuildFlags: onlybuild:python-pexpect
 BuildFlags: onlybuild:python-pip
 BuildFlags: onlybuild:python-pkginfo
@@ -3031,12 +3034,12 @@ BuildFlags: onlybuild:python-readme_renderer
 BuildFlags: onlybuild:python-redis
 BuildFlags: onlybuild:python-regex
 BuildFlags: onlybuild:python-releases
-BuildFlags: onlybuild:python-responses
 BuildFlags: onlybuild:python-requests
 BuildFlags: onlybuild:python-requests-futures
 BuildFlags: onlybuild:python-requests-gssapi
 BuildFlags: onlybuild:python-requests-mock
 BuildFlags: onlybuild:python-requests-toolbelt
+BuildFlags: onlybuild:python-responses
 BuildFlags: onlybuild:python-rfc3339-validator
 BuildFlags: onlybuild:python-rfc3986
 BuildFlags: onlybuild:python-rfc3986-validator
@@ -3143,6 +3146,7 @@ BuildFlags: onlybuild:python38
 BuildFlags: onlybuild:python38:base
 BuildFlags: onlybuild:python39
 BuildFlags: onlybuild:python39:base
+BuildFlags: onlybuild:python:python-base
 BuildFlags: onlybuild:qca:qt5
 BuildFlags: onlybuild:qemu
 BuildFlags: onlybuild:qhull
@@ -3216,6 +3220,7 @@ BuildFlags: onlybuild:sharutils
 BuildFlags: onlybuild:signify
 BuildFlags: onlybuild:slang
 BuildFlags: onlybuild:snappy
+BuildFlags: onlybuild:snobol4
 BuildFlags: onlybuild:socat
 BuildFlags: onlybuild:sord
 BuildFlags: onlybuild:soundtouch
@@ -3336,8 +3341,6 @@ BuildFlags: onlybuild:unicode-ucd
 BuildFlags: onlybuild:unifdef
 BuildFlags: onlybuild:unixODBC
 BuildFlags: onlybuild:unzip
-BuildFlags: onlybuild:update-alternatives
-BuildFlags: onlybuild:dpkg:update-alternatives
 BuildFlags: onlybuild:update-bootloader-rpm-macros
 BuildFlags: onlybuild:update-desktop-files
 BuildFlags: onlybuild:upower
@@ -3364,10 +3367,10 @@ BuildFlags: onlybuild:vte
 BuildFlags: onlybuild:vulkan-headers
 BuildFlags: onlybuild:vulkan-loader
 BuildFlags: onlybuild:vulkan-tools
-BuildFlags: onlybuild:libshout
-BuildFlags: onlybuild:wavpack
 BuildFlags: onlybuild:w3m
 BuildFlags: onlybuild:waf
+BuildFlags: onlybuild:waffle
+BuildFlags: onlybuild:wavpack
 BuildFlags: onlybuild:wayland
 BuildFlags: onlybuild:wayland-protocols
 BuildFlags: onlybuild:webkit2gtk3:gtk3
@@ -3376,9 +3379,9 @@ BuildFlags: onlybuild:webkit2gtk3:gtk4
 BuildFlags: onlybuild:webrtc-audio-processing
 BuildFlags: onlybuild:wget
 BuildFlags: onlybuild:which
-BuildFlags: onlybuild:wine-nine-standalone
 BuildFlags: onlybuild:wine
 BuildFlags: onlybuild:wine-binfmt
+BuildFlags: onlybuild:wine-nine-standalone
 BuildFlags: onlybuild:wine:staging
 BuildFlags: onlybuild:winetricks
 BuildFlags: onlybuild:wireless-tools
@@ -3447,8 +3450,6 @@ BuildFlags: onlybuild:zbar
 BuildFlags: onlybuild:zchunk
 BuildFlags: onlybuild:zenity
 BuildFlags: onlybuild:zeromq
-BuildFlags: onlybuild:libdwarf
-BuildFlags: onlybuild:waffle
 BuildFlags: onlybuild:zimg
 BuildFlags: onlybuild:zip
 BuildFlags: onlybuild:zlib
@@ -3459,11 +3460,6 @@ BuildFlags: onlybuild:zxing-cpp
 BuildFlags: onlybuild:zypp-plugin
 BuildFlags: onlybuild:zypper
 BuildFlags: onlybuild:zziplib
-
-BuildFlags: onlybuild:a52dec
-BuildFlags: onlybuild:libdvdread
-BuildFlags: onlybuild:libmpeg2
-BuildFlags: onlybuild:opencore-amr
 
 %endif
 %endif
