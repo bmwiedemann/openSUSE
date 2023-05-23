@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue May 23 07:32:20 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.62.0:
+  * bump syft to pre-release of v0.81.0 (#1310)
+  * add main bin ignore (#1305)
+  * chore(deps): bump github.com/stretchr/testify from 1.8.2 to
+    1.8.3 (#1309)
+  * chore(deps): bump github.com/docker/docker (#1304)
+  * chore(deps): bump github.com/sirupsen/logrus from 1.9.0 to
+    1.9.2 (#1307)
+  * chore(deps): bump github.com/cloudflare/circl from 1.1.0 to
+    1.3.3 (#1289)
+  * chore(deps): bump github.com/docker/distribution (#1290)
+  * chore(deps): bump actions/setup-go from 4.0.0 to 4.0.1 (#1298)
+  * chore: update deprecated io/ioutil calls (#1296)
+  * feat: package qualifier for platform CPE (#1291)
+  * Fix reading syft json from stdin by redirect (#1299)
+  * should only use hermetic functions in templates (#1288)
+  * chore(deps): update bootstrap tools to latest versions (#1285)
+  * feat: add non-hermetic sprig functions (#1243) (#1273)
+  * fix: typo in logger prefix (#1283)
+  * chore(deps): bump github.com/docker/docker (#1280)
+  * chore(deps): bump anchore/sbom-action from 0.14.1 to 0.14.2
+    (#1281)
+  * chore(deps): update Syft to v0.80.0 (#1276)
+  * chore(deps): update bootstrap tools to latest versions (#1277)
+  * docs: add config flag to configuration section (#1271) (#1274)
+  * chore(deps): bump github/codeql-action from 2.3.2 to 2.3.3
+    (#1272)
+  * chore(deps): bump golang.org/x/term from 0.7.0 to 0.8.0 (#1268)
+  * chore(deps): update bootstrap tools to latest versions (#1270)
+  * Add support for Syft IDs in JSON output (#1266)
+  * docs: add "cyclonedx-json" to output formats (#1252)
+  * chore(deps): bump github.com/docker/docker (#1257)
+  * chore(deps): bump github/codeql-action from 2.3.1 to 2.3.2
+    (#1261)
+  * chore(deps): bump peter-evans/create-pull-request from 5.0.0 to
+    5.0.1 (#1263)
+  * Install skopeo during bootstrap (#1260)
+  * chore(deps): bump github/codeql-action from 2.3.0 to 2.3.1
+    (#1258)
+  * chore(deps): bump github/codeql-action from 2.2.12 to 2.3.0
+    (#1256)
+  * chore: update quality gate labels and add keycloak (#1255)
+  * fix: false positive for purl provider for RPM without epoch
+    (#1237)
+
+-------------------------------------------------------------------
 Sat Apr 22 14:34:27 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.61.1:
