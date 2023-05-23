@@ -1,7 +1,7 @@
 #
 # spec file for package ansible-runner
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,56 +15,106 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%define module_name ansible-runner
+
+%{?sle15_python_module_pythons}
+%if 0%{?suse_version} < 1550
+# Leap15, SLES15
+%if %pythons == "python310"
+%define ansible_python python310
+%define ansible_python_executable python3.10
+%define ansible_python_sitelib %python310_sitelib
+%endif
+%if %pythons == "python311"
+%define ansible_python python311
+%define ansible_python_executable python3.11
+%define ansible_python_sitelib %python311_sitelib
+%endif
+%else
+# Tumbleweed
+%define pythons python3
+%define ansible_python python3
+%define ansible_python_executable python3
+%define ansible_python_sitelib %python3_sitelib
+%endif
 
 Name:           ansible-runner
-Version:        1.4.7
+Version:        2.3.2
 Release:        0
-Summary:        Package for interfacing with Ansible
-License:        Apache-2.0 AND GPL-3.0-or-later
-Group:          Development/Languages/Python
-URL:            https://github.com/ansible/ansible-runner
-Source:         https://files.pythonhosted.org/packages/source/a/ansible-runner/ansible-runner-%{version}.tar.gz
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-BuildRequires:  python3-PyYAML
-BuildRequires:  python3-pexpect
-BuildRequires:  python3-psutil
-BuildRequires:  python3-python-daemon
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-six
-Requires:       python3-PyYAML
-Requires:       python3-pexpect >= 4.5
-Requires:       python3-psutil
-Requires:       python3-python-daemon
-Requires:       python3-six >= 1.12
+Summary:        Run ansible-playbook inside an execution environment
+License:        Apache-2.0
+URL:            https://github.com/ansible/%{module_name}
+Source:         https://files.pythonhosted.org/packages/source/a/%{module_name}/%{module_name}-%{version}.tar.gz
 BuildArch:      noarch
+BuildRequires:  python-rpm-macros
+# https://github.com/ansible/ansible-runner/blob/devel/setup.cfg#L31
+BuildRequires:  %{ansible_python}-base >= 3.8
+BuildRequires:  %{ansible_python}-setuptools
+BuildRequires:  %{ansible_python}-pbr
+# https://github.com/ansible/ansible-runner/blob/devel/setup.cfg#L32
+BuildRequires:  ansible-core
+BuildRequires:  %{ansible_python}-packaging
+BuildRequires:  %{ansible_python}-pexpect >= 4.5
+BuildRequires:  %{ansible_python}-python-daemon
+BuildRequires:  %{ansible_python}-PyYAML
+BuildRequires:  %{ansible_python}-six
+# https://github.com/ansible/ansible-runner/blob/devel/setup.cfg#L38
+# importlib-metadata not required, as we are using python3.10 or higher
+# SECTION test requirements
+# https://github.com/ansible/ansible-runner/blob/devel/test/requirements.txt
+BuildRequires:  %{ansible_python}-pytest
+BuildRequires:  %{ansible_python}-pytest-mock
+BuildRequires:  %{ansible_python}-pytest-timeout
+BuildRequires:  %{ansible_python}-pytest-xdist
+# /SECTION
+BuildRequires:  fdupes
+# https://github.com/ansible/ansible-runner/blob/devel/setup.cfg#L32
+Requires:       %{ansible_python}-packaging
+Requires:       %{ansible_python}-pexpect >= 4.5
+Requires:       %{ansible_python}-python-daemon
+Requires:       %{ansible_python}-PyYAML
+Requires:       %{ansible_python}-six
+Requires:       %{ansible_python}-setuptools
+# https://github.com/ansible/ansible-runner/blob/devel/setup.cfg#L38
+# importlib-metadata not required, as we are using python3.10 or higher
 
 %description
-Ansible Runner is a tool and python library that helps when interfacing with
-Ansible directly or as part of another system whether that be through a
-container image interface, as a standalone tool, or as a Python module that
-can be imported. The goal is to provide a stable and consistent interface
-abstraction to Ansible. This allows Ansible to be embedded into other
-systems that don’t want to manage the complexities of the interface on
-their own (such as CI/CD platforms, Jenkins, or other automated tooling)
+Consistent Ansible Python API and CLI with container and process isolation runtime capabilities
 
 %prep
-%setup -q
+%setup -q -n %{module_name}-%{version}
 
 %build
-%python3_build
+%python_build
 
 %install
-%python3_install
-# dont polute the namespace with tests
-rm -r %{buildroot}%{python3_sitelib}/test/
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_install
+%fdupes %{buildroot}%{ansible_python_sitelib}
+
+sed -i '1s|^#!%{_bindir}/env bash$|#!%{_bindir}/bash|' %{buildroot}/%{_datadir}/%{module_name}/utils/entrypoint.sh
+
+%check
+# disable coverage tests
+sed -i '/cov/d' pytest.ini
+
+# Ignored tests, upstream bug report:
+# https://github.com/ansible/ansible-runner/issues/1237
+#
+IGNORED_TESTS='test_callback_plugin_task_args_leak[playbook0] or '
+IGNORED_TESTS+='test_resolved_actions[playbook0] or '
+IGNORED_TESTS+='test_playbook_on_stats_summary_fields or '
+IGNORED_TESTS+='test_multiline_blank_write[pexpect]'
+export PATH=%{buildroot}%{_bindir}:$PATH
+%pytest -k "not ($IGNORED_TESTS)"
 
 %files
 %doc README.md
 %license LICENSE.md
-%{_bindir}/ansible-runner
-%{python3_sitelib}/ansible_runner
-%{python3_sitelib}/ansible_runner-%{version}-py*.egg-info
+%{_bindir}/%{module_name}
+%{ansible_python_sitelib}/ansible_runner
+%{ansible_python_sitelib}/ansible_runner-*-info
+%dir %{_datadir}/%{module_name}/
+%dir %{_datadir}/%{module_name}/utils/
+%{_datadir}/%{module_name}/utils/entrypoint.sh
 
 %changelog

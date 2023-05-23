@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon May 15 18:34:56 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- modify %if-condition to allow building for python3.10 or
+  python3.11 on SLES15
+
+-------------------------------------------------------------------
+Fri May  5 07:13:27 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- change python version on Leap15/SLES15 to python3.11 to use the
+  new stack supported by SUSE
+
+-------------------------------------------------------------------
+Thu Apr 20 21:01:20 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- LARGE update to 2.3.2
+  changelogs:
+  * https://github.com/ansible/ansible-runner/releases/tag/1.4.8
+  * https://github.com/ansible/ansible-runner/releases/tag/1.4.9
+  * https://github.com/ansible/ansible-runner/releases/tag/2.0.0
+  * https://github.com/ansible/ansible-runner/releases/tag/2.0.1
+  * https://github.com/ansible/ansible-runner/releases/tag/2.0.2
+  * https://github.com/ansible/ansible-runner/releases/tag/2.0.3
+  * https://github.com/ansible/ansible-runner/releases/tag/2.0.4
+  * https://github.com/ansible/ansible-runner/releases/tag/2.1.1
+  * https://github.com/ansible/ansible-runner/releases/tag/2.1.2
+  * https://github.com/ansible/ansible-runner/releases/tag/2.1.3
+  * https://github.com/ansible/ansible-runner/releases/tag/2.1.4
+  * https://github.com/ansible/ansible-runner/releases/tag/2.2.0
+  * https://github.com/ansible/ansible-runner/releases/tag/2.2.1
+  * https://github.com/ansible/ansible-runner/releases/tag/2.2.2
+  * https://github.com/ansible/ansible-runner/releases/tag/2.3.0
+  * https://github.com/ansible/ansible-runner/releases/tag/2.3.1
+  * https://github.com/ansible/ansible-runner/releases/tag/2.3.2
+
+-------------------------------------------------------------------
 Tue Apr 26 11:00:44 UTC 2022 - pgajdos@suse.com
 
 - do not require python-mock: the testsuite is not running anyway

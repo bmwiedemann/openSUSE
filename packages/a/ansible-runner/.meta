@@ -1,5 +1,5 @@
 <package name="ansible-runner" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="systemsmanagement" package="ansible-runner"/>
+  <devel project="systemsmanagement:ansible" package="ansible-runner"/>
 </package>
