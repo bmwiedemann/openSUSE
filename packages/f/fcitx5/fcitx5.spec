@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,11 @@
 %if ! %{defined _distconfdir}
 %define _distconfdir %{_sysconfdir}
 %endif
-
 %if ! %{defined _environmentdir}
 %define _environmentdir %{_prefix}/lib/environment.d
 %endif
-
 Name:           fcitx5
-Version:        5.0.21
+Version:        5.0.23
 Release:        0
 Summary:        Next generation of fcitx
 License:        LGPL-2.1-or-later
@@ -38,17 +36,14 @@ Source4:        macros.fcitx5
 Source102:      fcitx5.service
 Patch1:         fcitx5-gcc7.patch
 Patch2:         fcitx5-5.0.13-memfd.patch
+Patch3:         FTBFS-fcitx5-5.0.23-fmt.patch
 BuildRequires:  cmake
 BuildRequires:  dbus-1-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
-BuildRequires:  ninja
-%if 0%{?suse_version} >= 1550
-BuildRequires:  gcc-c++
-%else
-BuildRequires:  gcc8-c++
-%endif
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  ninja
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xcb-util-wm-devel
 BuildRequires:  xkeyboard-config
@@ -73,18 +68,23 @@ BuildRequires:  pkgconfig(xcb-keysyms)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xkbcommon-x11)
 BuildRequires:  pkgconfig(xkbfile)
-%if 0%{?suse_version} <= 1520
-BuildRequires:  appstream-glib-devel
-%endif
 Provides:       fcitx = %{version}
 Obsoletes:      fcitx < 5
 Provides:       inputmethod
+%systemd_requires
+%if 0%{?suse_version} >= 1550
+BuildRequires:  gcc-c++
+%else
+BuildRequires:  gcc8-c++
+%endif
+%if 0%{?suse_version} <= 1520
+BuildRequires:  appstream-glib-devel
+%endif
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200 && 0%{?is_opensuse}
 BuildRequires:  rsvg-convert
 %else
 BuildRequires:  rsvg-view
 %endif
-%systemd_requires
 
 %description
 Fcitx 5 is a generic input method framework.
@@ -200,24 +200,24 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_prefix}/lib/rpm/macros.d/macros.fcitx
 %else
 
 %pre
-if [ -x /usr/bin/systemctl ]; then
-  if [ ! -e "/usr/lib/systemd/user/%{name}.service" ]; then
+if [ -x %{_bindir}/systemctl ]; then
+  if [ ! -e "%{_prefix}/lib/systemd/user/%{name}.service" ]; then
     mkdir -p /run/systemd/rpm/needs-user-preset
     touch "/run/systemd/rpm/needs-user-preset/%{name}.service"
   fi
 fi
 
 %post
-if [ -x /usr/bin/systemctl ]; then
+if [ -x %{_bindir}/systemctl ]; then
   if [ -e "/run/systemd/rpm/needs-user-preset/%{name}.service" ]; then
-    /usr/bin/systemctl --global preset "%{name}.service" || :
+    %{_bindir}/systemctl --global preset "%{name}.service" || :
     rm "/run/systemd/rpm/needs-user-preset/%{name}.service" || :
   fi
 fi
 
 %preun
-if [ $1 -eq 0 -a -x /usr/bin/systemctl ]; then
-  /usr/bin/systemctl --global disable %{name}.service || :
+if [ $1 -eq 0 -a -x %{_bindir}/systemctl ]; then
+  %{_bindir}/systemctl --global disable %{name}.service || :
 fi
 %endif
 

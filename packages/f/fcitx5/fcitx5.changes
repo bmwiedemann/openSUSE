@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May 22 09:45:48 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- Update to 5.0.23
+  * fix a regression in certain Super(Win key) related
+hotkey handling
+- Changes in 5.0.22
+  * implement application name detection on wayland for text-input
+client when using KDE / wlroots.
+  * fix xkb rule parsing
+  * fix SNI tray menu radio icon
+  * avoid forwarding key in certain cases.
+  * support xkb rule defined in ~/.config/xkb ~/.xkb
+  * fcitx5-configtool now use "command" instead of "which"
+  * Improve commit preedit behavior when focus out
+- Add FTBFS-fcitx5-5.0.23-fmt.patch
+
+-------------------------------------------------------------------
 Thu Nov 24 14:22:12 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 5.0.21
