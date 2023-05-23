@@ -1,8 +1,18 @@
-Index: apache-tomcat-9.0.37-src/build.xml
-===================================================================
---- apache-tomcat-9.0.37-src.orig/build.xml
-+++ apache-tomcat-9.0.37-src/build.xml
-@@ -3307,6 +3307,13 @@ Read the Building page on the Apache Tom
+--- apache-tomcat-9.0.75-src/build.xml	2023-05-22 18:12:16.995658642 +0200
++++ apache-tomcat-9.0.75-src/build.xml	2023-05-22 19:41:42.051370923 +0200
+@@ -215,10 +215,10 @@
+ 
+   <!-- Classpaths -->
+   <path id="compile.classpath">
+-    <pathelement location="${bnd.jar}"/>
+     <pathelement location="${jdt.jar}"/>
+     <pathelement location="${jaxrpc-lib.jar}"/>
+     <pathelement location="${wsdl4j-lib.jar}"/>
++    <path refid="bnd.classpath"/>
+   </path>
+ 
+   <path id="tomcat.classpath">
+@@ -3845,6 +3845,13 @@
      <!-- Add bnd tasks to project -->
      <path id="bnd.classpath">
        <fileset file="${bnd.jar}" />

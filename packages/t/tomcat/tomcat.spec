@@ -22,7 +22,7 @@
 %define elspec 3.0
 %define major_version 9
 %define minor_version 0
-%define micro_version 43
+%define micro_version 75
 %define packdname apache-tomcat-%{version}-src
 # FHS 2.3 compliant tree structure - http://www.pathname.com/fhs/2.3/
 %global basedir /srv/%{name}
@@ -77,23 +77,12 @@ Patch2:         %{name}-%{major_version}.%{minor_version}-sle.catalina.policy.pa
 Patch3:         %{name}-%{major_version}.%{minor_version}-javadoc.patch
 # PATCH-FIX-OPENSUSE: include all necessary aqute-bnd jars
 Patch4:         tomcat-9.0-osgi-build.patch
-# PATCH-FIX-OPENSUSE: cast ByteBuffer to Buffer in cases where there is a risk of using Java 9+ apis
-Patch5:         tomcat-9.0.43-java8compat.patch
+# PATCH-FIX-OPENSUSE: build against our ecj that does not have CompilerOptions.VERSION_16
+Patch5:         %{name}-%{major_version}.%{minor_version}-jdt.patch
 # PATCH-FIX-OPENSUSE: set ajp connector secreteRequired to false by default to avoid tomcat not starting
-Patch6:         tomcat-9.0.31-secretRequired-default.patch
-Patch7:         tomcat-9.0-CVE-2021-41079.patch
-Patch8:         tomcat-9.0-CVE-2021-33037.patch
-Patch9:         tomcat-9.0-CVE-2021-30640.patch
-Patch10:        tomcat-9.0-NPE-JNDIRealm.patch
-Patch11:        tomcat-9.0-CVE-2022-23181.patch
-Patch12:        tomcat-9.0-hardening_getResources.patch
-Patch13:        tomcat-9.0.43-CVE-2021-43980.patch
-Patch14:        tomcat-9.0.43-CVE-2022-42252.patch
-Patch15:        tomcat-9.0-fix_catalina.patch
-Patch16:        tomcat-9.0-logrotate_everything.patch
-Patch17:        tomcat-9.0.43-CVE-2023-24998.patch
-Patch18:        tomcat-9.0.43-CVE-2023-28708.patch
-Patch19:        tomcat-9.0.43-CVE-2022-45143.patch
+Patch6:         tomcat-9.0.75-secretRequired-default.patch
+Patch7:         tomcat-9.0-fix_catalina.patch
+Patch8:         tomcat-9.0-logrotate_everything.patch
 
 BuildRequires:  ant >= 1.8.1
 BuildRequires:  ant-antlr
@@ -268,17 +257,6 @@ find . -type f \( -name "*.bat" -o -name "*.class" -o -name Thumbs.db -o -name "
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
-%patch19 -p1
 
 # remove date from docs
 sed -i -e '/build-date/ d' webapps/docs/tomcat-docs.xsl

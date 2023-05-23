@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue May 23 04:25:45 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to Tomcat 9.0.75.
+  * See changelog at
+    https://tomcat.apache.org/tomcat-9.0-doc/changelog.html#Tomcat_9.0.75_(markt)
+  * Fixes:
+    + bsc#1211608, CVE-2023-28709
+    + bsc#1208513, CVE-2023-24998 (previous incomplete fix)
+- Remove patches:
+  * tomcat-9.0-CVE-2021-30640.patch
+  * tomcat-9.0-CVE-2021-33037.patch
+  * tomcat-9.0-CVE-2021-41079.patch
+  * tomcat-9.0-CVE-2022-23181.patch
+  * tomcat-9.0-NPE-JNDIRealm.patch
+  * tomcat-9.0-hardening_getResources.patch
+  * tomcat-9.0.43-CVE-2021-43980.patch
+  * tomcat-9.0.43-CVE-2022-42252.patch
+  * tomcat-9.0.43-CVE-2022-45143.patch
+  * tomcat-9.0.43-CVE-2023-24998.patch
+  * tomcat-9.0.43-CVE-2023-28708.patch
+    + integrated in this version
+  * tomcat-9.0.43-java8compat.patch
+    + problem with Java 8 compatibility solved in this version
+- Modified patch:
+  * tomcat-9.0.31-secretRequired-default.patch
+    -> tomcat-9.0.75-secretRequired-default.patch
+    + rediffed to changed context
+  * tomcat-9.0-javadoc.patch
+    + drop integrated hunks
+  * tomcat-9.0-osgi-build.patch
+    + fix to work with current version
+- Added patch:
+  * tomcat-9.0-jdt.patch
+    + fix build against our ecj
+
+-------------------------------------------------------------------
 Fri Apr  7 07:56:31 UTC 2023 - Michele Bussolotto <michele.bussolotto@suse.com>
 
 - Fixed CVEs:
