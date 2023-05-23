@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun May 21 21:35:05 UTC 2023 - Edgar Aichinger <edogawa@aon.at>
+
+- version 1.2.7
+
+  * Fixed CLAP UI support for Bitwig Studio.
+  * Fixed build that disabled CairoCanvas for Inline Display feature.
+  * Fixed memory leakage issued by the libcairo font cache on the plugin UI close.
+  * Moved custom font rendering solution to direct usage of libfreetype.
+  * Fixed crash (BadMatch) for Fluxbox window manager on popup windows.
+  * Fixed popup window heading display in Fluxbox.
+  * Fixed non-working solo button for Parametric Equalizer after 1.2.6 release.
+  * Removed Makefile.d. Dependencies are now automatically generated at the build stage.
+  * Added possibility to invert the behaviour of mouse scroll for all widgets or
+    for graph dot widget.
+  * Added frequency display and gain for each filter of Graphic Equalizer plugin series.
+  * Added measure button and meter line on graph for Spectrum Analyzer plugin series.
+  * Added display of filter number, filer channel and filter type near to the
+    frequency and note.
+  * Added possibility to change the thickness of lies on the spectrum graph for the
+    Spectrum Analyzer plugin series.
+  * Some output parameters like Latency are not exported into configuration file anymore.
+
+-------------------------------------------------------------------
 Sun Mar 26 08:18:38 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Another spec clean-up
