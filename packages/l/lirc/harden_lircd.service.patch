@@ -1,22 +1,20 @@
---- lirc-0.10.1.orig/systemd/lircd.service	2021-11-13 20:42:43.204519438 +0100
-+++ lirc-0.10.1/systemd/lircd.service	2021-11-13 20:47:54.182189779 +0100
-@@ -6,6 +6,20 @@ Wants=lircd-setup.service
+Index: lirc-0.10.1/systemd/lircd.service
+===================================================================
+--- lirc-0.10.1.orig/systemd/lircd.service
++++ lirc-0.10.1/systemd/lircd.service
+@@ -6,6 +6,16 @@ Wants=lircd-setup.service
  After=network.target lircd-setup.service
  
  [Service]
 +# added automatically, for details please see
 +# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 +ProtectHostname=true
-+ProtectClock=true
 +ProtectKernelTunables=true
 +ProtectKernelModules=true
 +ProtectKernelLogs=true
 +ProtectControlGroups=true
 +RestrictRealtime=true
 +# end of automatic additions 
-+#
-+# ProtectClock=true from above blocks all device accesses, allow input device access again
-+DeviceAllow=char-input
 +#
  Type=simple
  ExecStart=/usr/sbin/lircd --nodaemon

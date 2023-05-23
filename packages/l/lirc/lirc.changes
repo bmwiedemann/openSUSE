@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  3 14:13:16 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Remove ProtectClock hardening. This causes more pain then it
+  helps (bsc#1200577)
+
+-------------------------------------------------------------------
 Sun Jul 24 17:36:52 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Fix up timestamps from patching generated files

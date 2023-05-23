@@ -2,14 +2,13 @@ Index: lirc-0.10.1/systemd/lircd-uinput.service
 ===================================================================
 --- lirc-0.10.1.orig/systemd/lircd-uinput.service
 +++ lirc-0.10.1/systemd/lircd-uinput.service
-@@ -5,6 +5,16 @@ Documentation=http://lirc.org/html/confi
+@@ -5,6 +5,15 @@ Documentation=http://lirc.org/html/confi
  Description=Forward LIRC button presses as uinput events
  
  [Service]
 +# added automatically, for details please see
 +# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 +ProtectHostname=true
-+ProtectClock=true
 +ProtectKernelTunables=true
 +ProtectKernelModules=true
 +ProtectKernelLogs=true
