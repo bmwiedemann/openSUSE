@@ -539,4 +539,12 @@ Update to release 19.04.30.</comment>
 - Now builds with Qt6 &gt;= 6.4</comment>
     <requestid>1078111</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>0e0cc0f7865e19290b3d4b43496192de</srcmd5>
+    <version>23.05.14</version>
+    <time>1684846493</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088540</requestid>
+  </revision>
 </revisionlist>

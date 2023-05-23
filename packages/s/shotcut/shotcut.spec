@@ -18,35 +18,26 @@
 
 # Find qt version used to build
 %define qt6version %(qmake6 --version |grep "Using Qt version"|cut -d " " -f 4)
-# NOTE: Appears there are no .pc files in qt6
-#%%(pkg-config --modversion Qt6Core)
-
-%bcond_with    x264
-
 # Internal QML imports
 %global __requires_exclude qmlimport\\((Shotcut\\.Controls|org\\.shotcut\\.qml).*
-
-Name:           shotcut
-Version:        23.04.03
-Release:        0
 # This package creates a build time version from the current date and uses it to check
 # for updates. See patch1 and prep/build section. For reproducible builds.
 %define _vstring %(echo %{version} |tr -d ".")
+# NOTE: Appears there are no .pc files in qt6
+#%%(pkg-config --modversion Qt6Core)
+%bcond_with    x264
+Name:           shotcut
+Version:        23.05.14
+Release:        0
 Summary:        Video and audio editor and creator
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
-URL:            http://www.shotcut.org/
+URL:            https://www.shotcut.org/
 Source:         https://github.com/mltframework/shotcut/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-#Patch1:         shotcut-libdir.patch
-ExclusiveArch:  ppc64 ppc64le %ix86 x86_64
 BuildRequires:  cmake
 BuildRequires:  fdupes
-%if 0%{?suse_version} == 1500
-BuildRequires:  gcc12-c++
-%else
-BuildRequires:  gcc-c++
-%endif
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  pkgconfig
 BuildRequires:  qt6-declarative-private-devel >= 6.4.2
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt6Concurrent) >= 6.4.2
@@ -69,20 +60,26 @@ BuildRequires:  pkgconfig(mlt++-7)
 BuildRequires:  pkgconfig(mlt-framework-7)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(vpx)
+Requires:       ffmpeg >= 2.7
+Requires:       %(rpm -qf $(readlink -qne %{_libdir}/libvpx.so) --qf '%%{NAME} >= %%{VERSION}')
 # frei0r-plugins prior to 1.4-7.1 are built against qt4 and cause a segfault on startup.
 Requires:       frei0r-plugins >= 1.4-7.1
 Requires:       ladspa
-Requires:       libmlt7-modules
+#Requires:       libmlt7-modules
 Requires:       melt7
+# needed on runtime for the timeline to work see https://forums.opensuse.org/showthread.php/520592-shotcut-video-editor-timeline-blank/page3
+Requires:       qt6-sql-sqlite = %{qt6version}
 Recommends:     lame
-Requires:       ffmpeg >= 2.7
-Requires:       %(rpm -qf $(readlink -qne %{_libdir}/libvpx.so) --qf '%%{NAME} >= %%{VERSION}')
+ExclusiveArch:  ppc64 ppc64le %{ix86} x86_64
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc12-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 %if %{with x264}
 BuildRequires:  pkgconfig(x264)
 Requires:       %(rpm -qf $(readlink -qne %{_libdir}/libx264.so) --qf '%%{NAME} >= %%{VERSION}')
 %endif
-# needed on runtime for the timeline to work see https://forums.opensuse.org/showthread.php/520592-shotcut-video-editor-timeline-blank/page3
-Requires:       qt6-sql-sqlite = %{qt6version}
 # NOTE: Can't find a matching package suspect it's merged into another package
 #Requires:       libqt6-qtgraphicaleffects >= %%{qt6version}
 # This is already pulled in by rpm
@@ -110,7 +107,7 @@ find . \
        -DCMAKE_BUILD_TYPE=Release \
        -DSHOTCUT_VERSION=%{version} \
 %if 0%{?suse_version} == 1500
-       -DCMAKE_CXX_COMPILER:FILEPATH=/usr/bin/g++-12 \
+       -DCMAKE_CXX_COMPILER:FILEPATH=%{_bindir}/g++-12 \
 %endif
        -DDEFINES+=SHOTCUT_NOUPGRADE
 %cmake_build
@@ -145,6 +142,9 @@ chmod 0755 %{buildroot}/%{_datadir}/%{name}/qml/export-edl/rebuild.sh
 chmod 0755 %{buildroot}/%{_datadir}/%{name}/qml/export-chapters/rebuild.sh
 %fdupes -s %{buildroot}/%{_datadir}
 
+# remove tmp file
+rm %{buildroot}%{_datadir}/shotcut/qml/filters/speed/SpeedUI.qml~
+
 %post
 %mime_database_post
 %desktop_database_post
@@ -154,7 +154,6 @@ chmod 0755 %{buildroot}/%{_datadir}/%{name}/qml/export-chapters/rebuild.sh
 %desktop_database_postun
 
 %files
-%defattr(-,root,root)
 %doc README.md
 %license COPYING
 %{_bindir}/%{name}
@@ -170,6 +169,5 @@ chmod 0755 %{buildroot}/%{_datadir}/%{name}/qml/export-chapters/rebuild.sh
 %{_libdir}/libCuteLogger.so
 
 %files lang -f %{name}.lang
-%defattr(-,root,root)
 
 %changelog
