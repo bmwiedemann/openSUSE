@@ -222,4 +222,29 @@ https://c-ares.haxx.se/changelog.html#1_17_2</comment>
     (bsc#1208067, CVE-2022-4904)</comment>
     <requestid>1064045</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>382acfd070c437120deb8bb77bb2c955</srcmd5>
+    <version>1.19.1</version>
+    <time>1684846407</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.19.1
+  Security:
+  * CVE-2023-32067. High. 0-byte UDP payload causes Denial of Service
+    (bsc#1211604)
+  * CVE-2023-31147 Moderate. Insufficient randomness in generation
+    of DNS query IDs (bsc#1211605)
+  * CVE-2023-31130. Moderate. Buffer Underwrite in
+    ares_inet_net_pton() (bsc#1211606)
+  * CVE-2023-31124. Low. AutoTools does not set CARES_RANDOM_FILE
+    during cross compilation (bsc#1211607)
+  Bug fixes:
+  * Fix uninitialized memory warning in test
+  * ares_getaddrinfo() should allow a port of 0
+  * Fix memory leak in ares_send() on error
+  * Fix comment style in ares_data.h
+  * Fix typo in ares_init_options.3
+  * Sync ax_pthread.m4 with upstream
+  * Sync ax_cxx_compile_stdcxx_11.m4 with upstream to fix uclibc support</comment>
+    <requestid>1088407</requestid>
+  </revision>
 </revisionlist>

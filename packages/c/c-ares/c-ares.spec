@@ -22,7 +22,7 @@
 %define cmake_build make -O VERBOSE=1 %{?_smp_mflags}
 %endif
 Name:           c-ares
-Version:        1.19.0
+Version:        1.19.1
 Release:        0
 Summary:        Library for asynchronous name resolves
 License:        MIT

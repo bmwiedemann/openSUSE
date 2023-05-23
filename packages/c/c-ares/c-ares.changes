@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon May 22 13:56:59 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- Update to version 1.19.1
+  Security:
+  * CVE-2023-32067. High. 0-byte UDP payload causes Denial of Service
+    (bsc#1211604)
+  * CVE-2023-31147 Moderate. Insufficient randomness in generation
+    of DNS query IDs (bsc#1211605)
+  * CVE-2023-31130. Moderate. Buffer Underwrite in
+    ares_inet_net_pton() (bsc#1211606)
+  * CVE-2023-31124. Low. AutoTools does not set CARES_RANDOM_FILE
+    during cross compilation (bsc#1211607)
+
+  Bug fixes:
+  * Fix uninitialized memory warning in test
+  * ares_getaddrinfo() should allow a port of 0
+  * Fix memory leak in ares_send() on error
+  * Fix comment style in ares_data.h
+  * Fix typo in ares_init_options.3
+  * Sync ax_pthread.m4 with upstream
+  * Sync ax_cxx_compile_stdcxx_11.m4 with upstream to fix uclibc support 
+
+-------------------------------------------------------------------
 Sun Jan 29 09:31:00 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.19.0
