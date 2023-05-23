@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-gtk
-Version:        5.0.22
+Version:        5.0.23
 Release:        0
 Summary:        Gtk im module for fcitx5 and glib based dbus client library
 License:        LGPL-2.1-or-later
@@ -59,9 +59,9 @@ This package provides GClient library for fcitx5.
 %package -n fcitx5-gtk2
 Summary:        GTK+ 2.0 im module for fcitx5
 Group:          System/I18n/Chinese
+Supplements:    (fcitx5 and libgtk-2_0-0)
 Provides:       fcitx-gtk2 = %{version}
 Obsoletes:      fcitx-gtk2 <= 4.2.9.8
-Supplements:    (fcitx5 and libgtk-2_0-0)
 %{gtk2_immodule_requires}
 
 %description -n fcitx5-gtk2
@@ -70,9 +70,9 @@ This package provides GTK+ 2.0 im module for fcitx5.
 %package -n fcitx5-gtk3
 Summary:        GTK+ 3.0 im module for fcitx5
 Group:          System/I18n/Chinese
+Supplements:    (fcitx5 and libgtk-3-0)
 Provides:       fcitx-gtk3 = %{version}
 Obsoletes:      fcitx-gtk3 <= 4.2.9.8
-Supplements:    (fcitx5 and libgtk-3-0)
 %{gtk3_immodule_requires}
 
 %description -n fcitx5-gtk3
