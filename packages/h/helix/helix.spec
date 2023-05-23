@@ -23,7 +23,7 @@
 %global _helix_runtimedir %{_libdir}/%{name}/runtime
 
 Name:           helix
-Version:        23.03
+Version:        23.05
 Release:        0
 Summary:        A post-modern modal text editor written in Rust
 License:        (Apache-2.0 OR MIT) AND BSD-3-Clause AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (MIT OR Apache-2.0 OR Zlib) AND (MIT or Unlicense) AND (Zlib OR Apache-2.0 OR MIT) AND Apache-2.0 AND BSL-1.0 AND ISC AND MIT AND MPL-2.0 AND Zlib AND MPL-2.0
@@ -93,7 +93,10 @@ cp %{SOURCE2} .cargo/config.toml
 sed -e '/^\#\!\/usr\/bin\/env .*/d' -i contrib/completion/hx.*
 
 %build
+export HELIX_DISABLE_AUTO_GRAMMAR_BUILD=true
+export TARGET="%_arch"
 %{cargo_build}
+cargo run --release -- --grammar build
 
 # Shell completions
 sed -i "s|hx|helix|g" contrib/completion/hx.*
@@ -106,7 +109,7 @@ install -d -m 0755 %{buildroot}%{_bindir}
 install -d -m 0755 %{buildroot}%{_helix_runtimedir}
 
 install -m 0755 target/release/hx %{buildroot}%{_libdir}/%{name}/hx
-ln -sfv --relative "%{_libdir}/%{name}/hx" "%{buildroot}%{_bindir}/helix"
+ln -sfv "%{_libdir}/%{name}/hx" "%{buildroot}%{_bindir}/helix"
 
 cp -av "runtime/queries" %{buildroot}%{_helix_runtimedir}
 cp -av "runtime/themes" %{buildroot}%{_helix_runtimedir}

@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon May 22 08:50:51 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add back env var `HELIX_DISABLE_AUTO_GRAMMAR_BUILD`.
+- Add manual compilation of grammars in relation to the env var `HELIX_DISABLE_AUTO_GRAMMAR_BUILD`
+
+-------------------------------------------------------------------
+Mon May 22 08:32:43 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 23.05:
+  * Features:
+    - Add a config option to exclude declaration from LSP references request
+    - Enable injecting languages based on their file extension and shebang
+    - Sort the buffer picker by most recent access
+    - Perform syntax highlighting in the picker asynchronously
+  * Commands:
+    - :update is now aliased as :u
+    - Add extend_to_first_nonwhitespace which acts the same as goto_first_nonwhitespace but always extends
+    - Add :clear-register for clearing the given register or all registers
+    - Add :write-buffer-close and :write-buffer-close!
+  * Fixes:
+    - Normalize LSP workspace paths
+    - Robustly handle invalid LSP ranges
+    - Fix line number display for LSP goto pickers
+    - Fix toggling of soft-wrap.enable option (#6656, 58e457a, #6742)
+    - Handle workspace/configuration requests from stopped language servers
+    - Fix possible crash from opening the jumplist picker
+    - Fix theme preview returning to current theme on line and word deletions
+    - Re-run crate build scripts on changes to revision and grammar repositories
+    - Fix crash on opening from suspended state
+    - Fix unwrap bug in DAP
+    - Always build tree-sitter parsers with C++14 and C11 (#6792, #6834, #6845)
+    - Exit with a non-zero statuscode when tree-sitter parser builds fail
+    - Flip symbol range in LSP goto commands
+    - Fix runtime toggling of the mouse option
+    - Fix panic in inlay hint computation when view anchor is out of bounds
+    - Significantly improve performance of git discovery on slow file systems
+    - Downgrade gix log level to info
+    - Conserve BOM and properly support saving UTF16 files
+    - Correctly handle completion re-request
+    - Fix offset encoding in LSP didChange notifications
+    - Change gix logging level to info
+    - Improve error message when writes fail because parent directories do not exist
+    - Replace DAP variables popup instead of pushing more popups
+    - Disable tree-sitter for files after parsing for 500ms
+    - Fix crash when deleting with multiple cursors
+    - Fix selection sliding when deleting forwards in append mode
+    - Fix completion on paths containing spaces
+* CHANGELOG information is too large. For more info, go to https://github.com/helix-editor/helix/blob/master/CHANGELOG.md#2305-2023-05-18
+
+-------------------------------------------------------------------
 Tue May 16 04:58:29 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Addresses #bsc1211012. Issue with HELIX_RUNTIME
