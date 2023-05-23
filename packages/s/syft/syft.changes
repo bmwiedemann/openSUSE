@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue May 23 07:31:00 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.81.0:
+  * Keep original FileInfo persisted on file.Metadata structs
+    (#1794)
+  * chore(deps): bump github.com/sirupsen/logrus from 1.9.1 to
+    1.9.2 (#1827)
+  * chore(deps): bump github.com/google/go-containerregistry
+    (#1823)
+  * chore(deps): bump github.com/sirupsen/logrus from 1.9.0 to
+    1.9.1 (#1822)
+  * chore(deps): bump github.com/docker/docker (#1824)
+  * fix: update field plurality of 8.0.0 schema before release
+    (#1820)
+  * fix: update cataloger to check for expressions before split
+    (#1819)
+  * feat: update syft license concept to complex struct (#1743)
+  * fix: cyclonedx depends-on relationship inverted (#1816)
+  * fix: retain sbom cataloger relationships (#1509)
+  * feat: warn if parsing newer SBOM (#1810)
+  * feat: Add R cataloger (#1790)
+  * update cosign to v2 release (different go module) (#1805)
+  * fix: Reduce log spam on unknown relationship type (#1797)
+  * chore(deps): update bootstrap tools to latest versions (#1807)
+  * chore(deps): bump golang.org/x/net from 0.9.0 to 0.10.0 (#1802)
+  * chore(deps): bump github.com/docker/docker (#1795)
+  * chore(deps): bump github.com/google/go-containerregistry
+    (#1796)
+  * chore(deps): update bootstrap tools to latest versions (#1792)
+  * Print package list when extra packages found (#1791)
+  * chore(deps): update bootstrap tools to latest versions (#1786)
+  * chore(deps): bump golang.org/x/term from 0.7.0 to 0.8.0 (#1787)
+
+-------------------------------------------------------------------
 Fri May 05 19:51:00 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.80.0:
