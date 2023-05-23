@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 23 09:27:10 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Run spec-cleaner.
+- Switch from setup.py build_sphinx to python3 -m sphinx.
+- Don't use greedy wildcards in %files. 
+
+-------------------------------------------------------------------
 Tue Dec  4 12:48:10 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package

@@ -90,4 +90,14 @@
     <comment>Remove superfluous devel dependency for noarch package</comment>
     <requestid>654061</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>bdcbfd6e69620bdd52435d66e64d7b14</srcmd5>
+    <version>1.0.3.dev20161029</version>
+    <time>1684846500</time>
+    <user>dimstar_suse</user>
+    <comment>- Run spec-cleaner.
+- Switch from setup.py build_sphinx to python3 -m sphinx.
+- Don't use greedy wildcards in %files.</comment>
+    <requestid>1088574</requestid>
+  </revision>
 </revisionlist>

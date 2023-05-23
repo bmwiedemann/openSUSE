@@ -1,7 +1,7 @@
 #
 # spec file for package python-flup
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-flup
 Version:        1.0.3.dev20161029
 Release:        0
-Url:            http://www.saddi.com/software/flup/
 Summary:        Random assortment of WSGI servers
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
+URL:            https://www.saddi.com/software/flup/
 Source:         https://files.pythonhosted.org/packages/source/f/flup/flup-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Documentation build requirements:
 BuildRequires:  python3-Sphinx
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -51,18 +47,17 @@ This package contains HTML documentation for %{name}.
 
 %build
 %python_build
-python3 setup.py build_sphinx && rm docs/build/html/.buildinfo
+python3 -m sphinx docs/source docs/build/html && rm docs/build/html/.buildinfo
 
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%defattr(-,root,root,-)
-%{python_sitelib}/*
+%{python_sitelib}/flup
+%{python_sitelib}/flup-%{version}*info
 
 %files -n %{name}-doc
-%defattr(-,root,root)
 %doc docs/build/html/
 
 %changelog
