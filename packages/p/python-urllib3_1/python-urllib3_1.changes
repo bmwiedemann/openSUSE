@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 22 11:23:33 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-fixed-ssl-shared_ciphers.patch:
+  * Support changes to the Python interpreter that fixed how
+    ssl.shared_ciphers behaves.
+
+-------------------------------------------------------------------
 Mon May 15 13:52:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - rename to python-urllib3_1 

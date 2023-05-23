@@ -7,4 +7,14 @@
     <comment></comment>
     <requestid>1087473</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cf0ba336b5e39ba838d85c051786f89b</srcmd5>
+    <version>1.26.15</version>
+    <time>1684846405</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-fixed-ssl-shared_ciphers.patch:
+  * Support changes to the Python interpreter that fixed how
+    ssl.shared_ciphers behaves.</comment>
+    <requestid>1088343</requestid>
+  </revision>
 </revisionlist>
