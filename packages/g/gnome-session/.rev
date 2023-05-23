@@ -1507,4 +1507,15 @@ But the biggest problem is Libreoffice - There I suspect we just have to wait fo
     <comment></comment>
     <requestid>1073316</requestid>
   </revision>
+  <revision rev="204" vrev="2">
+    <srcmd5>3578d5560183efd12e8388734e7d2104</srcmd5>
+    <version>44.0</version>
+    <time>1684846409</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop pkgconfig(dbus-glib-1) BuildRequires: Only needed when
+  building with consolekit support, and we do not do that anymore.
+- Replace dbus-1-x11 with explicit /usr/bin/dbus-launch Requires,
+  as that is what is really needed. (forwarded request 1086809 from iznogood)</comment>
+    <requestid>1088408</requestid>
+  </revision>
 </revisionlist>

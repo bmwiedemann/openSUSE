@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  4 11:11:22 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(dbus-glib-1) BuildRequires: Only needed when
+  building with consolekit support, and we do not do that anymore.
+- Replace dbus-1-x11 with explicit /usr/bin/dbus-launch Requires,
+  as that is what is really needed.
+
+-------------------------------------------------------------------
 Mon Mar 20 16:14:17 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.0:

@@ -38,7 +38,6 @@ BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
-BuildRequires:  pkgconfig(dbus-glib-1) >= 0.76
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.46.0
@@ -91,7 +90,7 @@ This package contains the definition of the default GNOME session on Wayland.
 %package core
 Summary:        Minimal version of the GNOME Session Manager
 Group:          System/GUI/GNOME
-Requires:       dbus-1-x11
+Requires:       /usr/bin/dbus-launch
 Requires:       gsettings-desktop-schemas >= 0.1.7
 Requires:       hicolor-icon-theme
 
