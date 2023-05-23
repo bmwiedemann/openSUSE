@@ -298,4 +298,41 @@ Fixed
     (returned uninitialized rcode).</comment>
     <requestid>942188</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5e19fec3cae2259d1e93e69a41049c52</srcmd5>
+    <version>0.0.29</version>
+    <time>1684846471</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.0.29
+Changed:
+  * BED: dynamic name: displays only MFC and product ID (removed
+    prod. year and week)
+  * VDB::SVD: append &quot;[Native]&quot; if native resolution flag is set.
+Fixed:
+  * (BUG::regression) EDID_cl::getVidDesc(): missing space between
+    aspect ratio and screen resolution: incorrect SVD description
+    in text output mode (Save_As_Text).
+  * Using global strings where possible: cheaper, faster.
+    xxx::getGrpName() -&gt; global EDID_cl::gp_name
+    wxEDID_Frame::SaveRep_SubGrps(), WriteField(),
+    GetFullGroupName() -&gt; wxEDID_Frame::sval
+    EDID_cl::getStrUint() -&gt; EDID_cl::tmps2
+
+- Update to v0.0.28
+Changed:
+  * Change: Default colors for all controls:
+    allows to work with different window themes:
+    wxWidgets 3.0.x: not working for wxAUI windows, wxTreeCtrl
+    and wxGrid
+    wxWidgets 3.2.x: not working for wxGrid
+Added:
+  * Automatic selection of BED block after the EDID file is
+    loaded/imported.
+  * BDD: display image size as dynamic block name.
+  * BED: display MFC code, year, week, prod ID as dynamic block
+    name.
+  * DTD and VDB::SVD: use screen resolution as dynamic block name.
+  * MND: display monitor name as dynamic block name.</comment>
+    <requestid>1088486</requestid>
+  </revision>
 </revisionlist>

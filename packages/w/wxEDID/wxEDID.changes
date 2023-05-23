@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Tue May 23 04:40:40 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to v0.0.29
+Changed:
+  * BED: dynamic name: displays only MFC and product ID (removed
+    prod. year and week)
+  * VDB::SVD: append "[Native]" if native resolution flag is set.
+Fixed:
+  * (BUG::regression) EDID_cl::getVidDesc(): missing space between
+    aspect ratio and screen resolution: incorrect SVD description
+    in text output mode (Save_As_Text).
+  * Using global strings where possible: cheaper, faster.
+    xxx::getGrpName() -> global EDID_cl::gp_name
+    wxEDID_Frame::SaveRep_SubGrps(), WriteField(),
+    GetFullGroupName() -> wxEDID_Frame::sval
+    EDID_cl::getStrUint() -> EDID_cl::tmps2
+
+
+-------------------------------------------------------------------
+Sun May 21 22:49:37 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to v0.0.28
+Changed:
+  * Change: Default colors for all controls:
+    allows to work with different window themes:
+    wxWidgets 3.0.x: not working for wxAUI windows, wxTreeCtrl
+    and wxGrid
+    wxWidgets 3.2.x: not working for wxGrid
+Added:
+  * Automatic selection of BED block after the EDID file is
+    loaded/imported.
+  * BDD: display image size as dynamic block name.
+  * BED: display MFC code, year, week, prod ID as dynamic block
+    name.
+  * DTD and VDB::SVD: use screen resolution as dynamic block name.
+  * MND: display monitor name as dynamic block name.
+  * STI: use screen resolution as dynamic block name or set
+    "not used" if both bytes are 0x1.
+  * VID: display input type as dynamic block name.
+  * config option: blk_dynamic_names.
+  * edi_grp_cl::getGrpName(): support for dynamic block names.
+Fixed:
+  * DTD panel: sct_pixclk control: value range should be
+    0..65535 (655.35MHz), not 0..655350
+  * DTD panel: sct_vsoffs, sct_vswidth controls: value range
+    should be 0..63, not 0..1023
+
+-------------------------------------------------------------------
+Thu Sep 29 19:13:13 UTC 2022 - Mia Herkt <mia@0x0.st>
+
+- Update to v0.0.27
+Changed
+  * ExportEDID_hex(): do not append wxEDID version and the source
+    file name at the end of output file: this causes errors when
+    the file needs to be imported back (unless ignoring errors is
+    enabled).
+  * VFPD: Video Format Preference Data Block is now root group for
+    array of SVRs
+  * CEA-EXT::VFPD:SVR: added vmap: CEA_vidm_map, same as for SVD:
+    this allows to show meaning of SVR values when the EDID
+    structure is saved as text.
+  * wxEDID_Frame::OpenEDID(), ImportEDID_hex(): always try to
+    Reparse() faulty EDID structure when "Ignore EDID errors" is
+    enabled. wxEDID_Frame::Reparse() is now returning fault even
+    when ignoring errors is enabled.
+Added
+  * wxEDID_Frame::SaveRep_SubGrps(): decoding of VFPD:SVR values.
+Fixed
+  * The checksum values showed in BLockData grid for EDID.BASE.BED
+    or EDID.CEA.CHD were not refreshed after
+    AssembleEDID/Save/Export. To refresh those cells, it was
+    necessary to Reparse() the EDID buffer. Now the checksums are
+    automatically updated in wxEDID_Frame::AssembleEDID_main(),
+    invoked from wxEDID_Frame::SaveEDID(), ExportEDID_hex(),
+    SaveReport() and evt_assemble_edid().
+  * (BUG::leak) wxEDID_Frame::ImportEDID_hex(): memory leak
+    possible when the hex->bin conversion fails.
+  * (BUG::wxWidgets3.x ::wxAUI) AUI managed panel gets refreshed
+    even when it's invisible, what can cause horrible flickering
+    during window resizing. wxEDID_Frame::evt_ntbook_page():
+    disable the EvtHandler in AUI Manager when the panel is
+    invisible.
+  * (BUG: Regression in v0.0.23) The functions EDID_cl::MfcId(),
+    ProdSN(), ProdWk(), ProdYr() were not updated to work with
+    local data buffers: the respective fields in EDID.BASE.BED
+    could not be changed.
+  * wxEDID_Frame::SaveRep_SubGrps(): Video Data Block: VIC values
+    were not really decoded, so for SVD values > 127 the
+    desriptions were incorrect.
+  * (BUG::old::mislooked) wxEDID_Frame::SaveRep_SubGrps() uses
+    value descriptions from vmap_t->vname_map_t, but reserved
+    values were not included in some cases -> incorrect (shifted)
+    descriptions in the output file. Now all the reserved values
+    are included with value description set to NULL.
+    edi_grp_cl::create_selector() ignores values with NULL name
+    ptr. wxEDID_Frame::SaveRep_SubGrps() prints "<reserved>"
+    for NULL name ptr.
+
+-------------------------------------------------------------------
 Thu Dec 23 06:44:15 UTC 2021 - Mia Herkt <mia@0x0.st>
 
 - Update to v0.0.26

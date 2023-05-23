@@ -1,7 +1,7 @@
 #
 # spec file for package wxEDID
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wxEDID
-Version:        0.0.26
+Version:        0.0.29
 Release:        0
 Summary:        Extended Display Identification Data editor
 License:        GPL-3.0-only
