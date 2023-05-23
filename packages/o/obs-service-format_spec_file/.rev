@@ -754,4 +754,14 @@
   * Add test case for bsc#1194504</comment>
     <requestid>1035530</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>6dd06483a093264f4437312400889146</srcmd5>
+    <version>20230522</version>
+    <time>1684846456</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230522:
+  * Sync SPDX licenses
+  * Add needspubkeyforbuild</comment>
+    <requestid>1088428</requestid>
+  </revision>
 </revisionlist>

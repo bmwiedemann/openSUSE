@@ -7,7 +7,7 @@
     <param name="versionformat">%ad</param>
     <param name="revision">master</param>
     <param name="changesgenerate">enable</param>
-    <param name="changesauthor">coolo@suse.com</param>
+    <param name="changesauthor">dmueller@suse.com</param>
   </service>
 
   <service name="set_version" mode="manual"/>
