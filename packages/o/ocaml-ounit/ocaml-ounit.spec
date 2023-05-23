@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-ounit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_with     ocaml_lwt
 
 Name:           ocaml-ounit
-Version:        2.2.6
+Version:        2.2.7
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Ocaml OUnit test framework
@@ -28,9 +28,8 @@ Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/ounit
 Source0:        %name-%version.tar.xz
 BuildRequires:  ocaml
-BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20220222
-BuildRequires:  ocamlfind(bytes)
+BuildRequires:  ocaml-dune >= 3.0
+BuildRequires:  ocaml-rpm-macros >= 20230101
 BuildRequires:  ocamlfind(seq)
 BuildRequires:  ocamlfind(stdlib-shims)
 BuildRequires:  ocamlfind(str)

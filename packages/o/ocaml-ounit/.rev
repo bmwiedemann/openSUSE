@@ -64,4 +64,12 @@
   support for OCaml 5.0</comment>
     <requestid>967063</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>36f988dcb8ad1c992f3f26120ffc37d3</srcmd5>
+    <version>2.2.7</version>
+    <time>1684846425</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1086693</requestid>
+  </revision>
 </revisionlist>

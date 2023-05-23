@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-ounit</param>
-    <param name="revision">77f01c482bd618eabde7c5065beae2d68db88723</param>
+    <param name="revision">3c0464871690562b93bd2501811d5a4b9821a5aa</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/gildor478/ounit.git</param>
