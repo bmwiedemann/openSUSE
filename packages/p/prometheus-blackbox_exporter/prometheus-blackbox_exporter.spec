@@ -68,6 +68,8 @@ Prometheus blackbox exporter allows blackbox probing of endpoints over HTTP, HTT
 %goinstall
 install -D -m0644 %{SOURCE2} %{buildroot}%{_unitdir}/prometheus-blackbox_exporter.service
 install -D -m0644 %{_builddir}/blackbox_exporter-%{version}/blackbox.yml %{buildroot}%{_sysconfdir}/prometheus/blackbox.yml
+install -Dd -m0755 %{buildroot}%{_sbindir}
+ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %fdupes %{buildroot}/%{_prefix}
 
 %check
@@ -96,8 +98,8 @@ getent passwd %{serviceuser} >/dev/null || %{_sbindir}/useradd -r -g %{serviceus
   %set_permissions %{_bindir}/blackbox_exporter
 %endif
 
-%verifyscript
 %if 0%{?suse_version} == 1315
+%verifyscript
   %verify_permissions -e %{_bindir}/blackbox_exporter
 %endif
 
@@ -120,7 +122,8 @@ getent passwd %{serviceuser} >/dev/null || %{_sbindir}/useradd -r -g %{serviceus
 %doc CHANGELOG.md README.md
 %license LICENSE
 %verify(not caps) %attr(755,root,root) %{_bindir}/blackbox_exporter
-%{_unitdir}/prometheus-blackbox_exporter.service
+%{_unitdir}/%{name}.service
+%{_sbindir}/rc%{name}
 %dir %{_sysconfdir}/prometheus
 %config(noreplace) %{_sysconfdir}/prometheus/blackbox.yml
 

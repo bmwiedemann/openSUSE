@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 17 11:50:35 UTC 2023 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Avoid empty validation script
+- Add rc symlink for backwards compatibility
+
+-------------------------------------------------------------------
 Thu Apr 27 09:50:45 UTC 2023 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Fix authentication bypass via cache poisoning
