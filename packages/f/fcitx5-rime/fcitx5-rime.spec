@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-rime
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           fcitx5-rime
-Version:        5.0.15
+Version:        5.0.16
 Release:        0
 Summary:        RIME support for Fcitx5
 License:        LGPL-2.1-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/fcitx/fcitx5-rime
 Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.xz
-Patch:          %{name}-cmake-3.10.patch
+Patch0:         %{name}-cmake-3.10.patch
 BuildRequires:  brise
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
@@ -34,20 +34,20 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  librime-devel
 BuildRequires:  pkgconfig
 BuildRequires:  xz
-%if 0%{?suse_version} <= 1520
-BuildRequires:  appstream-glib-devel
-%endif
 Requires:       fcitx5
 Requires:       rime
 Provides:       fcitx-rime = %{version}
 Obsoletes:      fcitx-rime <= 0.3.2
+%if 0%{?suse_version} <= 1520
+BuildRequires:  appstream-glib-devel
+%endif
 
 %description
 This package provides RIME support for Fcitx5.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 
 %build
 %cmake
