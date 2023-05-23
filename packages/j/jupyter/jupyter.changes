@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 22 12:25:44 UTC 2023 - Jiri Srain <jsrain@suse.com>
+
+- refresh also the jupyter.zip from upstream URL
+
+-------------------------------------------------------------------
+Mon May 22 08:13:57 UTC 2023 - Jiri Srain <jsrain@suse.com>
+
+- refresh the jupyter.pdf from upstream URL
+
+-------------------------------------------------------------------
 Fri May  5 15:15:59 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add _multibuild to define 2nd spec file as additional flavor.
