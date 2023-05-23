@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 23 09:19:30 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Don't use sphinx-build and clean up the SPEC file.
+
+-------------------------------------------------------------------
 Mon Aug 17 06:18:22 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Switch to pytest and remove not needed extra buildrequires

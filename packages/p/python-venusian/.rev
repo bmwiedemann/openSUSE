@@ -151,4 +151,13 @@ New dependency of python-Pyramid</comment>
     <comment>- Switch to pytest and remove not needed extra buildrequires</comment>
     <requestid>827214</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>89649f7b7982351044a64a4cb108b4ab</srcmd5>
+    <version>3.0.0</version>
+    <time>1684846498</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use sphinx-build and clean up the SPEC file.
+</comment>
+    <requestid>1088568</requestid>
+  </revision>
 </revisionlist>
