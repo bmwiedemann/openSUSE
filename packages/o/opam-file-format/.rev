@@ -51,4 +51,12 @@ This is a dependency of opam 2.</comment>
   see included CHANGES for details</comment>
     <requestid>1056084</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>aa332b78c52a9c4e07085c4c607129f4</srcmd5>
+    <version>2.1.6</version>
+    <time>1684846426</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1086706</requestid>
+  </revision>
 </revisionlist>

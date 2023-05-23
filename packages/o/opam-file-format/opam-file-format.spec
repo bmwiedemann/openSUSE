@@ -29,7 +29,7 @@ ExclusiveArch:  do-not-build
 
 %define     pkg opam-file-format
 Name:           %pkg%nsuffix
-Version:        2.1.5
+Version:        2.1.6
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Parser and printer for the opam file syntax
