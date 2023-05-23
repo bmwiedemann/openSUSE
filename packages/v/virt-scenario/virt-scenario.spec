@@ -15,44 +15,49 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?!python_module:%define python_module() python3-%{**}}
 %define pythons python3
 
 Name:           virt-scenario
-Version:        1.0.6
+Version:        2.0.1
 Release:        0
-Summary:        Create XML guest configuration and prepare the host for a scenario
+Summary:        Tool to create XML guest configuration and prepare the host for a scenario
 License:        GPL-3.0-or-later
 Group:          System/Management
 URL:            https://github.com/aginies/virt-scenario
 Source:         %{name}-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module pyudev}
 BuildRequires:  %{python_module libvirt-python}
 BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module pyudev}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 #Buildrequires:	pandoc
 BuildArch:      noarch
-Requires:	python-PyYAML
-Requires:	python-pyudev
-Requires:	python-curses
-Requires:	python-psutil
-Requires:	python-libvirt-python
+Requires:       python-PyYAML
+Requires:       python-curses
+Requires:       python-libvirt-python
+Requires:       python-psutil
+Requires:       python-pyudev
+Provides:       virt-scenario = %{version}
 %python_subpackages
 
 %description
-Prepare a libvirt XML guest configuration and the host to run a customized guest.
-Idea is to use multiple templates and concatenate them to create the
-expected Guest XML file. If Host need a custom setting it will be done in second phase.
+A tool to generate a customized libvirt XML guest and prepare the host.
+The idea is to improve the experience of usage compared to a basic setting.
+This tool also simplifies the creation of secure VM (AMD SEV).
 
-Customization to match a specific scenario is not graved in stone. The idea is to
-prepare a configuration which should improved the usage compared to a basic setting.
-This will **NOT guarantee** that this is perfect.
+%package        gtk
+Summary:        Gtk interface %{name}
+Requires:       %{name} = %{version}-%{release}
+
+%description    gtk
+This is the Gtk interface for %{name}.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %python_build
@@ -62,21 +67,26 @@ This will **NOT guarantee** that this is perfect.
 # move yaml file to /etc/pvirsh
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}/
 mv %{buildroot}%{_datadir}/%{name}/*.yaml %{buildroot}%{_sysconfdir}/%{name}/
+mv src/demo_api_usage.py %{buildroot}%{_datadir}/%name/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-
 %files %{python_files}
-%defattr(-,root,root)
 %license LICENSE
 %doc ChangeLog README.md
-%{_bindir}/*
+%{_bindir}/virt-scenario
+%{_bindir}/virt-scenario-launch
+%{_bindir}/virt-select-firmware
 %{python_sitelib}/virtscenario
 %{python_sitelib}/virt_select_firmware
 %{python_sitelib}/virtscenario_launch
 %{python_sitelib}/*.egg-info
-%attr(0755,root,root) %{_datadir}/%name
+%attr(0644,root,root) %{_datadir}/%name
 %{_mandir}/man1/%{name}.1%{ext_man}
-%attr(0755,root,root) %{_datadir}/%{name}/
-%attr(0755,root,root) %config(noreplace) %{_sysconfdir}/%{name}
+%attr(0644,root,root) %{_datadir}/%{name}/
+%attr(0644,root,root) %config(noreplace) %{_sysconfdir}/%{name}
+
+%files gtk
+%{_bindir}/virt-scenario-gtk
+%{python_sitelib}/vsmygtk
 
 %changelog
