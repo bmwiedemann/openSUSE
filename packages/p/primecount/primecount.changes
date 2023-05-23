@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 22 12:25:00 UTC 2023 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primecount-7.8 (API & ABI are backwards compatible).
+- Fix pi(-n) issue for 128-bit integers.
+
+-------------------------------------------------------------------
 Sat May 13 08:30:00 UTC 2023 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primecount-7.7 (API & ABI are backwards compatible).
