@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 17 13:48:11 UTC 2023 - Alexey Svistunov <svalx@svalx.net>
+
+- Update to version 1.7:
+  * fixes a single bug in stinit parsing of invalid definitions
+  * add IBM 3590 B/E format to tape densities table (Chris Dinneen)
+- Cleanup secfile
+
+-------------------------------------------------------------------
 Wed Nov 25 16:10:54 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - Fix Source URL
