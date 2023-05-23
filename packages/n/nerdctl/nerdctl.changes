@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon May 22 06:05:24 UTC 2023 - danish.prakash@suse.com
+
+- Update to version 1.4.0:
+  * build(deps): bump github.com/docker/cli
+  * build(deps): bump github.com/containerd/continuity from 0.4.0 to 0.4.1
+  * build(deps): bump github.com/docker/docker
+  * nerdctl system prune: skip pruning build cache if buildkit is not running
+  * Silence `WARN[0000] failed to get unpacked size of image`
+  * build(deps): bump github.com/containerd/continuity from 0.3.0 to 0.4.0
+  * build(deps): bump github.com/sirupsen/logrus from 1.9.1 to 1.9.2
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * build(deps): bump github.com/compose-spec/compose-go
+  * build(deps): bump github.com/sirupsen/logrus from 1.9.0 to 1.9.1
+  * go.mod: containerd/cgroups/v3 v3.0.1, docker/docker v24.0.0
+  * nerdctl images: Remove TODOs about VirtualSize
+  * build(deps): bump github.com/containerd/accelerated-container-image
+  * CI: update containerd (1.7.1)
+  * update runc (1.1.7)
+  * update fuse-overlayfs (1.12)
+  * update containerd-fuse-overlayfs (1.0.6)
+  * update gotestsum (1.10.0)
+  * update Kubo (0.20.0)
+  * update Nydus (2.2.1)
+  * update BuildKit (0.11.6)
+  * update CNI plugins (1.3.0)
+  * update containerd (1.7.1)
+  * build(deps): bump github.com/containerd/accelerated-container-image
+  * Allow printing of container logs that are not running.
+  * build(deps): bump github.com/containerd/containerd from 1.7.0 to 1.7.1
+  * build(deps): bump github.com/containernetworking/plugins
+  * build(deps): bump github.com/containerd/typeurl/v2 from 2.1.0 to 2.1.1
+  * build(deps): bump golang.org/x/crypto from 0.8.0 to 0.9.0
+  * go.mod: github.com/opencontainers/image-spec v1.1.0-rc3
+  * build(deps): bump github.com/docker/cli
+  * build(deps): bump golang.org/x/net from 0.9.0 to 0.10.0
+  * build(deps): bump github.com/docker/docker
+  * Update Windows tests to use the check HyperV helper
+  * build(deps): bump github.com/Microsoft/hcsshim
+  * Add Windows tests for the container commands
+  * build(deps): bump golang.org/x/term from 0.7.0 to 0.8.0
+  * build(deps): bump golang.org/x/sync from 0.1.0 to 0.2.0
+  * [Refactor] Refactor the run command in createContainer.
+  * Fix: incorrect json format output with `stat` command
+  * testutil: Add Hyper-V support check
+  * Add Cosign keyless mode required args for nerdctl compose
+  * build(deps): bump github.com/docker/cli
+  * build(deps): bump github.com/docker/docker
+  * vendor: bump nydus-snapshotter v0.8.0
+  * convert: enable oci option for nydus conversion type by default
+  * Add Cosign keyless mode required args for nerdctl pull and run
+  * build(deps): bump github.com/containerd/accelerated-container-image
+  * build(deps): bump github.com/compose-spec/compose-go
+  * build(deps): bump github.com/docker/cli
+  * build(deps): bump github.com/klauspost/compress from 1.16.4 to 1.16.5
+  * build(deps): bump docker/metadata-action from 4.3.0 to 4.4.0
+  * build(deps): bump github.com/compose-spec/compose-go
+  * build(deps): bump github.com/opencontainers/runtime-spec
+  * build(deps): bump github.com/docker/docker
+  * fix nerdctl exec init console size 0 0 problem
+  * add tests
+  * build(deps): bump github.com/Microsoft/go-winio from 0.6.0 to 0.6.1
+  * add image information to compose ps
+  * add json format to compose images
+
+-------------------------------------------------------------------
 Thu Apr 20 13:01:57 UTC 2023 - danish.prakash@suse.com
 
 - Update to version 1.3.1:
