@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-hatch-fancy-pypi-readme%{psuffix}
-Version:        22.8.0
+Version:        23.1.0
 Release:        0
 Summary:        Fancy PyPI READMEs with Hatch
 License:        MIT

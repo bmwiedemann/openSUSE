@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 22 07:30:03 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 23.1.0 (there is no 23.0.0):
+  The only change is that our CLI now also takes the presence of an
+  hatch.toml file into account.
+  The packaging side always supported it.
+
+-------------------------------------------------------------------
 Tue May 16 14:27:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - break dependency cycle between attrs (pulled by pytest) and pytest-hatch-fancy-pypi-readme 
