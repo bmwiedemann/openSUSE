@@ -1,3 +1,11 @@
+gpxsee (13.3) stable; urgency=low
+
+  * Improved vector maps zooming speed/performance.
+  * Added support for custom HTTP headers in map tile requests.
+  * Improved Mapsforge maps rendering.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sun, 21 May 2023 13:49:01 +0200
+
 gpxsee (13.2) stable; urgency=medium
 
   * Fixed crash on empty routes (introduced in 12.4).

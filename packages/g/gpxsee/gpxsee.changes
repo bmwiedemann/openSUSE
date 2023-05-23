@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Sun May 21 13:44:24 CEST 2023 - tumic@cbox.cz
+
+- Update to version 13.3
+  * Improved vector maps zooming speed/performance.
+  * Added support for custom HTTP headers in map tile requests.
+  * Improved Mapsforge maps rendering.
+
+-------------------------------------------------------------------
 Fri May 12 20:47:05 CEST 2023 - tumic@cbox.cz
+
 - Update to version 13.2
-  * Fixed crash on empty routes (introduced in 12.4)
+  * Fixed crash on empty routes (introduced in 12.4).
   * Minor fixes.
 
 -------------------------------------------------------------------
