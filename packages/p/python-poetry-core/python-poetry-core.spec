@@ -18,9 +18,9 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-poetry-core
-Version:        1.5.2
+Version:        1.6.0
 Release:        0
-Summary:        Python poetry core utilities
+Summary:        Poetry PEP 517 Build Backend
 License:        Apache-2.0 AND BSD-2-Clause AND MIT AND Python-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/python-poetry/poetry-core
@@ -39,6 +39,7 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module tomli-w}
 BuildRequires:  %{python_module virtualenv}
 BuildRequires:  git-core
 # /SECTION
@@ -59,7 +60,7 @@ cp src/poetry/core/_vendor/packaging/LICENSE         vendoredlicenses/packaging.
 cp src/poetry/core/_vendor/packaging/LICENSE.APACHE  vendoredlicenses/packaging.LICENSE.APACHE
 cp src/poetry/core/_vendor/packaging/LICENSE.BSD     vendoredlicenses/packaging.LICENSE.BSD
 cp src/poetry/core/_vendor/pyrsistent/LICENSE.mit    vendoredlicenses/pyrsistent.LICENSE.mit
-cp src/poetry/core/_vendor/tomlkit/LICENSE           vendoredlicenses/tomlkit.LICENSE
+cp src/poetry/core/_vendor/tomli/LICENSE             vendoredlicenses/tomli.LICENSE
 cp src/poetry/core/_vendor/typing_extensions.LICENSE vendoredlicenses/typing_extensions.LICENSE
 
 %build

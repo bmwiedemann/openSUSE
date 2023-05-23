@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon May 22 20:41:26 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update description 
+
+-------------------------------------------------------------------
+Mon May 22 07:52:37 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 1.6.0
+  * Improve error message for invalid markers (#569).
+  * Increase robustness when deleting temporary directories on
+    Windows (#460).
+  * Replace tomlkit with tomli, which changes the interface of some
+    internal classes (#483).
+  * Deprecate Package.category (#561).
+  * Fix a performance regression in marker handling (#568).
+  * Fix an issue where wildcard version constraints were not
+    handled correctly (#402).
+  * Fix an issue where poetry build created duplicate Python
+    classifiers if they were specified manually (#578).
+  * Fix an issue where local versions where not handled correctly
+    (#579).
+
+-------------------------------------------------------------------
 Mon Apr 24 17:44:26 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.5.2
