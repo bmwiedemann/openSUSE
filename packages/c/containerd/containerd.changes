@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun May 21 11:16:18 UTC 2023 - Aleksa Sarai <asarai@suse.com>
+
+- Update to containerd v1.6.21 for Docker v23.0.6-ce. Upstream release notes:
+  <https://github.com/containerd/containerd/releases/tag/v1.6.21> bsc#1211578
+- Require a minimum Go version explicitly rather than using golang(API).
+  Fixes the change for bsc#1210298.
+
+-------------------------------------------------------------------
+Thu May  4 12:50:57 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+[ This was only released in SLE. ]
+
+- unversion to golang requires to always use the current default go.
+  (bsc#1210298)
+
+-------------------------------------------------------------------
 Tue Apr 18 14:52:44 UTC 2023 - Aleksa Sarai <asarai@suse.com>
 
 - Update to containerd v1.6.20 for Docker v23.0.4-ce. Upstream release notes:

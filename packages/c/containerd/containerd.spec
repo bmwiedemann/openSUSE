@@ -23,14 +23,14 @@
 %endif
 
 # MANUAL: Update the git_version.
-%define git_version 2806fc1057397dbaeefbea0e4e17bddfbd388f38
-%define git_short   2806fc105739
+%define git_version 3dce8eb055cbb6872793272b4f20ed16117344f8
+%define git_short   3dce8eb055cb
 
 %global provider_prefix github.com/containerd/containerd
 %global import_path %{provider_prefix}
 
 Name:           containerd
-Version:        1.6.20
+Version:        1.6.21
 Release:        0
 Summary:        Standalone OCI Container Daemon
 License:        Apache-2.0
@@ -41,12 +41,12 @@ Source1:        %{name}-rpmlintrc
 Source2:        %{name}.service
 BuildRequires:  fdupes
 BuildRequires:  glibc-devel-static
+BuildRequires:  go >= 1.18
 BuildRequires:  go-go-md2man
 BuildRequires:  golang-packaging
 BuildRequires:  libbtrfs-devel >= 3.8
 BuildRequires:  libseccomp-devel >= 2.2
 BuildRequires:  pkg-config
-BuildRequires:  golang(API) = 1.18
 # We provide a git revision so that Docker can require it properly.
 Provides:       %{name}-git = %{git_version}
 # Currently runc is the only supported runtime for containerd. We pin the same
