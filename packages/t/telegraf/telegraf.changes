@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon May 22 15:31:14 UTC 2023 - mrueckert@suse.de
+
+- Update to version 1.26.3:
+  * Telegraf v1.26.3
+  * Update changelog for v1.26.3
+  * Update build_version.txt for v1.26.3
+  * fix(inputs.socket_listener): Fix race in tests (#13300)
+  * chore(docs): Remove repetitive "the" (#13295)
+  * chore: Enable deferInLoop, exitAfterDefer and unnecessaryDefer checkers for gocritic (#13280)
+  * fix(inputs.vsphere): specify the correct option for disconnected_servers_behavior (#13286)
+  * docs: Clarify watch config behavior (#13285)
+  * fix(inputs.socket_listener): Fix loss of connection tracking (#13056)
+  * chore(deps): Bump github.com/aerospike/aerospike-client-go/v5 from 5.10.0 to 5.11.0 (#13258)
+  * chore(deps): Bump go.opentelemetry.io/collector/pdata from 1.0.0-rc7 to 1.0.0-rcv0011 (#13257)
+  * chore(deps): Bump cloud.google.com/go/pubsub from 1.30.0 to 1.30.1 (#13256)
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2 from 1.17.8 to 1.18.0 (#13255)
+  * chore(deps): Bump github.com/benbjohnson/clock from 1.3.0 to 1.3.3 (#13254)
+  * chore: Enable gocritic with initial set of rules (#13247)
+  * chore(deps): Bump golang.org/x/net from 0.9.0 to 0.10.0 (#13276)
+  * chore(deps): Bump github.com/docker/distribution from 2.8.1 to 2.8.2 (#13269)
+  * chore(deps): Bump github.com/antchfx/xpath to latest master for string-join() (#13242)
+  * chore(deps): bump signalfx/golib from 3.3.46 to 3.3.50 (#13230)
+  * chore(deps): Bump google.golang.org/api from 0.106.0 to 0.120.0 (#13170)
+  * fix(outputs.stackdriver): Allow for custom metric type prefix (#13168)
+  * fix(outputs.graphite): Fix logic to reconnect with servers that were not up on agent startup (#13228) (#13239)
+  * docs(common.kafka): Remove experimental notes (#13232)
+  * chore: Update to go1.20.4 (#13226)
+  * chore: Fix linter findings for Windows (part3) (#13143)
+  * fix(outputs.stackdriver): Group batches by timestamp (#12994)
+  * chore(deps): Bump prometheus from v1.8.2 to v2.42.0 (#13225)
+  * chore(deps): Bump govulncheck-action from 0.10.0 to 0.10.1 (#13223)
+  * chore: Finish gosec activities (#13222)
+  * chore: Enable G404 rule for gosec (#13095)
+  * deps(outputs.wavefront): Bump wavefront sdk from 0.12.0 to 0.13.0 (#13213)
+  * chore(deps): Bump github.com/Azure/go-autorest/autorest/adal from 0.9.22 to 0.9.23 (#13215)
+  * chore(deps): Bump github.com/fatih/color from 1.13.0 to 1.15.0 (#13216)
+  * chore(deps): Bump golang.org/x/oauth2 from 0.5.0 to 0.7.0 (#13217)
+  * fix(outputs.prometheus_client): Fix export_timestamp for v1 metric type (#13169)
+  * docs(inputs.vsphere): Resolve copy/paste typo with resource pools (#13162)
+  * fix(processors.starlark): Ddo not reject tracking metrics twice (#13156)
+  * fix(inputs.gnmi): Create selfstat to track connection state (#13149)
+  * fix(inputs.intel_pmu): Fix handling of the json perfmon format (#13139)
+  * chore(deps): Bump github.com/yuin/goldmark from 1.5.3 to 1.5.4 (#13138)
+  * chore(deps): Bump golang.org/x/net from 0.8.0 to 0.9.0 (#13137)
+  * chore: Bump golangci-lint from v1.51.2 to v1.52.2 (#13142)
+  * fix: update release workflow (#13141)
+  * chore: Fix linter findings for Windows (part1) (#13057)
+  * docs(inputs.knx_listener): Add link to config generation project (#13128)
+  * chore(deps): Bump github.com/netsampler/goflow2 from 1.1.1 to 1.3.3 (#13104)
+  * chore: Fix linter findings for Windows (part2) (#13096)
+  * fix(outputs.warp10): Support Infinity/-Infinity/NaN values (#13126)
+
+-------------------------------------------------------------------
 Mon Apr 24 21:32:43 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Use _service mode manual as better alias name than disabled
