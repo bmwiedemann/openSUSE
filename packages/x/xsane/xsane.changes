@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 14 06:53:37 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Rebase 0010-fix_missing_sane-config.patch with
+  https://sources.debian.org/patches/xsane/0.999-12/0010-fix_missing_sane-config.patch/
+
+-------------------------------------------------------------------
 Wed Mar  4 18:19:34 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Own %%{_datadir}/sane, needed now due to changes elsewhere in the
