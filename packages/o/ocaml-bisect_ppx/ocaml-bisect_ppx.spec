@@ -29,7 +29,7 @@ ExclusiveArch:  do-not-build
 
 %define     pkg ocaml-bisect_ppx
 Name:           %pkg%nsuffix
-Version:        2.8.1
+Version:        2.8.2
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Code coverage for OCaml and Reason

@@ -40,4 +40,12 @@
     <comment>- add ocaml-bisect_ppx.patch to build with ppxlib 0.28</comment>
     <requestid>1056067</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ae81ffce214997e2d7cc9d0765a71d33</srcmd5>
+    <version>2.8.2</version>
+    <time>1684846419</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1086688</requestid>
+  </revision>
 </revisionlist>
