@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 23 09:38:42 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1684771865.6dc41fa:
+  * doc: Fix wrong paths to container directory
+  * Delete worker logs as well when cleaning up job logs
+
+-------------------------------------------------------------------
 Sun May 21 01:38:40 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1684511766.434312e:
