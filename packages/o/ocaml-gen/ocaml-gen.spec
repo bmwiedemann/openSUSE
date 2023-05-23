@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-gen
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 
 %define     pkg ocaml-gen
 Name:           %pkg%nsuffix
-Version:        1.0
+Version:        1.1
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Simple, efficient iterators for OCaml
@@ -35,10 +35,8 @@ URL:            https://opam.ocaml.org/packages/gen
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20220222
+BuildRequires:  ocaml-rpm-macros >= 20230101
 %if 1
-BuildRequires:  ocamlfind(bytes)
-BuildRequires:  ocamlfind(dune.configurator)
 BuildRequires:  ocamlfind(seq)
 %endif
 

@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-gen</param>
-    <param name="revision">2ab29e69102b5bd4b4e2d3fca3d6b3b84c985446</param>
+    <param name="revision">30802b92145e0c9cd235d3d2ba4d2210fda5612a</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/c-cube/gen.git</param>
