@@ -358,4 +358,12 @@
     <comment>bugfix version</comment>
     <requestid>1066722</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>5e8223b98df8632ae6b5f7d5cc51eeec</srcmd5>
+    <version>6.0.17</version>
+    <time>1684846527</time>
+    <user>dimstar_suse</user>
+    <comment>bugfix</comment>
+    <requestid>1088643</requestid>
+  </revision>
 </revisionlist>
