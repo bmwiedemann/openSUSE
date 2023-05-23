@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue May 23 00:24:20 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.2.5:
+  * README: adapt build & install section
+  * xprintidle: introduce get_x_idletime() function
+  * xprintidle: add missing close and free on error
+  * xprintidle: use EXIT_{SUCCESS,FAILURE} in main()
+- includes 0.2.4:
+  * xprintidle: adapt usage text
+  * xprintidle: add option to print program version
+  * clang-format: Only merge empty functions on one line
+  * man: add initial manpage
+- includes 0.2.3:
+  * change buildsystem to meson
+  * README: rewrite in markdown
+  * AUTHORS: standardize entries and sort alphabetically
+  * xprintidle: harmonize comments
+  * clang-format: add initial version
+  * xprintidle: reformat source
+  * xprintidle: fix typos in comments
+  * xprintidle: remove unneeded "_" from function parameter name
+  * xprintidle: make workaroundCreepyXServer() version dependent
+  * COPYING: remove "How to Apply" section
+  * README: add "Contributing" section
+- includes 0.2.2:
+  * Applying 0.2-10 version of full-linking.patch from debian
+  * Apply x11-autoconf.patch from debian version 0.2-10
+  * Merge tag '0.2-10.debian'
+  * ChangeLog: mention patches from debian
+  * Makefile.am: remove not needed LDADD
+  * autoreconf to get changes into configure and Makefile.in
+- includes 0.2.1:
+  * Applying full-linking.patch from debian
+  * Applying allocinfo.patch from debian
+  * Applying configure.patch from debian
+  * Fix library checking and remove not needed ones
+  * Add gitignore for C and Automake/conf stuff
+  * Autoreconf with v2.69
+- ran spec-cleaner
+- update home URL
+
+-------------------------------------------------------------------
 Thu Jul  7 12:16:53 UTC 2016 - sor.alexei@meowr.ru
 
-- Initial package.
+- Initial package @ v0.2

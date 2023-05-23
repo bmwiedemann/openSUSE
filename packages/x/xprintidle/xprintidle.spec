@@ -1,7 +1,7 @@
 #
 # spec file for package xprintidle
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,20 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           xprintidle
-Version:        0.2
+Version:        0.2.5
 Release:        0
 Summary:        Utility to print user's idle time in X
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          System/X11/Utilities
-Url:            http://freecode.com/projects/xprintidle
+URL:            https://github.com/g0hl1n/xprintidle
 Source:         http://httpredir.debian.org/debian/pool/main/x/%{name}/%{name}_%{version}.orig.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  automake
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
@@ -37,22 +36,18 @@ prints it to stdout (in milliseconds).
 
 %prep
 %setup -q
-sed -i 's/dist-lzma //' configure.ac
 
 %build
-export LIBS="-lXext"
-autoreconf -fi
-%configure \
-  --x-includes=%{_includedir} \
-  --x-libraries=%{_libdir}
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %files
-%defattr(-,root,root)
-%doc COPYING NEWS README
+%license COPYING
+%doc README.md
 %{_bindir}/%{name}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog
