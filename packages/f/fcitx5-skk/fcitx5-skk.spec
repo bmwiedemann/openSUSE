@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-skk
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fcitx5-skk
-Version:        5.0.14
+Version:        5.0.15
 Release:        0
 Summary:        Libskk input method engine for Fcitx5
 License:        GPL-3.0-or-later
