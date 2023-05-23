@@ -10,7 +10,7 @@ Resolves: #470
  1 file changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/src/as-utils.c b/src/as-utils.c
-index 260f3cbf..b983e7ec 100644
+index 260f3cbf4..b983e7ec8 100644
 --- a/src/as-utils.c
 +++ b/src/as-utils.c
 @@ -511,7 +511,12 @@ as_utils_find_files_matching (const gchar* dir, const gchar* pattern, gboolean r

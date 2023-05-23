@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 22 06:35:40 UTC 2023 - Jiri Srain <jsrain@suse.com>
+
+- refresh patch for new glib-2.76 from upstream
+
+-------------------------------------------------------------------
 Mon Mar 13 10:23:15 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add upstream fix for new glib-2.76:
