@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global short_name commons-%{base_name}
 %bcond_without  portlet
 Name:           apache-%{short_name}
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        API to work with HTML file upload
 License:        Apache-2.0

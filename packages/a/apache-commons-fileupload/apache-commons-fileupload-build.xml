@@ -8,7 +8,7 @@
 
   <property file="build.properties"/>
 
-  <property name="build.finalName" value="commons-fileupload-1.4"/>
+  <property name="build.finalName" value="commons-fileupload-1.5"/>
   <property name="build.dir" value="target"/>
   <property name="build.outputDir" value="${build.dir}/classes"/>
   <property name="build.srcDir.0" value="src/main/java"/>
@@ -220,21 +220,21 @@
 		<attribute name="Bundle-Name" value="Apache Commons FileUpload"/>
 		<attribute name="Bundle-SymbolicName" value="org.apache.commons.fileupload"/>
 		<attribute name="Bundle-Vendor" value="The Apache Software Foundation"/>
-		<attribute name="Bundle-Version" value="1.4.0"/>
+		<attribute name="Bundle-Version" value="1.5.0"/>
 		<attribute name="DynamicImport-Package" value="javax.portlet"/>
-		<attribute name="Export-Package" value="org.apache.commons.fileupload;version=&quot;1.4&quot;,org.apache.commons.fileupload.disk;version=&quot;1.4&quot;,org.apache.commons.fileupload.portlet;version=&quot;1.4&quot;,org.apache.commons.fileupload.servlet;version=&quot;1.4&quot;,org.apache.commons.fileupload.util;version=&quot;1.4&quot;"/>
+		<attribute name="Export-Package" value="org.apache.commons.fileupload;version=&quot;1.5&quot;,org.apache.commons.fileupload.disk;version=&quot;1.5&quot;,org.apache.commons.fileupload.portlet;version=&quot;1.5&quot;,org.apache.commons.fileupload.servlet;version=&quot;1.5&quot;,org.apache.commons.fileupload.util;version=&quot;1.5&quot;"/>
 		<attribute name="Implementation-Title" value="Apache Commons FileUpload"/>
 		<attribute name="Implementation-URL" value="http://commons.apache.org/proper/commons-fileupload/"/>
 		<attribute name="Implementation-Vendor" value="The Apache Software Foundation"/>
 		<attribute name="Implementation-Vendor-Id" value="org.apache"/>
-		<attribute name="Implementation-Version" value="1.4"/>
+		<attribute name="Implementation-Version" value="1.5"/>
 		<attribute name="Import-Package" value="javax.servlet,javax.servlet.http,org.apache.commons.io,org.apache.commons.io.output"/>
 		<attribute name="Include-Resource" value="META-INF/NOTICE.txt=NOTICE.txt,META-INF/LICENSE.txt=LICENSE.txt"/>
 		<attribute name="Private-Package" value="org.apache.commons.fileupload.util.mime"/>
 		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=1.8))&quot;"/>
 		<attribute name="Specification-Title" value="Apache Commons FileUpload"/>
 		<attribute name="Specification-Vendor" value="The Apache Software Foundation"/>
-		<attribute name="Specification-Version" value="1.4"/>
+		<attribute name="Specification-Version" value="1.5"/>
       </manifest>
     </jar>
   </target>
