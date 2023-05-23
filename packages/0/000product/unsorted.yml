@@ -3312,6 +3312,7 @@ unsorted:
   - dtv-scan-tables-v5 
   - dub 
   - duc 
+  - duf 
   - duktape-devel 
   - dumb 
   - dumb-devel 
@@ -7558,6 +7559,7 @@ unsorted:
   - hashlink-hdlls 
   - haveged-devel 
   - hawk-apiserver 
+  - hawk2 
   - hawkey-man 
   - hawknl-devel 
   - hawknl-libs 
@@ -7852,6 +7854,7 @@ unsorted:
   - hypre_2_20_0-gnu-openmpi3-hpc-devel 
   - hypre_2_20_0-gnu-openmpi4-hpc-devel 
   - hyprland 
+  - hyprland-protocols-devel 
   - i18nspector 
   - i2c-tools 
   - i2pd 
@@ -16084,6 +16087,7 @@ unsorted:
   - libyui-rest-api-devel 
   - libyui-rest-api16 
   - libyuv-devel 
+  - libyuv-tools 
   - libyuv0-32bit 
   - libz-ng2 
   - libz1-x86-64-v3 
@@ -45322,6 +45326,7 @@ unsorted:
   - virglrenderer-test-server 
   - virt-p2v 
   - virt-sandbox 
+  - virt-scenario-gtk 
   - virt-top 
   - virt-v2v-man-pages-ja 
   - virt-v2v-man-pages-uk 
@@ -45752,6 +45757,7 @@ unsorted:
   - xcwd 
   - xdbedizzy 
   - xdg-desktop-portal-devel 
+  - xdg-desktop-portal-hyprland 
   - xdg-desktop-portal-lxqt 
   - xdg-desktop-portal-wlr 
   - xdg-utils-cxx-devel 
