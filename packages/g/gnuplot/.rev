@@ -1149,4 +1149,41 @@ removed boo#1203092 (forwarded request 1006499 from AndreasStieger)</comment>
   * NEW    set key {columns &lt;exact no of columns&gt;}</comment>
     <requestid>1065409</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>c2e3454b57fbe55d64b6595da4dd3479</srcmd5>
+    <version>5.4.7</version>
+    <time>1684846392</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gnuplot 5.4.7
+  * FIX   pseudofiles '+','++' must ignore &quot;set datafile columnheader&quot;  Bug #2585
+  * FIX   data from an array must ignore &quot;set datafile columnheader&quot;    Bug #2585
+  * FIX   various problems with unbounded plot iteration                Bug #2589
+  * FIX   allow plot ... smooth acsplines with filledcurves             Bug #2592
+  * FIX    &quot;plot title at {end|beginning}&quot; belongs in KEYSAMPLE layer
+  * FIX   handle empty string in last field of csv file
+  * FIX   Handle nonlinear axes during contour generation               Bug #2593
+  * FIX   yerrorbars key sample should match bars in the plot           Bug #2598
+  * FIX   &quot;plot with table&quot; must skip all smoothing operations          Bug #2610
+  * FIX   cairolatex/epslatex: prevent doubled text in opaque textboxes
+  * FIX   wxt: versions prior to 3.0 do not support XDG                 Bug #2587
+  * FIX   wxt: fontscale and fontsize handling was inconsistent         Bug #2373
+  * FIX   tikz epslatex cairolatex: updated to work with TeXLive2023    Bug #2613
+  * FIX   correctly report cardinality of an empty array is zero        Bug #2616
+  * FIX   ignore datafile separator when plotting from an array
+  * FIX   combination of pm3d options &quot;at b&quot; or &quot;at t&quot; with &quot;depthorder&quot;
+  * FIX   combination of 'autotitle columnhead' and 'using col(&quot;key&quot;)'  Bug #2620
+  * FIX   do not complain if XDG files are not found because no $HOME   Bug #2623
+  * FIX   windows terminal: arrow length corrected for aspect ratio     Bug #2565
+- Delete patch gnuplot-5.4.4-grep.patch now upstream
+
+- Update to gnuplot 5.4.7
+  * FIX   pseudofiles '+','++' must ignore &quot;set datafile columnheader&quot;  Bug #2585
+  * FIX   data from an array must ignore &quot;set datafile columnheader&quot;    Bug #2585
+  * FIX   various problems with unbounded plot iteration                Bug #2589
+  * FIX   allow plot ... smooth acsplines with filledcurves             Bug #2592
+  * FIX    &quot;plot title at {end|beginning}&quot; belongs in KEYSAMPLE layer
+  * FIX   handle empty string in last field of csv file
+  * FIX   Handle nonlinear axes during contour generation               Bug #2593</comment>
+    <requestid>1088274</requestid>
+  </revision>
 </revisionlist>
