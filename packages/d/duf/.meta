@@ -1,0 +1,5 @@
+<package name="duf" project="openSUSE:Factory">
+  <title>Disk Usage/Free Utility</title>
+  <description>Disk Usage/Free Utility (Linux, BSD, macOS &amp; Windows)</description>
+  <devel project="devel:languages:go" package="duf"/>
+</package>
