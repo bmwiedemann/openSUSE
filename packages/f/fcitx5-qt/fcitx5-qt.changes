@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 22 09:52:06 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- Update to 5.0.17
+  * fix an issue related to fractional scale with Qt 6.5 in the client
+side input panel.
+  * fix committing preedit when focus out
+  * workaround QTBUG-108522 in QCompleter
+
+-------------------------------------------------------------------
 Sun Nov 20 09:27:43 UTC 2022 - Tranter Madi <trmdi@yandex.com>
 
 - Update to 5.0.16
