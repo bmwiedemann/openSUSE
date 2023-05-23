@@ -1,7 +1,7 @@
 #
 # spec file for package hamlib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,13 +24,14 @@ Summary:        Run-time library to control radio transcievers and receivers
 License:        LGPL-2.1-only
 Group:          Productivity/Hamradio/Other
 URL:            https://hamlib.github.io/
-Source:         https://github.com/Hamlib/Hamlib/archive/refs/tags/%{version}.tar.gz#/Hamlib-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE hamlib-3.0-perl_install.patch -- patch from Fedora
+Source:         https://github.com/Hamlib/Hamlib/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source2:        https://github.com/Hamlib/Hamlib/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
+# taken from debian
+Source3:        %{name}.keyring
 Patch0:         hamlib-3.0-perl_install.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
-BuildRequires:  makeinfo
 BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -42,8 +43,6 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(tcl)
-Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
 
 %description
 The Ham Radio Control Libraries (Hamlib) provide a programming
@@ -113,7 +112,7 @@ Hamlib provide a programming interface for controlling radios and
 other shack hardware.
 
 %prep
-%autosetup -p1 -n Hamlib-%{version}
+%autosetup -p1
 
 %build
 autoreconf -fiv
@@ -138,12 +137,6 @@ mv %{buildroot}/%{_datadir}/doc/%{name} %{buildroot}%{_docdir}
 
 %check
 %make_build check
-
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
-
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
 
 %post -n libhamlib++%{sover} -p /sbin/ldconfig
 %post -n libhamlib%{sover} -p /sbin/ldconfig

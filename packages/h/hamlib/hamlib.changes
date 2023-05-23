@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 22 18:36:53 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- switch to upstream bootstrapped tarball
+- add upstream signing key and verify source signature
+- drop obsolete texinfo macros
+
+-------------------------------------------------------------------
 Sun Apr  9 08:07:38 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 4.5.5 (2023-04-05)
