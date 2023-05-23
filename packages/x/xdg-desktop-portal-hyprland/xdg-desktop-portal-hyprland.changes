@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Mon May 22 14:38:24 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove some -devel dependencies because this is a runtime package.
+
+-------------------------------------------------------------------
+Sat May 13 11:34:43 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Cleanup dependencies
+- Hyprland-protocols now uses tag releases
+- Improve specfile
+- Update xdg-desktop-portal-hyprland to 0.3.1:
+  * pw: send transform to pipewire
+  * fix implicit function declaration
+  * fix build after commit 7d3da7e
+
+-------------------------------------------------------------------
+Sun Apr 23 04:30:48 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Make shorter summary but longer description.
+
+-------------------------------------------------------------------
+Sun Apr 23 04:25:06 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Set hyprland-protocols-devel to noarch.
+
+-------------------------------------------------------------------
+Sun Apr 23 04:18:04 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Create hyprland-protocols-devel package.
+  * Assign files for this package.
+- Add qt wayland libraries and packages as recommends as they are really
+  used for the picker. Not strictly a requirement since it will fallback
+  to slurp.
+
+-------------------------------------------------------------------
+Sun Apr 16 05:14:57 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec for xdg-desktop-portal-hyprland 0.2.1
