@@ -2,7 +2,7 @@
 # spec file for package tryton
 #
 # Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2015-2022 Dr. Axel Braun <DocB@opensuse.org>
+# Copyright (c) 2015-2023 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,15 @@
 
 %define majorver 6.0
 Name:           tryton
-Version:        %{majorver}.26
+Version:        %{majorver}.27
 Release:        0
 Summary:        The client of the Tryton application platform
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Management
 URL:            http://www.tryton.org/
 Source:         http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz
-Source1:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
+Source1:        http://downloads.tryton.org/%{majorver}/%{name}-%{version}.tar.gz.asc
+Source2:        https://keybase.io/cedrickrier/pgp_keys.asc?fingerprint=7C5A4360F6DF81ABA91FD54D6FF50AFE03489130#/%{name}.keyring
 
 Patch0:         000-pygtkcompat.diff
 Patch1:         001-disable-version-check.diff
