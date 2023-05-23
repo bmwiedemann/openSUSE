@@ -1,4 +1,4 @@
-From 0c35d956eb289bd6186e2865a779d2615c471b94 Mon Sep 17 00:00:00 2001
+From f571ed4f350621b20280e74bf663535533246511 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Wed, 26 Apr 2023 10:13:48 +1000
 Subject: [PATCH] docs: include required tools in source tree
@@ -23,9 +23,9 @@ Signed-off-by: Aleksa Sarai <asarai@suse.de>
  import.go                                     |   17 +
  man/go.mod                                    |   15 -
  man/tools.go                                  |   11 -
- scripts/docs/generate-man.sh                  |   32 +-
- scripts/docs/generate-md.sh                   |   23 +-
- scripts/docs/generate-yaml.sh                 |   28 +-
+ scripts/docs/generate-man.sh                  |   35 +-
+ scripts/docs/generate-md.sh                   |   28 +-
+ scripts/docs/generate-yaml.sh                 |   31 +-
  vendor.mod                                    |    4 +
  vendor.sum                                    |    4 +
  .../cpuguy83/go-md2man/v2/.gitignore          |    2 +
@@ -89,7 +89,7 @@ Signed-off-by: Aleksa Sarai <asarai@suse.de>
  vendor/gopkg.in/yaml.v3/yamlh.go              |  807 +++++
  vendor/gopkg.in/yaml.v3/yamlprivateh.go       |  198 ++
  vendor/modules.txt                            |   15 +
- 71 files changed, 22956 insertions(+), 119 deletions(-)
+ 71 files changed, 22969 insertions(+), 117 deletions(-)
  delete mode 100644 docs/generate/go.mod
  delete mode 100644 docs/generate/tools.go
  create mode 100644 import.go
@@ -251,10 +251,10 @@ index 3cafe6533aff..000000000000
 -	_ "github.com/spf13/pflag"
 -)
 diff --git a/scripts/docs/generate-man.sh b/scripts/docs/generate-man.sh
-index 6afed3fa8708..128828f50342 100755
+index 6afed3fa8708..6abac3b1d28e 100755
 --- a/scripts/docs/generate-man.sh
 +++ b/scripts/docs/generate-man.sh
-@@ -1,35 +1,13 @@
+@@ -1,35 +1,18 @@
  #!/usr/bin/env bash
  
 -set -eu
@@ -270,7 +270,11 @@ index 6afed3fa8708..128828f50342 100755
 -
 -buildir=$(mktemp -d -t docker-cli-docsgen.XXXXXXXXXX)
 -trap clean EXIT
--
++# temporary "go.mod" to make -modfile= work
++touch go.mod
++# shellcheck disable=SC2064
++trap "rm -f $(pwd)/go.mod" EXIT
+ 
 -(
 -  set -x
 -  cp -r . "$buildir/"
@@ -296,10 +300,10 @@ index 6afed3fa8708..128828f50342 100755
  mkdir -p man/man1
  (set -x ; /tmp/gen-manpages --root "." --target "$(pwd)/man/man1")
 diff --git a/scripts/docs/generate-md.sh b/scripts/docs/generate-md.sh
-index a947bb969673..327a06aa4c24 100755
+index a947bb969673..0e4e231e5c8e 100755
 --- a/scripts/docs/generate-md.sh
 +++ b/scripts/docs/generate-md.sh
-@@ -1,36 +1,19 @@
+@@ -1,36 +1,24 @@
  #!/usr/bin/env bash
  
 -set -eu
@@ -334,16 +338,21 @@ index a947bb969673..327a06aa4c24 100755
 -  # build docsgen
 -  go build -mod=vendor -modfile=vendor.mod -tags docsgen -o /tmp/docsgen ./docs/generate/generate.go
 -)
++# temporary "go.mod" to make -modfile= work
++touch go.mod
++# shellcheck disable=SC2064
++trap "rm -f $(pwd)/go.mod" EXIT
++
 +# build docsgen
 +go build -mod=vendor -modfile=vendor.mod -tags docsgen -o /tmp/docsgen ./docs/generate/generate.go
  
  # yaml generation on docs repo needs the cli.md file: https://github.com/docker/cli/pull/3924#discussion_r1059986605
  # but markdown generation docker.md atm. While waiting for a fix in cli-docs-tool
 diff --git a/scripts/docs/generate-yaml.sh b/scripts/docs/generate-yaml.sh
-index 4d0006e43e79..3f3f7df8b140 100755
+index 4d0006e43e79..abebc183d49c 100755
 --- a/scripts/docs/generate-yaml.sh
 +++ b/scripts/docs/generate-yaml.sh
-@@ -1,33 +1,11 @@
+@@ -1,33 +1,16 @@
  #!/usr/bin/env bash
  
 -set -eu
@@ -359,7 +368,11 @@ index 4d0006e43e79..3f3f7df8b140 100755
 -
 -buildir=$(mktemp -d -t docker-cli-docsgen.XXXXXXXXXX)
 -trap clean EXIT
--
++# temporary "go.mod" to make -modfile= work
++touch go.mod
++# shellcheck disable=SC2064
++trap "rm -f $(pwd)/go.mod" EXIT
+ 
 -(
 -  set -x
 -  cp -r . "$buildir/"
@@ -381,7 +394,7 @@ index 4d0006e43e79..3f3f7df8b140 100755
  mkdir -p docs/yaml
  set -x
 diff --git a/vendor.mod b/vendor.mod
-index da1d033bff0b..61034043c05e 100644
+index eed166a6de6b..993aca7af845 100644
 --- a/vendor.mod
 +++ b/vendor.mod
 @@ -8,7 +8,9 @@ go 1.18
@@ -392,7 +405,7 @@ index da1d033bff0b..61034043c05e 100644
  	github.com/creack/pty v1.1.11
 +	github.com/docker/cli-docs-tool v0.5.1
  	github.com/docker/distribution v2.8.1+incompatible
- 	github.com/docker/docker v23.0.4+incompatible
+ 	github.com/docker/docker v23.0.5+incompatible
  	github.com/docker/docker-credential-helpers v0.7.0
 @@ -67,6 +69,7 @@ require (
  	github.com/prometheus/common v0.37.0 // indirect
@@ -409,7 +422,7 @@ index da1d033bff0b..61034043c05e 100644
 +	gopkg.in/yaml.v3 v3.0.1 // indirect
  )
 diff --git a/vendor.sum b/vendor.sum
-index 91aae7c1487c..ad0005735231 100644
+index 6edc40179f41..c5e8b1e9ea76 100644
 --- a/vendor.sum
 +++ b/vendor.sum
 @@ -89,6 +89,7 @@ github.com/containerd/containerd v1.6.19/go.mod h1:HZCDMn4v/Xl2579/MvtOC2M206i+J
@@ -23703,7 +23716,7 @@ index 000000000000..e88f9c54aecb
 +
 +}
 diff --git a/vendor/modules.txt b/vendor/modules.txt
-index 520bc4ca95e0..e744937180df 100644
+index 807b468777dc..0d69cb4dbed5 100644
 --- a/vendor/modules.txt
 +++ b/vendor/modules.txt
 @@ -18,9 +18,17 @@ github.com/containerd/containerd/errdefs
@@ -23752,5 +23765,5 @@ index 520bc4ca95e0..e744937180df 100644
  ## explicit; go 1.13
  gotest.tools/v3/assert
 -- 
-2.40.0
+2.40.1
 

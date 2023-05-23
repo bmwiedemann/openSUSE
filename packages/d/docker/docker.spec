@@ -31,9 +31,9 @@
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define real_version 23.0.5
-%define git_version 94d3ad69cc59
-%define git_commit_epoch 1682522945
+%define real_version 23.0.6
+%define git_version 9dbdbd4b6d76
+%define git_commit_epoch 1683319810
 
 Name:           docker
 Version:        %{real_version}_ce
@@ -57,15 +57,16 @@ Source104:      docker-audit.rules
 Source105:      docker-daemon.json
 Source106:      docker.sysusers
 # NOTE: All of these patches are maintained in <https://github.com/suse/docker>
-#       in the suse-<version> branch. Make sure you update the patches in that
+#       in the suse-v<version> branch. Make sure you update the patches in that
 #       branch and then git-format-patch the patch here.
 # SUSE-FEATURE: Adds the /run/secrets mountpoint inside all Docker containers
 #               which is not snapshotted when images are committed.
 Patch100:       0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
 Patch101:       0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
-# SUSE-FEATURE: Add support to mirror unofficial/private registries
-#               <https://github.com/docker/docker/pull/34319>.
-Patch300:       0003-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+# UPSTREAM: Revert of upstream patch to keep SLE-12 build working.
+Patch200:       0003-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+# UPSTREAM: Backport of <https://github.com/moby/moby/pull/41954>.
+Patch300:       0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
 # UPSTREAM: Backport of <https://github.com/docker/cli/pull/4228>.
 Patch900:       cli-0001-docs-include-required-tools-in-source-tree.patch
 BuildRequires:  audit
@@ -77,6 +78,7 @@ BuildRequires:  libapparmor-devel
 BuildRequires:  libbtrfs-devel >= 3.8
 BuildRequires:  libseccomp-devel >= 2.2
 BuildRequires:  libtool
+BuildRequires:  linux-glibc-devel
 BuildRequires:  procps
 BuildRequires:  sqlite3-devel
 BuildRequires:  zsh
@@ -85,7 +87,19 @@ BuildRequires:  go-go-md2man
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  sysuser-tools
 BuildRequires:  golang(API) = 1.19
+%if 0%{?sle_version} >= 150000
+# This conditional only works on rpm>=4.13, which SLE 12 doesn't have. But we
+# don't need to support Docker+selinux for SLE 12 anyway.
 Requires:       (apparmor-parser or container-selinux)
+# This recommends is added to make sure that even if you have container-selinux
+# installed you will still be prompted to install apparmor-parser which Docker
+# requires to apply AppArmor profiles (for SELinux systems this doesn't matter
+# but if you switch back to AppArmor on reboot this would result in insecure
+# containers).
+Recommends:     apparmor-parser
+%else
+Requires:       apparmor-parser
+%endif
 Requires:       ca-certificates-mozilla
 # The docker-proxy binary used to be in a separate package. We obsolete it,
 # since now docker-proxy is maintained as part of this package.
@@ -93,8 +107,8 @@ Obsoletes:      docker-libnetwork < 0.7.0.2
 Provides:       docker-libnetwork = 0.7.0.2.%{version}
 # Required to actually run containers. We require the minimum version that is
 # pinned by Docker, but in order to avoid headaches we allow for updates.
-Requires:       runc >= 1.1.5
-Requires:       containerd >= 1.6.20
+Requires:       runc >= 1.1.7
+Requires:       containerd >= 1.6.21
 # Needed for --init support. We don't use "tini", we use our own implementation
 # which handles edge-cases better.
 Requires:       catatonit
@@ -109,12 +123,6 @@ Requires:       xz >= 4.9
 Requires(post): %fillup_prereq
 Requires(post): udev
 Requires(post): shadow
-# This recommends is added to make sure that even if you have container-selinux
-# installed you will still be prompted to install apparmor-parser which Docker
-# requires to apply AppArmor profiles (for SELinux systems this doesn't matter
-# but if you switch back to AppArmor on reboot this would result in insecure
-# containers).
-Recommends:     apparmor-parser
 # Not necessary, but must be installed when the underlying system is
 # configured to use lvm and the user doesn't explicitly provide a
 # different storage-driver than devicemapper
@@ -184,12 +192,15 @@ cp %{SOURCE103} .
 %patch100 -p1
 %patch101 -p1
 %endif
+%if 0%{?sle_version} == 120000
+# Patches to build on SLE-12.
+%patch200 -p1
+%endif
 # bsc#1099277
 %patch300 -p1
 
 %build
 %sysusers_generate_pre %{SOURCE106} %{name} %{name}.conf
-echo "$PWD -- $PWD -- $PWD"
 
 BUILDTAGS="exclude_graphdriver_aufs apparmor selinux seccomp pkcs11"
 %if 0%{?sle_version} == 120000

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun May 21 02:31:35 UTC 2023 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 23.0.6-ce. See upstream changelog online at
+  <https://docs.docker.com/engine/release-notes/23.0/#2306>. bsc#1211578
+- Rebase patches:
+  * cli-0001-docs-include-required-tools-in-source-tree.patch
+- Re-unify packaging for SLE-12 and SLE-15.
+- Add patch to fix build on SLE-12 by switching back to libbtrfs-devel headers
+  (the uapi headers in SLE-12 are too old).
+  + 0003-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+- Re-numbered patches:
+  - 0003-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+  + 0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch`
+
+-------------------------------------------------------------------
 Thu Apr 27 14:09:05 UTC 2023 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 23.0.5-ce. See upstream changelog online at

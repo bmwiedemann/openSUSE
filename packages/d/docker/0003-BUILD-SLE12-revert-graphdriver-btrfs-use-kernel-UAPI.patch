@@ -1,0 +1,46 @@
+From a5bb4ed6a9dd6f3e859524bcc44a822fdeb779fc Mon Sep 17 00:00:00 2001
+From: Aleksa Sarai <asarai@suse.de>
+Date: Mon, 22 May 2023 15:44:54 +1000
+Subject: [PATCH 3/4] BUILD: SLE12: revert "graphdriver/btrfs: use kernel UAPI
+ headers"
+
+This reverts commit 3208dcabdc8997340b255f5b880fef4e3f54580d.
+
+On SLE 12, our UAPI headers are too old, resulting in us being unable to
+build the btrfs driver with the new headers. This patch is only needed
+for SLE-12.
+
+Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
+---
+ daemon/graphdriver/btrfs/btrfs.go | 13 ++++---------
+ 1 file changed, 4 insertions(+), 9 deletions(-)
+
+diff --git a/daemon/graphdriver/btrfs/btrfs.go b/daemon/graphdriver/btrfs/btrfs.go
+index 7f82594b4ebd..532c19a8a15c 100644
+--- a/daemon/graphdriver/btrfs/btrfs.go
++++ b/daemon/graphdriver/btrfs/btrfs.go
+@@ -5,17 +5,12 @@ package btrfs // import "github.com/docker/docker/daemon/graphdriver/btrfs"
+ 
+ /*
+ #include <stdlib.h>
+-#include <stdio.h>
+ #include <dirent.h>
+ 
+-#include <linux/version.h>
+-#if LINUX_VERSION_CODE < KERNEL_VERSION(4,12,0)
+-    #error "Headers from kernel >= 4.12 are required to build with Btrfs support."
+-    #error "HINT: Set 'DOCKER_BUILDTAGS=exclude_graphdriver_btrfs' to build without Btrfs."
+-#endif
+-
+-#include <linux/btrfs.h>
+-#include <linux/btrfs_tree.h>
++// keep struct field name compatible with btrfs-progs < 6.1.
++#define max_referenced max_rfer
++#include <btrfs/ioctl.h>
++#include <btrfs/ctree.h>
+ 
+ static void set_name_btrfs_ioctl_vol_args_v2(struct btrfs_ioctl_vol_args_v2* btrfs_struct, const char* value) {
+     snprintf(btrfs_struct->name, BTRFS_SUBVOL_NAME_MAX, "%s", value);
+-- 
+2.40.1
+
