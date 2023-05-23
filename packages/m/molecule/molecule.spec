@@ -45,6 +45,8 @@ Summary:        Aids in the development and testing of Ansible roles
 License:        MIT
 URL:            https://github.com/ansible-community/molecule
 Source:         https://files.pythonhosted.org/packages/source/m/molecule/molecule-%{version}.tar.gz
+# Taken from upstream PR https://github.com/ansible-community/molecule/pull/3904
+Patch0:         fix_ansible_compat.patch
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{ansible_python}-pip
 BuildRequires:  %{ansible_python}-setuptools
@@ -66,7 +68,7 @@ BuildRequires:  ansible-core
 BuildRequires:  %{ansible_python}
 BuildRequires:  %{ansible_python}-Jinja2 >= 2.11.3
 BuildRequires:  %{ansible_python}-PyYAML >= 5.1
-BuildRequires:  (%{ansible_python}-ansible-compat >= 2.2.0 with %{ansible_python}-ansible-compat < 4)
+BuildRequires:  %{ansible_python}-ansible-compat >= 4.0.1
 BuildRequires:  %{ansible_python}-click >= 8.0
 BuildRequires:  %{ansible_python}-click-help-colors >= 0.9
 BuildRequires:  %{ansible_python}-cookiecutter >= 1.7.3
@@ -81,7 +83,7 @@ Requires:       ansible-core
 Requires:       %{ansible_python}-base
 Requires:       %{ansible_python}-Jinja2 >= 2.11.3
 Requires:       %{ansible_python}-PyYAML >= 5.1
-Requires:       (%{ansible_python}-ansible-compat >= 2.2.0 with %{ansible_python}-ansible-compat < 4)
+Requires:       %{ansible_python}-ansible-compat >= 4.0.1
 Requires:       %{ansible_python}-click >= 8.0
 Requires:       %{ansible_python}-click-help-colors >= 0.9
 Requires:       %{ansible_python}-cookiecutter >= 1.7.3
@@ -102,6 +104,7 @@ testing scenarios.
 
 %prep
 %setup -q -n molecule-%{version}
+%patch0 -p1
 
 %build
 %pyproject_wheel

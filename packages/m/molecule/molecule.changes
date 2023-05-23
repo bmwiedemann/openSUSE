@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 22 13:30:53 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Add fix_ansible_compat.patch from upstream pull request to fix
+  compatibility with python-ansible-compat v4.
+
+-------------------------------------------------------------------
 Tue May 16 09:18:43 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - modify %if-condition to allow building for python3.10 or
