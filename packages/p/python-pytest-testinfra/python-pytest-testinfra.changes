@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon May 22 04:16:57 UTC 2023 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Update to 8.1.0:
+  * [NEW] Add Windows support for File and Service modules
+  * [NEW] Add File.is_executable property
+
+- 8.0.0:
+  * [NEW] Add Group.members attribute
+  * [NEW] Add File.inode attribute
+  * [NEW] Add Interface.routes() method
+  * [NEW] Add Docker.is_restarting attribute
+  * [FIX] Fix possible error in Interface.default()
+  * [FIX] Fix busybox detection in Process module
+  * [FIX] Fix possible KeyError in SysInfo module
+  * [BREAKING] drop support for python 3.7
+
+- 7.0.1:
+  * [FIX] Fix command -v compatibility with dash shell
+
+-------------------------------------------------------------------
 Tue May  9 21:23:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.0.0:

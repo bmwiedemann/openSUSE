@@ -48,4 +48,12 @@
   * Implement Service.systemd_properties (#612)</comment>
     <requestid>1085841</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>92b9a70112befda847323bee536c1bf1</srcmd5>
+    <version>8.1.0</version>
+    <time>1684846431</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088334</requestid>
+  </revision>
 </revisionlist>
