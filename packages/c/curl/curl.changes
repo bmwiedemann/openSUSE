@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue May 23 10:14:39 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 8.1.1:
+  * Bugfixes:
+    - cf-socket: completely remove the disabled
+      USE_RECV_BEFORE_SEND_WORKAROUND
+    - checksrc: disallow spaces before labels
+    - curl_easy_getinfo: clarify on return data types
+    - docs: document that curl_url_cleanup(NULL) is a safe no-op
+    - hostip: move easy_lock.h include above curl_memory.h
+    - http2: double http request parser max line length
+    - http2: increase stream window size to 10 MB
+    - lib: rename struct 'http_req' to 'httpreq'
+    - ngtcp2: proper handling of uint64_t when adjusting send buffer
+    - sectransp.c: make the code c89 compatible
+    - select: avoid returning an error on EINTR from select() or poll()
+    - url: provide better error message when URLs fail to parse
+    - urlapi: allow numerical parts in the host name
+
+-------------------------------------------------------------------
 Wed May 17 08:13:32 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to 8.1.0:
