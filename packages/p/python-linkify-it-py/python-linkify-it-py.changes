@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 22 21:10:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.2:
+  * Fix missing files to the test (#44)
+  * Update development tools
+  * Fix sdist is missing tests
+
+-------------------------------------------------------------------
 Fri May  5 12:15:06 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons

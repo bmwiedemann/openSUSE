@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>1085105</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4496f9d6a96b91dfcdc032d6f973cd08</srcmd5>
+    <version>2.0.2</version>
+    <time>1684952496</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.2:
+  * Fix missing files to the test (#44)
+  * Update development tools
+  * Fix sdist is missing tests</comment>
+    <requestid>1088463</requestid>
+  </revision>
 </revisionlist>
