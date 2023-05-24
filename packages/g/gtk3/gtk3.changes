@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May 22 16:08:09 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.24.38:
+  + GtkFileChooser: Avoid warnings with GLib 2.76.
+  + Theme: Set caret color in the dark theme.
+  + Windows: Fix running under GLES.
+  + Wayland:
+    - Notify on initial setting changes.
+    - Don't crash on 0 size cursors.
+    - Don't crash if xdg_activation_v1 is missing.
+  + Debugging: Show more information in the inspector.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon May 01 08:48:59 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 3.24.37+70:
