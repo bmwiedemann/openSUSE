@@ -107,4 +107,12 @@
     <comment>Please check Changelog: mostly just beautify and adjustments for Factory</comment>
     <requestid>978235</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>197c83a7ebe17f2a09e887aa8c42170f</srcmd5>
+    <version>0.9.28</version>
+    <time>1684952598</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088893</requestid>
+  </revision>
 </revisionlist>

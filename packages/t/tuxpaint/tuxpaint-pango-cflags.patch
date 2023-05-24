@@ -1,0 +1,38 @@
+Index: tuxpaint-0.9.28-sdl2/Makefile
+===================================================================
+--- tuxpaint-0.9.28-sdl2.orig/Makefile
++++ tuxpaint-0.9.28-sdl2/Makefile
+@@ -112,6 +112,8 @@ endif
+ # change to sdl-console to build a console version on Windows
+ SDL_PCNAME:=sdl2
+ 
++PANGO_PCNAME:=pango
++
+ WINDRES:=windres
+ PKG_CONFIG:=pkg-config
+ ifdef PKG_CONFIG_LIBDIR
+@@ -298,6 +300,7 @@ SDL_LIBS+=$(SDL_MIXER_LIB) $(SDL2_PANGO_
+ 
+ SDL_CFLAGS:=$(shell $(PKG_CONFIG) $(SDL_PCNAME) --cflags)
+ 
++PANGO_CFLAGS:=$(shell $(PKG_CONFIG) $(PANGO_PCNAME) --cflags)
+ 
+ # New one: -lrsvg-2 -lcairo
+ # Old one: -lcairo -lsvg -lsvg-cairo
+@@ -1214,14 +1217,14 @@ obj/fonts.o:	src/fonts.c src/fonts.h src
+ 		src/get_fname.h src/debug.h
+ 	@echo
+ 	@echo "...Compiling font support..."
+-	@$(CC) $(CFLAGS) $(DEBUG_FLAGS) $(SDL_CFLAGS) $(DEFS) $(ARCH_DEFS) \
++	@$(CC) $(CFLAGS) $(DEBUG_FLAGS) $(SDL_CFLAGS) $(PANGO_CFLAGS) $(DEFS) $(ARCH_DEFS) \
+ 		-c src/fonts.c -o obj/fonts.o
+ 
+ obj/dirwalk.o:	src/dirwalk.c src/dirwalk.h src/progressbar.h src/fonts.h \
+ 		src/debug.h
+ 	@echo
+ 	@echo "...Compiling directory-walking support..."
+-	@$(CC) $(CFLAGS) $(DEBUG_FLAGS) $(SDL_CFLAGS) $(DEFS) $(ARCH_DEFS) \
++	@$(CC) $(CFLAGS) $(DEBUG_FLAGS) $(SDL_CFLAGS) $(PANGO_CFLAGS) $(DEFS) $(ARCH_DEFS) \
+ 		-c src/dirwalk.c -o obj/dirwalk.o
+ 
+ obj/cursor.o:	src/cursor.c src/cursor.h src/debug.h

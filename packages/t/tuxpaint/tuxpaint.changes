@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed May 17 07:04:48 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- List both sdl1 and sdl2 tarballs as sources to please Factory
+  bots.
+- Delete unnecessary hidden thumbnail files.
+
+-------------------------------------------------------------------
+Wed May  3 12:12:04 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- tuxpaint-pango-cflags.patch: Only apply for openSUSE >= 1550
+  where the sdl2 flavoured source is used; prevents build failures
+  for Leap 15.x.
+
+-------------------------------------------------------------------
+Mon Mar 13 11:34:40 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Switch to SDL2 builds for openSUSE >= 1550.
+- Add tuxpaint-pango-cflags.patch -- Include cflags from pango's
+  pkgconfig file to allow finding pango header files.
+
+-------------------------------------------------------------------
+Wed Jan 18 10:59:10 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.9.28:
+  * See release announcement:
+    <https://tuxpaint.org/latest/tuxpaint-0.9.28-press-release.php>
+- Set up conditions to build against SDL2, but keep defaults to
+  SDL(1) for now.
+- Fix some EOL encoding issues.
+- Drop unnecessary rpmlintrc filters.
+
+-------------------------------------------------------------------
 Fri May 20 08:32:49 UTC 2022 - lars@linux-schulserver.de - 0.9.27
 
 - handle missing pkgconfig(imagequant) on distributions older 

@@ -16,25 +16,37 @@
 #
 
 
-%define         gnomedir   %(gnome-config --prefix)
+%if 0%{?suse_version} >= 1550
+%bcond_without sdl2
+%else
+%bcond_with sdl2
+%endif
+
+%define sdlver %{?with_sdl2:2}%{!?with_sdl2:%{nil}}
+%define srcver %{?with_sdl2:2}%{!?with_sdl2:1}
 Name:           tuxpaint
-Version:        0.9.27
+Version:        0.9.28
 Release:        0
 Summary:        Drawing Program for Young Children
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Bitmap Editors
 URL:            http://www.tuxpaint.org/
-Source:         %{name}-%{version}.tar.gz
-Source1:        tuxpaint-rpmlintrc
+Source0:        https://download.sourceforge.net/project/tuxpaint/tuxpaint/%{version}/%{name}-%{version}-sdl1.tar.gz
+Source1:        https://download.sourceforge.net/project/tuxpaint/tuxpaint/%{version}/%{name}-%{version}-sdl2.tar.gz
+Source2:        tuxpaint-rpmlintrc
 Patch0:         tuxpaint-import-eval.patch
 # PATCH-FIX-OPENSUSE tuxpaint-makefile.patch -- Disable update-desktop-database, because it do not work
 Patch1:         tuxpaint-makefile.patch
+%if 0%{?suse_version} >= 1550
+# PATCH-FIX-UPSTREAM tuxpaint-pango-cflags.patch -- Include cflags from pango's pkgconfig file, needed only for sdl2 flavour
+Patch2:         tuxpaint-pango-cflags.patch
+%endif
 BuildRequires:  ImageMagick
-BuildRequires:  pkgconfig(sdl)
-BuildRequires:  pkgconfig(SDL_Pango)
-BuildRequires:  pkgconfig(SDL_image)
-BuildRequires:  pkgconfig(SDL_mixer)
-BuildRequires:  pkgconfig(SDL_ttf) > 2.0.8
+BuildRequires:  pkgconfig(sdl%{?sdlver})
+BuildRequires:  pkgconfig(SDL%{?sdlver}_Pango)
+BuildRequires:  pkgconfig(SDL%{?sdlver}_image)
+BuildRequires:  pkgconfig(SDL%{?sdlver}_mixer)
+BuildRequires:  pkgconfig(SDL%{?sdlver}_ttf)
 BuildRequires:  pkgconfig(fribidi)
 BuildRequires:  gperf
 %if 0%{?suse_version} <= 01530
@@ -52,7 +64,7 @@ BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version}
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
-BuildRequires:  pkgconfig(SDL_gfx)
+BuildRequires:  pkgconfig(SDL%{?sdlver}_gfx)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  update-desktop-files
 Requires:       freefont
@@ -88,11 +100,11 @@ entertaining, child-oriented additions such as sound effects.
 Summary:        Devel files of tuxpaint
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
-Requires:       pkgconfig(sdl)
-Requires:       pkgconfig(SDL_Pango)
-Requires:       pkgconfig(SDL_image)
-Requires:       pkgconfig(SDL_mixer)
-Requires:       pkgconfig(SDL_ttf)
+Requires:       pkgconfig(sdl%{?sdlver})
+Requires:       pkgconfig(SDL%{?sdlver}_Pango)
+Requires:       pkgconfig(SDL%{?sdlver}_image)
+Requires:       pkgconfig(SDL%{?sdlver}_mixer)
+Requires:       pkgconfig(SDL%{?sdlver}_ttf)
 Requires:       pkgconfig(fribidi)
 Requires:       libpaper-devel
 Requires:       libpng-devel
@@ -111,13 +123,22 @@ Requires:       librsvg2-devel
 Header files and development documentation for tuxpaint.
 
 %prep
-%autosetup -p1
+%if %{with sdl2}
+%autosetup -p1 -T -b1 -n %{name}-%{version}-sdl%{?srcver}
+%else
+%autosetup -p1 -n %{name}-%{version}-sdl%{?srcver}
+%endif
 find . -name CVS -exec rm -rf {} +
 find docs/ -type f -exec chmod -v 644 {} +
 
-make PREFIX=%{_prefix} MAGIC_PREFIX=%{_libdir}/%{name}/plugins tp-magic-config
+sed -Ei "s/\r$//" docs/outdated/*/*.txt
 
 %build
+%make_build \
+     PREFIX=%{_prefix} \
+     MAGIC_PREFIX=%{_libdir}/%{name}/plugins \
+     CFLAGS="%{optflags}" \
+     tp-magic-config
 %make_build \
      PREFIX=%{_prefix} \
      CFLAGS="%{optflags}" \
@@ -138,8 +159,10 @@ mkdir -p %{buildroot}
      GNOME_PREFIX="%{_prefix}" \
      KDE_ICON_PREFIX="%{_datadir}/icons"
 
-find %{buildroot}/%{_mandir} -type f -exec chmod 644 {} +
+find %{buildroot}%{_mandir} -type f -exec chmod 644 {} +
 find %{buildroot} -type d -exec chmod 0755 {} +
+# Delete hidden thumbnail files
+find %{buildroot}%{_datadir}/%{name} -name ".thumbs" -print -exec rm -fr {} +
 
 %if 0%{?suse_version}
 find %{buildroot} -name "*.desktop" -print -delete
