@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 18 12:06:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.15.0:
+  + Updated translation for ISO 3166-1, ISO 3166-3, ISO 639-2,
+    ISO 3166-1, ISO 3166-2, ISO 3166-3, ISO 639-2, ISO 639-3,
+    ISO 639-5, ISO 4217, and ISO 15924.
+  + ISO 3166-2: Fix wrong Spanish translation.
+
+-------------------------------------------------------------------
 Wed Mar  8 16:07:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to version 4.13.0:

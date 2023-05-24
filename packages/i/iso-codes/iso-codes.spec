@@ -17,7 +17,7 @@
 
 
 Name:           iso-codes
-Version:        4.13.0
+Version:        4.15.0
 Release:        0
 Summary:        ISO Code Lists and Translations
 License:        LGPL-2.1-or-later

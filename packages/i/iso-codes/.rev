@@ -811,4 +811,16 @@
   + Updated translations.</comment>
     <requestid>1071784</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>5450eb4d6a326d265e0e6ba19b5dd56d</srcmd5>
+    <version>4.15.0</version>
+    <time>1684952488</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.15.0:
+  + Updated translation for ISO 3166-1, ISO 3166-3, ISO 639-2,
+    ISO 3166-1, ISO 3166-2, ISO 3166-3, ISO 639-2, ISO 639-3,
+    ISO 639-5, ISO 4217, and ISO 15924.
+  + ISO 3166-2: Fix wrong Spanish translation.</comment>
+    <requestid>1088416</requestid>
+  </revision>
 </revisionlist>
