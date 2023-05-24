@@ -17,8 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-vcrpy
 Version:        4.2.1
 Release:        0
@@ -27,10 +25,14 @@ License:        MIT
 URL:            https://github.com/kevin1024/vcrpy
 Source:         https://files.pythonhosted.org/packages/source/v/vcrpy/vcrpy-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-httpbin}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.5}
+# gh#kevin1024/vcrpy#688
+BuildRequires:  %{python_module urllib3 < 2}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module wrapt}
 BuildRequires:  %{python_module yarl}
 BuildRequires:  fdupes
@@ -38,6 +40,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
 Requires:       python-six >= 1.5
 Requires:       python-wrapt
+Requires:       python-urllib3 < 2
 BuildArch:      noarch
 Requires:       python-yarl
 %python_subpackages
@@ -55,11 +58,11 @@ rm -r tests/integration
 
 %build
 export LANG=en_US.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
 export LANG=en_US.UTF-8
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/vcr
 
 %check
@@ -71,6 +74,7 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/vcr
+%{python_sitelib}/vcrpy-%{version}.dist-info
 
 %changelog

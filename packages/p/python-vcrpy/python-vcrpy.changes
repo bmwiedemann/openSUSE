@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 23 14:34:54 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Restrict urllib3 < 2 -- gh#kevin1024/vcrpy#688
+
+-------------------------------------------------------------------
 Tue Oct 11 16:48:12 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 4.2.1 
