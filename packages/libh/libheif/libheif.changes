@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 22 19:32:26 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 1.16.2:
+  * adds an option to heif-convert to set the PNG compression level
+  * fixes a few build issues with some compilers
+  * fixes the --encoder option in heif-enc
+  * fixes heif_item_get_properties_of_type and
+    heif_item_get_transformation_properties
+
+-------------------------------------------------------------------
 Wed May  3 11:14:59 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - Package the optional plugins in separate packages, so it is possible
