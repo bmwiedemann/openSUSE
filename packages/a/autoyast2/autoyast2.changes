@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 23 12:31:41 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Properly install the selected products, do not lose them after
+  resetting the package manager internally (bsc#1202234)
+- 4.6.2
+
+-------------------------------------------------------------------
 Wed Apr 12 13:40:10 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
 
 - Rebuild the RPM database during upgrade (--rebuilddb) (bsc#1209565)
