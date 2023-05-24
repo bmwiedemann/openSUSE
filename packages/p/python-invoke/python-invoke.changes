@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 22 21:08:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.2:
+  * Make sure ``py.typed`` is in our packaging
+    manifest; without it, users working from a regular
+    installation can't perform type checks.
+
+-------------------------------------------------------------------
 Tue May 16 14:16:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - break python-invocations, invoke cycle on tests 

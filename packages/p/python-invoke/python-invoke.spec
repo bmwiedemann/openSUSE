@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-invoke%{psuffix}
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        Pythonic Task Execution
 License:        BSD-2-Clause

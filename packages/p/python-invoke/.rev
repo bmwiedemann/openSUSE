@@ -190,4 +190,15 @@
     tests with mypy to reduce errors and impove code</comment>
     <requestid>1087437</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>229d23d1f8f82540450bbf6a4b5259b4</srcmd5>
+    <version>2.1.2</version>
+    <time>1684952498</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.2:
+  * Make sure ``py.typed`` is in our packaging
+    manifest; without it, users working from a regular
+    installation can't perform type checks.</comment>
+    <requestid>1088465</requestid>
+  </revision>
 </revisionlist>
