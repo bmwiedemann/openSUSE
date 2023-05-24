@@ -19,6 +19,7 @@ Have a look at http://en.opensuse.org/Portal:Factory for more details.</descript
     <disable repository="snapshot"/>
     <disable repository="ports"/>
     <disable arch="i586" repository="images"/>
+    <disable arch="local" repository="containerfile"/>
   </build>
   <publish>
     <disable/>
@@ -60,6 +61,7 @@ Have a look at http://en.opensuse.org/Portal:Factory for more details.</descript
     <releasetarget project="openSUSE:Factory:ToTest" repository="containers" trigger="manual"/>
     <path project="openSUSE:Factory" repository="images"/>
     <path project="openSUSE:Factory" repository="standard"/>
+    <arch>local</arch>
     <arch>x86_64</arch>
   </repository>
 </project>
