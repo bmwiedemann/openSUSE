@@ -39,4 +39,12 @@
     <comment>KDE Release Gear 23.04.1</comment>
     <requestid>1086475</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>6cde22387315ed84e703204c67579ac4</srcmd5>
+    <version>23.04.1</version>
+    <time>1684952592</time>
+    <user>dimstar_suse</user>
+    <comment>- Require kirigami-addons</comment>
+    <requestid>1088830</requestid>
+  </revision>
 </revisionlist>

@@ -48,6 +48,7 @@ BuildRequires:  cmake(Qt5QuickControls2)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5WebSockets)
 BuildRequires:  cmake(Qt5Widgets)
+Requires:       kirigami-addons
 Requires:       kirigami2
 Requires:       kitemmodels-imports
 Requires:       libqt5-qtgraphicaleffects
