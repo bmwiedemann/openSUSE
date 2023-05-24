@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 22 12:05:07 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix systemd_user_preun/postun calls: all systemd_user macros take
+  service names as parameter.
+
+-------------------------------------------------------------------
 Sat May  6 14:01:35 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.106.0

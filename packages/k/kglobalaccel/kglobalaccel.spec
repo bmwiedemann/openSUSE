@@ -1,7 +1,7 @@
 #
 # spec file for package kglobalaccel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -117,10 +117,10 @@ does not need focus for them to be activated.
 %{systemd_user_post plasma-kglobalaccel.service}
 
 %preun -n kglobalaccel5
-%{systemd_user_preun}
+%{systemd_user_preun plasma-kglobalaccel.service}
 
 %postun -n kglobalaccel5
-%{systemd_user_postun}
+%{systemd_user_postun plasma-kglobalaccel.service}
 
 %ldconfig_scriptlets -n %{lname}
 %ldconfig_scriptlets -n libKF5GlobalAccelPrivate5
