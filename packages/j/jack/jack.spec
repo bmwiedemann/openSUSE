@@ -51,7 +51,10 @@ BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(sndfile)
+Requires:       jack-dbus
+Conflicts:      jack-daemon
 Provides:       jack-audio-connection-kit
+Provides:       jack-daemon
 Provides:       jack2 = %{version}
 Obsoletes:      jack2 < %{version}
 
@@ -68,6 +71,17 @@ has support for distributing audio processing across a
 network, both fast & reliable LANs as well as slower, less
 reliable WANs.
 
+%if 0%{?wdbus} == 1
+%package dbus
+Summary:        Jack Audio Connection Kit D-Bus support
+Group:          System/Sound Daemons
+Requires:       jack-daemon
+
+%description dbus
+This package contains the D-Bus support for JACK
+(Jack Audio ConnectionKit).
+%endif
+
 %package -n libjack%{sonum}
 Summary:        Jack Audio Connection Kit Library
 Group:          System/Libraries
@@ -81,8 +95,8 @@ This package contains the library to access JACK
 
 %package -n libjacknet%{sonum}
 Summary:        Jack Audio Connection Kit Library
-# libjacknet was packaged with libjack0 prior to 1.9.12
 Group:          System/Libraries
+# libjacknet was packaged with libjack0 prior to 1.9.12
 Conflicts:      libjack0 < 1.9.12
 Provides:       libjack0:%{_libdir}/libjacknet.so.%{sonum}*
 
@@ -92,8 +106,8 @@ This package contains the library to access JACK
 
 %package -n libjackserver%{sonum}
 Summary:        Jack Audio Connection Kit Library
-# libjackserver was packaged with libjack0 prior to 1.9.12
 Group:          System/Libraries
+# libjackserver was packaged with libjack0 prior to 1.9.12
 Conflicts:      libjack0 < 1.9.12
 Provides:       libjack0:%{_libdir}/libjackserver.so.%{sonum}*
 
@@ -169,6 +183,8 @@ mv %{buildroot}%{_datadir}/jack-audio-connection-kit %{buildroot}%{_docdir}
 %license COPYING
 %{_mandir}/man1/*
 %{_bindir}/*
+%exclude %{_bindir}/jackdbus
+%exclude %{_bindir}/jack_control
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/%{name}_alsa.so
 %{_libdir}/%{name}/%{name}_dummy.so
@@ -182,7 +198,11 @@ mv %{buildroot}%{_datadir}/jack-audio-connection-kit %{buildroot}%{_docdir}
 %{_libdir}/%{name}/jack_alsarawmidi.so
 %{_libdir}/%{name}/%{name}_firewire.so
 %{_libdir}/%{name}/%{name}_proxy.so
+
 %if 0%{?wdbus} == 1
+%files dbus
+%{_bindir}/jackdbus
+%{_bindir}/jack_control
 %{_datadir}/dbus-1/services/org.jackaudio.service
 %endif
 

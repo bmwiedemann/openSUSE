@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 19 17:26:12 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Provide jack-daemon as an implementation-agnostic virtual name.
+- Split jackdbus into a separate jack-dbus package.
+
+-------------------------------------------------------------------
 Thu Mar 30 07:51:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.9.22:
