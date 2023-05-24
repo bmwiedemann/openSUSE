@@ -1,7 +1,7 @@
 #
 # spec file for package gnustep-make
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,8 +30,8 @@ Summary:        GNUstep Makefile package
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/Other
 URL:            http://www.gnustep.org/
-Source:         ftp://ftp.gnustep.org/pub/gnustep/core/%{name}-%{version}.tar.gz
-Source1:        ftp://ftp.gnustep.org/pub/gnustep/core/%{name}-%{version}.tar.gz.sig
+Source:         https://github.com/gnustep/tools-make/releases/download/make-2_9_1/%{name}-%{version}.tar.gz
+Source1:        https://github.com/gnustep/tools-make/releases/download/make-2_9_1/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}-rpmlintrc
 Source3:        gnustep-make.keyring
 BuildRequires:  gcc-objc
