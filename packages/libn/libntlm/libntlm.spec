@@ -1,7 +1,7 @@
 #
 # spec file for package libntlm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,12 +23,12 @@ Release:        0
 Summary:        Implementation of Microsoft's NTLMv1 authentication
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-URL:            http://www.nongnu.org/libntlm/
+URL:            https://gitlab.com/gsasl/libntlm/
 
-#Git-Clone:	https://gitlab.com/jas/libntlm.git/
-#DL-URL:	http://www.nongnu.org/libntlm/releases/
-Source:         http://www.nongnu.org/libntlm/releases/%name-%version.tar.gz
-Source2:        http://www.nongnu.org/libntlm/releases/%name-%version.tar.gz.sig
+#Git-Clone:	https://gitlab.com/gsasl/libntlm.git
+#DL-URL:	https://download.savannah.nongnu.org/releases/libntlm/
+Source:         https://download.savannah.nongnu.org/releases/libntlm/%name-%version.tar.gz
+Source2:        https://download.savannah.nongnu.org/releases/libntlm/%name-%version.tar.gz.sig
 Source3:        %name.keyring
 BuildRequires:  pkg-config
 
