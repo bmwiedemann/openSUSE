@@ -1,22 +1,18 @@
-Index: google-protobuf-3.21.5/ext/google/protobuf_c/extconf.rb
+Index: google-protobuf-3.23.1/ext/google/protobuf_c/extconf.rb
 ===================================================================
---- google-protobuf-3.21.5.orig/ext/google/protobuf_c/extconf.rb
-+++ google-protobuf-3.21.5/ext/google/protobuf_c/extconf.rb
-@@ -13,16 +13,16 @@ else
+--- google-protobuf-3.23.1.orig/ext/google/protobuf_c/extconf.rb
++++ google-protobuf-3.23.1/ext/google/protobuf_c/extconf.rb
+@@ -12,16 +12,11 @@ else
+   $CFLAGS += " -std=gnu99 -O3 -DNDEBUG"
  end
- 
  
 -if RUBY_PLATFORM =~ /linux/
 -  # Instruct the linker to point memcpy calls at our __wrap_memcpy wrapper.
 -  $LDFLAGS += " -Wl,-wrap,memcpy"
 -end
-+# if RUBY_PLATFORM =~ /linux/
-+#   # Instruct the linker to point memcpy calls at our __wrap_memcpy wrapper.
-+#   $LDFLAGS += " -Wl,-wrap,memcpy"
-+# end
- 
+-
  $VPATH << "$(srcdir)/third_party/utf8_range"
- $INCFLAGS << "$(srcdir)/third_party/utf8_range"
+ $INCFLAGS += " -I$(srcdir)/third_party/utf8_range"
  
  $srcs = ["protobuf.c", "convert.c", "defs.c", "message.c",
 -         "repeated_field.c", "map.c", "ruby-upb.c", "wrap_memcpy.c",
