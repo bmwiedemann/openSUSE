@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 22 22:41:34 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+
+- Updated to 0.5.10
+  * https://github.com/monora/rgl/compare/v0.5.9...v0.5.10
+  * Supported ruby 3.2 (needed for vagrant 2.3.6).
+
+-------------------------------------------------------------------
 Tue Aug 23 09:27:58 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - First version of the rgl gem

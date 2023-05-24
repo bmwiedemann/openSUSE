@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rgl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 # of those fields
 #
 Name:           rubygem-rgl
-Version:        0.5.9
+Version:        0.5.10
 Release:        0
 Summary:        Ruby Graph Library
 License:        BSD-2-Clause
