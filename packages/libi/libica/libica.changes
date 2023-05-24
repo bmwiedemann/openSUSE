@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 23 14:16:42 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade to version 4.2.2 (jsc#PED-3277, jsc#PED-3276)
+  - [UPDATE] syslog msgs only in error cases
+  - [UPDATE] don't count statistics in fips power-on self tests
+  - [PATCH] various fixes and some new tests
+
+-------------------------------------------------------------------
 Fri Apr 28 09:20:08 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Remove file /etc/libica/openssl3-fips.cnf - we don't support FIPS yet
