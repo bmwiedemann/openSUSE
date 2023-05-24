@@ -987,4 +987,27 @@
   * libfwtsiasl: fix undefined symbols in shared library</comment>
     <requestid>1075161</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>6424a2af12084914a59077b0435d0366</srcmd5>
+    <version>23.05.00</version>
+    <time>1684952578</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 23.05.00:
+  * lib: fwts_version.h - update to V23.05.00
+  * debian: update changelog
+  * auto-packager: mkpackage.sh remove the dh-dkms dependency
+  * debian: control: add build depend dh-dkms
+  * auto-packager: mkpackage.sh: add mantic
+  * fwts_framwork: add ebbr test for RISC-V
+  * s3: fix the display time of resume for Timekeeping suspended string missing
+  * lib: fwts_framework: add EBBR to category
+  * acpi: button: remove check fixed hardware &amp; control method power buttons
+  * fwts-test: add regression tests for IVRS
+  * acpi: ivrs: add tests for ACPI IVRS table
+  * acpi: cedt: remove unused code
+  * dmicheck: add more checks for invalid serial number string
+  * ACPICA: Update to version 20230331
+  * dmicheck: extent the dmi_patterns for the default serial number string</comment>
+    <requestid>1088786</requestid>
+  </revision>
 </revisionlist>
