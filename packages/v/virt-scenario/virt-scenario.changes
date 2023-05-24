@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed May 24 18:04:41 UTC 2023 - Antoine Ginies <aginies@suse.com>
+
+- version 2.0.3:
+   * In Interactive mode add settings for:
+     - Image Format
+     - Image Size
+     - Encryption
+     - Cache mode
+   * fix diskpath bug
+
+-------------------------------------------------------------------
+Tue May 24 17:38:14 UTC 2023 - Antoine Ginies <aginies@suse.com>
+
+- version 2.0.2:
+   * fix encrypted VM disk image bug
+   * add support for memory backing
+   * add support for disk format (qcow2/raw)
+   * Gtk: 
+     - add more tooltips
+     - add support for the disk image encryption password
+     - fix some wrong layout
+     - remove all colors to be more colorblind compliant
+   * remove some debug info
+
+-------------------------------------------------------------------
 Mon May 22 16:12:55 UTC 2023 - Antoine Ginies <aginies@suse.com>
 
 - version 2.0.1:

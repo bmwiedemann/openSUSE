@@ -20,7 +20,7 @@
 %define pythons python3
 
 Name:           virt-scenario
-Version:        2.0.1
+Version:        2.0.3
 Release:        0
 Summary:        Tool to create XML guest configuration and prepare the host for a scenario
 License:        GPL-3.0-or-later
@@ -64,7 +64,7 @@ This is the Gtk interface for %{name}.
 
 %install
 %python_install
-# move yaml file to /etc/pvirsh
+# move yaml file to /etc/virt-scenario
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}/
 mv %{buildroot}%{_datadir}/%{name}/*.yaml %{buildroot}%{_sysconfdir}/%{name}/
 mv src/demo_api_usage.py %{buildroot}%{_datadir}/%name/
@@ -82,6 +82,7 @@ mv src/demo_api_usage.py %{buildroot}%{_datadir}/%name/
 %{python_sitelib}/*.egg-info
 %attr(0644,root,root) %{_datadir}/%name
 %{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}-settings.1%{ext_man}
 %attr(0644,root,root) %{_datadir}/%{name}/
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/%{name}
 
