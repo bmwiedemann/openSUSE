@@ -26,7 +26,7 @@
 %bcond_with openh264
 %bcond_with voamrwbenc
 
-%if 0%{?is_opensuse} || 0%{?sle_version} >= 150400
+%if 0%{?is_opensuse} || 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1600
 %bcond_without avtp
 %bcond_without bs2b
 %bcond_without zbar

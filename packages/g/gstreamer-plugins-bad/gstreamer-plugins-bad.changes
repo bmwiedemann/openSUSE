@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 23 01:45:04 UTC 2023 - Jiri Srain <jsrain@suse.com>
+
+- use additional codecs on ALP
+
+-------------------------------------------------------------------
 Wed Apr 26 14:56:52 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Only build build vo-amrwbenc plugin on openSUSE, vo-amrwbenc
