@@ -1,0 +1,27 @@
+From 47ab968995ae864d3681833040e17b8f1af4cb38 Mon Sep 17 00:00:00 2001
+From: David King <amigadave@amigadave.com>
+Date: Tue, 15 Feb 2022 10:54:40 +0000
+Subject: [PATCH] validate: support SingleMainWindow key from 1.5
+
+Fixes https://gitlab.freedesktop.org/xdg/desktop-file-utils/-/issues/59
+---
+ src/validate.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/validate.c b/src/validate.c
+index 821be7d..10d1872 100644
+--- a/src/validate.c
++++ b/src/validate.c
+@@ -329,6 +329,9 @@ static DesktopKeyDefinition registered_desktop_keys[] = {
+   /* SuSE specific */
+   { DESKTOP_BOOLEAN_TYPE,      "X-SuSE-translate",  FALSE, FALSE, FALSE, NULL },
+ 
++  /* Since 1.5 */
++  { DESKTOP_BOOLEAN_TYPE,           "SingleMainWindow", FALSE, FALSE, FALSE, NULL },
++
+   /* Keys reserved for KDE */
+ 
+   /* since 0.9.4 */
+-- 
+2.36.1
+

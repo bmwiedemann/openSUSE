@@ -27,10 +27,17 @@ Release:        0
 Summary:        RPM file correctness checker
 License:        GPL-2.0-or-later
 URL:            https://github.com/rpm-software-management/rpmlint
-Source0:        desktop-file-utils-0.24.tar.xz
+Source0:        desktop-file-utils-0.26.tar.xz
 Source1:        stdlib.txt
 Source2:        rpmlint.wrapper
 Source3:        rpmlint-mini.rpmlintrc
+
+# PATCH-FEATURE-OPENSUSE desktop-file-utils-suse-keys.patch vuntz@opensuse.org -- Handle SUSE-specific keys in validator. This is not strictly necessary, since they are prefixed with X-, but we can verify that the value has the right type.
+Patch0:         desktop-file-utils-suse-keys.patch
+# PATCH-FIX-UPSTREAM -- SingleMainWindow is present in xdg-specs 1.5 and can be used by both GNOME and KDE
+Patch2:         0001-validate-support-SingleMainWindow-key-from-1.5.patch
+Patch3:         0002-validate-Support-version-1.5.patch
+
 # need to fetch the file from there
 BuildRequires:  checkbashisms
 # the main package rpmlint's python3 runtime requirements do not necessarily match our target flavor
@@ -49,6 +56,7 @@ BuildRequires:  glib2-devel
 BuildRequires:  glib2-devel-static
 BuildRequires:  libedit-devel
 BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  rpmlint >= 2
@@ -61,14 +69,12 @@ rpmlint is a tool to check common errors on RPM packages. Binary and
 source packages can be checked.
 
 %prep
-%setup -q -n desktop-file-utils-0.24
+%autosetup -p1 -n desktop-file-utils-0.26
 <COPYING
 
 %build
-%configure
-cd src
-%make_build desktop-file-validate \
-DESKTOP_FILE_UTILS_LIBS="%{_libdir}/libglib-2.0.a -lpthread -lrt"
+%meson
+%meson_build
 
 %install
 # Check that rpmlint works at all, with the primary flavor
@@ -85,7 +91,7 @@ done
 # We don't need activation
 rm %{buildroot}/opt/testing/bin/activate*
 # We need these available
-cp -a src/desktop-file-validate %{buildroot}/opt/testing/bin
+cp -a %{_vpath_builddir}/src/desktop-file-validate %{buildroot}/opt/testing/bin
 cp -a %{_bindir}/dash %{_bindir}/checkbashisms %{buildroot}/opt/testing/bin
 cp -a %{_libdir}/libedit.so.0* %{buildroot}/opt/testing/lib
 # Install config files
@@ -134,7 +140,7 @@ install -m 755 -D %{SOURCE2} %{buildroot}/opt/testing/bin/rpmlint
 
 %check
 # check rpmlint-mini with the custom flavor
-%make_build check
+%meson_test
 sed -e 's|/opt|%{buildroot}/opt|' -e 's|exec|%my_python|' %{buildroot}/opt/testing/bin/rpmlint > myrpmlint
 chmod +x myrpmlint
 set +e

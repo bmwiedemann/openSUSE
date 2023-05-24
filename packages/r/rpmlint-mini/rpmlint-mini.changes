@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue May 23 06:25:06 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add patches to avoid bogus errors in post-build checks:
+  * 0001-validate-support-SingleMainWindow-key-from-1.5.patch
+  * 0002-validate-Support-version-1.5.patch
+  * desktop-file-utils-suse-keys.patch
+
+- Update desktop-file-utils source to 0.26:
+  * Support for Autotools removed in the next release.
+  * update-desktop-database
+    + Fix erroneous installation as "desktop-file-update"
+      when using the Meson build system
+
+- Update to version 0.25:
+  * common
+    + Add Meson build system
+  * desktop-file-validate
+    + Allow desktop file spec version 1.4.
+    + Make it possible to deprecate keys starting with "X-".
+    + Add the "Implements" field from spec version 1.2.
+    + Add the "PrefersNonDefaultGPU" key and deprecate "X-KDE-RunOnDiscreteGpu".
+    + Set locale for correct output message encoding.
+    + Add coloured output support.
+    + Fix parsing of escaped double quote in quoted strings.
+    + Add GNOME Flashback, GNOME Classic desktops.
+
+-------------------------------------------------------------------
 Wed Mar 29 10:43:27 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Depend on python-magic Python package.
