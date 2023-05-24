@@ -56,7 +56,7 @@ rm -rf jaraco.logging.egg-info
 #  work around for gh#pytest-dev/pytest#3396 until gh#pytest-dev/pytest#10088 lands in a pytest release
 touch jaraco/__init__.py
 cp -r %{python3_sitelib}/jaraco/* jaraco/
-%pytest --doctest-modules
+%pytest --doctest-modules jaraco/logging.py
 
 %files %{python_files}
 %license LICENSE
