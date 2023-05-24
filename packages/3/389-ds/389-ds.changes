@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May 24 03:05:55 UTC 2023 - william.brown@suse.com
+
+- Update to version 2.4.0~git18.37ec5cd:
+  * Issue 5751 - Cleanallruv task crashes on consumer (#5775)
+  * Bump version to 2.4.1
+  * Issue 5770 - RFE - Extend Password Adminstrators to allow skipping password info updates
+  * Issue 5768 - CLI/UI - cert checks are too strict, and other issues
+  * Issue 5722 - fix compilation warnings (#5771)
+  * Issue 5765 - Improve installer selinux handling
+  * Issue 152 - RFE - Add support for LDAP alias entries
+  * Issue 5052 - BUG - Custom filters prevented entry deletion (#5060)
+  * Issue 5752 - RFE - Provide a history for LastLoginTime (#5753)
+  * Issue 5722 - RFE When a filter contains 'nsrole', improve response time by rewriting the filter (#5723)
+
+-------------------------------------------------------------------
 Wed Apr 26 02:40:03 UTC 2023 - william.brown@suse.com
 
 - Update to version 2.4.0~git0.87efeb2:
