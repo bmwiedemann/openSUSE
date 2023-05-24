@@ -669,4 +669,34 @@
   relying on them (drkonqi5) in the Factory repository has been updated.</comment>
     <requestid>1075207</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>0e97c822d1d3732fd96836f0d606af94</srcmd5>
+    <version>22</version>
+    <time>1684952482</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to version 22
+
+- Make sure that (future) users of %sysctl_apply() and %binfmt_apply() will call
+  the macros with arguments.
+
+- Test the presence of /run/systemd/system to check whether we're operating
+  during transactional updates. Hence the behavior is the same when operating in
+  a chroot or during transactional updates.
+- Leave %sysctl_apply() and %binfmt_apply() empty (bsc#1211272)
+  Only the former has very few users currently and none of them has specific
+  code relying on the new sysctl values to be effective between the macros and
+  the file triggers.
+
+- Bump to version 21
+
+- Rely on 'systemd-update-helper' shell script to implement %service_* macros
+  The helper was introduced by upstream commit 6d825ab2d42d3219e49a1. The main
+  advantage is that we no more need to rebuild all packages to update the macro
+  definitions.
+  Internally the script relies on file triggers for 'daemon-reload' operations
+  and for restarting units (when needed).
+- Update other macros to reflect the fact that systemd package provides file
+  triggers for sysusers, tmpfiles, hwdb, and journal catalog.</comment>
+    <requestid>1087187</requestid>
+  </revision>
 </revisionlist>

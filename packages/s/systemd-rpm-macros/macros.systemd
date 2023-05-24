@@ -1,4 +1,4 @@
-#  -*- Mode: rpm-spec; indent-tabs-mode: t -*- */
+#  -*- Mode: rpm-spec; indent-tabs-mode: t -*-
 # RPM macros for packages installing systemd unit files
 #
 ###
@@ -66,46 +66,41 @@ OrderWithRequires(postun): systemd \
 Suggests: systemd \
 %{nil}
 
-# Figure out when presets need to be applied. This information is only
-# recorded during %pre and is actually applied during %post.
+%__systemd_someargs_0(:) %{error:The %%%1 macro requires some arguments}
+%__systemd_twoargs_2() %{nil}
+
+# Find when presets need to be applied. This information is only recorded during
+# %pre and is actually applied during %post.
 #
-# Presets might need to be applied during package install but also
-# during package update. On update, packages might introduce new
-# services but we need to make sure that's not happening during the
-# migration of SysV initscripts. On package install, presets might
-# have been already applied because of package renaming or split.
+# Presets might need to be applied during package updates too as new services
+# might be introduced in this case. Note that on package installations, presets
+# might have been already applied. This can happen when packages have been
+# renamed or splitted into sub-packages.
 #
-%service_add_pre()									\
-if [ -x /usr/bin/systemctl ]; then							\
-	for service in %{?*} ; do							\
-		if [ ! -e "/usr/lib/systemd/system/$service" ]; then			\
-			mkdir -p /run/systemd/rpm/needs-preset				\
-			touch "/run/systemd/rpm/needs-preset/$service"			\
-		fi									\
-	done										\
-fi											\
+%service_add_pre()								\
+%{expand:%%{?__systemd_someargs_%#:%%__systemd_someargs_%# service_add_pre}}	\
+if [ -x /usr/lib/systemd/systemd-update-helper ]; then				\
+	/usr/lib/systemd/systemd-update-helper mark-install-system-units %{?*} || : \
+fi										\
 %{nil}
 
 # Apply the presets if %pre told us to do so.
 #
-%service_add_post()									\
-if [ -x /usr/bin/systemctl ]; then							\
-	for service in %{?*} ; do							\
-		if [ -e "/run/systemd/rpm/needs-preset/$service" ]; then		\
-			/usr/bin/systemctl preset "$service" || :			\
-			rm "/run/systemd/rpm/needs-preset/$service" || :		\
-		fi									\
-	done										\
-fi											\
+%service_add_post()								\
+%{expand:%%{?__systemd_someargs_%#:%%__systemd_someargs_%# service_add_post}}	\
+if [ -x /usr/lib/systemd/systemd-update-helper ]; then				\
+	/usr/lib/systemd/systemd-update-helper install-system-units %{?*} || :	\
+fi										\
 %{nil}
 
-# On uninstall, disable and stop services
+# On uninstall, disable and stop services.
 #
-%service_del_preun()									\
-if [ $1 -eq 0 -a -x /usr/bin/systemctl ]; then						\
-	# Package removal, not upgrade							\
-	/usr/bin/systemctl --no-reload disable --now %{?*} || :				\
-fi											\
+%service_del_preun()								\
+%{expand:%%{?__systemd_someargs_%#:%%__systemd_someargs_%# service_del_preun}}	\
+if [ $1 -eq 0 ] && [ -x /usr/lib/systemd/systemd-update-helper ]; then		\
+	# Package removal, not upgrade						\
+	/usr/lib/systemd/systemd-update-helper remove-system-units %{?*} || :	\
+fi										\
 %{nil}
 
 # On uninstall, tell systemd to reload its unit files.
@@ -113,10 +108,9 @@ fi											\
 #
 # It ignores the content of /etc/sysconfig/services
 #
-%service_del_postun_without_restart()							\
-if [ -x /usr/bin/systemctl ]; then							\
-	/usr/bin/systemctl daemon-reload || :						\
-fi											\
+%service_del_postun_without_restart()						\
+%{expand:%%{?__systemd_someargs_%#:%%__systemd_someargs_%# service_del_postun_without_restart}} \
+:										\
 %{nil}
 
 # On uninstall, tell systemd to reload its unit files.
@@ -124,35 +118,30 @@ fi											\
 #
 # It ignores the content of /etc/sysconfig/services
 #
-%service_del_postun_with_restart()							\
-if [ -x /usr/bin/systemctl ]; then							\
-	/usr/bin/systemctl daemon-reload || :						\
-	if [ $1 -ge 1 ]; then								\
-	        # Package upgrade, not uninstall					\
-		/usr/bin/systemctl try-restart %{?*} || :				\
-	fi										\
-fi											\
+%service_del_postun_with_restart()						\
+%{expand:%%{?__systemd_someargs_%#:%%__systemd_someargs_%# service_del_postun_with_restart}} \
+if [ $1 -ge 1 ] && [ -x /usr/lib/systemd/systemd-update-helper ]; then		\
+	# Package upgrade, not uninstall					\
+	/usr/lib/systemd/systemd-update-helper mark-restart-system-units %{?*} || : \
+fi										\
 %{nil}
 
 # On uninstall, tell systemd to reload its unit files.
 # On update, tell systemd to reload and restart service unless
-# DISABLE_RESTART_ON_UPDATE from /etc/sysconfig/services says otherwise
+# DISABLE_RESTART_ON_UPDATE from /etc/sysconfig/services says otherwise.
 #
-
-%service_del_postun()									\
-if [ -x /usr/bin/systemctl ]; then							\
-	/usr/bin/systemctl daemon-reload || :						\
-	if [ $1 -ge 1 ]; then								\
-		# Package upgrade, not uninstall					\
-		DISABLE_RESTART_ON_UPDATE=no						\
-		[ -e /etc/sysconfig/services ] && . /etc/sysconfig/services || :	\
-											\
-		case "$DISABLE_RESTART_ON_UPDATE" in					\
-		yes|1)	;;								\
-		*)	/usr/bin/systemctl try-restart %{*} || :			\
-		esac									\
-	fi										\
-fi											\
+%service_del_postun()								\
+%{expand:%%{?__systemd_someargs_%#:%%__systemd_someargs_%# service_del_postun}}	\
+if [ $1 -ge 1 ] && [ -x /usr/lib/systemd/systemd-update-helper ]; then		\
+	# Package upgrade, not uninstall					\
+	DISABLE_RESTART_ON_UPDATE=no						\
+	[ -e /etc/sysconfig/services ] && . /etc/sysconfig/services || :	\
+										\
+	case "$DISABLE_RESTART_ON_UPDATE" in					\
+	yes|1)	;;								\
+	*)	/usr/lib/systemd/systemd-update-helper mark-restart-system-units %{?*} || : \
+	esac									\
+fi										\
 %{nil}
 
 #
@@ -165,54 +154,85 @@ fi											\
 %systemd_postun() %{expand::%%service_del_postun_without_restart %{?**}}
 %systemd_postun_with_restart() %{expand::%%service_del_postun_with_restart %{?**}}
 
-%systemd_user_pre()									\
-if [ -x /usr/bin/systemctl ]; then							\
-	for service in %{?*} ; do							\
-		if [ ! -e "/usr/lib/systemd/user/$service" ]; then			\
-			mkdir -p /run/systemd/rpm/needs-user-preset			\
-			touch "/run/systemd/rpm/needs-user-preset/$service"		\
-		fi									\
-	done										\
-fi											\
+#
+# Variants dealing with user units.
+#
+
+%systemd_user_pre()								\
+%{expand:%%{?__systemd_someargs_%#:%%__systemd_someargs_%# systemd_user_pre}}	\
+if [ -x /usr/lib/systemd/systemd-update-helper ]; then				\
+	/usr/lib/systemd/systemd-update-helper mark-install-user-units %{?*} || : \
+fi										\
 %{nil}
 
-%systemd_user_post()									\
-if [ -x /usr/bin/systemctl ]; then							\
-	for service in %{?*} ; do							\
-		if [ -e "/run/systemd/rpm/needs-user-preset/$service" ]; then		\
-			/usr/bin/systemctl --global preset "$service" || :		\
-			rm "/run/systemd/rpm/needs-user-preset/$service" || :		\
-		fi									\
-	done										\
-fi											\
+%systemd_user_post()								\
+%{expand:%%{?__systemd_someargs_%#:%%__systemd_someargs_%# systemd_user_post}}	\
+if [ -x /usr/lib/systemd/systemd-update-helper ]; then				\
+	/usr/lib/systemd/systemd-update-helper install-user-units %{?*} || :	\
+fi										\
 %{nil}
 
-%systemd_user_preun()									\
-if [ $1 -eq 0 -a -x /usr/bin/systemctl ]; then						\
-        # Package removal, not upgrade							\
-        /usr/bin/systemctl --global disable %{?*} || :					\
-fi											\
+%systemd_user_preun()								\
+%{expand:%%{?__systemd_someargs_%#:%%__systemd_someargs_%# systemd_user_preun}}	\
+if [ $1 -eq 0 ] && [ -x /usr/lib/systemd/systemd-update-helper ]; then		\
+        # Package removal, not upgrade						\
+	/usr/lib/systemd/systemd-update-helper remove-user-units %{?*} || :	\
+fi										\
 %{nil}
 
-%systemd_user_postun() %{nil}
-%systemd_user_postun_with_restart() %{nil}
-
-%udev_hwdb_update() \
-[ -x /usr/bin/systemd-hwdb ] && /usr/bin/systemd-hwdb update || : \
+%systemd_user_postun()								\
+%{expand:%%{?__systemd_someargs_%#:%%__systemd_someargs_%# systemd_user_postun}} \
+:										\
 %{nil}
 
-%udev_rules_update() \
-[ -x /usr/bin/udevadm ] && /usr/bin/udevadm control --reload || : \
+%systemd_user_postun_with_restart()						\
+%{expand:%%{?__systemd_someargs_%#:%%__systemd_someargs_%# systemd_user_postun_with_restart}} \
+if [ $1 -ge 1 ] && [ -x /usr/lib/systemd/systemd-update-helper ]; then		\
+    # Package upgrade, not uninstall						\
+    /usr/lib/systemd/systemd-update-helper mark-restart-user-units %{?*} || :	\
+fi										\
 %{nil}
 
-%journal_catalog_update() \
-[ -x /usr/bin/journalctl ] && /usr/bin/journalctl --update-catalog || : \
+#
+# The following macros are empty as we have file triggers in place for hwdb,
+# journal catalog, udev rules, binfmt and sysctl.
+#
+
+%udev_hwdb_update() :%{nil}
+
+%udev_rules_update() :%{nil}
+
+%journal_catalog_update() :%{nil}
+
+# Currently the 2 following macros don't have any interesting users. Leave them
+# empty until a specific need appears.
+
+%sysctl_apply()									\
+%{expand:%%{?__systemd_someargs_%#:%%__systemd_someargs_%# sysctl_apply}}	\
+:										\
 %{nil}
 
-# Deprecated. Use %tmpfiles_create_package instead
-%tmpfiles_create() \
-[ -z "${TRANSACTIONAL_UPDATE}" -a -x /usr/bin/systemd-tmpfiles ] && \
-	/usr/bin/systemd-tmpfiles --create %{?*} || : \
+%binfmt_apply()									\
+%{expand:%%{?__systemd_someargs_%#:%%__systemd_someargs_%# binfmt_apply}}	\
+:										\
+%{nil}
+
+#
+# Since we moved to file triggers the 2 following macros are deprecated. If the
+# sysusers or tmpfiles data need to be created in advance (when a system user
+# needs to be installed in %%pre so proper ownership are used when package's
+# files are installed for example) then use the '*_create_package()' variants.
+#
+
+%tmpfiles_create()								\
+%{expand:%%{?__systemd_someargs_%#:%%__systemd_someargs_%# tmpfiles_create}}	\
+[ -d /run/systemd/system ] && [ -x /usr/bin/systemd-tmpfiles ] &&		\
+	/usr/bin/systemd-tmpfiles --create %{?*} || :				\
+%{nil}
+
+%sysusers_create()								\
+%{expand:%%{?__systemd_someargs_%#:%%__systemd_someargs_%# sysusers_create}}	\
+[ -x /usr/bin/systemd-sysusers ] && /usr/bin/systemd-sysusers %{?*} || :	\
 %{nil}
 
 # This may be used by package installation scripts to create files according to
@@ -230,34 +250,10 @@ fi											\
 #   %{_tmpfilesdir}/%{name}.conf
 #
 %tmpfiles_create_package() \
-if [ -z "${TRANSACTIONAL_UPDATE}" ]; then \
+%{expand:%%{?!__systemd_twoargs_%#:%%{error:The %%%%tmpfiles_create_package macro requires two arguments}}} \
+[ -d /run/systemd/system ] && \
 	/usr/bin/systemd-tmpfiles --replace=%_tmpfilesdir/%1.conf --create - <<SYSTEMD_INLINE_EOF || : \
 %(cat %2) \
-SYSTEMD_INLINE_EOF\
-fi \
-%{nil}
-
-# This should be used by package installation scripts which doesn't require
-# users or groups to be present before the files installed by the package are
-# present on disk and when the sysusers conf files are generated during the
-# build of the package hence not easily available before the build of the
-# package.
-#
-# This macro will go away when this will be moved to file triggers.
-#
-# Example:
-#   %post
-#   %sysusers_create %{name}.conf
-#   %files
-#   %{_sysusersdir}/%{name}.conf
-#
-%sysusers_create() \
-[ -x /usr/bin/systemd-sysusers ] && /usr/bin/systemd-sysusers %{?*} || : \
-%{nil}
-
-%sysusers_create_inline() \
-[ -x /usr/bin/systemd-sysusers ] && /usr/bin/systemd-sysusers - <<SYSTEMD_INLINE_EOF || : \
-%{?*} \
 SYSTEMD_INLINE_EOF\
 %{nil}
 
@@ -267,8 +263,8 @@ SYSTEMD_INLINE_EOF\
 #
 # Example:
 #   Source1: %{name}-sysusers.conf
-#   ...                      
-#   %install                 
+#   ...
+#   %install
 #   install -D %SOURCE1 %{buildroot}%{_sysusersdir}/%{name}.conf
 #   %pre
 #   %sysusers_create_package %{name} %SOURCE1
@@ -276,17 +272,16 @@ SYSTEMD_INLINE_EOF\
 #   %{_sysusersdir}/%{name}.conf
 #
 %sysusers_create_package() \
-/usr/bin/systemd-sysusers --replace=%_sysusersdir/%1.conf - <<SYSTEMD_INLINE_EOF || : \
+%{expand:%%{?!__systemd_twoargs_%#:%%{error:The %%%%sysusers_create_package macro requires two arguments}}} \
+[ -x /usr/bin/systemd-sysusers ] && \
+	/usr/bin/systemd-sysusers --replace=%_sysusersdir/%1.conf - <<SYSTEMD_INLINE_EOF || : \
 %(cat %2) \
 SYSTEMD_INLINE_EOF\
 %{nil}
 
-%sysctl_apply() \
-[ -x /usr/lib/systemd/systemd-sysctl ] && \
-	/usr/lib/systemd/systemd-sysctl %{?*} || : \
-%{nil}
-
-%binfmt_apply() \
-[ -x /usr/lib/systemd/systemd-binfmt ] && \
-	/usr/lib/systemd/systemd-binfmt %{?*} || : \
+# Deprecated. Use %sysusers_create_package instead
+%sysusers_create_inline() \
+[ -x /usr/bin/systemd-sysusers ] && /usr/bin/systemd-sysusers - <<SYSTEMD_INLINE_EOF || : \
+%{?*} \
+SYSTEMD_INLINE_EOF\
 %{nil}

@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon May 15 09:21:26 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Bump to version 22
+
+-------------------------------------------------------------------
+Wed May 10 12:37:05 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Make sure that (future) users of %sysctl_apply() and %binfmt_apply() will call
+  the macros with arguments.
+
+-------------------------------------------------------------------
+Wed May 10 09:14:02 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Test the presence of /run/systemd/system to check whether we're operating
+  during transactional updates. Hence the behavior is the same when operating in
+  a chroot or during transactional updates.
+
+- Leave %sysctl_apply() and %binfmt_apply() empty (bsc#1211272)
+
+  Only the former has very few users currently and none of them has specific
+  code relying on the new sysctl values to be effective between the macros and
+  the file triggers.
+
+-------------------------------------------------------------------
+Tue May  9 14:09:39 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Bump to version 21
+
+-------------------------------------------------------------------
+Tue May  9 14:07:05 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Rely on 'systemd-update-helper' shell script to implement %service_* macros
+
+  The helper was introduced by upstream commit 6d825ab2d42d3219e49a1. The main
+  advantage is that we no more need to rebuild all packages to update the macro
+  definitions.
+
+  Internally the script relies on file triggers for 'daemon-reload' operations
+  and for restarting units (when needed).
+
+- Update other macros to reflect the fact that systemd package provides file
+  triggers for sysusers, tmpfiles, hwdb, and journal catalog.
+
+-------------------------------------------------------------------
 Wed Mar 29 11:38:07 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Bump to version 20
