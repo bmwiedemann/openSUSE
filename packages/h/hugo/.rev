@@ -567,4 +567,13 @@
 - Use syntax Supplements: (hugo and bash-completion) as per rpmlint (forwarded request 1083543 from jfkw)</comment>
     <requestid>1083545</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>9b30e70255e62f5ea8dc321d9187ff93</srcmd5>
+    <version>0.112.3</version>
+    <time>1684952554</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.112.3:
+  * Fix regression when loading config  -e is empty or HUGO_ENV or HUGO_ENVIRONMENT is set (forwarded request 1088866 from jfkw)</comment>
+    <requestid>1088867</requestid>
+  </revision>
 </revisionlist>

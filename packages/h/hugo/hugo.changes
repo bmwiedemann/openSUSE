@@ -1,4 +1,112 @@
 -------------------------------------------------------------------
+Wed May 24 15:07:50 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.112.3:
+  * Fix regression when loading config  -e is empty or HUGO_ENV or HUGO_ENVIRONMENT is set
+
+-------------------------------------------------------------------
+Wed May 24 12:18:55 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.112.2:
+  * minifiers: Make sure JS.Version always has a value
+  * Fix regression with site.IsServer when not running a server
+
+-------------------------------------------------------------------
+Tue May 23 20:03:50 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.112.1:
+  * Fix regression when config for OutputFormat.BaseName is an empty string
+
+-------------------------------------------------------------------
+Tue May 23 20:02:31 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.112.0:
+  * circleci: Add github.com to known hosts
+  * Revert "build(deps): bump gocloud.dev from 0.24.0 to 0.29.0"
+  * Revert "postcss: Improve validation of option 'config'"
+  * Add --format to hugo config
+  * docs: Regen docshelper
+  * commands: Add missing gen docshelper command
+  * Fix "unknown command" message when no suggestion
+  * postcss: Improve validation of option 'config'
+  * docs: Regen CLI docs
+  * Squashed 'docs/' changes from 6e32d0591..39af43ef1
+  * Avoid writing to hugo_stats.json when there are no changes
+  * Add cache busting config to support Tailwind 3
+  * build(deps): bump github.com/tdewolff/parse/v2 from 2.6.5 to 2.6.6
+  * build(deps): bump gocloud.dev from 0.24.0 to 0.29.0
+  * build(deps): bump github.com/gobuffalo/flect from 0.3.0 to 1.0.2
+  * build(deps): bump golang.org/x/image from 0.5.0 to 0.7.0
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.12.4 to 2.12.5
+  * commands: Make all list commands list what 'all' did before
+  * tpl/tplimpl: Add img loading attribute to figure shortcode  (#10927)
+  * commands: Fix build logic when listing expired/future draft content
+  * Allow whitelisting mediaTypes used in resources.GetRemote
+  * Add hugo.WorkingDir
+  * Make language merging of markup etc. config without values in the root
+  * tpl/urls: Return empty string when JoinPath has zero args
+  * build(deps): bump github.com/dustin/go-humanize from 1.0.0 to 1.0.1
+  * build(deps): bump google.golang.org/api from 0.76.0 to 0.123.0
+  * build(deps): bump golang.org/x/tools from 0.4.0 to 0.9.1
+  * build(deps): bump github.com/cli/safeexec from 1.0.0 to 1.0.1
+  * build(deps): bump github.com/getkin/kin-openapi from 0.110.0 to 0.117.0
+  * deps: Update github.com/evanw/esbuild v0.17.0 => v0.17.19
+  * commands: Fix data race
+  * deps: Update github.com/alecthomas/chroma/v2 v2.7.0
+  * Re-add --printUnusedTemplates and --printPathWarnings
+  * tpl/urls: Fix build broken by a merge
+  * tpl/urls: Add JoinPath template function
+  * Allow legacy taxonomyTerm in disableKinds
+  * Fix warn message about custom params on the language top level
+  * Fix some spelling mistakes
+  * all: Fix comments for exported functions and packages
+  * deps: Update github.com/bep/golibsass v1.1.0 => v1.1.1
+  * Make GOMAXPROCS to be CPU limit aware
+  * Allow empty params.mainSections
+  * modules: Fix format flag in error
+  * commands: Load config before creating the filesystem
+  * Fix some recently introduced error handling issues
+  * tpl/lang: document delimiter option for FormatNumberCustom
+  * Re-add site.LanguagePrefix
+  * github: Trim the test flow a little
+  * commands: Improve the common build flag handling
+  * Support, but warn, about top level language custom params
+  * Handle transient errors in config loading etc.
+  * Re-establish all the server flags
+  * Deprecate site.Language.Params and some other fixes
+  * Revert "Make GOMAXPROCS CPU limit aware"
+  * Make GOMAXPROCS CPU limit aware
+  * Add Sections to Site interface
+  * helpers: simplify path tests with T.TempDir
+  * tpl: Add math.Abs
+  * Create a struct with all of Hugo's config options
+  * Improve date parsing performance for the common case
+  * Add a counter helper
+  * Expand the baseline benchmark a little
+  * Revert "Update syntax-highlighting.md (#10929)" (#10930)
+  * Update syntax-highlighting.md (#10929)
+  * Update README.md
+  * tpl/strings: Clarify findRESubmatch description
+  * langs/i18n: Fallback to defaultContentLanguage instead of English
+  * tpl/debug: Add VisualizeSpaces
+  * Update README.md
+  * Prevent the global error collector to panic when sending on closed channel
+  * markup/goldmark: Add config options for the typographer extension
+  * readme: Fix build command
+  * Update README.md
+  * Add test for ToC vs include
+  * resources.functions: improve validation
+  * resources: Fix typos in error message and variables
+  * markup/goldmark: Fail on invalid Markdown attributes
+  * commands: Fix data race in test
+  * tpl/math: Return error if less than 2 input numbers
+
+-------------------------------------------------------------------
+Mon May 22 21:50:48 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Use _service mode manual as better alias name than disabled
+
+-------------------------------------------------------------------
 Tue Apr 18 06:27:01 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Remove NO_BRP_STRIP_DEBUG=true experimentally to test which if
