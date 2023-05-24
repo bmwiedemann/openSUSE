@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 22 21:10:32 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 0.9.1:
+  * The published tar for 0.9.0 contained the wrong version
+- Add the lang package
+- Drop 0001-QrCodeDecoder-Replace-deprecated-BarcodeFormat-QR_CO.patch, 0001-QrCodeGenerator-Replace-deprecated-BarcodeFormat-QR_.patch and 0001-Support-ZXing-2.0.patch
+
+-------------------------------------------------------------------
 Fri May  5 12:14:24 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.9.0

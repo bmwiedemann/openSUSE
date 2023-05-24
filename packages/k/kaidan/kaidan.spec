@@ -17,27 +17,25 @@
 
 
 Name:           kaidan
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        A XMPP client based on KDE Framework
-License:        GPL-3.0-or-later AND SUSE-GPL-3.0+-with-openssl-exception AND MIT AND AML AND CC-BY-SA-4.0
+License:        AML AND GPL-3.0-or-later AND SUSE-GPL-3.0+-with-openssl-exception AND MIT AND CC-BY-SA-4.0
 URL:            https://www.kaidan.im
-Source0:        https://download.kde.org/unstable/%{name}/%{version}/%{name}-%{version}.tar.xz
-Source1:        https://download.kde.org/unstable/%{name}/%{version}/%{name}-%{version}.tar.xz.sig
+Source0:        https://download.kde.org/unstable/%{name}/%{name}-%{version}.tar.xz
+Source1:        https://download.kde.org/unstable/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        kaidan.keyring
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-QrCodeDecoder-Replace-deprecated-BarcodeFormat-QR_CO.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-QrCodeGenerator-Replace-deprecated-BarcodeFormat-QR_.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-Support-ZXing-2.0.patch
 BuildRequires:  cmake >= 3.3
 BuildRequires:  extra-cmake-modules >= 5.40.0
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(KF5CoreAddons) >= 5.67.0
+BuildRequires:  cmake(KF5KIO) >= 5.67.0
 BuildRequires:  cmake(KF5Kirigami2) >= 5.67.0
+BuildRequires:  cmake(KF5KirigamiAddons) >= 0.7.0
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5QQC2DeskopStyle)
-BuildRequires:  cmake(QXmpp) >= 1.3.0
+BuildRequires:  cmake(KQuickImageEditor)
+BuildRequires:  cmake(QXmpp) >= 1.5.0
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core) >= 5.14.0
 BuildRequires:  cmake(Qt5LinguistTools)
@@ -53,13 +51,17 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  cmake(ZXing) >= 1.0.8
+Requires:       kirigami-addons >= 0.7.0
 Requires:       kirigami2 >= 5.67.0
+Requires:       kquickimageeditor-imports
 Requires:       libqt5-qtquickcontrols2
 
 %description
 Kaidan is a simple Jabber/XMPP client providing a user-interface using
 Kirigami and QtQuick. The back-end of Kaidan is entirely written in C++
 using the qxmpp XMPP client library and Qt 5.
+
+%lang_package
 
 %prep
 %autosetup -p1
@@ -72,6 +74,8 @@ using the qxmpp XMPP client library and Qt 5.
 %kf5_makeinstall -C build
 %suse_update_desktop_file im.kaidan.kaidan
 
+%find_lang %{name} --with-qt
+
 %files
 %license LICENSE
 %doc README.md NEWS
@@ -82,6 +86,8 @@ using the qxmpp XMPP client library and Qt 5.
 %{_kf5_iconsdir}/hicolor/*/apps/%{name}.*
 %{_kf5_notifydir}/kaidan.notifyrc
 %{_kf5_sharedir}/%{name}/images
-%{_kf5_sharedir}/%{name}/servers.json
+%{_kf5_sharedir}/%{name}/providers.json
+
+%files lang -f %{name}.lang
 
 %changelog
