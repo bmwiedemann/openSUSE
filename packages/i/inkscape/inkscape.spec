@@ -78,6 +78,8 @@ BuildRequires:  pkgconfig(libwpg-0.3)
 # extensions use annotations which requires 3.7+
 Requires:       python(abi) >= 3.7
 Requires:       python3-gobject
+# python3-imaging is generic for python3-Pillow
+Recommends:     python3-imaging
 Recommends:     python3-lxml
 Recommends:     python3-numpy
 Recommends:     python3-scour

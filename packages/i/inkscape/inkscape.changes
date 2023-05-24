@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 23 11:52:02 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Add Recommends for python3-imaging (python3-Pillow)
+
+-------------------------------------------------------------------
 Tue Mar 21 08:44:31 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 0001-Fix-build-with-GCC13.patch: Fix build with GCC13.
@@ -1336,4 +1341,3 @@ Thu Aug 12 13:27:48 CEST 2004 - hhetter@suse.de
 Mon Aug  2 13:49:10 CEST 2004 - hhetter@suse.de
 
 - initial SuSE package 
-

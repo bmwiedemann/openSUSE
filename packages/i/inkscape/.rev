@@ -1001,4 +1001,13 @@
     <comment></comment>
     <requestid>1073505</requestid>
   </revision>
+  <revision rev="127" vrev="3">
+    <srcmd5>9bd6780adaf246afe0efa1ba6282af19</srcmd5>
+    <version>1.2.2</version>
+    <time>1684952523</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Recommends for python3-imaging (python3-Pillow)
+</comment>
+    <requestid>1088648</requestid>
+  </revision>
 </revisionlist>
