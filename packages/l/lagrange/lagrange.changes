@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 23 09:08:00 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.16.1
+  - Fixed handling of the AltGr key during text input (again).
+  - Updated UI translations.
+
+-------------------------------------------------------------------
 Mon May 22 04:25:38 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.16.0
