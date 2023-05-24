@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 23 07:32:16 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 2.215.0:
+  * Add some MLS rules to policy
+  * Allow container runtime to dyntransition to spc_t
+  * Tighten controls on confined users
+  * Add labels for /var/lib/shared
+  * Cleanup entrypoint definitions
+  * Allow container_device_plugin_t access to debugfs
+  * Allow containers which use devices to map them
+
+-------------------------------------------------------------------
 Mon Apr 24 07:24:46 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 2.211.0:
