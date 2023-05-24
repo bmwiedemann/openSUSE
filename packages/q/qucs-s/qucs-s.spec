@@ -1,7 +1,7 @@
 #
 # spec file for package qucs-s
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qucs-s
-Version:        1.0.0
+Version:        1.0.2
 Release:        0
 Summary:        Qucs with SPICE
 License:        GPL-2.0-or-later

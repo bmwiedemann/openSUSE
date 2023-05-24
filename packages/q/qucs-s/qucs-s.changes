@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun May 14 09:40:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.2:
+  * Added XSPICE flip-flop digital devices
+  * Added INDQ and CAPQ devices representing inductor and
+    capacitor with Q-factor
+  * Added .LIB directive support
+  * Added SPICE entries for I and V file sources
+  * Added symbols for 4 and 5 terminal BJT device
+  * Added behavioral XSPICE 555 timer model
+  * Added option to save SPICE netlist without simulation
+  * Improved Qt6 compatibility
+  * Improved MacOS compatibility
+  * CMake build system update to bring features of the modern
+    CMake
+
+-------------------------------------------------------------------
+Fri Feb 10 13:16:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.1:
+  * Added support for Verilog-A defined devices using
+    Ngspice+OpenVAF #197. Old Qucsator+ADMS
+    workflow is marked as deprecated. Ngspice >=39 is required
+    to support OpenVAF.
+  * Implemented variable parameter sweep analysis #189
+  * Added possibility to build Qucs-S with Qt6 #190 The
+    -DWITH=QT6=ON option for cmake is required.
+  * The source code of the Qucs-S is Qt6 compatible now.
+  * Simulator prefixes like "ngspice/" are not show anymore on
+    plot traces if the plot contains data
+    from only one simulator #178
+  * Added TL071/TL072 opamp models
+  * Added 555_timer.lib library containing the 555 timer model
+  * Added extended BJT exteneded and Schottky diodes libraries
+  * Change default RCL device values and simulation settings to
+    prevent convergence error when putting
+    together device with default values #195
+  * Fixed auto-scaling issue on Windows 64-bit platform #133
+
+-------------------------------------------------------------------
 Sat Nov 26 10:24:10 UTC 2022 - Dmitry Roshchin <dmitry_r@opensuse.org>
 
 - Initial package, version 1.0.0
