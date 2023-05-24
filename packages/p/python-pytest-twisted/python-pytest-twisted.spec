@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-twisted
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-twisted
-Version:        1.13.4
+Version:        1.14.0
 Release:        0
 Summary:        Pytest Plugin for Twisted
 License:        BSD-2-Clause
@@ -27,8 +27,6 @@ URL:            https://github.com/pytest-dev/pytest-twisted
 Source:         https://github.com/pytest-dev/pytest-twisted/archive/v%{version}.tar.gz#/pytest-twisted-%{version}-gh.tar.gz
 # PATCH-FIX-OPENSUSE pytest-twisted-ignorepy310DeprecationWarnings.patch -- upstream wants this fixed in twisted itself -- gh#pytest-dev/pytest-twisted/146
 Patch0:         pytest-twisted-ignorepy310DeprecationWarnings.patch
-# PATCH-FIX-UPSTREAM pytest-twisted-pr148-pytest7.patch -- gh#pytest-dev/pytest-twisted#148
-Patch1:         https://github.com/pytest-dev/pytest-twisted/pull/148.patch#/pytest-twisted-pr148-pytest7.patch
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module greenlet}
