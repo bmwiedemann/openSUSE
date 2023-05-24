@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-grpc
-Version:        1.52.0
+Version:        1.55.0
 Release:        0
 %define mod_name grpc
 %define mod_full_name %{mod_name}-%{version}
@@ -36,7 +36,7 @@ BuildRequires:  %{rubydevel >= 2.5.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/google/grpc/tree/master/src/ruby
-Source:         https://rubygems.org/gems/%{mod_full_name}.gem
+Source0:        https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-grpc.rpmlintrc
 Source2:        gem2rpm.yml
 Summary:        GRPC system in Ruby
