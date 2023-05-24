@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-asn1crypto
 Version:        1.5.1
@@ -25,24 +24,26 @@ Summary:        ASN.1 parser and serializer for Python
 License:        MIT
 URL:            https://github.com/wbond/asn1crypto
 Source:         https://github.com/wbond/asn1crypto/archive/%{version}.tar.gz
-BuildRequires:  %{python_module setuptools >= 38.6.0}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 
 %description
-ASN.1 parser and serializer with definitions for private keys, public keys,
-certificates, CRL, OCSP, CMS, PKCS#3, PKCS#7, PKCS#8, PKCS#12, PKCS#5, X509 and TSP
+ASN.1 parser and serializer with definitions for private keys,
+public keys, certificates, CRL, OCSP, CMS, PKCS#3, PKCS#7,
+PKCS#8, PKCS#12, PKCS#5, X509 and TSP
 
 %prep
-%setup -q -n asn1crypto-%{version}
+%autosetup -p1 -n asn1crypto-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -50,6 +51,7 @@ certificates, CRL, OCSP, CMS, PKCS#3, PKCS#7, PKCS#8, PKCS#12, PKCS#5, X509 and 
 
 %files %{python_files}
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/asn1crypto
+%{python_sitelib}/asn1crypto-%{version}*-info
 
 %changelog
