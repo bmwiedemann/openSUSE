@@ -1,7 +1,7 @@
 #
-# spec file for package python-aniso8601
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname aniso8601
 %bcond_without python2
 Name:           python-%{modname}
@@ -26,15 +25,16 @@ Summary:        A library for parsing ISO 8601 strings
 License:        BSD-3-Clause
 URL:            https://bitbucket.org/nielsenb/aniso8601
 Source:         https://files.pythonhosted.org/packages/source/a/aniso8601/%{modname}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-%if %{with python2}
-BuildRequires:  python-mock
-%endif
 BuildRequires:  python-rpm-macros
 Recommends:     python-python-dateutil
 BuildArch:      noarch
+%if %{with python2}
+BuildRequires:  python-mock
+%endif
 %python_subpackages
 
 %description
@@ -42,21 +42,22 @@ aniso8601 is a Python library for parsing date strings
 in ISO 8601 format into datetime format.
 
 %prep
-%setup -q -n %{modname}-%{version}
+%autosetup -p1 -n %{modname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest discover aniso8601/tests/
+%pyunittest discover -v aniso8601/tests
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/aniso8601
+%{python_sitelib}/aniso8601-%{version}*-info
 
 %changelog

@@ -137,4 +137,13 @@
 - Switch %pyunittest macro for running tests.</comment>
     <requestid>884807</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>9d707e5f8528a99e16819a558f30a31d</srcmd5>
+    <version>9.0.1</version>
+    <time>1684952557</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up SPEC file
+</comment>
+    <requestid>1088741</requestid>
+  </revision>
 </revisionlist>
