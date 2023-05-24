@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue May 23 09:10:04 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Update to version 2.16.0
+
+* Update cosign to latest version in release Github action
+* chore(deps): update all dependencies
+* Update go version in build and release scripts
+* chore(deps): update all dependencies
+* Update Go version to 1.20.3
+* chore(deps): update all dependencies
+* Fix for Dockerfile smell DL3059
+* README: upgrade GitHub action in examples
+* enable ginkgolinter linter
+* chore(deps): update all dependencies
+* correct gci linter
+* remove deprecated linters
+* increase timeout to 5m
+* chore(deps): update all dependencies
+* Use the latest version
+* Fix some linting warnings
+* Fix lint warning
+* Bump the go versions and golanci
+* chore(deps): update all dependencies
+* Check nil pointer when variable is declared in a different file
+* fix dead link to issue.go in README.md
+* Remove rule G307 which checks when an error is not handled when a file or socket connection is closed
+* Fix rule index reference into sarif report
+* Bump golang.org/x/net from 0.6.0 to 0.7.0
+* Format file
+* Use the gosec issue in the go analysers
+* Fix file formatting
+* Update Go version in CI builds
+* Fix method name in the comment
+* Extract the issue in its own package
+* Add support for Go analysis framework and SSA code representation
+* chore(deps): update all dependencies
+* Remove the version form ci github action
+* Pin github action to latest release version 2.15.0
+* Revert the image tag in github action until a working solution is found
+* Fix version interpolation in github action image
+* Add gosec version as an input parameter to GitHub action
+* Update release build script
+
+-------------------------------------------------------------------
 Mon Feb  6 15:09:19 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
 
 * Update to version 2.15.0
