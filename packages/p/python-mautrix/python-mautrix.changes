@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 24 16:17:20 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.19.15:
+  - Fixed dispatching room ephemeral events (i.e. typing
+    notifications) in syncer.
+
+-------------------------------------------------------------------
 Thu May 18 05:00:34 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.19.14:
