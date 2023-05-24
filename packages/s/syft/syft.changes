@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue May 23 17:54:05 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.82.0:
+  * fix: add panic recovery for license parse (#1839)
+  * chore: return both failures when failed to retrieve an image
+    with a scheme (#1801)
+  * Extract go module versions from ldflags for binaries built by
+    go (#1832)
+  * fix: duplicate packages, support pnpm lockfile v6 (#1778)
+  * chore(deps): update stereoscope to
+    e14bc4437b2eac481c5b6f101890b22df4f33596 (#1834)
+  * chore(deps): bump github.com/stretchr/testify from 1.8.2 to
+    1.8.3 (#1829)
+  * chore(deps): bump github.com/docker/docker (#1833)
+
+-------------------------------------------------------------------
 Tue May 23 07:31:00 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.81.0:
