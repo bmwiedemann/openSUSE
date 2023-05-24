@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 23 12:48:13 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- move sle15 macro to top
+
+-------------------------------------------------------------------
+Mon May 22 21:21:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * Drop support for Python 3.6 and 3.7.
+  * Require Sphinx >= 3.
+  * Remove previously deprecated code.
+  * Fix table of contents overflow issue.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:20:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

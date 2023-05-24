@@ -16,24 +16,22 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-Pallets-Sphinx-Themes
-Version:        2.0.3
+Version:        2.1.0
 Release:        0
 Summary:        Themes for the Pallets projects.
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pallets/pallets-sphinx-themes/
 Source:         https://files.pythonhosted.org/packages/source/P/Pallets-Sphinx-Themes/Pallets-Sphinx-Themes-%{version}.tar.gz
-BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module Sphinx >= 3}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-Requires:       python-Sphinx
-Requires:       python-packaging
 BuildRequires:  python-rpm-macros
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires:       python-Sphinx >= 3
+Requires:       python-packaging
 BuildArch:      noarch
 %python_subpackages
 
@@ -53,9 +51,8 @@ Available themes: flask, jinja, werkzeug, click
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%defattr(-,root,root,-)
-%doc README.rst CHANGES.rst
 %license LICENSE.rst
+%doc README.rst CHANGES.rst
 %{python_sitelib}/pallets_sphinx_themes/
 %{python_sitelib}/Pallets_Sphinx_Themes-%{version}-py*.egg-info
 
