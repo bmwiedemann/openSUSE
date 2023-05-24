@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 23 23:56:37 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 2.27.0:
+  * test: add more Package cases
+  * feat: support ignoring `comment` scopes
+  * fix: ensure `raw`-scoped rules are run on code
+
+-------------------------------------------------------------------
 Thu May 11 23:40:25 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 2.26.0:

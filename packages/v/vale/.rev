@@ -270,4 +270,15 @@
   * docs: Add DigitalOcean (forwarded request 1086653 from jfkw)</comment>
     <requestid>1086654</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2f3a419802a1e45b931100fb9bf7bc94</srcmd5>
+    <version>2.27.0</version>
+    <time>1684952562</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.27.0:
+  * test: add more Package cases
+  * feat: support ignoring `comment` scopes
+  * fix: ensure `raw`-scoped rules are run on code (forwarded request 1088746 from jfkw)</comment>
+    <requestid>1088747</requestid>
+  </revision>
 </revisionlist>
