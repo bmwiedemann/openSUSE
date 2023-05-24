@@ -1,7 +1,7 @@
 #
 # spec file for package libyajl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Summary:        Yet Another JSON Library
 License:        ISC
 Group:          System/Libraries
 URL:            http://lloyd.github.com/yajl/
-Source0:        https://github.com/lloyd/yajl/archive/%{version}.tar.gz
+Source0:        https://github.com/lloyd/yajl/archive/refs/tags/%{version}.tar.gz
 Source1:        baselibs.conf
 Source2:        json_reformat.1
 Source3:        json_verify.1
