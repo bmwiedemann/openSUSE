@@ -1,7 +1,7 @@
 #
-# spec file for package presage
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,8 +30,8 @@ Release:        0
 Summary:        Intelligent predictive text entry platform (tools and demos)
 License:        GPL-2.0-only
 Group:          Productivity/Text/Utilities
-URL:            http://presage.sourceforge.net
-Source:         https://pilotfiber.dl.sourceforge.net/project/%{sname}/%{sname}/%{version}/%{sname}-%{version}.tar.gz
+URL:            https://presage.sourceforge.net
+Source:         https://master.dl.sourceforge.net/project/%{sname}/%{sname}/%{version}/%{sname}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM jzheng@suse.com - fix ncurese builds in openSUSE
 Patch0:         presage-0.8.9-ncurses_flag.patch
 # PATCH-FIX-UPSTREAM i@marguerite.su - port to cmuclmtk

@@ -186,4 +186,12 @@
     <comment></comment>
     <requestid>892672</requestid>
   </revision>
+  <revision rev="24" vrev="13">
+    <srcmd5>64552b3200e2254145c388d928333608</srcmd5>
+    <version>0.9.1</version>
+    <time>1684952513</time>
+    <user>dimstar_suse</user>
+    <comment>- Update url for website and sources.</comment>
+    <requestid>1088252</requestid>
+  </revision>
 </revisionlist>
