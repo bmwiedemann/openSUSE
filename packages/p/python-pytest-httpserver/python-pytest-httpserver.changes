@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon May 22 21:17:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.7:
+  * With werkzeug 2.3.x the headers type has been updated to not
+    allow integers as header values. This restriction followed up
+    in pytest-httpserver.
+  * Python versions earlier than 3.8 have been deprecated in
+    order to support the latest werkzeug.
+  * Type hinting for header_value_matcher has been fixed. From
+    now, specifying a callable as ``Callable[[str,
+    Optional[str], str], bool]`` will be accepted also. 
+    Providing a ``HeaderValueMatcher`` object will be also
+    accepted as before, as it provides the same callable signature
+  * Fix Werkzeug deprecation warning about
+    ``parse_authorization_header`` call.
+  * Replace ``parse_authorization_header`` with
+    ``Authorization.from_header`` as suggested. This fix should
+    not introduce any functional change for the users.
+  * Fix Werkzeug deprecation warning about
+    ``werkzeug.urls.url_decode`` call. This call has been changed
+    to ``urllib.parse.parse_qsl`` in the implementation.
+    This fix should not introduce any functional change for the
+    users.
+
+-------------------------------------------------------------------
 Thu May  4 22:25:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.6:
