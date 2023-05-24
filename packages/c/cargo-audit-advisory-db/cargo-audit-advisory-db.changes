@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 23 04:42:24 UTC 2023 - william.brown@suse.com
+
+- Update to version 20230523:
+  * Assigned RUSTSEC-2023-0037 to xsalsa20poly1305 (#1695)
+  * xsalsa20poly1305 is unmaintained (#1694)
+  * xml-rs is maintained (#1691)
+  * Assigned RUSTSEC-2023-0036 to tree_magic (#1689)
+  * Add unmaintained tree_magic crate (#1678)
+  * Assigned RUSTSEC-2023-0035 to enumflags2 (#1688)
+  * enumflags2::make_bitflags unsoundness (#1686)
+  * Assigned RUSTSEC-2023-0034 to h2 (#1687)
+  * Add advisory for h2: resource exhaustion vulnerability may lead to DoS (#1684)
+  * Fix typos in RUSTSEC-2023-0033 (#1685)
+
+-------------------------------------------------------------------
 Thu Apr 13 01:00:08 UTC 2023 - william.brown@suse.com
 
 - Update to version 20230413:
