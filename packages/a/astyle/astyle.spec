@@ -1,7 +1,7 @@
 #
 # spec file for package astyle
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,17 @@
 
 
 Name:           astyle
-Version:        3.1
+Version:        3.3
 Release:        0
 Summary:        Source Code Indenter, Formatter, and Beautifier for C, C++, C# and Java
 License:        MIT
-Url:            http://astyle.sourceforge.net/
-Source:         http://downloads.sourceforge.net/project/%{name}/%{name}/%{name}%20%{version}/%{name}_%{version}_linux.tar.gz
+URL:            https://astyle.sourceforge.net/
+Source:         https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
+BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
 BuildRequires:  java-devel
+# PATCH-FIX-UPSTREAM astyle-3.3-std.patch -- Fix build (gl#saalen/astyle!2)
+Patch:          astyle-3.3-std.patch
 
 %description
 Artistic Style is a source code indenter, formatter, and beautifier for the C,
@@ -39,31 +42,28 @@ Summary:        Java bindings for %{name}
 This package contains Java bindings for %{name}.
 
 %prep
-%setup -q -n %{name}
+%autosetup -p2
+dos2unix -v README.md doc/styles.css
 
 %build
-if [ \! -x $JAVA_HOME/bin/javac ] && echo $JAVA_HOME | grep jre ; then
-  echo WTF IS SETTING \$JAVA_HOME TO JRE \!?
-  JAVA_HOME=$(echo $JAVA_HOME | sed -e s/jre/java/g)
-fi
-export CFLAGS="%{optflags} -I $JAVA_HOME/include/linux"
-export CXXFLAGS="%{optflags}"
-make -C build/gcc astyled %{?_smp_mflags}
-# javaall = java + javadebug
-make -C build/gcc java %{?_smp_mflags}
+%set_build_flags
+%make_build -C build/gcc astyled
+%make_build -C build/gcc java
 
 %install
-install -Dpm 0755 build/gcc/bin/%{name}d \
-  %{buildroot}%{_bindir}/%{name}
+install -Dpm 0755 build/gcc/bin/%{name}d %{buildroot}%{_bindir}/%{name}
 chmod -x doc/* *.md
 install -d -m 0755 %{buildroot}%{_libdir}
-install -m 0644 build/gcc/bin/libastylej.so.* %{buildroot}%{_libdir}
-(cd %{buildroot}%{_libdir}; ln -s libastylej.so.* libastylej.so)
+cp --preserve=links build/gcc/bin/libastylej.so.* %{buildroot}%{_libdir}
+install -D -m 0644 man/%{name}.1 -t %{buildroot}%{_mandir}/man1/
+
+%ldconfig_scriptlets -n lib%{name}j3
 
 %files
-%defattr(-,root,root)
-%doc LICENSE.md README.md doc/
+%license LICENSE.md
+%doc README.md doc/
 %{_bindir}/%{name}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %files -n lib%{name}j3
 %{_libdir}/*.so*

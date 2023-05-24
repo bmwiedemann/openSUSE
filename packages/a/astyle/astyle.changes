@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed May 24 09:24:33 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to 3.3:
+  * The source code has been refactored to no longer use the std namespace
+    globally.
+  * Some features of "modern C++" are now supported, ie. lambda function
+    arguments and array initializers with braces.
+  * Two new options to remove superfluous whitespace and empty lines were
+    added: "squeeze-ws" and "squeeze-lines=#" (parameter value is the number of
+    empty lines to keep).
+  * Two new options to add or remove whitespace around square brackets were
+    added: "pad-brackets" and "unpad-brackets".
+- Changes of 3.2:
+  * Use C++11 feature.
+  * New option "style=webkit": Similar to the Stroustrup brace style except the
+    'else' keyword is attached to the previous closing bracket.
+  * Various bugs fixes, especially causing reformatting the code in repeated
+    runs.
+  * Deprecated options have been removed.
+- Install man page.
+- Add astyle-3.3-std.patch: Fix build.
+- Refresh spec file.
+
+-------------------------------------------------------------------
 Thu Oct 17 13:47:39 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - Remove obsolete Groups tag (fate#326485)

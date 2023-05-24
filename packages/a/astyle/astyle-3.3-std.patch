@@ -1,0 +1,26 @@
+From c03fe1133f1270d0ad47f0daf20836e6d53ce36d Mon Sep 17 00:00:00 2001
+From: Antoine Belvire <antoine.belvire@opensuse.org>
+Date: Wed, 24 May 2023 10:38:10 +0000
+Subject: [PATCH] Add missing std namespace
+
+Fixes build on Linux.
+---
+ AStyle/src/astyle_main.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/AStyle/src/astyle_main.cpp b/AStyle/src/astyle_main.cpp
+index d5c40bf..ae9243a 100644
+--- a/AStyle/src/astyle_main.cpp
++++ b/AStyle/src/astyle_main.cpp
+@@ -1504,7 +1504,7 @@ std::string ASConsole::getNumberFormat(int num, size_t /*lcid*/) const
+ 	// The C locale should be set but not the C++.
+ 	// This function is not necessary if the C++ locale is set.
+ 	// The locale().name() return value is not portable to all compilers.
+-	assert(locale().name() == "C");
++	assert(std::locale().name() == "C");
+ #endif
+ 
+ 	// get the locale info
+-- 
+GitLab
+
