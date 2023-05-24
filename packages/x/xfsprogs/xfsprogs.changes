@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 22 19:51:34 UTC 2023 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to 6.3.0:
+  - xfs_repair: Don't leak buffer when discarding directories
+  - xfs_repair: estimate per-AG btree slack better
+  - xfs_db: fix broken logic in error path
+  - xfsprogs: nrext64 option is now in [inode] section of mkfs conf files
+
+-------------------------------------------------------------------
 Fri Mar 24 13:45:04 UTC 2023 - Anthony Iliopoulos <ailiop@suse.com>
 
 - update to 6.2.0:
