@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 23 13:29:37 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Disable multilib and go on riscv64
+- libgcc-riscv-div.patch: Backport of r12-5799-g45116f342057b7 to fix
+  build with current binutils
+
+-------------------------------------------------------------------
 Tue May  9 13:12:55 UTC 2023 - Richard Biener <rguenther@suse.com>
 
 - Backport _multibuild auto-generation.  Remove redundant

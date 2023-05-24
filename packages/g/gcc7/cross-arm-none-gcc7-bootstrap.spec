@@ -150,6 +150,7 @@ Patch38:        gcc7-libsanitizer-cherry-pick-9cf13067cb5088626ba7-from-u.patch
 Patch39:        gcc7-libgo-don-t-include-linux-fs.h-when-building-gen-sys.patch
 Patch40:        gcc7-pr72764.patch
 Patch41:        gcc7-pr89124.patch
+Patch42:        libgcc-riscv-div.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -344,6 +345,7 @@ ln -s nvptx-newlib/newlib .
 %patch39 -p1
 %patch40 -p1
 %patch41 -p1
+%patch42 -p1
 %patch51
 %patch60
 %patch61
@@ -669,6 +671,9 @@ nvptx-none, \
 	--enable-decimal-float \
 %endif
 %if "%{TARGET_ARCH}" == "m68k"
+	--disable-multilib \
+%endif
+%if "%{TARGET_ARCH}" == "riscv64"
 	--disable-multilib \
 %endif
 	--build=%{GCCDIST} \

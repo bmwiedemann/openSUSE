@@ -59,7 +59,7 @@
 %define tsan_arch x86_64 aarch64 ppc ppc64 ppc64le
 %define asan_arch x86_64 %ix86 ppc ppc64 ppc64le s390 s390x %sparc %arm aarch64
 %define itm_arch x86_64 %ix86 %arm aarch64 ppc ppc64 ppc64le s390 s390x %sparc
-%define atomic_arch x86_64 %ix86 %arm aarch64 ppc ppc64 ppc64le s390 s390x %sparc m68k ia64
+%define atomic_arch x86_64 %ix86 %arm aarch64 ppc ppc64 ppc64le s390 s390x %sparc m68k ia64 riscv64
 %define lsan_arch x86_64 aarch64 ppc ppc64 ppc64le
 %define ubsan_arch x86_64 %ix86 ppc ppc64 ppc64le s390 s390x %arm aarch64
 %if 0%{?build_libvtv:1}
@@ -74,7 +74,11 @@
 %define build_fortran 1
 %define build_objc 1
 %define build_objcp 1
+%ifarch riscv64
+%define build_go 0
+%else
 %define build_go 1
+%endif
 
 %if %{build_objcp}
 %define build_cp 1
@@ -346,6 +350,7 @@ Patch38:        gcc7-libsanitizer-cherry-pick-9cf13067cb5088626ba7-from-u.patch
 Patch39:        gcc7-libgo-don-t-include-linux-fs.h-when-building-gen-sys.patch
 Patch40:        gcc7-pr72764.patch
 Patch41:        gcc7-pr89124.patch
+Patch42:        libgcc-riscv-div.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -525,6 +530,7 @@ ln -s nvptx-newlib/newlib .
 %patch39 -p1
 %patch40 -p1
 %patch41 -p1
+%patch42 -p1
 %patch51
 %patch60
 %patch61
@@ -850,6 +856,9 @@ nvptx-none, \
 	--enable-decimal-float \
 %endif
 %if "%{TARGET_ARCH}" == "m68k"
+	--disable-multilib \
+%endif
+%if "%{TARGET_ARCH}" == "riscv64"
 	--disable-multilib \
 %endif
 	--build=%{GCCDIST} \
