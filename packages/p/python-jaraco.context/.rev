@@ -45,4 +45,15 @@
     <comment></comment>
     <requestid>1087340</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fa46d1c8966b0e170b0f190dfdd4ca6d</srcmd5>
+    <version>4.3.0</version>
+    <time>1684952495</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.3.0:
+  * Deprecated ``runner`` parameter to ``tarball_context``.
+  * Added test for ``pushd``.
+  * Added ``on_interrupt`` decorator.</comment>
+    <requestid>1088462</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 22 21:09:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.0:
+  * Deprecated ``runner`` parameter to ``tarball_context``.
+  * Added test for ``pushd``.
+  * Added ``on_interrupt`` decorator.
+
+-------------------------------------------------------------------
 Mon May 15 18:51:09 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons
