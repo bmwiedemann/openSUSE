@@ -1,0 +1,22 @@
+Subject: Add a call to registerComparators in testbuiltins
+
+Author: awilcox
+Upstream report: https://github.com/steveire/grantlee/issues/89
+
+Fixes tests on PPC64 and zSystems when building grantlee with older compilers
+---
+ templates/tests/testbuiltins.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/templates/tests/testbuiltins.cpp b/templates/tests/testbuiltins.cpp
+index fe7e4ed..82a065d 100644
+--- a/templates/tests/testbuiltins.cpp
++++ b/templates/tests/testbuiltins.cpp
+@@ -298,6 +298,7 @@ void TestBuiltinSyntax::testObjects()
+   Q_UNUSED(s3);
+ 
+   QMetaType{qMetaTypeId<MetaEnumVariable>()}.create(nullptr);
++  QMetaType::registerComparators<MetaEnumVariable>();
+ }
+ 
+ void TestBuiltinSyntax::testTruthiness_data()

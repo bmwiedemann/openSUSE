@@ -37,6 +37,8 @@ Patch0:         includes.diff
 Patch1:         grantlee-5.2.0-fix-ctest-ld-library-path.patch
 # PATCH-FIX-UPSTREAM https://github.com/steveire/grantlee/pull/86/
 Patch2:         fix-i586-precision.patch
+# PATCH-FIX-UPSTREAM https://github.com/steveire/grantlee/issues/89
+Patch3:         0001-Add-a-call-to-registerComparators-in-testbuiltins.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  cmake(Qt5Core) >= 5.3
 BuildRequires:  cmake(Qt5Gui) >= 5.3
