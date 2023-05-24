@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun May 21 11:37:17 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- Updated to version 9.0.1572, fixes the following problems
+  * Typst filetype is not recognized.
+  * reverse() on string doesn't work in compiled function.
+  * CI: sound dummy is disabled.
+  * Line not fully displayed if it doesn't fit in the screen.
+  * Display errors when making topline shorter and 'smoothscroll'
+    is set.
+  * Recent glibc marks sigset() as a deprecated.
+  * Text not scrolled when cursor moved with "g0" and "h".
+  * Some commands for opening a file don't use 'switchbuf'.
+  * Coveralls workflow on CI is commented out.
+  * CI: check in sound-dummy module may throw an error.
+  * USD filetype is not recognized.
+  * In cmdline window S-Tab does not select previous completion.
+  * Position of marker for 'smoothscroll' not computed correctly.
+  * CI: sound-dummy module is not installed.
+  * CI: using slightly outdated gcc version.
+  * Code for handling 'switchbuf' is repeated.
+  * setcharsearch() does not clear last searched char properly.
+  * Vim9: error for missing "return" after "throw".
+  * Test failures for unreachable code.
+  * Wrong error for unreachable code after :throw.
+  * Function argument types not always checked and using v:none may
+    cause an error.
+  * Win32: When 'encoding' is set $PATH has duplicate entries.
+  * Mixing package managers is not a good idea.
+  * GTK3: window manager resize hints are incomplete.
+  * Display moves up and down with 'incsearch' and 'smoothscroll'.
+  * Json lines files are not recognized.
+  * Motif: GUI scrollbar test fails in 24 lines terminal.
+  * Profiler calculation may be wrong on 32 bit builds.
+  * With 'smoothscroll' cursor may move below botline.
+  * Cannot use "this.member" in lambda in class method.
+  * Some tests are slow.
+  * RedrawingDisabled not used consistently.
+  * Error messages are not translated.
+
+-------------------------------------------------------------------
 Wed May 10 17:04:52 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.1538, fixes the following problems

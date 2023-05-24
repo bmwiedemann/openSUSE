@@ -7110,4 +7110,12 @@ always built-in because vim has direct perl dependencies anyway.
   * Cursor moves to wrong line when 'foldmethod' is &quot;diff&quot;. (Rick Howe)</comment>
     <requestid>1086117</requestid>
   </revision>
+  <revision rev="350" vrev="1">
+    <srcmd5>50fb5732d6a32eb51c82c4e722c46b50</srcmd5>
+    <version>9.0.1572</version>
+    <time>1684952490</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088426</requestid>
+  </revision>
 </revisionlist>
