@@ -1,7 +1,7 @@
 #
 # spec file for package tpm2.0-abrmd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,9 @@
 
 %global selinuxtype targeted
 %global modulename tabrmd
-# the auto activation is not whitelisted for <= SLE12-SP3
-%if 0%{?sle_version} > 120300 || 0%{?is_opensuse}
+# the auto activation is not whitelisted for <= SLE12-SP3 (includes
+# ALP in the with %{suse_version}
+%if 0%{?sle_version} > 120300 || 0%{?is_opensuse} || 0%{?suse_version} >= 1600
 %define install_dbus_files 1
 %endif
 # selinux only for Tumbleweed for now

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 23 12:31:21 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Cover ALP via the %{suse_version} macro
+
+-------------------------------------------------------------------
 Thu Dec  8 15:07:28 UTC 2022 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Version 3.0.0
