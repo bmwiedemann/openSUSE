@@ -49,36 +49,24 @@ Patch1:         soversion.diff
 Patch17:        relax-abi.diff
 Patch19:        0002-spinctrl.patch
 Patch20:        0001-18034-stick-with-compile-settings-detected-at-config.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
-#Link SDL2 for newer distros
-%if 0%{?suse_version} > 1320 || (0%{?suse_version} == 1315 && 0%{?is_opensuse})
-BuildRequires:  pkgconfig(sdl2)
-%else
-BuildRequires:  pkgconfig(sdl)
-%endif
 BuildRequires:  autoconf
 BuildRequires:  cppunit-devel
 BuildRequires:  gcc-c++
-BuildRequires:  gstreamer-devel
-BuildRequires:  gstreamer-plugins-base-devel
-BuildRequires:  gtk2-devel
+BuildRequires:  pkgconfig(gstreamer-1.0)
+BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
+BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(sdl2)
 %define gtk_version 2
-%if 0%{?suse_version} >= 1220
-BuildRequires:  libSM-devel
-%else
-%if 0%{?sles_version} >= 11
-BuildRequires:  xorg-x11-libSM-devel
-%endif
-%endif
 BuildRequires:  libexpat-devel
 BuildRequires:  libjpeg-devel
-BuildRequires:  libmspack-devel
-BuildRequires:  libnotify-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(libmspack)
+BuildRequires:  pkgconfig(libnotify)
+BuildRequires:  pkgconfig(sm)
 
 %description
 wxWidgets is a C++ library for cross-platform GUI.
