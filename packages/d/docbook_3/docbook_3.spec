@@ -16,58 +16,64 @@
 #
 
 
-Name:           docbook_3
-BuildRequires:  sgml-skel
-BuildRequires:  unzip
-Provides:       dbhset
-Provides:       docbk30
-Provides:       docbk31
-Provides:       docbook_3-dtd
-Obsoletes:      docbk30
-Requires:       docbook_4
-Requires:       iso_ent
-%define regcat /usr/bin/sgml-register-catalog
-PreReq:         %{regcat} /usr/bin/xmlcatalog
-Summary:        DocBook DTD 3.x
-License:        BSD-3-Clause AND MIT
-Group:          Productivity/Publishing/DocBook
-Version:        3.1
-Release:        0
+%define regcat %{_bindir}/sgml-register-catalog
 ### Version macros are defined so I can use them below,
 ### don't use macros for "Source:" and "Patch:" values.
 %define dtd30 docbk30.zip
-Source0:        https://docbook.org/sgml/3.0/docbk30.zip
 %define dtd31 docbk31.zip
-Source1:        https://docbook.org/sgml/3.1/docbk31.zip
 # Docu now to be found at http://www.oasis-open.org/docbook/documentation/
 %define docu dbhset.tar.gz
-Source2:        http://www.ora.com/davenport/dbdoc/dbhset.tar.gz
 %define db3xver 3.1.7
 %define db3x db3x317.zip
-Source3:        http://nwalsh.com/docbook/xml/3.1.7/db3x317.zip
 %define db3sxver 3.1.7.1
 %define sdb sdb3171.zip
-Source4:        http://nwalsh.com/docbook/simple/3.1.7.1/sdb3171.zip
-Source5:        %{name}-README.SuSE
-Source6:        http://www.labs.redhat.com/png/png-support.dtd
-Source7:        http://www.labs.redhat.com/png/png-support-3.1.dtd
+%define  pkgdif docbk30.dif
+Name:           docbook_3
+Version:        3.1
+Release:        0
+Summary:        DocBook DTD 3.x
+License:        BSD-3-Clause AND MIT
+Group:          Productivity/Publishing/DocBook
+URL:            https://www.oasis-open.org/docbook/
+Source0:        https://docbook.org/sgml/3.0/docbk30.zip
+Source1:        https://docbook.org/sgml/3.1/docbk31.zip
+# at ora, no longer available. 2023-05-22
+# Source2:        http://www.ora.com/davenport/dbdoc/dbhset.tar.gz
+Source2:        dbhset.tar.gz
+# URL no longer available 2023-05-23
+# Source3:        http://nwalsh.com/docbook/xml/3.1.7/db3x317.zip
+Source3:        db3x317.zip
+# URL no longer available 2023-05-23
+# Source4:        http://nwalsh.com/docbook/simple/3.1.7.1/sdb3171.zip
+Source4:        sdb3171.zip
+Source5:        %{name}-README.SUSE
+# URL no longer available 2023-05-23
+# Source6:        http://www.labs.redhat.com/png/png-support.dtd
+Source6:        png-support.dtd
+# URL no longer available 2023-05-23
+# Source7:        http://www.labs.redhat.com/png/png-support-3.1.dtd
+Source7:        png-support-3.1.dtd
 Source8:        CATALOG.db3sxml
 Source9:        CATALOG.db3xml
 Source10:       CATALOG.docbk30
 # CATALOG.docbk31
 Source11:       CATALOG.docbook_3
 Source12:       CATALOG.gnome
-%define  pkgdif docbk30.dif
 Patch0:         docbk30.dif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  fdupes
+BuildRequires:  sgml-skel
+BuildRequires:  unzip
+Requires:       docbook_4
+Requires:       iso_ent
+Requires(pre):  %{_bindir}/xmlcatalog
+Requires(pre):  %{regcat}
 BuildArch:      noarch
-URL:            http://www.oasis-open.org/docbook/
 
 %description
 This package contains version 3.0 and 3.1 and an XML version.  It is
 suitable for writing technical documentation.
 
-The documentation can be found in /usr/share/doc/packages/docbook_3.
+The documentation can be found in %{_docdir}/docbook_3.
 
 %define INSTALL install -m755 -s
 %define INSTALL_DIR install -d -m755
@@ -88,7 +94,7 @@ The documentation can be found in /usr/share/doc/packages/docbook_3.
 
 %prep
 %setup -q -n %{name} -c -T
-cp %{S:5} README.SuSE
+cp %{SOURCE5} README.SUSE
 %{INSTALL_DIR} dtd/{3.0,3.1} html xml sdb
 cd dtd/3.0
 unzip -aq %{_sourcedir}/%{dtd30}
@@ -101,10 +107,9 @@ unzip -aq %{_sourcedir}/%{sdb}
 cd ../html
 tar -xzf %{_sourcedir}/%{docu}
 cd ..
-# %setup -T -D -a 1
 cp -p %{_sourcedir}/png-support.dtd .
 cp -p %{_sourcedir}/png-support-3.1.dtd .
-cp %{S:8} %{S:9} %{S:10} %{S:11} %{S:12} .
+cp %{SOURCE8} %{SOURCE9} %{SOURCE10} %{SOURCE11} %{SOURCE12} .
 patch -s -p0 <%{_sourcedir}/%{pkgdif}
 rm -f html/index.html.orig
 chmod -R a+rX,g-w,o-w .
@@ -125,21 +130,19 @@ doc_dir=%{buildroot}/%{_defaultdocdir}/$pkg_name
 %{INSTALL_DIR} %{buildroot}/%{xml_docbook_dtd_dir}/{3.1,3.1-sdb}
 cp -a xml/* %{buildroot}/%{xml_docbook_dtd_dir}/3.1
 cp -a sdb/* %{buildroot}/%{xml_docbook_dtd_dir}/3.1-sdb
-# pushd %{buildroot}/%{sgml_docbook_dtd_dir}
 ln -sf %{xml_docbook_dtd_dir}/3.1 %{buildroot}/%{sgml_docbook_dtd_dir}/3.1xml
 ln -sf %{xml_docbook_dtd_dir}/3.1-sdb \
   %{buildroot}/%{sgml_docbook_dtd_dir}/3.1-sdbxml
-# popd
-# %{INSTALL_DIR} $sgml_dir/USA-DOD/dtd
-# %{INSTALL_DIR} $sgml_dir/Davenport/{elements,entities,dtd}
-# %{INSTALL_DIR} $sgml_dir/OASIS/{elements,entities,dtd}
-%{INSTALL_DATA} element-list.txt README.SuSE $doc_dir
+%{INSTALL_DATA} element-list.txt README.SUSE $doc_dir
 c=$(echo CATALOG.*)
 %{INSTALL_DATA} $c %{buildroot}/%{sgml_dir}
 ln -sf %{sgml_dir}/CATALOG.docbook_3 \
   %{buildroot}/%{sgml_dir}/CATALOG.docbk31
 # docomentation
 cp -a html $doc_dir
+
+# Reduce dupliticites
+%fdupes %{buildroot}
 
 %post
 if [ -x %{regcat} ]; then
@@ -158,7 +161,6 @@ fi
 exit 0
 
 %files
-%defattr(-, root, root)
 %{sgml_dir}/CATALOG.*
 %{sgml_docbook_dtd_dir}/3*
 %{xml_docbook_dtd_dir}/3*

@@ -146,4 +146,19 @@
     <comment></comment>
     <requestid>1087939</requestid>
   </revision>
+  <revision rev="22" vrev="773">
+    <srcmd5>db67bb799db99656f5903e799a683348</srcmd5>
+    <version>3.1</version>
+    <time>1684952538</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise spec file a bit
+- Rename docbook_3-README.SuSE to docbook_3-README.SUSE
+
+- remove several other URLs (which are no longer available at
+  the old address or elsewhere)
+
+- fix URL of dbhset.tar.gz (no longer available at the old HTTP
+  address or elsewhere).</comment>
+    <requestid>1088783</requestid>
+  </revision>
 </revisionlist>

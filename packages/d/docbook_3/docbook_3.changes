@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed May 24 06:58:54 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernise spec file a bit
+- Rename docbook_3-README.SuSE to docbook_3-README.SUSE
+
+-------------------------------------------------------------------
+Tue May 23 02:12:41 UTC 2023 - Jiri Srain <jsrain@suse.com>
+
+- remove several other URLs (which are no longer available at
+  the old address or elsewhere)
+
+-------------------------------------------------------------------
+Mon May 22 14:55:51 UTC 2023 - Karl Eichwalder <ke@suse.com>
+
+- fix URL of dbhset.tar.gz (no longer available at the old HTTP
+  address or elsewhere).
+
+-------------------------------------------------------------------
 Fri May 19 09:44:33 UTC 2023 - Jiri Srain <jsrain@suse.com>
 
 - fix URL of source archives
