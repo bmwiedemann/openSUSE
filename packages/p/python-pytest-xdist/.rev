@@ -262,4 +262,19 @@
      verbose.</comment>
     <requestid>1087079</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>1c2b9e3c2727c4a638ce66b4065cf2b8</srcmd5>
+    <version>3.3.1</version>
+    <time>1684952497</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.3.1:
+  * Avoid remote calls during startup as execnet by default does
+    not ensure remote affinity with the main thread and might 
+    accidentally schedule the pytest worker into a non-main
+    thread, which breaks numerous frameworks, for example
+    ``asyncio``, ``anyio``, ``PyQt/PySide``, etc.
+    A more safe correction will require thread affinity in
+    ``execnet``</comment>
+    <requestid>1088464</requestid>
+  </revision>
 </revisionlist>

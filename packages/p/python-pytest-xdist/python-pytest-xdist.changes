@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 22 21:13:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.1:
+  * Avoid remote calls during startup as execnet by default does
+    not ensure remote affinity with the main thread and might 
+    accidentally schedule the pytest worker into a non-main
+    thread, which breaks numerous frameworks, for example
+    ``asyncio``, ``anyio``, ``PyQt/PySide``, etc.
+    A more safe correction will require thread affinity in
+    ``execnet``
+
+-------------------------------------------------------------------
 Sun May 14 09:36:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.0:
