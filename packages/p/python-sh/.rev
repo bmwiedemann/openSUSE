@@ -144,4 +144,14 @@
 </comment>
     <requestid>1085255</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fe33bad96b6db6a794510f0e0cb11f1c</srcmd5>
+    <version>2.0.4</version>
+    <time>1684952494</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.4:
+  * Allow `ok_code` to be used with `fg` #655
+  * Make sure `new_group` never creates a new session #675</comment>
+    <requestid>1088461</requestid>
+  </revision>
 </revisionlist>
