@@ -285,4 +285,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1083244 from glaubitz)</comment>
     <requestid>1083248</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>26f6835f1ba83a72aed5cb27691baaca</srcmd5>
+    <version>23.1.0</version>
+    <time>1684952566</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 23.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1088530 from glaubitz)</comment>
+    <requestid>1088778</requestid>
+  </revision>
 </revisionlist>
