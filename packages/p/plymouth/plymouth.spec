@@ -1,7 +1,7 @@
 #
 # spec file for package plymouth
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -413,7 +413,7 @@ mv %{buildroot}%{_sysconfdir}/logrotate.d/bootlog %{buildroot}%{_distconfdir}/lo
 %postun
 %{?regenerate_initrd_post}
 %if 0%{?suse_version} > 1500
-%service_del_postun_without_restart
+%service_del_postun_without_restart plymouth-halt.service plymouth-kexec.service plymouth-poweroff.service plymouth-quit-wait.service plymouth-quit.service plymouth-read-write.service plymouth-reboot.service plymouth-start.service
 %else
 %systemd_postun
 %endif
