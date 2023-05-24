@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue May 23 09:53:31 UTC 2023 - tiwai@suse.com
+
+- Update to version 20230517 (git commit 08b854f02066):
+  * rtlwifi: Add firmware v6.0 for RTL8192FU
+  * rtlwifi: Update firmware for RTL8188EU to v28.0
+  * cirrus: Add firmware and tuning files for HP G10 series laptops
+  * linux-firmware: update firmware for mediatek bluetooth chip (MT7922)
+  * WHENCE: Cleanup Realtek BT firmware provenance
+  * linux-firmware: update firmware for MT7922 WiFi device
+  * cnm: update chips&media wave521c firmware.
+  * cirrus: Add firmware and tuning files for Lenovo ThinkPad P1 Gen 6
+  * check_whence: error on directory listed as File
+  * check_whence: error on duplicate file entries
+  * WHENCE: comment out duplicate MediaTek firmware
+  * i915: Add GuC v70.6.6 for MTL
+  * amdgpu: update DCN 3.1.6 DMCUB firmware
+  * rtl_bt: Update RTL8852B BT USB firmware to 0xDBC6_B20F
+  * rtl_bt: Update RTL8761B BT USB firmware to 0xDFC6_D922
+  * rtl_bt: Update RTL8761B BT UART firmware to 0x9DC6_D922
+- Update aliases from 6.4-rc3
+
+-------------------------------------------------------------------
 Thu Apr 27 15:10:32 UTC 2023 - tiwai@suse.com
 
 - Update to version 20230427 (git commit fab149657d8d):

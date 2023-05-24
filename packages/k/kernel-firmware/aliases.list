@@ -570,6 +570,7 @@ brcmfmac: pci:v000014E4d000043EFsv*sd*bc02sc80i*
 brcmfmac: pci:v000014E4d0000440Dsv*sd*bc02sc80i*
 brcmfmac: pci:v000014E4d00004415sv*sd*bc02sc80i*
 brcmfmac: pci:v000014E4d00004425sv*sd*bc02sc80i*
+brcmfmac: pci:v000014E4d00004433sv*sd*bc02sc80i*
 brcmfmac: pci:v000014E4d00004464sv*sd*bc02sc80i*
 brcmfmac: pci:v000014E4d00004488sv*sd*bc02sc80i*
 brcmfmac: pci:v000014E4d0000AA31sv*sd*bc02sc80i*
@@ -596,6 +597,7 @@ brcmfmac: sdio:c*v02D0dA9A6*
 brcmfmac: sdio:c*v02D0dA9AF*
 brcmfmac: sdio:c*v02D0dA9BF*
 brcmfmac: sdio:c*v02D0dAAE8*
+brcmfmac: sdio:c*v04B4dBD3D*
 brcmfmac: usb:v043Ep3101d*dc*dsc*dp*ic*isc*ip*in*
 brcmfmac: usb:v04B4p0BDCd*dc*dsc*dp*ic*isc*ip*in*
 brcmfmac: usb:v04B4pBD29d*dc*dsc*dp*ic*isc*ip*in*
@@ -626,6 +628,10 @@ btmtkuart: of:N*T*Cmediatek,mt7663u-bluetooth
 btmtkuart: of:N*T*Cmediatek,mt7663u-bluetoothC*
 btmtkuart: of:N*T*Cmediatek,mt7668u-bluetooth
 btmtkuart: of:N*T*Cmediatek,mt7668u-bluetoothC*
+btnxpuart: of:N*T*Cnxp,88w8987-bt
+btnxpuart: of:N*T*Cnxp,88w8987-btC*
+btnxpuart: of:N*T*Cnxp,88w8997-bt
+btnxpuart: of:N*T*Cnxp,88w8997-btC*
 btusb: of:N*T*Cusb1286,204e
 btusb: of:N*T*Cusb1286,204eC*
 btusb: of:N*T*Cusb4ca,301a
@@ -1534,6 +1540,7 @@ i915: pci:v00008086d00004541sv*sd*bc03sc*i*
 i915: pci:v00008086d00004551sv*sd*bc03sc*i*
 i915: pci:v00008086d00004555sv*sd*bc03sc*i*
 i915: pci:v00008086d00004557sv*sd*bc03sc*i*
+i915: pci:v00008086d00004570sv*sd*bc03sc*i*
 i915: pci:v00008086d00004571sv*sd*bc03sc*i*
 i915: pci:v00008086d00004626sv*sd*bc03sc*i*
 i915: pci:v00008086d00004628sv*sd*bc03sc*i*
@@ -2379,6 +2386,7 @@ iwlwifi: pci:v00008086d00002726sv*sd00002074bc*sc*i*
 iwlwifi: pci:v00008086d00002726sv*sd00004070bc*sc*i*
 iwlwifi: pci:v00008086d00002727sv*sd*bc*sc*i*
 iwlwifi: pci:v00008086d00002729sv*sd*bc*sc*i*
+iwlwifi: pci:v00008086d0000272Bsv*sd*bc*sc*i*
 iwlwifi: pci:v00008086d000030DCsv*sd*bc*sc*i*
 iwlwifi: pci:v00008086d000030DCsv*sd00000030bc*sc*i*
 iwlwifi: pci:v00008086d000030DCsv*sd00000034bc*sc*i*
@@ -4884,6 +4892,7 @@ rtl8xxxu: usb:v0BDAp018Ad*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDAp0724d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDAp1724d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDAp1E1Ed*dc*dsc*dp*icFFiscFFipFFin*
+rtl8xxxu: usb:v0BDAp2005d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDAp2E2Ed*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDAp317Fd*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDAp5088d*dc*dsc*dp*icFFiscFFipFFin*
@@ -4902,6 +4911,7 @@ rtl8xxxu: usb:v0BDAp818Bd*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDAp818Cd*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDAp8191d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDAp8724d*dc*dsc*dp*icFFiscFFipFFin*
+rtl8xxxu: usb:v0BDApB711d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDApB720d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDApF179d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDApFFEFd*dc*dsc*dp*icFFiscFFipFFin*
