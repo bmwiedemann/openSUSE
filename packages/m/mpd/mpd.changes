@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue May 23 22:00:59 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+
+- Updated to 0.23.13
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.23.13/NEWS
+  * input: curl: fixed busy loop after connection failed
+  * input: curl: hided "404" log messages for non-existent ".mpdignore" files
+  * archive: zzip: fixed crash bug
+  * database: simple: revealed hidden songs after deleting containing CUE
+  * decoder: ffmpeg: reordered to a lower priority than "gme"
+  * decoder: gme: required GME 0.6 or later
+  * output: pipewire: fixed corruption bug due to missing lock
+  * linux: shut down if parent process dies in --no-daemon mode
+  * linux: determine systemd unit directories via pkg-config
+  * supported libfmt 10
+
+-------------------------------------------------------------------
 Wed Jan 18 12:20:43 UTC 2023 - Илья Индиго <ilya@ilya.cf>
 
 - Updated to 0.23.12

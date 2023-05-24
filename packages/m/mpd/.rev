@@ -704,4 +704,23 @@
   * fixed build failures with GCC 13</comment>
     <requestid>1059359</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>b284d22db2b8eda7925e336450026721</srcmd5>
+    <version>0.23.13</version>
+    <time>1684952559</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.23.13
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.23.13/NEWS
+  * input: curl: fixed busy loop after connection failed
+  * input: curl: hided &quot;404&quot; log messages for non-existent &quot;.mpdignore&quot; files
+  * archive: zzip: fixed crash bug
+  * database: simple: revealed hidden songs after deleting containing CUE
+  * decoder: ffmpeg: reordered to a lower priority than &quot;gme&quot;
+  * decoder: gme: required GME 0.6 or later
+  * output: pipewire: fixed corruption bug due to missing lock
+  * linux: shut down if parent process dies in --no-daemon mode
+  * linux: determine systemd unit directories via pkg-config
+  * supported libfmt 10</comment>
+    <requestid>1088738</requestid>
+  </revision>
 </revisionlist>
