@@ -465,6 +465,7 @@
 %{_systemd_util_dir}/systemd-timedated
 %{_systemd_util_dir}/systemd-timesyncd
 %{_systemd_util_dir}/systemd-update-done
+%{_systemd_util_dir}/systemd-update-helper
 %{_systemd_util_dir}/systemd-update-utmp
 %{_systemd_util_dir}/systemd-user-runtime-dir
 %{_systemd_util_dir}/systemd-user-sessions

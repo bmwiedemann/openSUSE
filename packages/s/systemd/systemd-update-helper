@@ -1,0 +1,163 @@
+#!/usr/bin/env bash
+# -*- mode: shell-script; indent-tabs-mode: nil; sh-basic-offset: 4; -*-
+# SPDX-License-Identifier: LGPL-2.1-or-later
+#
+# This helper is aimed at being used by the systemd rpm macros only.
+#
+set -eu
+set -o pipefail
+
+command="${1:?}"
+shift
+
+command -v systemctl >/dev/null || exit 0
+
+case "$command" in
+    mark-install-system-units)
+        mkdir -p /run/systemd/rpm/needs-preset
+
+        for unit in "$@" ; do
+            if [ ! -e /usr/lib/systemd/system/"$unit" ]; then
+                touch /run/systemd/rpm/needs-preset/"$unit"
+            fi
+        done
+        ;;
+
+    install-system-units)
+        units=()
+
+        for unit in "$@" ; do
+            if [ -e /run/systemd/rpm/needs-preset/"$unit" ]; then
+		rm /run/systemd/rpm/needs-preset/"$unit"
+                units+=("$unit")
+            fi
+	done
+
+        [ ${#units[*]} -gt 0 ] &&
+                systemctl --no-reload preset "${units[@]}"
+        ;;
+
+    mark-install-user-units)
+        mkdir -p /run/systemd/rpm/needs-user-preset
+
+        for unit in "$@" ; do
+            if [ ! -e /usr/lib/systemd/user/"$unit" ]; then
+                touch /run/systemd/rpm/needs-user-preset/"$unit"
+            fi
+        done
+        ;;
+
+    install-user-units)
+        units=()
+
+        for unit in "$@" ; do
+            if [ -e /run/systemd/rpm/needs-user-preset/"$unit" ]; then
+                rm /run/systemd/rpm/needs-user-preset/"$unit"
+                units+=("$unit")
+            fi
+        done
+
+        [ ${#units[*]} -gt 0 ] &&
+            systemctl --no-reload preset --global "$@" || :
+        ;;
+
+    remove-system-units)
+        if [ -d /run/systemd/system ]; then
+            systemctl --no-reload disable --now --no-warn "$@"
+        else
+            systemctl --no-reload disable --no-warn "$@"
+        fi
+        ;;
+
+    remove-user-units)
+        systemctl --global disable --no-warn "$@"
+
+        [ -d /run/systemd/system ] || exit 0
+
+        users=$(systemctl list-units 'user@*' --legend=no | sed -n -r 's/.*user@([0-9]+).service.*/\1/p')
+        for user in $users; do
+            SYSTEMD_BUS_TIMEOUT=15s \
+                    systemctl --user -M "$user@" disable --now --no-warn "$@" &
+        done
+        wait
+        ;;
+
+    mark-restart-system-units)
+        [ -d /run/systemd/system ] || exit 0
+
+        for unit in "$@"; do
+            systemctl set-property "$unit" Markers=+needs-restart &
+        done
+        wait
+        ;;
+
+    mark-restart-user-units)
+        [ -d /run/systemd/system ] || exit 0
+
+        users=$(systemctl list-units 'user@*' --legend=no | sed -n -r 's/.*user@([0-9]+).service.*/\1/p')
+        for user in $users; do
+            for unit in "$@"; do
+                SYSTEMD_BUS_TIMEOUT=15s \
+                        systemctl --user -M "$user@" set-property "$unit" Markers=+needs-restart &
+            done
+        done
+        wait
+        ;;
+
+    system-reload-restart|system-reload|system-restart)
+        if [ -n "$*" ]; then
+            echo >&2 "Unexpected arguments for '$command': $*"
+            exit 2
+        fi
+
+        [ -d /run/systemd/system ] || exit 0
+
+        if [[ "$command" =~ reload ]]; then
+            systemctl daemon-reload
+        fi
+
+        if [[ "$command" =~ restart ]]; then
+            systemctl reload-or-restart --marked
+        fi
+        ;;
+
+    user-reload-restart|user-reload|user-restart|user-reexec)
+        if [ -n "$*" ]; then
+            echo >&2 "Unexpected arguments for '$command': $*"
+            exit 2
+        fi
+
+        [ -d /run/systemd/system ] || exit 0
+
+        users=$(systemctl list-units 'user@*' --legend=no | sed -n -r 's/.*user@([0-9]+).service.*/\1/p')
+
+        if [[ "$command" =~ reexec ]]; then
+            for user in $users; do
+                SYSTEMD_BUS_TIMEOUT=15s \
+                        systemctl --user -M "$user@" daemon-reexec &
+            done
+            wait
+        fi
+
+        if [[ "$command" =~ reload ]]; then
+            for user in $users; do
+                SYSTEMD_BUS_TIMEOUT=15s \
+                        systemctl --user -M "$user@" daemon-reload &
+            done
+            wait
+        fi
+
+        if [[ "$command" =~ restart ]]; then
+            for user in $users; do
+                SYSTEMD_BUS_TIMEOUT=15s \
+                        systemctl --user -M "$user@" reload-or-restart --marked &
+            done
+            wait
+        fi
+        ;;
+
+    *)
+        echo >&2 "Unknown verb '$command'"
+        exit 3
+        ;;
+esac

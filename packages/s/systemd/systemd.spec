@@ -68,7 +68,7 @@
 %bcond_without  testsuite
 %endif
 # Kept to ease migrations toward SLE
-%bcond_with     filetriggers
+%bcond_without  filetriggers
 %bcond_with     split_usr
 
 Name:           systemd%{?mini}
@@ -168,11 +168,13 @@ Obsoletes:      systemd-analyze < 201
 Source0:        systemd-v%{version}%{archive_version}.tar.xz
 Source1:        systemd-rpmlintrc
 Source2:        systemd-user
+Source3:        systemd-update-helper
 %if %{with sysvcompat}
 Source4:        systemd-sysv-install
 %endif
 Source5:        tmpfiles-suse.conf
 Source6:        baselibs.conf
+Source7:        triggers.systemd
 Source11:       after-local.service
 Source14:       kbd-model-map.legacy
 
@@ -758,6 +760,7 @@ rm %{buildroot}%{_sbindir}/resolvconf
 rm %{buildroot}%{_mandir}/man1/resolvconf.1*
 %endif
 
+install -m0755 -D %{SOURCE3} %{buildroot}/%{_systemd_util_dir}/systemd-update-helper
 %if %{with sysvcompat}
 install -m0755 -D %{SOURCE4} %{buildroot}/%{_systemd_util_dir}/systemd-sysv-install
 %endif
@@ -983,12 +986,6 @@ if [ $1 -eq 1 ]; then
         chmod 444 %{_sysconfdir}/machine-id
 fi
 
-# /etc/machine-id might have been created writeable incorrectly (boo#1092269).
-if [ "$(stat -c%a %{_sysconfdir}/machine-id)" != 444 ]; then
-        echo "Incorrect file mode bits for /etc/machine-id which should be 0444, fixing..."
-        chmod 444 %{_sysconfdir}/machine-id
-fi
-
 %if %{without bootstrap}
 pam-config --add --systemd || :
 # Run ldconfig for nss-systemd and nss-myhostname NSS modules.
@@ -1034,35 +1031,11 @@ if [ $1 -gt 1 ]; then
         %systemd_post systemd-journald-audit.socket
 fi
 
-# v228 wrongly set world writable suid root permissions on timestamp files used
-# by permanent timers. Fix the timestamps that might have been created by the
-# affected versions of systemd (bsc#1020601).
-for stamp in $(ls /var/lib/systemd/timers/stamp-*.timer 2>/dev/null); do
-        chmod 0644 $stamp
-done
-
-# Same for user lingering created by logind.
-for username in $(ls /var/lib/systemd/linger/* 2>/dev/null); do
-        chmod 0644 $username
-done
-
-# Due to the fact that DynamicUser= was turned ON during v235 and then switched
-# back to off in v240, /var/lib/systemd/timesync might be a symlink pointing to
-# /var/lib/private/systemd/timesync, which is inaccessible for systemd-timesync
-# user as /var/lib/private is 0700 root:root, see
-# https://github.com/systemd/systemd/issues/11329 for details. Note: only TW
-# users might be affected by this bug.
-if [ -L %{_localstatedir}/lib/systemd/timesync ]; then
-        rm %{_localstatedir}/lib/systemd/timesync
-        mv %{_localstatedir}/lib/private/systemd/timesync %{_localstatedir}/lib/systemd/timesync
-fi
-
 # Run the hacks/fixups to clean up old garbages left by (very) old versions of
 # systemd.
 %{_systemd_util_dir}/rpm/fixlet-systemd-post.sh $1 || :
 
 %postun
-# daemon-reload is implied by systemd_postun_with_restart
 %systemd_postun_with_restart systemd-journald.service
 %systemd_postun_with_restart systemd-timesyncd.service
 # Avoid restarting logind until fixed upstream (issue #1163)
@@ -1083,22 +1056,12 @@ fi
 
 %post -n udev%{?mini}
 %regenerate_initrd_post
+%if %{without filetriggers}
 %udev_hwdb_update
-
 %tmpfiles_create systemd-pstore.conf
-
-# Units listed below can be enabled at installation accoding to their preset
-# setting.
+%endif
 %systemd_post remote-cryptsetup.target
 %systemd_post systemd-pstore.service
-
-# add KERNEL name match to existing persistent net rules
-sed -ri '/KERNEL/ ! { s/NAME="(eth|wlan|ath)([0-9]+)"/KERNEL=="\1*", NAME="\1\2"/}' \
-    /etc/udev/rules.d/70-persistent-net.rules 2>/dev/null || :
-
-# cleanup old stuff
-rm -f /etc/sysconfig/udev
-rm -f /etc/udev/rules.d/{20,55,65}-cdrom.rules
 
 %preun -n udev%{?mini}
 %systemd_preun systemd-udevd.service systemd-udevd-{control,kernel}.socket
@@ -1146,7 +1109,9 @@ rm -f /etc/udev/rules.d/{20,55,65}-cdrom.rules
 %endif
 
 %post container
+%if %{without filetriggers}
 %tmpfiles_create systemd-nspawn.conf
+%endif
 %if %{with machined}
 %systemd_post machines.target
 %ldconfig
@@ -1194,8 +1159,10 @@ rm -f /etc/udev/rules.d/{20,55,65}-cdrom.rules
 
 %post network
 %if %{with networkd}
+%if %{without filetriggers}
 %sysusers_create systemd-network.conf
 %tmpfiles_create systemd-network.conf
+%endif
 %systemd_post systemd-networkd.service
 %systemd_post systemd-networkd-wait-online.service
 %endif
@@ -1230,7 +1197,9 @@ rm -f /etc/udev/rules.d/{20,55,65}-cdrom.rules
 %systemd_pre systemd-portabled.service
 
 %post portable
+%if %{without filetriggers}
 %tmpfiles_create portables.conf
+%endif
 %systemd_post systemd-portabled.service
 
 %preun portable
@@ -1261,6 +1230,11 @@ rm -f /etc/udev/rules.d/{20,55,65}-cdrom.rules
 %systemd_postun systemd-homed.service
 %systemd_postun systemd-oomd.service systemd-oomd.socket
 %systemd_postun systemd-userdbd.service systemd-userdbd.socket
+%endif
+
+# File trigger definitions
+%if %{with filetriggers}
+%include %{SOURCE7}
 %endif
 
 %files

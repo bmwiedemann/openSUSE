@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue May  9 14:25:04 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Move more packaging fixups in the fixlet script.
+
+-------------------------------------------------------------------
+Tue May  9 13:59:56 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Provide (Lua-based) file triggers and adapt systemd.spec accordingly (boo#1133764)
+
+  More specifically, file triggers handle automatically installations or updates
+  of files for sysusers, tmpfiles, hwdb, journal catalog, udev rules, sysctl and
+  binfmt.
+
+  Therefore it makes a bunch of systemd rpm macros (such as %udev_hwdb_update,
+  %udev_rules_update, %journal_catalog_update, %tmpfiles_create,
+  %sysusers_create and so on) not needed anymore. However before considering
+  simplifying your spec files beware that these changes are not available in SLE
+  yet and will probably never reach the current releases (latest one being
+  SLE15-SP5 as of this writing).
+
+  Macros dealing with unit restart/enabling (such as %systemd_pre,
+  %service_add_pre, %service_del_postun, ...) are still needed though. However
+  reloading of systemd instances (and thus restarting of units) are delayed
+  until the very end of the package install/update transaction and is now done
+  only once. 
+
+  Nevertheless to fully take advantage of file triggers, users have to activate
+  a specific zypper transaction backend which is still considered as
+  experimental, see bsc#1041742 for details.
+
+- Provide a (slighlty) customized version of systemd-update-helper. Some of the
+  systemd rpm macros rely now on the helper and delegate their work to it. Hence
+  we don't need to rebuild all packages anymore when the content of the rpm
+  macros must be updated/fixed.
+
+-------------------------------------------------------------------
+Tue May  9 12:37:31 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Drop an old fix for the persistent net rules (only needed on SLE). Factory
+  (fortunately) dropped the persistent net rule generator long time ago.
+
+-------------------------------------------------------------------
 Thu May  4 15:20:49 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Rather than having one script per fix, use a single script (or "fixlet") per

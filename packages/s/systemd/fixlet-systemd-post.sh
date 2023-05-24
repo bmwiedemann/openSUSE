@@ -162,6 +162,10 @@ migrate_sysconfig_i18n() {
 	migrate_keyboard; rv+=$?
 	migrate_language; rv+=$?
 
+	if [ $rv -gt 0 ]; then
+		echo >&2 "Failed to migrate i18n settings from /etc/sysconfig, ignoring."
+	fi
+
 	return $rv
 }
 
@@ -207,13 +211,58 @@ fix_pre_210() {
 	done
 }
 
+#
+# /etc/machine-id might have been created writeable incorrectly (boo#1092269).
+#
+# Note: run at each package update.
+#
+fix_machine_id_perms() {
+	if [ "$(stat -c%a /etc/machine-id)" != 444 ]; then
+		echo "Incorrect file mode bits for /etc/machine-id which should be 0444, fixing..."
+		chmod 444 /etc/machine-id
+	fi
+}
+
+#
+# v228 wrongly set world writable suid root permissions on timestamp files used
+# by permanent timers. Fix the timestamps that might have been created by the
+# affected versions of systemd (bsc#1020601).
+#
+# Note: run at each package update.
+#
+fix_bsc_1020601() {
+	for stamp in $(ls /var/lib/systemd/timers/stamp-*.timer 2>/dev/null); do
+		chmod 0644 $stamp
+	done
+
+	# Same for user lingering created by logind.
+	for username in $(ls /var/lib/systemd/linger/* 2>/dev/null); do
+		chmod 0644 $username
+	done
+}
+
+#
+# Due to the fact that DynamicUser= was turned ON during v235 and then switched
+# back to off in v240, /var/lib/systemd/timesync might be a symlink pointing to
+# /var/lib/private/systemd/timesync, which is inaccessible for systemd-timesync
+# user as /var/lib/private is 0700 root:root, see
+# https://github.com/systemd/systemd/issues/11329 for details.
+#
+# Note: only TW might be affected by this bug.
+# Note: run at each package update.
+#
+fix_issue_11329() {
+	if [ -L %{_localstatedir}/lib/systemd/timesync ]; then
+		rm %{_localstatedir}/lib/systemd/timesync
+		mv %{_localstatedir}/lib/private/systemd/timesync %{_localstatedir}/lib/systemd/timesync
+	fi
+}
+
 r=0
-fix_pre_210 || {
-	r=1
-}
-migrate_sysconfig_i18n || {
-	echo >&2 "Failed to migrate i18n settings from /etc/sysconfig, continuing..."
-	r=1
-}
+fix_machine_id_perms || r=1
+fix_pre_210 || r=1
+migrate_sysconfig_i18n || r=1
+fix_bsc_1020601 || r=1
+fix_issue_11329 || r=1
 
 exit $r
