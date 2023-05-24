@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 22 21:24:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.0:
+  * Improve sequence/all restriction checks for XSD 1.1
+  * Add *schema* argument to `Wsdl11Document`
+
+-------------------------------------------------------------------
 Fri Apr 21 12:39:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

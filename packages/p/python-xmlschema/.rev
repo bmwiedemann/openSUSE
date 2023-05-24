@@ -290,4 +290,14 @@
     <comment></comment>
     <requestid>1081720</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ef31d6e0f5da5022210c544b5b7996e5</srcmd5>
+    <version>2.3.0</version>
+    <time>1684952500</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.0:
+  * Improve sequence/all restriction checks for XSD 1.1
+  * Add *schema* argument to `Wsdl11Document`</comment>
+    <requestid>1088468</requestid>
+  </revision>
 </revisionlist>
