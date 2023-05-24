@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 24 05:01:46 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.28.4:
+  * More explicit field aliasing for silly type checker behavior.
+  * Update requirements.
+  * Supposedly dependabot supports pip-compile, let's see.
+  * Catch accidental hardcoded links in docs.
+  * [pre-commit.ci] pre-commit autoupdate
+
+-------------------------------------------------------------------
 Tue May 23 07:55:25 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.28.3:
