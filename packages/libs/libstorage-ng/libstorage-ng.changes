@@ -1,4 +1,24 @@
 --------------------------------------------------------------------
+Wed May 24 09:50:33 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#933
+- provide functions to query category of partition id (bsc#1211107)
+- added unit tests
+- 4.5.109
+
+--------------------------------------------------------------------
+Wed May 24 04:25:26 UTC 2023 - aschnell@suse.com
+
+- Translated using Weblate (Georgian) (bsc#1149754)
+- 4.5.108
+
+--------------------------------------------------------------------
+Tue May 23 04:07:28 UTC 2023 - aschnell@suse.com
+
+- Translated using Weblate (Georgian) (bsc#1149754)
+- 4.5.107
+
+--------------------------------------------------------------------
 Wed May 17 11:47:40 UTC 2023 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#932
