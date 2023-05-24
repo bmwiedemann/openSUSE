@@ -24,10 +24,8 @@ License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/File utilities
 URL:            https://wiki.gnome.org/Apps/Nautilus
 Source0:        https://download.gnome.org/sources/nautilus/44/%{name}-%{version}.tar.xz
-# fate#308344 bgo#602147
-Source1:        mount-archive.desktop
-Source2:        set_trusted.desktop
-Source3:        set_trusted.sh
+Source1:        set_trusted.desktop
+Source2:        set_trusted.sh
 
 # PATCH-FIX-UPSTREAM 0e5b4c34.patch -- general: Use GtkSwitch active property consistently
 Patch1:         https://gitlab.gnome.org/GNOME/nautilus/-/commit/0e5b4c34.patch
@@ -64,13 +62,13 @@ BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.8
 BuildRequires:  pkgconfig(pango) >= 1.44.4
 BuildRequires:  pkgconfig(tracker-sparql-3.0)
-Requires:       tracker-miner-files >= 2.99
-Recommends:     gvfs
 # Needed for tests
 BuildRequires:  python3-gobject
 BuildRequires:  tracker
 BuildRequires:  tracker-miner-files >= 2.99
 #
+Requires:       tracker-miner-files >= 2.99
+Recommends:     gvfs
 
 %description
 Nautilus is the file manager for the GNOME desktop.
@@ -135,20 +133,13 @@ This package contains development files for nautilus.
 
 %install
 %meson_install
-find %{buildroot} -type f -name "*.la" -delete -print
 %suse_update_desktop_file org.gnome.Nautilus
 %suse_update_desktop_file nautilus-autorun-software
-# Install the archive mime handler
-test ! -e %{buildroot}%{_datadir}/applications/mount-archive.desktop
-install -m0644 %{SOURCE1} %{buildroot}%{_datadir}/applications/mount-archive.desktop
-%suse_update_desktop_file mount-archive
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_prefix}
 %if 0%{?sle_version}
-mkdir -p %{buildroot}%{_sysconfdir}/skel/.config/autostart
-install -m0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/skel/.config/autostart/set_trusted.desktop
-mkdir -p %{buildroot}%{_bindir}
-install -m0755 %{SOURCE3} %{buildroot}%{_bindir}/set_trusted.sh
+install -m0644 -D %{SOURCE1} %{buildroot}%{_sysconfdir}/skel/.config/autostart/set_trusted.desktop
+install -m0755 -D %{SOURCE2} %{buildroot}%{_bindir}/set_trusted.sh
 %endif
 
 %check

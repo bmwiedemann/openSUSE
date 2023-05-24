@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat May 13 03:58:54 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Drop mount-archive.desktop. This was a feature based on
+  FATE#308344 and bgo#602147. However, the provided functionality
+  of mounting archives through gvfsd-archive has been broken for a
+  long time due to the Exec line pointing to a non-existent path
+  (/usr/lib/gvfs/gvfsd-archive, rather than /usr/libexec/...).
+  Besides, there is a similar functionality which allow users to
+  see the content of archives, without extracting them, through
+  File Roller that serves as a replacement.
+
+-------------------------------------------------------------------
 Wed May 10 17:25:20 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add upstream bug fix patches:
