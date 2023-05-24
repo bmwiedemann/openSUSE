@@ -22,7 +22,7 @@ Name:           spectacle
 Version:        23.04.1
 Release:        0
 Summary:        Screen Capture Program
-License:        LGPL-2.0-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 URL:            https://apps.kde.org/spectacle
 Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
@@ -109,13 +109,13 @@ screenshot capture program by KDE.
 %suse_update_desktop_file -r org.kde.spectacle Utility DesktopUtility
 
 %post
-%systemd_user_post
+%systemd_user_post app-org.kde.spectacle.service
 
 %preun
-%systemd_user_preun
+%systemd_user_preun app-org.kde.spectacle.service
 
 %postun
-%systemd_user_postun
+%systemd_user_postun app-org.kde.spectacle.service
 
 %files
 %license LICENSES/*
@@ -144,7 +144,6 @@ screenshot capture program by KDE.
 %files doc
 %doc README.md
 %doc %lang(en) %{_kf5_htmldir}/en/spectacle/
-
 
 %files lang -f %{name}.lang
 
