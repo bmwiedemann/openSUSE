@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-prometheus-client
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
 Summary:        Python client for the Prometheus monitoring system
 License:        Apache-2.0
@@ -30,8 +29,9 @@ Source:         https://github.com/prometheus/client_python/archive/v%{version}.
 # we disable testing the optional Twisted integration on older versions because that dependency tree is troublesome
 BuildRequires:  %{python_module Twisted}
 %endif
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     python-Twisted
@@ -47,13 +47,19 @@ BuildRequires:  python-futures
 The official Python 2 and 3 client for Prometheus.
 
 %prep
-%setup -q -n client_python-%{version}
+%autosetup -p1 -n client_python-%{version}
+
+sed -i -e '1{/\/usr\/bin\/python/d}' \
+    prometheus_client/__init__.py \
+    prometheus_client/bridge/graphite.py \
+    prometheus_client/openmetrics/exposition.py \
+    prometheus_client/openmetrics/parser.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,6 +68,7 @@ The official Python 2 and 3 client for Prometheus.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/prometheus_client
+%{python_sitelib}/prometheus_client-%{version}*-info
 
 %changelog

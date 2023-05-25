@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 24 23:39:52 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.17.0:
+  * [ENHANCEMENT] Add additional typing.
+  * [BUGFIX] Fix typo in python_gc_objects_collected metadata.
+  * [BUGFIX] Do not include .pyc files in the build wheel.
+
+-------------------------------------------------------------------
 Tue Jan 24 07:59:49 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.16.0:
