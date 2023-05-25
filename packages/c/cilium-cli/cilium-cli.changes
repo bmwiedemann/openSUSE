@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat May 27 10:46:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.14.5:
+  * Prepare for v0.14.5 release
+  * renovate: add annotations for connectivity test images
+  * sysdump: refactor submitTetragonBugtoolTasks to take defaults
+    as parameters
+  * connectivity/check: pass metrics to metricsIncrease by pointer
+  * renovate: add renovate/stop-updating label on renovate's PRs
+  * Update stable release to v0.14.4
+  * connectivity: Skip north-south-loadbalancing-with-l7-policy w/o
+    L7
+  * connectivity: Fix installing IP routes to nodes w/o Cilium
+  * connectivity: Fix FeatureTunnel.Mode
+
+-------------------------------------------------------------------
 Thu May 25 12:26:13 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.14.4:
