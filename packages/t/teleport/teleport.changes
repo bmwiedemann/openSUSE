@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Thu May 25 06:35:23 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 13.0.3:
+  * Release 13.0.3 (#26846)
+  * add rbac for cluster alerts (#26423) (#26789)
+  * docs: correct faq answer on editions (#26842)
+  * [v13] use stable/cloud repo for cloud tenants (#26841)
+  * [v13] Add a few convenience toggles to genproto.sh (#26672)
+  * include db in tsh play and consistent description ends (#26816)
+  * add polyfill for randomuuid (#26611)
+  * athena audit logs - always pass utc to query (#26821)
+  * [v13] docs: update to machine-id file list and edits (#26800)
+  * Remove 'preview' from tcp app access guides (#26813)
+  * [v13] [docs] add image for moderated file transfer (#26808)
+  * Introduce group and app name Okta import rule regexes. (#26799)
+  * fix TestALPNProxyHTTPProxyBasicAuthDial flakiness (#26713)
+  * docs: add missing server_name to LDAP config (#26692)
+  * athena audit logs - sent checksum on s3 write (#26748)
+  * Amazon RDS converter: extract Subnets (#26621) (#26675)
+  * [v13] Don't unmount `cgroup2` when restarting (#26728)
+  * docs: update agent updates (#26731)
+  * Windows TPM enrollment support (#25801) (#26736)
+  * Fix link to CA Pinning information (#26690)
+  * [v13] Add mermaid diagram to the HA guide (#26697)
+  * docs: remove old starting from message (#26717)
+  * Describe `tsh ls` support for multiple labels (#26539)
+  * add upgrader to inventory hello (#26454) (#26479)
+  * Define the "jamf_service" configuration (#26478) (#26700)
+  * [v13] operator: ProvisionToken support (#26618)
+  * Fix port forwarding when using a label based target (#26701)
+  * [v13] Refresh Kubernetes Access Getting Started diagram (#26536)
+  * [v13] Edit the docs UI reference (#26533)
+  * [v13] refactor tsh db (#26651)
+  * Remove intel label from macOS (#26698)
+  * [v13] Make the Linux Server guide less SSH-centric (#26631)
+  * [v13] Adds an admonition about Teleport not currently
+    supporting Azure AD (#26556)
+  * [v13] Docs: Patch Register Cluster page  (#26686)
+  * [V13] Add certificate rotation to `teleport join openssh`
+    oneshot command (#26674)
+  * [v13] docs: Add Msft SQL Server client examples and link in sql
+    server guide (#26558)
+  * docs: update reference to Teleport systemd (#26680)
+  * chore: Bump Buf to v1.19.0 (#26645)
+  * [v13] athena audit logs - pass teleport user as top level field
+    (#26661)
+  * Extend `kubectl auth can-i` support for `kubernetes_resources`
+    RBAC rules (#26584)
+  * Update e ref (#26664)
+  * [v13] auditlog - pass context and rework search params (#26587)
+  * expose firehose emulator host env in tests (#26592)
+  * [v13] Update SyncInventory RPC documentation (#26629)
+  * [v13] Add Teleport Team docs (#26639)
+  * [v13] Docs: mark Okta application access as preview (#26627)
+  * suggest machine id in plugins partial (#26624)
+  * [v13] docs: remove starting from messages older then 10.0
+    (#26553)
+  * [v13] changes openssh addr validation to allow hosts (#26549)
+  * [docs] Amazon Athena guide for Application Access (#25329)
+    (#26505)
+  * [v13] Desktop access improvements (#26413)
+  * Add RoleInstance to
+    TestLocalServiceRolesHavePermissionsForUploaderService (#26597)
+  * Update backends.mdx to remove incorrect comment (#26600)
+  * Bump golangci-lint to v1.52.2 (#26593)
+  * Add in Okta plugin type. (#26458)
+  * [v13] Do not run the uploader with the MDM role (#26514)
+  * Show dev-related tools only in dev mode (#26495)
+  * update db and app service role permissions (#26519)
+  * [v13] WebDiscover: Revert deleting the app wizard (#26457)
+  * bump-e-ref (#26545)
+  * add AWS cross-account db access guide (#26468)
+  * docs: update version (#26509)
+  * Update `gravitational/protobuf` fork tag (#26373) (#26488)
+  * Add the JamfSpecV1 proto (#26391) (#26448)
+  * [v13] Add in extra Okta audit event fields. (#26370)
+  * Install Script: add Darwin ARM64 support (#26504)
+  * Update AMI usage instructions (#26453)
+  * [v13] Docs: Adjust curl examples (#26472)
+  * athena audit logs - integration tests (#26494)
+  * [v13] add assume_role_arn and external_id docs reference
+    (#26030)
+  * bypass lint and os-compatibility for md and mdx files (#26480)
+  * [v13] Add and map the MDM system role (#26471)
+  * Install Node Script: respect version variable (#26322)
+  * [v13] add list of applied login rules to user login event
+    (#26474)
+  * bump eref (#26465)
+  * bump docs for cloud to 12.4.2 (#26466)
+
+-------------------------------------------------------------------
 Thu May 18 07:51:39 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 13.0.2:
