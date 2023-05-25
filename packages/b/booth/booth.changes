@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar 16 14:30:15 UTC 2023 - varkoly@suse.com
+
+- Update to version 1.0+20221117.9d4029a:
+  * man: Add generated html files into gitignore
+  * man: remove literal paragraph format from boothd.8
+  * man: Remove italic bold formatting
+  * man: Do not format __defaults__
+  * man: Indent peers counters
+  * man: Move debug description to better place
+  * test: Add test for unknown/unexpected keyword
+  * config: Include protocol in error message
+  * config: Include keyword in error message
+  * unit file: Remove Alias directive
+
+-------------------------------------------------------------------
 Tue Sep 13 10:12:55 UTC 2022 - Yan Gao <ygao@suse.com>
 
 - Update to version 1.0+20220815.f40c2d5:

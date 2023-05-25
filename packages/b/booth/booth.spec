@@ -1,7 +1,7 @@
 #
 # spec file for package booth
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 %define _fwdefdir %{_prefix}/lib/firewalld/services
 
 Name:           booth
-Version:        1.0+20220815.f40c2d5
+Version:        1.0+20221117.9d4029a
 Release:        0
 Summary:        Ticket Manager for Multi-site Clusters
 License:        GPL-2.0-or-later

@@ -451,4 +451,22 @@
     <comment>- spec: optionally BuildRequires cluster-glue-devel instead of libglue-devel (forwarded request 1003305 from yan_gao)</comment>
     <requestid>1003306</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>c8fd1628d4e049f43bd9c4674b245c69</srcmd5>
+    <version>1.0+20221117.9d4029a</version>
+    <time>1685051563</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+20221117.9d4029a:
+  * man: Add generated html files into gitignore
+  * man: remove literal paragraph format from boothd.8
+  * man: Remove italic bold formatting
+  * man: Do not format __defaults__
+  * man: Indent peers counters
+  * man: Move debug description to better place
+  * test: Add test for unknown/unexpected keyword
+  * config: Include protocol in error message
+  * config: Include keyword in error message
+  * unit file: Remove Alias directive</comment>
+    <requestid>1089002</requestid>
+  </revision>
 </revisionlist>
