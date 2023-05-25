@@ -138,4 +138,12 @@
   *  Add support for Unicode Version 15</comment>
     <requestid>1032655</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6e88577094119609a7da0054158a9993</srcmd5>
+    <version>2.4.0</version>
+    <time>1685051543</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088925</requestid>
+  </revision>
 </revisionlist>
