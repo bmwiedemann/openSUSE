@@ -27,7 +27,7 @@
 Name:           python-tifffile%{psuffix}
 Version:        2023.3.15
 Release:        0
-Summary:        Read and write TIFF(r) files
+Summary:        Read and write TIFF files
 License:        BSD-2-Clause
 URL:            https://github.com/cgohlke/tifffile/
 Source:         https://github.com/cgohlke/tifffile/archive/v%{version}.tar.gz#/tifffile-%{version}.tar.gz
@@ -70,7 +70,7 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Read and write TIFF(r) files. Read image and metadata from many
+Read and write TIFF files. Read image and metadata from many
 bio-scientific formats such as plain TIFF, BigTIFF, OME-TIFF, STK, LSM,
 SGI, NIH, ImageJ, MicroManager, MD GEL, and FluoView files. Write numpy
 arrays to TIFF, BigTIFF, and ImageJ hyperstack compatible files.
