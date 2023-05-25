@@ -2448,4 +2448,12 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
 </comment>
     <requestid>1077166</requestid>
   </revision>
+  <revision rev="170" vrev="8">
+    <srcmd5>22f60063262d34468f0acc2f5ccbff0a</srcmd5>
+    <version>12.1</version>
+    <time>1685051528</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088732</requestid>
+  </revision>
 </revisionlist>
