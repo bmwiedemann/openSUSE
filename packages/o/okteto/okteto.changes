@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu May 25 12:26:46 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.16.0:
+  * fix(build): expand build args (#3633) (#3638)
+  * fix: panic on e2e tests (#3631) (#3634)
+  * fix endpoints retrieval e2e (#3615) (#3623)
+  * Pass --server-name to okteto remote deploy (#3620) (#3625)
+  * remove server-name shorthand (#3619)
+  * build(deps): Bump github.com/docker/distribution (#3613)
+  * feat: add server name flag (#3618)
+  * Add okteto certificates in remote deploy (#3601)
+  * Modify okteto namespace delete command to delete current
+    namespace if no argument is passed (#3598)
+  * Handle defaults in okteto kubetoken (#3602)
+  * Remove behaviour of setting service replicas one, if deployment
+    replicas is zero (#3600)
+  * Add replicas field in Services to specify the required replicas
+    for services and scale back the original deployment after
+    okteto down (#3556)
+  * doc: add more context on errors (#3591)
+  * Add external resources to preview endpoints (#3586)
+  * default OKTETO_NAMESPACE to space param in credentials query
+    (#3343)
+  * fix git pull approach (#3580)
+  * Set the sleep and wake command to perform actions on current
+    namespace (#3574)
+  * fix device resource parsing (#3566)
+  * Remove preview from deployPreview mutation response (#3568)
+  * Remove trailing whitespace on converted JSON log line (#3577)
+  * load envs in cmap when deploy (#3561)
+  * Modified the spinner text to mention about destroying dev env
+    (#3573)
+  * build empty `.dockerignore` in tmp dir for remote build if no
+    `.oktetodeployignore` provided (#3539)
+  * build(deps): Bump github.com/docker/docker (#3531)
+  * Added new commands for okteto namespace - sleep and wake
+    (#3479)
+  * Recreating pods in error state (#3360)
+  * Automatically create a namespace if needed while doing okteto
+    up (#3559)
+  * feat: deactivate git pull approach (#3565)
+
+-------------------------------------------------------------------
 Mon May 22 05:45:35 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.15.3:
