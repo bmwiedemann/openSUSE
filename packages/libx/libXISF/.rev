@@ -28,4 +28,17 @@
 </comment>
     <requestid>1078590</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>12e3df981a6f971c5084901c20126ffa</srcmd5>
+    <version>0.2.5</version>
+    <time>1685051546</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.5:
+  * Add method to for ICC profile
+  * Add StreamBuffer to optimize save/load from memory
+  * Add support for thumbnail
+- Add fix-pkgconfig.patch
+</comment>
+    <requestid>1088998</requestid>
+  </revision>
 </revisionlist>

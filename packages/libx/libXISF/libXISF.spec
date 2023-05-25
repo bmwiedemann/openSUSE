@@ -18,14 +18,17 @@
 
 %define sover 0
 Name:           libXISF
-Version:        0.2.3
+Version:        0.2.5
 Release:        0
 Summary:        Library to read/write PixInsight XISF files
 License:        GPL-3.0-or-later
 URL:            https://gitea.nouspiro.space/nou/libXISF
 Source:         https://gitea.nouspiro.space/nou/libXISF/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         fix-pkgconfig.patch
 BuildRequires:  cmake
 BuildRequires:  liblz4-devel
+BuildRequires:  pkg-config
 BuildRequires:  pugixml-devel
 BuildRequires:  zlib-devel
 BuildRequires:  cmake(Qt5Core) >= 5.14.0
@@ -83,5 +86,6 @@ This package contains all the needed development files to use %{name}.
 %{_includedir}/libXISF_global.h
 %{_includedir}/libxisf.h
 %{_libdir}/libXISF.so
+%{_libdir}/pkgconfig/libxisf.pc
 
 %changelog
