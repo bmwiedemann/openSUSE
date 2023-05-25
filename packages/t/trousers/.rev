@@ -468,4 +468,12 @@ Should be handled together with sr#769061</comment>
   shortcut through the -mini flavors. (forwarded request 998581 from dimstar)</comment>
     <requestid>998773</requestid>
   </revision>
+  <revision rev="53" vrev="6">
+    <srcmd5>6530ee62fde3356279be534a3d5fff2c</srcmd5>
+    <version>0.3.15</version>
+    <time>1685051549</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildRequire pkgconfig(udev) instead of udev: allow OBS to (forwarded request 1088961 from jsrain)</comment>
+    <requestid>1088963</requestid>
+  </revision>
 </revisionlist>

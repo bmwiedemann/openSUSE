@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Aug 22 08:16:58 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
-- BuildRequire pkkconfig(udev) instead of udev: allow OBS to
+- BuildRequire pkgconfig(udev) instead of udev: allow OBS to
   shortcut through the -mini flavors.
 
 -------------------------------------------------------------------
