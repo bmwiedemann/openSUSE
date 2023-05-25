@@ -29,7 +29,7 @@
 %bcond_with testexamples
 
 Name:           python-bokeh%{psuffix}
-Version:        3.0.3
+Version:        3.1.1
 Release:        0
 Summary:        Statistical interactive HTML plots for Python
 License:        BSD-3-Clause
@@ -47,7 +47,7 @@ BuildRequires:  %{python_module PyYAML >= 3.10}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module contourpy >= 1}
-BuildRequires:  %{python_module numpy >= 1.11.3}
+BuildRequires:  %{python_module numpy >= 1.16}
 BuildRequires:  %{python_module packaging >= 16.8}
 BuildRequires:  %{python_module pandas >= 1.2}
 BuildRequires:  %{python_module pip}
@@ -63,7 +63,7 @@ Requires:       python-Pillow >= 7.1.0
 Requires:       python-PyYAML >= 3.10
 Requires:       python-base >= 3.8
 Requires:       python-contourpy >= 1
-Requires:       python-numpy >= 1.11.3
+Requires:       python-numpy >= 1.16
 Requires:       python-packaging >= 16.8
 Requires:       python-pandas >= 1.2
 Requires:       python-tornado >= 5.1
@@ -123,7 +123,6 @@ with interactivity over large or streaming datasets.
 %python_clone -a %{buildroot}%{_bindir}/bokeh
 
 # Remove hidden files for git repos
-%python_expand rm %{buildroot}%{$python_sitelib}/bokeh/server/static/.keep
 %endif
 
 %if %{with test}

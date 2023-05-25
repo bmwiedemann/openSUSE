@@ -359,4 +359,12 @@
     <comment>- switch to default npm</comment>
     <requestid>1087813</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>9ffef430ef649d8ef9f1ea9cdbddfa9f</srcmd5>
+    <version>3.1.1</version>
+    <time>1685051579</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1089046</requestid>
+  </revision>
 </revisionlist>
