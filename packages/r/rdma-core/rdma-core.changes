@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 19 08:23:59 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to v45.0
+  - Fixes for all providers
+  - Support for Microsoft Azure Network Adapter
+- Drop rdma-ndd-disable-systemd-ProtectHostName-feature.patch
+  as it was fixed upstream.
+- Refresh against latest sources:
+  - Revert-libcxgb3-Remove-libcxgb3-from-rdma-core.patch
+  - Revert-Update-kernel-headers.patch
+
+-------------------------------------------------------------------
 Thu Oct 13 07:51:25 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Add rdma-ndd-disable-systemd-ProtectHostName-feature.patch to fix issue

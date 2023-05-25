@@ -582,4 +582,19 @@
   where rdma-ndd would not be aware of dynamic hostnames retrived through DHCP</comment>
     <requestid>1010490</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>32062473a1c47bc26e6660ffac7dbdac</srcmd5>
+    <version>45.0</version>
+    <time>1685051535</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v45.0
+  - Fixes for all providers
+  - Support for Microsoft Azure Network Adapter
+- Drop rdma-ndd-disable-systemd-ProtectHostName-feature.patch
+  as it was fixed upstream.
+- Refresh against latest sources:
+  - Revert-libcxgb3-Remove-libcxgb3-from-rdma-core.patch
+  - Revert-Update-kernel-headers.patch</comment>
+    <requestid>1088781</requestid>
+  </revision>
 </revisionlist>

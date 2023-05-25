@@ -1,7 +1,7 @@
 #
 # spec file for package rdma-core
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,9 +30,9 @@
 %define _modprobedir /lib/modprobe.d
 %endif
 
-%define         git_ver .0.196bad56ed06
+%define         git_ver .0.53ee89b4abb1
 Name:           rdma-core
-Version:        42.0
+Version:        45.0
 Release:        0
 Summary:        RDMA core userspace libraries and daemons
 License:        BSD-2-Clause OR GPL-2.0-only
@@ -42,6 +42,7 @@ Group:          Productivity/Networking/Other
 %define verbs_so_major  1
 %define rdmacm_so_major 1
 %define umad_so_major   3
+%define mana_so_major   1
 %define mlx4_so_major   1
 %define mlx5_so_major   1
 %define ibnetdisc_major 5
@@ -51,6 +52,7 @@ Group:          Productivity/Networking/Other
 %define  verbs_lname  libibverbs%{verbs_so_major}
 %define  rdmacm_lname librdmacm%{rdmacm_so_major}
 %define  umad_lname   libibumad%{umad_so_major}
+%define  mana_lname   libmana%{mana_so_major}
 %define  mlx4_lname   libmlx4-%{mlx4_so_major}
 %define  mlx5_lname   libmlx5-%{mlx5_so_major}
 
@@ -77,7 +79,6 @@ Patch1:         Revert-Update-kernel-headers.patch
 Patch2:         disable-rdma-interface-renaming.patch
 Patch3:         cxgb3-fix-declaration-of-free_context.patch
 Patch4:         cxgb3-fix-support-for-new-uquery-API.patch
-Patch5:         rdma-ndd-disable-systemd-ProtectHostName-feature.patch
 BuildRequires:  binutils
 BuildRequires:  cmake >= 2.8.11
 BuildRequires:  gcc
@@ -95,7 +96,7 @@ BuildRequires:  pkgconfig(udev)
 BuildRequires:  python3-Cython
 BuildRequires:  python3-devel
 %endif
-%ifnarch s390 riscv64
+%ifnarch s390 s390x
 %if 0%{?suse_version} >= 1550
 BuildRequires:  valgrind-client-headers
 %else
@@ -170,6 +171,7 @@ Requires:       %{umad_lname} = %{version}-%{release}
 Requires:       %{verbs_lname} = %{version}-%{release}
 %if 0%{?dma_coherent}
 Requires:       %{efa_lname} = %{version}-%{release}
+Requires:       %{mana_lname} = %{version}-%{release}
 Requires:       %{mlx4_lname} = %{version}-%{release}
 Requires:       %{mlx5_lname} = %{version}-%{release}
 %endif
@@ -207,12 +209,11 @@ RDMA core development libraries and headers.
 Summary:        Library & drivers for direct userspace use of InfiniBand/iWARP/RoCE hardware
 Group:          System/Libraries
 Requires:       %{name}%{?_isa} = %{version}-%{release}
-Obsoletes:      libcxgb3-rdmav2 < %{version}-%{release}
 Obsoletes:      libcxgb4-rdmav2 < %{version}-%{release}
 Obsoletes:      libefa-rdmav2 < %{version}-%{release}
 Obsoletes:      libhfi1verbs-rdmav2 < %{version}-%{release}
-Obsoletes:      libi40iw-rdmav2 < %{version}-%{release}
 Obsoletes:      libipathverbs-rdmav2 < %{version}-%{release}
+Obsoletes:      libmana-rdmav2 < %{version}-%{release}
 Obsoletes:      libmlx4-rdmav2 < %{version}-%{release}
 Obsoletes:      libmlx5-rdmav2 < %{version}-%{release}
 Obsoletes:      libmthca-rdmav2 < %{version}-%{release}
@@ -220,6 +221,7 @@ Obsoletes:      libocrdma-rdmav2 < %{version}-%{release}
 Obsoletes:      librxe-rdmav2 < %{version}-%{release}
 %if 0%{?dma_coherent}
 Requires:       %{efa_lname} = %{version}-%{release}
+Requires:       %{mana_lname} = %{version}-%{release}
 Requires:       %{mlx4_lname} = %{version}-%{release}
 Requires:       %{mlx5_lname} = %{version}-%{release}
 %endif
@@ -243,6 +245,7 @@ Device-specific plug-in ibverbs userspace drivers are included:
 - libi40iw: Intel Ethernet Connection X722 RDMA
 - libipathverbs: QLogic InfiniPath HCA
 - libirdma: Intel Ethernet Connection RDMA
+- libmana: Microsoft Azure Network Adapter
 - libmlx4: Mellanox ConnectX-3 InfiniBand HCA
 - libmlx5: Mellanox Connect-IB/X-4+ InfiniBand HCA
 - libmthca: Mellanox InfiniBand HCA
@@ -266,6 +269,13 @@ Group:          System/Libraries
 
 %description -n %efa_lname
 This package contains the efa runtime library.
+
+%package -n %mana_lname
+Summary:        MANA runtime library
+Group:          System/Libraries
+
+%description -n %mana_lname
+This package contains the mana runtime library.
 
 %package -n %mlx4_lname
 Summary:        MLX4 runtime library
@@ -425,7 +435,6 @@ easy, object-oriented access to IB verbs.
 %patch2
 %patch3
 %patch4
-%patch5
 
 %build
 
@@ -519,6 +528,9 @@ rm -rf %{buildroot}/%{_sbindir}/srp_daemon.sh
 
 %post -n %efa_lname -p /sbin/ldconfig
 %postun -n %efa_lname -p /sbin/ldconfig
+
+%post -n %mana_lname -p /sbin/ldconfig
+%postun -n %mana_lname -p /sbin/ldconfig
 
 %post -n %mlx4_lname -p /sbin/ldconfig
 %postun -n %mlx4_lname -p /sbin/ldconfig
@@ -627,9 +639,8 @@ done
 %dir %{_sysconfdir}/rdma/modules
 %dir %{_docdir}/%{name}-%{version}
 %dir %{_udevrulesdir}
-%dir %{_sysconfdir}/udev
-%dir %{_sysconfdir}/udev/rules.d
 %dir %{_modprobedir}
+%doc %{_docdir}/%{name}-%{version}/70-persistent-ipoib.rules
 %doc %{_docdir}/%{name}-%{version}/README.md
 %doc %{_docdir}/%{name}-%{version}/udev.md
 %config(noreplace) %{_sysconfdir}/rdma/mlx4.conf
@@ -642,7 +653,6 @@ done
 %{_modprobedir}/mlx4.conf
 %endif
 %{_modprobedir}/truescale.conf
-%config(noreplace) %{_sysconfdir}/udev/rules.d/70-persistent-ipoib.rules
 %{_unitdir}/rdma-hw.target
 %{_unitdir}/rdma-load-modules@.service
 %dir %{dracutlibdir}
@@ -681,9 +691,11 @@ done
 %{_mandir}/man7/rdma_cm.*
 %if 0%{?dma_coherent}
 %{_mandir}/man3/efadv*
+%{_mandir}/man3/manadv*
 %{_mandir}/man3/mlx5dv*
 %{_mandir}/man3/mlx4dv*
 %{_mandir}/man7/efadv*
+%{_mandir}/man7/manadv*
 %{_mandir}/man7/mlx5dv*
 %{_mandir}/man7/mlx4dv*
 %endif
@@ -715,6 +727,10 @@ done
 %files -n %efa_lname
 %defattr(-,root,root)
 %{_libdir}/libefa*.so.*
+
+%files -n %mana_lname
+%defattr(-,root,root)
+%{_libdir}/libmana*.so.*
 
 %files -n %mlx4_lname
 %defattr(-,root,root)
