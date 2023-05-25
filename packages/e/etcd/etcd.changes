@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 25 08:53:52 UTC 2023 - eroca@mailbox.org
+
+- Update to version 3.5.9:
+  * version: bump up to 3.5.9
+  * Move go version to dedicated .go-version file
+  * tests: e2e and integration test for timetolive
+  * etcdserver: protect lease timetilive with auth
+  * Backport go update to latest patch release 1.19.9.
+  * Backport centralising go version for actions workflows.
+  * server: backport 15743, improved description of --initial-cluster-state flag
+
+-------------------------------------------------------------------
 Wed Apr 26 08:46:04 UTC 2023 - eroca@suse.com
 
 - Update to version 3.5.8:
