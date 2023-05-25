@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May 24 07:02:31 UTC 2023 - Daniel Mach <daniel.mach@suse.com>
+
+- 1.1.4
+  - Command-line:
+    - Change 'review list' command to display open requests (state: new, review, declined)
+    - Fix running osc in an AppImage by switching to the correct working directory
+    - Handle ProtocolError exception
+  - Library:
+    - Add 'req_states' parameter to osc.core.get_review_list()
+  - Connection:
+    - Fix grabber to work with old urllib3 versions that do not contain URLSchemeUnknown exception
+
+-------------------------------------------------------------------
 Wed May 10 07:12:59 UTC 2023 - Daniel Mach <daniel.mach@suse.com>
 
 - 1.1.3

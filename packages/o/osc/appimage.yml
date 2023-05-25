@@ -8,15 +8,18 @@ ingredients:
   packages:
     - build
     - osc
-    - python-yaml
+    - obs-scm-bridge
+    - obs-service-download_files
+    - obs-service-format_spec_file
     - obs-service-obs_scm
-    - obs-service-tar_scm
-    - obs-service-set_version
     - obs-service-recompress
+    - obs-service-set_version
+    - obs-service-tar_scm
+    - obs-service-verify_file
     - openSUSE-release
     - openSUSE-release-ftp
     - rsync
-    
+
 script:
   - mkdir -p $BUILD_APPDIR/usr/share/pixmaps
   - cp /usr/share/pixmaps/appimage.png $BUILD_APPDIR/usr/share/pixmaps
@@ -27,7 +30,7 @@ script:
   - echo "Icon=appimage"          >> $BUILD_APPDIR/usr/share/applications/osc.desktop
   - echo "Categories=Development" >> $BUILD_APPDIR/usr/share/applications/osc.desktop
   - echo "Type=Application"       >> $BUILD_APPDIR/usr/share/applications/osc.desktop
-#  - sed -i -e 's,^#!/usr/bin/python,#!/usr/bin/env python,' $BUILD_APPDIR/usr/bin/osc
+  # /usr/bin/python3 would run system python3 with libs from the appimage
+  # while /usr/bin/env python3 uses the correct binary from the appimage
+  - sed -i -e 's,^#!/usr/bin/python3,#!/usr/bin/env python3,' $BUILD_APPDIR/usr/bin/osc
   - linuxdeployqt $BUILD_APPDIR/usr/share/applications/*.desktop -bundle-non-qt-libs -verbose=2
-
-
