@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 24 17:47:42 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Updating to upstream version 1.11 (as previous 1.6.4 fails)
+  * tests.py was also updated and needed another item excluded to
+    possibly account for how pandoc is built.
+- Converting to noarch (per rpmlint).
+- Adding pandocfilters module to BuildRequires
+
+-------------------------------------------------------------------
 Sun Jul 17 01:20:53 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Add build dependency texlive-xcolor

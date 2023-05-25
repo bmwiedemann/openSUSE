@@ -1,7 +1,7 @@
 #
 # spec file for package python-pypandoc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define base_name pypandoc
 Name:           python-pypandoc
-Version:        1.6.4
+Version:        1.11
 Release:        0
 Summary:        Thin wrapper for pandoc
 License:        MIT
@@ -26,6 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/bebraw/pypandoc
 Source:         https://github.com/NicklasTegner/pypandoc/archive/refs/tags/v%{version}.tar.gz#/pypandoc-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/NicklasTegner/pypandoc/master/tests.py
+BuildRequires:  %{python_module pandocfilters}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -40,6 +41,7 @@ Requires:       python-pip
 Requires:       python-wheel
 Suggests:       ghc-citeproc
 ExcludeArch:    %{ix86}
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -58,12 +60,14 @@ cp %{SOURCE1} tests.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test_basic_conversion_from_http_url needs network
-%pytest tests.py -k 'not test_basic_conversion_from_http_url'
+# 'test_basic_conversion_from_http_url' needs network
+# 'test_conversion_with_data_files' => https://github.com/JessicaTegner/pypandoc/issues/278
+%pytest tests.py -k 'not test_basic_conversion_from_http_url and not test_conversion_with_data_files'
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/pypandoc
+%{python_sitelib}/pypandoc-%{version}*-info
 
 %changelog

@@ -50,4 +50,17 @@
     <comment></comment>
     <requestid>989644</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ac70b0d3219ac9d7fa0b1d6b249d8500</srcmd5>
+    <version>1.11</version>
+    <time>1685051543</time>
+    <user>dimstar_suse</user>
+    <comment>- Updating to upstream version 1.11 (as previous 1.6.4 fails)
+  * tests.py was also updated and needed another item excluded to
+    possibly account for how pandoc is built.
+- Converting to noarch (per rpmlint).
+- Adding pandocfilters module to BuildRequires
+</comment>
+    <requestid>1088924</requestid>
+  </revision>
 </revisionlist>

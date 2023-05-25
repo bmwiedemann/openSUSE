@@ -3,16 +3,31 @@
 
 import contextlib
 import io
+import logging
 import os
+import re
 import shutil
 import subprocess
 import sys
 import tempfile
+import textwrap
 import unittest
 import warnings
+from pathlib import Path
 
 import pypandoc
 from pypandoc.py3compat import path2url, string_types, unicode_type
+
+
+@contextlib.contextmanager
+def capture(command, *args, **kwargs):
+  err, sys.stderr = sys.stderr, io.StringIO()
+  try:
+    command(*args, **kwargs)
+    sys.stderr.seek(0)
+    yield sys.stderr.read()
+  finally:
+    sys.stderr = err
 
 
 @contextlib.contextmanager
@@ -142,8 +157,19 @@ class TestPypandoc(unittest.TestCase):
         version = pypandoc.get_pandoc_version()
         self.assertTrue(isinstance(version, pypandoc.string_types))
         major = int(version.split(".")[0])
-        # according to http://pandoc.org/releases.html there were only two versions 0.x ...
-        self.assertTrue(major in [0, 1, 2])
+        self.assertTrue(major in [0, 1, 2, 3])
+
+    def test_ensure_pandoc_minimal_version(self):
+        assert "HOME" in os.environ, "No HOME set, this will error..."
+        assert pypandoc.ensure_pandoc_minimal_version(1) == True
+        assert pypandoc.ensure_pandoc_minimal_version(1,1) == True
+        assert pypandoc.ensure_pandoc_minimal_version(999,999) == False
+
+    def test_ensure_pandoc_maximal_version(self):
+        assert "HOME" in os.environ, "No HOME set, this will error..."
+        assert pypandoc.ensure_pandoc_maximal_version(999) == True
+        assert pypandoc.ensure_pandoc_maximal_version(999,999) == True
+        assert pypandoc.ensure_pandoc_maximal_version(1,1) == False
 
     def test_converts_valid_format(self):
         self.assertEqualExceptForNewlineEnd(pypandoc.convert_text("ok", format='md', to='rest'), 'ok')
@@ -168,6 +194,25 @@ class TestPypandoc(unittest.TestCase):
             received = pypandoc.convert_file(file_name, 'rst')
             self.assertEqualExceptForNewlineEnd(expected, received)
 
+    def test_basic_conversion_from_multiple_files(self):
+        with closed_tempfile('.md', text='some title') as file_name1:
+            with closed_tempfile('.md', text='some title') as file_name2:
+                expected = '<p>some title</p>\n<p>some title</p>'
+                received = pypandoc.convert_file([file_name1,file_name2], 'html')
+                self.assertEqualExceptForNewlineEnd(expected, received)
+
+    def test_basic_conversion_from_file_pattern(self):
+        received = pypandoc.convert_file("./*.md", 'html')
+        received = received.lower()
+        assert "making a release" in received
+        assert "pypandoc provides a thin wrapper" in received
+
+    def test_basic_conversion_from_file_pattern_with_input_list(self):
+        received = pypandoc.convert_file(["./*.md", "./*.md"], 'html')
+        received = received.lower()
+        assert "making a release" in received
+        assert "pypandoc provides a thin wrapper" in received
+
     @unittest.skipIf(sys.platform.startswith("win"), "File based urls do not work on windows: "
                                                      "https://github.com/jgm/pandoc/issues/4613")
     def test_basic_conversion_from_file_url(self):
@@ -186,7 +231,27 @@ class TestPypandoc(unittest.TestCase):
         received = pypandoc.convert_file(url, 'html')
         assert "GPL2 license" in received
 
+    def test_conversion_with_data_files(self):
+        # remove our test.docx file from our test_data dir if it already exosts
+        test_data_dir = os.path.join(os.path.dirname(__file__), 'test_data')
+        test_docx_file = os.path.join(test_data_dir, 'test.docx')
+        if os.path.exists(test_docx_file):
+            os.remove(test_docx_file)
+        result = pypandoc.convert_file(
+          os.path.join(test_data_dir, 'index.html'),
+          to='docx',
+          format='html',
+          outputfile=test_docx_file,
+          sandbox=True,
+        )
+        print(result)
+
     def test_convert_with_custom_writer(self):
+        version = pypandoc.get_pandoc_version()
+        major = int(version.split(".")[0])
+        if major == 3:
+            # apparently --print-default-data-file fails on pandoc3x
+            return
         lua_file_content = self.create_sample_lua()
         with closed_tempfile('.md', text='# title\n') as file_name:
             with closed_tempfile('.lua', text=lua_file_content, dir_name="foo-bar+baz") as lua_file_name:
@@ -261,6 +326,176 @@ class TestPypandoc(unittest.TestCase):
         self.assertTrue(found is None)
         found = re.search(r'10.1038', written)
         self.assertTrue(found is None)
+
+    def test_conversion_with_python_filter(self):
+        markdown_source = "**Here comes the content.**"
+        python_source = '''\
+        #!{0}
+
+        """
+        Pandoc filter to convert all regular text to uppercase.
+        Code, link URLs, etc. are not affected.
+        """
+
+        from pandocfilters import toJSONFilter, Str
+
+        def caps(key, value, format, meta):
+            if key == 'Str':
+                return Str(value.upper())
+
+        if __name__ == "__main__":
+            toJSONFilter(caps)
+        '''
+        python_source = textwrap.dedent(python_source)
+        python_source = python_source.format(sys.executable)
+        
+        with closed_tempfile(".py", python_source) as tempfile:
+            os.chmod(tempfile, 0o755)
+            output = pypandoc.convert_text(
+                markdown_source, to='html', format='md', outputfile=None, filters=tempfile
+            ).strip()
+            expected = '<p><strong>HERE COMES THE CONTENT.</strong></p>'
+            self.assertTrue(output == expected)
+
+    def test_conversion_with_lua_filter(self):
+        markdown_source = "**Here comes the content.**"
+        lua_source = """\
+        -- taken from: https://pandoc.org/lua-filters.html
+        function Strong(elem)
+            return pandoc.SmallCaps(elem.c)
+        end
+        """
+        lua_source = textwrap.dedent(lua_source)
+        with closed_tempfile(".lua", lua_source) as tempfile:
+            output = pypandoc.convert_text(
+                markdown_source, to='html', format='md', outputfile=None, filters=tempfile
+            ).strip()
+            expected = '<p><span class="smallcaps">Here comes the content.</span></p>'
+            self.assertTrue(output == expected)
+
+    def test_conversion_with_mixed_filters(self):
+        markdown_source = "-0-"
+
+        lua = """\
+        function Para(elem)
+            return pandoc.Para(elem.content .. {{"{0}-"}})
+        end
+        """
+        lua = textwrap.dedent(lua)
+
+        python = """\
+        #!{0}
+
+        from pandocfilters import toJSONFilter, Para, Str
+
+        def func(key, value, format, meta):
+            if key == "Para":
+                return Para(value + [Str("{{0}}-")])
+
+        if __name__ == "__main__":
+            toJSONFilter(func)
+        
+        """
+        python = textwrap.dedent(python)
+        python = python.format(sys.executable)
+
+        with closed_tempfile(".lua", lua.format(1)) as temp1, closed_tempfile(".py", python.format(2)) as temp2:
+            os.chmod(temp2, 0o755)
+
+            with closed_tempfile(".lua", lua.format(3)) as temp3, closed_tempfile(".py", python.format(4)) as temp4:
+                os.chmod(temp4, 0o755)
+
+                output = pypandoc.convert_text(
+                    markdown_source, to="html", format="md", outputfile=None, filters=[temp1, temp2, temp3, temp4]
+                ).strip()
+                expected = "<p>-0-1-2-3-4-</p>"
+                self.assertEquals(output, expected)
+
+                output = pypandoc.convert_text(
+                    markdown_source, to="html", format="md", outputfile=None, filters=[temp3, temp1, temp4, temp2]
+                ).strip()
+                expected = "<p>-0-3-1-4-2-</p>"
+                self.assertEquals(output, expected)
+
+    def test_classify_pandoc_logging(self):
+        
+        test = ("[WARNING] This is some message on\ntwo lines\n"
+                "[ERROR] This is a second message.")
+        
+        expected_levels = [30, 40]
+        expected_msgs = ["This is some message on\ntwo lines",
+                         "This is a second message."]
+        
+        for i, (l, m) in enumerate(pypandoc._classify_pandoc_logging(test)):
+            self.assertEqual(expected_levels[i], l)
+            self.assertEqual(expected_msgs[i], m)
+
+
+    def test_classify_pandoc_logging_default(self):
+        
+        test = ("This is some message on\ntwo lines\n"
+                "[ERROR] This is a second message.")
+        expected_levels = [30, 40]
+        expected_msgs = ["This is some message on\ntwo lines",
+                         "This is a second message."]
+        
+        for i, (l, m) in enumerate(pypandoc._classify_pandoc_logging(test)):
+            self.assertEqual(expected_levels[i], l)
+            self.assertEqual(expected_msgs[i], m)
+
+
+    def test_classify_pandoc_logging_invalid_level(self):
+        
+        test = ("[WARN] This is some message on\ntwo lines\n"
+                "[ERR] This is a second message.\n"
+                "[ERROR] This is a third message.")
+        expected_levels = [30, 30, 40]
+        expected_msgs = ["This is some message on\ntwo lines",
+                         "This is a second message.",
+                         "This is a third message."]
+        
+        for i, (l, m) in enumerate(pypandoc._classify_pandoc_logging(test)):
+            self.assertEqual(expected_levels[i], l)
+            self.assertEqual(expected_msgs[i], m)
+
+
+    def test_conversion_stderr(self):
+        
+        # Clear logger handlers
+        logger = logging.getLogger("pypandoc")
+        logger.handlers = []
+        
+        with closed_tempfile('.docx') as file_name:
+            text = ('![Mock](missing.png)\n'
+                    '![Mock](missing.png)\n')
+            with capture(pypandoc.convert_text,
+                         text,
+                         to='docx',
+                         format='md',
+                         outputfile=file_name) as output:
+                output = re.sub(r'\r', '', output)
+                output = output.replace("'missing.png'",
+                                        "missing.png")
+                output = output.lower()
+                print(output)
+                assert "[warning] could not fetch resource missing.png" in output
+
+    def test_conversion_stderr_nullhandler(self):
+        
+        # Replace any logging handlers with a null handler
+        logger = logging.getLogger("pypandoc")
+        logger.handlers = [logging.NullHandler()]
+        
+        with closed_tempfile('.docx') as file_name:
+            text = ('![Mock](missing.png)\n'
+                    '![Mock](missing.png)\n')
+            with capture(pypandoc.convert_text,
+                         text,
+                         to='docx',
+                         format='md',
+                         outputfile=file_name) as output:
+                self.assertFalse(output)
+
 
     def test_conversion_error(self):
         # pandoc dies on wrong commandline arguments
@@ -339,9 +574,9 @@ class TestPypandoc(unittest.TestCase):
         # no extensions allowed
         with closed_tempfile('.pdf') as file_name:
             def f():
-                pypandoc.convert_text('# some title\n', to='pdf+somethign', format='md', outputfile=file_name)
+                pypandoc.convert_text('# some title\n', to='pdf+something', format='md', outputfile=file_name)
 
-            with self.assertRaisesRegex(RuntimeError, r"PDF output can't contain any extensions: pdf\+somethign"):
+            with self.assertRaisesRegex(RuntimeError, r"PDF output can't contain any extensions: pdf\+something"):
                 f()
 
     def test_get_pandoc_path(self):
@@ -372,16 +607,48 @@ class TestPypandoc(unittest.TestCase):
             received = pypandoc.convert_file(file_name, 'rst', format='md')
             self.assertTrue("title" in received)
 
-    def test_depreaction_warnings(self):
-        # convert itself is deprecated...
-        with assert_produces_warning(DeprecationWarning):
-            pypandoc.convert('# some title\n', to='rst', format='md')
-
     def create_sample_lua(self):
         args = [pypandoc.get_pandoc_path(), '--print-default-data-file', 'sample.lua']
         p = subprocess.Popen(args, stdout=subprocess.PIPE)
         out, err = p.communicate()
         return out.decode('utf-8')
+
+    def test_basic_conversion_from_file_pathlib(self):
+        with closed_tempfile('.md', text='# some title\n') as file_name:
+            expected = u'some title{0}=========={0}{0}'.format(os.linesep)
+            received_from_str_filename_input = pypandoc.convert_file(file_name, 'rst')
+            received_from_path_filename_input = pypandoc.convert_file(Path(file_name), 'rst')
+            self.assertEqualExceptForNewlineEnd(expected, received_from_str_filename_input)
+            self.assertEqualExceptForNewlineEnd(expected, received_from_path_filename_input)
+
+    def test_basic_conversion_from_multiple_files_pathlib(self):
+        with closed_tempfile('.md', text='some title') as file_name1:
+            with closed_tempfile('.md', text='some title') as file_name2:
+                expected = '<p>some title</p>\n<p>some title</p>'
+                received_from_str_filename_input = pypandoc.convert_file([file_name1, file_name2], 'html')
+                received_from_path_filename_input = pypandoc.convert_file([Path(file_name1), Path(file_name2)], 'html')
+                self.assertEqualExceptForNewlineEnd(expected, received_from_str_filename_input)
+                self.assertEqualExceptForNewlineEnd(expected, received_from_path_filename_input)
+
+    def test_basic_conversion_from_file_pattern_pathlib_glob(self):
+        received_from_str_filename_input = pypandoc.convert_file("./*.md", 'html').lower()
+        received_from_path_filename_input = pypandoc.convert_file(Path(".").glob("*.md"), 'html').lower()
+        assert received_from_str_filename_input == received_from_path_filename_input
+
+    def test_basic_conversion_from_file_pattern_with_input_list_pathlib_glob(self):
+        received_from_str_filename_input = pypandoc.convert_file(["./*.md", "./*.md"], 'html').lower()
+        received_from_path_filename_input = pypandoc.convert_file([*Path(".").glob("*.md"), *Path(".").glob("*.md")],
+                                                                  'html').lower()
+        assert received_from_str_filename_input == received_from_path_filename_input
+
+    def test_basic_conversion_to_pathlib_file(self):
+        with closed_tempfile('.rst', ) as file_name:
+            expected = u'some title{0}=========={0}{0}'.format(os.linesep)
+            received = pypandoc.convert_text('# some title\n', to='rst', format='md', outputfile=Path(file_name))
+            self.assertEqualExceptForNewlineEnd("", received)
+            with io.open(file_name) as f:
+                written = f.read()
+            self.assertEqualExceptForNewlineEnd(expected, written)
 
     def assertEqualExceptForNewlineEnd(self, expected, received):  # noqa
         # output written to a file does not seem to have os.linesep
