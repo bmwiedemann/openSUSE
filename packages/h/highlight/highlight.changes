@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 23 22:06:04 UTC 2023 - antoine.belvire@opensuse.org
+
+- Update to version 4.6:
+  * Added  `--service-mode` option to run highlight as long running
+    process (gl#saalen/highlight!140).
+  * Added extras/highlight-service.py as an example for the service
+    mode.
+  * Updated astyle lib to version 3.3.
+
+-------------------------------------------------------------------
 Wed Mar 15 20:58:14 UTC 2023 - antoine.belvire@opensuse.org
 
 - Update to version 4.5:
