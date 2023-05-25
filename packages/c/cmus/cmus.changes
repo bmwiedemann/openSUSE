@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 24 22:46:20 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Add ffmpeg-6-compat.patch
+  See https://github.com/cmus/cmus/pull/1254
+
+-------------------------------------------------------------------
 Fri Jul  8 02:14:45 UTC 2022 - Mia Herkt <mia@0x0.st>
 
 - Update to 2.10.0
