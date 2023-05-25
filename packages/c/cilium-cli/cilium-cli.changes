@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Thu May 25 12:26:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.14.4:
+  * Prepare for v0.14.4 release
+  * connectivity: add property flag fot junit
+  * Makefile: bump Go to v1.20.4 for release target
+  * chore(deps): update docker.io/library/busybox:stable-glibc
+    docker digest to bf30051
+  * docs: Add an example for setting image.override
+  * Add GatewayAPI resources to sysdump
+  * Allow to pass --insecure to curl
+  * upgrade: Check for error before accessing release
+  * connectivity: Split host-netns daemonset into two
+  * connectity: Deploy host netns pods by default
+  * connectivity: Remove --datapath and add --include-unsafe-tests
+  * gh/workflows: Bump timeout in kind.yaml
+  * connectivity: Skip L7 N/S test on < v1.13.3
+  * connectivity: Add WithCiliumVersion
+  * connectivity: Disable flow validation for N/S with KP
+  * connectivity: Fix feature detection of KPR friends
+  * connectivity: Add FlowFilters() method for TestPeer
+  * connectivity: Install podCIDR => nodeIP on non-Cilium nodes
+  * connectivity/check: Add CAP_NET_ADMIN for host-netns ds
+  * check: update tunneling detection logic
+  * check: make (Service)Address() return an IP address
+  * cli: Export Version var to be set externally
+  * ci: Add prometheus enabled in kind config
+  * Add metrics increase validation and a simple test to check
+    metrics on total request
+  * Add metrics validation in tests
+  * Collect metrics in Action
+  * Extract Result from policy.go into its own file
+  * Add metrics collector logic
+  * Add k8s dialer to port foward properly
+  * status: provide additional context for disabled Envoy DaemonSet
+  * readme.md: updated status section with updated envoy output
+  * sysdump: collect cilium envoy daemonset & configmap
+  * sysdump: collect logs from cilium envoy pods
+  * status: add cilium envoy daemonset
+  * ci: fix gke network starvation
+  * helm mode: autodetect service parameters for clustermesh
+  * fix(deps): update module github.com/stretchr/testify to v1.8.3
+  * fix(deps): pin dependencies
+  * helm mode: Add external workloads test coverage
+  * clustermesh enable: Add a flag to set externalWorkloads.enabled
+  * connectivity: Skip IPv6 requests in
+    north-south-loadbalancing-with-l7-policy when running on <
+    1.14.0 Cilium
+  * sysdump: Don't save cilium-etcd-secrets
+  * connectivity: Add GetTest method
+  * connectivity: Move template utils from internal
+  * connectivity: Add WithFinalizer to register test finalizers
+  * connectivity: Expose connectivity test k8s clients
+  * connectivity: Add WithSetupFunc to register setup callbacks
+  * cli: Add hooks and exported NewCiliumCommand
+  * helm mode: Add EKS tunnel mode test coverage
+  * sysdump: Add support for CiliumCIDRGroup CRD
+  * install: Move the logic to unschedule aws-node to preinstall
+  * helm mode: Add EKS test coverage
+
+-------------------------------------------------------------------
 Thu May 18 07:47:00 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.14.3:
