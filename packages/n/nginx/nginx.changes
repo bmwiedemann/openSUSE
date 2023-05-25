@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 23 21:44:57 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+
+- Updated to 1.25.0
+  * https://nginx.org/en/CHANGES
+  * Added experimental HTTP/3 support.
+
+-------------------------------------------------------------------
 Wed Mar 29 18:38:46 UTC 2023 - Илья Индиго <ilya@ilya.cf>
 
 - Updated to 1.23.4

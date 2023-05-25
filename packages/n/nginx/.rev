@@ -984,4 +984,14 @@
     &quot;error_page&quot; directive to redirect errors with code 400.</comment>
     <requestid>1075335</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>f9b9c6bbaab813583d2d3cc253b2183d</srcmd5>
+    <version>1.25.0</version>
+    <time>1685051531</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 1.25.0
+  * https://nginx.org/en/CHANGES
+  * Added experimental HTTP/3 support.</comment>
+    <requestid>1088736</requestid>
+  </revision>
 </revisionlist>
