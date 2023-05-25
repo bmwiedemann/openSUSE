@@ -1,5 +1,5 @@
 diff --git a/cli/tools/run.rs.1 b/cli/tools/run.rs
-index 99312d5..e733306 100644
+index 4805ea7..57bb752 100644
 --- a/cli/tools/run.rs.1
 +++ b/cli/tools/run.rs
 @@ -38,13 +38,6 @@ To grant permissions, set them before the script argument. For example:
@@ -15,4 +15,17 @@ index 99312d5..e733306 100644
 -
    let main_module = cli_options.resolve_main_module()?;
  
-   let permissions = PermissionsContainer::new(Permissions::from_options(
+   maybe_npm_install(&factory).await?;
+diff --git a/cli/args/flags.rs.1 b/cli/args/flags.rs
+index fa28241..d6e2baa 100644
+--- a/cli/args/flags.rs.1
++++ b/cli/args/flags.rs
+@@ -580,8 +580,6 @@ static ENV_VARIABLES_HELP: &str = r#"ENVIRONMENT VARIABLES:
+     DENO_NO_PACKAGE_JSON Disables auto-resolution of package.json
+     DENO_NO_PROMPT       Set to disable permission prompts on access
+                          (alternative to passing --no-prompt on invocation)
+-    DENO_NO_UPDATE_CHECK Set to disable checking if a newer Deno version is
+-                         available
+     DENO_V8_FLAGS        Set V8 command line options
+     DENO_JOBS            Number of parallel workers used for the --parallel
+                          flag with the test subcommand. Defaults to number
