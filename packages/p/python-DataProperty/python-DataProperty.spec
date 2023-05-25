@@ -16,9 +16,9 @@
 #
 
 
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-DataProperty
-Version:        0.55.0
+Version:        0.55.1
 Release:        0
 Summary:        Python library for extract property from data
 License:        MIT
@@ -36,7 +36,7 @@ BuildRequires:  %{python_module mbstrdecoder >= 1.0.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.8.0}
 BuildRequires:  %{python_module pytz >= 2018.9}
-BuildRequires:  %{python_module termcolor}
+BuildRequires:  %{python_module tcolorpy}
 BuildRequires:  %{python_module typepy >= 1.1.0}
 # /SECTION
 %python_subpackages

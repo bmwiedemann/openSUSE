@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 18 14:51:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.55.1
+  * Python 3.11 support
+  * Switches to tcolorpy
+
+-------------------------------------------------------------------
 Thu Jan 26 07:54:17 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Fix tests forcing terminal colors before running tests
