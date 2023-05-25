@@ -109,4 +109,20 @@
 - Disable building the rust frontend.</comment>
     <requestid>1081094</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>175198d96733ea12bcb027d85689f355</srcmd5>
+    <version>13.1.1+git7364</version>
+    <time>1685051519</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to dd36656ada05731c069ecd5b1878380294fb1f3e, git7364.
+  * Includes the RISC-V atomic changes
+- Remove riscv-atomic.patch and riscv-pthread.patch now included
+- Make libstdc++6-devel packages own their directories since they
+  can be installed standalone.  [bsc#1211427]
+
+- Bump to 910735c5d7ce7607384fc1eec4189e90c8ae5c84, git7256.
+  * Includes GCC 13.1 release and first bugfixes
+- Update riscv-atomic.patch from the version committed upstream.</comment>
+    <requestid>1088374</requestid>
+  </revision>
 </revisionlist>

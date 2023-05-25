@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May 22 09:05:30 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Bump to dd36656ada05731c069ecd5b1878380294fb1f3e, git7364.
+  * Includes the RISC-V atomic changes
+- Remove riscv-atomic.patch and riscv-pthread.patch now included
+- Make libstdc++6-devel packages own their directories since they
+  can be installed standalone.  [bsc#1211427]
+
+-------------------------------------------------------------------
+Thu Apr 27 07:29:05 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Bump to 910735c5d7ce7607384fc1eec4189e90c8ae5c84, git7256.
+  * Includes GCC 13.1 release and first bugfixes
+- Update riscv-atomic.patch from the version committed upstream.
+
+-------------------------------------------------------------------
 Fri Apr 21 06:46:36 UTC 2023 - Richard Biener <rguenther@suse.com>
 
 - Bump to f980561c60b0446cc427595198d7f3f4f90e0924, git7231.
