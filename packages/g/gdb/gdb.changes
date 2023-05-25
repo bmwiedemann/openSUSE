@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon May 22 21:01:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- disable werror as a workaround for deprecation warnings with
+  python 3.11 (bsc#1211052) 
+
+-------------------------------------------------------------------
+Fri Apr  7 07:48:58 UTC 2023 - Tom de Vries <tdevries@suse.com>
+
+- Revert to singlespec multibuild.
+
+-------------------------------------------------------------------
+Tue Apr  4 13:27:03 UTC 2023 - Tom de Vries <tdevries@suse.com>
+
+- Add multispec _multibuild.
+
+-------------------------------------------------------------------
+Tue Apr  4 11:29:35 UTC 2023 - Tom de Vries <tdevries@suse.com>
+
+- Don't use multibuild.
+
+-------------------------------------------------------------------
 Tue Apr  4 08:47:10 UTC 2023 - Tom de Vries <tdevries@suse.com>
 
 - Fix license, again (bsc#1210081).

@@ -978,6 +978,7 @@ EXTRA_TARGETS="$EXTRA_TARGETS%(printf ,%%s-elf %{elf_extra_target_list})"
 EXTRA_TARGETS=
 %endif
 
+# Reenable enable-werror on tumbleweed when upgrading to 13.1 (bsc#1211052)
 ../configure							\
 	--prefix=%{_prefix}					\
 	--libdir=%{_libdir}					\
@@ -992,7 +993,7 @@ EXTRA_TARGETS=
 %ifnarch %{ix86} alpha ia64 ppc s390 s390x x86_64 ppc64 ppc64le sparc sparcv9 sparc64 riscv64 aarch64
 	--disable-werror					\
 %else
-%if %{suse_version} <= 1110
+%if %{suse_version} <= 1110 || %{suse_version} > 1500
 	--disable-werror					\
 %else
 	--enable-werror						\

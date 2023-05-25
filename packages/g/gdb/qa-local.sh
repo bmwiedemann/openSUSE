@@ -138,8 +138,8 @@ case "$n" in
 		    --trust-all-projects \
 		    --no-service \
 		    -k $pkgs/$c.$arch \
-		    -M testsuite \
 		    $c $arch \
+		    -M testsuite \
 		    > $logs/$n/LOG.$c.$arch \
 		    2>&1
 		if [ $? -eq 0 ]; then
