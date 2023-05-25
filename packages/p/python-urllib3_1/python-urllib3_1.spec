@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-urllib3_1%{psuffix}
-Version:        1.26.15
+Version:        1.26.16
 Release:        0
 Summary:        HTTP library with thread-safe connection pooling, file post, and more
 License:        MIT
@@ -36,8 +36,6 @@ Source:         https://files.pythonhosted.org/packages/source/u/urllib3/urllib3
 # PATCH-FIX-UPSTREAM remove_mock.patch gh#urllib3/urllib3#2108 mcepl@suse.com
 # remove dependency on the external module mock
 Patch0:         remove_mock.patch
-# PATCH-FIX-OPENSUSE New Python versions fixed behaviour of ssl.shared_ciphers
-Patch1:         support-fixed-ssl-shared_ciphers.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
