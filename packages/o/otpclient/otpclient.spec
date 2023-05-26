@@ -18,7 +18,7 @@
 
 %define uclname OTPClient
 Name:           otpclient
-Version:        3.1.6
+Version:        3.1.7
 Release:        0
 Summary:        Simple GTK+ client for managing TOTP and HOTP
 License:        GPL-3.0-or-later
@@ -31,20 +31,19 @@ BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  libcotp-devel >= 2.0.0
-BuildRequires:  libgcrypt-devel >= 1.6.0
-BuildRequires:  libjansson-devel >= 2.10.0
-BuildRequires:  libpng16-devel >= 1.6.0
+BuildRequires:  libgcrypt-devel >= 1.8.0
+BuildRequires:  libjansson-devel >= 2.12.0
+BuildRequires:  libpng16-devel >= 1.6.30
 BuildRequires:  libprotobuf-c-devel >= 1.3.0
 BuildRequires:  libsecret-devel >= 0.20
 BuildRequires:  libuuid-devel >= 2.34.0
 BuildRequires:  libzbar-devel >= 0.20.0
-BuildRequires:  libzip-devel >= 1.1.0
 BuildRequires:  pkgconfig
 BuildRequires:  protobuf-devel >= 3.6.0
 BuildRequires:  qrencode-devel >= 4.0.2
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0) >= 2.64
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24
 
 %description
 Highly secure and easy to use GTK+ software for two-factor authentication

@@ -286,4 +286,19 @@
 </comment>
     <requestid>1073715</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b0518c409cc2501cd0e09af7e5e9531d</srcmd5>
+    <version>3.1.7</version>
+    <time>1685124941</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.7:
+  * Add new Database info dialog (Hamburger menu -&gt; Database info)
+  * Fix crash when no row is selected (#295)
+  * Fix UI when creating/changing a database
+  * Multiple fixes when creating a new database
+  * Use current db folder when creating/changing database
+  * Fix memory leak in case of error when opening the settings dialog 
+</comment>
+    <requestid>1089142</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 26 06:41:32 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.1.7:
+  * Add new Database info dialog (Hamburger menu -> Database info)
+  * Fix crash when no row is selected (#295)
+  * Fix UI when creating/changing a database
+  * Multiple fixes when creating a new database
+  * Use current db folder when creating/changing database
+  * Fix memory leak in case of error when opening the settings dialog 
+
+-------------------------------------------------------------------
 Wed Mar 22 08:40:52 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.1.6:
