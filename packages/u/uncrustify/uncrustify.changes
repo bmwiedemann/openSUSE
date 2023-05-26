@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 24 18:58:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.77.1:
+  * Added sp_cmt_cpp_pvs                       Jan 28 2023
+  * Added sp_inside_rparen                     Feb 15 2023
+  * Added sp_func_call_user_inside_rparen      Feb 15 2023
+  * Added sp_inside_rparens                    Feb 15 2023
+  * Added sp_cmt_cpp_lint                      Mar 18 2023
+  * Added sp_qualifier_ptr_star_trailing       Apr 13 2023
+  * Added sp_qualifier_unnamed_ptr_star        Apr 13 2023
+  * Added sp_qualifier_ptr_star_func           Apr 13 2023
+  * Added mod_add_force_c_closebrace_comment   Apr 19 2023
+
+-------------------------------------------------------------------
 Tue Dec  6 14:56:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.76.0:
