@@ -329,4 +329,12 @@
     <comment>Require the mbedtls-devel version to be lower than 3</comment>
     <requestid>1084772</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>81763c35f5f08351b6bf32fd48b3fe4e</srcmd5>
+    <version>4.0.3</version>
+    <time>1685141468</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.0.3</comment>
+    <requestid>1089238</requestid>
+  </revision>
 </revisionlist>

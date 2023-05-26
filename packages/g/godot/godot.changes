@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon May 22 12:00:00 UTC 2023 - cunix@mail.de
+
+- Update to 4.0.3
+
+  Added:
+  * Info label to TileMap editor
+  * Properly remember snapping options per-project
+  * Remember directory when installing templates file
+  * Allow entering named colors in ColorPicker's hex field
+  * Expose NavigationAgent path postprocessing
+    and pathfinding algorithm options
+  * Expose viewports render target RID
+  * Allow creation of rendering buffers at any time
+
+  Changed:
+  * Make acos and asin safe
+  * Prevent off-screen controls in editor
+  * Validate renderer selection in project manager
+    and expose default renderer setting as an enum
+  * Close built-in shaders when closing scene
+  * Preserve scene unique names when saving branch as scene
+  * gltf: Remove obsolete hack to embed gltf textures in advanced import
+  * Expose more compression formats in Image and fix compress check
+  * Ensure WindowData minimized/maximized are mutually exclusive
+
+  Fixed:
+  * AudioStreamPlayer2D crash when PhysicsServer2D runs on thread
+  * Invalid global position when read outside tree
+  * Prevent errors when using ViewportTexture
+  * Initialize editor values on first launch
+  * "line_spacing" in code editor will not take effect
+  * Missing member type check when resolving "extends"
+  * Multi-line string highlighting with single quotes
+  * Don't fail when freed object is returned
+  * NavigationObstacles not being added to avoidance simulation
+  * Crashes trying to use TLS when not available
+
+  And more:
+  https://downloads.tuxfamily.org/godotengine/4.0.3/Godot_v4.0.3-stable_changelog_chrono.txt
+
+-------------------------------------------------------------------
 Tue May  2 12:29:33 UTC 2023 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Require the mbedtls-devel version to be lower than 3

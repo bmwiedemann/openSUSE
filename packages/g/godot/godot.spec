@@ -24,7 +24,7 @@
 %define ca_bundle %{_localstatedir}/lib/ca-certificates/ca-bundle.pem
 
 Name:           godot
-Version:        4.0.2
+Version:        4.0.3
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -130,11 +130,11 @@ Provides:       bundled(JetBrainsMono_Regular)
 Provides:       bundled(RVO2-3D)
 Provides:       bundled(Tangent_Space_Normal_Maps)
 Provides:       bundled(amd-fsr) = 1.0.2
-Provides:       bundled(astcenc) = 4.3.0
-Provides:       bundled(basis_universal)
+Provides:       bundled(astcenc) = 4.4.0
+Provides:       bundled(basis_universal) = 1.16.4
 Provides:       bundled(brotli)
 Provides:       bundled(cvtt)
-Provides:       bundled(doctest) = 2.4.9
+Provides:       bundled(doctest) = 2.4.11
 Provides:       bundled(etcpak) = 1.0
 Provides:       bundled(glad) = 2.0.2
 Provides:       bundled(google-droid-fonts)
@@ -155,7 +155,7 @@ Provides:       bundled(pvrtccompressor)
 Provides:       bundled(smaz)
 Provides:       bundled(spirv-reflect) = sdk-1.3.231.1
 Provides:       bundled(stb)
-Provides:       bundled(thorvg) = 0.8.3
+Provides:       bundled(thorvg) = 0.9.0
 Provides:       bundled(tinyexr) = 1.0.1
 Provides:       bundled(vhacd)
 Provides:       bundled(volk) = sdk-1.3.231.1
@@ -186,7 +186,7 @@ Provides:       bundled(libpng) = 1.6.38
 Provides:       bundled(libzstd)
 Provides:       bundled(zlib)
 %if 0%{?sle_version} < 150200
-Provides:       bundled(mbedtls) = 2.18.2
+Provides:       bundled(mbedtls) = 2.28.3
 %endif
 %if !0%{?is_opensuse}
 # SLES seems not to have miniupnpc and wslay
