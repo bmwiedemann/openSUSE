@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 25 06:24:03 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.28.5:
+  * Fill in the missing coverage, and ensure it runs in CI.
+  * Add pip-audit to CI.
+  * Explicitly ensure we catch calling .anchor on a nonexistent
+    resource.
+
+-------------------------------------------------------------------
 Wed May 24 05:01:46 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.28.4:
