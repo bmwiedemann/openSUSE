@@ -16,12 +16,19 @@
 #
 
 
+%{?sle15_python_module_pythons}
 %if 0%{?suse_version} < 1550
 # Leap15, SLES15
-%define pythons python310
+%if %pythons == "python310"
 %define ansible_python python310
 %define ansible_python_executable python3.10
 %define ansible_python_sitelib %python310_sitelib
+%endif
+%if %pythons == "python311"
+%define ansible_python python311
+%define ansible_python_executable python3.11
+%define ansible_python_sitelib %python311_sitelib
+%endif
 %else
 # Tumbleweed
 %define pythons python3
@@ -31,26 +38,44 @@
 %endif
 
 Name:           ansible-builder
-Version:        1.2.0
+Version:        3.0.0
 Release:        0
 Summary:        An Ansible execution environment builder
 License:        Apache-2.0
 URL:            https://github.com/ansible/ansible-builder
 Source:         https://files.pythonhosted.org/packages/source/a/ansible-builder/ansible-builder-%{version}.tar.gz
 BuildArch:      noarch
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{ansible_python}-base >= 3.8
+# https://github.com/ansible/ansible-builder/blob/devel/setup.cfg#L41
+BuildRequires:  %{ansible_python}-base >= 3.9
+BuildRequires:  %{ansible_python}-pip
 BuildRequires:  %{ansible_python}-setuptools
-BuildRequires:  %{ansible_python}-pbr
-# SECTION test requirements
-BuildRequires:  %{ansible_python}-bindep
+BuildRequires:  %{ansible_python}-setuptools_scm
+BuildRequires:  %{ansible_python}-wheel
+BuildRequires:  ansible-core
+BuildRequires:  python-rpm-macros
+# https://github.com/ansible/ansible-builder/blob/devel/requirements.txt
 BuildRequires:  %{ansible_python}-PyYAML
+BuildRequires:  %{ansible_python}-bindep
+BuildRequires:  %{ansible_python}-jsonschema
+BuildRequires:  %{ansible_python}-pbr
 BuildRequires:  %{ansible_python}-requirements-parser
+#
+# Tests require podman, but also require connectivity to pull container images
+# hence we do not enable this dependency
+# BuildRequires:  podman
+#
+# SECTION test requirements
+# https://github.com/ansible/ansible-builder/blob/devel/test/requirements.txt
+BuildRequires:  %{ansible_python}-pytest
+BuildRequires:  %{ansible_python}-pytest-mock
+BuildRequires:  %{ansible_python}-pytest-xdist
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python3-bindep
-Requires:       python3-PyYAML
-Requires:       python3-requirements-parser
+Requires:       %{ansible_python}-PyYAML
+Requires:       %{ansible_python}-bindep
+Requires:       %{ansible_python}-jsonschema
+Requires:       %{ansible_python}-requirements-parser
+Requires:       (podman or docker)
 
 %description
 Ansible Builder is a tool that automates the process of
@@ -65,17 +90,35 @@ https://ansible-builder.readthedocs.io/en/latest/
 %setup -q -n ansible-builder-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+%python_expand sed -i "1{s/env bash/bash/;}" %{buildroot}%{ansible_python_sitelib}/ansible_builder/_target_scripts/entrypoint
+%python_expand head -n 1 %{buildroot}%{ansible_python_sitelib}/ansible_builder/_target_scripts/entrypoint
 %fdupes %{buildroot}%{ansible_python_sitelib}
+
+%check
+# disable coverage tests
+sed -i '/cov/d' pytest.ini
+# disable color output
+sed -i '/color/d' pytest.ini
+# add %{buildroot}%{_bindir} to PATH, so the executable is found
+export PATH=%{buildroot}%{_bindir}:$PATH
+# checks ignored, as they require podman
+# https://github.com/ansible/ansible-builder/issues/534
+IGNORED_CHECKS="test_v3_pre_post_commands"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_v3_complete"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_ansible_check_is_skipped"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_missing_ansible"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_missing_runner"
+%pytest -k "not (${IGNORED_CHECKS})"
 
 %files
 %doc README.md
 %license LICENSE.md
 %{_bindir}/ansible-builder
 %{ansible_python_sitelib}/ansible_builder
-%{ansible_python_sitelib}/ansible_builder-*-info
+%{ansible_python_sitelib}/ansible_builder-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Fri May 19 05:38:45 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- fix version by BuildRequire for setuptools_scm instead of
+  hardcoding the version
+
+-------------------------------------------------------------------
+Thu May 18 08:31:38 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- fix 'ansible-builder --version' not reporting the right version
+
+-------------------------------------------------------------------
+Mon May 15 20:12:30 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- disable color in checks
+
+-------------------------------------------------------------------
+Mon May 15 19:32:13 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- modify %if-condition to allow building for python3.10 or
+  python3.11 on SLES15
+
+-------------------------------------------------------------------
+Mon May 15 18:31:28 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 3.0.0:
+  * A major evolution of Ansible Builder's Execution Environment
+    definition format, with overall themes of increased flexibility
+    and minimizing required manual alterations of generated build
+    contexts. New features of the version 3 Execution Environment
+    definition include:
+    - Use of vanilla RHEL-ish container images instead of
+      specially-crafted base and builder images (tested against
+      Fedora, CentOS Stream 8/9, UBI9 and others).
+    - Injection of custom build steps before and after every build
+      stage.
+    - Copying arbitrary files from the builder host into the
+      generated container build context (which can then be copied
+      into intermediate/final container images as needed with
+      custom build steps).
+    - Declarative bootstrapping of Python, Ansible Core, and
+      Ansible Runner (in addition to roles/collections, of course).
+    - Inline definition of Python/bindep/role/collection
+      requirements in Execution Environment YAML (external files
+      also still supported).
+    - Customization of final container initialization ENTRYPOINT,
+      USER, and CMD (with verified automatic defaults).
+    - Dynamic builder image from user-specified base image-
+      specifying a builder image is no longer required (or
+      allowed).
+    - Faster builds due to linear stage inheritance and removal of
+      forced OS package upgrades.
+    - Numerous bugfixes and minor enhancements... see documentation
+      for examples.
+  * Breaking Changes
+    - The `--squash` argument to `build` now defaults to `off` for
+      all container runtimes. This allows build caches to function
+      by default for `podman` during development and testing, at
+      the cost of more intermediate layers in the resultant image.
+      Manually specifying `--squash new` is suggested for CI and
+      production builds when using `podman` to minimize the size
+      and number of intermediate layers.
+    - Forced OS package manager upgrades are no longer performed in
+      individual build stages by default. If a full OS package
+      upgrade is desired, add a new build directive to
+      `prepend_base` under `additional_build_steps` (e.g., `- RUN
+      dnf upgrade -y`) to upgrade packages on the base image. The
+      upgraded packages will be reflected in all subsequent build
+      stages.
+
+-------------------------------------------------------------------
+Fri May  5 07:14:56 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- change python version on Leap15/SLES15 to python3.11 to use the
+  new stack supported by SUSE
+
+-------------------------------------------------------------------
 Thu Mar 16 14:06:46 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - new package ansible-builder for building Ansible execution environments

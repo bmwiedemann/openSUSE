@@ -7,4 +7,12 @@
     <comment>new package ansible-builder for building Ansible execution environments</comment>
     <requestid>1072435</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0d4b76bba525346a14264cf4bcb386ff</srcmd5>
+    <version>3.0.0</version>
+    <time>1685124942</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1089139</requestid>
+  </revision>
 </revisionlist>
