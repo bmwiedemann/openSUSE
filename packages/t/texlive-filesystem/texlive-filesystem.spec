@@ -24,9 +24,9 @@
 %define texlive_version  2023
 %define texlive_previous 2022
 %define texlive_release  20230311
-%define texlive_noarch   201
+%define texlive_noarch   208
 %define texlive_source   texlive-20230311-source
-%define biber_version    2.18
+%define biber_version    2.19
 
 %define __perl_requires		%{nil}
 %define __os_install_post	/usr/lib/rpm/brp-compress \\\
@@ -41,21 +41,34 @@ Summary:        Basic file system of TeX Live
 License:        Apache-2.0 AND Artistic-1.0 AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND LPPL-1.3c AND LPPL-1.0 AND MIT AND BSD-3-Clause AND SUSE-TeX AND SUSE-Public-Domain
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+%if 0%{?suse_version} <= 1550
 Requires:       cron
+%else
+Requires:       rpm_macro(_unitdir)
+%endif
 Requires:       python3
 Requires(pre):  user(mktex)
 Requires(pre):  group(mktex)
 Requires(pre):  /usr/bin/stat
+%if 0%{?suse_version} > 1550
+Requires(pre):  rpm_macro(service_add_pre)
+%endif
 Requires(post): %fillup_prereq
 Requires(post): permissions
 Requires(post): /usr/bin/mktemp
 Requires(post): /usr/bin/mv
 Requires(post): /usr/bin/setpriv
+%if 0%{?suse_version} > 1550
+Requires(pre):  rpm_macro(service_add_post)
+%endif
 Requires(postun):coreutils
 Requires(postun):ed
 Requires(postun):findutils
 Requires(postun):grep
 Requires(postun):sed
+%if 0%{?suse_version} > 1550
+Requires(pre):  rpm_macro(service_del_postun)
+%endif
 Requires(pre):  /usr/bin/perl
 Requires(pre):  /usr/bin/clear
 Requires(pre):  /usr/bin/dialog
@@ -64,6 +77,9 @@ Requires(pre):  ed
 Requires(pre):  findutils
 Requires(pre):  grep
 Requires(pre):  sed
+%if 0%{?suse_version} > 1550
+Requires(preun):rpm_macro(service_del_preun)
+%endif
 Requires(posttrans):coreutils
 Requires(posttrans):ed
 Requires(posttrans):findutils
@@ -87,6 +103,9 @@ Source14:       texlive.csh
 Source15:       fc-texlive.conf
 Source16:       fc-t1-texlive.conf
 Source17:       fc-truetype-texlive.conf
+Source18:       texlive.timer
+Source19:       texlive.service
+Source20:       texlive-initial.service
 Source30:       texlive-filesystem-rpmlintrc
 Source31:       dot.dvipsrc
 Source42:       zypplugin.in
@@ -22762,9 +22781,16 @@ popd
     install -m 0644 %{S:10} %{buildroot}%{_fillupdir}/sysconfig.texlive
 
     install -m 0755 %{S:11} %{buildroot}%{_texmfdistdir}/texconfig/update
-
+%if 0%{?suse_version} > 1550
+    install -m 0755 %{S:12} %{buildroot}%{_texmfdistdir}/texconfig/daily
+    mkdir -p %{buildroot}%{_unitdir}
+    install -m 0644 %{S:18} %{buildroot}%{_unitdir}/texlive.timer
+    install -m 0644 %{S:19} %{buildroot}%{_unitdir}/texlive.service
+    install -m 0644 %{S:20} %{buildroot}%{_unitdir}/texlive-initial.service
+%else
     mkdir -p %{buildroot}%{_sysconfdir}/cron.daily
     install -m 0755 %{S:12} %{buildroot}%{_sysconfdir}/cron.daily/suse-texlive
+%endif
 
 %if %{defined verify_permissions}
 %verifyscript
@@ -22798,6 +22824,9 @@ for dir in	%{_texmfconfdir}	\
 do
     rm -f ${dir}/ls-R
 done
+%if 0%{?suse_version} > 1550
+%service_add_pre texlive.timer texlive.service texlive-initial.service
+%endif
 
 %post
 %fillup_only -n texlive
@@ -22837,12 +22866,23 @@ done
 %set_permissions %{_fontcache}/source/
 %set_permissions %{_fontcache}/tfm/
 %endif
+%if 0%{?suse_version} > 1550
+%service_add_post texlive.timer texlive.service texlive-initial.service
+%endif
 mkdir -p /var/run/texlive
 > /var/run/texlive/run-mktexlsr
 > /var/run/texlive/run-update
 test $error = 0 || exit 1
 
+%preun
+%if 0%{?suse_version} > 1550
+%service_del_preun texlive.timer texlive.service texlive-initial.service
+%endif
+
 %postun
+%if 0%{?suse_version} > 1550
+%service_del_postun texlive.timer texlive.service texlive-initial.service
+%endif
 if test $1 = 1; then
     mkdir -p /var/run/texlive
     > /var/run/texlive/run-mktexlsr
@@ -22858,7 +22898,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files
 %defattr(-,root,root,755)
+%if 0%{?suse_version} <= 1550
 %config %{_sysconfdir}/cron.daily/suse-texlive
+%endif
 %config %{_sysconfdir}/permissions.d/texlive*
 %config %{_sysconfdir}/profile.d/texlive*
 %config %{_sysconfdir}/skel/.dvipsrc
@@ -22916,6 +22958,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %dir %{_texmfdistdir}/xdvi/pixmap
 %dir %{_texmfdistdir}/texconfig
 %attr(0755,root,root) %{_texmfdistdir}/texconfig/update
+%if 0%{?suse_version} > 1550
+%attr(0755,root,root) %{_texmfdistdir}/texconfig/daily
+%{_unitdir}/texlive.timer
+%{_unitdir}/texlive.service
+%{_unitdir}/texlive-initial.service
+%endif
 %if %{with zypper_posttrans}
 %attr(0755,root,root) %{_texmfdistdir}/texconfig/zypper.py
 %endif

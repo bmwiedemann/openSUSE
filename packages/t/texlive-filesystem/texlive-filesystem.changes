@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu May 25 10:58:46 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Switch over to systemd to a) replace cron usage with timer
+  and b) to make use the transactional update support of the
+  update script (boo#1211613) 
+
+-------------------------------------------------------------------
+Wed May 24 14:28:07 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Better support of transactional updates (boo#1211613)
+
+-------------------------------------------------------------------
+Tue May 23 14:12:52 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Enable the force mode of update script to handle broken
+  /var/lib and /var/cache texmf entries (boo#1211613) 
+
+-------------------------------------------------------------------
 Mon May 15 13:03:04 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - Fix syntax error in update script

@@ -553,4 +553,19 @@
     <comment>- Fix syntax error in update script (forwarded request 1087234 from Andreas_Schwab)</comment>
     <requestid>1087240</requestid>
   </revision>
+  <revision rev="55" vrev="58">
+    <srcmd5>d1804ad7214fa44331572f4a943021fb</srcmd5>
+    <version>unknown</version>
+    <time>1685124908</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch over to systemd to a) replace cron usage with timer
+  and b) to make use the transactional update support of the
+  update script (boo#1211613) 
+
+- Better support of transactional updates (boo#1211613)
+
+- Enable the force mode of update script to handle broken
+  /var/lib and /var/cache texmf entries (boo#1211613)</comment>
+    <requestid>1089013</requestid>
+  </revision>
 </revisionlist>

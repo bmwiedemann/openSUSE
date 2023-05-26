@@ -1,0 +1,37 @@
+[Unit]
+Description=Initiate TeXLive Data Bases and Formats
+Documentation=info:kpathsea
+DefaultDependencies=no
+After=local-fs.target
+Before=sysinit.target shutdown.target
+Conflicts=shutdown.target
+RequiresMountsFor=/var/cache/texmf
+RequiresMountsFor=/var/lib/texmf
+ConditionPathExists=/etc/texmf/TRANSACTIONAL_UPDATE
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+# Otherwise the update script can not remove
+# our tag file /etc/texmf/TRANSACTIONAL_UPDATE
+User=root
+Group=mktex
+UMask=0002
+# Note that /etc/texmf/ls-R should be rw
+ProtectSystem=true
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+LockPersonality=true
+RestrictRealtime=true
+
+ExecStart=/usr/share/texmf/texconfig/update
+
+[Install]
+WantedBy=sysinit.target

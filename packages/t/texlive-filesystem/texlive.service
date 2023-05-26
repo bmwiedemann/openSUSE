@@ -1,0 +1,31 @@
+[Unit]
+Description=Daily TeXLive regeneration
+Documentation=info:kpathsea
+ConditionACPower=true
+ConditionPathExists=/var/cache/texmf
+ConditionPathExists=/var/lib/texmf
+
+[Service]
+Type=oneshot
+# Otherwise we can not change ownerships below /var/cache/texmf
+User=root
+Group=mktex
+UMask=0002
+Nice=19
+IOSchedulingClass=idle
+IOSchedulingPriority=7
+# Note that /etc/texmf/ls-R should be rw
+ProtectSystem=true
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+LockPersonality=true
+RestrictRealtime=true
+
+ExecStart=/usr/share/texmf/texconfig/daily

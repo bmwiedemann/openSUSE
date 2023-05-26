@@ -19,13 +19,43 @@
 # Author: Werner Fink, 1997-2012,2016
 #
 
+if test -n "${TRANSACTIONAL_UPDATE}"
+then
+    umask 022
+    mkdir -p /etc/texmf
+    > /etc/texmf/TRANSACTIONAL_UPDATE
+    rm -rf /var/run/texlive || :
+    find /var/cache/texmf /var/lib/texmf -type f -exec rm -f '{}' \+
+    exit 0
+elif test -e /etc/texmf/TRANSACTIONAL_UPDATE
+then
+    set -- force
+    rm -f /etc/texmf/TRANSACTIONAL_UPDATE || :
+fi
+
 if test -n "$1" -a "$1" = force; then
+    umask 022
     mkdir -p /var/run/texlive
     for tag in run-mktexlsr run-hyphen \
 	       run-fmtutil.language run-fmtutil \
 	       run-fmtutil.refresh run-update
     do
 	> /var/run/texlive/$tag
+    done
+    if ! id mktex > /dev/null 2>&1; then
+	useradd -U -d /var/cache/texmf/fonts -c "System user for mktex" -s "/usr/sbin/nologin" mktex
+    fi
+    test -e /var/cache/texmf/fonts/ls-R || {
+	echo '% ls-R -- filename database for kpathsea; do not change this line.' > /var/cache/texmf/fonts/ls-R
+	chmod 0664 /var/cache/texmf/fonts/ls-R
+	chown mktex:mktex /var/cache/texmf/fonts/ls-R
+    }
+    for lsr in /var/lib/texmf/ls-R /var/lib/texmf/dist/ls-R /var/lib/texmf/main/ls-R
+    do
+	test -e $lsr && continue
+	echo '% ls-R -- filename database for kpathsea; do not change this line.' > $lsr
+	chmod 0664 $lsr
+	chgrp mktex $lsr
     done
 fi
 

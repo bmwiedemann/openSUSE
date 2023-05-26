@@ -22,6 +22,13 @@ OLDIFS=$IFS; IFS=':;'
 VARTEXFONTS="$(kpsewhich --expand-var '$VARTEXFONTS' 2> /dev/null)"
 IFS=$OLDIFS
 
+if test "$(id -ur)" = 0
+then
+    groups=--init-groups
+else
+    groups=--keep-groups
+fi
+
 if test -n "$VARTEXFONTS" -a "$HAVE_MKTEX_MEMBERS" = yes
 then
     IFS=:
@@ -36,9 +43,9 @@ then
 	for i in $(seq 3 $u)
 	do
 	    find -P $p \( \( -type f -and -not -type l \) -and -user ${users[$i]} \) -print0 | \
-	    xargs -r -L100 -0 -- setpriv --reuid ${users[$i]} --regid mktex --init-groups chmod g+rw
+	    xargs -r -L100 -0 -- setpriv --reuid ${users[$i]} --regid mktex $groups chmod g+rw
 	    find -P $p \( \( -type d -and -not -type l \) -and -user ${users[$i]} \) -print0 | \
-	    xargs -r -L100 -0 -- setpriv --reuid ${users[$i]} --regid mktex --init-groups chmod g+rwsx
+	    xargs -r -L100 -0 -- setpriv --reuid ${users[$i]} --regid mktex $groups chmod g+rwsx
 	done
     done
     unset i u
@@ -51,7 +58,7 @@ then
 	test -d $p/pk		&& find -P $p/pk	\( -not -type d -and -atime +20 \) -print0
 	test -d $p/tfm		&& find -P $p/tfm	\( -not -type d -and -atime +60 \) -print0
 	test -d $p/source	&& find -P $p/source	\( -not -type d -and -atime +60 \) -print0
-    done > >(exec -a xargs xargs -r -L100 -0 -- setpriv --reuid mktex --regid mktex --init-groups rm -f)
+    done > >(exec -a xargs xargs -r -L100 -0 -- setpriv --reuid mktex --regid mktex $groups rm -f)
 fi
 if test -n "$VARTEXFONTS"
 then
@@ -61,11 +68,11 @@ then
 	test -d $p/tfm		&& find -P $p/tfm	\( -not -type d -and -not -name '*.tfm' \) -print0
 	test -d $p/source	&& find -P $p/source	\( -not -type d -and -not -name '*.mf'  \) -print0
 	test -d $p		&& find -P $p		\( -not -type d -and -path '*/[^[:alnum:]]*' \) -print0
-    done > >(exec -a xargs xargs -r -L100 -0 -- setpriv --reuid mktex --regid mktex --init-groups rm -vf)
+    done > >(exec -a xargs xargs -r -L100 -0 -- setpriv --reuid mktex --regid mktex $groups rm -vf)
     for p in $VARTEXFONTS
     do
 	test -d $p && find -P $p -depth \( -type d -and -path '*/[^[:alnum:]]*' \) -print0
-    done > >(exec -a xargs xargs -r -L100 -0 -- setpriv --reuid mktex --regid mktex --init-groups rm -vfr)
+    done > >(exec -a xargs xargs -r -L100 -0 -- setpriv --reuid mktex --regid mktex $groups rm -vfr)
 fi
 
 #
