@@ -34,9 +34,8 @@
 # astropy not supported for python < 3.7
 %define skip_python2  1
 %define skip_python36 1
-
 Name:           %{pname}%{?psuffix}
-Version:        4.0.0
+Version:        4.1.3
 Release:        0
 Summary:        LSC Algorithm Inference Library
 License:        GPL-2.0-or-later

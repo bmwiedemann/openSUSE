@@ -1,8 +1,8 @@
-Index: lalinference-1.11.7/lib/distance_integrator.c
+Index: lalinference-4.1.3/lib/distance_integrator.c
 ===================================================================
---- lalinference-1.11.7.orig/lib/distance_integrator.c
-+++ lalinference-1.11.7/lib/distance_integrator.c
-@@ -248,7 +248,7 @@ double log_radial_integral(double r1, do
+--- lalinference-4.1.3.orig/lib/distance_integrator.c
++++ lalinference-4.1.3/lib/distance_integrator.c
+@@ -246,7 +246,7 @@ double log_radial_integral(double r1, do
  			abstol*=2;
  			break;
  		case GSL_EMAXITER:
