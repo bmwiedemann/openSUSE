@@ -21,11 +21,11 @@
 # python2 not supported by upstream
 %define skip_python2 1
 
-%define shlib lib%{name}6
+%define shlib lib%{name}8
 # octave >= 6 not supported
 %bcond_with octave
 Name:           lalburst
-Version:        1.6.0
+Version:        2.0.1
 Release:        0
 Summary:        LSC Algorithm Burst Library
 License:        GPL-2.0-or-later
