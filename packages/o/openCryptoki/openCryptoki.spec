@@ -26,20 +26,19 @@
 %define oc_cvs_tag opencryptoki
 
 Name:           openCryptoki
-Version:        3.20.0
+Version:        3.21.0
 Release:        0
 Summary:        An Implementation of PKCS#11 (Cryptoki) v2.11 for IBM Cryptographic Hardware
 License:        CPL-1.0
 Group:          Productivity/Security
 URL:            https://github.com/opencryptoki/opencryptoki
-# Source:         https://github.com/opencryptoki/%{oc_cvs_tag}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source:         https://github.com/opencryptoki/%{oc_cvs_tag}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        openCryptoki.pkcsslotd
 Source2:        openCryptoki-TFAQ.html
 Source3:        openCryptoki-rpmlintrc
-# Patch 1 is needed because group pkcs11 doesn't exist in the build environment
+# Patch 0 is needed because group pkcs11 doesn't exist in the build environment
 # and because we don't want(?) various file and directory permissions to be 0700.
-Patch001:       ocki-3.20-remove-make-install-chgrp.patch
+Patch000:       ocki-3.21-remove-make-install-chgrp.patch
 #
 #
 BuildRequires:  bison
@@ -56,6 +55,8 @@ BuildRequires:  trousers-devel
 BuildRequires:  pkgconfig(systemd)
 Requires(pre):  %{_sbindir}/groupadd
 Requires(pre):  %{_sbindir}/usermod
+###
+BuildRequires:  libcap-devel
 
 # IBM maintains openCryptoki on these architectures:
 ExclusiveArch:  %{openCryptoki_32bit_arch} %{openCryptoki_64bit_arch}
@@ -130,7 +131,7 @@ Cryptographic Accelerator (FC 4960 on pSeries).
 
 %prep
 # setup -q -n %{oc_cvs_tag}-%{version}
-%autosetup -p 1 -n %{oc_cvs_tag}-%{version}
+%autosetup -p 0 -n %{oc_cvs_tag}-%{version}
 
 cp %{SOURCE2} .
 
@@ -235,8 +236,8 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
   # configuration directory
 %dir %{_sysconfdir}/opencryptoki
 %config %{_sysconfdir}/opencryptoki/opencryptoki.conf
-%config %attr(640,root,pkcs11) %{_sysconfdir}/opencryptoki/strength.conf
-%config %attr(640,root,pkcs11) %{_sysconfdir}/opencryptoki/p11sak_defined_attrs.conf
+%config %attr(640,root,%{pkcs_group}) %{_sysconfdir}/opencryptoki/strength.conf
+%config %attr(640,root,%{pkcs_group}) %{_sysconfdir}/opencryptoki/p11sak_defined_attrs.conf
 %ifarch s390 s390x
 %config %{_sysconfdir}/opencryptoki/ccatok.conf
 %config %{_sysconfdir}/opencryptoki/ep11cpfilter.conf
@@ -260,22 +261,22 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
 %dir %{_libdir}/opencryptoki
 %dir %{_libdir}/opencryptoki/stdll
   # State and lock directories
-%dir %attr(755,root,pkcs11) %{_localstatedir}/lib/opencryptoki
+%dir %attr(755,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki
 %ifarch s390 s390x
-%dir %attr(770,root,pkcs11) %{_localstatedir}/lib/opencryptoki/ccatok
-%dir %attr(770,root,pkcs11) %{_localstatedir}/lib/opencryptoki/ccatok/TOK_OBJ
+%dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki/ccatok
+%dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki/ccatok/TOK_OBJ
 %endif
-%dir %attr(770,root,pkcs11) %{_localstatedir}/lib/opencryptoki/swtok
-%dir %attr(770,root,pkcs11) %{_localstatedir}/lib/opencryptoki/swtok/TOK_OBJ
-%dir %attr(770,root,pkcs11) %{_localstatedir}/lib/opencryptoki/tpm
-%dir %attr(770,root,pkcs11) %{_localstatedir}/lib/opencryptoki/icsf
+%dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki/swtok
+%dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki/swtok/TOK_OBJ
+%dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki/tpm
+%dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki/icsf
 %ifarch s390 s390x
-%dir %attr(770,root,pkcs11) %{_localstatedir}/lib/opencryptoki/ep11tok
-%dir %attr(770,root,pkcs11) %{_localstatedir}/lib/opencryptoki/ep11tok/TOK_OBJ
-%dir %attr(770,root,pkcs11) %{_localstatedir}/lib/opencryptoki/lite
-%dir %attr(770,root,pkcs11) %{_localstatedir}/lib/opencryptoki/lite/TOK_OBJ
+%dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki/ep11tok
+%dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki/ep11tok/TOK_OBJ
+%dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki/lite
+%dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/lib/opencryptoki/lite/TOK_OBJ
 %endif
-%dir %attr(770,root,pkcs11) %{_localstatedir}/log/opencryptoki/
+%dir %attr(770,root,%{pkcs_group}) %{_localstatedir}/log/opencryptoki/
 %{_mandir}/man*/*
 
 %files devel
@@ -283,6 +284,8 @@ ln -sf %{_libdir}/opencryptoki/libopencryptoki.so %{_prefix}/lib/pkcs11/PKCS11_A
 %dir %{_libdir}/opencryptoki/stdll
 %{_includedir}/opencryptoki
 %{_libdir}/pkgconfig/opencryptoki.pc
+###
+%{_sbindir}/pkcshsm_mk_change
 
 %ifarch %{openCryptoki_32bit_arch}
 %files 32bit
