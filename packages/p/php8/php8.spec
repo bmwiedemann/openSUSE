@@ -60,7 +60,7 @@ Name:           %{pprefix}%{php_name}%{psuffix}
 Version:        8.1.19
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 8
-License:        PHP-3.01
+License:        MIT AND PHP-3.01
 Group:          Development/Libraries/PHP
 URL:            https://secure.php.net
 Source0:        https://secure.php.net/distributions/php-%{version}.tar.xz
@@ -68,7 +68,8 @@ Source1:        mod_%{php_name}.conf
 Source2:        %{php_name}-fpm.conf
 Source5:        README.macros
 Source6:        macros.php
-Source8:        https://secure.php.net/distributions/php-%{version}.tar.xz.asc
+# temporarily repacked tarball https://github.com/php/php-src/issues/11300
+#Source8:        https://secure.php.net/distributions/php-%{version}.tar.xz.asc
 #Source9:       https://www.php.net/distributions/php-keyring.gpg#/%%{php_name}.keyring
 Source9:        %{php_name}.keyring
 Source11:       %{php_name}.rpmlintrc

@@ -492,4 +492,15 @@
   % php-systzdata-v23.patch (refreshed)</comment>
     <requestid>1087146</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>605549ba6a5f50ee8248767ba4b9691d</srcmd5>
+    <version>8.1.19</version>
+    <time>1685124897</time>
+    <user>dimstar_suse</user>
+    <comment>- repack the tarball temporarily [bsc#1211648]
+
+- also MIT license (systzdata patch, ext/date/lib/parse_posix.c)
+  [https://build.suse.de/request/show/298230]</comment>
+    <requestid>1088962</requestid>
+  </revision>
 </revisionlist>
