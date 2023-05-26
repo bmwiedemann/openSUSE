@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 25 08:20:04 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not limit ftdump conflict to < version-release, but only to
+  version. Ftdump is built in a second build flavor and as such the
+  release counters are not guaranteed to be in sync.
+
+-------------------------------------------------------------------
 Thu Apr 20 07:12:24 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Fix license tag to FTL and GPL-2.0-only.

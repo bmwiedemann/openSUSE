@@ -95,7 +95,7 @@ It also contains a small tutorial for using that library.
 %package -n ftdump
 Summary:        Simple font dumper
 Group:          Productivity/Publishing/Other
-Conflicts:      ft2demos < %{version}-%{release}
+Conflicts:      ft2demos < %{version}
 
 %description -n ftdump
 Simple font dumper
