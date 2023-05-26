@@ -1,4 +1,456 @@
 -------------------------------------------------------------------
+Wed May 24 09:38:40 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.60 → 9.24.61
+
+-------------------------------------------------------------------
+Tue May 23 18:32:58 CEST 2023 - Isaac True <isaac.true@canonical.com>
+
+- dracut: modules.d: 99kiwi-lib: add bash shebangs and dependency
+
+  The scripts in the kiwi-lib module use bash-specific syntax like
+  `function`, which causes the script to fail if another shell (like dash
+  or busybox) is used to interpret the scripts. Specifically set the shebang
+  to use bash as the shell interpreter and add bash as a dependency to the
+  dracut module to fix this.
+
+  This resolves the following errors which are printed at boot when
+  busybox tries to interpret the scripts:
+
+  /bin/dracut-pre-mount: 3: /lib/kiwi-filesystem-lib.sh: function: not found
+  /bin/dracut-pre-mount: 15: /lib/kiwi-filesystem-lib.sh: Syntax error: "}" unexpected
+
+  Signed-off-by: Isaac True <isaac.true@canonical.com>
+
+-------------------------------------------------------------------
+Mon May 22 15:13:26 CEST 2023 - Jiri Srain <jsrain@suse.com>
+
+- Do not depend on dnf for SUSE ALP
+
+-------------------------------------------------------------------
+Tue May 16 10:04:13 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Added appx-util as WSL requires for Fedora/RHEL
+
+  Make sure the kiwi-systemdeps-containers-wsl meta package
+  pulls in the required tools for Fedora/RHEL when building
+  WSL containers. This is a followup to #2286
+
+-------------------------------------------------------------------
+Tue May 16 10:00:11 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add cpio to core systemdeps requires list
+
+-------------------------------------------------------------------
+Sat May 06 20:40:11 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.59 → 9.24.60
+
+-------------------------------------------------------------------
+Thu May 04 12:32:27 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow to create plain cpio archives
+
+  Allow to create plain cpio archives to serve the idea
+  of the mkosi initrd concept
+
+-------------------------------------------------------------------
+Fri Apr 28 11:25:45 CEST 2023 - Fabian Vogt <fvogt@suse.de>
+
+- Fix restoration of grub2-install (bsc#1210948)
+
+  It checked for grub2-install.orig in the host, not the buildroot. This
+  meant that it left /usr/sbin/grub2-install as a noop.
+
+-------------------------------------------------------------------
+Fri Apr 28 09:44:59 CEST 2023 - David Cassany <dcassany@suse.com>
+
+- Use cross arch macros to interpret uint64_t
+
+  This commit adds inttypes.h to make use of PRIu64 style
+  macros in order to properly translate uint64_t across
+  different architectures. More specific this allows the
+  code to compile for ix86.
+
+  Signed-off-by: David Cassany <dcassany@suse.com>
+
+-------------------------------------------------------------------
+Mon Apr 24 23:48:34 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Delete score card
+
+  Too flaky, broken most of the time and I'm not sure
+  how much value it adds to the project overall
+
+-------------------------------------------------------------------
+Mon Apr 24 23:46:43 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix score card action
+
+-------------------------------------------------------------------
+Mon Apr 24 23:28:44 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update TW build tests
+
+  plymouth-plugin-script must be explicitly added now
+
+-------------------------------------------------------------------
+Mon Apr 24 23:17:48 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Revert "Add zstd and xzio to grub image"
+
+  This reverts commit af8c702db0a60ed4abeba8686d4e8475c410c58d.
+  The grub modules does not exist in all grub installations.
+  A different implementation is required
+
+-------------------------------------------------------------------
+Mon Apr 24 22:59:24 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update TW integration tests
+
+  change theme from bgrt to breeze. TW has deleted bgrt
+
+-------------------------------------------------------------------
+Mon Apr 24 22:43:18 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed writing URIs including ASCII encoding
+
+-------------------------------------------------------------------
+Fri Apr 21 21:32:21 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Split container systemdeps in OCI and WSL
+
+-------------------------------------------------------------------
+Thu Apr 20 14:46:59 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update kiwi-systemdeps-containers requires list
+
+  Do not strictly require fb-util-for-appx. In order to create
+  WSL containers fb-util-for-appx is a requirement but usually
+  users create OCI containers and WSL containers are still a
+  niche case. Thus it's ok to reduce the requirement into a
+  recommends. This Fixes #2284
+
+-------------------------------------------------------------------
+Thu Apr 20 10:28:09 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Encode remote URLs
+
+  Special characters in a URL e.g the @ sign needs to be encoded
+  as part of a remote URL.
+
+-------------------------------------------------------------------
+Thu Apr 13 18:33:10 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.58 → 9.24.59
+
+-------------------------------------------------------------------
+Thu Apr 13 18:12:16 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add zstd and xzio to grub image
+
+  If kiwi builds its own grub image, make sure the compression
+  algorithms zstd and xz are supported
+
+-------------------------------------------------------------------
+Wed Apr 12 16:37:48 CEST 2023 - David Cassany <dcassany@suse.com>
+
+- Adding a comment to explain the s390 specific path
+
+  Signed-off-by: David Cassany <dcassany@suse.com>
+
+-------------------------------------------------------------------
+Wed Apr 12 11:06:57 CEST 2023 - David Cassany <dcassany@suse.com>
+
+- Use parted only in s390 arch
+
+  This commit ensures parted is only called in dracut-kiwi-lib for s390
+  arch. It also fixes the spec to only require parted for
+  s390 builds.
+
+  In addition parted requirement has been removed from dracut-kiwi-live
+  package since parted is not used in any other dracut module beyond
+  kiwi-lib.
+
+  Signed-off-by: David Cassany <dcassany@suse.com>
+
+-------------------------------------------------------------------
+Tue Apr 04 19:53:19 CEST 2023 - Jan Löser <loeser@atix.de>
+
+- Add potential shim binary for Ubuntu
+
+  Looks like `shim*.efi` is gone in latest `shim-signed` package. The
+  package now contains `shimx64.efi.signed.latest` and
+  `shimx64.efi.signed.previous` binaries, let's take latest.
+
+  shim-signed_1.40.9+15.7-0ubuntu1_amd64/usr/lib/shim/:
+  total 4688
+  drwxr-xr-x. 3 root root    209 Jan 31 12:57 .
+  drwxr-xr-x. 3 root root     18 Jan 31 12:57 ..
+  -rw-r--r--. 1 root root    108 Jan 31 12:57 BOOTX64.CSV
+  -rwxr-xr-x. 1 root root   1622 Jan 31 12:57 is-not-revoked
+  drwxr-xr-x. 2 root root     25 Jan 31 12:57 mok
+  -rw-r--r--. 1 root root 950891 Jan 31 12:57 shimx64.efi
+  -rw-r--r--. 1 root root 962400 Jan 31 12:57 shimx64.efi.dualsigned
+  -rw-r--r--. 1 root root 960472 Jan 31 12:57 shimx64.efi.signed.latest
+  -rw-r--r--. 1 root root 955656 Jan 31 12:57 shimx64.efi.signed.previous
+  -rw-r--r--. 1 root root  88296 Jan 27 20:09 fbx64.efi
+  -rw-r--r--. 1 root root 860824 Jan 27 20:09 mmx64.efi
+
+  shim-signed_1.40.7+15.4-0ubuntu9_amd64/usr/lib/shim/:
+  total 3728
+  drwxr-xr-x. 3 root root    145 Aug 13  2021 .
+  drwxr-xr-x. 3 root root     18 Aug 13  2021 ..
+  -rw-r--r--. 1 root root    108 Aug 13  2021 BOOTX64.CSV
+  -rw-r--r--. 1 root root  85672 Aug 13  2021 fbx64.efi
+  -rw-r--r--. 1 root root 856232 Aug 13  2021 mmx64.efi
+  drwxr-xr-x. 2 root root     25 Aug 13  2021 mok
+  -rw-r--r--. 1 root root 947143 Aug 13  2021 shimx64.efi
+  -rw-r--r--. 1 root root 957576 Aug 13  2021 shimx64.efi.dualsigned
+  -rw-r--r--. 1 root root 955656 Aug 13  2021 shimx64.efi.signed
+
+-------------------------------------------------------------------
+Mon Apr 03 13:24:36 CEST 2023 - David Cassany <dcassany@suse.com>
+
+- Expand DASD partition table with parted
+
+  Signed-off-by: David Cassany <dcassany@suse.com>
+
+-------------------------------------------------------------------
+Thu Mar 30 16:57:27 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed evaluation of custom start sector
+
+  In case an alternative partition table start sector is
+  configured, the check to effectively apply it should be
+  based on the partition table type not on the firmware
+  name
+
+-------------------------------------------------------------------
+Thu Mar 30 14:52:23 CEST 2023 - David Cassany <dcassany@suse.com>
+
+- Add parted dependency for s390
+
+  Signed-off-by: David Cassany <dcassany@suse.com>
+
+-------------------------------------------------------------------
+Tue Mar 28 10:04:32 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 9.24.57 → 9.24.58
+
+-------------------------------------------------------------------
+Mon Mar 27 22:50:38 CEST 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Build leap btrfs test without root as snapshot
+
+  So far no btrfs integration test without root as snapshot existed
+
+-------------------------------------------------------------------
+Sat Mar 25 00:44:50 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Support EFI boot from squashfs
+
+  grub supports reading from squashfs. If no extra bootloader
+  installation is required this allows to boot from a squashfs
+  rootfs without extra boot partition. The prebuilt grub images
+  usually does not contain the squash4 module which is the
+  reason why kiwi creates the EFI module itself if the system
+  is fully immutable. Please note; the grub configuration
+  must be provided manually as part of the image description
+  in this case because grub-mkconfig at the time it has to be
+  called has no write permissions anymore.
+
+-------------------------------------------------------------------
+Fri Mar 24 15:05:52 CET 2023 - Fabian Vogt <fvogt@suse.de>
+
+- Fix /.snapshots mounting in the btrfs volume manager
+
+  The /@/.snapshots subvolume was not mounted as /.snapshots in the root
+  filesystem snapshot. This is now necessary for snapper to work.
+
+  While at it, create 1/snapshot as plain subvolume, it does not make sense
+  to snapshot @ itself.
+
+-------------------------------------------------------------------
+Thu Mar 16 17:02:56 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for config-host-overlay.sh script
+
+-------------------------------------------------------------------
+Thu Mar 16 15:55:56 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed build of dracut-kiwi-verity
+
+  The spec file was missing the package definition to actually
+  create the dracut-kiwi-verity package. In addition the fixed
+  setting to the C standard 17 caused build errors for me on
+  distributions that uses C standard 11/12.
+
+-------------------------------------------------------------------
+Wed Mar 15 09:31:01 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add selinux integration test for Leap
+
+  SUSE systems supports both, apparmor and selinux, whereas
+  apparmor is the default. As selinux requires to create security
+  labels during build time of an image, this integration test
+  checks if the labeling works for SUSE based OS'es.
+  This Fixes #2244
+
+-------------------------------------------------------------------
+Tue Mar 14 16:26:06 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow custom template evaluation for install ISO
+
+  So far only Live ISO images allowed for custom template usage
+
+-------------------------------------------------------------------
+Tue Mar 14 16:01:57 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix Arch Linux Live ISO integration test
+
+  Switch to grub for booting the ISO, for some reason isolinux
+  refused to work and there is no priority to dig into the issue.
+  This Fixes #2233
+
+-------------------------------------------------------------------
+Tue Mar 14 15:46:25 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix Arch Linux EFI install ISO integration test
+
+  kiwi has code in bootloader/template/grub2.py which uses
+  linuxefi/initrdefi commands according to the configured
+  grub_platform. These commands does not exist on Arch and
+  therefore the integration test provides its own ISO
+  template. This Fixes #2232
+
+-------------------------------------------------------------------
+Tue Mar 14 10:18:53 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add dracut-kiwi-verity dracut module package
+
+  When building an image with an embedded verity hash via the
+  embed_verity_metadata="true" type attribute it is required
+  to setup the device map at boot time accordingly. The dracut
+  module in this commit provides the needed tooling as a
+  POSIX C implementation which is able to read the kiwi embedded
+  verityhash from the offset of the partition. Kudos goes to
+  Isaac True <isaac.true@canonical.com>
+
+  Co-authored-by: Isaac True <isaac.true@canonical.com>
+  Signed-off-by: Isaac True <isaac.true@canonical.com>
+
+-------------------------------------------------------------------
+Mon Mar 13 19:35:39 CET 2023 - Joachim Gleissner <jgleissner@suse.com>
+
+- (Re-)add support for 'anymarkup' < 0.5.0
+
+  Fall back to module 'anymarkup' if 'anymarkup_core' is not available.
+
+-------------------------------------------------------------------
+Sat Mar 11 18:01:53 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Support UNIXNODE device names for overlayroot
+
+  When no other persistent naming schema can be used to
+  identify the device there should be the option to
+  specify the kernel unix device node name
+
+-------------------------------------------------------------------
+Fri Mar 10 14:00:14 CET 2023 - Joachim Gleissner <jgleissner@suse.com>
+
+- Use module anymarkup-core instead of anymarkup
+
+  Use 'anymarkup-core' directly instead of wrapper 'anymarkup'.
+
+-------------------------------------------------------------------
+Thu Mar 09 09:03:34 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix permissions of live ISO system files
+
+  Make sure initrd and squashfs.img takes permissions o644
+  This Fixes #2246
+
+-------------------------------------------------------------------
+Wed Mar 08 10:14:20 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update TW test-image-rpi-overlay build test
+
+  It used rd.root.overlay.readonly but it meant rd.root.overlay.temporary
+
+-------------------------------------------------------------------
+Wed Mar 08 09:48:44 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed rd.root.overlay.readonly handling
+
+  Fix the option implementation to actually do what it is supposed
+  to do, boot the system in fll read-only mode. In addition a new
+  parameter named rd.root.overlay.temporary has been introduced
+  which allows to boot up in read-write mode but the write area
+  is a tmpfs. Thus persistency only during runtime. Updated the
+  documentation accordingly
+
+-------------------------------------------------------------------
+Tue Mar 07 22:10:55 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed tumbleweed build tests
+
+  opie no longer in TW
+
+-------------------------------------------------------------------
+Tue Mar 07 22:08:47 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed tumbleweed/test-image-azure
+
+  opie no longer in TW
+
+-------------------------------------------------------------------
+Tue Mar 07 18:54:52 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Support PARTLABEL device names for overlayroot
+
+  When using GPT a partlabel exists that can also be used as a
+  device reference
+
+-------------------------------------------------------------------
+Tue Mar 07 18:38:56 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed kernel parameters for overlayroot setup
+
+  The device selection for the read-only and read-write devices
+  in an overlayroot setup was implicitly done in the kiwi-overlay
+  dracut module by reading the root= information. This is a
+  concept which barely works and should be refactored in a way
+  that the root= information always points to the root device
+  and that an eventually existing write location is explicitly
+  provided via the existing rd.root.overlay.write parameter
+  which is allowed to be overwritten for providing an alternative
+  write location. Making this information consistent and explicit
+  on the kernel commandline simplifies the dracut code to
+  consume this information correctly. This Fixes #2251
+
+-------------------------------------------------------------------
+Sun Mar 05 11:19:09 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed conditional options evaluation
+
+  The former condition caused the end result list to be empty
+
+-------------------------------------------------------------------
+Sat Feb 11 19:25:17 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for creating delta containers
+
+  Add new attribute delta_root="true|false" which in combination with
+  derived_from="OCI-base-image" allows to create a delta root tree
+  only containing the differences between the OCI-base-image and the
+  actions taken by the kiwi prepare step. Based on the delta root tree
+  the subsequent image creation process starts. Such an incomplete
+  root tree is only useful under certain circumstances which is also
+  the reason why the feature is only available to the oci and docker
+  image types.
+
+-------------------------------------------------------------------
 Fri Feb 10 08:43:21 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 9.24.56 → 9.24.57
@@ -101,6 +553,14 @@ Wed Jan 04 12:29:46 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
 - Added kiwi-settings for Fedora arm build tests
 
 -------------------------------------------------------------------
+Mon Jan 02 12:30:04 CET 2023 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Pass along tmpdir to skopeo
+
+  When using the --temp-dir parameter, it was not passed to the
+  skopeo calls when building a container image with kiwi.
+
+-------------------------------------------------------------------
 Thu Dec 22 16:14:09 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Allow fat16/fat32 as filesystem in partitions
@@ -108,6 +568,30 @@ Thu Dec 22 16:14:09 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>
   The partitions element allows to specify the filesystem for
   the individual partition. In the schema fat16 and fat32 were
   missing
+
+-------------------------------------------------------------------
+Thu Dec 22 11:13:06 CET 2022 - Robert Schweikert <rjschwei@suse.com>
+
+- Support new bootloadersettings section
+
+  Allow to specify an optional <bootloadersettings> element
+  inside of the <bootloader> section. The information is used to
+  specify custom arguments for the tools called in a bootloader
+  setup procedure, e.g shim-install, grub-install or grub-mkconfig.
+  kiwi does not judge on the given parameters and if the provided
+  data is effectively used depends on the individual bootloader
+  implementation. In this commit the data will be effectively
+  handled if bootloader="grub2" is configured. More precisely
+  the custom additions to support SUSE's TPM model with grub2
+  can be configured as follows:
+
+  <bootloadersettings>
+  <shimoption name="--suse-enable-tpm"/>
+  <installoption name="--suse-enable-tpm"/>
+  <configoption name="--set-trusted-boot"/>
+  </bootloadersettings>
+
+  This Fixes #2224
 
 -------------------------------------------------------------------
 Tue Dec 20 18:58:10 CET 2022 - Marcus Schäfer <marcus.schaefer@gmail.com>

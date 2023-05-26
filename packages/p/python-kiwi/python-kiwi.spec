@@ -43,7 +43,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        9.24.57
+Version:        9.24.61
 Provides:       kiwi-schema = 7.5
 Release:        0
 Url:            https://github.com/OSInside/kiwi
@@ -96,11 +96,11 @@ Recommends:     debootstrap
 Recommends:     dpkg
 %endif
 # package managers required by distro
-%if 0%{?fedora} || 0%{?rhel} >= 8 || 0%{?suse_version} >= 1550
+%if 0%{?fedora} || 0%{?rhel} >= 8 || 0%{?suse_version} >= 1650
 Provides:       kiwi-packagemanager:microdnf
 Requires:       microdnf
 %endif
-%if 0%{?fedora} || 0%{?rhel} || 0%{?suse_version} >= 1550
+%if 0%{?fedora} || 0%{?rhel} || 0%{?suse_version} >= 1650
 Requires:       dnf
 Provides:       kiwi-packagemanager:dnf
 Provides:       kiwi-packagemanager:yum
@@ -119,6 +119,7 @@ Requires:       kiwi-tools
 Requires:       mtools
 Requires:       rsync
 Requires:       tar >= 1.2.7
+Requires:       cpio
 Requires:       lsof
 Requires:       openssl
 
@@ -127,19 +128,15 @@ This metapackage installs the necessary system dependencies
 to run KIWI.
 
 %package -n kiwi-systemdeps-containers
-Summary:        KIWI - host requirements for container images
+Summary:        KIWI - host requirements for OCI container images
 Group:          %{sysgroup}
 Provides:       kiwi-image-docker-requires = %{version}-%{release}
 Obsoletes:      kiwi-image-docker-requires < %{version}-%{release}
-Provides:       kiwi-image-wsl-requires = %{version}-%{release}
-Obsoletes:      kiwi-image-wsl-requires < %{version}-%{release}
 %if "%{_vendor}" != "debbuild"
 Provides:       kiwi-image:docker
-Provides:       kiwi-image:appx
 %endif
 %if 0%{?suse_version}
 Requires:       umoci
-Requires:       fb-util-for-appx
 %else
 Requires:       buildah
 %endif
@@ -147,7 +144,26 @@ Requires:       skopeo
 
 %description -n kiwi-systemdeps-containers
 Host setup helper to pull in all packages required/useful on
-the build host to build container images e.g docker, wsl
+the build host to build OCI container images
+
+%package -n kiwi-systemdeps-containers-wsl
+Summary:        KIWI - host requirements for WSL container images
+Group:          %{sysgroup}
+Provides:       kiwi-image-wsl-requires = %{version}-%{release}
+Obsoletes:      kiwi-image-wsl-requires < %{version}-%{release}
+%if "%{_vendor}" != "debbuild"
+Provides:       kiwi-image:appx
+%endif
+%if 0%{?suse_version}
+Requires:       fb-util-for-appx
+%endif
+%if 0%{?fedora} || 0%{?rhel}
+Requires:       appx-util
+%endif
+
+%description -n kiwi-systemdeps-containers-wsl
+Host setup helper to pull in all packages required/useful on
+the build host to build WSL container images
 
 %package -n kiwi-systemdeps-iso-media
 Summary:        KIWI - host requirements for live and install iso images
@@ -300,7 +316,7 @@ Recommends:     jing
 Requires:       python%{python3_pkgversion}-solv
 %endif
 %if ! (0%{?rhel} && 0%{?rhel} < 8)
-Recommends:     python%{python3_pkgversion}-anymarkup
+Recommends:     python%{python3_pkgversion}-anymarkup-core
 %endif
 
 %description -n kiwi-systemdeps-image-validation
@@ -317,6 +333,7 @@ Requires:       kiwi-systemdeps-bootloaders = %{version}-%{release}
 %if 0%{?fedora} || 0%{?rhel} || 0%{?suse_version}
 # None of the container build tools are available in Debian/Ubuntu
 Requires:       kiwi-systemdeps-containers = %{version}-%{release}
+Requires:       kiwi-systemdeps-containers-wsl = %{version}-%{release}
 %endif
 Requires:       kiwi-systemdeps-filesystems = %{version}-%{release}
 Requires:       kiwi-systemdeps-disk-images = %{version}-%{release}
@@ -438,7 +455,6 @@ Requires:       e2fsprogs
 Requires:       grep
 Requires:       lvm2
 Requires:       mdadm
-Requires:       parted
 Requires:       util-linux
 # lsblk is part of util-linux-systemd on openSUSE
 %if 0%{?suse_version}
@@ -457,6 +473,7 @@ Requires:       device-mapper
 %endif
 %ifarch s390 s390x
 Requires:       s390-tools
+Requires:       parted
 %endif
 License:        GPL-3.0-or-later
 Group:          %{sysgroup}
@@ -534,7 +551,6 @@ Requires:       device-mapper
 %endif
 Requires:       dracut
 Requires:       xorriso
-Requires:       parted
 License:        GPL-3.0-or-later
 Group:          %{sysgroup}
 
@@ -559,6 +575,26 @@ Group:          %{sysgroup}
 This package contains the kiwi-overlay dracut module which is used
 for booting vmx images built with KIWI and configured to use an
 overlay root filesystem
+
+%package -n dracut-kiwi-verity
+Summary:        KIWI - Dracut module for disk with embedded verity metadata
+%if 0%{?fedora} || 0%{?rhel} || 0%{?suse_version} || 0%{?debian}
+# Ubuntu 16.04 OBS environments refuse to set up due to
+# initramfs-tools / dracut conflict and initramfs-tools is required
+# to set up the build environment...
+BuildRequires:  dracut
+%endif
+Requires:       dracut-kiwi-lib = %{version}-%{release}
+Requires:       dracut
+BuildRequires:  gcc
+License:        GPL-3.0-or-later
+Group:          %{sysgroup}
+
+%description -n dracut-kiwi-verity
+This package contains the kiwi-verity dracut module which is used
+for booting oem images built with KIWI and configured to use an
+embedded verity metadata block via the embed_verity_metadata
+type attribute
 
 %package -n kiwi-man-pages
 Summary:        KIWI - manual pages
@@ -639,6 +675,9 @@ fi
 %files -n kiwi-systemdeps-containers
 # Empty metapackage
 
+%files -n kiwi-systemdeps-containers-wsl
+# Empty metapackage
+
 %files -n kiwi-systemdeps-iso-media
 # Empty metapackage
 
@@ -691,6 +730,10 @@ fi
 
 %files -n dracut-kiwi-overlay
 %{_usr}/lib/dracut/modules.d/90kiwi-overlay
+
+%files -n dracut-kiwi-verity
+%{_usr}/lib/dracut/modules.d/80kiwi-verity
+%{_bindir}/kiwi-parse-verity
 
 %if "%{_vendor}" != "debbuild"
 %ifarch %{ix86} x86_64

@@ -2183,4 +2183,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1066322</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>4b93634206e89aa6bc2a4adb1d36df45</srcmd5>
+    <version>9.24.61</version>
+    <time>1685124857</time>
+    <user>dimstar_suse</user>
+    <comment>Bumping to v9.24.61, this includes small spec file changes required in ALP
+</comment>
+    <requestid>1088796</requestid>
+  </revision>
 </revisionlist>
