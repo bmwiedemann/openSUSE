@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 25 06:16:29 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Build data package with multibuild
+
+-------------------------------------------------------------------
+Thu Apr 27 20:56:49 UTC 2023 - Josef Reidinger <jreidinger@suse.com>
+
+- Split python-langtable-data subpackage to hold XML data that
+  package use it saves some spaces and allows usage of that XML
+  without python dependency
+
+-------------------------------------------------------------------
 Tue Dec  6 03:52:27 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 0.0.61 

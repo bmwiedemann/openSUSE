@@ -1,7 +1,7 @@
 #
-# spec file for package python-langtable
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,17 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "data"
+%define psuffix -data-src
+%bcond_without data
+%else
+%define psuffix %{nil}
+%bcond_with data
+%endif
 %define skip_python2 1
-Name:           python-langtable
+%global literalpython python
+Name:           python-langtable%{psuffix}
 Version:        0.0.61
 Release:        0
 Summary:        Database to guess defaults for locale settings
@@ -34,6 +43,9 @@ BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  libxml2-tools
 BuildRequires:  python-rpm-macros
+%if %{without data}
+Requires:       %{literalpython}-langtable-data = %{version}
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -44,16 +56,34 @@ example, guess the territory and the keyboard layout if the language
 is known or guess the language and keyboard layout if the territory is
 already known.
 
+%package -n python-langtable-data
+Summary:        XML data to map various locale settingsn and its relations
+
+%description -n python-langtable-data
+Provides XML data used by python-langtable. Packaged separately so it is not affected
+by more python target versions and also it can be used indenpendently.
+
 %prep
 %autosetup -n langtable-%{version}
 
 %build
-sed -i -e "s,_DATADIR = .*,_DATADIR = '%{python3_sitelib}/langtable'," langtable/langtable.py
 %python_build
 
 %install
-%python_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%if %{with data}
+# Data package
+  mkdir -p %{buildroot}/%{_datadir}/langtable/data
+  mv langtable/data/* %{buildroot}/%{_datadir}/langtable/data
+%else
+# Main package
+  %python_install
+  %python_expand %fdupes %{buildroot}%{$python_sitelib}
+  %python_expand rm -rf %{buildroot}%{$python_sitelib}/langtable/data
+%endif
+
+# Main package
+%if %{without data}
 
 %check
 (cd langtable; python3 langtable.py)
@@ -68,5 +98,12 @@ done
 %license COPYING unicode-license.txt
 %doc README ChangeLog
 %{python_sitelib}/*
+
+%else
+# Data package
+
+%files -n python-langtable-data
+%{_datadir}/langtable
+%endif
 
 %changelog

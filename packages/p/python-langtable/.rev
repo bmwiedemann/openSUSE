@@ -55,4 +55,16 @@
     <comment></comment>
     <requestid>1040749</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>9b0d329b64436ec438ac817ae7d056bd</srcmd5>
+    <version>0.0.61</version>
+    <time>1685124935</time>
+    <user>dimstar_suse</user>
+    <comment>- Build data package with multibuild
+
+- Split python-langtable-data subpackage to hold XML data that
+  package use it saves some spaces and allows usage of that XML
+  without python dependency</comment>
+    <requestid>1089077</requestid>
+  </revision>
 </revisionlist>
