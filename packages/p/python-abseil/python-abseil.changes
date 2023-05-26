@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu May 25 07:35:04 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- version update to 1.4.0
+  New
+    (testing) Added @flagsaver.as_parsed: this allows saving/restoring flags
+    using string values as if parsed from the command line and will also reflect
+    other flag states after command line parsing, e.g. .present is set.
+  Changed
+    (logging) If no log dir is specified logging.find_log_dir() now falls back
+    to tempfile.gettempdir() instead of /tmp/.
+  Fixed
+    (flags) Additional kwargs (e.g. short_name=) to DEFINE_multi_enum_class
+    are now correctly passed to the underlying Flag object.
+
+-------------------------------------------------------------------
 Thu Sep 15 10:14:55 UTC 2022 - pgajdos@suse.com
 
 - version update to 1.2.0
