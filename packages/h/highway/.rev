@@ -87,4 +87,12 @@
     <comment>- Add memory-constraints to build</comment>
     <requestid>1086811</requestid>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>8f285f428323954434953f855c56ac8a</srcmd5>
+    <version>1.0.4</version>
+    <time>1685124859</time>
+    <user>dimstar_suse</user>
+    <comment>- Update memory limiter from 900 to 1400/process.</comment>
+    <requestid>1088804</requestid>
+  </revision>
 </revisionlist>

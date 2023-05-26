@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 24 09:10:51 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update memory limiter from 900 to 1400/process.
+
+-------------------------------------------------------------------
 Fri May 12 19:37:01 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add memory-constraints to build

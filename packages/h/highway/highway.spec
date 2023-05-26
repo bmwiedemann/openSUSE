@@ -81,7 +81,7 @@ export CXXFLAGS="$CFLAGS"
 %if 0%{?suse_version} < 1550
 export CXX=g++-10
 %endif
-%limit_build -m 900
+%limit_build -m 1400
 
 %cmake \
 %ifarch %arm
