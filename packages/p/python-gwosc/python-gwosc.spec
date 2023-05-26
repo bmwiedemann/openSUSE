@@ -1,7 +1,7 @@
 #
 # spec file for package python-gwosc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,16 @@
 
 %define modname gwosc
 %define         skip_python2 1
+
 Name:           python-gwosc
-Version:        0.6.1
+Version:        0.7.1
 Release:        0
 Summary:        Python interface to the Gravitational-Wave Open Data Center archive
 License:        MIT
 URL:            https://gwosc.readthedocs.io/en/latest/
 Source:         https://files.pythonhosted.org/packages/source/g/%{modname}/%{modname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gwosc-pytest-warns.patch -- part of https://git.ligo.org/gwosc/client/-/merge_requests/80
-Patch1:         https://git.ligo.org/gwosc/client/-/commit/e61e89ea23407d9ca92d19156289a86c00bc01ff.patch#/gwosc-pytest-warns.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -52,10 +50,10 @@ Virgo gravitational-wave observatories.
 sed -i 's/--color=yes//' pyproject.toml
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/%{modname}/
 
@@ -72,7 +70,7 @@ sed -i 's/--color=yes//' pyproject.toml
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/%{modname}
+%{python_sitelib}/%{modname}/
 %{python_sitelib}/%{modname}-%{version}*-info/
 
 %changelog

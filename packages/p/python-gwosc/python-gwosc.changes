@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May 23 18:01:33 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.7.1:
+  * Update all gw-openscience.org references to gwosc.org
+  * Include custom User-Agent header in requests
+- Changes from version 0.7.0:
+  * Remove deprecated tag keyword from gwosc.locate.get_urls
+  * Remove deprecated gwosc.catalog module
+  * Implement query feature
+  * Formally support Python 3.11
+- Drop gwosc-pytest-warns.patch: incorporated upstream.
+- Use wheel based builds instead of setuptools.
+
+-------------------------------------------------------------------
 Sun Jul  3 18:55:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Clean up specfile
