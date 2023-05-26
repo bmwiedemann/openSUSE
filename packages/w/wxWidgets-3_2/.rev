@@ -199,4 +199,12 @@
     <comment>- Enable wxWebRequest.</comment>
     <requestid>1084562</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>f755c5d6429329e8a883603248ca8703</srcmd5>
+    <version>3.2.2.1</version>
+    <time>1685124861</time>
+    <user>dimstar_suse</user>
+    <comment>- Use more pkgconfig(..) in BuildRequires</comment>
+    <requestid>1088815</requestid>
+  </revision>
 </revisionlist>

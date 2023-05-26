@@ -91,19 +91,19 @@ BuildRequires:  graphviz
 BuildRequires:  autoconf
 BuildRequires:  cppunit-devel
 BuildRequires:  gcc-c++
-BuildRequires:  gstreamer-devel
-BuildRequires:  gstreamer-plugins-base-devel
-BuildRequires:  libSM-devel
-BuildRequires:  libcurl-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libjpeg-devel
-BuildRequires:  libmspack-devel
-BuildRequires:  libnotify-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(gstreamer-1.0)
+BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libmspack)
+BuildRequires:  pkgconfig(libnotify)
+BuildRequires:  pkgconfig(sm)
 %if "%toolkit" == "gtk2"
-BuildRequires:  gtk2-devel
+BuildRequires:  pkgconfig(gtk+-2.0)
 %endif
 %if "%toolkit" == "gtk3"
 BuildRequires:  pkgconfig(gtk+-3.0)
@@ -121,11 +121,7 @@ BuildRequires:  pkgconfig(cairo)
 %endif
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(liblzma)
-%if 0%{?sle_version} < 150000 && !0%{?is_opensuse}
-BuildRequires:  pkgconfig(sdl)
-%else
 BuildRequires:  pkgconfig(sdl2)
-%endif
 BuildRequires:  pkgconfig(xtst)
 %endif
 
