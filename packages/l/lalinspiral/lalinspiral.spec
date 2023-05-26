@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package lalinspiral
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -27,7 +27,7 @@
 
 %define pname lalinspiral
 
-%define shlib lib%{name}17
+%define shlib lib%{name}18
 # NEP 29: python36-numpy and co. in TW are no more
 %define skip_python36 1
 # Py2 dropped by upstream
@@ -35,7 +35,7 @@
 # octave >= 6 not supported
 %bcond_with octave
 Name:           %{pname}%{?psuffix}
-Version:        3.0.0
+Version:        4.0.2
 Release:        0
 Summary:        LSC Algorithm Inspiral Library
 License:        GPL-2.0-or-later
@@ -219,7 +219,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %endif
 
 %files %{python_files}
-%{python_sitearch}/*
+%{python_sitearch}/lalinspiral/
 
 %else
 
