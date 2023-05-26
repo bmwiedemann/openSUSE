@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 26 18:38:52 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 0.41.0:
+  * Added color name preview-border and preview-scrollbar
+  * Added new border style block which uses block elements
+  * --scrollbar can take two characters, one for the main window,
+   the other for the preview window
+  * Bug fixes and improvements
+- require golang >= 1.19 instead of "="
+
+-------------------------------------------------------------------
 Sun Apr 30 21:45:37 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to version 0.40.0:

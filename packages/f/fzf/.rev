@@ -594,4 +594,19 @@
   - Bug fixes and improvements</comment>
     <requestid>1083792</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>24559ca3ebbcf8fb1cadcf4ab10fdb4c</srcmd5>
+    <version>0.41.0</version>
+    <time>1685141470</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.41.0:
+  * Added color name preview-border and preview-scrollbar
+  * Added new border style block which uses block elements
+  * --scrollbar can take two characters, one for the main window,
+   the other for the preview window
+  * Bug fixes and improvements
+- require golang &gt;= 1.19 instead of &quot;=&quot;
+</comment>
+    <requestid>1089242</requestid>
+  </revision>
 </revisionlist>
