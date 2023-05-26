@@ -1,7 +1,7 @@
 #
 # spec file for package codec2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define libname lib%{name}-1_0
+%define libname lib%{name}-1_1
 Name:           codec2
-Version:        1.0.5
+Version:        1.1.0
 Release:        0
 Summary:        Low bit rate speech codec
 # octave and asterisk directories contain GPL-2.0 licensed code but its not
@@ -81,8 +81,7 @@ Example code for Codec 2, including test voices and matlab/octave files.
 %install
 %cmake_install
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
 %license COPYING

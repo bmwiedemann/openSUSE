@@ -79,4 +79,17 @@
     <comment></comment>
     <requestid>989824</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2589da747ecfe002e0294618cd582c4d</srcmd5>
+    <version>1.1.0</version>
+    <time>1685124903</time>
+    <user>dimstar_suse</user>
+    <comment>- Update baselibs.conf to match change of shared library name
+
+- Update to version 1.1.0
+  * Internal maintenance.
+  * Tx peak levels normalised across modes.
+  * New raw data modes to support FreeDATA.</comment>
+    <requestid>1088989</requestid>
+  </revision>
 </revisionlist>
