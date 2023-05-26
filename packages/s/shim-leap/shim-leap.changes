@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 25 07:48:54 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Remove the sym-links in /usr/lib64/efi for the newer distro
+  versions since we don't use them anymore
+
+-------------------------------------------------------------------
 Wed Jul 21 09:38:30 UTC 2021 - jlee@suse.com
 
 - Update to shim to 15.4-lp152.4.17.1 from openSUSE Leap 15.2

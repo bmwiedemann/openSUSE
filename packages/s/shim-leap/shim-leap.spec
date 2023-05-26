@@ -1,7 +1,7 @@
 #
 # spec file for package shim-leap
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -56,6 +56,11 @@ rpm2cpio %{SOURCE0} | cpio --extract --unconditional --preserve-modification-tim
 # purely repackaged
 cp -a * %{buildroot}
 cp %{S:1} .
+
+%if %{undefined shim_lib64_share_compat}
+# Remove the sym-links in /usr/lib64/efi
+rm -rf %{buildroot}/usr/lib64/efi
+%endif
 
 %post -n shim
 /sbin/update-bootloader --reinit || true
