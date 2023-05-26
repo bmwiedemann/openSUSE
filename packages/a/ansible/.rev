@@ -1003,4 +1003,12 @@ numbers for further reference.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1088153</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>6ffb5ac56f2cca244542d2e9d0e33889</srcmd5>
+    <version>7.6.0</version>
+    <time>1685124929</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088891</requestid>
+  </revision>
 </revisionlist>

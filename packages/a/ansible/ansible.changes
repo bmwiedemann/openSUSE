@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 23 12:20:17 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 7.6.0
+  Ansible 7.6.0 includes ansible-core 2.14.6 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 7
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/
+    ansible-build-data/blob/main/7/CHANGELOG-v7.rst
+
+-------------------------------------------------------------------
 Sun May 14 19:10:10 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - modify %if-condition to allow building for python3.10 or
