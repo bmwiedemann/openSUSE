@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 24 07:59:20 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 5.15.9+kde154:
+  * Hsts: match header names case insensitively (CVE-2023-32762)
+  * Fix specific overflow in qtextlayout (CVE-2023-32763)
+  * QDnsLookup/Unix: make sure we don't overflow the buffer
+
+-------------------------------------------------------------------
 Tue May  9 12:08:17 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Amend patch to fix mouse grabbing as well (bsc#1211024):
