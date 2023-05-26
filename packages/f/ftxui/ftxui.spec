@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define         c_lib libftxui4_0_0
+
+%define         c_lib libftxui4_1_0
 Name:           ftxui
-Version:        4.0.0
+Version:        4.1.0
 Release:        0
 Summary:        A C++ library for terminal based user interfaces
 License:        MIT
@@ -25,6 +26,7 @@ URL:            https://github.com/ArthurSonzogni/FTXUI
 Source:         https://github.com/ArthurSonzogni/FTXUI/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
 
 %description
 A C++ library for terminal based user interfaces.
@@ -41,6 +43,7 @@ A C++ library for terminal based user interfaces.
 Summary:        Devel files for ftxui
 Group:          Development/Libraries/C and C++
 Requires:       %{c_lib} = %{version}
+Provides:       ftxui
 
 %description devel
 Development files for ftxui.
@@ -57,14 +60,14 @@ Development files for ftxui.
 %install
 %cmake_install
 
-%ldconfig_scriptlets -n libftxui4_0_0
+%ldconfig_scriptlets -n %{c_lib}
 
 %files -n %{c_lib}
 %license LICENSE
 %doc CHANGELOG.md README.md
-%{_libdir}/libftxui-component.so.4.0.0
-%{_libdir}/libftxui-dom.so.4.0.0
-%{_libdir}/libftxui-screen.so.4.0.0
+%{_libdir}/libftxui-component.so.4.1.0
+%{_libdir}/libftxui-dom.so.4.1.0
+%{_libdir}/libftxui-screen.so.4.1.0
 
 %files devel
 %license LICENSE
@@ -74,5 +77,6 @@ Development files for ftxui.
 %{_libdir}/libftxui-component.so
 %{_libdir}/libftxui-dom.so
 %{_libdir}/libftxui-screen.so
+%{_prefix}/lib/pkgconfig/ftxui.pc
 
 %changelog
