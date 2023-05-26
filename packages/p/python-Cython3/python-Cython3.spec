@@ -18,9 +18,9 @@
 
 %bcond_with test
 %{?sle15_python_module_pythons}
-%define pversion 3.0.0b2
+%define pversion 3.0.0b3
 Name:           python-Cython3
-Version:        3.0.0~b2
+Version:        3.0.0~b3
 Release:        0
 Summary:        The Cython compiler for writing C extensions for the Python language
 License:        Apache-2.0

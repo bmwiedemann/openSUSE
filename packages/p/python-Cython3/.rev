@@ -45,4 +45,41 @@ will require a prefer-line in prjconf. The released pre-3 package should be the 
     could fail to compile. Patch by Chia-Hsiang Cheng. (Github</comment>
     <requestid>1088304</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d7b3ed6960cc4798052fa570b4499003</srcmd5>
+    <version>3.0.0~b3</version>
+    <time>1685124889</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.0~b3:
+  * Features added
+  * Custom buffer slot methods are now supported in the Limited C-API of
+    Python 3.9+. Patch by Lisandro Dalcin. (Github issue :issue:`5422`)
+  * The extern &quot;C&quot; and extern &quot;C++&quot; markers that Cython generates for public
+    functions can now be controlled by setting the C macro CYTHON_EXTERN_C.
+  * The Python int handling code was adapted to make use of the new PyLong
+    internals in CPython 3.12. (Github issue :issue:`5353`)
+  * Conversion of Python ints to C int128 is now always supported, although
+    slow if dedicated C-API support is missing (_PyLong_AsByteArray()),
+    specifically in the Limited C-API. (Github issue :issue:`5419`)
+  * The exception handling code was adapted to CPython 3.12. (Github
+    issue :issue:`5442`)
+  * The dataclass implementation was adapted to support Python 3.12. (Github
+    issue :issue:`5346`)
+  * The normal @dataclasses.dataclass and @functools.total_ordering
+    decorators can now be used on extension types. Using the corresponding
+    @cython.* deorators with automatically turn a Python class into an
+    extension type (no need for @cclass). (Github issue :issue:`5292`)
+  * Multiplying a sequence by a C integer avoids creating an intermediate
+    Python integer.
+  * ctuples can now be assigned from arbitrary sequences, not just Python
+    tuples.
+  * A new directive embedsignature.format was added to select the format
+    of the docstring embedded signatures between python, c and argument
+    clinic. Patch by Lisandro Dalcin. (Github issue :issue:`5415`)
+  * Some invalid directive usages are now detected and rejected, e.g. using
+    @ccall together with @cfunc, and applying @cfunc to a @ufunc. Cython also
+    warns now when a directive is applies needlessly. (Github issue
+    :issue:`5399` et al.)</comment>
+    <requestid>1088863</requestid>
+  </revision>
 </revisionlist>
