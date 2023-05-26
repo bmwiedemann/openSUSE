@@ -17,13 +17,9 @@
 
 
 %define skip_python2 1
-# Not compatible with Python 3.11 yet. If this changes, and the python311
-# flavor is active, make sure to expand the multibuild test flavors
-# https://github.com/numba/numba/issues/8304
-%define skip_python311 1
 %define plainpython python
 # upper bound is exclusive: min-numpy_ver <= numpy < max_numpy_ver
-%define min_numpy_ver 1.18
+%define min_numpy_ver 1.21
 %define max_numpy_ver 1.25
 
 %global flavor @BUILD_FLAVOR@%{nil}
@@ -43,22 +39,24 @@
 %define skip_python311 1
 %bcond_without test
 %endif
+%if "%{flavor}" == "test-py311"
+%define psuffix -test-py311
+%define skip_python39 1
+%define skip_python310 1
+%bcond_without test
+%endif
 
 Name:           python-numba%{?psuffix}
-Version:        0.56.4
+Version:        0.57.0
 Release:        0
 Summary:        NumPy-aware optimizing compiler for Python using LLVM
 License:        BSD-2-Clause
 URL:            https://numba.pydata.org/
 # SourceRepository: https://github.com/numba/numba
 Source:         https://files.pythonhosted.org/packages/source/n/numba/numba-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM numba-pr8620-np1.24.patch gh#numba/numba#8620 + raising upper bound in setup.py and numba/__init__.py
-Patch1:         numba-pr8620-np1.24.patch
 # PATCH-FIX-OPENSUSE skip tests failing due to OBS specifics
 Patch3:         skip-failing-tests.patch
-# PATCH-FIX-OPENSUSE update-tbb-backend-calls-2021.6.patch, based on gh#numba/numba#7608
-Patch4:         update-tbb-backend-calls-2021.6.patch
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module numpy-devel >= %{min_numpy_ver} with %python-numpy-devel < %{max_numpy_ver}}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -67,7 +65,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 BuildRequires:  (tbb-devel >= 2021)
-Requires:       (python-llvmlite >= 0.39 with python-llvmlite < 0.40)
+Requires:       (python-llvmlite >= 0.40 with python-llvmlite < 0.41)
 Requires:       (python-numpy >= %{min_numpy_ver} with python-numpy < %{max_numpy_ver})
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -147,7 +145,6 @@ sed 's|^%{buildroot}||' devel-files0-%{$python_bin_suffix}.files > devel-files-%
 sed 's|^%{buildroot}|%%exclude |' devel-files0-%{$python_bin_suffix}.files > devel-files-exclude-%{$python_bin_suffix}.files
 }
 %python_clone -a %{buildroot}%{_bindir}/numba
-%python_clone -a %{buildroot}%{_bindir}/pycc
 %endif
 
 %check
@@ -164,7 +161,7 @@ popd
 
 %if !%{with test}
 %post
-%python_install_alternative numba pycc
+%python_install_alternative numba
 
 %postun
 %python_uninstall_alternative numba
@@ -173,7 +170,6 @@ popd
 %license LICENSE
 %doc CHANGE_LOG README.rst
 %python_alternative %{_bindir}/numba
-%python_alternative %{_bindir}/pycc
 %{python_sitearch}/numba/
 %{python_sitearch}/numba-%{version}.dist-info
 

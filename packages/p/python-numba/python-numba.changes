@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri May 26 13:28:26 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.57.0:
+  * Support for Python 3.11 (minimum is moved to 3.8)
+  * Support for NumPy 1.24 (minimum is moved to 1.21)
+  * Python language support enhancements:
+    + Exception classes now support arguments that are not compile time
+      constant.
+    + The built-in functions hasattr and getattr are supported for compile
+      time constant attributes.
+    + The built-in functions str and repr are now implemented similarly to
+      their Python implementations. Custom __str__ and __repr__ functions
+      can be associated with types and work as expected.
+    + Numba’s unicode functionality in str.startswith now supports kwargs
+      start and end.
+    + min and max now support boolean types.
+    + Support is added for the dict(iterable) constructor. 
+- Dropped patches:
+  * numba-pr8620-np1.24.patch
+  * update-tbb-backend-calls-2021.6.patch
+- Rebased existing patch.
+
+-------------------------------------------------------------------
 Wed Apr 12 05:53:24 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Clean up leftover Python 3.8 gubbins, look forward to Python 3.11 support. 

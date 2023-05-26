@@ -323,4 +323,30 @@ Python2 support was turned off by accident.  I don't go out of my way to support
   supported.</comment>
     <requestid>1078560</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>026bad8633361ab8e8fd724c5db26554</srcmd5>
+    <version>0.57.0</version>
+    <time>1685124952</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.57.0:
+  * Support for Python 3.11 (minimum is moved to 3.8)
+  * Support for NumPy 1.24 (minimum is moved to 1.21)
+  * Python language support enhancements:
+    + Exception classes now support arguments that are not compile time
+      constant.
+    + The built-in functions hasattr and getattr are supported for compile
+      time constant attributes.
+    + The built-in functions str and repr are now implemented similarly to
+      their Python implementations. Custom __str__ and __repr__ functions
+      can be associated with types and work as expected.
+    + Numba’s unicode functionality in str.startswith now supports kwargs
+      start and end.
+    + min and max now support boolean types.
+    + Support is added for the dict(iterable) constructor. 
+- Dropped patches:
+  * numba-pr8620-np1.24.patch
+  * update-tbb-backend-calls-2021.6.patch
+- Rebased existing patch.</comment>
+    <requestid>1089198</requestid>
+  </revision>
 </revisionlist>
