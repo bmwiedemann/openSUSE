@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 24 19:26:35 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- Mozilla Firefox 113.0.2 (boo#1211696)
+  * Fixed: Fixed a bug which could cause Firefox to freeze on
+    some pages when loading them with the Developer Tools Web
+    Console open (bmo#1828026)
+  * Fixed: Fixed a bug which would cause the bookmarks and
+    history sidebars to not properly react to the browser window
+    being vertically resized (bmo#1831535)
+
+-------------------------------------------------------------------
 Sat May 13 20:56:05 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - Mozilla Firefox 113.0.1
