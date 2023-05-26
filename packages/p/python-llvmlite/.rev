@@ -236,4 +236,16 @@ This version works with llvm 4.</comment>
     <comment>- add python311.patch to build with python 3.11 as well</comment>
     <requestid>1067434</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>f169e1ac9667ddd79ffe3e878f3a111a</srcmd5>
+    <version>0.40.0</version>
+    <time>1685124951</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.40.0:
+  * This release predominantly upgrades to LLVM 14 and Python 3.11.
+  * Bindings to a large number of passes are added.
+  * The minimum supported Python version is now Python 3.8.
+- Drop patch python311.patch, not required.</comment>
+    <requestid>1089197</requestid>
+  </revision>
 </revisionlist>

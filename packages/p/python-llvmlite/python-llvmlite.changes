@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 26 13:34:11 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.40.0:
+  * This release predominantly upgrades to LLVM 14 and Python 3.11.
+  * Bindings to a large number of passes are added.
+  * The minimum supported Python version is now Python 3.8.
+- Drop patch python311.patch, not required. 
+
+-------------------------------------------------------------------
 Thu Feb 23 15:07:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add python311.patch to build with python 3.11 as well 

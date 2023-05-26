@@ -18,19 +18,17 @@
 
 %define modname llvmlite
 %{?!python_module:%define python_module() python3-%{**}}
-%define         llvm_major 11
+%define         llvm_major 14
 %define         skip_python2 1
 Name:           python-llvmlite
 # Note: this has to be in sync with Numba releases
-Version:        0.39.1
+Version:        0.40.0
 Release:        0
 Summary:        Lightweight wrapper around basic LLVM functionality
 License:        BSD-2-Clause
 URL:            https://llvmlite.pydata.org
 Source:         https://github.com/numba/llvmlite/archive/v%{version}.tar.gz#/llvmlite-%{version}.tar.gz
-# taken from https://github.com/numba/llvmlite/pull/869
-Patch1:         python311.patch
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake
 BuildRequires:  fdupes
