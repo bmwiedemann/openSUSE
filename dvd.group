@@ -2231,6 +2231,7 @@
     <package name="libmailutils9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libmalcontent-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmalcontent-ui-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libmana1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libmanette-0_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmariadb3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libmariadbd19" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
