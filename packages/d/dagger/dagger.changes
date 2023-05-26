@@ -1,4 +1,297 @@
 -------------------------------------------------------------------
+Fri May 26 05:18:55 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.6.0:
+  * docs: Updated dagger run command reference (#5180)
+  * Move CODE_OF_CONDUCT to the root of the repository (#5153)
+  * Scrub secret plaintext arg from progrock vertex. (#5186)
+  * Add expand option when adding environment variables (#5160)
+  * Add custom ExecError (#5184)
+  * docs: Improved cache miss recipe for Python (#5189)
+  * ci: Do not publish Rust SDK on push to `main` (#5187)
+  * docs: Added cache invalidation recipe to cookbook (#5168)
+  * docs: Added lima+nerdctl solution to alternatives guide (#5167)
+  * Fix error handling in truncation notice (#5179)
+  * ci: Fix publish-sdk-rust GitHub Actions workflow (#5178)
+  * docs: Fix typo in quickstart-hello (#5170)
+  * Increase truncation limit on error output (#5164)
+  * Prepend truncated error output with notice (#5163)
+  * chore: cleanup unused files and redundant Makefile commands
+  * ci: add large machine for rust lint
+  * ci: Add large machine to sdk/rust/test
+  * ci: removed test provisioning as it is a missing feature, will
+    require follow up
+  * chore: add authors optional Cargo.toml field
+  * chore: change rust sdk repo to dagger/dagger
+  * chore: remove unused ci jobs
+  * ci: with rest of workflows
+  * ci: add publish step
+  * ci: fix rust sdk stable image, now actual image
+  * feat: remove dagger-core from crates to simplify release
+    process
+  * ci: add bump function for the engine dependency version
+  * ci: add lint function for sdk:rust
+  * ci: add generate function for sdk:rust
+  * ci: add test setup for rust:sdk:test
+  * feat: build and from keep previous configuration. (#5052)
+  * use TUI for `dagger do`, `dagger query`, `dagger listen`
+    (#5151)
+  * Improve releasing during v0.5.3 (#5155)
+  * Add experimental warning to the Rust SDK
+  * Add CODEOWNERS for sdk/rust
+  * 🚀 chore(README.md): check off introducing thiserror for better
+    errors in plan for next release The plan for the next release
+    has been updated to reflect that the
+    [thiserror](https://docs.rs/thiserror/latest/thiserror/)
+    library has been introduced to improve error handling.
+  * Add thiserror instead of exposing eyre anonymous errors
+  * 🚀 chore(Cargo.toml): add thiserror crate to dependencies The
+    thiserror crate has been added to the dependencies in the
+    Cargo.toml file. This crate is used to derive custom error
+    types with automatic source location.
+  * chore(README.md): mark dagger run compatibility and upstream
+    update tasks as completed
+  * refactor(dagger-codegen): remove unnecessary mutability from
+    field variable in for loop
+  * feat: dagger-run support
+  * fix: remove _ from _type
+  * feat: set cache config in proper place
+  * feat: add inline export of variable
+  * feat: expose runtime
+  * chore: update ci
+  * feat: update to dagger-5.1
+  * chore: add new dagger-core-version
+  * Release dagger-core v0.2.10
+  * fix: delete other files/folder in downloads: #57
+  * docs: add checklist for missing features
+  * feat: with gen
+  * feat: with 0.4.2
+  * feat: fix codegen
+  * fix(deps): update rust crate futures to 0.3.28
+  * feat: add musl ci (#51)
+  * feat: with multi platform ci (#46)
+  * feat: extract client (#48)
+  * feat: rename projects to point to github/kjuulh/dagger-sdk
+  * feat: with loggers
+  * fix: stable input fields and args
+  * chore: fmt
+  * fix: stable enum entries
+  * refactor: add basic cargo make gen command
+  * refactor: move dagger-rs and adopt workspace.deps
+  * Release dagger-sdk v0.2.19
+  * chore: fix release version
+  * fix: serialization of enum args for graphql (#34)
+  * feat: update readme
+  * Release dagger-sdk v0.2.17
+  * fix: make sure tests have a command to execute
+  * fix: remove unused imports
+  * refactor: remove export and instead use exitcode
+  * refactor: move issues to actual tests and refactor
+  * fix: add support for String as well
+  * refactor: move issues to another folder
+  * fix: add public tuple field and into func
+  * replication(issue-30): initial issue
+  * fix(deps): update rust crate futures to 0.3.27
+  * docs: add basic contributing
+  * docs: add architecture
+  * fix: proper readme
+  * Release dagger-core v0.2.8, dagger-sdk v0.2.16
+  * chore: fix tasks
+  * feat: with dagger-engine v.0.4.0
+  * feat: bump version
+  * docs(sdk): fix missing await in connect
+  * feat: add tests to sdk
+  * feat: set internal warnings as errors
+  * feat: introduce tests again
+  * Release dagger-core v0.2.7, dagger-sdk v0.2.15
+  * fix: set deserialize on enums as well
+  * feat: update to dagger-v0.3.13
+  * Release dagger-sdk v0.2.14
+  * chore(sdk): fix whitespace
+  * Release dagger-codegen v0.2.8, dagger-sdk v0.2.13
+  * chore(sdk): ran clippy
+  * feat(sdk): with clone
+  * Release dagger-core v0.2.6, dagger-codegen v0.2.7, dagger-sdk
+    v0.2.12
+  * chore(sdk): ran clippy
+  * fix(core): cli session keep session alive
+  * fix(ci): set path to local dagger sdk
+  * Release dagger-core v0.2.5, dagger-sdk v0.2.12, dagger-codegen
+    v0.2.7
+  * fix(all): race condition in process
+  * revert disable caching
+  * disable cache
+  * chore(ci): with dagger v0.2.11
+  * Release dagger-core v0.2.4, dagger-codegen v0.2.6, dagger-sdk
+    v0.2.11
+  * fix(core): remove blocking
+  * Release dagger-core v0.2.4, dagger-codegen v0.2.6, dagger-sdk
+    v0.2.11
+  * chore(sdk): ran clippy
+  * fix(all): remove blocking
+  * Release ci v0.1.0
+  * docs(ci): add changelog
+  * chore(ci): with actual await on connect
+  * chore(ci): with dagger v0.2.10
+  * Release dagger-rs v0.2.10
+  * Release dagger-sdk v0.2.10
+  * fix(docs): changelog
+  * Adjusting changelogs prior to release of dagger-sdk v0.2.10
+  * update changelog
+  * Release dagger-rs v0.2.10
+  * Release dagger-rs v0.2.10
+  * Release dagger-rs v0.2.10
+  * fix(ci): with older version of dagger-sdk
+  * fix(core): Fix async panic on blocking #19
+  * chore(ci): with async/await
+  * Release dagger-sdk v0.2.8, dagger-codegen v0.2.5
+  * Release dagger-sdk v0.2.7
+  * docs: check async variant
+  * feat(sdk,core): Use async runtime instead of blocking.
+  * chore(ci): update ci to use dagger-sdk v0.2.6
+  * Release dagger-sdk v0.2.6
+  * docs: fix readme
+  * Release dagger-sdk v0.2.5, dagger-codegen v0.2.4
+  * fix: cargo clippy
+  * fix: roadmap item api stabilization
+  * Release dagger-sdk v0.2.4
+  * Release dagger-sdk v0.2.3, dagger-codegen v0.2.3, dagger-rs
+    v0.2.9
+  * feat(core,sdk): remove unnecessary option returns
+  * feat(ci): add gha caching
+  * feat: clear release-cycle roadmap item
+  * feat(ci): lint pr
+  * feat(ci): ci with dagger v0.2.2
+  * Release dagger-core v0.2.2, dagger-codegen v0.2.2, dagger-rs
+    v0.2.8
+  * with bin cache
+  * fix(deps): update rust crate dagger-sdk to 0.2.1
+  * add cache
+  * fix(ci): fix github secret naming
+  * run everywhere
+  * fix(ci): with secret
+  * feat(ci): with sccache
+  * test change
+  * Release dagger-sdk v0.2.1
+  * add dagger-sdk changelog
+  * Release dagger-rs v0.2.7, dagger-sdk v0.2.1
+  * fix: with test changes
+  * Release dagger-rs v0.2.6
+  * fix: cleanup
+  * Release dagger-rs v0.2.5
+  * Release dagger-rs v0.2.4
+  * fix: trying agian
+  * Release dagger-rs v0.2.3
+  * feat: some test
+  * Release dagger-rs v0.2.2
+  * with test commit
+  * feature: trying smart-release
+  * Release dagger-core v0.2.1, dagger-codegen v0.2.1, dagger-rs
+    v0.2.1
+  * add changelogs
+  * Release dagger-core v0.2.1, dagger-codegen v0.2.1, dagger-rs
+    v0.2.1
+  * update changelog
+  * Adjusting changelogs prior to release of dagger-core v0.2.1,
+    dagger-codegen v0.2.1, dagger-rs v0.2.1
+  * add color eyre
+  * feature with workspace (#8)
+  * add ci (#7)
+  * add ci
+  * v0.2.6
+  * remove with commit
+  * fix(deps): update all dependencies (#5)
+  * fix: wip action
+  * fix: wip
+  * with personal github token
+  * Revert "merge releases"
+  * fix: add merge
+  * merge releases
+  * bump version
+  * with github token
+  * only allow main
+  * fix: test creator of tags
+  * add creator of tags
+  * add create release
+  * with changelog
+  * remove toolchain
+  * with actual versions
+  * with publish
+  * codegen also with repository
+  * with repo
+  * with repo
+  * with readme and license
+  * with wildcard version
+  * cargo version 0.2.0
+  * add version to main
+  * bump version
+  * document usage
+  * fix all clippy
+  * add with dockerfile
+  * with caching
+  * add more quickstart
+  * build the application
+  * add test-the-application
+  * with println
+  * feature/add impl (#6)
+  * fmt tests
+  * add tests
+  * pull out args wip
+  * add async roadmap item
+  * context and querier done
+  * unpack response
+  * context roadmap item
+  * tested full flow initially
+  * move code to dagger-core
+  * with selection impl default
+  * fix warnings
+  * add roadmap items
+  * fix test
+  * test marshaller
+  * test marshaller
+  * implement sort by name and type
+  * fix optional types for real
+  * fix description
+  * with proper optional types
+  * set proper option type
+  * add querier roadmap item
+  * add fields
+  * add input_fields
+  * with objects
+  * remove hardcoded test
+  * add documentation roadmap item
+  * add architecture
+  * clippy: fix
+  * formatting
+  * remove dummy string
+  * Add querier
+  * with status
+  * with input objects
+  * with enum
+  * with codegen output
+  * added scalars
+  * with scalars
+  * split out codegen parts
+  * add dagger-sdk
+  * add collection of types
+  * with type filtering
+  * with fixes
+  * add todo for not dropping proc
+  * can get schema
+  * Add renovate.json
+  * with session
+  * with engine
+  * Can download dagger
+  * v0.1.1
+  * with disclaimer
+  * with out keeper
+  * set readme and license
+  * more allow dead_code
+  * allow dead_code
+  * without integration
+  * Add base sdk
+
+-------------------------------------------------------------------
 Fri May 19 04:57:47 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.5.3:
