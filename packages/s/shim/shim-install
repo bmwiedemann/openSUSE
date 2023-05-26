@@ -370,20 +370,23 @@ prepare_cryptodisk () {
     return
   fi
 
-  tpm_pcr_bank="${GRUB_TPM2_PCR_BANK:-sha256}"
-  tpm_pcr_list="${GRUB_TPM2_PCR_LIST:-0,2,4,7,9}"
   tpm_sealed_key="${GRUB_TPM2_SEALED_KEY}"
 
   declare -g TPM_PCR_SNAPSHOT_TAKEN
 
   if [ -z "$TPM_PCR_SNAPSHOT_TAKEN" ]; then
     TPM_PCR_SNAPSHOT_TAKEN=1
-    echo "tpm_record_pcrs 0-9"
+
+    # Check if tpm_record_pcrs is available and set the command to
+    # grub.cfg.
+    if grep -q "tpm_record_pcrs" ${datadir}/grub2/${arch}-efi/command.lst ; then
+      echo "tpm_record_pcrs 0-9"
+    fi
   fi
 
   cat <<EOF
-tpm2_key_protector_init -b $tpm_pcr_bank -p $tpm_pcr_list -k \$prefix/$tpm_sealed_key
-if ! cryptomount -u $uuid -k tpm2; then
+tpm2_key_protector_init -T \$prefix/$tpm_sealed_key
+if ! cryptomount -u $uuid --protector tpm2; then
     cryptomount -u $uuid
 fi
 EOF

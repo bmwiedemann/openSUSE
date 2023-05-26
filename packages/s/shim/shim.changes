@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 15 03:28:47 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update shim-install to amend full disk encryption support
+    b540061e041b  Adopt TPM 2.0 Key File for grub2 TPM 2.0 protector
+    f2e8143ce831  Use the long name to specify the grub2 key protector
+    72830120e5ea  cryptodisk: support TPM authorized policies
+    49e7a0d307f3  Do not use tpm_record_pcrs unless the command is in command.lst
+
+-------------------------------------------------------------------
 Mon Apr 10 05:04:33 UTC 2023 - Joey Lee <jlee@suse.com>
 
 - Removed POST_PROCESS_PE_FLAGS=-N from the build command in shim.spec to
