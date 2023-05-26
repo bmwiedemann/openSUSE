@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu May 25 07:44:12 UTC 2023 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 4.0.6:
+  * CVE-2023-2854: BLF file parser crash (boo#1211708).
+  * CVE-2023-2855: Candump log file parser crash (boo#1211703).
+  * CVE-2023-2856: VMS TCPIPtrace file parser crash (boo#1211707).
+  * CVE-2023-2857: BLF file parser crash (boo#1211705).
+  * CVE-2023-2858: NetScaler file parser crash (boo#1211706).
+  * CVE-2023-0666: RTPS dissector crash (boo#1211709).
+  * CVE-2023-0668: IEEE C37.118 Synchrophasor dissector crash (boo#1211710).
+  * GDSDB dissector infinite loop.
+  * XRA dissector infinite loop.
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-4.0.6.html
+
+-------------------------------------------------------------------
 Thu Apr 13 09:45:32 UTC 2023 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.0.5:
