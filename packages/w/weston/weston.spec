@@ -1,7 +1,7 @@
 #
 # spec file for package weston
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,8 @@
 
 Name:           weston
 %define lname	libweston0
-%define major   11
-%define realver	11.0.1
-Version:        11
+%define major   12
+Version:        12.0.1
 Release:        0
 Summary:        Wayland Reference Compositor
 License:        CC-BY-SA-3.0 AND MIT
@@ -28,8 +27,8 @@ Group:          System/X11/Servers
 URL:            https://wayland.freedesktop.org/
 #Git-Clone:	git://anongit.freedesktop.org/wayland/weston
 #Git-Web:	https://cgit.freedesktop.org/wayland/weston/
-Source:         https://gitlab.freedesktop.org/wayland/weston/uploads/f5648c818fba5432edc3ea63c4db4813/weston-11.0.1.tar.xz
-Source2:        https://gitlab.freedesktop.org/wayland/weston/uploads/bb54e28b5ee47aaccb30a8ffbc31f977/weston-11.0.1.tar.xz.sig
+Source:         https://gitlab.freedesktop.org/wayland/weston/-/releases/%version/downloads/weston-%version.tar.xz
+Source2:        https://gitlab.freedesktop.org/wayland/weston/-/releases/%version/downloads/weston-%version.tar.xz.sig
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  autoconf >= 2.64
 BuildRequires:  automake >= 1.11
@@ -55,6 +54,7 @@ BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.108
 BuildRequires:  pkgconfig(libevdev)
 BuildRequires:  pkgconfig(libinput) >= 0.8.0
+BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libseat)
 BuildRequires:  pkgconfig(libsystemd) >= 209
 BuildRequires:  pkgconfig(libudev) >= 136
@@ -68,6 +68,7 @@ BuildRequires:  pkgconfig(wayland-scanner)
 BuildRequires:  pkgconfig(wayland-server) >= 1.18.0
 BuildRequires:  pkgconfig(xcb) >= 1.8
 BuildRequires:  pkgconfig(xcb-composite)
+BuildRequires:  pkgconfig(xcb-cursor)
 BuildRequires:  pkgconfig(xcb-shm)
 BuildRequires:  pkgconfig(xcb-xfixes)
 BuildRequires:  pkgconfig(xcb-xkb) >= 1.9
@@ -122,13 +123,13 @@ This package contains all necessary include files and libraries needed
 to develop plugins for Weston.
 
 %prep
-%autosetup -n %name-%realver -p1
+%autosetup -p1
 
 %build
 echo "Workaround broken weston that fails to cope with -Wl,--no-undefined injected by meson/ninja"
 export LDFLAGS="%{?build_ldflags} -Wl,-z,undefs"
 %meson -Ddemo-clients=false -Dremoting=false -Dsimple-clients= \
-	-Dtest-junit-xml=false -Dpipewire=false \
+	-Dtest-junit-xml=false -Dpipewire=false -Dbackend-vnc=false \
 	--includedir="%_includedir/%name"
 %meson_build
 

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu May 25 19:33:31 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 12.0.1
+  * Resolve build failure relating to xkbcommon & wayland
+    pkg-config CFLAGS
+- Delete build.patch (merged)
+
+-------------------------------------------------------------------
+Wed May 17 20:54:48 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 12
+  * backend-drm: multiple GPU support, by using
+    `--additional-devices` to specify secondary DRM devices, in
+    the form of a comma-separated list of devices.
+  * backend-drm: use libdisplay-info as a better alternative for
+    parsing EDID.
+  * protocol: new screenshooter protocol: weston-output-capture.
+    This new protocol is as a Weston public extension. The older
+    weston-screenshooter protocol has been removed.
+  * compositor: added a short-form for loading backends -- this
+    allows the use of `--backend=headless` instead of
+    `--backend=headless-backend.so`. Short-form for shells was
+    also added: pass `--shell=foo`, rather than
+    `--shell=foo-shell.so`. Renderers can be specified the same,
+    by using `--renderer=gl|pixman`.
+  * libweston-desktop DSO has been incorporated into libweston.
+    Linking now with libweston would provide access to the former
+    libweston-desktop library. Users of libweston-desktop would
+    need to adjust their headers to <libweston/desktop.h> rather
+    than using <libweston-desktop/libweston-desktop.h>. The API
+    itself remains the same.
+- Add build.patch
+
+-------------------------------------------------------------------
 Fri Mar 24 20:57:29 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop pkgconfig(cairo-egl) BuildRequires: No longer needed, nor
