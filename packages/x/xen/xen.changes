@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 22 07:52:57 MDT 2023 - carnold@suse.com
+
+- bsc#1211433 - VUL-0: CVE-2022-42336: xen: Mishandling of guest
+  SSBD selection on AMD hardware (XSA-431)
+  64639e84-amd-fix-legacy-setting-of-SSBD-on-AMD-Family-17h.patch
+
+-------------------------------------------------------------------
 Thu May  4 11:22:27 MDT 2023 - carnold@suse.com
 
 - bsc#1210570 - gcc-13 realloc use-after-free analysis error

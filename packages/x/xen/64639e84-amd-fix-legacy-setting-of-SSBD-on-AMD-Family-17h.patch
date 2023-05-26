@@ -1,0 +1,87 @@
+Subject: x86/amd: fix legacy setting of SSBD on AMD Family 17h
+From: Roger Pau Monné roger.pau@citrix.com Tue May 16 17:22:35 2023 +0200
+Date: Tue May 16 17:22:35 2023 +0200:
+Git: 66c930ceac3989b6dc6031bfc30e1e894fc6aebe
+
+The current logic to set SSBD on AMD Family 17h and Hygon Family 18h
+processors requires that the setting of SSBD is coordinated at a core
+level, as the setting is shared between threads.  Logic was introduced
+to keep track of how many threads require SSBD active in order to
+coordinate it, such logic relies on using a per-core counter of
+threads that have SSBD active.
+
+Given the current logic, it's possible for a guest to under or
+overflow the thread counter, because each write to VIRT_SPEC_CTRL.SSBD
+by the guest gets propagated to the helper that does the per-core
+active accounting.  Overflowing the counter is not so much of an
+issue, as this would just make SSBD sticky.
+
+Underflowing however is more problematic: on non-debug Xen builds a
+guest can perform empty writes to VIRT_SPEC_CTRL that would cause the
+counter to underflow and thus the value gets saturated to the max
+value of unsigned int.  At which points attempts from any thread to
+set VIRT_SPEC_CTRL.SSBD won't get propagated to the hardware anymore,
+because the logic will see that the counter is greater than 1 and
+assume that SSBD is already active, effectively loosing the setting
+of SSBD and the protection it provides.
+
+Fix this by introducing a per-CPU variable that keeps track of whether
+the current thread has legacy SSBD active or not, and thus only
+attempt to propagate the value to the hardware once the thread
+selected value changes.
+
+This is XSA-431 / CVE-2022-42336
+
+Fixes: b2030e6730a2 ('amd/virt_ssbd: set SSBD at vCPU context switch')
+Reported-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Signed-off-by: Roger Pau Monné <roger.pau@citrix.com>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+master commit: eda98ea870803ea204a1928519b3f21ec6a679b6
+master date: 2023-05-16 17:17:24 +0200
+
+diff --git a/xen/arch/x86/cpu/amd.c b/xen/arch/x86/cpu/amd.c
+index 1ddb55cbe5..b6a20d375a 100644
+--- a/xen/arch/x86/cpu/amd.c
++++ b/xen/arch/x86/cpu/amd.c
+@@ -783,12 +783,23 @@ bool __init amd_setup_legacy_ssbd(void)
+ 	return true;
+ }
+ 
++/*
++ * legacy_ssbd is always initialized to false because when SSBD is set
++ * from the command line guest attempts to change it are a no-op (see
++ * amd_set_legacy_ssbd()), whereas when SSBD is inactive hardware will
++ * be forced into that mode (see amd_init_ssbd()).
++ */
++static DEFINE_PER_CPU(bool, legacy_ssbd);
++
++/* Must be called only when the SSBD setting needs toggling. */
+ static void core_set_legacy_ssbd(bool enable)
+ {
+ 	const struct cpuinfo_x86 *c = &current_cpu_data;
+ 	struct ssbd_ls_cfg *status;
+ 	unsigned long flags;
+ 
++	BUG_ON(this_cpu(legacy_ssbd) == enable);
++
+ 	if ((c->x86 != 0x17 && c->x86 != 0x18) || c->x86_num_siblings <= 1) {
+ 		BUG_ON(!set_legacy_ssbd(c, enable));
+ 		return;
+@@ -816,12 +827,17 @@ void amd_set_legacy_ssbd(bool enable)
+ 		 */
+ 		return;
+ 
++	if (this_cpu(legacy_ssbd) == enable)
++		return;
++
+ 	if (cpu_has_virt_ssbd)
+ 		wrmsr(MSR_VIRT_SPEC_CTRL, enable ? SPEC_CTRL_SSBD : 0, 0);
+ 	else if (amd_legacy_ssbd)
+ 		core_set_legacy_ssbd(enable);
+ 	else
+ 		ASSERT_UNREACHABLE();
++
++	this_cpu(legacy_ssbd) = enable;
+ }
+ 
+ /*

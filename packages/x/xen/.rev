@@ -2830,4 +2830,12 @@
     <comment>Update to Xen version 4.17.1 bug fix release. Additional fixes including fix for security bug bsc#1210315 CVE-2022-42335</comment>
     <requestid>1085553</requestid>
   </revision>
+  <revision rev="332" vrev="1">
+    <srcmd5>32d801a2dc2fda17d63bd10e6c45f19c</srcmd5>
+    <version>4.17.1_04</version>
+    <time>1685124925</time>
+    <user>dimstar_suse</user>
+    <comment>Security fix for bsc#1211433, CVE-2022-42336, XSA-431</comment>
+    <requestid>1089051</requestid>
+  </revision>
 </revisionlist>
