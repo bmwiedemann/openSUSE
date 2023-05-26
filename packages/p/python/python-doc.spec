@@ -27,8 +27,8 @@ URL:            https://www.python.org/
 Source0:        %{tarname}.tar.xz
 # docs for current version are regenerated every day
 # this messes with autobuild "file changed" checks
-#Source2:        https://docs.python.org/%{version}/archives/python-%{pyver}-docs-pdf-a4.tar.bz2
-#Source3:        https://docs.python.org/%{version}/archives/python-%{pyver}-docs-pdf-letter.tar.bz2
+#Source2:        https://docs.python.org/%%{version}/archives/python-%%{pyver}-docs-pdf-a4.tar.bz2
+#Source3:        https://docs.python.org/%%{version}/archives/python-%%{pyver}-docs-pdf-letter.tar.bz2
 Source2:        python-%{version}-docs-pdf-a4.tar.bz2
 Source3:        python-%{version}-docs-pdf-letter.tar.bz2
 # For Patch 66
@@ -145,6 +145,9 @@ Patch74:        skip_unverified_test.patch
 # blocklist bypass via the urllib.parse component when supplying
 # a URL that starts with blank characters
 Patch75:        CVE-2023-24329-blank-URL-bypass.patch
+# PATCH-FIX-OPENSUSE PygmentsBridge-trime_doctest_flags.patch mcepl@suse.com
+# Build documentation even without PygmentsBridge.trim_doctest_flags
+Patch76:        PygmentsBridge-trime_doctest_flags.patch
 # COMMON-PATCH-END
 Provides:       pyth_doc = %{version}
 Provides:       pyth_ps = %{version}
@@ -229,6 +232,7 @@ Python, and Macintosh Module Reference in PDF format.
 %patch74 -p1
 %endif
 %patch75 -p1
+%patch76 -p1
 
 # For patch 66
 cp -v %{SOURCE66} Lib/test/recursion.tar
@@ -270,7 +274,7 @@ done
 %dir %{_docdir}/python
 %doc %{_docdir}/python/Misc
 %doc %{_docdir}/python/html
-#%doc %{_docdir}/python/README
+#%%doc %%{_docdir}/python/README
 
 %files pdf
 %defattr(644,root,root,755)

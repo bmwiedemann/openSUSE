@@ -2832,4 +2832,1125 @@ However, upstream development now focuses on 3.x series.
     <comment></comment>
     <requestid>1085115</requestid>
   </revision>
+  <revision rev="183" vrev="34">
+    <srcmd5>4a1b20f3b365a7aaa6f3e9e93a152ff9</srcmd5>
+    <version>2.7.18</version>
+    <time>1685124894</time>
+    <user>dimstar_suse</user>
+    <comment>- Add PygmentsBridge-trime_doctest_flags.patch to allow build of
+  the documentation even with the current Sphinx. (SUSE-ONLY
+  PATCH, DO NOT SEND UPSTREAM!)
+- Add PygmentsBridge-trime_doctest_flags.patch to allow build of
+  the documentation even with the current Sphinx. (SUSE-ONLY
+  PATCH, DO NOT SEND UPSTREAM!)
+- Add PygmentsBridge-trime_doctest_flags.patch to allow build of
+  the documentation even with the current Sphinx. (SUSE-ONLY
+  PATCH, DO NOT SEND UPSTREAM!)
+- Why in the world we download from HTTP?
+- Enable --with-system-ffi for non-standard architectures.
+- SLE-12 builds nis.so as well.
+- Add CVE-2023-24329-blank-URL-bypass.patch (CVE-2023-24329,
+  bsc#1208471) blocklists bypass via the urllib.parse component
+  when supplying a URL that starts with blank characters
+- Disable NIS for new products, it's deprecated and gets removed
+- Add skip_unverified_test.patch because apparently switching off
+  SSL verification doesn't work on older SLE.
+- Restore python-2.7.9-sles-disable-verification-by-default.patch
+  for SLE-12.
+- Add CVE-2022-45061-DoS-by-IDNA-decode.patch to avoid
+  CVE-2022-45061 (bsc#1205244) allowing DoS by IDNA decoding
+  extremely long domain names.
+- Add bpo34990-2038-problem-compileall.patch making compileall.py
+  compliant with year 2038 (bsc#1202666, gh#python/cpython#79171),
+  backport of fix to Python 2.7.
+- Add patch CVE-2021-28861-double-slash-path.patch:
+  * BaseHTTPServer: Fix an open redirection vulnerability in the HTTP server
+    when an URI path starts with //. (bsc#1202624, CVE-2021-28861)
+- Add CVE-2015-20107-mailcap-unsafe-filenames.patch to avoid
+  CVE-2015-20107 (bsc#1198511, gh#python/cpython#68966), the
+  command injection in the mailcap module.
+- Filter out executable-stack error that is triggered for i586
+  target.
+- Update bundled pip wheel to the latest SLE version patched
+  against bsc#1186819 (CVE-2021-3572).
+- Recover again proper value of %python2_package_prefix
+  (bsc#1175619).
+- BuildRequire rpm-build-python: The provider to inject python(abi)
+  has been moved there. rpm-build pulls rpm-build-python
+  automatically in when building anything against python3-base, but
+  this implies that the initial build of python3-base does not
+  trigger the automatic installation.
+- Older SLE versions should use old OpenSSL.
+- Add CVE-2022-0391-urllib_parse-newline-parsing.patch
+  (bsc#1195396, CVE-2022-0391, bpo#43882) sanitizing URLs
+  containing ASCII newline and tabs in urlparse.
+- Add CVE-2021-4189-ftplib-trust-PASV-resp.patch (bsc#1194146,
+  bpo#43285, CVE-2021-4189, gh#python/cpython#24838) make ftplib
+  not trust the PASV response.
+- build against openssl 1.1.x (incompatible with openssl 3.0x)
+  for now.
+- on sle12, python2 modules will still be called python-xxxx until EOL,
+  for newer SLE versions they will be python2-xxxx
+- BuildRequire rpm-build-python: The provider to inject python(abi)
+  has been moved there. rpm-build pulls rpm-build-python
+  automatically in when building anything against python3-base, but
+  this implies that the initial build of python3-base does not
+  trigger the automatic installation.
+- Add CVE-2019-20907_tarfile-inf-loop.patch fixing bsc#1174091
+  (CVE-2019-20907, bpo#39017) avoiding possible infinite loop
+  in specifically crafted tarball.
+  Add recursion.tar as a testing tarball for the patch.
+- Provide the newest setuptools wheel (bsc#1176262,
+  CVE-2019-20916) in their correct form (bsc#1180686).
+- Add CVE-2020-26116-httplib-header-injection.patch fixing bsc#1177211
+  (CVE-2020-26116, bpo#39603) no longer allowing special characters in
+  the method parameter of HTTPConnection.putrequest in httplib, stopping
+  injection of headers. Such characters now raise ValueError. 
+- Renamed patch for assigned CVE:
+  * bpo44022-fix-http-client-infinite-line-reading-after-a-HTTP-100-Continue.patch -&gt;
+    CVE-2021-3737-fix-HTTP-client-infinite-line-reading-after-a-HTTP-100-Continue.patch
+    (boo#1189241, CVE-2021-3737)
+- Renamed patch for assigned CVE:
+  * bpo43075-fix-ReDoS-in-request.patch -&gt; CVE-2021-3733-fix-ReDoS-in-request.patch
+    (boo#1189287, CVE-2021-3733)
+- Fix python-doc build (bpo#35293):
+  * sphinx-update-removed-function.patch
+- Update documentation formatting for Sphinx 3.0 (bpo#40204).
+- Add bpo43075-fix-ReDoS-in-request.patch which fixes ReDoS in
+  request (bpo#43075, boo#1189287).
+- Add missing security announcement to
+  bpo44022-fix-http-client-infinite-line-reading-after-a-HTTP-100-Continue.patch.
+- Add bpo44022-fix-http-client-infinite-line-reading-after-a-HTTP-100-Continue.patch
+  which fixes http client infinite line reading (DoS) after a http 
+  100 (bpo#44022, boo#1189241).
+- Modify Lib/ensurepip/__init__.py to contain the same version
+  numbers as are in reality the ones in the bundled wheels
+  (bsc#1187668).
+- Add CVE-2021-23336-only-amp-as-query-sep.patch which forbids
+  use of semicolon as a query string separator (bpo#42967,
+  bsc#1182379, CVE-2021-23336).
+- Add CVE-2021-3177-buf_ovrfl_PyCArg_repr.patch fixing
+  bsc#1181126 (CVE-2021-3177) buffer overflow in PyCArg_repr in
+  _ctypes/callproc.c, which may lead to remote code execution.
+- (bsc#1180125) We really don't Require python-rpm-macros package.
+  Unnecessary dependency.
+- Add patch configure_PYTHON_FOR_REGEN.patch which makes
+  configure.ac to consider the correct version of
+  PYTHON_FO_REGEN (bsc#1078326).
+- Use python3-Sphinx on anything more recent than SLE-15 (inclusive).
+- Update to 2.7.18, final release of Python 2. Ever.:
+  - Newline characters have been escaped when performing uu
+    encoding to prevent them from overflowing into to content
+    section of the encoded file. This prevents malicious or
+    accidental modification of data during the decoding process.
+  - Fixes a ReDoS vulnerability in `http.cookiejar`. Patch by Ben
+    Caller.
+  - Fixed line numbers and column offsets for AST nodes for calls
+    without arguments in decorators.
+  - bsc#1155094 (CVE-2019-18348) Disallow control characters in
+    hostnames in http.client. Such potentially malicious header
+    injection URLs now cause a InvalidURL to be raised.
+  - Fix urllib.urlretrieve failing on subsequent ftp transfers
+    from the same host.
+  - Fix problems identified by GCC's -Wstringop-truncation
+    warning.
+  - AddRefActCtx() was needlessly being checked for failure in
+    PC/dl_nt.c.
+  - Prevent failure of test_relative_path in test_py_compile on
+    macOS Catalina.
+  - Fixed possible leak in `PyArg_Parse` and similar
+    functions for format units &quot;es#&quot; and &quot;et#&quot; when the macro
+    `PY_SSIZE_T_CLEAN` is not defined.
+- Remove upstreamed patches:
+  - CVE-2019-18348-CRLF_injection_via_host_part.patch
+  - python-2.7.14-CVE-2017-1000158.patch
+  - CVE-2018-14647_XML_SetHashSalt-in_elementtree.patch
+  - CVE-2018-1061-DOS-via-regexp-difflib.patch
+  - CVE-2019-10160-netloc-port-regression.patch
+  - CVE-2019-16056-email-parse-addr.patch
+- Add CVE-2019-9674-zip-bomb.patch to improve documentation
+  warning about dangers of zip-bombs and other security problems
+  with zipfile library. (bsc#1162825 CVE-2019-9674)
+- Change to Requires: libpython%{so_version} == %{version}-%{release}
+  to python-base to keep both packages always synchronized (add
+  %{so_version}) (bsc#1162224).
+- Add CVE-2020-8492-urllib-ReDoS.patch fixing the security bug
+  &quot;Python urrlib allowed an HTTP server to conduct Regular
+  Expression Denial of Service (ReDoS)&quot; (bsc#1162367)
+- Provide python-testsuite from devel subkg to ease py2-&gt;py3
+  dependencies
+- Add python-2.7.17-switch-off-failing-SSL-tests.patch to switch
+  off tests coliding with the combination of modern Python and
+  ancient OpenSSL on SLE-12.
+- libnsl is required only on more recent SLEs and openSUSE, older
+  glibc supported NIS on its own.
+- Add provides in gdbm subpackage to provide dbm symbols. This
+  allows us to use %%{python_module dbm} as a dependency and have
+  it properly resolved for both python2 and python3
+- Drop appstream-glib BuildRequires and no longer call
+  appstream-util validate-relax: eliminate a build cycle between
+  as-glib and python. The only thing would would gain by calling
+  as-uril is catching if upstream breaks the appdata.xml file in a
+  future release. Considering py2 is dying, chances for a new
+  release, let alone one breaking the xml file, are slim.
+- Unify packages among openSUSE:Factory and SLE versions.
+  (bsc#1159035) ; add missing records to this changelog.
+- Add idle.desktop and idle.appdata.xml to provide IDLE in menus
+  (bsc#1153830)
+- Add python2_split_startup Provide to make it possible to
+  conflict older packages by shared-python-startup.
+- Move /etc/pythonstart script to shared-python-startup
+  package. 
+- Add bpo-36576-skip_tests_for_OpenSSL-111.patch (originally from
+  bpo#36576) skipping tests failing with OpenSSL 1.1.1. Fixes
+  bsc#1149792
+- Add adapted-from-F00251-change-user-install-location.patch fixing
+  pip/distutils to install into /usr/local.
+- Update to 2.7.17:
+  - a bug fix release in the Python 2.7.x series. It is expected
+    to be the penultimate release for Python 2.7.
+- Removed patches included upstream:
+  - CVE-2018-20852-cookie-domain-check.patch
+  - CVE-2019-16935-xmlrpc-doc-server_title.patch
+  - CVE-2019-9636-netloc-no-decompose-characters.patch
+  - CVE-2019-9947-no-ctrl-char-http.patch
+  - CVE-2019-9948-avoid_local-file.patch
+  - python-2.7.14-CVE-2018-1000030-1.patch
+  - python-2.7.14-CVE-2018-1000030-2.patch
+- Renamed remove-static-libpython.diff and python-bsddb6.diff to
+  remove-static-libpython.patch and python-bsddb6.patch to unify
+  filenames.
+- Add CVE-2019-16935-xmlrpc-doc-server_title.patch fixing
+  bsc#1153238 (aka CVE-2019-16935) fixing a reflected XSS in
+  python/Lib/DocXMLRPCServer.py
+- Add bpo36302-sort-module-sources.patch (boo#1041090)
+- Add CVE-2019-16056-email-parse-addr.patch fixing the email
+  module wrongly parses email addresses [bsc#1149955,
+  CVE-2019-16056]
+- boo#1141853 (CVE-2018-20852) add
+  CVE-2018-20852-cookie-domain-check.patch fixing
+  http.cookiejar.DefaultPolicy.domain_return_ok which did not
+  correctly validate the domain: it could be tricked into sending
+  cookies to the wrong server.
+- Skip test_urllib2_localnet that randomly fails in OBS
+- bsc#1138459: add CVE-2019-10160-netloc-port-regression.patch
+  which fixes regression introduced by the previous patch.
+  (CVE-2019-10160)
+  Upstream gh#python/cpython#13812
+-  Set _lto_cflags to nil as it will prevent to propage LTO
+   for Python modules that are built in a separate package.
+- bsc#1130840 (CVE-2019-9947): add CVE-2019-9947-no-ctrl-char-http.patch
+  Address the issue by disallowing URL paths with embedded
+  whitespace or control characters through into the underlying
+  http client request. Such potentially malicious header
+  injection URLs now cause a ValueError to be raised.
+- bsc#1130847 (CVE-2019-9948) add CVE-2019-9948-avoid_local-file.patch 
+  removing unnecessary (and potentially harmful) URL scheme
+  local-file://.
+- bsc#1129346: add CVE-2019-9636-netloc-no-decompose-characters.patch
+  Characters in the netloc attribute that decompose under NFKC
+  normalization (as used by the IDNA encoding) into any of ``/``,
+  ``?``, ``#``, ``@``, or ``:`` will raise a ValueError. If the
+  URL is decomposed before parsing, or is not a Unicode string,
+  no error will be raised (CVE-2019-9636).
+  Upstream commits e37ef41 and 507bd8c.
+- (bsc#1111793) Update to 2.7.16:
+  * bugfix-only release: complete list of changes on
+    https://github.com/python/cpython/blob/2.7/Misc/NEWS.d/2.7.16rc1.rst
+  * Removed openssl-111.patch and CVE-2018-1000802-shutil_use_subprocess_no_spawn.patch
+    which are fully included in the tarball.
+  * Updated patches to apply cleanly:
+        CVE-2019-5010-null-defer-x509-cert-DOS.patch
+        bpo36160-init-sysconfig_vars.patch
+        do-not-use-non-ascii-in-test_ssl.patch
+        openssl-111-middlebox-compat.patch
+        openssl-111-ssl_options.patch
+        python-2.5.1-sqlite.patch
+        python-2.6-gettext-plurals.patch
+        python-2.7-dirs.patch
+        python-2.7.2-fix_date_time_compiler.patch
+        python-2.7.4-canonicalize2.patch
+        python-2.7.5-multilib.patch
+        python-2.7.9-ssl_ca_path.patch
+        python-bsddb6.diff
+        remove-static-libpython.patch
+  * Update python-2.7.5-multilib.patch to pass with new platlib
+    regime.
+- bsc#1109847 (CVE-2018-14647): add
+  CVE-2018-14647_XML_SetHashSalt-in_elementtree.patch fixing
+  bpo-34623.
+- bsc#1073748: add bpo-29347-dereferencing-undefined-pointers.patch
+  PyWeakref_NewProxy@Objects/weakrefobject.c creates new isntance
+  of PyWeakReference struct and does not intialize wr_prev and
+  wr_next of new isntance. These pointers can have garbage and
+  point to random memory locations. 
+  Python should not crash while destroying the isntance created
+  in the same interpreter function. As per my understanding, both
+  wr_prev and wr_next of PyWeakReference instance should be
+  initialized to NULL to avoid segfault. 
+- bsc#1122191: add CVE-2019-5010-null-defer-x509-cert-DOS.patch
+  fixing bpo-35746 (CVE-2019-5010).
+  An exploitable denial-of-service vulnerability exists in the
+  X509 certificate parser of Python.org Python 2.7.11 / 3.7.2.
+  A specially crafted X509 certificate can cause a NULL pointer
+  dereference, resulting in a denial of service. An attacker can
+  initiate or accept TLS connections using crafted certificates
+  to trigger this vulnerability.
+- Use upstream-recommended %{_rpmconfigdir}/macros.d directory
+  for the rpm macros.
+- Add patch openssl-111.patch to work with openssl-1.1.1
+  (bsc#1113755)
+- Apply &quot;CVE-2018-1000802-shutil_use_subprocess_no_spawn.patch&quot; which
+  converts shutil._call_external_zip to use subprocess rather than
+  distutils.spawn. [bsc#1109663, CVE-2018-1000802]
+- Apply &quot;CVE-2018-1061-DOS-via-regexp-difflib.patch&quot; to prevent
+  low-grade poplib REDOS (CVE-2018-1060) and to prevent difflib REDOS
+  (CVE-2018-1061). Prior to this patch mail server's timestamp was
+  susceptible to catastrophic backtracking on long evil response from
+  the server. Also, it was susceptible to catastrophic backtracking,
+  which was a potential DOS vector.
+  [bsc#1088004 and bsc#1088009, CVE-2018-1061 and CVE-2018-1060]
+- Apply &quot;CVE-2017-18207.patch&quot; to add a check to Lib/wave.py that
+  verifies that at least one channel is provided. Prior to this
+  check, attackers could cause a denial of service (divide-by-zero
+  error and application crash) via a crafted wav format audio file.
+  [bsc#1083507, CVE-2017-18207]
+- Apply &quot;python-sorted_tar.patch&quot; (bsc#1086001, boo#1081750)
+    sort tarfile output directory listing
+- update to 2.7.15
+  * dozens of bugfixes, see NEWS for details
+- removed obsolete patches:
+  * python-ncurses-6.0-accessors.patch
+  * python-fix-shebang.patch
+  * gcc8-miscompilation-fix.patch
+- add patch from upstream:
+  * do-not-use-non-ascii-in-test_ssl.patch
+- Add gcc8-miscompilation-fix.patch (boo#1084650).
+- Apply &quot;python-2.7.14-CVE-2017-1000158.patch&quot; to prevent integer
+  overflows in PyString_DecodeEscape that could have resulted in
+  heap-based buffer overflow attacks and possible arbitrary code
+  execution. [bsc#1068664, CVE-2017-1000158]
+- exclude test_socket &amp; test_subprocess for PowerPC boo#1078485
+  (same ref as previous change)
+- Add python-skip_random_failing_tests.patch bypass boo#1078485
+  and exclude many tests for PowerPC
+- Add patch python-fix-shebang.patch to fix bsc#1078326
+- exclude test_regrtest for s390, where it does not segfault as it should
+  (fixes bsc#1073269)
+- fix segfault while creating weakref - bsc#1073748, bpo#29347
+  (this is actually fixed by the 2.7.14 update; mentioning this for purposes
+  of bugfix tracking)
+- update to 2.7.14
+  * dozens of bugfixes, see NEWS for details
+  * fixed possible integer overflow in PyString_DecodeEscape (CVE-2017-1000158, bsc#1068664)
+  * fixed segfaults with dict mutated during search
+  * fixed possible free-after-use problems with buffer objects with custom indexing
+  * fixed urllib.splithost to correctly parse fragments (bpo-30500)
+- drop upstreamed python-2.7.13-overflow_check.patch
+- drop unneeded python-2.7.12-makeopcode.patch
+- drop upstreamed 0001-2.7-bpo-30714-ALPN-changes-for-OpenSSL-1.1.0f-3094.patch
+- Apply &quot;python-2.7.14-CVE-2018-1000030-1.patch&quot; and
+  &quot;python-2.7.14-CVE-2018-1000030-2.patch&quot; to remedy a bug that
+  would crash the Python interpreter when multiple threads used the
+  same I/O stream concurrently. This issue is not classified as a
+  security vulnerability due to the fact that an attacker must be
+  able to run code, however in some situations -- such as function
+  as a service -- this vulnerability can potentially be used by an
+  attacker to violate a trust boundary. [bsc#1079300,
+  CVE-2018-1000030]
+- Call python2 instead of python in macros
+- Fix test broken with OpenSSL 1.1 (bsc#1042670)
+  * add 0001-2.7-bpo-30714-ALPN-changes-for-OpenSSL-1.1.0f-3094.patch
+- drop SUSE_ASNEEDED=0 as it is not needed anymore
+- Add libnsl-devel build requires for glibc obsoleting libnsl
+- obsolete/provide python-argparse and provide python2-argparse,
+  because the argparse module is available from python 2.7 up
+- SLE package update (bsc#1027282)
+- refresh python-2.7.5-multilib.patch
+- dropped upstreamed patches:
+  python-fix-short-dh.patch
+  python-2.7.7-mhlib-linkcount.patch
+  python-2.7-urllib2-localnet-ssl.patch
+  CVE-2016-0772-smtplib-starttls.patch
+  CVE-2016-5699-http-header-injection.patch
+  CVE-2016-5636-zipimporter-overflow.patch
+  python-2.7-httpoxy.patch
+- Add python-ncurses-6.0-accessors.patch: Fix build with
+  NCurses 6.0 and OPAQUE_WINDOW set to 1.
+  (dimstar@opensuse.org)
+- Add reproducible.patch to allow reproducible builds of various
+  python packages like python-amqp
+  Upstream: https://github.com/python/cpython/pull/296
+- update to 2.7.13
+  * dozens of bugfixes, see NEWS for details
+  * updated cipher lists for openssl wrapper, support openssl &gt;= 1.1.0
+  * properly fix HTTPoxy (CVE-2016-1000110)
+  * profile-opt build now applies PGO to modules as well
+- update python-2.7.10-overflow_check.patch
+  with python-2.7.13-overflow_check.patch, incorporating upstream changes
+  (bnc#964182)
+- add &quot;-fwrapv&quot; to optflags explicitly because upstream code still
+  relies on it in many places
+- provide python2-* symbols, for support of new packages built as
+  python2-foo
+- rename macros.python to macros.python2 accordingly
+- require python-rpm-macros package, drop macro definitions from
+  macros.python2
+- initial packaging of `python27` side-by-side variant (fate#321075, bsc#997436)
+- renamed `python` to `python27` in package names and requires
+- removed Provides and Obsoletes clauses
+- dropped SLE12-only patch python-2.7.9-sles-disable-verification-by-default.patch,
+  companion sle_tls_checks_policy.py file and the python-strict-tls-checks subpackage
+- dropped profile files
+- removed /usr/bin/python and /usr/bin/python2, along with other unversioned
+  aliases
+- rewrote macros file to enable stand-alone packages depending on py2.7
+- re-included downloaded version of HTML documentation
+- update to 2.7.12
+  * dozens of bugfixes, see NEWS for details
+  * fixes multiple security issues:
+    CVE-2016-0772 TLS stripping attack on smtplib (bsc#984751)
+    CVE-2016-5636 zipimporter heap overflow (bsc#985177)
+    CVE-2016-5699 httplib header injection (bsc#985348)
+      (this one is actually fixed since 2.7.10)
+- removed upstreamed python-2.7.7-mhlib-linkcount.patch
+- refreshed multilib patch
+- python-2.7.12-makeopcode.patch - run newly-built python interpreter
+  to make opcodes, in order not to require pre-built python
+- update LD_LIBRARY_PATH to use $PWD instead of &quot;.&quot; because the test
+  process escapes to its own directory
+- modify shebang-fixing scriptlet to ignore makeopcodetargets.py
+- CVE-2016-0772-smtplib-starttls.patch:
+  smtplib vulnerability opens startTLS stripping attack
+  (CVE-2016-0772, bsc#984751)
+- CVE-2016-5636-zipimporter-overflow.patch:
+  heap overflow when importing malformed zip files
+  (CVE-2016-5636, bsc#985177)
+- CVE-2016-5699-http-header-injection.patch:
+  incorrect validation of HTTP headers allow header injection
+  (CVE-2016-5699, bsc#985348)
+- python-2.7-httpoxy.patch:
+  HTTPoxy vulnerability in urllib, fixed by disregarding HTTP_PROXY
+  when REQUEST_METHOD is also set
+  (CVE-2016-1000110, bsc#989523)
+- Add python-2.7.10-overflow_check.patch to fix broken overflow checks.
+  [bnc#964182]
+- copy strict-tls-checks subpackage from SLE to retain future compatibility
+  (not built in openSUSE)
+- do this properly to fix bnc#945401
+- update SLE check to exclude Leap which also has version 1315,
+  just to be sure
+- Add python-ncurses-6.0-accessors.patch: Fix build with
+  NCurses 6.0 and OPAQUE_WINDOW set to 1.
+- add missing ssl.pyc and ssl.pyo to package
+- implement python-strict-tls-checks subpackage
+  * when present, Python will perform TLS certificate checking by default.
+    it is possible to remove the package to turn off the checks
+    for compatibility with legacy scripts.
+  * as discussed in fate#318300
+  * this is not built for openSUSE, but retained here in case we want
+    to build the package for a SLE system
+- python-fix-short-dh.patch: Bump DH parameters to 2048 bit
+  to fix logjam security issue. bsc#935856
+- add __python2 compatibility macro (used by Fedora) (fate#318838)
+- update to 2.7.10
+- removed obsolete python-2.7-urllib2-localnet-ssl.patch
+- Reenable test_posix on aarch64
+- python-2.7.4-aarch64.patch: Remove obsolete patch
+- python-2.7-libffi-aarch64.patch: Fix argument passing in libffi for
+  aarch64
+- update to 2.7.9
+  * contains full backport of ssl module from Python 3.4 (PEP466)
+  * HTTPS certificate validation enabled by default (PEP476)
+  * SSLv3 disabled by default (bnc#901715)
+  * backported ensurepip module (PEP477)
+  * fixes several missing CVEs from last release: CVE-2013-1752,
+    CVE-2013-1753
+  * dozens of minor bugfixes
+- dropped upstreamed patches: python-2.7.6-poplib.patch,
+  smtplib_maxline-2.7.patch, xmlrpc_gzip_27.patch
+- dropped patch python-2.7.3-ssl_ca_path.patch because we don't need it
+  with ssl module from Python 3
+- libffi was upgraded upstream, seems to contain our changes,
+  so dropping libffi-ppc64le.diff as well
+- python-2.7-urllib2-localnet-ssl.patch - properly remove unconditional
+  &quot;import ssl&quot; from test_urllib2_localnet that caused it to fail without ssl
+- skip test_thread in qemu_linux_user mode 
+- CVE-2014-7185-buffer-wraparound.patch: potential wraparound/overflow
+  in buffer()
+  (CVE-2014-7185, bnc#898572)
+- update to 2.7.8
+  * bugfix-only release, dozens of bugs fixed
+  * fixes CVE-2014-4650 directory traversal in CGIHTTPServer
+  * fixes CVE-2014-7185 (bnc#898572) potential buffer overflow in buffer()
+- dropped upstreamed CVE-2014-4650-CGIHTTPserver-traversal.patch
+- dropped upstreamed CVE-2014-7185-buffer-wraparound.patch
+- CVE-2014-4650-CGIHTTPServer-traversal.patch: CGIHTTPServer file
+  disclosure and directory traversal through URL-encoded characters
+  (CVE-2014-4650, bnc#885882)
+- python-2.7.7-mhlib-linkcount.patch: remove link count optimizations
+  that are incorrect on btrfs (and possibly other filesystems)
+- update to 2.7.7
+  * bugfix-only release, over a hundred bugs fixed
+  * backported hmac.compare_digest from python3, first step of PEP 466
+- drop upstreamed patches:
+  * CVE-2014-1912-recvfrom_into.patch
+  * python-2.7.4-no-REUSEPORT.patch
+  * python-2.7.6-bdist-rpm.patch
+  * python-2.7.6-imaplib.patch
+  * python-2.7.6-sqlite-3.8.4-tests.patch
+- refresh patches:
+  * python-2.7.3-ssl_ca_path.patch
+  * python-2.7.4-canonicalize2.patch
+  * xmlrpc_gzip_27.patch
+- added python keyring and signature for the main tarball
+- Use profile-opt only when profiling is enabled
+- python-2.7.2-disable-tests-in-test_io.patch: removed, no longer needed
+- update testsuite exclusion list:
+  * test_signal and test_posix fail due to qemu bugs
+- Fix build with SQLite 3.8.4 [bnc#867887], fixing SQLite tests,
+  adding python-2.7.6-sqlite-3.8.4-tests.patch
+- added patches for CVE-2013-1752 (bnc#856836) issues that are
+  missing in 2.7.6:
+  python-2.7.6-imaplib.patch
+  python-2.7.6-poplib.patch
+  smtplib_maxline-2.7.patch
+- CVE-2013-1753 (bnc#856835) gzip decompression bomb in xmlrpc client:
+  xmlrpc_gzip_27.patch
+- python-2.7.6-bdist-rpm.patch: fix broken &quot;setup.py bdist_rpm&quot; command
+  (bnc#857470, issue18045)
+- multilib patch: add &quot;~/.local/lib64&quot; paths to search path
+  (bnc#637176)
+- CVE-2014-1912-recvfrom_into.patch: fix potential buffer overflow
+  in socket.recvfrom_into (CVE-2014-1912, bnc#863741)
+- Add Obsoletes/Provides for python-ctypes.
+- Ignore uuid testcase in the testsuite, it relies on unreliable
+  ifconfig output.
+- adapt python-2.7.5-multilib.patch for ppc64le
+- adjust %files for ppc64le
+- Support for ppc64le in _ctypes libffi copy.
+- added patches:
+  * libffi-ppc64le.diff
+- add ppc64le rules
+- avoid errors from source-validator
+- update to 2.7.6
+  * bugfix-only release
+  * SSL-related fixes
+  * upstream fix for CVE-2013-4238
+  * upstream fixes for CVE-2013-1752
+- removed upstreamed patch CVE-2013-4238_py27.patch
+- reintroduce audioop.so as the problems with it seem to be fixed
+  (bnc#831442)
+- exclude test_mmap under qemu_linux_user - emulation fails here
+  as the tests mmap address conflicts with qemu
+- update python-2.7.3-ssl_ca_path.patch patch to load default verify locations
+  if no ca_certs file is specified (bnc#827982, bnc#836739)
+- handle NULL bytes in certain fields of SSL certificates
+  (CVE-2013-4238, bnc#834601)
+- Add python-bsddb6.diff to support building against libdb-6.0
+- have python-devel require python:
+  http://lists.opensuse.org/opensuse-factory/2013-06/msg00622.html
+- Disable test_multiprocessing in QEmu build
+- Disable test_asyncore in QEmu build
+- Reenable testsuite on arm
+- python-2.7.4-aarch64.patch: add missing bits of aarch64 support
+- python-2.7.4-no-REUSEPORT.patch: disable test of
+  missing kernel functionality
+- drop unnecessary patch: python-2.7.1-distutils_test_path.patch
+- switch to xz archive
+- Update to version 2.7.5:
+  + bugfix-only release
+  + fixes several important regressions introduced in 2.7.4
+  + Issue #15535: Fixed regression in the pickling of named tuples by
+    removing the __dict__ property introduced in 2.7.4.
+  + Issue #17857: Prevent build failures with pre-3.5.0 versions of sqlite3,
+    such as was shipped with Centos 5 and Mac OS X 10.4.
+  + Issue #17703: Fix a regression where an illegal use of Py_DECREF() after
+    interpreter finalization can cause a crash.
+  + Issue #16447: Fixed potential segmentation fault when setting __name__ on a
+    class.
+  + Issue #17610: Don't rely on non-standard behavior of the C qsort() function. 12 
+  See http://hg.python.org/cpython/file/ab05e7dd2788/Misc/NEWS for more
+- Drop upstreamed patches:
+  + python-2.7.3-fix-dbm-64bit-bigendian.patch
+  + python-test_structmembers.patch
+- Rebased other patches
+- add aarch64 to the list of 64-bit platforms 
+- update to 2.7.4
+    * bugfix-only release
+- drop upstreamed patches:
+    pypirc-secure.diff
+    python-2.7.3-multiprocessing-join.patch
+    ctypes-libffi-aarch64.patch
+- drop python-2.7rc2-configure.patch as it doesn't seem necessary anymore
+- Add Source URL, see https://en.opensuse.org/SourceUrls
+- Add aarch64 to the list of lib64 platforms
+- fix pythonstart failing on $HOME-less users (bnc#804978)
+- Add ctypes-libffi-aarch64.patch: import aarch64 support for libffi in
+  _ctypes module
+- multiprocessing: thread joining itself (bnc#747794)
+- gettext: fix cases where no bundle is found (bnc#794139)
+- add explicit buildrequire on libbz2-devel
+- buildrequire explicitly netcfg for the test suite
+- remove distutils.cfg (bnc#658604)
+  * this changes default prefix for distutils to /usr
+  * see ML for details:
+http://lists.opensuse.org/opensuse-packaging/2012-09/msg00254.html
+- Add python-bundle-lang.patch: gettext: If bindtextdomain is
+  instructed to look in the default location of translations, we
+  check additionally in locale-bundle. Fixes issues like bnc#617751
+- all subpackages require python-base=%{version}-%{release} explicitly
+  (fixes bnc#766778 bug and similar that might arise in the future)
+- Fix failing test_dbm on ppc64 
+- Support directory-based certificate stores with the ca_certs parameter of SSL
+  functions [bnc#761501]
+- update to 2.7.3:
+  * no change
+- remove static libpython.a from build to avoid packages
+  linking it statically
+- update to 2.7.3rc2
+  * fixes several security issues:
+  * CVE-2012-0845, bnc#747125
+  * CVE-2012-1150, bnc#751718
+  * CVE-2011-4944, bnc#754447
+  * CVE-2011-3389
+- fix for insecure .pypirc (CVE-2011-4944, bnc#754447)
+!!important!!
+- disabled test_unicode which segfaults on 64bits.
+  this should not happen, revisit in next RC!
+!!important!!
+- skip broken test_io test on ppc
+- Exclude /usr/bin/2to3 to prevent conflicts with python3-2to3
+- %python_version now correctly refers to %tarversion
+- Spec file cleanup:
+  * Run spec-cleaner
+  * Remove outdated %clean section, AutoReqProv and authors from descr.
+- Fix license to Python-2.0 (also SPDX style)
+- fix build for arm by removing an old hack for arm, bz2.so is built now
+- dropped newslist.py from demos because of bad license
+  (bnc#718009)
+- update to 2.7.2:
+  * Bug fix only release, see
+  http://hg.python.org/cpython/raw-file/eb3c9b74884c/Misc/NEWS
+  for details
+- introduce a pre_checkin.sh file that synchronizes
+  patches between python and python-base
+- rediff patches for 2.7.2
+- replace kernel3 patch with the upstream solution
+- Copy Lib/plat-linux2 to Lix/plat-linux3 so that DLFCN module
+  is also available for linux3 systems  bnc#707667
+- fix build on factory: setup reports linux3 not linux2 now,
+  adapt checks
+- added explicit requires to libpython-%version-%release
+  to prevent bugs like bnc#697251 reappearing
+- update to 2.7.1
+    * bugfix-only release, see NEWS for details
+- refreshed patches, dropped the upstreamed ones
+- dropped acrequire patch, replacing it with build-time sed
+- improved fix to bnc#673071 by defining the constants
+  only for files that require it (as is done in python3)
+- fixed a security flaw where malicious sites could redirect
+  Python application from http to a local file
+  (CVE-2011-1521, bnc#682554)
+- fixed race condition in Makefile which randomly failed
+  parallel builds ( http://bugs.python.org/issue10013 )
+- Prefix DATE and TIME with PY_BUILD_ and COMPILER with PYTHON_ as
+  to not break external code (bnc#673071).
+- provide pyxml to avoid touching tons of packages
+- add patch from http://psf.upfronthosting.co.za/roundup/tracker/issue9960
+  to fix build on ppc64
+- moved unittest to python-base (it is a testing framework, not a 
+  testsuite, so it clearly belongs into stdlib)
+- fixed smtpd.py DoS (bnc#638233, CVE probably not assigned)
+- fix baselibs.conf
+- fix for urllib2 (http://bugs.python.org/issue9639) 
+- fixed distutils test
+- dropped autoconf version requirement (it builds just fine with other versions)
+- update to version 2.7
+  * improved handling of numeric types
+  * deprecation warnings are now silent by default
+  * new argparse module for command line arguments
+  * many new features, see http://docs.python.org/dev/whatsnew/2.7.html
+    for complete list
+*** 2.7 is supposed to be the last version from the 2.x series,
+so its (upstream) maintenance period will probably be longer than usual.
+However, upstream development now focuses on 3.x series.
+- cleaned up spec and patches
+- add patch from http://bugs.python.org/issue6029 
+- use %_smp_mflags 
+- dropped audioop.so because of security vulnerabilities
+  (bnc#603255)
+- update to 2.6.5 (rpm version 2.6.5)
+- patched test_distutils to work
+- update to 2.6.5rc2 (rpm version is 2.6.4.92)
+ * bugfix-only release
+- removed fwrapv patch - no longer needed
+- removed expat patches (this version also fixes expat vulnerabilities
+  from bnc#581765 )
+- removed readline spacing patch - no longer needed
+- removed https_proxy patch - no longer needed
+- removed test_distutils patch - no longer needed
+- disabled test_distutils because of spurious failure,
+   * TODO reenable at release
+- removed precompiled exe files (as noted in bnc#577032)
+- enabled ipv6 in configure (bnc#572673)
+- Apply patches with fuzz=0
+- add baselibs.conf as source
+- readline shouldn't append space after completion (bnc#551715,
+  python bug 5833)
+- python-devel Requires glibc-devel 
+- fixed potential DoS in python's copy of expat (bnc#534721)
+- added patch for potential SSL hangup during handshake (bnc#525295)
+- fix files section for ARM, as bz2.so isn't built on ARM.
+- added /usr/lib/python2.6{,/site-packages} to the package even if
+  it is on lib64 arch
+- added %python_sitelib and %python_sitearch for fedora compatibility
+- fixed test in test_distutils suite that would generate a warning
+  when the log threshold was set too low by preceding tests
+- support noarch python packages (modified multilib patch
+  to differentiate between purelib and platlib, added /usr/lib
+  to search path in all cases
+- disable as-needed to fix build
+- update to 2.6.2
+  * bugfix-only release for 2.6 series
+- excluded pyconfig.h and Makefile and Setup from -devel subpackage
+  to prevent file conflicts of python-base and python-devel
+- fixed gettext.py problem with empty plurals line (bnc#462375)
+- obsolete old -XXbit packages (bnc#437293)
+- removed bsddb directory from python-base, reenabled in python
+  ( bnc#441088 )
+- added libpython and python-base to baselibs.conf (bnc#432677)
+- disabled test_smtplib for ia64 so that the package actually
+  gets built (bnc#436966)
+- update to 2.6 final (version name is 2.6.0 to make upgrade from
+  2.6rc2 possible)
+- replaced site.py hack with a .pth file to do the same thing
+  (cleaner solution that doesn't mess up documented behavior
+  and also fixes virtualenv, bnc#430761)
+- enabled profile optimized build
+- fixed %py_requires macro (bnc#346490)
+- provide %name = 2.6
+- moved tests to %check section
+- update to 2.6rc2, removing the last remaining security patch
+- included patch for https proxy support that resolves bnc#214983
+  (in a proper way) and bnc#298378
+- included fix for socket.ssl() behavior regression, fixing
+  bnc#426563
+- included /etc/rpm/macros.python to fix the split-caused breakage
+- applied bug-no-proxy patch from python#3879, which should improve
+  backwards compatibility (important i.e. for bzr)
+- moved python-xml to a subpackage of this (brings no additional
+  dependencies, so it can as well stay)
+- moved Makefile and pyconfig.h to python-base, removing the need
+  to have python-devel for installation
+- improved compatibility with older distros for 11.0
+- moved ssl.py and sqlite3 module to python package - they won't work
+  without their respective binary modules anyway
+- updated to 2.6rc1 - bugfix-only pre-stable release
+- renamed python-base-devel to python-devel as it should be
+- removed macros from libpython package name
+- moved python-devel to a subpackage of this
+- created libpython subpackage
+- moved essential files from -devel to -base, so that distutils
+  should now be able to install without -devel package
+- split package, as per fate#305065
+- moved python-devel to be a subpackage of python-base
+- minor fixes &amp; packaging cleanups
+- fixed misapplied ssl-compat patch (caused segfaults when
+  opening SSL connections, bnc#425138 )
+- updated to 2.6beta3 from BETA dist, summary of changes follows:
+  * patches update/cleanup
+  * removed failing tests (test_unicode, test_urllib2), those will
+    be reworked later to not fail
+  * fixed ncurses/panel.h include
+  * removed most security fixes, as they are already included in
+    this version
+  * removed imageop/rgbimg
+    (reasons: they only work in 32bit environment anyway, are
+    deprecated by upstream and have inherent security problems)
+  * fixed pythonstart script to trim history after 10000 lines
+    (bnc#399190)
+- 2.6beta3 is mostly stable release of the 2.6 series,
+  package will be updated to 2.6 final as soon as it comes out
+  (in the beginning of October)
+- security fixes for issues mentioned in bnc#406051:
+  * CVE-2008-2315 - multiple integer overflows in basic types
+  * CVE-2008-2316 - partial hashing of huge data with hashlib
+  * CVE-2008-3142 - multiple buffer oveflows in unicode processing
+  * CVE-2008-3144 - possible integer over/underflow in mysnprintf
+  * buffer overflows in expandtabs() method (afaik no CVE assigned)
+- also mentioned CVE-2008-3143 is already fixed in python 2.5.2
+- Work around autoheader bug.
+- Fix configure script.
+- proper path for html documentation from python-doc,
+  help text mentioning python-doc package in pydoc
+  (bnc#380942)
+- PyString_FromStringAndSize now checks size parameter
+  (bnc#379534, CVE-2008-1721)
+- disable DNS lookup test when running in build service.
+  The XEN build hosts have no network.
+- added baselibs.conf file to build xxbit packages
+  for multilib support
+- Limit virtual memory to avoid spurious testsuite failures.
+- bnc#367853 turned out to be invalid, upstream is already on to
+  the real problem
+- forcing -fwrapv to compiler flags until upstream has a solution
+- update to 2.5.2
+  - bugfix-only release, over 100 bugs fixed
+- removed hppa patch (already included)
+- disabled test_str until gcc issue bnc#367853 is resolved
+- patched a bug in sqlite module that would cause segfault on
+  call to executescript()
+  -&gt; TODO return and improve the patch
+- replaced fdupes oneliner with %fdupes macro
+- added /usr/bin/python2 symlink (#307097)
+- obsoletes python-elementtree and python-sqlite (#301182)
+  (obsoletes, but doesn't provide - the modules that obsolete those
+  packages are renamed and dependent packages need to be changed)
+- fix build on hppa
+- replaced duplicate files with hardlinks
+- removed emacs python-mode and dependency on emacs
+- revisited &amp; explained failing tests
+- applied EINTR recovery patch (#278622)
+- experimental replacement of shebang strings,
+  removing dependency on /usr/bin/env
+- update to 2.5.1
+    - bugfix only release, over 150 bugs fixed
+    - fixes off-by-one memory leak in _localemodule.c
+      (#276889, CVE-2007-2052)
+- unnecessary patches removed, minor build cleanup
+- warns when attempting to use https proxy (#214983)
+- make setup.py accept db-4.5 
+- Add ncurses-devel to BuildRequires.
+- Add libbz2-devel to BuildRequires.
+- add gdbm-devel BuildRequires
+- fix sqlite3 support (#228733)
+- update to 2.5 final, going into STABLE dist
+- issue with lib/python/config is not caused by dirs patch
+- update to 2.5c2
+  - 2.5 final is expected next week
+- removed testfiles.tar.bz2 from package due to copyright issues
+  (see #204867). Reminder: enable urlfetch or put it back (or both,
+  using Nosource)
+- update to 2.5c1
+- many new features, see http://www.python.org/dev/peps/pep-0356/
+- 64bit indices issue will require changes of modules, see
+  http://www.python.org/dev/peps/pep-0353/ for transition guidelines
+- non-backwards-compatible changes, see
+  http://docs.python.org/dev/whatsnew/section-other.html
+  (this link is expected to die, so just search for &quot;what's new in 2.5&quot;)
+- open issues in build process:
+  - sed'ing out /usr/local/bin/python from files causes build to fail
+    if not filtered by grep (see %prep section) - might be a bug in sed
+  - 2.3.3-dirs patch + --enable-shared + --libdir breaks build,
+    because &quot;-L/usr/lib*/python2.5/config&quot; is added instead of &quot;-L.&quot;
+    Workaround in 2.5c1-dirs-fix, should be replaced soon
+  - test_file fails in autobuild, but is OK when building manually
+  - test_nis fails in autobuild, probably due to a misconfiguration
+    on autobuild servers
+  - it might be good to create python-sqlite3 subpackage
+- update to 2.4.3
+  - no big changes, bugfix-only release (about 50 bugs fixed)
+- moved -doc and -doc-pdf into separate noarch specfile
+- implemented /usr/local path schemes for bug #149809
+  - python now recognizes packages in /usr/local/lib/python2.4
+  - distutils install by default into /usr/local/lib/python2.4/site-packages
+  - on 64bit systems that is of course lib64
+- converted neededforbuild to BuildRequires
+- Add gmp-devel to nfb
+- reenabled optimization on ppc64
+- fixed another bug in canonicalize patch [#133267]
+- update to 2.4.2
+- additional fixes to canonicalize patch, restored interactive mode
+- replaced the previous patch with a new one
+    - it now tries to use canonical_file_name(), falling back to realpath()
+      and eventually readlink
+    - canonical_file_name() branch now sets the buffer length
+- fixed to build with gcc's new buffer overflow checking
+    - added patch from https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=169046
+- Always enable SSL bug workarounds.
+- update to 2.4.1
+- fixed to build on ARM
+- skip some test on ia64 for now
+- mark configuration files as %config
+- fix vulnerability in SimpleXMLRPCServer (bug #50321, CAN-2005-0089)
+- disable bsddb tests, it fails probably on all 64-bit
+- make lib64 installation also work on others than x86_64
+- fixed build on ppc64
+    - update multiarch patch
+    - do not test bsddb internals
+    - remove optimalisation from flags, it breaks at least math
+- added extra files needed for some tests (codecmaps and unicode normalisation)
+- enabled bsddb tests
+- reenabled test_shelve, as it works now
+- update db 4.3 patch
+- fix bdist_rpm when spec file generates more than one rpm
+- disable tests for hppa
+- fix bsddb module for current bsddb
+- improved readline detection
+- updated documentation to 2.4
+- don't use wctype functions from glibc, it breaks at some situations
+- enable tests during compilation, removing currently known failures
+- update to 2.4 final
+- yet another ignore list update, ignore man and locale dirs
+- ignore /etc and avoid infinite loop while generating directory list
+- ignore one more directories in file list generating
+- handle correctly headers path in file list generating
+- handle extra_dir in file list generating
+- use same way as mandrake to support lib64, at least it's a bit cleaner
+  solution than we had, so we now also have sys.lib
+- audioop is now enabled on 64-bit
+- updated to 2.4c1 (2.4 release candidate 1)
+- dropped python-mpz package as it was dropped by upstream
+- completely rewritten and much simplified rpm file list generation, if you
+  have problems with new version, please drop me a note
+- install also /etc/profile.d/python.csh
+- updated README.SUSE
+- added startup script, which enables saving of history and completion
+  for interactive usage
+- update to 2.3.4 final (no changes from rc 1)
+- update to 2.3.4 release candidate 1 (obsoletes some patches taken from cvs)
+- forcing of large file support is not needed (for quite a long time)
+- updated README.SUSE
+- included some fixes from cvs:
+    - fix possible segfault in bsddb
+    - urllib2 supports non-anonymous ftp and absolute paths
+    - fixed GC problems in PyWeakref_NewRef
+- fix readline with utf-8 (bug #34302)
+- obsoletes python21
+- all subpackages depend on current python version
+- fix Lib/email/Charset.py for use in some locales
+- fix format string in zipimport module
+- use system readline
+- add more IPV6 socket options
+- use sed instead of perl for replacing
+- include LICENSE
+- build as user
+- updated to 2.3.3 (final)
+- call %{run_ldconfig} in post and postun
+- libpython.2.3.so symlink moved to devel package (bug #33779)
+- updated to 2.3.3 (release candidate 1)
+- use wchar_t functions from libc, this reduces size of interpreter
+- Remove useless Requires
+- Remove not used packages from neededforbuild
+- updated to 2.3.2
+  - A bug in autoconf that broke building on HP/UX systems is fixed.
+  - A bug in the Python configure script that meant os.fsync() was
+    never available is fixed.
+- force use of directories passed to configure script (-dirs.patch), bug #31947
+- updated to 2.3.1, most of changes were alredy included in -cvs.patch
+- not so verbose untaring
+- included fixes from cvs (branch release23-maint), this fixes some
+  memory leaks and other bugs (-cvs.patch)
+- nicer output from pydoc (-pydoc.patch)
+- cleaned up configure parameters
+- compiling with -Wall
+- build as shared
+- python now obsoletes python-nothreads (bug #29907)
+- fixed symlinks to configuration files
+- cleaned up spec file
+- updated lib64 patch
+- updated to final 2.3, some highlights:
+    * Python 2.3 is about 20-30% faster than Python 2.2.3
+    * Brand new IDLE
+    * Some new or upgraded built-ins, includes better support for
+      unicode, new bool type...
+    * Lots of upgraded or new modules and packages.
+    * PYTHONINSPECT variabale that can cause python to behave as it
+      was executed with -i parameter.
+- added tk-devel to neededforbuild 
+- updated to cvs snapshot, mostly because of finally correct DESTDIR
+  support, to avoid buildroot leftovers
+- better excluding site-packages from generated dirlist
+- ignore site-packages and share directories for filelists
+- include install dir if not site-packages in filelists
+- better handle mutliple level of install directories when
+  generating %dir entries
+- one more distutils patch update:
+    * fix generating of dirs in chrooted installs for install_data
+    * don't include directory for install_scripts
+- updated patch to work around problems with self defined get_outputs
+- modified distutils to allow generating complete file list for rpm
+  (including directories with %dir macro), to use this use
+  --record-rpm= instead of --record=
+- move documentation where it was in 2.2 versions
+- fixed permissions for some scripts in devel package
+- cleaned up specfile
+- make executable only files that should be
+- removed .cvsignore files
+- updated lib64 patch
+- updated to 2.3b1, some highlights:
+    - sum() builtin, adds a sequence of numbers, beats reduce().
+    - csv module, reads comma-separated-value files (and more).
+    - timeit module, times code snippets.
+    - os.walk(), a generator slated to replace os.path.walk().
+    - platform module, by Marc-Andre Lemburg, returns detailed platform
+      information.
+- added DEFS to config/Makefile as it was in 2.2
+- updated lib64 patch
+- fixed list of built modules for 64-bit arches
+- updated to python 2.3 alpha 2
+    - updated many builtins and modules
+    - new modules: bsddb, bz2, datetime, logging, optparse, sets,
+                   textwrap, zipimport,
+    - some general things have changed:
+        - Hex/oct literals prefixed with a minus sign were handled
+          inconsistently.
+        - Package index and metadata for distutils.
+        - Encoding declarations - you can put a comment of the form
+          &quot;# -*- coding:  -*-&quot; in the first or second line of a Python
+          source file to indicate the encoding (e.g. utf-8).
+        - Import from zipfiles.
+    - see Misc/NEWS in documentation or python website -
+      http://python.org/2.3/highlights.html for more details
+- moved distutils into -devel package
+- cleaned up specfile
+- removed RPM_BUILD_ROOT leftovers (bug #25963)
+- Provide/Obsolete python-tkinter
+- idle symlink corrected for lib64
+- fixed LIBDEST path for distutils, closes #22322
+- fixed distutils for lib64
+- improved blt detection for tkinter
+- build with detected version of tix
+- enabled SIGFPE catching
+- enabled signal module
+- enabled C++ support
+- enabled ipv6 support
+- no apache is needed for building
+- python-nothreads is not built anymore as is seems that mod_python
+  works correctly woth python 2.2.2 and threads
+- Makefile also copied to config directory in rpm
+- Makefile.pre* to config directory
+  (following the official spec file change)
+- fixed bad source number for suse-start-python-mode.el
+- fixed %files section for idle on lib64 arches
+- included python-mode.el for emacs
+- idle moved from demos to separate package
+- merged tk and tkinter
+- removed not needed l2h and tetex from neededforbuild
+- changed neededforbuild &lt;l2h&gt; to &lt;latex2html&gt;
+- updated to 2.2.2 (bugfix release)
+- moved python-korean into separate source package
+- removed bogus self-provides 
+- Add provides for correct update
+- remove l2h from neededforbuild (apparently no longer used) 
+- no fpectl.so on alpha 
+- rediffed lib64 patch
+- new version 2.2.1
+- new version of Korean codes 2.0.5
+  and splitted to standalone package 'python-korean'
+- get rid of Makefile.pre.in
+- clean part added to spec
+- removed termcap and tetex from neededforbuild (not used)
+- fix neededforbuild
+- add ppc64 to list of 64bit archs that don't compile 3 of the plugins.
+- change more locations of lib to %{_lib} on platforms 
+  that need it. 
+- change Makefile to use install -d instead of mkdir
+  to solve trouble when installing in buildroots.
+- Change config/Makefile and config/Makefile.pre.in 
+  to use %_lib instead of lib (fixes i.e. zope)
+- changed site.py to detect the correct location (is needed at least for 
+  postresql to build
+- it still needs to be corrected, as only 64-bit excutable shlibs
+  have to reside in */lib64
+- fixing file list for s390x
+- use libdir
+- try to get this working with lib64
+- Build python library with -fPIC, for inclusion in shared library.
+- Fix detection of readline library (use -lncurses instead of -ltermcap).
+- changed neededforbuild &lt;l2h&gt; to &lt;l2h l2h-pngicons&gt;
+- changed neededforbuild &lt;libpng&gt; to &lt;libpng-devel-packages&gt;
+- used correct Makefile.pre.in
+- added Makefile.pre.in to enable build other python packages
+- update to version 2.2
+- recreated modules list
+- fixed for gmp-4.x 
+- added patch for Large File Support
+- removed conflicting file /etc/susehelp.d/pythonhtml.conf from
+  subpackage python-doc
+- Compile python library with -fPIC to allow inclusion in shared
+  libraries.
+- Fix configure check for rl_completion_matches.
+- Replace use of config.guess by %ifarch.
+- added regex module (needed for yodl)
+- filelist probably needs re-check 
+- fix /usr/local path
+- update to version 2.1.1
+- bzip2 sources
+- fix build with new readline library
+- added pythonhtml.conf for susehelp
+- changed neededforbuild &lt;apache&gt; to &lt;apache apache-devel&gt;
+- added readline/readline-devel to neededforbuild (split from bash)
+- Use -fPIC
+- Compile python library with -fpic so that it can be included in a
+  shared library (for mod_python).
+- added uc-kr codec, thanks to Hwang, SangJin &lt;violiet@susekorea.net&gt;
+- Fix filelist for ia64.
+- added sub-package python-nothreads for mod_python apache-module
+- added Obsoletes for old 8.3 packages names
+- cleaned up pythons tk dependencies
+- fixed tix-link 
+- changed neededforbuild &lt;tcld&gt; to &lt;tcl-devel&gt;
+- changed libnetpb to libnetpbm in neededforbuild
+- changed file-list in python-devel
+- added openssl-devel to neededforbuild
+- removed site-packages from Setup.in patch
+- python-64bit.patch should be used on all 64bit platforms
+- updated to BeOpen-Python-2.0
+- Use long filenames
+- Fix some paths
+- Include &lt;db3/db_185.h&gt;
+- added anydbm (whichdb.py) patch from www.tummy.com
+- Use libtk8.3.so and libtcl8.3.so
+- Fix filelist for new doc dir
+- fixed filelist for alpha 
+- Fix config.guess selection
+- passing MANDIR to &quot;make install libinstall&quot; (seems like it gets
+  lost somewhere)
+- man to /usr/share using macro 
+- stripped the python binary
+- ready for the new Tcl/Tk packages
+- fixed requirements for sub packages
+- added python_image_lib as requires to pyth_tk and as provides to pyth_tkl
+- ran old prepare_spec on spec file to switch to new prepare_spec.
+- disabled pyth_dvi module in spec-file
+- added libpng to neededforbuild
+- added blt to neededforbuild
+- new version 1.5.2
+- splited into sub-packages: pyth_doc, pyth_ps, pyth_pdf,
+  pyth_dvi, pyth_dmo, pyth_tk, pyth_tkl, pyth_cur, pythgdbm
+  to have better base-package compatibility to andrich.net.
+- don't set POSIXLY_CORRECT for second patch
+- added automake to neededforbuild
+- alpha-fix: don't mix up dec-osf with linux-alpha
+- removed TkInter into a separate package - pyth_tk - to make it
+  possible to replace it with a PIL based TkInter (Python Imaging
+  Lib) and better package dependecies (not each app needs TkInter)
+- removed Makefile.Linux - all build is done from spec file now
+- more /usr/local path fixes
+- added automake to neededforbuild
+- configure with threads
+- use db_185.h only for glibc-2.1
+- two hacks to compile for glibc:
+  Modules/bsddbmodule.c include db_185.h for glibc
+  Modules/mpzmodule.c   gmp-mparam.h dont exist for glibc / use define
+- Compress PostScript docu.
+- linked readline- and curses-modules with ncurses
+- python modules - file permissions changed (-x)
+- fixed neededforbuild
+- new revision 1.5.1
+- docu in a separate package (pyth_doc)
+- Tkinter uses tk8.0/tcl8.0 now
+- first attempt to make it &quot;alpha ready&quot; (spec- &amp; dif-file)
+- fixed dependency to /usr/local/bin/python
+- added some in neededforbuild
+- new Version 1.5 with more features, html documentation and new modules
+- added support for readline and (shared) modules: tkinter, dbm, gdbm,
+  syslog, ncurses, ... - see /usr/lib/python1.4/config/Setup for details
+- new Version 1.4
+- a symlink (python -&gt; python1.4) will be used instead of a hardlink
+</comment>
+    <requestid>1088922</requestid>
+  </revision>
 </revisionlist>

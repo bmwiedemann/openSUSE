@@ -146,13 +146,16 @@ Patch74:        skip_unverified_test.patch
 # blocklist bypass via the urllib.parse component when supplying
 # a URL that starts with blank characters
 Patch75:        CVE-2023-24329-blank-URL-bypass.patch
+# PATCH-FIX-OPENSUSE PygmentsBridge-trime_doctest_flags.patch mcepl@suse.com
+# Build documentation even without PygmentsBridge.trim_doctest_flags
+Patch76:        PygmentsBridge-trime_doctest_flags.patch
 # COMMON-PATCH-END
 %define         python_version    %(echo %{tarversion} | head -c 3)
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  libbz2-devel
 BuildRequires:  libffi-devel
-%if 0%{?suse_version} >= 1500 && 0%{?suse_version} < 1599
+%if 0%{?suse_version} && 0%{?suse_version} < 1599
 BuildRequires:  libnsl-devel
 %endif
 BuildRequires:  pkg-config
@@ -293,6 +296,7 @@ other applications.
 %patch74 -p1
 %endif
 %patch75 -p1
+%patch76 -p1
 
 # For patch 66
 cp -v %{SOURCE66} Lib/test/recursion.tar

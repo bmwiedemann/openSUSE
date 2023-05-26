@@ -145,6 +145,9 @@ Patch74:        skip_unverified_test.patch
 # blocklist bypass via the urllib.parse component when supplying
 # a URL that starts with blank characters
 Patch75:        CVE-2023-24329-blank-URL-bypass.patch
+# PATCH-FIX-OPENSUSE PygmentsBridge-trime_doctest_flags.patch mcepl@suse.com
+# Build documentation even without PygmentsBridge.trim_doctest_flags
+Patch76:        PygmentsBridge-trime_doctest_flags.patch
 # COMMON-PATCH-END
 BuildRequires:  automake
 BuildRequires:  db-devel
@@ -347,6 +350,7 @@ that rely on earlier non-verification behavior.
 %patch74 -p1
 %endif
 %patch75 -p1
+%patch76 -p1
 
 # For patch 66
 cp -v %{SOURCE66} Lib/test/recursion.tar
