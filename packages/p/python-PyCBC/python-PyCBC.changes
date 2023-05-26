@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 23 12:22:42 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.2.0:
+  * Bugfix to remove calls to removed lalsuite functions.
+- Disable a few more tests requiring access to network.
+
+-------------------------------------------------------------------
 Wed Aug 24 23:43:08 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.0.5:

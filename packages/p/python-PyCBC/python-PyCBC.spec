@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyCBC
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 
 %define modname PyCBC
 Name:           python-PyCBC%{psuffix}
-Version:        2.0.5
+Version:        2.2.0
 Release:        0
 Summary:        Core library to analyze gravitational-wave data
 License:        GPL-3.0-or-later
@@ -136,14 +136,19 @@ sed -E -i "1 s|^#\!\s*/usr/bin/env\s*bash|#\!/bin/bash|" %{buildroot}%{_bindir}/
 
 %if %{with test}
 %check
-# Tests that either require network or don't work due to unpackaged modules
+# Tests that either require network or require special setups
 # can't use pytest --ignore because of a special arg parser in test/utils.py
 rm -r \
-   test/test_infmodel.py \
+   test/test_chisq.py \
+   test/test_dq.py \
    test/test_fft_mkl_threaded.py \
    test/test_fftw_openmp.py \
-   test/test_dq.py \
-   test/test_chisq.py
+   test/test_frame.py \
+   test/test_live_coinc_compare.py \
+   test/test_infmodel.py \
+   test/test_skymax.py \
+   test/test_tmpltbank.py \
+   %{nil}
 
 pushd test
 %{python_expand # can't use the macro because of a special arg parser in test/utils.py
