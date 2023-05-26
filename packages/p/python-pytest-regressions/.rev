@@ -40,4 +40,13 @@
 - drop np_num-deprecated.patch (upstream)</comment>
     <requestid>1085835</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2eef8be93a7793e1da6a8aa135cecab8</srcmd5>
+    <version>2.4.2</version>
+    <time>1685124906</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove python-pandas and python-matplotlib from BuildRequires 
+</comment>
+    <requestid>1088997</requestid>
+  </revision>
 </revisionlist>

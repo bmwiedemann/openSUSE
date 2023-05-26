@@ -32,10 +32,12 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pytest >= 6.2.0}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest-datadir >= 1.2.0}
+# These could be added as build dep for testing but are commented to
+# reduce the number of requirements.
+# BuildRequires:  %%{python_module pandas}
+# BuildRequires:  %%{python_module matplotlib}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-PyYAML
@@ -63,7 +65,12 @@ Python fixtures to write regression tests.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# ignore tests that depends on matplotlib
+donttest="test_image_regression"
+# Requires python-pandas
+donttest+=" or test_foo"
+# Ignore tests that depends on python-pandas
+%pytest --ignore tests/test_num_regression.py --ignore tests/test_dataframe_regression.py -k "not ($donttest)"
 
 %files %{python_files}
 %doc CHANGELOG.rst README.rst

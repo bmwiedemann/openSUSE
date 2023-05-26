@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 25 09:34:08 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove python-pandas and python-matplotlib from BuildRequires 
+
+-------------------------------------------------------------------
 Tue May  9 21:07:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.2:
