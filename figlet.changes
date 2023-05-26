@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 23 04:33:32 UTC 2023 - Jiri Srain <jsrain@suse.com>
+
+- adjust .spec-file to list all sources independently on the
+  build options
+- flag the license properly
+
+-------------------------------------------------------------------
 Wed May 31 09:57:37 UTC 2017 - bwiedemann@suse.com
 
 - delete file from tar without repacking
