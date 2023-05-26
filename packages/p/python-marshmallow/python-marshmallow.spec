@@ -57,18 +57,20 @@ BuildRequires:  %{python_module simplejson}
 # /SECTION
 %python_subpackages
 
+%description
+marshmallow is an ORM/ODM/framework-agnostic library for converting complex
+datatypes, such as objects, to and from native Python datatypes.
+
+%if 0%{?suse_version} > 1500
 %package -n %{name}-doc
 Summary:        Documentation files for %{name}
 Group:          Documentation/Other
 Provides:       %{name}-docs = %{version}
 Obsoletes:      %{name}-docs < %{version}
 
-%description
-marshmallow is an ORM/ODM/framework-agnostic library for converting complex
-datatypes, such as objects, to and from native Python datatypes.
-
 %description -n %{name}-doc
 HTML Documentation and examples for %{name}.
+%endif
 
 %prep
 %setup -q -n marshmallow-%{version}
@@ -91,7 +93,9 @@ rm -r docs/_build/html/.buildinfo docs/_build/html/.doctrees
 %license LICENSE NOTICE
 %{python_sitelib}/*
 
+%if 0%{?suse_version} > 1500
 %files -n %{name}-doc
+%endif
 %doc examples docs/_build/html/
 
 %changelog

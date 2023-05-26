@@ -185,4 +185,12 @@
     <comment></comment>
     <requestid>1081862</requestid>
   </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>bd4e073f532bfac561732229312c9ba3</srcmd5>
+    <version>3.19.0</version>
+    <time>1685124923</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch documentation to be within the main package on SLE15</comment>
+    <requestid>1089048</requestid>
+  </revision>
 </revisionlist>
