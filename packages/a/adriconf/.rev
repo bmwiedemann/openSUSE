@@ -95,4 +95,15 @@
     <comment></comment>
     <requestid>1074973</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>91154aed29422f1fe3173698f9519c67</srcmd5>
+    <version>2.7.0</version>
+    <time>1685124950</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.7.0:
+  * Adjusted app to better handle very small screens
+  * Dropped dependency on X11
+  * Support new executable_regexp and sha1 profile attributes</comment>
+    <requestid>1089183</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           adriconf
-Version:        2.6.0
+Version:        2.7.0
 Release:        0
 Summary:        Advanced DRI Configurator
 License:        GPL-3.0-only
@@ -45,7 +45,6 @@ BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libpci)
 BuildRequires:  pkgconfig(pciaccess)
 BuildRequires:  pkgconfig(pugixml)
-BuildRequires:  pkgconfig(x11)
 
 %description
 adriconf (Advanced DRI CONFigurator) is a GUI tool used to configure open

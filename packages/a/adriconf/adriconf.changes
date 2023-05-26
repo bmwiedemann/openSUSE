@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 26 12:15:41 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.7.0:
+  * Adjusted app to better handle very small screens
+  * Dropped dependency on X11
+  * Support new executable_regexp and sha1 profile attributes
+
+-------------------------------------------------------------------
 Tue Mar 28 09:26:46 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add fix-missing-include.patch: Add missing include exposed by
