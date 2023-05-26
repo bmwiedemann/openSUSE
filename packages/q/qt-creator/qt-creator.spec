@@ -58,6 +58,7 @@ URL:            https://www.qt.io/product/development-tools
 Source:         https://download.qt.io/official_releases/qtcreator/%{short_version}/%{real_version}%{tar_suffix}/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source1:        qt-creator-rpmlintrc
 # Patches 0-10 are upstream changes
+Patch0:         0001-QmlDesigner-Fix-puppet-build-after-quick3d-private-A.patch
 # Patches 11-20 are openSUSE changes
 Patch11:        fix-application-output.patch
 Patch12:        0001-Disable-some-plugins.patch

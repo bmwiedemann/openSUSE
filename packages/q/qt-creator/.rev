@@ -160,4 +160,13 @@ The package is now offering Qt5 and Qt6 flavors and shall replace libqt5-creator
     <comment></comment>
     <requestid>1085327</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>9e862f82bc05e074f96893cc605711c4</srcmd5>
+    <version>10.0.1</version>
+    <time>1685141441</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build failure with QtQuick3d 6.5.1:
+  * 0001-QmlDesigner-Fix-puppet-build-after-quick3d-private-A.patch</comment>
+    <requestid>1089219</requestid>
+  </revision>
 </revisionlist>

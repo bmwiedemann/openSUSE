@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 26 14:32:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to fix build failure with QtQuick3d 6.5.1:
+  * 0001-QmlDesigner-Fix-puppet-build-after-quick3d-private-A.patch
+
+-------------------------------------------------------------------
 Sun May  7 13:16:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 10.0.1. Bugfix release:
