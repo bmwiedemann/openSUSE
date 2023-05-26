@@ -139,6 +139,8 @@ Source10:       systemtap-tapset.tar.xz
 Source11:       jconsole.desktop.in
 # nss configuration file
 Source12:       nss.cfg.in
+# nss fips configuration file
+Source13:       nss.fips.cfg.in
 # Ensure we aren't using the limited crypto policy
 Source14:       TestCryptoLevel.java
 # Ensure ECDSA is working
@@ -452,6 +454,10 @@ done
 # Setup nss.cfg
 sed -e "s:@NSS_LIBDIR@:%{NSS_LIBDIR}:g" %{SOURCE12} > nss.cfg
 
+# Setup nss.fips.cfg
+sed -e "s:@NSS_LIBDIR@:%{NSS_LIBDIR}:g" %{SOURCE13} > nss.fips.cfg
+sed -i -e "s:@NSS_SECMOD@:sql\:/etc/pki/nssdb:g" nss.fips.cfg
+
 %build
 
 %ifarch s390x sparc64 alpha ppc64 ppc64le %{aarch64}
@@ -512,6 +518,9 @@ export JAVA_HOME=$(pwd)/%{buildoutputdir}/%{imagesdir}/jdk
 
 # Install nss.cfg right away as we will be using the JRE above
 install -m 644 nss.cfg $JAVA_HOME/conf/security/
+
+# Install nss.fips.cfg: NSS configuration for global FIPS mode (crypto-policies)
+install -m 644 nss.fips.cfg $JAVA_HOME/conf/security/
 
 # Copy tz.properties
 echo "sun.zoneinfo.dir=%{_datadir}/javazi" >> $JAVA_HOME/conf/tz.properties

@@ -175,4 +175,12 @@
     <comment>bsc#1210392 and bsc#1211259</comment>
     <requestid>1086543</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>8ffacceac8f6c70966ed13110f031a35</srcmd5>
+    <version>17.0.7.0</version>
+    <time>1685124890</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1211679</comment>
+    <requestid>1088910</requestid>
+  </revision>
 </revisionlist>
