@@ -23,7 +23,7 @@
 %define libgver     1
 %define gsuff       %{guilemaj}_%{guilemin}-%{libgver}
 Name:           guile
-Version:        %{guilevers}.8
+Version:        %{guilevers}.9
 Release:        0
 Summary:        GNU's Ubiquitous Intelligent Language for Extension
 License:        GFDL-1.3-only AND GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -33,7 +33,6 @@ Source0:        https://ftp.gnu.org/gnu/guile/%{name}-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/gnu/guile/%{name}-%{version}.tar.xz.sig
 # key: 4FD4D288D445934E0A14F9A5A8803732E4436885 as from the release notes
 Source2:        %{name}.keyring
-Source3:        guile-rpmlintrc
 # Fix the resulting /usr/lib64/pkgconfig/guile-3.0.pc
 Patch0:         guile-3.0-gc_pkgconfig_private.patch
 # The out-of-memory test is flaky, so disable it
@@ -128,8 +127,12 @@ autoreconf -fi
 %make_build
 
 %check
+# user mode emulation needs additional fds that
+# the testsuite is not expecting
+%if ! 0%{?qemu_user_space_build}
 LD_LIBRARY_PATH="." \
 %make_build check
+%endif
 
 %install
 %make_install

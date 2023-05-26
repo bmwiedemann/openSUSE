@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue May 23 20:47:50 UTC 2023 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Add key from Ludovic Courtès to guile.keyring, who released 3.0.9
+
+-------------------------------------------------------------------
+Sun Jan 29 21:04:54 UTC 2023 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to version 3.0.9
+  * New interfaces and functionality
+  ** New `spawn' procedure to spawn child processes
+  ** `open-file' now supports an "e" flag for O_CLOEXEC
+  ** `pipe' now takes flags as an optional argument
+  ** Bindings to `openat' and friends
+  ** Abstract Unix-domain sockets are supported
+  ** New socket-related constants defined
+  ** New `bytevector-slice' procedure
+  ** Disassembler now shows intrinsic names
+  ** Linker and assembler consume less memory
+  * Bug fixes (for more see the NEWS file)
+  ** JIT compilation is now supported on Apple M1 processors
+  ** libguile/srfi-14.i.c is now longer shipped and is instead built from source
+  ** Cross-compilation supports triplets with empty vendor strings
+  ** 'system*' honors output/error port redirects
+     (https://bugs.gnu.org/52835)
+  ** 'open-input-pipe' & co. are now much faster
+     (https://bugs.gnu.org/59321)
+- Refresh patches:
+  * disable-test-out-of-memory.patch
+  * guile-3.0-gc_pkgconfig_private.patch
+- Remove no longer used guile-rpmlintrc 
+
+-------------------------------------------------------------------
+Wed Dec  7 09:10:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- skip checks for qemu-user-space-builds (tries to close filedescriptors
+  that qemu relies on)
+
+-------------------------------------------------------------------
 Tue Mar 29 13:14:36 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - stage2-serialize.patch: Serialize stage2 build only

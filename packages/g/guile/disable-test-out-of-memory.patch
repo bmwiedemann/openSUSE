@@ -1,14 +1,15 @@
-diff -Nur guile-3.0.7/test-suite/standalone/Makefile.am new/test-suite/standalone/Makefile.am
---- guile-3.0.7/test-suite/standalone/Makefile.am	2021-05-10 10:07:12.000000000 +0200
-+++ new/test-suite/standalone/Makefile.am	2021-05-15 13:52:39.130407172 +0200
-@@ -298,7 +298,4 @@
+--- guile/test-suite/standalone/Makefile.am	2023-01-29 21:51:48.697140831 +0100
++++ guile/test-suite/standalone/Makefile.am	2023-01-29 21:52:22.869517398 +0100
+@@ -298,9 +298,6 @@
  check_SCRIPTS += test-stack-overflow
  TESTS += test-stack-overflow
  
 -check_SCRIPTS += test-out-of-memory
 -TESTS += test-out-of-memory
 -
- EXTRA_DIST += ${check_SCRIPTS}
+ check_SCRIPTS += test-close-on-exec
+ TESTS += test-close-on-exec
+ 
 diff -Nur guile-3.0.7/test-suite/standalone/Makefile.in new/test-suite/standalone/Makefile.in
 --- guile-3.0.7/test-suite/standalone/Makefile.in	2021-05-10 10:30:31.000000000 +0200
 +++ new/test-suite/standalone/Makefile.in	2021-05-15 13:53:17.370706370 +0200
@@ -16,17 +17,17 @@ diff -Nur guile-3.0.7/test-suite/standalone/Makefile.in new/test-suite/standalon
  	test-scm-c-bind-keyword-arguments$(EXEEXT) \
  	test-srfi-4$(EXEEXT) $(am__append_6) $(am__EXEEXT_1) \
  	test-smob-mark$(EXEEXT) test-smob-mark-race$(EXEEXT) \
--	test-stack-overflow test-out-of-memory
-+	test-stack-overflow
+-	test-stack-overflow test-out-of-memory test-close-on-exec
++	test-stack-overflow test-close-on-exec
  check_PROGRAMS = test-num2integral$(EXEEXT) test-round$(EXEEXT) \
  	test-foreign-object-c$(EXEEXT) test-list$(EXEEXT) \
  	test-unwind$(EXEEXT) test-conversion$(EXEEXT) \
-@@ -2147,7 +2147,7 @@
+@@ -2245,7 +2245,7 @@
  	test-language test-guild-compile test-signal-fork \
  	$(am__append_3) test-foreign-object-scm test-fast-slot-ref \
  	test-mb-regexp test-use-srfi $(am__append_5) \
--	test-stack-overflow test-out-of-memory
-+	test-stack-overflow
+-	test-stack-overflow test-out-of-memory test-close-on-exec
++	test-stack-overflow test-close-on-exec
  BUILT_SOURCES = $(am__append_2)
  EXTRA_DIST = test-import-order-a.scm test-import-order-b.scm \
  	test-import-order-c.scm test-import-order-d.scm \

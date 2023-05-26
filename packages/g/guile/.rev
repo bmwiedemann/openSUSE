@@ -622,4 +622,12 @@
     <comment></comment>
     <requestid>970724</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>6038db4c76244a96a3b7e7a43de55d3c</srcmd5>
+    <version>3.0.9</version>
+    <time>1685124858</time>
+    <user>dimstar_suse</user>
+    <comment>Guile 3.0.9</comment>
+    <requestid>1088797</requestid>
+  </revision>
 </revisionlist>
