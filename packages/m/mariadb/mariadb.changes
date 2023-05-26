@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 23 13:33:46 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Refresh gcc13-fix.patch
+- Update to 10.11.3:
+  * release notes and changelog:
+    https://mariadb.com/kb/en/mariadb-10-11-3-release-notes/
+    https://mariadb.com/kb/en/mariadb-10-11-3-changelog/
+  * fixes for the following security vulnerabilities:
+    10.11.3: CVE-2022-47015 (bsc#1207404)
+
+-------------------------------------------------------------------
 Wed Mar  8 10:28:23 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Cherry-pick upstream changes (gcc13-fix.patch) for GCC 13.
