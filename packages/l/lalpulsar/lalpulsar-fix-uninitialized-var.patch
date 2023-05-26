@@ -1,8 +1,8 @@
-Index: lalpulsar-5.0.0/bin/HoughFstat/HierarchicalSearch.c
+Index: lalpulsar-6.0.1/bin/HoughFstat/HierarchicalSearch.c
 ===================================================================
---- lalpulsar-5.0.0.orig/bin/HoughFstat/HierarchicalSearch.c
-+++ lalpulsar-5.0.0/bin/HoughFstat/HierarchicalSearch.c
-@@ -1255,7 +1255,7 @@ void SetUpSFTs( LALStatus *status,			/**
+--- lalpulsar-6.0.1.orig/bin/HoughFstat/HierarchicalSearch.c
++++ lalpulsar-6.0.1/bin/HoughFstat/HierarchicalSearch.c
+@@ -1256,7 +1256,7 @@ void SetUpSFTs( LALStatus *status,			/**
    REAL8 timebase, tObs, deltaFsft;
    UINT4 k,numSFTby2;
    LIGOTimeGPS tStartGPS, tEndGPS, refTimeGPS, tMidGPS;
@@ -11,10 +11,10 @@ Index: lalpulsar-5.0.0/bin/HoughFstat/HierarchicalSearch.c
  
    REAL8 doppWings, fMin, fMax;
    REAL8 startTime_freqLo, startTime_freqHi;
-Index: lalpulsar-5.0.0/bin/GCT/HierarchSearchGCT.c
+Index: lalpulsar-6.0.1/bin/GCT/HierarchSearchGCT.c
 ===================================================================
---- lalpulsar-5.0.0.orig/bin/GCT/HierarchSearchGCT.c
-+++ lalpulsar-5.0.0/bin/GCT/HierarchSearchGCT.c
+--- lalpulsar-6.0.1.orig/bin/GCT/HierarchSearchGCT.c
++++ lalpulsar-6.0.1/bin/GCT/HierarchSearchGCT.c
 @@ -2048,7 +2048,7 @@ void SetUpSFTs( LALStatus *status,			/**
    REAL8 timebase, tObs, deltaFsft;
    UINT4 k,numSFT;

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May 23 06:56:32 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.0.1:
+  * No release notes.
+- Drop lalpulsar-printf-type-mismatch.patch: No longer needed
+  after upstream dropped related code.
+- Pass -Wno-error=enum-int-mismatch to CFLAGS to avoid a build
+  failure for a trivial type re-definition (issue communicated
+  upstream via email).
+- Bump shlib name in keeping with upstream so version update to
+  29.
+
+-------------------------------------------------------------------
 Sun Feb 12 06:55:52 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add python-py BuildRequires to fix tests that fail due to "No

@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package lalpulsar
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -27,7 +27,7 @@
 
 %define pname lalpulsar
 
-%define shlib lib%{name}26
+%define shlib lib%{name}29
 # octave >= 6 is not supported
 %bcond_with octave
 
@@ -37,15 +37,13 @@
 %define skip_python2 1
 
 Name:           %{pname}%{?psuffix}
-Version:        5.0.0
+Version:        6.0.1
 Release:        0
 Summary:        LSC Algorithm Pulsar Library
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Physics
 URL:            https://wiki.ligo.org/Computing/LALSuite
 Source:         https://software.igwn.org/sources/source/lalsuite/%{pname}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM lalpulsar-printf-type-mismatch.patch badshah400@gmail.com -- Fix type mismatch when passing variables to printf
-Patch0:         lalpulsar-printf-type-mismatch.patch
 # PATCH-FIX-OPENSUSE lalpulsar-disable-test_ssbtodetector.patch badshah400@gmail.com -- Disable a test that requires packages not yet availabe on openSUSE
 Patch1:         lalpulsar-disable-test_ssbtodetector.patch
 # PATCH-FIX-UPSTREAM lalpulsar-fix-uninitialized-var.patch badshah400@gmail.com -- Fix an uninitialised variable
@@ -150,7 +148,7 @@ export PYTHON=%{_bindir}/$python
 mkdir ../$python
 cp -pr ./ ../$python
 pushd ../$python
-export CFLAGS="%{optflags} -Wno-error=address"
+export CFLAGS="%{optflags} -Wno-error=address -Wno-error=enum-int-mismatch"
 export CXXFLAGS=${CFLAGS}
 %configure \
   %{?with_octave:--enable-swig-octave} \
@@ -201,8 +199,6 @@ find %{buildroot}%{_libdir}/ -name "*.a" -delete -print
 find %{buildroot} -type f -name "*.la" -delete -print
 # /SECTION
 
-sed -i "1s|/usr/bin/env tclsh|/usr/bin/tclsh|" %{buildroot}%{_bindir}/lalpulsar_CopySFTs
-
 %python_expand %fdupes %{buildroot}%{$python_sitearch}/%{name}/
 
 %post -n %{shlib} -p /sbin/ldconfig
@@ -232,7 +228,7 @@ sed -i "1s|/usr/bin/env tclsh|/usr/bin/tclsh|" %{buildroot}%{_bindir}/lalpulsar_
 %endif
 
 %files %{python_files}
-%{python_sitearch}/*
+%{python_sitearch}/lalpulsar/
 
 %else
 
