@@ -1,7 +1,7 @@
 #
 # spec file for package python-et_xmlfile
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-et_xmlfile
 Version:        1.0.1
 Release:        0
@@ -24,10 +23,11 @@ Summary:        An implementation of lxml.xmlfile for the standard library
 License:        MIT
 URL:            https://bitbucket.org/openpyxl/et_xmlfile
 Source0:        https://files.pythonhosted.org/packages/source/e/et_xmlfile/et_xmlfile-%{version}.tar.gz
-Source1:        https://bitbucket.org/openpyxl/et_xmlfile/raw/8c7ad6904ebe0ff98c204a3e77d7e78528b10ffe/LICENCE.rst
+Source1:        https://raw.githubusercontent.com/biydnd/et_xmlfile/master/LICENCE.rst
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-jdcal
@@ -48,10 +48,10 @@ rm -rf *.egg-info
 cp -a %{SOURCE1} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -60,7 +60,7 @@ cp -a %{SOURCE1} .
 %files %{python_files}
 %license LICENCE.rst
 %doc README.rst
-%{python_sitelib}/et_xmlfile-%{version}-py*.egg-info
-%{python_sitelib}/et_xmlfile/
+%{python_sitelib}/et_xmlfile-%{version}*-info
+%{python_sitelib}/et_xmlfile
 
 %changelog
