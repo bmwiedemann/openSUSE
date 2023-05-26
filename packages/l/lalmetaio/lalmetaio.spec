@@ -16,15 +16,16 @@
 #
 
 
-%define shlib lib%{name}10
+%define shlib lib%{name}11
 # NEP 29: python36-numpy and co. in TW are no more
 %define skip_python36 1
 # Support for py2 dropped by uostream
 %define skip_python2 1
 # octave >= 6 not supported
 %bcond_with    octave
+
 Name:           lalmetaio
-Version:        3.0.0
+Version:        4.0.1
 Release:        0
 Summary:        LSC Algorithm MetaIO Library
 License:        GPL-2.0-or-later
