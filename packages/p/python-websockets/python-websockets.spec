@@ -55,12 +55,8 @@ export CFLAGS="%{optflags}"
 %check
 # Test execution speed depends on BS load and architecture, relax
 export WEBSOCKETS_TESTS_TIMEOUT_FACTOR=10
-# https://github.com/aaugustin/websockets/issues/855 is an intermittent failure
-# for test_keepalive_ping_does_not_crash_when_connection_lost on s390x
-# export PYTHONWARNINGS=default
-# test suite temporarily broken on python 3.9.7: gh#aaugustin/websockets#1051
-python39_donttest=(-k testnothing)
-%pyunittest_arch -v "${$python_donttest[@]}"
+# Disable flaky tests gh#python-websockets/websockets#1322
+%pytest_arch -v -k "not test_close_waits_for_close_frame" tests
 
 %files %{python_files}
 %license LICENSE

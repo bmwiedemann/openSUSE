@@ -419,4 +419,14 @@
   * Added ``open_timeout`` to :func:`~server.serve`.</comment>
     <requestid>1087125</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>3a8b566dc294d69f1db3d6b7ec0faa4e</srcmd5>
+    <version>11.0.3</version>
+    <time>1685124863</time>
+    <user>dimstar_suse</user>
+    <comment>- Run tests with pytest
+- Disable flaky test gh#python-websockets/websockets#1322
+</comment>
+    <requestid>1088821</requestid>
+  </revision>
 </revisionlist>
