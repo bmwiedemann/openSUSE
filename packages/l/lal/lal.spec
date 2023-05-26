@@ -36,21 +36,16 @@
 # No support for octave >= 6
 %bcond_with octave
 Name:           lal%{psuffix}
-Version:        7.2.4
+Version:        7.3.1
 Release:        0
 Summary:        A collection of various gravitational wave data analysis routines
 License:        GPL-2.0-only
 Group:          Productivity/Scientific/Physics
 URL:            https://wiki.ligo.org/Computing/LALSuite
 Source:         https://software.igwn.org/sources/source/lalsuite/lal-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM -- See https://git.ligo.org/lscsoft/lalsuite/-/commit/847f9f1bf9c8e029db6426de098a963d542ab08b.patch
-Patch0:         swig_4_1_compat.patch
-# PATCH-FIX-UPSTREAM -- https://git.ligo.org/lscsoft/lalsuite/-/commit/e4269307540b.patch
-Patch1:         replace_numpy_object.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module xml}
 BuildRequires:  bc
 BuildRequires:  fdupes
@@ -64,7 +59,6 @@ Requires:       python-freezegun
 Requires:       python-numpy
 Requires:       python-python-dateutil
 Requires:       python-scipy
-Requires:       python-six
 Recommends:     python-ligo-lw
 Recommends:     python-ligo-segments
 # Broken on all archs where 'char' is unsigned
@@ -201,6 +195,9 @@ find %{buildroot}%{$python_sitearch} -iname \*pyc -type f \( -exec grep 'home/ab
 }
 
 %python_expand %fdupes %{buildroot}%{$python_sitearch}/
+
+# Fix broken hashbang
+sed -Ei "1{s|(python3\.?[0-9]*)|%{_bindir}/\1|}" %{buildroot}%{_bindir}/lal_{path2cache,searchsum2cache}
 %endif
 
 %check
@@ -222,7 +219,7 @@ fi
 %postun -n %{shliblalsupport} -p /sbin/ldconfig
 
 %files %{python_files}
-%{python_sitearch}/lal
+%{python_sitearch}/lal/
 
 %files -n %{shliblal}
 %{_libdir}/liblal.so.*
@@ -238,6 +235,7 @@ fi
 %{_libdir}/liblal.so
 %{_libdir}/liblalsupport.so
 %{_libdir}/pkgconfig/*.pc
+%{_mandir}/man7/*.7%{?ext_man}
 
 %if %{with octave}
 %files -n octave-lal

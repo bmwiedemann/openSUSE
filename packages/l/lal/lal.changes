@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri May 26 14:30:47 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix a couple of incorrect hashbangs on executable scripts.
+
+-------------------------------------------------------------------
+Tue Apr 18 10:35:22 UTC 2023 - pgajdos@suse.com
+
+- version update to 7.3.1
+  * no changelog found
+- python-six is not required
+  https://trello.com/c/MO53MocR/143-remove-python3-six
+- deleted patches
+  - replace_numpy_object.patch (upstreamed)
+  - swig_4_1_compat.patch (upstreamed)
+
+-------------------------------------------------------------------
 Sat Jan 28 06:06:33 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build after numpy 1.24 API changes, add
