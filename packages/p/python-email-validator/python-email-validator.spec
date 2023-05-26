@@ -16,10 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 %define skip_python2 1
 Name:           python-email-validator
-Version:        1.3.1
+Version:        2.0.0
 Release:        0
 Summary:        A robust email syntax and deliverability validation library for Python
 License:        CC0-1.0
@@ -28,6 +28,8 @@ Source:         https://github.com/JoshData/python-email-validator/archive/refs/
 # PATCH-FIX-OPENSUSE Ignore DeprecationWarning until requests-toolbelt is fixed
 # (Pulled in by dnspython)
 Patch0:         ignore-urllib3-pyopenssl-warning.patch
+# PATCH-FIX-OPENSUSE do not require /etc/resolv.conf for testing
+Patch1:         dont-require-resolv-tests.patch
 BuildRequires:  %{python_module dnspython >= 1.15.0}
 BuildRequires:  %{python_module idna >= 2.0.0}
 BuildRequires:  %{python_module pytest >= 5.0}
@@ -71,7 +73,11 @@ Key features:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest tests -k 'not (test_deliverability_no_records or test_deliverability_found or test_deliverability_fails or test_deliverability_dns_timeout or test_main_single_good_input or test_main_multi_input or test_main_input_shim or test_validate_email__with_caching_resolver or test_validate_email__with_configured_resolver or test_email_example_reserved_domain)'
+echo "nameserver 1.1.1.1" > resolv.conf
+export RESOLV_FILE=$PWD/resolv.conf
+# test_caching_dns_resolver fails when running with kvm
+donttest="test_caching_dns_resolver"
+%pytest tests -k "not ($donttest)"
 
 %post
 %python_install_alternative email_validator

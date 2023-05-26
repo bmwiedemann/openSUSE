@@ -1,9 +1,11 @@
-Index: python-email-validator-1.2.1/setup.cfg
+Index: python-email-validator-2.0.0/setup.cfg
 ===================================================================
---- python-email-validator-1.2.1.orig/setup.cfg
-+++ python-email-validator-1.2.1/setup.cfg
-@@ -43,3 +43,4 @@ max-line-length = 120
+--- python-email-validator-2.0.0.orig/setup.cfg
++++ python-email-validator-2.0.0/setup.cfg
+@@ -43,5 +43,6 @@ max-line-length = 120
  testpaths = tests
  filterwarnings =
      error
 +    ignore:.*urllib3.contrib.pyopenssl.*:DeprecationWarning
+ markers =
+     network: mark a test as requiring Internet access.
