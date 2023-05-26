@@ -84,6 +84,7 @@ BuildArch:      noarch
 An extensible framework for Python programming, with special focus
 on event-based network programming and multiprotocol integration.
 
+%if 0%{?suse_version} > 1500
 %package -n %{name}-doc
 Summary:        An asynchronous networking framework written in Python - Documentation
 
@@ -92,6 +93,7 @@ An extensible framework for Python programming, with special focus
 on event-based network programming and multiprotocol integration.
 
 This package contains the documentation for python-Twisted
+%endif
 
 %package tls
 Summary:        TLS support for Twisted
@@ -186,6 +188,10 @@ sed -i '1{/env python/d}' src/twisted/mail/test/pop3testserver.py src/twisted/tr
 %if ! %{with test}
 %build
 %python_build
+
+# empty files
+rm docs/{fun/Twisted.Quotes,_static/.placeholder,_templates/.placeholder}
+%fdupes docs
 %endif
 
 %if ! %{with test}
@@ -209,12 +215,6 @@ rm %{buildroot}%{_bindir}/mailmail %{buildroot}%{_mandir}/man1/mailmail.1
 
 # no manpage for twist yet:
 %python_clone -a %{buildroot}%{_bindir}/twist
-
-mkdir -p %{buildroot}%{_docdir}/%{name}-doc
-cp -r docs/* %{buildroot}%{_docdir}/%{name}-doc/
-# empty files
-rm %{buildroot}%{_docdir}/%{name}-doc/{fun/Twisted.Quotes,_static/.placeholder,_templates/.placeholder}
-%fdupes %{buildroot}%{_docdir}/%{name}-doc
 %endif
 
 %if %{with test}
@@ -250,9 +250,6 @@ done
 %python_uninstall_alternative twistd
 
 %if ! %{with test}
-%files -n %{name}-doc
-%doc %{_docdir}/%{name}-doc
-
 %files %{python_files tls}
 %license LICENSE
 
@@ -294,6 +291,12 @@ done
 %python_alternative %{_mandir}/man1/trial.1%{?ext_man}
 %{python_sitelib}/twisted
 %{python_sitelib}/Twisted-%{version}*-info
+
+%if 0%{?suse_version} > 1500
+%files -n %{name}-doc
+%endif
+%doc docs/
+
 %endif
 
 %changelog
