@@ -219,4 +219,23 @@
   * Fix `X | Y` union syntax breaking `GenericModel`</comment>
     <requestid>1074635</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>387a843a5577a9b6daa36086cec049eb</srcmd5>
+    <version>1.10.8</version>
+    <time>1685124899</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.10.8
+  * Fix a bug in `Literal` usage with `typing-extension==4.6.0`, #5826
+    by @hramezani
+  * This solves the (closed) issue #3849 where aliased fields that use
+    discriminated union fail to validate when the data contains the
+    non-aliased field name, #5736 by @benwah
+  * Update email-validator dependency to &gt;=2.0.0post2, #5627 by
+    @adriangb
+  * update `AnyClassMethod` for changes in
+    [python/typeshed#9771](https://github.com/python/typeshed/issues/9771),
+    #5505 by @ITProKyle
+</comment>
+    <requestid>1088976</requestid>
+  </revision>
 </revisionlist>
