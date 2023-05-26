@@ -1,0 +1,24 @@
+Index: gnutls-3.8.0/lib/fips.c
+===================================================================
+--- gnutls-3.8.0.orig/lib/fips.c
++++ gnutls-3.8.0/lib/fips.c
+@@ -467,6 +467,11 @@ static int check_binary_integrity(void)
+ 	ret = check_lib_hmac(&hmac.gnutls, paths.gnutls);
+ 	if (ret < 0)
+ 		return ret;
++# if 0
++	/* Disable nettle, hogweed and gpm HMAC verification as
++	 * they are calculated during build of the respective
++	 * packages and can differ from the ones listed here.
++	 */
+ 	ret = check_lib_hmac(&hmac.nettle, paths.nettle);
+ 	if (ret < 0)
+ 		return ret;
+@@ -476,6 +481,7 @@ static int check_binary_integrity(void)
+ 	ret = check_lib_hmac(&hmac.gmp, paths.gmp);
+ 	if (ret < 0)
+ 		return ret;
++# endif
+ 
+ 	return 0;
+ }

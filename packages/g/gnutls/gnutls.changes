@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May 24 11:01:10 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Skip the fixed HMAC verification for nettle, hogweed and
+  gmp libraries. These calculated HMACs change for every build of
+  each of these packages, we only have to verify that for gnutls.
+  * Add gnutls-FIPS-HMAC-nettle-hogweed-gmp.patch [bsc#1211476]
+
+-------------------------------------------------------------------
+Mon May 22 11:32:53 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Merge libgnutls30-hmac package into the library [bsc#1185116]
+
+-------------------------------------------------------------------
 Mon May 15 09:57:45 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable GNULIB's year2038 also for 32-bit arm - boo#1211394

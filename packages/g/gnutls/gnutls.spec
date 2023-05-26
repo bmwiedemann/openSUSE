@@ -62,9 +62,11 @@ Patch100:       gnutls-FIPS-PCT-DH.patch
 Patch101:       gnutls-FIPS-PCT-ECDH.patch
 #PATCH-FIX-SUSE bsc#1207346 FIPS: Change FIPS 140-2 references to FIPS 140-3
 Patch102:       gnutls-FIPS-140-3-references.patch
+#PATCH-FIX-SUSE bsc#1211476 FIPS: Skip fixed HMAC verification for nettle, hogweed and gmp
+Patch103:       gnutls-FIPS-HMAC-nettle-hogweed-gmp.patch
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 #PATCH-FIX-SUSE bsc#1202146 FIPS: Port gnutls to use jitterentropy
-Patch103:       gnutls-FIPS-jitterentropy.patch
+Patch104:       gnutls-FIPS-jitterentropy.patch
 %endif
 BuildRequires:  autogen
 BuildRequires:  automake
@@ -118,10 +120,10 @@ of the IETF's TLS working group.
 
 %package -n libgnutls%{gnutls_sover}
 Summary:        The GNU Transport Layer Security Library
-# install libgnutls and libgnutls-hmac close together (bsc#1090765)
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
-Suggests:       libgnutls%{gnutls_sover}-hmac = %{version}-%{release}
+Provides:       libgnutls%{gnutls_sover}-hmac = %{version}-%{release}
+Obsoletes:      libgnutls%{gnutls_sover}-hmac < %{version}-%{release}
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 Requires:       crypto-policies
 %endif
@@ -130,15 +132,6 @@ Requires:       crypto-policies
 The GnuTLS library provides a secure layer over a reliable transport
 layer. Currently the GnuTLS library implements the proposed standards
 of the IETF's TLS working group.
-
-%package -n libgnutls%{gnutls_sover}-hmac
-Summary:        Checksums of the GNU Transport Layer Security Library
-License:        LGPL-2.1-or-later
-Group:          System/Libraries
-Requires:       libgnutls%{gnutls_sover} = %{version}-%{release}
-
-%description -n libgnutls%{gnutls_sover}-hmac
-FIPS SHA256 checksums of the libgnutls library.
 
 %if %{with dane}
 %package -n libgnutls-dane%{gnutls_dane_sover}
@@ -339,9 +332,6 @@ GNUTLS_FORCE_FIPS_MODE=1 make check %{?_smp_mflags} GNUTLS_SYSTEM_PRIORITY_FILE=
 %files -n libgnutls%{gnutls_sover}
 %license LICENSE
 %{_libdir}/libgnutls.so.%{gnutls_sover}*
-
-%files -n libgnutls%{gnutls_sover}-hmac
-%license LICENSE
 %{_libdir}/.libgnutls.so.%{gnutls_sover}*.hmac
 
 %if %{with dane}
