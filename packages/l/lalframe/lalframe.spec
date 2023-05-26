@@ -21,11 +21,11 @@
 # Py2 support dropped by upstream
 %define skip_python2 1
 
-%define shlib lib%{name}13
+%define shlib lib%{name}14
 # No support for octave >= 6
 %bcond_with octave
 Name:           lalframe
-Version:        2.0.1
+Version:        3.0.1
 Release:        0
 Summary:        LSC Algorithm Frame Library for gravitational wave data analysis
 License:        GPL-2.0-or-later
