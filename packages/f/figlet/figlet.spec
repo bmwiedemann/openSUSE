@@ -1,7 +1,7 @@
 #
 # spec file for package figlet
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,15 +22,17 @@ Release:        0
 Summary:        Tool for Creating Cool ASCII-Art Signatures
 License:        BSD-3-Clause
 Group:          Productivity/Text/Utilities
-Url:            http://www.figlet.org/
+URL:            http://www.figlet.org/
 # Patched code is built by default.
 # Use rpmbuild -D 'BUILD_ORIG 1' to build original code.
 %if 0%{?BUILD_ORIG}
 Source0:        ftp://ftp.figlet.org/pub/figlet/program/unix/%{name}-%{version}.tar.gz
+Source999:      %{name}-%{version}-patched.tar.bz2
 %else
 # WARNING: This is not a comment, but a real command to repack source:
 #%(sh %{_sourcedir}/figlet-licpatch.sh %{_sourcedir})
 Source0:        %{name}-%{version}-patched.tar.bz2
+Source999:      ftp://ftp.figlet.org/pub/figlet/program/unix/%{name}-%{version}.tar.gz
 %endif
 Source1:        ftp://ftp.figlet.org/pub/figlet/fonts/contributed.tar.gz
 Source2:        ftp://ftp.figlet.org/pub/figlet/fonts/international.tar.gz
@@ -79,7 +81,8 @@ cp -a ours %{buildroot}%{_datadir}/figlet/
 
 %files
 %defattr(-,root,root,-)
-%doc CHANGES FAQ LICENSE README figfont.txt
+%doc CHANGES FAQ README figfont.txt
+%license LICENSE
 %doc bdf2flf.pl febrew
 %{_bindir}/chkfont
 %{_bindir}/figlet
