@@ -149,4 +149,28 @@
   * Allow any unicode character as valid identifier name.</comment>
     <requestid>1007717</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>fa819fd1fe7ae1645dc6a5be00cc74b6</srcmd5>
+    <version>0.4.4</version>
+    <time>1685124928</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.4:
+  * IMPORTANT: This release fixes a security vulnerability in
+    the parser where a regular expression vulnerable to ReDOS
+    (Regular Expression Denial of Service) was used. See the
+    security advisory for details (CVE-2023-30608, bsc#1210617,
+    https://github.com/andialbrecht/sqlparse/security/advisories/GHSA-rrm6-wvj7-cwh2)
+    The vulnerability was discovered by @erik-krogh from GitHub
+    Security Lab (GHSL). Thanks for reporting!
+  * Revert a change from 0.4.0 that changed IN to be a comparison
+    (issue694).  The primary expectation is that IN is treated as
+    a keyword and not as a comparison operator. That also follows
+    the definition of reserved keywords for the major SQL syntax
+    definitions.
+  * Fix regular expressions for string parsing.
+  * sqlparse now uses pyproject.toml instead of setup.cfg
+    (issue685).
+</comment>
+    <requestid>1089053</requestid>
+  </revision>
 </revisionlist>
