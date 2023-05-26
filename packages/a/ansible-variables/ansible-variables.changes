@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Wed May 24 16:42:22 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase for descriptions; update descriptions altogether
+  to point out this is a tool (not a library or something else).
+
+-------------------------------------------------------------------
+Mon May 22 11:15:44 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- remove python_subpackages macro
+
+-------------------------------------------------------------------
+Mon May 22 10:23:58 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package ansible-variables: Keep track of Ansible host context
+  variables

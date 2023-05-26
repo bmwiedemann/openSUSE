@@ -1,0 +1,5 @@
+<package name="ansible-variables" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="systemsmanagement:ansible" package="ansible-variables"/>
+</package>
