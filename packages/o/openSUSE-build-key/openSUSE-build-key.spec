@@ -1,7 +1,7 @@
 #
 # spec file for package openSUSE-build-key
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,25 +30,39 @@ Group:          System/Packages
 URL:            https://en.opensuse.org/openSUSE:Security_team
 Source:         key2rpmname
 # opensuse@opensuse.org
-Source1:        gpg-pubkey-3dbdc284-53674dd4.asc
+# old 2048 key now no longer used
+# Source1:        gpg-pubkey-3dbdc284-53674dd4.asc
+Obsoletes:      gpg-pubkey-3dbdc284
+
 # openSUSE RSA 4096 key
 Source10:       gpg-pubkey-29b700a4-62b07e22.asc
+
 # build@suse.de for SLE12 / SLE15
 Source2:        gpg-pubkey-39db7c82-5f68629b.asc
+
 # RISCV
 Source3:        gpg-pubkey-697ba1e5-5c755904.asc
+
 # zSystems
 Source5:        gpg-pubkey-f6ab3975-5edd7d4f.asc
+
 # PowerPC
 Source6:        gpg-pubkey-8ede3e07-5c755f3a.asc
+
 # Container key openSUSE
 Source7:        opensuse-container-9ab48ce9-5ae3116a.asc
+
 # Container key SUSE Linux Enterprise
 Source8:        build-container-d4ade9c3-5a2e9669.asc
 # openSUSE Backports key (previously PackageHub, now also Leap 15.3 / 15.4)
 Source9:        gpg-pubkey-65176565-61a0ee8f.asc
 # Container key SUSE Linux Enterprise in PEM format
 Source11:       build-container-d4ade9c3-5a2e9669.pem
+
+# 2023 Container key openSUSE in PEM and GPG formats
+Source12:       build-container-202304-d684afec-64390cff.pem
+Source13:       build-container-202304-d684afec-64390cff.asc
+
 Source98:       security_at_suse_de.asc
 BuildRequires:  gpg
 Conflicts:      suse-build-key
@@ -79,7 +93,7 @@ cp %{SOURCE6} .
 
 %install
 mkdir -p %{buildroot}%{keydir}
-for i in %{SOURCE1} %{SOURCE10} %{SOURCE2} \
+for i in %{SOURCE10} %{SOURCE2} \
 %if 0%{?sle_version}
 %{SOURCE9} \
 %endif
@@ -102,8 +116,10 @@ done
 mkdir -p %{buildroot}%{containerkeydir}/
 install -c -m 644 %{SOURCE7} %{buildroot}%{containerkeydir}/opensuse-container-key.asc
 install -c -m 644 %{SOURCE8} %{buildroot}%{containerkeydir}/suse-container-key.asc
+install -c -m 644 %{SOURCE13} %{buildroot}%{containerkeydir}/opensuse-container-key-2023.asc
 mkdir -p %{buildroot}%{pemcontainerkeydir}/
 install -c -m 644 %{SOURCE11} %{buildroot}%{pemcontainerkeydir}/suse-container-key.pem
+install -c -m 644 %{SOURCE12} %{buildroot}%{pemcontainerkeydir}/opensuse-container-key-2023.pem
 if [ -e "%_sourcedir/_pubkey" ]; then
     name="$(sh %{SOURCE0} %_sourcedir/_pubkey).asc"
     if [ ! -e "%_sourcedir/$name" ]; then
@@ -122,6 +138,8 @@ fi
 %{keydir}/gpg-pubkey-*.asc
 %{containerkeydir}/opensuse-container-key.asc
 %{containerkeydir}/suse-container-key.asc
+%{containerkeydir}/opensuse-container-key-2023.asc
 %{pemcontainerkeydir}/suse-container-key.pem
+%{pemcontainerkeydir}/opensuse-container-key-2023.pem
 
 %changelog

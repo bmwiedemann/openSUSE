@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 14 14:01:43 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- Added a new 4096 openSUSE container key
+  - build-container-202304-d684afec-64390cff.asc
+  - build-container-202304-d684afec-64390cff.pem
+- Removed and obsoleted old 2048 build key of Tumbleweed
+  - gpg-pubkey-3dbdc284-53674dd4.asc
+
+-------------------------------------------------------------------
 Mon Dec  5 12:28:24 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
 
 - Package OBS project key if available. Useful when forking

@@ -330,4 +330,16 @@ However, it would be good to have these out before we do switch. (forwarded requ
   openSUSE-build-key for use in appliances. (forwarded request 1040280 from lnussel)</comment>
     <requestid>1040333</requestid>
   </revision>
+  <revision rev="39" vrev="48">
+    <srcmd5>4585365dfe461d526e860aad2aa09e19</srcmd5>
+    <version>1.0</version>
+    <time>1685124855</time>
+    <user>dimstar_suse</user>
+    <comment>- Added a new 4096 openSUSE container key
+  - build-container-202304-d684afec-64390cff.asc
+  - build-container-202304-d684afec-64390cff.pem
+- Removed and obsoleted old 2048 build key of Tumbleweed
+  - gpg-pubkey-3dbdc284-53674dd4.asc (forwarded request 1079730 from msmeissn)</comment>
+    <requestid>1079731</requestid>
+  </revision>
 </revisionlist>
