@@ -21,18 +21,16 @@
 # Py2 support dropped upstream
 %define skip_python2 1
 
-%define shlib liblalsimulation31
+%define shlib liblalsimulation32
 # octave >= 6 not supported
 %bcond_with octave
 Name:           lalsimulation
-Version:        4.0.0
+Version:        5.2.0
 Release:        0
 Summary:        LSC Algorithm Simulation Library
 License:        GPL-2.0-only
 URL:            https://wiki.ligo.org/Computing/DASWG/LALSuite
 Source:         https://software.igwn.org/sources/source/lalsuite/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM swig_4_1_compat.patch badshah40@gmail.com -- Ensure compatibility with swig 4.1; patch taken from upstream
-Patch0:         https://git.ligo.org/lscsoft/lalsuite/-/commit/17bdccd92ab76abfe617e3eb38edf85ab4dfe424.patch#/swig_4_1_compat.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module lal >= 7.2.0}
 BuildRequires:  %{python_module numpy >= 1.7}
@@ -113,6 +111,8 @@ export PYTHON=%{_bindir}/$python
 mkdir ../$python
 cp -pr ./ ../$python
 pushd ../$python
+export CFLAGS="%{optflags} -Wno-error=enum-int-mismatch"
+export CXXFLAGS=$CFLAGS
 %configure \
   %{?with_octave:--enable-swig-octave} \
   %{!?with_octave:--disable-swig-octave}

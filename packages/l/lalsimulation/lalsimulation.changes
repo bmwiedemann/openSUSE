@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 23 08:02:55 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.2.0:
+  * No release notes.
+- Drop swig_4_1_compat.patch: incorporated upstream.
+- Pass -Wno-error=enum-int-mismatch to CFLAGS to avoid build
+  failures on a trivial type redefinition issue (communicated to
+  upstream via email).
+- Update shlib package name in keeping with upstream so version.
+
+-------------------------------------------------------------------
 Sun Feb 12 05:53:50 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add python-py BuildRequires to fix tests that fail due to "No
