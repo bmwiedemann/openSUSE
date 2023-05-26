@@ -1,7 +1,7 @@
 #
 # spec file for package lalapps
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 # NEP 29: astropy, numpy, scipy do not have a python36 flavor package in TW
 %define skip_python36 1
 Name:           lalapps
-Version:        9.0.0
+Version:        9.2.1
 Release:        0
 Summary:        LSC Algorithm Library Applications
 License:        GPL-2.0-or-later
@@ -34,12 +34,12 @@ Patch2:         lalapps-disable-testWeave-for-non-x86_64.patch
 BuildRequires:  %{python_module astropy}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module glue}
-BuildRequires:  %{python_module lal >= 7.1.0}
-BuildRequires:  %{python_module lalburst >= 1.5.3}
-BuildRequires:  %{python_module lalframe >= 1.5.0}
-BuildRequires:  %{python_module lalinference >= 2.0.0}
-BuildRequires:  %{python_module lalmetaio >= 2.0.0}
-BuildRequires:  %{python_module lalpulsar >= 3.0.0}
+BuildRequires:  %{python_module lal >= 7.3.0}
+BuildRequires:  %{python_module lalburst >= 2.0.1}
+BuildRequires:  %{python_module lalframe >= 3.0.1}
+BuildRequires:  %{python_module lalinference >= 4.1.3}
+BuildRequires:  %{python_module lalmetaio >= 4.0.1}
+BuildRequires:  %{python_module lalpulsar >= 6.0.1}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module numpy}
@@ -53,14 +53,14 @@ BuildRequires:  swig
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(framel) >= 8.39.2
 BuildRequires:  pkgconfig(gsl)
-BuildRequires:  pkgconfig(lal) >= 7.1.0
-BuildRequires:  pkgconfig(lalburst) >= 1.5.3
-BuildRequires:  pkgconfig(lalframe) >= 1.5.0
-BuildRequires:  pkgconfig(lalinference) >= 2.0.0
-BuildRequires:  pkgconfig(lalinspiral) >= 2.0.0
-BuildRequires:  pkgconfig(lalmetaio) >= 2.0.0
-BuildRequires:  pkgconfig(lalpulsar) >= 3.0.0
-BuildRequires:  pkgconfig(lalsimulation) >= 2.5.0
+BuildRequires:  pkgconfig(lal) >= 7.3.0
+BuildRequires:  pkgconfig(lalburst) >= 2.0.1
+BuildRequires:  pkgconfig(lalframe) >= 3.0.1
+BuildRequires:  pkgconfig(lalinference) >= 4.1.3
+BuildRequires:  pkgconfig(lalinspiral) >= 4.0.2
+BuildRequires:  pkgconfig(lalmetaio) >= 4.0.1
+BuildRequires:  pkgconfig(lalpulsar) >= 6.0.1
+BuildRequires:  pkgconfig(lalsimulation) >= 5.2.0
 # SECTION For tests
 BuildRequires:  %{python_module pytest}
 BuildRequires:  bc
@@ -84,14 +84,12 @@ Algorithm Library.
 Summary:        LSC Algorithm Library Applications
 Group:          Productivity/Scientific/Physics
 Requires:       python-h5py
-Requires:       python-lal >= 7.1.0
-Requires:       python-lalburst >= 1.5.3
-Requires:       python-lalframe >= 1.5.0
-Requires:       python-lalinference >= 2.0.0
-Requires:       python-lalinspiral >= 2.0.0
-Requires:       python-lalmetaio >= 2.0.0
-Requires:       python-lalpulsar >= 3.0.0
-Requires:       python-lalsimulation >= 2.5.0
+Requires:       python-lal >= 7.3.0
+Requires:       python-lalburst >= 2.0.1
+Requires:       python-lalframe >= 3.0.1
+Requires:       python-lalinference >= 4.1.3
+Requires:       python-lalmetaio >= 4.0.1
+Requires:       python-lalpulsar >= 6.0.1
 Requires:       python-ligo-lw
 Requires:       python-ligo-segments
 Requires:       python-matplotlib

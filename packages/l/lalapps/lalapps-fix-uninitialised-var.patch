@@ -1,8 +1,8 @@
-Index: lalapps-9.0.0/src/string/StringSearch.c
+Index: lalapps-9.2.1/src/string/StringSearch.c
 ===================================================================
---- lalapps-9.0.0.orig/src/string/StringSearch.c
-+++ lalapps-9.0.0/src/string/StringSearch.c
-@@ -201,7 +201,7 @@ int main(int argc,char *argv[])
+--- lalapps-9.2.1.orig/src/string/StringSearch.c
++++ lalapps-9.2.1/src/string/StringSearch.c
+@@ -200,7 +200,7 @@ int main(int argc,char *argv[])
    unsigned seg_length;
    StringTemplate strtemplate[MAXTEMPLATES];
    int NTemplates;

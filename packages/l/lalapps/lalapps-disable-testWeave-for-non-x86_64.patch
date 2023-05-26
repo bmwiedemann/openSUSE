@@ -1,8 +1,8 @@
-Index: lalapps-9.0.0/configure.ac
+Index: lalapps-9.2.1/configure.ac
 ===================================================================
---- lalapps-9.0.0.orig/configure.ac
-+++ lalapps-9.0.0/configure.ac
-@@ -260,6 +260,13 @@ AM_CPPFLAGS="-I\$(top_srcdir)/src ${AM_C
+--- lalapps-9.2.1.orig/configure.ac
++++ lalapps-9.2.1/configure.ac
+@@ -268,6 +268,13 @@ AM_CPPFLAGS="-I\$(top_srcdir)/src ${AM_C
  # RedHat-derived systems.
  AC_SUBST([pkgpythondir], ["\${pkgpyexecdir}"])
  
