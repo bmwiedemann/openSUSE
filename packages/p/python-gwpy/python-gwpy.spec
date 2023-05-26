@@ -1,7 +1,7 @@
 #
 # spec file for package python-gwpy
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,13 +20,13 @@
 %define         skip_python2 1
 
 Name:           python-gwpy
-Version:        2.1.5
+Version:        3.0.4
 Release:        0
 Summary:        A python package for gravitational-wave astrophysics
 License:        GPL-3.0-only
 URL:            https://gwpy.github.io/
 Source:         https://files.pythonhosted.org/packages/source/g/gwpy/gwpy-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -36,6 +36,7 @@ Requires:       python-dqsegdb2
 Requires:       python-gwosc
 Requires:       python-h5py
 Requires:       python-lal
+Requires:       python-ligo-lw
 Requires:       python-ligo-segments
 Requires:       python-matplotlib >= 3.1.0
 Requires:       python-numpy
@@ -53,12 +54,13 @@ BuildArch:      noarch
 BuildRequires:  %{python_module PyMySQL}
 BuildRequires:  %{python_module astropy >= 3.0.0}
 BuildRequires:  %{python_module dqsegdb2}
-BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module framel}
+BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module gwosc}
 BuildRequires:  %{python_module h5py}
-BuildRequires:  %{python_module lal}
 BuildRequires:  %{python_module lalsimulation}
+BuildRequires:  %{python_module lal}
+BuildRequires:  %{python_module ligo-lw}
 BuildRequires:  %{python_module ligo-segments}
 BuildRequires:  %{python_module matplotlib >= 3.1.0}
 BuildRequires:  %{python_module numpy}
@@ -88,26 +90,41 @@ sed -Ei "1{/^#!\/usr\/bin\/env python/d}" gwpy/cli/*.py
 sed -Ei "1{/^#!\/usr\/bin\/env python/d}" gwpy/utils/sphinx/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/gwpy-plot
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# deselecting tests:
-# - examples are not installed into buildroot: test via pyargs
-# - automatic skips by python-gwpy-connectionerror-test.patch
-# - test_fetch_open_data in multiple modules try to connect to
-#   gw-openscience.org
 %{python_expand sed -i "s/python --blah/$python --blah/" gwpy/utils/tests/test_shell.py
 sed -i "s/'python'/'$python'/g" gwpy/utils/tests/test_shell.py
 }
-%pytest --pyargs gwpy -k "not (fetch_open_data or test_timeseries or test_io_losc)"
+
+# Set TMPDIR to a dir in working dir so that tests can write to it
+mkdir ./tmp
+export TMPDIR=./tmp
+
+# List of tests to disable
+# - automatic skips by python-gwpy-connectionerror-test.patch
+# - test_fetch_open_data in multiple modules try to connect to
+#   gw-openscience.org
+# - test_{range,time}.py: required pkgs unavailable for oS
+# - all other disabled tests require network conn via nds2
+export DISABLE_TESTS="fetch_open_data or nds2 or test_channel \
+or test_coherence or test_get_data or test_gravityspy \
+or test_gwf or test_gwpy_plot_timeseries or test_io_losc \
+or test_qtransform or test_range or test_run or test_spectrogram \
+or test_spectrum or test_table or test_time \
+or test_to_from_pycbc"
+
+# examples are not installed into buildroot: test via pyargs
+%pytest --pyargs gwpy -k "not ($DISABLE_TESTS)"
 
 %post
 %python_install_alternative gwpy-plot
+
 %postun
 %python_uninstall_alternative gwpy-plot
 
@@ -116,6 +133,6 @@ sed -i "s/'python'/'$python'/g" gwpy/utils/tests/test_shell.py
 %doc README.md examples
 %python_alternative %{_bindir}/gwpy-plot
 %{python_sitelib}/gwpy/
-%{python_sitelib}/gwpy-%{version}-py%{python_version}.egg-info/
+%{python_sitelib}/gwpy-%{version}*-info/
 
 %changelog
