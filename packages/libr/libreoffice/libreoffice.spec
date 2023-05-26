@@ -49,7 +49,7 @@
 %endif
 %bcond_with firebird
 Name:           libreoffice
-Version:        7.5.3.1
+Version:        7.5.3.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -115,6 +115,8 @@ Patch14:        use-fixmath-shared-library.patch
 Patch15:        fix-sdk-idl.patch
 # PATCH-FIX-SUSE Allow the use of old harfbuzz versions
 Patch16:        0002-Revert-Require-HarfBuzz-5.1.0.patch
+# LO-L3: FILEOPEN PPTX: extra paragraph after some 2-line text with link
+Patch17:        bsc1200085.patch
 # Build with java 8
 Patch101:       0001-Revert-java-9-changes.patch
 # try to save space by using hardlinks
@@ -1041,6 +1043,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %if 0%{?suse_version} < 1550
 %patch16 -p1
 %endif
+%patch17 -p1
 %patch990 -p1
 %patch991 -p1
 

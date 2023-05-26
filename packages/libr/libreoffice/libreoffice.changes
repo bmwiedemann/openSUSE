@@ -1,7 +1,22 @@
 -------------------------------------------------------------------
+Wed May 24 07:49:40 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 7.5.3.2:
+  https://wiki.documentfoundation.org/Releases/7.5.3/RC2
+- Refresh patches:
+  * 0002-Revert-Require-HarfBuzz-5.1.0.patch
+  * bsc1200085.patch
+
+-------------------------------------------------------------------
+Tue May 23 14:26:46 UTC 2023 - Andras Timar <andras.timar@collabora.com>
+
+- Fix bsc#1200085 - LO-L3: FILEOPEN PPTX: extra paragraph after some 2-line text with link
+  * bsc1200085.patch
+
+-------------------------------------------------------------------
 Fri Apr 21 13:57:23 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
 
-- Update to 7.5.3.1
+- Update to 7.5.3.1:
   https://wiki.documentfoundation.org/Releases/7.5.3/RC1
 
 -------------------------------------------------------------------

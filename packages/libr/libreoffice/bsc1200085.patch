@@ -1,0 +1,741 @@
+From 016b7dc2d32f8165a22a07d1ff274426c3e07235 Mon Sep 17 00:00:00 2001
+From: Sarper Akdemir <sarper.akdemir@collabora.com>
+Date: Tue, 21 Feb 2023 02:33:01 +0300
+Subject: [PATCH] related tdf#148966: rework sdr compatibility flags
+
+Rework access/set methods for sdr compatibility flags so it
+is possible to address a compatibility flag without directly
+interfacing with SdrModel.
+
+(preliminary work for exposing compatibility flags to
+editeng)
+
+Change-Id: I2fab219f9e125151916228300be2d9d88156d8a6
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/147407
+Tested-by: Jenkins
+Reviewed-by: Miklos Vajna <vmiklos@collabora.com>
+---
+
+Index: libreoffice-7.5.3.2/include/svx/compatflags.hxx
+===================================================================
+--- /dev/null
++++ libreoffice-7.5.3.2/include/svx/compatflags.hxx
+@@ -0,0 +1,18 @@
++/* -*- Mode: C++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4; fill-column: 100 -*- */
++/*
++ * This file is part of the LibreOffice project.
++ *
++ * This Source Code Form is subject to the terms of the Mozilla Public
++ * License, v. 2.0. If a copy of the MPL was not distributed with this
++ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
++ */
++
++/// SdrCompatibilityFlags that are implemented in SdrModelImpl
++enum class SdrCompatibilityFlag
++{
++    AnchoredTextOverflowLegacy, ///< for tdf#99729
++    LegacySingleLineFontwork, ///< for tdf#148000
++    IgnoreBreakAfterMultilineField, ///< for tdf#148966
++};
++
++/* vim:set shiftwidth=4 softtabstop=4 expandtab cinoptions=b1,g0,N-s cinkeys+=0=break: */
+Index: libreoffice-7.5.3.2/include/svx/svdmodel.hxx
+===================================================================
+--- libreoffice-7.5.3.2.orig/include/svx/svdmodel.hxx
++++ libreoffice-7.5.3.2/include/svx/svdmodel.hxx
+@@ -77,6 +77,7 @@ class SdrUndoFactory;
+ class ImageMap;
+ class TextChain;
+ enum class CharCompressType;
++enum class SdrCompatibilityFlag;
+ namespace comphelper
+ {
+     class IEmbeddedHelper;
+@@ -571,13 +572,9 @@ public:
+     void SetAddExtLeading( bool bEnabled );
+     bool IsAddExtLeading() const { return mbAddExtLeading; }
+ 
+-    // tdf#99729 compatibility flag
+-    void SetAnchoredTextOverflowLegacy(bool bEnabled);
+-    bool IsAnchoredTextOverflowLegacy() const;
+-
+-    // tdf#148000 compatibility flag
+-    void SetLegacySingleLineFontwork(bool bEnabled);
+-    bool IsLegacySingleLineFontwork() const;
++    void SetCompatibilityFlag(SdrCompatibilityFlag eFlag, bool bEnabled);
++    /// @returns state of the SdrCompatibilityFlag
++    bool GetCompatibilityFlag(SdrCompatibilityFlag eFlag) const;
+ 
+     // tdf#149756 compatibility flag
+     void SetConnectorUseSnapRect(bool bEnabled);
+Index: libreoffice-7.5.3.2/sc/source/ui/docshell/docsh.cxx
+===================================================================
+--- libreoffice-7.5.3.2.orig/sc/source/ui/docshell/docsh.cxx
++++ libreoffice-7.5.3.2/sc/source/ui/docshell/docsh.cxx
+@@ -77,6 +77,7 @@
+ 
+ #include <scabstdlg.hxx>
+ #include <sot/formats.hxx>
++#include <svx/compatflags.hxx>
+ #include <svx/dialogs.hrc>
+ 
+ #include <formulacell.hxx>
+@@ -585,13 +586,16 @@ bool ScDocShell::Load( SfxMedium& rMediu
+     InitOptions(true);
+ 
+     // If this is an ODF file being loaded, then by default, use legacy processing
+-    // for tdf#99729 (if required, it will be overridden in *::ReadUserDataSequence())
++    // (if required, it will be overridden in *::ReadUserDataSequence())
+     if (IsOwnStorageFormat(rMedium))
+     {
+-        if (m_pDocument->GetDrawLayer())
+-            m_pDocument->GetDrawLayer()->SetAnchoredTextOverflowLegacy(true);
+-        if (m_pDocument->GetDrawLayer())
+-            m_pDocument->GetDrawLayer()->SetLegacySingleLineFontwork(true); //for tdf#148000
++        if (ScDrawLayer* pDrawLayer = m_pDocument->GetDrawLayer())
++        {
++            pDrawLayer->SetCompatibilityFlag(SdrCompatibilityFlag::AnchoredTextOverflowLegacy,
++                                             true); // for tdf#99729
++            pDrawLayer->SetCompatibilityFlag(SdrCompatibilityFlag::LegacySingleLineFontwork,
++                                             true); // for tdf#148000
++        }
+     }
+ 
+     GetUndoManager()->Clear();
+Index: libreoffice-7.5.3.2/sd/source/ui/docshell/docshel4.cxx
+===================================================================
+--- libreoffice-7.5.3.2.orig/sd/source/ui/docshell/docshel4.cxx
++++ libreoffice-7.5.3.2/sd/source/ui/docshell/docshel4.cxx
+@@ -27,6 +27,7 @@
+ #include <com/sun/star/document/PrinterIndependentLayout.hpp>
+ #include <editeng/outlobj.hxx>
+ #include <tools/urlobj.hxx>
++#include <svx/compatflags.hxx>
+ #include <svx/svxids.hrc>
+ #include <editeng/editeng.hxx>
+ #include <editeng/editstat.hxx>
+@@ -265,11 +266,11 @@ bool DrawDocShell::InitNew( const css::u
+ bool DrawDocShell::Load( SfxMedium& rMedium )
+ {
+     // If this is an ODF file being loaded, then by default, use legacy processing
+-    // for tdf#99729 (if required, it will be overridden in *::ReadUserDataSequence())
++    // (if required, it will be overridden in *::ReadUserDataSequence())
+     if (IsOwnStorageFormat(rMedium))
+     {
+-        mpDoc->SetAnchoredTextOverflowLegacy(true);
+-        mpDoc->SetLegacySingleLineFontwork(true); //for tdf#148000
++        mpDoc->SetCompatibilityFlag(SdrCompatibilityFlag::AnchoredTextOverflowLegacy, true); // for tdf#99729
++        mpDoc->SetCompatibilityFlag(SdrCompatibilityFlag::LegacySingleLineFontwork, true); // for tdf#148000
+     }
+ 
+     bool       bRet = false;
+@@ -410,6 +411,12 @@ bool DrawDocShell::ImportFrom(SfxMedium
+         mpDoc->SetConnectorUseSnapRect(true);
+     }
+ 
++    if (aFilterName == "Impress MS PowerPoint 2007 XML")
++    {
++        // compatibility flag for tdf#148966
++        mpDoc->SetCompatibilityFlag(SdrCompatibilityFlag::IgnoreBreakAfterMultilineField, true);
++    }
++
+     if (aFilterName == "Impress MS PowerPoint 2007 XML" ||
+         aFilterName == "Impress MS PowerPoint 2007 XML AutoPlay" ||
+         aFilterName == "Impress MS PowerPoint 2007 XML VBA" ||
+Index: libreoffice-7.5.3.2/svx/source/customshapes/EnhancedCustomShapeFontWork.cxx
+===================================================================
+--- libreoffice-7.5.3.2.orig/svx/source/customshapes/EnhancedCustomShapeFontWork.cxx
++++ libreoffice-7.5.3.2/svx/source/customshapes/EnhancedCustomShapeFontWork.cxx
+@@ -19,6 +19,7 @@
+ 
+ #include "EnhancedCustomShapeFontWork.hxx"
+ #include <svl/itemset.hxx>
++#include <svx/compatflags.hxx>
+ #include <svx/svddef.hxx>
+ #include <svx/svdopath.hxx>
+ #include <vcl/kernarray.hxx>
+@@ -133,7 +134,8 @@ static bool InitializeFontWorkData(
+                 do
+                 {
+                     // search line break.
+-                    if (!rSdrObjCustomShape.getSdrModelFromSdrObject().IsLegacySingleLineFontwork())
++                    if (!rSdrObjCustomShape.getSdrModelFromSdrObject().GetCompatibilityFlag(
++                            SdrCompatibilityFlag::LegacySingleLineFontwork))
+                         nPos = aParaText[nPara].indexOf(sal_Unicode(u'\1'), nPrevPos);
+                     else
+                         nPos = -1; // tdf#148000: ignore line breaks in legacy fontworks
+Index: libreoffice-7.5.3.2/svx/source/svdraw/svdmodel.cxx
+===================================================================
+--- libreoffice-7.5.3.2.orig/svx/source/svdraw/svdmodel.cxx
++++ libreoffice-7.5.3.2/svx/source/svdraw/svdmodel.cxx
+@@ -29,6 +29,7 @@
+ #include <unotools/pathoptions.hxx>
+ #include <svl/whiter.hxx>
+ #include <svl/asiancfg.hxx>
++#include <svx/compatflags.hxx>
+ #include <svx/xbtmpit.hxx>
+ #include <svx/xlndsit.hxx>
+ #include <svx/xlnedit.hxx>
+@@ -85,6 +86,7 @@ struct SdrModelImpl
+     bool mbAnchoredTextOverflowLegacy; // tdf#99729 compatibility flag
+     bool mbLegacySingleLineFontwork;   // tdf#148000 compatibility flag
+     bool mbConnectorUseSnapRect;       // tdf#149756 compatibility flag
++    bool mbIgnoreBreakAfterMultilineField; ///< tdf#148966 compatibility flag
+     std::unique_ptr<svx::Theme> mpTheme;
+ 
+     SdrModelImpl()
+@@ -93,6 +95,7 @@ struct SdrModelImpl
+         , mbAnchoredTextOverflowLegacy(false)
+         , mbLegacySingleLineFontwork(false)
+         , mbConnectorUseSnapRect(false)
++        , mbIgnoreBreakAfterMultilineField(false)
+     {}
+ };
+ 
+@@ -1715,24 +1718,35 @@ void SdrModel::SetAddExtLeading( bool bE
+     }
+ }
+ 
+-void SdrModel::SetAnchoredTextOverflowLegacy(bool bEnabled)
++void SdrModel::SetCompatibilityFlag(SdrCompatibilityFlag eFlag, bool bEnabled)
+ {
+-    mpImpl->mbAnchoredTextOverflowLegacy = bEnabled;
+-}
+-
+-bool SdrModel::IsAnchoredTextOverflowLegacy() const
+-{
+-    return mpImpl->mbAnchoredTextOverflowLegacy;
+-}
+-
+-void SdrModel::SetLegacySingleLineFontwork(bool bEnabled)
+-{
+-    mpImpl->mbLegacySingleLineFontwork = bEnabled;
++    switch (eFlag)
++    {
++        case SdrCompatibilityFlag::AnchoredTextOverflowLegacy:
++            mpImpl->mbAnchoredTextOverflowLegacy = bEnabled;
++            break;
++        case SdrCompatibilityFlag::LegacySingleLineFontwork:
++            mpImpl->mbLegacySingleLineFontwork = bEnabled;
++            break;
++        case SdrCompatibilityFlag::IgnoreBreakAfterMultilineField:
++            mpImpl->mbIgnoreBreakAfterMultilineField = bEnabled;
++            break;
++    }
+ }
+ 
+-bool SdrModel::IsLegacySingleLineFontwork() const
++bool SdrModel::GetCompatibilityFlag(SdrCompatibilityFlag eFlag) const
+ {
+-    return mpImpl->mbLegacySingleLineFontwork;
++    switch (eFlag)
++    {
++        case SdrCompatibilityFlag::AnchoredTextOverflowLegacy:
++            return mpImpl->mbAnchoredTextOverflowLegacy;
++        case SdrCompatibilityFlag::LegacySingleLineFontwork:
++            return mpImpl->mbLegacySingleLineFontwork;
++        case SdrCompatibilityFlag::IgnoreBreakAfterMultilineField:
++            return mpImpl->mbIgnoreBreakAfterMultilineField;
++        default:
++            return false;
++    }
+ }
+ 
+ void SdrModel::SetConnectorUseSnapRect(bool bEnabled)
+@@ -1822,6 +1836,14 @@ void SdrModel::ReadUserDataSequenceValue
+             }
+         }
+     }
++    else if (pValue->Name == "IgnoreBreakAfterMultilineField")
++    {
++        bool bBool = false;
++        if (pValue->Value >>= bBool)
++        {
++            mpImpl->mbIgnoreBreakAfterMultilineField = bBool;
++        }
++    }
+ }
+ 
+ template <typename T>
+@@ -1833,8 +1855,12 @@ static void addPair(std::vector< std::pa
+ void SdrModel::WriteUserDataSequence(uno::Sequence <beans::PropertyValue>& rValues)
+ {
+     std::vector< std::pair< OUString, uno::Any > > aUserData;
+-    addPair(aUserData, "AnchoredTextOverflowLegacy", IsAnchoredTextOverflowLegacy());
+-    addPair(aUserData, "LegacySingleLineFontwork", IsLegacySingleLineFontwork());
++    addPair(aUserData, "AnchoredTextOverflowLegacy",
++            GetCompatibilityFlag(SdrCompatibilityFlag::AnchoredTextOverflowLegacy));
++    addPair(aUserData, "LegacySingleLineFontwork",
++            GetCompatibilityFlag(SdrCompatibilityFlag::LegacySingleLineFontwork));
++    addPair(aUserData, "IgnoreBreakAfterMultilineField",
++            GetCompatibilityFlag(SdrCompatibilityFlag::IgnoreBreakAfterMultilineField));
+     addPair(aUserData, "ConnectorUseSnapRect", IsConnectorUseSnapRect());
+ 
+     const sal_Int32 nOldLength = rValues.getLength();
+Index: libreoffice-7.5.3.2/svx/source/svdraw/svdoedge.cxx
+===================================================================
+--- libreoffice-7.5.3.2.orig/svx/source/svdraw/svdoedge.cxx
++++ libreoffice-7.5.3.2/svx/source/svdraw/svdoedge.cxx
+@@ -27,6 +27,7 @@
+ 
+ #include <sdr/contact/viewcontactofsdredgeobj.hxx>
+ #include <sdr/properties/connectorproperties.hxx>
++#include <svx/compatflags.hxx>
+ #include <svx/sdrhittesthelper.hxx>
+ #include <svx/svddrag.hxx>
+ #include <svx/svddrgmt.hxx>
+Index: libreoffice-7.5.3.2/svx/source/svdraw/svdotextdecomposition.cxx
+===================================================================
+--- libreoffice-7.5.3.2.orig/svx/source/svdraw/svdotextdecomposition.cxx
++++ libreoffice-7.5.3.2/svx/source/svdraw/svdotextdecomposition.cxx
+@@ -17,7 +17,7 @@
+  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
+  */
+ 
+-
++#include <svx/compatflags.hxx>
+ #include <svx/svdetc.hxx>
+ #include <svx/svdoutl.hxx>
+ #include <svx/svdpage.hxx>
+@@ -1021,7 +1021,8 @@ void SdrTextObj::impDecomposeBlockTextPr
+             bool bAllowGrowHorizontal = bVerticalWriting;
+ 
+             // Compatibility mode for tdf#99729
+-            if (getSdrModelFromSdrObject().IsAnchoredTextOverflowLegacy())
++            if (getSdrModelFromSdrObject().GetCompatibilityFlag(
++                    SdrCompatibilityFlag::AnchoredTextOverflowLegacy))
+             {
+                 bAllowGrowVertical = bHorizontalIsBlock;
+                 bAllowGrowHorizontal = bVerticalIsBlock;
+Index: libreoffice-7.5.3.2/sw/source/uibase/app/docshini.cxx
+===================================================================
+--- libreoffice-7.5.3.2.orig/sw/source/uibase/app/docshini.cxx
++++ libreoffice-7.5.3.2/sw/source/uibase/app/docshini.cxx
+@@ -35,6 +35,7 @@
+ #include <editeng/autokernitem.hxx>
+ #include <com/sun/star/document/UpdateDocMode.hpp>
+ #include <com/sun/star/i18n/ScriptType.hpp>
++#include <svx/compatflags.hxx>
+ #include <svx/svxids.hrc>
+ #include <editeng/fhgtitem.hxx>
+ #include <editeng/fontitem.hxx>
+@@ -479,8 +480,10 @@ bool  SwDocShell::Load( SfxMedium& rMedi
+             SwDrawModel* pDrawModel = m_xDoc->getIDocumentDrawModelAccess().GetDrawModel();
+             if (pDrawModel)
+             {
+-                pDrawModel->SetAnchoredTextOverflowLegacy(true); // legacy processing for tdf#99729
+-                pDrawModel->SetLegacySingleLineFontwork(true); // legacy processing for tdf#148000
++                pDrawModel->SetCompatibilityFlag(SdrCompatibilityFlag::AnchoredTextOverflowLegacy,
++                                                 true); // legacy processing for tdf#99729
++                pDrawModel->SetCompatibilityFlag(SdrCompatibilityFlag::LegacySingleLineFontwork,
++                                                 true); // legacy processing for tdf#148000
+             }
+         }
+ 
+Index: libreoffice-7.5.3.2/editeng/inc/outleeng.hxx
+===================================================================
+--- /dev/null
++++ libreoffice-7.5.3.2/editeng/inc/outleeng.hxx
+@@ -0,0 +1,90 @@
++/* -*- Mode: C++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
++/*
++ * This file is part of the LibreOffice project.
++ *
++ * This Source Code Form is subject to the terms of the Mozilla Public
++ * License, v. 2.0. If a copy of the MPL was not distributed with this
++ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
++ *
++ * This file incorporates work covered by the following license notice:
++ *
++ *   Licensed to the Apache Software Foundation (ASF) under one or more
++ *   contributor license agreements. See the NOTICE file distributed
++ *   with this work for additional information regarding copyright
++ *   ownership. The ASF licenses this file to you under the Apache
++ *   License, Version 2.0 (the "License"); you may not use this file
++ *   except in compliance with the License. You may obtain a copy of
++ *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
++ */
++#pragma once
++
++#include <editeng/outliner.hxx>
++#include <editeng/editeng.hxx>
++
++enum class SdrCompatibilityFlag;
++
++typedef std::vector<EENotify> NotifyList;
++
++class OutlinerEditEng : public EditEngine
++{
++    Outliner*           pOwner;
++
++protected:
++
++    // derived from EditEngine. Allows Outliner objects to provide
++    // bullet access to the EditEngine.
++    virtual const SvxNumberFormat*  GetNumberFormat( sal_Int32 nPara ) const override;
++
++public:
++                        OutlinerEditEng( Outliner* pOwner, SfxItemPool* pPool );
++                        virtual ~OutlinerEditEng() override;
++
++    virtual void        PaintingFirstLine(sal_Int32 nPara, const Point& rStartPos, const Point& rOrigin, Degree10 nOrientation, OutputDevice& rOutDev) override;
++
++    virtual void        ParagraphInserted( sal_Int32 nNewParagraph ) override;
++    virtual void        ParagraphDeleted( sal_Int32 nDeletedParagraph ) override;
++    virtual void        ParagraphConnected( sal_Int32 nLeftParagraph, sal_Int32 nRightParagraph ) override;
++
++    virtual void DrawingText( const Point& rStartPos, const OUString& rText, sal_Int32 nTextStart,
++                              sal_Int32 nTextLen, o3tl::span<const sal_Int32> pDXArray,
++                              o3tl::span<const sal_Bool> pKashidaArray, const SvxFont& rFont,
++                              sal_Int32 nPara, sal_uInt8 nRightToLeft,
++                              const EEngineData::WrongSpellVector* pWrongSpellVector,
++                              const SvxFieldData* pFieldData,
++                              bool bEndOfLine,
++                              bool bEndOfParagraph,
++                              const css::lang::Locale* pLocale,
++                              const Color& rOverlineColor,
++                              const Color& rTextLineColor) override;
++
++    virtual void DrawingTab(
++        const Point& rStartPos, tools::Long nWidth, const OUString& rChar,
++        const SvxFont& rFont, sal_Int32 nPara, sal_uInt8 nRightToLeft,
++        bool bEndOfLine,
++        bool bEndOfParagraph,
++        const Color& rOverlineColor,
++        const Color& rTextLineColor) override;
++
++    virtual void        StyleSheetChanged( SfxStyleSheet* pStyle ) override;
++    virtual void        ParaAttribsChanged( sal_Int32 nPara ) override;
++    virtual bool        SpellNextDocument() override;
++    virtual OUString    GetUndoComment( sal_uInt16 nUndoId ) const override;
++
++    // for text conversion
++    virtual bool        ConvertNextDocument() override;
++
++    virtual OUString    CalcFieldValue( const SvxFieldItem& rField, sal_Int32 nPara, sal_Int32 nPos, std::optional<Color>& rTxtColor, std::optional<Color>& rFldColor ) override;
++
++    virtual tools::Rectangle   GetBulletArea( sal_Int32 nPara ) override;
++
++    /// @returns state of the SdrCompatibilityFlag
++    std::optional<bool> GetCompatFlag(SdrCompatibilityFlag eFlag) const;
++
++       virtual void        SetParaAttribs( sal_Int32 nPara, const SfxItemSet& rSet ) override;
++
++    // belongs into class Outliner, move there before incompatible update!
++    Link<EENotify&,void> aOutlinerNotifyHdl;
++    NotifyList          aNotifyCache;
++};
++
++/* vim:set shiftwidth=4 softtabstop=4 expandtab: */
+Index: libreoffice-7.5.3.2/editeng/source/editeng/impedit3.cxx
+===================================================================
+--- libreoffice-7.5.3.2.orig/editeng/source/editeng/impedit3.cxx
++++ libreoffice-7.5.3.2/editeng/source/editeng/impedit3.cxx
+@@ -24,6 +24,7 @@
+ #include <vcl/settings.hxx>
+ #include <vcl/window.hxx>
+ 
++#include <editeng/outliner.hxx>
+ #include <editeng/tstpitem.hxx>
+ #include <editeng/lspcitem.hxx>
+ #include <editeng/flditem.hxx>
+@@ -44,11 +45,14 @@
+ #include <editeng/scriptspaceitem.hxx>
+ #include <editeng/charscaleitem.hxx>
+ #include <editeng/numitem.hxx>
++#include <outleeng.hxx>
+ 
+ #include <svtools/colorcfg.hxx>
+ #include <svl/ctloptions.hxx>
+ #include <svl/asiancfg.hxx>
+ 
++#include <svx/compatflags.hxx>
++
+ #include <editeng/hngpnctitem.hxx>
+ #include <editeng/forbiddencharacterstable.hxx>
+ 
+@@ -3606,6 +3610,22 @@ void ImpEditEngine::Paint( OutputDevice&
+                                             nTextStart = *curIt;
+                                             nTextLen = nTextLen - nTextStart;
+                                             bParsingFields = false;
++
++                                            if (nLine + 1 < nLines)
++                                            {
++                                                // tdf#148966 don't paint the line break following a
++                                                // multiline field based on a compat flag
++                                                OutlinerEditEng* pOutlEditEng{ dynamic_cast<OutlinerEditEng*>(pEditEngine) };
++                                                if (pOutlEditEng
++                                                    && pOutlEditEng->GetCompatFlag(SdrCompatibilityFlag::IgnoreBreakAfterMultilineField)
++                                                           .value_or(false))
++                                                {
++                                                    int nStartNextLine = pPortion->GetLines()[nLine + 1].GetStartPortion();
++                                                    const TextPortion& rNextTextPortion = pPortion->GetTextPortions()[nStartNextLine];
++                                                    if (rNextTextPortion.GetKind() == PortionKind::LINEBREAK)
++                                                        ++nLine; //ignore the following linebreak
++                                                }
++                                            }
+                                         }
+                                     }
+ 
+Index: libreoffice-7.5.3.2/editeng/source/outliner/outleeng.cxx
+===================================================================
+--- libreoffice-7.5.3.2.orig/editeng/source/outliner/outleeng.cxx
++++ libreoffice-7.5.3.2/editeng/source/outliner/outleeng.cxx
+@@ -21,9 +21,10 @@
+ #include <editeng/eerdll.hxx>
+ 
+ #include <editeng/outliner.hxx>
+-#include "outleeng.hxx"
++#include <outleeng.hxx>
+ #include "paralist.hxx"
+ #include <editeng/editrids.hrc>
++#include <optional>
+ #include <svl/itemset.hxx>
+ #include <editeng/editstat.hxx>
+ #include "outlundo.hxx"
+@@ -69,6 +70,15 @@ tools::Rectangle OutlinerEditEng::GetBul
+     return aBulletArea;
+ }
+ 
++std::optional<bool> OutlinerEditEng::GetCompatFlag(SdrCompatibilityFlag eFlag) const
++{
++    if(pOwner)
++    {
++        return pOwner->GetCompatFlag(eFlag);
++    }
++    return {};
++}
++
+ void OutlinerEditEng::ParagraphInserted( sal_Int32 nNewParagraph )
+ {
+     pOwner->ParagraphInserted( nNewParagraph );
+Index: libreoffice-7.5.3.2/editeng/source/outliner/outleeng.hxx
+===================================================================
+--- libreoffice-7.5.3.2.orig/editeng/source/outliner/outleeng.hxx
++++ /dev/null
+@@ -1,85 +0,0 @@
+-/* -*- Mode: C++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
+-/*
+- * This file is part of the LibreOffice project.
+- *
+- * This Source Code Form is subject to the terms of the Mozilla Public
+- * License, v. 2.0. If a copy of the MPL was not distributed with this
+- * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+- *
+- * This file incorporates work covered by the following license notice:
+- *
+- *   Licensed to the Apache Software Foundation (ASF) under one or more
+- *   contributor license agreements. See the NOTICE file distributed
+- *   with this work for additional information regarding copyright
+- *   ownership. The ASF licenses this file to you under the Apache
+- *   License, Version 2.0 (the "License"); you may not use this file
+- *   except in compliance with the License. You may obtain a copy of
+- *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
+- */
+-#pragma once
+-
+-#include <editeng/outliner.hxx>
+-#include <editeng/editeng.hxx>
+-
+-typedef std::vector<EENotify> NotifyList;
+-
+-class OutlinerEditEng : public EditEngine
+-{
+-    Outliner*           pOwner;
+-
+-protected:
+-
+-    // derived from EditEngine. Allows Outliner objects to provide
+-    // bullet access to the EditEngine.
+-    virtual const SvxNumberFormat*  GetNumberFormat( sal_Int32 nPara ) const override;
+-
+-public:
+-                        OutlinerEditEng( Outliner* pOwner, SfxItemPool* pPool );
+-                        virtual ~OutlinerEditEng() override;
+-
+-    virtual void        PaintingFirstLine(sal_Int32 nPara, const Point& rStartPos, const Point& rOrigin, Degree10 nOrientation, OutputDevice& rOutDev) override;
+-
+-    virtual void        ParagraphInserted( sal_Int32 nNewParagraph ) override;
+-    virtual void        ParagraphDeleted( sal_Int32 nDeletedParagraph ) override;
+-    virtual void        ParagraphConnected( sal_Int32 nLeftParagraph, sal_Int32 nRightParagraph ) override;
+-
+-    virtual void DrawingText( const Point& rStartPos, const OUString& rText, sal_Int32 nTextStart,
+-                              sal_Int32 nTextLen, o3tl::span<const sal_Int32> pDXArray,
+-                              o3tl::span<const sal_Bool> pKashidaArray, const SvxFont& rFont,
+-                              sal_Int32 nPara, sal_uInt8 nRightToLeft,
+-                              const EEngineData::WrongSpellVector* pWrongSpellVector,
+-                              const SvxFieldData* pFieldData,
+-                              bool bEndOfLine,
+-                              bool bEndOfParagraph,
+-                              const css::lang::Locale* pLocale,
+-                              const Color& rOverlineColor,
+-                              const Color& rTextLineColor) override;
+-
+-    virtual void DrawingTab(
+-        const Point& rStartPos, tools::Long nWidth, const OUString& rChar,
+-        const SvxFont& rFont, sal_Int32 nPara, sal_uInt8 nRightToLeft,
+-        bool bEndOfLine,
+-        bool bEndOfParagraph,
+-        const Color& rOverlineColor,
+-        const Color& rTextLineColor) override;
+-
+-    virtual void        StyleSheetChanged( SfxStyleSheet* pStyle ) override;
+-    virtual void        ParaAttribsChanged( sal_Int32 nPara ) override;
+-    virtual bool        SpellNextDocument() override;
+-    virtual OUString    GetUndoComment( sal_uInt16 nUndoId ) const override;
+-
+-    // for text conversion
+-    virtual bool        ConvertNextDocument() override;
+-
+-    virtual OUString    CalcFieldValue( const SvxFieldItem& rField, sal_Int32 nPara, sal_Int32 nPos, std::optional<Color>& rTxtColor, std::optional<Color>& rFldColor ) override;
+-
+-    virtual tools::Rectangle   GetBulletArea( sal_Int32 nPara ) override;
+-
+-       virtual void        SetParaAttribs( sal_Int32 nPara, const SfxItemSet& rSet ) override;
+-
+-    // belongs into class Outliner, move there before incompatible update!
+-    Link<EENotify&,void> aOutlinerNotifyHdl;
+-    NotifyList          aNotifyCache;
+-};
+-
+-/* vim:set shiftwidth=4 softtabstop=4 expandtab: */
+Index: libreoffice-7.5.3.2/editeng/source/outliner/outlin2.cxx
+===================================================================
+--- libreoffice-7.5.3.2.orig/editeng/source/outliner/outlin2.cxx
++++ libreoffice-7.5.3.2/editeng/source/outliner/outlin2.cxx
+@@ -30,7 +30,7 @@
+ 
+ #include <editeng/outliner.hxx>
+ #include "paralist.hxx"
+-#include "outleeng.hxx"
++#include <outleeng.hxx>
+ #include <editeng/editstat.hxx>
+ 
+ 
+Index: libreoffice-7.5.3.2/editeng/source/outliner/outliner.cxx
+===================================================================
+--- libreoffice-7.5.3.2.orig/editeng/source/outliner/outliner.cxx
++++ libreoffice-7.5.3.2/editeng/source/outliner/outliner.cxx
+@@ -30,7 +30,7 @@
+ #include <editeng/outliner.hxx>
+ #include "paralist.hxx"
+ #include <editeng/outlobj.hxx>
+-#include "outleeng.hxx"
++#include <outleeng.hxx>
+ #include "outlundo.hxx"
+ #include <editeng/eeitem.hxx>
+ #include <editeng/editstat.hxx>
+Index: libreoffice-7.5.3.2/editeng/source/outliner/outlvw.cxx
+===================================================================
+--- libreoffice-7.5.3.2.orig/editeng/source/outliner/outlvw.cxx
++++ libreoffice-7.5.3.2/editeng/source/outliner/outlvw.cxx
+@@ -30,7 +30,7 @@
+ #include <i18nlangtag/languagetag.hxx>
+ 
+ #include <editeng/outliner.hxx>
+-#include "outleeng.hxx"
++#include <outleeng.hxx>
+ #include "paralist.hxx"
+ #include "outlundo.hxx"
+ #include <editeng/outlobj.hxx>
+Index: libreoffice-7.5.3.2/include/editeng/outliner.hxx
+===================================================================
+--- libreoffice-7.5.3.2.orig/include/editeng/outliner.hxx
++++ libreoffice-7.5.3.2/include/editeng/outliner.hxx
+@@ -77,6 +77,7 @@ class SvxFieldData;
+ enum class PointerStyle;
+ class SvxNumRule;
+ enum class TextRotation;
++enum class SdrCompatibilityFlag;
+ 
+ namespace com::sun::star::linguistic2 {
+     class XSpellChecker1;
+@@ -987,6 +988,9 @@ public:
+ 
+     // convenient method to determine the bullets/numbering status for all paragraphs
+     sal_Int32 GetBulletsNumberingStatus() const;
++
++    // overriden in SdrOutliner
++    virtual std::optional<bool> GetCompatFlag(SdrCompatibilityFlag /*eFlag*/) const { return {}; };
+ };
+ 
+ #endif
+Index: libreoffice-7.5.3.2/include/svx/svdoutl.hxx
+===================================================================
+--- libreoffice-7.5.3.2.orig/include/svx/svdoutl.hxx
++++ libreoffice-7.5.3.2/include/svx/svdoutl.hxx
+@@ -20,11 +20,13 @@
+ #pragma once
+ 
+ #include <editeng/outliner.hxx>
++#include <optional>
+ #include <svx/svxdllapi.h>
+ #include <unotools/weakref.hxx>
+ 
+ class SdrTextObj;
+ class SdrPage;
++enum class SdrCompatibilityFlag;
+ 
+ class SVXCORE_DLLPUBLIC SdrOutliner : public Outliner
+ {
+@@ -45,6 +47,9 @@ public:
+     virtual OUString CalcFieldValue(const SvxFieldItem& rField, sal_Int32 nPara, sal_Int32 nPos, std::optional<Color>& rpTxtColor, std::optional<Color>& rpFldColor) override;
+ 
+     bool hasEditViewCallbacks() const;
++
++    /// @returns state of the SdrCompatibilityFlag
++    virtual std::optional<bool> GetCompatFlag(SdrCompatibilityFlag eFlag) const override;
+ };
+ 
+ 
+Index: libreoffice-7.5.3.2/solenv/clang-format/excludelist
+===================================================================
+--- libreoffice-7.5.3.2.orig/solenv/clang-format/excludelist
++++ libreoffice-7.5.3.2/solenv/clang-format/excludelist
+@@ -3397,6 +3397,7 @@ editeng/inc/editattr.hxx
+ editeng/inc/editdoc.hxx
+ editeng/inc/edtspell.hxx
+ editeng/inc/eerdll2.hxx
++editeng/inc/outleeng.hxx
+ editeng/inc/unomodel.hxx
+ editeng/qa/items/borderline_test.cxx
+ editeng/qa/lookuptree/lookuptree_test.cxx
+@@ -3475,7 +3476,6 @@ editeng/source/misc/swafopt.cxx
+ editeng/source/misc/txtrange.cxx
+ editeng/source/misc/unolingu.cxx
+ editeng/source/outliner/outleeng.cxx
+-editeng/source/outliner/outleeng.hxx
+ editeng/source/outliner/outlin2.cxx
+ editeng/source/outliner/outliner.cxx
+ editeng/source/outliner/outlobj.cxx
+Index: libreoffice-7.5.3.2/svx/source/svdraw/svdoutl.cxx
+===================================================================
+--- libreoffice-7.5.3.2.orig/svx/source/svdraw/svdoutl.cxx
++++ libreoffice-7.5.3.2/svx/source/svdraw/svdoutl.cxx
+@@ -17,9 +17,12 @@
+  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
+  */
+ 
++#include <optional>
+ #include <svx/svdoutl.hxx>
+ #include <editeng/outliner.hxx>
++#include <svx/svdmodel.hxx>
+ #include <svx/svdotext.hxx>
++#include <svx/svdpage.hxx>
+ #include <editeng/editstat.hxx>
+ #include <svl/itempool.hxx>
+ #include <editeng/editview.hxx>
+@@ -104,4 +107,13 @@ bool SdrOutliner::hasEditViewCallbacks()
+     return false;
+ }
+ 
++std::optional<bool> SdrOutliner::GetCompatFlag(SdrCompatibilityFlag eFlag) const
++{
++    if( mpVisualizedPage )
++    {
++        return {mpVisualizedPage->getSdrModelFromSdrPage().GetCompatibilityFlag(eFlag)};
++    }
++    return {};
++}
++
+ /* vim:set shiftwidth=4 softtabstop=4 expandtab: */
