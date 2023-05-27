@@ -19,7 +19,7 @@
 
 %define __builder ninja
 Name:           yuzu
-Version:        0.1423
+Version:        0.1439
 Release:        0
 Summary:        Nintendo Switch emulator/debugger
 License:        GPL-3.0-or-later
@@ -41,6 +41,7 @@ BuildRequires:  graphviz
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libboost_context-devel-impl >= 1.75.0
 BuildRequires:  libboost_filesystem-devel-impl >= 1.75.0
+BuildRequires:  libzstd-devel-static
 BuildRequires:  mold
 BuildRequires:  ninja
 BuildRequires:  shaderc

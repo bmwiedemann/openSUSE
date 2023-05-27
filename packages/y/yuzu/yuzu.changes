@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Fri May 19 21:08:28 UTC 2023 - pousaduarte@gmail.com
+
+- Update to version 0.1439:
+  * externals: update cubeb (#10362)
+  * renderer_vulkan: remove wrong constexpr
+  * vulkan_device: Disable VK_KHR_push_descriptor on ANV
+  * input_common: Fix pro controller amiibo support
+  * service: hid: Use span instead of vector reference
+  * Buffer Cache: Clear sync code.
+  * input_common: Make amiibo scanning less demanding
+  * vulkan_common: disable depth clamp dynamic state for older radv
+  * Fix missing pic_order_present_flag in h264 header
+  * Fix Tears of the Kingdom flickering clouds and depths.
+  * Allow fully customisable controller hotkeys
+  * Use the rendertarget format of the correct RT rather than the first valid
+  * configure_graphics_advanced: Hide input compute toggle a little later
+  * yuzu-qt/config: Add option to disable compute on Intel
+  * vk_pipeline_cache: Use setting to disable intel compute
+  * settings: Add enable compute pipelines
+
+-------------------------------------------------------------------
+Mon May 15 18:28:28 UTC 2023 - pousaduarte@gmail.com
+
+- Update to version 0.1435:
+  * "Merge Tagged PR 10181"
+  * "Merge Tagged PR 10234"
+  * "Merge Tagged PR 10249"
+  * "Merge Tagged PR 10262"
+  * vulkan_device: reserve extra memory to prevent swaps
+
+-------------------------------------------------------------------
+Sun May 14 14:44:54 UTC 2023 - pousaduarte@gmail.com
+
+- Update to version 0.1433:
+  * "Merge Tagged PR 10181"
+  * "Merge Tagged PR 10234"
+  * "Merge Tagged PR 10249"
+  * "Merge Tagged PR 10262"
+  * vulkan_common: fix incompatible property flags
+
+-------------------------------------------------------------------
+Sat May 13 12:52:59 UTC 2023 - pousaduarte@gmail.com
+
+- Update to version 0.1424:
+  * "Merge Tagged PR 10181"
+  * "Merge Tagged PR 10234"
+  * "Merge Tagged PR 10249"
+  * "Merge Tagged PR 10262"
+  * time: implement ContinuousAdjustmentTimePoint
+  * Correctly track RT indexes for image aspect lookup during clears
+  * fs: adjust future save path
+  * am: stub CreateCacheStorage
+  * fs: stub cache storage and fix params alignment
+  * nvnflinger: fix Parcel serialization
+  * nvnflinger: fix producer slot fence init
+  * Allow Fermi blit accelerate to add src/dst to the cache if they don't exist already. Use ScratchBuffers in the software blit path.
+  * Update README.md to remove Skyline license exception.
+  * renderer_vulkan: separate guest and host compute descriptor queues
+  * service: nfc: Seed all random values
+  * service: nfp: Allow to load with a different amiibo id
+  * Swap order of checking/setting region modifications in the buffer_cache
+  * input_common: Fix nfc detection for joycons
+  * Texture Cache: Fix ASTC textures
+  * qt_common: consistently ifdef QPlatform after cbd79df23375
+  * yuzu: Make 3d cube with joycon shape
+  * core: hid: Allow to calibrate gyro sensor
+  * vfs_layered: avoid n^2 lookup in layeredfs building
+  * vfs_vector: avoid n^2 lookup in layeredfs building
+  * Improve emulation of HD Rumble
+
+-------------------------------------------------------------------
+Tue May 09 08:27:50 UTC 2023 - pousaduarte@gmail.com
+
+- Update to version 0.1424:
+  * bootmanager: remove stop_token header
+  * core: hid: Update motion on a better place
+  * externals: Update dynarmic to include latest patch.
+  * Texture cache: Only force flush the dma downloads
+  * Buffer Cache: disable reactive flushing in it.
+  * Texture cache: reverse inmediate flush changes
+  * Buffer cache: always use async buffer downloads and fix regression.
+  * Address feedback, add CR notice, etc
+  * Query cache: stop updating pages as it's not affected by cpu writes
+  * Settings: add option to enable / disable reactive flushing
+  * Texture cache: sync the first flush.
+  * GPU: Add Reactive flushing
+  * externals: Update dynarmic to include latest patch.
+  * yuzu/applets/qt_profile_select: connect double-click to accept()
+  * Fix address space allocator slow path to avoid OOB
+  * service: nfc: Merge device interfaces and create the device manager
+  * Log object names with debug renderer, add a GPU address to ImageViews
+  * core: service: Add FunctionInfoTyped to allow expanding existing interfaces
+  * service: nfc: Create mifare interface
+  * service: nfc: Create interface
+  * Silence nifm spam
+  * Sort overlap_ids by modification tick before copy
+
+-------------------------------------------------------------------
 Sun May 07 17:35:08 UTC 2023 - pousaduarte@gmail.com
 
 - Update to version 0.1423:
