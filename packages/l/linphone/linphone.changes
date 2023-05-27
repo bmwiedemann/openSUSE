@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May 19 21:11:26 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com> - 5.2.50
+
+- Update to version 5.2.50:
+  * Fix bug related to conference created with ICE DTLS SRTP encrypted call
+  * Rework tone manager:
+    - Remove reason field from LinphoneToneDescription
+    - Store tones by ID
+    - choose tone based on the reason when a call ends
+  * Do not override lime capability when enabling lime
+  * Do not allow to add dependency of an account to itself
+  * Allow to enable or disable tone indications from the core settings
+  * Fixed Content-Disposition (and others) headers issue in multiparts
+  * Update chat room flags in DB when calling insertChatRoom
+  * Fix an issue where on-hold music is played erroneously through a call that has been resumed
+  * Send invitations to the list of participants to invite and not to all invitees
+
+-------------------------------------------------------------------
 Mon Feb  6 23:12:03 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com> - 5.2.10
 
 -Disable QRCode image generation for tumbleweed

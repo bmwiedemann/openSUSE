@@ -26,7 +26,7 @@
 %endif
 %define sover   10
 Name:           linphone
-Version:        5.2.10
+Version:        5.2.50
 Release:        0
 Summary:        Web Phone
 License:        AGPL-3.0-or-later
