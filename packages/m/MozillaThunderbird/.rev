@@ -4860,4 +4860,17 @@ I cannot test locally unfortunately.
     Memory safety bugs fixed in Firefox 113 and Firefox ESR 102.11</comment>
     <requestid>1086176</requestid>
   </revision>
+  <revision rev="310" vrev="1">
+    <srcmd5>6c82f5b9a7f6c0fa70eab44e19756566</srcmd5>
+    <version>102.11.2</version>
+    <time>1685212705</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 102.11.2
+  * fixed POP3 regressions ins 102.11.1
+  * https://www.thunderbird.net/en-US/thunderbird/102.11.2/releasenotes/
+  Thunderbird 102.11.1
+  * https://www.thunderbird.net/en-US/thunderbird/102.11.1/releasenotes/
+- updated mozilla.keyring</comment>
+    <requestid>1089289</requestid>
+  </revision>
 </revisionlist>
