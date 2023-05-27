@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Fri May 19 21:11:29 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.16
+
+- Update to version 5.0.16:
+  * Fix Section date timezone in chat
+  * Use custom font for chat compose area
+  * Fix Speaking border display
+  * Replace double click on avatar by a simple click for copying address into the SmartSearchBar
+  * Update SDK to 5.2.60 (Active Speaker fix)
+- Update to version 5.0.15:
+  * Fix using only username in URI handlers
+  * Fix Portait thumbnails
+  * Fix Chat flickering on load
+  * Update SDK to 5.2.50
+- Update to version 5.0.14:
+  * Show file extension image instead of thumbnails if image's size factor is too low/high
+  * Update SDK to 5.2.35 (ZLib vulnerability)
+- Update to version 5.0.13:
+  * Fix Update SDK to 5.2.35 (ZLib vulnerability)
+  * Fix Crash and display of local conferences
+  * Show display name for local accounts
+  * Update SDK to 5.2.32
+- Update to version 5.0.12:
+  * Fix Some case of unwanted settings folders creation
+  * Replace black thumbnails that contains transparency by white color
+  * Update SDK to 5.2.28
+- Update to version 5.0.11:
+  * Fix Crash on ending call in conference
+  * Deactivate action buttons and menus if chat room has been left
+  * Remove duplicated nat policies
+  * Save Stun/Turn proxy configuration
+  * Switch off camera at startup
+  * Update SDK to 5.2.25
+- Update to version 5.0.10:
+  * Crash when editing contacts from chat
+  * Remove blank page when opening calls window and add a waiting step while connecting to call
+  * Fix Crash when editing contacts from chat
+  * Remove FFMPEG from dependencies as it is no more needed
+- Update to version 5.0.9:
+  * Fix Display hidden scrollbars
+  * Fix Display hidden error icon on messages
+  * Update SDK to 5.2.19 (fix crash)
+- Update to version 5.0.8:
+  * Fix Qt 5.12 compatibility on recordings
+- Update to version 5.0.7:
+  * Hide the active speaker from the mini views
+  * Display recordings list from the burger menu
+  * Update SDK to 5.2.15
+- Update to version 5.0.6:
+  * Fix URI Handlers to a conference
+
+-------------------------------------------------------------------
 Wed Jan 11 03:06:54 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.5
 
 - Update to version 5.0.5:
