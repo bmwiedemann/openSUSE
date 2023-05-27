@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May 26 19:23:13 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.13.9:
+  * Fix: jbd2: use the correct print format (v5.4.229).
+  * Fix: jbd2 upper bound for v5.10.163.
+  * Fix: jbd2: use the correct print format (v5.10.163).
+  * Fix: btrfs: move accessor helpers into accessors.h (v6.2).
+- Add lttng-modules-2.13.9-linux-6.3.patch: back-port commits
+  23d91ab1f33370551feceddd93a1ecac7213e692,
+  f3559e5b06b24ad0336211950792fa97398c5e9a,
+  f39b4a3cbff6d286025bd692aaa24ae6f8efb40b,
+  6bc8ed7d08c616991451183eaffeeeb80ca0cd1a
+  for Linux 6.3 compatibility.
+
+-------------------------------------------------------------------
 Fri Jan 13 21:41:22 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 2.13.8:
