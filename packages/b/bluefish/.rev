@@ -131,4 +131,12 @@
     <comment></comment>
     <requestid>900230</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d464b3561858c740ac78166e5b223a15</srcmd5>
+    <version>2.2.13</version>
+    <time>1685212717</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.2.13</comment>
+    <requestid>1089293</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 18 13:31:45 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.2.13:
+  * CSS syntax support has been greatly improved.
+  * some fixes and some very minor bugs squashed
+  * some minor improvements for the syntax highlighting in a few
+    other languages, most notably python. 
+
+-------------------------------------------------------------------
 Tue Jun 15 05:13:38 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Refresh remove-python-class-shebang.patch to remove a requirement of

@@ -1,7 +1,7 @@
 #
 # spec file for package bluefish
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           bluefish
-Version:        2.2.12
+Version:        2.2.13
 Release:        0
 Summary:        A feature-Rich HTML Editor
 License:        GPL-3.0-or-later
@@ -125,8 +125,8 @@ fi
 %{_datadir}/xml/bluefish/2.0/bflang2.rng
 %{_datadir}/xml/bluefish/catalog.xml
 %{_datadir}/icons/hicolor/*/*/*
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/%{name}.appdata.xml
+%dir %{_datadir}/metainfo
+%{_datadir}/metainfo/bluefish.appdata.xml
 %{_datadir}/mime/packages/%{name}.xml
 
 %changelog
