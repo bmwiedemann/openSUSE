@@ -42,12 +42,27 @@ BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  procps-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  xorg-x11-devel
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xcomposite)
+BuildRequires:  pkgconfig(xcursor)
+BuildRequires:  pkgconfig(xdamage)
+BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xfixes)
+BuildRequires:  pkgconfig(xi)
+BuildRequires:  pkgconfig(xinerama)
+BuildRequires:  pkgconfig(xproto)
+BuildRequires:  pkgconfig(xrandr)
+BuildRequires:  pkgconfig(xscrnsaver)
+BuildRequires:  pkgconfig(xtst)
+%if 0%{?suse_version} < 1550
+Requires:       pkgconfig(xtrap)
+%endif
 %if 0%{?suse_version} > 1500
 BuildRequires:  qca-qt6-plugins
 BuildRequires:  cmake(Qca-qt6)
 BuildRequires:  cmake(Qt6Concurrent)
 BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Core5Compat)
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6LinguistTools)
