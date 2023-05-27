@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Sat May 20 03:11:38 UTC 2023 - i@guoyunhe.me
+
+- Update to version 0.0.27~git20230519:
+  * Debugger: Implement key-scrolling through threads
+  * Fix spu_fm
+  * cellSpurs: Fix ready count
+  * Qt: fix memory leak on midi error
+  * Qt: Don't refresh mic and midi list in constructor
+  * mac arm: try to fix compilation
+  * input: use enum class for pad connection
+  * input: add option to keep pads connected
+  * Fix init order for gpu_debug_marker
+  * Fix init order
+  * rsx: Fix build after variable rename
+  * vk: Rename the debug marker to something more appropriate
+  * Fixup - command buffer wrapping
+  * vk: C++-ify the debug marker sync object member names
+  * vk: Do not use raw GPU command buffer handles for any wrapped API calls
+  * rsx: Perform region clipping in a normalized coordinate space
+  * vk: Preliminary support for debug markers
+  * Qt: allow hiding trophy table columns
+  * VS: set more O2
+  * MSVC: Ignore base address warning
+  * Fix some warnings
+  * Updates
+  * Windows Use vector for performance counter data allocation
+  * rpcn: fix some msvc warnings
+  * Fix log message
+  * Logs/Debugger: Go-To-Address signal from log text
+  * Qt: don't refresh game grid after emu stop
+  * Implement support for emulating Rock Band 3's MIDI Pro Adapter
+  * sys_usbd: Emulate Disney Infinity Base
+  * cli: add ability to log ffmpeg codecs
+
+-------------------------------------------------------------------
+Tue May 16 11:59:34 UTC 2023 - i@guoyunhe.me
+
+- Update to version 0.0.27~git20230515:
+  * Better accuracy for FREST/FRSQEST (#13863)
+  * SPU Executable Code Dumping Tool
+  * vk: Minor refactor in OOM handler to skip scans if we already found a match
+  * vk: Refactor memory allocators to easily inspect device properties
+  * vk: Use gc to clean up stale surface cache resources instead of fudging with frame counters.
+  * vk: Rewrite draw call setup sequence to avoid OOM situations introducing stale descriptors
+  * vk: Don't erase texture cache images directly. Use gc instead.
+  * vk: Implement max VRAM override in config
+  * vk: Refactor the vram exhausted handler
+  * vk: Refactor vram exhausted handler to minimize risk of UAF hazards
+  * vk: Tune resource quotas
+  * vk: Improve spill robustness
+  * vk: Lower scratch dimension alignment to 256 to minimize wastage
+  * rsx: Do not allow 'compatible' check to pass if the size does not match
+  * Logs: fix  Stack Cell Errors setting reading
+  * System.cpp: Make boot of disc updates more strict
+
+-------------------------------------------------------------------
+Thu May 11 15:30:54 UTC 2023 - i@guoyunhe.me
+
+- Update to version 0.0.27~git20230510:
+  * SPU/PPU/Debugger: Ensure ascending stack frames (#13833)
+  * Fix some warnings
+  * Qt: fix game list event filter
+  * SPU/Debugger: Detect stack-less functions
+  * Add linuxdeploy-plugin-checkrt for compatibility with older distros
+  * PPU LLVM: Unbreak function linkage
+  * Fix rpcn config reset
+  * Deterministic FREST and FRSQEST
+  * fix ASAN error: make overlay_pass destructor virtual
+  * fix: make ASAN work on Windows
+  * sys_fs: Further implemented cellFsArcadeHddSerialNumber (0xc0000007)
+  * sys_fs: Improved sys_fs_fcntl(0xc0000015 and 0xc000001c) by integrating duplicate code
+  * sys_fs: Implemented mount_info_map to keep proper track of mounted devices
+  * sys_fs: Improved lv2_fs_object constructor
+  * sys_fs: Improved the functionality of lv2_fs_object::get_mp() and the efficiency of mount&newfs syscalls
+  * sys_game: Fixed potential bugs in sys_game_get_system_sw_version()
+  * Qt: filter for rpcs3_*.qm files when enumerating languages
+  * Qt: implement flow layout game grid
+  * cellPamf: Add missing error code
+  * CI: -DUSE_SDL=ON (on Linux)
+  * build: fix USE_SYSTEM_SDL
+  * X86 SigHandler: Add support for BEXTR instruction
+  * Whitespace fix
+  * gl: Fix typeless casts
+  * rsx: Allow swizzle flag to propagate as an override to surface properties
+  * rsx: Apply swizzle flag on data source as well
+  * vk: Propagate swizzle flag in hw blit engine
+  * rsx: Add a comment explaining the barycentric interpolation change
+  * vk: Improved attribute interpolation for NVIDIA
+  * Fix deadlock in games_config
+  * Qt: fix invisible first game list icon on tiny icon sizes
+  * Force STATIC_LINK_LLVM on with BUILD_LLVM=ON
+  * MacOs: remove git dir from dmg
+  * Linux: remove git dir from AppImage
+  * Windows: don't ship git folder
+  * VS: disable warnings of external dependencies (mainly silences Qt warning spam)
+  * fix some warnings
+  * Qt/Utilities: Merge memory viewer with searcher
+  * gl: Fix blur_intensity GL_INVALID_OPERATION error
+  * Use seperately bundled LLVM library
+  * Bring back removing the wayland-client lib
+  * Change AppImage packaging to actively maintained system
+  * Qt: Allow parsing games.yml during gameplay
+  * Loader: split add_only into own function
+  * Qt: clear game items before clearing the game list
+  * VS: remove non-existent moc files from filter
+  * Qt: fix squished icon column when opening rpcs3 after closing with an empty list
+  * Qt: fix invalid pointer in IconReady slot
+  * Qt: use shared_mutex in movie_item
+  * Qt: don't mount dev_hdd0 in screenshot manager
+  * savestates:/sys_spu: Fix join saving
+
+-------------------------------------------------------------------
 Fri Apr 28 12:08:36 UTC 2023 - i@guoyunhe.me
 
 - Update to version 0.0.27~git20230427:
