@@ -1,12 +1,20 @@
 -------------------------------------------------------------------
-Tue May 16 11:47:03 UTC 2023 - David Anes <david.anes@suse.com>
+Tue May 23 19:17:05 UTC 2023 - david.anes@suse.com
+
+- Security fix: CVE-2023-26964, bsc#1210368
+  * Latest vendored dependency h2 is 0.3.19
 
 - Update to version 1.22.3:
-  * New: `Outcome::Race` and `Outcome::race()`
-  * New: `Outcome::wait_timeout()`
-  * New: `Outcome::sequence()`
-  * Fix: `kill_on_drop(true)`
-  * Some `debug!`s upgraded to `info!`s, based on experience reading logs
+  * release: watchexec-cli v1.22.3 (#590)
+  * release: watchexec-filterer-ignore v1.2.1 (#589)
+  * release: ignore-files v1.3.0 (#588)
+  * Fix warnings (#586)
+  * Add recent PRs to changelogs (#587)
+  * Try to fix windows tests (#585)
+  * Update completions/manpage (#584)
+  * Update deps (#583)
+  * Fix adding globs to the IgnoreFilter (#581)
+  * fix bosion tests (#582)
 
 -------------------------------------------------------------------
 Tue May 16 11:36:18 UTC 2023 - david.anes@suse.com
