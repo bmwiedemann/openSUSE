@@ -1,0 +1,410 @@
+-------------------------------------------------------------------
+Fri May 26 21:46:27 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update summary to not assume special context (reference to
+  ueberzug).
+- Compact main description and weed out grammar errors.
+
+-------------------------------------------------------------------
+Fri May 26 01:09:57 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Updating description
+- Update to version 2.8.5:
+  * Wayland Support (only under sway and sway based wms)
+  * remove zmq/cppzmq dependency (doesn't play well with unix sockets)
+  * simplify code
+
+-------------------------------------------------------------------
+Mon May 22 14:05:04 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 2.8.4:
+  * code cleanup
+  * improve performance for kitty and iterm2
+  * simplify x11 and sixel canvas
+  * add chafa canvas as a last resort canvas
+  * minimum GCC version supported is 10.1
+
+-------------------------------------------------------------------
+Fri May 19 12:55:44 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Switching to traditional release vs. git release
+
+-------------------------------------------------------------------
+Tue May 16 12:16:21 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Switching to %cmake macros
+
+-------------------------------------------------------------------
+Mon May 15 23:09:14 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 2.8.3+git20230515.df4e40f:
+  * upgrade homebrew script
+  * bump version and only add flags on debug builds
+  * code cleanup
+  * fix unused variable when opencv is disabled
+  * use -Wall and fix recommendations
+  * simpler signal handling and code cleanup
+  * switch to using a singleton for accessing program configuration
+  * code refactoring
+
+-------------------------------------------------------------------
+Sun May 14 15:41:41 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 2.8.2+git20230513.804060e:
+  * fix iterm2 recognition
+  * better logging, improved terminal detection and fix sixel bug
+  * update README
+  * handle terminal padding when running under tmux
+  * code cleanup
+  * remove some checks
+  * util refactor
+  * tmux handling
+  * update fzf script
+  * update lf script
+  * take into account window padding on x11 canvas
+  * update homebrew script
+  * bump version
+  * switch from uint64_t to size_t
+  * fix build on macos
+  * Bug fixes (#35)
+  * follow audit guidelines
+  * update homebrew
+
+-------------------------------------------------------------------
+Thu May 11 22:42:41 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 2.8.1+git20230511.9085896:
+  * bump version
+  * Code refactoring + bug fixes (#34)
+  * add clang-tidy file
+  * Update README.md
+  * update README and remove image
+  * improve homebrew script
+  * update homebrew script
+  * add sample gif
+
+-------------------------------------------------------------------
+Mon May 08 00:03:44 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 2.8.0+git20230507.b6cf910:
+  * simplify homebrew script
+  * follow homebrew audit guidelines
+  * add homebrew script
+  * try to download cppzmq if not present
+  * update README
+  * fix fzf script
+  * bump version
+  * better handle macos processes
+  * cmake cleanup
+  * remove action
+  * use tbb on macos
+  * open ttys
+  * pidinfo fails for other user processes
+  * test libproc
+  * use stdout for now
+  * add cppzmq
+  * update
+  * check sysctl
+  * add macos workflow
+  * small fix importing library
+  * apple doesn't support execution policies
+  * join threads just in case
+  * switch from jthread to thread
+  * extract required macro from library
+  * switch from jthread to thread
+  * fix cached images no longer being recognized by iterm2
+  * update README.md
+  * extract required macro from library
+  * initial iterm2 support
+  * fix lf script
+  * improvements with cmd subcommand and add lf integration script
+  * code cleanup and refactoring
+  * update README
+  * update README.md
+  * parallellize kitty encoding
+  * bump version
+  * support cmake version 3.18
+
+-------------------------------------------------------------------
+Tue Apr 25 13:37:21 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 2.7.7+git20230425.63a3b72:
+  * try to build third_part libraries if not installed
+
+-------------------------------------------------------------------
+Tue Apr 25 12:21:10 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 2.7.7+git20230424.527cc96:
+  * hide turbo-base64 behind compiler flag
+
+-------------------------------------------------------------------
+Mon Apr 24 23:33:39 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 2.7.7+git20230424.a8d07a9:
+  * test fetchcontent + new release
+  * add ability to disable opencv or x11 at compile time
+  * fix kitty not displaying image in certain cases
+
+-------------------------------------------------------------------
+Sat Apr 22 16:22:14 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 2.7.6+git20230421.0cccbe3:
+  * bump version
+  * synchronize main thread and drawing threads
+  * add fzf integration script
+  * add command flag
+  * fix image scaling
+
+-------------------------------------------------------------------
+Sun Apr 16 19:18:52 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 2.7.5+git20230416.588af3b:
+  * bump version
+  * don't reset empty stringstream
+  * restore cursor position with kitty
+  * naming changes
+  * sixel improvements
+  * sixel improvements
+  * verify if opencl is available
+  * restore cache usage in opencv
+  * initial support for additional image scalers
+  * wezterm fixed its kitty support
+
+-------------------------------------------------------------------
+Thu Apr 13 20:16:56 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 2.7.4+git20230413.49df37b:
+  * bump version
+
+-------------------------------------------------------------------
+Thu Apr 13 12:37:03 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 2.7.3+git20230412.b34360e:
+  * clear canvas before using it again
+  * some performance changes
+  * update README.md
+
+-------------------------------------------------------------------
+Mon Apr 03 15:23:42 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 2.7.3+git20230403.d5fad31:
+  * add no-opencv flag
+  * limit libvips cache
+  * respect no_cache flag with libvips
+  * respect no_cache option with libvips
+  * use only libvips
+  * use opencv mainly again
+  * add missing iniclude for older compilers
+  * use resize instead of thumbnail_image
+  * test libvips only
+  * add no-cache flag
+
+-------------------------------------------------------------------
+Sat Mar 25 02:54:15 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 2.7.3+git20230324.4d09378:
+  * add None install configuration
+  * bump version
+  * fix socket not being deleted
+  * fix tmux regression
+  * use smart pointers
+  * using SIXEL_LARGE_LUM seems to improve performance
+  * use ueberzugpp for files/directories
+
+-------------------------------------------------------------------
+Wed Mar 15 14:08:13 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 2.7.2+git20230315.fa5bef6:
+  * bump version
+  * add benchmark function
+  * some code refactoring
+  * Fix uninitialized read in X11Util::get_window_pid
+  * Fix use of delete operator on result of malloc()
+  * Add missing <thread> include to application.hpp
+  * Fix make install
+
+-------------------------------------------------------------------
+Mon Mar 13 13:33:57 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 2.7.1+git20230312.b470797:
+  * code cleaning
+  * bump version and fix flags default
+  * allow multiple instances of ueberzug to run at the same time
+  * kitty validations, prepare for iterm2 canvas
+
+-------------------------------------------------------------------
+Fri Mar 10 14:03:25 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 2.7.0+git20230310.2c547ca:
+  * update README.md
+  * bump version
+  * link to Crypto instead of SSL
+  * handle parse errors and recognize more options
+  * parse configuration file if exists
+  * improve compatibility
+  * code cleanup
+  * use openssl instead of botan
+  * test openssl for base64 encoding
+  * improve kitty performance
+  * better kitty recognition
+  * initial kitty support
+  * add kitty files
+  * formatting issues
+
+-------------------------------------------------------------------
+Wed Mar 08 16:23:51 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 2.6.0+git20230308.97a5b80:
+  * bug fixes
+  * remove iostream
+  * hard code sixel support for some terminals
+  * change name of ESC
+  * some changes
+  * remove benchmarking code
+  * only use opencl if required
+  * use map instead of ifs
+  * better tmux hook handling + functioning image cache
+  * cache images properly
+
+-------------------------------------------------------------------
+Mon Mar 06 14:36:53 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 2.5.0+git20230306.39514c0:
+  * update sample script
+  * prepare for new outputs
+  * fix pty selection regression
+  * update README, plus performance enhancements
+  * remove debug print
+  * hide windows when tmux window changed
+
+-------------------------------------------------------------------
+Sun Mar 05 22:42:57 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 2.5.0+git20230305.c9478aa:
+  * handle pane resizes
+  * use unix sockets instead of tcp
+  * correctly handle tmux hooks
+  * register/unregister tmux hooks
+  * better tcp handling v2
+  * better tcp handling
+  * send message to tcp on tmux hooks
+  * add tmux hook subcommand
+
+-------------------------------------------------------------------
+Wed Mar 01 14:15:27 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 2.4.0+git20230227.fc36c72:
+  * synchronize threads
+  * rollback last commit
+  * let each window handle it's own connection
+  * better cli option handling
+  * more optimizations for libvips
+  * add license header
+  * libvips optimizations
+  * don't log twice
+  * Don't crash on a failure to load an image
+  * Handle status==off in tmux::get_statusbar_offset()
+  * take in account vertical multine tmux statusbar
+
+-------------------------------------------------------------------
+Sat Feb 25 23:17:19 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 2.3.0+git20230225.39e38a8:
+  * improve opencl
+  * actually try to use opencl
+  * add validations
+  * bump patch
+  * bump version
+  * use references instead of shared_ptr
+  * cleaning code
+  * find control terminal correctly
+  * some refactoring
+  * bump version
+  * update README.md
+  * better backwards compatibility
+  * docs: remove  symbol from Build section
+
+-------------------------------------------------------------------
+Fri Feb 24 00:08:42 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 2.2.0+git20230223.7c68553:
+  * Update README.md
+  * fix option not working
+  * update README
+  * handle more flags
+  * add zmq dependency
+  * don't save vips loader
+
+-------------------------------------------------------------------
+Thu Feb 23 01:43:05 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 2.1.0+git20230222.06779d3:
+  * bump version
+  * do less work on cached images
+  * use a proper logger
+
+-------------------------------------------------------------------
+Wed Feb 22 13:13:42 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 2.0.0+git20230222.2be53a8:
+  * new release
+  * cache resized images
+  * pass loader used to libvips image
+  * use libvips for displaying gifs and animated webps
+  * fix ueberzug window appearing in wrong positions
+  * some refactoring
+
+-------------------------------------------------------------------
+Sun Feb 19 18:18:13 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.9.1+git20230218.7913178:
+  * bump version
+  * fix image not being redraw on expose events
+  * bump version
+  * create x11 windows the same size as the resized image
+  * better image resizing
+  * add versioning and some refactoring
+  * fix type in README
+  * new release
+  * log program version
+  * better sixel output
+  * Update README.md
+  * Update README.md
+
+-------------------------------------------------------------------
+Thu Feb 16 17:49:50 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.7.0+git20230216.f1b670c:
+  * add some validations
+  * resolving merge conflict
+  * better sixel output
+  * marked call operator of callable object "const"
+  * Defaulted empty dtor, removed empty implementation.
+  * defaulted empty dtor
+  * defaulted empty dtor and removed implementation of it from source file
+  * Removing unnecessary assignment of nullptr to unique_ptr members in in-class initializer.
+  * Removed extraneous semicolons, defaulted dtor implementation. Added .vs temporaries directory to git ignore.
+  * better sixel support
+  * don't use printf
+
+-------------------------------------------------------------------
+Tue Feb 14 19:34:24 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.6.0+git20230214.f016a6f:
+  * complete gif support for sixel
+  * test sixel gif support
+
+-------------------------------------------------------------------
+Mon Feb 13 22:50:42 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.5.0+git20230213.ab00bf2:
+  * better image format handling
+  * update README.md
+  * add gif support to x11 canvas
+  * prepare gif support
+  * don't overlap with borders
+  * bug fixing
+  * update README.md
+  * remove comments
+  * cleaning
+
