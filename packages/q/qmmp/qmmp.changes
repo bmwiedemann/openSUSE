@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 26 19:23:13 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 2.1.4:
+  * Add projectM 4.0 support (experimental).
+  * Rebuild skin cache if missing
+  * Fix removing of the current playing file in the file operations
+    plugin.
+  * Fix crash on streams in the lyrics plugin.
+  * Fix issues with tabbar in the simple ui plugin.
+  * Fix issues with visualisation windows on application startup.
+
+-------------------------------------------------------------------
 Fri Mar 31 10:11:20 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 2.1.3:
