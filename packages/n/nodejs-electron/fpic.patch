@@ -105,3 +105,14 @@ Use -fpic for code which goes only in dlls (gives smaller code),
  }
  
  component("qt") {
+--- src/third_party/abseil-cpp/BUILD.gn.old
++++ src/third_party/abseil-cpp/BUILD.gn
+@@ -132,6 +132,8 @@ config("absl_define_config") {
+ 
+ config("absl_default_cflags_cc") {
+   cflags_cc = []
++  cflags = ["-fPIC", "-fno-semantic-interposition"]
++  asmflags = ["-fPIC", "-fno-semantic-interposition"]
+   if (is_clang) {
+     cflags_cc += [
+       # TODO(crbug.com/588506): Explicitly enable conversion warnings.

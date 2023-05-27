@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 25 05:15:35 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 22.3.11
+  * Fix ScopedObservation use after free in BubbleDialogDelegate::AnchorWidgetObserver
+- Re-enable use of flat_map in ANGLE.
+
+-------------------------------------------------------------------
 Wed May 10 18:27:09 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 22.3.9
   * Fixed drag-and-drop crash on Wayland

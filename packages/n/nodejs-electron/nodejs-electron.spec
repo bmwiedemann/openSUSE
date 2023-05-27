@@ -208,7 +208,7 @@ BuildArch:      i686
 
 
 Name:           nodejs-electron
-Version:        22.3.9
+Version:        22.3.11
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        AFL-2.0 AND Apache-2.0 AND blessing AND BSD-2-Clause AND BSD-3-Clause AND BSD-Protection AND BSD-Source-Code AND bzip2-1.0.6 AND IJG AND ISC AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND MIT-CMU AND MIT-open-group AND (MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later) AND MPL-2.0 AND OpenSSL AND SGI-B-2.0 AND SUSE-Public-Domain AND X11
@@ -852,13 +852,11 @@ export RANLIB=llvm-ranlib
 %if %{with gold}
 export LDFLAGS="${LDFLAGS} -Wl,--no-map-whole-files -Wl,--no-keep-memory -Wl,--no-keep-files-mapped"
 %else
-export LDFLAGS="${LDFLAGS} -Wl,--no-keep-memory -Wl,--hash-size=30 -Wl,--reduce-memory-overheads"
+export LDFLAGS="${LDFLAGS} -Wl,--no-keep-memory"
 %endif
 
 %endif #without lld
 %endif #ifarch ix86 arm
-
-
 
 
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150600 || 0%{?fedora}
@@ -1108,6 +1106,11 @@ myconf_gn+=" angle_use_custom_libvulkan=false"
 myconf_gn+=" angle_shared_libvulkan=false"
 %endif
 myconf_gn+=" angle_link_glx=true"
+
+#Use faster flat_map instead of fallback std::unordered_map implementation in ANGLE.
+#Upstream sets it by default to the value of is_clang with the comment “has trouble supporting MSVC”.
+#This is supposed to be enabled in chromium and compiles fine with GCC.
+myconf_gn+=' angle_enable_abseil=true'
 
 
 # do not build PDF support
