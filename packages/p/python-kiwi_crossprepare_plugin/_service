@@ -1,0 +1,14 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/OSInside/kiwi-crossprepare-plugin</param>
+    <param name="scm">git</param>
+    <param name="revision">f7c1b3fe1739ed29120816ce0c1277b6e29cf8be</param>
+    <param name="version">0.1.6</param>
+  </service>
+  <service mode="manual" name="tar" />
+  <service mode="manual" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="manual" name="set_version" />
+</services>
