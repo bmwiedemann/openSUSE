@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri May 26 16:26:23 UTC 2023 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to 0.4.8.11
+  * Fixed saving previous state input object for DualSense BT connection
+- Changes from 0.4.8.10
+  * Added support for standard DualSense controller. Includes contributions from theY4Kman and psstoyanov
+  * Use HIDRaw for DualSense Bluetooth support rather than evdev. evdev provided as backup method
+  * Updated gitignore rules. Contributed by alex
+  * Fixed tests showing broken Key enum deserialization. Contributed by alex
+  * Added github action so that test status is visible. Contributed by alex
+  * Lower LS and RS dead zones from DS5Controller reader class
+  * Fixes for stick mouse support for mouse action type
+  * Fixed EnumType error for AxisAction description generation. Changes in checks deprecated since Python 3.8
+  * Updated EnumType checks in a few actions
+  * Enabled quaternion calculations for DualSense. Needed for Gyro Tilt controls
+  * Fixed file not found error with AppImage in Ubuntu 22.04 LTS
+- Changes from 0.4.8.9
+  * Fixed another TypeError when making X11 calls. Changed str to bytes objects
+  * Updated some AppImage dependencies
+
+-------------------------------------------------------------------
 Sun Oct  9 14:07:51 UTC 2022 - Jannik Seiler <seil0@mosad.xyz>
 
 - Update to 0.4.8.8

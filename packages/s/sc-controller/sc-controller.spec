@@ -1,7 +1,7 @@
 #
 # spec file for package sc-controller
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sc-controller
-Version:        0.4.8.8
+Version:        0.4.8.11
 Release:        0
 Summary:        User-mode driver and GTK3-based GUI for the Steam Controller
 License:        GPL-2.0-only
