@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat May 20 11:04:43 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.2.0:
+  * Update clap and clap extras to v4 
+  * Make the fields of Signature public
+  * Add a custom configuration file for the repository
+  * Support placing configuration inside pyproject.toml 
+  * Generate SBOM/provenance for the Docker image
+  * Support using regex group values 
+  * [breaking] Nested environment config overrides 
+  * Set max of limit_commits to the number of commits 
+  * Set the node cache dependency path
+  * Use the correct argument in release script
+
+-------------------------------------------------------------------
 Wed Jan 25 06:37:53 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 1.1.2:
