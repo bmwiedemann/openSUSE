@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat May 20 10:45:36 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 0.4.29:
+  * Update to 0.4.29
+  * Set minimum versions in Cargo.toml
+  * Update clap
+  * Update some indirect dependencies
+  * Apply clippy::match_like_matches_macro
+  * Apply clippy::manual_while_let_some
+  * Apply clippy::needless_borrowed_reference
+  * Apply clippy::let_unit_value
+  * Apply clippy::borrow_deref_ref
+  * Apply clippy::needless_borrow
+  * Raise MSRV to 1.65
+  * Update some direct dependencies
+  * Don't copy the stock fonts if the user has overridden fonts.css.
+  * Don't warn on copy-fonts=true (the default) when fonts.css is overridden.
+  * Update renderers.md
+  * Refactor the warning message related to copy_fonts so that a user simply configures it
+  * Switch from gitignore to ignore
+  * Update init.md
+  * Bump h2 from 0.3.15 to 0.3.17
+  * style(tests): Fixed issues reported by clippy
+  * docs(cli): Add docs for --force
+  * fix(cli): init --force skips confirmation prompts
+  * Convert links from http to https protocol
+
+-------------------------------------------------------------------
 Fri Apr 14 12:29:36 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update vendored dependencies.
