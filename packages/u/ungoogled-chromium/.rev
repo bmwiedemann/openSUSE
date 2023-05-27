@@ -7,4 +7,12 @@
     <comment>Chromium is in factory so I'm submitting ungoogled-chromium. Is the fifth time the charm? I think i fixed everything and leap started building too.</comment>
     <requestid>1086570</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>68105113519907612a77c6e42fe73dd5</srcmd5>
+    <version>113.0.5672.126</version>
+    <time>1685212672</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1089286</requestid>
+  </revision>
 </revisionlist>
