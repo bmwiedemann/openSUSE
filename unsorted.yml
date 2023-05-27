@@ -580,6 +580,7 @@ unsorted:
   - ansible-lint 
   - ansible-runner 
   - ansible-test 
+  - ansible-variables 
   - ansifilter 
   - ansifilter-bash-completion 
   - ansifilter-fish-completion 
@@ -3268,6 +3269,7 @@ unsorted:
   - dracut-kiwi-oem-dump 
   - dracut-kiwi-oem-repart 
   - dracut-kiwi-overlay 
+  - dracut-kiwi-verity 
   - dracut-sshd 
   - dracut-tools 
   - dragonbox-devel 
@@ -9177,6 +9179,7 @@ unsorted:
   - kiwi-systemdeps 
   - kiwi-systemdeps-bootloaders 
   - kiwi-systemdeps-containers 
+  - kiwi-systemdeps-containers-wsl 
   - kiwi-systemdeps-core 
   - kiwi-systemdeps-disk-images 
   - kiwi-systemdeps-filesystems 
@@ -11349,7 +11352,7 @@ unsorted:
   - libcnotify1 
   - libcob-devel 
   - libcob4 
-  - libcodec2-1_0-32bit 
+  - libcodec2-1_1-32bit 
   - libcogl-gles2-20 
   - libcogl-pango20-32bit 
   - libcogl20-32bit 
@@ -12021,7 +12024,7 @@ unsorted:
   - libftxf1 
   - libftxr-devel 
   - libftxr1 
-  - libftxui4_0_0 
+  - libftxui4_1_0 
   - libfunambol-9_0_1 
   - libfunambol-devel 
   - libfuse2-32bit 
@@ -12248,7 +12251,6 @@ unsorted:
   - libgnutls-dane-devel 
   - libgnutls-devel 
   - libgnutls-devel-32bit 
-  - libgnutls30-hmac-32bit 
   - libgnutlsxx-devel 
   - libgnutlsxx30 
   - libgo11 
@@ -12974,13 +12976,13 @@ unsorted:
   - libkyotocabinet-devel 
   - liblab_gamut1 
   - liblal20 
-  - liblalburst6 
-  - liblalframe13 
+  - liblalburst8 
+  - liblalframe14 
   - liblalinference23 
-  - liblalinspiral17 
-  - liblalmetaio10 
-  - liblalpulsar26 
-  - liblalsimulation31 
+  - liblalinspiral18 
+  - liblalmetaio11 
+  - liblalpulsar29 
+  - liblalsimulation32 
   - liblalsupport14 
   - liblammps0 
   - liblangtag-devel 
@@ -15737,8 +15739,8 @@ unsorted:
   - libwebrtc_audio_processing1-32bit 
   - libwebsockets-devel 
   - libwebsockets19 
-  - libweston-11 
-  - libweston-11-0 
+  - libweston-12 
+  - libweston-12-0 
   - libwget-devel 
   - libwget1 
   - libwhich 
@@ -22554,6 +22556,8 @@ unsorted:
   - python-designateclient-doc 
   - python-devel 
   - python-djvulibre-doc 
+  - python-doc 
+  - python-doc-pdf 
   - python-efl-doc 
   - python-efl-examples 
   - python-falcon-doc 
@@ -22583,6 +22587,7 @@ unsorted:
   - python-khal-bash-completion 
   - python-khal-fish-completion 
   - python-khal-zsh-completion 
+  - python-langtable-data 
   - python-libcomps-doc 
   - python-logutils-doc 
   - python-logzero-doc 
@@ -27750,6 +27755,7 @@ unsorted:
   - python311-gwcs 
   - python311-gwdatafind 
   - python311-gwosc 
+  - python311-gwpy 
   - python311-gwyfile 
   - python311-gyp 
   - python311-h11 
@@ -28332,6 +28338,8 @@ unsorted:
   - python311-ntfy 
   - python311-ntplib 
   - python311-num2words 
+  - python311-numba 
+  - python311-numba-devel 
   - python311-numcodecs 
   - python311-numericalunits 
   - python311-numexpr 
@@ -29753,10 +29761,7 @@ unsorted:
   - python38-doc 
   - python38-doc-devhelp 
   - python38-efl 
-  - python38-gwpy 
   - python38-idle 
-  - python38-lalpulsar 
-  - python38-lalsimulation 
   - python38-sanlock 
   - python38-testsuite 
   - python38-tk 

@@ -1710,7 +1710,7 @@
     <package name="libclutter-gtk-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcmap4" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libcmark0_30_3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libcodec2-1_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libcodec2-1_1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libcogl-pango20" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcogl20" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcolamd2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1949,7 +1949,6 @@
     <package name="libgnutls-dane0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libgnutls30" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgnutls30-32bit" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libgnutls30-hmac" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libgoa-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgoa-backend-1_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgobject-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
