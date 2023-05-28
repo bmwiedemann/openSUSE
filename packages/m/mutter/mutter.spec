@@ -38,6 +38,8 @@ Patch2:         mutter-window-actor-Special-case-shaped-Java-windows.patch
 Patch3:         mutter-crash-meta_context_terminate.patch
 # PATCH-FIX-UPSTREAM mutter-fix-wacom-tablet-crash.patch bsc#1211413 glgo#GNOME/mutter#2796 alynx.zhou@suse.com -- Fix x11 error of input configuration.
 Patch4:         mutter-fix-wacom-tablet-crash.patch
+# PATCH-FIX-UPSTREAM mutter-do-not-unminimize-windows-with-initial-iconic.patch bsc#1193190 glgo#GNOME/mutter!3001 alynx.zhou@suse.com -- Fix initial iconic handling
+Patch5:         mutter-do-not-unminimize-windows-with-initial-iconic.patch
 
 ## SLE-only patches start at 1000
 # PATCH-FEATURE-SLE mutter-SLE-bell.patch FATE#316042 bnc#889218 idonmez@suse.com -- make audible bell work out of the box.

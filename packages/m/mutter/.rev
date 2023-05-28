@@ -1792,4 +1792,12 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
   tablet (bsc#1211413, glgo#GNOME/mutter#2796). (forwarded request 1087507 from AZhou)</comment>
     <requestid>1088409</requestid>
   </revision>
+  <revision rev="204" vrev="3">
+    <srcmd5>d87222be36bc57ed53a462fabd0ed078</srcmd5>
+    <version>44.1+2</version>
+    <time>1685294495</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089236</requestid>
+  </revision>
 </revisionlist>

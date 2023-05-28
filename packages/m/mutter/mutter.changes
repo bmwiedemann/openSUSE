@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 23 07:41:44 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add mutter-do-not-unminimize-windows-with-initial-iconic.patch:
+  mutter used to unminimize windows with initial IconicState, which
+  is a workaround for some old wine games, it breaks apps like
+  xterm starts with -iconic, this patch revert it (bsc#1193190,
+  glgo#GNOME/mutter!3001).
+
+-------------------------------------------------------------------
 Wed May 17 03:01:48 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add mutter-fix-wacom-tablet-crash.patch: Use clutter error trap
