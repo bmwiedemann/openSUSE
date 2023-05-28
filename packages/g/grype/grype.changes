@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May 27 10:48:41 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.62.2:
+  * feat: add source and type to CVSS information (#1317)
+  * chore(deps): bump github.com/docker/docker (#1320)
+  * chore(deps): bump github/codeql-action from 2.3.3 to 2.3.5
+    (#1321)
+
+-------------------------------------------------------------------
 Wed May 24 14:04:41 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.62.1:
