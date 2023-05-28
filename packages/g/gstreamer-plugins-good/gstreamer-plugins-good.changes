@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed May 24 14:28:12 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.3:
+  + adaptivedemux2: fix critical when using an unsupported URI.
+  + dashdemux2: mpdclient: fix divide by 0 if segment has no
+    duration.
+  + imagesequencesrc: Properly set default location.
+  + multifile: error out if no filename was set.
+  + osxvideosink: fix deadlock upon closing output window.
+  + rtpmanager: rtpsession:
+    - Data race leading to critical warnings.
+    - Race conditions leading to critical warnings.
+  + rtspsrc: Fix handling of * control path.
+  + splitmuxsink: Catch invalid DTS to avoid running into problems
+    later.
+  + splitmuxsrc: Make PTS contiguous by preference.
+  + qtdemux: emit no-more-pads after pruning old pads.
+  + Revert "qtdemux: fix conditions for end of segment in reverse
+    playback" to fix edit list regression.
+  + qtdemux: Fix av1C parsing.
+  + qtmux: Fix extraction of CEA608 data from S334-1A packets.
+  + qtwindow: unref caps in destructor.
+  + v4l2:
+    - device provider: Fix GMainLoop leak.
+    - videodec: Rework dynamic resolution change handling.
+    - videodec: Prefer acquired caps over anything downstream.
+  + videoflip:
+    - Fix setting of method property at construction time.
+    - Videoflip 1.22.2 not rotating video when extracting frames.
+- Rebase reduce-required-meson.patch.
+
+-------------------------------------------------------------------
 Wed Apr 12 12:14:15 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.22.2:
