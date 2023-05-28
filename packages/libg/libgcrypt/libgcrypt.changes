@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 22 11:32:53 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Merge the libgcrypt20-hmac package into the library and
+  remove the "module is complete" trigger file .fips [bsc#1185116]
+  * Remove libgcrypt-1.10.0-use-fipscheck.patch
+
+-------------------------------------------------------------------
 Tue Apr 11 14:08:24 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.10.2:

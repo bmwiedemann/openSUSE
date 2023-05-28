@@ -1,6 +1,5 @@
 # This file can be used to globally disable the use of hardware
 # based optimizations. Supported options are:
-
 # padlock-rng
 # padlock-aes
 # padlock-sha

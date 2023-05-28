@@ -16,7 +16,6 @@
 #
 
 
-%define build_hmac256 1
 %define libsover 20
 %define libsoname %{name}%{libsover}
 %define hmac_key orboDeJITITejsirpADONivirpUkvarP
@@ -49,8 +48,6 @@ Patch102:       libgcrypt-FIPS-SLI-hash-mac.patch
 Patch103:       libgcrypt-jitterentropy-3.4.0.patch
 #PATCH-FIX-SUSE bsc#1202117 FIPS: Get most of the entropy from rndjent_poll
 Patch104:       libgcrypt-FIPS-rndjent_poll.patch
-#PATCH-FIX-SUSE Check the FIPS "module is complete" trigger file .fips
-Patch105:       libgcrypt-1.10.0-use-fipscheck.patch
 BuildRequires:  automake >= 1.14
 BuildRequires:  libgpg-error-devel >= 1.27
 BuildRequires:  libtool
@@ -68,22 +65,12 @@ understanding of applied cryptography is required to use Libgcrypt.
 Summary:        The GNU Crypto Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
-Suggests:       %{libsoname}-hmac = %{version}-%{release}
+Provides:       %{libsoname}-hmac = %{version}-%{release}
+Obsoletes:      %{libsoname}-hmac < %{version}-%{release}
 
 %description -n %{libsoname}
 Libgcrypt is a general purpose crypto library based on the code used in
 GnuPG (alpha version).
-
-%package -n %{libsoname}-hmac
-Summary:        HMAC checksums for the GNU Crypto Library
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          System/Libraries
-Requires:       %{libsoname} = %{version}-%{release}
-
-%description -n %{libsoname}-hmac
-Libgcrypt is a general purpose crypto library based on the code used in
-GnuPG (alpha version). This package contains the HMAC checksum files
-for integrity checking the library, as required by FIPS 140-2.
 
 %package devel
 Summary:        The GNU Crypto Library
@@ -109,8 +96,6 @@ library.
 sed -i "s/libgcrypt\.so\.hmac/\.libgcrypt\.so\.%{libsover}\.hmac/g" src/Makefile.am src/Makefile.in
 
 %build
-echo building with build_hmac256 set to %{build_hmac256}
-
 export PUBKEYS="dsa elgamal rsa ecc"
 export CIPHERS="arcfour blowfish cast5 des aes twofish serpent rfc2268 seed camellia idea salsa20 gost28147 chacha20 sm4"
 export DIGESTS="crc gostr3411-94 md4 md5 rmd160 sha1 sha256 sha512 sha3 tiger whirlpool stribog blake2 sm3"
@@ -139,17 +124,12 @@ export CFLAGS="%{optflags} $(getconf LFS_CFLAGS)"
 %make_build
 
 %check
-%make_build check
+make -k check
 # run the regression tests also in FIPS mode
-LIBGCRYPT_FORCE_FIPS_MODE=1 make -k check VERBOSE=1 || true
+LIBGCRYPT_FORCE_FIPS_MODE=1 make -k check || true
 
 # Install the FIPS hmac file
 cp src/.libgcrypt.so.%{libsover}.hmac %{buildroot}%{_libdir}/
-
-# create the FIPS "module is complete" trigger file
-%if 0%{?build_hmac256}
-touch %{buildroot}%{_libdir}/.%{name}.so.%{libsover}.fips
-%endif
 
 %install
 %make_install
@@ -170,12 +150,7 @@ install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/gcrypt/hwf.deny
 %dir %{_sysconfdir}/gcrypt
 %config(noreplace) %{_sysconfdir}/gcrypt/random.conf
 %config(noreplace) %{_sysconfdir}/gcrypt/hwf.deny
-
-%files -n %{libsoname}-hmac
 %{_libdir}/.libgcrypt.so.*.hmac
-%if 0%{?build_hmac256}
-%{_libdir}/.libgcrypt.so.*.fips
-%endif
 
 %files devel
 %license COPYING COPYING.LIB LICENSES
