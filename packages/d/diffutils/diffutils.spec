@@ -17,7 +17,7 @@
 
 
 Name:           diffutils
-Version:        3.9
+Version:        3.10
 Release:        0
 Summary:        GNU diff Utilities
 License:        GFDL-1.2-only AND GPL-3.0-or-later

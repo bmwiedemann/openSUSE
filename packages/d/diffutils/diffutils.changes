@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 22 19:14:42 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- diffutils 3.10:
+  * cmp/diff can again work with file dates past Y2K38
+  * diff -D no longer fails to output #ifndef lines
+
+-------------------------------------------------------------------
 Mon Jan 16 10:22:26 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - diffutils 3.9:
