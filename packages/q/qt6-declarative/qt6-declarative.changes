@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 24 07:45:35 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.1
+  * https://www.qt.io/blog/qt-6.5.1-released
+- Drop patch, merged upstream:
+  * 0001-QML-metatypes-Adjust-to-QMetaType-revision-increment.patch
+
+-------------------------------------------------------------------
 Fri Apr 28 13:59:13 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change to fix boo#1210849:

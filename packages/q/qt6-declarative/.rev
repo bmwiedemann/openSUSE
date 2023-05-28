@@ -200,4 +200,12 @@
   * 0001-QML-metatypes-Adjust-to-QMetaType-revision-increment.patch</comment>
     <requestid>1083538</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>dbcfff2a119c0a999cd0272b9c75f8c6</srcmd5>
+    <version>6.5.1</version>
+    <time>1685294511</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.5.1 (forwarded request 1088916 from krop)</comment>
+    <requestid>1089084</requestid>
+  </revision>
 </revisionlist>
