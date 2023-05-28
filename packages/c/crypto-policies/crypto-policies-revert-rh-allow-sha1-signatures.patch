@@ -1,0 +1,272 @@
+From 97fe4494571fd90a05f9bc42af152762eca2fac5 Mon Sep 17 00:00:00 2001
+From: Alexander Sosedkin <asosedkin@redhat.com>
+Date: Fri, 8 Apr 2022 13:47:29 +0200
+Subject: openssl: disable SHA-1 signatures in FUTURE/NO-SHA1
+
+
+Index: fedora-crypto-policies-20230420.3d08ae7/policies/FUTURE.pol
+===================================================================
+--- fedora-crypto-policies-20230420.3d08ae7.orig/policies/FUTURE.pol
++++ fedora-crypto-policies-20230420.3d08ae7/policies/FUTURE.pol
+@@ -65,7 +65,3 @@ sha1_in_certs = 0
+ arbitrary_dh_groups = 1
+ ssh_certs = 1
+ ssh_etm = 1
+-
+-# https://fedoraproject.org/wiki/Changes/StrongCryptoSettings3Forewarning1
+-# SHA-1 signatures are blocked in OpenSSL in FUTURE only
+-__openssl_block_sha1_signatures = 1
+Index: fedora-crypto-policies-20230420.3d08ae7/policies/modules/NO-SHA1.pmod
+===================================================================
+--- fedora-crypto-policies-20230420.3d08ae7.orig/policies/modules/NO-SHA1.pmod
++++ fedora-crypto-policies-20230420.3d08ae7/policies/modules/NO-SHA1.pmod
+@@ -3,7 +3,3 @@
+ hash = -SHA1
+ sign = -*-SHA1
+ sha1_in_certs = 0
+-
+-# https://fedoraproject.org/wiki/Changes/StrongCryptoSettings3Preview1
+-# SHA-1 signatures are blocked in OpenSSL in FUTURE only
+-__openssl_block_sha1_signatures = 1
+Index: fedora-crypto-policies-20230420.3d08ae7/python/cryptopolicies/cryptopolicies.py
+===================================================================
+--- fedora-crypto-policies-20230420.3d08ae7.orig/python/cryptopolicies/cryptopolicies.py
++++ fedora-crypto-policies-20230420.3d08ae7/python/cryptopolicies/cryptopolicies.py
+@@ -19,7 +19,6 @@ from . import validation  # moved out of
+ INT_DEFAULTS = {k: 0 for k in (
+     'arbitrary_dh_groups',
+     'min_dh_size', 'min_dsa_size', 'min_rsa_size',
+-    '__openssl_block_sha1_signatures',
+     'sha1_in_certs',
+     'ssh_certs', 'ssh_etm',
+ )}
+Index: fedora-crypto-policies-20230420.3d08ae7/python/policygenerators/openssl.py
+===================================================================
+--- fedora-crypto-policies-20230420.3d08ae7.orig/python/policygenerators/openssl.py
++++ fedora-crypto-policies-20230420.3d08ae7/python/policygenerators/openssl.py
+@@ -7,14 +7,6 @@ from subprocess import check_output, Cal
+ 
+ from .configgenerator import ConfigGenerator
+ 
+-RH_SHA1_SECTION = '''
+-[openssl_init]
+-alg_section = evp_properties
+-
+-[evp_properties]
+-rh-allow-sha1-signatures = {}
+-'''
+-
+ 
+ class OpenSSLGenerator(ConfigGenerator):
+     CONFIG_NAME = 'openssl'
+@@ -254,12 +246,6 @@ class OpenSSLConfigGenerator(OpenSSLGene
+         groups = [cls.group_map[i] for i in p['group'] if i in cls.group_map]
+         s += 'Groups = ' + ':'.join(groups) + '\n'
+ 
+-        # In the future it'll be just
+-        # s += RH_SHA1_SECTION.format('yes' if 'SHA1' in p['hash'] else 'no')
+-        # but for now we slow down the roll-out and we have
+-        sha1_sig = not policy.integers['__openssl_block_sha1_signatures']
+-        s += RH_SHA1_SECTION.format('yes' if sha1_sig else 'no')
+-
+         return s
+ 
+     @classmethod
+Index: fedora-crypto-policies-20230420.3d08ae7/tests/alternative-policies/FUTURE.pol
+===================================================================
+--- fedora-crypto-policies-20230420.3d08ae7.orig/tests/alternative-policies/FUTURE.pol
++++ fedora-crypto-policies-20230420.3d08ae7/tests/alternative-policies/FUTURE.pol
+@@ -71,7 +71,3 @@ sha1_in_dnssec = 0
+ arbitrary_dh_groups = 1
+ ssh_certs = 1
+ ssh_etm = 1
+-
+-# https://fedoraproject.org/wiki/Changes/StrongCryptoSettings3Preview1
+-# SHA-1 signatures are blocked in OpenSSL in FUTURE only
+-__openssl_block_sha1_signatures = 1
+Index: fedora-crypto-policies-20230420.3d08ae7/tests/outputs/DEFAULT-opensslcnf.txt
+===================================================================
+--- fedora-crypto-policies-20230420.3d08ae7.orig/tests/outputs/DEFAULT-opensslcnf.txt
++++ fedora-crypto-policies-20230420.3d08ae7/tests/outputs/DEFAULT-opensslcnf.txt
+@@ -6,9 +6,3 @@ DTLS.MinProtocol = DTLSv1.2
+ DTLS.MaxProtocol = DTLSv1.2
+ SignatureAlgorithms = ECDSA+SHA256:ECDSA+SHA384:ECDSA+SHA512:ed25519:ed448:rsa_pss_pss_sha256:rsa_pss_pss_sha384:rsa_pss_pss_sha512:rsa_pss_rsae_sha256:rsa_pss_rsae_sha384:rsa_pss_rsae_sha512:RSA+SHA256:RSA+SHA384:RSA+SHA512:ECDSA+SHA224:RSA+SHA224
+ Groups = X25519:X448:secp256r1:secp384r1:secp521r1:ffdhe2048:ffdhe3072:ffdhe4096:ffdhe6144:ffdhe8192
+-
+-[openssl_init]
+-alg_section = evp_properties
+-
+-[evp_properties]
+-rh-allow-sha1-signatures = yes
+Index: fedora-crypto-policies-20230420.3d08ae7/tests/outputs/DEFAULT:FEDORA32-opensslcnf.txt
+===================================================================
+--- fedora-crypto-policies-20230420.3d08ae7.orig/tests/outputs/DEFAULT:FEDORA32-opensslcnf.txt
++++ fedora-crypto-policies-20230420.3d08ae7/tests/outputs/DEFAULT:FEDORA32-opensslcnf.txt
+@@ -6,9 +6,3 @@ DTLS.MinProtocol = DTLSv1
+ DTLS.MaxProtocol = DTLSv1.2
+ SignatureAlgorithms = ECDSA+SHA256:ECDSA+SHA384:ECDSA+SHA512:ed25519:ed448:rsa_pss_pss_sha256:rsa_pss_pss_sha384:rsa_pss_pss_sha512:rsa_pss_rsae_sha256:rsa_pss_rsae_sha384:rsa_pss_rsae_sha512:RSA+SHA256:RSA+SHA384:RSA+SHA512:ECDSA+SHA224:RSA+SHA224:ECDSA+SHA1:RSA+SHA1
+ Groups = X25519:X448:secp256r1:secp384r1:secp521r1:ffdhe2048:ffdhe3072:ffdhe4096:ffdhe6144:ffdhe8192
+-
+-[openssl_init]
+-alg_section = evp_properties
+-
+-[evp_properties]
+-rh-allow-sha1-signatures = yes
+Index: fedora-crypto-policies-20230420.3d08ae7/tests/outputs/DEFAULT:GOST-opensslcnf.txt
+===================================================================
+--- fedora-crypto-policies-20230420.3d08ae7.orig/tests/outputs/DEFAULT:GOST-opensslcnf.txt
++++ fedora-crypto-policies-20230420.3d08ae7/tests/outputs/DEFAULT:GOST-opensslcnf.txt
+@@ -6,9 +6,3 @@ DTLS.MinProtocol = DTLSv1.2
+ DTLS.MaxProtocol = DTLSv1.2
+ SignatureAlgorithms = ECDSA+SHA256:ECDSA+SHA384:ECDSA+SHA512:ed25519:ed448:rsa_pss_pss_sha256:rsa_pss_pss_sha384:rsa_pss_pss_sha512:rsa_pss_rsae_sha256:rsa_pss_rsae_sha384:rsa_pss_rsae_sha512:RSA+SHA256:RSA+SHA384:RSA+SHA512:ECDSA+SHA224:RSA+SHA224
+ Groups = X25519:X448:secp256r1:secp384r1:secp521r1:ffdhe2048:ffdhe3072:ffdhe4096:ffdhe6144:ffdhe8192
+-
+-[openssl_init]
+-alg_section = evp_properties
+-
+-[evp_properties]
+-rh-allow-sha1-signatures = yes
+Index: fedora-crypto-policies-20230420.3d08ae7/tests/outputs/EMPTY-opensslcnf.txt
+===================================================================
+--- fedora-crypto-policies-20230420.3d08ae7.orig/tests/outputs/EMPTY-opensslcnf.txt
++++ fedora-crypto-policies-20230420.3d08ae7/tests/outputs/EMPTY-opensslcnf.txt
+@@ -2,9 +2,3 @@ CipherString = @SECLEVEL=0:-kPSK:-kDHEPS
+ Ciphersuites = 
+ SignatureAlgorithms = 
+ Groups = 
+-
+-[openssl_init]
+-alg_section = evp_properties
+-
+-[evp_properties]
+-rh-allow-sha1-signatures = yes
+Index: fedora-crypto-policies-20230420.3d08ae7/tests/outputs/FIPS-opensslcnf.txt
+===================================================================
+--- fedora-crypto-policies-20230420.3d08ae7.orig/tests/outputs/FIPS-opensslcnf.txt
++++ fedora-crypto-policies-20230420.3d08ae7/tests/outputs/FIPS-opensslcnf.txt
+@@ -6,9 +6,3 @@ DTLS.MinProtocol = DTLSv1.2
+ DTLS.MaxProtocol = DTLSv1.2
+ SignatureAlgorithms = ECDSA+SHA256:ECDSA+SHA384:ECDSA+SHA512:rsa_pss_pss_sha256:rsa_pss_pss_sha384:rsa_pss_pss_sha512:rsa_pss_rsae_sha256:rsa_pss_rsae_sha384:rsa_pss_rsae_sha512:RSA+SHA256:RSA+SHA384:RSA+SHA512:ECDSA+SHA224:RSA+SHA224
+ Groups = secp256r1:secp384r1:secp521r1:ffdhe2048:ffdhe3072:ffdhe4096:ffdhe6144:ffdhe8192
+-
+-[openssl_init]
+-alg_section = evp_properties
+-
+-[evp_properties]
+-rh-allow-sha1-signatures = yes
+Index: fedora-crypto-policies-20230420.3d08ae7/tests/outputs/FIPS:ECDHE-ONLY-opensslcnf.txt
+===================================================================
+--- fedora-crypto-policies-20230420.3d08ae7.orig/tests/outputs/FIPS:ECDHE-ONLY-opensslcnf.txt
++++ fedora-crypto-policies-20230420.3d08ae7/tests/outputs/FIPS:ECDHE-ONLY-opensslcnf.txt
+@@ -6,9 +6,3 @@ DTLS.MinProtocol = DTLSv1.2
+ DTLS.MaxProtocol = DTLSv1.2
+ SignatureAlgorithms = ECDSA+SHA256:ECDSA+SHA384:ECDSA+SHA512:rsa_pss_pss_sha256:rsa_pss_pss_sha384:rsa_pss_pss_sha512:rsa_pss_rsae_sha256:rsa_pss_rsae_sha384:rsa_pss_rsae_sha512:RSA+SHA256:RSA+SHA384:RSA+SHA512:ECDSA+SHA224:RSA+SHA224
+ Groups = secp256r1:secp384r1:secp521r1
+-
+-[openssl_init]
+-alg_section = evp_properties
+-
+-[evp_properties]
+-rh-allow-sha1-signatures = yes
+Index: fedora-crypto-policies-20230420.3d08ae7/tests/outputs/FIPS:OSPP-opensslcnf.txt
+===================================================================
+--- fedora-crypto-policies-20230420.3d08ae7.orig/tests/outputs/FIPS:OSPP-opensslcnf.txt
++++ fedora-crypto-policies-20230420.3d08ae7/tests/outputs/FIPS:OSPP-opensslcnf.txt
+@@ -6,9 +6,3 @@ DTLS.MinProtocol = DTLSv1.2
+ DTLS.MaxProtocol = DTLSv1.2
+ SignatureAlgorithms = ECDSA+SHA256:ECDSA+SHA384:ECDSA+SHA512:rsa_pss_pss_sha256:rsa_pss_pss_sha384:rsa_pss_pss_sha512:rsa_pss_rsae_sha256:rsa_pss_rsae_sha384:rsa_pss_rsae_sha512:RSA+SHA256:RSA+SHA384:RSA+SHA512
+ Groups = secp256r1:secp384r1:secp521r1:ffdhe2048:ffdhe3072:ffdhe4096:ffdhe6144:ffdhe8192
+-
+-[openssl_init]
+-alg_section = evp_properties
+-
+-[evp_properties]
+-rh-allow-sha1-signatures = yes
+Index: fedora-crypto-policies-20230420.3d08ae7/tests/outputs/FUTURE-opensslcnf.txt
+===================================================================
+--- fedora-crypto-policies-20230420.3d08ae7.orig/tests/outputs/FUTURE-opensslcnf.txt
++++ fedora-crypto-policies-20230420.3d08ae7/tests/outputs/FUTURE-opensslcnf.txt
+@@ -6,9 +6,3 @@ DTLS.MinProtocol = DTLSv1.2
+ DTLS.MaxProtocol = DTLSv1.2
+ SignatureAlgorithms = ECDSA+SHA256:ECDSA+SHA384:ECDSA+SHA512:ed25519:ed448:rsa_pss_pss_sha256:rsa_pss_pss_sha384:rsa_pss_pss_sha512:rsa_pss_rsae_sha256:rsa_pss_rsae_sha384:rsa_pss_rsae_sha512:RSA+SHA256:RSA+SHA384:RSA+SHA512
+ Groups = X25519:X448:secp256r1:secp384r1:secp521r1:ffdhe3072:ffdhe4096:ffdhe6144:ffdhe8192
+-
+-[openssl_init]
+-alg_section = evp_properties
+-
+-[evp_properties]
+-rh-allow-sha1-signatures = no
+Index: fedora-crypto-policies-20230420.3d08ae7/tests/outputs/GOST-ONLY-opensslcnf.txt
+===================================================================
+--- fedora-crypto-policies-20230420.3d08ae7.orig/tests/outputs/GOST-ONLY-opensslcnf.txt
++++ fedora-crypto-policies-20230420.3d08ae7/tests/outputs/GOST-ONLY-opensslcnf.txt
+@@ -4,9 +4,3 @@ TLS.MinProtocol = TLSv1
+ TLS.MaxProtocol = TLSv1.3
+ SignatureAlgorithms = 
+ Groups = 
+-
+-[openssl_init]
+-alg_section = evp_properties
+-
+-[evp_properties]
+-rh-allow-sha1-signatures = yes
+Index: fedora-crypto-policies-20230420.3d08ae7/tests/outputs/LEGACY-opensslcnf.txt
+===================================================================
+--- fedora-crypto-policies-20230420.3d08ae7.orig/tests/outputs/LEGACY-opensslcnf.txt
++++ fedora-crypto-policies-20230420.3d08ae7/tests/outputs/LEGACY-opensslcnf.txt
+@@ -6,9 +6,3 @@ DTLS.MinProtocol = DTLSv1
+ DTLS.MaxProtocol = DTLSv1.2
+ SignatureAlgorithms = ECDSA+SHA256:ECDSA+SHA384:ECDSA+SHA512:ed25519:ed448:rsa_pss_pss_sha256:rsa_pss_pss_sha384:rsa_pss_pss_sha512:rsa_pss_rsae_sha256:rsa_pss_rsae_sha384:rsa_pss_rsae_sha512:RSA+SHA256:RSA+SHA384:RSA+SHA512:ECDSA+SHA224:RSA+SHA224:DSA+SHA256:DSA+SHA384:DSA+SHA512:DSA+SHA224:ECDSA+SHA1:RSA+SHA1:DSA+SHA1
+ Groups = X25519:X448:secp256r1:secp384r1:secp521r1:ffdhe2048:ffdhe3072:ffdhe4096:ffdhe6144:ffdhe8192
+-
+-[openssl_init]
+-alg_section = evp_properties
+-
+-[evp_properties]
+-rh-allow-sha1-signatures = yes
+Index: fedora-crypto-policies-20230420.3d08ae7/tests/outputs/LEGACY:AD-SUPPORT-opensslcnf.txt
+===================================================================
+--- fedora-crypto-policies-20230420.3d08ae7.orig/tests/outputs/LEGACY:AD-SUPPORT-opensslcnf.txt
++++ fedora-crypto-policies-20230420.3d08ae7/tests/outputs/LEGACY:AD-SUPPORT-opensslcnf.txt
+@@ -6,9 +6,3 @@ DTLS.MinProtocol = DTLSv1
+ DTLS.MaxProtocol = DTLSv1.2
+ SignatureAlgorithms = ECDSA+SHA256:ECDSA+SHA384:ECDSA+SHA512:ed25519:ed448:rsa_pss_pss_sha256:rsa_pss_pss_sha384:rsa_pss_pss_sha512:rsa_pss_rsae_sha256:rsa_pss_rsae_sha384:rsa_pss_rsae_sha512:RSA+SHA256:RSA+SHA384:RSA+SHA512:ECDSA+SHA224:RSA+SHA224:DSA+SHA256:DSA+SHA384:DSA+SHA512:DSA+SHA224:ECDSA+SHA1:RSA+SHA1:DSA+SHA1
+ Groups = X25519:X448:secp256r1:secp384r1:secp521r1:ffdhe2048:ffdhe3072:ffdhe4096:ffdhe6144:ffdhe8192
+-
+-[openssl_init]
+-alg_section = evp_properties
+-
+-[evp_properties]
+-rh-allow-sha1-signatures = yes
+Index: fedora-crypto-policies-20230420.3d08ae7/tests/unit/test_cryptopolicy.py
+===================================================================
+--- fedora-crypto-policies-20230420.3d08ae7.orig/tests/unit/test_cryptopolicy.py
++++ fedora-crypto-policies-20230420.3d08ae7/tests/unit/test_cryptopolicy.py
+@@ -260,7 +260,6 @@ def test_cryptopolicy_to_string_empty(tm
+         min_dh_size = 0
+         min_dsa_size = 0
+         min_rsa_size = 0
+-        __openssl_block_sha1_signatures = 0
+         sha1_in_certs = 0
+         ssh_certs = 0
+         ssh_etm = 0
+@@ -291,7 +290,6 @@ def test_cryptopolicy_to_string_twisted(
+         min_dh_size = 0
+         min_dsa_size = 0
+         min_rsa_size = 0
+-        __openssl_block_sha1_signatures = 0
+         sha1_in_certs = 0
+         ssh_certs = 0
+         ssh_etm = 0
+Index: fedora-crypto-policies-20230420.3d08ae7/policies/TEST-FEDORA39.pol
+===================================================================
+--- fedora-crypto-policies-20230420.3d08ae7.orig/policies/TEST-FEDORA39.pol
++++ fedora-crypto-policies-20230420.3d08ae7/policies/TEST-FEDORA39.pol
+@@ -67,7 +67,3 @@ sha1_in_certs = 0
+ arbitrary_dh_groups = 1
+ ssh_certs = 1
+ ssh_etm = 1
+-
+-# https://fedoraproject.org/wiki/Changes/StrongCryptoSettings3Forewarning1
+-# SHA-1 signatures will blocked in OpenSSL
+-__openssl_block_sha1_signatures = 1

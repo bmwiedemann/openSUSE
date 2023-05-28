@@ -1,0 +1,37 @@
+Index: fedora-crypto-policies-20230420.3d08ae7/update-crypto-policies.8.txt
+===================================================================
+--- fedora-crypto-policies-20230420.3d08ae7.orig/update-crypto-policies.8.txt
++++ fedora-crypto-policies-20230420.3d08ae7/update-crypto-policies.8.txt
+@@ -54,23 +54,23 @@ are configured to follow the default pol
+ The generated back-end policies will be placed in /etc/crypto-policies/back-ends.
+ Currently the supported back-ends (and directive scopes they respect) are:
+ 
+-* GnuTLS library (GnuTLS, SSL, TLS)
++* GnuTLS library (GnuTLS, SSL, TLS) (Supported)
+ 
+-* OpenSSL library (OpenSSL, SSL, TLS)
++* OpenSSL library (OpenSSL, SSL, TLS) (Supported)
+ 
+-* NSS library (NSS, SSL, TLS)
++* NSS library (NSS, SSL, TLS) (Not supported)
+ 
+-* OpenJDK (java-tls, SSL, TLS)
++* OpenJDK (java-tls, SSL, TLS) (Supported only for java-1_8_0-openjdk and java-11-openjdk)
+ 
+-* Libkrb5 (krb5, kerberos)
++* Libkrb5 (krb5, kerberos) (Not supported)
+ 
+-* BIND (BIND, DNSSec)
++* BIND (BIND, DNSSec) (Not supported)
+ 
+-* OpenSSH (OpenSSH, SSH)
++* OpenSSH (OpenSSH, SSH) (Not supported)
+ 
+-* Libreswan (libreswan, IKE, IPSec)
++* Libreswan (libreswan, IKE, IPSec) (Not supported)
+ 
+-* libssh (libssh, SSH)
++* libssh (libssh, SSH) (Not supported)
+ 
+ Applications and languages which rely on any of these back-ends will follow
+ the system policies as well. Examples are apache httpd, nginx, php, and

@@ -1,28 +1,28 @@
-Index: fedora-crypto-policies/Makefile
+Index: fedora-crypto-policies-20230420.3d08ae7/Makefile
 ===================================================================
---- fedora-crypto-policies.orig/Makefile
-+++ fedora-crypto-policies/Makefile
-@@ -22,9 +22,9 @@ install: $(MANPAGES)
+--- fedora-crypto-policies-20230420.3d08ae7.orig/Makefile
++++ fedora-crypto-policies-20230420.3d08ae7/Makefile
+@@ -28,9 +28,9 @@ install: $(MANPAGES)
  	mkdir -p $(DESTDIR)$(MANDIR)/man7
  	mkdir -p $(DESTDIR)$(MANDIR)/man8
  	mkdir -p $(DESTDIR)$(BINDIR)
 -	install -p -m 644 $(MAN7PAGES) $(DESTDIR)$(MANDIR)/man7
 -	install -p -m 644 $(MAN8PAGES) $(DESTDIR)$(MANDIR)/man8
 -	install -p -m 755 $(SCRIPTS) $(DESTDIR)$(BINDIR)
-+# install -p -m 644 $(MAN7PAGES) $(DESTDIR)$(MANDIR)/man7
-+# install -p -m 644 $(MAN8PAGES) $(DESTDIR)$(MANDIR)/man8
-+# install -p -m 755 $(SCRIPTS) $(DESTDIR)$(BINDIR)
++	# install -p -m 644 $(MAN7PAGES) $(DESTDIR)$(MANDIR)/man7
++	# install -p -m 644 $(MAN8PAGES) $(DESTDIR)$(MANDIR)/man8
++	# install -p -m 755 $(SCRIPTS) $(DESTDIR)$(BINDIR)
  	mkdir -p $(DESTDIR)$(DIR)/
  	install -p -m 644 default-config $(DESTDIR)$(DIR)
  	install -p -m 644 output/reload-cmds.sh $(DESTDIR)$(DIR)
-@@ -106,8 +106,8 @@ clean:
+@@ -114,8 +114,8 @@ clean:
  	rm -rf output
  
  %: %.txt
--	asciidoc.py -v -d manpage -b docbook $<
--	xsltproc --nonet -o $@ /usr/share/asciidoc/docbook-xsl/manpage.xsl $@.xml
-+	# asciidoc -v -d manpage -b docbook $<
-+	# xsltproc --nonet -o $@ /etc/asciidoc/docbook-xsl/manpage.xsl $@.xml
+-	$(ASCIIDOC) -v -d manpage -b docbook $<
+-	xsltproc --nonet -o $@ ${MANPAGEXSL} $@.xml
++	#$(ASCIIDOC) -v -d manpage -b docbook $<
++	#xsltproc --nonet -o $@ ${MANPAGEXSL} $@.xml
  
  dist:
  	rm -rf crypto-policies && git clone . crypto-policies && rm -rf crypto-policies/.git/ && tar -czf crypto-policies-git$(VERSION).tar.gz crypto-policies && rm -rf crypto-policies

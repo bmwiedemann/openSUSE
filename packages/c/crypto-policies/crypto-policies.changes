@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Thu May 25 11:28:12 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Enable to set the kernel FIPS mode with fips-mode-setup
+  and fips-finish-install commands, add also the man pages. The
+  required FIPS modules are left to be installed by the user.
+  * Rebase crypto-policies-FIPS.patch
+
+-------------------------------------------------------------------
+Wed May 24 20:04:20 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Revert a breaking change that introduces the config option
+  rh-allow-sha1-signatures that is unkown to OpenSSL and fails
+  on startup. We will consider adding this option to openssl.
+  * https://gitlab.com/redhat-crypto/fedora-crypto-policies/-/commit/97fe4494
+  * Add crypto-policies-revert-rh-allow-sha1-signatures.patch
+
+-------------------------------------------------------------------
+Mon May  8 09:45:45 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update the update-crypto-policies(8) man pages and README.SUSE
+  to mention the supported back-end policies. [bsc#1209998]
+  * Add crypto-policies-supported.patch
+
+-------------------------------------------------------------------
+Mon May 08 06:32:49 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 20230420.3d08ae7:
+  * openssl, alg_lists: add brainpool support
+  * openssl: set Groups explicitly
+  * codespell: ignore aNULL
+  * rpm-sequoia: allow 1024 bit DSA and SHA-1 per FeSCO decision 2960
+  * sequoia: add separate rpm-sequoia backend
+  * crypto-policies.7: state upfront that FUTURE is not so interoperable
+  * Makefile: update for asciidoc 10
+  * Skip not needed LibreswanGenerator and SequoiaGenerator:
+    - Add crypto-policies-policygenerators.patch
+  * Remove crypto-policies-test_supported_modules_only.patch
+  * Rebase crypto-policies-no-build-manpages.patch
+
+-------------------------------------------------------------------
+Fri Jan 20 09:25:22 UTC 2023  - Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 20221214.a4c31a3:
+  * bind: expand the list of disableable algorithms
+  * libssh: Add support for openssh fido keys
+  * .gitlab-ci.yml: install krb5-devel for krb5-config
+  * sequoia: check using sequoia-policy-config-check
+  * sequoia: introduce new back-end
+  * Makefile: support overriding asciidoc executable name
+  * openssh: make none and auto explicit and different
+  * openssh: autodetect and allow forcing RequiredRSASize presence/name
+  * openssh: remove _pre_8_5_ssh
+  * pylintrc: update
+  * Revert "disable SHA-1 further for a Fedora 38 Rawhide "jump scare"..."
+  * disable SHA-1 further for a Fedora 38 Rawhide "jump scare"...
+  * Makefile: exclude built manpages from codespell
+  * add openssh HostbasedAcceptedAlgorithms
+  * openssh: add RSAMinSize option following min_rsa_size
+  * Revert ".gitlab-ci.yml: skip pylint (bz2069837)"
+  * docs: add customization recommendation
+  * tests/java: fix java.security.disableSystemPropertiesFile=true
+  * policies: add FEDORA38 and TEST-FEDORA39
+  * bind: control ED25519/ED448
+  * openssl: disable SHA-1 signatures in FUTURE/NO-SHA1
+  * .gitlab-ci.yml: skip pylint (bz2069837)
+  * openssh: add support for sntrup761x25519-sha512@openssh.com
+  * fips-mode-setup: fix one unrelated check to intended state
+  * fips-mode-setup, fips-finish-install: abandon /etc/system-fips
+  * Makefile: fix alt-policy test of LEGACY:AD-SUPPORT
+  * fips-mode-setup: catch more inconsistencies, clarify --check
+  * fips-mode-setup: improve handling FIPS plus subpolicies
+  * .gitlab-ci.yml: use rawhide so that we get gnutls 3.7.3
+  * gnutls: enable SHAKE, needed for Ed448
+  * gnutls: use allowlisting
+  * openssl: add newlines at the end of the output
+  * FIPS:OSPP: relax -ECDSA-SHA2-512, -FFDHE-*
+  * fips-mode-setup, fips-finish-install: call zipl more often
+  * Add crypto-policies-rpmlintrc file to avoid files-duplicate,
+    zero-length and non-conffile-in-etc warnings.
+  * Rebase patches:
+    - crypto-policies-FIPS.patch
+    - crypto-policies-no-build-manpages.patch
+  * Update README.SUSE
+
+-------------------------------------------------------------------
 Fri Sep 24 11:30:21 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Remove the scripts and documentation regarding

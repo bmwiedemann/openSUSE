@@ -1,72 +1,206 @@
-Index: fedora-crypto-policies/Makefile
+Index: fedora-crypto-policies-20230420.3d08ae7/fips-mode-setup
 ===================================================================
---- fedora-crypto-policies.orig/Makefile
-+++ fedora-crypto-policies/Makefile
-@@ -5,8 +5,8 @@ MANDIR?=/usr/share/man
- CONFDIR?=/etc/crypto-policies
- DESTDIR?=
- MAN7PAGES=crypto-policies.7
--MAN8PAGES=update-crypto-policies.8 fips-finish-install.8 fips-mode-setup.8
--SCRIPTS=update-crypto-policies fips-finish-install fips-mode-setup
-+MAN8PAGES=update-crypto-policies.8 fips-finish-install.8
-+SCRIPTS=update-crypto-policies fips-finish-install
- NUM_PROCS = $$(getconf _NPROCESSORS_ONLN)
- PYVERSION = -3
- DIFFTOOL?=meld
-Index: fedora-crypto-policies/crypto-policies.7.txt
-===================================================================
---- fedora-crypto-policies.orig/crypto-policies.7.txt
-+++ fedora-crypto-policies/crypto-policies.7.txt
-@@ -144,9 +144,6 @@ PROVIDED POLICIES
+--- fedora-crypto-policies-20230420.3d08ae7.orig/fips-mode-setup
++++ fedora-crypto-policies-20230420.3d08ae7/fips-mode-setup
+@@ -7,6 +7,7 @@ enable_fips=
+ check=0
+ boot_config=1
+ err_if_disabled=0
++fips_install_complete=0
+ output_text=1
  
- *FIPS*::
-   A policy to aid conformance to the *FIPS 140-2* requirements.
--  This policy is used internally by the *fips-mode-setup(8)* tool
--  which can switch the system into the *FIPS 140-2* mode.
--  This policy provides at least 112-bit security.
+ is_ostree_system=0
+@@ -75,109 +76,74 @@ if test "$is_ostree_system" = 1 && test
+     exit 1
+ fi
  
-   * MACs: all *HMAC* with *SHA1* or better
-   * Curves: all prime >= 256 bits
-@@ -255,12 +252,6 @@ COMMANDS
-   back ends and allows the system administrator to change the active
-   cryptographic policy.
- 
--*fips-mode-setup(8)*::
--  This command allows the system administrator to enable, or disable the
--  system FIPS mode and also apply the *FIPS* cryptographic policy
--  which limits the allowed algorithms and protocols to these allowed by
--  the FIPS 140-2 requirements.
 -
+-if [ "$(id -u)" != 0 ]; then
+-	echo "You must be root to run $(basename $0)"
+-	exit 1
+-fi
+-
+-
+-# Detect 1: kernel FIPS flag
+-fips_kernel_enabled=$(cat /proc/sys/crypto/fips_enabled)
+-
+-# Detect 2: initramfs fips module presence; not always can be done
+-initramfs_fips_module=0
+-initramfs_inspectable=0
+-if test -d /boot -a -x /usr/bin/lsinitrd; then
+-	initramfs_inspectable=1
+-	if lsinitrd -m 2>/dev/null | grep -Fxq fips; then
+-		initramfs_fips_module=1
++if test "$enable_fips" = 1 ; then
++	# Check the required FIPS modules are installed
++	if test ! -x "$(command -v grubby)" -o ! -f /usr/share/doc/packages/patterns/fips.txt -o ! -f /etc/dracut.conf.d/40-fips.conf; then
++		cond_echo "Installation of FIPS modules is not complete."
++		cond_echo "Please, install grubby and the fips pattern."
++		exit 1
+ 	fi
+ fi
  
- NOTES
- -----
-@@ -427,7 +418,7 @@ FILES
+-# Detect 3: crypto-policy base policy
+-current_policy="$(cat /etc/crypto-policies/state/current)"
+-base_policy="$(echo $current_policy| cut -f 1 -d :)"
+-if test "$base_policy" == "FIPS" ; then
+-	base_policy_is_fips=1
+-else
+-	base_policy_is_fips=0
++if test "$enable_fips" = 1 ; then
++	if test ! -d /boot -o ! -x /usr/bin/lsinitrd -o x"$(/usr/bin/lsinitrd -f etc/system-fips 2>/dev/null || test $? = 2 && echo y)" != x ; then
++	fips_install_complete=1
++	fi
+ fi
  
- SEE ALSO
- --------
--update-crypto-policies(8), fips-mode-setup(8)
-+update-crypto-policies(8)
+-
+ if test $check = 1 ; then
+-	# Look for signs for both enabling and disabling FIPS mode
+-	fips_positive=0
+-	fips_negative=0
+-
+-	# Display 1: kernel FIPS flag
+-	cond_echo "FIPS mode is $(enable2txt $fips_kernel_enabled)."
+-
+-	# Display 2: initramfs fips module
+-	if test "$initramfs_inspectable" = 1 ; then
+-		cond_echo -n "Initramfs fips module is "
+-		cond_echo "$(enable2txt $initramfs_fips_module)."
+-	fi
+-
+-	# Display 3: active crypto-policy
+-	cond_echo -n "The current crypto policy ($current_policy) "
+-	if test "$base_policy_is_fips" == 1 ; then
+-		cond_echo 'is based on the FIPS policy.'
+-	else
+-		cond_echo -n 'neither is the FIPS policy '
+-		cond_echo 'nor is based on the FIPS policy.'
+-	fi
+-
+-	# Decide 1: kernel FIPS flag
+-	if test "$fips_kernel_enabled" = 1 ; then
+-		fips_positive=1
+-	else
+-		fips_negative=1
+-	fi
+-
+-	# Decide 2: initramfs module presence
+-	if test "$initramfs_inspectable" = 1 ; then
+-		if test "$initramfs_fips_module" = 1 ; then
+-			fips_positive=1
+-		else
+-			fips_negative=1
++	test $fips_install_complete = 0 && cond_echo "Installation of FIPS modules is not complete."
++	fips_enabled=$(cat /proc/sys/crypto/fips_enabled)
++	cond_echo "FIPS mode is $(enable2txt $fips_enabled)."
++	if test "$fips_enabled" = 1 ; then
++		if test $fips_install_complete = 0 ; then
++			cond_echo "Inconsistent state detected."
++			exit 1
++		fi
++		current="$(cat /etc/crypto-policies/state/current)"
++		if test "$(echo $current | cut -f 1 -d :)" != "FIPS" ; then
++			cond_echo -n "The current crypto policy ($current) "
++			cond_echo -n 'neither is the FIPS policy '
++			cond_echo 'nor is based on the FIPS policy.'
++			cond_echo 'Inconsistent state detected.'
++			exit 1
+ 		fi
+-	fi
+-
+-	# Decide 3: active crypto-policy
+-	if test "$base_policy_is_fips" = 1 ; then
+-		fips_positive=1
+ 	else
+-		fips_negative=1
+-	fi
+-
+-	# Make the FIPS mode consistency decision
+-	if test "$fips_positive" = 1 -a "$fips_negative" = 1 ; then
+-		cond_echo 'Inconsistent state detected.'
+-		exit 1
++		if test $fips_install_complete = 1 ; then
++			cond_echo "Inconsistent state detected."
++			exit 1
++		fi
++		current="$(cat /etc/crypto-policies/state/current)"
++		if test "$(echo $current | cut -f 1 -d :)" == "FIPS" ; then
++			cond_echo -n "The current crypto policy ($current) "
++			cond_echo -n 'is based on the FIPS policy, '
++			cond_echo 'but FIPS mode is not enabled.'
++			cond_echo 'Inconsistent state detected.'
++			exit 1
++		fi
+ 	fi
+-
+-	# Error out if `--is-enabled` was passed and FIPS mode is not enabled
+-	if test "$fips_positive" = 0 -a "$err_if_disabled" = 1 ; then
+-		cond_echo 'FIPS mode is not enabled.'
++	if test "$fips_enabled" != 1 && test "$err_if_disabled" = 1; then
+ 		exit 2
+ 	fi
+-
+ 	exit 0
+ fi
  
++if [ "$(id -u)" != 0 ]; then
++	echo "You must be root to run $(basename $0)"
++	exit 1
++fi
  
- AUTHOR
-Index: fedora-crypto-policies/python/update-crypto-policies.py
+ if test $enable_fips = 1 ; then
+-	if test "$initramfs_fips_module" = 0 ; then
++	if test $fips_install_complete = 1 ; then
+ 		fips-finish-install --complete
+ 		if test $? != 0 ; then
+-			echo "Installation of FIPS modules could not be completed."
++	 		echo "Installation of FIPS modules could not be completed."
+ 			exit 1
+ 		fi
+ 	fi
+-	if test "$base_policy_is_fips" == 1 ; then
+-		cond_echo -n 'Preserving current FIPS-based policy '
+-		cond_echo "${current_policy}."
++	target="$(cat /etc/crypto-policies/state/current)"
++	if test "$(echo $target | cut -f 1 -d :)" == "FIPS" ; then
++	    cond_echo "Preserving current FIPS-based policy ${target}."
+ 		cond_echo -n 'Please review the subpolicies to ensure they '
+ 		cond_echo 'only restrict, not relax the FIPS policy.'
+ 	else
+@@ -196,11 +162,11 @@ if test x"$boot_device" = x ; then
+ 	boot_device_opt=" boot=UUID=<your-boot-device-uuid>"
+ 	boot_config=0
+ else
+-        if test "$boot_device" = / ; then
+-            boot_device_opt=""
+-        else
+-            boot_device_opt=" boot=UUID=$(blkid -s UUID -o value $boot_device)"
+-        fi
++	if test "$boot_device" = / ; then
++		boot_device_opt=""
++	else
++		boot_device_opt=" boot=UUID=$(blkid -s UUID -o value $boot_device)"
++	fi
+ fi
+ 
+ if test "$boot_config" = 1 && test ! -x "$(command -v grubby)" ; then
+Index: fedora-crypto-policies-20230420.3d08ae7/fips-mode-setup.8.txt
 ===================================================================
---- fedora-crypto-policies.orig/python/update-crypto-policies.py
-+++ fedora-crypto-policies/python/update-crypto-policies.py
-@@ -344,16 +344,12 @@ def apply_policy(pconfig, profile=None,
-                 eprint("Warning: Using 'update-crypto-policies --set FIPS' "
-                        "is not sufficient for")
-                 eprint("         FIPS compliance.")
--                eprint("         Use 'fips-mode-setup --enable' "
--                       "command instead.")
-             elif fips_mode():
-                 eprint("Warning: Using 'update-crypto-policies --set' "
-                        "in FIPS mode will make the system")
-                 eprint("         non-compliant with FIPS.")
-                 eprint("         It can also break "
-                        "the ssh access to the system.")
--                eprint("         Use 'fips-mode-setup --disable' "
--                       "to disable the system FIPS mode.")
+--- fedora-crypto-policies-20230420.3d08ae7.orig/fips-mode-setup.8.txt
++++ fedora-crypto-policies-20230420.3d08ae7/fips-mode-setup.8.txt
+@@ -39,8 +39,15 @@ system crypto policy to FIPS
+ (unless the policy has already been set to FIPS plus subpolicies on top,
+ in which case the currently active subpolicies is retained).
  
-     if base_dir == DEFAULT_BASE_DIR:
-         if not os.geteuid() == 0:
++Some required FIPS modules (grubby, fips pattern) might not be
++installed by default. These can be installed in SUSE/openSUSE with
++the following command:
++
++    zypper in -y grubby && zypper in -y -t pattern fips
++
+ Then the command modifies the boot loader configuration to add
+ 'fips=1' and 'boot=<boot-device>' options to the kernel command line.
++Note that, grubby could show a harmless warning about leaked file descriptors.
+ 
+ When disabling the system FIPS mode the system crypto policy is switched
+ to DEFAULT and the kernel command line option 'fips=0' is set.

@@ -1,2 +1,6 @@
-Currently only OpenSSL and GnuTLS policies are supported.
+Currently, the supported back-end policies are:
+  * OpenSSL library
+  * GnuTLS library
+  * OpenJDK (only for java-1_8_0-openjdk and java-11-openjdk)
+
 The rest of the modules ignore the policy settings for the time being.
