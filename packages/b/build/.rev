@@ -1633,4 +1633,17 @@ Changes:
 - openSUSE Tumbleweed: sync config and move to suse_version 1699.</comment>
     <requestid>1084035</requestid>
   </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>3adb385d5bdf3791068d1da235e645f6</srcmd5>
+    <version>20230527</version>
+    <time>1685294511</time>
+    <user>dimstar_suse</user>
+    <comment>- sync tumbleweed config
+- addition cross architecture build configs
+- docker builds: create pkgsummaries files if requested
+- kiwi builds: create pkgsummaries files if requested
+- Delete bogus space when copying the .packages files
+- container: fixes for startdocker in chroot</comment>
+    <requestid>1089263</requestid>
+  </revision>
 </revisionlist>

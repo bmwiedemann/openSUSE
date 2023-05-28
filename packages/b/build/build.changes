@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May 27 05:41:05 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- sync tumbleweed config
+- addition cross architecture build configs
+- docker builds: create pkgsummaries files if requested
+- kiwi builds: create pkgsummaries files if requested
+- Delete bogus space when copying the .packages files
+- container: fixes for startdocker in chroot
+
+-------------------------------------------------------------------
 Tue May  2 12:13:54 UTC 2023 - Adrian Schröter <adrian@suse.de>
 
 - Add SUSE ALP build config
