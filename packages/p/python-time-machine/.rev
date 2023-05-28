@@ -88,4 +88,13 @@
     <comment></comment>
     <requestid>1078765</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>92984154dae6b22be8a296ef22eba67d</srcmd5>
+    <version>2.9.0</version>
+    <time>1685294610</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.9.0:
+  * Explicitly error when attempting to install on PyPy.</comment>
+    <requestid>1089344</requestid>
+  </revision>
 </revisionlist>

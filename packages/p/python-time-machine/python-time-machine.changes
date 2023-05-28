@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 27 19:44:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.0:
+  * Explicitly error when attempting to install on PyPy.
+
+-------------------------------------------------------------------
 Tue Apr 11 08:32:21 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire python38-backports.zoneinfo only when python38-base
