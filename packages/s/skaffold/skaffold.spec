@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           skaffold
-Version:        2.4.1
+Version:        2.5.0
 Release:        0
 Summary:        Easy and Repeatable Kubernetes Development
 License:        Apache-2.0

@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sat May 27 10:46:34 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.5.0:
+  * release: v2.5.0 (#8823)
+  * docs: doc page for Custom Actions and skaffold exec (#8809)
+  * docs: Fix reference to `dateTime` tagger (#8813)
+  * chore: update various container deps. (#8810)
+  * docs: update skaffold.yaml page to show latest schema version
+    (#8808)
+  * test: disable failing buildpacks tests (#8812)
+  * docs: first pass at adding overrides and jobManifestPath to
+    verify docs (#8762)
+  * chore: add script to update lts dependencies (#8773)
+  * chore: update go deps (#8789)
+  * feat: new k8s task and exec env for custom actions (#8755)
+  * chore: update Dockerfile bin deps (#8774)
+  * chore: bump github.com/cloudflare/circl from 1.1.0 to 1.3.3
+    (#8771)
+  * chore: bump github.com/docker/distribution (#8772)
+  * release: v2.4.1 (#8769)
+  * fix: discard standout from helm dep command to not have
+    corrupted data in output yaml file (#8756)
+  * fix: resolve issue where hack/release.sh wouldn't mark schema
+    as released (#8752)
+  * fix: resolve issues with hack/new-version.sh so it works w/ no
+    manual changes necessary (#8750)
+  * chore: include third_party deps licenses in repo and add check
+    (#8747)
+  * chore: updated examples/ to updated schema version (#8748)
+  * chore: bump flask from 2.3.1 to 2.3.2 in /integration/examples
+    (#8734)
+  * chore: bump flask from 2.3.1 to 2.3.2 in /examples (#8735)
+  * chore: bump flask from 1.0 to 2.2.5 in
+    /examples/hot-reload/python (#8744)
+  * fix: scanning filter not working properly due to version
+    sorting (#8727)
+  * chore: bump peter-evans/create-or-update-comment from 3.0.0 to
+    3.0.1 (#8736)
+  * chore: bump flask in /integration/examples/hot-reload/python
+    (#8738)
+  * chore: bump github.com/sigstore/rekor from 1.0.1 to 1.1.1
+    (#8741)
+  * release: v2.4.0 (#8739)
+
+-------------------------------------------------------------------
 Thu May 11 19:20:11 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.4.1:
