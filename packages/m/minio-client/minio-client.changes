@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun May 28 08:46:15 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230526T233154Z:
+  * Corrected message to align with other messages (#4577)
+  * List expiration dates for 'mc admin user svcacct list' command
+    (#4576)
+  * Add updatedAt for ilm-rule-ls (#4579)
+  * fix: limit manual GC to bigger objects (#4581)
+  * Show groups with their policy details while listing users
+    (#4578)
+  * Move `mc admin idp` to `mc idp` (#4574)
+  * Add sorting order to top drive command (#4575)
+
+-------------------------------------------------------------------
 Fri May 19 04:59:19 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 20230518T165900Z:

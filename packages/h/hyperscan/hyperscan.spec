@@ -19,7 +19,7 @@
 %define _lto_cflags %{nil}
 %define sover 5
 Name:           hyperscan
-Version:        5.4.1
+Version:        5.4.2
 Release:        0
 Summary:        Regular expression matching library
 License:        BSD-3-Clause

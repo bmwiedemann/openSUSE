@@ -16,10 +16,12 @@
     <param name="compression">xz</param>
   </service>
   <service mode="disabled" name="set_version"/>
-  <service name="cargo_vendor" mode="disabled">
+  <service mode="disabled" name="cargo_vendor">
      <param name="srcdir">stl-thumb</param>
      <param name="compression">xz</param>
      <param name="update">true</param>
   </service>
-</services>
+  <service mode="disabled" name="cargo_audit">
+     <param name="srcdir">stl-thumb</param>
+  </service></services>
 

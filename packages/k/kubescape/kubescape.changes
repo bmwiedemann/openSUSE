@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun May 28 11:29:18 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.3.4:
+  * update kubescape/go-git-url version
+  * feat: add log coupling for hostsensorutils
+  * fix(hostsensorutils): add finalizers deletion
+  * fix(hostsensorutils): reduce periods of readiness probe
+  * fix: move host-scanner to kubescape namespace
+  * update opa-utils
+  * bump opa-utils version for memory optimizations
+  * Add back new line at the end of the file
+  * Removed instructions and added the wiki link
+  * Added instructions to setup kubescape locally
+  * Fix downloading arm64 binary for kubescape
+
+-------------------------------------------------------------------
 Tue May 16 10:57:35 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.3.3:

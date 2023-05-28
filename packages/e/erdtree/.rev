@@ -87,4 +87,30 @@
     other programs: #23[8]</comment>
     <requestid>1083620</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6d255c506f20eb795a6d60575c2fa7cd</srcmd5>
+    <version>3.0.0~0</version>
+    <time>1685294639</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.0:
+  * Added support for owners and groups for the ls -l-like -l,
+    --long view (Unix).
+  * Edited the default fields shown in the -l, --long view to
+    reduce clutter; made the removed fields optional (Unix).
+  * Added support for various other disk usage metrics:
+    blocks (Unix), word-count, and line-count.
+  * Added a progress indicator.
+  * Added comparators for sorting by time accessed, created, and modified.
+  * Added support for specifying a custom time format
+
+  * Regular expressions #130
+  * Unix permissions #132
+  * Force color #135
+  * Show hardlinks without double counting file size #136
+  * Regular expressions and globbing with file-type #137
+  * Truncate output #138
+  * Inverted tree layout #139
+    other programs: #23</comment>
+    <requestid>1089439</requestid>
+  </revision>
 </revisionlist>

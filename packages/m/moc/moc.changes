@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 27 17:46:16 UTC 2023 - munix9@googlemail.com
+
+- Explicitly use ffmpeg-5 (fix build on Factory/Tumbleweed)
+- Add 0009-Add-https-to-is_url.patch from debian
+
+-------------------------------------------------------------------
 Sun Sep  4 12:05:46 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Fix build with ffmpeg-5, add patches from debian:

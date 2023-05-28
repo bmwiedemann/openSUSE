@@ -1,7 +1,7 @@
 #
 # spec file for package stl-thumb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ URL:            https://github.com/unlimitedbacon/stl-thumb
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
-BuildRequires:  rust-packaging
+BuildRequires:  cargo-packaging
 
 %description
 Stl-thumb is a fast lightweight thumbnail generator for STL files.

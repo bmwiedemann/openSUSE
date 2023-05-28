@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 28 15:43:44 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Distribute the maven metadata, so that the artifacts can be used
+  by maven builds.
+
+-------------------------------------------------------------------
 Wed Mar 23 05:46:19 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Specify source and target levels 1.8

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 24 18:32:32 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Exclude plugins from being turned into RPM dependencies.
+
+-------------------------------------------------------------------
 Wed Jan 11 10:26:07 UTC 2023 - peter czanik <peter@czanik.hu>
 
 - update to 4.0.1 

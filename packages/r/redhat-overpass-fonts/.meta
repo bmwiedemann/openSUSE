@@ -1,0 +1,6 @@
+<package name="redhat-overpass-fonts" project="openSUSE:Factory">
+  <title>Overpass typeface</title>
+  <description>Overpass — an open source web font family. Sponsored by Google Fonts and Red Hat, Inspired by Highway Gothic, Designed by Delve Fonts.</description>
+  <devel project="M17N:fonts" package="redhat-overpass-fonts"/>
+  <url>https://overpassfont.org/</url>
+</package>

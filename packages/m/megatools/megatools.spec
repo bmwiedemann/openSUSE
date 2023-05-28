@@ -1,7 +1,7 @@
 #
 # spec file for package megatools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,26 +15,27 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%global snapshot 20230212
 
-# See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 Name:           megatools
-Version:        1.10.3
+Version:        1.11.1
 Release:        0
 Summary:        CLI client for mega.co.nz
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/File-Sharing
 URL:            http://megatools.megous.com
-Source0:        http://megatools.megous.com/builds/%{name}-%{version}.tar.gz
-Source1:        http://megatools.megous.com/builds/%{name}-%{version}.tar.gz.asc
+Source0:        %{name}-%{version}.%{snapshot}.tar.gz
+Source1:        %{name}-%{version}.%{snapshot}.tar.gz.asc
 # Keyring obtained from https://xff.cz/key.txt
 Source2:        %{name}.keyring
 BuildRequires:  asciidoc
+BuildRequires:  docbook2X
 BuildRequires:  fuse-devel
 BuildRequires:  glib2-devel >= 2.32.0
-BuildRequires:  libcurl-devel
+BuildRequires:  libcurl-devel >= 7.85.0
 BuildRequires:  libopenssl-devel
-BuildRequires:  pcre-devel
-Requires:       curl
+BuildRequires:  meson
+Requires:       curl >= 7.85.0
 Requires:       fuse
 Requires:       glib-networking >= 2.32.0
 Requires:       openssl
@@ -43,24 +44,33 @@ Requires:       openssl
 Megatools allow you to copy individual files as well as entire directory trees
 to and from the cloud. You can also perform streaming downloads for example to
 preview videos and audio files, without needing to download the entire file.
+ 
+You can register an account using a "megareg" tool, with the benefit of having
+true control of your encryption keys.
+ 
+Megatools are robust and optimized for fast operation - as fast as Mega servers
+allow. Memory requirements and CPU utilization are kept at minimum.
 
 %prep
-%setup -q
-
+%autosetup -n %{name}-%{version}.%{snapshot}
+ 
 %build
-%configure
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
-%files -n %{name}
+%check
+%meson_test
+%ldconfig_scriptlets
+
+%files
+%license LICENSE
+%doc NEWS README
 %{_bindir}/mega*
-%{_datadir}/doc/%{name}
-%{_mandir}/man1/mega*
-%{_mandir}/man5/mega*
-%{_mandir}/man7/mega*
-%exclude %{_datadir}/doc/%{name}/INSTALL
-%exclude %{_datadir}/doc/%{name}/TODO
+%{_mandir}/man1/mega*.1.*
+%{_mandir}/man5/mega*.5.*
+%exclude %{_datadir}/doc/%{name}/*
 
 %changelog

@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Sun May 28 08:12:45 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim redundancies from descriptions.
+- Retain original filenames when constructing the RPMs.
+
+-------------------------------------------------------------------
+Sat May 27 20:27:29 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Initial packaging with v3.0.5

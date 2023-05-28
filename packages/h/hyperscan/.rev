@@ -79,4 +79,19 @@
     <comment></comment>
     <requestid>1067416</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>801b34b31aa48fdff09ca35eb8a4a0cd</srcmd5>
+    <version>5.4.2</version>
+    <time>1685294630</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.4.2:
+  * Roll back bugfix for github issue #350: Besides using scratch
+    for corresponding database, Hyperscan also allows user to use
+    larger scratch allocated for another database. Users can
+    leverage this property to achieve safe scratch usage in
+    multi-database scenarios. Behaviors beyond these are
+    discouraged and results are undefined.
+  * Fix hsdump issue due to invalid nfa type.</comment>
+    <requestid>1089429</requestid>
+  </revision>
 </revisionlist>

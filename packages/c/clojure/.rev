@@ -173,4 +173,14 @@
   * CI related changes</comment>
     <requestid>1088406</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ec4b39c2c54ef3be69fd09440f6a1d17</srcmd5>
+    <version>1.11.1.1342</version>
+    <time>1685294643</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.11.1.1342:
+  * CI related changes
+  * version bumps</comment>
+    <requestid>1089450</requestid>
+  </revision>
 </revisionlist>

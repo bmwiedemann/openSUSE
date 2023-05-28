@@ -866,4 +866,27 @@
     gh#PyO3/maturin#1610</comment>
     <requestid>1088131</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>f5a7a0cc28b87eb24767153be000f724</srcmd5>
+    <version>1.0.1</version>
+    <time>1685294626</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.0.1:
+  * Add Python 3.12 sysconfigs
+    gh#PyO3/maturin#1629
+  * refactor: generate well known sysconfigs in code
+    gh#PyO3/maturin#1633
+  * Upgrade dirs to 5.0
+    gh#PyO3/maturin#1634
+  * Fix panicking when no cargo build targets are selected
+    gh#PyO3/maturin#1635
+  * Upgrade platform-info to 2.0, base64 to 0.21
+    gh#PyO3/maturin#1631
+- Changes in v1.0.0:
+  * Add support for multiple --config-settings in PEP517 backend
+    gh#PyO3/maturin#1624
+  * Remove deprecated --universal2 cli option
+    gh#PyO3/maturin#1620</comment>
+    <requestid>1089420</requestid>
+  </revision>
 </revisionlist>

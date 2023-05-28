@@ -17,7 +17,7 @@
 
 
 Name:           erdtree
-Version:        2.0.0~0
+Version:        3.0.0~0
 Release:        0
 Summary:        A multi-threaded file-tree visualizer and disk usage analyzer
 License:        MIT

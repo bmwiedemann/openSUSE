@@ -1,7 +1,29 @@
 -------------------------------------------------------------------
+Thu Mar 16 12:18:00 UTC 2023 - Luiz Fernando Ranghetti <elchevive@opensuse.org>
+
+- updated to 1.11.1
+- updated minimal curl required to 7.85.0
+
+* Improvements/Fixes:
+
+  - Megatools now install a single `megatools` executable, where former
+    `megaXYZ ...` commands now have to be executed as `megatools XYZ ...`.
+  - Implemented PKP (public key pinning for mega.nz's API server). Megatools
+    no longer use public certificate authorities to verify API server's
+    authenticity. If you use software that MITM's your web traffic, megatools
+    will not allow this anymore.
+  - Support new public folder URLs in `dl`
+  - Build system moved to meson
+  - New `test` command for checking if file exists
+  - New `export` command for creating public links for private files
+  - Login v2 support
+  - fix folder downloads
+  - fix handling of = in mega URLs
+
+-------------------------------------------------------------------
 Mon Jun 29 20:21:26 UTC 2020 - Adrian Strauss <astrokyttaros@pm.me>
 
-- udated to 1.10.3
+- updated to 1.10.3
 - updated keyring file to new public key
 - specified GPL2 version 
 

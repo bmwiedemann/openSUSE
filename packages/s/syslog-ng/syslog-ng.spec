@@ -16,6 +16,7 @@
 #
 
 
+%define         __provides_exclude_from ^%{_libdir}/syslog-ng/
 %define         syslog_ng_sockets_cfg	%{syslog_ng_rundir}/additional-log-sockets.conf
 %global		py_ver	 %(rpm -qf %{_bindir}/python3 --qf "%%{version}" | awk -F. '{print $1"."$2}')
 

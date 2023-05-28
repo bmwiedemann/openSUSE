@@ -1,17 +1,31 @@
 -------------------------------------------------------------------
+Sun May 28 11:07:36 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.0.0:
+  * Added support for owners and groups for the ls -l-like -l,
+    --long view (Unix).
+  * Edited the default fields shown in the -l, --long view to
+    reduce clutter; made the removed fields optional (Unix).
+  * Added support for various other disk usage metrics:
+    blocks (Unix), word-count, and line-count.
+  * Added a progress indicator.
+  * Added comparators for sorting by time accessed, created, and modified.
+  * Added support for specifying a custom time format
+
+-------------------------------------------------------------------
 Sat Apr 29 08:26:53 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.0.0:
-  * Regular expressions #130[1]
-  * Unix permissions #132[2]
-  * Force color #135[3]
-  * Show hardlinks without double counting file size #136[4]
-  * Regular expressions and globbing with file-type #137[5]
-  * Truncate output #138[6]
-  * Inverted tree layout #139[7]
+  * Regular expressions #130
+  * Unix permissions #132
+  * Force color #135
+  * Show hardlinks without double counting file size #136
+  * Regular expressions and globbing with file-type #137
+  * Truncate output #138
+  * Inverted tree layout #139
   * Binary has been renamed from et to erd in order to
     address the following issue regarding name collisions with
-    other programs: #23[8]
+    other programs: #23
 
 -------------------------------------------------------------------
 Tue Apr 11 08:19:46 UTC 2023 - Michael Vetter <mvetter@suse.com>

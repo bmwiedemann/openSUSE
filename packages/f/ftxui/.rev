@@ -15,4 +15,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1089205</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3de19b16be82c1b1867be6ff0bbe00fb</srcmd5>
+    <version>4.1.1</version>
+    <time>1685294638</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.1:
+  * Resolve compile issues in component_fuzzer</comment>
+    <requestid>1089443</requestid>
+  </revision>
 </revisionlist>

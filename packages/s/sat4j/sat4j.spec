@@ -1,7 +1,7 @@
 #
 # spec file for package sat4j
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ Patch0:         sat4j-sourcetarget.patch
 Patch1:         sat4j-manifest.patch
 BuildRequires:  ant
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 Requires:       java >= 1.8
 BuildArch:      noarch
 
@@ -46,17 +46,25 @@ without worrying about the details.
 %patch0 -p1
 %patch1 -p1
 
+%pom_xpath_remove "pom:dependency[pom:type[text()='test-jar']]" org.sat4j.pb
+
 %build
 ant \
     -Dbuild.compiler=modern -Drelease=%{version} \
 	-DBUILD_DATE=%{qualifier} -Dsource=1.8 -Dtarget=1.8 p2
 
 %install
+#jar
 install -d -m 755 %{buildroot}%{_javadir}
 install -m 0644 dist/%{version}/org.sat4j.core.jar %{buildroot}%{_javadir}/org.sat4j.core.jar
 install -m 0644 dist/%{version}/org.sat4j.pb.jar   %{buildroot}%{_javadir}/org.sat4j.pb.jar
+#pom
+install -d -m 755 %{buildroot}%{_mavenpomdir}
+%{mvn_install_pom} org.sat4j.core/pom.xml %{buildroot}%{_mavenpomdir}/org.sat4j.core.pom
+%add_maven_depmap org.sat4j.core.pom org.sat4j.core.jar
+%{mvn_install_pom} org.sat4j.pb/pom.xml %{buildroot}%{_mavenpomdir}/org.sat4j.pb.pom
+%add_maven_depmap org.sat4j.pb.pom org.sat4j.pb.jar
 
-%files
-%{_javadir}/*.jar
+%files -f .mfiles
 
 %changelog

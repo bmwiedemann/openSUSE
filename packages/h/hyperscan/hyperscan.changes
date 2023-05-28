@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun May 28 09:29:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.4.2:
+  * Roll back bugfix for github issue #350: Besides using scratch
+    for corresponding database, Hyperscan also allows user to use
+    larger scratch allocated for another database. Users can
+    leverage this property to achieve safe scratch usage in
+    multi-database scenarios. Behaviors beyond these are
+    discouraged and results are undefined.
+  * Fix hsdump issue due to invalid nfa type.
+
+-------------------------------------------------------------------
 Tue Feb 21 22:54:42 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.4.1
