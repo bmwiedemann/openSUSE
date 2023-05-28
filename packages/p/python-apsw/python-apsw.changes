@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat May 27 21:01:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.42.0.0:
+  * Shell: Errors when SQLite are preparing a statement now show
+    the relevant extract of the query, and where the error was
+    detected.
+  * Shell: Output modes table (ASCII line drawing, lots of
+    sanitization), box (Unicode line drawing) and
+    qbox (box with quoted values) available.
+  * Shell: if started interactively then box is the default mode
+    (list remains the default in non-interactive)
+  * Added :meth:`Connection.pragma` to execute pragmas
+    and get results.
+  * Added :attr:`Cursor.get` returning query results with the
+    least amount of structure.
+  * Fixed execution tracers should return comment text for
+    comment only queries, and add :attr:`Cursor.has_vdbe`.
+  * Ensure that all applicable options are implemented for
+    :func:`apsw.config`, :meth:`Connection.config` and similar.
+  * Added :func:`apsw.sleep`
+  * Strings for :meth:`apsw.VFS.xNextSystemCall` are interned
+  * Detect unbound recursion not handled by CPython, and handle
+    better.
+
+-------------------------------------------------------------------
 Sun Apr 16 09:22:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.41.2.0:

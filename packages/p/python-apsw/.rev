@@ -216,4 +216,32 @@
     errors.</comment>
     <requestid>1079739</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f57f5101dee60c8aacf3709cc256f7f5</srcmd5>
+    <version>3.42.0.0</version>
+    <time>1685294611</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.42.0.0:
+  * Shell: Errors when SQLite are preparing a statement now show
+    the relevant extract of the query, and where the error was
+    detected.
+  * Shell: Output modes table (ASCII line drawing, lots of
+    sanitization), box (Unicode line drawing) and
+    qbox (box with quoted values) available.
+  * Shell: if started interactively then box is the default mode
+    (list remains the default in non-interactive)
+  * Added :meth:`Connection.pragma` to execute pragmas
+    and get results.
+  * Added :attr:`Cursor.get` returning query results with the
+    least amount of structure.
+  * Fixed execution tracers should return comment text for
+    comment only queries, and add :attr:`Cursor.has_vdbe`.
+  * Ensure that all applicable options are implemented for
+    :func:`apsw.config`, :meth:`Connection.config` and similar.
+  * Added :func:`apsw.sleep`
+  * Strings for :meth:`apsw.VFS.xNextSystemCall` are interned
+  * Detect unbound recursion not handled by CPython, and handle
+    better.</comment>
+    <requestid>1089348</requestid>
+  </revision>
 </revisionlist>
