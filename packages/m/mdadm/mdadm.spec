@@ -100,6 +100,8 @@ Patch56:        0056-mdmon-Remove-need-for-KillMode-none.patch
 Patch57:        0057-mdmon-Improve-switchroot-interactions.patch
 Patch58:        0058-mdopen-always-try-create_named_array.patch
 Patch59:        0059-Improvements-for-IMSM_NO_PLATFORM-testing.patch
+Patch60:        0060-Grow-fix-possible-memory-leak.patch
+Patch61:        0061-Grow-fix-can-t-change-bitmap-type-from-none-to-clustered.patch
 Patch1001:      1001-display-timeout-status.patch
 Patch1002:      1002-OnCalendar-format-fix-of-mdcheck_start-timer.patch
 Patch1003:      1003-mdadm-treat-the-Dell-softraid-array-as-local-array.patch
@@ -171,6 +173,8 @@ mdadm is a program that can be used to control Linux md devices.
 %patch57 -p1
 %patch58 -p1
 %patch59 -p1
+%patch60 -p1
+%patch61 -p1
 %patch1001 -p1
 %patch1002 -p1
 %patch1003 -p1

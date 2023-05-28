@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 26 02:29:42 UTC 2023 - Coly Li <colyli@suse.de>
+
+- Grow: fix possible memory leak (bsc#1208618)
+  0060-Grow-fix-possible-memory-leak.patch
+- Grow: fix can't change bitmap type from none to clustered
+  (bsc#1208618)
+  0061-Grow-fix-can-t-change-bitmap-type-from-none-to-clustered.patch
+- Use source code mdadm-4.2.tar.xz from kernel.org version for
+  checksum 
+  - mdadm-4.2.tar.xz
+
+-------------------------------------------------------------------
 Mon Apr 24 15:06:42 UTC 2023 - Coly Li <colyli@suse.de>
 
 - Fixes for mdmon to ensure it run at the right time in the
