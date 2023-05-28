@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 23 15:31:31 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- update to 1.4.2:
+  * Fix crashes when bullets are missing hitsounds
+  * Fix not being able to exit vehicles
+  * Fix config path to adhere to XDG spec
+  * Add buy/sell lives and max health
+  * Add upgradable weapons
+  * Improve collect objectives by allowing multiple pickup types
+  * Editor: Fix crash when copying missions with objectives
+
+-------------------------------------------------------------------
 Fri Apr  7 12:45:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.1:
