@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Sat May 27 21:32:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.15:
+  * Added `Callback(on_stopped='my_callback)`.
+  * `Callback` now accepts dotted path to function as input.
+  * `queue.enqueue_many()` now supports job dependencies.
+  * `rq worker` CLI script now configures logging based on
+    `DICT_CONFIG` key present in config file.
+  * Whenever possible, `Worker` now uses `lmove()` to implement
+    reliable queue pattern.
+  * `Scheduler` should only release locks that it successfully
+    acquires.
+  * Fixes crashes that may happen by changes to `as_text()`
+    function in v1.14. 
+  * Various linting, CI and code quality improvements.
+  * Fixes a crash that happens if Redis connection uses SSL.
+  * Fixes a crash if `job.meta()` is loaded using the wrong
+    serializer.
+  * Added `WorkerPool` (beta) that manages multiple workers in a
+    single CLI.
+  * Added a new `Callback` class that allows more flexibility in
+    declaring job callbacks.
+  * Fixed a regression where jobs with unserializable return
+    value crashes RQ.
+  * Added `--dequeue-strategy` option to RQ's CLI.
+  * Added `--max-idle-time` option to RQ's worker CLI.
+  * Added `--maintenance-interval` option to RQ's worker CLI.
+  * Fixed RQ usage in Windows as well as various other
+    refactorings.
+  * Show more info on `rq info` CLI command. Thanks @iggeehu!
+  * `queue.enqueue_jobs()` now properly account for job
+    dependencies.
+  * `TimerDeathPenalty` now properly handles negative/infinite
+    timeout.
+  * Added `work_horse_killed_handler` argument to `Worker`.
+  * Fixed an issue where results aren't properly persisted on
+    synchronous jobs.
+  * Fixed a bug where job results are not properly persisted when
+    `result_ttl` is `-1`.
+  * Various documentation and logging fixes.
+  * Improve Redis connection reliability.
+  * Scheduler reliability improvements.
+  * Fixed a bug where `dequeue_timeout` ignores `worker_ttl`.
+  * Use `job.return_value()` instead of `job.result` when
+    processing callbacks.
+  * Various internal refactorings to make `Worker` code more
+    easily extendable.
+  * RQ's source code is now black formatted.
+  * RQ now stores multiple job execution results. This feature is
+    only available on Redis >= 5.0 Redis Streams. Please refer to
+    the docs for more info.
+  * Improve performance when enqueueing many jobs at once.
+  * Redis server version is now cached in connection object.
+  * Properly handle `at_front` argument when jobs are scheduled.
+  * Add type hints to RQ's code base.
+  * Fixed a bug where exceptions are logged twice.
+  * Don't delete `job.worker_name` after job is finished.
+
+-------------------------------------------------------------------
 Thu Dec 22 08:21:10 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Set BuildArch to noarch, this package doesn't have anything that depends on

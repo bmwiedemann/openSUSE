@@ -125,4 +125,41 @@
 </comment>
     <requestid>1044179</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>94af1865f0a6b3e4adebd9a0780cec43</srcmd5>
+    <version>1.15</version>
+    <time>1685294613</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.15:
+  * Added `Callback(on_stopped='my_callback)`.
+  * `Callback` now accepts dotted path to function as input.
+  * `queue.enqueue_many()` now supports job dependencies.
+  * `rq worker` CLI script now configures logging based on
+    `DICT_CONFIG` key present in config file.
+  * Whenever possible, `Worker` now uses `lmove()` to implement
+    reliable queue pattern.
+  * `Scheduler` should only release locks that it successfully
+    acquires.
+  * Fixes crashes that may happen by changes to `as_text()`
+    function in v1.14. 
+  * Various linting, CI and code quality improvements.
+  * Fixes a crash that happens if Redis connection uses SSL.
+  * Fixes a crash if `job.meta()` is loaded using the wrong
+    serializer.
+  * Added `WorkerPool` (beta) that manages multiple workers in a
+    single CLI.
+  * Added a new `Callback` class that allows more flexibility in
+    declaring job callbacks.
+  * Fixed a regression where jobs with unserializable return
+    value crashes RQ.
+  * Added `--dequeue-strategy` option to RQ's CLI.
+  * Added `--max-idle-time` option to RQ's worker CLI.
+  * Added `--maintenance-interval` option to RQ's worker CLI.
+  * Fixed RQ usage in Windows as well as various other
+    refactorings.
+  * Show more info on `rq info` CLI command. Thanks @iggeehu!
+  * `queue.enqueue_jobs()` now properly account for job
+    dependencies.</comment>
+    <requestid>1089359</requestid>
+  </revision>
 </revisionlist>
