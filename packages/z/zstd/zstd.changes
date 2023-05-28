@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 25 11:41:00 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Revert the addition of build specific cmake files: breaks
+  gdal, apache-arrow and possibly others -- boo#1211566
+  * note that shipping cmake files is not intentional or supported
+    upstream at the moment: gh#facebook/zstd#3642
+
+-------------------------------------------------------------------
 Wed May 10 01:42:06 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add cmake files manually because we do not want to add
