@@ -34,6 +34,8 @@ Patch2:         sysstat-8.0.4-pagesize.diff
 # PATCH-FIX-OPENSUSE bsc#1151453
 Patch3:         sysstat-service.patch
 Patch4:         harden_sysstat.service.patch
+# PATCH-FIX-UPSTREAM CVE-2023-33204, bsc#1211507 https://github.com/sysstat/sysstat/pull/360.patch
+Patch5:         sysstat-CVE-2023-33204.patch
 BuildRequires:  findutils
 BuildRequires:  gettext-runtime
 BuildRequires:  libpcp-devel
@@ -79,6 +81,7 @@ cp %{SOURCE1} .
 # remove date and time from objects
 find ./ -name \*.c -exec sed -i -e 's: " compiled " __DATE__ " " __TIME__::g' {} \;
 %patch4 -p1
+%patch5 -p1
 
 %build
 export conf_dir="%{_sysconfdir}/sysstat"

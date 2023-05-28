@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 23 18:36:01 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Security fix: (CVE-2023-33204, bsc#1211507)
+  * Fix an overflow which is still possible for some values.
+  * Added patch sysstat-CVE-2023-33204.patch
+
+-------------------------------------------------------------------
 Fri Apr 14 17:14:24 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to version 12.6.2:
