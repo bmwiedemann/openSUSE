@@ -759,4 +759,19 @@ also requires -fno-profile-values to avoid ~3 differing bits (forwarded request 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1080166</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>cc436073b9d5a8bb383b171ac275467b</srcmd5>
+    <version>3.11</version>
+    <time>1685294516</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.11:
+  * With -P, patterns like [\d] now work again. Fixing this
+    has caused grep to revert to the behavior of grep 3.8, in that
+    patterns like \w and ^H go back to using ASCII rather
+    than Unicode interpretations.
+    However, future versions of GNU grep and/or PCRE2 are
+    likely to fix this and change the behavior of \w and ^H
+    back to Unicode again, without breaking [\d] as 3.10 did.</comment>
+    <requestid>1089292</requestid>
+  </revision>
 </revisionlist>

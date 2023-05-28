@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May 18 12:00:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.11:
+  * With -P, patterns like [\d] now work again. Fixing this
+    has caused grep to revert to the behavior of grep 3.8, in that
+    patterns like \w and ^H go back to using ASCII rather
+    than Unicode interpretations.
+    However, future versions of GNU grep and/or PCRE2 are
+    likely to fix this and change the behavior of \w and ^H
+    back to Unicode again, without breaking [\d] as 3.10 did.
+
+-------------------------------------------------------------------
 Thu Mar 30 07:41:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.10:
