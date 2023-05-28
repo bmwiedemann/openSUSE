@@ -76,6 +76,7 @@ to generate wxPython, the Python bindings for wxWidgets.
 This package contains all the developer tools you need to create your
 own sip bindings.
 
+%if 0%{?suse_version} > 1500
 %package -n python-sip6-doc
 Summary:        A Python bindings generator for C/C++ libraries -- common documentation
 Group:          Development/Libraries/Python
@@ -88,6 +89,7 @@ Python bindings for the Qt toolkit, but can be used to create bindings
 for any C or C++ library.
 
 This package contains the documentation and example files.
+%endif
 
 %prep
 %autosetup -p1 -n sip-%{version}
@@ -123,8 +125,10 @@ This package contains the documentation and example files.
 %{python_sitearch}/sipbuild
 %{python_sitearch}/sip-%{version}*-info
 
+%if 0%{?suse_version} > 1500
 %files -n python-sip6-doc
 %license LICENSE*
 %doc doc/
+%endif
 
 %changelog
