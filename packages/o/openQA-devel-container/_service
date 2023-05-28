@@ -1,0 +1,18 @@
+<services>
+  <service name="download_url" mode="disabled">
+      <param name="protocol">https</param>
+      <param name="host">raw.githubusercontent.com</param>
+      <param name="path">/os-autoinst/openQA/master/container/devel/Dockerfile</param>
+      <param name="filename">Dockerfile</param>
+  </service>
+  <service mode="buildtime" name="kiwi_metainfo_helper"/>
+  <service mode="buildtime" name="docker_label_helper"/>
+  <service mode="buildtime" name="replace_using_package_version">
+      <param name="file">Dockerfile</param>
+      <param name="regex">%PKG_VERSION%</param>
+      <param name="parse-version">patch</param>
+      <!-- Fill with the main package of the container.
+             It determines the version of the container image. -->
+      <param name="package">openQA-devel</param>
+  </service>
+</services>
