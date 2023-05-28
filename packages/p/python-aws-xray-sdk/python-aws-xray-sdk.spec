@@ -1,7 +1,7 @@
 #
-# spec file for package python-aws-xray-sdk
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,27 +27,33 @@
 
 %if 0%{?suse_version} >= 1550
 %bcond_with aiobotocore
+# gh#aws/aws-xray-sdk-python#359
+%bcond_with flask_sqlalchemy
 %else
 %bcond_without aiobotocore
+%bcond_without flask_sqlalchemy
 %endif
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-Name:           python-aws-xray-sdk
-Version:        2.10.0
+Name:           python-aws-xray-sdk%{?psuffix}
+Version:        2.12.0
 Release:        0
 Summary:        The AWS X-Ray SDK for Python
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/aws/aws-xray-sdk-python
 Source:         https://github.com/aws/aws-xray-sdk-python/archive/refs/tags/%{version}.tar.gz#/aws-xray-sdk-python-%{version}-gh.tar.gz
-Source9:        %{name}-rpmlintrc
+Source9:        python-aws-xray-sdk-rpmlintrc
+%if 0%{?suse_version} >= 1550
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
+%endif
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-botocore >= 1.11.3
 Requires:       python-wrapt
 %ifpython2
+Requires:       python-enum34
 Requires:       python-future
 %endif
 %if %{with test}
@@ -55,7 +61,10 @@ BuildRequires:  %pythons
 BuildRequires:  %{python_module WebTest}
 BuildRequires:  %{python_module aws-xray-sdk = %{version}}
 BuildRequires:  %{python_module aws-xray-sdk-Django = %{version}}
+BuildRequires:  %{python_module aws-xray-sdk-Flask = %{version}}
+%if %{with flask_sqlalchemy}
 BuildRequires:  %{python_module aws-xray-sdk-Flask-SQLAlchemy = %{version}}
+%endif
 BuildRequires:  %{python_module aws-xray-sdk-SQLAlchemy = %{version}}
 BuildRequires:  %{python_module aws-xray-sdk-aiohttp = %{version}}
 BuildRequires:  %{python_module aws-xray-sdk-bottle = %{version}}
@@ -94,6 +103,7 @@ Summary:        Metapackage to pull in all AWS X-Ray SDK backends
 Group:          Metapackages
 Requires:       %{name} = %{version}
 Recommends:     %{name}-Django = %{version}
+Recommends:     %{name}-Flask = %{version}
 Recommends:     %{name}-Flask-SQLAlchemy = %{version}
 Recommends:     %{name}-SQLAlchemy = %{version}
 Recommends:     %{name}-aiobotocore = %{version}
@@ -109,7 +119,7 @@ Recommends:     %{name}-requests = %{version}
 The AWS X-Ray SDK for Python enables Python developers to record and
 emit information from within their applications to the AWS X-Ray service.
 
-This package pulls in all available backends for %{name}.
+This package pulls in all available backends for %{name} as recommended packages.
 
 %package        Django
 Summary:        Django backend for the AWS X-Ray Python SDK
@@ -123,25 +133,40 @@ emit information from within their applications to the AWS X-Ray service.
 
 This package provides the Django backend for %{name}.
 
+%package        Flask
+Summary:        Flaks backend for the AWS X-Ray Python SDK
+Group:          Development/Languages/Python
+Requires:       %{name} = %{version}
+Requires:       python-Flask >= 0.10
+
+%description    Flask
+The AWS X-Ray SDK for Python enables Python developers to record and
+emit information from within their applications to the AWS X-Ray service.
+
+This package provides the Flask backend for %{name}.
+
+%if %{with flask_sqlalchemy}
 %package        Flask-SQLAlchemy
 Summary:        Flask-SQLAlchemy backend for the AWS X-Ray Python SDK
 Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 Requires:       %{name}-SQLAlchemy = %{version}
-Requires:       python-Flask-SQLAlchemy
-Requires:       python-SQLAlchemy
+Requires:       python-Flask >= 0.10
+Requires:       python-Flask-SQLAlchemy < 3.0
+Requires:       python-SQLAlchemy < 2
 
 %description    Flask-SQLAlchemy
 The AWS X-Ray SDK for Python enables Python developers to record and
 emit information from within their applications to the AWS X-Ray service.
 
 This package provides the Flask-SQLAlchemy backend for %{name}.
+%endif
 
 %package        SQLAlchemy
 Summary:        SQLAlchemy backend for the AWS X-Ray Python SDK
 Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
-Requires:       python-SQLAlchemy
+Requires:       python-SQLAlchemy < 2
 
 %description    SQLAlchemy
 The AWS X-Ray SDK for Python enables Python developers to record and
@@ -250,10 +275,18 @@ This package provides the aiohttp backend for %{name}.
 
 %if !%{with test}
 %build
+%if 0%{?suse_version} >= 1550
+%pyproject_wheel
+%else
 %python_build
+%endif
 
 %install
+%if 0%{?suse_version} >= 1550
+%pyproject_install
+%else
 %python_install
+%endif
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -282,8 +315,13 @@ ignore_tests+=" --ignore tests/ext/django"
 # no connection to httpbin.org
 ignore_tests+=" --ignore tests/ext/httplib/test_httplib.py"
 ignore_tests+=" --ignore tests/ext/requests/test_requests.py"
+ignore_tests+=" --ignore tests/ext/httpx"
 # tests by connecting to live aws hosts
 ignore_tests+=" --ignore tests/ext/pynamodb/test_pynamodb.py"
+# gh#aws/aws-xray-sdk-python#359
+%if !%{with flask_sqlalchemy}
+ignore_tests+=" --ignore tests/ext/flask_sqlalchemy/test_query.py"
+%endif
 # https://github.com/aws/aws-xray-sdk-python/issues/321
 python310_donttest=("-k" "not test_localstorage_isolation")
 %pytest $ignore_tests "${$python_donttest[@]}"
@@ -299,6 +337,7 @@ python310_donttest=("-k" "not test_localstorage_isolation")
 %exclude %{python_sitelib}/aws_xray_sdk/ext/aiobotocore/
 %exclude %{python_sitelib}/aws_xray_sdk/ext/bottle/
 %exclude %{python_sitelib}/aws_xray_sdk/ext/django/
+%exclude %{python_sitelib}/aws_xray_sdk/ext/flask/
 %exclude %{python_sitelib}/aws_xray_sdk/ext/flask_sqlalchemy/
 %exclude %{python_sitelib}/aws_xray_sdk/ext/mysql/
 %exclude %{python_sitelib}/aws_xray_sdk/ext/psycopg2/
@@ -314,9 +353,15 @@ python310_donttest=("-k" "not test_localstorage_isolation")
 %license LICENSE
 %{python_sitelib}/aws_xray_sdk/ext/django/
 
+%files %{python_files Flask}
+%license LICENSE
+%{python_sitelib}/aws_xray_sdk/ext/flask/
+
+%if %{with flask_sqlalchemy}
 %files %{python_files Flask-SQLAlchemy}
 %license LICENSE
 %{python_sitelib}/aws_xray_sdk/ext/flask_sqlalchemy/
+%endif
 
 %files %{python_files SQLAlchemy}
 %license LICENSE

@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sat May 20 10:44:00 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.12.0
+  * improvement: Default Context Missing Strategy set to Log Error
+    PR372 #372
+  * improvement: Sample app dependency update PR373 #373, PR380
+    #380
+  * bugfix: Fix pynamodb tests for Python < 3.6 PR375 #375
+  * improvement: Simplify setup script PR363 #363
+  * bugfix: Fix deprecation warnings related to asyncio PR364 #364
+  * bugfix: Pin sqlalchemy version to 1.x to fix tests PR381 #381
+  * bugfix: Fix sample app dependencies incompatibility with XRay
+    SDK PR382 #382
+  * bugfix: Start MySQL from GH Actions, upgrade Ubuntu, and remove
+    Python versions for unit tests PR384 #384
+
+-------------------------------------------------------------------
+Wed Feb  1 11:02:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.11.0
+  * bugfix: Fix TypeError by patching register_default_jsonb from
+    psycopg2 PR350 #350
+  * improvement: Add annotations PR348 #348
+  * bugfix: Use service parameter to match centralized sampling
+    rules PR 353 #353
+  * bugfix: Implement PEP3134 to discover underlying problems with
+    python3 PR355 #355
+  * improvement: Allow list TopicArn for SNS PublishBatch request
+    PR358 #358
+  * bugfix: Version pinning flask-sqlalchemy version to 2.5.1 or
+    less PR360 #360
+  * bugfix: Fix UnboundLocalError when aiohttp server raises a
+    CancelledError PR356 #356
+  * improvement: Instrument httpx >= 0.20 PR357 #357
+  * improvement: [LambdaContext] persist original trace header
+    PR362 #362
+  * bugfix: Run tests against Django 4.x PR361 #361
+  * improvement: Oversampling Mitigation PR366 #366
+- Disable Flask-SQLAlchemy subpackage due to
+  gh#aws/aws-xray-sdk-python#359
+- Add Flask subpackage
+- Fix multibuild packagename for test src.rpm
+
+-------------------------------------------------------------------
 Fri Oct 14 21:49:44 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.10.0
