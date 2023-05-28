@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.5.0
+%define real_version 6.5.1
 %define short_version 6.5
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
@@ -30,7 +30,7 @@
 %global with_gles 1
 %endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.5.0
+Version:        6.5.1
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 # Legal: qtpaths is BSD-3-Clause
@@ -39,12 +39,12 @@ URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
-Patch0:         0001-QApplication-Fix-DEPRECATED_VERSION-for-setActiveWin.patch
-Patch1:         0001-QVariant-Fix-support-for-metatypes-created-by-Qt-6.5.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       0001-Tell-the-truth-about-private-API.patch
+# No need to pollute the library dir with object files, install them in the qt6 subfolder
+Patch101:       0001-CMake-Install-objects-files-into-ARCHDATADIR.patch
 %if 0%{?suse_version} == 1500
-Patch101:       0001-Require-GCC-10.patch
+Patch102:       0001-Require-GCC-10.patch
 %endif
 ##
 BuildRequires:  cmake >= 3.18.3
@@ -577,6 +577,15 @@ This package contains common files used for building Qt documentation.
 
 ### Static libraries ###
 
+%package -n qt6-exampleicons-devel-static
+Summary:        Qt ExampleIcons module
+# TODO
+Requires:       qt6-core-private-devel = %{version}
+Requires:       qt6-gui-private-devel = %{version}
+
+%description -n qt6-exampleicons-devel-static
+Qt icon library for examples. This private library can be used by Qt examples.
+
 %package -n qt6-kmssupport-devel-static
 Summary:        Qt KMSSupport module
 Requires:       qt6-core-private-devel = %{version}
@@ -727,6 +736,10 @@ rm -r src/3rdparty/{blake2,double-conversion,freetype,harfbuzz-ng,libjpeg,libpng
 cat >> meta_package << EOF
 This is a meta package, it does not contain any file
 EOF
+
+# Work around an issue with zstd CMake files (boo#1211566)
+# TODO: Remove when the issue is fixed
+sed -i '/zstd CONFIG/d' cmake/FindWrapZSTD.cmake
 
 %build
 %define _lto_cflags %{nil}
@@ -1153,6 +1166,19 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/features/uikit
 %{_qt6_docdir}/global/
 
 ### Static libraries ###
+
+%files -n qt6-exampleicons-devel-static
+%doc src/assets/icons/README
+%{_qt6_cmakedir}/Qt6ExampleIconsPrivate/
+%{_qt6_descriptionsdir}/ExampleIconsPrivate.json
+%{_qt6_includedir}/QtExampleIcons/
+%{_qt6_libdir}/libQt6ExampleIcons.a
+%{_qt6_libdir}/libQt6ExampleIcons.prl
+# There's no mistake, this folder needs to be installed
+# These are CMake objects files which are not part of any library
+%dir %{_qt6_archdatadir}/objects-RelWithDebInfo
+%{_qt6_archdatadir}/objects-RelWithDebInfo/ExampleIconsPrivate_resources_1/
+%{_qt6_metatypesdir}/qt6exampleiconsprivate_*_metatypes.json
 
 %files -n qt6-kmssupport-devel-static
 %{_qt6_cmakedir}/Qt6KmsSupportPrivate/

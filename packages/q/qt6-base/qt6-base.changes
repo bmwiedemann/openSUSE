@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 24 07:45:34 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.1
+  * https://www.qt.io/blog/qt-6.5.1-released
+- Drop patches, merged upstream:
+  * 0001-QApplication-Fix-DEPRECATED_VERSION-for-setActiveWin.patch
+  * 0001-QVariant-Fix-support-for-metatypes-created-by-Qt-6.5.patch
+- Add patch
+  * 0001-CMake-Install-objects-files-into-ARCHDATADIR.patch
+
+-------------------------------------------------------------------
 Fri Apr 28 13:56:55 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change to fix boo#1210849:

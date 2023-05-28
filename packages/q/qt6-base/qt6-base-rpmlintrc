@@ -7,3 +7,6 @@ addFilter("no-dependency-on .*")
 
 # Only libraries used at link time are guaranteed to work
 addFilter("shlib-fixed-dependency .*")
+
+# libQt6ExampleIcons.a only contains embedded icons, there's nothing to extract
+addFilter("lto-no-text-in-archive .*libQt6ExampleIcons.a")
