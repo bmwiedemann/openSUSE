@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu May 25 15:01:57 UTC 2023 - christophe@krop.fr
+
+- Update to version 5.15.14:
+  * Blacklist TouchInputTest::touchTap for sles 15.4
+  * Blacklist tst_QWebEnginePage::mouseMovementProperties for SLES-15
+  * Do not allow universal with debug builds
+  * Enable accessibility by default on Linux
+  * Fix blacklisting of mouseMovementProperties for sles 15.4
+  * Fix build with GCC 13
+  * Fix initialization of QWebEngineDownloadItem::totalBytes for Widgets
+  * Fix memory management in QPdfDocument functions
+  * Update Chromium:
+  * Fixes for building with GCC-13
+  * [Backport] CVE-2023-1215: Type Confusion in CSS
+  * [Backport] CVE-2023-1217: Stack buffer overflow in Crash reporting
+  * [Backport] CVE-2023-1219: Heap buffer overflow in Metrics
+  * [Backport] CVE-2023-1220: Heap buffer overflow in UMA
+  * [Backport] CVE-2023-1222: Heap buffer overflow in Web Audio API
+  * [Backport] CVE-2023-1529: Out of bounds memory access in WebHID
+  * [Backport] CVE-2023-1530: Use after free in PDF
+  * [Backport] CVE-2023-1531: Use after free in ANGLE
+  * [Backport] CVE-2023-1534: Out of bounds read in ANGLE
+  * [Backport] CVE-2023-1810: Heap buffer overflow in Visuals
+  * [Backport] CVE-2023-1811: Use after free in Frames
+  * [Backport] CVE-2023-2033: Type Confusion in V8
+  * [Backport] CVE-2023-2137: Heap buffer overflow in sqlite
+  * [Backport] CVE-2023-29469 / Security bug 1433328
+  * [Backport] Security bug 1337747
+  * [Backport] Security bug 1417585
+  * [Backport] Security bug 1418734
+  * [Backport] Security bug 1423360
+  * [Backport] Security bug 1427388
+- Drop patch, merged upstream:
+  * 0001-Fixes-for-building-with-GCC-13.patch
+
+-------------------------------------------------------------------
 Fri Apr 28 21:20:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add python311-fixes.patch:
