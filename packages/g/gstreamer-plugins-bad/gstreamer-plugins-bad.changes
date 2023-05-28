@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed May 24 14:43:34 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.3:
+  + a2dpsink: Fails many tests in Bluetooth SIG Certification.
+  + avdtputil: Use int instead of int range for fixed bitpool
+    values.
+  + ccconverter:
+    - reintroduce frame count reset on cycle completion
+    - integer overflow & crashing
+  + codectimestamper: remove PC file generation from plugin's own
+    meson.build.
+  + cudamemory: Fix for semi planar YUV memory size decision.
+  + d3d11compositor:
+    - Reconfigure resource only when output caps is changed.
+    - Skip zero alpha input.
+  + d3d11convert: Fix for runtime property update.
+  + d3d11memory: Don't clear wrapped texture memory.
+  + d3d11videosink:
+    - Fix for ignored initial render rectangle.
+    - Fix race condition in window unprepare.
+    - Enhancement for initial window size decision.
+    - Don't clear prepared buffer on unlock_stop().
+  + dashdemux: mpdclient: fix divide by 0 if segment has no
+    duration.
+  + dtlstransport: Keep strong ref of dtls encoder/decoder.
+  + GstPlay:
+    - Avoid getting property of playbin2 if subtitle_sid is null.
+    - Fix critical log when using playbin3.
+  + h264decoder: Drop nonexisting picture silently without error.
+  + dtmf: element classification improvements.
+  + mfvideoenc: Allow only even resolution numbers.
+  + sctpenc:
+    - Fix potential shutdown deadlock.
+    - Fix "srtp-key" check.
+  + tests: disable dtls test if openssl is not present.
+  + tsdemux: Set number of channels to 2 for dual mono Opus.
+  + va: Various fixes for defects found with MSVC.
+  + wasapi2: Allows process loopback capture on Windows 10.
+  + webrtcdatachannel: Bind to parent webrtcbin using a weak
+    reference.
+  + webrtcbin: Fix potential deadlock when closing before any data
+    was sent.
+  + webrtc:
+    - Plug leaks of resolved ICE addresses.
+    - Do not tear down data channel before data is flushed.
+- Rebase reduce-required-meson.patch.
+
+-------------------------------------------------------------------
 Tue May 23 01:45:04 UTC 2023 - Jiri Srain <jsrain@suse.com>
 
 - use additional codecs on ALP
