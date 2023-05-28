@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 28 05:44:18 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.4.71:
+  * HTTP/2 support separated to mod_h2 module
+
+-------------------------------------------------------------------
 Fri May 12 17:30:24 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.4.70:
