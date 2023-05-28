@@ -176,4 +176,12 @@
   * CVE-2023-32573-qtsvg-6.5.diff (forwarded request 1086201 from krop)</comment>
     <requestid>1086202</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>7d98bcba9b7d68c54197a097935d287f</srcmd5>
+    <version>6.5.1</version>
+    <time>1685294533</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.5.1 (forwarded request 1088916 from krop)</comment>
+    <requestid>1089108</requestid>
+  </revision>
 </revisionlist>

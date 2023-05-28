@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 24 07:45:44 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.1
+  * https://www.qt.io/blog/qt-6.5.1-released
+- Drop patch, merged upstream:
+  * CVE-2023-32573-qtsvg-6.5.diff
+
+-------------------------------------------------------------------
 Thu May 11 08:39:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change (boo#1211298, CVE-2023-32573):
