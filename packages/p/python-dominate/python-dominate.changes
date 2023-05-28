@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 27 21:13:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.0:
+  * Fix incorrect context handling when a tag is used 2+ levels
+    deeper than it was created 
+
+-------------------------------------------------------------------
 Thu Oct 13 07:17:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use https for urls
