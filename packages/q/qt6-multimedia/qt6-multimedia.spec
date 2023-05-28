@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.5.0
+%define real_version 6.5.1
 %define short_version 6.5
 %define short_name qtmultimedia
 %define tar_name qtmultimedia-everywhere-src
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-multimedia%{?pkg_suffix}
-Version:        6.5.0
+Version:        6.5.1
 Release:        0
 Summary:        Qt 6 Multimedia libraries
 License:        GPL-3.0-or-later
