@@ -143,4 +143,12 @@
     <comment>Update to 6.5.0 (forwarded request 1077258 from Vogtinator)</comment>
     <requestid>1077333</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b07dca53c185e9bd44bb83a508386412</srcmd5>
+    <version>6.5.1</version>
+    <time>1685294551</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 6.5.1</comment>
+    <requestid>1089150</requestid>
+  </revision>
 </revisionlist>
