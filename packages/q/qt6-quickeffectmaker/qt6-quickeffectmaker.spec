@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.5.0
+%define real_version 6.5.1
 %define short_version 6.5
 %define tar_name qtquickeffectmaker-everywhere-src
 %define tar_suffix %{nil}
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-quickeffectmaker%{?pkg_suffix}
-Version:        6.5.0
+Version:        6.5.1
 Release:        0
 Summary:        Tool for creating shader effects for Qt Quick
 License:        GPL-3.0-only
@@ -81,9 +81,6 @@ Quick applications and offers both a node editor and a code editor.
 # Desktop file
 %suse_update_desktop_file -i org.qt.quickeffectmaker6
 install -D -m644 %{SOURCE2} %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/org.qt.quickeffectmaker.png
-
-# CMake files are not useful
-rm -r %{buildroot}%{_qt6_cmakedir}/Qt6QQEffectMakerTools
 
 %files
 %license LICENSES/* tools/qqem/qml/fonts/SourceCodePro.txt
