@@ -1265,6 +1265,7 @@ unsorted:
   - bazel-workspaces 
   - bazel3.4 
   - bazel3.7 
+  - bazel6 
   - bb 
   - bbe 
   - bbswitch 
@@ -4307,7 +4308,6 @@ unsorted:
   - g810-led 
   - gajim 
   - gajim-lang 
-  - gajim-plugin-omemo 
   - galaxis 
   - galene 
   - galera-4 
@@ -22817,6 +22817,7 @@ unsorted:
   - python3-keystonemiddleware 
   - python3-kiwi 
   - python3-kiwi-keg 
+  - python3-kiwi_crossprepare_plugin 
   - python3-ktoblzcheck 
   - python3-lammps 
   - python3-lash 
@@ -44990,6 +44991,7 @@ unsorted:
   - udunits-compat-devel 
   - udunits2 
   - udunits2-devel 
+  - ueberzugpp 
   - ufiformat 
   - uftpd 
   - uget 
