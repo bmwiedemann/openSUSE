@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 6.5.0
+%define real_version 6.5.1
 %define short_version 6.5
 %define short_name qtgrpc
 %define tar_name qtgrpc-everywhere-src
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-grpc%{?pkg_suffix}
-Version:        6.5.0
+Version:        6.5.1
 Release:        0
 Summary:        gRPC and Protobuf generator and bindings for Qt framework
 License:        GPL-3.0-or-later
