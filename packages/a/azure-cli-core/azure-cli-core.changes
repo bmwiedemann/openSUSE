@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 24 07:01:14 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.49.0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Add patch to update argcomplete dependency (bsc#1206869)
+  + acc_update-argcomplete.patch
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Wed May  3 11:09:12 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

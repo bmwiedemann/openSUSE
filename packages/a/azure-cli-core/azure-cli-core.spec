@@ -17,7 +17,7 @@
 
 
 Name:           azure-cli-core
-Version:        2.48.1
+Version:        2.49.0
 Release:        0
 Summary:        Microsoft Azure CLI Core Module
 License:        MIT
@@ -26,6 +26,7 @@ URL:            https://github.com/Azure/azure-cli
 Source:         https://files.pythonhosted.org/packages/source/a/azure-cli-core/azure-cli-core-%{version}.tar.gz
 Source1:        LICENSE.txt
 Patch0:         acc_disable-update-check.patch
+Patch1:         acc_update-argcomplete.patch
 BuildRequires:  azure-cli-nspkg
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -34,8 +35,8 @@ BuildRequires:  python3-setuptools
 Requires:       azure-cli-nspkg
 Requires:       azure-cli-telemetry >= 1.0.8
 Requires:       python3-PyJWT >= 2.1.0
-Requires:       python3-argcomplete < 3.0
-Requires:       python3-argcomplete >= 2.0
+Requires:       python3-argcomplete < 4.0
+Requires:       python3-argcomplete >= 3.0
 Requires:       python3-azure-mgmt-core < 2.0.0
 Requires:       python3-azure-mgmt-core >= 1.2.0
 Requires:       python3-azure-nspkg >= 3.0.0
@@ -75,6 +76,7 @@ Microsoft Azure CLI Core Module
 %prep
 %setup -q -n azure-cli-core-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 install -m 644 %{SOURCE1} %{_builddir}/azure-cli-core-%{version}

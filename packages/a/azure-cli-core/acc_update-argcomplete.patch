@@ -1,0 +1,12 @@
+diff -Nru azure-cli-core-2.49.0.orig/setup.py azure-cli-core-2.49.0/setup.py
+--- azure-cli-core-2.49.0.orig/setup.py	2023-05-19 10:19:28.000000000 +0200
++++ azure-cli-core-2.49.0/setup.py	2023-05-24 09:00:00.184417378 +0200
+@@ -43,7 +43,7 @@
+ ]
+ 
+ DEPENDENCIES = [
+-    'argcomplete~=2.0',
++    'argcomplete~=3.0',
+     'azure-cli-telemetry==1.0.8.*',
+     'azure-mgmt-core>=1.2.0,<2',
+     'cryptography',
