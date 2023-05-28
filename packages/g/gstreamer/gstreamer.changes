@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed May 24 14:20:04 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.3:
+  + Highlighted bugfixes:
+    - avdec: fix occasional video decoder deadlock on seeking with
+      FFmpeg 6.0.
+    - decodebin3: fix regression handling input streams without
+      CAPS or TIME segment such as e.g. udpsrc or `pushfilesrc.
+    - bluez: a2dpsink: fix Bluetooth SIG Certification test
+      failures.
+    - osxvideosink: fix deadlock upon closing output window.
+    - qtdemux: fix edit list handling regression and AV1 codec box
+      parsing.
+    - qtmux: fix extraction of CEA608 closed caption data from
+      S334-1A packets.
+    - rtspsrc: Fix handling of * control path.
+    - splitmux: timestamp handling improvements.
+    - v4l2videodec: Rework dynamic resolution change handling
+      (needed for IMX6 mainline codec).
+    - videoflip: fix regression with automatically rotating video
+      based on tags.
+    - d3d11: many d3d11videosink and d3d11compositor fixes.
+    - webrtc, rtp: numerous data race fixes and stability fixes.
+    - various bug fixes, memory leak fixes, and other stability and
+      reliability improvements.
+  + gstreamer:
+    - tracing: Initialize tracing infrastructure even if the debug
+      system is not compiled in.
+    - parse-launch: fix missing unref of looked-up child element.
+    - gstutils: Add category and object to most logging messages.
+- Rebase reduce-required-meson.patch.
+
+-------------------------------------------------------------------
 Wed Apr 12 12:01:58 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.22.2:
