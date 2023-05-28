@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May 18 12:51:20 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.3.5:
+  * Lookup icons in more context directories for issue ice-wm/icewm#132.
+  * An Escape key release event must match the key press event for #726.
+  * Report when icon could not be found for issue ice-wm/icewm#133.
+  * Use "firefox" instead of "mozilla" as Firefox icon for ice-wm/icewm#132.
+  * Rescale workspace buttons when taskbar is rather high.
+  * Temporarily hide the taskbar collapse button when collapsing or expanding.
+  * Compute the ultimate workspace button height, before creating them.
+  * Limit the resource string of an unresponsive client for issue #729.
+  * Check for TaskBarDoubleHeight when computing workspace button height.
+  * Also focus last window when hiding and Click-to-focus for issue #727.
+  * Let icesh exit with zero if the last action was a successful manager
+    action.
+
+-------------------------------------------------------------------
 Thu May  4 07:17:39 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.3.4:
