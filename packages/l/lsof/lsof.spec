@@ -23,7 +23,9 @@ Summary:        A Program That Lists Information about Files Opened by Processes
 License:        Zlib
 Group:          System/Monitoring
 URL:            https://github.com/lsof-org/lsof
-Source:         https://github.com/lsof-org/lsof/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+#Source:         https://github.com/lsof-org/lsof/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# Repacked tarball to remove proprietary code in dialects/uw/uw7/sys/fs/
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  groff
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libselinux)

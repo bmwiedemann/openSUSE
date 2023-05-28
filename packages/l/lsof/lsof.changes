@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 23 11:10:46 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Repacked tarball to remove proprietary code in dialects/uw/uw7/sys/fs
+
+-------------------------------------------------------------------
 Sun Jan 22 18:20:03 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - lsof 4.98.0:
