@@ -16,9 +16,9 @@
 #
 
 
-%define lname	libicu72
-%define amajor   72
-%define aversion 72
+%define lname	libicu73
+%define amajor   73
+%define aversion 73
 %ifarch %armb hppa mips mips64 ppc ppc64 %sparc s390 s390x m68k
 %define be_platform 1
 %else
@@ -26,22 +26,24 @@
 %endif
 # icu-versioning.diff needs update for new Version too
 Name:           icu
-Version:        72.1
+Version:        73.1
 Release:        0
 Summary:        International Components for Unicode
 License:        ICU
 Group:          Development/Libraries/C and C++
 URL:            https://icu.unicode.org/
-Source:         https://github.com/unicode-org/icu/releases/download/release-72-1/icu4c-72_1-src.tgz
-Source2:        https://github.com/unicode-org/icu/releases/download/release-72-1/icu4c-72_1-src.tgz.asc
-Source3:        https://github.com/unicode-org/icu/releases/download/release-72-1/icu4c-72_1-docs.zip
-Source4:        https://github.com/unicode-org/icu/releases/download/release-72-1/icu4c-72_1-docs.zip.asc
+Source:         https://github.com/unicode-org/icu/releases/download/release-73-1/icu4c-73_1-src.tgz
+Source2:        https://github.com/unicode-org/icu/releases/download/release-73-1/icu4c-73_1-src.tgz.asc
+Source3:        https://github.com/unicode-org/icu/releases/download/release-73-1/icu4c-73_1-docs.zip
+Source4:        https://github.com/unicode-org/icu/releases/download/release-73-1/icu4c-73_1-docs.zip.asc
+Source5:        %name.keyring
 Source100:      baselibs.conf
 Patch4:         icu-fix-install-mode-files.diff
 Patch6:         icu-error-reporting.diff
 Patch7:         icu-avoid-x87-excess-precision.diff
 Patch8:         locale.diff
 Patch9:         nan-undefined-conversion.patch
+Patch10:        icu-UCHAR-uint16t.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config

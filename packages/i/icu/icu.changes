@@ -1,8 +1,21 @@
 -------------------------------------------------------------------
+Thu May 25 12:52:50 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add icu-UCHAR-uint16t.patch: fixes builds where UCHAR_TYPE is
+  re-defined such as libqt5-qtwebengine
+
+-------------------------------------------------------------------
+Thu Apr 13 23:05:00 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 73.1
+  * Improved Japanese and Korean short-text line breaking
+  * Reduction of C++ memory use in date formatting
+
+-------------------------------------------------------------------
 Thu Mar  2 09:23:48 UTC 2023 - Martin Liška <mliska@suse.cz>
 
-- Use -fexcess-precision=fast as GCC 13 will default to -fexcess-precision=standard
-  for C++.
+- Use -fexcess-precision=fast as GCC 13 will default to
+  -fexcess-precision=standard for C++.
 
 -------------------------------------------------------------------
 Wed Oct 19 11:22:26 UTC 2022 - Jan Engelhardt <jengelh@inai.de>

@@ -703,4 +703,14 @@ Jan added the patch name of all changed patches.</comment>
   for C++. (forwarded request 1068645 from marxin)</comment>
     <requestid>1069482</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>164b1dfaaa28d15f7a31bb7874d55735</srcmd5>
+    <version>73.1</version>
+    <time>1685294478</time>
+    <user>dimstar_suse</user>
+    <comment>- Add icu-UCHAR-uint16t.patch: fixes builds where UCHAR_TYPE is
+  re-defined such as libqt5-qtwebengine
+- Update to release 73.1</comment>
+    <requestid>1089063</requestid>
+  </revision>
 </revisionlist>
