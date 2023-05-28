@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May 27 21:36:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.2:
+  * allow to convert a CFG, for which stack sizes have not been
+    computed, to Bytecode even in the presence of mergeable
+    TryBegin/TryEnd
+  * remove spurious TryEnd leftover when going from CFG to
+    Bytecode
+
+-------------------------------------------------------------------
 Wed Apr 19 09:32:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.14.1:

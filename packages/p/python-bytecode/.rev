@@ -49,4 +49,17 @@
     targeting a ``NOP`` PR #117</comment>
     <requestid>1080283</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>234f90f08d6a1de727d3d30743d9c39f</srcmd5>
+    <version>0.14.2</version>
+    <time>1685294613</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.14.2:
+  * allow to convert a CFG, for which stack sizes have not been
+    computed, to Bytecode even in the presence of mergeable
+    TryBegin/TryEnd
+  * remove spurious TryEnd leftover when going from CFG to
+    Bytecode</comment>
+    <requestid>1089360</requestid>
+  </revision>
 </revisionlist>
