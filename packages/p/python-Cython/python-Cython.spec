@@ -19,7 +19,7 @@
 %bcond_with test
 %{?sle15_python_module_pythons}
 Name:           python-Cython
-Version:        0.29.34
+Version:        0.29.35
 Release:        0
 Summary:        The Cython compiler for writing C extensions for the Python language
 License:        Apache-2.0
