@@ -78,4 +78,17 @@
   * Add a `FakeWebpackLoader` for running tests</comment>
     <requestid>1064210</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a0118cbf902f0e351766beeaa5f12cca</srcmd5>
+    <version>2.0.0</version>
+    <time>1685393287</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.0:
+  * Update examples to use `webpack-bundle-tracker@2.0.0` API and
+    keep version parity with it
+  * Update Django to 3.2.19
+  * Add mocked `get_assets` method to `FakeWebpackLoader` for
+    usage in tests</comment>
+    <requestid>1089584</requestid>
+  </revision>
 </revisionlist>

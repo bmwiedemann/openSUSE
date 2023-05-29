@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 29 14:13:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.0:
+  * Update examples to use `webpack-bundle-tracker@2.0.0` API and
+    keep version parity with it
+  * Update Django to 3.2.19
+  * Add mocked `get_assets` method to `FakeWebpackLoader` for
+    usage in tests
+
+-------------------------------------------------------------------
 Fri Feb 10 10:20:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.1:
