@@ -113,4 +113,20 @@
     other programs: #23</comment>
     <requestid>1089439</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b0a79286f8f6a11cde5274b4ac895959</srcmd5>
+    <version>3.0.1~0</version>
+    <time>1685393267</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.1:
+  * Fixed issue where empty directories were automatically being pruned
+    despite not opting into --prune.
+  * Fixed issue where searching via globs or regex doesn't work when
+    user has a config file.
+  * Added exit codes to erdtree.
+  * Progress indicator now acquires a lock to stdout reduce likelihood
+    of printing the progress-text being a bottleneck.
+  * Some code-cleanup.</comment>
+    <requestid>1089523</requestid>
+  </revision>
 </revisionlist>

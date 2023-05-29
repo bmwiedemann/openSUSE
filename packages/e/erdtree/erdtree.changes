@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 29 07:56:33 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.0.1:
+  * Fixed issue where empty directories were automatically being pruned
+    despite not opting into --prune.
+  * Fixed issue where searching via globs or regex doesn't work when
+    user has a config file.
+  * Added exit codes to erdtree.
+  * Progress indicator now acquires a lock to stdout reduce likelihood
+    of printing the progress-text being a bottleneck.
+  * Some code-cleanup.
+
+-------------------------------------------------------------------
 Sun May 28 11:07:36 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.0.0:
