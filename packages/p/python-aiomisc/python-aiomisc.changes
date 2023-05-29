@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon May 29 14:36:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 16.3:
+  * Use `poem-plugins` for creating `aiomisc/version.py` file and
+    bump version when publishing.
+  * some non-public imports might be broken, mainly typing, and
+    the `aiomisc.io` module
+  * Buffered log handler in `aiomisc.log`, is now correct
+    finalize when an entrypoint stops.
+  * Support stream compression for opening files with:
+    * `GZIP` - compressed files
+    * `LZMA` - compressed files
+    * `BZ2` - compressed files
+  * Added `aiohttp_asgi` objects to `__all__` in
+    `aiomisc.service.asgi`
+  * `aiomisc.Service` subclasses is now can be serialized with
+    `pickle`
+  * Improves typing for:
+      * `aiomisc.io`
+      * `aiomisc.pool`
+      * `aiomisc.service.udp`
+      * `aiomisc.worker_pool.WorkerPool`
+  * Improve documentation
+
+-------------------------------------------------------------------
 Fri May 12 20:33:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add logging-journald dependency 
