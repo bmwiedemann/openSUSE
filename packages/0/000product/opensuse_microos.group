@@ -1386,8 +1386,8 @@
     <package name="libibus-1_0-5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libical-glib3" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libical3" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
-    <package name="libicu72" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
-    <package name="libicu72-ledata" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
+    <package name="libicu73" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
+    <package name="libicu73-ledata" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libid3tag0_16_2" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libidn2-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libidn2-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
