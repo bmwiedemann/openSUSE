@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Mar 03 14:10:48 UTC 2023 - andrea.manzini@suse.com
+
+- Update to version 0.1.7:
+  * Release version 0.1.7
+  * libcallaudio: Properly handle successful return code
+  * Release version 0.1.6
+  * libcallaudio: Set error in sync API if unsuccessful
+  * libcallaudio: Drop DBus method return value in sync and async functions
+  * libcallaudio: Make logging consistent between sync and async API
+  * libcallaudio: Distinguish DBus error from unsuccessful operations
+  * libcallaudio: Prefer using FALSE instead of 0
+  * Release version 0.1.5
+  * cad-pulse: relax card filtering even more
+  * cad-pulse: stop polling for new cards
+  * cad-pulse: relax card filtering
+  * cad-pulse: fix segfault when there is no target port
+  * cad-manager: Don't return error on unsuccessful operations
+  * cad-manager: Return TRUE when returning error for DBus method invocation
+  * libcallaudio: Fix typo in documentation
+  * build: Enable more warnings
+  * cad-manager: Avoid magic constant
+  * cli: return non zero exit status on failure
+
+-------------------------------------------------------------------
 Thu Sep 01 20:33:20 UTC 2022 - bjorn.lie@gmail.com
 
 - Update to version 0.1.4:

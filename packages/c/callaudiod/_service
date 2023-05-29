@@ -1,7 +1,7 @@
 <services>
   <service mode="disabled" name="obs_scm">
     <param name="url">https://gitlab.com/mobian1/callaudiod.git</param>
-    <param name="revision">refs/tags/0.1.4</param>
+    <param name="revision">refs/tags/0.1.7</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
