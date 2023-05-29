@@ -1648,4 +1648,20 @@ MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme
     <comment></comment>
     <requestid>1081097</requestid>
   </revision>
+  <revision rev="201" vrev="1">
+    <srcmd5>c65d1f2240a4fd1a90f9d7f655fa8fde</srcmd5>
+    <version>44.3</version>
+    <time>1685393264</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1089192 from iznogood
+
+- Update to version 44.3:
+  + Fix failure to create web applications.
+  + Fix crashes when using bookmarks popover.
+  + Fix storage access (Intelligent Tracking Prevention) permission
+    requests.
+  + Remove Purism metadata from appdata file.
+  + Updated translations.</comment>
+    <requestid>1089505</requestid>
+  </revision>
 </revisionlist>
