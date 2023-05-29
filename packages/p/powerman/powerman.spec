@@ -31,13 +31,13 @@
 %endif
 
 Name:           powerman
-Version:        2.3.26
+Version:        2.3.27
 Release:        0
 Summary:        Centralized Power Control for Clusters
 License:        GPL-2.0-or-later
 Group:          Productivity/Clustering/HA
 URL:            https://github.com/chaos/powerman
-Source0:        https://github.com/chaos/%{name}/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/chaos/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Patch1:         service-dynamic-user-autofiles.patch
 Patch2:         service-dynamic-user-configure.patch
 Patch3:         harden_powerman.service.patch
@@ -136,14 +136,14 @@ systemd-tmpfiles --create %{_tmpfilesdir}/powerman.conf
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS DISCLAIMER COPYING NEWS README TODO
+%doc DISCLAIMER COPYING NEWS
 %{_bindir}/*
 %{_mandir}/man?/*.*
 %exclude %{_mandir}/man3/*.*
 %{_sbindir}/*
 %config %{_sysconfdir}/powerman/
 %attr(0644,root,root) %{_unitdir}/%{name}.service
-%{_tmpfilesdir}/powerman.conf
+%attr(0644,root,root) %{_tmpfilesdir}/powerman.conf
 %{?have_sysuser:%{_sysusersdir}/system-user-%{name}.conf}
 
 %files devel

@@ -242,4 +242,12 @@
 - Utilize sysuser infrastructure to set user/group powerman. (forwarded request 1069386 from eeich)</comment>
     <requestid>1069399</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>49f40db9ac7568bf3dbdf33943bf18e5</srcmd5>
+    <version>2.3.27</version>
+    <time>1685393270</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089546</requestid>
+  </revision>
 </revisionlist>

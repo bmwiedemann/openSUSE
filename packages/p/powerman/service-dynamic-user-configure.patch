@@ -1,7 +1,7 @@
 Index: powerman-2.3.26/configure
 ===================================================================
---- powerman-2.3.26.orig/configure	2021-05-13 09:27:08.014457823 +0200
-+++ powerman-2.3.26/configure	2021-05-13 09:28:54.294979035 +0200
+--- powerman-2.3.26.orig/configure
++++ powerman-2.3.26/configure
 @@ -633,6 +633,7 @@ ac_subst_vars='am__EXEEXT_FALSE
  am__EXEEXT_TRUE
  LTLIBOBJS
@@ -10,7 +10,7 @@ Index: powerman-2.3.26/configure
  RUN_AS_USER
  pkgconfigdir
  WITH_PKG_CONFIG_FALSE
-@@ -818,6 +819,7 @@ with_ncurses
+@@ -820,6 +821,7 @@ with_systemdsystemunitdir
  with_tcp_wrappers
  with_pkgconfig_dir
  with_user
@@ -18,7 +18,7 @@ Index: powerman-2.3.26/configure
  '
        ac_precious_vars='build_alias
  host_alias
-@@ -1501,6 +1503,7 @@ Optional Packages:
+@@ -1503,6 +1505,7 @@ Optional Packages:
                            where to install pkg-config *.pc files
                            (EPREFIX/lib/pkgconfig)
    --with-user=username    user for powerman daemon (daemon)
@@ -26,7 +26,7 @@ Index: powerman-2.3.26/configure
  
  Some influential environment variables:
    CC          C compiler command
-@@ -13622,7 +13625,7 @@ fi
+@@ -13865,7 +13868,7 @@ fi
  if test "${with_systemdsystemunitdir+set}" = set; then :
    withval=$with_systemdsystemunitdir;
  else
@@ -35,7 +35,7 @@ Index: powerman-2.3.26/configure
  fi
  
   if test x"$with_systemdsystemunitdir" != xno; then :
-@@ -14149,9 +14152,10 @@ fi
+@@ -14307,9 +14310,10 @@ fi
  
  
  
@@ -47,13 +47,13 @@ Index: powerman-2.3.26/configure
      { $as_echo "$as_me:${as_lineno-$LINENO}: checking user to run as" >&5
  $as_echo_n "checking user to run as... " >&6; }
  
-@@ -14174,12 +14178,33 @@ _ACEOF
+@@ -14332,12 +14336,32 @@ _ACEOF
      { $as_echo "$as_me:${as_lineno-$LINENO}: result: ${RUN_AS_USER}" >&5
  $as_echo "${RUN_AS_USER}" >&6; }
  
 +    { $as_echo "$as_me:$LINENO: checking group to run as" >&5
 +$as_echo_n "checking group to run as... " >&6; }
-+
+ 
 +# Check whether --with-group was given.
 +if test "${with_group+set}" = set; then :
 +  withval=$with_group;        case "${withval}" in
@@ -73,16 +73,15 @@ Index: powerman-2.3.26/configure
 +    { $as_echo "$as_me:$LINENO: result: ${RUN_AS_GROUP}" >&5
 +$as_echo "${RUN_AS_GROUP}" >&6; }
  
- 
  ##
  # Epilogue.
  ##
--ac_config_files="$ac_config_files Makefile examples/powerman_el72.spec libpowerman/Makefile libpowerman/libpowerman.pc liblsd/Makefile libcommon/Makefile powerman/Makefile powermand/Makefile httppower/Makefile snmppower/Makefile plmpower/Makefile etc/Makefile scripts/Makefile scripts/powerman scripts/tmpfiles.d/powerman.conf heartbeat/Makefile man/Makefile man/powerman.1 man/libpowerman.3 man/powerman.conf.5 man/powerman.dev.5 man/httppower.8 man/plmpower.8 man/powermand.8 man/vpcd.8 test/Makefile test/mcr.conf test/sierra.conf test/t07.conf test/t09.conf test/t10.conf test/t17.conf test/t18.conf test/t19.conf test/t20.conf test/t21.conf test/t22.conf test/t23.conf test/t24.conf test/t25.conf test/t26.conf test/t27.conf test/t28.conf test/t29.conf test/t30.conf test/t31.conf test/t32.conf test/t33.conf test/t34.conf test/t35.conf test/t36.conf test/t37.conf test/t38.conf test/t39.conf test/t40.conf test/t41.conf test/t42.conf test/t43.conf test/t44.conf test/t45.conf test/t46.conf test/t47.conf test/t48.conf test/t49.conf test/t50.conf test/t51.conf test/t53.conf test/t54.conf test/t55.conf test/t60.conf test/t61.conf test/test.conf test/test4.conf"
-+ac_config_files="$ac_config_files Makefile examples/powerman_el72.spec libpowerman/Makefile libpowerman/libpowerman.pc liblsd/Makefile libcommon/Makefile powerman/Makefile powermand/Makefile httppower/Makefile snmppower/Makefile plmpower/Makefile etc/Makefile scripts/Makefile scripts/powerman scripts/powerman.service scripts/tmpfiles.d/powerman.conf heartbeat/Makefile man/Makefile man/powerman.1 man/libpowerman.3 man/powerman.conf.5 man/powerman.dev.5 man/httppower.8 man/plmpower.8 man/powermand.8 man/vpcd.8 test/Makefile test/mcr.conf test/sierra.conf test/t07.conf test/t09.conf test/t10.conf test/t17.conf test/t18.conf test/t19.conf test/t20.conf test/t21.conf test/t22.conf test/t23.conf test/t24.conf test/t25.conf test/t26.conf test/t27.conf test/t28.conf test/t29.conf test/t30.conf test/t31.conf test/t32.conf test/t33.conf test/t34.conf test/t35.conf test/t36.conf test/t37.conf test/t38.conf test/t39.conf test/t40.conf test/t41.conf test/t42.conf test/t43.conf test/t44.conf test/t45.conf test/t46.conf test/t47.conf test/t48.conf test/t49.conf test/t50.conf test/t51.conf test/t53.conf test/t54.conf test/t55.conf test/t60.conf test/t61.conf test/test.conf test/test4.conf"
+-ac_config_files="$ac_config_files Makefile examples/powerman_el72.spec libpowerman/Makefile libpowerman/libpowerman.pc liblsd/Makefile libcommon/Makefile powerman/Makefile powermand/Makefile httppower/Makefile redfishpower/Makefile snmppower/Makefile plmpower/Makefile etc/Makefile scripts/Makefile scripts/powerman scripts/tmpfiles.d/powerman.conf heartbeat/Makefile man/Makefile man/powerman.1 man/libpowerman.3 man/powerman.conf.5 man/powerman.dev.5 man/httppower.8 man/redfishpower.8 man/plmpower.8 man/powermand.8 man/vpcd.8 test/Makefile test/mcr.conf test/sierra.conf test/t07.conf test/t09.conf test/t10.conf test/t17.conf test/t18.conf test/t19.conf test/t20.conf test/t21.conf test/t22.conf test/t23.conf test/t24.conf test/t25.conf test/t26.conf test/t27.conf test/t28.conf test/t29.conf test/t30.conf test/t31.conf test/t32.conf test/t33.conf test/t34.conf test/t35.conf test/t36.conf test/t37.conf test/t38.conf test/t39.conf test/t40.conf test/t41.conf test/t42.conf test/t43.conf test/t44.conf test/t46.conf test/t47.conf test/t48.conf test/t49.conf test/t50.conf test/t51.conf test/t53.conf test/t54.conf test/t55.conf test/t60.conf test/t61.conf test/t62.conf test/t63.conf test/test.conf test/test4.conf"
++ac_config_files="$ac_config_files Makefile examples/powerman_el72.spec libpowerman/Makefile libpowerman/libpowerman.pc liblsd/Makefile libcommon/Makefile powerman/Makefile powermand/Makefile httppower/Makefile redfishpower/Makefile snmppower/Makefile plmpower/Makefile etc/Makefile scripts/Makefile scripts/powerman scripts/powerman.service scripts/tmpfiles.d/powerman.conf heartbeat/Makefile man/Makefile man/powerman.1 man/libpowerman.3 man/powerman.conf.5 man/powerman.dev.5 man/httppower.8 man/redfishpower.8 man/plmpower.8 man/powermand.8 man/vpcd.8 test/Makefile test/mcr.conf test/sierra.conf test/t07.conf test/t09.conf test/t10.conf test/t17.conf test/t18.conf test/t19.conf test/t20.conf test/t21.conf test/t22.conf test/t23.conf test/t24.conf test/t25.conf test/t26.conf test/t27.conf test/t28.conf test/t29.conf test/t30.conf test/t31.conf test/t32.conf test/t33.conf test/t34.conf test/t35.conf test/t36.conf test/t37.conf test/t38.conf test/t39.conf test/t40.conf test/t41.conf test/t42.conf test/t43.conf test/t44.conf test/t46.conf test/t47.conf test/t48.conf test/t49.conf test/t50.conf test/t51.conf test/t53.conf test/t54.conf test/t55.conf test/t60.conf test/t61.conf test/t62.conf test/t63.conf test/test.conf test/test4.conf"
  
  
  cat >confcache <<\_ACEOF
-@@ -15231,6 +15256,7 @@ do
+@@ -15394,6 +15418,7 @@ do
      "etc/Makefile") CONFIG_FILES="$CONFIG_FILES etc/Makefile" ;;
      "scripts/Makefile") CONFIG_FILES="$CONFIG_FILES scripts/Makefile" ;;
      "scripts/powerman") CONFIG_FILES="$CONFIG_FILES scripts/powerman" ;;
