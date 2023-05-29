@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun May 28 09:20:44 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.2:
+  + vnc-pipewire-stream and rdp-pipewire-stream: Lock buffer
+    mutex before removing buffer entry.
+  + vnc and rdp: Ensure PipeWire buffers to be queued before
+    destroying them.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu May 18 04:19:42 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Drop %systemd_user_postun_with_restart macro from the %postun
+  directive. It's been deprecated and emptied (expands to nil) on
+  both Tumbleweed and Leap already.
+
+-------------------------------------------------------------------
 Sat Apr 22 19:25:05 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 44.1:

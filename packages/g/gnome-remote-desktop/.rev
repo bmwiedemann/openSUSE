@@ -170,4 +170,12 @@ need to be staged with libVNCServer sr#862644 (forwarded request 862647 from fcr
     <comment></comment>
     <requestid>1082545</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4b459af0b9fc61792956029b80854d06</srcmd5>
+    <version>44.2</version>
+    <time>1685393276</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089552</requestid>
+  </revision>
 </revisionlist>
