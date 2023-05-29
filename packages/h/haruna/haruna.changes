@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 29 06:17:45 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.11.1
+  Bugfixes:
+  * Fixed quit action not working
+  * Fixed osd not showing
+  * Fixed playlist repeating when the repeat setting was turned
+    off
+
+-------------------------------------------------------------------
 Mon May 15 06:23:38 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.11.0
