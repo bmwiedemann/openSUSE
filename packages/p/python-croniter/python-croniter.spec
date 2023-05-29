@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-croniter
-Version:        1.3.14
+Version:        1.3.15
 Release:        0
 Summary:        Python iterators for datetime objects with cron-like format
 License:        MIT
