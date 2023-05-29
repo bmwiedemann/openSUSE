@@ -17,7 +17,7 @@
 
 
 Name:           idzebra
-Version:        2.2.6
+Version:        2.2.7
 Release:        0
 Summary:        Fielded Free Text Engine with a Z39.50 Frontend
 License:        GPL-2.0-or-later

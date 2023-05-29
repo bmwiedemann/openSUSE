@@ -265,4 +265,14 @@
   * Fix result-sets not removed in some cases</comment>
     <requestid>1046309</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>e14f0aba0739ffad5107202c693cf477</srcmd5>
+    <version>2.2.7</version>
+    <time>1685393259</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.7:
+  * Fix Tcl not enabled by configure
+  * Buffer overflow fixes and reformats</comment>
+    <requestid>1089472</requestid>
+  </revision>
 </revisionlist>
