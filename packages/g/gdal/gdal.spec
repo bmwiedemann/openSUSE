@@ -57,6 +57,8 @@ BuildRequires:  geos-devel >= 3
 BuildRequires:  giflib-devel
 BuildRequires:  hdf5-devel
 BuildRequires:  lapack-devel
+BuildRequires:  libcryptopp-devel
+BuildRequires:  libdeflate-devel
 BuildRequires:  libtool
 BuildRequires:  libzstd-devel
 BuildRequires:  mysql-devel
