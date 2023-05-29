@@ -131,4 +131,22 @@
     <comment></comment>
     <requestid>1076830</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>01acc7503da569d8aea2cc9c3b79f39f</srcmd5>
+    <version>1.6.3</version>
+    <time>1685393283</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.3:
+  * Implemented enhancements:
+    + Add german translations
+    + Add czech translations (very incomplete)
+    + Add hungarian translations
+  * Fixed bugs:
+    + Exit shortly after starting #289
+    + Error message when opening Whatsapp app for Linux #282
+  * Merged pull requests:
+    + Update es.po #293
+    + Explicitly specify Canberra dependency #283</comment>
+    <requestid>1089573</requestid>
+  </revision>
 </revisionlist>

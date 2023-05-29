@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 29 12:54:17 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6.3:
+  * Implemented enhancements:
+    + Add german translations
+    + Add czech translations (very incomplete)
+    + Add hungarian translations
+  * Fixed bugs:
+    + Exit shortly after starting #289
+    + Error message when opening Whatsapp app for Linux #282
+  * Merged pull requests:
+    + Update es.po #293
+    + Explicitly specify Canberra dependency #283
+
+-------------------------------------------------------------------
 Sun Apr  2 05:32:12 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Use gcc11-c++ for openSUSE Leap 15.5, fix "whatsapp-for-linux"

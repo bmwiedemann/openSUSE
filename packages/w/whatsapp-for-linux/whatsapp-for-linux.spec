@@ -17,7 +17,7 @@
 
 
 Name:           whatsapp-for-linux
-Version:        1.6.2
+Version:        1.6.3
 Release:        0
 Summary:        WhatsApp for Linux
 License:        GPL-3.0-only
@@ -36,7 +36,6 @@ BuildRequires:  gcc11-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-
 
 %description
 An unofficial WhatsApp desktop application written in C++.
