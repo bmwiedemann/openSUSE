@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May 29 12:21:42 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 0.12.1:
+  * Fixed
+    + Very long startup times on Wayland systems with broken
+      xdg-portal setup
+    + Error on startup with GLX when using old mesa platforms
+    + Character ; inside the URI in OSC 8 sequence breaking the URI
+    + Selection on last line not updating correctly on resize
+
+-------------------------------------------------------------------
 Sat Mar 25 20:02:46 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
 
 - Disable source services again
