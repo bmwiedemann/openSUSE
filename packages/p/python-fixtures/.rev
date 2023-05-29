@@ -243,4 +243,15 @@
     <comment></comment>
     <requestid>1081924</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>99d6de4495a3a01cc331efd969fce312</srcmd5>
+    <version>4.1.0</version>
+    <time>1685393252</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.0:
+  * Drop support for Python 3.6 (EOL)
+  * Add a new ``WarningsFilter`` filter, allowing users to filter
+    warnings as part of their tests, before restoring said filters.</comment>
+    <requestid>1089350</requestid>
+  </revision>
 </revisionlist>

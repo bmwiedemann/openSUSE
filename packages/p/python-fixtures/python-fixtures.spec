@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-fixtures
-Version:        4.0.1
+Version:        4.1.0
 Release:        0
 Summary:        Fixtures, reusable state for writing clean tests and more
 License:        Apache-2.0 OR BSD-3-Clause
