@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 29 12:50:07 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.99.2
+  * Export the event names through helper functions
+  * scanner: add the Interface.plainname property
+
+-------------------------------------------------------------------
 Wed May 17 09:20:52 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.99.1
