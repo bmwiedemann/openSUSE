@@ -52,4 +52,14 @@
     Python 3.9 and 3.10 are supported.</comment>
     <requestid>1006330</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>03bb8c14c50098e570c07479e1be26c5</srcmd5>
+    <version>3.3.0</version>
+    <time>1685393278</time>
+    <user>dimstar_suse</user>
+    <comment>- add sle15_python_module_pythons (jsc#PED-68)
+- Use pyproject to build the package
+</comment>
+    <requestid>1089565</requestid>
+  </revision>
 </revisionlist>

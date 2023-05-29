@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 29 11:38:28 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+- Use pyproject to build the package
+
+-------------------------------------------------------------------
 Tue Sep 27 06:52:19 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove not needed patch in prep section 
