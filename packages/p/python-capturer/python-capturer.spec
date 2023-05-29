@@ -1,7 +1,7 @@
 #
 # spec file for package python-capturer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-capturer
 Version:        3.0
 Release:        0
@@ -25,11 +25,12 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://capturer.readthedocs.io
 Source:         https://files.pythonhosted.org/packages/source/c/capturer/capturer-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module humanfriendly >= 8.0}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest >= 3.0.4}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module humanfriendly >= 8.0}
-BuildRequires:  %{python_module pytest >= 3.0.4}
 Requires:       python-humanfriendly >= 8.0
 BuildArch:      noarch
 
@@ -48,10 +49,10 @@ but definitely won't work on Windows (due to the use of the platform dependent
 %setup -q -n capturer-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,6 +62,7 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/capturer
+%{python_sitelib}/capturer-%{version}*-info
 
 %changelog

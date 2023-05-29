@@ -39,4 +39,14 @@
     <comment></comment>
     <requestid>828124</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>c679f32597d9c9cd41cfe7bc1709687e</srcmd5>
+    <version>3.0</version>
+    <time>1685393278</time>
+    <user>dimstar_suse</user>
+    <comment>- add sle15_python_module_pythons (jsc#PED-68)
+- use pyproject macros to build
+</comment>
+    <requestid>1089551</requestid>
+  </revision>
 </revisionlist>
