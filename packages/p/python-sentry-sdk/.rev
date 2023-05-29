@@ -183,4 +183,41 @@
     <comment></comment>
     <requestid>1063615</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3b72a5b441ad90db9ad28c289ed25cf9</srcmd5>
+    <version>1.24.0</version>
+    <time>1685393258</time>
+    <user>dimstar_suse</user>
+    <comment>- add mock.patch to use mock from stdlib 
+
+- Update to 1.24.0
+  - New: Celery Beat exclude tasks option (#2130)
+  - New: Add support for ExceptionGroups (#2025)
+  - Prefer importlib.metadata over pkg_resources if available (#2081)
+  - Work with a copy of request, vars in the event (#2125)
+  - Pinned version of dependency that broke the build (#2133)
+- Changes from 1.23.1
+  - Disable Django Cache spans by default. (#2120)
+- Changes from 1.23.0
+  - New: Add loguru integration (#1994)
+  - Do not truncate request body if request_bodies is &quot;always&quot; (#2092)
+  - Fixed Celery headers for Beat auto-instrumentation (#2102)
+  - Add db.operation to Redis and MongoDB spans (#2089)
+  - Make sure we're importing redis the library (#2106)
+  - Add include_source_context option (#2020)
+  - Import Markup from markupsafe (#2047)
+  - Fix __qualname__ missing attribute in asyncio integration (#2105)
+  - Remove relay extension from AWS Layer (#2068)
+  - Add a note about pip freeze to the bug template (#2103)
+- Changes from 1.22.2
+  - Fix: Django caching spans when using keyword arguments (#2086)
+  - Fix: Duration in Celery Beat tasks monitoring (#2087)
+  - Fix: Docstrings of SPANDATA (#2084) by @antonpirker
+- Changes from 1.22.1
+  - Fix: Handle a list of keys (not just a single key) in Django cache spans (#2082)
+- Changes from 1.22.0
+  - Add cache.hit and cache.item_size to Django (#2057)
+  - Use http.method instead of method (#2054)</comment>
+    <requestid>1089576</requestid>
+  </revision>
 </revisionlist>

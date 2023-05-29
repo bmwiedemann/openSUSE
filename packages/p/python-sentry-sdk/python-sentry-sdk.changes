@@ -1,4 +1,117 @@
 -------------------------------------------------------------------
+Mon May 29 13:31:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add mock.patch to use mock from stdlib 
+
+-------------------------------------------------------------------
+Tue May 23 10:39:34 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.24.0
+  - New: Celery Beat exclude tasks option (#2130)
+  - New: Add support for ExceptionGroups (#2025)
+  - Prefer importlib.metadata over pkg_resources if available (#2081)
+  - Work with a copy of request, vars in the event (#2125)
+  - Pinned version of dependency that broke the build (#2133)
+- Changes from 1.23.1
+  - Disable Django Cache spans by default. (#2120)
+- Changes from 1.23.0
+  - New: Add loguru integration (#1994)
+  - Do not truncate request body if request_bodies is "always" (#2092)
+  - Fixed Celery headers for Beat auto-instrumentation (#2102)
+  - Add db.operation to Redis and MongoDB spans (#2089)
+  - Make sure we're importing redis the library (#2106)
+  - Add include_source_context option (#2020)
+  - Import Markup from markupsafe (#2047)
+  - Fix __qualname__ missing attribute in asyncio integration (#2105)
+  - Remove relay extension from AWS Layer (#2068)
+  - Add a note about pip freeze to the bug template (#2103)
+- Changes from 1.22.2
+  - Fix: Django caching spans when using keyword arguments (#2086)
+  - Fix: Duration in Celery Beat tasks monitoring (#2087)
+  - Fix: Docstrings of SPANDATA (#2084) by @antonpirker
+- Changes from 1.22.1
+  - Fix: Handle a list of keys (not just a single key) in Django cache spans (#2082)
+- Changes from 1.22.0
+  - Add cache.hit and cache.item_size to Django (#2057)
+  - Use http.method instead of method (#2054)
+  - Handle non-int exc.status_code in Starlette (#2075)
+  - Handle SQLAlchemy engine.name being bytes (#2074)
+  - Fix KeyError in capture_checkin if SDK is not initialized (#2073)
+  - Use functools.wrap for ThreadingIntegration patches to fix attributes (#2080)
+  - Pin urllib3 to <2.0.0 for now (#2069)
+- Changes from 1.21.1
+  - Do not send monitor_config when unset (#2058)
+  - Add db.system span data (#2040, #2042)
+  - Fix memory leak in profiling (#2049)
+  - Fix crash loop when returning none in before_send (#2045)
+
+-------------------------------------------------------------------
+Tue Apr 25 14:33:14 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.21.0
+  - Better handling of redis span/breadcrumb data (#2033)
+  - Add db.system to redis and SQLAlchemy db spans (#2037, #2038, #2039) (#2037)
+  - Upgraded linting tooling (#2026)
+  - Made code more resilient. (#2031)
+- Changes from 1.20.0
+  - Send all events to /envelope endpoint when tracing is enabled (#2009)
+  - Note: If you’re self-hosting Sentry 9, you need to stay in the
+    previous version of the SDK or update your self-hosted to at least 20.6.0
+  - Profiling: Remove profile context from SDK (#2013)
+  - Profiling: Additionl performance improvements to the profiler (#1991)
+  - Fix: Celery Beat monitoring without restarting the Beat process (#2001)
+  - Fix: Using the Codecov uploader instead of deprecated python package (#2011)
+  - Fix: Support for Quart (#2003)` (#2003)
+- Changes from 1.19.1
+  - Make auto monitoring beat update support Celery 4 and 5 (#1989)
+- Changes from 1.19.0
+  - New: Celery Beat auto monitoring (#1967)
+  - New: gRPC integration (#1911)
+  - New: socket integration (#1911)
+  - Fix: Do not trim span descriptions. (#1983)
+- Changes from 1.18.0
+  - New: Implement EventScrubber (#1943)
+  - New: Added new functions_to_trace option for central way of performance instrumentation (#1960)
+  - Updated denylist to include other widely used cookies/headers (#1972)
+  - Forward all sentry- baggage items (#1970)
+  - Update OSS licensing (#1973)
+  - Profiling: Handle non frame types in profiler (#1965)
+  - Tests: Bad arq dependency in tests (#1966)
+  - Better naming (#1962)
+- Changes from 1.17.0
+  - New: Monitor Celery Beat tasks with Sentry Cron Monitoring.
+  - New: Add decorator for Sentry tracing (#1089)
+  - Make Django signals tracing optional (#1929)
+  - See the Django Guide to learn more.
+  - Deprecated with_locals in favor of include_local_variables (#1924)
+  - Added top level API to get current span (#1954)
+  - Profiling: Add profiler options to init (#1947)
+  - Profiling: Set active thread id for quart (#1830)
+  - Fix: Update get_json function call for werkzeug 2.1.0+ (#1939)
+  - Fix: Returning the tasks result. (#1931)
+  - Fix: Rename MYPY to TYPE_CHECKING (#1934)
+  - Fix: Fix type annotation for ignore_errors in sentry_sdk.init() (#1928)
+  - Tests: Start a real http server instead of mocking libs (#1938)
+- Changes from 1.16.0
+  - New: Add arq Integration (#1872)
+  - Update of Falcon Integration (#1733)
+  - Adding Cloud Resource Context integration (#1882)
+  - Profiling: Use the transaction timestamps to anchor the profile (#1898)
+  - Profiling: Add debug logs to profiling (#1883)
+  - Profiling: Start profiler thread lazily (#1903)
+  - Fixed checks for structured http data (#1905)
+  - Make set_measurement public api and remove experimental status (#1909)
+  - Add trace_propagation_targets option (#1916)
+  - Add enable_tracing to default traces_sample_rate to 1.0 (#1900)
+  - Remove deprecated tracestate (#1907)
+  - Sanitize URLs in Span description and breadcrumbs (#1876)
+  - Mechanism should default to true unless set explicitly (#1889)
+  - Better setting of in-app in stack frames (#1894)
+  - Add workflow to test gevent (#1870)
+  - Updated outdated HTTPX test matrix (#1917)
+  - Switch to MIT license (#1908)
+
+-------------------------------------------------------------------
 Tue Feb  7 12:11:22 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.15.0

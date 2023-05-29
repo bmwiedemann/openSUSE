@@ -1,0 +1,63 @@
+Index: sentry-python-1.24.0/tests/tracing/test_decorator_py3.py
+===================================================================
+--- sentry-python-1.24.0.orig/tests/tracing/test_decorator_py3.py
++++ sentry-python-1.24.0/tests/tracing/test_decorator_py3.py
+@@ -1,4 +1,4 @@
+-import mock
++from unittest import mock
+ import pytest
+ import sys
+ 
+Index: sentry-python-1.24.0/tests/tracing/test_misc.py
+===================================================================
+--- sentry-python-1.24.0.orig/tests/tracing/test_misc.py
++++ sentry-python-1.24.0/tests/tracing/test_misc.py
+@@ -1,4 +1,4 @@
+-from mock import MagicMock
++from unittest.mock import MagicMock
+ import pytest
+ import gc
+ import uuid
+Index: sentry-python-1.24.0/tests/test_api.py
+===================================================================
+--- sentry-python-1.24.0.orig/tests/test_api.py
++++ sentry-python-1.24.0/tests/test_api.py
+@@ -1,4 +1,4 @@
+-import mock
++from unittest import mock
+ 
+ from sentry_sdk import (
+     configure_scope,
+Index: sentry-python-1.24.0/tests/test_client.py
+===================================================================
+--- sentry-python-1.24.0.orig/tests/test_client.py
++++ sentry-python-1.24.0/tests/test_client.py
+@@ -1,7 +1,7 @@
+ # coding: utf-8
+ import os
+ import json
+-import mock
++from unittest import mock
+ import pytest
+ import subprocess
+ import sys
+Index: sentry-python-1.24.0/tests/test_crons.py
+===================================================================
+--- sentry-python-1.24.0.orig/tests/test_crons.py
++++ sentry-python-1.24.0/tests/test_crons.py
+@@ -1,4 +1,4 @@
+-import mock
++from unittest import mock
+ import pytest
+ import uuid
+ 
+Index: sentry-python-1.24.0/tests/tracing/test_decorator_py2.py
+===================================================================
+--- sentry-python-1.24.0.orig/tests/tracing/test_decorator_py2.py
++++ sentry-python-1.24.0/tests/tracing/test_decorator_py2.py
+@@ -1,4 +1,4 @@
+-import mock
++from unittest import mock
+ 
+ from sentry_sdk.tracing_utils_py2 import (
+     start_child_span_decorator as start_child_span_decorator_py2,

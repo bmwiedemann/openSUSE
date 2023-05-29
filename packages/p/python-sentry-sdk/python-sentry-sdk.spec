@@ -21,13 +21,14 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-sentry-sdk
-Version:        1.15.0
+Version:        1.24.0
 Release:        0
 Summary:        Python SDK for Sentry.io
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/getsentry/sentry-python
 Source0:        https://github.com/getsentry/sentry-python/archive/%{version}/sentry-python-%{version}.tar.gz
+Patch1:         mock.patch
 BuildRequires:  %{python_module Django >= 1.8}
 BuildRequires:  %{python_module Flask >= 0.11}
 BuildRequires:  %{python_module SQLAlchemy >= 1.2}
@@ -45,7 +46,7 @@ BuildRequires:  %{python_module rq >= 0.6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module starlette >= 0.19.1}
 BuildRequires:  %{python_module tornado >= 5}
-# upstream use %{python_module urllib3 >= 1.26.11}
+# upstream use %%{python_module urllib3 >= 1.26.11}
 BuildRequires:  %{python_module urllib3 >= 1.25.10}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -114,7 +115,7 @@ A Python SDK for Sentry.io.
 https://sentry.io/for/python/
 
 %prep
-%setup -q -n sentry-python-%{version}
+%autosetup -p1 -n sentry-python-%{version}
 
 %build
 %python_build
