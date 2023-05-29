@@ -28,6 +28,10 @@ Source:         https://files.pythonhosted.org/packages/source/k/kombu/kombu-%{v
 Patch0:         support-pyro-5.patch
 # PATCH-FIX-UPSTREAM Use zoneinfo, rather than pytz gh#celery/kombu#1680
 Patch1:         use-zoneinfo.patch
+# PATCH-FIX-UPSTREAM gh#celery/kombu#1651
+Patch2:         sqlalchemy-2.0.patch
+# PATCH-FIX-UPSTREAM gh#celery/kombu#1735
+Patch3:         0001-Support-redis-4.5.2.patch
 BuildRequires:  %{python_module Brotli >= 1.0.0}
 BuildRequires:  %{python_module PyYAML >= 3.10}
 BuildRequires:  %{python_module Pyro5}
@@ -41,6 +45,7 @@ BuildRequires:  %{python_module importlib-metadata >= 0.18}
 BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module pycurl >= 7.43.0.2}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module redis >= 3.4.1}
 BuildRequires:  %{python_module setuptools >= 20.6.7}
 BuildRequires:  %{python_module vine}

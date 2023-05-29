@@ -1,0 +1,44 @@
+From 3402c3489c5dd9833208d51c67259190bedfa35a Mon Sep 17 00:00:00 2001
+From: Daniel Garcia Moreno <daniel.garcia@suse.com>
+Date: Mon, 29 May 2023 08:59:01 +0200
+Subject: [PATCH] Support redis >= 4.5.2
+
+The redis-py 4.5.2 changes the UnixDomainSocketConnection class so now
+it inherits from AbstractConnection:
+https://github.com/redis/redis-py/releases/tag/v4.5.2
+
+This patch makes sure that the health_check_interval parameter is
+checked for the __init__ method of the main class and also the bases, so
+it doesn't fail with the newer version of redis-py.
+---
+ kombu/transport/redis.py      | 14 +++++++++-----
+ requirements/extras/redis.txt |  2 +-
+ 2 files changed, 10 insertions(+), 6 deletions(-)
+
+Index: kombu-5.2.4/kombu/transport/redis.py
+===================================================================
+--- kombu-5.2.4.orig/kombu/transport/redis.py
++++ kombu-5.2.4/kombu/transport/redis.py
+@@ -1139,11 +1139,17 @@ class Channel(virtual.Channel):
+ 
+         # If the connection class does not support the `health_check_interval`
+         # argument then remove it.
+-        if (
+-            hasattr(conn_class, '__init__') and
+-            not accepts_argument(conn_class.__init__, 'health_check_interval')
+-        ):
+-            connparams.pop('health_check_interval')
++        if hasattr(conn_class, '__init__'):
++            # check health_check_interval for the class and bases
++            # classes
++            classes = [conn_class]
++            if hasattr(conn_class, '__bases__'):
++                classes += list(conn_class.__bases__)
++            for klass in classes:
++                if accepts_argument(klass.__init__, 'health_check_interval'):
++                    break
++            else: # no break
++                connparams.pop('health_check_interval')
+ 
+         if conninfo.ssl:
+             # Connection(ssl={}) must be a dict containing the keys:

@@ -861,4 +861,16 @@
 - Switch BuildRequires to zoneinfo and timezone.</comment>
     <requestid>1078545</requestid>
   </revision>
+  <revision rev="78" vrev="4">
+    <srcmd5>14c3d32dc78c6119ac2504e3b89ac92a</srcmd5>
+    <version>5.2.4</version>
+    <time>1685393266</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Support-redis-4.5.2.patch to support latest version of
+  redis gh#celery/kombu#1735
+- Add sqlalchemy-2.0.patch to support latest version of sqlalchemy
+  gh#celery/kombu#1651
+</comment>
+    <requestid>1089520</requestid>
+  </revision>
 </revisionlist>

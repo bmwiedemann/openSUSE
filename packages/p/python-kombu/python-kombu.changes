@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 29 07:15:15 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add 0001-Support-redis-4.5.2.patch to support latest version of
+  redis gh#celery/kombu#1735
+- Add sqlalchemy-2.0.patch to support latest version of sqlalchemy
+  gh#celery/kombu#1651
+
+-------------------------------------------------------------------
 Wed Apr 12 02:16:37 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch use-zoneinfo.patch:
