@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Sun May 28 07:03:00 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- Require intelhex, not python-intelhex, as the former is already
+  in Factory
+
+-------------------------------------------------------------------
+Sat May 13 19:40:32 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up SPEC file
+
+-------------------------------------------------------------------
+Thu May 11 19:42:03 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package python-nkdfu, required by pynitrokey
