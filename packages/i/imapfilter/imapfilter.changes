@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 29 01:35:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.1:
+  * Add support for non-write actions on read-only mailboxes.
+  * Add new parameter to write process ID (PID) to file.
+  * New, more advanced, robust, and flexible recovery
+    mechanism, replaces the old automatic recovery functionality.
+    Note that, the config must be updated to use the new mechanism,
+    otherwise no recovery will take place on errors.
+  * Fix potential failure when deleting mailbox while
+    mailbox is selected.
+
+-------------------------------------------------------------------
 Sat Oct 22 18:45:40 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to 2.7.6:

@@ -361,4 +361,20 @@ It now only builds for &gt;12.2, not sure if there is a simple fix to get it to 
     <comment></comment>
     <requestid>1030869</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>9b7f0036e59c8e7b261c75f6e692b97e</srcmd5>
+    <version>2.8.1</version>
+    <time>1685393260</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.8.1:
+  * Add support for non-write actions on read-only mailboxes.
+  * Add new parameter to write process ID (PID) to file.
+  * New, more advanced, robust, and flexible recovery
+    mechanism, replaces the old automatic recovery functionality.
+    Note that, the config must be updated to use the new mechanism,
+    otherwise no recovery will take place on errors.
+  * Fix potential failure when deleting mailbox while
+    mailbox is selected.</comment>
+    <requestid>1089470</requestid>
+  </revision>
 </revisionlist>
