@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon May 29 16:47:50 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.5.3
+  Bug fixes:
+  * Correctly check if database needs to be updated
+  * Prevent incorrect log message about torrent content deletion
+  * Improve finished torrent handling
+  * Correctly initialize group box children as disabled in
+    Preferences
+  * Don't miss saving "download path" in SQLite storage
+  * Improve logging of running external program
+  Web UI:
+  * Disable UPnP for web UI by default
+  * Use workaround for IOS file picker
+  * Work around Chrome download limit
+  * Improve 'exporting torrent' behavior
+
+-------------------------------------------------------------------
 Tue Feb 28 07:42:31 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.5.2
