@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 22 18:00:36 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.4
+  * icons: Scale at size 16x16 to 128x128 (Fixes #385)
+  * icons: Fix centering of org.xfce.panel
+  * icons: Rename org.xfce.panel.statustray to org.xfce.panel.systray
+  * Fix memory leaks around gtk_get_current_event()
+  * tasklist: Fix use-after-free on tasklist child
+  * systray: Update icon also on status change
+  * Translation Updates
+
+-------------------------------------------------------------------
 Tue Mar 28 18:13:46 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.18.3
