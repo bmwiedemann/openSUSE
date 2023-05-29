@@ -483,4 +483,14 @@
   * Fix `ssn` provider for `zh_TW`.</comment>
     <requestid>1087106</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>8b19d5f9d8225ad46f93cf9052037a74</srcmd5>
+    <version>18.9.0</version>
+    <time>1685393253</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 18.9.0:
+  * Add `xml` provider
+  * Add `zh_CN` bank locale</comment>
+    <requestid>1089351</requestid>
+  </revision>
 </revisionlist>

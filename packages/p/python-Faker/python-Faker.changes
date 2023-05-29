@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May 27 21:11:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 18.9.0:
+  * Add `xml` provider
+  * Add `zh_CN` bank locale
+
+-------------------------------------------------------------------
 Sun May 14 15:22:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 18.7.0:
