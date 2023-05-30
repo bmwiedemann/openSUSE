@@ -220,4 +220,17 @@
     (#579).</comment>
     <requestid>1088457</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>852f3739cf2ba374ff0923c6b663e561</srcmd5>
+    <version>1.6.1</version>
+    <time>1685476901</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.1
+  * Fix an endless recursion in marker handling (#593).
+  * Fix an issue where the wheel tag was not built correctly under
+    certain circumstances (#591).
+  * Fix an issue where the tests included in the sdist failed due
+    to missing files (#589).</comment>
+    <requestid>1089623</requestid>
+  </revision>
 </revisionlist>
