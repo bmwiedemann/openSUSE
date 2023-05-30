@@ -81,4 +81,19 @@
     <comment></comment>
     <requestid>1082044</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1ac34d950bbc1ec0fff021d8229f89ee</srcmd5>
+    <version>1.2.14</version>
+    <time>1685476898</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.14:
+  * Bug fix release
+  * Fix return a correctly dedented docstring when long
+    docstring are using the D212 or D213 format.
+  * Add support for Python 3.11.
+  * Drop support for Python older than 3.7 in build systems like
+    pytest and tox, while ensuring the library remains
+    production-compatible.</comment>
+    <requestid>1089606</requestid>
+  </revision>
 </revisionlist>

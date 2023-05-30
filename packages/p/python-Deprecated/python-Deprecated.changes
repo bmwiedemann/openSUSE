@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 29 16:00:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.14:
+  * Bug fix release
+  * Fix return a correctly dedented docstring when long
+    docstring are using the D212 or D213 format.
+  * Add support for Python 3.11.
+  * Drop support for Python older than 3.7 in build systems like
+    pytest and tox, while ensuring the library remains
+    production-compatible.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:20:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
