@@ -17,14 +17,13 @@
 
 
 Name:           intel-opencl
-Version:        23.05.25593.11
+Version:        23.13.26032.30
 Release:        1%{?dist}
-Summary:        Intel(R) Graphics Compute Runtime for OpenCL(TM)
+Summary:        Intel Graphics Compute Runtime for OpenCL
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/intel/compute-runtime
 Source0:        https://github.com/intel/compute-runtime/archive/%{version}/compute-runtime-%{version}.tar.gz
-Patch0:         0001-include-cstdint-needed-when-compiling-with-gcc13.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  level-zero-devel
@@ -40,10 +39,10 @@ Requires:       libopencl-clang11
 ExclusiveArch:  x86_64
 
 %description
-Intel(R) Graphics Compute Runtime for OpenCL(TM).
+Intel Graphics Compute Runtime for OpenCL.
 
 %package devel
-Summary:        Intel Graphics Compute Runtime for OpenCL Driver
+Summary:        Headers for the Intel Graphics Compute Runtime OpenCL Driver
 Requires:       %{name} = %{version}-%{release}
 
 %description devel
@@ -80,7 +79,7 @@ rm -Rf %{buildroot}%{_prefix}/lib/debug
 %{_libdir}/intel-opencl/libigdrcl.so
 %{_libdir}/libocloc.so
 %{_libdir}/libze_intel_gpu.so.1
-%{_libdir}/libze_intel_gpu.so.1.3.25593
+%{_libdir}/libze_intel_gpu.so.1.3.*
 %{_bindir}/ocloc
 %{_libdir}/intel-opencl
 %if 0%{?suse_version} > 1500
@@ -95,5 +94,6 @@ rm -Rf %{buildroot}%{_prefix}/lib/debug
 
 %files devel
 %{_includedir}/ocloc_api.h
+%{_includedir}/zet_intel_gpu_debug.h
 
 %changelog
