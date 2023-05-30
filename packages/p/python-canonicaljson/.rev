@@ -138,4 +138,20 @@
     <comment>- remove redundant _service file</comment>
     <requestid>1087239</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8f1493cee4d9fcce3a0f17d602ae33b9</srcmd5>
+    <version>2.0.0</version>
+    <time>1685476938</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.0:
+  * Add a generic `register_preserialisation_callback` mechanism,
+    which allows users to teach canonicaljson how to JSON-encode custom
+    types.
+  * Remove support for serialising `frozendict` instances. Use
+    the new `register_preserialisation_callback` mechanism to replace
+    this functionality if needed.
+  * Remove support for `simplejson` and the
+    `set_json_library`alternative json libraries.</comment>
+    <requestid>1089612</requestid>
+  </revision>
 </revisionlist>

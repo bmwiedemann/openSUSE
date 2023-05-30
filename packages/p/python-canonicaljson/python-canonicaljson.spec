@@ -27,7 +27,7 @@
 %define         github_user matrix-org
 %define         short_name canonicaljson
 Name:           python-%{short_name}%{psuffix}
-Version:        1.6.5
+Version:        2.0.0
 Release:        0
 Summary:        Canonical JSON for Python
 License:        Apache-2.0

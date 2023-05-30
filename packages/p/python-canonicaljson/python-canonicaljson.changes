@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 29 16:34:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.0:
+  * Add a generic `register_preserialisation_callback` mechanism,
+    which allows users to teach canonicaljson how to JSON-encode custom
+    types.
+  * Remove support for serialising `frozendict` instances. Use
+    the new `register_preserialisation_callback` mechanism to replace
+    this functionality if needed.
+  * Remove support for `simplejson` and the
+    `set_json_library`alternative json libraries.
+
+-------------------------------------------------------------------
 Mon May 15 13:49:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - remove redundant _service file 
