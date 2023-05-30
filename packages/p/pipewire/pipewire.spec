@@ -70,6 +70,8 @@ Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch0:         reduce-meson-dependency.patch
+# PATCH-FIX-UPSTREAM 0001-jack-update-bufsize-and-samplerate-when-skipping-not.patch
+Patch1:         0001-jack-update-bufsize-and-samplerate-when-skipping-not.patch
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -147,7 +149,6 @@ Requires:       %{name}-spa-tools = %{version}
 Requires:       %{name}-tools = %{version}
 Requires:       rtkit
 Suggests:       wireplumber
-Suggests:       pipewire-libjack-%{apiver_str}
 %{?systemd_ordering}
 
 %description
@@ -186,7 +187,6 @@ Summary:        PipeWire libjack replacement libraries
 Group:          Development/Libraries/C and C++
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-Conflicts:      jack
 Conflicts:      libjack0
 Conflicts:      libjacknet0
 Conflicts:      libjackserver0
@@ -344,17 +344,31 @@ Requires:       %{name} >= %{version}-%{release}
 Requires:       pulseaudio-utils
 Recommends:     pipewire-alsa
 Conflicts:      pulseaudio
-Conflicts:      pulseaudio-daemon
 # Virtual Provides to support swapping between PipeWire-PA and PA
+Conflicts:      pulseaudio-daemon
 Provides:       pulseaudio-daemon
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 Requires(post): pulseaudio-setup
 %endif
 #Provides:       pulseaudio-module-bluetooth
-#Provides:       pulseaudio-module-jack
 
 %description pulseaudio
 This package provides a PulseAudio implementation based on PipeWire
+
+%package jack
+Summary:        PipeWire JACK implementation
+Group:          Development/Libraries/C and C++
+Requires:       %{libpipewire} >= %{version}-%{release}
+Requires:       %{name} >= %{version}-%{release}
+Requires:       pipewire-libjack-%{apiver_str}
+Recommends:     jack-dbus
+# Virtual Provides to support swapping between PipeWire-JACK and JACKd
+Conflicts:      jack-daemon
+Provides:       jack-daemon
+#Provides:       pulseaudio-module-jack
+
+%description jack
+This package provides a JACK implementation based on PipeWire
 
 %lang_package
 
@@ -363,6 +377,7 @@ This package provides a PulseAudio implementation based on PipeWire
 %if %{?pkg_vcmp:%{pkg_vcmp meson <= 0.61.0}}
 %patch0 -p1
 %endif
+%patch1 -p1
 
 %build
 %if %{pkg_vcmp gcc < 8}
@@ -537,6 +552,9 @@ setup-pulseaudio --auto > /dev/null
 %postun pulseaudio
 %systemd_user_postun pipewire-pulse.service pipewire-pulse.socket
 
+%post jack -p /sbin/ldconfig
+%postun jack -p /sbin/ldconfig
+
 %post   -n %{libpipewire} -p /sbin/ldconfig
 %postun -n %{libpipewire} -p /sbin/ldconfig
 
@@ -643,8 +661,6 @@ fi
 %{_bindir}/pw-jack
 %{_mandir}/man1/pw-jack-%{apiver}.1%{?ext_man}
 %{_mandir}/man1/pw-jack.1%{?ext_man}
-%{_datadir}/pipewire/jack.conf
-%config %{_sysconfdir}/ld.so.conf.d/pipewire-jack-%{_arch}.conf
 
 %files libjack-%{apiver_str}-devel
 %{_libdir}/pipewire-%{apiver}/jack/libjack.so
@@ -727,6 +743,10 @@ fi
 %dir %{_sysconfdir}/alsa/conf.d/
 %config(noreplace) %{_sysconfdir}/alsa/conf.d/50-pipewire.conf
 %config(noreplace) %{_sysconfdir}/alsa/conf.d/99-pipewire-default.conf
+
+%files jack
+%config %{_sysconfdir}/ld.so.conf.d/pipewire-jack-%{_arch}.conf
+%{_datadir}/pipewire/jack.conf
 
 %files lang -f %{name}.lang
 

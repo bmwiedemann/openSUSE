@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 19 17:26:12 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Add patch from upstream to fix JACK buffersize updates:
+  * 0001-jack-update-bufsize-and-samplerate-when-skipping-not.patch
+- Create a pipewire-jack package that provides jack-daemon (and
+  conflicts with any other) and requires the pipewire-libjack
+  library.
+  Move the ld configuration from pipewire-libjack, so that only
+  pipewire-jack forces PipeWire to be the default JACK.
+
+-------------------------------------------------------------------
 Wed May 17 15:18:10 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.3.71:
