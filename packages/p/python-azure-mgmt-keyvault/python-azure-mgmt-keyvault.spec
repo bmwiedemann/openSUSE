@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-keyvault
-Version:        10.2.1
+Version:        10.2.2
 Release:        0
 Summary:        Microsoft Azure Key Vault Management Client Library
 License:        MIT
