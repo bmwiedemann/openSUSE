@@ -54,8 +54,8 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(systemd)
 #!BuildIgnore:  pipewire-session-manager
-# Setup ALSA devices if pipewire handles pulseaudio connections.
-Requires:       (%{name}-audio if pipewire-pulseaudio)
+# Setup ALSA devices if PipeWire handles PulseAudio or JACK connections.
+Requires:       (%{name}-audio if (pipewire-pulseaudio or pipewire-jack))
 Requires:       pipewire >= %{pipewire_minimum_version}
 Provides:       pipewire-session-manager
 %if 0%{?suse_version} <= 1500
@@ -80,6 +80,7 @@ Summary:        Session / policy manager implementation for PipeWire (audio supp
 Group:          Development/Libraries/C and C++
 Requires:       %{libwireplumber} = %{version}
 Requires:       %{name} = %{version}
+Recommends:     pipewire-jack
 Recommends:     pipewire-pulseaudio
 Conflicts:      pulseaudio
 BuildArch:      noarch
