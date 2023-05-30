@@ -52,6 +52,8 @@ BuildRequires:  zip
 Requires:       ffmpeg
 Requires:       python3
 Requires:       python3-xml
+# For --xattrs option
+Recommends:     attr
 BuildArch:      noarch
 
 %description
