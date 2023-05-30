@@ -986,4 +986,41 @@
   | ICL-U/Y        | D1       | 06-7e-05/80 | 000000b8 | 000000ba | Core Gen10 Mobile</comment>
     <requestid>1087443</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>32d9dfe2bd08031b1c5910d052d1c99e</srcmd5>
+    <version>20230516a</version>
+    <time>1685476852</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20230512:
+  * Microcode 20230512 update does not
+    contain any security updates
+  * New Platforms
+  * | Processor      | Stepping | F-M-S/PI    | Old Ver  | New Ver  | Products
+  * |:---------------|:---------|:------------|:---------|:---------|:---------
+  * | ADL-N          | A0       | 06-be-00/01 |          | 00000010 | Core i3-N305/N300, N50/N97/N100/N200, Atom
+    x7211E/x7213E/x7425E
+  * | AZB            | A0       | 06-9a-04/40 |          | 00000004 | Intel(R) Atom(R) C1100
+  * | AZB            | R0       | 06-9a-04/40 |          | 00000004 | Intel(R) Atom(R) C1100
+  * Updated Platforms
+  * | Processor      | Stepping | F-M-S/PI    | Old Ver  | New Ver  | Products
+  * |:---------------|:---------|:------------|:---------|:---------|:---------
+  * | ADL            | L0       | 06-9a-03/80 | 00000429 | 0000042a | Core Gen12
+  * | ADL            | L0       | 06-9a-04/80 | 00000429 | 0000042a | Core Gen12
+  * | AML-Y22        | H0       | 06-8e-09/10 |          | 000000f2 | Core Gen8 Mobile
+  * | AML-Y42        | V0       | 06-8e-0c/94 | 000000f4 | 000000f6 | Core Gen10 Mobile
+  * | CFL-H          | R0       | 06-9e-0d/22 | 000000f4 | 000000f8 | Core Gen9 Mobile
+  * | CFL-H/S        | P0       | 06-9e-0c/22 | 000000f0 | 000000f2 | Core Gen9
+  * | CFL-H/S/E3     | U0       | 06-9e-0a/22 | 000000f0 | 000000f2 | Core Gen8 Desktop, Mobile, Xeon E
+  * | CFL-S          | B0       | 06-9e-0b/02 | 000000f0 | 000000f2 | Core Gen8
+  * | CFL-U43e       | D0       | 06-8e-0a/c0 | 000000f0 | 000000f2 | Core Gen8 Mobile
+  * | CLX-SP         | B0       | 06-55-06/bf | 04003303 | 04003501 | Xeon Scalable Gen2
+  * | CLX-SP         | B1       | 06-55-07/bf | 05003303 | 05003501 | Xeon Scalable Gen2
+  * | CML-H          | R1       | 06-a5-02/20 | 000000f4 | 000000f6 | Core Gen10 Mobile
+  * | CML-S102       | Q0       | 06-a5-05/22 | 000000f4 | 000000f6 | Core Gen10
+  * | CML-S62        | G1       | 06-a5-03/22 | 000000f4 | 000000f6 | Core Gen10
+  * | CML-U62 V1     | A0       | 06-a6-00/80 | 000000f4 | 000000f6 | Core Gen10 Mobile
+  * | CML-U62 V2     | K1       | 06-a6-01/80 | 000000f4 | 000000f6 | Core Gen10 Mobile
+  * | CML-Y42        | V0       | 06-8e-0c/94 | 000000f4 | 000000f6 | Core Gen10 Mobile</comment>
+    <requestid>1089475</requestid>
+  </revision>
 </revisionlist>
