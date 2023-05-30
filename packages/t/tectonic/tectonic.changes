@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 23 14:32:32 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.13.1:
+  * Fix a bug introduced in the previous release where custom commands in the 
+    tectonic -X watch mode break.
+  * Update the version of the vendored Harfbuzz library to the latest, 7.3.0
+    and all other cargo dependencies.
+
+-------------------------------------------------------------------
 Fri May 19 00:46:11 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 0.13.0
