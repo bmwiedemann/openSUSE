@@ -1,7 +1,7 @@
 #
 # spec file for package k3sup
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,14 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           k3sup
-Version:        0.12.7
+Version:        0.12.12
 Release:        0
 Summary:        Bootstrap Kubernetes with k3s over SSH < 1 min
 License:        MIT
 URL:            https://github.com/rancher/k3sup
 Source:         k3sup-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.13
+BuildRequires:  go >= 1.19
 
 %description
 k3sup is a light-weight utility to get from zero to KUBECONFIG with k3s on any local or remote VM. All you need is ssh access and the k3sup binary to get kubectl access immediately.
@@ -40,6 +40,7 @@ How do you say it? Ketchup, as in tomato.
 %build
 go build \
    -mod=vendor \
+   -buildmode=pie \
    -ldflags="-X main.Version=%{version}"
 
 %install

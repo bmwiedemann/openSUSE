@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue May 30 07:54:40 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- use -buildmode=pie and BuildRequire go1.19
+
+-------------------------------------------------------------------
+Tue May 30 04:41:20 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.12.12:
+  * Rename no-deploy to disable
+
+-------------------------------------------------------------------
+Tue May 30 04:37:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.12.11:
+  * Bump GH Workflows to use Go 1.19
+  * Update publish.yaml
+- BuildRequire go1.18
+
+-------------------------------------------------------------------
+Tue May 30 04:36:51 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.12.10:
+  * Fix tests with extra parameter
+
+-------------------------------------------------------------------
+Tue May 30 04:35:51 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.12.9:
+  * Add server-url for use with HA IP
+  * Only print out stderr with --local if there's a non-zero exit
+
+-------------------------------------------------------------------
+Tue May 30 04:34:47 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.12.8:
+  * Document the ready command
+
+-------------------------------------------------------------------
 Wed Oct 05 05:24:30 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 0.12.7:
