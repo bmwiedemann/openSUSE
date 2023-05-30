@@ -1,7 +1,7 @@
-Index: e2fsprogs-1.46.3/scrub/e2scrub_fail@.service.in
+Index: e2fsprogs-1.47.0/scrub/e2scrub_fail@.service.in
 ===================================================================
---- e2fsprogs-1.46.3.orig/scrub/e2scrub_fail@.service.in
-+++ e2fsprogs-1.46.3/scrub/e2scrub_fail@.service.in
+--- e2fsprogs-1.47.0.orig/scrub/e2scrub_fail@.service.in
++++ e2fsprogs-1.47.0/scrub/e2scrub_fail@.service.in
 @@ -3,6 +3,17 @@ Description=Online ext4 Metadata Check F
  Documentation=man:e2scrub(8)
  

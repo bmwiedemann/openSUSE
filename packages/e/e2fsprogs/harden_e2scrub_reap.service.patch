@@ -1,7 +1,7 @@
-Index: e2fsprogs-1.46.3/scrub/e2scrub_reap.service.in
+Index: e2fsprogs-1.47.0/scrub/e2scrub_reap.service.in
 ===================================================================
---- e2fsprogs-1.46.3.orig/scrub/e2scrub_reap.service.in
-+++ e2fsprogs-1.46.3/scrub/e2scrub_reap.service.in
+--- e2fsprogs-1.47.0.orig/scrub/e2scrub_reap.service.in
++++ e2fsprogs-1.47.0/scrub/e2scrub_reap.service.in
 @@ -11,6 +11,15 @@ PrivateNetwork=true
  ProtectSystem=true
  ProtectHome=read-only

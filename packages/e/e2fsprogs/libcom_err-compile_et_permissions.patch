@@ -1,8 +1,8 @@
-Index: e2fsprogs-1.42.13/lib/et/compile_et.sh.in
+Index: e2fsprogs-1.47.0/lib/et/compile_et.sh.in
 ===================================================================
---- e2fsprogs-1.42.13.orig/lib/et/compile_et.sh.in
-+++ e2fsprogs-1.42.13/lib/et/compile_et.sh.in
-@@ -51,7 +51,7 @@ if test -f ${BASE}.h && cmp -s ${BASE}.h
+--- e2fsprogs-1.47.0.orig/lib/et/compile_et.sh.in
++++ e2fsprogs-1.47.0/lib/et/compile_et.sh.in
+@@ -49,7 +49,7 @@ if test -f ${BASE}.h && cmp -s ${BASE}.h
      rm -f ${BASE}.h.$$
  else
      mv -f ${BASE}.h.$$ ${BASE}.h

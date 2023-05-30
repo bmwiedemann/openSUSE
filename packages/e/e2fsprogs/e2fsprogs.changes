@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Feb  8 10:14:18 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.47.0:
+  * Add support for the orphan_file feature, which speeds up workloads
+    that are deleting or truncating a large number files in parallel.
+    This compat feature was first supported in the v5.15 Linux kernel.
+  * The mke2fs program (via the mke2fs.conf file) now enables the
+    metadata_csum_seed and orphan_file features by default.
+    The metadata_csum_seed feature is an incompat feature which is
+    first supported in the Linux kernel starting in the 4.4 kernel.
+  * Mke2fs now supports the extended option "assume_storage_prezeroed"
+    which causes mke2fs to skip zeroing the journal and inode tables
+    and to mark the inode tables as zeroed.
+  * Add support to tune2fs and e2label to set the label and UUID for
+    a mounted file system using a ioctl, which is more reliable than
+    modifying the superblock via writing to the block device.
+    The kernel support for setting the label landed in v5.17, while
+    the support for adding the UUID landed in v6.0. If the ioctls
+    are not supported, tune2fs and e2label will fall back old
+    strategy of directly modifying the superblock.
+  * Allow tune2fs to disable the casefold feature after scanning all
+    of the directories do not have the Casefold flag set.
+
+-------------------------------------------------------------------
 Tue Dec 27 10:34:50 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

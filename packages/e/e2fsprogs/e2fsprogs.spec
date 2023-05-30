@@ -32,7 +32,7 @@ Summary:        FUSE file system client for ext2/ext3/ext4 file systems
 License:        MIT
 BuildRequires:  fuse-devel
 %endif
-Version:        1.46.5
+Version:        1.47.0
 Release:        0
 Group:          System/Filesystems
 URL:            http://e2fsprogs.sourceforge.net

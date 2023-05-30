@@ -2,7 +2,7 @@ Index: lib/ext2fs/mmp.c
 ===================================================================
 --- lib/ext2fs/mmp.c.orig
 +++ lib/ext2fs/mmp.c
-@@ -27,6 +27,13 @@
+@@ -30,6 +30,13 @@
  #include "ext2fs/ext2_fs.h"
  #include "ext2fs/ext2fs.h"
  

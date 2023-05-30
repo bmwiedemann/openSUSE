@@ -1,7 +1,7 @@
-Index: e2fsprogs-1.46.3/scrub/e2scrub_all.service.in
+Index: e2fsprogs-1.47.0/scrub/e2scrub_all.service.in
 ===================================================================
---- e2fsprogs-1.46.3.orig/scrub/e2scrub_all.service.in
-+++ e2fsprogs-1.46.3/scrub/e2scrub_all.service.in
+--- e2fsprogs-1.47.0.orig/scrub/e2scrub_all.service.in
++++ e2fsprogs-1.47.0/scrub/e2scrub_all.service.in
 @@ -6,6 +6,17 @@ ConditionCapability=CAP_SYS_RAWIO
  Documentation=man:e2scrub_all(8)
  
