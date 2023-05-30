@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 29 07:27:23 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Fix baselibs.conf to mention libgnutls30-hmac [bsc#1211476]
+  Extend also the checks in gnutls-FIPS-HMAC-nettle-hogweed-gmp.patch
+
+-------------------------------------------------------------------
 Wed May 24 11:01:10 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - FIPS: Skip the fixed HMAC verification for nettle, hogweed and
