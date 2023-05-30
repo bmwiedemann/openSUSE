@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 29 19:38:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 20230301:
+  * Fix breaking connections on WAN links: retry on EAGAIN
+
+-------------------------------------------------------------------
 Sun May 29 19:34:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 20220418:
