@@ -27,8 +27,6 @@ URL:            https://github.com/googleapis/google-auth-library-python
 Source:         https://files.pythonhosted.org/packages/source/g/google-auth/google-auth-%{version}.tar.gz
 # https://github.com/googleapis/google-auth-library-python/issues/1055
 Patch1:         python-google-auth-no-mock.patch
-# PATCH-FIX-OPENSUSE urllib3-2.patch -- gh#googleapis/google-auth-library-python#1290
-Patch2:         urllib3-2.patch
 BuildRequires:  %{python_module Flask}
 # START TESTING SECTION
 BuildRequires:  %{python_module aiohttp >= 3.6.2}
@@ -44,7 +42,7 @@ BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module rsa >= 3.1.4}
 BuildRequires:  %{python_module setuptools >= 40.3.0}
 BuildRequires:  %{python_module six >= 1.9.0}
-BuildRequires:  %{python_module urllib3}
+BuildRequires:  %{python_module urllib3 < 2.0}
 # END TESTING SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

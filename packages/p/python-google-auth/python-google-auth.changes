@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 27 07:26:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- drop urllib3-2.patch and limit to urllib3 < 2.x as that
+  matches the requires and avoids coinstallability isuses
+
+-------------------------------------------------------------------
 Wed May 10 07:14:23 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add urllib3-2.patch to support newer urllib3 -- gh#googleapis/google-auth-library-python#1290
