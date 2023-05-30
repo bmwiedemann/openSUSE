@@ -215,4 +215,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1069869 from glaubitz)</comment>
     <requestid>1069888</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ea7fcc65b5c91625cc10e9721ebd9a52</srcmd5>
+    <version>0.1.0b2675288</version>
+    <time>1685476990</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.1.0b2675288
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1089723 from glaubitz)</comment>
+    <requestid>1089816</requestid>
+  </revision>
 </revisionlist>
