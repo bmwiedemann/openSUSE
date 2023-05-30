@@ -19363,11 +19363,14 @@ unsorted:
   - openSUSE-repos-Tumbleweed 
   - openSUSE-signkey-cert 
   - openSUSEway 
+  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
+  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
+  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit 
@@ -24935,6 +24938,7 @@ unsorted:
   - python310-nibabel 
   - python310-nilearn 
   - python310-nine 
+  - python310-nkdfu 
   - python310-nlopt 
   - python310-nltk 
   - python310-nocasedict 
@@ -26144,6 +26148,7 @@ unsorted:
   - python310-venusian-doc 
   - python310-verboselogs 
   - python310-versioneer 
+  - python310-versioneer-toml 
   - python310-versioningit 
   - python310-versiontag 
   - python310-versiontools 
@@ -28317,6 +28322,7 @@ unsorted:
   - python311-nibabel 
   - python311-nilearn 
   - python311-nine 
+  - python311-nkdfu 
   - python311-nlopt 
   - python311-nltk 
   - python311-nocasedict 
@@ -29572,6 +29578,7 @@ unsorted:
   - python311-venusian-doc 
   - python311-verboselogs 
   - python311-versioneer 
+  - python311-versioneer-toml 
   - python311-versioningit 
   - python311-versiontag 
   - python311-versiontools 
@@ -31787,6 +31794,7 @@ unsorted:
   - python39-nibabel 
   - python39-nilearn 
   - python39-nine 
+  - python39-nkdfu 
   - python39-nlopt 
   - python39-nltk 
   - python39-nocasedict 
@@ -33054,6 +33062,7 @@ unsorted:
   - python39-venusian-doc 
   - python39-verboselogs 
   - python39-versioneer 
+  - python39-versioneer-toml 
   - python39-versioningit 
   - python39-versiontag 
   - python39-versiontools 
@@ -44494,6 +44503,7 @@ unsorted:
   - tomcat-servlet-4_0-api 
   - tomcat-webapps 
   - tomcatjss 
+  - toml11-devel 
   - tomoe 
   - tomoe-devel 
   - tomoe-doc 
