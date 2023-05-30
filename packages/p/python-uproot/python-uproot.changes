@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May 27 21:27:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- reenable build for python 3.11, dask is available
+
+-------------------------------------------------------------------
 Thu May  4 15:58:20 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.0.7:

@@ -16,10 +16,7 @@
 #
 
 
-# No numpy for py3.6
-%define skip_python36 1
-# Numba does not build with python3.11, therefore no python311-dask
-%define skip_python311 1
+%{?sle15_python_module_pythons}
 %global modname uproot
 Name:           python-uproot
 Version:        5.0.7

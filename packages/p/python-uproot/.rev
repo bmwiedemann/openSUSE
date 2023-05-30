@@ -274,4 +274,12 @@ Numpy
 </comment>
     <requestid>1084865</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d7ccd0631bea6411dc9e8a56ca91d7de</srcmd5>
+    <version>5.0.7</version>
+    <time>1685476927</time>
+    <user>dimstar_suse</user>
+    <comment>- reenable build for python 3.11, dask is available</comment>
+    <requestid>1089356</requestid>
+  </revision>
 </revisionlist>
