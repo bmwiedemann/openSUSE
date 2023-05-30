@@ -17,7 +17,7 @@
 
 
 Name:           neomutt
-Version:        20230407
+Version:        20230517
 Release:        0
 Summary:        A command line mail reader (or MUA), a fork of Mutt with added features
 License:        GPL-2.0-or-later
@@ -37,7 +37,7 @@ BuildRequires:  krb5-devel
 BuildRequires:  libdb-4_8-devel
 BuildRequires:  libgnutls-devel
 BuildRequires:  libgpgme-devel
-BuildRequires:  libidn-devel
+BuildRequires:  libidn2-devel
 BuildRequires:  libkyotocabinet-devel
 BuildRequires:  libtool
 BuildRequires:  lmdb-devel
@@ -98,7 +98,7 @@ export CFLAGS="%{optflags}"
 		--notmuch			\
 		--sasl				\
 		--gss				\
-		--idn				\
+		--idn2				\
 		--mixmaster			\
 		--pcre2         		\
 		--zlib

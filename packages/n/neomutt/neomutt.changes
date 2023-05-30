@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon May 29 15:18:29 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 20230517:
+  - Features
+    * Support 24bit colors, aka truecolor
+    * Show complete MIME structure in attachments
+    * Allow percentages to be localized
+  - Bug Fixes
+    * Fix crash in op_browser_subscribe
+    * Select the first email when coming from an empty limit
+    * Fix counting new mails in maildir
+    * bind: fix incorrect conflict report
+    * index: only refresh the menu on non-focus window changes
+    * tunnel: fix reconnection with ssl_force=true
+    * maildir: stop parsing headers at the end of the headers section
+    * Fix handling of bright colours
+    * Fix sorting of labels
+  - Build
+    * Build with libidn2 by default, remove support for libidn1
+
+-------------------------------------------------------------------
 Wed Apr 12 15:32:03 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 20230407:
