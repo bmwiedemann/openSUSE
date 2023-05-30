@@ -1924,4 +1924,23 @@ https://gitlab.gnome.org/GNOME/gnome-control-center/commit/3e82d5386033e8fbf3f5b
     <comment></comment>
     <requestid>1081154</requestid>
   </revision>
+  <revision rev="228" vrev="1">
+    <srcmd5>364de5972bde8d4971dfdc30de7f4046</srcmd5>
+    <version>44.2</version>
+    <time>1685476856</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1089193 from iznogood
+
+- Update to version 44.2:
+  + Various small accessibility fixes.
+  + Fixes in Gtk template usage that causes crashes on some
+    systems.
+  + Appearance: Clear dconf when resetting to defaults.
+  + Mouse: Hide entire &quot;Touchpad&quot; row when touchpad cannot be
+    disabled.
+  + Network: Fix racy radio buttons in connection editor.
+  + Users: Remove autologin row tooltip when unlocked.
+  + Updated translations.</comment>
+    <requestid>1089506</requestid>
+  </revision>
 </revisionlist>
