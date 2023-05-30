@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 26 13:48:53 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.2:
+  + Show thumbnails for places with a linked Wikidata entry with a
+    title image, but that has no linked Wikipedia articles
+  + Show the correct rotation of the user location marker when
+    there is a heading (Geoclue indicating motion), in case the map
+    view is rotated
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Apr 21 11:31:56 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.1:
