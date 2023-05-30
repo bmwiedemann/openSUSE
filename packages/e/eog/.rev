@@ -1279,4 +1279,19 @@ X-GNOME-DocPath=eog/eog.xml (forwarded request 128768 from dimstar)</comment>
     <comment></comment>
     <requestid>1082375</requestid>
   </revision>
+  <revision rev="163" vrev="1">
+    <srcmd5>68d03278c7bd67c5f054176080f1dce5</srcmd5>
+    <version>44.2</version>
+    <time>1685476868</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1089425 from iznogood
+
+- Update to version 44.2:
+  + Bug fixes and improvements:
+    - EogWindow: Fix refcount and signal handler issues around
+      GSettings handles.
+    - Replace filename with basename.
+  + Updated translations.</comment>
+    <requestid>1089513</requestid>
+  </revision>
 </revisionlist>
