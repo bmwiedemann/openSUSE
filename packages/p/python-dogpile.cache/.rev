@@ -369,4 +369,14 @@
     that can't be deserialized and therefore should be regenerated.</comment>
     <requestid>1085846</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>56612d28a8ca946cf80e4973cb20b3f0</srcmd5>
+    <version>1.2.1</version>
+    <time>1685476938</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.1:
+  * Added py.typed file to root so that typing tools such as Mypy
+    recognize dogpile as typed. Pull request courtesy Daverball.</comment>
+    <requestid>1089613</requestid>
+  </revision>
 </revisionlist>

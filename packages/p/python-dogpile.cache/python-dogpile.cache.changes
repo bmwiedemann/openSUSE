@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 29 16:38:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.1:
+  * Added py.typed file to root so that typing tools such as Mypy
+    recognize dogpile as typed. Pull request courtesy Daverball.
+
+-------------------------------------------------------------------
 Tue May  9 21:34:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.0:
