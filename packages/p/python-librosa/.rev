@@ -127,4 +127,12 @@
 </comment>
     <requestid>1077186</requestid>
   </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>8151e1765236fb72f771f3927f49fce1</srcmd5>
+    <version>0.9.2</version>
+    <time>1685476930</time>
+    <user>dimstar_suse</user>
+    <comment>- reenable python311 build (numba now available)</comment>
+    <requestid>1089583</requestid>
+  </revision>
 </revisionlist>

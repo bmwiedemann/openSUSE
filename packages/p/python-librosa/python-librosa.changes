@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 29 13:45:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- reenable python311 build (numba now available) 
+
+-------------------------------------------------------------------
 Tue Apr  4 09:59:00 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - skip python311, python-numba is not available for python 3.11 yet.
