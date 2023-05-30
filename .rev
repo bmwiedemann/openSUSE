@@ -1046,4 +1046,26 @@ cd - (forwarded request 199127 from Zaitor)</comment>
     <comment></comment>
     <requestid>1081152</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>b6ddbea8a817de1682721de94bd41511</srcmd5>
+    <version>44.2</version>
+    <time>1685476855</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1089191 from iznogood
+
+- Update to version 44.2:
+  + Fix subsequent checking for updates if the first check after
+    login fails.
+  + Fix checking for updates when automatic updates are disabled.
+  + Fix rare stall when many background jobs are running.
+  + Don’t download rpm-ostree updates when only checking if updates
+    are available.
+  + Fix bug with listing flatpak addons when multiple flathub
+    remotes are enabled.
+  + Fix duplicated sources in app details page when using an
+    appstream URL.
+  + Reduce background resource consumption when idle.
+  + Updated translations.</comment>
+    <requestid>1089504</requestid>
+  </revision>
 </revisionlist>
