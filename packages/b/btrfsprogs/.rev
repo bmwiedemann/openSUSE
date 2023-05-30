@@ -1303,4 +1303,14 @@ This set of changes is not suitable for direct copy to currently released produc
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1209136</comment>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>c7314fc72870226d5277c3c060b29b31</srcmd5>
+    <version>6.3</version>
+    <time>1685476877</time>
+    <user>dimstar_suse</user>
+    <comment>- qgroup show: fix formatting of limit values in json output (bsc#1206960,
+  bsc#1209136)
+- Added patch: btrfs-progs-qgroup-show-fix-formatting-of-limit-valu.patch (forwarded request 1089589 from dsterba)</comment>
+    <requestid>1089590</requestid>
+  </revision>
 </revisionlist>

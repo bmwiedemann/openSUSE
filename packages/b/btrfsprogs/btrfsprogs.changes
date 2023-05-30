@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Mon May 29 00:00:00 CEST 2023 - dsterba@suse.cz
+
+- qgroup show: fix formatting of limit values in json output (bsc#1206960,
+  bsc#1209136)
+- Added patch: btrfs-progs-qgroup-show-fix-formatting-of-limit-valu.patch
+
+-------------------------------------------------------------------
+Mon May 22 00:00:00 CEST 2023 - dsterba@suse.cz
+
+- update to 6.3
+  * mkfs: option -R deprecated, options unified in -O (-R still works)
+  * mkfs: fix potential race with udev leading to EBUSY due to repeatedly
+    opened file descriptors
+  * block-group-tree is out of experimental mode
+    * available as 'mkfs.btrfs -O block-group-tree'
+    * btrfstune can do in-place conversion to/from (use with care)
+  * balance: fix recognizing old and new syntax
+  * subvol snapshot: specific error if a failure is caused by an active swapfile
+  * tree-stats: rephrase warning when run on a mounted filesystem
+  * completion: 'filesystem du' also completes files
+  * check: fix docs, help text and warning that --force + --repair works on a
+    mounted filesystem
+  * build: fix static build when static libudev is available
+  * documentation:
+    * more updates from wiki, developer docs, changelogs
+    * reformatting
+    * updates and fixes
+  * other:
+    * test updates and fixes
+    * CI cleanups and old files removed
+    * integration with Github actions
+
+-------------------------------------------------------------------
+Tue Apr 11 00:00:00 CEST 2023 - dsterba@suse.cz
+
+- Use pre-generated documentation from tarball, fixes build on SLE targets
+  where sphinx might not be available
+
+-------------------------------------------------------------------
+Tue Apr 11 00:00:00 CEST 2023 - dsterba@suse.cz
+
+- update to 6.2.2
+   * fix build on old x86 architectures with builtin crypto
+   * device stats: fix printing wrong values in tabular output
+   * qgroup show: fix qgroup id formatting in json output
+   * restore: fix restoring xattrs on directories
+   * restore: don't modify metadata in dry-run mode
+   * balance: fix some cases wrongly parsed as old syntax
+   * balance: warn when deprecated syntax is used
+   * seeding: fall back to old way if sysfs device fsid is not available
+   * convert: handle orphan file ext4 feature
+   * other:
+      * sync ioctl definitions
+      * enable github CI
+      * update documentation
+- update to 6.2.1
+   * fix build with crypto libraries
+   * CI images updated, build tests extended
+- update to 6.2:
+   * receive: fix a corruption when decompressing zstd extents
+   * subvol sync: print total number and deletion progress
+   * accelerated hash algorithm implementations in fallback mode on x86_64
+   * fi mkswapfile: new option --uuid
+   * new global option --log=level to set the verbosity level directly
+   * other:
+      * experimental: update checksum conversion (not usable yet)
+      * build actually requires -std=gnu11
+      * refactor help option formatting, auto wrap long lines
+
+-------------------------------------------------------------------
 Wed Mar  8 19:03:04 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Split bash-completion to separate sub-package
