@@ -965,6 +965,7 @@ rm test/parallel/test-strace-openat-openssl.js
 # needed to fix build on SLE12 SP5
 %if 0%{?forced_python_version:1}
 sed -i -e "s,'python3','python%{forced_python_version}'," test/parallel/test-child-process-set-blocking.js
+sed -i -e "s,^#!/usr/bin/env python3$,#!/usr/bin/python%{forced_python_version}," tools/pseudo-tty.py
 %endif
 
 ln addon-rpm.gypi deps/npm/node_modules/node-gyp/addon-rpm.gypi

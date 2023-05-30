@@ -42,4 +42,12 @@ For details see,
 https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V20.md#20.2.0</comment>
     <requestid>1087954</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>0306a0ba2b7d7f8c85ef007338c9e0a4</srcmd5>
+    <version>20.2.0</version>
+    <time>1685476895</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1089598</requestid>
+  </revision>
 </revisionlist>
