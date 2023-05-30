@@ -28,7 +28,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-virtualenv%{psuffix}
-Version:        20.22.0
+Version:        20.23.0
 Release:        0
 Summary:        Virtual Python Environment builder
 License:        MIT
@@ -36,8 +36,8 @@ URL:            http://www.virtualenv.org/
 Source:         https://files.pythonhosted.org/packages/source/v/virtualenv/virtualenv-%{version}.tar.gz
 BuildRequires:  %{python_module distlib >= 0.3.6}
 BuildRequires:  %{python_module filelock >= 3.11}
-BuildRequires:  %{python_module hatchling >= 1.14}
 BuildRequires:  %{python_module hatch-vcs >= 0.3}
+BuildRequires:  %{python_module hatchling >= 1.14}
 BuildRequires:  %{python_module importlib-metadata >= 6.4.1 if %python-base < 3.8}
 BuildRequires:  %{python_module importlib_resources >= 1.0 if %python-base < 3.7}
 BuildRequires:  %{python_module pip}
@@ -46,11 +46,9 @@ BuildRequires:  %{python_module setuptools >= 41.0.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-backports.entry_points_selectable >= 1.0.4
 Requires:       python-distlib >= 0.3.6
 Requires:       python-filelock >= 3.11
 Requires:       python-platformdirs >= 3.2
-Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
@@ -61,7 +59,6 @@ Requires:       python-importlib-metadata >= 6.4.1
 Requires:       python-importlib_resources >= 1.0
 %endif
 %if %{with test}
-BuildRequires:  %{python_module backports.entry_points_selectable >= 1.0.4}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module flaky >= 3}
 BuildRequires:  %{python_module packaging >= 20.0}
@@ -70,6 +67,7 @@ BuildRequires:  %{python_module pytest-env >= 0.6.2}
 BuildRequires:  %{python_module pytest-freezegun >= 0.4.1}
 BuildRequires:  %{python_module pytest-mock >= 2.0.0}
 BuildRequires:  %{python_module pytest-timeout >= 1.3.4}
+BuildRequires:  %{python_module time-machine}
 BuildRequires:  ca-certificates
 %endif
 %python_subpackages

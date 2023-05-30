@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon May 22 08:32:57 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing BuildRequires on time-machine 
+
+-------------------------------------------------------------------
+Fri May 12 09:12:55 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to v20.23.0:
+  # Features - 20.23.0
+  * Do not install wheel and setuptools seed packages for Python
+    3.12+. To restore the old behaviour use:
+    - for wheel use VIRTUALENV_WHEEL=bundle environment variable or
+      --wheel=bundle CLI flag,
+    - for setuptools use VIRTUALENV_SETUPTOOLS=bundle environment
+      variable or --setuptools=bundle CLI flag.
+    By @chrysle. (#2487)
+  * 3.12 support - by @gaborbernat. (#2558)
+  # Bugfixes - 20.23.0
+  * Prevent PermissionError when using venv creator on systems that
+    deliver files without user write permission - by @kulikjak.
+    (#2543)
+  * Upgrade setuptools to 67.7.2 from 67.6.1 and pip to 23.1.2 from
+    23.1 - by @szleb. (#2560)
+
+-------------------------------------------------------------------
 Tue Apr 25 03:06:17 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v20.22.0

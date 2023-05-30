@@ -693,4 +693,29 @@ ers toes by using a lock while creating the base images. By :user:`gaborbernat`.
     <comment></comment>
     <requestid>1083341</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>db53dc971e4423a52172c2ee8a58b954</srcmd5>
+    <version>20.23.0</version>
+    <time>1685476921</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing BuildRequires on time-machine 
+
+- Update to v20.23.0:
+  # Features - 20.23.0
+  * Do not install wheel and setuptools seed packages for Python
+    3.12+. To restore the old behaviour use:
+    - for wheel use VIRTUALENV_WHEEL=bundle environment variable or
+      --wheel=bundle CLI flag,
+    - for setuptools use VIRTUALENV_SETUPTOOLS=bundle environment
+      variable or --setuptools=bundle CLI flag.
+    By @chrysle. (#2487)
+  * 3.12 support - by @gaborbernat. (#2558)
+  # Bugfixes - 20.23.0
+  * Prevent PermissionError when using venv creator on systems that
+    deliver files without user write permission - by @kulikjak.
+    (#2543)
+  * Upgrade setuptools to 67.7.2 from 67.6.1 and pip to 23.1.2 from
+    23.1 - by @szleb. (#2560)</comment>
+    <requestid>1088293</requestid>
+  </revision>
 </revisionlist>
