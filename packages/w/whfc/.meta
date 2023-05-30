@@ -1,6 +1,0 @@
-<package name="whfc" project="openSUSE:Factory">
-  <title>A client for the network fax server HylaFAX 4.x under Microsoft Windows(r)</title>
-  <description>WHFC is a client for the network fax server HylaFAX 4.x under Microsoft
-Windows(r) 95/98 and NT/2000.</description>
-  <devel project="network:telephony" package="whfc"/>
-</package>
