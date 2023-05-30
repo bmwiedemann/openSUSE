@@ -1,0 +1,30 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://gitlab.com/virtio-fs/virtiofsd.git</param>
+    <param name="scm">git</param>
+    <param name="filename">virtiofsd</param>
+    <param name="revision">v1.6.1</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+
+  <service name="set_version" mode="disabled"/>
+
+  <service name="tar" mode="disabled"/>
+
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+
+  <service name="cargo_audit" mode="disabled">
+    <param name="srcdir">virtiofsd</param>
+  </service>
+
+  <service name="cargo_vendor" mode="disabled">
+    <param name="srcdir">virtiofsd</param>
+    <param name="compression">xz</param>
+    <param name="update">false</param>
+  </service>
+</services>

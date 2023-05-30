@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>74868c408adb35195690dcbef20594ba</srcmd5>
+    <version>1.6.1</version>
+    <time>1685476905</time>
+    <user>dimstar_suse</user>
+    <comment>virtiofsd is a rewrite/replacement for the previously in-tree virtiofs from the upstream qemu
+
+qemu 8.0.0 and above requires this separate virtiofsd module to provide the functionality
+
+Remove errrant ExclusiveArch tag but still disable 32 bit builds
+
+Add a conflict with qemu-tools &lt; 8 as this implementation will replace the virtiofsd found previsouly in the qemu-tools package
+
+Use macros to exclude 32-bit archs</comment>
+    <requestid>1089199</requestid>
+  </revision>
+</revisionlist>

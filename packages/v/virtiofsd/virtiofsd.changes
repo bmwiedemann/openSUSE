@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Thu May 25 02:33:51 UTC 2023 - Caleb Crane <caleb.crane@suse.com>
+
+- Remove exclusive arch, only disable for 32-bit archs (i586 and armv7l)
+- Add package conflict with the previous implementation of virtiofsd inside
+  older versions of the qemu-tools package (qemu-tools < 8)
+
+-------------------------------------------------------------------
+Tue May 23 13:30:11 UTC 2023 - Caleb Crane <caleb.crane@suse.com>
+
+- Initial release of virtiofsd v1.6.1
