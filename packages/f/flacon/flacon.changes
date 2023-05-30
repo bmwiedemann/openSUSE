@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 30 08:12:06 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 11.1.0:
+  * Fix: In some situations, the program did not check whether the sox program was installed.
+
+-------------------------------------------------------------------
 Sat May 20 14:24:08 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 11.0.0:
