@@ -16,8 +16,6 @@
 #
 
 
-# No numba for python311 yet
-%define         skip_python311 1
 Name:           python-resampy
 Version:        0.4.2
 Release:        0

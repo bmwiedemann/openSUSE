@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 29 13:53:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- reenable build for python311 (numba available) 
+
+-------------------------------------------------------------------
 Sat Apr  1 18:22:14 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Skip building for python311: no numba yet
