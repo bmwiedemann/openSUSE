@@ -1,0 +1,191 @@
+Index: txWS-0.9.1/txws.py
+===================================================================
+--- txWS-0.9.1.orig/txws.py
++++ txWS-0.9.1/txws.py
+@@ -23,12 +23,9 @@ Blind reimplementation of WebSockets as
+ protocols.
+ """
+ 
+-from __future__ import division
+ 
+ __version__ = "0.7.1"
+ 
+-import six
+-
+ import array
+ 
+ from base64 import b64encode, b64decode
+@@ -101,7 +98,7 @@ def http_headers(s):
+ 
+     for line in s.split("\r\n"):
+         try:
+-            key, value = [i.strip() for i in line.split(":", 1)]
++            key, value = (i.strip() for i in line.split(":", 1))
+             d[key] = value
+         except ValueError:
+             pass
+@@ -139,7 +136,7 @@ def complete_hybi00(headers, challenge):
+     first = int("".join(i for i in key1 if i in digits)) // key1.count(" ")
+     second = int("".join(i for i in key2 if i in digits)) // key2.count(" ")
+ 
+-    nonce = pack(">II8s", first, second, six.b(challenge))
++    nonce = pack(">II8s", first, second, challenge)
+ 
+     return md5(nonce).digest()
+ 
+@@ -152,7 +149,7 @@ def make_accept(key):
+ 
+     guid = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11"
+ 
+-    accept = "%s%s" % (key, guid)
++    accept = "{}{}".format(key, guid)
+     hashed_bytes = sha1(accept.encode('utf-8')).digest()
+ 
+     return b64encode(hashed_bytes).strip().decode('utf-8')
+@@ -169,10 +166,10 @@ def make_hybi00_frame(buf):
+     and valid text without any 0xff bytes.
+     """
+ 
+-    if isinstance(buf, six.text_type):
++    if isinstance(buf, str):
+         buf = buf.encode('utf-8')
+ 
+-    return six.b("\x00") + buf + six.b("\xff")
++    return b"\x00" + buf + b"\xff"
+ 
+ def parse_hybi00_frames(buf):
+     """
+@@ -182,12 +179,12 @@ def parse_hybi00_frames(buf):
+     and will actively ignore it.
+     """
+ 
+-    start = buf.find(six.b("\x00"))
++    start = buf.find(b"\x00")
+     tail = 0
+     frames = []
+ 
+     while start != -1:
+-        end = buf.find(six.b("\xff"), start + 1)
++        end = buf.find(b"\xff", start + 1)
+         if end == -1:
+             # Incomplete frame, try again later.
+             break
+@@ -196,7 +193,7 @@ def parse_hybi00_frames(buf):
+             frame = buf[start + 1:end]
+             frames.append((NORMAL, frame))
+             tail = end + 1
+-        start = buf.find(six.b("\x00"), end + 1)
++        start = buf.find(b"\x00", end + 1)
+ 
+     # Adjust the buffer and return.
+     buf = buf[tail:]
+@@ -231,12 +228,12 @@ def make_hybi07_frame(buf, opcode=0x1):
+     else:
+         length = chr(len(buf))
+ 
+-    if isinstance(buf, six.text_type):
++    if isinstance(buf, str):
+         buf = buf.encode('utf-8')
+ 
+     # Always make a normal packet.
+     header = chr(0x80 | opcode)
+-    return six.b(header + length) + buf
++    return bytes(header + length) + buf
+ 
+ def make_hybi07_frame_dwim(buf):
+     """
+@@ -244,9 +241,9 @@ def make_hybi07_frame_dwim(buf):
+     """
+ 
+     # TODO: eliminate magic numbers.
+-    if isinstance(buf, six.binary_type):
++    if isinstance(buf, bytes):
+         return make_hybi07_frame(buf, opcode=0x2)
+-    elif isinstance(buf, six.text_type):
++    elif isinstance(buf, str):
+         return make_hybi07_frame(buf.encode("utf-8"), opcode=0x1)
+     else:
+         raise TypeError("In binary support mode, frame data must be either str or unicode")
+@@ -268,9 +265,6 @@ def parse_hybi07_frames(buf):
+         # about, and an opcode which nobody cares about.
+         header = buf[start]
+ 
+-        if six.PY2:
+-            header = ord(header)
+-
+         if header & 0x70:
+             # At least one of the reserved flags is set. Pork chop sandwiches!
+             raise WSException("Reserved flag in HyBi-07 frame (%d)" % header)
+@@ -289,9 +283,6 @@ def parse_hybi07_frames(buf):
+         # extra length.
+         length = buf[start + 1]
+ 
+-        if six.PY2:
+-            length = ord(length)
+-
+         masked = length & 0x80
+         length &= 0x7f
+ 
+@@ -342,7 +333,7 @@ def parse_hybi07_frames(buf):
+                 data = unpack(">H", data[:2])[0], data[2:]
+             else:
+                 # No reason given; use generic data.
+-                data = 1000, six.b("No reason given")
++                data = 1000, b"No reason given"
+ 
+         frames.append((opcode, data))
+         start += offset + length
+@@ -355,7 +346,7 @@ class WebSocketProtocol(ProtocolWrapper)
+     layer.
+     """
+ 
+-    buf = six.b("")
++    buf = b""
+     codec = None
+     location = "/"
+     host = "example.com"
+@@ -385,7 +376,7 @@ class WebSocketProtocol(ProtocolWrapper)
+         return ISSLTransport(self.transport, None) is not None
+ 
+     def writeEncoded(self, data):
+-        if isinstance(data, six.text_type):
++        if isinstance(data, str):
+             data = data.encode('utf-8')
+         self.transport.write(data)
+ 
+@@ -418,7 +409,7 @@ class WebSocketProtocol(ProtocolWrapper)
+ 
+         self.writeEncodedSequence([
+             "Sec-WebSocket-Origin: %s\r\n" % self.origin,
+-            "Sec-WebSocket-Location: %s://%s%s\r\n" % (protocol, self.host,
++            "Sec-WebSocket-Location: {}://{}{}\r\n".format(protocol, self.host,
+                                                        self.location),
+             "WebSocket-Protocol: %s\r\n" % self.codec,
+             "Sec-WebSocket-Protocol: %s\r\n" % self.codec,
+@@ -528,7 +519,7 @@ class WebSocketProtocol(ProtocolWrapper)
+         elif "Sec-WebSocket-Protocol" in self.headers:
+             protocols = self.headers["Sec-WebSocket-Protocol"]
+ 
+-        if isinstance(protocols, six.string_types):
++        if isinstance(protocols, str):
+             protocols = [p.strip() for p in protocols.split(',')]
+ 
+             for protocol in protocols:
+@@ -587,7 +578,7 @@ class WebSocketProtocol(ProtocolWrapper)
+             # These lines look like:
+             # GET /some/path/to/a/websocket/resource HTTP/1.1
+             if self.state == REQUEST:
+-                separator = six.b("\r\n")
++                separator = b"\r\n"
+                 if separator in self.buf:
+                     request, chaff, self.buf = self.buf.partition(separator)
+                     request = request.decode('utf-8')
+@@ -601,7 +592,7 @@ class WebSocketProtocol(ProtocolWrapper)
+ 
+             elif self.state == NEGOTIATING:
+                 # Check to see if we've got a complete set of headers yet.
+-                separator = six.b("\r\n\r\n")
++                separator = b"\r\n\r\n"
+                 if separator in self.buf:
+                     head, chaff, self.buf = self.buf.partition(separator)
+                     head = head.decode('utf-8')

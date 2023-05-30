@@ -1,0 +1,26 @@
+Index: txWS-0.9.1/txws.py
+===================================================================
+--- txWS-0.9.1.orig/txws.py
++++ txWS-0.9.1/txws.py
+@@ -211,7 +211,7 @@ def mask(buf, key):
+     buf = array.array("B", buf)
+     for i in range(len(buf)):
+         buf[i] ^= key[i % 4]
+-    return buf.tostring()
++    return buf.tobytes()
+ 
+ def make_hybi07_frame(buf, opcode=0x1):
+     """
+Index: txWS-0.9.1/setup.py
+===================================================================
+--- txWS-0.9.1.orig/setup.py
++++ txWS-0.9.1/setup.py
+@@ -5,7 +5,7 @@ from setuptools import setup
+ setup(
+     name="txWS",
+     py_modules=["txws"],
+-    setup_requires=["vcversioner", "six"],
++    setup_requires=["vcversioner"],
+     vcversioner={},
+     author="Corbin Simpson",
+     author_email="simpsoco@osuosl.org",

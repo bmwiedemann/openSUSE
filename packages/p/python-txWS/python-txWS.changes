@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 29 15:35:52 UTC 2023 - pgajdos@suse.com
+
+- do not require six
+- added patches
+  fix https://github.com/MostAwesomeDude/txWS/issues/36
+  + python-txWS-no-python2.patch
+  https://github.com/MostAwesomeDude/txWS/commit/05aadd036a7d9a0959c0d915a139779706e960d7
+  + python-txWS-tobytes.patch
+- added sources
+  https://github.com/MostAwesomeDude/txWS/commit/9e3a2a464b1c908086c82b293c271e58196f83df
+  + tests.py
+
+-------------------------------------------------------------------
 Tue Dec  4 12:55:29 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package
