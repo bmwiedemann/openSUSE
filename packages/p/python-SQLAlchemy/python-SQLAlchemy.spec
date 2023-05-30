@@ -16,11 +16,9 @@
 #
 
 
-%define skip_python2 1
-%define oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-SQLAlchemy
-Version:        2.0.12
+Version:        2.0.15
 Release:        0
 Summary:        Database Abstraction Library
 License:        MIT
@@ -29,13 +27,16 @@ Source:         https://files.pythonhosted.org/packages/source/S/SQLAlchemy/SQLA
 Source1:        SQLAlchemy.keyring
 # devel is needed for optional C extensions cprocessors.so, cresultproxy.so and cutils.so
 BuildRequires:  %{python_module Cython3}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python
-Requires:       python-greenlet
+Requires:       python-greenlet > 0.4.17
+Requires:       python-typing_extensions >= 4.2.0
 Provides:       python-sqlalchemy = %{version}
 Obsoletes:      python-sqlalchemy < %{version}
 Conflicts:      python-SQLAlchemy1
@@ -77,10 +78,10 @@ sed -i 's/\r$//' examples/dynamic_dict/dynamic_dict.py
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -90,9 +91,11 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %license LICENSE
 %doc CHANGES.rst README.rst README.dialects.rst README.unittests.rst
 %{python_sitearch}/sqlalchemy/
-%{python_sitearch}/SQLAlchemy-%{version}-py*.egg-info
+%{python_sitearch}/SQLAlchemy-%{version}.dist-info
 
+%if 0%{?suse_version} > 1500
 %files -n %{name}-doc
+%endif
 %doc doc/
 %doc examples/
 
