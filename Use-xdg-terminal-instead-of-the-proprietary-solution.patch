@@ -8,9 +8,11 @@ Subject: [PATCH 1/2] Use standard xdg-terminal instead of the proprietary
  config/config.c |    6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)
 
---- a/config/config.c
-+++ b/config/config.c
-@@ -53,16 +53,16 @@ Settings config = {
+Index: rofi-1.7.5+wayland1+git.1679493688.d06095b/config/config.c
+===================================================================
+--- rofi-1.7.5+wayland1+git.1679493688.d06095b.orig/config/config.c
++++ rofi-1.7.5+wayland1+git.1679493688.d06095b/config/config.c
+@@ -47,16 +47,16 @@ Settings config = {
      .show_icons = FALSE,
  
      /** Terminal to use. (for ssh and open in terminal) */

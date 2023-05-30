@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 30 13:31:10 UTC 2023 - mcepl@suse.com
+
+- Update to version 1.7.5+wayland1+git.1679493688.d06095b:
+  * Propose new PRs to go the 'wayland' branch, not the upstream one.
+  * Add information about the openSUSE package
+  * [Doc] remove some links to upstream rofi
+  * Wayland: fix NULL pointer access
+  * Wayland: real fullscreen support
+  * Fix redraw bug when changing window height
+  * [Doc] Update on window mode in README
+  * [Doc] Update Fedora package link.
+  * [WaylandWindow] Remove redundant icon fetcher query.
+  * [WaylandWindow] Apply changes from b3c46d2:
+
+-------------------------------------------------------------------
 Sat Nov  5 20:41:28 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - rofi-wayland-devel should conflict rofi-devel.
