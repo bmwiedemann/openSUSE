@@ -17,7 +17,7 @@
 
 
 Name:           SwayNotificationCenter
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        A simple GTK notification daemon
 License:        GPL-3.0-only

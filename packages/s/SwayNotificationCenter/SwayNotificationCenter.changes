@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May 29 14:52:47 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 0.9.0:
+  * Menu animation
+  * Hide visible notifications when activating dnd
+  * Use rounding to prevent incorrect backlight percentage calculation
+  * Per app volume control
+  * Fix backlight & KB brightness sliders
+  * Fixed mpDris2 mpris issues
+  * Preserve config object item order
+  * Add positonY center for notifications and CC
+  * Added ability to toggle parsing of notification 2fa codes
+  * Added ability to choose wether layer-shell should be used or not
+  * Added control-center layer config option
+  * Add inline replies to notifications
+
+-------------------------------------------------------------------
 Fri Feb 24 08:22:07 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 0.8.0:
