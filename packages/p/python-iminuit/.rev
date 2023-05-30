@@ -214,4 +214,12 @@
     <comment></comment>
     <requestid>1084804</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>b7faf2590310e7b29b35c692ae58a1f7</srcmd5>
+    <version>2.21.3</version>
+    <time>1685476936</time>
+    <user>dimstar_suse</user>
+    <comment>- renenable build for python311 (numba available)</comment>
+    <requestid>1089587</requestid>
+  </revision>
 </revisionlist>

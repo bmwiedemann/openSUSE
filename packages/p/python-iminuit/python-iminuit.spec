@@ -1,5 +1,5 @@
 #
-# spec file for package python-iminuit
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -16,19 +16,12 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# Python2 support dropped since version 1.4.0
-%define skip_python2 1
-%define skip_python36 1
-# No numba for python311
-%define skip_python311 1
-
-# Build fails with GCC 13, use GCC 12.x for openSUSE >= 1550
 %if 0%{?suse_version} >= 1550
 %define gccver 12
 %endif
 
 %define modname iminuit
+%{?sle15_python_module_pythons}
 Name:           python-%{modname}
 Version:        2.21.3
 Release:        0

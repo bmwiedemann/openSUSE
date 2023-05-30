@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 29 14:28:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- renenable build for python311 (numba available) 
+
+-------------------------------------------------------------------
 Thu May  4 15:37:09 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.21.3:
