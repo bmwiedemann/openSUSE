@@ -122,4 +122,13 @@
   * Fix formatting of request arg in docstring (#385) (forwarded request 1075539 from glaubitz)</comment>
     <requestid>1075540</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a1b1879f7af5af75c101705aa7cd92a0</srcmd5>
+    <version>2.17.0</version>
+    <time>1685476989</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.17.0
+  * Added VerifyConnectivity RPC (#388) (forwarded request 1089812 from glaubitz)</comment>
+    <requestid>1089817</requestid>
+  </revision>
 </revisionlist>

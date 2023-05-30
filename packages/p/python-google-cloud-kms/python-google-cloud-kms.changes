@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 30 12:41:34 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.17.0
+  * Added VerifyConnectivity RPC (#388)
+
+-------------------------------------------------------------------
 Thu Mar 30 10:37:19 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.16.1
