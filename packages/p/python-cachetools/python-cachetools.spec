@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-cachetools
-Version:        5.3.0
+Version:        5.3.1
 Release:        0
 Summary:        Extensible memoizing collections and decorators
 License:        MIT

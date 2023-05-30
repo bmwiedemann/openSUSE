@@ -178,4 +178,13 @@
     <comment></comment>
     <requestid>1081971</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a506436edb975ee58574b7c7b4fef92a</srcmd5>
+    <version>5.3.1</version>
+    <time>1685476899</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.3.1:
+  * Depend on Python &gt;= 3.7.</comment>
+    <requestid>1089608</requestid>
+  </revision>
 </revisionlist>
