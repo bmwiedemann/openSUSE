@@ -58,4 +58,12 @@
 - supersedes 0001-Include-memory-in-generate_cpp_array.cpp.patch</comment>
     <requestid>1075700</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c0c122603e2863e1d59a4f85eebbe908</srcmd5>
+    <version>23.13.26032.30</version>
+    <time>1685476959</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089740</requestid>
+  </revision>
 </revisionlist>
