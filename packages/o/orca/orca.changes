@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May 26 13:21:20 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.1:
+  + Web:
+    - Support aria-disabled on application, tab, group, and
+      focusable separator/splitter
+    - Fix bug in identification of inline iframes
+  + General:
+    - Improve performance by checking for duplicate object events
+    - Filter duplicate events when checking for double presses of
+      the orca modifier
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 24 19:59:47 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.0:

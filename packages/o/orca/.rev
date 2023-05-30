@@ -1306,4 +1306,23 @@
     <comment> (forwarded request 1074262 from iznogood)</comment>
     <requestid>1074644</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>697d5e356b7b0e904050872da6e7cda8</srcmd5>
+    <version>44.1</version>
+    <time>1685476854</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1089190 from iznogood
+
+- Update to version 44.1:
+  + Web:
+    - Support aria-disabled on application, tab, group, and
+      focusable separator/splitter
+    - Fix bug in identification of inline iframes
+  + General:
+    - Improve performance by checking for duplicate object events
+    - Filter duplicate events when checking for double presses of
+      the orca modifier
+  + Updated translations.</comment>
+    <requestid>1089503</requestid>
+  </revision>
 </revisionlist>
