@@ -504,6 +504,9 @@ Patch979:       0001-openfw-Ensure-get_devargs-and-get_devname-functions-.patch
 Patch980:       0002-prep_loadenv-Fix-regex-for-Open-Firmware-device-spec.patch
 Patch981:       0001-kern-ieee1275-init-Convert-plain-numbers-to-constant.patch
 Patch982:       0002-kern-ieee1275-init-Extended-support-in-Vec5.patch
+# support newer extX filesystem defaults
+Patch990:       0001-fs-ext2-Ignore-checksum-seed-incompat-feature.patch
+Patch991:       0001-fs-ext2-Ignore-the-large_dir-incompat-feature.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140

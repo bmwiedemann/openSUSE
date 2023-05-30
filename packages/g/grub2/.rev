@@ -2542,4 +2542,15 @@ pretty much the same. The main user visible changes are
     <comment></comment>
     <requestid>1086148</requestid>
   </revision>
+  <revision rev="296" vrev="53">
+    <srcmd5>08a5a61cad48e6ed9469ca11ffcb9b86</srcmd5>
+    <version>2.06</version>
+    <time>1685476925</time>
+    <user>dimstar_suse</user>
+    <comment>- add 0001-fs-ext2-Ignore-checksum-seed-incompat-feature.patch,
+  0001-fs-ext2-Ignore-the-large_dir-incompat-feature.patch:
+  * support more featureful extX filesystems (backport from
+  upstream git)</comment>
+    <requestid>1089792</requestid>
+  </revision>
 </revisionlist>
