@@ -430,4 +430,12 @@
 </comment>
     <requestid>1079997</requestid>
   </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>14045854f6d6379525a69a0d235ae1c4</srcmd5>
+    <version>1.1.1</version>
+    <time>1685476969</time>
+    <user>dimstar_suse</user>
+    <comment>- require sqlalchemy &lt; 2 due to agate-sql</comment>
+    <requestid>1089744</requestid>
+  </revision>
 </revisionlist>

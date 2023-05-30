@@ -28,7 +28,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/wireservice/csvkit
 Source0:        https://files.pythonhosted.org/packages/source/c/csvkit/csvkit-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/wireservice/csvkit/5f22e664121b13d9ff005a9206873a8f97431dca/examples/testdbf_converted.csv
-BuildRequires:  %{python_module SQLAlchemy >= 0.9.3}
+BuildRequires:  %{python_module SQLAlchemy >= 0.9.3 with %python-SQLAlchemy < 2}
 BuildRequires:  %{python_module Sphinx >= 1.0.7}
 BuildRequires:  %{python_module aenum}
 BuildRequires:  %{python_module agate >= 1.6.1}
