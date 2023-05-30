@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri May 26 13:42:37 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.48.2:
+  + rss: Fix recently introduced memory leaks.
+  + Bugs fixed:
+    - Updated attachments are shown as updated, but sent in old
+      version.
+    - TNEF attached message decoded incorrectly.
+    - Mail:
+      . Preview panel has too many vertical scrollbars.
+      . Recalc preview iframe heights more often.
+    - Composer:
+      . HTML formatting lost on paste from external browser.
+      . Added extra quotation level after draft open.
+    - Inconsistent S/MIME signature validation results.
+    - Wrong S/MIME certificate selection for encrypted email.
+    - Search input field's clear button unclickable during first
+      entry.
+    - PGP-MIME: Show decrypted protected header as Subject in
+      preview.
+    - Bundle 'x-office-...' non-symbolic icons.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Apr 21 08:19:43 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.48.1:
