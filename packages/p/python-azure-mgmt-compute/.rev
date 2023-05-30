@@ -327,4 +327,16 @@
 - Update Requires from setup.py (forwarded request 1059292 from glaubitz)</comment>
     <requestid>1059350</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>9d134ce56e49752da4fe379a86b95008</srcmd5>
+    <version>30.0.0</version>
+    <time>1685476979</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 30.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1089710 from glaubitz)</comment>
+    <requestid>1089799</requestid>
+  </revision>
 </revisionlist>
