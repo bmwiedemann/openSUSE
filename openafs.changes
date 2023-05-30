@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 30 12:21:37 UTC 2023 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- remove obsolete macro-call %{stop_on_removal} from spec-file
+
+-------------------------------------------------------------------
 Mon May 15 06:48:21 UTC 2023 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
 
 - apply upstream-patches for kernel 6.3:
