@@ -41,4 +41,15 @@
 </comment>
     <requestid>1086723</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>095aa8b3a83ba9ef171c8a51d7171f69</srcmd5>
+    <version>2.17.1</version>
+    <time>1685476878</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.17.1:
+  * Fixed tests in sdist
+  * Added support for Decimals
+  * Added tests in sdist</comment>
+    <requestid>1089592</requestid>
+  </revision>
 </revisionlist>

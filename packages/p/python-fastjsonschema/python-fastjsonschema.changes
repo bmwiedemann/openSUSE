@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 29 14:28:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.17.1:
+  * Fixed tests in sdist
+  * Added support for Decimals
+  * Added tests in sdist 
+
+-------------------------------------------------------------------
 Fri May 12 10:18:43 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

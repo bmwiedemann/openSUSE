@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fastjsonschema
-Version:        2.16.3
+Version:        2.17.1
 Release:        0
 Summary:        Fastest Python implementation of JSON schema
 License:        BSD-3-Clause
@@ -26,16 +26,14 @@ Group:          Development/Languages/Python
 URL:            https://github.com/horejsek/python-fastjsonschema
 Source:         https://files.pythonhosted.org/packages/source/f/fastjsonschema/fastjsonschema-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-benchmark}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Suggests:       python-colorama
 Suggests:       python-json-spec
 Suggests:       python-jsonschema
-Suggests:       python-pylint
-Suggests:       python-pytest
-Suggests:       python-pytest-benchmark
-Suggests:       python-pytest-cache
 Suggests:       python-validictory
 BuildArch:      noarch
 %python_subpackages
@@ -46,19 +44,20 @@ Fastest Python implementation of JSON schema
 %prep
 %autosetup -p1 -n fastjsonschema-%{version}
 
-chmod -x fastjsonschema.egg-info/*
-
 %build
-%python_build
+%pyproject_wheel
+
+%check
+%pytest
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/fastjsonschema
-%{python_sitelib}/fastjsonschema-%{version}*-info
+%{python_sitelib}/fastjsonschema-%{version}.dist-info
 
 %changelog
