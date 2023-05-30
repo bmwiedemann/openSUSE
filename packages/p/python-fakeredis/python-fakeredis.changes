@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 29 13:33:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.13.0:
+  * Fixed xadd timestamp (fixes #151) (#152)
+  * Implement XDEL #153
+  * Improve test code
+  * Fix reported security issue
+  * Add support for `Connection.read_response` arguments used in
+    redis-py 4.5.5 and 5.0.0
+  * Adding state for scan commands (#99)
+  * Improved documentation (added async sample, etc.)
+
+-------------------------------------------------------------------
 Mon May  8 18:09:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.12.0:

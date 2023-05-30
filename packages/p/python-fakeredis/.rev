@@ -189,4 +189,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1087281</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>bdabe473ef160817430c4215343dc19d</srcmd5>
+    <version>2.13.0</version>
+    <time>1685476924</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.13.0:
+  * Fixed xadd timestamp (fixes #151) (#152)
+  * Implement XDEL #153
+  * Improve test code
+  * Fix reported security issue
+  * Add support for `Connection.read_response` arguments used in
+    redis-py 4.5.5 and 5.0.0
+  * Adding state for scan commands (#99)
+  * Improved documentation (added async sample, etc.)</comment>
+    <requestid>1089578</requestid>
+  </revision>
 </revisionlist>
