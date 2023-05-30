@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 30 07:33:31 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Implement shared library packaging guidelines
+- Drop R/TM signs as per
+  https://en.opensuse.org/openSUSE:Package_description_guidelines
+
+-------------------------------------------------------------------
 Sat Dec  3 23:15:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.07.2:

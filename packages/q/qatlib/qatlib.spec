@@ -1,7 +1,7 @@
 #
 # spec file for package qatlib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,24 +35,37 @@ BuildRequires:  pkgconfig(zlib)
 # This package can be built on all archs, but is useful only on enterprise-class intel.
 ExclusiveArch:  x86_64
 
+%package -n libusdm0
+Summary:        QuickAssist memory management library
+
+%description -n libusdm0
+User space library for memory management.
+
+%package -n libqat3
+Summary:        QuickAssist device access library
+
+%description -n libqat3
+User space library for accessing Intel QAT devices.
+
 %package devel
 Summary:        Development files for qatlib
 Group:          Hardware/Other
-Requires:       %{name}
+Requires:       libqat3 = %{version}-%{release}
+Requires:       libusdm0 = %{version}-%{release}
 
 %description
-This package provides user space libraries that allow access to Intel(R)
+This package provides user space libraries that allow access to Intel
 QuickAssist devices for hardware-accelerated cryptography.
 The QuickAssist APIs allow for finer control over the qat_4xxx devices
 than the more general libkcapi.
 
 %description devel
-Header files for using the Intel(R) QuickAssist C APIs.
+Header files for using the Intel QuickAssist C APIs.
 These APIs allow for finer control over the qat_4xxx devices
 than the more general libkcapi.
 
 %prep
-%setup -q
+%autosetup
 autoreconf -iv
 
 %build
@@ -64,17 +77,21 @@ autoreconf -iv
 find %{buildroot} -type f -name "*.la" -delete -print
 rm -f %{buildroot}%{_libdir}/*.so.[0-9]
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets -n libusdm0
+%ldconfig_scriptlets -n libqat3
 
 %files
 %license LICENSE
 %doc README.md
 %{_mandir}/man8/qat*
 %{_unitdir}/qat*
-%{_libdir}/libusdm.so.0*
-%{_libdir}/libqat.so.3*
 %{_sbindir}/qat*
+
+%files -n libusdm0
+%{_libdir}/libusdm.so.0*
+
+%files -n libqat3
+%{_libdir}/libqat.so.3*
 
 %files devel
 %{_includedir}/qat
