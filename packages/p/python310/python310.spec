@@ -103,13 +103,13 @@ Obsoletes:      python39%{?1:-%{1}}
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.10.10
+Version:        3.10.11
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
 URL:            https://www.python.org/
-Source0:        http://www.python.org/ftp/python/%{folderversion}/%{tarname}.tar.xz
-Source1:        http://www.python.org/ftp/python/%{folderversion}/%{tarname}.tar.xz.asc
+Source0:        https://www.python.org/ftp/python/%{folderversion}/%{tarname}.tar.xz
+Source1:        https://www.python.org/ftp/python/%{folderversion}/%{tarname}.tar.xz.asc
 Source2:        baselibs.conf
 Source3:        README.SUSE
 Source7:        macros.python3
@@ -170,9 +170,9 @@ Patch36:        support-expat-CVE-2022-25236-patched.patch
 # blocklist bypass via the urllib.parse component when supplying
 # a URL that starts with blank characters
 Patch37:        CVE-2023-24329-blank-URL-bypass.patch
-# PATCH-FIX-UPSTREAM invalid-json.patch gh#python/cpython#102582 mcepl@suse.com
-# We require valid JSON in documentation
-Patch38:        invalid-json.patch
+# PATCH-FIX-UPSTREAM CVE-2007-4559-filter-tarfile_extractall.patch bsc#1203750 mcepl@suse.com
+# PEP 706 – Filter for tarfile.extractall
+Patch38:        CVE-2007-4559-filter-tarfile_extractall.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes

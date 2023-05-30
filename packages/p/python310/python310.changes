@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Sun Apr 30 18:19:01 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Why in the world we download from HTTP?
+
+-------------------------------------------------------------------
+Thu Apr 27 21:23:19 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2007-4559-filter-tarfile_extractall.patch to fix
+  CVE-2007-4559 (bsc#1203750) by adding the filter for
+  tarfile.extractall (PEP 706).
+
+-------------------------------------------------------------------
+Thu Apr 27 21:19:52 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.10.11:
+  - Core and Builtins
+    - gh-102416: Do not memoize incorrectly automatically
+      generated loop rules in the parser. Patch by Pablo Galindo.
+    - gh-102356: Fix a bug that caused a crash when deallocating
+      deeply nested filter objects. Patch by Marta Gómez Macías.
+    - gh-102397: Fix segfault from race condition in signal
+      handling during garbage collection. Patch by Kumar Aditya.
+    - gh-102126: Fix deadlock at shutdown when clearing thread
+      states if any finalizer tries to acquire the runtime head
+      lock. Patch by Kumar Aditya.
+    - gh-102027: Fix SSE2 and SSE3 detection in _blake2 internal
+      module. Patch by Max Bachmann.
+    - gh-101967: Fix possible segfault in
+      positional_only_passed_as_keyword function, when new list
+      created.
+    - gh-101765: Fix SystemError / segmentation fault in iter
+      __reduce__ when internal access of builtins.__dict__ keys
+      mutates the iter object.
+  - Library
+    - gh-102947: Improve traceback when dataclasses.fields() is
+      called on a non-dataclass. Patch by Alex Waygood
+    - gh-101979: Fix a bug where parentheses in the metavar
+      argument to argparse.ArgumentParser.add_argument() were
+      dropped. Patch by Yeojin Kim.
+    - gh-102179: Fix os.dup2() error message for negative fds.
+    - gh-101961: For the binary mode, fileinput.hookcompressed()
+      doesn’t set the encoding value even if the value is
+      None. Patch by Gihwan Kim.
+    - gh-101936: The default value of fp becomes io.BytesIO
+      if HTTPError is initialized without a designated fp
+      parameter. Patch by Long Vo.
+    - gh-101566: In zipfile, apply fix for extractall on the
+      underlying zipfile after being wrapped in Path.
+    - gh-101997: Upgrade pip wheel bundled with ensurepip (pip
+      23.0.1)
+    - gh-101892: Callable iterators no longer raise SystemError
+      when the callable object exhausts the iterator but forgets
+      to either return a sentinel value or raise StopIteration.
+    - gh-97786: Fix potential undefined behaviour in corner cases
+      of floating-point-to-time conversions.
+    - gh-101517: Fixed bug where bdb looks up the source line
+      with linecache with a lineno=None, which causes it to fail
+      with an unhandled exception.
+    - gh-101673: Fix a pdb bug where ll clears the changes to
+      local variables.
+    - gh-96931: Fix incorrect results from
+      ssl.SSLSocket.shared_ciphers()
+    - gh-88233: Correctly preserve “extra” fields in zipfile
+      regardless of their ordering relative to a zip64 “extra.”
+    - gh-95495: When built against OpenSSL 3.0, the ssl module
+      had a bug where it reported unauthenticated EOFs (i.e.
+      without close_notify) as a clean TLS-level EOF. It now
+      raises SSLEOFError, matching the behavior in previous
+      versions of OpenSSL. The options attribute on SSLContext
+      also no longer includes OP_IGNORE_UNEXPECTED_EOF by
+      default. This option may be set to specify the previous
+      OpenSSL 3.0 behavior.
+    - gh-94440: Fix a concurrent.futures.process bug where
+      ProcessPoolExecutor shutdown could hang after a future has
+      been quickly submitted and canceled.
+  - Documentation
+    - gh-103112: Add docstring to http.client.HTTPResponse.read()
+      to fix pydoc output.
+    - gh-85417: Update cmath documentation to clarify behaviour
+      on branch cuts.
+    - gh-97725: Fix asyncio.Task.print_stack() description for
+      file=None. Patch by Oleg Iarygin.
+  - Tests
+    - gh-102980: Improve test coverage on pdb.
+    - gh-102537: Adjust the error handling strategy in
+      test_zoneinfo.TzPathTest.python_tzpath_context. Patch by
+      Paul Ganssle.
+    - gh-101377: Improved test_locale_calendar_formatweekday of
+      calendar.
+  - Build
+    - gh-102711: Fix -Wstrict-prototypes compiler warnings.
+- Removed upstreamed:
+  - invalid-json.patch
+
+-------------------------------------------------------------------
 Mon Mar 13 08:39:53 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Add invalid-json.patch fixing invalid JSON in
