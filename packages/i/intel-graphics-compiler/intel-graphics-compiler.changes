@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May 29 11:55:23 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- 0001-libspriv-needs-to-include-cstdint-for-gcc13.patch no longer needed
+- 0001-Preinstalled-SPIRV-Tools-CMakeFile-target-fix.patch no longer needed
+
+-------------------------------------------------------------------
+Wed May 24 08:51:26 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.0.13700.14
+- Update opencl_clang to 10237c7109d613ef1161065d140b76d92133062f
+- Update spirv-llvm-translator to b23efa4f0400f8ee10f1db0cc9ff2e081b581ca1
+- Update vc_intrinsics v0.12.3 
+
+-------------------------------------------------------------------
 Fri Mar 31 06:37:32 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - 0001-Use-patch-instead-of-git-to-apply-opencl-clang-patch.patch makes it

@@ -1,18 +1,18 @@
-From f2e998091a0822dfb19e1756273f5d3c81ff8d4a Mon Sep 17 00:00:00 2001
+From b8c0b98bd88c660eed1f3978bfd3a6929da2aaae Mon Sep 17 00:00:00 2001
 From: Patrik Jakobsson <patrik.r.jakobsson@gmail.com>
 Date: Tue, 28 Mar 2023 10:34:25 +0200
 Subject: [PATCH] Use patch instead of git to apply opencl-clang patches
 
 Signed-off-by: Patrik Jakobsson <pjakobsson@suse.de>
 ---
- cmake/modules/CMakeFunctions.cmake | 74 ++++++------------------------
- 1 file changed, 14 insertions(+), 60 deletions(-)
+ cmake/modules/CMakeFunctions.cmake | 72 +++++++-----------------------
+ 1 file changed, 15 insertions(+), 57 deletions(-)
 
 diff --git a/cmake/modules/CMakeFunctions.cmake b/cmake/modules/CMakeFunctions.cmake
-index 5a49ac0..0f40f80 100644
+index fec3359..86a2985 100644
 --- a/cmake/modules/CMakeFunctions.cmake
 +++ b/cmake/modules/CMakeFunctions.cmake
-@@ -101,69 +101,23 @@ function(apply_patches repo_dir patches_dirs base_revision target_branch ret)
+@@ -99,65 +99,23 @@ function(apply_patches repo_dir patches_dirs base_revision target_branch ret)
      endif()
  
      message(STATUS "[OPENCL-CLANG] Patching repository ${repo_dir}")
@@ -21,7 +21,6 @@ index 5a49ac0..0f40f80 100644
 -        COMMAND ${GIT_EXECUTABLE} rev-parse --verify --no-revs -q ${target_branch}
 -        WORKING_DIRECTORY ${repo_dir}
 -        RESULT_VARIABLE patches_needed
--        ERROR_QUIET
 -        OUTPUT_QUIET
 -    )
 -    if(patches_needed EQUAL 128) # not a git repo
@@ -31,6 +30,13 @@ index 5a49ac0..0f40f80 100644
 -        list(SORT patches)
 -        is_valid_revision(${repo_dir} ${base_revision} exists_base_rev)
 +    list(SORT patches)
++    foreach(patch ${patches})
++        execute_process( # Apply the patch
++            COMMAND patch -p1 -i ${patch}
++            WORKING_DIRECTORY ${repo_dir}
++            OUTPUT_VARIABLE patching_log
++            RESULT_VARIABLE ret_apply_patch
++	)
  
 -        if(NOT ${exists_base_rev})
 -            execute_process( # take SHA1 from HEAD
@@ -38,17 +44,16 @@ index 5a49ac0..0f40f80 100644
 -                WORKING_DIRECTORY ${repo_dir}
 -                OUTPUT_VARIABLE repo_head
 -                OUTPUT_STRIP_TRAILING_WHITESPACE
--                ERROR_QUIET
 -                )
 -            message(STATUS "[OPENCL-CLANG] ref ${base_revision} not exists in repository, using current HEAD:${repo_head}")
 -            set(base_revision ${repo_head})
--        endif()
++        if (ret_apply_patch)
++            message(STATUS "[OPENCL-CLANG] Failed to apply patch ${patch}")
++            break()
+         endif()
 -        execute_process( # Create the target branch
 -            COMMAND ${GIT_EXECUTABLE} checkout -b ${target_branch} ${base_revision}
-+    foreach(patch ${patches})
-+        execute_process( # Apply the patch
-+            COMMAND patch -p1 -i ${patch}
-             WORKING_DIRECTORY ${repo_dir}
+-            WORKING_DIRECTORY ${repo_dir}
 -            RESULT_VARIABLE ret_check_out
 -            ERROR_STRIP_TRAILING_WHITESPACE
 -            ERROR_VARIABLE checkout_log
@@ -61,10 +66,9 @@ index 5a49ac0..0f40f80 100644
 -                message(STATUS "[OPENCL-CLANG] Patch ${patch} is already in local branch - ignore patching")
 -            else()
 -                execute_process( # Apply the patch
--                    COMMAND ${GIT_EXECUTABLE} am --3way --ignore-whitespace ${patch}
+-                    COMMAND ${GIT_EXECUTABLE} am --3way --ignore-whitespace -C0 ${patch}
 -                    WORKING_DIRECTORY ${repo_dir}
 -                    OUTPUT_VARIABLE patching_log
--                    ERROR_QUIET
 -                    RESULT_VARIABLE ret_apply_patch
 -                )
 -                message(STATUS "[OPENCL-CLANG] Not present - ${patching_log}")
@@ -78,17 +82,10 @@ index 5a49ac0..0f40f80 100644
 -            COMMAND ${GIT_EXECUTABLE} checkout ${target_branch}
 -            WORKING_DIRECTORY ${repo_dir}
 -            RESULT_VARIABLE ret_check_out
--            ERROR_QUIET
 -            OUTPUT_QUIET
-+            OUTPUT_VARIABLE patching_log
-+            RESULT_VARIABLE ret_apply_patch
-         )
+-        )
 -    endif()
 -    if (NOT (ret_not_git_repo OR ret_check_out OR ret_apply_patch))
-+        if (ret_apply_patch)
-+            message(STATUS "[OPENCL-CLANG] Failed to apply patch ${patch}")
-+            break()
-+        endif()
 +        message(STATUS "[OPENCL-CLANG] Applied patch ${patch}")
 +    endforeach(patch)
 +
@@ -97,5 +94,5 @@ index 5a49ac0..0f40f80 100644
      else()
          message(FATAL_ERROR "[OPENCL-CLANG] Failed to apply patch!")
 -- 
-2.40.0
+2.40.1
 
