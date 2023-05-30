@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 26 13:40:03 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.48.2:
+  + Bug Fixed:
+    - Camel: Set proper S/MIME signature verification status.
+    - IMAP: Cannot remove labels added in Thunderbird.
+    - WebDAV: Fails to discover iCloud address book.
+    - Wrong S/MIME certificate selection for encrypted email.
+
+-------------------------------------------------------------------
 Fri Apr 21 08:16:47 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.48.1:

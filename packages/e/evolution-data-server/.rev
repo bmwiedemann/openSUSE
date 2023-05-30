@@ -2230,4 +2230,19 @@ Please do NOT put in Staging E - but different staging prj. This is against 3.12
     <comment></comment>
     <requestid>1081153</requestid>
   </revision>
+  <revision rev="246" vrev="1">
+    <srcmd5>cc604d16ffe25d54041340ae584bfc11</srcmd5>
+    <version>3.48.2</version>
+    <time>1685476864</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1089200 from iznogood
+
+- Update to version 3.48.2:
+  + Bug Fixed:
+    - Camel: Set proper S/MIME signature verification status.
+    - IMAP: Cannot remove labels added in Thunderbird.
+    - WebDAV: Fails to discover iCloud address book.
+    - Wrong S/MIME certificate selection for encrypted email.</comment>
+    <requestid>1089507</requestid>
+  </revision>
 </revisionlist>
