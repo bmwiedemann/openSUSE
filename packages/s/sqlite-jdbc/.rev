@@ -469,4 +469,12 @@
     <comment>3.41.2.2</comment>
     <requestid>1088155</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1f299cd54708ca1941dca956f616c78a</srcmd5>
+    <version>3.42.0.0</version>
+    <time>1685476964</time>
+    <user>dimstar_suse</user>
+    <comment>3.42.0.0</comment>
+    <requestid>1089742</requestid>
+  </revision>
 </revisionlist>

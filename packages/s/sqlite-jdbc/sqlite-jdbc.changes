@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 22 12:15:50 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.42.0.0
+  * Features
+    ~ sqlite
+      + update to sqlite 3.42.0 (9a3e755)
+  * Build
+    ~ fix version update in README (6419a81)
+
+-------------------------------------------------------------------
 Fri May 19 12:59:49 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v3.41.2.2
