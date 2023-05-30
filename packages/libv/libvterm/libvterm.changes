@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 29 20:34:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.2:
+  * Update the cursor position when its within skipped range 
+    of rows at reflow time
+  * Ensure the reflow code doesn't attempt to invoke sb_pushline
+    callback if not set 
+
+-------------------------------------------------------------------
 Fri Jan 20 16:27:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.1:

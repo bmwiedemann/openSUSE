@@ -94,4 +94,16 @@
     <comment></comment>
     <requestid>1060042</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2462dd1b94607706ab3852ffe1460c1b</srcmd5>
+    <version>0.3.2</version>
+    <time>1685476943</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.2:
+  * Update the cursor position when its within skipped range 
+    of rows at reflow time
+  * Ensure the reflow code doesn't attempt to invoke sb_pushline
+    callback if not set</comment>
+    <requestid>1089653</requestid>
+  </revision>
 </revisionlist>

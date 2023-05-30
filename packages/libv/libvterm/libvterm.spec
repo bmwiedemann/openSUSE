@@ -22,7 +22,7 @@
 %{?!_make_verbose:%define _make_verbose V=1 VERBOSE=1}
 
 Name:           libvterm
-Version:        0.3.1
+Version:        0.3.2
 Release:        0
 Summary:        An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 License:        MIT
