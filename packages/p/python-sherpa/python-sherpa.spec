@@ -16,10 +16,8 @@
 #
 
 
-# python311 does not bundle setuptools < 60
-%define skip_python311 1
 Name:           python-sherpa
-Version:        4.15.0
+Version:        4.15.1
 Release:        0
 Summary:        Modeling and fitting package for scientific data analysis
 License:        GPL-3.0-only
@@ -42,6 +40,7 @@ Requires(postun):update-alternatives
 ExcludeArch:    %{ix86} %{arm}
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 5}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest-xvfb}
 # Highly recommended by upstream when building from source
 BuildRequires:  %{python_module astropy}
@@ -102,7 +101,7 @@ donttest="test_save"
 donttest+=" or (test_regproj and sherpa.plot.dummy_backend)"
 donttest+=" or (test_fit_single and Chi2XspecVar)"
 %endif
-%pytest_arch --pyargs sherpa -k "not ($donttest)"
+%pytest_arch %{?jobs:-n %jobs} --pyargs sherpa -k "not ($donttest)"
 
 %post
 %python_install_alternative sherpa_smoke

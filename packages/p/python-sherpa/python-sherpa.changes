@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon May 29 13:52:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.15.1:
+  * further improvements to filtering/grouping including
+    reporting a filter change in the UI
+  * fake_pha can be called with a list of ARF/RMF names
+  * added linewidth option for line and histogram plots
+  * documentation changes:
+  * fixed broken URLs
+  * improved documentation for templates, plot_pvalue
+  * added documentation testing with doctestplus
+  * Infrastructure changes:
+  * dropped support for Python 3.8
+  * experimental support of Python 3.11
+  * supported versions of Xspec are 12.12.0 - 12.13.0
+  * bug fixes:
+  * various updates to notice/ignore and group/ungroup code
+  * fixed issue with show_bkg
+  * fixed issue when binning values into a 1D histogram
+  * fixed cache errors with the TableModel class
+
+-------------------------------------------------------------------
 Fri Jan 20 10:59:30 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.15.0
