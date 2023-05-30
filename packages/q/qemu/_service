@@ -12,7 +12,6 @@
     <param name="archive">*.tar</param>
     <param name="files">*/rpm/common.inc */rpm/qemu.spec */rpm/qemu-linux-user.spec */rpm/README.PACKAGING */rpm/qemu-rpmlintrc</param>
   </service>
-  <service name="set_version" mode="manual"/>
   <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>

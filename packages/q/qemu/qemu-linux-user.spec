@@ -27,7 +27,7 @@ URL:            https://www.qemu.org/
 Summary:        CPU emulator for user space
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-Version:        7.1.0
+Version:        8.0.0
 Release:        0
 Source0:        qemu-%{version}.tar.xz
 Source1:        common.inc
@@ -35,6 +35,7 @@ Source200:      qemu-rpmlintrc
 Source303:      README.PACKAGING
 Source1000:     qemu-rpmlintrc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  bison
 BuildRequires:  glib2-devel-static >= 2.56
 BuildRequires:  glibc-devel-static
 BuildRequires:  (pcre-devel-static if glib2-devel-static < 2.73 else pcre2-devel-static)
@@ -46,8 +47,8 @@ BuildRequires:  zlib-devel-static
 #!BuildIgnore:  post-build-checks
 %endif
 BuildRequires:  fdupes
+BuildRequires:  flex
 BuildRequires:  gcc-c++
-BuildRequires:  git-core
 BuildRequires:  meson
 BuildRequires:  ninja >= 1.7
 BuildRequires:  perl-Text-Markdown
@@ -61,7 +62,6 @@ architecture. The syscall interface is intercepted and execution below the
 syscall layer occurs on the native hardware and operating system.
 
 %files
-%defattr(-, root, root)
 %doc README.rst VERSION
 %license COPYING COPYING.LIB LICENSE
 %_bindir/qemu-aarch64
@@ -115,18 +115,6 @@ cp %{rpmfilesdir}/supported.s390.txt docs/supported.rst
 sed -i '/^\ \ \ about\/index.*/i \ \ \ supported.rst' docs/index.rst
 %endif
 
-# When generating an upstream release tarball, the following commands
-# are run (see scripts/make-release):
-#  (cd roms/seabios && git describe --tags --long --dirty > .version)
-#  (cd roms/skiboot && ./make_version.sh > .version)
-# This has not happened for the archive we're using, since it's cloned
-# from a git branch. We, therefore, assumed that the following commands
-# have been run, and the result committed to the repository (with seabios
-# and skiboot at the proper commit/tag/...):
-#  (cd roms/seabios && git describe --tags --long --dirty > rpm/seabios_version)
-#  (cd roms/skiboot && ./make_version.sh > rpm/skiboot_version)
-cp %{rpmfilesdir}/seabios_version roms/seabios/.version
-cp %{rpmfilesdir}/skiboot_version roms/skiboot/.version
 find . -iname ".git" -exec rm -rf {} +
 
 mkdir -p %blddir
@@ -161,7 +149,7 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--libexecdir=%_libexecdir \
 	--localstatedir=%_localstatedir \
 	--prefix=%_prefix \
-        --python=%_bindir/python3 \
+	--python=%_bindir/python3 \
 	--sysconfdir=%_sysconfdir \
 	--with-git-submodules=ignore \
 	--with-pkgversion="%(echo '%{distro}' | sed 's/ (.*)//')" \
@@ -282,7 +270,6 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--disable-vhost-vdpa \
 	--disable-virglrenderer \
 	--disable-virtfs \
-	--disable-virtiofsd \
 	--disable-vnc \
 	--disable-vnc-jpeg \
 	--disable-vnc-sasl \

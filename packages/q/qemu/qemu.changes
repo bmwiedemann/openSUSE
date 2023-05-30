@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon May 29 14:39:04 UTC 2023 - dfaggioli@suse.com
+
+- Patch added:
+  [openSUSE][RPM] Fix deps for virtiofsd and improve spec files
+
+-------------------------------------------------------------------
+Tue May 23 08:22:15 UTC 2023 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update the _constraints file:
+  * the qemu-testsuite package does not exist any longer, but some
+    of the tests are done in the qemu package (so "transfer" some of
+    the constraints to that one)
+  - some of the builds are failing with OOM, happening while the RPM
+    is actually put together, at the end of the process. Try to give
+    them more RAM
+
+-------------------------------------------------------------------
+Mon May 22 16:13:49 UTC 2023 - dfaggioli@suse.com
+
+- Patch added:
+  [openSUSE][RPM] spec: require virtiofsd, now that it is a sep package (#27)
+
+-------------------------------------------------------------------
+Mon May 22 13:07:59 UTC 2023 - dfaggioli@suse.com
+
+- Update to version 8.0.0 (https://wiki.qemu.org/ChangeLog/8.0)
+* Removed features: https://qemu-project.gitlab.io/qemu/about/removed-features.html
+* Deprecated features: https://qemu-project.gitlab.io/qemu/about/deprecated.html
+* Some notable changes:
+  - ARM:
+    - New emulated CPU types:
+      - Cortex-A55 CPU
+      - Cortex-R52 CPU
+  - x86
+    - Add support for Xen guests under KVM with Linux v5.12+
+    - New CPU model "SapphireRapids"
+  - VFIO
+    - Experimental migration support has been updated to the v2 VFIO migration protocol
+  - virtio
+    - virtio-mem now fully supports combining preallocation with migration
+  - vDPA
+    - Support live migration of vhost-vdpa net devices without CVQ, with no need of x-svq
+  - virtiofs
+    - The old C virtiofsd has been removed, use the new Rust implementation instead. 
+* Patches added:
+  [openSUSE][RPM] Try to avoid recommending too many packages (bsc#1205680)
+  [openSUSE][RPM] Move documentation to a subpackage and fix qemu-headless (bsc#1209629)
+  roms: add back edk2-basetools target
+  async: Suppress GCC13 false positive in aio_bh_poll()
+  [openSUSE][OBS] Limit the workflow runs to the factory branch (#25)
+  [openSUSE][RPM] Spec file adjustments for 8.0.0
+  
+-------------------------------------------------------------------
 Wed May 10 12:19:52 UTC 2023 - dfaggioli@suse.com
 
 - (Radical!) Change of packaging workflow. Now pretty much everything

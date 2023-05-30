@@ -1,6 +1,6 @@
 %define _buildshell /bin/bash
 
-%define sbver   1.16.0_0_gd239552
+%define sbver   1.16.2_3_gd478f380
 
 %define srcdir %{_builddir}/%buildsubdir
 %define blddir %srcdir/build

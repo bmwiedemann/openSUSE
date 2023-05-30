@@ -4,24 +4,11 @@
     <conditions>
       <package>qemu</package>
       <package>qemu:qemu-linux-user</package>
-      <package>qemu:testsuite</package>
     </conditions>
     <hardware>
       <disk>
         <size unit="G">12</size>
       </disk>
-    </hardware>
-  </overwrite>
-  <!-- To test qemu-linux-user, armv7l needs more than the default memory -->
-  <overwrite>
-    <conditions>
-      <arch>armv7l</arch>
-      <package>qemu:qemu-linux-user</package>
-    </conditions>
-    <hardware>
-      <memory>
-        <size unit="M">8192</size>
-      </memory>
     </hardware>
   </overwrite>
   <!-- To build qemu, s390x needs more than the default memory -->
@@ -36,13 +23,13 @@
       </memory>
     </hardware>
   </overwrite>
-  <!-- Excluding ARM, qemu-testsuite needs more than the default memory -->
+  <!-- And this is the case for (some of the) other arch-es as well -->
   <overwrite>
     <conditions>
       <arch>i586</arch>
       <arch>x86_64</arch>
       <arch>ppc64le</arch>
-      <package>qemu:testsuite</package>
+      <package>qemu</package>
     </conditions>
     <hardware>
       <memory>
@@ -54,7 +41,7 @@
   <overwrite>
     <conditions>
       <arch>ppc64</arch>
-      <package>qemu:testsuite</package>
+      <package>qemu</package>
     </conditions>
     <hardware>
       <memory>
@@ -71,6 +58,18 @@
     </conditions>
     <hardware>
       <processors>8</processors>
+    </hardware>
+  </overwrite>
+  <!-- To test qemu-linux-user, armv7l needs more than the default memory -->
+  <overwrite>
+    <conditions>
+      <arch>armv7l</arch>
+      <package>qemu:qemu-linux-user</package>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="M">8192</size>
+      </memory>
     </hardware>
   </overwrite>
 </constraints>
