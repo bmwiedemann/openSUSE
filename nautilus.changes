@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May 28 09:16:33 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.2:
+  + Fix crashes with expandable folders and on Other Locations.
+  + Avoid inconsistent search states.
+  + Prevent lingering tracker cursors.
+  + Fix rubberband range behavior on list view.
+  + Updated translations.
+- Drop 0e5b4c34.patch and 6e37d15f.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Sat May 13 03:58:54 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Drop mount-archive.desktop. This was a feature based on

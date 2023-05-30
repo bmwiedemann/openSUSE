@@ -1548,4 +1548,20 @@ Hence, recommended to be added to 12.3</comment>
     <comment></comment>
     <requestid>1088670</requestid>
   </revision>
+  <revision rev="206" vrev="1">
+    <srcmd5>27cad934d9d445efe1c09dd8258296bc</srcmd5>
+    <version>44.2</version>
+    <time>1685476869</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1089427 from iznogood
+
+- Update to version 44.2:
+  + Fix crashes with expandable folders and on Other Locations.
+  + Avoid inconsistent search states.
+  + Prevent lingering tracker cursors.
+  + Fix rubberband range behavior on list view.
+  + Updated translations.
+- Drop 0e5b4c34.patch and 6e37d15f.patch: Fixed upstream.</comment>
+    <requestid>1089514</requestid>
+  </revision>
 </revisionlist>

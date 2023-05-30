@@ -17,7 +17,7 @@
 
 
 Name:           nautilus
-Version:        44.1
+Version:        44.2
 Release:        0
 Summary:        File Manager for the GNOME Desktop
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -26,11 +26,6 @@ URL:            https://wiki.gnome.org/Apps/Nautilus
 Source0:        https://download.gnome.org/sources/nautilus/44/%{name}-%{version}.tar.xz
 Source1:        set_trusted.desktop
 Source2:        set_trusted.sh
-
-# PATCH-FIX-UPSTREAM 0e5b4c34.patch -- general: Use GtkSwitch active property consistently
-Patch1:         https://gitlab.gnome.org/GNOME/nautilus/-/commit/0e5b4c34.patch
-# PATCH-FIX-UPSTREAM 6e37d15f.patch -- window-slot: Manage search props set with action
-Patch2:         https://gitlab.gnome.org/GNOME/nautilus/-/commit/6e37d15f.patch
 
 # needed for directory ownership
 BuildRequires:  dbus-1
