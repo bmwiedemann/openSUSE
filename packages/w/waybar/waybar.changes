@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Mon May 29 14:20:12 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 0.9.18:
+  * fix: battery time remaining
+  * Sway window newstyles
+  * fix(wireplumber): waybar crashes when default node changes
+  * get_desktop_app_info: fix crash on failed DesktopAppInfo::create
+  * hyprland/submap: run initial render on startup
+  * GCC 13 and C++20 support
+  * Allow any module to implement signal handling
+  * modules/custom: Added percentage rounding
+  * Sanitize hyprland language string only instead of the whole format
+  * Year calendar
+  * Clock. Proper handletoggle propagation
+  * Clock. Formating simplify
+  * Image module CSS fix
+  * Fix kbName initialization
+  * fix(wireplumber): free(): invalid pointer
+  * When no one timezone is provided use system's TZ
+  * Fixing memory leak on update UPower tooltip
+  * Clock. Calendar. Avoid of unnecessary string transformation
+  * Backlight: add brightness control
+  * Set Image path from executable file (Image Module)
+  * Remove repeated "the" and fix some typos
+  * AModule implements module actions call
+  * add river/layout
+  * feat(sway): add workspace css class
+  * Revert "feat(sway): add workspace css class"
+  * AModule enable_click & enable_scroll
+  * Clock tz try catch
+  * group module: configurable orientation
+  * Happy clang
+  * fix: mpd bug paused with no song.
+  * Wireplumber: Free the default node name
+  * refactor: make linter happy.
+  * config:output:Allow multiple exclusions & wildcard
+  * custom module: free memory returned by libc's getline
+  * modules/clock: fix calendar shift in months with 31 days
+  * mpris: add tooltip, length limits, position tag
+  * wlr-taskbar: allow sorting by app_id
+  * [hyprland/language] Add more format replacements.
+  * sway/window: Rewrite entire format output instead of just the title
+  * mpris: fix css class application
+  * Generate wireplumber module man page
+  * Made use of node_id_
+  * today style not applied to new date 1 day after starting waybar
+  * Cava module
+  * pulseaudio apply states
+  * backlight: support tooltip
+  * mpris: fix non-dynamic tags not being html escaped
+  * Persistent workspaces for [wlr/workspaces]
+  * Add DWL tags module
+  * fix: use getaddrinfo() instead of gethostbyname()
+  * river/tags: refactor to support special purpose tags
+  * Fix hyprland language initialization problem
+  * network: detect if link is p2p and use local addr
+  * cava: shared library is not found
+  * [wlr/workspaces] Separate CSS class for empty persistent workspaces
+  * Add persistent format-icon to wlr/workspaces
+  * mpris: Hide label if empty
+  * mpris: Fix incorrect format replacement names
+  * File descriptor handling bugs
+  * Fix SEGFAULT in battery module
+  * Update to new ipc version
+- Disable cava module due to missing libcava
+- Drop 0000-replace-gethostbyname-getaddrinfo.patch (fixed upstream)
+- Drop 0001-require-date-dependency.patch (changed upstream)
+- Drop ca9d237b00b4d01f341b0d7bc938afb10a4f8cad.patch (fixed upstream)
+
+-------------------------------------------------------------------
 Sat Apr  1 19:59:55 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add ca9d237b00b4d01f341b0d7bc938afb10a4f8cad.patch: Fix(sway):

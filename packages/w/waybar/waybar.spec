@@ -17,19 +17,16 @@
 
 
 Name:           waybar
-Version:        0.9.17
+Version:        0.9.18
 Release:        0
 Summary:        Customizable Wayland bar for Sway and Wlroots based compositors
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/Alexays/Waybar
 Source0:        %{name}-%{version}.tar.gz
-Patch0:         0000-replace-gethostbyname-getaddrinfo.patch
-Patch1:         0001-require-date-dependency.patch
-Patch2:         https://github.com/Alexays/Waybar/commit/ca9d237b00b4d01f341b0d7bc938afb10a4f8cad.patch
 BuildRequires:  cmake
 %if 0%{?sle_version} >= 150400
-BuildRequires:  gcc11-c++
+BuildRequires:  gcc13-c++
 %else
 BuildRequires:  gcc-c++ >= 8
 %endif
@@ -102,9 +99,9 @@ This package provides the upstream look and feel for sway.
 
 %build
 %if 0%{?sle_version} >= 150400
-export CXX=g++-11
+export CXX=g++-13
 %endif
-%meson
+%meson -Dcava=disabled
 %meson_build
 
 %install
