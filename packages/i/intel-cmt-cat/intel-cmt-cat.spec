@@ -1,7 +1,7 @@
 #
 # spec file for package intel-cmt-cat
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2016 Intel Corporation
 #
 # All modifications and additions to the file contributed by third parties
@@ -47,11 +47,11 @@ provides an interface to read and write the MSR registers but
 it requires root privileges.
 
 %package     -n libpqos%{libpqosMajor}
-Summary:        Runtime pqos library
+Summary:        Runtime Platform Quality of Service library
 Group:          System/Libraries
 
 %description -n libpqos%{libpqosMajor}
-PQoS library provides API to detect and configure Intel(R) RDT including:
+PQoS library provides API to detect and configure Intel RDT including:
 Cache Monitoring Technology (CMT), Memory Bandwidth Monitoring (MBM),
 Cache Allocation Technology (CAT), Code and Data Prioritization (CDP) Technology.
 
@@ -64,7 +64,7 @@ Obsoletes:      libpqos1-devel < %{version}
 Provides:       libpqos1-devel = %{version}
 
 %description    -n libpqos-devel
-PQoS library provides API to detect and configure Intel(R) RDT including:
+PQoS library provides API to detect and configure Intel RDT including:
 Cache Monitoring Technology (CMT), Memory Bandwidth Monitoring (MBM),
 Cache Allocation Technology (CAT), Code and Data Prioritization (CDP) Technology.
 
@@ -72,8 +72,7 @@ This package contains all that is needed to develop/compile
 applications that use PQoS.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 %make_build %{make_flags}
