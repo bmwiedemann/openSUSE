@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Tue May 30 09:11:41 UTC 2023 - Florian "sp1rit" <packaging@sp1rit.anonaddy.me>
+
+- Added "devel" package required to build Hyprland plugins.
+  + Added required tests:
+    * 0001-meson-fix-hyprland.pc-install-location.patch
+    * 0002-fix-patched-wlroots-build.patch
+- Update to version 0.26.0:
+  + WHY DID MY ENTIRE RELEASE GET WIPED REEEE
+    Anyways Hyprland update woooo
+  + New features:
+    * Add "next on monitor or empty" workspace parameter (#2198)
+    * Add hyprland to waybar-hyprland path as fallback for hyprctl
+    * Add split preselection (#2240)
+    * decos: recalc on add
+    * groupbars: add text color opt
+    * groupbars: add title and gradient rendering
+    * input: add custom accel profiles
+    * input: only configure newly added touch devices
+    * lock: add allow_session_lock_restore
+    * pluginapi: add separate window render events
+    * renderer,config: add custom DRM modeline support (#2254)
+  + Fixes:
+    * 1483: fix crash on last display disconnect (#2344)
+    * Fix UAF in animation end callback if callback deletes the
+      animation (#2389)
+    * Fix broken pipe crash when event listener terminates (#2339)
+    * Fix not finding function symbols for hooking (#2292)
+    * Fixed wrong focus changes when moving background workspaces
+      (#2258)
+    * bug fix (#2314)
+    * configmanager: fix substr offset in default ws rule
+    * examples: fix incorrect link in per-device config comments
+      (#2353)
+    * focus: fix #1675 window not scrollable after movefocus (#2390)
+    * groupbars: fix minor alignment issues
+    * groupbars: fix reserved area on titles
+    * hyprctl: fix cut-off json outputs (#2352)
+    * includes: use libdrm prefix for include
+    * keybinds: fix tryMoveFocusToMonitor with special
+    * launchanim: fix #2291
+    * layers: fix wonky focus on multimon
+    * monitors: fix some bugs with re-plug
+    * render: minor fixes to fullscreen rendering
+    * touch: fix double offset in local
+    * workspaces: minor fixes for multi-special
+  + Other:
+    * Issue template: request users to ping me for Nix
+    * animationmgr: allow empty avars
+    * compositor: disallow sending pinned to special
+    * compositor: don't focus pointer in focusWindow
+    * config: clear layer rules on reload
+    * configmanager: deprecate bindws
+    * configmanager: remove useless log from handleWorkspaceRule
+    * configmanager: store workspace rules as a deque
+    * don't swap workspaces if monitors are the same (#2322)
+    * examples: update plugin headers
+    * examples: update plugin makefile
+    * focus: make cursor follow movewindow (#2374)
+    * groupbar: make exclusive
+    * groupbars: conserve VRAM by staticizing textures
+    * groupbars: make gradients toggleable
+    * hyprctl: recalc layout on dynamic workspace
+    * includes: remove redundant from screencopy
+    * input: check for matrix availability in touch config
+    * input: don't move monitor focus on wp change (#2320)
+    * input: don't refocus on closed window
+    * input: reset cursor hide timer on tablet
+    * internal: make CAnimatedVariable non-move non-copy
+    * internal: remove check for negative exact vector args
+    * internal: use i64 for workspaces in outofbounds
+    * internal: removed Herobrine
+    * layershell: don't enter on unmapped ls
+    * layershell: focus if changed keyboard mode
+    * layout: don't reset to floating size on drag tiled
+    * layouts: ignore direction forces on non-map
+    * master: guard monitor in recalc
+    * meson & nix: install wlroots headers (#2287)
+    * monitors: toggle special on changeworkspace with special
+    * moveActiveToWorkspace: update last window of old ws
+    * pluginenv: copy built wlr headers
+    * quote hash for the GIT_COMMIT_HASH macro (#2227)
+    * readme: update previews
+    * varlist: allow using s for std::isspace
+    * vector: restore cmath include after 438d063 (#2394)
+    * vector: use c++ stdlib math functions instead of cmath
+    * version: bump to 0.26.0
+    * window: reveal current from group on toplevel activate
+    * wlr_ext_workspaces: honor activate from client + format
+    * workspacerules: overwrite on existing
+
+-------------------------------------------------------------------
 Wed May  3 21:07:55 UTC 2023 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
 
 - Update to version 0.25.0:

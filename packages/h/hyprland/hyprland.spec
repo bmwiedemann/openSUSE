@@ -17,13 +17,17 @@
 #
 
 
+%bcond_without devel
+
 Name:           hyprland
-Version:        0.25.0
+Version:        0.26.0
 Release:        0
 Summary:        Dynamic tiling Wayland compositor
 License:        BSD-3-Clause
 URL:            https://hyprland.org/
 Source0:        %{name}-%{version}.tar.xz
+Patch1:         0001-meson-fix-hyprland.pc-install-location.patch
+Patch2:         0002-fix-patched-wlroots-build.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++ >= 11
 BuildRequires:  git
@@ -64,6 +68,9 @@ BuildRequires:  Mesa-libGLESv3-devel
 %if %{with xcb_errors}
 BuildRequires:  pkgconfig(xcb-errors)
 %endif
+%if %{with devel}
+Suggests:       %{name}-devel
+%endif
 
 %description
 Hyprland is a dynamic tiling Wayland compositor based on wlroots
@@ -72,8 +79,19 @@ that doesn't sacrifice on its looks.
 It supports multiple layouts, fancy effects, has a very flexible IPC
 model allowing for a lot of customization, and more.
 
+%if %{with devel}
+%package devel
+Summary:        Files required to build Hyprland plugins
+Requires:       %{name}
+
+%description devel
+This package contains the neccessary files that are required to
+build plugins for hyprland.
+%endif
+
 %prep
 %autosetup -p1
+patch -p1 -d subprojects/wlroots/ < subprojects/packagefiles/wlroots-meson-build.patch
 
 %build
 %meson \
@@ -81,7 +99,10 @@ model allowing for a lot of customization, and more.
 %meson_build
 
 %install
-%meson_install --tags runtime,man
+%meson_install --tags runtime,man%{?with_devel:,devel}
+%if %{with devel}
+rm %{buildroot}/%{_libdir}/libwlroots.a %{buildroot}/%{_libdir}/pkgconfig/wlroots.pc
+%endif
 
 %files
 %license LICENSE
@@ -93,5 +114,11 @@ model allowing for a lot of customization, and more.
 %{_datadir}/wayland-sessions/%{name}.desktop
 %{_mandir}/man1/Hyprland.*
 %{_mandir}/man1/hyprctl.*
+
+%if %{with devel}
+%files devel
+%{_includedir}/%{name}
+%{_libdir}/pkgconfig/%{name}.pc
+%endif
 
 %changelog

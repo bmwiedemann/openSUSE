@@ -1,0 +1,30 @@
+From 0ee610a292b275e66d57c2f857331d1c153904de Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Florian=20=22sp1rit=22=E2=80=8B?= <sp1rit@disroot.org>
+Date: Tue, 30 May 2023 11:45:59 +0200
+Subject: [PATCH] meson: fix hyprland.pc install location
+
+---
+ meson.build | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 6a94dee..4777d2f 100644
+--- a/meson.build
++++ b/meson.build
+@@ -88,13 +88,10 @@ subdir('assets')
+ subdir('example')
+ subdir('docs')
+ 
+-pkg_install_dir = join_paths(get_option('datadir'), 'pkgconfig')
+-
+ import('pkgconfig').generate(
+   name: 'Hyprland',
+   filebase: 'hyprland',
+   url: 'https://github.com/hyprwm/Hyprland',
+   description: 'Hyprland header files',
+-  install_dir: pkg_install_dir,
+   subdirs: ['', 'hyprland/protocols', 'hyprland/wlroots'],
+ )
+-- 
+2.40.1
+

@@ -1,0 +1,28 @@
+From e829c515d3bc5fa140ceede23ade99b8f76455d3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Florian=20=22sp1rit=22=E2=80=8B?= <sp1rit@disroot.org>
+Date: Tue, 30 May 2023 12:14:58 +0200
+Subject: [PATCH 2/2] fix patched wlroots build
+
+---
+ subprojects/packagefiles/wlroots-meson-build.patch | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/subprojects/packagefiles/wlroots-meson-build.patch b/subprojects/packagefiles/wlroots-meson-build.patch
+index 5e7565a..ef18541 100644
+--- a/subprojects/packagefiles/wlroots-meson-build.patch
++++ b/subprojects/packagefiles/wlroots-meson-build.patch
+@@ -2,9 +2,10 @@ diff --git a/include/meson.build b/include/meson.build
+ index e669800..687786b 100644
+ --- a/include/meson.build
+ +++ b/include/meson.build
+-@@ -1,4 +1,5 @@
++@@ -1,4 +1,6 @@
+ -subdir('wlr')
+ +run_command('ln', '-s', join_paths(meson.project_source_root(), 'include', 'wlr'), join_paths(meson.project_source_root(), 'include', 'wlroots'), check: true)
+++run_command('ln', '-s', join_paths(meson.project_build_root(), 'include', 'wlroots'), join_paths(meson.project_build_root(), 'include', 'wlr'), check: true)
+ +subdir('wlroots')
+  
+  exclude_files = ['meson.build', 'config.h.in', 'version.h.in']
+-- 
+2.40.1
+
