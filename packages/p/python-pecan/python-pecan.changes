@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 22 11:27:36 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- add sqlalchemy2.patch to support SQLAlchemy 2.0
+
+-------------------------------------------------------------------
 Sat Jan 28 12:35:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - restore webtest dependency, needed by pecan.testing 

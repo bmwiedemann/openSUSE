@@ -307,4 +307,12 @@
     <comment>- restore webtest dependency, needed by pecan.testing</comment>
     <requestid>1061733</requestid>
   </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>10b739298f1939755ed3b0ac55ab3a55</srcmd5>
+    <version>1.4.2</version>
+    <time>1685476922</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1088348</requestid>
+  </revision>
 </revisionlist>

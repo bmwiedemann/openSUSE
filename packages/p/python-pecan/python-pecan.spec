@@ -32,6 +32,8 @@ License:        BSD-3-Clause
 URL:            https://github.com/pecan/pecan
 Source:         https://files.pythonhosted.org/packages/source/p/pecan/pecan-%{version}.tar.gz
 Patch0:         pecan-no-kajiki.patch
+#PATCH-FIX-UPSTREAM https://github.com/pecan/pecan/pull/145  remove six as a requirement, add support for SQLAlchemy 2.0, drop support for SQLAlchemy 1.3
+Patch1:         sqlalchemy2.patch
 BuildRequires:  %{python_module Genshi >= 0.7}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module Mako >= 0.4.0}
@@ -41,7 +43,6 @@ BuildRequires:  %{python_module WebTest >= 1.3.1}
 BuildRequires:  %{python_module gunicorn}
 BuildRequires:  %{python_module logutils}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module virtualenv}
 BuildRequires:  uwsgi
 # we need sqlite module
@@ -54,7 +55,6 @@ Requires:       python-WebOb >= 1.8
 Requires:       python-WebTest >= 1.3.1
 Requires:       python-logutils >= 0.3
 Requires:       python-setuptools
-Requires:       python-six
 %if %{with libalternatives}
 Requires:       alts
 BuildRequires:  alts
@@ -74,8 +74,7 @@ Suggests:       python-gunicorn
 A WSGI object-dispatching web framework.
 
 %prep
-%setup -q -n pecan-%{version}
-%patch0 -p1
+%autosetup -p1 -n pecan-%{version}
 sed -ie "/^uwsgi$/d" test-requirements.txt
 sed -ie "/^pep8$/d" test-requirements.txt
 
