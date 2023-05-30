@@ -2617,4 +2617,18 @@
     <comment></comment>
     <requestid>1086599</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>9882eba446f1f3b78f54020be243b5e7</srcmd5>
+    <version>2.48.3</version>
+    <time>1685476867</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1089424 from iznogood
+
+- Update to version 2.48.3:
+  + Fix the build when dbus-broker is not set to be used by
+    default.
+  + Fix a couple of use after frees when finalizing devices.
+  + atk-adaptor: Fix handling of sockets in impl_GetChildren.</comment>
+    <requestid>1089511</requestid>
+  </revision>
 </revisionlist>
