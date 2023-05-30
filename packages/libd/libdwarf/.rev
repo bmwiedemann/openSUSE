@@ -347,4 +347,26 @@
   * https://newreleases.io/github/davea42/libdwarf-code?version=v0.6.0</comment>
     <requestid>1068066</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>be796215daea12c654ced30275024282</srcmd5>
+    <version>0.7.0</version>
+    <time>1685476941</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7.0:
+  * The release fixes more than 50 vulnerabilities from corrupt
+    DWARF and/or corrupt Elf.
+  * Elf section counts can exceed 16 bits (on linux see man 5 elf)
+    so some function prototype members of struct
+    Dwarf_Obj_Access_Methods_a_s changed.  Specifically,
+    om_get_section_info() om_load_section(), and om_relocate_a_section()
+    now pass section indexes as Dwarf_Unsigned instead of Dwarf_Half. 
+  * Two functions have been removed from libdwarf.h and the library:
+    dwarf_dnames_abbrev_by_code() and dwarf_dnames_abbrev_form_by_index().
+  * dwarf_dnames_abbrev_by_code() is slow and pointless. Use either
+    dwarf_dnames_name() or dwarf_dnames_abbrevtable() instead,
+    depending on what you want to accomplish.
+  * dwarf_dnames_abbrev_form_by_index() is not needed, was difficult
+    to call due to argument list requirements, and never worked.</comment>
+    <requestid>1089639</requestid>
+  </revision>
 </revisionlist>
