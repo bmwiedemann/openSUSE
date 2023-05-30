@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat May 20 12:11:45 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- update to 4.5.5:
+  * Add support for CLIENT NO-TOUCH
+  * Add support for CLUSTER MYSHARDID
+  * Add "address_remap" feature to RedisCluster
+  * Add WITHSCORES argument to ZREVRANK command
+  * Improve error output for master discovery
+  * Fix XADD: allow non negative maxlen
+  * Fix create single connection client from url
+  * Optionally disable disconnects in read_response
+  * Fix SLOWLOG GET return value
+  * Fix potential race condition during disconnection
+  * Return response in case of KeyError
+  * Fix incorrect usage of once flag in async Sentinel
+  * Fix memory leak caused by hiredis in asyncio case
+  * Really do not use asyncio's timeout lib before 3.11.2
+
+-------------------------------------------------------------------
 Mon May  8 07:12:58 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons
