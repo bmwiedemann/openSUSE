@@ -96,4 +96,15 @@
     <comment></comment>
     <requestid>1085439</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>9dfdb55608695ada3f3164654a5d0909</srcmd5>
+    <version>0.12.11</version>
+    <time>1685476960</time>
+    <user>dimstar_suse</user>
+    <comment>- Add requests-fix.patch to support latest version of urllib3 and
+  requests
+  gh#ionrock/cachecontrol#301, gh#ionrock/cachecontrol#304
+</comment>
+    <requestid>1089718</requestid>
+  </revision>
 </revisionlist>

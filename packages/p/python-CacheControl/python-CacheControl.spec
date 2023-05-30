@@ -25,7 +25,11 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/ionrock/cachecontrol
 Source:         https://github.com/ionrock/cachecontrol/archive/v%{version}.tar.gz#/CacheControl-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM requests-fix.patch -- gh#ionrock/cachecontrol#301, gh#ionrock/cachecontrol#304
+Patch0:         requests-fix.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-msgpack >= 0.5.2
@@ -51,14 +55,18 @@ CacheControl is a port of the caching algorithms in httplib2 for use with
 requests session object.
 
 %prep
-%setup -q -n cachecontrol-%{version}
+%autosetup -p1 -n cachecontrol-%{version}
 sed -i -e 's/^from mock/from unittest.mock/' -e 's/^import mock/from unittest import mock/' tests/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+
+# do not pack tests
+%python_expand rm -rf %{buildroot}%{$python_sitelib}/tests
+
 %python_clone -a %{buildroot}%{_bindir}/doesitcache
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 

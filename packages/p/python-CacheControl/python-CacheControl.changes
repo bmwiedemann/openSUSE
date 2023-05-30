@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 30 07:53:24 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add requests-fix.patch to support latest version of urllib3 and
+  requests
+  gh#ionrock/cachecontrol#301, gh#ionrock/cachecontrol#304
+
+-------------------------------------------------------------------
 Mon May  8 06:37:48 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons
