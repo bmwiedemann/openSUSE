@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May 29 17:58:14 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.1.15:
+  * Fixed #5566: Indicate color scheme to operating system
+  * Fixed #5565: Update `Dockerfile` to latest version of base
+    image
+  * Fixed #5554: Add additional version tags (`9`, `9.1`) to Docker
+    image
+  * Fixed #5536: Strip tags of ARIA labels in table of contents
+
+-------------------------------------------------------------------
 Mon May 22 05:44:26 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 9.1.14:
