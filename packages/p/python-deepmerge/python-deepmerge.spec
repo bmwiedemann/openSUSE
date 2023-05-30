@@ -1,7 +1,7 @@
 #
 # spec file for package python-deepmerge
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,25 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-deepmerge
-Version:        0.1.0
+Version:        1.1.0
 Release:        0
 License:        MIT
 Summary:        A toolset to deeply merge python dictionaries
-Url:            http://deepmerge.readthedocs.io/en/latest/
+URL:            https://github.com/toumorokoshi/deepmerge
 Group:          Development/Languages/Python
 Source:         https://files.pythonhosted.org/packages/source/d/deepmerge/deepmerge-%{version}.tar.gz
-Source99:       https://raw.githubusercontent.com/toumorokoshi/deepmerge/master/LICENSE
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools_scm > 5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module vcver}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 
 %python_subpackages
@@ -40,13 +42,12 @@ Python module to deeply merge python dictionaries.
 
 %prep
 %setup -q -n deepmerge-%{version}
-cp %{S:99} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -55,6 +56,7 @@ cp %{S:99} .
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/deepmerge
+%{python_sitelib}/deepmerge-%{version}.dist-info/
 
 %changelog
