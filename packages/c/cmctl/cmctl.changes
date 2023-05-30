@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri May 26 05:19:26 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.12.1:
+  * Bump cert-manager in cmctl to latest 1.12 commit
+  * Add a note that folks should not use top level helm
+    featureGates value to pass webhook flags
+  * Bump sigs.k8s.io/controller-runtime to v0.15.0
+  * Don't run API Priority and Fairness controller in webhook
+    extension apiserver
+  * Bump k8s.io dependencies
+  * Bumps kubebuilder SHAs
+
+-------------------------------------------------------------------
+Mon May 22 05:47:55 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.12.0:
+  changelog to large to add, please see here
+  https://github.com/cert-manager/cert-manager/releases/tag/v1.12.0
+- BuildRequire go1.20
+
+-------------------------------------------------------------------
 Wed May 10 04:37:19 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.11.2:
