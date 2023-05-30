@@ -426,4 +426,13 @@
   compatibility with newer billiard</comment>
     <requestid>1074931</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>3a101910cc74f6820d340323ae80f9d4</srcmd5>
+    <version>5.2.7</version>
+    <time>1685476940</time>
+    <user>dimstar_suse</user>
+    <comment>- Add sqlalchemy-2.0.patch to support latest version of sqlalchemy.
+  gh#celery/celery#8271</comment>
+    <requestid>1089865</requestid>
+  </revision>
 </revisionlist>

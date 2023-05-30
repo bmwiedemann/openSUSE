@@ -11,7 +11,7 @@ We should adjust the code in Celery as well.
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/celery/concurrency/asynpool.py b/celery/concurrency/asynpool.py
-index b9f2875a26..489336936c 100644
+index b9f2875a261..489336936c1 100644
 --- a/celery/concurrency/asynpool.py
 +++ b/celery/concurrency/asynpool.py
 @@ -26,7 +26,7 @@

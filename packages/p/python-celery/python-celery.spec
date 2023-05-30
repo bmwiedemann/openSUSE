@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -39,6 +38,8 @@ Patch1:         tests.patch
 # PATCH-FIX-UPSTREAM compatibility with newer billiard
 Patch2:         https://github.com/celery/celery/commit/b260860988469ef8ad74f2d4225839c2fa91d590.patch
 Patch3:         https://github.com/celery/celery/commit/879af6341974c3778077d8212d78f093b2d77a4f.patch
+# PATCH-FIX-UPSTREAM sqlalchemy-2.0.patch -- gh#celery/celery#8271
+Patch4:         sqlalchemy-2.0.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  netcfg
@@ -122,7 +123,8 @@ scheduling as well.
 %python_uninstall_alternative celery
 
 %files %{python_files}
-%{python_sitelib}/*
+%{python_sitelib}/celery
+%{python_sitelib}/celery-%{version}*-info
 %license LICENSE
 %doc README.rst TODO
 %python_alternative %{_bindir}/celery

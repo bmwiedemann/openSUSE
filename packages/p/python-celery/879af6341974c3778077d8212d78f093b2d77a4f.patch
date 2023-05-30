@@ -12,7 +12,7 @@ Subject: [PATCH] Fixed error handling bugs due to upgrade to a newer version
  4 files changed, 23 insertions(+), 12 deletions(-)
 
 diff --git a/celery/app/task.py b/celery/app/task.py
-index 212bc772e0..d6108fbef8 100644
+index 212bc772e01..d6108fbef8c 100644
 --- a/celery/app/task.py
 +++ b/celery/app/task.py
 @@ -1,7 +1,7 @@
@@ -34,7 +34,7 @@ index 212bc772e0..d6108fbef8 100644
              return retval.sig.apply(retries=retries + 1)
          state = states.SUCCESS if ret.info is None else ret.info.state
 diff --git a/celery/worker/request.py b/celery/worker/request.py
-index d89971468c..d0004a19cc 100644
+index d89971468c6..d0004a19ccc 100644
 --- a/celery/worker/request.py
 +++ b/celery/worker/request.py
 @@ -10,6 +10,7 @@
@@ -85,7 +85,7 @@ index d89971468c..d0004a19cc 100644
              task_ready(self)
  
 diff --git a/t/unit/utils/test_collections.py b/t/unit/utils/test_collections.py
-index ce776cebf1..aae685ebc7 100644
+index ce776cebf1a..aae685ebc7c 100644
 --- a/t/unit/utils/test_collections.py
 +++ b/t/unit/utils/test_collections.py
 @@ -145,8 +145,8 @@ def test_exception_info(self):
@@ -100,7 +100,7 @@ index ce776cebf1..aae685ebc7 100644
  
              assert repr(einfo)
 diff --git a/t/unit/worker/test_request.py b/t/unit/worker/test_request.py
-index a34f70dc80..b818f2837c 100644
+index a34f70dc80d..b818f2837cc 100644
 --- a/t/unit/worker/test_request.py
 +++ b/t/unit/worker/test_request.py
 @@ -155,7 +155,7 @@ def test_execute_jail_failure(self):
