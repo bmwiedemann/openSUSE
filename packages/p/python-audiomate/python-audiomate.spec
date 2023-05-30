@@ -16,11 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
-%define         skip_python36 1
-# python-numba is not available for python 3.11 yet
-%define         skip_python311 1
+%{?sle15_python_module_pythons}
 Name:           python-audiomate
 Version:        6.0.0
 Release:        0

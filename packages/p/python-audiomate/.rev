@@ -56,4 +56,12 @@
 </comment>
     <requestid>1077180</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>8b27a9ad7916e6ff57e0d3d52aa00897</srcmd5>
+    <version>6.0.0</version>
+    <time>1685476928</time>
+    <user>dimstar_suse</user>
+    <comment>- reenable python 3.11 build (numba available now)</comment>
+    <requestid>1089357</requestid>
+  </revision>
 </revisionlist>
