@@ -22,12 +22,9 @@ Version:        0.23.1
 Release:        0
 Summary:        A utility library for mocking out the `requests` Python library
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/getsentry/responses
 Source:         https://files.pythonhosted.org/packages/source/r/responses/responses-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 636-urllib3-2-compat.patch gh#getsentry/responses!636 mcepl@suse.com
-# Make the package compatible with urllib3 >= 2.0
-Patch0:         636-urllib3-2-compat.patch
+# Waiting for the death of urllib3 1.x due to boto: gh#getsentry/responses!636
 # PATCH-FIX-UPSTREAM unbundle-urllib3.patch gh#getsentry/responses#635, mcepl@suse.com
 # Don't use urllib3 bundled in requests.
 Patch1:         unbundle-urllib3.patch
@@ -44,10 +41,10 @@ BuildRequires:  %{python_module pytest-httpserver}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.22 with %python-requests < 3}
 BuildRequires:  %{python_module tomli-w}
-BuildRequires:  %{python_module urllib3 >= 2}
+BuildRequires:  %{python_module urllib3 < 2}
 # /SECTION
 Requires:       python-PyYAML
-Requires:       python-urllib3 >= 2
+Requires:       python-urllib3 < 2
 Requires:       (python-requests >= 2.22.0 with python-requests < 3)
 BuildArch:      noarch
 %python_subpackages

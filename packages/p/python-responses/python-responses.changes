@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 23 12:47:08 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop patch 636-urllib3-2-compat.patch:
+  * moto needs to stay with urllib3 < 2 due to boto. 
+
+-------------------------------------------------------------------
 Tue May  9 22:20:25 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update 636-urllib3-2-compat.patch (from

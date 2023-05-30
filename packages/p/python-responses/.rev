@@ -358,4 +358,13 @@
 </comment>
     <requestid>1085860</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>6f4a2f9a90115bb253d1c88cd04f08ff</srcmd5>
+    <version>0.23.1</version>
+    <time>1685476922</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop patch 636-urllib3-2-compat.patch:
+  * moto needs to stay with urllib3 &lt; 2 due to boto.</comment>
+    <requestid>1088655</requestid>
+  </revision>
 </revisionlist>
