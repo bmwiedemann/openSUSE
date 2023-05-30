@@ -612,7 +612,6 @@ echo sh ./build-modules.sh install
 
 %preun fuse_client
 %service_del_preun openafs-fuse-client.service
-%{stop_on_removal}
 
 %post fuse_client
 if [ ! -d /afs ]; then
@@ -676,7 +675,6 @@ else
 fi
 
 %preun client
-%{stop_on_removal}
 %service_del_preun openafs-client.service
 
 %postun client
@@ -713,7 +711,6 @@ fi
 
 %preun server
 %service_del_preun openafs-server.service
-%{stop_on_removal}
 
 %postun server
 /sbin/ldconfig
