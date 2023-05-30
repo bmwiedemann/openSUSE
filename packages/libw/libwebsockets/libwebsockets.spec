@@ -28,6 +28,8 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://libwebsockets.org
 Source:         https://github.com/warmcat/libwebsockets/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-gcc13-build.patch -- based on PR 2824
+Patch0:         fix-gcc13-build.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libuv-devel
@@ -68,7 +70,7 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of the WebSockets library.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake \

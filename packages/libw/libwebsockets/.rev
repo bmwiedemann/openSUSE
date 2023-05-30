@@ -119,4 +119,13 @@
     <comment></comment>
     <requestid>1066653</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>ae5e4ab4cfb674b78bb5689d8b563417</srcmd5>
+    <version>4.3.2</version>
+    <time>1685476996</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream patch fix-gcc13-build.patch:
+  Fix -Werror=enum-int-mismatch in lws_tls_server_abort_connection()</comment>
+    <requestid>1089824</requestid>
+  </revision>
 </revisionlist>

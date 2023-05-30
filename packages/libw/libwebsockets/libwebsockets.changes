@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 27 18:35:12 UTC 2023 - munix9@googlemail.com
+
+- Add upstream patch fix-gcc13-build.patch:
+  Fix -Werror=enum-int-mismatch in lws_tls_server_abort_connection()
+
+-------------------------------------------------------------------
 Sun Feb 19 20:24:53 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - package libwebsockets-evlib_uv.so
