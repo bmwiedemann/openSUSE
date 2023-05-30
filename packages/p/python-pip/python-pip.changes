@@ -1,4 +1,117 @@
 -------------------------------------------------------------------
+Tue May  2 10:12:33 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 23.1.2
+  - Upgrade setuptools to 67.7.2
+- 23.1.1:
+  - Revert #11487, as it causes issues with virtualenvs created by the
+    Windows Store distribution of Python. (#11987)
+  - Revert pkg_resources (via setuptools) back to 65.6.3
+  - Update documentation to reflect the new behavior of using the
+    cache of locally built wheels in hash-checking mode. (#11967)
+- 23.1:
+  - Remove support for the deprecated --install-options. (#11358)
+  - --no-binary does not imply setup.py install anymore. Instead a
+    wheel will be built locally and installed. (#11451)
+  - --no-binary does not disable the cache of locally built wheels
+    anymore. It only means "don't download wheels". (#11453)
+  - Deprecate --build-option and --global-option. Users are invited to
+    switch to --config-settings. (#11859)
+  - Using --config-settings with projects that don't have a
+    pyproject.toml now prints a deprecation warning. In the future the
+    presence of config settings will automatically enable the default
+    build backend for legacy projects and pass the setttings to it.
+    (#11915)
+  - Remove setup.py install fallback when building a wheel failed for
+    projects without pyproject.toml. (#8368)
+  - When the wheel package is not installed, pip now uses the default
+    build backend instead of setup.py install and setup.py develop for
+    project without pyproject.toml. (#8559)
+  - Specify egg-link location in assertion message when it does not
+    match installed location to provide better error message for
+    debugging. (#10476)
+  - Present conflict information during installation after each choice
+    that is rejected (pass -vv to pip install to show it) (#10937)
+  - Display dependency chain on each Collecting/Processing log line.
+    (#11169)
+  - Support a per-requirement --config-settings option in requirements
+    files. (#11325)
+  - The --config-settings/-C option now supports using the same key
+    multiple times. When the same key is specified multiple times, all
+    values are passed to the build backend as a list, as opposed to
+    the previous behavior, where pip would only pass the last value if
+    the same key was used multiple times. (#11681)
+  - Add -C as a short version of the --config-settings option.
+    (#11786)
+  - Reduce the number of resolver rounds, since backjumping makes the
+    resolver more efficient in finding solutions. This also makes
+    pathological cases fail quicker. (#11908)
+  - Warn if --hash is used on a line without requirement in a
+    requirements file. (#11935)
+  - Stop propagating CLI --config-settings to the build dependencies.
+    They already did not propagate to requirements provided in
+    requirement files. To pass the same config settings to several
+    requirements, users should provide the requirements as CLI
+    arguments. (#11941)
+  - Support wheel cache when using --require-hashes. (#5037)
+  - Add --keyring-provider flag. See the Authentication page in the
+    documentation for more info. (#8719)
+  - In the case of virtual environments, configuration files are now
+    also included from the base installation. (#9752)
+  - Fix grammar by changing "A new release of pip available:" to "A
+    new release of pip is available:" in the notice used for
+    indicating that. (#11529)
+  - Normalize paths before checking if installed scripts are on PATH.
+    (#11719)
+  - Correct the way to decide if keyring is available. (#11774)
+  - More consistent resolution backtracking by removing legacy hack
+    related to setuptools resolution (#11837)
+  - Include AUTHORS.txt in pip's wheels. (#11882)
+  - The uninstall and install --force-reinstall commands no longer
+    call normalize_path() repeatedly on the same paths. Instead, these
+    results are cached for the duration of an uninstall operation,
+    resulting in improved performance, particularly on Windows.
+    (#11889)
+  - Fix and improve the parsing of hashes embedded in URL fragments.
+    (#11936)
+  - When package A depends on package B provided as a direct URL
+    dependency including a hash embedded in the link, the
+    --require-hashes option did not warn when user supplied hashes
+    were missing for package B. (#11938)
+  - Correctly report requested_extras in the installation report when
+    extras are specified for a local directory installation. (#11946)
+  - When installing an archive from a direct URL or local file,
+    populate download_info.info.hashes in the installation report, in
+    addition to the legacy download_info.info.hash key. (#11948)
+- 23.0.1:
+  - Change the hashes in the installation report to be a mapping. Emit
+    the archive_info.hashes dictionary in direct_url.json. (#11312)
+  - Implement logic to read the EXTERNALLY-MANAGED file as specified
+    in PEP 668. This allows a downstream Python distributor to prevent
+    users from using pip to modify the externally managed environment.
+    (#11381)
+  - Enable the use of keyring found on PATH. This allows keyring
+    installed using pipx to be used by pip. (#11589)
+  - The inspect and installation report formats are now declared
+    stable, and their version has been bumped from 0 to 1. (#11757)
+  - Wheel cache behavior is restored to match previous versions,
+    allowing the cache to find existing entries. (#11527)
+  - Use the "venv" scheme if available to obtain prefixed lib paths.
+    (#11598)
+  - Deprecated a historical ambiguity in how egg fragments in
+    URL-style requirements are formatted and handled. egg fragments
+    that do not look like PEP 508 names now produce a deprecation
+    warning. (#11617)
+  - Fix scripts path in isolated build environment on Debian. (#11623)
+  - Make pip show show the editable location if package is editable
+    (#11638)
+  - Stop checking that wheel is present when build-system.requires is
+    provided without build-system.build-backend as setuptools (which
+    we still check for) will inject it anyway. (#11673)
+  - Fix an issue when an already existing in-memory distribution would
+    cause exceptions in pip install (#11704)
+
+-------------------------------------------------------------------
 Fri Apr 21 12:29:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

@@ -16,13 +16,7 @@
 #
 
 
-%if 0%{?suse_version} > 1500
-%bcond_without libalternatives
-%else
-%bcond_with libalternatives
-%endif
-
-%{?!python_module:%define python_module() python3-%{**}}
+%{?sle15_python_module_pythons}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -40,9 +34,13 @@
 %endif
 %endif
 %global skip_python2 1
-%{?sle15_python_module_pythons}
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 Name:           python-pip%{psuffix}
-Version:        22.3.1
+Version:        23.1.2
 Release:        0
 Summary:        A Python package management system
 License:        MIT
@@ -62,15 +60,15 @@ Requires:       ca-certificates
 Requires:       coreutils
 Requires:       python-setuptools
 Requires:       python-xml
+Recommends:     ca-certificates-mozilla
+BuildArch:      noarch
 %if %{with libalternatives}
-Requires:       alts
 BuildRequires:  alts
+Requires:       alts
 %else
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %endif
-Recommends:     ca-certificates-mozilla
-BuildArch:      noarch
 %if %{with test}
 # Test requirements:
 BuildRequires:  %{python_module PyYAML}
@@ -86,11 +84,11 @@ BuildRequires:  %{python_module scripttest}
 BuildRequires:  %{python_module setuptools-wheel}
 BuildRequires:  %{python_module virtualenv >= 1.10}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  ca-certificates
+BuildRequires:  git-core
 %if 0%{?suse_version} <= 1500
 BuildRequires:  %{python_module mock}
 %endif
-BuildRequires:  ca-certificates
-BuildRequires:  git-core
 %endif
 %if %{with wheel}
 BuildRequires:  %{python_module wheel}
@@ -160,7 +158,7 @@ donttest="test_pip_self_version_check_calls_underlying_implementation"
 # keep the alternative groups separate. Users could decide to let pip and pip3 point to
 # different flavors
 %python_install_alternative pip
-%if "%python_flavor" != "python2"
+%if "%{python_flavor}" != "python2"
 %python_install_alternative pip3
 %endif
 
