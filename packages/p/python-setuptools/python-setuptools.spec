@@ -36,8 +36,9 @@
 
 # in order to avoid rewriting for subpackage generator
 %define mypython python
+%{?sle15_python_module_pythons}
 Name:           python-setuptools%{psuffix}
-Version:        67.6.1
+Version:        67.7.2
 Release:        0
 Summary:        Download, build, install, upgrade, and uninstall Python packages
 License:        Apache-2.0 AND MIT AND BSD-2-Clause AND Python-2.0
@@ -46,6 +47,8 @@ Source:         https://files.pythonhosted.org/packages/source/s/setuptools/setu
 Patch0:         sort-for-reproducibility.patch
 # PATCH-FIX-OPENSUSE fix-get-python-lib-python38.patch bsc#1204395
 Patch2:         fix-get-python-lib-python38.patch
+# PATCH-FIX-UPSTREAM gh#pypa/setuptools#3917
+Patch3:         use-tarfile-extraction_filter.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -68,10 +71,10 @@ BuildRequires:  %{python_module pytest >= 6}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module setuptools = %{version}}
+BuildRequires:  %{python_module setuptools-wheel = %{version}}
 BuildRequires:  %{python_module tomli-w >= 1.0.0}
 BuildRequires:  %{python_module virtualenv >= 13.0.0}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  python3-setuptools-wheel = %{version}
 %endif
 %if 0%{?suse_version} || 0%{?fedora_version} >= 24
 Recommends:     ca-certificates-mozilla
@@ -108,7 +111,7 @@ especially ones that have dependencies on other packages.
 
 %check
 %if %{with test}
-export PRE_BUILT_SETUPTOOLS_WHEEL=%{python3_sitelib}/../wheels/setuptools-%{version}-py2.py3-none-any.whl
+%python_expand export PRE_BUILT_SETUPTOOLS_WHEEL=%{$python_sitelib}/../wheels/setuptools-%{version}-py2.py3-none-any.whl
 export LANG=en_US.UTF-8
 # tests need imports from local source dir
 export PYTHONPATH=$(pwd)

@@ -1080,4 +1080,12 @@
     ``pyproject.toml`` is used.</comment>
     <requestid>1079724</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>928a807d926a759e81f6471fcce797c6</srcmd5>
+    <version>67.7.2</version>
+    <time>1685476917</time>
+    <user>dimstar_suse</user>
+    <comment>- Testing must be single-spec as well. (forwarded request 1084683 from mcepl)</comment>
+    <requestid>1084684</requestid>
+  </revision>
 </revisionlist>

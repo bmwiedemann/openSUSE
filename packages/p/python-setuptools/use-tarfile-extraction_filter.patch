@@ -1,0 +1,26 @@
+From 788a7601c88db28435a70e5bb17e6eba23a31e4c Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Wed, 3 May 2023 12:02:19 +1000
+Subject: [PATCH] tests: Add extraction_filter for tarfile
+
+Python 3.12, and earlier via security backports now issue an
+DeprecationWarning when calling tarfile.extractall without an extraction
+filter set. Since the only place we've called extractall is literally
+right after we've created the archive, use a fully trusted filter. This
+can be replaced with a filter argument to extractall in future.
+---
+ setuptools/tests/test_easy_install.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/setuptools/tests/test_easy_install.py b/setuptools/tests/test_easy_install.py
+index bca86066ad..edc9af8252 100644
+--- a/setuptools/tests/test_easy_install.py
++++ b/setuptools/tests/test_easy_install.py
+@@ -615,6 +615,7 @@ def test_setup_requires_override_nspkg(self, use_setup_cfg):
+                 foobar_1_dir = os.path.join(temp_dir, 'foo.bar-0.1')
+                 os.mkdir(foobar_1_dir)
+                 with tarfile.open(foobar_1_archive) as tf:
++                    tf.extraction_filter = (lambda member, path: member)
+                     tf.extractall(foobar_1_dir)
+                 sys.path.insert(1, foobar_1_dir)
+ 

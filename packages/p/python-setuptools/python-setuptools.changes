@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu May  4 12:50:17 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Testing must be single-spec as well.
+
+-------------------------------------------------------------------
+Wed May  3 02:23:58 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 67.7.2:
+  * #3902: Fixed wrong URLs used in warnings and logs.
+  * #3898: Fixes setuptools.dist:invalid_unless_false when value is false
+    don’t raise error
+  * #3849: Overhaul warning system for better visibility.
+  * #3884: Add a stacklevel parameter to warnings.warn() to provide more
+    information to the user. 
+- Add patch use-tarfile-extraction_filter.patch:
+  * Set an extraction_filter to avoid a warning.
+
+-------------------------------------------------------------------
+Fri Apr 21 12:33:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons (jsc#PED-68)
+
+-------------------------------------------------------------------
 Sun Apr 16 08:13:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 67.6.1:
@@ -8,6 +31,11 @@ Sun Apr 16 08:13:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
     v0.12.2.
   * This should fix default license patterns when
     ``pyproject.toml`` is used.
+
+-------------------------------------------------------------------
+Sun Mar 26 06:36:38 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Refresh sort-for-reproducibility.patch
 
 -------------------------------------------------------------------
 Thu Mar  9 05:04:25 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
