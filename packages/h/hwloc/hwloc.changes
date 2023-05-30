@@ -52,6 +52,8 @@ Mon Jul 11 07:47:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Misc
     + Add --disable-readme to avoid regenerating the top-level hwloc README
       file from the documentation. 
+  * Bugfix 
+   + Use setenv() instead of putenv() - fixes crash in Slurm (bsc#1210227)
 
 -------------------------------------------------------------------
 Fri Apr  8 16:42:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
