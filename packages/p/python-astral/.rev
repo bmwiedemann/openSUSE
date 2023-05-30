@@ -88,4 +88,13 @@
     <comment>- BuildRequire dataclasses if python36-base installed</comment>
     <requestid>864493</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cced9166a368aa77e3362f8c2d0dbf38</srcmd5>
+    <version>3.2</version>
+    <time>1685476939</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0:
+  * Adds moon rise, set, azimuth and zenith calculations</comment>
+    <requestid>1089614</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-astral
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-astral
-Version:        2.2
+Version:        3.2
 Release:        0
 Summary:        Calculations for the position of the sun and moon
 License:        Apache-2.0
@@ -62,8 +61,9 @@ For documentation see the http://astral.readthedocs.io/en/latest/index.html
 %pytest -m "not webtest"
 
 %files %{python_files}
-%doc README.rst
+%doc ReadMe.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/astral
+%{python_sitelib}/astral-%{version}-py3*.egg-info
 
 %changelog
