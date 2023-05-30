@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue May 30 07:52:52 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- updated to rekor 1.2.1 (jsc#SLE-23476):
+
+  Security fix:
+
+  - CVE-2023-33199: Fixed that malformed proposed intoto v0.0.2 entries can cause a panic (bsc#1211790)
+
+  Functional Enhancements
+
+  - add client method to generate TLE struct (#1498)
+  - add dsse type (#1487)
+  - support other KMS providers (AWS, Azure, Hashicorp) in addition to GCP (#1488)
+  - Add concurrency to backfill-redis (#1504)
+  - omit informational message if machine-parseable output has been requested (#1486)
+  - Publish stable checkpoint periodically to Redis (#1461)
+  - Add intoto v0.0.2 to backfill script (#1500)
+  - add new method to test insertability of proposed entries into log (#1410)
+
+  Quality Enhancements
+
+  - use t.Skip() in fuzzers (#1506)
+  - improve fuzzing coverage (#1499)
+  - Remove watcher script (#1484)
+
+  Bug Fixes
+
+  - Merge pull request from GHSA-frqx-jfcm-6jjr (CVE-2023-33199)
+  - Remove requirement of PayloadHash for intoto 0.0.1 (#1490)
+  - fix lint errors, bump linter up to 1.52 (#1485)
+  - Remove dependencies from pkg/util (#1469)
+
+-------------------------------------------------------------------
 Wed May  3 12:23:27 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - updated to rekor 1.1.1 (jsc#SLE-23476):

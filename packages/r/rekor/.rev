@@ -308,4 +308,32 @@
     (bsc#1211210 https://github.com/advisories/GHSA-2h5h-59f5-c5x9) (forwarded request 1085762 from msmeissn)</comment>
     <requestid>1085763</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ad7425b6cdafb057fd6d5bc39c8d951b</srcmd5>
+    <version>1.2.1</version>
+    <time>1685476973</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to rekor 1.2.1 (jsc#SLE-23476):
+  Security fix:
+  - CVE-2023-33199: Fixed that malformed proposed intoto v0.0.2 entries can cause a panic (bsc#1211790)
+  Functional Enhancements
+  - add client method to generate TLE struct (#1498)
+  - add dsse type (#1487)
+  - support other KMS providers (AWS, Azure, Hashicorp) in addition to GCP (#1488)
+  - Add concurrency to backfill-redis (#1504)
+  - omit informational message if machine-parseable output has been requested (#1486)
+  - Publish stable checkpoint periodically to Redis (#1461)
+  - Add intoto v0.0.2 to backfill script (#1500)
+  - add new method to test insertability of proposed entries into log (#1410)
+  Quality Enhancements
+  - use t.Skip() in fuzzers (#1506)
+  - improve fuzzing coverage (#1499)
+  - Remove watcher script (#1484)
+  Bug Fixes
+  - Merge pull request from GHSA-frqx-jfcm-6jjr (CVE-2023-33199)
+  - Remove requirement of PayloadHash for intoto 0.0.1 (#1490)
+  - fix lint errors, bump linter up to 1.52 (#1485)
+  - Remove dependencies from pkg/util (#1469) (forwarded request 1089735 from msmeissn)</comment>
+    <requestid>1089753</requestid>
+  </revision>
 </revisionlist>
