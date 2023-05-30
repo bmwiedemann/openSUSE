@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 29 09:50:26 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to version 0.18.0: 
+  * Specfile library now handles multiple %changelog sections. (#230)
+
+-------------------------------------------------------------------
 Thu May 11 12:19:01 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to version 0.17.0: 
