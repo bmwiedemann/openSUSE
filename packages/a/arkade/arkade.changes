@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue May 30 06:44:27 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.9.17:
+  * add system install for gitlab runner
+  * Bump github.com/google/go-containerregistry from 0.14.0 to
+    0.15.2
+  * Bump golang.org/x/crypto from 0.8.0 to 0.9.0
+
+-------------------------------------------------------------------
+Tue May 30 06:41:45 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.9.16:
+  * Fix issue with inlets-operator secret creation
+
+-------------------------------------------------------------------
+Tue May 30 06:40:53 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.9.15:
+  * Update metal CLI version
+- 0.9.14 is not existing, same commit hash as 0.9.13
+
+-------------------------------------------------------------------
 Mon Apr 17 13:31:17 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.9.13:
