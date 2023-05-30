@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 23 21:36:17 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Do not require sun.nio.ch package that we access by reflection
+
+-------------------------------------------------------------------
 Sun Dec 18 06:36:29 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v3.1.16

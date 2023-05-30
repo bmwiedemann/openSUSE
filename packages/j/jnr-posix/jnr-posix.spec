@@ -55,8 +55,10 @@ Javadoc for %{name}.
 # Unnecessary for RPM builds
 %pom_remove_plugin ":maven-javadoc-plugin"
 
+%pom_xpath_set pom:configuration/pom:instructions/pom:Import-Package "!sun.misc,!sun.nio.ch,*"
+
 %build
-%{mvn_build} -f
+%{mvn_build} -f -- -Dsource=8
 
 %install
 %mvn_install

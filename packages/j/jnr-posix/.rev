@@ -23,4 +23,12 @@
     <comment>3.1.16</comment>
     <requestid>1083178</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5abc51b1ef45a3191fe970e25874f378</srcmd5>
+    <version>3.1.16</version>
+    <time>1685476962</time>
+    <user>dimstar_suse</user>
+    <comment>Don't require sun.nio.misc package</comment>
+    <requestid>1089738</requestid>
+  </revision>
 </revisionlist>
