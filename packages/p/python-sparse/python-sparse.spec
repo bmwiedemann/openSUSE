@@ -16,8 +16,6 @@
 #
 
 
-# no python311-numba yet
-%define skip_python311 1
 Name:           python-sparse
 Version:        0.14.0
 Release:        0
@@ -66,9 +64,11 @@ intended for somewhat general use.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# https://github.com/pydata/sparse/issues/594
+donttest="test_tensordot"
 # 32bit fails in half of the test suite because the tests try to convert to 64bit types
 if [ $(getconf LONG_BIT) -eq 64 ]; then
-%pytest
+%pytest -k "not ($donttest)"
 fi
 
 %files %{python_files}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 29 16:44:57 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Unskip python311: numby 0.57 is released
+- Skip test_tensordot: gh#pydata/sparse#594
+
+-------------------------------------------------------------------
 Sat Mar 25 12:05:17 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.14.0
