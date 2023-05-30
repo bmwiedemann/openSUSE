@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 30 04:22:25 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.29.0:
+  * Bump github.com/open-policy-agent/opa from 0.52.0 to 0.53.0
+    (#404)
+  * Bump k8s.io/apiextensions-apiserver from 0.27.1 to 0.27.2
+    (#402)
+  * Bump alpine from 3.17.3 to 3.18.0 (#399)
+
+-------------------------------------------------------------------
 Mon May 08 04:28:33 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.28.0:
