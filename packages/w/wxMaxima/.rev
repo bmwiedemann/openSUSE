@@ -569,4 +569,12 @@ Depends on maxima (sr#121612)</comment>
     <comment></comment>
     <requestid>1085725</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>01ab088965a8a3fd7b0d38b8581ebafd</srcmd5>
+    <version>23.05.0</version>
+    <time>1685477005</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089860</requestid>
+  </revision>
 </revisionlist>

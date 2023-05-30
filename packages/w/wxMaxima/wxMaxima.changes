@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu May 18 14:18:08 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 23.5.0:
+  * Got rid of some compiler and cppcheck warnings.
+  * Big performance improvements.
+  * A "maxima versus typical programming languages" tutorial.
+  * Table of contents: Jump to the chapter the cursor is in.
+  * Resolved another crash in the config dialogue.
+  * Updated the unicode character list.
+  * Resolved more potential event ID clashes.
+  * Use an external file as wxMathML.lisp is now selected using a
+    command line option, not configured in the GUI. This is mostly
+    needed for developers, no need to expose it to the end user.
+  * Better handling of paths to maxima when starting new wxMaxima
+    processes.
+  * new wxMaxima processes now get more of the command-line args
+    of the parent process.
+  * wxMaxima no more tries to install its own fonts.
+
+-------------------------------------------------------------------
 Thu May  4 13:02:01 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 23.4.1:
