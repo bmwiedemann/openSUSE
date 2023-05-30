@@ -1,7 +1,7 @@
 #
 # spec file for package release-compare
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,10 +21,14 @@ Summary:        Release Compare Script
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Building
 URL:            https://github.com/openSUSE/release-compare
-Version:        0.5.6
+Version:        0.9.0
 Release:        0
 Source:         %name-%version.tar.xz
 BuildArch:      noarch
+Requires:       python3-PyYAML
+BuildRequires:  python3-PyYAML
+BuildRequires:  python3-pytest
+BuildRequires:  python3-setuptools
 
 %description
 This package contains scripts to create changelog files relative
@@ -39,15 +43,14 @@ Note: you need to use a releasetarget definition in your OBS repository
 %build
 
 %install
-mkdir -p $RPM_BUILD_ROOT/usr/lib/build/obsgendiff.d $RPM_BUILD_ROOT/%_defaultdocdir/%name
-install -m 0755 create_changelog $RPM_BUILD_ROOT/usr/lib/build/obsgendiff.d/
+make DESTDIR=%{buildroot} PREFIX=%{_prefix}
 
 %check
-# basic syntax check
-bash -n $RPM_BUILD_ROOT/usr/lib/build/obsgendiff.d/create_changelog || exit 1
+pytest
 
 %files
 %license LICENSE
+%doc README.rst
 /usr/lib/build
 
 %changelog

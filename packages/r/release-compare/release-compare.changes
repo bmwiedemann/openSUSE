@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 26 15:05:28 UTC 2023 - Joachim Gleissner <jgleissner@suse.com>
+
+- 0.9.0
+  * Re-write of create_changelog in python
+  * Support for JSON output
+  * Support for handling image config changelog (image history) as
+    produced by keg OBS source service (JSON and YAML formats supported)
+  * Support for including full package list in change log
+  * Parse version number for selecting most recent old obsgendiff
+    (avoids mismatches)
+  * Add configuration options via _release_compare in package source
+
+-------------------------------------------------------------------
 Tue May 17 14:53:30 UTC 2022 - Joachim Gleissner <jgleissner@suse.com>
 
 - 0.5.6
