@@ -1,7 +1,7 @@
 #
-# spec file for package rofi
+# spec file for package rofi-wayland
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           rofi-wayland
-Version:        1.7.5+wayland1
+Version:        1.7.5+wayland1+git.1679493688.d06095b
 Release:        0
 Summary:        A window switcher, run dialog and dmenu replacement
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/lbonn/rofi
-Source:         https://github.com/lbonn/rofi/releases/download/%{version}/rofi-%{version}.tar.xz
+Source:         rofi-%{version}.tar.gz
+# Source:         https://github.com/lbonn/rofi/releases/download/%%{version}/rofi-%%{version}.tar.xz
 # PATCH-FEATURE-UPSTREAM Use-xdg-terminal-instead-of-the-proprietary-solution.patch mcepl@suse.com
 Patch0:         Use-xdg-terminal-instead-of-the-proprietary-solution.patch
 BuildRequires:  bison
@@ -60,8 +61,6 @@ Development files and headers for rofi
 %prep
 %autosetup -p1 -n rofi-%{version}
 
-ls
-ls script/
 sed -i '1s,%{_bindir}/env bash,/bin/bash,' script/rofi-sensible-terminal \
     script/rofi-theme-selector
 
