@@ -1,0 +1,520 @@
+From 8da40c7a3c9680adb4ab0209384808545146b8e0 Mon Sep 17 00:00:00 2001
+From: Sarper Akdemir <sarper.akdemir@collabora.com>
+Date: Tue, 28 Feb 2023 16:13:48 +0300
+Subject: [PATCH] tdf#102261: introduce editeng paragraph tab stop default
+ distance
+
+Adds mnDefaultDistance to SvxTabStopItem that if defined
+will set a paragraph wide tab stop default distance and
+override the document wide setting.
+
+Also makes editeng consider mnDefaultDistance while getting
+tab stop default distance.
+
+Change-Id: I0fa098f874d6b9c91ddbaa2634224ff55cafcc95
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/148058
+Tested-by: Jenkins
+Reviewed-by: Miklos Vajna <vmiklos@collabora.com>
+
+tdf#102261: pptx import: handle defTabSz
+
+Introduce import of defTabSz using ParaTabStopDefaultDistance.
+
+Change-Id: Ied59c2bc5d9dfffa6254ef87849c3dbad4c48d07
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/148059
+Tested-by: Jenkins
+Reviewed-by: Miklos Vajna <vmiklos@collabora.com>
+
+tdf#102261: pptx export: implement defTabSz ParaTabStopDefaultDistance
+
+Adds export of ParaTabStopDefaultDistance property into defTabSz.
+
+Also adds a unit test that checks pptx roundtrip of the property.
+
+Change-Id: I5be9ea88b15e3e8cab25af79488983a71b96dae1
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/148539
+Tested-by: Jenkins
+Reviewed-by: Miklos Vajna <vmiklos@collabora.com>
+
+related tdf#102261: consider ParaTabStopDefaultDistance in SvxRuler
+
+If there's a paragraph scoped tab default distance defined,
+use that as the default tab distance in the SvxRuler instead
+of the document wide setting.
+
+Change-Id: I9b0e7d0db0b25aee08bd27948b2e462b4a4ee496
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/148060
+Tested-by: Jenkins
+Reviewed-by: Sarper Akdemir <sarper.akdemir@collabora.com>
+
+related tdf#102261: xmloff: ODF import/export for ParaTabStopDefaultDistance
+
+Introduces ODF import/export for ParaTabStopDefaultDistance
+(loext:tab-stop-distance).
+
+Also adds a unit test that covers import & export of the
+property.
+
+Change-Id: I8a69a9e2b73e8f1172f92dc35fada901f4b887f4
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/148540
+Tested-by: Jenkins
+Reviewed-by: Miklos Vajna <vmiklos@collabora.com>
+---
+ editeng/source/editeng/editdoc.cxx            |  11 +++++
+ editeng/source/items/paraitem.cxx             |  32 ++++++++++++++
+ include/editeng/memberids.h                   |   1 +
+ include/editeng/tstpitem.hxx                  |   3 ++
+ include/editeng/unoprnms.hxx                  |   1 +
+ include/editeng/unotext.hxx                   |   1 +
+ oox/inc/drawingml/textparagraphproperties.hxx |   2 +
+ .../drawingml/textparagraphproperties.cxx     |   7 +++
+ .../textparagraphpropertiescontext.cxx        |  12 +++--
+ oox/source/export/drawingml.cxx               |   6 +++
+ oox/source/token/properties.txt               |   1 +
+ .../OpenDocument-v1.3+libreoffice-schema.rng  |   6 +++
+ ...102261_testParaTabStopDefaultDistance.pptx | Bin 0 -> 32892 bytes
+ sd/qa/unit/export-tests-ooxml3.cxx            |  24 ++++++++++
+ sd/qa/unit/import-tests2.cxx                  |   4 +-
+ svx/source/dialog/svxruler.cxx                |   9 ++--
+ xmloff/inc/xmlprop.hxx                        |   1 +
+ .../data/paragraph-tab-stop-distance.fodp     |  19 ++++++++
+ xmloff/qa/unit/text.cxx                       |  41 ++++++++++++++++++
+ xmloff/source/text/txtprmap.cxx               |   2 +
+ 20 files changed, 174 insertions(+), 9 deletions(-)
+ create mode 100644 sd/qa/unit/data/pptx/tdf102261_testParaTabStopDefaultDistance.pptx
+ create mode 100644 xmloff/qa/unit/data/paragraph-tab-stop-distance.fodp
+
+diff --git a/editeng/source/editeng/editdoc.cxx b/editeng/source/editeng/editdoc.cxx
+index 1fbf46de184b..9fff222d9368 100644
+--- a/editeng/source/editeng/editdoc.cxx
++++ b/editeng/source/editeng/editdoc.cxx
+@@ -857,6 +857,13 @@ void ConvertItem( std::unique_ptr<SfxPoolItem>& rPoolItem, MapUnit eSourceUnit,
+             assert(dynamic_cast<const SvxTabStopItem *>(rPoolItem.get()) != nullptr);
+             SvxTabStopItem& rItem = static_cast<SvxTabStopItem&>(*rPoolItem);
+             SvxTabStopItem* pNewItem(new SvxTabStopItem(EE_PARA_TABS));
++
++            if (sal_Int32 nDefTabDistance = rItem.GetDefaultDistance())
++            {
++                pNewItem->SetDefaultDistance(
++                    OutputDevice::LogicToLogic(nDefTabDistance, eSourceUnit, eDestUnit));
++            }
++
+             for ( sal_uInt16 i = 0; i < rItem.Count(); i++ )
+             {
+                 const SvxTabStop& rTab = rItem[i];
+@@ -1821,6 +1828,10 @@ SvxTabStop ContentAttribs::FindTabStop( sal_Int32 nCurPos, sal_uInt16 nDefTab )
+             return rTab;
+     }
+
++    // if there's a default tab size defined for this item use that instead
++    if (rTabs.GetDefaultDistance())
++        nDefTab = rTabs.GetDefaultDistance();
++
+     // Determine DefTab ...
+     SvxTabStop aTabStop;
+     const sal_Int32 x = nCurPos / nDefTab + 1;
+diff --git a/editeng/source/items/paraitem.cxx b/editeng/source/items/paraitem.cxx
+index 9368dfdf3c2a..f67ddf599b06 100644
+--- a/editeng/source/items/paraitem.cxx
++++ b/editeng/source/items/paraitem.cxx
+@@ -821,6 +821,15 @@ sal_uInt16 SvxTabStopItem::GetPos( const sal_Int32 nPos ) const
+     return it != maTabStops.end() ? it - maTabStops.begin() : SVX_TAB_NOTFOUND;
+ }
+
++void SvxTabStopItem::SetDefaultDistance(sal_Int32 nDefaultDistance)
++{
++    mnDefaultDistance = nDefaultDistance;
++}
++
++sal_Int32 SvxTabStopItem::GetDefaultDistance() const
++{
++    return mnDefaultDistance;
++}
+
+ bool SvxTabStopItem::QueryValue( uno::Any& rVal, sal_uInt8 nMemberId ) const
+ {
+@@ -859,6 +868,11 @@ bool SvxTabStopItem::QueryValue( uno::Any& rVal, sal_uInt8 nMemberId ) const
+             rVal <<= static_cast<sal_Int32>(bConvert ? convertTwipToMm100(rTab.GetTabPos()) : rTab.GetTabPos());
+             break;
+         }
++        case MID_TABSTOP_DEFAULT_DISTANCE:
++        {
++            rVal <<= static_cast<sal_Int32>(bConvert ? convertTwipToMm100(mnDefaultDistance) : mnDefaultDistance);
++            break;
++        }
+     }
+     return true;
+ }
+@@ -956,6 +970,18 @@ bool SvxTabStopItem::PutValue( const uno::Any& rVal, sal_uInt8 nMemberId )
+             Insert( aNewTab );
+             break;
+         }
++        case MID_TABSTOP_DEFAULT_DISTANCE:
++        {
++            sal_Int32 nNewDefaultDistance = 0;
++            if (!(rVal >>= nNewDefaultDistance))
++                return false;
++            if (bConvert)
++                nNewDefaultDistance = o3tl::toTwips(nNewDefaultDistance, o3tl::Length::mm100);
++            if (nNewDefaultDistance <= 0)
++                return false;
++            mnDefaultDistance = nNewDefaultDistance;
++            break;
++        }
+     }
+     return true;
+ }
+@@ -967,6 +993,9 @@ bool SvxTabStopItem::operator==( const SfxPoolItem& rAttr ) const
+
+     const SvxTabStopItem& rTSI = static_cast<const SvxTabStopItem&>(rAttr);
+
++    if ( mnDefaultDistance != rTSI.GetDefaultDistance() )
++        return false;
++
+     if ( Count() != rTSI.Count() )
+         return false;
+
+@@ -990,6 +1019,7 @@ bool SvxTabStopItem::GetPresentation
+ )   const
+ {
+     rText.clear();
++    // TODO also consider mnDefaultTabDistance here
+
+     bool bComma = false;
+
+@@ -1038,6 +1068,8 @@ void SvxTabStopItem::Insert( const SvxTabStopItem* pTabs )
+ void SvxTabStopItem::dumpAsXml(xmlTextWriterPtr pWriter) const
+ {
+     (void)xmlTextWriterStartElement(pWriter, BAD_CAST("SvxTabStopItem"));
++    (void)xmlTextWriterWriteAttribute(pWriter, BAD_CAST("mnDefaultDistance"),
++                                      BAD_CAST(OString::number(mnDefaultDistance).getStr()));
+     for (const auto& rTabStop : maTabStops)
+         rTabStop.dumpAsXml(pWriter);
+     (void)xmlTextWriterEndElement(pWriter);
+diff --git a/include/editeng/memberids.h b/include/editeng/memberids.h
+index 9b89ebafaefb..ca3be460c566 100644
+--- a/include/editeng/memberids.h
++++ b/include/editeng/memberids.h
+@@ -40,6 +40,7 @@
+ // SvxTabStop
+ #define MID_TABSTOPS            0
+ #define MID_STD_TAB             1
++#define MID_TABSTOP_DEFAULT_DISTANCE 2
+
+ //SvxHyphenZoneItem
+ #define MID_IS_HYPHEN           0
+diff --git a/include/editeng/tstpitem.hxx b/include/editeng/tstpitem.hxx
+index b5aab04bc92d..4c015d6677ec 100644
+--- a/include/editeng/tstpitem.hxx
++++ b/include/editeng/tstpitem.hxx
+@@ -92,6 +92,7 @@ typedef o3tl::sorted_vector<SvxTabStop> SvxTabStopArr;
+ class EDITENG_DLLPUBLIC SvxTabStopItem final : public SfxPoolItem
+ {
+     SvxTabStopArr maTabStops;
++    sal_Int32 mnDefaultDistance = 0;
+
+ public:
+     static SfxPoolItem* CreateDefault();
+@@ -107,6 +108,8 @@ public:
+
+     // Returns index of the tab at nPos, or TAB_NOTFOUND
+     sal_uInt16          GetPos( const sal_Int32 nPos ) const;
++    void SetDefaultDistance(sal_Int32 nDefaultDistancenDefTabSize);
++    sal_Int32 GetDefaultDistance() const;
+
+     // unprivatized:
+     sal_uInt16          Count() const { return maTabStops.size(); }
+diff --git a/include/editeng/unoprnms.hxx b/include/editeng/unoprnms.hxx
+index 7a95ba989b86..f8239b470404 100644
+--- a/include/editeng/unoprnms.hxx
++++ b/include/editeng/unoprnms.hxx
+@@ -291,6 +291,7 @@ inline constexpr OUStringLiteral UNO_NAME_EDIT_PARA_LMARGIN = u"ParaLeftMargin";
+ inline constexpr OUStringLiteral UNO_NAME_EDIT_PARA_LINESPACING = u"ParaLineSpacing";
+ inline constexpr OUStringLiteral UNO_NAME_EDIT_PARA_RMARGIN = u"ParaRightMargin";
+ inline constexpr OUStringLiteral UNO_NAME_EDIT_PARA_TAPSTOPS = u"ParaTabStops";
++inline constexpr OUStringLiteral UNO_NAME_EDIT_PARA_TABSTOP_DEFAULT_DISTANCE = u"ParaTabStopDefaultDistance";
+ inline constexpr OUStringLiteral UNO_NAME_EDIT_PARA_TMARGIN = u"ParaTopMargin";
+ inline constexpr OUStringLiteral UNO_NAME_EDIT_PARA_IS_HYPHEN = u"ParaIsHyphenation";
+ inline constexpr OUStringLiteral UNO_NAME_EDIT_PARA_IS_HANGING_PUNCTUATION = u"ParaIsHangingPunctuation";
+diff --git a/include/editeng/unotext.hxx b/include/editeng/unotext.hxx
+index 1d6743a0e410..d76305df24bd 100644
+--- a/include/editeng/unotext.hxx
++++ b/include/editeng/unotext.hxx
+@@ -146,6 +146,7 @@ struct SfxItemPropertyMapEntry;
+     { UNO_NAME_EDIT_PARA_LINESPACING,  EE_PARA_SBL,                cppu::UnoType<css::style::LineSpacing>::get(),     0, CONVERT_TWIPS}, \
+     { UNO_NAME_EDIT_PARA_RMARGIN,      EE_PARA_LRSPACE,    ::cppu::UnoType<sal_Int32>::get(),            0, MID_R_MARGIN, PropertyMoreFlags::METRIC_ITEM }, \
+     { UNO_NAME_EDIT_PARA_TAPSTOPS,     EE_PARA_TABS,               cppu::UnoType<css::uno::Sequence< css::style::TabStop >>::get(), 0, 0 }, \
++    { UNO_NAME_EDIT_PARA_TABSTOP_DEFAULT_DISTANCE, EE_PARA_TABS, ::cppu::UnoType<sal_Int32>::get(), 0, MID_TABSTOP_DEFAULT_DISTANCE }, \
+     { UNO_NAME_EDIT_PARA_TMARGIN,      EE_PARA_ULSPACE,            ::cppu::UnoType<sal_Int32>::get(),            0, MID_UP_MARGIN, PropertyMoreFlags::METRIC_ITEM },\
+     { UNO_NAME_EDIT_PARA_FIRST_LINE_INDENT,     EE_PARA_LRSPACE,   ::cppu::UnoType<sal_Int32>::get(),            0, MID_FIRST_LINE_INDENT, PropertyMoreFlags::METRIC_ITEM}, \
+     { UNO_NAME_EDIT_PARA_IS_HANGING_PUNCTUATION,EE_PARA_HANGINGPUNCTUATION,  cppu::UnoType<bool>::get(),                0 ,0 }, \
+diff --git a/oox/inc/drawingml/textparagraphproperties.hxx b/oox/inc/drawingml/textparagraphproperties.hxx
+index 083b61e37da7..d3742e7377e0 100644
+--- a/oox/inc/drawingml/textparagraphproperties.hxx
++++ b/oox/inc/drawingml/textparagraphproperties.hxx
+@@ -89,6 +89,7 @@ public:
+     TextSpacing&                        getParaBottomMargin() { return maParaBottomMargin; }
+     std::optional< sal_Int32 >&       getParaLeftMargin(){ return moParaLeftMargin; }
+     std::optional< sal_Int32 >&       getFirstLineIndentation(){ return moFirstLineIndentation; }
++    std::optional<sal_Int32>&         getDefaultTabSize() { return moDefaultTabSize; }
+
+     std::optional< css::style::ParagraphAdjust >&       getParaAdjust() { return moParaAdjust; }
+     void                                setParaAdjust( css::style::ParagraphAdjust nParaAdjust ) { moParaAdjust = nParaAdjust; }
+@@ -125,6 +126,7 @@ private:
+     std::optional< sal_Int32 >    moParaLeftMargin;
+     std::optional< sal_Int32 >    moFirstLineIndentation;
+     std::optional< css::style::ParagraphAdjust >    moParaAdjust;
++    std::optional< sal_Int32 >      moDefaultTabSize;
+     sal_Int16                       mnLevel;
+     TextSpacing                     maLineSpacing;
+ };
+diff --git a/oox/source/drawingml/textparagraphproperties.cxx b/oox/source/drawingml/textparagraphproperties.cxx
+index 0006b7530a76..af65e0037d16 100644
+--- a/oox/source/drawingml/textparagraphproperties.cxx
++++ b/oox/source/drawingml/textparagraphproperties.cxx
+@@ -395,6 +395,8 @@ void TextParagraphProperties::apply( const TextParagraphProperties& rSourceProps
+         moParaLeftMargin = rSourceProps.moParaLeftMargin;
+     if ( rSourceProps.moFirstLineIndentation )
+         moFirstLineIndentation = rSourceProps.moFirstLineIndentation;
++    if ( rSourceProps.moDefaultTabSize )
++        moDefaultTabSize = rSourceProps.moDefaultTabSize;
+     if( rSourceProps.mnLevel )
+         mnLevel = rSourceProps.mnLevel;
+     if( rSourceProps.moParaAdjust )
+@@ -501,6 +503,11 @@ void TextParagraphProperties::pushToPropSet( const ::oox::core::XmlFilterBase* p
+         }
+     }
+
++    if ( moDefaultTabSize )
++    {
++        aPropSet.setProperty( PROP_ParaTabStopDefaultDistance, *moDefaultTabSize );
++    }
++
+     if ( moParaAdjust )
+     {
+         aPropSet.setProperty( PROP_ParaAdjust, *moParaAdjust);
+diff --git a/oox/source/drawingml/textparagraphpropertiescontext.cxx b/oox/source/drawingml/textparagraphpropertiescontext.cxx
+index 4e83d2ece24b..e75d65913cd9 100644
+--- a/oox/source/drawingml/textparagraphpropertiescontext.cxx
++++ b/oox/source/drawingml/textparagraphpropertiescontext.cxx
+@@ -93,10 +93,14 @@ TextParagraphPropertiesContext::TextParagraphPropertiesContext( ContextHandler2H
+     // TODO see to do the same with RubyAdjust
+
+     // ST_Coordinate32
+-//  sValue = rAttribs.getString( XML_defTabSz ).get();    SJ: we need to be able to set the default tab size for each text object,
+-//                                                          this is possible at the moment only for the whole document.
+-//  sal_Int32 nDefTabSize = ( sValue.getLength() == 0 ? 0 : GetCoordinate(  sValue ) );
+-    // TODO
++    if ( rAttribs.hasAttribute(XML_defTabSz))
++    {
++        sValue = rAttribs.getStringDefaulted(XML_defTabSz);
++        if(!sValue.isEmpty())
++        {
++            mrTextParagraphProperties.getDefaultTabSize() = GetCoordinate(sValue);
++        }
++    }
+
+ //  bool bEaLineBrk = rAttribs.getBool( XML_eaLnBrk, true );
+     if ( rAttribs.hasAttribute( XML_latinLnBrk ) )
+diff --git a/oox/source/export/drawingml.cxx b/oox/source/export/drawingml.cxx
+index f39951ade707..cd94896503a9 100644
+--- a/oox/source/export/drawingml.cxx
++++ b/oox/source/export/drawingml.cxx
+@@ -3233,6 +3233,10 @@ bool DrawingML::WriteParagraphProperties(const Reference<XTextContent>& rParagra
+             return false;
+     }
+
++    sal_Int32 nParaDefaultTabSize = 0;
++    if (GetProperty(rXPropSet, "ParaTabStopDefaultDistance"))
++        mAny >>= nParaDefaultTabSize;
++
+     // for autofitted textboxes, scale the indents
+     if (GetProperty(rXShapePropSet, "TextFitToSize") && mAny.get<TextFitToSizeType>() == TextFitToSizeType_AUTOFIT)
+     {
+@@ -3257,6 +3261,7 @@ bool DrawingML::WriteParagraphProperties(const Reference<XTextContent>& rParagra
+                            XML_marL, sax_fastparser::UseIf(OString::number(oox::drawingml::convertHmmToEmu(nParaLeftMargin)), nParaLeftMargin > 0),
+                            XML_indent, sax_fastparser::UseIf(OString::number(!bForceZeroIndent ? oox::drawingml::convertHmmToEmu(nParaFirstLineIndent) : 0), (bForceZeroIndent || (nParaFirstLineIndent != 0))),
+                            XML_algn, GetAlignment( nAlignment ),
++                           XML_defTabSz, sax_fastparser::UseIf(OString::number(oox::drawingml::convertHmmToEmu(nParaDefaultTabSize)), nParaDefaultTabSize > 0),
+                            XML_rtl, sax_fastparser::UseIf(ToPsz10(bRtl), bRtl));
+     else
+         mpFS->startElementNS( XML_a, nElement,
+@@ -3264,6 +3269,7 @@ bool DrawingML::WriteParagraphProperties(const Reference<XTextContent>& rParagra
+                            XML_marL, sax_fastparser::UseIf(OString::number(oox::drawingml::convertHmmToEmu(nLeftMargin)), nLeftMargin > 0),
+                            XML_indent, sax_fastparser::UseIf(OString::number(!bForceZeroIndent ? oox::drawingml::convertHmmToEmu(nLineIndentation) : 0), (bForceZeroIndent || ( nLineIndentation != 0))),
+                            XML_algn, GetAlignment( nAlignment ),
++                           XML_defTabSz, sax_fastparser::UseIf(OString::number(oox::drawingml::convertHmmToEmu(nParaDefaultTabSize)), nParaDefaultTabSize > 0),
+                            XML_rtl, sax_fastparser::UseIf(ToPsz10(bRtl), bRtl));
+
+
+diff --git a/oox/source/token/properties.txt b/oox/source/token/properties.txt
+index 60b5c375c033..2394ca94300b 100644
+--- a/oox/source/token/properties.txt
++++ b/oox/source/token/properties.txt
+@@ -382,6 +382,7 @@ ParaLeftMargin
+ ParaLineSpacing
+ ParaRightMargin
+ ParaTabStops
++ParaTabStopDefaultDistance
+ ParaTopMargin
+ Path
+ PercentageNumberFormat
+diff --git a/sd/qa/unit/import-tests2.cxx b/sd/qa/unit/import-tests2.cxx
+index 5d5864a2891e..4467c5f81381 100644
+--- a/sd/qa/unit/import-tests2.cxx
++++ b/sd/qa/unit/import-tests2.cxx
+@@ -1500,8 +1500,8 @@ void SdImportTest2::testTdf120028()
+     double fCharHeight = 0;
+     xPropSet->getPropertyValue("CharHeight") >>= fCharHeight;
+     CPPUNIT_ASSERT_DOUBLES_EQUAL(13.5, fCharHeight, 1E-12);
+-    // 13.5 * 87% is approx. 11.7 (the correct scaled font size)
+-    CPPUNIT_ASSERT_EQUAL(uno::Any(sal_Int16(87)), xShape->getPropertyValue("TextFitToSizeScale"));
++    // 13.5 * 90% is approx. 12.1 (the correct scaled font size)
++    CPPUNIT_ASSERT_EQUAL(uno::Any(sal_Int16(90)), xShape->getPropertyValue("TextFitToSizeScale"));
+ }
+
+ void SdImportTest2::testDescriptionImport()
+diff --git a/svx/source/dialog/svxruler.cxx b/svx/source/dialog/svxruler.cxx
+index be53a0c91c58..671afa9f6737 100644
+--- a/svx/source/dialog/svxruler.cxx
++++ b/svx/source/dialog/svxruler.cxx
+@@ -1027,7 +1027,10 @@ void SvxRuler::UpdateTabs()
+         const tools::Long lPosPixel = ConvertHPosPixel(lParaIndent) + lLastTab;
+         const tools::Long lRightIndent = ConvertHPosPixel(nRightFrameMargin - mxParaItem->GetRight());
+
+-        tools::Long nDefTabDist = ConvertHPosPixel(lDefTabDist);
++        tools::Long lCurrentDefTabDist = lDefTabDist;
++        if(mxTabStopItem->GetDefaultDistance())
++            lCurrentDefTabDist = mxTabStopItem->GetDefaultDistance();
++        tools::Long nDefTabDist = ConvertHPosPixel(lCurrentDefTabDist);
+
+         const sal_uInt16 nDefTabBuf = lPosPixel > lRightIndent || lLastTab > lRightIndent
+                     ? 0
+@@ -1063,13 +1066,13 @@ void SvxRuler::UpdateTabs()
+         }
+
+         // Adjust to previous-to-first default tab stop
+-        lLastTabOffsetLogic -= lLastTabOffsetLogic % lDefTabDist;
++        lLastTabOffsetLogic -= lLastTabOffsetLogic % lCurrentDefTabDist;
+
+         // fill the rest with default Tabs
+         for (j = 0; j < nDefTabBuf; ++j)
+         {
+             //simply add the default distance to the last position
+-            lLastTabOffsetLogic += lDefTabDist;
++            lLastTabOffsetLogic += lCurrentDefTabDist;
+             if (bRTL)
+             {
+                 mpTabs[nTabCount + TAB_GAP].nPos =
+diff --git a/xmloff/inc/xmlprop.hxx b/xmloff/inc/xmlprop.hxx
+index 868f619a7246..2326bcf2f34d 100644
+--- a/xmloff/inc/xmlprop.hxx
++++ b/xmloff/inc/xmlprop.hxx
+@@ -518,6 +518,7 @@ inline constexpr OUStringLiteral PROP_ParaRightMarginRelative = u"ParaRightMargi
+ inline constexpr OUStringLiteral PROP_ParaShadowFormat = u"ParaShadowFormat";
+ inline constexpr OUStringLiteral PROP_ParaSplit = u"ParaSplit";
+ inline constexpr OUStringLiteral PROP_ParaTabStops = u"ParaTabStops";
++inline constexpr OUStringLiteral PROP_ParaTabStopDefaultDistance = u"ParaTabStopDefaultDistance";
+ inline constexpr OUStringLiteral PROP_ParaTopMargin = u"ParaTopMargin";
+ inline constexpr OUStringLiteral PROP_ParaTopMarginRelative = u"ParaTopMarginRelative";
+ inline constexpr OUStringLiteral PROP_ParaUserDefinedAttributes = u"ParaUserDefinedAttributes";
+diff --git a/xmloff/qa/unit/data/paragraph-tab-stop-distance.fodp b/xmloff/qa/unit/data/paragraph-tab-stop-distance.fodp
+new file mode 100644
+index 000000000000..f51e75b79699
+--- /dev/null
++++ b/xmloff/qa/unit/data/paragraph-tab-stop-distance.fodp
+@@ -0,0 +1,19 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<office:document xmlns:style="urn:oasis:names:tc:opendocument:xmlns:style:1.0" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:loext="urn:org:documentfoundation:names:experimental:office:xmlns:loext:1.0" xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0" xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0" office:version="1.3" office:mimetype="application/vnd.oasis.opendocument.presentation">
++ <office:automatic-styles>
++  <style:style style:name="P1" style:family="paragraph">
++   <style:paragraph-properties loext:tab-stop-distance="10cm"/>
++  </style:style>
++ </office:automatic-styles>
++ <office:body>
++  <office:presentation>
++   <draw:page>
++    <draw:frame svg:width="25cm" svg:height="1cm" svg:x="1cm" svg:y="1cm">
++     <draw:text-box>
++      <text:p text:style-name="P1">start<text:tab/>tab1<text:tab/>tab2<text:tab/>tab4</text:p>
++     </draw:text-box>
++    </draw:frame>
++   </draw:page>
++  </office:presentation>
++ </office:body>
++</office:document>
+diff --git a/xmloff/qa/unit/text.cxx b/xmloff/qa/unit/text.cxx
+index 9c30c2f81dee..62ffe78fa570 100644
+--- a/xmloff/qa/unit/text.cxx
++++ b/xmloff/qa/unit/text.cxx
+@@ -16,6 +16,7 @@
+ #include <com/sun/star/text/BibliographyDataType.hpp>
+ #include <com/sun/star/text/TextContentAnchorType.hpp>
+ #include <com/sun/star/style/XStyleFamiliesSupplier.hpp>
++#include <com/sun/star/drawing/XDrawPagesSupplier.hpp>
+
+ #include <comphelper/propertysequence.hxx>
+ #include <comphelper/propertyvalue.hxx>
+@@ -892,6 +893,46 @@ CPPUNIT_TEST_FIXTURE(XmloffStyleTest, testScaleWidthRedline)
+     assertXPath(pXmlDoc, "//draw:frame[@draw:name='Image45']", "width", "6.1728in");
+ }
+
++CPPUNIT_TEST_FIXTURE(XmloffStyleTest, testParagraphScopedTabDistance)
++{
++    // Given a document with paragraph scoped default tab stop distance (loext:tab-stop-distance="0.5cm")
++    loadFromURL(u"paragraph-tab-stop-distance.fodp");
++
++    uno::Reference<drawing::XDrawPagesSupplier> xDoc(mxComponent, uno::UNO_QUERY);
++    uno::Reference<drawing::XDrawPage> xPage(xDoc->getDrawPages()->getByIndex(0),
++                                             uno::UNO_QUERY_THROW);
++
++    uno::Reference<beans::XPropertySet> xShape(xPage->getByIndex(0), uno::UNO_QUERY);
++    uno::Reference<text::XText> xText
++        = uno::Reference<text::XTextRange>(xShape, uno::UNO_QUERY_THROW)->getText();
++
++    uno::Reference<container::XEnumerationAccess> paraEnumAccess(xText, uno::UNO_QUERY);
++    uno::Reference<container::XEnumeration> paraEnum(paraEnumAccess->createEnumeration());
++    uno::Reference<text::XTextRange> xParagraph(paraEnum->nextElement(), uno::UNO_QUERY_THROW);
++
++    uno::Reference<container::XEnumerationAccess> runEnumAccess(xParagraph, uno::UNO_QUERY);
++    uno::Reference<container::XEnumeration> runEnum = runEnumAccess->createEnumeration();
++    uno::Reference<text::XTextRange> xRun(runEnum->nextElement(), uno::UNO_QUERY);
++    uno::Reference<beans::XPropertySet> xPropSet(xRun, uno::UNO_QUERY_THROW);
++
++    // Make sure the tab stop default distance is imported correctly
++    // Without the accompanying fix in place, this test would have failed with:
++    // - Expected: 10000
++    // - Actual  : 0
++    CPPUNIT_ASSERT_EQUAL(static_cast<sal_Int32>(10000),
++                         xPropSet->getPropertyValue("ParaTabStopDefaultDistance").get<sal_Int32>());
++
++    // Save the imported file to test the export too
++    save("impress8");
++
++    // Then make sure we write the tab-stop-distance
++    xmlDocUniquePtr pXmlDoc = parseExport("content.xml");
++    assertXPath(pXmlDoc, "//style:style[@style:name='P1']/style:paragraph-properties",
++                "tab-stop-distance", "10cm");
++
++    assertXPath(pXmlDoc, "//text:p[@text:style-name='P1']");
++}
++
+ CPPUNIT_PLUGIN_IMPLEMENT();
+
+ /* vim:set shiftwidth=4 softtabstop=4 expandtab: */
+diff --git a/xmloff/source/text/txtprmap.cxx b/xmloff/source/text/txtprmap.cxx
+index b961a2c60944..d259bf4aa55d 100644
+--- a/xmloff/source/text/txtprmap.cxx
++++ b/xmloff/source/text/txtprmap.cxx
+@@ -448,6 +448,8 @@ XMLPropertyMapEntry const aXMLParaPropMap[] =
+     MP_ED( PROP_ParaIsHangingPunctuation, STYLE, PUNCTUATION_WRAP, XML_TYPE_TEXT_PUNCTUATION_WRAP, 0 ),
+     MP_ED( PROP_ParaIsForbiddenRules, STYLE, LINE_BREAK, XML_TYPE_TEXT_LINE_BREAK, 0 ),
+     MP_E( PROP_TabStopDistance, STYLE, TAB_STOP_DISTANCE, XML_TYPE_MEASURE, 0 ),
++    MAP_EXT_I( PROP_ParaTabStopDefaultDistance, XML_NAMESPACE_STYLE, XML_TAB_STOP_DISTANCE, XML_TYPE_MEASURE|XML_TYPE_PROP_PARAGRAPH, 0 ),
++    MAP_EXT( PROP_ParaTabStopDefaultDistance, XML_NAMESPACE_LO_EXT, XML_TAB_STOP_DISTANCE, XML_TYPE_MEASURE|XML_TYPE_PROP_PARAGRAPH, 0 ),
+
+     // RES_PARATR_VERTALIGN
+     MP_E( PROP_ParaVertAlignment, STYLE, VERTICAL_ALIGN,   XML_TYPE_TEXT_VERTICAL_ALIGN, 0 ),
+--
+2.35.3
+

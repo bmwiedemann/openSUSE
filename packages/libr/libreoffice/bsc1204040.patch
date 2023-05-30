@@ -1,0 +1,711 @@
+From 42573f7f27efd6153d396d6907486cda0af7d57a Mon Sep 17 00:00:00 2001
+From: Sarper Akdemir <sarper.akdemir@collabora.com>
+Date: Wed, 15 Mar 2023 19:25:03 +0300
+Subject: [PATCH] tdf#150020 pptx import: handle algn for outerShdw
+
+Introduces RectangleAlignmentItem that holds a value of the enum
+model::RectangleAlignment.
+
+Introduces SDRATTR_SHADOWALIGNMENT that holds alignment for a shadow.
+
+Implements import of algn for outerShdw.
+
+Makes the alignment considered while the shadow is being scaled.
+Also adds a unit test that covers this.
+
+Cherry picks relevant model::RectangleAlignment bits of FormatScheme.hxx
+from (0ffa50031eb33500a3530ece76ea32d15864f345 and 2a7ab2ab7786ab88b1bdbbe5e4b00ea8e93636f7)
+
+Cherry picks convertToRectangleAlignment bits from (2a7ab2ab7786ab88b1bdbbe5e4b00ea8e93636f7)
+
+Change-Id: I8f4eaed5f0d9428a7f405c65f19237f9e70ca151
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/148934
+Tested-by: Jenkins
+Reviewed-by: Sarper Akdemir <sarper.akdemir@collabora.com>
+---
+ .../source/attribute/sdrshadowattribute.cxx   |  13 +++-
+ include/docmodel/theme/FormatScheme.hxx       |  34 +++++++++
+ .../attribute/sdrshadowattribute.hxx          |   6 ++
+ include/editeng/unoprnms.hxx                  |   1 +
+ include/oox/drawingml/drawingmltypes.hxx      |   2 +
+ include/svx/RectangleAlignmentItem.hxx        |  42 +++++++++++
+ include/svx/svddef.hxx                        |   4 +-
+ include/svx/unoshprp.hxx                      |   3 +-
+ oox/source/drawingml/drawingmltypes.cxx       |  19 +++++
+ oox/source/drawingml/effectproperties.cxx     |   5 ++
+ oox/source/drawingml/effectproperties.hxx     |   5 ++
+ .../drawingml/effectpropertiescontext.cxx     |   2 +
+ oox/source/token/properties.txt               |   1 +
+ svx/Library_svxcore.mk                        |   1 +
+ .../unit/data/tdf150020-shadow-alignment.pptx | Bin 0 -> 45485 bytes
+ svx/qa/unit/sdr.cxx                           |  68 ++++++++++++++++++
+ svx/source/items/RectangleAlignmentItem.cxx   |  31 ++++++++
+ .../sdr/primitive2d/sdrattributecreator.cxx   |   5 +-
+ .../sdr/primitive2d/sdrdecompositiontools.cxx |  45 ++++++++----
+ svx/source/svdraw/svdattr.cxx                 |   4 ++
+ svx/source/table/viewcontactoftableobj.cxx    |  54 +++++++-------
+ sw/qa/extras/layout/layout.cxx                |  17 +++--
+ 22 files changed, 318 insertions(+), 44 deletions(-)
+ create mode 100644 include/docmodel/theme/FormatScheme.hxx
+ create mode 100644 include/svx/RectangleAlignmentItem.hxx
+ create mode 100644 svx/qa/unit/data/tdf150020-shadow-alignment.pptx
+ create mode 100644 svx/source/items/RectangleAlignmentItem.cxx
+
+diff --git a/drawinglayer/source/attribute/sdrshadowattribute.cxx b/drawinglayer/source/attribute/sdrshadowattribute.cxx
+index 6e046f1f07c7..1eb1b3ea687c 100644
+--- a/drawinglayer/source/attribute/sdrshadowattribute.cxx
++++ b/drawinglayer/source/attribute/sdrshadowattribute.cxx
+@@ -20,6 +20,7 @@
+ #include <drawinglayer/attribute/sdrshadowattribute.hxx>
+ #include <basegfx/vector/b2dvector.hxx>
+ #include <basegfx/color/bcolor.hxx>
++#include <docmodel/theme/FormatScheme.hxx>
+
+
+ namespace drawinglayer::attribute
+@@ -32,6 +33,7 @@ namespace drawinglayer::attribute
+             basegfx::B2DVector                  maSize;                     // [0.0 .. 2.0]
+             double                              mfTransparence;             // [0.0 .. 1.0], 0.0==no transp.
+             sal_Int32                           mnBlur;                     // [0   .. 180], radius of the blur
++            model::RectangleAlignment           meAlignment{model::RectangleAlignment::Unset}; // alignment of the shadow
+             basegfx::BColor                     maColor;                    // color of shadow
+
+             ImpSdrShadowAttribute(
+@@ -39,11 +41,13 @@ namespace drawinglayer::attribute
+                 const basegfx::B2DVector& rSize,
+                 double fTransparence,
+                 sal_Int32 nBlur,
++                model::RectangleAlignment eAlignment,
+                 const basegfx::BColor& rColor)
+             :   maOffset(rOffset),
+                 maSize(rSize),
+                 mfTransparence(fTransparence),
+                 mnBlur(nBlur),
++                meAlignment(eAlignment),
+                 maColor(rColor)
+             {
+             }
+@@ -67,6 +71,7 @@ namespace drawinglayer::attribute
+                     && getSize() == rCandidate.getSize()
+                     && getTransparence() == rCandidate.getTransparence()
+                         && getBlur() == rCandidate.getBlur()
++                    && meAlignment == rCandidate.meAlignment
+                     && getColor() == rCandidate.getColor());
+             }
+         };
+@@ -86,9 +91,10 @@ namespace drawinglayer::attribute
+             const basegfx::B2DVector& rSize,
+             double fTransparence,
+             sal_Int32 nBlur,
++            model::RectangleAlignment eAlignment,
+             const basegfx::BColor& rColor)
+         :   mpSdrShadowAttribute(ImpSdrShadowAttribute(
+-                rOffset, rSize, fTransparence,nBlur, rColor))
++                rOffset, rSize, fTransparence, nBlur, eAlignment, rColor))
+         {
+         }
+
+@@ -141,6 +147,11 @@ namespace drawinglayer::attribute
+             return mpSdrShadowAttribute->getBlur();
+         }
+
++        model::RectangleAlignment SdrShadowAttribute::getAlignment() const
++        {
++            return mpSdrShadowAttribute->meAlignment;
++        }
++
+         const basegfx::BColor& SdrShadowAttribute::getColor() const
+         {
+             return mpSdrShadowAttribute->getColor();
+diff --git a/include/docmodel/theme/FormatScheme.hxx b/include/docmodel/theme/FormatScheme.hxx
+new file mode 100644
+index 000000000000..1a29eb199c0f
+--- /dev/null
++++ b/include/docmodel/theme/FormatScheme.hxx
+@@ -0,0 +1,34 @@
++/* -*- Mode: C++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
++/*
++ * This file is part of the LibreOffice project.
++ *
++ * This Source Code Form is subject to the terms of the Mozilla Public
++ * License, v. 2.0. If a copy of the MPL was not distributed with this
++ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
++ *
++ */
++
++#pragma once
++
++#include <sal/types.h>
++
++namespace model
++{
++enum class RectangleAlignment
++{
++    Unset,
++    TopLeft,
++    Top,
++    TopRight,
++    Left,
++    Center,
++    Right,
++    BottomLeft,
++    Bottom,
++    BottomRight
++};
++constexpr sal_uInt16 RECTANGLE_ALIGNMENT_COUNT
++    = static_cast<sal_uInt16>(RectangleAlignment::BottomRight) + 1;
++}
++
++/* vim:set shiftwidth=4 softtabstop=4 expandtab: */
+diff --git a/include/drawinglayer/attribute/sdrshadowattribute.hxx b/include/drawinglayer/attribute/sdrshadowattribute.hxx
+index ffe249498db2..ab2c045e49bb 100644
+--- a/include/drawinglayer/attribute/sdrshadowattribute.hxx
++++ b/include/drawinglayer/attribute/sdrshadowattribute.hxx
+@@ -31,6 +31,10 @@ namespace basegfx {
+     class B2DVector;
+ }
+
++namespace model {
++    enum class RectangleAlignment;
++}
++
+ namespace drawinglayer::attribute {
+     class ImpSdrShadowAttribute;
+ }
+@@ -53,6 +57,7 @@ namespace drawinglayer::attribute
+                 const basegfx::B2DVector& rSize,
+                 double fTransparence,
+                 sal_Int32 nBlur,
++                model::RectangleAlignment eAlignment,
+                 const basegfx::BColor& rColor);
+             SdrShadowAttribute();
+             SdrShadowAttribute(const SdrShadowAttribute&);
+@@ -72,6 +77,7 @@ namespace drawinglayer::attribute
+             const basegfx::B2DVector& getSize() const;
+             double getTransparence() const;
+             sal_Int32 getBlur() const;
++            model::RectangleAlignment getAlignment() const;
+             const basegfx::BColor& getColor() const;
+         };
+
+diff --git a/include/editeng/unoprnms.hxx b/include/editeng/unoprnms.hxx
+index 0df739ee5285..7a95ba989b86 100644
+--- a/include/editeng/unoprnms.hxx
++++ b/include/editeng/unoprnms.hxx
+@@ -91,6 +91,7 @@ inline constexpr OUStringLiteral UNO_NAME_SHADOWSIZEX = u"ShadowSizeX";
+ inline constexpr OUStringLiteral UNO_NAME_SHADOWSIZEY = u"ShadowSizeY";
+ inline constexpr OUStringLiteral UNO_NAME_SHADOWTRANSPARENCE = u"ShadowTransparence";
+ inline constexpr OUStringLiteral UNO_NAME_SHADOWBLUR = u"ShadowBlur";
++inline constexpr OUStringLiteral UNO_NAME_SHADOWALIGNMENT = u"ShadowAlignment";
+
+ inline constexpr OUStringLiteral UNO_NAME_EDGERADIUS = u"CornerRadius";
+
+diff --git a/include/oox/drawingml/drawingmltypes.hxx b/include/oox/drawingml/drawingmltypes.hxx
+index 5fe86d56439e..04b7e09e10b2 100644
+--- a/include/oox/drawingml/drawingmltypes.hxx
++++ b/include/oox/drawingml/drawingmltypes.hxx
+@@ -31,6 +31,7 @@
+ #include <com/sun/star/style/TabAlign.hpp>
+ #include <com/sun/star/uno/Reference.hxx>
+ #include <o3tl/unit_conversion.hxx>
++#include <docmodel/theme/FormatScheme.hxx>
+ #include <oox/dllapi.h>
+ #include <rtl/ustring.hxx>
+ #include <sal/types.h>
+@@ -227,6 +228,7 @@ struct EmuRectangle : public EmuPoint, public EmuSize
+     void         setSize( const EmuSize& rSize ) { static_cast< EmuSize& >( *this ) = rSize; }
+ };
+
++model::RectangleAlignment convertToRectangleAlignment(sal_Int32 nToken);
+
+ } // namespace oox::drawingml
+
+diff --git a/include/svx/RectangleAlignmentItem.hxx b/include/svx/RectangleAlignmentItem.hxx
+new file mode 100644
+index 000000000000..91179e628a40
+--- /dev/null
++++ b/include/svx/RectangleAlignmentItem.hxx
+@@ -0,0 +1,42 @@
++/* -*- Mode: C++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4; fill-column: 100 -*- */
++/*
++ * This file is part of the LibreOffice project.
++ *
++ * This Source Code Form is subject to the terms of the Mozilla Public
++ * License, v. 2.0. If a copy of the MPL was not distributed with this
++ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
++ */
++
++#pragma once
++
++#include <svl/eitem.hxx>
++#include <svx/svxdllapi.h>
++
++namespace model
++{
++enum class RectangleAlignment;
++}
++
++/** Item that holds a rectangle alignment value.
++
++    e.g. Top Left, Top, Top Right, Center.
++    @see model::RectangleAlignment
++ */
++class SVXCORE_DLLPUBLIC SvxRectangleAlignmentItem final
++    : public SfxEnumItem<model::RectangleAlignment>
++{
++public:
++    SvxRectangleAlignmentItem(sal_uInt16 nWhich, model::RectangleAlignment nValue);
++    virtual ~SvxRectangleAlignmentItem() override;
++
++    SvxRectangleAlignmentItem(SvxRectangleAlignmentItem const&) = default;
++    SvxRectangleAlignmentItem(SvxRectangleAlignmentItem&&) = default;
++    SvxRectangleAlignmentItem& operator=(SvxRectangleAlignmentItem const&) = delete;
++    SvxRectangleAlignmentItem& operator=(SvxRectangleAlignmentItem&&) = delete;
++
++    virtual SvxRectangleAlignmentItem* Clone(SfxItemPool* pPool = nullptr) const override;
++
++    virtual sal_uInt16 GetValueCount() const override;
++};
++
++/* vim:set shiftwidth=4 softtabstop=4 expandtab cinoptions=b1,g0,N-s cinkeys+=0=break: */
+diff --git a/include/svx/svddef.hxx b/include/svx/svddef.hxx
+index 059c461721b4..1801f2dfee7b 100644
+--- a/include/svx/svddef.hxx
++++ b/include/svx/svddef.hxx
+@@ -159,6 +159,7 @@ class SvxBoxInfoItem;
+ class SvxBoxItem;
+ class SvxColorItem;
+ class SvxLineItem;
++class SvxRectangleAlignmentItem;
+ class SvxTextRotateItem;
+ class SvxWritingModeItem;
+ class XColorItem;
+@@ -190,7 +191,8 @@ constexpr TypedWhichId<SfxVoidItem>    SDRATTR_SHADOWPERSP        (SDRATTR_SHADO
+ constexpr TypedWhichId<SdrMetricItem>  SDRATTR_SHADOWSIZEX        (SDRATTR_SHADOW_FIRST+ 7);
+ constexpr TypedWhichId<SdrMetricItem>  SDRATTR_SHADOWSIZEY        (SDRATTR_SHADOW_FIRST+ 8);
+ constexpr TypedWhichId<SdrMetricItem>  SDRATTR_SHADOWBLUR         (SDRATTR_SHADOW_FIRST+ 9);
+-constexpr sal_uInt16                   SDRATTR_SHADOW_LAST        (SDRATTR_SHADOWBLUR);                      /* 1078   */ /* 1078   */ /* 1061   */ /* Pool V1: 1039 */
++constexpr TypedWhichId<SvxRectangleAlignmentItem> SDRATTR_SHADOWALIGNMENT(SDRATTR_SHADOW_FIRST + 10);
++constexpr sal_uInt16                   SDRATTR_SHADOW_LAST        (SDRATTR_SHADOWALIGNMENT);                 /* 1078   */ /* 1078   */ /* 1061   */ /* Pool V1: 1039 */
+
+ constexpr sal_uInt16                             SDRATTR_CAPTION_FIRST     (SDRATTR_SHADOW_LAST + 1);        /* 1080   */ /* 1080   */ /* 1063   */ /* Pool V1: 1041 */
+ constexpr TypedWhichId<SdrCaptionTypeItem>       SDRATTR_CAPTIONTYPE       (SDRATTR_CAPTION_FIRST+ 0);       /*   1080 */ /*   1080 */ /*   1063 */
+diff --git a/include/svx/unoshprp.hxx b/include/svx/unoshprp.hxx
+index 010cbbcd4b36..6b68d7d1e790 100644
+--- a/include/svx/unoshprp.hxx
++++ b/include/svx/unoshprp.hxx
+@@ -230,7 +230,8 @@
+     { UNO_NAME_SHADOWYDIST,       SDRATTR_SHADOWYDIST,        ::cppu::UnoType<sal_Int32>::get(),    0,      0, PropertyMoreFlags::METRIC_ITEM}, \
+     { UNO_NAME_SHADOWSIZEX,       SDRATTR_SHADOWSIZEX,        ::cppu::UnoType<sal_Int32>::get(),    0,      0}, \
+     { UNO_NAME_SHADOWSIZEY,       SDRATTR_SHADOWSIZEY,        ::cppu::UnoType<sal_Int32>::get(),    0,      0}, \
+-    { UNO_NAME_SHADOWBLUR,        SDRATTR_SHADOWBLUR,         ::cppu::UnoType<sal_Int32>::get(),    0,      0, PropertyMoreFlags::METRIC_ITEM},
++    { UNO_NAME_SHADOWBLUR,        SDRATTR_SHADOWBLUR,         ::cppu::UnoType<sal_Int32>::get(),    0,      0, PropertyMoreFlags::METRIC_ITEM}, \
++    { UNO_NAME_SHADOWALIGNMENT,   SDRATTR_SHADOWALIGNMENT,    /*ENUM*/::cppu::UnoType<sal_Int32>::get(), 0, 0},
+
+
+ #define LINE_PROPERTIES_DEFAULTS\
+diff --git a/oox/source/drawingml/drawingmltypes.cxx b/oox/source/drawingml/drawingmltypes.cxx
+index fc2f28d902b7..c53e13662c37 100644
+--- a/oox/source/drawingml/drawingmltypes.cxx
++++ b/oox/source/drawingml/drawingmltypes.cxx
+@@ -414,6 +414,25 @@ IndexRange GetIndexRange( const Reference< XFastAttributeList >& xAttributes )
+     return range;
+ }
+
++model::RectangleAlignment convertToRectangleAlignment(sal_Int32 nToken)
++{
++    switch (nToken)
++    {
++        case XML_tl: return model::RectangleAlignment::TopLeft;
++        case XML_t: return model::RectangleAlignment::Top;
++        case XML_tr: return model::RectangleAlignment::TopRight;
++        case XML_l: return model::RectangleAlignment::Left;
++        case XML_ctr: return model::RectangleAlignment::Center;
++        case XML_r: return model::RectangleAlignment::Right;
++        case XML_bl: return model::RectangleAlignment::BottomLeft;
++        case XML_b: return model::RectangleAlignment::Bottom;
++        case XML_br: return model::RectangleAlignment::BottomRight;
++        default:
++            break;
++    }
++    return model::RectangleAlignment::Unset;
++}
++
+ } // namespace oox::drawingml
+
+ /* vim:set shiftwidth=4 softtabstop=4 expandtab: */
+diff --git a/oox/source/drawingml/effectproperties.cxx b/oox/source/drawingml/effectproperties.cxx
+index 579f4e1ab0ac..8424e3436c1a 100644
+--- a/oox/source/drawingml/effectproperties.cxx
++++ b/oox/source/drawingml/effectproperties.cxx
+@@ -14,6 +14,7 @@
+
+ #include <basegfx/numeric/ftools.hxx>
+ #include <comphelper/propertyvalue.hxx>
++#include <docmodel/theme/FormatScheme.hxx>
+
+ #include <algorithm>
+
+@@ -38,6 +39,7 @@ void EffectShadowProperties::assignUsed(const EffectShadowProperties& rSourcePro
+     assignIfUsed( moShadowSy, rSourceProps.moShadowSy );
+     moShadowColor.assignIfUsed( rSourceProps.moShadowColor );
+     assignIfUsed( moShadowBlur, rSourceProps.moShadowBlur );
++    assignIfUsed( moShadowAlignment, rSourceProps.moShadowAlignment );
+
+ }
+
+@@ -105,6 +107,9 @@ void EffectProperties::pushToPropMap( PropertyMap& rPropMap,
+             rPropMap.setProperty( PROP_ShadowColor, it->moColor.getColor(rGraphicHelper ) );
+             rPropMap.setProperty( PROP_ShadowTransparence, it->moColor.getTransparency());
+             rPropMap.setProperty( PROP_ShadowBlur, convertEmuToHmm(nAttrBlur));
++            rPropMap.setProperty(
++                PROP_ShadowAlignment,
++                static_cast<sal_Int32>(maShadow.moShadowAlignment.value_or(model::RectangleAlignment::Bottom)));
+
+         }
+     }
+diff --git a/oox/source/drawingml/effectproperties.hxx b/oox/source/drawingml/effectproperties.hxx
+index 54c7068ef5c6..992e2bddf3ef 100644
+--- a/oox/source/drawingml/effectproperties.hxx
++++ b/oox/source/drawingml/effectproperties.hxx
+@@ -17,6 +17,10 @@
+ #include <vector>
+ #include <map>
+
++namespace model {
++enum class RectangleAlignment;
++}
++
+ namespace oox::drawingml {
+
+ struct EffectGlowProperties
+@@ -43,6 +47,7 @@ struct EffectShadowProperties
+     std::optional< sal_Int64 > moShadowSy;
+     Color moShadowColor;
+     std::optional< sal_Int64 > moShadowBlur; // size of blur effect
++    std::optional< model::RectangleAlignment > moShadowAlignment;
+
+     /** Overwrites all members that are explicitly set in rSourceProps. */
+     void                assignUsed( const EffectShadowProperties& rSourceProps );
+diff --git a/oox/source/drawingml/effectpropertiescontext.cxx b/oox/source/drawingml/effectpropertiescontext.cxx
+index 23793cdc26dc..a386814ed4b4 100644
+--- a/oox/source/drawingml/effectpropertiescontext.cxx
++++ b/oox/source/drawingml/effectpropertiescontext.cxx
+@@ -13,6 +13,7 @@
+ #include <oox/helper/attributelist.hxx>
+ #include <oox/token/namespaces.hxx>
+ #include <oox/token/tokens.hxx>
++#include <oox/drawingml/drawingmltypes.hxx>
+
+ using namespace ::oox::core;
+ using namespace ::com::sun::star::uno;
+@@ -85,6 +86,7 @@ ContextHandlerRef EffectPropertiesContext::onCreateContext( sal_Int32 nElement,
+             mrEffectProperties.maShadow.moShadowSx = rAttribs.getInteger( XML_sx, 0 );
+             mrEffectProperties.maShadow.moShadowSy = rAttribs.getInteger( XML_sy, 0 );
+             mrEffectProperties.maShadow.moShadowBlur = rAttribs.getInteger( XML_blurRad, 0 );
++            mrEffectProperties.maShadow.moShadowAlignment = convertToRectangleAlignment( rAttribs.getToken(XML_algn, XML_b) );
+             return new ColorContext(*this, mrEffectProperties.m_Effects[nPos]->moColor);
+         }
+         break;
+diff --git a/oox/source/token/properties.txt b/oox/source/token/properties.txt
+index 5df793846a50..60b5c375c033 100644
+--- a/oox/source/token/properties.txt
++++ b/oox/source/token/properties.txt
+@@ -467,6 +467,7 @@ Segments
+ SelectedItems
+ SelectedPage
+ Shadow
++ShadowAlignment
+ ShadowColor
+ ShadowFormat
+ ShadowSizeX
+diff --git a/svx/Library_svxcore.mk b/svx/Library_svxcore.mk
+index 6a1c0b5de352..9f35193a3645 100644
+--- a/svx/Library_svxcore.mk
++++ b/svx/Library_svxcore.mk
+@@ -218,6 +218,7 @@ $(eval $(call gb_Library_add_exception_objects,svxcore,\
+     svx/source/items/customshapeitem \
+     svx/source/items/drawitem \
+     svx/source/items/e3ditem \
++    svx/source/items/RectangleAlignmentItem \
+     svx/source/items/galleryitem \
+     svx/source/items/grfitem \
+     svx/source/sdr/animation/scheduler \
+diff --git a/svx/source/items/RectangleAlignmentItem.cxx b/svx/source/items/RectangleAlignmentItem.cxx
+new file mode 100644
+index 000000000000..3b0b7b0f1081
+--- /dev/null
++++ b/svx/source/items/RectangleAlignmentItem.cxx
+@@ -0,0 +1,31 @@
++/* -*- Mode: C++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4; fill-column: 100 -*- */
++/*
++ * This file is part of the LibreOffice project.
++ *
++ * This Source Code Form is subject to the terms of the Mozilla Public
++ * License, v. 2.0. If a copy of the MPL was not distributed with this
++ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
++ */
++
++#include <svx/RectangleAlignmentItem.hxx>
++#include <docmodel/theme/FormatScheme.hxx>
++
++SvxRectangleAlignmentItem::SvxRectangleAlignmentItem(sal_uInt16 nWhich,
++                                                     model::RectangleAlignment nValue)
++    : SfxEnumItem<model::RectangleAlignment>(nWhich, nValue)
++{
++}
++
++SvxRectangleAlignmentItem::~SvxRectangleAlignmentItem() {}
++
++SvxRectangleAlignmentItem* SvxRectangleAlignmentItem::Clone(SfxItemPool*) const
++{
++    return new SvxRectangleAlignmentItem(*this);
++}
++
++sal_uInt16 SvxRectangleAlignmentItem::GetValueCount() const
++{
++    return model::RECTANGLE_ALIGNMENT_COUNT;
++}
++
++/* vim:set shiftwidth=4 softtabstop=4 expandtab cinoptions=b1,g0,N-s cinkeys+=0=break: */
+diff --git a/svx/source/sdr/primitive2d/sdrattributecreator.cxx b/svx/source/sdr/primitive2d/sdrattributecreator.cxx
+index bafa96f95cd8..9c3155435d4b 100644
+--- a/svx/source/sdr/primitive2d/sdrattributecreator.cxx
++++ b/svx/source/sdr/primitive2d/sdrattributecreator.cxx
+@@ -53,6 +53,7 @@
+ #include <svx/xflbmtit.hxx>
+ #include <svx/xflbstit.hxx>
+ #include <svx/xtextit0.hxx>
++#include <svx/RectangleAlignmentItem.hxx>
+ #include <drawinglayer/attribute/sdrfillgraphicattribute.hxx>
+ #include <svx/svdotext.hxx>
+ #include <sdr/attribute/sdrtextattribute.hxx>
+@@ -401,7 +402,9 @@ namespace drawinglayer::primitive2d
+
+                     sal_Int32 nBlur(rSet.Get(SDRATTR_SHADOWBLUR).GetValue());
+
+-                    return attribute::SdrShadowAttribute(aOffset, aSize, static_cast<double>(nTransparence) * 0.01,nBlur, aColor.getBColor());
++                    model::RectangleAlignment eAlignment{rSet.Get(SDRATTR_SHADOWALIGNMENT).GetValue()};
++
++                    return attribute::SdrShadowAttribute(aOffset, aSize, static_cast<double>(nTransparence) * 0.01, nBlur, eAlignment, aColor.getBColor());
+                 }
+             }
+
+diff --git a/svx/source/sdr/primitive2d/sdrdecompositiontools.cxx b/svx/source/sdr/primitive2d/sdrdecompositiontools.cxx
+index 1a5459643006..b5df830d73fe 100644
+--- a/svx/source/sdr/primitive2d/sdrdecompositiontools.cxx
++++ b/svx/source/sdr/primitive2d/sdrdecompositiontools.cxx
+@@ -49,6 +49,7 @@
+ #include <drawinglayer/attribute/sdrlinestartendattribute.hxx>
+ #include <drawinglayer/attribute/sdrshadowattribute.hxx>
+ #include <drawinglayer/attribute/sdrglowattribute.hxx>
++#include <docmodel/theme/FormatScheme.hxx>
+ #include <osl/diagnose.h>
+
+ // for SlideBackgroundFillPrimitive2D
+@@ -65,6 +66,35 @@ namespace drawinglayer::primitive2d
+ {
+ namespace
+ {
++/// @returns the offset to apply/unapply to scale according to correct origin for a given alignment.
++basegfx::B2DTuple getShadowScaleOriginOffset(const basegfx::B2DTuple& aScale,
++                                             model::RectangleAlignment eAlignment)
++{
++    switch (eAlignment)
++    {
++        case model::RectangleAlignment::TopLeft:
++            return { 0, 0 };
++        case model::RectangleAlignment::Top:
++            return { aScale.getX() / 2, 0 };
++        case model::RectangleAlignment::TopRight:
++            return { aScale.getX(), 0 };
++        case model::RectangleAlignment::Left:
++            return { 0, aScale.getY() / 2 };
++        case model::RectangleAlignment::Center:
++            return { aScale.getX() / 2, aScale.getY() / 2 };
++        case model::RectangleAlignment::Right:
++            return { aScale.getX(), aScale.getY() / 2 };
++        case model::RectangleAlignment::BottomLeft:
++            return { 0, aScale.getY() };
++        case model::RectangleAlignment::Bottom:
++            return { aScale.getX() / 2, aScale.getY() };
++        case model::RectangleAlignment::BottomRight:
++            return { aScale.getX(), aScale.getY() };
++        default:
++            return { 0, 0 };
++    }
++};
++
+ // See also: SdrTextObj::AdjustRectToTextDistance
+ basegfx::B2DRange getTextAnchorRange(const attribute::SdrTextAttribute& rText,
+                                      const basegfx::B2DRange& rSnapRange)
+@@ -775,19 +805,10 @@ sal_uInt32 SlideBackgroundFillPrimitive2D::getPrimitive2DID() const
+                 double fShearX = 0;
+                 rObjectMatrix.decompose(aScale, aTranslate, fRotate, fShearX);
+                 // Scale the shadow
+-                double nTranslateX = aTranslate.getX();
+-                double nTranslateY = aTranslate.getY();
+-
+-                // The origin for scaling is the top left corner by default. A negative
+-                // shadow offset changes the origin.
+-                if (rShadow.getOffset().getX() < 0)
+-                    nTranslateX += aScale.getX();
+-                if (rShadow.getOffset().getY() < 0)
+-                    nTranslateY += aScale.getY();
+-
+-                aShadowOffset.translate(-nTranslateX, -nTranslateY);
++                aTranslate += getShadowScaleOriginOffset(aScale, rShadow.getAlignment());
++                aShadowOffset.translate(-aTranslate);
+                 aShadowOffset.scale(rShadow.getSize().getX() * 0.00001, rShadow.getSize().getY() * 0.00001);
+-                aShadowOffset.translate(nTranslateX, nTranslateY);
++                aShadowOffset.translate(aTranslate);
+             }
+
+             aShadowOffset.translate(rShadow.getOffset().getX(), rShadow.getOffset().getY());
+diff --git a/svx/source/svdraw/svdattr.cxx b/svx/source/svdraw/svdattr.cxx
+index 86794dc92bfe..39455dd81916 100644
+--- a/svx/source/svdraw/svdattr.cxx
++++ b/svx/source/svdraw/svdattr.cxx
+@@ -29,6 +29,8 @@
+ #include <com/sun/star/drawing/MeasureTextVertPos.hpp>
+ #include <com/sun/star/drawing/CircleKind.hpp>
+
++#include <docmodel/theme/FormatScheme.hxx>
++
+ #include <editeng/boxitem.hxx>
+ #include <editeng/eeitem.hxx>
+ #include <editeng/lineitem.hxx>
+@@ -93,6 +95,7 @@
+ #include <svx/sxmtritm.hxx>
+ #include <svx/sxmuitm.hxx>
+ #include <svx/xcolit.hxx>
++#include <svx/RectangleAlignmentItem.hxx>
+ #include <sxoneitm.hxx>
+ #include <sxopitm.hxx>
+ #include <sxreaitm.hxx>
+@@ -133,6 +136,7 @@ SdrItemPool::SdrItemPool(
+     rPoolDefaults[SDRATTR_SHADOWSIZEY       -SDRATTR_START]=new SdrMetricItem(SDRATTR_SHADOWSIZEY, 100000);
+     rPoolDefaults[SDRATTR_SHADOWTRANSPARENCE-SDRATTR_START]=new SdrPercentItem(SDRATTR_SHADOWTRANSPARENCE, 0);
+     rPoolDefaults[SDRATTR_SHADOWBLUR        -SDRATTR_START]=new SdrMetricItem(SDRATTR_SHADOWBLUR, 0);
++    rPoolDefaults[SDRATTR_SHADOWALIGNMENT   -SDRATTR_START]=new SvxRectangleAlignmentItem(SDRATTR_SHADOWALIGNMENT, model::RectangleAlignment::Unset);
+     rPoolDefaults[SDRATTR_SHADOW3D          -SDRATTR_START]=new SfxVoidItem(SDRATTR_SHADOW3D    );
+     rPoolDefaults[SDRATTR_SHADOWPERSP       -SDRATTR_START]=new SfxVoidItem(SDRATTR_SHADOWPERSP );
+     rPoolDefaults[SDRATTR_CAPTIONTYPE      -SDRATTR_START]=new SdrCaptionTypeItem      ;
+diff --git a/svx/source/table/viewcontactoftableobj.cxx b/svx/source/table/viewcontactoftableobj.cxx
+index 3f17c5ccae21..5b9418ab06bf 100644
+--- a/svx/source/table/viewcontactoftableobj.cxx
++++ b/svx/source/table/viewcontactoftableobj.cxx
+@@ -448,33 +448,39 @@ namespace sdr::contact
+                         aRetvalForShadow.append(new drawinglayer::primitive2d::TransformPrimitive2D(
+                             aTransform, std::move(aCellBorderPrimitives)));
+                     }
+-                }
+-
+-                if(!aRetval.empty())
+-                {
+-                    // check and create evtl. shadow for created content
+-                    const SfxItemSet& rObjectItemSet = rTableObj.GetMergedItemSet();
+-                    const drawinglayer::attribute::SdrShadowAttribute aNewShadowAttribute(
+-                        drawinglayer::primitive2d::createNewSdrShadowAttribute(rObjectItemSet));
+
+-                    if(!aNewShadowAttribute.isDefault())
++                    if(!aRetval.empty())
+                     {
+-                        bool bDirectShadow
+-                            = rObjectItemSet.Get(SDRATTR_SHADOW, /*bSrchInParent=*/false)
+-                                  .GetValue();
+-                        if (bDirectShadow)
+-                        {
+-                            // Shadow as direct formatting: no shadow for text, to be compatible
+-                            // with PowerPoint.
+-                            basegfx::B2DHomMatrix aMatrix;
+-                            aRetval = drawinglayer::primitive2d::createEmbeddedShadowPrimitive(
+-                                std::move(aRetval), aNewShadowAttribute, aMatrix, &aRetvalForShadow);
+-                        }
+-                        else
++                        // check and create evtl. shadow for created content
++                        const SfxItemSet& rObjectItemSet = rTableObj.GetMergedItemSet();
++                        const drawinglayer::attribute::SdrShadowAttribute aNewShadowAttribute(
++                            drawinglayer::primitive2d::createNewSdrShadowAttribute(rObjectItemSet));
++
++                        if(!aNewShadowAttribute.isDefault())
+                         {
+-                            // Shadow as style: shadow for text, to be backwards-compatible.
+-                            aRetval = drawinglayer::primitive2d::createEmbeddedShadowPrimitive(
+-                                std::move(aRetval), aNewShadowAttribute);
++                            // pass in table's transform and scale matrix, to
++                            // correctly scale and align shadows
++                            const basegfx::B2DHomMatrix aTransformScaleMatrix
++                                    = basegfx::utils::createScaleTranslateB2DHomMatrix(
++                                        aObjectRange.getRange(), aObjectRange.getMinimum());
++
++                            bool bDirectShadow
++                                    = rObjectItemSet.Get(SDRATTR_SHADOW, /*bSrchInParent=*/false)
++                                    .GetValue();
++                            if (bDirectShadow)
++                            {
++                                // Shadow as direct formatting: no shadow for text, to be compatible
++                                // with PowerPoint.
++                                aRetval = drawinglayer::primitive2d::createEmbeddedShadowPrimitive(
++                                    std::move(aRetval), aNewShadowAttribute, aTransformScaleMatrix,
++                                    &aRetvalForShadow);
++                            }
++                            else
++                            {
++                                // Shadow as style: shadow for text, to be backwards-compatible.
++                                aRetval = drawinglayer::primitive2d::createEmbeddedShadowPrimitive(
++                                    std::move(aRetval), aNewShadowAttribute, aTransformScaleMatrix);
++                            }
+                         }
+                     }
+                 }
+diff --git a/sw/qa/extras/layout/layout.cxx b/sw/qa/extras/layout/layout.cxx
+index 587fa4d4294e..e60fa05aab71 100644
+--- a/sw/qa/extras/layout/layout.cxx
++++ b/sw/qa/extras/layout/layout.cxx
+@@ -19,6 +19,7 @@
+ #include <editeng/unolingu.hxx>
+ #include <editeng/editobj.hxx>
+ #include <comphelper/sequence.hxx>
++#include <svx/svddef.hxx>
+
+ #include <fmtfsize.hxx>
+ #include <fmtcntnt.hxx>
+@@ -1213,22 +1214,30 @@ CPPUNIT_TEST_FIXTURE(SwLayoutWriter, TestTdf137025)
+     // SDRATTR_TEXT_LEFTDIST
+     assertXPath(pXmlDoc,
+                 "/root/page/body/txt/anchored/SwAnchoredDrawObject/SdrObject"
+-                "/DefaultProperties/SfxItemSet/SdrMetricItem/SfxInt32Item[@whichId='1072']",
++                "/DefaultProperties/SfxItemSet/SdrMetricItem/SfxInt32Item"
++                "[@whichId='"
++                    + OString::number(SDRATTR_TEXT_LEFTDIST) + "']",
+                 "value", "567");
+     // SDRATTR_TEXT_RIGHTDIST
+     assertXPath(pXmlDoc,
+                 "/root/page/body/txt/anchored/SwAnchoredDrawObject/SdrObject"
+-                "/DefaultProperties/SfxItemSet/SdrMetricItem/SfxInt32Item[@whichId='1073']",
++                "/DefaultProperties/SfxItemSet/SdrMetricItem/SfxInt32Item"
++                "[@whichId='"
++                    + OString::number(SDRATTR_TEXT_RIGHTDIST) + "']",
+                 "value", "1134");
+     // SDRATTR_TEXT_UPPERDIST
+     assertXPath(pXmlDoc,
+                 "/root/page/body/txt/anchored/SwAnchoredDrawObject/SdrObject"
+-                "/DefaultProperties/SfxItemSet/SdrMetricItem/SfxInt32Item[@whichId='1074']",
++                "/DefaultProperties/SfxItemSet/SdrMetricItem/SfxInt32Item"
++                "[@whichId='"
++                    + OString::number(SDRATTR_TEXT_UPPERDIST) + "']",
+                 "value", "1701");
+     // SDRATTR_TEXT_LOWERDIST
+     assertXPath(pXmlDoc,
+                 "/root/page/body/txt/anchored/SwAnchoredDrawObject/SdrObject"
+-                "/DefaultProperties/SfxItemSet/SdrMetricItem/SfxInt32Item[@whichId='1075']",
++                "/DefaultProperties/SfxItemSet/SdrMetricItem/SfxInt32Item"
++                "[@whichId='"
++                    + OString::number(SDRATTR_TEXT_LOWERDIST) + "']",
+                 "value", "2268");
+
+     // Check the textbox-shape import too
+--
+2.35.3
+

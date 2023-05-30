@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 28 19:46:01 UTC 2023 - Andras Timar <andras.timar@collabora.com>
+
+- Fix bsc#1204040 - LO-L3: PPTX: shadow effect for table offset too far to the right
+  * bsc1204040.patch
+- Fix bsc#1198666 - LO-L3: Need to be able to set the default tab size for each text object
+  * bsc1198666.patch
+
+-------------------------------------------------------------------
 Wed May 24 07:49:40 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 7.5.3.2:

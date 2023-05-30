@@ -117,6 +117,10 @@ Patch15:        fix-sdk-idl.patch
 Patch16:        0002-Revert-Require-HarfBuzz-5.1.0.patch
 # LO-L3: FILEOPEN PPTX: extra paragraph after some 2-line text with link
 Patch17:        bsc1200085.patch
+# LO-L3: PPTX: shadow effect for table offset too far to the right
+Patch18:        bsc1204040.patch
+# LO-L3: Need to be able to set the default tab size for each text object
+Patch19:        bsc1198666.patch
 # Build with java 8
 Patch101:       0001-Revert-java-9-changes.patch
 # try to save space by using hardlinks
@@ -1044,6 +1048,8 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch16 -p1
 %endif
 %patch17 -p1
+%patch18 -p1
+%patch19 -p1
 %patch990 -p1
 %patch991 -p1
 
