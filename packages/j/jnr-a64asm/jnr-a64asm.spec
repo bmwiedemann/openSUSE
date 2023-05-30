@@ -1,7 +1,7 @@
 #
-# spec file for package jnr-a64asm
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  make
 BuildRequires:  maven-local
-BuildRequires:  mvn(org.apache.maven.plugins:maven-source-plugin)
+BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 BuildArch:      noarch
 
@@ -46,10 +46,39 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
+
+%pom_remove_plugin :maven-source-plugin
+%pom_remove_plugin :maven-javadoc-plugin
+%pom_add_plugin "org.apache.felix:maven-bundle-plugin" . "
+        <configuration>
+          <instructions>
+            <_nouses>true</_nouses>
+          </instructions>
+        </configuration>
+        <executions>
+          <execution>
+            <id>bundle-manifest</id>
+            <phase>process-classes</phase>
+            <goals>
+              <goal>manifest</goal>
+            </goals>
+          </execution>
+        </executions>"
+
+%pom_add_plugin "org.apache.maven.plugins:maven-jar-plugin" . "
+        <configuration>
+          <archive>
+            <manifestFile>\${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+            <manifestEntries>
+              <Automatic-Module-Name>org.jnrproject.a64asm</Automatic-Module-Name>
+            </manifestEntries>
+          </archive>
+        </configuration>"
+
 %{mvn_file} : %{cluster}/%{name}
 
 %build
-%{mvn_build} -f
+%{mvn_build} -f -- -Dsource=8
 
 %install
 %mvn_install
