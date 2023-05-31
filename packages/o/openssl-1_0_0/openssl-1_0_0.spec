@@ -126,6 +126,8 @@ Patch98:        openssl-CVE-2023-0464.patch
 Patch99:        openssl-CVE-2023-0465.patch
 # PATCH-FIX-UPSTREAM: bsc#1209873, CVE-2023-0466 Certificate policy check not enabled
 Patch100:       openssl-CVE-2023-0466.patch
+# PATCH-FIX-UPSTREAM: bsc#1211430, CVE-2023-2650 Possible DoS translating ASN.1 object identifiers
+Patch101:       openssl-CVE-2023-2650.patch
 # steam patches
 Patch150:       openssl-fix-cpuid_setup.patch
 # compat patches to build with soversion 10 (bsc#1175429)
@@ -304,6 +306,7 @@ testing framework and utilities.
 %patch98 -p1
 %patch99 -p1
 %patch100 -p1
+%patch101 -p1
 
 # clean up patching leftovers
 find . -name '*.orig' -delete

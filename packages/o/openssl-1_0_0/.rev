@@ -313,4 +313,14 @@
   * Add openssl-CVE-2023-0466.patch</comment>
     <requestid>1077222</requestid>
   </revision>
+  <revision rev="34" vrev="16">
+    <srcmd5>f70ad3e74acc0c73d652bcdf9220e00f</srcmd5>
+    <version>1.0.2u</version>
+    <time>1685562898</time>
+    <user>dimstar_suse</user>
+    <comment>- Security Fix: [CVE-2023-2650, bsc#1211430]
+  * Possible DoS translating ASN.1 object identifiers
+  * Add openssl-CVE-2023-2650.patch</comment>
+    <requestid>1089985</requestid>
+  </revision>
 </revisionlist>
