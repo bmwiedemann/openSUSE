@@ -2798,4 +2798,13 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   is unset (bsc#1209229, BZ #30235) (forwarded request 1076854 from Andreas_Schwab)</comment>
     <requestid>1076855</requestid>
   </revision>
+  <revision rev="275" vrev="4">
+    <srcmd5>fc8e7a763d245ed7fb9330663263487a</srcmd5>
+    <version>2.37</version>
+    <time>1685562844</time>
+    <user>dimstar_suse</user>
+    <comment>- ulp-prologue-into-asm-functions.patch: Add support for livepatches in
+  ASM written functions (bsc#1210777)</comment>
+    <requestid>1089001</requestid>
+  </revision>
 </revisionlist>

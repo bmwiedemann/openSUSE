@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 28 23:42:47 UTC 2023 - Giuliano Belinassi <giuliano.belinassi@suse.com>
+
+- ulp-prologue-into-asm-functions.patch: Add support for livepatches in
+  ASM written functions (bsc#1210777)
+
+-------------------------------------------------------------------
 Thu Mar 30 12:03:36 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - getlogin-no-loginuid.patch: getlogin_r: fix missing fallback if loginuid

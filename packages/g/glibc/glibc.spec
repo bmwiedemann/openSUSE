@@ -260,6 +260,8 @@ Patch15:        glibc-2.3.90-langpackdir.diff
 Patch19:        nscd-server-user.patch
 # PATCH-FEATURE-SLE read nsswich.conf from /usr
 Patch20:        glibc-nsswitch-usr.diff
+# PATCH-FEATURE-SLE Add ULP prologue into ASM functions
+Patch21:        ulp-prologue-into-asm-functions.patch
 
 ### Locale related patches
 # PATCH-FIX-OPENSUSE Add additional locales
@@ -500,6 +502,7 @@ library in a cross compilation setting.
 %patch15 -p1
 %patch19 -p1
 %patch20 -p1
+%patch21 -p1
 
 %patch100 -p1
 %patch102 -p1
@@ -676,6 +679,9 @@ profile="--disable-profile"
 	--with-bugurl=http://bugs.opensuse.org \
 	--enable-bind-now \
 	--disable-timezone-tools \
+%if %{with livepatching}
+	--enable-userspace-livepatch \
+%endif
 	--disable-crypt || \
   {
     rc=$?;
@@ -688,7 +694,7 @@ profile="--disable-profile"
 %if %{build_main} && %{with livepatching}
 # Append necessary flags for livepatch support, if enabled.  Only objects
 # included in shared libraries should be prepared for live patching.
-echo 'CFLAGS-.os += -fpatchable-function-entry=16,14 -fdump-ipa-clones' \
+echo 'CFLAGS-.os += -fdump-ipa-clones' \
      >> Makeconfig
 %endif
 
