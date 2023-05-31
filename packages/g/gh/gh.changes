@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed May 31 10:45:15 UTC 2023 - pdostal@suse.com
+
+- Update to version 2.30.0:
+  * build(deps): bump github.com/stretchr/testify from 1.8.3 to 1.8.4
+  * Do not generate docs for aliases (#7497)
+  * Speed up gh start up time (#7487)
+  * fix: apply latin matching filter to more fields
+  * Allow creating of nested aliases (#7457)
+  * fix variable name
+  * Add cmd test for pr status with counts by state
+  * Reorder Check and Status States enums variants alphabetically
+  * Use go enums for status and check status graphql enums
+  * Remove unused emptyIntrospectionFor test helper
+  * Avoid setting status check rollups when user supplies fields
+  * Rework state parsing for CheckRuns and StatusContexts
+  * Split CheckRunState and StatusState parsing
+  * Use two queries in one request for PR feature detection
+  * go generate
+  * switch to []int return for multiselect
+  * Updated to sanitize asset filename prior to uploading. Fixes #7024
+  * Remove unused prInstrospection fixture
+  * Inject fake detector into PR status tests
+  * Move CheckRunAndStatusContextCounts feature detection up stack
+  * Use pseudo field for statusCheckRollupWithCountByState
+  * build(deps): bump github.com/mattn/go-isatty from 0.0.18 to 0.0.19
+  * Clarify docs regarding what is listed when running gh workflow list
+  * Update browser package to avoid Windows crash
+  * Update triage.md with severity descriptions
+  * build(deps): bump github.com/stretchr/testify from 1.8.2 to 1.8.3
+  * Implement initial spike for detecting and using counts by state
+  * Short circuit status check GQL introspection for GitHub.com
+  * Add support for detecting status and check counts in GQL
+  * Implement parsing and counting of PR checks using new GQL fields
+  * build(deps): bump github.com/stretchr/testify from 1.8.1 to 1.8.2
+  * Remove old, unused detector fields (#7458)
+  * Fix windows crash by bumping wincred
+  * Avoid using named return in PR ChecksStatus
+  * Add some comments to PR ChecksStatus
+  * Add some further test coverage around PR ChecksStatus
+  * Do not fall back to legacy template if template selector returns nil (#7444)
+  * Mention setting GH_ENTERPRISE_TOKEN
+  * survey: fix color contrast of default values in prompts (#7354)
+  * respect GH_REPO env variable in `pr create`
+  * Allow `gh repo set-default --view` without repo argument (#7441)
+  * Introduce helpTopics type and reduce duplication across commands (#7414)
+  * linter appeasement
+  * use new prompter in run download
+  * implement multi select support for prompter
+  * delete PromptForRun
+  * golf
+  * use new prompter in run watch
+  * use new prompter in run rerun
+  * use new prompter in run cancel
+  * use new prompter in run view
+
+-------------------------------------------------------------------
 Thu May 11 13:30:50 UTC 2023 - pdostal@suse.com
 
 - Update to version 2.29.0:
