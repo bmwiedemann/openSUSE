@@ -15,4 +15,20 @@
     <comment></comment>
     <requestid>1042183</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8b4309c7da103433c17cb1daa671d7c0</srcmd5>
+    <version>23.2.0</version>
+    <time>1685562847</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.2.0:
+  * Type hints for `environ.config()` now allow for arguments
+    (e.g. `@environ.config(prefix=&quot;&quot;)`).
+  * `environ.secrets.DirectorySecrets.from_path()` now works when
+    loading from `os.environ`.
+  * Public APIs now carry type hints (except in-class methods
+    like ``AppConfig.from_environ()``).
+
+- Stick with urllib3 &lt; 2 due to boto.</comment>
+    <requestid>1089586</requestid>
+  </revision>
 </revisionlist>
