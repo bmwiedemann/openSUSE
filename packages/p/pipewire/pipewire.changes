@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 31 06:50:17 UTC 2023 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Have pipewire-spa-plugins-0_2 suggest pipewire-libjack-%{apiver_str}:
+  this package requires libjack.so.0, so we best use our own
+  implementation.
+
+-------------------------------------------------------------------
 Fri May 19 17:26:12 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Add patch from upstream to fix JACK buffersize updates:

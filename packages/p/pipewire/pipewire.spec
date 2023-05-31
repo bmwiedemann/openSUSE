@@ -288,6 +288,7 @@ This package contains X11 bell support for PipeWire.
 %package spa-plugins-%{spa_ver_str}
 Summary:        Plugins For PipeWire SPA
 Group:          Productivity/Multimedia/Other
+Suggests:       pipewire-libjack-%{apiver_str}
 
 %description spa-plugins-%{spa_ver_str}
 PipeWire is a server and user space API to deal with multimedia pipelines.
