@@ -38,7 +38,7 @@
 %endif
 
 Name:           ansible
-Version:        7.6.0
+Version:        8.0.0
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0+
@@ -54,11 +54,11 @@ BuildRequires:  fdupes
 BuildRequires:  dos2unix
 
 # SECTION test requirements
-BuildRequires:  ansible-core >= 2.14.6
+BuildRequires:  ansible-core >= 2.15.0
 # /SECTION
 
 Requires:       %{ansible_python}-base >= 3.9
-Requires:       ansible-core >= 2.14.6
+Requires:       ansible-core >= 2.15.0
 
 # Do not check any files in collections for requires
 %global __requires_exclude_from ^%{ansible_python_sitelib}/.*$
@@ -94,7 +94,7 @@ find ./ansible_collections/azure -type f -exec dos2unix {} \;
 %fdupes %{buildroot}/%{ansible_python_sitelib}/ansible_collections/
 
 %files
-%doc CHANGELOG-v7.rst README.rst
+%doc CHANGELOG-v8.rst README.rst
 %license COPYING
 %{_bindir}/ansible-community
 %{ansible_python_sitelib}/
