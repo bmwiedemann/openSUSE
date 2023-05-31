@@ -6,6 +6,13 @@ Thu Jan 12 17:36:33 UTC 2023 - Martin Hauke <mardnh@gmx.de>
     TCP/AUX console.
 
 -------------------------------------------------------------------
+Sun Jan  8 18:36:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.23:
+  * Command line option to configure console binding for TCP/AUX console.
+  - Fallbacks to the hypervisor binding address if not set.
+
+-------------------------------------------------------------------
 Tue May 24 16:15:37 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.2.22
