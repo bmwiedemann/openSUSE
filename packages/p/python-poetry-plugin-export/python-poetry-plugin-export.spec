@@ -27,11 +27,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-poetry-plugin-export%{psuffix}
-Version:        1.3.1
+Version:        1.4.0
 Release:        0
 Summary:        Poetry plugin to export the dependencies to various formats
 License:        MIT
 URL:            https://python-poetry.org/
+# RepositorySource: https://github.com/python-poetry/poetry-plugin-export
 Source:         https://files.pythonhosted.org/packages/source/p/poetry-plugin-export/poetry_plugin_export-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1.3.0}

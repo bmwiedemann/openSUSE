@@ -38,4 +38,14 @@ fix multibuild</comment>
     <comment></comment>
     <requestid>1085486</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bf9e9c8d477b25aa615235d9430f9243</srcmd5>
+    <version>1.4.0</version>
+    <time>1685562848</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.0
+  * Fix an issue where --extra-index-url and --trusted-host was not
+    generated for sources with priority explicit (#205).</comment>
+    <requestid>1089622</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 29 17:05:59 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.4.0
+  * Fix an issue where --extra-index-url and --trusted-host was not
+    generated for sources with priority explicit (#205).
+
+-------------------------------------------------------------------
 Mon May  8 06:43:37 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons
