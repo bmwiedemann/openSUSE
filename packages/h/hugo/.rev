@@ -576,4 +576,28 @@
   * Fix regression when loading config  -e is empty or HUGO_ENV or HUGO_ENVIRONMENT is set (forwarded request 1088866 from jfkw)</comment>
     <requestid>1088867</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>60b0f181b2c9647714cffcf49aa4f083</srcmd5>
+    <version>0.112.5</version>
+    <time>1685562866</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.112.5:
+  * releaser: Add a way to bust the CircleCI Git cache
+  * Fix it so languageCode on top level config still works
+
+- Update to version 0.112.4:
+  * docs: Regenerate CLI docs
+  * commands: Add the common build flags to the config commands
+  * Fix Processed images count regression for multiple languages
+  * commands: Reinstate some of the removed build flags (e.g. --theme) to new and mod
+  * Don't create the public folder unless needed
+  * docs: Regen CLI docs
+  * commands: Fail the build when no config file or config dir
+  * langs: Remove the Language.Params deprecation message for now
+  * Add language.LanguageCode
+  * Fix --renderStaticToDisk regression
+  * commands: Re-introduce the -f shorthand for hugo new site
+  * commands: Move the --format flag to only the commands that support it (forwarded request 1089893 from jfkw)</comment>
+    <requestid>1089894</requestid>
+  </revision>
 </revisionlist>

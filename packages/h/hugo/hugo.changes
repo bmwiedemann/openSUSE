@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed May 31 00:47:18 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.112.5:
+  * releaser: Add a way to bust the CircleCI Git cache
+  * Fix it so languageCode on top level config still works
+
+-------------------------------------------------------------------
+Wed May 31 00:46:44 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.112.4:
+  * docs: Regenerate CLI docs
+  * commands: Add the common build flags to the config commands
+  * Fix Processed images count regression for multiple languages
+  * commands: Reinstate some of the removed build flags (e.g. --theme) to new and mod
+  * Don't create the public folder unless needed
+  * docs: Regen CLI docs
+  * commands: Fail the build when no config file or config dir
+  * langs: Remove the Language.Params deprecation message for now
+  * Add language.LanguageCode
+  * Fix --renderStaticToDisk regression
+  * commands: Re-introduce the -f shorthand for hugo new site
+  * commands: Move the --format flag to only the commands that support it
+
+-------------------------------------------------------------------
 Wed May 24 15:07:50 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 0.112.3:
