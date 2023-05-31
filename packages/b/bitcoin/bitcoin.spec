@@ -30,18 +30,17 @@
 %bcond_without tests
 %endif
 Name:           bitcoin
-Version:        24.0.1
+Version:        25.0
 Release:        0
 Summary:        P2P Digital Currency
 License:        MIT
 Group:          Productivity/Networking/Other
 URL:            https://%{name}.org
-Source0:        https://bitcoincore.org/bin/bitcoin-core-%{version}/bitcoin-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        %{base}d.service
 Source3:        %{base}d.conf
 Source4:        %{base}.conf
 Patch0:         harden_bitcoind.service.patch
-Patch1:         https://github.com/bitcoin/bitcoin/commit/392dc68e.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -68,7 +67,7 @@ BuildRequires:  pkgconfig(libzmq)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(python3)
-%{?systemd_requires}
+%{?systemd_ordering}
 
 %description
 %{name_pretty} is a peer-to-peer electronic cash system
@@ -84,7 +83,7 @@ several GB of space, slowly growing.
 Summary:        An end-user Qt5 GUI for the %{name_pretty} crypto-currency
 Group:          Development/Libraries/Other
 Requires(post): update-desktop-files
-Requires(postun):update-desktop-files
+Requires(postun): update-desktop-files
 
 %description qt5
 %{name_pretty} is a peer-to-peer electronic cash system

@@ -420,4 +420,21 @@
     <comment></comment>
     <requestid>1078364</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>8a0c16fe211411509512ad63ed92d525</srcmd5>
+    <version>25.0</version>
+    <time>1685562895</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 25.0:
+  * doc: update release notes for 25.0
+  * doc: update manual pages for 25.0
+  * build: bump version to v25.0 final
+  * doc: update manual pages for v25.0rc2
+  * build: bump version to v25.0rc2
+  * net_processing: Boost inv trickle rate
+  * txmempool: have CompareDepthAndScore sort missing txs first
+  * p2p: Avoid prematurely clearing download state for other peers
+- Drop 392dc68e.patch</comment>
+    <requestid>1089981</requestid>
+  </revision>
 </revisionlist>

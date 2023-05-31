@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 31 09:24:59 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 25.0:
+  * doc: update release notes for 25.0
+  * doc: update manual pages for 25.0
+  * build: bump version to v25.0 final
+  * doc: update manual pages for v25.0rc2
+  * build: bump version to v25.0rc2
+  * net_processing: Boost inv trickle rate
+  * txmempool: have CompareDepthAndScore sort missing txs first
+  * p2p: Avoid prematurely clearing download state for other peers
+- Drop 392dc68e.patch
+
+-------------------------------------------------------------------
 Thu Apr  6 11:56:11 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 392dc68e.patch: Fix build with gcc 13.

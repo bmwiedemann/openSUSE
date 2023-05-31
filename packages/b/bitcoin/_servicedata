@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/bitcoin/bitcoin.git</param>
+              <param name="changesrevision">8105bce5b384c72cf08b25b7c5343622754e7337</param></service></servicedata>
