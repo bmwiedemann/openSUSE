@@ -117,4 +117,12 @@ I have posted a mail introducing the package to the mailing list. You can find i
   This solves bsc#1150013.</comment>
     <requestid>730808</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>5cb3d100db624a010c5ef105c340ca1b</srcmd5>
+    <version>0.37</version>
+    <time>1685562856</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089977</requestid>
+  </revision>
 </revisionlist>

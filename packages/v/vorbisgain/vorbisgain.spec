@@ -1,7 +1,7 @@
 #
 # spec file for package vorbisgain
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 B1 Systems GmbH, Vohburg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,10 +20,10 @@
 Name:           vorbisgain
 Version:        0.37
 Release:        0
-Summary:        Calculate the Replay Gain for Ogg Vorbis files
+Summary:        Replay Gain calculator for Ogg Vorbis files
 License:        LGPL-2.1-only
 Group:          Productivity/Multimedia/Sound/Utilities
-Url:            https://sjeng.org/vorbisgain.html
+URL:            https://sjeng.org/vorbisgain.html
 Source0:        https://www.sjeng.org/ftp/vorbis/%{name}-%{version}.tar.gz
 Patch0:         vorbisgain-c99.patch
 BuildRequires:  dos2unix
@@ -31,8 +31,6 @@ BuildRequires:  libogg-devel
 BuildRequires:  libvorbis-devel
 
 %description
-Calculate the Replay Gain for Ogg Vorbis files
-
 VorbisGain is a utility that uses a psychoacoustic method to correct
 the volume of an Ogg Vorbis file to a predefined standardized
 loudness.
@@ -52,21 +50,21 @@ The end result is that playback is both more convenient and of higher
 quality compared to a non-VorbisGain'ed file.
 
 %prep
-%setup -q
-%patch -P0 -p1
+%autosetup -p1
 # workaround wrong end-of-line encoding
 dos2unix -f COPYING NEWS
 
 %build
-%configure
-make %{?_smp_mflags}
+%configure --enable-recursive
+%make_build
 
 %install
 %make_install
 
 %files
-%doc README COPYING NEWS
+%license COPYING
+%doc README NEWS
 %{_bindir}/%{name}
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog
