@@ -17,7 +17,7 @@
 
 
 Name:           python-quantities
-Version:        0.14.0
+Version:        0.14.1
 Release:        0
 Summary:        Package for physical quantities with units
 License:        BSD-3-Clause
