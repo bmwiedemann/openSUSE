@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 29 17:41:24 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- Remove obsolete CMake options as these are not used in 3.0+
+  (USE_PKCS11_HELPER_LIBRARY, ENABLE_ZLIB_SUPPORT)
+- Enable MBEDTLS_THREADING_C and MBEDTLS_THREADING_PTHREAD (boo#1211810)
+  + mbedtls-enable-pthread.patch
+- Parallel execution of ctest works just fine (no need to limit to
+  one job)
+
+-------------------------------------------------------------------
 Sun May  7 20:44:12 UTC 2023 - Mariusz Fik <fisiu@opensuse.org>
 
 - Enable THREADING with PTHREAD.

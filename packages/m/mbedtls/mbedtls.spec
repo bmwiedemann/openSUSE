@@ -28,11 +28,10 @@ Group:          Development/Libraries/C and C++
 URL:            https://tls.mbed.org
 Source:         %{name}-%{version}.tar.gz
 Source99:       baselibs.conf
+# PATCH-FEATURE-OPENSUSE - enable MBEDTLS_THREADING_PTHREAD and MBEDTLS_THREADING_C
+Patch1:         mbedtls-enable-pthread.patch
 BuildRequires:  cmake
 BuildRequires:  ninja
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libpkcs11-helper-1)
-BuildRequires:  pkgconfig(zlib)
 %{?suse_build_hwcaps_libs}
 
 %description
@@ -97,10 +96,6 @@ export CXXLAGS="%{optflags} -Wno-stringop-overflow -Wno-maybe-uninitialized"
 %cmake \
   -DUNSAFE_BUILD=ON \
   -DLINK_WITH_PTHREAD=ON \
-  -DMBEDTLS_THREADING_C=ON \
-  -DMBEDTLS_THREADING_PTHREAD=ON \
-  -DUSE_PKCS11_HELPER_LIBRARY=ON \
-  -DENABLE_ZLIB_SUPPORT=ON \
   -DINSTALL_MBEDTLS_HEADERS=ON \
   -DUSE_SHARED_MBEDTLS_LIBRARY=ON \
   -DUSE_STATIC_MBEDTLS_LIBRARY=OFF \
@@ -112,11 +107,9 @@ export CXXLAGS="%{optflags} -Wno-stringop-overflow -Wno-maybe-uninitialized"
 %cmake_install
 
 %check
-# parallel execution fails
-# %%ctest
 pushd build
 LD_LIBRARY_PATH=%{buildroot}%{_libdir} \
- %{_bindir}/ctest --output-on-failure --force-new-ctest-process -j1
+ %{_bindir}/ctest --output-on-failure --force-new-ctest-process
 
 %post -n %{lib_tls}      -p /sbin/ldconfig
 %post -n %{lib_crypto}   -p /sbin/ldconfig
