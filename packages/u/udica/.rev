@@ -7,4 +7,16 @@
     <comment>Add udica new package (jsc#CSD-121)</comment>
     <requestid>1063864</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2700ee6f7394ac58e13eef8f3a36e4c5</srcmd5>
+    <version>0.2.7</version>
+    <time>1685562912</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.2.7
+  * Make sure each section of the inspect exists before accessing
+  * Improve label collection for mounts and devices
+  * Add support for containerd via nerdctl inspect
+  * Avoid duplicate rules for accessing mounts and devices</comment>
+    <requestid>1090014</requestid>
+  </revision>
 </revisionlist>

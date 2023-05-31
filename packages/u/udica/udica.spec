@@ -17,7 +17,7 @@
 
 
 Name:           udica
-Version:        0.2.6
+Version:        0.2.7
 Release:        0
 Summary:        A tool for generating SELinux security policies for containers
 License:        GPL-3.0-or-later
