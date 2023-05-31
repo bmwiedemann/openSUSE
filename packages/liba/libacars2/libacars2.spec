@@ -1,7 +1,7 @@
 #
 # spec file for package libacars2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define sover   2
 %define libname libacars-2-%{sover}
 Name:           libacars2
-Version:        2.1.3
+Version:        2.1.4
 Release:        0
 Summary:        A library for decoding various ACARS message payloads
 License:        MIT
@@ -28,11 +28,11 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/szpajder/libacars
 #Git-Clone:     https://github.com/szpajder/libacars.git
 Source:         https://github.com/szpajder/libacars/archive/v%{version}.tar.gz#/libacars-%{version}.tar.gz
-BuildRequires:  cmake
-BuildRequires:  gcc-c++
+BuildRequires:  c++_compiler
+BuildRequires:  cmake >= 3.1
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(zlib)
+BuildRequires:  pkgconfig(zlib) >= 1.2
 
 %description
 libacars is a library for decoding various ACARS message payloads.
@@ -84,8 +84,10 @@ Example applications for for libacars:
 %cmake_install
 rm -rf %{buildroot}/%{_datadir}/doc
 
-%post   -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%check
+%ctest
+
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
 %doc CHANGELOG.md README.md
@@ -93,12 +95,14 @@ rm -rf %{buildroot}/%{_datadir}/doc
 %{_libdir}/libacars-2.so.%{sover}*
 
 %files devel
-%doc doc/API_REFERENCE.md doc/API_REFERENCE.md
+%license LICENSE.md
+%doc doc/API_REFERENCE.md
 %{_includedir}/libacars-2
 %{_libdir}/libacars-2.so
 %{_libdir}/pkgconfig/libacars-2.pc
 
 %files -n acars2-examples
+%license LICENSE.md
 %{_bindir}/adsc_get_position
 %{_bindir}/cpdlc_get_position
 %{_bindir}/decode_acars_apps
