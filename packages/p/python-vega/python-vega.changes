@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 31 10:14:18 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Replace poetry build backend with poetry-core
+
+-------------------------------------------------------------------
 Mon May  1 17:57:03 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.0.0

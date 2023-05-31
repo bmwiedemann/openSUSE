@@ -25,7 +25,7 @@ URL:            https://github.com/vega/ipyvega/
 Source:         https://files.pythonhosted.org/packages/source/v/vega/vega-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry >= 1.4.2}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  python-rpm-macros
@@ -60,6 +60,7 @@ can be viewed on github and nbviewer.
 
 %prep
 %setup -q -n vega-%{version}
+sed -i s/poetry.masonry/poetry.core.masonry/ pyproject.toml
 
 %build
 %pyproject_wheel
