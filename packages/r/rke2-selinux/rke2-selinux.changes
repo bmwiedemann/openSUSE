@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Wed May 31 04:47:55 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.12.stable.1:
+  * Update el8 container-selinux (#42)
+  * use slemicro for dist name in slemicro policy (#41)
+  * Add slemicro distro (#40)
+  * Update the container-selinux requirement (#38)
+  * Fix EOF error
+  * Add container_file_t context to /opt/cni
+  * Bump pip/setuptools version; switch to https for git clone
+  * Use SHA256 to sign packages instead of default SHA1
+  * centos 8 vault: side-step eol problems (#28)
+  * sle: support for sle-micro (#23)
+  * Add max version tp el8 (#39)
+  * Update the container-selinux requirement (#38)
+  * Add EL9 to the policy (#37)
+  * Fix container_domain_template() calls (#35)
+
+-------------------------------------------------------------------
+Thu Nov 24 16:12:58 UTC 2022 - kastl@b1-systems.de
+
+- Update to version 0.11.latest.1:
+  * Fix EOF error
+  * Add container_file_t context to /opt/cni
+  * Bump pip/setuptools version; switch to https for git clone
+  * Use SHA256 to sign packages instead of default SHA1
+  * centos 8 vault: side-step eol problems (#28)
+
+-------------------------------------------------------------------
+Wed Jan 26 11:54:00 UTC 2022 - Richard Brown <rbrown@suse.com>
+
+- Add missing specfile license/copyright
+
+-------------------------------------------------------------------
+Sun Jan  9 17:25:16 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
+
+- create new package rke2-selinux at version 0.9.latest.1
