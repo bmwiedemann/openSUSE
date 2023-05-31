@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed May 31 10:12:58 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.16.2:
+  * fix send on closed channel panic in isClean (#3677) (#3679)
+
+-------------------------------------------------------------------
+Tue May 30 13:49:38 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.16.1:
+  * Mask variables at destroy (#3667) (#3674)
+  * fix: performance issues on `git status` (#3648) (#3672)
+  * backport ffe503b9cb00f4f5a816b8e5b25109d4e8cdce35 to 2.16
+    (#3671)
+  * fix: vanilla up with compose (#3664) (#3665)
+  * fix(build): vanilla cluster should not reach out to okteto
+    registry (#3658) (#3662)
+  * fix: buil args expansion (#3657) (#3661)
+
+-------------------------------------------------------------------
 Thu May 25 12:26:46 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.16.0:
