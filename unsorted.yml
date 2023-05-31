@@ -6943,8 +6943,6 @@ unsorted:
   - golang-org-x-sys 
   - golang-packaging 
   - golangci-lint 
-  - goldendict 
-  - goldendict-lang 
   - golly 
   - golly-assets 
   - golly-devel 
@@ -9619,6 +9617,9 @@ unsorted:
   - kxmlrpcclient5-devel 
   - kyotocabinet 
   - kyverno 
+  - kyverno-bash-completion 
+  - kyverno-fish-completion 
+  - kyverno-zsh-completion 
   - labplot-kf5 
   - labplot-kf5-lang 
   - ladish 
@@ -24830,6 +24831,7 @@ unsorted:
   - python310-merge3 
   - python310-mergedeep 
   - python310-meson-python 
+  - python310-mesonpep517 
   - python310-metaextract 
   - python310-metakernel 
   - python310-metamagic.json 
@@ -28213,6 +28215,7 @@ unsorted:
   - python311-merge3 
   - python311-mergedeep 
   - python311-meson-python 
+  - python311-mesonpep517 
   - python311-metaextract 
   - python311-metakernel 
   - python311-metamagic.json 
@@ -31691,6 +31694,7 @@ unsorted:
   - python39-merge3 
   - python39-mergedeep 
   - python39-meson-python 
+  - python39-mesonpep517 
   - python39-metaextract 
   - python39-metakernel 
   - python39-metamagic.json 
@@ -34149,6 +34153,7 @@ unsorted:
   - rkdeveloptool 
   - rke 
   - rke2 
+  - rke2-selinux 
   - rkhunter 
   - rkward 
   - rlwrap 
