@@ -16,9 +16,9 @@
 #
 
 
-%define skip_python38 1
+%{?sle15_python_module_pythons}
 Name:           python-xarray
-Version:        2023.2.0
+Version:        2023.5.0
 Release:        0
 Summary:        N-D labeled arrays and datasets in Python
 License:        Apache-2.0

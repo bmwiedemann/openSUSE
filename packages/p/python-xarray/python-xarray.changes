@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May 31 08:23:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.05.0:
+  * This release adds some new methods and operators, updates our
+    deprecation policy for python versions, fixes some bugs with
+    groupby, and introduces experimental support for alternative
+    chunked parallel array computation backends via a new plugin
+    system!
+  * Docstrings examples for string methods
+  * Fix groupby_bins when labels are specified
+  * Fix binning by unsorted array
+  * This release includes support for pandas v2, allows
+    refreshing of backend engines in a session, and removes
+    deprecated backends for ``rasterio`` and ``cfgrib``.
+
+-------------------------------------------------------------------
 Thu Mar  9 20:13:00 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 2023.02.0:

@@ -1398,4 +1398,23 @@
     absolute imports (:pull:`7204`, :pull:`7370`).</comment>
     <requestid>1070561</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>8c85485d52b804faad0d0bc741b5e0c2</srcmd5>
+    <version>2023.5.0</version>
+    <time>1685562887</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2023.05.0:
+  * This release adds some new methods and operators, updates our
+    deprecation policy for python versions, fixes some bugs with
+    groupby, and introduces experimental support for alternative
+    chunked parallel array computation backends via a new plugin
+    system!
+  * Docstrings examples for string methods
+  * Fix groupby_bins when labels are specified
+  * Fix binning by unsorted array
+  * This release includes support for pandas v2, allows
+    refreshing of backend engines in a session, and removes
+    deprecated backends for ``rasterio`` and ``cfgrib``.</comment>
+    <requestid>1089954</requestid>
+  </revision>
 </revisionlist>
