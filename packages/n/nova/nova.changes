@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 31 04:53:25 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 3.6.5:
+  * udpate dependencies and CI tools (#225)
+  * Bump alpine from 3.17 to 3.18 (#221)
+
+-------------------------------------------------------------------
 Mon May 15 18:27:24 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 3.6.4:
