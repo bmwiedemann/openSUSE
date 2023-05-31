@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May 31 14:48:08 UTC 2023 - Antoine Ginies <aginies@suse.com>
+
+- version 2.0.4:
+   * display the force_sev page only in securevm scenario
+   * typo fixes
+   * remove pprint debug
+   * update API demo script
+   * switch default VM image size to 8GiB instead of 20GiB
+
+-------------------------------------------------------------------
+Wed May 31 14:27:41 UTC 2023 - Antoine Ginies <aginies@suse.com>
+
+- fix missing directory /etc/virt-scenario/vmconfig
+
+-------------------------------------------------------------------
 Wed May 24 18:04:41 UTC 2023 - Antoine Ginies <aginies@suse.com>
 
 - version 2.0.3:
