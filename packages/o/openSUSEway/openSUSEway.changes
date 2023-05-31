@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 31 10:06:20 UTC 2023 - Denys Kondratenko <stdden@opensuse.org>
+
+- Update to version 0.15.2: 
+  * Install sway systemd components to the correct directories by @FilippoBonazziSUSE in #98
+  * Add SwayNotificationCenter icon to waybar by default by @FilippoBonazziSUSE in #107
+  * Fix spec file errors by @FilippoBonazziSUSE in #100
+  * Start sway-session systemd target when starting sway by @FilippoBonazziSUSE in #108
+  * Package scratchpad-indicator helper by @FilippoBonazziSUSE in #109
+  * Add style.css to the package by @denisok in #115
+  * Allow sway to be run with proprietary drivers by @joantolo in #114
+
+-------------------------------------------------------------------
 Wed Feb 22 15:04:17 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 0.15.1:
