@@ -1,7 +1,7 @@
 #
 # spec file for package k3s-selinux
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@
 %define container_policyver 2.164.2-1.1
 
 Name:           k3s-selinux
-Version:        1.2.stable.2
+Version:        1.3.stable.1
 Release:        0
 Summary:        SELinux policy module for k3s
 

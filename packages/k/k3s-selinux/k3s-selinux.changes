@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed May 31 04:47:53 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.3.stable.1:
+  * Update container-selinux in el8 (#48)
+  * Update the container-selinux requirement (#46)
+  * Fix el9 policy to resolve the conflict with newer
+    container-selinux version (#45)
+  * Remove max container-selinux version check in el9 (#44)
+  * Fix docker image for centos9 and build requirements (#43)
+  * Add el9 (#42)
+    - Add cento9 policy and update container-selinux epoch version
+    - Add el9 to drone
+  * more fixes to the upload rpms (#40)
+  * fix coreos policy repo (#39)
+  * Fix upload rpms for coreos (#38)
+  * Fix policies to work with the container-selinux > 2.189.0 (#37)
+    - Add slemicro and fedora coreos policies
+    - Add maximum version requirement for centos8 policy
+    - fix microos policy to work with the new container-selinux
+    - Add drone support for slemicro and fedora coreos
+
+-------------------------------------------------------------------
 Wed Sep 07 12:38:10 UTC 2022 - kastl@b1-systems.de
 
 - Update to version 1.2.stable.2:
