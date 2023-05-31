@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 31 12:34:42 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Update url and remove download url for tarball, not valid anymore.
+
+-------------------------------------------------------------------
 Mon Mar 27 15:16:52 UTC 2023 - Nicholas Yang <nicholas.yang@suse.com>
 
 - crm-fence-peer incompatible with Pacemaker 2.1 and needs backports (bsc#1209783)

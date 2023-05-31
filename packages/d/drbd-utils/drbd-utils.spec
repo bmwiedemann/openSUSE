@@ -37,8 +37,9 @@ Release:        0
 Summary:        Distributed Replicated Block Device
 License:        GPL-2.0-or-later
 Group:          Productivity/Clustering/HA
-URL:            http://www.drbd.org/
-Source:         https://pkg.linbit.com/downloads/drbd/utils/%{name}-%{version}.tar.gz
+URL:            https://linbit.com/linbit-software-download-page-for-linstor-and-drbd-linux-driver/
+# tarball might be available at https://pkg.linbit.com/downloads/drbd/utils/drbd-utils-%{name}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Source100:      %{name}.rpmlintrc
 # PATCH-MISSING-TAG -- See http://wiki.opensuse.org/openSUSE:Packaging_Patches_guidelines
 Patch1:         init-script-fixes.diff
