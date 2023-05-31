@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 30 16:09:25 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to 3.1.0
+  * To determine if context is file or json string,
+    use os.path.isfile rather than checking file extension
+  * Eliminated unnecessary check for json module
+  * Added ability to set line join in console script.
+  * Added ability to escape line join by placing it twice.
+
+-------------------------------------------------------------------
 Wed Nov  4 11:06:36 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Alternative entry points for multiple flavors
