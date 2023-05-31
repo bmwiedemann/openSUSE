@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>416f35e966b2033999192535945bfc02</srcmd5>
+    <version>0.2</version>
+    <time>1685562920</time>
+    <user>dimstar_suse</user>
+    <comment>Required by some Python packages that use Meson, e. g. python-python-rtmidi 1.5.0</comment>
+    <requestid>1090043</requestid>
+  </revision>
+</revisionlist>
