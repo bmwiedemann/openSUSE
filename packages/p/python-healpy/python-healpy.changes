@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 31 08:31:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.16.2:
+  * Add `resize_alm` function to change a Alm array to a
+    different ell max
+  * Build wheels for Python 3.11
+  * Instructions on how to build an optimized package for healpy
+
+-------------------------------------------------------------------
 Tue Oct 11 10:18:41 UTC 2022 - pgajdos@suse.com
 
 - version update to 1.16.1

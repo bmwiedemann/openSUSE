@@ -39,4 +39,16 @@
     <comment></comment>
     <requestid>1009795</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>13d3a7e139b4eae56aed7343b4806f64</srcmd5>
+    <version>1.16.2</version>
+    <time>1685562889</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.16.2:
+  * Add `resize_alm` function to change a Alm array to a
+    different ell max
+  * Build wheels for Python 3.11
+  * Instructions on how to build an optimized package for healpy</comment>
+    <requestid>1089962</requestid>
+  </revision>
 </revisionlist>
