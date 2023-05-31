@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun May 28 06:10:02 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.0.4:
+  * [gh#libkeepass/pykeepass#314] correctly handle binaries with
+    no data.
+  * [gh#libkeepass/pykeepass#265] check for keepass signature.
+  * [gh#libkeepass/pykeepass#319] support pathlib for
+    filename/keyfile.
+  * [gh#libkeepass/pykeepass#194] added 'protected' arg to
+    _set_string_field.
+  * [gh#libkeepass/pykeepass#338] allow comma entry tag separator.
+  * use official icon names from KeePass source and deprecate old
+    icons.
+  * added Entry.is_custom_property_protected().
+
+-------------------------------------------------------------------
 Tue Jun 21 23:10:46 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.0.3:

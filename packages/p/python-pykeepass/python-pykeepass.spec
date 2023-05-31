@@ -1,7 +1,7 @@
 #
 # spec file for package python-pykeepass
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pykeepass
-Version:        4.0.3
+Version:        4.0.4
 Release:        0
 Summary:        Low-level library to interact with keepass databases
 License:        GPL-3.0-only
@@ -52,7 +51,7 @@ This library allows you to write entries to a KeePass database
 
 %prep
 %autosetup -p1 -n pykeepass-%{version}
-sed -i '1{/^#!.*env python/d}' pykeepass/pykeepass.py pykeepass/kdbx_parsing/kdbx*.py
+sed -i '1{/^#!.*env python/d}' pykeepass/{pykeepass,deprecated,kdbx_parsing/kdbx*}.py
 
 %build
 %python_build
