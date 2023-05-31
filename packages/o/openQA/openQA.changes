@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed May 31 15:45:56 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1685524945.b4ca723:
+  * Improve performance of server-side asset upload handling
+  * doc: Improve references for a quick installation
+  * openqa-bootstrap: Remove obsolete systemd check
+  * openqa-bootstrap: Speedup package installation
+  * openqa-bootstrap: Optionally skip SUSE-specifics
+  * container: Add single-instance variant
+  * openqa-bootstrap: Support systemd-less environments
+  * container: Handle potentially already existing certificates gracefully
+  * Add development container for openQA
+  * Update docs/WritingTests.asciidoc
+  * Mention required permisson for webhook based CI setup
+  * Use normal operators consistently in `CloneJob` consistently
+  * Fix logic in openqa-clone-job
+  * Remove unneeded list comprehension in openqa-label-all
+  * Remove python3-future from dependencies
+  * doc: Improve "Container based setup" section
+  * Fix postgres dir permissions for running openqa-bootstrap in nspawn
+  * doc: Improve introduction of "Containerized setup" chapter
+  * Remove debug "print" in gru plugin
+  * Extract formatting of CI check description into function
+  * Improve reporting CI status back
+  * Take restarted jobs into account when a PR is updated/closed
+  * Handle updated/closed PRs via webhook
+  * Assign webhook ID when creating a scheduled product from webhook
+  * Add indexed column `webhook_id` to scheduled products table
+  * Consider a tag's version when cleaning up job results
+
+-------------------------------------------------------------------
 Tue May 23 09:38:42 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1684771865.6dc41fa:

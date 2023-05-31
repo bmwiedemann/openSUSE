@@ -42,7 +42,7 @@
 %endif
 # runtime requirements that also the testsuite needs
 %if %{with python_scripts}
-%define python_scripts_requires python3-base python3-requests python3-future openQA-client
+%define python_scripts_requires python3-base python3-requests openQA-client
 %else
 %define python_scripts_requires %{nil}
 %endif
@@ -78,7 +78,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        4.6.1684771865.6dc41fa
+Version:        4.6.1685524945.b4ca723
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
