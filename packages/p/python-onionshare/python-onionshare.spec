@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2018-2022 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,6 +32,8 @@ Patch0:         0001-adjust_tests.diff
 Patch1:         fix-test-cli-web.patch
 # PATCH-FIX-OPENSUSE relax-async-mode.patch -- Do not rely on gevent
 Patch2:         relax-async-mode.patch
+# PATCH-FIX-UPSTREAM onionshare-poetry-core.patch -- poetry-core is enough to build and has a much smaller footprint
+Patch3:         https://github.com/onionshare/onionshare/commit/a05d7af729585bdaa4f71437167339ac67bf3327.patch#/onionshare-poetry-core.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
@@ -43,7 +45,7 @@ BuildRequires:  python3-Unidecode
 BuildRequires:  python3-cepa >= 1.8.3
 BuildRequires:  python3-colorama
 BuildRequires:  python3-eventlet
-BuildRequires:  python3-poetry
+BuildRequires:  python3-poetry-core
 BuildRequires:  python3-psutil
 BuildRequires:  python3-pyside2 >= 5.15.2
 BuildRequires:  python3-pytest

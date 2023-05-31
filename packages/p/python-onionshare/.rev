@@ -199,4 +199,12 @@
   * Miscellaneous: Many dependency updates and web page theming improvements</comment>
     <requestid>1042032</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>156ef66948488aad232404120fd94be4</srcmd5>
+    <version>2.6</version>
+    <time>1685562931</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090051</requestid>
+  </revision>
 </revisionlist>
