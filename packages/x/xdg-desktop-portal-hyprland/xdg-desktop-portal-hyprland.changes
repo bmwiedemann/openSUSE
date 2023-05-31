@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 30 11:15:39 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.4.0:
+  * screencast: restore window by class
+  * some nix stuff
+
+-------------------------------------------------------------------
 Mon May 22 14:38:24 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Remove some -devel dependencies because this is a runtime package.

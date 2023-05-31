@@ -7,4 +7,15 @@
     <comment>I want to add XDPH to openSUSE:Factory</comment>
     <requestid>1088492</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8a7e3a22ec787a94b0f7a432df01d07f</srcmd5>
+    <version>unknown</version>
+    <time>1685562864</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.0:
+  * screencast: restore window by class
+  * some nix stuff
+</comment>
+    <requestid>1089888</requestid>
+  </revision>
 </revisionlist>
