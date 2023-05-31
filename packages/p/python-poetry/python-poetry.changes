@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon May 29 17:02:57 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.5.1
+   ## Added
+   * Improve dependency resolution performance in cases with a lot
+     of backtracking (#7950).
+   ## Changed
+   * Disable wheel content validation during installation (#7987).
+   ## Fixed
+   * Fix an issue where partially downloaded wheels were cached
+     (#7968).
+   * Fix an issue where poetry run did no longer execute
+     relative-path scripts (#7963).
+   * Fix an issue where dependencies were not installed in
+     in-project environments (#7977).
+   * Fix an issue where no solution was found for a transitive
+     dependency on a pre-release of a package (#7978).
+   * Fix an issue where cached repository packages were incorrectly
+     parsed, leading to its dependencies being ignored (#7995).
+   * Fix an issue where an explicit source was ignored so that a
+     direct origin dependency was used instead (#7973).
+   * Fix an issue where the installation of big wheels consumed a
+     lot of memory (#7987).
+
+-------------------------------------------------------------------
 Mon May 22 20:32:37 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.5.0

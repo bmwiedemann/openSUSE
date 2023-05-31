@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-poetry%{psuffix}
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Python dependency management and packaging
 License:        MIT
@@ -37,7 +37,7 @@ URL:            https://python-poetry.org/
 Source:         https://github.com/python-poetry/poetry/archive/%{version}.tar.gz#/poetry-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core = 1.6.0}
+BuildRequires:  %{python_module poetry-core = 1.6.1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-CacheControl >= 0.12.9
@@ -47,8 +47,8 @@ Requires:       python-crashtest >= 0.4.1
 Requires:       python-dulwich >= 0.21.2
 Requires:       python-filelock >= 3.8.0
 Requires:       python-html5lib >= 1.0
-Requires:       python-poetry-core = 1.6.0
-Requires:       python-poetry-plugin-export >= 1.3.1
+Requires:       python-poetry-core = 1.6.1
+Requires:       python-poetry-plugin-export >= 1.4.0
 %if 0%{?python_version_nodots} < 310
 Requires:       python-importlib-metadata >= 4.4
 %endif
