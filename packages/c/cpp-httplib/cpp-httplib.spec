@@ -19,7 +19,7 @@
 %define sover 0.12
 %define libver 0_12
 Name:           cpp-httplib
-Version:        0.12.0
+Version:        0.12.5
 Release:        0
 Summary:        A C++11 HTTP/HTTPS library
 License:        MIT

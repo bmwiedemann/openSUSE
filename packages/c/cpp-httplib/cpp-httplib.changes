@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed May 31 07:10:55 UTC 2023 - Alexey Svistunov <svalx@svalx.net>
+
+- Update to version 0.12.5:
+  * Add HTTPLIB_INSTALL CMake option (#1575)
+  * Fix more CRLF injection problems
+  * Don't loading system certs from Keychain on iOS (#1546)
+  * Initialize sockaddr_un to fix valgrind uninitialised byte message. (#1547, #1547)
+  * Using set_content_provider with length of 0 makes it infinitely loop (#1545)
+  * How to check if server is running successfully in another thread? (#1548)
+  * Fix leaked handle in create_socket (#1554)
+  * Fix "Location" header url corrupted by percent-unescaping in redirect… (#1459)
+  * Trailing headers not handled (#1486)
+  * SSL access through a proxy causes SIGSEGV (#1533)
+  * System certs support on macOS (#1474)
+  * Add Request::get_file_values method (#1495)
+  * Fix: assert socket_requests_are_from_thread_ std::this_thread::get_id() (#1498)
+  * Fix: multipart Content-Type headers with both boundary and charset parameters (#1516)
+
+-------------------------------------------------------------------
 Thu Feb 16 07:01:16 UTC 2023 - Alexey Svistunov <svalx@svalx.net>
 
 - Move examples to devel subpackage
