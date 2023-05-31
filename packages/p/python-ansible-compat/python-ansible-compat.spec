@@ -24,7 +24,7 @@
 %endif
 
 Name:           python-ansible-compat
-Version:        4.0.5
+Version:        4.1.1
 Release:        0
 Summary:        Compatibility shim for Ansible 2.9 and newer
 License:        MIT
