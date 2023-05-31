@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Tue May 30 14:04:50 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- BuildRequire go1.20
+- add completion subpackages for bash, zsh and fish shells
+
+-------------------------------------------------------------------
+Tue May 30 11:15:57 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.10.0:
+  Kyverno 1.10 is a huge release which brings breaking changes in
+  both the application and Helm chart. Please read these release
+  notes carefully!
+  * Major features:
+    - Split the main Kyverno Deployment into 3 separate
+      controllers/Deployments
+    - Intra-cluster Service calls
+    - Notary v2 support
+    - Major reworking of generate and "mutate existing" policies
+  * Breaking changes
+    - This release separates Kyverno into its 3 main components:
+      admission controller, reporting controller, and background
+      controller. As a result, there is no direct upgrade path from
+      previous versions. When deploying with Helm, we recommend
+      either backing up and restoring Kyverno policies (kubectl get
+      pol,cpol,cleanpol,ccleanpol,polex -A > backup.yaml) or
+      scaling the Kyverno deployment(s) to zero first. Policy
+      reports will be regenerated from existing resources when
+      policies are reinstalled. Regardless of the option, this
+      upgrade should be performed in a maintenance window as there
+      will be downtime involved.
+    - As a result of this decomposition, aggregated ClusterRoles
+      may need to be updated to use the new label values depending
+      on the controller which requires those permissions.
+    - Policies which matched on some types of subresources (such as
+      PodExecOptions) will need to be updated to use the
+      standardized form of <parent>/<subresource> (Pod/exec).
+    - The following fields in a generate rule are now immutable
+      once created: spec.rules.name, spec.rules.match,
+      spec.rules.exclude, spec.rules.preconditions,
+      spec.generate.apiVersion, spec.generate.kind,
+      spec.generate.namespace, spec.generate.name,
+      spec.generate.clone, and spec.generate.cloneList (#6328,
+      #6451)
+    - Variables in these portions of a generate rule will now be
+      disallowed: clone, cloneList, generate.kind, and
+      generate.apiVersion (#6438)
+    - Generate and "mutate existing" policies, once installed, will
+      check to see if Kyverno has the necessary permissions to
+      successfully execute them. If not, Kyverno will block their
+      creation until the permissions are available. This is added
+      to bring behavior in alignment with how cleanup policies work
+      and provide a better UX (#6610)
+    - Properly enforcing that "mutate existing" rules, when
+      mutateExistingOnPolicyUpdate is set to true, also has
+      mutate.targets[] defined or else the policy creation will be
+      blocked (#6693)
+    - When a verifyImages policy is created in Audit mode, its
+      creation will be rejected unless mutateDigest is set to false
+      (#6757)
+    - Mutation rules which change the image field in a Pod spec and
+      which relied on docker.io being silently added by Kyverno
+      (when it was not explicitly defined in the image) will need
+      to be adjusted to either use the images.*.registry predefined
+      variable or the new normalize_image() JMESPath filter. To
+      address other discovered issues with mutation, Kyverno can no
+      longer add the default registry to the context. It will only
+      be accessible to internal variables and JMESPath.
+    - The generate.apiVersion field is now required in a generate
+      rule. Policies/rules without this defined will need to set
+      it. (#7080)
+
+-------------------------------------------------------------------
 Mon May 29 17:53:40 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.9.5:
