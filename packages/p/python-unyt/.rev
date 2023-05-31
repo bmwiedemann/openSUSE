@@ -102,4 +102,16 @@
 </comment>
     <requestid>1063758</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5aeea2e82612e6b667bee832f756a248</srcmd5>
+    <version>2.9.5</version>
+    <time>1685562886</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.9.5:
+  * Fix a regression where arrays elements with dtype ``'int8'``
+    would not compare to floats as intended.
+  * Raise an error in case an array element is assigned to a new
+    value with incompatible units.</comment>
+    <requestid>1089953</requestid>
+  </revision>
 </revisionlist>

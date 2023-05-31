@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 31 08:21:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.5:
+  * Fix a regression where arrays elements with dtype ``'int8'``
+    would not compare to floats as intended.
+  * Raise an error in case an array element is assigned to a new
+    value with incompatible units.
+
+-------------------------------------------------------------------
 Wed Feb  8 09:22:01 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 2.9.4:

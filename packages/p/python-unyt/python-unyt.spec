@@ -16,10 +16,9 @@
 #
 
 
-%define         skip_python2 1
-%define         skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-unyt
-Version:        2.9.4
+Version:        2.9.5
 Release:        0
 Summary:        A package for handling numpy arrays with units
 License:        BSD-3-Clause
