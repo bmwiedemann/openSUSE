@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed May 31 11:18:17 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade to version 4.2ga10 (jsc#PED-3355)
+- Bug fixes
+  * 4.2ga10
+    - TN3270E NVT mode now works properly.
+    - TN3270E SSCP-LU mode now works even if BIND-IMAGE has not been 
+      negotiated by the host.
+    - When TN3270E is turned off and back on within a session, 
+      x3270 now renegotiates functions properly.
+  * 4.2ga9
+    - x3270 mouse selections are much more predictable. 
+    - Double- and triple-clicks no longer move the cursor.
+    - x3270 no longer crashes when it is reconfigured 
+      (model, font, etc.) while the floating pop-up keypad is visible.
+    - The security indicator in x3270 no longer disappears when it is 
+      indicating unverified state and the window is reconfigured.
+    - The ./configure option to give an alternate location for the 
+      OpenSSL library (--with-openssl=) works correctly again.
+  * 4.2ga8
+    - When pasting in NVT mode and the text wraps to the next line, 
+      the cursor no longer ends up in the wrong location.
+    - The x3270a script no longer causes a spurious Invalid (empty) 
+      hostname error pop-up when the display's DPI is other than 96.
+  * 4.2ga7
+    - The wc3270 Session Wizard no longer exits silently when 
+      it encounters an error.
+    - x3270 will no longer change fonts unnecessarily when the 
+      host code page is changed. (bug report)
+    - The background color is now propagated correctly by the RA order.
+    - In a resource file, a resource value can now end with a 
+      properly-quoted backslash, without the backslash being interpreted 
+      as a line continuation.
+    - The Transfer() action, when invoked from within a file read by the 
+      Source() action, now blocks properly -- it returns once the 
+      file transfer is complete.
+    - If the Source() action is aborted, it will no longer leave the 
+      keyboard locked.
+    - Typeahead is now processed correctly when the host has 
+      negotiated TN3270E Contention Resolution and the unlockDelay 
+      resource is set to false. 
+
+-------------------------------------------------------------------
 Sun Oct  9 17:26:21 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - x3270 4.2ga6:
