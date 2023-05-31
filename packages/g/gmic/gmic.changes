@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 31 11:03:50 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.2.5. No changelog.
+
+-------------------------------------------------------------------
 Wed Apr 26 18:59:15 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Replace BuildRequire on xorg-x11-devel by pkgconfig(...)
