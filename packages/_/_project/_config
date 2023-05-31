@@ -858,6 +858,7 @@ Prefer: python310-Shapely:geos
 
 # pipewire has a jack compatible implementation - but for now we prefer the real jack
 Prefer: -pipewire-libjack-0_3-devel libjack0
+#Prefer: -libjack-devel -libjack0
 
 # have choice for python3-zeep >= 3.2.0: python310-softlayer-zeep python310-zeep
 Prefer: -python310-softlayer-zeep
