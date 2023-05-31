@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 16 08:21:41 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- update to 0.4.0
+  * avoid export of .gitattributes file by default
+  * upstream osc is supported now
+  * export meta information of the git clone
+  * Add fallback code for a specific case
+  * Convert local links into symlinks in project git
+
+-------------------------------------------------------------------
 Thu Jan 26 14:52:54 UTC 2023 - Adrian Schröter <adrian@suse.de>
 
 - update to 0.3.0

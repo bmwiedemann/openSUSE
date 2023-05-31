@@ -40,4 +40,12 @@
   * Fix the scmsync entry for relative submodule urls</comment>
     <requestid>1061230</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>195a453cabd1e31557b7cddaa8e3fc73</srcmd5>
+    <version>0.4.1</version>
+    <time>1685562910</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1090015</requestid>
+  </revision>
 </revisionlist>
