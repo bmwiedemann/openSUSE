@@ -65,4 +65,13 @@
 </comment>
     <requestid>1063882</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>26844970c0d9803cb5822b4ebcccbaf8</srcmd5>
+    <version>0.14.1</version>
+    <time>1685562888</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.14.1:
+  * Fixed a bug when scaling quantities with integer dtype</comment>
+    <requestid>1089955</requestid>
+  </revision>
 </revisionlist>
