@@ -1251,7 +1251,9 @@ unsorted:
   - bazel-apple-support-source 
   - bazel-compilation-database-source 
   - bazel-platforms 
+  - bazel-rules-android-ndk-source 
   - bazel-rules-android-source 
+  - bazel-rules-apple-0_32-source 
   - bazel-rules-apple-source 
   - bazel-rules-cc-source 
   - bazel-rules-foreign-cc-source 
@@ -7856,6 +7858,7 @@ unsorted:
   - hypre_2_20_0-gnu-openmpi3-hpc-devel 
   - hypre_2_20_0-gnu-openmpi4-hpc-devel 
   - hyprland 
+  - hyprland-devel 
   - hyprland-protocols-devel 
   - i18nspector 
   - i2c-tools 
@@ -8262,7 +8265,6 @@ unsorted:
   - j2objc-annotations-javadoc 
   - jack 
   - jack-32bit 
-  - jack-dbus 
   - jack-example-tools 
   - jack-rack 
   - jack_capture 
@@ -14277,6 +14279,7 @@ unsorted:
   - libpython3_9-1_0-32bit 
   - libqaccessibilityclient-qt5-devel 
   - libqalculate-devel 
+  - libqat3 
   - libqatzip3 
   - libqb-devel 
   - libqb-devel-32bit 
@@ -15511,6 +15514,7 @@ unsorted:
   - libusbmuxd-2_0-6-32bit 
   - libusbmuxd-devel 
   - libusbmuxd-tools 
+  - libusdm0 
   - libusrp-devel 
   - libusrp1 
   - libusrsctp2 
@@ -19363,14 +19367,11 @@ unsorted:
   - openSUSE-repos-Tumbleweed 
   - openSUSE-signkey-cert 
   - openSUSEway 
-  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
-  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
-  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit 
@@ -24375,6 +24376,7 @@ unsorted:
   - python310-google-cloud-translate 
   - python310-google-crc32c 
   - python310-google-resumable-media 
+  - python310-google_trans_new 
   - python310-googleapis-common-protos 
   - python310-googlemaps 
   - python310-gphoto2 
@@ -26123,7 +26125,6 @@ unsorted:
   - python310-url-normalize 
   - python310-urlextract 
   - python310-urlgrabber 
-  - python310-urllib3_1 
   - python310-urwid 
   - python310-usbsdmux 
   - python310-user-agents 
@@ -26692,6 +26693,7 @@ unsorted:
   - python311-aubio 
   - python311-audio-degrader 
   - python311-audiogrep 
+  - python311-audiomate 
   - python311-audioread 
   - python311-augeas 
   - python311-authheaders 
@@ -27725,6 +27727,7 @@ unsorted:
   - python311-google-cloud-translate 
   - python311-google-crc32c 
   - python311-google-resumable-media 
+  - python311-google_trans_new 
   - python311-googleapis-common-protos 
   - python311-googlemaps 
   - python311-gpg 
@@ -27848,6 +27851,7 @@ unsorted:
   - python311-imagesize 
   - python311-imbox 
   - python311-img2pdf 
+  - python311-iminuit 
   - python311-immutables 
   - python311-impacket 
   - python311-importlab 
@@ -28099,6 +28103,7 @@ unsorted:
   - python311-libphdi 
   - python311-libqcow 
   - python311-libregf 
+  - python311-librosa 
   - python311-librouteros 
   - python311-libsass 
   - python311-libscca 
@@ -29125,6 +29130,7 @@ unsorted:
   - python311-requirements-detector 
   - python311-requirements-parser 
   - python311-requre 
+  - python311-resampy 
   - python311-resolvelib 
   - python311-responses 
   - python311-respx 
@@ -29243,6 +29249,7 @@ unsorted:
   - python311-sh 
   - python311-shaptools 
   - python311-shellingham 
+  - python311-sherpa 
   - python311-shijian 
   - python311-shinyutils 
   - python311-shodan 
@@ -29296,6 +29303,7 @@ unsorted:
   - python311-soxr 
   - python311-spake2 
   - python311-spark_parser 
+  - python311-sparse 
   - python311-speaklater 
   - python311-specfile 
   - python311-sphinx-argparse 
@@ -29545,6 +29553,7 @@ unsorted:
   - python311-unsync 
   - python311-untokenize 
   - python311-unyt 
+  - python311-uproot 
   - python311-uri-template 
   - python311-uritemplate 
   - python311-uritools 
@@ -31197,6 +31206,7 @@ unsorted:
   - python39-google-cloud-translate 
   - python39-google-crc32c 
   - python39-google-resumable-media 
+  - python39-google_trans_new 
   - python39-googleapis-common-protos 
   - python39-googlemaps 
   - python39-gpg 
@@ -33280,7 +33290,9 @@ unsorted:
   - qemu-block-iscsi 
   - qemu-block-ssh 
   - qemu-chardev-baum 
+  - qemu-doc 
   - qemu-extra 
+  - qemu-headless 
   - qemu-hw-s390x-virtio-gpu-ccw 
   - qemu-ivshmem-tools 
   - qemu-kvm 
@@ -45569,7 +45581,6 @@ unsorted:
   - wgetpaste 
   - whatsapp-for-linux 
   - whatsapp-for-linux-lang 
-  - whfc 
   - whipper 
   - whohas 
   - whois 
