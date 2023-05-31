@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon May 29 19:36:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2.0:
+  * CMake does not link standard math library in shared xc
+    library
+  * Taylor expansions used in GGA_C_REVTCA, GGA_K_VT84F,
+    MGGA_X_FT98 were not of sufficient to guarantee accuracy of
+    all derivatives
+  * Replaced hard cutoff in MGGA_X_MBRXC_BG with a Taylor
+    expansion
+  * StandardMathLibraryC.cmake reusing variable names
+  * Memory allocation in xc-regression
+  * MGGA_C_REVSCAN was implemented incorrectly
+  * Missing comma in MGGA_XC_B97M_V
+  * GGA_X_HERMAN was incorrect: the functional is really a meta-
+    GGA but its form was unclear and it seems numerically
+    unstable
+
+-------------------------------------------------------------------
 Wed Dec 14 20:03:52 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Move xc-info binary to devel package and make devel pkg conflict
