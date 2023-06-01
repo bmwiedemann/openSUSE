@@ -286,4 +286,12 @@ libatomic-ops-devel package should be removed after this SR is accepted</comment
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1000970</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>405a6cb9fd34959c2304967ff1e2e45e</srcmd5>
+    <version>8.2.4</version>
+    <time>1685632737</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 8.2.4</comment>
+    <requestid>1089728</requestid>
+  </revision>
 </revisionlist>

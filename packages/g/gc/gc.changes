@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May 26 20:42:53 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.2.4
+  * Avoid potential race between realloc and GC_block_was_dirty
+  * Fix comparisons to heap boundary in GC_get_back_ptr_info and
+    GC_mark_from
+  * Fix data race in GC_heapsize_at_forced_unmap variable
+  * Workaround a malfunction of soft-dirty bits clearing on Power9
+
+-------------------------------------------------------------------
 Fri Aug 26 19:56:22 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.2.2
