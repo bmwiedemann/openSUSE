@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May 28 20:05:21 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.13.0
+  * Support both little and big Endian dumps using --endianness={little,big}
+  * Breaking: Changed the meaning of the short flag -C to be consistent with hexdump -C. 
+    Previously, this would hide the character panel, but now -C shows the character panel, 
+    in case it has been previously (e.g. in an alias) disabled with --no-characters
+
+-------------------------------------------------------------------
 Sat Dec 10 19:51:04 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Updat eto version 0.12.0

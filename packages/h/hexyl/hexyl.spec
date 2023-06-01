@@ -1,7 +1,7 @@
 #
 # spec file for package hexyl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2022, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           hexyl
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        A command-line hex viewer
 License:        Apache-2.0
