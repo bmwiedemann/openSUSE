@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun  1 09:27:51 UTC 2023 - pgajdos@suse.com
+
+- run pyupgrade
+- added patches
+  https://github.com/linsomniac/python-memcached/pull/186
+  + python-python-memcached-no-six.patch
+
+-------------------------------------------------------------------
 Tue Dec 13 00:36:09 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Fix incorrect version number in `__version__`

@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-memcached
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,15 +25,15 @@ License:        Python-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/linsomniac/python-memcached
 Source:         https://github.com/linsomniac/python-memcached/archive/%{version}.tar.gz
+# https://github.com/linsomniac/python-memcached/pull/186
+Patch0:         python-python-memcached-no-six.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  memcached
 BuildRequires:  python-rpm-macros
 BuildRequires:  util-linux
 Requires:       memcached
-Requires:       python-six
 BuildArch:      noarch
 %ifpython2
 Provides:       %{oldpython}-memcached = %{version}
@@ -51,7 +51,7 @@ or more, possibly remote, memcached servers.  Search google for memcached
 for more information.
 
 %prep
-%setup -q -n python-memcached-%{version}
+%autosetup -p1 -n python-memcached-%{version}
 sed -i \
     -e 's:#!%{_bindir}/env python::' \
     memcache.py
