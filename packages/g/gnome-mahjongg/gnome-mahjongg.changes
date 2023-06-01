@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed May 31 16:28:49 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.40.0:
+  + Port to GTK4 and libadwaita
+  + Build fixes
+  + Fix hints
+  + Translate scores dialog
+  + help-overlay.ui: Remove ctrl+f1 shortcut
+  + Updated translations.
+- Drop patches fixed upstream:
+  + 26.patch
+  + fix-new-cairo-select-tile.patch
+- Changes in BuildRequires following upstreams changes:
+  + Dropped: hicolor-icon-theme, yelp-tools and
+    pkgconfig(gtk+-3.0).
+  + Added: appstream-glib, desktop-file-utils, itstool,
+    pkgconfig(gtk4) and pkgconfig(libadwaita-1).
+- Stop passing compile-schemas and update-icon-cache to meson, no
+  longer needed, nor recognized.
+- Add check section and run meson_test macro during build, validate
+  appdata and desktop files.
+
+-------------------------------------------------------------------
 Wed Apr 26 09:50:24 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Redownload 26.patch from upstream, changed since it is now

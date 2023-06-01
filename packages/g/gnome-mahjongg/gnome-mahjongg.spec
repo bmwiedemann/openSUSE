@@ -17,28 +17,26 @@
 
 
 Name:           gnome-mahjongg
-Version:        3.38.3
+Version:        3.40.0
 Release:        0
 Summary:        Mahjong Solitaire Game for GNOME
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Board/Puzzle
 URL:            https://live.gnome.org/GnomeMahongg
-Source0:        https://download.gnome.org/sources/gnome-mahjongg/3.38/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM https://gitlab.gnome.org/GNOME/gnome-mahjongg/-/merge_requests/26.patch -- Fix build with meson 0.60 and newer
-Patch0:         26.patch
-# PATCH-FIX-UPSTREAM fix-new-cairo-select-tile.patch -- Fix selecting a tile since cairo 1.17.8
-Patch1:         fix-new-cairo-select-tile.patch
+Source0:        https://download.gnome.org/sources/gnome-mahjongg/3.40/%{name}-%{version}.tar.xz
 
+BuildRequires:  appstream-glib
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  hicolor-icon-theme
+BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.24.0
-BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.13.2
-BuildRequires:  pkgconfig(librsvg-2.0) >= 2.32.0
+BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(librsvg-2.0) >= 2.46.0
 # Package was renamed to gnome-mahjongg, following upstreams name change during 3.6 development.
 Obsoletes:      mahjongg < %{version}
 Provides:       mahjongg = %{version}
@@ -54,15 +52,16 @@ corresponding tiles and taking them out of play.
 %autosetup -p1
 
 %build
-%meson \
-    -Dcompile-schemas=disabled \
-    -Dupdate-icon-cache=disabled
+%meson
 %meson_build
 
 %install
 %meson_install
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
+
+%check
+%meson_test
 
 %files
 %license COPYING
@@ -71,6 +70,7 @@ corresponding tiles and taking them out of play.
 %{_datadir}/%{name}/
 %{_datadir}/metainfo/org.gnome.Mahjongg.appdata.xml
 %{_datadir}/applications/org.gnome.Mahjongg.desktop
+%{_datadir}/dbus-1/services/org.gnome.Mahjongg.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Mahjongg.gschema.xml
 %{_datadir}/help/C/%{name}/
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Mahjongg*
