@@ -4,12 +4,12 @@ Date:   Mon Jun 17 13:00:08 2019 +0000
 
     SUSE: Makefile sec options
 
-Index: haproxy-2.6/Makefile
+Index: haproxy-2.8/Makefile
 ===================================================================
---- haproxy-2.6.orig/Makefile
-+++ haproxy-2.6/Makefile
-@@ -848,6 +848,35 @@ ifneq ($(USE_LIBATOMIC),)
-   TARGET_LDFLAGS += -latomic
+--- haproxy-2.8.orig/Makefile
++++ haproxy-2.8/Makefile
+@@ -849,6 +849,35 @@ ifneq ($(TRACE),)
+   COPTS += -finstrument-functions
  endif
  
 +# PIE

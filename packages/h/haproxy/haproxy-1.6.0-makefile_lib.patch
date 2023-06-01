@@ -1,22 +1,22 @@
-Index: haproxy-2.6/Makefile
+Index: haproxy-2.8/Makefile
 ===================================================================
---- haproxy-2.6.orig/Makefile
-+++ haproxy-2.6/Makefile
-@@ -759,7 +759,7 @@ PCRE_CONFIG    	:= pcre-config
- PCREDIR	        := $(shell $(PCRE_CONFIG) --prefix 2>/dev/null || echo /usr/local)
- ifneq ($(PCREDIR),)
- PCRE_INC        := $(PCREDIR)/include
--PCRE_LIB        := $(PCREDIR)/lib
-+PCRE_LIB        := $(PCREDIR)/$(LIB)
- endif
+--- haproxy-2.8.orig/Makefile
++++ haproxy-2.8/Makefile
+@@ -750,7 +750,7 @@ ifneq ($(USE_PCRE)$(USE_STATIC_PCRE)$(US
+   PCREDIR     := $(shell $(PCRE_CONFIG) --prefix 2>/dev/null || echo /usr/local)
+   ifneq ($(PCREDIR),)
+     PCRE_INC := $(PCREDIR)/include
+-    PCRE_LIB := $(PCREDIR)/lib
++    PCRE_LIB := $(PCREDIR)/$(LIB)
+   endif
  
- ifeq ($(USE_STATIC_PCRE),)
-@@ -778,7 +778,7 @@ PCRE2_CONFIG 	:= pcre2-config
- PCRE2DIR	:= $(shell $(PCRE2_CONFIG) --prefix 2>/dev/null || echo /usr/local)
- ifneq ($(PCRE2DIR),)
- PCRE2_INC       := $(PCRE2DIR)/include
--PCRE2_LIB       := $(PCRE2DIR)/lib
-+PCRE2_LIB       := $(PCRE2DIR)/$(LIB)
+   PCRE_CFLAGS := $(if $(PCRE_INC),-I$(PCRE_INC))
+@@ -768,7 +768,7 @@ ifneq ($(USE_PCRE2)$(USE_STATIC_PCRE2)$(
+   PCRE2DIR     := $(shell $(PCRE2_CONFIG) --prefix 2>/dev/null || echo /usr/local)
+   ifneq ($(PCRE2DIR),)
+     PCRE2_INC := $(PCRE2DIR)/include
+-    PCRE2_LIB := $(PCRE2DIR)/lib
++    PCRE2_LIB := $(PCRE2DIR)/$(LIB)
  
- ifeq ($(PCRE2_WIDTH),)
- PCRE2_WIDTH	= 8
+     ifeq ($(PCRE2_WIDTH),)
+       PCRE2_WIDTH = 8

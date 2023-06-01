@@ -1335,4 +1335,18 @@
   profile</comment>
     <requestid>1084061</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>e646d6e7add05d06844136e78d5b3854</srcmd5>
+    <version>2.8.0+git0.fdd8154ed</version>
+    <time>1685632772</time>
+    <user>dimstar_suse</user>
+    <comment>- Refreshed patches to apply cleanly again:
+  haproxy-1.6.0-makefile_lib.patch
+  haproxy-1.6.0-sec-options.patch
+- Updated series file: removed outdated patches
+
+- Update to version 2.8.0+git0.fdd8154ed:
+  https://www.mail-archive.com/haproxy@formilux.org/msg43600.html</comment>
+    <requestid>1090094</requestid>
+  </revision>
 </revisionlist>
