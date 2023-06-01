@@ -18,17 +18,15 @@
 
 
 %define services pgbackrest.target pgbackrest-diff@.service pgbackrest-full@.service pgbackrest-incr@.service pgbackrest.service pgbackrest-diff@.timer pgbackrest-full@.timer pgbackrest-incr@.timer
-
 Name:           pgbackrest
-Version:        2.45
+Version:        2.46
 Release:        0
 Summary:        Reliable PostgreSQL Backup & Restore
 License:        MIT
 Group:          Productivity/Databases/Tools
-URL:            http://www.pgbackrest.org
+URL:            https://www.pgbackrest.org
 Source:         https://github.com/%{name}/%{name}/archive/release/%{version}/%{name}-%{version}.tar.gz
 Source1:        pgbackrest.conf
-
 Source10:       pgbackrest-diff@.service
 Source11:       pgbackrest-diff@.timer
 Source12:       pgbackrest-full@.service
@@ -38,28 +36,25 @@ Source15:       pgbackrest-incr@.timer
 Source16:       pgbackrest.service
 Source17:       pgbackrest.target
 Source18:       pgbackrest.tmpfiles.d
-
 Source98:       README.SUSE
 Source99:       series
-
 Patch0:         libpq-fe.h_localisation.patch
 Patch1:         use-run-pgbackrest.patch
 BuildRequires:  libyaml-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(libpq)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(systemd)
+# This is a bit awkward as we only need this for directory ownership
+Requires(pre):  postgresql-server
 %if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(liblz4)
 %endif
-BuildRequires:  pkgconfig(libpq)
-BuildRequires:  pkgconfig(libxml-2.0)
 %if 0%{?is_opensuse} || 0%{?sle_version} >= 150100
 BuildRequires:  pkgconfig(libzstd)
 %endif
-BuildRequires:  pkgconfig(systemd)
-
-# This is a bit awkward as we only need this for directory ownership
-Requires(pre):  postgresql-server
 
 %description
 pgBackRest aims to be a simple, reliable backup and restore system for
@@ -90,7 +85,7 @@ cp %{SOURCE98} .
 pushd src
 %configure
 # make_build doesn't work on sle12, as long we want to support that we can not use the macro here
-make %{?_smp_mflags}
+%make_build
 popd
 
 %install

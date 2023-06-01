@@ -1,8 +1,7 @@
-Index: pgbackrest-release-2.45/CODING.md
-===================================================================
---- pgbackrest-release-2.45.orig/CODING.md
-+++ pgbackrest-release-2.45/CODING.md
-@@ -268,11 +268,11 @@ Continuation characters should be aligne
+diff --color -ur pgbackrest-release-2.46.orig/CODING.md pgbackrest-release-2.46/CODING.md
+--- pgbackrest-release-2.46.orig/CODING.md	2023-05-22 10:13:13.000000000 +0200
++++ pgbackrest-release-2.46/CODING.md	2023-05-28 21:20:39.162416107 +0200
+@@ -268,11 +268,11 @@
  
  This function can be called without variable parameters:
  ```c
@@ -16,11 +15,10 @@ Index: pgbackrest-release-2.45/CODING.md
  ```
  If the majority of functions in a module or object are variadic it is best to provide macros for all functions even if they do not have variable parameters. Do not use the base function when variadic macros exist.
  
-Index: pgbackrest-release-2.45/doc/resource/git-history.cache
-===================================================================
---- pgbackrest-release-2.45.orig/doc/resource/git-history.cache
-+++ pgbackrest-release-2.45/doc/resource/git-history.cache
-@@ -6279,7 +6279,7 @@
+diff --color -ur pgbackrest-release-2.46.orig/doc/resource/git-history.cache pgbackrest-release-2.46/doc/resource/git-history.cache
+--- pgbackrest-release-2.46.orig/doc/resource/git-history.cache	2023-05-22 10:13:13.000000000 +0200
++++ pgbackrest-release-2.46/doc/resource/git-history.cache	2023-05-28 21:20:02.622040915 +0200
+@@ -6567,7 +6567,7 @@
      {
          "commit": "a1365b26d4c2383eaacea3714eeb521435ca79aa",
          "date": "2021-01-18 23:41:09 -0500",
@@ -29,7 +27,7 @@ Index: pgbackrest-release-2.45/doc/resource/git-history.cache
      },
      {
          "commit": "8322dfd7af97e307b952cfb37e6a65b65f55be0f",
-@@ -9095,8 +9095,8 @@
+@@ -9383,8 +9383,8 @@
      {
          "commit": "3fbfcba811499a59b943dd893eef9ff52090f7b6",
          "date": "2020-03-16 17:27:01 -0400",
@@ -40,16 +38,16 @@ Index: pgbackrest-release-2.45/doc/resource/git-history.cache
      },
      {
          "commit": "46911c64c19dc8ff76d2a6ff4548fc01647043e0",
-@@ -10996,7 +10996,7 @@
+@@ -11284,7 +11284,7 @@
          "commit": "45881c74aeff4bb25559ec0254fa7fc1960d9cab",
          "date": "2019-10-08 12:06:30 -0400",
          "subject": "Allow most unit tests to run outside of a container.",
--        "body": "Three major changes were required to get this working:\n\n1) Provide the path to pgbackrest in the build directory when running outside a container.  Tests in a container will continue to install and run against /usr/bin/pgbackrest.\n\n1) Set a per-test lock path so tests don't conflict on the default /tmp/pgbackrest path.  Also set a per-test log-path while we are at it.\n\n2) Use localhost instead of a custom host for TLS test connections.  Tests in containers will continue to update /etc/hosts and use the custom host.\n\nAdd infrastructure and update harnessCfgLoad*() to get the correct exe and paths loaded for testing.\n\nSince new tests are required to verify that running outside a container works, also rework the tests in Travis CI to provide coverage within a reasonable amount of time.  Mainly, break up to doc tests by VM and run an abbreviated unit test suite on co6 and co7."
-+        "body": "Three major changes were required to get this working:\n\n1) Provide the path to pgbackrest in the build directory when running outside a container.  Tests in a container will continue to install and run against /usr/bin/pgbackrest.\n\n1) Set a per-test lock path so tests don't conflict on the default /run/pgbackrest path.  Also set a per-test log-path while we are at it.\n\n2) Use localhost instead of a custom host for TLS test connections.  Tests in containers will continue to update /etc/hosts and use the custom host.\n\nAdd infrastructure and update harnessCfgLoad*() to get the correct exe and paths loaded for testing.\n\nSince new tests are required to verify that running outside a container works, also rework the tests in Travis CI to provide coverage within a reasonable amount of time.  Mainly, break up to doc tests by VM and run an abbreviated unit test suite on co6 and co7."
+-        "body": "Three major changes were required to get this working:\n\n1) Provide the path to pgbackrest in the build directory when running outside a container. Tests in a container will continue to install and run against /usr/bin/pgbackrest.\n\n1) Set a per-test lock path so tests don't conflict on the default /tmp/pgbackrest path. Also set a per-test log-path while we are at it.\n\n2) Use localhost instead of a custom host for TLS test connections. Tests in containers will continue to update /etc/hosts and use the custom host.\n\nAdd infrastructure and update harnessCfgLoad*() to get the correct exe and paths loaded for testing.\n\nSince new tests are required to verify that running outside a container works, also rework the tests in Travis CI to provide coverage within a reasonable amount of time. Mainly, break up to doc tests by VM and run an abbreviated unit test suite on co6 and co7."
++        "body": "Three major changes were required to get this working:\n\n1) Provide the path to pgbackrest in the build directory when running outside a container. Tests in a container will continue to install and run against /usr/bin/pgbackrest.\n\n1) Set a per-test lock path so tests don't conflict on the default /run/pgbackrest path. Also set a per-test log-path while we are at it.\n\n2) Use localhost instead of a custom host for TLS test connections. Tests in containers will continue to update /etc/hosts and use the custom host.\n\nAdd infrastructure and update harnessCfgLoad*() to get the correct exe and paths loaded for testing.\n\nSince new tests are required to verify that running outside a container works, also rework the tests in Travis CI to provide coverage within a reasonable amount of time. Mainly, break up to doc tests by VM and run an abbreviated unit test suite on co6 and co7."
      },
      {
          "commit": "77b0c6c993a0e6ff45a6a99f343c3709a016d152",
-@@ -19483,7 +19483,7 @@
+@@ -19771,7 +19771,7 @@
          "commit": "18fd25233b1db7b3197f5d8dc537d239dcfc7aba",
          "date": "2016-04-14 09:30:54 -0400",
          "subject": "New simpler configuration and consistent project/exe/path naming.",
@@ -58,11 +56,10 @@ Index: pgbackrest-release-2.45/doc/resource/git-history.cache
      },
      {
          "commit": "885797e4b58a675487a3531ba16908c1d1e9f970",
-Index: pgbackrest-release-2.45/doc/xml/coding.xml
-===================================================================
---- pgbackrest-release-2.45.orig/doc/xml/coding.xml
-+++ pgbackrest-release-2.45/doc/xml/coding.xml
-@@ -365,13 +365,13 @@ void storagePathCreate(const Storage *th
+diff --color -ur pgbackrest-release-2.46.orig/doc/xml/coding.xml pgbackrest-release-2.46/doc/xml/coding.xml
+--- pgbackrest-release-2.46.orig/doc/xml/coding.xml	2023-05-22 10:13:13.000000000 +0200
++++ pgbackrest-release-2.46/doc/xml/coding.xml	2023-05-28 21:18:27.561053697 +0200
+@@ -365,13 +365,13 @@
              <p>This function can be called without variable parameters:</p>
  
              <code-block type="c">
@@ -77,25 +74,24 @@ Index: pgbackrest-release-2.45/doc/xml/coding.xml
 +storagePathCreateP(storageLocal(), "/run/pgbackrest", .errorOnExists = true, .mode = 0777);
              </code-block>
  
-             <p>If the majority of functions in a module or object are variadic it is best to provide macros for all functions even if they do not have variable parameters.  Do not use the base function when variadic macros exist.</p>
-Index: pgbackrest-release-2.45/doc/xml/release.xml
-===================================================================
---- pgbackrest-release-2.45.orig/doc/xml/release.xml
-+++ pgbackrest-release-2.45/doc/xml/release.xml
-@@ -11018,7 +11018,7 @@
+             <p>If the majority of functions in a module or object are variadic it is best to provide macros for all functions even if they do not have variable parameters. Do not use the base function when variadic macros exist.</p>
+diff --color -ur pgbackrest-release-2.46.orig/doc/xml/release.xml pgbackrest-release-2.46/doc/xml/release.xml
+--- pgbackrest-release-2.46.orig/doc/xml/release.xml	2023-05-22 10:13:13.000000000 +0200
++++ pgbackrest-release-2.46/doc/xml/release.xml	2023-05-28 21:19:14.985551780 +0200
+@@ -11136,7 +11136,7 @@
                              <release-item-contributor id="david.steele"/>
                          </release-item-contributor-list> -->
  
--                        <p>Lock files are now stored in <path>/tmp/pgbackrest</path> by default. These days <path>/run/pgbackrest</path> is the preferred location but that would require init scripts which are not part of this release.  The <setting>lock-path</setting> option can be used to configure the lock directory.</p>
-+                        <p>Lock files are now stored in <path>/run/pgbackrest</path> by default. These days <path>/run/pgbackrest</path> is the preferred location but that would require init scripts which are not part of this release.  The <setting>lock-path</setting> option can be used to configure the lock directory.</p>
+-                        <p>Lock files are now stored in <path>/tmp/pgbackrest</path> by default. These days <path>/run/pgbackrest</path> is the preferred location but that would require init scripts which are not part of this release. The <setting>lock-path</setting> option can be used to configure the lock directory.</p>
++                        <p>Lock files are now stored in <path>/run/pgbackrest</path> by default. These days <path>/run/pgbackrest</path> is the preferred location but that would require init scripts which are not part of this release. The <setting>lock-path</setting> option can be used to configure the lock directory.</p>
                      </release-item>
  
                      <release-item>
-Index: pgbackrest-release-2.45/src/build/config/config.yaml
-===================================================================
---- pgbackrest-release-2.45.orig/src/build/config/config.yaml
-+++ pgbackrest-release-2.45/src/build/config/config.yaml
-@@ -826,7 +826,7 @@ option:
+Only in pgbackrest-release-2.46.orig/: patches
+diff --color -ur pgbackrest-release-2.46.orig/src/build/config/config.yaml pgbackrest-release-2.46/src/build/config/config.yaml
+--- pgbackrest-release-2.46.orig/src/build/config/config.yaml	2023-05-22 10:13:13.000000000 +0200
++++ pgbackrest-release-2.46/src/build/config/config.yaml	2023-05-28 21:21:14.126750421 +0200
+@@ -834,7 +834,7 @@
    lock-path:
      section: global
      type: path
@@ -104,11 +100,48 @@ Index: pgbackrest-release-2.45/src/build/config/config.yaml
      command:
        annotate: {}
        archive-get: {}
-Index: pgbackrest-release-2.45/test/Vagrantfile
-===================================================================
---- pgbackrest-release-2.45.orig/test/Vagrantfile
-+++ pgbackrest-release-2.45/test/Vagrantfile
-@@ -54,12 +54,12 @@ Vagrant.configure(2) do |config|
+diff --color -ur pgbackrest-release-2.46.orig/src/config/parse.auto.c.inc pgbackrest-release-2.46/src/config/parse.auto.c.inc
+--- pgbackrest-release-2.46.orig/src/config/parse.auto.c.inc	2023-05-22 10:13:13.000000000 +0200
++++ pgbackrest-release-2.46/src/config/parse.auto.c.inc	2023-05-28 21:22:00.283175880 +0200
+@@ -11,7 +11,7 @@
+ 
+ static const StringPub parseRuleValueStr[] =
+ {
+-    PARSE_RULE_STRPUB("/tmp/pgbackrest"),                                                                                 // val/str
++    PARSE_RULE_STRPUB("/run/pgbackrest"),                                                                                 // val/str
+     PARSE_RULE_STRPUB("/var/lib/pgbackrest"),                                                                             // val/str
+     PARSE_RULE_STRPUB("/var/log/pgbackrest"),                                                                             // val/str
+     PARSE_RULE_STRPUB("/var/spool/pgbackrest"),                                                                           // val/str
+diff --color -ur pgbackrest-release-2.46.orig/test/ci.pl pgbackrest-release-2.46/test/ci.pl
+--- pgbackrest-release-2.46.orig/test/ci.pl	2023-05-22 10:13:13.000000000 +0200
++++ pgbackrest-release-2.46/test/ci.pl	2023-05-28 21:12:52.581888810 +0200
+@@ -208,8 +208,8 @@
+             $strPackage .= " libdbd-pg-perl";
+         }
+ 
+-        processBegin('/tmp/pgbackrest owned by root so tests cannot use it');
+-        processExec('sudo mkdir -p /tmp/pgbackrest && sudo chown root:root /tmp/pgbackrest && sudo chmod 700 /tmp/pgbackrest');
++        processBegin('/run/pgbackrest owned by root so tests cannot use it');
++        processExec('sudo mkdir -p /run/pgbackrest && sudo chown root:root /run/pgbackrest && sudo chmod 700 /run/pgbackrest');
+         processEnd();
+ 
+         processBegin('install test packages');
+diff --color -ur pgbackrest-release-2.46.orig/test/src/module/command/helpTest.c pgbackrest-release-2.46/test/src/module/command/helpTest.c
+--- pgbackrest-release-2.46.orig/test/src/module/command/helpTest.c	2023-05-22 10:13:13.000000000 +0200
++++ pgbackrest-release-2.46/test/src/module/command/helpTest.c	2023-05-28 21:20:59.282613590 +0200
+@@ -244,7 +244,7 @@
+             "                                      [default=n]\n"
+             "  --io-timeout                        I/O timeout [default=60]\n"
+             "  --lock-path                         path where lock files are stored\n"
+-            "                                      [default=/tmp/pgbackrest]\n"
++            "                                      [default=/run/pgbackrest]\n"
+             "  --neutral-umask                     use a neutral umask [default=y]\n"
+             "  --process-max                       max processes to use for\n"
+             "                                      compress/transfer [default=1]\n"
+diff --color -ur pgbackrest-release-2.46.orig/test/Vagrantfile pgbackrest-release-2.46/test/Vagrantfile
+--- pgbackrest-release-2.46.orig/test/Vagrantfile	2023-05-22 10:13:13.000000000 +0200
++++ pgbackrest-release-2.46/test/Vagrantfile	2023-05-28 21:15:25.519182880 +0200
+@@ -54,12 +54,12 @@
              sudo /etc/init.d/virtualbox-guest-utils stop
              sudo /usr/sbin/VBoxService --timesync-set-on-restore --timesync-interval 5000 --timesync-set-threshold 1
  
@@ -126,31 +159,3 @@ Index: pgbackrest-release-2.45/test/Vagrantfile
  
              # Mount tmpfs at /home/vagrant/test for faster testing
              #-----------------------------------------------------------------------------------------------------------------------
-Index: pgbackrest-release-2.45/test/ci.pl
-===================================================================
---- pgbackrest-release-2.45.orig/test/ci.pl
-+++ pgbackrest-release-2.45/test/ci.pl
-@@ -208,8 +208,8 @@ eval
-             $strPackage .= " libdbd-pg-perl";
-         }
- 
--        processBegin('/tmp/pgbackrest owned by root so tests cannot use it');
--        processExec('sudo mkdir -p /tmp/pgbackrest && sudo chown root:root /tmp/pgbackrest && sudo chmod 700 /tmp/pgbackrest');
-+        processBegin('/run/pgbackrest owned by root so tests cannot use it');
-+        processExec('sudo mkdir -p /run/pgbackrest && sudo chown root:root /run/pgbackrest && sudo chmod 700 /run/pgbackrest');
-         processEnd();
- 
-         processBegin('install test packages');
-Index: pgbackrest-release-2.45/test/src/module/command/helpTest.c
-===================================================================
---- pgbackrest-release-2.45.orig/test/src/module/command/helpTest.c
-+++ pgbackrest-release-2.45/test/src/module/command/helpTest.c
-@@ -243,7 +243,7 @@ testRun(void)
-             "                                    [default=n]\n"
-             "  --io-timeout                      I/O timeout [default=60]\n"
-             "  --lock-path                       path where lock files are stored\n"
--            "                                    [default=/tmp/pgbackrest]\n"
-+            "                                    [default=/run/pgbackrest]\n"
-             "  --neutral-umask                   use a neutral umask [default=y]\n"
-             "  --process-max                     max processes to use for compress/transfer\n"
-             "                                    [default=1]\n"

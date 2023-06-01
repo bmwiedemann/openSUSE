@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun May 28 19:30:47 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to version 2.46
+  * Features:
+    + Block incremental backup. (Reviewed by John Morris, Stephen Frost, Stefan Fercot.)
+    + SFTP support for repository storage. (Contributed by Reid Thompson. Reviewed by Stephen Frost, David Steele.)
+    + PostgreSQL 16 support. (Reviewed by Stefan Fercot.)
+  * Improvements:
+    + Allow page header checks to be skipped. (Reviewed by David Christensen. Suggested by David Christensen.)
+    + Avoid chown() on recovery files during restore. (Reviewed by Stefan Fercot, Marcelo Henrique Neppel. Suggested by Marcelo Henrique Neppel.)
+    + Add error retry detail for HTTP retries.
+  * Documentation Improvements:
+    + Add warning about using recovery type=none. (Reviewed by Stefan Fercot.)
+    + Add note about running stanza-create on already-created repositories.
+
+-------------------------------------------------------------------
 Mon Mar 27 07:13:19 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to version 2.45
