@@ -1,7 +1,7 @@
 #
 # spec file for package kaffeine
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,18 @@
 
 
 Name:           kaffeine
-Version:        2.0.18
+Version:        2.0.18git.20230531T022124~afc6c12
 Release:        0
 Summary:        VLC-based Multimedia Player
 License:        GPL-2.0-or-later
-Group:          Productivity/Multimedia/Video/Players
-URL:            https://kaffeine.kde.org/
-Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
+URL:            https://apps.kde.org/kaffeine/
+Source0:        %{name}-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE kaffeine-fixsplitter.patch -- GUI improvement (allow more flexibly set splitters)
 Patch0:         kaffeine-fixsplitter.patch
 BuildRequires:  extra-cmake-modules
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
+BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DocTools)
@@ -42,20 +43,13 @@ BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(libvlc)
+BuildRequires:  pkgconfig(libdvbv5)
+BuildRequires:  pkgconfig(libvlc) >= 3.0
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xscrnsaver)
 Requires:       libQt5Sql5-sqlite
 Requires:       vlc-noX
-Requires(post): hicolor-icon-theme
-Requires(post): update-desktop-files
-Requires(postun): hicolor-icon-theme
-Requires(postun): update-desktop-files
-Recommends:     %{name}-lang = %{version}
 Recommends:     vlc-codecs
-%if 0%{?suse_version} > 1320 || (0%{?suse_version} == 1315 && 0%{?sle_version} >= 120300)
-BuildRequires:  pkgconfig(libdvbv5)
-%endif
 
 %description
 Kaffeine is a media player.
@@ -70,57 +64,34 @@ playing their movies: from DVD (including DVD menus, titles, chapters, etc.), VC
 
 %build
 %cmake_kf5 -d build
-%make_jobs
+
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
 
+%find_lang %{name}
+
+%{kf5_find_htmldocs}
+
 # place desktop entry in video and tv
 %suse_update_desktop_file -r org.kde.%{name} Qt KDE AudioVideo Video Player TV
 
-%find_lang %{name} --without-kde --with-man
-%if 0%{?suse_version} == 1315 && 0%{?sle_version} <= 120200
-  # %%kf5_find_htmldocs is only defined since Leap 42.3
-  CURDIR=`pwd`
-  pushd %{buildroot}%{_kf5_htmldir}
-  for i in *; do
-    if ! [ -d "%{_datadir}/locale/${i}" ]; then
-        echo "Removing unsupported translation %{_kf5_htmldir}/${i}"
-        rm -rf "$i"
-    elif [ "$i" != "en" ]; then
-        echo "%doc %lang($i) %{_kf5_htmldir}/${i}" >> $CURDIR/%{name}.lang
-    fi
-  done
-  echo "%doc %lang(uk) %{_kf5_mandir}/uk" >> $CURDIR/%{name}.lang
-  popd
-%else
-%{kf5_find_htmldocs}
-%endif
-
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-
 %files
 %license COPYING
-%doc COPYING-DOCS Changelog NOTES README.md
-%{_kf5_bindir}/kaffeine
-%if 0%{?sle_version} == 120100
-%dir %{_kf5_sharedir}/appdata
-%endif
-%{_kf5_appstreamdir}/org.kde.kaffeine.appdata.xml
+%doc README.md
+%doc %lang(en) %{_kf5_htmldir}/en/kaffeine/
 %{_kf5_applicationsdir}/org.kde.kaffeine.desktop
+%{_kf5_appstreamdir}/org.kde.kaffeine.appdata.xml
+%{_kf5_bindir}/kaffeine
 %{_kf5_iconsdir}/hicolor/*/*/*
+%{_kf5_mandir}/man1/kaffeine.1%{?ext_man}
 %{_kf5_sharedir}/kaffeine/
-%{_kf5_sharedir}/profiles/
 %{_kf5_sharedir}/solid/actions/
-%{_kf5_htmldir}/en/
-%{_kf5_mandir}/man1/*
 
 %files lang -f %{name}.lang
+%{_kf5_mandir}/*/man1/kaffeine.1%{?ext_man}
+%{_kf5_htmldir}/*/kaffeine/
+%exclude %{_kf5_htmldir}/en/
 
 %changelog

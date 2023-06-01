@@ -578,4 +578,20 @@ not do any harm, as the one for amarok has the same entry, I will this. (forward
     <comment></comment>
     <requestid>703230</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>8b23d31143a759ba9a204957548cc9a3</srcmd5>
+    <version>2.0.18git.20230531T022124~afc6c12</version>
+    <time>1685632789</time>
+    <user>dimstar_suse</user>
+    <comment>- Kaffeine is unmaintained upstream but still has users. Switch to
+  a git snapshot. Notable changes:
+  * Drop kdelirc profile
+  * Don't invoke XScreenSaverSuspend on Wayland (kde#460970)
+  * Add desktop file name to solid actions
+  * Fix activating existing window
+  * src/scanfile.dvb: update to latest database
+
+- Spec cleanup</comment>
+    <requestid>1090182</requestid>
+  </revision>
 </revisionlist>
