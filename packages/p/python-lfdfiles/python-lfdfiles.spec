@@ -1,7 +1,7 @@
 #
 # spec file for package python-lfdfiles
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,14 @@
 #
 
 
-%define skip_python2 1
-%define skip_python36 1
-%define packagename lfdfiles
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-lfdfiles
-Version:        2020.9.18
+Version:        2023.4.20
 Release:        0
 Summary:        Laboratory for Fluorescence Dynamics (LFD) file formats
 License:        BSD-3-Clause
 URL:            https://www.lfd.uci.edu/~gohlke/
-Source:         https://github.com/cgohlke/lfdfiles/archive/v%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
+Source:         https://github.com/cgohlke/lfdfiles/archive/v%{version}.tar.gz#/lfdfiles-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module czifile >= 2019.7.2}
@@ -46,7 +43,7 @@ Requires:       python-numpy >= 1.15
 Requires:       python-oiffile >= 2020.9.18
 Requires:       python-tifffile >= 2020.9.3
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
@@ -55,7 +52,7 @@ converting, and viewing many of the proprietary file formats used to store
 experimental data at the Laboratory for Fluorescence Dynamics.
 
 %prep
-%setup -q -n %{packagename}-%{version}
+%setup -q -n lfdfiles-%{version}
 # Fix warning: wrong end-of-line encoding
 sed -i 's/\r//g' README.rst
 
@@ -64,18 +61,18 @@ sed -i 's/\r//g' README.rst
 
 %install
 %python_install
-for p in %{packagename} ; do
+for p in lfdfiles fbd2b64 ; do
     %python_clone -a %{buildroot}%{_bindir}/$p
 done
 
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-%prepare_alternative %{packagename}
+%prepare_alternative lfdfiles fbd2b64
 
 %post
-%python_install_alternative %{packagename}
+%python_install_alternative lfdfiles fbd2b64
 
 %postun
-%python_uninstall_alternative %{packagename}
+%python_uninstall_alternative lfdfiles fbd2b64
 
 %check
 # Test not provided
@@ -83,8 +80,9 @@ done
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%python_alternative %{_bindir}/%{packagename}
+%python_alternative %{_bindir}/lfdfiles
+%python_alternative %{_bindir}/fbd2b64
 %{python_sitearch}/*egg-info
-%{python_sitearch}/%{packagename}/
+%{python_sitearch}/lfdfiles/
 
 %changelog

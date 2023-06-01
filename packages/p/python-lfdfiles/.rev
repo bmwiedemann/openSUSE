@@ -23,4 +23,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>874163</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bb620552e53e6a9a958998ea260a132b</srcmd5>
+    <version>2023.4.20</version>
+    <time>1685632764</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2023.4.20:
+  * Improve type hints.
+  * Drop support for Python 3.8 and numpy &lt; 1.21 (NEP29).
+  * Update metadata.
+  * Fix LfdFileSequence with tifffile 2022.4.22.
+  * Add fbd2b64 conversion function and script.
+  * Add decoder for 32-bit, 8 windows, 4 channels FLIMbox data
+    from Spartan-6.
+  * Convert docstrings to Google style with Sphinx directives.
+  * Add type hints.
+  * SimfcsFit.asarray returns dc_ref only; use p_fit for fit
+    params (breaking).
+  * Remove additional positional arguments to LfdFile init
+    (breaking).
+  * Guess SimfcsBin shape and dtype if not provided (breaking).
+  * Use TiffWriter.write instead of deprecated save.
+  * Drop support for Python 3.7 and NumPy &lt; 1.19 (NEP29).
+  * Refactor SimfcsFbd initialization.
+  * Print tracebacks of failing plugins in LfdFile.
+  * Calculate pixel_dwell_time and frame_size for FBD files with
+    header.
+  * Disable simfcsfbd_decode and simfcsfbd_histogram Python code
+    (breaking).
+  * Read ISS Vista IFI files.
+  * Fix reading FBD files with FBF header.
+  * Fix reading R64 files with excess bytes.
+  * Fix reading VPL files used by ISS Vista.
+  * Remove lazyattr.
+  * Fix unclosed file warnings.
+  * Replace TIFF compress with compression parameter (breaking).</comment>
+    <requestid>1090078</requestid>
+  </revision>
 </revisionlist>
