@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed May 31 19:48:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.22:
+  * Added a ``satnum_str`` attribute, exposing the fact that the C++ now
+    stores the satellite number as a string; and check that ``satnum`` is
+    never greater than 339999.
+  * Fixed the units of the ``nddot`` attribute when the value is loaded
+    from an OMM record.  (Since the TLE computation itself ignores this
+    attribute, this did not affect any satellite positions.)
+  * Enhanced the fallback Python version of ``twoline2rv()`` to verify
+    that TLE lines are ASCII, and added documentation using it to
+    double-check TLEs that might suffer from non-ASCII characters.
+  * If the user doesn’t set a satellite’s ``classification``, it now
+    defaults to ``'U'`` for ‘unclassified’.
+  * Added ``dump_satrec()`` to the ``sgp4.conveniences`` module.
+  * Fixed the ``Satrec`` attribute ``.error``, which was previously
+    building a nonsense integer from the wrong data in memory.
+  * Removed ``.whichconst`` from Python ``Satrec``, to help users avoid
+    writing code that will break when the C++ extension is available. 
+
+-------------------------------------------------------------------
 Sun Jul  4 12:03:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2.20

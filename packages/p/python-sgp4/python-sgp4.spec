@@ -1,7 +1,7 @@
 #
 # spec file for package python-sgp4
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,14 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-sgp4
-Version:        2.20
+Version:        2.22
 Release:        0
 Summary:        Track earth satellite TLE orbits using up-to-date 2010 version of SGP4
 License:        MIT
 URL:            https://github.com/brandon-rhodes/python-sgp4
 Source:         https://files.pythonhosted.org/packages/source/s/sgp4/sgp4-%{version}.tar.gz
-Source99:       https://github.com/brandon-rhodes/python-sgp4/raw/master/LICENSE
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
@@ -52,7 +49,6 @@ over arrays of satellites and arrays of times with machine code instead of Pytho
 
 %prep
 %autosetup -p1 -n sgp4-%{version}
-cp %{SOURCE99} .
 sed -i 's/error = 2e-7/error = 2e-5/' sgp4/tests.py
 
 %build

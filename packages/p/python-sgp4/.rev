@@ -71,4 +71,28 @@ Submitting because it is an optional package for python-astropy</comment>
     <comment></comment>
     <requestid>903954</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3cea9b67b4158540bf016f8deb8cfcf1</srcmd5>
+    <version>2.22</version>
+    <time>1685632764</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.22:
+  * Added a ``satnum_str`` attribute, exposing the fact that the C++ now
+    stores the satellite number as a string; and check that ``satnum`` is
+    never greater than 339999.
+  * Fixed the units of the ``nddot`` attribute when the value is loaded
+    from an OMM record.  (Since the TLE computation itself ignores this
+    attribute, this did not affect any satellite positions.)
+  * Enhanced the fallback Python version of ``twoline2rv()`` to verify
+    that TLE lines are ASCII, and added documentation using it to
+    double-check TLEs that might suffer from non-ASCII characters.
+  * If the user doesn’t set a satellite’s ``classification``, it now
+    defaults to ``'U'`` for ‘unclassified’.
+  * Added ``dump_satrec()`` to the ``sgp4.conveniences`` module.
+  * Fixed the ``Satrec`` attribute ``.error``, which was previously
+    building a nonsense integer from the wrong data in memory.
+  * Removed ``.whichconst`` from Python ``Satrec``, to help users avoid
+    writing code that will break when the C++ extension is available.</comment>
+    <requestid>1090088</requestid>
+  </revision>
 </revisionlist>
