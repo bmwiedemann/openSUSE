@@ -1,7 +1,7 @@
 #
 # spec file for package python-patatt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,14 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-patatt
-Version:        0.6.2
+Version:        0.6.3
 Release:        0
 Summary:        Cryptographic patch attestation for the masses
 License:        MIT-0
 URL:            https://git.kernel.org/pub/scm/utils/patatt/patatt.git/
 Source0:        https://git.kernel.org/pub/scm/utils/patatt/patatt.git/snapshot/patatt-%{version}.tar.gz
 Source1:        https://git.kernel.org/pub/scm/utils/patatt/patatt.git/snapshot/patatt-%{version}.tar.asc
+Source2:        python-patatt.keyring
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch

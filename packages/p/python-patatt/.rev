@@ -51,4 +51,14 @@
   * Make patatt more python API friendly</comment>
     <requestid>1001696</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a8ac908164b088e9127ce084fc8aee60</srcmd5>
+    <version>0.6.3</version>
+    <time>1685632857</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.3:
+  * Split at 75 characters instead of 78
+- add keyring for validation</comment>
+    <requestid>1090245</requestid>
+  </revision>
 </revisionlist>
