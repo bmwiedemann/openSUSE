@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 30 12:07:58 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip test_different_data_types because of s390x architecture issue.
+
+-------------------------------------------------------------------
+Mon May 29 09:10:25 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Skip test_common_case because of SLE15 i586 precision issue
+
+-------------------------------------------------------------------
 Thu May 25 09:34:08 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove python-pandas and python-matplotlib from BuildRequires 

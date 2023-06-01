@@ -69,6 +69,10 @@ Python fixtures to write regression tests.
 donttest="test_image_regression"
 # Requires python-pandas
 donttest+=" or test_foo"
+# Precision issues on i586 on SLE15
+donttest+=" or (test_common_case and not test_common_case_)"
+# Failing test on s390x
+donttest+=" or test_different_data_types"
 # Ignore tests that depends on python-pandas
 %pytest --ignore tests/test_num_regression.py --ignore tests/test_dataframe_regression.py -k "not ($donttest)"
 

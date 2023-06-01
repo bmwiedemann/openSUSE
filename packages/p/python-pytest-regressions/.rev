@@ -49,4 +49,13 @@
 </comment>
     <requestid>1088997</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>eb1eab982ee69755654ea6f4a19953e6</srcmd5>
+    <version>2.4.2</version>
+    <time>1685632745</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip test_different_data_types because of s390x architecture issue.
+- Skip test_common_case because of SLE15 i586 precision issue</comment>
+    <requestid>1089802</requestid>
+  </revision>
 </revisionlist>
