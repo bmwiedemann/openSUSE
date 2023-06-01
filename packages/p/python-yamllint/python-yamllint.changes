@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  1 05:40:16 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.32.0:
+  * Look for configuration file in parent directories
+  * Rule anchors: add new option forbid-unused-anchors
+
+-------------------------------------------------------------------
 Wed May 17 13:27:45 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 1.31.0:
