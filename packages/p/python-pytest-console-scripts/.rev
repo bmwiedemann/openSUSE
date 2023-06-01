@@ -87,4 +87,25 @@
 - Drop patch remove-mock.patch, included upstream.</comment>
     <requestid>963380</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>045734765992791f0d802273d59e8473</srcmd5>
+    <version>1.4.1</version>
+    <time>1685632877</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.1:
+  * Dropped support for Python 3.7
+  * Fix loading scripts with non-UTF-8 encodings.
+  * Print output when a subprocess runner with `check=True` fails
+    was missing.
+  * Added type-hinting for all types,
+    `pytest_console_scripts.ScriptRunner`
+    can now be used to hint the `script_runner` fixture.
+  * Added support for the `shell` and `check` keywords for in-
+    process mode.
+  * Passing command arguments in `*args` is now deprecated and
+    will raise warnings.
+  * Dropped support for Python 3.6
+  * Install-time dependencies have been fixed.</comment>
+    <requestid>1090270</requestid>
+  </revision>
 </revisionlist>
