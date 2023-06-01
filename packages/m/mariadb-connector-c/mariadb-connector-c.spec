@@ -25,7 +25,7 @@
 %endif
 %bcond_with sqlite3
 Name:           mariadb-connector-c
-Version:        3.3.4
+Version:        3.3.5
 Release:        0
 Summary:        MariaDB connector in C
 License:        LGPL-2.1-or-later
