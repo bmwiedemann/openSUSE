@@ -17,36 +17,36 @@
 
 
 %{?sle15_python_module_pythons}
-Name:             python-virtue
-Version:          2.5.2
-Release:          0
-Summary:          After trial comes virtue. A test runner for good
-License:          MIT
-URL:              https://github.com/Julian/Virtue
-Source:           https://files.pythonhosted.org/packages/source/v/virtue/virtue-2.5.2.tar.gz
-BuildRequires:    fdupes
-BuildRequires:    python-rpm-macros
-BuildRequires:    %{python_module hatch_vcs}
-BuildRequires:    %{python_module hatchling}
-BuildRequires:    %{python_module pip}
-BuildRequires:    %{python_module setuptools}
+Name:           python-virtue
+Version:        2023.5.3
+Release:        0
+Summary:        After trial comes virtue. A test runner for good
+License:        MIT
+URL:            https://github.com/Julian/Virtue
+Source:         https://files.pythonhosted.org/packages/source/v/virtue/virtue-%{version}.tar.gz
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:    %{python_module attrs >= 19}
-BuildRequires:    %{python_module click}
-BuildRequires:    %{python_module colorama}
-BuildRequires:    %{python_module pyrsistent}
-BuildRequires:    %{python_module Twisted}
+BuildRequires:  %{python_module attrs >= 19}
+BuildRequires:  %{python_module Twisted}
+BuildRequires:  %{python_module click}
+BuildRequires:  %{python_module colorama}
+BuildRequires:  %{python_module pyrsistent}
 # /SECTION
-Requires(post):   update-alternatives
-Requires(postun): update-alternatives
-Requires:         python-attrs >= 19
-Requires:         python-click
-Requires:         python-colorama
-Requires:         python-pyrsistent
-Requires:         python-Twisted
-Suggests:         python-importlib_metadata
-Suggests:         python-pkgutil_resolve_name >= 1.3.10
-BuildArch:        noarch
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+Requires:       python-Twisted
+Requires:       python-attrs >= 19
+Requires:       python-click
+Requires:       python-colorama
+Requires:       python-pyrsistent
+Suggests:       python-importlib_metadata
+Suggests:       python-pkgutil_resolve_name >= 1.3.10
+BuildArch:      noarch
 %python_subpackages
 
 %description
