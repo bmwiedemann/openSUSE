@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 31 19:54:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.2.2:
+  * feat: accept datetime.timedelta instances as argument to `stop_after..
+  * fix: docstring for wait_exponential_jitter 
+  * fix: remove __iter__ from AsyncRetring 
+  * Add retry_if_exception_cause_type and wait_exponential_jitter
+  * better wait.WaitBaseT annotation
+  * CI conversion to GitHub actions 
+
+-------------------------------------------------------------------
 Mon May 15 13:57:44 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - disable check 'test_retry_type_annotations' that fails due to

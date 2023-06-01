@@ -181,4 +181,18 @@
     <comment></comment>
     <requestid>1087255</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>11506fc705f99268cc7d21c1b5a8ee04</srcmd5>
+    <version>8.2.2</version>
+    <time>1685632769</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.2.2:
+  * feat: accept datetime.timedelta instances as argument to `stop_after..
+  * fix: docstring for wait_exponential_jitter 
+  * fix: remove __iter__ from AsyncRetring 
+  * Add retry_if_exception_cause_type and wait_exponential_jitter
+  * better wait.WaitBaseT annotation
+  * CI conversion to GitHub actions</comment>
+    <requestid>1090091</requestid>
+  </revision>
 </revisionlist>
