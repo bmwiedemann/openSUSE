@@ -87,4 +87,12 @@
     <comment>multibuild</comment>
     <requestid>1084983</requestid>
   </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>ada3dda69bc9f3e383733500f58c3dfc</srcmd5>
+    <version>5.11.0</version>
+    <time>1685632767</time>
+    <user>dimstar_suse</user>
+    <comment>Extend the version interval for jsch package</comment>
+    <requestid>1090093</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed May 31 19:51:51 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * jgit-jsch.patch
+    + extend the version range for the required jsch package
+    + allows building with 0.2.x (which is backward compatible
+      with 0.1.x)
+
+-------------------------------------------------------------------
 Fri May  5 08:24:40 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Add _multibuild to define 2nd spec file as additional flavor.
