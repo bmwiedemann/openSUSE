@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 31 19:24:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.3:
+  * Builder properly handles Hermitian conjugation of array-like
+    values.
+  * Various maintenance.
+
+-------------------------------------------------------------------
 Sat May 15 09:26:24 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Re-cythonize the .pyx sources for Python > 3.8 compatibility

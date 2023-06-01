@@ -23,4 +23,15 @@
     <comment></comment>
     <requestid>893354</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e16318acf94cbcc55edb54509131eee4</srcmd5>
+    <version>1.4.3</version>
+    <time>1685632763</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.3:
+  * Builder properly handles Hermitian conjugation of array-like
+    values.
+  * Various maintenance.</comment>
+    <requestid>1090076</requestid>
+  </revision>
 </revisionlist>
