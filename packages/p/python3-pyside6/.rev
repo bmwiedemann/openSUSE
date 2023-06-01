@@ -150,4 +150,12 @@
     <comment>- Generate egg-info.</comment>
     <requestid>1082791</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c664ea9343608f9407ee0b22d1539dd0</srcmd5>
+    <version>6.5.1</version>
+    <time>1685632785</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090156</requestid>
+  </revision>
 </revisionlist>

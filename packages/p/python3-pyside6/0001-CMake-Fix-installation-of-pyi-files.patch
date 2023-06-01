@@ -1,0 +1,37 @@
+From 7a3a196a7733e5af18881c22b9082bcc91f992ca Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Tue, 30 May 2023 11:02:03 +0200
+Subject: [PATCH] CMake: Fix installation of pyi files
+
+'file(GLOB ...)' cannot be used since these files are generated
+at build time.
+
+Patch by Julien Schueller.
+
+Fixes: PYSIDE-2184
+Pick-to: 6.5
+
+---
+ sources/pyside6/cmake/Macros/PySideModules.cmake | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/sources/pyside6/cmake/Macros/PySideModules.cmake b/sources/pyside6/cmake/Macros/PySideModules.cmake
+index d86b993..463c609 100644
+--- a/sources/pyside6/cmake/Macros/PySideModules.cmake
++++ b/sources/pyside6/cmake/Macros/PySideModules.cmake
+@@ -259,11 +259,7 @@ macro(create_pyside_module)
+                               ${generate_pyi_options})
+         add_dependencies("${module_NAME}_pyi" ${module_NAME})
+ 
+-        file(GLOB hinting_stub_files
+-             RELATIVE
+-                 "${CMAKE_CURRENT_BINARY_DIR}/PySide6"
+-                 "${CMAKE_CURRENT_BINARY_DIR}/PySide6/*.pyi")
+-        install(FILES ${hinting_stub_files}
++        install(FILES "${CMAKE_CURRENT_BINARY_DIR}/../${module_NAME}.pyi"
+                 DESTINATION "${PYTHON_SITE_PACKAGES}/PySide6")
+     endif()
+ 
+-- 
+2.40.1
+

@@ -26,7 +26,7 @@
 %endif
 #
 Name:           python3-%{pyside_flavor}
-Version:        6.5.0
+Version:        6.5.1
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-2.0-only AND GPL-3.0-only WITH Qt-GPL-exception-1.0
@@ -35,12 +35,9 @@ Source:         https://download.qt.io/official_releases/QtForPython/pyside6/PyS
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Always-link-to-python-libraries.patch
 # PATCH-FIX-UPSTREAM
-Patch1:         0001-Fix-build-when-using-QT_FEATURE_opengles2.patch
+Patch1:         0001-CMake-Fix-installation-of-pyi-files.patch
 # SECTION common_dependencies
-# boo#1210176 - PYSIDE-2268
-BuildRequires:  clang15-devel
-BuildRequires:  llvm15-libclang13
-#!BuildIgnore:  clang16
+BuildRequires:  clang-devel
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -134,7 +131,7 @@ Requires:       %{name} = %{version}
 Python bindings for the Qt cross-platform application and UI framework
 
 %prep
-%autosetup -p1 -n %{tar_name}-%{short_version}
+%autosetup -p1 -n %{tar_name}-%{version}
 
 %build
 _libsuffix=$(echo %{_lib} | cut -b4-)
@@ -209,13 +206,18 @@ export LD_LIBRARY_PATH=%{buildroot}%{_qt6_libdir}:$LD_LIBRARY_PATH
 for dir in libminimal libother libsample libsmart; do
   export LD_LIBRARY_PATH=$PWD/sources/shiboken6/shiboken6/tests/$dir:$LD_LIBRARY_PATH
 done
+# 2023-05-30 Only fails on armv7l
+%ifarch armv7l armv7hl
+%define excluded_tests 1
+ctest_exclude_regex="smart_smart_pointer"
+%endif
 %endif
 
 %if "%{pyside_flavor}" == "pyside6"
 %define xvfb_command xvfb-run -s "-screen 0 1600x1200x16 -ac +extension GLX +render -noreset" \\
 
 %define excluded_tests 1
-# Excluded tests (last update: 2023-04-08)
+# Excluded tests (last update: 2023-05-30)
 # QtWebEngineWidgets_pyside-474-qtwebengineview fails with 'ContextResult::kTransientFailure: Failed to send GpuControl.CreateCommandBuffer'
 # QtGui_qpen_test times out
 # QtMultimediaWidgets_qmultimediawidgets aborts
@@ -226,6 +228,10 @@ ctest_exclude_regex="QtWebEngineWidgets_pyside-474-qtwebengineview|QtGui_qpen_te
 # Random failures on aarch64: registry_existence_test times out and QtWebEngineCore_web_engine_custom_scheme asserts
 %ifarch aarch64
 ctest_exclude_regex="$ctest_exclude_regex|registry_existence_test|QtWebEngineCore_web_engine_custom_scheme"
+%endif
+# Test broken by https://codereview.qt-project.org/c/pyside/pyside-setup/+/478366
+%ifarch aarch64 armv7l armv7hl
+ctest_exclude_regex="$ctest_exclude_regex|QtOpenGL_qopenglwindow_test"
 %endif
 %endif
 
