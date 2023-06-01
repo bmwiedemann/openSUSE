@@ -363,4 +363,13 @@
 - make permissions of config files more secure</comment>
     <requestid>969490</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>f692db42d8dd3c08f82855d979a82302</srcmd5>
+    <version>2.2.8</version>
+    <time>1685632774</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.8
+  https://www.keepalived.org/release-notes/Release-2.2.8.html</comment>
+    <requestid>1090101</requestid>
+  </revision>
 </revisionlist>
