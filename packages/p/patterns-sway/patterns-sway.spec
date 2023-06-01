@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-sway
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,7 @@ This particular package contains the sway patterns.
 
 
 ################################################################################
+
 %package sway
 %pattern_graphicalenvironments
 Summary:        Sway Tiling Wayland Compositor and related tools
@@ -49,15 +50,14 @@ Provides:       pattern-visible()
 
 Requires:       Mesa
 Requires:       alacritty
+Requires:       fontawesome-fonts
 Requires:       grim
-Requires:       mako
 Requires:       slurp
 Requires:       sway
 Requires:       swaybg
 Requires:       swayidle
 Requires:       swaylock
 Requires:       waybar
-Requires:       fontawesome-fonts
 Requires:       wofi
 
 Recommends:     kanshi

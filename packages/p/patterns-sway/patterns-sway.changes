@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  1 14:00:48 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Remove require on mako:
+  See https://github.com/openSUSE/openSUSEway/issues/103
+
+-------------------------------------------------------------------
 Sun Jul 10 08:56:59 UTC 2022 - Denys Kondratenko <stdden@opensuse.org>
 
 - adding fontawesome-fonts as we have waybar

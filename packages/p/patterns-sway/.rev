@@ -64,4 +64,13 @@
     <comment></comment>
     <requestid>988278</requestid>
   </revision>
+  <revision rev="9" vrev="6">
+    <srcmd5>0affba1469cbb0e886d93413663ccca2</srcmd5>
+    <version>20200619</version>
+    <time>1685632880</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove require on mako:
+  See https://github.com/openSUSE/openSUSEway/issues/103</comment>
+    <requestid>1090297</requestid>
+  </revision>
 </revisionlist>
