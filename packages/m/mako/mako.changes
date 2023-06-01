@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun  1 09:43:48 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.9:
+  * A new `makoctl history` command to display history
+  * An action name can be passed to `makoctl invoke`
+  * `makoctl list` now includes desktop-entry and urgency
+
+-------------------------------------------------------------------
 Thu Mar  2 06:39:25 UTC 2023 - Max Lin <mlin@suse.com>
 
 - Removed unknown "tray" option

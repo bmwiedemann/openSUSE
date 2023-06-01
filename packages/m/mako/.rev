@@ -88,4 +88,15 @@
     <comment></comment>
     <requestid>1069529</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c4f121368d4b37dbaf65173ffbfaeed7</srcmd5>
+    <version>1.8.0</version>
+    <time>1685632824</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.9:
+  * A new `makoctl history` command to display history
+  * An action name can be passed to `makoctl invoke`
+  * `makoctl list` now includes desktop-entry and urgency</comment>
+    <requestid>1090236</requestid>
+  </revision>
 </revisionlist>
