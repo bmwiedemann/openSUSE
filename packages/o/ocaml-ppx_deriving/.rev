@@ -7,4 +7,12 @@
     <comment>new dependency of ocaml-qcheck</comment>
     <requestid>1046305</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>31442ecf16df38190301b525f729cb99</srcmd5>
+    <version>5.2.1</version>
+    <time>1685632753</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1089870</requestid>
+  </revision>
 </revisionlist>

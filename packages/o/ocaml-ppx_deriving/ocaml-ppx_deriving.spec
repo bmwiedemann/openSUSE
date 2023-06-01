@@ -30,6 +30,7 @@ Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Type-driven code generation
 License:        MIT
+ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/ppx_deriving
 Source0:        %pkg-%version.tar.xz
