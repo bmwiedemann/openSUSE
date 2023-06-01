@@ -26,6 +26,7 @@ ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 %endif
 %define nsuffix -testsuite
 %else
+ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 %define nsuffix %nil
 %endif
 
