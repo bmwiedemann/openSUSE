@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 31 19:23:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2022.9.27:
+  * Fix scipy.ndimage DeprecationWarning
+
+-------------------------------------------------------------------
 Fri Feb 12 14:32:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python 36 build 
