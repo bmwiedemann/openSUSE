@@ -33,6 +33,7 @@ BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scikit-build}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  ninja
@@ -81,6 +82,6 @@ export skip_tests=""
 %doc README.md
 %license LICENSE
 %{python_sitearch}/rapidfuzz
-%{python_sitearch}/rapidfuzz-*.dist-info
+%{python_sitearch}/rapidfuzz-%{version}.dist-info/
 
 %changelog
