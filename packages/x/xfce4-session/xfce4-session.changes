@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon May 29 17:28:12 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.3
+  * shutdown: Do not set an error when returning TRUE
+  * logout-dialog: Fix use-after-free
+  * Use glib wrappers for memory allocation
+  * build: Fix build when there is no suspend/hibernate support
+  * build: Add suspend support for Solaris
+  * startxfce4: Fix xinit arguments order
+  * manager: Always use xfsm_manager_save_yourself_dbus() (Fixes #106)
+  * settings: Remove useless tooltip
+  * xflock4: Update fallback list
+  * logout-dialog: Lower warning level
+  * shutdown: Keep error NULL when unused
+  * cleanup: Remove dead polkit code
+  * Revert "Fallback to old method for shutdown (bug #8630)."
+  * Use g_critical() instead of g_error()
+  * Use GLib logging functions or g_printerr() instead of g_print()
+  * Use GLib logging functions instead of g_printerr()
+  * build: Fix untranslated policykit file
+  * Escape/unescape string list delimiter when saving/restoring session
+  * Replace XfceRc with GKeyFile for session file parsing
+  * Translation Updates
+
+-------------------------------------------------------------------
 Tue Mar 28 18:10:04 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.18.2

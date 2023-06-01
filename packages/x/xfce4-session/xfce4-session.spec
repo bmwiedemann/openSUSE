@@ -18,7 +18,7 @@
 
 %bcond_with git
 Name:           xfce4-session
-Version:        4.18.2
+Version:        4.18.3
 Release:        0
 Summary:        Xfce Session Manager
 License:        GPL-2.0-only
@@ -42,13 +42,14 @@ BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libwnck-3.0) >= 3.10
 BuildRequires:  pkgconfig(libxfce4panel-2.0)
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.18.2
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.15.2
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.17.2
 BuildRequires:  pkgconfig(libxfconf-0) >= 4.12.0
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.102
 BuildRequires:  pkgconfig(sm)
