@@ -18,15 +18,13 @@
 
 %bcond_with git
 Name:           xfce4-screensaver
-Version:        4.18.1
+Version:        4.18.2
 Release:        0
 Summary:        Screensaver and locker for Xfce
 License:        GPL-2.0-only
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/apps/xfce4-screensaver/start
 Source:         https://archive.xfce.org/src/apps/xfce4-screensaver/4.18/%{name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM commit 3aa15c2278c1 bsc#1210562
-Patch1:         xfce4-screensaver-manager-efifb-lockup-fix.patch
 BuildRequires:  intltool
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
@@ -38,10 +36,10 @@ BuildRequires:  pkgconfig(dbus-1) >= 0.30
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(garcon-1) >= 0.5.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libwnck-3.0) >= 3.20
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12.1
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.18.4
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.12.1
 BuildRequires:  pkgconfig(libxklavier) >= 5.2
 BuildRequires:  pkgconfig(x11) >= 1.0

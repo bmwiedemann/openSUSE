@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue May 30 08:12:32 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.2
+  * screensaver-configure: Ensure consistent dialog positioning
+  * screensaver-configure: Remove dead code
+  * screensaver-configure: Improve some strings
+  * screensaver-configure: Print errors on stderr without translating
+  * screensaver-configure: Replace single quotes with double quotes in _()
+  * screensaver-configure: Get translated strings from desktop files
+  * screensaver-configure: Fix broken translations
+  * screensaver-configure: Set dialogs modal
+  * Revert "prefs-dialog: Grey out prefs button for popsquares (no prefs)"
+  * screensaver-configure: Fix broken prefs
+  * screensaver-configure: Fix critical when closing dialog
+  * prefs-dialog: Grey out prefs button for popsquares (no prefs)
+  * Bump GTK version and remove dead code
+  * Keep "lock-on-sleep" in sync with other components via XfceScreensaver
+  * *.desktop: Distinguishing our screensaver from others (Fixes #17)
+  * Use GLib wrappers for memory allocation
+  * Fix unix.Malloc warnings from scan-build 15.0.7
+  * Fix core.uninitialized.Assign warnings from scan-build 15.0.7
+  * Fix deadcode.DeadStores warnings from scan-build 15.0.7
+  * Avoid duplicated code
+  * manager: Do not discard monitors without model and manufacturer
+  * Translation Updates
+- Remove xfce4-screensaver-manager-efifb-lockup-fix.patch
+
+-------------------------------------------------------------------
 Mon May  1 06:54:43 UTC 2023 - Takashi Iwai <tiwai@suse.com>
 
 - Fix hang up with efifb / nomodeset (bsc#1210562):
