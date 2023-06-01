@@ -1,7 +1,7 @@
 #
 # spec file for package python-girder-client
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-girder-client
-Version:        3.1.3
+Version:        3.1.20
 Release:        0
 Summary:        Python Girder client
 License:        Apache-2.0
@@ -34,7 +34,7 @@ Requires:       python-requests >= 2.4.2
 Requires:       python-requests-toolbelt
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
