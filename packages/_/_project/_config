@@ -534,6 +534,8 @@ Prefer: -busybox-sed
 Prefer: -busybox-tar
 Prefer: -busybox-util-linux
 Prefer: -podman-docker
+# have choice for /usr/bin/dbus-launch needed by gnome-session-core: dbus-1 dbus-1-x11
+Prefer: -dbus-1-x11
 
 Preinstall: aaa_base filesystem attr bash bash-sh coreutils diffutils
 Preinstall: fillup glibc grep pam permissions rpm rpm-config-SUSE sed tar
