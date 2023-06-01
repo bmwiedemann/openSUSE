@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Mon May 29 01:41:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.89.5:
+  * InputText: Reworked prev/next-word behavior to more closely
+    match Visual Studio text editor. Include '.' as a delimiter
+    and alter varying subtle behavior with how
+    blanks and separators are treated when skipping words.
+  * InputText: Fixed a tricky edge case, ensuring value is always
+    written back on the frame where IsItemDeactivated() returns
+    true, in order to allow usage without user retaining
+    underlying data. While we don't really want to
+    encourage user not retaining underlying data, in the absence
+    of a "late commit" behavior/flag we understand it may
+    be desirable to take advantage of this trick.
+  * Drag, Sliders: Fixed parsing of text input when '+' or '#'
+    format flags are used in the format string.
+  * Nav: Made Ctrl+Tab/Ctrl+Shift+Tab windowing register
+    ownership to held modifier so it doesn't interfere with other
+    code when remapping those actions.
+  * Nav: Made PageUp/PageDown/Home/End navigation also scroll
+    parent windows when necessary to make the target location
+    fully visible (same as e.g. arrow keys).
+  * ColorEdit: Fixed shading of S/V triangle in Hue Wheel mode.
+  * TabBar: Tab-bars with ImGuiTabBarFlags_FittingPolicyScroll
+    can be scrolled with horizontal mouse-wheel (or Shift + WheelY).
+  * Rendering: Using adaptive tessellation for RadioButton,
+    ColorEdit preview circles, Windows Close and Collapse Buttons.
+  * ButtonBehavior: Fixed an edge case where changing widget
+    type/behavior while active and using same id could lead to
+    an assert.
+  * Misc: Fixed ImVec2 operator[] violating aliasing rules
+    causing issue with Intel C++ compiler. (#6272) [@BayesBug]
+  * IO: Input queue trickling adjustment for touch screens.
+  * Fixed tapping on BeginTabItem() on a touch-screen.
+  * Fixed tapping on CollapsingHeader() with a close button
+    on a touch-screen.
+  * Fixed tapping on TreeNode() using
+    ImGuiTreeNodeFlags_AllowItemOverlap on a touch-screen.
+  * Fixed tapping on Selectable() using
+    ImGuiSelectableFlags_AllowItemOverlap on a touch-screen.
+  * Fixed tapping on TableHeader() on a touch-screen.
+  * IO: Added io.AddMouseSourceEvent() and ImGuiMouseSource enum.
+  * IO: Fixed support for calling io.AddXXXX functions from
+    inactive context (wrongly advertised as supported in 1.89.4).
+  * Backends: OpenGL3: Fixed GL loader crash when GL_VERSION
+    returns NULL.
+  * Backends: OpenGL3: Properly restoring "no shader program
+    bound" if it was the case prior to running the rendering
+    function.
+  * Backends: Win32: Added support for io.AddMouseSourceEvent()
+    to discriminate Mouse/TouchScreen/Pen.
+  * Backends: SDL2/SDL3: Added support for
+    io.AddMouseSourceEvent() to discriminate Mouse/TouchScreen.
+  * This is relying on SDL passing SDL_TOUCH_MOUSEID in the
+    event's 'which' field.
+  * Backends: SDL2/SDL3: Avoid calling
+    SDL_StartTextInput()/SDL_StopTextInput() as they actually
+    block text input input and don't only pertain to IME.
+  * Backends: GLFW: Added support on Win32 only for
+    io.AddMouseSourceEvent() to discriminate Mouse/TouchScreen/Pen.
+  * Backends: GLFW: Fixed key modifiers handling on secondary
+    viewports.
+  * Backends: Android: Added support for io.AddMouseSourceEvent()
+    to discriminate Mouse/TouchScreen/Pen.
+  * Backends: OSX: Added support for io.AddMouseSourceEvent() to
+    discriminate Mouse/Pen.
+  * Backends: WebGPU: Align buffers. Use WGSL shaders instead of
+    SPIR-V. Add gamma uniform.
+  * Backends: WebGPU: Reorganized to store data in
+    io.BackendRendererUserData like other backends.
+
+-------------------------------------------------------------------
+Thu Apr 13 19:42:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.89.4:
+  * Nav: Tab key goes through every items (when keyboard navigation
+    is active).
+  * Nav: Enter key works to activate most items (when keyboard
+    navigation is active).
+  * Added return value to BeginTooltip().
+  * Examples: Activated keyboard and gamepad navigation by default
+    in all examples.
+  * Various other fixes related to: Nav, Tables, Drag and Drop,
+    InputText.
+  * Various improvements to Win32, SDL2, SDL3, GLFW backends.
+  * Added a Debug Tools to facilitate testing user-code testing
+    Begin/BeginChild return value.
+  * All changes see https://github.com/ocornut/imgui/releases/tag/v1.89.4
+
+-------------------------------------------------------------------
+Thu Apr 13 19:41:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.89.3:
+  * Backends+Examples: SDL2: renamed all unnumbered references to
+    "sdl" to "sdl2".
+  * This is in prevision for the future release of SDL3 and its
+    associated backend.
+  * All changes see https://github.com/ocornut/imgui/releases/tag/v1.89.3
+
+-------------------------------------------------------------------
 Fri Jan  6 08:51:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to v1.89.2:
