@@ -78,7 +78,9 @@ $python -m doctest -v zope/event/classhandler.py
 %doc CHANGES.rst README.rst
 %{python_sitelib}/*
 
+%if 0%{?suse_version} > 1500
 %files -n %{name}-doc
+%endif
 %doc build/sphinx/html/
 
 %changelog

@@ -148,4 +148,12 @@
     <comment></comment>
     <requestid>1084328</requestid>
   </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>356707da2a402e8658d484269584045a</srcmd5>
+    <version>4.6</version>
+    <time>1685632748</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch documentation to be within the main package.</comment>
+    <requestid>1089854</requestid>
+  </revision>
 </revisionlist>

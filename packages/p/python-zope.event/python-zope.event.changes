@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 30 16:19:12 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Switch documentation to be within the main package.
+
+-------------------------------------------------------------------
 Wed May  3 11:23:16 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Use sphinx-build and do not depend on removed build_sphinx
