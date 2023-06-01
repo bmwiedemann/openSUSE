@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 30 10:57:47 UTC 2023 - Manfred Schwarb <manfred99@gmx.ch>
+
+- test suite quirks:
+  * Add patch disable-some-tests-about-char-signedness.patch, taken
+    from Debian, to disable test "TestCondition::alwaysTrueContainer"
+    which fails on "unsigned char" archs (arm, ppc)
+  * Run test suite with "-j1", as TestProcessExecutor test is flaky otherwise 
+
+-------------------------------------------------------------------
 Wed Mar 29 12:13:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - switch on Tumbleweed temporarily to gcc 12 to avoid

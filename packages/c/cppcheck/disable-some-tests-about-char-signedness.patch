@@ -1,0 +1,24 @@
+Description: Disable some tests affected by char signedness.
+Author: Joachim Reichel <reichel@debian.org>
+Bug: https://trac.cppcheck.net/ticket/11537
+
+Index: cppcheck/test/testcondition.cpp
+===================================================================
+--- cppcheck.orig/test/testcondition.cpp
++++ cppcheck/test/testcondition.cpp
+@@ -4939,6 +4939,7 @@ private:
+               "}\n");
+         ASSERT_EQUALS("[test.cpp:4]: (style) Condition 'it!=vector.end()' is always true\n", errout.str());
+ 
++#if 0
+         // #11303
+         check("void f(int n) {\n"
+               "    std::vector<char> buffer(n);\n"
+@@ -4947,6 +4948,7 @@ private:
+               "       buffer.back() == '\\0') {}\n"
+               "}\n");
+         ASSERT_EQUALS("[test.cpp:5]: (style) Condition 'buffer.back()=='\\0'' is always false\n", errout.str());
++#endif
+ 
+         // #9353
+         check("typedef struct { std::string s; } X;\n"

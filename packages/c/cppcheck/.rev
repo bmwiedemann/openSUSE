@@ -352,4 +352,12 @@
   (as mentioned on https://gcc.gnu.org/gcc-13/porting_to.html)</comment>
     <requestid>1075209</requestid>
   </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>36c6c8afc7f0fab8c1574b62a028c3c6</srcmd5>
+    <version>2.10.3</version>
+    <time>1685632844</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090242</requestid>
+  </revision>
 </revisionlist>

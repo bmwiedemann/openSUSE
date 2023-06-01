@@ -23,6 +23,7 @@ Summary:        A tool for static C/C++ code analysis
 License:        GPL-3.0-or-later
 URL:            https://github.com/danmar/cppcheck
 Source:         https://github.com/danmar/cppcheck/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         disable-some-tests-about-char-signedness.patch
 BuildRequires:  cmake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
@@ -103,6 +104,7 @@ sed -i "s|env python3|python3|g" htmlreport/cppcheck-htmlreport
 
 %check
 export CXXFLAGS="%{optflags}"
+%define _smp_mflags -j1
 %ctest
 
 %install
