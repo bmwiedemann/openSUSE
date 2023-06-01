@@ -1,7 +1,7 @@
 #
 # spec file for package docbook-toys
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -31,16 +31,16 @@ Requires:       texlive-jadetex
 Version:        1.51.0
 Release:        0
 Summary:        DocBook Tools
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/DocBook
-Source:         http://www.suse.de/~ke/docbook-toys/docbook-toys-%{version}.tar.bz2
+Source:         https://users.suse.com/~ke/docbook-toys/docbook-toys-%{version}.tar.bz2
 Source1:        %{name}-README.SUSE
 Patch0:         docbook-toys-suffix.diff
 Patch1:         docbook-toys-outdir.diff
 Patch2:         docbook-toys-1.51.0-pdf-exit.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-Url:            http://www.suse.de/~ke/docbook-toys/
+URL:            https://users.suse.com/~ke/docbook-toys/
 
 %description
 A shell script to convert SGML documents based on the DocBook DTD.
@@ -81,8 +81,9 @@ popd
 %files
 %defattr(-, root, root)
 %doc README.SUSE
-%doc AUTHORS COPYING NEWS README THANKS TODO
+%doc AUTHORS NEWS README THANKS TODO
 %doc texmf.conf.diff
+%license COPYING
 %{_bindir}/*
 %{_datadir}/sgml/docbook/docbook-toys
 %config %{sysconfdir}/%{name}

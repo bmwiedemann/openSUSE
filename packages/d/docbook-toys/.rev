@@ -132,4 +132,14 @@
     <comment></comment>
     <requestid>540412</requestid>
   </revision>
+  <revision rev="20" vrev="439">
+    <srcmd5>8b454f304d3d0ebaa0cfafcc89657a2d</srcmd5>
+    <version>1.51.0</version>
+    <time>1685632746</time>
+    <user>dimstar_suse</user>
+    <comment>- Set URL of URL and Source to
+  https://users.suse.com/~ke/docbook-toys/.
+- Mark COPYING as %license.</comment>
+    <requestid>1089808</requestid>
+  </revision>
 </revisionlist>
