@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cd7b2563a24649f258c703522401e172</srcmd5>
+    <version>0.22.1</version>
+    <time>1685632760</time>
+    <user>dimstar_suse</user>
+    <comment>new package python-libtmux: Python API / wrapper for tmux, required by ansible-navigator and ansible-sign</comment>
+    <requestid>1090139</requestid>
+  </revision>
+</revisionlist>
