@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 31 05:22:06 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.3.3:
+  * [backport][release_2.3] Add `python_requires = >= 3.8` (#1206)
+    by @Shrews in
+    https://github.com/ansible/ansible-runner/pull/1212
+  * [backport][release_2.3] Add license and classifiers metadata
+    (#1213) by @Shrews in
+    https://github.com/ansible/ansible-runner/pull/1214
+  * [2.3 backport] Remove pkg_resources use (#1224) by
+    @nitzmahone in
+    https://github.com/ansible/ansible-runner/pull/1230
+
+-------------------------------------------------------------------
 Mon May 15 18:34:56 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - modify %if-condition to allow building for python3.10 or
