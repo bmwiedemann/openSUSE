@@ -520,6 +520,7 @@ export CFLAGS_SHARED
 	--with-normal		\
 	--with-manpage-renames=${PWD}/man/man_db.renames.in	\
 	--with-manpage-aliases	\
+	--with-manpage-symlinks	\
 	--with-ospeed=speed_t	\
 %if 0%{?suse_version} > 1310
 	--with-gpm=$(readlink %{_libdir}/libgpm.so) \

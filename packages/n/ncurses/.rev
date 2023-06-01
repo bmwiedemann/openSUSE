@@ -4138,4 +4138,12 @@
 - Delete patch ncurses-6.4-makeuseof_secure_open.dif as now upstream</comment>
     <requestid>1085480</requestid>
   </revision>
+  <revision rev="240" vrev="13">
+    <srcmd5>cc6f5ab21fe8453e4b2e3fb40fe10e7a</srcmd5>
+    <version>unknown</version>
+    <time>1685632720</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1089508</requestid>
+  </revision>
 </revisionlist>

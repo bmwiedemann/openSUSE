@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May 22 06:21:42 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20230520
+  + fixes for compiler warnings in MinGW environments.
+
+-------------------------------------------------------------------
+Mon May 15 09:05:32 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20230514
+  + modify test-package "ncurses6-doc" to use manpage-aliases, which in
+    turn required a change to the configure script to factor in the
+    extra-suffix option when deriving alias names.
+  + add mode 1004 to xterm+sm+1006 from xterm #380 -TD
+- Port and correct offsets of patch ncurses-6.4.dif
+
+-------------------------------------------------------------------
 Mon May  8 08:51:32 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20230506
