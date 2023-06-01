@@ -21,7 +21,7 @@
 # %define   qt_version      5.15.5
 
 Name:           qt5platform-plugins
-Version:        5.6.9
+Version:        5.6.12
 Release:        0
 Summary:        Qt platform integration plugins
 License:        LGPL-3.0-or-later
@@ -108,11 +108,13 @@ fi
 # sed -i '/wayland/d' qt5platform-plugins.pro
 
 %build
+export Qt_version="`rpm -q --queryformat '%%{VERSION}' libQt5Core5|cut -c 1-6`"
 qmake-qt5 DEFINES+=QT_NO_DEBUG_OUTPUT \
           PREFIX=%{_prefix} \
           LIB_INSTALL_DIR=%{_libdir} \
           LIBSUFFIX=%{lib} \
-          CONFIG+=DISABLE_WAYLAND
+          CONFIG+=DISABLE_WAYLAND \
+          QT_XCB_PRIVATE_INCLUDE=%{_builddir}/%{name}-%{version}/xcb/libqt5xcbqpa-dev/$Qt_version
 %make_build
 
 %install

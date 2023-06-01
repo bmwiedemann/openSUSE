@@ -148,4 +148,12 @@
 - Disable wayland support (forwarded request 1083159 from hillwood)</comment>
     <requestid>1083160</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b3684342d476b06a9739abc6ddd75e46</srcmd5>
+    <version>5.6.12</version>
+    <time>1685632795</time>
+    <user>dimstar_suse</user>
+    <comment>- Refresh support-Qt-5_15_9.patch, fix crash bug (forwarded request 1090214 from hillwood)</comment>
+    <requestid>1090219</requestid>
+  </revision>
 </revisionlist>

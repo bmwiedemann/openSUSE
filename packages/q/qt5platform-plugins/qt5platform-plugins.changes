@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun  1 08:00:09 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Refresh support-Qt-5_15_9.patch, fix crash bug 
+
+-------------------------------------------------------------------
+Wed May 31 08:52:06 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.6.12
+  * Fix bugs
+
+-------------------------------------------------------------------
 Wed Apr 26 14:37:57 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.6.9
