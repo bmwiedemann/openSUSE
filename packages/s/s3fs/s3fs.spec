@@ -1,7 +1,7 @@
 #
 # spec file for package s3fs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           s3fs
-Version:        1.91
+Version:        1.92
 Release:        0
 Summary:        FUSE file system backed by Amazon S3 bucket
-License:        GPL-2.0-only
+License:        GPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://github.com/s3fs-fuse/s3fs-fuse
 Source0:        https://github.com/s3fs-fuse/s3fs-fuse/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz

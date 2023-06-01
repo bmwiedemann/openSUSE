@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue May 23 20:27:41 UTC 2023 - Julio González Gil <julio@juliogonzalez.es>
+
+- Update to version 1.92
+  * New option: streamupload
+  * New option: bucket_size
+  * New option: credlib and credlib_ops
+  * Enable noobj_cache by default
+  * Fixed a bug that regular files could not be created by mknod
+  * Added stat information to the mount point
+  * Enable notsup_compat_dir by default
+  * Set mtime/ctime/atime of all objects as nanosecond
+  * Compatibility with OpenSSL 3.0
+  * Added proxy and proxy_cred_file option
+  * Changed to rename cache files when renaming large files
+- Adjust license to the correct value: GPL-2.0-or-later
+
+-------------------------------------------------------------------
 Tue Mar  8 18:44:15 UTC 2022 - Julio González Gil <julio@juliogonzalez.es>
 
 - Update to version 1.91 (bsc#1198900)
