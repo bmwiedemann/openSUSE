@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jun 01 05:26:32 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.29.0:
+  * Implement referencing.retrieval.to_cached_resource
+  * Ensure more things raise non-subclassable exceptions.
+
+-------------------------------------------------------------------
+Thu Jun 01 05:24:45 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.28.6:
+  * Move to using Trusted Publishers.
+  * Ensure twine checks the README in strict mode.
+  * [pre-commit.ci] pre-commit autoupdate
+  * Enable markdown coverage in CI.
+  * Try again with the extra coverage job in CI.
+
+-------------------------------------------------------------------
 Thu May 25 06:24:03 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.28.5:
