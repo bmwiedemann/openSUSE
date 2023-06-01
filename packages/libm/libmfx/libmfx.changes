@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 29 01:36:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.2.2:
+  * [Encode] Fix JPEG payload insertion on Linux
+  * Update checking of bitsream left size (#3033)
+  * [Decode] Fix memory out-of-bounds issue for VP9
+  * [Decode] Fix memory out-of-bounds issue for VP8
+  * [Decode]Remove AVC level 6.0 check 
+  * [Decode]Fix hevc decode issue
+  * hevce: use Low Power mode for RGB encoding by default 
+
+-------------------------------------------------------------------
 Mon Mar  6 12:09:56 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Add upstream gcc13-fix.patch patch.

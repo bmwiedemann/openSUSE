@@ -278,4 +278,19 @@
     <comment></comment>
     <requestid>1070123</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0e01f7c8dd92769e00e838d867a28778</srcmd5>
+    <version>23.2.2</version>
+    <time>1685632738</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.2.2:
+  * [Encode] Fix JPEG payload insertion on Linux
+  * Update checking of bitsream left size (#3033)
+  * [Decode] Fix memory out-of-bounds issue for VP9
+  * [Decode] Fix memory out-of-bounds issue for VP8
+  * [Decode]Remove AVC level 6.0 check 
+  * [Decode]Fix hevc decode issue
+  * hevce: use Low Power mode for RGB encoding by default</comment>
+    <requestid>1089736</requestid>
+  </revision>
 </revisionlist>
