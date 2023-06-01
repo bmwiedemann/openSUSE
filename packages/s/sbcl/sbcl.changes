@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed May 31 12:25:01 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.3.5
+  * enhancement: Unicode support has been updated to support version 15.0.0 of
+    the Unicode standard, including addition of characters and their collation
+    keys, and refinements to grapheme-, word- and line-breaking algorithms.
+  * new contrib module: an interface to perf, a performance-analysing tool for
+    Linux.  (thanks to Luke Gorrie and Philipp Marek)
+  * platform support:
+    ** on x86-64, prefer using the LEAVE instruction rather than MOV/POP at
+       function epilogue to restore RSP/RBP.
+    ** support SB-FUTEX on OpenBSD.  (thanks to Elijah Stone)
+    ** support SB-FUTEX on Darwin/arm64.  (thanks to Elijah Stone)
+    ** fix compilation with clang on Windows.  (lp#2018601, thanks to Andrew)
+  * bug fix: inspecting objects with unbound slots produces output that is less
+    confusable with the string "unbound".  (thanks to Nicolas Martyanoff)
+  * optimization: make TN-REFs doubly-linked, allowing faster deletion.
+    (lp#2018124, reported by Matt Kaufmann)
+  * optimization: MAPCAN/MAPCON are less accidentally quadratic.  (thanks to
+    Gleefre)
+  * optimization: improved arithmetic operations in the form of 
+    (the word-sized-type (-+* word-sized word-sized)) when the result can
+    overflow. For arm64 and x86-64.
+
+-------------------------------------------------------------------
 Tue May  2 19:30:48 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.3.4
