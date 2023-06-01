@@ -39,4 +39,14 @@
     <comment>- Do not build with Python 3.6, due to no NumPy.</comment>
     <requestid>886825</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b1332cc3b1dda6fe6743ef54178177e3</srcmd5>
+    <version>1.3.4</version>
+    <time>1685632761</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.3.4:
+  * fix indexes() returning an empty float64 array
+  * Change to linalg.pinv()</comment>
+    <requestid>1090057</requestid>
+  </revision>
 </revisionlist>
