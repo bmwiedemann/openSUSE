@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue May 30 09:08:35 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 8.1.2:
+  * Bugfixes:
+    - configure: quote the assignments for run-compiler
+    - configure: without pkg-config and no custom path, use -lnghttp2
+    - curl: cache the --trace-time value for a second
+    - http2: fix EOF handling on uploads with auth negotiation
+    - http3: send EOF indicator early as possible
+    - lib1560: verify more scheme guessing
+    - lib: remove unused functions, make single-use static
+    - libcurl.m4: remove trailing 'dnl' that causes this to break autoconf
+    - libssh: when keyboard-interactive auth fails, try password
+    - misc: fix spelling mistakes
+    - page-header: mention curl version and how to figure out current release
+    - page-header: minor wording polish in the URL segment
+    - scripts/singleuse.pl: add more API calls
+    - urlapi: remove superfluous host name check
+
+-------------------------------------------------------------------
 Tue May 23 10:14:39 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 8.1.1:
