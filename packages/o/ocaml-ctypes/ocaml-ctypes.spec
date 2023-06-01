@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-ctypes
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,9 +21,12 @@
 %if "%build_flavor" == "testsuite"
 %if %{without ocaml_ctypes_testsuite}
 ExclusiveArch:  do-not-build
+%else
+ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 %endif
 %define nsuffix -testsuite
 %else
+ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 %define nsuffix %nil
 %endif
 
@@ -39,7 +42,7 @@ URL:            https://opam.ocaml.org/packages/ctypes
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune >= 2.8
-BuildRequires:  ocaml-rpm-macros >= 20210911
+BuildRequires:  ocaml-rpm-macros >= 20230101
 BuildRequires:  ocamlfind(bigarray-compat)
 BuildRequires:  ocamlfind(bisect_ppx)
 BuildRequires:  ocamlfind(dune.configurator)

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May 21 21:21:21 UTC 2023 - ohering@suse.de
+
+- JaneStreet libraries are 64bit, this pkg depends on them
+
+-------------------------------------------------------------------
 Tue Apr 26 12:58:24 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.20.1

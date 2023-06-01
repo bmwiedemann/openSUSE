@@ -23,4 +23,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>975184</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>9e546a9282f11e2f337f8c6524b66387</srcmd5>
+    <version>0.20.1</version>
+    <time>1685632757</time>
+    <user>dimstar_suse</user>
+    <comment>- JaneStreet libraries are 64bit, this pkg depends on them</comment>
+    <requestid>1090291</requestid>
+  </revision>
 </revisionlist>
