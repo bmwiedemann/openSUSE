@@ -15,4 +15,18 @@
     <comment>- skip python 36</comment>
     <requestid>871481</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3f1a9710bced77e057b208932ec08b90</srcmd5>
+    <version>0.6.2</version>
+    <time>1685632770</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.2:
+  * build doc fix, use sphinx4, mathjax2, html_css_files
+  * New default driving function for `sfs.td.wfs.point_25d()` for
+    reference curve
+  * New function `sfs.fd.source.line_bandlimited()` computing the
+    sound field of a spatially bandlimited line source
+  * Drop support for Python 3.5</comment>
+    <requestid>1090092</requestid>
+  </revision>
 </revisionlist>
