@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue May 30 08:04:34 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.2
+  * Fix typos in previous backported commit
+  * Keep "lock-on-sleep" in sync with other components via XfceScreensaver
+  * power: Fix old typo
+  * Do not check repeatedly for logind running
+  * Write on stderr when appropriate
+  * build: Require gio-unix-2.0
+  * settings: Keep a ref on device to avoid use-after-free (Fixes #56)
+  * dpms: Add missing sanity checks (Fixes #163)
+  * Fix Xfconf memory management
+  * Update bug report address
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Feb 10 10:48:04 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.18.1

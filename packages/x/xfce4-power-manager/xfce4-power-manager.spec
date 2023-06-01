@@ -19,7 +19,7 @@
 %define panel_version 4.12.0
 %bcond_with git
 Name:           xfce4-power-manager
-Version:        4.18.1
+Version:        4.18.2
 Release:        0
 Summary:        Power Management for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
@@ -35,6 +35,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.66
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.66
 BuildRequires:  pkgconfig(glib-2.0) >= 2.66
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.66
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.66
@@ -42,7 +43,7 @@ BuildRequires:  pkgconfig(gthread-2.0) >= 2.66
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24
 BuildRequires:  pkgconfig(libnotify) >= 0.4.1
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.18.2
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.18.4
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.12.0
 BuildRequires:  pkgconfig(libxfconf-0) >= 4.12.0
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.100
