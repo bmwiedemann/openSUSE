@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 30 07:51:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.70.1:
+  * Add repoid to solver errors for RPMs (RhBug:2179413)
+  * Avoid using obsolete RPM API and drop redundant calls
+  * Remove DNF from list of protected packages
+- avoid bashism
+
+-------------------------------------------------------------------
 Mon Feb 27 18:10:01 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libdnf 0.70.0:

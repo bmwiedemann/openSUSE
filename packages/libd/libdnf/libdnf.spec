@@ -34,7 +34,7 @@
 %define devname %{name}-devel
 
 Name:           libdnf
-Version:        0.70.0
+Version:        0.70.1
 Release:        0
 Summary:        Library providing C and Python APIs atop libsolv
 License:        LGPL-2.1-or-later
@@ -181,7 +181,7 @@ sed -e "s/sphinx-build-3/sphinx-build-%{python3_version}/" -i docs/hawkey/CMakeL
 # library, so we force it by creating an LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 
-if [ "$(id -u)" == "0" ] ; then
+if [ "$(id -u)" = "0" ] ; then
         cat <<ERROR 1>&2
 Package tests cannot be run under superuser account.
 Please build the package as non-root user.
