@@ -1,7 +1,7 @@
 #
 # spec file for package prometheus-sap_host_exporter
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,29 +18,23 @@
 
 Name:           prometheus-sap_host_exporter
 # Version will be processed via set_version source service
-Version:        0.5.1+git.1593777035.a5d05f8
+Version:        0.6.0+git.1685628435.48c4099
 Release:        0
-Summary:        Prometheus exporter for SAP systems (a.k.a. NetWeaver)
 License:        Apache-2.0
+Summary:        Prometheus exporter for SAP hosts
 Group:          System/Monitoring
 URL:            https://github.com/SUSE/sap_host_exporter
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 ExclusiveArch:  aarch64 x86_64 ppc64le s390x
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  go >= 1.12
+BuildRequires:  golang(API) >= 1.20
 Provides:       sap_host_exporter = %{version}-%{release}
 Provides:       prometheus(sap_host_exporter) = %{version}-%{release}
-# Unlike C/C++ packages, Golang packages do not have header files. They are statically built so the main package is also the devel package.
-Provides:       %{name}-devel = %{version}
-Provides:       %{name}-devel-static = %{version}
-
-# Make sure that the binary is not getting stripped.
-%undefine _build_create_debug
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 %description
-Prometheus exporter for Pacemaker HA clusters metrics
+A Prometheus metrics exporter that connects to the SAPControl web interface
+to collect data about SAP systems like NetWeaver and S4/HANA.
 
 %prep
 %setup -q            # unpack project sources
@@ -52,6 +46,7 @@ Prometheus exporter for Pacemaker HA clusters metrics
 
 export CGO_ENABLED=0
 go build -mod=vendor \
+         -buildmode=pie \
          -ldflags="-s -w -X main.version=%{version}" \
          -o %{shortname}
 

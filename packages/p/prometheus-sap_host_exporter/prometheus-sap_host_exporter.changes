@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jun  1 14:34:20 2023 UTC - shap-staff@suse.de
+
+- Release 0.6.0
+
+  ## What's Changed
+  * Fix minor typo on spec by @MalloZup in https://github.com/SUSE/sap_host_exporter/pull/50
+  * Fix Datasource named ${DS_PROMETHEUS} was not found by @MalloZup in https://github.com/SUSE/sap_host_exporter/pull/53
+  * fix exporter package description by @stefanotorresi in https://github.com/SUSE/sap_host_exporter/pull/56 (bsc#1211311)
+  * make the sapcontrol SOAP XML webservice client importable by @stefanotorresi in https://github.com/SUSE/sap_host_exporter/pull/59
+  * fix typo by @aleksei-burlakov in https://github.com/SUSE/sap_host_exporter/pull/63
+  * remove the download task from Makefile by @stefanotorresi in https://github.com/SUSE/sap_host_exporter/pull/60
+  * Check if the process contains instead of matches by @tester22 in https://github.com/SUSE/sap_host_exporter/pull/65
+  * Bump github.com/prometheus/client_golang from 1.1.0 to 1.11.1 by @dependabot in https://github.com/SUSE/sap_host_exporter/pull/67
+  * Bump github.com/prometheus/client_golang from 1.11.1 to 1.15.1 by @dependabot in https://github.com/SUSE/sap_host_exporter/pull/70
+  * Bump github.com/sirupsen/logrus from 1.6.0 to 1.9.2 by @dependabot in https://github.com/SUSE/sap_host_exporter/pull/69
+  * Bump github.com/hooklift/gowsdl from 0.3.2-0.20200216020636-7a3e6bce010b to 0.5.0 by @dependabot in https://github.com/SUSE/sap_host_exporter/pull/68
+  * Update required Go version to 1.20 (bsc#1208270)
+
+  **Full Changelog**: https://github.com/SUSE/sap_host_exporter/compare/0.5.1...0.6.0
+
+-------------------------------------------------------------------
 Fri Jul  3 12:32:12 2020 UTC - shap-staff@suse.de
 
 - Release 0.5.1
