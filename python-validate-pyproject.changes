@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 30 10:17:06 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.13:
+  * Make it clear when using input from ``stdin``, #96
+  * Fix summary for ``allOf``, #100
+  * ``setuptools`` plugin:
+    * Improve validation of ``attr`` directives, #101
+
+-------------------------------------------------------------------
 Fri May 12 09:59:00 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 0.12.2:
