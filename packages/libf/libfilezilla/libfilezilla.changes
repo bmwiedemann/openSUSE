@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 29 08:27:38 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.43.0:
+  * Added fz::tls_layer::generate_cert_from_csr
+  * fz::event_loop performance improvements when timers are in use
+  * Further HTTP client fixes
+  * Small HTTP client improvements to force IPv4/IPv6 for new connections,
+    add a header count limit, and to make abuffer pool optional
+
+-------------------------------------------------------------------
 Fri Feb 24 15:15:41 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.41.1

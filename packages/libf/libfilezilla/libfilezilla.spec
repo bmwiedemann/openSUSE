@@ -16,27 +16,22 @@
 #
 
 
-%define major		35
+%define major		39
 %define libname		%{name}%{major}
 %define develname	%{name}-devel
 Name:           libfilezilla
-Version:        0.41.1
+Version:        0.43.0
 Release:        0
 Summary:        C++ library for filezilla
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://lib.filezilla-project.org/
-Source0:        https://download.filezilla-project.org/libfilezilla/%{name}-%{version}.tar.bz2
+Source0:        https://download.filezilla-project.org/libfilezilla/%{name}-%{version}.tar.xz
 Patch0:         %{name}-date-time.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
-%if 0%{?suse_version} > 1500
-BuildRequires:  gcc-c++
-%else
-BuildRequires:  gcc8-c++
-%endif
 BuildRequires:  graphviz
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -46,6 +41,11 @@ BuildRequires:  pkgconfig(gnutls) >= 3.7.0
 BuildRequires:  pkgconfig(hogweed) >= 3.1
 BuildRequires:  pkgconfig(nettle) >= 3.1
 Recommends:     %{name}-lang
+%if 0%{?suse_version} > 1500
+BuildRequires:  gcc-c++
+%else
+BuildRequires:  gcc8-c++
+%endif
 
 %description
 libfilezilla is C++ library, offering some basic functionality to
@@ -77,9 +77,6 @@ Requires:       %{libname} = %{version}-%{release}
 
 %description -n	%{develname}
 Files needed for development with %{name}.
-
-
-
 
 
 # Need %%lang_package expanded for an extra conflict with an old library package
