@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 15 08:01:39 UTC 2023 - Marius Tomaschewski <mt@suse.com>
+
+- Apply upstream fix for denial of service via the bgp_capability_llgr()
+  function (bsc#1211248,CVE-2023-31489,gh#FRRouting/frr#13098).
+  [+ 0006-bgpd-Check-7-bytes-for-Long-lived-Graceful-Restart-c.patch]
+- Apply upstream fix for denial of service via the bgp_attr_psid_sub()
+  function (bsc#1211249,CVE-2023-31490,gh#FRRouting/frr#13099).
+  [+ 0007-bgpd-Ensure-stream-received-has-enough-data.patch]
+
+-------------------------------------------------------------------
 Mon Apr  3 14:00:27 UTC 2023 - Marius Tomaschewski <mt@suse.com>
 
 - Enable pim6d providing PIMv6 support (bsc#1206234)

@@ -44,6 +44,8 @@ Patch2:         harden_frr.service.patch
 Patch3:         0003-tools-Run-as-FRR_USER-install-chown-commands-to-avoi.patch
 Patch4:         0004-tools-remove-backslash-from-declare-check-regex.patch
 Patch5:         0005-root-ok-in-account-frr.pam.patch
+Patch6:         0006-bgpd-Check-7-bytes-for-Long-lived-Graceful-Restart-c.patch
+Patch7:         0007-bgpd-Ensure-stream-received-has-enough-data.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison >= 2.7
@@ -187,6 +189,8 @@ developing OSPF-API and frr applications.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
+%patch7 -p1
 
 %build
 # GCC LTO objects must be "fat" to avoid assembly errors
