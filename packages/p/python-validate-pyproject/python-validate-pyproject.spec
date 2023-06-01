@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-validate-pyproject
-Version:        0.12.2
+Version:        0.13
 Release:        0
 Summary:        Validation library and CLI tool for checking on 'pyprojecttoml'
 License:        BSD-3-Clause AND MIT AND MPL-2.0
