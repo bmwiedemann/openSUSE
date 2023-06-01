@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 30 09:21:12 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- Remove URLs from keyring and generated patch as these can change
+  at whim of upstream servers. Keep the references in comments so
+  they are still references for the humans
+- fixes compilation on s390x by not turning on additional compilation
+  warnings which in turn results in -fanalyze resulting false
+  analysis
+
+-------------------------------------------------------------------
 Tue Oct 25 08:36:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - refresh keyring
