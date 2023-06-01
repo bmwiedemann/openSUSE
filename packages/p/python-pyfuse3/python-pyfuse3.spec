@@ -16,17 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %define pname   pyfuse3
+%{?sle15_python_module_pythons}
 Name:           python-%{pname}
-Version:        3.2.2
+Version:        3.2.3
 Release:        0
 Summary:        Python Bindings for the low-level FUSE3 API
 License:        LGPL-2.1-or-later
 URL:            https://github.com/libfuse/pyfuse3
 Source:         https://files.pythonhosted.org/packages/source/p/%{pname}/%{pname}-%{version}.tar.gz
-BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module Cython >= 0.29}
 BuildRequires:  %{python_module devel >= 3.5}
 BuildRequires:  %{python_module pytest >= 3.4.0}
 # upstream use: pytest-trio >= 0.15

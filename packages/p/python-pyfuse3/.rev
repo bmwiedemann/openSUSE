@@ -90,4 +90,23 @@
 - drop 0001-timestamp-rounding-tests-avoid-y2038-issue.patch (upstream)</comment>
     <requestid>1056834</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f8b68f02fb391c919844ac5dba4c48fb</srcmd5>
+    <version>3.2.3</version>
+    <time>1685632796</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.3:
+  * cythonize with latest Cython 0.29.34 (brings Python 3.12
+    support)
+  * add a minimal pyproject.toml, require setuptools
+  * tests: fix integer overflow on 32-bit arches, fixes #47
+  * test: Use shutil.which() instead of external which(1) program
+  * setup.py: catch more generic OSError when searching Cython,
+    fixes #63
+  * setup.py: require Cython &gt;= 0.29
+  * fix basedir computation in setup.py (fix pip install -e .)
+  * use sphinx &lt; 6.0 due to compatibility issues with more recent
+    versions</comment>
+    <requestid>1090226</requestid>
+  </revision>
 </revisionlist>
