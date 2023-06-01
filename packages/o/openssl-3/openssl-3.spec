@@ -22,7 +22,7 @@
 %define man_suffix 3ssl
 Name:           openssl-3
 # Don't forget to update the version in the "openssl" meta-package!
-Version:        3.0.8
+Version:        3.1.1
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 License:        Apache-2.0
@@ -46,6 +46,10 @@ Patch6:         openssl-no-date.patch
 # Add crypto-policies support
 Patch7:         openssl-Add-support-for-PROFILE-SYSTEM-system-default-cipher.patch
 Patch8:         openssl-Override-default-paths-for-the-CA-directory-tree.patch
+# PATCH-FIX-OPENSUSE: Fix compiler error "initializer element is not constant" on s390
+Patch9:         openssl-z16-s390x.patch
+# PATCH-FIX-UPSTREAM: bsc#1209430 Upgrade OpenSSL from 3.0.8 to 3.1.0 in TW
+Patch10:        openssl-Add_support_for_Windows_CA_certificate_store.patch
 
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
@@ -54,14 +58,14 @@ Requires:       openssl
 Conflicts:      ssl
 Provides:       ssl
 Provides:       openssl(cli)
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
-Requires:       crypto-policies
-%endif
 # Needed for clean upgrade path, boo#1070003
 Obsoletes:      openssl-1_0_0
 # Needed for clean upgrade from former openssl-1_1_0, boo#1081335
 Obsoletes:      openssl-1_1_0
 %{?suse_build_hwcaps_libs}
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+Requires:       crypto-policies
+%endif
 
 %description
 OpenSSL is a software library to be used in applications that need to
@@ -71,16 +75,21 @@ OpenSSL contains an implementation of the SSL and TLS protocols.
 
 %package -n libopenssl3
 Summary:        Secure Sockets and Transport Layer Security
-License:        Apache-2.0
+BuildRequires:  fipscheck
+Recommends:     ca-certificates-mozilla
+Conflicts:      %{name} < %{version}-%{release}
+# Needed for clean upgrade from former openssl-1_1_0, boo#1081335
+Obsoletes:      libopenssl1_1_0
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 Requires:       crypto-policies
 %endif
-Recommends:     ca-certificates-mozilla
-# install libopenssl and libopenssl-hmac close together (bsc#1090765)
-Suggests:       libopenssl3-hmac = %{version}-%{release}
+# Merge back the hmac files bsc#1185116
+Provides:       libopenssl3-hmac = %{version}-%{release}
+Obsoletes:      libopenssl3-hmac < %{version}-%{release}
 # Needed for clean upgrade from former openssl-1_1_0, boo#1081335
-Obsoletes:      libopenssl1_1_0
-Conflicts:      %{name} < %{version}-%{release}
+Obsoletes:      libopenssl1_1_0-hmac
+# Needed for clean upgrade from SLE-12 openssl-1_0_0, bsc#1158499
+Obsoletes:      libopenssl-1_0_0-hmac
 
 %description -n libopenssl3
 OpenSSL is a software library to be used in applications that need to
@@ -90,13 +99,12 @@ OpenSSL contains an implementation of the SSL and TLS protocols.
 
 %package -n libopenssl-3-devel
 Summary:        Development files for OpenSSL
-License:        Apache-2.0
 Requires:       libopenssl3 = %{version}
 Requires:       pkgconfig(zlib)
 Recommends:     %{name} = %{version}
-Conflicts:      libressl-devel
 # Conflicting names with libopenssl-1_1-devel
 Conflicts:      libopenssl-1_1-devel
+Conflicts:      libressl-devel
 # Needed for clean upgrade from former openssl-1_1_0, boo#1081335
 Obsoletes:      libopenssl-1_1_0-devel
 # Needed for clean upgrade from SLE-12 openssl-1_0_0, bsc#1158499
@@ -108,7 +116,6 @@ that want to make use of the OpenSSL C API.
 
 %package doc
 Summary:        Additional Package Documentation
-License:        Apache-2.0
 Conflicts:      openssl-doc
 Provides:       openssl-doc = %{version}
 Obsoletes:      openssl-doc < %{version}
@@ -117,20 +124,6 @@ BuildArch:      noarch
 %description doc
 This package contains optional documentation provided in addition to
 this package's base documentation.
-
-%package -n libopenssl3-hmac
-Summary:        HMAC files for FIPS 140-3 integrity checking of the openssl shared libraries
-License:        BSD-3-Clause
-Requires:       libopenssl3 = %{version}-%{release}
-BuildRequires:  fipscheck
-# Needed for clean upgrade from former openssl-1_1_0, boo#1081335
-Obsoletes:      libopenssl1_1_0-hmac
-# Needed for clean upgrade from SLE-12 openssl-1_0_0, bsc#1158499
-Obsoletes:      libopenssl-1_0_0-hmac
-
-%description -n libopenssl3-hmac
-The FIPS compliant operation of the openssl shared libraries is NOT
-possible without the HMAC hashes contained in this package!
 
 %prep
 %autosetup -p1 -n %{_rname}-%{version}
@@ -179,7 +172,7 @@ perl configdata.pm --dump
 %check
 # Relax the crypto-policies requirements for the regression tests
 # Revert patch8 before running tests
-patch -p1 -R < %{P:8}
+patch -p1 -R < %{PATCH8}
 export OPENSSL_SYSTEM_CIPHERS_OVERRIDE=xyz_nonexistent_file
 
 export MALLOC_CHECK_=3
@@ -212,8 +205,8 @@ rm -f %{buildroot}%{ssletcdir}/ct_log_list.cnf.dist
 cp %{buildroot}%{ssletcdir}/openssl.cnf %{buildroot}%{ssletcdir}/openssl-orig.cnf
 
 # Create openssl ca-certificates dir required by nodejs regression tests [bsc#1207484]
-mkdir -p %{buildroot}/var/lib/ca-certificates/openssl
-install -d -m 555 %{buildroot}/var/lib/ca-certificates/openssl
+mkdir -p %{buildroot}%{_localstatedir}/lib/ca-certificates/openssl
+install -d -m 555 %{buildroot}%{_localstatedir}/lib/ca-certificates/openssl
 
 # Remove the fipsmodule.cnf because FIPS module is loaded automatically
 rm -f %{buildroot}%{ssletcdir}/fipsmodule.cnf
@@ -263,8 +256,6 @@ fi
 %dir %{_libdir}/ossl-modules
 %{_libdir}/ossl-modules/fips.so
 %{_libdir}/ossl-modules/legacy.so
-
-%files -n libopenssl3-hmac
 %{_libdir}/.libssl.so.%{sover}.hmac
 %{_libdir}/.libcrypto.so.%{sover}.hmac
 
@@ -291,8 +282,8 @@ fi
 %attr(700,root,root) %{ssletcdir}/private
 %dir %{_datadir}/ssl
 %{_datadir}/ssl/misc
-%dir /var/lib/ca-certificates/
-%dir /var/lib/ca-certificates/openssl
+%dir %{_localstatedir}/lib/ca-certificates/
+%dir %{_localstatedir}/lib/ca-certificates/openssl
 %{_bindir}/%{_rname}
 %{_bindir}/c_rehash
 %{_mandir}/man1/*

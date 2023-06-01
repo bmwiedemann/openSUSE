@@ -79,4 +79,41 @@
     <comment></comment>
     <requestid>1070585</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>513a2fd43d1f2479c6b06e4b03f9833e</srcmd5>
+    <version>3.1.1</version>
+    <time>1685632722</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.1:
+  * Restrict the size of OBJECT IDENTIFIERs that OBJ_obj2txt will translate
+    (CVE-2023-2650, bsc#1211430)
+  * Multiple algorithm implementation fixes for ARM BE platforms.
+  * Added a -pedantic option to fipsinstall that adjusts the various settings
+    to ensure strict FIPS compliance rather than backwards compatibility.
+  * Fixed buffer overread in AES-XTS decryption on ARM 64 bit platforms which
+    happens if the buffer size is 4 mod 5 in 16 byte AES blocks. This can
+    trigger a crash of an application using AES-XTS decryption if the memory
+    just after the buffer being decrypted is not mapped. Thanks to Anton
+    Romanov (Amazon) for discovering the issue. (CVE-2023-1255, bsc#1210714)
+  * Add FIPS provider configuration option to disallow the use of truncated
+    digests with Hash and HMAC DRBGs (q.v. FIPS 140-3 IG D.R.). The
+    option '-no_drbg_truncated_digests' can optionally be supplied
+    to 'openssl fipsinstall'.
+  * Corrected documentation of X509_VERIFY_PARAM_add0_policy() to mention that
+    it does not enable policy checking. Thanks to David Benjamin for
+    discovering this issue. (CVE-2023-0466, bsc#1209873)
+  * Fixed an issue where invalid certificate policies in leaf certificates are
+    silently ignored by OpenSSL and other certificate policy checks are
+    skipped for that certificate. A malicious CA could use this to
+    deliberately assert invalid certificate policies in order to circumvent
+    policy checking on the certificate altogether. (CVE-2023-0465, bsc#1209878)
+  * Limited the number of nodes created in a policy tree to mitigate against
+    CVE-2023-0464. The default limit is set to 1000 nodes, which should be
+    sufficient for most installations. If required, the limit can be adjusted
+    by setting the OPENSSL_POLICY_TREE_NODES_MAX build time define to a
+    desired maximum number of nodes or zero to allow unlimited growth.
+    (CVE-2023-0464, bsc#1209624)
+  * Update openssl.keyring with key</comment>
+    <requestid>1089933</requestid>
+  </revision>
 </revisionlist>

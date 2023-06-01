@@ -1,4 +1,138 @@
 -------------------------------------------------------------------
+Tue May 30 15:14:51 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to 3.1.1:
+  * Restrict the size of OBJECT IDENTIFIERs that OBJ_obj2txt will translate
+    (CVE-2023-2650, bsc#1211430)
+  * Multiple algorithm implementation fixes for ARM BE platforms.
+  * Added a -pedantic option to fipsinstall that adjusts the various settings
+    to ensure strict FIPS compliance rather than backwards compatibility.
+  * Fixed buffer overread in AES-XTS decryption on ARM 64 bit platforms which
+    happens if the buffer size is 4 mod 5 in 16 byte AES blocks. This can
+    trigger a crash of an application using AES-XTS decryption if the memory
+    just after the buffer being decrypted is not mapped. Thanks to Anton
+    Romanov (Amazon) for discovering the issue. (CVE-2023-1255, bsc#1210714)
+  * Add FIPS provider configuration option to disallow the use of truncated
+    digests with Hash and HMAC DRBGs (q.v. FIPS 140-3 IG D.R.). The
+    option '-no_drbg_truncated_digests' can optionally be supplied
+    to 'openssl fipsinstall'.
+  * Corrected documentation of X509_VERIFY_PARAM_add0_policy() to mention that
+    it does not enable policy checking. Thanks to David Benjamin for
+    discovering this issue. (CVE-2023-0466, bsc#1209873)
+  * Fixed an issue where invalid certificate policies in leaf certificates are
+    silently ignored by OpenSSL and other certificate policy checks are
+    skipped for that certificate. A malicious CA could use this to
+    deliberately assert invalid certificate policies in order to circumvent
+    policy checking on the certificate altogether. (CVE-2023-0465, bsc#1209878)
+  * Limited the number of nodes created in a policy tree to mitigate against
+    CVE-2023-0464. The default limit is set to 1000 nodes, which should be
+    sufficient for most installations. If required, the limit can be adjusted
+    by setting the OPENSSL_POLICY_TREE_NODES_MAX build time define to a
+    desired maximum number of nodes or zero to allow unlimited growth.
+    (CVE-2023-0464, bsc#1209624)
+  * Update openssl.keyring with key
+    A21F AB74 B008 8AA3 6115 2586 B8EF 1A6B A9DA 2D5C (Tomas Mraz)
+  * Rebased patches:
+    - openssl-Add-support-for-PROFILE-SYSTEM-system-default-cipher.patch
+    - openssl-Add_support_for_Windows_CA_certificate_store.patch
+  * Removed patches:
+    - openssl-CVE-2023-0464.patch
+    - openssl-Fix-OBJ_nid2obj-regression.patch
+    - openssl-CVE-2023-0465.patch
+    - openssl-CVE-2023-0466.patch
+
+-------------------------------------------------------------------
+Mon May 29 07:31:07 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Merge libopenssl3-hmac package into the library [bsc#1185116]
+
+-------------------------------------------------------------------
+Mon May 15 09:00:04 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Add support for Windows CA certificate store [bsc#1209430]
+  https://github.com/openssl/openssl/pull/18070
+  * Add openssl-Add_support_for_Windows_CA_certificate_store.patch
+
+-------------------------------------------------------------------
+Wed Mar 29 12:11:10 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Security Fix: [CVE-2023-0465, bsc#1209878]
+  * Invalid certificate policies in leaf certificates are silently ignored
+  * Add openssl-CVE-2023-0465.patch
+- Security Fix: [CVE-2023-0466, bsc#1209873]
+  * Certificate policy check not enabled
+  * Add openssl-CVE-2023-0466.patch
+
+-------------------------------------------------------------------
+Tue Mar 28 12:19:06 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix regression in the OBJ_nid2obj() function: [bsc#1209430]
+  * Upstream https://github.com/openssl/openssl/issues/20555
+  * Add openssl-Fix-OBJ_nid2obj-regression.patch
+
+-------------------------------------------------------------------
+Mon Mar 27 14:44:32 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Fix compiler error "initializer element is not constant" on s390
+  * Add openssl-z16-s390x.patch
+
+-------------------------------------------------------------------
+Fri Mar 24 13:55:25 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Security Fix: [CVE-2023-0464, bsc#1209624]
+  * Excessive Resource Usage Verifying X.509 Policy Constraints
+  * Add openssl-CVE-2023-0464.patch
+
+-------------------------------------------------------------------
+Wed Mar 15 14:55:29 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Pass over with spec-cleaner
+
+-------------------------------------------------------------------
+Tue Mar 14 13:34:13 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to 3.1.0:
+  * Add FIPS provider configuration option to enforce the Extended Master
+    Secret (EMS) check during the TLS1_PRF KDF. The option '-ems-check' can
+    optionally be supplied to 'openssl fipsinstall'.
+  * The FIPS provider includes a few non-approved algorithms for backward
+    compatibility purposes and the "fips=yes" property query must be used for
+    all algorithm fetches to ensure FIPS compliance. The algorithms that are
+    included but not approved are Triple DES ECB, Triple DES CBC and EdDSA.
+  * Added support for KMAC in KBKDF.
+  * RNDR and RNDRRS support in provider functions to provide random number
+    generation for Arm CPUs (aarch64).
+  * s_client and s_server apps now explicitly say when the TLS version does not
+    include the renegotiation mechanism. This avoids confusion between that
+    scenario versus when the TLS version includes secure renegotiation but the
+    peer lacks support for it.
+  * AES-GCM enabled with AVX512 vAES and vPCLMULQDQ.
+  * The various OBJ_* functions have been made thread safe.
+  * Parallel dual-prime 1536/2048-bit modular exponentiation for AVX512_IFMA
+    capable processors.
+  * The functions OPENSSL_LH_stats, OPENSSL_LH_node_stats,
+    OPENSSL_LH_node_usage_stats, OPENSSL_LH_stats_bio,
+    OPENSSL_LH_node_stats_bio and OPENSSL_LH_node_usage_stats_bio are now
+    marked deprecated from OpenSSL 3.1 onwards and can be disabled by defining
+    OPENSSL_NO_DEPRECATED_3_1. The macro DEFINE_LHASH_OF is now deprecated in
+    favour of the macro DEFINE_LHASH_OF_EX, which omits the corresponding
+    type-specific function definitions for these functions regardless of
+    whether OPENSSL_NO_DEPRECATED_3_1 is defined. Users of DEFINE_LHASH_OF may
+    start receiving deprecation warnings for these functions regardless of
+    whether they are using them. It is recommended that users transition to the
+    new macro, DEFINE_LHASH_OF_EX.
+  * When generating safe-prime DH parameters set the recommended private key
+    length equivalent to minimum key lengths as in RFC 7919.
+  * Change the default salt length for PKCS#1 RSASSA-PSS signatures to the
+    maximum size that is smaller or equal to the digest length to comply with
+    FIPS 186-4 section 5. This is implemented by a new option
+    OSSL_PKEY_RSA_PSS_SALT_LEN_AUTO_DIGEST_MAX ("auto-digestmax") for the
+    rsa_pss_saltlen parameter, which is now the default. Signature verification
+    is not affected by this change and continues to work as before.
+  * Update openssl.keyring with key
+    8657 ABB2 60F0 56B1 E519 0839 D9C4 D26D 0E60 4491 (Matt Caswell)
+
+-------------------------------------------------------------------
 Wed Mar  8 10:37:09 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Build AVX2 enabled hwcaps library for x86_64-v3
