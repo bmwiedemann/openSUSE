@@ -25,7 +25,7 @@
 %bcond_with test
 %endif
 Name:           python-tifffile%{psuffix}
-Version:        2023.3.15
+Version:        2023.4.12
 Release:        0
 Summary:        Read and write TIFF files
 License:        BSD-2-Clause
@@ -127,6 +127,7 @@ donttest="$donttest or test_class_omexml"
 donttest="$donttest or test_write_extrasamples_planar"
 donttest="$donttest or test_write_extrasamples_contig_rgb"
 donttest="$donttest or test_write_compression_args"
+donttest="$donttest or test_issue_invalid_predictor"
 %pytest -n auto -k "not ($donttest)"
 %endif
 

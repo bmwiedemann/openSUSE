@@ -105,4 +105,22 @@ This should fix ERROR: download_files is configured to fail when the upstream fi
     <comment></comment>
     <requestid>1088888</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>114411d954194bad2891525d3ce2ee5c</srcmd5>
+    <version>2023.4.12</version>
+    <time>1685632771</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2023.4.12:
+  * Pass 4988 tests.
+  * Do not write duplicate ImageDescription tags from extratags
+    (breaking).
+  * Support multifocal SVS files (#193).
+  * Log warning when filtering out extratags.
+  * Fix writing OME-TIFF with image description in extratags.
+  * Ignore invalid predictor tag value if prediction is not used.
+  * Raise KeyError if ZarrStore is missing requested chunk.
+  * 2023.3.21
+  * Fix reading MMstack with missing data (#187).</comment>
+    <requestid>1090095</requestid>
+  </revision>
 </revisionlist>
