@@ -21,15 +21,18 @@
 %if "%build_flavor" == "testsuite"
 %if %{without ocaml_qcheck_testsuite}
 ExclusiveArch:  do-not-build
+%else
+ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 %endif
 %define nsuffix -testsuite
 %else
 %define nsuffix %nil
+ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 %endif
 
 %define     pkg ocaml-qcheck
 Name:           %pkg%nsuffix
-Version:        0.21
+Version:        0.21.1
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        QuickCheck inspired property-based testing for OCaml
