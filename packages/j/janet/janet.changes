@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Sat May 27 13:19:20 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 1.28.0:
+  * Various bug fixes
+  * Make nested short-fn's behave a bit more predictably (it is still not recommended to nest short-fns).
+  * Add os/strftime for date formatting.
+  * Fix ev/select on threaded channels sometimes live-locking.
+  * Support the NO_COLOR environment variable to turn off VT100 color codes in repl (and in scripts).
+  * See http://no-color.org/
+  * Disallow using (splice x) in contexts where it doesn't make sense rather than silently coercing to x.
+  * Instead, raise a compiler error.
+  * Change the names of :user8 and :user9 sigals to :interrupt and :await
+  * Change the names of :user8 and :user9 fiber statuses to :interrupted and :suspended.
+  * Add ev/all-tasks to see all currently suspended fibers.
+  * Add keep-syntax and keep-syntax! functions to make writing macros easier.
+
+-------------------------------------------------------------------
+Sat Mar  4 05:52:10 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec for janet 1.26.0

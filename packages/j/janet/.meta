@@ -1,0 +1,6 @@
+<package name="janet" project="openSUSE:Factory">
+  <title>Janet Programming Language</title>
+  <description>Janet makes a good system scripting language, or a language to embed in other programs. Janet also can be used for rapid prototyping, dynamic systems, and other domains where dynamic languages shine. Implemented mostly in standard C99, Janet runs on Windows, Linux and macOS. The few features that are not standard C (dynamic library loading, compiler specific optimizations), are fairly straightforward. Janet can be easily ported to new platforms. While Janet is embeddable, it comes with a bit more out of the box than many other such easily embeddable languages such as threading, networking, an event loop, subprocess handling, regex-like library called PEG, and more.</description>
+  <devel project="devel:languages:misc" package="janet"/>
+  <url>https://janet-lang.org/</url>
+</package>
