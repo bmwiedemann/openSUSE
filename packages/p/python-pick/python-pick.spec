@@ -24,7 +24,7 @@ License:        MIT
 URL:            https://github.com/wong2/pick
 Source0:        https://github.com/wong2/pick/archive/v%{version}.tar.gz#/pick-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module poetry-core >= 1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -54,6 +54,7 @@ interactive selection list in the terminal.
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/pick
+%{python_sitelib}/pick-%{version}.dist-info
 
 %changelog
