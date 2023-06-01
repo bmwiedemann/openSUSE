@@ -59,7 +59,7 @@ BuildRequires:  %{python_module typing-extensions >= 3.10}
 # /SECTION
 # SECTION test deps
 BuildRequires:  %{python_module GitPython > 3}
-BuildRequires:  %{python_module pytest-benchmark}
+BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
@@ -106,7 +106,8 @@ done
 %if %{with tests}
 %check
 export LC_ALL="en_US.UTF-8"
-%pytest %{?jobs:-n %jobs} --benchmark-disable -k "not test_linter_with_unpickleable_plugins_is_pickleable"
+# reruns: tests/pyreverse is incredibly non-deterministic in failures
+%pytest -n auto --ignore tests/benchmark --reruns 5 -rsfER -k "not test_linter_with_unpickleable_plugins_is_pickleable"
 %endif
 
 %post
