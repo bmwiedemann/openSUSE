@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Jun  1 04:29:14 UTC 2023 - jason.record@suse.com
+
+- Changes for supportutils version 3.1.25
+  + Removed iSCSI passwords CVE-2022-45154 (bsc#1207598)
+  + powerpc: Collect lsslot,amsstat, and opal elogs (pr#149)
+  + powerpc: collect invscout logs (pr#150)
+  + powerpc: collect RMC status logs (pr#151)
+  + Added missing nvme nbft commands (bsc#1211599)
+  + Fixed invalid nvme commands (bsc#1211598)
+  + Added missing podman information (PED-1703, bsc#1181477)
+  + Removed dependency on sysfstools
+  + Check for systool use (bsc#1210015)
+  + Added selinux checking (bsc#1209979)
+  + Updated SLES_VER matrix
+
+-------------------------------------------------------------------
+Mon Mar 20 22:51:05 UTC 2023 - jason.record@suse.com
+
+- Fixed missing status detail for apparmor (bsc#1196933)
+- Corrected invalid argument list in docker.txt (bsc#1206608)
+- Applies limit equally to sar data and text files (bsc#1207543)
+- Collects hwinfo hardware logs (bsc#1208928)
+- Collects lparnumascore logs (issue#148)
+
+Thu Feb 02 16:53:23 UTC 2023 - hp.jansen@suse.com
+-------------------------------------------------------------------
+
+- Add dependency to `numactl` on ppc64le and `s390x`, this enforces
+  that `numactl --hardware` data is provided in supportconfigs
+
+-------------------------------------------------------------------
+Thu Jan 26 15:58:24 UTC 2023 - jason.record@suse.com
+
+- Changes to supportconfig.rc version 3.1.11-35
+  + Corrected _sanitize_file to include iscsi.conf and others (bsc#1206402)
+
+-------------------------------------------------------------------
+Fri Dec  2 14:25:03 UTC 2022 - jason.record@suse.com
+
+- Changes to supportconfig version 3.1.11-46.4
+  + Added plymouth_info 
+
+-------------------------------------------------------------------
+Thu Nov 17 18:06:47 UTC 2022 - jason.record@suse.com
+
+- Changes to getappcore version 1.53.02
+  + The location of chkbin was updated earlier. This documents that
+    change (bsc#1205533, bsc#1204942)
+
+-------------------------------------------------------------------
 Fri Nov 11 18:01:33 UTC 2022 - jason.record@suse.com
 
 - Changes to supportconfig version 3.1.11-46.3

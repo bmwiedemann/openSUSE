@@ -266,4 +266,12 @@
     <comment>Missed clear text passwords for VUL-0 bsc#1203818 (forwarded request 1035668 from jrecord)</comment>
     <requestid>1035669</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>40e938bf68b176dcab1ff755e993918b</srcmd5>
+    <version>3.1.25</version>
+    <time>1685632779</time>
+    <user>dimstar_suse</user>
+    <comment>CVE-2022-45154 and podman (forwarded request 1090119 from jrecord)</comment>
+    <requestid>1090120</requestid>
+  </revision>
 </revisionlist>
