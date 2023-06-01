@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,9 +63,7 @@ Obsoletes:      %{name}-doc
 Obsoletes:      jpackage-utils < %{version}
 %if %{with python}
 BuildRequires:  %{python_module lxml}
-%if 0%{?suse_version} > 1320
 BuildRequires:  %{python_module pytest}
-%endif
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -109,6 +107,7 @@ allows artifact resolution using XMvn resolver.
 Summary:        Module for handling various files for Java packaging
 Group:          Development/Languages/Java
 Requires:       python-lxml
+Requires:       python-xml
 
 %description -n python-javapackages
 Module for handling, querying and manipulating of various files for Java
@@ -120,6 +119,7 @@ packaging in Linux distributions
 Summary:        Module for handling various files for Java packaging
 Group:          Development/Languages/Java
 Requires:       python3-lxml
+Requires:       python3-xml
 Obsoletes:      python-javapackages < %{version}-%{release}
 Provides:       python-javapackages = %{version}-%{release}
 
@@ -210,7 +210,6 @@ rm -rf %{buildroot}%{_datadir}/fedora-review/
 
 %fdupes %{buildroot}/%{_prefix}
 
-%if 0%{?suse_version} > 1320
 %check
 # reference: ./check, but we don't want to check coverage and don't need old nose
 (
@@ -227,7 +226,6 @@ popd
 pushd ./test
 %pytest
 popd
-%endif
 %endif
 
 %if !%{with python}

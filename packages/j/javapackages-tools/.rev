@@ -343,4 +343,12 @@
     <comment>Removal of gradle-local sub-package that is not needed and does not have dependencies</comment>
     <requestid>1034837</requestid>
   </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>92e15a82366135244289e9130d622b0e</srcmd5>
+    <version>6.1.0</version>
+    <time>1685632726</time>
+    <user>dimstar_suse</user>
+    <comment>enable tests for older distros and require python-xml module</comment>
+    <requestid>1089671</requestid>
+  </revision>
 </revisionlist>

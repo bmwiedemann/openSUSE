@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 28 19:15:09 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Enable the tests also for older distributions
+- Require python3-xml (python-xml for distributions that use
+  versioned modules), since module xml needed by some scripts.
+
+-------------------------------------------------------------------
 Wed Nov  9 08:50:08 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Reflect the removal of gradle from repositories
