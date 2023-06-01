@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 31 16:13:45 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- poetry-core is sufficient for build system
+
+-------------------------------------------------------------------
 Fri Feb 24 09:58:23 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Delete python-pydle-poetry-syntax.patch

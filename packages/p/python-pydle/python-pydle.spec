@@ -33,7 +33,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Shizmob/pydle
 Source:         https://github.com/Shizmob/pydle/archive/v%{version}.tar.gz#/pydle-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module poetry-core >= 1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
