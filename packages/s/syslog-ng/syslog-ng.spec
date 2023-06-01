@@ -67,7 +67,7 @@
 %bcond_with	mongodb
 %bcond_with	amqp
 Name:           syslog-ng
-Version:        4.0.1
+Version:        4.2.0
 Release:        0
 Summary:        Enhanced system logging daemon
 License:        GPL-2.0-only
@@ -163,11 +163,11 @@ Key features:
  * hand on messages for further processing using message queues (like
    AMQP), files or databases (like PostgreSQL or MongoDB).
 
-%package -n libevtlog-4_0-0
+%package -n libevtlog-4_2-0
 Summary:        Syslog-ng event logger library runtime
 Group:          System/Libraries
 
-%description -n libevtlog-4_0-0
+%description -n libevtlog-4_2-0
 The EventLog library provides an alternative to the simple syslog()
 API provided on UNIX systems. Compared to syslog, EventLog adds
 structured messages.
@@ -235,6 +235,15 @@ logging to a redis destination.
 Summary:        Python destination support for syslog-ng
 Group:          System/Daemons
 Requires:       %{name} = %{version}
+
+%description python
+This package provides Python destination support for syslog-ng.
+
+%package python-modules
+Summary:        Python modules for syslog-ng
+Group:          System/Daemons
+Requires:       %{name} = %{version}
+Requires:       %{name}-python
 Requires:       python3-PyYAML
 Requires:       python3-cachetools
 Requires:       python3-certifi
@@ -251,8 +260,9 @@ Requires:       python3-rsa
 Requires:       python3-six
 Requires:       python3-websocket-client
 
-%description python
-This package provides Python destination support for syslog-ng.
+%description python-modules
+This package provides python modules for syslog-ng, for
+Kubernetes log enrichment, Hypr support, etc.
 
 %package devel
 Summary:        Development files for syslog-ng
@@ -506,8 +516,8 @@ chmod 640 "${additional_sockets#/}"
 #
 %{service_del_postun syslog-ng.service}
 
-%post -n libevtlog-4_0-0 -p /sbin/ldconfig
-%postun -n libevtlog-4_0-0 -p /sbin/ldconfig
+%post -n libevtlog-4_2-0 -p /sbin/ldconfig
+%postun -n libevtlog-4_2-0 -p /sbin/ldconfig
 
 %files
 ##
@@ -583,6 +593,7 @@ chmod 640 "${additional_sockets#/}"
 %dir %{_datadir}/syslog-ng/include/scl/fortigate/
 %dir %{_datadir}/syslog-ng/include/scl/mariadb/
 %dir %{_datadir}/syslog-ng/include/scl/python/
+%dir %{_datadir}/syslog-ng/include/scl/splunk/
 %dir %{_datadir}/syslog-ng/xsd
 %dir %{_sysconfdir}/syslog-ng
 %dir %{_sysconfdir}/syslog-ng/conf.d
@@ -619,7 +630,6 @@ chmod 640 "${additional_sockets#/}"
 %attr(755,root,root) %{_libdir}/syslog-ng/libconfgen.so
 %attr(755,root,root) %{_libdir}/syslog-ng/libcsvparser.so
 %attr(755,root,root) %{_libdir}/syslog-ng/libcryptofuncs.so
-%attr(755,root,root) %{_libdir}/syslog-ng/libdbparser.so
 %attr(755,root,root) %{_libdir}/syslog-ng/libexamples.so
 %attr(755,root,root) %{_libdir}/syslog-ng/libgraphite.so
 %attr(755,root,root) %{_libdir}/syslog-ng/libjson-plugin.so
@@ -643,6 +653,8 @@ chmod 640 "${additional_sockets#/}"
 %attr(755,root,root) %{_libdir}/syslog-ng/libazure-auth-header.so
 %attr(755,root,root) %{_libdir}/syslog-ng/libregexp-parser.so
 %attr(755,root,root) %{_libdir}/syslog-ng/librate-limit-filter.so
+%attr(755,root,root) %{_libdir}/syslog-ng/libcorrelation.so
+%attr(755,root,root) %{_libdir}/syslog-ng/libmetrics-probe.so
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/graphite/README
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/graphite/plugin.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/nodejs/plugin.conf
@@ -684,9 +696,11 @@ chmod 640 "${additional_sockets#/}"
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/fortigate/fortigate.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/mariadb/audit.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/python/python-modules.conf
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/splunk/splunk.conf
+%attr(644,root,root) %{_datadir}/syslog-ng/smart-multi-line.fsm
 %attr(644,root,root) %{_datadir}/syslog-ng/xsd/*
 
-%files -n libevtlog-4_0-0
+%files -n libevtlog-4_2-0
 %{_libdir}/libevtlog-*.so.*
 
 %files snmp
@@ -741,12 +755,15 @@ chmod 640 "${additional_sockets#/}"
 %{_libdir}/syslog-ng/python/syslogng-1.0-py%{py_ver}.egg-info
 %dir %{_libdir}/syslog-ng/python
 %dir %{_libdir}/syslog-ng/python/syslogng
-%dir %{_libdir}/syslog-ng/python/syslogng/debuggercli
 %{_libdir}/syslog-ng/python/syslogng/*
-%{_libdir}/syslog-ng/python/syslogng/debuggercli/*
 %dir %{_sysconfdir}/syslog-ng/python/
 %{_sysconfdir}/syslog-ng/python/README.md
 %{_libdir}/syslog-ng/python/requirements.txt
+%exclude %{_libdir}/syslog-ng/python/syslogng/modules/
+
+%files python-modules
+%dir %{_libdir}/syslog-ng/python/syslogng/modules/
+%{_libdir}/syslog-ng/python/syslogng/modules/*
 
 %endif
 

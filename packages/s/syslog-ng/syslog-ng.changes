@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun  1 09:25:39 UTC 2023 - peter czanik <peter@czanik.hu>
+
+- update to version 4.2.0 
+- add Splunk destination to SCL
+- plugin rename: dbparser is now called correlation
+- new plugin: libmetrics-probe.so
+- split Python-based drivers from the Python plugin
+
+-------------------------------------------------------------------
 Wed May 24 18:32:32 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Exclude plugins from being turned into RPM dependencies.
