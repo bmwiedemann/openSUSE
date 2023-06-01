@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>880e6d98e87e9551b8b2fcb38119ec95</srcmd5>
+    <version>23.05.03</version>
+    <time>1685632752</time>
+    <user>dimstar_suse</user>
+    <comment>Context:
+
+https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/I7GFWHUIX46M767GBXP5V5L6XUZXCSLM/
+
+TLDR: The goldendict shipped by openSUSE is in fact a fork, and now the fork is renamed.
+
+This will replace and update the current goldendict package.
+
+related deletion requestion https://build.opensuse.org/request/show/1087963
+</comment>
+    <requestid>1089805</requestid>
+  </revision>
+</revisionlist>
