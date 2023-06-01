@@ -244,4 +244,23 @@
   * Include URL and UUID in Home Assistant controller messages</comment>
     <requestid>1046304</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a50ca8239c6010d5269eb45df66bbeba</srcmd5>
+    <version>13.0.7</version>
+    <time>1685632857</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 13.0.7:
+  * Wait longer when attempting to play media (#720) @emontnemery
+  * Fix socket leak
+  * Don't call launch callback on error
+  * Wait for response when stopping app
+  * Simplify request callback handling
+  * Make sure handler is unregistered after quickplay
+  * Fix lint issues
+  * Add SVS Pro SoundBase
+  * Add JBL Link 10, 20, 300, 500
+  * Fix poll/select for Windows
+  * Add Smart Soundbar 10</comment>
+    <requestid>1090244</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun  1 10:07:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 13.0.7:
+  * Wait longer when attempting to play media (#720) @emontnemery
+  * Fix socket leak
+  * Don't call launch callback on error
+  * Wait for response when stopping app
+  * Simplify request callback handling
+  * Make sure handler is unregistered after quickplay
+  * Fix lint issues
+  * Add SVS Pro SoundBase
+  * Add JBL Link 10, 20, 300, 500
+  * Fix poll/select for Windows
+  * Add Smart Soundbar 10
+
+-------------------------------------------------------------------
 Mon Jan  2 20:18:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 13.0.4:
