@@ -1,7 +1,7 @@
 #
 # spec file for package qclib
 #
-# Copyright (c) 2017-2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,10 @@
 #
 
 
+%global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
+
 Name:           qclib
-Version:        2.3.2
+Version:        2.4.0
 Release:        0
 Summary:        Query Capacity library
 License:        BSD-3-Clause
@@ -28,7 +30,7 @@ Source1:        %{name}-rpmlintrc
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 ExclusiveArch:  s390 s390x
-%if 0%{?suse_version} > 1300
+%if 0%{?suse_version} > 1500
 BuildRequires:  glibc-devel-static
 %else
 BuildRequires:  glibc-devel
@@ -107,7 +109,6 @@ MYCFLAGS=$(grep ^CFLAGS Makefile | cut -f2 -d=)
 
 %install
 %make_install V=1
-gzip -9 %{buildroot}/%{_mandir}/man8/*
 make installdoc DESTDIR=%{buildroot} V=1
 
 %post -n libqc2 -p /sbin/ldconfig

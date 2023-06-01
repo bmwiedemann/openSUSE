@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 30 06:23:30 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade to version 2.4.0 (jsc#PED-3284, jsc#PED-3285)
+  * Changes:
+  - Recognize single frame models and rackable models
+  - zname: Add support for option --json
+  - qc_dump: Add trace and JSON dump to .tgz
+- Amended the .spec file for the error "static-library-without-debuginfo"
+  * Removed the line: gzip -9 %{buildroot}/%{_mandir}/man8/*
+
+-------------------------------------------------------------------
 Tue Sep 20 18:29:40 UTC 2022 - Mark Post <mpost@suse.com>
 
 - Upgraded to version 2.3.2 (jsc#PED-585, jsc#PED-626)

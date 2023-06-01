@@ -111,4 +111,12 @@ Reworked as requested.</comment>
     <comment></comment>
     <requestid>1005099</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d3b6e483aff905be58bdf077f92ad037</srcmd5>
+    <version>2.4.0</version>
+    <time>1685632733</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to version 2.4.0 (jsc#PED-3284, jsc#PED-3285)</comment>
+    <requestid>1089695</requestid>
+  </revision>
 </revisionlist>
