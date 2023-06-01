@@ -49,7 +49,6 @@
 %bcond_with experimental
 
 %define skip_python2 1
-%{?sle15_python_module_pythons}
 Name:           python-ini2toml%{psuffix}
 Version:        0.12
 Release:        0
@@ -64,7 +63,6 @@ Requires:       python-packaging >= 20.7
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %if %{with test}
-BuildRequires:  %{python_module ConfigUpdater}
 BuildRequires:  %{python_module packaging >= 20.7}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module validate-pyproject >= 0.6 with %python-validate-pyproject < 2}
@@ -77,6 +75,11 @@ BuildRequires:  %{python_module ini2toml-full = %{version}}
 %if %{with all}
 BuildRequires:  %{python_module ini2toml-all = %{version}}
 %endif
+
+%if %{with full} || %{with all}
+BuildRequires:  %{python_module ConfigUpdater}
+%endif
+
 %if %{with experimental}
 BuildRequires:  %{python_module ini2toml-experimental = %{version}}
 %endif
@@ -164,6 +167,7 @@ ignoretests=(
     --ignore tests/plugins/test_mypy.py
     --ignore tests/plugins/test_pytest.py
     --ignore tests/plugins/test_setuptools_pep621.py
+    --ignore tests/plugins/test_toml_incompatibilities.py
 )
 %endif
 %if %{without experimental}

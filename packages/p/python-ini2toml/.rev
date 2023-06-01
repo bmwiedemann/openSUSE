@@ -58,4 +58,13 @@
   * Fix parsing of ``filterwarnings``</comment>
     <requestid>1087243</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b3cbb7fb1026e080003087c7d047ff0c</srcmd5>
+    <version>0.12</version>
+    <time>1685632732</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove ConfigUpdater dependency for tests when it's not building for
+  the -full or -all subpackage.</comment>
+    <requestid>1089694</requestid>
+  </revision>
 </revisionlist>

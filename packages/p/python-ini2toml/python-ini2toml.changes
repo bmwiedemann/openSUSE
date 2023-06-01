@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 30 06:22:39 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove ConfigUpdater dependency for tests when it's not building for
+  the -full or -all subpackage.
+
+-------------------------------------------------------------------
 Fri May  5 00:13:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.12:
