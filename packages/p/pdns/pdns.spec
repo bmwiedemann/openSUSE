@@ -57,7 +57,7 @@ ExclusiveArch:  no-32bit-build
 %endif
 
 Name:           pdns
-Version:        4.7.3
+Version:        4.8.0
 Release:        0
 Summary:        Authoritative-only nameserver
 License:        GPL-2.0-only
@@ -67,7 +67,6 @@ Source:         https://downloads.powerdns.com/releases/pdns-%{version}.tar.bz2
 Source1:        https://downloads.powerdns.com/releases/pdns-%{version}.tar.bz2.sig
 Source2:        https://powerdns.com/powerdns-keyblock.asc#/pdns.keyring
 Patch0:         pdns-4.0.3_allow_dacoverride_in_capset.patch
-Patch1:         https://patch-diff.githubusercontent.com/raw/PowerDNS/pdns/pull/12453.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -82,6 +81,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel
 BuildRequires:  sqlite-devel >= 3
 BuildRequires:  pkgconfig(krb5)
+BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
 %if 0%{?suse_version} > 1325
@@ -272,6 +272,7 @@ export CXX=g++%{?compiler_ver}
   --localstatedir=%{_localstatedir} \
   --enable-reproducible \
   --with-libsodium \
+  --enable-dns-over-tls \
   --with-service-user=pdns \
   --with-service-group=pdns \
   --with-socketdir=/run/ \

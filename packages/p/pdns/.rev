@@ -859,4 +859,23 @@ https://blog.powerdns.com/2017/06/23/powerdns-authoritative-server-4-0-4-release
     <comment></comment>
     <requestid>1073483</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>b2dfa5b06a9247a6cb7d8e856cfa95e7</srcmd5>
+    <version>4.8.0</version>
+    <time>1685632882</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.8.0
+  * New features
+    - ixfrdist: add a per domain max-soa-refresh option
+  Improvements
+    - lmdb: handle lack of support for RRset comments better
+    - DNSRecord: Ensure that the content can be read or replaced, not edited
+- enabled support for DNS-over-TLS or DoT
+- 12453.patch: removed
+For details, see
+https://doc.powerdns.com/authoritative/changelog/4.8.html#change-4.8.0
+If you are using LMDB backend, see
+https://doc.powerdns.com/authoritative/upgrading.html</comment>
+    <requestid>1090278</requestid>
+  </revision>
 </revisionlist>

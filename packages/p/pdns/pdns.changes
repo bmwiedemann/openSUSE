@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jun  1 11:36:36 UTC 2023 - Adam Majer <adam.majer@suse.de> 1.8.0
+
+- Update to 4.8.0
+  * New features
+    - ixfrdist: add a per domain max-soa-refresh option
+  Improvements
+    - lmdb: handle lack of support for RRset comments better
+    - DNSRecord: Ensure that the content can be read or replaced, not edited
+- enabled support for DNS-over-TLS or DoT
+- 12453.patch: removed
+
+For details, see
+https://doc.powerdns.com/authoritative/changelog/4.8.html#change-4.8.0
+
+If you are using LMDB backend, see
+https://doc.powerdns.com/authoritative/upgrading.html
+
+-------------------------------------------------------------------
 Mon Mar 20 16:01:37 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 12453.patch: Fix build using gcc 13.
