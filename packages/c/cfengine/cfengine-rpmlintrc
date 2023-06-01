@@ -1,2 +1,0 @@
-addFilter("E: filelist-forbidden-fhs23 *");
-addFilter("cfengine-examples.noarch: E: wrong-script-interpreter *")
