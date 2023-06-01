@@ -27,6 +27,7 @@ ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 %define nsuffix -testsuite
 %else
 %define nsuffix %nil
+ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 %endif
 
 %define     pkg ocaml-sedlex
