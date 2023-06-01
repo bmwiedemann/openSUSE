@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  1 07:56:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons as it requires python >= 3.8
+
+-------------------------------------------------------------------
 Tue May  9 19:28:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.10.0:

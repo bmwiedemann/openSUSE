@@ -129,4 +129,12 @@
     ``collections.defaultdict`` annotation</comment>
     <requestid>1085794</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>e3c9545a5fcf96d9eae813fb69a2d04f</srcmd5>
+    <version>0.10.0</version>
+    <time>1685632791</time>
+    <user>dimstar_suse</user>
+    <comment>- add sle15_python_module_pythons as it requires python &gt;= 3.8</comment>
+    <requestid>1090194</requestid>
+  </revision>
 </revisionlist>
