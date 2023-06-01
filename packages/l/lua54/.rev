@@ -240,4 +240,33 @@
     <comment></comment>
     <requestid>1077316</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d83adc09a64d8bfc55fd9d81100f9881</srcmd5>
+    <version>5.4.6</version>
+    <time>1685632721</time>
+    <user>dimstar_suse</user>
+    <comment>- Library is always liblua5_4-5: due to SOVERSION leading digit
+  being 5
+- Final release of 5.4.6. No change in the changelog.
+- Experimenting with lua 5.4.6-rc1 (release 5.4.5 has been
+  effectively withdrawn).
+- Update to 5.4.5:
+  - this is a bug-fix release.
+  - Lua 5.4.5 also contains several internal improvements and
+    includes a revised reference manual
+- Remove upstreamed patches:
+  - luabugs1.patch
+  - luabugs10.patch
+  - luabugs11.patch
+  - luabugs2.patch
+  - luabugs3.patch
+  - luabugs4.patch
+  - luabugs5.patch
+  - luabugs6.patch
+  - luabugs7.patch
+  - luabugs8.patch
+  - luabugs9.patch
+</comment>
+    <requestid>1089611</requestid>
+  </revision>
 </revisionlist>

@@ -1,5 +1,5 @@
 #
-# spec file for package lua54
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define name_ext -test
@@ -24,16 +25,15 @@
 %endif
 %define major_version 5.4
 %define libname liblua5_4-5
-
 Name:           lua54%{name_ext}
-Version:        5.4.4
+Version:        5.4.6
 Release:        0
 Summary:        Small Embeddable Language with Procedural Syntax
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Other
 URL:            https://www.lua.org
-Source:         http://www.lua.org/ftp/lua-%{version}.tar.gz
-Source1:        http://www.lua.org/tests/lua-%{version}-tests.tar.gz
+Source:         https://www.lua.org/ftp/lua-%{version}.tar.gz
+Source1:        https://www.lua.org/tests/lua-%{version}-tests.tar.gz
 Source99:       baselibs.conf
 # PATCH-FIX-SUSE tweak the buildsystem to produce what is needed for SUSE
 Patch0:         lua-build-system.patch
@@ -43,19 +43,11 @@ Patch1:         attrib_test.patch
 Patch2:         files_test.patch
 Patch3:         main_test.patch
 Patch6:         shared_link.patch
-# PATCH-FIX-UPSTREAM luabugsX.patch https://www.lua.org/bugs.html#5.4.4-X
-Patch7:         luabugs1.patch
-Patch8:         luabugs2.patch
-Patch9:         luabugs3.patch
-Patch10:        luabugs4.patch
-Patch11:        luabugs5.patch
-Patch12:        luabugs6.patch
-Patch13:        luabugs7.patch
-Patch14:        luabugs8.patch
-Patch15:        luabugs9.patch
-Patch16:        luabugs10.patch
-Patch17:        luabugs11.patch
-#
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+Provides:       lua = %{version}
+Obsoletes:      lua < %{version}
+Provides:       Lua(API) = %{major_version}
 %if "%{flavor}" == "test"
 BuildRequires:  lua54
 %else
@@ -64,11 +56,6 @@ BuildRequires:  lua-macros
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 %endif
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-Provides:       lua = %{version}
-Obsoletes:      lua < %{version}
-Provides:       Lua(API) = %{major_version}
 
 %description
 Lua is a programming language originally designed for extending
@@ -90,7 +77,7 @@ Requires:       %{libname} = %{version}
 Requires:       %{name} = %{version}
 Requires:       lua-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Provides:       lua-devel = %{version}
 Provides:       Lua(devel) = %{major_version}
 Provides:       pkgconfig(lua) = %{version}
@@ -107,16 +94,16 @@ application.
 Summary:        The Lua integration library
 License:        MIT
 Group:          System/Libraries
+Provides:       liblua5_4 = %{version}-%{release}
+Obsoletes:      liblua5_4 < %{version}-%{release}
+Provides:       %{name}-libs = %{version}
+Obsoletes:      %{name}-libs < %{version}
 # Compat as libtool changes the soname
 %ifarch aarch64 x86_64 ppc64 ppc64le s390x riscv64
 Provides:       liblua.so.5.4()(64bit)
 %else
 Provides:       liblua.so.5.4
 %endif
-Provides:       liblua5_4 = %{version}-%{release}
-Obsoletes:      liblua5_4 < %{version}-%{release}
-Provides:       %{name}-libs = %{version}
-Obsoletes:      %{name}-libs < %{version}
 
 %description -n %{libname}
 Lua is a programming language originally designed for extending
@@ -163,8 +150,8 @@ cat doc/luac.1 | sed 's/TH LUAC 1/TH LUAC%{major_version} 1/' > doc/luac%{major_
 
 %build
 sed -i -e "s@lib/lua/@%{_lib}/lua/@g" src/luaconf.h
-make linux-readline %{_smp_mflags} VERBOSE=1 -C src \
-    CC="cc" \
+%make_build linux-readline -C src \
+    CC="cc" LIBDIR="%{_libdir}" \
     MYCFLAGS="%{optflags} -std=gnu99 -D_GNU_SOURCE -fPIC -DLUA_COMPAT_MODULE" \
     V=%{major_version} \
     LIBTOOL="libtool --quiet"
@@ -173,7 +160,8 @@ make linux-readline %{_smp_mflags} VERBOSE=1 -C src \
 %make_install \
     LIBTOOL="libtool --quiet" \
     INSTALL_TOP="%{buildroot}%{_prefix}" \
-    INSTALL_LIB="%{buildroot}%{_libdir}"
+    INSTALL_LIB="%{buildroot}%{_libdir}" \
+    INSTALL_MAN="%{buildroot}%{_mandir}/man1"
 
 find %{buildroot} -type f -name "*.la" -delete -print
 
@@ -186,12 +174,13 @@ includedir=%{_includedir}/lua%{major_version}
 INSTALL_LMOD=%{_datadir}/lua/%{major_version}
 INSTALL_CMOD=%{_libdir}/lua/%{major_version}
 
-Name: Lua %{major_version}
+Name:           Lua %{major_version}
 Description: An Extensible Extension Language
-Version: %{version}
+Version:        %{version}
 Libs: -llua%{major_version} -lm
 Cflags: -I\${includedir}
 EOF
+
 install -D -m 644 lua%{major_version}.pc %{buildroot}%{_libdir}/pkgconfig/lua%{major_version}.pc
 
 # update-alternatives
@@ -213,6 +202,7 @@ ln -sf %{_sysconfdir}/alternatives/liblua.so %{buildroot}%{_libdir}/liblua.so
 touch %{buildroot}%{_sysconfdir}/alternatives/lua.pc
 ln -sf %{_sysconfdir}/alternatives/lua.pc %{buildroot}%{_libdir}/pkgconfig/lua.pc
 %else
+
 %check
 cd testes
 LD_LIBRARY_PATH=%{_libdir} %{_bindir}/lua%{major_version} all.lua
@@ -286,4 +276,5 @@ fi
 %doc doc/*
 
 %endif
+
 %changelog

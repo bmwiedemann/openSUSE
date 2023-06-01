@@ -1,3 +1,7 @@
+---
+ testes/attrib.lua |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
 --- a/testes/attrib.lua
 +++ b/testes/attrib.lua
 @@ -269,7 +269,7 @@ local p = ""   -- On Mac OS X, redefine

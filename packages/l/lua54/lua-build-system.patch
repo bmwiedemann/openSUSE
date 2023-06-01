@@ -2,9 +2,15 @@ From: Enrico Tassi <gareuselesinge@debian.org>, Sergei Golovan <sgolovan@debian.
 Date: Wed, 06 May 2020 10:31:53 +0300
 Subject: build system
 
+---
+ Makefile      |   22 +++++++++++-----------
+ src/Makefile  |   43 +++++++++++++++++++++++++------------------
+ src/luaconf.h |    2 +-
+ 3 files changed, 37 insertions(+), 30 deletions(-)
+
 --- a/Makefile
 +++ b/Makefile
-@@ -10,19 +12,19 @@
+@@ -10,18 +10,18 @@ PLAT= guess
  # so take care if INSTALL_TOP is not an absolute path. See the local target.
  # You may want to make INSTALL_LMOD and INSTALL_CMOD consistent with
  # LUA_ROOT, LUA_LDIR, and LUA_CDIR in luaconf.h.
@@ -20,7 +26,7 @@ Subject: build system
  INSTALL_LMOD= $(INSTALL_TOP)/share/lua/$V
 -INSTALL_CMOD= $(INSTALL_TOP)/lib/lua/$V
 +INSTALL_CMOD= $(INSTALL_LIB)/lua/$V
-
+ 
  # How to install. If your install program does not support "-p", then
  # you may have to run ranlib on the installed liblua.a.
  INSTALL= install -p
@@ -29,10 +35,9 @@ Subject: build system
  INSTALL_DATA= $(INSTALL) -m 0644
  #
  # If you don't have "install" you can use "cp" instead.
- # INSTALL= cp -p
-@@ -39,10 +42,10 @@
- PLATS= guess aix bsd c89 freebsd generic linux linux-readline macosx mingw posix solaris
-
+@@ -39,10 +39,10 @@ RM= rm -f
+ PLATS= guess aix bsd c89 freebsd generic ios linux linux-readline macosx mingw posix solaris
+ 
  # What to install.
 -TO_BIN= lua luac
 +TO_BIN= lua$(V) luac$(V)
@@ -41,16 +46,16 @@ Subject: build system
 -TO_MAN= lua.1 luac.1
 +TO_LIB= liblua$(V).la
 +TO_MAN= lua$(V).1 luac$(V).1
-
+ 
  # Lua version and release.
  V= 5.4
-@@ -52,13 +55,13 @@
+@@ -52,13 +52,13 @@ R= $V.6
  all:	$(PLAT)
-
+ 
  $(PLATS) help test clean:
 -	@cd src && $(MAKE) $@
 +	@cd src && $(MAKE) $@ V=$(V)
-
+ 
  install: dummy
  	cd src && $(MKDIR) $(INSTALL_BIN) $(INSTALL_INC) $(INSTALL_LIB) $(INSTALL_MAN) $(INSTALL_LMOD) $(INSTALL_CMOD)
 +	cd src && $(INSTALL_EXEC) $(TO_LIB) $(INSTALL_LIB)
@@ -58,31 +63,34 @@ Subject: build system
  	cd src && $(INSTALL_DATA) $(TO_INC) $(INSTALL_INC)
 -	cd src && $(INSTALL_DATA) $(TO_LIB) $(INSTALL_LIB)
  	cd doc && $(INSTALL_DATA) $(TO_MAN) $(INSTALL_MAN)
-
+ 
  uninstall:
-
 --- a/src/Makefile
 +++ b/src/Makefile
 @@ -7,7 +7,7 @@
  PLAT= guess
-
+ 
  CC= gcc -std=gnu99
 -CFLAGS= -O2 -Wall -Wextra -DLUA_COMPAT_5_3 $(SYSCFLAGS) $(MYCFLAGS)
 +CFLAGS= -Wall -Wextra -DLUA_COMPAT_5_3 $(SYSCFLAGS) $(MYCFLAGS)
  LDFLAGS= $(SYSLDFLAGS) $(MYLDFLAGS)
  LIBS= -lm $(SYSLIBS) $(MYLIBS)
-
-@@ -22,25 +22,40 @@
-
+ 
+@@ -19,28 +19,44 @@ UNAME= uname
+ SYSCFLAGS=
+ SYSLDFLAGS=
+ SYSLIBS=
++LIBDIR=/usr/lib
+ 
  MYCFLAGS=
  MYLDFLAGS=
 -MYLIBS=
 +MYLIBS=-ldl
  MYOBJS=
-
+ 
  # Special flags for compiler modules; -Os reduces code size.
  CMCFLAGS= 
-
+ 
 +%.o : %.c
 +	$(LIBTOOL) --mode=compile --tag=CC $(CC) $(CFLAGS) -c $< -o $@
 +
@@ -99,49 +107,49 @@ Subject: build system
 +	$(LIBTOOL) --mode=compile --tag=CC $(CC) $(CFLAGS) -Os -c $< -o $@
 +
  # == END OF USER SETTINGS -- NO NEED TO CHANGE ANYTHING BELOW THIS LINE =======
-
- PLATS= guess aix bsd c89 freebsd generic linux linux-readline macosx mingw posix solaris
-
+ 
+ PLATS= guess aix bsd c89 freebsd generic ios linux linux-readline macosx mingw posix solaris
+ 
 -LUA_A=	liblua.a
 +LUA_A=	liblua$(V).la
  CORE_O=	lapi.o lcode.o lctype.o ldebug.o ldo.o ldump.o lfunc.o lgc.o llex.o lmem.o lobject.o lopcodes.o lparser.o lstate.o lstring.o ltable.o ltm.o lundump.o lvm.o lzio.o
  LIB_O=	lauxlib.o lbaselib.o lcorolib.o ldblib.o liolib.o lmathlib.o loadlib.o loslib.o lstrlib.o ltablib.o lutf8lib.o linit.o
  BASE_O= $(CORE_O) $(LIB_O) $(MYOBJS)
-
+ 
 -LUA_T=	lua
 +LUA_T=	lua$(V)
  LUA_O=	lua.o
-
+ 
 -LUAC_T=	luac
 +LUAC_T=	luac$(V)
  LUAC_O=	luac.o
-
+ 
  ALL_O= $(BASE_O) $(LUA_O) $(LUAC_O)
-@@ -57,17 +72,16 @@
+@@ -57,17 +73,16 @@ o:	$(ALL_O)
  a:	$(ALL_A)
-
+ 
  $(LUA_A): $(BASE_O)
 -	$(AR) $@ $(BASE_O)
 -	$(RANLIB) $@
-+	$(LIBTOOL) --mode=link --tag=CC $(CC) $(LDFLAGS) -lm -ldl $(BASE_O:.o=.lo) -shared -rpath /usr/lib -version-info 9:0:4 -o $(LUA_A)
-
++	$(LIBTOOL) --mode=link --tag=CC $(CC) $(LDFLAGS) -lm -ldl $(BASE_O:.o=.lo) -shared -rpath $(LIBDIR) -version-info 9:0:4 -o $(LUA_A)
+ 
  $(LUA_T): $(LUA_O) $(LUA_A)
 -	$(CC) -o $@ $(LDFLAGS) $(LUA_O) $(LUA_A) $(LIBS)
 +	$(LIBTOOL) --mode=link --tag=CC $(CC) $(LDFLAGS) $(LIBS) $(LUA_A) -Wl,-E lua.lo -o $@
-
+ 
  $(LUAC_T): $(LUAC_O) $(LUA_A)
 -	$(CC) -o $@ $(LDFLAGS) $(LUAC_O) $(LUA_A) $(LIBS)
 +	$(LIBTOOL) --mode=link --tag=CC $(CC) $(LDFLAGS) $(LUA_A) luac.lo -o $@
-
+ 
  test:
 -	./$(LUA_T) -v
 +	$(LIBTOOL) --mode=execute -dlopen ./$(LUA_A) ./$(LUA_T) -v
-
+ 
  clean:
-	$(RM) $(ALL_T) $(ALL_O)
-@@ -144,14 +159,6 @@
+ 	$(RM) $(ALL_T) $(ALL_O)
+@@ -147,14 +162,6 @@ SunOS solaris:
  .PHONY: all $(PLATS) help test clean default o a depend echo
-
+ 
  # Compiler modules may use special flags.
 -llex.o:
 -	$(CC) $(CFLAGS) $(CMCFLAGS) -c llex.c
@@ -151,18 +159,17 @@ Subject: build system
 -
 -lcode.o:
 -	$(CC) $(CFLAGS) $(CMCFLAGS) -c lcode.c
-
+ 
  # DO NOT DELETE
-
-
+ 
 --- a/src/luaconf.h
 +++ b/src/luaconf.h
-@@ -217,7 +217,7 @@
-
+@@ -223,7 +223,7 @@
+ 
  #else			/* }{ */
-
+ 
 -#define LUA_ROOT	"/usr/local/"
 +#define LUA_ROOT	"/usr/"
  #define LUA_LDIR	LUA_ROOT "share/lua/" LUA_VDIR "/"
  #define LUA_CDIR	LUA_ROOT "lib/lua/" LUA_VDIR "/"
-
+ 

@@ -1,6 +1,10 @@
+---
+ testes/main.lua |   12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
 --- a/testes/main.lua
 +++ b/testes/main.lua
-@@ -47,7 +47,7 @@
+@@ -47,7 +47,7 @@ local function checkprogout (s)
    assert(string.sub(s, -1) == "\n")
    local t = getoutput()
    for line in string.gmatch(s, ".-\n") do
@@ -8,8 +12,8 @@
 +    -- assert(string.find(t, line, 1, true))
    end
  end
-
-@@ -307,11 +307,11 @@
+ 
+@@ -367,11 +367,11 @@ a = 2
  ]]
  RUN([[lua -e "%s" -i < %s > %s]], prompt, prog, out)
  local t = getoutput()
@@ -23,6 +27,6 @@
 +-- 2a = 2
 +-- 3
 +-- ]], 1, true))
-
-
+ 
+ 
  -- test for error objects

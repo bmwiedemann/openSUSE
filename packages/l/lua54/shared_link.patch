@@ -1,28 +1,23 @@
+---
+ src/ldebug.h  |    2 +-
+ src/lmem.h    |    2 +-
+ src/lundump.h |    2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
 --- a/src/ldebug.h
 +++ b/src/ldebug.h
 @@ -36,7 +36,7 @@
  #endif
-
-
+ 
+ 
 -LUAI_FUNC int luaG_getfuncline (const Proto *f, int pc);
 +LUA_API int luaG_getfuncline (const Proto *f, int pc);
  LUAI_FUNC const char *luaG_findlocal (lua_State *L, CallInfo *ci, int n,
                                                      StkId *pos);
  LUAI_FUNC l_noret luaG_typeerror (lua_State *L, const TValue *o,
---- a/src/lundump.h
-+++ b/src/lundump.h
-@@ -30,7 +30,7 @@
- LUAI_FUNC LClosure* luaU_undump (lua_State* L, ZIO* Z, const char* name);
-
- /* dump one chunk; from ldump.c */
--LUAI_FUNC int luaU_dump (lua_State* L, const Proto* f, lua_Writer w,
-+LUA_API int luaU_dump (lua_State* L, const Proto* f, lua_Writer w,
-                          void* data, int strip);
-
- #endif
 --- a/src/lmem.h
 +++ b/src/lmem.h
-@@ -81,7 +81,7 @@
+@@ -81,7 +81,7 @@ LUAI_FUNC void *luaM_realloc_ (lua_State
                                                            size_t size);
  LUAI_FUNC void *luaM_saferealloc_ (lua_State *L, void *block, size_t oldsize,
                                                                size_t size);
@@ -31,3 +26,14 @@
  LUAI_FUNC void *luaM_growaux_ (lua_State *L, void *block, int nelems,
                                 int *size, int size_elem, int limit,
                                 const char *what);
+--- a/src/lundump.h
++++ b/src/lundump.h
+@@ -30,7 +30,7 @@
+ LUAI_FUNC LClosure* luaU_undump (lua_State* L, ZIO* Z, const char* name);
+ 
+ /* dump one chunk; from ldump.c */
+-LUAI_FUNC int luaU_dump (lua_State* L, const Proto* f, lua_Writer w,
++LUA_API int luaU_dump (lua_State* L, const Proto* f, lua_Writer w,
+                          void* data, int strip);
+ 
+ #endif

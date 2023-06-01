@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon May 29 16:23:16 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Library is always liblua5_4-5: due to SOVERSION leading digit
+  being 5
+
+-------------------------------------------------------------------
+Mon May 22 09:39:52 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Final release of 5.4.6. No change in the changelog.
+
+-------------------------------------------------------------------
+Tue May  9 12:43:31 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Experimenting with lua 5.4.6-rc1 (release 5.4.5 has been
+  effectively withdrawn).
+
+-------------------------------------------------------------------
+Sun Apr 30 12:22:03 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 5.4.5:
+  - this is a bug-fix release.
+  - Lua 5.4.5 also contains several internal improvements and
+    includes a revised reference manual
+- Remove upstreamed patches:
+  - luabugs1.patch
+  - luabugs10.patch
+  - luabugs11.patch
+  - luabugs2.patch
+  - luabugs3.patch
+  - luabugs4.patch
+  - luabugs5.patch
+  - luabugs6.patch
+  - luabugs7.patch
+  - luabugs8.patch
+  - luabugs9.patch
+
+-------------------------------------------------------------------
 Tue Apr  4 11:58:56 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Added more numbered patches from upstream:
