@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-ptmap
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,13 @@ Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Maps over integers implemented as Patricia trees
 License:        LGPL-2.1-or-later WITH OCaml-linking-exception
+ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/ptmap
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %name-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20200514
+BuildRequires:  ocaml-rpm-macros >= 20230101
 BuildRequires:  ocamlfind(oUnit)
 BuildRequires:  ocamlfind(qcheck)
 BuildRequires:  ocamlfind(qtest)
@@ -39,13 +40,13 @@ OCaml implementation of an efficient maps over integers,
 from a paper by Chris Okasaki.
 
 %package        devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Requires:       %name = %version
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
 %autosetup -p1
@@ -62,8 +63,8 @@ dune_release_pkgs='ptmap'
 %check
 %ocaml_dune_test
 
-%files -f %{name}.files
+%files -f %name.files
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 
 %changelog
