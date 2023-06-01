@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May 29 19:52:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.04:
+  * Newly documented interfaces in existing pages
+  * proc.5
+    KPF_PGTABLE                     (Linux 4.18)
+  * landlock.7
+    LANDLOCK_ACCESS_FS_REFER        (Linux 5.19)
+  * udp.7
+    UDP_GRO                         (Linux 5.0)
+    UDP_SEGMENT                     (Linux 4.18)
+  * Changes to individual pages
+
+-------------------------------------------------------------------
 Tue Dec 27 23:29:32 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 6.00

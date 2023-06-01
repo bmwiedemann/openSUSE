@@ -1980,4 +1980,21 @@
 - Added keyring and signed source (forwarded request 1045577 from susnux)</comment>
     <requestid>1046140</requestid>
   </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>f38b81f989e4dbc1d040b28325239623</srcmd5>
+    <version>6.04</version>
+    <time>1685632728</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.04:
+  * Newly documented interfaces in existing pages
+  * proc.5
+    KPF_PGTABLE                     (Linux 4.18)
+  * landlock.7
+    LANDLOCK_ACCESS_FS_REFER        (Linux 5.19)
+  * udp.7
+    UDP_GRO                         (Linux 5.0)
+    UDP_SEGMENT                     (Linux 4.18)
+  * Changes to individual pages (forwarded request 1089646 from dirkmueller)</comment>
+    <requestid>1089673</requestid>
+  </revision>
 </revisionlist>
