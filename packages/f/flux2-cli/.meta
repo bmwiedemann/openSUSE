@@ -1,0 +1,6 @@
+<package name="flux2-cli" project="openSUSE:Factory">
+  <title>flux2-cli</title>
+  <description>CLI for the Flux2 continuous delivery solution for Kubernetes</description>
+  <devel project="devel:kubic" package="flux2-cli"/>
+  <url>https://github.com/fluxcd/flux2</url>
+</package>
