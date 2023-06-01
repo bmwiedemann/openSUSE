@@ -919,4 +919,12 @@ Bugfixes
     <comment></comment>
     <requestid>1080136</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>f2dbaed388625d071834e93d9afaa0f3</srcmd5>
+    <version>4.5.1</version>
+    <time>1685632735</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 4.5.1 (forwarded request 1089562 from danishprakash)</comment>
+    <requestid>1089696</requestid>
+  </revision>
 </revisionlist>

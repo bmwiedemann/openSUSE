@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon May 29 10:56:00 UTC 2023 - danish.prakash@suse.com
+
+- Update to version 4.5.1:
+  * Release v4.5.1
+  * [CI:DOCS] Final release notes for v4.5.1
+  * [CI:BUILD] Packit: set propose-downstream action type to pre-sync
+  * Revert "Resolve symlink path for qemu directory if possible"
+  * no need for podman-next rpm test on maint branch
+  * [CI:BUILD] Packit: add jobs for downstream Fedora package builds
+  * libpod: configureNetNS() tear down on errors
+  * libpod: rootlessNetNs.Cleanup() fix error message
+  * network create/update: allow dns servers comma separated
+  * machine: fix default connection URL to use 127.0.0.1
+  * compat: accept tag in /images/create?fromSrc
+  * compat container create: match duplicate mounts correctly
+  * machine: qemu only remove connection after confirmation
+  * windows: podman save allow the use of stdout
+  * remote: exec inspect update exec session status
+  * podman-remote logs: handle server error correctly
+  * libpod: stop containers with --restart=always
+  * Do not include image annotations when building spec
+  * [v4.5] system tests: fix race in kube-play read-only
+  * api: fix parsing filters
+  * Support systemd optional prefix '-' for devices.
+  * *: migrate image registry to registry.k8s.io
+  * Makefile: include `release-artifacts` target
+  * [CI:BUILD] Packit: Initial Enablement
+  * Bump to v4.5.1-dev
+
+-------------------------------------------------------------------
 Tue Apr 18 06:46:57 UTC 2023 - danish.prakash@suse.com
 
 - Update to version 4.5.0:
