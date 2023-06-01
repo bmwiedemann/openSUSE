@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jun  1 06:46:45 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.14.1.6:
+  * Fixed version numbers in two cases in CHANGES that referred
+    to the 2.14.2.x instead of 2.14.1.x.
+  * Rename MINGW Makefile variable (a holdover from MINGW32_NT-5.0)
+    to OSNAME.
+  * Fixed FUNCPTR typedef in hist.c to fix deprecated compiler warnings.
+  * Fixed when USE_READLINE, READLINE_LIB, READLINE_EXTRAS, and
+    READLINE_INCLUDE are set to empty (disable use of the GNU-readline
+    facility).
+  * Fix cases of spaces before tabs in Makefile and Makefile.simple.
+  * Fixed obsolete references to the atoz() in LIBRARY to use the
+    correct internal function name of str2z().
+  * Fixed obsolete references to the atoq() in LIBRARY to use the
+    correct internal function name of str2q().
+  * Document in help/unexpected that * operator has has a higher
+    precedence than << in calc, which differs from C.
+
+-------------------------------------------------------------------
 Tue Mar 14 08:25:27 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.14.1.5:

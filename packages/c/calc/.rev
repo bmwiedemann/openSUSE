@@ -469,4 +469,27 @@
     <comment></comment>
     <requestid>1071443</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>0f1e50c968bf398b281fc0ce1c7e65f8</srcmd5>
+    <version>2.14.1.6</version>
+    <time>1685632787</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.14.1.6:
+  * Fixed version numbers in two cases in CHANGES that referred
+    to the 2.14.2.x instead of 2.14.1.x.
+  * Rename MINGW Makefile variable (a holdover from MINGW32_NT-5.0)
+    to OSNAME.
+  * Fixed FUNCPTR typedef in hist.c to fix deprecated compiler warnings.
+  * Fixed when USE_READLINE, READLINE_LIB, READLINE_EXTRAS, and
+    READLINE_INCLUDE are set to empty (disable use of the GNU-readline
+    facility).
+  * Fix cases of spaces before tabs in Makefile and Makefile.simple.
+  * Fixed obsolete references to the atoz() in LIBRARY to use the
+    correct internal function name of str2z().
+  * Fixed obsolete references to the atoq() in LIBRARY to use the
+    correct internal function name of str2q().
+  * Document in help/unexpected that * operator has has a higher
+    precedence than &lt;&lt; in calc, which differs from C.</comment>
+    <requestid>1090155</requestid>
+  </revision>
 </revisionlist>
