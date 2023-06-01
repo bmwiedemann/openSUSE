@@ -53,4 +53,31 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1058292</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b982dd460999e4fcb1e55a3ababf40f8</srcmd5>
+    <version>3.21.3</version>
+    <time>1685632776</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.21.3:
+  * #1361 Fix #1356 files_upload_v2 filename required even though content
+    provided
+  * #1354 Fix a bug where SQLAlchemy based InstallationStore is missing
+    client_id in queries
+  * #1352 Improve the default OAuth page content renderer not to embed
+    external parameters as-is
+  * Update Audit Logs API response class to have newly added properties
+  * #1349 Add five admin API supports to Web API clients (admin.roles.*,
+    admin.conversations.convertToPublic, admin.conversations.lookup)
+  * #1345 Add team parameter support to the authorize URL generators
+  * #1343 Fix #1342 files_upload_v2 fails to share files in a channel
+  * #1334 Fix #1333 Enable using RetryHandler for 200 OK response patterns
+  * #1335 Fix #1327 OAuth module: SQLAlchemy v2 compatibility
+  * #1311 Fix #1310 Add admin.conversations.bulk{Archive|Delete|Move} API
+    method support
+  * #1332 Fix #1322 Remove file_annotation parameter from chat.postMessage
+    method
+  * #1317 Add include_categories to emoji.list API args
+- Switch to pyproject macros.</comment>
+    <requestid>1090102</requestid>
+  </revision>
 </revisionlist>

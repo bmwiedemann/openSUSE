@@ -16,15 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 Name:           python-slack-sdk
-Version:        3.19.5
+Version:        3.21.3
 Release:        0
 Summary:        Python SDKs for the Slack API
 License:        MIT
 URL:            https://github.com/slackapi/python-slack-sdk
 Source:         https://github.com/slackapi/python-slack-sdk/archive/v%{version}.tar.gz#/slack-sdk-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Obsoletes:      python-slackclient < %{version}
@@ -52,13 +53,13 @@ Slack’s APIs. They are small and powerful when used independently, and work
 seamlessly when used together, too.
 
 %prep
-%setup -q -n python-slack-sdk-%{version}
+%autosetup -p1 -n python-slack-sdk-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
