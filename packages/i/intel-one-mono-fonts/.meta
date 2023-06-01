@@ -1,0 +1,5 @@
+<package name="intel-one-mono-fonts" project="openSUSE:Factory">
+  <title>Intel One Mono Typeface</title>
+  <description>Intel One Mono is an expressive monospaced font family that’s built with clarity, legibility, and the needs of developers in mind.</description>
+  <devel project="M17N:fonts" package="intel-one-mono-fonts"/>
+</package>
