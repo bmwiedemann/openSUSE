@@ -54,4 +54,16 @@
 </comment>
     <requestid>1058836</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>40fa885355e15f481333b6b827c446df</srcmd5>
+    <version>0.22.0</version>
+    <time>1685632797</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.22.0:
+  * Requires `httpx`==0.24.\*
+  * Update version specifiers for `pytest` dependency to support
+    `packaging` `23`.
+  * Add explicit support for `python` `3.11`.</comment>
+    <requestid>1090223</requestid>
+  </revision>
 </revisionlist>
