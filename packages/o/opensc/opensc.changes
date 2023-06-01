@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  1 12:55:19 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Security Fix: [CVE-2023-2977, bsc#1211894]
+  * opensc: out of bounds read in pkcs15 cardos_have_verifyrc_package()
+  * Add opensc-CVE-2023-2977.patch
+
+-------------------------------------------------------------------
 Tue Nov 29 17:52:46 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to OpenSC 0.23.0:

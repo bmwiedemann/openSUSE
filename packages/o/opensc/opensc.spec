@@ -1,7 +1,7 @@
 #
 # spec file for package opensc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ Source2:        %{name}-rpmlintrc
 # https://web.archive.org/web/20111225073733/http://www.opensc-project.org/opensc/ticket/390
 Source3:        opensc.module
 Patch0:         opensc-gcc11.patch
+# PATCH-FIX-UPSTREAM: bsc#1211894, CVE-2023-2977 out of bounds read in pkcs15 cardos_have_verifyrc_package()
+Patch1:         opensc-CVE-2023-2977.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libxslt
 BuildRequires:  pkgconfig
@@ -59,8 +61,7 @@ possible operations may be supported for your card. Card initialization
 may require third party proprietary software.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %configure \
