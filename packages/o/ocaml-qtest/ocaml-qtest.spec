@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-qtest
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,13 @@ Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Inline (Unit) Tests for OCaml
 License:        GPL-3.0-or-later
+ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/qtest
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %name-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210121
+BuildRequires:  ocaml-rpm-macros >= 20230101
 BuildRequires:  ocamlfind(bytes)
 BuildRequires:  ocamlfind(qcheck)
 BuildRequires:  ocamlfind(ounit2)
@@ -39,13 +40,13 @@ qcheck library. The possibilities range from trivial tests
 to sophisticated random generation of test cases.
 
 %package        devel
-Summary:        Development files for %{name}
+Summary:        Development files for %name
 Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Requires:       %name = %version
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
 %autosetup -p1
@@ -62,10 +63,10 @@ dune_release_pkgs='qtest'
 %check
 %ocaml_dune_test
 
-%files -f %{name}.files
+%files -f %name.files
 %doc README.adoc
-%{_bindir}/*
+%_bindir/*
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 
 %changelog
