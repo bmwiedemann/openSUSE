@@ -537,6 +537,9 @@ Prefer: -podman-docker
 # have choice for /usr/bin/dbus-launch needed by gnome-session-core: dbus-1 dbus-1-x11
 Prefer: -dbus-1-x11
 
+# have choice for (podman or docker) needed by ansible-builder: docker podman
+Prefer: -docker
+
 Preinstall: aaa_base filesystem attr bash bash-sh coreutils diffutils
 Preinstall: fillup glibc grep pam permissions rpm rpm-config-SUSE sed tar
 Preinstall: libbz2-1 libgcc_s1 libncurses6 libreadline8 libz1 libselinux1
