@@ -578,6 +578,7 @@ unsorted:
   - ansible-cmdb 
   - ansible-core 
   - ansible-lint 
+  - ansible-navigator 
   - ansible-runner 
   - ansible-test 
   - ansible-variables 
@@ -1272,6 +1273,7 @@ unsorted:
   - bbe 
   - bbswitch 
   - bbswitch-kmp-default 
+  - bcachefs-tools 
   - bcal 
   - bcc-devel 
   - bcc-docs 
@@ -1990,9 +1992,6 @@ unsorted:
   - cervisia-lang 
   - cf-cli 
   - cf-cli-test 
-  - cfengine 
-  - cfengine-examples 
-  - cfengine-masterfiles 
   - cfitsio 
   - cfitsio-devel 
   - cfitsio-devel-doc 
@@ -4076,6 +4075,10 @@ unsorted:
   - fluidsynth-devel 
   - fluidsynth-dssi 
   - flute-javadoc 
+  - flux2-cli 
+  - flux2-cli-bash-completion 
+  - flux2-cli-fish-completion 
+  - flux2-cli-zsh-completion 
   - fluxbox 
   - fluxbox-styles-upstream 
   - flxmlrpc-devel 
@@ -6943,6 +6946,8 @@ unsorted:
   - golang-org-x-sys 
   - golang-packaging 
   - golangci-lint 
+  - goldendict-ng 
+  - goldendict-ng-lang 
   - golly 
   - golly-assets 
   - golly-devel 
@@ -8098,6 +8103,7 @@ unsorted:
   - intel-hybrid-driver 
   - intel-ipsec-mb-devel 
   - intel-media-driver 
+  - intel-one-mono-fonts 
   - intel-opencl 
   - intel-opencl-devel 
   - intelhex 
@@ -8338,6 +8344,8 @@ unsorted:
   - jameica 
   - jameica-devel 
   - jameica-javadoc 
+  - janet 
+  - janet-devel 
   - janino 
   - janino-javadoc 
   - jansi 
@@ -11167,7 +11175,7 @@ unsorted:
   - libcairo2-32bit 
   - libcaja-extension1 
   - libcal3d12 
-  - libcalc2_14_1_5 
+  - libcalc2_14_1_6 
   - libcalcium0 
   - libcallaudio0_1-0 
   - libcallback1 
@@ -11763,7 +11771,7 @@ unsorted:
   - libevt-devel 
   - libevt-tools 
   - libevt1 
-  - libevtlog-4_0-0 
+  - libevtlog-4_2-0 
   - libevtlog-devel 
   - libevtlog0 
   - libevtx-devel 
@@ -11886,7 +11894,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla35 
+  - libfilezilla39 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -12822,6 +12830,7 @@ unsorted:
   - libjack0-32bit 
   - libjacknet0-32bit 
   - libjackserver0-32bit 
+  - libjanet1_28 
   - libjansson-devel 
   - libjasper-devel 
   - libjavamapscript 
@@ -13820,8 +13829,6 @@ unsorted:
   - libopenssl1_1-32bit 
   - libopenssl1_1-hmac 
   - libopenssl1_1-hmac-32bit 
-  - libopenssl3-hmac-32bit 
-  - libopenssl3-hmac-x86-64-v3 
   - libopenssl3-x86-64-v3 
   - libopentracing-cpp1 
   - libopenvas_wincmd-devel 
@@ -14195,8 +14202,6 @@ unsorted:
   - libprimesieve11 
   - libprofiler0 
   - libproj25 
-  - libpromises-devel 
-  - libpromises3 
   - libprotobuf-c-devel 
   - libprotobuf-lite3_21_12-32bit 
   - libprotobuf-mutator-devel 
@@ -18929,6 +18934,7 @@ unsorted:
   - obs-service-kiwi_label_helper 
   - obs-service-kiwi_metainfo_helper 
   - obs-service-kubevirt_containers_meta 
+  - obs-service-node_modules 
   - obs-service-obs_scm 
   - obs-service-obs_scm-common 
   - obs-service-product_converter 
@@ -24735,6 +24741,7 @@ unsorted:
   - python310-libsigscan 
   - python310-libsmdev 
   - python310-libsmraw 
+  - python310-libtmux 
   - python310-libusb1 
   - python310-libvhdi 
   - python310-libvmdk 
@@ -28112,6 +28119,7 @@ unsorted:
   - python311-libsigscan 
   - python311-libsmdev 
   - python311-libsmraw 
+  - python311-libtmux 
   - python311-libusb1 
   - python311-libvhdi 
   - python311-libvirt-python 
@@ -31591,6 +31599,7 @@ unsorted:
   - python39-libsigscan 
   - python39-libsmdev 
   - python39-libsmraw 
+  - python39-libtmux 
   - python39-libusb1 
   - python39-libvhdi 
   - python39-libvirt-python 
@@ -35302,6 +35311,7 @@ unsorted:
   - syslog-ng-java 
   - syslog-ng-mqtt 
   - syslog-ng-python 
+  - syslog-ng-python-modules 
   - syslog-ng-redis 
   - syslog-ng-smtp 
   - syslog-ng-snmp 
