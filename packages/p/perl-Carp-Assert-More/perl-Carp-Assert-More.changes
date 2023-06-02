@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun  1 03:06:19 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.3.0
+   see /usr/share/doc/packages/perl-Carp-Assert-More/Changes
+
+  2.3.0   Tue May 30 21:52:20 CDT 2023
+          [ENHANCEMENTS]
+          Added assert_arrayref_of() to verify that all of the elements
+          in an arrayref are of a given type. For example:
+
+              my $users = get_users();
+              assert_arrayref_of( $users, 'My::User' );
+
+-------------------------------------------------------------------
 Tue Jan 31 03:06:13 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.2.0

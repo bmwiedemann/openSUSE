@@ -18,7 +18,7 @@
 
 %define cpan_name Carp-Assert-More
 Name:           perl-Carp-Assert-More
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 License:        Artistic-2.0
 Summary:        Convenience assertions for common situations
