@@ -1,7 +1,7 @@
 #
 # spec file for package MozillaFirefox-branding-openSUSE
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2008-2019 Wolfgang Rosenauer
 #
 # All modifications and additions to the file contributed by third parties
@@ -43,7 +43,7 @@ Release:        0
 Summary:        openSUSE branding of MozillaFirefox
 License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Browsers
-Url:            http://www.opensuse.org
+URL:            http://www.opensuse.org
 Source:         susefox-20120626.tar.bz2
 Source1:        opensuse-software.xml.in
 Source2:        all-openSUSE.js
@@ -83,6 +83,18 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
     %else
       %if %sle_version == 150200
         %global suseversion 15.2
+      %else
+        %if %sle_version == 150300
+          %global suseversion 15.3
+        %else
+          %if %sle_version == 150400
+            %global suseversion 15.4
+          %else
+            %if %sle_version == 150500
+              %global suseversion 15.5
+            %endif
+          %endif
+        %endif
       %endif
     %endif
   %endif

@@ -12,3 +12,6 @@ pref("print.print_edge_bottom", 14); // 1/100 of an inch
 pref("accessibility.typeaheadfind.soundURL", "default");
 pref("startup.homepage_welcome_url", "");
 pref("startup.homepage_override_url", "");
+
+//about:newtab pinned sites
+pref("browser.newtabpage.pinned", "[{\"url\":\"https://news.opensuse.org/\",\"label\":\"News\"},{\"url\":\"https://doc.opensuse.org/\",\"label\":\"Docs\"},{\"url\":\"https://en.opensuse.org/Portal:Wiki\",\"label\":\"Wiki\"},{\"url\":\"https://software.opensuse.org/\",\"label\":\"Software\"},{\"url\":\"https://forums.opensuse.org/\",\"label\":\"Forum\"},{\"url\":\"https://planet.opensuse.org//\",\"label\":\"Planet\"}]");
