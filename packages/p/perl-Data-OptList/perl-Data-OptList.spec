@@ -18,7 +18,7 @@
 
 %define cpan_name Data-OptList
 Name:           perl-Data-OptList
-Version:        0.113
+Version:        0.114
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Parse and validate simple name/value option pairs

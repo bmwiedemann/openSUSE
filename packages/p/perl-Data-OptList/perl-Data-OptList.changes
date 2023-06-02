@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May  7 03:06:53 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.114
+   see /usr/share/doc/packages/perl-Data-OptList/Changes
+
+  0.114     2023-05-06 17:25:36-04:00 America/New_York
+          - Data::OptList now requires perl v5.12.0
+          - tests no longer add "-T" to shebang, so do not invoke taint mode
+
+-------------------------------------------------------------------
 Mon Jan  2 03:10:03 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.113
