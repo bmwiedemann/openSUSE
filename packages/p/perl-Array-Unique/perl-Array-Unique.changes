@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 30 03:06:09 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.09
+   see /usr/share/doc/packages/perl-Array-Unique/Changes
+
+  0.09 2023.05.29
+      - Move to GitHub
+      - Add GitHub Actions
+      - Add links to GitHub
+      - Add version number to each module
+
+-------------------------------------------------------------------
 Mon Aug 22 15:06:21 UTC 2011 - lars@linux-schulserver.de
 
 - recreated the spec file by cpanspec 1.78.03

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Array-Unique
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define cpan_name Array-Unique
 Name:           perl-Array-Unique
-Version:        0.08
+Version:        0.09
 Release:        0
-%define         cpan_name Array-Unique
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Tie-able array that allows only unique values
-License:        GPL-2.0+ or Artistic-1.0
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Array-Unique/
-#Source:         http://www.cpan.org/authors/id/S/SZ/SZABGAB/Array-Unique-%%{version}.tar.gz
-Source:         %{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/S/SZ/SZABGAB/%{cpan_name}-%{version}.tar.gz
+BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Module::Build)
-BuildRequires:  perl(Test::More) >= 0.47
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildArch:      noarch
+BuildRequires:  perl(Module::Build) >= 0.420000
 %{perl_requires}
 
 %description
@@ -50,10 +46,10 @@ case sensitive.
 As a side effect the module does not allow undef as a value in the array.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Build.PL installdirs=vendor
+perl Build.PL installdirs=vendor
 ./Build build flags=%{?_smp_mflags}
 
 %check
@@ -63,11 +59,7 @@ As a side effect the module does not allow undef as a value in the array.
 ./Build install destdir=%{buildroot} create_packlist=0
 %perl_gen_filelist
 
-%clean
-%{__rm} -rf %{buildroot}
-
 %files -f %{name}.files
-%defattr(644,root,root,755)
-%doc Changes README
+%doc Changes README README.md
 
 %changelog
