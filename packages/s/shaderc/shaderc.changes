@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 29 12:51:28 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2023.4
+  * Add option to preserve bindings
+  * Add options to control mesh shading limits
+
+-------------------------------------------------------------------
 Tue Mar 28 23:26:28 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2023.2
