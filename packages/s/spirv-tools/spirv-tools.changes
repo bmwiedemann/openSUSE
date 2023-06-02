@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 30 22:01:25 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2023.3~rc1
+  * Add spirv-dump tool
+  * Implement source extraction logic for spirv-objdump
+  * Add Vulkan memory model to allow lists
+  * Add default case for spv::Dim for TileImageEXT
+  * Add support for SPV_EXT_shader_tile_image
+  * opt: Fix null deref in OpMatrixTimesVector and OpVectorTimesMatrix
+  * Apply scalar replacement on vars with Pointer decorations
+
+-------------------------------------------------------------------
 Thu Mar 30 07:42:40 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2023.2
