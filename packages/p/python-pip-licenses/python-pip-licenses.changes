@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  1 20:08:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.2:
+  * Better Handling extracting URLs from `Project-URL`
+
+-------------------------------------------------------------------
 Thu May  4 16:56:21 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 4.3.1:

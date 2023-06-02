@@ -133,4 +133,13 @@
 </comment>
     <requestid>1084817</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fd9e6c2cc8211942a2b3b4aa31c2c1a1</srcmd5>
+    <version>4.3.2</version>
+    <time>1685743642</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.3.2:
+  * Better Handling extracting URLs from `Project-URL`</comment>
+    <requestid>1090383</requestid>
+  </revision>
 </revisionlist>
