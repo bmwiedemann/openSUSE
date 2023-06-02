@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 30 16:02:49 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- bash-repl.patch: Use correct place for auxiliary bashrc.sh file from pexpect
+
+-------------------------------------------------------------------
 Fri May  5 11:23:29 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add without_zsh.patch

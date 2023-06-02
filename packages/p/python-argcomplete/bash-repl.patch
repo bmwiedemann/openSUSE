@@ -1,0 +1,13 @@
+Index: argcomplete-3.0.8/test/test.py
+===================================================================
+--- argcomplete-3.0.8.orig/test/test.py
++++ argcomplete-3.0.8/test/test.py
+@@ -65,7 +65,7 @@ def _repl_sh(command, args, non_printabl
+ 
+ 
+ def bash_repl(command="bash"):
+-    bashrc = os.path.join(os.path.dirname(pexpect.__file__), "replwrap", "bashrc.sh")
++    bashrc = os.path.join(os.path.dirname(pexpect.__file__), "bashrc.sh")
+     sh = _repl_sh(command, ["--rcfile", bashrc], non_printable_insert="\\[\\]")
+     return sh
+ 

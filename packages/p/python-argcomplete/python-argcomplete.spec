@@ -30,6 +30,8 @@ Source:         https://files.pythonhosted.org/packages/source/a/argcomplete/arg
 Patch1:         trim-test-deps.patch
 # Don't fail the test suite when zsh is not available
 Patch2:         without_zsh.patch
+# Use correct place for auxiliary bashrc.sh file from pexpect
+Patch3:         bash-repl.patch
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pip}
