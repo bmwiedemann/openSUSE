@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May 13 03:07:04 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.97
+   see /usr/share/doc/packages/perl-App-perlbrew/Changes
+
+  0.97
+  	- Released at 2023-05-12T22:33:42+0900
+  	- Thanks to our contributors: Elvin Aslanov, Graham Knop, Shoichi Kaji, Tomasz Konojacki, brian greenfield
+  	- The documentation of `clone-module` and `list-modules` are improved.
+  	- No longer depends on Pod::Parser. Github PR #760
+  	- Bugfix for csh users: Github PR #770
+
+-------------------------------------------------------------------
 Mon Aug  1 03:06:06 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.96

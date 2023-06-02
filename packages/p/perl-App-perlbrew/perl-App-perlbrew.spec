@@ -1,7 +1,7 @@
 #
 # spec file for package perl-App-perlbrew
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,17 @@
 
 %define cpan_name App-perlbrew
 Name:           perl-App-perlbrew
-Version:        0.96
+Version:        0.97
 Release:        0
 License:        MIT
-Summary:        Manage perl installations in your C<$HOME>
+Summary:        Manage perl installations in your $HOME
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/G/GU/GUGOD/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(CPAN::Perl::Releases) >= 5.20220720
+BuildRequires:  perl(CPAN::Perl::Releases) >= 5.20230423
 BuildRequires:  perl(Capture::Tiny) >= 0.48
 BuildRequires:  perl(Devel::PatchPerl) >= 2.08
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 7.22
@@ -36,10 +36,9 @@ BuildRequires:  perl(File::Temp) >= 0.2304
 BuildRequires:  perl(File::Which) >= 1.21
 BuildRequires:  perl(IO::All) >= 0.51
 BuildRequires:  perl(JSON::PP)
-BuildRequires:  perl(Module::Build::Tiny) >= 0.034
+BuildRequires:  perl(Module::Build::Tiny) >= 0.039
 BuildRequires:  perl(Path::Class) >= 0.33
-BuildRequires:  perl(Pod::Parser) >= 1.63
-BuildRequires:  perl(Pod::Usage) >= 1.68
+BuildRequires:  perl(Pod::Usage) >= 1.69
 BuildRequires:  perl(Test::Exception) >= 0.320000
 BuildRequires:  perl(Test::More) >= 1.001002
 BuildRequires:  perl(Test::NoWarnings) >= 1.04
@@ -48,14 +47,13 @@ BuildRequires:  perl(Test::Simple) >= 1.001002
 BuildRequires:  perl(Test::Spec) >= 0.49
 BuildRequires:  perl(Test::TempDir::Tiny) >= 0.016
 BuildRequires:  perl(local::lib) >= 2.000014
-Requires:       perl(CPAN::Perl::Releases) >= 5.20220720
+Requires:       perl(CPAN::Perl::Releases) >= 5.20230423
 Requires:       perl(Capture::Tiny) >= 0.48
 Requires:       perl(Devel::PatchPerl) >= 2.08
 Requires:       perl(ExtUtils::MakeMaker) >= 7.22
 Requires:       perl(File::Temp) >= 0.2304
 Requires:       perl(JSON::PP)
-Requires:       perl(Pod::Parser) >= 1.63
-Requires:       perl(Pod::Usage) >= 1.68
+Requires:       perl(Pod::Usage) >= 1.69
 Requires:       perl(local::lib) >= 2.000014
 %{perl_requires}
 # MANUAL BEGIN
@@ -80,6 +78,7 @@ read.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
+
 # MANUAL BEGIN
 chmod a+x t/fake-bin/curl
 # MANUAL END
