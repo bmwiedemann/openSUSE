@@ -17,7 +17,7 @@
 
 
 Name:           astyle
-Version:        3.3
+Version:        3.3.1
 Release:        0
 Summary:        Source Code Indenter, Formatter, and Beautifier for C, C++, C# and Java
 License:        MIT
@@ -26,8 +26,6 @@ Source:         https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
 BuildRequires:  java-devel
-# PATCH-FIX-UPSTREAM astyle-3.3-std.patch -- Fix build (gl#saalen/astyle!2)
-Patch:          astyle-3.3-std.patch
 
 %description
 Artistic Style is a source code indenter, formatter, and beautifier for the C,

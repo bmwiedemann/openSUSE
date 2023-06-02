@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 28 19:44:44 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to 3.3.1: Fix build.
+- Remove astyle-3.3-std.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Wed May 24 09:24:33 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to 3.3:
