@@ -463,4 +463,14 @@
     <comment></comment>
     <requestid>1039759</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f3cf6d5eec8b6f9a3119797de45bb476</srcmd5>
+    <version>3.4.0</version>
+    <time>1685743645</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.4.0:
+  * drop python37 support
+  * remove use of deprecated ast</comment>
+    <requestid>1090388</requestid>
+  </revision>
 </revisionlist>
