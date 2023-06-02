@@ -1,0 +1,111 @@
+From 2aa5e4620920f51a9ad4e3ade05b45e88aaf7155 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Fri, 2 Jun 2023 15:47:09 +1000
+Subject: [PATCH] Switch to unittest.mock
+
+Python 3.3+ has included mock in the standard library, under the
+unittest module. Switch to using that, rather than the external mock
+library.
+
+Fixes #69
+---
+ .travis.yml                  | 2 +-
+ tests/commands/base.py       | 4 ++--
+ tests/commands/test_push.py  | 2 +-
+ tests/test_command_result.py | 2 +-
+ tests/test_plugins.py        | 4 ++--
+ tests/test_ticketfolder.py   | 4 ++--
+ tests/test_utils.py          | 2 +-
+ 7 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/.travis.yml b/.travis.yml
+index 76a9d96..1bcbae1 100644
+--- a/.travis.yml
++++ b/.travis.yml
+@@ -7,7 +7,7 @@ before_install:
+ - curl -fI $INTEGRATION_TESTING_URL
+ - pip install --upgrade setuptools
+ - pip install -r requirements.txt
+-- pip install pytest mock behave
++- pip install pytest behave
+ - pip install -e .
+ - git config --global user.email "gitbot@adamcoddington.net"
+ - git config --global user.name "I'm a Robot"
+diff --git a/tests/commands/base.py b/tests/commands/base.py
+index e961bd8..5843c5f 100644
+--- a/tests/commands/base.py
++++ b/tests/commands/base.py
+@@ -1,8 +1,8 @@
+ import os
+ import tempfile
+ 
+-import mock
+-from mock import patch
++from unittest import mock
++from unittest.mock import patch
+ 
+ from jirafs.utils import run_command_method_with_kwargs
+ 
+diff --git a/tests/commands/test_push.py b/tests/commands/test_push.py
+index 78e7673..283dbc1 100644
+--- a/tests/commands/test_push.py
++++ b/tests/commands/test_push.py
+@@ -1,4 +1,4 @@
+-from mock import call, patch
++from unittest.mock import call, patch
+ 
+ from jirafs.utils import run_command_method_with_kwargs
+ 
+diff --git a/tests/test_command_result.py b/tests/test_command_result.py
+index f44ec43..49ed5c9 100644
+--- a/tests/test_command_result.py
++++ b/tests/test_command_result.py
+@@ -1,4 +1,4 @@
+-from mock import patch
++from unittest.mock import patch
+ 
+ from jirafs.plugin import CommandResult
+ 
+diff --git a/tests/test_plugins.py b/tests/test_plugins.py
+index e1af5bf..f165874 100644
+--- a/tests/test_plugins.py
++++ b/tests/test_plugins.py
+@@ -3,8 +3,8 @@
+ import shutil
+ import tempfile
+ 
+-import mock
+-from mock import patch
++from unittest import mock
++from unittest.mock import patch
+ 
+ from jirafs.plugin import MacroPlugin
+ from jirafs.utils import run_command_method_with_kwargs
+diff --git a/tests/test_ticketfolder.py b/tests/test_ticketfolder.py
+index f93d2b7..eba31d6 100644
+--- a/tests/test_ticketfolder.py
++++ b/tests/test_ticketfolder.py
+@@ -4,9 +4,9 @@
+ import shutil
+ import tempfile
+ 
+-import mock
++from unittest import mock
+ import six
+-from mock import patch
++from unittest.mock import patch
+ 
+ from jirafs import exceptions
+ from jirafs.jirafieldmanager import JiraFieldManager
+diff --git a/tests/test_utils.py b/tests/test_utils.py
+index c26246f..7c9e41e 100644
+--- a/tests/test_utils.py
++++ b/tests/test_utils.py
+@@ -1,6 +1,6 @@
+ from distutils.version import LooseVersion
+ 
+-import mock
++from unittest import mock
+ 
+ from jirafs import utils
+ 

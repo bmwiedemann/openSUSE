@@ -104,4 +104,15 @@
     <comment></comment>
     <requestid>964394</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c29956b86a9d8fae545c11478ac01174</srcmd5>
+    <version>2.3.1</version>
+    <time>1685743653</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.1:
+  Fix a serialization/deserialization problem caused by issue options
+  found in modern versions of the jira python plugin.
+- Add patch remove-mock.patch.</comment>
+    <requestid>1090427</requestid>
+  </revision>
 </revisionlist>

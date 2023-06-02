@@ -1,7 +1,7 @@
 #
 # spec file for package python-jirafs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-jirafs
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        Library for editing JIRA issues as local text files
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/coddingtonbear/jirafs
-Source:         https://files.pythonhosted.org/packages/source/j/jirafs/jirafs-%{version}.tar.gz
+Source:         https://github.com/coddingtonbear/jirafs/archive/refs/tags/%{version}.tar.gz#/jirafs-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#coddingtonbear/jirafs#70
+Patch0:         remove-mock.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -64,7 +64,7 @@ issues as a collection of text files using an interface inspired by
 `git` and `hg`.
 
 %prep
-%setup -q -n jirafs-%{version}
+%autosetup -p1 -n jirafs-%{version}
 # Remove upper pins
 sed -i 's/,<[0-9.][0-9.]*//' requirements.txt
 rm jirafs/.pre-commit-config.yaml
@@ -78,11 +78,6 @@ rm jirafs/.pre-commit-config.yaml
 %python_clone -a %{buildroot}%{_bindir}/jirafs
 
 %check
-# https://github.com/coddingtonbear/jirafs/issues/69
-sed -i 's:import mock:import unittest.mock as mock:' \
-  tests/test_*.py tests/commands/base.py
-sed -i 's:from mock import:from unittest.mock import:' \
-  tests/test_*.py tests/commands/base.py tests/commands/test_push.py
 git config --global user.name "John Doe"
 git config --global user.email johndoe@example.com
 %pytest -rs
@@ -95,6 +90,7 @@ git config --global user.email johndoe@example.com
 
 %files %{python_files}
 %python_alternative %{_bindir}/jirafs
-%{python_sitelib}/*
+%{python_sitelib}/jirafs
+%{python_sitelib}/jirafs-%{version}*info
 
 %changelog
