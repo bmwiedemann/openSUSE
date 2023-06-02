@@ -419,4 +419,14 @@ and packages them up for the RPi firmware to use.</comment>
     <comment></comment>
     <requestid>1084811</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>fcc74a32b43fd8dfd1270de4d55da126</srcmd5>
+    <version>2023.05.02</version>
+    <time>1685743531</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable 3.5mm jack socket stereo audio (bsc#1209314):
+  * 0001-ARM-dts-bcm2711-rpi-Reuse-bcm2836-vchiq-driver.patch
+</comment>
+    <requestid>1089948</requestid>
+  </revision>
 </revisionlist>

@@ -30,6 +30,7 @@ Source3:        disable-v3d-overlay.dts
 Source4:        enable-bt-overlay.dts
 Source5:        smbios-overlay.dts
 Source100:      get-from-git.sh
+Patch0:         0001-ARM-dts-bcm2711-rpi-Reuse-bcm2836-vchiq-driver.patch
 Requires:       raspberrypi-firmware
 BuildRequires:  dtc
 BuildRequires:  raspberrypi-firmware
@@ -43,6 +44,7 @@ for the Raspberry Pi boot process.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 SRCDIR=`pwd`

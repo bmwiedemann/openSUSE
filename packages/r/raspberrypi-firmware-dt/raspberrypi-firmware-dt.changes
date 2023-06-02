@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 30 07:28:41 UTC 2023 - Ivan Ivanov <ivan.ivanov@suse.com>
+
+- Enable 3.5mm jack socket stereo audio (bsc#1209314):
+  * 0001-ARM-dts-bcm2711-rpi-Reuse-bcm2836-vchiq-driver.patch
+
+-------------------------------------------------------------------
 Thu May  4 12:34:02 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 870c0a313b18 (2023-05-02):
