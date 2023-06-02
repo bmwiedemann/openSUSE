@@ -11,8 +11,6 @@
 #   Mail Transport Client if started by systemd
 #
  
-pidfile=/var/spool/clientmqueue/sm-client.pid
-
 typeset -i timeout=1000
 typeset port=smtp
 
@@ -21,9 +19,6 @@ for cfg in /etc/sendmail.cf /etc/mail/sendmail.cf ; do
 done
 for sed in /bin/sed /usr/bin/sed ; do
     test -x $sed && break
-done
-for fuser in /bin/fuser /usr/bin/fuser ; do
-    test -x $fuser && break
 done
 for usleep in /bin/usleep /usr/bin/usleep ; do
     test -x $usleep && break
@@ -41,6 +36,7 @@ PortOpts=$($sed -rn '/^O[[:blank:]]+DaemonPortOptions=.*Name=MTA.*$/I {
 		s/[[:blank:]]+//g
 		s/^O[^=]+=(.*)/\1/p
 	    }' $cfg)
+unset sed cfg
 
 #
 # Seek for port beside 25 aka smtp
@@ -48,18 +44,25 @@ PortOpts=$($sed -rn '/^O[[:blank:]]+DaemonPortOptions=.*Name=MTA.*$/I {
 for opt in ${PortOpts//,/ } ; do
     case "${opt%=*}" in
     [Pp]ort) port=${opt#*=}
-             break ;;
+	break ;;
     esac
 done
 unset opt
 
 #
 # Now wait that sendmail MTA is becoming ready
+# Ping the bash special virtual file /dev/tcp/localhost/<port>
 #
-while ! $fuser -sn tcp $port > /dev/null 2>&1 ; do
+while
+    exec 3>&2 2>&-
+    < /dev/tcp/localhost/$port && break
+    exec 2>&3 3>&-
     ((timeout-- <= 0)) && break
     $usleep 10000
+do :
 done
+test -e /dev/fd/3 && exec 2>&3 3>&-
+unset port usleep timeout
 
 #
 # end of /etc/mail/system/sm-client.pre

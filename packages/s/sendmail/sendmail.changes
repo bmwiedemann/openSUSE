@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun  1 08:57:19 UTC 2023 - Werner Fink <werner@suse.de>
+
+- Use the bash intrinsic virtual file /dev/tcp/localhost/<port>
+  to check for MTA port
+
+-------------------------------------------------------------------
+Wed May 31 12:13:28 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Avoid fuser for detecting if sendmail is listen on MTA port
+
+-------------------------------------------------------------------
 Tue Feb 14 10:17:30 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Drop NIS/NISPLUS support for Tumbleweed (boo#1208221) 

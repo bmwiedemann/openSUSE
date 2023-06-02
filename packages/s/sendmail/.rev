@@ -1160,4 +1160,15 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
     <comment>- Drop NIS/NISPLUS support for Tumbleweed (boo#1208221)</comment>
     <requestid>1065705</requestid>
   </revision>
+  <revision rev="118" vrev="9">
+    <srcmd5>0e5c79eb8800761f0e814298a3dfd9ca</srcmd5>
+    <version>8.17.1</version>
+    <time>1685743598</time>
+    <user>dimstar_suse</user>
+    <comment>- Use the bash intrinsic virtual file /dev/tcp/localhost/&lt;port&gt;
+  to check for MTA port
+
+- Avoid fuser for detecting if sendmail is listen on MTA port</comment>
+    <requestid>1090230</requestid>
+  </revision>
 </revisionlist>
