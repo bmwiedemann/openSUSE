@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 11 03:07:54 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.036
+   see /usr/share/doc/packages/perl-YAML-PP/Changes
+
+  0.036 2023-05-10 17:09:48+02:00
+
+      - Add option -dumpcode to turn of dumping coderefs in YAML::PP::Schema::Perl
+      - ci updates
+
+-------------------------------------------------------------------
 Sat Oct  1 03:08:38 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.035

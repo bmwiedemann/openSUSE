@@ -1,7 +1,7 @@
 #
 # spec file for package perl-YAML-PP
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name YAML-PP
 Name:           perl-YAML-PP
-Version:        0.035
+Version:        0.036
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        YAML 1.2 Processor
@@ -29,7 +29,6 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Module::Load)
-BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::More) >= 0.98
 BuildRequires:  perl(Test::Warn)
 Requires:       perl(Module::Load)
