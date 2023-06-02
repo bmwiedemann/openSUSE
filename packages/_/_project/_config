@@ -1832,15 +1832,6 @@ BuildFlags: onlybuild:gawk
 BuildFlags: onlybuild:gc
 BuildFlags: onlybuild:gcab
 BuildFlags: onlybuild:gcc
-BuildFlags: onlybuild:gcc12
-BuildFlags: onlybuild:gcc12:cross-aarch64-gcc12
-BuildFlags: onlybuild:gcc12:cross-aarch64-gcc12-bootstrap
-BuildFlags: onlybuild:gcc12:cross-arm-gcc12
-BuildFlags: onlybuild:gcc12:cross-arm-none-gcc12-bootstrap
-BuildFlags: onlybuild:gcc12:cross-ppc64-gcc12
-BuildFlags: onlybuild:gcc12:cross-riscv64-gcc12
-BuildFlags: onlybuild:gcc12:cross-riscv64-gcc12-bootstrap
-BuildFlags: onlybuild:gcc12:cross-x86_64-gcc12
 BuildFlags: onlybuild:gcc13
 BuildFlags: onlybuild:gcc13:cross-aarch64-gcc13
 BuildFlags: onlybuild:gcc13:cross-aarch64-gcc13-bootstrap
