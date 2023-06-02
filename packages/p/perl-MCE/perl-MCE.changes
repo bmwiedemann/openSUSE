@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 31 03:06:47 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.885
+   see /usr/share/doc/packages/perl-MCE/Changes
+
+  1.885 Tue May 30 20:00:00 EST 2023
+
+    * Improved reliability on the Windows platform.
+
+-------------------------------------------------------------------
 Fri Jan  6 03:07:07 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.884
