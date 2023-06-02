@@ -154,6 +154,8 @@ Patch42:        binutils-compat-old-behaviour.diff
 Patch43:        binutils-revert-hlasm-insns.diff
 Patch44:        binutils-revert-rela.diff
 Patch45:        extensa-gcc-4_3-fix.diff
+Patch46:        riscv-dynamic-tls-reloc-pie.patch
+Patch47:        riscv-pr22263-1.patch
 Patch100:       add-ulp-section.diff
 Patch90:        cross-avr-nesc-as.patch
 Patch92:        cross-avr-omit_section_dynsym.patch
@@ -278,6 +280,8 @@ cp ld/ldgram.y ld/ldgram.y.orig
 %patch44 -p1
 %patch45 -p1
 %endif
+%patch46 -p1
+%patch47 -p1
 %patch100 -p1
 %if "%{TARGET}" == "avr"
 cp gas/config/tc-avr.h gas/config/tc-avr-nesc.h

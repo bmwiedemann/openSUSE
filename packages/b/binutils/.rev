@@ -2162,4 +2162,14 @@ contain it.
     <comment>- Rebase branch patch (includes fix for PR30281).</comment>
     <requestid>1079086</requestid>
   </revision>
+  <revision rev="166" vrev="5">
+    <srcmd5>628a582955ec691621e2c36ec44b0224</srcmd5>
+    <version>2.40</version>
+    <time>1685743505</time>
+    <user>dimstar_suse</user>
+    <comment>- riscv-dynamic-tls-reloc-pie.patch: Backport for PR ld/22263 and PR
+  ld/25694
+- riscv-pr22263-1.patch: Backport for PR ld/22263 (forwarded request 1089774 from Andreas_Schwab)</comment>
+    <requestid>1089814</requestid>
+  </revision>
 </revisionlist>

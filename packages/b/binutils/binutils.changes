@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 30 09:43:15 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- riscv-dynamic-tls-reloc-pie.patch: Backport for PR ld/22263 and PR
+  ld/25694
+- riscv-pr22263-1.patch: Backport for PR ld/22263
+
+-------------------------------------------------------------------
 Wed Apr 12 14:56:56 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Rebase branch patch (includes fix for PR30281).
