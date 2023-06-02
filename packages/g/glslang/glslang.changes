@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 29 10:38:28 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 12.2.0
+  * Support GLSL_EXT_shader_tile_image,
+    GL_EXT_ray_tracing_position_fetch, and custom include callbacks
+    via the C API
+  * Add preamble-text command-line option
+  * Accept variables as parameters of spirv_decorate_id
+
+-------------------------------------------------------------------
 Tue Apr 11 18:40:49 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add StandAlone/ to glslang-nonstd-devel

@@ -342,4 +342,12 @@
     <comment>- Add StandAlone/ to glslang-nonstd-devel</comment>
     <requestid>1078511</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>60a069bfc28cc77eee4401bc95b26a31</srcmd5>
+    <version>12.2.0</version>
+    <time>1685743512</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 12.2.0</comment>
+    <requestid>1089881</requestid>
+  </revision>
 </revisionlist>
