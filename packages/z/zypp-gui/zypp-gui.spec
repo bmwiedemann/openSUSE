@@ -1,7 +1,7 @@
 #
 # spec file for package zypp-gui
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           zypp-gui
-Version:        0.1.2
+Version:        0.2.0
 Release:        0%{?dist}
 Summary:        Update the system, search, install and remove the package, configure the repos.
 License:        GPL-2.0-or-later
@@ -34,11 +34,13 @@ BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.11.5
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
-BuildRequires:  pkgconfig(libhandy-1) >= 1.0.0
+BuildRequires:  pkgconfig(gtk4) >= 4.8
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.2.alpha
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(packagekit-glib2) >= 1.1.0
 BuildRequires:  pkgconfig(polkit-gobject-1)
 Requires:       PackageKit
+Requires:       pkexec
 
 %description
 Application can update the system, search, install and remove the package, configure the repos. It achieves some functions of command zypper.

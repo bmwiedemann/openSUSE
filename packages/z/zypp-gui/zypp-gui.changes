@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May 29 03:04:00 UTC 2023 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update version to 0.2.0
+  + Move to GTK4
+
+-------------------------------------------------------------------
+Mon Jul 18 09:57:48 UTC 2022 - Marcus Meissner <meissner@suse.com>
+
+- require pkexec directly, as it is now a standalone package
+
+-------------------------------------------------------------------
 Fri Nov  5 03:05:36 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Add cargo audit service to detect potential security issues
