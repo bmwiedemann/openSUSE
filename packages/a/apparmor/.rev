@@ -2561,4 +2561,18 @@ so you might want to pick this SR into Staging:O (forwarded request 953283 from 
   Eliminates the need for source package links in OBS. (forwarded request 1084717 from fcrozat)</comment>
     <requestid>1085178</requestid>
   </revision>
+  <revision rev="190" vrev="1">
+    <srcmd5>39d205204ff868b6c30b9c009b69df8e</srcmd5>
+    <version>3.1.4</version>
+    <time>1685743593</time>
+    <user>dimstar_suse</user>
+    <comment>- update to AppArmor 3.1.4
+  - parser: fix mount rules encoding (CVE-2016-1585)
+  - aa-logprof: fix error when choosing named exec with plain profile names
+  - aa-status: fix json output
+  - several fixes for profiles and abstractions
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.1.4
+    for the full upstream changelog (forwarded request 1090054 from cboltz)</comment>
+    <requestid>1090055</requestid>
+  </revision>
 </revisionlist>

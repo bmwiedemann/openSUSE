@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May 29 16:55:46 UTC 2023 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 3.1.4
+  - parser: fix mount rules encoding (CVE-2016-1585)
+  - aa-logprof: fix error when choosing named exec with plain profile names
+  - aa-status: fix json output
+  - several fixes for profiles and abstractions
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.1.4
+    for the full upstream changelog
+
+-------------------------------------------------------------------
 Thu May  4 13:44:56 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Add _multibuild to define additional spec files as additional
