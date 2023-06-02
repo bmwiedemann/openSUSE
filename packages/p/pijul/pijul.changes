@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  1 06:39:11 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Update to upstream version 1.0.0-beta.5.
+- This version uses hyper 0.14.26 and h2 0.3.19, preventing CVE-2023-26964
+  (bsc#1210361).
+
+-------------------------------------------------------------------
 Tue Mar  7 20:49:06 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Update to upstream version 1.0.0-beta.4.

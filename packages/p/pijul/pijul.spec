@@ -17,15 +17,15 @@
 
 
 Name:           pijul
-Version:        1.0.0~beta.4
+Version:        1.0.0~beta.5
 Release:        0
 Summary:        Distributed version control system based on a theory of patches
 License:        GPL-2.0-only
 Group:          Development/Tools/Version Control
 URL:            https://pijul.org/
-# Fetched from https://crates.io/api/v1/crates/pijul/1.0.0-beta.2/download#/pijul-1.0.0-beta.2.tar.gz
+# Fetched from https://crates.io/api/v1/crates/pijul/1.0.0-beta.5/download#/pijul-1.0.0-beta.5.tar.gz
 # and renamed to get rid of the second dash.
-Source0:        pijul-1.0.0~beta.4.tar.gz
+Source0:        pijul-1.0.0~beta.5.tar.gz
 Source1:        vendor.tar.xz
 BuildRequires:  cargo
 BuildRequires:  clang-devel

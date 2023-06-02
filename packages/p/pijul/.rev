@@ -151,4 +151,15 @@
     <comment></comment>
     <requestid>1070035</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cf85fddd8cb80250fbc3197450a0d70a</srcmd5>
+    <version>1.0.0~beta.5</version>
+    <time>1685743654</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream version 1.0.0-beta.5.
+- This version uses hyper 0.14.26 and h2 0.3.19, preventing CVE-2023-26964
+  (bsc#1210361).
+</comment>
+    <requestid>1090428</requestid>
+  </revision>
 </revisionlist>
