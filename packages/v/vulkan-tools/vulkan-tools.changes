@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 30 21:38:30 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.250.0
+  * vulkaninfo: Issue flush before exiting
+
+-------------------------------------------------------------------
 Wed Apr 19 20:11:40 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.3.247
