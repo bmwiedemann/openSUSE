@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 31 19:44:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.0:
+  * Logging is displayed for failing subtests (`#92`_)
+  * Passing subtests no longer turn the pytest output to yellow
+    (as if warnings have been issued)
+  * Now the ``msg`` contents of a subtest is displayed when
+    running pytest with ``-v``.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:32:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

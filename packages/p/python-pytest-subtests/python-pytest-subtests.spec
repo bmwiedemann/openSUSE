@@ -18,14 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-subtests
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        Python unittest subTest() support and subtests fixture
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-subtests
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-subtests/pytest-subtests-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools >= 40.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest >= 7.0
@@ -42,10 +43,10 @@ Python unittest subTest() support and subtests fixture.
 %setup -q -n pytest-subtests-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
