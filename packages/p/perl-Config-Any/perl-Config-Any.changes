@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May  4 03:06:03 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.33
+   see /usr/share/doc/packages/perl-Config-Any/Changes
+
+  0.33 - 2023-05-03
+      - update docs describe which modules are needed for which formats
+      - update Config::General requirement for conf files to a non-broken
+        version (2.48)
+      - don't try to upgrade old Config::General versions
+      - fix is_supported method verifying the version of required modules
+      - documentation cleanups
+
+-------------------------------------------------------------------
 Tue Apr 25 05:17:47 UTC 2017 - coolo@suse.com
 
 - updated to 0.32
