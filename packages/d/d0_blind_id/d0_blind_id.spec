@@ -1,7 +1,7 @@
 #
 # spec file for package d0_blind_id
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           d0_blind_id
-Version:        1.0
+Version:        0.8.5
 Release:        0
 Summary:        Blind-ID library
 License:        BSD-3-Clause
-Group:          Development/Libraries/C and C++
-URL:            http://git.xonotic.org/?p=xonotic/d0_blind_id.git;a=summary
-Source:         https://github.com/divVerent/%{name}/archive/v%{version}.tar.gz
+URL:            https://git.xonotic.org/?p=xonotic/d0_blind_id.git;a=summary
+Source:         d0_blind_id-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gmp-devel
@@ -35,21 +34,18 @@ Blind-ID library for user identification using RSA blind signatures
 
 %package -n libd0_blind_id0
 Summary:        Library for identification using RSA Blind Signatures
-Group:          System/Libraries
 
 %description -n libd0_blind_id0
 A library for user identification using RSA blind signatures.
 
 %package -n libd0_rijndael0
 Summary:        Library for identification using RSA Blind Signatures
-Group:          System/Libraries
 
 %description -n libd0_rijndael0
 A library for user identification using RSA blind signatures.
 
 %package devel
 Summary:        Development files for the Blind-ID library
-Group:          Development/Libraries/Other
 Requires:       libd0_blind_id0 = %{version}
 Requires:       libd0_rijndael0 = %{version}
 
@@ -58,7 +54,7 @@ Development files for the Blind-ID library for user identification using
 RSA blind signatures
 
 %prep
-%setup -q
+%autosetup
 
 %build
 autoreconf -fiv
@@ -73,10 +69,8 @@ autoreconf -fiv
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post   -n libd0_blind_id0 -p /sbin/ldconfig
-%postun -n libd0_blind_id0 -p /sbin/ldconfig
-%post   -n libd0_rijndael0 -p /sbin/ldconfig
-%postun -n libd0_rijndael0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libd0_blind_id0
+%ldconfig_scriptlets -n libd0_rijndael0
 
 %files
 %{_bindir}/blind_id

@@ -23,4 +23,21 @@
     <comment>-  Modernise spec file</comment>
     <requestid>754696</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b926c057c1984067e906f7c49ffae791</srcmd5>
+    <version>0.8.5</version>
+    <time>1685743602</time>
+    <user>dimstar_suse</user>
+    <comment>- Spec file cleanup
+- Use obs_scm service
+- Update to version 0.8.5:
+  * Update for Xonotic 0.8.5
+  * Using modern secure function to clear memory when available.
+  * Fixed version-info.
+  * main.c: missing va_end(ap).
+  * Bump version for internal changes only in this release.
+  * Fix some REALLY stupid typos in the fastreject RSA key generation.
+</comment>
+    <requestid>1090307</requestid>
+  </revision>
 </revisionlist>

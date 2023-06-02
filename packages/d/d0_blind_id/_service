@@ -1,0 +1,20 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">http://git.xonotic.org/xonotic/d0_blind_id.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="revision">xonotic-v0.8.5</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="changesgenerate">enable</param>
+    <param name="versionrewrite-pattern">xonotic-v(.*)</param>
+  </service>
+  <service name="set_version" mode="disabled">
+    <param name="basename">d0_blind_id</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">gz</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>
+
