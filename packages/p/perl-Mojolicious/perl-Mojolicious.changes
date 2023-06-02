@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May  9 03:06:47 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 9.32
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  9.32  2022-05-09
+    - Improved file and line number details in async/await exceptions. (batman)
+    - Fixed various CSS selector equation bugs in Mojo::DOM::CSS. (mauke)
+    - Fixed exceptions being added to the stash for formats other than HTML. (rawleyfowler)
+    - Fixed context sensitivity issue. (Grinnz)
+
+-------------------------------------------------------------------
 Wed Dec 21 03:08:08 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 9.31
