@@ -17,12 +17,6 @@
 
 
 %define modname arviz
-# python-numba dependency Not compatible with Python 3.11 yet. If this
-# changes, and the python311 flavor is active, make sure to expand the
-# multibuild test flavors https://github.com/numba/numba/issues/8304
-%define skip_python311 1
-# python-xarray doesn't support python38 anymore
-%define skip_python38 1
 Name:           python-arviz
 Version:        0.15.1
 Release:        0
@@ -35,6 +29,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module cloudpickle}
 BuildRequires:  %{python_module bokeh}
 BuildRequires:  %{python_module dash}
+BuildRequires:  %{python_module dask-array}
 BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module h5netcdf}
 BuildRequires:  %{python_module matplotlib >= 3.5}

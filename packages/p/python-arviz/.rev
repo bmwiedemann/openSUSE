@@ -54,4 +54,13 @@
 </comment>
     <requestid>1073712</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>25e95d785faf7f8c3c236978b062f6c7</srcmd5>
+    <version>0.15.1</version>
+    <time>1685743648</time>
+    <user>dimstar_suse</user>
+    <comment>- No longer skip Python 3.8 and 3.11. 
+- Add missing BuildRequires on dask-array.</comment>
+    <requestid>1090400</requestid>
+  </revision>
 </revisionlist>

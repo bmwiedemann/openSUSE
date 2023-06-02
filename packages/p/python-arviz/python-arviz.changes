@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  2 02:44:16 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- No longer skip Python 3.8 and 3.11. 
+- Add missing BuildRequires on dask-array.
+
+-------------------------------------------------------------------
 Wed Mar 22 08:21:10 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - skip python 3.11 and python 3.8 because some dependencies doesn't
