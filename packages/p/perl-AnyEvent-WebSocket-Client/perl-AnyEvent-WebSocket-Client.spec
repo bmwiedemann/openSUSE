@@ -1,7 +1,7 @@
 #
 # spec file for package perl-AnyEvent-WebSocket-Client
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name AnyEvent-WebSocket-Client
 Name:           perl-AnyEvent-WebSocket-Client
-Version:        0.54
+Version:        0.55
 Release:        0
-Summary:        WebSocket client for AnyEvent
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        WebSocket client for AnyEvent
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -34,9 +34,9 @@ BuildRequires:  perl(Moo) >= 2.0
 BuildRequires:  perl(PerlX::Maybe) >= 0.003
 BuildRequires:  perl(Protocol::WebSocket) >= 0.20
 BuildRequires:  perl(Test2::API) >= 1.302015
-BuildRequires:  perl(Test2::Require) >= 0.000060
-BuildRequires:  perl(Test2::Require::Module) >= 0.000060
-BuildRequires:  perl(Test2::V0) >= 0.000060
+BuildRequires:  perl(Test2::Require) >= 0.000121
+BuildRequires:  perl(Test2::Require::Module) >= 0.000121
+BuildRequires:  perl(Test2::V0) >= 0.000121
 BuildRequires:  perl(URI) >= 1.53
 BuildRequires:  perl(URI::ws)
 Requires:       perl(AnyEvent) >= 7.13
@@ -68,7 +68,8 @@ and removed.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -83,7 +84,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc author.yml Changes example README
+%doc Changes example README
 %license LICENSE
 
 %changelog

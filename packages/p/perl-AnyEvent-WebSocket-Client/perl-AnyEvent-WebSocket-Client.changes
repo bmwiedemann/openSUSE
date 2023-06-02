@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May  5 03:05:58 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.55
+   see /usr/share/doc/packages/perl-AnyEvent-WebSocket-Client/Changes
+
+  0.55      2023-05-04 10:28:24 -0600
+    [WARNING: change in behavior]
+    - Fix the default code for close to be 1000 (gh#61, gh#62)
+
+-------------------------------------------------------------------
 Sat Mar 20 03:06:08 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.54
