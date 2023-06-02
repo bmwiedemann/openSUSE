@@ -56,8 +56,8 @@ rm -Rf ./pip_api/_vendor
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Broken with current packaging
-%pytest -k 'not test_installed_distributions_legacy_version'
+# Broken with current packaging ; requires network
+%pytest -k 'not (test_installed_distributions_legacy_version or test_parse_requirements_PEP508)'
 
 %files %{python_files}
 %doc README.md

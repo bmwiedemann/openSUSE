@@ -85,4 +85,12 @@
 - Refresh unvendor.patch</comment>
     <requestid>1063545</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>0beb074de6683a3404cf453e72dcbedc</srcmd5>
+    <version>0.0.30</version>
+    <time>1685743650</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip PEP508 tests since they require the network.</comment>
+    <requestid>1090402</requestid>
+  </revision>
 </revisionlist>
