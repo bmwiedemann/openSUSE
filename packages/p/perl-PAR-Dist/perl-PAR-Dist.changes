@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May  8 03:06:29 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.52
+   see /usr/share/doc/packages/perl-PAR-Dist/Changes
+
+  0.52  2023-06-07
+
+  - change bugtracker to GitHub issues
+
+  - quote all version numbers in META.yml files in test *.par
+    files to avoid CPAN Testers failures like
+    http://www.cpantesters.org/cpan/report/973fa832-ec54-11ed-98b0-b3c3213a625c
+
+-------------------------------------------------------------------
 Tue Dec  1 03:13:24 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.51
