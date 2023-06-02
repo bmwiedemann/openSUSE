@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun  1 16:03:42 UTC 2023 - Tina Müller <tina.mueller@suse.com>
+
+- Set version to 1.69000 to ensure it's bigger than the previous
+   version. This distribution uses altering version lengths.
+
+-------------------------------------------------------------------
+Wed May 31 03:09:06 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.69
+   see /usr/share/doc/packages/perl-Prima/Changes
+
+-------------------------------------------------------------------
 Thu May 11 15:42:10 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - update cpanspec.yml and recreate spec file
@@ -498,5 +510,3 @@ Tue Apr 26 17:45:01 CEST 2005 - jw@suse.de
 Mon Apr 25 19:38:37 CEST 2005 - jw@suse.de
 
 - initial version: Prima-1.18
-
-

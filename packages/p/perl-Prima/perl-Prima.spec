@@ -18,13 +18,13 @@
 
 %define cpan_name Prima
 Name:           perl-Prima
-Version:        1.67001
+Version:        1.69000
 Release:        0
 #Upstream: SUSE-Public-Domain
 License:        AGPL-3.0-only AND BSD-2-Clause
 Summary:        Perl graphic toolkit
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/K/KA/KARASIK/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/K/KA/KARASIK/%{cpan_name}-1.69.tar.gz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -58,7 +58,7 @@ classes present easily expandable set of widgets, written completely in
 perl and communicating with the system using Prima library calls.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-1.69
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
