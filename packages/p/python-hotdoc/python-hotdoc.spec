@@ -1,7 +1,7 @@
 #
 # spec file for package python-hotdoc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
 Name:           python-hotdoc
-Version:        0.13.3
+Version:        0.15
 Release:        0
 Summary:        A documentation tool micro-framework
 License:        LGPL-2.1-or-later
@@ -42,25 +39,26 @@ BuildRequires:  libxslt-devel
 BuildRequires:  libyaml-devel
 BuildRequires:  llvm-devel
 BuildRequires:  python-rpm-macros
+# The c extension needs libclang.so and llvm-config
+Requires:       clang-devel
+Requires:       llvm-devel
+Requires:       python-PyYAML >= 5.4.1
+Requires:       python-appdirs
+Requires:       python-cchardet
+Requires:       python-dbus-deviation >= 0.6.1
+Requires:       python-feedgen
+Requires:       python-lxml >= 4.9.1
+Requires:       python-networkx >= 2.8.8
+Requires:       python-pkgconfig >= 1.5.1
+Requires:       python-schema
+Requires:       python-toposort >= 1.6
+Requires:       python-wheezy.template >= 0.1.195
+Requires(post): update-alternatives
 %if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
 # The hotdoc cli files were provided as separate package between Aug and Nov 2020
 Obsoletes:      hotdoc < %{version}-%{release}
 Provides:       hotdoc = %{version}-%{release}
 %endif
-# The c extension needs libclang.so and llvm-config
-Requires:       clang-devel
-Requires:       llvm-devel
-Requires:       python-PyYAML >= 5.1
-Requires:       python-appdirs
-Requires:       python-cchardet
-Requires:       python-dbus-deviation >= 0.4.0
-Requires:       python-lxml
-Requires:       python-networkx >= 2.5
-Requires:       python-pkgconfig >= 1.1.0
-Requires:       python-schema
-Requires:       python-setuptools
-Requires:       python-toposort >= 1.4
-Requires:       python-wheezy.template >= 0.1.167
 %python_subpackages
 
 %description
@@ -78,7 +76,7 @@ sed -i -e "s/wheezy.template==/wheezy.template>=/" setup.py
 sed -i -e "s/pkgconfig==/pkgconfig>=/" setup.py
 sed -i -e "s/networkx==/networkx>=/" setup.py
 
-sed -i -e '1s,#! /usr/bin/env sh,#!/usr/bin/sh,' ./hotdoc/extensions/gi/transition_scripts/translate_sections.sh
+sed -i -e '1s,#! %{_bindir}/env sh,#!%{_bindir}/sh,' ./hotdoc/extensions/gi/transition_scripts/translate_sections.sh
 
 %build
 %python_build

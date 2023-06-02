@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Tue May 30 15:44:02 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.15
+  + formatter: allow for light and dark stylesheets
+  + theme: add light mode variables (lumen)
+  + extension: output unescaped sitemap
+
+- 0.14.1 release
+  + gtk_doc: look for devhelp indexes in more places
+  + devhelp: Exclude useless files
+  + hotdoc_dep_printer: fix Config class name
+  + wheezy.template usage: switch to maintainer-recommended
+    workaround
+  + setup: fix build with python 3.11
+  + Switch from charset-normalizer to faust-cchardet
+  + Adding tarfile member sanitization to extractall()
+
+- 0.14.0 release
+  + requirements: bump networkx and dbus-deviation versions
+  + Regenerate requirements.txt with flex installed
+  + build(deps): bump lxml from 4.6.3 to 4.9.1
+  + Switch unmaintained ccharset to charset-normalizer
+  + enum_member: render Since tag
+  + symbols: do not list aliases as children
+  + extensions: simple ATOM feed generator
+  + base_symbol: format tags for all symbols
+
+- 0.13.7 release
+  + gi: ignore more boilerplate macros
+
+- 0.13.6 release
+  + update cmark submodule
+  + gtkdoc_extension: fix out of bounds access
+
+- 0.13.5 release
+  + Fix incorrect use of hashlib and cache
+  + ext: Allow loading extension modules with full paths
+    gh#hotdoc/hotdoc#235
+  + Add some documentation for the metadata keys
+
+- 0.13.4 release
+  + signals: store callbacks in OrderedSets
+  + gi-extension: ignore boilerplate macros for enums and bitfields too
+  + Add option for enabling prism-keep-markup
+  + tree: fix picking of page output path
+  + Print an error message instead of segfaulting.
+  + CI: use pip for editable installs
+  + build(deps): bump lxml from 4.6.2 to 4.6.3
+
+-------------------------------------------------------------------
 Tue Mar 30 09:40:25 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 0.13.3:
