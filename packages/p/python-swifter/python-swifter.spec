@@ -16,8 +16,6 @@
 #
 
 
-# no python311-dask because no python311-numba
-%define skip_python311 1
 Name:           python-swifter
 Version:        1.3.4
 Release:        0
