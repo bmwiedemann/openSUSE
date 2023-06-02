@@ -16,13 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jira
-Version:        3.5.0
+Version:        3.5.1
 Release:        0
 Summary:        Python library for interacting with JIRA via REST APIs
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/pycontribs/jira
 Source:         https://files.pythonhosted.org/packages/source/j/jira/jira-%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx}
@@ -30,13 +28,14 @@ BuildRequires:  %{python_module pbr >= 3.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-defusedxml
 Requires:       python-keyring
 Requires:       python-oauthlib
-Requires:       python-pbr >= 3.0.0
+Requires:       python-packaging
 Requires:       python-requests >= 2.10.0
 Requires:       python-requests-oauthlib >= 0.6.1
 Requires:       python-requests-toolbelt
@@ -76,6 +75,7 @@ export LANG=en_US.UTF-8
 %doc AUTHORS.rst README.rst
 %license LICENSE
 %python_alternative %{_bindir}/jirashell
-%{python_sitelib}/*
+%{python_sitelib}/jira
+%{python_sitelib}/jira-%{version}*info
 
 %changelog

@@ -171,4 +171,19 @@
   * Add client route for deleting remote links by global (and</comment>
     <requestid>1084219</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>67c3e79a8e2292b991a913cde1b50ff5</srcmd5>
+    <version>3.5.1</version>
+    <time>1685743652</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.5.1:
+  * Update the type for issue in add_comment &amp; transition_issue for better
+    type hints (#1580) @dvaerum
+  * Switch from SIGNATURE_RSA to SIGNATURE_HMAC_SHA1 (#1643) @traylenator
+  * fix verify not sent with request (#1573) (#1631) @jongracecox
+- Add setuptools_scm to BuildRequires, so the version number is detected,
+  and to better catch this, stop using overly greedy globbing in %files.
+- Remove Requires on python-pbr.</comment>
+    <requestid>1090426</requestid>
+  </revision>
 </revisionlist>

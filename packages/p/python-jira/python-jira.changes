@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun  2 06:07:14 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.5.1:
+  * Update the type for issue in add_comment & transition_issue for better
+    type hints (#1580) @dvaerum
+  * Switch from SIGNATURE_RSA to SIGNATURE_HMAC_SHA1 (#1643) @traylenator
+  * fix verify not sent with request (#1573) (#1631) @jongracecox
+- Add setuptools_scm to BuildRequires, so the version number is detected,
+  and to better catch this, stop using overly greedy globbing in %files.
+- Remove Requires on python-pbr.
+
+-------------------------------------------------------------------
 Wed May  3 08:58:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.5.0:
