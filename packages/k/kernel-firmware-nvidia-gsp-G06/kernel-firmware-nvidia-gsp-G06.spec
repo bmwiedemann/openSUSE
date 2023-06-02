@@ -16,7 +16,7 @@
 #
 
 
-%define simpletest 1
+%define simpletest 0
 
 %ifarch x86_64
 %define arch x86_64
@@ -42,7 +42,8 @@ NoSource:       0
 Source2:        %{name}-rpmlintrc
 ExclusiveArch:  x86_64 aarch64
 %else
-BuildArch:      noarch
+ExclusiveArch:  x86_64 aarch64
+Provides:       multiversion(kernel)
 %endif
 
 %description
