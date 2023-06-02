@@ -289,4 +289,12 @@
     <comment>- Update to release 11 [boo#1208517] [boo#1208519]</comment>
     <requestid>1067797</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>0ed5af0d089f85162152d80b18d6c38a</srcmd5>
+    <version>11.0</version>
+    <time>1685743521</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1089889</requestid>
+  </revision>
 </revisionlist>

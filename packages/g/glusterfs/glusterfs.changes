@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 23 23:25:48 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-socket-only-issue-IPPROTO_IPV6-setsockopt-calls-on-A.patch
+  [boo#1210894]
+
+-------------------------------------------------------------------
 Tue Feb 21 10:20:10 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11 [boo#1208517] [boo#1208519]
