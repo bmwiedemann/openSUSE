@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 10 03:09:51 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.21
+   see /usr/share/doc/packages/perl-URI-db/Changes
+
+  0.21 2023-05-09T22:18:52Z
+       - Changed Oracle database DBI parameter name from `sid` to
+         `service_name`. Thanks to @vectro for the report (#22).
+
+-------------------------------------------------------------------
 Tue Jun 21 03:09:18 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.20
