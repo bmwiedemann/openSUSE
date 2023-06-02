@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 Name:           python-time-machine
 Group:          Development/Languages/Python
 Version:        2.9.0
@@ -27,17 +26,20 @@ URL:            https://github.com/adamchainz/time-machine
 # pypi packages don't contain the tests anymore since 2.2.0, see changelog
 Source:         https://github.com/adamchainz/time-machine/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION tests
+BuildRequires:  %{python_module backports.zoneinfo if %python-base < 3.9}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module dateutil}
-BuildRequires:  %{python_module pytzdata}
-BuildRequires:  (python38-backports.zoneinfo if python38-base)
+BuildRequires:  %{python_module python-dateutil}
+BuildRequires:  timezone
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-generators
-%{?python_enable_dependency_generator}
+Requires:       python-python-dateutil
+Requires:       timezone
 %python_subpackages
 
 %description
@@ -48,10 +50,10 @@ It can be used independently, as a function decorator, or as a context manager.
 %setup -q -n time-machine-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -60,6 +62,8 @@ It can be used independently, as a function decorator, or as a context manager.
 %files %{python_files}
 %doc README.rst HISTORY.rst
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/time_machine
+%{python_sitearch}/_time_machine.*.so
+%{python_sitearch}/time_machine-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 31 09:26:06 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Move to PEP517
+- Do not use pytzdata, but system timezone directly
+- Don't catchall sitearch
+
+-------------------------------------------------------------------
 Sat May 27 19:44:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.9.0:

@@ -97,4 +97,12 @@
   * Explicitly error when attempting to install on PyPy.</comment>
     <requestid>1089344</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>515ff19fd096366d76e8fd20b20af427</srcmd5>
+    <version>2.9.0</version>
+    <time>1685743581</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089987</requestid>
+  </revision>
 </revisionlist>
