@@ -17,7 +17,7 @@
 
 
 Name:           xplr
-Version:        0.21.1
+Version:        0.21.2
 Release:        0
 Summary:        TUI file explorer
 License:        MIT
@@ -47,10 +47,10 @@ cp %{SOURCE2} .cargo/config
 sed -i 's/-- version = "0.0.0"/version = "%{version}"/' src/init.lua
 
 %build
-%{cargo_build}
+%{cargo_build} --all-features
 
 %install
-%{cargo_install}
+%{cargo_install} --all-features
 
 install -Dm644 -T \
     %{_builddir}/%{name}-%{version}/assets/desktop/%{name}.desktop \

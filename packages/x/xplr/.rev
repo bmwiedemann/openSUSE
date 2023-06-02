@@ -51,4 +51,23 @@
 </comment>
     <requestid>1087297</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e91c55715c5777c79e236778448b85f9</srcmd5>
+    <version>0.21.2</version>
+    <time>1685743683</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable update of vendored deps
+- Update to version 0.21.2:
+  * Added CustomLayout, a new custom panel type to allow nesting other layouts inside a static or dynamic 
+    layout. This will allow switching between different layouts dynamically, without having to switch modes.
+  * $LS_COLORS will have lesser priority than xplr.config.node_types.*.style.
+  * Now, there's no default color set in xplr.config.node_types.*.style, so xplr will default to $LS_COLORS.
+  * xplr -m now uses jf to render and pass messages. This allows for a more flexible template syntax.
+  * xplr will now ask before delete.
+  * For copy, move or symlink operations, xplr will ask what to do if a file with the same name exists.
+  * CLI help menu improvements
+  * Several fixes and improvements in documentation
+</comment>
+    <requestid>1090465</requestid>
+  </revision>
 </revisionlist>

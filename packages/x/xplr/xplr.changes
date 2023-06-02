@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jun  2 09:30:47 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Disable update of vendored deps
+
+-------------------------------------------------------------------
+Thu Jun  1 02:43:52 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.21.2:
+  * Added CustomLayout, a new custom panel type to allow nesting other layouts inside a static or dynamic 
+    layout. This will allow switching between different layouts dynamically, without having to switch modes.
+  * $LS_COLORS will have lesser priority than xplr.config.node_types.*.style.
+  * Now, there's no default color set in xplr.config.node_types.*.style, so xplr will default to $LS_COLORS.
+  * xplr -m now uses jf to render and pass messages. This allows for a more flexible template syntax.
+  * xplr will now ask before delete.
+  * For copy, move or symlink operations, xplr will ask what to do if a file with the same name exists.
+  * CLI help menu improvements
+  * Several fixes and improvements in documentation
+
+-------------------------------------------------------------------
 Mon May 15 21:16:32 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 0.21.1:
