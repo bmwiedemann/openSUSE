@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycryptodomex
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-pycryptodomex
-Version:        3.16.0
+Version:        3.18.0
 Release:        0
 Summary:        Cryptographic library for Python
 License:        BSD-2-Clause
@@ -27,7 +27,8 @@ Group:          Development/Languages/Python
 URL:            https://www.pycryptodome.org
 Source:         https://github.com/Legrandin/pycryptodome/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if !0%{?_no_weakdeps}
@@ -81,11 +82,11 @@ touch .separate_namespace
 %build
 export LC_ALL=en_US.UTF-8
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
 export LC_ALL=en_US.UTF-8
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -98,6 +99,6 @@ popd}
 %license LICENSE.rst
 %doc AUTHORS.rst Changelog.rst README.rst
 %{python_sitearch}/Cryptodome/
-%{python_sitearch}/pycryptodomex-%{version}-py*.egg-info
+%{python_sitearch}/pycryptodomex-%{version}.dist-info
 
 %changelog

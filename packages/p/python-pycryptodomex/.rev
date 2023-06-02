@@ -387,4 +387,41 @@
     <comment></comment>
     <requestid>1040741</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>13b1f2257c3aab1893a582a211587961</srcmd5>
+    <version>3.18.0</version>
+    <time>1685743640</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.18.0:
+  * Added support for DER BOOLEAN encodings.
+  * The library now compiles on Windows ARM64. Thanks to Niyas
+    Sait.
+  * Resolved issues
+  * GH#722: ``nonce`` attribute was not correctly set for
+    XChaCha20_Poly1305 ciphers. Thanks to Liam Haber.
+  * GH#728: Workaround for a possible x86 emulator bug in Windows
+    for ARM64.
+  * GH#739: OID encoding for arc 2 didn't accept children larger
+    than 39. Thanks to James.
+  * Correctly check that the scalar matches the point when
+    importing an ECC private key.
+
+- update to 3.17.0:
+  * Added support for the Counter Mode KDF defined in SP 800-108
+    Rev 1.
+  * Reduce the minimum tag length for the EAX cipher to 2 bytes.
+  * An RSA object has 4 new properties for the CRT coefficients:
+    ``dp``, ``dq``, ``invq`` and ``invq`` (``invp`` is the same
+    value  as the existing ``u``).
+  * GH#526: improved typing for ``RSA.construct``.
+  * GH#534: reduced memory consumption when using a large number
+    of cipher objects.
+  * GH#598: fixed missing error handling for
+    ``Util.number.inverse``.
+  * GH#629: improved typing for ``AES.new`` and the various
+    mode-specific types it returns. Thanks to Greg Werbin.
+  * GH#653: added workaround for an alleged GCC compiler bug
+    that affected Ed25519 code compiled for AVX2.</comment>
+    <requestid>1090382</requestid>
+  </revision>
 </revisionlist>
