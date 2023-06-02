@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 31 08:08:51 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 7.5.4.1:
+  https://wiki.documentfoundation.org/Releases/7.5.4/RC1
+- Update bundled dependencies:
+  * gpgme-1.16.0.tar.bz2 -> gpgme-1.18.0.tar.bz2
+  * curl-7.86.0.tar.xz -> curl-8.0.1.tar.xz
+  * icu4c-71_1-src.tgz -> icu4c-72_1-src.tgz
+  * icu4c-71_1-data.zip -> icu4c-72_1-data.zip
+
+-------------------------------------------------------------------
 Sun May 28 19:46:01 UTC 2023 - Andras Timar <andras.timar@collabora.com>
 
 - Fix bsc#1204040 - LO-L3: PPTX: shadow effect for table offset too far to the right

@@ -49,7 +49,7 @@
 %endif
 %bcond_with firebird
 Name:           libreoffice
-Version:        7.5.3.2
+Version:        7.5.4.1
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -73,7 +73,7 @@ Source402:      %{external_url}/b7cae45ad2c23551fd6ccb8ae2c1f59e-numbertext_%{nu
 Source450:      %{external_url}/1f467e5bb703f12cbbb09d5cf67ecf4a-converttexttonumber-1-5-0.oxt
 Source452:      %{external_url}/90401bca927835b6fbae4a707ed187c8-nlpsolver-0.9.tar.bz2
 # GPGME bundle list
-Source1000:     %{external_url}/gpgme-1.16.0.tar.bz2
+Source1000:     %{external_url}/gpgme-1.18.0.tar.bz2
 Source1001:     %{external_url}/libgpg-error-1.43.tar.bz2
 Source1002:     %{external_url}/libassuan-2.5.5.tar.bz2
 # Internal bundled stuff we can't remove
@@ -141,7 +141,7 @@ BuildRequires:  zlib-devel
 %if %{with system_curl}
 BuildRequires:  curl-devel >= 7.68.0
 %else
-Source2013:     %{external_url}/curl-7.86.0.tar.xz
+Source2013:     %{external_url}/curl-8.0.1.tar.xz
 %endif
 # Needed for tests
 BuildRequires:  dejavu-fonts
@@ -297,8 +297,8 @@ BuildRequires:  pkgconfig(poppler-cpp)
 %endif
 %if 0%{?suse_version} < 1500
 # Too old icu on the system
-Source2021:     %{external_url}/icu4c-71_1-src.tgz
-Source2022:     %{external_url}/icu4c-71_1-data.zip
+Source2021:     %{external_url}/icu4c-72_1-src.tgz
+Source2022:     %{external_url}/icu4c-72_1-data.zip
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  libBox2D-devel
 BuildRequires:  libmysqlclient-devel
