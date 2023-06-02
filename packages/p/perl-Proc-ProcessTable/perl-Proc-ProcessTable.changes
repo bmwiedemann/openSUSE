@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May  9 03:07:38 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.635
+   see /usr/share/doc/packages/perl-Proc-ProcessTable/Changes
+
+  0.635 2023-05-08
+    - Do not try to scan /dev/.lxd-mounts
+
+-------------------------------------------------------------------
 Mon Sep 27 03:07:23 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.634

@@ -124,4 +124,12 @@ os/cygwin.c is under the Cygwin license (GPL-2.0) (forwarded request 225900 from
     <comment></comment>
     <requestid>921848</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>61bbd2729c9d760a312e04de07c85d76</srcmd5>
+    <version>0.635</version>
+    <time>1685743619</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090344</requestid>
+  </revision>
 </revisionlist>
