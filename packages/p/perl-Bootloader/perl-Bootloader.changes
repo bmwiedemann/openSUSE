@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Wed May 31 13:54:55 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#148
+- UEFI: update also default location, if it is controlled by SUSE
+  (bsc#1210799, bsc#1201399)
+- 1.2
+
+--------------------------------------------------------------------
 Fri May 19 14:15:25 UTC 2023 - wfeldt@opensuse.org
 
 - no not install kexec-bootloader
