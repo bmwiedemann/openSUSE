@@ -18,7 +18,7 @@
 
 %define cpan_name Log-Any
 Name:           perl-Log-Any
-Version:        1.714
+Version:        1.715
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Bringing loggers and listeners together
@@ -72,7 +72,7 @@ original post proposing this module.
 %prep
 %autosetup  -n %{cpan_name}-%{version}
 
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
