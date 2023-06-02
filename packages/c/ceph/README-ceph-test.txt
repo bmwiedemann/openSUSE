@@ -23,3 +23,9 @@ files for Ceph would be tricky, error-prone, and labor-intensive.
 
 Nathan Cutler
 April 17, 2017
+
+
+Addendum: ceph-test also requires more disk space to build than ceph.
+The pre_checkin.sh script writes #!BuildConstraint lines to both spec
+files to set things up correctly.  See the comments in _constraints for
+more details.

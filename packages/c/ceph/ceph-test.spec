@@ -1,3 +1,5 @@
+#!BuildConstraint: hardware:memory:size unit=G 10
+#!BuildConstraint: hardware:disk:size unit=G 60
 #
 # spec file for package ceph
 #

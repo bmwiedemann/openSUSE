@@ -5,6 +5,21 @@
 
   <!--
 
+    2023-05-23 - Tim Serong <tserong@suse.com>
+
+    The <overwrite><conditions><package>... construct only works for
+    standalone packages in the build service.  This was fine when ceph-test
+    existed as a _link back to ceph.  Now that we're using _multibuild to
+    build ceph-test, the constraints specified in this file can't be applied
+    correctly to ceph-test anymore, so I've removed them from this file in
+    favour of "#!BuildConstraint" directives in the spec files.
+
+    This _constraints file remains as a source of documentation.  If the
+    disk and memory constraints need to be changed in future, adjust the
+    two `set_build_constraints` lines at the end of pre_checkin.sh and
+    rerun that script to update the spec files.
+
+
     2022-03-31 - Tim Serong <tserong@suse.com>
 
     Builds of ceph 16.2.7 on IBS showed the following resource usage (in MB):
@@ -27,6 +42,8 @@
     changes made.  Thank you!
 
   -->
+
+<!-- Can't do the following anymore - see comments above
 
   <hardware>
     <disk>
@@ -51,4 +68,5 @@
     </hardware>
   </overwrite>
 
+-->
 </constraints>

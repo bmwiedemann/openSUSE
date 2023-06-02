@@ -271,6 +271,15 @@ function copy_changes_file {
   cp ceph.changes ${dest_pkg}.changes
 }
 
+function set_build_constraints {
+  local FILE=$1
+  shift
+  sed -i -e '/#!BuildConstraint/d' $FILE
+  for constraint in "$@"; do
+    sed -i -e "1s/^/#!BuildConstraint: $constraint\n/" $FILE
+  done
+}
+
 PACKAGE="ceph-test"
 SPEC_FILE="ceph.spec"
 
@@ -293,3 +302,5 @@ insert_line_before "$PACKAGE.spec" "Source96: pre_checkin.sh" "^Source97:"
 insert_line_before "$PACKAGE.spec" "Source95: checkin.sh" "^Source96:"
 insert_line_before "$PACKAGE.spec" "Source94: ceph-rpmlintrc" "^Source95:"
 copy_changes_file $PACKAGE
+set_build_constraints $SPEC_FILE "hardware:disk:size unit=G 50" "hardware:memory:size unit=G 8"
+set_build_constraints "$PACKAGE.spec" "hardware:disk:size unit=G 60" "hardware:memory:size unit=G 10"
