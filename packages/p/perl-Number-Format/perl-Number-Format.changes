@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri May 26 03:06:43 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.76
+   see /usr/share/doc/packages/perl-Number-Format/CHANGES
+
+  Changes for version 1.76 (May 25, 2023)
+  ------------------------
+    - NOTE: This release was made by starting from the release archive on the
+      CPAN and then applying a patch.  It does not reflect the contents of the
+      reference repository.  Also, the file "bigfloat.t", referenced in the v1.75
+      changelog, was not in the previous release and is therefore not included
+      here.
+    - Patch to continue working on v5.38 upon its release (thanks, Karl
+      Williamson)
+
+-------------------------------------------------------------------
 Mon Jun 29 01:24:48 UTC 2015 - coolo@suse.com
 
 - updated to 1.75
