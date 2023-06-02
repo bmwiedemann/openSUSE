@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun 01 13:29:26 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.112.6:
+  * commands: Add --lang to hugo config
+  * Make sure any default mounts show up in "hugo config"
+  * github: Fix Windows build
+  * deps: Update github.com/tdewolff/minify/v2 v2.12.5 => v2.12.6
+  * tpl/tplimpl: Use .Language.LanguageCode in built-in templates
+  * Fail on invalid defaultContentLanguage
+  * Avoid panic in invalid language config
+  * Don't panic on empty yaml config params
+  * Prevent double escaping of image alt-text in Goldmar typographer
+  * Fix potential deadlock in ByParam
+
+-------------------------------------------------------------------
 Wed May 31 00:47:18 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 0.112.5:

@@ -600,4 +600,22 @@
   * commands: Move the --format flag to only the commands that support it (forwarded request 1089893 from jfkw)</comment>
     <requestid>1089894</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>6be37d1d11da02e6b24ab255ec97bfd4</srcmd5>
+    <version>0.112.6</version>
+    <time>1685743634</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.112.6:
+  * commands: Add --lang to hugo config
+  * Make sure any default mounts show up in &quot;hugo config&quot;
+  * github: Fix Windows build
+  * deps: Update github.com/tdewolff/minify/v2 v2.12.5 =&gt; v2.12.6
+  * tpl/tplimpl: Use .Language.LanguageCode in built-in templates
+  * Fail on invalid defaultContentLanguage
+  * Avoid panic in invalid language config
+  * Don't panic on empty yaml config params
+  * Prevent double escaping of image alt-text in Goldmar typographer
+  * Fix potential deadlock in ByParam (forwarded request 1090369 from jfkw)</comment>
+    <requestid>1090372</requestid>
+  </revision>
 </revisionlist>
