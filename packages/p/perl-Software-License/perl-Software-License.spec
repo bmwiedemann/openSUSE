@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Software-License
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Software-License
 Name:           perl-Software-License
-Version:        0.104002
+Version:        0.104004
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Packages that provide templated software licenses

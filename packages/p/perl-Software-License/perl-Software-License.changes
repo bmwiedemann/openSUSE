@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May 24 03:07:14 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.104004
+   see /usr/share/doc/packages/perl-Software-License/Changes
+
+  0.104004  2023-05-24 02:28:55+02:00 Europe/Amsterdam
+          - Rename Perl Artistic License to avoid confusion in detecting license
+
+  0.104003  2023-05-19 12:50:19+02:00 Europe/Amsterdam
+          - Add Artistic 1.0 Perl license and make Perl license use it
+          - Remove extra "59" from LGPL-2.1
+
+-------------------------------------------------------------------
 Wed Jun 15 03:08:39 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.104002
