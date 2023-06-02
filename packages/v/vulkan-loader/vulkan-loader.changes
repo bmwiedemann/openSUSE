@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 30 21:36:00 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.3.250.0
+  * No changes over 1.3.247 [SDK-250 is a branch of regular-243
+    with some cherry-picks bringing it to roughly regular-247;
+    there is little relation to regular-250]
+
+-------------------------------------------------------------------
 Wed Apr 19 20:09:39 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to 1.3.247
