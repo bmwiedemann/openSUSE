@@ -16,9 +16,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 Name:           lib3270
-Version:        5.4
+Version:        5.4+git20230322
 Release:        0
 Summary:        TN3270 Access library
 Group:          Development/Libraries/C and C++
@@ -80,6 +79,8 @@ make all %{?_smp_mflags}
 
 %install
 %make_install
+mkdir -p %{buildroot}%{_libdir}/pw3270/%{MAJOR_VERSION}.%{MINOR_VERSION}/plugins
+
 %find_lang %{name}-%{MAJOR_VERSION}.%{MINOR_VERSION} langfiles
 
 %fdupes %{buildroot}/%{_prefix}
@@ -98,6 +99,10 @@ make all %{?_smp_mflags}
 %{_includedir}/*.h
 %{_includedir}/%{name}
 %{_libdir}/pkgconfig/*.pc
+
+%{_libdir}/pw3270
+%{_libdir}/pw3270/%{MAJOR_VERSION}.%{MINOR_VERSION}
+%{_libdir}/pw3270/%{MAJOR_VERSION}.%{MINOR_VERSION}/plugins
 
 %post -n %{name}-%{_libvrs} -p /sbin/ldconfig
 %postun -n %{name}-%{_libvrs} -p /sbin/ldconfig

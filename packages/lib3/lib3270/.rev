@@ -40,4 +40,12 @@
     <comment>Updating to version 5.4</comment>
     <requestid>968258</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>58a1df2f7550ecc9e0a60c34d3fb7024</srcmd5>
+    <version>5.4+git20230322</version>
+    <time>1685743682</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1090452</requestid>
+  </revision>
 </revisionlist>

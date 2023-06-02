@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 22 18:14:29 UTC 2023 - perry.werneck@gmail.com
+
+- Update to version 5.4+git20230322:
+  * Updating package control files.
+  * On windows, if the application os library path ends with '/lib' or '/bin' the relative path for data files is the parent directory.
+  * Debugging win32 build.
+
+-------------------------------------------------------------------
 Thu Apr 07 22:24:02 UTC 2022 - perry.werneck@gmail.com
 
 - Update to version 5.4+git20220330:
