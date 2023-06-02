@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-pytzdata
 #
 # Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020 Dr. Axel Braun
@@ -18,41 +18,48 @@
 
 
 %{?sle15_python_module_pythons}
-%define modname pytzdata
-Name:           python-%{modname}
+Name:           python-pytzdata
 Version:        2020.1
 Release:        0
 Summary:        The pytzdata module for Python-pendulum
 License:        MIT
 URL:            https://github.com/sdispater/pytzdata
-Source:         https://files.pythonhosted.org/packages/source/p/%{modname}/%{modname}-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+Source:         https://github.com/sdispater/pytzdata/archive/refs/tags/%{version}.tar.gz#/pytzdata-%{version}-gh.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  timezone
 Requires:       timezone
+BuildArch:      noarch
 %python_subpackages
 
 %description
 The Olson timezone database for Python. This version is linked to the systemwide zone info
 
 %prep
-%setup -q -n %{modname}-%{version}
+%setup -q -n pytzdata-%{version}
+sed -i 's/poetry.masonry/poetry.core.masonry/' pyproject.toml
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 # delete internal database
 %{python_expand rm -r %{buildroot}%{$python_sitelib}/pytzdata/zoneinfo
 ln -s /usr/share/zoneinfo %{buildroot}%{$python_sitelib}/pytzdata/zoneinfo
 %fdupes %{buildroot}%{$python_sitelib}
 }
 
+%check
+%pytest
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytzdata
+%{python_sitelib}/pytzdata-%{version}.dist-info
 
 %changelog

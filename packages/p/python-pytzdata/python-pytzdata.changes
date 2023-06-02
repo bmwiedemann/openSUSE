@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 31 08:51:45 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Bring this Ring1 package to python packaging standards
+  * Switch to github tarball in order to run the tests
+  * Don't catchall sitelib
+  * Replace deprecated setup.py with PEP517
+    (poetry-core is enough to build)
+  * Pure python module: BuildArch is noarch
+
+-------------------------------------------------------------------
 Mon May  8 04:54:25 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons
