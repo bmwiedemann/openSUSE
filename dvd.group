@@ -2347,7 +2347,6 @@
     <package name="libopenssl1_1" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libopenssl3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libopenssl3-32bit" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libopenssl3-hmac" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libopus0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liborc-0_4-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liborcus-0_17-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
