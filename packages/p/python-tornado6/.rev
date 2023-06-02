@@ -94,4 +94,41 @@
     <comment></comment>
     <requestid>1081738</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3a4abef622f88dd927775855ae88309b</srcmd5>
+    <version>6.3.2</version>
+    <time>1685743594</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release 6.3.2
+  - Security improvements
+    - Fixed an open redirect vulnerability in StaticFileHandler
+      under certain configurations.
+  - ``tornado.web``
+    - `.RequestHandler.set_cookie` once again accepts capitalized
+      keyword arguments for backwards compatibility. This is
+      deprecated and in Tornado 7.0 only lowercase arguments will
+      be accepted.
+  - What's new in Tornado 6.3.0
+    - The new `.Application` setting ``xsrf_cookie_name``
+      can now be used to take advantage of the ``__Host``
+      cookie prefix for improved security.  To use it, add
+      ``{&quot;xsrf_cookie_name&quot;: &quot;__Host-xsrf&quot;, &quot;xsrf_cookie_kwargs&quot;:
+      {&quot;secure&quot;: True}}`` to your `.Application` settings. Note
+      that this feature currently only works when HTTPS is used.
+    - `.WSGIContainer` now supports running the application in
+      a ``ThreadPoolExecutor`` so the event loop is no longer
+      blocked.
+    - `.AsyncTestCase` and `.AsyncHTTPTestCase`, which were
+      deprecated in Tornado 6.2, are no longer deprecated.
+    - WebSockets are now much faster at receiving large messages
+      split into many fragments.
+  - General changes
+    - Python 3.7 is no longer supported; the minimum supported  .
+      Python version is 3.8 Python 3.12 is now supported        .
+    - To avoid spurious deprecation warnings, users of Python
+      3.10 should upgrade to at least version 3.10.9, and users
+      of Python 3.11 should upgrade to at least version 3.11.1.
+    - Tornado submodules are now imported automatically on</comment>
+    <requestid>1090058</requestid>
+  </revision>
 </revisionlist>

@@ -17,10 +17,9 @@
 
 
 %{?sle15_python_module_pythons}
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-tornado6
-Version:        6.2
+Version:        6.3.2
 Release:        0
 Summary:        Open source version of scalable, non-blocking web server that power FriendFeed
 License:        Apache-2.0
@@ -29,13 +28,12 @@ Source:         https://files.pythonhosted.org/packages/source/t/tornado/tornado
 Source99:       python-tornado6-rpmlintrc
 # PATCH-FIX-OPENSUSE ignore-resourcewarning-doctests.patch -- ignore resource warnings on OBS
 Patch0:         ignore-resourcewarning-doctests.patch
-# PATCH-FIX-OPENSUSE ignore-py310-deprecation-warnings.patch -- gh#tornadoweb/tornado#3033
-Patch1:         ignore-py310-deprecation-warnings.patch
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycares}
 BuildRequires:  %{python_module pycurl}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python
@@ -78,10 +76,10 @@ if [ -f %{python_sitearch}/tornado-%{version}-py%{python_version}.egg-info ]; th
 fi
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand #
 # do not install tests
 rm -r %{buildroot}%{$python_sitearch}/tornado/test
@@ -106,6 +104,6 @@ export TRAVIS=1
 %license LICENSE
 %doc %{_docdir}/%{python_prefix}-tornado6
 %{python_sitearch}/tornado
-%{python_sitearch}/tornado-%{version}-py*.egg-info
+%{python_sitearch}/tornado-%{version}*-info
 
 %changelog
