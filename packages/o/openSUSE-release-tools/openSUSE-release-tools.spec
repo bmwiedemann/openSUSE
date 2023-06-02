@@ -20,7 +20,7 @@
 %define source_dir openSUSE-release-tools
 %define announcer_filename factory-package-news
 Name:           openSUSE-release-tools
-Version:        20230512.422701c
+Version:        20230602.41b6a00
 Release:        0
 Summary:        Tools to aid in staging and release work for openSUSE/SUSE
 License:        GPL-2.0-or-later AND MIT
@@ -314,32 +314,20 @@ getent passwd osrt-announcer > /dev/null || \
   useradd -r -m -s /sbin/nologin -c "user for openSUSE-release-tools-announcer" osrt-announcer
 exit 0
 
-%postun announcer
-%{systemd_postun}
-
 %pre check-source
 getent passwd osrt-check-source > /dev/null || \
   useradd -r -m -s /sbin/nologin -c "user for openSUSE-release-tools-check-source" osrt-check-source
 exit 0
-
-%postun check-source
-%{systemd_postun}
 
 %pre docker-publisher
 getent passwd osrt-docker-publisher > /dev/null || \
   useradd -r -m -s /sbin/nologin -c "user for openSUSE-release-tools-docker-publisher" osrt-docker-publisher
 exit 0
 
-%postun docker-publisher
-%{systemd_postun}
-
 %pre maintenance
 getent passwd osrt-maintenance > /dev/null || \
   useradd -r -m -s /sbin/nologin -c "user for openSUSE-release-tools-maintenance" osrt-maintenance
 exit 0
-
-%postun maintenance
-%{systemd_postun}
 
 %pre metrics
 getent passwd osrt-metrics > /dev/null || \
@@ -347,7 +335,7 @@ getent passwd osrt-metrics > /dev/null || \
 exit 0
 
 %postun metrics
-%{systemd_postun}
+%systemd_postun osrt-metrics-telegraf.service
 # If grafana-server.service is enabled then restart it to load new dashboards.
 if [ -x %{_bindir}/systemctl ] && %{_bindir}/systemctl is-enabled grafana-server ; then
   %{_bindir}/systemctl try-restart --no-block grafana-server
@@ -358,27 +346,15 @@ getent passwd osrt-origin-manager > /dev/null || \
   useradd -r -m -s /sbin/nologin -c "user for openSUSE-release-tools-origin-manager" osrt-origin-manager
 exit 0
 
-%postun origin-manager
-%{systemd_postun}
-
 %pre repo-checker
 getent passwd osrt-repo-checker > /dev/null || \
   useradd -r -m -s /sbin/nologin -c "user for openSUSE-release-tools-repo-checker" osrt-repo-checker
 exit 0
 
-%postun repo-checker
-%{systemd_postun}
-
 %pre staging-bot
 getent passwd osrt-staging-bot > /dev/null || \
   useradd -r -m -s /sbin/nologin -c "user for openSUSE-release-tools-staging-bot" osrt-staging-bot
 exit 0
-
-%postun staging-bot
-%{systemd_postun}
-
-%postun pkglistgen
-%{systemd_postun}
 
 %files
 %doc README.md

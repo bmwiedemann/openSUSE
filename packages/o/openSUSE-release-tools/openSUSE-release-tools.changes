@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jun 02 10:12:56 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230602.41b6a00:
+  * dist: fix rpm scriptlets call to systemd_postun
+
+-------------------------------------------------------------------
+Thu May 25 10:50:48 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230525.002c3c0:
+  * Add Leap 15.5 to access metrics
+
+-------------------------------------------------------------------
+Tue May 23 07:23:59 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230523.bb5a644:
+  * Drop redundant `unique_product_flavor`
+  * Do not drop the database on every run
+  * Fixes
+  * Refactor 'unique_product' object
+  * Fix merging and syntax errors
+  * Write points with flavor tag
+  * Parse flavor type to cached data
+  * Aggregate unique flavor access data
+
+-------------------------------------------------------------------
 Fri May 12 07:55:54 UTC 2023 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20230512.422701c:

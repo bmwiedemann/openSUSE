@@ -4001,4 +4001,26 @@ The toolset consists of a variety of stand-alone scripts, review bots, osc plugi
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1087897</requestid>
   </revision>
+  <revision rev="464" vrev="1">
+    <srcmd5>7b151b68b2565cc140ec0b9632351a7f</srcmd5>
+    <version>20230602.41b6a00</version>
+    <time>1685743605</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230602.41b6a00:
+  * dist: fix rpm scriptlets call to systemd_postun
+
+- Update to version 20230525.002c3c0:
+  * Add Leap 15.5 to access metrics
+
+- Update to version 20230523.bb5a644:
+  * Drop redundant `unique_product_flavor`
+  * Do not drop the database on every run
+  * Fixes
+  * Refactor 'unique_product' object
+  * Fix merging and syntax errors
+  * Write points with flavor tag
+  * Parse flavor type to cached data
+  * Aggregate unique flavor access data</comment>
+    <requestid>1090473</requestid>
+  </revision>
 </revisionlist>
