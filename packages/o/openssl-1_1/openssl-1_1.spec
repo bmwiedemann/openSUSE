@@ -41,7 +41,7 @@
 %define _rname  openssl
 Name:           openssl-1_1
 # Don't forget to update the version in the "openssl" meta-package!
-Version:        1.1.1t
+Version:        1.1.1u
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 License:        OpenSSL
@@ -132,12 +132,6 @@ Patch78:        openssl-1_1-Fixed-conditional-statement-testing-64-and-256-bytes
 Patch79:        openssl-1_1-Fix-AES-GCM-on-Power-8-CPUs.patch
 #PATCH-FIX-OPENSUSE bsc#1205042 Set OpenSSL 3.0 as the default openssl
 Patch80:        openssl-1_1-openssl-config.patch
-# PATCH-FIX-UPSTREAM: bsc#1209624, CVE-2023-0464 Excessive Resource Usage Verifying X.509 Policy Constraints
-Patch81:        openssl-CVE-2023-0464.patch
-# PATCH-FIX-UPSTREAM: bsc#1209878, CVE-2023-0465 Invalid certificate policies in leaf certificates are silently ignored
-Patch82:        openssl-CVE-2023-0465.patch
-# PATCH-FIX-UPSTREAM: bsc#1209873, CVE-2023-0466 Certificate policy check not enabled
-Patch83:        openssl-CVE-2023-0466.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
 Requires:       libopenssl1_1 = %{version}-%{release}
@@ -157,17 +151,21 @@ OpenSSL contains an implementation of the SSL and TLS protocols.
 
 %package -n libopenssl1_1
 Summary:        Secure Sockets and Transport Layer Security
-License:        OpenSSL
 Group:          Productivity/Networking/Security
 %if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550
 Requires:       crypto-policies
 %endif
 Recommends:     ca-certificates-mozilla
-# install libopenssl and libopenssl-hmac close together (bsc#1090765)
-Suggests:       libopenssl1_1-hmac = %{version}-%{release}
 # Needed for clean upgrade from former openssl-1_1_0, boo#1081335
 Obsoletes:      libopenssl1_1_0
 Conflicts:      %{name} < %{version}-%{release}
+# Merge back the hmac files bsc#1185116
+Provides:       libopenssl1_1-hmac = %{version}-%{release}
+Obsoletes:      libopenssl1_1-hmac < %{version}-%{release}
+# Needed for clean upgrade from former openssl-1_1_0, boo#1081335
+Obsoletes:      libopenssl1_1_0-hmac
+# Needed for clean upgrade from SLE-12 openssl-1_0_0, bsc#1158499
+Obsoletes:      libopenssl-1_0_0-hmac
 
 %description -n libopenssl1_1
 OpenSSL is a software library to be used in applications that need to
@@ -177,7 +175,6 @@ OpenSSL contains an implementation of the SSL and TLS protocols.
 
 %package -n libopenssl-1_1-devel
 Summary:        Development files for OpenSSL
-License:        OpenSSL
 Group:          Development/Libraries/C and C++
 Requires:       libopenssl1_1 = %{version}
 Requires:       pkgconfig(zlib)
@@ -194,23 +191,8 @@ Obsoletes:      libopenssl-1_0_0-devel
 This subpackage contains header files for developing applications
 that want to make use of the OpenSSL C API.
 
-%package -n libopenssl1_1-hmac
-Summary:        HMAC files for FIPS-140-2 integrity checking of the openssl shared libraries
-License:        BSD-3-Clause
-Group:          Productivity/Networking/Security
-Requires:       libopenssl1_1 = %{version}-%{release}
-# Needed for clean upgrade from former openssl-1_1_0, boo#1081335
-Obsoletes:      libopenssl1_1_0-hmac
-# Needed for clean upgrade from SLE-12 openssl-1_0_0, bsc#1158499
-Obsoletes:      libopenssl-1_0_0-hmac
-
-%description -n libopenssl1_1-hmac
-The FIPS compliant operation of the openssl shared libraries is NOT
-possible without the HMAC hashes contained in this package!
-
 %package doc
 Summary:        Additional Package Documentation
-License:        OpenSSL
 Group:          Productivity/Networking/Security
 Conflicts:      openssl-doc
 Provides:       openssl-doc = %{version}
@@ -402,11 +384,9 @@ unset LD_LIBRARY_PATH
 %license LICENSE
 %{_libdir}/libssl.so.%{maj_min}
 %{_libdir}/libcrypto.so.%{maj_min}
-%{_libdir}/engines-%{maj_min}
-
-%files -n libopenssl1_1-hmac
 %{_libdir}/.libssl.so.%{maj_min}.hmac
 %{_libdir}/.libcrypto.so.%{maj_min}.hmac
+%{_libdir}/engines-%{maj_min}
 
 %files -n libopenssl-1_1-devel
 %{_includedir}/%{_rname}/

@@ -26,7 +26,7 @@
 
 --- a/Configurations/descrip.mms.tmpl
 +++ b/Configurations/descrip.mms.tmpl
-@@ -140,8 +140,8 @@ INSTALL_SHLIBS={- join(", ", map { "-\n\
+@@ -142,8 +142,8 @@ INSTALL_SHLIBS={- join(", ", map { "-\n\
  INSTALL_ENGINES={- join(", ", map { "-\n\t".$_.".EXE" } @{$unified_info{install}->{engines}}) -}
  INSTALL_PROGRAMS={- join(", ", map { "-\n\t".$_.".EXE" } @{$unified_info{install}->{programs}}) -}
  {- output_off() if $disabled{apps}; "" -}
@@ -113,9 +113,9 @@
 +  IMPORTANT: For compatibility with OpenSSL 3.0, the OpenSSL master
 +  configuration file openssl.cnf has been renamed to openssl-1_1.cnf.
 +
-   Major changes between OpenSSL 1.1.1s and OpenSSL 1.1.1t [7 Feb 2023]
+   Major changes between OpenSSL 1.1.1t and OpenSSL 1.1.1u [30 May 2023]
  
-       o Fixed X.400 address type confusion in X.509 GeneralName (CVE-2023-0286)
+       o Mitigate for very slow `OBJ_obj2txt()` performance with gigantic
 --- a/VMS/openssl_utils.com.in
 +++ b/VMS/openssl_utils.com.in
 @@ -8,7 +8,7 @@ $	OPENSSL		:== $OSSL$EXE:OPENSSL'v'
