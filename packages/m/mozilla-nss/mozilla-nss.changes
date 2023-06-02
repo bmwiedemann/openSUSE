@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 31 12:54:20 UTC 2023 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Move testsuite to %check-section and move env-variables to
+  files for easier chroot-debugging
+
+-------------------------------------------------------------------
 Mon Apr 10 21:31:33 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.89

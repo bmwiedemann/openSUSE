@@ -2926,4 +2926,12 @@
   * bmo#1812671 - build failure while implicitly casting SECStatus</comment>
     <requestid>1078518</requestid>
   </revision>
+  <revision rev="201" vrev="2">
+    <srcmd5>80ac278093feb3aee6bb1fd7465b826b</srcmd5>
+    <version>3.89</version>
+    <time>1685743583</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090032</requestid>
+  </revision>
 </revisionlist>

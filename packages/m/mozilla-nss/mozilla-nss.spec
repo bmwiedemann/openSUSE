@@ -249,18 +249,14 @@ cd nss
 %else
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %endif
+cd nss
+cat > ../obsenv.sh <<EOF
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
 export CC=gcc-9
 # Yes, they use both...
 export CXX=g++-9
 export CCC=g++-9
 %endif
-cd nss
-modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{SOURCE99}")"
-DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
-TIME="\"$(date -d "${modified}" "+%%R")\""
-find . -name '*.[ch]' -print -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" {} +
-
 export NSS_ALLOW_SSLKEYLOGFILE=1
 export NSS_ENABLE_WERROR=0
 export NSS_NO_PKCS11_BYPASS=1
@@ -278,15 +274,31 @@ export NSS_USE_SYSTEM_SQLITE=1
 export NSS_ENABLE_FIPS_INDICATORS=1
 export NSS_FIPS_MODULE_ID="\"SUSE Linux Enterprise NSS %{version}-%{release}\""
 #export SQLITE_LIB_NAME=nsssqlite3
-MAKE_FLAGS="BUILD_OPT=1"
+export MAKE_FLAGS="BUILD_OPT=1"
+EOF
+
+source ../obsenv.sh
+
+modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{SOURCE99}")"
+DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
+TIME="\"$(date -d "${modified}" "+%%R")\""
+find . -name '*.[ch]' -print -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" {} +
+
 make %{?_smp_mflags} nss_build_all $MAKE_FLAGS
+
+%check
+cd nss
 # run testsuite
 %if 0%{?run_testsuite}
+cat > ../obstestenv.sh <<EOF
 export BUILD_OPT=1
 export HOST="localhost"
 export DOMSUF="localdomain"
 export USE_IP=TRUE
 export IP_ADDRESS="127.0.0.1"
+EOF
+source ../obsenv.sh
+source ../obstestenv.sh
 cd tests
 ./all.sh
 if grep "FAILED" ../../../tests_results/security/localhost.1/output.log ; then
