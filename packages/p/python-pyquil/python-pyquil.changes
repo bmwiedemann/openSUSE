@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 31 19:36:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.5.2:
+  * Add CHANNEL-DELAY attribute to DefFrame (#1564)
+  * regression on pyquil 3.4.0 regarding DEFCAL filtering (#1562)
+  * check and warn for existing gate when using defgate (#1512)
+  * add hash method to Program (#1527)
+  * Allow benchmarks to be missing for 1QRB; fallback to default
+    RX fidelity (#1556)
+
+-------------------------------------------------------------------
 Sat Jan 28 22:26:11 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.3.3

@@ -17,12 +17,13 @@
 
 
 Name:           python-pyquil
-Version:        3.3.3
+Version:        3.5.2
 Release:        0
 Summary:        A Python library to generate Quantum Instruction Language (Quil) Programs
 License:        Apache-2.0
 URL:            https://github.com/rigetti/pyquil
 Source:         https://github.com/rigetti/pyquil/archive/v%{version}.tar.gz#/pyquil-%{version}.tar.gz
+BuildRequires:  %{python_module Deprecated >= 1.2.13}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module importlib-metadata >= 3.7.3 if %python-base < 3.8}
 BuildRequires:  %{python_module lark >= 0.11.1}
@@ -31,17 +32,18 @@ BuildRequires:  %{python_module numpy >= 1.21}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1.0.0}
 BuildRequires:  %{python_module qcs-api-client >= 0.21 with %python-qcs-api-client < 0.22.0}
-BuildRequires:  %{python_module retry}
 BuildRequires:  %{python_module rpcq >= 3.10.0}
 BuildRequires:  %{python_module scipy >= 1.6.1}
+BuildRequires:  %{python_module tenacity >= 8.2.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Deprecated >= 1.2.13
 Requires:       python-lark >= 0.11.1
 Requires:       python-networkx >= 2.5
 Requires:       python-numpy >= 1.21
-Requires:       python-retry
 Requires:       python-rpcq >= 3.10.0
 Requires:       python-scipy >= 1.6.1
+Requires:       python-tenacity >= 8.2.2
 Requires:       (python-importlib-metadata >= 3.7.3 if python-base < 3.8)
 Requires:       (python-qcs-api-client >= 0.21 with python-qcs-api-client < 0.22.0)
 Recommends:     python-ipython

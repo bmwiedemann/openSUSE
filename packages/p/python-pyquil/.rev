@@ -95,4 +95,18 @@
     <comment></comment>
     <requestid>1061910</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ac98fefb5d655319e209a3b6a6c862ea</srcmd5>
+    <version>3.5.2</version>
+    <time>1685743605</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.5.2:
+  * Add CHANNEL-DELAY attribute to DefFrame (#1564)
+  * regression on pyquil 3.4.0 regarding DEFCAL filtering (#1562)
+  * check and warn for existing gate when using defgate (#1512)
+  * add hash method to Program (#1527)
+  * Allow benchmarks to be missing for 1QRB; fallback to default
+    RX fidelity (#1556)</comment>
+    <requestid>1090083</requestid>
+  </revision>
 </revisionlist>
