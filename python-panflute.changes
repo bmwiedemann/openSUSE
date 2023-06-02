@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun  1 20:16:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.0:
+  * Update Pandoc API from 1.22 to 1.23 (Pandoc 3.0):
+  * Add `Figure` block object
+  * Remove `Null` block object (scheduled for removed)
+
+-------------------------------------------------------------------
 Tue Oct  4 22:36:41 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 2.2.3 

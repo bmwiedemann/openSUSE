@@ -47,4 +47,15 @@
     <comment></comment>
     <requestid>1008153</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e4cc26c223417cb1ac029eacb32f62e4</srcmd5>
+    <version>2.3.0</version>
+    <time>1685743644</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.0:
+  * Update Pandoc API from 1.22 to 1.23 (Pandoc 3.0):
+  * Add `Figure` block object
+  * Remove `Null` block object (scheduled for removed)</comment>
+    <requestid>1090387</requestid>
+  </revision>
 </revisionlist>
