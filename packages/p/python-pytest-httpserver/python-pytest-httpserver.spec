@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-httpserver
-Version:        1.0.7
+Version:        1.0.8
 Release:        0
 Summary:        A HTTP server for pytest
 License:        MIT
