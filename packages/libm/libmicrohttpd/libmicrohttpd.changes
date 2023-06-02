@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 31 04:59:03 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- libmicrohttpd 0.9.77:
+  * improvements for Digest and Basic authorizations
+  * fix efficiency for TLS upgraded connections
+  * fix processing of folded headers in requests
+  * fix functionality with blocking sockets
+- update upstream signing key
+ 
+-------------------------------------------------------------------
 Tue Feb 28 21:20:34 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libmicrohttpd 0.9.76
