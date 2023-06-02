@@ -114,4 +114,17 @@
     <comment></comment>
     <requestid>1082430</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>000a972dd86fadd829d3c694a035bc3a</srcmd5>
+    <version>2.0.1</version>
+    <time>1685743596</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.1:
+  * Don't try loading Pytest fixture functions as if
+    they were test functions. Classifying this as a bug even
+    though it's a moderately sized change in behavior; 
+    it's vanishingly unlikely anybody was relying on this
+    somehow!</comment>
+    <requestid>1090085</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 31 19:43:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.1:
+  * Don't try loading Pytest fixture functions as if
+    they were test functions. Classifying this as a bug even
+    though it's a moderately sized change in behavior; 
+    it's vanishingly unlikely anybody was relying on this
+    somehow!
+
+-------------------------------------------------------------------
 Fri Apr 21 12:31:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
