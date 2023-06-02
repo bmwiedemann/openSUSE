@@ -36,4 +36,15 @@ See installed CHANGELOG.md for more changes</comment>
   [CVE-2023-27539] Avoid ReDoS in header parsing (forwarded request 1072032 from danidoni)</comment>
     <requestid>1072043</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>690aaaf57192145de282fcd4337d00cd</srcmd5>
+    <version>2.2.7</version>
+    <time>1685743657</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.2.7
+  
+  * Correct the year number in the changelog (https://github.com/rack/rack/pull/2015)
+  * Support underscore in host names for Rack 2.2 (https://github.com/rack/rack/pull/2071) (forwarded request 1084068 from krauselukas)</comment>
+    <requestid>1090442</requestid>
+  </revision>
 </revisionlist>
