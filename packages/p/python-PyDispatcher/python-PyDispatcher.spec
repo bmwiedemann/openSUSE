@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyDispatcher
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyDispatcher
-Version:        2.0.6
+Version:        2.0.7
 Release:        0
 Summary:        Multi-producer-multi-consumer signal dispatching mechanism
 License:        BSD-3-Clause
-URL:            http://pydispatcher.sourceforge.net
+URL:            https://github.com/mcfletch/pydispatcher
 Source:         https://files.pythonhosted.org/packages/source/P/PyDispatcher/PyDispatcher-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
