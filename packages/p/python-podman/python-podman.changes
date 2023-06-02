@@ -1,7 +1,69 @@
 -------------------------------------------------------------------
+Thu Jun  1 05:35:55 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.5.1:
+  * [v4.5-rhel] cherry-pick urlib3 fixes by @umohnani8 in
+    https://github.com/containers/podman-py/pull/274
+
+-------------------------------------------------------------------
+Fri Apr 28 05:09:34 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add necessary Requires, remove outdated Requires
+- add _service file
+  - change URL to make `osc service disabledrun download_files`
+    work
+- update to 4.5.0:
+  * Change docstring to point to podman docs
+  * [skip-ci] Update tim-actions/get-pr-commits action to v1.2.0
+  * Add renovate.json
+  * Fix new lint problems
+  * Improve exception when missing env var
+  * chg: Container.top to use stream_helper
+  * chg: Container.stats to use stream_helper
+  * add: stream_helper in api/parse_utils.py
+  * Cirrus: Update CI VM images
+  * Bump fixtures requirement
+  * Specify version verbatim in setup.cfg
+  * [spec] Switch license to SPDX
+  * podman.spec: run unit tests
+  * Fix version spec in setup.cfg
+  * Correct pyproject.toml [build-system] requires
+  * Fallback to pytoml on RHEL 8 and toml on 9
+  * Use modern tomllib/tomli modules for reading TOML files
+        * Revert "Use modern tomllib/tomli modules for reading TOML
+    files"
+  * chore: Container.stats - type hints
+  * fix: Container.stats - invalid response for non-stream mode
+  * fix: Container.stats - missing stream param to requests
+  * Lint fix
+        * Merge branch 'containers:main' into
+    feat/container-create-secret
+  * Correctly add secrets to container on creation
+
+-------------------------------------------------------------------
+Fri Feb 24 08:04:35 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- cleanup requires & suggests (fixes boo#1208627)
+- New upstream release 4.4.1:
+    This release contains necessary backports to revert the new tomli package
+    that was introduced but is not supported by RHEL currently.
+
+- New upstream release 4.4.0:
+    Bump version to 4.3.0 by @umohnani8 in #216
+    update urllib to 1.26.5 for a CVE found in previous versions by @cdoern in #210
+    Correct path for rtd conf.py by @baude in #219
+    Clean up pylint configuration by @jwhonce in #222
+    Use modern tomllib/tomli modules for reading TOML files by @mgorny in #214
+    Added port binding range by @msisj in #224
+    Update cirrus image by @rhatdan in #225
+    Cirrus: Update CI VM images to F37 by @cevich in #228
+    Fix the ability to run containers by @jonathanunderwood in #226
+    Update files to adhere to new lint requirements by @umohnani8 in #236
+
+-------------------------------------------------------------------
 Fri Oct 28 19:54:33 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 4.3.0 
+- Update to 4.3.0
   * Add pass-through layers, output and outputformat to building images
   * Support passing of interval and condition in podman wait calls
   * Implement podman image scp
@@ -35,7 +97,7 @@ Thu Jun 30 06:31:58 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>
   * Support testing python 3.6,3.8-3.10
   * Allow passing string values to memory limits
 
-- remove patch python310.patch 
+- remove patch python310.patch
 
 -------------------------------------------------------------------
 Wed Jun 29 15:13:29 UTC 2022 - Johannes Kastl <kastl@b1-systems.de>

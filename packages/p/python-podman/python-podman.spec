@@ -17,7 +17,6 @@
 
 
 %define skip_python2 1
-%{?!python_module:%define python_module() python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -27,13 +26,13 @@
 %bcond_with test
 %endif
 Name:           python-podman%{psuffix}
-Version:        4.3.0
+Version:        4.5.1
 Release:        0
 Summary:        A library to interact with a Podman server
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/containers/podman-py
-Source:         https://github.com/containers/podman-py/archive/refs/tags/v%{version}.tar.gz#/podman-%{version}.tar.gz
+Source:         https://github.com/containers/podman-py/archive/refs/tags/v%{version}.tar.gz#./podman-%{version}.tar.gz
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pytoml}
 BuildRequires:  %{python_module pyxdg}
@@ -41,15 +40,9 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-psutil
-Requires:       python-python-dateutil
+Requires:       python-pyxdg
 Requires:       python-requests
-Requires:       python-setuptools >= 39
-Requires:       python-varlink
-Suggests:       python-fixtures
-Suggests:       python-pbr
-Suggests:       python-pytoml
-Suggests:       python-pyxdg
+Requires:       python-urllib3 < 2.0
 BuildArch:      noarch
 %if %{with test}
 # SECTION test requirements
@@ -62,6 +55,8 @@ BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module setuptools >= 39}
 BuildRequires:  %{python_module varlink}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module urllib3 < 2.0}
 # /SECTION
 %endif
 %python_subpackages
@@ -70,7 +65,7 @@ BuildRequires:  %{python_module wheel}
 A library to interact with a Podman server
 
 %prep
-%setup -q -n podman-py-%{version}
+%autosetup -n podman-py-%{version}
 
 %build
 %python_build
@@ -83,15 +78,15 @@ A library to interact with a Podman server
 
 %if %{with test}
 %check
-rm -rvf podman/tests/integration
-%pyunittest discover -v podman/tests/
+%{python_expand $python -m pytest podman/tests/unit}
 %endif
 
 %if !%{with test}
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/podman/
+%{python_sitelib}/podman-*.egg-info/
 %endif
 
 %changelog
