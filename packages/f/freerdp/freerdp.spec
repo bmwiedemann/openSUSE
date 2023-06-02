@@ -34,9 +34,6 @@
 %define libfreerdp_package %{major_version}-%{major_version}
 %define uwac_version 0
 %define uwac_package %{uwac_version}-%{uwac_version}
-%ifarch aarch64 %{arm}
-%define _lto_cflags %{nil}
-%endif
 
 Name:           freerdp
 Version:        2.10.0
@@ -203,14 +200,13 @@ use the uwac library.
 if [ -z "$SOURCE_DATE_EPOCH" ]; then
 find . -type f -name "*.c" -exec perl -i -pe 's{__(DATE|TIME)__}{""}g' "{}" "+"
 fi
-export LDFLAGS="-pie"
-export CFLAGS="%{optflags} -fPIE -pie"
 
 %cmake \
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
 	-DCMAKE_INSTALL_LIBDIR=%{_lib} \
 	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
-        -DWITH_ALSA=ON \
+	-DCMAKE_EXE_LINKER_FLAGS="-pie" \
+	-DWITH_ALSA=ON \
 	-DWITH_CAIRO=ON \
 	-DWITH_CUPS=ON \
 	-DWITH_CHANNELS=ON -DBUILTIN_CHANNELS=OFF \
