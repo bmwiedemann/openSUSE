@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jun  1 05:46:10 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 0.17.31:
+  * added tag.setter on `ScalarEvent` and on `Node`, that takes
+    either a `Tag` instance, or a str (reported by Sorin Sbarnea)
+- update to 0.17.30:
+  * fix issue 467, caused by Tag instances not being hashable
+    (reported by Douglas Raillard)
+- update to 0.17.29:
+  * changed the internals of the tag property from a string to a
+    class which allows for preservation of the original handle and
+    suffix. This should result in better results using documents
+    with %TAG directives, as well as preserving URI escapes in tag
+    suffixes.
+- update to 0.17.28:
+  * fix for issue 464: documents ending with document end marker
+    without final newline fail to load (reported by Mariusz
+    Rusiniak)
+- update to 0.17.27:
+  * fix issue with inline mappings as value for merge keys
+    (reported by Sirish)
+  * fix for 468, error inserting after accessing merge attribute on
+    ``CommentedMap`` (reported by Bastien gerard)
+  * fix for issue 461 pop + insert on same `CommentedMap` key
+    throwing error (reported by `John Thorvald Wodder II)
+
+-------------------------------------------------------------------
 Wed May 17 09:07:31 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - adapt patch 0000-fix-big-endian-issues.patch

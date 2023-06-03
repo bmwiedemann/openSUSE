@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ruamel.yaml
-Version:        0.17.26
+Version:        0.17.31
 Release:        0
 Summary:        Python YAML parser
 License:        MIT
