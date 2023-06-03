@@ -1,7 +1,7 @@
 #
 # spec file for package robin-map
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           robin-map
-Version:        1.0.1
+Version:        1.2.1
 Release:        0
 Summary:        C++ implementation of a fast hash map and hash set using robin hood hashing
 License:        MIT
 URL:            https://github.com/Tessil/robin-map
-Source0:        https://github.com/Tessil/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildArch:      noarch
