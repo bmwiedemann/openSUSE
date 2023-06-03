@@ -17,4 +17,16 @@
 - Disable -buildmode=pie on ppc64, and add some verbosity flags.</comment>
     <requestid>1087017</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7aee3166f1e7bd0d6b97261f5d403776</srcmd5>
+    <version>0.12.13</version>
+    <time>1685830386</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.12.13
+  * Implement `@urid` format string to decode URI values.
+  * Fix some functions returning arrays to emit empty slices instead of nil.
+
+- Update vendor tarball.</comment>
+    <requestid>1090546</requestid>
+  </revision>
 </revisionlist>

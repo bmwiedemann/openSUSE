@@ -17,7 +17,7 @@
 
 
 Name:           gojq
-Version:        0.12.12
+Version:        0.12.13
 Release:        0
 Summary:        Pure Go implementation of jq
 License:        MIT

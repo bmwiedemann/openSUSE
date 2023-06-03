@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun  1 21:13:53 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update vendor tarball.
+
+-------------------------------------------------------------------
+Thu Jun  1 14:56:20 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v0.12.13
+  * Implement `@urid` format string to decode URI values.
+  * Fix some functions returning arrays to emit empty slices instead of nil.
+
+-------------------------------------------------------------------
 Sat May 13 20:12:11 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
 
 - Restrict minumum golang version to the one listed in go.mod
