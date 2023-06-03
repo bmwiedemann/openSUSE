@@ -205,9 +205,6 @@ find . -iname CMakeLists.txt -exec sed "-i" "-e s/COMMAND python/COMMAND python3
 %cmake_install
 # Add Creative Commons license for documentation
 cp -v %{SOURCE1} .
-# Move the OpenImageIO plugin into its default search path
-mkdir %{buildroot}%{_libdir}/OpenImageIO-%{oiio_major_minor_ver}
-mv %{buildroot}%{_libdir}/osl.imageio.so %{buildroot}%{_libdir}/OpenImageIO-%{oiio_major_minor_ver}/
 
 find %{buildroot} -name LICENSE.md -print -delete
 # add top level markdowns to the doc package
@@ -269,7 +266,7 @@ find %{buildroot}%{python3_sitearch} -name oslquery.so -print -delete
 
 %files -n OpenImageIO-plugin-osl
 %license LICENSE.md
-%{_libdir}/OpenImageIO-%{oiio_major_minor_ver}/osl.imageio.so
+%{_libdir}/osl.imageio.so
 
 %files devel
 %license LICENSE.md

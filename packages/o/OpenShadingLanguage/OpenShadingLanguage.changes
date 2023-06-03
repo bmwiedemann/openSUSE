@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 31 08:33:44 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- plugin-osl search path is in %{_libdir} now
+
+-------------------------------------------------------------------
 Sat Apr  1 09:50:52 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
 
 - update to 1.12.10.0:
