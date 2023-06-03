@@ -641,4 +641,13 @@
 - Switch documentation to be within the main package.</comment>
     <requestid>1087248</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>1f6bfbecb697be8539acd34c1d82c054</srcmd5>
+    <version>22.10.2</version>
+    <time>1685830339</time>
+    <user>dimstar_suse</user>
+    <comment>- handle-python-ssl-changes.patch: refresh to handle ssl.shared_ciphers()
+  behavior change in python 3.11 as well</comment>
+    <requestid>1090162</requestid>
+  </revision>
 </revisionlist>

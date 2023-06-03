@@ -2,25 +2,35 @@ Index: gevent-22.10.2/src/greentest/3.10/test_ssl.py
 ===================================================================
 --- gevent-22.10.2.orig/src/greentest/3.10/test_ssl.py
 +++ gevent-22.10.2/src/greentest/3.10/test_ssl.py
-@@ -2306,13 +2306,19 @@ class SimpleBackgroundTests(unittest.Tes
+@@ -2306,13 +2306,11 @@ class SimpleBackgroundTests(unittest.Tes
          self.assertIs(sslobj._sslobj.owner, sslobj)
          self.assertIsNone(sslobj.cipher())
          self.assertIsNone(sslobj.version())
 -        self.assertIsNotNone(sslobj.shared_ciphers())
-+        try:
-+            self.assertIsNotNone(sslobj.shared_ciphers())
-+        except AssertionError:
-+            self.assertIsNone(sslobj.shared_ciphers())
          self.assertRaises(ValueError, sslobj.getpeercert)
          if 'tls-unique' in ssl.CHANNEL_BINDING_TYPES:
              self.assertIsNone(sslobj.get_channel_binding('tls-unique'))
          self.ssl_io_loop(sock, incoming, outgoing, sslobj.do_handshake)
          self.assertTrue(sslobj.cipher())
 -        self.assertIsNotNone(sslobj.shared_ciphers())
-+        try:
-+            self.assertIsNotNone(sslobj.shared_ciphers())
-+        except AssertionError:
-+            self.assertIsNone(sslobj.shared_ciphers())
+         self.assertIsNotNone(sslobj.version())
+         self.assertTrue(sslobj.getpeercert())
+         if 'tls-unique' in ssl.CHANNEL_BINDING_TYPES:
+Index: gevent-22.10.2/src/greentest/3.11/test_ssl.py
+===================================================================
+--- gevent-22.10.2.orig/src/greentest/3.11/test_ssl.py
++++ gevent-22.10.2/src/greentest/3.11/test_ssl.py
+@@ -2326,13 +2326,11 @@ class SimpleBackgroundTests(unittest.Tes
+         self.assertIs(sslobj._sslobj.owner, sslobj)
+         self.assertIsNone(sslobj.cipher())
+         self.assertIsNone(sslobj.version())
+-        self.assertIsNotNone(sslobj.shared_ciphers())
+         self.assertRaises(ValueError, sslobj.getpeercert)
+         if 'tls-unique' in ssl.CHANNEL_BINDING_TYPES:
+             self.assertIsNone(sslobj.get_channel_binding('tls-unique'))
+         self.ssl_io_loop(sock, incoming, outgoing, sslobj.do_handshake)
+         self.assertTrue(sslobj.cipher())
+-        self.assertIsNotNone(sslobj.shared_ciphers())
          self.assertIsNotNone(sslobj.version())
          self.assertTrue(sslobj.getpeercert())
          if 'tls-unique' in ssl.CHANNEL_BINDING_TYPES:

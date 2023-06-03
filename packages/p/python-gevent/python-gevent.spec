@@ -112,9 +112,7 @@ Documentation and examples for %{name}.
 %if 0%{?sle_version} <= 150300
 %patch1 -p1
 %endif
-%if 0%{?is_opensuse}
 %patch2 -p1
-%endif
 sed -i -e '1s!bin/env python!bin/python!' examples/*.py
 sed -i -e '1{/bin.*python/d}' src/gevent/tests/*.py
 

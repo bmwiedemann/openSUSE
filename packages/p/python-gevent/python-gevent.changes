@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  1 07:05:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- handle-python-ssl-changes.patch: refresh to handle ssl.shared_ciphers()
+  behavior change in python 3.11 as well 
+
+-------------------------------------------------------------------
 Mon May 15 14:18:03 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch handle-python-ssl-changes.patch:
