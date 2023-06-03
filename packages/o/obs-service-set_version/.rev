@@ -366,4 +366,16 @@
   * Avoid the Flake8 warning and restore conditional import</comment>
     <requestid>1059386</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>86b33bde7089d84aec8a9757411226d9</srcmd5>
+    <version>0.6.2</version>
+    <time>1685830325</time>
+    <user>dimstar_suse</user>
+    <comment>- Builds on CentOS_[5678] and possibly other distros failed because 
+  their 'rpm' didn't recognize the &quot;Recommends:&quot; tag. I've wrapped 
+  that tag in an &quot;%if 0%{?suse_version}&quot; to work around it. 
+  Build is now passing on the CentOS distros.
+</comment>
+    <requestid>1090360</requestid>
+  </revision>
 </revisionlist>

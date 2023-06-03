@@ -45,7 +45,9 @@ Requires:       python3-base
 %else
 Requires:       python3
 %endif
+%if 0%{?suse_version}
 Recommends:     python3-packaging
+%endif
 
 %description
 This is a source service for openSUSE Build Service.

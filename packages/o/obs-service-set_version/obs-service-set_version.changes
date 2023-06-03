@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun  1 15:22:42 UTC 2023 - Edward Baudrez <ebaudrez@unknown.com>
+
+- Builds on CentOS_[5678] and possibly other distros failed because 
+  their 'rpm' didn't recognize the "Recommends:" tag. I've wrapped 
+  that tag in an "%if 0%{?suse_version}" to work around it. 
+  Build is now passing on the CentOS distros.
+
+-------------------------------------------------------------------
 Wed Jan 18 13:39:25 UTC 2023 - dmueller@suse.com
 
 - Update to version 0.6.2:
