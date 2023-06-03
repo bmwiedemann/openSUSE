@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jun  3 09:17:39 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.64.0
+  - Fixed refresh of directory trees when filters changing
+  - Updated to libfilezilla 0.42.2
+- Changes from 3.64.0-rc1
+  - MSW: Additional icon sizing fixes on high DPI scale factors
+  - Updated to libfilezilla 0.42.0
+  - Switched to .tar.xz for source tarballs
+
+-------------------------------------------------------------------
 Wed Apr 12 10:50:37 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Fix build error for Tumbleweed.

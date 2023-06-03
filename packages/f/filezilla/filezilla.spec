@@ -16,16 +16,16 @@
 #
 
 
-%define libversion 3.63.2
+%define libversion 3.64.0
 
 Name:           filezilla
-Version:        3.63.2.1
+Version:        3.64.0
 Release:        0
 Summary:        A GUI FTP and SFTP Client
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Ftp/Clients
 URL:            https://filezilla-project.org/
-Source0:        https://download.filezilla-project.org/client/FileZilla_%{version}_src.tar.bz2
+Source0:        https://download.filezilla-project.org/client/FileZilla_%{version}_src.tar.xz
 Patch0:         %{name}-welcome_dialog.patch
 Patch1:         disable-avx-on-i586.patch
 BuildRequires:  autoconf
@@ -43,7 +43,7 @@ BuildRequires:  xdg-utils
 BuildRequires:  pkgconfig(cppunit)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(libfilezilla) >= 0.41.1
+BuildRequires:  pkgconfig(libfilezilla) >= 0.42.2
 BuildRequires:  pkgconfig(libidn)
 BuildRequires:  pkgconfig(nettle) >= 3.1
 BuildRequires:  pkgconfig(sqlite3) >= 3.7.0
