@@ -105,7 +105,7 @@
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.12.0a7
+Version:        3.12.0b1
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -162,6 +162,10 @@ Patch34:        skip-test_pyobject_freed_is_freed.patch
 # PATCH-FIX-SLE fix_configure_rst.patch bpo#43774 mcepl@suse.com
 # remove duplicate link targets and make documentation with old Sphinx in SLE
 Patch35:        fix_configure_rst.patch
+# PATCH-FIX-UPSTREAM 00398-fix-stack-overwrite-on-32-bit-in-perf-map-test-harness-gh-104811-104823.patch -- gh#python/cpython#104811
+# fix stack overwrite on 32-bit in perf map test harness
+Patch36:        00398-fix-stack-overwrite-on-32-bit-in-perf-map-test-harness-gh-104811-104823.patch
+
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -430,6 +434,7 @@ other applications.
 %patch34 -p1
 %endif
 %patch35 -p1
+%patch36 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
@@ -629,7 +634,7 @@ for library in \
     _posixsubprocess _queue _random resource select _ssl _socket spwd \
     _statistics _struct syslog termios _testbuffer _testimportmultiple \
     _testmultiphase unicodedata zlib _ctypes_test _testinternalcapi _testcapi \
-    _typing _testclinic xxlimited xxlimited_35 \
+    _testclinic xxlimited xxlimited_35 \
     _xxtestfuzz _xxsubinterpreters _elementtree pyexpat _md5 _sha1 \
     _sha2 _blake2 _sha3 _uuid _zoneinfo \
     _testsinglephase _xxinterpchannels xxsubtype
@@ -954,7 +959,6 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %{dynlib _struct}
 %{dynlib syslog}
 %{dynlib termios}
-%{dynlib _typing}
 %{dynlib unicodedata}
 %{dynlib _uuid}
 %{dynlib xxlimited}

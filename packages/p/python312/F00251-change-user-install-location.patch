@@ -29,10 +29,10 @@ Co-authored-by: Lumír Balhar <frenzy.madness@gmail.com>
  Lib/test/test_sysconfig.py | 17 +++++++++++--
  3 files changed, 71 insertions(+), 4 deletions(-)
 
-diff --git a/Lib/site.py b/Lib/site.py
-index 7faf1c6f6a..e2ace71d18 100644
---- a/Lib/site.py
-+++ b/Lib/site.py
+Index: Python-3.12.0b1/Lib/site.py
+===================================================================
+--- Python-3.12.0b1.orig/Lib/site.py
++++ Python-3.12.0b1/Lib/site.py
 @@ -377,8 +377,15 @@ def getsitepackages(prefixes=None):
      return sitepackages
  
@@ -50,11 +50,11 @@ index 7faf1c6f6a..e2ace71d18 100644
      for sitedir in getsitepackages(prefixes):
          if os.path.isdir(sitedir):
              addsitedir(sitedir, known_paths)
-diff --git a/Lib/sysconfig.py b/Lib/sysconfig.py
-index c61100a6da..30143e577e 100644
---- a/Lib/sysconfig.py
-+++ b/Lib/sysconfig.py
-@@ -104,6 +104,11 @@
+Index: Python-3.12.0b1/Lib/sysconfig.py
+===================================================================
+--- Python-3.12.0b1.orig/Lib/sysconfig.py
++++ Python-3.12.0b1/Lib/sysconfig.py
+@@ -104,6 +104,11 @@ if os.name == 'nt':
  else:
      _INSTALL_SCHEMES['venv'] = _INSTALL_SCHEMES['posix_venv']
  
@@ -66,7 +66,7 @@ index c61100a6da..30143e577e 100644
  
  # NOTE: site.py has copy of this function.
  # Sync it when modify this function.
-@@ -163,6 +168,19 @@ def joinuser(*args):
+@@ -163,6 +168,19 @@ if _HAS_USER_BASE:
              },
      }
  
@@ -86,7 +86,7 @@ index c61100a6da..30143e577e 100644
  _SCHEME_KEYS = ('stdlib', 'platstdlib', 'purelib', 'platlib', 'include',
                  'scripts', 'data')
  
-@@ -263,11 +281,40 @@ def _extend_dict(target_dict, other_dict):
+@@ -263,11 +281,40 @@ def _extend_dict(target_dict, other_dict
          target_dict[key] = value
  
  
@@ -128,11 +128,11 @@ index c61100a6da..30143e577e 100644
      if os.name == 'nt':
          # On Windows we want to substitute 'lib' for schemes rather
          # than the native value (without modifying vars, in case it
-diff --git a/Lib/test/test_sysconfig.py b/Lib/test/test_sysconfig.py
-index b6dbf3d52c..4f06a7673c 100644
---- a/Lib/test/test_sysconfig.py
-+++ b/Lib/test/test_sysconfig.py
-@@ -110,8 +110,19 @@ def test_get_path(self):
+Index: Python-3.12.0b1/Lib/test/test_sysconfig.py
+===================================================================
+--- Python-3.12.0b1.orig/Lib/test/test_sysconfig.py
++++ Python-3.12.0b1/Lib/test/test_sysconfig.py
+@@ -110,8 +110,19 @@ class TestSysConfig(unittest.TestCase):
          for scheme in _INSTALL_SCHEMES:
              for name in _INSTALL_SCHEMES[scheme]:
                  expected = _INSTALL_SCHEMES[scheme][name].format(**config_vars)
@@ -153,7 +153,7 @@ index b6dbf3d52c..4f06a7673c 100644
                      os.path.normpath(expected),
                  )
  
-@@ -335,7 +346,7 @@ def test_get_config_h_filename(self):
+@@ -335,7 +346,7 @@ class TestSysConfig(unittest.TestCase):
          self.assertTrue(os.path.isfile(config_h), config_h)
  
      def test_get_scheme_names(self):
@@ -162,7 +162,7 @@ index b6dbf3d52c..4f06a7673c 100644
          if HAS_USER_BASE:
              wanted.extend(['nt_user', 'osx_framework_user', 'posix_user'])
          self.assertEqual(get_scheme_names(), tuple(sorted(wanted)))
-@@ -347,6 +358,8 @@ def test_symlink(self): # Issue 7880
+@@ -347,6 +358,8 @@ class TestSysConfig(unittest.TestCase):
              cmd = "-c", "import sysconfig; print(sysconfig.get_platform())"
              self.assertEqual(py.call_real(*cmd), py.call_link(*cmd))
  

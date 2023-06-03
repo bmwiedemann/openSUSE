@@ -13,8 +13,10 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
  5 files changed, 34 insertions(+), 9 deletions(-)
  create mode 100644 Misc/NEWS.d/next/Build/2019-12-16-17-50-42.bpo-31046.XA-Qfr.rst
 
---- a/Doc/library/ensurepip.rst
-+++ b/Doc/library/ensurepip.rst
+Index: Python-3.12.0b1/Doc/library/ensurepip.rst
+===================================================================
+--- Python-3.12.0b1.orig/Doc/library/ensurepip.rst
++++ Python-3.12.0b1/Doc/library/ensurepip.rst
 @@ -59,8 +59,9 @@ is at least as recent as the one availab
  By default, ``pip`` is installed into the current virtual environment
  (if one is active) or into the system site packages (if there is no
@@ -53,9 +55,11 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
     .. audit-event:: ensurepip.bootstrap root ensurepip.bootstrap
  
     .. note::
---- a/Lib/ensurepip/__init__.py
-+++ b/Lib/ensurepip/__init__.py
-@@ -122,27 +122,27 @@ def _disable_pip_configuration_settings(
+Index: Python-3.12.0b1/Lib/ensurepip/__init__.py
+===================================================================
+--- Python-3.12.0b1.orig/Lib/ensurepip/__init__.py
++++ Python-3.12.0b1/Lib/ensurepip/__init__.py
+@@ -120,27 +120,27 @@ def _disable_pip_configuration_settings(
      os.environ['PIP_CONFIG_FILE'] = os.devnull
  
  
@@ -88,7 +92,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
  
      Note that calling this function will alter both sys.path and os.environ.
      """
-@@ -192,6 +192,8 @@ def _bootstrap(*, root=None, upgrade=Fal
+@@ -190,6 +190,8 @@ def _bootstrap(*, root=None, upgrade=Fal
          args = ["install", "--no-cache-dir", "--no-index", "--find-links", tmpdir]
          if root:
              args += ["--root", root]
@@ -97,7 +101,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
          if upgrade:
              args += ["--upgrade"]
          if user:
-@@ -267,6 +269,11 @@ def _main(argv=None):
+@@ -265,6 +267,11 @@ def _main(argv=None):
          help="Install everything relative to this alternate root directory.",
      )
      parser.add_argument(
@@ -109,7 +113,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
          "--altinstall",
          action="store_true",
          default=False,
-@@ -285,6 +292,7 @@ def _main(argv=None):
+@@ -283,6 +290,7 @@ def _main(argv=None):
  
      return _bootstrap(
          root=args.root,
@@ -117,9 +121,11 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
          upgrade=args.upgrade,
          user=args.user,
          verbosity=args.verbosity,
---- a/Lib/test/test_ensurepip.py
-+++ b/Lib/test/test_ensurepip.py
-@@ -112,6 +112,17 @@ class TestBootstrap(EnsurepipMixin, unit
+Index: Python-3.12.0b1/Lib/test/test_ensurepip.py
+===================================================================
+--- Python-3.12.0b1.orig/Lib/test/test_ensurepip.py
++++ Python-3.12.0b1/Lib/test/test_ensurepip.py
+@@ -105,6 +105,17 @@ class TestBootstrap(EnsurepipMixin, unit
              unittest.mock.ANY,
          )
  
@@ -129,7 +135,7 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
 +            [
 +                "install", "--no-cache-dir", "--no-index", "--find-links",
 +                unittest.mock.ANY, "--prefix", "/foo/bar/",
-+                "setuptools", "pip",
++                "pip",
 +            ],
 +            unittest.mock.ANY,
 +        )
@@ -137,9 +143,11 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
      def test_bootstrapping_with_user(self):
          ensurepip.bootstrap(user=True)
  
---- a/Makefile.pre.in
-+++ b/Makefile.pre.in
-@@ -1832,7 +1832,7 @@ install: @FRAMEWORKINSTALLFIRST@ commoni
+Index: Python-3.12.0b1/Makefile.pre.in
+===================================================================
+--- Python-3.12.0b1.orig/Makefile.pre.in
++++ Python-3.12.0b1/Makefile.pre.in
+@@ -1908,7 +1908,7 @@ install: @FRAMEWORKINSTALLFIRST@ commoni
  			install|*) ensurepip="" ;; \
  		esac; \
  		$(RUNSHARED) $(PYTHON_FOR_BUILD) -m ensurepip \
@@ -147,8 +155,8 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
 +			$$ensurepip --root=$(DESTDIR)/ --prefix=$(prefix) ; \
  	fi
  
- altinstall: commoninstall
-@@ -1842,7 +1842,7 @@ altinstall: commoninstall
+ .PHONY: altinstall
+@@ -1919,7 +1919,7 @@ altinstall: commoninstall
  			install|*) ensurepip="--altinstall" ;; \
  		esac; \
  		$(RUNSHARED) $(PYTHON_FOR_BUILD) -m ensurepip \
@@ -156,8 +164,10 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
 +			$$ensurepip --root=$(DESTDIR)/ --prefix=$(prefix) ; \
  	fi
  
- commoninstall:  check-clean-src @FRAMEWORKALTINSTALLFIRST@ \
+ .PHONY: commoninstall
+Index: Python-3.12.0b1/Misc/NEWS.d/next/Build/2019-12-16-17-50-42.bpo-31046.XA-Qfr.rst
+===================================================================
 --- /dev/null
-+++ b/Misc/NEWS.d/next/Build/2019-12-16-17-50-42.bpo-31046.XA-Qfr.rst
++++ Python-3.12.0b1/Misc/NEWS.d/next/Build/2019-12-16-17-50-42.bpo-31046.XA-Qfr.rst
 @@ -0,0 +1 @@
 +A directory prefix can now be specified when using :mod:`ensurepip`.
