@@ -27,7 +27,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-pytest-cov%{psuffix}
-Version:        4.0.0
+Version:        4.1.0
 Release:        0
 Summary:        Pytest plugin for coverage reporting
 License:        MIT
