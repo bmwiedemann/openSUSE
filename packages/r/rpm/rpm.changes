@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 30 09:07:28 UTC 2023 - Jiri Srain <jsrain@suse.com>
+
+- add _multibuild for multiple .spec-files
+
+-------------------------------------------------------------------
 Thu Mar 16 12:22:23 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Add upstream patch libmagic-exceptions.patch that speeds up libreoffice

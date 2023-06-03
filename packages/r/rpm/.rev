@@ -2430,4 +2430,14 @@ See bugzilla 1167537 for the gory details.</comment>
     <comment></comment>
     <requestid>1072623</requestid>
   </revision>
+  <revision rev="308" vrev="5">
+    <srcmd5>c7c1ab10545e5216ce3a242614cceb27</srcmd5>
+    <version>4.18.0</version>
+    <time>1685830284</time>
+    <user>dimstar_suse</user>
+    <comment>- add _multibuild for multiple .spec-files
+
+- add _multibuild for multiple .spec-files (forwarded request 1089942 from jsrain)</comment>
+    <requestid>1090000</requestid>
+  </revision>
 </revisionlist>

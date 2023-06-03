@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 30 09:07:28 UTC 2023 - Jiri Srain <jsrain@suse.com>
+
+- add _multibuild for multiple .spec-files
+
+-------------------------------------------------------------------
 Fri Dec  2 15:09:55 CET 2022 - mls@suse.de
 
 - update to rpm-4.18.0
