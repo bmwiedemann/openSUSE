@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jun  3 07:29:19 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- update brise 20230603+git.5fdd2d6
+  * replace io/ioutil usage
+  * deprecate rime-jyutping with rime-cantonese
+  * add rime-custom
+
+-------------------------------------------------------------------
+Mon May 29 13:47:27 UTC 2023 - Marguerite Su <i@marguerite.su>
+
+- update brise 20230528+git.cece251
+  * rime-plum-go supports github's "main" default branch
+  * brise data is updated to 20230528
+
+-------------------------------------------------------------------
 Tue May 25 04:24:13 UTC 2021 - Marguerite Su <i@marguerite.su>
 
 - don't install .bin files in build 
