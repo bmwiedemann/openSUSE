@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May 29 01:50:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.11.1:
+  * imlib2: added loader for y4m files (uses liby4m and
+    libyuv)
+  * imlib2: add y4m test examples
+  * Y4M loader: Various minor changes
+  * autofoo: Tweak PACKAGE_DATA_DIR definition
+  * XPM loader: Add rgb.txt
+  * loaders: Fix loaders potentially being loaded more than
+    once
+  * loaders: Change method used to not unload loaders
+  * Add JXL saver
+  * loaders: Cosmetics
+
+-------------------------------------------------------------------
 Fri Mar 10 08:26:46 UTC 2023 - Enrico Belleri <idesmi@protonmail.com>
 
 - update to 1.11.0:

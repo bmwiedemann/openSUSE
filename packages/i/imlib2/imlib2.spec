@@ -1,7 +1,7 @@
 #
 # spec file for package imlib2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %bcond_with svg
 %bcond_with postscript
 Name:           imlib2
-Version:        1.11.0
+Version:        1.11.1
 Release:        0
 Summary:        Image handling and conversion library
 License:        BSD-3-Clause
