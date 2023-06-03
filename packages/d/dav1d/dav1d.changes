@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jun  1 14:49:36 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.2.1
+  * Fix a threading race on task_thread.init_done
+  * NEON z2 8bpc and high bit-depth optimizations
+  * SSSE3 z2 high bit-depth optimziations
+  * Fix a desynced luma/chroma planes issue with Film Grain
+  * Reduce memory consumption
+  * Improve dav1d_parse_sequence_header() speed
+  * OBU: Improve header parsing and fix potential overflows
+  * OBU: Improve ITU-T T.35 parsing speed
+  * Misc buildsystems, CI and headers fixes
+
+-------------------------------------------------------------------
+Wed May 31 21:02:21 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add to description some performance mentions that set it apart
+  from other packages e.g. gav1.
+
+-------------------------------------------------------------------
 Fri May  5 10:32:00 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Use ldconfig_scriptlets macro, minor spec clean-up.

@@ -19,7 +19,7 @@
 %define sover   6
 
 Name:           dav1d
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        An AV1 decoder
 License:        BSD-2-Clause
@@ -43,6 +43,8 @@ dav1d is a SIMD-enhanced decoder for AV1 video. It features
 
 AV1 is a royalty-free video codec by the Alliance for Open Media. It
 has the potential to be up to 20%% better than the HEVC codec.
+dav1d outperforms gav1 by about 20%% on ARM and 50%% on x86,
+and has better scaling properties for larger thread counts.
 
 %package        devel
 Summary:        Development files for %{name}
