@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun  2 12:42:05 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.23.1
+  * Avoid echoing onto a captured FD #1111 (@minrk)
+- Release 6.23.0
+  * Support control<>iopub messages to e.g. unblock comm_msg from
+    command execution #1114 (@tkrabel-db)
+  * Add outstream hook similar to display publisher #1110
+    (@maartenbreddels)
+
+-------------------------------------------------------------------
 Tue Apr  4 14:58:26 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.22.0

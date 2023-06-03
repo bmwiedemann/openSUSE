@@ -431,4 +431,18 @@
   * Remove test_enter_eventloop #1084 (@davidbrochart)</comment>
     <requestid>1077234</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>0e2eab362997b9f57adf9b91f4052288</srcmd5>
+    <version>6.23.1</version>
+    <time>1685830352</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.23.1
+  * Avoid echoing onto a captured FD #1111 (@minrk)
+- Release 6.23.0
+  * Support control&lt;&gt;iopub messages to e.g. unblock comm_msg from
+    command execution #1114 (@tkrabel-db)
+  * Add outstream hook similar to display publisher #1110
+    (@maartenbreddels) (forwarded request 1090501 from bnavigator)</comment>
+    <requestid>1090502</requestid>
+  </revision>
 </revisionlist>
