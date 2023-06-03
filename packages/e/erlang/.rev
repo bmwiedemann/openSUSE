@@ -1032,4 +1032,12 @@ erlang 17.0 is ready for factory, now. See changes in .changes</comment>
     <comment></comment>
     <requestid>1077050</requestid>
   </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>40805ae2a57adc2f5fc4f27df964d01a</srcmd5>
+    <version>25.3.2</version>
+    <time>1685830359</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090519</requestid>
+  </revision>
 </revisionlist>
