@@ -271,4 +271,15 @@
   * display: Select a different active monitor when the current selection is disabled.</comment>
     <requestid>1061782</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>9941da78137caab5fb18f68645fada91</srcmd5>
+    <version>5.8.0</version>
+    <time>1685830365</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.8.0:
+  * Fix memleaks
+  * network/net-device.c: net_device_get_valid_connections -
+    don't return early if there's no active connection.</comment>
+    <requestid>1090573</requestid>
+  </revision>
 </revisionlist>

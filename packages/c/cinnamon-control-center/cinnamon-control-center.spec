@@ -19,7 +19,7 @@
 %define soname  libcinnamon-control-center
 %define sover   1
 Name:           cinnamon-control-center
-Version:        5.6.1
+Version:        5.8.0
 Release:        0
 Summary:        Utilities to configure the Cinnamon desktop
 License:        GPL-2.0-only AND GPL-3.0-or-later AND MIT
