@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May 31 16:05:38 UTC 2023 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.40.2 (boo#1211846):
+  + Fix scrollbar jumping to top when drag released outside window
+    in GTK4.
+  + Fix video rendering when GL is disabled.
+  + Fix flickering on looped videos when starting again.
+  + Fix CPU usage on autoplaying videos.
+  + Choose amount of painting threads depending on available CPU
+    cores on GTK4.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2023-28204 CVE-2023-32373 (boo#1211658
+    boo#1211659).
+- Drop gcc13-fix.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Thu Apr 20 14:21:35 UTC 2023 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.40.1 (boo#1210295 boo#1210731):
