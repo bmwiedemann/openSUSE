@@ -144,4 +144,13 @@
     <comment></comment>
     <requestid>1040427</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>576090336d0a6f83f070cf05cbabb3d3</srcmd5>
+    <version>5.8.0</version>
+    <time>1685830363</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.8.0:
+  * github workflow: Add optional ssh session.</comment>
+    <requestid>1090571</requestid>
+  </revision>
 </revisionlist>
