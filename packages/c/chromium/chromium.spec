@@ -49,21 +49,9 @@
 %endif
 %bcond_with system_avif
 # LLVM version
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150400
-%define llvm_version 12
-%else
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150500
-%define llvm_version 13
-%else
 %define llvm_version 15
-%endif
-%endif
 # GCC version
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150500
-%define gcc_version 11
-%else
 %define gcc_version 12
-%endif
 # Compiler
 %bcond_without clang
 # Chromium built with GCC 11 and LTO enabled crashes (boo#1194055)
@@ -109,13 +97,10 @@ Patch6:         gcc-enable-lto.patch
 Patch7:         chromium-norar.patch
 Patch9:         system-libdrm.patch
 Patch10:        chromium-disable-parallel-gold.patch
-Patch11:        chromium-lp151-old-drm.patch
 # gentoo/fedora/arch patchset
 Patch15:        chromium-110-compiler.patch
 Patch40:        chromium-91-java-only-allowed-in-android-builds.patch
-Patch50:        chromium-clang-nomerge.patch
 Patch62:        chromium-93-ffmpeg-4.4.patch
-Patch63:        chromium-ffmpeg-lp152.patch
 Patch68:        chromium-94-ffmpeg-roll.patch
 Patch87:        chromium-98-gtk4-build.patch
 Patch90:        chromium-100-InMilliseconds-constexpr.patch
@@ -126,15 +111,14 @@ Patch201:       chromium-86-fix-vaapi-on-intel.patch
 Patch202:       chromium-prop-codecs.patch
 Patch203:       chromium-106-ffmpeg-duration.patch
 Patch205:       chromium-disable-GlobalMediaControlsCastStartStop.patch
-Patch206:       chromium-109-clang-lp154.patch
 Patch208:       chromium-icu72-2.patch
 Patch210:       chromium-110-system-libffi.patch
 Patch211:       gcc13-fix.patch
-Patch213:       chromium-112-default-comparison-operators.patch
 Patch214:       chromium-113-webview-namespace.patch
 Patch215:       chromium-113-webauth-include-variant.patch
 Patch216:       chromium-113-typename.patch
 Patch217:       chromium-113-workaround_clang_bug-structured_binding.patch
+Patch218:       chromium-113-system-zlib.patch
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
@@ -614,7 +598,7 @@ keeplibs=(
     third_party/x11proto
     third_party/xcbproto
     third_party/xnnpack
-    third_party/zlib
+    third_party/zlib/google
     third_party/zxcvbn-cpp
     url/third_party/mozilla
     v8/src/third_party/siphash
@@ -747,7 +731,7 @@ gn_system_libraries=(
     opus
     re2
     snappy
-#    zlib (broken since 113.0.5672.63)
+    zlib
 )
 %if %{with system_harfbuzz}
 gn_system_libraries+=(

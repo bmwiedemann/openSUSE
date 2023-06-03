@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May 30 21:53:45 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Un-bundle zlib again
+- Remove un-needed patches:
+  * chromium-112-default-comparison-operators.patch
+  * chromium-109-clang-lp154.patch
+  * chromium-clang-nomerge.patch
+  * chromium-ffmpeg-lp152.patch
+  * chromium-lp151-old-drm.patch
+- Added patches:
+  * chromium-113-system-zlib.patch
+
+-------------------------------------------------------------------
+Sun May 28 21:32:03 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- build with llvm15 on Leap
+
+-------------------------------------------------------------------
 Tue May 16 21:16:23 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - Chromium 113.0.5672.126 (boo#1211442):

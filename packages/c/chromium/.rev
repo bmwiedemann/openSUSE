@@ -4568,4 +4568,22 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
     <comment>chromium 113.0.5672.126 (boo#1211442)</comment>
     <requestid>1087478</requestid>
   </revision>
+  <revision rev="382" vrev="2">
+    <srcmd5>e1030b6096f184ddfeffef6b73d4f34d</srcmd5>
+    <version>113.0.5672.126</version>
+    <time>1685830412</time>
+    <user>dimstar_suse</user>
+    <comment>- Un-bundle zlib again
+- Remove un-needed patches:
+  * chromium-112-default-comparison-operators.patch
+  * chromium-109-clang-lp154.patch
+  * chromium-clang-nomerge.patch
+  * chromium-ffmpeg-lp152.patch
+  * chromium-lp151-old-drm.patch
+- Added patches:
+  * chromium-113-system-zlib.patch
+- build with llvm15 on Leap
+</comment>
+    <requestid>1090659</requestid>
+  </revision>
 </revisionlist>
