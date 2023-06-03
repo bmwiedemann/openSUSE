@@ -104,4 +104,12 @@
   * link all executables as pie (bsc#1185033)</comment>
     <requestid>887199</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>43bf9ad04be2d882e69eb6b03022413b</srcmd5>
+    <version>1.2.77</version>
+    <time>1685830295</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090201</requestid>
+  </revision>
 </revisionlist>

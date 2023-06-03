@@ -1,7 +1,7 @@
 #
 # spec file for package kyotocabinet
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,8 @@ Release:        0
 Summary:        A straightforward implementation of DBM
 License:        SUSE-GPL-3.0-with-FLOSS-exception
 Group:          Productivity/Databases/Tools
-URL:            https://fallabs.com/kyotocabinet/
-Source:         https://fallabs.com/kyotocabinet/pkg/kyotocabinet-%{version}.tar.gz
+URL:            https://dbmx.net/kyotocabinet/
+Source:         https://dbmx.net/kyotocabinet/pkg/kyotocabinet-%{version}.tar.gz
 Source99:       baselibs.conf
 # PATCH-MISSING-TAG -- See http://wiki.opensuse.org/openSUSE:Packaging_Patches_guidelines
 Patch1:         %{name}-fix_rpath.patch
