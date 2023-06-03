@@ -556,11 +556,6 @@ EXCLUDE="$EXCLUDE test_faulthandler"
 EXCLUDE="$EXCLUDE test_faulthandler test_multiprocessing_forkserver test_multiprocessing_spawn test_os test_posix test_signal test_socket test_subprocess"
 %endif
 
-# gh#python/cpython#81350
-%if 0%{?suse_version} <= 1500
-EXCLUDE="$EXCLUDE test_capi"
-%endif
-
 # This test (part of test_uuid) requires real network interfaces
 # so that ifconfig output has "HWaddr <something>".  Some kvm instances
 # done have any such interface breaking the uuid module.
