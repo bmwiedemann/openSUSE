@@ -929,4 +929,15 @@
     <comment></comment>
     <requestid>1088301</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>f45b6fc7a2d86bb3b37ec4d848bce7d8</srcmd5>
+    <version>1.26.144</version>
+    <time>1685830288</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.26.144:
+  * see https://raw.githubusercontent.com/boto/boto3/1.26.144/CHANGELOG.rst
+
+- Update to 1.26.130:</comment>
+    <requestid>1090098</requestid>
+  </revision>
 </revisionlist>

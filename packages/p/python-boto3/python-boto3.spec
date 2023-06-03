@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-boto3
-Version:        1.26.130
+Version:        1.26.144
 Release:        0
 Summary:        Amazon Web Services Library
 License:        Apache-2.0
@@ -27,7 +27,8 @@ URL:            https://github.com/boto/boto3
 Source:         https://github.com/boto/boto3/archive/%{version}.tar.gz
 # Related test dependencies
 BuildRequires:  %{python_module botocore < 1.30.0}
-BuildRequires:  %{python_module botocore >= 1.29.130}
+BuildRequires:  %{python_module botocore >= 1.29.144}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module s3transfer < 0.7.0}
 BuildRequires:  %{python_module s3transfer >= 0.6.0}
@@ -35,7 +36,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-botocore < 1.30.0
-Requires:       python-botocore >= 1.29.130
+Requires:       python-botocore >= 1.29.144
 Requires:       python-jmespath < 2.0.0
 Requires:       python-jmespath >= 0.7.1
 Requires:       python-s3transfer < 0.7.0
@@ -54,18 +55,11 @@ http://boto3.readthedocs.org/en/latest/
 
 
 
-
-
-
-
-
-
 # Note to maintainers also familia with python-boto:
 # The documentation generation requires access to AWS, thus it is not
 # possible to generate the documentation in OBS
 %prep
 %setup -q -n boto3-%{version}
-sed -i 's/from botocore.vendored //' boto3/compat.py
 
 %build
 %python_build
@@ -75,7 +69,7 @@ sed -i 's/from botocore.vendored //' boto3/compat.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest --ignore tests/integration -k "not no_bare_six_imports"
+%pytest %{?jobs: -n %jobs} --ignore tests/integration -k "not no_bare_six_imports"
 
 %files %{python_files}
 %license LICENSE
