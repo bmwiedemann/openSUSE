@@ -7,4 +7,19 @@
     <comment>I want to add just to openSUSE:Factory</comment>
     <requestid>1071478</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9ab4ce3c5a7ef262cab12b82109f9a07</srcmd5>
+    <version>1.14.0</version>
+    <time>1685830395</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.14.0:
+  * Ignore clippy::let_underscore_untyped
+  * Use `just --show` in default chooser
+  * Update README to reflect new attribute syntax
+  * Allow multiple attributes on one line
+  * Analyze and Compiler tweaks
+  * Downgrade to TLS 1.2 in install script
+</comment>
+    <requestid>1090587</requestid>
+  </revision>
 </revisionlist>
