@@ -79,4 +79,12 @@
     <comment>add missing libbfio-devel</comment>
     <requestid>1046581</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>daf5ad150db23ac006421f459312f42e</srcmd5>
+    <version>20230603</version>
+    <time>1685830410</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20230603</comment>
+    <requestid>1090624</requestid>
+  </revision>
 </revisionlist>
