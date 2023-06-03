@@ -677,4 +677,18 @@ Core and Builtins
     <comment>- Use python3 modules to build the documentation.</comment>
     <requestid>1080040</requestid>
   </revision>
+  <revision rev="37" vrev="7">
+    <srcmd5>6944da5cf890aa32f6f061d51beea7e7</srcmd5>
+    <version>3.8.16</version>
+    <time>1685830403</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 99366-patch.dict-can-decorate-async.patch fixing
+  gh#python/cpython#98086 (backport from Python 3.10 patch in
+  gh#python/cpython!99366), fixing bsc#1211158.
+- Add CVE-2007-4559-filter-tarfile_extractall.patch to fix
+  CVE-2007-4559 (bsc#1203750) by adding the filter for
+  tarfile.extractall (PEP 706).
+</comment>
+    <requestid>1090625</requestid>
+  </revision>
 </revisionlist>

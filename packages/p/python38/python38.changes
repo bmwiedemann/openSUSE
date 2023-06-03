@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May  6 17:31:35 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add 99366-patch.dict-can-decorate-async.patch fixing
+  gh#python/cpython#98086 (backport from Python 3.10 patch in
+  gh#python/cpython!99366), fixing bsc#1211158.
+
+-------------------------------------------------------------------
+Wed May  3 14:09:37 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add CVE-2007-4559-filter-tarfile_extractall.patch to fix
+  CVE-2007-4559 (bsc#1203750) by adding the filter for
+  tarfile.extractall (PEP 706).
+
+-------------------------------------------------------------------
 Tue Apr 18 05:00:11 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use python3 modules to build the documentation. 
