@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 31 20:20:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.29.144:
+  * see https://raw.githubusercontent.com/boto/botocore/1.29.144/CHANGELOG.rst
+
+-------------------------------------------------------------------
+Tue May 30 11:13:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- use vendored urllib3/requests to avoid conflicts with
+  urllib3 2.x and requests 
+
+-------------------------------------------------------------------
 Tue May  9 11:09:44 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update 1.29.130:

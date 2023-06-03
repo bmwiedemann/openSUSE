@@ -28,7 +28,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-botocore%{?psuffix}
-Version:        1.29.130
+Version:        1.29.144
 Release:        0
 Summary:        Python interface for AWS
 License:        Apache-2.0
@@ -40,12 +40,13 @@ BuildRequires:  python-rpm-macros
 Requires:       python-requests
 Requires:       (python-jmespath >= 0.7.1 with python-jmespath < 2.0.0)
 Requires:       (python-python-dateutil >= 2.1 with python-python-dateutil < 3.0.0)
-Requires:       (python-urllib3 >= 1.25.4 with python-urllib3 < 1.27)
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module botocore = %{version}}
 BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module pytest >= 6.2.5}
+BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module urllib3 < 2}
 BuildRequires:  procps
 %endif
 %python_subpackages
@@ -58,12 +59,6 @@ A low-level interface to a growing number of Amazon Web Services.
 
 # remove bundled cacert.pem
 rm botocore/cacert.pem
-# remove bundled 3rd party Python modules
-rm -r botocore/vendored/
-# fix all imports:
-sed -i 's/from botocore\.vendored //' botocore/*.py tests/functional/*.py tests/integration/*.py tests/unit/*.py
-sed -i 's/botocore.vendored.requests.model.Response/requests.model.Response/' botocore/endpoint.py
-sed -i 's/botocore\.vendored\.//' botocore/*.py tests/functional/*.py tests/integration/*.py tests/unit/*.py
 
 %if !%{with test}
 %build
@@ -78,7 +73,7 @@ sed -i 's/botocore\.vendored\.//' botocore/*.py tests/functional/*.py tests/inte
 %check
 # TODO: Figure out whether integration tests are possible offline
 # no_bare_six_imports: we "fixed" that above.
-%pytest --ignore tests/integration -k "not six"
+%pytest %{?jobs:-n 4} --ignore tests/integration -k "not six"
 %endif
 
 %if !%{with test}

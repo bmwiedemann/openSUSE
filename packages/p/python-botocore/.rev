@@ -1162,4 +1162,16 @@
     <comment></comment>
     <requestid>1088300</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>1b04407ba5817001b25592c593ce831e</srcmd5>
+    <version>1.29.144</version>
+    <time>1685830286</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.29.144:
+  * see https://raw.githubusercontent.com/boto/botocore/1.29.144/CHANGELOG.rst
+
+- use vendored urllib3/requests to avoid conflicts with
+  urllib3 2.x and requests</comment>
+    <requestid>1090097</requestid>
+  </revision>
 </revisionlist>
