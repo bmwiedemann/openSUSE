@@ -18,10 +18,10 @@
 
 %define libname libbzip3-0
 Name:           bzip3
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Compressor with Burrows–Wheeler transform and PPM context modeling
-License:        LGPL-3.0-or-later AND BSD-2-Clause
+License:        BSD-2-Clause AND LGPL-3.0-or-later
 URL:            https://github.com/kspalaiologos/bzip3
 Source0:        https://github.com/kspalaiologos/bzip3/releases/download/%{version}/bzip3-%{version}.tar.gz
 Source1:        baselibs.conf
