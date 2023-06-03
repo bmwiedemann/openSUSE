@@ -348,7 +348,7 @@ unchanged:
        >>> turtle.resizemode()
        'noresize'
 @@ -1217,7 +1173,6 @@ Appearance
-    of the shapes's outline.
+    of the shape's outline.
  
     .. doctest::
 -      :skipif: _tkinter is None
@@ -643,7 +643,7 @@ unchanged:
  
           >>> poly = ((0,0),(10,-5),(0,10),(-10,-5))
           >>> s = Shape("compound")
-@@ -2514,7 +2433,6 @@ Changes since Python 3.0
+@@ -2518,7 +2437,6 @@ Changes since Python 3.0
  
  
  .. doctest::

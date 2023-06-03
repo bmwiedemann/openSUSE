@@ -13,7 +13,7 @@
  .. cmdoption:: --with-cxx-main=COMPILER
  
     Compile the Python ``main()`` function and link Python executable with C++
-@@ -511,13 +510,11 @@ macOS Options
+@@ -527,13 +526,11 @@ macOS Options
  
  See ``Mac/README.rst``.
  
@@ -29,7 +29,7 @@
     Create a Python.framework rather than a traditional Unix install. Optional
 --- a/Misc/NEWS
 +++ b/Misc/NEWS
-@@ -7621,7 +7621,7 @@ C API
+@@ -7809,7 +7809,7 @@ C API
  - bpo-40939: Removed documentation for the removed ``PyParser_*`` C API.
  
  - bpo-43795: The list in :ref:`stable-abi-list` now shows the public name

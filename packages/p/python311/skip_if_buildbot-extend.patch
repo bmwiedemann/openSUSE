@@ -1,0 +1,15 @@
+---
+ Lib/test/support/__init__.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/Lib/test/support/__init__.py
++++ b/Lib/test/support/__init__.py
+@@ -388,7 +388,7 @@ def skip_if_buildbot(reason=None):
+     if not reason:
+         reason = 'not suitable for buildbots'
+     try:
+-        isbuildbot = getpass.getuser().lower() == 'buildbot'
++        isbuildbot = getpass.getuser().lower() in ['buildbot', 'abuild']
+     except (KeyError, EnvironmentError) as err:
+         warnings.warn(f'getpass.getuser() failed {err}.', RuntimeWarning)
+         isbuildbot = False

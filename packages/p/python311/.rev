@@ -731,4 +731,129 @@ C API
 </comment>
     <requestid>1069317</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>10514cf22d6f31f0fea63e732d91e456</srcmd5>
+    <version>3.11.3</version>
+    <time>1685830335</time>
+    <user>dimstar_suse</user>
+    <comment>- Why in the world we download from HTTP?
+- Add 103213-fetch-CONFIG_ARGS.patch (gh#python/cpython#103053).
+- Add skip_if_buildbot-extend.patch to avoid the bug altogether
+  (extending what skip_if_buildbot covers).
+- Add CVE-2007-4559-filter-tarfile_extractall.patch to fix
+  bsc#1203750 (CVE-2007-4559) and implementing &quot;PEP 706 – Filter
+  for tarfile.extractall&quot;.
+- Update to 3.11.3:
+  - Security
+    - gh-101727: Updated the OpenSSL version used in Windows
+      and macOS binary release builds to 1.1.1t to address
+      CVE-2023-0286, CVE-2022-4303, and CVE-2022-4303 per the
+      OpenSSL 2023-02-07 security advisory.
+  - Core and Builtins
+    - gh-101975: Fixed stacktop value on tracing entries to avoid
+      corruption on garbage collection.
+    - gh-102701: Fix overflow when creating very large dict.
+    - gh-102416: Do not memoize incorrectly automatically
+      generated loop rules in the parser. Patch by Pablo Galindo.
+    - gh-102356: Fix a bug that caused a crash when deallocating
+      deeply nested filter objects. Patch by Marta Gómez Macías.
+    - gh-102397: Fix segfault from race condition in signal
+      handling during garbage collection. Patch by Kumar Aditya.
+    - gh-102281: Fix potential nullptr dereference and use of
+      uninitialized memory in fileutils. Patch by Max Bachmann.
+    - gh-102126: Fix deadlock at shutdown when clearing thread
+      states if any finalizer tries to acquire the runtime head
+      lock. Patch by Kumar Aditya.
+    - gh-102027: Fix SSE2 and SSE3 detection in _blake2 internal
+      module. Patch by Max Bachmann.
+    - gh-101967: Fix possible segfault in
+      positional_only_passed_as_keyword function, when new list
+      created.
+    - gh-101765: Fix SystemError / segmentation fault in iter
+      __reduce__ when internal access of builtins.__dict__ keys
+      mutates the iter object.
+    - gh-101696: Invalidate type version tag in
+      _PyStaticType_Dealloc for static types, avoiding bug where
+      a false cache hit could crash the interpreter. Patch by
+      Kumar Aditya.
+  - Library
+    - gh-102549: Don’t ignore exceptions in member type creation.
+    - gh-102947: Improve traceback when dataclasses.fields() is
+      called on a non-dataclass. Patch by Alex Waygood
+    - gh-102780: The asyncio.Timeout context manager now
+      works reliably even when performing cleanup due to task
+      cancellation. Previously it could raise a CancelledError
+      instead of an TimeoutError in such cases.
+    - gh-88965: typing: Fix a bug relating to substitution in   .
+    Pacustom classes generic over a ParamSpec. Previously, if   .
+    Pathe ParamSpec was substituted with a parameters list that .
+    Paitself contained a TypeVar, the TypeVar in the parameters .
+    Palist could not be subsequently substituted. This is now   .
+    Pafixed tch by Nikita Sobolev                               .
+    - gh-101979: Fix a bug where parentheses in the metavar
+      argument to argparse.ArgumentParser.add_argument() were
+      dropped. Patch by Yeojin Kim.
+    - gh-102179: Fix os.dup2() error message for negative fds.
+    - gh-101961: For the binary mode, fileinput.hookcompressed()
+      doesn’t set the encoding value even if the value is
+      None. Patch by Gihwan Kim.
+    - gh-101936: The default value of fp becomes io.BytesIO
+      if HTTPError is initialized without a designated fp
+      parameter. Patch by Long Vo.
+    - gh-102069: Fix __weakref__ descriptor generation for custom
+      dataclasses.
+    - gh-101566: In zipfile, apply fix for extractall on the
+      underlying zipfile after being wrapped in Path.
+    - gh-101892: Callable iterators no longer raise SystemError
+      when the callable object exhausts the iterator but forgets
+      to either return a sentinel value or raise StopIteration.
+    - gh-97786: Fix potential undefined behaviour in corner cases
+      of floating-point-to-time conversions.
+    - gh-101517: Fixed bug where bdb looks up the source line
+      with linecache with a lineno=None, which causes it to fail
+      with an unhandled exception.
+    - gh-101673: Fix a pdb bug where ll clears the changes to
+      local variables.
+    - gh-96931: Fix incorrect results from
+      ssl.SSLSocket.shared_ciphers()
+    - gh-88233: Correctly preserve “extra” fields in zipfile
+      regardless of their ordering relative to a zip64 “extra.”
+    - gh-96127: inspect.signature was raising TypeError on
+      call with mock objects. Now it correctly returns (*args,
+      **kwargs) as infered signature.
+    - gh-95495: When built against OpenSSL 3.0, the ssl module
+      had a bug where it reported unauthenticated EOFs (i.e.
+      without close_notify) as a clean TLS-level EOF. It now
+      raises SSLEOFError, matching the behavior in previous
+      versions of OpenSSL. The options attribute on SSLContext
+      also no longer includes OP_IGNORE_UNEXPECTED_EOF by
+      default. This option may be set to specify the previous
+      OpenSSL 3.0 behavior.
+    - gh-94440: Fix a concurrent.futures.process bug where
+      ProcessPoolExecutor shutdown could hang after a future has
+      been quickly submitted and canceled.
+  - Documentation
+    - gh-103112: Add docstring to http.client.HTTPResponse.read()
+      to fix pydoc output.
+    - gh-85417: Update cmath documentation to clarify behaviour
+      on branch cuts.
+    - gh-97725: Fix asyncio.Task.print_stack() description for
+      file=None. Patch by Oleg Iarygin.
+  - Tests
+    - gh-102980: Improve test coverage on pdb.
+    - gh-102537: Adjust the error handling strategy in
+      test_zoneinfo.TzPathTest.python_tzpath_context. Patch by
+      Paul Ganssle.
+    - gh-89792: test_tools now copies up to 10x less source data
+      to a temporary directory during the freeze test by ignoring
+      git metadata and other artifacts. It also limits its python
+      build parallelism based on os.cpu_count instead of hard
+      coding it as 8 cores.
+    - gh-101377: Improved test_locale_calendar_formatweekday of
+      calendar.
+  - Build
+    - gh-102711: Fix -Wstrict-prototypes compiler warnings.
+</comment>
+    <requestid>1084262</requestid>
+  </revision>
 </revisionlist>

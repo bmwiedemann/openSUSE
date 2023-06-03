@@ -1,0 +1,37 @@
+From d3217d12eee9eefad8444e80545b82b2a8c2be4c Mon Sep 17 00:00:00 2001
+From: Ijtaba Hussain <ijtabahussain@live.com>
+Date: Mon, 3 Apr 2023 17:28:32 +0500
+Subject: [PATCH 1/3] Fetch CONFIG_ARGS from original python instance
+
+instead of fetching from intermediate instance. As "make clean" is called
+against the intermediate instance, the build directory is cleared and the
+config arguments lookup fails with a ModuleNotFoundError
+---
+ Misc/NEWS.d/next/Tools-Demos/2023-04-05-07-19-36.gh-issue-103186.yEozgK.rst |    2 ++
+ Tools/freeze/test/freeze.py                                                 |    3 +--
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+--- /dev/null
++++ b/Misc/NEWS.d/next/Tools-Demos/2023-04-05-07-19-36.gh-issue-103186.yEozgK.rst
+@@ -0,0 +1,2 @@
++``freeze`` now fetches ``CONFIG_ARGS`` from the original CPython instance
++the Makefile uses to call utility scripts. Patch by Ijtaba Hussain.
+--- a/Tools/freeze/test/freeze.py
++++ b/Tools/freeze/test/freeze.py
+@@ -96,7 +96,6 @@ def copy_source_tree(newroot, oldroot):
+     if os.path.exists(os.path.join(newroot, 'Makefile')):
+         _run_quiet([MAKE, 'clean'], newroot)
+ 
+-
+ def get_makefile_var(builddir, name):
+     regex = re.compile(rf'^{name} *=\s*(.*?)\s*$')
+     filename = os.path.join(builddir, 'Makefile')
+@@ -153,7 +152,7 @@ def prepare(script=None, outdir=None):
+     print(f'configuring python in {builddir}...')
+     cmd = [
+         os.path.join(srcdir, 'configure'),
+-        *shlex.split(get_config_var(srcdir, 'CONFIG_ARGS') or ''),
++        *shlex.split(get_config_var(SRCDIR, 'CONFIG_ARGS') or ''),
+     ]
+     ensure_opt(cmd, 'cache-file', os.path.join(outdir, 'python-config.cache'))
+     prefix = os.path.join(outdir, 'python-installation')
