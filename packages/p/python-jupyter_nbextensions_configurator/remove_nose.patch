@@ -1,15 +1,7 @@
---- a/src/jupyter_nbextensions_configurator.egg-info/requires.txt
-+++ b/src/jupyter_nbextensions_configurator.egg-info/requires.txt
-@@ -7,7 +7,6 @@ traitlets
- 
- [test]
- jupyter_contrib_core[testing_utils]
--nose
- requests
- selenium
- 
---- a/tests/test_application.py
-+++ b/tests/test_application.py
+Index: jupyter_nbextensions_configurator-0.6.3/tests/test_application.py
+===================================================================
+--- jupyter_nbextensions_configurator-0.6.3.orig/tests/test_application.py
++++ jupyter_nbextensions_configurator-0.6.3/tests/test_application.py
 @@ -12,7 +12,7 @@ import os
  from unittest import TestCase
  
@@ -19,7 +11,7 @@
  from jupyter_contrib_core.notebook_compat import serverextensions
  from jupyter_contrib_core.testing_utils import (
      get_logger, patch_traitlets_app_logs,
-@@ -83,9 +82,8 @@ class AppTest(TestCase):
+@@ -83,9 +83,8 @@ class AppTest(TestCase):
          created_files = []
          for root, subdirs, files in os.walk(dirs['conf']):
              created_files.extend([os.path.join(root, f) for f in files])
@@ -31,7 +23,7 @@
  
          # a bit of a hack to allow initializing a new app instance
          for klass in app_classes:
-@@ -102,16 +100,12 @@ class AppTest(TestCase):
+@@ -102,16 +101,12 @@ class AppTest(TestCase):
                  conf = Config(json.load(f))
              nbapp = conf.get('NotebookApp', {})
              if 'server_extensions' in nbapp:
@@ -53,7 +45,7 @@
  
          reset_app_class(DisableJupyterNbextensionsConfiguratorApp)
  
-@@ -119,7 +113,7 @@ class AppTest(TestCase):
+@@ -119,7 +114,7 @@ class AppTest(TestCase):
          """Check that app complains about extra args."""
          for subcom in ('enable', 'disable'):
              # sys.exit should be called if extra args specified
@@ -62,7 +54,7 @@
                  main_app([subcom, 'arbitrary_extension_name'])
              for klass in app_classes:
                  reset_app_class(klass)
-@@ -131,7 +125,7 @@ class AppTest(TestCase):
+@@ -131,7 +126,7 @@ class AppTest(TestCase):
              check_help_output(app_module, argv)
              check_help_all_output(app_module, argv)
          # sys.exit should be called if no argv specified
@@ -71,7 +63,7 @@
              main_app([])
  
      def test_02_default_enable(self):
-@@ -160,5 +154,5 @@ class AppTest(TestCase):
+@@ -160,5 +155,5 @@ class AppTest(TestCase):
                  itertools.combinations(conflicting_flags, nn))
          for flagset in conflicting_flagsets:
              self.log.info('testing conflicting flagset {}'.format(flagset))
@@ -79,8 +71,10 @@
 -                             main_app, ['enable'] + list(flagset))
 +            pytest.raises(serverextensions.ArgumentConflict,
 +                          main_app, ['enable'] + list(flagset))
---- a/tests/test_jupyterhub.py
-+++ b/tests/test_jupyterhub.py
+Index: jupyter_nbextensions_configurator-0.6.3/tests/test_jupyterhub.py
+===================================================================
+--- jupyter_nbextensions_configurator-0.6.3.orig/tests/test_jupyterhub.py
++++ jupyter_nbextensions_configurator-0.6.3/tests/test_jupyterhub.py
 @@ -13,7 +13,7 @@ import time
  from subprocess import PIPE, STDOUT, Popen
  
@@ -90,8 +84,10 @@
  from selenium.webdriver.support.ui import WebDriverWait
  from tornado import gen
  from tornado.ioloop import IOLoop
---- a/tests/test_nbextensions_configurator.py
-+++ b/tests/test_nbextensions_configurator.py
+Index: jupyter_nbextensions_configurator-0.6.3/tests/test_nbextensions_configurator.py
+===================================================================
+--- jupyter_nbextensions_configurator-0.6.3.orig/tests/test_nbextensions_configurator.py
++++ jupyter_nbextensions_configurator-0.6.3/tests/test_nbextensions_configurator.py
 @@ -10,10 +10,10 @@ import random
  import shutil
  import time
@@ -253,9 +249,11 @@
                      dict)
              yaml_path = os.path.join(dodgy_nbext_dir_path, fname + '.yaml')
              with io.open(yaml_path, 'w') as f:
---- a/setup.py
-+++ b/setup.py
-@@ -53,7 +53,6 @@ options.
+Index: jupyter_nbextensions_configurator-0.6.3/setup.py
+===================================================================
+--- jupyter_nbextensions_configurator-0.6.3.orig/setup.py
++++ jupyter_nbextensions_configurator-0.6.3/setup.py
+@@ -63,7 +63,6 @@ options.
          extras_require={
              'test': [
                  'jupyter_contrib_core[testing_utils]',
@@ -263,9 +261,11 @@
                  'requests',
                  'selenium',
              ],
---- a/tests/nbextensions_test_base.py
-+++ b/tests/nbextensions_test_base.py
-@@ -14,7 +14,7 @@ from jupyter_contrib_core.testing_utils
+Index: jupyter_nbextensions_configurator-0.6.3/tests/nbextensions_test_base.py
+===================================================================
+--- jupyter_nbextensions_configurator-0.6.3.orig/tests/nbextensions_test_base.py
++++ jupyter_nbextensions_configurator-0.6.3/tests/nbextensions_test_base.py
+@@ -15,7 +15,7 @@ from jupyter_contrib_core.testing_utils
      GlobalMemoryHandler, get_wrapped_logger, wrap_logger_handlers,
  )
  from jupyter_contrib_core.testing_utils.jupyter_env import patch_jupyter_dirs

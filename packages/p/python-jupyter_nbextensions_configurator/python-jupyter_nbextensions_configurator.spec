@@ -16,16 +16,15 @@
 #
 
 
-%define         skip_python2 1
 Name:           python-jupyter_nbextensions_configurator
-Version:        0.6.1
+Version:        0.6.3
 Release:        0
 Summary:        Configuration interfaces for nbextensions
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter-contrib/jupyter_nbextensions_configurator
-Source:         https://files.pythonhosted.org/packages/source/j/jupyter_nbextensions_configurator/jupyter_nbextensions_configurator-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM remove_nose.patch bsc#[0-9]+ mcepl@suse.com
+Source:         https://github.com/Jupyter-contrib/jupyter_nbextensions_configurator/archive/refs/tags/%{version}.tar.gz#/jupyter_nbextensions_configurator-%{version}-gh.tar.gz
+# PATCH-FIX-SUSE remove_nose.patch mcepl@suse.com
 # port the test suite to pytest (from nose)
 Patch0:         remove_nose.patch
 BuildRequires:  %{python_module PyYAML}

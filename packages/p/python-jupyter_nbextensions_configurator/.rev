@@ -80,4 +80,15 @@
 - PEP517 build</comment>
     <requestid>1058568</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>505ec48952f1f975092a351f7bd677ef</srcmd5>
+    <version>0.6.3</version>
+    <time>1685830353</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.1
+  * Import notebook version
+- Release 0.6.2
+  * Fix marked.js (forwarded request 1090503 from bnavigator)</comment>
+    <requestid>1090504</requestid>
+  </revision>
 </revisionlist>
