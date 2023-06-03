@@ -994,4 +994,13 @@ Please wait for SR #249835 (ghc-bootstrap).</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1084245</requestid>
   </revision>
+  <revision rev="102" vrev="3">
+    <srcmd5>39a8c9a22874e35692483678177592e2</srcmd5>
+    <version>9.4.5</version>
+    <time>1685830348</time>
+    <user>dimstar_suse</user>
+    <comment>- add patch for Sphinx 7 release - sphinx7.patch
+- cleanup spec</comment>
+    <requestid>1088861</requestid>
+  </revision>
 </revisionlist>

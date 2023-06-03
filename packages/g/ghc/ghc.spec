@@ -25,11 +25,7 @@
 %define with_libnuma 0
 %endif
 # Keep in sync with ghc-bootstrap.spec
-%if 0%{?suse_version} > 1550
 %global llvm_major 14
-%else
-%global llvm_major 9
-%endif
 
 # conditionals
 
@@ -67,13 +63,6 @@
 %bcond_without perf_build
 %endif
 
-%if %{without hadrian}
-# locked together since disabling haddock causes no manuals built
-# and disabling haddock still created index.html
-# https://gitlab.haskell.org/ghc/ghc/-/issues/15190
-%{?with_haddock:%bcond_without manual}
-%endif
-
 %global ghc_llvm_archs s390x riscv64
 %global ghc_unregisterized_arches noarch
 
@@ -108,6 +97,7 @@ Patch8:         fix_extlinks.patch
 # PATCH-FIX-UPSTREAM ghc-pie.patch - set linux as default PIE platform
 Patch35:        ghc-pie.patch
 Patch200:       ghc-hadrian-s390x-rts--qg.patch
+Patch300:       sphinx7.patch
 BuildRequires:  binutils-devel
 BuildRequires:  gcc-PIE
 BuildRequires:  gcc-c++
@@ -314,6 +304,7 @@ Installing this package causes %{name}-*-prof packages corresponding to
 %ifarch ppc64 ppc64le s390x riscv64
 %patch200 -p1
 %endif
+%patch300 -p1
 
 rm libffi-tarballs/libffi-*.tar.gz
 
@@ -416,25 +407,10 @@ echo "%%dir %{ghclibdir}" >> %{name}-base%{?_ghcdynlibdir:-devel}.files
 %ghc_merge_filelist integer-gmp base
 %ghc_merge_filelist rts base
 
-# add rts libs
-%if %{with hadrian}
 for i in %{buildroot}%{ghclibplatform}/libHSrts*ghc%{ghc_version}.so; do
-echo $i >> %{name}-base.files
+  echo $i >> %{name}-base.files
 done
 echo "%{_sysconfdir}/ld.so.conf.d/%{name}.conf" >> %{name}-base.files
-%else
-%if %{defined _ghcdynlibdir}
-echo "%{ghclibdir}/rts" >> %{name}-base-devel.files
-%else
-echo "%%dir %{ghclibdir}/rts" >> %{name}-base.files
-ls -d %{buildroot}%{ghclibdir}/rts/lib*.a >> %{name}-base-devel.files
-%endif
-ls %{buildroot}%{?_ghcdynlibdir}%{!?_ghcdynlibdir:%{ghclibdir}/rts}/libHSrts*.so >> %{name}-base.files
-%if %{defined _ghcdynlibdir}
-sed -i -e 's!^library-dirs: %{ghclibdir}/rts!&\ndynamic-library-dirs: %{_libdir}!' %{buildroot}%{ghclibdir}/package.conf.d/rts.conf
-%endif
-ls -d %{buildroot}%{ghclibdir}/package.conf.d/rts.conf >> %{name}-base-devel.files
-%endif
 
 if [ -f %{buildroot}%{ghcliblib}/package.conf.d/system-cxx-std-lib-1.0.conf ]; then
 ls -d %{buildroot}%{ghcliblib}/package.conf.d/system-cxx-std-lib-1.0.conf >> %{name}-base-devel.files
@@ -442,25 +418,14 @@ fi
 
 %if %{with ghc_prof}
 ls %{buildroot}%{ghclibdir}/bin/ghc-iserv-prof* >> %{name}-base-prof.files
-%if %{with hadrian}
 ls %{buildroot}%{ghclibdir}/lib/bin/ghc-iserv-prof >> %{name}-base-prof.files
 echo "%%dir %{ghcliblib}/bin"
 %endif
-%endif
 
 sed -i -e "s|^%{buildroot}||g" %{name}-base*.files
-%if %{with hadrian}
 sed -i -e "s|%{buildroot}||g" %{buildroot}%{_bindir}/*
-%endif
 
-%if %{with haddock} && %{without hadrian}
-# generate initial lib doc index
-cd libraries
-sh %{gen_contents_index} --intree --verbose
-cd ..
-%endif
 
-%if %{with hadrian}
 %if %{with haddock}
 rm %{buildroot}%{_docdir}/ghc-%{version}/archives/libraries.html.tar.xz
 %endif
@@ -468,26 +433,14 @@ rm %{buildroot}%{_docdir}/ghc-%{version}/archives/libraries.html.tar.xz
 rm %{buildroot}%{_docdir}/ghc-%{version}/archives/Haddock.html.tar.xz
 rm %{buildroot}%{_docdir}/ghc-%{version}/archives/users_guide.html.tar.xz
 %endif
-%endif
 
-# we package the library license files separately
-%if %{without hadrian}
-find %{buildroot}%{ghc_html_libraries_dir} -name LICENSE -exec rm '{}' ';'
-%endif
 
 mkdir -p %{buildroot}%{_mandir}/man1
 install -p -m 0644 %{SOURCE5} %{buildroot}%{_mandir}/man1/ghc-pkg.1
 install -p -m 0644 %{SOURCE6} %{buildroot}%{_mandir}/man1/haddock.1
 install -p -m 0644 %{SOURCE7} %{buildroot}%{_mandir}/man1/runghc.1
 
-%if %{without hadrian}
-for i in hp2ps hpc hsc2hs runhaskell; do
-  mv %{buildroot}%{_bindir}/$i{,-%{version}}
-  ln -s $i-%{version} %{buildroot}%{_bindir}/$i
-done
-%endif
 
-%if %{with hadrian}
 rm %{buildroot}%{ghclibdir}/lib/package.conf.d/.stamp
 rm %{buildroot}%{ghclibdir}/lib/package.conf.d/*.conf.copy
 
@@ -499,7 +452,6 @@ ln -sf ../../bin/$i
 fi
 done
 )
-%endif
 
 %check
 # Actually, I took this from Jens Petersen's Fedora package
@@ -561,9 +513,7 @@ $GHC --info
 %{_bindir}/ghc
 %{_bindir}/ghc-pkg
 %{_bindir}/ghci
-%if %{with hadrian} || %{with haddock}
 %{_bindir}/haddock
-%endif
 %{_bindir}/hp2ps
 %{_bindir}/hpc
 %{_bindir}/hsc2hs
@@ -610,18 +560,13 @@ $GHC --info
 %{_mandir}/man1/ghc-pkg.1%{?ext_man}
 %{_mandir}/man1/haddock.1%{?ext_man}
 %{_mandir}/man1/runghc.1%{?ext_man}
-%if %{with hadrian} || %{with haddock}
 %{_bindir}/haddock-ghc-%{version}
 %{ghcliblib}/html
 %{ghcliblib}/latex
-%endif
 %if %{with haddock} || (%{with hadrian} && %{with manual})
 %{ghc_html_libraries_dir}/prologue.txt
 %endif
 %if %{with haddock}
-%if %{without hadrian}
-%{ghclibdir}/bin/haddock
-%endif
 %verify(not size mtime) %{ghc_html_libraries_dir}/haddock-bundle.min.js
 %verify(not size mtime) %{ghc_html_libraries_dir}/linuwial.css
 %verify(not size mtime) %{ghc_html_libraries_dir}/quick-jump.css
@@ -631,17 +576,6 @@ $GHC --info
 %{_mandir}/man1/ghc.1%{?ext_man}
 %endif
 
-%{_bindir}/ghc
-%{_bindir}/ghc-pkg
-%{_bindir}/ghci
-%if %{with hadrian} || %{with haddock}
-%{_bindir}/haddock
-%endif
-%{_bindir}/hp2ps
-%{_bindir}/hpc
-%{_bindir}/hsc2hs
-%{_bindir}/runghc
-%{_bindir}/runhaskell
 
 %files devel
 

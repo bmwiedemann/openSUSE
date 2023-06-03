@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 24 14:10:46 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- add patch for Sphinx 7 release - sphinx7.patch
+- cleanup spec
+
+-------------------------------------------------------------------
 Fri Apr 21 17:57:46 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - libatomic.patch: Remove obsolete patch
