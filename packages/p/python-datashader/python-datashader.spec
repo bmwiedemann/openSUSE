@@ -27,55 +27,50 @@ ExclusiveArch:  x86_64
 BuildArch:      noarch
 %endif
 
-# no xarray
-%define skip_python38 1
-# no numba
-%define skip_python311 1
 Name:           python-datashader%{psuffix}
-Version:        0.14.4
+Version:        0.15.0
 Release:        0
 Summary:        Data visualization toolchain based on aggregating into a grid
 License:        BSD-3-Clause
 URL:            https://datashader.org
+# SourceRepository: https://github.com/holoviz/datashader
 Source0:        https://files.pythonhosted.org/packages/source/d/datashader/datashader-%{version}.tar.gz
 Source100:      python-datashader-rpmlintrc
-# PATCH-FIX-OPENSUSE Do-not-use-warnings-from-numpy.patch gh#holoviz/datashader#1176
-Patch0:         Do-not-use-warnings-from-numpy.patch
-# PATCH-FIX-OPENSUSE numpy-1.24.patch gh#holoviz/datashader#1158
-Patch1:         numpy-1.24.patch
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module param >= 1.6.1}
-BuildRequires:  %{python_module pyct >= 0.4.5}
+BuildRequires:  %{python_module param}
+BuildRequires:  %{python_module pyct}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-DataShape
 Requires:       python-Pillow
-Requires:       python-PyYAML
 Requires:       python-colorcet
-Requires:       python-dask-all
-Requires:       python-numba >= 0.51
+Requires:       python-dask-dataframe
+Requires:       python-numba
 Requires:       python-numpy
 Requires:       python-pandas
 Requires:       python-param
 Requires:       python-pyct
 Requires:       python-requests
-Requires:       python-scikit-image
 Requires:       python-scipy
 Requires:       python-toolz
 Requires:       python-xarray
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %if %{with test}
-BuildRequires:  %{python_module bokeh < 3}
+BuildRequires:  %{python_module bokeh}
 BuildRequires:  %{python_module datashader = %{version}}
 BuildRequires:  %{python_module fastparquet}
-BuildRequires:  %{python_module h5netcdf}
+BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module nbconvert}
+BuildRequires:  %{python_module nbformat}
 BuildRequires:  %{python_module nbsmoke >= 0.5.0}
-BuildRequires:  %{python_module pytest-benchmark}
+BuildRequires:  %{python_module netCDF4}
+BuildRequires:  %{python_module pyarrow}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module scikit-image}
 %endif
 %python_subpackages
 
@@ -104,6 +99,7 @@ saturation, overplotting, or underplotting issues.
 %prep
 %autosetup -p1 -n datashader-%{version}
 sed -i -e '/^#!\//, 1d' examples/*.py
+chmod -x examples/getting_started/2_Pipeline.ipynb
 
 %build
 %python_build
@@ -120,12 +116,7 @@ chmod a-x %{buildroot}%{$python_sitelib}/datashader/examples/filetimes.py
 %if %{with test}
 %check
 export PYTHONPATH=examples
-# Do not run broken tests because of
-# ValueError: setting an array element with a sequence. The requested array has
-# an inhomogeneous shape after 1 dimensions. The detected shape was (10,) +
-# inhomogeneous part.
-donottests="test_line_manual_range[df_kwargs5-cvs_kwargs5-dask_DataFrame] or test_area_to_zero_fixedrange[df_kwargs3-cvs_kwargs3-dask_DataFrame] or test_area_to_zero_autorange_gap[df_kwargs3-cvs_kwargs3-dask_DataFrame] or test_area_to_line_autorange_gap[df_kwargs3-cvs_kwargs3-dask_DataFrame] or test_series_repr or test_dataframe_repr"
-%pytest datashader/tests --doctest-modules --doctest-ignore-import-errors -k "not ($donottests)"
+%pytest datashader/tests --doctest-modules --doctest-ignore-import-errors -n auto -rsfE
 %endif
 
 %if ! %{with test}
@@ -140,7 +131,6 @@ donottests="test_line_manual_range[df_kwargs5-cvs_kwargs5-dask_DataFrame] or tes
 %license LICENSE.txt
 %python_alternative %{_bindir}/datashader
 %{python_sitelib}/datashader
-%exclude %{python_sitelib}/datashader/tests
 %{python_sitelib}/datashader-%{version}*-info
 %endif
 

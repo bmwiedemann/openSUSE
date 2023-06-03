@@ -1,1 +1,3 @@
 addFilter("hidden-file-or-dir .*/site-packages/datashader/.version")
+addFilter("hidden-file-or-dir .*/site-packages/datashader/examples/data/.data_stubs")
+addFilter("python-.*-require dask")

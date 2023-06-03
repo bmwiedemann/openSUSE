@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Jun  2 11:49:30 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Mention dropped patches:
+  * Do-not-use-warnings-from-numpy.patch
+  * numpy-1.24.patch
+
+-------------------------------------------------------------------
+Thu Jun  1 09:25:01 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.15.0
+  * This release provides significant improvements for inspection
+    reductions by adding new first_n, last_n, max_n and min_n
+    reductions, and providing Dask and CUDA support for all
+    existing and new inspection reductions including where. It also
+    provides support for Numba 0.57, NumPy 1.24 and Python 3.11,
+    and drops support for Python 3.7.
+  ## Enhancements:
+  ### Inspection reductions:
+  * Reduction append functions return index not boolean (#1180)
+  * first_n, last_n, max_n and min_n reductions (#1184)
+  * Add cuda argument to _build_combine (#1194)
+  * Support max_n and min_n reductions on GPU (#1196)
+  * Use fast cuda mutex available in numba 0.57 (#1212)
+  * Dask support for first, last, first_n and last_n reductions
+    (#1214)
+  * Wrap use of cuda mutex in where reductions (#1217)
+  * Cuda and cuda-with-dask support for inspection reductions
+    (#1219)
+  ### Other:
+  * x and y range attributes on returned aggregations (#1198)
+  * Make datashader.composite imports lazy for faster import time
+    (#1222)
+  ## Bug fixes
+  * Fix conversion from cupy in categorical rescale_discrete_levels
+    (#1179)
+  * Validate canvas width, height (#1183)
+  * Support antialiasing in pipeline API (#1213)
+- Add pyarrow to tests, run tests in parallel with xdist
+- Fix dependencies
+
+-------------------------------------------------------------------
+Mon May 29 13:40:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- reenable python311 (dask available) 
+
+-------------------------------------------------------------------
 Wed Mar 22 15:16:51 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Skip python38: No xarray anymore
