@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 31 07:58:27 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- add OpenShadingLanguage, OpenImageIO-plugin-osl and python3-six
+  build deps for tools build
+- remove outdated BuildIgnore: libOpenColorIO2_0
+
+-------------------------------------------------------------------
 Mon Jul 18 15:52:09 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - explicitly conflict the wrongly named libs

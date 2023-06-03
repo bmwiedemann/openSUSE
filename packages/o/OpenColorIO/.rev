@@ -158,4 +158,15 @@
 </comment>
     <requestid>990051</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>3aa99d8d2374ca766365c7f10ed90815</srcmd5>
+    <version>2.1.2</version>
+    <time>1685830383</time>
+    <user>dimstar_suse</user>
+    <comment>- add OpenShadingLanguage, OpenImageIO-plugin-osl and python3-six
+  build deps for tools build
+- remove outdated BuildIgnore: libOpenColorIO2_0
+</comment>
+    <requestid>1090582</requestid>
+  </revision>
 </revisionlist>

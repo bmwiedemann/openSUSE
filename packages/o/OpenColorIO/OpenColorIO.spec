@@ -1,7 +1,7 @@
 #
 # spec file for package OpenColorIO
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,15 +55,16 @@ BuildRequires:  python3-pybind11-devel
 BuildRequires:  yaml-cpp-devel >= 0.6.3
 Recommends:     %{pkg_name}-doc = %{version}
 %if %{with ocio_tools}
-# This BuildIgnore should be removed, when libOCIO2_0 disappeares from repos
-#!BuildIgnore: libOpenColorIO2_0
 BuildRequires:  OpenImageIO >= 2.1.9
 BuildRequires:  OpenImageIO-devel >= 2.1.9
+BuildRequires:  OpenImageIO-plugin-osl
+BuildRequires:  OpenShadingLanguage-devel
 BuildRequires:  python3-MarkupSafe
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-breathe
 BuildRequires:  python3-recommonmark
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-six
 BuildRequires:  python3-sphinx-tabs
 BuildRequires:  python3-sphinx_press_theme
 BuildRequires:  python3-testresources
