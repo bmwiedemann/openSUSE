@@ -21,15 +21,13 @@
 %define RPMTrackerAPI 3_0
 
 Name:           tracker
-Version:        3.5.2
+Version:        3.5.3
 Release:        0
 Summary:        Object database, tag/metadata database, search tool and indexer
 License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://wiki.gnome.org/Projects/Tracker
 Source0:        https://download.gnome.org/sources/tracker/3.5/%{name}-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE 63ea8f1a.patch -- Revert build: Detect appropriate strftime() year modifier at build time
-Patch0:         https://gitlab.gnome.org/GNOME/tracker/-/commit/63ea8f1a.patch
 
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
@@ -126,6 +124,7 @@ This subpackage contains the headers to make use of its libraries.
 %package -n tracker-data-files
 Summary:        Data files for the Tracker Miners
 Group:          Productivity/Other
+BuildArch:      noarch
 
 %description -n tracker-data-files
 Tracker is a desktop-neutral object database, tag/metadata database,
@@ -136,8 +135,11 @@ This subpackage contains the data files for the Tracker miners.
 %lang_package
 
 %prep
-%autosetup -N
-%patch0 -R -p1
+%autosetup -p1
+#
+# Drop unneeded Python 3 shebang
+#
+sed -i '1s,#!/usr/bin/env python3,# &,' utils/trackertestutils/__main__.py
 
 %build
 %meson \
@@ -170,9 +172,6 @@ mkdir %{buildroot}%{_datadir}/tracker3/domain-ontologies
 
 %preun
 %systemd_user_preun tracker-xdg-portal-3.service
-
-%postun
-%systemd_user_postun_with_restart tracker-xdg-portal-3.service
 
 %files
 %license COPYING

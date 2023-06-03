@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jun  1 14:24:22 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.5.3:
+  + Build fixes around strftime() bug workarounds on some
+    architectures/platforms.
+  + Improved compatibility of JSON cursor readers.
+  + Leaks plugged.
+- Drop 63ea8f1a.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Thu May 18 05:18:39 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Drop %systemd_user_postun_with_restart macro from the %postun
+  directive. It's been deprecated and emptied (expands to nil) on
+  both Tumbleweed and Leap already.
+- Comment unneded "/usr/bin/env python3" shebang line on utils/
+  trackertestutils/__main__.py Python script.
+- Change tracker-data-files package's architecture to noarch, as it
+  doesn't contain any binaries.
+
+-------------------------------------------------------------------
 Sat May 13 11:23:38 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.5.2:
