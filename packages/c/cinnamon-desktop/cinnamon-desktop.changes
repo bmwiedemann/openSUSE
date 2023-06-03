@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun  2 21:03:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- updaet to 5.8.0:
+  * Add high-contrast key.
+  * gnome-desktop-thumbnailer.c: Only attempt to thumbnail
+    internally if gdk-pixbuf actually supports the mime_type.
+  * org.cinnamon.desktop.keybindings: Add entries for warping the
+    pointer between monitors.
+  * Remove color-scheme additions (added in d880133b38da46b22).
+  * Update cvc symbols.
+ 
+-------------------------------------------------------------------
 Sun Apr 16 16:07:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.6.2:
