@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  2 12:07:34 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.4.3
+  * Add missing closed method to QtInProcessChannel.
+
+-------------------------------------------------------------------
 Sun Apr 23 17:22:41 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.4.2

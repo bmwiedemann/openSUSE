@@ -249,4 +249,13 @@ This needs to go into openSUSE:Factory:Staging:adi:49 with the other jupyter sub
   * Fix kernel autorestart after it's killed for Jupyter-client 8+ (forwarded request 1082299 from bnavigator)</comment>
     <requestid>1082300</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>1aba7648beea2f41e84434041404b9ec</srcmd5>
+    <version>5.4.3</version>
+    <time>1685830350</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.4.3
+  * Add missing closed method to QtInProcessChannel. (forwarded request 1090490 from bnavigator)</comment>
+    <requestid>1090491</requestid>
+  </revision>
 </revisionlist>
