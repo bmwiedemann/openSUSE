@@ -18,7 +18,7 @@
 
 %define cpan_name Alien-Build
 Name:           perl-Alien-Build
-Version:        2.78
+Version:        2.80
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Build external dependencies for use in CPAN
@@ -69,7 +69,7 @@ client, and work closely with Alien::Base which is used at runtime.
 %prep
 %autosetup  -n %{cpan_name}-%{version}
 
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"

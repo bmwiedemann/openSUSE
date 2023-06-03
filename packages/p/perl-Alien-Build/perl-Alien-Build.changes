@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat May 13 03:06:12 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.80
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.80      2023-05-11 16:31:46 -0600
+    - Documentation improvements (gh#399, gh#400, gh#401, gh#402)
+    - Do not generate .../Install/Files.pm if one is provided by the
+      Alien (gh#393, gh#397)
+
+  2.79      2023-05-05 15:08:46 -0600
+    - Updated non-binding support for Perls to match the policy
+      of the Perl toolchain (Perls older than 10 years old are
+      unsupported, with a one-time exception of Perl 5.16).  The
+      intent is not to suddenly drop support for older Perls, but
+      the Alien-Build team may take advantage of features in
+      supported Perls that will effectively remove compatability
+      with unsupported Perls.
+
+-------------------------------------------------------------------
 Wed Mar  8 03:06:06 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.78
