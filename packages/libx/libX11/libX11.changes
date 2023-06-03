@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jun  1 07:53:19 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.8.5
+  * gitlab CI: Add libtool to required packages
+  * configure: raise minimum autoconf requirement to 2.70
+  * configure: replace deprecated AC_HELP_STRING with AS_HELP_STRING
+  * configure: Use LT_INIT from libtool 2 instead of deprecated AC_PROG_LIBTOOL
+  * gitlab CI: add workflow rules
+  * nls: delete compose sequences that pointlessly mix upper and lower case
+  * nls: remove four hundred and sixty untypable Greek compose sequences
+  * nls: remove twenty two untypable Greek compose sequences
+  * XSetScreenSaver.man: restore the part that was accidentally snipped
+  * nls: make the Amharic compose sequences use the dead-vowel symbols
+  * nls: sort three sequences alphabetically in their group, like all others
+  * nls: delete six compose sequences that cannot be typed
+  * nls: use a slash instead of a combining solidus in compose sequences
+  * NLS: move long S compositions to respective blocks
+  * NLS: implement the expansion of the six Breton N-graph keysyms
+  * NLS: move dead-caron subscript compositions to the relevant Unicode block
+  * NLS: Remove strange dead_cedilla cedi sign sequences
+  * nls: add compose sequence for capital schwa, and delete a deviant one
+- Users of the Amharic (am_ET.UTF-8) compose key sequences provided by libX11
+  will also want to upgrade to xkeyboard-config 2.39 (releasing soon), in order
+  to keep those sequeunces working with this release.
+
+-------------------------------------------------------------------
 Thu Mar  9 11:58:32 UTC 2023 - llyyr <llyyr.public@gmail.com>
 
 - Update to version 1.8.4
