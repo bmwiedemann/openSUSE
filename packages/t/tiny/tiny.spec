@@ -1,7 +1,7 @@
 #
 # spec file for package tiny
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@ mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
 %build
-%{cargo_build}
+%{cargo_build} --features desktop-notifications
 
 %install
 install -D -d -m 0755 %{buildroot}%{_bindir}

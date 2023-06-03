@@ -39,4 +39,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1042517</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>5737b94215462167647d7d47ab7ff352</srcmd5>
+    <version>0.10.0+git14</version>
+    <time>1685830360</time>
+    <user>dimstar_suse</user>
+    <comment>- Update vendored dependencies.
+- Enable desktop notification feature.
+</comment>
+    <requestid>1090538</requestid>
+  </revision>
 </revisionlist>
