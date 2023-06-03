@@ -7863,6 +7863,7 @@ unsorted:
   - hyprland 
   - hyprland-devel 
   - hyprland-protocols-devel 
+  - hyprpaper 
   - i18nspector 
   - i2c-tools 
   - i2pd 
@@ -10427,7 +10428,7 @@ unsorted:
   - libSM-devel 
   - libSM-devel-32bit 
   - libSM6-32bit 
-  - libSPIRV-Tools-2023_2-32bit 
+  - libSPIRV-Tools-2023_3_rc1-32bit 
   - libSampleICC-devel 
   - libSampleICC2 
   - libSavitar-devel 
@@ -13827,8 +13828,6 @@ unsorted:
   - libopenssl1_0_0-steam 
   - libopenssl1_0_0-steam-32bit 
   - libopenssl1_1-32bit 
-  - libopenssl1_1-hmac 
-  - libopenssl1_1-hmac-32bit 
   - libopenssl3-x86-64-v3 
   - libopentracing-cpp1 
   - libopenvas_wincmd-devel 
@@ -26663,6 +26662,7 @@ unsorted:
   - python311-argparse_addons 
   - python311-args 
   - python311-arrow 
+  - python311-arviz 
   - python311-asciimatics 
   - python311-asciitree 
   - python311-asdf 
@@ -29410,6 +29410,7 @@ unsorted:
   - python311-svneverever 
   - python311-swagger-spec-validator 
   - python311-swapper 
+  - python311-swifter 
   - python311-sybil 
   - python311-sympy 
   - python311-synr 
