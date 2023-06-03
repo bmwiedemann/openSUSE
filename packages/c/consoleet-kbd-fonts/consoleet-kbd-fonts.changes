@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun  2 13:35:20 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2
+  * consoleet_ami was separated again since no longer built
+    from kbd
+
+-------------------------------------------------------------------
+Fri May 26 10:07:32 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1
+  * Add consoleet_ami and consoleet_lat1 (the latter
+    with curious 'S' and '/' forms)
+
+-------------------------------------------------------------------
 Fri Oct  8 09:30:55 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Initial package for build.opensuse.org (version 1.0)
