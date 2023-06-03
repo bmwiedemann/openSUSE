@@ -23,23 +23,15 @@
 %define SHLIBVER %{major}.%{minor}.0
 %bcond_without	gssapi
 Name:           libserf
-Version:        1.3.9
+Version:        1.3.10
 Release:        0
 Summary:        High-Performance Asynchronous HTTP Client Library
 License:        Apache-2.0
 Group:          System/Libraries
 URL:            https://serf.apache.org/
-Source:         https://archive.apache.org/dist/serf/serf-%{version}.tar.bz2
-Source2:        https://archive.apache.org/dist/serf/serf-%{version}.tar.bz2.asc
-Source3:        %{name}.keyring
-# PATCH-FIX-UPSTREAM libserf-python3.patch
-# https://github.com/apache/serf/commit/d4de5a672d8c03b82ba70c1b737926bcf078f761
-Patch0:         libserf-python3.patch
-# PATCH-FIX-UPSTREAM libserf-python3-2.patch
-# http://svn.apache.org/viewvc?view=revision&revision=1814604
-Patch1:         libserf-python3-2.patch
-# PATCH-FIX-OPENSUSE: avoid removed macros
-Patch2:         openssl3.patch
+Source:         https://www.apache.org/dist/serf/serf-%{version}.tar.bz2
+Source2:        https://www.apache.org/dist/serf/serf-%{version}.tar.bz2.asc
+Source3:        https://www.apache.org/dist/serf/KEYS#/%{name}.keyring
 BuildRequires:  pkgconfig
 BuildRequires:  scons >= 2.3
 BuildRequires:  pkgconfig(apr-1) >= %{minimum_apr_version}
