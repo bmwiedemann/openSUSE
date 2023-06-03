@@ -398,4 +398,12 @@
     <comment></comment>
     <requestid>1069707</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>555d3029d23479c3f7b81ba2f967865f</srcmd5>
+    <version>2.22</version>
+    <time>1685830458</time>
+    <user>dimstar_suse</user>
+    <comment>fossil 2.22 (forwarded request 1090557 from AndreasStieger)</comment>
+    <requestid>1090677</requestid>
+  </revision>
 </revisionlist>
