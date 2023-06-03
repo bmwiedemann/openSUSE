@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun  1 06:05:31 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 13.4.1:
+  * Fixed typing extensions import in markdown #2979
+- update to 13.4.0:
+  * Added support for tables in Markdown #2977
+
+-------------------------------------------------------------------
 Thu May  4 21:06:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 13.3.5:

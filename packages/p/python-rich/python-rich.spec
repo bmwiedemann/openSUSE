@@ -17,10 +17,9 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-rich
-Version:        13.3.5
+Version:        13.4.1
 Release:        0
 Summary:        A Python library for rich text and beautiful formatting in the terminal
 License:        MIT
