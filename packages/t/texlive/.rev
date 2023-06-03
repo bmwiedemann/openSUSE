@@ -1082,4 +1082,12 @@
     execution in LuaTeX</comment>
     <requestid>1087241</requestid>
   </revision>
+  <revision rev="88" vrev="91">
+    <srcmd5>03d83e69e39d8918909516e1db473fcd</srcmd5>
+    <version>unknown</version>
+    <time>1685830289</time>
+    <user>dimstar_suse</user>
+    <comment>- Move the provides of pdfjam to its usecase (boo#1211877)</comment>
+    <requestid>1090192</requestid>
+  </revision>
 </revisionlist>

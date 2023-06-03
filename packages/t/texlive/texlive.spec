@@ -280,8 +280,6 @@ Patch62:        source-psutils-kpathsea.dif
 # PATCH-FIX-SUSE Support luajit fix for arm64
 Patch106:       0006-Fix-register-allocation-bug-in-arm64.patch
 Prefix:         %{_bindir}
-Provides:       pdfjam = %{version}
-Obsoletes:      pdfjam < %{version}
 
 %define add_optflags(a:f:t:p:w:W:d:g:O:A:C:D:E:H:i:M:n:P:U:u:l:s:X:B:I:L:b:V:m:x:c:S:E:o:v:) \
 %global optflags %{optflags} %{**}
@@ -2466,6 +2464,8 @@ License:        LPPL-1.0
 Summary:        Binary files of pdfjam
 Group:          Productivity/Publishing/TeX/Utilities
 URL:            https://www.tug.org/texlive/
+Provides:       pdfjam = %{texlive_version}
+Obsoletes:      pdfjam < %{texlive_version}
 Requires(pre):  texlive-pdfjam >= %{texlive_version}
 #!BuildIgnore:  texlive-pdfjam
 Prefix:         %{_bindir}

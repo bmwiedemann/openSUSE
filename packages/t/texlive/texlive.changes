@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  1 06:15:53 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Move the provides of pdfjam to its usecase (boo#1211877) 
+
+-------------------------------------------------------------------
 Mon May 15 12:31:32 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch source-luatex.dif
