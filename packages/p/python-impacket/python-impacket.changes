@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Jun  2 09:28:21 UTC 2023 - pgajdos@suse.com
+
+- update to version 0.10.0
+  * Dropped support for Python 2.7.
+  * Refactored the testing infrastructure (@martingalloar):
+    * Added `pytest` as the testing framework to organize and mark test
+      cases. `Tox` remain as the automation framework, and `Coverage.py`
+      for measuring code coverage.
+    * Custom bash scripts were replaced with test cases auto-discovery.
+    * Local and remote test cases were marked for easy run and configuration. 
+    * DCE/RPC endpoint test cases were refactored and moved to a new layout.
+    * An initial testing guide with the main steps to prepare a testing environment and run them.
+    * Fixed a good amount of DCE/RPC endpoint test cases that were failing.
+    * Added tests for `[MS-PAR]`, `[MS-RPRN]`, CCache and DPAPI.
+  * Added a function to compute the Netlogon Authenticator at client-side in `[MS-NRPC]` (@0xdeaddood)
+  * Added `[MS-DSSP]` protocol implementation (@simondotsh)
+  * Added GetDriverDirectory functions to `[MS-PAR]` and `[MS-RPRN]` (@raithedavion)
+  * Refactored the Credential Cache:
+    * Added new parseFile function to ccache.py (@rmaksimov)
+    * Added support for loading CCache Version 3 (@reznok)
+    * Modified fromKRBCRED function used to load a Kirbi file (@0xdeaddood)
+    * Fixed Ccache to Kirbi conversion (@ShutdownRepo)
+  * Fixed default NTLM server challenge in smbserver (@rtpt-jonaslieb)
+  * Fixed WMI objects parsing (@franferrax)
+  * Added the RpcAddPrinterDriverEx method and related structures to `[MS-RPRN]`: Print System Remote Protocol (@cube0x0)
+  * Initial implementation of `[MS-PAR]`: Print System Asynchronous Remote Protocol (@cube0x0)
+  * Complying `[MS-RPCH]` with HTTP/1.1 (@mohemiv)
+  * Added return of server time in case of Kerberos error (@ShutdownRepo and @Hackndo)
+
+-------------------------------------------------------------------
 Wed Jun  9 17:17:37 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.9.23
