@@ -1,12 +1,22 @@
 -------------------------------------------------------------------
-Mon May 29 08:27:38 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+Sat Jun  3 09:23:21 UTC 2023 - ecsos <ecsos@opensuse.org>
 
-- Update to 0.43.0:
-  * Added fz::tls_layer::generate_cert_from_csr
-  * fz::event_loop performance improvements when timers are in use
-  * Further HTTP client fixes
-  * Small HTTP client improvements to force IPv4/IPv6 for new connections,
-    add a header count limit, and to make abuffer pool optional
+- Update to 0.42.2
+  * Bugfixes and minor changes:
+    - Further HTTP client fixes
+- Changes from 0.42.1
+  * Bugfixes and minor changes:
+    - Small HTTP client improvements to force IPv4/IPv6 for new
+      connections, add a header count limit, and to make abuffer
+      pool optional
+- Changes from 0.42.0
+  * New features:
+    - Added an HTTP client
+  * Bugfixes and minor changes:
+    - Sources are now distributed in a .tar.xz
+    - buffer_writer now clears the buffer when opened
+    - Fixes and performance improvements for fz::xml::parser
+    - *nix: fz::file::size() now returns -1 on character devices
 
 -------------------------------------------------------------------
 Fri Feb 24 15:15:41 UTC 2023 - ecsos <ecsos@opensuse.org>
