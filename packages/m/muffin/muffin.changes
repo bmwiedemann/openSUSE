@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun  2 21:19:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.1:
+  * Fix window centering calculations, and now include the frame
+    if there is one.
+  * constraints: Fix inability to drag c-s-d windows up beyond
+    their titlebars.
+
+-------------------------------------------------------------------
 Fri Nov 26 12:23:29 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
 
 - Update to version 5.2.0.

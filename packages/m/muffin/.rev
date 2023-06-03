@@ -1045,4 +1045,16 @@
     <comment></comment>
     <requestid>934039</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>86ed4ac822883a3df52c162d8f418198</srcmd5>
+    <version>5.2.1</version>
+    <time>1685830367</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.2.1:
+  * Fix window centering calculations, and now include the frame
+    if there is one.
+  * constraints: Fix inability to drag c-s-d windows up beyond
+    their titlebars.</comment>
+    <requestid>1090579</requestid>
+  </revision>
 </revisionlist>
