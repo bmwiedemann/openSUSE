@@ -19,7 +19,7 @@
 %define oldpython python
 %define min_version %{lua:rpm.expand("%{version}"):gsub("^(%d+%.%d+).*", "%1")}
 Name:           python-pycryptodome
-Version:        3.17.0
+Version:        3.18.0
 Release:        0
 Summary:        Cryptographic library for Python
 License:        BSD-2-Clause

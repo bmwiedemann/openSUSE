@@ -322,4 +322,23 @@
 </comment>
     <requestid>1085158</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>5087564117a257101b95e2bb7cbf937b</srcmd5>
+    <version>3.18.0</version>
+    <time>1685830298</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.18.0:
+  * Added support for DER BOOLEAN encodings.
+  * The library now compiles on Windows ARM64. Thanks to Niyas
+    Sait.
+  * GH#722: ``nonce`` attribute was not correctly set for
+    XChaCha20_Poly1305 ciphers. Thanks to Liam Haber.
+  * GH#728: Workaround for a possible x86 emulator bug in Windows
+    for ARM64.
+  * GH#739: OID encoding for arc 2 didn't accept children larger
+    than 39. Thanks to James.
+  * Correctly check that the scalar matches the point when
+    importing an ECC private key.</comment>
+    <requestid>1090246</requestid>
+  </revision>
 </revisionlist>

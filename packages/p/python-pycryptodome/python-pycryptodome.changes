@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun  1 10:12:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.18.0:
+  * Added support for DER BOOLEAN encodings.
+  * The library now compiles on Windows ARM64. Thanks to Niyas
+    Sait.
+  * GH#722: ``nonce`` attribute was not correctly set for
+    XChaCha20_Poly1305 ciphers. Thanks to Liam Haber.
+  * GH#728: Workaround for a possible x86 emulator bug in Windows
+    for ARM64.
+  * GH#739: OID encoding for arc 2 didn't accept children larger
+    than 39. Thanks to James.
+  * Correctly check that the scalar matches the point when
+    importing an ECC private key.
+
+-------------------------------------------------------------------
 Fri May  5 17:09:46 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Fix %%files to work with %pyproject_ style building.
