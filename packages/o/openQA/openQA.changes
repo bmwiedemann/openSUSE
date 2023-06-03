@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 02 23:46:05 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1685738164.28716cd:
+  * Reference further documentation for database migrations
+  * Use same selectors in comments test as in real code
+  * Show number of minion jobs with hook_rc indicating failure
+  * Fix condition evaluation for skip variables
+  * Allow overriding variables
+  * Build openQA devel container only on archs where chromium is built
+  * Improve error handling in comments JavaScript code
+  * Improve JavaScript code for commenting further
+  * Simplify JavaScript code for adding/updating comments
+
+-------------------------------------------------------------------
 Wed May 31 15:45:56 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1685524945.b4ca723:
