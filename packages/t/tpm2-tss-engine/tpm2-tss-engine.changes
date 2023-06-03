@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  1 13:10:48 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Fix download url and add gpg signature for tarball.
+
+-------------------------------------------------------------------
 Mon Feb  6 14:18:15 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to upstream version 1.2.0:

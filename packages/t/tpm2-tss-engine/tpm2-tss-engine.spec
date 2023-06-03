@@ -27,7 +27,8 @@ Summary:        OpenSSL Engine for TPM2 devices
 License:        BSD-3-Clause
 Group:          Productivity/Security
 URL:            https://github.com/tpm2-software
-Source0:        %{url}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source0:        %{url}/%{name}/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source1:        %{url}/%{name}/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
 BuildRequires:  autoconf-archive
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libtool

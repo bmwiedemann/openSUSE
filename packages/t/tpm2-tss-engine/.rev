@@ -131,4 +131,12 @@ so let's do that: add the bug ref to the change responsible for it. (forwarded r
     - SECURITY reporting instructions (forwarded request 1063432 from pmonrealgonzalez)</comment>
     <requestid>1063587</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>551379753a32e49f216bd07ee877d619</srcmd5>
+    <version>1.2.0</version>
+    <time>1685830346</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix download url and add gpg signature for tarball. (forwarded request 1090284 from fcrozat)</comment>
+    <requestid>1090469</requestid>
+  </revision>
 </revisionlist>
