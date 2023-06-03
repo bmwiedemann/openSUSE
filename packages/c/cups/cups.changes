@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun  1 11:31:26 UTC 2023 - Johannes Meixner <jsmeix@suse.com>
+
+- cups-2.4.2-CVE-2023-32324.patch fixes CVE-2023-32324
+  "Heap buffer overflow in cupsd"
+  https://github.com/OpenPrinting/cups/security/advisories/GHSA-cxc6-w2g7-69p7
+  bsc#1211643
+
+-------------------------------------------------------------------
 Mon Dec 12 12:23:49 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use %_pam_vendordir

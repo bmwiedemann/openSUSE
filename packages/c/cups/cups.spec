@@ -1,7 +1,7 @@
 #
 # spec file for package cups
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -102,6 +102,11 @@ Patch107:       harden_cups.service.patch
 # Patch108 downgrade-autoconf-requirement.patch
 # downgrades the autoconf requirement to the autoconf available in Tumbleweed as of this writing:
 Patch108:       downgrade-autoconf-requirement.patch
+# Patch109 cups-2.4.2-CVE-2023-32324.patch
+# fixes CVE-2023-32324 "Heap buffer overflow in cupsd"
+# https://github.com/OpenPrinting/cups/security/advisories/GHSA-cxc6-w2g7-69p7
+# https://bugzilla.suse.com/show_bug.cgi?id=1211643
+Patch109:       cups-2.4.2-CVE-2023-32324.patch
 # Build Requirements:
 BuildRequires:  dbus-1-devel
 BuildRequires:  fdupes
@@ -329,6 +334,11 @@ printer drivers for CUPS.
 # Patch108 downgrade-autoconf-requirement.patch
 # downgrades the autoconf requirement to the autoconf available in Tumbleweed as of this writing:
 %patch108 -b downgrade-autoconf-requirement.orig
+# Patch109 cups-2.4.2-CVE-2023-32324.patch
+# fixes CVE-2023-32324 "Heap buffer overflow in cupsd"
+# https://github.com/OpenPrinting/cups/security/advisories/GHSA-cxc6-w2g7-69p7
+# https://bugzilla.suse.com/show_bug.cgi?id=1211643
+%patch109 -b cups-2.4.2-CVE-2023-32324.orig
 
 %build
 # Remove ".SILENT" rule for verbose build output
