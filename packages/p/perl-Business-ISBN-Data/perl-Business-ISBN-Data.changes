@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 29 03:06:12 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20230528.001
+   see /usr/share/doc/packages/perl-Business-ISBN-Data/Changes
+
+  20230528.001 2023-05-28T21:01:11Z
+  	* Update for 2023-05-28
+
+  20230516.001 2023-05-16T15:09:45Z
+  	* Data update for May 16, 2023
+
+  20230426.002 2023-05-04T04:20:45Z
+  	* fix a problem with the MANIFEST (#30). No data updates.
+
+-------------------------------------------------------------------
 Thu Apr 27 03:06:03 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 20230426.001

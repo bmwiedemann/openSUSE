@@ -18,7 +18,7 @@
 
 %define cpan_name Business-ISBN-Data
 Name:           perl-Business-ISBN-Data
-Version:        20230426.001
+Version:        20230528.001
 Release:        0
 License:        Artistic-2.0
 Summary:        Data pack for Business::ISBN
