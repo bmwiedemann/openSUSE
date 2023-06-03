@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 29 03:07:12 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.39
+   see /usr/share/doc/packages/perl-DateTime-Locale/Changes
+
+  1.39     2023-05-28
+
+  - Fixed parsing of the 'el-polyton' locale code. This had the same issue as
+    'be-tarask', which was fixed in 1.36. This is now fixed in such a way that
+    similar language+variant codes will be parsed correctly in the
+    future. Reported by @yvanzo. GH #37.
+
+-------------------------------------------------------------------
 Sat Apr 15 03:07:08 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.38

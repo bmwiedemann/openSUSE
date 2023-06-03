@@ -18,10 +18,10 @@
 
 %define cpan_name DateTime-Locale
 Name:           perl-DateTime-Locale
-Version:        1.380000
+Version:        1.390000
 Release:        0
-%define cpan_version 1.38
-Provides:       perl(DateTime::Locale) = 1.380000
+%define cpan_version 1.39
+Provides:       perl(DateTime::Locale) = 1.390000
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Localization support for DateTime.pm
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -68,7 +68,7 @@ please read the DateTime::Locale::FromData documentation.
 %prep
 %autosetup  -n %{cpan_name}-%{cpan_version}
 
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -83,7 +83,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc azure-pipelines.yml Changes CODE_OF_CONDUCT.md CONTRIBUTING.md precious.toml README.md
+%doc Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md
 %license LICENSE LICENSE.cldr
 
 %changelog
