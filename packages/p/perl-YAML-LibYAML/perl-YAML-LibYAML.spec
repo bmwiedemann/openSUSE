@@ -18,7 +18,7 @@
 
 %define cpan_name YAML-LibYAML
 Name:           perl-YAML-LibYAML
-Version:        0.86
+Version:        0.88
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl YAML Serialization using XS and libyaml
@@ -36,7 +36,7 @@ Perl YAML Serialization using XS and libyaml
 %prep
 %autosetup  -n %{cpan_name}-%{version}
 
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"

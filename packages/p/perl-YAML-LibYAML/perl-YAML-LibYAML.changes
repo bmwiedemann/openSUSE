@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat May 13 03:08:54 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.88
+   see /usr/share/doc/packages/perl-YAML-LibYAML/Changes
+
+  0.88 Fri May 12 05:28:05 AM PDT 2023
+   - REVERT "Turn off internal POK flag for number scalars"
+
+  0.87 Thu May  4 09:37:26 PM CEST 2023
+   - Turn off internal POK flag for number scalars
+
+-------------------------------------------------------------------
 Fri Jan 27 03:08:45 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.86
