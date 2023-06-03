@@ -336,4 +336,13 @@
     <comment></comment>
     <requestid>1084588</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>e91a1165eb08c77db161f9cf17508e89</srcmd5>
+    <version>0.20.0</version>
+    <time>1685830344</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not attempt to build documentation for 32-bit, s390x and
+  ppc64*. There are build issues on some build targets. (forwarded request 1090531 from eeich)</comment>
+    <requestid>1090534</requestid>
+  </revision>
 </revisionlist>

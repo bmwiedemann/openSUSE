@@ -19,6 +19,9 @@
 %global flavor @BUILD_FLAVOR@%{?nil}
 %if "%{flavor}" == "doc"
 %bcond_without doc
+%ifarch i586 %arm s390 s390x %power64 ppc
+ExclusiveArch:  do_not_build
+%endif
 %endif
 
 %if %{with doc} && (0%{?sle_version} > 0) && (150200 >= 0%{?sle_version})
@@ -43,7 +46,7 @@ ExclusiveArch:  do_not_build
 # non oss packages
 %define spack_trigger_external cuda-nvcc
 Name:           spack
-Version:        0.19.2
+Version:        0.20.0
 Release:        0
 Summary:        Package manager for HPC systems
 License:        Apache-2.0 AND MIT AND Python-2.0 AND BSD-3-Clause
@@ -63,7 +66,6 @@ Patch6:         Fix-error-during-documentation-build-due-to-recursive-module-inc
 Patch7:         Fix-Spinx-configuration-to-avoid-throwing-errors.patch
 Patch8:         Set-modules-default-to-lmod.patch
 Patch9:         Add-support-for-container-building-using-a-SLE-base-container.patch
-Patch10:        Add-zypper-to-the-valid-container.os_packages-commands.patch
 %if %{without doc}
 BuildRequires:  fdupes
 BuildRequires:  lua-lmod
@@ -203,7 +205,7 @@ args=${1+"$@"}
 while [ -n "$1" ]; do
   case $1 in
     --*) shift ;;
-    graph|spec) exit 0 ;;
+    graph|spec|unit-test) exit 0 ;;
     *) exec /usr/bin/spack ${args} ;;
   esac;
 done

@@ -1,20 +1,19 @@
+From 360dd5abda2e7f14c87ace831ff4c9756c9d0444 Mon Sep 17 00:00:00 2001
 From: Egbert Eich <eich@suse.com>
-Date: Wed Nov 10 13:01:17 2021 +0100
-Subject: Adapt shell scripts that set up the environment for different shells
-Patch-mainline: Not yet
-Git-repo: https://github.com/spack/spack
-Git-commit: 565c91f4e3a40495fc470a8887df7dee9ced8c09
-References: 
+Date: Wed, 10 Nov 2021 13:01:17 +0100
+Subject: [PATCH] Adapt shell scripts that set up the environment for different
+ shells
 
 Signed-off-by: Egbert Eich <eich@suse.com>
 Signed-off-by: Egbert Eich <eich@suse.de>
 ---
  share/spack/setup-env.csh  |  5 +++-
- share/spack/setup-env.fish | 15 +-----------
- share/spack/setup-env.sh   | 61 ++--------------------------------------------
+ share/spack/setup-env.fish | 15 +---------
+ share/spack/setup-env.sh   | 61 ++------------------------------------
  3 files changed, 7 insertions(+), 74 deletions(-)
+
 diff --git a/share/spack/setup-env.csh b/share/spack/setup-env.csh
-index 4ac0503947..67fad7516c 100755
+index ad20d346d1..91c48ecae9 100755
 --- a/share/spack/setup-env.csh
 +++ b/share/spack/setup-env.csh
 @@ -12,6 +12,10 @@
@@ -37,7 +36,7 @@ index 4ac0503947..67fad7516c 100755
  
  # Set up module search paths in the user environment
 diff --git a/share/spack/setup-env.fish b/share/spack/setup-env.fish
-index d16ee617df..84e3a9e044 100755
+index e00d8e76bb..961ec39015 100755
 --- a/share/spack/setup-env.fish
 +++ b/share/spack/setup-env.fish
 @@ -671,12 +671,6 @@ end
@@ -70,7 +69,7 @@ index d16ee617df..84e3a9e044 100755
  
  #
 diff --git a/share/spack/setup-env.sh b/share/spack/setup-env.sh
-index 5136e8a58a..6aef191129 100755
+index d3a97d9af6..45195fb36f 100755
 --- a/share/spack/setup-env.sh
 +++ b/share/spack/setup-env.sh
 @@ -249,64 +249,6 @@ _sp_shell=$(_spack_determine_shell)
@@ -152,3 +151,6 @@ index 5136e8a58a..6aef191129 100755
  fi
  
  # done: unset sentinel variable as we're no longer initializing
+-- 
+2.40.1
+

@@ -105,6 +105,8 @@ get_paths()
 	print_env LD_LIBRARY_PATH "${ld_library_path}\$LD_LIBRARY_PATH"
 }
 
+source /usr/share/spack/setup-env.sh
+
 spack_srcd=false
 (
     [[ -n $ZSH_VERSION && $ZSH_EVAL_CONTEXT =~ :file$ ]] ||

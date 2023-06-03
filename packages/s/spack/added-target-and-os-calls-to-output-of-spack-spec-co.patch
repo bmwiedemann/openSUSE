@@ -1,4 +1,4 @@
-From a80d5cd883263271650925926dfd734f488bb731 Mon Sep 17 00:00:00 2001
+From 1221c1f6b68cbba3a14592a686aec742b5fd02d2 Mon Sep 17 00:00:00 2001
 From: Christian Goll <cgoll@suse.de>
 Date: Fri, 11 Dec 2020 15:37:48 +0100
 Subject: [PATCH] added target and os calls to output of spack spec commands
@@ -10,10 +10,10 @@ Subject: [PATCH] added target and os calls to output of spack spec commands
  3 files changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/lib/spack/docs/developer_guide.rst b/lib/spack/docs/developer_guide.rst
-index 6b67ef9f77..695e3a84bc 100644
+index 4dc8d1249d..42b67425ab 100644
 --- a/lib/spack/docs/developer_guide.rst
 +++ b/lib/spack/docs/developer_guide.rst
-@@ -761,7 +761,7 @@ supply ``--profile`` to Spack on the command line, before any subcommands.
+@@ -758,7 +758,7 @@ supply ``--profile`` to Spack on the command line, before any subcommands.
  
  ``spack --profile`` output looks like this:
  
@@ -23,10 +23,10 @@ index 6b67ef9f77..695e3a84bc 100644
  
  The bottom of the output shows the top most time consuming functions,
 diff --git a/lib/spack/docs/getting_started.rst b/lib/spack/docs/getting_started.rst
-index 1bf99e09b3..6b01bf4950 100644
+index 3c077490a2..0a0a0d0913 100644
 --- a/lib/spack/docs/getting_started.rst
 +++ b/lib/spack/docs/getting_started.rst
-@@ -206,7 +206,7 @@ Check Installation
+@@ -204,7 +204,7 @@ Check Installation
  With Spack installed, you should be able to run some basic Spack
  commands.  For example:
  
@@ -36,10 +36,10 @@ index 1bf99e09b3..6b01bf4950 100644
  In theory, Spack doesn't need any additional installation; just
  download and run!  But in real life, additional steps are usually
 diff --git a/lib/spack/docs/packaging_guide.rst b/lib/spack/docs/packaging_guide.rst
-index 5b0e556b34..600f0fb72e 100644
+index 586fdcec6e..1a7e23c426 100644
 --- a/lib/spack/docs/packaging_guide.rst
 +++ b/lib/spack/docs/packaging_guide.rst
-@@ -6099,13 +6099,13 @@ Spack provides the ``spack graph`` command for graphing dependencies.
+@@ -6382,13 +6382,13 @@ Spack provides the ``spack graph`` command for graphing dependencies.
  The command by default generates an ASCII rendering of a spec's
  dependency graph.  For example:
  
@@ -55,7 +55,7 @@ index 5b0e556b34..600f0fb72e 100644
  
  The ``deptype`` argument tells Spack what types of dependencies to graph.
  By default it includes link and run dependencies but not build
-@@ -6120,7 +6120,7 @@ dependencies.  The default is ``--deptype=all``, which is equivalent to
+@@ -6403,7 +6403,7 @@ dependencies.  The default is ``--deptype=all``, which is equivalent to
  You can also use ``spack graph`` to generate graphs in the widely used
  `Dot <http://www.graphviz.org/doc/info/lang.html>`_ format.  For example:
  
@@ -65,5 +65,5 @@ index 5b0e556b34..600f0fb72e 100644
  This graph can be provided as input to other graphing tools, such as
  those in `Graphviz <http://www.graphviz.org>`_.  If you have graphviz
 -- 
-2.38.0
+2.40.1
 

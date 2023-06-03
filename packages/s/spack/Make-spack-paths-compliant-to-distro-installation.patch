@@ -1,9 +1,7 @@
+From a91079b55fa90142d9de03ffe219812a26937959 Mon Sep 17 00:00:00 2001
 From: Egbert Eich <eich@suse.com>
-Date: Wed Jan 11 14:30:19 2023 +0100
-Subject: Make spack paths compliant to distro installation
-Patch-mainline: Not yet
-Git-commit: c74fb7ed42aa94609c8cc8c005b004357307bb34
-References: 
+Date: Wed, 11 Jan 2023 14:30:19 +0100
+Subject: [PATCH] Make spack paths compliant to distro installation
 
 Spack is particular about the choice of 'prefix' which will
 replace $spack. 'prefix' is the 4th ancestor of paths.py, so
@@ -18,8 +16,9 @@ Signed-off-by: Egbert Eich <eich@suse.de>
 ---
  lib/spack/spack/paths.py | 6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)
+
 diff --git a/lib/spack/spack/paths.py b/lib/spack/spack/paths.py
-index f03f6eb1..914aea93 100644
+index 18656b76c2..f0e9cb587c 100644
 --- a/lib/spack/spack/paths.py
 +++ b/lib/spack/spack/paths.py
 @@ -41,7 +41,7 @@
@@ -44,3 +43,6 @@ index f03f6eb1..914aea93 100644
  packages_path = os.path.join(repos_path, "builtin")
  mock_packages_path = os.path.join(repos_path, "builtin.mock")
  
+-- 
+2.40.1
+
