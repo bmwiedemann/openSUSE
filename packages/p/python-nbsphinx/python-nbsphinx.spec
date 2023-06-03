@@ -17,7 +17,7 @@
 
 
 Name:           python-nbsphinx
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        Jupyter Notebook Tools for Sphinx
 License:        MIT
@@ -31,7 +31,6 @@ BuildRequires:  %{python_module nbconvert}
 BuildRequires:  %{python_module nbformat}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module sphinx_rtd_theme}
 BuildRequires:  %{python_module traitlets >= 5}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -41,7 +40,6 @@ Requires:       python-Sphinx >= 1.8
 Requires:       python-docutils
 Requires:       python-nbconvert
 Requires:       python-nbformat
-Requires:       python-sphinx_rtd_theme
 Requires:       python-traitlets >= 5
 Recommends:     mathjax
 Recommends:     pandoc

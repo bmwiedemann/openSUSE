@@ -168,4 +168,16 @@ too small
     <comment></comment>
     <requestid>1072967</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2eb1726664f942c656cd4340e3945bcb</srcmd5>
+    <version>0.9.2</version>
+    <time>1685830351</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.2
+  * Improve support for sphinx_immaterial theme
+  * Improve support for links starting with #
+  * Add support for in-text citations
+  * LaTeX: Add support for admonition titles (forwarded request 1090499 from bnavigator)</comment>
+    <requestid>1090500</requestid>
+  </revision>
 </revisionlist>
