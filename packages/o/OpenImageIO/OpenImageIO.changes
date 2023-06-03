@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Fri Jun  2 15:09:20 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to 2.4.12.0:
+  * oiiotool: Don't propagate unsupported channels (gh#OpenImageIO/oiio#3838).
+  * oiiotool: Improvements to performance and memory when making very large
+    textures (gh#OpenImageIO/oiio#3829).
+  * fix: Prevent possible deadlock when reading files with wrong extensions
+    (gh#OpenImageIO/oiio#3845).
+  * gif: Prevent possible heap buffer overflow (gh#OpenImageIO/oiio#3841).
+  * psd: Improve memory efficiency of PSD read (gh#OpenImageIO/oiio#3807).
+  * raw: Fix LibRaw flip to Exif orientation conversion
+    (gh#OpenImageIO/oiio#3847).
+  * raw: Raw input fix user_flip usage (gh#OpenImageIO/oiio#3858).
+  * strutil: Use forward properly for sync::print() (gh#OpenImageIO/oiio#3825).
+  * build: Fixes for latest xcode on MacOS 13.3 Ventura
+    (gh#OpenImageIO/oiio#3854).
+  * build: Fix build error with MSVC (gh#OpenImageIO/oiio#3832).
+  * ci: Fix warnings (gh#OpenImageIO/oiio#3833).
+  * ci: Fix package name for icc (gh#OpenImageIO/oiio#3860).
+- Changes of 2.4.11.1:
+  * build: Support for fmt 10.0 (gh#OpenImageIO/oiio#3825,
+    gh#OpenImageIO/oiio#3828, gh#OpenImageIO/oiio#3836).
+- Changes of 2.4.11.0:
+  * oiiotool: For expression evaluation, NIMAGES now evaluates to the current
+    image stack depth (gh#OpenImageIO/oiio#3822).
+  * Python: Improve error messages when passing wrong python array sizes
+    (gh#OpenImageIO/oiio#3801).
+  * Raw: handle 1-channel raw images (gh#OpenImageIO/oiio#3798).
+  * HEIC: Support the ".hif" extension, which seems to be used by some Canon
+    cameras instead of .heif (gh#OpenImageIO/oiio#3813).
+  * PSD: Fix problems reading images with width > 64k pixels
+    (gh#OpenImageIO/oiio#3806).
+  * Windows/fmath: Work around MSVS bug(?) that generated wrong code for
+  * fast_exp2 (gh#OpenImageIO/oiio#3804).
+  * Build: Fix building on OpenBSD (gh#OpenImageIO/oiio#3808).
+  * Build: Refactor simd.h to disable Intel intrinsics when not on Intel
+    (including Cuda compiles) (gh#OpenImageIO/oiio#3814).
+  * Build: Fix building against new ffmpeg 6.0 (gh#OpenImageIO/oiio#3812).
+  * Build: Work around problems with fmt library + NVPTX relating to unknown
+    float128 type (gh#OpenImageIO/oiio#3823).
+  * CI/test: Fix incorrect branch name when cloning openexr-images for the
+    testsuite (gh#OpenImageIO/oiio#3814).
+  * Test: Use copies instead of symlinks in a couple spots to help on Windows.
+    (gh#OpenImageIO/oiio#3818).
+- Changes of 2.4.10.0:
+  * Exif: Fix typo that prevented us from correctly naming Exif
+    "CameraElevationAngle" metadata (gh#OpenImageIO/oiio#3783).
+  * IC/TS: Fixes that avoid deadlock situations on the file handle cache
+    in certain scenarios with very high thread contention
+    (gh#OpenImageIO/oiio#3784).
+  * Docs: Some retroactive edits to INSTALL.md to correctly document changed
+    dependencies of the 2.4 series.
+  * GIF: Fix potential array overrun when writing GIF files
+    (gh#OpenImageIO/oiio#3789).
+  * Build: Fixes to make a clean build on Mac using Apple Clang 11.0
+    (gh#OpenImageIO/oiio#3795).
+  * FYI: This version of OIIO should build against Clang 16.
+  * maketx: Fix a broken --cdf flag, which was set up to take an argument, but
+    should always simply have acted as a simple boolean flag on its own. The
+    incorrect way it was set up not only was useless, but also could lead to
+    occasional crashes (gh#OpenImageIO/oiio#3748).
+  * maketx and oiiotool --otex: Add support for CDFs of bumpslopes channels.
+    Previously, if you used both --bumpslopes and --cdf at the same time, the
+    CDFs were not produced for all channels (gh#OpenImageIO/oiio#3793).
+- Changes of 2.4.9.0:
+  * Build: check need for libatomic with check_cxx_source_compiles instead of
+    the more expensive check_cxx_source_runs (gh#OpenImageIO/oiio#3774).
+  * Fix(IC): Avoid bad IC stats when no files were read
+    (gh#OpenImageIO/oiio#3765).
+  * Build: Add a cmake option OIIO_DISABLE_BOOST_STACKTRACE to disable use and
+  * dependency of boost stacktrace (gh#OpenImageIO/oiio#3777).
+  * ustringhash: Make an explicit constructor from a hash value
+    (gh#OpenImageIO/oiio#3778).
+  * Build: Add ability to build against Qt6 (gh#OpenImageIO/oiio#3779).
+
+-------------------------------------------------------------------
 Mon Feb 13 19:06:04 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
 
 - update to 2.4.8.1
