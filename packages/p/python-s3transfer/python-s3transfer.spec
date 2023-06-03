@@ -1,7 +1,7 @@
 #
 # spec file for package python-s3transfer
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,17 +26,14 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/boto/s3transfer
 Source0:        https://files.pythonhosted.org/packages/source/s/s3transfer/s3transfer-%{version}.tar.gz
-Patch1:         no-bundled-packages.patch
 BuildRequires:  %{python_module botocore >= 1.12.36}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module urllib3 with %python-urllib3 < 2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-botocore <= 2.0.0
 Requires:       python-botocore >= 1.12.36
 Requires:       python-requests
-Requires:       python-urllib3 < 2
 BuildArch:      noarch
 
 %python_subpackages
@@ -46,7 +43,6 @@ A transfer manager for Amazon Web Services S3
 
 %prep
 %setup -q -n s3transfer-%{version}
-%patch1 -p1
 # remove integration tests that need running s3
 rm -rf tests/integration
 

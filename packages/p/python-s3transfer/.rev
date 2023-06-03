@@ -220,4 +220,12 @@
     <comment>- pin to urllib3 1.x</comment>
     <requestid>1087487</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>4199746a0f97aac93147426b49555baa</srcmd5>
+    <version>0.6.0</version>
+    <time>1685830312</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090283</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 30 11:20:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- drop no-bundled-packages.patch to allow unpinning urllib3
+  boo#1211830
+
+-------------------------------------------------------------------
 Wed May 17 05:54:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - pin to urllib3 1.x 
