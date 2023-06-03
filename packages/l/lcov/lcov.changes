@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 26 22:01:54 UTC 2023 - Miklos Vajna <vmiklos@collabora.com> - 2.0
+
+- Update to version 2.0:
+  * Support for differential coverage analysis
+  * Support for annotation of reports with date and owner information ("binning")
+  * Support for data filtering to remove artifacts such as exception branches
+  * Improved HTML navigation and display features
+  * Improved performance via parallelism
+  * Improved error checking and error management.
+
+-------------------------------------------------------------------
 Wed Jun 15 09:15:35 UTC 2022 - mliska@suse.cz
 
 - Update to version 1.16+git.20220603.dfeb750:

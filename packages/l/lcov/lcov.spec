@@ -1,7 +1,7 @@
 #
 # spec file for package lcov
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lcov
-Version:        1.16+git.20220603.dfeb750
+Version:        2.0
 Release:        0
 Summary:        A Graphical GCOV Front-end
 License:        GPL-2.0-or-later
@@ -26,6 +26,8 @@ URL:            https://github.com/linux-test-project/lcov
 Source0:        %{name}-%{version}.tar.xz
 Requires:       findutils
 Requires:       gcc
+Requires:       perl-Capture-Tiny
+Requires:       perl-DateTime
 Requires:       perl-GD
 Requires:       perl-PerlIO-gzip
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -45,6 +47,13 @@ sed -i "s/1.0/%{version}/" bin/get_version.sh
 
 %install
 make install PREFIX=%{buildroot}/usr CFG_DIR=%{buildroot}/etc
+sed -i 's|%{buildroot}||' %{buildroot}/usr/bin/gendesc
+sed -i 's|%{buildroot}||' %{buildroot}/usr/bin/genhtml
+sed -i 's|%{buildroot}||' %{buildroot}/usr/bin/geninfo
+sed -i 's|%{buildroot}||' %{buildroot}/usr/bin/genpng
+sed -i 's|%{buildroot}||' %{buildroot}/usr/bin/lcov
+sed -i 's|%{buildroot}||' %{buildroot}/usr/lib/lcov/lcovutil.pm
+sed -i 's|%{buildroot}||' %{buildroot}/usr/share/lcov/support-scripts/analyzeInfoFiles
 
 %files
 %defattr(644,root,root)
@@ -61,5 +70,19 @@ make install PREFIX=%{buildroot}/usr CFG_DIR=%{buildroot}/etc
 %{_bindir}/geninfo
 %{_bindir}/genpng
 %{_bindir}/gendesc
+%{_prefix}/lib/lcov
+%{_prefix}/lib/lcov/lcovutil.pm
+%{_prefix}/share/lcov
+%{_prefix}/share/lcov/support-scripts
+%{_prefix}/share/lcov/support-scripts/analyzeInfoFiles
+%{_prefix}/share/lcov/support-scripts/criteria
+%{_prefix}/share/lcov/support-scripts/get_signature
+%{_prefix}/share/lcov/support-scripts/getp4version
+%{_prefix}/share/lcov/support-scripts/gitblame
+%{_prefix}/share/lcov/support-scripts/gitdiff
+%{_prefix}/share/lcov/support-scripts/p4annotate
+%{_prefix}/share/lcov/support-scripts/p4udiff
+%{_prefix}/share/lcov/support-scripts/py2lcov
+%{_prefix}/share/lcov/support-scripts/spreadsheet.py
 
 %changelog
