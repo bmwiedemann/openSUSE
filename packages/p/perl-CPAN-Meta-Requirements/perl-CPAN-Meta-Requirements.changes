@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May 10 03:06:07 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.142
+   see /usr/share/doc/packages/perl-CPAN-Meta-Requirements/Changes
+
+  2.142     2023-05-09 07:15:05-04:00 America/New_York
+      - no changes since previous trial releae
+      - note: this version now requires perl v5.10 rather than v5.6
+
+  2.141     2023-04-30 15:42:35+02:00 Europe/Paris (TRIAL RELEASE)
+      - confess() replaced with croak(): fewer stack traces
+      - broke the version range handling into the Range class (thanks, Leon
+        Timmermans!)
+      - note: this version now requires perl v5.10 rather than v5.6
+
+-------------------------------------------------------------------
 Sun Dec 13 09:31:20 UTC 2015 - coolo@suse.com
 
 - updated to 2.140
