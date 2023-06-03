@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 31 10:54:47 UTC 2023 - Jiri Srain <jsrain@suse.com> 
+
+- refresh BCM4345C[05].hcd from upstream URL
+
+-------------------------------------------------------------------
 Fri Mar 18 12:24:47 UTC 2022 - Ivan Ivanov <ivan.ivanov@suse.com>
 
 - Add required firmware file for Bluetooth module found on RPi Zero 2W (bsc#1197286)
