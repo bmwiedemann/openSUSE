@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun  2 12:14:34 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.9.1
+  * (again no release notes)
+  * setuptools and ci updates
+  * support both lumino and phosphorjs
+
+-------------------------------------------------------------------
 Mon May  1 18:51:38 UTC 2023 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix typo in recommends

@@ -17,14 +17,16 @@
 
 
 %define anypython3dist python3dist
-%define python3dist_version 1.9
+%define python3dist_version 1.9.1
 Name:           python-ipyvue
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        Jupyter widgets base for Vue libraries
 License:        MIT
 URL:            https://github.com/widgetti/ipyvue
-Source:         https://files.pythonhosted.org/packages/source/i/ipyvue/ipyvue-%{version}.tar.gz
+# Use sdist for static js but github archive for test files
+Source0:        https://files.pythonhosted.org/packages/source/i/ipyvue/ipyvue-%{version}.tar.gz
+Source1:        https://github.com/widgetti/ipyvue/archive/refs/tags/v%{version}.tar.gz#/ipyvue-%{version}-gh.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -66,8 +68,8 @@ This package provides the jupyterlab extension.
 
 %prep
 %setup -q -n ipyvue-%{version}
-sed -i 's/find_packages()/find_packages(exclude=["tests"])/' setup.py
 chmod -x ipyvue/labextension/package.json README.md
+tar -x --strip-components=1 -f %{SOURCE1}  ipyvue-%{version}/tests/
 
 %build
 %pyproject_wheel
@@ -79,7 +81,9 @@ chmod -x ipyvue/labextension/package.json README.md
 %fdupes %{buildroot}%{_jupyter_prefix}
 
 %check
-%pytest
+# no playwright
+ignoretestfiles="--ignore tests/ui"
+%pytest $ignoretestfiles
 
 %files %{python_files}
 %doc README.md
