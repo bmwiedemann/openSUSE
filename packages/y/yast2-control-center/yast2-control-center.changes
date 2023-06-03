@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 31 15:33:15 UTC 2023 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Require xdg-utils since it's no longer required by desktop-data-openSUSE
+  and yast-control-center-qt needs it to start modules with 'xdg-su'.
+  (bsc#1211869)
+- 4.6.1
+
+-------------------------------------------------------------------
 Fri Mar 03 14:44:07 UTC 2023 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.6.0 (bsc#1208913)
