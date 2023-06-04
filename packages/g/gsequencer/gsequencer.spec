@@ -1,7 +1,7 @@
 #
 # spec file for package gsequencer
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,22 +22,26 @@
 # activated with --with run_functional_tests command line switch.
 %bcond_with run_functional_tests
 Name:           gsequencer
-Version:        5.1.4
+Version:        5.2.5
 Release:        0
 Summary:        Audio processing engine
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND GFDL-1.3-only
 Group:          Productivity/Multimedia/Sound/Midi
 URL:            https://nongnu.org/gsequencer
-Source0:        https://download.savannah.gnu.org/releases/gsequencer/5.1.x/%{name}-%{version}.tar.gz
+Source0:        https://download.savannah.gnu.org/releases/gsequencer/5.2.x/%{name}-%{version}.tar.gz
 # improve glib-2.0 compatibility to version 2.54
 Patch1:         gsequencer.1-improved-glib-compatibility.patch
+BuildRequires:  gcc-c++
 BuildRequires:  cunit-devel
+BuildRequires:  fop
+BuildRequires:  texlive-latex
+BuildRequires:  texlive-fancybox
+BuildRequires:  texlive-collection-fontsrecommended
+BuildRequires:  texlive-jknapltx
 BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  dssi-devel
 BuildRequires:  fluid-soundfont-gm
-BuildRequires:  fop
-BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel >= 0.19.8
 BuildRequires:  gstreamer-plugins-base
 BuildRequires:  gstreamer-plugins-good
@@ -51,10 +55,6 @@ BuildRequires:  lv2-devel
 BuildRequires:  lv2-swh-plugins
 BuildRequires:  pkgconfig
 BuildRequires:  pulseaudio
-BuildRequires:  texlive-collection-fontsrecommended
-BuildRequires:  texlive-fancybox
-BuildRequires:  texlive-jknapltx
-BuildRequires:  texlive-latex
 BuildRequires:  xvfb-run
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(fftw3)
@@ -67,10 +67,11 @@ BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libinstpatch-1.0)
+BuildRequires:  pkgconfig(poppler-glib)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(poppler-glib)
+BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(uuid)
@@ -85,7 +86,8 @@ sound with different sequencers. Furthermore, it features a pattern
 and piano roll and there is an editor to automate ports.
 
 %prep
-%autosetup -p0
+%setup -q
+%patch1 -p0
 
 %build
 autoreconf -fi
@@ -155,7 +157,7 @@ Advanced Gtk+ Sequencer is an audio sequencer application.
 This subpackage contains part of its library set.
 
 %package -n typelib-1_0-Libags-5_0
-Summary:        Introspection bindings for GSequencer's core libraries
+Summary:        GSequencer core libraries -- Introspection bindings
 Group:          System/Libraries
 
 %description -n typelib-1_0-Libags-5_0
@@ -208,6 +210,7 @@ Advanced Gtk+ Sequencer library development documentation.
 %postun -n libgsequencer%{libgsequencersonumber} -p /sbin/ldconfig
 
 %files -n libags%{libagssonumber}
+%defattr(-,root,root)
 %{_libdir}/libags.so.%{libagssonumber}*
 %{_libdir}/libags_thread.so.%{libagssonumber}*
 %{_libdir}/libags_server.so.%{libagssonumber}*
@@ -216,11 +219,13 @@ Advanced Gtk+ Sequencer library development documentation.
 %{_libdir}/libags_audio.so.%{libagssonumber}*
 
 %files -n typelib-1_0-Libags-5_0
+%defattr(-,root,root)
 %{_libdir}/girepository-1.0/Ags-5.0.typelib
 %{_libdir}/girepository-1.0/AgsGui-5.0.typelib
 %{_libdir}/girepository-1.0/AgsAudio-5.0.typelib
 
 %files -n libgsequencer%{libgsequencersonumber}
+%defattr(-,root,root)
 %{_libdir}/libgsequencer.so.%{libgsequencersonumber}*
 
 %files -n gsequencer-devel-doc

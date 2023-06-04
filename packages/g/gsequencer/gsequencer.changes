@@ -1,8 +1,13 @@
 -------------------------------------------------------------------
-Mon May 15 10:08:05 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+Sat Jun  3 11:08:05 UTC 2023 - Joël Krähemann <jkraehemann@gmail.com>
 
-- Remove old specfile constructs
-- Use complete titles for Summary
+- new upstream v5.2.5 mega update with improvements, bug-fixes and
+  new features.
+- AgsSF2Synth additional effect tremolo, vibrato and wah-wah
+- AgsSFZSynth additional effect tremolo, vibrato and wah-wah
+- fixed and improved ags-fx-lv2 effect processor
+- added json-glib-1.0 dependency
+- fixed MIDI input
 
 -------------------------------------------------------------------
 Sun May 14 16:44:11 UTC 2023 - Joël Krähemann <jkraehemann@gmail.com>

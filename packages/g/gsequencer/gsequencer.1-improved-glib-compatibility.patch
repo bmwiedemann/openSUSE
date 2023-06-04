@@ -1,6 +1,6 @@
---- configure.ac.orig	2022-02-22 13:32:37.020308098 +0100
-+++ configure.ac	2022-02-22 13:33:34.277121453 +0100
-@@ -412,11 +412,11 @@
+--- configure.ac.orig	2023-06-01 16:12:26.009999917 +0200
++++ configure.ac	2023-06-01 16:13:31.109471335 +0200
+@@ -447,11 +447,11 @@
  AC_SUBST(FFTW_CFLAGS)
  AC_SUBST(FFTW_LIBS)
  
@@ -14,7 +14,7 @@
  AC_SUBST(GOBJECT_CFLAGS)
  AC_SUBST(GOBJECT_LIBS)
  
-@@ -424,7 +424,7 @@
+@@ -459,7 +459,7 @@
  AC_DEFINE([HAVE_GLIB_2_44], [1], [GLib 2.44 available])
  AC_DEFINE([HAVE_GLIB_2_52], [1], [GLib 2.52 available])
  AC_DEFINE([HAVE_GLIB_2_54], [1], [GLib 2.54 available])
@@ -23,12 +23,12 @@
  AC_DEFINE([HAVE_GLIB_2_62], [0], [GLib 2.62 available])
  AC_DEFINE([HAVE_GLIB_2_68], [0], [GLib 2.68 available])
  
-@@ -434,7 +434,7 @@
+@@ -469,7 +469,7 @@
  AM_CONDITIONAL([HAVE_INTROSPECTION], [test "x$enable_introspection" == xyes])
  # GOBJECT_INTROSPECTION_CHECK([1.30.0])
  
--PKG_CHECK_MODULES([GIO], [gio-2.0 >= 2.56.0 glib-2.0 >= 2.56.0 gmodule-2.0 >= 2.56.0 gthread-2.0 >= 2.56.0])
-+PKG_CHECK_MODULES([GIO], [gio-2.0 >= 2.54.0 glib-2.0 >= 2.54.0 gmodule-2.0 >= 2.54.0 gthread-2.0 >= 2.54.0])
+-PKG_CHECK_MODULES([GIO], [gio-2.0 >= 2.56.0])
++PKG_CHECK_MODULES([GIO], [gio-2.0 >= 2.54.0])
  AC_SUBST(GIO_CFLAGS)
  AC_SUBST(GIO_LIBS)
  
