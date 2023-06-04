@@ -32,7 +32,7 @@
 # extra tests are skipped automatically, don't require these packages for Ring1
 %bcond_with localtest
 Name:           python-ipython%{psuffix}
-Version:        8.13.1
+Version:        8.13.2
 Release:        0
 Summary:        Rich architecture for interactive computing with Python
 License:        BSD-3-Clause

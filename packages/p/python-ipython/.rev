@@ -1312,4 +1312,14 @@
 </comment>
     <requestid>1083899</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>ec1d18dbca505b42bca5e275eccf059b</srcmd5>
+    <version>8.13.2</version>
+    <time>1685889688</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.13.2
+  * UI fixes, with respect to right arrow not working in some case
+    in the terminal (forwarded request 1090492 from bnavigator)</comment>
+    <requestid>1090493</requestid>
+  </revision>
 </revisionlist>
