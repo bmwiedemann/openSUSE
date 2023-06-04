@@ -15,4 +15,12 @@ Add a conflict with qemu-tools &lt; 8 as this implementation will replace the vi
 Use macros to exclude 32-bit archs</comment>
     <requestid>1089199</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b599c9aea43bb590aa70e4175b02c00a</srcmd5>
+    <version>1.6.1</version>
+    <time>1685889691</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090545</requestid>
+  </revision>
 </revisionlist>

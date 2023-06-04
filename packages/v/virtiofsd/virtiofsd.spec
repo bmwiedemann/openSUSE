@@ -26,6 +26,7 @@ URL:            https://gitlab.com/virtio-fs/virtiofsd
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
+Source3:        50-qemu-virtiofsd.json
 BuildRequires:  cargo-packaging
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libseccomp-devel
@@ -34,10 +35,6 @@ ExcludeArch:    %ix86 %arm
 
 %description
 vhost-user virtio-fs device backend written in Rust
-
-%files
-%doc README.md
-%{_libexecdir}/virtiofsd
 
 %prep
 %autosetup -a1
@@ -48,10 +45,18 @@ cp %{SOURCE2} .cargo/config
 %{cargo_build}
 
 %install
-install -D -d -m 0755 %{buildroot}%{_libexecdir}
-install -m 0755 %{_builddir}/%{name}-%{version}/target/release/virtiofsd %{buildroot}%{_libexecdir}/virtiofsd
+mkdir -p %{buildroot}%{_libexecdir}
+install -D -p -m 0755 %{_builddir}/%{name}-%{version}/target/release/virtiofsd %{buildroot}%{_libexecdir}/virtiofsd
+install -D -p -m 0644 %{SOURCE3} %{buildroot}%{_datadir}/qemu/vhost-user/50-qemu-virtiofsd.json
 
 %check
 %{cargo_test}
+
+%files
+%doc README.md
+%{_libexecdir}/virtiofsd
+%dir %{_datadir}/qemu
+%dir %{_datadir}/qemu/vhost-user
+%{_datadir}/qemu/vhost-user/50-qemu-virtiofsd.json
 
 %changelog
