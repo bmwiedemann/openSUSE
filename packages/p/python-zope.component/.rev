@@ -94,4 +94,12 @@ New dependency of python-Pyramid</comment>
   * Add support for Python 3.10 and 3.11.</comment>
     <requestid>1085176</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>699e4ead24685138bf1d75f3784bc785</srcmd5>
+    <version>6.0</version>
+    <time>1685889681</time>
+    <user>dimstar_suse</user>
+    <comment>- use python3 module python for sle15</comment>
+    <requestid>1090390</requestid>
+  </revision>
 </revisionlist>
