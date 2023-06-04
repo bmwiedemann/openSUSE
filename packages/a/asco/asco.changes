@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 30 07:36:27 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim filler wording from descriptions
+- Trim R/TM signs as per
+  https://en.opensuse.org/openSUSE:Package_description_guidelines
+
+-------------------------------------------------------------------
 Sat Apr 30 12:30:33 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.4.11

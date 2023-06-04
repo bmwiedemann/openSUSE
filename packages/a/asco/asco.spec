@@ -1,7 +1,7 @@
 #
 # spec file for package asco
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,13 +29,12 @@ Patch0:         asco_unbuffered.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-ASCO project aims to bring circuit optimization capabilities to existing SPICE
-simulators using a high-performance parallel differential evolution (DE) optimization
-algorithm. Currently out-of-the-box support for Eldo (TM), HSPICE (R), LTspice (TM),
-Spectre (R), Qucs and ngspice exist.
+ASCO brings circuit optimization capabilities to existing SPICE
+simulators using a parallel differential evolution (DE) optimization
+algorithm. Currently, out-of-the-box support for Eldo, HSPICE, LTspice,
+Spectre, Qucs and ngspice exist.
 
 %package        doc
 Summary:        Documentation for ASCO
@@ -43,15 +42,15 @@ Group:          Documentation/Other
 BuildArch:      noarch
 
 %description    doc
-ASCO project aims to bring circuit optimization capabilities to existing SPICE
-simulators using a high-performance parallel differential evolution (DE) optimization
-algorithm.
+ASCO brings circuit optimization capabilities to existing SPICE
+simulators using a parallel differential evolution (DE) optimization
+algorithm. Currently, out-of-the-box support for Eldo, HSPICE, LTspice,
+Spectre, Qucs and ngspice exist.
 
 This package provides documentation for ASCO in PDF format.
 
 %prep
-%setup -qn ASCO-%{version}
-%patch0 -p1
+%autosetup -n ASCO-%{version} -p1
 tar -zxf Autotools.tar.gz
 
 %build
@@ -67,7 +66,6 @@ autoreconf -fi
 install -Dm 644 doc/ASCO.pdf %{buildroot}/%{_docdir}/%{name}/ASCO.pdf
 
 %files
-%defattr(-,root,root)
 %license LICENSE
 %doc ChangeLog README
 %exclude %{_docdir}/%{name}/ASCO.pdf
@@ -80,7 +78,6 @@ install -Dm 644 doc/ASCO.pdf %{buildroot}/%{_docdir}/%{name}/ASCO.pdf
 %{_bindir}/rosen
 
 %files doc
-%defattr(-,root,root)
 %dir %{_docdir}/%{name}
 %doc %{_docdir}/%{name}/ASCO.pdf
 
