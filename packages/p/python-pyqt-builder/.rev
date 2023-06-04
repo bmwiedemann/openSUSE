@@ -131,4 +131,13 @@
     <comment>update</comment>
     <requestid>1083090</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>84193ddc9770d401c9e7a0559fb8691d</srcmd5>
+    <version>1.15.1</version>
+    <time>1685889680</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.15.1:
+  * Added support for bundling the QtLabs QML packages.</comment>
+    <requestid>1090385</requestid>
+  </revision>
 </revisionlist>

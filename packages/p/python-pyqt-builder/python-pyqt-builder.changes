@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  1 20:13:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.15.1:
+  * Added support for bundling the QtLabs QML packages.
+
+-------------------------------------------------------------------
 Mon Apr 24 20:12:25 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.15.0
