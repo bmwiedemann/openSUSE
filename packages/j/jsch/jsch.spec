@@ -1,7 +1,7 @@
 #
 # spec file for package jsch
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,27 @@
 
 
 Name:           jsch
-Version:        0.1.55
+Version:        0.2.9
 Release:        0
 Summary:        Pure Java implementation of SSH2
 License:        BSD-3-Clause
 Group:          Development/Libraries/Java
-URL:            https://www.jcraft.com/jsch/
-Source0:        https://downloads.sourceforge.net/%{name}/%{name}-%{version}.zip
-Source1:        https://repo1.maven.org/maven2/com/jcraft/%{name}/%{version}/%{name}-%{version}.pom
-Source2:        plugin.properties
-Patch0:         jsch-0.1.54-sourcetarget.patch
-Patch1:         jsch-osgi-manifest.patch
+URL:            https://github.com/mwiede/jsch/
+Source0:        https://github.com/mwiede/%{name}/archive/refs/tags/%{name}-%{version}.tar.gz
+Source1:        %{name}-build.xml
+Patch0:         jsch-junixsocket.patch
+Patch1:         jsch-log4j.patch
 BuildRequires:  ant
+BuildRequires:  bouncycastle
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.6.0
-BuildRequires:  javapackages-local
-BuildRequires:  jzlib
-BuildRequires:  unzip
-BuildRequires:  zip
-Requires:       jzlib
+# We need this for module-info.class
+BuildRequires:  java-devel >= 9
+BuildRequires:  javapackages-local >= 6
+BuildRequires:  jna
+BuildRequires:  jna-contrib
+BuildRequires:  slf4j
+# The jar still works with Java 8
+Requires:       java >= 1.8
 BuildArch:      noarch
 
 %description
@@ -62,32 +64,39 @@ X11 forwarding, file transfer, etc., and you can integrate its
 functionality into your own Java programs.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{name}-%{version}
+cp %{SOURCE1} build.xml
+
+# We don't have junixsocket
+%pom_remove_dep com.kohlschutter.junixsocket:
+rm -f \
+    src/main/java/com/jcraft/jsch/JUnixSocketFactory.java
 %patch0 -p1
+
+# Do not depend on log4j
+%pom_remove_dep org.apache.logging.log4j:
+rm -f \
+    src/main/java/com/jcraft/jsch/Log4j2Logger.java \
+    src/test/java/com/jcraft/jsch/Log4j2LoggerTest.java
 %patch1 -p1
-cp %{SOURCE1} pom.xml
-%pom_remove_parent
 
 %build
-export CLASSPATH=$(build-classpath jzlib)
-ant dist javadoc
+mkdir -p lib
+build-jar-repository -s lib jna jna-platform slf4j/api bcprov
+%{ant} jar javadoc
 
 %install
-# inject the OSGi Manifest
-cp %{SOURCE2} plugin.properties
-jar uf dist/lib/%{name}-*.jar plugin.properties
-
 # jars
-install -Dpm 644 dist/lib/%{name}-*.jar %{buildroot}%{_javadir}/%{name}.jar
+install -Dpm 644 target/%{name}-*.jar %{buildroot}%{_javadir}/%{name}.jar
 
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -p -m 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
-%add_maven_depmap %{name}.pom %{name}.jar
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%add_maven_depmap %{name}.pom %{name}.jar -a com.jcraft:jsch
 
 # javadoc
 install -dm 755 %{buildroot}%{_javadocdir}/%{name}
-cp -pr javadoc/* %{buildroot}%{_javadocdir}/%{name}
+cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
 # examples

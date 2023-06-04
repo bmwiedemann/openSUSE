@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="jsch" default="package" basedir=".">
+
+  <!-- ====================================================================== -->
+  <!-- Build environment properties                                           -->
+  <!-- ====================================================================== -->
+
+  <property file="build.properties"/>
+
+  <property name="project.artifactId" value="jsch"/>
+  <property name="project.version" value="0.2.9"/>
+
+  <property name="spec.version" value="0.2"/>
+  <property name="versionWithoutMinus" value="${project.version}"/>
+
+  <property name="compiler.release" value="8"/>
+  <property name="compiler.source" value="1.${compiler.release}"/>
+  <property name="compiler.target" value="${compiler.source}"/>
+
+  <property name="build.finalName" value="jsch-${project.version}"/>
+  <property name="build.dir" value="target"/>
+  <property name="build.outputDir" value="${build.dir}/classes"/>
+  <property name="build.srcDir" value="src/main/java"/>
+  <property name="build.templateDir" value="src/main/java-templates"/>
+  <property name="build.genSrcDir" value="${build.dir}/generated-sources"/>
+  <property name="build.resourceDir" value="src/main/resources"/>
+  <property name="build.mrOutputDir" value="${build.outputDir}/META-INF/versions"/>
+  <property name="build.mrOutputDir.9" value="${build.mrOutputDir}/9"/>
+  <property name="build.mrSrcDir.9" value="src/main/java9"/>
+  <property name="build.mrOutputDir.10" value="${build.mrOutputDir}/10"/>
+  <property name="build.mrSrcDir.10" value="src/main/java10"/>
+  <property name="build.mrOutputDir.11" value="${build.mrOutputDir}/11"/>
+  <property name="build.mrSrcDir.11" value="src/main/java11"/>
+  <property name="build.mrOutputDir.15" value="${build.mrOutputDir}/15"/>
+  <property name="build.mrSrcDir.15" value="src/main/java15"/>
+  <property name="build.mrOutputDir.16" value="${build.mrOutputDir}/16"/>
+  <property name="build.mrSrcDir.16" value="src/main/java16"/>
+  <property name="reporting.outputDirectory" value="${build.dir}/site"/>
+
+  <!-- ====================================================================== -->
+  <!-- Defining classpaths                                                    -->
+  <!-- ====================================================================== -->
+
+  <path id="build.classpath">
+    <fileset dir="lib">
+      <include name="**/*.jar"/>
+    </fileset>
+  </path>
+
+  <!-- ====================================================================== -->
+  <!-- Cleaning up target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="clean" description="Clean the output directory">
+    <delete dir="${build.dir}"/>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Compilation targets                                                    -->
+  <!-- ====================================================================== -->
+
+  <condition property="build9">
+    <javaversion atleast="9"/>
+  </condition>
+  
+  <condition property="build10">
+    <javaversion atleast="10"/>
+  </condition>
+  
+  <condition property="build11">
+    <javaversion atleast="11"/>
+  </condition>
+  
+  <condition property="build15">
+    <javaversion atleast="15"/>
+  </condition>
+  
+  <condition property="build16">
+    <javaversion atleast="16"/>
+  </condition>
+  
+  <target name="compile" description="Compile the code">
+    <echo>Java/JVM version: ${ant.java.version}</echo> 
+    <mkdir dir="${build.genSrcDir}"/>
+    <copy todir="${build.genSrcDir}">
+      <fileset dir="${build.templateDir}"/>
+      <filterchain>
+        <expandproperties>
+          <propertyset>
+            <propertyref name="versionWithoutMinus"/>
+          </propertyset>
+        </expandproperties>
+      </filterchain>
+    </copy>
+    <mkdir dir="${build.outputDir}"/>
+    <javac destdir="${build.outputDir}"
+           nowarn="true"
+           debug="true"
+           optimize="false"
+           deprecation="true"
+           release="${compiler.release}"
+           verbose="false"
+           fork="false">
+      <src>
+        <pathelement location="${build.srcDir}"/>
+        <pathelement location="${build.genSrcDir}"/>
+      </src>
+      <classpath refid="build.classpath"/>
+    </javac>
+    <mkdir dir="${build.mrOutputDir}"/>
+  </target>
+
+  <target name="compile9" description="Compile the overrides for Java 9+" if="build9">
+    <!-- Override classes for Java 9+ -->
+    <mkdir dir="${build.mrOutputDir.9}"/>
+    <javac destdir="${build.mrOutputDir.9}"
+           nowarn="true"
+           debug="true"
+           optimize="false"
+           deprecation="true"
+           source="${compiler.source}"
+           target="${compiler.target}"
+           verbose="false"
+           fork="false">
+      <src>
+        <pathelement location="${build.mrSrcDir.9}"/>
+      </src>
+      <exclude name="**/module-info.java"/>
+      <classpath>
+        <path refid="build.classpath"/>
+        <pathelement location="${build.outputDir}"/>
+      </classpath>
+    </javac>
+    <!-- Build module-info.class -->
+    <javac destdir="${build.mrOutputDir.9}"
+           nowarn="true"
+           debug="true"
+           optimize="false"
+           deprecation="true"
+           release="9"
+           verbose="false"
+           fork="false">
+      <src>
+        <pathelement location="${build.mrSrcDir.9}"/>
+      </src>
+      <include name="**/module-info.java"/>
+      <modulepath>
+        <path refid="build.classpath"/>
+        <pathelement location="${build.outputDir}"/>
+      </modulepath>
+    </javac>
+  </target>
+
+  <target name="compile10" description="Compile the overrides for Java 10+" if="build10">
+    <!-- Override classes for Java 10+ -->
+    <mkdir dir="${build.mrOutputDir.10}"/>
+    <javac destdir="${build.mrOutputDir.10}"
+           nowarn="true"
+           debug="true"
+           optimize="false"
+           deprecation="true"
+           source="${compiler.source}"
+           target="${compiler.target}"
+           verbose="false"
+           fork="false">
+      <src>
+        <pathelement location="${build.mrSrcDir.10}"/>
+      </src>
+      <classpath>
+        <path refid="build.classpath"/>
+        <pathelement location="${build.outputDir}"/>
+      </classpath>
+    </javac>
+  </target>
+
+  <target name="compile11" description="Compile the overrides for Java 11+" if="build11">
+    <!-- Override classes for Java 11+ -->
+    <mkdir dir="${build.mrOutputDir.11}"/>
+    <javac destdir="${build.mrOutputDir.11}"
+           nowarn="true"
+           debug="true"
+           optimize="false"
+           deprecation="true"
+           source="${compiler.source}"
+           target="${compiler.target}"
+           verbose="false"
+           fork="false">
+      <src>
+        <pathelement location="${build.mrSrcDir.11}"/>
+      </src>
+      <classpath>
+        <path refid="build.classpath"/>
+        <pathelement location="${build.outputDir}"/>
+      </classpath>
+    </javac>
+  </target>
+
+  <target name="compile15" description="Compile the overrides for Java 15+" if="build15">
+    <!-- Override classes for Java 15+ -->
+    <mkdir dir="${build.mrOutputDir.15}"/>
+    <javac destdir="${build.mrOutputDir.15}"
+           nowarn="true"
+           debug="true"
+           optimize="false"
+           deprecation="true"
+           source="${compiler.source}"
+           target="${compiler.target}"
+           verbose="false"
+           fork="false">
+      <src>
+        <pathelement location="${build.mrSrcDir.15}"/>
+      </src>
+      <classpath>
+        <path refid="build.classpath"/>
+        <pathelement location="${build.outputDir}"/>
+      </classpath>
+    </javac>
+  </target>
+
+  <target name="compile16" description="Compile the overrides for Java 16+" if="build16">
+    <!-- Override classes for Java 16+ -->
+    <mkdir dir="${build.mrOutputDir.16}"/>
+    <javac destdir="${build.mrOutputDir.16}"
+           nowarn="true"
+           debug="true"
+           optimize="false"
+           deprecation="true"
+           source="${compiler.source}"
+           target="${compiler.target}"
+           verbose="false"
+           fork="false">
+      <src>
+        <pathelement location="${build.mrSrcDir.16}"/>
+      </src>
+      <classpath>
+        <path refid="build.classpath"/>
+        <pathelement location="${build.outputDir}"/>
+      </classpath>
+    </javac>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Javadoc target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="javadoc" description="Generates the Javadoc of the application">
+    <javadoc sourcepath="${build.srcDir}"
+             destdir="${reporting.outputDirectory}/apidocs"
+             access="protected"
+             source="${compiler.source}"
+             verbose="false"
+             version="true"
+             use="true"
+             author="true"
+             splitindex="false"
+             nodeprecated="false"
+             nodeprecatedlist="false"
+             notree="false"
+             noindex="false"
+             nohelp="false"
+             nonavbar="false"
+             serialwarn="false"
+             charset="ISO-8859-1"
+             linksource="false"
+             breakiterator="false">
+      <classpath refid="build.classpath"/>
+    </javadoc>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Package target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="package" depends="compile,compile9,compile10,compile11,compile15,compile16" description="Package the application">
+    <jar jarfile="${build.dir}/${build.finalName}.jar"
+         compress="true"
+         index="false"
+         basedir="${build.outputDir}"
+         excludes="**/package.html">
+      <manifest>
+        <attribute name="Bundle-Description" value="JSch is a pure Java implementation of SSH2"/>
+        <attribute name="Bundle-License" value="https://github.com/mwiede/jsch/blob/master/LICENSE.JZlib.txt,https://github.com/mwiede/jsch/blob/master/LICENSE.jBCrypt.txt,https://github.com/mwiede/jsch/blob/master/LICENSE.txt"/>
+        <attribute name="Bundle-ManifestVersion" value="2"/>
+        <attribute name="Bundle-Name" value="JSch"/>
+        <attribute name="Bundle-SymbolicName" value="com.jcraft.jsch"/>
+        <attribute name="Bundle-Version" value="${project.version}"/>
+        <attribute name="Export-Package" value="com.jcraft.jsch;version=&quot;${project.version}&quot;"/>
+        <attribute name="Implementation-Title" value="JSch"/>
+        <attribute name="Implementation-Version" value="${project.version}"/>
+        <attribute name="Import-Package" value="com.sun.jna.platform.win32;resolution:=optional,com.sun.jna;resolution:=optional,javax.crypto,javax.crypto.interfaces,javax.crypto.spec,org.bouncycastle.crypto.digests;resolution:=optional,org.bouncycastle.crypto.engines;resolution:=optional,org.bouncycastle.crypto.generators;resolution:=optional,org.bouncycastle.crypto.macs;resolution:=optional,org.bouncycastle.crypto.modes;resolution:=optional,org.bouncycastle.crypto.params;resolution:=optional,org.bouncycastle.crypto.signers;resolution:=optional,org.bouncycastle.crypto;resolution:=optional,org.ietf.jgss;resolution:=optional,org.slf4j;resolution:=optional"/>
+        <attribute name="Multi-Release" value="true"/>
+        <attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${compiler.target}))&quot;"/>
+        <attribute name="Specification-Title" value="JSch"/>
+        <attribute name="Specification-Version" value="${spec.version}"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- A dummy target for the package named after the type it creates         -->
+  <!-- ====================================================================== -->
+
+  <target name="jar" depends="package" description="Builds the jar for the application"/>
+
+</project>

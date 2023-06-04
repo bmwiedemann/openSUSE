@@ -1,4 +1,279 @@
 -------------------------------------------------------------------
+Sat Jun  3 11:03:46 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Migrate from com.jcraft:jsch to com.github.mwiede:jsch fork
+  (bsc#1211955)
+  * Alias to the old artifact since the new one is drop-in
+    replacement
+  * Keep the old OSGi bundle symbolic name to avoid extensive
+    patching of eclipse stack
+- Upgrade to version 0.2.9
+  * Changes of 0.2.9
+    + various improvements, #295
+      ~ #293 allow UserAuthNone to be extended.
+      ~ Make JGSS module optional.
+      ~ Tweak OSGi bundle manifest:
+      ~ Avoid self-import.
+      ~ Mark JGSS as optional.
+      ~ Loosen import versions of dependencies.
+      ~ Correctly adhere to the Multi-release JAR spec by ensuring
+        all public classes under versioned directories preside over
+        classes present in the top-level directory.
+      ~ Eliminate stray System.err.println() calls.
+      ~ Change PageantConnector to use JNA's built-in support for
+        User32.SendMessage().
+    + Improve error handling in InputStream.close() for SFTP
+      channels, #331
+  * Changes of 0.2.8
+    + activate sourcecode formatting, #247
+    + build improvements, #279
+    + #287 add algorithm type information to algorithm negotiation
+      logs, #290
+    + wrap NoClassDefFoundError's for invalid private keys, #289 and
+      #290
+  * Changes of 0.2.7
+    + #265 change buffer_margin computation to be dynamic based upon
+      the MAC to allow connections that advertise small maximum
+      packet sizes.
+    + #266 fix PuTTY key parsing to work with unix line endings.
+    + Add support for ECDSA and EdDSA type PuTTY keys.
+    + #71 add support for PuTTY version 3 format keys.
+      ~ Encrypted PuTTY version 3 format keys requires Bouncy
+        Castle (bcprov-jdk18on).
+    + Eliminate KeyPairDeferred and instead change handling of
+      OpenSSH V1 type keys to be more like other KeyPair types.
+    + Be more vigilant about clearing private key data.
+    + Improve PKCS8 key handling and add support for PKCS5 2.1
+      encryption.
+    + Add support for ECDSA type PKCS8 keys.
+    + Add support for SCrypt type KDF for PKCS8 keys.
+      ~ PKCS8 keys using SCrypt requires Bouncy Castle
+        (bcprov-jdk18on).
+    + Add support for EdDSA type PKCS8 keys.
+      ~ EdDSA type PKCS8 keys requires Bouncy Castle
+        (bcprov-jdk18on).
+    + Attempt to authenticate using other signature algorithms
+      supported by the same public key.
+      ~ Allow this behavior to be disabled via
+        try_additional_pubkey_algorithms config option.
+        ° Some servers incorrectly respond with
+          SSH_MSG_USERAUTH_PK_OK to an initial auth query that they
+          don't actually support for RSA keys.
+    + Add a new config option enable_pubkey_auth_query to allow
+      skipping auth queries and proceed directly to attempting
+      full SSH_MSG_USERAUTH_REQUEST's.
+    + Add a new config option enable_auth_none to control whether
+      an initial auth request for the method none is sent to detect
+      all supported auth methods available on the server.
+  * Changes of 0.2.6
+    + Include host alias instead of the real host in messages and
+      exceptions, #257
+    + Fix missing keySize set when loading V1 RSA keys, #258
+    + Enhancement to present KeyPair.getKeyTypeString() method, #259
+  * Changes of 0.2.5
+    + Explictly free resources in Compression implementations, #241
+    + Fix integration test failures on Apple Silicon by skipping
+      OpenSSH 7.4 tests, #227
+    + generate osgi bundle manifest data for jar #248, #249
+  * Changes of 0.2.4
+    + Improved excepton handling by @norrisjeremy in #200
+  * Changes of 0.2.3
+    + #188 fix private key length checks for ssh-ed25519 and
+      ssh-ed448, #189
+  * Changes of 0.2.2
+    + setup jdk for code-ql analysis, #151
+    + misc improvements, #152
+    + Fixing Issue #131, #134
+    + Update link to bcrypt, #157
+  * Changes of 0.2.1
+    + Allow to set a Logger per JSch-instance rather than a VM-wide
+      one, #128
+    + Preliminary changes prior to Javadoc work, #126
+    + remove check to allow setting any filename encoding with any
+      server version #137, #142
+  * Changes of 0.2.0
+    + Disable RSA/SHA1 signature algorithm by default #75
+    + Add basic Logger implementations that can be optionally
+      utilized with JSch.setLogger():
+      ~ JulLogger, using java.util.logging.Logger
+      ~ JplLogger, using Java 9's JEP 264
+      ~ Log4j2Logger, using Apache Log4j 2
+      ~ Slf4jLogger, using SLF4J
+    + Fix client version to be compliant with RFC 4253 section 4.2
+      by not including minus sign characters #115
+    + Add java.util.zip based compression implementation #114
+      ~ This is based upon the CompressionJUZ implementation posted
+        to the JSch-users mailing list in 2012 by the original JSch
+        author
+      ~ The existing JZlib implementation remains the default to
+        maintain strict RFC 4253 section 6.2 compliance
+        ° To use the new implementation globally, execute
+          JSch.setConfig("zlib@openssh.com",
+          "com.jcraft.jsch.juz.Compression") +
+          JSch.setConfig("zlib", "com.jcraft.jsch.juz.Compression")
+        ° To use the new implementation per session, execute
+          session.setConfig("zlib@openssh.com",
+          "com.jcraft.jsch.juz.Compression")
+          + session.setConfig("zlib",
+          "com.jcraft.jsch.juz.Compression")
+  * Changes of 0.1.72
+    + Switch chacha20-poly1305@openssh.com algorithm to a pure
+      Bouncy Castle based implementation
+    + implement openssh config behavior to handle append, prepend
+      and removal of algorithms #104
+  * Changes of 0.1.71
+    + Address #98 by restoring JSch.VERSION
+  * Changes of 0.1.70
+    + Address #89 by fixing rare ECDSA signature validation issue
+    + Address #93 by always setting the "want reply" flag for "env"
+      type channel requests to false
+  * Changes of 0.1.69
+    + Address #83 by sending CR LF at the end of the identification
+      string
+    + Fix earlier change for #76 that failed to correctly make the
+      "Host" keyword case-insensitive
+    + Fix PageantConnector struct class visibility #86
+  * Changes of 0.1.68
+    + Added support for the rijndael-cbc@lysator.liu.se algorithm
+    + Added support for the hmac-ripemd160,
+      hmac-ripemd160@openssh.com and hmac-ripemd160-etm@openssh.com
+      algorithms using Bouncy Castle
+    + Added support for various algorithms from RFC 4253 and
+      RFC 4344 using Bouncy Castle
+      ~ cast128-cbc
+      ~ cast128-ctr
+      ~ twofish-cbc
+      ~ twofish128-cbc
+      ~ twofish128-ctr
+      ~ twofish192-cbc
+      ~ twofish192-ctr
+      ~ twofish256-cbc
+      ~ twofish256-ctr
+    + Added support for the seed-cbc@ssh.com algorithm using Bouncy
+      Castle
+  * Changes of 0.1.67
+    + Added support for the blowfish-ctr algorithm from RFC 4344
+    + Fix bug where ext-info-c was incorrectly advertised during
+      rekeying
+      ~ According to RFC 8308 section 2.1, ext-info-c should only
+        advertised during the first key exchange
+    + Address #77 by attempting to add compatibility with older
+      Bouncy Castle releases
+  * Changes of 0.1.66
+    + Added support for RFC 8308 extension negotiation and
+      server-sig-algs extension
+      ~ This support is enabled by default, but can be controlled
+        via the enable_server_sig_algs config option (or
+        jsch.enable_server_sig_algs system property)
+      ~ When enabled and a server-sig-algs message is received from
+        the server, the algorithms included by the server and also
+        present in the PubkeyAcceptedKeyTypes config option will be
+        attempted first when using publickey authentication
+      ~ Additionally if the server is detected as OpenSSH version
+        7.4, the rsa-sha2-256 and rsa-sha2-512 algorithms will be
+        added to the received server-sig-algs as a workaround for
+        OpenSSH bug 2680
+    + Added support for various algorithms supported by Tectia
+      (ssh.com):
+      ~ diffie-hellman-group14-sha224@ssh.com
+      ~ diffie-hellman-group14-sha256@ssh.com
+      ~ diffie-hellman-group15-sha256@ssh.com
+      ~ diffie-hellman-group15-sha384@ssh.com
+      ~ diffie-hellman-group16-sha384@ssh.com
+      ~ diffie-hellman-group16-sha512@ssh.com
+      ~ diffie-hellman-group18-sha512@ssh.com
+      ~ diffie-hellman-group-exchange-sha224@ssh.com
+      ~ diffie-hellman-group-exchange-sha384@ssh.com
+      ~ diffie-hellman-group-exchange-sha512@ssh.com
+      ~ hmac-sha224@ssh.com
+      ~ hmac-sha256@ssh.com
+      ~ hmac-sha256-2@ssh.com
+      ~ hmac-sha384@ssh.com
+      ~ hmac-sha512@ssh.com
+      ~ ssh-rsa-sha224@ssh.com
+      ~ ssh-rsa-sha256@ssh.com
+      ~ ssh-rsa-sha384@ssh.com
+      ~ ssh-rsa-sha512@ssh.com
+    + Added support for SHA224 to FingerprintHash
+    + Fixing #52
+    + Deprecate void setFilenameEncoding(String encoding) in favor
+      of void setFilenameEncoding(Charset encoding) in ChannelSftp
+    + Added support for rsa-sha2-256 and rsa-rsa2-512 algorithms to
+      ChannelAgentForwarding
+    + Address #65 by adding ssh-agent support derived from
+      jsch-agent-proxy
+      ~ See examples/JSchWithAgentProxy.java for simple example
+      ~ ssh-agent support requires either Java 16's JEP 380 or the
+        addition of junixsocket to classpath
+      ~ Pageant support is untested and requires the addition of JNA
+        to classpath
+    + Added support for the following algorithms with older Java
+      releases by using Bouncy Castle:
+      ~ ssh-ed25519
+      ~ ssh-ed448
+      ~ curve25519-sha256
+      ~ curve25519-sha256@libssh.org
+      ~ curve448-sha512
+      ~ chacha20-poly1305@openssh.com
+  * Changes of 0.1.65
+    + Added system properties to allow manipulation of various
+      crypto algorithms used by default
+    + Integrated JZlib, allowing use of zlib@openssh.com and zlib
+      compressions without the need to provide the JZlib jar-file
+    + Modularized the jar-file for use with Java 9 or newer
+    + Added runtime controls for the min/max/preferred sizes used
+      for diffie-hellman-group-exchange-sha256 and
+      diffie-hellman-group-exchange-sha1
+    + Renamed PubkeyAcceptedKeyTypes config to
+      PubkeyAcceptedAlgorithms to match recent changes in OpenSSH
+      (PubkeyAcceptedKeyTypes is still accepted for backward
+      compatibility)
+    + Reduced number of algorithms that are runtime checked by
+      default via CheckCiphers, CheckMacs, CheckKExes and
+      CheckSignatures to improve runtime performance
+  * Changes of 0.1.64
+    + #55 bug fix
+  * Changes of 0.1.63
+    + fix for #42
+  * Changes 0.1.62
+    + #13 reject HostKey with some servers
+    + #20 Include TestBCrypt.java unit test
+    + #21 Misc cleanup
+    + #27 Update Testcontainers to newest version to fix test
+      failures
+    + #34 NPE with openssh v1 format
+  * Changes 0.1.61
+    + Add support for chacha20-poly1305@openssh.com, ssh-ed25519,
+      ssh-ed448, curve448-sha512, diffie-hellman-group15-sha512
+      and diffie-hellman-group17-sha512.
+      This makes use of the new EdDSA feature added in Java 15's
+      JEP 339. #17
+    + added integration test for public key authentication #19
+  * Changes of 0.1.60
+    + support for openssh-v1-private-key format
+    + Fix bug with AEAD ciphers when compression is used. #15
+  * Changes of 0.1.59
+    + fixing issue #6 (originally from
+      https://sourceforge.net/p/jsch/mailman/message/36872566/)
+  * Changes of 0.1.58
+    + adds support for more algorithms, see #4
+  * Changes of 0.1.57
+    + support for rsa-sha2-256 and rsa-sha2-512. #1
+  * Changes of 0.1.56
+    + support for direct-streamlocal@openssh.com
+      (see SocketForwardingL.java)
+- Removed patches:
+  * jsch-0.1.54-sourcetarget.patch
+  * jsch-osgi-manifest.patch
+    + both problems are handled differently in the new version
+- Added patches:
+  * jsch-junixsocket.patch
+    + disable building with dependency that we don't have
+  * jsch-log4j.patch
+    + disable building with log4j support in order to avoid a
+      huge build cycle
+
+-------------------------------------------------------------------
 Sat Mar 19 21:51:39 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:
