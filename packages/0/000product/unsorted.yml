@@ -453,6 +453,7 @@ unsorted:
   - afl 
   - afterburn 
   - afterburn-dracut 
+  - agama-cli 
   - age 
   - agenda 
   - agenda-lang 
@@ -6867,6 +6868,7 @@ unsorted:
   - golang-github-boynux-squid_exporter 
   - golang-github-cpuguy83-go-md2man 
   - golang-github-czerwonk-ping_exporter 
+  - golang-github-google-jsonnet 
   - golang-github-jteeuwen-go-bindata 
   - golang-github-linuxdeepin-dde-api 
   - golang-github-linuxdeepin-deepin-daemon 
@@ -20623,7 +20625,6 @@ unsorted:
   - perl-HTML-TreeBuilder-XPath 
   - perl-HTTP-Body 
   - perl-HTTP-BrowserDetect 
-  - perl-HTTP-CookieJar 
   - perl-HTTP-CookieMonster 
   - perl-HTTP-DAV 
   - perl-HTTP-Daemon 
