@@ -7,4 +7,12 @@
     <comment>I want to add glow to openSUSE:Factory</comment>
     <requestid>1071477</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f20da6c06ffb9e950371fd905dc48447</srcmd5>
+    <version>1.5.1</version>
+    <time>1685889743</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090745</requestid>
+  </revision>
 </revisionlist>

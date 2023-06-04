@@ -20,7 +20,7 @@
 # Disable LTO flags to stop builds failing on some architectures
 %global _lto_cflags %nil
 Name:           glow
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Render markdown on the CLI
 #
@@ -35,9 +35,10 @@ Source1:        vendor.tar.zst
 #
 Source2:        README.suse-maint.md
 #
-BuildRequires:  zstd
+Patch1:         fix-for-go-117.patch
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.11
+BuildRequires:  zstd
+BuildRequires:  golang(API) >= 1.17
 
 %description
 Glow is a terminal based markdown reader designed from the ground up to bring
@@ -60,7 +61,7 @@ BUILDMOD="-buildmode=pie"
 export CGO_CFLAGS="%{optflags}"
 export CGO_CXXFLAGS="%{optflags}"
 export CGO_CPPFLAGS="%{optflags}"
-go build -v -x -mod=vendor $BUILDMOD -a -ldflags "-s -X main.revision=%{version}"
+go build -v -x -mod=vendor $BUILDMOD -a -ldflags "-s -X main.Version=%{version}"
 
 %install
 install -Dm755 %{name} %{buildroot}%{_bindir}/%{name}

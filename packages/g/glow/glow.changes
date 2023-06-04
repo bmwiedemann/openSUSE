@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 31 02:04:53 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 1.5.1:
+  - docs: fix typos by @kianmeng in #471
+  - fix: rm emoji from package description by @caarlos0 in #453
+  - fix: improve editor handling by @caarlos0 in #449
+  - fix: lazily init UI by @muesli in #494
+  - fix-for-go-117.patch added as vendoring was incorrect
+    Ran the patch against the source before manually doing
+    go mod download/verify/vendor and packaging.
+
+-------------------------------------------------------------------
 Thu Mar  9 17:01:01 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Add README.suse-maint.md to sources in specfile.
