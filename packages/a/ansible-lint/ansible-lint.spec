@@ -40,7 +40,7 @@
 %global lib_name ansiblelint
 %{?python_enable_dependency_generator}
 Name:           ansible-lint
-Version:        6.16.2
+Version:        6.17.0
 Release:        0%{?dist}
 Summary:        Best practices checker for Ansible
 License:        MIT
@@ -69,37 +69,37 @@ BuildRequires:  %{ansible_python}-flake8
 # to make sure this only builds if they are present
 # https://github.com/ansible/ansible-lint/blob/main/.config/requirements-lock.txt
 BuildRequires:  ansible-core >= 2.15
-BuildRequires:  %{ansible_python}-ansible-compat >= 4.0.1
+BuildRequires:  %{ansible_python}-ansible-compat >= 4.1.1
 BuildRequires:  %{ansible_python}-black >= 23.3.0
 BuildRequires:  %{ansible_python}-enrich >= 1.2.7
 BuildRequires:  %{ansible_python}-filelock >= 3.12.0
 BuildRequires:  %{ansible_python}-jsonschema >= 4.17.3
-BuildRequires:  %{ansible_python}-packaging >= 21.3
+BuildRequires:  %{ansible_python}-packaging >= 23.1
 BuildRequires:  %{ansible_python}-PyYAML >= 6.0
-BuildRequires:  %{ansible_python}-rich >= 13.3.5
-BuildRequires:  (%{ansible_python}-ruamel.yaml >= 0.17.26 and %{ansible_python}-ruamel.yaml < 0.18)
+BuildRequires:  %{ansible_python}-rich >= 13.4.1
+BuildRequires:  (%{ansible_python}-ruamel.yaml >= 0.17.31 and %{ansible_python}-ruamel.yaml < 0.18)
 BuildRequires:  %{ansible_python}-subprocess-tee >= 0.4.1
 BuildRequires:  %{ansible_python}-tenacity
 BuildRequires:  %{ansible_python}-wcmatch >= 8.4.1
-BuildRequires:  %{ansible_python}-yamllint >= 1.31.0
+BuildRequires:  %{ansible_python}-yamllint >= 1.32.0
 
 #
 # https://github.com/ansible/ansible-lint/blob/main/.config/requirements-lock.txt
 Requires:       ansible-core >= 2.15
-Requires:       %{ansible_python}-ansible-compat >= 4.0.1
+Requires:       %{ansible_python}-ansible-compat >= 4.1.1
 Requires:       %{ansible_python}-black >= 23.3.0
 Requires:       %{ansible_python}-bracex >= 2.2.1
 Requires:       %{ansible_python}-enrich >= 1.2.6
 Requires:       %{ansible_python}-filelock  >= 3.12.0
 Requires:       %{ansible_python}-jsonschema >= 4.17.0
-Requires:       %{ansible_python}-packaging >= 21.3
+Requires:       %{ansible_python}-packaging >= 23.1
 Requires:       %{ansible_python}-PyYAML  >= 6.0
 Requires:       %{ansible_python}-rich >= 13.3.5
-Requires:       (%{ansible_python}-ruamel.yaml >= 0.17.26 and %{ansible_python}-ruamel.yaml < 0.18)
+Requires:       (%{ansible_python}-ruamel.yaml >= 0.17.31 and %{ansible_python}-ruamel.yaml < 0.18)
 Requires:       %{ansible_python}-subprocess-tee >= 0.4.1
 Requires:       %{ansible_python}-tenacity
 Requires:       %{ansible_python}-wcmatch >= 8.4.1
-Requires:       %{ansible_python}-yamllint >= 1.31.0
+Requires:       %{ansible_python}-yamllint >= 1.32.0
 
 %description
 Checks playbooks for practices and behavior that could potentially be improved.

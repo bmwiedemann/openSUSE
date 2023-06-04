@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jun  1 05:33:18 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.17.0:
+  * Minor Changes
+    - fqcn[deep]: detect deep plugins (#3502) @ssbarnea
+  * Bugfixes
+    - Reimplement file exclusion logic (#3507) @ssbarnea
+    - Check validity of 'become_method' values from code (#3499)
+      @ajinkyau
+    - Fix role_name_ prefix include_role var name error (#3500)
+      @ajinkyau
+    - Hide pip error if not present (#3494) @Et7f3
+    - Update formatter to avoid reporting paths with .. (#3496)
+      @ssbarnea
+    - Remove false positive on 'cacheable' property of set_fact
+      (#3490) @ajinkyau
+    - Add missing become_method plugins to the schema (#3484)
+      @ajinkyau
+    - Add support for ansible-builder v3 schema (#3480) @ajinkyau
+    - Add Github Marketplace Action (#3476) @ssbarnea
+    - Add oracle linux 8.8 (#3479) @facorazza
+    - Revert ansible-compat vendoring (#3478) @ssbarnea
+    - Updated file or dir not found message (#3474) @ajinkyau
+    - Check for included role prefix instead of current one (#3473)
+      @ssbarnea
+
+-------------------------------------------------------------------
 Mon May 22 05:39:01 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.16.2:
