@@ -2,13 +2,13 @@ Add migration constraint parameters to libvirt perl bindings
 
 References: fate#316614, bsc#859868
 
-Index: Sys-Virt-9.2.0/lib/Sys/Virt/Domain.pm
+Index: Sys-Virt-9.4.0/lib/Sys/Virt/Domain.pm
 ===================================================================
---- Sys-Virt-9.2.0.orig/lib/Sys/Virt/Domain.pm
-+++ Sys-Virt-9.2.0/lib/Sys/Virt/Domain.pm
-@@ -1189,6 +1189,18 @@ omitted libvirt will auto-generate suita
- only necessary to specify this URI if the destination host has multiple
- interfaces and a specific interface is required to transmit storage data.
+--- Sys-Virt-9.4.0.orig/lib/Sys/Virt/Domain.pm
++++ Sys-Virt-9.4.0/lib/Sys/Virt/Domain.pm
+@@ -1199,6 +1199,18 @@ compression, 1 is maximum speed and 9 is
+ The level of compression for zstd. Accepted values are in range 0-20. 0 is no
+ compression, 1 is maximum speed and 20 is maximum compression.
  
 +=item C<Sys::Virt::Domain::MIGRATE_PARAM_SUSE_MAX_ITERS>
 +
@@ -25,68 +25,40 @@ Index: Sys-Virt-9.2.0/lib/Sys/Virt/Domain.pm
  =back
  
  =item $ddom = $dom->migrate(destcon, flags=0, dname=undef, uri=undef, bandwidth=0)
-Index: Sys-Virt-9.2.0/lib/Sys/Virt.xs
+Index: Sys-Virt-9.4.0/lib/Sys/Virt.xs
 ===================================================================
---- Sys-Virt-9.2.0.orig/lib/Sys/Virt.xs
-+++ Sys-Virt-9.2.0/lib/Sys/Virt.xs
-@@ -5729,7 +5729,7 @@ _migrate(dom, destcon, newparams, flags=
+--- Sys-Virt-9.4.0.orig/lib/Sys/Virt.xs
++++ Sys-Virt-9.4.0/lib/Sys/Virt.xs
+@@ -324,7 +324,7 @@ migrate_parse_params(virTypedParameterPt
      virTypedParameterPtr params;
      int nparams;
-  CODE:
--    nparams = 19;
-+    nparams = 22;
+ 
+-    nparams = 21;
++    nparams = 24;
      Newx(params, nparams, virTypedParameter);
  
      strncpy(params[0].field, VIR_MIGRATE_PARAM_URI,
-@@ -5808,6 +5808,18 @@ _migrate(dom, destcon, newparams, flags=
+@@ -411,6 +411,18 @@ migrate_parse_params(virTypedParameterPt
              VIR_TYPED_PARAM_FIELD_LENGTH);
-     params[18].type = VIR_TYPED_PARAM_STRING;
+     params[20].type = VIR_TYPED_PARAM_INT;
  
-+    strncpy(params[19].field, VIR_MIGRATE_PARAM_SUSE_MAX_ITERS,
-+            VIR_TYPED_PARAM_FIELD_LENGTH);
-+    params[19].type = VIR_TYPED_PARAM_UINT;
-+
-+    strncpy(params[20].field, VIR_MIGRATE_PARAM_SUSE_MIN_REMAINING,
-+            VIR_TYPED_PARAM_FIELD_LENGTH);
-+    params[20].type = VIR_TYPED_PARAM_UINT;
-+
-+    strncpy(params[21].field, VIR_MIGRATE_PARAM_SUSE_ABORT_IF_BUSY,
++    strncpy(params[21].field, VIR_MIGRATE_PARAM_SUSE_MAX_ITERS,
 +            VIR_TYPED_PARAM_FIELD_LENGTH);
 +    params[21].type = VIR_TYPED_PARAM_UINT;
++
++    strncpy(params[22].field, VIR_MIGRATE_PARAM_SUSE_MIN_REMAINING,
++            VIR_TYPED_PARAM_FIELD_LENGTH);
++    params[22].type = VIR_TYPED_PARAM_UINT;
++
++    strncpy(params[23].field, VIR_MIGRATE_PARAM_SUSE_ABORT_IF_BUSY,
++            VIR_TYPED_PARAM_FIELD_LENGTH);
++    params[23].type = VIR_TYPED_PARAM_UINT;
 +
      nparams = vir_typed_param_from_hv(newparams, params, nparams);
  
      vir_typed_param_add_string_list_from_hv(newparams, &params, &nparams,
-@@ -5836,7 +5848,7 @@ _migrate_to_uri(dom, desturi, newparams,
-     virTypedParameterPtr params;
-     int nparams;
-  PPCODE:
--    nparams = 19;
-+    nparams = 22;
-     Newx(params, nparams, virTypedParameter);
- 
-     strncpy(params[0].field, VIR_MIGRATE_PARAM_URI,
-@@ -5915,6 +5927,18 @@ _migrate_to_uri(dom, desturi, newparams,
-             VIR_TYPED_PARAM_FIELD_LENGTH);
-     params[18].type = VIR_TYPED_PARAM_STRING;
- 
-+    strncpy(params[19].field, VIR_MIGRATE_PARAM_SUSE_MAX_ITERS,
-+            VIR_TYPED_PARAM_FIELD_LENGTH);
-+    params[19].type = VIR_TYPED_PARAM_UINT;
-+
-+    strncpy(params[20].field, VIR_MIGRATE_PARAM_SUSE_MIN_REMAINING,
-+            VIR_TYPED_PARAM_FIELD_LENGTH);
-+    params[20].type = VIR_TYPED_PARAM_UINT;
-+
-+    strncpy(params[21].field, VIR_MIGRATE_PARAM_SUSE_ABORT_IF_BUSY,
-+            VIR_TYPED_PARAM_FIELD_LENGTH);
-+    params[21].type = VIR_TYPED_PARAM_UINT;
-+
-     nparams = vir_typed_param_from_hv(newparams, params, nparams);
- 
-     vir_typed_param_add_string_list_from_hv(newparams, &params, &nparams,
-@@ -9846,6 +9870,9 @@ BOOT:
-     REGISTER_CONSTANT_STR(VIR_MIGRATE_PARAM_DISKS_URI, MIGRATE_PARAM_DISKS_URI);
+@@ -9788,6 +9800,9 @@ BOOT:
+     REGISTER_CONSTANT_STR(VIR_MIGRATE_PARAM_COMPRESSION_ZSTD_LEVEL, MIGRATE_PARAM_ZSTD_LEVEL);
  
      REGISTER_CONSTANT(VIR_DOMAIN_MIGRATE_MAX_SPEED_POSTCOPY, MIGRATE_MAX_SPEED_POSTCOPY);
 +    REGISTER_CONSTANT_STR(VIR_MIGRATE_PARAM_SUSE_MAX_ITERS, MIGRATE_PARAM_SUSE_MAX_ITERS);
