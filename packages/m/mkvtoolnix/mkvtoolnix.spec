@@ -17,7 +17,7 @@
 
 
 Name:           mkvtoolnix
-Version:        76.0
+Version:        77.0
 Release:        0
 Summary:        Tools to Create, Alter, and Inspect Matroska Files
 License:        GPL-2.0-or-later
@@ -157,6 +157,7 @@ install -m0755 src/tools/ac3parser src/tools/base64tool src/tools/bluray_dump \
 %{_bindir}/mkvtoolnix-gui
 %{_datadir}/metainfo/org.bunkus.mkvtoolnix-gui.appdata.xml
 %{_datadir}/mime/packages/org.bunkus.mkvtoolnix-gui.xml
+%{_datadir}/%{name}/qt_resources.rcc
 %{_datadir}/%{name}/sounds
 %{_datadir}/applications/org.bunkus.mkvtoolnix-gui.desktop
 %{_datadir}/icons/hicolor/*/apps/mkv*.png

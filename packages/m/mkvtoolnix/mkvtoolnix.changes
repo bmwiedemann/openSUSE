@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Sun Jun  4 16:25:45 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to  version 77.0
+  New features and enhancements:
+  * mkvmerge: tracks in the destination file will now be sorted
+    by their type automatically unless the track order is
+    specified with the `--track-order` option. The order is as
+    follows: video tracks first followed by audio & subtitle
+    tracks with other rarely used types of tracks last. Tracks
+    of the same type will be sorted in the same order as their
+    source files occur in the command-line arguments. Note that
+    this doesn't affect file identification.
+  * MKVToolNix GUI: multiplexer: the default list colors used
+    for distinguishing source files does not include the darkest
+    tier anymore (the ones where one or two components are set
+    to the value 0x3f) as they're hard to distinguish from each
+    other. Only affects new installations, or when the user
+    presses the "reset to default colors" button.
+  * MKVToolNix GUI: multiplexer: the GUI will now check the
+    state of the 'track enabled' flag of all video, audio &
+    subtitle tracks when starting to multiplex or adding a job to
+    the job queue. If there's no track with its flag turned on
+    for a type, the GUI will turn on the flag for the first track
+    of the type. This behavior can be turned off in the
+    preferences.
+  * MKVToolNix GUI: header editor: the columns in the
+    tracks/attachments view and the values on the "track type"
+    page will now be updated each time a corresponding property
+    is changed (e.g. when a track's name is changed) instead of
+    showing what's in the file on disk.
+  * MKVToolNix GUI: Windows: a new settings in the preferences
+    lets the user chose whether to use the light or the dark
+    color palette, or to follow the system settings.
+  Bug fixes:
+  * Fixed compilation with fmt v10.0.0.
+  * mkvmerge: fixed several instances of wrong format strings
+    for `fmt::format` used in debug messages.
+  * mkvmerge: AV1 packetizer: the packetizer did not honor the
+    aspect ratio (factor) given on the command-line via the
+    `--aspect-ratio` or `--aspect-ratio-factor` options.
+  * mkvmerge: JSON identification: cropping parameters are
+    reported again even if some of the four values are not
+    present in the file or set to 0.
+  * MKVToolNix GUI: the defunct "disable the dark mode" checkbox
+    was removed from the preferences.
+  * MKVToolNix GUI: language dialog: under certain conditions
+    the controls for the individual components remained disabled
+    when the dialog is opened even though editing of individual
+    components is selected.
+  * MKVToolNix GUI: language dialog: the controls for the
+    individual components weren't re-initialized properly after
+    opening the dialog for the second & all following times,
+    potentially leaving previously selected/entered entries
+    intact, primarily when editing multiple tracks at once.
+  * MKVToolNix GUI: header editor: using the actions from the
+    "modify selected track" context menu only worked if the user
+    right-clicked on the first column in the view. They now work
+    for clicks on any of the columns.
+  * MKVToolNix GUI: header editor: some of the actions toggling
+    specific flags from the "modify selected track" did not work
+    correctly if the flag wasn't currently present in the file,
+    especially if the underlying value has a default value in the
+    Matroska specs.
+  Build system changes:
+  * The bundled `fmt` library was updated to v10.0.0.
+  * MKVToolNix GUI now uses an external Qt resource file instead
+    of compiling it into the executable. The resource file has
+    reached a size at which the C++ compiler exhausts available
+    virtual memory on some 32-bit architectures.
+    The GUI will look for the file in the directory set with
+    `configure`'s `--datadir` parameter on other systems
+    (which usually means `/usr/share/mkvtoolnix`). The `install`
+    build system commands installs it into that folder.
+
+-------------------------------------------------------------------
 Sun Apr 30 11:22:10 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 76.0
