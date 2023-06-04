@@ -142,27 +142,9 @@
     %define wireshark_plugindir %(pkg-config --variable plugindir wireshark)/epan
 %endif
 
-# libvirt no longer distributes sysconfig files.
-# If the user has customized a sysconfig file, the RPM upgrade path will rename
-# it to .rpmsave since the file is no longer managed by RPM. To prevent a
-# regression, we rename it back after the transaction to preserve the user's
-# modifications
-%define libvirt_sysconfig_pre() \
-    for sc in %{?*} ; do \
-        test -f "%{_sysconfdir}/sysconfig/${sc}.rpmsave" || continue ; \
-        mv -v "%{_sysconfdir}/sysconfig/${sc}.rpmsave" "%{_sysconfdir}/sysconfig/${sc}.rpmsave.old" ; \
-    done \
-    %{nil}
-%define libvirt_sysconfig_posttrans() \
-    for sc in %{?*} ; do \
-        test -f "%{_sysconfdir}/sysconfig/${sc}.rpmsave" || continue ; \
-        mv -v "%{_sysconfdir}/sysconfig/${sc}.rpmsave" "%{_sysconfdir}/sysconfig/${sc}" ; \
-    done \
-    %{nil}
-
 Name:           libvirt
 URL:            https://libvirt.org/
-Version:        9.3.0
+Version:        9.4.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -678,7 +660,6 @@ an implementation of the hypervisor driver APIs using libxl.
 %package daemon-qemu
 Summary:        Server side daemon & driver required to run QEMU guests
 %if %{with_modular_daemons}
-Requires:       %{name}-daemon-common = %{version}-%{release}
 Requires:       %{name}-daemon-lock = %{version}-%{release}
 Requires:       %{name}-daemon-log = %{version}-%{release}
 Requires:       %{name}-daemon-plugin-lockd = %{version}-%{release}
@@ -701,7 +682,6 @@ capabilities of the QEMU emulators
 %package daemon-lxc
 Summary:        Server side daemon & driver required to run LXC guests
 %if %{with_modular_daemons}
-Requires:       %{name}-daemon-common = %{version}-%{release}
 Requires:       %{name}-daemon-log = %{version}-%{release}
 Requires:       %{name}-daemon-proxy = %{version}-%{release}
 %else
@@ -722,7 +702,6 @@ capabilities of LXC
 %package daemon-xen
 Summary:        Server side daemon & driver required to run XEN guests
 %if %{with_modular_daemons}
-Requires:       %{name}-daemon-common = %{version}-%{release}
 Requires:       %{name}-daemon-lock = %{version}-%{release}
 Requires:       %{name}-daemon-plugin-lockd = %{version}-%{release}
 Requires:       %{name}-daemon-proxy = %{version}-%{release}
@@ -745,7 +724,6 @@ capabilities of XEN
 %package daemon-vbox
 Summary:        Server side daemon & driver required to run VirtualBox guests
 %if %{with_modular_daemons}
-Requires:       %{name}-daemon-common = %{version}-%{release}
 Requires:       %{name}-daemon-proxy = %{version}-%{release}
 %else
 Requires:       %{name}-daemon = %{version}-%{release}
@@ -1190,14 +1168,12 @@ VIR_TEST_DEBUG=1 %meson_test -t 5 --no-suite syntax-check
 %define libvirt_daemon_systemd_postun_priv_restart() %service_del_postun %1.service %1-admin.socket %1.socket
 
 %pre daemon
-%libvirt_sysconfig_pre libvirtd
 %if ! %{with_modular_daemons}
 %libvirt_daemon_systemd_pre_inet libvirtd
 %endif
 %libvirt_logrotate_pre libvirtd
 
 %post daemon
-/sbin/ldconfig
 %if %{with_apparmor}
 %apparmor_reload /etc/apparmor.d/usr.sbin.libvirtd
 %endif
@@ -1209,7 +1185,6 @@ VIR_TEST_DEBUG=1 %meson_test -t 5 --no-suite syntax-check
 %libvirt_daemon_systemd_preun_inet libvirtd
 
 %postun daemon
-/sbin/ldconfig
 # Handle restart/reload in posttrans
 %if ! %{with_modular_daemons}
 %libvirt_daemon_systemd_postun_inet libvirtd
@@ -1217,7 +1192,6 @@ VIR_TEST_DEBUG=1 %meson_test -t 5 --no-suite syntax-check
 
 %posttrans daemon
 %libvirt_logrotate_posttrans libvirtd
-%libvirt_sysconfig_posttrans libvirtd
 # All connection drivers should be installed post transaction.
 # Time to restart the daemon
 test -f %{_sysconfdir}/sysconfig/services && \
@@ -1257,7 +1231,6 @@ if test "$DISABLE_RESTART_ON_UPDATE" != yes && \
 fi
 
 %pre daemon-common
-%libvirt_sysconfig_pre libvirt-guests
 %service_add_pre libvirt-guests
 
 %post daemon-common
@@ -1274,17 +1247,12 @@ fi
 /sbin/ldconfig
 %service_del_postun_without_restart libvirt-guests.service
 
-%posttrans daemon-common
-%libvirt_sysconfig_posttrans libvirt-guests
-
 %pre daemon-proxy
-%libvirt_sysconfig_pre virtproxyd
 %if %{with_modular_daemons}
 %libvirt_daemon_systemd_pre_inet virtproxyd
 %endif
 
 %post daemon-proxy
-/sbin/ldconfig
 %if %{with_modular_daemons}
     %libvirt_daemon_systemd_post_inet virtproxyd
 %endif
@@ -1293,21 +1261,15 @@ fi
 %libvirt_daemon_systemd_preun_inet virtproxyd
 
 %postun daemon-proxy
-/sbin/ldconfig
 # Handle restart/reload in posttrans
 %if %{with_modular_daemons}
 %libvirt_daemon_systemd_postun_inet virtproxyd
 %endif
 
-%posttrans daemon-proxy
-%libvirt_sysconfig_posttrans virtproxyd
-
 %pre daemon-lock
-%libvirt_sysconfig_pre virlockd
 %libvirt_daemon_systemd_pre_priv virtlockd
 
 %post daemon-lock
-/sbin/ldconfig
 %libvirt_daemon_systemd_post_priv virtlockd
 
 %preun daemon-lock
@@ -1317,17 +1279,14 @@ fi
 %libvirt_daemon_systemd_postun_priv virtlockd
 
 %posttrans daemon-lock
-%libvirt_sysconfig_posttrans virtlockd
 # virtlockd must not be restarted, otherwise the locks it uses to protect
 # VM resources would be lost. It is safe to re-exec.
 %{_bindir}/systemctl reload-or-try-restart virtlockd.service >/dev/null 2>&1 || :
 
 %pre daemon-log
-%libvirt_sysconfig_pre virlogd
 %libvirt_daemon_systemd_pre_priv virtlogd
 
 %post daemon-log
-/sbin/ldconfig
 %libvirt_daemon_systemd_post_priv virtlogd
 
 %preun daemon-log
@@ -1337,13 +1296,11 @@ fi
 %libvirt_daemon_systemd_postun_priv virtlogd
 
 %posttrans daemon-log
-%libvirt_sysconfig_posttrans virtlogd
 # virtlogd must not be restarted since it manages logs from virtual machine
 # consoles. It is safe to re-exec.
 %{_bindir}/systemctl reload-or-try-restart virtlogd.service >/dev/null 2>&1 || :
 
 %pre daemon-driver-network
-%libvirt_sysconfig_pre virtnetworkd
 %libvirt_daemon_systemd_pre virtnetworkd
 
 %post daemon-driver-network
@@ -1365,9 +1322,6 @@ fi
     %libvirt_daemon_systemd_postun_restart virtnetworkd
 %endif
 
-%posttrans daemon-driver-network
-%libvirt_sysconfig_posttrans virtnetworkd
-
 %post daemon-config-network
 # Install the default network if one doesn't exist
 if test $1 -eq 1 && test ! -f %{_sysconfdir}/%{name}/qemu/networks/default.xml ; then
@@ -1377,7 +1331,6 @@ if test $1 -eq 1 && test ! -f %{_sysconfdir}/%{name}/qemu/networks/default.xml ;
 fi
 
 %pre daemon-driver-nwfilter
-%libvirt_sysconfig_pre virtnwfilterd
 %libvirt_daemon_systemd_pre virtnwfilterd
 
 %post daemon-driver-nwfilter
@@ -1393,11 +1346,7 @@ fi
     %libvirt_daemon_systemd_postun_restart virtnwfilterd
 %endif
 
-%posttrans daemon-driver-nwfilter
-%libvirt_sysconfig_posttrans virtnwfilterd
-
 %pre daemon-driver-storage-core
-%libvirt_sysconfig_pre virtstoraged
 %libvirt_daemon_systemd_pre virtstoraged
 
 %post daemon-driver-storage-core
@@ -1413,11 +1362,7 @@ fi
     %libvirt_daemon_systemd_postun_restart virtstoraged
 %endif
 
-%posttrans daemon-driver-storage-core
-%libvirt_sysconfig_posttrans virtstoraged
-
 %pre daemon-driver-interface
-%libvirt_sysconfig_pre virtinterfaced
 %libvirt_daemon_systemd_pre virtinterfaced
 
 %post daemon-driver-interface
@@ -1433,11 +1378,7 @@ fi
     %libvirt_daemon_systemd_postun_restart virtinterfaced
 %endif
 
-%posttrans daemon-driver-interface
-%libvirt_sysconfig_posttrans virtinterfaced
-
 %pre daemon-driver-nodedev
-%libvirt_sysconfig_pre virtnodedevd
 %libvirt_daemon_systemd_pre virtnodedevd
 
 %post daemon-driver-nodedev
@@ -1453,11 +1394,7 @@ fi
     %libvirt_daemon_systemd_postun_restart virtnodedevd
 %endif
 
-%posttrans daemon-driver-nodedev
-%libvirt_sysconfig_posttrans virtnodedevd
-
 %pre daemon-driver-secret
-%libvirt_sysconfig_pre virtsecretd
 %libvirt_daemon_systemd_pre virtsecretd
 
 %post daemon-driver-secret
@@ -1473,11 +1410,7 @@ fi
     %libvirt_daemon_systemd_postun_restart virtsecretd
 %endif
 
-%posttrans daemon-driver-secret
-%libvirt_sysconfig_posttrans virtsecretd
-
 %pre daemon-driver-qemu
-%libvirt_sysconfig_pre virtqemud
 %libvirt_daemon_systemd_pre virtqemud
 %libvirt_logrotate_pre libvirtd.qemu
 
@@ -1495,11 +1428,9 @@ fi
 %endif
 
 %posttrans daemon-driver-qemu
-%libvirt_sysconfig_posttrans virtqemud
 %libvirt_logrotate_posttrans libvirtd.qemu
 
 %pre daemon-driver-lxc
-%libvirt_sysconfig_pre virtlxcd
 %libvirt_daemon_systemd_pre virtlxcd
 %libvirt_logrotate_pre libvirtd.lxc
 
@@ -1517,11 +1448,9 @@ fi
 %endif
 
 %posttrans daemon-driver-lxc
-%libvirt_sysconfig_posttrans virtlxcd
 %libvirt_logrotate_posttrans libvirtd.lxc
 
 %pre daemon-driver-libxl
-%libvirt_sysconfig_pre virtxend
 %libvirt_daemon_systemd_pre virtxend
 %libvirt_logrotate_pre libvirtd.libxl
 
@@ -1539,7 +1468,6 @@ fi
 %endif
 
 %posttrans daemon-driver-libxl
-%libvirt_sysconfig_posttrans virtxend
 %libvirt_logrotate_posttrans libvirtd.libxl
 
 %post libs -p /sbin/ldconfig

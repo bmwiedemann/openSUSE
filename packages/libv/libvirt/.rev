@@ -4336,4 +4336,14 @@ StandardGroups in rpmlint package.
   - boo#1210654</comment>
     <requestid>1084110</requestid>
   </revision>
+  <revision rev="375" vrev="1">
+    <srcmd5>daaa95a3252c3dd794751b06030c0580</srcmd5>
+    <version>9.4.0</version>
+    <time>1685889692</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to libvirt 9.4.0
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v9-4-0-2023-06-01</comment>
+    <requestid>1090561</requestid>
+  </revision>
 </revisionlist>
