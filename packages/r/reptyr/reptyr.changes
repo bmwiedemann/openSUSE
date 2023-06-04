@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun  4 16:29:06 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to version 0.10.0
+  * Add arm7 and aarch64 support for FreeBSD
+- Run tests
+
+-------------------------------------------------------------------
 Wed Jun 15 16:56:58 UTC 2022 - Mia Herkt <mia@0x0.st>
 
 - Update to version 0.9.0

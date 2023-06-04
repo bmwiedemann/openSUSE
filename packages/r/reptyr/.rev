@@ -111,4 +111,14 @@
   * Fix tty-stealing on PowerPC</comment>
     <requestid>982865</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>208eef2eaddf9b0f53a34d1a549d72cd</srcmd5>
+    <version>0.10.0</version>
+    <time>1685904083</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.10.0
+  * Add arm7 and aarch64 support for FreeBSD
+- Run tests</comment>
+    <requestid>1090758</requestid>
+  </revision>
 </revisionlist>

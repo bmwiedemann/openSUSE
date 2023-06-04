@@ -1,7 +1,7 @@
 #
 # spec file for package reptyr
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           reptyr
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        A tool for "re-ptying" programs
 License:        MIT
@@ -25,7 +25,9 @@ Group:          System/Console
 URL:            https://github.com/nelhage/reptyr
 Source:         https://github.com/nelhage/reptyr/archive/%{name}-%{version}.tar.gz
 BuildRequires:  bash-completion
-BuildRequires:  gcc
+BuildRequires:  c_compiler
+BuildRequires:  python3-pexpect
+BuildRequires:  python3-python-prctl
 
 %description
 reptyr is a utility for taking an existing running program and
@@ -44,6 +46,9 @@ export CXXFLAGS="%{optflags}"
 
 %install
 %make_install PREFIX="%{_prefix}" BASHCOMPDIR="%{_datadir}/bash-completion/completions"
+
+%check
+%make_build test PYTHON_CMD=python3
 
 %files
 %doc ChangeLog README.md NOTES
