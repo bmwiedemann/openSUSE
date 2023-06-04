@@ -61,4 +61,12 @@ New dependency of python-pyramid</comment>
     <comment></comment>
     <requestid>1004273</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>4628a952a654fe3e04c4949bb7b31692</srcmd5>
+    <version>4.4.1</version>
+    <time>1685889682</time>
+    <user>dimstar_suse</user>
+    <comment>- use python3 module python for sle15</comment>
+    <requestid>1090391</requestid>
+  </revision>
 </revisionlist>
