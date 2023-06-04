@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20230603" schemaversion="4.1">
+<image name="OBS__openSUSE___20230604" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230603</productvar>
+      <productvar name="VERSION">20230604</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230603,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20230604,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230603/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20230604/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -3312,6 +3312,7 @@
       <repopackage name="perl-Git"/>
       <repopackage name="perl-HTML-Parser"/>
       <repopackage name="perl-HTML-Tagset"/>
+      <repopackage name="perl-HTTP-CookieJar"/>
       <repopackage name="perl-HTTP-Cookies"/>
       <repopackage name="perl-HTTP-Date"/>
       <repopackage name="perl-HTTP-Message"/>
@@ -3772,6 +3773,7 @@
       <repopackage name="ruby3.2-rubygem-addressable"/>
       <repopackage name="ruby3.2-rubygem-aes_key_wrap"/>
       <repopackage name="ruby3.2-rubygem-afm"/>
+      <repopackage name="ruby3.2-rubygem-agama"/>
       <repopackage name="ruby3.2-rubygem-airbrussh"/>
       <repopackage name="ruby3.2-rubygem-amq-protocol"/>
       <repopackage name="ruby3.2-rubygem-arel"/>
