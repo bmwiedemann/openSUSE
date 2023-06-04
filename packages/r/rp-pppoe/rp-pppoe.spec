@@ -84,14 +84,10 @@ rm -r %{buildroot}%{_sysconfdir}/ppp/plugins \
 %post
 %service_add_post %{_name}.service
 %service_add_post %{_name}-server.service
-%set_permissions %{_sbindir}/%{_name}-wrapper
 
 %postun
 %service_del_postun %{_name}.service
 %service_del_postun %{_name}-server.service
-
-%verifyscript
-%verify_permissions -e %{_sbindir}/%{_name}-wrapper
 
 %files
 %license doc/LICENSE

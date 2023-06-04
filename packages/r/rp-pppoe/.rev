@@ -253,4 +253,13 @@
   rp-pppoe-3.14-strip.patch, no longer needed.</comment>
     <requestid>1087186</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>086c1da98264ddde2c1c318a72b1541e</srcmd5>
+    <version>4.0</version>
+    <time>1685889685</time>
+    <user>dimstar_suse</user>
+    <comment>- Removed remains of permissions setting for the pppoe-wrapper setuid binary.
+  The major update to 4.0 dropped this.</comment>
+    <requestid>1090461</requestid>
+  </revision>
 </revisionlist>

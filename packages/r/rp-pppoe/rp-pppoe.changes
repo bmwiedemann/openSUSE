@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  2 08:58:55 UTC 2023 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Removed remains of permissions setting for the pppoe-wrapper setuid binary.
+  The major update to 4.0 dropped this.
+
+-------------------------------------------------------------------
 Mon May 15 07:18:40 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Updated to 4.0:
