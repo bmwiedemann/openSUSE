@@ -26,4 +26,12 @@
   * docs: Update documentation and assets (forwarded request 1074349 from jfkw)</comment>
     <requestid>1074351</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a85531c1a200c4cce7cafeb80deaae75</srcmd5>
+    <version>1.53.2</version>
+    <time>1685889707</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.53.2: (forwarded request 1090661 from jfkw)</comment>
+    <requestid>1090662</requestid>
+  </revision>
 </revisionlist>
