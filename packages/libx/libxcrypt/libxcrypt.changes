@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun  1 13:36:26 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Update to 4.4.34
+  * Optimize some cast operation for performance in
+    lib/alg-yescrypt-platform.c.
+  * Add SHA-2 Maj() optimization proposed by Wei Dai in lib/alg-sha512.c.
+  * Explicitly clean the stack and context state after computation in
+    lib/alg-gost3411-2012-hmac.c, lib/alg-hmac-sha1.c, and lib/alg-sha256.c
+    (issue #168).
+
+-------------------------------------------------------------------
 Thu Mar 23 12:58:47 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Enable LTO now (boo#1138833) and use FAT LTO objects for static libs.

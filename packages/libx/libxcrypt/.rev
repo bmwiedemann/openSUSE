@@ -204,4 +204,18 @@
     <comment>- Enable LTO now (boo#1138833) and use FAT LTO objects for static libs. (forwarded request 1074612 from marxin)</comment>
     <requestid>1074716</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c2593f39dc11dbf09166508d1353cde8</srcmd5>
+    <version>4.4.34</version>
+    <time>1685889679</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.4.34
+  * Optimize some cast operation for performance in
+    lib/alg-yescrypt-platform.c.
+  * Add SHA-2 Maj() optimization proposed by Wei Dai in lib/alg-sha512.c.
+  * Explicitly clean the stack and context state after computation in
+    lib/alg-gost3411-2012-hmac.c, lib/alg-hmac-sha1.c, and lib/alg-sha256.c
+    (issue #168). (forwarded request 1090294 from Andreas_Schwab)</comment>
+    <requestid>1090295</requestid>
+  </revision>
 </revisionlist>
