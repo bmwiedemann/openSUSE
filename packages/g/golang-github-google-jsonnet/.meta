@@ -1,0 +1,5 @@
+<package name="golang-github-google-jsonnet" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="systemsmanagement:Agama:Devel" package="golang-github-google-jsonnet"/>
+</package>
