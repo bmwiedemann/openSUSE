@@ -249,4 +249,12 @@
     <comment>compatibility symlink</comment>
     <requestid>987193</requestid>
   </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>fc4131fb05a705172bea467b5b5f65c7</srcmd5>
+    <version>1.7.36</version>
+    <time>1685889700</time>
+    <user>dimstar_suse</user>
+    <comment>Remove unnecessary dependencies</comment>
+    <requestid>1090639</requestid>
+  </revision>
 </revisionlist>

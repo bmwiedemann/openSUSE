@@ -1,7 +1,7 @@
 #
 # spec file for package slf4j
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -32,15 +32,12 @@ Patch1:         build-remove-slf4j_api-binder.patch
 Patch2:         slf4j-commons-lang3.patch
 Patch3:         slf4j-reload4j-bundlename.patch
 BuildRequires:  ant >= 1.6.5
-BuildRequires:  ant-junit >= 1.6.5
 BuildRequires:  apache-commons-lang3
 BuildRequires:  apache-commons-logging
 BuildRequires:  cal10n
 BuildRequires:  java-devel >= 1.5.0
 BuildRequires:  javapackages-local
-BuildRequires:  javapackages-tools
 BuildRequires:  javassist >= 3.4
-BuildRequires:  junit >= 3.8.2
 BuildRequires:  reload4j
 Requires:       cal10n
 Requires:       java

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 30 16:41:16 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Do not require junit and ant-junit, since we don't run tests
+  during the build
+
+-------------------------------------------------------------------
 Wed Jul  6 12:30:15 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Add symlink to reload4j -> log4j12 for applications that expect
