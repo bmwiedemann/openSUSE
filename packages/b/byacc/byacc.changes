@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jun  2 20:59:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 20230521:
+  * error.c, defs.h, reader.c:
+    allow @1 or $@ with a warning if no %locations was given
+  * reader.c: clear pointer in end_ainfo() after freeing it.
+  * reader.c: report errors in %define as "unexpected value"
+    add/use macros begin_ainfo() and end_ainfo() to reduce clutter
+  * defs.h, error.c: add function unexpected_value()
+  * add %nterm as an alias for %type, since bison made that confusion.
+  * reader.c:
+    ensure that filler_buf and prefix_buf are initialized for the special case
+    where they are empty (report by Martin Jansa, cf: 20230219)
+  * output.c:
+    make test-differences smaller when compiling with YY_NO_LEAKS by replacing
+    a blank line with the generated #define rather than adding 3 lines.
+  * reader.c:
+    correct a use-after-free in more_curly, which could occur if a %lex-param
+    or %parse-param was multi-line (Redhat #2183006).
+  * main.c: rename no_space() to on_error()
+  * error.c: rename no_space() to no_error(), handling any errno
+  * defs.h: rename no_space() to on_error()
+
+-------------------------------------------------------------------
 Tue Mar  7 20:06:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 20230219:
