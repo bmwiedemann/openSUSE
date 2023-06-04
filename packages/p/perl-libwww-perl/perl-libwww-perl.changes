@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun May  7 03:08:14 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.70
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+
+  6.70      2023-04-30 13:22:56Z
+      - Add cookie_jar_class attribute to allow different cookie jar modules
+        to be used more easily (GH#91) (Tom Hukins, Julien Fiegehenn)
+      - POD now contains all default attributes (GH#428) (Julien Fiegehenn)
+
+  6.69      2023-04-29 13:14:31Z
+      - Timeouts for cached connections now update (GH#73) (Eric Johnson)
+      - The conn_cache() can now be unset (GH#424) (Julien Fiegehenn)
+      - LWP::Protocol now only attempts to load modules once (GH#62) (Burak Gursoy)
+      - Fix a bug in no_proxy that allowed partial matches to a proxy address
+        to disable a proxy (GH#421) (Julien Fiegehenn)
+
+-------------------------------------------------------------------
 Tue Feb 28 03:10:38 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.68

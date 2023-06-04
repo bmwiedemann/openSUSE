@@ -18,12 +18,12 @@
 
 %define cpan_name libwww-perl
 Name:           perl-libwww-perl
-Version:        6.68
+Version:        6.70
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        The World-Wide Web library for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/S/SI/SIMBABQUE/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -32,6 +32,7 @@ BuildRequires:  perl(Encode::Locale)
 BuildRequires:  perl(File::Listing) >= 6
 BuildRequires:  perl(HTML::Entities)
 BuildRequires:  perl(HTML::HeadParser) >= 3.71
+BuildRequires:  perl(HTTP::CookieJar::LWP)
 BuildRequires:  perl(HTTP::Cookies) >= 6
 BuildRequires:  perl(HTTP::Daemon) >= 6.12
 BuildRequires:  perl(HTTP::Date) >= 6
@@ -41,6 +42,7 @@ BuildRequires:  perl(HTTP::Request::Common) >= 6.18
 BuildRequires:  perl(HTTP::Response) >= 6.18
 BuildRequires:  perl(HTTP::Status) >= 6.18
 BuildRequires:  perl(LWP::MediaTypes) >= 6
+BuildRequires:  perl(Module::Load)
 BuildRequires:  perl(Net::HTTP) >= 6.18
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.96
@@ -55,6 +57,7 @@ Requires:       perl(Encode::Locale)
 Requires:       perl(File::Listing) >= 6
 Requires:       perl(HTML::Entities)
 Requires:       perl(HTML::HeadParser) >= 3.71
+Requires:       perl(HTTP::CookieJar::LWP)
 Requires:       perl(HTTP::Cookies) >= 6
 Requires:       perl(HTTP::Date) >= 6
 Requires:       perl(HTTP::Negotiate) >= 6
@@ -63,6 +66,7 @@ Requires:       perl(HTTP::Request::Common) >= 6.18
 Requires:       perl(HTTP::Response) >= 6.18
 Requires:       perl(HTTP::Status) >= 6.18
 Requires:       perl(LWP::MediaTypes) >= 6
+Requires:       perl(Module::Load)
 Requires:       perl(Net::HTTP) >= 6.18
 Requires:       perl(Try::Tiny)
 Requires:       perl(URI) >= 1.10
