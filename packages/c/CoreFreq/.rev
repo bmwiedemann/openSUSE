@@ -253,4 +253,12 @@ There are 4 months worth of complicated commit, and I cannot go through them all
 </comment>
     <requestid>1087112</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>8af92585071cbf4cbe5c34eec9554f5e</srcmd5>
+    <version>1.96.2</version>
+    <time>1685889741</time>
+    <user>dimstar_suse</user>
+    <comment>update to 1.96.2</comment>
+    <requestid>1090739</requestid>
+  </revision>
 </revisionlist>

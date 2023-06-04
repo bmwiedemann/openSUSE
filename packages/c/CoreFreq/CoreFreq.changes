@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jun  4 08:53:05 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to 1.96.2
+  * [Driver]
+    - Allows compilation to keep going without CONFIG_ACPI_CPPC_LIB
+  * [Client]
+    - Adding two command line arguments:
+      -Op Show Package C-States
+      -OW Toggle Energy units
+  * [AMD]
+    - Specification of some Configuration MSRs
+
+-------------------------------------------------------------------
 Sun May 14 16:04:25 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
 
 - update to 1.96.1
