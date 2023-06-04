@@ -132,4 +132,12 @@
   * Fix test deprecation warning on Python 3.11.</comment>
     <requestid>1056695</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>d90f58e7e1c264f3a2eda28f540db4fe</srcmd5>
+    <version>7.0.1</version>
+    <time>1685889681</time>
+    <user>dimstar_suse</user>
+    <comment>- use python3 module python for sle15</comment>
+    <requestid>1090389</requestid>
+  </revision>
 </revisionlist>
