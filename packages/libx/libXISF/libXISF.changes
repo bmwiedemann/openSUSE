@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun  4 12:03:16 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.2.6:
+  * Fix "string sub-command REPLACE requires at least four arguments"
+  * Fix generating pkgconfig file
+- Rebase patch
+
+-------------------------------------------------------------------
 Thu May 25 06:44:00 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.2.5:
