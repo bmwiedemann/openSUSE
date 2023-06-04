@@ -278,4 +278,12 @@
   (jsc#SCL-6)</comment>
     <requestid>930458</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>102e9c0df96e495df2bd7e363a5bf96e</srcmd5>
+    <version>6.2</version>
+    <time>1685889687</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>1090477</requestid>
+  </revision>
 </revisionlist>

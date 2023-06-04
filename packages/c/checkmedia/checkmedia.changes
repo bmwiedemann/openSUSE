@@ -1,3 +1,14 @@
+--------------------------------------------------------------------
+Fri Jun 2 10:57:02 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/checkmedia#17
+- do not select EFI System Partition for digest calculation
+  (bsc#1211953)
+- use default for SKIPSECTORS only for RH media
+- add man pages for checkmedia and tagmedia
+- add spec file for OBS
+- 6.2
+
 -------------------------------------------------------------------
 Tue Nov  9 13:24:34 UTC 2021 - Steffen Winterfeldt <snwint@suse.com>
 
