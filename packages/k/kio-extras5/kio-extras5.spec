@@ -52,6 +52,7 @@ BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DNSSD)
 BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5KExiv2)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
@@ -66,6 +67,8 @@ BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  pkgconfig(libimobiledevice-1.0)
+BuildRequires:  pkgconfig(libplist-2.0)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(smbclient)
 Recommends:     kimageformats
@@ -143,3 +146,4 @@ This is the development package for libkioarchive
 %files lang -f %{name}.lang
 
 %changelog
+
