@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 02 10:38:20 UTC 2023 - matthias.gerstner@suse.com
+
+- Update to version 2.4.0+git20230602.89901a92:
+  * cron-whitelist: drop dead suse-texlive entry
+  * pam-modules: drop dead pam_opie entry (sr#1065964)
+  * dbus-services: drop no longer needed dinstaller services (bsc#1208394)
+  * dbus-services: remove no longer packaged mumble-server (bsc#1209338)
+
+-------------------------------------------------------------------
 Wed May 17 12:41:26 UTC 2023 - matthias.gerstner@suse.com
 
 - Update to version 2.4.0+git20230517.2e069e5c:

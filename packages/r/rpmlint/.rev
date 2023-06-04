@@ -4491,4 +4491,16 @@ oddjob-gpupdate isn't blocked)</comment>
   * dbus-services: rename com.deepin.api to org.deepin.dde (bsc#1211376)</comment>
     <requestid>1087652</requestid>
   </revision>
+  <revision rev="451" vrev="1">
+    <srcmd5>35328dc4e00c8c97ce01aab72993651c</srcmd5>
+    <version>2.4.0+git20230602.89901a92</version>
+    <time>1685889686</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git20230602.89901a92:
+  * cron-whitelist: drop dead suse-texlive entry
+  * pam-modules: drop dead pam_opie entry (sr#1065964)
+  * dbus-services: drop no longer needed dinstaller services (bsc#1208394)
+  * dbus-services: remove no longer packaged mumble-server (bsc#1209338)</comment>
+    <requestid>1090476</requestid>
+  </revision>
 </revisionlist>
