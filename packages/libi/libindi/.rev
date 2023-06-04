@@ -602,4 +602,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1079090</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>3e2676cf67a6b5ca928570cf17c2ebe7</srcmd5>
+    <version>2.0.2</version>
+    <time>1685889742</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.2:
+* Minor Fixes discrepancies Indi / SmartwebServer 
+* Add Flip functionality 
+* Pegasus NYX-101
+* Bugfix/mfoc rel movement error
+* Fix AutoPA lx200 OpenAstroTech
+* Esatto: Port state tracking from EsattoArco 
+* PLL: Treat ERR messages as out-of-bound warnings</comment>
+    <requestid>1090744</requestid>
+  </revision>
 </revisionlist>

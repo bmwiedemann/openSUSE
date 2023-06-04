@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun  2 06:06:15 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.0.2:
+  * Minor Fixes discrepancies Indi / SmartwebServer 
+  * Add Flip functionality 
+  * Pegasus NYX-101
+  * Bugfix/mfoc rel movement error
+  * Fix AutoPA lx200 OpenAstroTech
+  * Esatto: Port state tracking from EsattoArco 
+  * PLL: Treat ERR messages as out-of-bound warnings 
+
+-------------------------------------------------------------------
 Tue Apr  4 14:18:36 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.0.1:

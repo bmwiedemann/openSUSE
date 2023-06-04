@@ -19,13 +19,14 @@
 %define so_ver 2
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           libindi
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        Instrument Neutral Distributed Interface
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Astronomy
 URL:            https://www.indilib.org/
 Source0:        https://github.com/indilib/indi/archive/v%{version}.tar.gz#/indi-%{version}.tar.gz
+Source1:        libindi-rpmlintrc
 BuildRequires:  cmake
 %if 0%{?suse_version} < 1590
 BuildRequires:  gcc10-c++
@@ -39,6 +40,8 @@ BuildRequires:  cfitsio-devel
 %else
 BuildRequires:  libcfitsio-devel
 %endif
+BuildRequires:  pugixml-devel
+BuildRequires:  liblz4-devel
 BuildRequires:  libXISF-devel
 BuildRequires:  libev-devel >= 4.33
 BuildRequires:  libnova-devel
