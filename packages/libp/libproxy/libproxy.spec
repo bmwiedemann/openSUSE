@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define build_core_not_modules 0
 %endif
 %define         build_mozjs 0
-%if 0%{?suse_version}
+%if 0%{?suse_version} > 1699 || 0%{?is_opensuse}
 %bcond_without mono
 %else
 %bcond_with mono

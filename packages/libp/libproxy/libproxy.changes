@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  1 12:43:25 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Only build mono support on openSUSE, not SLE nor SUSE ALP.
+
+-------------------------------------------------------------------
 Tue Jun 21 08:50:02 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add libproxy-perl-cflags.patch: perl: Use ccflags from %Config
