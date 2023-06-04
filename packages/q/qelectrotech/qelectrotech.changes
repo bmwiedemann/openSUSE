@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 11 05:29:24 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.90:
+  * Lots of changes (see ChangeLog).
+- Use github mirror for source, git.tuxfamily.org is unreliable.
+- Clean up spec file.
+
+-------------------------------------------------------------------
 Tue Mar  2 22:28:25 UTC 2021 - Asterios Dramis <asterios.dramis@gmail.com>
 
 - Update to version 0.80:

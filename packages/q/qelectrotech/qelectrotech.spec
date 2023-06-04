@@ -1,7 +1,7 @@
 #
 # spec file for package qelectrotech
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2021 Asterios Dramis <asterios.dramis@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,15 +17,15 @@
 #
 
 
-%define src 0.8.0
+%define src 0.9
 Name:           qelectrotech
-Version:        0.80
+Version:        0.90
 Release:        0
 Summary:        Application to Design Electric Diagrams
-License:        GPL-2.0-or-later AND CC-BY-3.0
+License:        CC-BY-3.0 AND GPL-2.0-or-later
 Group:          Productivity/Scientific/Electronics
 URL:            https://qelectrotech.org/
-Source0:        https://git.tuxfamily.org/qet/qet.git/snapshot/qet-%{src}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/qelectrotech/qelectrotech-source-mirror/archive/refs/tags/%{src}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  kcoreaddons-devel
@@ -41,12 +41,6 @@ BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
-%if 0%{?suse_version} < 1500
-Requires(post): desktop-file-utils
-Requires(post): shared-mime-info
-Requires(postun): desktop-file-utils
-Requires(postun): shared-mime-info
-%endif
 
 %description
 QElectroTech is a Qt5 application to design electric diagrams. It uses XML
@@ -54,22 +48,18 @@ files for elements and diagrams, and includes both a diagram editor and an
 element editor.
 
 %prep
-%setup -q -n qet-%{src}
+%setup -q -n qelectrotech-source-mirror-%{src}
 
 # Fix compilation and installation paths
 sed -e s,%{_prefix}/local/,%{_prefix}/, \
     -e /QET_LICENSE_PATH/s,'doc/,'share/doc/packages/, \
     -e /QET_MIME/s,../,, \
     -e /QET_MAN_PATH/s,'man/','share/man/', \
+    -e /DEFINES/s,GIT_COMMIT_SHA.*,GIT_COMMIT_SHA="", \
     -i qelectrotech.pro
 
-# Remove build time references so build-compare can do its work
-FAKE_BUILDTIME=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%H:%%M')
-FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%b %%e %%Y')
-sed -i "s/__TIME__/\"$FAKE_BUILDTIME\"/g" sources/machine_info.h
-sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/g" sources/machine_info.h
-
 %build
+%global optflags ${optflags} -Wno-error=return-type
 %qmake5
 %make_build
 
@@ -79,21 +69,9 @@ sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/g" sources/machine_info.h
 # Fix desktop file
 %suse_update_desktop_file -r qelectrotech "Education;Engineering"
 
-%fdupes -s %{buildroot}
+%fdupes %{buildroot}/%{_prefix}
 
 %find_lang %{name} --with-qt --with-man --all-name
-
-%if 0%{?suse_version} < 1500
-%post
-%mime_database_post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%mime_database_postun
-%icon_theme_cache_postun
-%endif
 
 %files -f %{name}.lang
 %doc CREDIT ChangeLog README README.md
@@ -106,16 +84,7 @@ sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/g" sources/machine_info.h
 %dir %{_mandir}/fr.ISO8859-1
 %dir %{_mandir}/fr.UTF-8
 %{_mandir}/man1/qelectrotech.1%{?ext_man}
-%dir %{_datadir}/mime/application
-%{_datadir}/mime/application/x-qet-element.xml
-%{_datadir}/mime/application/x-qet-project.xml
-%{_datadir}/mime/application/x-qet-titleblock.xml
 %{_datadir}/mime/packages/qelectrotech.xml
-%dir %{_datadir}/mimelnk
-%dir %{_datadir}/mimelnk/application
-%{_datadir}/mimelnk/application/x-qet-element.desktop
-%{_datadir}/mimelnk/application/x-qet-project.desktop
-%{_datadir}/mimelnk/application/x-qet-titleblock.desktop
 %{_datadir}/qelectrotech/
 
 %changelog
