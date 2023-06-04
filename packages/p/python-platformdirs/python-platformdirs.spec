@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-platformdirs
-Version:        3.2.0
+Version:        3.5.1
 Release:        0
 Summary:        Module for determining appropriate platform-specific dirs
 License:        MIT

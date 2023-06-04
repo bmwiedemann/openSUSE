@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jun  2 20:55:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.5.1:
+  * Add 3.12 support
+  * Add tox.ini to sdist
+  * removing Windows versions
+  * Better handling for UNIX support
+  * platformdirs: introduce `user_music_dir()`
+  * platformdirs: introduce `user_videos_dir()`
+  * Adding platformdirs.PlatformDirs to docs
+  * Fix linter failures
+  * Exclude bots from generated release notes
+  * platformdirs: introduce `user_pictures_dir()`
+
+-------------------------------------------------------------------
 Fri Apr 21 12:29:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

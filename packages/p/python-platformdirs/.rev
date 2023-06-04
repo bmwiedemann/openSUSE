@@ -58,4 +58,22 @@
     <comment></comment>
     <requestid>1081837</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5a1a6a37e1ec48161dd94f22b6e568ec</srcmd5>
+    <version>3.5.1</version>
+    <time>1685889694</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.5.1:
+  * Add 3.12 support
+  * Add tox.ini to sdist
+  * removing Windows versions
+  * Better handling for UNIX support
+  * platformdirs: introduce `user_music_dir()`
+  * platformdirs: introduce `user_videos_dir()`
+  * Adding platformdirs.PlatformDirs to docs
+  * Fix linter failures
+  * Exclude bots from generated release notes
+  * platformdirs: introduce `user_pictures_dir()`</comment>
+    <requestid>1090568</requestid>
+  </revision>
 </revisionlist>
