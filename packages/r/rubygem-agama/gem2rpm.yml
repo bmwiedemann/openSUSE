@@ -1,0 +1,36 @@
+---
+:sourceurl: "%{mod_full_name}.gem"
+:preamble: |-
+  %global rb_build_versions %{rb_default_ruby}
+  BuildRequires:  dbus-1-common
+  Requires:       dbus-1-common
+:post_install: |-
+  install -D -m 0644 %{buildroot}%{gem_base}/gems/%{mod_full_name}/share/dbus.conf %{buildroot}%{_datadir}/dbus-1/agama.conf
+  install --directory %{buildroot}%{_datadir}/dbus-1/agama-services
+  install -m 0644 --target-directory=%{buildroot}%{_datadir}/dbus-1/agama-services %{buildroot}%{gem_base}/gems/%{mod_full_name}/share/org.opensuse.Agama*.service
+  install -D -m 0644 %{buildroot}%{gem_base}/gems/%{mod_full_name}/share/systemd.service %{buildroot}%{_unitdir}/agama.service
+  install -D -m 0644 %{buildroot}%{gem_base}/gems/%{mod_full_name}/etc/agama.yaml %{buildroot}%{_sysconfdir}/agama.yaml
+:main:
+  :preamble: |-
+    # Override build.rpm, see also https://github.com/openSUSE/obs-build/blob/master/configs/
+    %global rb_build_versions %{rb_default_ruby}
+    BuildRequires:  dbus-1-common
+    Requires:       dbus-1-common
+    Requires:       snapper
+    Requires:       yast2-bootloader
+    Requires:       yast2-country
+    Requires:       yast2-hardware-detection
+    Requires:       yast2-installation
+    Requires:       yast2-network
+    Requires:       yast2-proxy
+    Requires:       yast2-storage-ng >= 4.6.10
+    Requires:       open-iscsi
+    Requires:       yast2-iscsi-client >= 4.5.7
+    Requires:       yast2-users
+    # yast2 with ArchFilter
+    Requires:       yast2 >= 4.5.20
+  :filelist: "%{_datadir}/dbus-1/agama.conf\n
+    %dir %{_datadir}/dbus-1/agama-services\n
+    %{_datadir}/dbus-1/agama-services/org.opensuse.Agama*.service\n
+    %{_unitdir}/agama.service\n
+    %config %{_sysconfdir}/agama.yaml\n"
