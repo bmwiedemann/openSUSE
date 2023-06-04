@@ -2536,6 +2536,7 @@ BuildFlags: onlybuild:perl-HTML-Tagset
 BuildFlags: onlybuild:perl-HTML-Template
 BuildFlags: onlybuild:perl-HTML-Tidy
 BuildFlags: onlybuild:perl-HTML-Tree
+BuildFlags: onlybuild:perl-HTTP-CookieJar
 BuildFlags: onlybuild:perl-HTTP-Cookies
 BuildFlags: onlybuild:perl-HTTP-Daemon
 BuildFlags: onlybuild:perl-HTTP-Date
