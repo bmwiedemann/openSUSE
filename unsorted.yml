@@ -2482,7 +2482,6 @@ unsorted:
   - cpluff 
   - cpmono_v07-fonts 
   - cpp-httplib-devel 
-  - cpp11 
   - cpp12 
   - cpp7 
   - cppcheck-gui 
@@ -2547,8 +2546,6 @@ unsorted:
   - cronic 
   - cronie-anacron 
   - cross-aarch64-binutils 
-  - cross-aarch64-gcc11 
-  - cross-aarch64-gcc11-bootstrap 
   - cross-aarch64-gcc12 
   - cross-aarch64-gcc12-bootstrap 
   - cross-aarch64-gcc13 
@@ -2557,23 +2554,17 @@ unsorted:
   - cross-aarch64-gcc7-icecream-backend 
   - cross-aarch64-glibc-devel 
   - cross-aarch64-linux-glibc-devel 
-  - cross-amdgcn-gcc11 
   - cross-amdgcn-gcc12 
   - cross-amdgcn-gcc13 
-  - cross-amdgcn-newlib11-devel 
   - cross-amdgcn-newlib12-devel 
   - cross-amdgcn-newlib13-devel 
   - cross-arm-binutils 
-  - cross-arm-gcc11 
-  - cross-arm-gcc11-icecream-backend 
   - cross-arm-gcc12 
   - cross-arm-gcc12-icecream-backend 
   - cross-arm-gcc13 
   - cross-arm-gcc13-icecream-backend 
   - cross-arm-gcc7 
   - cross-arm-linux-glibc-devel 
-  - cross-arm-none-gcc11 
-  - cross-arm-none-gcc11-bootstrap 
   - cross-arm-none-gcc12 
   - cross-arm-none-gcc12-bootstrap 
   - cross-arm-none-gcc13 
@@ -2582,8 +2573,6 @@ unsorted:
   - cross-arm-none-gcc7-bootstrap 
   - cross-arm-none-newlib-devel 
   - cross-avr-binutils 
-  - cross-avr-gcc11 
-  - cross-avr-gcc11-bootstrap 
   - cross-avr-gcc12 
   - cross-avr-gcc12-bootstrap 
   - cross-avr-gcc13 
@@ -2593,8 +2582,6 @@ unsorted:
   - cross-bpf-binutils 
   - cross-bpf-gcc13 
   - cross-epiphany-binutils 
-  - cross-epiphany-gcc11 
-  - cross-epiphany-gcc11-bootstrap 
   - cross-epiphany-gcc12 
   - cross-epiphany-gcc12-bootstrap 
   - cross-epiphany-gcc13 
@@ -2603,8 +2590,6 @@ unsorted:
   - cross-epiphany-gcc7-bootstrap 
   - cross-epiphany-newlib-devel 
   - cross-hppa-binutils 
-  - cross-hppa-gcc11 
-  - cross-hppa-gcc11-icecream-backend 
   - cross-hppa-gcc12 
   - cross-hppa-gcc12-bootstrap 
   - cross-hppa-gcc12-icecream-backend 
@@ -2621,8 +2606,6 @@ unsorted:
   - cross-i386-linux-glibc-devel 
   - cross-ia64-binutils 
   - cross-m68k-binutils 
-  - cross-m68k-gcc11 
-  - cross-m68k-gcc11-icecream-backend 
   - cross-m68k-gcc12 
   - cross-m68k-gcc12-icecream-backend 
   - cross-m68k-gcc13 
@@ -2631,8 +2614,6 @@ unsorted:
   - cross-m68k-gcc7-icecream-backend 
   - cross-m68k-linux-glibc-devel 
   - cross-mips-binutils 
-  - cross-mips-gcc11 
-  - cross-mips-gcc11-icecream-backend 
   - cross-mips-gcc12 
   - cross-mips-gcc12-icecream-backend 
   - cross-mips-gcc13 
@@ -2640,18 +2621,14 @@ unsorted:
   - cross-mips-gcc7 
   - cross-mips-gcc7-icecream-backend 
   - cross-mips-linux-glibc-devel 
-  - cross-nvptx-gcc11 
   - cross-nvptx-gcc12 
   - cross-nvptx-gcc13 
   - cross-nvptx-gcc7 
-  - cross-nvptx-newlib11-devel 
   - cross-nvptx-newlib12-devel 
   - cross-nvptx-newlib13-devel 
   - cross-nvptx-newlib7-devel 
   - cross-ppc-binutils 
   - cross-ppc64-binutils 
-  - cross-ppc64-gcc11 
-  - cross-ppc64-gcc11-icecream-backend 
   - cross-ppc64-gcc12 
   - cross-ppc64-gcc12-icecream-backend 
   - cross-ppc64-gcc13 
@@ -2660,8 +2637,6 @@ unsorted:
   - cross-ppc64-gcc7-icecream-backend 
   - cross-ppc64-linux-glibc-devel 
   - cross-ppc64le-binutils 
-  - cross-ppc64le-gcc11 
-  - cross-ppc64le-gcc11-icecream-backend 
   - cross-ppc64le-gcc12 
   - cross-ppc64le-gcc12-icecream-backend 
   - cross-ppc64le-gcc13 
@@ -2676,14 +2651,10 @@ unsorted:
   - cross-pru-gcc13-bootstrap 
   - cross-pru-newlib-devel 
   - cross-riscv64-binutils 
-  - cross-riscv64-elf-gcc11 
-  - cross-riscv64-elf-gcc11-bootstrap 
   - cross-riscv64-elf-gcc12 
   - cross-riscv64-elf-gcc12-bootstrap 
   - cross-riscv64-elf-gcc13 
   - cross-riscv64-elf-gcc13-bootstrap 
-  - cross-riscv64-gcc11 
-  - cross-riscv64-gcc11-bootstrap 
   - cross-riscv64-gcc12 
   - cross-riscv64-gcc12-bootstrap 
   - cross-riscv64-gcc13 
@@ -2692,8 +2663,6 @@ unsorted:
   - cross-riscv64-linux-glibc-devel 
   - cross-riscv64-newlib-devel 
   - cross-rx-binutils 
-  - cross-rx-gcc11 
-  - cross-rx-gcc11-bootstrap 
   - cross-rx-gcc12 
   - cross-rx-gcc12-bootstrap 
   - cross-rx-gcc13 
@@ -2703,8 +2672,6 @@ unsorted:
   - cross-rx-newlib-devel 
   - cross-s390-binutils 
   - cross-s390x-binutils 
-  - cross-s390x-gcc11 
-  - cross-s390x-gcc11-icecream-backend 
   - cross-s390x-gcc12 
   - cross-s390x-gcc12-icecream-backend 
   - cross-s390x-gcc13 
@@ -2713,14 +2680,11 @@ unsorted:
   - cross-s390x-gcc7-icecream-backend 
   - cross-s390x-linux-glibc-devel 
   - cross-sparc-binutils 
-  - cross-sparc-gcc11 
   - cross-sparc-gcc12 
   - cross-sparc-gcc13 
   - cross-sparc-gcc7 
   - cross-sparc-linux-glibc-devel 
   - cross-sparc64-binutils 
-  - cross-sparc64-gcc11 
-  - cross-sparc64-gcc11-icecream-backend 
   - cross-sparc64-gcc12 
   - cross-sparc64-gcc12-icecream-backend 
   - cross-sparc64-gcc13 
@@ -2728,7 +2692,6 @@ unsorted:
   - cross-sparc64-gcc7 
   - cross-sparc64-gcc7-icecream-backend 
   - cross-sparc64-linux-glibc-devel 
-  - cross-sparcv9-gcc11-icecream-backend 
   - cross-sparcv9-gcc12-icecream-backend 
   - cross-sparcv9-gcc13-icecream-backend 
   - cross-sparcv9-gcc7-icecream-backend 
@@ -4365,27 +4328,6 @@ unsorted:
   - gcc-obj-c++ 
   - gcc-objc 
   - gcc-objc-32bit 
-  - gcc11 
-  - gcc11-32bit 
-  - gcc11-PIE 
-  - gcc11-ada 
-  - gcc11-ada-32bit 
-  - gcc11-c++ 
-  - gcc11-c++-32bit 
-  - gcc11-d 
-  - gcc11-d-32bit 
-  - gcc11-devel 
-  - gcc11-fortran 
-  - gcc11-fortran-32bit 
-  - gcc11-go 
-  - gcc11-go-32bit 
-  - gcc11-info 
-  - gcc11-locale 
-  - gcc11-obj-c++ 
-  - gcc11-obj-c++-32bit 
-  - gcc11-objc 
-  - gcc11-objc-32bit 
-  - gcc11-testresults 
   - gcc12 
   - gcc12-32bit 
   - gcc12-PIE 
@@ -10617,8 +10559,6 @@ unsorted:
   - libacl-devel 
   - libacl-devel-32bit 
   - libacr38ucontrol0 
-  - libada11 
-  - libada11-32bit 
   - libada12 
   - libada12-32bit 
   - libada13 
@@ -10751,8 +10691,6 @@ unsorted:
   - libart_lgpl_2-2 
   - libasan4 
   - libasan4-32bit 
-  - libasan6 
-  - libasan6-32bit 
   - libasan8-32bit 
   - libasan8-gcc12 
   - libasan8-gcc12-32bit 
@@ -10780,8 +10718,6 @@ unsorted:
   - libatkmm-2_36-1 
   - libatlascpp-0_6-3 
   - libatomic1-32bit 
-  - libatomic1-gcc11 
-  - libatomic1-gcc11-32bit 
   - libatomic1-gcc12 
   - libatomic1-gcc12-32bit 
   - libatomic1-gcc7 
@@ -11895,7 +11831,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla39 
+  - libfilezilla36 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -12085,17 +12021,13 @@ unsorted:
   - libgbm1-32bit 
   - libgcalc-2-1_0_1 
   - libgcc_s1-32bit 
-  - libgcc_s1-gcc11 
-  - libgcc_s1-gcc11-32bit 
   - libgcc_s1-gcc12 
   - libgcc_s1-gcc12-32bit 
   - libgcc_s1-gcc7 
   - libgcc_s1-gcc7-32bit 
   - libgccjit-devel 
-  - libgccjit0-devel-gcc11 
   - libgccjit0-devel-gcc12 
   - libgccjit0-devel-gcc13 
-  - libgccjit0-gcc11 
   - libgccjit0-gcc12 
   - libgci-1-0_0_0 
   - libgck-1-0-32bit 
@@ -12140,8 +12072,6 @@ unsorted:
   - libgdk_pixbuf_xlib-2_0-0 
   - libgdl-3-5 
   - libgdlmm-3_0-2 
-  - libgdruntime2 
-  - libgdruntime2-32bit 
   - libgdruntime3 
   - libgdruntime3-32bit 
   - libgdruntime4 
@@ -12176,8 +12106,6 @@ unsorted:
   - libgfortran4 
   - libgfortran4-32bit 
   - libgfortran5-32bit 
-  - libgfortran5-gcc11 
-  - libgfortran5-gcc11-32bit 
   - libgfortran5-gcc12 
   - libgfortran5-gcc12-32bit 
   - libgfrpc0 
@@ -12265,8 +12193,6 @@ unsorted:
   - libgnutlsxx30 
   - libgo11 
   - libgo11-32bit 
-  - libgo19 
-  - libgo19-32bit 
   - libgo21 
   - libgo21-32bit 
   - libgo22 
@@ -12276,8 +12202,6 @@ unsorted:
   - libgobject-2_0-0-32bit 
   - libgoffice-0_10-10 
   - libgomp1-32bit 
-  - libgomp1-gcc11 
-  - libgomp1-gcc11-32bit 
   - libgomp1-gcc12 
   - libgomp1-gcc12-32bit 
   - libgomp1-gcc7 
@@ -12297,8 +12221,6 @@ unsorted:
   - libgpgme11-32bit 
   - libgpgmepp-devel 
   - libgpgmepp6-32bit 
-  - libgphobos2 
-  - libgphobos2-32bit 
   - libgphobos3 
   - libgphobos3-32bit 
   - libgphobos4 
@@ -12817,8 +12739,6 @@ unsorted:
   - libite5 
   - libiterm-devel 
   - libitm1-32bit 
-  - libitm1-gcc11 
-  - libitm1-gcc11-32bit 
   - libitm1-gcc12 
   - libitm1-gcc12-32bit 
   - libitm1-gcc7 
@@ -13123,7 +13043,6 @@ unsorted:
   - liblrdf-devel 
   - liblrdf2-32bit 
   - liblrs1 
-  - liblsan0-gcc11 
   - liblsan0-gcc12 
   - liblsan0-gcc7 
   - liblscp-devel 
@@ -13670,8 +13589,6 @@ unsorted:
   - libobby-0_4-1 
   - libobjc2-devel 
   - libobjc4-32bit 
-  - libobjc4-gcc11 
-  - libobjc4-gcc11-32bit 
   - libobjc4-gcc12 
   - libobjc4-gcc12-32bit 
   - libobjc4-gcc7 
@@ -14468,8 +14385,6 @@ unsorted:
   - libqtermwidget5-1 
   - libqtolm-devel 
   - libquadmath0-32bit 
-  - libquadmath0-gcc11 
-  - libquadmath0-gcc11-32bit 
   - libquadmath0-gcc12 
   - libquadmath0-gcc12-32bit 
   - libquadmath0-gcc7 
@@ -15064,16 +14979,11 @@ unsorted:
   - libstatgrab10 
   - libstdc++-devel-32bit 
   - libstdc++6-32bit 
-  - libstdc++6-devel-gcc11 
-  - libstdc++6-devel-gcc11-32bit 
   - libstdc++6-devel-gcc12 
   - libstdc++6-devel-gcc12-32bit 
   - libstdc++6-devel-gcc13-32bit 
   - libstdc++6-devel-gcc7 
   - libstdc++6-devel-gcc7-32bit 
-  - libstdc++6-gcc11 
-  - libstdc++6-gcc11-32bit 
-  - libstdc++6-gcc11-locale 
   - libstdc++6-gcc12 
   - libstdc++6-gcc12-32bit 
   - libstdc++6-gcc12-locale 
@@ -15081,8 +14991,6 @@ unsorted:
   - libstdc++6-gcc7-32bit 
   - libstdc++6-gcc7-locale 
   - libstdc++6-pp-32bit 
-  - libstdc++6-pp-gcc11 
-  - libstdc++6-pp-gcc11-32bit 
   - libstdc++6-pp-gcc12 
   - libstdc++6-pp-gcc12-32bit 
   - libstellarsolver2 
@@ -15381,7 +15289,6 @@ unsorted:
   - libtrng4-24 
   - libts0-32bit 
   - libtsan0 
-  - libtsan0-gcc11 
   - libtsan2-gcc12 
   - libtsk19 
   - libtsm-devel 
@@ -15426,8 +15333,6 @@ unsorted:
   - libubsan0 
   - libubsan0-32bit 
   - libubsan1-32bit 
-  - libubsan1-gcc11 
-  - libubsan1-gcc11-32bit 
   - libubsan1-gcc12 
   - libubsan1-gcc12-32bit 
   - libuchardet-devel 
@@ -27329,6 +27234,7 @@ unsorted:
   - python311-dask-test 
   - python311-databases 
   - python311-datadiff 
+  - python311-datashader 
   - python311-dateparser 
   - python311-dateutils 
   - python311-datrie 
@@ -34123,13 +34029,14 @@ unsorted:
   - rime-schema-cangjie 
   - rime-schema-cantonese 
   - rime-schema-combo-pinyin 
+  - rime-schema-custom 
   - rime-schema-default 
   - rime-schema-double-pinyin 
   - rime-schema-emoji 
   - rime-schema-essay 
+  - rime-schema-essay-simp 
   - rime-schema-extra 
   - rime-schema-ipa 
-  - rime-schema-jyutping 
   - rime-schema-luna-pinyin 
   - rime-schema-middle-chinese 
   - rime-schema-pinyin-simp 
