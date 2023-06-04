@@ -582,4 +582,12 @@ please add to Staging:E, should fix the tox failure</comment>
 </comment>
     <requestid>1086768</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>2adb0e8040320e334f0714ce48b51f56</srcmd5>
+    <version>4.5.1</version>
+    <time>1685896565</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090576</requestid>
+  </revision>
 </revisionlist>

@@ -46,18 +46,15 @@ BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling >= 1.14}
 BuildRequires:  %{python_module packaging >= 23.1}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module platformdirs >= 3.2}
+BuildRequires:  %{python_module platformdirs >= 3.5.1}
 BuildRequires:  %{python_module pluggy >= 1.0.0}
 BuildRequires:  %{python_module poetry-core}
-BuildRequires:  %{python_module py >= 1.4.17}
 BuildRequires:  %{python_module pyproject-api >= 1.5.1}
 BuildRequires:  %{python_module pytoml >= 0.1}
 BuildRequires:  %{python_module re-assert}
 BuildRequires:  %{python_module setuptools >= 41.0.1}
 BuildRequires:  %{python_module setuptools_scm >= 2.0.0}
-BuildRequires:  %{python_module six >= 1.14.0}
 BuildRequires:  %{python_module time-machine}
-BuildRequires:  %{python_module toml >= 0.9.4}
 BuildRequires:  %{python_module tomli >= 2.0.1}
 BuildRequires:  %{python_module virtualenv >= 20.21.0}
 BuildRequires:  %{python_module wheel >= 0.29.0}
@@ -69,22 +66,22 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 BuildRequires:  (python3-importlib-metadata >= 0.12 if python3-base < 3.8)
 BuildRequires:  (python36-importlib-metadata >= 0.12 if python36-base)
-Requires:       python-backports.entry_points_selectable >= 1.0.4
-Requires:       python-build >= 0.10.0
 Requires:       python-filelock >= 3.0.0
 Requires:       python-packaging >= 14
-Requires:       python-pip
 Requires:       python-pluggy >= 0.12.0
-Requires:       python-py >= 1.4.17
-Requires:       python-six >= 1.14.0
-Requires:       python-toml >= 0.9.4
 Requires:       python-tomli >= 2.0.1
 Requires:       python-virtualenv >= 20.0.8
 Requires:       (python-importlib-metadata >= 0.12 if python3-base < 3.8)
+Requires:       python-colorama
+Requires:       python-chardet
+Requires:       python-cachetools
+Requires:       python-pyproject-api
+Requires:       python-platformdirs >= 3.5.1
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 # last detox version is 0.19
 Obsoletes:      python-detox <= 0.19
+Provides:       python-detox
 BuildArch:      noarch
 # SECTION setup.cfg [options.extras_requires] testing=
 # (except for pytest-cov and -randomly)
