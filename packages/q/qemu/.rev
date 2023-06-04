@@ -3372,4 +3372,16 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
   [openSUSE][RPM] Fix deps for virtiofsd and improve spec files</comment>
     <requestid>1089601</requestid>
   </revision>
+  <revision rev="254" vrev="1">
+    <srcmd5>7b312d32bd883fcbfaa731e87768f77d</srcmd5>
+    <version>8.0.2</version>
+    <time>1685889695</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.0.2:
+  * Stability, security and bug fixes
+- Patch added:
+  * [openSUSE][RPM] Update to version 8.0.2
+</comment>
+    <requestid>1090583</requestid>
+  </revision>
 </revisionlist>
