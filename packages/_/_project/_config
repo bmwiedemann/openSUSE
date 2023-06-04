@@ -3042,7 +3042,7 @@ BuildFlags: onlybuild:python-rfc3986
 BuildFlags: onlybuild:python-rfc3986-validator
 BuildFlags: onlybuild:python-rfc3987
 BuildFlags: onlybuild:python-rich
-BuildFlags: onlybuild:python-rpm
+BuildFlags: onlybuild:rpm:python-rpm
 BuildFlags: onlybuild:python-rpm-macros
 BuildFlags: onlybuild:python-rpm-packaging
 BuildFlags: onlybuild:python-rst.linker
