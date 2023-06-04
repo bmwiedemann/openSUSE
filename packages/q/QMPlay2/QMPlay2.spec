@@ -17,29 +17,35 @@
 
 
 %define __builder Ninja
+%bcond_with qt6
 
 Name:           QMPlay2
-Version:        23.02.05
+Version:        23.06.04
 Release:        0
 Summary:        A Qt based media player, streamer and downloader
 License:        LGPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            https://github.com/zaps166/QMPlay2
 Source:         https://github.com/zaps166/QMPlay2/releases/download/%{version}/QMPlay2-src-%{version}.tar.xz
-# PATCH-FEATURE-OPENSUSE
+# PATCH-FEATURE-OPENSUSE 0001-add-opensuse-customizations.patch -- Fix python executable detection and add branding
 Patch1:         0001-add-opensuse-customizations.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0001-fix-mono-playback.patch
-# PATCH-FIX-UPSTREAM
-Patch3:         0001-fix-broken-yt-dlp.patch
-# PATCH-FIX-UPSTREAM
-Patch4:         0001-fix-overlay-focus.patch
 BuildRequires:  clang
 BuildRequires:  cmake >= 3.16
 BuildRequires:  llvm-gold
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  shaderc
+%if %{with qt6}
+BuildRequires:  cmake(Qt6LinguistTools) >= 6.0.0
+BuildRequires:  pkgconfig(Qt6Concurrent) >= 6.0.0
+BuildRequires:  pkgconfig(Qt6Core5Compat) >= 6.0.0
+BuildRequires:  pkgconfig(Qt6DBus) >= 6.0.0
+BuildRequires:  pkgconfig(Qt6OpenGL) >= 6.0.0
+BuildRequires:  pkgconfig(Qt6OpenGLWidgets) >= 6.0.0
+BuildRequires:  pkgconfig(Qt6Qml) >= 6.0.0
+BuildRequires:  pkgconfig(Qt6Svg) >= 6.0.0
+BuildRequires:  pkgconfig(Qt6Widgets) >= 6.0.0
+%else
 BuildRequires:  cmake(Qt5LinguistTools) >= 5.10.0
 BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.10.0
 BuildRequires:  pkgconfig(Qt5DBus) >= 5.10.0
@@ -47,6 +53,7 @@ BuildRequires:  pkgconfig(Qt5Qml) >= 5.10.0
 BuildRequires:  pkgconfig(Qt5Svg) >= 5.10.0
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.10.0
 BuildRequires:  pkgconfig(Qt5X11Extras) >= 5.10.0
+%endif
 BuildRequires:  pkgconfig(SPIRV-Tools)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(libass)
@@ -63,7 +70,6 @@ BuildRequires:  pkgconfig(libsidplayfp)
 BuildRequires:  pkgconfig(libswresample) >= 3.1.100
 BuildRequires:  pkgconfig(libswscale) >= 5.1.100
 BuildRequires:  pkgconfig(libva)
-BuildRequires:  pkgconfig(libva-glx)
 BuildRequires:  pkgconfig(portaudio-2.0)
 # Enable rubberband support on openSUSE Tumbleweed and openSUSE Leap 15.5, SLE15SP5+
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500
@@ -117,6 +123,11 @@ It's a development package for %{name}.
   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
   -DCMAKE_INSTALL_LIBDIR=%{_libdir} \
   -DUSE_GLSLC=ON \
+%if %{with qt6}
+  -DBUILD_WITH_QT6=ON \
+%else
+  -DBUILD_WITH_QT6=OFF \
+%endif
   -DUSE_PORTAUDIO=ON \
   -DUSE_PIPEWIRE=ON \
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500

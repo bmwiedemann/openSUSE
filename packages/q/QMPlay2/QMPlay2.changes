@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Jun  4 14:07:47 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 23.06.04
+   * display 10 bit RGB images as 10 bit using Vulkan if possible,
+   * load external subtitles that are in sub-directories,
+   * add file name and time into screenshot file name,
+   * more precission for playback speed control,
+   * don't display "Deep color" using Vulkan,
+   * improve bitmap subtitles aspect ratio,
+   * add WebP as screenshots file format,
+   * PipeWire mono and 4 chnannels fix,
+   * VA-API fixes for AMD Radeon GPUs,
+   * remove makeitpersonal.co lyrics,
+   * add FPS Doubler video filter,
+   * "Always on top" improvement,
+   * Qt6 support for Linux,
+   * Wayland Vulkan fixes,
+   * YouTube fixes,
+   * other minor fixes and improvements.
+- Added support for building with Qt6
+- Removed 0001-fix-broken-yt-dlp.patch as it is merged upstream
+- Removed 0001-fix-mono-playback.patch as it is merged upstream
+- Removed 0001-fix-overlay-focus.patch as it is merged upstream
+
+-------------------------------------------------------------------
+Thu Apr  6 21:42:15 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Improve patch comments in spec file to better comply with
+  packaging guidelines
+
+-------------------------------------------------------------------
 Sun Apr  2 19:49:35 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
 
 - Optimize 0001-fix-overlay-focus.patch to also fix focus for the
