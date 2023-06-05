@@ -20,6 +20,7 @@
 
 %define rname chromium
 %define outputdir out
+%bcond_with is_beta # CHANNEL SWITCH
 # bsc#1108175
 %define __provides_exclude ^lib.*\\.so.*$
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
@@ -66,8 +67,16 @@
 %else
 %define ffmpeg_version 58
 %endif
-Name:           chromium
-Version:        113.0.5672.126
+# Package names
+%if %{with is_beta}
+%define chromedriver_name %{name}-chromedriver
+%define n_suffix -beta
+%else
+%define chromedriver_name chromedriver
+%define n_suffix %{nil}
+%endif
+Name:           chromium%{n_suffix}
+Version:        114.0.5735.90
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -105,7 +114,6 @@ Patch68:        chromium-94-ffmpeg-roll.patch
 Patch87:        chromium-98-gtk4-build.patch
 Patch90:        chromium-100-InMilliseconds-constexpr.patch
 Patch98:        chromium-102-regex_pattern-array.patch
-Patch103:       chromium-103-VirtualCursor-std-layout.patch
 Patch201:       chromium-86-fix-vaapi-on-intel.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch202:       chromium-prop-codecs.patch
@@ -117,8 +125,8 @@ Patch211:       gcc13-fix.patch
 Patch214:       chromium-113-webview-namespace.patch
 Patch215:       chromium-113-webauth-include-variant.patch
 Patch216:       chromium-113-typename.patch
-Patch217:       chromium-113-workaround_clang_bug-structured_binding.patch
-Patch218:       chromium-113-system-zlib.patch
+Patch217:       chromium-114-workaround_clang_bug-structured_binding.patch
+Patch218:       chromium-114-lld-argument.patch
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
@@ -178,6 +186,7 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libdc1394-2)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libelf)
+BuildRequires:  pkgconfig(libevdev)
 BuildRequires:  pkgconfig(libevent)
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libffi)
@@ -325,12 +334,16 @@ BuildRequires:  gcc%{gcc_version}-c++
 %description
 Chromium is the open-source project behind Google Chrome. We invite you to join us in our effort to help build a safer, faster, and more stable way for all Internet users to experience the web, and to create a powerful platform for developing a new generation of web applications.
 
-%package -n chromedriver
+%package -n %{chromedriver_name}
 Summary:        WebDriver for Google Chrome/Chromium
 License:        BSD-3-Clause
 Requires:       %{name} = %{version}
+%if %{with is_beta}
+Provides:       chromedriver = %{version}-%{release}
+Conflicts:      chromedriver
+%endif
 
-%description -n chromedriver
+%description -n %{chromedriver_name}
 WebDriver is an open source tool for automated testing of webapps across many browsers. It provides capabilities for navigating to web pages, user input, JavaScript execution, and more. ChromeDriver is a standalone server which implements WebDriver's wire protocol for Chromium. It is being developed by members of the Chromium and WebDriver teams.
 
 %prep
@@ -581,7 +594,6 @@ keeplibs=(
     third_party/utf
     third_party/vulkan
     third_party/wayland
-    third_party/web-animations-js
     third_party/webdriver
     third_party/webgpu-cts
     third_party/webrtc
@@ -804,6 +816,7 @@ myconf_gn+=" media_use_openh264=false"
 myconf_gn+=" rtc_use_h264=false"
 myconf_gn+=" use_v8_context_snapshot=true"
 myconf_gn+=" v8_use_external_startup_data=true"
+myconf_gn+=" enable_rust=false"
 %if %{with gtk4}
 myconf_gn+=" gtk_version=4"
 %endif
@@ -912,7 +925,7 @@ install -Dm 0644 %{SOURCE104} %{buildroot}%{_datadir}/icons/hicolor/symbolic/app
 %{_bindir}/chromium
 %{_mandir}/man1/chromium-browser.1%{?ext_man}
 
-%files -n chromedriver
+%files -n %{chromedriver_name}
 %{_libdir}/chromium/chromedriver
 %{_bindir}/chromedriver
 

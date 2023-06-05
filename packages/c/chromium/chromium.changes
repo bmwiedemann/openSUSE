@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Jun  4 18:52:01 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Chromium 114.0.5735.90 (boo#1211843):
+  * CSS text-wrap: balance is available
+  * Cookies partitioned by top level site (CHIPS)
+  * New Popover API
+- Security fixes:
+  * CVE-2023-2929: Out of bounds write in Swiftshader
+  * CVE-2023-2930: Use after free in Extensions
+  * CVE-2023-2931: Use after free in PDF
+  * CVE-2023-2932: Use after free in PDF
+  * CVE-2023-2933: Use after free in PDF
+  * CVE-2023-2934: Out of bounds memory access in Mojo
+  * CVE-2023-2935: Type Confusion in V8
+  * CVE-2023-2936: Type Confusion in V8
+  * CVE-2023-2937: Inappropriate implementation in Picture In Picture
+  * CVE-2023-2938: Inappropriate implementation in Picture In Picture
+  * CVE-2023-2939: Insufficient data validation in Installer
+  * CVE-2023-2940: Inappropriate implementation in Downloads
+  * CVE-2023-2941: Inappropriate implementation in Extensions API
+- Drop patches:
+  * chromium-103-VirtualCursor-std-layout.patch
+  * chromium-113-system-zlib.patch
+  * chromium-113-workaround_clang_bug-structured_binding.patch
+- Add patches
+  * chromium-114-workaround_clang_bug-structured_binding.patch
+  * chromium-114-lld-argument.patch
+
+-------------------------------------------------------------------
 Tue May 30 21:53:45 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Un-bundle zlib again
