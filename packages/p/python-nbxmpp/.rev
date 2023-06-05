@@ -395,4 +395,12 @@ Let somebody more skillfull review it. (forwarded request 195612 from DarkSS)</c
   * HTTP: Make sure streams are closed only once.</comment>
     <requestid>1074496</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>d01cabbd8b624d2e2747ca182b155127</srcmd5>
+    <version>4.3.1</version>
+    <time>1685981173</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1089734</requestid>
+  </revision>
 </revisionlist>

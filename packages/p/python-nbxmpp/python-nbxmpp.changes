@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun May 28 21:40:08 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.3.1:
+  * HTTP: Abort correctly on content overflow.
+  * Websocket: Always set peer certificate.
+
+-------------------------------------------------------------------
+Fri May 26 19:23:13 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 4.3.0:
+  * Add option to force http1.
+  * Add method to generate XMPP IRIs.
+  * Lower log level for missing GSSAPI dependency.
+  * OMEMO: Add device id and namespace to OMEMOBundle.
+  * Don’t delete session object in cleanup().
+  * HTTP: Don’t accept content encoding.
+
+-------------------------------------------------------------------
 Sun Mar 26 19:06:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.2.2:
