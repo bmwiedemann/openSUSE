@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Jun  1 12:27:36 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.4.7
+  * Fix crash when D-Bus connection is lost before it's connected
+  * Fix copyright info
+  * MPRIS: Control recently open/used player using multimedia keys
+  * Deduplicate key binding code
+  * Bind all possible keys
+  * Update about authors
+  * MPRIS: Remove old settings when clearing known players
+  * MPRIS: Ignore multimedia keys for blacklisted players
+  * MPRIS: Add possibility to hide inactive players, improve config
+    storage
+  * MPRIS: Remove pulseaudio_mpris_player_can_launch function
+  * MPRIS: Fix memory leak in player finalize
+  * MPRIS: Remove unused pulseaudio_mpris_player_is_equal function
+  * MPRIS: Refactor player connection lost and finalize
+  * MPRIS: Deduplicate find_desktop_entry function
+  * MPRIS: Make pulseaudio_mpris_get_available_players static
+  * MPRIS: Check for filename before launching the player
+  * Improve connection/disconnection with server
+  * Menu: Don't clear structure, it's not needed
+  * MPRIS: Reduce player_is_usable timeout to 5 sec
+  * MPRIS: Memory management fixes
+  * MPRIS: Don't initialize struct members, GLib is doing it
+  * MPRIS: Micro-optimization
+  * MPRIS: Check for is_playing in set_can_play function
+  * Subscribe NameOwnerChanged to watch MPRIS changes instead of
+    timer
+  * Fix removing blacklisted MPRIS players from config
+  * Improve run mixer button sensitivity
+  * Display default device name in tooltip
+  * Don't set has-tooltip property twice
+  * Don't show recording indicator for non-default monitors
+  * Make run mixer button sensitive for any path
+  * Show unplugged devices as insensitive
+  * Don't show rec icon if the source output doesn't belong to any
+    client
+  * Don't show recording indicator when it's not connected to the
+    source
+  * Fix mistake in comment
+  * Don't reset recording value in callback
+  * Allow maximum volume configuration in dialog
+  * Improve volume step size text
+  * Translation Updates
+- Remove _service file
+
+-------------------------------------------------------------------
 Sat Apr  1 13:21:17 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 0.4.6

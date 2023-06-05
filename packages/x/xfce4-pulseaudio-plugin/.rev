@@ -47,4 +47,12 @@
     <comment>- Update to version 0.4.6 (forwarded request 1076633 from tux93)</comment>
     <requestid>1076642</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1e8ff74542d7b5d13e151efac507d6f0</srcmd5>
+    <version>0.4.7</version>
+    <time>1685981300</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090933</requestid>
+  </revision>
 </revisionlist>

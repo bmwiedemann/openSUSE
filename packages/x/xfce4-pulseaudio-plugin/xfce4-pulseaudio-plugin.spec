@@ -21,7 +21,7 @@
 %define plugin pulseaudio
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        0.4.6
+Version:        0.4.7
 Release:        0
 Summary:        Pulseaudio Volume Control Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
@@ -34,7 +34,6 @@ BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(exo-2) >= 0.11
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.0
-BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libpulse-mainloop-glib) >= 0.9.19
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= 4.11.0
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.11.0
@@ -43,6 +42,7 @@ BuildRequires:  pkgconfig(libxfconf-0) >= 4.6.0
 # optional requirements
 BuildRequires:  pkgconfig(gio-2.0) >= 2.42
 BuildRequires:  pkgconfig(keybinder-3.0) >= 0.2.2
+BuildRequires:  pkgconfig(libcanberra) >= 0.30
 BuildRequires:  pkgconfig(libnotify) >= 0.7.0
 BuildRequires:  pkgconfig(libwnck-3.0) >= 3.20
 %if 0%{?sle_version} && 0%{?sle_version} < 150300
