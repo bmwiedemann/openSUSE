@@ -1,7 +1,7 @@
 #
 # spec file for package python-argh
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-argh
-Version:        0.26.2
+Version:        0.28.1
 Release:        0
 Summary:        An argparse wrapper
 License:        LGPL-3.0-or-later
 URL:            https://github.com/neithere/argh/
 Source:         https://files.pythonhosted.org/packages/source/a/argh/argh-%{version}.tar.gz
-Patch0:         support-py39.patch
-# https://github.com/neithere/argh/issues/152
-Patch1:         python-argh-no_mock.patch
-BuildRequires:  %{python_module iocapture}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -56,22 +54,23 @@ can be mixed. Keep in mind that argh.dispatch does some extra
 work that a custom dispatcher may not do.
 
 %prep
-%setup -q -n argh-%{version}
-%autopatch -p1
+%autosetup -p1 -n argh-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# do not run test_integration, which requires dropped iocapture
+rm tests/test_integration.py
+%pytest -v
 
 %files %{python_files}
 %doc README.rst
 %{python_sitelib}/argh/
-%{python_sitelib}/argh-%{version}-py*.egg-info
+%{python_sitelib}/argh-%{version}.dist-info
 
 %changelog

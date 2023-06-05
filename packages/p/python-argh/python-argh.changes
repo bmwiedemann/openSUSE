@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Fri Jun  2 07:12:44 UTC 2023 - pgajdos@suse.com
+
+- version update to 0.28.1
+  Version 0.28.1
+  --------------
+  - Fixed bugs in tests (#171, #172)
+  Version 0.28.0
+  --------------
+  A major cleanup.
+  Backward incompatible changes:
+  - Dropped support for Python 2.7 and 3.7.
+  Deprecated features, to be removed in v.0.30:
+  - `argh.assembling.SUPPORTS_ALIASES`.
+    - Always `True` for recent versions of Python.
+  - `argh.io.safe_input()` AKA `argh.interaction.safe_input()`.
+    - Not relevant anymore.  Please use the built-in `input()` instead.
+  - argument `pre_call` in `dispatch()`.
+  - Argument help as annotations.
+    - Annotations will only be used for types after v.0.30.
+  - Added deprecation warnings for some arguments deprecated back in v.0.26.
+  Version 0.27.2
+  --------------
+  Minor packaging fix:
+  * chore: include file required by tox.ini in the sdist (#155)
+  Version 0.27.1
+  --------------
+  Minor building and packaging fixes:
+  * docs: add Read the Docs config (#160)
+  * chore: include tox.ini in the sdist (#155)
+  Version 0.27.0
+  --------------
+  This is the last version to support Python 2.7.
+  Backward incompatible changes:
+  - Dropped support for Python 2.6.
+  Enhancements:
+  - Added support for Python 3.7 through 3.11.
+  - Support introspection of function signature behind the `@wraps` decorator
+    (issue #111).
+  Fixed bugs:
+  - When command function signature contained ``**kwargs`` *and* positionals
+    without defaults and with underscores in their names, a weird behaviour could
+    be observed (issue #104).
+  - Fixed introspection through decorators (issue #111).
+  - Switched to Python's built-in `unittest.mock` (PR #154).
+  - Fixed bug with `skip_unknown_args=True` (PR #134).
+  - Fixed tests for Python 3.9.7+ (issue #148).
+  Other changes:
+  - Included the license files in manifest (PR #112).
+  - Extended the list of similar projects (PR #87).
+  - Fixed typos and links in documentation (PR #110, #116, #156).
+  - Switched CI to Github Actions (PR #153).
+- deleted patches
+  - python-argh-no_mock.patch (upstreamed)
+  - support-py39.patch (upstreamed)
+
+-------------------------------------------------------------------
 Thu Mar 10 10:09:41 UTC 2022 - pgajdos@suse.com
 
 - do not use python-mock for testing
