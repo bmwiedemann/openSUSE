@@ -1,7 +1,7 @@
 #
 # spec file for package wlsunset
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wlsunset
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        Day/night gamma adjustments for Wayland compositors
 License:        MIT

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jun  1 09:45:07 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.3.0:
+  This release includes the ability to run only on a specific output, and
+  contains improvements around Wayland server shutdown, manual time
+  handling, and FreeBSD support. Here are the changes:
+
+  * Support running only for specific outputs (displays)
+  * Refactor RGB & XYZ colors into structs
+  * meson: Copy seatd's scdoc handling
+  * Only set up xdg-output once
+  * Store enabled state on output
+  * Ensure step time is at least 1 second
+  * Move feature defines to C files
+  * Use timezone as time offset for manual time
+  * Negate longitude_time_offset
+  * display_dispatch: Terminate poll loop on EPIPE
+
+-------------------------------------------------------------------
 Sat May  1 02:46:10 UTC 2021 - Martin Rey <mrey@suse.com>
 
 - Initial package wlsunset 0.2.0 for openSUSE
