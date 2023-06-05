@@ -4023,4 +4023,12 @@ The toolset consists of a variety of stand-alone scripts, review bots, osc plugi
   * Aggregate unique flavor access data</comment>
     <requestid>1090473</requestid>
   </revision>
+  <revision rev="465" vrev="1">
+    <srcmd5>463d22af337aec326319889b0b50b94b</srcmd5>
+    <version>20230605.bf97015</version>
+    <time>1685981281</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>1090854</requestid>
+  </revision>
 </revisionlist>

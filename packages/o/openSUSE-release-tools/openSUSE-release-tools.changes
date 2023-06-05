@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 05 08:56:20 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230605.bf97015:
+  * fixed pipe line name
+  * added ALP.Target group to the list
+  * dist: fix rpm scriptlets call to systemd_postun
+  * Add ALP Micro image release
+
+-------------------------------------------------------------------
 Fri Jun 02 10:12:56 UTC 2023 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20230602.41b6a00:
