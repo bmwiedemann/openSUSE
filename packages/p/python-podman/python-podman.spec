@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-podman
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,7 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-pytoml
 Requires:       python-pyxdg
 Requires:       python-requests
 Requires:       python-urllib3 < 2.0
@@ -50,13 +51,13 @@ BuildRequires:  %{python_module fixtures}
 BuildRequires:  %{python_module flake8}
 BuildRequires:  %{python_module podman >= %{version}}
 BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module setuptools >= 39}
+BuildRequires:  %{python_module urllib3 < 2.0}
 BuildRequires:  %{python_module varlink}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module urllib3 < 2.0}
 # /SECTION
 %endif
 %python_subpackages
