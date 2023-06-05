@@ -1,4 +1,228 @@
 -------------------------------------------------------------------
+Thu May 25 08:20:30 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.28.0
+  * Logging Management service
+    * New optional parameter for CRI-O parser
+      * ``oci logging service list --service-stage``
+    * Added new CRI-O parser in the option ``--service-configuration``
+    * [BREAKING] Commands removed
+      * ``oci logging log-included-search get``
+      * ``oci logging log-included-search list``
+  * Database Service
+    * Added availability domain information in get VM cluster and Exadata Infrastructure.
+      * ``oci db vm-cluster get --vm-cluster-id``
+      * ``oci db exadata-infrastructure get --exadata-infrastructure-id``
+    * Support for new optional parameter dbservers in the autonomous database dedicated service
+      * ``oci db cloud-autonomous-vm-cluster create --dbservers``
+  * DNS service
+    * Support for secondary egress zones API operations
+      * ``oci dns zone create --compartment-id --name --zone-type --external-downstreams ``
+    * Support to create zone from zone-file
+      * ``oci dns zone create-zone-from-zone-file --compartment-id --create-zone-from-zone-file-details``
+    * Support for new optional parameter external-downstream in zone-update
+      * ``oci dns zone update --external-downstreams``
+- from version 3.27.1
+  * Support for Self Service Integration in the Fusion Application service
+    * ``oci fusion-apps service-attachment create``
+    * ``oci fusion-apps service-attachment delete``
+    * ``oci fusion-apps service-attachment verify``
+- from version 3.27.0
+  * Support for the Access Governance cloud service
+    * ``oci access-governance-cp``
+  * Database Service
+    * Support for One-Off Patches resource to create, download database
+      patches for customers that lost access to MOS.
+      * ``oci db oneoff-patch create``
+      * ``oci db oneoff-patch get``
+      * ``oci db oneoff-patch list``
+      * ``oci db oneoff-patch delete``
+      * ``oci db oneoff-patch update``
+      * ``oci db oneoff-patch download``
+  * Support for changing Disaster Recovery configuration of a remote Autonomous
+    Database in remote region of whether it's a snapshot standby
+    * ``oci db autonomous-database change-disaster-recovery-configuration --is-snapshot-standby``
+  * Support for Schedule automatic backup for exacs and dbcs
+    * ``oci db database create --auto-backup-enabled --auto-backup-window --auto-full-backup-day
+      --auto-full-backup-window --run-immediate-full-backup``
+    * ``oci db database update --database-id --auto-backup-enabled --auto-backup-window
+      --auto-full-backup-day --auto-full-backup-window --run-immediate-full-backup``
+    * ``oci db system launch --auto-backup-enabled --auto-backup-window --auto-full-backup-day
+      --auto-full-backup-window --run-immediate-full-backup``
+  * Support for provisioning Software Defined Data Center (SDDCs) using standard bare metal
+    shapes with Block Storage as the datastore in the Oracle Cloud Vmware Solution
+    * ``oci ocvs sddc create --datastores``
+  * Support for the Instance Configuration Parity feature in the Core Services
+    * ``oci compute-management instance-configuration``
+  * [BREAKING] The Data Connectivity service is now removed
+    * ``oci data-connectivity``
+- from version 3.26.0
+  * Support for new command in stack-monitoring in the Resource service
+    * ``oci stack-monitoring resource update-and-propagate-tags``
+  * Support for on-demand node upgrade optional parameter for Kubernetes
+    in the Container Engine service
+    * ``oci ce node-pool create --node-pool-cycling-details``
+    * ``oci ce node-pool update --node-pool-cycling-details``
+  * Data Science serivce
+  * [BREAKING] Support for new BYOL SSL and ORDS certificates required
+    parameters for Cloud Autonomous VM Clusters
+    * ``oci db cloud-autonomous-vm-cluster rotate-cloud-autonomous-vm-cluster-ords-certs
+      --certificate-generation-type``
+    * ``oci db cloud-autonomous-vm-cluster rotate-cloud-autonomous-vm-cluster-ssl-certs
+      --certificate-generation-type``
+  * Support for new BYOL SSL and ORDS certificates optional parameters for Cloud Autonomous VM Clusters
+    * ``oci db cloud-autonomous-vm-cluster rotate-cloud-autonomous-vm-cluster-ords-certs
+      --ca-bundle-id --certificate-authority-id --certificate-id``
+    * ``oci db cloud-autonomous-vm-cluster rotate-cloud-autonomous-vm-cluster-ssl-certs
+      --ca-bundle-id --certificate-authority-id --certificate-id```
+  * Stack Monitoring service
+    * Support for new optional parameter in creating discorvery job
+      * ``oci stack-monitoring discovery-job create --should-propagate-tags-to-discovered-resources``
+    * Support for new optional parameters to resources create and update commands
+      * ``oci stack-monitoring resource create --additional-aliases
+        --additional-credentials --defined-tags --freeform-tags``
+      * ``oci stack-monitoring resource update --additional-aliases
+        --additional-credentials --defined-tags --freeform-tags``
+    * Support for new command in resources
+      * ``oci stack-monitoring resource update-and-propagate-tagss``
+- from version 3.25.4
+  * Database Management service
+    * Support for new commands to monitor external exadata infrastructure
+      * ``oci database-management external-exadata-infrastructure change-compartment``
+      * ``oci database-management external-exadata-infrastructure create``
+      * ``oci database-management external-exadata-infrastructure delete``
+      * ``oci database-management external-exadata-infrastructure
+        disable-external-exadata-infrastructure-management``
+      * ``oci database-management external-exadata-infrastructure discover``
+      * ``oci database-management external-exadata-infrastructure
+        enable-external-exadata-infrastructure-management``
+      * ``oci database-management external-exadata-infrastructure get``
+      * ``oci database-management external-exadata-infrastructure list``
+      * ``oci database-management external-exadata-infrastructure update``
+      * ``oci database-management external-exadata-storage-connector check``
+      * ``oci database-management external-exadata-storage-connector create``
+      * ``oci database-management external-exadata-storage-connector delete``
+      * ``oci database-management external-exadata-storage-connector get``
+      * ``oci database-management external-exadata-storage-connector list``
+      * ``oci database-management external-exadata-storage-connector update``
+      * ``oci database-management external-exadata-storage-grid get``
+      * ``oci database-management external-exadata-storage-server get``
+      * ``oci database-management external-exadata-storage-server get-iorm-plan``
+      * ``oci database-management external-exadata-storage-server get-open-alert-history``
+      * ``oci database-management external-exadata-storage-server get-top-sql-cpu-activity``
+      * ``oci database-management external-exadata-storage-server list``
+    * Support for new optional parameter --external-exadata-infrastructure-id
+      * ``oci database-management managed-database list --external-exadata-infrastructure-id``
+  * Support for new optional parameters in the Database service
+    * ``oci db cloud-autonomous-vm-cluster create --is-mtls-enabled-vm-cluster
+      --scan-listener-port-non-tls --scan-listener-port-tls``
+    * ``oci db exadata-infrastructure create --network-bonding-mode-details``
+    * ``oci db exadata-infrastructure update --network-bonding-mode-details``
+  * Support for new commands in the Integration service
+    * ``oci integration integration-instance change-private-endpoint-outbound-connection``
+    * ``oci integration integration-instance change-private-endpoint-outbound-connection-none-outbound-connection``
+    * ``oci integration integration-instance change-private-endpoint-outbound-connection-private-endpoint-outbound-connection``
+    * ``oci integration integration-instance enable-process-automation``
+  * Organizations service
+    * Support for new commands
+      * ``oci organizations governance organization-tenancy add``
+      * ``oci organizations governance organization-tenancy remove``
+    * Support for new optional parameters
+      * ``oci organizations child-tenancy create --governance-status``
+      * ``oci organizations sender-invitation create --subjects``
+- from version 3.25.3
+  * Support for private endpoints in the Digital Assistant service
+    * ``oci oda management oda-private-endpoint``
+    * ``oci oda management oda-private-endpoint-attachment``
+    * ``oci oda management oda-private-endpoint-scan-proxy``
+  * Support for cancel backup in Database Service
+    * ``oci db backup cancel --backup-id``
+  * Support for param ``--record-metadata-job-id``  in Data Labeling service
+    * ``oci data-labeling-service-dataplane record create-record-document-metadata
+      --record-metadata-job-id``
+    * ``oci data-labeling-service-dataplane record update-record-document-metadata
+      --record-metadata-job-id``
+- from version 3.25.2
+  * Support for rotation of certificate of ORDS service on Autonomous
+    VM Clusters on Exadata Cloud in the Database service.
+    * ``oci db autonomous-vm-cluster rotate-autonomous-vm-cluster-ords-certs``
+    * ``oci db autonomous-vm-cluster rotate-autonomous-vm-cluster-ssl-certs``
+* Support for Application Virtual IP (VIP) features in the Database Service
+  * ``oci db application-vip create``
+  * ``oci db application-vip delete``
+  * ``oci db application-vip get``
+  * ``oci db application-vip list``
+* Support for ADDM Spotlight for databases enabled in the Operations Insights service
+  * ``oci opsi database-insights ingest-addm-reports``
+  * ``oci opsi database-insights list-addm-db-finding-categories``
+  * ``oci opsi database-insights list-addm-db-findings-time-series``
+  * ``oci opsi database-insights list-addm-db-parameter-categories``
+  * ``oci opsi database-insights list-addm-db-recommendation-categories``
+  * ``oci opsi database-insights list-addm-db-recommendations-time-series``
+  * ``oci opsi database-insights list-addm-dbs``
+  * ``oci opsi database-insights summarize-addm-db-findings``
+  * ``oci opsi database-insights summarize-addm-db-parameter-changes``
+  * ``oci opsi database-insights summarize-addm-db-parameters``
+  * ``oci opsi database-insights summarize-addm-db-recommendations``
+  * ``oci opsi database-insights summarize-addm-db-schema-objects``
+  * ``oci opsi database-insights summarize-addm-db-sql-statements``
+* Data Safe service
+  * Support for new command to list aggregated audit policy details on target databases
+    * ``oci data-safe audit-policy-analytics list``
+  * Support for new commands for data masking
+    * ``oci data-safe difference-column get``
+    * ``oci data-safe masking-object list``
+    * ``oci data-safe masking-policy apply-sdm-masking-policy-difference``
+    * ``oci data-safe masking-schema list``
+    * ``oci data-safe sdm-masking-policy-difference``
+  * Support for new commands for data discovery
+    * ``oci data-safe sensitive-object list``
+    * ``oci data-safe sensitive-schema list``
+  * Support for new commands to list user profiles and analytics
+    * ``oci data-safe user-assessment get-profile``
+    * ``oci data-safe profile list-profile-analytics``
+    * ``oci data-safe user-assessment list-profile-summaries``
+  * Support for new optional parameters
+    * ``oci data-safe masking-policy mask-data --is-drop-temp-tables-enabled
+      --is-redo-logging-enabled --is-refresh-stats-enabled --parallel-degree --recompile``
+    * ``oci data-safe security-assessment list-findings --references``
+    * ``oci data-safe sensitive-column list --is-case-in-sensitive``
+  * Required parameter --display-name is now optional for below commands in the Data Safe service
+    * ``oci data-safe private-endpoint update --display-name``
+    * ``oci data-safe user-assessment list-users --user-profile --user-role --user-type``
+- from version 3.25.1
+  * Support for a new optional parameter to HTTP healthchecks for
+    HTTPS backendsets in the Load Balancer service
+    * ``oci lb health-checker update --is-force-plain-text``
+- from version 3.25.0
+  * Compute service
+    * Support for new compute cluster commands
+      * ``oci compute compute-cluster change-compartment``
+      * ``oci compute compute-cluster create``
+      * ``oci compute compute-cluster delete``
+      * ``oci compute compute-cluster get``
+      * ``oci compute compute-cluster list``
+      * ``oci compute compute-cluster update``
+    * Support for a new optional parameter --compute-cluster-id
+      * ``oci compute instance launch --compute-cluster-id``
+      * ``oci compute instance list --compute-cluster-id``
+  * Support for a new command to get connection diagnostics for registered
+    databases in the Database Migration service
+    * ``oci database-migration connection connection-diagnostics``
+  * Support for a new command to validate connection credentials in the DevOps service
+    * ``oci devops connection validate``
+  * Support for a new optional parameter allowing ACD and OKV wallet naming in the Database service
+    * ``oci db autonomous-container-database create --db-name``
+  * [BREAKING] Database service
+    * The command db-system-compute-performance list has been renamed
+      * ``oci db system list-db-system-compute-performances``
+    * The command db-system-storage-performance list has been renamed
+      * ``oci db system list-db-system-storage-performances``
+- Refresh patches for new version
+  * oc_relax-python-depends.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Mon Mar 27 08:40:30 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.24.0
