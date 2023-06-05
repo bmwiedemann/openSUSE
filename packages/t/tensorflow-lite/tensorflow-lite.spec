@@ -71,8 +71,9 @@ Source33:       psimd.zip
 Patch0:         tensorflow-lite-cmake-find-python.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
-BuildRequires:  gcc-fortran
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
+BuildRequires:  gcc12-fortran
 BuildRequires:  git
 # We use some macros here but not singlespec
 BuildRequires:  python-rpm-macros
@@ -153,6 +154,7 @@ popd
 # --- Build tensorflow-lite as part of the minimal executable ---
 # -Werror=return-type fails in xnnpack
 %global optflags %(echo %{optflags} | sed s/-Werror=return-type//)
+
 pushd tflite-build
 %cmake ../../tensorflow/lite/examples/minimal \
   -DBUILD_STATIC_LIBS:BOOL=ON \
@@ -176,6 +178,8 @@ pushd tflite-build
 %ifarch %arm aarch64
   -DTFLITE_ENABLE_XNNPACK:BOOL=OFF \
 %endif
+  -DCMAKE_C_COMPILER=gcc-12 \
+  -DCMAKE_CXX_COMPILER=g++-12 \
 %{nil}
 %cmake_build all _pywrap_tensorflow_interpreter_wrapper
 

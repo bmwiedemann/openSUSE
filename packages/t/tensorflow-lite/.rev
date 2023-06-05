@@ -44,4 +44,12 @@
       creation (different initializer instances get different (forwarded request 1005091 from bnavigator)</comment>
     <requestid>1005092</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e578b65efb44d8d9181477b5d3eafae6</srcmd5>
+    <version>2.10.0</version>
+    <time>1685981306</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090946</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  5 14:52:25 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Use gcc12 to build since build fails with default gcc (13)
+
+-------------------------------------------------------------------
 Tue Sep 20 00:13:13 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.10.0
