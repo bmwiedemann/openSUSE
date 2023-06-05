@@ -1,7 +1,7 @@
 #
 # spec file for package ogre
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@
 %bcond_with cg
 # OpenEXR v3 is incompatible https://github.com/OGRECave/ogre/issues/2179
 %bcond_with openexr
+# Optionally build without mono bindings
+%bcond_without mono
 Name:           ogre
 Version:        %{major}.%{minor}.%{third}
 Release:        0
@@ -58,7 +60,9 @@ BuildRequires:  python3
 BuildRequires:  swig
 BuildRequires:  cmake(SPIRV-Tools)
 BuildRequires:  cmake(assimp)
+%if %{with mono}
 BuildRequires:  mono(mcs)
+%endif
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(freetype2)
@@ -486,6 +490,9 @@ ln -s {..,%{__builddir}}/imgui-%{im_version}
 
 %install
 %cmake_install
+%if %{without mono}
+rm %{buildroot}%{_includedir}/OGRE/Ogre.i
+%endif
 mkdir -p "%{buildroot}%{_docdir}"
 mv "%{buildroot}%{_datadir}/doc/OGRE" "%{buildroot}%{_docdir}/OGRE"
 # Install samples' source
@@ -548,12 +555,14 @@ fi
 %{_datadir}/OGRE/Media/RTShaderLib
 %{_datadir}/OGRE/Media/Terrain/
 
+%if %{with mono}
 %files mono
 %{_includedir}/OGRE/Ogre.i
 %dir %{_prefix}/lib/cli
 %dir %{_prefix}/lib/cli/ogre-sharp-%{version}
 %{_prefix}/lib/cli/ogre-sharp-%{version}/Ogre.dll
 %{_prefix}/lib/cli/ogre-sharp-%{version}/libOgre.so
+%endif
 
 %files python
 %{python3_sitelib}/Ogre
