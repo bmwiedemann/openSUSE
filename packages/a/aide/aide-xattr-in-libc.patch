@@ -1,7 +1,8 @@
-diff --color -ruN aide-0.18.ori/configure.ac aide-0.18/configure.ac
---- aide-0.18.ori/configure.ac	2023-02-06 22:06:50.000000000 +0100
-+++ aide-0.18/configure.ac	2023-02-23 18:38:19.703630012 +0100
-@@ -59,7 +59,7 @@
+Index: aide-0.18.3/configure.ac
+===================================================================
+--- aide-0.18.3.orig/configure.ac
++++ aide-0.18.3/configure.ac
+@@ -59,7 +59,7 @@ dnl Do the right thing for glibc...
  AIDE_DEFS="-D_GNU_SOURCE"
  
  dnl This is borrowed from libtool
@@ -10,7 +11,7 @@ diff --color -ruN aide-0.18.ori/configure.ac aide-0.18/configure.ac
  if test $ac_cv_c_compiler_gnu = yes; then
      LD_STATIC_FLAG='-static'
  
-@@ -101,54 +101,54 @@
+@@ -101,54 +101,54 @@ else
  	# All AIX code is PIC.
  	LD_STATIC_FLAG='-bnso -bI:/lib/syscalls.exp'
  	;;
@@ -74,7 +75,7 @@ diff --color -ruN aide-0.18.ori/configure.ac aide-0.18/configure.ac
      uts4*)
  	## pic_flag='-pic'
  	LD_STATIC_FLAG='-Bstatic'
-@@ -338,8 +338,6 @@
+@@ -338,8 +338,6 @@ fi
  
  AIDE_PKG_CHECK(selinux, SELinux, no, SELINUX, libselinux, selinux)
  
@@ -83,9 +84,10 @@ diff --color -ruN aide-0.18.ori/configure.ac aide-0.18/configure.ac
  AIDE_PKG_CHECK(capabilities, POSIX 1003.1e capabilities, no, CAPABILITIES, libcap, caps)
  
  AIDE_PKG_CHECK(e2fsattrs, e2fsattrs, no, E2FSATTRS, e2p, e2fsattrs)
-diff --color -ruN aide-0.18.ori/include/db_config.h aide-0.18/include/db_config.h
---- aide-0.18.ori/include/db_config.h	2023-02-06 22:06:50.000000000 +0100
-+++ aide-0.18/include/db_config.h	2023-02-23 18:29:04.202036763 +0100
+Index: aide-0.18.3/include/db_config.h
+===================================================================
+--- aide-0.18.3.orig/include/db_config.h
++++ aide-0.18.3/include/db_config.h
 @@ -19,7 +19,7 @@
   * with this program; if not, write to the Free Software Foundation, Inc.,
   * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
@@ -112,7 +114,7 @@ diff --color -ruN aide-0.18.ori/include/db_config.h aide-0.18/include/db_config.
  /*  }_db_config ; */
  
  typedef struct database {
-@@ -111,14 +110,14 @@
+@@ -111,14 +110,14 @@ typedef struct db_config {
  #ifdef WITH_ZLIB
    /* Is dbout gzipped or not */
    int gzip_dbout;
@@ -129,7 +131,7 @@ diff --color -ruN aide-0.18.ori/include/db_config.h aide-0.18/include/db_config.
    char* config_file;
    char* config_version;
    bool config_check_warn_unrestricted_rules;
-@@ -160,7 +159,7 @@
+@@ -160,7 +159,7 @@ typedef struct db_config {
    int symlinks_found;
    DB_ATTR_TYPE attr;
  
@@ -138,9 +140,10 @@ diff --color -ruN aide-0.18.ori/include/db_config.h aide-0.18/include/db_config.
    int no_acl_on_symlinks;
  #endif
    int warn_dead_symlinks;
-diff --color -ruN aide-0.18.ori/src/do_md.c aide-0.18/src/do_md.c
---- aide-0.18.ori/src/do_md.c	2023-02-06 22:06:50.000000000 +0100
-+++ aide-0.18/src/do_md.c	2023-02-23 18:29:31.706313697 +0100
+Index: aide-0.18.3/src/do_md.c
+===================================================================
+--- aide-0.18.3.orig/src/do_md.c
++++ aide-0.18.3/src/do_md.c
 @@ -45,7 +45,6 @@
  
  #ifdef WITH_XATTR
@@ -149,7 +152,7 @@ diff --color -ruN aide-0.18.ori/src/do_md.c aide-0.18/src/do_md.c
  #ifndef ENOATTR
  # define ENOATTR ENODATA
  #endif
-@@ -327,7 +326,7 @@
+@@ -327,7 +326,7 @@ md_hashsums calc_hashsums(char* fullpath
  }
  
  void fs2db_line(struct stat* fs,db_line* line) {
@@ -158,7 +161,7 @@ diff --color -ruN aide-0.18.ori/src/do_md.c aide-0.18/src/do_md.c
    line->inode=fs->st_ino;
  
    if(ATTR(attr_uid)&line->attr) {
-@@ -349,7 +348,7 @@
+@@ -349,7 +348,7 @@ void fs2db_line(struct stat* fs,db_line*
    }else{
      line->size=0;
    }
@@ -167,7 +170,7 @@ diff --color -ruN aide-0.18.ori/src/do_md.c aide-0.18/src/do_md.c
    if(ATTR(attr_linkcount)&line->attr){
      line->nlink=fs->st_nlink;
    }else {
-@@ -367,7 +366,7 @@
+@@ -367,7 +366,7 @@ void fs2db_line(struct stat* fs,db_line*
    }else{
      line->ctime=0;
    }
@@ -176,7 +179,7 @@ diff --color -ruN aide-0.18.ori/src/do_md.c aide-0.18/src/do_md.c
    if(ATTR(attr_atime)&line->attr){
      line->atime=fs->st_atime;
    }else{
-@@ -379,13 +378,13 @@
+@@ -379,13 +378,13 @@ void fs2db_line(struct stat* fs,db_line*
    } else {
      line->bcount=0;
    }
@@ -192,7 +195,7 @@ diff --color -ruN aide-0.18.ori/src/do_md.c aide-0.18/src/do_md.c
  #ifdef WITH_POSIX_ACL
    if(ATTR(attr_acl)&line->attr) {
      acl_t acl_a;
-@@ -434,7 +433,7 @@
+@@ -434,7 +433,7 @@ void acl2line(db_line* line) {
      acl_free(acl_d);
    }
    line->acl = ret;
@@ -201,7 +204,7 @@ diff --color -ruN aide-0.18.ori/src/do_md.c aide-0.18/src/do_md.c
  }
  #endif
  
-@@ -596,4 +595,3 @@
+@@ -596,4 +595,3 @@ void capabilities2line(db_line* line) {
  void no_hash(db_line* line) {
    line->attr&=~get_hashes(true);
  }

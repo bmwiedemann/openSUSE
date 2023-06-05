@@ -1,7 +1,8 @@
-diff --color -ruN aide-0.18.ori/Makefile.am aide-0.18/Makefile.am
---- aide-0.18.ori/Makefile.am	2023-02-06 22:06:50.000000000 +0100
-+++ aide-0.18/Makefile.am	2023-02-23 17:49:10.893667920 +0100
-@@ -65,7 +65,7 @@
+Index: aide-0.18.3/Makefile.am
+===================================================================
+--- aide-0.18.3.orig/Makefile.am
++++ aide-0.18.3/Makefile.am
+@@ -65,7 +65,7 @@ aide_SOURCES += include/fopen.h src/fope
  endif
  
  aide_CFLAGS = @AIDE_DEFS@ -W -Wall -g ${PTHREAD_CFLAGS}

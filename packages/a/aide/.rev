@@ -309,4 +309,13 @@
 - switch to pcre2 (forwarded request 1072661 from dirkmueller)</comment>
     <requestid>1072663</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>e6b8c170390e375a747f9074c4b6bc93</srcmd5>
+    <version>0.18.3</version>
+    <time>1685981282</time>
+    <user>dimstar_suse</user>
+    <comment>- switched service macros from %systemd_* to %service_* 
+  according to documentation at https://en.opensuse.org/openSUSE:Systemd_packaging_guidelines#Registering_unit_files_in_install_scripts (forwarded request 1090912 from amanzini)</comment>
+    <requestid>1090921</requestid>
+  </revision>
 </revisionlist>

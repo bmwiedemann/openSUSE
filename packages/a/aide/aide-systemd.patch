@@ -1,7 +1,8 @@
-diff -Naur org/doc/aide.1 patch/doc/aide.1
---- org/doc/aide.1	2021-11-03 16:06:51.562903494 +0100
-+++ patch/doc/aide.1	2021-11-03 16:17:31.549730006 +0100
-@@ -135,7 +135,7 @@
+Index: aide-0.18.3/doc/aide.1
+===================================================================
+--- aide-0.18.3.orig/doc/aide.1
++++ aide-0.18.3/doc/aide.1
+@@ -143,7 +143,7 @@ See \fB--version\fR output for the defau
  default \fBdatabase_in\fR and \fBdatabase_out\fR config values.
  
  .SH SEE ALSO
@@ -10,10 +11,11 @@ diff -Naur org/doc/aide.1 patch/doc/aide.1
  .SH BUGS
  There are probably bugs in this release. Please report them
  at https://github.com/aide/aide/issues .
-diff -Naur org/doc/aide.conf.5 patch/doc/aide.conf.5
---- org/doc/aide.conf.5	2021-11-03 16:06:51.582903583 +0100
-+++ patch/doc/aide.conf.5	2021-11-03 16:18:03.469869750 +0100
-@@ -668,7 +668,7 @@
+Index: aide-0.18.3/doc/aide.conf.5
+===================================================================
+--- aide-0.18.3.orig/doc/aide.conf.5
++++ aide-0.18.3/doc/aide.conf.5
+@@ -1090,7 +1090,7 @@ In the following, the first is not allow
  .B "/foo e+p+u+g"
  .PP
  .SH "SEE ALSO"

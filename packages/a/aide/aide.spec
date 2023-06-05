@@ -17,7 +17,7 @@
 
 
 Name:           aide
-Version:        0.18.1
+Version:        0.18.3
 Release:        0
 Summary:        Advanced Intrusion Detection Environment
 License:        GPL-2.0-or-later
@@ -56,6 +56,7 @@ AIDE is an intrusion detection system that checks file integrity.
 
 %package test
 Summary:        Simple AIDE testing
+BuildArch:      noarch
 
 %description test
 Simple AIDE test script for externalized testing.
@@ -101,6 +102,9 @@ gzip -9 %{buildroot}%{_mandir}/man8/aide.timer.8
 mkdir -p doc/examples%{_sysconfdir}/cron.daily/
 cp -a %{SOURCE2} doc/examples%{_sysconfdir}/cron.daily/aide.sh
 
+%pre
+%service_add_pre %{name}.service %{name}.timer
+
 %post
 if ! grep -q "database_in" %{_sysconfdir}/aide.conf ; then
   # with the 0.17 update some backward incompatible changes were made to the config file. Therefore, we have to adapt those parameters, otherwise the program will fail
@@ -108,13 +112,13 @@ if ! grep -q "database_in" %{_sysconfdir}/aide.conf ; then
   sed -i '/verbose=/d' %{_sysconfdir}/aide.conf
   sed -i 's/\t/ /g' %{_sysconfdir}/aide.conf
 fi
-%systemd_post %{name}.service %{name}.timer
+%service_add_post %{name}.service %{name}.timer
 
 %preun
-%systemd_preun %{name}.service %{name}.timer
+%service_del_preun %{name}.service %{name}.timer
 
 %postun
-%systemd_postun %{name}.service %{name}.timer
+%service_del_postun %{name}.service %{name}.timer
 
 %check
 rm -rf %{_localstatedir}/tmp/aide-test
