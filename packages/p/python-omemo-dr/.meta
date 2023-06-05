@@ -1,0 +1,5 @@
+<package name="python-omemo-dr" project="openSUSE:Factory">
+  <title>OMEMO Encryption Library</title>
+  <description>Python library for handling OMEMO encryption.</description>
+  <devel project="devel:languages:python" package="python-omemo-dr"/>
+</package>
