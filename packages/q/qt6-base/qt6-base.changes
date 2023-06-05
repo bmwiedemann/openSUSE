@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  5 08:59:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream changes (CVE-2023-34410, boo#1211994):
+  * 0001-Schannel-Reject-certificate-not-signed-by-a-configur.patch
+  * 0001-Ssl-Copy-the-on-demand-cert-loading-bool-from-defaul.patch
+
+-------------------------------------------------------------------
 Wed May 24 07:45:34 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.5.1
