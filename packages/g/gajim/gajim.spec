@@ -25,14 +25,14 @@
 %define pythons python310
 %endif
 Name:           gajim
-Version:        1.7.3
+Version:        1.8.0
 Release:        0
 Summary:        XMPP client written in Python and GTK
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Talk/Clients
 URL:            https://gajim.org/
-Source:         https://gajim.org/downloads/1.7/gajim-%{version}.tar.gz
-BuildRequires:  %{python_module nbxmpp >= 4.2.2}
+Source:         https://gajim.org/downloads/1.8/gajim-%{version}.tar.gz
+BuildRequires:  %{python_module nbxmpp >= 4.3.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module precis-i18n >= 1.0.0}
 BuildRequires:  %{python_module wheel}
@@ -47,14 +47,14 @@ BuildRequires:  python-rpm-generators >= 20220912
 BuildRequires:  python-rpm-macros >= 20220912
 BuildRequires:  update-desktop-files
 Requires:       %{python3_dist gssapi}
+Requires:       %{python3_dist omemo-dr}
+Requires:       %{python3_dist qrcode}
 Requires:       %{python_flavor}-gobject-Gdk
 Requires:       %{python_flavor}-gobject-cairo
 Requires:       ca-certificates-mozilla
 Requires:       typelib(GtkSource) = 4
 Requires:       typelib(Soup) = 3.0
-# OMEMO encryption
-Recommends:     %{python3_dist axolotl}
-Recommends:     gajim-plugin-omemo
+Obsoletes:      gajim-plugin-omemo <= 2.9.0
 BuildArch:      noarch
 %{?python_enable_dependency_generator}
 
