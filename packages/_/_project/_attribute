@@ -25,7 +25,7 @@
   boo#1205020: '20221104'
   boo#1205032: '20221110'
   boo#1205312: '20221113'
-  boo#1205314: '20230603'
+  boo#1205314: '20230604'
   boo#1205362: '20221113'
   boo#1205363: '20230119'
   boo#1205425: '20221120'
@@ -180,7 +180,7 @@
   poo#128069: '20230420'
   poo#128213: '20230426'
   poo#128249: '20230502'
-  poo#128384: '20230603'
+  poo#128384: '20230604'
   poo#128387: '20230502'
   poo#128402: '20230603'
   poo#128549: '20230509'
@@ -538,10 +538,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20230604'
 published: '20230603'
 publishing: '20230603'
-testing: '20230603'
+testing: '20230604'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
