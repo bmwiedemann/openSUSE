@@ -17,7 +17,7 @@
 
 
 Name:           ugrep
-Version:        3.11.2
+Version:        3.12.1
 Release:        0
 Summary:        Universal grep: a feature-rich grep implementation with focus on speed
 License:        BSD-3-Clause
@@ -39,7 +39,7 @@ code, text, binary files, archives, compressed files, documents and use
 fuzzy search.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \

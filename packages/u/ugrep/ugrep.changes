@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun  4 18:18:13 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- update to 3.12.1:
+  * New ug+ and ugrep+ commands to search pdfs, documents and image
+    metadata when the corresponding tools are installed
+  * improved --filter option
+  * speed improvements
+
+-------------------------------------------------------------------
 Sat Apr  8 10:42:51 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.11.2:
