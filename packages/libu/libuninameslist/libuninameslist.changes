@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 29 19:54:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 20230523:
+  * This release is marked as 15.0b for testing purposes and
+    contains 608 new characters.
+  * If you have comments about this library, please create an
+  * The French libuninameslist-fr is also now updated from 14.0
+    to 15.0.
+  * Users who do not have 'autoconf' or 'automake' (or cannot run
+    them), should choose the -dist- release version included here
+    which skips these steps (you then start at ./configure).
+
+-------------------------------------------------------------------
 Fri Dec  2 21:06:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 20221022:
