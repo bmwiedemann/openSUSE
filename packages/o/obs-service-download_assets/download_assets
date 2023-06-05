@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# A small wrapper to make download_assets from the build script usable
+# via a source service.
+
+# config options for this host ?
+[[ -f /etc/obs/services/download_assets ]] && . /etc/obs/services/download_assets
+
+# config options for this user ?
+[[ -f "$HOME"/.obs/download_assets ]] && . "$HOME"/.obs/download_assets
+
+while test $# -gt 0; do
+  case $1 in
+    --outdir)
+      MYOUTDIR="$2"
+      shift
+    ;;
+    *)
+      echo "Unknown parameter $1."
+      echo "This service is not accepting parameters currently."
+      exit 1
+    ;;
+  esac
+  shift
+done
+
+if [[ ! -d "${MYOUTDIR}" ]]; then
+  echo "ERROR: output directory \"${MYOUTDIR}\" does not exist"
+  exit 1
+fi
+
+CACHE=""
+if [ -n "$CACHEDIRECTORY" ]; then
+  CACHE="--assetdir $CACHEDIRECTORY"
+fi
+
+exec /usr/lib/build/download_assets $CACHE --outdir "$MYOUTDIR" .
+

@@ -1,0 +1,5 @@
+<service name="clean_assets">
+  <summary>Asset Cleaner</summary>
+  <description>This service can be used to remove all remote assets specified in build descriptions (eg. spec or kiwi files) from the local workspace. This service is supposed to be used for local runs before checkin and has no further options.</description>
+</service>
+
