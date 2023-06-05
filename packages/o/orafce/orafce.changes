@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 01 13:02:42 UTC 2023 - emiliano.langella@suse.com
+
+- Update to version VERSION_4.3.0+git0.fac8b9c:
+  * fix regress test for dbms_random.string
+  * add chars '\' and '~' to list of printable chars for function dbms_random.string
+  * fix dbms_random should not be immutable (Issue #222)
+
+-------------------------------------------------------------------
 Mon May 01 13:53:04 UTC 2023 - emiliano.langella@suse.com
 
 - Update to version 4.2.6+git0.86d7f4c:
