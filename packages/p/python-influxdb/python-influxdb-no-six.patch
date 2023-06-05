@@ -1,0 +1,153 @@
+Index: influxdb-5.3.1/influxdb.egg-info/requires.txt
+===================================================================
+--- influxdb-5.3.1.orig/influxdb.egg-info/requires.txt
++++ influxdb-5.3.1/influxdb.egg-info/requires.txt
+@@ -1,7 +1,6 @@
+ python-dateutil>=2.6.0
+ pytz
+ requests>=2.17.0
+-six>=1.10.0
+ msgpack
+ 
+ [test]
+Index: influxdb-5.3.1/influxdb/client.py
+===================================================================
+--- influxdb-5.3.1.orig/influxdb/client.py
++++ influxdb-5.3.1/influxdb/client.py
+@@ -20,7 +20,7 @@ from itertools import chain, islice
+ import msgpack
+ import requests
+ import requests.exceptions
+-from six.moves.urllib.parse import urlparse
++from urllib.parse import urlparse
+ 
+ from influxdb.line_protocol import make_lines, quote_ident, quote_literal
+ from influxdb.resultset import ResultSet
+Index: influxdb-5.3.1/influxdb/helper.py
+===================================================================
+--- influxdb-5.3.1.orig/influxdb/helper.py
++++ influxdb-5.3.1/influxdb/helper.py
+@@ -10,8 +10,6 @@ from collections import namedtuple, defa
+ from datetime import datetime
+ from warnings import warn
+ 
+-import six
+-
+ 
+ class SeriesHelper(object):
+     """Subclass this helper eases writing data points in bulk.
+@@ -176,7 +174,7 @@ class SeriesHelper(object):
+         json = []
+         if not cls.__initialized__:
+             cls._reset_()
+-        for series_name, data in six.iteritems(cls._datapoints):
++        for series_name, data in cls._datapoints.items():
+             for point in data:
+                 json_point = {
+                     "measurement": series_name,
+Index: influxdb-5.3.1/influxdb/influxdb08/client.py
+===================================================================
+--- influxdb-5.3.1.orig/influxdb/influxdb08/client.py
++++ influxdb-5.3.1/influxdb/influxdb08/client.py
+@@ -7,8 +7,7 @@ import json
+ import socket
+ import requests
+ import requests.exceptions
+-from six.moves import xrange
+-from six.moves.urllib.parse import urlparse
++from urllib.parse import urlparse
+ 
+ from influxdb import chunked_json
+ 
+@@ -294,7 +293,7 @@ class InfluxDBClient(object):
+         """
+         def list_chunks(data_list, n):
+             """Yield successive n-sized chunks from l."""
+-            for i in xrange(0, len(data_list), n):
++            for i in range(0, len(data_list), n):
+                 yield data_list[i:i + n]
+ 
+         batch_size = kwargs.get('batch_size')
+Index: influxdb-5.3.1/influxdb/line_protocol.py
+===================================================================
+--- influxdb-5.3.1.orig/influxdb/line_protocol.py
++++ influxdb-5.3.1/influxdb/line_protocol.py
+@@ -11,7 +11,6 @@ from numbers import Integral
+ 
+ from pytz import UTC
+ from dateutil.parser import parse
+-from six import binary_type, text_type, integer_types, PY2
+ 
+ EPOCH = UTC.localize(datetime.utcfromtimestamp(0))
+ 
+@@ -28,7 +27,7 @@ def _convert_timestamp(timestamp, precis
+     if isinstance(timestamp, Integral):
+         return timestamp  # assume precision is correct if timestamp is int
+ 
+-    if isinstance(_get_unicode(timestamp), text_type):
++    if isinstance(_get_unicode(timestamp), str):
+         timestamp = parse(timestamp)
+ 
+     if isinstance(timestamp, datetime):
+@@ -108,10 +107,10 @@ def _escape_value(value):
+         return ''
+ 
+     value = _get_unicode(value)
+-    if isinstance(value, text_type):
++    if isinstance(value, str):
+         return quote_ident(value)
+ 
+-    if isinstance(value, integer_types) and not isinstance(value, bool):
++    if isinstance(value, int) and not isinstance(value, bool):
+         return str(value) + 'i'
+ 
+     if isinstance(value, bool):
+@@ -125,15 +124,13 @@ def _escape_value(value):
+ 
+ def _get_unicode(data, force=False):
+     """Try to return a text aka unicode object from the given data."""
+-    if isinstance(data, binary_type):
++    if isinstance(data, bytes):
+         return data.decode('utf-8')
+ 
+     if data is None:
+         return ''
+ 
+     if force:
+-        if PY2:
+-            return unicode(data)
+         return str(data)
+ 
+     return data
+Index: influxdb-5.3.1/requirements.txt
+===================================================================
+--- influxdb-5.3.1.orig/requirements.txt
++++ influxdb-5.3.1/requirements.txt
+@@ -1,5 +1,4 @@
+ python-dateutil>=2.6.0
+ pytz
+ requests>=2.17.0
+-six>=1.10.0
+ msgpack
+Index: influxdb-5.3.1/influxdb/influxdb08/helper.py
+===================================================================
+--- influxdb-5.3.1.orig/influxdb/influxdb08/helper.py
++++ influxdb-5.3.1/influxdb/influxdb08/helper.py
+@@ -9,8 +9,6 @@ from __future__ import unicode_literals
+ from collections import namedtuple, defaultdict
+ from warnings import warn
+ 
+-import six
+-
+ 
+ class SeriesHelper(object):
+     """Define the SeriesHelper object for InfluxDB v0.8.
+@@ -141,7 +139,7 @@ class SeriesHelper(object):
+         json = []
+         if not cls.__initialized__:
+             cls._reset_()
+-        for series_name, data in six.iteritems(cls._datapoints):
++        for series_name, data in cls._datapoints.items():
+             json.append({'name': series_name,
+                          'columns': cls._fields,
+                          'points': [[getattr(point, k) for k in cls._fields]

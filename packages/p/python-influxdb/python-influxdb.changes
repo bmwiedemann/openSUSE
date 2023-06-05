@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun  2 08:59:55 UTC 2023 - pgajdos@suse.com
+
+- do not require six
+- modified patches
+  % python-influxdb-remove-nose.patch (refreshed)
+- added patches
+  do not require six (repo archived in favour of influxdb2, not reporting)
+  + python-influxdb-no-six.patch
+
+-------------------------------------------------------------------
 Fri Dec  9 16:05:29 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Sync ExcludeArch with influxdb. By definition, this package is no

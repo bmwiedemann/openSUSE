@@ -1,7 +1,7 @@
 #
 # spec file for package python-influxdb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-influxdb
@@ -31,18 +30,18 @@ Source:         https://files.pythonhosted.org/packages/source/i/influxdb/influx
 Patch0:         python-influxdb-remove-nose.patch
 # PATCH-FIX-UPSTREAM influxdb-pr845-pandas-future.patch -- gh#influxdb/influxdb-python#845
 Patch1:         https://github.com/influxdata/influxdb-python/pull/845.patch#/influxdb-pr845-pandas-future.patch
+# do not require six (repo archived in favour of influxdb2, not reporting)
+Patch2:         python-influxdb-no-six.patch
 BuildRequires:  %{python_module python-dateutil >= 2.6.0}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests >= 2.17.0}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six >= 1.10.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-msgpack
 Requires:       python-python-dateutil >= 2.6.0
 Requires:       python-pytz
 Requires:       python-requests >= 2.17.0
-Requires:       python-six >= 1.10.0
 ExcludeArch:    %ix86 %arm ppc
 # SECTION test requirements
 BuildRequires:  %{python_module msgpack}
@@ -61,10 +60,6 @@ InfluxDB-Python is a client for interacting with InfluxDB 1.x
 
 %prep
 %autosetup -p1 -n influxdb-%{version}
-# remove extra mock
-sed -e 's/^import mock/from unittest import mock/' \
-    -e 's/^from mock import/from unittest.mock import/' \
-    -i influxdb/tests/*.py influxdb/tests/*/*.py
 
 %build
 %python_build
@@ -74,6 +69,10 @@ sed -e 's/^import mock/from unittest import mock/' \
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# remove extra mock
+sed -e 's/^import mock/from unittest import mock/' \
+    -e 's/^from mock import/from unittest.mock import/' \
+    -i influxdb/tests/*.py influxdb/tests/*/*.py
 # https://github.com/influxdata/influxdb-python/issues/884
 donttest="test_write_points_from_dataframe_with_nan_json or test_write_points_from_dataframe_with_tags_and_nan_json"
 %pytest influxdb -k "not ($donttest)"
