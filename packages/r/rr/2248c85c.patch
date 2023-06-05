@@ -1,0 +1,38 @@
+From 2248c85c424e8c257ca88af2732782574d6a3544 Mon Sep 17 00:00:00 2001
+From: William Cohen <wcohen@redhat.com>
+Date: Wed, 18 Jan 2023 12:15:04 -0500
+Subject: [PATCH] Explicitly include <cstdint> where required.
+
+The uint8_t and uintptr_t ptr types are from the header <cstdint>.
+Earlier versions of gcc appear to declare them even if the header
+is not included, but gcc-13 does not.  Explicitly including the
+header to allow compilations with gcc-13.
+---
+ src/log.h        | 1 +
+ src/remote_ptr.h | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/log.h b/src/log.h
+index 26ba7f190b..ffdc7cceb8 100644
+--- a/src/log.h
++++ b/src/log.h
+@@ -9,6 +9,7 @@
+ #include <iostream>
+ #include <type_traits>
+ #include <vector>
++#include <cstdint>
+ 
+ /**
+  * Print siginfo on ostream.
+diff --git a/src/remote_ptr.h b/src/remote_ptr.h
+index 2cd1b28c66..6786bfab66 100644
+--- a/src/remote_ptr.h
++++ b/src/remote_ptr.h
+@@ -5,6 +5,7 @@
+ 
+ #include <cstddef>
+ #include <iostream>
++#include <cstdint>
+ 
+ namespace rr {
+ 

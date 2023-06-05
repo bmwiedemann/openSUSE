@@ -1,7 +1,7 @@
 #
 # spec file for package rr
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          Development/Languages/C and C++
 URL:            https://rr-project.org/
 Source:         https://github.com/mozilla/%{name}/archive/%{version}.tar.gz
 Patch0:         https://github.com/rr-debugger/rr/commit/2979c60e.patch
+Patch1:         https://github.com/rr-debugger/rr/commit/2248c85c.patch
 BuildRequires:  capnproto
 BuildRequires:  cmake
 BuildRequires:  gcc-c++

@@ -46,4 +46,24 @@
     <comment></comment>
     <requestid>1032539</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>5e55e5478a92e0072d2c8e1c98edfe74</srcmd5>
+    <version>5.6.0</version>
+    <time>1685981223</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop e32502d0.patch: 
+  This was added due to a build fail related to:
+  https://github.com/rr-debugger/rr/issues/3485
+  Which seems to have been a bug in gcc:
+  https://gcc.gnu.org/bugzilla/show_bug.cgi?id=109420
+  But now it seems that it fails our build and without this patch
+  it builds fine
+
+- Add e32502d0.patch: Avoid having type members and enum members
+  of Arch with the same name 
+
+- Add 2248c85c.patch: Fix build on Tumbleweed with gcc13 by
+  explicitly including cstdint</comment>
+    <requestid>1090819</requestid>
+  </revision>
 </revisionlist>

@@ -10,7 +10,7 @@ Resolves #3369
  1 file changed, 13 insertions(+), 14 deletions(-)
 
 diff --git a/src/record_syscall.cc b/src/record_syscall.cc
-index 2e4cdec35..48544e1df 100644
+index 2e4cdec352..48544e1df8 100644
 --- a/src/record_syscall.cc
 +++ b/src/record_syscall.cc
 @@ -1450,17 +1450,17 @@ template <typename Arch> void get_ethtool_gstrings_arch(RecordTask* t) {

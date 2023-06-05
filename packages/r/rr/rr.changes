@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed May 24 08:05:13 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Drop e32502d0.patch: 
+  This was added due to a build fail related to:
+  https://github.com/rr-debugger/rr/issues/3485
+  Which seems to have been a bug in gcc:
+  https://gcc.gnu.org/bugzilla/show_bug.cgi?id=109420
+  But now it seems that it fails our build and without this patch
+  it builds fine
+
+-------------------------------------------------------------------
+Wed Apr 12 07:35:32 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Add e32502d0.patch: Avoid having type members and enum members
+  of Arch with the same name 
+
+-------------------------------------------------------------------
+Thu Mar 30 17:21:00 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Add 2248c85c.patch: Fix build on Tumbleweed with gcc13 by
+  explicitly including cstdint
+
+-------------------------------------------------------------------
 Mon Oct 31 14:09:34 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 2979c60e.patch: Avoid creating a struct with elements after
