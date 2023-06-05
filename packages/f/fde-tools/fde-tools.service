@@ -1,0 +1,10 @@
+[Unit]
+Description=Activate TPM for Full Disk Encryption
+Wants=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/sbin/fdectl tpm-enable
+
+[Install]
+WantedBy=default.target

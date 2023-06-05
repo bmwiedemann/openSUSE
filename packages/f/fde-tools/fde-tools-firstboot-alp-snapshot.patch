@@ -1,0 +1,18 @@
+ firstboot/fde | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: fde-tools-0.6.2/firstboot/fde
+===================================================================
+--- fde-tools-0.6.2.orig/firstboot/fde
++++ fde-tools-0.6.2/firstboot/fde
+@@ -285,8 +285,8 @@ function fde_systemd_firstboot {
+     # Get the password that was used during installation.
+     fde_root_passphrase=$(bootloader_get_fde_password)
+     if [ -z "$fde_root_passphrase" ]; then
+-	display_errorbox "Cannot find the initial FDE password for the root file system"
+-	return 1
++	# HACK: we just know it's 1234 for the ALP kvm_encrypted image, so go with that
++	fde_root_passphrase=1234
+     fi
+ 
+     if [ ! -s "$KIWI_ROOT_KEYFILE" ]; then

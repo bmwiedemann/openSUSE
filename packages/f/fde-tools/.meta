@@ -1,0 +1,5 @@
+<package name="fde-tools" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Base:System" package="fde-tools"/>
+</package>

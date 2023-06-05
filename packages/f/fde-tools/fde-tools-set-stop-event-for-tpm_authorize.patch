@@ -1,0 +1,58 @@
+From e25301cbac62c6eb31297fdbc8af5be8b55da902 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Mon, 6 Mar 2023 10:56:33 +0800
+Subject: [PATCH] tpm: Set the stop event for tpm_authorize
+
+tpm_authorize signs the expected PCR values as the authorized policy to
+unseal the key. Set the stop event for pcr-oracle to match the PCR values
+when grub2 unseals the key.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ share/tpm | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/share/tpm b/share/tpm
+index c70cb29..5836688 100644
+--- a/share/tpm
++++ b/share/tpm
+@@ -19,6 +19,10 @@
+ 
+ FDE_DEFAULT_AUTHORIZED_POLICY="authorized-policy"
+ 
++# FIXME: this needs work for boot loaders other than grub
++# Maybe we should introduce a bootloader_stop_event() function.
++FDE_STOP_EVENT="grub-command=cryptomount"
++
+ ##################################################################
+ # Check whether a TPM is present and working reasonably well
+ ##################################################################
+@@ -43,15 +47,11 @@ function tpm_seal_key {
+     secret=$1
+     sealed_secret=$2
+ 
+-    # FIXME: this needs work for boot loaders other than grub
+-    # Maybe we should introduce a bootloader_stop_event() function.
+-    stop_event="grub-command=cryptomount"
+-
+     echo "Sealing secret against PCR policy covering $FDE_SEAL_PCR_LIST" >&2
+     pcr-oracle --input "$secret" --output "$sealed_secret" \
+ 			--algorithm "$FDE_SEAL_PCR_BANK" \
+ 			--from eventlog \
+-			--stop-event "$stop_event" \
++			--stop-event "$FDE_STOP_EVENT" \
+ 			--before \
+ 			seal-secret \
+ 			"$FDE_SEAL_PCR_LIST"
+@@ -188,6 +188,8 @@ function tpm_authorize {
+ 		--algorithm "$FDE_SEAL_PCR_BANK" \
+                 --private-key "$private_key_file" \
+                 --from eventlog \
++		--stop-event "$FDE_STOP_EVENT" \
++		--before \
+                 --output "$signed_policy_file" \
+                 sign "$FDE_SEAL_PCR_LIST"
+ }
+-- 
+2.35.3
+
