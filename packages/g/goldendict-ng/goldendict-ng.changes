@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun  4 00:21:23 UTC 2023 - shenlebantongying <shenlebantongying@gmail.com>
+
+- Add qt6-multimedia as runtime dependendcy (boo#1211979) 
+
+-------------------------------------------------------------------
 Tue May 30 08:00:00 UTC 2023 - shenlebantongying <shenlebantongying@gmail.com>
 
 - Obsolete original pacakge's -lang

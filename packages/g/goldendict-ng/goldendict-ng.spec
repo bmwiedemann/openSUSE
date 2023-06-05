@@ -60,6 +60,7 @@ BuildRequires:  pkgconfig(zlib)
 # /Section ffmpeg 6
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
+Requires:       qt6-multimedia
 Provides:       goldendict = %{version}
 Obsoletes:      goldendict < 1.5.1
 Obsoletes:      goldendict-lang < 1.5.1
