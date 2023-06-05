@@ -2238,6 +2238,7 @@ unsorted:
   - coccigrep 
   - coccinelle 
   - cockpit 
+  - cockpit-agama 
   - cockpit-devel 
   - cockpit-doc 
   - cockpit-kdump 
@@ -3827,6 +3828,8 @@ unsorted:
   - fd-bash-completion 
   - fd-fish-completion 
   - fd-zsh-completion 
+  - fde-firstboot 
+  - fde-tools 
   - fdo-client 
   - fdo-client-devel 
   - featherpad 
@@ -18832,6 +18835,7 @@ unsorted:
   - obs-service-cdi_containers_meta 
   - obs-service-compose_kiwi_description 
   - obs-service-docker_label_helper 
+  - obs-service-download_assets 
   - obs-service-download_files 
   - obs-service-download_url 
   - obs-service-extract_file 
@@ -20077,6 +20081,7 @@ unsorted:
   - pcp-system-tools 
   - pcp-testsuite 
   - pcp-zeroconf 
+  - pcr-oracle 
   - pcre-devel 
   - pcre-devel-static 
   - pcre-doc 
@@ -23168,7 +23173,6 @@ unsorted:
   - python310-aeidon 
   - python310-aenum 
   - python310-aexpect 
-  - python310-afdko 
   - python310-affine 
   - python310-agate 
   - python310-agate-dbf 
@@ -23995,7 +23999,6 @@ unsorted:
   - python310-django-oauth-toolkit 
   - python310-django-oidc-provider 
   - python310-django-opentracing 
-  - python310-django-oscar 
   - python310-django-pandas 
   - python310-django-parler 
   - python310-django-perf-rec 
@@ -24901,6 +24904,7 @@ unsorted:
   - python310-oktaloginwrapper 
   - python310-oletools 
   - python310-olm 
+  - python310-omemo-dr 
   - python310-onigurumacffi 
   - python310-onnx 
   - python310-onnxconverter-common 
@@ -25109,6 +25113,7 @@ unsorted:
   - python310-publicsuffixlist 
   - python310-pudb 
   - python310-pulsectl 
+  - python310-pulsemixer 
   - python310-pure-eval 
   - python310-pure-sasl 
   - python310-purl 
@@ -26489,7 +26494,6 @@ unsorted:
   - python311-aeidon 
   - python311-aenum 
   - python311-aexpect 
-  - python311-afdko 
   - python311-affine 
   - python311-agate 
   - python311-agate-dbf 
@@ -27345,7 +27349,6 @@ unsorted:
   - python311-django-oauth-toolkit 
   - python311-django-oidc-provider 
   - python311-django-opentracing 
-  - python311-django-oscar 
   - python311-django-pandas 
   - python311-django-parler 
   - python311-django-perf-rec 
@@ -28296,6 +28299,7 @@ unsorted:
   - python311-olefile 
   - python311-oletools 
   - python311-olm 
+  - python311-omemo-dr 
   - python311-onigurumacffi 
   - python311-onnx 
   - python311-onnxconverter-common 
@@ -28511,6 +28515,7 @@ unsorted:
   - python311-publicsuffixlist 
   - python311-pudb 
   - python311-pulsectl 
+  - python311-pulsemixer 
   - python311-pure-eval 
   - python311-pure-sasl 
   - python311-purl 
@@ -29691,7 +29696,6 @@ unsorted:
   - python38-curses 
   - python38-dbm 
   - python38-devel 
-  - python38-django-oscar 
   - python38-doc 
   - python38-doc-devhelp 
   - python38-efl 
@@ -29969,7 +29973,6 @@ unsorted:
   - python39-aeidon 
   - python39-aenum 
   - python39-aexpect 
-  - python39-afdko 
   - python39-affine 
   - python39-agate 
   - python39-agate-dbf 
@@ -30826,7 +30829,6 @@ unsorted:
   - python39-django-oauth-toolkit 
   - python39-django-oidc-provider 
   - python39-django-opentracing 
-  - python39-django-oscar 
   - python39-django-pandas 
   - python39-django-parler 
   - python39-django-perf-rec 
@@ -31776,6 +31778,7 @@ unsorted:
   - python39-olefile 
   - python39-oletools 
   - python39-olm 
+  - python39-omemo-dr 
   - python39-onigurumacffi 
   - python39-onnx 
   - python39-onnxconverter-common 
@@ -31991,6 +31994,7 @@ unsorted:
   - python39-publicsuffixlist 
   - python39-pudb 
   - python39-pulsectl 
+  - python39-pulsemixer 
   - python39-pure-eval 
   - python39-pure-sasl 
   - python39-purl 
@@ -44465,6 +44469,7 @@ unsorted:
   - tpm-tools-devel 
   - tpm-tools-pkcs11 
   - tpm2-0-tss-devel 
+  - tpm2-openssl 
   - tpm2-pkcs11 
   - tpm2-tss-engine 
   - tpm2-tss-engine-bash-completion 
