@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  5 15:23:47 UTC 2023 - Denys Kondratenko <stdden@opensuse.org>
+
+- Update vendor dependencies to fix CVE bnc#1212013 
+
+-------------------------------------------------------------------
 Mon Jan 30 15:30:42 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 0.4.1:
