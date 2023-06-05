@@ -32,9 +32,10 @@ BuildRequires:  ninja
 
 %description
 Janet is a functional and imperative programming language.
-It runs on Windows, Linux, macOS, BSDs, and should run on other systems with some porting.
-The entire language (core library, interpreter, compiler, assembler, PEG) is less than 1MB.
-You can also add Janet scripting to an application by embedding a single C source file and a single header.
+The entire language (core library, interpreter, compiler, assembler,
+PEG) is less than 2MB.
+Janet scripting can be added to an application by embedding a single
+C source file and a single header.
 
 %package -n %{libname}
 Summary:        Lisp-like functional and imperative programming language
@@ -42,23 +43,19 @@ Group:          System/Libraries
 
 %description -n %{libname}
 Janet is a functional and imperative programming language.
-It runs on Windows, Linux, macOS, BSDs, and should run on other systems with some porting.
-The entire language (core library, interpreter, compiler, assembler, PEG) is less than 1MB.
-You can also add Janet scripting to an application by embedding a single C source file and a single header.
 
 %package devel
-Summary:        Lisp-like functional and imperative programming language
+Summary:        Headers for embedding Janet scripting
 Group:          Development/Languages/C and C++
 Requires:       %{libname} = %{version}
 
 %description devel
 Janet is a functional and imperative programming language.
-It runs on Windows, Linux, macOS, BSDs, and should run on other systems with some porting.
-The entire language (core library, interpreter, compiler, assembler, PEG) is less than 1MB.
-You can also add Janet scripting to an application by embedding a single C source file and a single header.
+Janet scripting can be added to an application by embedding a single
+C source file and a single header.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 export CFLAGS="%optflags -ffat-lto-objects"

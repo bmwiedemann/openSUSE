@@ -7,4 +7,12 @@
     <comment>I want to add janet to openSUSE:Factory</comment>
     <requestid>1089309</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>fe733e506f812b6001a050f6de15b245</srcmd5>
+    <version>1.28.0</version>
+    <time>1685981287</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1090882</requestid>
+  </revision>
 </revisionlist>
