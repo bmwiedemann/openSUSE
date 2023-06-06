@@ -32,7 +32,6 @@ BuildRequires:  %{python_module pytest-relaxed}
 BuildRequires:  %{python_module releases >= 1.6}
 BuildRequires:  %{python_module semantic_version >= 2.4}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module tabulate >= 0.7.5}
 BuildRequires:  %{python_module tqdm >= 4.8.1}
 BuildRequires:  %{python_module twine >= 1.15}
@@ -44,7 +43,6 @@ Requires:       python-invoke >= 1.7.2
 Requires:       python-lexicon
 Requires:       python-releases >= 1.6
 Requires:       python-semantic_version >= 2.4
-Requires:       python-six
 Requires:       python-tabulate >= 0.7.5
 Requires:       python-tqdm >= 4.8.1
 Requires:       python-twine >= 1.15
