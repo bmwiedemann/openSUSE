@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 05 08:41:33 UTC 2023 - aplanas@suse.com
+
+- Update to version 0.2.1+git.1685699835.3c9d17c:
+  * Remove MOUNT_SECURE bool
+  * rpm: Remove unused directory and add dependency for mount
+  * keylime-agent/src: update API version to 2.1 to consistent with https://github.com/keylime/keylime/blob/master/docs/rest_apis.rst
+  * docker/fedora/keylime_rust.Dockerfile: add the logic of cloning and compiling rust-keylime
+  * [tests] Update test coverage task name regexp
+  * [tests] Simply coverage file URL parsing
+
+-------------------------------------------------------------------
 Thu Apr 27 09:34:45 UTC 2023 - aplanas@suse.com
 
 - Update to version 0.2.1+git.1682587333.b497f1d:
