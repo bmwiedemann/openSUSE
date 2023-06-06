@@ -549,4 +549,12 @@
     <comment>- enable autostart of drkonqi (bsc#1203493). (forwarded request 1036238 from mgerstner)</comment>
     <requestid>1040553</requestid>
   </revision>
+  <revision rev="66" vrev="22">
+    <srcmd5>e7e0715900d627f96514072e942cf849</srcmd5>
+    <version>12.2</version>
+    <time>1686074110</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090823</requestid>
+  </revision>
 </revisionlist>

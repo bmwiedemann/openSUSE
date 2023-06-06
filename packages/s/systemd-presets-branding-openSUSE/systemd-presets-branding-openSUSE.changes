@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  2 10:21:17 UTC 2023 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- fix drkonqi entry, should end with .service
+
+-------------------------------------------------------------------
 Wed Nov 16 14:13:02 UTC 2022 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - enable autostart of drkonqi (bsc#1203493).
