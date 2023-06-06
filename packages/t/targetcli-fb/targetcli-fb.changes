@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 06 14:52:19 UTC 2023 - lduncan@suse.com
+
+- Update to version 2.1.56:
+  * version 2.1.56
+  * Revert "fix setting preference rollback error"
+  * version 2.1.55
+  * Fix changing savedir directory mode
+  * targetcli: avoild Ctrl+C print error stack
+  * fix setting preference rollback error
+  Also, remove patch no longer needed (since it's upstream):
+  * Fix-changing-savedir-directory-mode.patch
+
+-------------------------------------------------------------------
 Tue Apr 25 17:20:02 UTC 2023 - Lee Duncan <lduncan@suse.com>
 
 - Added one upstream commit for CVE-2020-13867 (bsc#1172743),

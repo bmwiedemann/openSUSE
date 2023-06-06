@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           targetcli-fb
-Version:        2.1.54
+Version:        2.1.56
 Release:        0
 Summary:        A command shell for managing the Linux LIO kernel target
 License:        Apache-2.0
@@ -60,9 +60,6 @@ Obsoletes:      targetcli-rbd < %{version}
 Patch1:         Split-out-blockdev-readonly-state-detection-helper.patch
 Patch2:         rbd-support.patch
 
-# upstream
-Patch3:         Fix-changing-savedir-directory-mode.patch
-
 %python_subpackages
 
 %description
@@ -91,7 +88,6 @@ all python-version-dependant packages, such as python3-*-targetcli-fb.
 # RBD support is dependent on LIO changes present in the SLE/Leap kernel
 %patch2 -p1
 %endif
-%patch3 -p1
 
 %build
 %python_build
