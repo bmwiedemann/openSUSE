@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun  4 12:17:15 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add fix-gridview.patch: Add border-spacing where it was missed.
+  We were computing column widths without taking border-spacing into
+  account, making them slightly too big (glgo#GNOME/nautilus#2980).
+
+-------------------------------------------------------------------
 Thu May  4 14:48:30 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 966a2350.patch: css: Don't transition to currentColor.
