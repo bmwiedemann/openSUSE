@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun  2 14:48:45 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.48.3:
+  + Bugs fixed:
+    - EShellSearchbar: Cannot clear search by deleting text.
+    - Mail:
+      . Preview content sometimes grows indefinitely.
+      . Workaround recursion in iframe height computation.
+    - Composer: Use 'Wrap quoted text in replies' option also for
+      text/html parts.
+
+-------------------------------------------------------------------
 Fri May 26 13:42:37 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.48.2:
