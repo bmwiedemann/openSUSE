@@ -98,4 +98,19 @@
 </comment>
     <requestid>1087800</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1005dd2ecb08345109edd68853d16c54</srcmd5>
+    <version>16.0.5</version>
+    <time>1686074096</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.5.
+  * This release contains bug-fixes for the LLVM 16.0.0 release.
+    This release is API and ABI compatible with 16.0.0.
+- Rebase patches:
+  * llvm-do-not-install-static-libraries.patch
+  * llvm-remove-clang-only-flags.patch
+- Enable ThinLTO on riscv64.
+</comment>
+    <requestid>1090772</requestid>
+  </revision>
 </revisionlist>

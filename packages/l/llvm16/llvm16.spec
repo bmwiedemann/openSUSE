@@ -16,14 +16,14 @@
 #
 
 
-%define _relver 16.0.4
+%define _relver 16.0.5
 %define _version %_relver%{?_rc:rc%_rc}
 %define _tagver %_relver%{?_rc:-rc%_rc}
 %define _minor  16.0
 %define _sonum  16
 %define _itsme16 1
 # Integer version used by update-alternatives
-%define _uaver  1604
+%define _uaver  1605
 %define _soclang 13
 %define _socxx  1
 
@@ -39,7 +39,7 @@
 %bcond_with openmp
 %endif
 
-%ifarch s390x
+%ifarch riscv64 s390x
 %bcond_with use_lld
 %else
 %bcond_without use_lld
@@ -53,7 +53,7 @@
 %bcond_with lldb_python
 %endif
 
-%ifarch %{arm} aarch64 %{ix86} ppc64le s390x x86_64
+%ifarch %{arm} aarch64 %{ix86} ppc64le riscv64 s390x x86_64
 %bcond_without thin_lto
 %else
 %bcond_with thin_lto
