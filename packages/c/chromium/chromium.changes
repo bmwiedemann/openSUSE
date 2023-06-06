@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  6 05:34:13 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 114.0.5735.106 (boo#1212044):
+  * CVE-2023-3079: Type Confusion in V8
+
+-------------------------------------------------------------------
 Sun Jun  4 18:52:01 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Chromium 114.0.5735.90 (boo#1211843):
