@@ -1281,4 +1281,22 @@
 </comment>
     <requestid>1077570</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>07efba9fa5389d5644541b26338d119f</srcmd5>
+    <version>1.23.5</version>
+    <time>1686074227</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.13.5
+  * This release fixes CVE-2022-46165 “Cross-site Scripting (XSS) in Web GUI”
+  * Bugfixes:
+    #8503: &quot;syncthing cli config devices add&quot; reflect error when using --addresses flag
+    #8764: Ignore patterns creating during folder addition are not loaded
+    #8778: Tests fail on Windows with Go 1.20
+    #8779: Test cleanup fails all model tests on Windows on Go 1.20
+    #8859: Incorrect handling of path for auto accepted folder
+  * Other issues:
+    #8799: &quot;fatal error: checkptr: converted pointer straddles multiple allocations&quot; in crypto tests
+</comment>
+    <requestid>1091076</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun  6 08:49:11 UTC 2023 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.13.5
+  * This release fixes CVE-2022-46165 “Cross-site Scripting (XSS) in Web GUI”
+  * Bugfixes:
+    #8503: "syncthing cli config devices add" reflect error when using --addresses flag
+    #8764: Ignore patterns creating during folder addition are not loaded
+    #8778: Tests fail on Windows with Go 1.20
+    #8779: Test cleanup fails all model tests on Windows on Go 1.20
+    #8859: Incorrect handling of path for auto accepted folder
+
+  * Other issues:
+    #8799: "fatal error: checkptr: converted pointer straddles multiple allocations" in crypto tests
+
+-------------------------------------------------------------------
 Wed Apr  5 16:07:00 UTC 2023 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.23.4
