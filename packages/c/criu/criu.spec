@@ -1,7 +1,7 @@
 #
 # spec file for package criu
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@
 %define proto_c_ver %(protoc-c --version | head -1 | awk '{print $2}')
 
 Name:           criu
-Version:        3.17.1
+Version:        3.18
 Release:        0
 Summary:        Checkpoint/Restore In Userspace Tools
 License:        GPL-2.0-only
@@ -44,9 +44,7 @@ Patch1:         criu-py-install-fix.diff
 Patch2:         0002-Fix-build-with-nftables-installed-in-different-direc.patch
 Patch3:         criu-amdgpu-plugin-fix.patch
 Patch4:         plugin-dir-path.patch
-# upstream fixes
-Patch5:         criu-fix-conflicting-headers.patch
-Patch6:         mount-add-definition-for-FSOPEN_CLOEXEC.patch
+Patch5:         criu-ns-python3-shebang.patch
 BuildRequires:  libcap-devel
 %if %{with_amdgpu_plugin}
 BuildRequires:  libdrm-devel
@@ -128,7 +126,6 @@ to develop applications with CRIU library.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
-%patch6 -p1
 # default off
 echo "BINFMT_MISC_VIRTUALIZED" > .config
 

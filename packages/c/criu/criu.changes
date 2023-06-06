@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jun  6 15:31:57 UTC 2023 - Takashi Iwai <tiwai@suse.com>
+
+- Update to criu 3.18:
+  New features:
+  * Allow CRIU to be used as non-root
+  * Add SIGTSTP support
+  * Add opt to skip file r/w/x check on restore
+  Bugfixes:
+  * Many fixes here and there
+  Improvements:
+  * cgroup2: Dump cgroup controllers of every threads in a process
+  * save IP_FREEBIND option for SOCK_RAW sockets also
+  * support IP_PKTINFO and IPV6_RECVPKTINFO options
+  * Implement hw breakpoint for arm64 platform
+  * Set only used XFEATURE_* in xstate_bv
+  * Checkpoint and restore some global properties
+  * A checkpoint optimization for highly sparse ghost files (--ghost-fiemap)
+- Refresh criu-py-install-fix.diff:
+  a workaround for non-working python-pip inside build environment by
+  reviving the old setup script
+- Fix shebang of criu-ns script:
+  criu-ns-python3-shebang.patch
+- Drop obsoleted patches:
+  criu-fix-conflicting-headers.patch
+  mount-add-definition-for-FSOPEN_CLOEXEC.patch
+
+-------------------------------------------------------------------
 Fri Sep 30 14:17:33 UTC 2022 - Takashi Iwai <tiwai@suse.com>
 
 - Disable LTO, as it results in segfaults (bsc#1203854)
