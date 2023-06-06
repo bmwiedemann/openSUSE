@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Tue May 30 07:49:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.2:
+  * New input methods are added.
+  * si-sayura.mim: Sinhala input method using the sayura
+    transliteration system, see https://www.sayura.net/im/
+  * mr-gamabhana.mim: Marathi input method with GaMaBhaNa
+  * bn-national-jatiya.mim: Bengali input method National Jatiya
+    layout
+  * hu-rovas-post: icon added.
+  * kn-inscript.mim: Add mapping for ZWNJ
+  * gu-itrans.mim: Fix e o mappings
+  * bo-ewts.mim: Fix ld mapping
+  * bo-ewts.mim: remove whitespace in rn and brn mapping
+  * Changes in the build system.
+  * pa-remington.mim: Punjabi input method for remington layout
+  * ta-remington.mim: Tamil input method for Remington typewriter
+    layout
+  * as-inscript2.mim: Input method for enhanced inscript layout
+  * bn-inscript2.mim: Input method for enhanced inscript layout
+  * brx-inscript2-deva.mim: Input method for enhanced inscript
+    layout
+  * doi-inscript2-deva.mim: Input method for enhanced inscript
+    layout
+  * gu-inscript2.mim: Input method for enhanced inscript layout
+  * hi-inscript2.mim: Input method for enhanced inscript layout
+  * kn-inscript2.mim: Input method for enhanced inscript layout
+  * kok-inscript2-deva.mim: Input method for enhanced inscript
+    layout
+  * ks-inscript2-deva.mim: Input method for enhanced inscript
+    layout
+  * mai-inscript2.mim: Input method for enhanced inscript layout
+  * ml-inscript2.mim: Input method for enhanced inscript layout
+  * mni-inscript2-beng.mim: Input method for enhanced inscript
+    layout
+  * mni-inscript2-mtei.mim: Input method for enhanced inscript
+    layout
+  * mr-inscript2.mim: Input method for enhanced inscript layout
+  * ne-inscript2-deva.mim: Input method for enhanced inscript
+    layout
+  * or-inscript2.mim: Input method for enhanced inscript layout
+  * pa-inscript2-guru.mim: Input method for enhanced inscript
+    layout
+  * sa-inscript2.mim: Input method for enhanced inscript layout
+  * sat-inscript2-deva.mim: Input method for enhanced inscript
+    layout
+  * sat-inscript2-olck.mim: Input method for enhanced inscript
+    layout
+  * sd-inscript2-deva.mim: Input method for enhanced inscript
+    layout
+  * ta-inscript2.mim: Input method for enhanced inscript layout
+  * te-inscript2.mim: Input method for enhanced inscript layout
+  * ml-swanalekha.mim: Adjusted for the latest Unicode
+  * unicode.mim: allow input of characters above the BMP
+  * ar-kbd.mim: Use digits 0-9 on the 0-9 keys
+  * ml-mozhi.mim: fix spurious ZWNJ being added (Resolves:
+    https://savannah.nongnu.org/bugs/index.php?59681)
+
+-------------------------------------------------------------------
 Mon Aug 24 20:04:19 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.8.0:
