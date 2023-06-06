@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 30 10:55:00 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Update tarball url to proper location.
+
+-------------------------------------------------------------------
 Mon Aug 23 13:01:35 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove --with-pic which has no effect with --disable-static.

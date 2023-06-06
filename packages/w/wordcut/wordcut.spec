@@ -1,7 +1,7 @@
 #
 # spec file for package wordcut
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,8 @@ Release:        0
 Summary:        Thai word segmentation utility
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-URL:            http://thaiwordseg.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/project/thaiwordseg/wordcut/wordcut-%{version}/wordcut-%{version}.tar.bz2
+URL:            https://thaiwordseg.sourceforge.net/
+Source0:        https://downloads.sourceforge.net/project/thaiwordseg/wordcut/wordcut-%{version}/wordcut-%{version}.tar.gz
 Patch0:         bugzilla-152315-locale-variable-used-before-set.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  libtool
