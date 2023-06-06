@@ -18,7 +18,7 @@
 
 %define short_name ueberzug
 Name:           ueberzugpp
-Version:        2.8.5
+Version:        2.8.6
 Release:        0
 Summary:        Utility to render images in terminals
 License:        GPL-3.0
@@ -28,6 +28,7 @@ BuildRequires:  automake
 BuildRequires:  cmake
 BuildRequires:  cmake(Microsoft.GSL)
 BuildRequires:  cmake(spdlog)
+BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
 BuildRequires:  make
@@ -40,6 +41,8 @@ BuildRequires:  pkgconfig(nlohmann_json)
 BuildRequires:  pkgconfig(opencv4)
 BuildRequires:  pkgconfig(tbb)
 BuildRequires:  pkgconfig(vips)
+BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(xcb-image)
 
 %description
@@ -65,7 +68,7 @@ Advantages over w3mimgdisplay and ueberzug:
 %autosetup
 
 %build
-%cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_SKIP_RPATH=YES -DCMAKE_BUILD_TYPE=release
+%cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_SKIP_RPATH=YES -DCMAKE_BUILD_TYPE=release -DENABLE_WLROOTS=ON
 %cmake_build
 
 %install
@@ -77,3 +80,4 @@ Advantages over w3mimgdisplay and ueberzug:
 %doc README.md
 
 %changelog
+
