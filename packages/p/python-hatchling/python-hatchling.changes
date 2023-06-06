@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jun  3 18:21:13 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.17.1:
+ * Fix dev mode when the project has symlinks and file inclusion is
+   defined with the packages or only-include options
+ * Change the name of generated PTH files for dev mode so they come
+   first lexicographically and therefore load first
+
+-------------------------------------------------------------------
 Sat May 13 08:25:01 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.17.0:

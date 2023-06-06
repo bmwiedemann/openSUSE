@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-hatchling
-Version:        1.17.0
+Version:        1.17.1
 Release:        0
 Summary:        Build backend used by Hatch
 License:        MIT
