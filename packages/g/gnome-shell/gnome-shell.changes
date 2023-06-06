@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun  5 07:39:49 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.2:
+  + Improve built-in screen recorder
+  + Use user-defined names in bluetooth menu
+  + Fix stuck authentication dialog in remote sessions
+  + Fix glitches in calendar when using large-text option
+  + Fix IM popup getting stuck on engine changes
+  + Fixed crash
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Apr 25 10:50:17 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.1:
