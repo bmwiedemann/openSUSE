@@ -1,4 +1,4 @@
-@version:4.0
+@version:4.2
 @include "scl.conf"
 
 #
@@ -16,7 +16,7 @@
 #
 # Global options.
 #
-options { chain_hostnames(off); flush_lines(0); perm(0640); stats_freq(3600); threaded(yes); };
+options { chain_hostnames(off); flush_lines(0); perm(0640); stats(freq(3600)); threaded(yes); };
 
 #
 # 'src' is our main source definition. you can add
