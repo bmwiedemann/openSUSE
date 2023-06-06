@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun  6 09:12:51 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.104.0
+  * Support for policy-based snapshots in the File Storage service
+  * Support for creating and updating a VM cluster network with disaster
+    recovery network support in the Database service
+  * Support for setting a management dashboard or saved search to be shared across
+    OCI Observability & Management services in the Management Dashboard service
+  * The property `port` was deprecated and made optional
+    in the `ScanDetails` model in the Database service
+
+-------------------------------------------------------------------
 Thu May 25 07:50:40 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.103.0
