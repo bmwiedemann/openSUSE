@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/GNOME/mutter.git</param>
-    <param name="revision">82bd40dcbcc3601da755678778f033bd9a30286d</param>
+    <param name="revision">e7ed2bf85700a2ff33b69826f6f0fff6e2f28e69</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>

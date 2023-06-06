@@ -22,7 +22,7 @@
 %define api_minor 0
 %define libmutter libmutter-%{api_major}-%{api_minor}
 Name:           mutter
-Version:        44.1+2
+Version:        44.2
 Release:        0
 Summary:        Window and compositing manager based on Clutter
 License:        GPL-2.0-or-later
@@ -36,10 +36,6 @@ Patch1:         mutter-disable-cvt-s390x.patch
 Patch2:         mutter-window-actor-Special-case-shaped-Java-windows.patch
 # PATCH-FIX-UPSTREAM mutter-crash-meta_context_terminate.patch bsc#1199382 glgo#GNOME/mutter#2267 xwang@suse.com -- Fix SIGSEGV in meta_context_terminate
 Patch3:         mutter-crash-meta_context_terminate.patch
-# PATCH-FIX-UPSTREAM mutter-fix-wacom-tablet-crash.patch bsc#1211413 glgo#GNOME/mutter#2796 alynx.zhou@suse.com -- Fix x11 error of input configuration.
-Patch4:         mutter-fix-wacom-tablet-crash.patch
-# PATCH-FIX-UPSTREAM mutter-do-not-unminimize-windows-with-initial-iconic.patch bsc#1193190 glgo#GNOME/mutter!3001 alynx.zhou@suse.com -- Fix initial iconic handling
-Patch5:         mutter-do-not-unminimize-windows-with-initial-iconic.patch
 
 ## SLE-only patches start at 1000
 # PATCH-FEATURE-SLE mutter-SLE-bell.patch FATE#316042 bnc#889218 idonmez@suse.com -- make audible bell work out of the box.

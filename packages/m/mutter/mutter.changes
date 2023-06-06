@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jun 05 07:34:52 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 44.2:
+  + Fix DND in some server-side decorated windows
+  + Fix redrawing regression in non-DMA remote sessions
+  + Avoid race condition in xwayland-on-demand
+  + Do not unminimize windows with initial IconicState
+  + Fix mispositioning of some X11 fullscreen windows
+  + Fix legacy fullscreen windows appearing on all monitors
+  + Improve support for display-attached tablets
+  + Fix stuck cursor in some clients
+  + Avoid unexpected orientation changes around suspend/resume
+  + Fix oversized input region around Xwayland windows
+  + Fix X11 client input region issues
+  + Plugged leak
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+- Drop patches fixed upstream:
+  + mutter-do-not-unminimize-windows-with-initial-iconic.patch
+  + mutter-fix-wacom-tablet-crash.patch
+
+-------------------------------------------------------------------
 Tue May 23 07:41:44 UTC 2023 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add mutter-do-not-unminimize-windows-with-initial-iconic.patch:
