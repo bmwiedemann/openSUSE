@@ -1,6 +1,6 @@
 <services>
   <service name="cargo_vendor" mode="disabled">
-     <param name="srctar">git-delta-0.15.1.tar.gz</param>
+     <param name="srctar">git-delta-0.16.5.tar.gz</param>
      <param name="compression">zst</param>
      <param name="update">true</param>
   </service>

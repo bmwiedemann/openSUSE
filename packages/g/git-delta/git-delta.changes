@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Tue Jun  6 06:45:45 UTC 2023 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to 0.16.5
+  * Increase number of characters shown in submodule hashes
+  * Fix typo in publishing build job & restore cross-compilation
+  * Drop grep-header-style option
+  * Honor grep-header-decoration-style for ripgrep output
+
+- Fix boo#1212003, xml-rs is no longer used as a dependency. 
+
+- Update to 0.16.4
+  * With this release delta can now display grep output in (hopefully)
+    exactly the same layout that ripgrep does, but adding syntax highlighting,
+    hyperlinks, and navigation. Use `ripgrep --json ... | delta` for that,
+    or set grep-output-type = ripgrep to get that output style from git grep etc.
+  * Address deprecated clap features
+  * Fix clippy warnings
+  * Replace unmaintained/outdated GitHub Actions
+  * Reduce allocations during --show-colors
+  * Fix the--show-themes command
+  * Fixed broken link to README
+  * Update git2 to 0.16.1
+  * Fix warning from bat for an unknown syntax theme
+  * Add gruvmax-fang theme
+  * Spelling
+  * Update clap to 4.1
+  * Encapsulate git2 types
+  * Update dependencies & switch back to the dirs crate
+  * Return the GitRemoteRepo type directly
+  * Added config option.
+  * Add Winget Releaser workflow
+  * Get git's minus/plus style from config instead of copying it around
+  * Add methods for getting GitConfig as reference
+  * Rename git_config_entry module to remote
+  * Tips and tricks manual section
+  * Set language specifiers for code blocks and fix links in manual
+  * Derive the default for enums with #[derive(Default)]/#[default]
+  * Add discord-dark theme
+  * Merge the different GitConfig constructors for a config file
+  * Remove manual line-wrapping
+  * Add link to similar project walles/riff
+  * add: installation instructions for conda/mamba
+  * Clarify how to use delta with tmux
+  * Update bitflags to 2.2
+  * Fix some typos
+  * Remove unneeded extern crate statements
+  * Downgrade and pin the bytelines crate
+  * Improve manual build job
+  * Replace deprecated error_chain crate with anyhow
+  * Fix submodule diff parsing
+  * Fix warning highlight for trailing whitespace
+  * Misc tab refactoring
+  * manual: fix link to using delta on Windows
+  * Introduce grep-output-type option: ripgrep or classic
+
+-------------------------------------------------------------------
 Sun Dec 18 20:10:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.15.1:
