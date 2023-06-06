@@ -1,7 +1,7 @@
 #
 # spec file for package libXpresent
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ License:        MIT
 Group:          Development/Libraries/X11
 URL:            https://gitlab.freedesktop.org/xorg/lib/libxpresent
 Source:         https://www.x.org/releases/individual/lib/%{name}-%{version}.tar.xz
+Source1:        baselibs.conf
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xrandr)
