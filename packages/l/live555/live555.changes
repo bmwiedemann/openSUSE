@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 29 19:32:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.5.10:
+  * Fixed a minor memory leak in the "RTSPServer" code.
+  * Calls to "send()" and "sendto()" now explicitly take
+    "MSG_NOSIGNAL" rather than 0 as the 'flags' parameter.
+    In most systems, 0 seems to work, but apparently not in
+    Debian Linux.
+
+-------------------------------------------------------------------
 Sat Jan 21 12:18:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.01.19:
