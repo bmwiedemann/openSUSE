@@ -1,7 +1,7 @@
 #
 # spec file for package rabbitmq-server
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,7 @@
 %define _rabbitmq_group rabbitmq
 
 Name:           rabbitmq-server
-Version:        3.11.3
+Version:        3.12.0
 Release:        0
 Summary:        A message broker supporting AMQP, STOMP and MQTT
 License:        MPL-2.0

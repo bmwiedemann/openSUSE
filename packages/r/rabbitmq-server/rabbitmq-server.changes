@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jun  5 15:44:43 UTC 2023 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 3.12.0
+  * Optimizations for both quorum and classic queues: improved throughput,
+    lower throughput variability, lower latency, lower memory footprint
+  * More mature and efficient implementation of (non-mirrored) classic
+    queues v2 (CQv2)
+  * Classic queue lazy and non-lazy modes no longer apply: classic
+    queues v2 always behave very similarly
+  * to the lazy mode in earlier release series: moving data to disk
+    aggressively and only keeping a subset of data in memory
+  * Significantly reduced MQTT and Web MQTT memory footprint per connection
+  * OAuth 2, OIDC, IDP support
+  * Even more configurability of the OAuth 2 plugin
+- More bugfixes and enhancements:
+  https://www.rabbitmq.com/changelog.html
+
+-------------------------------------------------------------------
 Wed Nov  9 16:03:30 UTC 2022 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 3.11.3
