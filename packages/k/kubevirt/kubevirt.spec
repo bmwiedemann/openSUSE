@@ -17,7 +17,7 @@
 
 
 Name:           kubevirt
-Version:        0.59.0
+Version:        0.59.1
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
@@ -29,7 +29,6 @@ Source2:        kubevirt_containers_meta.service
 Source3:        %{url}/releases/download/v%{version}/disks-images-provider.yaml
 Source100:      %{name}-rpmlintrc
 Patch0:         0001-Vulnerability-fix-limit-operator-secrets-permission.patch
-Patch1:         0002-TSC-frequencies-add-250PPM-tolerance.patch
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  6 06:17:00 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 0.59.1
+  Release notes https://github.com/kubevirt/kubevirt/releases/tag/v0.59.1
+- Drop upstreamed patches
+  0002-TSC-frequencies-add-250PPM-tolerance.patch
+
+-------------------------------------------------------------------
 Tue May  2 12:01:29 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - TSC frequencies: add 250PPM tolerance (bsc#1210906)
