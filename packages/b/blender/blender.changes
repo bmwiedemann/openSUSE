@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Tue May 30 21:39:50 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 3.5.1:
+  + Active/default UV map legacy conversion with name conflict #106584
+  + Add support for OpenPGL 0.5.0 85c7cc898d
+  + Add-ons: X3D & BVH import error with Python 3.11 8038d3c3b0
+  + bpy.types.Text (region_as_string/region_from_string) crash #107261
+  + Color picker broken with Wayland & AMD GPU #106264
+  + Crash when canceling Sky Resize with mesh symmetry #107020
+  + Crash when loading files with custom node groups #106467
+  + Crash when OpenEXR IO fails #106977
+  + Crash with muted node#106982
+  + Cycles importance sampling with multiple suns works poorly #106293
+  + Cycles multi GPU crash with vertex color baking #106405
+  + Cycles shadow caustics not working with area lights #107004
+  + EEVEE: World lighting does not affect volumetrics #106440
+  + Entering Grease Pencil Vertex Paint mode crashes #107125
+  + Fireflies with Nishita sky sun sampling at certain angles #106706
+  + Fix source_archive ignoring addons dd3aaa3dd0
+  + Fix buffer overflow in BLI_path_frame_strip with long extensions 56b9df86f8
+  + Fix Crash calling asset_generate_preview() in backgound mode #105325
+  + Fix CUdeviceptr and hipDeviceptr_t build error on ppc64le architecture 98a999a811
+  + Fix missing assets in the source archive 8f3faae18b
+  + Fix Snap package error on startup in older Linux version 4f2ed42a18
+  + Fix unnecessary edge pan updates ce2de91510
+  + Fix: Iteration for BMLayerCollection was broken 9a5a3da2b0
+  + Fix: Metal null buffer initialization #106807
+  + Fix: Remove unsupported data types in extrude and split edges nodes #106926
+  + Fix: Show 'Exit group' menu entry also for non group nodes. #106643
+  + Fix: Transform geometry node doesn't translate volumes correctly 9e5f1d06cb
+  + Fix: VSE channel buttons invisible in Light theme #107113
+  + GPencil Paste stroke duplicates to the next selected #106590
+  + Handle exceptions in add fur operator #106366
+  + ImageEngine: Improve Performance and Quality. #106092
+  + Inconsistent display of active filters for import/export file dialogs #90159
+  + Incorrect modifier deform evaluation result #106802
+  + Index the right UVmap in BMesh #106430
+  + Intel iGPU Crashes When Switching to Eevee #106278
+  + MacOS/OpenGL doesn't draw anything Eevee related. #106672
+  + Metal: Resolve high memory pressure on EEVEE render #107221
+  + Missing xray check in snapping #106478
+  + Motion tracking data lost on recovering autosave #106722
+  + Motion triangles could have unnormalized normals #106394
+  + Moving frame node jittering while cursor is still #106043
+  + Overlay: Resolve motion path rendering in Metal #106568
+  + Pose library does not autokey mirrored poses #106856
+  + Pose library: fix context menu d4d32b3731
+  + Properly clear CD_FLAG_ACTIVE/DEFAULT_COLOR flags #107067
+  + Resolve box selection issue in Metal #105450
+  + Resolve flashing Metal viewport #106704
+  + Resolve Metal grease pencil fill #106773
+  + Resolve Metal workload dependency #106431
+  + Resolve texture paint selection in Metal #106103
+  + Selection of bones in grease pencil weightpaint mode fails#106998
+  + Selection offset in timeline when NLA track is offset #106771
+  + Sharp edge attribute removed when all edges are sharp #105926
+  + "Shift to extend" doesn't work in 3D View Collections panel #106251
+  + Snap curves to surface operator does not update geometry #106094
+  + Subdivision surface crash with more than 8 UV maps #106745
+  + Texture paint removes evaluated mesh attributes #105912
+  + Use correct function to get active uv layer #106628
+  + UV stitch crash with hidden faces #106396
+- addons are included again
+
+-------------------------------------------------------------------
 Sat Apr  1 15:36:26 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to 3.5.0:

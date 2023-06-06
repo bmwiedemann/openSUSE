@@ -77,7 +77,7 @@
 %bcond_with openxr
 
 Name:           blender
-Version:        3.5.0
+Version:        3.5.1
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
@@ -86,10 +86,10 @@ URL:            https://www.blender.org/
 # Please leave the source url intact
 Source0:        https://download.blender.org/source/%{name}-%{version}.tar.xz
 Source1:        https://download.blender.org/source/%{name}-%{version}.tar.xz.md5sum
-# addons are no longer included in the source tarball
-# repos do not provide any released files
+# addons are included again in the source tarball
 # https://projects.blender.org/blender/blender-addons.git
-Source2:        %{name}-addons-%{version}.tar.xz
+#Source2:        %{name}-addons-%{version}.tar.xz
+# addon contrib is not included in the source tarball
 # https://projects.blender.org/blender/blender-addons-contrib.git
 Source3:        %{name}-addons-contrib-%{version}.tar.xz
 Source4:        geeko.blend
@@ -307,12 +307,12 @@ pushd "%{_sourcedir}"
 md5sum -c %{SOURCE1}
 popd
 
-%setup -q -a2 -a3
+%setup -q -a3
 %autopatch -p1
 
 # integrate addons in source tree
-mkdir scripts/addons
-for d in addons addons-contrib; do
+#mkdir scripts/addons
+for d in addons-contrib; do
     mv blender-$d-%{version}/* scripts/addons
     # wipe .gitea and .github
     rm -r blender-$d-%{version}
