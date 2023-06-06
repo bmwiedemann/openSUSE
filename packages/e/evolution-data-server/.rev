@@ -2245,4 +2245,14 @@ Please do NOT put in Staging E - but different staging prj. This is against 3.12
     - Wrong S/MIME certificate selection for encrypted email.</comment>
     <requestid>1089507</requestid>
   </revision>
+  <revision rev="247" vrev="1">
+    <srcmd5>50eb186af2cf43b1459e016536cdde04</srcmd5>
+    <version>3.48.3</version>
+    <time>1686074111</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1090525 from iznogood
+
+New stable release</comment>
+    <requestid>1090834</requestid>
+  </revision>
 </revisionlist>
