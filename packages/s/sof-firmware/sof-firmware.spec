@@ -20,16 +20,16 @@
 %define _firmwaredir /lib/firmware
 %endif
 
-%define sofversion  2.2.4
-%define tplgversion 2.2.4
+%define sofversion  2.2.5
+%define tplgversion 2.2.5
 
 Name:           sof-firmware
-Summary:        Firmware Data Files for SOF Drivers
+Summary:        Firmware data files for SOF Drivers
 License:        BSD-3-Clause
 Group:          Hardware/Other
-Version:        2.2.4
+Version:        2.2.5
 Release:        0
-URL:            https://github.com/thesofproject/sof-bin
+URL:            https://www.sofproject.org/
 BuildRequires:  fdupes
 Source:         https://github.com/thesofproject/sof-bin/releases/download/v%{sofversion}/sof-bin-v%{sofversion}.tar.gz
 BuildArch:      noarch
@@ -63,8 +63,18 @@ Supplements:    modalias(pci:v00008086d00004B58sv*sd*bc*sc*i*)
 # Alderlake
 Supplements:    modalias(pci:v00008086d00007AD0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000051C8sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000051C9sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000051CCsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000051CDsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000054C8sv*sd*bc*sc*i*)
+# Raptorlake
+Supplements:    modalias(pci:v00008086d00007A50sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000051CAsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000051CBsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000051CEsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000051CFsv*sd*bc*sc*i*)
+# Metorlake
+Supplements:    modalias(pci:v00008086d00007E28sv*sd*bc*sc*i*)
 # Broadwell
 Supplements:    modalias(acpi*:INT3438%3A*)
 # Baytrail
@@ -76,7 +86,7 @@ Conflicts:      filesystem < 84
 %endif
 
 %description
-Various firmware data files for SOF drivers.
+Firmware data files for Sound Open Firmware (SOF) drivers.
 
 %prep
 %setup -q -n sof-bin-v%{sofversion}

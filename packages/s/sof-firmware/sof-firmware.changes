@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun  5 13:39:08 UTC 2023 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 2.2.5:
+  There's no FW binary change. This release adds a few new topology
+  binaries for Intel Alder Lake (ADL) platforms.
+- Update supplements for RPL and MTL
+
+-------------------------------------------------------------------
 Tue Jan 17 14:55:46 UTC 2023 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 2.2.3:
