@@ -1,7 +1,7 @@
 #
 # spec file for package fail2ban
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -103,9 +103,13 @@ reason, i.e. SFW will always run first because it does a table flush.
 %endif
 
 %package -n monitoring-plugins-%{name}
-%define         nagios_plugindir %{_libexecdir}/nagios/plugins
 Summary:        Check fail2ban server and how many IPs are currently banned
 Group:          System/Monitoring
+%if 0%{?suse_version}
+BuildRequires:  nagios-rpm-macros
+%else
+%define         nagios_plugindir %{_libexecdir}/nagios/plugins
+%endif
 Provides:       nagios-plugins-%{name} = %{version}
 Obsoletes:      nagios-plugins-%{name} < %{version}
 
@@ -231,8 +235,8 @@ export LANG=en_US.UTF-8
 ./fail2ban-testcases-all --no-network || true
 %endif
 
-%pre
 %if 0%{?suse_version} >= 1230
+%pre
 %service_add_pre %{name}.service
 %endif
 
@@ -333,7 +337,11 @@ export LANG=en_US.UTF-8
 %files -n monitoring-plugins-%{name}
 %license COPYING
 %doc files/nagios/README
+%if 0%{?suse_version}
+%dir %{nagios_libdir}
+%else
 %dir %{_libexecdir}/nagios
+%endif
 %dir %{nagios_plugindir}
 %{nagios_plugindir}/check_%{name}
 

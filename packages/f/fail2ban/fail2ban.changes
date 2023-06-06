@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun  5 16:36:47 UTC 2023 - Lars Vogdt <lars@linux-schulserver.de>
+
+- use nagios-rpm-macros to define the libexecdir for SUSE distributions
+  correctly (defaut here is /usr/lib/nagios/plugins)
+- move conditional for %%pre scripts, to avoid any dependency or other 
+  stuff getting in the way on old distributions
+
+-------------------------------------------------------------------
 Sun Dec  4 21:07:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.2:
