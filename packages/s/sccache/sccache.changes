@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Jun 06 01:03:01 UTC 2023 - william.brown@suse.com
+
+- Update to version 0.5.3~2:
+  * Add experimental concurrent cache support
+  * build(deps): bump tokio from 1.28.0 to 1.28.2
+  * version 0.5.3
+  * Update Cargo.toml
+  * Try revert opendal
+  * version 0.5.2
+
+-------------------------------------------------------------------
+Sat Jun 03 03:39:11 UTC 2023 - william.brown@suse.com
+
+- Update to version 0.5.1~14:
+  * Add experimental concurrent cache support
+  * build(deps): bump openssl from 0.10.48 to 0.10.49
+  * README: Add --locked to the cargo install
+  * build(deps): bump serde from 1.0.155 to 1.0.159
+  * build(deps): bump walkdir from 2.3.2 to 2.3.3
+  * Disable C4668 during preprocessing for MSVC
+  * Add integration test for MSVC preprocessing bug
+  * Ignore C4668 when preprocessing MSVC
+  * build(deps): bump hyper from 0.14.24 to 0.14.25
+  * build(deps): bump flate2 from 1.0.25 to 1.0.26
+  * Update ci.yml
+  * Attempt to fix arm64 builds
+  * Support for Type Library Headers for MSVC
+  * Produce JSON depsfiles from MSVC
+  * Disable aarch64 build as the ubuntu repo is failing
+  * version 0.5.1
+  * deps: Bump OpenDAL and reqsign (#1779)
+  * fmt and clippy fixes
+  * Opt in rather than opt out
+  * Added env var to disable multi arch caching
+  * Use object for parsing archives, and handle macOS fat archives
+  * feat: Enable backtrace for anyhow (#1774)
+
+-------------------------------------------------------------------
 Wed May 24 03:16:04 UTC 2023 - william.brown@suse.com
 
 - Update to version 0.4.2~17:

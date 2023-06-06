@@ -5,5 +5,8 @@
       <!-- Needed because PPC chronically runs out of disk because sigghhh -->
       <size unit="G">25</size>
     </disk>
+    <physicalmemory>
+      <size unit="G">8</size>
+    </physicalmemory>
   </hardware>
 </constraints>
