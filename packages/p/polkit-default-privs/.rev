@@ -2066,4 +2066,16 @@ for 12.3</comment>
   * rename com.deepin.api to org.deepin.dde (bsc#1211376)</comment>
     <requestid>1087651</requestid>
   </revision>
+  <revision rev="223" vrev="1">
+    <srcmd5>2b530b8775ddc96d5d541c311554809b</srcmd5>
+    <version>1550+20230606.5001571</version>
+    <time>1686074093</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1550+20230606.5001571:
+  * Whitelist org.freedesktop.systemd1.bypass-dump-ratelimit (bsc#1211978)
+
+- Update to version 1550+20230602.0c9c3c6:
+  * profiles: drop dead mousepad action</comment>
+    <requestid>1091064</requestid>
+  </revision>
 </revisionlist>

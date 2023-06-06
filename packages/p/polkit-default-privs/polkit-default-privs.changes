@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 06 09:59:32 UTC 2023 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20230606.5001571:
+  * Whitelist org.freedesktop.systemd1.bypass-dump-ratelimit (bsc#1211978)
+
+-------------------------------------------------------------------
+Fri Jun 02 10:37:11 UTC 2023 - matthias.gerstner@suse.com
+
+- Update to version 1550+20230602.0c9c3c6:
+  * profiles: drop dead mousepad action
+
+-------------------------------------------------------------------
 Wed May 17 12:43:18 UTC 2023 - matthias.gerstner@suse.com
 
 - Update to version 1550+20230517.ab68b2d:
