@@ -109,4 +109,12 @@
   * build: Change libnvme dependency from 1.2 to 1.3 (forwarded request 1076554 from mwilck)</comment>
     <requestid>1076555</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>848f3bf109c473201774c81af03d9e54</srcmd5>
+    <version>2.2.1</version>
+    <time>1686074179</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1091049</requestid>
+  </revision>
 </revisionlist>

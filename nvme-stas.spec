@@ -17,7 +17,7 @@
 
 
 Name:           nvme-stas
-Version:        2.2
+Version:        2.2.1
 Release:        0
 Summary:        NVMe STorage Appliance Services
 License:        Apache-2.0
