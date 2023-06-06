@@ -7,4 +7,12 @@
     <comment>I want to maintain wl-clipboard-rs to openSUSE:Factory.</comment>
     <requestid>1006615</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>67c317b6ac5b8bd92ded13774bf5f39b</srcmd5>
+    <version>0.7.0</version>
+    <time>1686074229</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1091072</requestid>
+  </revision>
 </revisionlist>
