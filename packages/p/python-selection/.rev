@@ -17,4 +17,13 @@
   * various small fixes</comment>
     <requestid>680459</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8e9a8876b03465529bc5c88edc7852ce</srcmd5>
+    <version>0.0.21</version>
+    <time>1686074244</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 0.0.21
+  * no upstream changelog found</comment>
+    <requestid>1091106</requestid>
+  </revision>
 </revisionlist>

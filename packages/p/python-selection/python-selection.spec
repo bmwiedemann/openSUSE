@@ -1,7 +1,7 @@
 #
 # spec file for package python-selection
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-selection
-Version:        0.0.14
+Version:        0.0.21
 Release:        0
 Summary:        API to extract content from HTML & XML documents
 License:        MIT
@@ -26,14 +25,12 @@ Group:          Development/Languages/Python
 URL:            https://github.com/lorien/selection
 Source:         https://files.pythonhosted.org/packages/source/s/selection/selection-%{version}.tar.gz
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
-BuildRequires:  %{python_module weblib}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-lxml
-Requires:       python-six
-Requires:       python-weblib
 BuildArch:      noarch
 %python_subpackages
 
@@ -44,15 +41,16 @@ API to extract content from HTML & XML documents
 %setup -q -n selection-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst
-%{python_sitelib}/*
+%doc README.md
+%{python_sitelib}/selection
+%{python_sitelib}/selection-%{version}*-info
 
 %changelog
