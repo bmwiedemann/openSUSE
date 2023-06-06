@@ -394,4 +394,32 @@
   * Minor other improvements.</comment>
     <requestid>1064392</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a6f54ac437de7e520c0591e0b4372654</srcmd5>
+    <version>2.54</version>
+    <time>1686074153</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.54
+  * Security:
+    + Improved process memory protection of secure edit controls (CVE-2023-32784, boo#1211397).
+  * New Features:
+    + Triggers, global URL overrides, password generator profiles and a few more settings are now stored in the enforced configuration file.
+    + Added dialog 'Enforce Options (All Users)' (menu 'Tools' → 'Advanced Tools' → 'Enforce Options'), which facilitates storing certain options in the enforced configuration file.
+    + In report dialogs, passwords (and other sensitive data) are now hidden using asterisks by default (if hiding is activated in the main window); the hiding can be toggled using the new '***' button in the toolbar.
+    + The 'Print' command in most report dialogs now requires the 'Print' application policy flag, and the master key must be entered if the 'Print - No Key Repeat' application policy flag is deactivated.
+    + The 'Export' command in most report dialogs now requires the 'Export' application policy flag, and the master key must be entered.
+    + Single line edit dialogs now support hiding the value using asterisks.
+    + Commands that require elevation now have a shield icon like on Windows.
+    + TrlUtil: added 'Move Selected Unused Text to Dialog Control' command.
+  * Improvements:
+    * The content mode of the configuration elements '/Configuration/Application/TriggerSystem', '/Configuration/Integration/UrlSchemeOverrides' and '/Configuration/PasswordGenerator/UserProfiles' is now 'Replace' by default.
+    * The built-in override for the 'ssh' URI scheme is now deactivated by default (it can be activated in the 'URL Overrides' dialog).
+    * When opening the password generator dialog without a derived profile, the '(Automatically generated passwords for new entries)' profile is now selected by default, if profiles are enabled (otherwise the default profile is used).
+    * The clipboard workarounds are now disabled by default (they are not needed anymore on most systems).
+    * Improved clipboard clearing.
+    * Improved starting of an elevated process.
+  * Bugfixes:
+    + In report dialogs, the 'Print' and 'Export' commands now always use the actual data (in previous versions, asterisks were printed/exported when the application policy flag 'Unhide Passwords' was turned off).</comment>
+    <requestid>1090979</requestid>
+  </revision>
 </revisionlist>
