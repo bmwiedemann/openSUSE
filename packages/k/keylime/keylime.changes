@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Mon Jun 05 08:39:23 UTC 2023 - aplanas@suse.com
+
+- Update to version v7.2.5:
+  * bump version to 7.2.5
+  * installer.sh: remove unused codes
+  * tpm: Implement BigNum context creation and usage
+  * tpm: Implement int2bn and bn2int in our class
+  * tpm_util: Add EC key support for makecredential in python
+  * tpm: Replace tpm2_makecredential with python implementation
+  * tpm_util: Implement makecredential in python
+  * tpm2_objects: Return parameters when unmarshalling tpm2b_public
+  * The first of several PRs to clean up MBA
+  * verifier: Update agent dict values only after checking each value
+  * verifier: Remove assignment to variable overwritten immediately after
+  * registrar: Reformat initialization of dictionary
+  * registrar: Check for error case aik_enc being None first
+  * tpm_main: Remove unused run() method
+  * tpm_main: Remove unnecessary code for support of tpm2_quote
+  * tpm_main: Get rid of hashdigest() method
+  * tpm_main: Get rid of start_hash and use get_start_hash() of given Hash
+  * algorithms: Make get_START_HASH and get_FF_HASH methods of Hash
+  * Use <bytes>.hex() to create hex string
+  * Use bytes.fromhex() instead of codecs for parsing of string with hex number
+  * Tpm: Rename START_HASH to start_hash
+  * Tpm: Remove unused parameters of __run method
+  * tpm: Move EXIT_SUCCESS outside class scope
+  * tpm: Rename tpm class to Tpm
+  * tpm: Access agent_id directory from structure
+  * codestyle: Fix issues detected by older pylint 2.13.9
+  * tpm: Get rid of AbstractTPM class
+  * codestyle: Add missing annotations to test_ima_dm.py to pass pyright
+  * pypright: Remove ignored files that do not exist anymore
+  * ima: Replace usage of codec to parse hex string with bytes.fromhex()
+  * ima: Replace usage of codec with hex() method on bytes
+  * ima: Validate proper JSON before trying to convert from string to JSON
+  * tenant: fixes a (timing) issue whenever an agent is removed and re-added
+  * verifier: Simplify initialization of agent_data dict
+  * verifier: Use kwargs to pass ssl_context if it exists
+  * verifier: Return an Empty Dict rather than None in case of error
+  * verifier: Use get() on dict rather than catching an Exception
+  * cloud_verifier: AgentsHandler: Consolidate checking of input parameters
+  * registrar: Consolidate __validate_input() in BaseHandler
+  * registrar: ProtectedHandler: Refactor __validate_input
+  * registrar: UnprotectedHandler: Consolidate checking of input parameters
+  * registrar: ProtectedHandler: Consolidate checking of input parameters
+  * docs: remove Vagrant setup
+  * registrar: Move getting network parameters into own function
+  * [tests] Update test coverage task name regexp
+  * tenant: report when the keystore fails
+  * ca_util: fix captured exception
+  * [tests] Simply coverage file URL parsing
+  * tpm+ima: Convert tables to hold instances of hashers
+  * docs/rest_apis.rst: remove the comma at the end of the JSON string
+  * tpm: Activate tpm2_checkquote replacement code
+  * tests: Add test case for checkquote and parsing of tpms_attest
+  * tpm: Implement tpm2_checkquote in python
+  * README.md: fix the invalid URL about IMA stub service.
+  * README.md: fix the script name(./services/installer.sh) error
+  * installer.sh: support Alibaba Cloud Linux OS whose ID is alinux
+  * web_util: handle tls_dir default with cacerts correctly
+  * codestyle: Add pyright ignore annoatations due to pyright 1.1.306
+  * codestyle: Ignore import of NoResultFound from sqlalchemy 1.3 file
+  * CI/CD: Run pyright as part of tox
+  * agentstates: Reformat construction of returned dictionary
+  * docker: fix tpm2-tools build
+  * docker: upate to newer tpm2-tools version
+  * docs/installation.rst: add the missing popd command in the manual deployment.
+  * tpm: Implement function to extract clock info from TPMS_ATTEST
+  * [tests] Reduce duplication in packit-ci test plan
+  * Enable Packit CI again on all Fedora releases
+  * Redefine the list of maintainers taking into account activity on the last 12 months, proposing a few new names to be added (please feel free to decline)
+
+-------------------------------------------------------------------
 Wed May 17 11:34:35 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add missing jsonschema dependecy

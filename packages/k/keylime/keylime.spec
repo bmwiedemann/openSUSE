@@ -27,7 +27,7 @@
   %define _config_norepl %config(noreplace)
 %endif
 Name:           keylime
-Version:        7.0.0
+Version:        7.2.5
 Release:        0
 Summary:        Open source TPM software for Bootstrapping and Maintaining Trust
 License:        Apache-2.0 AND MIT
