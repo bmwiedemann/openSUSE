@@ -1,4 +1,480 @@
 -------------------------------------------------------------------
+Thu May 11 07:01:54 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to openssh 9.3p1:
+  = Security
+  * ssh-add(1): when adding smartcard keys to ssh-agent(1) with the
+   per-hop destination constraints (ssh-add -h ...) added in
+   OpenSSH 8.9, a logic error prevented the constraints from being
+   communicated to the agent. This resulted in the keys being added
+   without constraints. The common cases of non-smartcard keys and
+   keys without destination constraints are unaffected. This
+   problem was reported by Luci Stanescu.
+
+ * ssh(1): Portable OpenSSH provides an implementation of the
+   getrrsetbyname(3) function if the standard library does not
+   provide it, for use by the VerifyHostKeyDNS feature. A
+   specifically crafted DNS response could cause this function to
+   perform an out-of-bounds read of adjacent stack data, but this
+   condition does not appear to be exploitable beyond denial-of-
+   service to the ssh(1) client.
+   The getrrsetbyname(3) replacement is only included if the
+   system's standard library lacks this function and portable
+   OpenSSH was not compiled with the ldns library (--with-ldns).
+   getrrsetbyname(3) is only invoked if using VerifyHostKeyDNS to
+   fetch SSHFP records. This problem was found by the Coverity
+   static analyzer.
+
+  = New features
+  * ssh-keygen(1), ssh-keyscan(1): accept -Ohashalg=sha1|sha256
+    when outputting SSHFP fingerprints to allow algorithm
+    selection. bz3493
+  * sshd(8): add a `sshd -G` option that parses and prints the
+    effective configuration without attempting to load private keys
+    and perform other checks. This allows usage of the option
+    before keys have been generated and for configuration
+    evaluation and verification by unprivileged users.
+
+  = Bugfixes
+  * scp(1), sftp(1): fix progressmeter corruption on wide displays;
+    bz3534
+  * ssh-add(1), ssh-keygen(1): use RSA/SHA256 when testing
+    usability of private keys as some systems are starting to
+    disable RSA/SHA1 in libcrypto.
+  * sftp-server(8): fix a memory leak. GHPR363
+  * ssh(1), sshd(8), ssh-keyscan(1): remove vestigal protocol
+    compatibility code and simplify what's left.
+  * Fix a number of low-impact Coverity static analysis findings.
+    These include several reported via bz2687
+  * ssh_config(5), sshd_config(5): mention that some options are
+    not first-match-wins.
+  * Rework logging for the regression tests. Regression tests will
+    now capture separate logs for each ssh and sshd invocation in
+    a test.
+  * ssh(1): make `ssh -Q CASignatureAlgorithms` work as the manpage
+    says it should; bz3532.
+  * ssh(1): ensure that there is a terminating newline when adding
+    a new entry to known_hosts; bz3529
+
+  = Portability
+  * sshd(8): harden Linux seccomp sandbox. Move to an allowlist of
+    mmap(2), madvise(2) and futex(2) flags, removing some
+    concerning kernel attack surface.
+  * sshd(8): improve Linux seccomp-bpf sandbox for older systems;
+    bz3537
+
+- Update to openssh 9.2p1:
+  = Security
+  * sshd(8): fix a pre-authentication double-free memory fault
+    introduced in OpenSSH 9.1. This is not believed to be
+    exploitable, and it occurs in the unprivileged pre-auth process
+    that is subject to chroot(2) and is further sandboxed on most
+    major platforms.
+  * ssh(8): in OpenSSH releases after 8.7, the PermitRemoteOpen
+    option would ignore its first argument unless it was one of the
+    special keywords "any" or "none", causing the permission list
+    to fail open if only one permission was specified. bz3515
+  * ssh(1): if the CanonicalizeHostname and
+    CanonicalizePermittedCNAMEs options were enabled, and the
+    system/libc resolver did not check that names in DNS responses
+    were valid, then use of these options could allow an attacker
+    with control of DNS to include invalid characters (possibly
+    including wildcards) in names added to known_hosts files when
+    they were updated. These names would still have to match the
+    CanonicalizePermittedCNAMEs allow-list, so practical
+    exploitation appears unlikely.
+
+  = Potentially-incompatible changes
+  * ssh(1): add a new EnableEscapeCommandline ssh_config(5) option
+    that controls whether the client-side ~C escape sequence that
+    provides a  command-line is available. Among other things, the
+    ~C command-line could be used to add additional port-forwards
+    at runtime.
+    This option defaults to "no", disabling the ~C command-line
+    that was previously enabled by default. Turning off the
+    command-line allows platforms that support sandboxing of the
+    ssh(1) client (currently only OpenBSD) to use a stricter
+    default sandbox policy.
+
+  = New features
+  * sshd(8): add support for channel inactivity timeouts via a new
+    sshd_config(5) ChannelTimeout directive. This allows channels
+    that have not seen traffic in a configurable interval to be
+    automatically closed. Different timeouts may be applied to
+    session, X11, agent and TCP forwarding channels.
+  * sshd(8): add a sshd_config UnusedConnectionTimeout option to
+    terminate client connections that have no open channels for a
+    length of time. This complements the ChannelTimeout option
+    above.
+  * sshd(8): add a -V (version) option to sshd like the ssh client
+    has.
+  * ssh(1): add a "Host" line to the output of ssh -G showing the
+    original hostname argument. bz3343
+  * scp(1), sftp(1): add a -X option to both scp(1) and sftp(1) to
+    allow control over some SFTP protocol parameters: the copy
+    buffer length and the number of in-flight requests, both of
+    which are used during upload/download. Previously these could
+    be controlled in sftp(1) only. This makes them available in
+    both SFTP protocol clients using the same option character
+    sequence.
+  * ssh-keyscan(1): allow scanning of complete CIDR address ranges,
+    e.g.  "ssh-keyscan 192.168.0.0/24". If a CIDR range is passed,
+    then it will be expanded to all possible addresses in the range
+    including the all-0s and all-1s addresses. bz#976
+  * ssh(1): support dynamic remote port forwarding in escape
+    command-line's -R processing. bz#3499
+ 
+  = Bugfixes
+  * ssh(1): when restoring non-blocking mode to stdio fds, restore
+    exactly the flags that ssh started with and don't just clobber
+    them with zero, as this could also remove the append flag from
+    the set. bz3523
+  * ssh(1): avoid printf("%s", NULL) if using
+    UserKnownHostsFile=none and a hostkey in one of the system
+    known hosts file changes.
+  * scp(1): switch scp from using pipes to a socket-pair for
+    communication with its ssh sub-processes, matching how sftp(1)
+    operates.
+  * sshd(8): clear signal mask early in main(); sshd may have been
+    started with one or more signals masked (sigprocmask(2) is not
+    cleared on fork/exec) and this could interfere with various
+    things, e.g. the login grace timer. Execution environments that
+    fail to clear the signal mask before running sshd are clearly
+    broken, but apparently they do exist.
+  * ssh(1): warn if no host keys for hostbased auth can be loaded.
+  * sshd(8): Add server debugging for hostbased auth that is queued
+    and sent to the client after successful authentication, but
+    also logged to assist in diagnosis of HostbasedAuthentication
+    problems. bz3507
+  * ssh(1): document use of the IdentityFile option as being usable
+    to list public keys as well as private keys. GHPR352
+  * sshd(8): check for and disallow MaxStartups values less than or
+    equal to zero during config parsing, rather than failing later
+    at runtime.  bz3489
+  * ssh-keygen(1): fix parsing of hex cert expiry times specified
+    on the command-line when acting as a CA.
+  * scp(1): when scp(1) is using the SFTP protocol for transport
+    (the default), better match scp/rcp's handling of globs that
+    don't match the globbed characters but do match literally (e.g.
+    trying to transfer a file named "foo.[1]"). Previously scp(1)
+    in SFTP mode would not match these pathnames but legacy scp/rcp
+    mode would. bz3488
+  * ssh-agent(1): document the "-O no-restrict-websafe"
+    command-line option.
+  * ssh(1): honour user's umask(2) if it is more restrictive then
+    the ssh default (022).
+ 
+  = Portability
+  * sshd(8): allow writev(2) in the Linux seccomp sandbox. This
+    seems to be used by recent glibcs at least in some
+    configurations during error conditions. bz3512.
+  * sshd(8): simply handling of SSH_CONNECTION PAM env var,
+    removing global variable and checking the return value from
+    pam_putenv. bz3508
+  * sshd(8): disable SANDBOX_SECCOMP_FILTER_DEBUG that was
+    mistakenly enabled during the OpenSSH 9.1 release cycle.
+  * misc: update autotools and regenerate the config files using
+    the latest autotools
+  * all: use -fzero-call-used-regs=used on clang 15 instead of
+    -fzero-call-used-reg=all, as some versions of clang 15 have
+    miscompile code when it was enabled. bz3475
+  * sshd(8): defer PRNG seeding until after the initial
+    closefrom(2) call. PRNG seeding will initialize OpenSSL, and
+    some engine providers (e.g. Intel's QAT) will open descriptors
+    for their own use that closefrom(2) could clobber. bz3483
+  * misc: in the poll(2)/ppoll(2) compatibility code, avoid
+    assuming the layout of fd_set.
+  * sftp-server(8), ssh-agent(1): fix ptrace(2) disabling on older
+    FreeBSD kernels. Some versions do not support using id 0 to
+    refer to the current PID for procctl, so try again with
+    getpid() explicitly before failing.
+  * configure.ac: fix -Wstrict-prototypes in configure test code.
+    Clang 16 now warns on this and legacy prototypes will be
+    removed in C23. GHPR355
+  * configure.ac: fix setres*id checks to work with clang-16. glibc
+    has the prototypes for setresuid behind _GNU_SOURCE, and
+    clang 16 will error out on implicit function definitions.
+    bz3497
+
+- Update to openssh 9.1p1:
+  = Security
+  * ssh-keyscan(1): fix a one-byte overflow in SSH- banner
+    processing.
+    Reported by Qualys
+  * ssh-keygen(1): double free() in error path of file hashing step
+    in signing/verify code; GHPR333
+  * ssh-keysign(8): double-free in error path introduced in
+    openssh-8.9
+ 
+  = Potentially-incompatible changes
+  * The portable OpenSSH project now signs commits and release tags
+    using git's recent SSH signature support. The list of developer
+    signing keys is included in the repository as
+    .git_allowed_signers and is cross-signed using the PGP key that
+    is still used to sign release artifacts:
+    https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/RELEASE_KEY.asc
+  * ssh(1), sshd(8): SetEnv directives in ssh_config and
+    sshd_config are now first-match-wins to match other directives.
+    Previously if an environment variable was multiply specified
+    the last set value would have been used. bz3438
+  * ssh-keygen(8): ssh-keygen -A (generate all default host key
+    types) will no longer generate DSA keys, as these are insecure
+    and have not been used by default for some years.
+ 
+  = New features
+  * ssh(1), sshd(8): add a RequiredRSASize directive to set a
+    minimum RSA key length. Keys below this length will be ignored
+    for user authentication and for host authentication in sshd(8).
+    ssh(1) will terminate a connection if the server offers an RSA
+    key that falls below this limit, as the SSH protocol does not
+    include the ability to retry a failed key exchange.
+  * sftp-server(8): add a "users-groups-by-id@openssh.com"
+    extension request that allows the client to obtain user/group
+    names that correspond to a set of uids/gids.
+  * sftp(1): use "users-groups-by-id@openssh.com" sftp-server
+    extension (when available) to fill in user/group names for
+    directory listings.
+  * sftp-server(8): support the "home-directory" extension request
+    defined in draft-ietf-secsh-filexfer-extensions-00. This
+    overlaps a bit with the existing "expand-path@openssh.com", but
+    some other clients support it.
+  * ssh-keygen(1), sshd(8): allow certificate validity intervals,
+    sshsig verification times and authorized_keys expiry-time
+    options to accept dates in the UTC time zone in addition to the
+    default of interpreting them in the system time zone. YYYYMMDD
+    and YYMMDDHHMM[SS] dates/times will be interpreted as UTC if
+    suffixed with a 'Z' character.
+    Also allow certificate validity intervals to be specified in
+    raw seconds-since-epoch as hex value, e.g. -V 0x1234:0x4567890.
+    This is intended for use by regress tests and other tools that
+    call ssh-keygen as part of a CA workflow. bz3468
+  * sftp(1): allow arguments to the sftp -D option, e.g. sftp -D
+    "/usr/libexec/sftp-server -el debug3"
+  * ssh-keygen(1): allow the existing -U (use agent) flag to work
+    with "-Y sign" operations, where it will be interpreted to
+    require that the private keys is hosted in an agent; bz3429
+ 
+  = Bugfixes
+  * ssh-keygen(1): implement the "verify-required" certificate
+    option.
+    This was already documented when support for user-verified FIDO
+    keys was added, but the ssh-keygen(1) code was missing.
+  * ssh-agent(1): hook up the restrict_websafe command-line flag;
+    previously the flag was accepted but never actually used.
+  * sftp(1): improve filename tab completions: never try to
+    complete names to non-existent commands, and better match the
+    completion type (local or remote filename) against the argument
+    position being completed.
+  * ssh-keygen(1), ssh(1), ssh-agent(1): several fixes to FIDO key
+    handling, especially relating to keys that request
+    user-verification. These should reduce the number of
+    unnecessary PIN prompts for keys that support intrinsic user
+    verification. GHPR302, GHPR329
+  * ssh-keygen(1): when enrolling a FIDO resident key, check if a
+    credential with matching application and user ID strings
+    already exists and, if so, prompt the user for confirmation
+    before overwriting the credential. GHPR329
+  * sshd(8): improve logging of errors when opening authorized_keys
+    files. bz2042
+  * ssh(1): avoid multiplexing operations that could cause SIGPIPE
+    from causing the client to exit early. bz3454
+  * ssh_config(5), sshd_config(5): clarify that the RekeyLimit
+    directive applies to both transmitted and received data.
+    GHPR328
+  * ssh-keygen(1): avoid double fclose() in error path.
+  * sshd(8): log an error if pipe() fails while accepting a
+    connection. bz3447
+  * ssh(1), ssh-keygen(1): fix possible NULL deref when built
+    without FIDO support. bz3443
+  * ssh-keyscan(1): add missing *-sk types to ssh-keyscan manpage.
+    GHPR294.
+  * sshd(8): ensure that authentication passwords are cleared from
+    memory in error paths. GHPR286
+  * ssh(1), ssh-agent(1): avoid possibility of notifier code
+    executing kill(-1). GHPR286
+  * ssh_config(5): note that the ProxyJump directive also accepts
+    the same tokens as ProxyCommand. GHPR305.
+  * scp(1): do not not ftruncate(3) files early when in sftp mode.
+    The previous behaviour of unconditionally truncating the
+    destination file would cause "scp ~/foo localhost:foo" and the
+    reverse "scp localhost:foo ~/foo" to delete all the contents of
+    their destination. bz3431
+  * ssh-keygen(1): improve error message when 'ssh-keygen -Y sign'
+    is unable to load a private key; bz3429
+  * sftp(1), scp(1): when performing operations that glob(3) a
+    remote path, ensure that the implicit working directory used to
+    construct that path escapes glob(3) characters. This prevents
+    glob characters from being processed in places they shouldn't,
+    e.g. "cd /tmp/a*/", "get *.txt" should have the get operation
+    treat the path "/tmp/a*" literally and not attempt to expand
+    it.
+  * ssh(1), sshd(8): be stricter in which characters will be
+    accepted in specifying a mask length; allow only 0-9. GHPR278
+  * ssh-keygen(1): avoid printing hash algorithm twice when dumping
+    a KRL
+  * ssh(1), sshd(8): continue running local I/O for open channels
+    during SSH transport rekeying. This should make ~-escapes work
+    in the client (e.g. to exit) if the connection happened to have
+    stalled during a rekey event.
+  * ssh(1), sshd(8): avoid potential poll() spin during rekeying
+  * Further hardening for sshbuf internals: disallow "reparenting"
+    a hierarchical sshbuf and zero the entire buffer if
+    reallocation fails. GHPR287
+ 
+  = Portability
+  * ssh(1), ssh-keygen(1), sshd(8): automatically enable the
+    built-in FIDO security key support if libfido2 is found and
+    usable, unless --without-security-key-builtin was requested.
+  * ssh(1), ssh-keygen(1), sshd(8): many fixes to make the WinHello
+    FIDO device usable on Cygwin. The windows://hello FIDO device
+    will be automatically used by default on this platform unless
+    requested otherwise, or when probing resident FIDO credentials
+    (an operation not currently supported by WinHello).
+  * Portable OpenSSH: remove workarounds for obsolete and
+    unsupported versions of OpenSSL libcrypto. In particular, this
+    release removes fallback support for OpenSSL that lacks AES-CTR
+    or AES-GCM. Those AES cipher modes were added to OpenSSL prior
+    to the minimum version currently supported by OpenSSH, so this
+    is not expected to impact any currently supported
+    configurations.
+  * sshd(8): fix SANDBOX_SECCOMP_FILTER_DEBUG on current
+    Linux/glibc
+  * All: resync and clean up internal CSPRNG code.
+  * scp(1), sftp(1), sftp-server(8): avoid linking these programs
+    with unnecessary libraries. They are no longer linked against
+    libz and libcrypto. This may be of benefit to space constrained
+    systems using any of those components in isolation.
+  * sshd(8): add AUDIT_ARCH_PPC to supported seccomp sandbox
+    architectures.
+  * configure: remove special casing of crypt(). configure will no
+    longer search for crypt() in libcrypto, as it was removed from
+    there years ago. configure will now only search libc and
+    libcrypt.
+  * configure: refuse to use OpenSSL 3.0.4 due to potential RCE in
+    its RSA implementation (CVE-2022-2274) on x86_64.
+  * All: request 1.1x API compatibility for OpenSSL >=3.x; GHPR322
+  * ssh(1), ssh-keygen(1), sshd(8): fix a number of missing
+    includes required by the XMSS code on some platforms.
+  * sshd(8): cache timezone data in capsicum sandbox.
+
+- Update to openssh 9.0p1:
+  = Potentially-incompatible changes
+  * This release switches scp(1) from using the legacy scp/rcp
+    protocol to using the SFTP protocol by default.
+    Legacy scp/rcp performs wildcard expansion of remote filenames
+    (e.g. "scp host:* .") through the remote shell. This has the
+    side effect of requiring double quoting of shell
+    meta-characters in file names included on scp(1) command-lines,
+    otherwise they could be interpreted as shell commands on the
+    remote side.
+    This creates one area of potential incompatibility: scp(1) when
+    using the SFTP protocol no longer requires this finicky and
+    brittle quoting, and attempts to use it may cause transfers to
+    fail. We consider the removal of the need for double-quoting
+    shell characters in file names to be a benefit and do not
+    intend to introduce bug-compatibility for legacy scp/rcp in
+    scp(1) when using the SFTP protocol.
+    Another area of potential incompatibility relates to the use of
+    remote paths relative to other user's home directories, for
+    example - "scp host:~user/file /tmp". The SFTP protocol has no
+    native way to expand a ~user path. However, sftp-server(8) in
+    OpenSSH 8.7 and later support a protocol extension
+    "expand-path@openssh.com" to support this.
+    In case of incompatibility, the scp(1) client may be instructed
+    to use the legacy scp/rcp using the -O flag.
+
+  = New features
+  * ssh(1), sshd(8): use the hybrid Streamlined NTRU Prime + x25519
+    key exchange method by default
+    ("sntrup761x25519-sha512@openssh.com"). The NTRU algorithm is
+    believed to resist attacks enabled by future quantum computers
+    and is paired with the X25519 ECDH key exchange (the previous
+    default) as a backstop against any weaknesses in NTRU Prime
+    that may be discovered in the future. The combination ensures
+    that the hybrid exchange offers at least as good security as
+    the status quo.
+    We are making this change now (i.e. ahead of cryptographically-
+    relevant quantum computers) to prevent "capture now, decrypt
+    later" attacks where an adversary who can record and store SSH
+    session ciphertext would be able to decrypt it once a
+    sufficiently advanced quantum computer is available.
+  * sftp-server(8): support the "copy-data" extension to allow
+    server-side copying of files/data, following the design in
+    draft-ietf-secsh-filexfer-extensions-00. bz2948
+  * sftp(1): add a "cp" command to allow the sftp client to perform
+    server-side file copies.
+ 
+  = Bugfixes
+  * ssh(1), sshd(8): upstream: fix poll(2) spin when a channel's
+    output fd closes without data in the channel buffer. bz3405 and
+    bz3411
+  * sshd(8): pack pollfd array in server listen/accept loop. Could
+    cause the server to hang/spin when MaxStartups > RLIMIT_NOFILE
+  * ssh-keygen(1): avoid NULL deref via the find-principals and
+    check-novalidate operations. bz3409 and GHPR307 respectively.
+  * scp(1): fix a memory leak in argument processing. bz3404
+  * sshd(8): don't try to resolve ListenAddress directives in the
+    sshd re-exec path. They are unused after re-exec and parsing
+    errors (possible for example if the host's network
+    configuration changed) could prevent connections from being
+    accepted.
+  * sshd(8): when refusing a public key authentication request from
+    a client for using an unapproved or unsupported signature
+    algorithm include the algorithm name in the log message to make
+    debugging easier.
+     
+  = Portability
+  * sshd(8): refactor platform-specific locked account check,
+    fixing an incorrect free() on platforms with both libiaf and
+    shadow passwords (probably only Unixware) GHPR284,
+  * ssh(1), sshd(8): Fix possible integer underflow in
+    scan_scaled(3) parsing of K/M/G/etc quantities. bz#3401.
+  * sshd(8): provide killpg implementation (mostly for Tandem
+    NonStop) GHPR301.
+  * Check for missing ftruncate prototype. GHPR301
+  * sshd(8): default to not using sandbox when cross compiling. On
+    most systems poll(2) does not work when the number of FDs is
+    reduced with setrlimit, so assume it doesn't when cross
+    compiling and we can't run the test.  bz#3398.
+  * sshd(8): allow ppoll_time64 in seccomp sandbox. Should fix
+    sandbox violations on some (at least i386 and armhf) 32bit
+    Linux platforms. bz#3396.
+  * Improve detection of -fzero-call-used-regs=all support in
+    configure script.
+
+- Add patch that explicitly adds -lz in Makefile.in to some
+  binaries which need it:
+  * fix-missing-lz.patch
+- Rebase patches:
+  * openssh-7.7p1-fips.patch
+  * openssh-7.7p1-fips_checks.patch
+  * openssh-7.7p1-ldap.patch
+  * openssh-7.7p1-pam_check_locks.patch
+  * openssh-7.7p1-seccomp_ipc_flock.patch
+  * openssh-7.7p1-sftp_print_diagnostic_messages.patch
+  * openssh-7.7p1-systemd-notify.patch
+  * openssh-8.0p1-gssapi-keyex.patch
+  * openssh-8.1p1-audit.patch
+  * openssh-8.1p1-ed25519-use-openssl-rng.patch
+  * openssh-8.4p1-vendordir.patch
+  * openssh-reenable-dh-group14-sha1-default.patch
+  * openssh-whitelist-syscalls.patch
+  * wtmpdb.patch
+- Fix setting libexec dir in the LDAP patch.
+- Fix build in Leap 15.x which doesn't use %{_distconfdir}
+ 
+-------------------------------------------------------------------
+Fri May  5 15:18:20 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add _multibuild to define 2nd spec file as additional flavor.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
+Mon Apr 17 13:14:49 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- wtmpdb.patch: add support for wtmpdb to sshd [jsc#PED-3144]
+
+-------------------------------------------------------------------
 Mon Mar 27 08:39:38 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Rename sshd.pamd to sshd-sle.pamd and fix order of pam_keyinit

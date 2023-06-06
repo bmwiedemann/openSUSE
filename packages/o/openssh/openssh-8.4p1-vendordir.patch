@@ -106,7 +106,7 @@ Index: openssh-8.9p1/ssh_config.5
 +.Pq Pa /usr/etc/ssh/ssh_config
  .El
  .Pp
- For each parameter, the first obtained value
+ Unless noted otherwise, for each parameter, the first obtained value
 @@ -2220,6 +2223,11 @@ This file provides defaults for those
  values that are not specified in the user's configuration file, and
  for those users who do not have a configuration file.

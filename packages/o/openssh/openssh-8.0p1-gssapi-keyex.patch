@@ -12,7 +12,8 @@ Index: openssh-8.9p1/Makefile.in
  
 @@ -132,7 +133,7 @@ SSHDOBJS=sshd.o auth-rhosts.o auth-passw
  	auth-bsdauth.o auth2-hostbased.o auth2-kbdint.o \
- 	auth2-none.o auth2-passwd.o auth2-pubkey.o \
+# 	auth2-none.o auth2-passwd.o auth2-pubkey.o \
+ 	auth2-none.o auth2-passwd.o auth2-pubkey.o auth2-pubkeyfile.o \
  	monitor.o monitor_wrap.o auth-krb5.o \
 -	auth2-gss.o gss-serv.o gss-serv-krb5.o \
 +	auth2-gss.o gss-serv.o gss-serv-krb5.o kexgsss.o \
@@ -379,22 +380,38 @@ Index: openssh-8.9p1/clientloop.c
  /* import options */
  extern Options options;
  
-@@ -1349,9 +1353,18 @@ client_loop(struct ssh *ssh, int have_pt
- 			break;
- 
- 		/* Do channel operations unless rekeying in progress. */
--		if (!ssh_packet_is_rekeying(ssh))
-+		if (!ssh_packet_is_rekeying(ssh)) {
- 			channel_after_poll(ssh, pfd, npfd_active);
+#@@ -1349,9 +1353,18 @@ client_loop(struct ssh *ssh, int have_pt
+## Replaced with the section below
+# 			break;
+# 
+# 		/* Do channel operations unless rekeying in progress. */
+#-		if (!ssh_packet_is_rekeying(ssh))
+#+		if (!ssh_packet_is_rekeying(ssh)) {
+# 			channel_after_poll(ssh, pfd, npfd_active);
+# 
+#+#ifdef GSSAPI
+#+			if (options.gss_renewal_rekey &&
+#+			    ssh_gssapi_credentials_updated(NULL)) {
+#+				debug("credentials updated - forcing rekey");
+#+				need_rekeying = 1;
+#+			}
+#+#endif
+#+		}
+#+
+# 		/* Buffer input from the connection.  */
+# 		if (conn_in_ready)
+# 			client_process_net_input(ssh);
+@@ -1349,6 +1353,14 @@ client_loop(struct ssh *ssh, int have_pt
+ 		/* Do channel operations. */
+ 		channel_after_poll(ssh, pfd, npfd_active);
  
 +#ifdef GSSAPI
-+			if (options.gss_renewal_rekey &&
-+			    ssh_gssapi_credentials_updated(NULL)) {
-+				debug("credentials updated - forcing rekey");
-+				need_rekeying = 1;
-+			}
-+#endif
++		if (options.gss_renewal_rekey &&
++		    ssh_gssapi_credentials_updated(NULL)) {
++			debug("credentials updated - forcing rekey");
++			need_rekeying = 1;
 +		}
++#endif
 +
  		/* Buffer input from the connection.  */
  		if (conn_in_ready)
@@ -1257,15 +1274,9 @@ Index: openssh-8.9p1/kex.c
 ===================================================================
 --- openssh-8.9p1.orig/kex.c
 +++ openssh-8.9p1/kex.c
-@@ -57,11 +57,16 @@
- #include "misc.h"
- #include "dispatch.h"
- #include "monitor.h"
-+#include "xmalloc.h"
- 
- #include "ssherr.h"
- #include "sshbuf.h"
+@@ -57,6 +57,10 @@
  #include "digest.h"
+ #include "xmalloc.h"
  
 +#ifdef GSSAPI
 +#include "ssh-gss.h"
@@ -1274,7 +1285,7 @@ Index: openssh-8.9p1/kex.c
  #include "fips.h"
  
  /* prototype */
-@@ -119,6 +124,19 @@ static const struct kexalg kexalgs_all[]
+@@ -119,6 +123,19 @@ static const struct kexalg kexalgs_all[]
  #endif /* HAVE_EVP_SHA256 || !WITH_OPENSSL */
  	{ NULL, 0, -1, -1},
  };
@@ -1294,7 +1305,7 @@ Index: openssh-8.9p1/kex.c
  
  static const struct kexalg kexalgs_fips140_2[] = {
  #ifdef WITH_OPENSSL
-@@ -146,12 +164,12 @@ static const struct kexalg kexalgs_fips1
+@@ -146,12 +163,12 @@ static const struct kexalg kexalgs_fips1
  
  /* Returns array of macs available depending on selected FIPS mode */
  static const struct kexalg *
@@ -1309,7 +1320,7 @@ Index: openssh-8.9p1/kex.c
  		case 1:
  			return kexalgs_fips140_2;
  		default:
-@@ -162,13 +180,13 @@ fips_select_kexalgs(void)
+@@ -162,13 +179,13 @@ fips_select_kexalgs(void)
  }
  
  char *
@@ -1325,7 +1336,7 @@ Index: openssh-8.9p1/kex.c
  		if (ret != NULL)
  			ret[rlen++] = sep;
  		nlen = strlen(k->name);
-@@ -183,15 +201,31 @@ kex_alg_list(char sep)
+@@ -183,15 +200,31 @@ kex_alg_list(char sep)
  	return ret;
  }
  
@@ -1358,7 +1369,7 @@ Index: openssh-8.9p1/kex.c
  	return NULL;
  }
  
-@@ -363,6 +397,29 @@ kex_assemble_names(char **listp, const c
+@@ -363,6 +396,29 @@ kex_assemble_names(char **listp, const c
  	return r;
  }
  
@@ -1385,10 +1396,10 @@ Index: openssh-8.9p1/kex.c
 +	return 1;
 +}
 +
- /* put algorithm proposal into buffer */
- int
- kex_prop2buf(struct sshbuf *b, char *proposal[PROPOSAL_MAX])
-@@ -765,6 +822,9 @@ kex_free(struct kex *kex)
+ /*
+  * Fill out a proposal array with dynamically allocated values, which may
+  * be modified as required for compatibility reasons.
+@@ -765,6 +821,9 @@ kex_free(struct kex *kex)
  	sshbuf_free(kex->session_id);
  	sshbuf_free(kex->initial_sig);
  	sshkey_free(kex->initial_hostkey);
@@ -1439,9 +1450,9 @@ Index: openssh-8.9p1/kex.h
  char	*kex_names_cat(const char *, const char *);
  int	 kex_assemble_names(char **, const char *, const char *);
 +int	 kex_gss_names_valid(const char *);
- 
- int	 kex_exchange_identification(struct ssh *, int, const char *);
- 
+ void	 kex_proposal_populate_entries(struct ssh *, char *prop[PROPOSAL_MAX],
+     const char *, const char *, const char *, const char *, const char *);
+ void	 kex_proposal_free_entries(char *prop[PROPOSAL_MAX]);
 @@ -209,6 +226,12 @@ int	 kexgex_client(struct ssh *);
  int	 kexgex_server(struct ssh *);
  int	 kex_gen_client(struct ssh *);
@@ -3511,8 +3522,8 @@ Index: openssh-8.9p1/sshconnect2.c
  extern Options options;
  
  /*
-@@ -220,6 +218,11 @@ ssh_kex2(struct ssh *ssh, char *host, st
- 	char *s, *all_key;
+@@ -220,10 +218,44 @@ ssh_kex2(struct ssh *ssh, char *host, st
+ 	char *s, *all_key, *hkalgs = NULL;
  	int r, use_known_hosts_order = 0;
  
 +#if defined(GSSAPI) && defined(WITH_OPENSSL)
@@ -3523,9 +3534,6 @@ Index: openssh-8.9p1/sshconnect2.c
  	xxx_host = host;
  	xxx_hostaddr = hostaddr;
  	xxx_conn_info = cinfo;
-@@ -264,6 +267,35 @@ ssh_kex2(struct ssh *ssh, char *host, st
- 		    compat_pkalg_proposal(ssh, options.hostkeyalgorithms);
- 	}
  
 +#if defined(GSSAPI) && defined(WITH_OPENSSL)
 +	if (options.gss_keyex) {
@@ -3559,7 +3567,7 @@ Index: openssh-8.9p1/sshconnect2.c
  	if (options.rekey_limit || options.rekey_interval)
  		ssh_packet_set_rekey_limits(ssh, options.rekey_limit,
  		    options.rekey_interval);
-@@ -282,16 +314,46 @@ ssh_kex2(struct ssh *ssh, char *host, st
+@@ -282,17 +314,47 @@ ssh_kex2(struct ssh *ssh, char *host, st
  # ifdef OPENSSL_HAS_ECC
  	ssh->kex->kex[KEX_ECDH_SHA2] = kex_gen_client;
  # endif
@@ -3592,6 +3600,7 @@ Index: openssh-8.9p1/sshconnect2.c
  	ssh_dispatch_run_fatal(ssh, DISPATCH_BLOCK, &ssh->kex->done);
  
  	/* remove ext-info from the KEX proposals for rekeying */
+ 	free(myproposal[PROPOSAL_KEX_ALGS]);
  	myproposal[PROPOSAL_KEX_ALGS] =
  	    compat_kex_proposal(ssh, options.kex_algorithms);
 +#if defined(GSSAPI) && defined(WITH_OPENSSL)
@@ -3751,8 +3760,13 @@ Index: openssh-8.9p1/sshd.c
  		exit(1);
  	}
 @@ -2397,6 +2398,48 @@ do_ssh2_kex(struct ssh *ssh)
- 	myproposal[PROPOSAL_SERVER_HOST_KEY_ALGS] = compat_pkalg_proposal(
- 	    ssh, list_hostkey_types());
+# 	myproposal[PROPOSAL_SERVER_HOST_KEY_ALGS] = compat_pkalg_proposal(
+# 	    ssh, list_hostkey_types());
+# 	myproposal[PROPOSAL_SERVER_HOST_KEY_ALGS] = prop_hostkey =
+# 	   compat_pkalg_proposal(ssh, list_hostkey_types());
+# 
+ 
+ 	free(hkalgs);
  
 +#if defined(GSSAPI) && defined(WITH_OPENSSL)
 +	{
@@ -3884,22 +3898,40 @@ Index: openssh-8.9p1/sshkey.c
 ===================================================================
 --- openssh-8.9p1.orig/sshkey.c
 +++ openssh-8.9p1/sshkey.c
-@@ -162,6 +162,7 @@ static const struct keytype keytypes[] =
- #  endif /* ENABLE_SK */
- # endif /* OPENSSL_HAS_ECC */
- #endif /* WITH_OPENSSL */
-+	{ "null", "null", NULL, KEY_NULL, 0, 0, 0 },
- 	{ NULL, NULL, NULL, -1, -1, 0, 0 }
+@@ -127,6 +127,17 @@
+ extern const struct sshkey_impl sshkey_xmss_impl;
+ extern const struct sshkey_impl sshkey_xmss_cert_impl;
+ #endif
++const struct sshkey_impl sshkey_null_impl = {
++	/* .name = */		"null",
++	/* .shortname = */	"null",
++	/* .sigalg = */		NULL,
++	/* .type = */		KEY_NULL,
++	/* .nid = */		0,
++	/* .cert = */		0,
++	/* .sigonly = */	0,
++	/* .keybits = */	0,
++	/* .funcs = */		NULL,
++};
+ 
+ const struct sshkey_impl * const keyimpls[] = {
+ 	&sshkey_ed25519_impl,
+@@ -162,6 +179,7 @@ static const struct keytype keytypes[] =
+ 	&sshkey_xmss_impl,
+ 	&sshkey_xmss_cert_impl,
+ #endif
++        &sshkey_null_impl,
+ 	NULL
  };
  
-@@ -286,7 +287,7 @@ sshkey_alg_list(int certs_only, int plai
- 	const struct keytype *kt;
+@@ -286,7 +304,7 @@ sshkey_alg_list(int certs_only, int plai
  
- 	for (kt = keytypes; kt->type != -1; kt++) {
--		if (kt->name == NULL)
-+		if (kt->name == NULL || kt->type == KEY_NULL)
+ 	for (i = 0; keyimpls[i] != NULL; i++) {
+ 		impl = keyimpls[i];
+-		if (impl->name == NULL)
++		if (impl->name == NULL || impl->type == KEY_NULL)
  			continue;
- 		if (!include_sigonly && kt->sigonly)
+ 		if (!include_sigonly && impl->sigonly)
  			continue;
 Index: openssh-8.9p1/sshkey.h
 ===================================================================

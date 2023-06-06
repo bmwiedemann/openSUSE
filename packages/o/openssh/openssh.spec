@@ -24,13 +24,20 @@
 %define _appdefdir  %( grep "configdirspec=" $( which xmkmf ) | sed -r 's,^[^=]+=.*-I(.*)/config.*$,\\1/app-defaults,' )
 %define CHECKSUM_SUFFIX .hmac
 %define CHECKSUM_HMAC_KEY "HMAC_KEY:OpenSSH-FIPS@SLE"
+%bcond_without ldap
+
+%if 0%{?suse_version} >= 1550
+%bcond_without wtmpdb
+%else
+%bcond_with wtmpdb
+%endif
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           openssh
-Version:        8.9p1
+Version:        9.3p1
 Release:        0
 Summary:        Secure Shell Client and Server (Remote Login Program)
 License:        BSD-2-Clause AND MIT
@@ -107,17 +114,21 @@ Patch47:        openssh-8.4p1-vendordir.patch
 Patch48:        openssh-8.4p1-pam_motd.patch
 Patch49:        openssh-do-not-send-empty-message.patch
 Patch50:        openssh-openssl-3.patch
+Patch51:        wtmpdb.patch
+Patch100:       fix-missing-lz.patch
 BuildRequires:  audit-devel
 BuildRequires:  automake
 BuildRequires:  groff
 BuildRequires:  libedit-devel
 BuildRequires:  libselinux-devel
+%if %{with ldap}
 BuildRequires:  openldap2-devel
+%endif
 BuildRequires:  openssl-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
-BuildRequires:  pkgconfig(libfido2)
+BuildRequires:  pkgconfig(libfido2) >= 1.2.0
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
@@ -127,6 +138,9 @@ Requires:       %{name}-server = %{version}-%{release}
 BuildRequires:  pkgconfig(krb5)
 %else
 BuildRequires:  krb5-mini-devel
+%endif
+%if %{with wtmpdb}
+BuildRequires:  pkgconfig(libwtmpdb)
 %endif
 Requires(pre):  findutils
 Requires(pre):  grep
@@ -215,6 +229,7 @@ also be forwarded over the secure channel.
 This package contains clients for making secure connections to Secure
 Shell servers.
 
+%if %{with ldap}
 %package helpers
 Summary:        OpenSSH AuthorizedKeysCommand helpers
 Group:          Productivity/Networking/SSH
@@ -231,6 +246,7 @@ also be forwarded over the secure channel.
 
 This package contains helper applications for OpenSSH which retrieve
 keys from various sources.
+%endif
 
 %package fips
 Summary:        OpenSSH FIPS crypto module HMACs
@@ -262,7 +278,7 @@ cp %{SOURCE3} %{SOURCE4} %{SOURCE11} .
 # set libexec dir in the LDAP patch
 sed -i.libexec 's,@LIBEXECDIR@,%{_libexecdir}/ssh,' \
     $( grep -Rl @LIBEXECDIR@ \
-        $( grep "^+++" openssh-7.7p1-ldap.patch | sed -r 's@^.+/([^/\t ]+).*$@\1@' )
+        $( grep "^+++" %{PATCH31} | sed -r 's@^.+/([^/\t ]+).*$@\1@' )
     )
 
 %build
@@ -294,9 +310,14 @@ export LDFLAGS CFLAGS CXXFLAGS CPPFLAGS
 %endif
     --disable-strip \
     --with-audit=linux \
+%if %{with ldap}
     --with-ldap \
+%endif
     --with-xauth=%{_bindir}/xauth \
     --with-libedit \
+%if %{with wtmpdb}
+    --with-wtmpdb \
+%endif
     --with-security-key-builtin \
     --target=%{_target_cpu}-suse-linux
 
@@ -327,12 +348,16 @@ install -m 755 contrib/ssh-copy-id %{buildroot}%{_bindir}
 install -m 644 contrib/ssh-copy-id.1 %{buildroot}%{_mandir}/man1
 sed -i -e s@%{_prefix}/libexec@%{_libexecdir}@g %{buildroot}%{_sysconfdir}/ssh/sshd_config
 
+echo "PermitRootLogin yes" > %{buildroot}%{_sysconfdir}/ssh/sshd_config.d/50-permit-root-login.conf
+
 # Move /etc to /usr/etc/ssh
+%if %{defined _distconfdir}
 mkdir -p %{buildroot}%{_distconfdir}/ssh/ssh{,d}_config.d
 mv %{buildroot}%{_sysconfdir}/ssh/moduli %{buildroot}%{_distconfdir}/ssh/
 mv %{buildroot}%{_sysconfdir}/ssh/ssh_config %{buildroot}%{_distconfdir}/ssh/
 mv %{buildroot}%{_sysconfdir}/ssh/sshd_config %{buildroot}%{_distconfdir}/ssh/
-echo "PermitRootLogin yes" > %{buildroot}%{_distconfdir}/ssh/sshd_config.d/50-permit-root-login.conf
+mv %{buildroot}%{_sysconfdir}/ssh/sshd_config.d/50-permit-root-login.conf %{buildroot}%{_distconfdir}/ssh/sshd_config.d/50-permit-root-login.conf
+%endif
 
 %if 0%{?suse_version} < 1550
 # install firewall definitions
@@ -426,9 +451,15 @@ test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ss
 %license LICENCE
 %doc README.SUSE README.kerberos README.FIPS ChangeLog OVERVIEW README TODO CREDITS
 %attr(0755,root,root) %dir %{_sysconfdir}/ssh
+%if %{defined _distconfdir}
 %attr(0755,root,root) %dir %{_distconfdir}/ssh
-%attr(0755,root,root) %dir /usr/etc/ssh/ssh_config.d
 %attr(0600,root,root) %{_distconfdir}/ssh/moduli
+%attr(0755,root,root) %dir %{_distconfdir}/ssh/ssh_config.d
+%else
+%attr(0755,root,root) %dir %{_sysconfdir}/ssh
+%attr(0600,root,root) %{_sysconfdir}/ssh/moduli
+%attr(0755,root,root) %dir %{_sysconfdir}/ssh/ssh_config.d
+%endif
 %attr(0444,root,root) %{_mandir}/man1/ssh-keygen.1*
 %attr(0444,root,root) %{_mandir}/man5/moduli.5*
 %attr(0755,root,root) %{_bindir}/ssh-keygen*
@@ -439,12 +470,13 @@ test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ss
 %attr(0755,root,root) %{_sbindir}/sshd-gen-keys-start
 %dir %attr(0755,root,root) %{_localstatedir}/lib/sshd
 %dir %attr(0755,root,root) %{_sysconfdir}/ssh/sshd_config.d
-%attr(0755,root,root) %dir %{_distconfdir}/ssh
-%attr(0755,root,root) %dir /usr/etc/ssh/sshd_config.d
-%attr(0640,root,root) %{_distconfdir}/ssh/sshd_config
 %if %{defined _distconfdir}
+%attr(0755,root,root) %dir %{_distconfdir}/ssh
+%attr(0755,root,root) %dir %{_distconfdir}/ssh/sshd_config.d
+%attr(0640,root,root) %{_distconfdir}/ssh/sshd_config
 %attr(0644,root,root) %{_pam_vendordir}/sshd
 %else
+%attr(0640,root,root) %{_sysconfdir}/ssh/sshd_config
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/pam.d/sshd
 %endif
 %attr(0644,root,root) %{_unitdir}/sshd.service
@@ -463,11 +495,19 @@ test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ss
 %endif
 
 %files server-config-rootlogin
+%if %{defined _distconfdir}
 %{_distconfdir}/ssh/sshd_config.d/50-permit-root-login.conf
+%else
+%{_sysconfdir}/ssh/sshd_config.d/50-permit-root-login.conf
+%endif
 
 %files clients
 %dir %attr(0755,root,root) %{_sysconfdir}/ssh/ssh_config.d
+%if %{defined _distconfdir}
 %attr(0644,root,root) %{_distconfdir}/ssh/ssh_config
+%else
+%attr(0644,root,root) %{_sysconfdir}/ssh/ssh_config
+%endif
 %attr(0755,root,root) %{_bindir}/ssh
 %attr(0755,root,root) %{_bindir}/scp*
 %attr(0755,root,root) %{_bindir}/sftp*
@@ -492,6 +532,7 @@ test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ss
 %attr(0444,root,root) %{_mandir}/man8/ssh-sk-helper.8*
 %attr(0444,root,root) %{_mandir}/man8/ssh-keysign.8*
 
+%if %{with ldap}
 %files helpers
 %attr(0755,root,root) %dir %{_sysconfdir}/ssh
 %verify(not mode) %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/ssh/ldap.conf
@@ -500,6 +541,7 @@ test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ss
 %attr(0444,root,root) %{_mandir}/man5/ssh-ldap*
 %attr(0444,root,root) %{_mandir}/man8/ssh-ldap*
 %doc HOWTO.ldap-keys openssh-lpk-openldap.schema openssh-lpk-sun.schema
+%endif
 
 %files fips
 %attr(0444,root,root) %{_bindir}/ssh%{CHECKSUM_SUFFIX}

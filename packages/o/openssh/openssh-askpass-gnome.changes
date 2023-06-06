@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun May 28 09:16:44 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- openssh-askpass-gnome: require only openssh-clients, not the full
+  openssh (including -server), to avoid pulling in excessive
+  dependencies when installing git on Gnome (boo#1211446)
+
+-------------------------------------------------------------------
+Thu May 11 07:01:54 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to openssh 9.3p1
+  * No changes for askpass, see main package changelog for
+    details
+
+-------------------------------------------------------------------
 Tue Sep 28 19:05:15 UTC 2021 - Hans Petter Jansson <hpj@suse.com>
 
 - Version upgrade to 8.8p1

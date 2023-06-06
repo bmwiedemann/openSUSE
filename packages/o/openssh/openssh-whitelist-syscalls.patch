@@ -14,7 +14,7 @@ Index: openssh-8.8p1/sandbox-seccomp-filter.c
  #endif
 @@ -213,6 +216,9 @@ static const struct sock_filter preauth_
  #ifdef __NR_futex_time64
- 	SC_ALLOW(__NR_futex_time64),
+ 	SC_FUTEX(__NR_futex_time64),
  #endif
 +#ifdef __NR_futex_time64
 +	SC_ALLOW(__NR_futex_time64),

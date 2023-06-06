@@ -37,5 +37,5 @@ Index: openssh-8.8p1/sandbox-seccomp-filter.c
 +	SC_ALLOW(__NR_ipc),
 +#endif
  #ifdef __NR_madvise
- 	SC_ALLOW(__NR_madvise),
- #endif
+ 	SC_ALLOW_ARG(__NR_madvise, 2, MADV_NORMAL),
+ # ifdef MADV_FREE

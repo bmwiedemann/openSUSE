@@ -8,8 +8,9 @@ Index: openssh-8.8p1/configure.ac
 --- openssh-8.8p1.orig/configure.ac
 +++ openssh-8.8p1/configure.ac
 @@ -4751,6 +4751,30 @@ AC_ARG_WITH([kerberos5],
- AC_SUBST([GSSLIBS])
+# AC_SUBST([GSSLIBS])
  AC_SUBST([K5LIBS])
+ AC_SUBST([CHANNELLIBS])
  
 +# Check whether user wants systemd support
 +SYSTEMD_MSG="no"

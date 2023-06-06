@@ -768,8 +768,8 @@ Index: openssh-8.9p1/auth.h
 +int	 user_key_verify(struct ssh *, const struct sshkey *, const u_char *, size_t,
 +    const u_char *, size_t, const char *, u_int, struct sshkey_sig_details **);
  
- FILE	*auth_openkeyfile(const char *, struct passwd *, int);
- FILE	*auth_openprincipals(const char *, struct passwd *, int);
+ int	 auth_key_is_revoked(struct sshkey *);
+ 
 @@ -209,6 +211,8 @@ struct sshkey	*get_hostkey_private_by_ty
  int	 get_hostkey_index(struct sshkey *, int, struct ssh *);
  int	 sshd_hostkey_sign(struct ssh *, struct sshkey *, struct sshkey *,
@@ -843,8 +843,8 @@ Index: openssh-8.9p1/auth2-pubkey.c
 +}
 +
  static int
- match_principals_option(const char *principal_list, struct sshkey_cert *cert)
- {
+ match_principals_file(struct passwd *pw, char *file,
+     struct sshkey_cert *cert, struct sshauthopt **authoptsp)
 Index: openssh-8.9p1/auth2.c
 ===================================================================
 --- openssh-8.9p1.orig/auth2.c
@@ -934,9 +934,9 @@ Index: openssh-8.9p1/kex.c
 --- openssh-8.9p1.orig/kex.c
 +++ openssh-8.9p1/kex.c
 @@ -62,6 +62,7 @@
- #include "ssherr.h"
  #include "sshbuf.h"
  #include "digest.h"
+ #include "xmalloc.h"
 +#include "audit.h"
  
  #ifdef GSSAPI
@@ -2165,7 +2165,7 @@ Index: openssh-8.9p1/session.h
 @@ -71,10 +77,12 @@ void	 session_unused(int);
  int	 session_input_channel_req(struct ssh *, Channel *, const char *);
  void	 session_close_by_pid(struct ssh *ssh, pid_t, int);
- void	 session_close_by_channel(struct ssh *, int, void *);
+ void	 session_close_by_channel(struct ssh *, int, int, void *);
 -void	 session_destroy_all(struct ssh *, void (*)(Session *));
 +void	 session_destroy_all(struct ssh *, void (*)(struct ssh*, Session *));
  void	 session_pty_cleanup2(Session *);
@@ -2357,7 +2357,7 @@ Index: openssh-8.9p1/sshd.c
 +server_accept_loop(struct ssh *ssh, int *sock_in, int *sock_out, int *newsock, int *config_s)
  {
  	struct pollfd *pfd = NULL;
- 	int i, j, ret;
+ 	int i, j, ret, npfd;
 @@ -1179,6 +1234,7 @@ server_accept_loop(int *sock_in, int *so
  		if (received_sigterm) {
  			logit("Received signal %d; terminating.",

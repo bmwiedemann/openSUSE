@@ -1636,4 +1636,12 @@ So all in all: this fixes the build failures for openSUSE Tumblewee (forwarded r
 - Add new sshd.pamd including postlogin-* config files (forwarded request 1074609 from kukuk)</comment>
     <requestid>1079298</requestid>
   </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>b313ab76ddfea2559f660ffd3d6d6ab5</srcmd5>
+    <version>9.3p1</version>
+    <time>1686074095</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090577</requestid>
+  </revision>
 </revisionlist>

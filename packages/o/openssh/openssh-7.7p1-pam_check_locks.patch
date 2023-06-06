@@ -10,23 +10,23 @@ Index: openssh-8.8p1/auth.c
 --- openssh-8.8p1.orig/auth.c
 +++ openssh-8.8p1/auth.c
 @@ -113,7 +113,7 @@ allowed_user(struct ssh *ssh, struct pas
+ 	if (!pw || !pw->pw_name)
  		return 0;
  
- #ifdef USE_SHADOW
--	if (!options.use_pam)
-+	if (!options.use_pam || options.use_pam_check_locks)
- 		spw = getspnam(pw->pw_name);
- #ifdef HAS_SHADOW_EXPIRE
- 	if (!options.use_pam && spw != NULL && auth_shadow_acctexpired(spw))
-@@ -133,7 +133,7 @@ allowed_user(struct ssh *ssh, struct pas
- #endif
- 
- 	/* check for locked account */
--	if (!options.use_pam && passwd && *passwd) {
-+	if ((!options.use_pam || options.use_pam_check_locks) && passwd && *passwd) {
- 		int locked = 0;
- 
- #ifdef LOCKED_PASSWD_STRING
+-	if (!options.use_pam && platform_locked_account(pw)) {
++	if ((!options.use_pam || options.use_pam_check_locks) && platform_locked_account(pw)) {
+ 		logit("User %.100s not allowed because account is locked",
+ 		    pw->pw_name);
+ 		return 0;
+#@@ -133,7 +133,7 @@ allowed_user(struct ssh *ssh, struct pas
+# #endif
+# 
+# 	/* check for locked account */
+#-	if (!options.use_pam && passwd && *passwd) {
+#+	if ((!options.use_pam || options.use_pam_check_locks) && passwd && *passwd) {
+# 		int locked = 0;
+# 
+# #ifdef LOCKED_PASSWD_STRING
 Index: openssh-8.8p1/servconf.c
 ===================================================================
 --- openssh-8.8p1.orig/servconf.c

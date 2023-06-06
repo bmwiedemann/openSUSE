@@ -34,8 +34,8 @@ Index: openssh-8.8p1/sftp.c
  	infile = stdin;
  
  	while ((ch = getopt(argc, argv,
--	    "1246AafhNpqrvCc:D:i:l:o:s:S:b:B:F:J:P:R:")) != -1) {
-+	    "1246AafhNpQqrvCc:D:i:l:o:s:S:b:B:F:J:P:R:")) != -1) {
+-	    "1246AafhNpqrvCc:D:i:l:o:s:S:b:B:F:J:P:R:X:")) != -1) {
++	    "1246AafhNpQqrvCc:D:i:l:o:s:S:b:B:F:J:P:R:X:")) != -1) {
  		switch (ch) {
  		/* Passed through to ssh(1) */
  		case 'A':
