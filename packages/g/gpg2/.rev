@@ -1350,4 +1350,12 @@ See-also: gnupg-announce/2019q1/000434.html
 https://bugzilla.opensuse.org/show_bug.cgi?id=1211444</comment>
     <requestid>1087520</requestid>
   </revision>
+  <revision rev="166" vrev="1">
+    <srcmd5>a131d3eb44bf9c269fb3e09f3a24316c</srcmd5>
+    <version>2.4.2</version>
+    <time>1686074108</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1090818</requestid>
+  </revision>
 </revisionlist>
