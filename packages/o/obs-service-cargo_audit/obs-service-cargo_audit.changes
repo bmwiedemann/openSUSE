@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun 06 00:18:25 UTC 2023 - william.brown@suse.com
+
+- Update to version 0.1.8~6:
+  * fix: include zstd decompression for tarballs (#8)
+  * Update to exclude broken packages
+  * Resolve typo in do_scan
+  * Improve do_scan
+  * improve do_scan :)
+  * Updates
+  * Fix workspace scanning
+  * Improve output to show fast/slow path updates
+  * Resolve issue with multibuild tests
+  * Improve handling when a lock is requested but not existing
+
+-------------------------------------------------------------------
 Fri Jun 10 01:54:16 UTC 2022 - William Brown <william.brown@suse.com>
 
 - Enforce python 3.8 or greater
