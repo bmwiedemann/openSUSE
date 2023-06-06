@@ -568,4 +568,13 @@
   /var/lib and /var/cache texmf entries (boo#1211613)</comment>
     <requestid>1089013</requestid>
   </revision>
+  <revision rev="56" vrev="59">
+    <srcmd5>1a6a2b4952bcd22556043b6f53aae7d9</srcmd5>
+    <version>unknown</version>
+    <time>1686074128</time>
+    <user>dimstar_suse</user>
+    <comment>- For creation of ls-R after transactional update used secure
+  way via setpriv(8) (boo#1212006)</comment>
+    <requestid>1090926</requestid>
+  </revision>
 </revisionlist>
