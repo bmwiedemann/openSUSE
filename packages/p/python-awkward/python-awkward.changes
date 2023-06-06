@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon May 29 16:43:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.1:
+  * feat: add validity error for duplicate record field
+  * feat: add empty_if_typetracer & expose more of typetracer to L2
+  * feat!: remove use of typestr in ak.types.Type
+  * feat: improve performance of behavior lookups
+  * feat: support record reducer overloads
+  * fix: ak.to_numpy does not properly convert lists of empty string
+  * fix: handle indexed nodes in ak.almost_equal
+  * feat: canonicalise union[?X, Y] into union[?X, ?Y]
+  * feat: add ak.forms.from_type
+  * feat: add ak.enforce_type
+  * feat!: deprecate length_zero_array highlevel argument
+  * Bug-fixes and performance
+  * fix: avoid reference cycles with the error-handling machinery
+  * fix: proper unknown size broadcasting for all-regular
+
+-------------------------------------------------------------------
+Sat May 27 20:59:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add sle15_python_module_pythons 
+
+-------------------------------------------------------------------
 Thu May  4 16:29:51 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update required version for python-awkward-cpp to 15.
