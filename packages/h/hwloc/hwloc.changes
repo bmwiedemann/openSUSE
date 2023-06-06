@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May  9 13:20:12 UTC 2023 - Thomas Blume <thomas.blume@suse.com>
+
+- remove header files for feature we don't ship (jsc#PED-4156)
+
+These headers do not define an API that is not supported at present and
+therefore would not cause a failure during build. Still, they define static
+inline functions which look for HWLOC objects that are only set up by
+non-supported device scanners. Thus these objects will never be present - even
+though the relevant hardware is.
+
+-------------------------------------------------------------------
 Thu Jan 26 14:53:18 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Remove libXNVCtrl support as it brings too many X dependencies

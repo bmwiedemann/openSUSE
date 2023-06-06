@@ -123,6 +123,14 @@ install -D -m 644 %{buildroot}%{_datadir}/hwloc/hwloc-dump-hwdata.service %{buil
 %endif
 rm %{buildroot}%{_datadir}/hwloc/hwloc-dump-hwdata.service
 
+#remove headers for features we don't ship
+rm %{buildroot}%{_includedir}/hwloc/rsmi.h
+rm %{buildroot}%{_includedir}/hwloc/nvml.h
+rm %{buildroot}%{_includedir}/hwloc/opencl.h
+rm %{buildroot}%{_includedir}/hwloc/levelzero.h
+rm %{buildroot}%{_includedir}/hwloc/cuda.h
+rm %{buildroot}%{_includedir}/hwloc/cudart.h
+
 %fdupes -s %{buildroot}/%{_mandir}/man1
 %fdupes -s %{buildroot}/%{_mandir}/man7
 
