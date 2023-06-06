@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 05 11:27:17 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230605.f39ef8f:
+  * Move factory-package-news-web.py script to gunicorn
+
+-------------------------------------------------------------------
 Mon Jun 05 08:56:20 UTC 2023 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20230605.bf97015:
