@@ -1,7 +1,7 @@
 #
 # spec file for package python-rnginline
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,24 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without  test
 Name:           python-rnginline
-Version:        0.0.2
+Version:        1.0.0
 Release:        0
 Summary:        Python libary to flatten multi-file RELAX NG schemas
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/h4l/rnginline
 Source:         https://files.pythonhosted.org/packages/source/r/rnginline/rnginline-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-docopt
+Requires:       python-importlib_resources >= 5.12.0
 Requires:       python-lxml
-Requires:       python-six
+Requires:       python-typing_extensions >= 4.5.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Suggests:       python-coverage
@@ -40,9 +42,10 @@ Suggests:       python-pytest >= 2.6.4
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module docopt}
+BuildRequires:  %{python_module importlib_resources >= 5.12.0}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module typing_extensions >= 4.5.0}
 %endif
 %python_subpackages
 
@@ -55,21 +58,16 @@ into a single RELAX NG schema.
 %setup -q -n rnginline-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/rnginline
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %if %{with test}
 %check
 pushd rnginline
-# test/test_rnginline.py:113: in <module>
-#    test_testcases_testcases = _load_testcases()
-# [..]
-# E   NotImplementedError: Can't perform this operation for unregistered loader type
-rm test/test_{rnginline,cmdline}.py
 %pytest
 %endif
 
@@ -81,8 +79,8 @@ rm test/test_{rnginline,cmdline}.py
 
 %files %{python_files}
 %license LICENSE.txt
-%doc CHANGELOG.rst README.rst
+%doc README.md
 %python_alternative %{_bindir}/rnginline
-%{python_sitelib}/*
+%{python_sitelib}/rnginline*
 
 %changelog
