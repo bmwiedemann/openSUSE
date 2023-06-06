@@ -1,7 +1,7 @@
 #
 # spec file for package libzypp
 #
-# Copyright (c) 2005-2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400 || (0%{?is_opensuse} && 0%{?sle_version} >= 150100)
@@ -42,10 +42,10 @@
 %bcond_with enable_preview_single_rpmtrans_as_default_for_zypper
 
 Name:           libzypp
-Version:        17.31.11
+Version:        17.31.12
 Release:        0
-License:        GPL-2.0+
-Url:            https://github.com/openSUSE/libzypp
+License:        GPL-2.0-or-later
+URL:            https://github.com/openSUSE/libzypp
 Summary:        Library for package, patch, pattern and product management
 Group:          System/Packages
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -397,8 +397,6 @@ done
 %{_includedir}/zypp-core
 %{_includedir}/zypp-media
 %{_includedir}/zypp-curl
-%{_libdir}/pkgconfig/libzypp.pc
-%{_libdir}/pkgconfig/libzypp.pc
 %{_libdir}/pkgconfig/libzypp.pc
 
 %files devel-doc
