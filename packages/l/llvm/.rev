@@ -2254,4 +2254,15 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
 </comment>
     <requestid>1087801</requestid>
   </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>6713a7001f10d58e56b856a805a8aba6</srcmd5>
+    <version>16.0.5</version>
+    <time>1686074103</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.5.
+  * This release contains bug-fixes for the LLVM 16.0.0 release.
+    This release is API and ABI compatible with 16.0.0.
+</comment>
+    <requestid>1090775</requestid>
+  </revision>
 </revisionlist>
