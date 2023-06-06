@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  6 08:44:31 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20230601.00
+  * Revert "Avoid conflict with automated package updates (#212)" (#214)
+  * Don't block google-osconfig-agent (#213)
+- from version 20230531.00
+  * Avoid conflict with automated package updates (#212)
+  * Add a support of TrustedUserCAKeys into sshd configuration (#206)
+
+-------------------------------------------------------------------
 Thu May 11 07:04:49 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20230510.00

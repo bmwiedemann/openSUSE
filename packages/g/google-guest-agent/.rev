@@ -262,4 +262,17 @@
     0.8.0 and its dependencies (#204) (forwarded request 1086180 from glaubitz)</comment>
     <requestid>1086497</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>0250475453eb72d3c7b8bba0c9952ba2</srcmd5>
+    <version>20230601.00</version>
+    <time>1686074234</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230601.00
+  * Revert &quot;Avoid conflict with automated package updates (#212)&quot; (#214)
+  * Don't block google-osconfig-agent (#213)
+- from version 20230531.00
+  * Avoid conflict with automated package updates (#212)
+  * Add a support of TrustedUserCAKeys into sshd configuration (#206) (forwarded request 1091050 from glaubitz)</comment>
+    <requestid>1091077</requestid>
+  </revision>
 </revisionlist>
