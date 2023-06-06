@@ -51,7 +51,7 @@ BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || dat
 go build \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags="-s -w -extldflags "-static" -X github.com/homeport/dyff/internal/cmd.version=%{version}" \
+   -ldflags="-s -w -X github.com/homeport/dyff/internal/cmd.version=%{version}" \
    -o bin/dyff ./cmd/dyff
 
 %install
