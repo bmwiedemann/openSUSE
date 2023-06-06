@@ -1,4 +1,173 @@
 -------------------------------------------------------------------
+Sat Jun 03 02:57:57 UTC 2023 - william.brown@suse.com
+
+- Update to version 1.26.0~0:
+  * Update commit sha in rustup-init.sh again
+  * Update changelog to add more contributors
+  * Remove test
+  * Better error instead of show the help
+  * Print help when a ValueValidation error occurs
+  * Revert `Update Rust crate term to v0.7.0`
+  * Update network-proxies.md
+  * Fix RUSTUP_PERMIT_COPY_RENAME condition so it is actually used
+  * Add a test for only options command
+  * Update UI tests
+  * Set SubcommandRequiredElseHelp correctly
+  * Add preload directive to HSTS header
+  * Remove useless link
+  * Update changelog about remove GPG signature support
+  * Update toolchain for android
+  * Use llvm-ranlib
+  * Use llvm-ar
+  * Update toolchain
+  * Revert "Temporarily disable the android tests"
+  * Mention remove GPG signature support
+  * Add all contributors
+  * Update CHANGELOG  for v1.26.0
+  * Update commit sha in rustup-init.sh again
+  * Remove `show keys` subcommand
+  * Move trycmd to dev-dependencies
+  * Remove GPG signature support
+  * Clippy fixes
+  * Clippy fixes
+  * Add RUSTUP_WINDOWS_PATH_ADD_BIN
+  * Don't add toolchain bin to PATH on Windows
+  * Fix broken CI for rust-x86_64-unknown-illumos
+  * Regen the GitHub actions for windows
+  * Add target env for windows
+  * Update commit sha in rustup-init.sh again
+  * Bump fs_at from v0.1.1 to v0.1.3
+  * Update commit sha in rustup-init.sh
+  * Bump version to 1.26.0
+  * Remove extra new line after help
+  * Make match statements better
+  * Run the tests on x86_64-pc-windows-msvc
+  * Update rustup mode tests
+  * Update setup mode tests
+  * Fix broken test path
+  * Build debug and release in different jobs
+  * Cap the maximum hard links per file
+  * Update Rust crate trycmd to 0.14.13
+  * Bump remove_dir_all
+  * Bump clap to 3.0
+  * Put self update test servers in test root
+  * Hardlink rustup-init in the test suite
+  * Update Rust crate tempfile to 3.4
+  * Run integration tests as a single binary
+  * Make gen-workflows.sh executable
+  * Remove use of hardlinks to symlinks on macOS.
+  * Update Rust crate curl to 0.4.44
+  * Fix deprecated set-output warnings
+  * Update Rust crate once_cell to 1.17.1
+  * Use workspace inheritance
+  * Enable Windows aarch64 builds on Stable
+  * Migrate HostGoesMissing
+  * Migrate cli-rustup to with_scenario
+  * Introduce constant dist dirs for testing
+  * expect_ok takes mutable Config
+  * change_dir takes mutable Config
+  * Lock file maintenance
+  * Fix some more clippy-related issues.
+  * Do all builds together in CI
+  * Fix build on Windows
+  * Update Rust crate trycmd to 0.14.12
+  * Migrate callers to the new names
+  * Move calls from fn(&config) to self.fn
+  * Update Rust crate winreg to 0.11
+  * Temporarily disable the android tests
+  * add some explains for `--default-toolchain none`
+  * Add ui test for the rustup-init.sh
+  * fmt
+  * Report duration of executed test commands
+  * Make test process stdout/err clearer
+  * Test the up aliases exist via help text
+  * Update ubuntu Docker tag to v22
+  * Update actions/upload-artifact action to v3
+  * Update Rust crate winreg to 0.10
+  * doc: add links for the aarch64-apple-darwin files
+  * Use `Command::get_envs` in env_var
+  * Update comment about CARGO_HOME on Windows
+  * Update Rust crate zstd to 0.12
+  * Update Rust crate url to 2.3
+  * Fix windows tests
+  * Add test for cli ui
+  * Update Rust crate anyhow to 1.0.69
+  * Use beta and give more explanation
+  * Make clippy::needless-lifetimes happy
+  * Make clippy::needless-borrow happy
+  * Fix chrono deprecation warnings
+  * clippy::uninlined_format_args: Apply clippy suggestions
+  * Bump the centos image version
+  * Remove temporary fix for the docker ci
+  * fix(deps): update rust crate opener to 0.5.2
+  * Rename from EventResult to DownloadCallback
+  * Fix `type_complexity` error
+  * allow to quickly edit a page directly on github
+  * Fix `derive_partial_eq_without_eq` clippy error
+  * Update MSVC installation image highlights
+  * Spelling and grammar fixes
+  * Add type parameter to prepend_path
+  * Remove space from comment
+  * Fix prepend_unique_path test on Windows
+  * Fix duplicated PATH entries
+  * chore(deps): lock file maintenance
+  * Update actions/checkout action to v3
+  * Expand on when VS Community isn't appropriate
+  * Highlight relevant area of images
+  * doc: Recommend tracking Cargo.lock with rust-toolchain
+  * Update Rust crate term to v0.7.0
+  * Update Rust crate effective-limits to 0.5.5
+  * Test Renovate branches directly
+  * Lock file maintenance
+  * Update Rust crate sequoia-openpgp to 1.13
+  * Update Rust crate rs_tracing to 1.1.0
+  * Update Rust crate retry to 1.3.1
+  * Update Rust crate num_cpus to 1.15
+  * Update Rust crate enum-map to 2.4.2
+  * Update GitHub Actions templates
+  * Update actions/cache action to v3
+  * Add -x and enable SC1090
+  * Fix shell check warning
+  * Renovate tweaks
+  * Update Rust crate anyhow to 1.0.68
+  * Tweak initial config
+  * Put renovate.json in a better place
+  * Add renovate.json
+  * Improve a help message for `doc --rustdoc`
+  * Fix typo
+  * Use auto deref
+  * Add automatic resume flag when retrying download with curl
+  * Add "Proxy" to terminology page
+  * Remove needless borrow
+  * Update to home 0.5.4
+  * Fix broken GitHub Actions
+  * Fix typos
+  * Update code to use `home::env as home` as suggested
+  * Add details of each setting in the toolchain file
+  * Update home usage to new env fn
+  * Bump pulldown-cmark version to 0.9
+  * Let Clap wrap help texts automatically
+  * Apply suggestions from code review
+  * Improve Windows MSVC install instructions
+  * Add support for loongarch64
+  * Add DisplayVersion for rustup to registry on Windows.
+  * Add `up` as an alias of `update`
+  * Move rust-analyzer to DUP_TOOLS
+  * Add rust-analyzer proxy.
+  * Unify the msg of the prompt when downloading self-update
+  * Improve error message when there is an error caused by override file
+  * (changelog): Fix links to tags
+  * Improved warning message for System-Rust-override
+  * Clippy lint
+  * Remove snapcraft build and runtime support entirely
+  * Use `if` instead of `$?`
+  * Correctly propagate subshell failures in rustup-init
+  * (toolchain): Toolchain names must not be empty
+- Remove upstreamed patches
+* 0000-rustup-add-rust-analyzer-proxy.patch
+* 0001-rustup-move-rust-analyzer.patch
+
+-------------------------------------------------------------------
 Thu Apr 13 01:17:49 UTC 2023 - William Brown <william.brown@suse.com>
 
 - bsc#1210345 - CVE-2023-26964 - hyper,h2: stream stacking when H2 processing HTTP2 RST_STREAM frames

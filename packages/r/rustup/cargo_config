@@ -1,10 +1,5 @@
 [source.crates-io]
 replace-with = "vendored-sources"
 
-[source."https://github.com/rbtcollins/home"]
-git = "https://github.com/rbtcollins/home"
-rev = "a243ee2fbee6022c57d56f5aa79aefe194eabe53"
-replace-with = "vendored-sources"
-
 [source.vendored-sources]
 directory = "vendor"
