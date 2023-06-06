@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  2 16:01:46 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 2.2.1:
+  * staslib: Fix setting controller DHCHAP key (bsc#1211557)
+
+-------------------------------------------------------------------
 Fri Mar 31 19:42:37 UTC 2023 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 2.2:
