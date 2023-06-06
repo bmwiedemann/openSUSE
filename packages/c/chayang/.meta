@@ -1,0 +1,7 @@
+<package name="chayang" project="openSUSE:Factory">
+  <title>Gradually dim the screen</title>
+  <description>Gradually dim the screen.
+
+Can be used to implement a grace period before locking the session.</description>
+  <devel project="X11:Wayland" package="chayang"/>
+</package>

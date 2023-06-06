@@ -1,0 +1,17 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="versionformat">git%cd.%h</param>
+    <param name="url">https://git.sr.ht/~emersion/chayang</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service name="format_spec_file" mode="manual">
+    <param name="specfile">chayang.spec</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">gz</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>
