@@ -114,8 +114,6 @@ Requires:       perl-Net-Server
 Requires:       perl-base = %{perl_version}
 Requires:       perl-libwww-perl
 Requires:       ps
-# manual requires from certain plugins using "env ..."
-Requires:       python
 Requires:       ruby
 Requires:       shadow
 Requires:       sysstat

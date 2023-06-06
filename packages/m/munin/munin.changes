@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  2 07:52:08 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Drop manual requires for python (boo#1210588)
+
+-------------------------------------------------------------------
 Fri Apr 21 08:13:58 UTC 2023 - Max Lin <mlin@suse.com>
 
 - Use python3 as the interpreter in ipmi_sensor_ and
