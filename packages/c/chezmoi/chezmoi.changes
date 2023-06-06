@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun  5 17:16:34 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.34.0:
+  * feat: Add support for .chezmoidata directory
+  * fix: Fix init --debug flag
+  * fix: Fix parsing of flags to secret keyring delete command
+  * chore: Update dependencies
+
+-------------------------------------------------------------------
 Tue May 16 07:33:30 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.33.6:
