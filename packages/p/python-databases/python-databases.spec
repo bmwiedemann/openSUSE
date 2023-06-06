@@ -1,7 +1,7 @@
 #
 # spec file for package python-databases
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,16 @@
 
 %define skip_python2 1
 Name:           python-databases
-Version:        0.6.2
+Version:        0.7.0
 Release:        0
 Summary:        Async database support for Python
 License:        BSD-3-Clause
 URL:            https://github.com/encode/databases
 Source:         https://github.com/encode/databases/archive/%{version}.tar.gz#/databases-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM sqlalchemy1442.patch gh#encode/databases#513
-Patch:          sqlalchemy1442.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-sqlalchemy >= 1.4
-%if 0%{?python_version_nodots} < 37
-Requires:       python-aiocontextvars
-%endif
+Requires:       (python-sqlalchemy >= 1.4 with python-sqlalchemy < 2)
 Suggests:       python-aiomysql
 Suggests:       python-aiopg
 Suggests:       python-aiosqlite
@@ -40,11 +35,10 @@ Suggests:       python-asyncpg
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module aiosqlite}
-BuildRequires:  %{python_module aiocontextvars if %python-base < 3.7}
 BuildRequires:  %{python_module asyncpg}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module sqlalchemy >= 1.4}
+BuildRequires:  %{python_module sqlalchemy >= 1.4 with %python-sqlalchemy < 2}
 # /SECTION
 %python_subpackages
 

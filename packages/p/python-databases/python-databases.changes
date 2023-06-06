@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun  6 01:56:24 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.7.0:
+  * Fixed breaking changes in SQLAlchemy cursor; supports >=1.4.42,<1.5
+  * Wrapped types in typing.Optional where applicable
+- Change {Build,}Requires for SQLAlchemy so we don't install >= 2.
+- Drop patch sqlalchemy1442.patch, included upstream.
+
+-------------------------------------------------------------------
 Thu Nov 24 11:40:22 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add patch sqlalchemy1442.patch to make it compatible with latest sqlalchemy

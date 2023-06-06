@@ -72,4 +72,16 @@
 </comment>
     <requestid>1037887</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>94d6df493f8528a1435680a949c9facd</srcmd5>
+    <version>0.7.0</version>
+    <time>1686074169</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.7.0:
+  * Fixed breaking changes in SQLAlchemy cursor; supports &gt;=1.4.42,&lt;1.5
+  * Wrapped types in typing.Optional where applicable
+- Change {Build,}Requires for SQLAlchemy so we don't install &gt;= 2.
+- Drop patch sqlalchemy1442.patch, included upstream.</comment>
+    <requestid>1091001</requestid>
+  </revision>
 </revisionlist>
