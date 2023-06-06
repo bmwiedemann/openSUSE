@@ -618,4 +618,21 @@
   * Fix potential deadlock in ByParam (forwarded request 1090369 from jfkw)</comment>
     <requestid>1090372</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>32ae08a3af6268c22ff0afbf2e6dc161</srcmd5>
+    <version>0.113.0</version>
+    <time>1686074145</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.113.0:
+  * docs: Regenerate CLI docs
+  * commands: Update CLI docs vs server and production
+  * commands: Add TLS/HTTPS support to hugo server
+
+- Update to version 0.112.7:
+  * Fix menuItem.URL when pageRef is not set
+  * Don't inject livereload script on hugo -w
+  * markup: Fix typo in function and struct names
+  * all: Replace deprecated ioutil with io and os (forwarded request 1090961 from jfkw)</comment>
+    <requestid>1090962</requestid>
+  </revision>
 </revisionlist>

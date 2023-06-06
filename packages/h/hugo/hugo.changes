@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jun 05 16:29:49 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.113.0:
+  * docs: Regenerate CLI docs
+  * commands: Update CLI docs vs server and production
+  * commands: Add TLS/HTTPS support to hugo server
+
+-------------------------------------------------------------------
+Mon Jun 05 16:28:14 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.112.7:
+  * Fix menuItem.URL when pageRef is not set
+  * Don't inject livereload script on hugo -w
+  * markup: Fix typo in function and struct names
+  * all: Replace deprecated ioutil with io and os
+
+-------------------------------------------------------------------
 Thu Jun 01 13:29:26 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 0.112.6:
