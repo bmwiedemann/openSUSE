@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun  6 14:52:19 UTC 2023 - Antoine Ginies <aginies@suse.com>
+
+- version 2.0.7:
+   * add more info and debug in case of failure
+   * fix issues on PDH and certificate
+   * ! Image encryption is currently broken (encrypt.key-secret)
+     you should disable it
+
+-------------------------------------------------------------------
 Mon Jun  5 09:17:28 UTC 2023 - Antoine Ginies <aginies@suse.com>
 
 - version 2.0.5:
