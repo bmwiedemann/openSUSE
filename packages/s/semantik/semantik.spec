@@ -89,6 +89,10 @@ chmod a+rx %{buildroot}%{_datadir}/semantik/templates/waf
 chmod a+rx %{buildroot}%{_datadir}/semantik/filters/*.py
 chmod a+rx %{buildroot}%{_datadir}/semantik/sembind.py
 
+# fix the script interpreter
+sed -i -e 's|#! /usr/bin/python|#!/usr/bin/python3|' %{buildroot}%{_datadir}/semantik/templates/pdflatex/wscript
+sed -i -e 's|#! /usr/bin/python|#!/usr/bin/python3|' %{buildroot}%{_datadir}/semantik/templates/beamer/wscript
+
 # install man page
 install -D -m644 %{SOURCE1} %{buildroot}%{_mandir}/man1/%{name}.1
 

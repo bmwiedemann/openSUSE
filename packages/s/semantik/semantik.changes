@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 18 15:30:06 UTC 2023 - Max Lin <mlin@suse.com>
+
+- Use python3 as the script interpreter in wscript file
+
+-------------------------------------------------------------------
 Mon Jan  2 13:46:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.9:
