@@ -18,7 +18,7 @@
 
 
 %define srcversion 6.3
-%define patchversion 6.3.4
+%define patchversion 6.3.6
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -85,7 +85,7 @@ done )
 
 # Define some CONFIG variables as rpm macros as well. (rpm cannot handle
 # defining them all at once.)
-%define config_vars CONFIG_MODULES CONFIG_MODULE_SIG CONFIG_MODULE_SIG_HASH CONFIG_KMSG_IDS CONFIG_SUSE_KERNEL_SUPPORTED CONFIG_EFI_STUB CONFIG_LIVEPATCH_IPA_CLONES CONFIG_DEBUG_INFO_BTF_MODULES
+%define config_vars CONFIG_MODULES CONFIG_MODULE_SIG CONFIG_MODULE_SIG_HASH CONFIG_KMSG_IDS CONFIG_SUSE_KERNEL_SUPPORTED CONFIG_EFI_STUB CONFIG_LIVEPATCH_IPA_CLONES CONFIG_DEBUG_INFO_BTF_MODULES CONFIG_PREEMPT_DYNAMIC
 %{expand:%(eval "$(test -n "%cpu_arch_flavor" && tar -xjf %_sourcedir/config.tar.bz2 --to-stdout config/%cpu_arch_flavor)"; for config in %config_vars; do echo "%%global $config ${!config:-n}"; done)}
 %define split_extra ("%CONFIG_MODULES" == "y" && "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y")
 
@@ -111,9 +111,9 @@ Name:           kernel-vanilla
 Summary:        The Standard Kernel - without any SUSE patches
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.3.4
+Version:        6.3.6
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g2c66b1f
+Release:        <RELEASE>.gf583ba4
 %else
 Release:        0
 %endif
@@ -238,10 +238,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-2c66b1f470678d30f7dc560d1f3770e6e13b5e65
-Provides:       kernel-srchash-2c66b1f470678d30f7dc560d1f3770e6e13b5e65
+Provides:       kernel-%build_flavor-base-srchash-f583ba475430f56b79aabec05c7c036099baec27
+Provides:       kernel-srchash-f583ba475430f56b79aabec05c7c036099baec27
 # END COMMON DEPS
-Provides:       %name-srchash-2c66b1f470678d30f7dc560d1f3770e6e13b5e65
+Provides:       %name-srchash-f583ba475430f56b79aabec05c7c036099baec27
 %obsolete_rebuilds %name
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
@@ -1257,6 +1257,12 @@ Supplements:    packageand(product(Leap):%{name}_%_target_cpu)
 %ifarch %ix86
 Conflicts:      libc.so.6()(64bit)
 %endif
+%if %build_default
+%if "%CONFIG_PREEMPT_DYNAMIC" == "y"
+Provides:       kernel-preempt-extra = %version-%release
+Provides:       kernel-preempt-extra_%_target_cpu = %version-%source_rel
+%endif
+%endif
 
 %description extra
 The standard kernel - without any SUSE patches
@@ -1318,6 +1324,12 @@ Requires(post): dracut
 Supplements:    packageand(product(Leap):%{name}_%_target_cpu)
 %ifarch %ix86
 Conflicts:      libc.so.6()(64bit)
+%endif
+%if %build_default
+%if "%CONFIG_PREEMPT_DYNAMIC" == "y"
+Provides:       kernel-preempt-optional = %version-%release
+Provides:       kernel-preempt-optional_%_target_cpu = %version-%source_rel
+%endif
 %endif
 
 %description optional
@@ -1413,6 +1425,11 @@ Supplements:    packageand(%name:kernel-source-vanilla)
 %if "%CONFIG_DEBUG_INFO_BTF_MODULES" == "y"
 Requires:       dwarves >= 1.22
 %endif
+%if %build_default
+%if "%CONFIG_PREEMPT_DYNAMIC" == "y"
+Provides:       kernel-preempt-devel = %version-%release
+%endif
+%endif
 %obsolete_rebuilds %name-devel
 PreReq:         coreutils
 
@@ -1502,6 +1519,11 @@ Provides:       multiversion(kernel)
 # tell weak-modules2 to ignore this package
 Provides:       kmp_in_kernel
 Requires(post): suse-module-tools >= 12.4
+%if %build_default
+%if "%CONFIG_PREEMPT_DYNAMIC" == "y"
+Provides:       cluster-md-kmp-preempt = %version-%release
+%endif
+%endif
 Enhances:	%name
 Supplements:	packageand(%name:%cluster-md-kmp-%build_flavor)
 Requires:       dlm-kmp-%build_flavor = %version-%release
@@ -1552,6 +1574,11 @@ Provides:       multiversion(kernel)
 # tell weak-modules2 to ignore this package
 Provides:       kmp_in_kernel
 Requires(post): suse-module-tools >= 12.4
+%if %build_default
+%if "%CONFIG_PREEMPT_DYNAMIC" == "y"
+Provides:       dlm-kmp-preempt = %version-%release
+%endif
+%endif
 Enhances:	%name
 Supplements:	packageand(%name:%dlm-kmp-%build_flavor)
 
@@ -1600,6 +1627,11 @@ Provides:       multiversion(kernel)
 # tell weak-modules2 to ignore this package
 Provides:       kmp_in_kernel
 Requires(post): suse-module-tools >= 12.4
+%if %build_default
+%if "%CONFIG_PREEMPT_DYNAMIC" == "y"
+Provides:       gfs2-kmp-preempt = %version-%release
+%endif
+%endif
 Enhances:	%name
 Supplements:	packageand(%name:%gfs2-kmp-%build_flavor)
 Requires:       dlm-kmp-%build_flavor = %version-%release
@@ -1648,6 +1680,11 @@ Provides:       multiversion(kernel)
 # tell weak-modules2 to ignore this package
 Provides:       kmp_in_kernel
 Requires(post): suse-module-tools >= 12.4
+%if %build_default
+%if "%CONFIG_PREEMPT_DYNAMIC" == "y"
+Provides:       kselftests-kmp-preempt = %version-%release
+%endif
+%endif
 Enhances:	%name
 Supplements:	packageand(%name:%kselftests-kmp-%build_flavor)
 
@@ -1711,6 +1748,11 @@ Provides:       multiversion(kernel)
 # tell weak-modules2 to ignore this package
 Provides:       kmp_in_kernel
 Requires(post): suse-module-tools >= 12.4
+%if %build_default
+%if "%CONFIG_PREEMPT_DYNAMIC" == "y"
+Provides:       ocfs2-kmp-preempt = %version-%release
+%endif
+%endif
 Enhances:	%name
 Supplements:	packageand(%name:%ocfs2-kmp-%build_flavor)
 Requires:       dlm-kmp-%build_flavor = %version-%release
@@ -1760,6 +1802,11 @@ Provides:       multiversion(kernel)
 # tell weak-modules2 to ignore this package
 Provides:       kmp_in_kernel
 Requires(post): suse-module-tools >= 12.4
+%if %build_default
+%if "%CONFIG_PREEMPT_DYNAMIC" == "y"
+Provides:       reiserfs-kmp-preempt = %version-%release
+%endif
+%endif
 Enhances:	%name
 Supplements:	packageand(%name:%reiserfs-kmp-%build_flavor)
 

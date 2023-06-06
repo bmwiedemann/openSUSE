@@ -17,7 +17,7 @@
 
 
 %define srcversion 6.3
-%define patchversion 6.3.4
+%define patchversion 6.3.6
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -29,9 +29,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-armv6l
-Version:        6.3.4
+Version:        6.3.6
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g2c66b1f
+Release:        <RELEASE>.gf583ba4
 %else
 Release:        0
 %endif
