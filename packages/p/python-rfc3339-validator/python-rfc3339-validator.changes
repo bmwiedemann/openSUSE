@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  5 09:53:54 UTC 2023 - pgajdos@suse.com
+
+- do not require six
+- added patches
+  fix https://github.com/naimetti/rfc3339-validator/issues/11
+  + python-rfc3339-validator-no-six.patch
+
 Fri Apr 21 12:33:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

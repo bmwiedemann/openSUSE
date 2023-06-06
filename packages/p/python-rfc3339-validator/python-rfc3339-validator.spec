@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-rfc3339-validator
 Version:        0.1.4
@@ -25,15 +24,15 @@ Summary:        A pure python RFC3339 validator
 License:        MIT
 URL:            https://github.com/naimetti/rfc3339-validator
 Source:         https://files.pythonhosted.org/packages/source/r/rfc3339_validator/rfc3339_validator-%{version}.tar.gz
+# https://github.com/naimetti/rfc3339-validator/issues/11
+Patch0:         python-rfc3339-validator-no-six.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pytest >= 3}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module strict-rfc3339}
 # /SECTION
 %python_subpackages
@@ -42,7 +41,7 @@ BuildRequires:  %{python_module strict-rfc3339}
 A pure python RFC3339 validator
 
 %prep
-%setup -q -n rfc3339_validator-%{version}
+%autosetup -p1 -n rfc3339_validator-%{version}
 
 %build
 %python_build
