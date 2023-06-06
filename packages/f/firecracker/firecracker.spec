@@ -1,7 +1,7 @@
 #
 # spec file for package firecracker
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define cargo_home cargo-home
 
 Name:           firecracker
-Version:        1.2.0
+Version:        1.3.2
 Release:        0
 Summary:        Virtual Machine Monitor for creating microVMs
 License:        Apache-2.0
@@ -33,7 +33,7 @@ Source2:        cargo_config
 
 BuildRequires:  cargo
 BuildRequires:  clang
-BuildRequires:  rust >= 1.46.0
+BuildRequires:  rust >= 1.66.0
 ExclusiveArch:  x86_64 aarch64
 
 %description

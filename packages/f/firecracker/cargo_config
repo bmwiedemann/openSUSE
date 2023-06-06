@@ -1,12 +1,12 @@
 [source.crates-io]
 replace-with = "vendored-sources"
 
-[source."https://github.com/firecracker-microvm/kvm-bindings"]
+[source."git+https://github.com/firecracker-microvm/kvm-bindings?tag=v0.6.0-1"]
 git = "https://github.com/firecracker-microvm/kvm-bindings"
 tag = "v0.6.0-1"
 replace-with = "vendored-sources"
 
-[source."https://github.com/firecracker-microvm/micro-http"]
+[source."git+https://github.com/firecracker-microvm/micro-http?rev=4b18a04"]
 git = "https://github.com/firecracker-microvm/micro-http"
 rev = "4b18a04"
 replace-with = "vendored-sources"
