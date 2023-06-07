@@ -36,7 +36,6 @@ BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module pure-sasl}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module scales}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.9}
 BuildRequires:  %{python_module sure}
