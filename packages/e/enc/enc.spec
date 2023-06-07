@@ -17,7 +17,7 @@
 
 
 Name:           enc
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Modern and friendly alternative to GnuPG
 License:        MIT
