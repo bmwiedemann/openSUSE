@@ -1,0 +1,90 @@
+From 73ba26c1240a25e7699449e82cfc09dad10fed80 Mon Sep 17 00:00:00 2001
+From: Sathvika Vasireddy <sv@linux.ibm.com>
+Date: Fri, 9 Dec 2022 15:26:46 +0530
+Subject: [PATCH 1/3] lparstat: Fix negative values seen while running lparstat
+ with -E option
+
+Negative values are seen while running lparstat with -E option.
+This is because delta_purr value is less than delta_idle_purr.
+Given that these values are read from different sources, a
+small variation in the values is possible. So, in such cases,
+round down delta_idle_purr to delta_purr.
+
+Without this patch:
+=====
+System Configuration
+type=Dedicated mode=Capped smt=8 lcpu=240 mem=67033290112 kB cpus=0
+ent=240.00
+
+---Actual---                 -Normalized-
+%busy  %idle   Frequency     %busy  %idle
+------ ------  ------------- ------ ------
+ -0.03 100.02  3.93GHz[111%]   0.01 110.97
+  0.00 100.00  3.93GHz[111%]   0.01 110.99
+ -0.04 100.03  3.93GHz[111%]   0.01 110.98
+  0.06  99.95  3.93GHz[111%]   0.01 110.99
+  0.02  99.98  3.93GHz[111%]   0.01 110.99
+=====
+
+With this patch:
+=====
+System Configuration
+type=Dedicated mode=Capped smt=8 lcpu=240 mem=67033290112 kB cpus=0
+ent=240.00
+
+---Actual---                 -Normalized-
+%busy  %idle   Frequency     %busy  %idle
+------ ------  ------------- ------ ------
+  0.03  99.96  3.93GHz[111%]   0.01 110.98
+  0.00 100.00  3.93GHz[111%]   0.01 110.99
+  0.03  99.97  3.93GHz[111%]   0.01 110.99
+  0.00 100.00  3.93GHz[111%]   0.01 110.99
+  0.09  99.90  3.93GHz[111%]   0.01 110.99
+=====
+
+Reported-by: Shirisha Ganta <shirisha.ganta1@ibm.com>
+Signed-off-by: Sathvika Vasireddy <sv@linux.ibm.com>
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
+---
+ src/lparstat.c | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+diff --git a/src/lparstat.c b/src/lparstat.c
+index 31a4ee8..eebba1f 100644
+--- a/src/lparstat.c
++++ b/src/lparstat.c
+@@ -492,6 +492,15 @@ void get_cpu_util_purr(struct sysentry *unused_se, char *buf)
+ 	delta_purr = get_delta_value("purr");
+ 	delta_idle_purr = get_delta_value("idle_purr");
+ 
++	/*
++	 * Given that these values are read from different
++	 * sources (purr from lparcfg and idle_purr from sysfs),
++	 * a small variation in the values is possible.
++	 * In such cases, round down delta_idle_purr to delta_purr.
++	 */
++	if (delta_idle_purr > delta_purr)
++		delta_idle_purr = delta_purr;
++
+ 	physc = (delta_purr - delta_idle_purr) / delta_tb;
+ 	physc *= 100.00;
+ 
+@@ -507,6 +516,15 @@ void get_cpu_idle_purr(struct sysentry *unused_se, char *buf)
+ 	delta_purr = get_delta_value("purr");
+ 	delta_idle_purr = get_delta_value("idle_purr");
+ 
++	/*
++	 * Given that these values are read from different
++	 * sources (purr from lparcfg and idle_purr from sysfs),
++	 * a small variation in the values is possible.
++	 * In such cases, round down delta_idle_purr to delta_purr.
++	 */
++	if (delta_idle_purr > delta_purr)
++		delta_idle_purr = delta_purr;
++
+ 	physc = (delta_purr - delta_idle_purr) / delta_tb;
+ 	idle = (delta_purr / delta_tb) - physc;
+ 	idle *= 100.00;
+-- 
+2.40.1
+

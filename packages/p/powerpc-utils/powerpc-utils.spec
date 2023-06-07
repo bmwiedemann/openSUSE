@@ -29,6 +29,9 @@ Patch1:         powerpc-utils-lsprop.patch
 Patch2:         ofpathname_powernv.patch
 Patch3:         fix_kexec_service_name_for_suse.patch
 Patch4:         libvirt-service-dep.patch
+Patch5:         lparstat-Fix-negative-values-seen-while-running-lpar.patch
+Patch6:         lparstat-report-mixed-SMT-state.patch
+Patch7:         lparstat-Fix-offline-threads-uninitialized-entries.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libnuma-devel
