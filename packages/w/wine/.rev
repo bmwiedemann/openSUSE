@@ -4790,4 +4790,12 @@ As of right now, the recommends would simply do nothing as pipewire-alsa is inst
 If you have any suggestions for improvement, please let me know! (forwarded request 1087863 from DarkWav)</comment>
     <requestid>1087900</requestid>
   </revision>
+  <revision rev="409" vrev="1">
+    <srcmd5>81570bd06f938b4163b5505a11976d55</srcmd5>
+    <version>8.9</version>
+    <time>1686172076</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1091280</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat May 27 08:04:04 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 8.9 release
+  - Mono engine updated to version 8.0.0.
+  - Completion of PE conversion in the PostScript driver.
+  - Doppler shift support in DirectSound.
+  - GdiPlus performance improvements.
+  - Various bug fixes.
+- update staging to 8.9.1 release
+
+-------------------------------------------------------------------
 Fri May 19 02:03:25 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
 
 - Recommend pipewire-alsa instead of alsa-plugins-pulse because
