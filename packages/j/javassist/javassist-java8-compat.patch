@@ -1,8 +1,130 @@
-Index: javassist-rel_3_28_0_ga/src/main/javassist/Loader.java
-===================================================================
---- javassist-rel_3_28_0_ga.orig/src/main/javassist/Loader.java
-+++ javassist-rel_3_28_0_ga/src/main/javassist/Loader.java
-@@ -421,9 +421,6 @@ public class Loader extends ClassLoader
+--- a/src/main/javassist/ClassPool.java	2023-06-06 17:43:01.915579458 +0200
++++ b/src/main/javassist/ClassPool.java	2023-06-06 18:01:26.034999321 +0200
+@@ -1141,59 +1141,6 @@
+      * Once this method is called, further modifications are not allowed
+      * any more.
+      *
+-     * <p>This method is available in Java 9 or later.
+-     * It loads the class
+-     * by using {@code java.lang.invoke.MethodHandles} with {@code neighbor}.
+-     * </p>
+-     *
+-     * @param ct            the class converted into {@code java.lang.Class}.
+-     * @param neighbor      a class belonging to the same package that
+-     *                      the converted class belongs to.
+-     * @since 3.24
+-     */
+-    public Class<?> toClass(CtClass ct, Class<?> neighbor)
+-        throws CannotCompileException
+-    {
+-        try {
+-            return javassist.util.proxy.DefineClassHelper.toClass(neighbor,
+-                                                            ct.toBytecode());
+-        }
+-        catch (IOException e) {
+-            throw new CannotCompileException(e);
+-        }
+-    }
+-
+-    /**
+-     * Converts the class to a <code>java.lang.Class</code> object.
+-     * Once this method is called, further modifications are not allowed
+-     * any more.
+-     *
+-     * <p>This method is available in Java 9 or later.
+-     * It loads the class
+-     * by using the given {@code java.lang.invoke.MethodHandles.Lookup}.
+-     * </p>
+-     *
+-     * @param ct            the class converted into {@code java.lang.Class}.
+-     * @since 3.24
+-     */
+-    public Class<?> toClass(CtClass ct,
+-                            java.lang.invoke.MethodHandles.Lookup lookup)
+-        throws CannotCompileException
+-    {
+-        try {
+-            return javassist.util.proxy.DefineClassHelper.toClass(lookup,
+-                                                            ct.toBytecode());
+-        }
+-        catch (IOException e) {
+-            throw new CannotCompileException(e);
+-        }
+-    }
+-
+-    /**
+-     * Converts the class to a <code>java.lang.Class</code> object.
+-     * Once this method is called, further modifications are not allowed
+-     * any more.
+-     *
+      * <p>When the JVM is Java 11 or later, this method loads the class
+      * by using {@code java.lang.invoke.MethodHandles} with {@code neighbor}.
+      * The other arguments {@code loader} and {@code domain} are not used;
+--- a/src/main/javassist/CtClass.java	2023-06-06 17:43:01.915579458 +0200
++++ b/src/main/javassist/CtClass.java	2023-06-06 18:02:41.811506992 +0200
+@@ -1300,59 +1300,6 @@
+ 
+     /**
+      * Converts this class to a <code>java.lang.Class</code> object.
+-     * Once this method is called, further modifications are not
+-     * allowed any more.
+-     *
+-     * <p>This method is provided for convenience.  You should use
+-     * {@code toClass(Lookup)} for better compatibility with the
+-     * module system.
+-     *
+-     * <p>Note: this method calls <code>toClass()</code>
+-     * in <code>ClassPool</code>.
+-     *
+-     * <p><b>Warning:</b> A Class object returned by this method may not
+-     * work with a security manager or a signed jar file because a
+-     * protection domain is not specified.
+-     *
+-     * @param neighbor    A class belonging to the same package that this
+-     *                    class belongs to.  It is used to load the class.
+-     * @see ClassPool#toClass(CtClass,Class)
+-     * @see #toClass(java.lang.invoke.MethodHandles.Lookup)
+-     * @since 3.24
+-     */
+-    public Class<?> toClass(Class<?> neighbor) throws CannotCompileException
+-    {
+-        return getClassPool().toClass(this, neighbor);
+-    }
+-
+-    /**
+-     * Converts this class to a <code>java.lang.Class</code> object.
+-     * Once this method is called, further modifications are not
+-     * allowed any more.
+-     *
+-     * <p>This method is provided for convenience.  If you need more
+-     * complex functionality, you should write your own class loader.
+-     *
+-     * <p>Note: this method calls <code>toClass()</code>
+-     * in <code>ClassPool</code>.
+-     *
+-     * <p><b>Warning:</b> A Class object returned by this method may not
+-     * work with a security manager or a signed jar file because a
+-     * protection domain is not specified.
+-     *
+-     * @param lookup    used when loading the class.  It has to have
+-     *                  an access right to define a new class.
+-     * @see ClassPool#toClass(CtClass,java.lang.invoke.MethodHandles.Lookup)
+-     * @since 3.24
+-     */
+-    public Class<?> toClass(java.lang.invoke.MethodHandles.Lookup lookup)
+-        throws CannotCompileException
+-    {
+-        return getClassPool().toClass(this, lookup);
+-    }
+-
+-    /**
+-     * Converts this class to a <code>java.lang.Class</code> object.
+      * Once this method is called, further modifications are not allowed
+      * any more.
+      *
+--- a/src/main/javassist/Loader.java	2023-06-06 17:43:01.923579511 +0200
++++ b/src/main/javassist/Loader.java	2023-06-06 17:43:21.591712028 +0200
+@@ -421,9 +421,6 @@
      }
  
      private boolean isDefinedPackage(String name) {
@@ -12,14 +134,70 @@ Index: javassist-rel_3_28_0_ga/src/main/javassist/Loader.java
              return getPackage(name) == null;
      }
  
-Index: javassist-rel_3_28_0_ga/src/main/javassist/util/proxy/DefineClassHelper.java
-===================================================================
---- javassist-rel_3_28_0_ga.orig/src/main/javassist/util/proxy/DefineClassHelper.java
-+++ javassist-rel_3_28_0_ga/src/main/javassist/util/proxy/DefineClassHelper.java
-@@ -317,23 +317,5 @@ public class DefineClassHelper {
+--- a/src/main/javassist/util/proxy/DefineClassHelper.java	2023-06-06 17:43:01.979579888 +0200
++++ b/src/main/javassist/util/proxy/DefineClassHelper.java	2023-06-06 17:56:53.241171849 +0200
+@@ -44,15 +44,11 @@
+                              ClassLoader loader, ProtectionDomain protectionDomain)
+             throws ClassFormatError, CannotCompileException
+         {
+-            if (neighbor != null)
+-                return toClass(neighbor, bcode);
+-            else {
+                 // Lookup#defineClass() is not available.  So fallback to invoking defineClass on
+                 // ClassLoader, which causes a warning message.
+                 return super.defineClass(name, bcode, off, len, neighbor, loader, protectionDomain);
+             }
+         }
+-    }
+ 
+     private static class Java9 extends Helper {
+         final class ReferencedUnsafe {
+@@ -275,65 +271,5 @@
          }
      }
  
+-
+-    /**
+-     * Loads a class file by {@code java.lang.invoke.MethodHandles.Lookup}.
+-     * It is obtained by using {@code neighbor}.
+-     *
+-     * @param neighbor  a class belonging to the same package that the loaded
+-     *                  class belogns to.
+-     * @param bcode     the bytecode.
+-     * @since 3.24
+-     */
+-    public static Class<?> toClass(Class<?> neighbor, byte[] bcode)
+-        throws CannotCompileException
+-    {
+-        try {
+-            DefineClassHelper.class.getModule().addReads(neighbor.getModule());
+-            Lookup lookup = MethodHandles.lookup();
+-            Lookup prvlookup = MethodHandles.privateLookupIn(neighbor, lookup);
+-            return prvlookup.defineClass(bcode);
+-        } catch (IllegalAccessException | IllegalArgumentException e) {
+-            throw new CannotCompileException(e.getMessage() + ": " + neighbor.getName()
+-                                             + " has no permission to define the class");
+-        }
+-    }
+-
+-    /**
+-     * Loads a class file by {@code java.lang.invoke.MethodHandles.Lookup}.
+-     * It can be obtained by {@code MethodHandles.lookup()} called from
+-     * somewhere in the package that the loaded class belongs to.
+-     *
+-     * @param bcode     the bytecode.
+-     * @since 3.24
+-     */
+-    public static Class<?> toClass(Lookup lookup, byte[] bcode)
+-        throws CannotCompileException
+-    {
+-        try {
+-            return lookup.defineClass(bcode);
+-        } catch (IllegalAccessException | IllegalArgumentException e) {
+-            throw new CannotCompileException(e.getMessage());
+-        }
+-    }
+-
 -    /**
 -     * Loads a class file by {@code java.lang.invoke.MethodHandles.Lookup}.
 -     *
@@ -40,11 +218,9 @@ Index: javassist-rel_3_28_0_ga/src/main/javassist/util/proxy/DefineClassHelper.j
 -
      private DefineClassHelper() {}
  }
-Index: javassist-rel_3_28_0_ga/src/main/javassist/util/proxy/FactoryHelper.java
-===================================================================
---- javassist-rel_3_28_0_ga.orig/src/main/javassist/util/proxy/FactoryHelper.java
-+++ javassist-rel_3_28_0_ga/src/main/javassist/util/proxy/FactoryHelper.java
-@@ -148,11 +148,7 @@ public class FactoryHelper {
+--- a/src/main/javassist/util/proxy/FactoryHelper.java	2023-06-06 17:43:01.979579888 +0200
++++ b/src/main/javassist/util/proxy/FactoryHelper.java	2023-06-06 18:03:56.172005165 +0200
+@@ -148,29 +148,7 @@
      {
          try {
              byte[] b = toBytecode(cf);
@@ -53,7 +229,38 @@ Index: javassist-rel_3_28_0_ga/src/main/javassist/util/proxy/FactoryHelper.java
 -            else
 -                return DefineClassHelper.toClass(cf.getName(), neighbor,
 -                                                 loader, domain, b);
+-        }
+-        catch (IOException e) {
+-            throw new CannotCompileException(e);
+-        }
+-     }
+-
+-    /**
+-     * Loads a class file by a given lookup.
+-     *
+-     * @param lookup        used to define the class.
+-     * @since 3.24
+-     */
+-    public static Class<?> toClass(ClassFile cf, java.lang.invoke.MethodHandles.Lookup lookup)
+-        throws CannotCompileException
+-    {
+-        try {
+-            byte[] b = toBytecode(cf);
+-            return DefineClassHelper.toClass(lookup, b);
 +            return DefineClassHelper.toClass(cf.getName(), neighbor, loader, domain, b);
          }
          catch (IOException e) {
              throw new CannotCompileException(e);
+--- a/src/main/javassist/util/proxy/ProxyFactory.java	2023-06-06 17:43:01.979579888 +0200
++++ b/src/main/javassist/util/proxy/ProxyFactory.java	2023-06-06 18:05:06.452476007 +0200
+@@ -636,10 +636,7 @@
+             if (writeDirectory != null)
+                 FactoryHelper.writeFile(cf, writeDirectory);
+ 
+-            if (lookup == null)
+                 thisClass = FactoryHelper.toClass(cf, getClassInTheSamePackage(), cl, getDomain());
+-            else
+-                thisClass = FactoryHelper.toClass(cf, lookup);
+ 
+             setField(FILTER_SIGNATURE_FIELD, signature);
+             // legacy behaviour : we only set the default interceptor static field if we are not using the cache

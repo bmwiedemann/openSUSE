@@ -1,7 +1,7 @@
 #
 # spec file for package javassist
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2000-2005, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,6 +30,7 @@ Patch0:         javassist-java8-compat.patch
 Patch1:         javassist-osgi.patch
 BuildRequires:  ant >= 1.6
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildArch:      noarch
 
@@ -76,13 +77,11 @@ Tutorial for javassist.
 
 %prep
 %setup -q -n %{name}-%{tar_version}
-%if %{?pkg_vcmp:%pkg_vcmp java-devel < 9}%{!?pkg_vcmp:1}
+%if %{!?pkg_vcmp:1}%{?pkg_vcmp:%pkg_vcmp java-devel < 9}
 %patch0 -p1
 %endif
 %patch1 -p1
-for j in $(find . -name "*.jar"); do
-        mv $j $j.no
-done
+find . -name "*.jar" -print -delete
 
 %build
 ant -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 dist
@@ -90,14 +89,12 @@ ant -Dant.build.javac.source=1.8 -Dant.build.javac.target=1.8 dist
 %install
 # jars
 mkdir -p %{buildroot}/%{_javadir}
-cp -p %{name}.jar \
-  %{buildroot}/%{_javadir}/%{name}-%{version}.jar
-(cd %{buildroot}/%{_javadir} && for jar in *-%{version}.jar; do ln -sf ${jar} `echo $jar| sed "s|-%{version}||g"`; done)
+cp -p %{name}.jar %{buildroot}/%{_javadir}/%{name}.jar
 
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
-%add_maven_depmap %{name}.pom %{name}.jar -a javassist:javassist
+install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
+%add_maven_depmap JPP-%{name}.pom %{name}.jar -a javassist:javassist
 
 # demo
 mkdir -p %{buildroot}/%{_datadir}/%{name}-%{version}
@@ -107,35 +104,23 @@ cp -pr sample/* %{buildroot}/%{_datadir}/%{name}-%{version}
 mkdir -p %{buildroot}/%{_javadocdir}/%{name}
 cp -pr html/* %{buildroot}/%{_javadocdir}/%{name}
 
-%fdupes -s %{buildroot}/%{_javadocdir}/%{name}/jquery/
+%fdupes -s %{buildroot}/%{_javadocdir}/%{name}
 
 # manual
 mkdir -p %{buildroot}/%{_docdir}/%{name}-%{version}/tutorial
 cp -pr tutorial/* %{buildroot}/%{_docdir}/%{name}-%{version}/tutorial
-cp -p License.html %{buildroot}/%{_docdir}/%{name}-%{version}
 
-%files
-%defattr(0644,root,root,0755)
-%dir %{_docdir}/%{name}-%{version}
-%license %{_docdir}/%{name}-%{version}/License.html
-%{_javadir}/*.jar
-%{_mavenpomdir}/*
-%if %{defined _maven_repository}
-%{_mavendepmapfragdir}/%{name}
-%else
-%{_datadir}/maven-metadata/%{name}.xml*
-%endif
+%files -f .mfiles
+%license License.html
 
 %files demo
-%defattr(0644,root,root,0755)
 %{_datadir}/%{name}-%{version}
 
 %files javadoc
-%defattr(0644,root,root,0755)
-%doc %{_javadocdir}/%{name}
+%{_javadocdir}/%{name}
 
 %files manual
-%defattr(0644,root,root,0755)
-%doc %{_docdir}/%{name}-%{version}/tutorial
+%dir %{_docdir}/%{name}-%{version}
+%{_docdir}/%{name}-%{version}/tutorial
 
 %changelog

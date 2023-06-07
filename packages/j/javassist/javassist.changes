@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun  6 16:20:35 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Clean up the spec file and make it actually build on a vanilla
+  SLE-12-SP5
+- Modified patch:
+  * javassist-java8-compat.patch
+    + make remove functions that are not available in java 8
+
+-------------------------------------------------------------------
 Tue Sep 20 16:10:40 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Version update to 3.29.2:
