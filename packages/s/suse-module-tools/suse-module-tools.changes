@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  6 13:05:55 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.31:
+  * rpm-script: skip run_bootloader check (boo#1208117)
+
+-------------------------------------------------------------------
 Wed Mar 15 15:13:14 UTC 2023 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.30:

@@ -648,4 +648,13 @@ source service setup which messed up my spec file.
   * Remove last mentions of mkinitrd (forwarded request 1072148 from mwilck)</comment>
     <requestid>1072149</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>7972b9f49dbc93e4ccf6886a3511e950</srcmd5>
+    <version>16.0.31</version>
+    <time>1686171983</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.31:
+  * rpm-script: skip run_bootloader check (boo#1208117) (forwarded request 1091089 from mwilck)</comment>
+    <requestid>1091090</requestid>
+  </revision>
 </revisionlist>
