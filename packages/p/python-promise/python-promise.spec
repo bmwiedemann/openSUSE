@@ -21,20 +21,21 @@ Version:        2.3.0
 Release:        0
 Summary:        Promises/A+ implementation for Python
 License:        MIT
+Group:          Development/Languages/Python
 URL:            https://github.com/syrusakbary/promise
 Source:         https://github.com/syrusakbary/promise/archive/v%{version}.tar.gz#/promise-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM gh#syrusakbary/promise#96
 Patch0:         pytest-7-support.patch
 # PATCH-FIX-UPSTREAM python-311.patch gh#syrusakbary/promise#99
 Patch1:         python-311.patch
+# https://github.com/syrusakbary/promise/issues/101
+Patch2:         python-promise-no-six.patch
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
 

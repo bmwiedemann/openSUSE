@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun  7 08:08:55 UTC 2023 - pgajdos@suse.com
+
+- do not require six
+- added patches
+  fix https://github.com/syrusakbary/promise/issues/101
+  + python-promise-no-six.patch
+
+-------------------------------------------------------------------
 Fri Feb 24 11:14:52 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add python-311.patch to support python 3.11
