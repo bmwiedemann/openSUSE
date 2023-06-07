@@ -1358,4 +1358,15 @@ https://bugzilla.opensuse.org/show_bug.cgi?id=1211444</comment>
     <comment></comment>
     <requestid>1090818</requestid>
   </revision>
+  <revision rev="167" vrev="3">
+    <srcmd5>f327a666a139e95fbd0465d56ab2f3a5</srcmd5>
+    <version>2.3.8</version>
+    <time>1686172001</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1211456
+https://bugzilla.opensuse.org/show_bug.cgi?id=1211444
+
+Still valid</comment>
+    <requestid>1091340</requestid>
+  </revision>
 </revisionlist>
