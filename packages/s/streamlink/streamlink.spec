@@ -19,7 +19,7 @@
 %define pythons python3
 
 Name:           streamlink
-Version:        5.3.1
+Version:        5.5.1
 Release:        0
 Summary:        Program to pipe streams from services into a video player
 License:        BSD-2-Clause

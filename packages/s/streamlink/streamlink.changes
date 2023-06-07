@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Jun  5 08:25:35 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to version 5.5.1:
+  + Fixed: shifting time offset when reloading HLS playlists (#5321)
+  + Fixed: import of create_urllib3_context on urllib3 <2.0.0 (#5333)
+  + Fixed: Vimeo plugin (#5331)
+5.5.0:
+  + Added: --no-config (#5314)
+  + Added: --player-external-http-interface (#5295)
+  + Fixed: M3U8 attribute parsing issue (#5307)
+  + Fixed: various minor plugin issues (#5291, #5299, #5306)
+  + Build: bumped urllib3 to >=1.26.0,<3 and fixed compatibility
+    issues with urllib3 >=2.0.0 (#5326, #5325)
+  + Docs: bumped furo theme to 2023.03.27 (#5301)
+  + Docs: bumped build dependencies sphinx >=5.0.0,<7, myst-parser
+    >=1.0.0,<2 and sphinx-design >=0.4.1,<1 (#5301)
+5.4.0:
+  + Added: --progress CLI argument and deprecated --force-progress (#5268)
+  + Added: --dash-manifest-reload-attempts and respective session option (#5208)
+  + Improved: DASH segment availability/download logging (#5214, #5235)
+  + Refactored: DASH parser + stream implementation (#5221, #5224, #5225, #5244, #5248)
+  + Fixed: DASH segment template numbers and availability times (#5213, #5217, #5233)
+  + Fixed: DASH manifest mediaPresentationDuration and period duration (#5226)
+  + Fixed: DASH manifest suggestedPresentationDelay (#5215)
+  + Fixed: various DASH manifest parsing bugs (#5247)
+  + Fixed: DASH timeline IDs not being unique (#5199)
+  + Fixed: DASH substreams not having synced timelines (#5262)
+  + Fixed: queued DASH segments being downloaded after closing the stream (#5236, #5237)
+  + Fixed: incorrect min/max values of certain numeric CLI arguments (#5239)
+  + Fixed: all naive datetime objects and made them timezone-aware (#5210)
+  + Fixed: TV5monde plugin with new implementation (#5206)
+  + Fixed: Steam plugin missing CDN auth data in stream URLs (#5222)
+  + Fixed: Vimeo plugin's playerConfig regex (#5227)
+  + Fixed: VKplay plugin's validation schema (#5251)
+  + Fixed: Twitcasting plugin with new implementation (#5255)
+  + Tests: fixed setuptools/pkg_resources DeprecationWarnings (#5167, #5230)
+  + Tests: fixed ResourceWarnings due to stale file handles (#5242)
+  + Added plugins: indihometv (#5266), telemadrid (#5212)
+  + Removed plugins: nbcnews (#5279), useetv (#5266)
+
+-------------------------------------------------------------------
 Sat Mar  4 04:52:38 UTC 2023 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Update to version 5.3.1. Breaking changes:
