@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Jun  7 15:12:51 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.6.0
+  * Support for Python 3.11 was added to Certbot and all of its components
+  * acme.challenges.HTTP01Response.simple_verify now accepts a timeout argument 
+    which defaults to 30 that causes the verification request to timeout after 
+    that many seconds.
+  * The default key type for new certificates is now ECDSA secp256r1 (P-256). 
+    It was previously RSA 2048-bit. Existing certificates are not affected.
+  * acme and Certbot no longer support versions of ACME from before the RFC 8555 standard.
+  * acme and Certbot no longer support the old urn:acme:error: ACME error prefix.
+  * many acme classes have been removed
+  * acme.messages.Directory now only supports lookups by the exact resource name 
+    string in the ACME directory
+  * Removed the deprecated source_address argument for acme.client.ClientNetwork.
+  * Certbot will no longer respect very long challenge polling intervals, which 
+    may be suggested by some ACME servers. Certbot will continue to wait up to 
+    90 seconds by default, or up to a total of 30 minutes if requested by the server 
+    via Retry-After.
+  * certbot show_account now displays the ACME Account Thumbprint.
+  * acme.messages.OrderResource now supports being round-tripped through JSON
+  * acme.client.ClientV2 now provides separate begin_finalization and poll_finalization 
+    methods, in addition to the existing finalize_order method.
+  * Packaged tests for all Certbot components besides josepy were moved inside the _internal/tests module.
+- Drop the signature (last was acme-1.31.0.tar.gz.asc) and python-acme.keyring
+  * PyPI currently hides the signatures and plans to drop support
+  * https://github.com/certbot/certbot/issues/9707
+
+-------------------------------------------------------------------
 Tue Oct  4 16:37:19 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to 1.31.0
