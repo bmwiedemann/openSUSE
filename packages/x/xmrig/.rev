@@ -567,4 +567,21 @@
   * v6.19.2-dev</comment>
     <requestid>1080067</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>4ad6a3329d9be0e82e3aa19782bc9ea0</srcmd5>
+    <version>6.19.3</version>
+    <time>1686172061</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.19.3:
+  * v6.19.3
+  * Update CHANGELOG.md
+  * Updated example scripts
+  * Fixed `jccErratum` list
+  * RandomX: fixed undefined behavior
+  * RandomX: optimized program generation
+  * Tweaked auto-tuning for Intel CPUs
+  * #3245 Improved algorithm negotiation for donation rounds by sending extra information about current mining job.
+  * v6.19.3-dev</comment>
+    <requestid>1091221</requestid>
+  </revision>
 </revisionlist>
