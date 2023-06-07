@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  7 09:43:03 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Add spyder-kernels-pr453.patch gh#spyder-ide/spyder-kernels#453
+  * fixes test failure with pandas 2
+
+-------------------------------------------------------------------
 Thu Apr 27 15:25:00 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.4.3

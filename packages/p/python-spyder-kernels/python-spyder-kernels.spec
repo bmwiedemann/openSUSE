@@ -26,7 +26,11 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/spyder-ide/spyder-kernels
 # PyPI tarballs do not include the tests: https://github.com/spyder-ide/spyder-kernels/issues/66
-Source:         https://github.com/spyder-ide/spyder-kernels/archive/v%{version}.tar.gz#/spyder-kernels-%{version}-gh.tar.gz
+Source0:        https://github.com/spyder-ide/spyder-kernels/archive/v%{version}.tar.gz#/spyder-kernels-%{version}-gh.tar.gz
+# for Patch0
+Source1:        https://github.com/spyder-ide/spyder-kernels/raw/d14e5c982bfb75d6553a49667e3501648579e964/spyder_kernels/utils/tests/data.dcm
+# PATCH-FIX-UPSTREAM spyder-kernels-pr453.patch gh#spyder-ide/spyder-kernels#453
+Patch0:         spyder-kernels-pr453.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -37,6 +41,7 @@ BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module cloudpickle}
 BuildRequires:  %{python_module flaky}
+BuildRequires:  %{python_module h5py}
 BuildRequires:  %{python_module ipykernel >= 6.16.1 with %python-ipykernel < 7}
 BuildRequires:  %{python_module jupyter_client >= 7.4.9 with %python-jupyter_client < 9}
 BuildConflicts: %{python_module jupyter_client >= 8.8 with %python-jupyter_client < 8.10.1}
@@ -44,6 +49,7 @@ BuildRequires:  %{python_module ipython >= 7.31.1 with %python-ipython < 9}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pydicom}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyzmq >= 22.1}
 BuildRequires:  %{python_module scipy}
@@ -76,6 +82,7 @@ all inside the IDE.
 
 %prep
 %autosetup -p1 -n spyder-kernels-%{version}
+cp %{SOURCE1} spyder_kernels/utils/tests/data.dcm
 
 %build
 %python_build

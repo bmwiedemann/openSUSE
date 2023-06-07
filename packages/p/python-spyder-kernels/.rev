@@ -586,4 +586,13 @@
     <comment></comment>
     <requestid>1083327</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>3ea83f0ded806230574a60d77952e245</srcmd5>
+    <version>2.4.3</version>
+    <time>1686172068</time>
+    <user>dimstar_suse</user>
+    <comment>- Add spyder-kernels-pr453.patch gh#spyder-ide/spyder-kernels#453
+  * fixes test failure with pandas 2 (forwarded request 1091238 from bnavigator)</comment>
+    <requestid>1091239</requestid>
+  </revision>
 </revisionlist>
