@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun  7 16:06:01 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- update to version 2.6.0
+  * Support for Python 3.11 was added to Certbot and all of its components.
+  * All Certbot components now require pytest to run tests.
+  * Packaged tests for all Certbot components besides josepy were moved inside the _internal/tests module.
+  * There is now a new Other annotated challenge object to allow plugins to support entirely novel challenges.
+  * --dns-route53-propagation-seconds is now deprecated. The Route53 plugin relies on the GetChange API to 
+    determine if a DNS update is complete. The flag has never had any effect and will be removed in a future 
+    version of Certbot.
+  * Certbot no longer depends on zope.
+
+-------------------------------------------------------------------
 Thu Oct 27 08:22:33 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - update to version 1.31.0
