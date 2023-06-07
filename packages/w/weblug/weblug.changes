@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun  6 09:44:24 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+* Update to version 0.4
+
+This release contains mostly security updates:
+
+* Add environment sanitation
+* Document caveats when running as root
+* Add possibility for dropping privileges
+* Add openSUSE specific configuration file that runs as 'nobody' by default (fixes bsc#1211197)
+
+-------------------------------------------------------------------
 Thu Apr 27 11:52:06 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
 
 * Update to version 0.3

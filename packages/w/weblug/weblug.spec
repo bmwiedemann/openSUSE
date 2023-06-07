@@ -17,13 +17,14 @@
 
 
 Name:           weblug
-Version:        0.3
+Version:        0.4
 Release:        0
 Summary:        Simple webhook receiver program
 License:        MIT
 URL:            https://codeberg.org/grisu48/weblug
 Source:         weblug-%{version}.tar.gz
 Source1:        vendor.tar.gz
+Source10:       weblug.yml
 BuildRequires:  golang-packaging
 BuildRequires:  go1.18
 %{go_nostrip}
@@ -44,6 +45,8 @@ install -Dm 755 weblug %{buildroot}/%{_bindir}/weblug
 install -Dpm0644 weblug.service %{buildroot}%{_unitdir}/weblug.service
 # configuration file (/etc/weblug.yml)
 mkdir -p %{buildroot}%{_sysconfdir}
+# use custom weblug config
+cp -avL %{SOURCE10} weblug.yml
 install -m 600 weblug.yml %{buildroot}%{_sysconfdir}/weblug.yml
 # man page
 install -Dm 644 doc/weblug.8 %{buildroot}/%{_mandir}/man8/weblug.8

@@ -1,0 +1,36 @@
+---
+## Weblug configuration file
+
+settings:
+  bind: "127.0.0.1:2088"     # bind address for webserver
+  # Run as nobody - Deactive this if you need custom uid/gid for webhooks
+  uid: 65534
+  gid: 65534
+
+# hook definitions. A hook needs to define the HTTP endpoint ("route") and the command
+# See the following examples for more possible options.
+hooks:
+  - name: 'hook one'
+    route: "/webhooks/1"
+    command: "true"          # Replace with the command you want to execute
+    background: True         # Terminate http request immediately
+    concurrency: 2           # At most 2 parallel processes are allowed
+    output: False            # If enabled, prints program output to console
+    env:                     # Define environment variables
+      KEY1: "VALUE1"
+      KEY2: "VALUE2"
+    # Allow only requests from localhost
+    allowed: ["127.0.0.1/8", "::1/128"]
+
+  - name: 'hook two'
+    route: "/webhooks/restricted/5"
+    command: "true"
+    # Allow everything, except those two subnets
+    blocked: ["192.168.0.0/16", "10.0.0.0/8"]
+    # Also require basic auth for this webhook
+    basic_auth:
+      # Username is optional. If defined, the following username must match
+      # If not defined, any user will be accepted
+      username: 'user'
+      # Password is obligatory to enable basic_auth. If defined, a request must authenticate with the given password (cleartext)
+      password: 'password'

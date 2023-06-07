@@ -7,4 +7,12 @@
     <comment>Submit weblug package to Tumbleweed</comment>
     <requestid>1083536</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d7356597770609b3845caca9b1b875e5</srcmd5>
+    <version>0.4</version>
+    <time>1686172047</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.4. This also addresses bsc#1211197 (forwarded request 1091062 from ph03nix)</comment>
+    <requestid>1091161</requestid>
+  </revision>
 </revisionlist>

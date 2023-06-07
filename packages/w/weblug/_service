@@ -3,7 +3,7 @@
     <param name="url">git@codeberg.org:grisu48/weblug.git</param>
     <param name="scm">git</param>
     <param name="revision">main</param>
-    <param name="version">0.3</param>
+    <param name="version">0.4</param>
 	<param name="versionrewrite-pattern">v(.*)</param>
   </service>
   <service name="tar" mode="buildtime"/>
