@@ -43,4 +43,12 @@
 - drop 97.patch, upstream</comment>
     <requestid>930144</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0ee45c4a51f2e25f0cf7a87cf7d32be4</srcmd5>
+    <version>1.1.1</version>
+    <time>1686172071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1091245</requestid>
+  </revision>
 </revisionlist>

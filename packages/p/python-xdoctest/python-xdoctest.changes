@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Tue Jun  6 15:34:57 UTC 2023 - pgajdos@suse.com
+
+- version update to 1.1.1
+  ## Version 1.1.1
+  ### Changed
+  * Binary tests are now only run on "full" installs to reduce minimal dependencies.
+  * Support for Python 3.11
+  * Minor typing fixes
+  
+  ## Version 1.1.0 - Released 2022-09-05
+  ### Fixed
+  * Can now handle basic versions of the new `__editable__` package finder mechanism.
+  * Parsing bug where directives were incorrectly flagged as inline if they were
+    directly followed by a function with a decorator.
+  ### Removed
+  * Dropped 2.7 and 3.5 support. Now supporting 3.6+ Use xdoctest<=1.0.2 for 2.7
+    or 3.5 support.
+  ### Changed
+  * Improved the "dump" functionality of converting doctests to unit tests.
+  
+  ## Version 1.0.2 - Released 2022-08-19
+  ### Added
+  * Environs as options:
+    `XDOCTEST_VERBOSE`, `XDOCTEST_OPTIONS`, `XDOCTEST_GLOBAL_EXEC`, `XDOCTEST_REPORT`,
+    `XDOCTEST_STYLE`, and `XDOCTEST_ANALYSIS` environment variables can now be used
+    to specify configuration defaults.
+  ### Changed
+  * Added experimental hidden feature `--insert-skip-directive-above-failures`
+    that can be used to modify your code such that failing doctests are marked as
+    skip.
+  * Disabled traceback suppression on module import errors (this is is
+    configurable via the `supress_import_errors` option).
+  * Xdoctest will no longer try to pre-import the module if none of its doctests
+    have any enabled lines. This also means global-exec statements will NOT run
+    for those tests, which means you can no longer use global-exec to
+    force enabling tests.
+  
+  ## Version 1.0.1 - Released 2022-07-10
+  ### Added
+  * Add type stubs
+  * Basic support for pyproject.toml under `tool.xdoctest`. Currently only
+    supports options in the native runner.
+  ### Fixed
+  * Corner case bug in error reporting
+  * Doctests that never run any code are now correctly marked as skipped
+  * Issue where the "dumps" command was undocumented and has an error.
+  ### Changed
+  * Moved some globals into a new module called `global_state` and allowed
+    environs to enable debug print statements.
+  * Added `util_deprecation` module to robustly mark features as deprecated.
+  * Modified the google style return type parser to return a type if the
+    only content is some parsable python code.
+  * Modified docscrape google to allow for parsing of `*args` and `**kwargs` in
+    args blocks. This has also moved to the standalone package `googledoc`
+  * Overhaul of repo structure in an effort to modernize and to agree with
+    templates defined by xcookie
+  * Module code now lives in the "src" directory to remove install vs develop
+    ambiguity.
+  
+  ## Version 1.0.0 - Released 2022-03-25
+  ### Added
+  * Support for Python 3.10
+  ### Fixed
+  * Warning in pytest8
+  * Spelling errors in documentation
+* added patches
+  https://github.com/Erotemic/xdoctest/pull/142
+  + python-xdoctest-no-six.patch
+
+-------------------------------------------------------------------
 Mon Nov  8 10:44:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.15.10:
