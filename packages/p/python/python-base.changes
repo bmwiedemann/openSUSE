@@ -1,14 +1,22 @@
 -------------------------------------------------------------------
+Tue May 30 10:43:13 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- python-2.7.5-multilib.patch: Update for riscv64
+- Don't fail if _ctypes or dl extension was not built
+
+-------------------------------------------------------------------
+Mon May 29 18:49:40 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- The condition around libnsl-devel BuildRequires is NOT
+  switching off NIS support on SLE < 15, support for NIS used to
+  be in the glibc itself. Partial revert of sr#1061583.
+
+-------------------------------------------------------------------
 Wed May 24 20:50:27 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Add PygmentsBridge-trime_doctest_flags.patch to allow build of
   the documentation even with the current Sphinx. (SUSE-ONLY
   PATCH, DO NOT SEND UPSTREAM!)
-
--------------------------------------------------------------------
-Sun Apr 30 18:18:09 UTC 2023 - Matej Cepl <mcepl@suse.com>
-
-- Why in the world we download from HTTP?
 
 -------------------------------------------------------------------
 Wed Mar  8 21:17:18 UTC 2023 - Matej Cepl <mcepl@suse.com>

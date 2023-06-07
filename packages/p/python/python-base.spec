@@ -155,7 +155,9 @@ BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  libbz2-devel
 BuildRequires:  libffi-devel
-%if 0%{?suse_version} && 0%{?suse_version} < 1599
+# This is NOT switching off NIS support on SLE < 15,
+# support for NIS used to be in the glibc itself
+%if 0%{?suse_version} >= 1500 && 0%{?suse_version} < 1599
 BuildRequires:  libnsl-devel
 %endif
 BuildRequires:  pkg-config
@@ -566,7 +568,7 @@ cp Makefile Makefile.pre.in Makefile.pre %{buildroot}%{_libdir}/python%{python_v
 %{_libdir}/python%{python_version}/lib-dynload/linuxaudiodev.so
 %{_libdir}/python%{python_version}/lib-dynload/math.so
 %{_libdir}/python%{python_version}/lib-dynload/mmap.so
-%if 0%{?suse_version} && 0%{?suse_version} < 1599
+%if 0%{?suse_version} >= 1500 && 0%{?suse_version} < 1599
 %{_libdir}/python%{python_version}/lib-dynload/nis.so
 %endif
 %{_libdir}/python%{python_version}/lib-dynload/operator.so
@@ -585,7 +587,7 @@ cp Makefile Makefile.pre.in Makefile.pre %{buildroot}%{_libdir}/python%{python_v
 %{_libdir}/python%{python_version}/lib-dynload/_multibytecodec.so
 %{_libdir}/python%{python_version}/lib-dynload/Python-%{tarversion}-py%{python_version}.egg-info
 # these modules don't support 64-bit arches (disabled by setup.py)
-%ifnarch alpha ia64 x86_64 s390x ppc64 ppc64le sparc64 aarch64
+%ifnarch alpha ia64 x86_64 s390x ppc64 ppc64le sparc64 aarch64 riscv64
 # requires sizeof(int) == sizeof(long) == sizeof(char*)
 %{_libdir}/python%{python_version}/lib-dynload/dl.so
 %endif

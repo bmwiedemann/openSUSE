@@ -155,6 +155,8 @@ BuildRequires:  fdupes
 BuildRequires:  gdbm-devel
 BuildRequires:  gmp-devel
 BuildRequires:  libbz2-devel
+# This is NOT switching off NIS support on SLE < 15,
+# support for NIS used to be in the glibc itself
 %if 0%{?suse_version} >= 1500 && 0%{?suse_version} < 1599
 BuildRequires:  libnsl-devel
 %endif
@@ -458,7 +460,7 @@ rm %{buildroot}%{_libdir}/python%{python_version}/site-packages/README
 rm %{buildroot}%{_libdir}/python%{python_version}/lib-dynload/_bisect.so
 rm %{buildroot}%{_libdir}/python%{python_version}/lib-dynload/_csv.so
 rm %{buildroot}%{_libdir}/python%{python_version}/lib-dynload/_collections.so
-rm %{buildroot}%{_libdir}/python%{python_version}/lib-dynload/_ctypes.so
+rm -f %{buildroot}%{_libdir}/python%{python_version}/lib-dynload/_ctypes.so
 rm %{buildroot}%{_libdir}/python%{python_version}/lib-dynload/_ctypes_test.so
 rm %{buildroot}%{_libdir}/python%{python_version}/lib-dynload/_elementtree.so
 rm %{buildroot}%{_libdir}/python%{python_version}/lib-dynload/_functools.so
@@ -488,9 +490,7 @@ rm %{buildroot}%{_libdir}/python%{python_version}/lib-dynload/itertools.so
 rm %{buildroot}%{_libdir}/python%{python_version}/lib-dynload/linuxaudiodev.so
 rm %{buildroot}%{_libdir}/python%{python_version}/lib-dynload/math.so
 rm %{buildroot}%{_libdir}/python%{python_version}/lib-dynload/mmap.so
-%if 0%{?suse_version} >= 1500 && 0%{?suse_version} < 1599
-rm %{buildroot}%{_libdir}/python%{python_version}/lib-dynload/nis.so
-%endif
+rm -f %{buildroot}%{_libdir}/python%{python_version}/lib-dynload/nis.so
 rm %{buildroot}%{_libdir}/python%{python_version}/lib-dynload/operator.so
 rm %{buildroot}%{_libdir}/python%{python_version}/lib-dynload/ossaudiodev.so
 rm %{buildroot}%{_libdir}/python%{python_version}/lib-dynload/parser.so

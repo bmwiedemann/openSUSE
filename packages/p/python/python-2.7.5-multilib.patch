@@ -375,7 +375,7 @@
 +esac
 +
 +case $ARCH:$python_cv_cc_64bit_output in
-+aarch64:yes | ppc64:yes | ppc64le:yes | powerpc64:yes | s390x:yes | sparc64:yes | x86_64:yes)
++aarch64:yes | ppc64:yes | ppc64le:yes | powerpc64:yes | riscv64:yes | s390x:yes | sparc64:yes | x86_64:yes)
 +  LIB="lib64"
 +  ;;
 +*:*)
