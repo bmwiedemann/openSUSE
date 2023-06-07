@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Fri May  5 19:48:47 UTC 2023 - Nicolas FORMICHELLA <stigpro@outlook.fr>
+
+- Initial packaging of v11.0.2
+  * Add Scoop manifest link for Windows installation 
+  * run_custom_command: allow using interactive shell on unix
+  * Add no-self-update config and flag
+  * Display the preamble in Linux only if notify-send is installed
+  * No need to run self-update in Rustup
+  * Bump h2 from 0.3.16 to 0.3.17
+  * Added support to 'mamba' (alternative to 'conda' with the exact same commands/interface)
+  * Bump enumflags2 from 0.7.5 to 0.7.7
+  * Assume Fedora Silverblue based on os-release and not on existence of rpm-ostree
+  * Replace directories with home & etcetera
+  * dependency update
+

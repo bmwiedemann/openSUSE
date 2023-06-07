@@ -1,0 +1,15 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>970efa1ab314bf52669c7a209ee25faf</srcmd5>
+    <version>11.0.2</version>
+    <time>1686172001</time>
+    <user>dimstar_suse</user>
+    <comment>
+
+I packaged[1] topgrade[2] (a upgrader tool that supports a ton of package managers (from zypper to git submodules and vim packages)) written in Rust
+
+https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/4F7UMU7DDP272CX2REVRS4E4ZYO5DDZC/
+</comment>
+    <requestid>1091130</requestid>
+  </revision>
+</revisionlist>
