@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Jun  5 10:40:30 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
+
+- Remove exclude_ymp patch 
+
+-------------------------------------------------------------------
+Mon Jun  5 09:15:19 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
+
+- Chromium 114.0.5735.90 (boo#1211843):
+  * CSS text-wrap: balance is available
+  * Cookies partitioned by top level site (CHIPS)
+  * New Popover API
+- Security fixes:
+  * CVE-2023-2929: Out of bounds write in Swiftshader
+  * CVE-2023-2930: Use after free in Extensions
+  * CVE-2023-2931: Use after free in PDF
+  * CVE-2023-2932: Use after free in PDF
+  * CVE-2023-2933: Use after free in PDF
+  * CVE-2023-2934: Out of bounds memory access in Mojo
+  * CVE-2023-2935: Type Confusion in V8
+  * CVE-2023-2936: Type Confusion in V8
+  * CVE-2023-2937: Inappropriate implementation in Picture In Picture
+  * CVE-2023-2938: Inappropriate implementation in Picture In Picture
+  * CVE-2023-2939: Insufficient data validation in Installer
+  * CVE-2023-2940: Inappropriate implementation in Downloads
+  * CVE-2023-2941: Inappropriate implementation in Extensions API
+- Drop patches:
+  * chromium-103-VirtualCursor-std-layout.patch
+  * chromium-113-system-zlib.patch
+  * chromium-113-workaround_clang_bug-structured_binding.patch
+- Add patches
+  * chromium-114-workaround_clang_bug-structured_binding.patch
+  * chromium-114-lld-argument.patch
+- Un-bundle zlib again
+- Remove un-needed patches:
+  * chromium-112-default-comparison-operators.patch
+  * chromium-109-clang-lp154.patch
+  * chromium-clang-nomerge.patch
+  * chromium-ffmpeg-lp152.patch
+  * chromium-lp151-old-drm.patch
+- Added patches:
+  * chromium-113-system-zlib.patch
+- build with llvm15 on Leap
+
+-------------------------------------------------------------------
 Sat May 20 06:07:43 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
 
 - Chromium 113.0.5672.126 (boo#1211442):
