@@ -1,7 +1,7 @@
 #
 # spec file for package odt2txt
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           odt2txt
-Summary:        Converter from OpenDocument Text to plain text
-License:        GPL-2.0
-Group:          Productivity/Text/Convertors
 Version:        0.5
 Release:        0
-Url:            https://github.com/dstosberg
+Summary:        Converter from OpenDocument Text to plain text
+License:        GPL-2.0-only
+URL:            https://github.com/dstosberg
 Source:         https://github.com/dstosberg/odt2txt/archive/v%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  zlib-devel
 
 %description
@@ -40,19 +38,19 @@ content from OpenDocument spreadsheets (*.ods) and OpenDocument
 presentations (*.odp).
 
 %prep
-%setup -q
+%autosetup
 
 %build
-make CFLAGS="%optflags" %{?_smp_mflags}
+%make_build CFLAGS="%{optflags}"
 
 %install
-make DESTDIR=%buildroot PREFIX=%{_prefix} install
-chmod 644 %buildroot%{_mandir}/man1/odt2txt.1
+%make_install DESTDIR=%{buildroot} PREFIX=%{_prefix} install
+chmod 644 %{buildroot}%{_mandir}/man1/odt2txt.1
 
 %files
-%defattr(-,root,root)
-%doc GPL-2 README.md
+%license GPL-2
+%doc README.md
 %{_bindir}/%{name}
-%{_mandir}/man1/odt2txt.1*
+%{_mandir}/man1/odt2txt.1%{?ext_man}
 
 %changelog
