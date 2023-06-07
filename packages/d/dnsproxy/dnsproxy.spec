@@ -1,5 +1,5 @@
 #
-# spec file for dnsproxy
+# spec file for package dnsproxy
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -17,7 +17,7 @@
 
 
 Name:           dnsproxy
-Version:        0.49.1
+Version:        0.50.0
 Release:        0
 Summary:        A DNS proxy server
 License:        Apache-2.0

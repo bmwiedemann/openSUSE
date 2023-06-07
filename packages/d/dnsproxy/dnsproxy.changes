@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 06 22:09:11 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.50.0:
+  * Pull request 257: 331-upd-quic-go
+  * Pull request 256: fix-poisoning
+  * Pull request: proxy: fix edns cache
+  * Pull request 254: depr-more-util
+
+-------------------------------------------------------------------
 Wed May 17 22:30:59 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim filler and time-sensitive wording

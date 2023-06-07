@@ -7,4 +7,16 @@
     <comment>New package dnsproxy is a simple DNS proxy with DoH, DoT, DoQ and DNSCrypt support. Suggested by submitter as a straightforward way to use DoH.</comment>
     <requestid>1087716</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>18e001206e5c9e780e41e9b3721c3f1b</srcmd5>
+    <version>0.50.0</version>
+    <time>1686172051</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.50.0:
+  * Pull request 257: 331-upd-quic-go
+  * Pull request 256: fix-poisoning
+  * Pull request: proxy: fix edns cache
+  * Pull request 254: depr-more-util (forwarded request 1091165 from VaiTon)</comment>
+    <requestid>1091168</requestid>
+  </revision>
 </revisionlist>
