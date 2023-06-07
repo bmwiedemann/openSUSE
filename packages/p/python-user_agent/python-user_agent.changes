@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  6 13:51:11 UTC 2023 - pgajdos@suse.com
+
+- do not require six
+- added patches
+  https://github.com/lorien/user_agent/commit/7a664a50cb1633a355a56594e255583a821176ba
+  + python-user_agent-no-six.patch
+
+-------------------------------------------------------------------
 Tue Oct 11 16:46:07 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 0.1.10 

@@ -1,7 +1,7 @@
 #
 # spec file for package python-user_agent
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-user_agent
 Version:        0.1.10
 Release:        0
@@ -25,11 +24,11 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/lorien/user_agent
 Source:         https://files.pythonhosted.org/packages/source/u/user_agent/user_agent-%{version}.tar.gz
+# https://github.com/lorien/user_agent/commit/7a664a50cb1633a355a56594e255583a821176ba
+Patch0:         python-user_agent-no-six.patch
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
@@ -42,7 +41,7 @@ BuildRequires:  %{python_module pytest}
 This module generates random, valid web user agents.
 
 %prep
-%setup -q -n user_agent-%{version}
+%autosetup -p1 -n user_agent-%{version}
 
 %build
 %python_build
@@ -65,6 +64,7 @@ This module generates random, valid web user agents.
 %files %{python_files}
 %license LICENSE
 %python_alternative %{_bindir}/ua
-%{python_sitelib}/*
+%{python_sitelib}/user_agent
+%{python_sitelib}/user_agent-*.egg-info
 
 %changelog
