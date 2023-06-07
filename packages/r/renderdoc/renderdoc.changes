@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jun  7 08:07:05 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.27
+  * Security fixes:
+    - CVE-2023-33863: renderdoc: integer overflow to heap-based buffer overflow
+    - CVE-2023-33864: renderdoc: integer underflow to heap-based buffer overflow
+    - CVE-2023-33865: renderdoc: symlink vulnerability in /tmp/RenderDoc
+  * D3D12: Add support for new SDK 1.610.1:
+  * New state functionality
+  * New sampler creation parameters and PSO chunks
+  * New barrier API
+  * All: Show explicit dropdown arrow for tool buttons with menus.
+  * All: Report Windows 11 separately in analytics.
+  * Vulkan & D3D12: Optimisations to capture time overhead and GPU Syncs.
+  * D3D11: Disable query for undocumented internal D3D interface in composition API.
+
+-------------------------------------------------------------------
 Tue Apr 11 07:07:15 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 1.26
