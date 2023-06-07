@@ -127,4 +127,14 @@
     <comment></comment>
     <requestid>1074479</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>368424f12f34fa577de1e455cc815d56</srcmd5>
+    <version>2023.5.0</version>
+    <time>1686171994</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2023.5.0:
+  * Allow emulator host without protocol (#548)
+  * Prevent upload retry from closing the file being sent (#540)</comment>
+    <requestid>1091179</requestid>
+  </revision>
 </revisionlist>

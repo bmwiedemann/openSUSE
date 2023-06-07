@@ -17,11 +17,10 @@
 
 
 Name:           python-gcsfs
-Version:        2023.3.0
+Version:        2023.5.0
 Release:        0
 Summary:        Filesystem interface over GCS
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/fsspec/gcsfs
 # Use the GitHub tarball for test data
 Source:         https://github.com/fsspec/gcsfs/archive/refs/tags/%{version}.tar.gz#/gcsfs-%{version}-gh.tar.gz

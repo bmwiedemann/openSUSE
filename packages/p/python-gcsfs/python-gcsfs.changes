@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun  7 04:27:24 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2023.5.0:
+  * Allow emulator host without protocol (#548)
+  * Prevent upload retry from closing the file being sent (#540)
+
+-------------------------------------------------------------------
 Fri Mar 24 15:48:08 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2023.3.0
