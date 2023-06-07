@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  6 21:18:46 UTC 2023 - Михаил Чиков <mike.chikov@gmail.com>
+
+- Update vendor dependencies to fix CVE bnc#1212008 
+
+-------------------------------------------------------------------
 Wed May 24 18:43:32 UTC 2023 - Mike Chikov <mike.chikov@gmail.com>
 
 - Switch to cargo-packaging 
