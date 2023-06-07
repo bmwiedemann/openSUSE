@@ -1,13 +1,13 @@
-Index: distributed-2022.8.1/setup.cfg
+Index: distributed-2023.5.1/pyproject.toml
 ===================================================================
---- distributed-2022.8.1.orig/setup.cfg
-+++ distributed-2022.8.1/setup.cfg
-@@ -66,7 +66,7 @@ filterwarnings =
-     ignore:unclosed transport <_SelectorSocketTransport.*:ResourceWarning
-     ignore:unclosed transport <asyncio\.sslproto\..*:ResourceWarning
-     ignore:unclosed cluster SSHCluster.*:ResourceWarning
--    ignore:Couldn't detect a suitable IP address for reaching '2001.4860.4860..8888', defaulting to hostname. \[Errno 65\] No route to host:RuntimeWarning
-+    ignore:Couldn't detect a suitable IP address.*:RuntimeWarning
-     ignore:Dashboard and Scheduler are using the same server on port.*:RuntimeWarning
-     ignore:coroutine 'BaseTCPConnector.connect' was never awaited:RuntimeWarning
-     ignore:coroutine 'Client\._start' was never awaited:RuntimeWarning
+--- distributed-2023.5.1.orig/pyproject.toml
++++ distributed-2023.5.1/pyproject.toml
+@@ -119,7 +119,7 @@ filterwarnings = [
+     '''ignore:unclosed transport <_SelectorSocketTransport.*:ResourceWarning''',
+     '''ignore:unclosed transport <asyncio\.sslproto\..*:ResourceWarning''',
+     '''ignore:unclosed cluster SSHCluster.*:ResourceWarning''',
+-    '''ignore:Couldn't detect a suitable IP address for reaching '2001.4860.4860..8888', defaulting to hostname. \[Errno 65\] No route to host:RuntimeWarning''',
++    '''ignore:Couldn't detect a suitable IP address.*:RuntimeWarning''',
+     '''ignore:Dashboard and Scheduler are using the same server on port.*:RuntimeWarning''',
+     '''ignore:coroutine 'BaseTCPConnector.connect' was never awaited:RuntimeWarning''',
+     '''ignore:coroutine 'Client\._start' was never awaited:RuntimeWarning''',

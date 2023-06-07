@@ -47,7 +47,7 @@
 
 Name:           python-distributed%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2023.3.2
+Version:        2023.5.1
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
@@ -62,6 +62,7 @@ Patch4:         distributed-ignore-thread-leaks.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module versioneer-toml >= 0.28}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -75,17 +76,16 @@ Requires:       python-msgpack >= 1.0.0
 Requires:       python-packaging >= 20.0
 Requires:       python-psutil >= 5.7.0
 Requires:       python-sortedcontainers >= 2.0.5
-Requires:       python-tblib
+Requires:       python-tblib >= 1.6.0
 Requires:       python-toolz >= 0.10.0
-Requires:       python-tornado >= 6.0.3
+Requires:       python-tornado >= 6.0.4
 Requires:       python-urllib3 >= 1.24.3
-Requires:       python-zict >= 2.1.0
+Requires:       python-zict >= 2.2.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
 %if %{with test}
-# bokeh 3: see gh#dask/distributed#7329, gh#dask/dask#9659, we provide a legacy bokeh2 in Tumbleweed
-BuildRequires:  %{python_module bokeh >= 2.4.2 with %python-bokeh < 2.4.4}
+BuildRequires:  %{python_module bokeh >= 3.1}
 BuildRequires:  %{python_module dask-complete = %{version}}
 BuildRequires:  %{python_module distributed = %{version}}
 BuildRequires:  %{python_module ipykernel}
@@ -95,7 +95,7 @@ BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module sparse if %python-base < 3.11}
+BuildRequires:  %{python_module sparse}
 %if %{with paralleltests}
 BuildRequires:  %{python_module pytest-xdist}
 %endif
@@ -112,9 +112,9 @@ clusters.
 
 sed -e '/--durations=20/d' \
     -e '/--color=yes/d'  \
+    -e '/--cov/d'  \
     -e 's/timeout_method = thread/timeout_method = signal/' \
-    -e ' /^    error$/ a \    ignore:`np.bool8` is a deprecated alias for `np.bool_`' \
-    -i setup.cfg
+    -i pyproject.toml
 
 %build
 %if ! %{with test}
@@ -156,6 +156,7 @@ donttest+=" or (test_client and test_profile_server)"
 donttest+=" or (test_metrics and test_wall_clock)"
 donttest+=" or (test_priorities and test_compute)"
 donttest+=" or (test_resources and test_prefer_constrained)"
+donttest+=" or (test_scheduler and test_tell_workers_when_peers_have_left)"
 donttest+=" or (test_steal and test_steal_twice)"
 donttest+=" or (test_utils and test_popen_timeout)"
 donttest+=" or (test_variable and test_variable_in_task)"
@@ -165,6 +166,8 @@ donttest+=" or (test_worker_memory and test_digests)"
 donttest+=" or (test_worker_memory and test_pause_while_spilling)"
 # server-side fail due to the non-network warning in a subprocess where the patched filter does not apply
 donttest+=" or (test_client and test_quiet_close_process)"
+# should return > 3, returns 3 exactly
+donttest+=" or (test_statistical_profiling_cycle)"
 if [[ $(getconf LONG_BIT) -eq 32 ]]; then
   # OverflowError -- https://github.com/dask/distributed/issues/5252
   donttest+=" or test_ensure_spilled_immediately"
@@ -189,6 +192,8 @@ notparallel+=" or test_close_properly"
 notparallel+=" or test_plugin_internal_exception"
 notparallel+=" or test_runspec_regression_sync"
 notparallel+=" or test_client_async_before_loop_starts"
+# added in 2023.5.1
+notparallel+=" or test_ensure_no_new_clients"
 
 %pytest distributed/tests -m "not avoid_ci" -n auto -k "not ($notparallel or $donttest ${$python_donttest})"
 %pytest distributed/tests -m "not avoid_ci" -k "($notparallel) and not ($donttest ${$python_donttest})"

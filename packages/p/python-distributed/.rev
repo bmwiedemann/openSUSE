@@ -865,4 +865,41 @@
     <comment></comment>
     <requestid>1077429</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>e24e68a372b0595e10634029a04ab432</srcmd5>
+    <version>2023.5.1</version>
+    <time>1686171996</time>
+    <user>dimstar_suse</user>
+    <comment>- Ratchet up bokeh to &gt;= 3.1, since upstream supports it.
+- Also BuildRequire sparse for Python 3.11.
+
+- Update to 2023.5.1
+  * This release drops support for Python 3.8
+  ## Enhancements
+  * Exclude IPython code from computations (GH#7788) Miles
+  * Drop Python 3.8 support (GH#7840) Thomas Grainger
+  * Add storage_options to performance_report (GH#7636) ypogorelova
+  * Don’t warn about mismatched msgpack (GH#7839) Irina Truong
+  * Clean up sys.path on Server shutdown (GH#7838) James Bourbeau
+  * Dashboard: Fine Performance Metrics (GH#7725) Miles
+  ## Bug Fixes
+  * Properly handle unknown chunk sizes in P2P rechunking (GH#7856)
+    Hendrik Makait
+  * Minimal change to work around (GH#7726) / support for UCX
+    (GH#7851) Benjamin Zaitlen
+  * Don’t end computations until cluster is truly idle (GH#7790)
+    crusaderky
+- Release 2023.5.0
+  ## Enhancements
+  * Client.upload_file send to both Workers and Scheduler and
+    rename scratch directory (GH#7802) Miles
+  * Allow dashboard to be used with bokeh prereleases (GH#7814)
+    James Bourbeau
+  ## Bug Fixes
+  * Ensure log_event of non-msgpack serializable object do not kill
+    servers (GH#7472) Florian Jetter
+  * Fix test_nanny.py duplicated pytestmark definitions (GH#7819)
+    Thomas Grainger</comment>
+    <requestid>1090796</requestid>
+  </revision>
 </revisionlist>

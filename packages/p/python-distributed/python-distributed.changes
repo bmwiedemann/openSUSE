@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Mon Jun  5 02:14:02 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Ratchet up bokeh to >= 3.1, since upstream supports it.
+- Also BuildRequire sparse for Python 3.11.
+
+-------------------------------------------------------------------
+Fri May 26 20:27:38 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2023.5.1
+  * This release drops support for Python 3.8
+  ## Enhancements
+  * Exclude IPython code from computations (GH#7788) Miles
+  * Drop Python 3.8 support (GH#7840) Thomas Grainger
+  * Add storage_options to performance_report (GH#7636) ypogorelova
+  * Don’t warn about mismatched msgpack (GH#7839) Irina Truong
+  * Clean up sys.path on Server shutdown (GH#7838) James Bourbeau
+  * Dashboard: Fine Performance Metrics (GH#7725) Miles
+  ## Bug Fixes
+  * Properly handle unknown chunk sizes in P2P rechunking (GH#7856)
+    Hendrik Makait
+  * Minimal change to work around (GH#7726) / support for UCX
+    (GH#7851) Benjamin Zaitlen
+  * Don’t end computations until cluster is truly idle (GH#7790)
+    crusaderky
+- Release 2023.5.0
+  ## Enhancements
+  * Client.upload_file send to both Workers and Scheduler and
+    rename scratch directory (GH#7802) Miles
+  * Allow dashboard to be used with bokeh prereleases (GH#7814)
+    James Bourbeau
+  ## Bug Fixes
+  * Ensure log_event of non-msgpack serializable object do not kill
+    servers (GH#7472) Florian Jetter
+  * Fix test_nanny.py duplicated pytestmark definitions (GH#7819)
+    Thomas Grainger
+  * Fix flaky
+    test_dask_worker.py::test_single_executable_deprecated
+    (GH#7817) Thomas Grainger
+- Release 2023.4.2
+  ## Enhancements
+  * Enable GIL monitoring when gilknocker installed (GH#7730) Miles
+  * By default only set logging handler if no other handler has
+    been set to avoid double logging (GH#7750) Thomas Grainger
+  * Cluster wait (GH#6700) Iain Dorrington
+  * Add Prometheus counter for SystemMonitor.last_time (GH#7785)
+    Miles
+  ## Bug Fixes
+  * Partial revert defaultclient config setting (GH#7803) Florian
+    Jetter
+  * Delay awaiting async SchedulerPlugin.{add|remove}_worker hooks
+    in order to immediately execute all sync ones (GH#7799) Hendrik
+    Makait
+  * Fix check_idle not returning the correct value if no change to
+    idleness (GH#7781) Jacob Tomlinson
+- Release 2023.4.0
+  * With this release we are making a change which will require the
+    Dask scheduler to have consistent software and hardware
+    capabilities as the client and workers.
+  * It’s always been recommended that your client and workers have
+    a consistent software and hardware environment so that data
+    structures and dependencies can be pickled and passed between
+    them. However recent changes to the Dask scheduler mean that we
+    now also require your scheduler to have the same consistent
+    environment as everything else
+  ## Enhancements
+  * Meter queue time to the offload executor (GH#7758) crusaderky
+  * Add GIL contention metric to Prometheus (GH#7651) Miles
+  * Add methods Client.forward_logging() and
+    Client.unforward_logging(). (GH#7276) Max Bane
+  * Optionally capture more frames in computations (GH#7656) Gabe
+    Joseph
+  * Consider Jupyter activity in idle timeout (GH#7687) Gabe Joseph
+  * Add a dashboard component that displays RMM memory (GH#7718)
+    Peter Andreas Entschev
+  * Improve error message if shuffle/rechunk lost annotations
+    (GH#7707) Hendrik Makait
+  * Exception chaining in P2P shuffling (GH#7706) Hendrik Makait
+  * Use pickle for graph submissions from client to scheduler
+    (GH#7564) Florian Jetter
+  ## Bug Fixes
+  * Fix crash on missing env var in dashboard link formatting
+    (GH#7729) Miles
+  * Fix randbytes() on Python 3.8 (GH#7771) crusaderky
+  * Run scheduler of SubprocessCluster in subprocess (GH#7727)
+    Hendrik Makait
+  * Drop id from RMM dashboard component (GH#7739) James Bourbeau
+
+-------------------------------------------------------------------
 Tue Apr  4 20:47:17 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Drop python38 test flavor
