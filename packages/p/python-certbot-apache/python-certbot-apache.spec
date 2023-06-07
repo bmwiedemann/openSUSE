@@ -1,7 +1,7 @@
 #
 # spec file for package python-certbot-apache
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-certbot-apache
-Version:        1.31.0
+Version:        2.6.0
 Release:        0
 Summary:        Apache plugin for Certbot
 License:        Apache-2.0
@@ -31,8 +31,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       apache2
-Requires:       augeas-lenses
+Requires:       apache2 >= 2.3
 Requires:       python-acme >= %{version}
 Requires:       python-augeas
 Requires:       python-certbot >= %{version}
