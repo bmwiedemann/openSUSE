@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  6 18:46:16 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 3.12.1.
+  Changelog: https://github.com/GrandOrgue/grandorgue/releases/tag/3.12.1-1
+  - Fixed not storing switch state in combinations in organs with panels of the new style https://github.com/GrandOrgue/grandorgue/issues/1498
+  - Fixed displaying light of various combination buttons https://github.com/GrandOrgue/grandorgue/issues/1536
+  - Fixed saving empty and scoped combinations to yaml https://github.com/GrandOrgue/grandorgue/issues/1531
+  - Fixed bug of GC not working on manual with only a single stop https://github.com/GrandOrgue/grandorgue/issues/1556
+  - Fixed installation on linux with another yaml-cpp version than 6.2 https://github.com/GrandOrgue/grandorgue/issues/1548
+
+-------------------------------------------------------------------
 Fri May 26 11:41:17 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 3.12.0.
