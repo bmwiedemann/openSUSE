@@ -2023,6 +2023,7 @@ unsorted:
   - chart-testing 
   - chasen 
   - chasen-devel 
+  - chayang 
   - chck-devel 
   - chealpix-devel 
   - cheat 
@@ -24029,7 +24030,6 @@ unsorted:
   - python310-django-sortedm2m 
   - python310-django-storages 
   - python310-django-tables2 
-  - python310-django-tagging 
   - python310-django-taggit 
   - python310-django-tagulous 
   - python310-django-tastypie 
@@ -24427,7 +24427,6 @@ unsorted:
   - python310-intervaltree 
   - python310-invocations 
   - python310-invoke 
-  - python310-iocapture 
   - python310-ipdb 
   - python310-iptables 
   - python310-ipy 
@@ -24951,7 +24950,26 @@ unsorted:
   - python310-pamqp 
   - python310-pan-python 
   - python310-pandas 
+  - python310-pandas-all 
+  - python310-pandas-clipboard 
+  - python310-pandas-compression 
+  - python310-pandas-computation 
   - python310-pandas-datareader 
+  - python310-pandas-excel 
+  - python310-pandas-feather 
+  - python310-pandas-fss 
+  - python310-pandas-hdf5 
+  - python310-pandas-html 
+  - python310-pandas-mysql 
+  - python310-pandas-output_formatting 
+  - python310-pandas-parquet 
+  - python310-pandas-performance 
+  - python310-pandas-plot 
+  - python310-pandas-postgresql 
+  - python310-pandas-spss 
+  - python310-pandas-sql-other 
+  - python310-pandas-test 
+  - python310-pandas-xml 
   - python310-pandocfilters 
   - python310-panel 
   - python310-panflute 
@@ -27379,7 +27397,6 @@ unsorted:
   - python311-django-sortedm2m 
   - python311-django-storages 
   - python311-django-tables2 
-  - python311-django-tagging 
   - python311-django-taggit 
   - python311-django-tagulous 
   - python311-django-tastypie 
@@ -27799,7 +27816,6 @@ unsorted:
   - python311-intervaltree 
   - python311-invocations 
   - python311-invoke 
-  - python311-iocapture 
   - python311-ipaddr 
   - python311-ipdb 
   - python311-iptables 
@@ -28347,7 +28363,26 @@ unsorted:
   - python311-pamqp 
   - python311-pan-python 
   - python311-pandas 
+  - python311-pandas-all 
+  - python311-pandas-clipboard 
+  - python311-pandas-compression 
+  - python311-pandas-computation 
   - python311-pandas-datareader 
+  - python311-pandas-excel 
+  - python311-pandas-feather 
+  - python311-pandas-fss 
+  - python311-pandas-hdf5 
+  - python311-pandas-html 
+  - python311-pandas-mysql 
+  - python311-pandas-output_formatting 
+  - python311-pandas-parquet 
+  - python311-pandas-performance 
+  - python311-pandas-plot 
+  - python311-pandas-postgresql 
+  - python311-pandas-spss 
+  - python311-pandas-sql-other 
+  - python311-pandas-test 
+  - python311-pandas-xml 
   - python311-pandocfilters 
   - python311-panel 
   - python311-panflute 
@@ -30859,7 +30894,6 @@ unsorted:
   - python39-django-sortedm2m 
   - python39-django-storages 
   - python39-django-tables2 
-  - python39-django-tagging 
   - python39-django-taggit 
   - python39-django-tagulous 
   - python39-django-tastypie 
@@ -31279,7 +31313,6 @@ unsorted:
   - python39-intervaltree 
   - python39-invocations 
   - python39-invoke 
-  - python39-iocapture 
   - python39-ipaddr 
   - python39-ipdb 
   - python39-iptables 
@@ -31826,7 +31859,26 @@ unsorted:
   - python39-pamqp 
   - python39-pan-python 
   - python39-pandas 
+  - python39-pandas-all 
+  - python39-pandas-clipboard 
+  - python39-pandas-compression 
+  - python39-pandas-computation 
   - python39-pandas-datareader 
+  - python39-pandas-excel 
+  - python39-pandas-feather 
+  - python39-pandas-fss 
+  - python39-pandas-hdf5 
+  - python39-pandas-html 
+  - python39-pandas-mysql 
+  - python39-pandas-output_formatting 
+  - python39-pandas-parquet 
+  - python39-pandas-performance 
+  - python39-pandas-plot 
+  - python39-pandas-postgresql 
+  - python39-pandas-spss 
+  - python39-pandas-sql-other 
+  - python39-pandas-test 
+  - python39-pandas-xml 
   - python39-pandocfilters 
   - python39-panel 
   - python39-panflute 
@@ -34234,6 +34286,7 @@ unsorted:
   - ruby3.2-devel-extra 
   - ruby3.2-doc 
   - ruby3.2-doc-ri 
+  - ruby3.2-rubygem-agama 
   - rubygem-libguestfs 
   - rubygem-passenger-nginx 
   - runawk 
