@@ -21,11 +21,11 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20230517
+%define version_unconverted 20230531
 # Force bzip2 instead of lzma compression (bsc#1176981)
 %define _binary_payload w9.bzdio
 Name:           kernel-firmware
-Version:        20230517
+Version:        20230531
 Release:        0
 Summary:        Linux kernel firmware files
 License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
@@ -63,6 +63,8 @@ Source1014:     README.build
 # workarounds
 Source1100:     qcom-post
 Source1101:     uncompressed-post
+# Temporary fixes
+Patch1:         cirrus-WHENCE-link-fixes.patch
 BuildRequires:  fdupes
 BuildRequires:  suse-module-tools
 Requires(post): %{_bindir}/mkdir
@@ -6334,6 +6336,8 @@ various USB WiFi / Ethernet drivers.
 
 %prep
 %setup -q -n kernel-firmware-%{version}
+# temporary fix
+%patch1 -p1
 # additional firmwares
 cat %{SOURCE1} >> WHENCE
 cp %{SOURCE2} %{SOURCE8} %{SOURCE9} %{SOURCE10} .

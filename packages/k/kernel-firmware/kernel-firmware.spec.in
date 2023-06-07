@@ -1,5 +1,5 @@
 #
-# spec file for package kernel-firmware.spec
+# spec file for package kernel-firmware
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -63,12 +63,14 @@ Source1014:     README.build
 # workarounds
 Source1100:     qcom-post
 Source1101:     uncompressed-post
+# Temporary fixes
+Patch1:         cirrus-WHENCE-link-fixes.patch
 BuildRequires:  fdupes
 BuildRequires:  suse-module-tools
 Requires(post): %{_bindir}/mkdir
 Requires(post): %{_bindir}/touch
-Requires(postun): %{_bindir}/mkdir
-Requires(postun): %{_bindir}/touch
+Requires(postun):%{_bindir}/mkdir
+Requires(postun):%{_bindir}/touch
 Provides:       compat-wireless-firmware = 4.4
 Obsoletes:      compat-wireless-firmware < 4.4
 BuildArch:      noarch
@@ -88,8 +90,8 @@ Summary:        Microcode updates for AMD CPUs
 Group:          System/Kernel
 Requires(post): %{_bindir}/mkdir
 Requires(post): %{_bindir}/touch
-Requires(postun): %{_bindir}/mkdir
-Requires(postun): %{_bindir}/touch
+Requires(postun):%{_bindir}/mkdir
+Requires(postun):%{_bindir}/touch
 # new style (after 3.12 kernel somewhen)
 Supplements:    modalias(cpu:type%%3Ax86*ven0002*)
 # old style (before 3.16 kernel)
@@ -104,8 +106,8 @@ Group:          System/Kernel
 Requires(post): %{_bindir}/mkdir
 Requires(post): %{_bindir}/touch
 Requires(post): dracut >= 049
-Requires(postun): %{_bindir}/mkdir
-Requires(postun): %{_bindir}/touch
+Requires(postun):%{_bindir}/mkdir
+Requires(postun):%{_bindir}/touch
 Conflicts:      kernel < 5.3
 Provides:       kernel-firmware = %{version}
 Obsoletes:      kernel-firmware <= %{version}
@@ -125,6 +127,8 @@ all files that have been provided by kernel-firmware package.
 
 %prep
 %setup -q -n kernel-firmware-%{version}
+# temporary fix
+%patch1 -p1
 # additional firmwares
 cat %{SOURCE1} >> WHENCE
 cp %{SOURCE2} %{SOURCE8} %{SOURCE9} %{SOURCE10} .
