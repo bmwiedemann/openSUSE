@@ -19,7 +19,7 @@
 %define rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           breezy
-Version:        3.3.2
+Version:        3.3.3
 Release:        0
 Summary:        Distributed version control system with multi-format support
 License:        GPL-2.0-or-later
@@ -28,9 +28,6 @@ Source0:        https://files.pythonhosted.org/packages/source/b/breezy/breezy-%
 Source90:       cargo_config
 Source98:       vendor-lib-rio.tar.xz
 Source99:       vendor.tar.xz
-# PATCH-FIX-UPSTREAM skip_lp2003710.patch lp#2003710 mcepl@suse.com
-# Skip failing tests
-Patch0:         skip_lp2003710.patch
 BuildRequires:  cargo >= 1.41.0
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -54,6 +51,7 @@ Requires:       python3-fastbencode
 Requires:       python3-fastimport >= 0.9.8
 Requires:       python3-merge3
 Requires:       python3-patiencediff
+Requires:       python3-urllib3
 Suggests:       python3-launchpadlib >= 1.6.3
 Provides:       bzr = %{version}
 Obsoletes:      bzr < %{version}

@@ -106,4 +106,20 @@ This requires https://build.opensuse.org/request/show/790036 to build (already a
 - Add skip_lp2003710.patch to skip failing tests (lp#2003710).</comment>
     <requestid>1061555</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c595a9461c2008486ade237a0682acda</srcmd5>
+    <version>3.3.3</version>
+    <time>1686172106</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.3.3:
+  - Plenty of bug fixes
+  - Drop support for the ubuntu: and debianlp: aliases.
+    These imports have long been broken.
+  - Fix support for newer versions of Dulwich.
+  - Update Git code to use newer Dulwich APIs for pack generation,
+    significantly improving performance.
+- Remove upstreamed patch skip_lp2003710.patch.
+</comment>
+    <requestid>1091294</requestid>
+  </revision>
 </revisionlist>

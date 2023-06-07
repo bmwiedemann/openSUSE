@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun  7 16:00:14 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.3.3:
+  - Plenty of bug fixes
+  - Drop support for the ubuntu: and debianlp: aliases.
+    These imports have long been broken.
+  - Fix support for newer versions of Dulwich.
+  - Update Git code to use newer Dulwich APIs for pack generation,
+    significantly improving performance.
+- Remove upstreamed patch skip_lp2003710.patch.
+
+-------------------------------------------------------------------
 Mon Jan 23 07:45:54 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.3.2:
