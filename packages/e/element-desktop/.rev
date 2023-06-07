@@ -454,4 +454,12 @@ Please use same ADI as https://build.opensuse.org/request/show/918731
  * Fix overflow on auth pages ([\#10605](https://github.com/matrix-org/matrix-react-sdk/pull/10605)). Fixes vector-im/element-web#19548.</comment>
     <requestid>1082749</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>78843cf2386adbb8211c16b3cd32985e</srcmd5>
+    <version>1.11.32</version>
+    <time>1686172070</time>
+    <user>dimstar_suse</user>
+    <comment>version 1.11.32</comment>
+    <requestid>1091243</requestid>
+  </revision>
 </revisionlist>

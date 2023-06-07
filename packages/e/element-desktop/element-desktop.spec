@@ -17,7 +17,7 @@
 
 
 Name:           element-desktop
-Version:        1.11.30
+Version:        1.11.32
 Release:        0
 Summary:        A glossy Matrix collaboration client - desktop
 License:        Apache-2.0
@@ -29,20 +29,19 @@ Source3:        io.element.Element.desktop
 Source4:        element-desktop.sh
 Source5:        prepare.sh
 BuildRequires:  element-web = %{version}
+BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  jq
 BuildRequires:  moreutils
 BuildRequires:  nodejs-electron-devel
 BuildRequires:  yarn
-BuildRequires:  fdupes
+Requires:       element-web = %{version}
+Requires:       nodejs-electron
+#Element contains no native code
+BuildArch:      noarch
 %if 0%{?suse_version} <= 1540
 BuildRequires:  nodejs18
 %endif
-Requires:       element-web = %{version}
-Requires:       nodejs-electron
-
-#Element contains no native code
-BuildArch:      noarch
 
 %description
 A glossy Matrix collaboration client - desktop
