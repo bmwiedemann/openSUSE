@@ -63,19 +63,14 @@ for 64bit operation and
 for 32bit.
 
   The .hmac files contain a HMAC for the internal integrity checking. They 
-are contained in the package libopenssl1_0_0-hmac, seperate from the 
-libopenssl1_0_0 package. These hashes are produced as one of the last steps 
-during the RPM build process.
+are contained in the package libopenssl1_0_0. These hashes are produced as
+one of the last steps during the RPM build process.
   If the library starts up in FIPS mode, the .hmac files are read, and the 
 checksum is verified against a new self-measurement of the library. 
-Essentially, this means that the FIPS mode of operation is not possible
-without the .hmac files from the corresponding -hmac package installed.
   If the library starts up in non-FIPS mode, it checks if the .hmac files 
 exist, and if so, it runs through the self-tests as if it operates in FIPS 
 mode. This self-test in non-FIPS mode is formally mandatory and comes with
-a heavy CPU footprint. You can avoid this overhead by un-installing the 
-libopenssl1_0_0-hmac package (with the consequence that FIPS mode of 
-operation becomes unavailable).
+a heavy CPU footprint.
 
 The openssl library operates in non-FIPS mode by default.
 
@@ -86,20 +81,9 @@ The openssl library operates in non-FIPS mode by default.
 The openssl library operates in non-FIPS mode by default. 
 
 As noted above (* general information), the .hmac files for the integrity 
-self-check of the openssl library are contained in their own package. 
-Unfortunately, the self-test is mandatory even if the library runs in 
-non-FIPS mode, causing a significant CPU consumption during openssl's 
-initialization. You can avoid this overhead by de-installing the -hmac 
-package if you do not need FIPS mode of operation.
-
-If you DO need to run binaries that are linked against the openssl 
-cryptographic library that runs in FIPS mode, you MUST have the 
-libopenssl1_0_0-hmac package installed.
-
-!!! If you enable FIPS mode of operation with the methods below, you MUST 
-!!! have the libopenssl1_0_0-hmac package installed. Programs that runtime-link 
-!!! against openssl will abort if the FIPS self-tests (including the 
-!!! integrity check with the .hmac hashes) fail!
+self-check of the openssl library. Unfortunately, the self-test is mandatory
+even if the library runs in non-FIPS mode, causing a significant CPU
+consumption during openssl's initialization.
 
 There are three ways to switch the shared libraries listed above to
 FIPS-140-2 compliant mode:
@@ -204,9 +188,6 @@ libopenssl1_0_0
    /lib64/engines/libgmp.so
    /lib64/engines/libgost.so
    /lib64/engines/libpadlock.so
-
-libopenssl1_0_0-hmac
-- files:
    /lib64/.libcrypto.so.1.0.0.hmac
    /lib64/.libssl.so.1.0.0.hmac
 
@@ -214,9 +195,6 @@ libopenssl1_0_0-32bit
  - files as in package libopenssl1_0_0, but in /lib/.
    The .so libraries are for the 32bit compatibility mode of the
    openssl library.
-
-libopenssl1_0_0-hmac-32bit
-- files as in package libopenssl1_0_0-hmac, but in /lib/.
 
 libopenssl-devel
  - header files and static libraries for compiling applications with the

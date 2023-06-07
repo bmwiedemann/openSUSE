@@ -151,8 +151,9 @@ Summary:        Secure Sockets and Transport Layer Security
 License:        OpenSSL
 Group:          Productivity/Networking/Security
 Recommends:     ca-certificates-mozilla
-# install libopenssl and libopenssl-hmac close together (bsc#1090765)
-Suggests:       libopenssl1_0_0-hmac = %{version}-%{release}
+# Merge back the hmac files bsc#1185116
+Provides:       libopenssl1_0_0-hmac = %{version}-%{release}
+Obsoletes:      libopenssl1_0_0-hmac < %{version}-%{release}
 
 %description -n libopenssl1_0_0
 OpenSSL is a software library to be used in applications that need to
@@ -204,16 +205,6 @@ Provides:       ssl-devel
 %description -n libopenssl-1_0_0-devel
 This subpackage contains header files for developing applications
 that want to make use of the OpenSSL C API.
-
-%package -n libopenssl1_0_0-hmac
-Summary:        HMAC files for FIPS-140-2 integrity checking of the openssl shared libraries
-License:        BSD-3-Clause
-Group:          Productivity/Networking/Security
-Requires:       libopenssl1_0_0 = %{version}-%{release}
-
-%description -n libopenssl1_0_0-hmac
-The FIPS compliant operation of the openssl shared libraries is NOT
-possible without the HMAC hashes contained in this package!
 
 %package doc
 Summary:        Additional Package Documentation
@@ -491,6 +482,8 @@ popd > /dev/null
 %license LICENSE
 %{_libdir}/libssl.so.%{num_version}
 %{_libdir}/libcrypto.so.%{num_version}
+%{_libdir}/.libssl.so.%{num_version}.hmac
+%{_libdir}/.libcrypto.so.%{num_version}.hmac
 %dir %{_libdir}/engines-1.0
 %{_libdir}/engines-1.0
 
@@ -505,10 +498,6 @@ popd > /dev/null
 %dir %{steamlibdir}
 /%{steamlibdir}/libssl.so.%{num_version}
 /%{steamlibdir}/libcrypto.so.%{num_version}
-
-%files -n libopenssl1_0_0-hmac
-%{_libdir}/.libssl.so.%{num_version}.hmac
-%{_libdir}/.libcrypto.so.%{num_version}.hmac
 
 %files -n libopenssl-1_0_0-devel
 %{_includedir}/%{_rname}/

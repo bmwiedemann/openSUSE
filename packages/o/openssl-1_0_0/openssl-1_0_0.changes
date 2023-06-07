@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  5 07:12:06 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Merge libopenssl1_0_0-hmac package into the library [bsc#1185116]
+
+-------------------------------------------------------------------
 Mon May 22 08:11:43 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Security Fix: [CVE-2023-2650, bsc#1211430]
