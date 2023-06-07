@@ -30,6 +30,8 @@ Source:         https://files.pythonhosted.org/packages/source/p/pyarrow/pyarrow
 Source10:       LICENSE.txt
 Source11:       NOTICE.txt
 Source99:       python-pyarrow.rpmlintrc
+# PATCH-FIX-UPSTREAM pyarrow-pr35822-pandas2-extensiontype.patch gh#apache/arrow#35822, gh#apache/arrow#35839
+Patch0:         pyarrow-pr35822-pandas2-extensiontype.patch
 BuildRequires:  %{python_module Cython >= 0.29.31}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.16.6}
@@ -93,7 +95,7 @@ This package provides the header files within the python
 platlib for consuming modules using cythonization.
 
 %prep
-%setup -q -n pyarrow-%{version}
+%autosetup -p2 -n pyarrow-%{version}
 cp %{SOURCE10} %{SOURCE11} ./
 # we disabled the jemalloc backend in apache-arrow
 sed -i 's/should_have_jemalloc = sys.platform == "linux"/should_have_jemalloc = False/' pyarrow/tests/test_memory.py

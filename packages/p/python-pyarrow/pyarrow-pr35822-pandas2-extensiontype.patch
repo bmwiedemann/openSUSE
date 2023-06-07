@@ -1,0 +1,54 @@
+From 8dcbfff2f55cca5938ca6a094aab54c57d06bae0 Mon Sep 17 00:00:00 2001
+From: Joris Van den Bossche <jorisvandenbossche@gmail.com>
+Date: Tue, 25 Apr 2023 11:35:11 +0200
+Subject: [PATCH] [Python][CI] Skip extension type test failing with pandas
+ 2.0.1
+
+---
+ python/pyarrow/tests/test_extension_type.py | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/python/pyarrow/tests/test_extension_type.py b/python/pyarrow/tests/test_extension_type.py
+index 44280ca95131b..090e22a746d51 100644
+--- a/python/pyarrow/tests/test_extension_type.py
++++ b/python/pyarrow/tests/test_extension_type.py
+@@ -1296,8 +1296,10 @@ def test_extension_to_pandas_storage_type(registered_period_type):
+     assert result["ext"].dtype == pandas_dtype
+ 
+     import pandas as pd
+-    if Version(pd.__version__) > Version("2.0.0"):
+-
++    if (
++        Version(pd.__version__) > Version("2.0.0") and
++        Version(pd.__version__) != Version("2.0.1")
++    ):
+         # Check the usage of types_mapper
+         result = table.to_pandas(types_mapper=pd.ArrowDtype)
+         assert isinstance(result["ext"].dtype, pd.ArrowDtype)
+
+From efe901b97911ad05e1767843add211c918983e8b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ra=C3=BAl=20Cumplido?= <raulcumplido@gmail.com>
+Date: Tue, 30 May 2023 14:41:34 +0200
+Subject: [PATCH] GH-35821: [Python][CI] Skip extension type test failing with
+ pandas 2.0.2
+
+---
+ python/pyarrow/tests/test_extension_type.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/python/pyarrow/tests/test_extension_type.py b/python/pyarrow/tests/test_extension_type.py
+index 4ef6573179e45..023968b20df46 100644
+--- a/python/pyarrow/tests/test_extension_type.py
++++ b/python/pyarrow/tests/test_extension_type.py
+@@ -1299,9 +1299,9 @@ def test_extension_to_pandas_storage_type(registered_period_type):
+     assert result["ext"].dtype == pandas_dtype
+ 
+     import pandas as pd
++    # Skip tests for 2.0.x, See: GH-35821
+     if (
+-        Version(pd.__version__) > Version("2.0.0") and
+-        Version(pd.__version__) != Version("2.0.1")
++        Version(pd.__version__) >= Version("2.1.0")
+     ):
+         # Check the usage of types_mapper
+         result = table.to_pandas(types_mapper=pd.ArrowDtype)
