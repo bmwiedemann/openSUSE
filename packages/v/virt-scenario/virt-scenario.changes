@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun  7 14:45:00 UTC 2023 - Antoine Ginies <aginies@suse.com>
+
+- version 2.0.8:
+   * disk image encryption is now supported
+   * if image encryption is enabled the default mode will be
+     preparing Guest and Host as the secret uuid is needed
+   * overwrite mode delete previous domain on the hypervisor
+     to avoid any previous Guest XML definition
+   * clean up some code
+
+-------------------------------------------------------------------
 Tue Jun  6 14:52:19 UTC 2023 - Antoine Ginies <aginies@suse.com>
 
 - version 2.0.7:
