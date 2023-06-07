@@ -24,7 +24,7 @@
 %bcond_without  static
 
 Name:           busybox
-Version:        1.36.0
+Version:        1.36.1
 Release:        0
 Summary:        Minimalist variant of UNIX utilities linked in a single executable
 License:        GPL-2.0-or-later

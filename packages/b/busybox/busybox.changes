@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun  2 21:08:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.36.1:
+  * fixes for line editing, detection of hardware sha1/sha256
+    support, unzip
+   (do not create suid/sgid files unless -K),
+    shell (printf and sleep with no args, handing of SIGINT
+    in sleep), ed. 
+
+-------------------------------------------------------------------
 Fri Jan  6 08:01:46 UTC 2023 - Radoslav Kolev <radoslav.kolev@suse.com>
 
 - Update to version 1.36.0 
