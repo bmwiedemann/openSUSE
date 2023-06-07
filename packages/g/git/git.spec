@@ -27,7 +27,6 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-%bcond_without git_gnome_keyring
 %bcond_without git_libsecret
 %bcond_without docs
 %if 0%{?suse_version} >= 1500 && %{with docs}
@@ -36,7 +35,7 @@
 %bcond_with    asciidoctor
 %endif
 Name:           git
-Version:        2.40.1
+Version:        2.41.0
 Release:        0
 Summary:        Fast, scalable, distributed revision control system
 License:        GPL-2.0-only
@@ -61,7 +60,6 @@ Patch4:         git-prevent_xss-default.diff
 Patch6:         git-tcsh-completion-fixes.diff
 Patch8:         git-asciidoc.patch
 Patch10:        setup-don-t-fail-if-commondir-reference-is-deleted.patch
-Patch11:        sha256_clone_fix.patch
 BuildRequires:  fdupes
 BuildRequires:  gpg2
 BuildRequires:  libcurl-devel
@@ -70,6 +68,7 @@ BuildRequires:  libopenssl-devel
 BuildRequires:  pcre2-devel
 BuildRequires:  perl-Error
 BuildRequires:  perl-MailTools
+BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  tcsh
@@ -96,9 +95,6 @@ BuildRequires:  docbook5-xsl-stylesheets
 %else
 BuildRequires:  asciidoc
 %endif
-%endif
-%if %{with git_gnome_keyring}
-BuildRequires:  libgnome-keyring-devel
 %endif
 %if %{with git_libsecret}
 BuildRequires:  libsecret-devel
@@ -190,23 +186,19 @@ Supplements:    (%{name} and cvs)
 %description cvs
 Tools for importing CVS repositories to the Git version control system.
 
-%package credential-gnome-keyring
-Summary:        Git credential backend using the GNOME keyring as storage
-Group:          Development/Tools/Version Control
-Requires:       git-core = %{version}
-Requires:       gnome-keyring
-
-%description credential-gnome-keyring
-A Git credential backend which uses the GNOME keyring as storage.
+%if %{with git_libsecret}
 
 %package credential-libsecret
 Summary:        Git credential backend using libsecret to access keyring
 Group:          Development/Tools/Version Control
 Requires:       git-core = %{version}
+Obsoletes:      git-credential-gnome-keyring < %{version}
 
 %description credential-libsecret
 A Git credential backend which uses libsecret API to acces keyrings such as
 kwallet or GNOME keyring.
+
+%endif
 
 %package arch
 Summary:        Git tools for importing Arch repositories
@@ -355,9 +347,6 @@ chmod 755 .make
 ./.make doc %{?_smp_mflags}
 %endif
 
-%if %{with git_gnome_keyring}
-./.make -C contrib/credential/gnome-keyring
-%endif
 %if %{with git_libsecret}
 ./.make -C contrib/credential/libsecret
 %endif
@@ -404,9 +393,6 @@ install -m 644 -D contrib/completion/git-prompt.sh %{buildroot}%{_datadir}/bash-
 mkdir -p %{buildroot}/%{_sysconfdir}/bash_completion.d/
 install -m 644 %{SOURCE12} %{buildroot}/%{_sysconfdir}/bash_completion.d/git-prompt
 # contrib/credential
-%if %{with git_gnome_keyring}
-install -m 755 -D contrib/credential/gnome-keyring/git-credential-gnome-keyring %{buildroot}/%{gitexecdir}/git-credential-gnome-keyring
-%endif
 %if %{with git_libsecret}
 install -m 755 -D contrib/credential/libsecret/git-credential-libsecret %{buildroot}/%{gitexecdir}/git-credential-libsecret
 %endif
@@ -503,11 +489,6 @@ fi
 %{_bindir}/git-cvs*
 %{gitexecdir}/*cvs*
 %{!?_without_docs: %{_mandir}/man1/*cvs*.1*}
-
-%if %{with git_gnome_keyring}
-%files credential-gnome-keyring
-%{gitexecdir}/git-credential-gnome-keyring
-%endif
 
 %if %{with git_libsecret}
 %files credential-libsecret

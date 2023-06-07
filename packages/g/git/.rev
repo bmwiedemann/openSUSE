@@ -2642,4 +2642,12 @@ git 2.12.3
     section, leading to arbitrary configuration injection.</comment>
     <requestid>1082939</requestid>
   </revision>
+  <revision rev="299" vrev="1">
+    <srcmd5>e100d1105f4d816350c21101fcaab33d</srcmd5>
+    <version>2.41.0</version>
+    <time>1686171965</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1091063</requestid>
+  </revision>
 </revisionlist>

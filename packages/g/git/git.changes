@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jun  3 15:59:19 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- git 2.41.0: This update contains a number of compatible updates,
+  improvements and extensions to multiple workflows. Some changes
+  may break backwards compatibility:  
+  * The libsecret credential helper obsoletes direct GNOME keyring
+    support, which was dropped (git-credential-gnome-keyring)
+  * "git format-patch" has been taught to ignore end-user
+    configuration ("diff.noprefix") and always use the standard
+    prefixes, to avoid breaking the receiving end of the patch
+- drop sha256_clone_fix.patch
+
+-------------------------------------------------------------------
 Tue Apr 25 20:43:30 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - git 2.40.1:
