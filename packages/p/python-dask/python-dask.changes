@@ -1,4 +1,147 @@
 -------------------------------------------------------------------
+Mon Jun  5 23:42:44 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Tighten bokeh requirement to match distributed. 
+
+-------------------------------------------------------------------
+Fri May 26 19:59:37 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2023.5.1
+  * This release drops support for Python 3.8. As of this release
+    Dask supports Python 3.9, 3.10, and 3.11.
+  ## Enhancements
+  * Drop Python 3.8 support (GH#10295) Thomas Grainger
+  * Change Dask Bag partitioning scheme to improve cluster
+    saturation (GH#10294) Jacob Tomlinson
+  * Generalize dd.to_datetime for GPU-backed collections, introduce
+    get_meta_library utility (GH#9881) Charles Blackmon-Luca
+  * Add na_action to DataFrame.map (GH#10305) Patrick Hoefler
+  * Raise TypeError in DataFrame.nsmallest and DataFrame.nlargest
+    when columns is not given (GH#10301) Patrick Hoefler
+  * Improve sizeof for pd.MultiIndex (GH#10230) Patrick Hoefler
+  * Support duplicated columns in a bunch of DataFrame methods
+    (GH#10261) Patrick Hoefler
+  * Add numeric_only support to DataFrame.idxmin and
+    DataFrame.idxmax (GH#10253) Patrick Hoefler
+  * Implement numeric_only support for DataFrame.quantile
+    (GH#10259) Patrick Hoefler
+  * Add support for numeric_only=False in DataFrame.std (GH#10251)
+    Patrick Hoefler
+  * Implement numeric_only=False for GroupBy.cumprod and
+    GroupBy.cumsum (GH#10262) Patrick Hoefler
+  * Implement numeric_only for skew and kurtosis (GH#10258) Patrick
+    Hoefler
+  * mask and where should accept a callable (GH#10289) Irina Truong
+  * Fix conversion from Categorical to pa.dictionary in
+    read_parquet (GH#10285) Patrick Hoefler
+  ## Bug Fixes
+  * Spurious config on nested annotations (GH#10318) crusaderky
+  * Fix rechunking behavior for dimensions with known and unknown
+    chunk sizes (GH#10157) Hendrik Makait
+  * Enable drop to support mismatched partitions (GH#10300) James
+    Bourbeau
+  * Fix divisions construction for to_timestamp (GH#10304) Patrick
+    Hoefler
+  * pandas ExtensionDtype raising in Series reduction operations
+    (GH#10149) Patrick Hoefler
+  * Fix regression in da.random interface (GH#10247) Eray Aslan
+  * da.coarsen doesn’t trim an empty chunk in meta (GH#10281) Irina
+    Truong
+  * Fix dtype inference for engine="pyarrow" in read_csv (GH#10280)
+    Patrick Hoefler
+- Release 2023.5.0
+  ## Enhancements
+  * Implement numeric_only=False for GroupBy.corr and GroupBy.cov
+    (GH#10264) Patrick Hoefler
+  * Add support for numeric_only=False in DataFrame.var (GH#10250)
+    Patrick Hoefler
+  * Add numeric_only support to DataFrame.mode (GH#10257) Patrick
+    Hoefler
+  * Add DataFrame.map to dask.DataFrame API (GH#10246) Patrick
+    Hoefler
+  * Adjust for DataFrame.applymap deprecation and all NA concat
+    behaviour change (GH#10245) Patrick Hoefler
+  * Enable numeric_only=False for DataFrame.count (GH#10234)
+    Patrick Hoefler
+  * Disallow array input in mask/where (GH#10163) Irina Truong
+  * Support numeric_only=True in GroupBy.corr and GroupBy.cov
+    (GH#10227) Patrick Hoefler
+  * Add numeric_only support to GroupBy.median (GH#10236) Patrick
+    Hoefler
+  * Support mimesis=9 in dask.datasets (GH#10241) James Bourbeau
+  * Add numeric_only support to min, max and prod (GH#10219)
+    Patrick Hoefler
+  * Add numeric_only=True support for GroupBy.cumsum and
+    GroupBy.cumprod (GH#10224) Patrick Hoefler
+  * Add helper to unpack numeric_only keyword (GH#10228) Patrick
+    Hoefler
+  ## Bug Fixes
+  * Fix clone + from_array failure (GH#10211) crusaderky
+  * Fix dataframe reductions for ea dtypes (GH#10150) Patrick
+    Hoefler
+  * Avoid scalar conversion deprecation warning in numpy=1.25
+    (GH#10248) James Bourbeau
+  * Make sure transform output has the same index as input
+    (GH#10184) Irina Truong
+  * Fix corr and cov on a single-row partition (GH#9756) Irina
+    Truong
+  * Fix test_groupby_numeric_only_supported and
+    test_groupby_aggregate_categorical_observed upstream errors
+    (GH#10243) Irina Truong
+- Release 2023.4.1
+  ## Enhancements
+  * Implement numeric_only support for DataFrame.sum (GH#10194)
+    Patrick Hoefler
+  * Add support for numeric_only=True in GroupBy operations
+    (GH#10222) Patrick Hoefler
+  * Avoid deep copy in DataFrame.__setitem__ for pandas 1.4 and up
+    (GH#10221) Patrick Hoefler
+  * Avoid calling Series.apply with _meta_nonempty (GH#10212)
+    Patrick Hoefler
+  * Unpin sqlalchemy and fix compatibility issues (GH#10140)
+    Patrick Hoefler
+  ## Bug Fixes
+  * Partially revert default client discovery (GH#10225) Florian
+    Jetter
+  * Support arrow dtypes in Index meta creation (GH#10170) Patrick
+    Hoefler
+  * Repartitioning raises with extension dtype when truncating
+    floats (GH#10169) Patrick Hoefler
+  * Adjust empty Index from fastparquet to object dtype (GH#10179)
+    Patrick Hoefler
+- Release 2023.4.0
+  ## Enhancements
+  * Override old default values in update_defaults (GH#10159) Gabe
+    Joseph
+  * Add a CLI command to list and get a value from dask config
+    (GH#9936) Irina Truong
+  * Handle string-based engine argument to read_json (GH#9947)
+    Richard (Rick) Zamora
+  * Avoid deprecated GroupBy.dtypes (GH#10111) Irina Truong
+  ## Bug Fixes
+  * Revert grouper-related changes (GH#10182) Irina Truong
+  * GroupBy.cov raising for non-numeric grouping column (GH#10171)
+    Patrick Hoefler
+  * Updates for Index supporting numpy numeric dtypes (GH#10154)
+    Irina Truong
+  * Preserve dtype for partitioning columns when read with pyarrow
+    (GH#10115) Patrick Hoefler
+  * Fix annotations for to_hdf (GH#10123) Hendrik Makait
+  * Handle None column name when checking if columns are all
+    numeric (GH#10128) Lawrence Mitchell
+  * Fix valid_divisions when passed a tuple (GH#10126) Brian
+    Phillips
+  * Maintain annotations in DataFrame.categorize (GH#10120) Hendrik
+    Makait
+  * Fix handling of missing min/max parquet statistics during
+    filtering (GH#10042) Richard (Rick) Zamora
+  ## Deprecations
+  * Deprecate use_nullable_dtypes= and add dtype_backend=
+    (GH#10076) Irina Truong
+  * Deprecate convert_dtype in Series.apply (GH#10133) Irina Truong
+- Drop dask-pr10042-parquetstats.patch
+
+-------------------------------------------------------------------
 Tue Apr  4 20:46:26 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Drop python38 test flavor

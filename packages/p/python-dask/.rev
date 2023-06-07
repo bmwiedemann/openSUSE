@@ -1622,4 +1622,41 @@
     <comment></comment>
     <requestid>1077424</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>3c0ca75a7f1cad80ed745f31b40f0275</srcmd5>
+    <version>2023.5.1</version>
+    <time>1686171997</time>
+    <user>dimstar_suse</user>
+    <comment>- Tighten bokeh requirement to match distributed. 
+
+- Update to 2023.5.1
+  * This release drops support for Python 3.8. As of this release
+    Dask supports Python 3.9, 3.10, and 3.11.
+  ## Enhancements
+  * Drop Python 3.8 support (GH#10295) Thomas Grainger
+  * Change Dask Bag partitioning scheme to improve cluster
+    saturation (GH#10294) Jacob Tomlinson
+  * Generalize dd.to_datetime for GPU-backed collections, introduce
+    get_meta_library utility (GH#9881) Charles Blackmon-Luca
+  * Add na_action to DataFrame.map (GH#10305) Patrick Hoefler
+  * Raise TypeError in DataFrame.nsmallest and DataFrame.nlargest
+    when columns is not given (GH#10301) Patrick Hoefler
+  * Improve sizeof for pd.MultiIndex (GH#10230) Patrick Hoefler
+  * Support duplicated columns in a bunch of DataFrame methods
+    (GH#10261) Patrick Hoefler
+  * Add numeric_only support to DataFrame.idxmin and
+    DataFrame.idxmax (GH#10253) Patrick Hoefler
+  * Implement numeric_only support for DataFrame.quantile
+    (GH#10259) Patrick Hoefler
+  * Add support for numeric_only=False in DataFrame.std (GH#10251)
+    Patrick Hoefler
+  * Implement numeric_only=False for GroupBy.cumprod and
+    GroupBy.cumsum (GH#10262) Patrick Hoefler
+  * Implement numeric_only for skew and kurtosis (GH#10258) Patrick
+    Hoefler
+  * mask and where should accept a callable (GH#10289) Irina Truong
+  * Fix conversion from Categorical to pa.dictionary in
+    read_parquet (GH#10285) Patrick Hoefler</comment>
+    <requestid>1090990</requestid>
+  </revision>
 </revisionlist>
