@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jun  5 13:26:32 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Update to version 0.96.0: 
+  * Features
+    - Update create_cloned_field to use a global cache and improve
+      startup performance.
+
+  * Docs
+    - Update Deta deployment tutorial for compatibility with Deta 
+      Space.
+    - Fix typo in Deta deployment tutorial.
+
+  * Translations
+    - Add Russian translation for docs/tutorial/body.md.
+    - Add Russian translation for docs/ru/docs/tutorial/static-files.md.
+    - Add Russian translation for docs/ru/docs/tutorial/query-params.md.
+    - Add Russian translation for docs/ru/docs/tutorial/first-steps.md.
+    - Add Russian translation for docs/ru/docs/tutorial/debugging.md.
+    - Add Russian translation for docs/ru/docs/tutorial/path-params.md.
+    - Add Chinese translation for docs/zh/docs/tutorial/static-files.md.
+    - Update Spanish translation including new illustrations in docs/es/docs/async.md.
+    - Add Russian translation for docs/ru/docs/tutorial/path-params-numeric-validations.md.
+    - Add Russian translation for docs/ru/docs/deployment/concepts.md.
+    - Add Russian translation for docs/ru/docs/tutorial/body-multiple-params.md.
+
+-------------------------------------------------------------------
 Wed May 17 07:38:30 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to version 0.95.2:
