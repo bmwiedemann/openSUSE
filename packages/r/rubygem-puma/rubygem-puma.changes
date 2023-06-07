@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri Apr 28 21:46:00 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 6.2.2
+  - Bugfixes
+    - Fix Rack-related NameError by adding :: operator ([#3118], [#3117])
+- changes from 6.2.1
+  - Bugfixes
+    - Fix java 8 compatibility ([#3109], [#3108])
+    - Always write io_buffer when in "enum bodies" branch. ([#3113], [#3112])
+    - Fix warn_if_in_single_mode incorrect message ([#3111])
+- changes from 6.2.0
+  - Features
+    - Ability to supply a custom logger ([#2770], [#2511])
+    - Warn when clustered-only hooks are defined in single mode ([#3089])
+    - Adds the on_booted event ([#2709])
+  - Bugfixes
+    - Loggers - internal_write - catch Errno::EINVAL ([#3091])
+    - commonlogger.rb - fix HIJACK time format, use constants, not strings ([#3074])
+    - Fixed some edge cases regarding request hijacking ([#3072])
+- changes from 6.1.1
+  - Bugfixes
+    - We no longer try to use the systemd plugin for JRuby ([#3079])
+    - Allow ::Rack::Handler::Puma.run to work regardless of whether Rack/Rackup are loaded ([#3080])
+- changes from 6.1.0
+  - Features
+    - WebSocket support via partial hijack ([#3058], [#3007])
+    - Add built-in systemd notify support ([#3011])
+    - Periodically send status to systemd ([#3006], [#2604])
+    - Introduce the ability to return 413: payload too large for requests ([#3040])
+    - Log loaded extensions when `PUMA_DEBUG` is set ([#3036], [#3020])
+  - Bugfixes
+    - Fix issue with rack 3 compatibility re: rackup ([#3061], [#3057])
+    - Allow setting TCP low_latency with SSL listener ([#3065])
+  - Performance
+    - Reduce memory usage for large file uploads ([#3062])
+- changes from 6.0.2
+  - Refactor
+    - Remove use of etc and time gems in Puma ([#3035], [#3033])
+    - Refactor const.rb - freeze ([#3016])
+- changes from 6.0.1
+  - Bugfixes
+    - Handle waking up a closed selector in Reactor#add ([#3005])
+    - Fixup response processing, enumerable bodies ([#3004], [#3000])
+    - Correctly close app body for all code paths ([#3002], [#2999])
+  - Refactor
+    - Add IOBuffer to Client, remove from ThreadPool thread instances ([#3013])
+
+-------------------------------------------------------------------
 Fri Apr 28 13:18:28 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - Fix file permissions in post_install so we do not get more
@@ -7,7 +55,7 @@ Fri Apr 28 13:18:28 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 -------------------------------------------------------------------
 Wed Dec  7 11:30:20 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
-updated to version 6.0.0
+- updated to version 6.0.0
  see installed History.md
 
   ## 6.0.0 / 2022-10-XX

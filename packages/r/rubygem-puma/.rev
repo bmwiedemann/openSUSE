@@ -427,4 +427,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1083753</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>9e73a06db89b94ce01f6fec030c87104</srcmd5>
+    <version>6.2.2</version>
+    <time>1686172075</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.2.2 (forwarded request 1083578 from darix)</comment>
+    <requestid>1091272</requestid>
+  </revision>
 </revisionlist>
