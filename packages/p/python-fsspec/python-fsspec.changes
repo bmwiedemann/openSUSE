@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue May 30 11:16:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.5.0:
+  * #1236, allow writing ReferenceFS references directly to
+    parquet
+  * #1255, copy of glob to single output directory
+  * #1254, non-recursive copy of directory (no-op)
+  * #1253, cleanup fix on close of ZIP FS
+  * #1250, ignore dirs when copying list of files
+  * #1249, don't error on register without clobber is registering
+    same thing again
+  * #1245, special case for other_files and relative path
+  * Other
+  * #1248, add test harness into released wheel package
+  * #1247, docs and tests around common bulk file operations
+  * 2023.4.0
+  * #1225, comprehensive docs of expected behaviour of cp/get/put
+    and tests
+  * #1216, test harness for any backend
+  * #1224, small fixes in reference and dask FSs
+  * #1218, mv is no-op when origin and destination are the same
+  * #1217, await in AbstractStreamedFile
+  * #1215, docbuild fixes
+  * #1214, unneeded maxdepth manipulation in expand_path
+  * #1213, pyarros and posixpath related test fixes
+  * #1211, BackgroundBlockCache: keep a block longer if not yet
+    used
+  * #1210, webHDFS: location parameter
+  * Other
+  * #1241, add HfFileSystem to registry
+  * #1237, register_implementation clobber default changes to
+    False
+  * #1228, "full" and "devel" installation options
+  * #1227, register_cache and reporting collision
+  * #1221, docs about implementations and protocols
+
+-------------------------------------------------------------------
 Sun Apr  2 14:27:18 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - migrate to PEP517

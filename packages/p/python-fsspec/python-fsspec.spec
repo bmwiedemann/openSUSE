@@ -25,8 +25,9 @@
 %bcond_with test
 %endif
 
+%{?sle15_python_module_pythons}
 Name:           python-fsspec%{psuffix}
-Version:        2023.3.0
+Version:        2023.5.0
 Release:        0
 Summary:        Filesystem specification package
 License:        BSD-3-Clause
