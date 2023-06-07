@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon May 29 19:43:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.20:
+  * extstore: increase aggressiveness of flush thread
+  * proxy: improve unit test coverage
+  * proxy: random small fixes
+  * proxy: return 'readvalidate' on be read timeout
+  * proxy: don't print null ustats from "stats proxy"
+  * proxy: use connect timeout during retries
+  * proxy: fix flaky test in proxyconfig.t
+  * check for sys/auxv.h
+  * proxy: send CLIENT_ERROR when proper
+  * proxy: print lua error message on reload failure
+  * proxy: rip out io_uring code (to be re-added later)
+  * proxy: overhaul backend error handling: surface error messages
+    to clients
+  * proxy: fix reversal of pipelined backend queries
+  * proxy: add request and buffer memory limits
+  * proxy: restrict functions for lua config vs route
+  * proxy: fix bug ignoring -R setting for proxy reqs
+  * proxy: add conntimeout error
+  * proxy: add memory accounting tracking 
+
+-------------------------------------------------------------------
 Tue Mar 14 09:10:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.19:
