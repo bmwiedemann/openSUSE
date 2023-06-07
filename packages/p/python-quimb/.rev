@@ -48,4 +48,12 @@
     <comment></comment>
     <requestid>1074164</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>ccbe4600891b530818e7737624310f1d</srcmd5>
+    <version>1.4.2</version>
+    <time>1686171995</time>
+    <user>dimstar_suse</user>
+    <comment>- Numba now exists for Python 3.11, stop skipping it.</comment>
+    <requestid>1090173</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  1 07:31:29 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Numba now exists for Python 3.11, stop skipping it. 
+
+-------------------------------------------------------------------
 Thu Mar 23 06:51:10 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Skip python311: no numba yet
