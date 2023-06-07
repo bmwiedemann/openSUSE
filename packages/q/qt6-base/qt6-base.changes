@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun  7 17:58:46 UTC 2023 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Add patch for QTabBar regression in Qt 6.5.1 (QTBUG-114204)
+  * 0001-tabbar-fix.patch
+
+-------------------------------------------------------------------
 Mon Jun  5 08:59:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream changes (CVE-2023-34410, boo#1211994):
