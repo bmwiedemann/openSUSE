@@ -1,9 +1,0 @@
-<package name="python-grab" project="openSUSE:Factory">
-  <title>python-grab</title>
-  <description>
-  Grab is a python web scraping framework. Grab provides a number of helpful
-  methods to perform network requests, scrape web sites and process the scraped
-  content
-  </description>
-  <devel project="devel:languages:python" package="python-grab"/>
-</package>
