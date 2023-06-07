@@ -3115,6 +3115,7 @@ BuildFlags: onlybuild:python-uri-template
 BuildFlags: onlybuild:python-urllib3
 BuildFlags: onlybuild:python-urllib3_1
 BuildFlags: onlybuild:python-uvloop
+BuildFlags: onlybuild:python-versioneer
 BuildFlags: onlybuild:python-virtualenv
 BuildFlags: onlybuild:python-wcag-contrast-ratio
 BuildFlags: onlybuild:python-wcwidth
@@ -3387,6 +3388,7 @@ BuildFlags: onlybuild:wireplumber
 BuildFlags: onlybuild:woff2
 BuildFlags: onlybuild:wpa_supplicant
 BuildFlags: onlybuild:wpebackend-fdo
+BuildFlags: onlybuild:wtmpdb
 BuildFlags: onlybuild:wxWidgets-3_2:GTK3
 BuildFlags: onlybuild:wxWidgets-3_2:doc
 BuildFlags: onlybuild:x11-tools
