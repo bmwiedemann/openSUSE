@@ -51,11 +51,13 @@ Source8:        common-%{commonver}.tar.xz
 Source9:        containers.conf
 Source10:       %{name}.rpmlintrc
 Source11:       https://raw.githubusercontent.com/containers/shortnames/v%{shortnamesver}/shortnames.conf
+Source12:       openSUSE-policy.json
 BuildRequires:  go-go-md2man
 Requires(post): %{_bindir}/grep
 Requires(post): %{_bindir}/sed
 # add SLE-specific mounts for only SLES systems
 Requires:       (libcontainers-sles-mounts if sles-release)
+Requires:       libcontainers-policy >= %{version}
 Provides:       libcontainers-image = %{version}
 Provides:       libcontainers-storage = %{version}
 Obsoletes:      libcontainers-image < %{version}
@@ -71,6 +73,26 @@ Summary:        Default mounts for SLE distributions
 
 %description -n libcontainers-sles-mounts
 Updates /etc/containers/mounts.conf with default mounts for SLE distributions
+
+%package -n libcontainers-openSUSE-policy
+Summary:        Policy to enforce image verification for SLE BCI
+Provides:       libcontainers-policy = %{version}-%{release}
+
+RemovePathPostfixes: .openSUSE
+Conflicts:      libcontainers-default-policy
+
+%description -n libcontainers-openSUSE-policy
+This package ships a /etc/containers/policy.json which enforces image verification for SLE BCI.
+
+%package -n libcontainers-default-policy
+Summary:        Default containers policy.json
+Provides:       libcontainers-policy = %{version}-%{release}
+
+RemovePathPostfixes: .default
+Conflicts:      libcontainers-openSUSE-policy
+
+%description -n libcontainers-default-policy
+This package ships the default /etc/containers/policy.json
 
 %prep
 %setup -q -Tcq -b0 -b1 -b8
@@ -124,7 +146,8 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/containers/registries.conf.d
 install -d -m 0755 %{buildroot}/%{_sysconfdir}/containers/systemd
 install -d -m 0755 %{buildroot}/%{_datadir}/containers/systemd
 
-install -D -m 0644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/containers/policy.json
+install -D -m 0644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/containers/policy.json.default
+install -D -m 0644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/containers/policy.json.openSUSE
 install -D -m 0644 %{SOURCE4} %{buildroot}/%{_sysconfdir}/containers/storage.conf
 install -D -m 0644 %{SOURCE5} %{buildroot}/%{_datadir}/containers/mounts.conf
 install -D -m 0644 %{SOURCE5} %{buildroot}/%{_sysconfdir}/containers/mounts.conf
@@ -146,6 +169,9 @@ install -D -m 0644 common-%{commonver}/pkg/hooks/docs/oci-hooks.5 %{buildroot}/%
 install -D -m 0644 common-%{commonver}/docs/containers-mounts.conf.5 %{buildroot}/%{_mandir}/man5/
 install -D -m 0644 common-%{commonver}/docs/containers.conf.5 %{buildroot}/%{_mandir}/man5/
 
+install -D -m 0644 %{SOURCE12} %{buildroot}/%{_sysconfdir}/containers/policy.json.openSUSE
+install -D -m 0644 %{SOURCE3} %{buildroot}/%{_sysconfdir}/containers/policy.json.default
+
 %post
 # Comment out ostree_repo if it's blank [boo#1189893]
 sed -i 's/ostree_repo = ""/\#ostree_repo = ""/g' %{_sysconfdir}/containers/storage.conf
@@ -162,7 +188,6 @@ sed -i 's/ostree_repo = ""/\#ostree_repo = ""/g' %{_sysconfdir}/containers/stora
 %dir %{_datadir}/containers/oci/hooks.d
 %dir %{_datadir}/containers/systemd
 
-%config(noreplace) %{_sysconfdir}/containers/policy.json
 %config(noreplace) %{_sysconfdir}/containers/storage.conf
 %config(noreplace) %{_sysconfdir}/containers/registries.conf
 %config(noreplace) %{_sysconfdir}/containers/seccomp.json
@@ -178,5 +203,11 @@ sed -i 's/ostree_repo = ""/\#ostree_repo = ""/g' %{_sysconfdir}/containers/stora
 %files -n libcontainers-sles-mounts
 %config(noreplace) %{_sysconfdir}/containers/mounts.conf
 %{_datadir}/containers/mounts.conf
+
+%files -n libcontainers-openSUSE-policy
+%config(noreplace) %{_sysconfdir}/containers/policy.json.openSUSE
+
+%files -n libcontainers-default-policy
+%config(noreplace) %{_sysconfdir}/containers/policy.json.default
 
 %changelog

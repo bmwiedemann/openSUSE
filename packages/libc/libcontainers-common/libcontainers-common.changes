@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  5 12:04:33 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- Enforce BCI verification via Podman on openSUSE distributions
+  using the already shipped container signing keys.
+  (bsc#1197030)
+
+-------------------------------------------------------------------
 Tue May 16 12:51:34 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
 
 - Introduce new subpackage that adds SLE-specific mounts only
