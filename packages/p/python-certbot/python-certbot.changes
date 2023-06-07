@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Jun  7 15:37:48 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.6.0
+  * Support for Python 3.11 was added to Certbot and all of its components.
+  * The default key type for new certificates is now ECDSA secp256r1 (P-256). It was 
+    previously RSA 2048-bit. Existing certificates are not affected.
+  * acme and Certbot no longer support versions of ACME from before the RFC 8555 standard.
+  * acme and Certbot no longer support the old urn:acme:error: ACME error prefix.
+  * Removed the deprecated certbot-dns-cloudxns plugin.
+  * Certbot will now error if a certificate has --reuse-key set and a conflicting --key-type, 
+    --key-size or --elliptic-curve is requested on the CLI. Use --new-key to change the key 
+    while preserving --reuse-key.
+  * The zope based interfaces in certbot.interfaces have been removed in favor of the abc 
+    based interfaces found in the same module.
+  * Certbot no longer depends on zope.
+  * Removed some deprecated functions and attributes from certbot(.display)?.(crypto_)?util
+  * Removed deprecated functions certbot.tests.util.patch_get_utility*. Plugins should now patch 
+    certbot.display.util themselves in their tests or use certbot.tests.util.patch_display_util 
+    as a temporary workaround.
+  * Fixes a bug where the certbot working directory has unusably restrictive permissions on 
+    systems with stricter default umasks.
+  * Requests to subscribe to the EFF mailing list now time out after 60 seconds.
+  * Certbot will no longer respect very long challenge polling intervals, which may be suggested 
+    by some ACME servers. Certbot will continue to wait up to 90 seconds by default, or up to 
+    a total of 30 minutes if requested by the server via Retry-After.
+  * Allow a user to modify the configuration of a certificate without renewing it using the new 
+    reconfigure subcommand. See certbot help reconfigure for details.
+  * certbot show_account now displays the ACME Account Thumbprint.
+  * Certbot will no longer save previous CSRs and certificate private keys to /etc/letsencrypt/csr 
+    and /etc/letsencrypt/keys, respectively. These directories may be safely deleted.
+  * Certbot will now only keep the current and 5 previous certificates in the /etc/letsencrypt/archive 
+    directory for each certificate lineage. Any prior certificates will be automatically deleted upon 
+    renewal. This number may be further lowered in future releases.
+  * certbot.configuration.NamespaceConfig.key_dir and .csr_dir are now deprecated.
+  * We deprecated support for the update_symlinks command. Support will be removed in a following 
+    version of Certbot.
+  * Packaged tests for all Certbot components besides josepy were moved inside the _internal/tests module.
+  * Optionally sign the SOA query for dns-rfc2136, to help resolve problems with split-view DNS setups 
+    and hidden primary setups.
+  * There is now a new Other annotated challenge object to allow plugins to support entirely novel challenges.
+  * Certbot will no longer try to invoke plugins which do not subclass from the proper certbot.interfaces.{Installer,Authenticator} 
+    interface (e.g. certbot -i standalone will now be ignored). See GH-9664.
+- Drop the signature (last was certbot-1.31.0.tar.gz.asc) and python-certbot.keyring
+  * PyPI currently hides the signatures and plans to drop support
+  * https://github.com/certbot/certbot/issues/9707
+
+-------------------------------------------------------------------
 Tue Oct  4 15:32:12 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - Update to 1.31.0

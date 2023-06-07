@@ -1,7 +1,7 @@
 #
 # spec file for package python-certbot
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,16 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-certbot
-Version:        1.31.0
+Version:        2.6.0
 Release:        0
 Summary:        ACME client
 License:        Apache-2.0
 URL:            https://github.com/certbot/certbot
 Source0:        https://files.pythonhosted.org/packages/source/c/certbot/certbot-%{version}.tar.gz
-Source1:        https://files.pythonhosted.org/packages/source/c/certbot/certbot-%{version}.tar.gz.asc
-Source2:        %{name}.keyring
 BuildRequires:  %{python_module acme >= %{version}}
 BuildRequires:  %{python_module configargparse >= 0.9.3}
 BuildRequires:  %{python_module configobj >= 5.0.6}
-BuildRequires:  %{python_module cryptography >= 2.5.0}
+BuildRequires:  %{python_module cryptography >= 3.2.1}
 BuildRequires:  %{python_module distro >= 1.0.1}
 BuildRequires:  %{python_module josepy >= 1.13.0}
 BuildRequires:  %{python_module parsedatetime >= 2.4}
@@ -38,23 +36,18 @@ BuildRequires:  %{python_module pyRFC3339}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz >= 2019.3}
 BuildRequires:  %{python_module setuptools >= 41.6.0}
-BuildRequires:  %{python_module zope.component}
-BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-acme >= %{version}
 Requires:       python-configargparse >= 0.9.3
-Requires:       python-configobj
-Requires:       python-cryptography >= 2.5.0
+Requires:       python-configobj >= 5.0.6
+Requires:       python-cryptography >= 3.2.1
 Requires:       python-distro >= 1.0.1
-Requires:       python-future
 Requires:       python-josepy >= 1.9.0
 Requires:       python-parsedatetime >= 2.4
 Requires:       python-pyRFC3339
 Requires:       python-pytz >= 2019.3
 Requires:       python-setuptools >= 41.6.0
-Requires:       python-zope.component
-Requires:       python-zope.interface
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Provides:       certbot = %{version}
