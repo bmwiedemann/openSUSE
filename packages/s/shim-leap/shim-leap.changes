@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun  7 02:29:44 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update shim-install to support FDE
+  + Read GRUB_CRYPTODISK_PASSWORD and GRUB_TPM2_SEALED_KEY to
+    create the proper cryptomount command for grub.cfg
+  + Save the PCR snapshot if grub2 supports the command
+  + Support 'no_grub_install' to skip grub2-install
+  + Detect the OS ID of openSUSE Leap
+
+-------------------------------------------------------------------
 Thu May 25 07:48:54 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Remove the sym-links in /usr/lib64/efi for the newer distro

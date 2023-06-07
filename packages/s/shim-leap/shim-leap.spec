@@ -32,6 +32,7 @@ License:        BSD-2-Clause
 Group:          System/Boot
 Source:         shim-15.4-lp152.4.17.1.x86_64.rpm
 Source1:        README
+Source2:        shim-install
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  x86_64
 
@@ -56,6 +57,9 @@ rpm2cpio %{SOURCE0} | cpio --extract --unconditional --preserve-modification-tim
 # purely repackaged
 cp -a * %{buildroot}
 cp %{S:1} .
+
+# Override shim-install
+install -m 755 %{S:2} %{buildroot}/%{_sbindir}/shim-install
 
 %if %{undefined shim_lib64_share_compat}
 # Remove the sym-links in /usr/lib64/efi
