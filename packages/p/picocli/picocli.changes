@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jun  5 17:59:16 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Require java 9 for build so that we can build the module-info.java
+  always
+- Build all classes with source/target 8 and the module-info.java
+  with release 9, which makes the jars usable with java 8 and higher
+
+-------------------------------------------------------------------
+Thu Jun  1 11:46:11 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Upgrade to version 4.7.3
+  * full changes from previous versions are in
+    https://github.com/remkop/picocli/blob/v4.7.3/RELEASE-NOTES.md
+- Package artifacts: picocli-{codegen,shell-jline2}
+- JPMS: package module discriptors when building with java >= 9
+- Take POMs from Maven Central
+
+-------------------------------------------------------------------
 Fri Jun 24 09:48:56 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build picocli using ant to avoid cycles
