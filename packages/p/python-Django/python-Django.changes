@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Jun  6 06:35:28 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 4.2.2
+  + Bugfixes
+    * Fixed a regression in Django 4.2 that caused an unnecessary
+      DBMS_LOB.SUBSTR() wrapping in the __isnull and __exact=None
+      lookups for TextField()/BinaryField() on Oracle
+    * Restored, following a regression in Django 4.2, get_prep_value()
+      call in JSONField subclasses
+    * Fixed a regression in Django 4.2 that caused a crash of
+      QuerySet.defer() when passing a ManyToManyField or
+      GenericForeignKey reference. While doing so is a no-op, it was
+      allowed in older version
+    * Fixed a regression in Django 4.2 that caused a crash of
+      QuerySet.only() when passing a reverse OneToOneField reference
+    * Fixed a bug in Django 4.2 where makemigrations --update didn’t
+      respect the --name option
+    * Fixed a performance regression in Django 4.2 when compiling
+      queries without ordering
+    * Fixed a regression in Django 4.2 where nonexistent stylesheet
+      was linked on a “Congratulations!” page
+    * Fixed a regression in Django 4.2 that caused a crash of
+      QuerySet.aggregate() with expressions referencing other
+      aggregates
+    * Fixed a regression in Django 4.2 that caused a crash of
+      QuerySet.aggregate() with aggregates referencing subqueries
+    * Fixed a regression in Django 4.2 that caused a crash of
+      querysets on SQLite when filtering on DecimalField against
+      values outside of the defined range
+    * Fixed a regression in Django 4.2 that caused a serialization
+      crash on a ManyToManyField without a natural key when its
+      Manager’s base QuerySet used select_related()
+
+-------------------------------------------------------------------
 Thu May  4 07:02:58 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 4.2.1
