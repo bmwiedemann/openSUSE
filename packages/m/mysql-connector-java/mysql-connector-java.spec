@@ -17,12 +17,12 @@
 
 
 %define new_name mysql-connector-j
-
 Name:           mysql-connector-java
 Version:        8.0.33
 Release:        0
 Summary:        Official JDBC Driver for MySQL
 License:        GPL-2.0-or-later
+Group:          Development/Languages/Java
 URL:            https://dev.mysql.com/downloads/connector/j/
 Source0:        https://github.com/mysql/mysql-connector-j/archive/refs/tags/%{version}.tar.gz#:/%{name}-%{version}.tar.gz
 # NOTE:
@@ -32,7 +32,6 @@ Source0:        https://github.com/mysql/mysql-connector-j/archive/refs/tags/%{v
 #   Source from:
 #   https://github.com/mysql/mysql-connector-j/commit/6976d9d779b498c254fc5cab5e69cfc74fc3e4f0
 Source1:        mysql-connector-java-generated-for-protobuf-3.9.2.tar.xz
-Group:          Development/Languages/Java
 Patch0:         javac-check.patch
 # NOTE: Oracle OCI is not packaged yet
 #   The patch doesn't remove the file AuthenticationOciClient.java
@@ -48,11 +47,9 @@ BuildRequires:  javapackages-local
 BuildRequires:  javassist >= 3.28.0
 BuildRequires:  junit
 BuildRequires:  protobuf-java >= 3.9.2
-BuildRequires:  reload4j
 BuildRequires:  slf4j
 BuildRequires:  xz
 Requires:       jta >= 1.0
-Requires:       reload4j
 Requires:       slf4j
 Provides:       mm.mysql = %{version}
 Obsoletes:      mm.mysql < %{version}
@@ -62,6 +59,13 @@ Provides:       %{new_name}
 Provides:       %{name}-manual = %{version}
 Obsoletes:      %{name}-manual < %{version}
 BuildArch:      noarch
+%if 0%{?suse_version} < 1500
+BuildRequires:  log4j
+Requires:       log4j
+%else
+BuildRequires:  reload4j
+Requires:       reload4j
+%endif
 
 %description
 MySQL Connector/J is a native Java driver that converts JDBC (Java
@@ -83,7 +87,7 @@ set that supports the capabilities of MySQL.
 # from commit 6976d9d779b498c254fc5cab5e69cfc74fc3e4f0, which is
 # the last version compatible with that version of protobuf and
 # are equivalent in functionality
-tar -xvf %SOURCE1 -C .
+tar -xvf %{SOURCE1} -C .
 %endif
 
 # remove OCI support
@@ -115,8 +119,8 @@ export CLASSPATH=$(build-classpath \
     -Dant.build.javac.source=1.8 \
     -Dant.build.javac.target=1.8 \
     -Dcom.mysql.cj.build.jdk=%{java_home} \
-    -Dcom.mysql.cj.build.jdk.javac=%{javac} \
-    -Dcom.mysql.cj.build.jdk.java=%{java} \
+    -Dcom.mysql.cj.build.jdk.javac=%javac \
+    -Dcom.mysql.cj.build.jdk.java=%java \
     build
 
 %install

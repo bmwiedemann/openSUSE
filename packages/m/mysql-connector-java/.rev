@@ -375,4 +375,12 @@
     <comment></comment>
     <requestid>1086740</requestid>
   </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>bd7de52fd3adc38d9f86f44ece43dfb8</srcmd5>
+    <version>8.0.33</version>
+    <time>1686171992</time>
+    <user>dimstar_suse</user>
+    <comment>Allow building on sle12-sp1</comment>
+    <requestid>1091133</requestid>
+  </revision>
 </revisionlist>

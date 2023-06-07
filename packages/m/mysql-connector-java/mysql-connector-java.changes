@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  6 16:58:51 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Wrap the reload4j/log4j dependencies in conditions, so that the
+  package can be built on SLE12.
+
+-------------------------------------------------------------------
 Tue Apr 25 07:33:23 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Security fix:
