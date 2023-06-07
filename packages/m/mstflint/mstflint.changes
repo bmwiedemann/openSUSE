@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun  7 11:59:17 UTC 2023 - pgajdos@suse.com
+
+- version update to 4.23.0
+  https://github.com/Mellanox/mstflint/releases/download/v4.23.0-1/MSTFLINT.Package.-Firmware.Burning.and.Diagnostics.Tools.Documentation.v4.23.0.pdf
+- modified patches
+  % PIE.patch (refreshed)
+
+-------------------------------------------------------------------
 Mon Oct 17 13:58:26 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Updated fix-race-condition-during-install.patch to fix another

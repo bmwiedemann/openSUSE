@@ -8,12 +8,12 @@ Date:   Fri Jul 9 13:01:55 2021 +0200
     
     Signed-off-by: Hardware error from APEI Generic Hardware Error Source: 0
 
-diff --git configure.ac configure.ac
-index 35049bcbbed4..273ce3186936 100644
---- configure.ac
+Index: configure.ac
+===================================================================
+--- configure.ac.orig
 +++ configure.ac
-@@ -59,6 +59,9 @@ LDL=""
- default_en_inband=""
+@@ -91,6 +91,9 @@ AM_CONDITIONAL(KERNEL_BUILD,[test ${KERN
+ AC_SUBST(KERNEL_BUILD)
  
  LDFLAGS="${LDFLAGS} -L/usr/local/lib -L/usr/local/lib64 -L/usr/lib64"
 +if test "$host_cpu" != "s390x"; then
