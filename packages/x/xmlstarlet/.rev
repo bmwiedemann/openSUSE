@@ -208,4 +208,14 @@
     <comment>1</comment>
     <requestid>393798</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>8035a6b701bc8e001e5434f237fb9dd2</srcmd5>
+    <version>1.6.1</version>
+    <time>1686253314</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise spec file 
+
+- Remove unused rpmlintrc filter</comment>
+    <requestid>1091257</requestid>
+  </revision>
 </revisionlist>
