@@ -2575,4 +2575,13 @@ so you might want to pick this SR into Staging:O (forwarded request 953283 from 
     for the full upstream changelog (forwarded request 1090054 from cboltz)</comment>
     <requestid>1090055</requestid>
   </revision>
+  <revision rev="191" vrev="2">
+    <srcmd5>caa114ca9a30692cd157ccf1726b6a78</srcmd5>
+    <version>3.1.4</version>
+    <time>1686253303</time>
+    <user>dimstar_suse</user>
+    <comment>- fix aa-status --json output (aa-status-fix-json-mr1046.patch,
+  boo#1211980#c12) (forwarded request 1091162 from cboltz)</comment>
+    <requestid>1091163</requestid>
+  </revision>
 </revisionlist>

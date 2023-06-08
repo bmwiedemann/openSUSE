@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  6 21:39:15 UTC 2023 - Christian Boltz <suse-beta@cboltz.de>
+
+- fix aa-status --json output (aa-status-fix-json-mr1046.patch,
+  boo#1211980#c12)
+
+-------------------------------------------------------------------
 Mon May 29 16:55:46 UTC 2023 - Christian Boltz <suse-beta@cboltz.de>
 
 - update to AppArmor 3.1.4
