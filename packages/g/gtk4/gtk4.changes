@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jun  5 18:58:41 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.10.4:
+  + GtkFileChooser: Fix some memory leaks
+  + GtkUriLauncher: Validate the uri
+  + GtkStack: Fix a crash
+  + GtkGridView: Respect css border-spacing
+  + GtkScrolledWindow: Propagate child measure size whenever
+    possible
+  + GtkPopoverMenu: Avoid unnecessary left padding
+  + GtkSearchEntry: Improve size allocation for the clear icon
+  + X11:
+    - Avoid black flickering with xwayland window decorations
+    - Trap XRandr errors
+  + CSS: Various fixes to transitions
+  + Updated translations.
+- Drop patches fixed upstream:
+  + fix-gridview.patch
+  + gtk4-correctly-refresh-after-delete.patch
+  + 966a2350.patch
+
+-------------------------------------------------------------------
 Sun Jun  4 12:17:15 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add fix-gridview.patch: Add border-spacing where it was missed.

@@ -29,7 +29,7 @@
 %endif
 
 Name:           gtk4
-Version:        4.10.3
+Version:        4.10.4
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later
@@ -46,12 +46,6 @@ Source99:       gtk4-rpmlintrc
 # https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/4756
 # PATCH-FIX-OPENSUSE 0001-Revert-Meson-Simplify-pkgconfig-file-generator.patch -- Revert "Meson: Simplify pkgconfig file generator"
 Patch0:         0001-Revert-Meson-Simplify-pkgconfig-file-generator.patch
-# PATCH-FIX-UPSTREAM gtk4-correctly-refresh-after-delete.patch glgo#GNOME/nautilus#2941 badshah400@gmail.com -- Deleting files causes folders in the directory to disappear and reappear after a refresh
-Patch1:         https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/5873.patch#/gtk4-correctly-refresh-after-delete.patch
-# PATCH-FIX-UPSTREAM 966a2350.patch glgo#GNOME/gtk#5798 -- css: Don't transition to currentColor
-Patch2:         https://gitlab.gnome.org/GNOME/gtk/-/commit/966a2350.patch
-# PATCH-FIX-UPSTREAM fix-gridview.patch glgo#GNOME/nautilus#2980 -- Add border-spacing where it was missed
-Patch3:         fix-gridview.patch
 
 BuildRequires:  cups-devel >= 2.0
 # We do not support building against cups 2.3 betas
