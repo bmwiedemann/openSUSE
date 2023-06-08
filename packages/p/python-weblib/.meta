@@ -1,5 +1,0 @@
-<package name="python-weblib" project="openSUSE:Factory">
-  <title>python-weblib</title>
-  <description>Weblib provides tools to solve typical tasks in web scraping.</description>
-  <devel project="devel:languages:python" package="python-weblib"/>
-</package>
