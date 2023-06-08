@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 05 18:52:18 UTC 2023 - bjorn.lie@gmail.com
+
+- Update to version 0.72.2:
+  * emulation: Fix infinite loop on non-number OSC 104 param
+  * widget: Don't consume right clicks on gtk4
+- Drop 24547fb3.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Tue May  9 08:53:35 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 24547fb3.patch: widget: Don't consume right clicks on gtk4.
