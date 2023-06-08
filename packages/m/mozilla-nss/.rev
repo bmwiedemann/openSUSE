@@ -2934,4 +2934,14 @@
     <comment></comment>
     <requestid>1090032</requestid>
   </revision>
+  <revision rev="202" vrev="1">
+    <srcmd5>e83354a79d824c6ee1ec57de3b685505</srcmd5>
+    <version>3.89.1</version>
+    <time>1686253304</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.89.1
+  * bmo#1804505 - Update the technical constraints for KamuSM.
+  * bmo#1822921 - Add BJCA Global Root CA1 and CA2 root certificates.</comment>
+    <requestid>1091201</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun  3 08:20:40 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.89.1
+  * bmo#1804505 - Update the technical constraints for KamuSM.
+  * bmo#1822921 - Add BJCA Global Root CA1 and CA2 root certificates.
+
+-------------------------------------------------------------------
 Wed May 31 12:54:20 UTC 2023 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Move testsuite to %check-section and move env-variables to

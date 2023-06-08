@@ -22,9 +22,9 @@
 %define nspr_ver %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
 %define nssdbdir %{_sysconfdir}/pki/nssdb
 Name:           mozilla-nss
-Version:        3.89
+Version:        3.89.1
 Release:        0
-%define underscore_version 3_89
+%define underscore_version 3_89_1
 Summary:        Network Security Services
 License:        MPL-2.0
 Group:          System/Libraries
