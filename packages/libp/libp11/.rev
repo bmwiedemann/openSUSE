@@ -246,4 +246,16 @@
     <comment>- Fix build against openSSL 3. (forwarded request 1063384 from dimstar)</comment>
     <requestid>1063450</requestid>
   </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>432d50a70bf7c291c14cf1edbc85acd1</srcmd5>
+    <version>0.4.12</version>
+    <time>1686253330</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support for openSSL 3.1:
+  + Add libp11-openssl-3.1.patch: handle openSSL 3.1 the same as 3.0
+  + Add libtool BuildRequires and call autoreconf: abobe patch
+    touches the build system.
+  + Add baselibs.conf</comment>
+    <requestid>1091704</requestid>
+  </revision>
 </revisionlist>

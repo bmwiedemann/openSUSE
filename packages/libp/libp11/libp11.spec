@@ -35,7 +35,10 @@ Source0:        https://github.com/OpenSC/libp11/releases/download/%{name}-%{ver
 Source1:        https://github.com/OpenSC/libp11/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source3:        %{name}-rpmlintrc
+Source4:        baselibs.conf
+Patch0:         libp11-openssl-3.1.patch
 BuildRequires:  fdupes
+BuildRequires:  libtool
 BuildRequires:  p11-kit-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(openssl)
@@ -103,11 +106,12 @@ thus is "derived from the RSA Security Inc. PKCS #11 Cryptographic
 Token Interface (Cryptoki)".
 
 %prep
-%setup -q
+%autosetup -p1
 # Since the library name changes based on used openssl, we have to create baselibs.conf dynamically
 echo %{libname} > %{_sourcedir}/baselibs.conf
 
 %build
+autoreconf -fiv
 %configure \
   --disable-static \
   --disable-silent-rules \

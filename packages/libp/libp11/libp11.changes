@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun  6 12:24:11 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add support for openSSL 3.1:
+  + Add libp11-openssl-3.1.patch: handle openSSL 3.1 the same as 3.0
+  + Add libtool BuildRequires and call autoreconf: abobe patch
+    touches the build system.
+  + Add baselibs.conf
+
+-------------------------------------------------------------------
 Mon Feb  6 10:41:29 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build against openSSL 3.
