@@ -493,7 +493,7 @@ SKIP_ARGS+=" --skip-slow --skip-db"
 %endif
 
 # The test collection consumes a lot of memory per worker. This sets %%jobs.
-%limit_build -m 2048
+%limit_build -m 3072
 
 %{python_expand $python -c 'import pandas; print(pandas.__path__); print(pandas.show_versions())'
 # cache: can't just say no cacheprovider, because one test checks for the --lf option of pytest-cache
