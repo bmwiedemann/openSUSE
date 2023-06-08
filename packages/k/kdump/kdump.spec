@@ -25,7 +25,11 @@
 %define distro_prefix leap%{sle_version}.%{_arch}
 %endif
 %else
+%if 0%{suse_version} >= 1600
+%define distro_prefix alp%{suse_version}.%{_arch}
+%else
 %define distro_prefix sle%{sle_version}.%{_arch}
+%endif
 %endif
 
 %ifarch aarch64
@@ -49,7 +53,7 @@
 %define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           kdump
-Version:        1.0.2+git50.g4b01402
+Version:        1.0.3
 Release:        0
 Summary:        Kernel crash dump scripts and utilities
 License:        GPL-2.0-or-later
@@ -227,7 +231,7 @@ rm %{_localstatedir}/log/dump >/dev/null 2>&1 || true
 %files
 %defattr(-,root,root)
 %license COPYING
-%doc ChangeLog README NEWS
+%doc README NEWS
 %{_sbindir}/kdumptool
 %{_sbindir}/mkdumprd
 %{_mandir}/man5/kdump.5%{?ext_man}
