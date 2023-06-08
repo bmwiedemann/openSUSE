@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  6 18:22:01 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.1.1:
+  + Add c++23 to the list of C++ standards.
+  + Specify c++ 11 flag as code uses c++ 11 features.
+  + fix regression in precomputing CMAKE_SIZEOF_VOID_P.
+
+-------------------------------------------------------------------
 Fri Apr 14 10:32:29 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Only run tests for arches where there is a remote chance they
