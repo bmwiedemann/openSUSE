@@ -371,4 +371,12 @@
     <comment>Update to spice version 0.15.1</comment>
     <requestid>1039021</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>6b27a922ffaa5c6a01c9f207de2f0dbc</srcmd5>
+    <version>0.15.2</version>
+    <time>1686253319</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1091338</requestid>
+  </revision>
 </revisionlist>

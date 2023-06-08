@@ -1,7 +1,7 @@
 #
 # spec file for package spice
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 
 %define libname libspice-server1
 Name:           spice
-Version:        0.15.1
+Version:        0.15.2
 Release:        0
 Summary:        SPICE client and server library
 License:        GPL-2.0-or-later OR LGPL-2.1-or-later
