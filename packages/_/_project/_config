@@ -797,6 +797,9 @@ Prefer: -python39
 Prefer: -python39-hotdoc
 Prefer: -python39-txt2tags -python311-txt2tags
 
+# unresolvable: have choice for libcontainers-policy >= 20230214 needed by libcontainers-common: libcontainers-default-policy libcontainers-openSUSE-policy
+Prefer: -libcontainers-default-policy
+
 
 Prefer: -python39-urllib3_1 -python310-urllib3_1 -python311-urllib3_1
 # have choice for python3-magic: python38-magic python38-python-magic
@@ -3192,6 +3195,7 @@ BuildFlags: onlybuild:rust1.66
 BuildFlags: onlybuild:rust1.67
 BuildFlags: onlybuild:rust1.68
 BuildFlags: onlybuild:rust1.69
+BuildFlags: onlybuild:rust1.70
 BuildFlags: onlybuild:samba
 BuildFlags: onlybuild:sane-backends
 BuildFlags: onlybuild:sassc
