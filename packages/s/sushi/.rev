@@ -450,4 +450,15 @@
     <time>1663782808</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>98a3fb1e3605ea545d58eb8b7e1e32e3</srcmd5>
+    <version>44.2</version>
+    <time>1686253324</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 44.2:
+  + Fix loading certain documents in evince.
+  + Updated translations.
+</comment>
+    <requestid>1091417</requestid>
+  </revision>
 </revisionlist>
