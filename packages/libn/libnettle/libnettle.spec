@@ -19,7 +19,7 @@
 %define soname 8
 %define hogweed_soname 6
 Name:           libnettle
-Version:        3.9
+Version:        3.9.1
 Release:        0
 Summary:        Cryptographic Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -152,7 +152,7 @@ chmod 0755 %{buildroot}%{_libdir}/libhogweed.so.%{hogweed_soname}
 
 %files -n libnettle-devel
 %license COPYING*
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS ChangeLog NEWS README descore.README nettle.html nettle.pdf
 %{_includedir}/nettle
 %{_libdir}/libnettle.so
 %{_libdir}/libhogweed.so

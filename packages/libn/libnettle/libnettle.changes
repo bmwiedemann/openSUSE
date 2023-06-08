@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun  8 08:01:19 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Include the nettle library manual in HTML and PDF formats in
+  the devel package.
+
+-------------------------------------------------------------------
+Wed Jun  7 06:04:06 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.9.1: [bsc#1212112]
+  * Fix bug in the new OCB code may be exploitable for denial of
+    service or worse due to memory corruption
+
+-------------------------------------------------------------------
 Mon May 15 19:20:37 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.9

@@ -426,4 +426,12 @@
     <comment>libnettle 3.9 (forwarded request 1087283 from AndreasStieger)</comment>
     <requestid>1087351</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>f6e908b2273e908aafa1371a718e9e30</srcmd5>
+    <version>3.9.1</version>
+    <time>1686253320</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1091398</requestid>
+  </revision>
 </revisionlist>
