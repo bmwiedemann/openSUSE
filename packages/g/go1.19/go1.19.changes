@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun  6 19:13:57 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.19.10 (released 2023-06-06) includes four security fixes to
+  the cmd/go and runtime packages, as well as bug fixes to the
+  compiler, the go command, and the runtime.
+  Refs boo#1200441 go1.19 release tracking
+  CVE-2023-29402 CVE-2023-29403 CVE-2023-29404 CVE-2023-29405
+  * go#60515 go#60167 boo#1212073 security: fix CVE-2023-29402 cmd/go: cgo code injection
+  * go#60517 go#60272 boo#1212074 security: fix CVE-2023-29403 runtime: unexpected behavior of setuid/setgid binaries
+  * go#60511 go#60305 boo#1212075 security: fix CVE-2023-29404 cmd/go: improper sanitization of LDFLAGS
+  * go#60513 go#60306 boo#1212076 security: fix CVE-2023-29405 cmd/go: improper sanitization of LDFLAGS
+  * go#59974 cmd/compile: multiple memories live at block start
+  * go#60000 cmd/go: missing checksums for dependencies of go get arguments and tests of external dependencies
+  * go#60457 cmd/go: document GOROOT/bin/go PATH entry for go test and go generate
+
+-------------------------------------------------------------------
 Wed May  3 23:07:16 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Revert re-enable binary stripping and debuginfo boo#1210938.
