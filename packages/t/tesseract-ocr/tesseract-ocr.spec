@@ -16,9 +16,9 @@
 #
 
 
-%define lname	libtesseract-5_3_0
+%define lname	libtesseract5
 Name:           tesseract-ocr
-Version:        5.3.0
+Version:        5.3.1
 Release:        0
 Summary:        Open Source OCR Engine
 License:        Apache-2.0 AND GPL-2.0-or-later
@@ -26,12 +26,17 @@ URL:            https://github.com/tesseract-ocr/tesseract
 Source0:        https://github.com/tesseract-ocr/tesseract/archive/refs/tags/%{version}.tar.gz#/tesseract-%{version}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  asciidoc
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  chrpath
-BuildRequires:  cmake
 BuildRequires:  curl-devel
 BuildRequires:  doxygen
 BuildRequires:  fdupes
+%if 0%{?suse_version} > 1550
 BuildRequires:  gcc-c++
+%else
+BuildRequires:  gcc12-c++
+%endif
 BuildRequires:  libtool
 BuildRequires:  libxslt-tools
 BuildRequires:  opencl-headers
@@ -77,20 +82,24 @@ open-sourced by HP and UNLV in 2005. From 2007 it is developed by Google.
 %autosetup -n tesseract-%{version} -p1
 
 %build
-%cmake -DCMAKE_INSTALL_LIBDIR=%{_lib} -DTESSDATA_PREFIX=%{_datadir}
-%cmake_build
+%if 0%{suse_version} < 1550
+export CC=gcc-12
+export CXX=g++-12
+%endif
 
-chrpath --delete src/training/libpango_training.so
+autoreconf -fiv
+%configure \
+  --enable-opencl \
+   --disable-static\
+   --with-gnu-ld
 
-# Manually build manfiles, cmake does not build them
-cd ../doc
-sh generate_manpages.sh
-ls -alh
+%make_build -j1 all training doc
 
 %install
-%cmake_install
-install -D build/src/training/libpango_training.so \
-	%{buildroot}%{_libdir}/libpango_training.so
+%make_install all training-install
+
+rm -f %{buildroot}%{_libdir}/libtesseract.la
+
 mkdir -p %{buildroot}%{_mandir}/{man1,man5}/
 cp -a doc/*.1 %{buildroot}%{_mandir}/man1/
 cp -a doc/*.5 %{buildroot}%{_mandir}/man5/
@@ -106,9 +115,6 @@ cp -a tessdata/pdf.ttf %{buildroot}/%{_datadir}/tessdata/
 %doc AUTHORS ChangeLog README.md
 %license LICENSE
 %{_bindir}/*
-%{_libdir}/libcommon_training.so
-%{_libdir}/libpango_training.so
-%{_libdir}/libunicharset_training.so
 %dir %{_datadir}/tessdata
 %{_datadir}/tessdata/configs/
 %{_datadir}/tessdata/tessconfigs/
@@ -119,7 +125,6 @@ cp -a tessdata/pdf.ttf %{buildroot}/%{_datadir}/tessdata/
 %files devel
 %{_includedir}/tesseract
 %{_libdir}/libtesseract.so
-%{_libdir}/cmake/tesseract/
 %{_libdir}/pkgconfig/*.pc
 
 %files -n %{lname}

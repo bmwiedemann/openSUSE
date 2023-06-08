@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun  8 15:10:09 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 5.3.1
+- revert back to autoconf build as upstrem doesn't support CMAKE
+   outside windows
+  * Bugfixes for special case scenarios
+
+-------------------------------------------------------------------
 Wed Mar  8 10:11:30 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Build AVX2 enabled hwcaps library for x86_64-v3
