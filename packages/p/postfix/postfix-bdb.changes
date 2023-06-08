@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue Jun  6 18:37:03 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 3.8.1
+  * Optional: harden a Postfix SMTP server against remote SMTP
+    clients that violate RFC 2920 (or 5321) command pipelining
+    constraints. With "smtpd_forbid_unauth_pipelining = yes", the
+    server disconnects a client immediately, after responding with
+    "554 5.5.0 Error: SMTP protocol synchronization" and after
+    logging "improper command pipelining" with the unexpected remote
+    SMTP client input. This feature is disabled by default in Postfix
+    3.5-3.8 to avoid breaking home-grown utilities, but it is enabled
+    by default in Postfix 3.9. A similar feature is enabled by
+    default in the Exim SMTP server.
+  * Optional: some OS distributions crank up TLS security to 11,
+    and in doing so increase the number of plaintext email deliveries.
+    This introduces basic OpenSSL configuration file support that
+    may be used to override OS-level settings.
+    Details are in the postconf(5) manpage under tls_config_file
+    and tls_config_name.
+  * Bugfix (defect introduced: Postfix 1.0): the command "postconf
+    .. name=v1 .. name=v2 .." (multiple instances of the same
+    parameter name) created multiple main.cf name=value entries
+    with the same parameter name. It now logs a warning and skips
+    the earlier name(s) and value(s). Found during code maintenance.
+  * Bugfix (defect introduced: Postfix 3.3): the command "postconf
+    -M name1/type1='name2 type2 ...'" died with a segmentation
+    violation when the request matched multiple master.cf entries.
+    The master.cf file was not damaged. Problem reported by SATOH
+    Fumiyasu.
+  * Bugfix (defect introduced: Postfix 2.11): the command "postconf
+    -M name1/type1='name2 type2 ...'" could add a service definition
+    to master.cf that conflicted with an already existing service
+    definition. It now replaces all existing service definitions
+    that match the service pattern 'name1/type1' or the service
+    name and type in 'name2 type2 ...' with a single service
+    definition 'name2 type2 ...'. Problem reported by SATOH Fumiyasu.
+  * Bugfix (defect introduced: Postfix 3.8) the posttls-finger
+    command could access uninitialized memory when reconnecting.
+    This also fixes a malformed warning message when a destination
+    contains ":service" information. Reported by Thomas Korbar.
+  * Bugfix (defect introduced: Postfix 3.2): the MySQL client could
+    return "not found" instead of "error" (for example, resulting
+    in a 5XX SMTP status instead of 4XX) during the time that all
+    MySQL server connections were turned down after error. Found
+    during code maintenance. File: global/dict_mysql.c. This was
+    already fixed in Postfix 3.4-3.7.
+
+-------------------------------------------------------------------
 Tue Apr 18 18:14:49 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 3.8.0
