@@ -1,7 +1,7 @@
 #
 # spec file for package python-scour
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %define oldpython python
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-scour
 Version:        0.38.2
 Release:        0
@@ -26,14 +25,14 @@ License:        Apache-2.0
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/oberstet/scour
 Source:         https://github.com/scour-project/scour/archive/v%{version}/scour-%{version}.tar.gz
+# https://github.com/scour-project/scour/pull/306
+Patch0:         python-scour-no-python2.patch
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-setuptools
-Requires:       python-six >= 1.9.0
 %ifpython2
 Requires:       python-xml
 %endif
@@ -51,7 +50,7 @@ documents.
 The goal of scour is to provide an identically rendered image.
 
 %prep
-%setup -q -n scour-%{version}
+%autosetup -p1 -n scour-%{version}
 # remove unwanted shebang
 sed -i '/^#!/ d' scour/{scour.py,yocto_css.py,svg_transform.py}
 
