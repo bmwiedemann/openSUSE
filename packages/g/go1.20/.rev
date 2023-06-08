@@ -106,4 +106,26 @@
 - Revise changelog formatting of recent CVEs for readability (forwarded request 1084133 from jfkw)</comment>
     <requestid>1084135</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3906a3e0f7257f48aae426450b087dec</srcmd5>
+    <version>1.20.5</version>
+    <time>1686253301</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.20.5 (released 2023-06-06) includes four security fixes to
+  the cmd/go and runtime packages, as well as bug fixes to the
+  compiler, the go command, the runtime, and the crypto/rsa, net,
+  and os packages.
+  Refs boo#1206346 go1.20 release tracking
+  CVE-2023-29402 CVE-2023-29403 CVE-2023-29404 CVE-2023-29405
+  * go#60516 go#60167 boo#1212073 security: fix CVE-2023-29402 cmd/go: cgo code injection
+  * go#60518 go#60272 boo#1212074 security: fix CVE-2023-29403 runtime: unexpected behavior of setuid/setgid binaries
+  * go#60512 go#60305 boo#1212075 security: fix CVE-2023-29404 cmd/go: improper sanitization of LDFLAGS
+  * go#60514 go#60306 boo#1212076 security: fix CVE-2023-29405 cmd/go: improper sanitization of LDFLAGS
+  * go#58927 crypto/rsa: 4096 bit keys are not generated with BoringCrypto
+  * go#59975 cmd/compile: multiple memories live at block start
+  * go#60001 cmd/go: missing checksums for dependencies of go get arguments and tests of external dependencies
+  * go#60217 os: Read of a device driver fails only with Go 1.20
+  * go#60458 cmd/go: document GOROOT/bin/go PATH entry for go test and go generate (forwarded request 1091158 from jfkw)</comment>
+    <requestid>1091160</requestid>
+  </revision>
 </revisionlist>
