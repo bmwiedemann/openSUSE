@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun  7 08:03:52 UTC 2023 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Prevent setting the volume label for a mounted btrfs or swap
+  (bsc#1211337)
+- 4.6.11
+
+-------------------------------------------------------------------
 Fri May 19 15:36:55 UTC 2023 - José Iván López González <jlopez@suse.com>
 
 - Add bus_id for DASD (gh#yast/yast-storage-ng#1339,
