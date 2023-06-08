@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun  7 09:07:45 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 67.8.0:
+  * #3128: In deprecated easy_install, reload and merge the pth file
+    before saving.
+  * #3915: Adequate tests to the latest changes in virtualenv for
+    Python 3.12.
+
+-------------------------------------------------------------------
 Thu May  4 12:50:17 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Testing must be single-spec as well.

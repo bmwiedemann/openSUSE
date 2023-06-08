@@ -1088,4 +1088,12 @@
     <comment>- Testing must be single-spec as well. (forwarded request 1084683 from mcepl)</comment>
     <requestid>1084684</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>ca3e10507b9fd8f99c864311f7914b39</srcmd5>
+    <version>67.8.0</version>
+    <time>1686253311</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1091248</requestid>
+  </revision>
 </revisionlist>
