@@ -5,7 +5,7 @@ Description=Load the IMA Policy
 Type=oneshot
 RemainAfterExit=yes
 Environment=IMA_SECFS_POLICY=/sys/kernel/security/ima/policy
-Environment=IMA_POLICY=/etc/ima/ima-policy
+Environment=IMA_POLICY=/etc/ima/ima-policy.POST-SYSTEMD
 ExecStart=bash -c '[ -f $IMA_SECFS_POLICY ] && [ -f $IMA_POLICY ] && cat $IMA_POLICY > $IMA_SECFS_POLICY'
 TimeoutStartSec=0
 

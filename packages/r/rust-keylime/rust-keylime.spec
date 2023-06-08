@@ -51,7 +51,7 @@ BuildRequires:  tpm2-0-tss-devel
 Requires:       libtss2-tcti-device0
 Requires:       logrotate
 Requires:       tpm2.0-abrmd
-Recommends:     keylime-ima-policy
+Recommends:     (keylime-ima-policy if selinux-policy-targeted)
 Provides:       user(keylime)
 %sysusers_requires
 # Disable this line if you wish to support all platforms.  In most
