@@ -1,0 +1,38 @@
+Index: OpenRGB-release_0.8/Controllers/ENESMBusController/ENESMBusInterface/ENESMBusInterface_SpectrixS40G.cpp
+===================================================================
+--- OpenRGB-release_0.8.orig/Controllers/ENESMBusController/ENESMBusInterface/ENESMBusInterface_SpectrixS40G.cpp
++++ OpenRGB-release_0.8/Controllers/ENESMBusController/ENESMBusInterface/ENESMBusInterface_SpectrixS40G.cpp
+@@ -10,6 +10,7 @@
+ #include "ENESMBusInterface_SpectrixS40G.h"
+ #include <sys/ioctl.h>
+ #include <cstring>
++#include <cstdint>
+ 
+ /*---------------------------------------------------------------------*\
+ | Functions for submitting NVME admin passthrough command taken from    |
+ 
+Index: OpenRGB-release_0.8/Controllers/SteelSeriesController/SteelSeriesMouseController.h
+===================================================================
+--- OpenRGB-release_0.8.orig/Controllers/SteelSeriesController/SteelSeriesMouseController.h
++++ OpenRGB-release_0.8/Controllers/SteelSeriesController/SteelSeriesMouseController.h
+@@ -10,6 +10,7 @@
+ #include <hidapi/hidapi.h>
+ #include <vector>
+ #include "SteelSeriesGeneric.h"
++#include <cstdint>
+ 
+ #pragma once
+ 
+Index: OpenRGB-release_0.8/Controllers/SteelSeriesController/SteelSeriesRivalController.cpp
+===================================================================
+--- OpenRGB-release_0.8.orig/Controllers/SteelSeriesController/SteelSeriesRivalController.cpp
++++ OpenRGB-release_0.8/Controllers/SteelSeriesController/SteelSeriesRivalController.cpp
+@@ -11,6 +11,7 @@
+ #include <cstring>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <cstdint>
+ 
+ static void send_usb_msg(hid_device* dev, char * data_pkt, unsigned int size)
+ {
+

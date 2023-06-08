@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May  2 13:59:02 UTC 2023 - Michael Gumsley <gumsley_6@hotmail.com>
+
+- Fix openSUSE build:
+  * Add OpenRGB-mbedTLS3-hueplusplus.patch: Remove certs.h
+    dependency for embedded hueplusplus library.
+  * Add OpenRGB-GCC13.patch: Apply GCC 13 compilation fixes from
+    upstream.
+
+-------------------------------------------------------------------
 Mon Nov 28 09:31:08 UTC 2022 - Michael Gumsley <gumsley_6@hotmail.com>
 
 - OpenSUSE Build:

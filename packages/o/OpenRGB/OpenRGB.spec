@@ -1,7 +1,7 @@
 #
 # spec file for package OpenRGB
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           OpenRGB
 Version:        0.8
 Release:        0
@@ -22,9 +23,15 @@ Summary:        Open source RGB lighting control
 License:        GPL-2.0-only
 URL:            https://gitlab.com/CalcProgrammer1/OpenRGB
 Source0:        https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_%{version}/OpenRGB-release_%{version}.tar.gz
+# PATCH-FIX-OPENSUSE OpenRGB-mbedTLS3-hueplusplus.patch
+Patch0:         OpenRGB-mbedTLS3-hueplusplus.patch
 # PATCH-FEATURE-OPENSUSE OpenRGB-use_system_libs.patch
 Patch1:         OpenRGB-use_system_libs.patch
+# PATCH-FIX-OPENSUSE GCC13 fix upstream commit 269ebeddb49951b72a8ca04adf02d3a3aa2db45d
+Patch2:         OpenRGB-GCC13.patch
 BuildRequires:  gcc-c++
+BuildRequires:  libqt5-linguist
+BuildRequires:  libqt5-linguist-devel
 BuildRequires:  mbedtls-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Core)
@@ -32,8 +39,6 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(gusb)
 BuildRequires:  pkgconfig(hidapi-hidraw)
 BuildRequires:  pkgconfig(libe131)
-BuildRequires:  libqt5-linguist
-BuildRequires:  libqt5-linguist-devel
 
 %description
 The purpose of this tool is to control RGB lights on different peripherals.
