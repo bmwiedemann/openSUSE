@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 30 12:52:26 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.2:
+  + Save manual configuration edits on CHANGES_DONE_HINT.
+  + Fix issue with pre-filling VM memory/storage resources.
+  + Preserve run-in-background and 3D acceleration configs for VM
+    clones.
+  + Fix issue with shared folders not appearing for newly created
+    VMs.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 31 16:40:37 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.1:

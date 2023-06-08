@@ -803,4 +803,20 @@
     <comment></comment>
     <requestid>1076882</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>d82eae55688bab29d0bb128afd5425f3</srcmd5>
+    <version>44.2</version>
+    <time>1686253323</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 44.2:
+  + Save manual configuration edits on CHANGES_DONE_HINT.
+  + Fix issue with pre-filling VM memory/storage resources.
+  + Preserve run-in-background and 3D acceleration configs for VM
+    clones.
+  + Fix issue with shared folders not appearing for newly created
+    VMs.
+  + Updated translations.
+</comment>
+    <requestid>1091416</requestid>
+  </revision>
 </revisionlist>
