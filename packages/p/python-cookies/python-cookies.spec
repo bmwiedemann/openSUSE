@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-cookies
 Version:        2.2.1
@@ -24,14 +23,15 @@ Release:        0
 Summary:        Friendlier RFC 6265-compliant cookie parser/renderer
 License:        MIT
 Group:          Development/Languages/Python
-URL:            https://gitlab.com/sashahart/cookies
+URL:            https://github.com/sashahart/cookies
 Source:         https://files.pythonhosted.org/packages/source/c/cookies/cookies-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/sashahart/cookies/master/LICENSE
 # PATCH-FIX-OPENSUSE do-not-install-test_cookies.diff -- Do not install test files
 Patch0:         do-not-install-test_cookies.diff
 Patch1:         python37.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
@@ -68,23 +68,24 @@ This does not compete with the cookielib (http.cookiejar) module in the Python
 standard library.
 
 %prep
-%setup -q -n cookies-%{version}
-%autopatch -p1
+%autosetup -p1 -n cookies-%{version}
 
 cp %{SOURCE1} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %check
-%python_expand py.test-%{$python_version} test_cookies.py
+%pytest test_cookies.py
 
 %files %{python_files}
 %license LICENSE
 %doc README
-%{python_sitelib}/*
+%{python_sitelib}/cookies.py
+%pycache_only %{python_sitelib}/__pycache__/cookies*.pyc
+%{python_sitelib}/cookies-%{version}*-info
 
 %changelog
