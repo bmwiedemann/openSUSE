@@ -27,7 +27,7 @@
 %bcond_with     glade_support
 
 Name:           vte
-Version:        0.72.1
+Version:        0.72.2
 Release:        0
 Summary:        Terminal Emulator Library
 License:        CC-BY-4.0 AND LGPL-3.0-or-later AND GPL-3.0-or-later AND MIT
@@ -36,8 +36,6 @@ URL:            https://gitlab.gnome.org/GNOME/vte
 Source:         %{_name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE vte-enable-build-flag-pie.patch yfjiang@suse.com -- enable PIE flag to be compatible with gcc default linking option
 Patch0:         vte-enable-build-flag-pie.patch
-# PATCH-FIX-UPSTREAM 24547fb3.patch -- widget: Don't consume right clicks on gtk4
-Patch1:         https://gitlab.gnome.org/GNOME/vte/-/commit/24547fb3.patch
 # PATCH-FIX-SLE vte-revert-back-to-c++17.patch yu.daike@suse.com -- revert c++20 features back to c++17
 Patch100:       vte-revert-back-to-c++17.patch
 
@@ -178,7 +176,6 @@ widgets in Glade.
 %prep
 %autosetup -n %{_name}-%{version} -N
 %patch0 -p1
-%patch1 -p1
 %if 0%{?sle_version}
 %patch100 -p1
 %endif
