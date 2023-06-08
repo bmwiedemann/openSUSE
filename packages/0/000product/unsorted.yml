@@ -1887,6 +1887,7 @@ unsorted:
   - cargo1.67 
   - cargo1.68 
   - cargo1.69 
+  - cargo1.70 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -6428,7 +6429,6 @@ unsorted:
   - git-cliff-fish-completion 
   - git-cliff-zsh-completion 
   - git-cola 
-  - git-credential-gnome-keyring 
   - git-credential-libsecret 
   - git-crypt 
   - git-cvs 
@@ -11338,6 +11338,7 @@ unsorted:
   - libconfuse-devel 
   - libconfuse-lang 
   - libconfuse2 
+  - libcontainers-openSUSE-policy 
   - libcontainers-sles-mounts 
   - libcorosync-devel 
   - libcorosync_common4-32bit 
@@ -13746,8 +13747,6 @@ unsorted:
   - libopenssl10 
   - libopenssl1_0_0 
   - libopenssl1_0_0-32bit 
-  - libopenssl1_0_0-hmac 
-  - libopenssl1_0_0-hmac-32bit 
   - libopenssl1_0_0-steam 
   - libopenssl1_0_0-steam-32bit 
   - libopenssl1_1-32bit 
@@ -21636,7 +21635,9 @@ unsorted:
   - picmi-lang 
   - pico 
   - picocli 
+  - picocli-codegen 
   - picocli-javadoc 
+  - picocli-shell-jline2 
   - picocom 
   - picojson-devel 
   - picom 
@@ -23733,7 +23734,6 @@ unsorted:
   - python310-certbot 
   - python310-certbot-apache 
   - python310-certbot-dns-cloudflare 
-  - python310-certbot-dns-cloudxns 
   - python310-certbot-dns-digitalocean 
   - python310-certbot-dns-dnsimple 
   - python310-certbot-dns-dnsmadeeasy 
@@ -23885,13 +23885,10 @@ unsorted:
   - python310-dash-table 
   - python310-dask 
   - python310-dask-array 
-  - python310-dask-bag 
   - python310-dask-complete 
   - python310-dask-dataframe 
-  - python310-dask-delayed 
   - python310-dask-diagnostics 
   - python310-dask-distributed 
-  - python310-dask-dot 
   - python310-dask-test 
   - python310-databases 
   - python310-datadiff 
@@ -24299,7 +24296,6 @@ unsorted:
   - python310-gps3 
   - python310-gpstime 
   - python310-gpxpy 
-  - python310-grab 
   - python310-graphene 
   - python310-graphene-django 
   - python310-graphql-core 
@@ -26144,7 +26140,6 @@ unsorted:
   - python310-wheezy.template 
   - python310-whichcraft 
   - python310-whitenoise 
-  - python310-whois_similarity_distance 
   - python310-widgetsnbextension 
   - python310-wikipedia 
   - python310-wirerope 
@@ -27083,7 +27078,6 @@ unsorted:
   - python311-certbot 
   - python311-certbot-apache 
   - python311-certbot-dns-cloudflare 
-  - python311-certbot-dns-cloudxns 
   - python311-certbot-dns-digitalocean 
   - python311-certbot-dns-dnsimple 
   - python311-certbot-dns-dnsmadeeasy 
@@ -27247,13 +27241,10 @@ unsorted:
   - python311-dash-table 
   - python311-dask 
   - python311-dask-array 
-  - python311-dask-bag 
   - python311-dask-complete 
   - python311-dask-dataframe 
-  - python311-dask-delayed 
   - python311-dask-diagnostics 
   - python311-dask-distributed 
-  - python311-dask-dot 
   - python311-dask-test 
   - python311-databases 
   - python311-datadiff 
@@ -27672,7 +27663,6 @@ unsorted:
   - python311-gps3 
   - python311-gpstime 
   - python311-gpxpy 
-  - python311-grab 
   - python311-graphene 
   - python311-graphene-django 
   - python311-graphql-core 
@@ -29035,6 +29025,7 @@ unsorted:
   - python311-quantum-blackbird 
   - python311-queuelib 
   - python311-quicktions 
+  - python311-quimb 
   - python311-radexreader 
   - python311-radon 
   - python311-railroad-diagrams 
@@ -29604,7 +29595,6 @@ unsorted:
   - python311-wheezy.template 
   - python311-whichcraft 
   - python311-whitenoise 
-  - python311-whois_similarity_distance 
   - python311-widgetsnbextension 
   - python311-wikipedia 
   - python311-wirerope 
@@ -30578,7 +30568,6 @@ unsorted:
   - python39-certbot 
   - python39-certbot-apache 
   - python39-certbot-dns-cloudflare 
-  - python39-certbot-dns-cloudxns 
   - python39-certbot-dns-digitalocean 
   - python39-certbot-dns-dnsimple 
   - python39-certbot-dns-dnsmadeeasy 
@@ -30744,13 +30733,10 @@ unsorted:
   - python39-dash-table 
   - python39-dask 
   - python39-dask-array 
-  - python39-dask-bag 
   - python39-dask-complete 
   - python39-dask-dataframe 
-  - python39-dask-delayed 
   - python39-dask-diagnostics 
   - python39-dask-distributed 
-  - python39-dask-dot 
   - python39-dask-test 
   - python39-databases 
   - python39-datadiff 
@@ -31170,7 +31156,6 @@ unsorted:
   - python39-gps3 
   - python39-gpstime 
   - python39-gpxpy 
-  - python39-grab 
   - python39-graphene 
   - python39-graphene-django 
   - python39-graphql-core 
@@ -33107,7 +33092,6 @@ unsorted:
   - python39-wheezy.template 
   - python39-whichcraft 
   - python39-whitenoise 
-  - python39-whois_similarity_distance 
   - python39-widgetsnbextension 
   - python39-wikipedia 
   - python39-wirerope 
@@ -34303,6 +34287,7 @@ unsorted:
   - rust1.67 
   - rust1.68 
   - rust1.69 
+  - rust1.70 
   - rustscan 
   - rustup 
   - rxp 
@@ -44506,6 +44491,7 @@ unsorted:
   - tomoe-gtk-lang 
   - tomoyo-tools 
   - tomsfastmath-devel 
+  - topgrade 
   - tor 
   - torbrowser-apparmor-profile 
   - torbrowser-launcher 
@@ -45041,7 +45027,6 @@ unsorted:
   - uncrustify 
   - unetbootin 
   - ungoogled-chromium 
-  - ungoogled-chromium-chromedriver 
   - unibilium-devel 
   - unicode-blocks 
   - unicode-emoji 
