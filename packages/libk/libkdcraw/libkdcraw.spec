@@ -20,7 +20,7 @@
 %define lname libKF5KDcraw
 %bcond_without released
 Name:           libkdcraw
-Version:        23.04.1
+Version:        23.04.2
 Release:        0
 Summary:        Shared library interface around dcraw
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later AND GPL-3.0-or-later
