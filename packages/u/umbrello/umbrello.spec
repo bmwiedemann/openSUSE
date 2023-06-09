@@ -21,7 +21,7 @@
 %endif
 %bcond_without released
 Name:           umbrello
-Version:        23.04.1
+Version:        23.04.2
 Release:        0
 Summary:        UML Modeller
 License:        GPL-2.0-only AND GFDL-1.2-only AND GPL-3.0-or-later
