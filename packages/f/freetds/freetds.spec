@@ -17,7 +17,7 @@
 
 
 Name:           freetds
-Version:        1.3.17
+Version:        1.3.18
 Release:        0
 Summary:        A free re-implementation of the TDS (Tabular Data Stream) protocol
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
