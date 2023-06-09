@@ -7,4 +7,12 @@
     <comment>required for a more recent libimobiledevice version</comment>
     <requestid>925294</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d0de217f7ddbaa0140bb030d685c49dc</srcmd5>
+    <version>1.0.0+git3.20230513</version>
+    <time>1686335825</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1091443</requestid>
+  </revision>
 </revisionlist>

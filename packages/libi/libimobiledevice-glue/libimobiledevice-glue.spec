@@ -1,7 +1,7 @@
 #
 # spec file for package libimobiledevice-glue
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libname libimobiledevice-glue-1_0-0
 Name:           libimobiledevice-glue
-Version:        0~git.20210925
+Version:        1.0.0+git3.20230513
 Release:        0
 Summary:        Native protocols library for iOS devices
 License:        LGPL-2.1-or-later
@@ -29,7 +29,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libplist-2.0) >= 2.2.0
+BuildRequires:  pkgconfig(libplist-2.0) >= 2.3.0
 
 %description
 A library with common code used by libraries and tools around the libimobiledevice project.
@@ -58,7 +58,7 @@ sed -i -e 's/-L${libdir}//' src/%{name}-1.0.pc.in
 
 %build
 autoreconf -fvi
-%configure \
+%configure PACKAGE_VERSION=%{version} \
   --disable-silent-rules \
   --disable-static
 %make_build

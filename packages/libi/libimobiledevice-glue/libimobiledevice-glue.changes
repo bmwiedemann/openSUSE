@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun 02 11:11:11 UTC 2023 - msuchanek@suse.com
+
+- Update to version 1.0.0+git3.20230513:
+  * Set minimum required libplist version to 2.3.0
+  * Remove plist-related code in favor of new libplist API
+  * termcolors: Rename COLOR_* macros to FG_* due to conflict with ncurses
+  * Updated README with pkg-config requirement
+  * utils: Use libplist's plist_from_memory instead of duplicating format detection
+  * Add support for Apple's OPACK encoding and TLV format
+  * utils: Fix bad malloc result check in buffer_read_from_filename and test arguments for NULL
+
+-------------------------------------------------------------------
 Sat Oct  9 14:31:39 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - initial package for git repo version 20210925.
