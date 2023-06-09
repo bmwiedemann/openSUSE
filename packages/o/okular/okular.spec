@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           okular
-Version:        23.04.1
+Version:        23.04.2
 Release:        0
 Summary:        Document Viewer
 # GPL-3.0+ license used by a runtime plugin
@@ -37,6 +37,10 @@ Patch1000:      0001-Inform-users-about-the-okular-spectre-package-in-the.patch
 BuildRequires:  chmlib-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  freetype2-devel
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc10-c++
+BuildRequires:  gcc10-PIE
+%endif
 BuildRequires:  kf5-filesystem
 BuildRequires:  libdjvulibre-devel
 BuildRequires:  libepub-devel
@@ -136,6 +140,9 @@ sed -i 's#3.22#3.20#' CMakeLists.txt
 %build
 %ifarch ppc64
 %define _lto_cflags %{nil}
+%endif
+%if 0%{?suse_version} == 1500
+export CXX=g++-10
 %endif
 %cmake_kf5 -d build -- -DBUILD_TESTING=OFF -DOKULAR_UI=both
 %cmake_build
