@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Jun 09 11:38:38 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1686302766.69ffe8a:
+  * Increase client_body_buffer_size to be larger than UPLOAD_CHUNK_SIZE
+  * Add `priority` property to `job_templates` in YAML
+  * Add test for wildcard version in yaml
+  * Pass job result from os-autoinst's state file to web UI
+  * Extract reading state file into a separate function
+  * Simplify code for formatting reason
+  * t: Use signatures in complete OpenQA::SeleniumTest
+  * t: Simplify chromium dir lookup
+  * t: Simplify find_element call in 33-developer_mode.t
+  * Fix openqa-clone-custom-git-refspec on git-checkout job sources
+  * t: Further extract variables in openqa-clone-custom-git-refspec test
+  * t: Reduce duplication in clone-custom-git-refspec test
+  * t: Reduce length of some test strings in clone-custom-git-refspec
+  * Fix timestamp to be actual ns
+  * Add max_conns limit to nginx config
+  * Add re-try in comments test to mitigate alert problem
+  * Switch OBS SCM/CI Workflow to branch_package
+  * Add various optimizations and bug fixes for O3 deployment
+  * Allow wildcard version in scenarios YAML
+  * Remove YAML::PP duplicate_keys option
+  * Forbid cyclic references in YAML
+  * Fix flaky coverage in Worker::WebUIConnection
+  * Add test for rendering Git links in investigation tab
+  * documentation: Improve grammar
+
+-------------------------------------------------------------------
 Mon Jun 05 07:46:02 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1685846780.f3b6f99:
