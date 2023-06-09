@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun  5 10:09:02 UTC 2023 - José Iván López González <jlopez@suse.com>
+
+- Expose zFCP core functionallity (related to
+  gh#openSUSUE/agama#594)
+- 4.6.2
+
+-------------------------------------------------------------------
 Wed May 10 13:35:34 UTC 2023 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Prevent crash when the user closes the DASD context menu
