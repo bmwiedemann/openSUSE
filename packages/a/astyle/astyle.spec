@@ -23,6 +23,7 @@ Summary:        Source Code Indenter, Formatter, and Beautifier for C, C++, C# a
 License:        MIT
 URL:            https://astyle.sourceforge.net/
 Source:         https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.bz2
+Source1:        libastylej.rpmlintrc
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
 BuildRequires:  java-devel
@@ -53,8 +54,13 @@ install -Dpm 0755 build/gcc/bin/%{name}d %{buildroot}%{_bindir}/%{name}
 chmod -x doc/* *.md
 install -d -m 0755 %{buildroot}%{_libdir}
 cp --preserve=links build/gcc/bin/libastylej.so.* %{buildroot}%{_libdir}
+## libastylej is a native library used/loaded by java
+## the java loader seems to only look for <libname>.so, so libastylej.so.3
+## is totally useless AFAICT => let's provide the useful symlink, too -- seife
+ln -s libastylej.so.3 %{buildroot}%{_libdir}/libastylej.so
 install -D -m 0644 man/%{name}.1 -t %{buildroot}%{_mandir}/man1/
 
+## ldconfig is most likely totally useless here...
 %ldconfig_scriptlets -n lib%{name}j3
 
 %files

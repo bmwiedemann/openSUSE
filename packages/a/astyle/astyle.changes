@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun  7 17:52:57 UTC 2023 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- spec: add libastylej.rpmlintrc to please factory-auto check
+
+-------------------------------------------------------------------
+Wed Jun  7 06:44:12 UTC 2023 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- bring back libastylej.so symlink to fix at least Arduino
+- add libastylej.rpmlintrc to disarm the harmful check which
+  probably caused the removal of libastylej.so
+
+-------------------------------------------------------------------
 Sun May 28 19:44:44 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to 3.3.1: Fix build.
