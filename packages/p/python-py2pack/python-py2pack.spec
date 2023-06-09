@@ -25,6 +25,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/openSUSE/py2pack
 Source:         https://files.pythonhosted.org/packages/source/p/py2pack/py2pack-%{version}.tar.gz
 BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module ddt}
 BuildRequires:  %{python_module metaextract}
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pip}
@@ -43,6 +44,7 @@ Requires:       python-pbr
 Requires:       python-pypi-search
 Requires:       python-requests
 Requires:       python-setuptools
+Requires:       python-tomli
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
