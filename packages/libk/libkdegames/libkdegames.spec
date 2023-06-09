@@ -18,7 +18,7 @@
 %define sover 7
 %bcond_without released
 Name:           libkdegames
-Version:        23.04.1
+Version:        23.04.2
 Release:        0
 Summary:        General Data for KDE Games
 License:        GPL-2.0-or-later
