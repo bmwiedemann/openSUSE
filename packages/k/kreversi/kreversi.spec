@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kreversi
-Version:        23.04.1
+Version:        23.04.2
 Release:        0
 Summary:        Reversi board game
 License:        GPL-2.0-or-later
