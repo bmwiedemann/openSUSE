@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun  6 20:01:22 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.2/
+- Changes since 23.04.1:
+  * Adjust selection point coords when scrollback shrinks (kde#470346)
+  * Add tests to check fix of invalid parent in profile
+  * Do not allow an invalid parent to be set in profiles (kde#467790)
+
+-------------------------------------------------------------------
 Tue May  9 10:47:19 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.1
