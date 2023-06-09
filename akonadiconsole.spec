@@ -19,7 +19,7 @@
 %define kf5_version 5.104.0
 %bcond_without released
 Name:           akonadiconsole
-Version:        23.04.1
+Version:        23.04.2
 Release:        0
 Summary:        Management and debugging console for akonadi
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
