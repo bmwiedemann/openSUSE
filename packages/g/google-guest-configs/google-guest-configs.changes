@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun  8 11:11:12 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20230526.00
+  * dracut: Add a new dracut module for gcp udev rules (#53)
+- from version 20230522.00
+  * src/lib/udev: only create symlinks for GCP devices (#52)
+- from version 20230515.00
+  * Replace `xxd` to `cut` for google_nvme_id (#49)
+- from version 20230328.00
+  * Set hostname: consider fully qualified static hostname (#46)
+
+-------------------------------------------------------------------
 Mon Feb 27 10:37:52 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20230217.01

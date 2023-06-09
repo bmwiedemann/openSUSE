@@ -126,4 +126,19 @@
   * Fix a repository URL in packaging specs (#41) (forwarded request 1067942 from glaubitz)</comment>
     <requestid>1067973</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>af473802adadca718c20c4cd5dc1da31</srcmd5>
+    <version>20230526.00</version>
+    <time>1686335856</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230526.00
+  * dracut: Add a new dracut module for gcp udev rules (#53)
+- from version 20230522.00
+  * src/lib/udev: only create symlinks for GCP devices (#52)
+- from version 20230515.00
+  * Replace `xxd` to `cut` for google_nvme_id (#49)
+- from version 20230328.00
+  * Set hostname: consider fully qualified static hostname (#46) (forwarded request 1091420 from glaubitz)</comment>
+    <requestid>1091423</requestid>
+  </revision>
 </revisionlist>
