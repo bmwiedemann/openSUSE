@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun  6 20:00:46 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.2/
+- Changes since 23.04.1:
+  * [KMediaSession] Only send MRPIS2 positionChanged signal on seek
+  * Also update fullscreen image if chapter image in HeaderBar changes (kde#470194)
+  * Load custom icons through fallbackSearchPaths (kde#469567)
+
+-------------------------------------------------------------------
 Tue May  9 10:46:42 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.1
