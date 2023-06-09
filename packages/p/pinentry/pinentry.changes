@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  1 11:07:59 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Update signature file and keyring with latest ones from download
+  site, they were updated by another approved upstream maintainer.
+
+-------------------------------------------------------------------
 Mon Feb 27 14:53:16 UTC 2023 - pgajdos@suse.com
 
 - add %bcond option to disable fltk backend

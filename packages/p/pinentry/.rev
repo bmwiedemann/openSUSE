@@ -503,4 +503,12 @@
     <comment></comment>
     <requestid>1068056</requestid>
   </revision>
+  <revision rev="66" vrev="3">
+    <srcmd5>a9c80f5987d3895ea86dd4c8f086520e</srcmd5>
+    <version>1.2.1</version>
+    <time>1686335823</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1091435</requestid>
+  </revision>
 </revisionlist>
