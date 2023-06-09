@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Fri Jun  9 06:29:05 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.10.0:
+  * Fix bug preventing proxy from working in Options classes (#12029)
+  * Add support for changing pointers in Actions class (#11521)
+  * Support newer versions of urllib3 (#11993)
+  * Add fine grained control for arguments provided to service subprocesses
+    by passing a `popen_kw` mapping for all services.
+  * `Options` classes now allow `timeout` to be set partially and no longer
+    raise an exception when all values are not provided. (#11623)
+  * Fixed a bug in `Service` destructors accessing modules that no longer
+    existed during interpreter shutdown.
+  * Fix frame_to_be_available_and_switch_to_it() for string inputs (#10963)
+  * Use monotonic clock for waits, fixes #10544 (#10550)
+  * Use `get_timeout()` for urllib pool manager timeouts in remote
+    connection (#10563)
+  * update ShadowRoot find element signatures to match those in
+    WebElement (#10138)
+  * Check the values in NO_PROXY and set the poolmanager accordingly
+    (#9925, #9967)
+  * Allows None to be set for the sameSite attribute (#9771)
+  * Specify that the "find_element_by_* ..." warning is a deprecation
+    warning (#9700)
+  * Allow 0 coordinates for the window position. Fixes #9574
+  * Add the ability to pass in multiple options and have that capabilities
+    returned as (first|always)Match
+  * Add the ability to pass in different locators to do Relative Locator
+    searches
+  * Add the ability to enable mobile on options classes
+  * Allow overriding the default 250 msecs duration of pointer movement (#9336)
+  * Set Chromium Edge to be the default for Edge browsers
+  * Add ARIA APIs for getting the role and label of an Element
+  * Fix homepage attribute in wheel target
+  * Deprecate all but `Options` and `Service` arguments in driver
+    instantiation. (#9125,#9128)
+  * BREAKING CHANGE: Dropped support for python < 3.7
+  * Fix uploading multiple files on remote driver (#7472) (#8734)
+  * Add the ability to ignore local proxys that are available
+  * Update host to connect to get a port. Fixes #8503
+  * Improve WebKitGTK and WPEWebKit support
+  * Copy `acceptInsecureCerts` to Options for Firefox. Fixes #8261
+  * Add in support for page loading strategies for Options
+  * Add the ability to get and set timeouts against a driver. Fixes #7738
+  * Fixing stacktrace parser to handle strings as well as objects
+  * Changing default command executor address to the address of TNG Grid
+  * Fix invisibility_of_element expected condition init function (#7484)
+  * allow --browser-binary and --browser-args to be used with ChromiumEdge
+  * increase async script timeout from 0 as the w3c spec states to start
+    time checking immediately
+  * update to w3c compliant log endpoints
+  * Pass capabilities rather than options to the proxy object (#6620)
+  * Added EventFiringWebElement to the isinstance check in the
+    move_to method.(#6604)
+  * Subclass options classes from a common base class (#6522)
+  * add strictFileInteractability to acceptable W3C capabilities
+- Include LICENSE explicitly for now.
+- Refresh selenium-pytest.tar.bz2
+
+-------------------------------------------------------------------
 Thu Aug 20 08:30:39 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Package x_ignore_nofocus.so on supported architectures only
