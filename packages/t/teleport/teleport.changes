@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Thu Jun 01 11:46:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 13.0.4:
+  * Introduce the Plugin Static Credentials object. (#27121)
+    (#27163)
+  * Added 05/25 Upcoming Releases Update (#26910)
+  * [v13] Update Terraform reference docs to 13.0.3 (#27034)
+  * Correct grammar in role removal error message (#27142)
+  * [v13] feat: label expression parser (#26970)
+  * [v13] docs: correction and note on direct mode for desktop
+    (#27149)
+  * TLS Routing behind ALB: tsh kube subcommands UX (#26305)
+    (#27155)
+  * [v13] helm: Tidy standalone cluster setup docs  (#27154)
+  * [v13] `buf breaking` CI action (#26833)
+  * Fetch ClusterAlerts a single time during login (#27110)
+  * [v13] docs: remove duplicative k8s access guide (#27128)
+  * [v13] Update title for proxy peering architecture (#27041)
+  * Refactor test globals out of lib/devicetrust/enroll (#27133)
+  * Switch to recommending identity file in terraform guide
+    (#27068)
+  * [v13] Add `tsh kubectl` support for tracer exporter (#27130)
+  * [v13] docs: Update GSLB docs for changes missed from master
+    (#27132)
+  * chore: Bump OpenSSL to 3.0.9 (#27123)
+  * changes ldapDialTimeout from 5 to 15 seconds (#27045)
+  * Okta Import Rules use Teleport style regexes. (#27126)
+  * Fix `TestKube/Join` data race (#26619) (#27124)
+  * [v13] Refresh port descriptions (#26936)
+  * [v13] Support ElastiCache Redis IAM auth (#26990)
+  * Fix "unnecessary conversion" in lib/devicetrust/native (#27077)
+  * [v13] Automatically perform `tsh app login`. (#26820)
+  * docs: offer alternative aws methods for joining for aws db
+    guides (#26939)
+  * docs: update kube access for enterprise setting and agent
+    updates (#26941)
+  * [v13] Windows TPM Device Authentication (#27085)
+  * Close clients when done. (#27104)
+  * [v13] Expand Go docs for label prefixes (#27102)
+  * Update `e` (#27087)
+  * [v13] Update `kingpin` & allow autocompletion (#26238) (#26999)
+  * Device Trust: TPM Enrollment support EKCerts (#27070) (#27082)
+  * Remove initCommand from DocumentPtySession (#27003)
+  * Search user groups by description. (#27021)
+  * [v13] update lib/utils/parse to leverage lib/utils/typical
+    (#26967)
+  * use uri path for config dump (#26992)
+  * [v13] feat: library for building predicate parsers (#26915)
+  * [v13] Update kube operator with more details and
+    troubleshooting (#27050)
+  * Update CHANGELOG.md to include Helm image change (#26822)
+    (#27000)
+  * operator: allow operator to edit tokens (#27001)
+  * Docs: replace static mermaid images with rendered charts
+    (#23458) (#26094)
+  * Clean up LDAP error handling (#26984)
+  * docs: mention missing delete permission for GCS buckets
+    (#26735)
+  * Yarn updates for `terser` and `minimatch` (#26919) (#27025)
+  * Make tctl command descriptions consistent (#26937)
+  * Use root client for headless authentication. (#26878)
+  * [v13] remove warning on unpopulated ssh proxy address (#27015)
+  * [v13] update ui and config to refer to service as Teleport
+    Service (#27011)
+  * [v13] AWS Route 53 GSLB Multi-Region Proxy Peering High
+    Availability Deployment Guide (#26743)
+  * Add a guide to reviewing docs PRs (#26913)
+  * Use WIRE_JSON in buf breaking (#26793)
+  * docs: update version (#26988)
+  * fix console node list scroll and close session join dialog
+    (#26622) (#26906)
+  * [v13] athena audit logs - use otel traces in querier (#26900)
+  * [v13] Remove useProfileLogin from makeClient in tsh (#26975)
+  * [v13] athena audit logs - add metrics (#26920)
+  * [v13] helm: Fail to install if `clusterName` contains a colon
+    (#26973)
+  * Add a watcher for agentless EC2 nodes (#26888)
+  * [v13] Add MDM and TPM fields to device resources (#26838)
+  * Add integration enroll usage event (#26880) (#26930)
+  * Fix bug where the system agent is not forwarded in combination
+    with (#26929)
+  * Add diagrams to Access Request plugin guides (#26924)
+  * Update dependencies for `build.assets/tooling` (#26907)
+    (#26918)
+  * fix GitHub connector API endpoint URL path getting ignored when
+    making HTTP requests (#26863)
+  * [v13] Collect MDM data from macOS (#26897)
+  * [v13] integrations/operator: Use a dedicated scheme in tests
+    (#26883)
+  * Backport #26366 to branch/v13 (#26738)
+  * [v13] Web: Add back buttons and remove exit buttons (discover &
+    integrations) (#26727)
+  * [v13] skip rdpclient build in integration tests (#26526)
+  * [v13] Spawn gateway CLI client directly (#26751)
+  * bump cloud to 12.4.3 (#26899)
+  * correct discovery bootstrap command description (#26894)
+  * [v13] Add a codegen-focused buildbox (#26739)
+  * [v13] Proxy Templates update: cluster switching and tsh ssh
+    parity (#26852)
+  * app access: improve error logging (#26869)
+  * [v13] docs: include Enterprise in tctl version for ent, cloud
+    prereq (#26847)
+  * Bump github.com/docker/distribution (#26107) (#26855)
+
+-------------------------------------------------------------------
 Thu May 25 06:35:23 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 13.0.3:
