@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun  5 05:46:25 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- update to 1.14.1:
+  * fuse3 support
+  * wimupdate now supports the --ref option for updating delta WIM
+  * better default behavior when converting to and from solid 
+    archives: wimoptimize --solid, and wimoptimize --compress=LZX
+
+-------------------------------------------------------------------
 Mon Sep 12 19:54:02 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.13.6:

@@ -1,7 +1,7 @@
 #
 # spec file for package wimlib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,17 @@
 
 %define so_version 15
 Name:           wimlib
-Version:        1.13.6
+Version:        1.14.1
 Release:        0
 Summary:        Library to extract, create, modify, and mount WIM files
-License:        CC0-1.0 AND GPL-3.0-or-later AND LGPL-3.0-or-later
+License:        GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT
 Group:          Development/Libraries/C and C++
 URL:            https://wimlib.net
 Source:         https://wimlib.net/downloads/wimlib-%{version}.tar.gz
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(fuse)
+BuildRequires:  pkgconfig(fuse3)
 BuildRequires:  pkgconfig(libntfs-3g)
-BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(openssl)
 
 %description
 Tools to create, extract, modify, and mount files in the Windows Imaging Format
@@ -69,15 +67,16 @@ the Windows Imaging Format (WIM files).
 %postun -n libwim%{so_version} -p /sbin/ldconfig
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%configure --disable-static \
-           --with-libcrypto	\
-           --with-ntfs-3g \
-           --with-fuse
+%configure \
+	--disable-static \
+	--with-ntfs-3g \
+	--with-fuse \
+	%{nil}
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -86,18 +85,20 @@ sed -i '1 s,#!.*,#!/bin/bash,' %{buildroot}%{_bindir}/mkwinpeimg
 rm %{buildroot}%{_libdir}/libwim.la
 
 %files -n wimtools
+%license COPYING COPYING.GPLv3 COPYING.LGPLv3
+%doc NEWS.md README.md
 %{_bindir}/mkwinpeimg
 %{_bindir}/wim*
 %{_mandir}/man1/*.1%{?ext_man}
 
 %files devel
-%doc README
+%license COPYING COPYING.GPLv3 COPYING.LGPLv3
 %{_libdir}/libwim.so
 %{_includedir}/wimlib.h
 %{_libdir}/pkgconfig/wimlib.pc
 
 %files -n libwim%{so_version}
-%license COPYING*
+%license COPYING COPYING.GPLv3 COPYING.LGPLv3
 %{_libdir}/libwim.so.*
 
 %changelog

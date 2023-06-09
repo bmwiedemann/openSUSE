@@ -66,4 +66,12 @@
     <comment></comment>
     <requestid>1003121</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>667ee3f85c8e2bd25d651bb0c62d5af9</srcmd5>
+    <version>1.14.1</version>
+    <time>1686335835</time>
+    <user>dimstar_suse</user>
+    <comment>wimlib 1.14.1 (forwarded request 1090802 from AndreasStieger)</comment>
+    <requestid>1091349</requestid>
+  </revision>
 </revisionlist>
