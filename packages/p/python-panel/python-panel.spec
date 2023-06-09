@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-panel%{psuffix}
-Version:        0.14.4
+Version:        1.1.0
 Release:        0
 Summary:        A high level app and dashboarding solution for Python
 License:        BSD-3-Clause
@@ -34,11 +34,11 @@ Group:          Development/Languages/Python
 URL:            https://panel.holoviz.org
 Source:         https://files.pythonhosted.org/packages/source/p/panel/panel-%{version}.tar.gz
 Source99:       python-panel-rpmlintrc
-BuildRequires:  %{python_module Markdown}
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module bokeh >= 2.4.3 with %python-bokeh < 2.5}
-BuildRequires:  %{python_module nbval}
-BuildRequires:  %{python_module param >= 1.12.0}
+BuildRequires:  %{python_module bleach}
+BuildRequires:  %{python_module bokeh >= 3.1.1 with %python-bokeh < 3.2}
+BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module param >= 1.9.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyct >= 0.4.4}
 BuildRequires:  %{python_module pyviz-comms >= 0.7.4}
@@ -55,11 +55,10 @@ BuildRequires:  %{python_module altair}
 BuildRequires:  %{python_module diskcache}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module folium}
-BuildRequires:  %{python_module holoviews}
+BuildRequires:  %{python_module holoviews >= 1.16.0}
 BuildRequires:  %{python_module ipympl}
 BuildRequires:  %{python_module ipython >= 7.0}
-BuildRequires:  %{python_module markdown-it-py}
-BuildRequires:  %{python_module pandas >= 1.3}
+BuildRequires:  %{python_module panel = %{version}}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module plotly >= 4.0}
 BuildRequires:  %{python_module pytest}
@@ -71,21 +70,24 @@ BuildRequires:  %{python_module streamz}
 Requires:       jupyter-panel
 Requires:       python-Markdown
 Requires:       python-bleach
-Requires:       python-param >= 1.10.0
-Requires:       python-pyct >= 0.4.4
-Requires:       python-pyviz-comms >= 0.7.4
+Requires:       python-linkify-it-py
+Requires:       python-markdown-it-py < 3
+Requires:       python-mdit-py-plugins
+Requires:       python-pandas >= 1.2
+Requires:       python-param >= 1.12.0
+Requires:       python-pyviz_comms >= 0.7.4
 Requires:       python-requests
-Requires:       python-setuptools
 Requires:       python-tqdm >= 4.48.0
 Requires:       python-typing_extensions
-Requires:       (python-bokeh >= 2.4.3 with python-bokeh < 2.5)
+Requires:       python-xyzservices >= 2021.09.1
+Requires:       (python-bokeh >= 3.1.1 with python-bokeh  < 3.2.0)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-Pillow
-Recommends:     python-holoviews > 1.14.1
+Recommends:     python-holoviews >= 1.16.0
 Recommends:     python-jupyterlab
 Recommends:     python-matplotlib
-Recommends:     python-plotly >= 4.0
+Recommends:     python-plotly
 BuildArch:      noarch
 %python_subpackages
 
@@ -110,10 +112,15 @@ to all Python flavors.
 %autosetup -p1 -n panel-%{version}
 # Do not try to rebuild the bundled npm stuff. We don't have network. Just use the shipped bundle.
 sed -i '/def _build_paneljs/ a \    return' setup.py
-# fix python call in test, upstream expects them to be run inside tox or venv
-sed -i -e '/import ast/ a import sys' -e 's/"python",/sys.executable,/' panel/tests/test_docs.py
-echo "# Empty module" >> panel/tests/io/reload_module.py
-echo "# Empty module" >> examples/apps/django/sliders/models.py
+for p in panel/tests/io/reload_module.py
+do \
+    [ -f $p -a ! -s $p ] || exit 1 && echo "# Empty module" > $p
+done
+for p in panel/dist/css/regular_table.css \
+  panel/dist/bundled/perspective/@finos/perspective-viewer@1.9.3/dist/css/variables.css
+do \
+    [ -f $p -a ! -s $p ] || exit 1 && echo "// Empty css" > $p
+done
 
 %if ! %{with test}
 %build
@@ -122,31 +129,21 @@ echo "# Empty module" >> examples/apps/django/sliders/models.py
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/panel
-%{python_expand #
-pushd  %{buildroot}%{$python_sitelib}
-rm panel/dist/bundled/js/@microsoft/fast-colors@5.3.1/.prettierignore
-rm panel/dist/bundled/js/@microsoft/fast-colors@5.3.1/.eslintignore
-sed -i '1{s|^#!/usr/bin/env python.*|#!%{__$python}|}' panel/examples/apps/django*/manage.py
-$python -m py_compile panel/examples/apps/django*/manage.py
-popd
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
 %if %{with test}
 %check
 # DISABLE TESTS REQUIRING NETWORK ACCESS
 donttest="test_loading_a_image_from_url"
-donttest="$donttest or test_image_alt_text"
-donttest="$donttest or test_image_link_url"
-donttest="$donttest or test_vtk_pane_from_url"
-donttest="$donttest or test_vtkjs_pane"
-donttest="$donttest or test_pdf_embed"
-donttest="$donttest or test_server"
-donttest="$donttest or (test_markdown_codeblocks and build_app.md)"
-donttest="$donttest or (test_markdown_codeblocks and APIs.md)"
-# https://github.com/holoviz/panel/issues/2101
-donttest="$donttest or test_record_modules_not_stdlib"
+donttest="$donttest or test_png_native_size_embed"
+donttest="$donttest or test_png_embed_scaled_fixed_size"
+donttest="$donttest or (test_png_scale_ and True)"
+donttest="$donttest or (test_png_stretch_ and True)"
+donttest="$donttest or (test_svg_native_size and True)"
+donttest="$donttest or (test_svg_scaled_fixed_size and True)"
+donttest="$donttest or (test_svg_scale_ and True)"
+donttest="$donttest or (test_svg_stretch_ and True)"
 # flaky async test
 donttest="$donttest or test_server_async_callbacks"
 %pytest -ra -k "not ($donttest)"

@@ -1,4 +1,249 @@
 -------------------------------------------------------------------
+Wed Jun  7 15:37:00 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.1.0
+  * This is the first minor release in the 1.x series with a number
+    of new features and small bug fixes. The main features we are
+    excited about are the new ChatBox widget added by @ahuang11 and
+    support for reactive generators. Many thanks to @ahuang11,
+    @philippjfr and @Hoxbro for contributing to this release and
+    our amazing community for reporting issues.
+  ## Features
+  * Add the ChatBox widget (#4702)
+  * Add a standalone TooltipIcon indicator (#4909)
+  * Implement support for reactive generator functions (#5019)
+  * Allow setting on_* handlers in constructor (#5026)
+  * Allow controlling initial Template sidebar state (#5033)
+  ## Bug fixes
+  * Handle height responsiveness of HoloViews layout correctly
+    (#5009)
+  * Apply Plotly toolbar colors depending on template (#5012)
+  * Fix Fast Design style variables (#5015)
+  * Allow reactive updates to override constant parameters (#5032)
+  * Fix Tabulator header filter styling (#5038)
+  * Ensure Jupyter extensions warns users if app has no contents
+    (#5041)
+- Version 1.0.4
+  * Another micro-release in the 1.0.x series addressing small
+    issues reported by our engaged community. Many thanks to
+    @ahuang11, @simzer, @alexmilowski and the core contributors
+    @droumis, @Hoxbro and @philippjfr for contributing to this
+    release.
+  * Fix global loading spinner (#4936)
+  * Fix issues resolving whether IPyWidget model (#4939)
+  * Fix recursive and inplace updates on reactive panes (#4946,
+    #4958)
+  * Fix issues with single Select widget (#4947)
+  * Ensure CSS config parameters can be passed to Template
+    constructor (#4948)
+  * Fixed vizzu data series type conversion for datetime (#4955)
+  * Small documentation fixes (#4943, #4960)
+  * Fix icon on Toggle and Button widget (#4961)
+  * Fix Volume definition on Video pane
+  * Ensure icon renders on Toggle button (#4969) (#4970)
+  * Ensure Card.header_color is correctly applied (#4971)
+  * Update param.List signatures to suppress warnings (#4973)
+  * Fix font loading in Vanilla template (#4975)
+  * Guard is_file check on Windows (#4985)
+  * Fix serialization of Plotly.selection_data (#4987)
+  * Speed up dynamic layout updates (#4989)
+- Version 1.0.3
+  * Another micro-release in the 1.0.x series with a number of
+    smaller bug fixes. Most importantly this resolves issues with
+    loading indicators and with apps converted to the
+    pyodide-worker target. Many thanks to @n3011, @Hoxbro and
+    @philippjfr for contributing to this release.
+  * Resolve _repr_jpeg_ methods correctly (#4904)
+  * Fix handling of queued events in pyodide worker (#4913)
+  * Various fixes for loading indicator (#4915)
+  * Allow -1 in Tabs.active and allow recovering from closed tabs
+    (#4920)
+  * Ensure HoloViews layout is correctly initialized when center is
+    set (#4921)
+  * Ensure VSCode editor does not apply white background to Panel
+    output (#4923)
+  * Do not error on deserialization errors in notebooks (#4927)
+  * Ensure basic auth provider works when dynamically starting
+    server (#4926)
+  * Ensure Param pane name is updated when object changes (#4928)
+  * Align functionality and styling of FileDownload with Button
+    (#4929)
+  * Fix equality comparisons of parameter values when updating a
+    Pane (#4934)
+  * Warn about ignored widget parameters on Param pane (#4934)
+- Version 1.0.2
+  * A micro-release in the 1.0.x series with a number of bug fixes
+    and documentation tweaks. Many thanks to @jbednar and
+    @philippjfr for contributing to this release.
+  ## Bug fixes
+  * Ensure Design stylesheets are not replaced when updating
+    component stylesheets (#4883)
+  * Ensure tooltips are rendered correctly as HTML (#4887)
+  * Fix loading of index page resources (#4891)
+  * Ensure FloatPanel can be rendered in classic notebooks (#4892)
+  * Attempt rendering output in notebooks even if not all resources
+    have been initialized (#4893)
+  * Do not load large bokeh-mathjax bundle in notebooks by default
+    (#4895)
+  * Make Fast template sidebar opening transition smoother (#4898)
+  * Ensure new items added to Card layout are rendered (#4899)
+  * Fix logo rendering in BasicAuth template (#4900)
+- Version 1.0.1
+  * A micro-release fixing some small issues discovered in Panel
+    1.0. Thank you to @droumis, @Hoxbro and @philippjfr for
+    contributing fixes.
+  ## Bug fixes
+  * Ensure Reactive objects wrapped in reactive are re-rendered
+    correctly (#4868)
+  * Tweaks for Material Design component inset label styling
+    (#4877)
+  * Ensure SlidesTemplate slides changes trigger updates in the
+    pn.state.location.hash (#4878)
+- Version 1.0.0
+  * The Panel 1.0 release is finally here and it brings a huge
+    number of improvements. The largest improvements in this
+    release come from an upgrade from Bokeh 2.x to Bokeh 3.x. Bokeh
+    overhauled its internal layout engine and stylesheet handling,
+    making applications significantly more performant and
+    customizable going forward.
+  * This release marks a huge step forward in the usability of
+    Panel but is also just a first step in leveraging many of the
+    new capabilities that the updated layout engine and design
+    system affords. In the coming months we will continue to
+    improve and polish the UI and UX and make it easier for you to
+    extend Panel as needed.
+  * For now we want to thank the many people that contributed to
+    this release either by contributing directly or by testing and
+    providing feedback. Many thanks to the core contributors
+    @MarcSkovMadsen, @Hoxbro, @maximlt, @jbednar, @droumis and
+    @philippjfr and the outside contributors @ahuang11, @cdeil,
+    @MridulS, @AndrewMaged814, @midnighter and @wendrul.
+  ## Major Features
+  * Add new and highly performant layout engine, addressing many
+    performance and layout issues (#4326, #4463, #4491, #4503,
+    #4522, #4690)
+  * Add unified Design and Theme system (#4413, #4475, #4466,
+    #4540, #4548, #4770, #4792, #4793, #4801)
+  * Implement support for passing parameters, widgets and bound
+    functions by reference for simple and powerful reactivity
+    (#4495, #4505, #4603, #4606)
+  * Some of the changes related to the new layout engine and design
+    system will require small updates to your existing
+    applications. To make this transition as smooth as possible we
+    have provided an upgrade/migration guide.
+  ## New Components
+  * Add Swipe layout (#3007)
+  * Add Switch widget (#4130)
+  * Add Vizzu pane (#4226, #4739)
+  * Add BrowserInfo model to expose browser window and navigator
+    APIs (#4533)
+  * Add BasicAuth provider for quick password based auth (#4684)
+  * Add FloatPanel layout (#4707, #4711)
+  * Add a SlidesTemplate based on reveal.js to create interactive
+    presentations (#4798)
+  ## Major enhancements
+  * Improved Markdown rendering (#4688)
+  * Add support for tooltips on widgets (#4130, #4621,
+    #4643)
+  * Ensure .ipynb and .md based apps can be used as --index (#4432)
+  * Add support for selecting format and encoding for Matplotlib
+    image output and implemented responsive Image sizing (#4514)
+  * Add support for icons on Button (#4797)
+  * Add generic Image pane that auto-detects the image filetype
+    (#4551)
+  * Add support for writing applications in Markdown (#4602)
+  * Improve support for inline resources for Jupyter (#3013, #4787)
+  * Add ability to reuse sessions to speed up rendering (#3679,
+    #4658)
+  * Improve notebook resource and extension loading (#4752)
+  * Add ability to add global loading spinner to application(s)
+    (#4659)
+  ## Deprecations & API changes
+  ### Compatibility
+  * Bokeh 3 compatibility (#4098, #4117, #4129, #4140, #4150,
+    #4275, #4467, #4435, #4441, #4449, #4448, #4508)
+  * Upgrade plotly.js to 2.18.0 (#4320)
+  * Upgrade Tabulator to 5.4 and optimize rendering (#4482)
+  * Upgrade Echarts to 5.4.1 (#4538)
+  * Upgrade pyodide (0.23.1) and pyscript versions (#4344)
+  * Add support for altair and vega-lite v5 (#4488)
+  * Add support for latest versions of ipywidgets (#4716, #4766,
+    #4779)
+  ### Deprecations
+  * Deprecate IDOM pane (#4293, #4323)
+  * Deprecate Viewable.app (#4293)
+  * Deprecate Viewable.pprint (#4347)
+  * Deprecate and remove RGGPlot
+  * Rename Ace to CodeEditor (#4627)
+  ### API changes & Backward Compatibility
+  * Pandas is now only a (lazy) runtime dependency (#4411)
+  * Tabulator.frozen_rows now respects the order of rows in the
+    data instead of the order in which the frozen_rows were defined
+    (#4482)
+  * Make margin defaults consistent across widgets and panes
+    (#4528)
+  * Extension calls must specify all required extensions (#4562)
+  * The .embed method now returns a Mimebundle object for rendering
+    (#4791)
+  * Remove panel examples CLI command and pyct dependency (#4691)
+  * Expose all layout components in top-level API (#4696)
+  ## Other Enhancements
+  ### Configuration
+  * Allow to set the log level of the Admin logger (#3495)
+  * Add pn.state.served to simplify determining whether script is
+    executed as an application or in an interactive session (#4252)
+  * Add pn.config.loading_indicator to determine whether to show
+    loading indicator by default (#4259)
+  ### Jupyter
+  * Improve startup, error handling and shutdown of Jupyter kernels
+    (#4364)
+  * Log errors in JupyterLab preview to server logs (#4773)
+  * Support binary JS -> Python communication in notebooks (#4635)
+  * Modify sys.path when running inside Jupyter Kernel (#4489)
+  ### Pyodide
+  * IPython display compatibility in pyodide builds (#4270)
+  * Ensure panel convert respects pn.config (#4359)
+  * Fix notification support in Pyodide (#4387)
+  ### Miscelleanous
+  * Handle cancelling and empty value edit events on Tabulator
+    (#4343)
+  * Add favicon to base template (#4626)
+  * Ensure CrossSelector filters apply on each keystroke (#4339)
+  * Do not re-create Vega.selections object unless selections
+    changed (#4497)
+  * Standardize parameter mapping APIs (#4386)
+  * Add Plotly.link_figure parameter (#4333)
+  * Add support for .JPEG file extension in the JPG pane (#4532)
+  * Make periodic callback counter a parameter (#4134)
+  * Add Echarts events (#2174)
+  * Additional cache support (#4663, #4667)
+  ## Bug fixes
+  * Fix caching on undecorated Parameterized method (#4332)
+  * Ensure that global notification object can be used inside
+    notebook callbacks (#4331)
+  * Ensure hash_funcs are applied recursively in cache (#4334)
+  * Fix cache FIFO policy bug (#4789)
+  * Fix specifying custom index with relative path (#4288)
+  * Fix issue reusing FileDownload model (#4328)
+  * Fix DeckGL tooltip handling (#4628)
+  * Fix NumPy integer/floating checks on Perspective (#4366)
+  * Ensure memray profiler temporary file is flushed (#4666)
+  * Fix mimetype issue on windows (#4738)
+  * Fix Plotly undefined value errors for eventdata (#4355)
+  ### Tabulator
+  * Ensure updates to Tabulator formatter or editor updates model
+    (#4296, #4781)
+  * Ensure Tabulator internal _index_mapping is updated on stream
+    (#4292)
+  * Ensure Tabulator header filters aren't treated as regex (#4423)
+  * Ensure Tabulator styles are re-applied when local pagination
+    changes (#4795)
+  ### Jupyter
+  * Ensure JupyterLab preview works on Windows (#4819)
+  * Ensure notifications are enabled even if hv.extension has been
+    loaded (#4330)
+
+-------------------------------------------------------------------
 Fri Mar 31 15:43:04 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.14.4
