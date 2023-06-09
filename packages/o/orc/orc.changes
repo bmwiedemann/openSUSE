@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun  7 13:37:52 UTC 2023 - pgajdos@suse.com
+
+- Update to version 0.4.34
+  + Thread-safety improvements around orc codemem
+    allocation/freeing
+  + Add orc_parse_code() with more detailed error reporting
+  + Implement Orc function lazy initialization correctly via atomic
+    operations
+  + orc program parser fixes and improvements
+  + build fixes and compiler warning fixes
+  + coverity and clang scan-build static code analysis fixes
+  + meson: Do not always generate static library for test library
+  + ci improvements
+
+-------------------------------------------------------------------
 Mon Nov 21 12:59:20 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.4.33:

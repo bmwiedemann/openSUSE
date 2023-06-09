@@ -354,4 +354,22 @@
     <comment></comment>
     <requestid>1037153</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>92bbbcd30b4aa4fcf27c4e94eaaad889</srcmd5>
+    <version>0.4.34</version>
+    <time>1686335822</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.34
+  + Thread-safety improvements around orc codemem
+    allocation/freeing
+  + Add orc_parse_code() with more detailed error reporting
+  + Implement Orc function lazy initialization correctly via atomic
+    operations
+  + orc program parser fixes and improvements
+  + build fixes and compiler warning fixes
+  + coverity and clang scan-build static code analysis fixes
+  + meson: Do not always generate static library for test library
+  + ci improvements</comment>
+    <requestid>1091414</requestid>
+  </revision>
 </revisionlist>
