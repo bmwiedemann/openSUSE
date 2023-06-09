@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  6 20:02:00 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.2/
+- Changes since 23.04.1:
+  * Fix the capture option panel width for some languages
+
+-------------------------------------------------------------------
 Mon May 22 12:10:43 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix systemd_user_post/preun/postun calls: all systemd_user macros
