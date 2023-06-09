@@ -20,7 +20,7 @@
 %define   with_cloud_input   1
 
 Name:           ibus-libpinyin
-Version:        1.15.2
+Version:        1.15.3
 Release:        0
 Summary:        Intelligent Pinyin engine based on libpinyin for IBus
 License:        GPL-3.0-or-later
