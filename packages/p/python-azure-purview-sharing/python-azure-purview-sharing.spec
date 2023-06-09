@@ -15,14 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define realversion 1.0.0b1
+
+%define realversion 1.0.0b2
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-purview-sharing
-Version:        1.0.0~b1
+Version:        1.0.0~b2
 Release:        0
 Summary:        Microsoft Azure Purview Sharing Client Library for Python
 License:        MIT
@@ -30,18 +31,18 @@ Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
 Source:         https://files.pythonhosted.org/packages/source/a/azure-purview-sharing/azure-purview-sharing-%{realversion}.zip
 Source1:        LICENSE.txt
-BuildRequires:  %{python_module azure-purview-nspkg >= 2.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
+BuildRequires:  %{python_module azure-purview-nspkg >= 2.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-core < 2.0.0
 Requires:       python-azure-core >= 1.24.0
-Requires:       python-azure-purview-nspkg >= 2.0.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-isodate >= 0.6.1
+Requires:       python-azure-purview-nspkg >= 2.0.0
 Requires:       python-isodate < 1.0.0
+Requires:       python-isodate >= 0.6.1
 Requires:       (python-typing_extensions >= 4.3.0 if python-base < 3.8)
 Conflicts:      python-azure-sdk <= 2.0.0
 
