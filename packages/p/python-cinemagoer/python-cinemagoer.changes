@@ -1,0 +1,130 @@
+-------------------------------------------------------------------
+Mon Jun  5 14:24:33 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Rename package from python-IMDbPY to python-cinemagoer
+- Adds Provides/Obsoletes fields to handle package renaming
+- Remove obsolete python-module macro.
+- Update to 2023.5.1
+  [http]
+  * #424: parse the "fullcredits" page for persons (courtesy of DLu)
+  * #443: fix parser for plot summary (courtesy of Saleh Dehqanpour)
+  * #448: always transform ratings to float
+  * various other parsers fixed
+- Update to 2022.12.27
+  [http]
+  * #419: more fixes for movie searches
+  * #426: support 308 Permanent Redirect HTTP code
+  * better handling of locales
+  * fixes for python2.7
+- Update to 2022.12.04
+  [http]
+  * #232: add get_showtimes() method (courtesy of Kostya Farber)
+  * #388: add 'videos' key to extract movie trailer links
+  * #391: add parental guide advisory votes (courtesy of salehdeh76)
+  * #395: fix for some wrongly-formatted titles (courtesy of tsaklidis)
+  * #396: raise exception on resize image (courtesy of tsaklidis)
+  * #398: fix for production status
+  * #415: change User-Agent to a more complete form
+  * #419: fix movie and person searches
+  * #420: introduce a contributor guide (courtesy of Elizabeth Thorne)
+  * #421: fixes for person parsers
+- Update to 2022.02.11
+  [http]
+  * #373: include TV shows in get top 50 by genre
+  * #378: update documentation
+  [s3]
+  * #378: rename s32imdbpy.py to s32cinemagoer.py
+- Update to 2022.01.25
+  [general]
+  * #238: by default, exceptions are raised
+  * #315: include all script in the ./bin directory
+  * #318: fix kind of tv mini series in search results
+  * #369: do not rebuild locales running setup.py clean
+  * #371: support for 8-digit imdbIDs
+  * #378: renamed to cinemagoer
+  [http]
+  * #308: fix movie connections parser
+  * #319: parse review rating
+  * #327: do not strip new lines
+  * #329: improve localized and original title
+  * #330: fix for tv series for seasons not found
+  * #331: fix kind of tv mini series in search results
+  * #342: parse all information from full credits
+  * #343: fix for mpaa and certificates from parental guide page
+  * #344: extract advisories from parental guide page
+  * #346: collect raw info from country code
+  * #348: fix for series with no episodes
+  * #349: relevant keywords
+  * #357: add support for TV Special
+  * #366: fix full-size image links
+  * #372: support fox box office charts
+
+-------------------------------------------------------------------
+Wed Apr 28 09:29:47 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2021.04.18
+  [general] 
+  * #289: Serbian translations 
+  * #290: update Portuguese translations 
+  * #291: allow direct access to filmography keys 
+  * #299: add pagination to get_movie_list (courtesy of Stein van Broekhoven) 
+  * #300: any iterable can be used as season_nums parameter of update_series_seasons 
+  * #305: fix ability to set logging level - #310: fix build of locales .mo files 
+  * #312: extract localized title
+  [sql]
+  * #287: fix missing logger
+
+-------------------------------------------------------------------
+Wed Mar 10 01:41:02 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2020.9.25:
+  * [general]
+    + #112: switch to a calendar versioning scheme
+    + #242: introduce the "imdbID" key with the actual imdbID for movies and
+      persons
+    + #247: use html escape
+    + #257: fix exception formatting string (courtesy of miigotu)
+    + #262: remove obsolete Feature key from setup.py
+    + #265: imdb.helpers.resizeImage function to manipulate image URLs
+    + #267: update regex to support imdbIndex without a year
+    + #275: update che path for Creator
+    + #284: use derived loggers (courtesy of jsynowiec)
+    + #282: use correct escape sequence for regular expressions
+  * [http]
+    + #134: fix movie awards parser
+    + #228: fix goofs parser
+    + #229: introduce the "original title" key
+    + #230: get_keyword method is now paginated
+    + #234: parse person awards (thanks to Volkan Yalcin)
+    + #237: fix quotes parser
+    + #241: introduce recommendations parser
+    + #244: fix parser for persons filmography
+    + #245: ability to fetch information about a single season
+    + #260: parsers for top rated tv show, top rated indian movies, most
+      popular tv shows and movies
+    + #273: ability to parse movie lists (courtesy of Stein van Broekhoven)
+  * [sql]
+    + #270: introduce a progress bar importing s3 dataset
+    + #278: fix access to s3 tables
+- Update docs and license sections
+
+-------------------------------------------------------------------
+Thu Jan 21 04:45:03 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use python_alternative for imdbpy script, correct where we install the
+  language mo files from. 
+
+-------------------------------------------------------------------
+Thu Aug  1 09:47:34 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Update to version 6.8
+  - In the release 6.8 (codename "Apollo 11") of IMDbPY, multiple 
+    parsers were added and fixed; the new search_movie_advanced 
+    method allows advanced movie searches
+  - See full changelog at 
+    https://imdbpy.readthedocs.io/en/latest/Changelog.html
+
+-------------------------------------------------------------------
+Mon Jan 21 11:34:40 UTC 2019 - aguerrero@suse.com
+
+- Initial release version 6.6. This is only for Python 3.

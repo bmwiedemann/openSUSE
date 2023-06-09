@@ -1,0 +1,19 @@
+From: Ana Guerrero Lopez <ana.guerrero@suse.com>
+Date: 2018-01-21 16:00:00 +0200
+Subject: do not install examples scripts under /usr/bin
+Upstream: tbd
+
+Example scripts are installed under /usr/bin and it's prefered to keep
+them in an examples directory.
+
+--- a/setup.py
++++ b/setup.py
+@@ -82,7 +82,7 @@
+         'Source': 'https://github.com/cinemagoer/cinemagoer',
+     },
+     'download_url': dwnl_url,
+-    'scripts': scripts,
++#    'scripts': scripts,
+     'package_data': {
+         # Here, the "*" represents any possible language ID.
+         'imdb.locale': [
