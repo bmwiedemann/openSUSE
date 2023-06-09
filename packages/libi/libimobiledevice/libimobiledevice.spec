@@ -1,7 +1,7 @@
 #
 # spec file for package libimobiledevice
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libname libimobiledevice-1_0-6
 Name:           libimobiledevice
-Version:        1.3.0+git.20210921
+Version:        1.3.0+179git.20230430
 Release:        0
 Summary:        Native protocols library for iOS devices
 License:        LGPL-2.1-or-later
@@ -30,15 +30,15 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  python3-Cython >= 0.17
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-Cython >= 0.17
 BuildRequires:  python3-plist
 BuildRequires:  readline-devel
-BuildRequires:  pkgconfig(libplist-2.0) >= 2.2.0
+BuildRequires:  pkgconfig(libimobiledevice-glue-1.0) >= 1.0.0
+BuildRequires:  pkgconfig(libplist-2.0) >= 2.3.0
 BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(libusbmuxd-2.0) >= 2.0.2
 BuildRequires:  pkgconfig(python3)
-BuildRequires:  pkgconfig(libimobiledevice-glue-1.0)
 
 %description
 libimobiledevice is a software library that talks the protocols to support
@@ -92,7 +92,7 @@ autoreconf -fvi
 %configure \
   --disable-silent-rules \
   --disable-static \
-  PYTHON=%{_bindir}/python3
+  PYTHON=%{_bindir}/python3 PACKAGE_VERSION=%{version}
 %make_build
 
 %install
@@ -114,7 +114,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n imobiledevice-tools
 %doc AUTHORS NEWS README.md
 %{_bindir}/idevice_id
+%{_bindir}/idevicebtlogger
 %{_bindir}/idevicecrashreport
+%{_bindir}/idevicedevmodectl
 %{_bindir}/idevicepair
 %{_bindir}/ideviceinfo
 %{_bindir}/idevicesyslog
@@ -132,7 +134,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/ideviceprovision
 %{_bindir}/idevicenotificationproxy
 %{_mandir}/man1/idevice_id.1%{?ext_man}
+%{_mandir}/man1/idevicebtlogger.1%{?ext_man}
 %{_mandir}/man1/idevicecrashreport.1%{?ext_man}
+%{_mandir}/man1/idevicedevmodectl.1%{?ext_man}
 %{_mandir}/man1/idevicepair.1%{?ext_man}
 %{_mandir}/man1/ideviceinfo.1%{?ext_man}
 %{_mandir}/man1/idevicesyslog.1%{?ext_man}
