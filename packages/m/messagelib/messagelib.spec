@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           messagelib
-Version:        23.04.1
+Version:        23.04.2
 Release:        0
 Summary:        KDE PIM library for e-mail message parsing and display
 License:        GPL-2.0-only AND GPL-3.0-only AND LGPL-2.1-or-later

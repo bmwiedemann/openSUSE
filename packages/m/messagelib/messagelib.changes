@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun  6 20:01:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.2/
+- Changes since 23.04.1:
+  * Use QuoteHtmlChars
+  * Fix email comparison (some email are written "<foo@kde.org>"
+  * convert quote as html otherwise we can't see info
+  * Remove unused includes
+  * Fix typo
+  * Fix crash when switching signed/encrypted emails very fast (kde#463083)
+  * Align descript message and lock icon
+  * Debug--
+  * Const'ify variable. Initialize variable
+  * Add more autotests
+
+-------------------------------------------------------------------
 Tue May  9 10:47:50 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.1
