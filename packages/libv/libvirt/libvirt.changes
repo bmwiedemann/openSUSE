@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun  7 22:21:45 UTC 2023 - James Fehlig <jfehlig@suse.com>
+
+- apparmor: Add support for local profile customizations
+  spec: Replace /etc/apparmor.d/<libvirt-profile> on package upgrade
+  bsc#1211472
+- supportconfig: Modular daemon improvements
+
+-------------------------------------------------------------------
 Fri Jun  2 16:26:30 UTC 2023 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 9.4.0

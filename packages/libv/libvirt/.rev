@@ -4346,4 +4346,15 @@ StandardGroups in rpmlint package.
     https://libvirt.org/news.html#v9-4-0-2023-06-01</comment>
     <requestid>1090561</requestid>
   </revision>
+  <revision rev="376" vrev="2">
+    <srcmd5>12a98286329d12a10f96bad3e83bca82</srcmd5>
+    <version>9.4.0</version>
+    <time>1686335820</time>
+    <user>dimstar_suse</user>
+    <comment>- apparmor: Add support for local profile customizations
+  spec: Replace /etc/apparmor.d/&lt;libvirt-profile&gt; on package upgrade
+  bsc#1211472
+- supportconfig: Modular daemon improvements</comment>
+    <requestid>1091352</requestid>
+  </revision>
 </revisionlist>

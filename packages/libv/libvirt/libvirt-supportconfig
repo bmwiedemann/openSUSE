@@ -8,11 +8,12 @@
 
 RCFILE="/usr/lib/supportconfig/resources/scplugin.rc"
 
-LIBVIRTD_CONF_FILES="$(find -L /etc/libvirt/*.conf -type f | sort)"
+# conf files for all daemons reside in /etc/libvirt/. VM conf files
+# and log files reside in hypervisor-specific locations.
+DAEMON_CONF_FILES="$(find -L /etc/libvirt/*.conf -type f 2>/dev/null | sort)"
 PERSISTENT_VM_CONF_FILES=""
 ACTIVE_VM_CONF_FILES=""
-LIBVIRTD_LOG_FILES="$(find -L /var/log/libvirt/*.log -type f | sort)"
-
+DAEMON_LOG_FILES=""
 
 if [ -s $RCFILE ]; then
     if ! source $RCFILE; then
@@ -55,27 +56,21 @@ rpm_verify() {
 if rpm_installed libvirt-daemon-driver-libxl; then
     test -d /etc/libvirt/libxl && PERSISTENT_VM_CONF_FILES="$PERSISTENT_VM_CONF_FILES $(find -L /etc/libvirt/libxl/ -type f | sort)"
     test -d /run/libvirt/libxl && ACTIVE_VM_CONF_FILES="$ACTIVE_VM_CONF_FILES $(find -L /run/libvirt/libxl/ -type f | sort)"
-    test -d /var/log/libvirt/libxl && LIBVIRTD_LOG_FILES="$LIBVIRTD_LOG_FILES $(find -L /var/log/libvirt/libxl/ -type f | sort)"
+    test -d /var/log/libvirt/libxl && DAEMON_LOG_FILES="$DAEMON_LOG_FILES $(find -L /var/log/libvirt/libxl/ -type f | sort)"
 fi
 
 if rpm_installed libvirt-daemon-driver-qemu; then
     test -d /etc/libvirt/qemu && PERSISTENT_VM_CONF_FILES="$PERSISTENT_VM_CONF_FILES $(find -L /etc/libvirt/qemu/ -type f | sort)"
     test -d /run/libvirt/qemu && ACTIVE_VM_CONF_FILES="$ACTIVE_VM_CONF_FILES $(find -L /run/libvirt/qemu/ -type f | sort)"
-    test -d /var/log/libvirt/qemu && LIBVIRTD_LOG_FILES="$LIBVIRTD_LOG_FILES $(find -L /var/log/libvirt/qemu/ -type f | sort)"
+    test -d /var/log/libvirt/qemu && DAEMON_LOG_FILES="$DAEMON_LOG_FILES $(find -L /var/log/libvirt/qemu/ -type f | sort)"
 fi
 
-if rpm_installed libvirt-daemon-driver-lxc; then
-    test -d /etc/libvirt/lxc && PERSISTENT_VM_CONF_FILES="$PERSISTENT_VM_CONF_FILES $(find -L /etc/libvirt/lxc/ -type f | sort)"
-    test -d /run/libvirt/lxc && ACTIVE_VM_CONF_FILES="$ACTIVE_VM_CONF_FILES $(find -L /run/libvirt/lxc/ -type f | sort)"
-    test -d /var/log/libvirt/lxc && LIBVIRTD_LOG_FILES="$LIBVIRTD_LOG_FILES $(find -L /var/log/libvirt/lxc/ -type f | sort)"
+if rpm_installed libvirt-daemon; then
+    DAEMON_LOG_FILES="$DAEMON_LOG_FILES $(find -L /var/log/libvirt/*.log -type f 2>/dev/null | sort)"
 fi
 
-if ! rpm_verify libvirt-daemon; then
-    echo "Skipped"
-    exit 0
-fi
+if rpm_installed libvirt-client && virsh capabilities > /dev/null 2>&1; then
 
-if systemctl is-active --quiet libvirtd.service; then
     plugin_command "virsh version"
     plugin_command "virsh capabilities"
     plugin_command "virsh domcapabilities"
@@ -102,15 +97,6 @@ if systemctl is-active --quiet libvirtd.service; then
 	plugin_command "virsh snapshot-list $DOM"
 	echo
     done
-    # for LXC domains we have to explicitly specify the URI
-    if rpm_installed libvirt-daemon-driver-lxc; then
-        for DOM in $(virsh -c lxc:/// list --name --all); do
-            plugin_command "virsh -c lxc:/// dumpxml $DOM"
-	    plugin_command "virsh -c lxc:/// dominfo $DOM"
-	    echo
-        done
-    fi
-
     # dump active networks, interfaces and storage pools
     plugin_command "virsh net-list"
     plugin_command "virsh iface-list"
@@ -118,7 +104,7 @@ if systemctl is-active --quiet libvirtd.service; then
 fi
 
 # dump libvirtd-related conf files
-pconf_files "$LIBVIRTD_CONF_FILES"
+pconf_files "$DAEMON_CONF_FILES"
 
 # dump persistent VM-related conf files
 pconf_files "$PERSISTENT_VM_CONF_FILES"
@@ -131,6 +117,6 @@ test -d /etc/libvirt/hooks && FILES="$(find -L /etc/libvirt/hooks/ -type f | sor
 pconf_files "$FILES"
 
 # dump all log files
-plog_files 0 "$LIBVIRTD_LOG_FILES"
+plog_files 0 "$DAEMON_LOG_FILES"
 
 echo "Done"

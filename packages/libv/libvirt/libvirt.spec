@@ -813,7 +813,7 @@ Requires:       %{name}-daemon-driver-network = %{version}-%{release}
 libvirt plugin for NSS for translating domain names into IP addresses.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %if %{with_qemu}
@@ -1079,6 +1079,7 @@ rm -f %{buildroot}/%{logrotate_dir}/libvirtd.lxc
 %if ! %{with_qemu}
 rm -f %{buildroot}/%{_sysconfdir}/%{name}/qemu.conf
 rm -f %{buildroot}/%{_sysconfdir}/apparmor.d/usr.sbin.virtqemud
+rm -f %{buildroot}/%{_sysconfdir}/apparmor.d/local/usr.sbin.virtqemud
 rm -f %{buildroot}/%{_datadir}/augeas/lenses/libvirtd_qemu.aug
 rm -f %{buildroot}/%{_datadir}/augeas/lenses/tests/test_libvirtd_qemu.aug
 rm -f %{buildroot}/%{logrotate_dir}/libvirtd.qemu
@@ -1086,6 +1087,7 @@ rm -f %{buildroot}/%{logrotate_dir}/libvirtd.qemu
 %if ! %{with_libxl}
 rm -f %{buildroot}/%{_sysconfdir}/%{name}/libxl.conf
 rm -f %{buildroot}/%{_sysconfdir}/apparmor.d/usr.sbin.virtxend
+rm -f %{buildroot}/%{_sysconfdir}/apparmor.d/local/usr.sbin.virtxend
 rm -f %{buildroot}/%{logrotate_dir}/libvirtd.libxl
 rm -f %{buildroot}/%{_datadir}/augeas/lenses/libvirtd_libxl.aug
 rm -f %{buildroot}/%{_datadir}/augeas/lenses/tests/test_libvirtd_libxl.aug
@@ -1415,6 +1417,9 @@ fi
 %libvirt_logrotate_pre libvirtd.qemu
 
 %post daemon-driver-qemu
+%if %{with_apparmor}
+%apparmor_reload /etc/apparmor.d/usr.sbin.virtqemud
+%endif
 %if %{with_modular_daemons}
     %libvirt_daemon_systemd_post virtqemud
 %endif
@@ -1455,6 +1460,9 @@ fi
 %libvirt_logrotate_pre libvirtd.libxl
 
 %post daemon-driver-libxl
+%if %{with_apparmor}
+%apparmor_reload /etc/apparmor.d/usr.sbin.virtxend
+%endif
 %if %{with_modular_daemons}
     %libvirt_daemon_systemd_post virtxend
 %endif
@@ -1490,6 +1498,10 @@ fi
 %{_unitdir}/libvirtd-tls.socket
 %{_sbindir}/rclibvirtd
 %config(noreplace) %{_sysconfdir}/%{name}/libvirtd.conf
+%if %{with_apparmor}
+%config %{_sysconfdir}/apparmor.d/usr.sbin.libvirtd
+%config(noreplace) %{_sysconfdir}/apparmor.d/local/usr.sbin.libvirtd
+%endif
 %{logrotate_prefix} %{logrotate_dir}/libvirtd
 %dir %{_datadir}/augeas/
 %dir %{_datadir}/augeas/lenses/
@@ -1533,12 +1545,7 @@ fi
 %dir %{_sysconfdir}/apparmor.d/abstractions/
 %dir %{_sysconfdir}/apparmor.d/%{name}/
 %dir %{_sysconfdir}/apparmor.d/local/
-%config(noreplace) %{_sysconfdir}/apparmor.d/usr.sbin.libvirtd
-%config(noreplace) %{_sysconfdir}/apparmor.d/usr.lib.libvirt.virt-aa-helper
-%config(noreplace) %{_sysconfdir}/apparmor.d/abstractions/libvirt-qemu
-%config(noreplace) %{_sysconfdir}/apparmor.d/abstractions/libvirt-lxc
-%config(noreplace) %{_sysconfdir}/apparmor.d/%{name}/TEMPLATE.lxc
-%config(noreplace) %{_sysconfdir}/apparmor.d/%{name}/TEMPLATE.qemu
+%config %{_sysconfdir}/apparmor.d/usr.lib.libvirt.virt-aa-helper
 %config(noreplace) %{_sysconfdir}/apparmor.d/local/usr.lib.libvirt.virt-aa-helper
 %{_libexecdir}/virt-aa-helper
 %endif
@@ -1747,7 +1754,12 @@ fi
 
 %files daemon-driver-qemu
 %config(noreplace) %{_sysconfdir}/%{name}/virtqemud.conf
-%config(noreplace) %{_sysconfdir}/apparmor.d/usr.sbin.virtqemud
+%if %{with_apparmor}
+%config %{_sysconfdir}/apparmor.d/usr.sbin.virtqemud
+%config(noreplace) %{_sysconfdir}/apparmor.d/local/usr.sbin.virtqemud
+%config %{_sysconfdir}/apparmor.d/abstractions/libvirt-qemu
+%config %{_sysconfdir}/apparmor.d/%{name}/TEMPLATE.qemu
+%endif
 %config(noreplace) %{_prefix}/lib/sysctl.d/60-qemu-postcopy-migration.conf
 %{_datadir}/augeas/lenses/virtqemud.aug
 %{_datadir}/augeas/lenses/tests/test_virtqemud.aug
@@ -1781,6 +1793,10 @@ fi
 
 %files daemon-driver-lxc
 %config(noreplace) %{_sysconfdir}/%{name}/virtlxcd.conf
+%if %{with_apparmor}
+%config %{_sysconfdir}/apparmor.d/abstractions/libvirt-lxc
+%config %{_sysconfdir}/apparmor.d/%{name}/TEMPLATE.lxc
+%endif
 %{_datadir}/augeas/lenses/virtlxcd.aug
 %{_datadir}/augeas/lenses/tests/test_virtlxcd.aug
 %{_unitdir}/virtlxcd.service
@@ -1809,7 +1825,10 @@ fi
 
 %files daemon-driver-libxl
 %config(noreplace) %{_sysconfdir}/%{name}/virtxend.conf
-%config(noreplace) %{_sysconfdir}/apparmor.d/usr.sbin.virtxend
+%if %{with_apparmor}
+%config %{_sysconfdir}/apparmor.d/usr.sbin.virtxend
+%config(noreplace) %{_sysconfdir}/apparmor.d/local/usr.sbin.virtxend
+%endif
 %{_datadir}/augeas/lenses/virtxend.aug
 %{_datadir}/augeas/lenses/tests/test_virtxend.aug
 %{_unitdir}/virtxend.service

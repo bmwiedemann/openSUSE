@@ -5,6 +5,7 @@
     <param name="revision">factory</param>
     <param name="extract">libvirt.spec</param>
     <param name="extract">README.packaging.txt</param>
+    <param name="extract">libvirt-supportconfig</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">[v]?([^-+a-z]+)(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
