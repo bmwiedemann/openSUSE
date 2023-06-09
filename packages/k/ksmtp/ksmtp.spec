@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           ksmtp
-Version:        23.04.1
+Version:        23.04.2
 Release:        0
 Summary:        Job-based library to send email through an SMTP server
 License:        LGPL-2.1-or-later
