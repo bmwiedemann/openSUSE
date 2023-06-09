@@ -1087,4 +1087,12 @@ I hope I got it right now. It export both 5.34.0 and 5.34.1 COMPAT. That should 
     <comment>- Replace usage of deprecated fgrep with grep -F. (forwarded request 1057728 from dimstar)</comment>
     <requestid>1057735</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>5163e6d028bfc92b1ed63b19ab7d057e</srcmd5>
+    <version>5.36.1</version>
+    <time>1686335720</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1091288</requestid>
+  </revision>
 </revisionlist>

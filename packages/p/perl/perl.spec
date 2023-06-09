@@ -23,11 +23,11 @@
 %define name_suffix %{nil}
 %endif
 
-%define pversion 5.36.0
+%define pversion 5.36.1
 # set to nil when equal to pversion
-%global versionlist %{nil}
+%global versionlist 5.36.0
 Name:           perl%{?name_suffix}
-Version:        5.36.0
+Version:        5.36.1
 Release:        0
 Summary:        The Perl interpreter
 License:        Artistic-1.0 OR GPL-1.0-or-later

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun  1 15:27:36 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to perl 5.36.1 - maintenance release
+  * Module::CoreList has been upgraded from version 5.20220520 to 5.20230423.
+  * Fixed: An eval() as the last statement in a regex code block could trigger
+    an interpreter panic
+  * An eval EXPR referring to a lexical sub defined in grandparent scope no
+    longer produces an assertion failures.
+  * Writing to a magic variables associated with the selected output handle,
+    $^, $~, $=, $- and $%, no longer crashes perl if the IO object has been
+    cleared from the selected output handle.
+
+-------------------------------------------------------------------
 Wed Jan 11 08:00:20 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Replace usage of deprecated fgrep with grep -F.
