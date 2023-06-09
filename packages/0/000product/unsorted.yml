@@ -15190,8 +15190,8 @@ unsorted:
   - libterminalwidget5-0 
   - libtermkey-devel 
   - libtermkey1 
-  - libtesseract-5_3_0 
-  - libtesseract-5_3_0-x86-64-v3 
+  - libtesseract5 
+  - libtesseract5-x86-64-v3 
   - libtestshade1_12 
   - libtevent-devel 
   - libtexlua53-5 
@@ -26128,7 +26128,6 @@ unsorted:
   - python310-webencodings 
   - python310-weblate-language-data 
   - python310-weblate-schemas 
-  - python310-weblib 
   - python310-webruntime 
   - python310-websocket-client 
   - python310-websockets 
@@ -29583,7 +29582,6 @@ unsorted:
   - python311-webencodings 
   - python311-weblate-language-data 
   - python311-weblate-schemas 
-  - python311-weblib 
   - python311-webruntime 
   - python311-websocket-client 
   - python311-websockets 
@@ -33080,7 +33078,6 @@ unsorted:
   - python39-webencodings 
   - python39-weblate-language-data 
   - python39-weblate-schemas 
-  - python39-weblib 
   - python39-webruntime 
   - python39-websocket-client 
   - python39-websockets 
