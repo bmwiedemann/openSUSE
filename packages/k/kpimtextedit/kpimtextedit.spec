@@ -19,7 +19,7 @@
 %define libname libKPim5TextEdit5
 %bcond_without released
 Name:           kpimtextedit
-Version:        23.04.1
+Version:        23.04.2
 Release:        0
 Summary:        KDE PIM Libraries: Text edit functionality
 License:        LGPL-2.1-or-later
