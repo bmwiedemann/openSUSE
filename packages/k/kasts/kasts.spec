@@ -18,7 +18,7 @@
 
 %bcond_without  released
 Name:           kasts
-Version:        23.04.1
+Version:        23.04.2
 Release:        0
 Summary:        Kirigami-based podcast player
 License:        GPL-2.0-or-later
@@ -89,7 +89,7 @@ Its main features are:
 %{_kf5_applicationsdir}/org.kde.kasts.desktop
 %{_kf5_appstreamdir}/org.kde.kasts.appdata.xml
 %{_kf5_bindir}/kasts
-%{_kf5_iconsdir}/hicolor/scalable/actions/media-playback-start-cloud.svg
+%{_kf5_iconsdir}/hicolor/scalable/actions/media-playback-cloud.svg
 %{_kf5_iconsdir}/hicolor/scalable/apps/kasts-tray-*.svg
 %{_kf5_iconsdir}/hicolor/scalable/apps/kasts.svg
 %{_kf5_libdir}/libKMediaSession.so
