@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun  6 20:01:53 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.2/
+- Changes since 23.04.1:
+  * Focus message search window's search field by default (kde#469879)
+  * Fix asan runtime error in texthandler
+  * Update appstream description
+
+-------------------------------------------------------------------
 Tue May  9 10:47:51 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.1
