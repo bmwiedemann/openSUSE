@@ -1,0 +1,158 @@
+-------------------------------------------------------------------
+Tue May  2 18:31:14 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.4.2:
+  * update get point at distance
+  * fix reparsing flags
+  * add logseq plugin
+  * add md block info
+  * fix elk issue when container named root
+  * add d2sketch in ci
+  * fix e2e profile passing args
+  * fast attempt with debt balancing + skip bad rows
+  * add maximum attempts
+  * improve grid expand evenly
+  * search for white index
+  * fix gif pallete
+  * add profiling for e2e tests
+  * implement arrays for classes
+  * add more detailed error msg
+  * account for non-orthogonal connection segments
+  * arrowhead refactor
+  * fix generate unique number id
+  * model_order cycle breaking elk
+  * fix elk self loop spacing
+  * d2oracle: don't modify classes
+  * Update japan.d2
+  * enforce min size for text shapes
+  * remove border-radius percent tests, add border-radius pill (with a big value) test
+  * feat: revert percentage border-radius. Accept higher border-radius value and limit it to half of the smaller shape side to be rendered as a pill
+  * feat: check border-radius value value before checking its decimals. New rx and ry compute method.
+  * feat: add possiblity to set shape border-radius with percentage value
+
+-------------------------------------------------------------------
+Tue Apr 18 02:00:30 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.4.1:
+  * [ci-force] add japan example
+  * [ci-base] add d2 pptx example
+  * remove d2graph edge.MinWidth MinHeight
+  * adjust label positioning for arrowhead
+  * update bounding box for arrowhead labels
+  * position arrowhead labels
+  * render with arrowhead dimensions
+  * set arrowhead label dimensions
+  * pptx board path
+  * refactor boardType
+  * refactor ppt
+  * remove import
+  * show message while generating gif
+  * navbar on pptx
+  * add example
+  * add constants
+  * navbar on pdfs
+  * Update lib/xgif/xgif.go
+  * export root
+  * package docs
+  * export gifs
+  * Fixing typos
+  * refactor d2graph.Attributes
+  * relative paths
+  * refactor LabelWidth and LabelHeight to LabelDimensions
+  * convert png boards to gif
+  * Update generate_png.js
+  * add exportExtension
+  * add dark terrastruct flagship theme
+  * e2etests: Add ent2d2 test case
+  * don't increase font size for md text if container
+  * update markdown text measurement and rendering to use font-size
+  * rename to horizontal-gap and vertical-gap
+  * fix grid panic with insuffient objects
+  * if storing int and casting float64 each use
+  * set scale when generating png
+  * use grid-gap values for layout
+  * add grid-gap keywords
+  * handdrawn semibold
+  * custom semibold font option
+  * using semibold
+  * add SourceCodePro-Semibold font
+  * measure with semibold
+  * use semibold font instead of font-weight: 600
+  * setting up semibold font
+  * add SourceSansPro-Semibold font
+  * support multiboard rendering in e2e tests
+  * changelog and ci
+  * return svg
+  * move to a single file
+  * generate files from templates
+  * fix layout of grid in constant near
+  * move xml to templates
+  * fix links in keynote
+  * [ci-force] update contributing
+  * add links to pptx
+  * fix urls in changelogs
+  * fix image resizing
+  * minor fixes for MS PowerPoint
+  * fix image size
+  * rename and docs
+  * update title
+  * slide title
+  * fix size and position
+  * add pptx export
+  * base ppt export
+
+-------------------------------------------------------------------
+Sun Apr  9 02:38:41 UTC 2023 - jkowalczyk@suse.com
+
+- Initial package version 0.4.0:
+  * update link to tree-sitter grammar
+  * add text-transform as keyword
+  * fix watch mode
+  * Add `text-transform` attribute to the `style` block
+  * fix solo near
+  * markdown class has to have diagramHash targeting
+  * Lifeline should inherit the stroke style from the actor
+  * fix empty layer
+  * fix: attach objects of tempGraph
+  * Add d2-filter as community plugin
+  * update keywords rows -> grid-rows
+  * new method for placing nodes across rows
+  * fix inheritence bug
+  * rename to grid diagram
+  * validate descendants
+  * layout evenly with rows and columns
+  * center container if growing to fit label
+  * validate edges
+  * add padding between dagre labels
+  * fixing rows creation
+  * finish column logic
+  * more dynamic grid sizing according to node sizes
+  * evenly size grid nodes
+  * values must be positive
+  * layout with grids
+  * Truncate to 32-bit precision to avoid floating-point arithmetic divergence between platforms
+  * docs(readme): add golang queue library as example.
+  * chore: feature description doc
+  * fixes #1104
+  * namespace transitions
+  * fix builds on 32bit
+  * have watch mode parse svg message correctly
+  * fix: find outer near contaienr
+  * fix: validation for near obj connect to outside
+  * fix: a clean spilit for temp graph
+  * d2parser: Fix #322
+  * fix: validateNear outside connection
+  * fix: nil labelPosition
+  * fix: calc labelPosition
+  * fix: delete redundant file
+  * fix: use method instead of attribute
+  * fix: delete redundant variable
+  * fix: delete redundant return value
+  * fix: ignore objects inside near container when calc boundingBox
+  * fix: calc labelDimension
+  * fix: integrate logic of construct sub graph inside WithoutConstantNears
+  * fix: add validation for near connectioins
+  * fix: compile_test testcase
+  * fix: revert near_bad_connected compile_test
+  * fix: delete redundant testcases
+  * feat: descendants now is allowed for container with near attribute
