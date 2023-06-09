@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           libkcompactdisc
-Version:        23.04.1
+Version:        23.04.2
 Release:        0
 Summary:        CD drive library for KDE Platform
 License:        GPL-2.0-or-later
