@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  8 05:55:44 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Preparing pdsh for Slurm 23.02.
+
+-------------------------------------------------------------------
 Mon Mar 13 14:31:14 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Fix slurm plugin: make sure slurm_init() is called before using
