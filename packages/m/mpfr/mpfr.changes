@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Jun  7 07:13:26 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Update mpfr-4.2.0-cummulative.patch, adds patches fixing the following bugs
+  * the mpfr_reldiff function, which computes |b-c|/b, is buggy on special
+    values, e.g. on the following (b,c) values: (+Inf,+Inf) gives ±0
+    instead of NaN (like NaN/Inf); (+0,+0) gives 1 instead of NaN (like 0/0);
+    (+0,1) gives 1 instead of Inf (like 1/0). Moreover, the sign of 0 for
+    (+Inf,+Inf) or (-Inf,-Inf) is not set, i.e. it is just the sign of the
+    destination before the call; as a consequence, results are not even
+    consistent.
+  * the reuse tests are incomplete: the sign of a result zero is not checked,
+    so that it can miss bugs (one of the mpfr_reldiff bugs mentioned above,
+    in particular).
+  * the general code for the power function (mpfr_pow_general internal
+    function) has two bugs in particular cases: the first one is an incorrect
+    computation of the error bound when there has been an intermediate
+    underflow or overflow (in such a case, the computation is performed
+    again with a rescaling, thus with an additional error term, but there is
+    a bug in the computation of this term), so that the result may be
+    rounded incorrectly (in particular, a spurious overflow is possible);
+    the second one occurs in a corner case (destination precision 1,
+    rounding to nearest, and where the rounded result assuming an unbounded
+    exponent range would be 2emin-2 and the exact result is larger than this
+    value), with the only consequence being a missing underflow exception
+    (the underflow flag is not set).
+  * the mpfr_compound_si function can take a huge amount of memory and time
+    in some cases (when the argument x is a large even integer and xn is
+    represented exactly in the target precision) and does not correctly
+    detect overflows and underflows
+  * MPFR can crash when a formatted output function is called with
+    %.2147483648Rg in the format string.
+
+-------------------------------------------------------------------
 Tue Apr 18 08:13:21 UTC 2023 - Richard Biener <rguenther@suse.com>
 
 - Add mpfr-4.2.0-cummulative.patch, cummulative patches for
