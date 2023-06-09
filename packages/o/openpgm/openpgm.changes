@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun  7 13:11:24 UTC 2023 - pgajdos@suse.com
+
+- version update to 5.3.128
+  * Maintenance release aggregating all patches to the repository since
+    previous tested release.
+- modified sources
+  % baselibs.conf
+- deleted patches
+  - libpgm-5.2.122-configure-rdtsc-checking-chg.patch (upstreamed)
+  - libpgm-5.2.122-pkg-config-do-not-add-I-to-non-existing-directory.patch (upstreamed)
+  - libpgm-5.2.122-reproducible-architecture.patch (upstreamed)
+  - libpgm-5.2.122-reproducible.patch (upstreamed)
+  - use_python3.patch (upstreamed)
+
+-------------------------------------------------------------------
 Mon Jun 28 17:37:10 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add use_python3.patch to allow use of Python3 instead of

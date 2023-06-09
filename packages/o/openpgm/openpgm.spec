@@ -2,7 +2,7 @@
 #
 # spec file for package openpgm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,31 +19,20 @@
 
 
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
-%define major       5.2
-%define mpkg        5_2
+%define major       5.3
+%define mpkg        5_3
 %define soname      0
-%define tarball_version 5-2-122
+%define tarball_version 5-3-128
 %define libname     libpgm-%{mpkg}-%{soname}
 Name:           openpgm
-Version:        5.2.122
+Version:        5.3.128
 Release:        0
 Summary:        OpenPGM implementation of the Reliable Multicast Protocol
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/steve-o/openpgm
-Source:         https://github.com/steve-o/openpgm/archive/release-5-2-122.tar.gz#/openpgm-release-%{tarball_version}.tar.gz
+Source:         https://github.com/steve-o/openpgm/archive/release-%{tarball_version}.tar.gz#/openpgm-release-%{tarball_version}.tar.gz
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM bmwiedemann https://github.com/steve-o/openpgm/pull/48
-Patch0:         libpgm-5.2.122-reproducible.patch
-# PATCH-FIX-UPSTREAM bluca https://github.com/steve-o/openpgm/pull/58
-Patch1:         libpgm-5.2.122-reproducible-architecture.patch
-# PATCH-FIX-UPSTREAM bluca https://github.com/steve-o/openpgm/pull/57
-Patch2:         libpgm-5.2.122-pkg-config-do-not-add-I-to-non-existing-directory.patch
-# upstream pending patch https://github.com/steve-o/openpgm/pull/63
-Patch3:         libpgm-5.2.122-configure-rdtsc-checking-chg.patch
-# PATCH-{FIX|FEATURE}-{OPENSUSE|SLE|UPSTREAM} name-of-file.patch bsc#[0-9]+ mcepl@suse.com
-# this patch makes things totally awesome
-Patch4:         use_python3.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -87,6 +76,7 @@ This subpackage contains the header files for OpenPGM.
 %autopatch -p1
 
 %build
+mv openpgm-5.2.pc.in openpgm-5.3.pc.in
 export ac_cv_func_ftime=no
 mkdir -p m4
 autoreconf -fi
