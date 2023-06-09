@@ -19,7 +19,7 @@
 %global __requires_exclude qmlimport\\(kcmcolord.*
 %bcond_without released
 Name:           colord-kde
-Version:        23.04.1
+Version:        23.04.2
 Release:        0
 Summary:        KDE interfaces and session daemon to colord
 License:        GPL-2.0-or-later
