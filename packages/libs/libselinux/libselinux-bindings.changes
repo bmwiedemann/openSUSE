@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun  1 11:50:33 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- allow building this with different python versions, to make this
+  usable for the new sle15 macro (using python3.11)
+
+-------------------------------------------------------------------
 Fri May  5 12:35:31 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add python-wheel build dependency to build correctly with latest

@@ -16,7 +16,30 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
+%if 0%{?suse_version} < 1699
+# Leap15, SLES15
+# have some safe defaults
+%define python_subpackage_name python3-selinux
+%define python_base_requirement python3
+%if "%pythons" == "python36"
+%define python_subpackage_name python36-selinux
+%define python_base_requirement python36
+%endif
+%if "%pythons" == "python310"
+%define python_subpackage_name python310-selinux
+%define python_base_requirement python310
+%endif
+%if "%pythons" == "python311"
+%define python_subpackage_name python311-selinux
+%define python_base_requirement python311
+%endif
+%else
+# Tumbleweed
+%define python_subpackage_name python3-selinux
+%define python_base_requirement python3
+%endif
+
 %define libsepol_ver 3.5
 Name:           libselinux-bindings
 Version:        3.5
@@ -50,18 +73,18 @@ BuildRequires:  pkgconfig(libpcre2-8)
 libselinux provides an interface to get and set process and file
 security contexts and to obtain security policy decisions.
 
-%package -n python3-selinux
+%package -n %{python_subpackage_name}
 %define oldpython python
 Summary:        Python bindings for the SELinux runtime library
 Group:          Development/Libraries/Python
+Requires:       %{python_base_requirement}
 Requires:       libselinux1 = %{version}
-Requires:       python3
 %ifpython2
 Obsoletes:      %{oldpython}-selinux < %{version}
 Provides:       %{oldpython}-selinux = %{version}
 %endif
 
-%description -n python3-selinux
+%description -n %{python_subpackage_name}
 libselinux provides an interface to get and set process and file
 security contexts and to obtain security policy decisions.
 
@@ -95,7 +118,7 @@ make DESTDIR=%{buildroot} LIBDIR="%{_libdir}" SHLIBDIR="/%{_lib}" LIBSEPOLA=%{_l
 make DESTDIR=%{buildroot} LIBDIR="%{_libdir}" SHLIBDIR="/%{_lib}" LIBSEPOLA=%{_libdir}/libsepol.a install-rubywrap V=1
 rm -rf %{buildroot}/%{_lib} %{buildroot}%{_libdir}/libselinux.* %{buildroot}%{_libdir}/pkgconfig
 
-%files -n python3-selinux
+%files -n %{python_subpackage_name}
 %{python3_sitearch}/*selinux*
 
 %files -n ruby-selinux

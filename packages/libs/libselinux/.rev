@@ -628,4 +628,13 @@
     <comment></comment>
     <requestid>1085125</requestid>
   </revision>
+  <revision rev="74" vrev="3">
+    <srcmd5>0c67f420f41472396639257f024747ce</srcmd5>
+    <version>3.5</version>
+    <time>1686335716</time>
+    <user>dimstar_suse</user>
+    <comment>- allow building this with different python versions, to make this
+  usable for the new sle15 macro (using python3.11)</comment>
+    <requestid>1090941</requestid>
+  </revision>
 </revisionlist>
