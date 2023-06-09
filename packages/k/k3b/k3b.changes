@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  6 20:00:40 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.2/
+- Changes since 23.04.1:
+  * Adjust kcm_cddb path (kde#469711)
+  * Fix the layout of the Mixed CD burn dialog "Misc" tab
+
+-------------------------------------------------------------------
 Tue May  9 10:46:36 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.1
