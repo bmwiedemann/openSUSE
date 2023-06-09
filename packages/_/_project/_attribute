@@ -6,7 +6,7 @@
     <value>last_seen:
   boo#1094987: '20221026'
   boo#1183454: '20230105'
-  boo#1190434: '20230607'
+  boo#1190434: '20230608'
   boo#1197719: '20230608'
   boo#1199881: '20221109'
   boo#1200894: '20221102'
@@ -49,7 +49,7 @@
   boo#1207384: '20230219'
   boo#1207385: '20230312'
   boo#1207386: '20230416'
-  boo#1207390: '20230607'
+  boo#1207390: '20230608'
   boo#1207509: '20230126'
   boo#1207524: '20230125'
   boo#1207567: '20230125'
@@ -104,7 +104,7 @@
   bsc#1161276: '20221027'
   bsc#1198101: '20230608'
   bsc#1204279: '20221021'
-  bsc#1205897: '20230607'
+  bsc#1205897: '20230608'
   gh#os-autoinst/os-autoinst-distri-opensuse#17083: '20230605'
   poo#112649: '20230302'
   poo#113075: '20221214'
@@ -126,7 +126,7 @@
   poo#117559: '20221013'
   poo#117643: '20221006'
   poo#117688: '20221012'
-  poo#117811: '20230607'
+  poo#117811: '20230608'
   poo#118888: '20221108'
   poo#119833: '20221102'
   poo#119926: '20230125'
@@ -190,10 +190,10 @@
   poo#129121: '20230520'
   poo#129133: '20230608'
   poo#129304: '20230606'
-  poo#129622: '20230607'
+  poo#129622: '20230608'
   poo#130036: '20230606'
   poo#130042: '20230608'
-  poo#130123: '20230607'
+  poo#130123: '20230608'
   poo#130156: '20230605'
   poo#130201: '20230602'
   poo#130498: '20230607'
@@ -240,7 +240,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20230608</value>
+    <value>20230609</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -539,9 +539,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20230608'
-published: '20230607'
-publishing: '20230607'
+    <value>failed: ''
+published: '20230608'
+publishing: '20230608'
 testing: '20230608'
 </value>
   </attribute>
