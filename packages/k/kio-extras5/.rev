@@ -1000,4 +1000,12 @@
     <comment></comment>
     <requestid>1090584</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>b09ae4a49705511d93e05a895ad70af0</srcmd5>
+    <version>23.04.2</version>
+    <time>1686335763</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04.2 (forwarded request 1091225 from krop)</comment>
+    <requestid>1091560</requestid>
+  </revision>
 </revisionlist>
