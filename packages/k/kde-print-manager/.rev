@@ -803,4 +803,12 @@
     <comment>KDE Release Gear 23.04.1</comment>
     <requestid>1086304</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>63398fab01c2151d2cfe0ca4ee4f60ca</srcmd5>
+    <version>23.04.2</version>
+    <time>1686335753</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04.2 (forwarded request 1091225 from krop)</comment>
+    <requestid>1091524</requestid>
+  </revision>
 </revisionlist>
