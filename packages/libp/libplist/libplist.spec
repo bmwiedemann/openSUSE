@@ -16,10 +16,10 @@
 #
 
 
-%define cname libplist-2_0-3
-%define cppname libplist++-2_0-3
+%define cname libplist-2_0-4
+%define cppname libplist++-2_0-4
 Name:           libplist
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Library for handling Apple Binary and XML Property Lists
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -101,7 +101,7 @@ This package contains the python bindings.
 
 %build
 autoreconf -fvi
-%configure --disable-static
+%configure --disable-static PACKAGE_VERSION=%{version}
 %make_build
 
 %check

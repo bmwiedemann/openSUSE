@@ -302,4 +302,33 @@ LGPL-2.1 can be relicensed to GPL without further permission. No need to explici
     <comment></comment>
     <requestid>949030</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>7934553a10bfea6c1c507ad1acc536bf</srcmd5>
+    <version>2.3.0</version>
+    <time>1686335827</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.0:
+ - Changes:
+   * Rename PLIST_UINT to PLIST_INT and add plist_new_int() and plist_get_int_val()
+   * Add support for JSON format
+   * Add support for OpenStep format
+   * Introduce error codes and format constants
+   * Add return value to import/export functions to allow returning error codes
+   * Add new plist_sort function
+   * Add several human-readable output-only formats
+   * Add new plist_write_to_string/_stream/_file functions
+   * Add new plist_print function
+   * Add new plist_read_from_file function
+   * Add new plist_mem_free() function
+   * Add a few C++ methods
+   * Add C++ interface test
+   * Add PLIST_NULL type
+   * Some code housekeeping (mostly clang-tidy)
+ - Breaking:
+   * plist_from_memory() gets additional parameter
+ - Bugfixes:
+   * Fix multiple bugs in all of the parsers
+   * Fix handling of PLIST_UID nodes</comment>
+    <requestid>1091445</requestid>
+  </revision>
 </revisionlist>
