@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           ktp-kded-module
-Version:        23.04.1
+Version:        23.04.2
 Release:        0
 Summary:        KDED module that manages the telepathy interactions with the KDE Desktop
 License:        LGPL-2.1-or-later
