@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           ktp-desktop-applets
-Version:        23.04.1
+Version:        23.04.2
 Release:        0
 Summary:        Telepathy presence applet
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
