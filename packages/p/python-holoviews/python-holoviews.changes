@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Wed Jun  7 15:57:54 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.16.1
+  * This release contains a small number of important bug fixes and
+    enhancements. Many thanks to @philippjfr and @Hoxbro.
+  * This release includes a breaking change as notebooks will no
+    longer be inlining as default. This change will reduce the size
+    of the notebook files and, more importantly, address an
+    upstream issue in Jupyter where running hv.extension would give
+    an error when used in a notebook.
+  ## Critical bug fixes and compatibility:
+  * Add enable_mathjax and set it and inline to False (#5729)
+  * Update to support Datashader on Python 3.11 (#5720)
+  ## Enhancements:
+  * Add show_versions helper function (#5725)
+  * Ignore known model warning in VS Code (#5734)
+  * Add workaround for plots where the objects in a figure would
+    overlap (#5733)
+- Version 1.16.0
+  * This release includes many new features, improvements, and bug
+    fixes. Among the highlights are support for Bokeh 3.1 and Panel
+    1.0, both of which come with a wide range of new features and
+    enhancements. Time series support has also been improved, with
+    auto-ranging along one axis, a new downsample algorithm, and
+    having WebGL enabled by default. In addition, the release
+    includes various other enhancements and bug fixes.
+  * We would like to thank the many users who contributed to this
+    release by filing bug reports, providing new features, and bug
+    fixes. We want to give a special shout-out to existing
+    contributors @ianthomas23, @jlstevens, @jordansamuels,
+    @maximlt, @philippjfr, @TheoMathurin, @Yura52, and @Hoxbro, as
+    well as new contributors @GeoVizNow, @JRRudy1, @keewis,
+    @michaelaye, and @wendrul.
+  * This minor version will be the last to support Python 3.7. The
+    next minor version will require Python 3.8 or higher. In the
+    next release, holoviews.annotate will start giving a
+    deprecation warning about its future move to the new package
+    HoloNote.
+  ## New features:
+  * Support for Bokeh 3.1 and Panel 1.0 (#5388, #5620, #5640,
+    #5679, #5683, #5692, #5703)
+  * Implement auto-ranging support along one axis (#5554, #5609)
+  * Add Largest Triangle Three Buckets (LTTB) as a downsample
+    algorithm (#5552)
+  * Enable WebGL by default (#5708)
+  ## Enhancements:
+  * Improve legend_cols support for Bokeh 3 (#5669)
+  * Add convenience getter interface to opts (#5606)
+  * Ensure .stack works on areas with different vdims (#5693)
+  * Add muted support to PointPlot like hv.Scatter (#5705)
+  * Automatic detect comms without calling pn.extension() (#5645)
+  * Add support for extra Hovertool variables in a Bokeh's quadmesh
+    with 2D coordinates (with tests) (#5638)
+  * Change hv.Rectangles to internally use Bokeh Quad and not Rect
+    to support logarithmic axis in WebGL (#5664, #5702)
+  ## Bug fixes:
+  * Ensure spatial_select in non-zero indexed DataFrame is applied
+    right (#5625)
+  * Fix error handling for plotting class lookups on empty
+    DynamicMap/HoloMap (#5604)
+  * Fix active_tools to only be set for enabled tools (#5616)
+  * Fix legend display when using categorical datashade on GPU
+    (#5631)
+  * Adding GeoDataFrame to DataConversion (#5325)
+  * Don't emit warnings when the toolbar is disabled (#5691)
+  * Don't try to find the closest match if the input is empty
+    (#5700)
+  * Only use long_name if it is a string (#5646)
+  * Use Matplotlib's public API to list the colormaps (#5598)
+  ## Compatibility:
+  * Add Param 2.0 support (#5667, #5641, #5680, #5704)
+  * Add Pandas 2.0 support (#5662)
+  * Update types.functiontype to collections.abc.callable (#5636)
+  * Improve error message for categorical data when used with
+    datashade (#5643)
+  * Don't disable Jedi completion by default (#5701)
+  ## Known issues:
+  * BoxEditTool is not yet supported with the new internals of
+    hv.Rectangle.
+  ## Removals:
+  * Raise DataError for non-string column names in DataFrame
+    (#5654)
+  * Remove deprecated tile sources (#5654)
+  * Removed support for apply_groups for old option groups
+    signature (#5497)
+- Drop holoviews-pr5649-ipykernel.patch
+
+-------------------------------------------------------------------
 Sun Mar 26 16:03:02 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Don't test xarray on python38: dropped support

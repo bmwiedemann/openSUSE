@@ -18,7 +18,7 @@
 
 %bcond_without  test
 Name:           python-holoviews
-Version:        1.15.4
+Version:        1.16.1
 Release:        0
 Summary:        Composable, declarative visualizations for Python
 License:        BSD-3-Clause
@@ -26,14 +26,12 @@ Group:          Development/Languages/Python
 URL:            https://github.com/holoviz/holoviews
 Source0:        https://files.pythonhosted.org/packages/source/h/holoviews/holoviews-%{version}.tar.gz
 Source99:       python-holoviews-rpmlintrc
-# PATCH-FIX-UPSTREAM holoviews-pr5649-ipykernel.patch gh#holoviz/holoviews#5649
-Patch0:         holoviews-pr5649-ipykernel.patch
 BuildRequires:  %{python_module colorcet}
 BuildRequires:  %{python_module numpy >= 1.0}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pandas >= 0.20}
 BuildRequires:  %{python_module panel >= 0.13.1}
-BuildRequires:  %{python_module param >= 1.9.3}
+BuildRequires:  %{python_module param >= 1.12 with %python-param < 3}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyct >= 0.4.4}
 BuildRequires:  %{python_module pyviz-comms >= 0.7.4}
@@ -46,8 +44,8 @@ Requires:       python-numpy >= 1.0
 Requires:       python-packaging
 Requires:       python-pandas >= 0.20
 Requires:       python-panel >= 0.13.1
-Requires:       python-param >= 1.9.3
 Requires:       python-pyviz-comms >= 0.7.4
+Requires:       (python-param >= 1.12 with python-param < 3)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-bokeh >= 2.2
@@ -73,14 +71,13 @@ Suggests:       python-ibis-framework >= 1.3
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Pillow}
-# Upstream doesn't specify the upper pin and relies on panel,
-# see https://github.com/holoviz/holoviews/pull/5507,
-# but we need to pin it here in order to avoid obs resolver conflicts
-BuildRequires:  %{python_module bokeh >= 2.4.3 with %python-bokeh < 2.5}
-BuildRequires:  %{python_module dash >= 1.16 if %python-base < 3.11}
+BuildRequires:  %{python_module bokeh}
+BuildRequires:  %{python_module dash >= 1.16}
 BuildRequires:  %{python_module dask}
+BuildRequires:  %{python_module datashader >= 0.11.1}
 BuildRequires:  %{python_module deepdiff}
 BuildRequires:  %{python_module ffmpeg-python}
+BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module ipython >= 5.4.0}
 BuildRequires:  %{python_module keyring}
 BuildRequires:  %{python_module matplotlib >= 3}
@@ -98,8 +95,7 @@ BuildRequires:  %{python_module scikit-image}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module shapely}
 BuildRequires:  %{python_module streamz >= 0.5.0}
-BuildRequires:  %{python_module xarray >= 0.10.4 if %python-base >= 3.9}
-BuildRequires:  %{python_module datashader >= 0.11.1 if (%python-base < 3.11 with %python-base >= 3.9)}
+BuildRequires:  %{python_module xarray >= 0.10.4}
 %endif
 %python_subpackages
 
@@ -141,8 +137,6 @@ donttest="(MPLRendererTest and test_get_size)"
 donttest+=" or StatisticalCompositorTest"
 # gh#holoviz/holoviews#5517
 donttest+=" or test_py2js_funcformatter"
-# Date mismatch (bokeh)
-donttest+=" or (TestPointerCallbacks and test_pointer_x_datetime_out_of_bounds)"
 # These fail on 32-bit -- gh#holoviz/holoviews#4778
 if [[ $(getconf LONG_BIT) -eq 32 ]]; then
     donttest+=" or (DatashaderAggregateTests and test_rasterize_regrid_and_spikes_overlay)"
@@ -173,14 +167,14 @@ if [[ $(getconf LONG_BIT) -eq 32 ]]; then
     donttest+=" or (TestLinkSelectionsPlotly and test_datashade_in_overlay_selection)"
     donttest+=" or (TestLinkSelectionsPlotly and test_datashade_selection)"
     donttest+=" or (TestPointerCallbacks and test_tap_datetime_out_of_bounds)"
+    donttest+=" or (TestPointerCallbacks and test_pointer_x_datetime_out_of_bounds)"
     donttest+=" or (DatashaderRasterizeTests and test_rasterize_dask_trimesh)"
     donttest+=" or (DatashaderRasterizeTests and test_rasterize_dask_trimesh_implicit_nodes)"
     donttest+=" or (DatashaderRasterizeTests and test_rasterize_dask_trimesh_with_node_vdims)"
     donttest+=" or (DatashaderRasterizeTests and test_rasterize_pandas_trimesh_implicit_nodes)"
 fi
-# no dash in python311 yet
-python311_ignore="--ignore holoviews/tests/plotting/plotly/test_dash.py"
-%pytest -n auto holoviews -k "not ($donttest)" ${$python_ignore}
+
+%pytest -n auto holoviews -k "not ($donttest)"
 %endif
 
 %post
