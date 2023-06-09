@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           ktp-auth-handler
-Version:        23.04.1
+Version:        23.04.2
 Release:        0
 Summary:        Telepathy auth handler
 License:        LGPL-2.1-or-later
