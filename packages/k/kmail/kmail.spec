@@ -19,7 +19,7 @@
 %define kf5_version 5.103.0
 %bcond_without released
 Name:           kmail
-Version:        23.04.1
+Version:        23.04.2
 Release:        0
 Summary:        Mail Client
 License:        GPL-2.0-only
