@@ -903,4 +903,12 @@ Mainly intended for Leap 42.3 to prevent upgrade problems. (forwarded request 49
     <comment>KDE Release Gear 23.04.1</comment>
     <requestid>1086231</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>d43beb23c5e2e05462852257dfa3d84c</srcmd5>
+    <version>23.04.2</version>
+    <time>1686335733</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Release Gear 23.04.2 (forwarded request 1091225 from krop)</comment>
+    <requestid>1091458</requestid>
+  </revision>
 </revisionlist>
