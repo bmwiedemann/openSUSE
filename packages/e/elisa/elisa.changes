@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  6 20:00:35 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.2/
+- Changes since 23.04.1:
+  * Don't use pointing finger cursor for non-link UI elements
+
+-------------------------------------------------------------------
 Tue May  9 10:46:31 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.1
