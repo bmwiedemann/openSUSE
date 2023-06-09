@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Jun  6 20:00:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.2/
+- Changes since 23.04.1:
+  * Fix freeze on duplicate sequence
+  * Get rid of mocking in some more tests
+  * Re-enable timeline sequence thumbnails
+  * Fix tests
+  * Nesting: refactor timeline sequence open/close, add tests
+  * Display default folder for VOSK models in settings page when no custom folder is set.
+  * Fix closing sequence in reopened project losing all recent changes
+  * Fix crash pasting subtitle in a timeline sequence without subtitles
+  * Fix dragging clip in timeline can cause out of view scrolling
+  * Fix motion tracker not working on rotated clips or clip with distort effects
+  * Fix import clip on single click in Media Browser
+  * Fix focus issue after switching from fullscreen monitor
+  * Cleaner version of previous patch
+  * Fix multiple guides export. BUG: 469435 (kde#469435)
+  * Fix color wheel resetting color on mouse wheel.
+  * Minor UI adjustments to timeline ruler
+  * Use better option for Media Browser. Related to #1471
+  * Drop timeline zoom whatsthis (it interferes with zoom shortcut (Shift+Ctrl++)
+  * Merge !399 with a few fixes (whisper disable FP16 on GTX 16xx)
+  * Don't allow archiving unsaved project, show subtitle files in archive widget and project files list
+  * Fix scaled rendering
+  * Titler: shadow should include text outline. Fixes #1689 (requires latest MLT git)
+  * Thumbnailer: ensure producer is valid, don't seek past clip end
+  * Fix create sequence from selection resulting in incorrect clip length
+  * Don't trigger producer reinsert multiple times on change
+- Require knewstuff-imports at runtime
+
+-------------------------------------------------------------------
 Tue May  9 10:46:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.1

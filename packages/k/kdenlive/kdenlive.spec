@@ -19,7 +19,7 @@
 %define mlt_version 7.14.0
 %bcond_without released
 Name:           kdenlive
-Version:        23.04.1
+Version:        23.04.2
 Release:        0
 Summary:        Non-linear video editor
 License:        GPL-3.0-or-later
@@ -79,6 +79,8 @@ Requires:       melt >= 7
 Requires:       libqt5-qtquickcontrols
 # needed for the new timeline
 Requires:       libqt5-qtquickcontrols2
+# Required by the composition and effects panel
+Requires:       knewstuff-imports
 Recommends:     %{_bindir}/dvdauthor
 Recommends:     %{_bindir}/dvgrab
 Recommends:     %{_bindir}/ffmpeg
