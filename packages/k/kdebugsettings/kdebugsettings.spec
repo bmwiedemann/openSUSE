@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kdebugsettings
-Version:        23.04.1
+Version:        23.04.2
 Release:        0
 Summary:        Program to set debug verbosity for KDE applications
 License:        LGPL-2.0-or-later
