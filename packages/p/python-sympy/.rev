@@ -270,4 +270,12 @@ Note: resubmit with fixed license</comment>
     <comment></comment>
     <requestid>1004692</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>1a7b64a14e8cd216bd2e875b621b6dc2</srcmd5>
+    <version>1.12</version>
+    <time>1686335831</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1091342</requestid>
+  </revision>
 </revisionlist>
