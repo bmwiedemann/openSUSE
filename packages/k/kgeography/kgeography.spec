@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kgeography
-Version:        23.04.1
+Version:        23.04.2
 Release:        0
 Summary:        Geography Trainer
 License:        GPL-2.0-or-later
