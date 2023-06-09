@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jun  6 20:00:42 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.2/
+- Changes since 23.04.1:
+  * Move RemindersModel to calendar module
+  * Simplify MultiDayIncidenceModel
+  * Use grouped property
+  * Modernize DayGridView
+  * BasicMonthGridView.qml: Use const instead of let
+  * Use strict equality for DayGridViewIncidenceDelegate.isInCurrentMonth
+  * Remove usage of KCalPrefs
+  * Use Akonadi::Collection::Id to store color keys
+  * Improve retrival of color from incidence
+  * Get collection color directly from collection when possible in IncidenceOccurrenceModel
+  * Fix wrong colour being set in color cache when generating it is required
+  * Disable capturing hover events globally
+  * Fix bugs in IncidenceInfoContents
+
+-------------------------------------------------------------------
 Tue May  9 10:46:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.1
