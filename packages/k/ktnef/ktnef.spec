@@ -20,7 +20,7 @@
 %define libname libKPim5Tnef5
 %bcond_without released
 Name:           ktnef
-Version:        23.04.1
+Version:        23.04.2
 Release:        0
 Summary:        TNEF support
 License:        LGPL-2.1-or-later
