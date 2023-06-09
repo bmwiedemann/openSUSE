@@ -1,13 +1,26 @@
 -------------------------------------------------------------------
+Thu Jun 01 11:56:05 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.0~rc5:
+  * return clone error
+  * set logger for controller runtime
+  * Update github.com/fluxcd/pkg/git/gogit to v0.12.0
+  * tests/azure: update dependencies
+  * Update toolkit components
+  * e2e: run e2e Azure tests for PRs to main if tests or wofklow
+    changes
+  * set controller-runtime logger to a null logger
+
+-------------------------------------------------------------------
 Thu Jun  1 08:26:43 UTC 2023 - Robert Munteanu <rombert@apache.org>
 
-- Include download_yaml.sh in sources 
+- Include download_yaml.sh in sources
 
 -------------------------------------------------------------------
 Wed May 31 08:38:38 UTC 2023 - Robert Munteanu <rombert@apache.org>
 
 - Include Packaging_README.md in sources
-- Bump raw_version to rc4 
+- Bump raw_version to rc4
 
 -------------------------------------------------------------------
 Tue May 30 08:29:38 UTC 2023 - kastl@b1-systems.de
@@ -31,7 +44,7 @@ Tue May 30 08:29:38 UTC 2023 - kastl@b1-systems.de
 -------------------------------------------------------------------
 Mon May 22 13:05:11 UTC 2023 - Robert Munteanu <rombert@apache.org>
 
-- Fix fish completions 
+- Fix fish completions
 
 -------------------------------------------------------------------
 Mon May 22 12:23:20 UTC 2023 - rombert@apache.org

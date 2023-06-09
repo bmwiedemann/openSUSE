@@ -7,4 +7,12 @@
     <comment>Submit flux2-cli to Factory so more users can benefit</comment>
     <requestid>1090249</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a41e156bf6674efa5874664524274327</srcmd5>
+    <version>2.0.0~rc5</version>
+    <time>1686335833</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 2.0.0~rc5</comment>
+    <requestid>1091343</requestid>
+  </revision>
 </revisionlist>

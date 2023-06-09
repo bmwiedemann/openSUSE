@@ -3,11 +3,11 @@
     <param name="url">https://github.com/fluxcd/flux2</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v2.0.0-rc.4</param>
+    <param name="revision">v2.0.0-rc.5</param>
     <!-- removed to accomodate pre-release versioning
     <param name="versionformat">@PARENT_TAG@</param>
     -->
-    <param name="version">2.0.0~rc4</param>
+    <param name="version">2.0.0~rc5</param>
     <param name="changesgenerate">enable</param>
     <!--removed to accomodate pre-release versioning
     <param name="versionrewrite-pattern">v(.*)</param>
@@ -22,6 +22,6 @@
     <param name="compression">gz</param>
   </service>
   <service name="go_modules" mode="disabled">
-    <param name="archive">flux2-2.0.0~rc4.obscpio</param>
+    <param name="archive">flux2-2.0.0~rc5.obscpio</param>
   </service>
 </services>
