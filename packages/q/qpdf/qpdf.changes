@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jun  7 12:28:31 UTC 2023 - pgajdos@suse.com
+
+- version update to 11.4.0
+  CLI Enhancements
+  * The --optimize-images option now optimizes images inside of form XObjects.
+  Library Enhancements
+  * Allow QPDFJob’s workflow to be split into a reading phase and a writing
+    phase to allow the caller to operate on the QPDF object before it is written.
+    This adds methods QPDFJob::createQPDF and QPDFJob::writeQPDF and corresponding
+    C API functions qpdfjob_create_qpdf and qpdfjob_write_qpdf.
+  * Add QPDF::newReserved as a better alternative to QPDFObjectHandle::newReserved.
+  * If you add an uninitialized QPDFObjectHandle to an array, qpdf will throw a
+    logic_error. It has always been invalid to do this, but before, it wouldn’t
+    have been caught until later.
+  Bug fixes
+  * Ignore an annotation’s appearance state when the annotation only has one
+    appearance. This prevents qpdf’s annotation flattening logic from throwing
+    away appearances of annotations whose annotation state is set incorrectly,
+    as has been seen in some PDF files.
+
+-------------------------------------------------------------------
 Thu Mar  2 12:15:12 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Use -fexcess-precision=fast as GCC 13 changes the default
