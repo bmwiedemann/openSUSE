@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kolf
-Version:        23.04.1
+Version:        23.04.2
 Release:        0
 Summary:        Miniature golf game
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
