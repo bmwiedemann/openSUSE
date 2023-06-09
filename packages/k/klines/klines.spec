@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           klines
-Version:        23.04.1
+Version:        23.04.2
 Release:        0
 Summary:        Tactical game
 License:        GPL-2.0-or-later
