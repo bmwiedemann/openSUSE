@@ -19,7 +19,7 @@
 %bcond_without released
 %define libname libKPim5MailCommon5
 Name:           mailcommon
-Version:        23.04.1
+Version:        23.04.2
 Release:        0
 Summary:        Base KDE PIM library for mail-handling applications
 License:        GPL-2.0-only AND LGPL-2.1-or-later
