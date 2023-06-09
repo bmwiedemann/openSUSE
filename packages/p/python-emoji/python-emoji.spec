@@ -18,7 +18,7 @@
 
 
 Name:           python-emoji
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        Emoji for Python
 License:        BSD-3-Clause
@@ -43,7 +43,17 @@ Python is 👍
 >> print(emoji.emojize('Python is :thumbsup:', use_aliases=True))
 Python is 👍
 
-By default, the language is English (``language='en'``) several further languages are also supported.
+By default, the language is English (``language='en'``). Further supported langauges are:
+* Spanish ('es')
+* Portuguese ('pt')
+* Italian ('it')
+* French ('fr')
+* German ('de')
+* Farsi/Persian ('fa')
+* Indonesian ('id')
+* Simplified Chinese ('zh')
+* Japanese ('ja')
+* Korean ('ko')
 
 %prep
 %autosetup -n emoji-%{version} -p1

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun  8 09:15:09 UTC 2023 - Matthias Bach <marix@marix.org> - 2.5.0
+
+- Update to 2.5.0
+  * Added support for Multi-person skintones.
+  * The logic from demojize() is moved to two separate private
+    function tokenize() and filter_tokens() in a new file
+    emoji/tokenizer.py.
+- Include the list of supported langauges in the package
+  description.
+
+-------------------------------------------------------------------
 Wed May 24 15:41:07 UTC 2023 - Matthias Bach <marix@marix.org> - 2.4.0
 
 - Updated to 2.4.0
