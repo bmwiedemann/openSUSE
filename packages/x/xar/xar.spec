@@ -1,7 +1,7 @@
 #
 # spec file for package xar
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,8 +22,7 @@ Version:        1.6.1
 Release:        0
 Summary:        Extensible Archive Format Tools
 License:        BSD-3-Clause
-Group:          Productivity/Archiving/Compression
-Url:            http://mackyle.github.com/xar
+URL:            https://mackyle.github.io/xar/
 Source:         https://github.com/mackyle/xar/archive/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM ext2.patch gh#mackyle/xar#10
 Patch0:         ext2.patch
@@ -80,11 +79,12 @@ table of content's rich meta-data.
 %setup -q -n %{name}-%{name}-%{version}
 %patch0
 %patch1 -p1
+
 %build
 pushd xar
 ./autogen.sh --noconfigure
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 popd
 
 %install
@@ -93,20 +93,22 @@ pushd xar
 popd
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libxar%{sover} -p /sbin/ldconfig
-%postun -n libxar%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libxar%{sover}
 
 %files
-%doc xar/ChangeLog xar/LICENSE xar/NEWS
+%license xar/LICENSE
+%doc xar/ChangeLog xar/NEWS
 %{_bindir}/xar
-%{_mandir}/man1/xar.1%{ext_man}
+%{_mandir}/man1/xar.1%{?ext_man}
 
 %files -n libxar%{sover}
-%doc xar/ChangeLog xar/LICENSE xar/NEWS
+%license xar/LICENSE
+%doc xar/ChangeLog xar/NEWS
 %{_libdir}/libxar.so.%{sover}
 
 %files -n libxar-devel
-%doc xar/ChangeLog xar/LICENSE xar/NEWS
+%license xar/LICENSE
+%doc xar/ChangeLog xar/NEWS
 %{_includedir}/xar
 %{_libdir}/libxar.so
 

@@ -68,4 +68,13 @@
     <comment></comment>
     <requestid>583417</requestid>
   </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>54c658b30dd9f1ee24b1d9df5765285e</srcmd5>
+    <version>1.6.1</version>
+    <time>1686335844</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise spec file
+- Update project url</comment>
+    <requestid>1091390</requestid>
+  </revision>
 </revisionlist>
