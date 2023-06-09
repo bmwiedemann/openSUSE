@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jun  6 20:00:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.2/
+- Changes since 23.04.1:
+  * Add 23.04.2 release notes
+  * Fix horizontal padding in editor page
+  * Adapt test data to the changed name prefix cleaning in kitinerary
+  * Don't attempt to select favorite locations based on invalid coordinates
+  * Set better transfer delta times for restaurant reservations
+  * Be more strict in discarding elements we cannot get live updates for
+  * Properly check if the element a transfer is attached is a location change
+  * Always pass passId to ActionsCard
+  * Work around KUnitConversion deadlocking when needing a currency update (kde#469562)
+  * Cache holiday region lookups
+  * Fix attaching documents on multi-traveler reservations (kde#469347)
+
+-------------------------------------------------------------------
 Tue May  9 10:46:35 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.1
