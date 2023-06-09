@@ -1,7 +1,7 @@
 #
 # spec file for package wayland-utils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wayland-utils
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Wayland diagnostic utilities
 License:        MIT
