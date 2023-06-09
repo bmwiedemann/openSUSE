@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun  6 20:02:03 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.2/
+- Changes since 23.04.1:
+  * Prevent unnecessary tab switching on tab close (kde#392626)
+  * fix access of negative 'screens' offset
+
+-------------------------------------------------------------------
 Tue May  9 10:48:00 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.1
