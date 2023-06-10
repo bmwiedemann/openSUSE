@@ -2812,6 +2812,7 @@ unsorted:
   - d-spy-devel 
   - d0_blind_id 
   - d0_blind_id-devel 
+  - d2 
   - dLeyna-devel 
   - dMagnetic 
   - dSFMT-devel 
@@ -13973,7 +13974,7 @@ unsorted:
   - libpgeasy3 
   - libpgf-devel 
   - libpgf7 
-  - libpgm-5_2-0-32bit 
+  - libpgm-5_3-0-32bit 
   - libphdi-devel 
   - libphdi-tools 
   - libphdi1 
@@ -13996,10 +13997,10 @@ unsorted:
   - libplank1 
   - libplayerctl2 
   - libplib0 
-  - libplist++-2_0-3 
-  - libplist++-2_0-3-32bit 
+  - libplist++-2_0-4 
+  - libplist++-2_0-4-32bit 
   - libplist++-2_0-devel 
-  - libplist-2_0-3-32bit 
+  - libplist-2_0-4-32bit 
   - libplist-2_0-devel 
   - libplot2 
   - libplotter2 
@@ -23757,6 +23758,7 @@ unsorted:
   - python310-checkdmarc 
   - python310-cheroot 
   - python310-chest 
+  - python310-cinemagoer 
   - python310-circuitbreaker 
   - python310-cirq 
   - python310-cirq-aqt 
@@ -26002,6 +26004,7 @@ unsorted:
   - python310-tri.declarative 
   - python310-tri.struct 
   - python310-trio 
+  - python310-trio-websocket 
   - python310-trove-classifiers 
   - python310-trustme 
   - python310-truststore 
@@ -27104,6 +27107,7 @@ unsorted:
   - python311-checkdmarc 
   - python311-cheroot 
   - python311-chest 
+  - python311-cinemagoer 
   - python311-circuitbreaker 
   - python311-cirq 
   - python311-cirq-aqt 
@@ -29451,6 +29455,7 @@ unsorted:
   - python311-tri.declarative 
   - python311-tri.struct 
   - python311-trio 
+  - python311-trio-websocket 
   - python311-trove-classifiers 
   - python311-trustme 
   - python311-truststore 
@@ -30594,6 +30599,7 @@ unsorted:
   - python39-checkdmarc 
   - python39-cheroot 
   - python39-chest 
+  - python39-cinemagoer 
   - python39-circuitbreaker 
   - python39-cirq 
   - python39-cirq-aqt 
@@ -32948,6 +32954,7 @@ unsorted:
   - python39-tri.declarative 
   - python39-tri.struct 
   - python39-trio 
+  - python39-trio-websocket 
   - python39-trove-classifiers 
   - python39-trustme 
   - python39-tsk 
@@ -45102,6 +45109,7 @@ unsorted:
   - usbguard 
   - usbguard-devel 
   - usbguard-tools 
+  - usbmuxd 
   - usbredir 
   - usbredir-devel 
   - usbsdmux-udev 
