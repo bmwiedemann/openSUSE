@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun  9 07:32:37 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 20230609.6fe8111:
+  * move compile loop to python
+  * remove python38
+
+-------------------------------------------------------------------
 Tue Apr 04 09:02:04 UTC 2023 - mcepl@cepl.eu
 
 - Update to version 20230403.29b58f8:
