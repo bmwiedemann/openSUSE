@@ -2387,7 +2387,7 @@
     <package name="libpeas-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpeas-loader-python3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpfs2" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libpgm-5_2-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libpgm-5_3-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libphodav-3_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libphonenumber8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libphonon4qt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2399,7 +2399,7 @@
     <package name="libpkcs11-helper1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpkgconf3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libplacebo264" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libplist-2_0-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libplist-2_0-4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libply-splash-core5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libply-splash-graphics5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libply5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -4450,7 +4450,6 @@
     <package name="upower-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="usb_modeswitch" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="usb_modeswitch-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="usbmuxd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="usbutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="util-linux" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="util-linux-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
