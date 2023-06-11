@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun  5 07:44:02 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.107.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.107.0
+- Changes since 5.106.0:
+  * ActionTextField: Disable shortcut for invisible and disabled text fields
+  * BasicListItemTest: Guard against nullable background in ScrollView
+  * Fix tst_basiclistitem_tooltip
+  * Make it possible to disable BasicListItem tooltip
+  * Fix almost all links in the KF5 Kirigami docs
+  * Fix painting of non-symbolic icons which are fallbacks for symbolic (kde#451538)
+
+-------------------------------------------------------------------
 Sat May  6 14:01:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.106.0
