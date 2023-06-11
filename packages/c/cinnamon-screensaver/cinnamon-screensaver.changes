@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun  2 21:09:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.8.0:
+  * Prioritize Playing Audio over other players.
+  * remove redundant parentheses
+  * utils.py: Add gdm3 to the switch user function.
+  * use Gio flags instead of ints
+  * stage: Multiply the stage window by the global scale.
+  * Fix stacking issue with the backup window.
+  * Add missing dependency on x11-util
+
+-------------------------------------------------------------------
 Thu Jan 12 17:20:42 UTC 2023 - Stefan Schubert <schubi@suse.com>
 
 - Migration of PAM settings to /usr/lib/pam.d.
