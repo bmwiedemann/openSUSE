@@ -650,4 +650,13 @@
   behavior change in python 3.11 as well</comment>
     <requestid>1090162</requestid>
   </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>8454d91fe97a22a707fb951587697270</srcmd5>
+    <version>22.10.2</version>
+    <time>1686505954</time>
+    <user>dimstar_suse</user>
+    <comment>- skip test__util.py in s390x arch
+</comment>
+    <requestid>1091775</requestid>
+  </revision>
 </revisionlist>

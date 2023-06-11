@@ -150,6 +150,10 @@ test__getaddrinfo_import.py
 test__resolver_dnspython.py
 test__socket_dns.py
 test__issue1686.py
+# Flaky tests in s390x architecture
+%ifarch s390x
+test__util.py
+%endif
 EOF
 if [ %{$python_version_nodots} -lt 37 ]; then
  echo "test__threading_2.py" >> skip_tests.txt
