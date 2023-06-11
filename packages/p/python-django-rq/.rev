@@ -42,4 +42,15 @@ already being maintained over a long period by https://build.opensuse.org/users/
   * Added `USERNAME` and `SENTINEL_KWARGS` support.</comment>
     <requestid>1084450</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>97449715483578f78ff7a05f78595347</srcmd5>
+    <version>2.8.1</version>
+    <time>1686506176</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.8.1:
+  * Added a button to stop currently running jobs. 
+  * Added a failed jobs column to rqstats command.
+  * Explicitly requires RQ &gt;= 1.14 in `setup.py`.</comment>
+    <requestid>1092282</requestid>
+  </revision>
 </revisionlist>

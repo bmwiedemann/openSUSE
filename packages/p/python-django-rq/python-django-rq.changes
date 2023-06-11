@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May 27 21:30:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.1:
+  * Added a button to stop currently running jobs. 
+  * Added a failed jobs column to rqstats command.
+  * Explicitly requires RQ >= 1.14 in `setup.py`.
+
+-------------------------------------------------------------------
 Wed May  3 15:38:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.0:
