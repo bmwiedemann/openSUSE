@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Jun  8 13:02:57 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.14.1
+  * Fixed compatibility issue with Pandas 2.0 [#4103]
+- Release 5.14.0
+  * Updated Plotly.js from version 2.18.2 to version 2.20.0. See
+    the plotly.js CHANGELOG for more information. Notable changes
+    include:
+  * Add title.automargin to enable automatic top and bottom
+    margining for both container and paper referenced titles
+    [#6428], with thanks to Gamma Technologies for sponsoring the
+    related development.
+  * Add label attribute to shapes [#6454], with thanks to the
+    Volkswagen Center of Excellence for Battery Systems for
+    sponsoring development!
+  * Add labelalias to various axes namely cartesian, gl3d, polar,
+    smith, ternary, carpet, indicator and colorbar [#6481], this
+    feature was anonymously sponsored: thank you to our sponsor!
+  * Key errors no longer precalculated when performing updates on
+    plots [#4101]
+  * Fixed an issue with characters displaying incorrectly, by
+    adding charset="utf-8" to scripts in to_html [#4114]
+  * Added packaging to install requirements, fixing a No module
+    named 'packaging error on Python 3.6 [#4113]
+  * Added option to allow passing a column name as a str in
+    hover_data and custom_data in plotly.express [4083]
+
+-------------------------------------------------------------------
 Sun Mar 26 13:47:18 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.13.1

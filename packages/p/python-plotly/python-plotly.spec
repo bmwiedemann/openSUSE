@@ -17,7 +17,7 @@
 
 
 Name:           python-plotly
-Version:        5.13.1
+Version:        5.14.1
 Release:        0
 Summary:        Library for collaborative, interactive, publication-quality graphs
 License:        MIT
@@ -30,6 +30,7 @@ Source100:      python-plotly-rpmlintrc
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module jupyterlab >= 3}
 BuildRequires:  %{python_module notebook >= 5.3}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tenacity >= 6.2.0}
@@ -37,6 +38,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
+Requires:       python-packaging
 Requires:       python-tenacity >= 6.2.0
 Recommends:     python-ipython
 Recommends:     python-matplotlib >= 2.2.2
@@ -61,7 +63,7 @@ BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module scikit-image}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module statsmodels}
-BuildRequires:  %{python_module xarray if %python-base >= 3.9}
+BuildRequires:  %{python_module xarray}
 # /SECTION
 %python_subpackages
 
@@ -78,6 +80,8 @@ always accessible from the graph.
 Summary:        Jupyter notebook integration for %{name}
 Requires:       %{name} = %{version}
 Requires:       jupyter-plotly = %{version}
+# So that any of the flavor satisifies the jupyter package
+Provides:       jupyterpython(plotly-jupyter) = %{version}
 Requires:       python-ipywidgets >= 7.6
 Requires:       (python-jupyterlab >= 3 or python-notebook >= 5.3)
 Provides:       python-jupyterlab-plotly = %{version}-%{release}
@@ -95,7 +99,7 @@ This package provides Jupyterlab and Notebook integration and widgets.
 
 %package     -n jupyter-plotly
 Summary:        Jupyter notebook integration for %{name}
-Requires:       python3-plotly-jupyter = %{version}
+Requires:       jupyterpython(plotly-jupyter) = %{version}
 Provides:       jupyterlab-plotly = %{version}-%{release}
 
 %description -n jupyter-plotly
@@ -138,8 +142,6 @@ donttest="test_kaleido"
 donttest+=" or test_matplotlylib"
 # flaky timing error
 donttest+=" or test_fast_track_finite_arrays"
-# no xarray for python38
-python38_ignore="--ignore plotly/tests/test_optional/test_px/test_imshow.py"
 %pytest plotly/tests/test_optional -k "not ($donttest)" ${$python_ignore}
 popd
 
