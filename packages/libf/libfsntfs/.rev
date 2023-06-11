@@ -156,4 +156,12 @@
     <comment>- Update to release 20230427</comment>
     <requestid>1083838</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d6fc41d4de8f70dbe159ddca78c5325a</srcmd5>
+    <version>20230606</version>
+    <time>1686506064</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20230606</comment>
+    <requestid>1091714</requestid>
+  </revision>
 </revisionlist>
