@@ -1,0 +1,104 @@
+Index: munch-3.0.0/munch/__init__.py
+===================================================================
+--- munch-3.0.0.orig/munch/__init__.py
++++ munch-3.0.0/munch/__init__.py
+@@ -21,8 +21,6 @@
+     converted via Munch.to/fromDict().
+ """
+ 
+-from .python3_compat import iterkeys, iteritems, Mapping, u
+-
+ try:
+     # For python 3.8 and later
+     import importlib.metadata as importlib_metadata
+@@ -35,6 +33,7 @@ except importlib_metadata.PackageNotFoun
+     # package is not installed
+     __version__ = "0.0.0"
+ 
++from collections.abc import Mapping
+ 
+ try:
+     VERSION = tuple(map(int, __version__.split('+')[0].split('.')[:3]))
+@@ -205,7 +204,7 @@ class Munch(dict):
+         return f'{self.__class__.__name__}({dict.__repr__(self)})'
+ 
+     def __dir__(self):
+-        return list(iterkeys(self))
++        return list(self.keys())
+ 
+     def __getstate__(self):
+         """ Implement a serializable interface used for pickling.
+@@ -244,7 +243,7 @@ class Munch(dict):
+         Override built-in method to call custom __setitem__ method that may
+         be defined in subclasses.
+         """
+-        for k, v in iteritems(dict(*args, **kwargs)):
++        for k, v in dict(*args, **kwargs).items():
+             self[k] = v
+ 
+     def get(self, k, d=None):
+@@ -475,7 +474,7 @@ def munchify(x, factory=Munch):
+         # Here we finish munchifying the parts of obj that were deferred by pre_munchify because they
+         # might be involved in a cycle
+         if isinstance(obj, Mapping):
+-            partial.update((k, munchify_cycles(obj[k])) for k in iterkeys(obj))
++            partial.update((k, munchify_cycles(obj[k])) for k in obj.keys())
+         elif isinstance(obj, list):
+             partial.extend(munchify_cycles(item) for item in obj)
+         elif isinstance(obj, tuple):
+@@ -537,7 +536,7 @@ def unmunchify(x):
+         # Here we finish unmunchifying the parts of obj that were deferred by pre_unmunchify because they
+         # might be involved in a cycle
+         if isinstance(obj, Mapping):
+-            partial.update((k, unmunchify_cycles(obj[k])) for k in iterkeys(obj))
++            partial.update((k, unmunchify_cycles(obj[k])) for k in obj.keys())
+         elif isinstance(obj, list):
+             partial.extend(unmunchify_cycles(v) for v in obj)
+         elif isinstance(obj, tuple):
+@@ -626,15 +625,15 @@ try:
+             >>> yaml.dump(b, default_flow_style=True)
+             '!munch.Munch {foo: [bar, !munch.Munch {lol: true}], hello: 42}\\n'
+         """
+-        return dumper.represent_mapping(u('!munch.Munch'), data)
++        return dumper.represent_mapping('!munch.Munch', data)
+ 
+     for loader_name in ("BaseLoader", "FullLoader", "SafeLoader", "Loader", "UnsafeLoader", "DangerLoader"):
+         LoaderCls = getattr(yaml, loader_name, None)
+         if LoaderCls is None:
+             # This code supports both PyYAML 4.x and 5.x versions
+             continue
+-        yaml.add_constructor(u('!munch'), from_yaml, Loader=LoaderCls)
+-        yaml.add_constructor(u('!munch.Munch'), from_yaml, Loader=LoaderCls)
++        yaml.add_constructor('!munch', from_yaml, Loader=LoaderCls)
++        yaml.add_constructor('!munch.Munch', from_yaml, Loader=LoaderCls)
+ 
+     SafeRepresenter.add_representer(Munch, to_yaml_safe)
+     SafeRepresenter.add_multi_representer(Munch, to_yaml_safe)
+Index: munch-3.0.0/munch/python3_compat.py
+===================================================================
+--- munch-3.0.0.orig/munch/python3_compat.py
++++ /dev/null
+@@ -1,6 +0,0 @@
+-from six import u, iteritems, iterkeys # pylint: disable=unused-import
+-try:
+-    from collections.abc import Mapping  # pylint: disable=unused-import
+-except ImportError:
+-    # Legacy Python
+-    from collections.abc import Mapping  # pylint: disable=unused-import
+Index: munch-3.0.0/munch.egg-info/requires.txt
+===================================================================
+--- munch-3.0.0.orig/munch.egg-info/requires.txt
++++ munch-3.0.0/munch.egg-info/requires.txt
+@@ -1,5 +1,3 @@
+-six
+-
+ [:(python_version<'3.8')]
+ importlib_metadata>=1.7.0
+ 
+Index: munch-3.0.0/requirements.txt
+===================================================================
+--- munch-3.0.0.orig/requirements.txt
++++ munch-3.0.0/requirements.txt
+@@ -1,2 +1 @@
+-six
+ importlib_metadata>=1.7.0;python_version<'3.8' # Apache-2.0

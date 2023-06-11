@@ -16,24 +16,24 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-munch
-Version:        2.5.0
+Version:        3.0.0
 Release:        0
 Summary:        A dot-accessible dictionary
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://github.com/Infinidat/munch
+URL:            https://github.com/Infinidat/munch
 Source:         https://files.pythonhosted.org/packages/source/m/munch/munch-%{version}.tar.gz
+# https://github.com/Infinidat/munch/issues/96
+Patch0:         python-munch-no-six.patch
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-six
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -41,7 +41,7 @@ BuildRequires:  %{python_module six}
 A dot-accessible dictionary (a la JavaScript objects).
 
 %prep
-%setup -q -n munch-%{version}
+%autosetup -p1 -n munch-%{version}
 
 %build
 %python_build
@@ -50,9 +50,13 @@ A dot-accessible dictionary (a la JavaScript objects).
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%check
+%pytest
+
 %files %{python_files}
 %license LICENSE.txt
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/munch
+%{python_sitelib}/munch-*.egg-info
 
 %changelog
