@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           oxygen5-icon-theme
-Version:        5.106.0
+Version:        5.107.0
 Release:        0
 Summary:        Oxygen Icon Theme
 License:        LGPL-3.0-only
