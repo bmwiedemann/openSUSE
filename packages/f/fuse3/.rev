@@ -231,4 +231,12 @@
   GPL-2.0-only)</comment>
     <requestid>1087847</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>7d03859635de30ee5f90a8f004135dea</srcmd5>
+    <version>3.15.0</version>
+    <time>1686505958</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.15.0</comment>
+    <requestid>1091792</requestid>
+  </revision>
 </revisionlist>

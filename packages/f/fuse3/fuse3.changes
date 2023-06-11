@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun  9 10:08:28 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.15.0
+  * Improved support for some less common systems (32-bit,
+    alternative libcs)
+  * Unsupported mount options are no longer silently accepted.
+  * auto_unmount is now compatible with allow_other.
+
+-------------------------------------------------------------------
 Thu May 18 12:16:05 UTC 2023 - Jiri Srain <jsrain@suse.com>
 
 - update the license tag matching the code (LGPL-2.1-only and
