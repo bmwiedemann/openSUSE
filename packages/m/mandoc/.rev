@@ -59,4 +59,14 @@
     <comment></comment>
     <requestid>1040379</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>754f3d282aec4368ba33f7287bb1cd0f</srcmd5>
+    <version>1.14.6</version>
+    <time>1686505964</time>
+    <user>dimstar_suse</user>
+    <comment>- Add boo1209830-endless-loop.patch (boo1209830) avoid endless
+  loop on processing some mandoc files.
+</comment>
+    <requestid>1091826</requestid>
+  </revision>
 </revisionlist>

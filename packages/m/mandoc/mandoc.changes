@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  9 16:23:30 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add boo1209830-endless-loop.patch (boo1209830) avoid endless
+  loop on processing some mandoc files.
+
+-------------------------------------------------------------------
 Fri Dec  2 09:23:26 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Split mandoc into a bin subpackage: tools like rpm2docserv rely

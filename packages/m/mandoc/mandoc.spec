@@ -1,7 +1,7 @@
 #
 # spec file for package mandoc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,9 @@ License:        ISC
 Group:          Productivity/Publishing/Troff
 URL:            http://mandoc.bsd.lv/
 Source:         http://mandoc.bsd.lv/snapshots/mandoc-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM boo1209830-endless-loop.patch bsc#1209830 mcepl@suse.com
+# Fix endless loop
+Patch0:         boo1209830-endless-loop.patch
 BuildRequires:  less
 BuildRequires:  zlib-devel
 Requires:       %{name}-bin = %{version}
