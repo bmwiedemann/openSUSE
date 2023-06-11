@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jun  9 00:00:00 CEST 2023 - dsterba@suse.cz
+
+- update to 6.3.1
+  * convert: fix checksum of a block relocated from 0-1M range
+  * qgroup show: fix formatting of limit values in json output
+  * receive: report paret subovl UUID on errors
+  * btrfsune: new option --convert-to-free-space-tree to convert from
+    block-group-tree back to extent tree for block group tracking
+  * mkfs: make option --rootdir more verbose and report start when filling
+    from the given directory starts
+  * experimental:
+    * btrfstune: checksum switch logic reimplemented, conversion of all
+      metadata and data now works, resume from various states also supported
+  * other:
+    * more CI github actions test coverage
+    * more kernel/userspace source code sync
+    * warning fixes
+    * code cleanups
+    * documentation updates
+- Removed patch: btrfs-progs-qgroup-show-fix-formatting-of-limit-valu.patch (upstream)
+
+-------------------------------------------------------------------
 Mon May 29 00:00:00 CEST 2023 - dsterba@suse.cz
 
 - qgroup show: fix formatting of limit values in json output (bsc#1206960,

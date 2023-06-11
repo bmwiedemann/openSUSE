@@ -1313,4 +1313,12 @@ This set of changes is not suitable for direct copy to currently released produc
 - Added patch: btrfs-progs-qgroup-show-fix-formatting-of-limit-valu.patch (forwarded request 1089589 from dsterba)</comment>
     <requestid>1089590</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>9f4f4b3134d2f0eeb95956f64a76ab5b</srcmd5>
+    <version>6.3.1</version>
+    <time>1686505962</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.3.1 (forwarded request 1091807 from dsterba)</comment>
+    <requestid>1091808</requestid>
+  </revision>
 </revisionlist>
