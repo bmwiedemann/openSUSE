@@ -101,4 +101,12 @@
   * Use sys.executable, rather than hardcoding python.</comment>
     <requestid>1078543</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b88dcfa1a6c6ff6107a97960fc776a32</srcmd5>
+    <version>0.7.0</version>
+    <time>1686506071</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1091746</requestid>
+  </revision>
 </revisionlist>
