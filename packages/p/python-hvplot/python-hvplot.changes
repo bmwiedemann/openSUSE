@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun  8 12:26:27 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.8.4
+  * Fix .interactive layout compatibility with Bokeh 3 (1076)
+  * Fix usage with intake (1052)
+  * Fix deprecated usage of Param 2.0 (1064)
+  * Fix projection when xlim/ylim provided (1053)
+  * Fix interpretation of positional arg with geopandas, now used
+    as color (1056)
+  * Fix import error messages for geo dependencies (1054)
+  * Fix usage of hover for geometries - make it less likely to fail
+    (1055)
+
+-------------------------------------------------------------------
 Sat Apr  1 19:45:30 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.8.3

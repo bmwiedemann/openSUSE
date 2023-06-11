@@ -17,7 +17,7 @@
 
 
 Name:           python-hvplot
-Version:        0.8.3
+Version:        0.8.4
 Release:        0
 Summary:        High-level plotting API for the PyData ecosystem built on HoloViews
 License:        BSD-3-Clause
@@ -27,13 +27,12 @@ Source0:        https://files.pythonhosted.org/packages/source/h/hvplot/hvplot-%
 # Test data. Bump the commit whenever you bump this version
 Source1:        https://github.com/pydata/xarray-data/archive/7d8290e0be9d2a8f4b4381641f20a97db6eaea3d.tar.gz#/xarray-data.tar.gz
 Source100:      python-hvplot-rpmlintrc
-BuildRequires:  %{python_module param >= 1.6.1}
+BuildRequires:  %{python_module param >= 1.9}
 BuildRequires:  %{python_module pyct >= 0.4.4}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# https://github.com/holoviz/hvplot/issues/970
-Requires:       (python-bokeh >= 1.0.0 with python-bokeh < 2.5)
+Requires:       python-bokeh >= 1.0.0
 Requires:       python-colorcet >= 2
 Requires:       python-holoviews >= 1.11.0
 Requires:       python-numpy >= 1.15
@@ -66,9 +65,10 @@ Recommends:     python-xarray
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module bokeh >= 1.0.0 with %python-bokeh < 2.5}
+BuildRequires:  %{python_module bokeh >= 1.0.0}
 BuildRequires:  %{python_module colorcet >= 2}
 BuildRequires:  %{python_module dask}
+BuildRequires:  %{python_module datashader}
 BuildRequires:  %{python_module holoviews >= 1.11.0}
 BuildRequires:  %{python_module ipywidgets}
 BuildRequires:  %{python_module networkx}
@@ -84,8 +84,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module selenium}
 BuildRequires:  %{python_module streamz >= 0.3.0}
-BuildRequires:  %{python_module xarray if %python-base >= 3.9}
-BuildRequires:  %{python_module datashader if (%python-base >= 3.9 with %python-base < 3.11)}
+BuildRequires:  %{python_module xarray}
 # /SECTION
 %python_subpackages
 
