@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jun 10 10:48:21 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.9
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Remove unused macros
+  * Handle -Wcomma warnings from clang
+  * Remove unnecessary casts from malloc() and free() calls
+  * Variable scope reduction as recommended by cppcheck
+  * Delete commented-out local copy of list function prototypes
+  * list.c: Stop building functions that are never called
+  * Make -help & -version work without requiring an open display
+
+-------------------------------------------------------------------
 Mon Aug  2 10:57:16 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.8

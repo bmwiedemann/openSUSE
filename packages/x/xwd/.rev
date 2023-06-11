@@ -66,4 +66,22 @@
     code you've never seen!</comment>
     <requestid>909752</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1621023b93305b4084076ec121ff0469</srcmd5>
+    <version>1.0.9</version>
+    <time>1686506089</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.9
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Remove unused macros
+  * Handle -Wcomma warnings from clang
+  * Remove unnecessary casts from malloc() and free() calls
+  * Variable scope reduction as recommended by cppcheck
+  * Delete commented-out local copy of list function prototypes
+  * list.c: Stop building functions that are never called
+  * Make -help &amp; -version work without requiring an open display</comment>
+    <requestid>1091974</requestid>
+  </revision>
 </revisionlist>
