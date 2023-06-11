@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 %define skip_python2 1
 Name:           python-QtAwesome
 Version:        1.2.1
