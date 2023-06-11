@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jun 11 11:50:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.3:
+  * Fix error with lack of PosixPath support
+  * Import pkg_resources directly
+  * Add REMOTE_USER to werkzeug environment
+  * runserver_plus template reloading
+  * Add Python 3.11 support
+  * Run tests againts Django 4.2 and add trove classifier
+  * fix: test_should_highlight_bash_syntax_without_name to
+    include whites… 
+  * Add support for psycopg3
+  * Fixed drop test database command with psycopg 3
+  * Fixed reset_db with psycopg3 (same patch like for
+    drop_test_database)
+
+-------------------------------------------------------------------
 Sat Jan 28 05:48:16 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
 
 - Skip one test that has started failing due to minor HTML output

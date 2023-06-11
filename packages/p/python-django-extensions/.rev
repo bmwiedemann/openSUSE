@@ -171,4 +171,24 @@
     <comment></comment>
     <requestid>1061686</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9702d80800b2f73a8c06850edb9a05a1</srcmd5>
+    <version>3.2.3</version>
+    <time>1686506157</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.3:
+  * Fix error with lack of PosixPath support
+  * Import pkg_resources directly
+  * Add REMOTE_USER to werkzeug environment
+  * runserver_plus template reloading
+  * Add Python 3.11 support
+  * Run tests againts Django 4.2 and add trove classifier
+  * fix: test_should_highlight_bash_syntax_without_name to
+    include whites… 
+  * Add support for psycopg3
+  * Fixed drop test database command with psycopg 3
+  * Fixed reset_db with psycopg3 (same patch like for
+    drop_test_database)</comment>
+    <requestid>1092274</requestid>
+  </revision>
 </revisionlist>
