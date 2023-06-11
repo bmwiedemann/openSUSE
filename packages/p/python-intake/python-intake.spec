@@ -17,14 +17,12 @@
 
 
 Name:           python-intake
-Version:        0.6.8
+Version:        0.7.0
 Release:        0
 Summary:        Data loading and cataloging system
 License:        BSD-2-Clause
 URL:            https://github.com/intake/intake
 Source:         https://github.com/intake/intake/archive/refs/tags/%{version}.tar.gz#/intake-%{version}-gh.tar.gz
-# PATCH-FIX-UPSTREAM gh#intake/intake#728
-Patch0:         use-sys-executable.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -33,10 +31,10 @@ Requires:       python-Jinja2
 Requires:       python-PyYAML
 Requires:       python-appdirs
 Requires:       python-dask
-Requires:       python-dask-bag
 Requires:       python-entrypoints
 Requires:       python-fsspec >= 2021.7.0
 Requires:       python-msgpack
+Requires:       python-requests
 Recommends:     python-bokeh
 Recommends:     python-dask-dataframe
 Recommends:     python-hvplot
@@ -44,7 +42,6 @@ Recommends:     python-msgpack-numpy
 Recommends:     python-panel >= 0.8.0
 Recommends:     python-pyarrow
 Recommends:     python-python-snappy
-Recommends:     python-requests
 Recommends:     python-tornado
 Suggests:       python-intake-parquet
 Requires(post): update-alternatives
@@ -55,10 +52,7 @@ BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module appdirs}
-# upper pin for bokeh required for resolver conflicts with dask, hvplot, and panel.
-# upstream even declares bokeh<2, but we don't have it
-BuildRequires:  %{python_module bokeh < 2.5}
-BuildRequires:  %{python_module dask-bag}
+BuildRequires:  %{python_module bokeh}
 BuildRequires:  %{python_module dask-dataframe}
 BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module entrypoints}
@@ -83,7 +77,6 @@ A plugin system for loading your data and making data catalogs.
 
 %prep
 %autosetup -p1 -n intake-%{version}
-sed -i -e "/import os/ a import sys" -e "s/cmd = \['python'/cmd = \[sys.executable/" intake/conftest.py
 find intake -path '*/tests/*.py' -exec sed -i '1{/env python/d}' {} ';'
 
 %build
@@ -132,15 +125,5 @@ donttest+=" or test_mlist_parameter"
 %python_alternative %{_bindir}/intake
 %{python_sitelib}/intake
 %{python_sitelib}/intake-%{version}*-info
-%exclude %{python_sitelib}/intake/tests
-%exclude %{python_sitelib}/intake/*/tests
-%exclude %{python_sitelib}/intake/cli/*/tests
-%exclude %{python_sitelib}/intake/interface/*/tests
-%exclude %{python_sitelib}/intake/util_tests.py
-%pycache_only %exclude %{python_sitelib}/intake/__pycache__/util_tests.*.pyc
-%exclude %{python_sitelib}/intake/conftest.py
-%pycache_only %exclude %{python_sitelib}/intake/__pycache__/conftest.*.pyc
-%exclude %{python_sitelib}/intake/interface/conftest.py
-%pycache_only %exclude %{python_sitelib}/intake/interface/__pycache__/conftest.*.pyc
 
 %changelog
