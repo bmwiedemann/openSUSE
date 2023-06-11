@@ -43,6 +43,7 @@
 %bcond_with test
 %endif
 
+%{?sle15_python_module_pythons}
 Name:           python-dask%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
 Version:        2023.5.1

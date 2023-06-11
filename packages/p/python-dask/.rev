@@ -1659,4 +1659,12 @@
     read_parquet (GH#10285) Patrick Hoefler</comment>
     <requestid>1090990</requestid>
   </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>f0ce0c42a0ad93adec43078df164c662</srcmd5>
+    <version>2023.5.1</version>
+    <time>1686506159</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092262</requestid>
+  </revision>
 </revisionlist>

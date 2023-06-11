@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 10 12:27:59 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Jun  5 23:42:44 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Tighten bokeh requirement to match distributed. 
