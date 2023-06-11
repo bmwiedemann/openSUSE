@@ -86,13 +86,13 @@ Command-line utilities to convert from/to JPEG XL.
 	-DJPEGXL_FORCE_SYSTEM_LCMS2=ON -DBUILD_TESTING=OFF \
 	-DJPEGXL_ENABLE_PLUGINS=OFF -DJPEGXL_ENABLE_SKCMS=OFF \
 	-DJPEGXL_ENABLE_SJPEG=OFF
+%cmake_build
 
 %install
 %cmake_install
 rm -fv %buildroot/%_libdir/*.a
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license LICENSE

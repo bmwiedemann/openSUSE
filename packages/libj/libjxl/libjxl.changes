@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  9 08:16:39 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Build package in correct phase
+- Use macros for ldconfig 
+
+-------------------------------------------------------------------
 Mon Apr 17 07:36:23 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Refresh 0001-Remove-LCMS-mutex.patch
