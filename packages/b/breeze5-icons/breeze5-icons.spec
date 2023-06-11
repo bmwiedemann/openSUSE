@@ -24,7 +24,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           breeze5-icons
-Version:        5.106.0
+Version:        5.107.0
 Release:        0
 Summary:        Breeze icon theme
 License:        LGPL-3.0-only
