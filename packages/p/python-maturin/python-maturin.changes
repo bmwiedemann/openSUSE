@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jun 11 03:35:53 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to v1.1.0:
+  * Add basic support for GraalPy
+    gh#PyO3/maturin#1645
+  * Refactor abi tag to use `EXT_SUFFIX`
+    gh#PyO3/maturin#1648
+  * Add Linux loongarch64 architecture support
+    gh#PyO3/maturin#1653
+  * Add `--skip-install` option to `maturin develop`
+    gh#PyO3/maturin#1654
+
+-------------------------------------------------------------------
+Sat Jun 10 17:45:23 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Sun May 28 07:55:54 UTC 2023 - Mia Herkt <mia@0x0.st>
 
 - Update to v1.0.1:

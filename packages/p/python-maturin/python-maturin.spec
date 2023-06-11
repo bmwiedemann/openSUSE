@@ -16,8 +16,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-maturin
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 Summary:        Rust/Python Interoperability
 License:        Apache-2.0 OR MIT
