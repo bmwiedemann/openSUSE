@@ -26,7 +26,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           kitemmodels
-Version:        5.106.0
+Version:        5.107.0
 Release:        0
 Summary:        Set of item models extending the Qt model-view framework
 License:        LGPL-2.1-or-later
@@ -41,13 +41,6 @@ BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5Qml) >= 5.15.0
-%if %{with python}
-BuildRequires:  python3-clang
-BuildRequires:  python3-devel
-BuildRequires:  python3-qt5-devel
-BuildRequires:  python3-qt5-utils
-BuildRequires:  python3-sip-devel
-%endif
 
 %description
 KItemModels provides a set of item models extending the Qt model-view framework.
@@ -76,17 +69,6 @@ Requires:       cmake(Qt5Core) >= 5.15.0
 %description devel
 KItemModels provides a set of item models extending the Qt model-view framework.
 Development files.
-
-%if %{with python}
-%package -n python-%{name}
-Summary:        Set of item models extending the Qt model-view framework
-Requires:       %{lname} = %{version}
-%requires_python3_sip_api
-
-%description -n python-%{name}
-KItemModels provides a set of item models extending the Qt model-view framework.
-Python bindings.
-%endif
 
 %prep
 %autosetup -p1
@@ -119,11 +101,5 @@ Python bindings.
 %dir %{_kf5_qmldir}/org/kde/kitemmodels
 %{_kf5_qmldir}/org/kde/kitemmodels/libitemmodelsplugin.so
 %{_kf5_qmldir}/org/kde/kitemmodels/qmldir
-
-%if %{with python}
-%files -n python-%{name}
-%{python3_sitearch}/PyKF5
-%{_datadir}/sip/PyKF5/
-%endif
 
 %changelog
