@@ -7,4 +7,12 @@
     <comment>xroachng is the classic xroach game for X11 but adapted for desktop environments like Gnome and KDE. Runs fine on openSUSE Leap 15.4. Bug squishing is possible, but I had to lower the speed of the xroaches. Maybe I am getting old :-)</comment>
     <requestid>1083315</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>4c1c46ac29fbc83968c8e3c6823a08f4</srcmd5>
+    <version>1.0.3</version>
+    <time>1686506075</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1091834</requestid>
+  </revision>
 </revisionlist>

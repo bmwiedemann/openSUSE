@@ -26,6 +26,7 @@ URL:            https://www.ratrabbit.nl/ratrabbit/software/xroach_ng
 Source:         https://www.ratrabbit.nl/downloads/xroachng/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE xroachng-desktop_file.patch -- Fix desktop categories
 Patch0:         xroachng-desktop_file.patch
+Patch1:         reproducible.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
