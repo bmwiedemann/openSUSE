@@ -14,44 +14,6 @@ Closes #2316
 
 Co-Authored-by: Patrick Walton <pcwalton@fb.com>
 
-From c03b37697a1e117995ea76203e5c0ce7d6696c4e Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Emilio=20Cobos=20=C3=81lvarez?= <emilio@crisal.io>
-Date: Wed, 9 Nov 2022 13:33:19 +0100
-Subject: [PATCH] ir: Don't crash with built-in unexposed types from libclang.
-
-This fixes #2325.
-
-The issue is that `__bf16` is not exposed at all by libclang, which
-causes us to crash. It's a bit of a shame libclang doesn't expose it but
-there's no rust equivalent I think, so this should be ok for now.
-
-Unfortunately no test because the header crashes older clang versions.
-
-diff --git a/Cargo.lock b/Cargo.lock
-index 163674ec5d..28456ee0ba 100644
---- a/Cargo.lock
-+++ b/Cargo.lock
-@@ -394,8 +394,6 @@ dependencies = [
- [[package]]
- name = "bindgen"
- version = "0.56.0"
--source = "registry+https://github.com/rust-lang/crates.io-index"
--checksum = "2da379dbebc0b76ef63ca68d8fc6e71c0f13e59432e0987e508c1820e6ab5239"
- dependencies = [
-  "bitflags",
-  "cexpr",
-diff --git a/Cargo.toml b/Cargo.toml
-index d918adae95..dddd1298f7 100644
---- a/Cargo.toml
-+++ b/Cargo.toml
-@@ -117,6 +117,7 @@ packed_simd = { package = "packed_simd_2", git = "https://github.com/hsivonen/pa
- midir = { git = "https://github.com/mozilla/midir.git", rev = "4c11f0ffb5d6a10de4aff40a7b81218b33b94e6f" }
- minidump_writer_linux = { git = "https://github.com/rust-minidump/minidump-writer.git", rev = "75ada456c92a429704691a85e1cb42fef8cafc0d" }
- glslopt = { path = "third_party/rust/glslopt/" }
-+bindgen = { path = "third_party/rust/bindgen/" }
- 
- # Patch mio 0.6 to use winapi 0.3 and miow 0.3, getting rid of winapi 0.2.
- # There is not going to be new version of mio 0.6, mio now being >= 0.7.11.
 diff --git a/third_party/rust/bindgen/src/clang.rs b/third_party/rust/bindgen/src/clang.rs
 index 488660c434..ef74ac08c2 100644
 --- a/third_party/rust/bindgen/src/clang.rs

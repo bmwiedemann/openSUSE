@@ -1,11 +1,41 @@
 -------------------------------------------------------------------
+Sun Jun  4 08:22:58 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 102.12.0:
+  MFSA 2023-21 (bsc#1211922)
+  * CVE-2023-34414 (bmo#1695986)
+    Click-jacking certificate exceptions through rendering lag
+  * CVE-2023-34416 (bmo#1752703, bmo#1818394, bmo#1826875,
+    bmo#1827340, bmo#1827655, bmo#1828065, bmo#1830190,
+    bmo#1830206, bmo#1830795, bmo#1833339)
+    Memory safety bugs fixed in Thunderbird 102.12
+  * fixed: "Searching the directory for recipients certificates"
+    popup could block compose window when "S/MIME reminder" was
+    enabled and using an LDAP address book (bmo#1833651)
+  * fixed: Some elements still used animations with "prefers-
+    reduced-motion" set (bmo#1833353)
+  * fixed: Visual and theme improvements
+    (bmo#1832943,bmo#1832990)
+
+-------------------------------------------------------------------
 Sat May 27 07:46:10 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 102.11.2
-  * fixed POP3 regressions ins 102.11.1
-  * https://www.thunderbird.net/en-US/thunderbird/102.11.2/releasenotes/
-  Thunderbird 102.11.1
-  * https://www.thunderbird.net/en-US/thunderbird/102.11.1/releasenotes/
+  * fixed: Thunderbird 102.11.1 contained POP3 client regressions
+    with offline mode and TLS certificate overrides
+    (bmo#1801286,bmo#1816596,bmo#1798785)
+- Includes changes from Thunderbird 102.11.1
+  * fixed: POP message retrieval stopped after a network error
+    occurred and connectivity was restored (bmo#1798785)
+  * fixed: Reused SMTP connections sometimes silently
+    disconnected, causing timeouts (bmo#1766382)
+  * fixed: Thunderbird could freeze if saving a sent message to
+    IMAP failed (bmo#1745130)
+  * fixed: Creating OpenPGP keys with no expiration was not
+    possible (bmo#1830094)
+  * fixed: News reader did not always issue GROUP command after
+    authentication with remote server, preventing Thundebird from
+    displaying or refreshing news from the server (bmo#1824377)
 - updated mozilla.keyring
 
 -------------------------------------------------------------------

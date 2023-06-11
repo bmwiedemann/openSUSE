@@ -4873,4 +4873,12 @@ I cannot test locally unfortunately.
 - updated mozilla.keyring</comment>
     <requestid>1089289</requestid>
   </revision>
+  <revision rev="311" vrev="1">
+    <srcmd5>0c69838b2d8e6f251c123cb8e3bbcfb1</srcmd5>
+    <version>102.12.0</version>
+    <time>1686506092</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1091973</requestid>
+  </revision>
 </revisionlist>
