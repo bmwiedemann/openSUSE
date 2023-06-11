@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Jun 11 09:26:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.1:
+  * **[PEP 517][PEP 517].** This release restores our [PEP
+    517][PEP 517]-compliant top-level `pyproject.toml` file in a
+    vain and probably misguided attempt to restore the
+    buildability of our documentation on the third-party
+    ReadTheDocs (RTD) documentation host. Doing so nudges
+    @beartype mildly closer towards abandoning the antiquated
+    (and frankly objectionable) `setuptools` build system to
+    Hatch, officially endorsed by the Python Packaging Authority
+    (PyPA) as sane and *not* `setuptools`, which are the only
+    criteria @leycec is looking for in a Python build system. The
+    bar could *not* be lower.
+  * **[PEP 544][PEP 544].** @beartype now officially supports
+    *all* third-party `typing_extensions.Protocol` backports,
+    resolving issue #241 kindly submitted by MIT machine learning
+    guru @rsokl (Ryan Soklaski). This release also restores
+    testing of the `typing_extensions.Protocol` superclass, which
+    now passes under *all* `typing_extensions` versions. Let's
+    not ask prying and uncomfortable questions about what exactly
+    was resolved here, because then @leycec might break down and
+    openly weep emoji tears live on GitHub.
+  * **[PEP 585][PEP 585].** This release "undeprecates" the
+    `beartype.typing.{Match,Pattern}` type hints deprecated by
+    [PEP 585][PEP 585], resolving issue #240 kindly submitted by
+    AI King @KyleKing (Kyle King). Specifically, the
+    `beartype.typing` subpackage now imports those type hints
+    from the standard `re` rather than `typing` module under
+    Python >= 3.9. This is why @leycec sighs in his sleep while
+    clutching a Bengal plushy.
+
+-------------------------------------------------------------------
 Wed May  3 15:40:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.14.0:
