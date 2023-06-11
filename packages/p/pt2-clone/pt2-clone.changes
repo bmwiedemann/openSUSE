@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Jun 11 08:18:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.59:
+  * The "normalize" function in the sample editor's volume
+    toolbox didn't work like it should if you had only selected
+    one single sample point (for example after cutting sample
+    data)
+  * The (fake) spectrum analyzer is now more accurate to real PT
+    in quirky cases
+  * Some very small code changes not really worthy of a
+    description
+  * Updated effects.txt with the little known and undocumented
+    effect "E8x"
+- update to 1.58:
+  * Added support for loading FLAC samples
+  * The IFF sample saver was writing somewhat broken files for
+    non-looped samples
+  * The "UPSAMP" button in Edit Op. was showing the wrong status
+    text
+  * Small code refactor for how the song is timed/ticked. Longer
+    song-to-WAV renders may have a filesize change of a few
+    bytes, but this is actually more correct.
+  * Increased number of precision bits for song BPM, playback
+    time counter and audio->video syncing. This is a minor change
+    and does very little in practice as the previous precision
+    was already quite good.
+  * Audio/video sync timestamps are reset every half an hour to
+    prevent possible sync drifting after several hours of playing
+    a song without a single song stop (resets timestamp) in-
+    between
+  * The HPC timers are reset every half an hour instead of every
+    hour. The video (if no vsync) and the scopes use these
+    timers. This hopefully fixes potential timing drifting issues
+    that were still lingering.
+  * Code refactoring for module/sample loaders
+
+-------------------------------------------------------------------
 Tue Feb 14 23:17:28 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 1.57

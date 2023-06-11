@@ -7,4 +7,41 @@
     <comment>I want to maintain pt2-clone in Factory</comment>
     <requestid>1067021</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5e587f4dec7a68a9c42fa86b4493eb18</srcmd5>
+    <version>1.59</version>
+    <time>1686506152</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.59:
+  * The &quot;normalize&quot; function in the sample editor's volume
+    toolbox didn't work like it should if you had only selected
+    one single sample point (for example after cutting sample
+    data)
+  * The (fake) spectrum analyzer is now more accurate to real PT
+    in quirky cases
+  * Some very small code changes not really worthy of a
+    description
+  * Updated effects.txt with the little known and undocumented
+    effect &quot;E8x&quot;
+- update to 1.58:
+  * Added support for loading FLAC samples
+  * The IFF sample saver was writing somewhat broken files for
+    non-looped samples
+  * The &quot;UPSAMP&quot; button in Edit Op. was showing the wrong status
+    text
+  * Small code refactor for how the song is timed/ticked. Longer
+    song-to-WAV renders may have a filesize change of a few
+    bytes, but this is actually more correct.
+  * Increased number of precision bits for song BPM, playback
+    time counter and audio-&gt;video syncing. This is a minor change
+    and does very little in practice as the previous precision
+    was already quite good.
+  * Audio/video sync timestamps are reset every half an hour to
+    prevent possible sync drifting after several hours of playing
+    a song without a single song stop (resets timestamp) in-
+    between
+  * The HPC timers are reset every half an hour instead of every
+    hour. The video (if no vsync) and the scopes use these</comment>
+    <requestid>1092079</requestid>
+  </revision>
 </revisionlist>
