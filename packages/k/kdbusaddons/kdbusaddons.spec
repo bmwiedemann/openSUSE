@@ -24,7 +24,7 @@
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdbusaddons
-Version:        5.106.0
+Version:        5.107.0
 Release:        0
 Summary:        Convenience classes for QtDBus
 License:        LGPL-2.1-or-later
