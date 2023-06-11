@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Jun 04 11:46:55 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 1.17.0:
+  * Update CHANGELOG
+  * Update man page
+  * Add new --sort option
+  * Bump libc from 0.2.142 to 0.2.144
+  * Bump serde from 1.0.160 to 1.0.163
+  * Bump anyhow from 1.0.70 to 1.0.71
+  * Bump clap_complete from 4.2.0 to 4.2.1
+  * Spelling and grammar fixes
+  * Update dependencies
+  * Update CHANGELOG
+  * Show unused parameters in command names
+  * Add regression test for #642
+  * Always compute relative speed comprison for export, closes #642
+  * Improve error message, mention --shell=none
+  * Add regression test for #640
+  * Do not export intermediate results to stdout, closes #640
+  * Use windows-sys and fix feature flag
+  * Add --log-count option to plot_histogram.py
+  * Use plt.get_cmap instead of plt.colormaps
+  * Fix get_cmap MatplotlibDeprecationWarning
+  * Fix winapi type definition change
+  * Bump predicates from 2.1.5 to 3.0.2
+  * Bump thiserror from 1.0.39 to 1.0.40
+  * Add profile.release section
+
+-------------------------------------------------------------------
 Thu Mar 23 04:11:44 UTC 2023 - socvirnyl.estela@gmail.com
 
 - Update to version 1.16.1:
