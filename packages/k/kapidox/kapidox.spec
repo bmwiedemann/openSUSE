@@ -24,7 +24,7 @@
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 Name:           kapidox
-Version:        5.106.0
+Version:        5.107.0
 Release:        0
 Summary:        Scripts and data for building API documentation
 License:        BSD-2-Clause
