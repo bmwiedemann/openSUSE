@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun  5 07:43:59 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.107.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.107.0
+- No code change since 5.106.0
+
+-------------------------------------------------------------------
 Mon May 22 12:05:07 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix systemd_user_preun/postun calls: all systemd_user macros take
