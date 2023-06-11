@@ -20,7 +20,7 @@
 # PYTHON2 NOT SUPPORTED BY UPSTREAM
 %define         skip_python2 1
 Name:           python-grpcio
-Version:        1.54.0
+Version:        1.55.0
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
@@ -42,9 +42,8 @@ BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(re2)
 BuildRequires:  pkgconfig(zlib)
 Requires:       ca-certificates
-Requires:       python-six >= 1.5.2
-Suggests:       python-enum34 >= 1.0.4
-Suggests:       python-futures >= 2.2.0
+Recommends:     python-enum34 >= 1.0.4
+Recommends:     python-futures >= 2.2.0
 %python_subpackages
 
 %description

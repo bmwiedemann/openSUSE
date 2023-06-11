@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jun 10 16:26:53 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.55.0:
+  * [EventEngine] Disable EventEngine polling in gRPC Python
+    (gh#grpc/grpc#33279) (gh#grpc/grpc#33320).
+  * [Bazel Python3.11] Update Bazel dependencies for Python 3.11
+    (gh#grpc/grpc#33318) (gh#grpc/grpc#33319).
+- Drop Requires: python-six; not required any more.
+- Switch Suggests to Recommends.
+
+-------------------------------------------------------------------
 Fri Apr 28 04:39:48 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.54.0:
