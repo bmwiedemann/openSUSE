@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Sat Jun 03 01:46:30 UTC 2023 - i@guoyunhe.me
+
+- Update to version 0.0.28~git20230602:
+  * rpcs3_version: Bump to 0.0.28
+  * PPU LLVM: Invalidate cache for testers
+  * sys_lwcond/cond/ppu_thread: Respect scheduler in various syscalls
+  * LV2: Make _sys_lwcond_destroy wait for lwmutex lock
+  * PPU LLVM: Fix LWSYNC according to cellSpursWakeup
+  * Make page faults entry enqueue and event atomic
+  * SPU: fix event count with ACK and mask write
+  * LV2/Timer: Fix ENOTCONN check of start timer
+  * LV2/TImer: Fix notification discard
+  * LV2/Timer: Make timers consistent
+  * LV2: Implement set-priority thread requeue
+  * LV2: Push other-than-this thread to the back on priority set
+  * Threads.cpp: Fix infinite looping
+  * sys_lwcond: Implement TIMEOUT on lwmutex lock
+  * sys_lwmutex/mutex: Fix race on lock timeout
+  * LV2: Unconditional Timer Synchronization Fix
+  * rsx: Write a warning to the log if we decide to collapse surfaces to reduce VRAM usage.
+  * vk: Rename gc_wrapper_t to gc_callback_t which is more relevant
+  * vk: Minor improvement to descriptor and garbage collector interaction
+  * rsx: Trim the number of in-flight invalidated resources (temp cache)
+  * Qt/Loader: Let users choose which packages to install
+  * Extra PS3_EXTRA fix
+  * Trophies: Add more sanity checks to pugixml backend
+  * Qt: fix random initial game selection in trophy dir
+  * vk: Minor cleanup
+  * vk: Fix descriptor-related crashes
+  * vk: Refactor descriptor handling
+  * rsx/util: Add some c++ guards around simple_array class
+  * vk: Unify descriptor allocation
+  * Fixup debugger_frame double events
+  * Qt/Debugger: Add Ctrl+F (find thread), Ctrl+C (copy)
+  * overlays: fix media list dialog pad interception
+
+-------------------------------------------------------------------
+Sat May 27 03:37:51 UTC 2023 - i@guoyunhe.me
+
+- Update to version 0.0.27~git20230526:
+  * rsx/overlays: Fix crash on stop
+  * Hid: add some logging for initial send_output_report
+  * input: remove some outdated comments
+  * cellCamera: don't switch to main thread unless really necessary
+  * input: allow to remap emulated pads dynamically
+  * Qt/input: limit some usb device configs to 2 players
+  * Qt: rename emulated pads menu to usb devices
+  * Qt: disable emulated pad settings during emulation
+  * input: fix emulated pad stick y axis
+  * input: move emulated pad handling to config class
+  * input: fix emulated button map accessors
+  * Qt: fix emulated button reset
+  * input: add support for multi-assignment in emulated pads
+  * input: add emulated axis configs
+  * Qt: change wording on fake PS Move config
+  * Qt/input: add emulated pads settings dialogs
+  * input: list actual nodes instead of button ids
+  * input: add enum count for enumeration
+  * input: use global configs
+  * input: add emulated_pad_config template class
+  * input: add gem ds3 config file
+  * input: add usio config file
+  * input: add ghltar config file
+  * input: add turntable config file
+  * input: add buzz config file
+  * remove deprecated VK_MVK_moltenvk and replace with mvk_config.h
+  * Update MVK to 1.2.4 for Vulkan SDK 1.3.250
+  * overlays: Fix width of graph labels
+  * overlays: fix missing sound autorepeat fence.
+  * Take advantage of WIN10 Thread Name API
+  * Update hidapi from 0.13.1 to 0.14.0
+  * Update curl from 8.0.1 to 8.1.1
+  * pine: fix some warnings (#13904)
+  * Formatting fixes
+  * vk: Fix some sampler load crashes
+  * vk: Reimplement sampler disposal using the new pool mechanism
+  * vk: Fix compiler warning
+  * vk: Reimplement sampler caching to take border color into account
+  * vk: Integrate custom border colors when supported
+  * vk: Require customBorderColorWithoutFormat feature
+  * vk: Add border color extension detection
+  * vk: Minor refactoring of optional features
+  * sceNpTrophy: set timestamps
+  * CPUThread.cpp: Fix an emulator crash on game exit
+  * Debug Fixes
+  * overlays: do not play sounds on fast auto repeat
+  * input: add sanity checks for buf_size
+
+-------------------------------------------------------------------
 Sat May 20 03:11:38 UTC 2023 - i@guoyunhe.me
 
 - Update to version 0.0.27~git20230519:
