@@ -35,6 +35,7 @@ BuildArch:      noarch
 %bcond_with pyside6
 %endif
 
+%{?sle15_python_module_pythons}
 Name:           python-QtPy%{psuffix}
 Version:        2.3.0
 Release:        0
