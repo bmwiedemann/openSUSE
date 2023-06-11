@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 11 12:36:25 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Sun Mar 19 09:47:32 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Replace 0001-Use-system-libhiredis.patch with

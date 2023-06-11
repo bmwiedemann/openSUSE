@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-hiredis
 Version:        2.2.2
 Release:        0
