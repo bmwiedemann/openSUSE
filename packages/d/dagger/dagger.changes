@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Jun 02 04:50:03 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.6.1:
+  * bump vt100 to v0.1.2 to fix panic (#5247)
+  * Update retries to 10 minutes (#5246)
+  * Import Elixir SDK as Experimental (#5201)
+  * tui: avoid unnecessary byte/string conversion (#5237)
+  * Interactive TUI: better failure handling (#5232)
+  * add dagger login/logout commands (#5132)
+  * dagger run: support redirecting stdout/stderr (#5231)
+  * chore: update go.sum (#5238)
+  * feat: update dagger/graphql to rely on Int64 Scalar (#5227)
+  * Prevent concurrent/leaked mutation in a couple of spots (#5233)
+  * simplify progrock socket location (#5234)
+  * fix `dagger listen` TUI integration (#5219)
+  * bump progrock for gRPC + resilient draining (#5228)
+  * Retry connecting to buildkit for 3 minutes. (#5222)
+  * engine: update buildkit to commit w/ more cache ref logs
+    (#5223)
+  * feat: follow graphQL spec in strings encoding (#5169)
+  * Container.Export: mkdir destination parent dir (#5221)
+  * refactor(shim): only initialize secret scrubbing logic when
+    secrets are set (#5217)
+  * tests: fix slowness by disabling unnecessary session nesting.
+    (#5224)
+  * mc: add auth token via env var to cacheservice (#5225)
+  * add `-s` / `--silent` for disabling TUI (#5218)
+  * docs: Updated quickstart (#5214)
+  * Improve releasing during 0.6.0 (#5199)
+  * engine: handle LogOutput being nil (#5215)
+  * cache: return error if cacheservice scheme is not supported
+    (#5211)
+  * tui: Add fallback for runtime dir permission denied errors.
+    (#5210)
+  * docs: Fix tip content in quickstart test (#5206)
+  * engine: enable full goroutine stack trace dump in trace logs.
+    (#5204)
+  * cache: Bump import timeout. (#5200)
+  * Reduce size of extra content in error output truncation test
+    (#5195)
+
+-------------------------------------------------------------------
 Fri May 26 05:18:55 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.6.0:
