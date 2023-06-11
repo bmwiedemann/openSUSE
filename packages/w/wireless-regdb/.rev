@@ -566,4 +566,13 @@ The license in the LICENSE file is ISC, not MIT (http://www.spdx.org/licenses/IS
   * Update regulatory info for Russia (RU) on 6GHz</comment>
     <requestid>1085680</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>55455a308a649a04680c3105d602255e</srcmd5>
+    <version>20230601</version>
+    <time>1686505959</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230601:
+  * wireless-regdb: Update regulatory rules for Philippines (PH)</comment>
+    <requestid>1091800</requestid>
+  </revision>
 </revisionlist>
