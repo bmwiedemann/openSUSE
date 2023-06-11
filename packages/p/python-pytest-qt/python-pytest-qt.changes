@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 10 09:43:01 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Sat May 20 08:32:01 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Skip failing exception tests with pyside6

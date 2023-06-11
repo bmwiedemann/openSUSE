@@ -64,6 +64,7 @@ BuildConflicts: %{python_module pyside2}
 BuildConflicts: %{python_module qt5}
 %endif
 
+%{?sle15_python_module_pythons}
 Name:           python-pytest-qt%{psuffix}
 Version:        4.2.0
 Release:        0
