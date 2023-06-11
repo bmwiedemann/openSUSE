@@ -20,7 +20,7 @@
 %define _tar_path 5.103
 %bcond_without released
 Name:           solid
-Version:        5.106.0
+Version:        5.107.0
 Release:        0
 Summary:        KDE Desktop hardware abstraction
 License:        LGPL-2.1-or-later
