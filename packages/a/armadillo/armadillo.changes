@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jun 10 17:22:10 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 12.4.0:
+  * added norm2est() for finding fast estimates of matrix 2-norm
+    (spectral norm).
+  * added vecnorm() for obtaining the vector norm of each row or
+    column of a matrix.
+
+-------------------------------------------------------------------
 Fri Apr 21 07:20:02 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 12.2.0:
