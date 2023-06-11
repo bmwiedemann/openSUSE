@@ -1,0 +1,272 @@
+-------------------------------------------------------------------
+Tue Jun  6 21:32:18 UTC 2023 - me@cimba.li
+
+-   Update to v1.8.3
+    *   Various improvements to drawing tool:
+    *   improve smoothness,
+    *   widen range of line widths (in particular thinner lines),
+    *   support stylus pen pressure
+    *   allow setting width on eraser drawing tool
+    *   support stylus eraser tip
+    *   Increase traditional chinese translation coverage
+
+-------------------------------------------------------------------
+Mon Jun  5 20:31:27 UTC 2023 - me@cimba.li
+
+-   Update to v1.8.3b Beta of drawings with eraser fixed
+
+-------------------------------------------------------------------
+Mon Jun  5 13:28:32 UTC 2023 - me@cimba.li
+
+-   Update to v1.8.3a Alpha-release of scribble changes
+
+-------------------------------------------------------------------
+Tue Apr  4 12:27:26 UTC 2023 - me@cimba.li
+
+- Update to v1.8.2
+  * Fix resource importing issues on python 3.8 and 3.9
+
+-------------------------------------------------------------------
+Sat Mar 25 21:20:31 UTC 2023 - me@cimba.li
+
+-   Update to v1.8.1
+    *   improve packaged docs appearance and coherence
+    *   update latest translations (chinese)
+    *   fix monitor handling on wayland: fullscreen-on-start only
+        instead of crashing \#283, do not attempt to move windows
+        as we can't
+    *   fix importlib.resources issue which caused crashes on older
+        python versions \#282
+    *   only save window size if not maximised
+    *   do not attempt to start fullscreen if we detect i3 wm \#282
+
+-------------------------------------------------------------------
+Wed Mar 15 00:09:54 UTC 2023 - me@cimba.li - 1.8.0
+
+- Automatic full-screen of the content window on your non-primay
+  screen when connecting a 2nd screen, or extending the desktop to
+  a 2nd screen if both screens were mirrored.
+- A “deck overview” widget that allows to see all slides and
+  click the desired one for fast access
+- Improved media support, including no visual artefacts when
+  playing embedded audio files, and support for media start
+  position and duration.
+
+
+-------------------------------------------------------------------
+Tue 7 Dec 22:47:14 GMT 2021 - me@cimba.li - 1.7.1
+- Fix building process
+- Fix errors in compiling catalogs with gettext during build
+  process
+
+-------------------------------------------------------------------
+Mon 22 Nov 19:26:43 GMT 2021 - me@cimba.li - 1.7.0
+- Make “next slide” a grid of 1-16 next slides
+- Allow dynamic layout editing from pympress (rather than modifying
+  the config file manually)
+- Make annotations editable
+- Allow to save modified PDF files
+- Automatic next slide and looping
+- Support auto-play (some annotations, e.g. movie15 / ConTeXt)
+- Make gstreamer default media backend on macOS and Linux
+- Limit to python 3.4+ to do some code modernization
+
+-------------------------------------------------------------------
+Mon 23 Aug 14:47:53 BST 2021 - me@cimba.li - 1.6.4
+Avoid pip version parsing bug when installing
+- setup.py: fix setuptools version parsing (#208) by Jörg Thalheim
+
+-------------------------------------------------------------------
+Sat 31 Jul 10:04:53 BST 2021 - me@cimba.li - 1.6.3
+Fix packages and gstreamer video
+- Some packages were missing translation files
+- Added cleanup of directories that pympress 1.5 RPMs left around
+  (causing pympress to fail to start ater update, #194)
+- Update the `gstreamer` backend to play videos for more stability
+  (should work on all platforms provided gstreamer is installed)
+
+-------------------------------------------------------------------
+Thu 22 Jul 17:23:30 BST 2021 - me@cimba.li - 1.6.2
+Fix path handling
+Caused bugs in file watching (#203) and media playing (#197).
+- Add some keywords to .desktop file (#205) by Christopher Hoskin
+- surfacecache: update docs to match code, clarify glib idle
+  sourcefunc (#201) by wisp3rwind
+
+-------------------------------------------------------------------
+Sat 15 May 16:28:51 BST 2021 - me@cimba.li - 1.6.1
+Fix small bugs in 1.6 release
+- fix some PDF links not working
+- improve screensaver handling
+- include compiled translation catalogs (.mo files) on pypi
+- cleaner log files
+- complete and correct various distribution metadata
+
+-------------------------------------------------------------------
+Fri 16 Apr 13:15:27 BST 2021 - me@cimba.li - 1.6.0
+Release v1.6.0
+- Support LibreOffice-style notes pages, after slides pages
+- Add support for drawing on slides with various presets and an
+  eraser preset
+- Add command-line control of pympress, thanks to Gtk.Application
+  single-instance ability
+- Ensure file handles of closed files are released through early
+  garbage collection
+- Various improvements in binary (rpm / msi) releases
+- Fix rendering bugs on scaled displays and with embedded fonts
+- Update README (#182) by Fernando Tricas García
+- typo: notes notes -> notes (#175) by Hörmet Yiltiz
+- mention libreoffice in the main page (#174) by Hörmet Yiltiz
+- Render to Cairo image surfaces (#169) by Daniel Wilson
+- Update aur package name (#166) by Nils Ziermann
+
+-------------------------------------------------------------------
+Fri 10 Apr 20:58:16 BST 2020 - me@cimba.li - 1.5.3
+Accessibility improvements, bug fixes, new “big” button
+- Reduce noise in log
+- Add big button to toggle pointer off <-> {manual or always}
+- Improve automatic builds (for RPM and Windows)
+- Exit gracefully (save prefs, return 0, etc.) on interrupt
+- Fix text getting inserted in wrong locations
+- Properly clean up (watchdog objects, windows) for interactive
+  sessions
+- Simplify annotations display for braille accessibility
+- Build rpms automatically (#141)
+
+-------------------------------------------------------------------
+Thu 6 Feb 18:34:00 GMT 2020 - me@cimba.li - 1.5.2
+This release brings a number of convenience fixes, nothing that
+should affect a lot of people.
+- End of python 2 support
+- `.desktop` file (and icon) now installed via pip, so users can
+  have access to pympress without console
+- Some css improvements, especially for macOS users where the
+  background overriding the theme’s settings caused poor contrast
+- Less jumpy layout for width-constrained screens
+- Bug fix restoring the access to the timing breakdown
+- Make timing breakdown window scrollable
+- Locales update
+- Fix man page number
+- Name translators in documentation
+- Other docs updates
+- More freedesktop-compliant way to disable the screensaver, which
+  means it also works on Wayland
+- Distribute zips for windows for portable versions
+- Fix incorrect document member access (#139) by Steffen Klee
+- Add Screensaving on Wayland (#131) by Tim Klocke
+- Fix spellings (#130) by Christopher Hoskin
+- Move man page from Section 6 to Section 1 (#129) by Christopher
+  Hoskin
+
+-------------------------------------------------------------------
+Thu 28 Nov 18:13:15 GMT 2019 - me@cimba.li - 1.5.1
+Update release mechanisms, for Homebrew and building for Windows
+via appveyor.
+
+-------------------------------------------------------------------
+Mon 25 Nov 00:34:04 GMT 2019 - me@cimba.li - 1.5.0
+A handful of new features, mainly centered around configuration
+files and video support:
+- Portable configurations, supported by ticking
+  `Starting Configuration` > `Portable installation`
+  This requires write permissions in the root install directory of
+  pympress.
+- All keyboard shortcuts are configurable in the config file.
+- Support for Gstreamer as a video backend rather than VLC
+- Configuration file locations now respect platform-specific
+  conventions better
+- Log file locations also respect platform-specific conventions and
+  are written to user locations to avoid problems with multi-user
+  systems
+- Options for both video backends to enable/disable, set
+  initialization options, and choose applicable mime types.
+- Blank background colour can be black or white (`white_blanking`
+  option under `[content]` in the configuration file)
+- Configuration file `pympress/share/defaults.conf` containing
+  default/fallback values.
+  This file should not be modified by the user.
+- The laser pointer can now be switched on continuously
+- Add 'continous mode' for laser pointer (#121) by Vulpeculus
+- Add log file path the the Help > About dialog (#118) by Johannes
+  Reiff
+- Fix the log filename for multi-user systems (#117) by Johannes
+  Reiff
+- Describe installation from Chocolatey package (#112)
+
+-------------------------------------------------------------------
+Wed 14 Aug 12:50:54 BST 2019 - me@cimba.li - 1.4.1
+Give more visibility to the logo
+Automated upload of windows binaries, more logo visibility.
+
+-------------------------------------------------------------------
+Wed 7 Aug 15:39:22 BST 2019 - me@cimba.li - 1.4.0
+Presentation time analysis and automated building for windows
+
+- Fix for #103 (#104) by walli545
+
+-------------------------------------------------------------------
+Thu 7 Feb 03:13:56 GMT 2019 - me@cimba.li - 1.3.1
+- Add pygobject3 to brew requirements (#97) by Paolo G. Giarrusso
+
+-------------------------------------------------------------------
+Sat 26 Jan 16:02:17 GMT 2019 - me@cimba.li - 1.3.0
+- Update German translation (#95) by FriedrichFröbel
+- Update of Czech translation (#94) by multiflexi
+- Spanish translation update (#93) by Suso Comesaña
+
+-------------------------------------------------------------------
+Thu 6 Sep 20:26:21 BST 2018 - me@cimba.li - 1.2.0
+Gif support and other novelties
+- Pympress now supports playing gif files that are embedded as
+  movies, e.g. with `\movie` in the multimedia package for beamer.
+- The highlight mode is now configurable just like the normal and
+  notes on second screen modes, meaning we can see notes together
+  with the current slide being highlighted.
+- Czech translation (courtesy of @multiflexi )
+- Translation update (#75)
+- Czech translation (#74) by multiflexi
+- minor typo (#65) by Pablo Rodríguez
+- Update German translations (#55) by FriedrichFröbel
+
+-------------------------------------------------------------------
+Tue 16 Jan 15:01:56 GMT 2018 - me@cimba.li - 1.1.2
+Bugfix Small patch to fix the estimated talk time
+
+-------------------------------------------------------------------
+Sun 7 Jan 14:55:34 GMT 2018 - me@cimba.li - 1.1.1
+Improve video support on two screens
+
+-------------------------------------------------------------------
+Fri 1 Dec 11:11:39 GMT 2017 - me@cimba.li - 1.1.0
+
+-------------------------------------------------------------------
+Thu 10 Aug 02:09:33 BST 2017 - me@cimba.li - 1.0.4
+Novelties:
+- Possibility to rearrange layout in config file (see here for how
+  the constraints on the json string's content:
+  https://pympress.github.io/options.html#layouts),
+- ctrl + click now emulates a laser pointer on screen,
+- various bug fixes,
+- menu of recently opened files,
+- any errors now are logged to a file named pympress.log in the
+  current directory
+- Renamed messages.mo to LC_MESSAGES/pympress.mo (#30) by Stanisław
+  Polak
+- Add polish translation for 'Open Recent" (#29)
+- Internalize all translations with python gettext (#21)
+
+-------------------------------------------------------------------
+Thu 23 Mar 20:13:41 GMT 2017 - me@cimba.li - 1.0.2
+Should fix prerendering issues on Windows
+
+-------------------------------------------------------------------
+Fri 3 Mar 22:03:20 GMT 2017 - me@cimba.li - 1.0.1
+- Fix osx i18n (#17)
+- Add German translation (#16) by FriedrichFröbel
+
+-------------------------------------------------------------------
+Mon 30 Jan 01:46:57 GMT 2017 - me@cimba.li - 1.0
+- Refactor to load widgets from glade xml files (#4)
+- Scribble (#3)
+- Suggestions (#2) by Epithumia
+- Some old and some new (#1) by Christof Rath
