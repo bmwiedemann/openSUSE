@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           libKF5ModemManagerQt
-Version:        5.106.0
+Version:        5.107.0
 Release:        0
 Summary:        Qt wrapper for ModemManager DBus API
 License:        LGPL-2.1-only OR LGPL-3.0-only
