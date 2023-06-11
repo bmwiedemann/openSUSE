@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jun  5 07:43:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.107.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.107.0
+- Changes since 5.106.0:
+  * Use common helper for Property/JSON conversion
+  * Don't install D-Bus interfaces without BUILD_INDEXER_SERVICE
+  * Make building of the service optional, add packaging documentation
+  * Minor fixes for DocumentUrlDB::updateUrl method
+  * [IdTreeDB] Consolidate put/del into common set
+  * [MetadataMoverTest] Add some more test documentation
+  * Remove dead code paths from DocumentUrlDB::del
+  * Cleanup some leftover stale code
+  * Use more RAII in unit tests
+  * port to standard C++ smart pointers where possible
+  * Add some documentation for DocumentDB/DocumentIdDB
+  * [balooshow] Improve display of property and plaintext terms
+  * Move KFileMetaData documentation reference up
+
+-------------------------------------------------------------------
 Sat May  6 14:01:22 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.106.0
