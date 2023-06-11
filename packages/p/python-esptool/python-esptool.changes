@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Jun 11 12:45:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.6.1:
+  * `ESP32-S3 USB-Serial/JTAG`: Fix incorrect RTC WDT registers
+    to avoid resets during flashing.
+- update to 4.6:
+  * Added the option to specify `ALL` as a size argument in
+    `read_flash` and `erase_region` to perform said operation
+    until the end of the flash memory.
+  * `image_info`: Display the WP pin state in human-readable
+    form.
+  * `image_info`: Display chip type based on Chip ID, if
+    available.
+  * `ESP32-C6` and `ESP32-H2`: Added support for reading 64-bit
+    MAC address.
+  * Added efuse description YAML files for all chips.
+  * `ECDSA_KEY`: Added support for burning from PEM file.
+  * `burn_key` and `burn_key_digest`: Hide sensitive info during
+    burning by default.
+  * Added support for external `esp` instance.
+  * Improved efuse error viewing.
+  * `ESP32-H2`: Added RF Calibration Information.
+  *  Fixed `01060000: Operation or feature not supported` error
+    by setting flash parameters even with `--flash_size keep`.
+  * `USB-Serial/JTAG`: Autofeed super watchdog (SWD) to avoid
+    resets during flashing.
+  * `USB-Serial/JTAG`: Fixed failing reset sequence on COM ports
+    >= 10 due to PID detection error.
+  * `ESP32-C6`: Fixed `get_pkg_version` and
+    `get_{major,minor}_chip_version`.
+  * `image_info`: Removed check that reserved bytes in the image
+    header are zero, which would break chip type autodetection.
+  * Moved bootloader description header `bootdesc` to the top of
+    the RAM segment.
+  * Refactored to support `cryptography>=40`.
+  * Refactored to support recent `reedsolo` package versions.
+
+-------------------------------------------------------------------
 Thu Apr 20 10:23:16 UTC 2023 - Torsten Gruner <simmphonie@opensuse.org>
 
 - update to 4.5.1
