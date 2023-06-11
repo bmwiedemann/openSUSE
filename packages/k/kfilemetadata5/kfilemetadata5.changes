@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun  5 07:43:58 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.107.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.107.0
+- Changes since 5.106.0:
+  * Cleanup property name/id mapping test
+  * Add method to export list of all Property names.
+  * Reduce PropertyInfo construction overhead
+  * Add benchmark for PropertyInfo instantiation
+  * Fix build with exiv2 >= 0.28
+
+-------------------------------------------------------------------
 Sat May  6 14:01:35 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.106.0
