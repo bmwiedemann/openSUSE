@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun  9 03:32:26 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 0.41.1:
+  * Fixed a bug where preview window is not updated when
+    --disabled is set and a reload is triggered by change:reload
+    binding
+  * Added fix-go-test.patch to make test cases work on 0.41.1
+
+-------------------------------------------------------------------
 Fri May 26 18:38:52 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to version 0.41.0:
