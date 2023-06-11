@@ -1,7 +1,7 @@
 #
 # spec file for package diff-so-fancy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           diff-so-fancy
-Version:        1.4.3
+Version:        1.4.4
 Release:        0
 Summary:        Strives to make your diffs human readable
 License:        MIT
@@ -41,7 +41,7 @@ mv lib/* third_party %{buildroot}%{_datadir}/diff-so-fancy/
 chmod -x %{buildroot}%{_datadir}/diff-so-fancy/third_party/*/*.pl
 sed -i '#!\/usr\/bin/d' %{buildroot}%{_datadir}/diff-so-fancy/third_party/*/*.pl
 sed -i '0 , /^$/ d' %{buildroot}%{_datadir}/diff-so-fancy/third_party/*/*.pl
-sed -i 's@/usr/bin/env perl@/usr/bin/perl@' {diff-so-fancy,%{buildroot}%{_datadir}/diff-so-fancy/third_party/build_fatpack/diff-so-fancy}
+sed -i 's@/usr/bin/env perl@/usr/bin/perl@' diff-so-fancy
 sed -i 's|^use lib .*$|use lib "/usr/share/diff-so-fancy";|' diff-so-fancy
 install -Dm 0755 -t %{buildroot}%{_bindir}/ diff-so-fancy
 

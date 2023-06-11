@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jun 10 15:37:37 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 1.4.4
+  * General maintenance release with bug fixes for modern versions
+    of git
+  * Much improved test suite to catch bugs earlier and easier
+  * Better support for non-git use cases (vanilla diff and hg)
+
+-------------------------------------------------------------------
 Sun Apr 10 19:02:49 UTC 2022 - Jan-Luca Kiok <me@jlk.one>
 
 - Use direct shell commands instead of indirect macros within the

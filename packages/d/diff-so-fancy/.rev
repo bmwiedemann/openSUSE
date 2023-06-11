@@ -9,4 +9,14 @@
 Apart from last time shell commands are used instead indirect macros (I misread the wiki to do exactly the wrong thing...) and the summary is more descriptive.</comment>
     <requestid>968289</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0a3e9ae14b1ed4e514b23061dc45812f</srcmd5>
+    <version>1.4.4</version>
+    <time>1686506132</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1092026 from jlkDE
+
+Update to version 1.4.4</comment>
+    <requestid>1092027</requestid>
+  </revision>
 </revisionlist>
