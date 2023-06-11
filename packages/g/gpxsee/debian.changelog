@@ -1,3 +1,10 @@
+gpxsee (13.4) stable; urgency=low
+
+  * Extended Mapsforge render themes support.
+  * Improved ENC maps rendering.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sat, 10 Jun 2023 10:01:40 +0200
+
 gpxsee (13.3) stable; urgency=low
 
   * Improved vector maps zooming speed/performance.
