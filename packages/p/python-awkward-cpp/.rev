@@ -59,4 +59,41 @@
   * Allow options for writing and parsing NaN/Infinity (#641)</comment>
     <requestid>1084909</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>409582149497dd78dba035c1ad35cd2a</srcmd5>
+    <version>16</version>
+    <time>1686506154</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 16:
+  * Add GenericDocument ctor overload to specify JSON type (#369)
+  * Add FAQ (#372, #373, #374, #376)
+  * Add forward declaration header `fwd.h`
+  * Add @PlatformIO Library Registry manifest file (#400)
+  * Implement assignment operator for BigInteger (#404)
+  * Add comments support (#443)
+  * Adding coapp definition (#460)
+  * documenttest.cpp: EXPECT_THROW when checking empty allocator
+    (470)
+  * GenericDocument: add implicit conversion to ParseResult
+    (#480)
+  * Use &lt;wchar.h&gt; with C++ linkage on Windows ARM (#485)
+  * Detect little endian for Microsoft ARM targets
+  * Check Nan/Inf when writing a double (#510)
+  * Add JSON Schema Implementation (#522)
+  * Add iostream wrapper (#530)
+  * Add Jsonx example for converting JSON into JSONx (a XML
+    format) (#531)
+  * Add optional unresolvedTokenIndex parameter to Pointer::Get()
+    (#532)
+  * Add encoding validation option for Writer/PrettyWriter (#534)
+  * Add Writer::SetMaxDecimalPlaces() (#536)
+  * Support {0, } and {0, m} in Regex (#539)
+  * Add Value::Get/SetFloat(), Value::IsLossLessFloat/Double()
+    (#540)
+  * Add stream position check to reader unit tests (#541)
+  * Add Templated accessors and range-based for (#542)
+  * Add (Pretty)Writer::RawValue() (#543)
+  * Add Document::Parse(std::string), Document::Parse(const</comment>
+    <requestid>1092134</requestid>
+  </revision>
 </revisionlist>

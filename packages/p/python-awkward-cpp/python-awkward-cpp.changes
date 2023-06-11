@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun Jun 11 08:23:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 16:
+  * Add GenericDocument ctor overload to specify JSON type (#369)
+  * Add FAQ (#372, #373, #374, #376)
+  * Add forward declaration header `fwd.h`
+  * Add @PlatformIO Library Registry manifest file (#400)
+  * Implement assignment operator for BigInteger (#404)
+  * Add comments support (#443)
+  * Adding coapp definition (#460)
+  * documenttest.cpp: EXPECT_THROW when checking empty allocator
+    (470)
+  * GenericDocument: add implicit conversion to ParseResult
+    (#480)
+  * Use <wchar.h> with C++ linkage on Windows ARM (#485)
+  * Detect little endian for Microsoft ARM targets
+  * Check Nan/Inf when writing a double (#510)
+  * Add JSON Schema Implementation (#522)
+  * Add iostream wrapper (#530)
+  * Add Jsonx example for converting JSON into JSONx (a XML
+    format) (#531)
+  * Add optional unresolvedTokenIndex parameter to Pointer::Get()
+    (#532)
+  * Add encoding validation option for Writer/PrettyWriter (#534)
+  * Add Writer::SetMaxDecimalPlaces() (#536)
+  * Support {0, } and {0, m} in Regex (#539)
+  * Add Value::Get/SetFloat(), Value::IsLossLessFloat/Double()
+    (#540)
+  * Add stream position check to reader unit tests (#541)
+  * Add Templated accessors and range-based for (#542)
+  * Add (Pretty)Writer::RawValue() (#543)
+  * Add Document::Parse(std::string), Document::Parse(const
+    char*, size_t length) and related APIs. (#553)
+  * Add move constructor for GenericSchemaDocument (#554)
+  * Add VS2010 and VS2015 to AppVeyor CI (#555)
+  * Add parse-by-parts example (#556, #562)
+  * Support parse number as string (#564, #589)
+  * Add kFormatSingleLineArray for PrettyWriter (#577)
+  * Added optional support for trailing commas (#584)
+
+-------------------------------------------------------------------
 Wed May  3 21:28:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 15:
