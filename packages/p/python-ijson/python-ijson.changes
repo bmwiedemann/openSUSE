@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 11 12:39:17 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Fri Nov 26 16:09:20 UTC 2021 - Daniel Molkentin <daniel@molkentin.de>
 
 - update to 3.1.4 
