@@ -33,4 +33,12 @@
     <comment>- Inject multibuild to break up a build loop.</comment>
     <requestid>931516</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>9bf058bc3faa31da54feffbb79f398c7</srcmd5>
+    <version>1.7.0</version>
+    <time>1686506161</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092222</requestid>
+  </revision>
 </revisionlist>

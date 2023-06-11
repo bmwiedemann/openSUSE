@@ -25,6 +25,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-pytest-virtualenv%{psuffix}
 Version:        1.7.0
 Release:        0

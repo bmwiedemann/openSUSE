@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 10 09:44:58 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Nov 15 07:23:10 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Inject multibuild to break up a build loop. 
