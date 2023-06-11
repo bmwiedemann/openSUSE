@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun  9 08:40:40 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20230607:
+  * util: gTLD data autopull updates for 2023-06-07T15:13:30 UTC (#1772)
+  * Add test workflow (#1750)
+  * Update of gov.pl labels (#1752)
+
+-------------------------------------------------------------------
 Thu Apr 27 08:32:26 UTC 2023 - santiago.zarate@suse.com
 
 - Update to version 20230426:

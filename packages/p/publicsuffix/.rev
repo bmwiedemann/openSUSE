@@ -1258,4 +1258,15 @@ Now with build cycle removed.</comment>
     <comment></comment>
     <requestid>1083242</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>9f2a1923568a40a5e7b1abe84d958ccc</srcmd5>
+    <version>20230607</version>
+    <time>1686505955</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230607:
+  * util: gTLD data autopull updates for 2023-06-07T15:13:30 UTC (#1772)
+  * Add test workflow (#1750)
+  * Update of gov.pl labels (#1752)</comment>
+    <requestid>1091778</requestid>
+  </revision>
 </revisionlist>
