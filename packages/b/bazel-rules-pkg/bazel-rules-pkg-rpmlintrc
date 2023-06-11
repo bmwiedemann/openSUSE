@@ -1,0 +1,6 @@
+# Ignore the following warnings in the source package
+addFilter("bazel-rules-pkg-source.* devel-file-in-non-devel-package")
+addFilter("bazel-rules-pkg-source.* hidden-file-or-dir")
+addFilter("bazel-rules-pkg-source.* non-executable-script")
+addFilter("bazel-rules-pkg-source.* suse-filelist-forbidden-fhs23")
+addFilter("bazel-rules-pkg-source.* zero-length")
