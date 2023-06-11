@@ -154,4 +154,12 @@
     `set_json_library`alternative json libraries.</comment>
     <requestid>1089612</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>4b525b535a7d5513b904b407b723cce5</srcmd5>
+    <version>2.0.0</version>
+    <time>1686506150</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092151</requestid>
+  </revision>
 </revisionlist>

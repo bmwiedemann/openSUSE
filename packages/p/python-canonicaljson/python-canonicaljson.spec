@@ -26,6 +26,7 @@
 %endif
 %define         github_user matrix-org
 %define         short_name canonicaljson
+%{?sle15_python_module_pythons}
 Name:           python-%{short_name}%{psuffix}
 Version:        2.0.0
 Release:        0
