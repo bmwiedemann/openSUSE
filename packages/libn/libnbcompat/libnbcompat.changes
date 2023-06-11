@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun  8 01:44:40 UTC 2023 - Aleksa Sarai <asarai@suse.com>
+
+- Fix broken sha256 hashes on Tumbleweed (gcc>=11) issue and add check section
+  running new "make check" script to verify hash output during builds.
+  boo#1212120
+  + 0001-hash-functions-add-tests-to-verify-output-against-te.patch
+  + 0002-Fix-SHA256-bug-due-to-strict-aliasing-violations-wit.patch
+
+-------------------------------------------------------------------
 Wed Oct 27 16:15:28 UTC 2021 - Archie Cobbs <archie.cobbs@gmail.com>
 
 - Run spec-cleaner on spec file

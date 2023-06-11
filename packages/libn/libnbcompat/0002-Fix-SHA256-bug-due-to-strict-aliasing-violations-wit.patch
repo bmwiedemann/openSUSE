@@ -1,0 +1,53 @@
+From b6509283cbf8043990ea9e31ca22fc7495a1ca99 Mon Sep 17 00:00:00 2001
+From: "Archie L. Cobbs" <archie.cobbs@gmail.com>
+Date: Wed, 7 Jun 2023 10:20:20 -0500
+Subject: [PATCH 2/2] Fix SHA256 bug due to strict aliasing violations with
+ newer GCC optimizations (#4).
+
+SUSE-Backport: commit 864c1cf42c2c ("Fix SHA256 bug due to strict aliasing violations with newer GCC optimizations (#4).")
+
+---
+ CHANGES | 5 +++++
+ sha2.c  | 6 +++---
+ 2 files changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/CHANGES b/CHANGES
+index e30ebc71d718..0e8c1a905714 100644
+--- a/CHANGES
++++ b/CHANGES
+@@ -1,3 +1,8 @@
++Version Next
++
++    - Fixed SHA256 bug due to strict aliasing violations with newer GCC optimizations (#4).
++    - Add hash test vectors (contributed by Aleksa Sarai)
++
+ Version 1.0.1 released August 29, 2020
+ 
+     - Avoid defining PACKAGE, etc. in installed header files
+diff --git a/sha2.c b/sha2.c
+index 62ad72f5e3e9..2a7ed2ba5d21 100644
+--- a/sha2.c
++++ b/sha2.c
+@@ -567,7 +567,7 @@ void SHA256_Final(sha2_byte digest[], SHA256_CTX* context) {
+ 			*context->buffer = 0x80;
+ 		}
+ 		/* Set the bit count: */
+-		*(sha2_word64*)(void *)&context->buffer[SHA256_SHORT_BLOCK_LENGTH] = context->bitcount;
++		memcpy(&context->buffer[SHA256_SHORT_BLOCK_LENGTH], &context->bitcount, sizeof(context->bitcount));
+ 
+ 		/* Final transform: */
+ 		SHA256_Transform(context, (sha2_word32*)(void *)context->buffer);
+@@ -870,8 +870,8 @@ static void SHA512_Last(SHA512_CTX* context) {
+ 		*context->buffer = 0x80;
+ 	}
+ 	/* Store the length of input data (in bits): */
+-	*(sha2_word64*)(void *)&context->buffer[SHA512_SHORT_BLOCK_LENGTH] = context->bitcount[1];
+-	*(sha2_word64*)(void *)&context->buffer[SHA512_SHORT_BLOCK_LENGTH+8] = context->bitcount[0];
++	memcpy(&context->buffer[SHA512_SHORT_BLOCK_LENGTH], &context->bitcount[1], sizeof(context->bitcount[1]));
++	memcpy(&context->buffer[SHA512_SHORT_BLOCK_LENGTH+8], &context->bitcount[0], sizeof(context->bitcount[0]));
+ 
+ 	/* Final transform: */
+ 	SHA512_Transform(context, (sha2_word64*)(void *)context->buffer);
+-- 
+2.40.1
+

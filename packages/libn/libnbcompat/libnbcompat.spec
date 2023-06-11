@@ -1,7 +1,7 @@
 #
 # spec file for package libnbcompat
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,9 @@ License:        BSD-4-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/archiecobbs/%{name}
 Source:         https://github.com/archiecobbs/%{name}/archive/%{version}.tar.gz
+# UPSTREAM-FIX: Fixes for sha256 hashing bug. boo#1212120
+Patch1:         0001-hash-functions-add-tests-to-verify-output-against-te.patch
+Patch2:         0002-Fix-SHA256-bug-due-to-strict-aliasing-violations-wit.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc
@@ -55,7 +58,7 @@ This package holds the development files for %{name}.
 bootstrap tools that are missing on other operating systems.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 autoreconf -vfi -I .
@@ -65,6 +68,9 @@ autoreconf -vfi -I .
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
+
+%check
+%make_build check
 
 %post   -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
