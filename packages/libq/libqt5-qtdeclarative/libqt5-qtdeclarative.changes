@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 24 08:00:51 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.9+kde26:
+  * qml tool: Use QCommandLineParser::process() rather than parse()
+- Add patch to fix crash on aarch64 (boo#1211628, QTBUG-111935):
+  * 0001-JIT-Add-missing-STORE-LOAD-_ACC-to-CreateCallContext.patch
+
+-------------------------------------------------------------------
 Thu May 11 08:28:37 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 5.15.9+kde25:

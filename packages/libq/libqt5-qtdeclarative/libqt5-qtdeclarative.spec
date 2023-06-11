@@ -23,7 +23,7 @@
 %define so_version 5.15.9
 %define tar_version qtdeclarative-everywhere-src-%{version}
 Name:           libqt5-qtdeclarative
-Version:        5.15.9+kde25
+Version:        5.15.9+kde26
 Release:        0
 Summary:        Qt 5 Declarative Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -31,6 +31,8 @@ Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 Source:         %{tar_version}.tar.xz
 Source1:        baselibs.conf
+# https://invent.kde.org/qt/qt/qtdeclarative/-/merge_requests/49
+Patch100:       0001-JIT-Add-missing-STORE-LOAD-_ACC-to-CreateCallContext.patch
 # https://invent.kde.org/qt/qt/qtdeclarative/-/merge_requests/32
 Patch103:       qtdeclarative-5.15.0-FixMaxXMaxYExtent.patch
 BuildRequires:  fdupes

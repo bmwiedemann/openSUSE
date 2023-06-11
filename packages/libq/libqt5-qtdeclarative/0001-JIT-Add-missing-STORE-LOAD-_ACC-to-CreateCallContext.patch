@@ -1,0 +1,48 @@
+From cb4f59d2dfbb9def4298688ec87e6b1caf8b622f Mon Sep 17 00:00:00 2001
+From: Ulf Hermann <ulf.hermann@qt.io>
+Date: Wed, 15 Mar 2023 08:59:43 +0100
+Subject: [PATCH] JIT: Add missing {STORE|LOAD}_ACC() to CreateCallContext
+
+We cannot assume anything about the accumulator register after calling
+PushCallContext::call(). Also add a note about not needing to re-load
+the accumulator on ThrowException.
+
+Pick-to: 6.5 6.2 5.15
+Fixes: QTBUG-111935
+Change-Id: I7196585e1d2697c215f4fe87d8d7ac9b98b622a3
+Reviewed-by: <carl@carlschwan.eu>
+Reviewed-by: Qt CI Bot <qt_ci_bot@qt-project.org>
+Reviewed-by: Fabian Kosmale <fabian.kosmale@qt.io>
+(cherry picked from commit 15ec024152a1d1d99a4934f7b2408e7af7b2552a)
+---
+ src/qml/jit/qv4baselinejit.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/qml/jit/qv4baselinejit.cpp b/src/qml/jit/qv4baselinejit.cpp
+index 45150cfffd..5ad53faf95 100644
+--- a/src/qml/jit/qv4baselinejit.cpp
++++ b/src/qml/jit/qv4baselinejit.cpp
+@@ -540,6 +540,8 @@ void BaselineJIT::generate_ThrowException()
+     as->passEngineAsArg(0);
+     BASELINEJIT_GENERATE_RUNTIME_CALL(ThrowException, CallResultDestination::Ignore);
+     as->gotoCatchException();
++
++    // LOAD_ACC(); <- not needed here since it would be unreachable.
+ }
+ 
+ void BaselineJIT::generate_GetException() { as->getException(); }
+@@ -547,9 +549,11 @@ void BaselineJIT::generate_SetException() { as->setException(); }
+ 
+ void BaselineJIT::generate_CreateCallContext()
+ {
++    STORE_ACC();
+     as->prepareCallWithArgCount(1);
+     as->passCppFrameAsArg(0);
+     BASELINEJIT_GENERATE_RUNTIME_CALL(PushCallContext, CallResultDestination::Ignore);
++    LOAD_ACC();
+ }
+ 
+ void BaselineJIT::generate_PushCatchContext(int index, int name) { as->pushCatchContext(index, name); }
+-- 
+2.40.1
+
