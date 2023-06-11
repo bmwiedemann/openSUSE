@@ -17,7 +17,7 @@
 
 
 Name:           d2
-Version:        0.4.2
+Version:        0.5.1
 Release:        0
 Summary:        CLI tool and modern declarative language that turns text to diagrams
 License:        MPL-2.0
