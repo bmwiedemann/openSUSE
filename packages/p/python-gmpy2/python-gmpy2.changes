@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 10 17:36:09 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Fri Apr  7 21:06:58 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove unused build dependency on mpir (gmp was used anyway)
