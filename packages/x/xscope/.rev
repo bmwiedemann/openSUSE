@@ -80,4 +80,14 @@
   * Mark MainLoop as _X_NORETURN.</comment>
     <requestid>988390</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>07dede826285da22f8e0edd9757f74a4</srcmd5>
+    <version>1.4.4</version>
+    <time>1686506090</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.4
+  * This release fixes some minor bugs and adds support for decoding
+    the DAMAGE extension.</comment>
+    <requestid>1091976</requestid>
+  </revision>
 </revisionlist>

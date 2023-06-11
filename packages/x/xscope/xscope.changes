@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 10 10:57:13 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.4.4
+  * This release fixes some minor bugs and adds support for decoding
+    the DAMAGE extension.
+
+-------------------------------------------------------------------
 Mon Jul 11 13:24:24 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.4.3
