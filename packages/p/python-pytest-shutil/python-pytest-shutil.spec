@@ -17,6 +17,7 @@
 
 
 %bcond_without python2
+%{?sle15_python_module_pythons}
 Name:           python-pytest-shutil
 Version:        1.7.0
 Release:        0
@@ -27,6 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/p/pytest-shutil/p
 # PATCH-FEATURE-UPSTREAM pytest-fixtures-pr171-remove-mock.patch -- gh#man-group#pytest-plugins#171
 Patch1:         pytest-fixtures-pr171-remove-mock.patch
 BuildRequires:  %{python_module execnet}
+BuildRequires:  %{python_module path}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools-git}
 BuildRequires:  %{python_module setuptools}

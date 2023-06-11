@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 10 11:50:04 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Dec  5 11:16:10 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable test_pretty_formatter test that fails in osc build but it works when
