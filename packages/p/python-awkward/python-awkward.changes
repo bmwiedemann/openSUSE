@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 11 08:21:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.2:
+  * drop string broadcasting overloading
+  * add Index._touch_XXX methods
+  * add ak.typetracer.length_one_if_typetracer
+  * add placeholder array
+  * bugfixes and other changes see https://github.com/scikit-hep/awkward/releases/tag/v2.2.2
+
+-------------------------------------------------------------------
 Mon May 29 16:43:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.1:
