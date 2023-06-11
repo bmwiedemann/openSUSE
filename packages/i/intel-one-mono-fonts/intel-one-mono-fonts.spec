@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           intel-one-mono-fonts
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        An expressive monospaced font family
 License:        OFL-1.1
@@ -24,7 +25,6 @@ Group:          System/X11/Fonts
 URL:            https://github.com/intel/intel-one-mono
 Source:         https://github.com/intel/intel-one-mono/releases/download/V%{version}/ttf.zip
 Source100:      https://raw.githubusercontent.com/intel/intel-one-mono/V%{version}/README.md
-Source101:      https://raw.githubusercontent.com/intel/intel-one-mono/V%{version}/license
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
 BuildArch:      noarch
@@ -42,8 +42,8 @@ provided feedback at each stage of design.
 
 %prep
 %autosetup -cT
-unzip -qq %{SOURCE0} '*.ttf'
-cp %{S:100} %{S:101} .
+unzip -qq %{SOURCE0}
+cp %{S:100} .
 
 %build
 
@@ -51,7 +51,7 @@ cp %{S:100} %{S:101} .
 install -d %{buildroot}%{_ttfontsdir} %{buildroot}%{_docdir}/%{name} %{buildroot}%{_licensedir}/%{name}
 install -m644 ttf/*.ttf %{buildroot}%{_ttfontsdir}
 install -m644 %{S:100} %{buildroot}%{_docdir}/%{name}
-install -m644 %{S:101} %{buildroot}%{_licensedir}/%{name}/LICENSE.md
+install -m644 ttf/license %{buildroot}%{_licensedir}/%{name}/LICENSE.md
 
 %reconfigure_fonts_scriptlets
 
