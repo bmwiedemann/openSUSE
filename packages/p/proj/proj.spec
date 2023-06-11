@@ -16,15 +16,14 @@
 #
 
 
-%define data_version 1.13
+%define data_version 1.14
 %define sover   25
 %define libname lib%{name}%{sover}
 Name:           proj
-Version:        9.2.0
+Version:        9.2.1
 Release:        0
 Summary:        Cartographic projection software
 License:        MIT
-Group:          Productivity/Scientific/Other
 URL:            https://proj.org/
 Source0:        https://download.osgeo.org/proj/%{name}-%{version}.tar.gz
 Source1:        https://download.osgeo.org/%{name}/%{name}-data-%{data_version}.tar.gz
@@ -47,7 +46,6 @@ data with a wide range of selectable projection functions.
 %package -n %{libname}
 Summary:        Cartographic projection software
 License:        MIT
-Group:          Development/Libraries/C and C++
 
 %description -n %{libname}
 This package the library for performing respective
@@ -57,7 +55,6 @@ data with a wide range of selectable projection functions.
 %package devel
 Summary:        Development files for PROJ
 License:        MIT
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Provides:       libproj-devel = %{version}
 Obsoletes:      libproj-devel < %{version}

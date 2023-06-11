@@ -356,4 +356,13 @@ This package is included in Debian.
   * for detailed list of changes see provided NEWS file</comment>
     <requestid>1072305</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>99bbd265d7c17763e1abf8fc918cdc6a</srcmd5>
+    <version>9.2.1</version>
+    <time>1686506039</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 9.2.1 and data to 1.14:
+  * for detailed list of changes see provided NEWS file</comment>
+    <requestid>1091421</requestid>
+  </revision>
 </revisionlist>
