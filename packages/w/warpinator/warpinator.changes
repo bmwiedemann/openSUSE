@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jun 10 17:58:10 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 1.6.3:
+  * Update translations
+- Changes from version 1.6.2:
+  * Possible remaining_count fixes
+  * Fix a typo and add bash syntax highlighting to README
+
+-------------------------------------------------------------------
 Fri Apr 28 14:22:35 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add BuildRequires: gobject-introspection to autodetect typelib
