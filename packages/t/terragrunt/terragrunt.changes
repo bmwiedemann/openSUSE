@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun 02 04:50:38 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.46.1:
+  * Fixed reading of outputs during destroy (#2589)
+
+-------------------------------------------------------------------
+Fri Jun 02 04:49:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.46.0:
+  * fix: redirecting stdout to stderr in hook commands (#2587)
+
+-------------------------------------------------------------------
 Wed May 31 13:07:18 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.45.18:
