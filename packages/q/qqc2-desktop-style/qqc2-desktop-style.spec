@@ -20,7 +20,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           qqc2-desktop-style
-Version:        5.106.0
+Version:        5.107.0
 Release:        0
 Summary:        A Qt Quick Controls 2 Style for Desktop UIs
 License:        GPL-2.0-or-later
