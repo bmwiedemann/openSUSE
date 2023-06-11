@@ -34,4 +34,12 @@
   https://security.freebsd.org/patches/SA-16:25/bspatch.patch</comment>
     <requestid>415543</requestid>
   </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>4bc3c425e8682523aeda0571ec7635c5</srcmd5>
+    <version>4.3</version>
+    <time>1686506080</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1091841</requestid>
+  </revision>
 </revisionlist>

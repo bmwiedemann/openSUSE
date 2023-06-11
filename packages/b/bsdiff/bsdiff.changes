@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun  9 08:36:14 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Spec file modernisation
+
+-------------------------------------------------------------------
+Thu Oct 17 14:59:45 UTC 2019 - Richard Brown <rbrown@suse.com>
+
+- Remove obsolete Groups tag (fate#326485)
+
+-------------------------------------------------------------------
 Tue Jul 26 16:46:59 UTC 2016 - sor.alexei@meowr.ru
 
 - Add bsdiff-fix-makefile.patch: patch Makefile instead of working

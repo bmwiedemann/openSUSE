@@ -1,7 +1,7 @@
 #
 # spec file for package bsdiff
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,15 +21,13 @@ Version:        4.3
 Release:        0
 Summary:        Tools for binary file patches
 License:        BSD-2-Clause
-Group:          Productivity/File utilities
-Url:            http://daemonology.net/bsdiff
+URL:            https://daemonology.net/bsdiff
 Source:         http://daemonology.net/bsdiff/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE bsdiff-fix-makefile.patch sor.alexei@meowr.ru
 Patch0:         %{name}-fix-makefile.patch
 # PATCH-FIX-UPSTREAM bsdiff-fix-heap-vul.patch bsc#990660 -- Fix heap vulnerability in bspatch (CVE-2014-9862).
 Patch1:         %{name}-fix-heap-vul.patch
 BuildRequires:  libbz2-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 bsdiff and bspatch are tools for building and applying patches to
@@ -40,13 +38,11 @@ than those produced by Xdelta, and 15%% smaller than those produced
 by .RTPatch.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 head -n 25 %{name}.c > COPYING
 
 %build
-make %{?_smp_mflags} \
+%make_build \
   CFLAGS="%{optflags}"
 
 %install
@@ -54,8 +50,7 @@ make %{?_smp_mflags} \
   PREFIX=%{_prefix}
 
 %files
-%defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %{_bindir}/%{name}
 %{_bindir}/bspatch
 %{_mandir}/man1/*.1%{?ext_man}
