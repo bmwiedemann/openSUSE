@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun  9 14:03:17 BST 2023 - Adam Spiers <suse@adamspiers.org>
+
+- Update to 1.10.4
+  * Fixed no UI shown for failed auto-merge.
+- Update to 1.10.3
+  * Fix 469817 no text if word wrap is on.
+
+-------------------------------------------------------------------
 Wed May  3 13:42:10 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.10.2
