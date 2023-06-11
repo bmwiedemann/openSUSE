@@ -221,4 +221,25 @@
     <comment></comment>
     <requestid>1077875</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>91a195c9f7d0ee52bcebfd8b5f121da8</srcmd5>
+    <version>2.3.19</version>
+    <time>1686506151</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.19:
+  * Add CPython 3.7.17, 3.8.17 and 3.9.17
+  * Add CPython 3.11.4
+  * Add CPython 3.10.12
+  * Add CPython 3.12.0b2
+  * Fix not showing symlink contents for unselected versions in
+    `pyenv versions`
+  * Correct link in has_tar_xz_support else branch of 3.10.11 and
+    3.11.3
+  * Fix #2682: Correct pyenv_user_setup.bash file
+  * fix: updating heredoc delimiter to be random and unique
+  * Support ksh alternative names
+  * Add CPython 3.12.0b1
+  * Update 3.12-dev and add 3.13-dev</comment>
+    <requestid>1092159</requestid>
+  </revision>
 </revisionlist>

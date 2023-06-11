@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jun 11 08:59:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.19:
+  * Add CPython 3.7.17, 3.8.17 and 3.9.17
+  * Add CPython 3.11.4
+  * Add CPython 3.10.12
+  * Add CPython 3.12.0b2
+  * Fix not showing symlink contents for unselected versions in
+    `pyenv versions`
+  * Correct link in has_tar_xz_support else branch of 3.10.11 and
+    3.11.3
+  * Fix #2682: Correct pyenv_user_setup.bash file
+  * fix: updating heredoc delimiter to be random and unique
+  * Support ksh alternative names
+  * Add CPython 3.12.0b1
+  * Update 3.12-dev and add 3.13-dev
+
+-------------------------------------------------------------------
 Fri Apr  7 08:46:52 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.17
 
 - Update to 2.3.17
