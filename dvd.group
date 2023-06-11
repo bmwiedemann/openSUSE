@@ -1862,7 +1862,6 @@
     <package name="libformula" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libfprint-2-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libfreebl3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libfreebl3-hmac" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libfreecell-solver0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libfreehand-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libfreeipmi17" supportstatus="unsupported"/> <!-- reason: dvd:ipmitool -->
@@ -2605,7 +2604,6 @@
     <package name="libsnmp40" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsodium23" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libsoftokn3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libsoftokn3-hmac" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libsolv-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsord-0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsoup-2_4-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->

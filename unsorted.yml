@@ -770,6 +770,7 @@ unsorted:
   - apcupsd-cgi 
   - apfel-devel 
   - apfel-doc 
+  - apfsprogs 
   - apg 
   - apiguardian 
   - apiguardian-javadoc 
@@ -1261,6 +1262,7 @@ unsorted:
   - bazel-rules-foreign-cc-source 
   - bazel-rules-go-source 
   - bazel-rules-java-source 
+  - bazel-rules-pkg-source 
   - bazel-rules-proto-source 
   - bazel-rules-python-source 
   - bazel-rules-swift-source 
@@ -11924,7 +11926,6 @@ unsorted:
   - libframecppcmn11 
   - libframel8 
   - libfreebl3-32bit 
-  - libfreebl3-hmac-32bit 
   - libfreefare-devel 
   - libfreefare-tools 
   - libfreefare0 
@@ -14899,7 +14900,6 @@ unsorted:
   - libsofia-sip-ua-glib3 
   - libsofia-sip-ua0 
   - libsoftokn3-32bit 
-  - libsoftokn3-hmac-32bit 
   - libsolarus-gui1 
   - libsolarus1 
   - libsolv-demo 
@@ -22423,6 +22423,7 @@ unsorted:
   - pyenv-zsh-completion 
   - pyliblo-tools 
   - pymilter-common 
+  - pympress 
   - pyradio 
   - pystring-devel 
   - pythia-devel 
