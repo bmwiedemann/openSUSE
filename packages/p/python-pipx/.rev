@@ -17,4 +17,41 @@
   with alternated name of the binary.</comment>
     <requestid>800633</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b138cdff7da492c72f9060751f2635d9</srcmd5>
+    <version>1.2.0</version>
+    <time>1686506139</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.2.0
+  - Add test for pip module in `pipx reinstall` to fix an issue with `pipx reinstall-all` (#935)
+  - Add `pipx uninject` command (#820)
+  - [docs] Fix `pipx run` examples and update Python versions used by `pipx install` examples
+  - [docs] Add an example for installation from source with extras
+  - Match pip's behaviour when package name ends with archive extension (treat it as a path)
+  - Ship a [zipapp](https://docs.python.org/3/library/zipapp.html) of pipx
+  - Change the program name to `path/to/python -m pipx` when running as `python -m pipx`
+  - Improve the detection logic for MSYS2 to avoid entering infinite loop (#908) (#938)
+  - Remove extra trailing quote from exception message
+  - Fix EncodingWarning in `pipx_metadata_file`.
+- 1.1.0
+  - Fix encoding issue on Windows when pip fails to install a package
+  - Improve the behaviour of `shlex.split` on Windows, so paths on Windows can be handled peoperly when they are passed in `--pip-args`. (#794)
+  - Add `pipx environment` command (#793)
+  - Add `list --short` option to list only package names (#804)
+  - [docs] Fix the command for [installing development version](https://pypa.github.io/pipx/installation/#install-pipx-development-versions). (#801)
+  - [docs] Fix test status badge in readme file
+  - [docs] Add more examples
+  - [dev] Change github action job names
+  - [docs] Add additional examples for installation from git repos
+  - [packaging] Switch to [PEP 621](https://www.python.org/dev/peps/pep-0621/)
+  - Add a CACHEDIR.TAG to the cache directory to prevent it from being included in archives and backups. For more information about cache directory tags, see https://bford.info/cachedir
+  
+- 1.0.0
+  - Support [argcomplete 2.0.0](https://pypi.org/project/argcomplete/2.0.0) (#790)
+  - Include machinery to build a manpage for pipx with [argparse-manpage](https://pypi.org/project/argparse-manpage/).
+  - Add better handling for 'app not found' when a single app is present in the project, and an improved error message (#733)
+  - Fixed animations sending output to stdout, which can break JSON output. (#769)
+  - Fix typo in `pipx upgrade-all` output</comment>
+    <requestid>1092063</requestid>
+  </revision>
 </revisionlist>

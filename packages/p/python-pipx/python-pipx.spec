@@ -1,7 +1,7 @@
 #
 # spec file for package python-pipx
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,63 +16,41 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-pipx
-Version:        0.14.0.0
+Version:        1.2.0
 Release:        0
-Summary:        Install and run Python applications in isolated environments
+Summary:        Install and Run Python Applications in Isolated Environments
 License:        MIT
-Group:          Development/Languages/Python
-URL:            https://github.com/pipxproject/pipx
-Source:         https://github.com/pipxproject/pipx/archive/%{version}.tar.gz#/pipx-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE test_alternative_names.patch mcepl@suse.com
-# Make tests pass even with using alternatives
-Patch0:         test_alternative_names.patch
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+URL:            https://github.com/pypa/pipx
+Source:         https://files.pythonhosted.org/packages/source/p/pipx/pipx-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling >= 0.15.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module argcomplete >= 1.9.4}
-BuildRequires:  %{python_module userpath}
+BuildRequires:  %{python_module packaging >= 20.0}
+BuildRequires:  %{python_module userpath >= 1.6.0}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-argcomplete >= 1.9.4
-Requires:       python-setuptools
-Requires:       python-userpath
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
+Requires:       python-packaging >= 20.0
+Requires:       python-userpath >= 1.6.0
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
-Install and run Python applications in isolated environments.
+Install and Run Python Applications in Isolated Environments
 
 %prep
-%setup -q -n pipx-%{version}
-%autopatch -p1
-
-sed -i '1{/^#!/d}' pipx/main.py pipx/venv_metadata_inspector.py
+%autosetup -p1 -n pipx-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pipx
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-
-%check
-export LANG=en_US.UTF-8
-# Incompatible with nox https://github.com/pipxproject/pipx/blob/047a0be/noxfile.py#L7
-# Most tests need internet https://github.com/pipxproject/pipx/issues/248
-export PATH=$PATH:%{buildroot}%{_bindir}
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-$python -m venv --system-site-packages testenv
-source testenv/bin/activate
-$python -m pytest -vv -k 'test_basic_commands or test_pipx_help_contains_text'
-}
 
 %post
 %python_install_alternative pipx
@@ -81,9 +59,10 @@ $python -m pytest -vv -k 'test_basic_commands or test_pipx_help_contains_text'
 %python_uninstall_alternative pipx
 
 %files %{python_files}
-%doc README.md
+%doc CHANGELOG.md README.md
 %license LICENSE
 %python_alternative %{_bindir}/pipx
-%{python_sitelib}/*
+%{python_sitelib}/pipx
+%{python_sitelib}/pipx-%{version}.dist-info
 
 %changelog
