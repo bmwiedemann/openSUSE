@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 11 12:14:01 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.1.0
+  * Arianna can now display the table of content of a book
+  * File metadata are now available
+  * Fix: A network connection is no longer required
+  * Fixed various crashes when indexing books
+
+-------------------------------------------------------------------
 Sun Apr 23 14:30:28 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.0.1

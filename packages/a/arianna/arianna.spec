@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           arianna
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 Summary:        Ebook reader and library management app
 License:        GPL-3.0-only
@@ -52,6 +52,7 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 Requires:       kirigami-addons
 Requires:       kirigami2
+Requires:       kquickcharts
 Requires:       libQt5Sql5-sqlite
 Requires:       libqt5-qtquickcontrols2
 # No QtWebEngine for other archs
