@@ -17,7 +17,7 @@
 
 
 Name:           zk
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        Plain text note-taking assistant for markdown
 License:        BSD-2-Clause

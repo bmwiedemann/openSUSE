@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jun 10 15:10:11 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.14.0:
+  * Added
+    + New tool.shell configuration key to set a custom shell (contributed by @lsvmello).
+    + New notebook.dir configuration key to set the default notebook (contributed by @lsvmello).
+  * Changed
+    + The note.ignore configuration property was renamed to note.exclude, to be more consistent with the CLI flags.
+  * Fixed
+    + Fixed LSP positions using UTF-16 offsets (contributed by @wrvsrx).
+
+-------------------------------------------------------------------
 Mon Feb 13 11:57:07 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 0.13.0:
