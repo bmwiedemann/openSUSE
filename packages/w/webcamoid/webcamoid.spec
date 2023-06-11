@@ -1,7 +1,7 @@
 #
 # spec file for package webcamoid
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,13 @@
 
 
 Name:           webcamoid
-Version:        9.0.0
+Version:        9.1.0
 Release:        0
 Summary:        Webcam applet for Plasma
 License:        GPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            https://webcamoid.github.io/
 Source:         https://github.com/hipersayanX/Webcamoid/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM webcamoid-manpath.patch
-Patch0:         webcamoid-manpath.patch
-# PATCH-FIX-UPSTREAM https://github.com/webcamoid/webcamoid/pull/560
-Patch1:         webcamoid-ffmpeg5.patch
 BuildRequires:  bison
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -109,6 +105,7 @@ rm %{buildroot}%{_libdir}/libavkys.so
 %license COPYING
 %{_bindir}/%{name}
 %{_kf5_applicationsdir}/%{name}.desktop
+%{_kf5_appstreamdir}/io.github.%{name}.Webcamoid.metainfo.xml
 %{_libdir}/libavkys.so.*
 %dir %{_libdir}/avkys
 %{_libdir}/avkys/*.so
