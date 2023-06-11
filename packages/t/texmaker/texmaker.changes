@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Jun 10 09:50:23 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.1.4:
+  * A bug with the contextual menu in the editor with Qt6 has been
+    fixed.
+  * A bug related to replace action with a regular expression has
+    been fixed.
+  * The internal pdf viewer can now zoom to 800%.
+  * "Home" and "End" key shortcuts have been added to the internal
+    pdf viewer (first/last page).
+  * While clicking in an internal link in the internal pdf viewer,
+    the pdf is no more moved horizontally.
+  * Some items have been added to the completion.txt (default list
+    for completion).
+  * Adaptation of the log file viewer to the dark theme.
+  * A trouble for the compilation with C99 has been fixed.
+  * An option to set the (optional) interval to record a backup of
+    the opened files has been added.
+  * The blocking of the check grammar web page by the CORS policy
+    has been fixed.
+
+-------------------------------------------------------------------
 Thu May  5 07:07:14 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 5.1.3:
