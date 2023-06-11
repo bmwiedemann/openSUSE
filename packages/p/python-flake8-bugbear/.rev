@@ -137,4 +137,14 @@
   * Remove more &lt; 3.8 checks / assertions</comment>
     <requestid>1087744</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>719b54dd35adfecd8ef9ca46f62f9a1c</srcmd5>
+    <version>23.6.5</version>
+    <time>1686506155</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.6.5:
+  * Include tox.ini in MANIFEST.in for sdist.
+  * Improve B033 (duplicate set items)</comment>
+    <requestid>1092178</requestid>
+  </revision>
 </revisionlist>

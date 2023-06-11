@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 11 09:17:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.6.5:
+  * Include tox.ini in MANIFEST.in for sdist.
+  * Improve B033 (duplicate set items)
+
+-------------------------------------------------------------------
 Thu May 18 07:02:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.5.9:
