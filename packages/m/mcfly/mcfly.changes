@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun  9 14:36:07 UTC 2023 - Gus Kenion <gkenion@suse.com>
+
+- Update to 0.8.1:
+  * Fix use of MCFLY_DISABLE_MENU
+  * Support Fish private mode support
+  * Always set MCFLY_HISTORY in zsh to support subshells
+  * Allow linking mcfly with system-provided sqlite with
+    sqlite-bundled feature flag
+  * And allow sourcing in zsh more than once
+  * Reduce size by removing unnecessary/unused regex features
+  * Add per-directory history
+
+-------------------------------------------------------------------
 Tue Mar  7 07:39:23 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.8.0:

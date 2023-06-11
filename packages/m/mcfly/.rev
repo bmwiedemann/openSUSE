@@ -20,4 +20,21 @@
   * Allow ENV variables to be set to FALSE</comment>
     <requestid>1069845</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>90eec8b8d36d0e24207866cd66163764</srcmd5>
+    <version>0.8.1~0</version>
+    <time>1686506077</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.1:
+  * Fix use of MCFLY_DISABLE_MENU
+  * Support Fish private mode support
+  * Always set MCFLY_HISTORY in zsh to support subshells
+  * Allow linking mcfly with system-provided sqlite with
+    sqlite-bundled feature flag
+  * And allow sourcing in zsh more than once
+  * Reduce size by removing unnecessary/unused regex features
+  * Add per-directory history
+</comment>
+    <requestid>1091833</requestid>
+  </revision>
 </revisionlist>
