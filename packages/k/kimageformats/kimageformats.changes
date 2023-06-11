@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun  5 07:44:01 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.107.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.107.0
+- Changes since 5.106.0:
+  * pcx: multiple fixes (2)
+  * Avoid unnecessary conversions
+  * RGB/SGI writer: fix alpha detection and image limit size
+  * TGA writer: fix alpha detection and performance improvements
+  * pcx: multiple fixes
+  * PCX: Fix reading of the extended palette (kde#463951)
+
+-------------------------------------------------------------------
 Sat May  6 14:01:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.106.0
