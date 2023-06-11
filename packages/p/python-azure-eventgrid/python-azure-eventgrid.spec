@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-eventgrid
-Version:        4.11.0
+Version:        4.13.0
 Release:        0
 Summary:        Microsoft Azure Event Grid Client Library
 License:        MIT
@@ -37,7 +37,8 @@ BuildRequires:  unzip
 Requires:       python-azure-core < 2.0.0
 Requires:       python-azure-core >= 1.24.0
 Requires:       python-azure-nspkg >= 3.0.0
-Requires:       python-isodate >= 0.6.0
+Requires:       python-isodate < 1.0.0
+Requires:       python-isodate >= 0.6.1
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
