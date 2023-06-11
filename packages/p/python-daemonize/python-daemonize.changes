@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 11 12:31:13 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Jun  4 10:01:47 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Don't use nose, switch to pytest.

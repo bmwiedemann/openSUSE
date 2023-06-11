@@ -50,4 +50,12 @@
     <comment>- Don't use nose, switch to pytest.</comment>
     <requestid>811399</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>dc280d5daacb7aba259f60c6293e3165</srcmd5>
+    <version>2.5.0</version>
+    <time>1686506175</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092290</requestid>
+  </revision>
 </revisionlist>
