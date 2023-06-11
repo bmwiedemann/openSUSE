@@ -146,7 +146,8 @@ any system or user configured modules.
 %package -n libfreebl3
 Summary:        Freebl library for the Network Security Services
 Group:          System/Libraries
-Recommends:     libfreebl3-hmac = %{version}-%{release}
+Provides:       libfreebl3-hmac = %{version}-%{release}
+Obsoletes:      libfreebl3-hmac < %{version}-%{release}
 
 %description -n libfreebl3
 Network Security Services (NSS) is a set of libraries designed to
@@ -157,20 +158,12 @@ certificates, and other security standards.
 
 This package installs the freebl library from NSS.
 
-%package -n libfreebl3-hmac
-Summary:        Freebl library checksums for the Network Security Services
-Group:          System/Libraries
-Requires:       libfreebl3 = %{version}-%{release}
-
-%description -n libfreebl3-hmac
-Checksums for libraries contained in the libfreebl3 package
-used in the FIPS 140-2 mode.
-
 %package -n libsoftokn3
 Summary:        Network Security Services Softoken Module
 Group:          System/Libraries
 Requires:       libfreebl3 = %{version}-%{release}
-Recommends:     libsoftokn3-hmac = %{version}-%{release}
+Provides:       libsoftokn3-hmac = %{version}-%{release}
+Obsoletes:      libsoftokn3-hmac < %{version}-%{release}
 
 %description -n libsoftokn3
 Network Security Services (NSS) is a set of libraries designed to
@@ -180,15 +173,6 @@ TLS v1.0, v1.1, v1.2, PKCS #5, PKCS #7, PKCS #11, PKCS #12, S/MIME, X.509 v3
 certificates, and other security standards.
 
 Network Security Services Softoken Cryptographic Module
-
-%package -n libsoftokn3-hmac
-Summary:        Network Security Services Softoken Module checksums
-Group:          System/Libraries
-Requires:       libsoftokn3 = %{version}-%{release}
-
-%description -n libsoftokn3-hmac
-Checksums for libraries contained in the libsoftokn3 package
-used in the FIPS 140-2 mode.
 
 %package certs
 Summary:        CA certificates for NSS
@@ -490,16 +474,12 @@ fi
 %files -n libfreebl3
 %{_libdir}/libfreebl3.so
 %{_libdir}/libfreeblpriv3.so
-
-%files -n libfreebl3-hmac
 %{_libdir}/libfreebl3.chk
 %{_libdir}/libfreeblpriv3.chk
 
 %files -n libsoftokn3
 %{_libdir}/libsoftokn3.so
 %{_libdir}/libnssdbm3.so
-
-%files -n libsoftokn3-hmac
 %{_libdir}/libsoftokn3.chk
 %{_libdir}/libnssdbm3.chk
 

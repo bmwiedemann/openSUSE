@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  9 10:41:35 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Merge the libfreebl3-hmac and libsoftokn3-hmac packages
+  into the respective libraries. [bsc#1185116]
+
+-------------------------------------------------------------------
 Sat Jun  3 08:20:40 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.89.1
