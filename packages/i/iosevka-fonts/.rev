@@ -1238,4 +1238,12 @@
 </comment>
     <requestid>1089325</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>8e0e67cf64a1ba185dbde5a38d2e6dfd</srcmd5>
+    <version>24.1.1</version>
+    <time>1686506117</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1091998</requestid>
+  </revision>
 </revisionlist>
