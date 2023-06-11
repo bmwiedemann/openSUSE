@@ -3639,4 +3639,12 @@ list of changes.</comment>
     <comment></comment>
     <requestid>1076438</requestid>
   </revision>
+  <revision rev="296" vrev="1">
+    <srcmd5>dcf907f73a0775bb8bd05d7a617a1528</srcmd5>
+    <version>4.18.3+git.303.c08b73d523c</version>
+    <time>1686505952</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1091722</requestid>
+  </revision>
 </revisionlist>

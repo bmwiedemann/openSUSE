@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Jun  1 08:48:25 UTC 2023 - Noel Power <nopower@suse.com>
+
+- Update to 4.18.3
+  * Symlinks to files can have random DOS mode information in a
+    directory listing; (bso#15375).
+  * vfs_fruit might cause a failing open for delete; (bso#15378).
+  * winbind recurses into itself via rpcd_lsad; (bso#15361).
+  * wbinfo -u fails on ad dc with >1000 users; (bso#15366).
+  * DS ACEs might be inherited to unrelated object classes;
+    (bso#15338).
+  * a lot of messages: get_static_share_mode_data:
+    get_static_share_mode_data_fn failed: NT_STATUS_NOT_FOUND;
+    (bso#15362).
+  * aes256 smb3 encryption algorithms are not allowed in
+    smb3_sid_parse(); (bso#15374).
+  * Setting veto files = /.*/ break listing directories;
+    (bso#15360).
+  * "samba-tool domain provision" does not run interactive mode
+    if no arguments are given; (bso#15363).
+  * dsgetdcname: assumes local system uses IPv4; (bso#15325).
+
+- Update to 4.18.2
+  * Log flood: smbd_calculate_access_mask_fsp: Access denied:
+    message level should be lower; (bso#15302).
+  * Floating point exception (FPE) via cli_pull_send at
+    source3/libsmb/clireadwrite.c; (bso#15306).
+  * test_tstream_more_tcp_user_timeout_spin fails intermittently
+    on Rackspace GitLab runners; (bso#15328).
+  * Reduce flapping of ridalloc test; (bso#15329).
+  * large_ldap test is unreliable; (bso#15351).
+  * New filename parser doesn't check veto files smb.conf
+    parameter; (bso#15143).
+  * mdssvc may crash when initializing; (bso#15354).
+  * large directory optimization broken for non-lcomp path
+    elements; (bso#15313).
+  * streams_depot fails to create streams; (bso#15357).
+  * shadow_copy2 and streams_depot don't play well together;
+    (bso#15358).
+  * Flapping tests in samba_tool_drs_show_repl.py; (bso#15316).
+  * winbindd idmap child contacts the domain controller without a
+    need; (bso#15317).
+  * idmap_autorid may fail to map sids of trusted domains for the
+    first time; (bso#15318).
+  * idmap_hash doesn't use ID_TYPE_BOTH for reverse mappings;
+    (bso#15319).
+  * net ads search -P doesn't work against servers in other
+    domains; (bso#15323).
+  * Temporary smbXsrv_tcon_global.tdb can't be parsed;
+    (bso#15353).
+  * Tests use depricated and removed methods like
+    assertRegexpMatches; (bso#15343).
+
+-------------------------------------------------------------------
 Wed Mar 29 15:10:50 UTC 2023 - Noel Power <nopower@suse.com>
 
 - Update to 4.18.1
