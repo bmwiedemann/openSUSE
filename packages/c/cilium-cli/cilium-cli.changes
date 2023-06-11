@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Jun 02 04:49:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.14.6:
+  * README.md: update Cilium version in examples to latest stable
+    releases
+  * ci: update Cilium version to v1.13.3
+  * defaults: install Cilium v1.13.3 by default
+  * multicluster tests: simplify secret rename logic
+  * chore(deps): update aws-actions/configure-aws-credentials
+    action to v2.1.0
+  * fix(deps): pin dependencies
+  * ci/workflow: simplify junit uploads
+  * gh/workflow: change multicluster provisioning to none blocking
+    mode
+  * fix(deps): update module github.com/stretchr/testify to v1.8.4
+  * connectivity/check: store metrics by pointer in
+    TestMetricsIncrease
+  * install: Do not use individual HelmOpts
+  * install: Add native datapath mode
+  * connectivity: Add sanity check for IP routes w/o
+    --include-unsafe-tests
+  * connectivity: add full egress gateway test suite
+  * check: delete CiliumEgressGatewayPolicies after test run
+  * check: add NodeportService wrapper
+  * chore(deps): update docker.io/coredns/coredns docker tag to
+    v1.10.1
+  * Makefile: fix golangci-lint renovate datasource tag annotation
+
+-------------------------------------------------------------------
 Sat May 27 10:46:49 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.14.5:
