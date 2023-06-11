@@ -156,4 +156,12 @@
 - Drop 1441bec703cf68161acce5e85907ddd71c47fdc3.patch</comment>
     <requestid>1072758</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>48060f526480907a7c66709f0fb4d9da</srcmd5>
+    <version>2.6.0</version>
+    <time>1686506149</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build: Add libcurl dependency</comment>
+    <requestid>1092080</requestid>
+  </revision>
 </revisionlist>

@@ -34,6 +34,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  tesseract-ocr-traineddata-english
 BuildRequires:  tesseract-ocr-traineddata-orientation_and_script_detection
+BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(tesseract)
 Requires:       tesseract-ocr-traineddata-english
 Requires:       tesseract-ocr-traineddata-orientation_and_script_detection
