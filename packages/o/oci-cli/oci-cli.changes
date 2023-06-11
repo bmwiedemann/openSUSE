@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Jun  6 10:18:59 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.28.2
+  * Support for adding and removing Kafka in the Big Data service
+    * ``oci bds kafka add``
+    * ``oci bds kafka remove``
+  * Support for obtaining compute capacity report in Core services
+    * ``oci compute compute-capacity-report``
+  * Support for enabling and disabling MySQL HeatWave Lakehouse in the Mysql Database service
+    * ``oci mysql db-system heatwave-cluster add --is-lakehouse-enabled``
+    * ``oci mysql db-system heatwave-cluster update --is-lakehouse-enabled``
+  * Support for adding, creating, and removing migration with csvText in the Database Migration service
+    * ``oci database-migration migration add --csv-text``
+    * ``oci database-migration migration create --csv-text``
+    * ``oci database-migration migration remove --csv-text``
+- from version 3.28.1
+  * File Storage service
+    * Support for new policy-based snapshots commands
+      * ``oci fs filesystem-snapshot-policy``
+    * Support for optional parameters to file-system and snapshot
+      * ``oci fs file-system create --filesystem-snapshot-policy-id``
+      * ``oci fs file-system list  --filesystem-snapshot-policy-id``
+      * ``oci fs file-system update --filesystem-snapshot-policy-id``
+      * ``oci fs snapshot create --expiration-time``
+      * ``oci fs snapshot update --expiration-time``
+      * ``oci fs snapshot list --compartment-id --filesystem-snapshot-policy-id``
+  * Support for creating and updating a VM Cluster network with DR network support in the Database service
+    * ``oci db exadata-infrastructure-network create --dr-scan-details``
+    * ``oci db exadata-infrastructure-network update --dr-scan-details``
+  * Support for optional parameter to indicate a dashboard is shared in the Management Dashboard services
+    * ``oci management-dashboard dashboard create --features-config``
+    * ``oci management-dashboard dashboard update --features-config``
+    * ``oci management-dashboard saved-search create --features-config``
+    * ``oci management-dashboard saved-search update --features-config``
+  * Required parameter --file-system-id is now optional for below command in the File Storage service
+    * ``oci fs snapshot list --file-system-id``
+- Refresh patches for new version
+  * oc_relax-python-depends.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Thu May 25 08:20:30 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.28.0
