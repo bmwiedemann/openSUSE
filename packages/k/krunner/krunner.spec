@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           krunner
-Version:        5.106.0
+Version:        5.107.0
 Release:        0
 Summary:        KDE Framework for providing different actions given a string query
 License:        LGPL-2.1-or-later
