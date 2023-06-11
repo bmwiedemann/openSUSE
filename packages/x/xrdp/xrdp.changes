@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  6 14:19:55 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not call %stop_on_removal and %restart_on_update in
+  %preun/%postun: those macros would require at least some
+  %parameters and actually are the same as the already used
+  %%service_del_preun and %service_del_postun.
+
+-------------------------------------------------------------------
 Wed Mar  8 07:06:01 UTC 2023 - Yifan Jiang <yfjiang@suse.com>
 
 - Enable --with-pamconfdir=/usr/lib/pam.d on Tumbleweed

@@ -419,4 +419,12 @@
 - Drop xrdp-fix-search-pam-vendor-dir.patch</comment>
     <requestid>1070579</requestid>
   </revision>
+  <revision rev="52" vrev="8">
+    <srcmd5>f00c30ade4a9019bc07c3a5a52848455</srcmd5>
+    <version>0.9.20</version>
+    <time>1686506140</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092068</requestid>
+  </revision>
 </revisionlist>

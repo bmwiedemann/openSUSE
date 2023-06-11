@@ -211,7 +211,6 @@ fi
 exit 0
 
 %preun
-%stop_on_removal
 %service_del_preun xrdp.service
 %service_del_preun xrdp-sesman.service
 
@@ -219,7 +218,6 @@ exit 0
 /sbin/ldconfig
 %service_del_postun xrdp.service
 %service_del_postun xrdp-sesman.service
-%restart_on_update
 
 %post -n libpainter0 -p /sbin/ldconfig
 
