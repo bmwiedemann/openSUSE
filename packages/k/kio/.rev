@@ -1195,4 +1195,12 @@ I'd vote for Leap 15.0 as well... (forwarded request 604374 from wolfi323)</comm
     <comment>KDE Frameworks 5.106.0 (forwarded request 1086550 from krop)</comment>
     <requestid>1086935</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>cadc5028a51acc3d573046b9fd89ec76</srcmd5>
+    <version>5.107.0</version>
+    <time>1686506001</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.107.0 (forwarded request 1091205 from krop)</comment>
+    <requestid>1091928</requestid>
+  </revision>
 </revisionlist>
