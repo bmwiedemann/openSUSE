@@ -21,6 +21,7 @@
 # tests fail on python2 on Leap 15.3 and SLE 15 SP3
 %define skip_python2 1
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-click-plugins
 Version:        1.1.1
 Release:        0
