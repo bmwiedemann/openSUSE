@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 11 13:26:40 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon May 29 15:38:50 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add sqlalchemy-2.0.patch to support latest version of sqlalchemy.

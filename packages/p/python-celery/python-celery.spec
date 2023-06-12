@@ -26,6 +26,7 @@
 %bcond_with test
 %endif
 %bcond_with ringdisabled
+%{?sle15_python_module_pythons}
 Name:           python-celery%{psuffix}
 Version:        5.2.7
 Release:        0
