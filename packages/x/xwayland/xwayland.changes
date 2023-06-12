@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 10 11:23:26 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 23.1.2
+  * This release includes improved DMA-BUF v4 feedback support for
+    direct scanout, relaxed CVT modes for non-standard modes, fixes
+    for the CHERI/Morello platform and other various fixes.
+
+-------------------------------------------------------------------
 Sat Apr  1 11:35:04 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 23.1.1 (CVE-2023-1393):

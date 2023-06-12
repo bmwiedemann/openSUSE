@@ -293,4 +293,15 @@
     <comment></comment>
     <requestid>1076662</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>754d6c6ef91f823a0551b66f9a45b707</srcmd5>
+    <version>23.1.2</version>
+    <time>1686576305</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 23.1.2
+  * This release includes improved DMA-BUF v4 feedback support for
+    direct scanout, relaxed CVT modes for non-standard modes, fixes
+    for the CHERI/Morello platform and other various fixes.</comment>
+    <requestid>1091980</requestid>
+  </revision>
 </revisionlist>

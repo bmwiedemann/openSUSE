@@ -24,7 +24,7 @@
 %endif
 
 Name:           xwayland
-Version:        23.1.1
+Version:        23.1.2
 Release:        0
 URL:            http://xorg.freedesktop.org
 Summary:        Xwayland Xserver
