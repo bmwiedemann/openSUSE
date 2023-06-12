@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun 10 09:20:42 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Fix build error.
+
+-------------------------------------------------------------------
+Thu Jun  1 20:38:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- use python3 module python for sle15 
+
+-------------------------------------------------------------------
 Tue May  9 21:30:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.11.1:

@@ -123,4 +123,12 @@
   * Fixed ``EncodingWarnings`` when reading/writing text.</comment>
     <requestid>1085844</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>2be52ac77e62678c2a03f0bdb3033ec3</srcmd5>
+    <version>3.11.1</version>
+    <time>1686576323</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092043</requestid>
+  </revision>
 </revisionlist>

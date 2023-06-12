@@ -16,7 +16,7 @@
 #
 
 
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-jaraco.text
 Version:        3.11.1
 Release:        0
@@ -78,6 +78,6 @@ fi
 %license LICENSE
 %doc README.rst CHANGES.rst
 %{python_sitelib}/jaraco/text
-%{python_sitelib}/jaraco.text-%{version}*-info
+%{python_sitelib}/jaraco.text-%{version}.dist-info
 
 %changelog
