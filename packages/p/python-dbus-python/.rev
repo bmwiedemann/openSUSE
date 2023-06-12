@@ -138,4 +138,12 @@
   - distutils.util → sysconfig</comment>
     <requestid>1046284</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>88261fdd56023565fba13da6675c913b</srcmd5>
+    <version>1.3.2</version>
+    <time>1686576288</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092261</requestid>
+  </revision>
 </revisionlist>

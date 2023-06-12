@@ -19,6 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 # expand separate from Provides/Obsoletes tags, because these are later duplicated by the python_subpackages macro
 %define python_add_provides %{python_provides}
+%{?sle15_python_module_pythons}
 Name:           python-dbus-python
 Version:        1.3.2
 Release:        0
