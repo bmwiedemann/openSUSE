@@ -81,4 +81,12 @@
   * U_0003-egl-wayland-retrieve-DRM-device-name-before-acquirin.patch</comment>
     <requestid>1033618</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>21a247dde79fbd81ac4d44c957195ce8</srcmd5>
+    <version>1.1.12</version>
+    <time>1686576301</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1091878</requestid>
+  </revision>
 </revisionlist>

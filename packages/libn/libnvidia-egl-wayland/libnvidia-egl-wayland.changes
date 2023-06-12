@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 10 00:14:24 UTC 2023 - Nicola Pellegrini <xbb.7khj8@8shield.net>
+
+- update to version 1.1.12
+  * Added support for version 4 of the Linux DMA-BUF protocol
+  * Added support for EGL_EXT_explicit_device extension
+
+-------------------------------------------------------------------
 Fri Nov  4 19:38:35 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to version 1.1.11
