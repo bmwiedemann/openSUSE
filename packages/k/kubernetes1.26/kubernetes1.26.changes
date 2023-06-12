@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Jun 12 05:04:12 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update BuildRequires:  `go >= 1.19.9`
+- Update to version 1.26.5:
+  * Release commit for Kubernetes v1.26.5
+  * benchmark test to evaluate the overhead of podMatchesScopeFunc
+  * Fix incorrect calculation for ResourceQuota with PriorityClass as its scope
+  * Update podFailurePolicy comments from alpha-level to beta
+  * releng/go: Update images, dependencies and version to Go 1.19.9
+  * Kube-proxy/ipvs: accept access to healthCheckNodePort on LbIP
+  * node: device-plugin: e2e: Additional test cases
+  * node: device-plugin: add node reboot test scenario
+  * node: device-plugin: e2e: Capture pod admission failure
+  * node: device-mgr: e2e: adapt to sample device plugin refactoring
+  * node: device-mgr: e2e: Update the e2e test to reproduce issue:109595
+  * node: device-mgr: e2e: Implement End to end test
+  * node: device-mgr: Handle recovery by checking if healthy devices exist
+  * node: device-plugin: e2e: Add test case for kubelet restart
+  * node: device-plugin: e2e: Provide sleep intervals via constants
+  * node: device-plugin: e2e: Update test description to make it explicit
+  * node: device-plugin: e2e: Isolate test to pod restart scenario
+  * node: device-plugin: e2e: Annotate device check with error message
+  * node: device-plugins: e2e: s/devLen/expectedSampleDevsAmount
+  * node: device-plugins: e2e: Refactor parse log to return string and error
+  * test: Fix path to e2e node sample device plugin
+  * node: device-mgr: sample device plugin: manifest to avoid registration
+  * node: device-mgr: sample device plugin: control registration process
+  * e2e: node: unify sample device plugin utilities
+  * Bump runc go module v1.1.4 -> v1.1.6
+  * Use absolute path instead requestURI in openapiv3 discovery
+  * Correct the changelog for GlusterFS removal in 1.26.
+  * Refactors discovery content-type and helper functions
+  * Fix directory mismatch for `volume.SetVolumeOwnership()`
+  * Investigate and fix the handling of Succeeded pods in DaemonSet
+  * KCCM: add providerID predicate to service controller
+  * add log includes pod preemption details
+  * fix: the volume is not detached after the pod and PVC objects are deleted
+  * use case-insensitive header keys for http probes
+  * kube-aggregator: correctly use client-go TLS cache with custom dialer
+  * Do not look at VPC-related resources outside the cluster's network
+  * Bump konnectivity-client to 0.0.37
+  * kubelet: Do not mutate pods in the pod manager
+  * Fix azure disk e2e after migration
+  * Return error for localhost seccomp type with no localhost profile defined
+  * Bump the timeout for volume expansion
+  * Wait for pod to be running before expanding
+
+-------------------------------------------------------------------
 Thu Apr 13 11:02:02 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.26.4:
