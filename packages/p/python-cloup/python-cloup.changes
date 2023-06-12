@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 11 11:49:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.1:
+  * Fix usage styling: the `heading` style was mistakenly applied
+    to the space after "Usage:". This was a problem when using
+    underlined headings: the space got underlined too. (fixed
+  * Full Changelog
+    https://github.com/janluke/cloup/compare/v2.1.0...v2.1.1
+
+-------------------------------------------------------------------
 Mon May 15 10:05:34 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Restore summary noun phrase.

@@ -15,4 +15,17 @@
     <comment></comment>
     <requestid>1087197</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ab13e6b427ddcf947ad641ca94a03ffd</srcmd5>
+    <version>2.1.1</version>
+    <time>1686576357</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.1:
+  * Fix usage styling: the `heading` style was mistakenly applied
+    to the space after &quot;Usage:&quot;. This was a problem when using
+    underlined headings: the space got underlined too. (fixed
+  * Full Changelog
+    https://github.com/janluke/cloup/compare/v2.1.0...v2.1.1</comment>
+    <requestid>1092273</requestid>
+  </revision>
 </revisionlist>
