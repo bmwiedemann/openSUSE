@@ -638,4 +638,12 @@ Thu May 29 20:49:46 UTC 2014 - hrvoje.senjan@gmail.com
     Qt module is built after everything it depends on.</comment>
     <requestid>1063978</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>b0a20a0e8476e3e5efc5bfbf91cf85ff</srcmd5>
+    <version>5.15.9</version>
+    <time>1686576296</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092340</requestid>
+  </revision>
 </revisionlist>

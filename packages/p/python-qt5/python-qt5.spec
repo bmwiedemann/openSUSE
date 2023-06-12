@@ -28,6 +28,7 @@ ExclusiveArch:  do_not_build
 
 %define oldpython python
 %define mname qt5
+%{?sle15_python_module_pythons}
 Name:           python-%{mname}
 Version:        5.15.9
 Release:        0
