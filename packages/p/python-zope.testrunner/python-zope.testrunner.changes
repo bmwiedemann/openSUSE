@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  9 12:39:26 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Apr  3 09:15:42 UTC 2023 - pgajdos@suse.com
 
 - version update to 6.0
