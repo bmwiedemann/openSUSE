@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-setuptools-gettext
 Version:        0.1.1
 Release:        0
