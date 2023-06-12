@@ -29,8 +29,12 @@
 %else
 %bcond_with libalternatives
 %endif
+# avoid rewriting
+%define python3dist python3dist
+# 7.4.0 gets abbreviated by pythondistdeps
+%define shortversion 7.4
 Name:           python-nbconvert%{psuffix}
-Version:        7.3.1
+Version:        7.4.0
 Release:        0
 Summary:        Conversion of Jupyter Notebooks
 License:        BSD-3-Clause AND MIT
@@ -51,7 +55,6 @@ Requires:       python-bleach
 Requires:       python-defusedxml
 Requires:       python-jupyter-core >= 4.7
 Requires:       python-jupyterlab-pygments
-Requires:       python-lxml
 Requires:       python-nbclient >= 0.5
 Requires:       python-nbformat >= 5.1
 Requires:       python-packaging
@@ -94,7 +97,7 @@ This package provides the python interface.
 Summary:        Conversion of Jupyter Notebooks
 Requires:       jupyter-ipykernel
 Requires:       jupyter-jupyter-core
-Requires:       python3-nbconvert = %{version}
+Requires:       %python3dist(nbconvert) = %{shortversion}
 Conflicts:      python3-jupyter_nbconvert < 5.5.0
 
 %description -n jupyter-nbconvert
@@ -111,9 +114,6 @@ Requires:       texlive-makeindex
 Requires:       tex(adjustbox.sty)
 Requires:       tex(eurosym.sty)
 Requires:       tex(ulem.sty)
-Provides:       %{python_module jupyter_nbconvert-latex = %{version}}
-Provides:       %{python_module nbconvert-latex = %{version}}
-Obsoletes:      %{python_module jupyter_nbconvert-latex < %{version}}
 
 %description -n jupyter-nbconvert-latex
 The jupyter nbconvert package converts notebooks to various other formats
@@ -149,8 +149,6 @@ export LANG=en_US.UTF-8
 export PYTHONDONTWRITEBYTECODE=1
 # requires modules not installed: https://github.com/jupyter/nbconvert/issues/1846
 donttest="test_convert_full_qualified_name or test_post_processor"
-# https://github.com/jupyter/nbconvert/pull/1985
-donttest+=" or test_errors_print_traceback"
 %{python_expand # installed package in :test flavor
 $python -m ipykernel.kernelspec --user
 pytest-%{$python_bin_suffix} -v -m 'not network' -k "not ($donttest)" --pyargs nbconvert

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 11 20:00:15 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.4.0
+  * Add ExtractAttachmentsPreprocessor #1978 (@tuncbkose)
+  * Moved ensure_dir_exists to FilesWriter #1987 (@tuncbkose)
+  * Tweak exporter default_config merging behavior #1981
+    (@tuncbkose)
+  * Revert unintended effects of #1966 #1974 (@tuncbkose)
+
+-------------------------------------------------------------------
 Mon May  1 19:09:03 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Skip a test broken by ipython 8.13
