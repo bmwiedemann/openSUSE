@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-kombu
 Version:        5.2.4
 Release:        0

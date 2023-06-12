@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 11 13:48:39 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon May 29 07:15:15 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add 0001-Support-redis-4.5.2.patch to support latest version of
