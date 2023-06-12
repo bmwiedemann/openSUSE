@@ -1,8 +1,7 @@
 #
 # spec file for package vagrant
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Laurent Bigonville <bigon@debian.org>, License GPL-2.0+
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,7 +25,7 @@
 
 
 Name:           vagrant
-Version:        2.3.4
+Version:        2.3.6
 Release:        0
 Summary:        Tool for building and distributing virtualized development environments
 License:        MIT
@@ -58,8 +57,6 @@ Patch7:         0007-Don-t-abuse-relative-paths-in-plugins.patch
 Patch8:         0008-Skip-failing-tests.patch
 Patch9:         0009-Disable-Subprocess-unit-test.patch
 Patch10:        0010-Remove-dependency-on-grpc-tools.patch
-Patch11:        0011-Bump-Ruby-version-to-3.x.patch
-Patch12:        0012-Only-check-for-arguments-matching-test-string-if-the.patch
 
 # force only one ruby version
 # CAUTION: if you change this, then you *must* also change the sed calls which
@@ -79,11 +76,11 @@ Patch12:        0012-Only-check-for-arguments-matching-test-string-if-the.patch
 # Build dependencies
 #===============================================================================
 
-#  s.required_ruby_version     = ">= 2.7", "< 3.3"
+#  s.required_ruby_version     = ">= 3.0", "< 3.3"
 %if 0%{?suse_version} > 1500
 BuildRequires:  %{ruby} < 3.3
 %else
-BuildRequires:  %{ruby} >= 2.7
+BuildRequires:  %{ruby} >= 3.0
 %endif
 #
 #
@@ -124,8 +121,8 @@ BuildRequires:  %{rubygem net-scp:4 }
 BuildRequires:  %{rubygem rb-kqueue:0.2 }
 #  s.add_dependency "rexml", "~> 3.2"
 BuildRequires:  %{rubygem rexml:3 >= 3.2 }
-#  s.add_dependency "rgl", "~> 0.5.7"
-BuildRequires:  %{rubygem rgl:0.5 >= 0.5.7}
+#  s.add_dependency "rgl", "~> 0.5.10"
+BuildRequires:  %{rubygem rgl:0.5 >= 0.5.10}
 #  s.add_dependency "rubyzip", "~> 2.0"
 BuildRequires:  %{rubygem rubyzip:2}
 # Intentionally removed, wdm only works on Windows
@@ -218,8 +215,8 @@ Requires:       %{rubygem net-scp:4 }
 Requires:       %{rubygem rb-kqueue:0.2}
 #  s.add_dependency "rexml", "~> 3.2"
 Requires:       %{rubygem rexml:3 >= 3.2 }
-#  s.add_dependency "rgl", "~> 0.5.7"
-Requires:       %{rubygem rgl:0.5 >= 0.5.7}
+#  s.add_dependency "rgl", "~> 0.5.10"
+Requires:       %{rubygem rgl:0.5 >= 0.5.10}
 #  s.add_dependency "rubyzip", "~> 2.0"
 Requires:       %{rubygem rubyzip:2}
 #   s.add_dependency "wdm", "~> 0.1.0"
@@ -239,6 +236,7 @@ Requires:       curl
 Requires:       openssh
 # for groupadd
 Requires(pre):  shadow
+BuildArch:      noarch
 
 %description
 Vagrant is a tool for building and distributing virtualized development
@@ -462,6 +460,7 @@ getent group vagrant >/dev/null || groupadd -r vagrant
 %{vagrant_dir}/lib/*
 %{vagrant_dir}/plugins/*
 %{vagrant_dir}/templates/*
+%{vagrant_dir}/tools.go
 
 # these are scripts for Hashicorp
 %exclude %{vagrant_dir}/scripts/*

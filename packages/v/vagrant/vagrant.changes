@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue May 30 07:53:25 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+
+- Updated to 2.3.6
+  * https://github.com/hashicorp/vagrant/blob/main/CHANGELOG.md#236-may-19-2023
+  * command/serve: Isolate proto constants to file for auto-loading
+  * core/util: Unlock file prior to deletion
+  * provider/docker: Attempt using docker command for bridge ip
+  * provider/virtualbox: Update preferred locale values for driver
+- Updated to 2.3.5
+  * Changed file 0005-do-not-depend-on-wdm.patch.
+  * Changed file 0010-Remove-dependency-on-grpc-tools.patch.
+  * Removed file 0011-Bump-Ruby-version-to-3.x.patch.
+  * Removed file 0012-Only-check-for-arguments-matching-test-string-if-the.patch.
+  * https://github.com/hashicorp/vagrant/blob/main/CHANGELOG.md#235-may-15-2023
+  * communicator/ssh: Use netssh builtin keep alive functionality
+  * communicator/ssh: Update connection settings when using a password to connect ssh
+  * core: Add a file mutex when downloading box files
+  * guest/arch: Support differentiating between Artix and Arch Linux
+  * host/windows: Get state of Windows feature "Microsoft-Hyper-V-Hypervisor"
+  * provider/docker: Ignore inactive docker containers when assigning ports
+  * provider/docker: Sync folders before preparing nfs settings
+  * provider/virtualbox: De-duplicate machine port forward info
+  * provider/virtualbox: Remove check for hyperv being enabled when verifying virtualbox is usable on windows
+  * provider/virtualbox: Validate LANG value when possible
+  * provider/hyperv: Check for hyper-v feature "EnhancedSessionTransportType"
+  * provisioner/ansible: Fix installing Ansible provisioner with version and pip
+  * synced_folders/rsync: allow rsync-auto to also ignore relative paths
+
+-------------------------------------------------------------------
 Wed Feb 22 15:57:11 UTC 2023 - Dan Čermák <dcermak@suse.com>
 
 - Add missing Requires(pre): shadow
@@ -2084,4 +2113,3 @@ Tue Sep  1 16:57:52 UTC 2015 - mrueckert@suse.de
 Tue Sep  1 15:27:22 UTC 2015 - mrueckert@suse.de
 
 - 1.7.4
-
