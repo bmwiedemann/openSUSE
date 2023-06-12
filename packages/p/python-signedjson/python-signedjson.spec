@@ -18,6 +18,7 @@
 
 %global modname signedjson
 %bcond_without python2
+%{?sle15_python_module_pythons}
 Name:           python-%{modname}
 Version:        1.1.4
 Release:        0
