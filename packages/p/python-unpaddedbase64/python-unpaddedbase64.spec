@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 %define         short_name unpaddedbase64
 Name:           python-%{short_name}
 Version:        2.1.0

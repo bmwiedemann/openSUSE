@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 11 14:10:35 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Wed Feb 16 16:15:17 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Update to 2.1.0:
