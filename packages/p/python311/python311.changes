@@ -154,7 +154,8 @@ Tue Jan 24 12:23:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 Tue Jan 10 11:11:56 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Don't fail on Sphinx build warnings.
-- For jsc#PED-1570, providing Python 3.11 for SLE-15-SP5.
+- For jsc#PED-1570, jsc#PED-2217 and jsc#PED-68,
+  providing Python 3.11 for SLE-15-SP4.
 
 -------------------------------------------------------------------
 Thu Dec  8 14:59:50 UTC 2022 - Matej Cepl <mcepl@suse.com>
