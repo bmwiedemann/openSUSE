@@ -7,4 +7,12 @@
     <comment>New package - kubernetes1.27 (v1.27.1)</comment>
     <requestid>1083382</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dc034a9dcfa703de1867aeedda0c93d0</srcmd5>
+    <version>1.27.2</version>
+    <time>1686576425</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092439</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Mon Jun 12 05:12:03 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update: `BuildRequires:  go >= 1.20.4`
+- Update to version 1.27.2:
+  * Release commit for Kubernetes v1.27.2
+  * OpenAPI V3 invalid document checks
+  * QueryParamVerifier falls back on invalid v3 document
+  * QueryParamVerifierV3 resilient to minimal OpenAPI V3 documents
+  * kubeadm: fix a bug where file copy(backup) could not be executed correctly on Windows platform during upgrade
+  * benchmark test to evaluate the overhead of podMatchesScopeFunc
+  * Fix incorrect calculation for ResourceQuota with PriorityClass as its scope
+  * Update podFailurePolicy comments from alpha-level to beta
+  * Disable NewVolumeManagerReconstruction feature gate
+  * releng/go: Update images, dependencies and version to Go 1.20.4
+  * Bump konnectivity-client to v0.1.2
+  * Kube-proxy/ipvs: accept access to healthCheckNodePort on LbIP
+  * node: device-plugin: e2e: Additional test cases
+  * node: device-plugin: add node reboot test scenario
+  * node: device-plugin: e2e: Capture pod admission failure
+  * node: device-mgr: e2e: adapt to sample device plugin refactoring
+  * node: device-mgr: e2e: Update the e2e test to reproduce issue:109595
+  * node: device-mgr: e2e: Implement End to end test
+  * node: device-mgr: Handle recovery by checking if healthy devices exist
+  * node: device-plugin: e2e: Add test case for kubelet restart
+  * node: device-plugin: e2e: Provide sleep intervals via constants
+  * node: device-plugin: e2e: Update test description to make it explicit
+  * node: device-plugin: e2e: Isolate test to pod restart scenario
+  * node: device-plugin: e2e: Annotate device check with error message
+  * node: device-plugins: e2e: s/devLen/expectedSampleDevsAmount
+  * node: device-plugins: e2e: Refactor parse log to return string and error
+  * Update kube-openapi to fix race
+  * Use absolute path instead requestURI in openapiv3 discovery
+  * proxy/ipvs: don't bind nodeips to the dummy device
+  * proxy/ipvs: add a GetAllLocalAddressesExcept() function
+  * Refactors discovery content-type and helper functions
+  * Fix scheduler performance regression after adding plugin metrics
+  * Update staging/src/k8s.io/apiserver/pkg/cel/common/values.go
+  * Fix bug where CEL listOfString.join() results in unexpected error
+  * Fix directory mismatch for `volume.SetVolumeOwnership()`
+  * Fix stomping os env in kubectl e2e tests
+  * KCCM: add providerID predicate to service controller
+  * Re-work logic in shouldSyncUpdatedNode
+  * add log includes pod preemption details
+  * verifyVolumeNoStatusUpdateNeeded may cause flake and so only keep the last ones
+  * deflake: Add retry with timeout to wait for final conditions
+  * kubelet: Mark new terminal pods as non-finished in pod worker
+  * test: Add node e2e to restart kubelet while pod is terminating
+  * kubelet: Ensure pods that have not started track a pendingUpdate
+  * changelog: fix formatting issue with v1.27 change log
+  * Update CHANGELOG/CHANGELOG-1.27.md for v1.27.1
+  * use case-insensitive header keys for http probes
+  * kube-aggregator: correctly use client-go TLS cache with custom dialer
+  * api: encode NamespacedName with lower case in JSON
+  * Do not look at VPC-related resources outside the cluster's network
+  * Fix azure disk e2e after migration
+  * vendor: bump runc to 1.1.6
+  * CVE-2023-27561: Bump runc go module v1.1.4 -> v1.1.5
+  * fix: the volume is not detached after the pod and PVC objects are deleted
+  * Return error for localhost seccomp type with no localhost profile defined
+
+-------------------------------------------------------------------
 Fri Apr 28 05:03:52 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update `Requires` in the "kubernetes1.27-client" pkg to:
