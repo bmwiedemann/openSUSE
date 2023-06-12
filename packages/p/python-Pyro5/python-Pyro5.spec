@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-Pyro5
 Version:        5.14
 Release:        0
