@@ -111,4 +111,12 @@
     <comment></comment>
     <requestid>967539</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>15767e6342fd3b1e8595d36b5e434251</srcmd5>
+    <version>1.13.0</version>
+    <time>1686576371</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1092366</requestid>
+  </revision>
 </revisionlist>

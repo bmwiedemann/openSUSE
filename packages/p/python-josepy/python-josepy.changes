@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 11 14:32:17 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Apr  7 07:20:14 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.13.0
