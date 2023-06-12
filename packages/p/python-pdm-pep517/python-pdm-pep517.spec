@@ -25,6 +25,7 @@
 %bcond_with test
 %endif
 
+%{?sle15_python_module_pythons}
 Name:           python-pdm-pep517%{psuffix}
 Version:        1.1.2
 Release:        0
