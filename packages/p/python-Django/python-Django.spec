@@ -21,6 +21,7 @@
 # Selenium and memcached are not operational
 %bcond_with selenium
 %bcond_with memcached
+%{?sle15_python_module_pythons}
 Name:           python-Django
 # We want support LTS versions of Django -  numbered 2.2 -> 3.2 -> 4.2 etc
 Version:        4.2.2
