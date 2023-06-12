@@ -220,4 +220,12 @@
   * python 3.8-3.10 support</comment>
     <requestid>965075</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>40d5fb4ae7f24ef0f3acad00564edf69</srcmd5>
+    <version>3.1.6</version>
+    <time>1686576348</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092242</requestid>
+  </revision>
 </revisionlist>

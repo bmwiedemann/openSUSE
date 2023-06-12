@@ -26,6 +26,7 @@
 %bcond_with test
 %endif
 %define tarname PyOpenGL
+%{?sle15_python_module_pythons}
 Name:           python-opengl%{psuffix}
 Version:        3.1.6
 Release:        0
