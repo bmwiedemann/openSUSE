@@ -117,4 +117,12 @@
 - drop zope.exceptions-pr19+pr21-py310.patch (upstream)</comment>
     <requestid>1056694</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>7128608d36139f77298beba11f168239</srcmd5>
+    <version>4.6</version>
+    <time>1686576262</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092195</requestid>
+  </revision>
 </revisionlist>
