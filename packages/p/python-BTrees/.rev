@@ -149,4 +149,12 @@
   * Drop support for Python 2.7, 3.5, 3.6.</comment>
     <requestid>1066267</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>e86ec484faae4b8348af4b48b65f4af8</srcmd5>
+    <version>5.0</version>
+    <time>1686576256</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092070</requestid>
+  </revision>
 </revisionlist>
