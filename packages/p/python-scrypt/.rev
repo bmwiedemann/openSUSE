@@ -79,4 +79,12 @@
   * Fix #8 by adding missing gettimeofday.c to MANIFEST.in</comment>
     <requestid>980755</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>3ecf30a78ad405b4185f0286f80b1eac</srcmd5>
+    <version>0.8.20</version>
+    <time>1686576341</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092216</requestid>
+  </revision>
 </revisionlist>
