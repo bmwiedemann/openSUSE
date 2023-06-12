@@ -421,4 +421,12 @@
   - Use AF_UNSPEC for name resolution</comment>
     <requestid>980751</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>7d98ed2ff48dc7ab032f5b2aa2922b76</srcmd5>
+    <version>5.1.1</version>
+    <time>1686576378</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1092377</requestid>
+  </revision>
 </revisionlist>
