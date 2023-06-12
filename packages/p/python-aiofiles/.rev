@@ -53,4 +53,12 @@
     (vs ``asyncio.get_event_loop``) internally.</comment>
     <requestid>1067414</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d782d95d5b1e07a0766b1ff6ecf4a8a7</srcmd5>
+    <version>23.1.0</version>
+    <time>1686576386</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1092389</requestid>
+  </revision>
 </revisionlist>
