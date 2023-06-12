@@ -83,4 +83,12 @@
   * test_configure_extension: sorted expected</comment>
     <requestid>943954</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>cc6b37d37650432cc04c68b47b3966f5</srcmd5>
+    <version>1.5.5</version>
+    <time>1686576277</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1092233</requestid>
+  </revision>
 </revisionlist>
