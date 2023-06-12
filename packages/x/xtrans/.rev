@@ -139,4 +139,34 @@
   file (installed to /usr/share) (boo#1109895).</comment>
     <requestid>838722</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7b91325c800cdb224240674b190fb395</srcmd5>
+    <version>1.5.0</version>
+    <time>1686576302</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.0
+xtrans is a library of code that is shared among various X packages to handle
+network protocol transport in a modular fashion, allowing a single place to
+add new transport types - but it is *not* a shared library, more like a \
+&quot;header-only&quot; library.  It is used by the X server, the XIM support in libX11,
+libICE, the X font server, and related components.  Because this is not a
+shared library, the changes in this release will only take effect in consumers
+that are rebuilt on a system with this release of xtrans installed.
+This release makes progress towards resolving CVE-2020-25697, reported in
+https://www.openwall.com/lists/oss-security/2020/11/09/3 .  Clients will no
+longer attempt to connect to sockets in the abstract namespace, though
+servers will still bind to them to prevent other programs binding to those
+names to intercept connections from clients using libraries built with older
+versions of libxtrans or libxcb while the servers are running.  Clients can
+also now specify a full Unix domain socket pathname to connect to, instead
+of relying on built-in defaults under /tmp.  (Note that libX11 1.4.0 and later
+relies on libxcb for making connections instead of libxtrans, so X11 protocol
+clients will get this support in an upcoming release of libxcb, and the changes
+in xtrans will only affect clients of other protocols using libxtrans, such as
+XIM, ICE, SM, and the font service protocols.)
+This release also removes support for System V UNIX platforms other than
+Solaris and the illumos family - OS'es from SCO, AT&amp;T's Unix Systems Group,
+Novell, and NCR are no longer supported.</comment>
+    <requestid>1091972</requestid>
+  </revision>
 </revisionlist>

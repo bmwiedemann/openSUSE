@@ -1,7 +1,7 @@
 #
 # spec file for package xtrans
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           xtrans
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Library to handle network protocol transport in X
 License:        MIT
 Group:          Development/Libraries/X11
 URL:            https://xorg.freedesktop.org/
-Source:         http://xorg.freedesktop.org/archive/individual/lib/%{name}-%{version}.tar.bz2
+Source:         http://xorg.freedesktop.org/archive/individual/lib/%{name}-%{version}.tar.xz
 Patch0:         p_xauth.diff
 Patch1:         n_unifdef-LBXPROXY_t-and-TEST_t.patch
 Patch2:         u_xtrans-noarch-pkgconfig.patch
