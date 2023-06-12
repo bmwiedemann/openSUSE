@@ -1,7 +1,7 @@
 #
 # spec file for package libcerf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2014 Christoph Junghans <junghans@votca.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           libcerf
-Version:        2.2
+Version:        2.3
 Release:        0
 Summary:        A library that complex error functions
 License:        MIT
@@ -66,7 +66,7 @@ sed -i -e 's|DESTINATION lib|DESTINATION %{_lib}|' lib/CMakeLists.txt
 sed -i -e 's|${prefix}/lib|@LIB_INSTALL_DIR@|' libcerf.pc.in
 
 %build
-%cmake -DCMAKE_SKIP_RPATH=OFF
+%cmake -DCMAKE_SKIP_RPATH=OFF -DPORTABLE=ON
 %cmake_build
 
 %install
