@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 10 15:24:40 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Tue May  2 15:55:35 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 6.3.0:
