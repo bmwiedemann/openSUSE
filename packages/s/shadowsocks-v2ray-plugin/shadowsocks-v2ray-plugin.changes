@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 12 07:06:37 UTC 2023 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Update version to 1.3.2
+  * Added support for MIPS64 architecture
+  * Update VPN flag
+  * Update args.go
+ 
+-------------------------------------------------------------------
 Mon May 10 13:39:36 UTC 2021 - opensuse-packaging <opensuse-packaging@opensuse.org>
 
 - Update version to 1.3.1+git20210506.ddd7ab4
