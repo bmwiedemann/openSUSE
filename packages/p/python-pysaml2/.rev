@@ -328,4 +328,12 @@
     <comment>- Fix dependencies according to upstream setup.cfg</comment>
     <requestid>1035909</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>dbe8bd11a161449a4256e41883ec01bb</srcmd5>
+    <version>7.2.1</version>
+    <time>1686576381</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1092384</requestid>
+  </revision>
 </revisionlist>

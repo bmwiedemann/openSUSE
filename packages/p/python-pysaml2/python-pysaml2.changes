@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 11 13:23:30 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Tue Nov 15 14:23:13 UTC 2022 - Rolf Krahl <rolf@rotkraut.de>
 
 - Fix dependencies according to upstream setup.cfg
