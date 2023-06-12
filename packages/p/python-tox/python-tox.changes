@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  9 07:26:58 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Fix build error in Leap.
+  Change %autopatch -p1 -m 1 to %patch1 -p1
+
+-------------------------------------------------------------------
 Fri Jun  2 13:53:39 UTC 2023 - Dan Čermák <dcermak@suse.com>
 
 - Fix requires & buildrequires

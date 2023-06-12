@@ -66,17 +66,17 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 BuildRequires:  (python3-importlib-metadata >= 0.12 if python3-base < 3.8)
 BuildRequires:  (python36-importlib-metadata >= 0.12 if python36-base)
+Requires:       python-cachetools
+Requires:       python-chardet
+Requires:       python-colorama
 Requires:       python-filelock >= 3.0.0
 Requires:       python-packaging >= 14
+Requires:       python-platformdirs >= 3.5.1
 Requires:       python-pluggy >= 0.12.0
+Requires:       python-pyproject-api
 Requires:       python-tomli >= 2.0.1
 Requires:       python-virtualenv >= 20.0.8
 Requires:       (python-importlib-metadata >= 0.12 if python3-base < 3.8)
-Requires:       python-colorama
-Requires:       python-chardet
-Requires:       python-cachetools
-Requires:       python-pyproject-api
-Requires:       python-platformdirs >= 3.5.1
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 # last detox version is 0.19
@@ -117,7 +117,7 @@ use for:
 %if %{without devpi_process}
 %patch0 -p1
 %endif
-%autopatch -p1 -m 1
+%patch1 -p1
 
 %build
 export LANG=en_US.UTF8
