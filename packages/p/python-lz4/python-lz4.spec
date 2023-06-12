@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-lz4
 Version:        4.3.2
 Release:        0
