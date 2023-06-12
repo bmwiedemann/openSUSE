@@ -207,4 +207,13 @@
     truncated #344 (@rschroll) (forwarded request 1082322 from bnavigator)</comment>
     <requestid>1082323</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9b821a59ba76095681b81ad3d2de6a19</srcmd5>
+    <version>5.9.0</version>
+    <time>1686576393</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.9.0
+  * Support Python 3.12 #363 (@blink1073) (forwarded request 1092382 from bnavigator)</comment>
+    <requestid>1092383</requestid>
+  </revision>
 </revisionlist>

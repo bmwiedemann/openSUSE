@@ -18,14 +18,14 @@
 
 %bcond_without libalternatives
 Name:           python-nbformat
-Version:        5.8.0
+Version:        5.9.0
 Release:        0
 Summary:        The Jupyter Notebook format
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/nbformat
 Source:         https://github.com/jupyter/nbformat/releases/download/v%{version}/nbformat-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch_nodejs_version}
 BuildRequires:  %{python_module hatchling >= 1.5}
 BuildRequires:  %{python_module pip}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 11 20:10:03 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.9.0
+  * Support Python 3.12 #363 (@blink1073)
+
+-------------------------------------------------------------------
 Sun Apr 23 17:32:58 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.8.0
