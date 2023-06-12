@@ -16,8 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global modname repoze.who
+%{?sle15_python_module_pythons}
 Name:           python-repoze.who
 Version:        2.4.1
 Release:        0
