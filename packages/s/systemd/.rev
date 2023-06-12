@@ -6602,4 +6602,22 @@ handle manual pages that consist only of a .so directive such as
   (fortunately) dropped the persistent net rule generator long time ago.</comment>
     <requestid>1088562</requestid>
   </revision>
+  <revision rev="392" vrev="1">
+    <srcmd5>1e66d2fdc19e985d19f989dd42d170e8</srcmd5>
+    <version>253.5</version>
+    <time>1686576300</time>
+    <user>dimstar_suse</user>
+    <comment>- Import commit 07bb12a282b0ea378850934c4a76008b448b8bad (merge of v253.5)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/25aec157888f7aa9a36726962fcbbf2c74ead440...07bb12a282b0ea378850934c4a76008b448b8bad
+
+- Reexecute user managers on package updates.
+  For now we send signal to user instances to trigger their reexecution. It's
+  asynchronous but it shouldn't cause any problem in practice and it's probably
+  safer than triggering reexecution with &quot;systemctl --user -M 1000@
+  daemon-reexec&quot; command. The latter command creates a new PAM session behind
+  the scene bringing with it the known issue (upstream issue #8598) with
+  &quot;(sd-pam)&quot; helper process when the PAM session is being closed.</comment>
+    <requestid>1090446</requestid>
+  </revision>
 </revisionlist>

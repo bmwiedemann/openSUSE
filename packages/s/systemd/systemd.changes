@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jun  1 15:58:24 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Import commit 07bb12a282b0ea378850934c4a76008b448b8bad (merge of v253.5)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/25aec157888f7aa9a36726962fcbbf2c74ead440...07bb12a282b0ea378850934c4a76008b448b8bad
+
+-------------------------------------------------------------------
+Thu Jun  1 15:21:54 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Reexecute user managers on package updates.
+
+  For now we send signal to user instances to trigger their reexecution. It's
+  asynchronous but it shouldn't cause any problem in practice and it's probably
+  safer than triggering reexecution with "systemctl --user -M 1000@
+  daemon-reexec" command. The latter command creates a new PAM session behind
+  the scene bringing with it the known issue (upstream issue #8598) with
+  "(sd-pam)" helper process when the PAM session is being closed.
+
+-------------------------------------------------------------------
 Tue May  9 14:25:04 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Move more packaging fixups in the fixlet script.

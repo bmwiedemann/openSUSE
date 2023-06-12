@@ -121,7 +121,24 @@ case "$command" in
         fi
         ;;
 
-    user-reload-restart|user-reload|user-restart|user-reexec)
+    user-reexec)
+        if [ -n "$*" ]; then
+            echo >&2 "Unexpected arguments for '$command': $*"
+            exit 2
+        fi
+
+        [ -d /run/systemd/system ] || exit 0
+
+        # Reexecute user manager instances (if any). It is asynchronous but it
+        # shouldn't be a problem in practice because systemd main package is not
+        # shipping any user services currently. A problem would arise only if a
+        # new version of a user service relied on an option that would be only
+        # understood by the latest version of the user manager and the user unit
+        # would be restarted before the user manager get reexecuted.
+        systemctl kill --kill-who=main --signal=SIGRTMIN+25 "user@*.service"
+        ;;
+
+    user-reload-restart|user-reload|user-restart)
         if [ -n "$*" ]; then
             echo >&2 "Unexpected arguments for '$command': $*"
             exit 2
@@ -130,14 +147,6 @@ case "$command" in
         [ -d /run/systemd/system ] || exit 0
 
         users=$(systemctl list-units 'user@*' --legend=no | sed -n -r 's/.*user@([0-9]+).service.*/\1/p')
-
-        if [[ "$command" =~ reexec ]]; then
-            for user in $users; do
-                SYSTEMD_BUS_TIMEOUT=15s \
-                        systemctl --user -M "$user@" daemon-reexec &
-            done
-            wait
-        fi
 
         if [[ "$command" =~ reload ]]; then
             for user in $users; do

@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define min_kernel_version 4.5
-%define archive_version +suse.28.g25aec15788
+%define archive_version +suse.29.g07bb12a282
 
 %define _testsuitedir %{_systemd_util_dir}/tests
 %define xinitconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}/X11/xinit
@@ -73,7 +73,7 @@
 
 Name:           systemd%{?mini}
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        253.4
+Version:        253.5
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -976,14 +976,18 @@ if [ $1 -gt 1 ]; then
 fi
 
 %post
-# Make /etc/machine-id an empty file during package installation. On the first
-# boot, machine-id is initialized and either committed (if /etc/ is writable) or
-# the system/image runs with a transient machine ID, that changes on each boot
-# (if the image is read-only). This is especially important for appliance builds
-# to avoid an identical machine ID in all images.
 if [ $1 -eq 1 ]; then
+        # Make /etc/machine-id an empty file during package installation. On the
+        # first boot, machine-id is initialized and either committed (if /etc/
+        # is writable) or the system/image runs with a transient machine ID,
+        # that changes on each boot (if the image is read-only). This is
+        # important for appliance builds to avoid an identical machine ID in all
+        # images.
         touch     %{_sysconfdir}/machine-id
         chmod 444 %{_sysconfdir}/machine-id
+
+        # Persistent journal is the default
+        mkdir -p %{_localstatedir}/log/journal
 fi
 
 %if %{without bootstrap}
@@ -993,25 +997,8 @@ pam-config --add --systemd || :
 %endif
 
 systemctl daemon-reexec || :
-
-# Reexecute user manager instances (if any). It is asynchronous but it shouldn't
-# be a problem in practice: a problem would arise only if the new version of a
-# user service has a brand new option that is only understood by the latest
-# version of the user manager and the user service is started before the user
-# manager get reexecuted. But this case is very unlikely especially since we
-# don't restart any user service for now.
-#
-# Before doing this, we unfortunately have to wait until users will reexec their
-# user manager (by either rebooting or restarting their session) to a version
-# that supports SIGRTMIN+25 otherwise sending the signal to an old version will
-# kill the manager which means tearing down the user session.
-#
-# systemctl kill --kill-who=main --signal=SIGRTMIN+25 "user@*.service" || :
-
-if [ $1 -eq 1 ]; then
-        # Persistent journal is the default
-        mkdir -p %{_localstatedir}/log/journal
-fi
+# Reexecute the user managers (if any)
+%{_systemd_util_dir}/systemd-update-helper user-reexec || :
 
 %if %{without filetriggers}
 # During package installation, the followings are for config files shipped by
