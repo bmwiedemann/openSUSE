@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun  9 17:09:42 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- Version 2.0.0
+  * Adjust USB drivers path at run-time via environment variable PCSCLITE_HP_DROPDIR
+  * Add '--disable-polkit' option
+  * Reset eventCounter when a reader is removed
+  * Add "polkit" in "pcscd -v" output if enabled
+  * Doxygen: document SCARD_E_INVALID_VALUE for some functions
+  * use secure_getenv(3) if available
+  * Some other minor improvements
+
+-------------------------------------------------------------------
 Sat Mar  4 09:27:53 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - add a 32 bit -devel package for use by wine development with wine 8.3
