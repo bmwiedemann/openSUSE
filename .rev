@@ -102,4 +102,12 @@
   * Deprecate __ALL__, use __all__ instead (#23) @hugovk</comment>
     <requestid>1046125</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>3262069f8bd47220950e3963a28dedb9</srcmd5>
+    <version>2.1.1</version>
+    <time>1686576336</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092207</requestid>
+  </revision>
 </revisionlist>
