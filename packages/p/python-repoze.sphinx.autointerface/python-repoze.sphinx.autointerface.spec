@@ -16,8 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %global modname repoze.sphinx.autointerface
+%{?sle15_python_module_pythons}
 Name:           python-%{modname}
 Version:        1.0.0
 Release:        0

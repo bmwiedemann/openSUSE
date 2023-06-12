@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 12 05:39:21 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Fri Oct  7 07:50:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - make the package python 3.6+ only as it dropped support

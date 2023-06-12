@@ -67,4 +67,12 @@
   Drop support for Sphinx &lt; 4.0.</comment>
     <requestid>1008684</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>a9d7619e55e9c90e2d905173549bd367</srcmd5>
+    <version>1.0.0</version>
+    <time>1686576462</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092486</requestid>
+  </revision>
 </revisionlist>
