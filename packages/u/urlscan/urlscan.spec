@@ -1,7 +1,7 @@
 #
 # spec file for package urlscan
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define python_flavor python3
+%define pythons python3
 Name:           urlscan
-Version:        0.9.10
+Version:        1.0.0
 Release:        0
 Summary:        An other URL extractor/viewer
 License:        GPL-2.0-or-later
@@ -27,15 +27,19 @@ URL:            https://github.com/firecat53/urlscan
 Source0:        https://github.com/firecat53/urlscan/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        muttrc
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
 BuildRequires:  python3-devel
-BuildRequires:  python3-rpm-macros
+BuildRequires:  python3-hatch_vcs
+BuildRequires:  python3-hatchling
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 BuildRequires:  sed
-Requires:       python3
 Requires:       python3-base
-Requires:       python3-urwid
+Requires:       python3-urwid >= 1.2.1
 BuildArch:      noarch
+%global myname  %name
 
 %description
 The urlscan utility displays URLs found in an email message with
@@ -45,33 +49,33 @@ quoted-printable and base64 encoding.
 
 %prep
 %setup -q
+install -m 0644 %{SOURCE1} muttrc
 
 %build
-%python3_build
+SETUPTOOLS_SCM_PRETEND_VERSION="%{version}"
+export SETUPTOOLS_SCM_PRETEND_VERSION
+%pyproject_wheel
 
 %install
-%python3_install
-mkdir -p %{buildroot}%{_defaultdocdir}/%{name}
-if test -e %{buildroot}%{_datadir}/doc/%{name}*
+%pyproject_install
+%{python_expand mkdir -p %{buildroot}%{_defaultdocdir}/%{$python_prefix}-%{myname}
+ chmod 755 %{buildroot}%{$python_sitelib}/%{name}/__main__*
+ sed -ri '1 { s@(/usr/bin/)env +@\1@ }' %{buildroot}%{$python_sitelib}/%{name}/__main__*
+ %fdupes %{buildroot}%{$python_sitelib}
+}
+sed -ri '1 { s@(/usr/bin/)env +@\1@;s@(/python3)\.[[:digit:]]+@\1@ }' %{buildroot}%{_bindir}/%{name}
+if test -e %{buildroot}%{_datadir}/doc/%{myname}*
 then
-   rm -vf %{buildroot}%{_datadir}/doc/%{name}*/COPYING
-   mv %{buildroot}%{_datadir}/doc/%{name}*/* \
-      %{buildroot}%{_defaultdocdir}/%{name}/
+    rm -f %{buildroot}%{_datadir}/doc/%{myname}*/LICENSE
 fi
 rm -rf %{buildroot}%{_datadir}/doc/%{name}*
-install -m 0644 %{SOURCE1} %{buildroot}%{_defaultdocdir}/%{name}
-chmod 755 %{buildroot}%{python_sitelib}/%{name}/__main__*
-sed -ri '1 { s@(/usr/bin/)env *@\1@ }' %{buildroot}%{python_sitelib}/%{name}/__main__*
-%fdupes %{buildroot}
 
 %files
-%license COPYING
-%{_bindir}/%{name}
-%{python_sitelib}/%{name}
-%{python_sitelib}/%{name}-%{version}-py*.egg-info
-%{_mandir}/man1/%{name}.1%{?ext_man}
-%dir %{_defaultdocdir}/%{name}/
-%doc %{_defaultdocdir}/%{name}/muttrc
-%doc %{_defaultdocdir}/%{name}/README.md
+%{_bindir}/%{myname}
+%{_mandir}/man1/%{myname}.1%{?ext_man}
+%{python_sitelib}/%{myname}
+%{python_sitelib}/%{myname}-%{version}*-info
+%license LICENSE
+%doc README.md muttrc
 
 %changelog

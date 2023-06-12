@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Jun 12 12:26:37 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Also remove left over curly braces at the end of require lines
+
+-------------------------------------------------------------------
+Mon Jun 12 11:54:29 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Removed invalid Recommends line 
+
+-------------------------------------------------------------------
+Mon Jun 12 11:45:12 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Reintroduce removing /usr/bin/env from shebang lines as well as
+  duplicate files them selfs
+
+-------------------------------------------------------------------
+Mon Jun 12 11:09:31 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not package this as multi-python flavors: urlscan is a simple
+  leaf application written in python. Its python code is not
+  consumed by others.
+
+-------------------------------------------------------------------
+Fri Jun  2 13:50:51 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Update to urlscan 1.0.0 
+  * Fix search with -c flag. Fixes #131.
+  * Add support for IPv6 URLs. Closes #127
+  * Mark items in url queue with a *
+  * Add version flag
+  * Update to pyproject.toml/hatch for builds
+- Switch over to flavoured build
+  * Is there any way to have one major package e.g. for repeating
+    docs for the various flavoured sub packages?
+
+-------------------------------------------------------------------
 Tue Dec  6 13:06:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.10:

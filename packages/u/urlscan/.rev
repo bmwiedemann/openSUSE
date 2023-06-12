@@ -159,4 +159,31 @@
   * Redo redirection of sterr/stdout. Fix #122 (forwarded request 1040650 from dirkmueller)</comment>
     <requestid>1040672</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>230469759db7dfc86faa76bc7428b6aa</srcmd5>
+    <version>1.0.0</version>
+    <time>1686576325</time>
+    <user>dimstar_suse</user>
+    <comment>- Also remove left over curly braces at the end of require lines
+
+- Removed invalid Recommends line 
+
+- Reintroduce removing /usr/bin/env from shebang lines as well as
+  duplicate files them selfs
+
+- Do not package this as multi-python flavors: urlscan is a simple
+  leaf application written in python. Its python code is not
+  consumed by others.
+
+- Update to urlscan 1.0.0 
+  * Fix search with -c flag. Fixes #131.
+  * Add support for IPv6 URLs. Closes #127
+  * Mark items in url queue with a *
+  * Add version flag
+  * Update to pyproject.toml/hatch for builds
+- Switch over to flavoured build
+  * Is there any way to have one major package e.g. for repeating
+    docs for the various flavoured sub packages?</comment>
+    <requestid>1092579</requestid>
+  </revision>
 </revisionlist>
