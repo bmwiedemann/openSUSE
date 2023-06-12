@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 10 09:54:17 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Wed Feb 22 17:17:01 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable broken test, test_disp_var
