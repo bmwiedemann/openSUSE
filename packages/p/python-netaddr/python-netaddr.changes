@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 11 13:10:26 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Nov  8 21:36:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - fix build for older distros

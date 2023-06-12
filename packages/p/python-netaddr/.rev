@@ -240,4 +240,12 @@
     <comment>- fix build for older distros</comment>
     <requestid>930242</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>b96ab76c413246a572489105a22e94ec</srcmd5>
+    <version>0.8.0</version>
+    <time>1686576391</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092399</requestid>
+  </revision>
 </revisionlist>
