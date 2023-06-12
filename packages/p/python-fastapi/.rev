@@ -211,4 +211,15 @@
     <comment></comment>
     <requestid>1091086</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>989e3fd0f919cbb87a3ce45002255ec2</srcmd5>
+    <version>0.96.1</version>
+    <time>1686576294</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.96.1:
+  * Fix `HTTPException` header type annotations.
+  * Fix OpenAPI model fields int validations, `gte` to `ge`.
+  * Update minimum version of Pydantic to &gt;=1.7.4.</comment>
+    <requestid>1092291</requestid>
+  </revision>
 </revisionlist>

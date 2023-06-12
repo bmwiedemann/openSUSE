@@ -19,7 +19,7 @@
 # Keep extra test requirements out of Ring1
 %bcond_with ringdisabled
 Name:           python-fastapi
-Version:        0.96.0
+Version:        0.96.1
 Release:        0
 Summary:        FastAPI framework
 License:        MIT
