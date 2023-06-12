@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-joblib
 Version:        1.2.0
 Release:        0
