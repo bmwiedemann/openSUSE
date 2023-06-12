@@ -21,7 +21,7 @@
 # baseversionminus1 - previous base version of kubernetes
 %define baseversionminus1 1.26
 # versionminus1 - full previous version of kubernetes, including point revision
-%define versionminus1 1.26.4
+%define versionminus1 1.26.5
 # etcdversion - version of etcd
 %define etcdversion 3.5.7
 # etcdversionminus1 - version of etcd for versionminus1
@@ -32,7 +32,7 @@
 %define corednsversionminus1 1.9.3
 
 Name:           kubernetes
-Version:        1.27.1
+Version:        1.27.2
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
