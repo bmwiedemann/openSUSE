@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jun 10 16:42:35 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.0.5:
+  * [gh#libkeepass/pykeepass#344] AttributeError when accessing
+    Times with None value
+  * use __hash__ when evaluating equality
+  * use mtime/uuid for HistoryEntry hashing
+
+-------------------------------------------------------------------
 Sun May 28 06:10:02 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.0.4:

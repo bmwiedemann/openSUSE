@@ -17,7 +17,7 @@
 
 
 Name:           python-pykeepass
-Version:        4.0.4
+Version:        4.0.5
 Release:        0
 Summary:        Low-level library to interact with keepass databases
 License:        GPL-3.0-only
