@@ -92,4 +92,12 @@ New dependency of python-Pyramid</comment>
   * Add support for Python 3.8, 3.9, 3.10, 3.11.</comment>
     <requestid>1085136</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>dc3b8247e5a430b82434f61dd5e44968</srcmd5>
+    <version>5.0</version>
+    <time>1686576331</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092196</requestid>
+  </revision>
 </revisionlist>

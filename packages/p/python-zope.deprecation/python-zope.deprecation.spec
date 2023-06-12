@@ -17,6 +17,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-zope.deprecation
 Version:        5.0
 Release:        0
