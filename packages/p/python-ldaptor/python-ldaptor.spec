@@ -1,7 +1,7 @@
 #
 # spec file for package python-ldaptor
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,7 @@
 
 
 %define binaries ldaptor-fetchschema ldaptor-find-server ldaptor-getfreenumber ldaptor-ldap2dhcpconf ldaptor-ldap2dnszones ldaptor-ldap2maradns ldaptor-ldap2passwd ldaptor-ldap2pdns ldaptor-ldifdiff ldaptor-ldifpatch ldaptor-namingcontexts ldaptor-passwd ldaptor-rename ldaptor-search
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-ldaptor
 Version:        21.2.0
 Release:        0
