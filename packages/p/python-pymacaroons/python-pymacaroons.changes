@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 11 13:19:56 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Apr  7 07:22:31 UTC 2022 - pgajdos@suse.com
 
 - do not require python-mock for build
