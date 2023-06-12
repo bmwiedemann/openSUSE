@@ -63,4 +63,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1011027</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>9465a48dd7edcdec29eb763819700a2a</srcmd5>
+    <version>1.41</version>
+    <time>1686576379</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1092379</requestid>
+  </revision>
 </revisionlist>
