@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 11 14:15:14 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Tue May 23 07:48:57 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Restrict urllib3 to < 2, due to boto. 

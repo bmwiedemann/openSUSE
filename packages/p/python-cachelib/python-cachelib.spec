@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-cachelib
 Version:        0.10.2
 Release:        0

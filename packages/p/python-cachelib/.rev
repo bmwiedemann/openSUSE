@@ -38,4 +38,12 @@
     <comment>- Restrict urllib3 to &lt; 2, due to boto.</comment>
     <requestid>1088547</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>b76960c39691397acaee8dbc479b8faa</srcmd5>
+    <version>0.10.2</version>
+    <time>1686576376</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092372</requestid>
+  </revision>
 </revisionlist>
