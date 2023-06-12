@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 12 10:22:05 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 2.2.2:
+   
+   Fix python crash caused by wrong transport identifier handling
+  (bsc#1211557)
+
+-------------------------------------------------------------------
 Fri Jun  2 16:01:46 UTC 2023 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 2.2.1:
