@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 10 09:48:00 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Wed Feb 15 11:35:07 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable broken sklearn tests gh#pyinstaller/pyinstaller-hooks-contrib#547

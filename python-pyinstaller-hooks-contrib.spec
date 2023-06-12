@@ -24,6 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-pyinstaller-hooks-contrib%{psuffix}
 Version:        2023.0
 Release:        0
