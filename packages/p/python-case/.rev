@@ -58,4 +58,12 @@ Add remove_unittest2.patch to facilitate that</comment>
     <comment>- use https for urls</comment>
     <requestid>1010390</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>e1be148da8bd6574119b2dcc58b90fd1</srcmd5>
+    <version>1.5.3</version>
+    <time>1686576377</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092376</requestid>
+  </revision>
 </revisionlist>
