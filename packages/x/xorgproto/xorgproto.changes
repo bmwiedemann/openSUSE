@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jun 10 11:04:09 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 2023.1
+This release introduces a couple of new options for existing extensions:
+
+ * A new option PresentOptionAsyncMayTear for the Present extension,
+ * A new flag XFixesClientDisconnectFlagForceTerminate to the XFixes
+   XFixesClientDisconnectFlags intended to be used by screen lockers,
+   where the server must exit if the screen locker does.
+
+The other changes include various fixes, clarifications and keysym
+definitions updates:
+
+-------------------------------------------------------------------
 Tue Jan 31 10:27:53 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - switched to multibuild for -doc package to avoid build cycles
