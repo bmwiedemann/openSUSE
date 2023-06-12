@@ -17,6 +17,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-pyramid
 Version:        2.0.1
 Release:        0
