@@ -17,7 +17,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-translationstring
 Version:        1.4
 Release:        0
