@@ -93,4 +93,12 @@
   * Bump requirement to 3.7+</comment>
     <requestid>1056835</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>fba7cae1b0fce2dfa024248a1c4660e0</srcmd5>
+    <version>5.4.6</version>
+    <time>1686576385</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092388</requestid>
+  </revision>
 </revisionlist>
