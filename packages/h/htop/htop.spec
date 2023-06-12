@@ -21,7 +21,6 @@ Version:        3.2.2
 Release:        0
 Summary:        An Interactive text-mode Process Viewer for Linux
 License:        GPL-2.0-or-later
-Group:          System/Monitoring
 URL:            https://htop.dev
 Source0:        https://github.com/htop-dev/htop/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
@@ -49,7 +48,6 @@ better 'top' and requires ncurses.
 %build
 ./autogen.sh
 %configure \
-  --enable-taskstats \
   --enable-unicode \
   --enable-hwloc \
   --enable-delayacct \

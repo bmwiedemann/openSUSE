@@ -573,4 +573,12 @@
     <comment></comment>
     <requestid>1063582</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>9c180c97890406a134f8ccfdd6c4f9e4</srcmd5>
+    <version>3.2.2</version>
+    <time>1686576471</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop no longer available configure option</comment>
+    <requestid>1092511</requestid>
+  </revision>
 </revisionlist>
