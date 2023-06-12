@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 11 14:16:45 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Sat Dec  3 14:35:16 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove  python-Flask-SQLAlchemy-no-mock.patch merged upstream

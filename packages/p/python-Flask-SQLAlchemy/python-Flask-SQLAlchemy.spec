@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-Flask-SQLAlchemy
 Version:        3.0.2
 Release:        0
