@@ -4448,6 +4448,7 @@
     <package name="upower-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="usb_modeswitch" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="usb_modeswitch-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="usbmuxd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="usbutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="util-linux" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="util-linux-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
