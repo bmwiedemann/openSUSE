@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+
 # tests on big endian systems fail due to https://github.com/azaghal/pydenticon/issues/10 , disabled until fixed"
 # can not use "ifarch" when BuildArch is set to noarch
 %if "%_arch" == "s390x" || "%_arch" == "s390x" || "%_arch" == "ppc" || "%_arch" == "ppc64"
@@ -25,6 +25,7 @@
 %bcond_without test
 %endif
 %define         modname pydenticon
+%{?sle15_python_module_pythons}
 Name:           python-%{modname}
 Version:        0.3.1
 Release:        0
