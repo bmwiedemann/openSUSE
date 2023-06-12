@@ -5265,4 +5265,37 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1083626</requestid>
   </revision>
+  <revision rev="478" vrev="350">
+    <srcmd5>b2664859e30499b26ef193284f46c56f</srcmd5>
+    <version>unknown</version>
+    <time>1686576321</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to bugfix release 23.1.2
+
+- needed to fix build of Mesa 23.1
+  * Mesa-drivers: -Dshader-cache=enabled
+  * Mesa: -Dxlib-lease=enabled
+  * recommended for both Mesa and Mesa-drivers to avoid some scary messages when
+    comparing fds: -Dallow-kcmp=enabled
+- Credits for figuring this out go to &quot;llyyr&quot; &lt;llyyr.public@gmail.com&gt;
+- gbm files are no longer needed to be removed manually for -drivers build
+- VDPAU support for r300 has been dropped with Mesa 23.1
+- supersedes n_no-sse2-on-ix86-except-for-intel-drivers.patch
+
+- Update to bugfix release 23.1.1
+- adjusted u_dep_xcb.patch
+
+- Update to 23.1.0
+  * new feature release
+  * some highlights
+    + Our OpenCL implementation Rusticl added support for AMD GPUs.
+    + Both ANV (Intel) and RADV (AMD) got initial support for Vulkan Video
+      decoding.
+    + Vulkan Graphics Pipeline Libraries (GPL) are now supported in RADV.
+- adjusted n_stop-iris-flicker.patch
+- supersedes U_ReturnME.patch
+- meson option &quot;-Ddri-drivers&quot; has been removed; wasn't used any 
+  longer by us --&gt; killed it</comment>
+    <requestid>1092024</requestid>
+  </revision>
 </revisionlist>

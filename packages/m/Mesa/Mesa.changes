@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Jun 10 14:28:05 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to bugfix release 23.1.2
+
+-------------------------------------------------------------------
+Sat Jun 10 11:42:42 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- needed to fix build of Mesa 23.1
+  * Mesa-drivers: -Dshader-cache=enabled
+  * Mesa: -Dxlib-lease=enabled
+  * recommended for both Mesa and Mesa-drivers to avoid some scary messages when
+    comparing fds: -Dallow-kcmp=enabled
+- Credits for figuring this out go to "llyyr" <llyyr.public@gmail.com>
+- gbm files are no longer needed to be removed manually for -drivers build
+- VDPAU support for r300 has been dropped with Mesa 23.1
+- supersedes n_no-sse2-on-ix86-except-for-intel-drivers.patch
+
+-------------------------------------------------------------------
+Fri May 26 13:42:06 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to bugfix release 23.1.1
+- adjusted u_dep_xcb.patch
+
+-------------------------------------------------------------------
+Thu May 11 08:29:57 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 23.1.0
+  * new feature release
+  * some highlights
+    + Our OpenCL implementation Rusticl added support for AMD GPUs.
+    + Both ANV (Intel) and RADV (AMD) got initial support for Vulkan Video
+      decoding.
+    + Vulkan Graphics Pipeline Libraries (GPL) are now supported in RADV.
+- adjusted n_stop-iris-flicker.patch
+- supersedes U_ReturnME.patch
+- meson option "-Ddri-drivers" has been removed; wasn't used any 
+  longer by us --> killed it
+
+-------------------------------------------------------------------
 Sat Apr 22 08:32:04 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 23.0.3

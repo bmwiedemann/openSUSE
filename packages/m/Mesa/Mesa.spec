@@ -42,7 +42,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 23.0.3
+%define _version 23.1.2
 %define with_opencl 0
 %define with_rusticl 0
 %define with_vulkan 0
@@ -123,7 +123,7 @@
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        23.0.3
+Version:        23.1.2
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -143,9 +143,7 @@ Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
 Patch58:        u_dep_xcb.patch
 Patch100:       U_fix-mpeg1_2-decode-mesa-20.2.patch
 Patch200:       u_fix-build-on-ppc64le.patch
-Patch300:       n_no-sse2-on-ix86-except-for-intel-drivers.patch
 Patch400:       n_stop-iris-flicker.patch
-Patch500:       U_ReturnME.patch
 Patch600:       U_glx-Remove-pointless-GLX_INTEL_swap_event-paranoia.patch
 %ifarch %{ix86} x86_64
 BuildRequires:  DirectX-Headers
@@ -627,14 +625,6 @@ Supplements:    modalias(pci:v000012D2d*sv*sd*bc03sc*i*)
 %description -n libvdpau_nouveau
 This package contains the VDPAU state tracker for Nouveau.
 
-%package -n libvdpau_r300
-Summary:        VDPAU state tracker for R300
-Group:          System/Libraries
-Supplements:    modalias(pci:v00001002d*sv*sd*bc03sc*i*)
-
-%description -n libvdpau_r300
-This package contains the VDPAU state tracker for R300.
-
 %package -n libvdpau_r600
 Summary:        VDPAU state tracker for R600
 Group:          System/Libraries
@@ -788,11 +778,7 @@ rm -rf docs/README.{VMS,WIN32,OS2}
 %patch58 -p1
 %patch100 -p1
 %patch200 -p1
-%ifarch %{ix86}
-%patch300 -p1
-%endif
 %patch400 -p1
-%patch500 -p1
 # reverse apply to fix a regression (boo#1209005)
 %patch600 -p1 -R
 
@@ -815,6 +801,13 @@ export CXX=g++-12
 
 egl_platforms=x11,wayland
 
+# needed to fix build of Mesa 23.1
+# Mesa-drivers: -Dshader-cache=enabled
+# Mesa: -Dxlib-lease=enabled
+# recommended for both Mesa and Mesa-drivers to avoid some scary messages when
+# comparing fds: -Dallow-kcmp=enabled
+# Credits for figuring this out go to "llyyr" <llyyr.public@gmail.com>
+
 %meson \
             --auto-features=disabled \
 %if "%{flavor}" == "drivers"
@@ -824,6 +817,7 @@ egl_platforms=x11,wayland
             -Dglx=disabled \
             -Dosmesa=false \
             -Dxmlconfig=enabled \
+            -Dshader-cache=enabled \
 %else
             -Dglvnd=true \
             -Dgles1=enabled \
@@ -833,7 +827,9 @@ egl_platforms=x11,wayland
             -Dglx=auto \
             -Dllvm=disabled \
             -Dvulkan-drivers= \
+            -Dxlib-lease=enabled \
 %endif
+            -Dallow-kcmp=enabled \
             -Dplatforms=$egl_platforms \
             -Ddri3=enabled \
             -Dshared-glapi=enabled \
@@ -874,24 +870,19 @@ egl_platforms=x11,wayland
             -Dvulkan-drivers= \
 %endif
   %ifarch %{ix86} x86_64
-            -Ddri-drivers= \
             -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast,svga,virgl,iris,crocus,i915,d3d12,zink \
   %else
   %ifarch %{arm} aarch64
-            -Ddri-drivers= \
             -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast,virgl,freedreno,vc4,etnaviv,lima,panfrost,v3d,svga,tegra \
   %else
   %ifarch ppc64 ppc64le riscv64
-            -Ddri-drivers= \
             -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast,virgl \
   %else
-            -Ddri-drivers= \
             -Dgallium-drivers=swrast \
   %endif
   %endif
   %endif
 %else
-            -Ddri-drivers= \
             -Dgallium-drivers=swrast \
 %endif
 %ifarch aarch64 %{ix86} x86_64 ppc64le s390x
@@ -940,11 +931,6 @@ rm -f %{buildroot}/%{_libdir}/pkgconfig/wayland-egl.pc
 
 # in Mesa-dri-devel
 rm %{buildroot}/%{_libdir}/pkgconfig/dri.pc
-
-# in libgbm-devel
-rm %{buildroot}/%{_includedir}/gbm.h
-rm %{buildroot}/%{_libdir}/libgbm.so*
-rm %{buildroot}/%{_libdir}/pkgconfig/gbm.pc
 
 # in KHR-devel
 rm -rf %{buildroot}/%{_includedir}/KHR
@@ -1094,12 +1080,6 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %endif
 
 %if %{vdpau_radeon}
-%files -n libvdpau_r300
-%{_libdir}/vdpau/libvdpau_r300.so
-%{_libdir}/vdpau/libvdpau_r300.so.1
-%{_libdir}/vdpau/libvdpau_r300.so.1.0
-%{_libdir}/vdpau/libvdpau_r300.so.1.0.0
-
 %files -n libvdpau_r600
 %{_libdir}/vdpau/libvdpau_r600.so
 %{_libdir}/vdpau/libvdpau_r600.so.1
