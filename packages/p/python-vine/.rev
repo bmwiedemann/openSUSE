@@ -45,4 +45,12 @@
     <comment>- use https for urls</comment>
     <requestid>1010404</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>dc3d37a714a20ca9dfd6fef479a39a2a</srcmd5>
+    <version>5.0.0</version>
+    <time>1686576377</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1092374</requestid>
+  </revision>
 </revisionlist>

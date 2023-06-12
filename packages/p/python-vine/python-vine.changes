@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 11 13:49:37 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Oct 13 07:20:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use https for urls
