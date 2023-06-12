@@ -486,4 +486,12 @@
   * Fixed pointer to integer cast warnings in MinGW.</comment>
     <requestid>1043583</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>9b1147eb123efcc0b4170fd46bc18190</srcmd5>
+    <version>6.6.10</version>
+    <time>1686576471</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092507</requestid>
+  </revision>
 </revisionlist>

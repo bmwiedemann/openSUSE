@@ -1,7 +1,7 @@
 #
 # spec file for package global
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           global
-Version:        6.6.9
+Version:        6.6.10
 Release:        0
 Summary:        Common source code tag system
 License:        GPL-3.0-only
@@ -58,11 +58,11 @@ subdirectories or many main() functions like MH, X, or Linux kernel.
 autoreconf -fiv
 export CPPFLAGS="-fno-common"
 %configure \
+  --with-python-interpreter=/usr/bin/python3 \
   --disable-static \
   --with-sqlite3 \
   --without-included-ltdl \
-  --with-exuberant-ctags=%{_bindir}/ctags \
-  PYTHON=python3
+  --with-exuberant-ctags=%{_bindir}/ctags
 %make_build
 
 %install

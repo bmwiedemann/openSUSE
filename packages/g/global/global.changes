@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun 11 20:37:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.6.10:
+  * gtags(C++ parser): did not recognize 'namespace
+    name1::name2::name3' syntax.
+    Now it picks up 'name2' and 'name3' in addition to 'name1'
+    in the next example:
+      namespace name1::name2::name3 { /*...*/ }
+      o gtags('universal-ctags.la'): The following setting of
+      Universal Ctags caused no tag output.
+
+-------------------------------------------------------------------
 Sun Dec 18 08:35:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.6.9:
