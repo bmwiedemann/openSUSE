@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%{?sle15_python_module_pythons}
 Name:           python-threadpoolctl
 Version:        3.1.0
 Release:        0
