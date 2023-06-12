@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  9 12:35:32 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Jan  9 21:01:23 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
 
 - version update to 5.0 (2023-01-09)
