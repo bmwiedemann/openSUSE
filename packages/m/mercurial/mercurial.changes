@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun  8 22:16:56 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 6.4.4
+  * clonebundles: filter out invalid schemes instead of failing on
+    them
+  * doc: format argument for date uses strftime format string
+  * test: make test-contrib-perf.t more robust
+  * revlog: fix a bug in revlog splitting
+  * bundles: clarify streaming v2 bundle usage
+  * delta-find: fix pulled-delta-reuse-policy=forced behavior
+  * dirstate: fall back to v1 if reading v2 failed
+  * revlog: avoid possible collision between directory and
+    temporary index 
+
+-------------------------------------------------------------------
 Mon May  8 13:08:42 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
 
 - update to 6.4.3
