@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Jun 11 15:06:25 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.9.4
+  * Sisotool: Fix Matplotlib deprecation of axis share handling by
+    @bnavigator in #834
+  * Fix Interconnect name clobbering by @henklaak in #857
+  * Solve #862 and #864: bode_plot phase wrapping incorrect for
+    multiple systems by @henklaak in #863
+  * Fix root_locus() handling of ax parameter by @henklaak in #871
+  * Small fixes based on Caltech CDS 112 course by @murrayrm in
+    #849
+  * Feature print zpk by @henklaak in #869
+  * Feature enable doctest by @henklaak in #868
+  * Optimization-based and moving horizon estimation by @murrayrm
+    in #877
+  * new examples for Simulink-like interconnection of digital and
+    nonlinear systems by @sawyerbfuller in #882
+  * fix blank bode plot in rootlocus_pid_designer by @sawyerbfuller
+    in #883
+  * bandwidth feature by @SCLiao47 in #889
+  * update nyquist_plot for DT transfer functions with poles at 0
+    and 1 by @sawyerbfuller in #885
+  * Add missing labels when returning TimeResponseData by
+    @joaoantoniocardoso in #892
+  * fix damp command natural frequency printout for discrete poles
+    on real axis by @sawyerbfuller in #894
+  * Add H2 and Hinf synthesis examples by @jrforbes in #895
+  * warn if prewarp-frequency is not used by @sawyerbfuller in #900
+  * make _convert_to_statespace properly pass signal and system
+    names by @sawyerbfuller in #884
+  * Change name of converted LinearIOSystems by @murrayrm in #903
+  * add/cleanup documentation on simulation functions by @murrayrm
+    in #905
+  * fix up some warning messages due to converted systems by
+    @murrayrm in #907
+  * fix bdschur (see issue #911) by @murrayrm in #912
+
+-------------------------------------------------------------------
 Thu Jan 26 09:40:27 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Avoid i586 segfaults with Qt5/Matplotlib:

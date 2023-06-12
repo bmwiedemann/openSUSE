@@ -17,7 +17,7 @@
 
 
 Name:           python-control
-Version:        0.9.3.post2
+Version:        0.9.4
 Release:        0
 Summary:        Python control systems library
 License:        BSD-3-Clause
