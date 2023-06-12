@@ -1,131 +1,43 @@
 # HG changeset patch
-# Parent  2f49ea20acb4b0e890ae49f4833ac9d69b7e800c
+# Parent  5df550d4b5fc674268055e504f60392389eb9ea7
 
-diff --git a/Cargo.lock b/Cargo.lock
---- a/Cargo.lock
-+++ b/Cargo.lock
-@@ -2254,18 +2254,16 @@ name = "glsl-to-cxx"
- version = "0.1.0"
- dependencies = [
-  "glsl",
- ]
- 
- [[package]]
- name = "glslopt"
- version = "0.1.9"
--source = "registry+https://github.com/rust-lang/crates.io-index"
--checksum = "74a3f5c04450dfdadb4b08f6e5ee6f5110f674de1acbd6199bfec68392a8cbaf"
- dependencies = [
-  "cc",
- ]
- 
- [[package]]
- name = "gluesmith"
- version = "0.1.0"
- dependencies = [
-diff --git a/Cargo.toml b/Cargo.toml
---- a/Cargo.toml
-+++ b/Cargo.toml
-@@ -157,16 +157,17 @@ chardetng = { git = "https://github.com/
- chardetng_c = { git = "https://github.com/hsivonen/chardetng_c", rev="ed8a4c6f900a90d4dbc1d64b856e61490a1c3570" }
- coremidi = { git = "https://github.com/chris-zen/coremidi.git", rev="fc68464b5445caf111e41f643a2e69ccce0b4f83" }
- firefox-on-glean = { path = "toolkit/components/glean/api" }
- libudev-sys = { path = "dom/webauthn/libudev-sys" }
- packed_simd = { package = "packed_simd_2", git = "https://github.com/hsivonen/packed_simd", rev="412f9a0aa556611de021bde89dee8fefe6e0fbbd" }
- midir = { git = "https://github.com/mozilla/midir.git", rev = "519e651241e867af3391db08f9ae6400bc023e18" }
- # warp 0.3.3 + https://github.com/seanmonstar/warp/pull/1007
- warp = { git = "https://github.com/glandium/warp", rev = "4af45fae95bc98b0eba1ef0db17e1dac471bb23d" }
-+glslopt = { path = "third_party/rust/glslopt/" }
- 
- cssparser = { git = "https://github.com/servo/rust-cssparser", rev = "45bc47e2bcb846f1efb5aea156be5fe7d18624bf" }
- 
- # application-services overrides to make updating them all simpler.
- interrupt-support = { git = "https://github.com/mozilla/application-services", rev = "86c84c217036c12283d19368867323a66bf35883" }
- sql-support = { git = "https://github.com/mozilla/application-services", rev = "86c84c217036c12283d19368867323a66bf35883" }
- sync15 = { git = "https://github.com/mozilla/application-services", rev = "86c84c217036c12283d19368867323a66bf35883" }
- tabs = { git = "https://github.com/mozilla/application-services", rev = "86c84c217036c12283d19368867323a66bf35883" }
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 --- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 +++ b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
-@@ -36,12 +36,13 @@ static inline SkMatrix SkEncodedOriginTo
-         case kBottomRight_SkEncodedOrigin: return SkMatrix::MakeAll(-1,  0, w,  0, -1, h, 0, 0, 1);
-         case  kBottomLeft_SkEncodedOrigin: return SkMatrix::MakeAll( 1,  0, 0,  0, -1, h, 0, 0, 1);
-         case     kLeftTop_SkEncodedOrigin: return SkMatrix::MakeAll( 0,  1, 0,  1,  0, 0, 0, 0, 1);
-         case    kRightTop_SkEncodedOrigin: return SkMatrix::MakeAll( 0, -1, h,  1,  0, 0, 0, 0, 1);
-         case kRightBottom_SkEncodedOrigin: return SkMatrix::MakeAll( 0, -1, h, -1,  0, w, 0, 0, 1);
-         case  kLeftBottom_SkEncodedOrigin: return SkMatrix::MakeAll( 0,  1, 0, -1,  0, w, 0, 0, 1);
+@@ -41,6 +41,7 @@ static inline SkMatrix SkEncodedOriginTo
+         case  kLeftBottom_SkEncodedOrigin: return SkMatrix::MakeAll( 0,  1, 0, -1,  0, h, 0, 0, 1);
      }
      SK_ABORT("Unexpected origin");
 +    SkUNREACHABLE;
  }
  
- 
- #endif // SkEncodedOrigin_DEFINED
-diff --git a/gfx/skia/skia/include/private/GrTypesPriv.h b/gfx/skia/skia/include/private/GrTypesPriv.h
---- a/gfx/skia/skia/include/private/GrTypesPriv.h
-+++ b/gfx/skia/skia/include/private/GrTypesPriv.h
-@@ -535,32 +535,34 @@ static inline GrSLType GrSLCombinedSampl
-             return kTexture2DSampler_GrSLType;
-         case GrTextureType::kRectangle:
-             return kTexture2DRectSampler_GrSLType;
-         case GrTextureType::kExternal:
-             return kTextureExternalSampler_GrSLType;
-         default:
-             SK_ABORT("Unexpected texture type");
-     }
-+    SkUNREACHABLE;
- }
- 
- /** Rectangle and external textures only support the clamp wrap mode and do not support
-  *  MIP maps.
-  */
- static inline bool GrTextureTypeHasRestrictedSampling(GrTextureType type) {
-     switch (type) {
-         case GrTextureType::k2D:
-             return false;
-         case GrTextureType::kRectangle:
-             return true;
-         case GrTextureType::kExternal:
-             return true;
-         default:
-             SK_ABORT("Unexpected texture type");
-     }
-+    SkUNREACHABLE;
- }
- 
- static constexpr bool GrSLTypeIsCombinedSamplerType(GrSLType type) {
-     switch (type) {
-         case kTexture2DSampler_GrSLType:
-         case kTextureExternalSampler_GrSLType:
-         case kTexture2DRectSampler_GrSLType:
-             return true;
-@@ -853,16 +855,17 @@ static inline size_t GrCompressedFormatD
-     switch (compressionType) {
-         case SkImage::kETC1_CompressionType:
-             SkASSERT((width & 3) == 0);
-             SkASSERT((height & 3) == 0);
-             return (width >> 2) * (height >> 2) * 8;
-     }
- 
-     SK_ABORT("Invalid pixel config");
-+    SkUNREACHABLE;
- }
- 
  /**
-  * Like SkColorType this describes a layout of pixel data in CPU memory. It specifies the channels,
-  * their type, and width. This exists so that the GPU backend can have private types that have no
-  * analog in the public facing SkColorType enum and omit types not implemented in the GPU backend.
-  * It does not refer to a texture format and the mapping to texture formats may be many-to-many.
-  * It does not specify the sRGB encoding of the stored values. The components are listed in order of
+diff --git a/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h b/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h
+--- a/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h
++++ b/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h
+@@ -325,6 +325,7 @@ static inline bool GrTextureTypeHasRestr
+         default:
+             SK_ABORT("Unexpected texture type");
+     }
++    SkUNREACHABLE;
+ }
+ 
+ //////////////////////////////////////////////////////////////////////////////
+diff --git a/gfx/skia/skia/src/core/SkDescriptor.cpp b/gfx/skia/skia/src/core/SkDescriptor.cpp
+--- a/gfx/skia/skia/src/core/SkDescriptor.cpp
++++ b/gfx/skia/skia/src/core/SkDescriptor.cpp
+@@ -26,6 +26,7 @@ std::unique_ptr<SkDescriptor> SkDescript
+ void SkDescriptor::operator delete(void* p) { ::operator delete(p); }
+ void* SkDescriptor::operator new(size_t) {
+     SK_ABORT("Descriptors are created with placement new.");
++    SkUNREACHABLE;
+ }
+ 
+ void SkDescriptor::flatten(SkWriteBuffer& buffer) const {
 diff --git a/gfx/skia/skia/src/core/SkGeometry.h b/gfx/skia/skia/src/core/SkGeometry.h
 --- a/gfx/skia/skia/src/core/SkGeometry.h
 +++ b/gfx/skia/skia/src/core/SkGeometry.h
-@@ -177,28 +177,30 @@ static inline bool SkCubicIsDegenerate(S
-         case SkCubicType::kLocalCusp:
-         case SkCubicType::kCuspAtInfinity:
-             return false;
-         case SkCubicType::kQuadratic:
-         case SkCubicType::kLineOrPoint:
+@@ -281,6 +281,7 @@ static inline bool SkCubicIsDegenerate(S
              return true;
      }
      SK_ABORT("Invalid SkCubicType");
@@ -133,12 +45,7 @@ diff --git a/gfx/skia/skia/src/core/SkGeometry.h b/gfx/skia/skia/src/core/SkGeom
  }
  
  static inline const char* SkCubicTypeName(SkCubicType type) {
-     switch (type) {
-         case SkCubicType::kSerpentine: return "kSerpentine";
-         case SkCubicType::kLoop: return "kLoop";
-         case SkCubicType::kLocalCusp: return "kLocalCusp";
-         case SkCubicType::kCuspAtInfinity: return "kCuspAtInfinity";
-         case SkCubicType::kQuadratic: return "kQuadratic";
+@@ -293,6 +294,7 @@ static inline const char* SkCubicTypeNam
          case SkCubicType::kLineOrPoint: return "kLineOrPoint";
      }
      SK_ABORT("Invalid SkCubicType");
@@ -146,20 +53,10 @@ diff --git a/gfx/skia/skia/src/core/SkGeometry.h b/gfx/skia/skia/src/core/SkGeom
  }
  
  /** Returns the cubic classification.
- 
-     t[],s[] are set to the two homogeneous parameter values at which points the lines L & M
-     intersect with K, sorted from smallest to largest and oriented so positive values of the
-     implicit are on the "left" side. For a serpentine curve they are the inflection points. For a
-     loop they are the double point. For a local cusp, they are both equal and denote the cusp point.
 diff --git a/gfx/skia/skia/src/core/SkTextBlob.cpp b/gfx/skia/skia/src/core/SkTextBlob.cpp
 --- a/gfx/skia/skia/src/core/SkTextBlob.cpp
 +++ b/gfx/skia/skia/src/core/SkTextBlob.cpp
-@@ -196,16 +196,17 @@ unsigned SkTextBlob::ScalarsPerGlyph(Gly
- }
- 
- void SkTextBlob::operator delete(void* p) {
-     sk_free(p);
- }
+@@ -204,6 +204,7 @@ void SkTextBlob::operator delete(void* p
  
  void* SkTextBlob::operator new(size_t) {
      SK_ABORT("All blobs are created by placement new.");
@@ -167,41 +64,10 @@ diff --git a/gfx/skia/skia/src/core/SkTextBlob.cpp b/gfx/skia/skia/src/core/SkTe
  }
  
  void* SkTextBlob::operator new(size_t, void* p) {
-     return p;
- }
- 
- SkTextBlobRunIterator::SkTextBlobRunIterator(const SkTextBlob* blob)
-     : fCurrentRun(SkTextBlob::RunRecord::First(blob)) {
-diff --git a/gfx/skia/skia/src/core/SkTypeface_remote.cpp b/gfx/skia/skia/src/core/SkTypeface_remote.cpp
---- a/gfx/skia/skia/src/core/SkTypeface_remote.cpp
-+++ b/gfx/skia/skia/src/core/SkTypeface_remote.cpp
-@@ -24,16 +24,17 @@ void SkScalerContextProxy::initCache(SkS
-     SkASSERT(cache != nullptr);
- 
-     fCache = cache;
-     fStrikeCache = strikeCache;
- }
- 
- unsigned SkScalerContextProxy::generateGlyphCount()  {
-     SK_ABORT("Should never be called.");
-+    SkUNREACHABLE;
- }
- 
- bool SkScalerContextProxy::generateAdvance(SkGlyph* glyph) {
-     return false;
- }
- 
- void SkScalerContextProxy::generateMetrics(SkGlyph* glyph) {
-     TRACE_EVENT1("skia", "generateMetrics", "rec", TRACE_STR_COPY(this->getRec().dump().c_str()));
 diff --git a/gfx/skia/skia/src/core/SkTypeface_remote.h b/gfx/skia/skia/src/core/SkTypeface_remote.h
 --- a/gfx/skia/skia/src/core/SkTypeface_remote.h
 +++ b/gfx/skia/skia/src/core/SkTypeface_remote.h
-@@ -58,46 +58,54 @@ public:
-             , fGlyphCount{glyphCount}
-             , fIsLogging{isLogging}
-             , fDiscardableManager{std::move(manager)} {}
-     SkFontID remoteTypefaceID() const {return fFontId;}
-     int glyphCount() const {return fGlyphCount;}
+@@ -95,12 +95,14 @@ public:
      bool isLogging() const {return fIsLogging;}
  
  protected:
@@ -209,129 +75,96 @@ diff --git a/gfx/skia/skia/src/core/SkTypeface_remote.h b/gfx/skia/skia/src/core
 +    int onGetUPEM() const override { SK_ABORT("Should never be called."); SkUNREACHABLE; }
      std::unique_ptr<SkStreamAsset> onOpenStream(int* ttcIndex) const override {
          SK_ABORT("Should never be called.");
-+	SkUNREACHABLE;
-     }
-     std::unique_ptr<SkFontData> onMakeFontData() const override {
-         SK_ABORT("Should never be called.");
-+	SkUNREACHABLE;
++        SkUNREACHABLE;
      }
      sk_sp<SkTypeface> onMakeClone(const SkFontArguments& args) const override {
          SK_ABORT("Should never be called.");
-+	SkUNREACHABLE;
++        SkUNREACHABLE;
      }
+     bool onGlyphMaskNeedsCurrentColor() const override {
+         return fGlyphMaskNeedsCurrentColor;
+@@ -108,10 +110,12 @@ protected:
      int onGetVariationDesignPosition(SkFontArguments::VariationPosition::Coordinate coordinates[],
                                       int coordinateCount) const override {
          SK_ABORT("Should never be called.");
-+	SkUNREACHABLE;
++        SkUNREACHABLE;
      }
      int onGetVariationDesignParameters(SkFontParameters::Variation::Axis parameters[],
                                         int parameterCount) const override {
          SK_ABORT("Should never be called.");
-+	SkUNREACHABLE;
++        SkUNREACHABLE;
      }
      void onGetFamilyName(SkString* familyName) const override {
          // Used by SkStrikeCache::DumpMemoryStatistics.
-         *familyName = "";
+@@ -119,15 +123,19 @@ protected:
+     }
+     bool onGetPostScriptName(SkString*) const override {
+         SK_ABORT("Should never be called.");
++        SkUNREACHABLE;
      }
      SkTypeface::LocalizedStrings* onCreateFamilyNameIterator() const override {
          SK_ABORT("Should never be called.");
-+	SkUNREACHABLE;
++        SkUNREACHABLE;
      }
      int onGetTableTags(SkFontTableTag tags[]) const override {
          SK_ABORT("Should never be called.");
-+	SkUNREACHABLE;
++        SkUNREACHABLE;
      }
      size_t onGetTableData(SkFontTableTag, size_t offset, size_t length, void* data) const override {
          SK_ABORT("Should never be called.");
-+	SkUNREACHABLE;
++        SkUNREACHABLE;
      }
-     SkScalerContext* onCreateScalerContext(const SkScalerContextEffects& effects,
-                                            const SkDescriptor* desc) const override {
-         return new SkScalerContextProxy(sk_ref_sp(const_cast<SkTypefaceProxy*>(this)), effects,
-                                         desc, fDiscardableManager);
+     std::unique_ptr<SkScalerContext> onCreateScalerContext(
+         const SkScalerContextEffects& effects, const SkDescriptor* desc) const override
+@@ -141,20 +149,25 @@ protected:
      }
-     void onFilterRec(SkScalerContextRec* rec) const override {
-         // The rec filtering is already applied by the server when generating
-@@ -111,26 +119,28 @@ protected:
+     void onGetFontDescriptor(SkFontDescriptor*, bool*) const override {
+         SK_ABORT("Should never be called.");
++        SkUNREACHABLE;
+     }
+     void getGlyphToUnicodeMap(SkUnichar*) const override {
+         SK_ABORT("Should never be called.");
++        SkUNREACHABLE;
      }
  
      void getPostScriptGlyphNames(SkString*) const override {
          SK_ABORT("Should never be called.");
++        SkUNREACHABLE;
      }
  
      std::unique_ptr<SkAdvancedTypefaceMetrics> onGetAdvancedMetrics() const override {
          SK_ABORT("Should never be called.");
-+	SkUNREACHABLE;
++        SkUNREACHABLE;
      }
      void onCharsToGlyphs(const SkUnichar* chars, int count, SkGlyphID glyphs[]) const override {
          SK_ABORT("Should never be called.");
++        SkUNREACHABLE;
      }
      int onCountGlyphs() const override {
          return this->glyphCount();
-     }
+@@ -162,6 +175,7 @@ protected:
  
      void* onGetCTFontRef() const override {
          SK_ABORT("Should never be called.");
-+	SkUNREACHABLE;
++        SkUNREACHABLE;
      }
  
  private:
-     const SkFontID                                  fFontId;
-     const int                                       fGlyphCount;
-     const bool                                      fIsLogging;
-     sk_sp<SkStrikeClient::DiscardableHandleManager> fDiscardableManager;
- 
 diff --git a/gfx/skia/skia/src/effects/imagefilters/SkBlurImageFilter.cpp b/gfx/skia/skia/src/effects/imagefilters/SkBlurImageFilter.cpp
 --- a/gfx/skia/skia/src/effects/imagefilters/SkBlurImageFilter.cpp
 +++ b/gfx/skia/skia/src/effects/imagefilters/SkBlurImageFilter.cpp
-@@ -139,16 +139,17 @@ static GrTextureDomain::Mode to_texture_
-         case SkTileMode::kDecal:
-             return GrTextureDomain::kDecal_Mode;
-         case SkTileMode::kMirror:
-             // TODO (michaelludwig) - Support mirror mode, treat as repeat for now
-         case SkTileMode::kRepeat:
-             return GrTextureDomain::kRepeat_Mode;
-         default:
-             SK_ABORT("Unsupported tile mode.");
-+	    SkUNREACHABLE;
-     }
- }
- #endif
- 
- // This is defined by the SVG spec:
- // https://drafts.fxtf.org/filter-effects/#feGaussianBlurElement
- static int calculate_window(double sigma) {
-     // NB 136 is the largest sigma that will not cause a buffer full of 255 mask values to overflow
-diff --git a/gfx/skia/skia/src/effects/imagefilters/SkLightingImageFilter.cpp b/gfx/skia/skia/src/effects/imagefilters/SkLightingImageFilter.cpp
---- a/gfx/skia/skia/src/effects/imagefilters/SkLightingImageFilter.cpp
-+++ b/gfx/skia/skia/src/effects/imagefilters/SkLightingImageFilter.cpp
-@@ -1696,16 +1696,17 @@ static SkImageFilterLight* create_random
-             return new SkPointLight(random_point3(random), random->nextU());
+@@ -815,6 +815,7 @@ sk_sp<SkSpecialImage> cpu_blur(
+             return maker;
          }
-         case 2: {
-             return new SkSpotLight(random_point3(random), random_point3(random),
-                                    random->nextUScalar1(), random->nextUScalar1(), random->nextU());
-         }
-         default:
-             SK_ABORT("Unexpected value.");
-+	    SkUNREACHABLE;
-     }
- }
+         SK_ABORT("Sigma is out of range.");
++        SkUNREACHABLE;
+     };
  
- std::unique_ptr<GrFragmentProcessor> GrDiffuseLightingEffect::TestCreate(GrProcessorTestData* d) {
-     int texIdx = d->fRandom->nextBool() ? GrProcessorUnitTest::kSkiaPMTextureIdx
-                                         : GrProcessorUnitTest::kAlphaTextureIdx;
-     sk_sp<GrTextureProxy> proxy = d->textureProxy(texIdx);
-     SkScalar surfaceScale = d->fRandom->nextSScalar1();
+     PassMaker* makerX = makeMaker(sigma.x());
 diff --git a/gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp b/gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp
 --- a/gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp
 +++ b/gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp
-@@ -64,16 +64,17 @@ int SkFontMgr_Indirect::onCountFamilies(
- }
- 
- void SkFontMgr_Indirect::onGetFamilyName(int index, SkString* familyName) const {
-     SK_ABORT("Not implemented");
- }
+@@ -69,6 +69,7 @@ void SkFontMgr_Indirect::onGetFamilyName
  
  SkFontStyleSet* SkFontMgr_Indirect::onCreateStyleSet(int index) const {
      SK_ABORT("Not implemented");
@@ -339,1482 +172,10 @@ diff --git a/gfx/skia/skia/src/fonts/SkFontMgr_indirect.cpp b/gfx/skia/skia/src/
  }
  
  SkFontStyleSet* SkFontMgr_Indirect::onMatchFamily(const char familyName[]) const {
-     return new SkStyleSet_Indirect(this, -1, fProxy->matchName(familyName));
- }
- 
- SkTypeface* SkFontMgr_Indirect::createTypefaceFromFontId(const SkFontIdentity& id) const {
-     if (id.fDataId == SkFontIdentity::kInvalidDataId) {
-diff --git a/gfx/skia/skia/src/gpu/GrDataUtils.cpp b/gfx/skia/skia/src/gpu/GrDataUtils.cpp
---- a/gfx/skia/skia/src/gpu/GrDataUtils.cpp
-+++ b/gfx/skia/skia/src/gpu/GrDataUtils.cpp
-@@ -123,25 +123,27 @@ static int num_ETC1_blocks(int w, int h)
- 
- size_t GrCompressedDataSize(SkImage::CompressionType type, int width, int height) {
-     switch (type) {
-         case SkImage::kETC1_CompressionType:
-             int numBlocks = num_ETC1_blocks(width, height);
-             return numBlocks * sizeof(ETC1Block);
-     }
-     SK_ABORT("Unexpected compression type");
-+    SkUNREACHABLE;
- }
- 
- size_t GrCompressedRowBytes(SkImage::CompressionType type, int width) {
-     switch (type) {
-         case SkImage::kETC1_CompressionType:
-             int numBlocksWidth = num_ETC1_blocks_w(width);
-             return numBlocksWidth * sizeof(ETC1Block);
-     }
-     SK_ABORT("Unexpected compression type");
-+    SkUNREACHABLE;
- }
- 
- // Fill in 'dest' with ETC1 blocks derived from 'colorf'
- static void fillin_ETC1_with_color(int width, int height, const SkColor4f& colorf, void* dest) {
-     SkColor color = colorf.toSkColor();
- 
-     ETC1Block block;
-     create_etc1_block(color, &block);
-diff --git a/gfx/skia/skia/src/gpu/GrFragmentProcessor.h b/gfx/skia/skia/src/gpu/GrFragmentProcessor.h
---- a/gfx/skia/skia/src/gpu/GrFragmentProcessor.h
-+++ b/gfx/skia/skia/src/gpu/GrFragmentProcessor.h
-@@ -370,16 +370,17 @@ protected:
-                                                    const Args&... samps) {
-         return (0 == i) ? samp0 : IthTextureSampler(i - 1, samps...);
-     }
-     inline static const TextureSampler& IthTextureSampler(int i);
- 
- private:
-     virtual SkPMColor4f constantOutputForConstantInput(const SkPMColor4f& /* inputColor */) const {
-         SK_ABORT("Subclass must override this if advertising this optimization.");
-+	SkUNREACHABLE;
-     }
- 
-     /** Returns a new instance of the appropriate *GL* implementation class
-         for the given GrFragmentProcessor; caller is responsible for deleting
-         the object. */
-     virtual GrGLSLFragmentProcessor* onCreateGLSLInstance() const = 0;
- 
-     /** Implemented using GLFragmentProcessor::GenKey as described in this class's comment. */
-diff --git a/gfx/skia/skia/src/gpu/GrPathRendering.cpp b/gfx/skia/skia/src/gpu/GrPathRendering.cpp
---- a/gfx/skia/skia/src/gpu/GrPathRendering.cpp
-+++ b/gfx/skia/skia/src/gpu/GrPathRendering.cpp
-@@ -14,16 +14,17 @@
- #include "src/gpu/GrPathRendering.h"
- #include "src/gpu/GrProgramInfo.h"
- #include "src/gpu/GrRenderTarget.h"
- 
- const GrUserStencilSettings& GrPathRendering::GetStencilPassSettings(FillType fill) {
-     switch (fill) {
-         default:
-             SK_ABORT("Unexpected path fill.");
-+	    SkUNREACHABLE;
-         case GrPathRendering::kWinding_FillType: {
-             constexpr static GrUserStencilSettings kWindingStencilPass(
-                 GrUserStencilSettings::StaticInit<
-                     0xffff,
-                     GrUserStencilTest::kAlwaysIfInClip,
-                     0xffff,
-                     GrUserStencilOp::kIncWrap,
-                     GrUserStencilOp::kIncWrap,
-diff --git a/gfx/skia/skia/src/gpu/GrPathRendering.h b/gfx/skia/skia/src/gpu/GrPathRendering.h
---- a/gfx/skia/skia/src/gpu/GrPathRendering.h
-+++ b/gfx/skia/skia/src/gpu/GrPathRendering.h
-@@ -58,16 +58,17 @@ public:
-                 return 1;
-             case kTranslate_PathTransformType:
-                 return 2;
-             case kAffine_PathTransformType:
-                 return 6;
- 
-             default:
-                 SK_ABORT("Unknown path transform type");
-+		SkUNREACHABLE;
-         }
-     }
- 
-     // No native support for inverse at this time
-     enum FillType {
-         /** Specifies that "inside" is computed by a non-zero sum of signed
-             edge crossings
-         */
-diff --git a/gfx/skia/skia/src/gpu/GrProcessorUnitTest.cpp b/gfx/skia/skia/src/gpu/GrProcessorUnitTest.cpp
---- a/gfx/skia/skia/src/gpu/GrProcessorUnitTest.cpp
-+++ b/gfx/skia/skia/src/gpu/GrProcessorUnitTest.cpp
-@@ -15,11 +15,12 @@ std::unique_ptr<GrFragmentProcessor> GrP
-     std::unique_ptr<GrFragmentProcessor> fp;
-     do {
-         fp = GrFragmentProcessorTestFactory::Make(data);
-         SkASSERT(fp);
-     } while (fp->numChildProcessors() != 0);
-     return fp;
- #else
-     SK_ABORT("Should not be called if !SK_ALLOW_STATIC_GLOBAL_INITIALIZERS");
-+    SkUNREACHABLE;
- #endif
- }
- #endif
-diff --git a/gfx/skia/skia/src/gpu/GrReducedClip.cpp b/gfx/skia/skia/src/gpu/GrReducedClip.cpp
---- a/gfx/skia/skia/src/gpu/GrReducedClip.cpp
-+++ b/gfx/skia/skia/src/gpu/GrReducedClip.cpp
-@@ -520,16 +520,17 @@ GrReducedClip::ClipResult GrReducedClip:
-                                        GrAA(element->isAA()));
- 
-         case Element::DeviceSpaceType::kPath:
-             return this->addAnalyticFP(element->getDeviceSpacePath(),
-                                        Invert(element->isInverseFilled()), GrAA(element->isAA()));
-     }
- 
-     SK_ABORT("Unexpected DeviceSpaceType");
-+    SkUNREACHABLE;
- }
- 
- GrReducedClip::ClipResult GrReducedClip::clipOutsideElement(const Element* element) {
-     switch (element->getDeviceSpaceType()) {
-         case Element::DeviceSpaceType::kEmpty:
-             return ClipResult::kMadeEmpty;
- 
-         case Element::DeviceSpaceType::kRect:
-@@ -586,16 +587,17 @@ GrReducedClip::ClipResult GrReducedClip:
-         }
- 
-         case Element::DeviceSpaceType::kPath:
-             return this->addAnalyticFP(element->getDeviceSpacePath(),
-                                        Invert(!element->isInverseFilled()), GrAA(element->isAA()));
-     }
- 
-     SK_ABORT("Unexpected DeviceSpaceType");
-+    SkUNREACHABLE;
- }
- 
- inline void GrReducedClip::addWindowRectangle(const SkRect& elementInteriorRect, bool elementIsAA) {
-     SkIRect window;
-     if (!elementIsAA) {
-         elementInteriorRect.round(&window);
-     } else {
-         elementInteriorRect.roundIn(&window);
-diff --git a/gfx/skia/skia/src/gpu/GrResourceCache.cpp b/gfx/skia/skia/src/gpu/GrResourceCache.cpp
---- a/gfx/skia/skia/src/gpu/GrResourceCache.cpp
-+++ b/gfx/skia/skia/src/gpu/GrResourceCache.cpp
-@@ -35,27 +35,29 @@ DECLARE_SKMESSAGEBUS_MESSAGE(GrTextureFr
- //////////////////////////////////////////////////////////////////////////////
- 
- GrScratchKey::ResourceType GrScratchKey::GenerateResourceType() {
-     static std::atomic<int32_t> nextType{INHERITED::kInvalidDomain + 1};
- 
-     int32_t type = nextType++;
-     if (type > SkTo<int32_t>(UINT16_MAX)) {
-         SK_ABORT("Too many Resource Types");
-+	SkUNREACHABLE;
-     }
- 
-     return static_cast<ResourceType>(type);
- }
- 
- GrUniqueKey::Domain GrUniqueKey::GenerateDomain() {
-     static std::atomic<int32_t> nextDomain{INHERITED::kInvalidDomain + 1};
- 
-     int32_t domain = nextDomain++;
-     if (domain > SkTo<int32_t>(UINT16_MAX)) {
-         SK_ABORT("Too many GrUniqueKey Domains");
-+	SkUNREACHABLE;
-     }
- 
-     return static_cast<Domain>(domain);
- }
- 
- uint32_t GrResourceKeyHash(const uint32_t* data, size_t size) {
-     return SkOpts::hash(data, size);
- }
-diff --git a/gfx/skia/skia/src/gpu/GrShaderVar.cpp b/gfx/skia/skia/src/gpu/GrShaderVar.cpp
---- a/gfx/skia/skia/src/gpu/GrShaderVar.cpp
-+++ b/gfx/skia/skia/src/gpu/GrShaderVar.cpp
-@@ -13,30 +13,32 @@ static const char* type_modifier_string(
-     switch (t) {
-         case GrShaderVar::kNone_TypeModifier: return "";
-         case GrShaderVar::kIn_TypeModifier: return "in";
-         case GrShaderVar::kInOut_TypeModifier: return "inout";
-         case GrShaderVar::kOut_TypeModifier: return "out";
-         case GrShaderVar::kUniform_TypeModifier: return "uniform";
-     }
-     SK_ABORT("Unknown shader variable type modifier.");
-+    SkUNREACHABLE;
- }
- 
- void GrShaderVar::setIOType(GrIOType ioType) {
-     switch (ioType) {
-         case kRW_GrIOType:
-             return;
-         case kRead_GrIOType:
-             this->addModifier("readonly");
-             return;
-         case kWrite_GrIOType:
-             this->addModifier("writeonly");
-             return;
-     }
-     SK_ABORT("Unknown io type.");
-+    SkUNREACHABLE;
- }
- 
- void GrShaderVar::appendDecl(const GrShaderCaps* shaderCaps, SkString* out) const {
-     SkString layout = fLayoutQualifier;
-     if (!fLayoutQualifier.isEmpty()) {
-         out->appendf("layout(%s) ", fLayoutQualifier.c_str());
-     }
-     out->append(fExtraModifiers);
-diff --git a/gfx/skia/skia/src/gpu/SkGpuDevice.cpp b/gfx/skia/skia/src/gpu/SkGpuDevice.cpp
---- a/gfx/skia/skia/src/gpu/SkGpuDevice.cpp
-+++ b/gfx/skia/skia/src/gpu/SkGpuDevice.cpp
-@@ -278,16 +278,17 @@ static inline GrPrimitiveType point_mode
-         case SkCanvas::kPoints_PointMode:
-             return GrPrimitiveType::kPoints;
-         case SkCanvas::kLines_PointMode:
-             return GrPrimitiveType::kLines;
-         case SkCanvas::kPolygon_PointMode:
-             return GrPrimitiveType::kLineStrip;
-     }
-     SK_ABORT("Unexpected mode");
-+    SkUNREACHABLE;
- }
- 
- void SkGpuDevice::drawPoints(SkCanvas::PointMode mode,
-                              size_t count, const SkPoint pts[], const SkPaint& paint) {
-     ASSERT_SINGLE_OWNER
-     GR_CREATE_TRACE_MARKER_CONTEXT("SkGpuDevice", "drawPoints", fContext.get());
-     SkScalar width = paint.getStrokeWidth();
-     if (width < 0) {
-diff --git a/gfx/skia/skia/src/gpu/SkGr.h b/gfx/skia/skia/src/gpu/SkGr.h
---- a/gfx/skia/skia/src/gpu/SkGr.h
-+++ b/gfx/skia/skia/src/gpu/SkGr.h
-@@ -154,16 +154,17 @@ static inline GrPrimitiveType SkVertexMo
-         case SkVertices::kTriangles_VertexMode:
-             return GrPrimitiveType::kTriangles;
-         case SkVertices::kTriangleStrip_VertexMode:
-             return GrPrimitiveType::kTriangleStrip;
-         case SkVertices::kTriangleFan_VertexMode:
-             break;
-     }
-     SK_ABORT("Invalid mode");
-+    SkUNREACHABLE;
- }
- 
- //////////////////////////////////////////////////////////////////////////////
- 
- GR_STATIC_ASSERT((int)kZero_GrBlendCoeff == (int)SkBlendModeCoeff::kZero);
- GR_STATIC_ASSERT((int)kOne_GrBlendCoeff == (int)SkBlendModeCoeff::kOne);
- GR_STATIC_ASSERT((int)kSC_GrBlendCoeff == (int)SkBlendModeCoeff::kSC);
- GR_STATIC_ASSERT((int)kISC_GrBlendCoeff == (int)SkBlendModeCoeff::kISC);
-diff --git a/gfx/skia/skia/src/gpu/ccpr/GrCCCoverageProcessor.h b/gfx/skia/skia/src/gpu/ccpr/GrCCCoverageProcessor.h
---- a/gfx/skia/skia/src/gpu/ccpr/GrCCCoverageProcessor.h
-+++ b/gfx/skia/skia/src/gpu/ccpr/GrCCCoverageProcessor.h
-@@ -235,16 +235,17 @@ inline const char* GrCCCoverageProcessor
-     switch (type) {
-         case PrimitiveType::kTriangles: return "kTriangles";
-         case PrimitiveType::kWeightedTriangles: return "kWeightedTriangles";
-         case PrimitiveType::kQuadratics: return "kQuadratics";
-         case PrimitiveType::kCubics: return "kCubics";
-         case PrimitiveType::kConics: return "kConics";
-     }
-     SK_ABORT("Invalid PrimitiveType");
-+    SkUNREACHABLE;
- }
- 
- inline void GrCCCoverageProcessor::TriPointInstance::set(
-         const SkPoint p[3], const Sk2f& translate, Ordering ordering) {
-     this->set(p[0], p[1], p[2], translate, ordering);
- }
- 
- inline void GrCCCoverageProcessor::TriPointInstance::set(
-diff --git a/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.cpp b/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.cpp
---- a/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.cpp
-+++ b/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.cpp
-@@ -55,16 +55,17 @@ static GrCCStrokeGeometry::Verb join_ver
-         case SkPaint::kBevel_Join:
-             return Verb::kBevelJoin;
-         case SkPaint::kMiter_Join:
-             return Verb::kMiterJoin;
-         case SkPaint::kRound_Join:
-             return Verb::kRoundJoin;
-     }
-     SK_ABORT("Invalid SkPaint::Join.");
-+    SkUNREACHABLE;
- }
- 
- void GrCCStrokeGeometry::beginPath(const SkStrokeRec& stroke, float strokeDevWidth,
-                                    InstanceTallies* tallies) {
-     SkASSERT(!fInsideContour);
-     // Client should have already converted the stroke to device space (i.e. width=1 for hairline).
-     SkASSERT(strokeDevWidth > 0);
- 
-diff --git a/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.h b/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.h
---- a/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.h
-+++ b/gfx/skia/skia/src/gpu/ccpr/GrCCStrokeGeometry.h
-@@ -170,10 +170,11 @@ inline bool GrCCStrokeGeometry::IsIntern
-         case Verb::kMiterJoin:
-         case Verb::kRoundJoin:
-         case Verb::kSquareCap:
-         case Verb::kRoundCap:
-         case Verb::kEndContour:
-             return false;
-     }
-     SK_ABORT("Invalid GrCCStrokeGeometry::Verb.");
-+    SkUNREACHABLE;
- }
- #endif
-diff --git a/gfx/skia/skia/src/gpu/ccpr/GrCoverageCountingPathRenderer.cpp b/gfx/skia/skia/src/gpu/ccpr/GrCoverageCountingPathRenderer.cpp
---- a/gfx/skia/skia/src/gpu/ccpr/GrCoverageCountingPathRenderer.cpp
-+++ b/gfx/skia/skia/src/gpu/ccpr/GrCoverageCountingPathRenderer.cpp
-@@ -159,16 +159,17 @@ GrPathRenderer::CanDrawPath GrCoverageCo
-             return CanDrawPath::kYes;
-         }
- 
-         case SkStrokeRec::kStrokeAndFill_Style:
-             return CanDrawPath::kNo;
-     }
- 
-     SK_ABORT("Invalid stroke style.");
-+    SkUNREACHABLE;
- }
- 
- bool GrCoverageCountingPathRenderer::onDrawPath(const DrawPathArgs& args) {
-     SkASSERT(!fFlushing);
- 
-     SkIRect clipIBounds;
-     GrRenderTargetContext* rtc = args.fRenderTargetContext;
-     args.fClip->getConservativeBounds(rtc->width(), rtc->height(), &clipIBounds, nullptr);
-diff --git a/gfx/skia/skia/src/gpu/ccpr/GrVSCoverageProcessor.cpp b/gfx/skia/skia/src/gpu/ccpr/GrVSCoverageProcessor.cpp
---- a/gfx/skia/skia/src/gpu/ccpr/GrVSCoverageProcessor.cpp
-+++ b/gfx/skia/skia/src/gpu/ccpr/GrVSCoverageProcessor.cpp
-@@ -545,9 +545,10 @@ GrGLSLPrimitiveProcessor* GrVSCoveragePr
-         case PrimitiveType::kWeightedTriangles:
-             return new Impl(std::move(shader), 3);
-         case PrimitiveType::kQuadratics:
-         case PrimitiveType::kCubics:
-         case PrimitiveType::kConics:
-             return new Impl(std::move(shader), 4);
-     }
-     SK_ABORT("Invalid PrimitiveType");
-+    SkUNREACHABLE;
- }
-diff --git a/gfx/skia/skia/src/gpu/dawn/GrDawnOpsRenderPass.cpp b/gfx/skia/skia/src/gpu/dawn/GrDawnOpsRenderPass.cpp
---- a/gfx/skia/skia/src/gpu/dawn/GrDawnOpsRenderPass.cpp
-+++ b/gfx/skia/skia/src/gpu/dawn/GrDawnOpsRenderPass.cpp
-@@ -34,17 +34,19 @@ static dawn::LoadOp to_dawn_load_op(GrLo
-             // Load should be equivalent to DontCare for desktop; Clear would
-             // probably be better for tilers. If Dawn does add DontCare
-             // as an extension, use it here.
-             return dawn::LoadOp::Load;
-         case GrLoadOp::kClear:
-             return dawn::LoadOp::Clear;
-         default:
-             SK_ABORT("Invalid LoadOp");
-+	    SkUNREACHABLE;
-     }
-+    SkUNREACHABLE;
- }
- 
- GrDawnOpsRenderPass::GrDawnOpsRenderPass(GrDawnGpu* gpu, GrRenderTarget* rt, GrSurfaceOrigin origin,
-                                          const LoadAndStoreInfo& colorInfo,
-                                          const StencilLoadAndStoreInfo& stencilInfo)
-         : INHERITED(rt, origin)
-         , fGpu(gpu)
-         , fColorInfo(colorInfo) {
-diff --git a/gfx/skia/skia/src/gpu/dawn/GrDawnUniformHandler.cpp b/gfx/skia/skia/src/gpu/dawn/GrDawnUniformHandler.cpp
---- a/gfx/skia/skia/src/gpu/dawn/GrDawnUniformHandler.cpp
-+++ b/gfx/skia/skia/src/gpu/dawn/GrDawnUniformHandler.cpp
-@@ -90,16 +90,17 @@ uint32_t grsltype_to_alignment_mask(GrSL
-         case kTexture2DSampler_GrSLType:
-         case kTextureExternalSampler_GrSLType:
-         case kTexture2DRectSampler_GrSLType:
-         case kTexture2D_GrSLType:
-         case kSampler_GrSLType:
-             break;
-     }
-     SK_ABORT("Unexpected type");
-+    SkUNREACHABLE;
- }
- 
- static inline uint32_t grsltype_to_size(GrSLType type) {
-     switch(type) {
-         case kByte_GrSLType:
-         case kUByte_GrSLType:
-             return 1;
-         case kByte2_GrSLType:
-@@ -168,16 +169,17 @@ static inline uint32_t grsltype_to_size(
-         case kTexture2DSampler_GrSLType:
-         case kTextureExternalSampler_GrSLType:
-         case kTexture2DRectSampler_GrSLType:
-         case kTexture2D_GrSLType:
-         case kSampler_GrSLType:
-             break;
-     }
-     SK_ABORT("Unexpected type");
-+    SkUNREACHABLE;
- }
- 
- uint32_t get_ubo_offset(uint32_t* currentOffset,
-                         GrSLType type,
-                         int arrayCount) {
-     uint32_t alignmentMask = grsltype_to_alignment_mask(type);
-     // We want to use the std140 layout here, so we must make arrays align to 16 bytes.
-     if (arrayCount || type == kFloat2x2_GrSLType) {
-diff --git a/gfx/skia/skia/src/gpu/dawn/GrDawnVaryingHandler.cpp b/gfx/skia/skia/src/gpu/dawn/GrDawnVaryingHandler.cpp
---- a/gfx/skia/skia/src/gpu/dawn/GrDawnVaryingHandler.cpp
-+++ b/gfx/skia/skia/src/gpu/dawn/GrDawnVaryingHandler.cpp
-@@ -71,16 +71,17 @@ static inline int grsltype_to_location_s
-         case kUByte_GrSLType:
-              return 1;
-         case kTexture2D_GrSLType:
-              return 0;
-         case kSampler_GrSLType:
-              return 0;
-     }
-     SK_ABORT("Unexpected type");
-+    SkUNREACHABLE;
- }
- 
- static void finalize_helper(GrDawnVaryingHandler::VarArray& vars) {
-     int locationIndex = 0;
-     for (int i = 0; i < vars.count(); ++i) {
-         GrShaderVar& var = vars[i];
-         SkString location;
-         location.appendf("location = %d", locationIndex);
-diff --git a/gfx/skia/skia/src/gpu/effects/GrConstColorProcessor.fp b/gfx/skia/skia/src/gpu/effects/GrConstColorProcessor.fp
---- a/gfx/skia/skia/src/gpu/effects/GrConstColorProcessor.fp
-+++ b/gfx/skia/skia/src/gpu/effects/GrConstColorProcessor.fp
-@@ -53,16 +53,17 @@ void main() {
-             case InputMode::kIgnore:
-                 return color;
-             case InputMode::kModulateA:
-                 return color * input.fA;
-             case InputMode::kModulateRGBA:
-                 return color * input;
-         }
-         SK_ABORT("Unexpected mode");
-+	SkUNREACHABLE;
-     }
- }
- 
- @test(d) {
-     SkPMColor4f color;
-     int colorPicker = d->fRandom->nextULessThan(3);
-     switch (colorPicker) {
-         case 0: {
-diff --git a/gfx/skia/skia/src/gpu/effects/GrCoverageSetOpXP.cpp b/gfx/skia/skia/src/gpu/effects/GrCoverageSetOpXP.cpp
---- a/gfx/skia/skia/src/gpu/effects/GrCoverageSetOpXP.cpp
-+++ b/gfx/skia/skia/src/gpu/effects/GrCoverageSetOpXP.cpp
-@@ -199,16 +199,17 @@ const GrXPFactory* GrCoverageSetOpXPFact
-                 static _CONSTEXPR_ const GrCoverageSetOpXPFactory gRevDiffCDXPF(
-                         SkRegion::kReverseDifference_Op, false);
-                 return &gRevDiffCDXPF;
-             }
-         }
-     }
- #undef _CONSTEXPR_
-     SK_ABORT("Unknown region op.");
-+    SkUNREACHABLE;
- }
- 
- sk_sp<const GrXferProcessor> GrCoverageSetOpXPFactory::makeXferProcessor(
-         const GrProcessorAnalysisColor&,
-         GrProcessorAnalysisCoverage,
-         bool hasMixedSamples,
-         const GrCaps& caps,
-         GrClampType) const {
-diff --git a/gfx/skia/skia/src/gpu/effects/GrPorterDuffXferProcessor.cpp b/gfx/skia/skia/src/gpu/effects/GrPorterDuffXferProcessor.cpp
---- a/gfx/skia/skia/src/gpu/effects/GrPorterDuffXferProcessor.cpp
-+++ b/gfx/skia/skia/src/gpu/effects/GrPorterDuffXferProcessor.cpp
-@@ -748,16 +748,17 @@ const GrXPFactory* GrPorterDuffXPFactory
-         case SkBlendMode::kPlus:
-             return &gPlusPDXPF;
-         case SkBlendMode::kModulate:
-             return &gModulatePDXPF;
-         case SkBlendMode::kScreen:
-             return &gScreenPDXPF;
-         default:
-             SK_ABORT("Unexpected blend mode.");
-+	    SkUNREACHABLE;
-     }
- }
- 
- sk_sp<const GrXferProcessor> GrPorterDuffXPFactory::makeXferProcessor(
-         const GrProcessorAnalysisColor& color, GrProcessorAnalysisCoverage coverage,
-         bool hasMixedSamples, const GrCaps& caps, GrClampType clampType) const {
-     BlendFormula blendFormula;
-     bool isLCD = coverage == GrProcessorAnalysisCoverage::kLCD;
-diff --git a/gfx/skia/skia/src/gpu/effects/GrSkSLFP.cpp b/gfx/skia/skia/src/gpu/effects/GrSkSLFP.cpp
---- a/gfx/skia/skia/src/gpu/effects/GrSkSLFP.cpp
-+++ b/gfx/skia/skia/src/gpu/effects/GrSkSLFP.cpp
-@@ -149,16 +149,17 @@ public:
-             return kHalf4x4_GrSLType;
-         } else if (type == *fContext.fBool_Type) {
-             return kBool_GrSLType;
-         } else if (type == *fContext.fInt_Type) {
-             return kInt_GrSLType;
-         }
-         printf("%s\n", SkSL::String(type.fName).c_str());
-         SK_ABORT("unsupported uniform type");
-+	SkUNREACHABLE;
-     }
- 
-     void emitCode(EmitArgs& args) override {
-         for (const auto& v : fInAndUniformVars) {
-             if (v->fModifiers.fFlags & SkSL::Modifiers::kUniform_Flag && v->fType !=
-                                                                 *fContext.fFragmentProcessor_Type) {
-                 fUniformHandles.push_back(args.fUniformHandler->addUniform(
-                                                                    kFragment_GrShaderFlag,
-@@ -563,11 +564,12 @@ std::unique_ptr<GrFragmentProcessor> GrS
-             }
-             std::unique_ptr<GrSkSLFP> result = GrSkSLFP::Make(d->context(), overdrawIndex,
-                                                               "Overdraw", SKSL_OVERDRAW_SRC,
-                                                               &inputs, sizeof(inputs));
-             return std::unique_ptr<GrFragmentProcessor>(result.release());
-         }
-     }
-     SK_ABORT("unreachable");
-+    SkUNREACHABLE;
- }
- 
- #endif
-diff --git a/gfx/skia/skia/src/gpu/effects/generated/GrConstColorProcessor.h b/gfx/skia/skia/src/gpu/effects/generated/GrConstColorProcessor.h
---- a/gfx/skia/skia/src/gpu/effects/generated/GrConstColorProcessor.h
-+++ b/gfx/skia/skia/src/gpu/effects/generated/GrConstColorProcessor.h
-@@ -36,16 +36,17 @@ public:
-             case InputMode::kIgnore:
-                 return color;
-             case InputMode::kModulateA:
-                 return color * input.fA;
-             case InputMode::kModulateRGBA:
-                 return color * input;
-         }
-         SK_ABORT("Unexpected mode");
-+	SkUNREACHABLE;
-     }
-     static std::unique_ptr<GrFragmentProcessor> Make(SkPMColor4f color, InputMode mode) {
-         return std::unique_ptr<GrFragmentProcessor>(new GrConstColorProcessor(color, mode));
-     }
-     GrConstColorProcessor(const GrConstColorProcessor& src);
-     std::unique_ptr<GrFragmentProcessor> clone() const override;
-     const char* name() const override { return "ConstColorProcessor"; }
-     SkPMColor4f color;
-diff --git a/gfx/skia/skia/src/gpu/geometry/GrShape.cpp b/gfx/skia/skia/src/gpu/geometry/GrShape.cpp
---- a/gfx/skia/skia/src/gpu/geometry/GrShape.cpp
-+++ b/gfx/skia/skia/src/gpu/geometry/GrShape.cpp
-@@ -159,16 +159,17 @@ SkRect GrShape::bounds() const {
-             return fRRectData.fRRect.getBounds();
-         case Type::kArc:
-             // Could make this less conservative by looking at angles.
-             return fArcData.fOval;
-         case Type::kPath:
-             return this->path().getBounds();
-     }
-     SK_ABORT("Unknown shape type");
-+    SkUNREACHABLE;
- }
- 
- SkRect GrShape::styledBounds() const {
-     if (this->isEmpty() && !fStyle.hasNonDashPathEffect()) {
-         return SkRect::MakeEmpty();
-     }
- 
-     SkRect bounds;
-@@ -249,16 +250,17 @@ int GrShape::unstyledKeySize() const {
-             if (dataKeySize >= 0) {
-                 return dataKeySize;
-             }
-             // The key is the path ID and fill type.
-             return 2;
-         }
-     }
-     SK_ABORT("Should never get here.");
-+    SkUNREACHABLE;
- }
- 
- void GrShape::writeUnstyledKey(uint32_t* key) const {
-     SkASSERT(this->unstyledKeySize());
-     SkDEBUGCODE(uint32_t* origKey = key;)
-     if (fInheritedKey.count()) {
-         memcpy(key, fInheritedKey.get(), sizeof(uint32_t) * fInheritedKey.count());
-         SkDEBUGCODE(key += fInheritedKey.count();)
-diff --git a/gfx/skia/skia/src/gpu/gl/GrGLCaps.cpp b/gfx/skia/skia/src/gpu/gl/GrGLCaps.cpp
---- a/gfx/skia/skia/src/gpu/gl/GrGLCaps.cpp
-+++ b/gfx/skia/skia/src/gpu/gl/GrGLCaps.cpp
-@@ -4154,16 +4154,17 @@ GrBackendFormat GrGLCaps::getBackendForm
-         case SkImage::kETC1_CompressionType:
-             // if ETC2 is available default to that format
-             if (this->isFormatTexturable(GrGLFormat::kCOMPRESSED_RGB8_ETC2)) {
-                 return GrBackendFormat::MakeGL(GR_GL_COMPRESSED_RGB8_ETC2, GR_GL_TEXTURE_2D);
-             }
-             return GrBackendFormat::MakeGL(GR_GL_COMPRESSED_ETC1_RGB8, GR_GL_TEXTURE_2D);
-     }
-     SK_ABORT("Invalid compression type");
-+    SkUNREACHABLE;
- }
- 
- GrSwizzle GrGLCaps::getTextureSwizzle(const GrBackendFormat& format, GrColorType colorType) const {
-     const auto& info = this->getFormatInfo(format.asGLFormat());
-     for (int i = 0; i < info.fColorTypeInfoCount; ++i) {
-         const auto& ctInfo = info.fColorTypeInfos[i];
-         if (ctInfo.fColorType == colorType) {
-             return ctInfo.fTextureSwizzle;
-diff --git a/gfx/skia/skia/src/gpu/gl/GrGLGLSL.cpp b/gfx/skia/skia/src/gpu/gl/GrGLGLSL.cpp
---- a/gfx/skia/skia/src/gpu/gl/GrGLGLSL.cpp
-+++ b/gfx/skia/skia/src/gpu/gl/GrGLGLSL.cpp
-@@ -63,9 +63,10 @@ bool GrGLGetGLSLGeneration(const GrGLInt
-         if (ver >= GR_GLSL_VER(2,0)) {
-             *generation = k330_GrGLSLGeneration;  // ES 3.0
-         } else {
-             *generation = k110_GrGLSLGeneration;
-         }
-         return true;
-     }
-     SK_ABORT("Unknown GL Standard");
-+    SkUNREACHABLE;
- }
-diff --git a/gfx/skia/skia/src/gpu/gl/GrGLGpu.cpp b/gfx/skia/skia/src/gpu/gl/GrGLGpu.cpp
---- a/gfx/skia/skia/src/gpu/gl/GrGLGpu.cpp
-+++ b/gfx/skia/skia/src/gpu/gl/GrGLGpu.cpp
-@@ -191,16 +191,17 @@ static int gl_target_to_binding_index(Gr
-         case GR_GL_TEXTURE_2D:
-             return 0;
-         case GR_GL_TEXTURE_RECTANGLE:
-             return 1;
-         case GR_GL_TEXTURE_EXTERNAL:
-             return 2;
-     }
-     SK_ABORT("Unexpected GL texture target.");
-+    SkUNREACHABLE;
- }
- 
- GrGpuResource::UniqueID GrGLGpu::TextureUnitBindings::boundID(GrGLenum target) const {
-     return fTargetBindings[gl_target_to_binding_index(target)].fBoundResourceID;
- }
- 
- bool GrGLGpu::TextureUnitBindings::hasBeenModified(GrGLenum target) const {
-     return fTargetBindings[gl_target_to_binding_index(target)].fHasBeenModified;
-@@ -229,39 +230,42 @@ void GrGLGpu::TextureUnitBindings::inval
- 
- static GrGLenum filter_to_gl_mag_filter(GrSamplerState::Filter filter) {
-     switch (filter) {
-         case GrSamplerState::Filter::kNearest: return GR_GL_NEAREST;
-         case GrSamplerState::Filter::kBilerp:  return GR_GL_LINEAR;
-         case GrSamplerState::Filter::kMipMap:  return GR_GL_LINEAR;
-     }
-     SK_ABORT("Unknown filter");
-+    SkUNREACHABLE;
- }
- 
- static GrGLenum filter_to_gl_min_filter(GrSamplerState::Filter filter) {
-     switch (filter) {
-         case GrSamplerState::Filter::kNearest: return GR_GL_NEAREST;
-         case GrSamplerState::Filter::kBilerp:  return GR_GL_LINEAR;
-         case GrSamplerState::Filter::kMipMap:  return GR_GL_LINEAR_MIPMAP_LINEAR;
-     }
-     SK_ABORT("Unknown filter");
-+    SkUNREACHABLE;
- }
- 
- static inline GrGLenum wrap_mode_to_gl_wrap(GrSamplerState::WrapMode wrapMode,
-                                             const GrCaps& caps) {
-     switch (wrapMode) {
-         case GrSamplerState::WrapMode::kClamp:        return GR_GL_CLAMP_TO_EDGE;
-         case GrSamplerState::WrapMode::kRepeat:       return GR_GL_REPEAT;
-         case GrSamplerState::WrapMode::kMirrorRepeat: return GR_GL_MIRRORED_REPEAT;
-         case GrSamplerState::WrapMode::kClampToBorder:
-             // May not be supported but should have been caught earlier
-             SkASSERT(caps.clampToBorderSupport());
-             return GR_GL_CLAMP_TO_BORDER;
-     }
-     SK_ABORT("Unknown wrap mode");
-+    SkUNREACHABLE;
- }
- 
- ///////////////////////////////////////////////////////////////////////////////
- 
- class GrGLGpu::SamplerObjectCache {
- public:
-     SamplerObjectCache(GrGLGpu* gpu) : fGpu(gpu) {
-         fNumTextureUnits = fGpu->glCaps().shaderCaps()->maxFragmentSamplers();
-@@ -1102,17 +1106,17 @@ static bool renderbuffer_storage_msaa(co
-             GL_ALLOC_CALL(ctx.interface(),
-                             RenderbufferStorageMultisampleES2EXT(GR_GL_RENDERBUFFER,
-                                                                 sampleCount,
-                                                                 format,
-                                                                 width, height));
-             break;
-         case GrGLCaps::kNone_MSFBOType:
-             SK_ABORT("Shouldn't be here if we don't support multisampled renderbuffers.");
--            break;
-+	    SkUNREACHABLE;
-     }
-     return (GR_GL_NO_ERROR == CHECK_ALLOC_ERROR(ctx.interface()));
- }
- 
- bool GrGLGpu::createRenderTargetObjects(const GrGLTexture::Desc& desc,
-                                         int sampleCount,
-                                         GrGLRenderTarget::IDs* rtIDs) {
-     rtIDs->fMSColorRenderbufferID = 0;
-@@ -2270,19 +2274,20 @@ static GrGLenum gr_primitive_type_to_gl_
-         case GrPrimitiveType::kPoints:
-             return GR_GL_POINTS;
-         case GrPrimitiveType::kLines:
-             return GR_GL_LINES;
-         case GrPrimitiveType::kLineStrip:
-             return GR_GL_LINE_STRIP;
-         case GrPrimitiveType::kPath:
-             SK_ABORT("non-mesh-based GrPrimitiveType");
--            return 0;
-+            SkUNREACHABLE;
-     }
-     SK_ABORT("invalid GrPrimitiveType");
-+    SkUNREACHABLE;
- }
- 
- void GrGLGpu::sendMeshToGpu(GrPrimitiveType primitiveType, const GrBuffer* vertexBuffer,
-                             int vertexCount, int baseVertex) {
-     const GrGLenum glPrimType = gr_primitive_type_to_gl_mode(primitiveType);
-     if (this->glCaps().drawArraysBaseVertexIsBroken()) {
-         this->setupGeometry(nullptr, vertexBuffer, baseVertex, nullptr, 0, GrPrimitiveRestart::kNo);
-         GL_CALL(DrawArrays(glPrimType, 0, vertexCount));
-@@ -4001,17 +4006,18 @@ int GrGLGpu::TextureToCopyProgramIdx(GrT
-     switch (GrSLCombinedSamplerTypeForTextureType(texture->texturePriv().textureType())) {
-         case kTexture2DSampler_GrSLType:
-             return 0;
-         case kTexture2DRectSampler_GrSLType:
-             return 1;
-         case kTextureExternalSampler_GrSLType:
-             return 2;
-         default:
--            SK_ABORT("Unexpected samper type");
-+            SK_ABORT("Unexpected sampler type");
-+	    SkUNREACHABLE;
-     }
- }
- 
- #ifdef SK_ENABLE_DUMP_GPU
- #include "src/utils/SkJSONWriter.h"
- void GrGLGpu::onDumpJSON(SkJSONWriter* writer) const {
-     // We are called by the base class, which has already called beginObject(). We choose to nest
-     // all of our caps information in a named sub-object.
-diff --git a/gfx/skia/skia/src/gpu/gl/GrGLPath.cpp b/gfx/skia/skia/src/gpu/gl/GrGLPath.cpp
---- a/gfx/skia/skia/src/gpu/gl/GrGLPath.cpp
-+++ b/gfx/skia/skia/src/gpu/gl/GrGLPath.cpp
-@@ -192,16 +192,17 @@ inline bool init_path_object_for_general
- 
- /*
-  * For now paths only natively support winding and even odd fill types
-  */
- static GrPathRendering::FillType convert_skpath_filltype(SkPath::FillType fill) {
-     switch (fill) {
-         default:
-             SK_ABORT("Incomplete Switch\n");
-+	    SkUNREACHABLE;
-         case SkPath::kWinding_FillType:
-         case SkPath::kInverseWinding_FillType:
-             return GrPathRendering::kWinding_FillType;
-         case SkPath::kEvenOdd_FillType:
-         case SkPath::kInverseEvenOdd_FillType:
-             return GrPathRendering::kEvenOdd_FillType;
-     }
- }
-diff --git a/gfx/skia/skia/src/gpu/gl/GrGLTexture.cpp b/gfx/skia/skia/src/gpu/gl/GrGLTexture.cpp
---- a/gfx/skia/skia/src/gpu/gl/GrGLTexture.cpp
-+++ b/gfx/skia/skia/src/gpu/gl/GrGLTexture.cpp
-@@ -20,30 +20,33 @@ GrTextureType GrGLTexture::TextureTypeFr
-         case GR_GL_TEXTURE_2D:
-             return GrTextureType::k2D;
-         case GR_GL_TEXTURE_RECTANGLE:
-             return GrTextureType::kRectangle;
-         case GR_GL_TEXTURE_EXTERNAL:
-             return GrTextureType::kExternal;
-     }
-     SK_ABORT("Unexpected texture target");
-+    SkUNREACHABLE;
- }
- 
- static inline GrGLenum target_from_texture_type(GrTextureType type) {
-     switch (type) {
-         case GrTextureType::k2D:
-             return GR_GL_TEXTURE_2D;
-         case GrTextureType::kRectangle:
-             return GR_GL_TEXTURE_RECTANGLE;
-         case GrTextureType::kExternal:
-             return GR_GL_TEXTURE_EXTERNAL;
-         default:
-             SK_ABORT("Unexpected texture target");
-+	    SkUNREACHABLE;
-     }
-     SK_ABORT("Unexpected texture type");
-+    SkUNREACHABLE;
- }
- 
- // Because this class is virtually derived from GrSurface we must explicitly call its constructor.
- GrGLTexture::GrGLTexture(GrGLGpu* gpu, SkBudgeted budgeted, const Desc& desc,
-                          GrMipMapsStatus mipMapsStatus)
-         : GrSurface(gpu, desc.fSize, desc.fConfig, GrProtected::kNo)
-         , INHERITED(gpu, desc.fSize, desc.fConfig, GrProtected::kNo,
-                     TextureTypeFromTarget(desc.fTarget), mipMapsStatus)
-diff --git a/gfx/skia/skia/src/gpu/gl/GrGLVertexArray.cpp b/gfx/skia/skia/src/gpu/gl/GrGLVertexArray.cpp
---- a/gfx/skia/skia/src/gpu/gl/GrGLVertexArray.cpp
-+++ b/gfx/skia/skia/src/gpu/gl/GrGLVertexArray.cpp
-@@ -75,16 +75,17 @@ static AttribLayout attrib_layout(GrVert
-         case kUint_GrVertexAttribType:
-             return {false, 1, GR_GL_UNSIGNED_INT};
-         case kUShort_norm_GrVertexAttribType:
-             return {true, 1, GR_GL_UNSIGNED_SHORT};
-         case kUShort4_norm_GrVertexAttribType:
-             return {true, 4, GR_GL_UNSIGNED_SHORT};
-     }
-     SK_ABORT("Unknown vertex attrib type");
-+    SkUNREACHABLE;
- };
- 
- void GrGLAttribArrayState::set(GrGLGpu* gpu,
-                                int index,
-                                const GrBuffer* vertexBuffer,
-                                GrVertexAttribType cpuType,
-                                GrSLType gpuType,
-                                GrGLsizei stride,
-diff --git a/gfx/skia/skia/src/gpu/glsl/GrGLSL.cpp b/gfx/skia/skia/src/gpu/glsl/GrGLSL.cpp
---- a/gfx/skia/skia/src/gpu/glsl/GrGLSL.cpp
-+++ b/gfx/skia/skia/src/gpu/glsl/GrGLSL.cpp
-@@ -93,9 +93,10 @@ const char* GrGLSLTypeString(GrSLType t)
-         case kUByte4_GrSLType:
-             return "ubyte4";
-         case kTexture2D_GrSLType:
-             return "texture2D";
-         case kSampler_GrSLType:
-             return "sampler";
-     }
-     SK_ABORT("Unknown shader var type.");
-+    SkUNREACHABLE;
- }
-diff --git a/gfx/skia/skia/src/gpu/glsl/GrGLSLVarying.cpp b/gfx/skia/skia/src/gpu/glsl/GrGLSLVarying.cpp
---- a/gfx/skia/skia/src/gpu/glsl/GrGLSLVarying.cpp
-+++ b/gfx/skia/skia/src/gpu/glsl/GrGLSLVarying.cpp
-@@ -30,16 +30,17 @@ static bool use_flat_interpolation(GrGLS
-             SkASSERT(!shaderCaps.preferFlatInterpolation() ||
-                      shaderCaps.flatInterpolationSupport());
-             return shaderCaps.preferFlatInterpolation();
-         case Interpolation::kMustBeFlat:
-             SkASSERT(shaderCaps.flatInterpolationSupport());
-             return true;
-     }
-     SK_ABORT("Invalid interpolation");
-+    SkUNREACHABLE;
- }
- 
- void GrGLSLVaryingHandler::addVarying(const char* name, GrGLSLVarying* varying,
-                                       Interpolation interpolation) {
-     SkASSERT(GrSLTypeIsFloatType(varying->type()) || Interpolation::kMustBeFlat == interpolation);
-     bool willUseGeoShader = fProgramBuilder->primitiveProcessor().willUseGeoShader();
-     VaryingInfo& v = fVaryings.push_back();
- 
-diff --git a/gfx/skia/skia/src/gpu/glsl/GrGLSLVertexGeoBuilder.cpp b/gfx/skia/skia/src/gpu/glsl/GrGLSLVertexGeoBuilder.cpp
---- a/gfx/skia/skia/src/gpu/glsl/GrGLSLVertexGeoBuilder.cpp
-+++ b/gfx/skia/skia/src/gpu/glsl/GrGLSLVertexGeoBuilder.cpp
-@@ -46,26 +46,28 @@ void GrGLSLVertexBuilder::onFinalize() {
- static const char* input_type_name(GrGLSLGeometryBuilder::InputType in) {
-     using InputType = GrGLSLGeometryBuilder::InputType;
-     switch (in) {
-         case InputType::kPoints: return "points";
-         case InputType::kLines: return "lines";
-         case InputType::kTriangles: return "triangles";
-     }
-     SK_ABORT("invalid input type");
-+    SkUNREACHABLE;
- }
- 
- static const char* output_type_name(GrGLSLGeometryBuilder::OutputType out) {
-     using OutputType = GrGLSLGeometryBuilder::OutputType;
-     switch (out) {
-         case OutputType::kPoints: return "points";
-         case OutputType::kLineStrip: return "line_strip";
-         case OutputType::kTriangleStrip: return "triangle_strip";
-     }
-     SK_ABORT("invalid output type");
-+    SkUNREACHABLE;
- }
- 
- void GrGLSLGeometryBuilder::configure(InputType inputType, OutputType outputType, int maxVertices,
-                                       int numInvocations) {
-     SkASSERT(!this->isConfigured());
-     fNumInvocations = numInvocations;
-     this->addLayoutQualifier(input_type_name(inputType), kIn_InterfaceQualifier);
-     this->addLayoutQualifier(SkStringPrintf("invocations = %i", numInvocations).c_str(),
-diff --git a/gfx/skia/skia/src/gpu/mtl/GrMtlCaps.mm b/gfx/skia/skia/src/gpu/mtl/GrMtlCaps.mm
---- a/gfx/skia/skia/src/gpu/mtl/GrMtlCaps.mm
-+++ b/gfx/skia/skia/src/gpu/mtl/GrMtlCaps.mm
-@@ -501,16 +501,17 @@ size_t GrMtlCaps::GetFormatIndex(MTLPixe
-     static_assert(SK_ARRAY_COUNT(kMtlFormats) == GrMtlCaps::kNumMtlFormats,
-                   "Size of kMtlFormats array must match static value in header");
-     for (size_t i = 0; i < GrMtlCaps::kNumMtlFormats; ++i) {
-         if (kMtlFormats[i] == pixelFormat) {
-             return i;
-         }
-     }
-     SK_ABORT("Invalid MTLPixelFormat");
-+    SkUNREACHABLE;
- }
- 
- void GrMtlCaps::initFormatTable() {
-     FormatInfo* info;
- 
-     // Format: R8Unorm
-     {
-         info = &fFormatTable[GetFormatIndex(MTLPixelFormatR8Unorm)];
-@@ -1006,16 +1007,17 @@ GrBackendFormat GrMtlCaps::getBackendFor
-         case SkImage::kETC1_CompressionType:
- #ifdef SK_BUILD_FOR_MAC
-             return {};
- #else
-             return GrBackendFormat::MakeMtl(MTLPixelFormatETC2_RGB8);
- #endif
-     }
-     SK_ABORT("Invalid compression type");
-+    SkUNREACHABLE;
- }
- 
- GrSwizzle GrMtlCaps::getTextureSwizzle(const GrBackendFormat& format, GrColorType colorType) const {
-     MTLPixelFormat mtlFormat = GrBackendFormatAsMTLPixelFormat(format);
-     SkASSERT(mtlFormat != MTLPixelFormatInvalid);
-     const auto& info = this->getFormatInfo(mtlFormat);
-     for (int i = 0; i < info.fColorTypeInfoCount; ++i) {
-         const auto& ctInfo = info.fColorTypeInfos[i];
-diff --git a/gfx/skia/skia/src/gpu/mtl/GrMtlPipelineStateBuilder.mm b/gfx/skia/skia/src/gpu/mtl/GrMtlPipelineStateBuilder.mm
---- a/gfx/skia/skia/src/gpu/mtl/GrMtlPipelineStateBuilder.mm
-+++ b/gfx/skia/skia/src/gpu/mtl/GrMtlPipelineStateBuilder.mm
-@@ -150,16 +150,17 @@ static inline MTLVertexFormat attribute_
-                 return MTLVertexFormatUShortNormalized;
-             } else {
-                 return MTLVertexFormatInvalid;
-             }
-         case kUShort4_norm_GrVertexAttribType:
-             return MTLVertexFormatUShort4Normalized;
-     }
-     SK_ABORT("Unknown vertex attribute type");
-+    SkUNREACHABLE;
- }
- 
- static MTLVertexDescriptor* create_vertex_descriptor(const GrPrimitiveProcessor& primProc) {
-     uint32_t vertexBinding = 0, instanceBinding = 0;
- 
-     int nextBinding = GrMtlUniformHandler::kLastUniformBinding + 1;
-     if (primProc.hasVertexAttributes()) {
-         vertexBinding = nextBinding++;
-@@ -271,16 +272,17 @@ static MTLBlendFactor blend_coeff_to_mtl
-             } else {
-                 return MTLBlendFactorZero;
-             }
-         case kIllegal_GrBlendCoeff:
-             return MTLBlendFactorZero;
-     }
- 
-     SK_ABORT("Unknown blend coefficient");
-+    SkUNREACHABLE;
- }
- 
- static MTLBlendOperation blend_equation_to_mtl_blend_op(GrBlendEquation equation) {
-     static const MTLBlendOperation gTable[] = {
-         MTLBlendOperationAdd,              // kAdd_GrBlendEquation
-         MTLBlendOperationSubtract,         // kSubtract_GrBlendEquation
-         MTLBlendOperationReverseSubtract,  // kReverseSubtract_GrBlendEquation
-     };
-diff --git a/gfx/skia/skia/src/gpu/mtl/GrMtlSampler.mm b/gfx/skia/skia/src/gpu/mtl/GrMtlSampler.mm
---- a/gfx/skia/skia/src/gpu/mtl/GrMtlSampler.mm
-+++ b/gfx/skia/skia/src/gpu/mtl/GrMtlSampler.mm
-@@ -33,16 +33,17 @@ static inline MTLSamplerAddressMode wrap
-             } else
- #endif
-             {
-                 SkASSERT(false);
-                 return MTLSamplerAddressModeClampToEdge;
-             }
-     }
-     SK_ABORT("Unknown wrap mode.");
-+    SkUNREACHABLE;
- }
- 
- GrMtlSampler* GrMtlSampler::Create(const GrMtlGpu* gpu, const GrSamplerState& samplerState) {
-     static MTLSamplerMinMagFilter mtlMinMagFilterModes[] = {
-         MTLSamplerMinMagFilterNearest,
-         MTLSamplerMinMagFilterLinear,
-         MTLSamplerMinMagFilterLinear
-     };
-diff --git a/gfx/skia/skia/src/gpu/mtl/GrMtlUniformHandler.mm b/gfx/skia/skia/src/gpu/mtl/GrMtlUniformHandler.mm
---- a/gfx/skia/skia/src/gpu/mtl/GrMtlUniformHandler.mm
-+++ b/gfx/skia/skia/src/gpu/mtl/GrMtlUniformHandler.mm
-@@ -85,16 +85,17 @@ static uint32_t grsltype_to_alignment_ma
-         case kTexture2DSampler_GrSLType:
-         case kTextureExternalSampler_GrSLType:
-         case kTexture2DRectSampler_GrSLType:
-         case kSampler_GrSLType:
-         case kTexture2D_GrSLType:
-             break;
-     }
-     SK_ABORT("Unexpected type");
-+    SkUNREACHABLE;
- }
- 
- /** Returns the size in bytes taken up in Metal buffers for GrSLTypes. */
- static inline uint32_t grsltype_to_mtl_size(GrSLType type) {
-     switch(type) {
-         case kByte_GrSLType:
-             return sizeof(int8_t);
-         case kByte2_GrSLType:
-@@ -167,16 +168,17 @@ static inline uint32_t grsltype_to_mtl_s
-         case kTexture2DSampler_GrSLType:
-         case kTextureExternalSampler_GrSLType:
-         case kTexture2DRectSampler_GrSLType:
-         case kSampler_GrSLType:
-         case kTexture2D_GrSLType:
-             break;
-     }
-     SK_ABORT("Unexpected type");
-+    SkUNREACHABLE;
- }
- 
- // Given the current offset into the ubo, calculate the offset for the uniform we're trying to add
- // taking into consideration all alignment requirements. The uniformOffset is set to the offset for
- // the new uniform, and currentOffset is updated to be the offset to the end of the new uniform.
- static void get_ubo_aligned_offset(uint32_t* uniformOffset,
-                                    uint32_t* currentOffset,
-                                    uint32_t* maxAlignment,
-diff --git a/gfx/skia/skia/src/gpu/mtl/GrMtlUtil.mm b/gfx/skia/skia/src/gpu/mtl/GrMtlUtil.mm
---- a/gfx/skia/skia/src/gpu/mtl/GrMtlUtil.mm
-+++ b/gfx/skia/skia/src/gpu/mtl/GrMtlUtil.mm
-@@ -107,16 +107,17 @@ bool GrPixelConfigToMTLFormat(GrPixelCon
-         case kRGBA_16161616_GrPixelConfig:
-             *format = MTLPixelFormatRGBA16Unorm;
-             return true;
-         case kRG_half_GrPixelConfig:
-             *format = MTLPixelFormatRG16Float;
-             return true;
-     }
-     SK_ABORT("Unexpected config");
-+    SkUNREACHABLE;
- }
- 
- MTLTextureDescriptor* GrGetMTLTextureDescriptor(id<MTLTexture> mtlTexture) {
-     MTLTextureDescriptor* texDesc = [[MTLTextureDescriptor alloc] init];
-     texDesc.textureType = mtlTexture.textureType;
-     texDesc.pixelFormat = mtlTexture.pixelFormat;
-     texDesc.width = mtlTexture.width;
-     texDesc.height = mtlTexture.height;
-diff --git a/gfx/skia/skia/src/gpu/ops/GrDrawVerticesOp.cpp b/gfx/skia/skia/src/gpu/ops/GrDrawVerticesOp.cpp
---- a/gfx/skia/skia/src/gpu/ops/GrDrawVerticesOp.cpp
-+++ b/gfx/skia/skia/src/gpu/ops/GrDrawVerticesOp.cpp
-@@ -605,16 +605,17 @@ static uint32_t seed_vertices(GrPrimitiv
-         case GrPrimitiveType::kLines:
-         case GrPrimitiveType::kLineStrip:
-             return 2;
-         case GrPrimitiveType::kPath:
-             SkASSERT(0);
-             return 0;
-     }
-     SK_ABORT("Incomplete switch\n");
-+    SkUNREACHABLE;
- }
- 
- static uint32_t primitive_vertices(GrPrimitiveType type) {
-     switch (type) {
-         case GrPrimitiveType::kTriangles:
-             return 3;
-         case GrPrimitiveType::kLines:
-             return 2;
-@@ -622,16 +623,17 @@ static uint32_t primitive_vertices(GrPri
-         case GrPrimitiveType::kPoints:
-         case GrPrimitiveType::kLineStrip:
-             return 1;
-         case GrPrimitiveType::kPath:
-             SkASSERT(0);
-             return 0;
-     }
-     SK_ABORT("Incomplete switch\n");
-+    SkUNREACHABLE;
- }
- 
- static SkPoint random_point(SkRandom* random, SkScalar min, SkScalar max) {
-     SkPoint p;
-     p.fX = random->nextRangeScalar(min, max);
-     p.fY = random->nextRangeScalar(min, max);
-     return p;
- }
-diff --git a/gfx/skia/skia/src/gpu/ops/GrFillRRectOp.cpp b/gfx/skia/skia/src/gpu/ops/GrFillRRectOp.cpp
---- a/gfx/skia/skia/src/gpu/ops/GrFillRRectOp.cpp
-+++ b/gfx/skia/skia/src/gpu/ops/GrFillRRectOp.cpp
-@@ -818,9 +818,10 @@ static bool can_use_hw_derivatives_with_
-                 if (!can_use_hw_derivatives_with_coverage(devScale, rrect.radii(corner))) {
-                     return false;
-                 }
-             }
-             return true;
-         }
-     }
-     SK_ABORT("Invalid round rect type.");
-+    SkUNREACHABLE;
- }
-diff --git a/gfx/skia/skia/src/gpu/ops/GrOvalOpFactory.cpp b/gfx/skia/skia/src/gpu/ops/GrOvalOpFactory.cpp
---- a/gfx/skia/skia/src/gpu/ops/GrOvalOpFactory.cpp
-+++ b/gfx/skia/skia/src/gpu/ops/GrOvalOpFactory.cpp
-@@ -2278,39 +2278,42 @@ static int rrect_type_to_vert_count(RRec
-     switch (type) {
-         case kFill_RRectType:
-         case kStroke_RRectType:
-             return kVertsPerStandardRRect;
-         case kOverstroke_RRectType:
-             return kVertsPerOverstrokeRRect;
-     }
-     SK_ABORT("Invalid type");
-+    SkUNREACHABLE;
- }
- 
- static int rrect_type_to_index_count(RRectType type) {
-     switch (type) {
-         case kFill_RRectType:
-             return kIndicesPerFillRRect;
-         case kStroke_RRectType:
-             return kIndicesPerStrokeRRect;
-         case kOverstroke_RRectType:
-             return kIndicesPerOverstrokeRRect;
-     }
-     SK_ABORT("Invalid type");
-+    SkUNREACHABLE;
- }
- 
- static const uint16_t* rrect_type_to_indices(RRectType type) {
-     switch (type) {
-         case kFill_RRectType:
-         case kStroke_RRectType:
-             return gStandardRRectIndices;
-         case kOverstroke_RRectType:
-             return gOverstrokeRRectIndices;
-     }
-     SK_ABORT("Invalid type");
-+    SkUNREACHABLE;
- }
- 
- ///////////////////////////////////////////////////////////////////////////////////////////////////
- 
- // For distance computations in the interior of filled rrects we:
- //
- //   add a interior degenerate (point or line) rect
- //   each vertex of that rect gets -outerRad as its radius
-diff --git a/gfx/skia/skia/src/gpu/ops/GrShadowRRectOp.cpp b/gfx/skia/skia/src/gpu/ops/GrShadowRRectOp.cpp
---- a/gfx/skia/skia/src/gpu/ops/GrShadowRRectOp.cpp
-+++ b/gfx/skia/skia/src/gpu/ops/GrShadowRRectOp.cpp
-@@ -150,39 +150,42 @@ static int rrect_type_to_vert_count(RRec
-         case kFill_RRectType:
-             return kVertsPerFillRRect;
-         case kStroke_RRectType:
-             return kVertsPerStrokeRRect;
-         case kOverstroke_RRectType:
-             return kVertsPerOverstrokeRRect;
-     }
-     SK_ABORT("Invalid type");
-+    SkUNREACHABLE;
- }
- 
- static int rrect_type_to_index_count(RRectType type) {
-     switch (type) {
-         case kFill_RRectType:
-             return kIndicesPerFillRRect;
-         case kStroke_RRectType:
-             return kIndicesPerStrokeRRect;
-         case kOverstroke_RRectType:
-             return kIndicesPerOverstrokeRRect;
-     }
-     SK_ABORT("Invalid type");
-+    SkUNREACHABLE;
- }
- 
- static const uint16_t* rrect_type_to_indices(RRectType type) {
-     switch (type) {
-         case kFill_RRectType:
-         case kStroke_RRectType:
-             return gRRectIndices + 6*4;
-         case kOverstroke_RRectType:
-             return gRRectIndices;
-     }
-     SK_ABORT("Invalid type");
-+    SkUNREACHABLE;
- }
- 
- ///////////////////////////////////////////////////////////////////////////////
- namespace {
- 
- class ShadowCircularRRectOp final : public GrMeshDrawOp {
- public:
-     DEFINE_OP_CLASS_ID
-diff --git a/gfx/skia/skia/src/gpu/text/GrTextBlob.h b/gfx/skia/skia/src/gpu/text/GrTextBlob.h
---- a/gfx/skia/skia/src/gpu/text/GrTextBlob.h
-+++ b/gfx/skia/skia/src/gpu/text/GrTextBlob.h
-@@ -120,16 +120,17 @@ public:
-     }
- 
-     void operator delete(void* p) {
-         ::operator delete(p);
-     }
- 
-     void* operator new(size_t) {
-         SK_ABORT("All blobs are created by placement new.");
-+	SkUNREACHABLE;
-     }
- 
-     void* operator new(size_t, void* p) { return p; }
- 
-     bool hasDistanceField() const { return SkToBool(fTextType & kHasDistanceField_TextType); }
-     bool hasBitmap() const { return SkToBool(fTextType & kHasBitmap_TextType); }
-     void setHasDistanceField() { fTextType |= kHasDistanceField_TextType; }
-     void setHasBitmap() { fTextType |= kHasBitmap_TextType; }
-diff --git a/gfx/skia/skia/src/gpu/text/GrTextBlobVertexRegenerator.cpp b/gfx/skia/skia/src/gpu/text/GrTextBlobVertexRegenerator.cpp
---- a/gfx/skia/skia/src/gpu/text/GrTextBlobVertexRegenerator.cpp
-+++ b/gfx/skia/skia/src/gpu/text/GrTextBlobVertexRegenerator.cpp
-@@ -279,9 +279,10 @@ bool GrTextBlob::VertexRegenerator::rege
-         // set use tokens for all of the glyphs in our subrun.  This is only valid if we
-         // have a valid atlas generation
-         fFullAtlasManager->setUseTokenBulk(*fSubRun->bulkUseToken(),
-                                            fUploadTarget->tokenTracker()->nextDrawToken(),
-                                            fSubRun->maskFormat());
-         return true;
-     }
-     SK_ABORT("Should not get here");
-+    SkUNREACHABLE;
- }
-diff --git a/gfx/skia/skia/src/gpu/vk/GrVkCaps.cpp b/gfx/skia/skia/src/gpu/vk/GrVkCaps.cpp
---- a/gfx/skia/skia/src/gpu/vk/GrVkCaps.cpp
-+++ b/gfx/skia/skia/src/gpu/vk/GrVkCaps.cpp
-@@ -103,16 +103,17 @@ static FormatCompatibilityClass format_c
-         case VK_FORMAT_R8G8B8_UNORM:
-             return FormatCompatibilityClass::k24_3_1;
- 
-         case VK_FORMAT_ETC2_R8G8B8_UNORM_BLOCK:
-             return FormatCompatibilityClass::kETC2_RGB_8_16;
- 
-         default:
-             SK_ABORT("Unsupported VkFormat");
-+	    SkUNREACHABLE;
-     }
- }
- 
- bool GrVkCaps::canCopyImage(VkFormat dstFormat, int dstSampleCnt, bool dstHasYcbcr,
-                             VkFormat srcFormat, int srcSampleCnt, bool srcHasYcbcr) const {
-     if ((dstSampleCnt > 1 || srcSampleCnt > 1) && dstSampleCnt != srcSampleCnt) {
-         return false;
-     }
-@@ -1651,16 +1652,17 @@ GrBackendFormat GrVkCaps::onGetDefaultBa
- 
- GrBackendFormat GrVkCaps::getBackendFormatFromCompressionType(
-         SkImage::CompressionType compressionType) const {
-     switch (compressionType) {
-         case SkImage::kETC1_CompressionType:
-             return GrBackendFormat::MakeVk(VK_FORMAT_ETC2_R8G8B8_UNORM_BLOCK);
-     }
-     SK_ABORT("Invalid compression type");
-+    SkUNREACHABLE;
- }
- 
- GrSwizzle GrVkCaps::getTextureSwizzle(const GrBackendFormat& format, GrColorType colorType) const {
-     VkFormat vkFormat;
-     SkAssertResult(format.asVkFormat(&vkFormat));
-     const auto& info = this->getFormatInfo(vkFormat);
-     for (int i = 0; i < info.fColorTypeInfoCount; ++i) {
-         const auto& ctInfo = info.fColorTypeInfos[i];
-diff --git a/gfx/skia/skia/src/gpu/vk/GrVkMemory.cpp b/gfx/skia/skia/src/gpu/vk/GrVkMemory.cpp
---- a/gfx/skia/skia/src/gpu/vk/GrVkMemory.cpp
-+++ b/gfx/skia/skia/src/gpu/vk/GrVkMemory.cpp
-@@ -23,16 +23,17 @@ static BufferUsage get_buffer_usage(GrVk
-         case GrVkBuffer::kUniform_Type:
-             SkASSERT(dynamic);
-             return BufferUsage::kCpuWritesGpuReads;
-         case GrVkBuffer::kCopyRead_Type: // fall through
-         case GrVkBuffer::kCopyWrite_Type:
-             return BufferUsage::kCpuOnly;
-     }
-     SK_ABORT("Invalid GrVkBuffer::Type");
-+    SkUNREACHABLE;
- }
- 
- bool GrVkMemory::AllocAndBindBufferMemory(const GrVkGpu* gpu,
-                                           VkBuffer buffer,
-                                           GrVkBuffer::Type type,
-                                           bool dynamic,
-                                           GrVkAlloc* alloc) {
-     GrVkMemoryAllocator* allocator = gpu->memoryAllocator();
-diff --git a/gfx/skia/skia/src/gpu/vk/GrVkPipeline.cpp b/gfx/skia/skia/src/gpu/vk/GrVkPipeline.cpp
---- a/gfx/skia/skia/src/gpu/vk/GrVkPipeline.cpp
-+++ b/gfx/skia/skia/src/gpu/vk/GrVkPipeline.cpp
-@@ -75,16 +75,17 @@ static inline VkFormat attrib_type_to_vk
-         case kUint_GrVertexAttribType:
-             return VK_FORMAT_R32_UINT;
-         case kUShort_norm_GrVertexAttribType:
-             return VK_FORMAT_R16_UNORM;
-         case kUShort4_norm_GrVertexAttribType:
-             return VK_FORMAT_R16G16B16A16_UNORM;
-     }
-     SK_ABORT("Unknown vertex attrib type");
-+    SkUNREACHABLE;
- }
- 
- static void setup_vertex_input_state(const GrPrimitiveProcessor& primProc,
-                                   VkPipelineVertexInputStateCreateInfo* vertexInputInfo,
-                                   SkSTArray<2, VkVertexInputBindingDescription, true>* bindingDescs,
-                                   VkVertexInputAttributeDescription* attributeDesc) {
-     uint32_t vertexBinding = 0, instanceBinding = 0;
- 
-@@ -157,18 +158,20 @@ static VkPrimitiveTopology gr_primitive_
-         case GrPrimitiveType::kPoints:
-             return VK_PRIMITIVE_TOPOLOGY_POINT_LIST;
-         case GrPrimitiveType::kLines:
-             return VK_PRIMITIVE_TOPOLOGY_LINE_LIST;
-         case GrPrimitiveType::kLineStrip:
-             return VK_PRIMITIVE_TOPOLOGY_LINE_STRIP;
-         case GrPrimitiveType::kPath:
-             SK_ABORT("Unsupported primitive type");
-+	    SkUNREACHABLE;
-     }
-     SK_ABORT("invalid GrPrimitiveType");
-+    SkUNREACHABLE;
- }
- 
- static void setup_input_assembly_state(GrPrimitiveType primitiveType,
-                                        VkPipelineInputAssemblyStateCreateInfo* inputAssemblyInfo) {
-     memset(inputAssemblyInfo, 0, sizeof(VkPipelineInputAssemblyStateCreateInfo));
-     inputAssemblyInfo->sType = VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO;
-     inputAssemblyInfo->pNext = nullptr;
-     inputAssemblyInfo->flags = 0;
-diff --git a/gfx/skia/skia/src/gpu/vk/GrVkSampler.cpp b/gfx/skia/skia/src/gpu/vk/GrVkSampler.cpp
---- a/gfx/skia/skia/src/gpu/vk/GrVkSampler.cpp
-+++ b/gfx/skia/skia/src/gpu/vk/GrVkSampler.cpp
-@@ -18,16 +18,17 @@ static inline VkSamplerAddressMode wrap_
-         case GrSamplerState::WrapMode::kRepeat:
-             return VK_SAMPLER_ADDRESS_MODE_REPEAT;
-         case GrSamplerState::WrapMode::kMirrorRepeat:
-             return VK_SAMPLER_ADDRESS_MODE_MIRRORED_REPEAT;
-         case GrSamplerState::WrapMode::kClampToBorder:
-             return VK_SAMPLER_ADDRESS_MODE_CLAMP_TO_BORDER;
-     }
-     SK_ABORT("Unknown wrap mode.");
-+    SkUNREACHABLE;
- }
- 
- GrVkSampler* GrVkSampler::Create(GrVkGpu* gpu, const GrSamplerState& samplerState,
-                                  const GrVkYcbcrConversionInfo& ycbcrInfo) {
-     static VkFilter vkMinFilterModes[] = {
-         VK_FILTER_NEAREST,
-         VK_FILTER_LINEAR,
-         VK_FILTER_LINEAR
-diff --git a/gfx/skia/skia/src/gpu/vk/GrVkTransferBuffer.h b/gfx/skia/skia/src/gpu/vk/GrVkTransferBuffer.h
---- a/gfx/skia/skia/src/gpu/vk/GrVkTransferBuffer.h
-+++ b/gfx/skia/skia/src/gpu/vk/GrVkTransferBuffer.h
-@@ -29,16 +29,17 @@ private:
-                           const SkString& dumpName) const override;
- 
-     void onMap() override { this->GrGpuBuffer::fMapPtr = this->vkMap(this->getVkGpu()); }
- 
-     void onUnmap() override { this->vkUnmap(this->getVkGpu()); }
- 
-     bool onUpdateData(const void* src, size_t srcSizeInBytes) override {
-         SK_ABORT("Not implemented for transfer buffers.");
-+	SkUNREACHABLE;
-     }
- 
-     GrVkGpu* getVkGpu() const {
-         SkASSERT(!this->wasDestroyed());
-         return reinterpret_cast<GrVkGpu*>(this->getGpu());
-     }
- 
-     typedef GrGpuBuffer INHERITED;
-diff --git a/gfx/skia/skia/src/gpu/vk/GrVkUniformHandler.cpp b/gfx/skia/skia/src/gpu/vk/GrVkUniformHandler.cpp
---- a/gfx/skia/skia/src/gpu/vk/GrVkUniformHandler.cpp
-+++ b/gfx/skia/skia/src/gpu/vk/GrVkUniformHandler.cpp
-@@ -84,16 +84,17 @@ static uint32_t grsltype_to_alignment_ma
-         case kTexture2DSampler_GrSLType:
-         case kTextureExternalSampler_GrSLType:
-         case kTexture2DRectSampler_GrSLType:
-         case kSampler_GrSLType:
-         case kTexture2D_GrSLType:
-             break;
-     }
-     SK_ABORT("Unexpected type");
-+    SkUNREACHABLE;
- }
- 
- /** Returns the size in bytes taken up in vulkanbuffers for GrSLTypes. */
- static inline uint32_t grsltype_to_vk_size(GrSLType type) {
-     switch(type) {
-         case kByte_GrSLType:
-             return sizeof(int8_t);
-         case kByte2_GrSLType:
-@@ -167,16 +168,17 @@ static inline uint32_t grsltype_to_vk_si
-         case kTexture2DSampler_GrSLType:
-         case kTextureExternalSampler_GrSLType:
-         case kTexture2DRectSampler_GrSLType:
-         case kSampler_GrSLType:
-         case kTexture2D_GrSLType:
-             break;
-     }
-     SK_ABORT("Unexpected type");
-+    SkUNREACHABLE;
- }
- 
- 
- // Given the current offset into the ubo, calculate the offset for the uniform we're trying to add
- // taking into consideration all alignment requirements. The uniformOffset is set to the offset for
- // the new uniform, and currentOffset is updated to be the offset to the end of the new uniform.
- static void get_ubo_aligned_offset(uint32_t* uniformOffset,
-                                    uint32_t* currentOffset,
-diff --git a/gfx/skia/skia/src/gpu/vk/GrVkVaryingHandler.cpp b/gfx/skia/skia/src/gpu/vk/GrVkVaryingHandler.cpp
---- a/gfx/skia/skia/src/gpu/vk/GrVkVaryingHandler.cpp
-+++ b/gfx/skia/skia/src/gpu/vk/GrVkVaryingHandler.cpp
-@@ -69,16 +69,17 @@ static inline int grsltype_to_location_s
-         case kByte_GrSLType:
-              return 1;
-         case kUint_GrSLType: // fall through
-         case kUShort_GrSLType:
-         case kUByte_GrSLType:
-              return 1;
-     }
-     SK_ABORT("Unexpected type");
-+    SkUNREACHABLE;
- }
- 
- static void finalize_helper(GrVkVaryingHandler::VarArray& vars) {
-     int locationIndex = 0;
-     for (int i = 0; i < vars.count(); ++i) {
-         GrShaderVar& var = vars[i];
-         SkString location;
-         location.appendf("location = %d", locationIndex);
-diff --git a/gfx/skia/skia/src/pdf/SkPDFTag.cpp b/gfx/skia/skia/src/pdf/SkPDFTag.cpp
---- a/gfx/skia/skia/src/pdf/SkPDFTag.cpp
-+++ b/gfx/skia/skia/src/pdf/SkPDFTag.cpp
-@@ -59,16 +59,17 @@ static const char* tag_name_from_type(Sk
-         M(WT);
-         M(WP);
-         M(Figure);
-         M(Formula);
-         M(Form);
-         #undef M
-     }
-     SK_ABORT("bad tag");
-+    SkUNREACHABLE;
- }
- 
- struct SkPDFTagNode {
-     SkPDFTagNode* fChildren = nullptr;
-     size_t fChildCount = 0;
-     struct MarkedContentInfo {
-         unsigned fPageIndex;
-         int fMarkId;
 diff --git a/gfx/skia/skia/src/ports/SkFontMgr_FontConfigInterface.cpp b/gfx/skia/skia/src/ports/SkFontMgr_FontConfigInterface.cpp
 --- a/gfx/skia/skia/src/ports/SkFontMgr_FontConfigInterface.cpp
 +++ b/gfx/skia/skia/src/ports/SkFontMgr_FontConfigInterface.cpp
-@@ -168,28 +168,32 @@ public:
-     SkFontMgr_FCI(sk_sp<SkFontConfigInterface> fci)
-         : fFCI(std::move(fci))
-         , fCache(kMaxSize)
-     {}
- 
+@@ -162,18 +162,22 @@ public:
  protected:
      int onCountFamilies() const override {
          SK_ABORT("Not implemented.");
@@ -1837,85 +198,55 @@ diff --git a/gfx/skia/skia/src/ports/SkFontMgr_FontConfigInterface.cpp b/gfx/ski
      }
  
      SkTypeface* onMatchFamilyStyle(const char requestedFamilyName[],
-                                    const SkFontStyle& requestedStyle) const override
-     {
-         SkAutoMutexExclusive ama(fMutex);
- 
-         SkFontConfigInterface::FontIdentity identity;
-@@ -210,20 +214,22 @@ protected:
+diff --git a/gfx/skia/skia/src/sksl/SkSLCompiler.cpp b/gfx/skia/skia/src/sksl/SkSLCompiler.cpp
+--- a/gfx/skia/skia/src/sksl/SkSLCompiler.cpp
++++ b/gfx/skia/skia/src/sksl/SkSLCompiler.cpp
+@@ -277,6 +277,7 @@ std::unique_ptr<Expression> Compiler::co
          }
-         return face.release();
+         default:
+             SK_ABORT("unsupported symbol type %d\n", (int) result->kind());
++            SkUNREACHABLE;
      }
- 
-     SkTypeface* onMatchFamilyStyleCharacter(const char familyName[], const SkFontStyle&,
-                                             const char* bcp47[], int bcp47Count,
-                                             SkUnichar character) const override {
-         SK_ABORT("Not implemented.");
-+	SkUNREACHABLE;
-     }
- 
-     SkTypeface* onMatchFaceStyle(const SkTypeface*, const SkFontStyle&) const override {
-         SK_ABORT("Not implemented.");
-+	SkUNREACHABLE;
-     }
- 
-     sk_sp<SkTypeface> onMakeFromData(sk_sp<SkData> data, int ttcIndex) const override {
-         return this->onMakeFromStreamIndex(SkMemoryStream::Make(std::move(data)), ttcIndex);
-     }
- 
-     sk_sp<SkTypeface> onMakeFromStreamIndex(std::unique_ptr<SkStreamAsset> stream,
-                                             int ttcIndex) const override {
-diff --git a/gfx/skia/skia/src/shaders/SkImageShader.cpp b/gfx/skia/skia/src/shaders/SkImageShader.cpp
---- a/gfx/skia/skia/src/shaders/SkImageShader.cpp
-+++ b/gfx/skia/skia/src/shaders/SkImageShader.cpp
-@@ -178,16 +178,17 @@ static GrSamplerState::WrapMode tile_mod
-         case SkTileMode::kRepeat:
-             return GrSamplerState::WrapMode::kRepeat;
-         case SkTileMode::kMirror:
-             return GrSamplerState::WrapMode::kMirrorRepeat;
-         case SkTileMode::kDecal:
-             return GrSamplerState::WrapMode::kClampToBorder;
-     }
-     SK_ABORT("Unknown tile mode.");
-+    SkUNREACHABLE;
  }
  
- std::unique_ptr<GrFragmentProcessor> SkImageShader::asFragmentProcessor(
-         const GrFPArgs& args) const {
-     const auto lm = this->totalLocalMatrix(args.fPreLocalMatrix, args.fPostLocalMatrix);
-     SkMatrix lmInverse;
-     if (!lm->invert(&lmInverse)) {
-         return nullptr;
+diff --git a/gfx/skia/skia/src/sksl/SkSLOperator.cpp b/gfx/skia/skia/src/sksl/SkSLOperator.cpp
+--- a/gfx/skia/skia/src/sksl/SkSLOperator.cpp
++++ b/gfx/skia/skia/src/sksl/SkSLOperator.cpp
+@@ -51,7 +51,7 @@ OperatorPrecedence Operator::getBinaryPr
+         case Kind::BITWISEXOREQ: // fall through
+         case Kind::BITWISEOREQ:  return OperatorPrecedence::kAssignment;
+         case Kind::COMMA:        return OperatorPrecedence::kSequence;
+-        default: SK_ABORT("unsupported binary operator");
++        default: SkUNREACHABLE;
+     }
+ }
+ 
+diff --git a/gfx/skia/skia/src/sksl/ir/SkSLType.h b/gfx/skia/skia/src/sksl/ir/SkSLType.h
+--- a/gfx/skia/skia/src/sksl/ir/SkSLType.h
++++ b/gfx/skia/skia/src/sksl/ir/SkSLType.h
+@@ -422,6 +422,7 @@ public:
+ 
+     virtual const std::vector<Field>& fields() const {
+         SK_ABORT("Internal error: not a struct");
++        SkUNREACHABLE;
+     }
+ 
+     /**
 diff --git a/gfx/skia/skia/src/utils/SkShadowUtils.cpp b/gfx/skia/skia/src/utils/SkShadowUtils.cpp
 --- a/gfx/skia/skia/src/utils/SkShadowUtils.cpp
 +++ b/gfx/skia/skia/src/utils/SkShadowUtils.cpp
-@@ -144,16 +144,17 @@ struct SpotVerticesFactory {
-                 // if the offsets don't match.
-                 if (fOffset == that.fOffset) {
-                     translate->set(0, 0);
-                     return true;
-                 }
-                 return false;
+@@ -140,6 +140,7 @@ struct SpotVerticesFactory {
+                 return true;
          }
          SK_ABORT("Uninitialized occluder type?");
-+	SkUNREACHABLE;
++        SkUNREACHABLE;
      }
  
      sk_sp<SkVertices> makeVertices(const SkPath& path, const SkMatrix& ctm,
-                                    SkVector* translate) const {
-         bool transparent = OccluderType::kTransparent == fOccluderType;
-         SkPoint3 zParams = SkPoint3::Make(0, 0, fOccluderHeight);
-         if (ctm.hasPerspective() || OccluderType::kOpaquePartialUmbra == fOccluderType) {
-             translate->set(0, 0);
 diff --git a/intl/icu/source/i18n/number_rounding.cpp b/intl/icu/source/i18n/number_rounding.cpp
 --- a/intl/icu/source/i18n/number_rounding.cpp
 +++ b/intl/icu/source/i18n/number_rounding.cpp
-@@ -278,27 +278,29 @@ Precision IncrementPrecision::withMinFra
- }
- 
- FractionPrecision Precision::constructFraction(int32_t minFrac, int32_t maxFrac) {
-     FractionSignificantSettings settings;
-     settings.fMinFrac = static_cast<digits_t>(minFrac);
+@@ -283,6 +283,7 @@ FractionPrecision Precision::constructFr
      settings.fMaxFrac = static_cast<digits_t>(maxFrac);
      settings.fMinSig = -1;
      settings.fMaxSig = -1;
@@ -1923,11 +254,7 @@ diff --git a/intl/icu/source/i18n/number_rounding.cpp b/intl/icu/source/i18n/num
      PrecisionUnion union_;
      union_.fracSig = settings;
      return {RND_FRACTION, union_};
- }
- 
- Precision Precision::constructSignificant(int32_t minSig, int32_t maxSig) {
-     FractionSignificantSettings settings;
-     settings.fMinFrac = -1;
+@@ -294,6 +295,7 @@ Precision Precision::constructSignifican
      settings.fMaxFrac = -1;
      settings.fMinSig = static_cast<digits_t>(minSig);
      settings.fMaxSig = static_cast<digits_t>(maxSig);
@@ -1935,20 +262,21 @@ diff --git a/intl/icu/source/i18n/number_rounding.cpp b/intl/icu/source/i18n/num
      PrecisionUnion union_;
      union_.fracSig = settings;
      return {RND_SIGNIFICANT, union_};
+diff --git a/js/src/irregexp/imported/regexp-parser.cc b/js/src/irregexp/imported/regexp-parser.cc
+--- a/js/src/irregexp/imported/regexp-parser.cc
++++ b/js/src/irregexp/imported/regexp-parser.cc
+@@ -2655,6 +2655,7 @@ bool MayContainStrings(ClassSetOperandTy
+       if (operand->IsClassRanges()) return false;
+       return operand->AsClassSetExpression()->may_contain_strings();
+   }
++  UNREACHABLE();
  }
  
- Precision
- Precision::constructFractionSignificant(
-         const FractionPrecision &base,
+ }  // namespace
 diff --git a/third_party/libwebrtc/api/adaptation/resource.cc b/third_party/libwebrtc/api/adaptation/resource.cc
 --- a/third_party/libwebrtc/api/adaptation/resource.cc
 +++ b/third_party/libwebrtc/api/adaptation/resource.cc
-@@ -17,16 +17,17 @@ namespace webrtc {
- const char* ResourceUsageStateToString(ResourceUsageState usage_state) {
-   switch (usage_state) {
-     case ResourceUsageState::kOveruse:
-       return "kOveruse";
-     case ResourceUsageState::kUnderuse:
+@@ -22,6 +22,7 @@ const char* ResourceUsageStateToString(R
        return "kUnderuse";
    }
    RTC_CHECK_NOTREACHED();
@@ -1956,20 +284,10 @@ diff --git a/third_party/libwebrtc/api/adaptation/resource.cc b/third_party/libw
  }
  
  ResourceListener::~ResourceListener() {}
- 
- Resource::Resource() {}
- 
- Resource::~Resource() {}
- 
 diff --git a/third_party/libwebrtc/api/rtp_parameters.cc b/third_party/libwebrtc/api/rtp_parameters.cc
 --- a/third_party/libwebrtc/api/rtp_parameters.cc
 +++ b/third_party/libwebrtc/api/rtp_parameters.cc
-@@ -27,16 +27,17 @@ const char* DegradationPreferenceToStrin
-     case DegradationPreference::MAINTAIN_FRAMERATE:
-       return "maintain-framerate";
-     case DegradationPreference::MAINTAIN_RESOLUTION:
-       return "maintain-resolution";
-     case DegradationPreference::BALANCED:
+@@ -32,6 +32,7 @@ const char* DegradationPreferenceToStrin
        return "balanced";
    }
    RTC_CHECK_NOTREACHED();
@@ -1977,20 +295,10 @@ diff --git a/third_party/libwebrtc/api/rtp_parameters.cc b/third_party/libwebrtc
  }
  
  const double kDefaultBitratePriority = 1.0;
- 
- RtcpFeedback::RtcpFeedback() = default;
- RtcpFeedback::RtcpFeedback(RtcpFeedbackType type) : type(type) {}
- RtcpFeedback::RtcpFeedback(RtcpFeedbackType type,
-                            RtcpFeedbackMessageType message_type)
 diff --git a/third_party/libwebrtc/api/video/video_frame_buffer.cc b/third_party/libwebrtc/api/video/video_frame_buffer.cc
 --- a/third_party/libwebrtc/api/video/video_frame_buffer.cc
 +++ b/third_party/libwebrtc/api/video/video_frame_buffer.cc
-@@ -94,16 +94,18 @@ const char* VideoFrameBufferTypeToString
-       return "kI010";
-     case VideoFrameBuffer::Type::kI210:
-       return "kI210";
-     case VideoFrameBuffer::Type::kNV12:
-       return "kNV12";
+@@ -99,6 +99,8 @@ const char* VideoFrameBufferTypeToString
      default:
        RTC_DCHECK_NOTREACHED();
    }
@@ -1999,20 +307,10 @@ diff --git a/third_party/libwebrtc/api/video/video_frame_buffer.cc b/third_party
  }
  
  int I420BufferInterface::ChromaWidth() const {
-   return (width() + 1) / 2;
- }
- 
- int I420BufferInterface::ChromaHeight() const {
-   return (height() + 1) / 2;
 diff --git a/third_party/libwebrtc/api/video_codecs/video_codec.cc b/third_party/libwebrtc/api/video_codecs/video_codec.cc
 --- a/third_party/libwebrtc/api/video_codecs/video_codec.cc
 +++ b/third_party/libwebrtc/api/video_codecs/video_codec.cc
-@@ -113,16 +113,17 @@ const char* CodecTypeToPayloadString(Vid
-     case kVideoCodecH264:
-       return kPayloadNameH264;
-     case kVideoCodecMultiplex:
-       return kPayloadNameMultiplex;
-     case kVideoCodecGeneric:
+@@ -118,6 +118,7 @@ const char* CodecTypeToPayloadString(Vid
        return kPayloadNameGeneric;
    }
    RTC_CHECK_NOTREACHED();
@@ -2020,20 +318,10 @@ diff --git a/third_party/libwebrtc/api/video_codecs/video_codec.cc b/third_party
  }
  
  VideoCodecType PayloadStringToCodecType(const std::string& name) {
-   if (absl::EqualsIgnoreCase(name, kPayloadNameVp8))
-     return kVideoCodecVP8;
-   if (absl::EqualsIgnoreCase(name, kPayloadNameVp9))
-     return kVideoCodecVP9;
-   if (absl::EqualsIgnoreCase(name, kPayloadNameAv1) ||
 diff --git a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc b/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
 --- a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
 +++ b/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
-@@ -158,16 +158,17 @@ class VideoEncoderSoftwareFallbackWrappe
-         [[fallthrough]];
-       case EncoderState::kMainEncoderUsed:
-         return encoder_.get();
-       case EncoderState::kFallbackDueToFailure:
-       case EncoderState::kForcedFallback:
+@@ -163,6 +163,7 @@ class VideoEncoderSoftwareFallbackWrappe
          return fallback_encoder_.get();
      }
      RTC_CHECK_NOTREACHED();
@@ -2041,17 +329,7 @@ diff --git a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallb
    }
  
    // Updates encoder with last observed parameters, such as callbacks, rates,
-   // etc.
-   void PrimeEncoder(VideoEncoder* encoder) const;
- 
-   // Settings used in the last InitEncode call and used if a dynamic fallback to
-   // software is required.
-@@ -338,16 +339,17 @@ int32_t VideoEncoderSoftwareFallbackWrap
-     case EncoderState::kMainEncoderUsed: {
-       return EncodeWithMainEncoder(frame, frame_types);
-     }
-     case EncoderState::kFallbackDueToFailure:
-     case EncoderState::kForcedFallback:
+@@ -343,6 +344,7 @@ int32_t VideoEncoderSoftwareFallbackWrap
        return fallback_encoder_->Encode(frame, frame_types);
    }
    RTC_CHECK_NOTREACHED();
@@ -2059,20 +337,10 @@ diff --git a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallb
  }
  
  int32_t VideoEncoderSoftwareFallbackWrapper::EncodeWithMainEncoder(
-     const VideoFrame& frame,
-     const std::vector<VideoFrameType>* frame_types) {
-   int32_t ret = encoder_->Encode(frame, frame_types);
-   // If requested, try a software fallback.
-   bool fallback_requested = (ret == WEBRTC_VIDEO_CODEC_FALLBACK_SOFTWARE);
 diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
 --- a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
 +++ b/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
-@@ -163,16 +163,17 @@ const char* Adaptation::StatusToString(A
-     case Status::kInsufficientInput:
-       return "kInsufficientInput";
-     case Status::kAdaptationDisabled:
-       return "kAdaptationDisabled";
-     case Status::kRejectedByConstraint:
+@@ -168,6 +168,7 @@ const char* Adaptation::StatusToString(A
        return "kRejectedByConstraint";
    }
    RTC_CHECK_NOTREACHED();
@@ -2080,17 +348,7 @@ diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/thi
  }
  
  Adaptation::Adaptation(int validation_id,
-                        VideoSourceRestrictions restrictions,
-                        VideoAdaptationCounters counters,
-                        VideoStreamInputState input_state)
-     : validation_id_(validation_id),
-       status_(Status::kValid),
-@@ -385,16 +386,17 @@ VideoStreamAdapter::RestrictionsOrState 
-     case DegradationPreference::MAINTAIN_RESOLUTION: {
-       // Scale up framerate.
-       return IncreaseFramerate(input_state, current_restrictions_);
-     }
-     case DegradationPreference::DISABLED:
+@@ -390,6 +391,7 @@ VideoStreamAdapter::RestrictionsOrState 
        return Adaptation::Status::kAdaptationDisabled;
    }
    RTC_CHECK_NOTREACHED();
@@ -2098,17 +356,7 @@ diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/thi
  }
  
  Adaptation VideoStreamAdapter::GetAdaptationDown() {
-   RTC_DCHECK_RUN_ON(&sequence_checker_);
-   VideoStreamInputState input_state = input_state_provider_->InputState();
-   ++adaptation_validation_id_;
-   RestrictionsOrState restrictions_or_state =
-       GetAdaptationDownStep(input_state, current_restrictions_);
-@@ -467,16 +469,17 @@ VideoStreamAdapter::GetAdaptationDownSte
-     }
-     case DegradationPreference::MAINTAIN_RESOLUTION: {
-       return DecreaseFramerate(input_state, current_restrictions);
-     }
-     case DegradationPreference::DISABLED:
+@@ -472,6 +474,7 @@ VideoStreamAdapter::GetAdaptationDownSte
        return Adaptation::Status::kAdaptationDisabled;
    }
    RTC_CHECK_NOTREACHED();
@@ -2116,17 +364,7 @@ diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/thi
  }
  
  VideoStreamAdapter::RestrictionsOrState VideoStreamAdapter::DecreaseResolution(
-     const VideoStreamInputState& input_state,
-     const RestrictionsWithCounters& current_restrictions) {
-   int target_pixels =
-       GetLowerResolutionThan(input_state.frame_size_pixels().value());
-   // Use single active stream if set, this stream could be lower than the input.
-@@ -620,16 +623,18 @@ Adaptation VideoStreamAdapter::GetAdaptD
-     case DegradationPreference::MAINTAIN_FRAMERATE:
-       return GetAdaptationDown();
-     case DegradationPreference::BALANCED: {
-       return RestrictionsOrStateToAdaptation(
-           GetAdaptDownResolutionStepForBalanced(input_state), input_state);
+@@ -625,6 +628,8 @@ Adaptation VideoStreamAdapter::GetAdaptD
      }
    }
    RTC_CHECK_NOTREACHED();
@@ -2135,20 +373,22 @@ diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/thi
  }
  
  VideoStreamAdapter::RestrictionsOrState
- VideoStreamAdapter::GetAdaptDownResolutionStepForBalanced(
-     const VideoStreamInputState& input_state) const {
-   // Adapt twice if the first adaptation did not decrease resolution.
-   auto first_step = GetAdaptationDownStep(input_state, current_restrictions_);
-   if (!absl::holds_alternative<RestrictionsWithCounters>(first_step)) {
+diff --git a/third_party/libwebrtc/call/rtp_payload_params.cc b/third_party/libwebrtc/call/rtp_payload_params.cc
+--- a/third_party/libwebrtc/call/rtp_payload_params.cc
++++ b/third_party/libwebrtc/call/rtp_payload_params.cc
+@@ -407,7 +407,7 @@ absl::optional<FrameDependencyStructure>
+     case VideoCodecType::kVideoCodecMultiplex:
+       return absl::nullopt;
+   }
+-  RTC_DCHECK_NOTREACHED() << "Unsupported codec.";
++  RTC_CHECK_NOTREACHED();
+ }
+ 
+ void RtpPayloadParams::GenericToGeneric(int64_t shared_frame_id,
 diff --git a/third_party/libwebrtc/call/video_send_stream.cc b/third_party/libwebrtc/call/video_send_stream.cc
 --- a/third_party/libwebrtc/call/video_send_stream.cc
 +++ b/third_party/libwebrtc/call/video_send_stream.cc
-@@ -25,16 +25,17 @@ const char* StreamTypeToString(VideoSend
-     case VideoSendStream::StreamStats::StreamType::kMedia:
-       return "media";
-     case VideoSendStream::StreamStats::StreamType::kRtx:
-       return "rtx";
-     case VideoSendStream::StreamStats::StreamType::kFlexfec:
+@@ -30,6 +30,7 @@ const char* StreamTypeToString(VideoSend
        return "flexfec";
    }
    RTC_CHECK_NOTREACHED();
@@ -2156,20 +396,33 @@ diff --git a/third_party/libwebrtc/call/video_send_stream.cc b/third_party/libwe
  }
  
  }  // namespace
+diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc b/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
+--- a/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
++++ b/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
+@@ -378,7 +378,7 @@ std::unique_ptr<ClippingPredictor> Creat
+           config.reference_window_delay, config.clipping_threshold,
+           /*adaptive_step_estimation=*/false);
+   }
+-  RTC_DCHECK_NOTREACHED();
++  RTC_CHECK_NOTREACHED();
+ }
  
- VideoSendStream::StreamStats::StreamStats() = default;
- VideoSendStream::StreamStats::~StreamStats() = default;
+ }  // namespace webrtc
+diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_stats_reporter.cc b/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_stats_reporter.cc
+--- a/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_stats_reporter.cc
++++ b/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_stats_reporter.cc
+@@ -48,6 +48,7 @@ constexpr absl::string_view MetricNamePr
+     case InputVolumeType::kRecommended:
+       return "WebRTC.Audio.Apm.RecommendedInputVolume.";
+   }
++  RTC_CHECK_NOTREACHED();
+ }
  
- std::string VideoSendStream::StreamStats::ToString() const {
+ metrics::Histogram* CreateVolumeHistogram(InputVolumeType input_volume_type) {
 diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc b/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
 --- a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
 +++ b/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
-@@ -54,16 +54,18 @@ std::vector<float> PreprocessWeights(rtc
- rtc::FunctionView<float(float)> GetActivationFunction(
-     ActivationFunction activation_function) {
-   switch (activation_function) {
-     case ActivationFunction::kTansigApproximated:
-       return ::rnnoise::TansigApproximated;
+@@ -59,6 +59,8 @@ rtc::FunctionView<float(float)> GetActiv
      case ActivationFunction::kSigmoidApproximated:
        return ::rnnoise::SigmoidApproximated;
    }
@@ -2178,20 +431,10 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.
  }
  
  }  // namespace
- 
- FullyConnectedLayer::FullyConnectedLayer(
-     const int input_size,
-     const int output_size,
-     const rtc::ArrayView<const int8_t> bias,
 diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
 --- a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
 +++ b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
-@@ -115,16 +115,17 @@ GainControl::Mode Agc1ConfigModeToInterf
-     case Agc1Config::kAdaptiveAnalog:
-       return GainControl::kAdaptiveAnalog;
-     case Agc1Config::kAdaptiveDigital:
-       return GainControl::kAdaptiveDigital;
-     case Agc1Config::kFixedDigital:
+@@ -99,6 +99,7 @@ GainControl::Mode Agc1ConfigModeToInterf
        return GainControl::kFixedDigital;
    }
    RTC_CHECK_NOTREACHED();
@@ -2199,17 +442,16 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_imp
  }
  
  bool MinimizeProcessingForUnusedOutput() {
-   return !field_trial::IsEnabled("WebRTC-MutedStateKillSwitch");
+@@ -166,7 +167,7 @@ int AudioFormatValidityToErrorCode(Audio
+     case AudioFormatValidity::kInvalidChannelCount:
+       return AudioProcessing::kBadNumberChannelsError;
+   }
+-  RTC_DCHECK(false);
++  RTC_CHECK_NOTREACHED();
  }
  
- // Maximum lengths that frame of samples being passed from the render side to
- // the capture side can have (does not apply to AEC3).
-@@ -1989,16 +1990,17 @@ void AudioProcessingImpl::InitializeNois
-             case NoiseSuppresionConfig::kModerate:
-               return NsConfig::SuppressionLevel::k12dB;
-             case NoiseSuppresionConfig::kHigh:
-               return NsConfig::SuppressionLevel::k18dB;
-             case NoiseSuppresionConfig::kVeryHigh:
+ // Returns an AudioProcessing::Error together with the best possible option for
+@@ -2414,6 +2415,7 @@ void AudioProcessingImpl::InitializeNois
                return NsConfig::SuppressionLevel::k21dB;
            }
            RTC_CHECK_NOTREACHED();
@@ -2217,20 +459,10 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_imp
          };
  
      NsConfig cfg;
-     cfg.target_level = map_level(config_.noise_suppression.level);
-     submodules_.noise_suppressor = std::make_unique<NoiseSuppressor>(
-         cfg, proc_sample_rate_hz(), num_proc_channels());
-   }
- }
 diff --git a/third_party/libwebrtc/modules/audio_processing/include/audio_processing.cc b/third_party/libwebrtc/modules/audio_processing/include/audio_processing.cc
 --- a/third_party/libwebrtc/modules/audio_processing/include/audio_processing.cc
 +++ b/third_party/libwebrtc/modules/audio_processing/include/audio_processing.cc
-@@ -27,28 +27,30 @@ std::string NoiseSuppressionLevelToStrin
-     case AudioProcessing::Config::NoiseSuppression::Level::kModerate:
-       return "Moderate";
-     case AudioProcessing::Config::NoiseSuppression::Level::kHigh:
-       return "High";
-     case AudioProcessing::Config::NoiseSuppression::Level::kVeryHigh:
+@@ -32,6 +32,7 @@ std::string NoiseSuppressionLevelToStrin
        return "VeryHigh";
    }
    RTC_CHECK_NOTREACHED();
@@ -2238,12 +470,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/include/audio_proces
  }
  
  std::string GainController1ModeToString(const Agc1Config::Mode& mode) {
-   switch (mode) {
-     case Agc1Config::Mode::kAdaptiveAnalog:
-       return "AdaptiveAnalog";
-     case Agc1Config::Mode::kAdaptiveDigital:
-       return "AdaptiveDigital";
-     case Agc1Config::Mode::kFixedDigital:
+@@ -44,6 +45,7 @@ std::string GainController1ModeToString(
        return "FixedDigital";
    }
    RTC_CHECK_NOTREACHED();
@@ -2251,20 +478,32 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/include/audio_proces
  }
  
  }  // namespace
+diff --git a/third_party/libwebrtc/modules/audio_processing/transient/transient_suppressor_impl.cc b/third_party/libwebrtc/modules/audio_processing/transient/transient_suppressor_impl.cc
+--- a/third_party/libwebrtc/modules/audio_processing/transient/transient_suppressor_impl.cc
++++ b/third_party/libwebrtc/modules/audio_processing/transient/transient_suppressor_impl.cc
+@@ -53,6 +53,7 @@ std::string GetVadModeLabel(TransientSup
+     case TransientSuppressor::VadMode::kNoVad:
+       return "no VAD";
+   }
++  RTC_CHECK_NOTREACHED();
+ }
  
- constexpr int AudioProcessing::kNativeSampleRatesHz[];
+ }  // namespace
+diff --git a/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc b/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
+--- a/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
++++ b/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
+@@ -44,6 +44,7 @@ ScreenCastPortal::CaptureSourceType Scre
+     case CaptureType::kAnyScreenContent:
+       return ScreenCastPortal::CaptureSourceType::kAnyScreenContent;
+   }
++  RTC_CHECK_NOTREACHED();
+ }
  
- void CustomProcessing::SetRuntimeSetting(
-     AudioProcessing::RuntimeSetting setting) {}
+ ScreenCastPortal::ScreenCastPortal(CaptureType type, PortalNotifier* notifier)
 diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
 --- a/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
 +++ b/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
-@@ -33,11 +33,12 @@ std::unique_ptr<VideoRtpDepacketizer> Cr
-       return std::make_unique<VideoRtpDepacketizerVp9>();
-     case kVideoCodecAV1:
-       return std::make_unique<VideoRtpDepacketizerAv1>();
-     case kVideoCodecGeneric:
-     case kVideoCodecMultiplex:
+@@ -38,6 +38,7 @@ std::unique_ptr<VideoRtpDepacketizer> Cr
        return std::make_unique<VideoRtpDepacketizerGeneric>();
    }
    RTC_CHECK_NOTREACHED();
@@ -2275,12 +514,7 @@ diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depa
 diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
 --- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
 +++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
-@@ -137,16 +137,17 @@ bool IsNonVolatile(RTPExtensionType type
- #if defined(WEBRTC_MOZILLA_BUILD)
-     case kRtpExtensionCsrcAudioLevel:
-       // TODO: Mozilla implement for CsrcAudioLevel
-       RTC_CHECK(false);
-       return false;
+@@ -142,6 +142,7 @@ bool IsNonVolatile(RTPExtensionType type
  #endif
    }
    RTC_CHECK_NOTREACHED();
@@ -2288,20 +522,10 @@ diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc b/third
  }
  
  bool HasBweExtension(const RtpHeaderExtensionMap& extensions_map) {
-   return extensions_map.IsRegistered(kRtpExtensionTransportSequenceNumber) ||
-          extensions_map.IsRegistered(kRtpExtensionTransportSequenceNumber02) ||
-          extensions_map.IsRegistered(kRtpExtensionAbsoluteSendTime) ||
-          extensions_map.IsRegistered(kRtpExtensionTransmissionTimeOffset);
- }
 diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
 --- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
 +++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc
-@@ -40,16 +40,17 @@ namespace {
-     case AudioFrameType::kEmptyFrame:
-       return "empty";
-     case AudioFrameType::kAudioFrameSpeech:
-       return "audio_speech";
-     case AudioFrameType::kAudioFrameCN:
+@@ -45,6 +45,7 @@ namespace {
        return "audio_cn";
    }
    RTC_CHECK_NOTREACHED();
@@ -2309,20 +533,21 @@ diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_audio.cc b
  }
  
  constexpr char kIncludeCaptureClockOffset[] =
-     "WebRTC-IncludeCaptureClockOffset";
+diff --git a/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc b/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc
+--- a/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc
++++ b/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc
+@@ -110,6 +110,7 @@ size_t BufferToIndex(Vp8BufferReference 
+     case Vp8FrameConfig::Vp8BufferReference::kNone:
+       RTC_CHECK_NOTREACHED();
+   }
++  RTC_CHECK_NOTREACHED();
+ }
  
  }  // namespace
- 
- RTPSenderAudio::RTPSenderAudio(Clock* clock, RTPSender* rtp_sender)
 diff --git a/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc b/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
 --- a/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
 +++ b/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
-@@ -25,16 +25,17 @@ TemporalLayersChecker::CreateTemporalLay
-     case Vp8TemporalLayersType::kFixedPattern:
-       return std::make_unique<DefaultTemporalLayersChecker>(
-           num_temporal_layers);
-     case Vp8TemporalLayersType::kBitrateDynamic:
-       // Conference mode temporal layering for screen content in base stream.
+@@ -30,6 +30,7 @@ TemporalLayersChecker::CreateTemporalLay
        return std::make_unique<TemporalLayersChecker>(num_temporal_layers);
    }
    RTC_CHECK_NOTREACHED();
@@ -2330,20 +555,10 @@ diff --git a/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_laye
  }
  
  TemporalLayersChecker::TemporalLayersChecker(int num_temporal_layers)
-     : num_temporal_layers_(num_temporal_layers),
-       sequence_number_(0),
-       last_sync_sequence_number_(0),
-       last_tl0_sequence_number_(0) {}
- 
 diff --git a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
 --- a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
 +++ b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
-@@ -58,16 +58,17 @@ bool IsFramerateScalingEnabled(Degradati
- std::string ToString(VideoAdaptationReason reason) {
-   switch (reason) {
-     case VideoAdaptationReason::kQuality:
-       return "quality";
-     case VideoAdaptationReason::kCpu:
+@@ -63,6 +63,7 @@ std::string ToString(VideoAdaptationReas
        return "cpu";
    }
    RTC_CHECK_NOTREACHED();
@@ -2351,256 +566,3 @@ diff --git a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resourc
  }
  
  std::vector<bool> GetActiveLayersFlags(const VideoCodec& codec) {
-   std::vector<bool> flags;
-   if (codec.codecType == VideoCodecType::kVideoCodecVP9) {
-     flags.resize(codec.VP9().numberOfSpatialLayers);
-     for (size_t i = 0; i < flags.size(); ++i) {
-       flags[i] = codec.spatialLayers[i].active;
-diff --git a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ast_to_hir.cpp b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ast_to_hir.cpp
---- a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ast_to_hir.cpp
-+++ b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ast_to_hir.cpp
-@@ -2646,16 +2646,17 @@ get_type_name_for_precision_qualifier(co
-          unreachable("Unsupported sampler/image type");
-       } /* sampler/image type */
-       break;
-    } /* GLSL_TYPE_SAMPLER/GLSL_TYPE_IMAGE */
-    break;
-    default:
-       unreachable("Unsupported type");
-    } /* base type */
-+   return "";
- }
- 
- static unsigned
- select_gles_precision(unsigned qual_precision,
-                       const glsl_type *type,
-                       struct _mesa_glsl_parse_state *state, YYLTYPE *loc)
- {
-    /* Precision qualifiers do not have any meaning in Desktop GLSL.
-diff --git a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ir.cpp b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ir.cpp
---- a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ir.cpp
-+++ b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/ir.cpp
-@@ -619,16 +619,17 @@ ir_expression::get_num_operands(ir_expre
- 
-    if (op <= ir_last_triop)
-       return 3;
- 
-    if (op <= ir_last_quadop)
-       return 4;
- 
-    unreachable("Could not calculate number of operands");
-+   return -1;
- }
- 
- #include "ir_expression_operation_strings.h"
- 
- const char*
- depth_layout_string(ir_depth_layout layout)
- {
-    switch(layout) {
-diff --git a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/loop_analysis.cpp b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/loop_analysis.cpp
---- a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/loop_analysis.cpp
-+++ b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/loop_analysis.cpp
-@@ -234,16 +234,17 @@ incremented_before_terminator(ir_loop *l
-       }
- 
-       default:
-          break;
-       }
-    }
- 
-    unreachable("Unable to find induction variable");
-+   return false;
- }
- 
- /**
-  * Record the fact that the given loop variable was referenced inside the loop.
-  *
-  * \arg in_assignee is true if the reference was on the LHS of an assignment.
-  *
-  * \arg in_conditional_code_or_nested_loop is true if the reference occurred
-diff --git a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/opt_vectorize.cpp b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/opt_vectorize.cpp
---- a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/opt_vectorize.cpp
-+++ b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl/opt_vectorize.cpp
-@@ -224,16 +224,17 @@ write_mask_to_swizzle(unsigned write_mas
- {
-    switch (write_mask) {
-    case WRITEMASK_X: return SWIZZLE_X;
-    case WRITEMASK_Y: return SWIZZLE_Y;
-    case WRITEMASK_Z: return SWIZZLE_Z;
-    case WRITEMASK_W: return SWIZZLE_W;
-    }
-    unreachable("not reached");
-+   return 0;
- }
- 
- /**
-  * Returns whether a single-channeled write mask matches a swizzle.
-  */
- static bool
- write_mask_matches_swizzle(unsigned write_mask,
-                            const ir_swizzle *swz)
-diff --git a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl_types.cpp b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl_types.cpp
---- a/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl_types.cpp
-+++ b/third_party/rust/glslopt/glsl-optimizer/src/compiler/glsl_types.cpp
-@@ -455,16 +455,17 @@ const glsl_type *glsl_type::get_bare_typ
-    case GLSL_TYPE_VOID:
-    case GLSL_TYPE_SUBROUTINE:
-    case GLSL_TYPE_FUNCTION:
-    case GLSL_TYPE_ERROR:
-       return this;
-    }
- 
-    unreachable("Invalid base type");
-+   return nullptr;
- }
- 
- const glsl_type *glsl_type::get_float16_type() const
- {
-    assert(this->base_type == GLSL_TYPE_FLOAT);
- 
-    return get_instance(GLSL_TYPE_FLOAT16,
-                        this->vector_elements,
-@@ -2011,16 +2012,17 @@ glsl_type::get_explicit_std140_type(bool
-                                        (enum glsl_interface_packing)this->interface_packing,
-                                        this->interface_row_major,
-                                        this->name);
- 
-       delete[] fields;
-       return type;
-    } else {
-       unreachable("Invalid type for UBO or SSBO");
-+      return nullptr;
-    }
- }
- 
- unsigned
- glsl_type::std430_base_alignment(bool row_major) const
- {
- 
-    unsigned N = is_64bit() ? 8 : 4;
-@@ -2369,16 +2371,17 @@ glsl_type::get_explicit_std430_type(bool
-                                        (enum glsl_interface_packing)this->interface_packing,
-                                        this->interface_row_major,
-                                        this->name);
- 
-       delete[] fields;
-       return type;
-    } else {
-       unreachable("Invalid type for SSBO");
-+      return nullptr;
-    }
- }
- 
- const glsl_type *
- glsl_type::get_explicit_interface_type(bool supports_std430) const
- {
-    enum glsl_interface_packing packing =
-       this->get_internal_ifc_packing(supports_std430);
-@@ -2443,16 +2446,17 @@ glsl_type::get_explicit_type_for_size_al
-       unsigned stride = align(col_size, col_align);
- 
-       *size = this->matrix_columns * stride;
-       *alignment = col_align;
-       return glsl_type::get_instance(this->base_type, this->vector_elements,
-                                      this->matrix_columns, stride, false);
-    } else {
-       unreachable("Unhandled type.");
-+      return nullptr;
-    }
- }
- 
- unsigned
- glsl_type::count_vec4_slots(bool is_gl_vertex_input, bool is_bindless) const
- {
-    /* From page 31 (page 37 of the PDF) of the GLSL 1.50 spec:
-     *
-@@ -2943,12 +2947,13 @@ glsl_get_sampler_dim_coordinate_componen
-    case GLSL_SAMPLER_DIM_SUBPASS:
-    case GLSL_SAMPLER_DIM_SUBPASS_MS:
-       return 2;
-    case GLSL_SAMPLER_DIM_3D:
-    case GLSL_SAMPLER_DIM_CUBE:
-       return 3;
-    default:
-       unreachable("Unknown sampler dim");
-+      return -1;
-    }
- }
- 
- }
-diff --git a/third_party/rust/glslopt/glsl-optimizer/src/mesa/main/shaderobj.h b/third_party/rust/glslopt/glsl-optimizer/src/mesa/main/shaderobj.h
---- a/third_party/rust/glslopt/glsl-optimizer/src/mesa/main/shaderobj.h
-+++ b/third_party/rust/glslopt/glsl-optimizer/src/mesa/main/shaderobj.h
-@@ -180,16 +180,17 @@ static inline gl_shader_stage
-    case GL_COMPUTE_SUBROUTINE_UNIFORM:
-       return MESA_SHADER_COMPUTE;
-    case GL_TESS_CONTROL_SUBROUTINE_UNIFORM:
-       return MESA_SHADER_TESS_CTRL;
-    case GL_TESS_EVALUATION_SUBROUTINE_UNIFORM:
-       return MESA_SHADER_TESS_EVAL;
-    }
-    unreachable("not reached");
-+   return MESA_SHADER_NONE;
- }
- 
- static inline gl_shader_stage
- _mesa_shader_stage_from_subroutine(GLenum subroutine)
- {
-    switch (subroutine) {
-    case GL_VERTEX_SUBROUTINE:
-       return MESA_SHADER_VERTEX;
-@@ -200,16 +201,17 @@ static inline gl_shader_stage
-    case GL_COMPUTE_SUBROUTINE:
-       return MESA_SHADER_COMPUTE;
-    case GL_TESS_CONTROL_SUBROUTINE:
-       return MESA_SHADER_TESS_CTRL;
-    case GL_TESS_EVALUATION_SUBROUTINE:
-       return MESA_SHADER_TESS_EVAL;
-    }
-    unreachable("not reached");
-+   return MESA_SHADER_NONE;
- }
- 
- static inline GLenum
- _mesa_shader_stage_to_subroutine(gl_shader_stage stage)
- {
-    switch (stage) {
-    case MESA_SHADER_VERTEX:
-       return GL_VERTEX_SUBROUTINE;
-@@ -225,16 +227,17 @@ static inline GLenum
-       return GL_TESS_EVALUATION_SUBROUTINE;
-    case MESA_SHADER_NONE:
-       break;
-    case MESA_SHADER_KERNEL:
-       unreachable("not reached");
-       break;
-    }
-    unreachable("not reached");
-+   return GL_VERTEX_PROGRAM_ARB;
- }
- 
- static inline GLenum
- _mesa_shader_stage_to_subroutine_uniform(gl_shader_stage stage)
- {
-    switch (stage) {
-    case MESA_SHADER_VERTEX:
-       return GL_VERTEX_SUBROUTINE_UNIFORM;
-@@ -248,16 +251,17 @@ static inline GLenum
-       return GL_TESS_CONTROL_SUBROUTINE_UNIFORM;
-    case MESA_SHADER_TESS_EVAL:
-       return GL_TESS_EVALUATION_SUBROUTINE_UNIFORM;
-    case MESA_SHADER_NONE:
-    case MESA_SHADER_KERNEL:
-       break;
-    }
-    unreachable("not reached");
-+   return GL_VERTEX_PROGRAM_ARB;
- }
- 
- extern bool
- _mesa_validate_pipeline_io(struct gl_pipeline_object *);
- 
- #ifdef __cplusplus
- }
- #endif

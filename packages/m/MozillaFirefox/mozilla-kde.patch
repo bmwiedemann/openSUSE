@@ -3,7 +3,7 @@
 # Date 1559294891 -7200
 #      Fri May 31 11:28:11 2019 +0200
 # Node ID c2aa7198fb925e7fde96abf65b6f68b9b755f112
-# Parent  4f8492f0f4bfa17f5b4523a1cdda15a45e3d74d3
+# Parent  7618e13ce3f8b52d13ec5d54acc3a986793ec8ef
 Description: Add KDE integration to Firefox (toolkit parts)
 Author: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Author: Lubos Lunak <lunak@suse.com>
@@ -162,10 +162,10 @@ diff --git a/toolkit/components/downloads/moz.build b/toolkit/components/downloa
 +
  with Files("**"):
      BUG_COMPONENT = ("Toolkit", "Downloads API")
-diff --git a/toolkit/mozapps/downloads/HelperAppDlg.jsm b/toolkit/mozapps/downloads/HelperAppDlg.jsm
---- a/toolkit/mozapps/downloads/HelperAppDlg.jsm
-+++ b/toolkit/mozapps/downloads/HelperAppDlg.jsm
-@@ -1250,36 +1250,66 @@ nsUnknownContentTypeDialog.prototype = {
+diff --git a/toolkit/mozapps/downloads/HelperAppDlg.sys.mjs b/toolkit/mozapps/downloads/HelperAppDlg.sys.mjs
+--- a/toolkit/mozapps/downloads/HelperAppDlg.sys.mjs
++++ b/toolkit/mozapps/downloads/HelperAppDlg.sys.mjs
+@@ -1235,36 +1235,66 @@ nsUnknownContentTypeDialog.prototype = {
          params.handlerApp &&
          params.handlerApp.executable &&
          params.handlerApp.executable.isFile()
@@ -1247,7 +1247,7 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
 diff --git a/widget/gtk/moz.build b/widget/gtk/moz.build
 --- a/widget/gtk/moz.build
 +++ b/widget/gtk/moz.build
-@@ -142,16 +142,17 @@ FINAL_LIBRARY = "xul"
+@@ -144,16 +144,17 @@ FINAL_LIBRARY = "xul"
  
  LOCAL_INCLUDES += [
      "/layout/base",

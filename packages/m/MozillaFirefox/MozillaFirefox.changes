@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Sat Jun 10 14:48:07 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- Mozilla Firefox 114.0.1
+  * Fix a startup crash (bmo#1837201, boo#1212101)
+
+-------------------------------------------------------------------
+Fri Jun  9 11:05:47 UTC 2023 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Only install vaapitest for wayland-enabled builds, where it gets built
+- Rebase mozilla-silence-no-return-type.patch
+- Rebase s390x-patches, and remove obsolete patches:
+  mozilla-bmo1005535.patch mozilla-s390x-skia-gradient.patch  
+
+-------------------------------------------------------------------
+Mon Jun  5 21:22:19 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 114.0
+  MFSA 2023-20 (bsc#1211922)
+  * CVE-2023-34414 (bmo#1695986)
+    Click-jacking certificate exceptions through rendering lag
+  * CVE-2023-34415 (bmo#1811999)
+    Site-isolation bypass on sites that allow open redirects to
+    data: urls
+  * CVE-2023-34416 (bmo#1752703, bmo#1818394, bmo#1826875,
+    bmo#1827340, bmo#1827655, bmo#1828065, bmo#1830190,
+    bmo#1830206, bmo#1830795, bmo#1833339)
+    Memory safety bugs fixed in Firefox 114 and Firefox ESR
+    102.12
+  * CVE-2023-34417 (bmo#1746447, bmo#1820903, bmo#1832832)
+    Memory safety bugs fixed in Firefox 114
+  * New: Added UI to manage the DNS over HTTPS exception list.
+    (bmo#1596847)
+  * New: Bookmarks can now be searched from the Bookmarks menu.
+    The Bookmarks menu is accessible by adding the *Bookmarks
+    menu* button to the toolbar. (bmo#1736937)
+  * New: Restrict searches to your local browsing history by
+    selecting *Search history* from the History, Library or
+    Application menu buttons. (bmo#1736939)
+  * New: Mac users can now capture video from their cameras in
+    all supported native resolutions. This enables resolutions
+    higher than 1280x720. (bmo#1806604)
+  * New: It is now possible to reorder the extensions listed in
+    the extensions panel. (bmo#1805924)
+  * New: Users on macOS, Linux, and Windows 7 can now use FIDO2 /
+    WebAuthn authenticators over USB. Some advanced features,
+    such as fully passwordless logins, require a PIN to be set on
+    the authenticator. (bmo#1814487)
+  * New: Pocket Recommended content can now be seen in France,
+    Italy, and Spain. (bmo#None)
+  * Changed: DNS over HTTPS settings are now part of  the
+    *Privacy & Security* section of the *Settings* page and allow
+    the user to choose from all the supported modes.
+    (bmo#1610741)
+  * HTML5: DOM: Added support for ES Modules on DedicatedWorker
+    and SharedWorker
+  * HTML5: WebTransport is now enabled by default and will be
+    going to release with 114. As the original Explainer  notes,
+    it enables multiple use-cases that are hard or impossible to
+    handle without it, especially for Gaming and live streaming.
+    It covers cases that are problematic for alternative
+    mechanisms, such as WebSockets.
+    Built on top of HTTP3 (HTTP2 support will be coming later).
+    The current implementation in Firefox is passing 505 out of
+    565 Web-Platform Tests.
+  * HTML5: CSS: The `infinity` and `NaN` constants are now
+    supported inside the `calc()` function. (bmo#1830759)
+  * Developer: The *Copy as cURL* feature, available in the
+    Network panel, has been enhanced. It now supports the
+    -`-compressed` argument. (bmo#1776120)
+  * Developer: The Accessibility Inspector has been improved to
+    accurately recognize all the ARIA roles like `banner`,
+    `main`, `navigation`, and `contentinfo`, etc. This
+    enhancement is particularly beneficial for web developers
+    working with ARIA roles to improve web accessibility.
+    (bmo#1572512)
+  * Developer: Firefox now provides support for the CSS Cascading
+    Level 4 `supports()` syntax for `@import` rules. This allows
+    for the importation of other stylesheets based on support-
+    dependency. In addition, the Inspector panel now accurately
+    displays the conditions at the top of the imported rule.
+- requires NSS 3.89.1
+
+-------------------------------------------------------------------
 Wed May 24 19:26:35 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - Mozilla Firefox 113.0.2 (boo#1211696)
