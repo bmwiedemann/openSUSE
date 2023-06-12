@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jun 12 06:34:21 UTC 2023 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Update version to 5.7.0
+  * meek: a new transport protocol meek is added.
+  * HTTP Proxy Add h1SkipWaitForReply Option to HTTP Proxy Protocol
+  * set v2ray binary as an entrypoint in container images
+  * Add Integrated Container Image Building
+  * Skip validating on empty http host config
+  * Add PacketAddr support to Trojan
+  * DomainStrategy support for all outbounds
+  * Add an option to replace destination address in access log with sniffed domain
+  * uTLS uTLS ALPN Control
+  * uTLS New Security Type uTLS: TLS Client Hello imitation
+  * DNS Support per-client configuration
+  * DNS Support specifying domain matcher
+  * Add bind to device to Windows and Darwin
+  * Replace default Health Ping URL to HTTPS for burst observatory
+  * Implement Match and MatchAny for all MatcherGroup
+  * Fix bugs
+
+-------------------------------------------------------------------
 Thu Jan  5 12:42:50 UTC 2023 - opensuse-packaging <opensuse-packaging@opensuse.org>
 
 - Fix service command: "run" is required in v2ray 5.x

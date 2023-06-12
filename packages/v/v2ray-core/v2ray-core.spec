@@ -1,7 +1,7 @@
 #
 # spec file for package v2ray-core
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define   import_path     github.com/v2fly/v2ray-core/v5
 
 Name:           v2ray-core
-Version:        5.2.0
+Version:        5.7.0
 Release:        0
 Summary:        Network tools for building a computer network
 License:        MIT
@@ -44,7 +44,6 @@ BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
 # This package (v4.37.3+) can not be built with go version < 1.16
 BuildRequires:  unzip
-BuildRequires:  golang(API) = 1.18
 BuildRequires:  pkgconfig(systemd)
 AutoReqProv:    Off
 Provides:       v2ray = %{version}-%{release}
@@ -72,6 +71,7 @@ This package provide source code for %{repo}
 %setup -q -a1 -a6 -n %{repo}-%{version}
 
 %build
+export GO111MODULE=off
 %goprep %{import_path}
 %gobuild main...
 mv %{_builddir}/go/bin/main %{_builddir}/go/bin/v2ray

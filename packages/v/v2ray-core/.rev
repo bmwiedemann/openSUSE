@@ -307,4 +307,28 @@
     <comment></comment>
     <requestid>1056203</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>664b3a82251efcdef015239da103f05a</srcmd5>
+    <version>5.7.0</version>
+    <time>1686576444</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 5.7.0
+  * meek: a new transport protocol meek is added.
+  * HTTP Proxy Add h1SkipWaitForReply Option to HTTP Proxy Protocol
+  * set v2ray binary as an entrypoint in container images
+  * Add Integrated Container Image Building
+  * Skip validating on empty http host config
+  * Add PacketAddr support to Trojan
+  * DomainStrategy support for all outbounds
+  * Add an option to replace destination address in access log with sniffed domain
+  * uTLS uTLS ALPN Control
+  * uTLS New Security Type uTLS: TLS Client Hello imitation
+  * DNS Support per-client configuration
+  * DNS Support specifying domain matcher
+  * Add bind to device to Windows and Darwin
+  * Replace default Health Ping URL to HTTPS for burst observatory
+  * Implement Match and MatchAny for all MatcherGroup
+  * Fix bugs (forwarded request 1092471 from hillwood)</comment>
+    <requestid>1092473</requestid>
+  </revision>
 </revisionlist>
