@@ -173,4 +173,12 @@
 </comment>
     <requestid>1089053</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>e640c4c538927db5c0c7f59a003c399a</srcmd5>
+    <version>0.4.4</version>
+    <time>1686576268</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1092212</requestid>
+  </revision>
 </revisionlist>
