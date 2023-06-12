@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-requests-unixsocket
 Version:        0.3.0
 Release:        0

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 10 09:24:04 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Tue May  9 11:44:12 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add urllib3-2.patch to make it compatible with urllib3 >= 2.0.0
