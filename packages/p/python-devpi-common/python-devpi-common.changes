@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  9 07:36:13 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Wed Mar 22 09:32:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add unpin-versions.patch to reduce the packaging version conflict

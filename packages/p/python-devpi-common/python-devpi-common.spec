@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-devpi-common
 Version:        3.7.2
 Release:        0
