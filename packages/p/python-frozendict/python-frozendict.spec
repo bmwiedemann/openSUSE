@@ -19,6 +19,7 @@
 %define skip_python2 1
 # Do not enable multibuild unless seriously necessary, it in
 # combination with arch is a right mess!
+%{?sle15_python_module_pythons}
 Name:           python-frozendict
 Version:        2.3.5
 Release:        0
