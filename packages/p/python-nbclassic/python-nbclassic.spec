@@ -26,8 +26,12 @@
 %endif
 # this conditional is used in the python-rpm-macros, but `osc build --without libalternatives` won't work
 %bcond_without libalternatives
+# avoid rewriting
+%define python3dist python3dist
+# 1.0.0 gets abbreviated by pythondistdeps
+%define shortversion 1
 Name:           python-nbclassic%{psuffix}
-Version:        0.5.6
+Version:        1.0.0
 Release:        0
 Summary:        Jupyter Notebook as a Jupyter Server Extension
 License:        BSD-3-Clause
@@ -86,7 +90,8 @@ on top of the new Python server backend.
 
 %package -n jupyter-nbclassic
 Summary:        Jupyter Notebook as a Jupyter Server Extension
-Requires:       python3-nbclassic = %{version}
+# Any flavor is okay
+Requires:       %python3dist(nbclassic) = %{shortversion}
 
 %description -n jupyter-nbclassic
 NBClassic runs the Jupyter Notebook frontend on the Jupyter Server backend.
