@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  9 09:22:01 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Tue Mar 21 13:30:49 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Run tests in parallel.

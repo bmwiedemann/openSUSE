@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-setuptools-git-versioning
 Version:        1.13.2
 Release:        0
