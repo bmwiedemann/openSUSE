@@ -25,6 +25,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-zope.copy
 Version:        4.3
 Release:        0
