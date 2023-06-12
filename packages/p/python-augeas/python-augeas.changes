@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 12 05:38:45 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Tue Dec  4 12:45:49 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package
