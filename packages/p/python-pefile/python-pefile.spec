@@ -16,9 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-
+%{?sle15_python_module_pythons}
 Name:           python-pefile
 Version:        2023.2.7
 Release:        0
