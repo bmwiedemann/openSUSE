@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?sle_version} && 0%{?sle_version} <= 150300
 %define pythons python3
 %endif
@@ -29,6 +28,8 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+
+%{?sle15_python_module_pythons}
 Name:           python-sphinx-tabs
 Version:        3.4.1
 Release:        0
