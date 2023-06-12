@@ -1321,4 +1321,12 @@ This set of changes is not suitable for direct copy to currently released produc
     <comment>- update to 6.3.1 (forwarded request 1091807 from dsterba)</comment>
     <requestid>1091808</requestid>
   </revision>
+  <revision rev="147" vrev="2">
+    <srcmd5>c7314fc72870226d5277c3c060b29b31</srcmd5>
+    <version>6.3</version>
+    <time>1686576288</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1212217</comment>
+    <requestid>1092475</requestid>
+  </revision>
 </revisionlist>

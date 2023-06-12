@@ -34,7 +34,7 @@
 %define _dracutmodulesdir %(pkg-config --variable dracutmodulesdir dracut)
 
 Name:           btrfsprogs
-Version:        6.3.1
+Version:        6.3
 Release:        0
 Summary:        Utilities for the Btrfs filesystem
 License:        GPL-2.0-only
@@ -55,6 +55,7 @@ Provides:       btrfs-progs = %{version}-%{release}
 Provides:       btrfs-progs(%_arch) = %{version}-%{release}
 
 Patch1:         mkfs-default-features.patch
+Patch2:         btrfs-progs-qgroup-show-fix-formatting-of-limit-valu.patch
 
 %if %build_docs
 BuildRequires:  python3-Sphinx
@@ -209,6 +210,7 @@ bash command line completion support for btrfsprogs.
 %prep
 %setup -q -n btrfs-progs-v%{version}
 %patch1 -p1
+%patch2 -p1
 
 %build
 ./autogen.sh
