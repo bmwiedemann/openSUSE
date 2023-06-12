@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 11 20:36:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.35:
+  * https://git.kernel.dk/?p=fio.git;a=shortlog;h=refs/tags/fio-3.35
+
+-------------------------------------------------------------------
 Fri May  5 07:18:46 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Enable iscsi and nbd
