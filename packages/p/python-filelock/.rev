@@ -113,4 +113,14 @@
     <comment></comment>
     <requestid>1083340</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1dae489972fc3f7a4fee3cee296f5779</srcmd5>
+    <version>3.12.1</version>
+    <time>1686576293</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.12.1:
+  * Add 3.12 support
+  * Fix test_bad_lock_file for other OSes</comment>
+    <requestid>1092285</requestid>
+  </revision>
 </revisionlist>
