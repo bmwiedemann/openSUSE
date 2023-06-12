@@ -42,6 +42,7 @@
 %bcond_with extratest
 # enable pytest color output for local debugging: osc --with pytestcolor
 %bcond_with pytestcolor
+%{?sle15_python_module_pythons}
 Name:           python-scikit-learn%{psuffix}
 Version:        1.2.1
 Release:        0

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 10 17:37:09 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Wed Feb  8 18:34:17 UTC 2023 - Arun Persaud <arun@gmx.de>
 
 - update to version 1.2.1:
