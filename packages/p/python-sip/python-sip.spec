@@ -23,6 +23,7 @@
 %define Nversion %(rpm -q --qf '%%{version}' --whatprovides $(echo %{python_module %{sipN}-devel}| cut -d " " -f 1))
 %define skip_python2 1
 %define plainpython python
+%{?sle15_python_module_pythons}
 Name:           python-sip
 Version:        %{Nversion}
 Release:        0

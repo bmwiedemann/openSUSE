@@ -967,4 +967,12 @@ I need to make a separate request for the py2 version.
   could be older on a backport for 15.X (forwarded request 1060847 from bnavigator)</comment>
     <requestid>1060848</requestid>
   </revision>
+  <revision rev="115" vrev="5">
+    <srcmd5>991b1d2cffaa22fc0490200baee6e28f</srcmd5>
+    <version>MACRO</version>
+    <time>1686576297</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092342</requestid>
+  </revision>
 </revisionlist>
