@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-zope.deferredimport
 Version:        4.4
 Release:        0
