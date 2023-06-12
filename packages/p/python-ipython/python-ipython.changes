@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Jun 11 19:44:22 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 8.14.0
+  * PR #14080 fixes some shortcuts issues.
+  * PR #14056 Add option to %autoreload to hide errors when
+    reloading code.
+  * PR #14039 (and PR #14040) to show exception notes in
+    tracebacks.
+  * PR #14076 Add option to EventManager to prevent printing
+  ## SPEC 0 and SPEC 4
+  * You’ve heard about the NEPs, (NumPy enhancement Proposal),
+    having a NEP for something non-numpy specific was sometime
+    confusing. Long live the SPECs.
+  * We are now trying to follow SPEC 0 (aka old NEP 29) for of
+    support of upstream libraries.
+  * We also now try to follow SPEC 4 (test and publish nightly on a
+    centralized nightly repository). We encourage you to do so as
+    well in order to report breakage, and contribute to the SPEC
+    process !
+  ## Python 3.12 compatibility ?
+  * Python 3.12 changed its tokenizer to have better support for
+    f-strings and allow arbitrary expression. This is a great new
+    feature and performance improvement in python 3.12.
+  * Unfortunately this means the new tokenizer does not support
+    incomplete or invalid Python which will break many features of
+    IPython. Thus compatibility of IPython with Python 3.12 is not
+    guarantied. It is unclear to which extent IPython is affected,
+    and whether we can/should try to still support magics, shell
+    escape (! ....), …, as well as how to do it if we can.
+  * In addition even if we there is technical feasibility to do so,
+    it is no clear we have the resources to do it. We are thus
+    looking for your help if you can _test_ on Python 3.12 to see
+    to which extent this affects users and which features are
+    critical.
+  * We are not going to pin IPython to Python <3.12 as otherwise on
+    install pip would downgrade/resolve to IPython 8.13, so if you
+    plan to update to Python 3.12 after its release, we encourage
+    for extra care.
+- Skip potential future python312 because of the above
+
+-------------------------------------------------------------------
+Sat Jun 10 12:18:34 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Fri Jun  2 12:11:04 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 8.13.2
