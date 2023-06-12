@@ -42,8 +42,7 @@
 %bcond_without test
 ExclusiveArch:  x86_64
 %endif
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pythran%{psuffix}
 Version:        0.13.1
 Release:        0
