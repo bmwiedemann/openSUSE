@@ -23,7 +23,7 @@
 %define gtk_soname 5
 %define tag_soname 3
 Name:           audacious
-Version:        4.3
+Version:        4.3.1
 Release:        0
 Summary:        Audio player with graphical UI and library functionality
 License:        BSD-2-Clause
