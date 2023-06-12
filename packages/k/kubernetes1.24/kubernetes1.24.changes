@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jun 12 04:55:15 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update BuildRequires:  `go >= 1.19.9`
+- Update to version 1.24.14:
+  * Release commit for Kubernetes v1.24.14
+  * [1.24] vendor: bump runc to 1.1.6
+  * benchmark test to evaluate the overhead of podMatchesScopeFunc
+  * Fix incorrect calculation for ResourceQuota with PriorityClass as its scope
+  * releng/go: Update images, dependencies and version to Go 1.19.9
+  * Fix directory mismatch for `volume.SetVolumeOwnership()`
+  * use case-insensitive header keys for http probes
+  * add log includes pod preemption details
+  * fix: the volume is not detached after the pod and PVC objects are deleted
+  * Bump konnectivity-client to 0.0.37
+  * Do not look at VPC-related resources outside the cluster's network
+  * kubelet: Do not mutate pods in the pod manager
+  * Logging, remove LookPath in detectSafeNotMountedBehavior
+  * Take canSafelySkipMountPointCheck package-private, reduce log visibility for removePath.
+  * Add test for detectSafeNotMountedBehavior.
+  * Add test for CanSafelySkipMountPointCheck
+  * Correct detection of 'not mounted' behavior -- umount will exit with a non-zero code.
+  * Skip mount point checks when possible during mount cleanup.
+  * Return error for localhost seccomp type with no localhost profile defined
+
+-------------------------------------------------------------------
 Thu Apr 27 11:52:05 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update `Requires` in the "kubernetes1.24-client" pkg to:
