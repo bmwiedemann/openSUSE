@@ -24,6 +24,7 @@
 
 %define pypi_name cheroot
 %bcond_with ringdisabled
+%{?sle15_python_module_pythons}
 Name:           python-%{pypi_name}
 Version:        9.0.0
 Release:        0

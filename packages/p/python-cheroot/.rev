@@ -207,4 +207,12 @@
     <comment>- remove obsolete requirement on setuptools_scm_git_archive</comment>
     <requestid>1085973</requestid>
   </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>1ef4cade9ac83116921edc9694ac973d</srcmd5>
+    <version>9.0.0</version>
+    <time>1686576289</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092264</requestid>
+  </revision>
 </revisionlist>

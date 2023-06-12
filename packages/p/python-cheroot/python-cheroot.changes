@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 10 09:22:04 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Wed May 10 06:32:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - remove obsolete requirement on setuptools_scm_git_archive
