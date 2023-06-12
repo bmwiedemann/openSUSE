@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  9 11:46:37 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Wed Feb 15 19:57:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - fix tests on python 3.8 as well with newer python-mocket by skipping
