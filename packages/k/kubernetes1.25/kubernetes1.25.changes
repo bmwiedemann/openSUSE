@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Jun 12 04:41:19 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update BuildRequires:  `go >= 1.19.9`
+- Update to version 1.25.10:
+  * benchmark test to evaluate the overhead of podMatchesScopeFunc
+  * Fix incorrect calculation for ResourceQuota with PriorityClass as its scope
+  * releng/go: Update images, dependencies and version to Go 1.19.9
+  * node: device-plugin: e2e: Additional test cases
+  * node: device-plugin: add node reboot test scenario
+  * node: device-plugin: e2e: Capture pod admission failure
+  * node: device-mgr: e2e: adapt to sample device plugin refactoring
+  * node: device-mgr: e2e: Update the e2e test to reproduce issue:109595
+  * node: device-mgr: e2e: Implement End to end test
+  * node: device-mgr: Handle recovery by checking if healthy devices exist
+  * node: device-plugin: e2e: Add test case for kubelet restart
+  * node: device-plugin: e2e: Provide sleep intervals via constants
+  * node: device-plugin: e2e: Update test description to make it explicit
+  * node: device-plugin: e2e: Isolate test to pod restart scenario
+  * Move glusterfs 1.25 deprecation notice to the deprecation section.
+  * node: device-plugin: e2e: Annotate device check with error message
+  * node: device-plugins: e2e: s/devLen/expectedSampleDevsAmount
+  * node: device-plugins: e2e: Refactor parse log to return string and error
+  * test: Fix path to e2e node sample device plugin
+  * node: device-mgr: sample device plugin: manifest to avoid registration
+  * node: device-mgr: sample device plugin: control registration process
+  * e2e: node: unify sample device plugin utilities
+  * [1.25] vendor: bump runc to 1.1.6
+  * Fix directory mismatch for `volume.SetVolumeOwnership()`
+  * use case-insensitive header keys for http probes
+  * add log includes pod preemption details
+  * fix: the volume is not detached after the pod and PVC objects are deleted
+  * Do not look at VPC-related resources outside the cluster's network
+  * Bump konnectivity-client to 0.0.37
+  * kubelet: Do not mutate pods in the pod manager
+  * Return error for localhost seccomp type with no localhost profile defined
+
+-------------------------------------------------------------------
 Thu Apr 13 11:21:25 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.25.9:
