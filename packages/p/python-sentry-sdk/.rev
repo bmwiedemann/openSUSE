@@ -220,4 +220,12 @@
   - Use http.method instead of method (#2054)</comment>
     <requestid>1089576</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>f866d9724e7c9afce766221588cf59cb</srcmd5>
+    <version>1.24.0</version>
+    <time>1686576374</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1092370</requestid>
+  </revision>
 </revisionlist>
