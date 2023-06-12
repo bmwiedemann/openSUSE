@@ -26,8 +26,8 @@
 %endif
 
 %define mod_name rq
-%define skip_python2 1
 
+%{?sle15_python_module_pythons}
 Name:           python-rq%{psuffix}
 Version:        1.15
 Release:        0
