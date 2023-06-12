@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  9 12:58:04 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Sep  5 08:02:15 UTC 2022 - Elisei Roca <eroca@mailbox.org>
 
 - Cleanup requires, comments and files section 
