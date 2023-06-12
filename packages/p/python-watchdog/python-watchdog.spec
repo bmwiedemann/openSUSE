@@ -16,8 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-watchdog
 Version:        3.0.0
 Release:        0
@@ -45,11 +45,14 @@ BuildRequires:  %{python_module pytest}
 %description
 Python API and shell utilities to monitor file system events.
 
+# doc only for Tumblweed because Leap rise up an systax error in version.py
+%if 0%{?suse_version} > 1500
 %package doc
 Summary:        Documentation and examples for %{name}
 
 %description doc
 This package contains documentation and examples for %{name}.
+%endif
 
 %prep
 %setup -q -n watchdog-%{version}
@@ -59,7 +62,9 @@ find src -name "*.py" | xargs sed -i -e '/^#!\//, 1d'
 
 %build
 %python_build
+%if 0%{?suse_version} > 1500
 cd docs && make html && rm -r build/html/.buildinfo build/html/objects.inv # Build HTML docs
+%endif
 
 %install
 %python_install
@@ -86,7 +91,9 @@ export LANG=en_US.UTF-8
 %{python_sitelib}/watchdog
 %{python_sitelib}/watchdog-%{version}-py%{python_version}.egg-info
 
+%if 0%{?suse_version} > 1500
 %files %{python_files doc}
 %doc docs/build/html
+%endif
 
 %changelog

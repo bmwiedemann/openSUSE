@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 11 09:16:06 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+- Fix build error for Leap
+  Generate doc only for Leap because it rise up an syntax error in 
+  version.py
+
+-------------------------------------------------------------------
 Mon Mar 20 12:17:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.0:
