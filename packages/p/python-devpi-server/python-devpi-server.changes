@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  9 07:35:18 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Apr 10 07:28:50 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable broken tests with latest version of python-packaging. gh#devpi/devpi#948

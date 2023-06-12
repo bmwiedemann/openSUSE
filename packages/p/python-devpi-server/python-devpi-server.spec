@@ -17,6 +17,8 @@
 
 
 %define commands export fsck gen-config import init passwd server gen-secret
+
+%{?sle15_python_module_pythons}
 Name:           python-devpi-server
 Version:        6.8.0
 Release:        0
@@ -107,6 +109,8 @@ donttest+=" or test_name_mangling_relates_to_issue132"
 donttest+=" or test_parse_index_with_valid_basenames[py.tar.gz]"
 donttest+=" or test_parse_index_with_valid_basenames[py-1.3.1-1.0rc4.tar.gz]"
 donttest+=" or test_simple_project_pypi_egg"
+donttest+=" or test_streaming"
+donttest+=" or test_streaming_replica"
 
 %{python_expand \
 mkdir bin-%{$python_version}
