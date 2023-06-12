@@ -23,4 +23,27 @@
 </comment>
     <requestid>893040</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bc44145281b5ae86d761e59907d77971</srcmd5>
+    <version>0.19.0</version>
+    <time>1686576463</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.19.0
+  * Add support for setting cursor `row_factory` (#229)
+  * Dropped unused compatibility shims for 3.5 and 3.6
+  * Deprecated: Python 3.7 support will be dropped in v0.20.0
+- Release 0.18.0
+  * Added support for `paramstyle` (#197)
+  * Better type hints for `isolation_level` (#172) and
+    `text_factory` (#179)
+  * Use stdlib typing module when possible (#114)
+  * Replace aiounittest with stdlib on 3.8+
+  * Docmentation improvements (#108)
+  * Dropped support for Python 3.7, added support for Python 3.10
+    and 3.11 (#208)
+- Drop stdlib-typing_extensions.patch
+  * the upstream issue was accepted and the module was removed
+    but later introduced for Python &lt; 3.8 due to a different case</comment>
+    <requestid>1092488</requestid>
+  </revision>
 </revisionlist>
