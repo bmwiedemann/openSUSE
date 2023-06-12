@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 11 13:32:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.1:
+  * Fix read off-by-one bug in compressed int function
+  * Handle read-data errors correctly
+  * Ensure memory is freed when zrealloc is called with size 0
+
+-------------------------------------------------------------------
 Mon Mar 27 11:22:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.3.0:
