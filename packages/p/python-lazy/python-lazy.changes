@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  9 06:12:06 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Wed Jan 18 16:47:05 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.5

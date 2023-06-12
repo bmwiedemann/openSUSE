@@ -49,4 +49,12 @@
 - use .tar.gz instead of .zip for better compression ratio</comment>
     <requestid>1059500</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e1de725f5863bb4577ada83994b2cf21</srcmd5>
+    <version>1.5</version>
+    <time>1686576349</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092249</requestid>
+  </revision>
 </revisionlist>

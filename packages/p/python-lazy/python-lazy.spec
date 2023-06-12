@@ -17,6 +17,7 @@
 
 
 %global modname lazy
+%{?sle15_python_module_pythons}
 Name:           python-lazy
 Version:        1.5
 Release:        0
