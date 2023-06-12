@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jun 11 14:13:18 UTC 2023 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 3.1.5
+  - fix handling of mount rules in apparmor_parser
+  - minor additions to abstractions/base and snap_browsers
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.1.5
+    for the full upstream changelog
+- remove upstreamed aa-status-fix-json-mr1046.patch
+- split off apparmor-enable-precompiled-cache.diff from
+  apparmor-enable-profile-cache.diff so that the precompiled cache
+  path doesn't get added in parser.conf for Tumbleweed builds.
+  This prevents a warning about the non-existing directory when
+  loading profiles.
+
+-------------------------------------------------------------------
 Tue Jun  6 21:39:15 UTC 2023 - Christian Boltz <suse-beta@cboltz.de>
 
 - fix aa-status --json output (aa-status-fix-json-mr1046.patch,

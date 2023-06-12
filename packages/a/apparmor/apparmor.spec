@@ -54,7 +54,7 @@
 %define JAR_FILE changeHatValve.jar
 
 Name:           apparmor
-Version:        3.1.4
+Version:        3.1.5
 Release:        0
 Summary:        AppArmor userlevel parser utility
 License:        GPL-2.0-or-later
@@ -88,8 +88,8 @@ Patch5:         apparmor-lessopen-nfs-workaround.diff
 # make <apache2.d> include in apache extra profile optional to make openQA happy (boo#1178527)
 Patch6:         apache-extra-profile-include-if-exists.diff
 
-# fix aa-status --json / --pretty-json output (merged upstream 2023-06-06 for 3.0 and 3.1 branch [not needed/suiting for master] - https://gitlab.com/apparmor/apparmor/-/merge_requests/1046)
-Patch10:        aa-status-fix-json-mr1046.patch
+# add path for precompiled cache (only done/applied if precompiled_cache is enabled)
+Patch7:         apparmor-enable-precompiled-cache.diff
 
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -355,7 +355,9 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch4
 %patch5
 %patch6
-%patch10 -p1
+%if %{with precompiled_cache}
+%patch7
+%endif
 
 %build
 export SUSE_ASNEEDED=0

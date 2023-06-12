@@ -2584,4 +2584,22 @@ so you might want to pick this SR into Staging:O (forwarded request 953283 from 
   boo#1211980#c12) (forwarded request 1091162 from cboltz)</comment>
     <requestid>1091163</requestid>
   </revision>
+  <revision rev="192" vrev="1">
+    <srcmd5>8750b367aeb6e3f8f77b17e5e08c1e95</srcmd5>
+    <version>3.1.5</version>
+    <time>1686576253</time>
+    <user>dimstar_suse</user>
+    <comment>- update to AppArmor 3.1.5
+  - fix handling of mount rules in apparmor_parser
+  - minor additions to abstractions/base and snap_browsers
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.1.5
+    for the full upstream changelog
+- remove upstreamed aa-status-fix-json-mr1046.patch
+- split off apparmor-enable-precompiled-cache.diff from
+  apparmor-enable-profile-cache.diff so that the precompiled cache
+  path doesn't get added in parser.conf for Tumbleweed builds.
+  This prevents a warning about the non-existing directory when
+  loading profiles. (forwarded request 1092349 from cboltz)</comment>
+    <requestid>1092351</requestid>
+  </revision>
 </revisionlist>
