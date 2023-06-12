@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jun 12 06:22:59 UTC 2023 - msuchanek@suse.com
+
+- Update to version 1.1.1+git48.01c94c7:
+  * Update to use latest libplist code (boo#1212194)
+  * Set default value for ENV_DEV_MODE
+  * udev: Fix freezing on OpenRC caused by a raced execution of usbmuxd
+  * Guess current mode based on available configurations and interfaces. Switch mode only if guess is different than desired mode.
+  * Support switching to different "modes" using vendor specific control messages. Use USBMUXD_DEFAULT_DEVICE_MODE env. var. to let the user control desired mode.
+  * preflight: Assume old iOS version if retrieval of ProductVersion fails
+  * usb: Enable Apple Silicon restore mode
+  * Add option to allow changing the location of or disabling the pidfile
+  * Fix parsing -S as short option for --socket
+  * Allow specifying a custom listen address:port or unix socket
+  * usb: Allow configuration 5 after verifying it is actualy usable
+  * device: Add device id to device_control_input() log messages
+  * Post release version bump to 1.1.2
+- Drop usptreamed patches:
+  - usbmuxd-add-socket-option.patch
+  - usbmuxd-add-pid-option.patch
+
+-------------------------------------------------------------------
 Tue Mar 15 18:17:21 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Change to systemd-sysusers

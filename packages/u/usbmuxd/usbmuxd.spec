@@ -1,7 +1,7 @@
 #
 # spec file for package usbmuxd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,27 +18,25 @@
 
 %{!?_udevrulesdir: %global _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d}
 Name:           usbmuxd
-Version:        1.1.1
+Version:        1.1.1+git48.01c94c7
 Release:        0
 Summary:        A socket daemon to multiplex connections from and to iOS devices
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          System/Libraries
 URL:            https://github.com/libimobiledevice/usbmuxd
-Source:         https://github.com/libimobiledevice/usbmuxd/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Source1:        %{name}.sysusers
 Source99:       baselibs.conf
-Patch0:         usbmuxd-add-socket-option.patch
-Patch1:         usbmuxd-add-pid-option.patch
 Patch2:         usbmuxd-run-dir.patch
 Patch3:         harden_usbmuxd.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
-BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(libimobiledevice-1.0) >= 1.3.0
-BuildRequires:  pkgconfig(libplist-2.0) >= 2.2.0
+BuildRequires:  pkgconfig(libplist-2.0) >= 2.3.0
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.9
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
@@ -61,7 +59,8 @@ multiplexing several conversations onto a single pair of wires.
 autoreconf -fiv
 %configure \
   --with-udevrulesdir=%{_udevrulesdir} \
-  --with-systemdsystemunitdir=%{_unitdir}
+  --with-systemdsystemunitdir=%{_unitdir} \
+  PACKAGE_VERSION=%{version}
 %make_build
 
 %install

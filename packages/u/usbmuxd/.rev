@@ -300,4 +300,12 @@ https://bugzilla.novell.com/show_bug.cgi?id=811801#c5 (forwarded request 162236 
     <comment></comment>
     <requestid>983887</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>07ae54c71de8efb2c80a3daf996ca39d</srcmd5>
+    <version>1.1.1+git48.01c94c7</version>
+    <time>1686576439</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092463</requestid>
+  </revision>
 </revisionlist>
