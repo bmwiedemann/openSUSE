@@ -8321,13 +8321,6 @@ unsorted:
   - java-11-openjdk-javadoc 
   - java-11-openjdk-jmods 
   - java-11-openjdk-src 
-  - java-13-openjdk 
-  - java-13-openjdk-demo 
-  - java-13-openjdk-devel 
-  - java-13-openjdk-headless 
-  - java-13-openjdk-javadoc 
-  - java-13-openjdk-jmods 
-  - java-13-openjdk-src 
   - java-15-openjdk 
   - java-15-openjdk-demo 
   - java-15-openjdk-devel 
@@ -8349,15 +8342,10 @@ unsorted:
   - java-17-openjdk-javadoc 
   - java-17-openjdk-jmods 
   - java-17-openjdk-src 
-  - java-18-openjdk 
-  - java-18-openjdk-demo 
-  - java-18-openjdk-devel 
-  - java-18-openjdk-headless 
-  - java-18-openjdk-javadoc 
-  - java-18-openjdk-jmods 
-  - java-18-openjdk-src 
+  - java-19-openjdk 
   - java-19-openjdk-demo 
   - java-19-openjdk-devel 
+  - java-19-openjdk-headless 
   - java-19-openjdk-javadoc 
   - java-19-openjdk-jmods 
   - java-19-openjdk-src 
@@ -8375,6 +8363,11 @@ unsorted:
   - java-1_8_0-openjdk-headless 
   - java-1_8_0-openjdk-javadoc 
   - java-1_8_0-openjdk-src 
+  - java-20-openjdk-demo 
+  - java-20-openjdk-devel 
+  - java-20-openjdk-javadoc 
+  - java-20-openjdk-jmods 
+  - java-20-openjdk-src 
   - java-atk-wrapper 
   - java-binfmt-misc 
   - java-cup 
@@ -10650,7 +10643,7 @@ unsorted:
   - libantic0 
   - libantlr3c3 
   - libantlr4-runtime-devel 
-  - libantlr4-runtime4_9_3 
+  - libantlr4-runtime4_13_0 
   - libao-devel 
   - libao-plugins4-32bit 
   - libao4-32bit 
@@ -15492,8 +15485,6 @@ unsorted:
   - libvdpau1-32bit 
   - libvdpau_nouveau 
   - libvdpau_nouveau-32bit 
-  - libvdpau_r300 
-  - libvdpau_r300-32bit 
   - libvdpau_r600 
   - libvdpau_r600-32bit 
   - libvdpau_radeonsi 
@@ -23275,6 +23266,7 @@ unsorted:
   - python310-asttokens 
   - python310-astunparse 
   - python310-asv 
+  - python310-async-lru 
   - python310-async_generator 
   - python310-asyncclick 
   - python310-asyncpg 
@@ -24938,6 +24930,7 @@ unsorted:
   - python310-osmviz 
   - python310-ospd-openvas 
   - python310-outcome 
+  - python310-overrides 
   - python310-ovirt-engine-sdk 
   - python310-pa-ringbuffer 
   - python310-padaos 
@@ -25703,7 +25696,6 @@ unsorted:
   - python310-sasl 
   - python310-sat-search 
   - python310-sat-stac 
-  - python310-scales 
   - python310-scandir 
   - python310-schedule 
   - python310-schema 
@@ -26613,6 +26605,7 @@ unsorted:
   - python311-asttokens 
   - python311-astunparse 
   - python311-asv 
+  - python311-async-lru 
   - python311-async_generator 
   - python311-async_timeout 
   - python311-asyncclick 
@@ -28345,6 +28338,7 @@ unsorted:
   - python311-osmviz 
   - python311-ospd-openvas 
   - python311-outcome 
+  - python311-overrides 
   - python311-ovirt-engine-sdk 
   - python311-pa-ringbuffer 
   - python311-packaging 
@@ -29146,7 +29140,6 @@ unsorted:
   - python311-sasl 
   - python311-sat-search 
   - python311-sat-stac 
-  - python311-scales 
   - python311-scandir 
   - python311-schedule 
   - python311-schema 
@@ -30105,6 +30098,7 @@ unsorted:
   - python39-asttokens 
   - python39-astunparse 
   - python39-asv 
+  - python39-async-lru 
   - python39-async_generator 
   - python39-async_timeout 
   - python39-asyncclick 
@@ -31837,6 +31831,7 @@ unsorted:
   - python39-osmviz 
   - python39-ospd-openvas 
   - python39-outcome 
+  - python39-overrides 
   - python39-ovirt-engine-sdk 
   - python39-pa-ringbuffer 
   - python39-packaging 
@@ -32642,7 +32637,6 @@ unsorted:
   - python39-sasl 
   - python39-sat-search 
   - python39-sat-stac 
-  - python39-scales 
   - python39-scandir 
   - python39-schedule 
   - python39-schema 
