@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  9 05:33:35 UTC 2023 - ecsos <ecsos@popensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Wed Dec  7 20:07:51 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 1.1.2 
