@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  9 06:24:31 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Oct 20 07:32:50 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove not needed dep python-six
