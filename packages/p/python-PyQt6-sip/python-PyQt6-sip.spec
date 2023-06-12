@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-PyQt6-sip
 Version:        13.5.1
 Release:        0
