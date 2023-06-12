@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %bcond_without  test
@@ -26,6 +25,7 @@
 %bcond_without  test
 %bcond_with     test_twisted
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-tblib%{?psuffix}
 Version:        1.7.0
 Release:        0
