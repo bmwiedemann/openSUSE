@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 10 11:51:43 UTC 2023 - ecsos <ecsos@opensue.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Jan  2 09:55:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.1:
