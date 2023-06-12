@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jun 10 10:51:54 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Updat to version 1.2.2
+  * gitlab CI: add a basic build test
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Variable scope reduction as recommended by cppcheck
+  * Use C99 struct initialization
+  * Rename variable 'dup' to avoid shadowing dup() function
+  * Fallback asprintf: don't truncate output that has a \0 in string
+  * configure: raise minimum autoconf requirement to 2.70
+
+-------------------------------------------------------------------
 Thu May 11 08:55:00 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - Downgrade cpp requires to recommends (bsc#1211267)

@@ -17,13 +17,13 @@
 
 
 Name:           xrdb
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        X server resource database utility
 License:        MIT
 Group:          System/X11/Utilities
 URL:            https://xorg.freedesktop.org/
-Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
+Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xmuu)
