@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-qt5-sip
 Version:        12.12.1
 Release:        0
