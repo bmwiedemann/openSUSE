@@ -1,7 +1,7 @@
 #
 # spec file for package cracklib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cracklib
-Version:        2.9.8
+Version:        2.9.11
 Release:        0
 Summary:        Library to crack passwords using dictionaries
 License:        LGPL-2.1-only
@@ -112,8 +112,8 @@ ln -sf %{_datadir}/cracklib/pw_dict.pwi %{buildroot}%{_prefix}/lib/cracklib_dict
 # using zip'ed dict takes too long for a check. But the support
 # for this is still in the lib.
 #
-#gzip $RPM_BUILD_ROOT/%{_datadir}/cracklib/pw_dict.pwd
-#ln -sf %{_datadir}/cracklib/pw_dict.pwd.gz $RPM_BUILD_ROOT/usr/lib/cracklib_dict.pwd.gz
+#gzip $RPM_BUILD_ROOT/%%{_datadir}/cracklib/pw_dict.pwd
+#ln -sf %%{_datadir}/cracklib/pw_dict.pwd.gz $RPM_BUILD_ROOT/usr/lib/cracklib_dict.pwd.gz
 %find_lang %{name}
 %ifnarch ppc64
 nm -C -D %{buildroot}%{_libdir}/libcrack.so.2 | grep ' T '
@@ -140,17 +140,22 @@ sed -i 's:\(util/cracklib-check\):\1 %{buildroot}%{_prefix}/lib/cracklib_dict:' 
 %{_sbindir}/cracklib-check
 %{_sbindir}/cracklib-format
 %{_sbindir}/cracklib-packer
+%{_sbindir}/cracklib-update
 %{_sbindir}/cracklib-unpacker
 %dir %{_datadir}/cracklib
 %{_datadir}/cracklib/cracklib.magic
 %{_prefix}/lib/cracklib_dict.hwm
 %{_prefix}/lib/cracklib_dict.pwd
 %{_prefix}/lib/cracklib_dict.pwi
+%{_mandir}/man8/cracklib-check.8%{?ext_man}
+%{_mandir}/man8/cracklib-format.8%{?ext_man}
+%{_mandir}/man8/cracklib-update.8%{?ext_man}
 
 %files devel
 %{_includedir}/crack.h
 %{_includedir}/packer.h
 %{_libdir}/libcrack.so
+%{_mandir}/man3/FascistCheck.3%{?ext_man}
 
 %files dict-small
 %{_datadir}/cracklib/pw_dict.hwm
