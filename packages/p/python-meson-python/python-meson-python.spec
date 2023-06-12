@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-meson-python
 Version:        0.12.1
 Release:        0
