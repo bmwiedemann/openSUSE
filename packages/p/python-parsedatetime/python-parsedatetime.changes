@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 12 05:38:12 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu May 27 06:44:27 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro 
