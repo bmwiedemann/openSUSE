@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 11 13:17:51 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Fri Oct 14 08:13:54 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add allow-rc-versions.patch to fix build with 15rc2 pg version
