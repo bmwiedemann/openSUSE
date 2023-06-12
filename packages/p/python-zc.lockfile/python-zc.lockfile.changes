@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 10 09:15:59 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Sep 23 09:53:37 UTC 2021 - pgajdos@suse.com
 
 - %check: do not use python setup.py test
