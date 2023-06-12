@@ -117,4 +117,15 @@
     <comment></comment>
     <requestid>1091049</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>56bb6e4e380fba51aab5229408382a67</srcmd5>
+    <version>2.2.2</version>
+    <time>1686576470</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.2:
+   
+   Fix python crash caused by wrong transport identifier handling
+  (bsc#1211557)</comment>
+    <requestid>1092510</requestid>
+  </revision>
 </revisionlist>
