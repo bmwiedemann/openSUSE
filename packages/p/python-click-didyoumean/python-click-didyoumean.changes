@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 11 13:43:12 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Apr 27 07:20:49 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Disable testing until upstream catches up with the cli output
