@@ -42,4 +42,12 @@
   * Use assert and pytest rather than nose.</comment>
     <requestid>920218</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>cdee0fc7c0a87590141401f2696f106d</srcmd5>
+    <version>1.1</version>
+    <time>1686576372</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092367</requestid>
+  </revision>
 </revisionlist>

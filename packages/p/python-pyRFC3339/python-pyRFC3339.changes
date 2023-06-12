@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 11 14:31:43 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Sep 20 02:09:22 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add switch-to-pytest.patch
