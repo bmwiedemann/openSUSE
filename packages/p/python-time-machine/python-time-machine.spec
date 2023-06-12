@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-time-machine
 Group:          Development/Languages/Python
 Version:        2.9.0

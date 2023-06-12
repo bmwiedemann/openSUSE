@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  9 06:20:34 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Wed May 31 09:26:06 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Move to PEP517
