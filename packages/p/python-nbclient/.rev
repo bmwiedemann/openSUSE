@@ -278,4 +278,13 @@
     <comment></comment>
     <requestid>1083889</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>c7099401b8d2966dcb62cda1be073680</srcmd5>
+    <version>0.8.0</version>
+    <time>1686576370</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.0
+  * Bump min version support #287 (@blink1073) (forwarded request 1092363 from bnavigator)</comment>
+    <requestid>1092364</requestid>
+  </revision>
 </revisionlist>

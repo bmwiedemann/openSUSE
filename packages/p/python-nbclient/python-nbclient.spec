@@ -31,20 +31,20 @@
 %endif
 
 Name:           python-nbclient%{psuffix}
-Version:        0.7.4
+Version:        0.8.0
 Release:        0
 Summary:        A client library for executing notebooks
 License:        BSD-3-Clause
 URL:            https://github.com/jupyter/nbclient
 Source:         https://files.pythonhosted.org/packages/source/n/nbclient/nbclient-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling >= 1.10.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-jupyter-client >= 6.1.12
 Requires:       python-nbformat >= 5.1
-Requires:       python-traitlets >= 5.3
+Requires:       python-traitlets >= 5.4
 Requires:       ((python-jupyter-core >= 4.12 with python-jupyter-core < 5) or python-jupyter-core >= 5.1)
 BuildArch:      noarch
 %if %{with libalternatives}
@@ -56,7 +56,7 @@ Requires(postun):update-alternatives
 %endif
 %if %{with test}
 BuildRequires:  %{python_module flaky}
-BuildRequires:  %{python_module ipykernel}
+BuildRequires:  %{python_module ipykernel >= 6.19.3}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module ipywidgets}
 BuildRequires:  %{python_module nbclient = %{version}}
