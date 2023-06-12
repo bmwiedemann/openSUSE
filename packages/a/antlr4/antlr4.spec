@@ -1,7 +1,7 @@
 #
 # spec file for package antlr4
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
-%define libver 4_9_3
+%define libver 4_13_0
 %define runtime_cpp_lib libantlr4-runtime
 %define runtime_cpp_libver %{runtime_cpp_lib}%{libver}
 Name:           antlr4
-Version:        4.9.3
+Version:        4.13.0
 Release:        0
 Summary:        Java parser generator
 # C# runtime is MIT-licensed, but currently it is not used in this package
@@ -30,19 +30,20 @@ URL:            https://www.antlr.org/
 Source0:        https://github.com/antlr/antlr4/archive/%{version}.tar.gz#/antlr4-%{version}.tar.gz
 Source100:      antlr4-install-path.patch.in
 Patch0:         unicodedata.patch
-BuildRequires:  cmake >= 3.3.0
+BuildRequires:  cmake
 BuildRequires:  fdupes
 %if 0%{?suse_version} >= 1500
-BuildRequires:  gcc >= 5
-BuildRequires:  gcc-c++ >= 5
+BuildRequires:  gcc >= 7
+BuildRequires:  gcc-c++ >= 7
 %else
-BuildRequires:  gcc5
-BuildRequires:  gcc5-c++
+BuildRequires:  gcc7
+BuildRequires:  gcc7-c++
 %endif
 BuildRequires:  libstdc++-devel
 BuildRequires:  maven-local
 BuildRequires:  pkgconfig
 BuildRequires:  utfcpp-devel
+BuildRequires:  mvn(com.google.code.maven-replacer-plugin:maven-replacer-plugin)
 BuildRequires:  mvn(com.ibm.icu:icu4j)
 BuildRequires:  mvn(org.abego.treelayout:org.abego.treelayout.core)
 BuildRequires:  mvn(org.antlr:ST4)
@@ -146,31 +147,29 @@ perl -pi -e 's#\\>#>#g' tool/resources/org/antlr/v4/tool/templates/unicodedata.s
 
 # Missing test deps: org.seleniumhq.selenium:selenium-java
 %pom_disable_module runtime-testsuite
-%pom_disable_module runtime-testsuite/annotations
-%pom_disable_module runtime-testsuite/processors
 %pom_disable_module tool-testsuite
 
 # Don't bundle dependencies
 %pom_remove_plugin :maven-shade-plugin tool
-# There are no grammars to process
-%pom_remove_plugin :antlr4-maven-plugin runtime/Java
 # Don't use the takari lifecycle, use the usual maven lifecycle instead
 %pom_remove_plugin :takari-lifecycle-plugin antlr4-maven-plugin
+# Don't use graphviz
+%pom_remove_plugin :graphviz-maven-plugin runtime/Java
 
 %{mvn_package} :antlr4-master antlr4-runtime
 
 %build
-%{mvn_build} -s -f -- -Dsource=7
+%{mvn_build} -s -f -- -Dsource=8
 
 pushd runtime/Cpp
 %if 0%{?suse_version} < 1500
 RPM_OPT_FLAGS=`echo $RPM_OPT_FLAGS|sed -e 's/-fstack-clash-protection//g'`
 RPM_OPT_FLAGS=`echo $RPM_OPT_FLAGS|sed -e 's/  / /g'`
-export CXX=g++-5
+export CXX=g++-7
 export CFLAGS="$RPM_OPT_FLAGS"
 export CXXFLAGS="$RPM_OPT_FLAGS"
 %endif
-%cmake -DWITH_DEMO=False
+%cmake -DWITH_DEMO=OFF -DANTLR_BUILD_CPP_TESTS=OFF -DANTLR_BUILD_SHARED=ON -DANTLR_BUILD_STATIC=OFF
 %make_build
 popd
 
@@ -183,15 +182,12 @@ popd
 pushd runtime/Cpp
 %cmake_install
 popd
-# drop static library as unused
-rm -f %{buildroot}/%{_libdir}/lib%{name}-runtime.a
 
 %post -n %{runtime_cpp_libver} -p /sbin/ldconfig
 %postun -n %{runtime_cpp_libver} -p /sbin/ldconfig
 
 %files tool -f .mfiles-antlr4
 %{_bindir}/%{name}
-%doc tool/MIGRATION.txt
 
 %files java -f .mfiles-antlr4-runtime
 %doc CHANGES.txt README.md
