@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jun 11 20:53:59 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.19.0
+  * Add support for setting cursor `row_factory` (#229)
+  * Dropped unused compatibility shims for 3.5 and 3.6
+  * Deprecated: Python 3.7 support will be dropped in v0.20.0
+- Release 0.18.0
+  * Added support for `paramstyle` (#197)
+  * Better type hints for `isolation_level` (#172) and
+    `text_factory` (#179)
+  * Use stdlib typing module when possible (#114)
+  * Replace aiounittest with stdlib on 3.8+
+  * Docmentation improvements (#108)
+  * Dropped support for Python 3.7, added support for Python 3.10
+    and 3.11 (#208)
+- Drop stdlib-typing_extensions.patch
+  * the upstream issue was accepted and the module was removed
+    but later introduced for Python < 3.8 due to a different case
+
+-------------------------------------------------------------------
 Fri May 14 07:10:11 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.17.0:

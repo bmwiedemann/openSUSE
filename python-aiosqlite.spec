@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiosqlite
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,26 +17,27 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-aiosqlite
-Version:        0.17.0
+Version:        0.19.0
 Release:        0
 Summary:        AsyncIO Bridge to the Standard Python sqlite3 Module
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jreese/aiosqlite
 Source:         https://files.pythonhosted.org/packages/source/a/aiosqlite/aiosqlite-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM stdlib-typing_extensions.patch gh#omnilib/aiosqlite#114 mcepl@suse.com
-# Dependency on typing_extensions is unnecessary
-Patch0:         stdlib-typing_extensions.patch
-BuildRequires:  %{python_module setuptools >= 38.6.0}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python
+%if 0%{?python_version_nodots} < 38
+Requires:       python-typing-extensions >= 4
+%endif
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module aiounittest}
+BuildRequires:  %{python_module typing-extensions >= 4 if %python-base < 3.8}
 BuildRequires:  %{pythons}
 # /SECTION
 %python_subpackages
@@ -50,10 +51,10 @@ automatically closing connections.
 %autosetup -p1 -n aiosqlite-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,7 +63,7 @@ automatically closing connections.
 %files %{python_files}
 %license LICENSE
 %doc CHANGELOG.md README.rst
-%{python_sitelib}/aiosqlite-%{version}-*.egg-info*
-%{python_sitelib}/aiosqlite/
+%{python_sitelib}/aiosqlite
+%{python_sitelib}/aiosqlite-%{version}.dist-info
 
 %changelog
