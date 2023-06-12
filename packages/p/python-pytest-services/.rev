@@ -61,4 +61,12 @@
     <comment>- Remove mock BuildRequires, not needed.</comment>
     <requestid>964159</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>86495f0c4f0d906ddb3c2461d06a0e0f</srcmd5>
+    <version>2.2.1</version>
+    <time>1686576275</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1092224</requestid>
+  </revision>
 </revisionlist>

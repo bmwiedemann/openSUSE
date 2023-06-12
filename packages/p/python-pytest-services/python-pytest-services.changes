@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 10 09:24:57 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Wed Mar 23 06:23:05 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove mock BuildRequires, not needed. 
