@@ -26,6 +26,7 @@
 %bcond_with test
 %endif
 %global skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-entrypoint2
 Version:        1.1
 Release:        0

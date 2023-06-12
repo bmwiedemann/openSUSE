@@ -142,4 +142,12 @@
   * drop python 2x support</comment>
     <requestid>1056392</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>bbf92c3b2a6205af72c5d00bbc45cbef</srcmd5>
+    <version>1.1</version>
+    <time>1686576287</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092256</requestid>
+  </revision>
 </revisionlist>
