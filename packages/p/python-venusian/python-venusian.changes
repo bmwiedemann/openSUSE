@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  9 05:45:04 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add missing %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Tue May 23 09:19:30 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Don't use sphinx-build and clean up the SPEC file.
