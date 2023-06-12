@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 10 10:08:56 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Jun  1 20:13:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.15.1:

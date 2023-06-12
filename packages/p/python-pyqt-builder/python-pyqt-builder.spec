@@ -17,6 +17,7 @@
 
 
 %define mname pyqt-builder
+%{?sle15_python_module_pythons}
 Name:           python-%{mname}
 Version:        1.15.1
 Release:        0

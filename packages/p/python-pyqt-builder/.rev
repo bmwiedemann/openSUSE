@@ -140,4 +140,12 @@
   * Added support for bundling the QtLabs QML packages.</comment>
     <requestid>1090385</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>ae5bb4d1311c06de698b29be9fe0e71e</srcmd5>
+    <version>1.15.1</version>
+    <time>1686576295</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092337</requestid>
+  </revision>
 </revisionlist>
