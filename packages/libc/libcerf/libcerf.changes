@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 29 19:26:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3:
+  * Add test coverage for erfcx, dawson, im_w_of_x (against
+    nearby complex and status quo)
+  * Avoid some divisions in function voigt
+  * Accelerate lookup in erfcx, im_w_of_x (avoid long switch,
+    contributed by Alexander Kleinsorge)
+
+-------------------------------------------------------------------
 Fri Dec  2 21:12:34 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2:
