@@ -19,6 +19,7 @@
 %define plainpython python
 %define mname PyQt6
 %define pyqt_build_for_qt6 1
+%{?sle15_python_module_pythons}
 Name:           python-%{mname}
 Version:        6.5.0
 Release:        0
