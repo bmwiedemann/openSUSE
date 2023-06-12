@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 11 11:51:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.5:
+  * fix for pypy3.9-v7.3.11
+  * register ``bitarray`` as ``abc.MutableSequence``
+  * improve documentation regarding type when indexing single
+  * bitarray items
+
+-------------------------------------------------------------------
 Mon Mar  6 21:24:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.7.3:
