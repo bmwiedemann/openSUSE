@@ -178,4 +178,12 @@
 </comment>
     <requestid>1058834</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>dfcf2262fbde36af3c0983274f14aeb3</srcmd5>
+    <version>3.1.1</version>
+    <time>1686576383</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1092385</requestid>
+  </revision>
 </revisionlist>

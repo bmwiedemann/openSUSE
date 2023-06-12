@@ -16,7 +16,7 @@
 #
 
 
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-falcon
 Version:        3.1.1
 Release:        0
@@ -32,8 +32,10 @@ Patch0:         python-falcon-sphinx-pygments-style.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module ddt}
+BuildRequires:  %{python_module httpx}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sphinx-tabs}
+BuildRequires:  %{python_module websockets}
 # TODO: Cython support
 #BuildRequires:  %%{python_module Cython}
 # SECTION test requirements
