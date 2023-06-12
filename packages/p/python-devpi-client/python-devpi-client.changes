@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  9 07:34:26 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Wed Apr 26 02:20:24 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch switch-to-build-module.patch:

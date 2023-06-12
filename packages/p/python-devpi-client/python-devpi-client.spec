@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-devpi-client
 Version:        6.0.4
 Release:        0
