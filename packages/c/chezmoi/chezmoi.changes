@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 12 16:58:23 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.34.1:
+  * feat: Add git.commitMessageTemplate configuration variable
+
+-------------------------------------------------------------------
 Mon Jun  5 17:16:34 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.34.0:
