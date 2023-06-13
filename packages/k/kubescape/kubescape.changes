@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 12 20:16:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.3.5:
+  * correcting the formating of the table in pdf output (#1244)
+  * core(metrics api): Update API default behavior (#1250)
+  * fix: update host-scanner version
+  * fix: remove deprecated endpoint
+  * wip: remove secretKey and clientID from list cmd
+  * wip: add example for exclude-namespaces flag
+
+-------------------------------------------------------------------
 Sun May 28 11:29:18 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.3.4:
