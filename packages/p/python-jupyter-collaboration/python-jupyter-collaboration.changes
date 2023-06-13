@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jun 12 20:05:39 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.0.0
+  * Remove spurious ' #156 (@krassowski)
+  * Add share link feature #150 (@fcollonval)
+  * Improve code architecture #146 (@fcollonval)
+  * Add logger for file editor #145 (@fcollonval)
+  * Emit events for collaborative sessions #139 (@hbcarlos)
+  * Support file types #154 (@hbcarlos)
+  * Fix injecting user menu bar in top bar. #149 (@fcollonval)
+  * Wait for the document to be synced #148 (@fcollonval)
+  * Fix asyncio.Task type for python<=3.8 #143 (@davidbrochart)
+  * ... many more during 1.0.0alpha*: See CHANGELOG.md
+- Use the new jupyter-collaboration name, obsolete the old names
+  jupyter-server-ydoc and jupyterlab-rtc
+
+-------------------------------------------------------------------
 Mon Mar 20 21:48:20 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to jupyter_server_ydoc 0.8.0

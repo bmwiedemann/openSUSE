@@ -7,4 +7,25 @@
     <comment>required by jupyterlab 3.6</comment>
     <requestid>1073767</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>24c835f47ddaadb7327003c3a7b9f1c9</srcmd5>
+    <version>1.0.0</version>
+    <time>1686665389</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0
+  * Remove spurious ' #156 (@krassowski)
+  * Add share link feature #150 (@fcollonval)
+  * Improve code architecture #146 (@fcollonval)
+  * Add logger for file editor #145 (@fcollonval)
+  * Emit events for collaborative sessions #139 (@hbcarlos)
+  * Support file types #154 (@hbcarlos)
+  * Fix injecting user menu bar in top bar. #149 (@fcollonval)
+  * Wait for the document to be synced #148 (@fcollonval)
+  * Fix asyncio.Task type for python&lt;=3.8 #143 (@davidbrochart)
+  * ... many more during 1.0.0alpha*: See CHANGELOG.md
+- Use the new jupyter-collaboration name, obsolete the old names
+  jupyter-server-ydoc and jupyterlab-rtc
+</comment>
+    <requestid>1092786</requestid>
+  </revision>
 </revisionlist>
