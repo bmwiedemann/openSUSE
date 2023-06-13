@@ -24,7 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-atpublic
 Version:        3.1.1
 Release:        0

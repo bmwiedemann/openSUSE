@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 13 11:22:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- tag for sle15 new python stack
+
+-------------------------------------------------------------------
 Fri Mar 24 11:28:29 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove typing_extensions requirement not needed for python version > 3.8
