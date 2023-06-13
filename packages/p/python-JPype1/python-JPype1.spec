@@ -29,14 +29,16 @@ Summary:        Python to Java bridge
 License:        Apache-2.0
 URL:            https://github.com/jpype-project/jpype
 Source:         https://files.pythonhosted.org/packages/source/J/JPype1/JPype1-%{version}.tar.gz
+Patch0:         JPype1-java8compat.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  java-15-openjdk-devel
+BuildRequires:  java-devel >= 9
+BuildRequires:  javapackages-tools
 BuildRequires:  python-rpm-macros
-Requires:       java-15-openjdk-headless
+Requires:       java-headless >= 1.8
 Recommends:     python-numpy
 Suggests:       python-typing_extensions
 ExcludeArch:    %{ix86} armv7
@@ -60,6 +62,7 @@ A Python to Java bridge.
 
 %prep
 %setup -q -n JPype1-%{version}
+%patch0 -p1
 # Avoid build dependency on PyInstaller
 rm jpype/_pyinstaller/test_jpype_pyinstaller.py
 

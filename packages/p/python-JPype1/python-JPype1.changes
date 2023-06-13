@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 12 11:00:29 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Do not hardcode java-15-openjdk, since this can be built with
+  any Java >= 9
+- Added patch:
+  * JPype1-java8compat.patch
+    + Build packages that are fully backward compatible to Java 8
+
+-------------------------------------------------------------------
 Tue Mar  7 00:25:49 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v1.4.1
