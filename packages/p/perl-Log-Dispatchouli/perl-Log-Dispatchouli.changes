@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jun  9 03:06:36 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.005
+   see /usr/share/doc/packages/perl-Log-Dispatchouli/Changes
+
+  3.005     2023-06-08 20:41:02-04:00 America/New_York
+          - add parse_event_string_as_hash, which loses duplicate k/v pairs
+            but makes life a little easier
+
+  3.004     2023-06-05 21:26:03-04:00 America/New_York
+          - optimization to parsing of quoted strings (thanks, Rob Mueller)
+
+  3.003     2023-06-05 08:10:52-04:00 America/New_York
+          - Log::Fmt will now flog ref-refs, meaning you can easily log JSON as
+            log event values
+
+-------------------------------------------------------------------
 Wed Dec  7 03:07:00 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.002
