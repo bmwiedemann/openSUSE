@@ -450,4 +450,41 @@
     (@fcollonval) (forwarded request 1082328 from bnavigator)</comment>
     <requestid>1082330</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>9a29ca8f647d9c7dbb81c5c8ef181617</srcmd5>
+    <version>4.0.2</version>
+    <time>1686665383</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.2
+  * Add support for copier 8.0.0 #14644 (@fcollonval)
+  * Update documentation snapshots #14636 (@fcollonval)
+  * Allow Lumino 1.x version for rendermime-interfaces #14618
+    (@fcollonval)
+- Release 4.0.1
+  ## Enhancements made
+  * Enable base numbering option #14586 (@tuncbkose)
+  * added dynamic functionality to the text spacing #14561
+    (@j264415)
+  * Implement dialog element for dialogs with accessibility #14560
+    (@t03857785)
+  * Allow maxHeight being equal to minHeight for HoverBox’s
+    visibility #14533 (@nishikantparmariam)
+  * FileBrowser: Added the sortNotebooksFirst option #14497
+    (@tpatel)
+  ## Bugs fixed
+  * Inherit font family from .cm-editor #14601 (@krassowski)
+  * Fix: Toolbar doesn’t update on paste. #14596 (@brijsiyag)
+  * Highlight booleans using the same style as keywords #14588
+    (@krassowski)
+  * Avoid clearing the host node while rendering Markdown #14579
+    (@c3Vu)
+  * Fix react error log in shortcuts dialog #14566 (@c3Vu)
+  * Updates docs to reflect that v4 is released #14556
+    (@JasonWeill)
+  * Fix drive handling for sessions and terminals #14519
+    (@fcollonval)
+- Release 4.0.0 highlights
+  * New text editor (forwarded request 1092697 from bnavigator)</comment>
+    <requestid>1092698</requestid>
+  </revision>
 </revisionlist>

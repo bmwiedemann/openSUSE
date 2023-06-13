@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Jun 11 21:35:15 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 4.0.2
+  * Add support for copier 8.0.0 #14644 (@fcollonval)
+  * Update documentation snapshots #14636 (@fcollonval)
+  * Allow Lumino 1.x version for rendermime-interfaces #14618
+    (@fcollonval)
+- Release 4.0.1
+  ## Enhancements made
+  * Enable base numbering option #14586 (@tuncbkose)
+  * added dynamic functionality to the text spacing #14561
+    (@j264415)
+  * Implement dialog element for dialogs with accessibility #14560
+    (@t03857785)
+  * Allow maxHeight being equal to minHeight for HoverBox’s
+    visibility #14533 (@nishikantparmariam)
+  * FileBrowser: Added the sortNotebooksFirst option #14497
+    (@tpatel)
+  ## Bugs fixed
+  * Inherit font family from .cm-editor #14601 (@krassowski)
+  * Fix: Toolbar doesn’t update on paste. #14596 (@brijsiyag)
+  * Highlight booleans using the same style as keywords #14588
+    (@krassowski)
+  * Avoid clearing the host node while rendering Markdown #14579
+    (@c3Vu)
+  * Fix react error log in shortcuts dialog #14566 (@c3Vu)
+  * Updates docs to reflect that v4 is released #14556
+    (@JasonWeill)
+  * Fix drive handling for sessions and terminals #14519
+    (@fcollonval)
+- Release 4.0.0 highlights
+  * New text editor
+  * New extension manager
+  * Improved document search
+  * UI improvements
+  * Accessibility improvements
+  * Performance enhancements
+  * Real Time Collaboration (now optional)
+  * Full changelog:
+    https://jupyterlab.readthedocs.io/en/latest/getting_started/changelog.html#v4-0
+
+-------------------------------------------------------------------
 Sun Apr 23 21:05:02 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.6.3
