@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-cosmos
-Version:        4.3.1
+Version:        4.4.0
 Release:        0
 Summary:        Microsoft Azure Cosmos client library for Python
 License:        MIT

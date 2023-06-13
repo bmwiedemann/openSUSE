@@ -63,4 +63,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1067532 from glaubitz)</comment>
     <requestid>1067597</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7675aa10d5c6dc80c76c6e8ab12562f1</srcmd5>
+    <version>4.4.0</version>
+    <time>1686665373</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.4.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1092516 from glaubitz)</comment>
+    <requestid>1092660</requestid>
+  </revision>
 </revisionlist>
