@@ -24,8 +24,8 @@
 # will work properly as expected.
 %bcond_with librubberband
 Name:           hydrogen
-Version:        1.2.0
-%define soversion 1_2_0
+Version:        1.2.1
+%define soversion 1_2_1
 Release:        0
 Summary:        A Real-Time Drum Machine and Sequencer
 License:        GPL-2.0-or-later
@@ -34,7 +34,6 @@ URL:            http://www.hydrogen-music.org/
 Source0:        https://github.com/hydrogen-music/hydrogen/archive/%{version}/%{name}-%{version}.tar.gz
 Patch1:         fix-obsolete-appdata.patch
 Patch2:         release-version.patch
-Patch3:         hydrogen-Fix-beat-and-bar-calculation-in-pattern-mode.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  help2man
