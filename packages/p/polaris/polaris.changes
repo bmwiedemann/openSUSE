@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jun 12 19:54:04 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.2.1:
+  * tweak net listener to localhost - removing unwanted popup
+    (#955)
+  * redirect user to cluster action-items instead of cluster
+    overview (#956)
+
+-------------------------------------------------------------------
+Mon Jun 12 19:50:03 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.2.0:
+  * Minor fixes for NSA checks (#952)
+
+-------------------------------------------------------------------
+Mon Jun 12 19:48:46 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.1.0:
+  * improve cluster-name flag description (#954)
+  * FWI-4190 - Upload polaris results to Fairwinds Insights support
+    (#948)
+  * update some dependencies in go and CI (#951)
+
+-------------------------------------------------------------------
 Thu Jun 01 05:26:22 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 8.0.0:
