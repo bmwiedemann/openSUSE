@@ -2453,7 +2453,6 @@ unsorted:
   - coredns-for-k8s1.26-extras 
   - coredns-for-k8s1.27 
   - coredns-for-k8s1.27-extras 
-  - corepack18 
   - corepack20 
   - coreutils-single 
   - coreutils-testsuite 
@@ -7029,6 +7028,7 @@ unsorted:
   - gos-wallpapers 
   - gosec 
   - goss 
+  - gotestsum 
   - gource 
   - goverlay 
   - goxel 
@@ -7075,6 +7075,7 @@ unsorted:
   - gpuvis 
   - gpxsee 
   - gq 
+  - gqlplus 
   - gqrx 
   - gr-funcube 
   - gr-funcube-doc 
@@ -8704,6 +8705,7 @@ unsorted:
   - jupyter-bqplot-notebook 
   - jupyter-cadabra2-kernel 
   - jupyter-calysto 
+  - jupyter-collaboration 
   - jupyter-doc 
   - jupyter-imatlab 
   - jupyter-ipydatawidgets 
@@ -8733,10 +8735,10 @@ unsorted:
   - jupyter-jupyterlab-ipyvuetify 
   - jupyter-jupyterlab-latex 
   - jupyter-jupyterlab-pygments 
-  - jupyter-jupyterlab-rtc 
   - jupyter-jupyterlab-templates 
   - jupyter-jupyterlab-widgets 
   - jupyter-lineup-widget 
+  - jupyter-lsp 
   - jupyter-matlab-kernel 
   - jupyter-matplotlib 
   - jupyter-matplotlib-jupyterlab 
@@ -10670,9 +10672,9 @@ unsorted:
   - libargon2-1-32bit 
   - libargtable2-0 
   - libargtable2-devel 
-  - libarm_compute30 
-  - libarm_compute_core30 
-  - libarm_compute_graph30 
+  - libarm_compute31 
+  - libarm_compute_core31 
+  - libarm_compute_graph31 
   - libarmadillo12 
   - libarmnn32 
   - libarmnn32-opencl 
@@ -12580,7 +12582,7 @@ unsorted:
   - libhwloc15 
   - libhwy1-32bit 
   - libhx509-5 
-  - libhydrogen-core-1_2_0 
+  - libhydrogen-core-1_2_1 
   - libhydrogen-core-devel 
   - libhyphen0-32bit 
   - libi2c0 
@@ -13762,7 +13764,7 @@ unsorted:
   - libopusenc0 
   - libopusfile0 
   - liboqs-devel 
-  - liboqs0 
+  - liboqs3 
   - liborc-0_4-0-32bit 
   - liborcania2_3 
   - liborcus-devel 
@@ -14065,7 +14067,7 @@ unsorted:
   - libpolyclipping-devel 
   - libpolyclipping22 
   - libpolylibgmp8 
-  - libpolymake4_9 
+  - libpolymake4_10 
   - libpolys-4_3_1 
   - libpolys-devel 
   - libpoppler-cpp0-32bit 
@@ -18468,9 +18470,6 @@ unsorted:
   - nodejs-electron-doc 
   - nodejs-packaging 
   - nodejs-underscore 
-  - nodejs18 
-  - nodejs18-devel 
-  - nodejs18-docs 
   - nodejs20-devel 
   - nodejs20-docs 
   - noisetorch 
@@ -18734,7 +18733,6 @@ unsorted:
   - nping 
   - npkg 
   - npm-default 
-  - npm18 
   - npth-devel 
   - nqp 
   - nrpe 
@@ -22992,7 +22990,6 @@ unsorted:
   - python310-HeapDict 
   - python310-HepMC 
   - python310-IMAPClient 
-  - python310-IMDbPY 
   - python310-JPype1 
   - python310-Js2Py 
   - python310-JsonWeb 
@@ -24512,6 +24509,7 @@ unsorted:
   - python310-jupyter-core 
   - python310-jupyter-events 
   - python310-jupyter-kernel-test 
+  - python310-jupyter-lsp 
   - python310-jupyter-packaging 
   - python310-jupyter-server 
   - python310-jupyter-server-fileid 
@@ -26317,7 +26315,6 @@ unsorted:
   - python311-HeapDict 
   - python311-HepMC 
   - python311-IMAPClient 
-  - python311-IMDbPY 
   - python311-JPype1 
   - python311-Jinja2 
   - python311-Js2Py 
@@ -27902,6 +27899,7 @@ unsorted:
   - python311-jupyter-core 
   - python311-jupyter-events 
   - python311-jupyter-kernel-test 
+  - python311-jupyter-lsp 
   - python311-jupyter-packaging 
   - python311-jupyter-server 
   - python311-jupyter-server-fileid 
@@ -29807,7 +29805,6 @@ unsorted:
   - python39-HeapDict 
   - python39-HepMC 
   - python39-IMAPClient 
-  - python39-IMDbPY 
   - python39-JPype1 
   - python39-Jinja2 
   - python39-Js2Py 
@@ -31396,6 +31393,7 @@ unsorted:
   - python39-jupyter-core 
   - python39-jupyter-events 
   - python39-jupyter-kernel-test 
+  - python39-jupyter-lsp 
   - python39-jupyter-packaging 
   - python39-jupyter-server 
   - python39-jupyter-server-fileid 
