@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>720020</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d236c278c9bc4141feb0fa5f418ec321</srcmd5>
+    <version>1.0.2</version>
+    <time>1686665462</time>
+    <user>dimstar_suse</user>
+    <comment>- tag sle15 build for new python stack</comment>
+    <requestid>1092849</requestid>
+  </revision>
 </revisionlist>
