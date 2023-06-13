@@ -4798,4 +4798,18 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1091280</requestid>
   </revision>
+  <revision rev="410" vrev="1">
+    <srcmd5>3540f5bbf58e374846fee04a934f2272</srcmd5>
+    <version>8.10</version>
+    <time>1686665339</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 8.10 release
+  - All PE-&gt;Unix transitions go through the syscall interface.
+  - Mouse cursor clipping improvements.
+  - Support for virtual memory placeholders.
+  - Locale and timezone data updates.
+  - Various bug fixes.
+- update staging to 8.10 release</comment>
+    <requestid>1092604</requestid>
+  </revision>
 </revisionlist>

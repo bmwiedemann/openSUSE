@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 12 06:58:24 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 8.10 release
+  - All PE->Unix transitions go through the syscall interface.
+  - Mouse cursor clipping improvements.
+  - Support for virtual memory placeholders.
+  - Locale and timezone data updates.
+  - Various bug fixes.
+- update staging to 8.10 release
+
+-------------------------------------------------------------------
 Sat May 27 08:04:04 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 8.9 release
