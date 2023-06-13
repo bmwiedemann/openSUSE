@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 11 20:42:49 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.2:
+  + Fix origin being unrefed making calling impossible after a few
+    of calls.
+
+-------------------------------------------------------------------
 Sat Apr 22 19:31:43 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.1:
