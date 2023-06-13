@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Mon Jun 12 20:37:19 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 13.1.0:
+  * Release 13.1.0 (#27418)
+  * [v13] [Assist] Do not parse event data is there is none
+    (#27435)
+  * [v13] Update e (#27430)
+  * [v13] Add Assist to the access role (#27424)
+  * [v13] Adds info on exporting requirements for impersonated
+    certs (#27403)
+  * chore: Bump Buf to v1.20.0 (#27400)
+  * [v13] Add IAM auth info to ElastiCache guide (#27306)
+  * Move and update Proxy Template docs. (#27350)
+  * specify supported architectures (#27279)
+  * [v13] docs: Formatting/grammar fixes for TLS routing (#27391)
+  * [v13] Update e ref. (#27388)
+  * tncon: Remove unused return variables (#27386)
+  * Add plugin static credentials getter. (#27301)
+  * Minor updates to Server Access Getting Started (#27253)
+  * [v13] WebPublicAddr includes user specified port. (#27376)
+  * [v13] Web: Emit integration events (aws oidc) and touch ups
+    (#27172)
+  * [v13] cache parsed role template expressions (#27326)
+  * add circle icon helper (#27185) (#27286)
+  * [v13] Update e ref (#27375)
+  * Reply with a user-friendly message on verification errors
+    (#27270)
+  * [v13] Assist docs (#27260)
+  * [v13] docs: update enrollment steps for active dir (#27357)
+  * Add endpoints to export AuditEvents as unstructured data
+    (#27290)
+  * [v13] Docs: Update GitHub SSO (#27273)
+  * Add kube credentials lockfile to prevent possibility of
+    excessive login attempts (#27366)
+  * [v13] Use the proper check for the SAML IdP session. (#27314)
+  * Get fresh cluster features to `config.js` (#26785) (#27362)
+  * [v13] Assist bug fixes (#27356)
+  * [v13] Get locks in tctl get all (#27294)
+  * [v13] flaky test detector: override skipped tests (#27274)
+  * Only wait for headless authentication watcher initialization in
+    tests. (#27298)
+  * [v13] Assist backport (#27243)
+  * Replace global testing variables for device trust with
+    pluggable ceremony interface. (#27239)
+  * [v13] Web: Fix local storage clearing (#27296)
+  * Disable GHA cache (#27305) (#27315)
+  * [v13] Pin golangci-lint to `v1.53.1` and upgrade `depguard`
+    config to `v2` (#27293)
+  * Speedup OpenSSL build (#27056) (#27261)
+  * tctl: allow creating desktops from YAML file (#27250)
+  * Fix TeleportClient.ConnectToProxy logic error with closed
+    context. (#27140)
+  * Dont load ForwardedPorts from profile, only recieve them from
+    the cli (#27208)
+  * backport device trust and okta provider docs (#27218)
+  * Ignore ENOENT error on group check (#27231)
+  * Add support for automatic database users for Postgres (#26555)
+  * [v13] lib/kube/proxy/server.go: Fix potential mutex deadlock on
+    error (#27237)
+  * docs: mention locking as an alternative to CA rotation for
+    revoking access (#27248)
+  * docs: add troubleshooting step for standard RDP security
+    (#27245)
+  * [v13] Fix headless server access requests (#27241)
+  * tncon.c: Switch all size variables to size_t (#27234)
+  * update access controls table (#27226)
+  * Add static credentials reference to plugin credentials.
+    (#27225)
+  * [v13] docs: update fluentd output and correct docs link
+    (#27202)
+  * Add elasticache:Connect AWS permission to auto-IAM (#27188)
+  * Updated Cloud SQL guides with more info about 'Allow only SSL
+    connections' option (#27224)
+  * docs: update version (#27219)
+  * Add information about the cert-format flag (#27167)
+  * Update cloud version to 12.4.5 (#27214)
+  * return an error if a moderated session is created for an
+    agentless node (#25721)
+  * [v13] Add docs for shell completion (#27093)
+  * add section for username_claim (#27006)
+  * [v13] helm: Switch custom deployment guide to standalone rather
+    than scratch (#27177)
+
+-------------------------------------------------------------------
 Thu Jun 01 11:46:13 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 13.0.4:
