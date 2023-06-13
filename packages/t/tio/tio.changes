@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 10 12:01:41 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 2.6:
+  * Remove warning when using pattern option
+  * Add --log-append option
+  * Fix line termination for response wait feature
+
+-------------------------------------------------------------------
 Wed Dec 28 12:38:35 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5:
