@@ -6298,4 +6298,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.3.6 &amp; 6.3.5 &amp; XFS CVE fix &amp; one AMD GPU fix (one bug still remaining) &amp; set X86_KERNEL_IBT=y (as per other distros and upstream default)</comment>
     <requestid>1090845</requestid>
   </revision>
+  <revision rev="693" vrev="1">
+    <srcmd5>ed881630a0370a8b77daab217b7bbb63</srcmd5>
+    <version>6.3.7</version>
+    <time>1686665331</time>
+    <user>dimstar_suse</user>
+    <comment>6.3.7 &amp; CVE fixes</comment>
+    <requestid>1092458</requestid>
+  </revision>
 </revisionlist>
