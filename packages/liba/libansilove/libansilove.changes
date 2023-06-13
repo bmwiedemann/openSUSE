@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun  5 08:11:07 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.4.1
+  * Sync embedded Spleen 8x16 version to Spleen 2.0.0 (this swap arrows at positions 1A and 1B)
+
+- Update to 1.4.0
+  * Add font data for Spleen 8x16, it now has full CP437 support
+
+-------------------------------------------------------------------
 Thu May  5 05:57:06 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 1.3.1
