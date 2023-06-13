@@ -28,7 +28,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-FontTools%{psuffix}
-Version:        4.39.3
+Version:        4.39.4
 Release:        0
 Summary:        Suite of Tools and Libraries for Manipulating Fonts
 License:        MIT AND OFL-1.1

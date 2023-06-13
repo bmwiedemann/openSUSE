@@ -166,4 +166,12 @@ This version fixes the conflict from the previous version.</comment>
     <comment></comment>
     <requestid>1083300</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7ddb2b75b5d00b0ead7ea3dbde01382a</srcmd5>
+    <version>4.39.4</version>
+    <time>1686665328</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092457</requestid>
+  </revision>
 </revisionlist>
