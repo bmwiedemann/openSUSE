@@ -651,4 +651,12 @@ See https://bugzilla.opensuse.org/show_bug.cgi?id=1195398
 </comment>
     <requestid>1084556</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>6c11f90ef6bc1af92269f269e884a2b9</srcmd5>
+    <version>12.63</version>
+    <time>1686665430</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092772</requestid>
+  </revision>
 </revisionlist>
