@@ -17,15 +17,13 @@
 
 
 Name:           rpi-imager
-Version:        1.7.4
+Version:        1.7.5
 Release:        0
 Summary:        Raspberry Pi Imaging Utility
 License:        Apache-2.0
 Group:          Hardware/Other
 URL:            https://github.com/raspberrypi/rpi-imager
 Source:         https://github.com/raspberrypi/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Fix build using gcc 13
-Patch0:         https://patch-diff.githubusercontent.com/raw/raspberrypi/rpi-imager/pull/567.patch
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++

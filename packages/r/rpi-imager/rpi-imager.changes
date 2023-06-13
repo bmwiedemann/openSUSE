@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun May 28 14:05:52 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.7.5
+  * 567.patch removed (included in src)
+  * various fixes for Windows
+  * No changes from v1.7.4.1 for Linux and Mac other than version number
+  
+  version 1.7.4.1
+  * Advanced settings: fix creating files on FAT partition that are an exact multiple of cluster size.
+  * Advanced settings: allow end-of-directory marker to be missing in FAT32 root directory (fixes customizing Homebridge image)
+  * Do you want to apply saved settings window: offer 'no' option, without clearing settings.
+  * Linux: eject storage properly through udisks2.
+  * Add Russian translation
+  
+-------------------------------------------------------------------
 Thu Apr  6 10:47:25 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 567.patch: Fix build using gcc13.
