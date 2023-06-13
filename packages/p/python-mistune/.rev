@@ -157,4 +157,12 @@
     regex</comment>
     <requestid>1084850</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>05614651ecd5a86500987699c46c43a2</srcmd5>
+    <version>2.0.5</version>
+    <time>1686665329</time>
+    <user>dimstar_suse</user>
+    <comment>- cleanup</comment>
+    <requestid>1092493</requestid>
+  </revision>
 </revisionlist>
