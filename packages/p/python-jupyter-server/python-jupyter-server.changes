@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Jun 11 20:34:14 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.6.0
+  ## New features added
+  * Emit events from the kernels service and gateway client #1252
+    (@rajmusuku)
+  ## Enhancements made
+  * Allows immutable cache for static files in a directory #1268
+    (@brichet)
+  * Merge the gateway handlers into the standard handlers. #1261
+    (@ojarjur)
+  * Gateway manager retry kernel updates #1256 (@ojarjur)
+  * Use debug-level messages for generating anonymous users #1254
+    (@hbcarlos)
+  * Define a CURRENT_JUPYTER_HANDLER context var #1251 (@Zsailer)
+  ## Bugs fixed
+  * Don't instantiate an unused Future in gateway connection trait
+    #1276 (@minrk)
+  * Write server list to stdout #1275 (@minrk)
+  * Make the kernel_websocket_protocol flag reusable. #1264
+    (@ojarjur)
+  * Register websocket handler from same module as kernel handlers
+    #1249 (@kevin-bates)
+  * Re-enable websocket ping/pong from the server #1243 (@Zsailer)
+  * Fix italics in operators security sections #1242 (@kevin-bates)
+  * Fix calculation of schema location #1239 (@lresende)
+
+-------------------------------------------------------------------
 Sun Mar 19 17:31:55 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.5.0
