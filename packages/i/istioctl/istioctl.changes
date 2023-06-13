@@ -1,4 +1,106 @@
 -------------------------------------------------------------------
+Tue Jun 13 06:13:18 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.18.0:
+  very large changelog, please see
+  https://istio.io/latest/news/releases/1.18.x/announcing-1.18/
+
+-------------------------------------------------------------------
+Tue Jun 13 06:08:03 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.17.3:
+  * Update BASE_VERSION to 1.17-2023-05-31T19-02-43 (#45227)
+  * Revert "[release-1.17] Operator: Fix webhooks reconciled by
+    operator are inconsistent with istioctl install's (#45121)"
+    (#45205)
+  * 1.17: bump docker dep (#45198)
+  * cherry-pick: add debug info when generating certs for workloads
+    #45183 (#45189)
+  * [release-1.17] Run update_deps.sh (#45177)
+  * [release-1.17] Operator: Fix webhooks reconciled by operator
+    are inconsistent with istioctl install's (#45121)
+  * RetryWithContext should use the new NextBackOff() (#45122)
+  * Update BASE_VERSION to 1.17-2023-05-24T19-03-36 (#45110)
+  * [release-1.17] fix backoff and read ca file interval (#45039)
+  * [release-1.17]Manual cherry-pick of 44481 and 44775 (#45082)
+  * Automator: update proxy@release-1.17 in
+    istio/istio@release-1.17 (#45017)
+  * Automator: update istio/client-go@release-1.17 dependency in
+    istio/istio@release-1.17 (#45070)
+  * Automator: update common-files@release-1.17 in
+    istio/istio@release-1.17 (#45069)
+  * Automator: update proxy@release-1.17 in
+    istio/istio@release-1.17 (#44989)
+  * remove file from file certs before triggering call backs
+    (#44908)
+  * [release-1.17] Fix  MaybeApplyTLSModeLabel function (#44939)
+  * spiffe: fix handling of trust bundles with multiple keys
+    (#44909)
+  * [release-1.17] inject: remove unknown fields from template
+    (#44858)
+  * add support for security.istio.io/v1beta1 api in authz tests
+    when testing multiple istio versions (#44447) (#44808)
+  * Automator: update proxy@release-1.17 in
+    istio/istio@release-1.17 (#44782)
+  * [release-1.17] Fix persistent sessions scale down with envoy
+    (#44652)
+  * [release-1.17] Fix verify-install to work with multi iops
+    (#44753)
+  * Skip runtime resources when analyzing files (#44506) (#44733)
+  *  [release-1.17] Fix pilot using wrong readinessprobe check,
+     should check if /validate and /inject endpoints are ready.
+     (#44750)
+  * Automator: update proxy@release-1.17 in
+    istio/istio@release-1.17 (#44745)
+  * Fix multi-cluster issue by increasing the timeout of listing
+    CRDs (#44715) (#44739)
+  * Automator: update istio/client-go@release-1.17 dependency in
+    istio/istio@release-1.17 (#44734)
+  * Automator: update common-files@release-1.17 in
+    istio/istio@release-1.17 (#44732)
+  * Automator: update proxy@release-1.17 in
+    istio/istio@release-1.17 (#44718)
+  * Use safer dedupe for config (#44502) (#44535)
+  * Automator: update proxy@release-1.17 in
+    istio/istio@release-1.17 (#44618)
+  * Automator: update proxy@release-1.17 in
+    istio/istio@release-1.17 (#44598)
+  * Update BASE_VERSION to 1.17-2023-04-26T19-03-52 (#44574)
+  * disable automount SA token only on tests with min istio
+    revisions >= 1.16 (#44492)
+  * fix missing gateway services (#44463)
+  * [release-1.17] add validation for empty prefix header match
+    (#44455)
+  * Automator: update proxy@release-1.17 in
+    istio/istio@release-1.17 (#44440)
+  * Integration Test for Istio custom GRPC count metrics (#44288)
+  * [release-1.17] gateway: prevent duplicate `istio_authn` network
+    filter in the filter chain (#44399)
+  * fix gateway service name (#44382)
+  * Automator: update proxy@release-1.17 in
+    istio/istio@release-1.17 (#44389)
+  * Update BASE_VERSION to 1.17-2023-04-12T19-03-40 (#44359)
+  * Automator: update proxy@release-1.17 in
+    istio/istio@release-1.17 (#44344)
+  * Automator: update istio/client-go@release-1.17 dependency in
+    istio/istio@release-1.17 (#44283)
+  * Automator: update common-files@release-1.17 in
+    istio/istio@release-1.17 (#44282)
+  * Automator: update proxy@release-1.17 in
+    istio/istio@release-1.17 (#44271)
+  * gateway: remove internal annotation from propogating (#44220)
+    (#44229)
+  * Automator: update proxy@release-1.17 in
+    istio/istio@release-1.17 (#44241)
+  * [release-1.17] add release-notes for grpc stats (#44222)
+  * Automator: update proxy@release-1.17 in
+    istio/istio@release-1.17 (#44217)
+  * [1.17] gateway deployment controller: handle backwards
+    compatibility (#44171)
+  * fix: increment failures in serverFailure function (#44176)
+  * [release-1.17] always enable grpc stats filter (#44180)
+
+-------------------------------------------------------------------
 Wed Apr 19 12:10:36 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - package sample files
