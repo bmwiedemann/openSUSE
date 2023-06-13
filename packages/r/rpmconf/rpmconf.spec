@@ -1,7 +1,7 @@
 #
 # spec file for package rpmconf
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,27 @@
 
 
 Name:           rpmconf
-Version:        1.1.8
+Version:        1.1.9
 Release:        0
 Summary:        Tool to handle rpmnew and rpmsave files
 License:        GPL-3.0-or-later
-Group:          System/Base
 URL:            https://github.com/xsuchy/rpmconf
 Source:         https://github.com/xsuchy/%{name}/archive/%{name}-%{version}-1.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  docbook-utils-minimal
 BuildRequires:  docbook_3
+BuildRequires:  fdupes
 BuildRequires:  make
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-devel
 BuildRequires:  python3-rpm
 Requires:       python3-%{name}
 Requires:       python3-rpm
 Suggests:       diffuse
+Suggests:       diffutils
 Suggests:       kdiff3
 Suggests:       meld
 Suggests:       vim
-Suggests:       diffutils
 BuildArch:      noarch
 
 %description
@@ -52,19 +53,19 @@ Group:          Development/Languages/Python
 Python interface for rpmconf and an essential part of rpmconf.
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}-1
+%autosetup -n %{name}-%{name}-%{version}-1
 
 sed -i 's/__version__ = .*/__version__ = "%{version}"/' rpmconf/rpmconf.py
 sed -i 's/version = .*,/version = "%{version}",/' setup.py
 
 %build
-python3 setup.py build
+%python3_build
 docbook2man %{name}.sgml
 %make_build -C docs man \
   SPHINXBUILD=sphinx-build-%{py3_ver}
 
 %install
-python3 setup.py install \
+%python3_install \
   --skip-build                  \
   --root %{buildroot}           \
   --install-scripts %{_sbindir}
@@ -74,6 +75,8 @@ install -Dpm 0644 %{name}.8 %{buildroot}%{_mandir}/man8/%{name}.8
 install -Dpm 0644 docs/build/man/%{name}.3 %{buildroot}%{_mandir}/man3/%{name}.3
 mkdir -p %{buildroot}%{_datadir}/%{name}/
 find docs/build/ -type f -name ".buildinfo" -delete -print
+
+%fdupes -s %{buildroot}%{python3_sitelib}
 
 %files
 %license LICENSE

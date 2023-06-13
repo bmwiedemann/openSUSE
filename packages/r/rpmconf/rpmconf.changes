@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun  8 11:32:58 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.1.9:
+  * Add BuildRequire on setuptools to fix distutils error on
+    Python 3.12
+
+-------------------------------------------------------------------
 Mon Dec  5 21:52:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.8:
