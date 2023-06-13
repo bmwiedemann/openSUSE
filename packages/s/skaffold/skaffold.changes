@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 12 19:57:16 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.5.1:
+  * fix: logic to interrupt a k8sjob logs as soon as it fails
+    (#8847) (#8871)
+  * fix: increase progressDeadlineSeconds for TestRunUnstable test
+    and change in baseRef (#8878)
+
+-------------------------------------------------------------------
 Sat May 27 10:46:34 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.5.0:
