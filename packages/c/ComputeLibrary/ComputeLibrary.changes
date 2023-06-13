@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 12 12:24:24 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+-  Update to 23.05:
+  * Public major release
+  * Documentation (API, changelogs, build guide,
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v23.05
+- Drop upstream patch:
+  *  fix-gcc13-fallout.patch
+
+-------------------------------------------------------------------
 Tue Apr 11 12:15:38 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - More fixes to use python3 as the python script interpreter
