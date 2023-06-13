@@ -34,6 +34,7 @@
 %bcond_without flask_sqlalchemy
 %endif
 
+%{?sle15_python_module_pythons}
 Name:           python-aws-xray-sdk%{?psuffix}
 Version:        2.12.0
 Release:        0
