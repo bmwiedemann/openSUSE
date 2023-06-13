@@ -18,7 +18,7 @@
 
 
 Name:           ansilove
-Version:        4.1.7
+Version:        4.2.0
 Release:        0
 Summary:        ANSI and ASCII art to PNG converter
 License:        BSD-2-Clause
@@ -27,7 +27,7 @@ URL:            https://www.ansilove.org
 #Git-Clone:     https://github.com/ansilove/ansilove.git
 Source:         https://github.com/ansilove/ansilove/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
-BuildRequires:  libansilove-devel
+BuildRequires:  libansilove-devel >= 1.4.0
 
 %description
 AnsiLove/C is a tool to convert ANSI and artscene-related file formats into

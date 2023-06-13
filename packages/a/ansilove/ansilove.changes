@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  5 08:15:53 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 4.2.0
+  * Add support for the Spleen 8x16 font (requires libansilove >= 1.4.0)
+
+-------------------------------------------------------------------
 Fri Apr  7 18:48:47 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.1.7
