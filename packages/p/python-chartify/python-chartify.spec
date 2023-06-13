@@ -16,9 +16,9 @@
 #
 
 
-%define         skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-chartify
-Version:        3.0.5
+Version:        4.0.2
 Release:        0
 Summary:        Python library for plotting charts
 License:        Apache-2.0
@@ -31,10 +31,10 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module Pillow >= 8.4.0}
-BuildRequires:  %{python_module bokeh >= 2.0.0 with %python-bokeh < 2.5}
+BuildRequires:  %{python_module bokeh >= 3.0.0}
 BuildRequires:  %{python_module ipykernel >= 5.0}
 BuildRequires:  %{python_module ipython >= 7.0}
-BuildRequires:  %{python_module pandas >= 1.0.0 with %python-pandas < 2}
+BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy >= 1.0.0 with %python-scipy < 2}
 # ignoring https://github.com/SeleniumHQ/selenium/issues/5296
@@ -49,12 +49,11 @@ Chartify is a Python library for creating charts.
 %prep
 %setup -q -n chartify-%{version}
 rm tox.ini
-# raise bokeh upper limit,
 # unpin selenium (see comment above)
 # unpin Jinja2 (see release notes), but keep a pinning char for the check in setup.py
 sed -i \
-  -e '/bokeh/ s/,<2.3.0/,<2.5/' \
   -e '/selenium/ s/,<=3.8.0//' \
+  -e '/pandas/ s/,<2.0.0//' \
   -e '/Jinja2/ s/<3.1.0/>1/' \
   requirements.txt
 

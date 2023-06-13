@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jun 11 19:31:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.2:
+  * Fix categorical_order_by check for scatter plot
+  * Fix categorical_order_by check for _construct_source
+  * Refactor category sorting in _construct_source
+  * Add tests for categorical_order_by
+  * Fix scatter plot tests that used line plots
+  * Updated version requirement of pillow to avoid bug
+  * Dropped support for python 3.6 and 3.7
+- unpin pandas to allow 2.x
+
+-------------------------------------------------------------------
+Sun Jun 11 19:26:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.0:
+  * Added Boxplot Chart including example in examples notebook 
+
+-------------------------------------------------------------------
 Wed Jan  4 14:16:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.5:

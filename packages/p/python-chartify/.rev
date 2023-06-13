@@ -49,4 +49,23 @@
   * Fixed a typo in requirements.txt</comment>
     <requestid>1055859</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e8b7753a0f85cdd50c2f74da343eb568</srcmd5>
+    <version>4.0.2</version>
+    <time>1686665334</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.2:
+  * Fix categorical_order_by check for scatter plot
+  * Fix categorical_order_by check for _construct_source
+  * Refactor category sorting in _construct_source
+  * Add tests for categorical_order_by
+  * Fix scatter plot tests that used line plots
+  * Updated version requirement of pillow to avoid bug
+  * Dropped support for python 3.6 and 3.7
+- unpin pandas to allow 2.x
+
+- update to 3.1.0:
+  * Added Boxplot Chart including example in examples notebook</comment>
+    <requestid>1092608</requestid>
+  </revision>
 </revisionlist>
