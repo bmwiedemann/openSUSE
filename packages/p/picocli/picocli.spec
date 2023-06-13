@@ -17,17 +17,18 @@
 
 
 Name:           picocli
-Version:        4.7.3
+Version:        4.7.4
 Release:        0
 Summary:        Tiny Command Line Interface
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://picocli.info/
-Source0:        https://github.com/remkop/%{name}/archive/v%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-build.xml
 Source2:        https://repo1.maven.org/maven2/info/%{name}/%{name}/%{version}/%{name}-%{version}.pom
 Source3:        https://repo1.maven.org/maven2/info/%{name}/%{name}-codegen/%{version}/%{name}-codegen-%{version}.pom
 Source4:        https://repo1.maven.org/maven2/info/%{name}/%{name}-shell-jline2/%{version}/%{name}-shell-jline2-%{version}.pom
+Patch0:         revert-version.patch
 BuildRequires:  ant
 BuildRequires:  aqute-bnd
 BuildRequires:  fdupes

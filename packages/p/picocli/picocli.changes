@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jun 13 12:49:00 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 4.7.4
+  * Fixes:
+    + API: Add setter for name in
+      picocli.shell.jline3.PicocliCommands.
+    + Enhancement: Improved feedback on mistyped subcommands
+    + Enhancement: prevent
+      java.nio.charset.UnsupportedCharsetException: cp0 on windows,
+      and fall back to the default charset if the charset provided
+      by System property sun.stdout.encoding is invalid
+    + Bugfix: Option "mapFallbackValue" ignored when inherited to
+      subcommand
+    + ugfix: fix issue with required options in ArgGroup becoming
+      optional when combined with DefaultValueProvider
+- Fetch sources using source service: this allows filter out
+  binaries with spurious legal status and which we don't use for
+  build
+- Due to a bug in the upstream github repository, fetch sources from
+  our private fork until https://github.com/remkop/picocli/pull/2045
+  gets integrated upstream
+- Added patch:
+  * revert-version.patch
+    + revert a version change between our fixed code and the
+      upstream tag
+
+-------------------------------------------------------------------
 Mon Jun  5 17:59:16 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Require java 9 for build so that we can build the module-info.java

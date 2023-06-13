@@ -31,4 +31,12 @@
     <comment>4.7.3</comment>
     <requestid>1091134</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>aee70222a6773009d11cdbf8f97e2643</srcmd5>
+    <version>4.7.4</version>
+    <time>1686665507</time>
+    <user>dimstar_suse</user>
+    <comment>4.7.4 + legaldb fixes</comment>
+    <requestid>1092884</requestid>
+  </revision>
 </revisionlist>

@@ -3,10 +3,10 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>info.picocli</groupId>
-  <artifactId>picocli-shell-jline2</artifactId>
-  <version>4.7.3</version>
-  <name>picocli-shell-jline2</name>
-  <description>Picocli Shell JLine2 - easily build interactive shell applications with JLine 2 and picocli.</description>
+  <artifactId>picocli</artifactId>
+  <version>4.7.4</version>
+  <name>picocli</name>
+  <description>Java command line parser with both an annotations API and a programmatic API. Usage help with ANSI styles and colors. Autocomplete. Nested subcommands. Easily included as source to avoid adding a dependency.</description>
   <url>https://picocli.info</url>
   <inceptionYear>2018</inceptionYear>
   <licenses>
@@ -28,18 +28,4 @@
     <developerConnection>scm:git:ssh://github.com:remkop/picocli.git</developerConnection>
     <url>https://github.com/remkop/picocli/tree/master</url>
   </scm>
-  <dependencies>
-    <dependency>
-      <groupId>info.picocli</groupId>
-      <artifactId>picocli</artifactId>
-      <version>4.7.3</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>jline</groupId>
-      <artifactId>jline</artifactId>
-      <version>2.14.6</version>
-      <scope>compile</scope>
-    </dependency>
-  </dependencies>
 </project>

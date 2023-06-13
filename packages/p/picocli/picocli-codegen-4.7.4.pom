@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>info.picocli</groupId>
   <artifactId>picocli-codegen</artifactId>
-  <version>4.7.3</version>
+  <version>4.7.4</version>
   <name>picocli-codegen</name>
   <description>Picocli Code Generation - Tools to generate documentation, configuration, source code and other files from a picocli model.</description>
   <url>https://picocli.info</url>
@@ -32,7 +32,7 @@
     <dependency>
       <groupId>info.picocli</groupId>
       <artifactId>picocli</artifactId>
-      <version>4.7.3</version>
+      <version>4.7.4</version>
       <scope>compile</scope>
     </dependency>
   </dependencies>
