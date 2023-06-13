@@ -21,11 +21,12 @@ Summary:        Release Compare Script
 License:        GPL-3.0-or-later
 Group:          Development/Tools/Building
 URL:            https://github.com/openSUSE/release-compare
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Source:         %name-%version.tar.xz
 BuildArch:      noarch
 Requires:       python3-PyYAML
+Requires:       python3-setuptools
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
