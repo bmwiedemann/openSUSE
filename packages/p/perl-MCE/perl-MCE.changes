@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jun 10 03:06:39 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.887
+   see /usr/share/doc/packages/perl-MCE/Changes
+
+  1.887 Fri Jun 09 08:00:00 EST 2023
+    * Fix typo in Queue dequeue_timed documentation.
+      Thank you, Łukasz Strzelecki.
+  1.886 Tue Jun 06 12:00:00 EST 2023
+    * Added dequeue_timed method to MCE::Queue.
+    * Fixed taint mode in MCE->printf and _sprintf.
+    * Improved reliability on the Windows platform.
+
+-------------------------------------------------------------------
 Wed May 31 03:06:47 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.885
