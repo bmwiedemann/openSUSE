@@ -18,11 +18,10 @@
 
 
 Name:           powerstat
-Version:        0.03.02
+Version:        0.03.03
 Release:        0
 Summary:        Laptop power measuring tool
 License:        GPL-2.0-only
-Group:          System/Monitoring
 URL:            https://github.com/ColinIanKing/powerstat
 Source:         https://github.com/ColinIanKing/powerstat/archive/refs/tags/V%{version}.tar.gz
 
@@ -34,7 +33,6 @@ standard deviation and min/max of the gathered data.
 
 %package bash-completion
 Summary:        Bash Completion for %{name}
-Group:          System/Benchmark
 BuildRequires:  bash-completion
 Requires:       %{name} = %{version}
 Requires:       bash-completion
@@ -45,7 +43,7 @@ BuildArch:      noarch
 Bash completion script for %{name}.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 export CFLAGS="%{optflags}"
