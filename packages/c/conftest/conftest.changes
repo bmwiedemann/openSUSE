@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jun 12 20:08:18 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.43.1:
+  * build(deps): bump github.com/open-policy-agent/opa from 0.53.0
+    to 0.53.1 (#833)
+  * build: Bump hashicorp/go-getter to v1.7.1 (#825)
+
+-------------------------------------------------------------------
+Mon Jun 12 20:01:35 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.43.0:
+  * build(deps): bump github.com/open-policy-agent/opa from 0.52.0
+    to 0.53.0 (#830)
+  * feat: Add textproto support (#828)
+  * build(deps): bump alpine from 3.17.3 to 3.18.0 (#827)
+  * docs: typo (#826)
+
+-------------------------------------------------------------------
 Mon May 08 04:32:42 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.42.1:
