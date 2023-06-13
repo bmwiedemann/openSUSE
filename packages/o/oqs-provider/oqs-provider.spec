@@ -1,7 +1,7 @@
 #
 # spec file for package oqs-provider
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,18 @@
 
 
 Name:           oqs-provider
-Version:        0.3.0
+Version:        0.5.0
 Release:        0
 Summary:        Quantum-safe crypto provider for OpenSSL
 License:        MIT
 Group:          Productivity/Security
 URL:            https://github.com/open-quantum-safe/oqs-provider/
 Source:         https://github.com/open-quantum-safe/oqs-provider/archive/refs/tags/%{version}.tar.gz#/%name-%version.tar.gz
-Patch0:		oqs-provider-shared-liboqs.patch
 # currently would need libtestutil.a from openssl-3, so basically a copy of openssl-3 to test.
-Patch1:		oqs-provider-disable-test.patch
+Patch1:         oqs-provider-disable-test.patch
 BuildRequires:  cmake
 BuildRequires:  libopenssl-3-devel
-BuildRequires:  liboqs-devel
+BuildRequires:  pkgconfig(liboqs)
 
 %description
 This is a plugin/shared library making available quantum-safe cryptography
@@ -47,14 +46,15 @@ mkdir build
 export RPM_OPT_FLAGS="%optflags -std=gnu11"
 cd build
 cmake -DBUILD_SHARED_LIBS=ON ..
-%cmake_build 
+%cmake_build
 
 %install
 install -d %buildroot/%{_libdir}/ossl-modules/
-install -m 755 -c build/oqsprov/oqsprovider.so %buildroot/%{_libdir}/ossl-modules/
 
-%files 
-%license LICENSE.txt 
+install -m 755 -c build/lib/oqsprovider.so %buildroot/%{_libdir}/ossl-modules/
+
+%files
+%license LICENSE.txt
 %dir /%{_libdir}/ossl-modules
 /%{_libdir}/ossl-modules/oqsprovider.so
 

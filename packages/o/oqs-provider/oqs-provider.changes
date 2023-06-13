@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Tue Jun 13 09:19:27 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.5.0:
+
+  - oqs-provider now also enables use of QSC algorithms during TLS1.3
+    handshake. The required OpenSSL code updates are contained in
+    openssl/openssl#19312.
+
+  * Algorithm updates
+
+    All algorithms no longer supported in the NIST PQC competition
+    and not under consideration for standardization by ISO have been
+    removed. All remaining algorithms with the exception of McEliece
+    have been lifted to their final round 3 variants as documented in
+    liboqs. Most notably, algorithm names for Sphincs+ have been changed
+    to the naming chosen by its authors.
+
+  * Functional updates
+
+  - Enablement of oqs-provider as a (first) dynamically fetchable OpenSSL3 TLS1.3 signature provider.
+  - OSX support
+  - Full support for CA functionality
+  - Algorithms can now be selected by their respective bit strength using the property string "oqsprovider.security_bits"
+  - Documentation of (O)IDs used by the different PQC algorithms used and supported in current and past releases of oqs-openssl and oqs-provider
+  - Graceful handling (by way of functional degradation) of the feature sets contained in different OpenSSL releases; all oqsprovider capabilities are only available when using a version > than OpenSSL3.1.
+  - A bug regarding handling of hybrid algorithms has been fixed as well as some memory leaks.
+
+  * Misc updates
+
+  - Dynamic code point and OID changes via environment variables. See ALGORITHMS.md.
+  - Dynamic key encoding changes via environment variable using external qsc_key_encoder library. See ALGORITHMS.md.
+
+- oqs-provider-shared-liboqs.patch: removed, not needed anymore
+
+- updated to 0.4.0:
+
+  * Security considerations
+
+  - This release removes Rainbow level 1 and all variants of SIDH and
+    SIKE due to cryptanalytic breaks of those algorithms. Users are advised
+    to move away from use of those algorithms immediately.
+
+  * Algorithm updates
+
+  - Removal of SIKE/SIDH and Rainbow level I due to cryptographic breaks
+
+  * Functional updates
+
+  - Addition of quantum-safe CMS operations via the OpenSSL interface
+  - Addition of quantum-safe dgst operations via the OpenSSL interface
+
+  * Misc updates
+
+  - Additional testing
+  - Integration with and of OpenSSL test harness
+
+-------------------------------------------------------------------
 Tue Nov 15 17:04:53 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update descriptions
