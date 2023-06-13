@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 12 17:16:52 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- rnp 0.16.3:
+  * CVE-2023-29479: Fix issue with possible hang on malformed
+    inputs (boo#1212253)
+  * CVE-2023-29480: Fix issue where in some cases, secret keys
+    remain unlocked after use (boo#1212254)
+
+-------------------------------------------------------------------
 Mon Sep 26 04:36:06 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - rnp 0.16.2:

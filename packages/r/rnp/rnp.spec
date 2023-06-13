@@ -1,8 +1,8 @@
 #
 # spec file for package rnp
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2022 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2023 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %define soname 0
 Name:           rnp
-Version:        0.16.2
+Version:        0.16.3
 Release:        0
 Summary:        OpenPGP implementation fully compliant with RFC 4880
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause
