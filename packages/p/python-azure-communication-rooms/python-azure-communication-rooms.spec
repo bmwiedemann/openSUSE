@@ -15,20 +15,19 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define realversion 1.0.0b3
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-communication-rooms
-Version:        1.0.0~b3
+Version:        1.0.0
 Release:        0
 Summary:        Microsoft Communication Rooms Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-communication-rooms/azure-communication-rooms-%{realversion}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-communication-rooms/azure-communication-rooms-%{version}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-communication-nspkg >= 0.0.0b1}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
@@ -49,10 +48,10 @@ BuildArch:      noarch
 This package contains a Python SDK for Azure Communication Services for Rooms.
 
 %prep
-%setup -q -n azure-communication-rooms-%{realversion}
+%setup -q -n azure-communication-rooms-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-communication-rooms-%{realversion}
+install -m 644 %{SOURCE1} %{_builddir}/azure-communication-rooms-%{version}
 %python_build
 
 %install
