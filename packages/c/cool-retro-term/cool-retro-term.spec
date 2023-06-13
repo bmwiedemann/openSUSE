@@ -1,7 +1,7 @@
 #
 # spec file for package cool-retro-term
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2015, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -34,7 +34,9 @@ BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Widgets)
 Recommends:     int10h-oldschoolpc-fonts
-Conflicts:       qmltermwidget
+Requires:       libqt5-qtquickcontrols
+Requires:       libqt5-qtquickcontrols2
+Conflicts:      qmltermwidget
 
 %description
 cool-retro-term is a terminal emulator which tries to mimic the look and feel

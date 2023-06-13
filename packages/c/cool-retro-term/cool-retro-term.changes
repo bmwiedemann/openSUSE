@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 26 23:24:44 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Require QtQuick at runtime (else c-r-t exits with
+  "qrc:/SettingsWindow.qml:25:1: module QtQuick.Dialogs is not installed"
+  "qrc:/main.qml:22:1: plugin cannot be loaded for module
+  QtQuick.Controls: Cannot protect module QtQuick.Controls 2 [...]")
+
+-------------------------------------------------------------------
 Sat Apr 29 03:20:15 UTC 2023 - Erico Mendonca <erico.mendonca@suse.com>
 
 - Removed cool-retro-term-disable-bundled-qmltermwidget.patch
