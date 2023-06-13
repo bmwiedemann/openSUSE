@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 13 12:06:45 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230613.f09ff89:
+  * project-installcheck.py: Honour installcheck-ignore-conflicts config
+  * project-installcheck.py: target_packages is a dict, not a list
+  * project-installcheck.py: Move some code out of a with block
+
+-------------------------------------------------------------------
 Tue Jun 06 11:21:57 UTC 2023 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20230606.7297d89:
