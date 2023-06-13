@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Jun  6 14:46:19 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Refresh Libxfce4ui.patch again to ensure we require both
+  typelib(Libxfce4ui) *and* typelib(Libxfce4util)
+- Add Requires: python3-psutil
+
+-------------------------------------------------------------------
+Tue Jun  6 13:05:38 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Really fix files list and permissions of installed files
+
+-------------------------------------------------------------------
+Mon Jun  5 13:42:59 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.0.14
+  * Save and restore rc-files
+  * Add keywords to .desktop file (Fixes #9)
+  * Properly filter filenames on startup
+  * Ensure unique profile name and consistent filename
+  * Pass correct length to GLib.KeyFile.load_from_data() (Fixes #20)
+  * Open panel prefs dialog also on delete-event (Fixes #42)
+  * configure: Use shell builtins instead of sed
+  * Add missing translatable flags
+  * Fix translations when $prefix != /usr
+  * Add Unity layout
+  * Use get_user_config_dir instead of get_home_dir (Fixes #38)
+  * Show errors before saving profile to file
+  * Ignore corrupted desktop-files on store Ignore empty launchers on
+  store
+  * Set correct desktop file name for translations
+  * Makefile.in.in: Pass arguments to tar to make build reproducible
+  regardless of user or umask
+  * removed extra created link in makefile(#10)
+  * Translation Updates
+- Refresh Libxfce4ui.patch
+- Fix files list and permissions of installed files
+
+-------------------------------------------------------------------
 Thu Jun 30 11:25:59 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add Git-Clone URL
