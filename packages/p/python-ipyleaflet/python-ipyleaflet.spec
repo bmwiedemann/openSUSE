@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipyleaflet
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,17 @@
 #
 
 
-%define modname  ipyleaflet
-%define         skip_python2 1
+%define python3dist python3dist
 Name:           python-ipyleaflet
-Version:        0.17.2
+Version:        0.17.3
 Release:        0
 Summary:        A Jupyter widget for dynamic Leaflet maps
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter-widgets/ipyleaflet
-Source:         https://files.pythonhosted.org/packages/source/i/%{modname}/%{modname}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/i/ipyleaflet/ipyleaflet-%{version}.tar.gz
 BuildRequires:  %{python_module jupyter_packaging >= 0.12 with %python-jupyter_packaging < 1}
-BuildRequires:  %{python_module jupyterlab >= 3 with %python-jupyterlab < 4}
+BuildRequires:  %{python_module jupyterlab >= 3}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 40.8}
 BuildRequires:  %{python_module wheel}
@@ -42,6 +41,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module ipywidgets >= 7.6.0 with %python-ipywidgets < 9}
 BuildRequires:  %{python_module branca >= 0.5.0}
+BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module traittypes >= 0.2.1 with %python-traittypes < 3}
 BuildRequires:  %{python_module xyzservices >= 2021.8.1}
 # /SECTION
@@ -54,7 +54,7 @@ This package provides the python interface.
 
 %package     -n jupyter-ipyleaflet
 Summary:        A Jupyter widget for dynamic Leaflet maps - Jupyter files
-Requires:       python3-ipyleaflet = %{version}
+Requires:       %python3dist(ipyleaflet) = %{version}
 Requires:       (jupyter-ipywidgets >= 7.6.0 with jupyter-ipywidgets < 9)
 Requires:       (jupyter-jupyterlab or jupyter-notebook)
 Provides:       jupyter-leaflet = %{version}-%{release}
@@ -65,7 +65,7 @@ A Jupyter / Leaflet bridge enabling interactive maps in the Jupyter notebook.
 This package provides the extensions for jupyter notebook and jupyterlab.
 
 %prep
-%setup -q -n %{modname}-%{version}
+%setup -q -n ipyleaflet-%{version}
 
 %build
 %pyproject_wheel

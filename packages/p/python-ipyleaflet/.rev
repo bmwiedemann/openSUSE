@@ -119,4 +119,16 @@
 - Fix requirements</comment>
     <requestid>1045316</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9209fad8283bc251f974ca49b9ff29bc</srcmd5>
+    <version>0.17.3</version>
+    <time>1686665382</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.3
+  * Add image service layers to address #932 by @tsutterley in #933
+  * Revert change from #965 that sets the default zoom to None by
+    @martinRenou in #1068
+  * Fix in tab by @maartenbreddels in #1099 (forwarded request 1092695 from bnavigator)</comment>
+    <requestid>1092696</requestid>
+  </revision>
 </revisionlist>
