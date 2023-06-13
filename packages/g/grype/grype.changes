@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun 12 19:46:06 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.62.3:
+  * chore(deps): update bootstrap tools to latest versions (#1334)
+  * chore(deps): bump github.com/sirupsen/logrus from 1.9.2 to
+    1.9.3 (#1336)
+  * chore(deps): bump github/codeql-action from 2.3.5 to 2.3.6
+    (#1331)
+  * Hide suppressed vulnerabilities when --show-suppressed is not
+    given (#1322)
+  * chore(deps): bump github.com/stretchr/testify from 1.8.3 to
+    1.8.4 (#1324)
+  * chore(deps): bump github.com/spf13/viper from 1.15.0 to 1.16.0
+    (#1323)
+
+-------------------------------------------------------------------
 Sat May 27 10:48:41 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.62.2:
