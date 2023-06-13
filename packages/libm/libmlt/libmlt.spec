@@ -18,25 +18,23 @@
 
 %define _name mlt
 %define libname lib%{_name}
-%define lversion 7.14.0
+%define lversion 7.16.0
 %define sover 7
 %define lib_pkgname %{libname}-%{sover}-%{sover}
 %define _name_pp %{_name}++
 %define libname_pp lib%{_name_pp}
 %define sover_pp 7
-%define lversion_pp 7.14.0
+%define lversion_pp 7.16.0
 %define libpp_pkgname %{libname_pp}-%{sover_pp}-%{sover_pp}
 %bcond_without Qt6
 Name:           %{libname}
-Version:        7.14.0
+Version:        7.16.0
 Release:        0
 Summary:        Multimedia framework for television broadcasting
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.mltframework.org
 Source0:        https://github.com/mltframework/mlt/releases/download/v%{version}/mlt-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-compilation-with-Werror-return-type.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

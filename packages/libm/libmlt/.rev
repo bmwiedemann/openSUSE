@@ -800,4 +800,12 @@ Only build sdl2 module.
     <comment></comment>
     <requestid>1073042</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>ea956958bd53a7e44f7526cac47f1fb8</srcmd5>
+    <version>7.16.0</version>
+    <time>1686665446</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092808</requestid>
+  </revision>
 </revisionlist>
