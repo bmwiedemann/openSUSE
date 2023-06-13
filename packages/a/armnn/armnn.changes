@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 12 12:28:32 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 23.05:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v23.05
+- Drop upstream patches:
+  * armnn-fix-gcc13.patch
+  * armnn-fix-gcc13-2.patch
+  * 4cf40d7.diff
+
+-------------------------------------------------------------------
 Thu Apr 20 12:48:18 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add additionnal gcc13 fixes:

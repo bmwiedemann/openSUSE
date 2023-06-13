@@ -65,7 +65,7 @@
 %bcond_with armnn_onnx
 %endif
 %define version_major 23
-%define version_minor 02
+%define version_minor 05
 %define version_lib 32
 %define version_lib_testutils 2
 %define version_lib_tfliteparser 24
@@ -79,11 +79,6 @@ Group:          Development/Libraries/Other
 URL:            https://developer.arm.com/products/processors/machine-learning/arm-nn
 Source0:        https://github.com/ARM-software/armnn/archive/v%{version}.tar.gz#/armnn-%{version}.tar.gz
 Source1:        armnn-rpmlintrc
-# PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/723
-Patch1:         armnn-fix-gcc13.patch
-Patch2:         armnn-fix-gcc13-2.patch
-# PATCH-FIX-UPSTREAM  - https://review.mlplatform.org/c/ml/armnn/+/9460
-Patch3:         4cf40d7.diff
 # PATCHES to add downstream ArmnnExamples binary - https://layers.openembedded.org/layerindex/recipe/87610/
 Patch200:       0003-add-more-test-command-line-arguments.patch
 Patch201:       0005-add-armnn-mobilenet-test-example.patch
@@ -377,9 +372,6 @@ This package contains the libarmnnOnnxParser library from armnn.
 
 %prep
 %setup -q -n armnn-%{version}
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
 %if %{with armnn_extra_tests}
 %patch200 -p1
 %patch201 -p1
@@ -400,7 +392,7 @@ protoc $PROTO --proto_path=. --proto_path=%{_includedir} --proto_path=$(dirname 
 %cmake \
   -DCMAKE_SKIP_RPATH=True \
   -DSHARED_BOOST=1 \
-  -DCMAKE_CXX_FLAGS:STRING="%{optflags} -pthread " \
+  -DCMAKE_CXX_FLAGS:STRING="%{optflags} -pthread -Wno-error=unused-result" \
   -DBOOST_LIBRARYDIR=%{_libdir} \
 %if %{with armnn_onnx}
   -DBUILD_ONNX_PARSER=ON \
