@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 12 20:13:33 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.3.4:
+  * Prepare for 1.3.4 release. (#401)
+  * chore(deps): update workflows (#393)
+  * fix(deps): update osv-scanner minor (#392)
+  * Fix version printer to use app stdout and stderr (#395)
+  * OSV user agent (#390)
+
+-------------------------------------------------------------------
 Wed May 17 05:07:22 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.3.3:
