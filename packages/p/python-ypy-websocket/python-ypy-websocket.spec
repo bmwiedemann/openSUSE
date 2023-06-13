@@ -17,8 +17,8 @@
 
 
 Name:           python-ypy-websocket
-# Don't update until the dep chain for jupyterlab can handle newer versions
-Version:        0.8.2
+# Don't update until the dep chain for jupyterlab can handle newer versions (python-jupyter-ydoc)
+Version:        0.8.4
 Release:        0
 Summary:        WebSocket connector for Ypy
 License:        MIT
@@ -32,7 +32,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-aiofiles >= 22.1.0
 Requires:       (python-aiosqlite >= 0.17.0 with python-aiosqlite < 1)
-Requires:       (python-y-py >= 0.5.3 with python-y-py < 0.6.0)
+Requires:       (python-y-py >= 0.6 with python-y-py < 0.7)
 BuildArch:      noarch
 # SECTION test
 BuildRequires:  %{python_module aiofiles >= 22.1.0}
@@ -40,7 +40,7 @@ BuildRequires:  %{python_module aiosqlite >= 0.17.0 with %python-aiosqlite < 1}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module websockets >= 10.0}
-BuildRequires:  %{python_module y-py >= 0.5.3 with %python-y-py < 0.6.0}
+BuildRequires:  %{python_module y-py >= 0.6 with %python-y-py < 0.7}
 BuildRequires:  nodejs
 # /SECTION
 %python_subpackages
@@ -61,7 +61,7 @@ sed -i '/aiofiles/ s/,<23//' pyproject.toml
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest --asyncio-mode auto
+%pytest
 
 %files %{python_files}
 %doc README.md

@@ -7,4 +7,17 @@
     <comment>required by jupyterlab 3.6</comment>
     <requestid>1073765</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2bc6b1e17af3398c60675943dcb56541</srcmd5>
+    <version>0.8.4</version>
+    <time>1686665386</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.4
+  * Keep reference to asyncio tasks #69 (@davidbrochart)
+- Release 0.8.3
+  * Bump y-py &gt;=0.6.0,&lt;0.7.0 #68 (@davidbrochart)
+  * Move pytest.ini entries to pyproject.toml #64 (@bnavigator)
+  * Compare dicts not JSON string with dicts #63 (@bnavigator) (forwarded request 1092706 from bnavigator)</comment>
+    <requestid>1092708</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 11 21:15:50 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.8.4
+  * Keep reference to asyncio tasks #69 (@davidbrochart)
+- Release 0.8.3
+  * Bump y-py >=0.6.0,<0.7.0 #68 (@davidbrochart)
+  * Move pytest.ini entries to pyproject.toml #64 (@bnavigator)
+  * Compare dicts not JSON string with dicts #63 (@bnavigator)
+
+-------------------------------------------------------------------
 Sun Feb  5 18:22:57 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for v0.8.2
