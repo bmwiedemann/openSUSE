@@ -77,10 +77,12 @@ Obsoletes:      python-pandas-doc < %{version}
 Provides:       python-pandas-doc = %{version}
 %if 0%{?python_version_nodots} >= 311
 Requires:       python-numpy >= 1.23.2
-%elif 0%{?python_version_nodots} >= 310
+%else
+%if 0%{?python_version_nodots} >= 310
 Requires:       python-numpy >= 1.21.0
 %else
 Requires:       python-numpy >= 1.20.3
+%endif
 %endif
 # SECTION extras
 Recommends:     python-pandas-performance

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 11 19:51:26 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- do not use %elif for python-numpy dependency condition
+
+-------------------------------------------------------------------
 Wed Jun  7 09:13:48 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Increase minimum memory constraints for tests
