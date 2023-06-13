@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jun 12 05:20:28 UTC 2023 - jlee@suse.com
+
+- Update to version 10.2+git20230612.4699910:
+  * pesign-gen-repackage-spec: support filetriggers and transfiletriggers
+  * Add support for dependency generators
+  * pesign-gen-repackage-spec: fix the filename issue in the scripts of generated ueficert package
+  * Verfiy the signatures before attaching them
+  * Don't copy rpmlintrc to OTHER
+  * Fix %attr issues
+  * Support %lang
+  * Support OrderWithRequires
+  * pesign-repackage.spec.in: Add description for footer_size
+- Removed the following patches becuase they are merged to
+  10.2+git20230612.4699910:
+         Patch:          order.patch
+         Patch1:         attr.patch
+         Patch2:         lang.patch
+         Patch3:         rpmlintrc.patch
+         Patch4:         verify-sig.patch
+         Patch5:         dependency-generators.patch
+- Use README.md instead of README in pesign-obs-integration.spec. 
+
+-------------------------------------------------------------------
 Mon Jan 23 14:16:22 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add dependency-generators.patch to support copying source files

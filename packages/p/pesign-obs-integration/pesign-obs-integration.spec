@@ -1,7 +1,7 @@
 #
 # spec file for package pesign-obs-integration
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,13 @@
 
 
 Name:           pesign-obs-integration
-Version:        10.2+git20220504.8690743
+Version:        10.2+git20230612.4699910
 Release:        0
 Summary:        Macros and scripts to sign the kernel and bootloader
 License:        GPL-2.0-only
 Group:          Development/Tools/Other
 URL:            https://en.opensuse.org/openSUSE:UEFI_Image_File_Sign_Tools
 Source:         %{name}-%{version}.tar.gz
-Patch:          order.patch
-Patch1:         attr.patch
-Patch2:         lang.patch
-Patch3:         rpmlintrc.patch
-Patch4:         verify-sig.patch
-Patch5:         dependency-generators.patch
 BuildRequires:  openssl
 Requires:       fipscheck
 Requires:       mozilla-nss-tools

@@ -443,4 +443,12 @@ Otherwise, &quot;modsign-verify&quot; will be missing.
     <comment></comment>
     <requestid>1061964</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>8e064ee15544d74876ea7acd39c0692a</srcmd5>
+    <version>10.2+git20230612.4699910</version>
+    <time>1686665332</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092483</requestid>
+  </revision>
 </revisionlist>
