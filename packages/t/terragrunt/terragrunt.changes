@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun 12 20:00:20 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.46.3:
+  * #2595 Fix for fetching reference value with slashes (#2597)
+
+-------------------------------------------------------------------
+Mon Jun 12 19:57:44 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.46.2:
+  * feat: support git tag in `--terragrunt-source-map` option
+    (#2586)
+
+-------------------------------------------------------------------
 Fri Jun 02 04:50:38 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.46.1:
