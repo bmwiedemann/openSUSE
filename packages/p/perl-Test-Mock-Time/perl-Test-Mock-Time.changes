@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun  7 03:08:53 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.2.0
+   see /usr/share/doc/packages/perl-Test-Mock-Time/Changes
+
+  v0.2.0  2023-06-07 01:30:38 EEST
+          - Fix compatibility with modern EV.
+
+-------------------------------------------------------------------
 Wed Jan 10 07:20:09 UTC 2018 - coolo@suse.com
 
 - updated to 0.1.7
