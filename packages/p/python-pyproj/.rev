@@ -202,4 +202,12 @@ My fault that the package failed Factory acceptance tests. I originally download
     <comment></comment>
     <requestid>1075114</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b532de29054b98070f09fe7ff735bc7a</srcmd5>
+    <version>3.6.0</version>
+    <time>1686665395</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092774</requestid>
+  </revision>
 </revisionlist>

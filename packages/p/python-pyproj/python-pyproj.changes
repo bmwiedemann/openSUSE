@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun 13 03:02:39 UTC 2023 - Libor Pechacek <lpechacek@gmx.com>
+
+- Update to 3.6.0
+  * WHL: Wheels contain PROJ 9.2.1 by @snowman2 in #1291
+  * DEP: Minimum supported Python version 3.9 by @snowman2
+    in #1245
+  * ENH: Add CRS.to_2d() by @rhugonnet in #1267
+  * ENH: Added allow_superseded kwargs to TransformerGroup by
+    @dmahr1 in #1269
+  * ENH: Added parameter output_axis_rule to CRS.to_wkt by
+    @jjimenezshaw in #1287
+  * BUG: fix Geod.npts NaN handling by @snowman2 in #1288
+  * MNT: Use pyproject.toml for project metadata by @snowman2
+    in #1275
+
+-------------------------------------------------------------------
 Tue Mar 28 09:36:09 UTC 2023 - Libor Pechacek <lpechacek@gmx.com>
 
 - Update to 3.5.0
