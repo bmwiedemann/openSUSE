@@ -26,7 +26,7 @@
 # See git submodule /cpp/submodules/parquet-testing pointing to the correct revision
 %define parquet_testing_commit b2e7cc755159196e3a068c8594f7acbaecfdaaac
 Name:           apache-arrow
-Version:        12.0.0
+Version:        12.0.1
 Release:        0
 Summary:        A development platform for in-memory data
 License:        Apache-2.0 AND BSD-3-Clause AND BSD-2-Clause AND MIT
@@ -35,7 +35,6 @@ URL:            https://arrow.apache.org/
 Source0:        https://github.com/apache/arrow/archive/apache-arrow-%{version}.tar.gz
 Source1:        https://github.com/apache/arrow-testing/archive/%{arrow_testing_commit}.tar.gz#/arrow-testing-%{version}.tar.gz
 Source2:        https://github.com/apache/parquet-testing/archive/%{parquet_testing_commit}.tar.gz#/parquet-testing-%{version}.tar.gz
-Patch0:         cflags.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.2
 BuildRequires:  fdupes
@@ -249,7 +248,6 @@ This package provides utilities for working with the Parquet format.
 
 %prep
 %setup -q -n arrow-apache-arrow-%{version} -a1 -a2
-%patch0 -p1
 
 %build
 export CFLAGS="%{optflags} -ffat-lto-objects"

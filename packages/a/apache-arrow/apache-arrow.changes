@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jun 12 12:13:18 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 12.0.1
+  * [GH-35423] - [C++][Parquet] Parquet PageReader Force
+    decompression buffer resize smaller (#35428)
+  * [GH-35498] - [C++] Relax EnsureAlignment check in Acero from
+    requiring 64-byte aligned buffers to requiring value-aligned
+    buffers (#35565)
+  * [GH-35519] - [C++][Parquet] Fixing exception handling in parquet
+    FileSerializer (#35520)
+  * [GH-35538] - [C++] Remove unnecessary status.h include from
+    protobuf (#35673)
+  * [GH-35730] - [C++] Add the ability to specify custom schema on a
+    dataset write (#35860)
+  * [GH-35850] - [C++] Don't disable optimization with
+    RelWithDebInfo (#35856)
+- Drop cflags.patch -- fixed upstream
+
+-------------------------------------------------------------------
 Thu May 18 07:00:43 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 12.0.0
