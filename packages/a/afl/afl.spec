@@ -21,18 +21,13 @@
 %ifarch %{arm} %ix86 s390x x86_64
 %define afl_32 1
 %endif
-%ifarch ppc64le
-%if %{pkg_vcmp clang < 12}
-%define afl_32 1
-%endif
-%endif
 
 %ifarch aarch64 ppc64 ppc64le riscv64 s390x x86_64
 %define afl_64 1
 %endif
 
 Name:           afl
-Version:        4.06c
+Version:        4.07c
 Release:        0
 Summary:        American fuzzy lop is a security-oriented fuzzer
 #URL:            https://lcamtuf.coredump.cx/afl/
