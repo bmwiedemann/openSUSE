@@ -17,7 +17,7 @@
 
 
 Name:           python-y-py
-Version:        0.5.5
+Version:        0.6.1
 Release:        0
 Summary:        Python bindings for the Y-CRDT built from yrs (Rust)
 License:        MIT
@@ -27,7 +27,7 @@ Source:         ypy-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module maturin}
+BuildRequires:  %{python_module maturin >= 0.14}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  cargo-packaging

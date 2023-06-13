@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 11 20:28:16 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.1
+  * Add package version by @davidbrochart in #125
+  * Preliminary Array Insertion by @Waidhoferj in #130
+- Release 0.5.7
+  * to_json compatibility with Python json by @Waidhoferj in #102
+
+-------------------------------------------------------------------
 Sun Feb  5 18:01:35 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for v0.5.5
