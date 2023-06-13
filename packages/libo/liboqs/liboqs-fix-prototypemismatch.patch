@@ -1,7 +1,7 @@
-Index: liboqs-0.7.1/src/kem/frodokem/kem_frodokem.h
+Index: liboqs-0.8.0/src/kem/frodokem/kem_frodokem.h
 ===================================================================
---- liboqs-0.7.1.orig/src/kem/frodokem/kem_frodokem.h
-+++ liboqs-0.7.1/src/kem/frodokem/kem_frodokem.h
+--- liboqs-0.8.0.orig/src/kem/frodokem/kem_frodokem.h
++++ liboqs-0.8.0/src/kem/frodokem/kem_frodokem.h
 @@ -11,9 +11,9 @@
  #define OQS_KEM_frodokem_640_aes_length_ciphertext 9720
  #define OQS_KEM_frodokem_640_aes_length_shared_secret 16
@@ -15,23 +15,3 @@ Index: liboqs-0.7.1/src/kem/frodokem/kem_frodokem.h
  #endif
  
  #ifdef OQS_ENABLE_KEM_frodokem_640_shake
-Index: liboqs-0.7.1/.CMake/compiler_opts.cmake
-===================================================================
---- liboqs-0.7.1.orig/.CMake/compiler_opts.cmake
-+++ liboqs-0.7.1/.CMake/compiler_opts.cmake
-@@ -62,7 +62,6 @@ if(CMAKE_C_COMPILER_ID MATCHES "Clang|GN
- endif()
- 
- if(CMAKE_C_COMPILER_ID MATCHES "Clang")
--    add_compile_options(-Werror)
-     add_compile_options(-Wall)
-     add_compile_options(-Wextra)
-     add_compile_options(-Wpedantic)
-@@ -109,7 +108,6 @@ if(CMAKE_C_COMPILER_ID MATCHES "Clang")
-     endif()
- 
- elseif(CMAKE_C_COMPILER_ID STREQUAL "GNU")
--    add_compile_options(-Werror)
-     add_compile_options(-Wall)
-     add_compile_options(-Wextra)
-     add_compile_options(-Wpedantic)

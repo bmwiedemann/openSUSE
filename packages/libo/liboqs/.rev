@@ -52,4 +52,37 @@
 - disable -Werror for now. (forwarded request 1075196 from msmeissn)</comment>
     <requestid>1075197</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9a268eebc3b6dc9f72f557b4283ac4d4</srcmd5>
+    <version>0.8.0</version>
+    <time>1686665464</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.8.0
+  This release features many algorithm updates, including removal
+  of algorithms and variants no longer proceeding through NIST
+  standardization and updates to newer versions.  See the detailed list
+  of algorithm updates below.
+  Key encapsulation mechanisms:
+  - BIKE: updated to Round 4 version.
+  - Kyber: 90s variants were removed.
+  - NTRU Prime: All variants were removed, except for sntrup761.
+  - Saber: removed.
+  Digital signature schemes
+  - Dilithium; AES variants were removed.
+  - Falcon: updated to the 2023-02-07 version.
+  - Picnic: removed.
+  - Rainbow: removed.
+  - SPHINCS+: updated to version 3.1; SPHINCS+-Haraka variants were removed; SPHINCS+-SHA256 and SPHINCS+-SHAKE variants were renamed
+  Other changes
+  - Add Cryptographic Bill of Materials (CBOM)
+  - Improve building on ARM platforms
+  - Improve performance when using OpenSSL 3 for symmetric cryptography
+  - Increment shared object library version
+  - New configure-time options for algorithm selections
+  - pkgconfig file now available
+- removed 0001-Add-support-for-powerpc64.-1160.patch: upstream
+- 0002-Mark-stack-non-executable-when-compiling-with-clang-.patch: upstream
+- liboqs is now liboqs.so.3. (forwarded request 1092832 from msmeissn)</comment>
+    <requestid>1092834</requestid>
+  </revision>
 </revisionlist>

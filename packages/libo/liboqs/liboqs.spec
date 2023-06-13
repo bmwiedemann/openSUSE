@@ -17,7 +17,7 @@
 
 
 Name:           liboqs
-Version:        0.7.1
+Version:        0.8.0
 Release:        0
 Summary:        C library for quantum-resistant cryptographic algorithms
 License:        MIT
@@ -26,10 +26,7 @@ URL:            https://github.com/open-quantum-safe/liboqs/
 Source:         https://github.com/open-quantum-safe/liboqs/archive/refs/tags/%{version}.tar.gz
 Source1:        baselibs.conf
 Patch0:         liboqs-fix-build.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Add-support-for-powerpc64.-1160.patch
-Patch2:         0002-Mark-stack-non-executable-when-compiling-with-clang-.patch
-Patch3:         liboqs-fix-prototypemismatch.patch
+Patch1:         liboqs-fix-prototypemismatch.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  libopenssl-devel
@@ -38,18 +35,18 @@ BuildRequires:  libopenssl-devel
 liboqs is a C library for quantum-resistant cryptographic algorithms.
 See the bundled README.md for particular limitations on intended use.
 
-%package -n liboqs0
+%package -n liboqs3
 Summary:        C library for quantum-resistant cryptographic algorithms
 Group:          System/Libraries
 
-%description -n liboqs0
+%description -n liboqs3
 liboqs is a C library for quantum-resistant cryptographic algorithms.
 See the bundled README.md for particular limitations on intended use.
 
 %package devel
 Summary:        Headers for liboqs, a library for quantum-resistant cryptography
 Group:          Development/Languages/C and C++
-Requires:       liboqs0 = %{version}
+Requires:       liboqs3 = %{version}
 
 %description devel
 liboqs is a C library for quantum-resistant cryptographic algorithms.
@@ -75,18 +72,19 @@ popd
 # need to find out what cmake option is needed
 mv %{buildroot}%{_prefix}/local/* %{buildroot}%{_prefix}
 
-if [ "%{_lib}" != "lib" ]; then
-  mv %{buildroot}%{_prefix}/lib %{buildroot}%{_libdir}
-fi
+#if [ "%{_lib}" != "lib" ]; then
+  # mv %{buildroot}%{_prefix}/lib %{buildroot}%{_libdir}
+#fi
 
 rmdir %{buildroot}%{_prefix}/local/
 
-%post -n liboqs0 -p /sbin/ldconfig
-%postun -n liboqs0 -p /sbin/ldconfig
+%post -n liboqs3 -p /sbin/ldconfig
+%postun -n liboqs3 -p /sbin/ldconfig
 
-%files -n liboqs0
+%files -n liboqs3
 %license LICENSE.txt
-%{_libdir}/liboqs.so.0*
+%{_libdir}/liboqs.so.0.8.0
+%{_libdir}/liboqs.so.3
 %doc README.md
 
 %files devel
@@ -94,9 +92,12 @@ rmdir %{buildroot}%{_prefix}/local/
 %dir %{_includedir}/oqs
 %{_includedir}/oqs/*
 %{_libdir}/liboqs.so
+%{_libdir}/pkgconfig/liboqs.pc
 %dir %{_libdir}/cmake/
 %dir %{_libdir}/cmake/liboqs/
-%{_libdir}/cmake/liboqs/liboqsConfig-noconfig.cmake
+%{_libdir}/cmake/liboqs/liboqsTargets-noconfig.cmake
+%{_libdir}/cmake/liboqs/liboqsTargets.cmake
 %{_libdir}/cmake/liboqs/liboqsConfig.cmake
+%{_libdir}/cmake/liboqs/liboqsConfigVersion.cmake
 
 %changelog

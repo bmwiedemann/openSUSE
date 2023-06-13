@@ -1,7 +1,7 @@
-Index: liboqs-0.7.1/src/kem/kyber/pqcrystals-kyber_kyber1024-90s_ref/kem.h
+Index: liboqs-0.8.0/src/kem/kyber/pqcrystals-kyber_kyber1024_ref/kem.h
 ===================================================================
---- liboqs-0.7.1.orig/src/kem/kyber/pqcrystals-kyber_kyber1024-90s_ref/kem.h
-+++ liboqs-0.7.1/src/kem/kyber/pqcrystals-kyber_kyber1024-90s_ref/kem.h
+--- liboqs-0.8.0.orig/src/kem/kyber/pqcrystals-kyber_kyber1024_ref/kem.h
++++ liboqs-0.8.0/src/kem/kyber/pqcrystals-kyber_kyber1024_ref/kem.h
 @@ -30,12 +30,13 @@
  #endif
  
@@ -19,52 +19,10 @@ Index: liboqs-0.7.1/src/kem/kyber/pqcrystals-kyber_kyber1024-90s_ref/kem.h
 +int crypto_kem_dec(uint8_t ss[KYBER_SSBYTES], const uint8_t ct[KYBER_CIPHERTEXTBYTES], const uint8_t sk[KYBER_SECRETKEYBYTES]);
  
  #endif
-Index: liboqs-0.7.1/src/kem/kyber/pqcrystals-kyber_kyber1024_ref/kem.h
+Index: liboqs-0.8.0/src/kem/kyber/pqcrystals-kyber_kyber512_ref/kem.h
 ===================================================================
---- liboqs-0.7.1.orig/src/kem/kyber/pqcrystals-kyber_kyber1024_ref/kem.h
-+++ liboqs-0.7.1/src/kem/kyber/pqcrystals-kyber_kyber1024_ref/kem.h
-@@ -30,12 +30,13 @@
- #endif
- 
- #define crypto_kem_keypair KYBER_NAMESPACE(keypair)
--int crypto_kem_keypair(uint8_t *pk, uint8_t *sk);
-+int crypto_kem_keypair(uint8_t pk[KYBER_PUBLICKEYBYTES], uint8_t sk[KYBER_SECRETKEYBYTES]);
-+
- 
- #define crypto_kem_enc KYBER_NAMESPACE(enc)
--int crypto_kem_enc(uint8_t *ct, uint8_t *ss, const uint8_t *pk);
-+int crypto_kem_enc(uint8_t ct[KYBER_CIPHERTEXTBYTES], uint8_t ss[KYBER_SSBYTES], const uint8_t pk[KYBER_PUBLICKEYBYTES]);
- 
- #define crypto_kem_dec KYBER_NAMESPACE(dec)
--int crypto_kem_dec(uint8_t *ss, const uint8_t *ct, const uint8_t *sk);
-+int crypto_kem_dec(uint8_t ss[KYBER_SSBYTES], const uint8_t ct[KYBER_CIPHERTEXTBYTES], const uint8_t sk[KYBER_SECRETKEYBYTES]);
- 
- #endif
-Index: liboqs-0.7.1/src/kem/kyber/pqcrystals-kyber_kyber512-90s_ref/kem.h
-===================================================================
---- liboqs-0.7.1.orig/src/kem/kyber/pqcrystals-kyber_kyber512-90s_ref/kem.h
-+++ liboqs-0.7.1/src/kem/kyber/pqcrystals-kyber_kyber512-90s_ref/kem.h
-@@ -30,12 +30,13 @@
- #endif
- 
- #define crypto_kem_keypair KYBER_NAMESPACE(keypair)
--int crypto_kem_keypair(uint8_t *pk, uint8_t *sk);
-+int crypto_kem_keypair(uint8_t pk[KYBER_PUBLICKEYBYTES], uint8_t sk[KYBER_SECRETKEYBYTES]);
-+
- 
- #define crypto_kem_enc KYBER_NAMESPACE(enc)
--int crypto_kem_enc(uint8_t *ct, uint8_t *ss, const uint8_t *pk);
-+int crypto_kem_enc(uint8_t ct[KYBER_CIPHERTEXTBYTES], uint8_t ss[KYBER_SSBYTES], const uint8_t pk[KYBER_PUBLICKEYBYTES]);
- 
- #define crypto_kem_dec KYBER_NAMESPACE(dec)
--int crypto_kem_dec(uint8_t *ss, const uint8_t *ct, const uint8_t *sk);
-+int crypto_kem_dec(uint8_t ss[KYBER_SSBYTES], const uint8_t ct[KYBER_CIPHERTEXTBYTES], const uint8_t sk[KYBER_SECRETKEYBYTES]);
- 
- #endif
-Index: liboqs-0.7.1/src/kem/kyber/pqcrystals-kyber_kyber512_ref/kem.h
-===================================================================
---- liboqs-0.7.1.orig/src/kem/kyber/pqcrystals-kyber_kyber512_ref/kem.h
-+++ liboqs-0.7.1/src/kem/kyber/pqcrystals-kyber_kyber512_ref/kem.h
+--- liboqs-0.8.0.orig/src/kem/kyber/pqcrystals-kyber_kyber512_ref/kem.h
++++ liboqs-0.8.0/src/kem/kyber/pqcrystals-kyber_kyber512_ref/kem.h
 @@ -30,12 +30,15 @@
  #endif
  
@@ -84,10 +42,10 @@ Index: liboqs-0.7.1/src/kem/kyber/pqcrystals-kyber_kyber512_ref/kem.h
 +
  
  #endif
-Index: liboqs-0.7.1/src/kem/kyber/pqcrystals-kyber_kyber768-90s_ref/kem.h
+Index: liboqs-0.8.0/src/kem/kyber/pqcrystals-kyber_kyber768_ref/kem.h
 ===================================================================
---- liboqs-0.7.1.orig/src/kem/kyber/pqcrystals-kyber_kyber768-90s_ref/kem.h
-+++ liboqs-0.7.1/src/kem/kyber/pqcrystals-kyber_kyber768-90s_ref/kem.h
+--- liboqs-0.8.0.orig/src/kem/kyber/pqcrystals-kyber_kyber768_ref/kem.h
++++ liboqs-0.8.0/src/kem/kyber/pqcrystals-kyber_kyber768_ref/kem.h
 @@ -30,12 +30,14 @@
  #endif
  
@@ -106,32 +64,10 @@ Index: liboqs-0.7.1/src/kem/kyber/pqcrystals-kyber_kyber768-90s_ref/kem.h
 +int crypto_kem_dec(uint8_t ss[KYBER_SSBYTES], const uint8_t ct[KYBER_CIPHERTEXTBYTES], const uint8_t sk[KYBER_SECRETKEYBYTES]);
  
  #endif
-Index: liboqs-0.7.1/src/kem/kyber/pqcrystals-kyber_kyber768_ref/kem.h
+Index: liboqs-0.8.0/src/kem/kyber/pqcrystals-kyber_kyber512_ref/kem.c
 ===================================================================
---- liboqs-0.7.1.orig/src/kem/kyber/pqcrystals-kyber_kyber768_ref/kem.h
-+++ liboqs-0.7.1/src/kem/kyber/pqcrystals-kyber_kyber768_ref/kem.h
-@@ -30,12 +30,14 @@
- #endif
- 
- #define crypto_kem_keypair KYBER_NAMESPACE(keypair)
--int crypto_kem_keypair(uint8_t *pk, uint8_t *sk);
-+int crypto_kem_keypair(uint8_t pk[KYBER_PUBLICKEYBYTES], uint8_t sk[KYBER_SECRETKEYBYTES]);
-+
- 
- #define crypto_kem_enc KYBER_NAMESPACE(enc)
--int crypto_kem_enc(uint8_t *ct, uint8_t *ss, const uint8_t *pk);
-+int crypto_kem_enc(uint8_t ct[KYBER_CIPHERTEXTBYTES], uint8_t ss[KYBER_SSBYTES], const uint8_t pk[KYBER_PUBLICKEYBYTES]);
-+
- 
- #define crypto_kem_dec KYBER_NAMESPACE(dec)
--int crypto_kem_dec(uint8_t *ss, const uint8_t *ct, const uint8_t *sk);
-+int crypto_kem_dec(uint8_t ss[KYBER_SSBYTES], const uint8_t ct[KYBER_CIPHERTEXTBYTES], const uint8_t sk[KYBER_SECRETKEYBYTES]);
- 
- #endif
-Index: liboqs-0.7.1/src/kem/kyber/pqcrystals-kyber_kyber512_ref/kem.c
-===================================================================
---- liboqs-0.7.1.orig/src/kem/kyber/pqcrystals-kyber_kyber512_ref/kem.c
-+++ liboqs-0.7.1/src/kem/kyber/pqcrystals-kyber_kyber512_ref/kem.c
+--- liboqs-0.8.0.orig/src/kem/kyber/pqcrystals-kyber_kyber512_ref/kem.c
++++ liboqs-0.8.0/src/kem/kyber/pqcrystals-kyber_kyber512_ref/kem.c
 @@ -20,8 +20,7 @@
  *
  * Returns 0 (success)
@@ -164,10 +100,10 @@ Index: liboqs-0.7.1/src/kem/kyber/pqcrystals-kyber_kyber512_ref/kem.c
  {
    size_t i;
    int fail;
-Index: liboqs-0.7.1/src/kem/kyber/pqcrystals-kyber_kyber768_ref/kem.c
+Index: liboqs-0.8.0/src/kem/kyber/pqcrystals-kyber_kyber768_ref/kem.c
 ===================================================================
---- liboqs-0.7.1.orig/src/kem/kyber/pqcrystals-kyber_kyber768_ref/kem.c
-+++ liboqs-0.7.1/src/kem/kyber/pqcrystals-kyber_kyber768_ref/kem.c
+--- liboqs-0.8.0.orig/src/kem/kyber/pqcrystals-kyber_kyber768_ref/kem.c
++++ liboqs-0.8.0/src/kem/kyber/pqcrystals-kyber_kyber768_ref/kem.c
 @@ -20,8 +20,7 @@
  *
  * Returns 0 (success)
@@ -200,118 +136,10 @@ Index: liboqs-0.7.1/src/kem/kyber/pqcrystals-kyber_kyber768_ref/kem.c
  {
    size_t i;
    int fail;
-Index: liboqs-0.7.1/src/kem/kyber/pqcrystals-kyber_kyber1024_ref/kem.c
+Index: liboqs-0.8.0/src/kem/kyber/pqcrystals-kyber_kyber1024_ref/kem.c
 ===================================================================
---- liboqs-0.7.1.orig/src/kem/kyber/pqcrystals-kyber_kyber1024_ref/kem.c
-+++ liboqs-0.7.1/src/kem/kyber/pqcrystals-kyber_kyber1024_ref/kem.c
-@@ -20,8 +20,7 @@
- *
- * Returns 0 (success)
- **************************************************/
--int crypto_kem_keypair(uint8_t *pk,
--                       uint8_t *sk)
-+int crypto_kem_keypair(uint8_t pk[KYBER_PUBLICKEYBYTES], uint8_t sk[KYBER_SECRETKEYBYTES])
- {
-   size_t i;
-   indcpa_keypair(pk, sk);
-@@ -48,9 +47,7 @@ int crypto_kem_keypair(uint8_t *pk,
- *
- * Returns 0 (success)
- **************************************************/
--int crypto_kem_enc(uint8_t *ct,
--                   uint8_t *ss,
--                   const uint8_t *pk)
-+int crypto_kem_enc(uint8_t ct[KYBER_CIPHERTEXTBYTES], uint8_t ss[KYBER_SSBYTES], const uint8_t pk[KYBER_PUBLICKEYBYTES])
- {
-   uint8_t buf[2*KYBER_SYMBYTES];
-   /* Will contain key, coins */
-@@ -91,9 +88,7 @@ int crypto_kem_enc(uint8_t *ct,
- *
- * On failure, ss will contain a pseudo-random value.
- **************************************************/
--int crypto_kem_dec(uint8_t *ss,
--                   const uint8_t *ct,
--                   const uint8_t *sk)
-+int crypto_kem_dec(uint8_t ss[KYBER_SSBYTES], const uint8_t ct[KYBER_CIPHERTEXTBYTES], const uint8_t sk[KYBER_SECRETKEYBYTES])
- {
-   size_t i;
-   int fail;
-Index: liboqs-0.7.1/src/kem/kyber/pqcrystals-kyber_kyber768-90s_ref/kem.c
-===================================================================
---- liboqs-0.7.1.orig/src/kem/kyber/pqcrystals-kyber_kyber768-90s_ref/kem.c
-+++ liboqs-0.7.1/src/kem/kyber/pqcrystals-kyber_kyber768-90s_ref/kem.c
-@@ -20,8 +20,7 @@
- *
- * Returns 0 (success)
- **************************************************/
--int crypto_kem_keypair(uint8_t *pk,
--                       uint8_t *sk)
-+int crypto_kem_keypair(uint8_t pk[KYBER_PUBLICKEYBYTES], uint8_t sk[KYBER_SECRETKEYBYTES])
- {
-   size_t i;
-   indcpa_keypair(pk, sk);
-@@ -48,9 +47,7 @@ int crypto_kem_keypair(uint8_t *pk,
- *
- * Returns 0 (success)
- **************************************************/
--int crypto_kem_enc(uint8_t *ct,
--                   uint8_t *ss,
--                   const uint8_t *pk)
-+int crypto_kem_enc(uint8_t ct[KYBER_CIPHERTEXTBYTES], uint8_t ss[KYBER_SSBYTES], const uint8_t pk[KYBER_PUBLICKEYBYTES])
- {
-   uint8_t buf[2*KYBER_SYMBYTES];
-   /* Will contain key, coins */
-@@ -91,9 +88,7 @@ int crypto_kem_enc(uint8_t *ct,
- *
- * On failure, ss will contain a pseudo-random value.
- **************************************************/
--int crypto_kem_dec(uint8_t *ss,
--                   const uint8_t *ct,
--                   const uint8_t *sk)
-+int crypto_kem_dec(uint8_t ss[KYBER_SSBYTES], const uint8_t ct[KYBER_CIPHERTEXTBYTES], const uint8_t sk[KYBER_SECRETKEYBYTES])
- {
-   size_t i;
-   int fail;
-Index: liboqs-0.7.1/src/kem/kyber/pqcrystals-kyber_kyber512-90s_ref/kem.c
-===================================================================
---- liboqs-0.7.1.orig/src/kem/kyber/pqcrystals-kyber_kyber512-90s_ref/kem.c
-+++ liboqs-0.7.1/src/kem/kyber/pqcrystals-kyber_kyber512-90s_ref/kem.c
-@@ -20,8 +20,7 @@
- *
- * Returns 0 (success)
- **************************************************/
--int crypto_kem_keypair(uint8_t *pk,
--                       uint8_t *sk)
-+int crypto_kem_keypair(uint8_t pk[KYBER_PUBLICKEYBYTES], uint8_t sk[KYBER_SECRETKEYBYTES])
- {
-   size_t i;
-   indcpa_keypair(pk, sk);
-@@ -48,9 +47,7 @@ int crypto_kem_keypair(uint8_t *pk,
- *
- * Returns 0 (success)
- **************************************************/
--int crypto_kem_enc(uint8_t *ct,
--                   uint8_t *ss,
--                   const uint8_t *pk)
-+int crypto_kem_enc(uint8_t ct[KYBER_CIPHERTEXTBYTES], uint8_t ss[KYBER_SSBYTES], const uint8_t pk[KYBER_PUBLICKEYBYTES])
- {
-   uint8_t buf[2*KYBER_SYMBYTES];
-   /* Will contain key, coins */
-@@ -91,9 +88,7 @@ int crypto_kem_enc(uint8_t *ct,
- *
- * On failure, ss will contain a pseudo-random value.
- **************************************************/
--int crypto_kem_dec(uint8_t *ss,
--                   const uint8_t *ct,
--                   const uint8_t *sk)
-+int crypto_kem_dec(uint8_t ss[KYBER_SSBYTES], const uint8_t ct[KYBER_CIPHERTEXTBYTES], const uint8_t sk[KYBER_SECRETKEYBYTES])
- {
-   size_t i;
-   int fail;
-Index: liboqs-0.7.1/src/kem/kyber/pqcrystals-kyber_kyber1024-90s_ref/kem.c
-===================================================================
---- liboqs-0.7.1.orig/src/kem/kyber/pqcrystals-kyber_kyber1024-90s_ref/kem.c
-+++ liboqs-0.7.1/src/kem/kyber/pqcrystals-kyber_kyber1024-90s_ref/kem.c
+--- liboqs-0.8.0.orig/src/kem/kyber/pqcrystals-kyber_kyber1024_ref/kem.c
++++ liboqs-0.8.0/src/kem/kyber/pqcrystals-kyber_kyber1024_ref/kem.c
 @@ -20,8 +20,7 @@
  *
  * Returns 0 (success)
