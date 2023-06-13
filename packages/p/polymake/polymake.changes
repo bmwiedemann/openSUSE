@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 13 01:03:57 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.10
+  * topcom: extend interface to access other combinations of
+    connected, fine, and regular.
+
+-------------------------------------------------------------------
 Mon Jan 30 11:46:29 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.9

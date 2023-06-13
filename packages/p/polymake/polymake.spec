@@ -16,9 +16,9 @@
 #
 
 
-%define lname   libpolymake4_9
+%define lname   libpolymake4_10
 Name:           polymake
-Version:        4.9
+Version:        4.10
 Release:        0
 Summary:        Application for studying combinatorics and geometry of convex polytopes
 License:        GPL-2.0-or-later
