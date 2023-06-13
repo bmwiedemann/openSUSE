@@ -17,9 +17,7 @@
 
 
 Name:           python-jupyter-ydoc
-# Don't update to >= 0.3 before jupyterlab and jupyter-collaboration release a new requirement
-# jupyterlab 3.6 requires jupyter-ydoc~=0.2.3
-Version:        0.2.4
+Version:        1.0.2
 Release:        0
 Summary:        Document structures for collaborative editing using Ypy
 License:        BSD-3-Clause
@@ -33,12 +31,12 @@ Source2:        node_modules.tar.xz
 Source3:        create_node_modules.sh
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatch_nodejs_version}
-BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module hatchling >= 1.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       (python-importlib-metadata >= 3.6 if python-base < 3.10)
-Requires:       (python-y-py >= 0.5.3 with python-y-py < 0.6.0)
+Requires:       (python-y-py >= 0.6.0 with python-y-py < 0.7.0)
 Provides:       python-jupyter_ydoc = %{version}-%{release}
 BuildArch:      noarch
 # SECTION test
@@ -46,9 +44,10 @@ BuildRequires:  %{python_module importlib-metadata >= 3.6 if %python-base < 3.10
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module websockets >= 10.0}
-BuildRequires:  %{python_module y-py >= 0.5.3 with %python-y-py < 0.6.0}
-BuildRequires:  %{python_module ypy-websocket >= 0.3.1}
+BuildRequires:  %{python_module y-py >= 0.6.0 with %python-y-py < 0.7.0}
+BuildRequires:  %{python_module ypy-websocket >= 0.8.3 with %python-ypy-websocket < 0.9}
 BuildRequires:  nodejs
+BuildRequires:  yarn
 # /SECTION
 %python_subpackages
 
@@ -70,7 +69,8 @@ Built-in documents include:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# tests NEED -vv
+%pytest -vv
 
 %files %{python_files}
 %{python_sitelib}/jupyter_ydoc

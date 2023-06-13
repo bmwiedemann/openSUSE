@@ -15,4 +15,39 @@
     <comment></comment>
     <requestid>1082589</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b7284b9749c7d1fb4f1fb26830f4f014</srcmd5>
+    <version>1.0.2</version>
+    <time>1686665388</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.2
+  * Trust the default cell #161 (@krassowski)
+- Releases 1.0.0, 1.0.1
+  * Fix metadata issue #158 (@hbcarlos)
+  * Add py.typed #152 (@davidbrochart)
+  * Add model version #139 (@davidbrochart)
+- Release 0.3.x
+  * Fix notebook undo scope #148 (@fcollonval)
+  * Update YDocument constructor #142 (@trungleduc)
+  * Add ycells getter #136 (@davidbrochart)
+  * Split documents into separate files #135 (@davidbrochart)
+  * Fixes handling metadata changes #134 (@hbcarlos)
+  * Improves the initialization #124 (@hbcarlos)
+  * Improve Python API #122 (@davidbrochart)
+  * Notebook metadata #115 (@hbcarlos)
+  * Make YDocument a IObservableDisposable #108 (@fcollonval)
+  * Add readme to javascript package #106 (@fcollonval)
+  * Adds docstring to the python package #101 (@hbcarlos)
+  * Import shared model #86 (@fcollonval)
+  * Add path document attribute #81 (@davidbrochart)
+  * Make YBaseDoc an abstract base class #74 (@davidbrochart)
+  * Fixes multiple bugs #131 (@hbcarlos)
+  * Fixes metadata #120 (@hbcarlos)
+  * Support cell.source is [list, of, string] #112 (@Wh1isper)
+  * Removes YMap for attachements #77 (@fcollonval)
+  * Drop pkg_resources #59 (@jtpio)
+  * Remove factory API #133 (@hbcarlos)
+  * Import shared model #86 (@fcollonval) (forwarded request 1092711 from bnavigator)</comment>
+    <requestid>1092712</requestid>
+  </revision>
 </revisionlist>

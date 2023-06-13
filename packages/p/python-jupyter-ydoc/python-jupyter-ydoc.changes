@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Jun 11 21:02:51 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.0.2
+  * Trust the default cell #161 (@krassowski)
+- Releases 1.0.0, 1.0.1
+  * Fix metadata issue #158 (@hbcarlos)
+  * Add py.typed #152 (@davidbrochart)
+  * Add model version #139 (@davidbrochart)
+- Release 0.3.x
+  * Fix notebook undo scope #148 (@fcollonval)
+  * Update YDocument constructor #142 (@trungleduc)
+  * Add ycells getter #136 (@davidbrochart)
+  * Split documents into separate files #135 (@davidbrochart)
+  * Fixes handling metadata changes #134 (@hbcarlos)
+  * Improves the initialization #124 (@hbcarlos)
+  * Improve Python API #122 (@davidbrochart)
+  * Notebook metadata #115 (@hbcarlos)
+  * Make YDocument a IObservableDisposable #108 (@fcollonval)
+  * Add readme to javascript package #106 (@fcollonval)
+  * Adds docstring to the python package #101 (@hbcarlos)
+  * Import shared model #86 (@fcollonval)
+  * Add path document attribute #81 (@davidbrochart)
+  * Make YBaseDoc an abstract base class #74 (@davidbrochart)
+  * Fixes multiple bugs #131 (@hbcarlos)
+  * Fixes metadata #120 (@hbcarlos)
+  * Support cell.source is [list, of, string] #112 (@Wh1isper)
+  * Removes YMap for attachements #77 (@fcollonval)
+  * Drop pkg_resources #59 (@jtpio)
+  * Remove factory API #133 (@hbcarlos)
+  * Import shared model #86 (@fcollonval)
+
+-------------------------------------------------------------------
 Mon Apr 24 19:25:19 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.2.4
