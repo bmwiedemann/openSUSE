@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 12 20:14:43 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.16.3:
+  * [Backport release-2.16] fix: variable expansion on buildargs
+    that only have one env (#3691)
+  * Fix variables deploy installer (#3696) (#3697)
+  * fix: endpoints should only return the json if the flag specify
+    it (#3682) (#3687)
+
+-------------------------------------------------------------------
 Wed May 31 10:12:58 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.16.2:
