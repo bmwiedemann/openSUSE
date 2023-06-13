@@ -54,4 +54,12 @@
   - Handle the case where no valid From is found.  Fixes Github #15</comment>
     <requestid>946674</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4275ae3d612a56428d208b5f60a1226a</srcmd5>
+    <version>0.14.1</version>
+    <time>1686665457</time>
+    <user>dimstar_suse</user>
+    <comment>- tag sle15 build for new python</comment>
+    <requestid>1092851</requestid>
+  </revision>
 </revisionlist>
