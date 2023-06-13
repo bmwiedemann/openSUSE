@@ -14,17 +14,3 @@ Index: b/jdbc/driver/nativeapi/mysql_native_connection_wrapper.cpp
  }
  /* }}} */
  
-Index: b/cdk/include/mysql/cdk/foundation/CMakeLists.txt
-===================================================================
---- a/cdk/include/mysql/cdk/foundation/CMakeLists.txt
-+++ b/cdk/include/mysql/cdk/foundation/CMakeLists.txt
-@@ -48,7 +48,8 @@ CHECK_CXX_SOURCE_COMPILES(
-  ADD_CONFIG(HAVE_STATIC_ASSERT)
- 
- CHECK_CXX_SOURCE_COMPILES(
-- "void main() { return is_same<bool,char>::value; }"
-+ "#include <type_traits>
-+  int main() { return std::is_same<bool,char>::value; }"
-  HAVE_IS_SAME)
-  ADD_CONFIG(HAVE_IS_SAME)
- 

@@ -13,7 +13,7 @@ Index: b/jdbc/driver/mysql_connection.cpp
 ===================================================================
 --- a/jdbc/driver/mysql_connection.cpp
 +++ b/jdbc/driver/mysql_connection.cpp
-@@ -268,7 +268,7 @@ static const String2IntMap booleanOption
+@@ -268,7 +268,7 @@
      {OPT_CAN_HANDLE_EXPIRED_PASSWORDS, MYSQL_OPT_CAN_HANDLE_EXPIRED_PASSWORDS, true},
      {OPT_CONNECT_ATTR_RESET,      MYSQL_OPT_CONNECT_ATTR_RESET, true},
      {OPT_RECONNECT,               MYSQL_OPT_RECONNECT, true},
@@ -22,7 +22,7 @@ Index: b/jdbc/driver/mysql_connection.cpp
      {"sslVerify",                   MYSQL_OPT_SSL_VERIFY_SERVER_CERT, false}, // Deprecated
      {"sslEnforce",                  MYSQL_OPT_SSL_ENFORCE, false} // Deprecated
  #else
-@@ -290,9 +290,9 @@ static const String2IntMap intOptions[]=
+@@ -290,9 +290,9 @@
      {OPT_MAX_ALLOWED_PACKET,  MYSQL_OPT_MAX_ALLOWED_PACKET, false},
      {OPT_NET_BUFFER_LENGTH,   MYSQL_OPT_NET_BUFFER_LENGTH, false},
  #endif
@@ -35,7 +35,7 @@ Index: b/jdbc/driver/mysql_connection.cpp
      {OPT_RETRY_COUNT,         MYSQL_OPT_RETRY_COUNT, false},
  #endif
    };
-@@ -321,7 +321,7 @@ static const String2IntMap stringOptions
+@@ -321,7 +321,7 @@
      {OPT_TLS_VERSION,          MYSQL_OPT_TLS_VERSION, true},
      {"OPT_TLS_VERSION",        MYSQL_OPT_TLS_VERSION, true},
  #endif
@@ -44,7 +44,7 @@ Index: b/jdbc/driver/mysql_connection.cpp
    };
  
  
-@@ -330,7 +330,7 @@ static const String2IntMap stringOptions
+@@ -330,7 +330,7 @@
  inline
  ::sql::mysql::MySQL_Connection_Options option_conversion(unsigned long client_version, int option)
  {
@@ -53,7 +53,7 @@ Index: b/jdbc/driver/mysql_connection.cpp
    if(client_version <80011)
    {
      switch (option) {
-@@ -520,7 +520,7 @@ void MySQL_Connection::init(ConnectOptio
+@@ -520,7 +520,7 @@
    int  client_exp_pwd = false;
    bool opt_dns_srv = false;
    bool opt_multi_host = false;
@@ -62,7 +62,7 @@ Index: b/jdbc/driver/mysql_connection.cpp
    bool secure_auth= true;
  #endif
  
-@@ -636,7 +636,7 @@ void MySQL_Connection::init(ConnectOptio
+@@ -648,7 +648,7 @@
        } else {
          throw sql::InvalidArgumentException("No string value passed for password");
        }
@@ -71,7 +71,7 @@ Index: b/jdbc/driver/mysql_connection.cpp
        try {
          p_s = (it->second).get< sql::SQLString >();
        } catch (sql::InvalidArgumentException&) {
-@@ -672,7 +672,7 @@ void MySQL_Connection::init(ConnectOptio
+@@ -684,7 +684,7 @@
        } else {
          throw sql::InvalidArgumentException("No string value passed for password3");
        }
@@ -80,7 +80,7 @@ Index: b/jdbc/driver/mysql_connection.cpp
        try {
          p_i = (it->second).get< int >();
        } catch (sql::InvalidArgumentException&) {
-@@ -936,7 +936,7 @@ void MySQL_Connection::init(ConnectOptio
+@@ -948,7 +948,7 @@
        } catch (sql::InvalidArgumentException&) {
          throw sql::InvalidArgumentException("Wrong type passed for useLegacyAuth expected sql::SQLString");
        }
@@ -89,7 +89,7 @@ Index: b/jdbc/driver/mysql_connection.cpp
        if (p_b) {
          secure_auth= !*p_b;
        } else {
-@@ -978,7 +978,7 @@ void MySQL_Connection::init(ConnectOptio
+@@ -997,7 +997,7 @@
      } else if (!it->first.compare(OPT_CONNECT_ATTR_RESET)) {
        proxy->options(MYSQL_OPT_CONNECT_ATTR_RESET, 0);
  
@@ -98,7 +98,7 @@ Index: b/jdbc/driver/mysql_connection.cpp
  
      //Deprecated
      } else if (!it->first.compare("sslVerify")) {
-@@ -993,7 +993,6 @@ void MySQL_Connection::init(ConnectOptio
+@@ -1012,7 +1012,6 @@
                                                            : SSL_MODE_PREFERRED;
        proxy->options(MYSQL_OPT_SSL_MODE, &ssl_mode_val);
  
@@ -106,7 +106,7 @@ Index: b/jdbc/driver/mysql_connection.cpp
      } else if (!it->first.compare(OPT_OCI_CONFIG_FILE)) {
        try {
          p_s= (it->second).get<sql::SQLString>();
-@@ -1035,6 +1034,7 @@ void MySQL_Connection::init(ConnectOptio
+@@ -1074,6 +1073,7 @@
              OPT_AUTHENTICATION_KERBEROS_CLIENT_MODE);
        }
  #endif  // defined(_WIN32)
@@ -114,7 +114,23 @@ Index: b/jdbc/driver/mysql_connection.cpp
  
      } else if (!it->first.compare(OPT_PLUGIN_DIR)) {
        // Nothing to do here: this option was handeld before the loop
-@@ -1080,7 +1080,7 @@ void MySQL_Connection::init(ConnectOptio
+@@ -1100,6 +1100,7 @@
+ 
+   } /* End of cycle on connection options map */
+ 
++  #if !defined(MYCPPCONN_MARIADB_BUILD)
+   if (oci_plugin_is_loaded) {
+     if (properties.find(OPT_OCI_CONFIG_FILE) == properties.end()) {
+       // If OCI plugin is loaded, but oci-config-file is not explicitly set
+@@ -1128,6 +1129,7 @@
+     }
+ 
+   }
++  #endif
+ 
+ #undef PROCESS_CONNSTR_OPTION
+ 
+@@ -1147,7 +1149,7 @@
  
    }
  
@@ -123,7 +139,7 @@ Index: b/jdbc/driver/mysql_connection.cpp
    try {
      proxy->options(MYSQL_SECURE_AUTH, &secure_auth);
    } catch (sql::InvalidArgumentException& e) {
-@@ -1215,6 +1215,7 @@ void MySQL_Connection::init(ConnectOptio
+@@ -1282,6 +1284,7 @@
  
    }
  
@@ -131,7 +147,7 @@ Index: b/jdbc/driver/mysql_connection.cpp
    /*
     * Helper class to simplify setting and resetting of the plugin callback.
     */
-@@ -1272,6 +1273,7 @@ void MySQL_Connection::init(ConnectOptio
+@@ -1339,6 +1342,7 @@
    Fido_Callback_Setter setter(
      static_cast<MySQL_Driver*>(driver)->fido_callback,
      proxy.get());
@@ -139,7 +155,7 @@ Index: b/jdbc/driver/mysql_connection.cpp
  
    //Connect loop
    {
-@@ -1846,7 +1848,7 @@ MySQL_Connection::setClientOption(const
+@@ -1914,7 +1918,7 @@
  #endif
    } else if (!optionName.compare(OPT_LOAD_DATA_LOCAL_DIR))
    {
@@ -220,9 +236,9 @@ Index: b/jdbc/driver/nativeapi/mysql_native_connection_wrapper.h
 ===================================================================
 --- a/jdbc/driver/nativeapi/mysql_native_connection_wrapper.h
 +++ b/jdbc/driver/nativeapi/mysql_native_connection_wrapper.h
-@@ -60,7 +60,7 @@ class MySQL_NativeConnectionWrapper : pu
-   boost::shared_ptr< IMySQLCAPI >	api;
- 
+@@ -59,7 +59,7 @@
+   /* api should be declared before mysql here */
+   std::shared_ptr<IMySQLCAPI> api;
  
 -#if (MYCPPCONN_STATIC_MYSQL_VERSION_ID > 80004)
 +#if (MYCPPCONN_STATIC_MYSQL_VERSION_ID > 80004 && !defined(MYCPPCONN_MARIADB_BUILD))
@@ -273,8 +289,8 @@ Index: b/jdbc/driver/nativeapi/native_resultset_wrapper.h
 --- a/jdbc/driver/nativeapi/native_resultset_wrapper.h
 +++ b/jdbc/driver/nativeapi/native_resultset_wrapper.h
 @@ -41,7 +41,7 @@
- 
  #include "../cppconn/version_info.h"
+ #include "../mysql_util.h"
  
 -#if (MYCPPCONN_STATIC_MYSQL_VERSION_ID > 80004)
 +#if (MYCPPCONN_STATIC_MYSQL_VERSION_ID > 80004 && !defined(MYCPPCONN_MARIADB_BUILD))
@@ -283,11 +299,11 @@ Index: b/jdbc/driver/nativeapi/native_resultset_wrapper.h
  struct st_mysql_field;
 Index: b/jdbc/driver/nativeapi/native_statement_wrapper.h
 ===================================================================
---- a/jdbc/driver/nativeapi/native_statement_wrapper.h
-+++ b/jdbc/driver/nativeapi/native_statement_wrapper.h
+--- a/jdbc/driver/nativeapi/native_statement_wrapper.h  2023-03-23 17:32:48.000000000 +0100
++++ b/jdbc/driver/nativeapi/native_statement_wrapper.h  2023-06-11 18:31:20.354495130 +0200
 @@ -42,7 +42,7 @@
+ #include "../mysql_util.h"
  #include "../mysql_statement_options.h"
- #include <cppconn/version_info.h>
  
 -#if (MYCPPCONN_STATIC_MYSQL_VERSION_ID > 80004)
 +#if (MYCPPCONN_STATIC_MYSQL_VERSION_ID > 80004 && !defined(MYCPPCONN_MARIADB_BUILD))

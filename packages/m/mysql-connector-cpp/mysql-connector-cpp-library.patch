@@ -1,0 +1,10 @@
+--- a/jdbc/driver/nativeapi/library_loader.h	2023-03-23 17:32:48.000000000 +0100
++++ b/jdbc/driver/nativeapi/library_loader.h	2023-06-12 20:36:21.568650185 +0200
+@@ -34,6 +34,7 @@
+ #define _MYSQL_LIB_LOADER_H_
+ 
+ #include "binding_config.h"
++#include "../mysql_util.h"
+ 
+ #ifdef _WIN32
+ #include <windows.h>

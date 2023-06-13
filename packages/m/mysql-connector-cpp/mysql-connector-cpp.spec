@@ -19,7 +19,7 @@
 %define libname libmysqlcppconn9
 %define x_libname libmysqlcppconn8-2
 Name:           mysql-connector-cpp
-Version:        8.0.32
+Version:        8.0.33
 Release:        0
 Summary:        MySQL Connector/C++: Standardized database driver for C++ development
 License:        SUSE-GPL-2.0-with-FLOSS-exception
@@ -36,6 +36,8 @@ Patch4:         mysql-connector-cpp-mariadb.patch
 Patch6:         mysql-connector-cpp-use-system-protobuf.patch
 # PATCH-FIX-OPENSUSE test for optional flag (not present in mariadb or older mysql)
 Patch7:         mysql-connector-cpp-test-feature.patch
+# PATCH-FIX-UPSTREAM
+Patch8:         mysql-connector-cpp-library.patch
 BuildRequires:  cmake >= 2.6.2
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -138,13 +140,11 @@ chmod -x jdbc/examples/*
 
 %build
 %cmake \
-	-DMYSQLCPPCONN_GCOV_ENABLE=OFF \
-	-DMYSQLCPPCONN_ICU_ENABLE=OFF \
-	-DMYSQLCPPCONN_BUILD_EXAMPLES=OFF \
-	-DMYSQLCLIENT_STATIC_LINKING=OFF \
-	-DMYSQLCLIENT_STATIC_BINDING=0 \
-	-DMYSQL_CXX_LINKAGE=0 \
     -DWITH_JDBC=ON \
+    -DWITH_ZLIB=ON \
+    -DBUILD_STATIC=OFF \
+    -DMYSQLCLIENT_STATIC_LINKING=OFF \
+    -DMYSQLCLIENT_STATIC_BINDING=OFF \
     -DCMAKE_INSTALL_LIBDIR=%{_lib} \
     -DCMAKE_INSTALL_LIBDIR:PATH=%{_lib}
 %cmake_build
