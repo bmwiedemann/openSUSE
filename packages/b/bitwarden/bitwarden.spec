@@ -25,6 +25,10 @@ Group:      Productivity/Security
 License:    GPL-3.0-only and MIT and (Apache-2.0 or MIT)
 URL:        https://github.com/bitwarden/clients
 
+%if 0%{?suse_version}
+%global build_rustflags %{__rustflags}
+%endif
+
 #x86 electron requires SSE2
 %ifarch %ix86
 ExclusiveArch:  i586 i686
@@ -71,6 +75,7 @@ Patch4000: remove-esbuild-version-check.patch
 #tools we use explicitly
 %if 0%{?fedora_version}
 %define _ttfontsdir %{_datadir}/fonts/truetype
+BuildRequires: glibc-all-langpacks
 %endif
 %if 0%{?fedora} >= 37
 BuildRequires:  nodejs-npm
@@ -81,7 +86,7 @@ BuildRequires: cargo
 %if 0%{?fedora}
 BuildRequires:  rust-srpm-macros
 %else
-BuildRequires:  rust-packaging
+BuildRequires:  cargo-packaging
 %endif
 BuildRequires: fdupes
 BuildRequires: fontpackages-devel
@@ -195,6 +200,9 @@ export CFLAGS="%{optflags} -fpic -fno-semantic-interposition -fvisibility=hidden
 export CXXFLAGS="%{optflags} -fpic -fno-semantic-interposition -fvisibility=hidden"
 export LDFLAGS="%{?build_ldflags}"
 
+%if 0%{?suse_version}
+auditable=auditable
+%endif
 
 
 
@@ -203,7 +211,7 @@ PATH="%{_builddir}/path:$PATH" npm rebuild --verbose --foreground-scripts --node
 
 cd apps/desktop
 pushd desktop_native
-cargo -vv build --release
+cargo -vv $auditable build --release
 popd
 
 npm run build

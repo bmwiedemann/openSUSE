@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 12 15:08:13 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Replace deprecated rust-packaging with cargo-packaging (boo#1211624)
+- Fix unresolvable build on Fedora
+
+-------------------------------------------------------------------
 Wed May 31 17:04:02 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 2023.5.0
   * Updated interface for selecting self-hosted environment
