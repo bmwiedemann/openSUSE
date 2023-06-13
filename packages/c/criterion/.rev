@@ -7,4 +7,31 @@
     <comment>C/C++ unit testing framework</comment>
     <requestid>1065530</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9d1af41109aa301388f90de6f83ba9b3</srcmd5>
+    <version>2.4.2</version>
+    <time>1686666798</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.2:
+  * Fix: fixed crash in assert failure reporting when there was no diff.
+    If the user-provided function to stringify an object was bugged and
+    produced equal output for non-equal objects, thus producing an empty
+    diff, Criterion crashed trying to access an unset parameter list.
+  * Fix: fixed crashing tests when Criterion was compiled with nanopb&gt;=0.4.7
+  * Fix: fixed deadlock when test timeout was specified and the system was
+    overloaded.
+  * Fix: fixed segfault if map_shdr fails (David Gloe).
+  * Fix: fixed memory leak on test failure (Jookia).
+  * Fix: fixed gt() and ge().
+  * Fix: escape XML/JSON reports.
+  * Misc: converted klib and debugbreak submodules to subprojects
+  * Misc: various documentation fixes (Yuri Victorovich, Jonas Schulze).
+  * Misc: various updates to dependencies.
+- Delete fix-nanopb.patch
+- Add fix-meson.patch: since klib and debugbreak provides only some header
+  files, search for those deps in Meson fails, therefore we have to remove
+  them. Those deps are specified in the spec file though.
+</comment>
+    <requestid>1092883</requestid>
+  </revision>
 </revisionlist>

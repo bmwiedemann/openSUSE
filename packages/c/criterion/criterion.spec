@@ -15,28 +15,29 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define _lto_cflags %{nil}
 %define sover 3
 
-Name: criterion
-Version:   2.4.1
-Release:   0
-Summary:   A dead-simple, yet extensible, C and C++ unit testing framework
-License:   MIT
-URL:  https://github.com/Snaipe/Criterion
-Source:    https://github.com/Snaipe/Criterion/archive/refs/tags/v2.4.1.tar.gz#/%{name}-%{version}.tar.xz
-Patch0:    fix-nanopb.patch
-BuildRequires:  cmake
+Name:           criterion
+Version:        2.4.2
+Release:        0
+Summary:        A dead-simple, yet extensible, C and C++ unit testing framework
+License:        MIT
+URL:            https://github.com/Snaipe/Criterion
+Source:         https://github.com/Snaipe/Criterion/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.xz
+Patch0:         fix-meson.patch
+BuildRequires:  boxfort-devel
 BuildRequires:  chrpath
+BuildRequires:  cmake
+BuildRequires:  debugbreak-devel
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
+BuildRequires:  klib-devel
 BuildRequires:  libprotobuf-nanopb0
 BuildRequires:  meson
 BuildRequires:  nanopb-devel
-BuildRequires:  debugbreak-devel
-BuildRequires:  boxfort-devel
-BuildRequires:  klib-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-protobuf
 BuildRequires:  python3-setuptools
@@ -62,15 +63,15 @@ Criterion follows the KISS principle, while keeping the control the user would h
 * Runs on Linux, FreeBSD, macOS, and Windows (Compiling with MinGW GCC and Visual Studio 2015+).
 
 %package -n lib%{name}%{sover}
-Summary: Libraries needed to use Criterion
-Requires: lib%{name}%{sover}-devel = %{version}
+Summary:        Libraries needed to use Criterion
+Requires:       lib%{name}%{sover}-devel = %{version}
 
 %description -n lib%{name}%{sover}
 This packages contains all the libraries needed to use Criterion.
 
 %package -n lib%{name}%{sover}-devel
-Summary: Devel files for Criterion
-Requires: lib%{name}%{sover} = %{version}
+Summary:        Devel files for Criterion
+Requires:       lib%{name}%{sover} = %{version}
 
 %description -n lib%{name}%{sover}-devel
 Contains all needed devel files for Criterion.
