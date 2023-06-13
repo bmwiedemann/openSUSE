@@ -324,4 +324,24 @@
     <comment></comment>
     <requestid>988451</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>fc9de323f953e97b58fd63c2949c6c26</srcmd5>
+    <version>0.41.1</version>
+    <time>1686665394</time>
+    <user>dimstar_suse</user>
+    <comment>- Update 0.41.1:
+  * Use a custom SQL construct for refreshing materialized views in
+    refresh_materialized_view
+  * Support psycopg3 for create_database() and delete_database()
+  * Remove Python 3.6 support
+  * Add SQLAlchemy 2 support
+  * Add comparison operator support for LTree type
+  * Support Python 3.11
+  * Fix a crash that occurs if the colour-science package is installed,
+    which shares the same import name as the colour package that
+    sqlalchemy-utils supports
+  * Fix a crash that occurs if the installed sqlalchemy version is a
+    beta (like &quot;2.0.0b3&quot;)</comment>
+    <requestid>1092729</requestid>
+  </revision>
 </revisionlist>

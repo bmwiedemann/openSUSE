@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun 13 05:17:03 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update 0.41.1:
+  * Use a custom SQL construct for refreshing materialized views in
+    refresh_materialized_view
+  * Support psycopg3 for create_database() and delete_database()
+  * Remove Python 3.6 support
+  * Add SQLAlchemy 2 support
+  * Add comparison operator support for LTree type
+  * Support Python 3.11
+  * Fix a crash that occurs if the colour-science package is installed,
+    which shares the same import name as the colour package that
+    sqlalchemy-utils supports
+  * Fix a crash that occurs if the installed sqlalchemy version is a
+    beta (like "2.0.0b3")
+
+-------------------------------------------------------------------
 Mon Jul 11 13:57:21 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:
