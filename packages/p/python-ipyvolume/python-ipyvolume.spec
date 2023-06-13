@@ -18,7 +18,7 @@
 
 %define anypython3dist python3dist
 Name:           python-ipyvolume
-Version:        0.6.1
+Version:        0.6.3
 Release:        0
 Summary:        IPython widget for rendering 3d volumes
 License:        MIT

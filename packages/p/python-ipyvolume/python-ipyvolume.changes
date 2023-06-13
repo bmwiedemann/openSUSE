@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 11 20:17:49 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.3
+  * no upstream changelog
+  * fix: use IntSlider for the animation control, to avoid float
+    roundoff values
+  * fix: apply colab workaround/fix earlier, before any widget is
+    created.
+
+-------------------------------------------------------------------
 Sun Mar 19 16:17:36 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.6.1
