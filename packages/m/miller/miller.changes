@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Jun 05 15:07:25 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 6.8.0+git20230604.4050f566:
+  * fix mis-spelling for head docs
+  * Update readthedocs notes in the how-to-release page (#1308)
+  * release 6.8.0 docs
+  * post-6.8.0
+  * Update go version in .github/workflows/release.yml
+  * go mod tidy
+  * miller 6.8.0
+  * Unify the `case` verb, and add options (#1306)
+  * Values-only `-a` option for `mlr grep` (#1305)
+  * Bump github/codeql-action from 2.3.5 to 2.3.6 (#1303)
+  * Bump github.com/stretchr/testify from 1.8.3 to 1.8.4 (#1301)
+  * Bump github/codeql-action from 2.3.4 to 2.3.5 (#1300)
+  * Bump github/codeql-action from 2.3.3 to 2.3.4 (#1299)
+  * Bump github.com/mattn/go-isatty from 0.0.18 to 0.0.19 (#1296)
+  * Bump github.com/stretchr/testify from 1.8.2 to 1.8.3 (#1295)
+  * Bump actions/setup-go from 4.0.0 to 4.0.1 (#1294)
+  * Let `mlr help` take pre-flags, such as `--always-color` (#1292)
+  * New `mlr json-parse -k` flag (#1291)
+  * Bump golang.org/x/term from 0.7.0 to 0.8.0 (#1285)
+  * Bump github/codeql-action from 2.3.2 to 2.3.3 (#1284)
+
+-------------------------------------------------------------------
+Wed May 03 15:13:01 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 6.7.0+git20230501.6c86ef19:
+  * Bump codespell-project/actions-codespell (#1282)
+  * Bump github/codeql-action from 2.3.1 to 2.3.2 (#1279)
+  * Bump github/codeql-action from 2.3.0 to 2.3.1 (#1277)
+  * Bump github/codeql-action from 2.2.12 to 2.3.0 (#1274)
+  * Implement `--csv-trim-leading-space` flag (#1272)
+  * Fix precedence of coalesce operators `??` and `???` (#1270)
+  * Treaet data-file numbers with leading + as numeric (#1269)
+  * Bump github/codeql-action from 2.2.11 to 2.2.12 (#1265)
+  * Bump actions/checkout from 3.5.1 to 3.5.2 (#1264)
+  * Bump actions/checkout from 3.5.0 to 3.5.1 (#1263)
+  * Bump github/codeql-action from 2.2.10 to 2.2.11 (#1261)
+  * Bump github/codeql-action from 2.2.9 to 2.2.10 (#1259)
+  * Bump golang.org/x/term from 0.6.0 to 0.7.0 (#1256)
+  * Fix typo (#1252)
+  * Bump codespell-project/actions-codespell (#1253)
+  * Better error message on unparseable TZ environment variable (#1249)
+
+-------------------------------------------------------------------
 Wed Mar 29 20:26:19 UTC 2023 - scott.bradnick@suse.com
 
 - Update to version 6.7.0+git20230328.dc14420f:
