@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 12 19:55:36 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.29.1:
+  * Bump github.com/open-policy-agent/opa from 0.53.0 to 0.53.1
+    (#407)
+  * Bump github.com/sirupsen/logrus from 1.9.2 to 1.9.3 (#406)
+  * Bump github.com/spf13/viper from 1.15.0 to 1.16.0 (#405)
+
+-------------------------------------------------------------------
 Tue May 30 04:22:25 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.29.0:
