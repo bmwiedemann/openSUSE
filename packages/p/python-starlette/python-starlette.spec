@@ -25,7 +25,7 @@
 %bcond_with test
 %endif
 
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-starlette%{psuffix}
 Version:        0.27.0
 Release:        0
