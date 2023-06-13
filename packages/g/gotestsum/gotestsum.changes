@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Thu Jun 08 04:08:55 UTC 2023 - jkowalczyk@suse.com
+
+- Initial package version 1.10.0:
+  * slowest: Add topN flag
+  * Convert testname formatter to new interface
+  * Convert pkgname formats
+  * Convert two more formatters to new interface
+  * Convert two formatters to new interface
+  * Avoid appending bytes
+  * Add jsonfile-timing-events flag for capturing only the terminal events
+  * Ensure jsonfile is flushed before running post-run-command
+  * Hide standard-json format for now
+  * Add standard-json format
+  * ci-matrix: improve description
+  * Update expected value for new output of subtests
+  * Update golangci-lint
+  * Use go 1.20 in CI
+  * Expect test to run for rename
+  * Fix need to save twice to trigger watch

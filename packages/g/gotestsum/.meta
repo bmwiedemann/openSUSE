@@ -1,0 +1,5 @@
+<package name="gotestsum" project="openSUSE:Factory">
+  <title>gotestsum</title>
+  <description>Go test runner with output optimized for humans, JUnit XML for CI integration, and a summary of the test results.</description>
+  <devel project="devel:languages:go" package="gotestsum"/>
+</package>

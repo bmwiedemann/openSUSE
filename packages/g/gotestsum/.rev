@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>38b53ccee00a32ec2a231fcd1ef7d62c</srcmd5>
+    <version>1.10.0</version>
+    <time>1686665349</time>
+    <user>dimstar_suse</user>
+    <comment>New package gotestsum version 0.10.0 is a Go test runner with output optimized for humans, JUnit XML for CI integration, and a summary of the test results.</comment>
+    <requestid>1092620</requestid>
+  </revision>
+</revisionlist>
