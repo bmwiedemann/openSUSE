@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Jun 12 19:35:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.83.0:
+  * fix: handle invalid symlinks (#1861)
+  * chore(deps): bump github.com/spdx/tools-golang from 0.5.0 to
+    0.5.1 (#1850)
+  * chore(deps): update bootstrap tools to latest versions (#1857)
+  * Pr 1825 (#1865)
+  * chore(deps): bump github.com/sirupsen/logrus from 1.9.2 to
+    1.9.3 (#1862)
+  * chore(deps): bump modernc.org/sqlite from 1.22.1 to 1.23.0
+    (#1863)
+  * feat: source-version flag (#1859)
+  * chore(deps): bump github.com/spf13/viper from 1.15.0 to 1.16.0
+    (#1851)
+  * accept main.version ldflags even without vcs (#1855)
+  * feat: add scope to pom properties (#1779)
+  * chore(deps): bump github.com/stretchr/testify from 1.8.3 to
+    1.8.4 (#1852)
+  * chore(deps): bump github.com/docker/docker (#1849)
+  * Add test to ensure package metadata is represented in the JSON
+    schema (#1841)
+  * Fix directory resolver to consider CWD and root path input
+    correctly (#1840)
+  * Migrate location-related structs to the file package (#1751)
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.6.1 to
+    5.7.0 (#1843)
+
+-------------------------------------------------------------------
 Tue May 23 17:54:05 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.82.0:
