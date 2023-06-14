@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 13 11:24:01 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu May 26 11:09:40 UTC 2022 - pgajdos@suse.com
 
 - initial version 1.0.4, required by python-cfn-lint
