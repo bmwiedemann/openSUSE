@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 12 10:00:25 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 1.1.0
+  * Add mingw32-cmake.lua as placeholder for future Lua functions
+  * %_mingw32_cmake: enabled support for selecting a custom build and
+    source directory by using the cmake options -S/-B (boo#1212238)
+
+-------------------------------------------------------------------
 Sun Feb 26 22:02:36 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Initial version 1.0.0 (boo#1209611)

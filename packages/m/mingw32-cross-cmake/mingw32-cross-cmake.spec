@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           mingw32-cross-cmake
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Cross build support for CMake
 License:        BSD-3-Clause
@@ -25,6 +26,7 @@ URL:            https://www.cmake.org/
 Source1:        macros.mingw32-cmake
 Source2:        mingw32-cmake.prov
 Source3:        mingw32_cmake.attr
+Source4:        mingw32-cmake.lua
 BuildRequires:  mingw32-filesystem
 Requires:       cmake >= 3.10
 Requires:       mingw32-filesystem
@@ -59,8 +61,13 @@ install -m 0755 %{SOURCE2} %{buildroot}%{_rpmconfigdir}
 mkdir -p %{buildroot}%{_fileattrsdir}
 install -m 0644 %{SOURCE3} %{buildroot}%{_fileattrsdir}
 
+# lua macros
+mkdir -p %{buildroot}%{_rpmluadir}
+install -m 0644 %{SOURCE4} %{buildroot}%{_rpmluadir}
+
 %files
 %defattr(-,root,root)
+%{_rpmluadir}
 %{_rpmmacrodir}
 %{_bindir}/mingw32-cmake
 %{_rpmconfigdir}/mingw32-cmake.prov
