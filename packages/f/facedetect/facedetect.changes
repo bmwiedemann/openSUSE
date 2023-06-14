@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 11 16:14:02 UTC 2023 - Ilgaz Öcal <ilgaz@ilgaz.gen.tr>
+
+- added set_opensuse_opencv_datadir.patch to update the data path for OpenCV4
+
+-------------------------------------------------------------------
 Mon Feb 15 08:24:42 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim filler wording from descriptions.

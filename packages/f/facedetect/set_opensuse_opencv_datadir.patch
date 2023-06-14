@@ -1,0 +1,19 @@
+Index: facedetect-v0.1/facedetect
+===================================================================
+--- facedetect-v0.1.orig/facedetect
++++ facedetect-v0.1/facedetect
+@@ -34,12 +34,12 @@ if 'cv' in dir(cv2):
+ 
+ 
+ # Profiles
+-DATA_DIR = '/usr/share/opencv/'
++DATA_DIR = '/usr/share/opencv4/' #openSUSE Tumbleweed opencv4 data dir
+ CASCADES = {}
+ 
+ PROFILES = {
+     'HAAR_FRONTALFACE_ALT2': 'haarcascades/haarcascade_frontalface_alt2.xml',
+-}
++    } #path to file under openSUSE Tumbleweed opencv4
+ 
+ 
+ # Face normalization

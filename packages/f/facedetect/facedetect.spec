@@ -1,7 +1,7 @@
 #
 # spec file for package facedetect
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,10 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://www.thregr.org/~wavexx/software/facedetect/
 Source:         https://gitlab.com/wavexx/facedetect/-/archive/v%{version}/facedetect-v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python3.patch -- support for python 3
 Patch1:         https://gitlab.com/wavexx/facedetect/-/commit/8037d4406eb76dd5c106819f72c3562f8b255b5b.patch#/python3.patch
+# PATCH-FEATURE-OPENSUSE set_opensuse_opencv_datadir.patch -- opencv4 data path
+Patch2:         set_opensuse_opencv_datadir.patch
 BuildRequires:  python3-numpy
 BuildRequires:  python3-opencv
 Requires:       python3-numpy

@@ -17,4 +17,13 @@
     <comment></comment>
     <requestid>872543</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4bc9d71d32fca5393a7942ba73a2b9f7</srcmd5>
+    <version>0.1</version>
+    <time>1686753036</time>
+    <user>dimstar_suse</user>
+    <comment>- added set_opensuse_opencv_datadir.patch to update the data path for OpenCV4
+</comment>
+    <requestid>1093024</requestid>
+  </revision>
 </revisionlist>
