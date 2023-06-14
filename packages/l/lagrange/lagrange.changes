@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jun 13 14:50:24 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.16.4
+  - Context/button menus use a popup window if they would otherwise have to
+    scroll (e.g., "Dark theme:" in Preferences and "Folder:" in the bookmark
+    editor).
+  - Improved tab closing order: close all sibling tabs opened from an origin tab
+    before switching back to the origin tab.
+  - Center a short title under the icon in the page margin.
+  - Fixed navbar URL text selection when opening new tabs (keep all selected).
+  - Fixed too much empty space in the input prompt layout.
+  - Fixed input field not being updated after cutting text.
+  - Fixed stuck mouse button when opening a context menu while performing a
+    drag.
+  - Fixed incorrect mouse button state and other potential incorrect behavior
+    after resizing the window.
+
+-------------------------------------------------------------------
 Sat Jun 10 15:53:11 UTC 2023 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.16.3
