@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun 14 05:23:16 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 114.0.5735.133 (boo#1212302):
+  * CVE-2023-3214: Use after free in Autofill payments
+  * CVE-2023-3215: Use after free in WebRTC
+  * CVE-2023-3216: Type Confusion in V8
+  * CVE-2023-3217: Use after free in WebXR
+  * Various fixes from internal audits, fuzzing and other initiatives
+
+-------------------------------------------------------------------
+Wed Jun  7 18:13:06 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- Fix Leap 15.4 build - chromium-114-revert-av1enc-lp154.patch
+
+-------------------------------------------------------------------
 Tue Jun  6 05:34:13 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 114.0.5735.106 (boo#1212044):

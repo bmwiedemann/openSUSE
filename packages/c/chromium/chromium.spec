@@ -2,7 +2,7 @@
 # spec file for package chromium
 #
 # Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2022 Callum Farmer <gmbr3@opensuse.org>
+# Copyright (c) 2023 Callum Farmer <gmbr3@opensuse.org>
 # Copyright (c) 2023 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -76,7 +76,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        114.0.5735.106
+Version:        114.0.5735.133
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -127,6 +127,9 @@ Patch215:       chromium-113-webauth-include-variant.patch
 Patch216:       chromium-113-typename.patch
 Patch217:       chromium-114-workaround_clang_bug-structured_binding.patch
 Patch218:       chromium-114-lld-argument.patch
+%if 0%{?sle_version} == 150400
+Patch300:       chromium-114-revert-av1enc-lp154.patch
+%endif
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
