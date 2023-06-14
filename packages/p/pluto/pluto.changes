@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 13 18:44:45 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 5.17.0:
+  * update the default target version of k8s to v1.25 (#492)
+
+-------------------------------------------------------------------
 Wed May 31 04:46:07 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 5.16.4:
