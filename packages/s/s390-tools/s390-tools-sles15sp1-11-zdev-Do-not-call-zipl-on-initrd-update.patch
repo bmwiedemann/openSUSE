@@ -37,7 +37,7 @@ Signed-off-by: Peter Oberparleiter <oberpar@linux.ibm.com>
 
 --- a/zdev/src/zdev-root-update.dracut
 +++ b/zdev/src/zdev-root-update.dracut
-@@ -20,10 +20,4 @@ dracut -f || {
+@@ -20,10 +20,4 @@
  	exit 1
  }
  

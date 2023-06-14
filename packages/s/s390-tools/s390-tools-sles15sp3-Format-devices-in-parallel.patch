@@ -7,13 +7,10 @@ Allow dasdfmt to run in parallel when several devices are specified.
 
 Signed-off-by: Hannes Reinecke <hare@suse.com>
 ---
- dasdfmt/dasdfmt.8 | 16 ++++++++++++++--
- dasdfmt/dasdfmt.c | 50 +++++++++++++++++++++++++++++++++++++++++++-------
- dasdfmt/dasdfmt.h |  1 +
- 3 files changed, 58 insertions(+), 9 deletions(-)
+ dasdfmt/dasdfmt.8 |   16 +++++++++++++-
+ dasdfmt/dasdfmt.c |   58 ++++++++++++++++++++++++++++++++++++++++++------------
+ 2 files changed, 60 insertions(+), 14 deletions(-)
 
-diff --git a/dasdfmt/dasdfmt.8 b/dasdfmt/dasdfmt.8
-index e7fc501..07c674b 100644
 --- a/dasdfmt/dasdfmt.8
 +++ b/dasdfmt/dasdfmt.8
 @@ -7,7 +7,7 @@
@@ -25,7 +22,7 @@ index e7fc501..07c674b 100644
  .br
          [-r \fIcylinder\fR] [-b \fIblksize\fR] [-l \fIvolser\fR] [-d \fIlayout\fR]
  .br
-@@ -96,7 +96,7 @@ Do not use this option if you are using a 3270 console,
+@@ -96,7 +96,7 @@
  running in background or redirecting the output to a file.
  
  .TP
@@ -34,7 +31,7 @@ index e7fc501..07c674b 100644
  Print one line for each formatted cylinder showing the number of the
  cylinder and percentage of formatting process.
  Intended to be used by higher level interfaces.
-@@ -159,6 +159,18 @@ Specify blocksize to be used. \fIblksize\fR must be a positive integer
+@@ -164,6 +164,18 @@
  and always be a power of two. The recommended blocksize is 4096 bytes.
  
  .TP
@@ -53,8 +50,8 @@ index e7fc501..07c674b 100644
  \fB-l\fR \fIvolser\fR or \fB--label\fR=\fIvolser\fR
  Specify the volume serial number or volume identifier to be written 
  to disk after formatting. If no label is specified, a sensible default 
---- s390-tools-2.15.1/dasdfmt/dasdfmt.c	2020-12-04 23:22:51.418265761 +0100
-+++ s390-tools-2.15.1/dasdfmt/dasdfmt.c	2020-12-04 23:29:26.165601000 +0100
+--- a/dasdfmt/dasdfmt.c
++++ b/dasdfmt/dasdfmt.c
 @@ -13,6 +13,7 @@
  #include <sys/sysmacros.h>
  #include <sys/time.h>
@@ -63,7 +60,7 @@ index e7fc501..07c674b 100644
  
  #include "lib/dasd_base.h"
  #include "lib/dasd_sys.h"
-@@ -81,6 +82,7 @@ static struct dasdfmt_globals {
+@@ -81,6 +82,7 @@
  	int   mode_specified;
  	int   ese;
  	int   no_discard;
@@ -71,7 +68,7 @@ index e7fc501..07c674b 100644
  } g = {
  	.dasd_info = { 0 },
  };
-@@ -105,6 +107,11 @@ static struct util_opt opt_vec[] = {
+@@ -105,6 +107,11 @@
  		.desc = "Perform complete format check on device",
  		.flags = UTIL_OPT_FLAG_NOSHORT,
  	},
@@ -83,7 +80,7 @@ index e7fc501..07c674b 100644
  	UTIL_OPT_SECTION("FORMAT OPTIONS"),
  	{
  		.option = { "blocksize", required_argument, NULL, 'b' },
-@@ -162,7 +169,7 @@ static struct util_opt opt_vec[] = {
+@@ -162,7 +169,7 @@
  		.desc = "Show a progressbar",
  	},
  	{
@@ -92,7 +89,7 @@ index e7fc501..07c674b 100644
  		.desc = "Show progress in percent",
  	},
  	UTIL_OPT_SECTION("MISC"),
-@@ -311,7 +318,7 @@ static void draw_progress(int cyl, unsig
+@@ -311,7 +318,7 @@
  	}
  
  	if (g.print_hashmarks && (cyl / g.hashstep - hashcount) != 0) {
@@ -101,7 +98,7 @@ index e7fc501..07c674b 100644
  		fflush(stdout);
  		hashcount++;
  	}
-@@ -1560,7 +1567,11 @@ int main(int argc, char *argv[])
+@@ -1573,7 +1580,11 @@
  	char *reqsize_param_str = NULL;
  	char *hashstep_str      = NULL;
  
@@ -114,7 +111,7 @@ index e7fc501..07c674b 100644
  
  	/* Establish a handler for interrupt signals. */
  	signal(SIGTERM, program_interrupt_signal);
-@@ -1623,7 +1634,7 @@ int main(int argc, char *argv[])
+@@ -1636,7 +1647,7 @@
  				g.print_hashmarks = 1;
  			}
  			break;
@@ -123,7 +120,7 @@ index e7fc501..07c674b 100644
  			if (!(g.print_hashmarks || g.print_progressbar))
  				g.print_percentage = 1;
  			break;
-@@ -1682,6 +1693,9 @@ int main(int argc, char *argv[])
+@@ -1695,6 +1706,9 @@
  		case OPT_NODISCARD:
  			g.no_discard = 1;
  			break;
@@ -133,7 +130,7 @@ index e7fc501..07c674b 100644
  		case OPT_CHECK:
  			g.check = 1;
  			break;
-@@ -1733,15 +1747,35 @@ int main(int argc, char *argv[])
+@@ -1746,15 +1760,35 @@
  	if (numdev > 1 && g.labelspec)
  		error("Specifying a volser to be written doesn't make sense when formatting multiple DASD volumes.");
  

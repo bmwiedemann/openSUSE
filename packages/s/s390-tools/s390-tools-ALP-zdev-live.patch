@@ -95,10 +95,10 @@
 +fi
 --- a/zdev/dracut/Makefile
 +++ b/zdev/dracut/Makefile
-@@ -2,17 +2,23 @@
- include ../../common.mak
+@@ -3,17 +3,23 @@
  
  ZDEVDIR := 95zdev
+ ZDEVKDUMPDIR := 95zdev-kdump
 +ZDEVLIVEDIR := 96zdev-live
  
  # HAVE_DRACUT
@@ -121,13 +121,13 @@
  ifeq ($(HAVE_DRACUT),1)
  install:
  	$(INSTALL) -m 755 -d $(DESTDIR)$(DRACUTMODDIR)/
-@@ -20,4 +26,9 @@ install:
- 	$(INSTALL) -m 755 $(ZDEVDIR)/module-setup.sh \
- 		$(ZDEVDIR)/parse-zdev.sh \
- 		$(DESTDIR)$(DRACUTMODDIR)/$(ZDEVDIR)/
+@@ -25,4 +31,9 @@
+ 	$(INSTALL) -m 755 -d $(DESTDIR)$(DRACUTMODDIR)/$(ZDEVKDUMPDIR)
+ 	$(INSTALL) -m 755 $(ZDEVKDUMPDIR)/module-setup.sh \
+ 		$(DESTDIR)$(DRACUTMODDIR)/$(ZDEVKDUMPDIR)/
 +	$(INSTALL) -m 755 -d $(DESTDIR)$(DRACUTMODDIR)/$(ZDEVLIVEDIR)
 +	$(INSTALL) -m 755 $(ZDEVLIVEDIR)/module-setup.sh \
 +		$(ZDEVLIVEDIR)/parse-zdev-live.sh \
 +		$(ZDEVLIVEDIR)/write-udev-live.sh \
-+		$(DESTDIR)$(DRACUTMODDIR)/$(ZDEVLIVEDIR)/
++		$(DESTDIR)$(DRACUTMODDIR)/$(ZDEVLIVEDIR)/ 
  endif

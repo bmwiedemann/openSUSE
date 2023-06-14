@@ -9,15 +9,13 @@ version of YaST we should accept this option, too.
 
 Signed-off-by: Hannes Reinecke <hare@suse.com>
 ---
- dasdfmt/dasdfmt.8 | 6 +++++-
- dasdfmt/dasdfmt.c | 8 ++++++++
- 2 files changed, 13 insertions(+), 1 deletion(-)
+ dasdfmt/dasdfmt.8 |    6 +++++-
+ dasdfmt/dasdfmt.c |   10 ++++++++++
+ 2 files changed, 15 insertions(+), 1 deletion(-)
 
-diff --git a/dasdfmt/dasdfmt.8 b/dasdfmt/dasdfmt.8
-index 3fd10a2..7fdb4bd 100644
 --- a/dasdfmt/dasdfmt.8
 +++ b/dasdfmt/dasdfmt.8
-@@ -11,7 +11,7 @@ dasdfmt \- formatting of DASD (ECKD) disk drives.
+@@ -11,7 +11,7 @@
  .br
          [-r \fIcylinder\fR] [-b \fIblksize\fR] [-l \fIvolser\fR] [-d \fIlayout\fR]
  .br
@@ -26,7 +24,7 @@ index 3fd10a2..7fdb4bd 100644
  
  .SH DESCRIPTION
  \fBdasdfmt\fR formats one or several DASD (ECKD) disk drive to prepare it
-@@ -42,6 +42,10 @@ out, what it \fBwould\fR do.
+@@ -42,6 +42,10 @@
  Increases verbosity.
  
  .TP
@@ -37,8 +35,6 @@ index 3fd10a2..7fdb4bd 100644
  \fB-y\fR 
  Start formatting without further user-confirmation.
  
-diff --git a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
-index 5b6023a..cdd80df 100644
 --- a/dasdfmt/dasdfmt.c
 +++ b/dasdfmt/dasdfmt.c
 @@ -113,6 +113,10 @@
@@ -52,7 +48,7 @@ index 5b6023a..cdd80df 100644
  	UTIL_OPT_SECTION("FORMAT OPTIONS"),
  	{
  		.option = { "blocksize", required_argument, NULL, 'b' },
-@@ -1649,6 +1653,12 @@
+@@ -1662,6 +1666,12 @@
  			}
  			g.layout_specified = 1;
  			break;
@@ -65,5 +61,3 @@ index 5b6023a..cdd80df 100644
  		case 'y':
  			g.withoutprompt = 1;
  			break;
--- 
-1.7.12.4

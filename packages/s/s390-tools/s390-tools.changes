@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed Jun 14 11:24:27 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade to version 2.27.0 (jsc#PED-3275)
+- Changes of existing tools:
+  * s390-tools cross-compile and non-s390x support:
+    - pkg-config is now mandatory for the build process
+    - Add PKG_CONFIG Makefile variable to select pkg-config program;
+      default pkg-config or $(CROSS_COMPILE)pkg-config if
+      CROSS_COMPILE is set
+    - Rename Makefile variable ARCH to HOST_ARCH. HOST_ARCH is the
+      architecture that will run the produced (executable) objects
+    - Add the Makefile variable BUILD_ARCH. BUILD_ARCH is the
+      architecture of the build system. For each Makefile variable like
+      CC, LINK, CPP, ... there is a suffixed version of it - e.g.
+      CC_FOR_BUILD. This is useful for cross compiling, and this naming
+      convention is very similar to the Meson convention (see
+      https://mesonbuild.com/Reference-tables.html#environment-variables-per-machine).
+    - Limit build targets for non-s390x architectures (pvattest)
+  * dasdfmt: Fall back to full format if space release fails
+  * dbginfo.sh: Add nstat for network and SNMP stats
+  * dbginfo.sh: Rework crypto data collection
+  * hyptop: Show thread util by default
+  * zipl: Add support for list-directed IPL dump from ECKD DASD
+- Bug Fixes:
+  * lszcrypt: Fix argument parsing
+  * zdev/dracut: Fix out-of-memory (OOM) situations in the kdump crashkernel environment
+  * ziomon/ziorep_config: Fix for SCSI devices of type disk without block dev
+  * pvextract-hdr: Fix parsing issues on little-endian systems
+- Amended the .patches to fit the 2.27 version
+- Removed obsolete patches (the fixes are included in this version)
+  * s390-tools-sles15sp5-zipl-boot-disable-Warray-bounds-for-now.patch
+  * s390-tools-sles15sp5-zkey-Support-EP11-host-library-version-4.patch
+  * s390-tools-sles15sp5-01-zipl-boot-discard-.eh_frame-and-.interp-input-sectio.patch
+  * s390-tools-sles15sp5-02-zipl-boot-declare-that-no-executable-stack-is-requir.patch
+  * s390-tools-sles15sp5-03-zipl-boot-use-no-warn-rwx-segments-linker-flag.patch
+  * s390-tools-sles15sp5-04-zipl-boot-disable-build-id.patch
+  * s390-tools-sles15sp5-05-zipl-boot-simplify-objcopy-commands.patch
+  * s390-tools-sles15sp5-06-zipl-move-STAGE2_MAX_SIZE-and-STAGE1B_LOAD_ADDR-to-l.patch
+  * s390-tools-sles15sp5-07-zipl-boot-use-linker-scripts-for-all-bootloaders.patch
+  * s390-tools-sles15sp5-08-genprotimg-boot-declare-that-no-executable-stack-is-.patch
+  * s390-tools-sles15sp5-09-genprotimg-boot-use-no-warn-rwx-segments-linker-flag.patch
+  * s390-tools-sles15sp5-10-genprotimg-boot-disable-build-id.patch
+  * s390-tools-sles15sp5-11-genprotimg-boot-Makefile-simplify-objcopy-command.patch
+  * s390-tools-sles15sp5-12-genprotimg-boot-improve-linker-scripts.patch
+  * s390-tools-sles15sp5-13-genprotimg-boot-stage3b-add-size-check-to-the-linker.patch
+  * s390-tools-sles15sp5-14-genprotimg-boot-stage3b_reloc.bin-add-linker-script.patch
+  * s390-tools-sles15sp5-15-zipl-Embed-loader-data-directly-into-boot-object.patch
+  * s390-tools-sles15sp5-lszcrypt-use-separate-index-for-inner-sub-device-loo.patch
+  * s390-tools-sles15sp5-01-ziomon-ziorep_config-fix-missing-SG-major-minor-for-.patch
+  * s390-tools-sles15sp5-02-ziomon-ziorep_config-fix-for-SCSI-devices-of-type-di.patch
+  * s390-tools-sles15sp5-fix-chown-commands-syntax.patch 
+
+-------------------------------------------------------------------
 Thu May  4 08:32:36 UTC 2023 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied patches for ziomon: fix for SCSI devices of type disk without block dev

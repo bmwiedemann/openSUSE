@@ -1,6 +1,10 @@
---- s390-tools-2.24.0/common.mak	2022-11-09 11:11:48.000000000 -0500
-+++ s390-tools-2.24.0/common.mak	2022-11-28 09:46:19.055653319 -0500
-@@ -254,8 +254,8 @@
+---
+ common.mak |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/common.mak
++++ b/common.mak
+@@ -328,8 +328,8 @@
         LDFLAGS CPPFLAGS ALL_CFLAGS ALL_CXXFLAGS ALL_LDFLAGS ALL_CPPFLAGS
  
  ifneq ($(shell $(CC_SILENT) -dumpspecs 2>/dev/null | grep -e '[^f]no-pie'),)

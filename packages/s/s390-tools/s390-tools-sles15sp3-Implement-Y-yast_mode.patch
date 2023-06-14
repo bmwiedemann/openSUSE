@@ -7,13 +7,10 @@ Implement an option '-Y' to suppress most output.
 
 Signed-off-by: Hannes Reinecke <hare@suse.com>
 ---
- dasdfmt/dasdfmt.8 |  7 ++++++-
- dasdfmt/dasdfmt.c | 27 ++++++++++++++++++++-------
- dasdfmt/dasdfmt.h |  1 +
- 3 files changed, 27 insertions(+), 8 deletions(-)
+ dasdfmt/dasdfmt.8 |    7 ++++-
+ dasdfmt/dasdfmt.c |   73 ++++++++++++++++++++++++++++++++++++++++++++++++------
+ 2 files changed, 72 insertions(+), 8 deletions(-)
 
-diff --git a/dasdfmt/dasdfmt.8 b/dasdfmt/dasdfmt.8
-index 07c674b..3fd10a2 100644
 --- a/dasdfmt/dasdfmt.8
 +++ b/dasdfmt/dasdfmt.8
 @@ -7,7 +7,7 @@
@@ -25,7 +22,7 @@ index 07c674b..3fd10a2 100644
  .br
          [-r \fIcylinder\fR] [-b \fIblksize\fR] [-l \fIvolser\fR] [-d \fIlayout\fR]
  .br
-@@ -113,6 +113,11 @@ The value will be at least as big as the -r or --requestsize value.
+@@ -113,6 +113,11 @@
  .br
  
  .TP
@@ -37,11 +34,9 @@ index 07c674b..3fd10a2 100644
  \fB-M\fR \fImode\fR or \fB--mode\fR=\fImode\fR
  Specify the \fImode\fR to be used to format the device. Valid modes are:
  .RS
-diff --git a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
-index 6dd28fa..5b6023a 100644
 --- a/dasdfmt/dasdfmt.c
 +++ b/dasdfmt/dasdfmt.c
-@@ -83,6 +83,7 @@ static struct dasdfmt_globals {
+@@ -83,6 +83,7 @@
  	int   ese;
  	int   no_discard;
  	int   procnum;
@@ -49,7 +44,7 @@ index 6dd28fa..5b6023a 100644
  } g = {
  	.dasd_info = { 0 },
  };
-@@ -172,6 +173,10 @@ static struct util_opt opt_vec[] = {
+@@ -172,6 +173,10 @@
  		.option = { "percentage", no_argument, NULL, 'Q' },
  		.desc = "Show progress in percent",
  	},
@@ -60,7 +55,7 @@ index 6dd28fa..5b6023a 100644
  	UTIL_OPT_SECTION("MISC"),
  	{
  		.option = { "check_host_count", no_argument, NULL, 'C' },
-@@ -318,7 +323,9 @@ static void draw_progress(int cyl, unsig
+@@ -318,7 +323,9 @@
  	}
  
  	if (g.print_hashmarks && (cyl / g.hashstep - hashcount) != 0) {
@@ -71,7 +66,7 @@ index 6dd28fa..5b6023a 100644
  		fflush(stdout);
  		hashcount++;
  	}
-@@ -392,7 +399,7 @@ static void evaluate_format_error(format
+@@ -392,7 +399,7 @@
  	unsigned int kl = 0;
  	int blksize = cdata->expect.blksize;
  
@@ -80,10 +75,10 @@ index 6dd28fa..5b6023a 100644
  		printf("\n");
  
  	/*
-@@ -780,8 +787,9 @@ static void check_hashmarks(void)
+@@ -780,8 +787,9 @@
  			g.hashstep = 10;
  		}
-
+ 
 -		printf("Printing hashmark every %d cylinders.\n",
 -		       g.hashstep);
 +		if (!g.yast_mode)
@@ -92,7 +87,7 @@ index 6dd28fa..5b6023a 100644
  	}
  }
  
-@@ -1462,17 +1470,19 @@ static void do_format_dasd(volume_label_
+@@ -1475,17 +1483,19 @@
  			break;
  		}
  
@@ -115,7 +110,7 @@ index 6dd28fa..5b6023a 100644
  			printf("ok\n");
  		}
  	}
-@@ -1548,6 +1558,7 @@ void process_dasd(volume_label_t *orig_v
+@@ -1561,6 +1571,7 @@
  		error("%s", str);
  
  	set_geo(&cylinders, &heads);
@@ -123,7 +118,7 @@ index 6dd28fa..5b6023a 100644
  	set_label(&vlabel, &format_params, cylinders);
  
  	if (g.check)
-@@ -1557,6 +1568,29 @@ void process_dasd(volume_label_t *orig_v
+@@ -1570,6 +1581,29 @@
  
  }
  
@@ -153,7 +148,7 @@ index 6dd28fa..5b6023a 100644
  int main(int argc, char *argv[])
  {
  	volume_label_t vlabel;
-@@ -1693,6 +1727,10 @@ int main(int argc, char *argv[])
+@@ -1706,6 +1740,10 @@
  		case OPT_NODISCARD:
  			g.no_discard = 1;
  			break;
@@ -164,7 +159,7 @@ index 6dd28fa..5b6023a 100644
  		case 'P':
  			max_parallel = atoi(optarg);
  			break;
-@@ -1728,6 +1766,21 @@ int main(int argc, char *argv[])
+@@ -1741,6 +1779,21 @@
  		reqsize = DEFAULT_REQUESTSIZE;
  	}
  
@@ -186,7 +181,7 @@ index 6dd28fa..5b6023a 100644
  	if (g.print_hashmarks)
  		PARSE_PARAM_INTO(g.hashstep, hashstep_str, 10, "hashstep");
  
-@@ -1747,6 +1800,12 @@ int main(int argc, char *argv[])
+@@ -1760,6 +1813,12 @@
  	if (numdev > 1 && g.labelspec)
  		error("Specifying a volser to be written doesn't make sense when formatting multiple DASD volumes.");
  
@@ -199,6 +194,3 @@ index 6dd28fa..5b6023a 100644
  	for (numproc = 0; numproc < numdev; numproc++) {
  		chpid = fork();
  		if (chpid == -1 )
--- 
-1.7.12.4
-

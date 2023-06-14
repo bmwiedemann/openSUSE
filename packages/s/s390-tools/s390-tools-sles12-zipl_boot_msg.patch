@@ -1,5 +1,9 @@
---- s390-tools-1.24.1/zipl/boot/menu.c	2013-12-18 11:11:45.000000000 -0500
-+++ s390-tools-1.24.1/zipl/boot/menu.c	2013-12-18 11:59:18.000000000 -0500
+---
+ zipl/boot/menu.c |    7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+--- a/zipl/boot/menu.c
++++ b/zipl/boot/menu.c
 @@ -168,8 +168,11 @@
  	/* print config list */
  	menu_list();

@@ -7,15 +7,13 @@ Allow the user to specify several devices as arguments to dasdfmt.
 
 Signed-off-by: Hannes Reinecke <hare@suse.com>
 ---
- dasdfmt/dasdfmt.8 |   5 +-
- dasdfmt/dasdfmt.c | 175 ++++++++++++++++++++++++++++++------------------------
- 2 files changed, 100 insertions(+), 80 deletions(-)
+ dasdfmt/dasdfmt.8 |    5 -
+ dasdfmt/dasdfmt.c |  197 +++++++++++++++++++++++++++++++-----------------------
+ 2 files changed, 119 insertions(+), 83 deletions(-)
 
-diff --git a/dasdfmt/dasdfmt.8 b/dasdfmt/dasdfmt.8
-index 99da9ed..e7fc501 100644
 --- a/dasdfmt/dasdfmt.8
 +++ b/dasdfmt/dasdfmt.8
-@@ -11,14 +11,15 @@ dasdfmt \- formatting of DASD (ECKD) disk drives.
+@@ -11,14 +11,15 @@
  .br
          [-r \fIcylinder\fR] [-b \fIblksize\fR] [-l \fIvolser\fR] [-d \fIlayout\fR]
  .br
@@ -33,8 +31,8 @@ index 99da9ed..e7fc501 100644
  .br
  
  \fBWARNING\fR: Careless usage of \fBdasdfmt\fR can result in 
---- s390-tools-2.15.1/dasdfmt/dasdfmt.c	2020-10-30 20:43:30.853044638 +0000
-+++ s390-tools-2.15.1/dasdfmt/dasdfmt.c	2020-11-17 23:38:56.457778633 +0000
+--- a/dasdfmt/dasdfmt.c
++++ b/dasdfmt/dasdfmt.c
 @@ -25,6 +25,8 @@
  
  #include "dasdfmt.h"
@@ -189,14 +187,14 @@ index 99da9ed..e7fc501 100644
  		geo.sectors * blksize;
 @@ -1242,7 +1243,7 @@
  	if (!g.ese || g.no_discard)
- 		return;
+ 		return 0;
  
 -	printf("Releasing space for the entire device...\n");
 +	printf("Releasing space for the entire %s device...\n", g.dev_path);
  	err = dasd_release_space(g.dev_node, &r);
- 	if (err)
- 		error("Could not release space: %s", strerror(err));
-@@ -1261,20 +1262,21 @@
+ 	/*
+ 	 * Warn or Error on failing RAS depending on QUICK mode set explicitly or automatically
+@@ -1270,20 +1271,21 @@
  	int err;
  
  	if (!(g.withoutprompt && g.verbosity < 1))
@@ -223,7 +221,7 @@ index 99da9ed..e7fc501 100644
  
  	/* except track 0 from standard formatting procss */
  	p->start_unit = 1;
-@@ -1282,19 +1284,19 @@
+@@ -1291,19 +1293,19 @@
  	process_tracks(cylinders, heads, p);
  
  	if (g.verbosity > 0)
@@ -246,7 +244,7 @@ index 99da9ed..e7fc501 100644
  
  	disk_enable();
  }
-@@ -1306,18 +1308,18 @@
+@@ -1315,18 +1317,18 @@
  				  format_data_t *p)
  {
  	if (!(g.withoutprompt && g.verbosity < 1))
@@ -269,7 +267,7 @@ index 99da9ed..e7fc501 100644
  
  	if (g.verbosity > 0)
  		printf("Re-accessing the device...\n");
-@@ -1426,16 +1428,16 @@
+@@ -1435,16 +1437,16 @@
  		if (!g.withoutprompt) {
  			printf("\n");
  			if (mode != EXPAND)
@@ -290,7 +288,7 @@ index 99da9ed..e7fc501 100644
  				return;
  			}
  		}
-@@ -1453,12 +1455,12 @@
+@@ -1466,12 +1468,12 @@
  			break;
  		}
  
@@ -305,7 +303,7 @@ index 99da9ed..e7fc501 100644
  		err = dasd_reread_partition_table(g.dev_node, 5);
  		if (err != 0) {
  			ERRMSG("%s: error during rereading the partition "
-@@ -1472,7 +1473,7 @@
+@@ -1485,7 +1487,7 @@
  static void eval_format_mode(void)
  {
  	if (!g.force && g.mode_specified && g.ese && mode == EXPAND) {
@@ -314,15 +312,17 @@ index 99da9ed..e7fc501 100644
  		warnx("Format mode 'expand' is not feasible.");
  		error("Use --mode=full or --mode=quick to perform a clean format");
  	}
-@@ -1495,20 +1496,70 @@
+@@ -1508,20 +1510,70 @@
  		prog_name = p + 1;
  }
  
+-int main(int argc, char *argv[])
 +void process_dasd(volume_label_t *orig_vlabel, format_data_t format_params)
-+{
-+	volume_label_t vlabel;
-+	char old_volser[7];
-+	char str[ERR_LENGTH];
+ {
+ 	volume_label_t vlabel;
+ 	char old_volser[7];
+-
+ 	char str[ERR_LENGTH];
 +	unsigned int cylinders, heads; int rc;
 +
 +	rc = dasd_get_info(g.dev_node, &g.dasd_info);
@@ -371,12 +371,10 @@ index 99da9ed..e7fc501 100644
 +
 +}
 +
- int main(int argc, char *argv[])
- {
- 	volume_label_t vlabel;
--	char old_volser[7];
- 
--	char str[ERR_LENGTH];
++int main(int argc, char *argv[])
++{
++	volume_label_t vlabel;
++
  	char buf[7];
  
  	char *blksize_param_str = NULL;
@@ -389,7 +387,7 @@ index 99da9ed..e7fc501 100644
  
  	/* Establish a handler for interrupt signals. */
  	signal(SIGTERM, program_interrupt_signal);
-@@ -1644,6 +1695,9 @@
+@@ -1657,6 +1709,9 @@
  			break; /* exit loop if finished */
  	}
  
@@ -399,7 +397,7 @@ index 99da9ed..e7fc501 100644
  	CHECK_SPEC_MAX_ONCE(g.blksize_specified, "blocksize");
  	CHECK_SPEC_MAX_ONCE(g.labelspec, "label");
  	CHECK_SPEC_MAX_ONCE(g.writenolabel, "omit-label-writing flag");
-@@ -1662,49 +1716,29 @@
+@@ -1675,48 +1730,28 @@
  	if (g.print_hashmarks)
  		PARSE_PARAM_INTO(g.hashstep, hashstep_str, 10, "hashstep");
  
@@ -411,7 +409,11 @@ index 99da9ed..e7fc501 100644
 -
 -	g.ese = dasd_sys_ese(g.dev_node);
 -	eval_format_mode();
--
++	while (optind < argc) {
++		get_device_name(optind, argc, argv);
++		strncpy(g.dev_path_array[numdev], g.dev_path, strlen(g.dev_path));
++		strncpy(g.dev_node_array[numdev], g.dev_node, strlen(g.dev_node));
+ 
 -	/* Either let the user specify the blksize or get it from the kernel */
 -	if (!g.blksize_specified) {
 -		if (!(mode == FULL ||
@@ -419,8 +421,10 @@ index 99da9ed..e7fc501 100644
 -			get_blocksize(&format_params.blksize);
 -		else
 -			format_params = ask_user_for_blksize(format_params);
--	}
--
++		optind++;
++		numdev++;
+ 	}
+ 
 -	if (g.keep_volser) {
 -		if (g.labelspec)
 -			error("The -k and -l options are mutually exclusive");
@@ -432,9 +436,14 @@ index 99da9ed..e7fc501 100644
 -		else
 -			error("VOLSER not found on device %s", g.dev_path);
 -	}
--
++	if (!numdev)
++		error("%s: No device specified!\n",
++			prog_name);
+ 
 -	check_disk();
--
++	if (numdev > 1 && g.labelspec)
++		error("Specifying a volser to be written doesn't make sense when formatting multiple DASD volumes.");
+ 
 -	if (check_param(str, ERR_LENGTH, &format_params) < 0)
 -		error("%s", str);
 -
@@ -445,29 +454,12 @@ index 99da9ed..e7fc501 100644
 -		check_disk_format(cylinders, heads, &format_params);
 -	else
 -		do_format_dasd(&vlabel, &format_params, cylinders, heads);
-+	while (optind < argc) {
-+		get_device_name(optind, argc, argv);
-+		strncpy(g.dev_path_array[numdev], g.dev_path, strlen(g.dev_path));
-+		strncpy(g.dev_node_array[numdev], g.dev_node, strlen(g.dev_node));
-+
-+		optind++;
-+		numdev++;
-+	}
-+
-+	if (!numdev)
-+		error("%s: No device specified!\n",
-+			prog_name);
-+
-+	if (numdev > 1 && g.labelspec)
-+		error("Specifying a volser to be written doesn't make sense when formatting multiple DASD volumes.");
-+
 +	for (i = 0; i < numdev; i++)
 +	{
 +		strncpy(g.dev_path, g.dev_path_array[i], strlen(g.dev_path_array[i])+1);
 +		strncpy(g.dev_node, g.dev_node_array[i], strlen(g.dev_node_array[i])+1);	
 +		process_dasd(&vlabel, format_params);
 +	}
-
+ 
  	free(g.dev_path);
  	free(g.dev_node);
- 

@@ -16,11 +16,9 @@ References: bsc#937340
 
 Signed-off-by: Hannes Reinecke <hare@suse.de>
 ---
- dasdfmt/dasdfmt.c | 21 ++++++++++++++++++---
- 1 file changed, 18 insertions(+), 3 deletions(-)
+ dasdfmt/dasdfmt.c |   19 ++++++++++++++++++-
+ 1 file changed, 18 insertions(+), 1 deletion(-)
 
-diff --git a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
-index e1877ac..f03cbad 100644
 --- a/dasdfmt/dasdfmt.c
 +++ b/dasdfmt/dasdfmt.c
 @@ -621,7 +621,7 @@
@@ -56,6 +54,3 @@ index e1877ac..f03cbad 100644
  		if (g.dasd_info.open_count > 1)
  			error("Disk %s is in use!", g.dev_path);
  	}
--- 
-1.8.4.5
-

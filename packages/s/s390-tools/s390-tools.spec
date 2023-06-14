@@ -33,7 +33,7 @@
 %endif
 
 Name:           s390-tools
-Version:        2.25.0
+Version:        2.27.0
 Release:        0
 Summary:        S/390 tools like zipl and dasdfmt
 License:        MIT
@@ -129,8 +129,7 @@ Source99:       zfcp_host_configure.8
 ###
 
 # IBM patches
-Patch001:       s390-tools-sles15sp5-zipl-boot-disable-Warray-bounds-for-now.patch
-Patch002:       s390-tools-sles15sp5-zkey-Support-EP11-host-library-version-4.patch
+###
 # SUSE patches
 Patch900:       s390-tools-sles12-zipl_boot_msg.patch
 Patch901:       s390-tools-sles15-sysconfig-compatible-dumpconf.patch
@@ -148,32 +147,9 @@ Patch908:       s390-tools-sles15sp3-dasdfmt-retry-BIODASDINFO-if-device-is-busy
 Patch909:       s390-tools-sles12-fdasd-skip-partition-check-and-BLKRRPART-ioctl.patch
 Patch910:       s390-tools-sles15sp1-11-zdev-Do-not-call-zipl-on-initrd-update.patch
 Patch911:       s390-tools-sles15sp5-remove-no-pie-link-arguments.patch
-# Bug 1208527, and bug 1206173
-Patch912:       s390-tools-sles15sp5-01-zipl-boot-discard-.eh_frame-and-.interp-input-sectio.patch
-Patch913:       s390-tools-sles15sp5-02-zipl-boot-declare-that-no-executable-stack-is-requir.patch
-Patch914:       s390-tools-sles15sp5-03-zipl-boot-use-no-warn-rwx-segments-linker-flag.patch
-Patch915:       s390-tools-sles15sp5-04-zipl-boot-disable-build-id.patch
-Patch916:       s390-tools-sles15sp5-05-zipl-boot-simplify-objcopy-commands.patch
-Patch917:       s390-tools-sles15sp5-06-zipl-move-STAGE2_MAX_SIZE-and-STAGE1B_LOAD_ADDR-to-l.patch
-Patch918:       s390-tools-sles15sp5-07-zipl-boot-use-linker-scripts-for-all-bootloaders.patch
-Patch919:       s390-tools-sles15sp5-08-genprotimg-boot-declare-that-no-executable-stack-is-.patch
-Patch920:       s390-tools-sles15sp5-09-genprotimg-boot-use-no-warn-rwx-segments-linker-flag.patch
-Patch921:       s390-tools-sles15sp5-10-genprotimg-boot-disable-build-id.patch
-Patch922:       s390-tools-sles15sp5-11-genprotimg-boot-Makefile-simplify-objcopy-command.patch
-Patch923:       s390-tools-sles15sp5-12-genprotimg-boot-improve-linker-scripts.patch
-Patch924:       s390-tools-sles15sp5-13-genprotimg-boot-stage3b-add-size-check-to-the-linker.patch
-Patch925:       s390-tools-sles15sp5-14-genprotimg-boot-stage3b_reloc.bin-add-linker-script.patch
-Patch926:       s390-tools-sles15sp5-15-zipl-Embed-loader-data-directly-into-boot-object.patch
-# Bug 1209196
-Patch927:       s390-tools-sles15sp5-lszcrypt-use-separate-index-for-inner-sub-device-loo.patch
 #
-Patch928:       s390-tools-ALP-zdev-live.patch
-# Bug 1211008
-Patch929:       s390-tools-sles15sp5-01-ziomon-ziorep_config-fix-missing-SG-major-minor-for-.patch
-Patch930:       s390-tools-sles15sp5-02-ziomon-ziorep_config-fix-for-SCSI-devices-of-type-di.patch
-
+Patch999:       s390-tools-ALP-zdev-live.patch
 #
-Patch999:       s390-tools-sles15sp5-fix-chown-commands-syntax.patch
 
 BuildRequires:  curl-devel
 BuildRequires:  dracut
@@ -680,6 +656,7 @@ done
 %dir %{_datadir}/s390-tools/netboot
 %dir %{_datadir}/s390-tools/genprotimg
 %dir %{_prefix}/lib/dracut/modules.d/95zdev
+%dir %{_prefix}/lib/dracut/modules.d/95zdev-kdump
 %dir %{_prefix}/lib/dracut/modules.d/96zdev-live
 %dir %{_prefix}/lib/dracut/modules.d/99ngdump
 %dir /boot/zipl
