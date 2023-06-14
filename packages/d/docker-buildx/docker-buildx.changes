@@ -1,4 +1,317 @@
 -------------------------------------------------------------------
+Tue Jun 13 16:50:51 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.11.0:
+  * dockerutil: cache feature collection
+  * check history api support once
+  * avoid extra client for history API detection
+  * vendor: github.com/docker/cli v24.0.2
+  * vendor: github.com/docker/docker v24.0.2
+  * bake(cli): allow passing in-stream using command.Cli
+  * debug-shell(cli): allow passing in-stream using command.Cli
+  * vendor: update buildkit to master@67a08623b95a
+  * build(cli): allow passing in-stream using command.Cli
+  * docs: monitor: mention about long form flag
+  * invoke: Allow JSON array for long form flags
+  * Fix a couple `--invoke` entrypoint interaction bugs
+  * Update docs with result from `make docs` command.
+  * build: display build details link
+  * build: fix quiet mode
+  * vendor: github.com/stretchr/testify v1.8.4
+  * vendor: github.com/compose-spec/compose-go v1.14.0
+  * bake: fix potential context entitlements escape
+  * tests: refactor cmd helpers to allow configuring cwd, etc
+  * tests: add bake test for remote subdir context
+  * tests: add bake test for remote cmd context override
+  * bake: fix BAKE_CMD_CONTEXT relative path resolution
+  * tests: add basic remote bake context test
+  * git: update gitutil test utilities
+  * test: tmpdir can be a test helper
+  * vendor: github.com/Masterminds/semver/v3 v3.2.1
+  * build: clarify NewResultHandle comment
+  * inspect: display builder features
+  * docs: update CONTRIBUTING.md with specific test notes
+  * build: docker exporter should instead use oci with containerd
+  * build: clear exports for secondary solve request
+  * build: cleanup res if returned in basic build
+  * Fix typo in commands/build.go and
+    docs/reference/buildx_build.md
+  * build: rename ResultContext to ResultHandle
+  * build: move main solve request into main gateway call
+  * driver: update history api check
+  * driver: add context to Features interface
+  * driver: cache features
+  * driver: check history capability
+  * logutil: print error from WithError if found
+  * vendor: update buildkit to master@c36941f4a10e
+  * ci: make release and bin-image depend on test
+  * docs: update CONTRIBUTING.md to run tests
+  * make: test-unit and test-integration targets
+  * ci: cache integration tests base and build in dedicated step
+  * test: opt to avoid building the integration tests image
+  * test: use trap to remove cache volume
+  * test: type integration not needed
+  * ci: send test reports to codecov
+  * ci: merge test workflow to build one
+  * monitor: add long help for commands
+  * build: update outline fallback image
+  * build: tidy up print func
+  * build: fix writing correct image ID with -q
+  * remote: allow docker exporter on remote driver
+  * update xx to 1.2.1
+  * driver(docker-container): fix incorrect path when writing certs
+  * build: fix missing "docker" driver name in build progress
+  * vendor: update buildkit to master@212ab16a39b1
+  * go.mod: update k8s deps to v0.26.2 (remove "replace" rule)
+  * cmd/buildx: non-functional
+    k8s.io/client-go/plugin/pkg/client/auth/openstack
+  * vendor: github.com/docker/cli v24.0.1
+  * vendor: github.com/docker/docker v24.0.1
+  * Fix AWS Authentication when mixing static creds and IAM profile
+  * vendor: use docker/distribution instead of
+    distribution/distribution
+  * vendor: github.com/docker/cli v24.0.0
+  * vendor: github.com/docker/docker v24.0.0
+  * vendor: github.com/spf13/cobra v1.7.0
+  * vendor: github.com/opencontainers/runc v1.1.7
+  * vendor: github.com/klauspost/compress v1.16.3
+  * vendor: github.com/moby/term v0.5.0
+  * docs: add info for on-error and debug-shell values for invoke
+  * docs: fixup typo in buildkit console output
+  * bake: merge attest entries
+  * ci: add integration tests
+  * test: add basic integration tests
+  * vendor: update buildkit to master@31c870e82a48
+  * Update bake-reference.md
+  * imagetools(create): set correct media type when combining
+    manifests
+  * vendor: github.com/docker/distribution v2.8.2
+  * progress: make printer ready only after pausing logrus
+  * controller: move path resolution into controller package
+  * docs: add matrix docs for bake
+  * github: don't auto-add kind/bug labels
+  * docs: refactor bake file reference
+  * docs: add initial guide about debugging monitor mode
+  * debug: evaluate all refs to allow multi-platform debugging
+  * driver: update BuildKit version constraint for docker driver
+  * vendor: github.com/docker/docker v23.0.6
+  * controller: avoid "context canceled" error on cleanup
+  * controller: default to using local controller
+  * bake: support compose additional contexts
+  * bake: support compose inline dockerfile
+  * kubernetes driver: add support for proxy-url
+  * bake: copy remote context contents to root
+  * bake: reorganize input creation together
+  * debug: secondary client build should not reuse solve opt ref
+  * monitor: improve error messages
+  * docker: fix connection leak on features check
+  * container-driver: avoid hanging on container panic
+  * Support for passing through raw buildkit policies
+  * monitor: extend monitor interface from controller
+  * build(deps): Bump peter-evans/create-pull-request from 5.0.0 to
+    5.0.1
+  * monitor: use shlex
+  * monitor: Move commands to a separated package
+  * docs: add serviceaccount driver-opt for k8s driver
+  * kubernetes driver: add serviceaccount opt
+  * controller: print result outside of controller
+  * controller: don't write metadata file in controller
+  * bump go.mod to 1.20
+  * builder: extra init error handling
+  * ci: fix bin-image job
+  * build: null values support with bake
+  * build: fix JSON formatting for --print
+  * fix: changed attest type from Map to List
+  * chore: format with prettier
+  * build: added attest field
+  * build: sort bake fields alphabetically
+  * lint: add empty line between console and json code blocks
+  * build: fix links and formatting
+  * build: move bake under the build section
+  * build: customizing builds section
+  * build: add bake section
+  * debug: display build warnings after each build
+  * vendor: update to compose-go 1.13.4
+  * bake: use default filenames from compose-go
+  * controller: replace logrus status messages with progress messages
+  * controller: refactor progress api
+  * build: refactor out common build command components
+  * controller: refactor status message conversion to pb package
+  * build: use gateway's solve context to allow cancelling
+    getResultAt
+  * build(deps): Bump docker/bake-action from 2 to 3
+  * controller: only capture the result when invoked through a
+    controller
+  * monitor: update exec failure message when no args are passed
+  * build: avoid resolution of dockerfile if context is remote
+  * remove unused fields from ResultContext
+  * remove ResultContextError
+  * Fix monitor to be aware of Inspect API and invokations from
+    errors
+  * Add flags and subcommand
+  * Enable to restore build options from the server
+  * Enable to create container from error
+  * Allow passing ResultContext from server to the client through
+    grpcerror
+  * build: support for saving local state by build ref
+  * build: avoid file resolution of dockerfile urls
+  * bake: ensure remote files behind ssh expose agent
+  * bake: update ReadRemoteFiles to use buildkit api
+  * vendor: update buildkit to master@333ee9158128
+  * cli: add completion to list builder names
+  * build: add completion to list context folders
+  * bake: add completion to list targets
+  * cli: set default completion
+  * driver: update BuildKit version constraint for docker driver
+  * build(deps): Bump peter-evans/create-pull-request from 4.2.4 to
+    5.0.0
+  * bake: fix map type checking to detect matrix property set to
+    list
+  * bake: add replace func to stdlib
+  * chore: sort bake stdlib map
+  * docs: prune links in README toc, add external reference
+  * ci: check repo origin on push tag event
+  * controller: Extract nested CommonOptions on controller API
+  * bake: forward default ssh agent for remote bake file
+  * bake: use build.IsRemoteURL
+  * build: use buildkit's gitutil package to detect remote files
+  * bake: additional validation for matrixes
+  * docs: update ls command output sample
+  * build(deps): Bump github.com/opencontainers/runc from 1.1.4 to
+    1.1.5
+  * driver: resolve BuildKit version for docker driver
+  * bake: add additional tests for matrix behavior
+  * vendor: update buildkit to master@8b7bcb900d3c
+  * build: replace removed buildkit BUILDINFO field
+  * build: fixup resolvePaths for remote context path
+  * chore: fix issue template
+  * remote: avoid tls error if both key and cert are not set
+  * bake: generate implicit groups for matrixes
+  * bake: add matrix to target block
+  * bake: allow overriding name property
+  * bake: allow interception to create derived contexts
+  * build(deps): Bump peter-evans/create-pull-request from 4.2.3 to
+    4.2.4
+  * bake: move SOURCE_DATE_EPOCH parsing to overrides
+  * k8s: corev1.Handler has been replaced by corev1.ProbeHandler
+  * vendor: bump k8s to v0.25.4
+  * build: move SOURCE_DATE_EPOCH parsing into option generation
+  * k8s: generate node name if not provided
+  * version: add "v" prefix to version for tagging convention
+    consistency
+  * build: strip credentials from remote url on collecting Git
+    provenance info
+  * monitor: Enable to exec into the container
+  * monitor: resolve oci layout path in client
+  * monitor: resolve paths arguments in client
+  * docs: guides moved to docs website
+  * controller: use os.Executable() for getting the exceutable path
+  * ci: update docs-upstream workflow
+  * docs: do not generate ref for internal serve command
+  * build: makes git dirty check opt-in
+  * chore: github issue template
+  * controller: handle attestation options across api
+  * controller: move image id file writing to client
+  * controller: return solve response through api
+  * controller: strongly type the controller api
+  * build(deps): Bump golang.org/x/net from 0.5.0 to 0.7.0
+  * Dockerfile: align frontend version
+  * fix lint issue
+  * fix cannot set environment variables in parallel tests
+  * remove deprecated golangci-lint linters
+  * update golangci-lint to v1.51.1
+  * update to go 1.20
+  * Add env var to disable default attestations
+  * docs: added --platform=local example
+  * build: print instance being used
+  * vendor: update buildkit
+  * Remove git warning: buildx/1633
+  * monitor: fix typo in help message
+  * imagetools: process com.docker.reference.* annotations
+  * controller: set absolute path of server binary before execution
+  * inspect: display labels and gc policies
+  * builder: add worker gc policies and labels
+  * controller: use unique files per buildx version
+  * controller: use grpc with contexts for improved timeouts
+  * controller: exit cleanly on SIGTERM
+  * controller: add more informative server exit messages
+  * build: don't kill remote controller after build
+  * vendor: github.com/docker/cli v23.0.0
+  * vendor: github.com/docker/docker v23.0.0
+  * vendor: golang.org/x/oauth2 v0.1.0
+  * vendor: golang.org/x/net v0.5.0
+  * vendor: golang.org/x/term v0.4.0
+  * vendor: golang.org/x/text v0.6.0
+  * vendor: golang.org/x/sys v0.4.0
+  * vendor: github.com/google/certificate-transparency-go v1.1.4
+  * vendor: github.com/containerd/containerd v1.6.16
+  * build: check reachable git commits
+  * gitutil: override the locale to ensure consistent output
+  * bake: avoid nesting error diagnostics
+  * bake: avoid early-exit for resolution failures
+  * ci: remove releases-json workflow
+  * github: update .github/releases.json
+  * build: add docs for boolean attestation flags
+  * builder: fix docker context not validated
+  * update github.com/compose-spec/compose-go to v1.9.0
+  * lint: ban fmt.Errorf in preference of errors.Errorf
+  * lint: enable gosec
+  * bake: fix loop references
+  * hack: move syntax directive to top of generated-files
+  * controller: move controllers out of commands into separate
+    package
+  * ci: fix pr branch name in releases-json workflow
+  * ci: add workflow_dispatch in releases-json workflow
+  * ci: update buildx and buildkit to latest
+  * ci: fix docs-upstream workflow
+  * build: better message output for git provenance
+  * build: silently fail if git remote not found
+  * github: update .github/releases.json
+  * ci: generate releases.json on release event
+  * build: fix multi-node merge to read descriptor from result
+  * bake: SOURCE_DATE_EPOCH: fix `panic: assignment to entry in nil
+    map`
+  * build: fix preferred platform not taken account
+  * vendor: update buildkit to v0.11.2
+  * go.mod: bump to Go 1.19
+  * Enable to run build and invoke in background
+  * build: set remote origin url
+  * imagetools: silence intoto warnings
+  * rm: do not check for context builders when removing inactive
+  * ci: update buildkit release version in build pipeline
+  * docs: add note about minimum docker version
+  * build: mark capabilities request as internal
+  * vendor: github.com/moby/buildkit v0.11.1
+  * ci: update buildx release version in build pipeline
+  * docs: add reference for new attest family of flags
+  * docs: fix broken link in buildx_bake CLI reference
+  * ci: fix typo in docs-release workflow
+  * build: error when using docker exporter and attestations
+  * build: avoid compatability error when attestations disabled
+  * docs: small tweak to opentelemetry
+  * inspect: lazily load attestation data
+  * inspect: move attestation loading to struct methods
+  * build: create error group per opt
+  * build: reorder error group funcs
+  * build: use copy for BuildWithResultHandler loop vars
+  * fix the directory of the buildx binary
+  * github: update CI to buildkit v0.11
+  * docs: update with new inspect output
+  * inspect: change additional spdxs to not have duplicates
+  * inspect: provide access to multiple spdx documents
+  * inspect: parse sbom and provenance into json structs
+  * inspect: break after first matching attestation
+  * go.mod: update cli-docs-tool v0.5.1 and re-generate docs
+  * docs: update anchor links
+  * vendor: update buildkit to v0.11.0-rc4
+  * imagetools inspect: handle provenance and sbom
+  * e2e: use native k3s installation script
+  * docs: update oci layout with tag resolution
+  * imagetools inspect: missing annotations key
+  * Propagate SOURCE_DATE_EPOCH from the client env
+  * build: refactor reference parsing for image layouts
+
+-------------------------------------------------------------------
 Tue May 23 07:30:23 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.10.5:
