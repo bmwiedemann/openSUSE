@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Jun 14 04:42:21 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 59.0:
+  * New features:
+    + a4fc7a1: Support image-orientation
+  * Dependencies:
+    + #1754: Pillow 9.1.0 is now needed
+  * Bug fixes:
+    + #1864: Handle overflow for svg and symbol tags in SVG images
+    + #1867: Remove duplicate compression of attachments
+    + d0ad5c1: Override use tag children instead of drawing their references
+    + #1874: Drawn underline and overline behind text
+    + #1822, #1823: Fix vertical positioning for absolute replaced elements
+    + #1807: Don’t crash when out-of-flow box is split in out-of-flow parent
+    + #1806: Don’t crash when fixed elements aren’t displayed yet in
+      aborted line
+    + #1809: Fix background drawing for out-of-the-page transformed boxes
+    + #1764: Use reference instead of stream for annotation appearance stream
+    + #1783: Fix multiple font weights for @font-face declarations
+    + #1756: Fix rem font size for SVG images
+    + #1755: Keep format when transposing images
+    + #1753: Don’t use deprecated read_text function when files is available
+    + #1741: Generate better manpage
+    + #1747: Correctly set target counters in pages’ absolute elements
+    + #1748: Always set font size when font is changed in line
+    + #1739: Set baseline on all flex containers
+    + #1740: Don’t crash when currentColor is set on root svg tag
+    + #1718: Don’t crash with empty bitmap glyphs
+    + #1736: Always use the font’s vector variant when possible
+    + #1662: Use a stable key to store stream fonts
+    + #1733: Don’t remove attachments when adding internal anchors
+  * Performance:
+    + dfccf1b: Use faces as fonts dictionary keys
+    + 0dc12b6: Cache add_font to avoid calling get_face too often
+    + 75e17bf: Don’t call process_whitespace twice on many children
+    + 498d3e1: Optimize __missing__ functions
+
+-------------------------------------------------------------------
 Sat Sep  3 19:13:07 UTC 2022 - Klaas Freitag <opensuse@freisturz.de>
 
 - Update to version 56.1 
