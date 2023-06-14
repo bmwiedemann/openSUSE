@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-pathable
 Version:        0.4.3
 Release:        0
