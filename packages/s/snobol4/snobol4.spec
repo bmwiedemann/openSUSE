@@ -27,6 +27,7 @@ URL:            https://www.regressive.org/snobol4/csnobol4/curr/
 Source0:        https://ftp.regressive.org/snobol4/%{name}-%{version}.tar.gz
 # Do not hardcode -O3.
 Patch1:         snobol4-2.3.1-configure-no-opt.patch
+Patch2:         reproducible.patch
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel

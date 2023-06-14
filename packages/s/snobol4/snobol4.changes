@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 29 14:29:04 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to drop build date (boo#1047218)
+
+-------------------------------------------------------------------
 Tue Apr  4 08:29:44 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build: also package /usr/bin/snobol4-%{version}
