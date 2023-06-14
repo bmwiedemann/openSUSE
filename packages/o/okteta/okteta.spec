@@ -20,11 +20,10 @@
 %define Okteta_sover 3
 %bcond_without released
 Name:           okteta
-Version:        0.26.10
+Version:        0.26.11
 Release:        0
 Summary:        Hex Editor
 License:        GFDL-1.2-only AND GPL-2.0-only
-Group:          Development/Tools/Other
 URL:            https://apps.kde.org/okteta
 Source0:        https://download.kde.org/stable/okteta/%{version}/src/okteta-%{version}.tar.xz
 %if %{with released}
@@ -62,7 +61,6 @@ BuildRequires:  cmake(Qt5ScriptTools)
 BuildRequires:  cmake(Qt5UiPlugin)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
-Recommends:     %{name}-lang
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 
@@ -71,7 +69,6 @@ Okteta is a hex editor for the raw data of files.
 
 %package data
 Summary:        Hex Editor data files
-Group:          Development/Tools/Other
 # the files were in the main package before
 Conflicts:      %{name} < 0.26
 BuildArch:      noarch
@@ -81,7 +78,6 @@ Data files used by Okteta/libKasten, e.g. structures definitions.
 
 %package part
 Summary:        Hex Editor KParts plugin
-Group:          Development/Tools/Other
 Recommends:     %{name}-part-lang
 
 %description part
@@ -89,7 +85,6 @@ Hex editing component for KParts
 
 %package -n libKasten%{Kasten_sover}
 Summary:        High-level hex editor/viewer framework libraries
-Group:          Development/Tools/Other
 Requires:       %{name}-data
 Recommends:     libkasten-lang
 Provides:       libkasten = %{version}
@@ -100,7 +95,6 @@ applications.
 
 %package -n libOkteta%{Okteta_sover}
 Summary:        Hex editor/viewer QWidgets libraries
-Group:          Development/Tools/Other
 Recommends:     libokteta-lang
 Provides:       libokteta = %{version}
 
@@ -109,7 +103,6 @@ Okteta libraries for QWidget-based hex editing widgets.
 
 %package devel
 Summary:        Development files for the Okteta Hex Editor
-Group:          Development/Tools/Other
 Requires:       libKasten%{Kasten_sover} = %{version}
 Requires:       libOkteta%{Okteta_sover} = %{version}
 # designer plugin was in the main package before
@@ -142,12 +135,10 @@ Contains the development files for the Okteta Hex Editor.
 %find_lang liboktetakasten libkasten.lang
 %{kf5_find_htmldocs}
 
-%suse_update_desktop_file    org.kde.okteta         Utility Editor
+%suse_update_desktop_file org.kde.okteta Utility Editor
 
-%post -n libKasten%{Kasten_sover} -p /sbin/ldconfig
-%postun -n libKasten%{Kasten_sover} -p /sbin/ldconfig
-%post -n libOkteta%{Okteta_sover} -p /sbin/ldconfig
-%postun -n libOkteta%{Okteta_sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libKasten%{Kasten_sover}
+%ldconfig_scriptlets -n libOkteta%{Okteta_sover}
 
 %files
 %license LICENSES/*
@@ -179,7 +170,6 @@ Contains the development files for the Okteta Hex Editor.
 %{_kf5_libdir}/libOkteta%{Okteta_sover}*.so.*
 
 %files devel
-%license LICENSES/*
 %{_kf5_cmakedir}/
 %{_kf5_libdir}/libKasten%{Kasten_sover}*.so
 %{_kf5_libdir}/libOkteta%{Okteta_sover}*.so
@@ -191,15 +181,11 @@ Contains the development files for the Okteta Hex Editor.
 %{_kf5_plugindir}/designer/
 
 %files lang -f %{name}.lang
-%license LICENSES/*
 
 %files part-lang -f oktetapart.lang
-%license LICENSES/*
 
 %files -n libkasten-lang -f libkasten.lang
-%license LICENSES/*
 
 %files -n libokteta-lang -f libokteta.lang
-%license LICENSES/*
 
 %changelog

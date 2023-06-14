@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Jun 14 10:00:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.26.11:
+  * Improved: translations
+  * Improved: Search tool: store used settings in the config
+  * Improved: Replace tool: store used settings in the config
+  * Improved: Select range tool: store used settings in the config
+  * Improved: Goto tool: store used settings in the config
+  * Improved: Pattern generator: store also used input encoding
+    in the config
+  * Improved: Statistics tool: add option to copy data to clipboard
+  * Improved: Statistics tool: use consistent formatting for
+    percent column
+  * Improved: Structures tool: enable context menu for array and
+    string elements
+  * Improved: Structures tool: show tooltip for array & string elements
+  * Fixed: Search tool: prevent crash on backward search with empty array
+  * Fixed: Search tool: enhance/fix search behaviour with existing selection
+  * Fixed: Search tool: don't reset stored search direction on first dialog show
+  * Fixed: Replace tool: prevent crash on backward search with empty array
+  * Fixed: Replace tool: enhance/fix search behaviour with existing selection
+  * Fixed: Structures tool: fix parsing 3 and 4 byte UTF-8 sequences
+  * Fixed: Structures tool: fix outdated error indices for UTF-8 string decoding
+  * Fixed: unit tests accidentally shared working directories (kde#467541)
+  * Changed: Select range tool: move "Relative to end" field next to end input
+  * Changed: Search tool: disable automagic for "In selection" checkbox (kde#441925)
+  * Changed: Replace tool: disable automagic for "In selection" checkbox (kde#441925)
+
+-------------------------------------------------------------------
 Mon Jan 16 09:08:02 UTC 2023 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 0.26.10
