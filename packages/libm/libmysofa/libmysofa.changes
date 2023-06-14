@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 12 08:41:16 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Add 0001-fix-big-endian-convertion-of-double-value.patch:
+  backport bigendian fixes from upstream git.
+
+-------------------------------------------------------------------
 Sat Oct 29 17:54:35 UTC 2022 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.3.1:

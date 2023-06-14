@@ -1,7 +1,7 @@
 #
 # spec file for package libmysofa
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/hoene/libmysofa
 Source0:        https://github.com/hoene/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
+Patch0:         0001-fix-big-endian-convertion-of-double-value.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  ninja
