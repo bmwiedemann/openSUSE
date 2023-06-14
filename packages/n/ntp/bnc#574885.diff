@@ -1,7 +1,7 @@
-Index: lib/isc/unix/interfaceiter.c
+Index: libntp/lib/isc/unix/interfaceiter.c
 ===================================================================
---- lib/isc/unix/interfaceiter.c.orig
-+++ lib/isc/unix/interfaceiter.c
+--- libntp/lib/isc/unix/interfaceiter.c.orig
++++ libntp/lib/isc/unix/interfaceiter.c
 @@ -147,7 +147,7 @@ get_addr(unsigned int family, isc_netadd
  
  #ifdef __linux

@@ -1300,4 +1300,27 @@ Properly categorise licenses and sync with Fedora declaration (forwarded request
   * Add ntp-CVE-2023-26551.patch</comment>
     <requestid>1085150</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>5474165d463cc8d9515d904f4ccc180a</srcmd5>
+    <version>4.2.8p17</version>
+    <time>1686752964</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.2.8p17:
+  * Fix some regressions of 4.2.8p16
+- Update to 4.2.8p16:
+  * [Sec 3808] Assertion failure in ntpq on malformed RT-11 date
+  * [Sec 3807], bsc#1210390, CVE-2023-26555:
+    praecis_parse() in the Palisade refclock driver has a
+    hypothetical input buffer overflow.
+  * [Sec 3767] An OOB KoD RATE value triggers an assertion when
+    debug is enabled.
+  * Obsoletes: ntp-CVE-2023-26551.patch, ntp-sntp-dst.patch,
+    ntp-ENOBUFS.patch
+  * Multiple bug fixes and improvements. For details, see:
+    /usr/share/doc/packages/ntp/ChangeLog
+    http://www.ntp.org/support/securitynotice/4_2_8-series-changelog/
+- Follow upstream's suggestion to build with debugging disabled:
+  https://www.ntp.org/support/securitynotice/ntpbug3767/</comment>
+    <requestid>1092906</requestid>
+  </revision>
 </revisionlist>

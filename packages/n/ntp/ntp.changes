@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jun  7 09:12:40 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Update to 4.2.8p17:
+  * Fix some regressions of 4.2.8p16
+- Update to 4.2.8p16:
+  * [Sec 3808] Assertion failure in ntpq on malformed RT-11 date
+  * [Sec 3807], bsc#1210390, CVE-2023-26555:
+    praecis_parse() in the Palisade refclock driver has a
+    hypothetical input buffer overflow.
+  * [Sec 3767] An OOB KoD RATE value triggers an assertion when
+    debug is enabled.
+  * Obsoletes: ntp-CVE-2023-26551.patch, ntp-sntp-dst.patch,
+    ntp-ENOBUFS.patch
+  * Multiple bug fixes and improvements. For details, see:
+    /usr/share/doc/packages/ntp/ChangeLog
+    http://www.ntp.org/support/securitynotice/4_2_8-series-changelog/
+- Follow upstream's suggestion to build with debugging disabled:
+  https://www.ntp.org/support/securitynotice/ntpbug3767/
+
+-------------------------------------------------------------------
 Fri May  5 13:55:24 UTC 2023 - Reinhard Max <max@suse.com>
 
 - bsc#1210386: out-of-bounds writes in mstolfp()

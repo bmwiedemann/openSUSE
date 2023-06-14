@@ -23,7 +23,7 @@
 
 %define ntpfaqversion 3.4
 Name:           ntp
-Version:        4.2.8p15
+Version:        4.2.8p17
 Release:        0
 Summary:        Network Time Protocol daemon (version 4)
 License:        BSD-3-Clause AND MIT AND BSD-4-Clause AND GPL-2.0-only
@@ -51,8 +51,6 @@ Patch11:        ntp-4.2.6p2-seed_file.patch
 Patch15:        bnc#506908.diff
 Patch16:        MOD_NANO.diff
 Patch18:        bnc#574885.diff
-Patch19:        ntp-ENOBUFS.patch
-Patch20:        ntp-sntp-dst.patch
 Patch23:        ntp-openssl-version.patch
 Patch27:        ntp-netlink.patch
 Patch29:        ntp-pathfind.patch
@@ -60,7 +58,6 @@ Patch30:        ntp-move-kod-file.patch
 Patch33:        ntp-sntp-libevent.patch
 Patch34:        testdcf-gude.diff
 Patch35:        ntp-clarify-interface.patch
-Patch36:        ntp-CVE-2023-26551.patch
 
 BuildRequires:  avahi-compat-mDNSResponder-devel
 BuildRequires:  fdupes
@@ -140,8 +137,6 @@ cp %{SOURCE12} .
 %patch15
 %patch16
 %patch18
-%patch19 -p1
-%patch20 -p1
 %patch23
 %patch27
 %patch29
@@ -149,7 +144,6 @@ cp %{SOURCE12} .
 %patch33
 %patch34 -p1
 %patch35
-%patch36
 
 # fix DOS line breaks
 sed -i 's/\r//g' html/scripts/{footer.txt,style.css}
@@ -168,6 +162,7 @@ export LDFLAGS="-pie"
 	--with-binsubdir=bin \
 	--bindir=%{_sbindir} \
 	--htmldir=%{_docdir}/ntp-doc \
+	--disable-debugging \
 	--enable-parse-clocks \
 	--enable-all-clocks \
 	--enable-linuxcaps \
