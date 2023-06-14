@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jun 13 16:51:19 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.17.1:
+  * Bugfixes
+    - Update guess install method check (#3553) @ajinkyau
+    - Fix exclude logic bug that can cause cause partial linting
+      (#3552) @ssbarnea
+    - Make profile information on summary line more clear (#3545)
+      @ssbarnea
+    - Avoid adding pip related messages if installation method is
+      different (#3551) @ajinkyau
+    - Avoid false positive with var-naming[no-role-prefix] (#3550)
+      @ssbarnea
+    - Make refresh_schemas handle firewalls that cut the file
+      transfer midway (#3546) @sverrehu
+    - Rename marketplace action (#3548) @ssbarnea
+    - Fix action name (#3536) @coaxial
+    - Handling of exclude paths with trailing slashs (#3527)
+      @hille721
+    - Ensure that rules collections use Runtime in offline mode
+      (#3526) @ssbarnea
+    - Avoid using get_app() from inside the rule (#3525) @ssbarnea
+    - Avoid dependency error from rich (#3517) @ssbarnea
+
+-------------------------------------------------------------------
 Thu Jun  1 05:33:18 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.17.0:
