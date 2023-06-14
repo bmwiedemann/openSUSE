@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 14 06:18:31 UTC 2023 - Jiri Srain <jsrain@suse.com>
+
+- update _constrainsts to 8GB of disk to avoid random build
+  failures
+
+-------------------------------------------------------------------
 Wed Apr 19 11:02:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.15.9

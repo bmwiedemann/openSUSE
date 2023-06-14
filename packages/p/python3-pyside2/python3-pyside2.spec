@@ -122,7 +122,7 @@ application and UI framework.
 
 %package devel
 Summary:        Header Files for PySide2
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-2.0-only AND GPL-3.0-only WITH Qt-GPL-exception-1.0
+License:        (GPL-2.0-only AND (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-3.0-only WITH Qt-GPL-exception-1.0) OR LGPL-3.0-only
 Requires:       %{name} = %{version}
 
 %description devel
