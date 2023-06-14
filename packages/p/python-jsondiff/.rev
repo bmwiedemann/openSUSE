@@ -71,4 +71,12 @@
 - Remove jsondiff command from %install, %post, %postun and %files sections (forwarded request 978966 from glaubitz)</comment>
     <requestid>978978</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d2445cce861f5eb249f713eb45ca30de</srcmd5>
+    <version>2.0.0</version>
+    <time>1686753014</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093032</requestid>
+  </revision>
 </revisionlist>
