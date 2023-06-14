@@ -17,8 +17,7 @@
 
 
 Name:           gjs
-Version:        1.76.0
-# FIXME # Disable tests for unstable 1.71.1 - Try tests again on next versionbump
+Version:        1.76.1
 Release:        0
 Summary:        JavaScript bindings based on gobject-introspection and Mozilla
 License:        LGPL-2.0-or-later AND MIT
@@ -107,12 +106,11 @@ Mozilla SpiderMonkey JavaScript engine.
 %install
 %meson_install
 
-# FIXME # Disable tests for unstable 1.71.1
-#%%check
-#export DISPLAY=:98
-#Xvfb :98 >& Xvfb.log & trap "kill $! || true" EXIT
-#sleep 10
-#%%meson_test
+%check
+export DISPLAY=:98
+Xvfb :98 >& Xvfb.log & trap "kill $! || true" EXIT
+sleep 10
+%meson_test
 
 %ldconfig_scriptlets -n libgjs0
 

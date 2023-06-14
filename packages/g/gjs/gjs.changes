@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jun 11 20:38:30 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.76.1:
+  + Various fixes ported from the development branch.
+  + Closed bugs and merge requests:
+    - gnome-shell crashes on exit in js::gc::Cell::storeBuffer
+    - Memory leak with GError
+    - GVariant return values leaked
+    - GBytes's are leaked when passed as-is to a function
+    - Transformated GValues are leaking temporary instances
+    - GHash value infos are leaked
+    - "flat" arrays of GObject's are leaked
+    - Gjs console leaks invalid option errors
+    - gjs can't print null
+
+-------------------------------------------------------------------
+Thu May 18 20:22:30 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Enable tests during build again.
+
+-------------------------------------------------------------------
 Sun Mar 19 07:52:52 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.76.0:
