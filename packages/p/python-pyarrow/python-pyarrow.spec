@@ -19,19 +19,14 @@
 %bcond_with xsimd
 %define plainpython python
 Name:           python-pyarrow
-Version:        12.0.0
+Version:        12.0.1
 Release:        0
 Summary:        Python library for Apache Arrow
 License:        Apache-2.0 AND BSD-3-Clause AND BSD-2-Clause AND MIT
 Group:          Development/Languages/Python
 URL:            https://arrow.apache.org/
-Source:         https://files.pythonhosted.org/packages/source/p/pyarrow/pyarrow-%{version}.tar.gz
-# From the GitHub Archive
-Source10:       LICENSE.txt
-Source11:       NOTICE.txt
+Source0:        https://github.com/apache/arrow/archive/apache-arrow-%{version}.tar.gz
 Source99:       python-pyarrow.rpmlintrc
-# PATCH-FIX-UPSTREAM pyarrow-pr35822-pandas2-extensiontype.patch gh#apache/arrow#35822, gh#apache/arrow#35839
-Patch0:         pyarrow-pr35822-pandas2-extensiontype.patch
 BuildRequires:  %{python_module Cython >= 0.29.31}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.16.6}
@@ -95,12 +90,12 @@ This package provides the header files within the python
 platlib for consuming modules using cythonization.
 
 %prep
-%autosetup -p2 -n pyarrow-%{version}
-cp %{SOURCE10} %{SOURCE11} ./
+%autosetup -p1 -n arrow-apache-arrow-%{version}
 # we disabled the jemalloc backend in apache-arrow
-sed -i 's/should_have_jemalloc = sys.platform == "linux"/should_have_jemalloc = False/' pyarrow/tests/test_memory.py
+sed -i 's/should_have_jemalloc = sys.platform == "linux"/should_have_jemalloc = False/' python/pyarrow/tests/test_memory.py
 
 %build
+pushd python
 export CFLAGS="%{optflags}"
 export PYARROW_BUILD_TYPE=relwithdebinfo
 export PYARROW_BUILD_VERBOSE=1
@@ -120,13 +115,15 @@ export PYARROW_CMAKE_OPTIONS=" \
    -DARROW_RUNTIME_SIMD_LEVEL:STRING=%{?with_xsimd:MAX}%{!?with_xsimd:NONE} \
 "
 %pyproject_wheel
+popd
 
 %install
+pushd python
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+popd
 
 %check
-pushd ..
 # Unexpected additional warning
 donttest="test_env_var"
 # flaky
@@ -145,7 +142,6 @@ donttest="$donttest or test_schema_sizeof"
 %endif
 %pytest_arch --pyargs pyarrow -n auto -k "not ($donttest)"
 %pytest_arch --pyargs pyarrow -n auto -k "$donttest" || :
-popd
 
 %files %{python_files}
 %doc README.md

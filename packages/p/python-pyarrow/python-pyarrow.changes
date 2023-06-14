@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun 12 12:22:31 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 12.0.1
+  ## Bug Fixes
+  * [GH-35389] - [Python] Fix coalesce_keys=False option in join
+    operation (#35505)
+  * [GH-35821] - [Python][CI] Skip extension type test failing with
+    pandas 2.0.2 (#35822)
+  * [GH-35845] - [CI][Python] Fix usage of assert_frame_equal in
+    test_hdfs.py (#35842)
+  ## New Features and Improvements
+  * [GH-35329] - [Python] Address pandas.types.is_sparse deprecation
+    (#35366)
+- Drop pyarrow-pr35822-pandas2-extensiontype.patch
+
+-------------------------------------------------------------------
 Wed Jun  7 07:39:44 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Skip invalid pandas 2 test
