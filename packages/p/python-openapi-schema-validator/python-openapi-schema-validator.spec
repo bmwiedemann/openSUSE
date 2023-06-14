@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-openapi-schema-validator
 Version:        0.4.4
 Release:        0
