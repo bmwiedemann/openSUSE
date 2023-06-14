@@ -138,4 +138,12 @@
   fixes test with kernel &lt;= 5.16 (bsc#1209723)</comment>
     <requestid>1080969</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>158bc52859d35393ba47276568aee972</srcmd5>
+    <version>2.4</version>
+    <time>1686752938</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092731</requestid>
+  </revision>
 </revisionlist>

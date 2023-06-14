@@ -18,17 +18,13 @@
 
 %define lname   liburing2
 Name:           liburing
-Version:        2.3
+Version:        2.4
 Release:        0
 Summary:        Linux-native io_uring I/O access library
 License:        (GPL-2.0-only AND LGPL-2.1-or-later) OR MIT
 Group:          Development/Libraries/C and C++
 URL:            https://git.kernel.dk/cgit/liburing
 Source:         https://git.kernel.dk/cgit/liburing/snapshot/%{name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM: fix tests on big endian
-Patch1:         0001-test-helpers-fix-socket-length-type.patch
-Patch2:         0001-Do-not-always-expect-multishot-recv-to-stop-posting-.patch
-Patch3:         0001-test-file-verify.t-Don-t-run-over-mlock-limit-when-r.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  procps
@@ -46,6 +42,14 @@ Group:          Development/Libraries/C and C++
 %description -n %{lname}
 Provides native async IO for the Linux kernel, in a fast and efficient
 manner, for both buffered and O_DIRECT.
+
+%package -n liburing-ffi2
+Summary:        io_uring I/O access library for non-C/C++ languages
+Group:          Development/Libraries/C and C++
+
+%description -n liburing-ffi2
+Foreign function interface for liburing, offering non-C/C++ language
+integration.
 
 %package devel
 Summary:        Development files for Linux-native io_uring I/O access library
@@ -81,20 +85,27 @@ sh ./configure --prefix=%{_prefix} \
 
 %install
 %make_install
-rm -v %{buildroot}%{_libdir}/%{name}.a
+rm -v %{buildroot}%{_libdir}/%{name}*.a
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
 
+%post -n liburing-ffi2 -p /sbin/ldconfig
+%postun -n liburing-ffi2 -p /sbin/ldconfig
+
 %files -n %{lname}
 %{_libdir}/liburing.so.*
 %license COPYING COPYING.GPL LICENSE
+
+%files -n liburing-ffi2
+%{_libdir}/liburing-ffi.so.*
 
 %files devel
 %doc README
 %{_includedir}/liburing/
 %{_includedir}/liburing.h
 %{_libdir}/liburing.so
+%{_libdir}/liburing-ffi.so
 %{_libdir}/pkgconfig/*
 %{_mandir}/man2/*
 %{_mandir}/man3/*

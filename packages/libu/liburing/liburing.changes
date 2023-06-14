@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jun 12 08:44:39 UTC 2023 - David Disseldorp <ddiss@suse.com>
+
+- Update to 2.4:
+  * Add io_uring_{major,minor,check}_version() functions.
+  * Add IO_URING_{MAJOR,MINOR,CHECK}_VERSION() macros.
+  * FFI support (for non-C/C++ languages integration).
+  * Add io_uring_prep_msg_ring_cqe_flags() function.
+  * Deprecate --nolibc configure option.
+  * CONFIG_NOLIBC is always enabled on x86-64, x86, and aarch64.
+  * Add support for IORING_REGISTER_USE_REGISTERED_RING and use if available.
+  * Add io_uring_close_ring_fd() function.
+  * Add io_uring_prep_msg_ring_fd_alloc function.
+  * Add io_uring_free_buf_ring() and io_uring_setup_buf_ring() functions.
+  * Ensure that io_uring_prep_accept_direct(), io_uring_prep_openat_direct(),
+    io_uring_prep_openat2_direct(), io_uring_prep_msg_ring_fd(), and
+    io_uring_prep_socket_direct() factor in being called with
+    IORING_FILE_INDEX_ALLOC for allocating a direct descriptor.
+  * Add io_uring_prep_sendto() function.
+- Add liburing-ffi2 package for corresponding FFI library, given that
+  dependents will normally require either that or the base library (not both).
+- Drop upstream patches:
+  * 0001-Do-not-always-expect-multishot-recv-to-stop-posting-.patch
+  * 0001-test-file-verify.t-Don-t-run-over-mlock-limit-when-r.patch
+  * 0001-test-helpers-fix-socket-length-type.patch
+
+-------------------------------------------------------------------
 Thu Apr 20 20:26:32 UTC 2023 - Gabriel Krisman Bertazi <gabriel.bertazi@suse.com>
 
 - Add 0001-test-file-verify.t-Don-t-run-over-mlock-limit-when-r.patch
