@@ -824,4 +824,31 @@
     <comment></comment>
     <requestid>1085070</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>75f9e7925ebc857110cdd9f9c9961a4a</srcmd5>
+    <version>2.31.0</version>
+    <time>1686752915</time>
+    <user>dimstar_suse</user>
+    <comment>- Delete requests-no-hardcoded-version.patch
+- Security Update to 2.31.0 (bsc#1211674):
+  Versions of Requests between v2.3.0 and v2.30.0 are vulnerable to potential
+  forwarding of Proxy-Authorization headers to destination servers when
+  following HTTPS redirects.
+  When proxies are defined with user info (https://user:pass@proxy:8080), Requests
+  will construct a Proxy-Authorization header that is attached to the request to
+  authenticate with the proxy.
+  In cases where Requests receives a redirect response, it previously reattached
+  the Proxy-Authorization header incorrectly, resulting in the value being
+  sent through the tunneled connection to the destination server. Users who rely on
+  defining their proxy credentials in the URL are strongly encouraged to upgrade
+  to Requests 2.31.0+ to prevent unintentional leakage and rotate their proxy
+  credentials once the change has been fully deployed.
+  Users who do not use a proxy or do not supply their proxy credentials through
+  the user information portion of their proxy URL are not subject to this
+  vulnerability.
+  Full details can be read in our Github Security Advisory
+  and CVE-2023-32681.
+</comment>
+    <requestid>1092607</requestid>
+  </revision>
 </revisionlist>

@@ -26,14 +26,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-requests%{psuffix}
-Version:        2.30.0
+Version:        2.31.0
 Release:        0
 Summary:        Python HTTP Library
 License:        Apache-2.0
 URL:            https://docs.python-requests.org/
 Source:         https://files.pythonhosted.org/packages/source/r/requests/requests-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM: Allow charset normalizer >=2 and <4, and don't strict require httpbin===1.0.0
-Patch0:         requests-no-hardcoded-version.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
