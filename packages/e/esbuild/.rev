@@ -25,4 +25,14 @@
 </comment>
     <requestid>1086844</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a1d7db791e6091c1b0c7730e7b2fb829</srcmd5>
+    <version>0.18.2</version>
+    <time>1686752998</time>
+    <user>dimstar_suse</user>
+    <comment>- roll 0.17.18...0.18.2
+  * see CHANGELOG.md for changes
+</comment>
+    <requestid>1092994</requestid>
+  </revision>
 </revisionlist>
