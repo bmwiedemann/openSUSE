@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jun 12 20:32:19 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- rnp 0.17.0:
+  * Add support for hidden recipient during decryption
+  * Improve support for offline secret keys during default key
+     selection
+  * Support for GnuPG 2
+  * SExp parsing code is moved to separate library
+  * Mark subkeys as expired instead of invalid if primary key is
+    expired
+  * AEAD: use OCB by default instead of EAX
+  * Do not attempt to validate signatures of unexpected types
+  * Use thread-safe time and date handling functions
+  * Added ENABLE_BLOWFISH, ENABLE_CAST5 and ENABLE_RIPEMD160 build
+    time options
+  * Corrected usage of CEK/KEK algorithms if those differs
+  * Add default armor message type for --enarmor command
+  * Add command --set-filename to specify which file name should be stored in message
+  * Add --add-subkey subcommand to the --edit-key
+  * Add set-expire subcommand to the --edit-key
+  * Add --s2k-iterations and --s2k-msec options to the rnp
+  * dd --allow-weak-hash command to allow usage of weak hash algorithms
+  * Report number of new/updated keys during the key import
+- add rnp-v0.17.0-disable-static.patch
+- add rnp-v0.17.0-gcc13.patch
+- uses bundled libsexp
+
+-------------------------------------------------------------------
 Mon Jun 12 17:16:52 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - rnp 0.16.3:

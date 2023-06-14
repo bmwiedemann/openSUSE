@@ -1,0 +1,154 @@
+From 8f7b2f27af277b0577ada7ecc54bb2db190eac85 Mon Sep 17 00:00:00 2001
+From: "Maxim [maxirmx] Samsonov" <m.samsonov@computer.org>
+Date: Wed, 3 May 2023 20:26:49 +0300
+Subject: [PATCH] Not installing static libraries when BUILD_SHARED_LIBS=ON
+
+---
+ ci/tests/deb-tests.sh  |  2 --
+ ci/tests/pk-tests.sh   | 27 ---------------------------
+ ci/tests/pkg-tests.sh  |  2 --
+ ci/tests/rpm-tests.sh  |  2 --
+ src/lib/CMakeLists.txt | 33 +++++++++++++--------------------
+ 5 files changed, 13 insertions(+), 53 deletions(-)
+
+diff --git a/ci/tests/deb-tests.sh b/ci/tests/deb-tests.sh
+index 78057026..35630223 100755
+--- a/ci/tests/deb-tests.sh
++++ b/ci/tests/deb-tests.sh
+@@ -43,8 +43,6 @@ declare expected_libraries=(
+ 
+ declare expected_devlibraries=(
+     "$DIR_LIB/librnp.so"
+-    "$DIR_LIB/librnp.a"
+-    "$DIR_LIB/libsexp.a"
+     "$DIR_LIB/pkgconfig/librnp.pc"
+ )
+ 
+diff --git a/ci/tests/pk-tests.sh b/ci/tests/pk-tests.sh
+index 2b22df99..34f9b17c 100755
+--- a/ci/tests/pk-tests.sh
++++ b/ci/tests/pk-tests.sh
+@@ -101,33 +101,6 @@ test_shared_library() {
+     sudo yum -y erase $(rpm -qa  | grep rnp)
+ }
+ 
+-test_static_library() {
+-    sudo yum -y localinstall librnp0-0*.*.rpm librnp0-devel-0*.*.rpm
+-    pushd "$(mktemp -d)"
+-    create_source_file
+-    create_cmake_file 'rnp::librnp-static'
+-
+-# shellcheck disable=SC2251
+-!   cmake . -DCMAKE_MODULE_PATH="$DIR_CMAKE"/*
+-    assertEquals "cmake failed at static library test" 0 "${PIPESTATUS[0]}"
+-
+-# shellcheck disable=SC2251
+-!   make
+-    assertEquals "make failed at static library test" 0 "${PIPESTATUS[0]}"
+-
+-# shellcheck disable=SC2251
+-!   ./find_package_test
+-    assertEquals "test program failed at static library test" 0 "${PIPESTATUS[0]}"
+-
+-# shellcheck disable=SC2251
+-!   ldd find_package_test | grep librnp
+-    assertNotEquals "unexpected reference to shared rnp library at static library test" 0 "${PIPESTATUS[1]}"
+-
+-    popd
+-# shellcheck disable=SC2046
+-    sudo yum -y erase $(rpm -qa  | grep rnp)
+-}
+-
+ test_no_library() {
+     pushd "$(mktemp -d)"
+     create_source_file
+diff --git a/ci/tests/pkg-tests.sh b/ci/tests/pkg-tests.sh
+index dbeaac6d..dcc4d014 100755
+--- a/ci/tests/pkg-tests.sh
++++ b/ci/tests/pkg-tests.sh
+@@ -43,8 +43,6 @@ declare expected_libraries=(
+ 
+ declare expected_devlibraries=(
+     "$DIR_LIB/librnp.so"
+-    "$DIR_LIB/librnp.a"
+-    "$DIR_LIB/libsexp.a"
+     "$DIR_LIB/pkgconfig/librnp.pc"
+ )
+ 
+diff --git a/ci/tests/rpm-tests.sh b/ci/tests/rpm-tests.sh
+index 39f8dd03..75b676e9 100755
+--- a/ci/tests/rpm-tests.sh
++++ b/ci/tests/rpm-tests.sh
+@@ -50,8 +50,6 @@ declare expected_libraries=(
+ 
+ declare expected_devlibraries=(
+     "$DIR_LIB/librnp.so"
+-    "$DIR_LIB/librnp.a"
+-    "$DIR_LIB/libsexp.a"
+     "$DIR_LIB/pkgconfig/librnp.pc"
+ )
+ 
+diff --git a/src/lib/CMakeLists.txt b/src/lib/CMakeLists.txt
+index 086ac57d..f6987967 100755
+--- a/src/lib/CMakeLists.txt
++++ b/src/lib/CMakeLists.txt
+@@ -414,11 +414,11 @@ else()
+ endif()
+ 
+ # add these to the rnp-targets export
+-# On Unix like systems we will build/install/pack shared and static libraries librnp.so and librnp.a
+-# On Windows we will build/install/pack dynamic, import and  static libraries rnp.dll, rnp.lib and rnp-static.lib
++# On Unix like systems we will build/install/pack either shared library librnp.so or static  librnp.a
++# On Windows we will build/install/pack either dynamic and import libraries rnp.dll, rnp.lib or static library rnp-static.lib
+ 
+-# If a client application uses shared rnp library, sexp is statically linked to librnp.so
+-# If a client application uses static rnp library, it still needs libsexp.a
++# If a client application uses shared rnp library, sexp is statically linked to librnp.so and libsexp.a is not installed
++# If a client application uses static rnp library, it still needs libsexp.a and it is installed
+ 
+ if (BUILD_SHARED_LIBS)
+ # both static and shared libraries
+@@ -433,15 +433,17 @@ install(TARGETS librnp
+       COMPONENT development
+   )
+ 
+-  install(TARGETS librnp-static sexp
+-    EXPORT rnp-targets
+-    ARCHIVE
+-      DESTINATION  "${CMAKE_INSTALL_LIBDIR}"
+-      COMPONENT development
+-  )
++# install dll only for windows
++  if (WIN32)
++    install(TARGETS librnp
++      RUNTIME
++        DESTINATION "${CMAKE_INSTALL_BINDIR}"
++        COMPONENT runtime
++    )
++  endif(WIN32)
+ else(BUILD_SHARED_LIBS)
+ # static libraries only
+-install(TARGETS librnp sexp
++  install(TARGETS librnp sexp
+     EXPORT rnp-targets
+     ARCHIVE
+       DESTINATION  "${CMAKE_INSTALL_LIBDIR}"
+@@ -449,15 +451,6 @@ install(TARGETS librnp sexp
+ )
+ endif(BUILD_SHARED_LIBS)
+ 
+-# install dll only for windows
+-if (WIN32)
+-  install(TARGETS librnp
+-    RUNTIME
+-      DESTINATION "${CMAKE_INSTALL_BINDIR}"
+-      COMPONENT runtime
+-  )
+-endif(WIN32)
+-
+ # install headers
+ install(
+   FILES
+-- 
+2.41.0
+

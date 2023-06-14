@@ -1,0 +1,21 @@
+From e665f81ef9568ac5dd4411d6814c75c06262b91c Mon Sep 17 00:00:00 2001
+From: Joonas Niilola <juippis@gentoo.org>
+Date: Wed, 3 May 2023 10:31:07 +0300
+Subject: [PATCH] include/sexp/sexp-error.h: fix missing cstdint include
+
+---
+ include/sexp/sexp-error.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+Index: rnp-v0.17.0/src/libsexp/include/sexp/sexp-error.h
+===================================================================
+--- rnp-v0.17.0.orig/src/libsexp/include/sexp/sexp-error.h
++++ rnp-v0.17.0/src/libsexp/include/sexp/sexp-error.h
+@@ -29,6 +29,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <exception>
+ #include <iostream>
+ #include <string>

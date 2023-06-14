@@ -19,18 +19,18 @@
 
 %define soname 0
 Name:           rnp
-Version:        0.16.3
+Version:        0.17.0
 Release:        0
 Summary:        OpenPGP implementation fully compliant with RFC 4880
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause
 URL:            https://www.rnpgp.com/
-Source:         https://github.com/rnpgp/rnp/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source2:        https://github.com/rnpgp/rnp/releases/download/v%{version}/v%{version}.tar.gz.asc#/%{name}-%{version}.tar.gz.asc
+Source:         https://github.com/rnpgp/rnp/releases/download/v%{version}/%{name}-v%{version}.tar.gz
+Source2:        https://github.com/rnpgp/rnp/releases/download/v%{version}/%{name}-v%{version}.tar.gz.asc
 Source3:        https://www.rnpgp.org/openpgp_keys/31AF5A24D861EFCB7CB79A1924900CE0AEFB5417-50DA59D5B9134FA2DB1EB20CFB829AB5D0FE017F.asc#/%{name}.keyring
-BuildRequires:  cmake >= 3.14
+Patch0:         rnp-v0.17.0-disable-static.patch
+Patch1:         rnp-v0.17.0-gcc13.patch
+BuildRequires:  cmake >= 3.18
 BuildRequires:  gcc-c++
-# https://github.com/rnpgp/rnp/issues/1579
-BuildRequires:  git
 BuildRequires:  gpg2 >= 2.2
 BuildRequires:  gtest
 BuildRequires:  pkgconfig
@@ -44,7 +44,9 @@ BuildRequires:  rubygem(asciidoctor)
 RNP is a set of OpenPGP (RFC4880) tools, an alternative to GnuPG.
 
 %package -n librnp%{soname}
+%global libsexp_version 0.8.2
 Summary:        OpenPGP implementation as a C++ library fully compliant with RFC 4880
+Provides:       bundled(libsexp) = %{libsexp_version}
 
 %description -n librnp%{soname}
 RNP is a set of OpenPGP (RFC4880) tools, an alternative to GnuPG.
@@ -60,15 +62,17 @@ RNP is a set of OpenPGP (RFC4880) tools, an alternative to GnuPG.
 This package contains the files needed to build against librnp.
 
 %prep
-%setup -q
+%autosetup -p1 -n %{name}-v%{version}
+pushd src/libsexp
+cp LICENSE.md ../../LICENSE-libsexp.md
+grep -q %{libsexp_version} version.txt
+popd
 
 %build
 %cmake \
-	-DBUILD_SHARED_LIBS=on \
 	-DDOWNLOAD_GTEST=off \
-	-DDOWNLOAD_RUBYRNP=off \
 	-DBUILD_TESTING=on \
-
+	%{nil}
 %cmake_build
 
 %install
@@ -77,8 +81,7 @@ This package contains the files needed to build against librnp.
 %check
 %ctest
 
-%post -n librnp%{soname} -p /sbin/ldconfig
-%postun -n librnp%{soname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n librnp%{soname}
 
 %files
 %license LICENSE*
