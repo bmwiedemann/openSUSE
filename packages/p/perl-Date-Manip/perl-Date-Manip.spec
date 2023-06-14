@@ -18,7 +18,7 @@
 
 %define cpan_name Date-Manip
 Name:           perl-Date-Manip
-Version:        6.91
+Version:        6.92
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Date manipulation routines
@@ -116,7 +116,7 @@ package.
 %prep
 %autosetup  -n %{cpan_name}-%{version}
 
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
