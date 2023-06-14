@@ -47,6 +47,7 @@ BuildRequires:  %{python_module websockets >= 10.0}
 BuildRequires:  %{python_module y-py >= 0.6.0 with %python-y-py < 0.7.0}
 BuildRequires:  %{python_module ypy-websocket >= 0.8.3 with %python-ypy-websocket < 0.9}
 BuildRequires:  nodejs
+BuildRequires:  procps
 BuildRequires:  yarn
 # /SECTION
 %python_subpackages
@@ -69,8 +70,8 @@ Built-in documents include:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# tests NEED -vv
-%pytest -vv
+# https://github.com/jupyter-server/jupyter_ydoc/issues/168
+%pytest -v && pkill -f yjs_client_0.js -e
 
 %files %{python_files}
 %{python_sitelib}/jupyter_ydoc

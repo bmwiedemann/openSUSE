@@ -50,4 +50,13 @@
   * Import shared model #86 (@fcollonval) (forwarded request 1092711 from bnavigator)</comment>
     <requestid>1092712</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>db6d8d850706bef232e61347dff68d95</srcmd5>
+    <version>1.0.2</version>
+    <time>1686752989</time>
+    <user>dimstar_suse</user>
+    <comment>- Kill nodejs in between pytest runs
+  gh#jupyter-server/jupyter_ydoc#168</comment>
+    <requestid>1092986</requestid>
+  </revision>
 </revisionlist>

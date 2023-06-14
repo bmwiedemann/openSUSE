@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 13 20:44:17 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Kill nodejs in between pytest runs
+  gh#jupyter-server/jupyter_ydoc#168
+
+-------------------------------------------------------------------
 Sun Jun 11 21:02:51 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.0.2
