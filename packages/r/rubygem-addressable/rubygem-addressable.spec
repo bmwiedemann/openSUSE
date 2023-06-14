@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-addressable
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-addressable
-Version:        2.8.1
+Version:        2.8.4
 Release:        0
 %define mod_name addressable
 %define mod_full_name %{mod_name}-%{version}
