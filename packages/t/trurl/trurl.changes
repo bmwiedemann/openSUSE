@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jun 13 13:17:57 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.7
+  * Changes:
+    --default-port to ask for the default to be used if not present
+    --keep-port to ask for the port number to be there even if default
+    --no-guess-scheme option to disable scheme guessing
+    --punycode to ask for the punycode version in output
+
+  * Bugfixes:
+    --help returns 0 instead of 1
+    --json: print empty arrays
+    --redirect: don't silently ignore failed redirections.
+    refuse setting same component in --set as --iterate
+    restructure the JSON output object
+    send -h output to stdout, not stderr
+
+-------------------------------------------------------------------
 Wed Apr 26 18:24:50 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.6
