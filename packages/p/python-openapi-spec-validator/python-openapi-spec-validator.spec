@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-openapi-spec-validator
 Version:        0.5.6
 Release:        0
