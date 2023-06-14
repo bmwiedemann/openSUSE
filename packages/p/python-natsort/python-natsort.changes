@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 13 08:58:39 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Sat Sep 10 15:30:31 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 8.2.0:

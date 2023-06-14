@@ -1,7 +1,7 @@
 #
 # spec file for package python-natsort
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-natsort
 Version:        8.2.0
 Release:        0
@@ -55,7 +55,7 @@ sorting based on meaning and not computer code point).
 %install
 %python_install
 
-export PYTHONPATH=%{buildroot}%{python3_sitelib}
+export PYTHONPATH=%{buildroot}%{python_sitelib}
 help2man -o natsort.1 -N %{buildroot}%{_bindir}/natsort
 install -Dm0644 natsort.1 %{buildroot}%{_mandir}/man1/natsort.1
 
