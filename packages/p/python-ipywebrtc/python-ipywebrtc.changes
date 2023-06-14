@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 13 17:19:49 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- BuildRequire notebook: no longer transitive, but we need it
+  for checking the extension
+
+-------------------------------------------------------------------
 Tue Apr 20 16:42:51 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.6.0

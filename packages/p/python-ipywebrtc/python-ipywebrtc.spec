@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipywebrtc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
+%define distversion 0.6
 Name:           python-ipywebrtc
 Version:        0.6.0
 Release:        0
@@ -29,6 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/i/ipywebrtc/ipywe
 BuildRequires:  %{python_module ipywidgets >= 7.4.0}
 BuildRequires:  %{python_module jupyter-packaging >= 0.7.9}
 BuildRequires:  %{python_module jupyterlab >= 3.0}
+BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 40.8}
 BuildRequires:  %{python_module wheel}
@@ -51,7 +51,7 @@ Summary:        WebRTC for Jupyter notebook/lab
 Requires:       jupyter-ipywidgets >= 7.4.0
 Requires:       jupyter-jupyterlab
 Requires:       jupyter-notebook
-Requires:       python3-ipywebrtc = %{version}
+Requires:       python3dist(ipywebrtc) = %{distversion}
 
 %description -n jupyter-ipywebrtc
 WebRTC and MediaStream API exposed in the Jupyter notebook.
