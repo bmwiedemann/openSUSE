@@ -36,6 +36,7 @@ Source1:        vendor.tar.zst
 Source2:        README.suse-maint.md
 #
 Patch1:         fix-for-go-117.patch
+Patch2:         https://patch-diff.githubusercontent.com/raw/charmbracelet/glow/pull/504.patch#/fix-gitignore-bypass.patch
 BuildRequires:  golang-packaging
 BuildRequires:  zstd
 BuildRequires:  golang(API) >= 1.17
