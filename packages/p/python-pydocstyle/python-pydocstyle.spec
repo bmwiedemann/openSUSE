@@ -17,6 +17,7 @@
 
 
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pydocstyle
 Version:        6.3.0
 Release:        0
