@@ -1,7 +1,7 @@
 #
 # spec file for package python-nss
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,9 +27,13 @@ Source:         https://files.pythonhosted.org/packages/source/p/python-nss/pyth
 # PATCH-FIX-UPSTREAM 0001-Rename-DSA-RSA-PublicKey-to-Py-DSA-RSA-PublicKey.patch bmo#1474274 mcepl@suse.com
 # Incompatibility with NSS 3.58+
 Patch0:         0001-Rename-DSA-RSA-PublicKey-to-Py-DSA-RSA-PublicKey.patch
-# PATCH-FIX-UPSTREAM sphinx.patch bsc#[0-9]+ mcepl@suse.com
-# this patch makes things totally awesome
+# PATCH-FIX-OPENSUSE sphinx.patch mcepl@suse.com
+# Include sphinx configuration to build docs
 Patch1:         sphinx.patch
+# PATCH-FIX-OPENSUSE Switch from dist-dir to dist_dir to stop setuptools whine
+Patch2:         new-setuptools.patch
+# PATCH-FIX-OPENSUSE Stop using six in tests
+Patch3:         remove-six.patch
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module docutils}
@@ -52,6 +56,7 @@ projects. NSS is FIPS-140 certified.
 %package -n %{name}-doc
 Summary:        Documentation files for %name
 Group:          Documentation/Other
+BuildArch:      noarch
 
 %description -n %{name}-doc
 HTML Documentation and examples for %name.
@@ -60,12 +65,13 @@ HTML Documentation and examples for %name.
 %autosetup -p1 -n python-nss-%{version}
 
 %build
-%python_build build_doc
-rm -rf build/sphinx/html/.buildinfo
+%python_build
 
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+PYTHONPATH=%{buildroot}%{python_sitearch} python3 -m sphinx doc/sphinx/source build/sphinx/html
+rm -rf build/sphinx/html/.buildinfo
 
 %check
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
@@ -75,7 +81,8 @@ $python test/run_tests -i
 %files %{python_files}
 %license LICENSE.mpl LICENSE.lgpl LICENSE.gpl
 %doc README doc/ChangeLog
-%{python_sitearch}/*
+%{python_sitearch}/nss
+%{python_sitearch}/python_nss-%{version}*info
 
 %files -n %{name}-doc
 %license LICENSE.mpl LICENSE.lgpl LICENSE.gpl

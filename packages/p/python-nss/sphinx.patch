@@ -1,6 +1,7 @@
-diff -r d767ac371ee3 doc/sphinx/source/conf.py
---- /dev/null	Thu Jan 01 00:00:00 1970 +0000
-+++ b/doc/sphinx/source/conf.py	Fri Jul 06 11:24:08 2018 -0400
+Index: python-nss-1.0.1/doc/sphinx/source/conf.py
+===================================================================
+--- /dev/null
++++ python-nss-1.0.1/doc/sphinx/source/conf.py
 @@ -0,0 +1,163 @@
 +# -*- coding: utf-8 -*-
 +#
@@ -67,7 +68,7 @@ diff -r d767ac371ee3 doc/sphinx/source/conf.py
 +#
 +# This is also used if you do content translation via gettext catalogs.
 +# Usually you set "language" from the command line for these cases.
-+language = None
++language = 'en'
 +
 +# List of patterns, relative to source directory, that match files and
 +# directories to ignore when looking for source files.
@@ -165,9 +166,10 @@ diff -r d767ac371ee3 doc/sphinx/source/conf.py
 +
 +
 +# -- Extension configuration -------------------------------------------------
-diff -r d767ac371ee3 doc/sphinx/source/index.rst
---- /dev/null	Thu Jan 01 00:00:00 1970 +0000
-+++ b/doc/sphinx/source/index.rst	Fri Jul 06 11:24:08 2018 -0400
+Index: python-nss-1.0.1/doc/sphinx/source/index.rst
+===================================================================
+--- /dev/null
++++ python-nss-1.0.1/doc/sphinx/source/index.rst
 @@ -0,0 +1,43 @@
 +.. python-nss documentation master file, created by
 +   sphinx-quickstart on Thu Jun 28 09:36:37 2018.
@@ -191,7 +193,7 @@ diff -r d767ac371ee3 doc/sphinx/source/index.rst
 +
 +.. autosummary::
 +   :toctree: generated
-+          
++
 +   nss.io
 +   nss.ssl
 +   nss.nss
@@ -212,14 +214,13 @@ diff -r d767ac371ee3 doc/sphinx/source/index.rst
 +   :maxdepth: 2
 +   :caption: Contents:
 +
-diff -r d767ac371ee3 setup.py
---- a/setup.py	Tue Feb 28 18:24:19 2017 -0500
-+++ b/setup.py	Fri Jul 06 11:24:08 2018 -0400
-@@ -15,21 +15,25 @@
- from distutils.util import subst_vars, change_root
+Index: python-nss-1.0.1/setup.py
+===================================================================
+--- python-nss-1.0.1.orig/setup.py
++++ python-nss-1.0.1/setup.py
+@@ -16,20 +16,23 @@ from distutils.util import subst_vars, c
  from distutils.command.build_py import build_py as _build_py
  from distutils.command.sdist import sdist as _sdist
-+from sphinx.setup_command import BuildDoc as SphinxBuildDoc
  
 +name = 'python-nss'
  version = "1.0.1"
@@ -244,7 +245,7 @@ diff -r d767ac371ee3 setup.py
  ]
  
  def update_version():
-@@ -114,13 +118,13 @@
+@@ -114,13 +117,13 @@ class BuildDoc(Command):
      user_options = [('docdir=', 'd', "directory root for documentation"),
                     ]
  
@@ -261,7 +262,7 @@ diff -r d767ac371ee3 setup.py
                     ]
  
      def initialize_options(self):
-@@ -137,46 +141,15 @@
+@@ -137,46 +140,15 @@ class BuildDoc(Command):
  
      def run(self):
          self.run_command('build')
@@ -313,7 +314,7 @@ diff -r d767ac371ee3 setup.py
  
  class InstallDoc(Command):
      description = 'install documentation'
-@@ -373,7 +346,7 @@
+@@ -373,7 +345,7 @@ def main(argv):
  
            #bug_tracker       = 'https://bugzilla.redhat.com/buglist.cgi?submit&component=python-nss&product=Fedora&classification=Fedora'
            #bug_enter     = 'https://bugzilla.redhat.com/enter_bug.cgi?component=python-nss&product=Fedora&classification=Fedora',
@@ -322,23 +323,17 @@ diff -r d767ac371ee3 setup.py
            version          = version,
            description      = 'Python bindings for Network Security Services (NSS) and Netscape Portable Runtime (NSPR)',
            long_description = long_description,
-@@ -393,12 +366,17 @@
+@@ -393,12 +365,10 @@ def main(argv):
            package_dir      = {'nss':'src'},
            packages         = ['nss'],
            cmdclass         = {'build_doc'     : BuildDoc,
 -                              'build_api_doc' : BuildApiDoc,
-+                              'build_sphinx'  : SphinxBuildDoc,
                                'install_doc'   : InstallDoc,
                                'build_py'      : BuildPy,
                                'sdist'         : SDist,
-                              },
+-                             },
 -
-+          command_options={
-+              'build_sphinx': {
-+                  'project': ('setup.py', name),
-+                  'version': ('setup.py', version),
-+                  'release': ('setup.py', release),
-+                  'source_dir': ('setup.py', 'doc/sphinx/source')}},
++                             }
      )
  
      return 0

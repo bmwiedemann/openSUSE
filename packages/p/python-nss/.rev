@@ -50,4 +50,14 @@
     <comment>- add python-rpm-macros</comment>
     <requestid>945689</requestid>
   </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>452ada3d643c43600be777dd7bfee417</srcmd5>
+    <version>1.0.1</version>
+    <time>1686753007</time>
+    <user>dimstar_suse</user>
+    <comment>- Rejig sphinx.patch to not require Sphinx's setuptools machinery.
+- Add patch new-setuptools.patch, remove-six.patch.
+- Declare -doc subpackage as noarch.</comment>
+    <requestid>1093016</requestid>
+  </revision>
 </revisionlist>
