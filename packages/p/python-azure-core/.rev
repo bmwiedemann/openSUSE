@@ -384,4 +384,15 @@
     <comment></comment>
     <requestid>1090752</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>e619bf8a3ac7f2a2fa8faada7ffc3a0c</srcmd5>
+    <version>1.27.1</version>
+    <time>1686753099</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.27.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1093087 from glaubitz)</comment>
+    <requestid>1093107</requestid>
+  </revision>
 </revisionlist>
