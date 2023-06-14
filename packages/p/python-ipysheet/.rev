@@ -75,4 +75,12 @@
 - Move to PEP517 build</comment>
     <requestid>1045317</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>2ce526ba53e531d6b83c1007f894be58</srcmd5>
+    <version>0.7.0</version>
+    <time>1686752993</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1092989</requestid>
+  </revision>
 </revisionlist>

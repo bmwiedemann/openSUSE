@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipysheet
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define         skip_python2 1
+%define distversion 0.7
 Name:           python-ipysheet
 Version:        0.7.0
 Release:        0
@@ -26,11 +26,12 @@ URL:            https://github.com/QuantStack/ipysheet
 Source:         https://files.pythonhosted.org/packages/source/i/ipysheet/ipysheet-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module jupyter_packaging >= 0.7.9 with %python-jupyter_packaging < 1}
-BuildRequires:  %{python_module jupyterlab >= 3.0.0 with %python-jupyterlab < 4}
+BuildRequires:  %{python_module jupyterlab >= 3.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 40.8}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-ipysheet = %{version}
 Requires:       (python-ipywidgets >= 7.5.0 with python-ipywidgets < 9)
@@ -58,9 +59,9 @@ This package provides the python interface.
 
 %package -n jupyter-ipysheet
 Summary:        Spreadsheet widget for the Jupyter notebook - Jupyterfiles
-Requires:       python3-ipysheet = %{version}
 Requires:       (jupyter-ipywidgets >= 7.5.0 with jupyter-ipywidgets < 9)
 Requires:       (jupyter-jupyterlab or jupyter-notebook)
+Requires:       python3dist(ipysheet) = %{distversion}
 Provides:       jupyter-ipysheet = %{version}-%{release}
 
 %description -n jupyter-ipysheet
