@@ -1575,4 +1575,12 @@
     expression-based indexes on PostgreSQL are skipped and</comment>
     <requestid>1085181</requestid>
   </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>e399e830254558a918895cf1d1aab516</srcmd5>
+    <version>1.10.4</version>
+    <time>1686752927</time>
+    <user>dimstar_suse</user>
+    <comment>- tag sle15 build for new python</comment>
+    <requestid>1092850</requestid>
+  </revision>
 </revisionlist>
