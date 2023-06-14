@@ -1,7 +1,7 @@
 #
 # spec file for package Bear
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without tests
 Name:           Bear
-Version:        3.0.20
+Version:        3.1.2
 Release:        0
 Summary:        Tool to generate compilation database for clang tooling
 License:        GPL-3.0-or-later
@@ -83,11 +83,9 @@ rm -rf %{buildroot}%{_datadir}/doc
 %license COPYING
 %doc README.md
 %{_bindir}/bear
-%{_bindir}/citnames
-%{_bindir}/intercept
 %{_mandir}/man1/bear.1%{?ext_man}
-%{_mandir}/man1/citnames.1%{?ext_man}
-%{_mandir}/man1/intercept.1%{?ext_man}
+%{_mandir}/man1/bear-citnames.1%{?ext_man}
+%{_mandir}/man1/bear-intercept.1%{?ext_man}
 %{_libdir}/bear/
 
 %changelog

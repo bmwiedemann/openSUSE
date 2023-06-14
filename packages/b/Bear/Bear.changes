@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jun 13 12:30:48 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to version 3.1.2:
+  * fix incorrect parsing arguments with same prefixes (#519, @MashaK5)
+  * Avoid implicit function declarations in tests, for C99
+    compatibility (#521, @fweimer-rh)
+- From skipped 3.1.1:
+  * intercept: file open with O_TRUNC to avoid corrupt output if
+    the file is already exists. (#511 , @asierllano)
+  * intercept: file writing needs to loop on content until it gets
+    empty (#512 , @asierllano)
+  * citnames: output writing is an atomic operation (#513 , @asierllano)
+  * documentation: run pandoc against man page sources
+- From skipped 3.1.0:
+  * Bear internal running processes are no longer released as
+    executable.
+    This was requested to avoid collision with the interception-tool package.
+    (Special thanks to @samu698 for the patches.)
+  * missing preprocessor guard for confstr (#475 @mahmood601)
+  * documentation fixes
+- From skipped 3.0.21:
+  * Fix libexec.so linking problem (#477, @neverpanic )
+  * Fix various CMake flag problems (#480, #484, @leleliu008 , @adfernandes )
+  * Fix repology link in README file (#482, @dmitris )
+  * Process execution close stdin file descriptor in wrapper.
+
+-------------------------------------------------------------------
 Mon Oct 17 13:00:02 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Update to version 3.0.20:
