@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 13 10:35:00 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable tests that uses pexpect to avoid timeout error when running
+  in OBS.
+
+-------------------------------------------------------------------
 Thu May  4 23:26:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.3.1:
