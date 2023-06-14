@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 13 11:05:05 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Wed Mar 11 04:33:02 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to version 1.9
