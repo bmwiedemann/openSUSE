@@ -63,3 +63,5 @@ enable mdcheck_start.timer
 enable mdmonitor-oneshot.timer
 enable unbound-anchor.timer
 enable systemd-pstore.service
+enable wtmpdb-update-boot.service
+enable wtmpdb-rotate.timer

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  9 14:22:41 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add wtmpdb-update-boot.service and wtmpdb-rotate.timer to enable
+  wtmpdb as Y2038 safe wtmp replacement
+
+-------------------------------------------------------------------
 Tue Feb  7 07:46:45 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Enable spice-vdagent.service and xdg-user-dirs.service by default
