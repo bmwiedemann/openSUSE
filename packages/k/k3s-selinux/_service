@@ -3,7 +3,7 @@
     <param name="url">https://github.com/k3s-io/k3s-selinux</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v1.3.stable.1</param>
+    <param name="revision">v1.4.stable.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>

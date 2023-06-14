@@ -35,7 +35,7 @@
 %define container_policyver 2.164.2-1.1
 
 Name:           k3s-selinux
-Version:        1.3.stable.1
+Version:        1.4.stable.1
 Release:        0
 Summary:        SELinux policy module for k3s
 
