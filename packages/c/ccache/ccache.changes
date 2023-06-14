@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 12 21:10:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.8.2:
+  * Ccache no longer passes `-v` to the preprocessor. This
+    improves preprocessor mode hit rate when `-v` is on the
+    compiler command line.
+  * Made `--trim-max-size` accept 0 for no limit. +
+  * Clarified `--evict-older-than` semantics.
+  * Fixed typo in "`Directory is not hashed if using -gz`" test.
+
+-------------------------------------------------------------------
 Fri May 19 20:58:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.8.1:
