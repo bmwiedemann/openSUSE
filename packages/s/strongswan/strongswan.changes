@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Jun 12 15:54:53 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove pre-SLE15 build logic
+
+-------------------------------------------------------------------
+Mon Jun 12 15:22:09 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
+
+- Update to release 5.9.11
+  * A deadlock in the vici plugin has been fixed
+  * Per RFC 5280, CRLs now have to be signed by a certificate that
+    either encodes the cRLSign keyUsage bit (even if it is a CA
+    certificate), or is a CA certificate without a keyUsage
+    extension.
+  * Support for optional CA labels in EST server URIs was added to
+    the pki --est and pki --estca commands.
+  * The pkcs7 and openssl plugins now support CMS-style signatures
+    in PKCS#7 containers, which allows verifying RSA-PSS and ECDSA
+    signatures.
+  * Fixed a regression in the server implementation of EAP-TLS when
+    using TLS <=1.2.
+  * The EAP-TLS client does now enforce that the TLS handshake is
+    complete when using TLS <=1.2.
+  * On Linux, the kernel-libipsec plugin can now optionally handle
+    ESP packets without UDP encapsulation.
+  * The dhcp plugin uses an alternative method to determine the
+    source address when sending unicast DHCP requests.
+  * ECDSA and EdDSA public keys are supported by the ipseckey
+    plugin when parsing RFC 4025 IPSECKEY resource records.
+
+-------------------------------------------------------------------
 Wed Apr  5 01:34:28 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
 
 - Allow to use stroke aka ipsec interface by default instead of

@@ -863,4 +863,13 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     <comment></comment>
     <requestid>1077378</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>f3a0b56e5e03482cfb3c4daa7f7f0cc9</srcmd5>
+    <version>5.9.11</version>
+    <time>1686752915</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove pre-SLE15 build logic
+- Update to release 5.9.11</comment>
+    <requestid>1092643</requestid>
+  </revision>
 </revisionlist>

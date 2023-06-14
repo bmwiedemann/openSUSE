@@ -17,7 +17,7 @@
 
 
 Name:           strongswan
-Version:        5.9.10
+Version:        5.9.11
 Release:        0
 %define         upstream_version     %{version}
 %define         strongswan_docdir    %{_docdir}/%{name}
@@ -31,31 +31,19 @@ Release:        0
 %else
 %bcond_with     tests
 %endif
-%if 0%{suse_version} > 1310
 %bcond_without  fipscheck
-%else
-%bcond_with     fipscheck
-%endif
 %ifarch %{ix86} ppc64le
 %bcond_without  integrity
 %else
 %bcond_with     integrity
 %endif
-%if 0%{suse_version} > 1110
 %bcond_without  farp
 %bcond_without  afalg
 %bcond_without  mysql
 %bcond_without  sqlite
 %bcond_without  gcrypt
 %bcond_without  nm
-%else
-%bcond_with     farp
-%bcond_with     afalg
-%bcond_with     mysql
-%bcond_with     sqlite
-%bcond_with     gcrypt
-%bcond_with     nm
-%endif
+%bcond_without  systemd
 Summary:        IPsec-based VPN solution
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
