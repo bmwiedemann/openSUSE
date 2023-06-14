@@ -35,7 +35,7 @@ restorecon -R /var/run/flannel
 %define container_policyver 2.164.2-1.1
 
 Name:           rke2-selinux
-Version:        0.12.stable.1
+Version:        0.14.stable.1
 Release:        0
 Summary:        SELinux policy module for rke2
 

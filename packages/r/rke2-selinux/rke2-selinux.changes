@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 13 11:08:42 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.14.stable.1:
+  * Add DAC_OVERRIDE cap to iscsid_t (#45)
+
+-------------------------------------------------------------------
+Tue Jun 13 11:07:39 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.13.stable.1:
+  * Remove snapshot filetranspatterns for all policies (#44)
+
+-------------------------------------------------------------------
 Wed May 31 04:47:55 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 0.12.stable.1:
