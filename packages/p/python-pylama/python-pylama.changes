@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 13 08:57:13 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu May 11 20:00:18 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Skip failing pylint test: pylint has advanced, but pylama is not
