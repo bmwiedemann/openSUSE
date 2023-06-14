@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 14 12:45:39 UTC 2023 - Antoine Ginies <aginies@suse.com>
+
+- version 2.1.0:
+   * various fixes around hypervisor selection
+   * force hypervisor selection before choosing machine type or virtual net
+   * use machine list from the hypervisor capabilities (remove hardcoded list)
+   * check virtual machine name (only alphanumeric)
+   * various other cosmetics fixes
+   * GTK:
+     - only support localhost hypervisor due to limitation in authentication
+     - add some more tooltips
+     - improve layout: help on disk cache and some others
+
+-------------------------------------------------------------------
 Wed Jun  7 14:45:00 UTC 2023 - Antoine Ginies <aginies@suse.com>
 
 - version 2.0.8:
