@@ -126,4 +126,12 @@
     <comment></comment>
     <requestid>981540</requestid>
   </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>97843275419de988f0c965d345b2ddf3</srcmd5>
+    <version>3.0.0</version>
+    <time>1686752926</time>
+    <user>dimstar_suse</user>
+    <comment>- tag sle15 for new python stack</comment>
+    <requestid>1092841</requestid>
+  </revision>
 </revisionlist>
