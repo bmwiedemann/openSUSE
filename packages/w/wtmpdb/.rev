@@ -23,4 +23,13 @@
     <comment>- wtmpdb boot: more accurate calculation of boot time (forwarded request 1082983 from kukuk)</comment>
     <requestid>1082984</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>52cf030bd7ab128e981229bbb2f17e7b</srcmd5>
+    <version>0.6.0</version>
+    <time>1686752914</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.0
+  - wtmpdb rotate: move old log entries into wtmpdb_&lt;yyyymmdd&gt;.db (forwarded request 1092601 from kukuk)</comment>
+    <requestid>1092602</requestid>
+  </revision>
 </revisionlist>

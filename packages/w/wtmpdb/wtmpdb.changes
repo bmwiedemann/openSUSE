@@ -1,10 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun  7 15:18:21 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.6.0
+  - wtmpdb rotate: move old log entries into wtmpdb_<yyyymmdd>.db
+
+-------------------------------------------------------------------
 Wed Apr 26 09:11:23 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.5.0
   - Use uint64_t instead of usec_t to avoid conflicts
   - wtmpdb boot: more accurate calculation of boot time
-
 
 -------------------------------------------------------------------
 Mon Apr 24 09:46:56 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>

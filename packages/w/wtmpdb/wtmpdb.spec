@@ -18,7 +18,7 @@
 
 %define lname   libwtmpdb0
 Name:           wtmpdb
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        Reports last logged in users and system reboots
 License:        BSD-2-Clause
@@ -64,21 +64,21 @@ to develop applications that needs to read, write or modify the wtmpdb database.
 %meson_test
 
 %pre
-%service_add_pre wtmpdb-update-boot.service
+%service_add_pre wtmpdb-update-boot.service wtmpdb-rotate.timer
 
 %preun
-%service_del_preun wtmpdb-update-boot.service
+%service_del_preun wtmpdb-update-boot.service wtmpdb-rotate.timer
 
 %post
 %tmpfiles_create wtmpdb.conf
-%service_add_post wtmpdb-update-boot.service
+%service_add_post wtmpdb-update-boot.service wtmpdb-rotate.timer
 pam-config -a --wtmpdb --wtmpdb-skip_if=sshd
 
 %postun
 if [ "$1" -eq 0 ]; then
     pam-config -d --wtmpdb
 fi
-%service_del_postun_without_restart wtmpdb-update-boot.service
+%service_del_postun_without_restart wtmpdb-update-boot.service wtmpdb-rotate.timer
 
 %post   -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
@@ -87,6 +87,8 @@ fi
 %license LICENSE
 %{_bindir}/wtmpdb
 %{_unitdir}/wtmpdb-update-boot.service
+%{_unitdir}/wtmpdb-rotate.service
+%{_unitdir}/wtmpdb-rotate.timer
 %{_tmpfilesdir}/wtmpdb.conf
 %{_pam_moduledir}/pam_wtmpdb.so
 %ghost %{_localstatedir}/lib/wtmpdb
