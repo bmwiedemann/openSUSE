@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun 12 21:14:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14.8 (bsc#1212126, CVE-2023-34969):
+  * Denial-of-service fixes:
+  * Fix an assertion failure in dbus-daemon when a privileged
+    Monitoring connection (dbus-monitor, busctl monitor, gdbus
+    monitor or similar) is active, and a message from the bus
+    driver cannot be delivered to a client connection due to
+    <deny> rules or outgoing message quota. This
+    is a denial of service if triggered maliciously by a local
+    attacker.
+  * Fix compilation on compilers not supporting __FUNCTION__
+  * Fix some memory leaks on out-of-memory conditions
+  * Fix syntax of a code sample in dbus-api-design
+
+-------------------------------------------------------------------
 Thu Feb 23 14:48:12 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Move %tmpfiles_create to %post otherwise the file won't exist

@@ -21,7 +21,7 @@
 %define _libname libdbus-1-3
 %bcond_without selinux
 Name:           dbus-1
-Version:        1.14.6
+Version:        1.14.8
 Release:        0
 Summary:        D-Bus Message Bus System
 License:        AFL-2.1 OR GPL-2.0-or-later

@@ -1502,4 +1502,23 @@ Thu Jan  9 17:33:31 UTC 2014 - fridrich.strba@suse.com
     <comment></comment>
     <requestid>1067484</requestid>
   </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>34ec462889cb81e47926f035262a8812</srcmd5>
+    <version>1.14.8</version>
+    <time>1686752936</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.14.8 (bsc#1212126, CVE-2023-34969):
+  * Denial-of-service fixes:
+  * Fix an assertion failure in dbus-daemon when a privileged
+    Monitoring connection (dbus-monitor, busctl monitor, gdbus
+    monitor or similar) is active, and a message from the bus
+    driver cannot be delivered to a client connection due to
+    &lt;deny&gt; rules or outgoing message quota. This
+    is a denial of service if triggered maliciously by a local
+    attacker.
+  * Fix compilation on compilers not supporting __FUNCTION__
+  * Fix some memory leaks on out-of-memory conditions
+  * Fix syntax of a code sample in dbus-api-design</comment>
+    <requestid>1092691</requestid>
+  </revision>
 </revisionlist>
