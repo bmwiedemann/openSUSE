@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 12 22:59:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- modify shebang to the actual python interpreter on install 
+
+-------------------------------------------------------------------
 Fri May 19 07:20:35 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.26.4:

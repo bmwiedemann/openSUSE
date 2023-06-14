@@ -204,6 +204,7 @@ install -m644 %{SOURCE1} -D %{buildroot}%{_rpmconfigdir}/macros.d/macros.cmake
 # RPM auto provides
 install -p -m0644 -D %{SOURCE3} %{buildroot}%{_fileattrsdir}/cmake.attr
 install -p -m0755 -D %{SOURCE4} %{buildroot}%{_rpmconfigdir}/cmake.prov
+sed -i -e "1s@#!.*python.*@#!$(realpath /usr/bin/python3)@" %{buildroot}%{_rpmconfigdir}/cmake.prov
 
 # fix: W: files-duplicate  (%%license covers already)
 rm %{buildroot}%{_docdir}/cmake/Copyright.txt
