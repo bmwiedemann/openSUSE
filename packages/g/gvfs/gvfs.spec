@@ -29,6 +29,10 @@ Source99:       baselibs.conf
 
 # PATCH-FIX-UPSTREAM 41862c0179f834d8bc3bd84ce78ee495050f2676.patch -- trash: Sync trash dir items when files change
 Patch0:         https://gitlab.gnome.org/GNOME/gvfs/-/commit/41862c0179f834d8bc3bd84ce78ee495050f2676.patch
+# PATCH-FIX-UPSTREAM fc2669f63c5def1528dda2e7833db5774aa08e22.patch -- mtp: Emit delete event on device when disconnected
+Patch1:         https://gitlab.gnome.org/GNOME/gvfs/-/commit/fc2669f63c5def1528dda2e7833db5774aa08e22.patch
+# PATCH-FIX-UPSTREAM 85bfb701fc95abeaa8a8ca3d9059378a9490f738.patch -- smb: Allow renaming a file to the same name with a different case
+Patch2:         https://gitlab.gnome.org/GNOME/gvfs/-/commit/85bfb701fc95abeaa8a8ca3d9059378a9490f738.patch
 
 ### NOTE: Please, keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FEATURE-SLE gvfs-nds.patch ksamrat@novell.com -- Provides NDS browsing for nautilus

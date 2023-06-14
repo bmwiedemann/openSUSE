@@ -1,0 +1,31 @@
+From fc2669f63c5def1528dda2e7833db5774aa08e22 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ant=C3=B3nio=20Fernandes?= <antoniof@gnome.org>
+Date: Sat, 29 Apr 2023 22:30:36 +0000
+Subject: [PATCH] mtp: Emit delete event on device when disconnected
+
+Otherwise clients won't realize the root file is gone.
+
+Related to https://gitlab.gnome.org/GNOME/nautilus/-/issues/371
+---
+ daemon/gvfsbackendmtp.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/daemon/gvfsbackendmtp.c b/daemon/gvfsbackendmtp.c
+index fd297be1d..0bc35b7ab 100644
+--- a/daemon/gvfsbackendmtp.c
++++ b/daemon/gvfsbackendmtp.c
+@@ -638,6 +638,11 @@ on_uevent (GUdevClient *client, gchar *action, GUdevDevice *device, gpointer use
+                            (char *)path);
+     }
+ 
++    /* Finally, emit delete event to tell the clients the device root file is gone. */
++    g_hash_table_foreach (op_backend->monitors,
++                          emit_delete_event,
++                          (char *)"/");
++
+     op_backend->force_unmounted = TRUE;
+     g_atomic_int_set (&op_backend->unmount_started, TRUE);
+     g_vfs_backend_force_unmount ((GVfsBackend*)op_backend);
+-- 
+GitLab
+
