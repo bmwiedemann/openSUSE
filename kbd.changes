@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 28 08:34:54 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Remove additional vfonts, they are freeware, not opensource
+  (bsc#1210678).
+- Adjust license tag, pinephone keymap is under GPL-3.0-or-later.
+
+-------------------------------------------------------------------
+Thu Apr 20 15:17:05 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Rename 'arabic' keyboard console layout into 'ara' and drop 'korean' symlink
+  (bsc#1210702)
+
+-------------------------------------------------------------------
 Mon Feb 27 19:06:36 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - Update to version 2.5.1

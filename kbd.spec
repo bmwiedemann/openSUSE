@@ -28,7 +28,7 @@ Version:        2.5.1
 Release:        0
 Summary:        Keyboard and Font Utilities
 # git: git://git.altlinux.org/people/legion/packages/kbd.git
-License:        GPL-2.0-or-later
+License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          System/Console
 URL:            http://kbd-project.org/
 # repack_kbd.sh on https://www.kernel.org/pub/linux/utils/kbd/kbd-%%{version}.tar.xz
@@ -165,14 +165,10 @@ DOC=%{buildroot}%{_defaultdocdir}/kbd
 KBD=%{kbd}
 K=%{buildroot}$KBD
 mkdir -p $K/consolefonts
-# First install the fonts from the vfont package
+# First install the fonts from the kbd_fonts directory
 # (allowing kbd to overwrite some of them)
 mkdir -p $DOC/fonts
 install -m 644 fonts/README $DOC/fonts/README.fonts
-install -m 644 fonts/vfont-4.36/README $DOC/fonts/README.vfont-4.36
-install -m 644 fonts/vfont-5.10/README $DOC/fonts/README.vfont-5.10
-install -m 644 fonts/vfont-5.10/SCRIPT $DOC/fonts/SCRIPT.vfont-5.10
-rm -f fonts/vfont-5.10/SCRIPT fonts/*/README
 install -m 644 fonts/*/* $K/consolefonts/
 # Now call kbd install
 echo "# Now call kbd install DESTDIR=%{buildroot} DATA_DIR=%{kbd} MAN_DIR=%{_mandir}"
@@ -194,8 +190,7 @@ if ls $K/consolefonts/Agafari-* > /dev/null 2>&1; then
   exit 1
 fi
 ln -sf us.map.gz $K/keymaps/i386/qwerty/khmer.map.gz
-ln -sf us.map.gz $K/keymaps/i386/qwerty/korean.map.gz
-ln -sf us.map.gz $K/keymaps/i386/qwerty/arabic.map.gz
+ln -sf us.map.gz $K/keymaps/i386/qwerty/ara.map.gz
 ln -sf us.map.gz $K/keymaps/i386/qwerty/ir.map.gz
 ln -sf us.map.gz $K/keymaps/i386/qwerty/chinese.map.gz
 ln -sf us.map.gz $K/keymaps/i386/qwerty/taiwanese.map.gz
