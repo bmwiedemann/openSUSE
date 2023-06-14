@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 14 09:20:10 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20230614.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20230614
+  * Add TruffleRuby and TruffleRuby+GraalVM 23.0.0 by @eregon in #2207
+
+-------------------------------------------------------------------
 Thu Jun  8 13:02:42 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20230608.
