@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Jun 13 11:04:00 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.9.22:
+  * Remove duplicate cilium tool and add unit test
+  * Add failing test to find duplicate tools
+
+-------------------------------------------------------------------
+Tue Jun 13 11:02:27 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.9.21:
+  * Add cilium CLI to arkade
+  * add copa to arkade get
+
+-------------------------------------------------------------------
+Tue Jun 13 10:59:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.9.20:
+  * feat: add atuin shell history tool and update catalog of CLIs
+
+-------------------------------------------------------------------
+Tue Jun 13 10:58:30 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.9.19:
+  * add openshift tools
+  * Update README.md
+  * add buildkitd and gitlab-runner to system-install in README.md
+  * add kube-burner
+  * Fixes #918 move from stedolan/jq to jqlang/jq
+  * fix: add ming to clusterctl
+
+-------------------------------------------------------------------
+Tue Jun 13 10:57:17 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.9.18:
+  * Add example into README and edit pull request template
+  * Download binaries to separate temp directory
+  * remove arch 386 for arkade get helmfile
+  * add buildkitd to system install
+  * add replicated-cli to arkade get
+  * Bump github.com/docker/distribution
+  * Bump github.com/otiai10/copy from 1.10.0 to 1.11.0
+
+-------------------------------------------------------------------
 Tue May 30 06:44:27 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.9.17:
