@@ -1,7 +1,7 @@
 #
 # spec file for package apparmor-rpm-macros
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Release:        0
 Summary:        RPM macros used to setup apparmor profiles
 License:        LGPL-2.1-or-later
 Group:          Development/Tools/Other
-Url:            https://bugs.launchpad.net/apparmor
+URL:            https://bugs.launchpad.net/apparmor
 Source:         macros.apparmor
 Requires:       coreutils
 BuildArch:      noarch

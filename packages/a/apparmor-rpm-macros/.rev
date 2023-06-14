@@ -53,4 +53,12 @@ The initial package only contains %apparmor_reload to (re)load a profile.</comme
 - Files in /usr/lib/rpm/macros.d are no config files (forwarded request 724522 from kukuk)</comment>
     <requestid>724552</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>90e640883e026f6c8c406835e2a32e70</srcmd5>
+    <version>1.0</version>
+    <time>1686752922</time>
+    <user>dimstar_suse</user>
+    <comment>No longer suppress stderr (forwarded request 1090655 from crameleon)</comment>
+    <requestid>1092694</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun  3 14:30:51 UTC 2023 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- No longer suppress stderr
+
+-------------------------------------------------------------------
 Mon Aug 19 11:08:48 CEST 2019 - kukuk@suse.de
 
 - Don't assume systemctl is already installed or available at all.
