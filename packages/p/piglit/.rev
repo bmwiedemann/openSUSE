@@ -214,4 +214,22 @@
     <comment></comment>
     <requestid>1030287</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ec59d237342fa5d1de122876741d9fc9</srcmd5>
+    <version>1~20230613</version>
+    <time>1686753095</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1~20230613:
+  * fface-invariant: Make the expected link failure go to stdout.
+  * arb_arrays_of_arrays/max-binding: Don't log all the expected fails to stderr.
+  * arb_texture_buffer_object: Don't compile the CS if GLSL version too low.
+  * arb_blend_func_extended/output-location: Quiet expected link failure.
+  * arb_cull_distance/exceed-limits: Don't log to stderr on expected result.
+  * piglit: Don't warn about defaulting to GL under EGL if it's explicitly set.
+  * gl-3.0-bound-resource-limits: Don't print to stderr on normal operation.
+  * fface-invariant: Don't log to stderr when we compile fail as expected.
+  * intel_performance_query: request 3.0 context
+  * general/depth-clear-with-copy: New test.</comment>
+    <requestid>1093126</requestid>
+  </revision>
 </revisionlist>

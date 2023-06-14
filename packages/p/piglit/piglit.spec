@@ -1,7 +1,7 @@
 #
 # spec file for package piglit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,13 +26,13 @@
 %bcond_without opengles
 %endif
 Name:           piglit
-Version:        1~20210326.6a4be9e99
+Version:        1~20230613
 Release:        0
 Summary:        OpenGL driver testing framework
 License:        MIT
 Group:          System/Benchmark
 URL:            https://cgit.freedesktop.org/piglit
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        piglit-rpmlintrc
 Source2:        suse_qa.py
 Source3:        suse_qa-skip-tests.txt
@@ -42,24 +42,25 @@ BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
+BuildRequires:  glslang-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  python3-Mako
 BuildRequires:  python3-numpy
 BuildRequires:  python3-xml
-BuildRequires:  waffle-devel
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(vulkan)
+BuildRequires:  pkgconfig(waffle-1) >= 1.6.0
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
-BuildRequires:  pkgconfig(xcb-dri2)
-BuildRequires:  pkgconfig(xcb-dri3)
+BuildRequires:  pkgconfig(xkbcommon)
 Requires:       python3
 Requires:       python3-Mako
 Requires:       python3-numpy
 Requires:       python3-xml
-Recommends:     waffle
+Recommends:     waffle >= 1.6.0
 ExcludeArch:    %{ix86} ppc
 %if %{with opengl}
 BuildRequires:  pkgconfig(gl)
@@ -88,7 +89,7 @@ some specific regression tests for certain bugs. HTML summaries can
 be generated, including the ability to compare different test runs.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 # Note: Overwriting CMAKE_SHARED_LINKER_FLAGS with those from the cmake macro,
@@ -125,8 +126,7 @@ install -Dpm 644 %{SOURCE5} \
   {buildroot}%{_libdir}/piglit/tests
 %fdupes %{buildroot}/%{_libdir}/piglit
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %{_libdir}/piglit

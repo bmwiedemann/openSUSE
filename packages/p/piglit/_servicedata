@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://anongit.freedesktop.org/git/piglit.git</param>
-              <param name="changesrevision">c0b320729b87cd52b7f9f216185e5824293dbf9a</param></service></servicedata>
+              <param name="changesrevision">c0b320729b87cd52b7f9f216185e5824293dbf9a</param></service><service name="tar_scm">
+                <param name="url">https://anongit.freedesktop.org/git/piglit.git/</param>
+              <param name="changesrevision">172030ccb6805dd434bd6ace01fed84a91cd015c</param></service></servicedata>

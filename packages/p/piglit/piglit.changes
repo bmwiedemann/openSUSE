@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun 14 11:35:22 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1~20230613:
+  * fface-invariant: Make the expected link failure go to stdout.
+  * arb_arrays_of_arrays/max-binding: Don't log all the expected fails to stderr.
+  * arb_texture_buffer_object: Don't compile the CS if GLSL version too low.
+  * arb_blend_func_extended/output-location: Quiet expected link failure.
+  * arb_cull_distance/exceed-limits: Don't log to stderr on expected result.
+  * piglit: Don't warn about defaulting to GL under EGL if it's explicitly set.
+  * gl-3.0-bound-resource-limits: Don't print to stderr on normal operation.
+  * fface-invariant: Don't log to stderr when we compile fail as expected.
+  * intel_performance_query: request 3.0 context
+  * general/depth-clear-with-copy: New test.
+
+-------------------------------------------------------------------
 Tue Oct 18 07:41:10 UTC 2022 - pgajdos@suse.com
 
 - python-six is not required
