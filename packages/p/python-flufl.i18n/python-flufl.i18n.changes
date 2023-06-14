@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 13 16:10:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- tag sle15 build for new python stack
+
+-------------------------------------------------------------------
 Wed Jan 18 10:55:15 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove not needed python-six dependency

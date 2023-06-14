@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-flufl.i18n
 Version:        4.1.1
 Release:        0
