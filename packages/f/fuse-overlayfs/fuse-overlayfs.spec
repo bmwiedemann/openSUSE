@@ -1,7 +1,7 @@
 #
 # spec file for package fuse-overlayfs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           fuse-overlayfs
-Version:        1.10
+Version:        1.12
 Release:        0
 Summary:        FUSE implementation for overlayfs
-License:        GPL-3.0-only
+License:        GPL-2.0-or-later
 Group:          System/Management
 URL:            https://github.com/containers/fuse-overlayfs
 Source0:        https://github.com/containers/fuse-overlayfs/archive/v%{version}.tar.gz

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 11 20:34:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12:
+  * change license to GPL-2.0-or-later.
+  * main: if a lower layer doesn't support ACLs do not enable
+    them.
+
+-------------------------------------------------------------------
 Sun Dec  4 21:47:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.10:

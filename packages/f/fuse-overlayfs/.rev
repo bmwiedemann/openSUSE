@@ -157,4 +157,15 @@
   * main: add a mount flag to disable ACLs.</comment>
     <requestid>1040074</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6d2273c9d5e3e709d7bda31a874d097a</srcmd5>
+    <version>1.12</version>
+    <time>1686752948</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.12:
+  * change license to GPL-2.0-or-later.
+  * main: if a lower layer doesn't support ACLs do not enable
+    them.</comment>
+    <requestid>1092405</requestid>
+  </revision>
 </revisionlist>
