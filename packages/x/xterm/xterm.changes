@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jun 11 15:06:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 382:
+  * amend change to CursorBack> in patch 380, allowing the result
+    to be on the hidden right-half of double-cell characters
+  * amend xtermDrawString, fixing regression with
+    --disable-wide-chars configuration from patch #380
+  * corrected pathname for run-tic.sh, for full
+    install in an out-of-tree build
+  * fix a regression in wide bitmap fonts versus check for
+    missing glyphs
+
+-------------------------------------------------------------------
 Thu May 18 13:17:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 380:

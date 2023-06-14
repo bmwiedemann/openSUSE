@@ -1774,4 +1774,20 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
       where  SS2  or  SS3  might  be  in  effect  while processing a (forwarded request 1087806 from dirkmueller)</comment>
     <requestid>1087899</requestid>
   </revision>
+  <revision rev="138" vrev="1">
+    <srcmd5>bfddc88394b948698297ef8e82732482</srcmd5>
+    <version>382</version>
+    <time>1686752950</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 382:
+  * amend change to CursorBack&gt; in patch 380, allowing the result
+    to be on the hidden right-half of double-cell characters
+  * amend xtermDrawString, fixing regression with
+    --disable-wide-chars configuration from patch #380
+  * corrected pathname for run-tic.sh, for full
+    install in an out-of-tree build
+  * fix a regression in wide bitmap fonts versus check for
+    missing glyphs (forwarded request 1092344 from dirkmueller)</comment>
+    <requestid>1092476</requestid>
+  </revision>
 </revisionlist>
