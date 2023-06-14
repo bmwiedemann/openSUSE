@@ -148,4 +148,12 @@ https://www.knot-dns.cz/</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1078475</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3566552477393d4887a2fc3f3f9b3c37</srcmd5>
+    <version>3.2.7</version>
+    <time>1686753103</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1093102</requestid>
+  </revision>
 </revisionlist>
