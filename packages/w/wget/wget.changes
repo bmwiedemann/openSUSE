@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 12 08:34:23 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update wget-libproxy.patch: ensure to properly use libproxy
+  cflags from pkg-config. Fixes build against libproxy 0.5.
+
+-------------------------------------------------------------------
 Tue May 16 21:23:42 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - GNU wget 1.21.4:
