@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun  1 12:53:48 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.1.2:
+  * Bugfixes
+    - Avoid stdout pollution cause by ansible logging (#287)
+      @ajinkyau
+
+-------------------------------------------------------------------
 Tue May 30 11:44:08 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 4.1.1:
