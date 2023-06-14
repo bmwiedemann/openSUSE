@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 11 20:55:10 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add upstream fixes from the stable branch:
+  + fc2669f63c5def1528dda2e7833db5774aa08e22.patch: mtp: Emit
+    delete event on device when disconnected
+  + 85bfb701fc95abeaa8a8ca3d9059378a9490f738.patch: smb: Allow
+    renaming a file to the same name with a different case
+
+-------------------------------------------------------------------
 Wed Apr 12 08:23:53 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 41862c0179f834d8bc3bd84ce78ee495050f2676.patch: trash: Sync
