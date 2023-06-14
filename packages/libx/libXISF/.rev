@@ -53,4 +53,18 @@
 </comment>
     <requestid>1090746</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d4bd781c82812e60496a06a327d02057</srcmd5>
+    <version>0.2.8</version>
+    <time>1686753077</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.8:
+  * Remove linking against zstd
+- Drop 6028354c61d230bf2ee85d90cef5d1464da9c5a1.patch
+- Update to 0.2.7:
+  * Fix reading ICCprofile
+- Add 6028354c61d230bf2ee85d90cef5d1464da9c5a1.patch
+</comment>
+    <requestid>1093067</requestid>
+  </revision>
 </revisionlist>

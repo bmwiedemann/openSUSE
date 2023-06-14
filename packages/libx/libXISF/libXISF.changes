@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 14 07:36:07 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.2.8:
+  * Remove linking against zstd
+- Drop 6028354c61d230bf2ee85d90cef5d1464da9c5a1.patch
+
+-------------------------------------------------------------------
+Tue Jun 13 06:28:19 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.2.7:
+  * Fix reading ICCprofile
+- Add 6028354c61d230bf2ee85d90cef5d1464da9c5a1.patch
+
+-------------------------------------------------------------------
 Sun Jun  4 12:03:16 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.2.6:
