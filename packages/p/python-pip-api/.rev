@@ -93,4 +93,12 @@
     <comment>- Skip PEP508 tests since they require the network.</comment>
     <requestid>1090402</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>e9d6c66f33a35f472bb825526705415a</srcmd5>
+    <version>0.0.30</version>
+    <time>1686753018</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093040</requestid>
+  </revision>
 </revisionlist>

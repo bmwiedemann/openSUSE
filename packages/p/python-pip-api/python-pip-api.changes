@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 13 08:58:11 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+- Fix required package versions.
+
+-------------------------------------------------------------------
 Fri Jun  2 04:39:22 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Skip PEP508 tests since they require the network.

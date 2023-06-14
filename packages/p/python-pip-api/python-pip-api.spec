@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-pip-api
 Version:        0.0.30
 Release:        0
@@ -29,9 +30,10 @@ Patch0:         unvendor.patch
 # PATCH-FIX-OPENSUSE Remove a test parameter that is broken with our shipped
 # packaging.
 Patch1:         support-packaging-changes.patch
-BuildRequires:  %{python_module packaging >= 20.3}
-BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module packaging >= 21.0}
+BuildRequires:  %{python_module pip >= 22.1}
 BuildRequires:  %{python_module pretend}
+BuildRequires:  %{python_module pyparsing >= 2.4.7}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module virtualenv}
@@ -57,7 +59,7 @@ rm -Rf ./pip_api/_vendor
 
 %check
 # Broken with current packaging ; requires network
-%pytest -k 'not (test_installed_distributions_legacy_version or test_parse_requirements_PEP508)'
+%pytest -k 'not (test_installed_distributions_legacy_version)'
 
 %files %{python_files}
 %doc README.md
