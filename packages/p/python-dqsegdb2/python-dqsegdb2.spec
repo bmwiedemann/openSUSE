@@ -21,7 +21,7 @@
 
 %global modname dqsegdb2
 Name:           python-dqsegdb2
-Version:        1.1.3
+Version:        1.1.4
 Release:        0
 Summary:        Simplified python interface to the DQSEGDB API
 License:        GPL-3.0-only
@@ -33,12 +33,10 @@ BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-gwdatafind
 Requires:       python-igwn-auth-utils
 Requires:       python-ligo-segments
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module gwdatafind}
 BuildRequires:  %{python_module igwn-auth-utils}
 BuildRequires:  %{python_module ligo-segments}
 BuildRequires:  %{python_module pytest}

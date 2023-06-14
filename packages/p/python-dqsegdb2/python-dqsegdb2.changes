@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 10 17:51:07 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.1.4:
+  * No release notes.
+- Drop (Build)Requires: python-gwdatafind as it is no longer
+  needed as per requirements file.
+
+-------------------------------------------------------------------
 Fri Jan 13 09:16:54 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.1.3:
