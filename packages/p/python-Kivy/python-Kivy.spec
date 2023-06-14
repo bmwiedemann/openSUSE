@@ -1,7 +1,7 @@
 #
 # spec file for package python-Kivy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-Kivy
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Hardware-accelerated multitouch application library
 License:        Apache-2.0 AND MIT AND LGPL-2.1-or-later AND GPL-2.0-or-later AND GPL-3.0-only AND BSD-3-Clause
