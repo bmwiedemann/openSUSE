@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 11 14:08:18 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Wed Aug 17 09:03:29 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add OBS_missing_etc_machine_id.patch to partially fix
