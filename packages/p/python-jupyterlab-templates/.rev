@@ -85,4 +85,13 @@
 </comment>
     <requestid>1082512</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d7805b2419eb3447a081de33985eb6d8</srcmd5>
+    <version>0.4.0</version>
+    <time>1686752992</time>
+    <user>dimstar_suse</user>
+    <comment>- Jupyterlab 4 does not hard require notebook anymore:
+  get it explicitly</comment>
+    <requestid>1092987</requestid>
+  </revision>
 </revisionlist>

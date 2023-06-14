@@ -28,6 +28,7 @@ URL:            https://github.com/finos/jupyterlab_templates
 Source:         https://files.pythonhosted.org/packages/py3/j/jupyterlab-templates/jupyterlab_templates-%{version}-py3-none-any.whl
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module jupyterlab >= 3.5.0}
+BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
@@ -36,6 +37,7 @@ BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-jupyterlab-templates = %{version}
 Requires:       python-jupyterlab >= 3.5
+Requires:       (python-notebook if python-jupyterlab >= 4)
 Conflicts:      jupyter-jupyterlab_templates < %{version}
 Provides:       python-jupyter_jupyterlab_templates = %{version}
 Obsoletes:      python-jupyter_jupyterlab_templates < %{version}
