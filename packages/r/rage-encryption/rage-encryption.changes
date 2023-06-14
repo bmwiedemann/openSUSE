@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jun 13 00:35:46 UTC 2023 - william.brown@suse.com
+
+- Update to version 0.9.2+0:
+  * v0.9.2
+  * Fix changelog bugs and add missing entry
+  * Document `PINENTRY_PROGRAM` environment variable
+  * age: Add `Decryptor::new_async_buffered`
+  * age: `impl AsyncBufRead for ArmoredReader`
+  * Pre-initialize vectors when the capacity is known, or use arrays
+  * Use `PINENTRY_PROGRAM` as environment variable for `pinentry`
+  * Document why `impl AsyncWrite for StreamWriter` doesn't loop indefinitely
+  * cargo update
+  * cargo vet prune
+  * Migrate to `cargo-vet 0.7`
+  * build(deps): bump svenstaro/upload-release-action from 2.5.0 to 2.6.1
+  * Correct spelling in documentation
+  * build(deps): bump codecov/codecov-action from 3.1.1 to 3.1.4
+  * StreamWriter AsyncWrite: fix usage with futures::io::copy()
+  * rage: Use `Decryptor::new_buffered`
+  * age: Add `Decryptor::new_buffered`
+  * age: `impl BufRead for ArmoredReader`
+  * Update Homebrew formula to v0.9.1
+  * feat/pinentry: Use env var to define pinentry binary
+
+-------------------------------------------------------------------
 Tue Apr 11 11:13:29 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - As per https://en.opensuse.org/openSUSE:Package_description_guidelines
