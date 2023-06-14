@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jun  7 23:05:10 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.99.0:
+  + option: Add various non-fatal deprecation warnings that were
+    previously missing, and fix a misleading deprecation message
+    for `--window-icon`
+  + main: Add G_APPLICATION_FLAGS_NON_UNIQUE to GApplication flags
+  + progress: Cleanup unnecessary static objects and remove
+    spurious builder unref
+  + util:
+    - Remove fatal assert on exit if window invalid GtkWindow
+    - Ignore superfluous quit requests
+    - Remove superfluous GtkWindow cast check
+  + data: Manpage generation changes; don't automatically generate
+    the manpage from help2man for now (this will preferably be
+    reinstated post-4.0 once the issues are worked out)
+  + a11y: Label the widgets in a forms UI properly
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu May  4 08:34:20 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.92.0:

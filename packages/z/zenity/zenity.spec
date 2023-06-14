@@ -17,13 +17,13 @@
 
 
 Name:           zenity
-Version:        3.92.0
+Version:        3.99.0
 Release:        0
 Summary:        GNOME Command Line Dialog Utility
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/Zenity
-Source0:        https://download.gnome.org/sources/zenity/3.92/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/zenity/3.99/%{name}-%{version}.tar.xz
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -69,7 +69,7 @@ Zenity is especially useful in scripts.
 %license COPYING
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/zenity
-#%%{_mandir}/man?/zenity.1%%{ext_man}
+%{_mandir}/man?/zenity.?%{ext_man}
 %{_datadir}/applications/org.gnome.Zenity.desktop
 %{_datadir}/icons/hicolor/48x48/apps/zenity.png
 
