@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-jupyterlab-server%{psuffix}
-Version:        2.22.1
+Version:        2.23.0
 Release:        0
 Summary:        Server components for JupyterLab and JupyterLab-like applications
 License:        BSD-3-Clause
@@ -69,6 +69,8 @@ Obsoletes:      jupyter-jupyterlab_server < %{version}-%{release}
 %endif
 %if %{with test}
 BuildRequires:  %{python_module jupyterlab-server-test = %{version}}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 %endif
 %python_subpackages
 
@@ -121,7 +123,17 @@ sed -i 's/--color=yes//' pyproject.toml
 
 %if %{with test}
 %check
-%pytest
+export PYTHONDONTWRITEBYTECODE=1
+%{python_expand # https://github.com/jupyterlab/jupyterlab_server/issues/390
+$python -m venv build/testenv --system-site-packages
+for p in \
+  tests/translations/jupyterlab-some-package \
+  tests/translations/jupyterlab-language-pack-es_CO
+do
+  build/testenv/bin/pip install --use-pep517 --no-build-isolation --disable-pip-version-check $p
+done
+build/testenv/bin/python -m pytest -v
+}
 %endif
 
 %if !%{with test}

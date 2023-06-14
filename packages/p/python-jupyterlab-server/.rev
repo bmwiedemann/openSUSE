@@ -44,4 +44,14 @@
   * Ignore warning from bind_sockets #383 (@blink1073) (forwarded request 1082329 from bnavigator)</comment>
     <requestid>1082331</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4bc22062511b2091c21069c1c3c21a56</srcmd5>
+    <version>2.23.0</version>
+    <time>1686752988</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.23.0
+  * Set Cache-control immutable for static files #394 (@brichet)
+- Make sure to supply the language test packages for tests</comment>
+    <requestid>1092975</requestid>
+  </revision>
 </revisionlist>
