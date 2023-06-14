@@ -58,4 +58,12 @@
 - Drop patch python-310-support.patch, merged upstream.</comment>
     <requestid>957243</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>2160fbe867c835f51fe321d83e35f5cd</srcmd5>
+    <version>0.7.1</version>
+    <time>1686753021</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093042</requestid>
+  </revision>
 </revisionlist>
