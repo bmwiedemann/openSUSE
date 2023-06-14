@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun  7 12:43:26 UTC 2023 - Robert Schweikert <rjschwei@suse.com>
+
+- Fix version confusion between boto3 nd botocore for dependency
+
+-------------------------------------------------------------------
+Wed Apr 26 22:00:24 UTC 2023 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 10.0.2 (bsc#1209255, jsc#PED-3781)
+  + Add 'uefi-preferred' boot mode setting
+
+-------------------------------------------------------------------
 Tue May 24 20:28:24 UTC 2022 - Robert Schweikert <rjschwei@suse.com>
 
 - Update to version 10.0.1

@@ -19,7 +19,7 @@
 %define upstream_name ec2imgutils
 
 Name:           python3-ec2imgutils
-Version:        10.0.1
+Version:        10.0.2
 Release:        0
 Summary:        Image management utilities for AWS EC2
 License:        GPL-3.0+
@@ -27,10 +27,10 @@ Group:          System/Management
 Url:            https://github.com/SUSE-Enceladus/ec2imgutils
 Source0:        %{upstream_name}-%{version}.tar.bz2
 Requires:       python3
-Requires:       python3-boto3 >= 1.22.11
+Requires:       python3-boto3 >= 1.26.89
 Requires:       python3-dateutil
 Requires:       python3-paramiko
-BuildRequires:  python3-boto3 >= 1.22.11
+BuildRequires:  python3-boto3 >= 1.26.89
 BuildRequires:  python3-dateutil
 BuildRequires:  python3-setuptools
 BuildRequires:  python-rpm-macros
