@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 14 08:23:44 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Fix %posttrans script (`done` instead of `fi`) (bsc#1212351).
+
+-------------------------------------------------------------------
 Thu Jun  8 14:22:49 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Add support for gcc13 (jsc#PED-2896)

@@ -252,7 +252,7 @@ done
 for i in cc,gcc c++,g++; do
     test -e %{hpc_cf_install_path}/bin/${i##*,}%{hpc_gnu_bin_version} \
 	&& ln -s %{hpc_cf_install_path}/bin/${i%%%%,*} ${i##*,}%{hpc_gnu_bin_version}
-fi
+done
 %else
 # for the base compiler version link to the 'default' binary:
 localbindir=%_bindir/

@@ -161,4 +161,12 @@
     <comment>- Add support for gcc13 (jsc#PED-2896) (forwarded request 1091708 from eeich)</comment>
     <requestid>1091709</requestid>
   </revision>
+  <revision rev="18" vrev="12">
+    <srcmd5>f494af3927ca9a6255ef31ba7e191520</srcmd5>
+    <version>1.4</version>
+    <time>1686753081</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix %posttrans script (`done` instead of `fi`) (bsc#1212351). (forwarded request 1093081 from eeich)</comment>
+    <requestid>1093082</requestid>
+  </revision>
 </revisionlist>
