@@ -116,6 +116,11 @@ for f in $(find src -name \*.py -exec grep -l '^#!%{_bindir}/env' {} \;); do
     sed -i 's|^#!%{_bindir}/env .*$||g' $f
 done
 
+# Remove windows executable binaries
+# bsc#1212015
+rm -v src/pip/_vendor/distlib/*.exe
+sed -i '/\.exe/d' setup.py
+
 %build
 %if ! %{with wheel}
 %python_build

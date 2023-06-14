@@ -735,4 +735,12 @@
     cache of locally built wheels in hash-checking mode. (#11967)</comment>
     <requestid>1084918</requestid>
   </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>e002648dc41654d80893aacdd1fc3881</srcmd5>
+    <version>23.1.2</version>
+    <time>1686752952</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove .exe files from package (bsc#1212015)</comment>
+    <requestid>1092512</requestid>
+  </revision>
 </revisionlist>
