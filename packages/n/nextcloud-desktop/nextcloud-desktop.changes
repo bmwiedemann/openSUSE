@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Wed Jun 14 06:27:26 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.9.0
+  - sort encrypted files by their id to compute checksum in #5568
+  - try different permutation to try to recover the broken checksum in #5572
+  - Fix unit tests SecureFileDrop in #5574
+  - Do not display error status and messages when aborting a sync during hydration request in VFS mode in #5579
+  - Correct spelling in #5567
+  - in case server has no private key, let e2ee init fail in #5566
+  - Edit locally. Restart current folder sync immediately after file opened. in #5588
+  - fix compilation with clazy and fully-qualified-moc-types checks enabled in #5587
+  - Enter next log file if the current log file is larger than 512 KB in #5580
+  - Alway add the item at the end of the layout. in #5595
+  - properly preserve the format of e2ee metadata during DB operations in #5577
+  - Edit locally. Elide loading dialog filename label middle. in #5612
+  - Fix crash on entering new log file after file size of 512kb reached in #5603
+  - Properly handle all fatal errors during edit locally setup procedure in #5583
+  - Update nextcloudcmd.rst to include dedicated install method for Debian instead of using a Ubuntu ppa. in #5243
+  - Fix MacOS UTF-8 normalization issue in #4957
+  - Parse sharees 'lookup' key to include federated sharees. in #5613
+  - Unlock Office files when they are closed by @allexzander in #5607
+  - Implement missing share settings in #5622
+  - no longer override the pixman default version in #5630
+  - Edit locally. Fix crash on _chekTokenJob pointer deref. in #5637
+  - Remove some SQL debug logs to unclutter the output. in #5634
+  - Annotated version of Big Sur icon in #4714
+  - E2EE. Fix freeze on metadata checksum validation. in #5655
+  - Fix update request channel being set to wrong localised string in #5462
+  - Fix folder progress bar positioning in account settings on macOS in #5645
+  - Fix setting [undefined] to QFont in 'Sync now' button in #5628
+  - Attempt sign in when an account state is added in AccountManager in #5493
+  - Fix account migration from legacy desktop clients (again) in #5640
+  - Feature/group folders visibility improved in #5636
+  - Use addLayout to insert the VFS option when setting account. in #5665
+  - Update CHANGELOG. in #5643
+  - i18n: Word separation in #5676
+  - Implement File Provider file synchronisation engine for macOS in #5527
+  - Fix unrecoverable freezing when PutMultiFileJob is used with upload rate limits enabled in #5680
+  - Dismiss notifications in #5687
+  - Display file tags in File Details in #5596
+  - Allow opening a file or folder in the local sync root. in #5686
+  - Provide feedback on share link copy in #5672
+  - Ask before importing accounts from legacy clients in #5654
+  - Feature/resolve all conflicts in #5635
+  - Update CHANGELOG. in #5706
+  - change size of dismiss button for items in activity list in #5377
+  - [stable-3.9] Fix tray window header folders button colour in #5723
+  - [stable-3.9] align activity text with "Sync now" text in #5725
+  - [stable-3.9] ensure that the file to test monitoring is hidden in #5733
+  - [stable-3.9] Fix tray styling in #5741
+  - [stable-3.9] Fix macOS build when file provider module build is disabled in #5742
+  - [stable-3.9] Fix dark mode switch issues in tray controls manually overriding palette colours in #5744
+  - [stable-3.9] fix build on windows by adding missing archive name properties on libs in #5748
+  - [stable-3.9] Fix macOS icon in #5762
+  - [stable-3.9] Bugfix/log less verbose in #5775
+  - Revert inclusion of File Provider module in 3.9 branch in #5772
+  - [stable-3.9] Bugfix. Conflict resolution button not clickable. in #5777
+  - [stable-3.9] display subject when we have sync issues like network errors in #5782
+  - [stable-3.9] Fix UnifiedSearch text field placeholder text color for light and dark theme in #5785
+  - [stable-3.9] addd a cmake option to enable single account desktop client in #5789
+  - [stable-3.9] Fix colouring of NCRadioButton in #5790
+  - [stable-3.9] chore: update workflows from templates in #5794
+  - [stable-3.9] Bugfix/rotate log less often in #5795
+  - [stable-3.9] Bugfix/adjust log levels in #5799
+
+-------------------------------------------------------------------
 Wed May 17 09:40:12 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.8.2
