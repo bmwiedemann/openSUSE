@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Jun 12 20:14:52 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 10.12.1.8
+  Changes since 10.9.1:
+  * reduce runtime for HOST-RESOURCES-MIB disk and device tables.
+  * don't walk cefcFRUPowerSupplyGroupTable, it's unused anyway.
+  * PR 310/311 for Fortigte HW.
+  * bugfix in bluecat productname detection.
+  * update glplugin (another epn fix, ::pluginname, ::plugin).
+  * bugfix in Huawei Wlan Controller (just a perl warning, not
+    serious) these recent perl warnings appeared after i heavily
+    used the embedded perl feature of mod-gearman. it is much
+    more strict than running the plugin as a standalone process).
+  * bugfix in Pulse Secure (just a perl warning, not serious).
+  * bugfix in Huawei bgp modes (just a perl warning, not serious).
+  * add a cluster-check for cisco sdwan.
+  * reduced runtime and amount of transferred data for bgp-related
+    checks.
+  * reduce runtime in Huwaei accesspoint modes.
+  * bugfix in Huawei hardware-health. Discard temperatures of
+    2147483647 deg.
+  * improve Huawei hardware-health.
+  * add filters to sdwan-check (name=dstip,name2=localcolor).
+  * bugfix in Cisco Envmon notfunctioning.
+  * bugfix again, exists plus defined.
+  * bugfix in CISCO-ENVMON-MIB temperature (catch "notPresent").
+  * bugfix in Checkpoint Management-Status.
+
+-------------------------------------------------------------------
 Thu Feb 23 18:58:03 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 10.9.1
