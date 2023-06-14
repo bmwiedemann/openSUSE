@@ -17,7 +17,6 @@
 
 
 %define anypython3dist python3dist
-%define untaggedversioncommit 1aaafbcce5a58e59a14311ac36594038893da4e1
 Name:           python-ipyvuetify
 Version:        1.8.10
 Release:        0
@@ -25,9 +24,9 @@ Summary:        Jupyter widgets based on vuetify UI components
 License:        MIT
 URL:            https://github.com/mariobuikhuizen/ipyvuetify
 Source0:        https://files.pythonhosted.org/packages/source/i/ipyvuetify/ipyvuetify-%{version}.tar.gz
-Source1:        https://github.com/widgetti/ipyvuetify/raw/%{untaggedversioncommit}/examples/Examples.ipynb
+Source1:        https://github.com/widgetti/ipyvuetify/raw/v%{version}/examples/Examples.ipynb
 BuildRequires:  %{python_module jupyter-packaging >= 0.7.9}
-BuildRequires:  %{python_module jupyterlab >= 3.0 with %python-jupyterlab < 4}
+BuildRequires:  %{python_module jupyterlab >= 3}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
