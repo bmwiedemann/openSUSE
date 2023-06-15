@@ -25,7 +25,7 @@
   boo#1205020: '20221104'
   boo#1205032: '20221110'
   boo#1205312: '20221113'
-  boo#1205314: '20230613'
+  boo#1205314: '20230614'
   boo#1205362: '20221113'
   boo#1205363: '20230119'
   boo#1205425: '20221120'
@@ -418,10 +418,8 @@ products:
     - x86_64
   - java11-devel-container:
     - x86_64
-  - java15-devel-container:
-    - x86_64
-  - keylime-control-plane-image:
-    - x86_64
+#  - keylime-control-plane-image:
+#    - x86_64
   - microos-docserv-image:
     - x86_64
   - opensuse-memcached-image:
@@ -543,10 +541,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20230614'
 published: '20230613'
 publishing: '20230613'
-testing: '20230613'
+testing: '20230614'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
