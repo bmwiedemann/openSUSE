@@ -231,7 +231,7 @@ installcheck-ignore-duplicated-binaries =
 # busybox-misc has a few file conflicts:   /usr/bin/lspci, /usr/bin/mesg, /usr/bin/wall, /usr/bin/resize, /usr/bin/xxd
 # libstdc++6-gccX are non-installable, but they are also not really meant to be used (see https://github.com/openSUSE/openSUSE-release-tools/pull/2968)
 # Please keep in sync with ports.
-installcheck-ignore-conflicts = busybox-misc libstdc++6-gcc7 libstdc++6-gcc12
+installcheck-ignore-conflicts = busybox-misc libstdc++6-gcc7 libstdc++6-gcc12 libstdc++6-pp-gcc12
 
 # for scan_baselibs.py
 allowed-missing-32bit-binaries-importing = audit-secondary bash coreutils curl-mini dbus-1-x11 ft2demos gamin gdb gettext-runtime-mini krb5-mini librtas librtas-doc libselinux-bindings LibVNCServer llvm lvm2 lvm2-clvm openssl openucx postgresql10 postgresql96 psl-make-dafsa python-libxml2-python python-magic python-rpm python-semanage strace syslinux systemd-mini util-linux-systemd

@@ -792,10 +792,10 @@ Prefer: spamassassin:curl
 # have choice for pkgconfig(catch2): Catch2-2-devel Catch2-devel
 Prefer: -Catch2-2-devel
 
-# Python3 exists in multiple versions - we currently favor 3.8 (our default):
+# Python3 exists in multiple versions - we currently favor 3.11 (our default):
 Prefer: -python39
 Prefer: -python39-hotdoc
-Prefer: -python39-txt2tags -python311-txt2tags
+Prefer: -python39-txt2tags -python310-txt2tags
 
 # unresolvable: have choice for libcontainers-policy >= 20230214 needed by libcontainers-common: libcontainers-default-policy libcontainers-openSUSE-policy
 Prefer: -libcontainers-default-policy
@@ -857,7 +857,7 @@ Prefer: -gnome-bluetooth-1
 Prefer: PackageKit-backend-zypp
 
 # have choice for python3-sip: python3-sip-devel python3-sip4
-Prefer: python39-sip-devel python310-sip-devel
+Prefer: -python39-sip6-devel -python310-sip6-devel -python311-sip6-devel
 Prefer: -python38-sip4 -python38-sip4-devel
 Prefer: -python39-sip4 -python39-sip4-devel
 Prefer: -python310-sip4 -python310-sip4-devel
@@ -3606,6 +3606,7 @@ Prefer: java-11-openjdk-devel java-11-openjdk java-11-openjdk-headless java-11-o
 Prefer: java-1_8_0-openj9-devel java-1_8_0-openj9 java-1_8_0-openj9-headless
 %endif
 Prefer: java-1_8_0-openjdk-devel java-1_8_0-openjdk java-1_8_0-openjdk-headless java-1_8_0-openjdk-javadoc
+Prefer: java-20-openjdk-devel java-20-openjdk java-20-openjdk-headless java-20-openjdk-javadoc
 Prefer: java-19-openjdk-devel java-19-openjdk java-19-openjdk-headless java-19-openjdk-javadoc
 Prefer: java-18-openjdk-devel java-18-openjdk java-18-openjdk-headless java-18-openjdk-javadoc
 Prefer: java-15-openjdk-devel java-15-openjdk java-15-openjdk-headless java-15-openjdk-javadoc
