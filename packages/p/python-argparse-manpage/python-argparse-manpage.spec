@@ -17,22 +17,24 @@
 
 
 %define mod_name argparse-manpage
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-argparse-manpage
-Version:        4.1
+Version:        4.3
 Release:        0
 Summary:        Tool for automatic manual page building from a Python ArgumentParser object
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/praiskup/argparse-manpage
 Source:         https://github.com/praiskup/argparse-manpage/archive/v%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Skip pip install tests until pip can behave better
+Patch0:         skip-pip-install.patch
 BuildArch:      noarch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  ca-certificates
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
+Requires:       python-tomli
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %python_subpackages
@@ -47,7 +49,7 @@ or the function name which returns the object. There's a limited
 support for (deprecated) optparse objects, too.
 
 %prep
-%setup -q -n %{mod_name}-%{version}
+%autosetup -p1 -n %{mod_name}-%{version}
 
 %build
 %python_build
@@ -70,7 +72,9 @@ support for (deprecated) optparse objects, too.
 %files %{python_files}
 %doc README*
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/argparse_manpage
+%{python_sitelib}/build_manpages
+%{python_sitelib}/argparse_manpage-%{version}*info
 %python_alternative %{_bindir}/argparse-manpage
 %python_alternative %{_mandir}/man1/argparse-manpage.1%{?ext_man}
 

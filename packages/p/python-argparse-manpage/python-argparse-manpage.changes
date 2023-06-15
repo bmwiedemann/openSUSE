@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 15 09:42:01 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.3:
+  * The pyproject.toml parsing feature now depends on tomli
+  * Support for pyproject.toml specification of manpages added.
+  * Support for pre-written man pages (the --manfile option)
+  * Incorrect dict access for --include support fixed.
+- Add patch skip-pip-install.patch:
+  * Skip pip install tests for now.
+
+-------------------------------------------------------------------
 Sun Apr 16 17:02:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.1:

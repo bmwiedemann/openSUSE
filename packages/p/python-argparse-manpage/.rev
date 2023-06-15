@@ -112,4 +112,18 @@ tools.</comment>
     environment variable in order to make builds reproducible.</comment>
     <requestid>1079778</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e88898fad1b24bcb68043dcf2d93a8e2</srcmd5>
+    <version>4.3</version>
+    <time>1686822324</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.3:
+  * The pyproject.toml parsing feature now depends on tomli
+  * Support for pyproject.toml specification of manpages added.
+  * Support for pre-written man pages (the --manfile option)
+  * Incorrect dict access for --include support fixed.
+- Add patch skip-pip-install.patch:
+  * Skip pip install tests for now.</comment>
+    <requestid>1093250</requestid>
+  </revision>
 </revisionlist>
