@@ -17,7 +17,7 @@
 
 
 Name:           barrel
-Version:        0.2.0
+Version:        0.2.1
 Release:        0
 Summary:        Tool for storage management
 License:        GPL-2.0-only
@@ -25,12 +25,12 @@ Group:          System/Packages
 URL:            https://github.com/openSUSE/barrel
 Source:         barrel-%{version}.tar.xz
 BuildRequires:  fdupes
-BuildRequires:  libstorage-ng-devel >= 4.5.78
+BuildRequires:  libstorage-ng-devel >= 4.5.101
 BuildRequires:  libtool
 BuildRequires:  libxslt
 BuildRequires:  readline-devel
 
-Requires:       libstorage-ng1 >= 4.5.78
+Requires:       libstorage-ng1 >= 4.5.101
 Recommends:     %{name}-lang
 Recommends:     logrotate
 %if 0%{?fedora_version}

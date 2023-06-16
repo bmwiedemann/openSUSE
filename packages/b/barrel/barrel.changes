@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 31 11:47:15 CEST 2023 - aschnell@suse.com
+
+- handle unsupported partition ids during loading of devicegraph
+- version 0.2.1
+
+-------------------------------------------------------------------
 Mon Mar 13 07:21:45 CET 2023 - aschnell@suse.com
 
 - colorize output
