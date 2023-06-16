@@ -226,7 +226,7 @@ fi										\
 
 %tmpfiles_create()								\
 %{expand:%%{?__systemd_someargs_%#:%%__systemd_someargs_%# tmpfiles_create}}	\
-[ -d /run/systemd/system ] && [ -x /usr/bin/systemd-tmpfiles ] &&		\
+[ -z "${TRANSACTIONAL_UPDATE}" ] && [ -x /usr/bin/systemd-tmpfiles ] &&		\
 	/usr/bin/systemd-tmpfiles --create %{?*} || :				\
 %{nil}
 
@@ -273,7 +273,7 @@ SYSTEMD_INLINE_EOF\
 #
 %sysusers_create_package() \
 %{expand:%%{?!__systemd_twoargs_%#:%%{error:The %%%%sysusers_create_package macro requires two arguments}}} \
-[ -x /usr/bin/systemd-sysusers ] && \
+[ -z "${TRANSACTIONAL_UPDATE}" ] && [ -x /usr/bin/systemd-tmpfiles ] && \
 	/usr/bin/systemd-sysusers --replace=%_sysusersdir/%1.conf - <<SYSTEMD_INLINE_EOF || : \
 %(cat %2) \
 SYSTEMD_INLINE_EOF\

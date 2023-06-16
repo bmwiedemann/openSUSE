@@ -699,4 +699,15 @@
   triggers for sysusers, tmpfiles, hwdb, and journal catalog.</comment>
     <requestid>1087187</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>8bc0aeca686f9a45cbd5cda9cf426b4a</srcmd5>
+    <version>23</version>
+    <time>1686927193</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to version 23
+
+- Restore the check that prevents systemd-tmpfiles to run during transactional updates
+  The check has been mistakenly dropped during the switch to file-triggers.</comment>
+    <requestid>1093498</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun 16 13:11:34 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Bump to version 23
+
+-------------------------------------------------------------------
+Fri Jun 16 13:00:59 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Restore the check that prevents systemd-tmpfiles to run during transactional updates
+
+  The check has been mistakenly dropped during the switch to file-triggers.
+
+-------------------------------------------------------------------
 Mon May 15 09:21:26 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Bump to version 22
