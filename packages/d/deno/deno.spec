@@ -19,7 +19,7 @@
 
 
 Name:           deno
-Version:        1.34.1
+Version:        1.34.2
 Release:        0
 Summary:        A secure JavaScript and TypeScript runtime
 License:        MIT
@@ -31,13 +31,9 @@ Source2:        cargo_config
 Source99:       revendor_source.sh
 Patch0:         deno-disable-update-check.patch
 Patch1:         deno-rm-upgrade-cmd.patch
-# PATCH-FIX-OPENSUSE - Disable LTO (to reduce req memory)
-%ifarch %{arm} aarch64
-Patch2:         deno-disable-lto.patch
-%endif
+BuildRequires:  cargo-packaging
 # gcc-c++ needed to build SPIRV-Cross
 BuildRequires:  clang
-BuildRequires:  cargo-packaging
 BuildRequires:  gcc-c++
 BuildRequires:  gn
 BuildRequires:  lld
@@ -52,6 +48,10 @@ BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 # deno does not build on 32-bit archs
 ExclusiveArch:  x86_64 aarch64 ppc64 ppc64le s390x
+# PATCH-FIX-OPENSUSE - Disable LTO (to reduce req memory)
+%ifarch %{arm} aarch64
+Patch2:         deno-disable-lto.patch
+%endif
 
 %description
 A JavaSript and TypeScript platform built on V8
