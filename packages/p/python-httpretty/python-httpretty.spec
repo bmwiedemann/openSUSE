@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-httpretty
 Version:        1.1.4
 Release:        0
