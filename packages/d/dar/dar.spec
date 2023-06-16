@@ -1,7 +1,7 @@
 #
 # spec file for package dar
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover   6000
 Name:           dar
-Version:        2.7.8
+Version:        2.7.9
 Release:        0
 Summary:        Backup and Restore Application
 License:        SUSE-GPL-2.0+-with-openssl-exception
@@ -26,6 +26,7 @@ URL:            https://dar.sourceforge.io/
 Source0:        https://dar.edrusb.org/dar.linux.free.fr/Releases/Source_code/dar-%{version}.tar.gz
 Source1:        https://dar.edrusb.org/dar.linux.free.fr/Releases/Source_code/dar-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
+BuildRequires:  argon2-devel
 BuildRequires:  automake
 BuildRequires:  curl-devel
 BuildRequires:  fdupes
