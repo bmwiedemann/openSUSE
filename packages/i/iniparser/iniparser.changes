@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun  2 18:36:09 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Add handle-null-return-getstring.patch (bsc#1211889)
+  CVE-2023-33461: NULL pointer dereference in iniparser_getboolean()
+
+-------------------------------------------------------------------
 Wed Aug 24 18:26:33 UTC 2022 - Michal Suchanek <msuchanek@suse.com>
 
 - Add fixes since 4.1

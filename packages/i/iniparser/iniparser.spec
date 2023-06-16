@@ -31,6 +31,9 @@ Patch00:        iniparser_remove_rpath.patch
 Patch01:        Fail-testrun-on-test-failure.patch
 Patch02:        Fix-buffer-overflow-from-sprintf.patch
 Patch03:        Fix-tests-on-32bit.patch
+# PATCH-FIX-SUSE handle-null-return-getstring.patch bsc#1211889 -- CVE-2023-33461: NULL pointer dereference in iniparser_getboolean()
+# https://github.com/ndevilla/iniparser/pull/146
+Patch04:        handle-null-return-getstring.patch
 
 %description
 Libiniparser offers parsing of ini files from the C level.
