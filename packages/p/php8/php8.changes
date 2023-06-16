@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue May 30 16:59:37 UTC 2023 - pgajdos@suse.com
+
+- version update to 8.1.20
+  * This is a security release.
+  * https://www.php.net/ChangeLog-8.php#8.1.20
+- force to repack tarball after update
+  https://github.com/php/php-src/issues/11300
+- session.save_path set to /var/lib/php8/sessions in mod_php8.conf
+  and www.conf php-fpm pool example
+- modified sources
+  % mod_php8.conf
+- added sources
+  + repack.sh
+  + php-unicode-allow-redistribution.patch
+
+-------------------------------------------------------------------
 Thu May 25 06:56:48 UTC 2023 - pgajdos@suse.com
 
 - repack the tarball temporarily [bsc#1211648]

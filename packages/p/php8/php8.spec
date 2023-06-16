@@ -57,7 +57,7 @@
 %bcond_without	sodium
 
 Name:           %{pprefix}%{php_name}%{psuffix}
-Version:        8.1.19
+Version:        8.1.20
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 8
 License:        MIT AND PHP-3.01
@@ -70,6 +70,8 @@ Source5:        README.macros
 Source6:        macros.php
 # temporarily repacked tarball https://github.com/php/php-src/issues/11300
 #Source8:        https://secure.php.net/distributions/php-%{version}.tar.xz.asc
+Source7:        repack.sh
+Source8:        php-unicode-allow-redistribution.patch
 #Source9:       https://www.php.net/distributions/php-keyring.gpg#/%%{php_name}.keyring
 Source9:        %{php_name}.keyring
 Source11:       %{php_name}.rpmlintrc
@@ -981,6 +983,13 @@ if test "x${vzend}" != "x%{zendver}"; then
     exit 1
 fi
 
+if grep -r 'specifically excludes the right'; then
+  echo
+  echo "https://github.com/php/php-src/issues/11300"
+  echo "please run repack.sh"
+  exit 1
+fi
+
 %build
 %if 150000 <= 0%{?sle_version} && 0%{?sle_version} <= 150200
 # former libcrypt does not support extended DES, so the build would fail
@@ -1304,6 +1313,8 @@ for f in %{buildroot}%{extension_dir}/*; do
     echo "; comment out next line to disable $ext extension in php" > %{buildroot}%{php_sysconf}/conf.d/${ini_name}.ini
     echo "${zend_}extension=$ext.so" >> %{buildroot}%{php_sysconf}/conf.d/${ini_name}.ini
 done
+# directory for sessions
+install -d %{buildroot}%{_localstatedir}/lib/%{php_name}/sessions
 # fix symlink (bnc#734176)
 ln -s %{_bindir}/php %{buildroot}%{_bindir}/%{php_name}
 # install the macros file:
@@ -1392,6 +1403,8 @@ fi
 %dir %{extension_dir}
 %dir %{php_sysconf}
 %dir %{php_sysconf}/conf.d
+%attr(0755, %{apache_user}, root) %dir %{_localstatedir}/lib/%{php_name}
+%attr(0755, %{apache_user}, root) %dir %{_localstatedir}/lib/%{php_name}/sessions
 
 %files cli
 %defattr(-, root, root)

@@ -29,3 +29,16 @@ Index: php-8.1.19/php.ini-production
  
  ; Maximum number of links.  -1 means no limit.
  ; https://php.net/mysqli.max-links
+Index: php-8.1.19/sapi/fpm/www.conf.in
+===================================================================
+--- php-8.1.19.orig/sapi/fpm/www.conf.in
++++ php-8.1.19/sapi/fpm/www.conf.in
+@@ -27,6 +27,8 @@
+ ;                 If the group is not set, the user's group is used.
+ user = @php_fpm_user@
+ group = @php_fpm_group@
++; session folder has to be writable by user:group
++php_value[session.save_path] = /var/lib/php8/sessions
+ 
+ ; The address on which to accept FastCGI requests.
+ ; Valid syntaxes are:
