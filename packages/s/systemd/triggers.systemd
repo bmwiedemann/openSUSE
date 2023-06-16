@@ -102,7 +102,9 @@ end
 -- This script will process files installed in /usr/lib/tmpfiles.d to create
 -- tmpfiles automatically. The priority is set such that it will run
 -- after the sysusers file trigger, but before any other triggers.
-assert(rpm.execute("systemd-tmpfiles", "--create"))
+if os.getenv("TRANSACTIONAL_UPDATE") == nil then
+    assert(rpm.execute("systemd-tmpfiles", "--create"))
+endf
 
 %if %{without bootstrap}
 %transfiletriggerin -P 1000600 -n udev -p <lua> -- /usr/lib/udev/rules.d

@@ -6620,4 +6620,13 @@ handle manual pages that consist only of a .so directive such as
   &quot;(sd-pam)&quot; helper process when the PAM session is being closed.</comment>
     <requestid>1090446</requestid>
   </revision>
+  <revision rev="393" vrev="2">
+    <srcmd5>17940d0664a35c8cf0b409e54635855d</srcmd5>
+    <version>253.5</version>
+    <time>1686927194</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure to skip the call to systemd-tmpfile in the file-triggers when
+  running on transaction systems</comment>
+    <requestid>1093507</requestid>
+  </revision>
 </revisionlist>

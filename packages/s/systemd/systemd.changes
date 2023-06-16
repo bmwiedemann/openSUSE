@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 16 14:38:33 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Make sure to skip the call to systemd-tmpfile in the file-triggers when
+  running on transaction systems
+
+-------------------------------------------------------------------
 Thu Jun  1 15:58:24 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Import commit 07bb12a282b0ea378850934c4a76008b448b8bad (merge of v253.5)
