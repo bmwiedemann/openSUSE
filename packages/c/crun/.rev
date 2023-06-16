@@ -104,4 +104,12 @@
 - add keyring for GPG validation</comment>
     <requestid>1074967</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>28eea77cdda2e4ac9609f91a4ea49e5a</srcmd5>
+    <version>1.8.5</version>
+    <time>1686927224</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093193</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Jun 14 12:55:19 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to 1.8.5:
+  * scheduler: use definition from the OCI configuration file
+    instead of the custom label that is now dropped and not
+    supported anymore.
+  * cgroup: fix creating cgroup under "domain threaded".
+  * cgroup, systemd: set the memory limit on the system scope.
+  * restore tty settings from the correct file descriptor.  It was
+    previously restoring the settings from the wrong file
+    descriptor causing the tty settings  to be changed on the
+    calling terminal.
+  * criu: check if the criu_join_ns_add function exists.
+    Fix a segfault with new versions of CRIU.
+  * linux: do not precreate devs with euid > 0.  Fix creating
+    devices when running the OCI runtime as non root user.
+  * linux: improve PID detection on systems that lack pidfd.
+    While there is still a window of time that the PID could be
+    recycled, now it is now reduced to a minimum.
+  * criu: fix memory leak.
+  * logging: improve error message when dlopen fails.
+
+- Changes from 1.8.4:
+  * drop custom annotation to set the time namespace and use
+    the OCI specs instead.
+  * cgroup: workaround cpu quota/period issue with v1.  Sometimes
+    setting CPU quota period fails when a new period is lower,
+    and a parent cgroup has CPU quota limit set.
+  * cgroup: fix set quota to -1 on cgroup v1.
+  * criu: drop loading unused functions.
+
+-------------------------------------------------------------------
 Tue Mar 28 10:27:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.3:
