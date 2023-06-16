@@ -1,7 +1,7 @@
 #
 # spec file for package shorewall
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -388,7 +388,7 @@ rm -f %{_sysconfdir}/%{name}/startup_disabled
 # boo#1166114 Never try to restart shorewall-init
 # You can lock down the system so never use
 #%%service_del_postun shorewall-init.service macro
-%systemd_postun
+%systemd_postun shorewall-init.service
 
 %files
 %defattr(-,root,root,-)
