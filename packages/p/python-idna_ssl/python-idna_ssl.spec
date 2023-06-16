@@ -26,6 +26,7 @@
 %bcond_with test
 %endif
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-idna_ssl%{psuffix}
 Version:        1.1.0
 Release:        0

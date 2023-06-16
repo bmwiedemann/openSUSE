@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 14 08:10:50 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Tue Mar 17 10:39:29 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip also test test_aiohttp that fails on Leap due to http error

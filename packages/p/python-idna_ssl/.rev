@@ -52,4 +52,12 @@
   (it tries to resolve stuff that fails)</comment>
     <requestid>785883</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>cea21bfb85ce6dab5e6b729c2dea53b9</srcmd5>
+    <version>1.1.0</version>
+    <time>1686927120</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093091</requestid>
+  </revision>
 </revisionlist>
