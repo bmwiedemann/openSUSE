@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Babel
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2014 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,29 +17,28 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-Flask-Babel
-Version:        2.0.0
+Version:        3.1.0
 Release:        0
 Summary:        i18n and l10n support for Flask
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/python-babel/flask-babel
-Source:         https://files.pythonhosted.org/packages/source/F/Flask-Babel/Flask-Babel-%{version}.tar.gz
-BuildRequires:  %{python_module Babel >= 2.3}
-BuildRequires:  %{python_module Flask}
-BuildRequires:  %{python_module Jinja2 >= 2.5}
+Source:         https://github.com/python-babel/flask-babel/archive/refs/tags/v%{version}.tar.gz#/Flask-Babel-%{version}.tar.gz
+BuildRequires:  %{python_module Babel >= 2.12}
+BuildRequires:  %{python_module Flask >= 2.0}
+BuildRequires:  %{python_module Jinja2 >= 3.1}
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pytz >= 2022.7}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Babel >= 2.3
-Requires:       python-Flask
-Requires:       python-Jinja2 >= 2.5
-Requires:       python-pytz
+Requires:       python-Babel >= 2.12
+Requires:       python-Flask >= 2.0
+Requires:       python-Jinja2 >= 3.1
+Requires:       python-pytz >= 2022.7
 BuildArch:      noarch
 %python_subpackages
 
@@ -48,13 +47,13 @@ This module implements i18n and l10n support for Flask. It is based on
 the Python babel module as well as pytz.
 
 %prep
-%setup -q -n Flask-Babel-%{version}
+%autosetup -p1 -n flask-babel-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -63,8 +62,7 @@ the Python babel module as well as pytz.
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%dir %{python_sitelib}/flask_babel
-%{python_sitelib}/flask_babel/*
-%{python_sitelib}/Flask_Babel-%{version}-py*.egg-info
+%{python_sitelib}/flask_babel
+%{python_sitelib}/flask_babel-%{version}.dist-info
 
 %changelog

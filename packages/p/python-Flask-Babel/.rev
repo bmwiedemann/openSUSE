@@ -39,4 +39,24 @@
     <comment></comment>
     <requestid>832533</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7321157381b3f144f140d83c8035e3c9</srcmd5>
+    <version>3.1.0</version>
+    <time>1686927240</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.0:
+  * Don't return the default locale twice.
+  * Fix tests breaking against babel 12.2, which changed localized times to
+    use non-breaking-spaces.
+  * Relax version requirements for dependencies.
+  * Dropped support for end-of-life Python 3.5 and 3.6, added tests for 3.10
+    and 3.11.
+  * Jinja version 3 or greater is now required.
+  * Removed Babel._date_formats, use the public Babel.date_formats instead.
+  * list_translations() always returns the default locale, even if it does
+    not exist.
+  * Babel.locale_selector and Babel.timezone_selector no longer exist.
+  * Most configuration options can be passed directly through init_app().</comment>
+    <requestid>1093219</requestid>
+  </revision>
 </revisionlist>

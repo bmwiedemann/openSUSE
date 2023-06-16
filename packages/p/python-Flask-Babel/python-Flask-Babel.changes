@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jun 15 07:04:22 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.1.0:
+  * Don't return the default locale twice.
+  * Fix tests breaking against babel 12.2, which changed localized times to
+    use non-breaking-spaces.
+  * Relax version requirements for dependencies.
+  * Dropped support for end-of-life Python 3.5 and 3.6, added tests for 3.10
+    and 3.11.
+  * Jinja version 3 or greater is now required.
+  * Removed Babel._date_formats, use the public Babel.date_formats instead.
+  * list_translations() always returns the default locale, even if it does
+    not exist.
+  * Babel.locale_selector and Babel.timezone_selector no longer exist.
+  * Most configuration options can be passed directly through init_app().
+
+-------------------------------------------------------------------
 Sat Sep  5 16:08:27 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:
