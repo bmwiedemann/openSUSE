@@ -1,4 +1,118 @@
 -------------------------------------------------------------------
+Wed Jun 14 18:37:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 13.1.1:
+  * [v13] Fix an issue ALPN handshake test does not respect
+    "HTTPS_PROXY" (#27810)
+  * Set default limit for ListResourcesRequest (#27839)
+  * [v13] Trim yum release version in install-linux.mdx (#27777)
+  * Move Cloud Matchers to proto (#27162) (#27530)
+  * [v13] bump e (#27818)
+  * [v13] Add Proto types for storing TPM Platform Attestation in
+    Collected Data (#27757)
+  * bump e (#27806)
+  * [v13] Delete proxy heartbeats on graceful shutdown (#27786)
+  * [v13] Fix an issue kube local proxy requirement is wrong in
+    separate port mode (#27732)
+  * Fix: time.Since should not be used directly after a defer
+    statement (#27795)
+  * Default to SymlinksTrySecure rather than SymlinksSecure
+    (#27784)
+  * [v13] bump e-ref (#27736)
+  * app access: fix broken docs link in error message (#27766)
+  * Don't use WithError() when logging "Missing session cookie"
+    (#27768)
+  * [v13] Docs: document labels for trusted clusters (#27738)
+  * [v13] Fix flaky test
+    `TestHeadlessAuthenticationWatcher_WaitForUpdate` (#27765)
+  * [v13] MongoDB Protocol Hardening (#27741)
+  * docs: Fix curl commands on Windows (#27759)
+  * remove confusing variable delineation (#27746)
+  * [v13] docs: update desktop session recording reference (#27749)
+  * [v13] Change Campaign to utm_campaign (#27706)
+  * Implement in-memory vector DB (#27587)
+  * Add UI `node` lock to use `server_id` instead (#27621)
+  * Fix Teleport Connect assume roles (#27723)
+  * [v13] Abort reverse tunnel connections early if the proxy is
+    already claimed (#27699)
+  * Add scaling warning re: DynamoDB (#27600)
+  * [v13] helm: Add conditional RBAC/ServiceAccount to
+    `teleport-kube-agent` post-delete hook (#27637)
+  * [v13] docs: update navigation instructions for sso audit log
+    troubleshooting (#27675)
+  * add styles to tooltip for team pages (#27417) (#27642)
+  * Set UID/GID for ARC runner builds (#27638) (#27689)
+  * Fix TestAuthorizeWithLocksForLocalUser flakiness (#27687)
+  * usagereporter: add context check in RunSubmitter (#27678)
+  * [v13] feat: label expressions (#27641)
+  * Bump vite from 4.2.0 to 4.2.3 (#27670)
+  * Fix redirects (#27593)
+  * add new CTA event property (#27216) (#27643)
+  * [v13] export etcd event processing metrics (#27220)
+  * Added 06/08 Upcoming Releases Update (#27631)
+  * [v13] Update description of Roles UI (#27539)
+  * Update e (#27640)
+  * [v13] Bump cloud version to v13.1.0 (#27633)
+  * [Docs] Assist built-in role access (#27602)
+  * [Docs] Assist - remove MFA section (#27603)
+  * [v13] Web: Plugin tweaks and new plugin icons #27427 (#27576)
+  * [v13] feat: label expression protobuf types (#26977)
+  * fix: record applied login rules in github login event (#27607)
+  * [v13] Add deprecation note to PAM user creation guide (#27626)
+  * [v13] update agentless docs to use 'teleport join openssh'
+    (#27624)
+  * [v13] Update docker images (#27502)
+  * [v13] docs: provide information on local user locks from login
+    attempts (#27609)
+  * Update `github.com/gravitational/predicate` to `v1.3.1`
+    (#27483)
+  * [v13] Docs: Trusted Clusters - Mention the correct expiration
+    time as per tctl command (Buddy PR) (#27498)
+  * [v13] use proxy port in openssh config (#27545)
+  * [v13] Proxy Templates overwrite CLI cluster value (#27581)
+  * docs: add headless auth as faq question (#27584)
+  * docs: adds configuration and helm chart to app access getting
+    started (#27529)
+  * [v13] Fix not being able to "login" with auth type set to sso
+    but no connectors set yet (#27589)
+  * Primarily changes "match: '^.*\.dev\.example\.com$'" to "match:
+    '^.*\.dev\.example\.com'" so that users aren't mistakenly
+    guided towards eliminating the implicit ":3389" from their
+    regex matches (#27516)
+  * Fix the default `teleport-kube-agent` upgrade server (#27572)
+  * Only fallback to SSH_TELEPORT_ env variables for proxy, user,
+    and cluster name when used with headless. (#27507)
+  * Support authenticating with AWS IAM role for MongoDB Atlas
+    (#26439) (#27494)
+  * Bump e (#27501)
+  * [v13] Implement leaf app access: `tsh app login --cluster=leaf`
+    (#27197)
+  * [v13] Backport hardened AMI resources (#27454)
+  * [v13] include changelog for docs tests (#27479)
+  * [v13] Docs: GCP join method (#27487)
+  * Fix SEO issues (#27242)
+  * [v13] Document all installer script template vars (#27482)
+  * Create api handler specifically for FormData (#27408)
+  * [v13] Docs: improve Postgres in GCP (#27471)
+  * Propagate proxy public addr in Web UI ssh session. (#27058)
+    (#27420)
+  * [v13] Document new Okta import rule regexes. (#27453)
+  * [v13] docs: add enterprise value for kube agent reference
+    (#27472)
+  * docs: update version (#27473)
+  * Extend host lock enforcement to other built in roles besides
+    `Node` (#27018) (#27442)
+  * Build change for when go caching should be used (#27209)
+    (#27284)
+  * chore: Bump golangci-lint to v1.53.2 (#27456)
+  * [v13] WebDiscover: Check for RDS length before setting a limit
+    for listing DBs (#27415)
+  * Jamf config for PluginSpecV1 (#26374) (#27459)
+  * [v13] loadtesting automation improvements (#27438)
+  * Add prometheus endpoint to tbot (#27432)
+  * [v13] Add docs for database auto user provisioning (#27289)
+
+-------------------------------------------------------------------
 Mon Jun 12 20:37:19 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 13.1.0:
