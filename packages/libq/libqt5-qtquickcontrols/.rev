@@ -395,4 +395,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.9. Not built yet but submitting anyway. (forwarded request 1081228 from favogt)</comment>
     <requestid>1082078</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>8f465cf3a688ca7b6bd035741f2426e2</srcmd5>
+    <version>5.15.10+kde0</version>
+    <time>1686927142</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.10, fixed libqt5-qtscript (forwarded request 1092905 from favogt)</comment>
+    <requestid>1092939</requestid>
+  </revision>
 </revisionlist>
