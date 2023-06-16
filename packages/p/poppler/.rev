@@ -2006,4 +2006,23 @@ New upstream release</comment>
   * Fix some minor uninitialised memory reads</comment>
     <requestid>1087797</requestid>
   </revision>
+  <revision rev="195" vrev="1">
+    <srcmd5>5116fbcb5aaa23c8d906de140e9512bb</srcmd5>
+    <version>23.06.0</version>
+    <time>1686927177</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.06.0 (bsc#1212255):
+  * CairoOutputDev: Fix crash when doing type3 rendering
+  * Fix crash with unknown signature hashing algorithms
+  * Add gpgme backend for signature handling
+  * FontInfo: Make it return proper information about font
+    substitution
+  * FontInfo: Try harder to get Type 3 font name
+  * Store embedded fonts widths table in a more effective manner
+  * Skip font lookup for nonprintable characters
+  * Fix crash on malformed files
+  * Add API to allow selecting signature backend (nss or gpgme)
+  * Convert embedded files to bytearray a bit smarter</comment>
+    <requestid>1092923</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun 13 16:48:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.06.0 (bsc#1212255):
+  * CairoOutputDev: Fix crash when doing type3 rendering
+  * Fix crash with unknown signature hashing algorithms
+  * Add gpgme backend for signature handling
+  * FontInfo: Make it return proper information about font
+    substitution
+  * FontInfo: Try harder to get Type 3 font name
+  * Store embedded fonts widths table in a more effective manner
+  * Skip font lookup for nonprintable characters
+  * Fix crash on malformed files
+  * Add API to allow selecting signature backend (nss or gpgme)
+  * Convert embedded files to bytearray a bit smarter
+
+-------------------------------------------------------------------
 Thu May 18 12:12:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.05.0:
