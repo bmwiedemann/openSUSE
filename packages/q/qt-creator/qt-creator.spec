@@ -1,5 +1,5 @@
 #
-# spec file for package qt-creator
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -16,7 +16,7 @@
 #
 
 
-%define real_version 10.0.1
+%define real_version 10.0.2
 %define short_version 10.0
 %define tar_name qt-creator-opensource-src
 %define tar_suffix %{nil}
@@ -44,8 +44,13 @@ ExclusiveArch:  do_not_build
 # Has mocks for quite a few components, which are only pulled in when actually used
 %global __requires_exclude_from %{_datadir}/qtcreator/qml/qmlpuppet/
 
+# Building docs causes a llvm crash on 15.4 (reproducible with different versions)
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150400
+%bcond_without docs
+%endif
+
 Name:           %{pkgname_prefix}-creator
-Version:        10.0.1
+Version:        10.0.2
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -58,24 +63,18 @@ URL:            https://www.qt.io/product/development-tools
 Source:         https://download.qt.io/official_releases/qtcreator/%{short_version}/%{real_version}%{tar_suffix}/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source1:        qt-creator-rpmlintrc
 # Patches 0-10 are upstream changes
-Patch0:         0001-QmlDesigner-Fix-puppet-build-after-quick3d-private-A.patch
 # Patches 11-20 are openSUSE changes
 Patch11:        fix-application-output.patch
 Patch12:        0001-Disable-some-plugins.patch
 ##
 BuildRequires:  cmake
 # clang-devel in Leap 15 points to clang7...
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} == 150400
-BuildRequires:  clang13-devel
-BuildRequires:  llvm13-devel
-%else
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} >= 150500
+%if 0%{?suse_version} == 1500
 BuildRequires:  clang15-devel
 BuildRequires:  llvm15-devel
 %else
 BuildRequires:  clang-devel >= 10.0
 BuildRequires:  llvm-devel
-%endif
 %endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
@@ -181,7 +180,9 @@ rm -r src/shared/qbs
 
 %if 0%{?qt6}
 %{qt6_build}
+%if %{with docs}
 %{qt6_build_docs}
+%endif
 %endif
 
 %install
@@ -201,6 +202,7 @@ rm %{buildroot}%{_datadir}/qtcreator/{HACKING,LICENSE.GPL3-EXCEPT,README.md}
 # Broken and useless for most users
 rm %{buildroot}%{_bindir}/qtcreator.sh
 
+%if %{with docs}
 # Install the doc files
 mkdir -p %{buildroot}%{qtc_docdir}
 pushd build
@@ -209,17 +211,16 @@ popd
 
 mkdir -p %{buildroot}%{qtc_docdir}/qtcreator
 cp -a doc/qtcreator/* %{buildroot}%{qtc_docdir}/qtcreator/
+%endif
 
 # Source Code Pro is packaged independently
 rm -r %{buildroot}%{_datadir}/qtcreator/fonts
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license *GPL*
 %doc README.md HACKING
-%dir %{qtc_docdir}
 %dir %{_datadir}/qtcreator
 %dir %{_libdir}/qtcreator
 %dir %{_libexecdir}/qtcreator
@@ -259,8 +260,11 @@ rm -r %{buildroot}%{_datadir}/qtcreator/fonts
 %{_libexecdir}/qtcreator/qtcreator_processlauncher
 %{_libexecdir}/qtcreator/qtpromaker
 %{_libexecdir}/qtcreator/sdktool
+%if %{with docs}
+%dir %{qtc_docdir}
 %{qtc_docdir}/qtcreator.qch
 %{qtc_docdir}/qtcreator/
+%endif
 
 %files plugin-devel
 %{_includedir}/qtcreator/

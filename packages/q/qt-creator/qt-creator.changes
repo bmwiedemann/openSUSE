@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 15 14:20:32 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 10.0.2:
+  * https://www.qt.io/blog/qt-creator-10.0.2-released
+- Don't build docs on Leap 15.4, llvm crashes
+- Drop patch, merged upstream:
+  * 0001-QmlDesigner-Fix-puppet-build-after-quick3d-private-A.patch
+
+-------------------------------------------------------------------
 Fri May 26 14:32:38 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add patch to fix build failure with QtQuick3d 6.5.1:
