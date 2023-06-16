@@ -1,0 +1,1123 @@
+Index: xrootd-5.5.5/.gitignore
+===================================================================
+--- xrootd-5.5.5.orig/.gitignore
++++ xrootd-5.5.5/.gitignore
+@@ -57,4 +57,3 @@ test/testconfig.sh
+ xrootd.spec
+ dist
+ *.egg-info
+-bindings/python/VERSION
+Index: xrootd-5.5.5/packaging/wheel/MANIFEST.in
+===================================================================
+--- xrootd-5.5.5.orig/packaging/wheel/MANIFEST.in
++++ /dev/null
+@@ -1,11 +0,0 @@
+-include *.sh *.py *.in
+-include CMakeLists.txt VERSION_INFO README COPYING* LICENSE
+-
+-recursive-include bindings *
+-recursive-include cmake *
+-recursive-include packaging *
+-recursive-include src *
+-recursive-include tests *
+-recursive-include ups *
+-recursive-include utils *
+-recursive-include docs *
+Index: xrootd-5.5.5/MANIFEST.in
+===================================================================
+--- /dev/null
++++ xrootd-5.5.5/MANIFEST.in
+@@ -0,0 +1,13 @@
++include *.sh *.py *.in
++include CMakeLists.txt
++include COPYING* LICENSE
++include VERSION README
++
++recursive-include bindings *
++recursive-include cmake *
++recursive-include docs *
++recursive-include packaging *
++recursive-include src *
++recursive-include tests *
++recursive-include ups *
++recursive-include utils *
+Index: xrootd-5.5.5/bindings/python/CMakeLists.txt
+===================================================================
+--- xrootd-5.5.5.orig/bindings/python/CMakeLists.txt
++++ xrootd-5.5.5/bindings/python/CMakeLists.txt
+@@ -1,109 +1,27 @@
++cmake_minimum_required(VERSION 3.16...3.25)
+ 
+-set(SETUP_PY_IN    "${CMAKE_CURRENT_SOURCE_DIR}/setup.py.in")
+-set(SETUP_PY       "${CMAKE_CURRENT_BINARY_DIR}/setup.py")
+-set(DEPS           "${CMAKE_CURRENT_SOURCE_DIR}/libs/__init__.py")
+-set(OUTPUT         "${CMAKE_CURRENT_BINARY_DIR}/python_bindings")
+-set(XRD_SRCINCDIR  "${CMAKE_SOURCE_DIR}/src")
+-set(XRD_BININCDIR  "${CMAKE_BINARY_DIR}/src")
+-set(XRDCL_LIBDIR   "${CMAKE_BINARY_DIR}/src/XrdCl")
+-set(XRD_LIBDIR     "${CMAKE_BINARY_DIR}/src")
+-set(XRDCL_INSTALL  "${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}")
++project(PyXRootD LANGUAGES CXX)
+ 
+-if( PYPI_BUILD )
+-  set(XRDCL_RPATH  "$ORIGIN/${CMAKE_INSTALL_LIBDIR}")
+-else()
+-  set(XRDCL_RPATH  "$ORIGIN/../../..")
+-endif()
+-
+-if( "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" )
+-  if( CMAKE_CXX_COMPILER_VERSION VERSION_LESS 3.7 )
+-    message( "clang 3.5" )
+-    set( CLANG_PROHIBITED ", '-Wp,-D_FORTIFY_SOURCE=2', '-fstack-protector-strong'" )
+-  endif()
+-  if( ( CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 6.0 ) OR ( CMAKE_CXX_COMPILER_VERSION VERSION_LESS 7.0 ) )
+-    message( "clang 6.0" )
+-    set( CLANG_PROHIBITED ", '-fcf-protection'" )
+-  endif()
+-  if( CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 7.0 )
+-    message( "clang > 7.0" )
+-    set( CLANG_PROHIBITED ", '-fstack-clash-protection'" )
+-  endif()
+-endif()
++find_package(Python REQUIRED COMPONENTS Interpreter Development)
+ 
+-configure_file(${SETUP_PY_IN} ${SETUP_PY})
+-
+-string(FIND "${PIP_OPTIONS}" "--prefix" PIP_OPTIONS_PREFIX_POSITION)
+-if( "${PIP_OPTIONS_PREFIX_POSITION}" EQUAL "-1" )
+-  string(APPEND PIP_OPTIONS " --prefix \$ENV{DESTDIR}/${CMAKE_INSTALL_PREFIX}")
++if(CMAKE_SOURCE_DIR STREQUAL PROJECT_SOURCE_DIR OR PYPI_BUILD)
++  add_subdirectory(src)
+ else()
+-  message(WARNING
+-        " The pip option --prefix has been set in '${PIP_OPTIONS}' which will change"
+-        " it from its default value of '--prefix \$ENV{DESTDIR}/${CMAKE_INSTALL_PREFIX}'."
+-        " Make sure this is intentional and that you understand the effects."
+-        )
+-endif()
++  configure_file(setup.py setup.py)
++  file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/VERSION "${XRootD_VERSION_STRING}")
+ 
+-# Check it the Python interpreter has a valid version of pip
+-execute_process(
+-        COMMAND ${PYTHON_EXECUTABLE} -m pip --version
+-        RESULT_VARIABLE VALID_PIP_EXIT_CODE
+-        OUTPUT_QUIET
+-)
+-
+-if ( NOT ${VALID_PIP_EXIT_CODE} EQUAL 0 )
+-  # Attempt to still install with deprecated invocation of setup.py
+-  message(WARNING
+-         " ${PYTHON_EXECUTABLE} does not have a valid pip associated with it."
+-         " It is recommended that you install a version of pip to install Python"
+-         " packages and bindings. If you are unable to install a version of pip"
+-         " through a package manager or with your Python build try using the PyPA's"
+-         " get-pip.py bootstrapping script ( https://github.com/pypa/get-pip ).\n"
+-         " The installation of the Python bindings will attempt to continue using"
+-         " the deprecated method of `${PYTHON_EXECUTABLE} setup.py install`."
+-         )
+-
+-  # https://docs.python.org/3/install/#splitting-the-job-up
+-  add_custom_command(OUTPUT ${OUTPUT}
+-                     COMMAND ${PYTHON_EXECUTABLE} ${SETUP_PY} --verbose build
+-                     DEPENDS ${DEPS})
+-
+-  add_custom_target(python_target ALL DEPENDS ${OUTPUT} XrdCl)
+-
+-  # Get the distribution name on Debian families
+-  execute_process( COMMAND grep -i ^NAME= /etc/os-release
+-                   OUTPUT_VARIABLE DEB_DISTRO )
+-  STRING(REGEX REPLACE "^NAME=\"" "" DEB_DISTRO "${DEB_DISTRO}")
+-  STRING(REGEX REPLACE "\".*"     "" DEB_DISTRO "${DEB_DISTRO}")
+-
+-  if( DEB_DISTRO STREQUAL "Debian" OR DEB_DISTRO STREQUAL "Ubuntu" )
+-    set(PYTHON_LAYOUT  "unix" CACHE STRING "Python installation layout (deb or unix)")
+-    set(DEB_INSTALL_ARGS "--install-layout ${PYTHON_LAYOUT}")
+-  endif()
++  option(INSTALL_PYTHON_BINDINGS "Install Python bindings" TRUE)
+ 
+-  install(
+-    CODE
+-    "EXECUTE_PROCESS(
+-      RESULT_VARIABLE INSTALL_STATUS
+-      COMMAND /usr/bin/env ${XROOTD_PYBUILD_ENV} ${PYTHON_EXECUTABLE} ${SETUP_PY} install \
+-                --verbose \
+-                --prefix \$ENV{DESTDIR}/${CMAKE_INSTALL_PREFIX} \
+-                ${DEB_INSTALL_ARGS}
+-    )
+-    if(NOT INSTALL_STATUS EQUAL 0)
+-      message(FATAL_ERROR \"Failed to install Python bindings\")
+-    endif()
+-  ")
+-else()
+-  install(
+-    CODE
+-    "EXECUTE_PROCESS(
+-      RESULT_VARIABLE INSTALL_STATUS
+-      COMMAND /usr/bin/env ${XROOTD_PYBUILD_ENV} ${PYTHON_EXECUTABLE} -m pip install \
+-                ${PIP_OPTIONS} \
+-                ${CMAKE_CURRENT_BINARY_DIR}
+-      )
++  if(INSTALL_PYTHON_BINDINGS)
++    set(PIP_OPTIONS "" CACHE STRING "Install options for pip")
++
++    install(CODE "
++      execute_process(COMMAND ${Python_EXECUTABLE} -m pip install --no-deps ${PIP_OPTIONS}
++        --prefix \$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX} ${CMAKE_CURRENT_BINARY_DIR}
++        RESULT_VARIABLE INSTALL_STATUS)
+       if(NOT INSTALL_STATUS EQUAL 0)
+         message(FATAL_ERROR \"Failed to install Python bindings\")
+       endif()
+-  ")
++    ")
++  endif()
+ endif()
+Index: xrootd-5.5.5/bindings/python/README
+===================================================================
+--- /dev/null
++++ xrootd-5.5.5/bindings/python/README
+@@ -0,0 +1,6 @@
++# XRootD Python Bindings
++
++This is a set of simple but pythonic bindings for XRootD. It is designed to make
++it easy to interface with the XRootD client, by writing Python instead of having
++to write C++.
++
+Index: xrootd-5.5.5/bindings/python/README.rst
+===================================================================
+--- xrootd-5.5.5.orig/bindings/python/README.rst
++++ /dev/null
+@@ -1,16 +0,0 @@
+-Prerequisites (incomplete): xrootd
+-
+-# Installing on OSX
+-Setup should succeed if:
+- - xrootd is installed on your system
+- - xrootd was installed via homebrew
+- - you're installing the bindings package with the same version number as the
+-   xrootd installation (`xrootd -v`).
+-
+-If you have xrootd installed and the installation still fails, do
+-`XRD_LIBDIR=XYZ; XRD_INCDIR=ZYX; pip install xrootd`
+-where XYZ and ZYX are the paths to the XRootD library and include directories on your system.
+-
+-## How to find the lib and inc directories
+-To find the library directory, search your system for "libXrd*" files.
+-The include directory should contain a file named "XrdVersion.hh", so search for that.
+Index: xrootd-5.5.5/bindings/python/pyproject.toml
+===================================================================
+--- /dev/null
++++ xrootd-5.5.5/bindings/python/pyproject.toml
+@@ -0,0 +1,3 @@
++[build-system]
++requires = ["setuptools>=42"]
++build-backend = "setuptools.build_meta"
+Index: xrootd-5.5.5/bindings/python/setup.py
+===================================================================
+--- /dev/null
++++ xrootd-5.5.5/bindings/python/setup.py
+@@ -0,0 +1,147 @@
++import os
++import platform
++import subprocess
++import sys
++
++from setuptools import setup, Extension
++from setuptools.command.build_ext import build_ext
++from subprocess import check_call, check_output
++
++try:
++    from shutil import which
++except ImportError:
++    from distutils.spawn import find_executable as which
++
++srcdir = '${CMAKE_CURRENT_SOURCE_DIR}'
++
++cmdline_args = []
++
++# Check for unexpanded srcdir to determine if this is part
++# of a regular CMake build or a Python build using setup.py.
++
++if not srcdir.startswith('$'):
++    # When building the Python bindings as part of a standard CMake build,
++    # propagate down which cmake command to use, and the build type, C++
++    # compiler, build flags, and how to link libXrdCl from the main build.
++
++    cmake = '${CMAKE_COMMAND}'
++
++    cmdline_args += [
++        '-DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}',
++        '-DCMAKE_CXX_STANDARD=${CMAKE_CXX_STANDARD}',
++        '-DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}',
++        '-DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS}',
++        '-DXRootD_CLIENT_LIBRARY=${CMAKE_BINARY_DIR}/src/XrdCl/libXrdCl${CMAKE_SHARED_LIBRARY_SUFFIX}',
++        '-DXRootD_INCLUDE_DIR=${CMAKE_SOURCE_DIR}/src;${CMAKE_BINARY_DIR}/src',
++    ]
++else:
++    srcdir = '.'
++
++    cmake = which("cmake3") or which("cmake")
++
++    for arg in sys.argv:
++        if arg.startswith('-D'):
++            cmdline_args.append(arg)
++
++    for arg in cmdline_args:
++        sys.argv.remove(arg)
++
++def get_version():
++    version = '${XRootD_VERSION_STRING}'
++
++    if version.startswith('$'):
++        try:
++            version = open('VERSION').read().strip()
++
++            if version.startswith('$'):
++                output = check_output(['git', 'describe'])
++                version = output.decode().strip()
++        except:
++            version = None
++            pass
++
++    if version is None:
++        from datetime import date
++        version = '5.6-rc' + date.today().strftime("%Y%m%d")
++
++    if version.startswith('v'):
++        version = version[1:]
++
++    # Sanitize version to conform to PEP 440
++    # https://www.python.org/dev/peps/pep-0440
++    version = version.replace('-rc', 'rc')
++    version = version.replace('-g', '+git.')
++    version = version.replace('-', '.post', 1)
++    version = version.replace('-', '.')
++
++    return version
++
++class CMakeExtension(Extension):
++    def __init__(self, name, src=srcdir, sources=[], **kwa):
++        Extension.__init__(self, name, sources=sources, **kwa)
++        self.src = os.path.abspath(src)
++
++class CMakeBuild(build_ext):
++    def build_extensions(self):
++        if cmake is None:
++            raise RuntimeError('Cannot find CMake executable')
++
++        for ext in self.extensions:
++            extdir = os.path.abspath(os.path.dirname(self.get_ext_fullpath(ext.name)))
++
++            # Use relative RPATHs to ensure the correct libraries are picked up.
++            # The RPATH below covers most cases where a non-standard path is
++            # used for installation. It allows to find libXrdCl with a relative
++            # path from the site-packages directory. Build with install RPATH
++            # because libraries are installed by Python/pip not CMake, so CMake
++            # cannot fix the install RPATH later on.
++
++            cmake_args = [
++                '-DPython_EXECUTABLE={}'.format(sys.executable),
++                '-DCMAKE_BUILD_WITH_INSTALL_RPATH=TRUE',
++                '-DCMAKE_INSTALL_RPATH=$ORIGIN/../../../../$LIB',
++                '-DCMAKE_ARCHIVE_OUTPUT_DIRECTORY={}/{}'.format(self.build_temp, ext.name),
++                '-DCMAKE_LIBRARY_OUTPUT_DIRECTORY={}/{}'.format(extdir, ext.name),
++            ]
++
++            cmake_args += cmdline_args
++
++            if not os.path.exists(self.build_temp):
++                os.makedirs(self.build_temp)
++
++            check_call([cmake, ext.src, '-B', self.build_temp] + cmake_args)
++            check_call([cmake, '--build', self.build_temp, '--parallel'])
++
++version = get_version()
++
++setup(name='xrootd',
++      version=version,
++      description='XRootD Python bindings',
++      author='XRootD Developers',
++      author_email='xrootd-dev@slac.stanford.edu',
++      url='http://xrootd.org',
++      download_url='https://github.com/xrootd/xrootd/archive/v%s.tar.gz' % version,
++      keywords=['XRootD', 'network filesystem'],
++      license='LGPLv3+',
++      long_description=open(srcdir + '/README').read(),
++      long_description_content_type='text/plain',
++      packages = ['XRootD', 'XRootD.client', 'pyxrootd'],
++      package_dir = {
++        'pyxrootd'     : srcdir + '/src',
++        'XRootD'       : srcdir + '/libs',
++        'XRootD/client': srcdir + '/libs/client',
++      },
++      ext_modules= [ CMakeExtension('pyxrootd') ],
++      cmdclass={ 'build_ext': CMakeBuild },
++      zip_safe=False,
++      classifiers=[
++          "Intended Audience :: Information Technology",
++          "Intended Audience :: Science/Research",
++          "License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)",
++          "Operating System :: MacOS",
++          "Operating System :: POSIX :: Linux",
++          "Operating System :: Unix",
++          "Programming Language :: C++",
++          "Programming Language :: Python",
++      ]
++     )
+Index: xrootd-5.5.5/bindings/python/src/CMakeLists.txt
+===================================================================
+--- /dev/null
++++ xrootd-5.5.5/bindings/python/src/CMakeLists.txt
+@@ -0,0 +1,58 @@
++Python_add_library(client MODULE WITH_SOABI
++  # headers
++  AsyncResponseHandler.hh
++  ChunkIterator.hh
++  Conversions.hh
++  PyXRootD.hh
++  PyXRootDCopyProcess.hh
++  PyXRootDCopyProgressHandler.hh
++  PyXRootDEnv.hh
++  PyXRootDFile.hh
++  PyXRootDFileSystem.hh
++  PyXRootDFinalize.hh
++  PyXRootDURL.hh
++  Utils.hh
++  # sources
++  PyXRootDCopyProcess.cc
++  PyXRootDCopyProgressHandler.cc
++  PyXRootDFile.cc
++  PyXRootDFileSystem.cc
++  PyXRootDModule.cc
++  PyXRootDURL.cc
++  Utils.cc
++)
++
++target_compile_options(client PRIVATE -w) # TODO: fix build warnings
++
++if(APPLE)
++  set(CMAKE_MACOSX_RPATH TRUE)
++  set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
++  set_target_properties(client PROPERTIES
++    INSTALL_NAME_DIR "@rpath" INSTALL_RPATH "@loader_path")
++endif()
++
++# Avoid a call to find_package(XRootD) in order to be able to override
++# variables when building the module as part of a standard CMake build.
++
++if(TARGET XrdCl)
++  target_link_libraries(client PRIVATE XrdCl)
++else()
++  find_library(XRootD_CLIENT_LIBRARY NAMES XrdCl)
++
++  if(NOT XRootD_CLIENT_LIBRARY)
++    message(FATAL_ERROR "Could not find XRootD client library")
++  endif()
++
++  find_path(XRootD_INCLUDE_DIR XrdVersion.hh PATH_SUFFIXES include/xrootd)
++
++  if(NOT XRootD_INCLUDE_DIR)
++    message(FATAL_ERROR "Could not find XRootD client include directory")
++  endif()
++
++  # The client library makes use of private XRootD headers, so add the
++  # extra include for it to allow building the Python bindings against
++  # a pre-installed XRootD.
++
++  target_link_libraries(client PRIVATE ${XRootD_CLIENT_LIBRARY})
++  target_include_directories(client PRIVATE ${XRootD_INCLUDE_DIR} ${XRootD_INCLUDE_DIR}/private)
++endif()
+Index: xrootd-5.5.5/cmake/XRootDDefaults.cmake
+===================================================================
+--- xrootd-5.5.5.orig/cmake/XRootDDefaults.cmake
++++ xrootd-5.5.5/cmake/XRootDDefaults.cmake
+@@ -20,8 +20,6 @@ option( ENABLE_XRDCL     "Enable XRootD
+ option( ENABLE_TESTS     "Enable unit tests."                                             FALSE )
+ option( ENABLE_HTTP      "Enable HTTP component."                                         TRUE )
+ option( ENABLE_PYTHON    "Enable python bindings."                                        TRUE )
+-# As PIP_OPTIONS uses the cache, make sure to clean cache if rebuilding (e.g. cmake --build <build dir> --clean-first)
+-SET(PIP_OPTIONS "" CACHE STRING "pip options used during the Python bindings install.")
+ option( XRDCL_ONLY       "Build only the client and necessary dependencies"               FALSE )
+ option( XRDCL_LIB_ONLY   "Build only the client libraries and necessary dependencies"     FALSE )
+ option( PYPI_BUILD       "The project is being built for PyPI release"                    FALSE )
+Index: xrootd-5.5.5/packaging/rhel/xrootd.spec.in
+===================================================================
+--- xrootd-5.5.5.orig/packaging/rhel/xrootd.spec.in
++++ xrootd-5.5.5/packaging/rhel/xrootd.spec.in
+@@ -529,7 +529,8 @@ cmake  \
+ %if %{?_with_isal:1}%{!?_with_isal:0}
+       -DENABLE_XRDEC=TRUE \
+ %endif
+-      -DUSER_VERSION=v%{version} \
++      -DXRootD_VERSION_STRING=v%{version} \
++      -DINSTALL_PYTHON_BINDINGS=FALSE \
+       ../
+ 
+ make -i VERBOSE=1 %{?_smp_mflags}
+Index: xrootd-5.5.5/packaging/wheel/has_c++14.sh
+===================================================================
+--- xrootd-5.5.5.orig/packaging/wheel/has_c++14.sh
++++ /dev/null
+@@ -1,12 +0,0 @@
+-#!/bin/bash
+-
+-mkdir has_c++14.tmp
+-cp packaging/wheel/TestCXX14.txt has_c++14.tmp/CMakeLists.txt
+-cd has_c++14.tmp
+-mkdir build
+-cd build
+-cmake3 ..
+-has_cxx14=$?
+-cd ../..
+-rm -rf has_c++14.tmp
+-exit $has_cxx14
+\ No newline at end of file
+Index: xrootd-5.5.5/packaging/wheel/install.sh
+===================================================================
+--- xrootd-5.5.5.orig/packaging/wheel/install.sh
++++ /dev/null
+@@ -1,61 +0,0 @@
+-#!/bin/bash
+-
+-startdir="$(pwd)"
+-mkdir xrootdbuild
+-cd xrootdbuild
+-
+-# build only client
+-# build python bindings
+-# set install prefix
+-# set the respective version of python
+-# replace the default BINDIR with a custom one that can be easily removed afterwards
+-#    (for the python bindings we don't want to install the binaries)
+-CMAKE_ARGS="-DPYPI_BUILD=TRUE -DXRDCL_LIB_ONLY=TRUE -DENABLE_PYTHON=TRUE -DCMAKE_INSTALL_PREFIX=$1/pyxrootd -DXRD_PYTHON_REQ_VERSION=$2 -DCMAKE_INSTALL_BINDIR=$startdir/xrootdbuild/bin"
+-
+-if [ "$5" = "true" ]; then
+-  source /opt/rh/devtoolset-7/enable
+-fi
+-
+-cmake_path=$4
+-$cmake_path .. $CMAKE_ARGS
+-
+-res=$?
+-if [ "$res" -ne "0" ]; then
+-    exit 1
+-fi
+-
+-make -j8
+-res=$?
+-if [ "$res" -ne "0" ]; then
+-    exit 1
+-fi
+-
+-cd src
+-make install
+-res=$?
+-if [ "$res" -ne "0" ]; then
+-    exit 1
+-fi
+-
+-cd ../bindings/python
+-
+-# Determine if shutil.which is available for a modern Python package install
+-# (shutil.which was added in Python 3.3, so any version of Python 3 now will have it)
+-# TODO: Drop support for Python 3.3 and simplify to pip approach
+-${6} -c 'from shutil import which' &> /dev/null  # $6 holds the python sys.executable
+-shutil_which_available=$?
+-if [ "${shutil_which_available}" -ne "0" ]; then
+-    ${6} setup.py install ${3}
+-    res=$?
+-else
+-    ${6} -m pip install ${3} .
+-    res=$?
+-fi
+-unset shutil_which_available
+-
+-if [ "$res" -ne "0" ]; then
+-    exit 1
+-fi
+-
+-cd $startdir
+-rm -r xrootdbuild
+Index: xrootd-5.5.5/pyproject.toml
+===================================================================
+--- /dev/null
++++ xrootd-5.5.5/pyproject.toml
+@@ -0,0 +1,3 @@
++[build-system]
++requires = ["setuptools>=42"]
++build-backend = "setuptools.build_meta"
+Index: xrootd-5.5.5/setup.py
+===================================================================
+--- /dev/null
++++ xrootd-5.5.5/setup.py
+@@ -0,0 +1,120 @@
++import os
++import platform
++import subprocess
++import sys
++
++from setuptools import setup, Extension
++from setuptools.command.build_ext import build_ext
++from subprocess import check_call, check_output
++
++try:
++    from shutil import which
++except ImportError:
++    from distutils.spawn import find_executable as which
++
++cmdline_args = []
++
++for arg in sys.argv:
++    if arg.startswith('-D'):
++        cmdline_args.append(arg)
++
++for arg in cmdline_args:
++    sys.argv.remove(arg)
++
++cmake = which("cmake3") or which("cmake")
++
++def get_version():
++    try:
++        version = open('VERSION').read().strip()
++
++        if version.startswith('$'):
++            output = check_output(['git', 'describe'])
++            version = output.decode().strip()
++    except:
++        version = None
++        pass
++
++    if version is None:
++        from datetime import date
++        version = '5.6-rc' + date.today().strftime("%Y%m%d")
++
++    if version.startswith('v'):
++        version = version[1:]
++
++    # Sanitize version to conform to PEP 440
++    # https://www.python.org/dev/peps/pep-0440
++    version = version.replace('-rc', 'rc')
++    version = version.replace('-g', '+git.')
++    version = version.replace('-', '.post', 1)
++    version = version.replace('-', '.')
++
++    return version
++
++class CMakeExtension(Extension):
++    def __init__(self, name, src='.', sources=[], **kwa):
++        Extension.__init__(self, name, sources=sources, **kwa)
++        self.src = os.path.abspath(src)
++
++class CMakeBuild(build_ext):
++    def build_extensions(self):
++        if cmake is None:
++            raise RuntimeError('Cannot find CMake executable')
++
++        for ext in self.extensions:
++            extdir = os.path.abspath(os.path.dirname(self.get_ext_fullpath(ext.name)))
++
++            # Use $ORIGIN RPATH to ensure that the client library can load
++            # libXrdCl which will be installed in the same directory. Build
++            # with install RPATH because libraries are installed by Python/pip
++            # not CMake, so CMake cannot fix the install RPATH later on.
++
++            cmake_args = [
++                '-DPython_EXECUTABLE={}'.format(sys.executable),
++                '-DCMAKE_INSTALL_RPATH=$ORIGIN',
++                '-DCMAKE_BUILD_WITH_INSTALL_RPATH=TRUE',
++                '-DCMAKE_ARCHIVE_OUTPUT_DIRECTORY={}/{}'.format(self.build_temp, ext.name),
++                '-DCMAKE_LIBRARY_OUTPUT_DIRECTORY={}/{}'.format(extdir, ext.name),
++                '-DENABLE_PYTHON=1', '-DENABLE_XRDCL=1', '-DXRDCL_LIB_ONLY=1', '-DPYPI_BUILD=1'
++            ]
++
++            cmake_args += cmdline_args
++
++            if not os.path.exists(self.build_temp):
++                os.makedirs(self.build_temp)
++
++            check_call([cmake, ext.src, '-B', self.build_temp] + cmake_args)
++            check_call([cmake, '--build', self.build_temp, '--parallel'])
++
++version = get_version()
++
++setup(name='xrootd',
++      version=version,
++      description='eXtended ROOT daemon',
++      author='XRootD Developers',
++      author_email='xrootd-dev@slac.stanford.edu',
++      url='http://xrootd.org',
++      download_url='https://github.com/xrootd/xrootd/archive/v%s.tar.gz' % version,
++      keywords=['XRootD', 'network filesystem'],
++      license='LGPLv3+',
++      long_description=open('README').read(),
++      long_description_content_type='text/plain',
++      packages = ['XRootD', 'XRootD.client', 'pyxrootd'],
++      package_dir = {
++        'pyxrootd'     : 'bindings/python/src',
++        'XRootD'       : 'bindings/python/libs',
++        'XRootD/client': 'bindings/python/libs/client',
++      },
++      ext_modules= [ CMakeExtension('pyxrootd') ],
++      cmdclass={ 'build_ext': CMakeBuild },
++      zip_safe=False,
++      classifiers=[
++          "Intended Audience :: Information Technology",
++          "Intended Audience :: Science/Research",
++          "License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)",
++          "Operating System :: MacOS",
++          "Operating System :: POSIX :: Linux",
++          "Operating System :: Unix",
++          "Programming Language :: C++",
++          "Programming Language :: Python",
++      ]
++     )
+Index: xrootd-5.5.5/.github/workflows/build.yml
+===================================================================
+--- xrootd-5.5.5.orig/.github/workflows/build.yml
++++ xrootd-5.5.5/.github/workflows/build.yml
+@@ -871,6 +871,9 @@ jobs:
+           pkg-config \
+           tree
+         sudo apt-get autoclean -y
++        # Remove packages with invalid versions which cause sdist build to fail
++        sudo apt-get remove python3-debian python3-distro-info
++        python3 -m pip --no-cache-dir install --upgrade pip setuptools wheel
+         python3 -m pip list
+ 
+     - name: Clone repository
+Index: xrootd-5.5.5/bindings/python/src/ChunkIterator.hh
+===================================================================
+--- xrootd-5.5.5.orig/bindings/python/src/ChunkIterator.hh
++++ xrootd-5.5.5/bindings/python/src/ChunkIterator.hh
+@@ -98,7 +98,7 @@ namespace PyXRootD
+ 
+     else {
+       self->currentOffset += self->chunksize;
+-      pychunk = PyBytes_FromStringAndSize( (const char*) chunk->GetBuffer(),
++      pychunk = PyUnicode_FromStringAndSize( (const char*) chunk->GetBuffer(),
+                                                          chunk->GetSize() );
+     }
+ 
+Index: xrootd-5.5.5/bindings/python/src/Conversions.hh
+===================================================================
+--- xrootd-5.5.5.orig/bindings/python/src/Conversions.hh
++++ xrootd-5.5.5/bindings/python/src/Conversions.hh
+@@ -241,7 +241,7 @@ namespace PyXRootD
+   {
+       static PyObject* Convert( XrdCl::Buffer *buffer )
+       {
+-        return PyBytes_FromStringAndSize( buffer->GetBuffer(), buffer->GetSize() );
++        return PyUnicode_FromStringAndSize( buffer->GetBuffer(), buffer->GetSize() );
+       }
+   };
+ 
+@@ -249,7 +249,7 @@ namespace PyXRootD
+   {
+       static PyObject* Convert( XrdCl::ChunkInfo *chunk )
+       {
+-        PyObject *o = PyBytes_FromStringAndSize( (const char*)chunk->buffer,
++        PyObject *o = PyUnicode_FromStringAndSize( (const char*)chunk->buffer,
+                                                   chunk->length );
+         delete[] (char*) chunk->buffer;
+         return o;
+@@ -268,7 +268,7 @@ namespace PyXRootD
+         for ( uint32_t i = 0; i < chunks.size(); ++i ) {
+           XrdCl::ChunkInfo chunk = chunks.at( i );
+ 
+-          PyObject *buffer = PyBytes_FromStringAndSize( (const char *) chunk.buffer,
++          PyObject *buffer = PyUnicode_FromStringAndSize( (const char *) chunk.buffer,
+                                                         chunk.length );
+           delete[] (char*) chunk.buffer;
+ 
+Index: xrootd-5.5.5/bindings/python/src/PyXRootD.hh
+===================================================================
+--- xrootd-5.5.5.orig/bindings/python/src/PyXRootD.hh
++++ xrootd-5.5.5/bindings/python/src/PyXRootD.hh
+@@ -32,6 +32,13 @@
+ 
+ #if PY_MAJOR_VERSION >= 3
+ #define IS_PY3K
++#define Py_TPFLAGS_HAVE_ITER 0
++#else
++#define PyUnicode_AsUTF8             PyString_AsString
++#define PyUnicode_Check              PyString_Check
++#define PyUnicode_FromString         PyString_FromString
++#define PyUnicode_FromStringAndSize  PyString_FromStringAndSize
++#define PyUnicode_GET_LENGTH         PyString_Size
+ #endif
+ 
+ #define async( func )    \
+@@ -39,16 +46,4 @@
+   func;                  \
+   Py_END_ALLOW_THREADS   \
+ 
+-#ifdef IS_PY3K
+-#define Py_TPFLAGS_HAVE_ITER 0
+-#else
+-#if PY_MINOR_VERSION <= 5
+-#define PyUnicode_FromString PyString_FromString
+-#endif
+-#define PyBytes_Size PyString_Size
+-#define PyBytes_Check PyString_Check
+-#define PyBytes_FromString PyString_FromString
+-#define PyBytes_FromStringAndSize PyString_FromStringAndSize
+-#endif
+-
+ #endif /* PYXROOTD_HH_ */
+Index: xrootd-5.5.5/bindings/python/src/PyXRootDFile.cc
+===================================================================
+--- xrootd-5.5.5.orig/bindings/python/src/PyXRootDFile.cc
++++ xrootd-5.5.5/bindings/python/src/PyXRootDFile.cc
+@@ -195,7 +195,7 @@ namespace PyXRootD
+     else {
+       uint32_t bytesRead = 0;
+       async( status = self->file->Read( offset, size, buffer, bytesRead, timeout ) );
+-      pyresponse = PyBytes_FromStringAndSize( buffer, bytesRead );
++      pyresponse = PyUnicode_FromStringAndSize( buffer, bytesRead );
+       delete[] buffer;
+     }
+ 
+@@ -295,10 +295,10 @@ namespace PyXRootD
+       if ( off_init == 0 )
+         self->currentOffset += line->GetSize();
+ 
+-      pyline = PyBytes_FromStringAndSize( line->GetBuffer(), line->GetSize() );
++      pyline = PyUnicode_FromStringAndSize( line->GetBuffer(), line->GetSize() );
+     }
+     else
+-      pyline = PyBytes_FromString( "" );
++      pyline = PyUnicode_FromString( "" );
+ 
+     delete line;
+     delete chunk;
+@@ -346,7 +346,7 @@ namespace PyXRootD
+     {
+       line = self->ReadLine( self, args, kwds );
+ 
+-      if ( !line || PyBytes_Size( line ) == 0 )
++      if ( !line || PyUnicode_GET_LENGTH( line ) == 0 )
+         break;
+ 
+       PyList_Append( lines, line );
+@@ -800,14 +800,14 @@ namespace PyXRootD
+         return NULL;
+       // extract the attribute name from the tuple
+       PyObject *py_name = PyTuple_GetItem( item, 0 );
+-      if( !PyBytes_Check( py_name ) )
++      if( !PyUnicode_Check( py_name ) )
+         return NULL;
+-      std::string name = PyBytes_AsString( py_name );
++      std::string name = PyUnicode_AsUTF8( py_name );
+       // extract the attribute value from the tuple
+       PyObject *py_value = PyTuple_GetItem( item, 1 );
+-      if( !PyBytes_Check( py_value ) )
++      if( !PyUnicode_Check( py_value ) )
+         return NULL;
+-      std::string value = PyBytes_AsString( py_value );
++      std::string value = PyUnicode_AsUTF8( py_value );
+       // update the C++ list of xattrs
+       attrs.push_back( XrdCl::xattr_t( name, value ) );
+     }
+@@ -864,9 +864,9 @@ namespace PyXRootD
+       // get the item at respective index
+       PyObject *item = PyList_GetItem( pyattrs, i );
+       // make sure the item is a string
+-      if( !item || !PyBytes_Check( item ) )
++      if( !item || !PyUnicode_Check( item ) )
+         return NULL;
+-      std::string name = PyBytes_AsString( item );
++      std::string name = PyUnicode_AsUTF8( item );
+       // update the C++ list of xattrs
+       attrs.push_back( name );
+     }
+@@ -923,9 +923,9 @@ namespace PyXRootD
+       // get the item at respective index
+       PyObject *item = PyList_GetItem( pyattrs, i );
+       // make sure the item is a string
+-      if( !item || !PyBytes_Check( item ) )
++      if( !item || !PyUnicode_Check( item ) )
+         return NULL;
+-      std::string name = PyBytes_AsString( item );
++      std::string name = PyUnicode_AsUTF8( item );
+       // update the C++ list of xattrs
+       attrs.push_back( name );
+     }
+Index: xrootd-5.5.5/bindings/python/src/PyXRootDFile.hh
+===================================================================
+--- xrootd-5.5.5.orig/bindings/python/src/PyXRootDFile.hh
++++ xrootd-5.5.5/bindings/python/src/PyXRootDFile.hh
+@@ -124,7 +124,7 @@ namespace PyXRootD
+     //--------------------------------------------------------------------------
+     // Raise StopIteration if the line we just read is empty
+     //--------------------------------------------------------------------------
+-    if ( PyBytes_Size( line ) == 0 ) {
++    if ( PyUnicode_GET_LENGTH( line ) == 0 ) {
+       PyErr_SetNone( PyExc_StopIteration );
+       return NULL;
+     }
+Index: xrootd-5.5.5/bindings/python/src/PyXRootDFileSystem.cc
+===================================================================
+--- xrootd-5.5.5.orig/bindings/python/src/PyXRootDFileSystem.cc
++++ xrootd-5.5.5/bindings/python/src/PyXRootDFileSystem.cc
+@@ -632,7 +632,7 @@ namespace PyXRootD
+     for ( int i = 0; i < PyList_Size( pyfiles ); ++i ) {
+       pyfile = PyList_GetItem( pyfiles, i );
+       if ( !pyfile ) return NULL;
+-      file = PyBytes_AsString( pyfile );
++      file = PyUnicode_AsUTF8( pyfile );
+       files.push_back( std::string( file ) );
+     }
+ 
+@@ -769,14 +769,14 @@ namespace PyXRootD
+         return NULL;
+       // extract the attribute name from the tuple
+       PyObject *py_name = PyTuple_GetItem( item, 0 );
+-      if( !PyBytes_Check( py_name ) )
++      if( !PyUnicode_Check( py_name ) )
+         return NULL;
+-      std::string name = PyBytes_AsString( py_name );
++      std::string name = PyUnicode_AsUTF8( py_name );
+       // extract the attribute value from the tuple
+       PyObject *py_value = PyTuple_GetItem( item, 1 );
+-      if( !PyBytes_Check( py_value ) )
++      if( !PyUnicode_Check( py_value ) )
+         return NULL;
+-      std::string value = PyBytes_AsString( py_value );
++      std::string value = PyUnicode_AsUTF8( py_value );
+       // update the C++ list of xattrs
+       attrs.push_back( XrdCl::xattr_t( name, value ) );
+     }
+@@ -831,9 +831,9 @@ namespace PyXRootD
+       // get the item at respective index
+       PyObject *item = PyList_GetItem( pyattrs, i );
+       // make sure the item is a string
+-      if( !item || !PyBytes_Check( item ) )
++      if( !item || !PyUnicode_Check( item ) )
+         return NULL;
+-      std::string name = PyBytes_AsString( item );
++      std::string name = PyUnicode_AsUTF8( item );
+       // update the C++ list of xattrs
+       attrs.push_back( name );
+     }
+@@ -888,9 +888,9 @@ namespace PyXRootD
+       // get the item at respective index
+       PyObject *item = PyList_GetItem( pyattrs, i );
+       // make sure the item is a string
+-      if( !item || !PyBytes_Check( item ) )
++      if( !item || !PyUnicode_Check( item ) )
+         return NULL;
+-      std::string name = PyBytes_AsString( item );
++      std::string name = PyUnicode_AsUTF8( item );
+       // update the C++ list of xattrs
+       attrs.push_back( name );
+     }
+Index: xrootd-5.5.5/bindings/python/src/PyXRootDURL.cc
+===================================================================
+--- xrootd-5.5.5.orig/bindings/python/src/PyXRootDURL.cc
++++ xrootd-5.5.5/bindings/python/src/PyXRootDURL.cc
+@@ -56,12 +56,12 @@ namespace PyXRootD
+   //----------------------------------------------------------------------------
+   int URL::SetProtocol( URL *self, PyObject *protocol, void *closure )
+   {
+-    if ( !PyBytes_Check( protocol ) ) {
++    if ( !PyUnicode_Check( protocol ) ) {
+       PyErr_SetString( PyExc_TypeError, "protocol must be string" );
+       return -1;
+     }
+ 
+-    self->url->SetProtocol( std::string ( PyBytes_AsString( protocol ) ) );
++    self->url->SetProtocol( std::string ( PyUnicode_AsUTF8( protocol ) ) );
+     return 0;
+   }
+ 
+@@ -78,12 +78,12 @@ namespace PyXRootD
+   //----------------------------------------------------------------------------
+   int URL::SetUserName( URL *self, PyObject *username, void *closure )
+   {
+-    if ( !PyBytes_Check( username ) ) {
++    if ( !PyUnicode_Check( username ) ) {
+       PyErr_SetString( PyExc_TypeError, "username must be string" );
+       return -1;
+     }
+ 
+-    self->url->SetUserName( std::string( PyBytes_AsString( username ) ) );
++    self->url->SetUserName( std::string( PyUnicode_AsUTF8( username ) ) );
+     return 0;
+   }
+ 
+@@ -100,12 +100,12 @@ namespace PyXRootD
+   //----------------------------------------------------------------------------
+   int URL::SetPassword( URL *self, PyObject *password, void *closure )
+   {
+-    if ( !PyBytes_Check( password ) ) {
++    if ( !PyUnicode_Check( password ) ) {
+       PyErr_SetString( PyExc_TypeError, "password must be string" );
+       return -1;
+     }
+ 
+-    self->url->SetPassword( std::string( PyBytes_AsString( password ) ) );
++    self->url->SetPassword( std::string( PyUnicode_AsUTF8( password ) ) );
+     return 0;
+   }
+ 
+@@ -122,12 +122,12 @@ namespace PyXRootD
+   //----------------------------------------------------------------------------
+   int URL::SetHostName( URL *self, PyObject *hostname, void *closure )
+   {
+-    if ( !PyBytes_Check( hostname ) ) {
++    if ( !PyUnicode_Check( hostname ) ) {
+       PyErr_SetString( PyExc_TypeError, "hostname must be string" );
+       return -1;
+     }
+ 
+-    self->url->SetHostName( std::string( PyBytes_AsString( hostname ) ) );
++    self->url->SetHostName( std::string( PyUnicode_AsUTF8( hostname ) ) );
+     return 0;
+   }
+ 
+@@ -178,12 +178,12 @@ namespace PyXRootD
+   //----------------------------------------------------------------------------
+   int URL::SetPath( URL *self, PyObject *path, void *closure )
+   {
+-    if ( !PyBytes_Check( path ) ) {
++    if ( !PyUnicode_Check( path ) ) {
+       PyErr_SetString( PyExc_TypeError, "path must be string" );
+       return -1;
+     }
+ 
+-    self->url->SetPath( std::string( PyBytes_AsString( path ) ) );
++    self->url->SetPath( std::string( PyUnicode_AsUTF8( path ) ) );
+     return 0;
+   }
+ 
+Index: xrootd-5.5.5/bindings/python/setup.py.in
+===================================================================
+--- xrootd-5.5.5.orig/bindings/python/setup.py.in
++++ /dev/null
+@@ -1,126 +0,0 @@
+-from __future__ import print_function
+-
+-from setuptools import setup, Extension
+-# sysconfig with setuptools v48.0.0+ is incompatible for Python 3.6 only, so fall back to distutils.
+-# FIXME: When support for Python 3.6 is dropped simplify this
+-import sys
+-
+-if sys.version_info < (3, 7):
+-    from distutils import sysconfig
+-else:
+-    import sysconfig
+-
+-from os import getenv, walk, path
+-import subprocess
+-
+-# Remove the "-Wstrict-prototypes" compiler option, which isn't valid for C++.
+-cfg_vars = sysconfig.get_config_vars()
+-opt = cfg_vars["OPT"]
+-cfg_vars["OPT"] = " ".join( flag for flag in opt.split() if flag not in ['-Wstrict-prototypes' ${CLANG_PROHIBITED} ] ) + " --std=c++14"
+-
+-cflags = cfg_vars["CFLAGS"]
+-cfg_vars["CFLAGS"] = " ".join( flag for flag in cflags.split() if flag not in ['-Wstrict-prototypes' ${CLANG_PROHIBITED} ] ) + " --std=c++14"
+-
+-# pypy doesn't define PY_CFLAGS so skip it if it's missing
+-if "PY_CFLAGS" in cfg_vars:
+-  py_cflags = cfg_vars["PY_CFLAGS"]
+-  cfg_vars["PY_CFLAGS"] = " ".join( flag for flag in py_cflags.split() if flag not in ['-Wstrict-prototypes' ${CLANG_PROHIBITED} ] ) + " --std=c++14"
+-
+-ccl=cfg_vars["CC"].split()
+-ccl[0]="${CMAKE_C_COMPILER}"
+-cfg_vars["CC"] = " ".join(ccl)
+-cxxl=cfg_vars["CXX"].split()
+-cxxl[0]="${CMAKE_CXX_COMPILER}"
+-cfg_vars["CXX"] = " ".join(cxxl)
+-cfg_vars["PY_CXXFLAGS"] = "${CMAKE_CXX_FLAGS}"
+-
+-# Make the RPATH relative to the python module
+-cfg_vars['LDSHARED'] = cfg_vars['LDSHARED'] + " -Wl,-rpath,${XRDCL_RPATH}"
+-
+-sources = list()
+-depends = list()
+-
+-for dirname, dirnames, filenames in walk('${CMAKE_CURRENT_SOURCE_DIR}/src'):
+-  for filename in filenames:
+-    if filename.endswith('.cc'):
+-      sources.append(path.join(dirname, filename))
+-    elif filename.endswith('.hh'):
+-      depends.append(path.join(dirname, filename))
+-
+-xrdcllibdir  = "${XRDCL_LIBDIR}"
+-xrdlibdir    = "${XRD_LIBDIR}"
+-xrdsrcincdir = "${XRD_SRCINCDIR}"
+-xrdbinincdir = "${XRD_BININCDIR}"
+-version      = "${XROOTD_VERSION}"
+-
+-if version.startswith('unknown'):
+-  try:
+-    import os
+-    version_file_path = os.path.join('${CMAKE_CURRENT_SOURCE_DIR}', 'VERSION')
+-    print('Version file path: {}'.format(version_file_path))
+-    with open(version_file_path, 'r') as f:
+-      version = f.read().split('/n')[0]
+-      print('Version from file: {}'.format(version))
+-  except Exception as e:
+-    print('{} \nCannot open VERSION_INFO file. {} will be used'.format(e, version))
+-
+-# Sanitize in keeping with PEP 440
+-# c.f. https://www.python.org/dev/peps/pep-0440/
+-# c.f. https://github.com/pypa/pip/issues/8368
+-# version needs to pass pip._vendor.packaging.version.Version()
+-version = version.replace("-", ".")
+-
+-if version.startswith("v"):
+-    version = version[1:]
+-
+-version_parts = version.split(".")
+-
+-# Ensure release candidates sanitized to <major>.<minor>.<patch>rc<candidate>
+-if version_parts[-1].startswith("rc"):
+-    version = ".".join(version_parts[:-1]) + version_parts[-1]
+-    version_parts = version.split(".")
+-
+-if len(version_parts[0]) == 8:
+-    # CalVer
+-    date = version_parts[0]
+-    year = date[:4]
+-    incremental = date[4:]
+-    if incremental.startswith("0"):
+-      incremental = incremental[1:]
+-
+-    version = year + "." + incremental
+-
+-    if len(version_parts) > 1:
+-      # https://github.com/pypa/pip/issues/9188#issuecomment-736025963
+-      hash = version_parts[1]
+-      version = version + "+" + hash
+-
+-print('XRootD library dir:    ', xrdlibdir)
+-print('XRootD src include dir:', xrdsrcincdir)
+-print('XRootD bin include dir:', xrdbinincdir)
+-print('Version:               ', version)
+-
+-setup( name             = 'xrootd',
+-       version          = version,
+-       author           = 'XRootD Developers',
+-       author_email     = 'xrootd-dev@slac.stanford.edu',
+-       url              = 'http://xrootd.org',
+-       license          = 'LGPLv3+',
+-       description      = "XRootD Python bindings",
+-       long_description = "XRootD Python bindings",
+-       packages         = ['pyxrootd', 'XRootD', 'XRootD.client'],
+-       package_dir      = {'pyxrootd'     : '${CMAKE_CURRENT_SOURCE_DIR}/src',
+-                           'XRootD'       : '${CMAKE_CURRENT_SOURCE_DIR}/libs',
+-                           'XRootD.client': '${CMAKE_CURRENT_SOURCE_DIR}/libs/client'},
+-       ext_modules      = [
+-           Extension(
+-               'pyxrootd.client',
+-               sources   = sources,
+-               depends   = depends,
+-               libraries = ['XrdCl', 'XrdUtils', 'dl'],
+-               extra_compile_args = ['-g'],
+-               include_dirs = [xrdsrcincdir, xrdbinincdir],
+-               library_dirs = [xrdlibdir, xrdcllibdir]
+-               )
+-           ]
+-       )
