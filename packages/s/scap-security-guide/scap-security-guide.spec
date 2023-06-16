@@ -1,7 +1,7 @@
 #
 # spec file for package scap-security-guide
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,7 @@
 %endif
 
 Name:           scap-security-guide
-Version:        0.1.66
+Version:        0.1.68
 Release:        0
 Summary:        XCCDF files for SUSE Linux and openSUSE
 License:        BSD-3-Clause
@@ -52,7 +52,6 @@ URL:            https://github.com/ComplianceAsCode/content
 Packager:       SUSE Security Team <security@suse.de>
 %endif
 Source:         https://github.com/ComplianceAsCode/content/archive/v%{version}.tar.gz
-Patch0:         scap-security-guide-UnicodeEncodeError-character-fix.patch
 
 # explicit require what is needed by the detection logic in the scripts
 Requires:       coreutils
@@ -190,8 +189,7 @@ files to run a compliance test on Ubuntu.
 Note that the included profiles are community supplied and not officially supported by SUSE..
 
 %prep
-%setup -n content-%version
-%patch0 -p0
+%setup -q -n content-%version
 
 %build
 cd build

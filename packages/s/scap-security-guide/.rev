@@ -295,4 +295,26 @@ Setting up scap-security-guide (0.1.56-30.1) ... (forwarded request 896944 from 
 - also various SUSE profile fixes were done</comment>
     <requestid>1063457</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>8d6bae77a9948e845b14990299c609d5</srcmd5>
+    <version>0.1.68</version>
+    <time>1686927337</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.1.68 (jsc#ECO-3319)
+  - Bump OL8 STIG version to V1R6
+  - Introduce a Product class, make the project work with it
+  - Introduce Fedora and Firefox CaC profiles for common workstation users
+  - OL7 DISA STIG v2r11 update
+  - Publish rendered policy artifacts
+  - Update ANSSI BP-028 to version 2.0
+- updated to 0.1.67 (jsc#ECO-3319)
+  - Add utils/controlrefcheck.py
+  - RHEL 9 STIG Update Q1 2023
+  - Include warning for NetworkManager keyfiles in RHEL9
+  - OL7 stig v2r10 update
+  - Bump version of OL8 STIG to V1R5
+- various enhancements to SLE profiles
+- scap-security-guide-UnicodeEncodeError-character-fix.patch: fixed upstream (forwarded request 1093440 from msmeissn)</comment>
+    <requestid>1093441</requestid>
+  </revision>
 </revisionlist>

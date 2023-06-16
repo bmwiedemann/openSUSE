@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jun 15 15:40:16 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.68 (jsc#ECO-3319)
+  - Bump OL8 STIG version to V1R6
+  - Introduce a Product class, make the project work with it
+  - Introduce Fedora and Firefox CaC profiles for common workstation users
+  - OL7 DISA STIG v2r11 update
+  - Publish rendered policy artifacts
+  - Update ANSSI BP-028 to version 2.0
+- updated to 0.1.67 (jsc#ECO-3319)
+  - Add utils/controlrefcheck.py
+  - RHEL 9 STIG Update Q1 2023
+  - Include warning for NetworkManager keyfiles in RHEL9
+  - OL7 stig v2r10 update
+  - Bump version of OL8 STIG to V1R5
+- various enhancements to SLE profiles
+- scap-security-guide-UnicodeEncodeError-character-fix.patch: fixed upstream
+
+-------------------------------------------------------------------
 Mon Feb  6 15:03:31 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - updated to 0.1.66 (jsc#ECO-3319)
