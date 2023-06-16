@@ -169,4 +169,13 @@
     <comment>- Fix %posttrans script (`done` instead of `fi`) (bsc#1212351). (forwarded request 1093081 from eeich)</comment>
     <requestid>1093082</requestid>
   </revision>
+  <revision rev="19" vrev="13">
+    <srcmd5>f2b6d906b0dcf0ab2a6906929e548b47</srcmd5>
+    <version>1.4</version>
+    <time>1686927252</time>
+    <user>dimstar_suse</user>
+    <comment>Remove incorrect feature reference. There is no feature request for this, yet.
+- Add support for gcc13 (forwarded request 1093265 from eeich)</comment>
+    <requestid>1093266</requestid>
+  </revision>
 </revisionlist>
