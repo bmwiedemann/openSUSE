@@ -57,11 +57,19 @@ Requires(postun):update-alternatives
 %endif
 %else
 # Documentation requirements
+%if 0%{?suse_version} > 1500
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-docutils
 BuildRequires:  python3-pylons-sphinx-themes
 BuildRequires:  python3-waitress = %{version}
 Recommends:     python3-waitress = %{version}
+%else
+BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module docutils}
+BuildRequires:  %{python_module pylons-sphinx-themes}
+BuildRequires:  %{python_module waitress = %{version}}
+Recommends:     python-waitress = %{version}
+%endif
 %endif
 %python_subpackages
 

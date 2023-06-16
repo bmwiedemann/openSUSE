@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 10 09:00:11 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Fix build error for waitress:doc
+
+-------------------------------------------------------------------
 Wed May  3 11:10:33 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Use sphinx-build and do not depend on removed build_sphinx
