@@ -1,7 +1,7 @@
 #
 # spec file for package ior
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,19 +21,17 @@ Version:        3.3.0
 Release:        0
 Summary:        Parallel filesystem I/O benchmark
 License:        GPL-2.0-only
-Group:          System/Benchmark
 URL:            https://github.com/hpc/ior
 Source:         https://github.com/hpc/ior/releases/download/%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  hdf5-openmpi2-devel
+BuildRequires:  hdf5-openmpi4-devel
+BuildRequires:  libs3-devel
+BuildRequires:  openmpi-macros-devel
+BuildRequires:  zlib-devel
+Provides:       mdtest = %{version}
+Obsoletes:      mdtest < %{version}
 %ifarch  x86_64 aarch64 ppc64le s390x
 BuildRequires:  librbd-devel
 %endif
-BuildRequires:  libs3-devel
-BuildRequires:  openmpi2-devel
-BuildRequires:  zlib-devel
-Requires:       openmpi2
-Provides:       mdtest = %{version}
-Obsoletes:      mdtest < %{version}
 
 %description
 Parallel filesystem I/O benchmark
@@ -43,7 +41,7 @@ Parallel filesystem I/O benchmark
 chmod -x README.md doc/USER_GUIDE COPYRIGHT
 
 %build
-export MPICC="%{_libdir}/mpi/gcc/openmpi2/bin/mpicc"
+%{setup_openmpi}
 %configure \
   --with-mpiio \
   --with-posix \
@@ -51,7 +49,7 @@ export MPICC="%{_libdir}/mpi/gcc/openmpi2/bin/mpicc"
 %ifarch  x86_64 aarch64 ppc64le s390x
   --with-rados
 %endif
-  %nil
+  %{nil}
 %make_build
 
 %install

@@ -48,4 +48,12 @@
     <comment></comment>
     <requestid>894107</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>6f66c24681de267b265adfda5f6b590a</srcmd5>
+    <version>3.3.0</version>
+    <time>1686927342</time>
+    <user>dimstar_suse</user>
+    <comment>- Use mpi selection macros</comment>
+    <requestid>1093447</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 16 08:15:58 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Use mpi selection macros
+
+-------------------------------------------------------------------
 Tue May 18 11:19:06 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Sync the usage of rados support to architectures where ceph is
