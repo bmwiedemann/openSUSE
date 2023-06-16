@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 15 05:05:39 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 9.1.1
+  * Removed Qml import line that prevented UI to load.
+  * Using common AppID for all platforms.
+- Add Qt5Multimedia build requirement
+
+-------------------------------------------------------------------
 Sun Jun 11 08:36:09 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 9.1.0

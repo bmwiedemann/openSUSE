@@ -17,7 +17,7 @@
 
 
 Name:           webcamoid
-Version:        9.1.0
+Version:        9.1.1
 Release:        0
 Summary:        Webcam applet for Plasma
 License:        GPL-3.0-or-later
@@ -38,6 +38,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Concurrent) >= 5.15
 BuildRequires:  cmake(Qt5Core) >= 5.15
 BuildRequires:  cmake(Qt5DBus) >= 5.15
+BuildRequires:  cmake(Qt5Multimedia) >= 5.15
 BuildRequires:  cmake(Qt5OpenGL) >= 5.15
 BuildRequires:  cmake(Qt5QuickControls2) >= 5.15
 BuildRequires:  cmake(Qt5Svg) >= 5.15
