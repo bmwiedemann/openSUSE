@@ -19,11 +19,11 @@
 %define qt5_snapshot 1
 %define libname libQt5Script5
 %define base_name libqt5
-%define real_version 5.15.12
-%define so_version 5.15.12
+%define real_version 5.15.14
+%define so_version 5.15.14
 %define tar_version qtscript-everywhere-src-%{version}
 Name:           libqt5-qtscript
-Version:        5.15.12
+Version:        5.15.14
 Release:        0
 Summary:        Qt 5 Script library
 # Legal:
