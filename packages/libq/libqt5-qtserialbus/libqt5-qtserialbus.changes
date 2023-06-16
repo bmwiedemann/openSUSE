@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 13 12:59:29 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.10+kde0, rebased upstream:
+  * QtSerialBus: replace qSwap with std::member-swap where possible
+  * Fix QModbusClient::processResponse() is never called
+
+-------------------------------------------------------------------
 Fri Apr 21 10:01:20 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.8+kde2, rebased upstream:
