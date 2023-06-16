@@ -25,46 +25,48 @@ Group:          Productivity/Networking/Web/Utilities
 URL:            https://httpie.org/
 Source:         https://github.com/jakubroztocil/httpie/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        http.1
+BuildRequires:  %{primary_python}
+BuildRequires:  %{primary_python}-Jinja2
+BuildRequires:  %{primary_python}-PySocks
+BuildRequires:  %{primary_python}-PyYAML
+BuildRequires:  %{primary_python}-Pygments >= 2.5.2
+BuildRequires:  %{primary_python}-Werkzeug
+BuildRequires:  %{primary_python}-charset-normalizer >= 2.0.0
+BuildRequires:  %{primary_python}-defusedxml >= 0.6.0
+BuildRequires:  %{primary_python}-flake8
+BuildRequires:  %{primary_python}-flake8-comprehensions
+BuildRequires:  %{primary_python}-flake8-deprecated
+BuildRequires:  %{primary_python}-multidict >= 4.7.0
+BuildRequires:  %{primary_python}-pip
+BuildRequires:  %{primary_python}-pyOpenSSL
+BuildRequires:  %{primary_python}-pytest
+BuildRequires:  %{primary_python}-pytest-cov
+BuildRequires:  %{primary_python}-pytest-httpbin >= 0.0.6
+BuildRequires:  %{primary_python}-pytest-lazy-fixture >= 0.0.6
+BuildRequires:  %{primary_python}-pytest-mock
+BuildRequires:  %{primary_python}-requests >= 2.22.0
+BuildRequires:  %{primary_python}-requests-toolbelt >= 0.9.1
+BuildRequires:  %{primary_python}-responses
+BuildRequires:  %{primary_python}-rich >= 9.10.0
+BuildRequires:  %{primary_python}-setuptools
+BuildRequires:  %{primary_python}-twine
+BuildRequires:  %{primary_python}-wheel
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-Jinja2
-BuildRequires:  python3-PySocks
-BuildRequires:  python3-PyYAML
-BuildRequires:  python3-Pygments >= 2.5.2
-BuildRequires:  python3-Werkzeug
-BuildRequires:  python3-charset-normalizer >= 2.0.0
-BuildRequires:  python3-defusedxml >= 0.6.0
-BuildRequires:  python3-flake8
-BuildRequires:  python3-flake8-comprehensions
-BuildRequires:  python3-flake8-deprecated
-BuildRequires:  python3-multidict >= 4.7.0
-BuildRequires:  python3-pip
-BuildRequires:  python3-pyOpenSSL
-BuildRequires:  python3-pytest
-BuildRequires:  python3-pytest-cov
-BuildRequires:  python3-pytest-httpbin >= 0.0.6
-BuildRequires:  python3-pytest-lazy-fixture >= 0.0.6
-BuildRequires:  python3-pytest-mock
-BuildRequires:  python3-requests >= 2.22.0
-BuildRequires:  python3-requests-toolbelt >= 0.9.1
-BuildRequires:  python3-responses
-BuildRequires:  python3-rich >= 9.10.0
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-twine
-BuildRequires:  python3-wheel
-Requires:       python3-PySocks
-Requires:       python3-Pygments >= 2.5.2
-Requires:       python3-charset-normalizer >= 2.0.0
-Requires:       python3-defusedxml >= 0.6.0
-Requires:       python3-multidict >= 4.7.0
-Requires:       python3-pip
-Requires:       python3-requests >= 2.22.0
-Requires:       python3-requests-toolbelt >= 0.9.1
-Requires:       python3-rich >= 9.10.0
-Requires:       python3-setuptools
-Provides:       python%{python_version}-httpie = 3.2.2
+Requires:       %{primary_python}
+Requires:       %{primary_python}-PySocks
+Requires:       %{primary_python}-Pygments >= 2.5.2
+Requires:       %{primary_python}-charset-normalizer >= 2.0.0
+Requires:       %{primary_python}-defusedxml >= 0.6.0
+Requires:       %{primary_python}-multidict >= 4.7.0
+Requires:       %{primary_python}-pip
+Requires:       %{primary_python}-requests >= 2.22.0
+Requires:       %{primary_python}-requests-toolbelt >= 0.9.1
+Requires:       %{primary_python}-rich >= 9.10.0
+Requires:       %{primary_python}-setuptools
+Provides:       %{primary_python}-httpie = 3.2.2
 Provides:       python3-httpie = 3.2.2
-Obsoletes:      python%{python_version}-httpie < 2.3.0
+Obsoletes:      %{primary_python}-httpie < 2.3.0
 Obsoletes:      python3-httpie < 2.3.0
 BuildArch:      noarch
 Requires(post): update-alternatives
@@ -84,11 +86,11 @@ sed -i -e '/^#!\//, 1d' httpie/__main__.py
 
 %build
 export LC_CTYPE=en_US.UTF-8
-%python3_build
+python%{python_version} setup.py build
 
 %install
 export LC_CTYPE=en_US.UTF-8
-%python3_install
+python%{python_version} setup.py install --root=%{buildroot}
 %fdupes %{buildroot}%{_prefix}/lib/python%{python_version}/site-packages
 install -D -m 0644 %{SOURCE1} %{buildroot}%{_mandir}/man1/http.1
 mkdir -p %{buildroot}%{_datadir}/bash-completion/completions

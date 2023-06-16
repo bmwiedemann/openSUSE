@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 14 21:50:14 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Enforce building against the primary python version of the
+  current OBS project to avoid build errors
+
+-------------------------------------------------------------------
 Sat May 20 06:14:41 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 3.2.2
