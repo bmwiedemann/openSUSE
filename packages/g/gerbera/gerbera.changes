@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 15 11:44:52 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix usage of %sysusers_create_package: the macro takes two
+  parameters.
+
+-------------------------------------------------------------------
 Fri Jan  6 08:07:12 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.12.1:

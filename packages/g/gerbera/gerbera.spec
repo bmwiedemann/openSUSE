@@ -131,7 +131,7 @@ useradd -r -g gerbera -d %{_sysconfdir}/gerbera -s /sbin/nologin \
 %post
 %service_add_post %{name}.service
 %if 0%{?suse_version} > 1590
-%sysusers_create_package %{_sysusersdir}/%{name}.conf
+%sysusers_create_package %{name} %{SOURCE2}
 %else
 %sysusers_create %{_sysusersdir}/%{name}.conf
 %endif
