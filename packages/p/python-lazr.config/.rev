@@ -34,4 +34,14 @@
 </comment>
     <requestid>923671</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1ab6190daac7a06f5dc11d55e8dab9b8</srcmd5>
+    <version>3.0</version>
+    <time>1686927301</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0:
+  * No changelog available
+- Use sle15_python_module_pythons</comment>
+    <requestid>1093374</requestid>
+  </revision>
 </revisionlist>
