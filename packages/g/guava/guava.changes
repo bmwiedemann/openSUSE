@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Thu Jun 15 13:20:35 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to guava 32.0.1
+  * Security fixes:
+    + Reimplemented Files.createTempDir and FileBackedOutputStream
+      to further address CVE-2020-8908 (#4011, bsc#1179926) and
+      CVE-2023-2976 (#2575, bsc#1212401)
+  * Fixes:
+    + io: Fixed Files.createTempDir and FileBackedOutputStream under
+      Windows, which broke as part of the security fix in release
+      32.0.0
+    + Removed @Beta from almost all APIs. Most of the remaining
+      @Beta APIs are in graph and hash.
+    + Enhanced the Guava jar to include Proguard configurations that
+      are picked up automatically by the Android Gradle Plugin. This
+      should help with warnings that were promoted to errors in
+      Android Gradle Plugin 8.x.
+    + Enhanced the Guava jar to include information about method
+      parameters in its class files. If you use static analyzers
+      that look at method-parameter names, you may see new warnings
+      or errors if they are now able to detect mismatches. But
+      mostly, you may see better tooltips and autocompletion in
+      DEs.
+    + Improved nullness annotations on a few classes.
+    + Modified classes with "serial proxies" to declare
+      exception-throwing readObject methods, in accordance with best
+      practice.
+    + collect: Fixed Maps.newHashMapWithExpectedSize to stop
+      allocating maps that were larger than they needed to be.
+    + collect: Made various APIs work J2CL:
+      Maps.immutableEnumMap+toImmutableEnumMap, EnumMultiset,
+      CollectorTester. Previously, the APIs were present but failed
+      at runtime.
+    + collect: Optimized memory usage for Interner and MapMaker.
+    + graph: Changed directed graphs to reject attempts to add
+      undirected edges.
+    + io: Added BaseEncoding.ignoreCase() to support
+      case-insensitive decoding.
+    + net: Added HttpHeaders constants:
+      ~ No-Vary-Search
+      ~ Sec-CH-DPR
+      ~ Sec-CH-UA-Wow64
+      ~ Sec-CH-Viewport-Width and Sec-CH-Viewport-Height
+      ~ Supports-Loading-Mode
+    + net: Added the MediaType constant for JWT.
+    + primitives: Added rotate() for arrays of all primitive types.
+    + util.concurrent: Changed AbstractFuture to run
+      interruptTask() just before afterDone(). Until this change, it
+      ran slightly earlier than that: We used to run it before
+      unblocking any pending get() calls, and now we run it after.
+    + util.concurrent: Fixed some cases in which we could catch
+      InterruptedException but fail to restore the interrupt bit.
+
+-------------------------------------------------------------------
 Wed May 18 17:26:01 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to guava 31.1

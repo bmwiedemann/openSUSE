@@ -1,7 +1,7 @@
 #
 # spec file for package guava
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           guava
-Version:        31.1
+Version:        32.0.1
 Release:        0
 Summary:        Google Core Libraries for Java
 License:        Apache-2.0 AND CC0-1.0
@@ -118,11 +118,11 @@ cp -r %{name}-testlib/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/%{n
 
 %files -f .mfiles
 %doc CONTRIBUTORS README*
-%license COPYING
+%license LICENSE
 
 %files javadoc
 %{_javadocdir}/%{name}
-%license COPYING
+%license LICENSE
 
 %files testlib -f .mfiles-guava-testlib
 

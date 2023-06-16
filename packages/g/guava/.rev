@@ -63,4 +63,12 @@
     <comment>Sync changes with sle</comment>
     <requestid>979202</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2949bdcc5db40a2ec1add39db5ffbd19</srcmd5>
+    <version>32.0.1</version>
+    <time>1686927280</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1212401</comment>
+    <requestid>1093336</requestid>
+  </revision>
 </revisionlist>
