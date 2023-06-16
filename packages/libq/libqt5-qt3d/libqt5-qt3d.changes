@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 13 12:58:20 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.10+kde0, rebased upstream:
+  * Protect code for unsupported configs
+  * Fix blacklisting string for ubuntu-20.04 in graphicshelpergl4
+
+-------------------------------------------------------------------
 Fri Apr 21 09:53:28 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.8+kde6, rebased upstream:
