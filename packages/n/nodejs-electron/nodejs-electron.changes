@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 14 19:07:41 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 22.3.13
+  * Security fixes: CVE-2023-3079, CVE-2023-2724, CVE-2023-2723,
+    CVE-2023-2725, CVE-2023-2721, CVE-2023-2936, CVE-2023-2935,
+    CVE-2023-2930
+
+-------------------------------------------------------------------
 Thu May 25 05:15:35 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 22.3.11
   * Fix ScopedObservation use after free in BubbleDialogDelegate::AnchorWidgetObserver
