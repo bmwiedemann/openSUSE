@@ -40,7 +40,6 @@ BuildRequires:  %{python_module hatchling >= 1.5}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-entrypoints
 Requires:       python-python-dateutil >= 2.8.2
 Requires:       python-pyzmq >= 23.0
 Requires:       python-tornado >= 6.2
