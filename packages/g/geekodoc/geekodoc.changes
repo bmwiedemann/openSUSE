@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 15 11:30:44 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire python3-importlib_metadata: mandatory when building
+  using python 3.11+.
+
+-------------------------------------------------------------------
 Wed Feb 15 10:53:50 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.2.2
 
 - Release 2.2.2

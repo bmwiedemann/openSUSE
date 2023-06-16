@@ -42,6 +42,7 @@ BuildRequires:  openSUSE-release
 %else
 BuildRequires:  sles-release
 %endif
+BuildRequires:  python3-importlib_metadata
 BuildRequires:  python3-rnginline
 BuildRequires:  python3-setuptools
 BuildRequires:  trang

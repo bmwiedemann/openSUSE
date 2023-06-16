@@ -117,4 +117,12 @@ Fixes issue #41 to reduce number of files in packages
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1067137</requestid>
   </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>4cc089d2b92da0cb129a792a76d45ee8</srcmd5>
+    <version>unknown</version>
+    <time>1686927258</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093300</requestid>
+  </revision>
 </revisionlist>
