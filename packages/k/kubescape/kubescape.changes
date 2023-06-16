@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 16 05:13:23 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.3.6:
+  * chore: remove refs to deprecated io/ioutil
+  * fix: CVE-2023-28840 CVE-2023-28841 CVE-2023-28842
+    CVE-2022-41723 etc. (#1221)
+  * Fix statuses - Manual review and Requires configuration (#1251)
+
+-------------------------------------------------------------------
 Mon Jun 12 20:16:13 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.3.5:
