@@ -1,7 +1,7 @@
 #
 # spec file for package python-requests-file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,11 @@ Version:        1.5.1
 Release:        0
 Summary:        File transport adapter for Requests
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/dashea/requests-file
 Source:         https://files.pythonhosted.org/packages/source/r/requests-file/requests-file-%{version}.tar.gz
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests
@@ -53,6 +53,8 @@ library to allow local filesystem access via file:// URLs.
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/requests_file.py
+%pycache_only %{python_sitelib}/__pycache__/requests_file.*.py*
+%{python_sitelib}/requests_file-%{version}*info
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 16 06:55:06 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing six BuildRequires.
+- Stop using greedy globs in %files.
+
+-------------------------------------------------------------------
 Thu Jun  3 12:11:33 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro
