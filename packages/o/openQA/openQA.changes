@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 16 11:38:44 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1686859477.329edf1:
+  * nginx: Set if_modified_since before
+  * Use signatures in Shared::Plugin::SharedHelpers
+  * Add munin plugin for minion jobs
+  * Update CI documentation to use of `pull_request_target`
+
+-------------------------------------------------------------------
 Wed Jun 14 03:38:49 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1686649789.d386b2b:
