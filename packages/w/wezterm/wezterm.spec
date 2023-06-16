@@ -17,6 +17,7 @@
 
 
 %global rustflags -Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2
+%global _dashed_version 20230408-112425-69ae8472
 
 Name:           wezterm
 Version:        20230408.112425.69ae8472
@@ -24,7 +25,7 @@ Release:        0
 Summary:        GPU-accelerated cross-platform terminal emulator and multiplexer
 URL:            https://github.com/wez/wezterm
 License:        (Apache-2.0 OR MIT) AND BSD-3-Clause AND (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR BSL-1.0 OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR BSD-2-Clause) AND (Apache-2.0 OR MIT OR Zlib) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND ISC AND LGPL-2.1-only AND MIT AND MPL-2.0 AND WTFPL AND Zlib AND MIT
-Source0:        %{name}-%{version}.tar.zst
+Source0:        https://github.com/wez/wezterm/releases/download/%{_dashed_version}/wezterm-%{_dashed_version}-src.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Source2:        cargo_config
 Requires:       terminfo
@@ -53,6 +54,9 @@ BuildRequires:  xcb-util-image-devel
 BuildRequires:  xcb-util-keysyms-devel
 BuildRequires:  xcb-util-wm-devel
 BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(harfbuzz)
+BuildRequires:  pkgconfig(libgit2)
 BuildRequires:  pkgconfig(libssh2)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(tic)
@@ -96,13 +100,15 @@ BuildArch:      noarch
 Zsh completion script for %{name}.
 
 %prep
-%autosetup -a1
+%autosetup -a1 -n %{name}-%{_dashed_version}
 mkdir -p .cargo
 cp %{SOURCE2} .cargo/config
 tic -vvv -x -o terminfo termwiz/data/%{name}.terminfo
 printf "%{version}" > .tag
 
 %build
+# export CFLAGS="%%optflags"
+# export CXXFLAGS="%%optflags"
 %if 0%{?suse_version} > 1500
 %{cargo_build} --all-features
 %else
@@ -112,10 +118,10 @@ cargo build --offline --release --all-features
 %endif
 
 %install
-install -Dm 0755 %{_builddir}/%{name}-%{version}/target/release/wezterm %{buildroot}%{_bindir}/wezterm
-install -Dm 0755 %{_builddir}/%{name}-%{version}/target/release/wezterm-gui %{buildroot}%{_bindir}/wezterm-gui
-install -Dm 0755 %{_builddir}/%{name}-%{version}/target/release/wezterm-mux-server %{buildroot}%{_bindir}/wezterm-mux-server
-install -Dm 0755 %{_builddir}/%{name}-%{version}/target/release/strip-ansi-escapes %{buildroot}%{_bindir}/strip-ansi-escapes
+install -Dm 0755 %{_builddir}/%{name}-%{_dashed_version}/target/release/wezterm %{buildroot}%{_bindir}/wezterm
+install -Dm 0755 %{_builddir}/%{name}-%{_dashed_version}/target/release/wezterm-gui %{buildroot}%{_bindir}/wezterm-gui
+install -Dm 0755 %{_builddir}/%{name}-%{_dashed_version}/target/release/wezterm-mux-server %{buildroot}%{_bindir}/wezterm-mux-server
+install -Dm 0755 %{_builddir}/%{name}-%{_dashed_version}/target/release/strip-ansi-escapes %{buildroot}%{_bindir}/strip-ansi-escapes
 
 install -Dm 0644 terminfo/w/wezterm %{buildroot}%{_datadir}/terminfo/w/wezterm
 install -Dm 0644 assets/%{name}.desktop %{buildroot}%{_datadir}/applications/org.wezfurlong.%{name}.desktop

@@ -1,28 +1,24 @@
 <services>
-  <service mode="disabled" name="obs_scm">
-    <param name="url">https://github.com/wez/wezterm.git</param>
-    <param name="versionformat">@PARENT_TAG@</param>
-    <param name="scm">git</param>
-    <param name="revision">69ae847</param>
-    <param name="match-tag">*</param>
-    <param name="versionrewrite-pattern">(\d+)-(\d+)-(\w+)</param>
-    <param name="versionrewrite-replacement">\1.\2.\3</param>
-    <param name="changesgenerate">enable</param>
-    <param name="changesauthor">socvirnyl.estela@gmail.com</param>
-  </service>
-  <service mode="disabled" name="tar" />
-  <service mode="disabled" name="recompress">
-    <param name="file">*.tar</param>
-    <param name="compression">zstd</param>
-  </service>
-  <service mode="disabled" name="set_version"/>
+  <service mode="disabled" name="download_files" />
   <service name="cargo_vendor" mode="disabled">
-     <param name="srcdir">wezterm</param>
+     <param name="srctar">wezterm-20230408.112425.69ae8472.tar.gz</param>
      <param name="compression">zst</param>
      <param name="update">true</param>
+	 <param name="cargotoml">wezterm/Cargo.toml</param>
+	 <param name="cargotoml">wezterm-blob-leases/Cargo.toml</param>
+	 <param name="cargotoml">wezterm-client/Cargo.toml</param>
+	 <param name="cargotoml">wezterm-dynamic/Cargo.toml</param>
+	 <param name="cargotoml">wezterm-dynamic/derive/Cargo.toml</param>
+	 <param name="cargotoml">wezterm-font/Cargo.toml</param>
+	 <param name="cargotoml">wezterm-gui/Cargo.toml</param>
+	 <param name="cargotoml">wezterm-gui-subcommands/Cargo.toml</param>
+	 <param name="cargotoml">wezterm-input-types/Cargo.toml</param>
+	 <param name="cargotoml">wezterm-mux-server/Cargo.toml</param>
+	 <param name="cargotoml">wezterm-mux-server-impl/Cargo.toml</param>
+	 <param name="cargotoml">wezterm-open-url/Cargo.toml</param>
+	 <param name="cargotoml">wezterm-ssh/Cargo.toml</param>
+	 <param name="cargotoml">wezterm-toast-notification/Cargo.toml</param>
   </service>
-  <service name="cargo_audit" mode="disabled">
-     <param name="srcdir">wezterm</param>
-  </service>
+  <service name="cargo_audit" mode="disabled" />
 </services>
 

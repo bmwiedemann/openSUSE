@@ -580,4 +580,22 @@
 </comment>
     <requestid>1079676</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>cd9a5a8ad7ef3b12850ee9c022aedb66</srcmd5>
+    <version>20230408.112425.69ae8472</version>
+    <time>1686927213</time>
+    <user>dimstar_suse</user>
+    <comment>- Package is incompatible with native libraries. Disabling by commenting
+  out CFLAGS and CXXFLAGS.
+- Add missing dependencies
+- Add %optflags
+- Fix install section.
+- Change and reupload source upstream tarball with already downloaded third-party deps.
+- Use upstream tarball.
+- Add global dashed_version since upstream uses dashses instead of periods.
+- Update vendored dependencies.
+- Update vendored dependencies.
+</comment>
+    <requestid>1093346</requestid>
+  </revision>
 </revisionlist>
