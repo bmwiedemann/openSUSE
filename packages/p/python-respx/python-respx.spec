@@ -23,6 +23,8 @@ Summary:        Mock HTTPX with request patterns and response side effects
 License:        BSD-3-Clause
 URL:            https://github.com/lundberg/respx
 Source0:        https://github.com/lundberg/respx/archive/refs/tags/%{version}.tar.gz#/respx-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Use a real IPV6 address to avoid a test failure
+Patch0:         use-real-ipv6-address.patch
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module httpx}
 BuildRequires:  %{python_module pytest-asyncio}
