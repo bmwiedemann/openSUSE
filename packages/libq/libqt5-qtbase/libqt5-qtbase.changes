@@ -1,10 +1,137 @@
 -------------------------------------------------------------------
+Tue Jun 13 12:58:24 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.10+kde129, rebased upstream:
+  * Ssl: Copy the on-demand cert loading bool from default config
+  * Schannel: Reject certificate not signed by a configured CA certificate (boo#1211994, CVE-2023-34410)
+  * qnetworkreplyfileimpl_p.h: fix header guard name
+  * Revert "Draw the cursor considering the descent is 0"
+  * Use pkgconfig in order to find libproxy configuration
+  * Upgrade PCRE2 to 10.40
+  * Android A11Y: handle LocationChanged event only for focused element
+  * Port binary JSON to new special integer bitfields
+  * INTEGRITY: enable C99 globally
+  * QObject: mark two error reporting functions COLD
+  * Endian: Provide special integer bitfield unions
+  * Android: set useLegacyPackaging to true in build.gradle
+  * QWidgetTextControl: port to new-style connects (faster)
+  * Sync qxmlstream.g with qxmlstreamparser_p.h [1/2]: switched lines
+  * tst_QNetworkReply try stabilize autoDeleteReplies tests
+  * Remove duplicated include for <limits>
+  * Fix recursion crash when calling setStyleSheet with `qproperty-styleSheet`
+  * qwindowsxpstyle: Fix typos in documentation
+  * Correct prefix reported for end element in QXmlStreamReader
+  * Android A11Y: Add supported role infos to A11yNodeInfo
+  * Fix handling of DateTime values in QSettings
+  * Fix off-by-one for "typically" lowest value INT_MIN
+  * xml: Fix typos in documentation
+  * QWindowsWindow: Fix typo in documentation
+  * includemocs (updated script)
+  * widgets: Fix typos in documentation
+  * cocoa: Fix typo in debug messages
+  * Only scroll QMenu when there is a valid active action
+  * QTimer: Add note in documentation
+  * Fix QListView assert when the last row is moved in IconMode
+  * QFileDialog: Fix adding default suffix when file path contains dot
+  * QLineEdit: account for the placeholderText when computing lineRect
+  * QFileDialog::saveFileContent crashes on accept
+  * QCompleter: QCompleter unexpectedly changes QLineEdit text
+  * Fix build error on iOS with the configure option -qtnamespace
+  * Draw the cursor considering the descent is 0
+  * Remove pure-virtual-signals.h include from tst_moc.cpp
+  * plugins: image formats - fix odr violation
+  * dbus: Fix typos
+  * qwindowsdialoghelpers: Fix typo in documentation
+  * QTableView: Document the customizations applied to QHeaderView
+  * Unicodetools: compile
+  * eglfs_x11: Fix running flag linkage
+  * qcompilerdetection.h: add Q_CC_{GNU,MSVC,CLANG}_ONLY macros
+  * Fix CMake warning about "missing closing ' quote"
+  * Fix alignment of next/prev links in offline style
+  * QtDBus: includemocs
+  * Image Plugins: includemocs(-ish)
+  * QtGui: includemocs
+  * QXcbNativeInterface: remove unused field m_sysTraySelectionAtom
+  * Windows QPA: Fix slowdown with large table/tree views with accessibility
+  * Macstyle: fix the text color on the disabled button
+  * QMacStyle: fix tool buttons (in checked mode)
+  * QTeamCityLogger: fix .arg() placeholder injection
+  * QAbstractTestLogger: disable copying
+  * Fix errorMessageFromComError()
+  * QtNetwork: includemocs
+  * AppleUnifiedLogger: Remove manually managed os_log_t cache
+  * examples: add WindowStaysOnBottomHint into preview text
+  * QSharedPointer: Use matching new/delete
+  * QIbusPlatformInputContextPlugin: includemocs
+  * QGtk3ThemePlugin: includemocs
+  * QTuioTouchPlugin: includemocs
+  * QtWidgets: includemocs v2022
+  * QMYSQLDriverPlugin: includemocs
+  * QtDeviceDiscoverySupportPrivate: includemocs
+  * QLinuxFbIntegrationPlugin: includemocs
+  * QtPrintSupport: includemocs
+  * QSQLiteDriverPlugin: includemocs
+  * QtFbSupportPrivate: includemocs
+  * QXdgDesktopPortalThemePlugin: includemocs
+  * QtTest: includemocs
+  * QComposePlatformInputContextPlugin: includemocs
+  * QtSql: includemocs
+  * QVncIntegrationPlugin: includemocs
+  * Fix backingstore fractional DPR glitches for widgets in child windows
+  * Include <limits> where std::numeric_limits is used
+  * QtInputSupportPrivate: includemocs
+  * Document the default value of QSFPM::sortOrder()
+  * Better document how to enable sorting in QSPFM
+  * Correct documentation of INI format's loss of type information
+  * Android: add missing properties in AndroidManifest.xml
+  * Fix assertion failure when parsing a doubly-invalid date-time text
+  * Windows QPA: Correct mistake when calculating minmaxinfo
+  * Android: replace ndk.dir with android.ndkVersion in build.gradle
+  * Android: remove the old copy of gradle.properties after reading it
+  * CMake Android Support: Fix signing of APKs
+  * Android: fix A11Y object description
+  * macOS: Fix warning about comparing different types in QCocoaScreen::isOnline
+  * Fix qmake build on FreeBSD
+  * Update documentation of enum Qt::DockWidgetArea
+  * xcb: recreate xcb window under some conditions
+  * objc_namespace: Add support for universal binaries
+  * objc_namespace: Fix misspelled argument for silencing output
+  * objc_namespace: Update parsing logic to account for otool changes
+  * Blacklist passwordAuth for Ubuntu 20.04
+  * Android: wrap QAndroidInputContext's m_focusObject in a QPointer
+  * Fix compilation with GCC 12 (and on Fedora 35 and newer)
+  * Chip example: fix an accidental bool->int conversion when using PMF connections
+  * qmake: Add support for C++23
+  * Android: use BCP 47 tag to create a correct Locale for QTimeZone::displayName()
+  * QDateTime: fix adjusted datetime handling
+  * Fix crash in tst_qmltc_examples on Android
+  * macOS: Remove dead code for focus ring handling in Mac style
+  * Detach for colortransforms of indexed formats
+  * tst_QTcpSocket::connectToHostError - handle possible timeouts
+  * CoreText: Avoid populating font family aliases if family was populated
+  * Graphicsview: Avoid background clearing glitches under fractional DPR
+  * Windows QPA: Avoid slowdown with UI Automation name change notification
+  * Windows QPA: Avoid sending accessibility notifications before activation
+  * Windows: Fix potential crash when retrieving default printer
+  * Make Ubuntu with its non-standard security level happy
+  * Android: Blacklist failing tests on tst_QGraphicsProxyWidget
+  * Update LA 4.4.1
+  * iOS A11Y: Set more accessibilityTraits
+  * QNX: Fix compiler warning by when FEATURE_clipboard is not enabled
+  * Document that native file dialogs might not show a title
+  * Doc: Remove mentionings of overflows from QElapsedTimer
+  * QTextMarkdownImporter: don't apply text char format to list item block
+- Commits dropped by the rebase:
+  * QBuffer: add missing <limits> include
+  * Fix developer build
+
+-------------------------------------------------------------------
 Wed May 24 07:59:20 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 5.15.9+kde154:
   * Hsts: match header names case insensitively (CVE-2023-32762)
   * Fix specific overflow in qtextlayout (CVE-2023-32763)
-  * QDnsLookup/Unix: make sure we don't overflow the buffer
+  * QDnsLookup/Unix: make sure we don't overflow the buffer (CVE-2023-33285, boo#1211642)
 
 -------------------------------------------------------------------
 Tue May  9 12:08:17 UTC 2023 - Fabian Vogt <fvogt@suse.com>
