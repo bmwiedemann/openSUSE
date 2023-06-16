@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 13 12:59:15 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.10+kde6, rebased upstream:
+  * Accessibility: respect value in attached Accessible in controls
+  * TextArea: make clip node wider to accommodate cursor when right-aligned
+  * DialogButtonBox: fix buttons going outside box on size change
+  * Control in pressDelay Flickable: detect touch release near press pos
+  * Reset provider's texture if QQuickNiniPatchImage's source is invalid
+  * FileDialog: do not add default suffix when content scheme is used
+
+-------------------------------------------------------------------
 Fri Apr 21 10:00:43 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.8+kde11, rebased upstream:
