@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 14 14:38:18 UTC 2023 - José Iván López González <jlopez@suse.com>
+
+- Add info about allow_lun_scan option (related to
+  gh#openSUSE/agama#626).
+- 4.6.3
+
+-------------------------------------------------------------------
 Mon Jun  5 10:09:02 UTC 2023 - José Iván López González <jlopez@suse.com>
 
 - Expose zFCP core functionallity (related to
