@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun 13 12:58:33 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.10+kde4, rebased upstream:
+  * Update LGPL license header
+  * Replace deprecated bluetooth disable/enable methods on Android
+  * includemocs
+  * QLeAdvertizerBluez: add missing Q_OBJECT macro
+  * Rename qleadvertiser_p.h → qleadvertiser_bluez_p.h
+  * QtConnectivity: replace qSwap with std::swap/member-swap where possible
+  * Fix crash when service discovery agent (SDA) is stopped on Android
+  * QLowEnergyControllerPrivateAndroid: remove unused forward declaration
+  * Improve Android-12 bluetooth permission error reporting
+  * Update BT LE peripheral role OS support documentation
+  * Introduce Android 12 / SDK 31+ bluetooth permissions
+  * tst_qbluetoothservicediscovery: make auto-test less evil
+  * Remove QBluetoothSocket::connected double-emit on macOS
+  * Fix Android bluetooth server assert when disposed of quickly
+
+-------------------------------------------------------------------
 Fri Apr 21 09:54:41 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.8+kde34, rebased upstream:
