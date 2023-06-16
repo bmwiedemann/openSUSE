@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 13 11:08:24 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Wed Jan  4 22:18:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.8:

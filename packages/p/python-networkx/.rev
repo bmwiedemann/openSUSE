@@ -392,4 +392,12 @@
   * Amount of nodes and edges have mistakes when reading adjlist file</comment>
     <requestid>1056126</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>55ad23981bf3e38415db0202b64c222e</srcmd5>
+    <version>2.8.8</version>
+    <time>1686927105</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093034</requestid>
+  </revision>
 </revisionlist>

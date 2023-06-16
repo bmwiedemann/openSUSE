@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-networkx
 Version:        2.8.8
 Release:        0
