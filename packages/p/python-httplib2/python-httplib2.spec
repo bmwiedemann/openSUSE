@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # Tests require network connection
 %bcond_with tests
+%{?sle15_python_module_pythons}
 Name:           python-httplib2
 Version:        0.22.0
 Release:        0
