@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 13 12:58:31 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.10+kde0, rebased upstream:
+  * Fix minor tick placement for horizontal axis
+
+-------------------------------------------------------------------
 Fri Apr 21 09:54:36 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.8+kde2, rebased upstream:
