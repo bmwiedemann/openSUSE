@@ -125,4 +125,12 @@
     <comment>- skip failing tests</comment>
     <requestid>936166</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>82c4de0e630fdfebf0cdaa39dda2d0f9</srcmd5>
+    <version>1.4.2</version>
+    <time>1686927106</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093038</requestid>
+  </revision>
 </revisionlist>

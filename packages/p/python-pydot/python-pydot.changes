@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 13 11:09:47 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Tue Dec  7 07:42:07 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip failing tests 
