@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun 16 05:13:28 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.15.13:
+  * chore: bump go version release 1.19 (#1363)
+  * release: prepare v0.15.13 (#1362)
+  * chore: resolve libssl vulnerability (#1361)
+  * bugfix: Support configauditing for rbac resource with capital
+    letter name (#1356)
+  * feat: Support scan latest revision for replicationController
+    from DeploymentConfig (#1352)
+
+-------------------------------------------------------------------
 Mon Apr 24 10:49:24 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.15.12:
