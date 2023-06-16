@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 14 17:36:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.2.2:
+  * fix cert dir arg (#958)
+  * Bump github.com/sirupsen/logrus from 1.9.2 to 1.9.3 (#957)
+
+-------------------------------------------------------------------
 Mon Jun 12 19:54:04 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 8.2.1:
