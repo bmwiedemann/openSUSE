@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 13 12:58:56 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.10+kde4, rebased upstream:
+  * Make location-labs-plugin depend on features.opengl
+- Commits dropped by the rebase:
+  * Fix build of Qt.labs.location QML plugin
+
+-------------------------------------------------------------------
 Fri Apr 21 09:59:21 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.8+kde7, rebased upstream:
