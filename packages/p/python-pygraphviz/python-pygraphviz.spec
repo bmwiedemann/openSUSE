@@ -18,6 +18,7 @@
 
 %global skip_python2 1
 %bcond_without tests
+%{?sle15_python_module_pythons}
 Name:           python-pygraphviz
 Version:        1.10
 Release:        0
