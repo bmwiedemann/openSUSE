@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 15 12:55:06 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix building against other python versions than 3.10.
+
+-------------------------------------------------------------------
 Tue Apr 11 13:05:24 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - initial import 0.2.2

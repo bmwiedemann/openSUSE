@@ -29,16 +29,16 @@ Source0:        https://github.com/OpenSCAP/%{name}/releases/download/v%{version
 BuildArch:      noarch
 
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-setuptools
+BuildRequires:  python3-Sphinx
 BuildRequires:  python3-devel
 BuildRequires:  python3-lxml
-BuildRequires:  python3-Sphinx
+BuildRequires:  python3-setuptools
 BuildRequires:  python3-sphinx_rtd_theme
 
 Provides:       bundled(patternfly) = 4
 
-Requires:       python3-lxml
 Requires:       python3-Jinja2
+Requires:       python3-lxml
 
 %description
 This package provides a command-line tool for generating
@@ -64,7 +64,7 @@ install -m 0644 -Dt %{buildroot}%{_mandir}/man1 _build_docs/oscap-report.1
 %{_bindir}/oscap-report
 %exclude %{python3_sitelib}/tests/
 %{python3_sitelib}/openscap_report/
-%{python3_sitelib}/openscap_report-%version-py3.10.egg-info/
+%{python3_sitelib}/openscap_report-%version-py%{python3_bin_suffix}.egg-info/
 %license LICENSE
 
 %changelog
