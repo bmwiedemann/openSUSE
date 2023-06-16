@@ -17,7 +17,7 @@
 
 
 Name:           mingw32-cross-cmake
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Cross build support for CMake
 License:        BSD-3-Clause

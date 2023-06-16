@@ -10,8 +10,8 @@
 #
 # To override the builtin source and build path defaults 
 #
-#    source path: $(pwd)
-#    build path:  $(pwd)/build
+#    source path: $(pwd)/%__srcdir
+#    build path:  $(pwd)/%__builddir
 #
 #  add the following to the macro parameter list
 #
@@ -20,24 +20,29 @@
 #
 # for other options see cmake -h
 #
-%_mingw32_cmake(A:B:C:D:EG:L::NP:S:T:U:W:-:hH:u:v:) %{_mingw32_env} ; \
-    %{-B:bdir=%{-B*}} \
-    %{-S:sdir=%{-S*}} \
+%_mingw32_cmake %{_mingw32_env} ; \
     opts="" \
-    skipnext=0 \
     for i in "$@"; do  \
-        if test "$i" == "-S" || test "$i" == "-B"; then \
-            skipnext=1 \
-        elif test "$skipnext" -ne 0; then \
-            skipnext=0 \
+        if test "$i" == "-S"; then \
+            shift \
+            sdir=$i \
+            shift \
+        elif test "$i" == "-B"; then \
+            shift \
+            bdir=$i \
+            shift \
         else \
             opts="$opts $i" \
         fi \
     done \
-    %{!-B:bdir=$(pwd)/%__builddir} \
+    if test -z "$bdir"; then \
+        bdir=$(pwd)/%__builddir \
+    fi \
     mkdir -p $bdir \
     cd $bdir \
-    %{!-S:sdir=$OLDPWD/%__sourcedir} \
+    if test -z "$sdir"; then \
+        sdir=$OLDPWD/%__sourcedir \
+    fi \
     %__cmake -S $sdir -B $bdir $opts \\\
          %__cmake_generator \\\
         -DCMAKE_SYSTEM_NAME="Windows" \\\
