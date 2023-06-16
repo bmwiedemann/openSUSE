@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jun  9 11:22:44 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to remmina version 1.4.31:
+  * [REM-2874] muli password changer search now matches partial
+    strings !2480 
+  * Fix segfault in VNC when using domain socket !2481 
+  * Switched pylist Append to SetItem !2482 
+  * Template texts updated !2484 
+  * Add menu option to delete multiple profiles at the same time !2483
+  * add 1080p as a default resolution to remmina_pref.c !2486 
+  * Remove character limit on password length !2489 
+  * Create better postats.html !2488 
+  * Redesign santahat.png & add santahat.svg !2492
+  * Edit preferences UI !2491 
+  * Change the icon of the new connection button !2493
+  * Modify the checkbox of the appearance-tab !2494 
+  * Add valign to the switch of the debugging window !2495
+  * plugins/rdp: Ensure output redirection configuration applies to
+    both dynamic and static rdpsnd !2498
+
+-------------------------------------------------------------------
 Fri Apr 14 10:25:01 UTC 2023 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Update to remmina version 1.4.30
