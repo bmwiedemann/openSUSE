@@ -49,7 +49,7 @@
 %endif
 %bcond_with firebird
 Name:           libreoffice
-Version:        7.5.4.1
+Version:        7.5.4.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -280,7 +280,6 @@ Provides:       %{name}-icon-theme-crystal = %{version}
 Obsoletes:      %{name}-icon-theme-crystal < %{version}
 Provides:       %{name}-icon-theme-oxygen = %{version}
 Obsoletes:      %{name}-icon-theme-oxygen < %{version}
-ExclusiveArch:  aarch64 %{ix86} x86_64 ppc64le riscv64
 %if 0%{?suse_version} < 1550
 # Too old boost on the system
 Source2020:     %{external_url}/boost_1_80_0.tar.xz

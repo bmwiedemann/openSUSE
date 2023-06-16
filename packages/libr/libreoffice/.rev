@@ -3415,4 +3415,12 @@ Petr</comment>
     <comment></comment>
     <requestid>1089960</requestid>
   </revision>
+  <revision rev="278" vrev="1">
+    <srcmd5>e480d2ee3171d52184d2f6c9115b2a28</srcmd5>
+    <version>7.5.4.2</version>
+    <time>1686927157</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1092900</requestid>
+  </revision>
 </revisionlist>
