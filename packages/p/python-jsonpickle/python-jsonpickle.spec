@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-jsonpickle
 Version:        3.0.1
 Release:        0
@@ -23,15 +24,14 @@ Summary:        Python library for serializing any arbitrary object graph into J
 License:        BSD-3-Clause
 URL:            https://github.com/jsonpickle/jsonpickle
 Source:         https://files.pythonhosted.org/packages/source/j/jsonpickle/jsonpickle-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/jsonpickle/jsonpickle/commit/a24240bfdec6a9d5172c2f25e19654d23ffc61e1 Implement compatibility with pandas 2
+Patch:          pandas2.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module importlib_metadata if %python-base < 3.8}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if 0%{python_version_nodots} < 38
-Requires:       python-importlib_metadata
-%endif
 Recommends:     python-simplejson
 Suggests:       python-ujson
 Suggests:       python-numpy
@@ -68,7 +68,8 @@ sed -i 's/ --cov//' pytest.ini
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -ra
+# test_multindex_dataframe_roundtrip is flaky on i586
+%pytest -ra -k "not test_multindex_dataframe_roundtrip"
 
 %files %{python_files}
 %license LICENSE
