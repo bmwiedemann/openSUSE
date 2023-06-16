@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 13 12:59:40 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.10+kde3, rebased upstream:
+  * CMake: Fix qt5_create_translation for same-named .ts files
+  * Drop superfluous network dependency from assistant/{help,qhelpgenerator}.pro
+  * qdoc: Do not split module names in different tags
+  * qdoc: Do not generate tags from titles anymore
+  * Skip endonym in linguist settings list when not available
+  * lrelease-pro: Take EXTRA_TRANSLATIONS into account
+
+-------------------------------------------------------------------
 Fri Apr 21 10:01:40 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.8+kde10, rebased upstream:
