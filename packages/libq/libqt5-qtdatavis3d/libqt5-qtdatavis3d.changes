@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 13 12:58:36 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.10+kde0, rebased upstream:
+  * Show CMake, qmake information in C++ class documentation
+
+-------------------------------------------------------------------
 Fri Apr 21 09:54:55 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.8+kde4, rebased upstream:
