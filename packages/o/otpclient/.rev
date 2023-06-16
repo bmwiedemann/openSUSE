@@ -301,4 +301,14 @@
 </comment>
     <requestid>1089142</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e747582cecea600dc14892e839a669bb</srcmd5>
+    <version>3.1.8</version>
+    <time>1686927253</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.8:
+  * Fix importing Aegis plain text json (#296).
+</comment>
+    <requestid>1093278</requestid>
+  </revision>
 </revisionlist>
