@@ -1,7 +1,7 @@
 #
 # spec file for package python-unearth
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-unearth
-Version:        0.7.0
+Version:        0.9.1
 Release:        0
 Summary:        A utility to fetch and download python packages
 License:        MIT

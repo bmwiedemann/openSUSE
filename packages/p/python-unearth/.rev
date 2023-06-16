@@ -23,4 +23,25 @@
     <comment></comment>
     <requestid>1043285</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2190b3c4f7810584105671131f2d6755</srcmd5>
+    <version>0.9.1</version>
+    <time>1686927301</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.1
+  * cli: Exposing requires-python, platform and abi interface for cli tools.  -
+    by @frostming in #52 (b9935)
+  * Evaluation issue when the requirement has no version specifier Close #50  -
+    by @frostming in #50 (0a813)
+  * Typo on json response field  -  by @frostming (3e767)
+  * Update pdm.lock  -  by @github-actions[bot] and frostming in #44 (e4572)
+  * Update pdm.lock  -  by @github-actions[bot] in #45 (a98b9)
+  * Update pdm.lock  -  by @github-actions[bot] in #47 (e0ea7)
+  * Update pdm.lock  -  by @github-actions[bot] and frostming in #49 (fc994)
+  * Allow to order the index urls and find links together for PackageFinder  -
+    by @frostming in #43 (dbe85)
+  * Allow to set prefer_binary for individual packages.
+- Use sle15_python_module_pythons</comment>
+    <requestid>1093373</requestid>
+  </revision>
 </revisionlist>
