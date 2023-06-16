@@ -1,2 +1,2 @@
-addFilter("binaryinfo-readelf-failed")
+addFilter("readelf-failed")
 addFilter("devel-file-in-non-devel-package")

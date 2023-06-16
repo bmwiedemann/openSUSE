@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 15 05:10:10 UTC 2023 - jslaby@suse.cz
+
+- require python3-base, not python-base as we need py3
+- update rpmlintrc filter to match the current output
+
+-------------------------------------------------------------------
 Tue Nov 22 08:50:37 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
 
 - add 0001-strtod-fix-__strtofpmax.patch (build fix w/ LLVM 15)

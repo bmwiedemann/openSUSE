@@ -1,7 +1,7 @@
 #
 # spec file for package klee-uclibc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ BuildRequires:  clang%{llvm_version}
 BuildRequires:  llvm%{llvm_version}-devel
 BuildRequires:  make
 BuildRequires:  ncurses-devel
-BuildRequires:  python-base
+BuildRequires:  python3-base
 BuildRequires:  xz
 ExclusiveArch:  x86_64
 
