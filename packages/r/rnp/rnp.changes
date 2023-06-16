@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 14 21:01:38 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- build with system sexp library
+  (add rnp-v0.17.0-system-sexp.patch)
+- drop rnp-v0.17.0-gcc13.patch no longer needed
+
+-------------------------------------------------------------------
+Wed Jun 14 20:57:32 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- fix build on Leap (json-c)
+
+-------------------------------------------------------------------
 Mon Jun 12 20:32:19 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - rnp 0.17.0:

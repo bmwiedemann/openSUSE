@@ -78,4 +78,13 @@
     <comment>rnp 0.17.0</comment>
     <requestid>1092907</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>1a82878217b8fe8aaa2b1fc1c81f3abf</srcmd5>
+    <version>0.17.0</version>
+    <time>1686927211</time>
+    <user>dimstar_suse</user>
+    <comment>- build with system sexp library, for boo#1212259
+Needs SR#1093175</comment>
+    <requestid>1093176</requestid>
+  </revision>
 </revisionlist>

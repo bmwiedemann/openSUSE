@@ -28,15 +28,16 @@ Source:         https://github.com/rnpgp/rnp/releases/download/v%{version}/%{nam
 Source2:        https://github.com/rnpgp/rnp/releases/download/v%{version}/%{name}-v%{version}.tar.gz.asc
 Source3:        https://www.rnpgp.org/openpgp_keys/31AF5A24D861EFCB7CB79A1924900CE0AEFB5417-50DA59D5B9134FA2DB1EB20CFB829AB5D0FE017F.asc#/%{name}.keyring
 Patch0:         rnp-v0.17.0-disable-static.patch
-Patch1:         rnp-v0.17.0-gcc13.patch
+Patch2:         rnp-v0.17.0-system-sexp.patch
 BuildRequires:  cmake >= 3.18
 BuildRequires:  gcc-c++
 BuildRequires:  gpg2 >= 2.2
 BuildRequires:  gtest
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(json-c) >= 0.11
 BuildRequires:  pkgconfig(botan-2) >= 2.14.0
 BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(json-c) >= 0.11
+BuildRequires:  pkgconfig(sexp) >= 0.8.2
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  rubygem(asciidoctor)
 
@@ -44,9 +45,7 @@ BuildRequires:  rubygem(asciidoctor)
 RNP is a set of OpenPGP (RFC4880) tools, an alternative to GnuPG.
 
 %package -n librnp%{soname}
-%global libsexp_version 0.8.2
 Summary:        OpenPGP implementation as a C++ library fully compliant with RFC 4880
-Provides:       bundled(libsexp) = %{libsexp_version}
 
 %description -n librnp%{soname}
 RNP is a set of OpenPGP (RFC4880) tools, an alternative to GnuPG.
@@ -63,15 +62,12 @@ This package contains the files needed to build against librnp.
 
 %prep
 %autosetup -p1 -n %{name}-v%{version}
-pushd src/libsexp
-cp LICENSE.md ../../LICENSE-libsexp.md
-grep -q %{libsexp_version} version.txt
-popd
+rm -rf src/libsexp
 
 %build
 %cmake \
-	-DDOWNLOAD_GTEST=off \
-	-DBUILD_TESTING=on \
+	-DDOWNLOAD_GTEST:BOOL=OFF \
+	-DBUILD_TESTING:BOOL=ON \
 	%{nil}
 %cmake_build
 

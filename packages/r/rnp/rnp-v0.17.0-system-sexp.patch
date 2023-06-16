@@ -1,0 +1,17 @@
+Index: rnp-v0.17.0/CMakeLists.txt
+===================================================================
+--- rnp-v0.17.0.orig/CMakeLists.txt
++++ rnp-v0.17.0/CMakeLists.txt
+@@ -176,10 +176,8 @@ if (ENABLE_FUZZERS)
+ endif()
+ add_subdirectory(src/common)
+ 
+-set(WITH_SEXP_CLI OFF)
+-set(WITH_SEXP_TESTS OFF)
+-set(CMAKE_INSTALL_DEFAULT_COMPONENT_NAME development)
+-add_subdirectory(src/libsexp EXCLUDE_FROM_ALL)
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(SEXP REQUIRED sexp)
+ 
+ add_subdirectory(src/lib)
+ add_subdirectory(src/rnp)
