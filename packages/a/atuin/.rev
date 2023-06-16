@@ -84,4 +84,44 @@
 </comment>
     <requestid>1085355</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>980243f278268f8f3a1f9f844c5eafd8</srcmd5>
+    <version>15.0.0</version>
+    <time>1686927362</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 15.0.0:
+  * Fix release workflow
+  * Add workflow dispatch for release
+  * chore: uuhhhhhh crypto lol
+  * Add keyboard shortcuts to the Config/Keybinding chapter.
+  * Re-added package name to workspace.package
+  * Add package param to cargo deb
+  * Allow specifying tag to build for workflow_dispatch
+  * Add symlink
+  * Upload tar before building deb
+  * Copy license for cargo-deb
+  * Fix fig plugin link
+  * fix broken pipe on history list
+  * docs: Fix broken links in README.md
+  * Add nu section to keybinds.md
+  * cwd_filter: much like history_filter, only it applies to cwd
+  * Add command flag for inline_height
+  * docs: fix &quot;From source&quot; cd command
+  * Correct typos in website
+  * website: Fix participle &quot;be ran&quot; -&gt; &quot;be run&quot;
+  * Update README.md: Disable update check for offline mode
+  * Bump debian from bullseye-20230320-slim to bullseye-20230502-slim
+  * At least patch this on the server side so we don't loop forever
+  * Fix key regression
+  * Include bash preexec warning
+  * feat: add delete account option (attempt 2)
+  * validate usernames on registration
+  * Restructure account commands to account subcommand
+  * Allow server configured page size
+  * Input bar at the top if we are in inline mode
+  * Add option to completely disable help row
+  * Fix typo in config.toml
+</comment>
+    <requestid>1093504</requestid>
+  </revision>
 </revisionlist>
