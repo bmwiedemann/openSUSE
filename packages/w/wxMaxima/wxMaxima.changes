@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jun 10 16:11:29 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 23.5.1:
+  * Process the command line option --maxima=.
+  * Resolved several possibilities to crash the config dialogue
+    (gh#wxMaxima-developers/wxmaxima#1774,
+    gh#wxMaxima-developers/wxmaxima#1766).
+  * Correctly calculate the worksheet size in the background
+    (gh#wxMaxima-developers/wxmaxima#1766).
+  * Correctly restore parenthesis on load
+    (gh#wxMaxima-developers/wxmaxima#1779).
+  * Always revise the decision what to display as 2D equation on
+    window width changes.
+  * 2D display of integrals had zero size
+    (gh#wxMaxima-developers/wxmaxima#1780).
+
+-------------------------------------------------------------------
 Thu May 18 14:18:08 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 23.5.0:
