@@ -138,4 +138,12 @@
     <comment>- Update to version 1.7.3 (forwarded request 893820 from susnux)</comment>
     <requestid>893992</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>adb8b5b30dd9cd2e0751914a55b868ac</srcmd5>
+    <version>1.8.0</version>
+    <time>1686927190</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093065</requestid>
+  </revision>
 </revisionlist>
