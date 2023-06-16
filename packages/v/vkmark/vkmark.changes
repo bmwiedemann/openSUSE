@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 15 16:55:41 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2017.08+git.20230412:
+  * kms: Use VK_EXT_external_memory_dmabuf to create dmabuf-backed Vulkan images
+  * core,ws: Allow WSI backends to request device extensions
+  * core: Improve log message consistency
+  * github: Build with both ubuntu-20.04 and ubuntu-22.04 in CI
+  * vkutil: transition image to eShaderReadOnlyOptimal
+  * Fix missing <cstdint> include
+- Drop no longer needed vkmark-cstdint-include.patch
+
+-------------------------------------------------------------------
 Tue Mar 28 00:53:01 UTC 2023 - malcolmlewis@opensuse.org
 
 - Add vkmark-cstdint-include.patch: Add missing cstdint include in

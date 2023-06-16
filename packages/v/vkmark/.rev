@@ -119,4 +119,19 @@
     <comment></comment>
     <requestid>1074841</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ac3d1e5195211ed99cdb4a09c07d3cf7</srcmd5>
+    <version>2017.08+git.20230412</version>
+    <time>1686927293</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2017.08+git.20230412:
+  * kms: Use VK_EXT_external_memory_dmabuf to create dmabuf-backed Vulkan images
+  * core,ws: Allow WSI backends to request device extensions
+  * core: Improve log message consistency
+  * github: Build with both ubuntu-20.04 and ubuntu-22.04 in CI
+  * vkutil: transition image to eShaderReadOnlyOptimal
+  * Fix missing &lt;cstdint&gt; include
+- Drop no longer needed vkmark-cstdint-include.patch</comment>
+    <requestid>1093343</requestid>
+  </revision>
 </revisionlist>
