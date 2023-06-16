@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Fri Jun 16 05:46:40 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.6.2:
+  * Host export support for project commands (#5157)
+  * feat: add host file query (#5317)
+  * Add link to releases on GitHub to sidebar (#5320)
+  * build(deps): bump webpack (#5318)
+  * fix(docs): increase guides tag search size (#5319)
+  * interactive tui: fix follow (#5283)
+  * Adds t.Parallel to auth, core and router tests (#5316)
+  * ci: Use alpine for golangci-lint image (#5309)
+  * build(deps): bump typedoc from 0.23.26 to 0.24.7 in /website
+    (#5267)
+  * Bump buildkit for ExecProcessServer mutex fix (#5312)
+  * Merge exposed ports on From and Build (#5158)
+  * Secret Scrub Multi Write (#5149)
+  * ci: Fix lint-daggerized.yml error (#5244)
+  * Simplify iterations for optional args in Go code (#5304)
+  * First pass at spec for extensions + project command
+    implementations. (#5190)
+  * Fix metrics typo (#5302)
+  * bump buildkit for unknown blob fix (#5298)
+  * run tests with `gotestsum`, list slow tests (#5293)
+  * docs: Added Java/Spring guide (#5212)
+  * docs: Added AWS Lambda with zip files guide (#5202)
+  * Fix flakiness in TestContainerExecError test (#5229)
+  * docs: Added AWS CodePipeline guide (#5188)
+  * docs: Added Azure Pipelines + Azure Container Instances guide
+    (#5165)
+  * show health-checks in progress UI (#5281)
+  * dnsmasq: configure domain-needed (#5282)
+  * build(deps): bump @svgr/webpack from 6.5.1 to 8.0.1 in /website
+    (#5270)
+  * build(deps): bump webpack (#5274)
+  * build(deps): bump webpack (#5277)
+  * Bump Go SDK to latest in our own internal tooling (#5280)
+  * Bump golang.org/x/tools from 0.1.10 to 0.9.3 (#5279)
+  * chore: Use expand PATH instead of string concatenation (#5271)
+  * build(deps): bump remark-code-import from 1.1.1 to 1.2.0 in
+    /website (#5269)
+  * build(deps): bump github.com/charmbracelet/bubbles from 0.15.0
+    to 0.16.1 (#5254)
+  * build(deps): bump webpack (#5278)
+  * build(deps): bump github.com/charmbracelet/bubbletea (#5250)
+  * build(deps): bump webpack (#5276)
+  * build(deps): bump webpack (#5273)
+  * build(deps): bump github.com/magefile/mage in /internal/mage
+    (#5262)
+  * build(deps): bump golang.org/x/oauth2 from 0.7.0 to 0.8.0
+    (#5253)
+  * build(deps): bump webpack (#5173)
+  * build(deps): bump react-social-login-buttons in /website
+    (#5266)
+  * build(deps): bump golang.org/x/crypto from 0.8.0 to 0.9.0
+    (#5252)
+  * build(deps): bump github.com/prometheus/procfs from 0.9.0 to
+    0.10.1 (#5249)
+  * docs: Added recipe creation info to style guide (#5230)
+
+-------------------------------------------------------------------
 Fri Jun 02 04:50:03 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.6.1:
