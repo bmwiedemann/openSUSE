@@ -1,7 +1,7 @@
 #
 # spec file for package gsequencer
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,13 @@
 # activated with --with run_functional_tests command line switch.
 %bcond_with run_functional_tests
 Name:           gsequencer
-Version:        5.2.5
+Version:        5.3.8
 Release:        0
 Summary:        Audio processing engine
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND GFDL-1.3-only
 Group:          Productivity/Multimedia/Sound/Midi
 URL:            https://nongnu.org/gsequencer
-Source0:        https://download.savannah.gnu.org/releases/gsequencer/5.2.x/%{name}-%{version}.tar.gz
+Source0:        https://download.savannah.gnu.org/releases/gsequencer/5.3.x/%{name}-%{version}.tar.gz
 # improve glib-2.0 compatibility to version 2.54
 Patch1:         gsequencer.1-improved-glib-compatibility.patch
 BuildRequires:  gcc-c++
@@ -157,7 +157,7 @@ Advanced Gtk+ Sequencer is an audio sequencer application.
 This subpackage contains part of its library set.
 
 %package -n typelib-1_0-Libags-5_0
-Summary:        GSequencer core libraries -- Introspection bindings
+Summary:        Introspection bindings for GSequencer's core libraries
 Group:          System/Libraries
 
 %description -n typelib-1_0-Libags-5_0
@@ -210,7 +210,6 @@ Advanced Gtk+ Sequencer library development documentation.
 %postun -n libgsequencer%{libgsequencersonumber} -p /sbin/ldconfig
 
 %files -n libags%{libagssonumber}
-%defattr(-,root,root)
 %{_libdir}/libags.so.%{libagssonumber}*
 %{_libdir}/libags_thread.so.%{libagssonumber}*
 %{_libdir}/libags_server.so.%{libagssonumber}*
@@ -219,13 +218,11 @@ Advanced Gtk+ Sequencer library development documentation.
 %{_libdir}/libags_audio.so.%{libagssonumber}*
 
 %files -n typelib-1_0-Libags-5_0
-%defattr(-,root,root)
 %{_libdir}/girepository-1.0/Ags-5.0.typelib
 %{_libdir}/girepository-1.0/AgsGui-5.0.typelib
 %{_libdir}/girepository-1.0/AgsAudio-5.0.typelib
 
 %files -n libgsequencer%{libgsequencersonumber}
-%defattr(-,root,root)
 %{_libdir}/libgsequencer.so.%{libgsequencersonumber}*
 
 %files -n gsequencer-devel-doc
