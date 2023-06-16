@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-python-multipart
 Version:        0.0.5
 Release:        0
