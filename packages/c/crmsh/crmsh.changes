@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jun 16 08:49:12 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230616.cf763cd1:
+  * Dev: unittest: Adjust unit test for previous changes
+  * Dev: behave: Add functional test for previous change
+  * Dev: remove unused codes
+  * Dev: ui_cluster: Use 'CustomAppendAction' instead of 'append' argparse action
+
+-------------------------------------------------------------------
+Thu Jun 01 02:12:23 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230531.b167a2d7:
+  * Dev: bootstrap: Configure ssh key when fetch geo config
+  * Dev: cmd_status: Use --output-as option instead of deprecated --as-html and --as-xml options
+  * Dev: cmd_status: Append 'with quorum' and 'WITHOUT quorum' to display keyword list
+
+-------------------------------------------------------------------
 Tue May 23 06:01:47 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Rewrite SPEC file to use modern pip+wheel and don't use
