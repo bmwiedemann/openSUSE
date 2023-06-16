@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 13 12:59:48 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.10+kde51, rebased upstream:
+  * Fix compilation with GCC 12
+- Commits dropped by the rebase:
+  * Revert "Client: Ensure that wl_surface lives as long as qtquick render thread needs it"
+  * Client: Ensure that wl_surface lives as long as qtquick render thread needs it
+  * Build fixes for GCC 11
+
+-------------------------------------------------------------------
 Fri Apr 21 10:02:02 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.8+kde70, rebased upstream:
