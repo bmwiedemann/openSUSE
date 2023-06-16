@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Jun 12 17:26:46 UTC 2023 - alexandre.vicenzi@suse.com
+
+- Update to version 2.10.1:
+  * CVEs
+    * CVE-2022-41724 (bsc#1208271)
+    * CVE-2023-24534 (bsc#1210127)
+    * CVE-2023-29013 (bsc#1210505)
+  * Enhancements
+    * [docker] Expose ContainerName in Docker provider
+    * [hub] Remove hub configuration out of experimental
+    * [k8s/crd] Introduce traefik.io API Group CRDs
+    * [k8s/ingress,k8s/crd,k8s] Native Kubernetes service load-balancing
+    * [middleware,metrics] Add prometheus metric requests_total with headers
+    * [nomad] Support multiple namespaces in the Nomad Provider
+    * [tracing] Add support to send DataDog traces via Unix Socket
+    * [webui] Display period setting of the RateLimit middleware in the webui
+    * [webui] Modify the Hub Button
+  * Bug fixes
+    * [docker] Expose ContainerName in Docker provider
+    * [docker] Only warn about missing docker network when network_mode is not host or container
+    * [ecs] Prevent panicking when a container has no network interfaces
+    * [file] Make file provider more resilient wrt first configuration
+    * [hub] hub: get out of experimental.
+    * [k8s/crd] Introduce traefik.io API Group CRDs
+    * [k8s/ingress,k8s/crd,k8s] Native Kubernetes service load-balancing
+    * [logs] Differentiate UDP stream and TCP connection in logs
+    * [metrics] Include user-defined default cert for traefik_tls_certs_not_after metric
+    * [middleware,metrics] Add prometheus metric requests_total with headers
+    * [middleware] Prevent from no rate limiting when average is zero
+    * [middleware] Prevents superfluous WriteHeader call in the error middleware
+    * [middleware] Sanitize X-Forwarded-Proto header in RedirectScheme middleware
+    * [nomad] Fix default configuration settings for Nomad Provider
+    * [nomad] Fix Nomad client TLS defaults
+    * [nomad] Support multiple namespaces in the Nomad Provider
+    * [plugins] Improve DeepCopy of PluginConf
+    * [server] Remove User-Agent header removal from ReverseProxy director func
+    * [tls,tcp] Adds the support for IPv6 in the TCP HostSNI matcher
+    * [tracing] Add support to send DataDog traces via Unix Socket
+    * [server] Update golang.org/x/net to v0.7.0 (CVE-2022-41724)
+- Update Go version (CVE-2023-24534, CVE-2023-29013)
+
+-------------------------------------------------------------------
 Tue Jan 17 09:48:46 UTC 2023 - alexandre.vicenzi@suse.com
 
 - Update to version 2.9.6:

@@ -19,7 +19,7 @@
 %define project github.com/traefik/traefik
 
 Name:           traefik
-Version:        2.9.6
+Version:        2.10.1
 Release:        0
 Summary:        The Cloud Native Application Proxy
 License:        MIT
@@ -33,7 +33,7 @@ Source4:        %{name}-%{version}.webui.tar.gz
 BuildRequires:  go-bindata
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  golang(API) >= 1.19
+BuildRequires:  (golang(API) >= 1.20 with golang(API) < 1.21)
 Recommends:     podman
 %{?systemd_requires}
 %{go_provides}
@@ -61,15 +61,19 @@ tar -xf %{SOURCE1}
 # unpack webui
 tar -xf %{SOURCE4}
 
-CGO_ENABLED=0
-
+# see script/generate
 go generate
 
-go build \
+# see script/binary
+CGO_ENABLED=0 GOGC=off go build \
   -buildmode=pie \
   -mod=vendor \
-  -ldflags "-s -w -X github.com/traefik/traefik/v2/pkg/version.Version=%{version} -X github.com/traefik/traefik/v2/pkg/version.Codename='' -X github.com/traefik/traefik/v2/pkg/version.BuildDate=${build_date}" \
-  -o traefik ./cmd/traefik/
+  -ldflags "-s -w \
+  -X github.com/traefik/traefik/v2/pkg/version.Version=%{version} \
+  -X github.com/traefik/traefik/v2/pkg/version.Codename='' \
+  -X github.com/traefik/traefik/v2/pkg/version.BuildDate=${build_date}" \
+  -installsuffix nocgo \
+  -o traefik ./cmd/traefik
 
 %install
 install -d %{buildroot}/%{_sbindir}

@@ -63,4 +63,12 @@
     <comment></comment>
     <requestid>1058870</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>60eb797cc82933a75628cbdf11351ee1</srcmd5>
+    <version>2.10.1</version>
+    <time>1686927187</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.10.1</comment>
+    <requestid>1093393</requestid>
+  </revision>
 </revisionlist>
