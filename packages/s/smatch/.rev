@@ -141,4 +141,28 @@
 </comment>
     <requestid>975989</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4bb0efe73eff657526dc0004be472d93</srcmd5>
+    <version>1.73+20230517</version>
+    <time>1686927242</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.73+20230517:
+  * checking_for_null_instead_of_err_ptr: use smatch_kernel_err_ptr.c
+  * kernel_err_ptr: hack around for_each_gpio_desc_with_flag()
+  * scripts/generisize.pl: generisize function names
+  * kernel.unreachable.turn_off: add some kunit stuff
+  * preempt_info: add __bit_spin_unlock()
+  * check_list/err_ptr: register the err_ptr code
+  * debug/units: hook in the __smatch_units() code
+  * validation/sm_err_ptr: make IS_ERR() an inline function
+  * dereference: find more cross function dereferences
+  * err_ptr_deref: re-write the check
+  * kernel_err_ptr: track error pointers in the database
+  * kernel.no_return_funcs: update to the latest linux-next functions
+  * kernel.no_return_funcs: add kunit_do_failed_assertion()
+  * comparison: store modified comparisons
+  * units: move checks to check_ file and hide under the --spammy option
+  * and much more</comment>
+    <requestid>1093222</requestid>
+  </revision>
 </revisionlist>

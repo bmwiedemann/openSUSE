@@ -12,11 +12,11 @@ Signed-off-by: Jiri Slaby <jslaby@suse.cz>
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index 47742573..a8c6284b 100644
+index 37143d0f..d0b109f5 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -342,7 +342,7 @@ SMATCH_OBJS += smatch_unknown_value.o
- SMATCH_OBJS += smatch_untracked_param.o
+@@ -352,7 +352,7 @@ SMATCH_OBJS += smatch_untracked_param.o
+ SMATCH_OBJS += smatch_untracked_var.o
  SMATCH_OBJS += smatch_var_sym.o
  
 -CFLAGS+=-D__CHECKNAME__='"$(subst .c,,$(notdir $<))"'
@@ -24,7 +24,7 @@ index 47742573..a8c6284b 100644
  
  SMATCH_CHECKS=$(shell ls check_*.c | sed -e 's/\.c/.o/')
  SMATCH_DATA=smatch_data/kernel.allocation_funcs \
-@@ -379,7 +379,7 @@ check_list_local.h:
+@@ -395,7 +395,7 @@ check_list_local.h:
  	touch check_list_local.h
  
  smatch.o: smatch.c $(LIB_H) smatch.h check_list.h check_list_local.h
@@ -33,7 +33,7 @@ index 47742573..a8c6284b 100644
  
  $(SMATCH_OBJS) $(SMATCH_CHECKS): smatch.h smatch_slist.h smatch_extra.h \
  	smatch_constants.h avl.h
-@@ -398,7 +398,7 @@ libsparse.a: $(LIB_OBJS)
+@@ -414,7 +414,7 @@ libsparse.a: $(LIB_OBJS)
  	$(Q)$(AR) rcs $@ $^
  
  
@@ -43,5 +43,5 @@ index 47742573..a8c6284b 100644
  	@echo "  CC      $@"
  	$(Q)$(CC) $(cflags) -c -o $@ $<
 -- 
-2.34.1
+2.35.3
 

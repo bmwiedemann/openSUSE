@@ -12,18 +12,18 @@ Signed-off-by: Jiri Slaby <jslaby@suse.cz>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Makefile b/Makefile
-index a8c6284b..c1e042e5 100644
+index d0b109f5..be678e7c 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -373,7 +373,7 @@ SMATCH_SCRIPTS=smatch_scripts/add_gfp_to_allocations.sh \
+@@ -383,7 +383,7 @@ SMATCH_SCRIPTS=smatch_scripts/add_gfp_to_allocations.sh \
  SMATCH_LDFLAGS := -lsqlite3  -lssl -lcrypto -lm
  
  smatch: smatch.o $(SMATCH_OBJS) $(SMATCH_CHECKS) $(LIBS)
 -	$(Q)$(LD) -o $@ $< $(SMATCH_OBJS) $(SMATCH_CHECKS) $(LIBS) $(SMATCH_LDFLAGS)
 +	$(Q)$(LD) $(CFLAGS) -o $@ $< $(SMATCH_OBJS) $(SMATCH_CHECKS) $(LIBS) $(SMATCH_LDFLAGS)
  
- check_list_local.h:
- 	touch check_list_local.h
+ smatch_data/db/sm_hash: sm_hash.o $(SMATCH_OBJS)
+ 	$(Q)$(LD) -o smatch_data/db/sm_hash sm_hash.o smatch_hash.o $(SMATCH_LDFLAGS)
 -- 
-2.34.1
+2.35.3
 
