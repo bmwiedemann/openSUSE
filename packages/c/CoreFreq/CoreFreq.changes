@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jun 15 11:00:33 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to 1.96.4
+  * [AMD]
+    - Display CPUID state of new and legacy features:
+        Fused Multiply Add [FMA4]
+        Extended Operation Support [XOP]
+        Translation Cache Extension [TCE]
+        Trailing Bit Manipulation [TBM]
+        OS Visible Work-around [OSVW]
+        LOCK prefix to read CR8 [AltMov]
+   * [Intel]
+     - Advanced Matrix Extensions [AMX]
+     - Bits and Features of Sierra Forest and Grand Ridge
+     - Attempt to decode the Meteor Lake Memory Controller
+
+- update to 1.96.3
+  * [AMD]
+    - [Zeppelin] Probe more than one UMC controllers on Ryzen Threadripper 1900X
+    - [Zen4] Dump SMBE and BMEC sub-leaves of CPUID 0x80000020
+
+-------------------------------------------------------------------
 Sun Jun  4 08:53:05 UTC 2023 - Michael Pujos <pujos.michael@gmail.com>
 
 - update to 1.96.2
