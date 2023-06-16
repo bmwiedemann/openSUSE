@@ -12,7 +12,7 @@ Tue Jun 13 12:49:00 UTC 2023 - Fridrich Strba <fstrba@suse.com>
       by System property sun.stdout.encoding is invalid
     + Bugfix: Option "mapFallbackValue" ignored when inherited to
       subcommand
-    + ugfix: fix issue with required options in ArgGroup becoming
+    + Bugfix: fix issue with required options in ArgGroup becoming
       optional when combined with DefaultValueProvider
 - Fetch sources using source service: this allows filter out
   binaries with spurious legal status and which we don't use for

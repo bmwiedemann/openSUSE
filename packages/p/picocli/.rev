@@ -39,4 +39,12 @@
     <comment>4.7.4 + legaldb fixes</comment>
     <requestid>1092884</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>86cab756a1f9c2b3ea4da350a74f8d90</srcmd5>
+    <version>4.7.4</version>
+    <time>1686927189</time>
+    <user>dimstar_suse</user>
+    <comment>Fix typo in *.changes</comment>
+    <requestid>1093108</requestid>
+  </revision>
 </revisionlist>
