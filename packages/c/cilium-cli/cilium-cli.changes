@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Jun 14 17:37:46 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.14.7:
+  * Prepare for v0.14.7 release
+  * helm mode: Handle azure.resourceGroup Helm value
+  * chore(deps): update golangci/golangci-lint-action action to
+    v3.6.0
+  * chore(deps): update docker.io/library/busybox:stable-glibc
+    docker digest to 2a6835e
+  * chore(deps): update actions/checkout action to v3.5.3
+  * chore(deps): update docker/build-push-action action to v4.1.0
+  * chore(deps): update dependency go to v1.20.5
+  * sysdump: gather tetragon namespaced policies
+  * External workloads CI fixed.
+  * fix(deps): update module github.com/cilium/hubble to v0.11.6
+  * install: Add node affinity for Operator
+  * clustermesh connect: configure PKI upon CA mismatch
+  * helm mode: add implementation for clustermesh connect
+  * Helm mode: Use Helm chart version as running version
+  * Make CI test resources unique for retries.
+  * fix(deps): pin dependencies
+  * status: Print Helm chart version in Helm mode
+  * chore(deps): update all github action dependencies
+  * mutual-auth: Update the terminology/wording
+  * connectivity: Ability to add custom annotations to test
+    deployment
+  * connectivity: Add annotations map helper type
+  * k8s: Add ability to specify namespace metadata
+  * Update stable release to v0.14.6
+  * chore(deps): update golangci/golangci-lint-action action to
+    v3.5.0
+  * chore(deps): update golangci/golangci-lint docker tag to
+    v1.53.2
+  * install: Skip version validation in Helm mode
+  * uninstall: Skip version detection / validation in Helm mode
+  * chore(deps): update golangci/golangci-lint docker tag to
+    v1.53.1
+  * renovate: ignore pflag Go mod updates
+  * fix(deps): update module github.com/cilium/cilium to
+    v1.14.0-snapshot.3
+
+-------------------------------------------------------------------
 Fri Jun 02 04:49:49 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.14.6:
