@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 14 18:11:48 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.83.1:
+  * chore(deps): bump modernc.org/sqlite from 1.23.0 to 1.23.1
+    (#1874)
+  * chore(deps): update stereoscope to
+    5b5049bf4d3a99df9a2b1c31d5d52ddff7b5cec2 (#1871)
+  * chore(deps): bump golang.org/x/net from 0.10.0 to 0.11.0
+    (#1876)
+  * fix: pom properties not setting artifact id (#1870)
+  * chore(deps): bump github.com/spdx/tools-golang from 0.5.1 to
+    0.5.2 (#1868)
+
+-------------------------------------------------------------------
 Mon Jun 12 19:35:49 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.83.0:
