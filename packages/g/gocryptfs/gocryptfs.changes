@@ -1,0 +1,476 @@
+-------------------------------------------------------------------
+Mon Jun 12 07:59:59 UTC 2023 - munix9@googlemail.com
+
+- Update to version 2.4.0:
+  * Try the mount(2) syscall before falling back to fusermount(1).
+    This means we don't need fusermount(1) at all if running as
+    root or in a root-like namespace (#697)
+  * Fix -extpass mis-parsing commas (#730)
+  * Fix rm -R mis-reporting write-protected directory on gocryptfs
+    on sshfs
+
+-------------------------------------------------------------------
+Sat Apr 29 13:14:59 UTC 2023 - munix9@googlemail.com
+
+- Update to version 2.3.2:
+  * Fix incorrect file size reported after hard link creation (#724)
+
+-------------------------------------------------------------------
+Mon Mar  6 12:50:42 UTC 2023 - munix9@googlemail.com
+
+- Update to version 2.3.1:
+  * Optimize NFS streaming write performance (#712, commit).
+    You should see about a 4x performance increase.
+  * Use debug.ReadBuildInfo() to provide some version information
+    even when not built with build.bash (#701) .
+  * Fix bug that caused the logger process to be killed when
+    started from xfce4-terminal, and that terminal window was
+    closed (#660, commit).
+  * MacOS: Fix reverse mount failing with read-only file system
+    (#690)
+  * Make gocryptfs compile on riscv64 by switching from
+    jacobsa/crypto to maintained fork
+    aperturerobotics/jacobsa-crypto (#674)
+
+-------------------------------------------------------------------
+Sat Oct  8 10:49:26 UTC 2022 - munix9@googlemail.com
+
+- Update to version 2.3:
+  * Add -longnamemax flag to -init (#499). Can be used to work
+    around file or path length restrictions on online storage.
+    See the man page for details.
+  * Support for NO_COLOR env variable (#617)
+  * Fix -force_owner not not affecting socket files (#629
+  * MacOS: fix inaccessible gocryptfs.conf in reverse mode (commit)
+  * Raise ctlsock operation timeout from 1 to 10 seconds (#683)
+
+-------------------------------------------------------------------
+Thu Nov 04 09:40:42 UTC 2021 - tuukka.pasanen@ilmi.fi
+
+- Update to version 2.2.1:
+  * README: update changelog for v2.2.1
+  * github actions: fix allow_other failure
+  * fusefrontend: honor ForceOwner for LOOKUP and CREATE operations
+  * tests: add TestForceOwner
+  * cryptocore: simplify declarations
+  * build.bash: also try BSD date syntax for converting SOURCE_DATE_EPOCH
+  * -init: suggest xchacha if we don't have AES accel
+  * -info: add contentEncryption
+  * cryptocore: disentangle algorithm / library implementation name
+  * README: set v2.2.0 release date
+  * README: make changelog entries subheadings
+  * README: release will be called v2.2.0 instead of v2.2
+  * -speed: print cpu model
+  * stupidgcm: add CpuHasAES()
+  * README: update example -speed output
+  * -speed: drop useless tab at end of line
+  * README: highlight changes in v2.2, simplify pkg.go.dev link
+  * README: update changelog
+  * inomap: deterministically set root device
+  * README: update changelog for v2.2-beta1
+  * Update README & MANPAGE
+  * cli: drop -forcedecode flag
+  * test.bash: call out if build-without-openssl.bash failed
+  * profiling: accept parameters & show actual command lines
+  * -speed: show which xchacha implementation is preferred
+  * tests/matrix: test xchacha with and without openssl
+  * Make -openssl also apply to xchacha
+  * stupidgcm: add PreferOpenSSL{AES256GCM,Xchacha20poly1305}
+  * stupidgcm: normalize constructor naming
+  * stupidgcm: revamp package documentation
+  * stupidgcm: unexport stupidGCM struct
+  * stupidgcm: allow zero-length input data
+  * stupidgcm: fix build with CGO_ENABLED=1 without_openssl
+  * stupidgcm: NewChacha20poly1305: avoid slice append
+  * stupidgcm: add testConcurrency
+  * stupidgcm: cache C.EVP_chacha20_poly1305()
+  * stupidgcm: add BenchmarkCCall
+  * speed: add BenchmarkStupidChacha
+  * stupidgcm: replace naked panics
+  * stupidgcm: fix without_openssl build
+  * test.bash: only check go files for naked panic
+  * stupidgcm: introduce stupidAEADCommon and use for both chacha & gcm
+  * stupidgcm: stupidChacha20poly1305.Open: batch C calls in aead_open
+  * speed: add decryption benchmarks
+  * speed: add bEncrypt helper, reuse dst buffer
+  * stupidgcm: use aead_seal for gcm as well
+  * stupidgcm: replace chacha20poly1305_seal with generic aead_seal
+  * stupidgcm: batch C calls in chacha20poly1305_seal
+  * -speed: add XChaCha20-Poly1305-OpenSSL
+  * stupidgcm: add stupidXchacha20poly1305
+  * stupidgcm: stupidChacha20poly1305: normalize panic messages
+  * stupidgcm: stupidChacha20poly1305: use byte array for key
+  * stupidgcm: add testWipe test
+  * stupidgcm: deduplicate tests 2/2
+  * stupidgcm: deduplicate tests 1/2
+  * stupidgcm: add chacha20poly1305 via openssl
+  * tests/matrix: don't leak fds in TestConcurrentReadCreate
+  * *: trim trailing whitespace
+  * *: fix spelling
+  * shell scripts: fix shellcheck warnings
+  * README: explain where -xchacha makes sense
+  * fusefrontend: remove leftover Printf
+  * Unbreak hyperlinks broken by go mod v2 conversion
+  * README: compress Installation section
+  * README: update changelog
+  * Reimplement -serialize_reads flag using new SyncRead mount flag
+  * Remove serialize_reads package
+  * go mod: upgrade go-fuse to fix darwin build failure
+  * doc: file-format.md: describe XChaCha20-Poly1305
+  * fsstress-gocryptfs: fuse-xfstests now lives in /opt
+  * -devrandom: make flag a no-op
+  * go mod: update go-fuse
+  * README: add -xchacha to changelog
+  * MANPAGE: add -xchacha
+  * -speed: note that -xchacha is selectable
+  * tests/example_filesystems: add v2.2-xchacha-deterministic-names
+  * tests/example_filesystems: add deterministic-names and xchacha
+  * benchmark.bash: add -xchacha support
+  * xray: add xchacha support
+  * contentenc: remove unused NonceMode constants
+  * speed: use algo names from cryptocore
+  * cryptocore: add NonceSize to AEADTypeEnum
+  * tests/cli: add -xchacha tests
+  * tests/matrix: add -xchacha test
+  * configfile: add Validate() function, support FlagXChaCha20Poly1305
+  * Add partial XChaCha20-Poly1305 support (mount flag only)
+  * test/cli: actually run TestZerokey
+  * go mod: declare module version v2
+  * ensurefds012: package comment should preceded package statement
+  * configfile: pass struct to Create 2/2
+  * configfile: pass struct to Create 1/2
+  * cryptocore: drop IVLen helper var
+  * README: Update changelog with -deterministic-names
+  * -deterministic-names: implement for reverse mode, too
+  * MANPAGE: move nosyslog to MOUNT OPTIONS section
+  * -deterministic-names: accept flag on -init
+  * Implement -deterministic-names: extended -zerodiriv
+  * Flag -zerodiriv to create all diriv as all zero byte files
+  * syscallcompat: use early return in asUser()
+  * golangci-lint: fix issues found by "unused" and "deadcode"
+  * test_helpers: actually use global testParentDir variable
+  * fsck: sort files alphabetically again
+  * Fix issues found by "go vet"
+  * golangci-lint: fix issues found by gosimple
+  * tlog: switch from golang.org/x/crypto/ssh/terminal to golang.org/x/term
+  * README: update for v2.1 release
+  * Drop workarounds for Go 1.11 and Go 1.12
+  * github ci: drop Go 1.11
+  * Update dependencies
+  * README: update changelog
+  * Fix issues found by ineffassign
+  * MANPAGE: add "exclude all but" example
+  * reverse: fix "exclude all but" case
+  * tests/reverse/TestExcludeTestFs: test trailing slash
+  * tests/reverse/TestExcludeTestFs: improve comments & code style
+  * MANPAGE: -ew: make gitignore syntax more prominent
+  * tests/cli/TestBadname: make sure case 5 is never decodable
+  * github actions ci: test different Go versions
+  * tests/reverse: replace os.ReadDir to support older Go versions
+  * tests/root_test: show failing command detail
+  * reverse mode: implement -one-file-system
+  * tests/cli: escape filenames in TestBadname logs
+  * inomap: update outdated wording in comments
+  * inomap: warn on first use of spillMap
+  * Makefile: add uninstall target
+  * main: accept magic /dev/fd/ mountpoint
+  * syscallcompat: use BTRFS_SUPER_MAGIC from unix lib
+  * Makefile: don't ever run "git clean -dxff"
+  * syscallcompat: move quirks logic here & fix darwin
+  * main: add testcases for convertToDoubleDash & parseCliOpts
+  * main: take advantage of pflag slice types
+  * main: show specific error on command line parse failure
+  * main: autoformat import block
+  * main: switch from flag to pflag
+  * main: push TestPrefixOArgs testcase struct into TestPrefixOArgs
+  * fusefrontend: add quirks for MacOS ExFAT
+  * go mod: upgrade go-fuse
+  * README: Update Changelog
+  * fusefrontend: -sharedstorage: present stable inode numbers
+  * tests: matrix: add TestPwd
+  * fusefrontend: prepareAtSyscall: handle error when opening ourselves
+  * fusefrontend: implement fsync on directories
+  * fido2: actually drop `-v` flag
+  * go mod: set version to 1.16 & drop explicit "-mod=vendor" from ci
+  * github ci: Add Github Actions CI
+  * canonical-benchmarks.bash: handle relative paths
+  * fido2: drop `-v` option (PIN request)
+  * fido2: pretty-print fidoCommand in debug output
+  * doc: update performance.txt
+  * tests/fsck: delete obsolete script run_fsck.bash
+  * tests, maxlen.bash: speed up TestMaxlen using QUICK=1
+  * tests: matrix: show content detail on mismatch
+  * fusefrontend: delete openBackingDir
+  * fusefrontend: convert last callers from openBackingDir to prepareAtSyscall
+  * tests: better error message on ctlsock query failure
+  * fusefrontend: ctlsock: get rid of unneccessary wrapper function
+  * fusefrontend: convert ctlsock from openBackingDir to prepareAtSyscall
+  * fusefrontend: convert openBackingDir tests to prepareAtSyscall
+  * tests/default: add maxlen.bash test
+  * maxlen.bash: suppress progress output if not on a terminal
+  * fusefrontend: implement recursive diriv caching
+  * nametransform: rename BadNameFlag to BadnameSuffix
+  * nametransform: gather badname functions in badname.go
+  * nametransform: delete NameTransformer interface
+  * tests: cli: add TestZerokey
+  * Improve startup debug output
+  * nametransform: pass badname patterns via New
+  * main: use JSONDump helper for debug output
+  * fido2: hide "FIDO2" in gocryptfs.conf if not used
+  * Badname file content access
+  * MANPAGE: describe -badname
+  * contrib/maxlen.bash: also test dir and path length
+  * README: Add MacPorts install instructions
+  * README: Rename Mac OS X to its latest name
+  * go.mod: update go-fuse
+  * README: sync compile instructions with gocryptfs-website
+  * README: recommend build-without-openssl.bash
+  * README: update for v2.0.1 release
+  * crossbuild.bash: skip Apple Silicon build on old Go versions
+  * crossbuild.bash: disable CGO
+  * fusefronted: report plaintext size on symlink creation
+  * crossbuild.bash: also build for Apple M1
+  * syscallcompat: drop obsolete wrappers
+  * Update README for v2.0
+  * doc: add benchmark for v2.0, reformat table
+  * Add contrib/atomicrename
+  * fido2: quote argument strings in debug output
+  * fsck: mark temporary mount read-only
+  * fsck: clean up temporary mountpoint
+  * fusefrontend: run acl Setxattr in user context
+  * fusefrontend: catch ReadAt integer overflow
+  * nametransform: check name validity on encryption
+  * go.mod: update go-fuse to get acl fixes
+  * Revert "go.mod: switch to go-fuse acl branch"
+  * tests: TestFileHoleCopy: accept +-4kB
+  * fusefrontend: list "." and ".." in dir entries
+  * fusefrontend: rewrite Lseek SEEK_DATA / SEEK_HOLE
+  * findholes: add --create, --verify
+  * contentenc: add PlainOffToCipherOff helper
+  * contentenc: fix CipherSizeToPlainSize non-monoticity
+  * contentenc: update comments
+  * tests: contentenc: add TestSizeToSize
+  * tests: add TestFileHoleCopy
+  * tests: re-enable TestInoReuseEvil
+  * Add contrib/findholes
+  * syscallcompat: add GetdentsSpecial()
+  * tests: add TestHaveDotdot
+  * stupidgcm: prefer Go stdlib over OpenSSL on Apple M1
+  * syscallcompat: also refactor MkdiratUser on GOOS=darwin
+  * syscallcompat: refactor MkdiratUser to take fuse.Context
+  * syscallcompat: deduplicate OpenatUser/MknodatUser/SymlinkatUser/MkdiratUser
+  * fsck: redirect go-fuse noise to syslog
+  * -speed: note that XChaCha20 is not selectable
+  * Merge package-source.bash & package-static.bash scripts
+  * Update README for v2.0-beta4
+  * go.mod: switch to go-fuse acl branch
+  * Add -acl flag to enable ACL enforcement
+  * fusefrontend: fix RENAME_NOREPLACE darwin build failure
+  * fusefrontend: avoid duplicate const definition
+  * fusefrontend: reject broken RENAME_EXCHANGE and RENAME_WHITEOUT
+  * README: fix broken markdown links
+  * Update README for v2.0-beta3 release
+  * go mod: switch back to mainline go-fuse
+  * Doc: update performance.txt
+  * fusefrontend: make dirCache work for "node itself"
+  * profiling/ls.bash: add -nosyslog
+  * fusefrontend: print dirCache stats after unmount
+  * fs: more idiomatic dirCache struct naming
+  * performance.txt: add dirfd caching results
+  * fs: add initial dirfd caching
+  * tests: fusefronted: fix TestOpenBackingDir
+  * fusefronted: replace last rn.openBackingDir() calls
+  * tests: sharedstorage: wait 100ms longer for cache expiry
+  * profiling: add ls.bash
+  * go.mod: temporarily switch to go-fuse fork
+  * tests: sharedstorage: add TestStaleHardlinks
+  * package-static.bash: add gocryptfs-xray to tarball
+  * gocrypts-xray: add -version flag
+  * Delete obsolete script package.bash
+  * README: fix compile instructions for Go 1.13+
+  * Add tests/sharedstorage
+  * test_helpers: VerifySize: don't complain about ino mismatch
+  * fusefronted: move Create() and Open() to new file
+  * fusefrontend: -sharedstorage: fix TestRmwRace failure
+  * tests: matrix: add -sharestorage to test matrix
+  * tests: MountOrFatal creates mnt dir itself
+  * syscallcompat: getdents: link to #483
+  * tests: add TestDiskFull
+  * Makefile: root_test: don't run test when compile fails
+  * v2api: -sharestorage: disable hard link tracking & add tests
+  * fusefrontend: do not encrypt ACLs
+  * tests/xattr: fix acl blob
+  * README: warn about incomplete ACL support
+  * README: mention MacFUSE v4.x support
+  * syscallcompat: MknodatUser: work around changed syscall.Setgroups semantics
+  * README: note Trezor removal
+  * go.mod: update go-fuse to latest master
+  * nametransform: make `gocryptfs.diriv` and `gocryptfs.xxx.name` files world-readable
+  * MANPAGE: add sub-headers to EXAMPLES
+  * nametransform: move permission constants to perms.go
+  * -idle: don't lazy-unmount
+  * main: add "-kernel_cache" flag
+  * MANPAGE: add fstab example
+  * MANPAGE: add -info example output
+  * MANPAGE: split up OPTIONS into action flags, init, mount, common
+  * MANPAGE: clarify -fg and syslog interaction
+  * Update Changelog for v2.0-beta2
+  * fusefrontend_reverse: fix GETATTR panic
+  * performance.txt: add v2.0-beta1-9 results
+  * go.mod: switch back to mainline go-fuse
+  * README: add link to gocryptfs-inspect
+  * Drop two more generated files
+  * Drop generated files
+  * fusefronted: reject GETXATTR "security.capability"
+  * syscallcompat: add getxattr fastpaths
+  * fsck: make sure we unmount in all cases
+  * syscallcompat: add Lgetxattr benchmark
+  * performance.txt: add gocryptfs v1.8.0 results
+  * Update performance.txt with gocryptfs v2.0-beta1 result
+  * Update README for v2.0-beta1
+  * v2pai: delete fusefrontend_reverse_v1api
+  * go.mod: temporarily switch to patched go-fuse fork
+  * contrib: cleanup-tmp-mounts: also clean ext4-ramdisk
+  * main: show microseconds in go-fuse logs
+  * syscallcompat: don't retry Close()
+  * syscallcompat: retry ops on EINTR
+  * syscallcompat: Openat: retry on EINTR
+  * build.bash: show "go mod edit -replace" in version string
+  * tests: fsstress-gocryptfs.bash: log timestamp for each iteration
+  * tests: fsstress-gocryptfs.bash: add DEBUG option
+  * fsstress-gocryptfs.bash: don't hang if TMPDIR ends in /
+  * go mod tidy
+  * fsstress-gocryptfs.bash: print loopback version & mount path
+  * contrib/mount-ext4-ramdisk.sh: clean up in error case
+  * Add contrib/mount-ext4-ramdisk.sh
+  * stress_tests/fsstress-gocryptfs.bash: use rm -Rf for cleanup
+  * go.mod: update go-fuse
+  * Add support for FIDO2 tokens
+  * tests/plaintextnames: add TestInoReuseEvil
+  * tests: add TestInoReuse
+  * test_helpers: print warning when not running on ext4
+  * v2api: add Darwin xattr support
+  * syscallcompat: add Renameat2 for Darwin
+  * test_helpers: mark MountOrFatal as a Helper()
+  * manpage: link to exitcodes.go
+  * gocryptfs -init: fix wrong exit code on non-empty dir
+  * v2api/reverse: update TODO comment on xattrs
+  * tests/reverse: implement (skipped) xattr test
+  * v2api/reverse: implement Lseek
+  * v2api/reverse: implement Statfs
+  * v2api: clean up api TODOs
+  * v2api: rename "File2" to just "File"
+  * v2api/reverse: finish -exclude
+  * v2api/reverse: start wiring up -exclude functionality
+  * test_helper: VerifyExistence: don't panic
+  * v2api/reverse: fix two fd leaks
+  * v2api/reverse: implement ctlsocksrv.Interface
+  * v2api/reverse: implement gocryptfs.conf mapping with -plaintextnames
+  * v2api/reverse: implement Read
+  * v2api/reverse: implement Readlink
+  * v2api/reverse: implement Lookup for longname
+  * v2api/reverse: implement Lookup for gocryptfs.conf & gocryptfs.diriv
+  * v2api/reverse: add missing decryptPath call openBackingDir
+  * v2api/reverse: implement Readdir
+  * v2api/reverse: implement Lookup & Getattr
+  * v2api/reverse: start fusefrontend_reverse v2 API implementation
+  * v2api/reverse: move old fusefrontend_reverse out of the way
+  * fusefrontend_reverse: collapse getFileType
+  * v2api: move helpers from node.go to node_helpers.go
+  * getdents_c: continue on EINTR from open
+  * Revert "getdents_c: read from two threads"
+  * v2api: pass fusedebug option via MountOptions
+  * stress_tests: run pingpong.bash at nice level 19
+  * v2api: fix missing size translation in Lookup
+  * v2api: delete (most) fusefrontend v1 files
+  * go.mod: update to go-fuse master
+  * v2api: implement Lseek
+  * v2api: fsck: use a temporary mount
+  * v2api: Lookup: use newChild() helper
+  * v2api: enable go-fuse warnings on mount & fsck
+  * v2api: make fsck compile again
+  * v2api: Node: make Path() public
+  * v2api: implement ctlsocksrv.Interface
+  * v2api: implement Getxattr, Setxattr, Removexattr, Listxattr
+  * v2api: Setattr: fill `out` structure
+  * tests: TestMagicNames: add warmup rounds
+  * v2api: set NullPermissions = true
+  * v2api: fix Mkfifo
+  * v2api: properly implement Node.Setattr
+  * v2api: Getattr: use file handle if passed
+  * v2api: Getattr: fix file size
+  * v2api: call InitSerializer
+  * v2api: fix Rename trying to overwrite itself
+  * tests: fix TestCpWarnings comment typo
+  * tests: don't crash on empty Flistxattr result
+  * v2api: fix Mkdir crash when using plaintextnames
+  * v2api: fix double-lock in truncate
+  * v2api: File2: implement Release, Read, Write, Fsync, Flush, Allocate
+  * v2api: fix RootNode cast
+  * v2api: fix TestOpenBackingDir
+  * v2api: implement Rename
+  * v2api: remove OpenatUserCtx, MknodatUserCtx helpers
+  * v2api: implement Symlink
+  * v2api: implement Link
+  * v2api: implement Mknod
+  * v2api: implement Statfs
+  * v2api: fix crash on umount
+  * v2api: list interfaces to be implemented
+  * v2api: implement Setattr
+  * v2api: implement Opendir
+  * v2api: merge openBackingDir into root_node.go
+  * v2api: implement Open()
+  * v2api: add prepareAtSyscall helper
+  * v2api: implement Readlink
+  * v2api: implement Unlink
+  * v2api: implement Rmdir
+  * v2api: implement Mkdir
+  * v2api: implement Create
+  * v2api: collect RootNode code in root_node.go
+  * v2api: implement GetAttr and Readdir
+  * getdents_c: read from two threads
+  * v2api: implement Lookup()
+  * inomap: clarify TranslateStat function comment
+  * v2api (go-fuse v2 api): initial noop implementation
+  * tests: TestBadname: simplify test by using empty files
+  * badname: stop trying to decrypt at length 22
+  * Added auto decryption of invalid file names
+  * sshfs-benchmark.bash: fix locale trouble and move to tests
+  * contrib/getdents-debug: fix function call missing argument from 22e3eec15302eac28c1a2ac3f9af29c2c9e82a3c
+  * getdents-debug: loop and stop on first error
+  * contrib/getdents-debug: implement getdents -loop
+
+-------------------------------------------------------------------
+Thu May 28 07:14:50 UTC 2020 - tuukka.pasanen@ilmi.fi
+
+- Update to version 1.8.0:
+  * Add contrib/getdents-debug/readdirnames
+  * contrib: collect getdents stuff in getdents-debug folder
+  * Revert "fusefrontend: don't always clear the dircache in Rename"
+  * syscallcompat: warn when Getdents truncates data
+  * contrib: add getdents_c
+  * Add contrib/getdents
+  * contrib/sshfs-benchmark.bash: add rmdir, mkdir, touch
+  * fusefrontend: don't always clear the dircache in Rename
+  * fusefrontend: don't clear dircache on Mkdir
+  * contrib: add sshfs-benchmark.bash
+
+-------------------------------------------------------------------
+Thu Dec 19 11:54:21 UTC 2019 - tuukka.pasanen@ilmi.fi
+
+- Update to version 1.7.1:
+  * Update README for v1.7.1
+  * stress_tests: use /var/tmp by default
+  * test.bash: export TMPDIR
+  * travis: also test Go 1.12.x
+  * tests: use /var/tmp by default
+  * fusefrontend: unregister from openfiletable before closing the fd
+  * fusefrontend: print file hexdump on header error
+  * contentenc: add explicit test for all-zero header
+  * tests: filter leaked fds by prefix
+  * tests: clarify which process seems to be leaking fds
+
+-------------------------------------------------------------------
+Mon Dec 17 14:37:44 UTC 2018 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
+
+- Initial version 1.6.1
