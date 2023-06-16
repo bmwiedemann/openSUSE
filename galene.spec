@@ -1,7 +1,7 @@
 #
 # spec file for package galene
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,11 +21,9 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 # Project name when using go tooling.
 %define project github.com/jech/galene
-
 %bcond_without  apparmor
-
 Name:           galene
-Version:        0.6.1
+Version:        0.7.1
 Release:        0
 Summary:        Galène videoconferencing server
 License:        MIT
@@ -120,11 +118,7 @@ install -D -m 0644 %{SOURCE3} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 %doc README
 %doc README.FRONTEND
 %doc README.PROTOCOL
-%if 0%{?suse_version} < 1500
-%doc LICENCE
-%else
 %license LICENCE
-%endif
 %{_sbindir}/%{name}
 %dir %{_datadir}/%{name}
 %dir %attr(0755, root, root) %{_datadir}/%{name}/static
