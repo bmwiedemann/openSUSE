@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jun 15 06:23:40 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 3.12.1:
+  * add some test case
+  * fix comment grammar error.
+  * bugfix:(#11391) helm lint infinite loop  when malformed
+    template object
+  * chore(deps): bump github.com/opencontainers/runc from 1.1.4 to
+    1.1.5
+  * chore(deps): bump github.com/docker/distribution
+  * update autoscaling/v2beta1 to autoscaling/v2 in skeleton chart
+  * test(search): add mixedCase test case
+  * chore(deps): bump github.com/lib/pq from 1.10.7 to 1.10.9
+  * chore(deps): bump github.com/Masterminds/squirrel from 1.5.3 to
+    1.5.4
+  * chore(deps): bump github.com/Masterminds/semver/v3 from 3.2.0
+    to 3.2.1
+  * fix(search): print repo search result in original case
+  * strict file permissions of repository.yaml
+  * update kubernetes dependencies from v0.27.0 to v0.27.1
+
+-------------------------------------------------------------------
 Thu May 11 04:45:07 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 3.12.0:
