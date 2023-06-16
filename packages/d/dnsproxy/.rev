@@ -19,4 +19,17 @@
   * Pull request 254: depr-more-util (forwarded request 1091165 from VaiTon)</comment>
     <requestid>1091168</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>718de93a65a64719356839c86eefd4e7</srcmd5>
+    <version>0.50.2</version>
+    <time>1686927321</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.50.2:
+  * Pull request 260: 5872-fix-dnscrypt-reset
+  * Pull request 259: 5874-fix-fallback
+  * Pull request 258: 5874-openwrt-setsockopt
+
+- Use zstd for vendored dependencies (forwarded request 1093386 from VaiTon)</comment>
+    <requestid>1093398</requestid>
+  </revision>
 </revisionlist>

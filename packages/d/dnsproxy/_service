@@ -2,12 +2,14 @@
   <service name="obs_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://github.com/AdguardTeam/dnsproxy.git</param>
-    <param name="revision">af10111fffd1b4ebb625e79d3181341d5107a216</param>
-    <param name="version">0.50.0</param>
+    <param name="revision">6b034051b633d3d2129e0d5596eedb239d31333c</param>
+    <param name="version">0.50.2</param>
     <param name="changesgenerate">enable</param>
   </service>
-  <service name="set_version" mode="disabled"/>
-  <service name="go_modules" mode="disabled" />
+  <service name="set_version" mode="disabled" />
+  <service name="go_modules" mode="disabled">
+    <param name="compression">zstd</param>
+  </service>
 
   <service name="tar" mode="buildtime"/>
 </services>
