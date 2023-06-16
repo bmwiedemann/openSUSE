@@ -591,4 +591,12 @@ prerequisite for new python submission</comment>
     <comment></comment>
     <requestid>1091829</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>88a7b69be7bbefb2eb81759e7b79b573</srcmd5>
+    <version>20230609.6fe8111</version>
+    <time>1686927191</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230304.050c1a4 (bsc#1209881, bsc#1209353):</comment>
+    <requestid>1093381</requestid>
+  </revision>
 </revisionlist>

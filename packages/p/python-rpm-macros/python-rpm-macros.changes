@@ -14,7 +14,7 @@ Tue Apr 04 09:02:04 UTC 2023 - mcepl@cepl.eu
 -------------------------------------------------------------------
 Sat Mar 04 20:22:41 UTC 2023 - mcepl@cepl.eu
 
-- Update to version 20230304.050c1a4:
+- Update to version 20230304.050c1a4 (bsc#1209881, bsc#1209353):
   * Add %#FLAVOR#_fix_shebang macro, call in %#FLAVOR#_pyproject_install
 
 -------------------------------------------------------------------
