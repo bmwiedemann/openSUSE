@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 15 13:38:42 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use keylime-registrar as leading package to set the version
+  number: the python package changes name depending on python
+  version in use.
+
+-------------------------------------------------------------------
 Wed Mar  8 12:49:21 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add libefivars, as it is required for measure boot

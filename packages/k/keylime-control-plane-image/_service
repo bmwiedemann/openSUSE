@@ -4,6 +4,6 @@
   <service name="replace_using_package_version" mode="buildtime">
     <param name="file">Dockerfile</param>
     <param name="regex">%%KEYLIME_VERSION%%</param>
-    <param name="package">python310-keylime</param>
+    <param name="package">keylime-registrar</param>
   </service>
 </services>
