@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 15 10:59:46 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20230615.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20230615
+  * Print a message about the new distribution and license when installing TruffleRuby 23.0 by @eregon in #2209
+
+-------------------------------------------------------------------
 Wed Jun 14 09:20:10 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20230614.
