@@ -402,14 +402,14 @@ grep -q '^root:' /etc/subgid || \
 %service_add_pre %{name}.service
 
 %post
-%sysctl_apply
+%sysctl_apply 60-lxd.conf
 %service_add_post %{name}.service
 
 %preun
 %service_del_preun %{name}.service
 
 %postun
-%sysctl_apply
+%sysctl_apply 60-lxd.conf
 %service_del_postun %{name}.service
 
 %files
