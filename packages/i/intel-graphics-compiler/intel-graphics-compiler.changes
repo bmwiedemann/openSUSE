@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 15 06:25:27 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.0.13822.6
+  * Fixes a segfault happening for certain GPUs (bsc#1212193)
+- Update spirv-llvm-translator to a4e58ffda317221a15149f9d0d4f73424c9584fb 
+
+-------------------------------------------------------------------
 Mon May 29 11:55:23 UTC 2023 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - 0001-libspriv-needs-to-include-cstdint-for-gcc13.patch no longer needed
