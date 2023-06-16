@@ -994,4 +994,17 @@
   * Added experimental HTTP/3 support.</comment>
     <requestid>1088736</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>a3ea0775778a389578abd03b8c6d3478</srcmd5>
+    <version>1.25.1</version>
+    <time>1686927182</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 1.25.1
+  * https://nginx.org/en/CHANGES
+  * Added &quot;http2&quot; directive, which enables HTTP/2 on a per-server basis.
+  * Deprecated &quot;http2&quot; parameter of the &quot;listen&quot; directive.
+  * Removed HTTP/2 server push support.
+  * Deprecated &quot;ssl&quot; directive is not supported anymore. </comment>
+    <requestid>1093008</requestid>
+  </revision>
 </revisionlist>

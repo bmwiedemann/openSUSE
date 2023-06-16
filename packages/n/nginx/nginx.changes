@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 14 05:03:46 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+
+- Updated to 1.25.1
+  * https://nginx.org/en/CHANGES
+  * Added "http2" directive, which enables HTTP/2 on a per-server basis.
+  * Deprecated "http2" parameter of the "listen" directive.
+  * Removed HTTP/2 server push support.
+  * Deprecated "ssl" directive is not supported anymore. 
+
+-------------------------------------------------------------------
 Tue May 23 21:44:57 UTC 2023 - Илья Индиго <ilya@ilya.cf>
 
 - Updated to 1.25.0
