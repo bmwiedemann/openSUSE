@@ -4357,4 +4357,12 @@ StandardGroups in rpmlint package.
 - supportconfig: Modular daemon improvements</comment>
     <requestid>1091352</requestid>
   </revision>
+  <revision rev="377" vrev="3">
+    <srcmd5>8d9ba9324c7a4dd76d79fc1ed2650547</srcmd5>
+    <version>9.4.0</version>
+    <time>1686927180</time>
+    <user>dimstar_suse</user>
+    <comment>- spec: Don't move apparmor profiles to modular daemon subpackages</comment>
+    <requestid>1093000</requestid>
+  </revision>
 </revisionlist>

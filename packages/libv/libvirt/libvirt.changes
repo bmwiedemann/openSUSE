@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 13 22:28:33 UTC 2023 - James Fehlig <jfehlig@suse.com>
+
+- spec: Don't move apparmor profiles to modular daemon subpackages
+
+-------------------------------------------------------------------
 Wed Jun  7 22:21:45 UTC 2023 - James Fehlig <jfehlig@suse.com>
 
 - apparmor: Add support for local profile customizations
