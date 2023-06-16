@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jun  6 17:47:23 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.15.0:
+  * Features:
+    - Add Solidity Module.
+    - add typechange to git_status module.
+    - aws: support aws sso with automatic authentication refresh.
+    - azure: subscription name aliases.
+    - gcloud: add detect_env_vars option.
+    - git_metrics: add option to ignore submodules.
+    - golang: adding mod_version variable.
+    - nodejs: Add expected_version variable.
+  * Bug Fixes:
+    - config: Make print-config not panic without a config.
+    - ensure nested style variables are processed during formatting.
+    - presets: Added ($style) to format in module 'sudo' 
+      in Bracketed Segments Preset.
+    - style: ensure nested style variables are processed during 
+      formatting.
+    - update of presets and default configuration to reflect 
+      changes in Nerd Fonts 3.0.
+
+-------------------------------------------------------------------
 Fri Apr 14 16:23:24 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 1.14.2:
