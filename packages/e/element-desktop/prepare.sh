@@ -24,24 +24,46 @@ cd element-desktop-${version}
 
 changes=$(grep "^=============" -B10000 -m2 CHANGELOG.md | head -n -3 | tail -n +4)
 
-#sed -i 's@"electronVersion": "11.2.3"@"electronVersion": "13.1.2"@g' package.json
-#sed -i 's@"https://packages.riot.im/desktop/update/"@null@g' element.io/release/config.json
-
 echo 'yarn-offline-mirror "./npm-packages-offline-cache"' > .yarnrc
 yarn cache clean
 rm -rf node_modules/
 yarn install --pure-lockfile || : # this will download tha packages into the offline cache
 
-#mkdir -p electron-builder-offline-cache
-#export ELECTRON_BUILDER_CACHE="$(pwd)/electron-builder-offline-cache/"
-#export PATH="$PATH:node_modules/.bin"
-#yarn run build
+export PATH="$PATH:node_modules/.bin"
+yarn run hak check
+yarn run hak fetch
+
+# prefetch cargo crates
+pushd .hak/matrix-seshat/x86_64-unknown-linux-gnu/build
+cargo vendor
+mkdir -p .cargo
+cat > .cargo/config.toml <<EOF
+[source.crates-io]
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = "vendor"
+EOF
+popd
+
+patch -p0 <<EOF
+--- .hak/keytar/x86_64-unknown-linux-gnu/build/node_modules/node-gyp/gyp/pylib/gyp/input.py	2023-06-15 12:09:05.127000000 +0200
++++ .hak/keytar/x86_64-unknown-linux-gnu/build/node_modules/node-gyp/gyp/pylib/gyp/input.py	2023-06-15 13:34:18.969088855 +0200
+@@ -1190,7 +1190,7 @@
+         else:
+             ast_code = compile(cond_expr_expanded, "<string>", "eval")
+             cached_conditions_asts[cond_expr_expanded] = ast_code
+-        env = {"__builtins__": {}, "v": StrictVersion}
++        env = {"__builtins__": {"openssl_fips": ""}, "v": StrictVersion}
+         if eval(ast_code, env, variables):
+             return true_dict
+         return false_dict
+EOF
 
 tar czf npm-packages-offline-cache.tar.gz ./npm-packages-offline-cache
-cp -v npm-packages-offline-cache.tar.gz "$oldwd/"
+tar czf hak.tar.gz ./.hak
+cp -v npm-packages-offline-cache.tar.gz hak.tar.gz "$oldwd/"
 
-#tar czf electron-builder-offline-cache.tar.gz ./electron-builder-offline-cache/
-#cp electron-builder-offline-cache.tar.gz "$oldwd/"
 cd "$oldwd"
 echo rm -rf "$tmpdir"
 echo -e "\n\nDONE creating npm dependency offline cache file 'npm-packages-offline-cache.tar.gz'"
@@ -49,16 +71,3 @@ echo -e "\n\nDONE creating npm dependency offline cache file 'npm-packages-offli
 
 read -p "Write changes?"
 osc vc -m "Version ${version}\n${changes}" element-desktop.changes
-
-
-#yarn install
-#export PATH="$PATH:node_modules/.bin"
-#yarn run build:native
-#yarn run build
-#tar czvf ../dist.tar.gz dist/linux-unpacked/resources/
-#cd ..
-#cp dist.tar.gz "$oldwd/"
-#cd "$oldwd"
-#rm -rf "$tmpdir"
-#rm -rf "element-desktop-${version}"
-#echo -e "\n\nDONE creating output file 'dist.tar.gz'"

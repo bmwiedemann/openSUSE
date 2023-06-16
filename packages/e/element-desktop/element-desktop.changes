@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 15 13:12:37 UTC 2023 - Dominik Heidler <dheidler@suse.de>
+
+- Build with native extensons
+  - keytar for talking to system keyring
+  - seshat for maintaining encrypted sqlite db for msg search
+
+-------------------------------------------------------------------
 Wed Jun  7 09:53:04 UTC 2023 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.11.32

@@ -462,4 +462,12 @@ Please use same ADI as https://build.opensuse.org/request/show/918731
     <comment>version 1.11.32</comment>
     <requestid>1091243</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>9a58abd7e4aa960ea5d26d3a1f5b1bb4</srcmd5>
+    <version>1.11.32</version>
+    <time>1686927343</time>
+    <user>dimstar_suse</user>
+    <comment>Build with native modules</comment>
+    <requestid>1093467</requestid>
+  </revision>
 </revisionlist>

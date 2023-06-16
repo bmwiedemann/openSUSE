@@ -28,6 +28,7 @@ Source2:        npm-packages-offline-cache.tar.gz
 Source3:        io.element.Element.desktop
 Source4:        element-desktop.sh
 Source5:        prepare.sh
+Source6:        hak.tar.gz
 BuildRequires:  element-web = %{version}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -35,10 +36,15 @@ BuildRequires:  jq
 BuildRequires:  moreutils
 BuildRequires:  nodejs-electron-devel
 BuildRequires:  yarn
+BuildRequires:  rust
+BuildRequires:  cargo
+BuildRequires:  python3
+BuildRequires:  sqlcipher-devel
+BuildRequires:  openssh-fips
+BuildRequires:  libsecret-devel
+BuildRequires:  gcc-c++
 Requires:       element-web = %{version}
 Requires:       nodejs-electron
-#Element contains no native code
-BuildArch:      noarch
 %if 0%{?suse_version} <= 1540
 BuildRequires:  nodejs18
 %endif
@@ -47,13 +53,17 @@ BuildRequires:  nodejs18
 A glossy Matrix collaboration client - desktop
 
 %prep
-%setup -q -a1 -a2
+%setup -q -a1 -a2 -a6
 %autopatch -p1
 SYSTEM_ELECTRON_VERSION=$(<%{_libdir}/electron/version)
 jq -c '.build["electronVersion"]="'$SYSTEM_ELECTRON_VERSION'" | .build["electronDist"]="%{_libdir}/electron"' < package.json | sponge package.json
 jq -c '.build["linux"]["target"]="dir"' < package.json | sponge package.json
 cat package.json
 jq '.piwik=false | .update_base_url=null' < element.io/release/config.json | sponge element.io/release/config.json
+
+# build tools expect python3 interpreter behind "python"
+mkdir -p $HOME/bin
+ln -sf /usr/bin/python3 $HOME/bin/python
 
 %build
 echo 'yarn-offline-mirror "./npm-packages-offline-cache"' >> .yarnrc
@@ -64,17 +74,27 @@ export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
 
 yarn install --offline --pure-lockfile
 
-export PATH="$(pwd)/node_modules/.bin:${PATH}"
+export PATH="$(pwd)/node_modules/.bin:${HOME}/bin:${PATH}"
 #export ELECTRON_BUILDER_CACHE="$(pwd)/electron-builder-offline-cache/"
-#yarn run build:native
+
+yarn run hak build
+yarn run hak copyandlink
+
+yarn run build:native
 yarn run build:universal
 
 %install
-
 # Install the app content, replace the webapp with a symlink to the system package
 install -d -m 0755 "%{buildroot}%{_datadir}/element/"
 cp -av dist/linux-universal-unpacked/resources/* "%{buildroot}%{_datadir}/element/"
 ln -s %{_datadir}/webapps/element "%{buildroot}%{_datadir}/element/webapp"
+
+# Install binaries to /usr/lib
+install -d -m 0755 "%{buildroot}%{_prefix}/lib/element/"
+install -m0755 dist/linux-universal-unpacked/resources/app.asar.unpacked/node_modules/keytar/build/Release/keytar.node "%{buildroot}%{_prefix}/lib/element/keytar.node"
+install -m0755 dist/linux-universal-unpacked/resources/app.asar.unpacked/node_modules/matrix-seshat/index.node "%{buildroot}%{_prefix}/lib/element/matrix-seshat.node"
+ln -sfv "%{_prefix}/lib/element/keytar.node" "%{buildroot}%{_datadir}/element/app.asar.unpacked/node_modules/keytar/build/Release/keytar.node"
+ln -sfv "%{_prefix}/lib/element/matrix-seshat.node" "%{buildroot}%{_datadir}/element/app.asar.unpacked/node_modules/matrix-seshat/index.node"
 
 # Config file
 install -m 0755 -d %{buildroot}%{_sysconfdir}/element
@@ -106,6 +126,7 @@ done
 %license LICENSE
 %{_bindir}/%{name}
 %{_datadir}/element/
+%{_prefix}/lib/element/
 %config(noreplace) %{_sysconfdir}/element/config.json
 %{_sysconfdir}/webapps/element/config.json
 %{_datadir}/webapps/element/config.json
