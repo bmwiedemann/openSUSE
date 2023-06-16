@@ -197,4 +197,12 @@
     <comment>Qt 5.15.9. Not built yet but submitting anyway. (forwarded request 1081228 from favogt)</comment>
     <requestid>1082083</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b02b2701ce6cc533e26586ca1a6fc4cb</srcmd5>
+    <version>5.15.10+kde0</version>
+    <time>1686927145</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.10, fixed libqt5-qtscript (forwarded request 1092905 from favogt)</comment>
+    <requestid>1092944</requestid>
+  </revision>
 </revisionlist>
