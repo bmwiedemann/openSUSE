@@ -940,4 +940,12 @@
 - Update to 1.26.130:</comment>
     <requestid>1090098</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>26d1dcd2b1e534deb206051aa4dcfaf1</srcmd5>
+    <version>1.26.153</version>
+    <time>1686927125</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093114</requestid>
+  </revision>
 </revisionlist>
