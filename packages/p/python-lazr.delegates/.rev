@@ -7,4 +7,20 @@
     <comment> </comment>
     <requestid>752906</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>00fdff4bcc09993ce0d7fea55aad4247</srcmd5>
+    <version>2.1.0</version>
+    <time>1686927303</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.0
+  * Officially add support for Python 3.6, 3.7, 3.8, 3.9, 3.10 and 3.11.
+  * Drop support for Python 2, 3.2, 3.3, and 3.4.
+  * Test using zope.testrunner rather than nose.
+  * Bring coverage to 100%.
+  * Switch to declarative setuptools configuration.
+  * Add linters.
+  * Fix the woke linter.
+- Use sle15_python_module_pythons</comment>
+    <requestid>1093377</requestid>
+  </revision>
 </revisionlist>

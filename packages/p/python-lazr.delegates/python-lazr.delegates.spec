@@ -1,7 +1,7 @@
 #
 # spec file for package python-lazr.delegates
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-lazr.delegates
-Version:        2.0.4
+Version:        2.1.0
 Release:        0
 Summary:        Easily write objects that delegate behavior
 License:        LGPL-3.0-only
