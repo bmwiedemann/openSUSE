@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 15 11:36:19 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Security Patch Fix for CVE-2023-2727 (bsc#1211630) and CVE-2023-2728 (bsc#1211631)
+  * added patch: kube-apiserver-admission-plugin-policy.patch
+  * this new kube-apiserver component patch prevents ephemeral containers:
+    ** from using an image that is restricted by ImagePolicyWebhook (CVE-2023-2727)
+    ** from bypassing the mountable secrets policy enforced by the ServiceAccount admission plugin (CVE-2023-2728)   
+
+-------------------------------------------------------------------
 Wed Apr 12 12:34:43 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - add kubernetes1.18-client-common as conflicts with kubernetes-client-bash-completion 

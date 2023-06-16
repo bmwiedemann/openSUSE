@@ -49,6 +49,8 @@ Patch3:         opensuse-version-checks.patch
 Patch4:         kubeadm-opensuse-flexvolume.patch
 # Patch to revert renaming of coredns image location to match how it's done on download.opensuse.org
 Patch5:         revert-coredns-image-renaming.patch
+# Patch to fix CVE-2023-2727 and CVE-2023-2728, by preventing ephemeral containers from using an image that is restricted by ImagePolicyWebhook and from bypassing the mountable secrets policy enforced by the ServiceAccount admission plugin
+Patch6:         kube-apiserver-admission-plugin-policy.patch
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  go-go-md2man
@@ -71,8 +73,8 @@ for management and discovery.
 
 
 
-# packages to build containerized control plane
 
+# packages to build containerized control plane
 %package apiserver
 Summary:        Kubernetes apiserver for container image
 Group:          System/Management
@@ -216,6 +218,7 @@ Fish command line completion support for %{name}-client.
 %patch3 -p1
 %patch4 -p0
 %patch5 -p1
+%patch6 -p1
 
 %build
 # This is fixing bug bsc#1065972
