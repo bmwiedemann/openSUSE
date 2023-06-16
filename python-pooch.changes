@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 13 08:54:22 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Tue Mar 23 13:48:40 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrasing in descriptions.
