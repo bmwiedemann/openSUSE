@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jun  4 12:06:15 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.6.5:
+  * Sky Map Rotation
+  * NEW Optimal Sub-Exposure Calculator
+  * Rotator Dialog Improvments
+  * Linear 1 Pass Focus improvements including FWHM & Fourier Power focusing
+  * Focus Aberration Inspector
+  * Daily Supernovae updates
+  * Multiple fixes
+- Add fix-list.patch
+- Add fix-status.patch 
+- Use GCC11 on Leap, otherwise compilation will fail.
+
+-------------------------------------------------------------------
 Thu Apr 20 06:50:03 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.6.4:

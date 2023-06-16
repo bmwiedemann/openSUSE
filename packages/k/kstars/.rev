@@ -1166,4 +1166,12 @@
 - Drop fix-placeholder-path-part2.patch</comment>
     <requestid>1080480</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>24e9fba0242249f26c4261182f1fd7ed</srcmd5>
+    <version>3.6.5</version>
+    <time>1686927338</time>
+    <user>dimstar_suse</user>
+    <comment>update to 3.6.5</comment>
+    <requestid>1093468</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,40 @@
+From 06eea8e05690f8ac8efa0b7a64c7bf5687127c0b Mon Sep 17 00:00:00 2001
+From: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Date: Thu, 1 Jun 2023 17:38:25 +0300
+Subject: [PATCH] Must clear list to prevent crash
+
+---
+ kstars/auxiliary/ksuserdb.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/kstars/auxiliary/ksuserdb.cpp b/kstars/auxiliary/ksuserdb.cpp
+index b033160fb1..7f53ce3a6e 100644
+--- a/kstars/auxiliary/ksuserdb.cpp
++++ b/kstars/auxiliary/ksuserdb.cpp
+@@ -1545,6 +1545,7 @@ bool KSUserDB::GetAllScopes(QList<Scope *> &scope_list)
+     }
+ 
+     qDeleteAll(scope_list);
++    scope_list.clear();
+ 
+     QSqlTableModel equip(nullptr, db);
+     equip.setTable("telescope");
+@@ -1744,6 +1745,7 @@ bool KSUserDB::GetAllLenses(QList<OAL::Lens *> &lens_list)
+     }
+ 
+     qDeleteAll(lens_list);
++    lens_list.clear();
+ 
+     QSqlTableModel equip(nullptr, db);
+     equip.setTable("lens");
+@@ -2192,6 +2194,7 @@ bool KSUserDB::GetAllHorizons(QList<ArtificialHorizonEntity *> &horizonList)
+     }
+ 
+     qDeleteAll(horizonList);
++    horizonList.clear();
+     QSqlTableModel regions(nullptr, db);
+     regions.setTable("horizons");
+     regions.select();
+-- 
+GitLab
+

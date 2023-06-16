@@ -20,7 +20,7 @@
 %global __requires_exclude qmlimport\\((KStarsLiteEnums|TelescopeLiteEnums).*
 %bcond_without released
 Name:           kstars
-Version:        3.6.4
+Version:        3.6.5
 Release:        0
 Summary:        Desktop Planetarium
 # Note for legal: the Apache licensed files in the tarball are for the
@@ -34,6 +34,15 @@ Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.x
 %if %{with released}
 Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
+%endif
+# PATCH-FIX-UPSTREAM https://invent.kde.org/education/kstars/-/commit/0626a7914042a84cd299e9d584f879605c5918dc
+Patch0:         fix-status.patch
+# PATCH-FIX-UPSTREAM https://invent.kde.org/education/kstars/-/commit/06eea8e05690f8ac8efa0b7a64c7bf5687127c0b
+Patch1:         fix-list.patch
+%if 0%{?suse_version} < 1590
+BuildRequires:  gcc11-c++
+%else
+BuildRequires:  gcc-c++
 %endif
 BuildRequires:  Mesa-devel
 BuildRequires:  extra-cmake-modules
@@ -98,6 +107,10 @@ rm -r po/fr/docs
 %build
 %ifarch ppc ppc64
 export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
+%endif
+%if 0%{?suse_version} < 1590
+export CC=gcc-11
+export CXX=g++-11
 %endif
 %cmake_kf5 -d build
 %cmake_build

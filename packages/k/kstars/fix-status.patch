@@ -1,0 +1,33 @@
+From 0626a7914042a84cd299e9d584f879605c5918dc Mon Sep 17 00:00:00 2001
+From: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Date: Fri, 2 Jun 2023 15:25:07 +0300
+Subject: [PATCH] Only emit status change if state actually changed
+
+---
+ kstars/ekos/capture/capturemodulestate.cpp | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/kstars/ekos/capture/capturemodulestate.cpp b/kstars/ekos/capture/capturemodulestate.cpp
+index 468fb2af70..9b8002d6b7 100644
+--- a/kstars/ekos/capture/capturemodulestate.cpp
++++ b/kstars/ekos/capture/capturemodulestate.cpp
+@@ -37,9 +37,13 @@ void CaptureModuleState::setCaptureState(CaptureState value)
+             break;
+     }
+ 
+-    m_CaptureState = value;
+-    getMeridianFlipState()->setCaptureState(m_CaptureState);
+-    emit newStatus(m_CaptureState);
++    // Only emit status if it changed
++    if (m_CaptureState != value)
++    {
++        m_CaptureState = value;
++        getMeridianFlipState()->setCaptureState(m_CaptureState);
++        emit newStatus(m_CaptureState);
++    }
+ }
+ 
+ void CaptureModuleState::setGuideState(GuideState state)
+-- 
+GitLab
+
