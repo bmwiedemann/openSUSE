@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jun 15 06:23:21 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.55.0:
+  * using json structured logging, add `log-errors` option setting
+    to rapi and UI (#768)
+  * Bump golang.org/x/net from 0.10.0 to 0.11.0 (#769)
+  * Bump docker/build-push-action from 4.0.0 to 4.1.0 (#764)
+  * Bump docker/setup-buildx-action from 2.5.0 to 2.6.0 (#765)
+  * Bump docker/setup-qemu-action from 2.1.0 to 2.2.0 (#767)
+  * Bump actions/checkout from 3.5.2 to 3.5.3 (#766)
+  * Bump github/codeql-action from 2.3.6 to 2.13.4 (#763)
+  * go1.20.5 build image (#762)
+  * Bump github/codeql-action from 2.3.3 to 2.3.6 (#761)
+  * Bump golang.org/x/net from 0.9.0 to 0.10.0 (#759)
+  * Bump github/codeql-action from 2.3.2 to 2.3.3 (#757)
+  * Bump google.golang.org/grpc from 1.54.0 to 1.55.0 (#756)
+
+-------------------------------------------------------------------
 Wed May 03 04:44:21 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.54.3:
