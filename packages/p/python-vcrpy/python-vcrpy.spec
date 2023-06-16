@@ -1,7 +1,7 @@
 #
 # spec file for package python-vcrpy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2015 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,6 +17,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-vcrpy
 Version:        4.2.1
 Release:        0
@@ -39,8 +40,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
 Requires:       python-six >= 1.5
-Requires:       python-wrapt
 Requires:       python-urllib3 < 2
+Requires:       python-wrapt
 BuildArch:      noarch
 Requires:       python-yarl
 %python_subpackages

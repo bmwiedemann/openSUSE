@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 15 11:58:24 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Use sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Tue May 23 14:34:54 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Restrict urllib3 < 2 -- gh#kevin1024/vcrpy#688
