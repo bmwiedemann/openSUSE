@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 16 13:07:04 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.12.2:
+  * if wait is set to 0, we still want to check the API once
+
+-------------------------------------------------------------------
 Fri May 26 05:19:26 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.12.1:
