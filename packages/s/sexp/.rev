@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>63a18b59cfa32e52d3039f1fad7a1aa3</srcmd5>
+    <version>0.8.4</version>
+    <time>1686927212</time>
+    <user>dimstar_suse</user>
+    <comment>un-bundled dependency of rnp, ultimately for boo#1212259
+</comment>
+    <requestid>1093177</requestid>
+  </revision>
+</revisionlist>
