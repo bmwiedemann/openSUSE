@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-findpython
 Version:        0.2.5
 Release:        0
