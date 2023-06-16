@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Jun 13 12:58:39 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.10+kde26, rebased upstream:
+  * Fix tst_QQuickText::fontSizeMode
+  * (manual) includemocs
+  * Text: don't fall back to full-width layout if availableWidth == 0
+  * MPTA: don't allow more than one touchpoint to react to mouse
+  * QML/JS: Reject yield expression not directly in generator functions
+  * Modify m_compareRegister bitfield
+  * Add a TU for QQmlDebugServer
+  * QmlModels: includemocs
+  * Add a TU for QQmlProfilerEventReceiver
+  * Quick: includemocs
+  * QSGRhiShaderEffectNode: remove unused m_rc member
+  * QQmlPreviewServiceFactoryPlugin: includemocs
+  * Qml: includemocs
+  * QuickTest: includemocs
+  * PinchArea: ignore ZoomNativeGesture and RotateNativeGesture if told to
+  * Docs: Document textInput.acceptableInput as read only
+  * QQmlTableModelColumn: remove unused field mIndex
+  * MouseArea: don't get stuck in doubleClick if handler caused ungrab
+  * Avoid -Wclass-memaccess warning
+  * QmlDebugPrivate: includemocs
+  * QmlModels: includemocs
+  * QQmlInspectorServiceFactoryPlugin: includemocs
+  * QQmlDebuggerServiceFactoryPlugin: includemocs
+  * QQmlProfilerServiceFactoryPlugin: includemocs
+  * QQmlNativeDebugServiceFactoryPlugin: includemocs
+  * QuickShapesPrivate: includemocs
+  * QtPacketProtocolPrivate: includemocs
+  * QDebugMessageServiceFactoryPlugin: includemocs
+  * QQuickProfilerAdapterFactoryPlugin: includemocs
+  * Build fixes for GCC 11
+  * doc: Fix inherited property docs in HoverHandler
+  * tst_qqmllistcompositor: fix -Wdeprecated-enum-enum-conversion
+  * Set depth mask correctly for clear
+  * Doc: Improve cursorPosition description in TextInput and TextEdit docs
+  * Fix blacklisting string for Ubuntu 20.04 in qquickmultipointtoucharea
+  * V4 ArrayIterator: Protect retrieved value from GC
+  * QML: Protect against EAGAIN when calling madvise on linux
+  * QQuickLoader: Check for QQmlEngine before using it
+
+-------------------------------------------------------------------
 Wed May 24 08:00:51 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.9+kde26:

@@ -706,4 +706,12 @@ depends on sr#251413</comment>
     <comment></comment>
     <requestid>1091822</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>0b584715f30d3e0164d68d40d5ef61cc</srcmd5>
+    <version>5.15.10+kde26</version>
+    <time>1686927136</time>
+    <user>dimstar_suse</user>
+    <comment>Qt 5.15.10, fixed libqt5-qtscript (forwarded request 1092905 from favogt)</comment>
+    <requestid>1092930</requestid>
+  </revision>
 </revisionlist>
