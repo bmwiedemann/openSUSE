@@ -28,7 +28,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-botocore%{?psuffix}
-Version:        1.29.144
+Version:        1.29.153
 Release:        0
 Summary:        Python interface for AWS
 License:        Apache-2.0

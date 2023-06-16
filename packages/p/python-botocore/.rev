@@ -1174,4 +1174,12 @@
   urllib3 2.x and requests</comment>
     <requestid>1090097</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>b970fe268ba40c97b72c1eb5cda3decb</srcmd5>
+    <version>1.29.153</version>
+    <time>1686927121</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093112</requestid>
+  </revision>
 </revisionlist>
