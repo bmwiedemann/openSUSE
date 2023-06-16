@@ -18,13 +18,14 @@
 
 %define sover 4_12
 Name:           z3
-Version:        4.12.1
+Version:        4.12.2
 Release:        0
 Summary:        Theorem prover from Microsoft Research
 License:        MIT
 Group:          Productivity/Scientific/Other
 URL:            https://github.com/Z3Prover/z3/wiki
 Source0:        https://github.com/Z3Prover/z3/archive/z3-%{version}.tar.gz
+Patch0:         0001-Fix-building-with-gcc-13-6723.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++ >= 6.0
 BuildRequires:  gmp-devel
@@ -67,7 +68,7 @@ BuildArch:      noarch
 Python bindings for the Z3 library.
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
+%autosetup -p1 -n %{name}-%{name}-%{version}
 
 %build
 %define __builder ninja

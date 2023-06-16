@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun 15 07:18:34 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 4.12.2
+  * remove MSF (Microsoft Solver Foundation) plugin.
+  * updated propagate-ineqs tactic and implementing it as a simplifier,
+    bound_simplifier.
+  * add API function Z3_mk_real_int64 to take two int64 as arguments. The
+    Z3_mk_real function takes integers.
+  * Add _simplifiers_ as optional incremental pre-processing to solvers.
+  * Optimize added to JS API.
+  * SMTLIB2 proposal for bit-vector overflow predicates added.
+  * bug fixes.
+- add 0001-Fix-building-with-gcc-13-6723.patch
+
+-------------------------------------------------------------------
 Sat Jan 21 17:32:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.12.1:
