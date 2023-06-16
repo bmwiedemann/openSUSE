@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 14 10:04:34 UTC 2023 - Robert Frohl <rfrohl@suse.com>
+
+- Drop not needed RustScan-*.obscpio, as RustScan-*.tar.xz is used
+  for build the package.
+
+-------------------------------------------------------------------
 Sat Dec  3 21:25:28 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.1:
