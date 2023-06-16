@@ -96,4 +96,12 @@
     through ``get_event_loop()`` (Closes #353)</comment>
     <requestid>1065973</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>6923c8f1c2b058535806b939ec284b7e</srcmd5>
+    <version>1.4.4.post2</version>
+    <time>1686927297</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093361</requestid>
+  </revision>
 </revisionlist>

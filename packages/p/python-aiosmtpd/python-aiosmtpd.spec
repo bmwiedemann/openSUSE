@@ -16,7 +16,7 @@
 #
 
 
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-aiosmtpd
 Version:        1.4.4.post2
 Release:        0
