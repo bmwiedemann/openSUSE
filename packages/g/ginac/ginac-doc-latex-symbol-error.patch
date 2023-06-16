@@ -1,0 +1,34 @@
+From e8bd7a51450cc03faf0225ac4850d925c51275b2 Mon Sep 17 00:00:00 2001
+From: Richard Kreckel <kreckel@ginac.de>
+Date: Sun, 12 Feb 2023 00:09:48 +0100
+Subject: [PATCH] [DOC] Fix build of reference.pdf.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf8
+Content-Transfer-Encoding: 8bit
+
+This is obnoxious: It is 2023, the ≥ character is in Unicode since
+1993, and UTF-8 is ubiquitous. Yet, pdfLaTeX balks at this.
+
+Maybe the right fix would be to switch to LuaLaTeX. Alas, that doesn't
+seem to have reached the necessary maturity yet:
+<https://tug.org/pipermail/luatex/2023-February/007799.html>
+---
+ ginac/numeric.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ginac/numeric.cpp b/ginac/numeric.cpp
+index c28cc56ad2853a34882800a5c272bf40ecc66480..92b3c46645f71bbf1ff028244d9c4320965e6fba 100644 (file)
+--- a/ginac/numeric.cpp
++++ b/ginac/numeric.cpp
+@@ -2139,7 +2139,7 @@ const numeric doublefactorial(const numeric &n)
+ /** The Binomial coefficients.  It computes the binomial coefficients.  For
+  *  integer n and k and positive n this is the number of ways of choosing k
+  *  objects from n distinct objects.  If n is a negative integer, the formula
+- *  binomial(n,k) == (-1)^k*binomial(k-n-1,k) (if k≥0)
++ *  binomial(n,k) == (-1)^k*binomial(k-n-1,k) (if k>=0)
+  *  binomial(n,k) == (-1)^(n-k)*binomial(-k-1,n-k) (otherwise)
+  *  is used to compute the result. */
+ const numeric binomial(const numeric &n, const numeric &k)
+-- 
+2.40.1
+

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 12 04:20:35 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.8.6:
+  * Fix wrong numeric info on transcendental functions.
+  * Fix crash of evaluation of binomial(n, k) with negative
+    integer n, k.
+- Add ginac-doc-latex-symbol-error.patch: Change a math symbol to
+  get pdflatex to build reference.pdf correctly; upstream commit.
+
+-------------------------------------------------------------------
 Wed Mar  8 03:35:32 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Make documentation build reproducible:
