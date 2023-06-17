@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun 14 13:02:01 UTC 2023 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 24.0.2-ce. See upstream changelog online at
+  <https://docs.docker.com/engine/release-notes/24.0/#2402>. bsc#1212368
+  bsc#1210797
+- Add Recommends for docker-buildx, and add /usr/lib/docker/cli-plugins as
+  being provided by this package.
+- Rebase patches:
+  * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  * 0003-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+  * 0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+  * cli-0001-docs-include-required-tools-in-source-tree.patch
+
+-------------------------------------------------------------------
 Sun May 21 02:31:35 UTC 2023 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 23.0.6-ce. See upstream changelog online at

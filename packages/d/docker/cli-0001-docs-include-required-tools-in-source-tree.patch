@@ -1,4 +1,4 @@
-From f571ed4f350621b20280e74bf663535533246511 Mon Sep 17 00:00:00 2001
+From c46107746f7676a09590008584a17d3f907f7926 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Wed, 26 Apr 2023 10:13:48 +1000
 Subject: [PATCH] docs: include required tools in source tree
@@ -23,9 +23,9 @@ Signed-off-by: Aleksa Sarai <asarai@suse.de>
  import.go                                     |   17 +
  man/go.mod                                    |   15 -
  man/tools.go                                  |   11 -
- scripts/docs/generate-man.sh                  |   35 +-
- scripts/docs/generate-md.sh                   |   28 +-
- scripts/docs/generate-yaml.sh                 |   31 +-
+ scripts/docs/generate-man.sh                  |   33 +-
+ scripts/docs/generate-md.sh                   |   27 +-
+ scripts/docs/generate-yaml.sh                 |   29 +-
  vendor.mod                                    |    4 +
  vendor.sum                                    |    4 +
  .../cpuguy83/go-md2man/v2/.gitignore          |    2 +
@@ -89,7 +89,7 @@ Signed-off-by: Aleksa Sarai <asarai@suse.de>
  vendor/gopkg.in/yaml.v3/yamlh.go              |  807 +++++
  vendor/gopkg.in/yaml.v3/yamlprivateh.go       |  198 ++
  vendor/modules.txt                            |   15 +
- 71 files changed, 22969 insertions(+), 117 deletions(-)
+ 71 files changed, 22970 insertions(+), 111 deletions(-)
  delete mode 100644 docs/generate/go.mod
  delete mode 100644 docs/generate/tools.go
  create mode 100644 import.go
@@ -251,10 +251,10 @@ index 3cafe6533aff..000000000000
 -	_ "github.com/spf13/pflag"
 -)
 diff --git a/scripts/docs/generate-man.sh b/scripts/docs/generate-man.sh
-index 6afed3fa8708..6abac3b1d28e 100755
+index 6afed3fa8708..1e12a95e9c9a 100755
 --- a/scripts/docs/generate-man.sh
 +++ b/scripts/docs/generate-man.sh
-@@ -1,35 +1,18 @@
+@@ -1,35 +1,22 @@
  #!/usr/bin/env bash
  
 -set -eu
@@ -266,14 +266,15 @@ index 6afed3fa8708..6abac3b1d28e 100755
  
 -function clean {
 -  rm -rf "$buildir"
--}
--
--buildir=$(mktemp -d -t docker-cli-docsgen.XXXXXXXXXX)
--trap clean EXIT
 +# temporary "go.mod" to make -modfile= work
 +touch go.mod
-+# shellcheck disable=SC2064
-+trap "rm -f $(pwd)/go.mod" EXIT
++
++function clean() {
++  rm -f "$(pwd)/go.mod"
+ }
+ 
+-buildir=$(mktemp -d -t docker-cli-docsgen.XXXXXXXXXX)
+ trap clean EXIT
  
 -(
 -  set -x
@@ -300,10 +301,10 @@ index 6afed3fa8708..6abac3b1d28e 100755
  mkdir -p man/man1
  (set -x ; /tmp/gen-manpages --root "." --target "$(pwd)/man/man1")
 diff --git a/scripts/docs/generate-md.sh b/scripts/docs/generate-md.sh
-index a947bb969673..0e4e231e5c8e 100755
+index a947bb969673..0af86843bbe4 100755
 --- a/scripts/docs/generate-md.sh
 +++ b/scripts/docs/generate-md.sh
-@@ -1,36 +1,24 @@
+@@ -1,36 +1,23 @@
  #!/usr/bin/env bash
  
 -set -eu
@@ -313,8 +314,12 @@ index a947bb969673..0e4e231e5c8e 100755
  
  export GO111MODULE=auto
  
++# temporary "go.mod" to make -modfile= work
++touch go.mod
++
  function clean {
 -  rm -rf "$buildir"
++  rm -f "$(pwd)/go.mod"
    if [ -f "$(pwd)/docs/reference/commandline/docker.md" ]; then
      mv "$(pwd)/docs/reference/commandline/docker.md" "$(pwd)/docs/reference/commandline/cli.md"
    fi
@@ -338,21 +343,16 @@ index a947bb969673..0e4e231e5c8e 100755
 -  # build docsgen
 -  go build -mod=vendor -modfile=vendor.mod -tags docsgen -o /tmp/docsgen ./docs/generate/generate.go
 -)
-+# temporary "go.mod" to make -modfile= work
-+touch go.mod
-+# shellcheck disable=SC2064
-+trap "rm -f $(pwd)/go.mod" EXIT
-+
 +# build docsgen
 +go build -mod=vendor -modfile=vendor.mod -tags docsgen -o /tmp/docsgen ./docs/generate/generate.go
  
  # yaml generation on docs repo needs the cli.md file: https://github.com/docker/cli/pull/3924#discussion_r1059986605
  # but markdown generation docker.md atm. While waiting for a fix in cli-docs-tool
 diff --git a/scripts/docs/generate-yaml.sh b/scripts/docs/generate-yaml.sh
-index 4d0006e43e79..abebc183d49c 100755
+index 4d0006e43e79..7d98e161df5d 100755
 --- a/scripts/docs/generate-yaml.sh
 +++ b/scripts/docs/generate-yaml.sh
-@@ -1,33 +1,16 @@
+@@ -1,33 +1,20 @@
  #!/usr/bin/env bash
  
 -set -eu
@@ -364,14 +364,15 @@ index 4d0006e43e79..abebc183d49c 100755
  
 -function clean {
 -  rm -rf "$buildir"
--}
--
--buildir=$(mktemp -d -t docker-cli-docsgen.XXXXXXXXXX)
--trap clean EXIT
 +# temporary "go.mod" to make -modfile= work
 +touch go.mod
-+# shellcheck disable=SC2064
-+trap "rm -f $(pwd)/go.mod" EXIT
++
++function clean() {
++  rm -f "$(pwd)/go.mod"
+ }
+ 
+-buildir=$(mktemp -d -t docker-cli-docsgen.XXXXXXXXXX)
+ trap clean EXIT
  
 -(
 -  set -x
@@ -394,18 +395,18 @@ index 4d0006e43e79..abebc183d49c 100755
  mkdir -p docs/yaml
  set -x
 diff --git a/vendor.mod b/vendor.mod
-index eed166a6de6b..993aca7af845 100644
+index 9b171b28e5b3..0aeec6f36cc5 100644
 --- a/vendor.mod
 +++ b/vendor.mod
 @@ -8,7 +8,9 @@ go 1.18
  
  require (
- 	github.com/containerd/containerd v1.6.19
+ 	github.com/containerd/containerd v1.6.21
 +	github.com/cpuguy83/go-md2man/v2 v2.0.2
- 	github.com/creack/pty v1.1.11
+ 	github.com/creack/pty v1.1.18
 +	github.com/docker/cli-docs-tool v0.5.1
- 	github.com/docker/distribution v2.8.1+incompatible
- 	github.com/docker/docker v23.0.5+incompatible
+ 	github.com/docker/distribution v2.8.2+incompatible
+ 	github.com/docker/docker v24.0.1+incompatible
  	github.com/docker/docker-credential-helpers v0.7.0
 @@ -67,6 +69,7 @@ require (
  	github.com/prometheus/common v0.37.0 // indirect
@@ -417,39 +418,39 @@ index eed166a6de6b..993aca7af845 100644
  	go.etcd.io/etcd/raft/v3 v3.5.6 // indirect
 @@ -76,4 +79,5 @@ require (
  	google.golang.org/genproto v0.0.0-20220706185917-7780775163c4 // indirect
- 	google.golang.org/grpc v1.48.0 // indirect
+ 	google.golang.org/grpc v1.50.1 // indirect
  	google.golang.org/protobuf v1.28.1 // indirect
 +	gopkg.in/yaml.v3 v3.0.1 // indirect
  )
 diff --git a/vendor.sum b/vendor.sum
-index 6edc40179f41..c5e8b1e9ea76 100644
+index adb8ce424999..b577d7bb7242 100644
 --- a/vendor.sum
 +++ b/vendor.sum
-@@ -89,6 +89,7 @@ github.com/containerd/containerd v1.6.19/go.mod h1:HZCDMn4v/Xl2579/MvtOC2M206i+J
- github.com/containerd/continuity v0.3.0 h1:nisirsYROK15TAMVukJOUyGJjz4BNQJBVsNvAXZJ/eg=
+@@ -85,6 +85,7 @@ github.com/cockroachdb/logtags v0.0.0-20190617123548-eb05cc24525f/go.mod h1:i/u9
+ github.com/containerd/containerd v1.6.21 h1:eSTAmnvDKRPWan+MpSSfNyrtleXd86ogK9X8fMWpe/Q=
+ github.com/containerd/containerd v1.6.21/go.mod h1:apei1/i5Ux2FzrK6+DM/suEsGuK/MeVOfy8tR2q7Wnw=
  github.com/coreos/go-systemd/v22 v22.3.2/go.mod h1:Y58oyj3AT4RCenI/lSvhwexgC+NSVTIJ3seZv2GcEnc=
- github.com/cpuguy83/go-md2man/v2 v2.0.0-20190314233015-f79a8a8ca69d/go.mod h1:maD7wRr/U5Z6m/iR4s+kqSMx2CaBsrgA7czyZG/E6dU=
 +github.com/cpuguy83/go-md2man/v2 v2.0.2 h1:p1EgwI/C7NhT0JmVkwCD2ZBK8j4aeHQX2pMHHBfMQ6w=
  github.com/cpuguy83/go-md2man/v2 v2.0.2/go.mod h1:tgQtvFlXSQOSOSIRvRPT7W67SCa46tRHOmNcaadrF8o=
  github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
- github.com/creack/pty v1.1.11 h1:07n33Z8lZxZ2qwegKbObQohDhXDQxiMMz1NOUGYlesw=
-@@ -98,6 +99,8 @@ github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSs
+ github.com/creack/pty v1.1.18 h1:n56/Zwd5o6whRC5PMGretI4IdRLlmBXYNjScPaBgsbY=
+@@ -93,6 +94,8 @@ github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSs
  github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
  github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
  github.com/denisenkom/go-mssqldb v0.0.0-20191128021309-1d7a30a10f73/go.mod h1:xbL0rPBG9cCiLr28tMa8zpbdarY27NDyej4t/EjAShU=
 +github.com/docker/cli-docs-tool v0.5.1 h1:jIk/cCZurZERhALPVKhqlNxTQGxn2kcI+56gE57PQXg=
 +github.com/docker/cli-docs-tool v0.5.1/go.mod h1:zMjqTFCU361PRh8apiXzeAZ1Q/xupbIwTusYpzCXS/o=
  github.com/docker/distribution v2.7.1+incompatible/go.mod h1:J2gT2udsDAN96Uj4KfcMRqY0/ypR+oyYUYmja8H+y+w=
- github.com/docker/distribution v2.8.1+incompatible h1:Q50tZOPR6T/hjNsyc9g8/syEs6bk8XXApsHjKukMl68=
- github.com/docker/distribution v2.8.1+incompatible/go.mod h1:J2gT2udsDAN96Uj4KfcMRqY0/ypR+oyYUYmja8H+y+w=
-@@ -366,6 +369,7 @@ github.com/rogpeppe/fastuuid v1.2.0/go.mod h1:jVj6XXZzXRy/MSR5jhDC/2q6DgLz+nrA6L
+ github.com/docker/distribution v2.8.2+incompatible h1:T3de5rq0dB1j30rp0sA2rER+m322EBzniBPB6ZIzuh8=
+ github.com/docker/distribution v2.8.2+incompatible/go.mod h1:J2gT2udsDAN96Uj4KfcMRqY0/ypR+oyYUYmja8H+y+w=
+@@ -350,6 +353,7 @@ github.com/rivo/uniseg v0.2.0 h1:S1pD9weZBuJdFmowNwbpi7BJ8TNftyUImj/0WQi72jY=
+ github.com/rivo/uniseg v0.2.0/go.mod h1:J6wj4VEh+S6ZtnVlnTBMWIodfgj8LQOQFoIToxlJtxc=
+ github.com/rogpeppe/fastuuid v1.2.0/go.mod h1:jVj6XXZzXRy/MSR5jhDC/2q6DgLz+nrA6LYCDYWNEvQ=
  github.com/rogpeppe/go-internal v1.3.0/go.mod h1:M8bDsm7K2OlrFYOpmOWEs/qY81heoFRclV5y23lUDJ4=
- github.com/russross/blackfriday v1.6.0/go.mod h1:ti0ldHuxg49ri4ksnFxlkCfN+hvslNlmVHqNRXXJNAY=
- github.com/russross/blackfriday/v2 v2.0.1/go.mod h1:+Rmxgy9KzJVeS9/2gXHxylqXiyQDYRxCVz55jmeOWTM=
 +github.com/russross/blackfriday/v2 v2.1.0 h1:JIOH55/0cWyOuilr9/qlrm0BSXldqnqwMsf35Ld67mk=
  github.com/russross/blackfriday/v2 v2.1.0/go.mod h1:+Rmxgy9KzJVeS9/2gXHxylqXiyQDYRxCVz55jmeOWTM=
- github.com/seccomp/libseccomp-golang v0.9.2-0.20220502022130-f33da4d89646/go.mod h1:JA8cRccbGaA1s33RQf7Y1+q9gHmZX1yB/z9WDN1C6fg=
- github.com/shurcooL/sanitized_anchor_name v1.0.0/go.mod h1:1NzhyTcUVG4SuEtjjoZeVRXNmyL/1OwPU0+IJeTBvfc=
+ github.com/sirupsen/logrus v1.0.6/go.mod h1:pMByvHTf9Beacp5x1UXfOR9xyW/9antXMhjMPG0dEzc=
+ github.com/sirupsen/logrus v1.2.0/go.mod h1:LxeOpSwHxABJmUn/MG1IvRgCAasNZTLOkJPxbbu5VWo=
 diff --git a/vendor/github.com/cpuguy83/go-md2man/v2/.gitignore b/vendor/github.com/cpuguy83/go-md2man/v2/.gitignore
 new file mode 100644
 index 000000000000..30f97c3d73ab
@@ -10882,11 +10883,11 @@ index 000000000000..8e07baae3307
 +You may call `cmd.InitDefaultCompletionCmd()` to document the default autocompletion command.
 diff --git a/vendor/github.com/spf13/cobra/doc/man_docs.go b/vendor/github.com/spf13/cobra/doc/man_docs.go
 new file mode 100644
-index 000000000000..b5a2c596e96f
+index 000000000000..b8c15ce88543
 --- /dev/null
 +++ b/vendor/github.com/spf13/cobra/doc/man_docs.go
 @@ -0,0 +1,246 @@
-+// Copyright 2013-2022 The Cobra Authors
++// Copyright 2013-2023 The Cobra Authors
 +//
 +// Licensed under the Apache License, Version 2.0 (the "License");
 +// you may not use this file except in compliance with the License.
@@ -11171,11 +11172,11 @@ index 000000000000..3709160f34f0
 +That will get you a man page `/tmp/test.3`
 diff --git a/vendor/github.com/spf13/cobra/doc/md_docs.go b/vendor/github.com/spf13/cobra/doc/md_docs.go
 new file mode 100644
-index 000000000000..bab4b496368c
+index 000000000000..c4a27c00935b
 --- /dev/null
 +++ b/vendor/github.com/spf13/cobra/doc/md_docs.go
 @@ -0,0 +1,156 @@
-+// Copyright 2013-2022 The Cobra Authors
++// Copyright 2013-2023 The Cobra Authors
 +//
 +// Licensed under the Apache License, Version 2.0 (the "License");
 +// you may not use this file except in compliance with the License.
@@ -11454,11 +11455,11 @@ index 000000000000..1659175cfdab
 +```
 diff --git a/vendor/github.com/spf13/cobra/doc/rest_docs.go b/vendor/github.com/spf13/cobra/doc/rest_docs.go
 new file mode 100644
-index 000000000000..d65890652dde
+index 000000000000..2cca6fd778de
 --- /dev/null
 +++ b/vendor/github.com/spf13/cobra/doc/rest_docs.go
 @@ -0,0 +1,186 @@
-+// Copyright 2013-2022 The Cobra Authors
++// Copyright 2013-2023 The Cobra Authors
 +//
 +// Licensed under the Apache License, Version 2.0 (the "License");
 +// you may not use this file except in compliance with the License.
@@ -11508,7 +11509,7 @@ index 000000000000..d65890652dde
 +	return nil
 +}
 +
-+// linkHandler for default ReST hyperlink markup
++// defaultLinkHandler for default ReST hyperlink markup
 +func defaultLinkHandler(name, ref string) string {
 +	return fmt.Sprintf("`%s <%s.rst>`_", name, ref)
 +}
@@ -11629,7 +11630,7 @@ index 000000000000..d65890652dde
 +	return nil
 +}
 +
-+// adapted from: https://github.com/kr/text/blob/main/indent.go
++// indentString adapted from: https://github.com/kr/text/blob/main/indent.go
 +func indentString(s, p string) string {
 +	var res []byte
 +	b := []byte(s)
@@ -11766,11 +11767,11 @@ index 000000000000..3041c573ab01
 +```
 diff --git a/vendor/github.com/spf13/cobra/doc/util.go b/vendor/github.com/spf13/cobra/doc/util.go
 new file mode 100644
-index 000000000000..499ecdd919b9
+index 000000000000..0aaa07a166d8
 --- /dev/null
 +++ b/vendor/github.com/spf13/cobra/doc/util.go
 @@ -0,0 +1,52 @@
-+// Copyright 2013-2022 The Cobra Authors
++// Copyright 2013-2023 The Cobra Authors
 +//
 +// Licensed under the Apache License, Version 2.0 (the "License");
 +// you may not use this file except in compliance with the License.
@@ -11824,11 +11825,11 @@ index 000000000000..499ecdd919b9
 +func (s byName) Less(i, j int) bool { return s[i].Name() < s[j].Name() }
 diff --git a/vendor/github.com/spf13/cobra/doc/yaml_docs.go b/vendor/github.com/spf13/cobra/doc/yaml_docs.go
 new file mode 100644
-index 000000000000..12f8cf33b8f2
+index 000000000000..2b26d6ec0f3e
 --- /dev/null
 +++ b/vendor/github.com/spf13/cobra/doc/yaml_docs.go
 @@ -0,0 +1,175 @@
-+// Copyright 2013-2022 The Cobra Authors
++// Copyright 2013-2023 The Cobra Authors
 +//
 +// Licensed under the Apache License, Version 2.0 (the "License");
 +// you may not use this file except in compliance with the License.
@@ -23716,7 +23717,7 @@ index 000000000000..e88f9c54aecb
 +
 +}
 diff --git a/vendor/modules.txt b/vendor/modules.txt
-index 807b468777dc..0d69cb4dbed5 100644
+index 5fc4fe641043..8dfd03ef0dd2 100644
 --- a/vendor/modules.txt
 +++ b/vendor/modules.txt
 @@ -18,9 +18,17 @@ github.com/containerd/containerd/errdefs
@@ -23727,17 +23728,17 @@ index 807b468777dc..0d69cb4dbed5 100644
 +## explicit; go 1.11
 +github.com/cpuguy83/go-md2man/v2
 +github.com/cpuguy83/go-md2man/v2/md2man
- # github.com/creack/pty v1.1.11
+ # github.com/creack/pty v1.1.18
  ## explicit; go 1.13
  github.com/creack/pty
 +# github.com/docker/cli-docs-tool v0.5.1
 +## explicit; go 1.18
 +github.com/docker/cli-docs-tool
 +github.com/docker/cli-docs-tool/annotation
- # github.com/docker/distribution v2.8.1+incompatible
+ # github.com/docker/distribution v2.8.2+incompatible
  ## explicit
  github.com/docker/distribution
-@@ -222,12 +230,16 @@ github.com/prometheus/procfs/internal/util
+@@ -224,12 +232,16 @@ github.com/prometheus/procfs/internal/util
  # github.com/rivo/uniseg v0.2.0
  ## explicit; go 1.12
  github.com/rivo/uniseg
@@ -23747,14 +23748,14 @@ index 807b468777dc..0d69cb4dbed5 100644
  # github.com/sirupsen/logrus v1.9.0
  ## explicit; go 1.13
  github.com/sirupsen/logrus
- # github.com/spf13/cobra v1.6.1
+ # github.com/spf13/cobra v1.7.0
  ## explicit; go 1.15
  github.com/spf13/cobra
 +github.com/spf13/cobra/doc
  # github.com/spf13/pflag v1.0.5
  ## explicit; go 1.12
  github.com/spf13/pflag
-@@ -389,6 +401,9 @@ google.golang.org/protobuf/types/known/timestamppb
+@@ -391,6 +403,9 @@ google.golang.org/protobuf/types/known/timestamppb
  # gopkg.in/yaml.v2 v2.4.0
  ## explicit; go 1.15
  gopkg.in/yaml.v2

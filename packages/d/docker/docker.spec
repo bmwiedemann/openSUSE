@@ -31,9 +31,9 @@
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define real_version 23.0.6
-%define git_version 9dbdbd4b6d76
-%define git_commit_epoch 1683319810
+%define real_version 24.0.2
+%define git_version 659604f9ee60
+%define git_commit_epoch 1685049742
 
 Name:           docker
 Version:        %{real_version}_ce
@@ -128,6 +128,8 @@ Requires(post): shadow
 # different storage-driver than devicemapper
 Recommends:     lvm2 >= 2.2.89
 Recommends:     git-core >= 1.7
+# Required for "docker buildx" support.
+Recommends:     docker-buildx
 ExcludeArch:    s390 ppc
 
 %description
@@ -256,6 +258,9 @@ install -D -m0755 %{docker_builddir}/bundles/dynbinary-daemon/dockerd %{buildroo
 # docker proxy
 install -D -m0755 %{docker_builddir}/bundles/dynbinary-daemon/docker-proxy %{buildroot}/%{_bindir}/docker-proxy
 
+# cli-plugins/
+install -d %{buildroot}/usr/lib/docker/cli-plugins
+
 # /var/lib/docker
 install -d %{buildroot}/%{_localstatedir}/lib/docker
 # daemon.json config file
@@ -331,6 +336,9 @@ grep -q '^dockremap:' /etc/subgid || \
 %{_bindir}/docker-proxy
 %{_sbindir}/rcdocker
 %dir %{_localstatedir}/lib/docker/
+
+%dir /usr/lib/docker
+%dir /usr/lib/docker/cli-plugins
 
 %{_unitdir}/%{name}.service
 %{_sysusersdir}/%{name}.conf
