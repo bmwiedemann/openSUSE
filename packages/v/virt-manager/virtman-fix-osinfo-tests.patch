@@ -1,0 +1,46 @@
+# Fix tests
+
+--- virt-manager-4.1.0/tests/data/cli/compare/virt-install-osinfo-url.xml.orig	2023-06-14 10:38:08.152804131 -0600
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-osinfo-url.xml	2023-06-14 10:41:32.756809007 -0600
+@@ -13,7 +13,7 @@
+     <type arch="x86_64" machine="q35">hvm</type>
+     <kernel>/VIRTINST-TESTSUITE/vmlinuz</kernel>
+     <initrd>/VIRTINST-TESTSUITE/initrd.img</initrd>
+-    <cmdline>method=http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/26/Server/x86_64/os/</cmdline>
++    <cmdline>method=https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/26/Server/x86_64/os/</cmdline>
+   </os>
+   <features>
+     <acpi/>
+--- virt-manager-4.1.0/tests/data/cli/compare/virt-install-osinfo-url-with-disk.xml.orig	2023-06-14 10:38:14.424804281 -0600
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-osinfo-url-with-disk.xml	2023-06-14 10:40:27.748807458 -0600
+@@ -13,7 +13,7 @@
+     <type arch="x86_64" machine="q35">hvm</type>
+     <kernel>/VIRTINST-TESTSUITE/vmlinuz</kernel>
+     <initrd>/VIRTINST-TESTSUITE/initrd.img</initrd>
+-    <cmdline>method=http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/26/Server/x86_64/os/</cmdline>
++    <cmdline>method=https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/26/Server/x86_64/os/</cmdline>
+   </os>
+   <features>
+     <acpi/>
+--- virt-manager-4.1.0/tests/data/cli/compare/virt-install-osinfo-url-unattended.xml.orig	2023-06-14 10:38:24.920804531 -0600
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-osinfo-url-unattended.xml	2023-06-14 10:40:11.028807059 -0600
+@@ -13,7 +13,7 @@
+     <type arch="x86_64" machine="q35">hvm</type>
+     <kernel>/VIRTINST-TESTSUITE/vmlinuz</kernel>
+     <initrd>/VIRTINST-TESTSUITE/initrd.img</initrd>
+-    <cmdline>ks=file:/fedora.ks inst.repo=http://archives.fedoraproject.org/pub/archive/fedora/linux/releases/26/Server/x86_64/os/</cmdline>
++    <cmdline>ks=file:/fedora.ks inst.repo=https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/26/Server/x86_64/os/</cmdline>
+   </os>
+   <features>
+     <acpi/>
+--- virt-manager-4.1.0/tests/data/cli/compare/virt-install-osinfo-unattended-treeapis.xml.orig	2023-06-14 10:39:35.908806222 -0600
++++ virt-manager-4.1.0/tests/data/cli/compare/virt-install-osinfo-unattended-treeapis.xml	2023-06-14 10:39:52.756806624 -0600
+@@ -13,7 +13,7 @@
+     <type arch="x86_64" machine="pc-i440fx-6.1">hvm</type>
+     <kernel>/VIRTINST-TESTSUITE/vmlinuz</kernel>
+     <initrd>/VIRTINST-TESTSUITE/initrd.img</initrd>
+-    <cmdline>ks=file:/fedora.ks method=http://archive.fedoraproject.org/pub/archive/fedora/linux/releases/17/Fedora/x86_64/os/</cmdline>
++    <cmdline>ks=file:/fedora.ks method=https://archive.fedoraproject.org/pub/archive/fedora/linux/releases/17/Fedora/x86_64/os/</cmdline>
+   </os>
+   <features>
+     <acpi/>

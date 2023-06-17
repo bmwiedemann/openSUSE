@@ -1918,4 +1918,12 @@
     <comment>Fix for bsc#1201748 which adds support for a video device for ARM guests if video virtio is supported (qemu-hw-display-virtio-gpu installed)</comment>
     <requestid>1082818</requestid>
   </revision>
+  <revision rev="243" vrev="9">
+    <srcmd5>f0e7cd8debb8c098e589eba85f1245c4</srcmd5>
+    <version>4.1.0</version>
+    <time>1687033189</time>
+    <user>dimstar_suse</user>
+    <comment>The new libvirt modular daemons on a fresh install are not found by virt-manager and it therefore will not start. It is part of bsc#1212195</comment>
+    <requestid>1093153</requestid>
+  </revision>
 </revisionlist>

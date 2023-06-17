@@ -102,6 +102,8 @@ Patch183:       virtinst-add-oracle-linux-support.patch
 Patch184:       virtinst-windows-server-detection.patch
 Patch185:       virtman-fix-shared-disk-request-alignment-error.patch
 Patch186:       virtman-language-fixes.patch
+Patch187:       virtman-check-for-libvirt-modular-daemons.patch
+Patch188:       virtman-fix-osinfo-tests.patch
 
 BuildArch:      noarch
 

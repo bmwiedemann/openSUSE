@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 13 16:48:17 MDT 2023 - carnold@suse.com
+
+- bsc#1212195 - libvirtd crashes when virt-manager connects
+  virt-manager qemu:///system on a fresh installation tumbleweed
+  virtman-check-for-libvirt-modular-daemons.patch
+- Changes to osinfo-db cause some virt-manager tests to fail.
+  virtman-fix-osinfo-tests.patch
+
+-------------------------------------------------------------------
 Tue Apr 25 06:14:10 MDT 2023 - carnold@suse.com
 
 - bsc#1201748 - virt-install --graphics vnc fails with not support
