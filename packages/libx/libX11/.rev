@@ -579,4 +579,13 @@ additions, including new UTF-8 compose sequences for:
   to keep those sequeunces working with this release.</comment>
     <requestid>1090195</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>9a34ea07fa5d637172aac3f3538c17fc</srcmd5>
+    <version>1.8.5</version>
+    <time>1687033209</time>
+    <user>dimstar_suse</user>
+    <comment>- U_InitExt.c-Add-bounds-checks-for-extension-request-ev.patch
+  * Buffer overflows in InitExt.c (boo#1212102, CVE-2023-3138)</comment>
+    <requestid>1093353</requestid>
+  </revision>
 </revisionlist>
