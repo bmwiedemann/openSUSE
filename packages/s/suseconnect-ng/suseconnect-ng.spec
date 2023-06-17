@@ -23,7 +23,7 @@
 %bcond_with hwinfo
 
 Name:           suseconnect-ng
-Version:        1.1.0~git0.e3c41e60892e
+Version:        1.1.0~git2.f42b4b2a060e
 Release:        0
 URL:            https://github.com/SUSE/connect-ng
 Summary:        Utility to register a system with the SUSE Customer Center
@@ -187,6 +187,13 @@ about these improvements and any ideas you might have.
 EOF
 fi
 
+# If the keepalive timer exists on package install (not upgrade), then we are replacing SUSEConnect.
+# Record the enabled and active statuses so they can be restored in %posttrans.
+if [ "$1" -eq 1 ]; then
+  /usr/bin/systemctl is-enabled suseconnect-keepalive.timer >/dev/null 2>&1 && touch /run/suseconnect-keepalive.timer.is-enabled || :
+  /usr/bin/systemctl is-active suseconnect-keepalive.timer >/dev/null 2>&1 && touch /run/suseconnect-keepalive.timer.is-active || :
+fi
+
 %post
 %service_add_post suseconnect-keepalive.service suseconnect-keepalive.timer
 
@@ -195,6 +202,16 @@ fi
 
 %postun
 %service_del_postun suseconnect-keepalive.service suseconnect-keepalive.timer
+
+%posttrans
+if [ -e /run/suseconnect-keepalive.timer.is-enabled ]; then
+   /usr/bin/systemctl enable suseconnect-keepalive.timer >/dev/null 2>&1 || :
+   rm /run/suseconnect-keepalive.timer.is-enabled ||:
+fi
+if [ -e /run/suseconnect-keepalive.timer.is-active ]; then
+  /usr/bin/systemctl start suseconnect-keepalive.timer >/dev/null 2>&1 || :
+  rm /run/suseconnect-keepalive.timer.is-active ||:
+fi
 
 %check
 %gotest -v %import_path/internal/connect %{?test_hwinfo_args}

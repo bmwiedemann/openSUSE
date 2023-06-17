@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 07 06:11:07 UTC 2023 - msabate@suse.com
+
+- Update to version 1.1.0~git2.f42b4b2a060e:
+  * Keep keepalive timer states when replacing SUSEConnect (bsc#1211588)
+
+-------------------------------------------------------------------
 Fri Mar 17 10:34:15 UTC 2023 - msabate@suse.com
 
 - Update to version 1.1.0~git0.e3c41e60892e:
