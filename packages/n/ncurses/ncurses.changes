@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Jun 16 07:04:14 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20230615
+  + modify _nc_read_file_entry() to show relevant filename in warnings.
+  + improve checks in convert_string() for corrupt terminfo entry (report
+    and test-case by Gregory James Duck).
+
+-------------------------------------------------------------------
+Mon Jun 12 08:21:11 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20230610
+  + improve manpages discussing file descriptors in low-level functions.
+  + modify flushinp to use file descriptors in SCREEN, rather than from
+    TERMINAL, and check if they are for a terminal, like SVr4.
+  + modify mcprint to use file descriptor in SCREEN, for consistency.
+  + add xterm+focus to foot+base (patch by Daniel Ekloef).
+  + correct definition of Charable() for non-wide ncurses library (report
+    and test-case by Zbigniew Baniewski).
+
+-------------------------------------------------------------------
+Mon Jun  5 09:24:43 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20230603
+  + add configure option --with-strip-program, to override program
+    chosen by the install program for stripping executables (prompted
+    by discussion with Aapo Rantalainen).
+  + fix typo in INSTALL (report/patch by Aapo Rantalainen).
+  + improve error-checks for isEILSEQ()
+  + increase MB_CUR_MAX to 16, matching glibc's MB_LEN_MAX.
+  + corrected mouse mask in test/testcurs.c
+  + improve thread lock in lib_trace.c
+- Correct offsets of patch ncurses-6.4.dif
+
+-------------------------------------------------------------------
+Tue May 30 08:13:24 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20230527
+  + fixes for compiler warnings/cppcheck.
+
+-------------------------------------------------------------------
 Mon May 22 06:21:42 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20230520
