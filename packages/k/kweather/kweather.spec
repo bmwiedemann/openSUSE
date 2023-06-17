@@ -1,6 +1,7 @@
-# spec file for kweather
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# spec file for package kweather
+#
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -11,14 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
 
 %bcond_without  released
-Name:           kweather 
+Name:           kweather
 Version:        23.04.2
 Release:        0
 License:        GPL-2.0-or-later
 Summary:        Weather application for Plasma
-Url:            https://apps.kde.org/kweather
+URL:            https://apps.kde.org/kweather
 Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
@@ -31,8 +35,8 @@ BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KWeatherCore) >= 0.6.0
-BuildRequires:  cmake(KF5KirigamiAddons)
 BuildRequires:  cmake(KF5Kirigami2)
+BuildRequires:  cmake(KF5KirigamiAddons)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5Plasma)
 BuildRequires:  cmake(Qt5Charts)
@@ -46,6 +50,7 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Requires:       kirigami-addons
 Requires:       kirigami2
+Requires:       qt5qmlimport(QtCharts.2) >= 3
 
 %description
 A convergent weather application for Plasma. Has flat and dynamic/animated
