@@ -29,10 +29,7 @@ Source0:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.6/cryptsetu
 Source1:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.6/cryptsetup-%{version}.tar.sign
 Source2:        baselibs.conf
 Source3:        cryptsetup.keyring
-Source4:        %{name}-rpmlintrc
 BuildRequires:  device-mapper-devel
-BuildRequires:  fipscheck
-BuildRequires:  fipscheck-devel
 BuildRequires:  libjson-c-devel
 BuildRequires:  libpwquality-devel
 BuildRequires:  libselinux-devel
@@ -78,6 +75,7 @@ Summary:        Cryptsetup Documentation
 Group:          Documentation/Man
 Supplements:    (cryptsetup and man)
 Supplements:    (cryptsetup and patterns-base-documentation)
+BuildArch:      noarch
 
 %description doc
 Documentation and man pages for cryptsetup
@@ -85,7 +83,8 @@ Documentation and man pages for cryptsetup
 %package -n libcryptsetup%{so_ver}
 Summary:        Library for setting up dm-crypt Based Encrypted Block Devices
 Group:          System/Libraries
-Suggests:       libcryptsetup%{so_ver}-hmac = %{version}-%{release}
+Provides:       libcryptsetup%{so_ver}-hmac = %{version}
+Obsoletes:      libcryptsetup%{so_ver}-hmac < %{version}
 
 %description -n libcryptsetup%{so_ver}
 cryptsetup is used to conveniently set up dm-crypt based device-mapper
@@ -93,15 +92,6 @@ targets. It allows to set up targets to read cryptoloop compatible
 volumes as well as LUKS formatted ones. The package additionally
 includes support for automatically setting up encrypted volumes at boot
 time via the config file %{_sysconfdir}/crypttab.
-
-%package -n libcryptsetup%{so_ver}-hmac
-Summary:        Checksums for libcryptsetup%{so_ver}
-Group:          System/Base
-Requires:       libcryptsetup%{so_ver} = %{version}-%{release}
-
-%description -n libcryptsetup%{so_ver}-hmac
-This package contains HMAC checksums for integrity checking of libcryptsetup4,
-used for FIPS.
 
 %package -n lib%{name}-devel
 Summary:        Header files for libcryptsetup
@@ -123,6 +113,9 @@ time via the config file %{_sysconfdir}/crypttab.
 %autosetup -p1
 
 %build
+# force regeneration of manual pages from AsciiDoc
+rm -f man/*.8
+
 %configure \
   --enable-selinux \
   --enable-fips \
@@ -137,13 +130,6 @@ time via the config file %{_sysconfdir}/crypttab.
 %make_build
 
 %install
-# Generate HMAC checksums (FIPS)
-%define __spec_install_post \
-  %{?__debug_package:%{__debug_install_post}} \
-  %{__arch_install_post} \
-  %__os_install_post \
-  fipshmac %{buildroot}/%{_libdir}/libcryptsetup.so.* \
-%{nil}
 
 %make_install
 %if 0%{?suse_version} < 1550
@@ -152,8 +138,11 @@ ln -s ..%{_sbindir}/cryptsetup %{buildroot}/sbin
 %endif
 # don't want this file in /lib (FHS compat check), and can't move it to /usr/lib
 find %{buildroot} -type f -name "*.la" -delete -print
-#
+
 %find_lang %{name} --all-name
+
+%check
+%make_build check
 
 %post
 %{?regenerate_initrd_post}
@@ -178,14 +167,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_sbindir}/veritysetup
 %{_sbindir}/integritysetup
 %{_tmpfilesdir}/cryptsetup.conf
+%ghost %attr(700, -, -) %dir /run/cryptsetup
 
 %files lang -f %{name}.lang
 
 %files -n libcryptsetup%{so_ver}
 %{_libdir}/libcryptsetup.so.%{so_ver}*
-
-%files -n libcryptsetup%{so_ver}-hmac
-%{_libdir}/.libcryptsetup.so.%{so_ver}*hmac
 
 %files -n lib%{name}-devel
 %doc docs/examples/
@@ -194,14 +181,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/*
 
 %files ssh
-%license COPYING COPYING.LGPL
+%license COPYING*
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/libcryptsetup-token-ssh.so
 %{_mandir}/man8/cryptsetup-ssh.8.gz
 %{_sbindir}/cryptsetup-ssh
 
 %files doc
-%doc AUTHORS FAQ.md README.md docs/*ReleaseNotes
+%doc AUTHORS FAQ.md README.md docs/*ReleaseNotes docs/on-disk-format*.pdf
 %{_mandir}/man8/cryptsetup.8.gz
 %{_mandir}/man8/cryptsetup-benchmark.8.gz
 %{_mandir}/man8/cryptsetup-bitlkDump.8.gz

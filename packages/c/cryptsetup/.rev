@@ -1108,4 +1108,12 @@ in future, e.g. &quot;Version: 2.0~beta1&quot; (forwarded request 160813 from je
     <comment>cryptsetup 2.6.1</comment>
     <requestid>1064730</requestid>
   </revision>
+  <revision rev="123" vrev="2">
+    <srcmd5>676458c20d3664e6018e89ba4b5d571f</srcmd5>
+    <version>2.6.1</version>
+    <time>1687033205</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093291</requestid>
+  </revision>
 </revisionlist>
