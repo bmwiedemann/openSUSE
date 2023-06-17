@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 17 19:04:47 UTC 2023 - Cor Blom <cornelis@solcon.nl>
+
+- python-ly is now its own package. Removed it from this one and
+  added necessary dependencaies.
+
+-------------------------------------------------------------------
 Tue Mar 28 12:00:07 UTC 2023 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 3.3.0:

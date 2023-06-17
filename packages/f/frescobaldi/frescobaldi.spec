@@ -27,15 +27,13 @@ Release:        0
 URL:            http://www.frescobaldi.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        https://github.com/frescobaldi/frescobaldi/archive/v%{version}/%{name}-%{version}.tar.gz
-# New package, was before part of frescobaldi
-# Url: https://pypi.python.org/pypi/python-ly
-# Keep in this package, because frescobaldi is the only one using it.
-Source1:        https://files.pythonhosted.org/packages/9b/ed/e277509bb9f9376efe391f2f5a27da9840366d12a62bef30f44e5a24e0d9/python-ly-0.9.7.tar.gz
 BuildRequires:  appstream-glib-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python3-devel
+BuildRequires:  python3-ly
 BuildRequires:  update-desktop-files
 Requires:       lilypond
+Requires:       python3-ly
 Requires:       python3-poppler-qt5
 Requires:       python3-qpageview
 Requires:       python3-qt5
@@ -55,7 +53,7 @@ A score wizard is provided to quickly setup a music score. There are editing
 tools to manipulate the rhythm, acticulations, lyrics hyphenation, etc.
 
 %prep
-%setup -q -a 1
+%setup -q
 
 %build
 rm -rf %{name}_app/icons/Tango
@@ -65,10 +63,6 @@ make -C i18n
 make -C linux
 
 %install
-# first install python-ly
-cd python-ly-0.9.7
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
-cd ..
 python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 %suse_update_desktop_file org.frescobaldi.Frescobaldi AudioVideo Music
 
@@ -78,7 +72,6 @@ python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 %license COPYING
 %doc %{_mandir}/man1/frescobaldi*
 %{_bindir}/frescobaldi
-%{_bindir}/ly*
 %{_datadir}/applications/org.frescobaldi.Frescobaldi.desktop
 %{_datadir}/icons/hicolor/scalable/apps/org.frescobaldi.Frescobaldi.svg
 %{_datadir}/metainfo/org.frescobaldi.Frescobaldi.metainfo.xml

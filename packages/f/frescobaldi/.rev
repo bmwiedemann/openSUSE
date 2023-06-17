@@ -217,4 +217,13 @@
   * Several bugfixes, among which some wayland ones</comment>
     <requestid>1075000</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>1dc21ef8c2b9a6450e864b0c49b6a214</srcmd5>
+    <version>3.3.0</version>
+    <time>1687033246</time>
+    <user>dimstar_suse</user>
+    <comment>- python-ly is now its own package. Removed it from this one and
+  added necessary dependencaies.</comment>
+    <requestid>1093602</requestid>
+  </revision>
 </revisionlist>
