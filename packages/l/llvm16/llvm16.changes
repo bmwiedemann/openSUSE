@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 15 21:53:08 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 16.0.6.
+  * This release contains bug-fixes for the LLVM 16.0.0 release.
+    This release is API and ABI compatible with 16.0.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+- Make python3-clang noarch again and fix conflicts/provides to
+  point to %python3_sitelib instead of %python3_sitearch.
+
+-------------------------------------------------------------------
 Sat Jun  3 21:56:34 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 16.0.5.

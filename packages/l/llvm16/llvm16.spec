@@ -16,14 +16,14 @@
 #
 
 
-%define _relver 16.0.5
+%define _relver 16.0.6
 %define _version %_relver%{?_rc:rc%_rc}
 %define _tagver %_relver%{?_rc:-rc%_rc}
 %define _minor  16.0
 %define _sonum  16
 %define _itsme16 1
 # Integer version used by update-alternatives
-%define _uaver  1605
+%define _uaver  1606
 %define _soclang 13
 %define _socxx  1
 
@@ -697,8 +697,9 @@ Summary:        Python bindings for libclang
 Group:          Development/Libraries/Python
 Requires:       libclang%{_soclang} >= %{version}
 Requires:       python3-base
-Conflicts:      %{python3_sitearch}/clang/
-Provides:       %{python3_sitearch}/clang/
+Conflicts:      %{python3_sitelib}/clang/
+Provides:       %{python3_sitelib}/clang/
+BuildArch:      noarch
 
 %description -n python3-clang%{_sonum}
 This package contains the Python bindings to clang (C language)
