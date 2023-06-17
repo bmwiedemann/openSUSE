@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 14 08:08:37 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20230613:
+  * Add `{id,io,ai}.vn` for .vn ccTLD in ICANN Section (#1771)
+  * util: gTLD data autopull updates for 2023-06-10T15:11:56 UTC (#1774)
+
+-------------------------------------------------------------------
 Fri Jun  9 08:40:40 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20230607:

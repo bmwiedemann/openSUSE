@@ -1269,4 +1269,14 @@ Now with build cycle removed.</comment>
   * Update of gov.pl labels (#1752)</comment>
     <requestid>1091778</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>d1157c8133350b99400c7c55c0bae334</srcmd5>
+    <version>20230613</version>
+    <time>1687033186</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230613:
+  * Add `{id,io,ai}.vn` for .vn ccTLD in ICANN Section (#1771)
+  * util: gTLD data autopull updates for 2023-06-10T15:11:56 UTC (#1774)</comment>
+    <requestid>1093071</requestid>
+  </revision>
 </revisionlist>
