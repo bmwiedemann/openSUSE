@@ -1,4 +1,8 @@
-[gdb/testsuite] Compile ada hello world for skip_ada_tests
+From e9faa078c28b14386609a12d307471cb142547d6 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Fri, 21 Apr 2023 09:12:35 +0200
+Subject: [PATCH 2/5] [gdb/testsuite] Compile ada hello world for
+ skip_ada_tests
 
 For openSUSE Leap 15.0 with gcc-PIE installed (which makes gcc create PIE
 executables by default) we get:
@@ -32,17 +36,16 @@ gdb/testsuite/ChangeLog:
 	(gdb_can_compile_ada): New gdb_caching_proc.
 	* lib/gdb.exp: Add load_lib ada.exp.
 	(skip_ada_tests): Return 1 if !gdb_can_compile_ada.
-
 ---
  gdb/testsuite/lib/ada.exp | 31 +++++++++++++++++++++++++++++++
  gdb/testsuite/lib/gdb.exp |  6 ++++++
  2 files changed, 37 insertions(+)
 
 diff --git a/gdb/testsuite/lib/ada.exp b/gdb/testsuite/lib/ada.exp
-index 0ffc5957c8..8370ce5b9b 100644
+index f5bf2dcbb71..48dcd00bbe3 100644
 --- a/gdb/testsuite/lib/ada.exp
 +++ b/gdb/testsuite/lib/ada.exp
-@@ -87,12 +87,43 @@ proc gdb_compile_ada_1 {source dest type options} {
+@@ -85,12 +85,43 @@ proc gdb_compile_ada_1 {source dest type options} {
  # compile was successful.
  
  proc gdb_compile_ada {source dest type options} {
@@ -87,18 +90,18 @@ index 0ffc5957c8..8370ce5b9b 100644
  # used a different naming convention from many of the other gdb tests,
  # and this difference was preserved during the conversion to
 diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
-index 653f145c1c..a0f2961a75 100644
+index 31856fa3721..85c0bfb897f 100644
 --- a/gdb/testsuite/lib/gdb.exp
 +++ b/gdb/testsuite/lib/gdb.exp
-@@ -84,6 +84,7 @@ load_lib cache.exp
+@@ -137,6 +137,7 @@ load_lib cache.exp
  load_lib gdb-utils.exp
  load_lib memory.exp
  load_lib check-test-names.exp
 +load_lib ada.exp
  
+ # The path to the GDB binary to test.
  global GDB
- 
-@@ -2093,6 +2094,11 @@ proc skip_fortran_tests {} {
+@@ -2450,6 +2451,11 @@ proc skip_fortran_tests {} {
  # Return a 1 if I don't even want to try to test ada.
  
  proc skip_ada_tests {} {
@@ -110,3 +113,6 @@ index 653f145c1c..a0f2961a75 100644
      return 0
  }
  
+-- 
+2.35.3
+

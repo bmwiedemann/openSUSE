@@ -72,7 +72,7 @@ diff --git a/gdb/testsuite/gdb.base/fileio.exp b/gdb/testsuite/gdb.base/fileio.e
  }
  
  if  { [gdb_compile "${srcdir}/${subdir}/${srcfile}" "${binfile}" \
-@@ -47,7 +47,8 @@ set dir2 [standard_output_file dir2.fileio.test]
+@@ -40,7 +40,8 @@ set dir2 [standard_output_file dir2.fileio.test]
  if {[file exists $dir2] && ![file writable $dir2]} {
      system "chmod +w $dir2"
  }
@@ -82,7 +82,7 @@ diff --git a/gdb/testsuite/gdb.base/fileio.exp b/gdb/testsuite/gdb.base/fileio.e
  
  set oldtimeout $timeout
  set timeout [expr "$timeout + 60"]
-@@ -89,7 +90,7 @@ gdb_test continue \
+@@ -81,7 +82,7 @@ gdb_test continue \
  
  gdb_test "continue" ".*" ""
  
@@ -91,7 +91,7 @@ diff --git a/gdb/testsuite/gdb.base/fileio.exp b/gdb/testsuite/gdb.base/fileio.e
  
  gdb_test continue \
  "Continuing\\..*open 5:.*EACCES$stop_msg" \
-@@ -276,9 +277,7 @@ gdb_test continue \
+@@ -268,9 +269,7 @@ gdb_test continue \
  gdb_exit
  
  # Make dir2 writable again so rm -rf of a build tree Just Works.

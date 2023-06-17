@@ -1,7 +1,7 @@
-From bbf4e4ba2a9bd73384268b0160d54e36edc92a12 Mon Sep 17 00:00:00 2001
+From 8797e6c1eb8c863617cd484d469dff23d059a15f Mon Sep 17 00:00:00 2001
 From: Tom de Vries <tdevries@suse.de>
-Date: Tue, 14 Feb 2023 11:53:54 +0100
-Subject: [PATCH 03/11] [gdb/testsuite] Factor out proc linux_kernel_version
+Date: Fri, 21 Apr 2023 17:58:49 +0200
+Subject: [PATCH 4/5] [gdb/testsuite] Factor out proc linux_kernel_version
 
 Factor out new proc linux_kernel_version from test-case
 gdb.arch/i386-pkru.exp.
@@ -13,7 +13,7 @@ Tested on x86_64-linux.
  2 files changed, 29 insertions(+), 14 deletions(-)
 
 diff --git a/gdb/testsuite/gdb.arch/i386-pkru.exp b/gdb/testsuite/gdb.arch/i386-pkru.exp
-index 5fe93db9b4b..9bc9f9735e5 100644
+index 5d2b1a24a15..b2e5385c52b 100644
 --- a/gdb/testsuite/gdb.arch/i386-pkru.exp
 +++ b/gdb/testsuite/gdb.arch/i386-pkru.exp
 @@ -62,20 +62,12 @@ if { !$supports_pkru } {
@@ -44,11 +44,11 @@ index 5fe93db9b4b..9bc9f9735e5 100644
  
  # Test pkru register at startup
 diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
-index 5104835a2a9..069a61038e6 100644
+index 85c0bfb897f..2be69479d70 100644
 --- a/gdb/testsuite/lib/gdb.exp
 +++ b/gdb/testsuite/lib/gdb.exp
-@@ -8551,5 +8551,28 @@ gdb_caching_proc has_hw_wp_support {
-     return $has_hw_wp_support
+@@ -9334,5 +9334,28 @@ proc decompress_bz2 { bz2 } {
+     return $copy
  }
  
 +# Detect linux kernel version and return as list of 3 numbers: major, minor,

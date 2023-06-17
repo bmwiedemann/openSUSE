@@ -1,0 +1,118 @@
+From 406fd9f71067fce649343dfd609ca8e5e97b2164 Mon Sep 17 00:00:00 2001
+From: Mark Wielaard <mark@klomp.org>
+Date: Tue, 2 May 2023 20:23:32 +0200
+Subject: [PATCH] Pass const frame_info_ptr reference for
+ skip_[language_]trampoline
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+g++ 13.1.1 produces a -Werror=dangling-pointer=
+
+In file included from ../../binutils-gdb/gdb/frame.h:75,
+                 from ../../binutils-gdb/gdb/symtab.h:40,
+                 from ../../binutils-gdb/gdb/language.c:33:
+In member function ‘void intrusive_list<T, AsNode>::push_empty(T&) [with T = frame_info_ptr; AsNode = intrusive_base_node<frame_info_ptr>]’,
+    inlined from ‘void intrusive_list<T, AsNode>::push_back(reference) [with T = frame_info_ptr; AsNode = intrusive_base_node<frame_info_ptr>]’ at gdbsupport/intrusive_list.h:332:24,
+    inlined from ‘frame_info_ptr::frame_info_ptr(const frame_info_ptr&)’ at gdb/frame.h:241:26,
+    inlined from ‘CORE_ADDR skip_language_trampoline(frame_info_ptr, CORE_ADDR)’ at gdb/language.c:530:49:
+gdbsupport/intrusive_list.h:415:12: error: storing the address of local variable ‘<anonymous>’ in ‘frame_info_ptr::frame_list.intrusive_list<frame_info_ptr>::m_back’ [-Werror=dangling-pointer=]
+  415 |     m_back = &elem;
+      |     ~~~~~~~^~~~~~~
+gdb/language.c: In function ‘CORE_ADDR skip_language_trampoline(frame_info_ptr, CORE_ADDR)’:
+gdb/language.c:530:49: note: ‘<anonymous>’ declared here
+  530 |       CORE_ADDR real_pc = lang->skip_trampoline (frame, pc);
+      |                           ~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~
+gdb/frame.h:359:41: note: ‘frame_info_ptr::frame_list’ declared here
+  359 |   static intrusive_list<frame_info_ptr> frame_list;
+      |                                         ^~~~~~~~~~
+
+Each new frame_info_ptr is being pushed on a static frame list and g++
+cannot see why that is safe in case the frame_info_ptr is created and
+destroyed immediately when passed as value.
+
+It isn't clear why only in this one place g++ sees the issue (probably
+because it can inline enough code in this specific case).
+
+Since passing the frame_info_ptr as const reference is cheaper, use
+that as workaround for this warning.
+
+PR build/30413
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=30413
+
+Tested-by: Kevin Buettner <kevinb@redhat.com>
+Reviewed-by: Kevin Buettner <kevinb@redhat.com>
+Reviewed-by: Tom Tromey <tom@tromey.com>
+---
+ gdb/c-lang.c    | 2 +-
+ gdb/language.c  | 2 +-
+ gdb/language.h  | 4 ++--
+ gdb/objc-lang.c | 2 +-
+ 4 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/gdb/c-lang.c b/gdb/c-lang.c
+index 52010fa8cb1..a46343c837a 100644
+--- a/gdb/c-lang.c
++++ b/gdb/c-lang.c
+@@ -1003,7 +1003,7 @@ class cplus_language : public language_defn
+ 
+   /* See language.h.  */
+ 
+-  CORE_ADDR skip_trampoline (frame_info_ptr fi,
++  CORE_ADDR skip_trampoline (const frame_info_ptr &fi,
+ 			     CORE_ADDR pc) const override
+   {
+     return cplus_skip_trampoline (fi, pc);
+diff --git a/gdb/language.c b/gdb/language.c
+index 5037867b256..655d0794394 100644
+--- a/gdb/language.c
++++ b/gdb/language.c
+@@ -528,7 +528,7 @@ add_set_language_command ()
+    Return the result from the first that returns non-zero, or 0 if all
+    `fail'.  */
+ CORE_ADDR 
+-skip_language_trampoline (frame_info_ptr frame, CORE_ADDR pc)
++skip_language_trampoline (const frame_info_ptr &frame, CORE_ADDR pc)
+ {
+   for (const auto &lang : language_defn::languages)
+     {
+diff --git a/gdb/language.h b/gdb/language.h
+index cf94923ecc1..88c3bc90efe 100644
+--- a/gdb/language.h
++++ b/gdb/language.h
+@@ -471,7 +471,7 @@ struct language_defn
+      If that PC falls in a trampoline belonging to this language, return
+      the address of the first pc in the real function, or 0 if it isn't a
+      language tramp for this language.  */
+-  virtual CORE_ADDR skip_trampoline (frame_info_ptr fi, CORE_ADDR pc) const
++  virtual CORE_ADDR skip_trampoline (const frame_info_ptr &fi, CORE_ADDR pc) const
+   {
+     return (CORE_ADDR) 0;
+   }
+@@ -789,7 +789,7 @@ extern const char *language_str (enum language);
+ 
+ /* Check for a language-specific trampoline.  */
+ 
+-extern CORE_ADDR skip_language_trampoline (frame_info_ptr, CORE_ADDR pc);
++extern CORE_ADDR skip_language_trampoline (const frame_info_ptr &, CORE_ADDR pc);
+ 
+ /* Return demangled language symbol, or NULL.  */
+ extern gdb::unique_xmalloc_ptr<char> language_demangle
+diff --git a/gdb/objc-lang.c b/gdb/objc-lang.c
+index e17a4c406c0..5bcf1e4f3f0 100644
+--- a/gdb/objc-lang.c
++++ b/gdb/objc-lang.c
+@@ -282,7 +282,7 @@ class objc_language : public language_defn
+ 
+   /* See language.h.  */
+ 
+-  CORE_ADDR skip_trampoline (frame_info_ptr frame,
++  CORE_ADDR skip_trampoline (const frame_info_ptr &frame,
+ 			     CORE_ADDR stop_pc) const override
+   {
+     struct gdbarch *gdbarch = get_frame_arch (frame);
+
+base-commit: 4b9342bc7f1d79b1453afd6c15e1a5cdefa92d9e
+-- 
+2.35.3
+

@@ -23,7 +23,7 @@
 usage ()
 {
     echo "usage: $0 <1-5>"
-    echo "       $0 -local [ -sle11 | -sle12 | -factory | -aarch64 | -powerpc64le | -s390 | -s390x ] <dir>"
+    echo "       $0 -local [ -sle11 | -sle12 | -factory | -i586 | -x86_64 | -aarch64 | -powerpc64le | -s390 | -s390x ] <dir>"
     echo
     echo "Verify remote results at:"
     echo "  ./binaries-testsuite.distro.arch/gdb-testresults"
@@ -53,6 +53,8 @@ have_aarch64=false
 have_powerpc64le=false
 have_s390=false
 have_s390x=false
+have_i586=false
+have_x86_64=false
 if [ "$n" = "-local" ]; then
     while [ $# -gt 1 ]; do
 	case $1 in
@@ -76,6 +78,12 @@ if [ "$n" = "-local" ]; then
 		;;
 	    -s390x)
 		have_s390x=true
+		;;
+	    -i586)
+		have_i586=true
+		;;
+	    -x86_64)
+		have_x86_64=true
 		;;
 	    *)
 		echo "Don't know how to handle arg: $1"
@@ -140,6 +148,7 @@ report_sum ()
 }
 
 kfail=(
+
     # https://sourceware.org/bugzilla/show_bug.cgi?id=26971
     "FAIL: gdb.arch/amd64-init-x87-values.exp: check_x87_regs_around_init: check post FLD1 value of .fop"
     "FAIL: gdb.arch/amd64-init-x87-values.exp: check_x87_regs_around_init: check post FLD1 value of .fioff"
@@ -296,9 +305,17 @@ kfail=(
     # subsequent info threads shows all threads stopped, and a previous
     # info threads show all threads running.  Not harmful.
     "FAIL: gdb.threads/interrupt-while-step-over.exp: displaced-stepping=off: iter=[0-9]*: wait for stops \(timeout\)"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=29040
+    "FAIL: gdb.threads/next-fork-other-thread.exp:"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=30521
+    "FAIL: gdb.base/printcmds.exp: print {unsigned char\[\]}{0xffffffff}"
+
 ) # kfail
 
 kfail_sle12=(
+
     # https://sourceware.org/bugzilla/show_bug.cgi?id=26292
     "FAIL: gdb.base/checkpoint-ns.exp: .* \(timeout\)"
     "FAIL: gdb.base/checkpoint.exp: .* \(timeout\)"
@@ -334,9 +351,9 @@ kfail_sle12=(
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=29244
     "FAIL: gdb.arch/amd64-disp-step-avx.exp: running to main in runto"
-    "FAIL: gdb.arch/amd64-init-x87-values.exp: check_setting_mxcsr_before_enable: running to main in runto"
-    "FAIL: gdb.arch/amd64-init-x87-values.exp: check_setting_x87_regs_before_enable: running to main in runto"
-    "FAIL: gdb.arch/amd64-init-x87-values.exp: check_x87_regs_around_init: running to main in runto"
+    "FAIL: gdb.arch/amd64-init-x87-values.exp: check_x87_regs_around_init: runto: run to main"
+    "FAIL: gdb.arch/amd64-init-x87-values.exp: check_setting_mxcsr_before_enable: runto: run to main"
+    "FAIL: gdb.arch/amd64-init-x87-values.exp: check_setting_x87_regs_before_enable: runto: run to main"
     "FAIL: gdb.dwarf2/frame-inlined-in-outer-frame.exp: frame"
     "FAIL: gdb.dwarf2/frame-inlined-in-outer-frame.exp: starti prompt"
     "FAIL: gdb.dwarf2/frame-inlined-in-outer-frame.exp: step back into _start \(the program is no longer running\)"
@@ -354,7 +371,8 @@ kfail_sle12=(
     "FAIL: gdb.base/longjmp.exp: next over patt3"
     "FAIL: gdb.base/premature-dummy-frame-removal.exp: p some_func \(\)"
     "FAIL: gdb.base/premature-dummy-frame-removal.exp: set debug frame on"
-
+    "FAIL: gdb.base/longjmp-until-in-main.exp: until \\\$line, in main"
+    
     # Commit 2d77a94ff17 ("[gdb/testsuite] Require debug info for
     # gdb.tui/tui-layout-asm-short-prog.exp")
     "FAIL: gdb.tui/tui-layout-asm-short-prog.exp: check asm box contents"
@@ -362,12 +380,12 @@ kfail_sle12=(
 
     # Test-cases that use -static but may turn out to be PIE when using
     # unix/-fPIE/-fpie.
-    "FAIL: gdb.base/break-entry.exp: running to .* in runto"
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=29244
+    "FAIL: gdb.base/break-entry.exp: runto: run to *"
     "FAIL: gdb.base/catch-fork-static.exp: run to fork"
+    "FAIL: gdb.threads/staticthreads.exp: runto: run to main"
     "FAIL: gdb.threads/staticthreads.exp: continue to main's call of sem_post"
     "FAIL: gdb.threads/staticthreads.exp: handle SIG32 helps"
-    "FAIL: gdb.threads/staticthreads.exp: running to main in runto"
-    "FAIL: gdb.threads/staticthreads.exp: running to main in runto"
     "FAIL: gdb.dwarf2/frame-inlined-in-outer-frame.exp: step back into _start"
     "FAIL: gdb.dwarf2/frame-inlined-in-outer-frame.exp: step back into foo"
     "FAIL: gdb.dwarf2/frame-inlined-in-outer-frame.exp: step into bar"
@@ -377,9 +395,15 @@ kfail_sle12=(
     # on s390x/-m31 for SLE-12-SP5 with trunk.
     "FAIL: gdb.guile/scm-disasm.exp: disassemble via memory port"
     "FAIL: gdb.guile/scm-disasm.exp: memory-port: disassemble"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=30180
+    "FAIL: gdb.fortran/module.exp: print var_d"
+    "FAIL: gdb.fortran/module.exp: print var_x value 31"
+
 ) # kfail_sle12
 
 kfail_sle11=(
+
     "${kfail_sle12[@]}"
 
     # For SLE-11, libipt is not enabled, so on intel we can run into
@@ -423,9 +447,11 @@ kfail_sle11=(
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=30154
     "FAIL: gdb.multi/multi-target-no-resumed.exp: inf_A=.: inf_B=.: send_gdb control C \(timeout\)"
+
 )
 
 kfail_factory=(
+
     # https://sourceware.org/bugzilla/show_bug.cgi?id=28463
     "FAIL: gdb.ada/set_pckd_arr_elt.exp: scenario=minimal: print va.t\(1\) := 15"
     "FAIL: gdb.ada/set_pckd_arr_elt.exp: scenario=minimal: continue to update_small for va.t"
@@ -438,7 +464,7 @@ kfail_factory=(
     # Similar error message to the one above, see if fixing that one fixes this.
     "FAIL: gdb.threads/clone-new-thread-event.exp: catch SIGUSR1"
     # https://sourceware.org/bugzilla/show_bug.cgi?id=27238
-    "FAIL: gdb.go/package.exp: setting breakpoint at package2.Foo"
+    "FAIL: gdb.go/package.exp: gdb_breakpoint: set breakpoint at package2.Foo"
     "FAIL: gdb.go/package.exp: going to first breakpoint \(the program exited\)"
     # https://sourceware.org/bugzilla/show_bug.cgi?id=28551
     "FAIL: gdb.go/package.exp: going to first breakpoint \\(GDB internal error\\)"
@@ -479,9 +505,34 @@ kfail_factory=(
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=29965
     "FAIL: gdb.threads/process-exit-status-is-leader-exit-status.exp: iteration=.*: continue \(the program exited\)"
+
+    # To be investigated.
+    "FAIL: gdb.ada/mi_task_arg.exp: -stack-list-arguments 1 \(unexpected output\)"
+    "FAIL: gdb.ada/str_binop_equal.exp: print my_str = \"ABCD\""
+    "FAIL: gdb.ada/widewide.exp: print my_wws = \" helo\""
+    "FAIL: gdb.ada/widewide.exp: print my_ws = \"wide\""
+
+    # Looks like a problem with modern debug info, where stepping out of a
+    # function takes more one step.
+    "FAIL: gdb.base/rtld-step.exp: finish out of foo 1"
+    "FAIL: gdb.base/rtld-step.exp: next over baz in bar"
+    "FAIL: gdb.base/rtld-step.exp: step into foo 2"
+    "FAIL: gdb.base/rtld-step.exp: next over baz in foo"
+    "FAIL: gdb.base/rtld-step.exp: step out of foo back into bar"
+    "FAIL: gdb.base/rtld-step.exp: continue until exit"
+
+    # Sets breakpoints in gdb build with lto.  This is known to be slow, and
+    # likely to cause timeouts.
+    gdb.gdb/python-helper.exp
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=30540
+    FAIL: gdb.base/auxv.exp: info auxv on live process
+    FAIL: gdb.base/auxv.exp: info auxv on gcore-created dump
+    
 ) # kfail_factory
 
 kfail_aarch64=(
+
     # https://sourceware.org/bugzilla/show_bug.cgi?id=29408
     "FAIL: gdb.base/large-frame.exp: optimize=-O0: backtrace"
     "FAIL: gdb.base/large-frame.exp: optimize=-O1: backtrace"
@@ -501,9 +552,11 @@ kfail_aarch64=(
     # https://sourceware.org/bugzilla/show_bug.cgi?id=29423
     "FAIL: gdb.base/watchpoint-unaligned.exp: continue \(timeout\)"
     "FAIL: gdb.base/watchpoint-unaligned.exp: size8twice write"
+
 ) # kfail_aarch64
 
 kfail_powerpc64le=(
+
     # https://sourceware.org/bugzilla/show_bug.cgi?id=29420
     "FAIL: gdb.ada/convvar_comp.exp: print \\\$item.started"
 
@@ -519,10 +572,6 @@ kfail_powerpc64le=(
 
     # Commit f68eca29d3b ("PowerPC, fix gdb.base/retval-large-struct.exp").
     "FAIL: gdb.base/retval-large-struct.exp: finish from return_large_struct"
-
-    # https://sourceware.org/bugzilla/show_bug.cgi?id=29793
-    "FAIL: gdb.cp/gdb2495.exp: call a function that raises an exception without a handler."
-    "FAIL: gdb.cp/gdb2495.exp: bt after returning from a popped frame"
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=29792
     "FAIL: gdb.opt/solib-intra-step.exp: second-hit"
@@ -558,7 +607,7 @@ kfail_powerpc64le=(
     # Commit e7d69e72bfd ("gdb: always add the default register groups").
     "FAIL: gdb.xml/tdesc-regs.exp: maintenance print reggroups"
 
-    # Commit 91836f41e20 ("Powerpc fix for gdb.base/unwind-on-each-insn.exp").
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=30548
     "FAIL: gdb.base/inline-frame-cycle-unwind.exp: cycle at level [0-9]*: backtrace when the unwind is broken at frame [0-9]*"
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=29815
@@ -579,25 +628,41 @@ kfail_powerpc64le=(
     # https://sourceware.org/bugzilla/show_bug.cgi?id=29897
     "FAIL: gdb.base/run-control-while-bg-execution.exp: action1=.*: action2=start: start \(GDB internal error\)"
     "FAIL: gdb.base/run-control-while-bg-execution.exp: action1=.*: action2=run: run \(GDB internal error\)"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=30021
+    "FAIL: gdb.base/unwind-on-each-insn.exp: instruction 6: \\\$fba_value == \\\$main_fba"
+    "FAIL: gdb.base/unwind-on-each-insn.exp: instruction 6: \[string equal \\\$fid \\\$main_fid\]"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=30542
+    "FAIL: gdb.base/watch-before-fork.exp: test: continue to catch fork"
+
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=30543
+    "FAIL: gdb.python/py-send-packet.exp: call python run_auxv_send_packet_test function"
 )
 
 kfail_powerpc64le_sle12=(
+
     # Commit 85819864f7c ("[gdb/testsuite] Fix gdb.arch/altivec-regs.exp with
     # gcc 4.8.5").
     "FAIL: gdb.arch/altivec-regs.exp: down to vector_fun"
     "FAIL: gdb.arch/altivec-regs.exp: finish returned correct value"
     "FAIL: gdb.arch/altivec-regs.exp: print vector parameter a"
     "FAIL: gdb.arch/altivec-regs.exp: print vector parameter b"
+
 )
 
 kfail_s390x_s390=(
+
     # Commit 167f3beb655 ("[gdb/testsuite] Fix gdb.base/write_mem.exp for big
     # endian")
     "FAIL: gdb.base/write_mem.exp: x /xh main"
+
 )
 
 # Plain s390 or s390x/-m31.
 kfail_s390=(
+
     "${kfail_s390x_s390[@]}"
     
     # https://sourceware.org/bugzilla/show_bug.cgi?id=29841
@@ -630,11 +695,51 @@ kfail_s390=(
     "FAIL: gdb.base/info-shared.exp:"
     "FAIL: gdb.python/py-strfns.exp: p /d {char\[4\]} arg"
     "FAIL: gdb.python/py-strfns.exp: p arg"
+
 )
 
 # s390x/-m64.
 kfail_s390x=(
+
     "${kfail_s390x_s390[@]}"
+
+)
+
+kfail_i586=(
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=30518
+    "FAIL: gdb.python/py-disasm.exp: memory source api: disassemble test"
+    "FAIL: gdb.python/py-disasm.exp: memory source api: python analyzing_disassembler.find_replacement_candidate\(\)"
+    "FAIL: gdb.python/py-disasm.exp: memory source api: second disassembler pass"
+    "FAIL: gdb.python/py-disasm.exp: memory source api: python analyzing_disassembler.check\(\)"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=30519
+    "FAIL: gdb.python/py-parameter.exp: test_integer_parameter: kind=PARAM_UINTEGER: test default value"
+    "FAIL: gdb.python/py-parameter.exp: test_integer_parameter: kind=PARAM_UINTEGER: test default value via gdb.parameter"
+    "FAIL: gdb.python/py-parameter.exp: test_integer_parameter: kind=PARAM_UINTEGER: {test set to -1}"
+    "FAIL: gdb.python/py-parameter.exp: test_integer_parameter: kind=PARAM_UINTEGER: test value of -1"
+    "FAIL: gdb.python/py-parameter.exp: test_integer_parameter: kind=PARAM_UINTEGER: test value of -1 via gdb.parameter"
+    "FAIL: gdb.python/py-parameter.exp: test_integer_parameter: kind=PARAM_UINTEGER: test set to 1"
+    "FAIL: gdb.python/py-parameter.exp: test_integer_parameter: kind=PARAM_UINTEGER: test value of 1"
+    "FAIL: gdb.python/py-parameter.exp: test_integer_parameter: kind=PARAM_UINTEGER: test value of 1 via gdb.parameter"
+    "FAIL: gdb.python/py-parameter.exp: test_integer_parameter: kind=PARAM_UINTEGER: {test set to -5}"
+    "FAIL: gdb.python/py-parameter.exp: test_integer_parameter: kind=PARAM_UINTEGER: test value of -5 via gdb.parameter"
+    "FAIL: gdb.python/py-parameter.exp: test_integer_parameter: kind=PARAM_UINTEGER: test set to 5"
+    "FAIL: gdb.python/py-parameter.exp: test_integer_parameter: kind=PARAM_UINTEGER: test value of 5 via gdb.parameter"
+    "FAIL: gdb.python/py-parameter.exp: test_integer_parameter: kind=PARAM_UINTEGER: {test set to None}"
+    "FAIL: gdb.python/py-parameter.exp: test_integer_parameter: kind=PARAM_UINTEGER: test value of None"
+    "FAIL: gdb.python/py-parameter.exp: test_integer_parameter: kind=PARAM_UINTEGER: test value of None via gdb.parameter"
+    "FAIL: gdb.python/py-parameter.exp: test_integer_parameter: kind=PARAM_UINTEGER: test set to 0"
+    "FAIL: gdb.python/py-parameter.exp: test_integer_parameter: kind=PARAM_UINTEGER: test value of 0 via gdb.parameter"
+
+)
+
+kfail_armv7hl=(
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=30537
+    "FAIL: gdb.fortran/intrinsics.exp: p cmplx \(4,4,16\) \(GDB internal error\)"
+    "FAIL: gdb.fortran/intrinsics.exp: ptype cmplx \(4,4,16\) \(GDB internal error\)"
+
 )
 
 case $n in
@@ -645,8 +750,10 @@ case $n in
 	# Todo: apply kfail_factory/kfail_sle12 only when appropriate.
 	kfail+=("${kfail_factory[@]}")
 	kfail+=("${kfail_sle12[@]}")
+	kfail+=("${kfail_sle11[@]}")
 	kfail+=("${kfail_s390[@]}")
 	kfail+=("${kfail_powerpc64le[@]}")
+	kfail+=("${kfail_armv7hl[@]}")
 	kfail_re=$(join "|" "${kfail[@]}")
 	grep "^FAIL:.*internal error" binaries-testsuite*/gdb-testresults/*.sum \
 	     | grep -E -v "$kfail_re"
@@ -659,6 +766,11 @@ case $n in
 	kfail+=(
 	    # https://sourceware.org/bugzilla/show_bug.cgi?id=28323
 	    "SLE-12.x86_64.*gdb.ada/mi_dyn_arr.exp"
+
+	    "UNRESOLVED: gdb.base/gcore-excessive-memory.exp: verify we can get to main"
+
+	    # https://sourceware.org/bugzilla/show_bug.cgi?id=30547
+	    "UNRESOLVED: gdb.base/vfork-follow-parent.exp: resolution_method=schedule-multiple: continue to break_parent"
 	)
 
 	kfail_re=$(join "|" "${kfail[@]}")
@@ -699,6 +811,12 @@ case $n in
 
 	    # https://sourceware.org/bugzilla/show_bug.cgi?id=29897
 	    "displaced-stepping.c:[0-9]*: internal-error: prepare: Assertion \`buf.current_thread != thread' failed."
+
+	    # https://sourceware.org/bugzilla/show_bug.cgi?id=30537
+	    "f-lang.c:[0-9]*: internal-error: eval_op_f_cmplx: Assertion \`kind_arg->code \(\) == TYPE_CODE_COMPLEX' failed."
+
+	    # Test-case gdb.base/gcore-excessive-memory.exp.
+	    "utils.c:[0-9]*: internal-error: virtual memory exhausted: can't allocate [0-9]* bytes."
 	)
 
 	kfail_re=$(join "|" "${kfail[@]}")
@@ -708,43 +826,81 @@ case $n in
 	;;
 
     4)
-	sums=()
+	(
+	    # Known clean config: Leap 15.3 x86_64
+	    config=openSUSE_Leap_15.3.x86_64/gdb-testresults
+	    sums=("$config/gdb-x86_64-suse-linux-m64.-fno-PIE.-no-pie.sum"
+		  "$config/gdb-x86_64-suse-linux-m64.sum"
+		  "$config/gdb-x86_64-suse-linux-m32.-fno-PIE.-no-pie.sum"
+		  "$config/gdb-x86_64-suse-linux-m32.sum")
 
-	# Known clean config: Leap 15.3 x86_64
-	config=openSUSE_Leap_15.3.x86_64/gdb-testresults
-	sums+=("$config/gdb-x86_64-suse-linux-m64.-fno-PIE.-no-pie.sum"
-	       "$config/gdb-x86_64-suse-linux-m64.sum"
-	       "$config/gdb-x86_64-suse-linux-m32.-fno-PIE.-no-pie.sum"
-	       "$config/gdb-x86_64-suse-linux-m32.sum")
+	    #
+	    
+	    for sum in "${sums[@]}"; do
+		sum=binaries-testsuite.$sum
+		report_sum "$sum"
+	    done
+	)
 
-	# Known clean config: Leap 15.3 i586
-	config=openSUSE_Leap_15.3.i586/gdb-testresults
-	sums+=("$config/gdb-i586-suse-linux-m32.-fno-PIE.-no-pie.sum"
-	       "$config/gdb-i586-suse-linux-m32.sum")
+	(
+	    # Known clean config: Leap 15.3 i586
+	    config=openSUSE_Leap_15.3.i586/gdb-testresults
+	    sums=("$config/gdb-i586-suse-linux-m32.-fno-PIE.-no-pie.sum"
+		  "$config/gdb-i586-suse-linux-m32.sum")
 
-	# Known clean config: Leap 15.4 x86_64
-	config=openSUSE_Leap_15.4.x86_64/gdb-testresults
-	sums+=("$config/gdb-x86_64-suse-linux-m64.-fno-PIE.-no-pie.sum"
-	       "$config/gdb-x86_64-suse-linux-m64.sum"
-	       "$config/gdb-x86_64-suse-linux-m32.-fno-PIE.-no-pie.sum"
-	       "$config/gdb-x86_64-suse-linux-m32.sum")
+	    kfail+=("${kfail_i586[@]}")
+	    
+	    for sum in "${sums[@]}"; do
+		sum=binaries-testsuite.$sum
+		report_sum "$sum"
+	    done
+	)
 
-	# Known clean config: Leap 15.4 i586
-	config=openSUSE_Leap_15.4.i586/gdb-testresults
-	sums+=("$config/gdb-i586-suse-linux-m32.-fno-PIE.-no-pie.sum"
-	       "$config/gdb-i586-suse-linux-m32.sum")
+	(
+	    # Known clean config: Leap 15.4 x86_64
+	    config=openSUSE_Leap_15.4.x86_64/gdb-testresults
+	    sums=("$config/gdb-x86_64-suse-linux-m64.-fno-PIE.-no-pie.sum"
+		  "$config/gdb-x86_64-suse-linux-m64.sum"
+		  "$config/gdb-x86_64-suse-linux-m32.-fno-PIE.-no-pie.sum"
+		  "$config/gdb-x86_64-suse-linux-m32.sum")
 
-	# Known clean config: SLE 15 x86_64.
-	config=SLE-15.x86_64/gdb-testresults
-	sums+=("$config/gdb-x86_64-suse-linux-m64.-fno-PIE.-no-pie.sum"
-	       "$config/gdb-x86_64-suse-linux-m64.sum"
-	       "$config/gdb-x86_64-suse-linux-m32.-fno-PIE.-no-pie.sum"
-	       "$config/gdb-x86_64-suse-linux-m32.sum")
+	    #
 
-	for sum in "${sums[@]}"; do
-	    sum=binaries-testsuite.$sum
-	    report_sum "$sum"
-	done
+	    for sum in "${sums[@]}"; do
+		sum=binaries-testsuite.$sum
+		report_sum "$sum"
+	    done
+	)
+
+	(
+	    # Known clean config: Leap 15.4 i586
+	    config=openSUSE_Leap_15.4.i586/gdb-testresults
+	    sums=("$config/gdb-i586-suse-linux-m32.-fno-PIE.-no-pie.sum"
+		  "$config/gdb-i586-suse-linux-m32.sum")
+
+	    kfail+=("${kfail_i586[@]}")
+	    
+	    for sum in "${sums[@]}"; do
+		sum=binaries-testsuite.$sum
+		report_sum "$sum"
+	    done
+	)
+
+	(
+	    # Known clean config: SLE 15 x86_64.
+	    config=SLE-15.x86_64/gdb-testresults
+	    sums=("$config/gdb-x86_64-suse-linux-m64.-fno-PIE.-no-pie.sum"
+		  "$config/gdb-x86_64-suse-linux-m64.sum"
+		  "$config/gdb-x86_64-suse-linux-m32.-fno-PIE.-no-pie.sum"
+		  "$config/gdb-x86_64-suse-linux-m32.sum")
+
+	    #
+
+	    for sum in "${sums[@]}"; do
+		sum=binaries-testsuite.$sum
+		report_sum "$sum"
+	    done
+	)
 
 	(
 	    # Known clean config: SLE 12 x86_64.
@@ -770,11 +926,6 @@ case $n in
 		  "$config/gdb-x86_64-suse-linux-m32.-fno-PIE.-no-pie.sum"
 		  "$config/gdb-x86_64-suse-linux-m32.sum")	
 
-	    # Known clean config: Factory i586
-	    config=openSUSE_Factory.i586/gdb-testresults
-	    sums+=("$config/gdb-i586-suse-linux-m32.-fno-PIE.-no-pie.sum"
-		   "$config/gdb-i586-suse-linux-m32.sum")
-
 	    kfail+=("${kfail_factory[@]}")
 
 	    for sum in "${sums[@]}"; do
@@ -782,6 +933,21 @@ case $n in
 		report_sum "$sum"
 	    done
 	)
+
+	(
+	    # Known clean config: Factory i586
+	    config=openSUSE_Factory.i586/gdb-testresults
+	    sums=("$config/gdb-i586-suse-linux-m32.-fno-PIE.-no-pie.sum"
+		   "$config/gdb-i586-suse-linux-m32.sum")
+
+	    kfail+=("${kfail_factory[@]}")
+	    kfail+=("${kfail_i586[@]}")
+
+	    for sum in "${sums[@]}"; do
+		sum=binaries-testsuite.$sum
+		report_sum "$sum"
+	    done
+	)	
 
 	(
 	    # Known clean config: SLE 15 aarch64.
@@ -798,14 +964,14 @@ case $n in
 	)
 
 	(
-	    kfail+=("${kfail_powerpc64le[@]}")
-
 	    # Known clean config: SLE 15 / openSUSE 15.4 powerpc64le.
 	    for config in SLE-15.ppc64le/gdb-testresults openSUSE_Leap_15.4.ppc64le/gdb-testresults; do
 		sums=("$config/gdb-ppc64le-suse-linux-m64.-fno-PIE.-no-pie.sum"
 		      "$config/gdb-ppc64le-suse-linux-m64.sum")
 	    done
 	    
+	    kfail+=("${kfail_powerpc64le[@]}")
+
 	    for sum in "${sums[@]}"; do
 		sum=binaries-testsuite.$sum
 		report_sum "$sum"
@@ -865,9 +1031,14 @@ case $n in
 	if $have_s390; then
 	    kfail+=("${kfail_s390[@]}")
 	fi
-
 	if $have_s390x; then
 	    kfail+=("${kfail_s390x[@]}")
+	fi
+	if $have_i586; then
+	    kfail+=("${kfail_i586[@]}")
+	fi
+	if $have_x86_64; then
+	    kfail+=("${kfail_x86_64[@]}")
 	fi
 
 	for sum in "${sums[@]}"; do

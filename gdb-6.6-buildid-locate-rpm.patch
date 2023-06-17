@@ -1,6 +1,6 @@
 From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
-From: Fedora GDB patches <invalid@email.com>
-Date: Fri, 27 Oct 2017 21:07:50 +0200
+From: Kevin Buettner <kevinb@redhat.com>
+Date: Wed, 22 Feb 2023 22:30:40 -0700
 Subject: gdb-6.6-buildid-locate-rpm.patch
 
 ;;=push+jan
@@ -232,6 +232,40 @@ diff --git a/gdb/aclocal.m4 b/gdb/aclocal.m4
  # AM_AUX_DIR_EXPAND                                         -*- Autoconf -*-
  
  # Copyright (C) 2001-2017 Free Software Foundation, Inc.
+diff --git a/gdb/build-id.c b/gdb/build-id.c
+--- a/gdb/build-id.c
++++ b/gdb/build-id.c
+@@ -771,10 +771,10 @@ missing_rpm_enlist_1 (const char *filename, int verify_vendor)
+   static rpmts (*rpmtsCreate_p) (void);
+   extern rpmts rpmtsFree(rpmts ts);
+   static rpmts (*rpmtsFree_p) (rpmts ts);
+-  extern rpmdbMatchIterator rpmtsInitIterator(const rpmts ts, rpmTag rpmtag,
++  extern rpmdbMatchIterator rpmtsInitIterator(const rpmts ts, rpmDbiTagVal rpmtag,
+                                               const void * keyp, size_t keylen);
+   static rpmdbMatchIterator (*rpmtsInitIterator_p) (const rpmts ts,
+-						    rpmTag rpmtag,
++						    rpmDbiTagVal rpmtag,
+ 						    const void *keyp,
+ 						    size_t keylen);
+ #else	/* !DLOPEN_LIBRPM */
+@@ -829,7 +829,7 @@ missing_rpm_enlist_1 (const char *filename, int verify_vendor)
+ 	      && (rpmdbNextIterator_p = (Header (*) (rpmdbMatchIterator mi)) dlsym (h, "rpmdbNextIterator"))
+ 	      && (rpmtsCreate_p = (rpmts (*) (void)) dlsym (h, "rpmtsCreate"))
+ 	      && (rpmtsFree_p = (rpmts (*) (rpmts ts)) dlsym (h, "rpmtsFree"))
+-	      && (rpmtsInitIterator_p = (rpmdbMatchIterator (*) (const rpmts ts, rpmTag rpmtag, const void *keyp, size_t keylen)) dlsym (h, "rpmtsInitIterator"))))
++	      && (rpmtsInitIterator_p = (rpmdbMatchIterator (*) (const rpmts ts, rpmDbiTagVal rpmtag, const void *keyp, size_t keylen)) dlsym (h, "rpmtsInitIterator"))))
+ 	  {
+ 	    warning (_("Opened library \"%s\" is incompatible (%s), "
+ 		      "missing debuginfos notifications will not be displayed"),
+@@ -917,7 +917,7 @@ missing_rpm_enlist_1 (const char *filename, int verify_vendor)
+ 
+ 	  /* RPMDBI_PACKAGES requires keylen == sizeof (int).  */
+ 	  /* RPMDBI_LABEL is an interface for NVR-based dbiFindByLabel().  */
+-	  mi_debuginfo = rpmtsInitIterator_p (ts, (rpmTag) RPMDBI_LABEL, debuginfo, 0);
++	  mi_debuginfo = rpmtsInitIterator_p (ts, (rpmDbiTagVal) RPMDBI_LABEL, debuginfo, 0);
+ 	  xfree (debuginfo);
+ 	  if (mi_debuginfo)
+ 	    {
 diff --git a/gdb/config.in b/gdb/config.in
 --- a/gdb/config.in
 +++ b/gdb/config.in
@@ -258,7 +292,7 @@ diff --git a/gdb/config.in b/gdb/config.in
 diff --git a/gdb/configure b/gdb/configure
 --- a/gdb/configure
 +++ b/gdb/configure
-@@ -775,6 +775,11 @@ TARGET_OBS
+@@ -783,6 +783,11 @@ TARGET_OBS
  ENABLE_BFD_64_BIT_FALSE
  ENABLE_BFD_64_BIT_TRUE
  subdirs
@@ -270,7 +304,7 @@ diff --git a/gdb/configure b/gdb/configure
  GDB_DATADIR
  DEBUGDIR
  MAKEINFO_EXTRA_FLAGS
-@@ -880,6 +885,7 @@ with_gdb_datadir
+@@ -912,6 +917,7 @@ with_gdb_datadir
  with_relocated_sources
  with_auto_load_dir
  with_auto_load_safe_path
@@ -278,7 +312,7 @@ diff --git a/gdb/configure b/gdb/configure
  enable_targets
  enable_64_bit_bfd
  enable_gdbmi
-@@ -959,6 +965,8 @@ PKG_CONFIG_PATH
+@@ -992,6 +998,8 @@ PKG_CONFIG_PATH
  PKG_CONFIG_LIBDIR
  DEBUGINFOD_CFLAGS
  DEBUGINFOD_LIBS
@@ -286,8 +320,8 @@ diff --git a/gdb/configure b/gdb/configure
 +RPM_LIBS
  YACC
  YFLAGS
- XMKMF'
-@@ -1635,6 +1643,8 @@ Optional Packages:
+ ZSTD_CFLAGS
+@@ -1678,6 +1686,8 @@ Optional Packages:
                            do not restrict auto-loaded files locations
    --with-debuginfod       Enable debuginfo lookups with debuginfod
                            (auto/yes/no)
@@ -296,7 +330,7 @@ diff --git a/gdb/configure b/gdb/configure
    --with-libunwind-ia64   use libunwind frame unwinding for ia64 targets
    --with-curses           use the curses library instead of the termcap
                            library
-@@ -1715,6 +1725,8 @@ Some influential environment variables:
+@@ -1761,6 +1771,8 @@ Some influential environment variables:
                C compiler flags for DEBUGINFOD, overriding pkg-config
    DEBUGINFOD_LIBS
                linker flags for DEBUGINFOD, overriding pkg-config
@@ -305,7 +339,7 @@ diff --git a/gdb/configure b/gdb/configure
    YACC        The `Yet Another Compiler Compiler' implementation to use.
                Defaults to the first program found out of: `bison -y', `byacc',
                `yacc'.
-@@ -6634,6 +6646,494 @@ _ACEOF
+@@ -17848,6 +17860,494 @@ _ACEOF
  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $with_auto_load_safe_path" >&5
  $as_echo "$with_auto_load_safe_path" >&6; }
  
@@ -485,7 +519,7 @@ diff --git a/gdb/configure b/gdb/configure
 +extern Header rpmdbNextIterator(rpmdbMatchIterator mi);
 +extern rpmts rpmtsCreate(void);
 +extern rpmts rpmtsFree(rpmts ts);
-+extern rpmdbMatchIterator rpmtsInitIterator(const rpmts ts, rpmTag rpmtag,
++extern rpmdbMatchIterator rpmtsInitIterator(const rpmts ts, rpmDbiTagVal rpmtag,
 +					    const void * keyp, size_t keylen);
 +
 +int
@@ -747,7 +781,7 @@ diff --git a/gdb/configure b/gdb/configure
 +extern Header rpmdbNextIterator(rpmdbMatchIterator mi);
 +extern rpmts rpmtsCreate(void);
 +extern rpmts rpmtsFree(rpmts ts);
-+extern rpmdbMatchIterator rpmtsInitIterator(const rpmts ts, rpmTag rpmtag,
++extern rpmdbMatchIterator rpmtsInitIterator(const rpmts ts, rpmDbiTagVal rpmtag,
 +					    const void * keyp, size_t keylen);
 +
 +int
@@ -803,7 +837,7 @@ diff --git a/gdb/configure b/gdb/configure
 diff --git a/gdb/configure.ac b/gdb/configure.ac
 --- a/gdb/configure.ac
 +++ b/gdb/configure.ac
-@@ -153,6 +153,199 @@ AC_DEFINE_DIR(AUTO_LOAD_SAFE_PATH, escape_dir,
+@@ -160,6 +160,199 @@ AC_DEFINE_DIR(AUTO_LOAD_SAFE_PATH, escape_dir,
  	      [Directories safe to hold auto-loaded files.])
  AC_MSG_RESULT([$with_auto_load_safe_path])
  
@@ -947,7 +981,7 @@ diff --git a/gdb/configure.ac b/gdb/configure.ac
 +extern Header rpmdbNextIterator(rpmdbMatchIterator mi);
 +extern rpmts rpmtsCreate(void);
 +extern rpmts rpmtsFree(rpmts ts);
-+extern rpmdbMatchIterator rpmtsInitIterator(const rpmts ts, rpmTag rpmtag,
++extern rpmdbMatchIterator rpmtsInitIterator(const rpmts ts, rpmDbiTagVal rpmtag,
 +					    const void * keyp, size_t keylen);
 +    ]]), [
 +      LIBRPM_COMPAT=true
@@ -1006,15 +1040,15 @@ diff --git a/gdb/configure.ac b/gdb/configure.ac
 diff --git a/gdb/event-top.c b/gdb/event-top.c
 --- a/gdb/event-top.c
 +++ b/gdb/event-top.c
-@@ -42,6 +42,7 @@
- #include "gdbsupport/gdb-sigmask.h"
+@@ -43,6 +43,7 @@
  #include "async-event.h"
  #include "bt-utils.h"
+ #include "pager.h"
 +#include "symfile.h"
  
  /* readline include files.  */
  #include "readline/readline.h"
-@@ -374,6 +375,8 @@ display_gdb_prompt (const char *new_prompt)
+@@ -391,6 +392,8 @@ display_gdb_prompt (const char *new_prompt)
    /* Reset the nesting depth used when trace-commands is set.  */
    reset_command_nest_depth ();
  
@@ -1023,7 +1057,7 @@ diff --git a/gdb/event-top.c b/gdb/event-top.c
    /* Do not call the python hook on an explicit prompt change as
       passed to this function, as this forms a secondary/local prompt,
       IE, displayed but not set.  */
-@@ -800,7 +803,10 @@ command_line_handler (gdb::unique_xmalloc_ptr<char> &&rl)
+@@ -852,7 +855,10 @@ command_line_handler (gdb::unique_xmalloc_ptr<char> &&rl)
        command_handler (cmd);
  
        if (ui->prompt_state != PROMPTED)
@@ -1038,7 +1072,7 @@ diff --git a/gdb/event-top.c b/gdb/event-top.c
 diff --git a/gdb/symfile.h b/gdb/symfile.h
 --- a/gdb/symfile.h
 +++ b/gdb/symfile.h
-@@ -342,6 +342,7 @@ extern void generic_load (const char *args, int from_tty);
+@@ -352,6 +352,7 @@ extern void generic_load (const char *args, int from_tty);
  /* build-id support.  */
  extern struct bfd_build_id *build_id_addr_get (CORE_ADDR addr);
  extern void debug_print_missing (const char *binary, const char *debug);

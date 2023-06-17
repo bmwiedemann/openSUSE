@@ -1,0 +1,26 @@
+From 266359a17e77a53d4ebaa4f3b15c2ae39e43fca0 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 13 Jun 2023 15:07:22 +0200
+Subject: [PATCH 6/6] fixup gdb-lineno-makeup-test.patch
+
+---
+ gdb/testsuite/gdb.base/lineno-makeup.exp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.base/lineno-makeup.exp b/gdb/testsuite/gdb.base/lineno-makeup.exp
+index 9e11d78bf9c..d31e063bdc2 100644
+--- a/gdb/testsuite/gdb.base/lineno-makeup.exp
++++ b/gdb/testsuite/gdb.base/lineno-makeup.exp
+@@ -21,7 +21,8 @@ set binfuncfile [standard_output_file ${testfile}-func.bin]
+ set binfile [standard_output_file ${testfile}]
+ 
+ if { [gdb_compile "${srcdir}/${subdir}/${srcfuncfile}" "${objfuncfile}" object {}] != "" } {
+-    gdb_suppress_entire_file "Testcase compile failed, so all tests in this file will automatically fail."
++    unsupported "Testcase compile failed, so all tests in this file will automatically fail."
++    return
+ }
+ 
+ set objcopy [catch "exec objcopy -O binary --only-section .text ${objfuncfile} ${binfuncfile}" output]
+-- 
+2.35.3
+
