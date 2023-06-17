@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 14 13:00:09 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.8.2
+  * Fix an integer underflow bug in patch decoding.
+
+-------------------------------------------------------------------
 Fri Jun  9 08:16:39 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Build package in correct phase

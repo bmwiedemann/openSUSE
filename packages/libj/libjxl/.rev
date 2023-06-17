@@ -83,4 +83,12 @@ Leap 15.5
 - Use macros for ldconfig (forwarded request 1091774 from pluskalm)</comment>
     <requestid>1091790</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fa786e7efd9fef9f2016d0c818608823</srcmd5>
+    <version>0.8.2</version>
+    <time>1687033188</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.8.2</comment>
+    <requestid>1093137</requestid>
+  </revision>
 </revisionlist>
