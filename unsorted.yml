@@ -2117,12 +2117,6 @@ unsorted:
   - clang 
   - clang-devel 
   - clang-doc 
-  - clang11 
-  - clang11-devel 
-  - clang11-doc 
-  - clang12 
-  - clang12-devel 
-  - clang12-doc 
   - clang13 
   - clang13-devel 
   - clang13-doc 
@@ -6856,6 +6850,8 @@ unsorted:
   - gobject-introspection-devel 
   - gocr 
   - gocr-gui 
+  - gocryptfs 
+  - gocryptfs-doc 
   - godot 
   - godot-bash-completion 
   - godot-rpm-macros 
@@ -8336,13 +8332,6 @@ unsorted:
   - java-17-openjdk-javadoc 
   - java-17-openjdk-jmods 
   - java-17-openjdk-src 
-  - java-19-openjdk 
-  - java-19-openjdk-demo 
-  - java-19-openjdk-devel 
-  - java-19-openjdk-headless 
-  - java-19-openjdk-javadoc 
-  - java-19-openjdk-jmods 
-  - java-19-openjdk-src 
   - java-1_8_0-openj9 
   - java-1_8_0-openj9-accessibility 
   - java-1_8_0-openj9-demo 
@@ -9985,8 +9974,6 @@ unsorted:
   - libLASi-devel 
   - libLASi2 
   - libLHAPDF-6_5_4 
-  - libLLVM11 
-  - libLLVM12 
   - libLLVM13 
   - libLLVM14 
   - libLLVM15 
@@ -9994,8 +9981,6 @@ unsorted:
   - libLLVM16-32bit 
   - libLLVMSPIRVLib-devel 
   - libLLVMSPIRVLib16 
-  - libLTO11 
-  - libLTO12 
   - libLTO13 
   - libLTO14 
   - libLTO15 
@@ -11254,8 +11239,6 @@ unsorted:
   - libclang-cpp15 
   - libclang-cpp15-32bit 
   - libclang-cpp16-32bit 
-  - libclang11 
-  - libclang12 
   - libclastfm-devel 
   - libclaw-devel 
   - libclaw-doc 
@@ -12995,8 +12978,6 @@ unsorted:
   - liblirc_driver0 
   - liblirc_driver0-32bit 
   - liblittleb0 
-  - liblldb11 
-  - liblldb12 
   - liblldb13 
   - liblldb14 
   - liblldb15 
@@ -13625,8 +13606,6 @@ unsorted:
   - libomemo-c0 
   - libomniORB4-3 
   - libomnithread4 
-  - libomp11-devel 
-  - libomp12-devel 
   - libomp13-devel 
   - libomp14-devel 
   - libomp15-devel 
@@ -14069,7 +14048,7 @@ unsorted:
   - libpoppler-qt5-devel 
   - libpoppler-qt6-3 
   - libpoppler-qt6-devel 
-  - libpoppler128-32bit 
+  - libpoppler129-32bit 
   - libportal-devel 
   - libportal-gtk3-devel 
   - libportal-gtk4-devel 
@@ -14782,6 +14761,7 @@ unsorted:
   - libserializer-javadoc 
   - libserialport-devel 
   - libserialport0 
+  - libsexp0 
   - libsfcUtil0 
   - libsfml2-2_5 
   - libsgutils-devel 
@@ -16158,18 +16138,12 @@ unsorted:
   - lksctp-tools-devel 
   - llcbench 
   - lld 
-  - lld11 
-  - lld12 
   - lld13 
   - lld14 
   - lld15 
   - lld16 
   - lldb 
   - lldb-devel 
-  - lldb11 
-  - lldb11-devel 
-  - lldb12 
-  - lldb12-devel 
   - lldb13 
   - lldb13-devel 
   - lldb14 
@@ -16189,24 +16163,6 @@ unsorted:
   - llvm-polly 
   - llvm-polly-devel 
   - llvm-vim-plugins 
-  - llvm11 
-  - llvm11-LTO-devel 
-  - llvm11-devel 
-  - llvm11-doc 
-  - llvm11-gold 
-  - llvm11-opt-viewer 
-  - llvm11-polly 
-  - llvm11-polly-devel 
-  - llvm11-vim-plugins 
-  - llvm12 
-  - llvm12-LTO-devel 
-  - llvm12-devel 
-  - llvm12-doc 
-  - llvm12-gold 
-  - llvm12-opt-viewer 
-  - llvm12-polly 
-  - llvm12-polly-devel 
-  - llvm12-vim-plugins 
   - llvm13 
   - llvm13-devel 
   - llvm13-doc 
@@ -22759,8 +22715,6 @@ unsorted:
   - python3-lilv 
   - python3-linkchecker 
   - python3-lldb 
-  - python3-lldb11 
-  - python3-lldb12 
   - python3-lldb13 
   - python3-lldb14 
   - python3-lldb15 
@@ -23375,6 +23329,7 @@ unsorted:
   - python310-azure-cognitiveservices-vision-nspkg 
   - python310-azure-common 
   - python310-azure-communication-administration 
+  - python310-azure-communication-callautomation 
   - python310-azure-communication-chat 
   - python310-azure-communication-email 
   - python310-azure-communication-identity 
@@ -25089,6 +25044,7 @@ unsorted:
   - python310-pdfminer.six 
   - python310-pdfrw 
   - python310-pdm 
+  - python310-pdm-backend 
   - python310-pdm-pep517 
   - python310-pecan 
   - python310-peewee 
@@ -26816,6 +26772,7 @@ unsorted:
   - python311-azure-cognitiveservices-vision-nspkg 
   - python311-azure-common 
   - python311-azure-communication-administration 
+  - python311-azure-communication-callautomation 
   - python311-azure-communication-chat 
   - python311-azure-communication-email 
   - python311-azure-communication-identity 
@@ -28461,6 +28418,7 @@ unsorted:
   - python311-pdfminer.six 
   - python311-pdfrw 
   - python311-pdm 
+  - python311-pdm-backend 
   - python311-pdm-pep517 
   - python311-pecan 
   - python311-peewee 
@@ -29516,7 +29474,6 @@ unsorted:
   - python311-validators 
   - python311-varint 
   - python311-varlink 
-  - python311-vatnumber 
   - python311-vcrpy 
   - python311-vcver 
   - python311-vcversioner 
@@ -30179,6 +30136,7 @@ unsorted:
   - python39-azure-cognitiveservices-vision-nspkg 
   - python39-azure-common 
   - python39-azure-communication-administration 
+  - python39-azure-communication-callautomation 
   - python39-azure-communication-chat 
   - python39-azure-communication-email 
   - python39-azure-communication-identity 
@@ -31892,6 +31850,7 @@ unsorted:
   - python39-pdfminer.six 
   - python39-pdfrw 
   - python39-pdm 
+  - python39-pdm-backend 
   - python39-pdm-pep517 
   - python39-pecan 
   - python39-peewee 
@@ -33008,7 +32967,6 @@ unsorted:
   - python39-validators 
   - python39-varint 
   - python39-varlink 
-  - python39-vatnumber 
   - python39-vcrpy 
   - python39-vcver 
   - python39-vcversioner 
@@ -34597,6 +34555,8 @@ unsorted:
   - setroubleshoot-plugins-lang 
   - setroubleshoot-server 
   - sevctl 
+  - sexp 
+  - sexp-devel 
   - sfcgal 
   - sfcgal-devel 
   - sfftobmp 
