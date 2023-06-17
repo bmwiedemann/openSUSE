@@ -1,8 +1,17 @@
-Index: gdb-9.1/gdb/build-id.c
-===================================================================
---- gdb-9.1.orig/gdb/build-id.c
-+++ gdb-9.1/gdb/build-id.c
-@@ -861,19 +861,17 @@ missing_rpm_enlist_1 (const char *filena
+From 444f438fe775a9480b93dc7d63418e0e169b4fbd Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Fri, 21 Apr 2023 09:08:03 +0200
+Subject: [PATCH 1/5] gdb-6.6-buildid-locate-rpm-suse.patch
+
+---
+ gdb/build-id.c | 71 +++++++++-----------------------------------------
+ 1 file changed, 13 insertions(+), 58 deletions(-)
+
+diff --git a/gdb/build-id.c b/gdb/build-id.c
+index 86dfc8409b5..29aa10d8225 100644
+--- a/gdb/build-id.c
++++ b/gdb/build-id.c
+@@ -863,10 +863,8 @@ missing_rpm_enlist_1 (const char *filename, int verify_vendor)
  #endif
  	{
  	  Header h;
@@ -14,11 +23,10 @@ Index: gdb-9.1/gdb/build-id.c
  	  rpmdbMatchIterator mi_debuginfo;
  
  	  h = rpmdbNextIterator_p (mi);
- 	  if (h == NULL)
- 	    break;
+@@ -875,7 +873,9 @@ missing_rpm_enlist_1 (const char *filename, int verify_vendor)
  
--	  /* Verify the debuginfo file is not already installed.  */
--
+ 	  /* Verify the debuginfo file is not already installed.  */
+ 
 -	  debuginfo = headerFormat_p (h, "%{sourcerpm}-debuginfo.%{arch}",
 +	  /* The allocated memory gets utilized below for MISSING_RPM_HASH.  */
 +	  debuginfo = headerFormat_p (h,
@@ -26,7 +34,7 @@ Index: gdb-9.1/gdb/build-id.c
  				      &err);
  	  if (!debuginfo)
  	    {
-@@ -881,60 +879,19 @@ missing_rpm_enlist_1 (const char *filena
+@@ -883,60 +883,19 @@ missing_rpm_enlist_1 (const char *filename, int verify_vendor)
  	               err);
  	      continue;
  	    }
@@ -65,7 +73,7 @@ Index: gdb-9.1/gdb/build-id.c
 +	  /* Verify the debuginfo file is not already installed.  */
  	  /* RPMDBI_PACKAGES requires keylen == sizeof (int).  */
  	  /* RPMDBI_LABEL is an interface for NVR-based dbiFindByLabel().  */
- 	  mi_debuginfo = rpmtsInitIterator_p (ts, (rpmTag) RPMDBI_LABEL, debuginfo, 0);
+ 	  mi_debuginfo = rpmtsInitIterator_p (ts, (rpmDbiTagVal) RPMDBI_LABEL, debuginfo, 0);
 -	  xfree (debuginfo);
  	  if (mi_debuginfo)
  	    {
@@ -89,23 +97,23 @@ Index: gdb-9.1/gdb/build-id.c
  	  /* Base package name for `debuginfo-install'.  We do not use the
  	     `yum' command directly as the line
  		 yum --enablerepo='*debug*' install NAME-debuginfo.ARCH
-@@ -1076,10 +1033,7 @@ missing_rpm_list_print (void)
+@@ -1085,10 +1044,7 @@ missing_rpm_list_print (void)
    missing_rpm_list_entries = 0;
  
-   printf_unfiltered (_("Missing separate debuginfos, use: %s"),
+   gdb_printf (_("Missing separate debuginfos, use: %s"),
 -#ifdef DNF_DEBUGINFO_INSTALL
 -		     "dnf "
 -#endif
 -		     "debuginfo-install");
-+		     "zypper install");
++	      "zypper install");
    for (const char *el : array)
      {
-       puts_unfiltered (" ");
-@@ -1287,13 +1241,12 @@ debug_print_missing (const char *binary,
- 	fprintf_unfiltered (gdb_stdlog,
- 			    _("Missing separate debuginfo for %s\n"), binary);
+       gdb_printf (" %s", el);
+@@ -1295,13 +1251,12 @@ debug_print_missing (const char *binary, const char *debug)
+ 	gdb_printf (gdb_stdlog,
+ 		    _("Missing separate debuginfo for %s\n"), binary);
          if (debug != NULL)
--	  fprintf_unfiltered (gdb_stdlog, _("Try: %s %s\n"),
+-	  gdb_printf (gdb_stdlog, _("Try: %s %s\n"),
 -#ifdef DNF_DEBUGINFO_INSTALL
 -			      "dnf"
 -#else
@@ -114,10 +122,15 @@ Index: gdb-9.1/gdb/build-id.c
 -			      " --enablerepo='*debug*' install", debug);
 +	  {
 +	    const char *p = strrchr (debug, '/');
-+	    fprintf_unfiltered (gdb_stdlog, _("Try: %s%.2s%.38s\"\n"),
-+				"zypper install -C \"debuginfo(build-id)=",
-+				p - 2, p + 1);
++	    gdb_printf (gdb_stdlog, _("Try: %s%.2s%.38s\"\n"),
++			"zypper install -C \"debuginfo(build-id)=",
++			p - 2, p + 1);
 +	  }
        }
  }
  
+
+base-commit: 91ac179279557e27e6a149cbb78e4052a348f109
+-- 
+2.35.3
+

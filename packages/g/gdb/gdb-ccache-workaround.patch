@@ -9,9 +9,9 @@ Subject: gdb-ccache-workaround.patch
 diff --git a/gdb/testsuite/gdb.base/macscp.exp b/gdb/testsuite/gdb.base/macscp.exp
 --- a/gdb/testsuite/gdb.base/macscp.exp
 +++ b/gdb/testsuite/gdb.base/macscp.exp
-@@ -27,6 +27,14 @@ if { [test_compiler_info "gcc-*"] } {
-     lappend options additional_flags=-fdebug-macro
- }
+@@ -20,6 +20,14 @@ set objfile [standard_output_file ${testfile}.o]
+ 
+ set options {debug macros additional_flags=-DFROM_COMMANDLINE=ARG}
  
 +# Workaround ccache making lineno non-zero for command-line definitions.
 +if {[find_gcc] == "gcc" && [file executable "/usr/bin/gcc"]} {

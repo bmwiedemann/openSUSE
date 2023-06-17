@@ -213,7 +213,7 @@ diff --git a/gdb/nat/linux-btrace.h b/gdb/nat/linux-btrace.h
 diff --git a/gdbsupport/common.m4 b/gdbsupport/common.m4
 --- a/gdbsupport/common.m4
 +++ b/gdbsupport/common.m4
-@@ -156,7 +156,7 @@ AC_DEFUN([GDB_AC_COMMON], [
+@@ -166,7 +166,7 @@ AC_DEFUN([GDB_AC_COMMON], [
      AC_PREPROC_IFELSE([AC_LANG_SOURCE([[
    #include <linux/perf_event.h>
    #ifndef PERF_ATTR_SIZE_VER5

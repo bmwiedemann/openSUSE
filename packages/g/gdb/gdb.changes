@@ -1,10 +1,188 @@
 -------------------------------------------------------------------
+Wed Jun 14 06:23:42 UTC 2023 - Tom de Vries <tdevries@suse.com>
+
+- Patches added (master backports):
+  * pass-const-frame_info_ptr-reference-for-skip_-langua.patch
+- Maintenance script qa.sh:
+  * Add PR30543 kfail.
+  * Remove PR29793 kfail.
+
+-------------------------------------------------------------------
+Mon Jun 12 08:36:48 UTC 2023 - Tom de Vries <tdevries@suse.com>
+
+- Patches added (master backports):
+  * fix-pr30369-regression-on-aarch64-arm-pr30506.patch
+  * gdb-tdep-aarch64-fix-frame-address-of-last-insn.patch
+  * gdb-testsuite-fix-breakpoint-regexp-in-gdb.ada-out_o.patch
+  * gdb-testsuite-relax-breakpoint-count-check-in-gdb.py.patch
+  * gdb-testsuite-fix-buffer-overflow-in-gdb.base-signed.patch
+  * gdb-testsuite-require-syscall-time-in-gdb.reverse-ti.patch
+  * gdb-testsuite-handle-missing-gdc-in-gdb.dlang-dlang-.patch
+  * gdb-testsuite-add-basic-lmap-for-tcl-8.6.patch
+  * gdb-testsuite-fix-gdb.rust-watch.exp-on-ppc64le.patch
+  * gdb-testsuite-fix-gdb.python-py-breakpoint.exp-timeo.patch
+  * powerpc-fix-for-gdb.reverse-finish-precsave.exp-and-.patch
+  * powerpc-regression-fix-for-reverse-finish-command.patch
+  * gdb-testsuite-don-t-use-string-cat-in-gdb.dwarf2-dw2.patch
+  * move-step_until-procedure.patch
+- Patches added (gdb-patches backport):
+  * gdb-testsuite-add-have_host_locale.patch
+- Patches added (fedora patch fixups):
+  * fixup-gdb-6.3-gstack-20050411.patch
+  * fixup-gdb-6.3-attach-see-vdso-test.patch
+  * fixup-gdb-lineno-makeup-test.patch
+  * fixup-gdb-rhbz1261564-aarch64-hw-watchpoint-test.pat.patch
+- Patches dropped:
+  * gdb-ppc-power7-test.patch
+  * gdb-rhbz1156192-recursive-dlopen-test.patch
+  * gdb-6.3-bz140532-ppc-unwinding-test.patch
+- Maintenance script qa.sh:
+  * Add PR30540, PR30537, PR30021 and PR30542 KFAILs.
+  * Add gdb.base/gcore-excessive-memory.exp internal error.
+  * Update gdb.base/inline-frame-cycle-unwind.exp KFAIL comment.
+
+-------------------------------------------------------------------
+Fri Jun  9 06:26:02 UTC 2023 - Tom de Vries <tdevries@suse.com>
+
+- Patches added (master backports):
+  * aarch64-avoid-initializers-for-vlas.patch
+
+-------------------------------------------------------------------
+Tue Jun  6 06:00:11 UTC 2023 - Tom de Vries <tdevries@suse.com>
+
+- Rebase to 13.2 release (fedora 38 @ fc4e284)
+  * Replace gdb-12.1.tar.bz2 with gdb-13.2.tar.bz2.
+- Patches dropped:
+  * add-elfcompress_zstd.patch
+  * binutils-gdb-support-zstd-compressed-debug-section.patch
+  * fix-comparison-of-unsigned-long-int-to-int-in-record_linux_system_call.patch
+  * fix-core-file-detach-crash-corefiles-29275.patch
+  * fix-for-gdb.base-solib-search.exp-test.patch
+  * fix-gdb-build-elf-support-check-lzstd.patch
+  * fixup-gdb-rhbz1325795-framefilters-test.patch
+  * gdb-6.3-focus-cmd-prev-test.patch
+  * gdb-6.3-inheritancetest-20050726.patch
+  * gdb-6.3-test-dtorfix-20050121.patch
+  * gdb-6.3-test-movedir-20050125.patch
+  * gdb-6.3-threaded-watchpoints2-20050225.patch
+  * gdb-6.6-buildid-locate-rpm-scl.patch
+  * gdb-6.6-bz230000-power6-disassembly-test.patch
+  * gdb-add-gdb-syscalls-makefile.patch
+  * gdb-add-support-for-readline-8.2.patch
+  * gdb-bz601887-dwarf4-rh-test.patch
+  * gdb-disable-commit-resumed-in-target_kill.patch
+  * gdb-fix-assert-in-handle_jit_event.patch
+  * gdb-fix-assert-when-quitting-gdb-while-a-thread-is-stepping.patch
+  * gdb-fix-for-gdb.base-eof-exit.exp-test-failures.patch
+  * gdb-fix-selftest-fails-with-gdb-build-with-O2-flto.patch
+  * gdb-fortran-frame-string.patch
+  * gdb-handle-pending-c-after-rl_callback_read_char.patch
+  * gdb-improved-eof-handling-when-using-readline-7.patch
+  * gdb-physname-pr11734-test.patch
+  * gdb-physname-pr12273-test.patch
+  * gdb-record-handle-statx-system-call.patch
+  * gdb-rhbz1325795-framefilters-test.patch
+  * gdb-rhbz1398387-tab-crash-test.patch
+  * gdb-runtest-pie-override.patch
+  * gdb-symtab-fix-handling-of-dw_tag_unspecified_type.patch
+  * gdb-tdep-fix-powerpc-ieee-128-bit-format-arg-passing.patch
+  * gdb-tdep-handle-pipe2-syscall-for-amd64.patch
+  * gdb-tdep-support-catch-syscall-pipe2-for-i386.patch
+  * gdb-tdep-update-syscalls-ppc64-ppc-linux.xml.patch
+  * gdb-test-expr-cumulative-archer.patch
+  * gdb-testsuite-add-kfail-in-gdb.threads-fork-plus-threads.exp.patch
+  * gdb-testsuite-add-new-gdb_attach-to-check-attach-command.patch
+  * gdb-testsuite-address-test-failures-in-gdb.mi-mi-multi-commands.exp.patch
+  * gdb-testsuite-detect-change-instead-of-init-in-gdb.mi-mi-var-block.exp.patch
+  * gdb-testsuite-enable-some-test-cases-for-x86_64-m32.patch
+  * gdb-testsuite-fix-fail-in-gdb.threads-fork-and-threads.exp.patch
+  * gdb-testsuite-fix-gdb.ada-literals.exp-with-aarch64.patch
+  * gdb-testsuite-fix-gdb.base-break-idempotent.exp-on-ppc.patch
+  * gdb-testsuite-fix-gdb.base-catch-syscall.exp-with-with-expat-no.patch
+  * gdb-testsuite-fix-gdb.base-catch-syscall.exp-without-enable-targets.patch
+  * gdb-testsuite-fix-gdb.base-infoline-reloc-main-from-.patch
+  * gdb-testsuite-fix-gdb.base-nested-subp-2-3-.exp-with.patch
+  * gdb-testsuite-fix-gdb.dwarf2-dw2-dir-file-name.exp-w.patch
+  * gdb-testsuite-fix-gdb.dwarf2-dw2-out-of-range-end-of-seq.exp-on-aarch64.patch
+  * gdb-testsuite-fix-gdb.dwarf2-dw2-unspecified-type-foo.c-with-m32.patch
+  * gdb-testsuite-fix-gdb.mi-mi-sym-info.exp-on-opensuse-tumbleweed.patch
+  * gdb-testsuite-fix-gdb.opt-clobbered-registers-o2.exp-with-gcc-12.patch
+  * gdb-testsuite-fix-gdb.reverse-i387-env-reverse.exp-for-pie.patch
+  * gdb-testsuite-fix-gdb.reverse-test_ioctl_tcsetsw.exp-with-libc-debuginfo.patch
+  * gdb-testsuite-fix-gdb.threads-killed-outside.exp-on-aarch64.patch
+  * gdb-testsuite-fix-have_mpx-test.patch
+  * gdb-testsuite-fix-occasional-failure-in-gdb.mi-mi-multi-commands.exp.patch
+  * gdb-testsuite-fix-test-failure-when-building-against-readline-v7.patch
+  * gdb-testsuite-handle-init-errors-in-gdb.mi-user-selected-context-sync.exp.patch
+  * gdb-testsuite-handle-missing-.note.gnu-stack.patch
+  * gdb-testsuite-handle-older-python-in-gdb.python-py-send-packet.py.patch
+  * gdb-testsuite-handle-pipe2-syscall-in-gdb.base-catch-syscall.exp.patch
+  * gdb-testsuite-handle-quotes-in-gdb_py_module_available.patch
+  * gdb-testsuite-handle-unordered-dict-in-gdb.python-py-mi-cmd.exp.patch
+  * gdb-testsuite-refactor-gdb.threads-detach-step-over.exp.patch
+  * gdb-testsuite-remove-attach-test-from-can_spawn_for_attach.patch
+  * gdb-testsuite-remove-global-declarations-in-gdb.threads-detach-step-over.exp.patch
+  * gdb-testsuite-remove-target-limits-in-gdb.base-catch-syscall.exp.patch
+  * gdb-testsuite-skip-gdb.fortran-namelist.exp-for-gfortran-4.8.patch
+  * gdb-testsuite-support-recording-of-getrandom.patch
+  * gdb-testsuite-workaround-unnecessary-.s-file-with-gfortran-4.8.patch
+  * gdb-update-syscalls-amd64-i386-linux.xml.patch
+  * gdbserver-switch-to-right-process-in-find_one_thread.patch
+  * make-gdb.ada-float-bits.exp-more-generic.patch
+  * powerpc-add-support-for-ieee-128-bit-format.patch
+  * powerpc-correct-the-gdb-ioctl-values-for-tcgets-tcsets-tcsetsw-and-tcsetsf.patch
+  * powerpc-fix-for-gdb.base-eh_return.exp.patch
+  * powerpc-fix-gdb.base-watchpoint.exp-on-power-9.patch
+  * powerpc-update-expected-floating-point-output-for-gdb.arch-altivec-regs.exp-and-gdb.arch-vsx-regs.exp.patch
+- Patches added:
+  * fixup-gdb-bz634108-solib_address.patch
+  * gdb-binutils29988-read_indexed_address.patch
+  * gdb-cli-handle-pending-c-after-rl_callback_read_char.patch
+  * gdb-rhbz2177655-aarch64-pauth-valid-regcache.patch
+  * gdb-rhbz2183595-rustc-inside_main.patch
+  * gdb-testsuite-fix-gdb.gdb-python-helper.exp-with-o2-.patch
+  * gdb-testsuite-handle-output-after-prompt-in-gdb.thre.patch
+  * gdb-testsuite-simplify-gdb.base-unwind-on-each-insn..patch
+  * remove-some-unnecessary-includes-from-exp.y.patch
+  * gdb-testsuite-fix-gdb.rust-main-crash.exp.patch
+- Patches modified:
+  * gdb-6.3-bz140532-ppc-unwinding-test.patch
+  * gdb-6.3-gstack-20050411.patch
+  * gdb-6.5-bz185337-resolve-tls-without-debuginfo-v2.patch
+  * gdb-6.6-buildid-locate-rpm-suse.patch
+  * gdb-6.6-buildid-locate-rpm.patch
+  * gdb-6.6-buildid-locate-solib-missing-ids.patch
+  * gdb-6.6-buildid-locate.patch
+  * gdb-6.7-testsuite-stable-results.patch
+  * gdb-ccache-workaround.patch
+  * gdb-core-open-vdso-warning.patch
+  * gdb-fedora-libncursesw.patch
+  * gdb-gcore-bash.patch
+  * gdb-linux_perf-bundle.patch
+  * gdb-testsuite-ada-pie.patch
+  * gdb-testsuite-add-xfail-in-gdb.arch-i386-pkru.exp.patch
+  * gdb-testsuite-factor-out-proc-linux_kernel_version.patch
+  * gdb-testsuite-prevent-compilation-fails-with-unix-fpie-pie.patch
+- Maintenance script qa.sh:
+  * Add -i586 and -x86_64.
+  * Add KFAILs for PR29040, PR30521, PR30180, PR30518, PR30519.
+  * Update some KFAIL patterns.
+  * Add some factory KFAILs.
+  * Add gdb.base/longjmp-until-in-main.exp in PR26967 KFAILs.
+- Maintenance script qa-local.sh:
+  * Factor out version variable, update to 13.2.
+  * Try to give reason for build failure.
+  * Use -$arch as argument to qa.sh.
+
+-------------------------------------------------------------------
+
 Mon May 22 21:01:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - disable werror as a workaround for deprecation warnings with
   python 3.11 (bsc#1211052) 
 
 -------------------------------------------------------------------
+
 Fri Apr  7 07:48:58 UTC 2023 - Tom de Vries <tdevries@suse.com>
 
 - Revert to singlespec multibuild.

@@ -25,9 +25,9 @@ diff --git a/gdb/testsuite/gdb.base/solib-symbol.exp b/gdb/testsuite/gdb.base/so
  set bin_flags [list debug shlib=${binfile_lib}]
 +set executable ${testfile}
  
- if [get_compiler_info] {
-     return -1
-@@ -70,8 +71,26 @@ gdb_test "br foo2" \
+ if { [gdb_compile_shlib ${srcfile_lib} ${binfile_lib} $lib_flags] != ""
+      || [gdb_compile ${srcfile} ${binfile} executable $bin_flags] != "" } {
+@@ -66,8 +67,26 @@ gdb_test "br foo2" \
  	 "Breakpoint.*: foo2. .2 locations..*" \
  	 "foo2 in mdlib"
  

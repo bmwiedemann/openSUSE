@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 pwd=$(pwd -P)
 
 root=$pwd/tmp-qa-local
@@ -14,6 +16,8 @@ SLE-15
 SLE-12
 SLE-11
 "
+
+version=13.2
 
 usage ()
 {
@@ -100,16 +104,19 @@ case "$n" in
 		if ! have_combo $arch $c; then
 		    continue
 		fi
-		osc build \
-		    --clean \
-		    --no-verify \
-		    --trust-all-projects \
-		    --no-service \
-		    $c $arch \
-		    > $logs/$n/LOG.$c.$arch \
-		    2>&1
+		if osc build \
+		       --clean \
+		       --no-verify \
+		       --trust-all-projects \
+		       --no-service \
+		       $c $arch \
+		       > $logs/$n/LOG.$c.$arch \
+		       2>&1; \
+		   st=$?; then
+		    true
+		fi
 
-		if [ $? -eq 0 ]; then
+		if [ $st -eq 0 ]; then
 		    echo PASS: $c $arch
 		else
 		    echo FAIL: $c $arch
@@ -132,40 +139,46 @@ case "$n" in
 		    continue
 		fi
 		mkdir -p $pkgs/$c.$arch
-		osc build \
-		    --clean \
-		    --no-verify \
-		    --trust-all-projects \
-		    --no-service \
-		    -k $pkgs/$c.$arch \
-		    $c $arch \
-		    -M testsuite \
-		    > $logs/$n/LOG.$c.$arch \
-		    2>&1
-		if [ $? -eq 0 ]; then
+		if osc build \
+		       --clean \
+		       --no-verify \
+		       --trust-all-projects \
+		       --no-service \
+		       -k $pkgs/$c.$arch \
+		       $c $arch \
+		       -M testsuite \
+		       > $logs/$n/LOG.$c.$arch \
+		       2>&1; \
+		   st=$?; then
+		    true
+		fi
+		if [ $st -eq 0 ]; then
 		    ok=true
 		else
-		    ok=false
-		fi
-
-		rpm=gdb-testresults-12.1-0.$arch.rpm
-		if [ -f $pkgs/$c.$arch/$rpm ]; then
-		    (
-			cd $pkgs/$c.$arch
-			extract gdb-testresults-12.1-0.$arch.rpm
-		    )
-		    mv \
-			$pkgs/$c.$arch/usr/share/doc/packages/gdb-testresults \
-			$pkgs/gdb-testresults.$c.$arch
-		    rm -Rf $pkgs/$c.$arch
-		else
+		    reason="Build failed"
 		    ok=false
 		fi
 
 		if $ok; then
-		    echo PASS: $c $arch
+		    rpm=gdb-testresults-$version-0.$arch.rpm
+		    if [ -f $pkgs/$c.$arch/$rpm ]; then
+			(
+			    cd $pkgs/$c.$arch
+			    extract gdb-testresults-$version-0.$arch.rpm
+			)
+			mv \
+			    $pkgs/$c.$arch/usr/share/doc/packages/gdb-testresults \
+			    $pkgs/gdb-testresults.$c.$arch
+			rm -Rf $pkgs/$c.$arch
+		    else
+			ok=false
+			reason="Couldn't find $rpm"
+		    fi
+		fi
+		if $ok; then
+		    echo "PASS: $c $arch"
 		else
-		    echo FAIL: $c $arch
+		    echo "FAIL: $c $arch ($reason)"
 		fi
 
 		sudo rm -Rf /var/tmp/build-root/$c-$arch
@@ -182,16 +195,16 @@ case "$n" in
 		echo "CONFIG: $c $arch"
 		case $c in
 		    openSUSE_Factory)
-			bash qa.sh -local -factory $pkgs/gdb-testresults.$c.$arch
+			bash qa.sh -local -$arch -factory $pkgs/gdb-testresults.$c.$arch
 			;;
 		    SLE-12)
-			bash qa.sh -local -sle12 $pkgs/gdb-testresults.$c.$arch
+			bash qa.sh -local -$arch -sle12 $pkgs/gdb-testresults.$c.$arch
 			;;
 		    SLE-11)
-			bash qa.sh -local -sle11 $pkgs/gdb-testresults.$c.$arch
+			bash qa.sh -local -$arch -sle11 $pkgs/gdb-testresults.$c.$arch
 			;;
 		    *)
-			bash qa.sh -local $pkgs/gdb-testresults.$c.$arch
+			bash qa.sh -local -$arch $pkgs/gdb-testresults.$c.$arch
 			;;
 		esac
 	    done

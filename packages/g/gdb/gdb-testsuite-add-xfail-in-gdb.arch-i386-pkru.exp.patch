@@ -1,7 +1,7 @@
-From 1b89c346a99d89a06d9694ca4d47d040d4eebd5a Mon Sep 17 00:00:00 2001
+From 090d15fb9c7f7a48210783bddcf1d620bce6bf2a Mon Sep 17 00:00:00 2001
 From: Tom de Vries <tdevries@suse.de>
-Date: Tue, 3 Jan 2023 16:41:05 +0100
-Subject: [PATCH 02/11] [gdb/testsuite] Add xfail in gdb.arch/i386-pkru.exp
+Date: Fri, 21 Apr 2023 17:57:05 +0200
+Subject: [PATCH 3/5] [gdb/testsuite] Add xfail in gdb.arch/i386-pkru.exp
 
 On a x86_64-linux machine with pkru register, I run into:
 ...
@@ -30,7 +30,7 @@ Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=29790
  2 files changed, 89 insertions(+), 4 deletions(-)
 
 diff --git a/gdb/testsuite/gdb.arch/i386-pkru.exp b/gdb/testsuite/gdb.arch/i386-pkru.exp
-index 7724a579631..5fe93db9b4b 100644
+index f5d74380a61..5d2b1a24a15 100644
 --- a/gdb/testsuite/gdb.arch/i386-pkru.exp
 +++ b/gdb/testsuite/gdb.arch/i386-pkru.exp
 @@ -58,6 +58,26 @@ if { !$supports_pkru } {
@@ -94,12 +94,12 @@ index 7724a579631..5fe93db9b4b 100644
 -gdb_test "print /x rd_value" "= 0x44444444" "variable after reading pkru"
 +gdb_test "print /x rd_value" "= $xval" "variable after reading pkru"
 diff --git a/gdb/testsuite/lib/gdb-utils.exp b/gdb/testsuite/lib/gdb-utils.exp
-index ffdfb75557c..294d0998632 100644
+index 78724f8b622..2757050fdfd 100644
 --- a/gdb/testsuite/lib/gdb-utils.exp
 +++ b/gdb/testsuite/lib/gdb-utils.exp
-@@ -72,3 +72,51 @@ proc style {str style} {
+@@ -100,3 +100,51 @@ proc gdb_get_bp_addr { num } {
      }
-     return "\033\\\[${style}m${str}\033\\\[m"
+     return ""
  }
 +
 +# Compare the version numbers in L1 to those in L2 using OP, and return

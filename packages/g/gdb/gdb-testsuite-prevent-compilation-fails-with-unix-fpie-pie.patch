@@ -1,4 +1,8 @@
-[gdb/testsuite] Prevent compilation fails with unix/-fPIE/-pie
+From ea9f87de71b8d5cd0f9d62ebca57cef7ee879324 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Fri, 21 Apr 2023 18:01:00 +0200
+Subject: [PATCH 5/5] [gdb/testsuite] Prevent compilation fails with
+ unix/-fPIE/-pie
 
 A regular test-case will produce an executable, and depending on the compiler
 default, it will be a PIE or not.  A test-case can force one or the other
@@ -47,18 +51,17 @@ UNTESTED: gdb.arch/amd64-disp-step.exp: failed to prepare
 Likewise, add nopie_forced.
 
 Tested on x86_64-linux.
-
 ---
- gdb/testsuite/lib/gdb.exp | 53 +++++++++++++++++++++++++++++++++++++++++++++++
+ gdb/testsuite/lib/gdb.exp | 53 +++++++++++++++++++++++++++++++++++++++
  1 file changed, 53 insertions(+)
 
 diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
-index 2b94f79d132..dbf4016aca1 100644
+index 2be69479d70..85ef279bfe9 100644
 --- a/gdb/testsuite/lib/gdb.exp
 +++ b/gdb/testsuite/lib/gdb.exp
-@@ -4407,6 +4407,17 @@ proc gdb_compile {source dest type options} {
- 	lappend options "$flag"
-     }
+@@ -4966,6 +4966,17 @@ proc gdb_compile {source dest type options} {
+       set options [lreplace $options $macros $macros $flag]
+   }
  
 +    if { $pie != -1 && [nopie_forced] } {
 +	set result "pie unsupported"
@@ -74,9 +77,9 @@ index 2b94f79d132..dbf4016aca1 100644
      if { $type == "executable" } {
  	if { ([istarget "*-*-mingw*"]
  	      || [istarget "*-*-*djgpp"]
-@@ -7928,6 +7939,48 @@ gdb_caching_proc have_fuse_ld_gold {
-     return [gdb_simple_compile $me $src executable $flags]
+@@ -8875,6 +8886,48 @@ gdb_caching_proc linker_supports_image_base_flag {
  }
+ 
  
 +# Helper function for pie_forced.
 +proc pie_forced_0 { } { return 0 }
@@ -123,3 +126,6 @@ index 2b94f79d132..dbf4016aca1 100644
  # Return 1 if compiler supports scalar_storage_order attribute, otherwise
  # return 0.
  gdb_caching_proc supports_scalar_storage_order_attribute {
+-- 
+2.35.3
+
