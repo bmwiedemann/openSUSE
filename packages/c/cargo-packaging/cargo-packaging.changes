@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 13 00:09:47 UTC 2023 - william.brown@suse.com
+
+- bsc#1212226 - add rust-packaging compat
+- Update to version 1.2.0+2:
+  * Default flags
+  * Add buildflags
+
+-------------------------------------------------------------------
 Fri Mar  3 00:48:59 UTC 2023 - William Brown <william.brown@suse.com>
 
 - Update vendored dependencies
