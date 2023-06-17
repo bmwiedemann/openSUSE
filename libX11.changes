@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 12 13:14:03 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_InitExt.c-Add-bounds-checks-for-extension-request-ev.patch
+  * Buffer overflows in InitExt.c (boo#1212102, CVE-2023-3138)
+
+-------------------------------------------------------------------
 Thu Jun  1 07:53:19 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.8.5
