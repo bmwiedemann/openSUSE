@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 14 10:05:03 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add patch disable-time-max-rss-test.patch to disable time max rss
+  test, broken because a kernel issue (bsc#1211092)
+
+-------------------------------------------------------------------
 Tue Apr 19 13:57:53 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - https urls

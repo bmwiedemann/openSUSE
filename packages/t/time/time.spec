@@ -1,7 +1,7 @@
 #
 # spec file for package time
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,10 @@ Source:         https://ftp.gnu.org/gnu/time/%{name}-%{version}.tar.gz
 Source1:        %{name}.rpmlintrc
 Source2:        https://ftp.gnu.org/gnu/time/%{name}-%{version}.tar.gz.sig
 Source3:        https://savannah.gnu.org/people/viewgpg.php?user_id=94790#/%{name}.keyring
+# PATCH-FIX-OPENSUSE disable-time-max-rss-test.patch bsc#1211092
+Patch1:         disable-time-max-rss-test.patch
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 
 %description
 The "time" command runs another program, then displays information
@@ -37,6 +39,9 @@ while the program was running.
 
 %prep
 %setup -q
+%ifarch ppc ppc64 ppc64le
+%patch1 -p1
+%endif
 
 %build
 %configure

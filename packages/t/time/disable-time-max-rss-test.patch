@@ -1,0 +1,24 @@
+Index: time-1.9/Makefile.am
+===================================================================
+--- time-1.9.orig/Makefile.am
++++ time-1.9/Makefile.am
+@@ -74,7 +74,6 @@ tests_time_aux_CFLAGS =
+ 
+ 
+ TESTS = tests/help-version.sh \
+-	tests/time-max-rss.sh \
+ 	tests/time-exit-codes.sh \
+ 	tests/time-posix-quiet.sh
+ 
+Index: time-1.9/Makefile.in
+===================================================================
+--- time-1.9.orig/Makefile.in
++++ time-1.9/Makefile.in
+@@ -1316,7 +1316,6 @@ tests_time_aux_SOURCES = tests/time-aux.
+ tests_time_aux_CPPFLAGS = 
+ tests_time_aux_CFLAGS = 
+ TESTS = tests/help-version.sh \
+-	tests/time-max-rss.sh \
+ 	tests/time-exit-codes.sh \
+ 	tests/time-posix-quiet.sh
+ 
