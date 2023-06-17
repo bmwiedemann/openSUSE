@@ -164,4 +164,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1084077</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0e585c1641d614246f0484de5f289618</srcmd5>
+    <version>6.0</version>
+    <time>1687033208</time>
+    <user>dimstar_suse</user>
+    <comment>- Rework default versions and include specifics for ALP
+- Default version for SLE-12 is set to be 16 - no further updates
+  expected since W&amp;S module is not supported in LTSS</comment>
+    <requestid>1093317</requestid>
+  </revision>
 </revisionlist>

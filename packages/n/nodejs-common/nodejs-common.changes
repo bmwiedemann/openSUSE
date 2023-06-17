@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 15 12:37:25 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- Rework default versions and include specifics for ALP
+- Default version for SLE-12 is set to be 16 - no further updates
+  expected since W&S module is not supported in LTSS
+
+-------------------------------------------------------------------
 Tue Apr 25 02:11:10 UTC 2023 - jsrain@suse.com
 
 - Use NodeJS 18 as default for ALP

@@ -36,20 +36,10 @@
 
 # SLE-12 variants
 %if 0%{?suse_version} < 1500
-%define default_node_ver %NODEJS_LTS
+%define default_node_ver 16
+%endif
 
-%else
-
-# TW
-%if 0%{?suse_version} >= 1699
-%define default_node_ver %NODEJS_CURRENT
-
-%else
-# ALP
-%if 0%{?suse_version} >= 1600
-%define default_node_ver %NODEJS_LTS
-
-%else
+%if 0%{?suse_version} == 1500
 
 # SLE-15 variants, variation based on SP
 %if 0%{?sle_version} >= 150000 && 0%{?sle_version} < 150200
@@ -69,20 +59,28 @@
 %endif
 
 %if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 150600
-%define default_node_ver %NODEJS_LTS
+%define default_node_ver 18
+%endif
+
+%if 0%{?sle_version} >= 150600 && 0%{?sle_version} < 150700
+%define default_node_ver 20
 %endif
 
 # SLE-15 variants
 %endif
 
-# ALP
+%if 0%{?suse_version} == 1600
+# ALP variants
+%define default_node_ver 20
 %endif
 
 # TW
+%if 0%{?suse_version} >= 1699
+%define default_node_ver %NODEJS_CURRENT
 %endif
 
 Name:           nodejs-common
-Version:        5.1
+Version:        6.0
 Release:        0
 Summary:        Common files for the NodeJS ecosystem
 License:        MIT
