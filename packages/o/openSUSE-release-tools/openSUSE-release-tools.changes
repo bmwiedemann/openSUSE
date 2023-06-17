@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jun 16 07:11:12 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230616.d798b51:
+  * Switch to Leap 15.5
+
+-------------------------------------------------------------------
+Thu Jun 15 15:23:52 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230615.97267e1:
+  * docker_publisher.py: Add armv7l to 15.4
+
+-------------------------------------------------------------------
+Thu Jun 15 14:40:31 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230615.59e3288:
+  * dist: Pick osc from repo built against published Tumbleweed
+
+-------------------------------------------------------------------
 Thu Jun 15 08:34:29 UTC 2023 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20230615.82c9054:
