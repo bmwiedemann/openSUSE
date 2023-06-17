@@ -24,6 +24,8 @@ Index: VirtualBox-7.0.8/src/VBox/Installer/linux/routines.sh
          if [ "`$p -c 'import sys
  if sys.version_info >= (2, 6) and (sys.version_info < (3, 0) or sys.version_info >= (3, 3)):
      print(\"test\")' 2> /dev/null`" != "test" ]; then
+Index: VirtualBox-7.0.8/src/libs/xpcom18a4/python/Makefile.kmk
+===================================================================
 --- VirtualBox-7.0.8.orig/src/libs/xpcom18a4/python/Makefile.kmk
 +++ VirtualBox-7.0.8/src/libs/xpcom18a4/python/Makefile.kmk
 @@ -753,7 +753,7 @@ ifdef VBOX_PYTHONDEF_INC

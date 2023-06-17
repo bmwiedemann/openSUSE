@@ -1,0 +1,92 @@
+Index: VirtualBox-7.0.8/configure
+===================================================================
+--- VirtualBox-7.0.8.orig/configure
++++ VirtualBox-7.0.8/configure
+@@ -1189,21 +1189,19 @@ check_sdl()
+       fail
+     fi
+   else
+-    if which_wrapper sdl-config > /dev/null; then
+-      FLGSDL=`sdl-config --cflags`
++      FLGSDL="-I/usr/include/SDL2 -D_GNU_SOURCE=1 -D_REENTRANT"
+       INCSDL=`strip_I "$FLGSDL"`
+-      LIBSDL=`sdl-config --libs`
++      LIBSDL="-L/usr/lib64 -LSDL2"
+       LIBSDLMAIN="-lSDLmain"
+       FLDSDL=
+       foundsdl=1
+-    fi
+   fi
+   [ "$OS" = "linux" -o "$OS" = "darwin" -o "$OS" = "solaris" ] && LIBSDLMAIN=""
+   if [ -n "$foundsdl" ]; then
+     cat > $ODIR.tmp_src.cc << EOF
+ #include <cstdio>
+ #include <SDL.h>
+-#include <SDL_main.h>
++//#include <SDL_main.h>
+ #undef main
+ extern "C" int main(int argc, char** argv)
+ {
+@@ -1219,7 +1217,7 @@ extern "C" int main(int argc, char** arg
+ }
+ EOF
+     [ -n "$INCSDL" ] && I_INCSDL=`prefix_I "$INCSDL"`
+-    if test_compile "$LIBSDL $LIBSDLMAIN $I_INCSDL $FLDSDL" SDL SDL; then
++    if test_compile "$LIBSDL $LIBSDLMAIN $I_INCSDL $FLDSDL" SDL2 SDL2; then
+       if test_execute; then
+         cnf_append "LIB_SDK_LIBSDL_SDL"     "`strip_l "$LIBSDL"`"
+         cnf_append "SDK_LIBSDL_LIBPATH"     "`strip_L "$LIBSDL"`"
+@@ -2961,11 +2959,8 @@ if [ $ONLY_ADDITIONS -eq 0 ]; then
+   [ $WITH_LIBTPMS -eq 1 ] && check_libtpms
+   [ "$OS" != "darwin"  ] && check_png
+   [ $OSE -eq 0 -a "$OS" = "linux" ] && check_pam
+-  if [ $WITH_SDL -eq 1 ]; then
+-    check_sdl
+-  else
+-    cnf_append "VBOX_WITH_VBOXSDL" ""
+-  fi
++  check_sdl
++  cnf_append "VBOX_WITH_VBOXSDL" "1"
+   [ $WITH_SDL_TTF -eq 1 -a $OSE -eq 0 ] && check_sdl_ttf
+   [ $WITH_X11    -eq 1 ] && check_x
+   # TODO check for xcomposite-dev (X11/extensions/Xcomposite.h, additions only)
+Index: VirtualBox-7.0.8/src/VBox/Frontends/VBoxSDL/Makefile.kmk
+===================================================================
+--- VirtualBox-7.0.8.orig/src/VBox/Frontends/VBoxSDL/Makefile.kmk
++++ VirtualBox-7.0.8/src/VBox/Frontends/VBoxSDL/Makefile.kmk
+@@ -51,7 +51,7 @@ if !defined(VBOX_WITH_HARDENING) || "$(K
+   PROGRAMS += VBoxSDL
+  endif
+  VBoxSDL_TEMPLATE := $(if $(VBOX_WITH_HARDENING),VBoxMainClientDll,VBoxMainClientExe)
+- VBoxSDL_SDKS      = LIBSDL2
++ VBoxSDL_SDKS      = LIBSDL
+  VBoxSDL_SOURCES   = \
+  	VBoxSDL.cpp \
+  	Framebuffer.cpp \
+@@ -81,7 +81,7 @@ if !defined(VBOX_WITH_HARDENING) || "$(K
+  endif
+  ifn1of ($(KBUILD_TARGET), solaris) # Probably wrong with SDL2
+   VBoxSDL_LIBS = \
+-  	$(LIB_SDK_LIBSDL2_SDLMAIN)
++  	$(LIB_SDK_LIBSDL_SDLMAIN)
+  endif
+  if1of ($(KBUILD_TARGET), freebsd linux netbsd openbsd solaris) # X11
+   VBoxSDL_LIBS += \
+@@ -121,7 +121,7 @@ if !defined(VBOX_WITH_HARDENING) || "$(K
+  if 0
+   PROGRAMS += tstSDL
+   tstSDL_TEMPLATE = VBoxR3TstExe
+-  tstSDL_SDKS = LIBSDL2
++  tstSDL_SDKS = LIBSDL
+   tstSDL_INST = $(INST_TESTCASE)
+   tstSDL_SOURCES = \
+   	VBoxSDLTest.cpp
+@@ -138,7 +138,7 @@ if !defined(VBOX_WITH_HARDENING) || "$(K
+   	$(LIB_RUNTIME)
+   ifn1of ($(KBUILD_TARGET), solaris)
+    tstSDL_LIBS += \
+-   	$(LIB_SDK_LIBSDL2_SDLMAIN)
++   	$(LIB_SDK_LIBSDL_SDLMAIN)
+   endif
+ 
+   ifdef VBOX_OPENGL

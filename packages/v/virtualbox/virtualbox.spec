@@ -154,6 +154,8 @@ Patch31:        fix-missing-includes-with-qt-5.15.patch
 Patch32:        handle_gsoap_208103.patch
 # Fix for struct file_operations backport in 15.3
 Patch33:        fixes_for_leap15.3.patch
+# Fix for build for 15.4
+Patch34:        fixes_for_leap15.4.patch
 # Fix for backports to 15.5
 Patch35:        fixes_for_leap15.5.patch
 # Fix for GCC13
@@ -162,6 +164,7 @@ Patch36:        fixes_for_gcc13.patch
 Patch37:        fix_7.0.6_locking_problems.patch
 # Support python 3.11
 Patch38:        python311.patch
+Patch39:        fix_sdl_build.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}
@@ -186,6 +189,7 @@ Source2:        VirtualBox.appdata.xml
 ### Requirements for virtualbox main package ###
 %if %{main_package}
 BuildRequires:  LibVNCServer-devel
+BuildRequires:  SDL2-devel
 BuildRequires:  alsa-devel
 BuildRequires:  device-mapper-devel
 BuildRequires:  dmidecode
@@ -195,7 +199,7 @@ BuildRequires:  glibc-devel-static
 BuildRequires:  glslang-devel
 BuildRequires:  gsoap-devel >= 2.8.50
 BuildRequires:  java-devel >= 1.6.0
-BuildRequires:  libSDL-devel
+#BuildRequires:  libSDL2-2_0-0
 BuildRequires:  libelf-devel
 BuildRequires:  libidl-devel
 BuildRequires:  libopenssl-devel
@@ -227,7 +231,7 @@ BuildRequires:  pkgconfig(randrproto)
 BuildRequires:  pkgconfig(renderproto)
 BuildRequires:  pkgconfig(resourceproto)
 BuildRequires:  pkgconfig(scrnsaverproto)
-#BuildRequires:  pkgconfig(sdl)
+BuildRequires:  pkgconfig(sdl)
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xau)
@@ -468,7 +472,12 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 # Patch for Leap 15.3
 %patch33 -p1
 %endif
+%if 0%{?sle_version} == 150400 && 0%{?is_opensuse}
+# Patch for Leap 15.4
+%patch34 -p1
+%endif
 %if 0%{?sle_version} == 150500 && 0%{?is_opensuse}
+# Patch for Leap 15.5
 %patch35 -p1
 %endif
 %if 0%{gcc_version} >= 13
@@ -476,6 +485,7 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %endif
 %patch37 -p1
 %patch38 -p1
+%patch39 -p1
 
 ### Documents for virtualbox main package ###
 %if %{main_package}
@@ -598,7 +608,7 @@ echo "entering virtualbox(-qt) install section"
 pushd out/linux.*/release/bin
 install -m 755 VBoxManage 			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxHeadless 			%{buildroot}%{_vbox_instdir}
-#install -m 755 VBoxSDL 				%{buildroot}%{_vbox_instdir}
+install -m 755 VBoxSDL 				%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxNetNAT			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxAutostart			%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxVolInfo			%{buildroot}%{_vbox_instdir}
@@ -614,7 +624,7 @@ install -m 755 vboximg-mount			%{buildroot}%{_vbox_instdir}
 # create links to vbox tools in PATH - they could be usefull for controlling vbox from command line
 ln -s %{_vbox_instdir}/VBoxManage		%{buildroot}%{_bindir}/VBoxManage
 ln -s %{_vbox_instdir}/VBoxHeadless 		%{buildroot}%{_bindir}/VBoxHeadless
-#ln -s %{_vbox_instdir}/VBoxSDL			%{buildroot}%{_bindir}/VBoxSDL
+ln -s %{_vbox_instdir}/VBoxSDL			%{buildroot}%{_bindir}/VBoxSDL
 ln -s %{_vbox_instdir}/vboximg-mount		%{buildroot}%{_bindir}/vboximg-mount
 install -m 755 VBoxSVC 				%{buildroot}%{_vbox_instdir}
 install -m 755 VBoxXPCOMIPCD 			%{buildroot}%{_vbox_instdir}
@@ -805,7 +815,7 @@ done
 
 %post qt
 %set_permissions %{_vbox_instdir}/VirtualBoxVM
-#%set_permissions %{_vbox_instdir}/VBoxSDL
+%set_permissions %{_vbox_instdir}/VBoxSDL
 
 %verifyscript
 %verify_permissions -e %{_vbox_instdir}/VBoxNetNAT
@@ -815,7 +825,7 @@ done
 
 %verifyscript qt
 %verify_permissions -e %{_vbox_instdir}/VirtualBoxVM
-#%verify_permissions -e %{_vbox_instdir}/VBoxSDL
+%verify_permissions -e %{_vbox_instdir}/VBoxSDL
 
 %post guest-tools
 %service_add_post vboxadd-service.service
@@ -889,7 +899,7 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %doc README.autostart UserManual.pdf README.build
 %{_bindir}/VBoxManage
 %{_bindir}/VBoxHeadless
-#%{_bindir}/VBoxSDL
+%{_bindir}/VBoxSDL
 %{_bindir}/vboximg-mount
 %dir %{_vbox_instdir}
 %{_vbox_instdir}/VBoxAutostart
@@ -967,7 +977,7 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %attr(0755,root,vboxusers) %{_vbox_instdir}/VBoxUSB_DevRules
 %attr(0755,root,vboxusers) %{_vbox_instdir}/VirtualBox6
 %verify(not mode) %attr(0750,root,vboxusers) %{_vbox_instdir}/VirtualBoxVM
-#%verify(not mode) %attr(0755,root,vboxusers) %{_vbox_instdir}/VBoxSDL
+%verify(not mode) %attr(0755,root,vboxusers) %{_vbox_instdir}/VBoxSDL
 %{_vbox_instdir}/VirtualBox
 #wrapper script is in bindir
 %attr(0755,root,root) %{_bindir}/VirtualBox
@@ -979,8 +989,8 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_vbox_instdir}/VBoxSVGA3D.so
 %{_vbox_instdir}/VirtualBoxVM.so
 %{_vbox_instdir}/VBoxDbg.so
-#%{_bindir}/VBoxSDL
-#%{_vbox_instdir}/VBoxSDL.so
+%{_bindir}/VBoxSDL
+%{_vbox_instdir}/VBoxSDL.so
 %{_vbox_instdir}/VBoxKeyboard.so
 %{_vbox_instdir}/VBoxSharedClipboard.so
 %{_datadir}/pixmaps/virtualbox.png

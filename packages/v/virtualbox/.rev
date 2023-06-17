@@ -2461,4 +2461,12 @@ Linux hosts and guests: fix for building kernel modules against Linux 5.0. Thank
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1088140</requestid>
   </revision>
+  <revision rev="259" vrev="5">
+    <srcmd5>0ae63392728123b34bd6d325cb54b0a3</srcmd5>
+    <version>7.0.8</version>
+    <time>1687033190</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093157</requestid>
+  </revision>
 </revisionlist>

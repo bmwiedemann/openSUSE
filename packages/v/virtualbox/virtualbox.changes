@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 14 02:18:18 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
+
+- Turn build of VBoxSDL back on
+  Files "fix_sdl_build.patch" and "fixes_for_leap15.4.patch" are added.
+  This update addresses boo#1211941.
+
+-------------------------------------------------------------------
 Sun May 14 16:51:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update python311.patch: remove changes that only work on 

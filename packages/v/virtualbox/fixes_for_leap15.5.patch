@@ -155,3 +155,16 @@ Index: VirtualBox-7.0.8/src/VBox/Additions/linux/drm/vbox_mode.c
  
  #include "VBoxVideo.h"
  
+Index: VirtualBox-7.0.8/src/VBox/Frontends/VBoxSDL/VBoxSDL.cpp
+===================================================================
+--- VirtualBox-7.0.8.orig/src/VBox/Frontends/VBoxSDL/VBoxSDL.cpp
++++ VirtualBox-7.0.8/src/VBox/Frontends/VBoxSDL/VBoxSDL.cpp
+@@ -710,7 +710,7 @@ static const char *keyModToStr(unsigned
+         RT_CASE_RET_STR(KMOD_NUM);
+         RT_CASE_RET_STR(KMOD_CAPS);
+         RT_CASE_RET_STR(KMOD_MODE);
+-        RT_CASE_RET_STR(KMOD_SCROLL);
++        RT_CASE_RET_STR(KMOD_RESERVED);
+         default:
+             break;
+     }
