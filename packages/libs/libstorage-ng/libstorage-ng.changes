@@ -1,4 +1,20 @@
 --------------------------------------------------------------------
+Thu Jun 15 14:36:02 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#936
+- use correct error callback when nvme-cli is missing during probing
+- 4.5.120
+
+--------------------------------------------------------------------
+Wed Jun 14 14:14:16 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#935
+- added functions to convert BcacheType and CacheMode to string
+- added pool name for bcaches
+- check range in is_usable_as_partitionable()
+- 4.5.119
+
+--------------------------------------------------------------------
 Mon Jun 12 09:37:48 UTC 2023 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#934
