@@ -17,15 +17,15 @@
 
 
 Name:           trace-cmd
-Version:        3.1.6
+Version:        3.2
 Release:        0
 Summary:        Configuration tool for Ftrace
 License:        GPL-2.0-only
 Group:          Development/Tools/Debuggers
 URL:            https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git
 Source0:        trace-cmd-v%{version}.tar.gz
-Patch1:         0001-libtracecmd-Add-initial-support-for-meson.patch
-Patch2:         0002-trace-cmd-Add-initial-support-for-meson.patch
+Patch1:         libtracecmd-add-explicit-meson-thread-dependency.patch
+Patch2:         tracecmd-add-explicit-meson-thread-dependency.patch
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  libtraceevent-devel

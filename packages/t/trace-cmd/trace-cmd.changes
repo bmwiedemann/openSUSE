@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Jun 15 19:09:55 UTC 2023 - Tony Jones <tonyj@suse.com>
+
+- Add explicit thread dependency for older versions of meson (i.e SLE-15-SP5) 
+  New patch: libtracecmd-add-explicit-meson-thread-dependency.patch
+  New patch: tracecmd-add-explicit-meson-thread-dependency.patch
+
+-------------------------------------------------------------------
+Thu Jun 15 18:55:34 UTC 2023 - Tony Jones <tonyj@suse.com>
+
+- Update to version 3.2
+  * Add trace-attach.c to meson build
+  * Add initial support for meson
+  * Quiet valgrind from reporting forked children
+  * Close handle after opening
+  * Fix memory leaks of followers
+  * Add Makefile target for memory test
+  * Update the version to the development
+  * Add new command "attach"
+  * Add tracecmd_get_tsc2nsec() API
+  * Unlock records in tracecmd_iterate_events()
+  * Add "IP" to -N argument in help message
+  * Remove redundant check of instance in allocate_instance()
+  * Free buf_from in error path of tracecmd_compress_copy_from()
+  * Update v7 trace.dat documentation to clarify the strings section
+  * Do not destroy existing instances
+  * Do not extract top level unless told to
+  * Fix tracecmd_compress_copy_from() write size return 
+  * Document filter scope
+  * Support global filters
+  * Ensure filter is applied to single input file
+  * Open code execvp routine to avoid multiple execve syscalls
+
+- Drop patches (upstream):
+  * 0001-libtracecmd-Add-initial-support-for-meson.patch
+  * 0002-trace-cmd-Add-initial-support-for-meson.patch
+
+-------------------------------------------------------------------
 Tue Feb  7 13:32:43 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to latest upstream version (3.1.6)
