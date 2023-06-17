@@ -50,4 +50,20 @@ https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V20.md#20.2.0<
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1089598</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0c04a0085f3a67b445868856bad9139d</srcmd5>
+    <version>20.3.0</version>
+    <time>1687033206</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20.3.0:
+  * deps: upgrade to libuv 1.45.0, including significant performance
+    improvements to file system operations on Linux
+  * module: change default resolver to not throw on unknown scheme
+  * stream: deprecate asIndexedPairs
+- versioned.patch, fix_ci_tests.patch: refreshed
+- openssl3_1-adapt_tests.patch: upstreamed and removed
+For details see,
+https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V20.md#20.3.0</comment>
+    <requestid>1093316</requestid>
+  </revision>
 </revisionlist>

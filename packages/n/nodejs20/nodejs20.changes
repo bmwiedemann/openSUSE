@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun 15 11:25:18 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- Update to version 20.3.0:
+  * deps: upgrade to libuv 1.45.0, including significant performance
+    improvements to file system operations on Linux
+  * module: change default resolver to not throw on unknown scheme
+  * stream: deprecate asIndexedPairs
+
+- versioned.patch, fix_ci_tests.patch: refreshed
+- openssl3_1-adapt_tests.patch: upstreamed and removed
+
+For details see,
+https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V20.md#20.3.0
+
+-------------------------------------------------------------------
 Mon May 22 14:45:27 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - Fix build on SLE12SP5
