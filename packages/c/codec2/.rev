@@ -92,4 +92,12 @@
   * New raw data modes to support FreeDATA.</comment>
     <requestid>1088989</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>757a3fc739c1edde91f73ab8ebecb5dc</srcmd5>
+    <version>1.1.1</version>
+    <time>1687033214</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093446</requestid>
+  </revision>
 </revisionlist>
