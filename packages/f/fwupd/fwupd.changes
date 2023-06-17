@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Tue Jun 13 18:24:25 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.8.16:
+  + Auto-detect the OEM BCM57xx PCI cards with double the available
+    EEPROM
+  + Beep the console when waiting for user input
+  + Do not assume a file descriptor of zero is invalid
+  + Fix high memory usage when writing a carefully crafted EFI
+    filesystem
+  + Ignore refresh on a non-download remote to fix old versions of
+    KDE
+  + Limit the maximum number of file objects in the EFI filesystem
+  + Only add the supported DFU attributes as private flags
+  + Show devices with problems in fwupdmgr get-upgrades
+  + Update official Intel GPU product names
+- Changes from version 1.8.15:
+  + Add the latest dbx fixups for BlackLotus
+  + Allow fwupd-refresh.timer trigger once per hour
+  + Fix a crash when converting HFSTS1 values
+  + Fix the version detection for SteelSeries Bluetooth mode
+  + Invalidate the XMLb cache when installing new fwupd versions
+  + Trigger the passive flow for usb4 from dell-dock
+  + New hardware support: More Logitech Unifying receivers, Nordic
+    MCUboot and nRF52 Desktop Keyboard
+- Changes from version 1.8.14:
+  + Fix possible crash when getting UEFI report metadata
+  + Fix 'fwupdmgr install FILE GUID'
+- Changes from version 1.8.13:
+  + New features:
+    - Add pcap converter which allows emulating devices from a
+      Wireshark dump
+    - Add the ability to dump TPM firmware for future use
+    - Optionally retain firmware in a backup remote
+    - Record the ESP type in the firmware report sent to the LVFS
+  + Bugs fixed:
+    - Accept application/octet-stream for archives when the mime
+      database is missing
+    - Add the latest dbx version version fixups as Microsoft
+      removed another entry
+    - Assume DFU appIDLE if GetStatus is not implemented
+    - Do not require signatures for local or directory remotes
+    - Do not use pandoc to build the man pages
+    - Enhance Qubes functionality to use JCat
+    - Fix a CCGX 'usbfs: process did not claim interface 1 before
+      use' warning
+    - Fix a compile warning when using a new libqmi version
+    - Fix a critical warning when parsing an empty kernel cmdline
+    - Fix a synaptics-cape regression where the firmware pauses for
+      INTR
+    - Fix the defines for HFSTS6 enforcement policy
+    - Fix the i2c name properly for ElanTP hardware
+    - Fix the name of the MTD Intel SPI controller
+    - Set the release remote when installing archives
+    - Use the powerd power type information to better set AC levels
+  + New hardware:
+    - Framework Audio Card
+    - Lenovo ThinkPad TBT3-TR Gen 2
+    - Wacom Intuos BT S Gen 3
+- Update options passed to meson following upstream changes.
+
+-------------------------------------------------------------------
 Fri Mar 10 13:14:18 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Introduce docs flag, set to 0: do not build documentation using

@@ -504,4 +504,12 @@ Please do not fwd without building it, and checking new rpmlint warnings we may 
     <comment></comment>
     <requestid>1070745</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>4966066102b56bec73eb1714e4e05db7</srcmd5>
+    <version>1.8.16</version>
+    <time>1687033183</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093064</requestid>
+  </revision>
 </revisionlist>

@@ -40,7 +40,7 @@
 %define docs 0
 
 Name:           fwupd
-Version:        1.8.12
+Version:        1.8.16
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -237,8 +237,8 @@ export CFLAGS="%{optflags} -D_GNU_SOURCE"
   -Dsystemd_unit_user=root \
   -Dcompat_cli=true \
 %else
-  -Dplugin_uefi_capsule=disabled \
-  -Dplugin_uefi_pk=disabled \
+  -Dplugin_uefi_capsule=false \
+  -Dplugin_uefi_pk=false \
 %endif
 %if %{with msr_support}
   -Dplugin_msr=enabled \
@@ -264,9 +264,9 @@ export CFLAGS="%{optflags} -D_GNU_SOURCE"
   -Dplugin_flashrom=disabled \
 %endif
 %if 0%{?docs}
-  -Dman=enabled \
+  -Dman=true \
 %else
-  -Dman=disabled \
+  -Dman=false \
 %endif
   %{nil}
 %meson_build
