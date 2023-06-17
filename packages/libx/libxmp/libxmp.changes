@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jun 17 11:33:09 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.6.0
+  * Load only the left channel of XM stereo samples.
+  * Add support for ST modules with an edge case order list quirk.
+  * Fix MTM tempo effect and multiple FX_SPEED scan bugs.
+  * Add support for OctaMED ExtSamples.
+  * Implement S3M and IT mix volume.
+  * Add Imperium Galactica XMF format loader.
+
+-------------------------------------------------------------------
 Sun Jul 10 09:05:56 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to git snapshot 4.5.0-613-g8e4a5e15

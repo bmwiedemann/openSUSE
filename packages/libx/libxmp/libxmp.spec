@@ -1,7 +1,7 @@
 #
 # spec file for package libxmp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libxmp
 %define lname	libxmp4
-Version:        4.5.0+g613.8e4a5e15
+Version:        4.6.0
 Release:        0
 Summary:        Module Player library for MOD, S3M, IT and others
 License:        LGPL-2.1-only
@@ -26,10 +26,8 @@ Group:          Development/Libraries/C and C++
 URL:            http://xmp.sf.net/
 
 #Git-Clone:	https://github.com/libxmp/libxmp
-#Source:         https://github.com/libxmp/libxmp/releases/download/%name-%version/%name-%version.tar.gz
-Source:         %name-%version.tar.xz
+Source:         https://github.com/libxmp/libxmp/releases/download/%name-%version/%name-%version.tar.gz
 BuildRequires:  c_compiler
-BuildRequires:  libtool
 BuildRequires:  pkg-config
 
 %description
@@ -66,7 +64,6 @@ libxmp.
 %autosetup -p1
 
 %build
-autoreconf -fi
 %configure
 %make_build
 
@@ -78,6 +75,8 @@ cp -av docs/Changelog docs/[a-z]* "$b/%_docdir/%name/"
 # Remove file due to bnc#808655, and because they are hardware-specific
 # and should not have much relevance for developers anyhow.
 rm -fv "$b/%_docdir/%name"/{adlib*,ay*.txt}
+
+chmod a+x "$b/%_libdir"/libxmp.so*
 
 %check
 %make_build check
@@ -92,6 +91,7 @@ rm -fv "$b/%_docdir/%name"/{adlib*,ay*.txt}
 %files devel
 %_includedir/xmp.h
 %_libdir/libxmp.so
+%_libdir/cmake/
 %_libdir/pkgconfig/libxmp.pc
 %_docdir/%name/
 
