@@ -513,4 +513,12 @@ Switching over to update-alternatives for python 3 would be a huge undertaking a
     <comment></comment>
     <requestid>1039736</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>e3172be879a1ae9f6b448c0219073116</srcmd5>
+    <version>1.2.4</version>
+    <time>1687033211</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093359</requestid>
+  </revision>
 </revisionlist>
