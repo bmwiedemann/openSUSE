@@ -267,10 +267,12 @@ other applications.
 %patch40 -p1
 %endif
 %patch41 -p1
-%if %{suse_version} >= 1500
+%if %{suse_version} >= 1500 || (0%{?sle_version} && 0%{?sle_version} >= 120400)
 %patch47 -p1
 %patch48 -p1
-%else
+%endif
+# SLE-12 needs to skip more
+%if %{suse_version} == 1315
 %patch57 -p1
 %endif
 %patch49 -p1

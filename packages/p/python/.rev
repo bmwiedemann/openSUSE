@@ -3966,4 +3966,12 @@ However, upstream development now focuses on 3.x series.
   be in the glibc itself. Partial revert of sr#1061583.</comment>
     <requestid>1091094</requestid>
   </revision>
+  <revision rev="185" vrev="36">
+    <srcmd5>021fd25960eacb44020ea5240fa0e39b</srcmd5>
+    <version>2.7.18</version>
+    <time>1687033194</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1093166</requestid>
+  </revision>
 </revisionlist>

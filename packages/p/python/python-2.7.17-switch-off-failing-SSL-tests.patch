@@ -1,3 +1,7 @@
+---
+ Lib/test/test_ssl.py |    5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
 --- a/Lib/test/test_ssl.py
 +++ b/Lib/test/test_ssl.py
 @@ -152,9 +152,7 @@ def skip_if_broken_ubuntu_ssl(func):
@@ -15,7 +19,7 @@
          self.assertEqual(ctx.verify_mode, ssl.CERT_NONE)
          self._assert_context_options(ctx)
  
-+    @skip_if_broken_ubuntu_ssl
++    @unittest.skip("Test fails on SLE-12")
      def test__https_verify_certificates(self):
          # Unit test to check the contect factory mapping
          # The factories themselves are tested above

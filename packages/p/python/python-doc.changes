@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  7 15:37:43 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Fix the application of the python-2.7.17-switch-off-failing-SSL-tests.patch.
+
+-------------------------------------------------------------------
 Tue May 30 10:43:13 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - python-2.7.5-multilib.patch: Update for riscv64
