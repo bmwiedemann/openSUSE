@@ -18,23 +18,23 @@ Signed-off-by: Borislav Petkov <bp@suse.de>
  rename k8.c => amd.c (97%)
  rename k8.h => amd.h (79%)
 
-Index: mcelog-181/Makefile
+Index: mcelog-189/Makefile
 ===================================================================
---- mcelog-181.orig/Makefile
-+++ mcelog-181/Makefile
+--- mcelog-189.orig/Makefile
++++ mcelog-189/Makefile
 @@ -31,7 +31,7 @@ all: mcelog
  
- .PHONY: install clean depend FORCE
+ .PHONY: install install-nodoc clean depend FORCE
  
 -OBJ := p4.o k8.o mcelog.o dmi.o tsc.o core2.o bitfield.o intel.o \
 +OBJ := p4.o amd.o mcelog.o dmi.o tsc.o core2.o bitfield.o intel.o \
         nehalem.o dunnington.o tulsa.o config.o memutil.o msg.o   \
         eventloop.o leaky-bucket.o memdb.o server.o trigger.o 	 \
         client.o cache.o sysfs.o yellow.o page.o rbtree.o 	 \
-Index: mcelog-181/amd.c
+Index: mcelog-189/amd.c
 ===================================================================
 --- /dev/null
-+++ mcelog-181/amd.c
++++ mcelog-189/amd.c
 @@ -0,0 +1,282 @@
 +/* Based on K8 decoding code written for the 2.4 kernel by Andi Kleen and 
 + * Eric Morton. Hacked and extended for mcelog by AK.
@@ -318,11 +318,11 @@ Index: mcelog-181/amd.c
 +	} 
 +	return 1;
 +}
-Index: mcelog-181/amd.h
+Index: mcelog-189/amd.h
 ===================================================================
 --- /dev/null
-+++ mcelog-181/amd.h
-@@ -0,0 +1,14 @@
++++ mcelog-189/amd.h
+@@ -0,0 +1,80 @@
 +char *k8_bank_name(unsigned num);
 +void decode_amd_mc(enum cputype, struct mce *mce, int *ismemerr);
 +int mce_filter_k8(struct mce *m);
@@ -335,11 +335,77 @@ Index: mcelog-181/amd.h
 +#define K8_MCELOG_THRESHOLD_L3_CACHE (4 * 9 + 2)
 +#define K8_MCELOG_THRESHOLD_FBDIMM   (4 * 9 + 3)
 +
++#define EC(x)				((x) & 0xffff)
++#define XEC(x, mask)			(((x) >> 16) & mask)
++
++#define LOW_SYNDROME(x)			(((x) >> 15) & 0xff)
++#define HIGH_SYNDROME(x)		(((x) >> 24) & 0xff)
++
++#define TLB_ERROR(x)			(((x) & 0xFFF0) == 0x0010)
++#define MEM_ERROR(x)			(((x) & 0xFF00) == 0x0100)
++#define BUS_ERROR(x)			(((x) & 0xF800) == 0x0800)
++#define INT_ERROR(x)			(((x) & 0xF4FF) == 0x0400)
++
++#define TT(x)				(((x) >> 2) & 0x3)
++#define TT_MSG(x)			tt_msgs[TT(x)]
++#define II(x)				(((x) >> 2) & 0x3)
++#define II_MSG(x)			ii_msgs[II(x)]
++#define LL(x)				((x) & 0x3)
++#define LL_MSG(x)			ll_msgs[LL(x)]
++#define TO(x)				(((x) >> 8) & 0x1)
++#define TO_MSG(x)			to_msgs[TO(x)]
++#define PP(x)				(((x) >> 9) & 0x3)
++#define PP_MSG(x)			pp_msgs[PP(x)]
++#define UU(x)				(((x) >> 8) & 0x3)
++#define UU_MSG(x)			uu_msgs[UU(x)]
++
++#define R4(x)				(((x) >> 4) & 0xf)
++#define R4_MSG(x)			((R4(x) < 9) ?  rrrr_msgs[R4(x)] : "Wrong R4!")
++
++enum tt_ids {
++	TT_INSTR = 0,
++	TT_DATA,
++	TT_GEN,
++	TT_RESV,
++};
++
++enum ll_ids {
++	LL_RESV = 0,
++	LL_L1,
++	LL_L2,
++	LL_LG,
++};
++
++enum ii_ids {
++	II_MEM = 0,
++	II_RESV,
++	II_IO,
++	II_GEN,
++};
++
++enum rrrr_ids {
++	R4_GEN	= 0,
++	R4_RD,
++	R4_WR,
++	R4_DRD,
++	R4_DWR,
++	R4_IRD,
++	R4_PREF,
++	R4_EVICT,
++	R4_SNOOP,
++};
++
 +#define CASE_AMD_CPUS \
-+	case CPU_K8
-Index: mcelog-181/k8.c
++	(cputype == CPU_K8 || \
++	 cputype == CPU_F10H || \
++ 	 cputype == CPU_F11H || \
++	 cputype == CPU_F12H || \
++ 	 cputype == CPU_F14H || \
++	 cputype == CPU_F15H || \
++ 	 cputype == CPU_F16H)
+Index: mcelog-189/k8.c
 ===================================================================
---- mcelog-181.orig/k8.c
+--- mcelog-189.orig/k8.c
 +++ /dev/null
 @@ -1,281 +0,0 @@
 -/* Based on K8 decoding code written for the 2.4 kernel by Andi Kleen and 
@@ -623,9 +689,9 @@ Index: mcelog-181/k8.c
 -	} 
 -	return 1;
 -}
-Index: mcelog-181/k8.h
+Index: mcelog-189/k8.h
 ===================================================================
---- mcelog-181.orig/k8.h
+--- mcelog-189.orig/k8.h
 +++ /dev/null
 @@ -1,11 +0,0 @@
 -char *k8_bank_name(unsigned num);
@@ -639,10 +705,10 @@ Index: mcelog-181/k8.h
 -#define K8_MCELOG_THRESHOLD_LINK     (4 * 9 + 1)
 -#define K8_MCELOG_THRESHOLD_L3_CACHE (4 * 9 + 2)
 -#define K8_MCELOG_THRESHOLD_FBDIMM   (4 * 9 + 3)
-Index: mcelog-181/mcelog.c
+Index: mcelog-189/mcelog.c
 ===================================================================
---- mcelog-181.orig/mcelog.c
-+++ mcelog-181/mcelog.c
+--- mcelog-189.orig/mcelog.c
++++ mcelog-189/mcelog.c
 @@ -41,7 +41,7 @@
  #include <fnmatch.h>
  #include "mcelog.h"
@@ -652,16 +718,14 @@ Index: mcelog-181/mcelog.c
  #include "intel.h"
  #include "p4.h"
  #include "dmi.h"
-@@ -453,9 +453,9 @@ static void dump_mce(struct mce *m, unsi
+@@ -346,8 +346,8 @@ static void dump_mce(struct mce *m, unsi
  		time_t t = m->time;
  		Wprintf("TIME %llu %s", m->time, ctime(&t));
  	} 
--	switch (cputype) { 
--	case CPU_K8:
+-	if (cputype == CPU_K8)
 -		decode_k8_mc(m, &ismemerr); 
-+	switch (cputype) {
-+	CASE_AMD_CPUS:
-+		decode_amd_mc(cputype, m, &ismemerr);
- 		break;
- 	CASE_INTEL_CPUS:
++	if CASE_AMD_CPUS
++		decode_amd_mc(m, &ismemerr); 
+ 	else if (cputype >= CPU_INTEL)
  		decode_intel_mc(m, cputype, &ismemerr, recordlen);
+ 	/* else add handlers for other CPUs here */

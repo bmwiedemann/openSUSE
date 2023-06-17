@@ -8,10 +8,10 @@ Signed-off-by: Borislav Petkov <bp@suse.de>
  mcelog.h |    1 
  4 files changed, 506 insertions(+), 51 deletions(-)
 
-Index: mcelog-181/amd.c
+Index: mcelog-189/amd.c
 ===================================================================
---- mcelog-181.orig/amd.c
-+++ mcelog-181/amd.c
+--- mcelog-189.orig/amd.c
++++ mcelog-189/amd.c
 @@ -14,7 +14,7 @@
  #include "mcelog.h"
  #include "amd.h"
@@ -561,10 +561,10 @@ Index: mcelog-181/amd.c
 +	}
 +        return 1;
  }
-Index: mcelog-181/amd.h
+Index: mcelog-189/amd.h
 ===================================================================
---- mcelog-181.orig/amd.h
-+++ mcelog-181/amd.h
+--- mcelog-189.orig/amd.h
++++ mcelog-189/amd.h
 @@ -1,6 +1,25 @@
 +#include <stdbool.h>
 +
@@ -601,7 +601,7 @@ Index: mcelog-181/amd.h
  #define EC(x)				((x) & 0xffff)
  #define XEC(x, mask)			(((x) >> 16) & mask)
  
-@@ -22,23 +43,20 @@ int mce_filter_k8(struct mce *m);
+@@ -22,20 +43,20 @@ int mce_filter_k8(struct mce *m);
  #define INT_ERROR(x)			(((x) & 0xF4FF) == 0x0400)
  
  #define TT(x)				(((x) >> 2) & 0x3)
@@ -624,67 +624,26 @@ Index: mcelog-181/amd.h
  
  #define R4(x)				(((x) >> 4) & 0xf)
 -#define R4_MSG(x)			((R4(x) < 9) ?  rrrr_msgs[R4(x)] : "Wrong R4!")
--
--#define CASE_AMD_CPUS \
--	case CPU_K8
 +#define R4_MSG(x)			((R4(x) < 9) ?  memtrans[R4(x)] : "Wrong R4!")
  
  enum tt_ids {
  	TT_INSTR = 0,
-@@ -72,3 +90,7 @@ enum rrrr_ids {
- 	R4_EVICT,
- 	R4_SNOOP,
- };
-+
-+#define CASE_AMD_CPUS \
-+	case CPU_K8:  \
-+	case CPU_F10H
-Index: mcelog-181/mcelog.c
+Index: mcelog-189/mcelog.c
 ===================================================================
---- mcelog-181.orig/mcelog.c
-+++ mcelog-181/mcelog.c
-@@ -148,19 +148,20 @@ static void resolveaddr(unsigned long lo
- 
- static int mce_filter(struct mce *m, unsigned recordlen)
- {
--	if (!filter_bogus) 
-+	if (!filter_bogus)
- 		return 1;
-+
+--- mcelog-189.orig/mcelog.c
++++ mcelog-189/mcelog.c
+@@ -152,8 +152,8 @@ static int mce_filter(struct mce *m, uns
  	/* Filter out known broken MCEs */
- 	switch (cputype) {
--	case CPU_K8:
--		return mce_filter_k8(m);
-+	CASE_AMD_CPUS:
-+		return mce_filter_amd(m);
- 		/* add more buggy CPUs here */
- 	CASE_INTEL_CPUS:
+ 	if (cputype >= CPU_INTEL)
  		return mce_filter_intel(m, recordlen);
- 	default:
- 	case CPU_GENERIC:
- 		return 1;
--	}	
-+	}
- }
+-	else if (cputype == CPU_K8)
+-		return mce_filter_k8(m);
++	else if	CASE_AMD_CPUS
++		return mce_filter_amd(m);
  
- static void print_tsc(int cpunum, __u64 tsc, unsigned long time) 
-@@ -228,6 +229,7 @@ static char *cputype_name[] = {
- 	[CPU_P6OLD] = "Intel PPro/P2/P3/old Xeon",
- 	[CPU_CORE2] = "Intel Core", /* 65nm and 45nm */
- 	[CPU_K8] = "AMD K8 and derivates",
-+	[CPU_F10H] = "AMD Greyhound",
- 	[CPU_P4] = "Intel P4",
- 	[CPU_NEHALEM] = "Intel Xeon 5500 series / Core i3/5/7 (\"Nehalem/Westmere\")",
- 	[CPU_DUNNINGTON] = "Intel Xeon 7400 series",
-@@ -268,6 +270,7 @@ static struct config_choice cpu_choices[
- 	{ "p6old", CPU_P6OLD },
- 	{ "core2", CPU_CORE2 },
- 	{ "k8", CPU_K8 },
-+	{ "f10h", CPU_F10H },
- 	{ "p4", CPU_P4 },
- 	{ "dunnington", CPU_DUNNINGTON },
- 	{ "xeon74xx", CPU_DUNNINGTON },
-@@ -390,9 +393,7 @@ static enum cputype setup_cpuid(u32 cpuv
+ 	return 1;
+ }
+@@ -283,9 +283,7 @@ static enum cputype setup_cpuid(u32 cpuv
  	case X86_VENDOR_INTEL:
  	        return select_intel_cputype(family, model);
  	case X86_VENDOR_AMD:
@@ -695,7 +654,16 @@ Index: mcelog-181/mcelog.c
  	default:
  		Eprintf("Unknown CPU type vendor %u family %u model %u",
  			cpuvendor, family, model);
-@@ -581,14 +582,9 @@ int is_cpu_supported(void)
+@@ -347,7 +345,7 @@ static void dump_mce(struct mce *m, unsi
+ 		Wprintf("TIME %llu %s", m->time, ctime(&t));
+ 	} 
+ 	if CASE_AMD_CPUS
+-		decode_amd_mc(m, &ismemerr); 
++		decode_amd_mc(cputype, m, &ismemerr);
+ 	else if (cputype >= CPU_INTEL)
+ 		decode_intel_mc(m, cputype, &ismemerr, recordlen);
+ 	/* else add handlers for other CPUs here */
+@@ -463,14 +461,9 @@ int is_cpu_supported(void)
  
  		} 
  		if (seen == ALL) {
@@ -713,15 +681,3 @@ Index: mcelog-181/mcelog.c
  				Eprintf("ERROR: Hygon Processor family %d: mcelog does not support this processor.  Please use the edac_mce_amd module instead.\n", family);
  				return 0;
  			} else if (!strcmp(vendor,"GenuineIntel"))
-Index: mcelog-181/mcelog.h
-===================================================================
---- mcelog-181.orig/mcelog.h
-+++ mcelog-181/mcelog.h
-@@ -119,6 +119,7 @@ enum cputype {
- 	CPU_P6OLD,
- 	CPU_CORE2, /* 65nm and 45nm */
- 	CPU_K8,
-+	CPU_F10H,
- 	CPU_P4,
- 	CPU_NEHALEM,
- 	CPU_DUNNINGTON,

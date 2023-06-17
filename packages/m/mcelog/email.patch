@@ -7,23 +7,24 @@
  msg.c    |    8 ++
  6 files changed, 346 insertions(+), 3 deletions(-)
 
-Index: mcelog-181/Makefile
+Index: mcelog-194/Makefile
 ===================================================================
---- mcelog-181.orig/Makefile
-+++ mcelog-181/Makefile
+--- mcelog-194.orig/Makefile
++++ mcelog-194/Makefile
 @@ -1,3 +1,4 @@
 +CONFIG_EMAIL := 1
  CFLAGS := -g -Os
  prefix := /usr
  etcprefix :=
-@@ -38,15 +39,23 @@ OBJ := p4.o k8.o mcelog.o dmi.o tsc.o co
+@@ -38,16 +39,24 @@ OBJ := p4.o k8.o mcelog.o dmi.o tsc.o co
         broadwell_de.o broadwell_epex.o skylake_xeon.o		 \
-        denverton.o i10nm.o					 \
-        msr.o bus.o unknown.o
+        denverton.o i10nm.o sapphire.o				 \
+        msr.o bus.o unknown.o lookup_intel_cputype.o
 +EMAIL_OBJ := email.o
  CLEAN := mcelog dmi tsc dbquery .depend .depend.X dbquery.o \
--	version.o version.c version.tmp
-+	 ${EMAIL_OBJ} version.o version.c version.tmp
+ 	version.o version.c version.tmp cputype.h cputype.tmp \
+-	lookup_intel_cputype.c lookup_intel_cputype.tmp
++	lookup_intel_cputype.c lookup_intel_cputype.tmp ${EMAIL_OBJ}
  DOC := mce.pdf
  
  ADD_DEFINES :=
@@ -40,8 +41,8 @@ Index: mcelog-181/Makefile
 +	$(CC) $(LDFLAGS) $^ ${LIBS} -o $@
  
  # dbquery intentionally not installed by default
- install: mcelog mcelog.conf mcelog.conf.5 mcelog.triggers.5
-@@ -81,7 +90,7 @@ dbquery: db.o dbquery.o memutil.o
+ install: install-nodoc mcelog.conf.5 mcelog.triggers.5
+@@ -85,7 +94,7 @@ dbquery: db.o dbquery.o memutil.o
  depend: .depend
  
  %.o: %.c
@@ -50,10 +51,10 @@ Index: mcelog-181/Makefile
  
  version.tmp: FORCE
  	( printf "char version[] = \"" ; 			\
-Index: mcelog-181/email.c
+Index: mcelog-194/email.c
 ===================================================================
 --- /dev/null
-+++ mcelog-181/email.c
++++ mcelog-194/email.c
 @@ -0,0 +1,200 @@
 +#include <unistd.h>
 +#include <signal.h>
@@ -255,10 +256,10 @@ Index: mcelog-181/email.c
 +	smtp_destroy_session (session);
 +	return 0;
 +}
-Index: mcelog-181/email.h
+Index: mcelog-194/email.h
 ===================================================================
 --- /dev/null
-+++ mcelog-181/email.h
++++ mcelog-194/email.h
 @@ -0,0 +1,34 @@
 +#ifndef _MCELOG_EMAIL_H_
 +#define _MCELOG_EMAIL_H_
@@ -294,10 +295,10 @@ Index: mcelog-181/email.h
 +#endif
 +
 +#endif
-Index: mcelog-181/mcelog.c
+Index: mcelog-194/mcelog.c
 ===================================================================
---- mcelog-181.orig/mcelog.c
-+++ mcelog-181/mcelog.c
+--- mcelog-194.orig/mcelog.c
++++ mcelog-194/mcelog.c
 @@ -37,6 +37,7 @@
  #include <assert.h>
  #include <signal.h>
@@ -325,7 +326,7 @@ Index: mcelog-181/mcelog.c
  static char *inputfile;
  char *processor_flags;
  static int foreground;
-@@ -1024,6 +1028,7 @@ void usage(void)
+@@ -906,6 +910,7 @@ void usage(void)
  "--max-corr-err-counters Max page correctable error counters\n"
  "--help	             Display this message.\n"
  		);
@@ -333,7 +334,7 @@ Index: mcelog-181/mcelog.c
  	printf("\n");
  	print_cputypes();
  }
-@@ -1095,6 +1100,7 @@ static struct option options[] = {
+@@ -977,6 +982,7 @@ static struct option options[] = {
  	{ "max-corr-err-counters", 1, NULL, O_MAX_CORR_ERR_COUNTERS },
  	{ "help", 0, NULL, O_HELP },
  	{ "is-cpu-supported", 0, NULL, O_IS_CPU_SUPPORTED },
@@ -341,7 +342,7 @@ Index: mcelog-181/mcelog.c
  	{}
  };
  
-@@ -1289,11 +1295,86 @@ static void drop_cred(void)
+@@ -1171,11 +1177,86 @@ static void drop_cred(void)
  	}
  }
  
@@ -428,7 +429,7 @@ Index: mcelog-181/mcelog.c
  
  	if (recordlen == 0) {
  		Wprintf("no data in mce record\n");
-@@ -1320,12 +1401,16 @@ static void process(int fd, unsigned rec
+@@ -1202,12 +1283,16 @@ static void process(int fd, unsigned rec
  			finish = 1;
  		if (!mce_filter(mce, recordlen)) 
  			continue;
@@ -445,7 +446,7 @@ Index: mcelog-181/mcelog.c
  		flushlog();
  	}
  
-@@ -1439,6 +1524,8 @@ int main(int ac, char **av)
+@@ -1321,6 +1406,8 @@ int main(int ac, char **av)
  			noargs(ac, av);
  			fprintf(stderr, "mcelog %s\n", MCELOG_VERSION);
  			exit(0);
@@ -454,7 +455,7 @@ Index: mcelog-181/mcelog.c
  		} else if (opt == 0)
  			break;		    
  	} 
-@@ -1473,6 +1560,10 @@ int main(int ac, char **av)
+@@ -1355,6 +1442,10 @@ int main(int ac, char **av)
  		usage();
  		exit(1);
  	}
@@ -465,11 +466,11 @@ Index: mcelog-181/mcelog.c
  	checkdmi();
  	general_setup();
  		
-Index: mcelog-181/mcelog.h
+Index: mcelog-194/mcelog.h
 ===================================================================
---- mcelog-181.orig/mcelog.h
-+++ mcelog-181/mcelog.h
-@@ -157,6 +157,7 @@ enum cputype {
+--- mcelog-194.orig/mcelog.h
++++ mcelog-194/mcelog.h
+@@ -118,6 +118,7 @@ extern int open_logfile(char *fn);
  enum option_ranges {
  	O_COMMON = 500,
  	O_DISKDB = 1000,
@@ -477,10 +478,10 @@ Index: mcelog-181/mcelog.h
  };
  
  enum syslog_opt { 
-Index: mcelog-181/msg.c
+Index: mcelog-194/msg.c
 ===================================================================
---- mcelog-181.orig/msg.c
-+++ mcelog-181/msg.c
+--- mcelog-194.orig/msg.c
++++ mcelog-194/msg.c
 @@ -8,10 +8,13 @@
  #include "mcelog.h"
  #include "msg.h"

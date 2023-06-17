@@ -8,10 +8,10 @@ Signed-off-by: Borislav Petkov <bp@suse.de>
  mcelog.h |    1 +
  4 files changed, 17 insertions(+), 1 deletion(-)
 
-Index: mcelog-181/amd.c
+Index: mcelog-189/amd.c
 ===================================================================
---- mcelog-181.orig/amd.c
-+++ mcelog-181/amd.c
+--- mcelog-189.orig/amd.c
++++ mcelog-189/amd.c
 @@ -157,6 +157,8 @@ enum cputype select_amd_cputype(u32 fami
  		return CPU_F10H;
  	case 0x11:
@@ -44,10 +44,10 @@ Index: mcelog-181/amd.c
  	default:
  		Eprintf("Huh? What family is it: 0x%x?!\n", cpu);
  		return;
-Index: mcelog-181/amd.h
+Index: mcelog-189/amd.h
 ===================================================================
---- mcelog-181.orig/amd.h
-+++ mcelog-181/amd.h
+--- mcelog-189.orig/amd.h
++++ mcelog-189/amd.h
 @@ -9,6 +9,7 @@ enum amdcpu {
  	AMD_K8 = 0,
  	AMD_F10H,
@@ -56,42 +56,3 @@ Index: mcelog-181/amd.h
  	AMD_F14H,
  	AMD_F15H,
  	AMD_F16H,
-@@ -94,4 +95,5 @@ enum rrrr_ids {
- #define CASE_AMD_CPUS \
- 	case CPU_K8:  \
- 	case CPU_F10H: \
--	case CPU_F11H
-+	case CPU_F11H: \
-+	case CPU_F12H
-Index: mcelog-181/mcelog.c
-===================================================================
---- mcelog-181.orig/mcelog.c
-+++ mcelog-181/mcelog.c
-@@ -231,6 +231,7 @@ static char *cputype_name[] = {
- 	[CPU_K8] = "AMD K8 and derivates",
- 	[CPU_F10H] = "AMD Greyhound",
- 	[CPU_F11H] = "AMD Griffin",
-+	[CPU_F12H] = "AMD Llano",
- 	[CPU_P4] = "Intel P4",
- 	[CPU_NEHALEM] = "Intel Xeon 5500 series / Core i3/5/7 (\"Nehalem/Westmere\")",
- 	[CPU_DUNNINGTON] = "Intel Xeon 7400 series",
-@@ -273,6 +274,7 @@ static struct config_choice cpu_choices[
- 	{ "k8", CPU_K8 },
- 	{ "f10h", CPU_F10H },
- 	{ "f11h", CPU_F11H },
-+	{ "f12h", CPU_F12H },
- 	{ "p4", CPU_P4 },
- 	{ "dunnington", CPU_DUNNINGTON },
- 	{ "xeon74xx", CPU_DUNNINGTON },
-Index: mcelog-181/mcelog.h
-===================================================================
---- mcelog-181.orig/mcelog.h
-+++ mcelog-181/mcelog.h
-@@ -121,6 +121,7 @@ enum cputype {
- 	CPU_K8,
- 	CPU_F10H,
- 	CPU_F11H,
-+	CPU_F12H,
- 	CPU_P4,
- 	CPU_NEHALEM,
- 	CPU_DUNNINGTON,

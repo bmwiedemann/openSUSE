@@ -2,10 +2,10 @@
  mcelog.c |    9 +++++++++
  1 file changed, 9 insertions(+)
 
-Index: mcelog-181/mcelog.c
+Index: mcelog-189/mcelog.c
 ===================================================================
---- mcelog-181.orig/mcelog.c
-+++ mcelog-181/mcelog.c
+--- mcelog-189.orig/mcelog.c
++++ mcelog-189/mcelog.c
 @@ -37,6 +37,7 @@
  #include <assert.h>
  #include <signal.h>
@@ -14,7 +14,7 @@ Index: mcelog-181/mcelog.c
  #include <sys/wait.h>
  #include <fnmatch.h>
  #include "mcelog.h"
-@@ -1286,6 +1287,14 @@ static void general_setup(void)
+@@ -1155,6 +1156,14 @@ static void general_setup(void)
  
  static void drop_cred(void)
  {

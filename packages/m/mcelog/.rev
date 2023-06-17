@@ -716,4 +716,41 @@ M email.patch
     <comment></comment>
     <requestid>974671</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>20b48caed8b4032841a5ed1b99440d8b</srcmd5>
+    <version>194</version>
+    <time>1687033199</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 194 (jsc#PED-4218):
+  * client.c: fix build w/ musl libc
+  * mcelog: New model number for Arrowlake
+  * mcelog: Don't overwrite model number when lookup fails
+  * mcelog: Add Graniterapids, Grandridge and Sierraforest
+  * mcelog: New model number for Lunarlake
+  * mcelog: Add Emerald Rapids
+  * mcelog: Add decode support for Sapphire Rapids
+  * Update PFA_test_howto
+  * mcelog: Add support for Meteor Lake
+
+- Includes following SLE 15 SP5 jira features:
+  * jsc#PED-671 mcelog: Update to latest release
+  * jsc#PED-686 [CPU Features] Update mcelog support for ADL-N
+  * jsc#PED-638 [CPU Features] Update mcelog support for MTL-P
+- Update to version 189:
+  * mcelog: Add another Raptor Lake CPU model
+  * Fix generation of cputype files
+  * mcelog: Add missing model numbers for Broadwell and Raptorlake
+  * mcelog: Makefile: Only touch cputype.h if needed to create it
+  * Makefile: add install-nodoc target
+  * Use env as the shebang target
+  * Add missing dependencies for cputype include files
+  * mcelog: Reverse sens of check to call resolveaddr()
+  * mcelog: Reverse the sense of the check to set memory_error_support
+  * mcelog: Drop CASE_INTEL define
+  * mcelog: Generate cpu_choices[] from table
+  * mcelog: Generate the cputype_name[] array from the table
+  * mcelog: Add CPU model numbers to table and generate switch function
+  * mcelog: Generate CPU_* enums from a table</comment>
+    <requestid>1093247</requestid>
+  </revision>
 </revisionlist>

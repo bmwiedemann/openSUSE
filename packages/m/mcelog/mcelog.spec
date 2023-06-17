@@ -1,7 +1,7 @@
 #
 # spec file for package mcelog
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           mcelog
-Version:        181
+Version:        194
 Release:        0
 Summary:        Log Machine Check Events
 License:        GPL-2.0-only
@@ -35,7 +35,7 @@ Source6:        README.email_setup
 Patch1:         email.patch
 Patch2:         mcelog_invert_prefill_db_warning.patch
 Patch3:         Start-consolidating-AMD-specific-stuff.patch
-Patch4:         patches/add-defines.patch
+Patch4:         add_new_amd_cpu_defines
 Patch5:         patches/add-f10h-support.patch
 Patch6:         patches/add-f11h-support.patch
 Patch7:         patches/add-f12h-support.patch
@@ -44,8 +44,6 @@ Patch9:         patches/add-f15h-support.patch
 Patch10:        patches/add-f16h-support.patch
 Patch11:        mcelog-socket-path.patch
 Patch12:        fix_setgroups_missing_call.patch
-Patch13:        python3_shebang
-BuildRequires:  %{pythons}
 BuildRequires:  libesmtp-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(systemd)

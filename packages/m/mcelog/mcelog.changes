@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Wed Jun 14 14:58:43 UTC 2023 - trenn@suse.de
+
+- Update to version 194 (jsc#PED-4218):
+  * client.c: fix build w/ musl libc
+  * mcelog: New model number for Arrowlake
+  * mcelog: Don't overwrite model number when lookup fails
+  * mcelog: Add Graniterapids, Grandridge and Sierraforest
+  * mcelog: New model number for Lunarlake
+  * mcelog: Add Emerald Rapids
+  * mcelog: Add decode support for Sapphire Rapids
+  * Update PFA_test_howto
+  * mcelog: Add support for Meteor Lake
+
+-------------------------------------------------------------------
+Thu Oct 06 14:56:44 UTC 2022 - trenn@suse.de
+
+- Includes following SLE 15 SP5 jira features:
+  * jsc#PED-671 mcelog: Update to latest release
+  * jsc#PED-686 [CPU Features] Update mcelog support for ADL-N
+  * jsc#PED-638 [CPU Features] Update mcelog support for MTL-P
+- Update to version 189:
+  * mcelog: Add another Raptor Lake CPU model
+  * Fix generation of cputype files
+  * mcelog: Add missing model numbers for Broadwell and Raptorlake
+  * mcelog: Makefile: Only touch cputype.h if needed to create it
+  * Makefile: add install-nodoc target
+  * Use env as the shebang target
+  * Add missing dependencies for cputype include files
+  * mcelog: Reverse sens of check to call resolveaddr()
+  * mcelog: Reverse the sense of the check to set memory_error_support
+  * mcelog: Drop CASE_INTEL define
+  * mcelog: Generate cpu_choices[] from table
+  * mcelog: Generate the cputype_name[] array from the table
+  * mcelog: Add CPU model numbers to table and generate switch function
+  * mcelog: Generate CPU_* enums from a table
+  * mcelog: Add two more Alderlake model numbers
+  * mcelog: Reduce default threshold for corrected error page offline
+  * Make genconfig use python3
+  * mcelog: Add support for Raptorlake
+  * Fix warnings in sysfs.c
+  * mcelog: Change "DDR4" string to "DDR" for i10nm platforms
+  * Fix logrotate syntax
+  * remove outdated mcelog.conf.5 manual file
+  * add furture print function for Python2
+  * fix python errors in genconfig.py
+  * fix the buf not freed in read_field
+  * mcelog: Print warning for locked down kernel
+  * mcelog: Handle sysfs files without length
+- Had to adopt to latest CPU identification model
+  mainline patch:
+  b54ee05056a76e mcelog: Drop CASE_INTEL define
+  and friends
+A    add_new_amd_cpu_defines
+D    add-defines.patch
+M    Start-consolidating-AMD-specific-stuff.patch
+M    add-f10h-support.patch
+M    add-f11h-support.patch
+M    add-f12h-support.patch
+M    add-f14h-support.patch
+M    add-f15h-support.patch
+M    add-f16h-support.patch
+M    email.patch
+M    fix_setgroups_missing_call.patch
+
+-------------------------------------------------------------------
 Tue May 03 11:32:42 UTC 2022 - moritz.kodytek@suse.com
 
 - Update to version 181:

@@ -1,7 +1,7 @@
 <services>
   <service name="obs_scm" mode="localonly">
     <param name="scm">git</param>
-    <param name="url">https://github.com/andikleen/mcelog.git</param>
+    <param name="url">git://git.kernel.org/pub/scm/utils/cpu/mce/mcelog.git</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionformat">@PARENT_TAG@</param>
