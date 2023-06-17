@@ -1,23 +1,23 @@
-Index: osinfo-db-20220830/os/opensuse.org/opensuse-tumbleweed.xml
+Index: osinfo-db-20230518/os/opensuse.org/opensuse-tumbleweed.xml
 ===================================================================
---- osinfo-db-20220830.orig/os/opensuse.org/opensuse-tumbleweed.xml
-+++ osinfo-db-20220830/os/opensuse.org/opensuse-tumbleweed.xml
+--- osinfo-db-20230518.orig/os/opensuse.org/opensuse-tumbleweed.xml
++++ osinfo-db-20230518/os/opensuse.org/opensuse-tumbleweed.xml
 @@ -65,16 +65,6 @@
        <name xml:lang="de">openSUSE Tumbleweed (Kubic)</name>
      </variant>
      <!-- DVD Image -->
 -    <media arch="i686">
--      <url>http://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-DVD-i586-Current.iso</url>
+-      <url>https://download.opensuse.org/ports/i586/tumbleweed/iso/openSUSE-Tumbleweed-LegacyX86-DVD-i586-Current.iso</url>
 -      <iso>
 -        <volume-id>openSUSE-Tumbleweed-DVD-i586*</volume-id>
 -        <system-id>LINUX</system-id>
--        <publisher-id>SUSE LINUX GmbH</publisher-id>
+-        <publisher-id>SUSE (LINUX GmbH|LLC)</publisher-id>
 -      </iso>
 -      <kernel>boot/i386/loader/linux</kernel>
 -      <initrd>boot/i386/loader/initrd</initrd>
 -    </media>
      <media arch="x86_64">
-       <url>http://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-DVD-x86_64-Current.iso</url>
+       <url>https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-DVD-x86_64-Current.iso</url>
        <iso>
 @@ -85,18 +75,17 @@
        <kernel>boot/x86_64/loader/linux</kernel>
@@ -26,13 +26,13 @@ Index: osinfo-db-20220830/os/opensuse.org/opensuse-tumbleweed.xml
 -    <!-- Network Image -->
      <media arch="i686">
 -      <variant id="netinst"/>
--      <url>http://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-NET-i586-Current.iso</url>
-+      <url>http://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-DVD-i586-Current.iso</url>
+-      <url>https://download.opensuse.org/ports/i586/tumbleweed/iso/openSUSE-Tumbleweed-LegacyX86-NET-i586-Current.iso</url>
++      <url>https://download.opensuse.org/ports/i586/tumbleweed/iso/openSUSE-Tumbleweed-LegacyX86-DVD-i586-Current.iso</url>
        <iso>
--        <volume-id>openSUSE-Tumbleweed-NET-i586*</volume-id>
+-        <volume-id>openSUSE-Tumbleweed-(NET-i586|LegacyX86-NE)*</volume-id>
 +        <volume-id>openSUSE-Tumbleweed-DVD-i586*</volume-id>
          <system-id>LINUX</system-id>
-         <publisher-id>SUSE LINUX GmbH</publisher-id>
+         <publisher-id>SUSE (LINUX GmbH|LLC)</publisher-id>
        </iso>
        <kernel>boot/i386/loader/linux</kernel>
        <initrd>boot/i386/loader/initrd</initrd>
@@ -40,18 +40,18 @@ Index: osinfo-db-20220830/os/opensuse.org/opensuse-tumbleweed.xml
 +    <!-- Network Image -->
      <media arch="x86_64">
        <variant id="netinst"/>
-       <url>http://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-NET-x86_64-Current.iso</url>
+       <url>https://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-NET-x86_64-Current.iso</url>
 @@ -108,6 +97,17 @@
        <kernel>boot/x86_64/loader/linux</kernel>
        <initrd>boot/x86_64/loader/initrd</initrd>
      </media>
 +    <media arch="i686">
 +      <variant id="netinst"/>
-+      <url>http://download.opensuse.org/tumbleweed/iso/openSUSE-Tumbleweed-NET-i586-Current.iso</url>
++      <url>https://download.opensuse.org/ports/i586/tumbleweed/iso/openSUSE-Tumbleweed-LegacyX86-NET-i586-Current.iso</url>
 +      <iso>
-+        <volume-id>openSUSE-Tumbleweed-NET-i586*</volume-id>
++        <volume-id>openSUSE-Tumbleweed-(NET-i586|LegacyX86-NE)*</volume-id>
 +        <system-id>LINUX</system-id>
-+        <publisher-id>SUSE LINUX GmbH</publisher-id>
++        <publisher-id>SUSE (LINUX GmbH|LLC)</publisher-id>
 +      </iso>
 +      <kernel>boot/i386/loader/linux</kernel>
 +      <initrd>boot/i386/loader/initrd</initrd>

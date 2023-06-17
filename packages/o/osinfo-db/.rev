@@ -512,4 +512,12 @@
     <comment>Update to database version 20230308</comment>
     <requestid>1071248</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>00e33b62b962f2a5a4ab075977a34e53</srcmd5>
+    <version>20230518</version>
+    <time>1687033181</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1091337</requestid>
+  </revision>
 </revisionlist>
