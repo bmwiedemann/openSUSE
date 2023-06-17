@@ -58,28 +58,30 @@ cd src
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 mkdir -p %{buildroot}%{_bindir}/
+mkdir -p %{buildroot}%{_mandir}/man1/ %{buildroot}%{_mandir}/fr/man1/
 mkdir -p %{buildroot}%{_udevrulesdir}/
-#mkdir -p %{buildroot}%{_mandir}/man1/ %{buildroot}%{_mandir}/fr/man1/
+install -p -m 755 ../src/radexreader.py %{buildroot}%{_bindir}/radexreader
+install -p -m 644 ../debian/radexreader.1 %{buildroot}%{_mandir}/man1/radexreader.1
+install -p -m 644 ../debian/radexreader.fr.1 %{buildroot}%{_mandir}/fr/man1/radexreader.1
 %python_expand install -p -m 644 ../debian/udev %{buildroot}%{_udevrulesdir}/60-python%{$python_bin_suffix}-radexreader.rules
-#install -p -m 644 ../debian/radexreader.1 %{buildroot}%{_mandir}/man1/radexreader.1
-#install -p -m 644 ../debian/radexreader.fr.1 %{buildroot}%{_mandir}/fr/man1/radexreader.1
-install -p -m 755 ../src/radexreader.py  %{buildroot}%{_bindir}/radexreader
 %python_clone -a %{buildroot}%{_bindir}/radexreader
+%python_clone -a %{buildroot}%{_mandir}/man1/radexreader.1
+%python_clone -a %{buildroot}%{_mandir}/fr/man1/radexreader.1
 
 %files %{python_files}
-#%{_mandir}/man1/radexreader.1*
-#%{_mandir}/*/man1/radexreader.1*
 %license LICENSE
 %doc README.md
-%python_alternative %{_bindir}/radexreader
 %{python_sitelib}/radexreader/
 %{python_sitelib}/radexreader*egg-info/
 %{_udevrulesdir}/60-python%{python_bin_suffix}-radexreader.rules
+%python_alternative %{_bindir}/radexreader
+%python_alternative %{_mandir}/man1/radexreader.1%{?ext_man}
+%python_alternative %{_mandir}/fr/man1/radexreader.1%{?ext_man}
 
 %post
-%python_install_alternative radexreader
+%{python_install_alternative radexreader radexreader.1}
 
 %postun
-%python_uninstall_alternative radexreader
+%{python_uninstall_alternative radexreader radexreader.1}
 
 %changelog
