@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Thu Jun 15 09:29:01 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 9.0.1632, fixes the following problems
+  * Error messages are not translated.
+  * Error for function name has wrong line number.
+  * "file N of M" message is not translated.
+  * Users may not know what to do with an internal error.
+  * SpellCap highlight not always updated when needed.
+  * Some error messages are not translated.
+  * CI: indent test hangs on FreeBSD.
+  * Translation does not work for plural argument.
+  * :stopinsert may not work in a popup close handler. (Ben Jackson)
+  * Get E304 when using 'cryptmethod' "xchacha20v2". (Steve Mynott)
+  * Not all meson files are recognized.
+  * Weird use of static variables for spell checking.
+  * Checking translations gives an error for using two messages with ngettext()
+  that differ in "%" items.
+  * Corn config files are not recognized.
+  * Incsearch not triggered when pasting clipboard register on the command
+  line.
+  * Filetype test contains too many special characters.
+  * Filetype test has trailing white space.
+  * Some "gomod" files are not recognized.
+  * Not all timer tests are marked as flaky.
+  * MS-Windows: assert error when compiled with debug mode.
+  * Some internal error messages are translated.
+  * Line pointer becomes invalid when using spell checking.
+  * :registers command does not work in sandbox.
+  * Cursor ends up below the window after a put.
+  * screenchar(), screenchars() and screenstring() do not work properly when
+  'encoding' is set to a double-byte encoding.
+  * Cursor not adjusted when near top or bottom of window and 'splitkeep'
+  is not "cursor".
+  * screenpos() does not take w_skipcol into account.
+  * Filetype detection fails for *.conf file without comments. (Dmitrii
+  Tcyganok)
+  * Stray character is visible if 'smoothscroll' marker is displayed on top
+  of a double-wide character.
+  * Display wrong when scrolling multiple lines with 'smoothscroll' set.
+  * Errors from the codestyle test are a bit confusing.
+  * Crash when calling method on super in child constructor. (Israel Chauca
+  Fuentes)
+  * Using freed memory when 'foldcolumn' is set.
+  * screenpos() returns wrong row with diff filler lines.
+  * update_topline() is called twice.
+  * Crash when an object indirectly references itself.
+  * Display is wrong when 'smoothscroll' is set and scrolling multiple lines.
+  * v:maxcol can be changed in a :for loop.
+  * "skipcol" not reset when using multi-byte characters.
+  * Some make output gets picked up by 'errorformat'.
+  * strlen() called too often for :spellrepall.
+  * URL shortcut files are not recognized.
+  * Quickfix text field is truncated.
+  * charidx() and utf16idx() result is not consistent with byteidx().
+  * Trace32 files are not recognized.
+  * The focus gained/lost escape sequences cause trouble for a terminal
+  where Vim does not expect them.
+  * Nix files are not recognized from the hashbang line.
+  * FILETYPE_FILE is defined to the same value multiple times.  Same for a
+  few similar macros.
+  * Filetype name t32 is a bit obscure.
+  * The program to filetype translation is not exported.
+  * Crash when calling object constructor from legacy script. (Israel
+  Chauca Fuentes)
+  * "super" is not considered a reserved name.
+  * Visual area not shown when using 'showbreak' and start of line is not
+  visible. (Jaehwang Jung)
+  * No generic mechanism to test syntax plugins.
+  * Syntax tests fail on FreeBSD.
+  * Having utf16idx() rounding up is inconvenient.
+  * "make clean" at the toplevel fails.
+  * Passing a wrong variable type to an option gives multiple errors.
+  * Not all cabal config files are recognized.
+
+-------------------------------------------------------------------
 Sun May 21 11:37:17 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - Updated to version 9.0.1572, fixes the following problems

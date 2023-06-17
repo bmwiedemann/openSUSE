@@ -7118,4 +7118,41 @@ always built-in because vim has direct perl dependencies anyway.
     <comment></comment>
     <requestid>1088426</requestid>
   </revision>
+  <revision rev="351" vrev="1">
+    <srcmd5>99ccc8a697b7ce51cbc2fccd3f64ad9b</srcmd5>
+    <version>9.0.1632</version>
+    <time>1687033200</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 9.0.1632, fixes the following problems
+  * Error messages are not translated.
+  * Error for function name has wrong line number.
+  * &quot;file N of M&quot; message is not translated.
+  * Users may not know what to do with an internal error.
+  * SpellCap highlight not always updated when needed.
+  * Some error messages are not translated.
+  * CI: indent test hangs on FreeBSD.
+  * Translation does not work for plural argument.
+  * :stopinsert may not work in a popup close handler. (Ben Jackson)
+  * Get E304 when using 'cryptmethod' &quot;xchacha20v2&quot;. (Steve Mynott)
+  * Not all meson files are recognized.
+  * Weird use of static variables for spell checking.
+  * Checking translations gives an error for using two messages with ngettext()
+  that differ in &quot;%&quot; items.
+  * Corn config files are not recognized.
+  * Incsearch not triggered when pasting clipboard register on the command
+  line.
+  * Filetype test contains too many special characters.
+  * Filetype test has trailing white space.
+  * Some &quot;gomod&quot; files are not recognized.
+  * Not all timer tests are marked as flaky.
+  * MS-Windows: assert error when compiled with debug mode.
+  * Some internal error messages are translated.
+  * Line pointer becomes invalid when using spell checking.
+  * :registers command does not work in sandbox.
+  * Cursor ends up below the window after a put.
+  * screenchar(), screenchars() and screenstring() do not work properly when
+  'encoding' is set to a double-byte encoding.
+  * Cursor not adjusted when near top or bottom of window and 'splitkeep'</comment>
+    <requestid>1093248</requestid>
+  </revision>
 </revisionlist>
