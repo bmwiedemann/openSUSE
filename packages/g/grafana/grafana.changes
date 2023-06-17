@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 06 10:24:18 UTC 2023 - marius.kittler@suse.com
+
+- Update to version 9.5.3:
+  * Bug fixes
+    - Query: Prevent crash while executing concurrent mixed queries
+    - Alerting: Require alert.notifications:write permissions to
+      test receivers and templates
+
+-------------------------------------------------------------------
 Thu May 11 08:52:03 UTC 2023 - marius.kittler@suse.com
 
 - Update to version 9.5.2:
