@@ -133,4 +133,14 @@ without RUNPATH on libc++.so.
 </comment>
     <requestid>1070944</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>a76ade8abfa86274817a7ddfd98ae4bb</srcmd5>
+    <version>15.0.7</version>
+    <time>1687033211</time>
+    <user>dimstar_suse</user>
+    <comment>- Make python3-clang noarch again and fix conflicts/provides to
+  point to %python3_sitelib instead of %python3_sitearch.
+</comment>
+    <requestid>1093401</requestid>
+  </revision>
 </revisionlist>

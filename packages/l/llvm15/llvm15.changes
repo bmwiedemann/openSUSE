@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 15 23:45:39 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Make python3-clang noarch again and fix conflicts/provides to
+  point to %python3_sitelib instead of %python3_sitearch.
+
+-------------------------------------------------------------------
 Sat Mar 11 14:09:34 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add llvm-suse-implicit-gnu.patch to recognize <arch>-suse-linux
