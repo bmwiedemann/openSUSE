@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 14 06:24:36 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %__default_rustflags instead of the deprecated %__rustflags
+  macro. Requires at least cargo-packaging 1.2.0+2 (boo#1212333).
+
+-------------------------------------------------------------------
 Wed May 31 07:46:07 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.56.1:

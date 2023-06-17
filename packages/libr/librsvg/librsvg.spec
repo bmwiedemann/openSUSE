@@ -31,7 +31,7 @@ Source2:        vendor.tar.zst
 Source3:        cargo_config
 Source99:       baselibs.conf
 
-BuildRequires:  cargo-packaging
+BuildRequires:  cargo-packaging >= 1.2.0+2
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -140,7 +140,7 @@ mkdir .cargo
 cp %{SOURCE3} .cargo/config
 
 %build
-export RUSTFLAGS="%{__rustflags}"
+export RUSTFLAGS="%{__default_rustflags}"
 NOCONFIGURE=1 ./autogen.sh
 %configure \
 	--disable-static\
@@ -150,14 +150,14 @@ NOCONFIGURE=1 ./autogen.sh
 %make_build
 
 %install
-export RUSTFLAGS="%{__rustflags}"
+export RUSTFLAGS="%{__default_rustflags}"
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 # %%doc is used to package such contents
 rm -rf %{buildroot}%{_datadir}/doc/%{name}/CO*.md
 
 %check
-export RUSTFLAGS="%{__rustflags}"
+export RUSTFLAGS="%{__default_rustflags}"
 %ifarch x86_64 %{?x86_64}
 # 2023-01-15: the pdf-related tests are failing (bsc#1207167)
 # 2023-03-17 cairo-1.17.8 filter_morphology svg test is failing
