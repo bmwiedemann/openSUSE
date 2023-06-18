@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jun 15 17:39:33 UTC 2023 - Lee Duncan <lduncan@suse.com>
+
+- Upgrade to upstream version 2.1.9 with tag "2.1.9-suse"
+  (bsc#1210514), replacing open-iscsi-2.1.8-suse.tar.bz2 with
+  open-iscsi-2.1.9-suse.tar.bz2, and resetting
+  open-iscsi-SUSE-latest.diff.bz2. A summary rom the ChangeLog
+  file:
+  * Fix discoveryd compiler warning
+  * Sync iscsi_if.h with kernel
+  * Handle old DB records correctly
+  * Make IQN configuration for iscsi-iname
+  * remove OFFLOAD_BOOT_SUPPORTED, which is always true
+  * Use UUID for IPC, not "root"
+  * do not support SHA3 for libressl
+  * build meson cleanups, including changing default DB home
+  * Updated README about NOPs
+  * Remove "BindTo" in systemd service file
+  * Some iscsiuio fixes, including licensing and memory leaks
+    (bsc#1210514)
+  * Small netlink fixes
+  * Fix OOM adjustment
+  * Some error recovery fixes
+  * Some spelling fixes
+
+-------------------------------------------------------------------
 Mon Apr 17 18:02:13 UTC 2023 - Lee Duncan <lduncan@suse.com>
 
 - Remove "--strip" in SPEC file for meson build, so that
