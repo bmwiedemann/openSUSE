@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 10 17:39:22 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Sep  8 05:02:48 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Update URL to https://github.com/rspeer/ordered-set

@@ -1,7 +1,7 @@
 #
-# spec file for package python-ordered-set
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,6 @@
 %define mypython python
 %global modname ordered-set
 %global dir_name ordered_set
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -30,7 +29,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-%{modname}%{psuffix}
 Version:        4.1.0
 Release:        0
