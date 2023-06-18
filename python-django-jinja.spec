@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-jinja
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 %define modname django_jinja
 %bcond_without python2
 Name:           python-django-jinja
