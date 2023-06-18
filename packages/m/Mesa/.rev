@@ -5298,4 +5298,16 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   longer by us --&gt; killed it</comment>
     <requestid>1092024</requestid>
   </revision>
+  <revision rev="479" vrev="351">
+    <srcmd5>c361cac774b959150fdaf42a219c7f0e</srcmd5>
+    <version>unknown</version>
+    <time>1687122461</time>
+    <user>dimstar_suse</user>
+    <comment>- use -Dxlib-lease=enabled also for -drivers build
+
+- Fix of bsc#1212345
+  * After update to 23.1.1 this change affected our build split:
+    https://gitlab.freedesktop.org/mesa/mesa/-/commit/2630f4b310f534c830250be44d285e485da83869</comment>
+    <requestid>1093496</requestid>
+  </revision>
 </revisionlist>

@@ -811,24 +811,21 @@ egl_platforms=x11,wayland
 %meson \
             --auto-features=disabled \
 %if "%{flavor}" == "drivers"
-            -Dgles1=disabled \
-            -Dgles2=disabled \
-            -Degl=enabled \
-            -Dglx=disabled \
             -Dosmesa=false \
+            -Dglx=disabled \
             -Dxmlconfig=enabled \
             -Dshader-cache=enabled \
 %else
-            -Dglvnd=true \
-            -Dgles1=enabled \
-            -Dgles2=enabled \
-            -Degl=enabled \
             -Dosmesa=true \
             -Dglx=auto \
             -Dllvm=disabled \
             -Dvulkan-drivers= \
-            -Dxlib-lease=enabled \
 %endif
+            -Dxlib-lease=enabled \
+            -Dglvnd=true \
+            -Dgles1=enabled \
+            -Dgles2=enabled \
+            -Degl=enabled \
             -Dallow-kcmp=enabled \
             -Dplatforms=$egl_platforms \
             -Ddri3=enabled \
@@ -917,10 +914,22 @@ rm %{buildroot}/%{_includedir}/EGL/eglext.h
 rm %{buildroot}/%{_includedir}/EGL/eglext_angle.h
 rm %{buildroot}/%{_includedir}/EGL/eglmesaext.h
 rm %{buildroot}/%{_includedir}/EGL/eglplatform.h
-rm %{buildroot}/%{_libdir}/pkgconfig/egl.pc
 
 # in Mesa-libGL-devel
 rm -rf %{buildroot}/%{_includedir}/GL
+
+#in Mesa-libGLESv1_CM-devel
+rm -rf %{buildroot}/%{_includedir}/GLES
+
+#in Mesa-libGLESv2-devel
+rm -rf %{buildroot}/%{_includedir}/GLES2
+
+#in Mesa-libGLESv3-devel
+rm -rf %{buildroot}/%{_includedir}/GLES3
+
+#in Mesa-libEGL1
+rm -f %{buildroot}/%{_libdir}/libEGL_mesa.so*
+rm -rf %{buildroot}/%{_datadir}/glvnd
 
 # in Mesa-libglapi0
 rm %{buildroot}/%{_libdir}/libglapi.so*

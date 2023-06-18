@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun 16 12:48:49 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- use -Dxlib-lease=enabled also for -drivers build
+
+-------------------------------------------------------------------
+Fri Jun 16 11:01:52 UTC 2023 - Joan Torres <joan.torres@suse.com>
+
+- Fix of bsc#1212345
+  * After update to 23.1.1 this change affected our build split:
+    https://gitlab.freedesktop.org/mesa/mesa/-/commit/2630f4b310f534c830250be44d285e485da83869
+
+-------------------------------------------------------------------
 Sat Jun 10 14:28:05 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to bugfix release 23.1.2
