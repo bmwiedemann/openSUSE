@@ -1,7 +1,7 @@
 #
 # spec file for package python-cssutils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cssutils
-Version:        2.6.0
+Version:        2.7.0
 Release:        0
 Summary:        A CSS Cascading Style Sheets library for Python
 License:        LGPL-3.0-or-later
