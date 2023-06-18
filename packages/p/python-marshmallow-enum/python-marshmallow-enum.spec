@@ -1,7 +1,7 @@
 #
 # spec file for package python-marshmallow-enum
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-marshmallow-enum
 Version:        1.5.1
 Release:        0
@@ -26,8 +25,8 @@ License:        MIT
 URL:            https://github.com/justanr/marshmallow_enum
 Source:         https://files.pythonhosted.org/packages/source/m/marshmallow-enum/marshmallow-enum-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/justanr/marshmallow_enum/master/tests/test_enum_field.py
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module marshmallow >= 2.0.0}
 BuildRequires:  %{python_module pytest}

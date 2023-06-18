@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun  9 11:09:35 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Tue Nov 17 08:15:29 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Initial spec for v1.5.1
