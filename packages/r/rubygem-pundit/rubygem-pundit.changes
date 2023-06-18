@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 16 08:35:04 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- updated to version 2.3.0
+  * add support for rubocop-rspec syntax extensions 
+
+-------------------------------------------------------------------
 Tue Feb 15 07:34:50 UTC 2022 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.2.0

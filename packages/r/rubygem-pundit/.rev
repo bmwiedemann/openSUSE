@@ -39,4 +39,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>956120</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>14909c0c0bc6d9570940cd2e2204ba72</srcmd5>
+    <version>2.3.0</version>
+    <time>1687122466</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to version 2.3.0
+  * add support for rubocop-rspec syntax extensions (forwarded request 1093452 from amanzini)</comment>
+    <requestid>1093565</requestid>
+  </revision>
 </revisionlist>
