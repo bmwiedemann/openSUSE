@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 18 19:38:44 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1686951519.7cf0865:
+  * Update Dockerfiles to Leap 15.5
+  * Refresh tools/ci/ scripts for Leap 15.5
+  * Fix source view of local case dirs
+  * Update CircleCI image to Leap 15.5
+
+-------------------------------------------------------------------
 Fri Jun 16 11:38:44 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1686859477.329edf1:
