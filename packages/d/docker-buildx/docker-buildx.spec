@@ -30,7 +30,7 @@ URL:            https://github.com/docker/buildx
 Source:         buildx-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  docker
-BuildRequires:  go >= 1.17
+BuildRequires:  go >= 1.20
 Requires:       docker
 
 %description
@@ -62,8 +62,6 @@ install -D -m 0755 bin/%{name} "%{buildroot}/usr/lib/docker/cli-plugins/%{name}"
 %files
 %doc README.md
 %license LICENSE
-/usr/lib/docker/
-/usr/lib/docker/cli-plugins/
 /usr/lib/docker/cli-plugins/%{name}
 
 %changelog

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 14 14:09:08 UTC 2023 - Aleksa Sarai <asarai@suse.com>
+
+- Move /usr/lib/docker and /usr/lib/docker/cli-plugins to the main docker
+  package, where it belongs.
+- Bump Go requirement to 1.20 to match upstream.
+
+-------------------------------------------------------------------
 Tue Jun 13 16:50:51 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.11.0:
