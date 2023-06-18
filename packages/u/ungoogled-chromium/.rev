@@ -23,4 +23,22 @@
     <comment>Chromium 114.0.5735.90</comment>
     <requestid>1090988</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>110cc25454a13afb8ee3e6e9d5e6093f</srcmd5>
+    <version>114.0.5735.133</version>
+    <time>1687122471</time>
+    <user>dimstar_suse</user>
+    <comment>- Chromium 114.0.5735.133 (boo#1212302):
+  * CVE-2023-3214: Use after free in Autofill payments
+  * CVE-2023-3215: Use after free in WebRTC
+  * CVE-2023-3216: Type Confusion in V8
+  * CVE-2023-3217: Use after free in WebXR
+  * Various fixes from internal audits, fuzzing and other initiatives
+- Added chromium-114-revert-av1enc-lp154.patch
+- ungoogled-chromium 114.0.5735.106 (boo#1212044):
+  * CVE-2023-3079: Type Confusion in V8
+- Remove av1 encoding in leap 15.4
+</comment>
+    <requestid>1093654</requestid>
+  </revision>
 </revisionlist>

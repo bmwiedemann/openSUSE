@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Jun 16 18:19:36 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
+
+- Chromium 114.0.5735.133 (boo#1212302):
+  * CVE-2023-3214: Use after free in Autofill payments
+  * CVE-2023-3215: Use after free in WebRTC
+  * CVE-2023-3216: Type Confusion in V8
+  * CVE-2023-3217: Use after free in WebXR
+  * Various fixes from internal audits, fuzzing and other initiatives
+
+-------------------------------------------------------------------
+Sun Jun 11 10:43:30 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
+
+- Added chromium-114-revert-av1enc-lp154.patch
+
+-------------------------------------------------------------------
+Sat Jun 10 12:01:47 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
+
+- ungoogled-chromium 114.0.5735.106 (boo#1212044):
+  * CVE-2023-3079: Type Confusion in V8
+
+-------------------------------------------------------------------
+Wed Jun  7 02:21:45 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
+
+- Remove av1 encoding in leap 15.4
+
+-------------------------------------------------------------------
 Mon Jun  5 10:40:30 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
 
 - Remove exclude_ymp patch 
