@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 16 08:56:56 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Install license
+- Use -ffat-lto-objects for static libraries
+
+-------------------------------------------------------------------
 Thu Apr 13 19:49:05 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 1.610.0:

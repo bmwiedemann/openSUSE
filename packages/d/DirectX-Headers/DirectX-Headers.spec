@@ -40,7 +40,7 @@ Make sure that you visit the DirectX Landing Page for more resources for DirectX
 %autosetup
 
 %build
-%global _lto_cflags %{nil}
+%global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 %meson -Dbuild-test=false
 %meson_build
 
@@ -49,6 +49,7 @@ Make sure that you visit the DirectX Landing Page for more resources for DirectX
 %fdupes -s %{buildroot}
 
 %files
+%license LICENSE
 %{_includedir}/directx
 %{_includedir}/dxguids
 %{_includedir}/wsl
