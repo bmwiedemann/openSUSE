@@ -18,7 +18,7 @@
 
 %bcond_without python2
 Name:           python-json_tricks
-Version:        3.16.1
+Version:        3.17.1
 Release:        0
 Summary:        Extra features for Python's JSON
 License:        BSD-3-Clause
