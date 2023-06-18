@@ -3162,7 +3162,6 @@ unsorted:
   - docbook_5 
   - docbook_5-doc 
   - docker-bench-security 
-  - docker-buildx 
   - docker-client-java 
   - docker-client-java-javadoc 
   - docker-compose 
@@ -11357,7 +11356,6 @@ unsorted:
   - libcryptopp8_7_0 
   - libcryptsetup-devel 
   - libcryptsetup12-32bit 
-  - libcryptsetup12-hmac-32bit 
   - libcryptui-devel 
   - libcrystalhd-devel 
   - libcrystalhd3 
@@ -24711,6 +24709,7 @@ unsorted:
   - python310-lupa 
   - python310-lxml 
   - python310-lxml-devel 
+  - python310-ly 
   - python310-lz4 
   - python310-macholib 
   - python310-magic 
@@ -28096,6 +28095,7 @@ unsorted:
   - python311-lscsoft-glue 
   - python311-lupa 
   - python311-lxml-devel 
+  - python311-ly 
   - python311-lz4 
   - python311-macholib 
   - python311-magic 
@@ -31518,6 +31518,7 @@ unsorted:
   - python39-lupa 
   - python39-lxml 
   - python39-lxml-devel 
+  - python39-ly 
   - python39-lz4 
   - python39-macholib 
   - python39-magic 
