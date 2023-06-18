@@ -48,8 +48,8 @@ Index: cockpit/pkg/apps/index.html
 +++ cockpit/pkg/apps/index.html
 @@ -23,6 +23,7 @@ along with Cockpit; If not, see <http://
      <title translate="yes">Applications</title>
-     <meta charset="utf-8">
-     <link href="apps.css" type="text/css" rel="stylesheet">
+     <meta charset="utf-8" />
+     <link href="apps.css" type="text/css" rel="stylesheet" />
 +    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
      <script type="text/javascript" src="../base1/cockpit.js"></script>
      <script type="text/javascript" src="../base1/po.js"></script>
@@ -59,10 +59,10 @@ Index: cockpit/pkg/kdump/index.html
 --- cockpit.orig/pkg/kdump/index.html
 +++ cockpit/pkg/kdump/index.html
 @@ -25,6 +25,7 @@ along with Cockpit; If not, see <http://
-     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <meta name="viewport" content="width=device-width, initial-scale=1" />
  
-     <link rel="stylesheet" href="kdump.css">
-+    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
+     <link rel="stylesheet" href="kdump.css" />
++    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
  
      <script type="text/javascript" src="kdump.js"></script>
      <script type="text/javascript" src="../base1/po.js"></script>
@@ -71,10 +71,10 @@ Index: cockpit/pkg/metrics/index.html
 --- cockpit.orig/pkg/metrics/index.html
 +++ cockpit/pkg/metrics/index.html
 @@ -23,6 +23,7 @@ along with this package; If not, see <ht
-     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <meta name="viewport" content="width=device-width, initial-scale=1" />
  
-     <link rel="stylesheet" href="index.css">
-+    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
+     <link rel="stylesheet" href="index.css" />
++    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
  
      <script type="text/javascript" src="../base1/cockpit.js"></script>
      <script type="text/javascript" src="../manifests.js"></script>
@@ -83,10 +83,10 @@ Index: cockpit/pkg/networkmanager/firewall.html
 --- cockpit.orig/pkg/networkmanager/firewall.html
 +++ cockpit/pkg/networkmanager/firewall.html
 @@ -23,6 +23,7 @@ along with Cockpit; If not, see <http://
-     <meta charset="utf-8">
+     <meta charset="utf-8" />
  
-     <link href="firewall.css" type="text/css" rel="stylesheet">
-+    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
+     <link href="firewall.css" type="text/css" rel="stylesheet" />
++    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
  
      <script src="../base1/cockpit.js"></script>
      <script src="../base1/po.js"></script>
@@ -95,10 +95,10 @@ Index: cockpit/pkg/networkmanager/index.html
 --- cockpit.orig/pkg/networkmanager/index.html
 +++ cockpit/pkg/networkmanager/index.html
 @@ -24,6 +24,7 @@
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link href="network.css" type="text/css" rel="stylesheet">
-+  <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link href="networkmanager.css" type="text/css" rel="stylesheet" />
++  <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
    <script src="../base1/cockpit.js"></script>
    <script src="../manifests.js"></script>
    <script src="../base1/po.js"></script>
@@ -107,10 +107,10 @@ Index: cockpit/pkg/packagekit/index.html
 --- cockpit.orig/pkg/packagekit/index.html
 +++ cockpit/pkg/packagekit/index.html
 @@ -24,6 +24,7 @@ along with Cockpit; If not, see <http://
-   <meta charset="utf-8">
+   <meta charset="utf-8" />
  
-   <link href="updates.css" rel="stylesheet">
-+  <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
+   <link href="updates.css" rel="stylesheet" />
++  <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
  
    <script src="../base1/cockpit.js"></script>
    <script src="../base1/po.js"></script>
@@ -120,9 +120,9 @@ Index: cockpit/pkg/playground/index.html
 +++ cockpit/pkg/playground/index.html
 @@ -5,6 +5,7 @@
      <title>Cockpit Development Playground</title>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link href="index.css" type="text/css" rel="stylesheet">
-+    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link href="index.css" type="text/css" rel="stylesheet" />
++    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
      <script src="../base1/cockpit.js"></script>
      <script src="../manifests.js"></script>
      <script src="index.js"></script>
@@ -132,9 +132,9 @@ Index: cockpit/pkg/playground/journal.html
 +++ cockpit/pkg/playground/journal.html
 @@ -5,6 +5,7 @@
      <title>Cockpit Journal Box</title>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link href="journal.css" type="text/css" rel="stylesheet">
-+    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link href="journal.css" type="text/css" rel="stylesheet" />
++    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
      <script src="../base1/cockpit.js"></script>
      <script src="journal.js"></script>
  </head>
@@ -144,9 +144,9 @@ Index: cockpit/pkg/playground/metrics.html
 +++ cockpit/pkg/playground/metrics.html
 @@ -5,6 +5,7 @@
      <title>Cockpit Monitoring</title>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link href="metrics.css" type="text/css" rel="stylesheet">
-+    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link href="metrics.css" type="text/css" rel="stylesheet" />
++    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
      <script src="../base1/cockpit.js"></script>
      <script src="metrics.js"></script>
  </head>
@@ -156,9 +156,9 @@ Index: cockpit/pkg/playground/plot.html
 +++ cockpit/pkg/playground/plot.html
 @@ -5,6 +5,7 @@
      <title>Cockpit Plots</title>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link href="plot.css" type="text/css" rel="stylesheet">
-+    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link href="plot.css" type="text/css" rel="stylesheet" />
++    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
      <script src="../base1/cockpit.js"></script>
      <script src="plot.js"></script>
  </head>
@@ -168,9 +168,9 @@ Index: cockpit/pkg/playground/react-patterns.html
 +++ cockpit/pkg/playground/react-patterns.html
 @@ -5,6 +5,7 @@
      <title>Cockpit React Patterns Usage</title>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link href="react-patterns.css" type="text/css" rel="stylesheet">
-+    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link href="react-patterns.css" type="text/css" rel="stylesheet" />
++    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
      <script src="../base1/cockpit.js"></script>
      <script src="react-patterns.js"></script>
  </head>
@@ -180,9 +180,9 @@ Index: cockpit/pkg/playground/speed.html
 +++ cockpit/pkg/playground/speed.html
 @@ -5,6 +5,7 @@
      <title>Cockpit Speed Tests</title>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link href="speed.css" type="text/css" rel="stylesheet">
-+    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link href="speed.css" type="text/css" rel="stylesheet" />
++    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
      <script src="../base1/cockpit.js"></script>
      <script src="speed.js"></script>
  </head>
@@ -192,33 +192,21 @@ Index: cockpit/pkg/playground/test.html
 +++ cockpit/pkg/playground/test.html
 @@ -5,6 +5,7 @@
      <title>Cockpit playground</title>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link href="test.css" type="text/css" rel="stylesheet">
-+    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link href="test.css" type="text/css" rel="stylesheet" />
++    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
      <script src="../base1/cockpit.js"></script>
      <script src="test.js"></script>
  </head>
-Index: cockpit/pkg/selinux/setroubleshoot.html
-===================================================================
---- cockpit.orig/pkg/selinux/setroubleshoot.html
-+++ cockpit/pkg/selinux/setroubleshoot.html
-@@ -25,6 +25,7 @@ along with Cockpit; If not, see <http://
-     <meta name="viewport" content="width=device-width, initial-scale=1">
- 
-     <link rel="stylesheet" href="selinux.css">
-+    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
- 
-     <script type="text/javascript" src="../base1/cockpit.js"></script>
-     <script type="text/javascript" src="../base1/po.js"></script>
 Index: cockpit/pkg/shell/index.html
 ===================================================================
 --- cockpit.orig/pkg/shell/index.html
 +++ cockpit/pkg/shell/index.html
 @@ -6,6 +6,7 @@
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link href="index.css" rel="stylesheet">
-     <link href="../../static/branding.css" rel="stylesheet">
-+    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link href="shell.css" rel="stylesheet" />
+     <link href="../../static/branding.css" rel="stylesheet" />
++    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
      <script src="../base1/cockpit.js"></script>
      <script src="../manifests.js"></script>
      <script src="../*/po.js"></script>
@@ -227,12 +215,12 @@ Index: cockpit/pkg/shell/shell.html
 --- cockpit.orig/pkg/shell/shell.html
 +++ cockpit/pkg/shell/shell.html
 @@ -5,6 +5,7 @@
-     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="index.css">
-+    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link rel="stylesheet" href="index.css" />
++    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
  </head>
- <body class="pf-m-redhat-font">
+ <body class="pf-v5-m-tabular-nums">
      <div class="curtains-ct">
 Index: cockpit/pkg/sosreport/index.html
 ===================================================================
@@ -240,33 +228,21 @@ Index: cockpit/pkg/sosreport/index.html
 +++ cockpit/pkg/sosreport/index.html
 @@ -22,6 +22,7 @@ along with Cockpit; If not, see <http://
      <title translate="yes">Diagnostic reports</title>
-     <meta charset="utf-8">
-     <link href="sosreport.css" rel="stylesheet">
-+    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
+     <meta charset="utf-8" />
+     <link href="sosreport.css" rel="stylesheet" />
++    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
      <script type="text/javascript" src="../base1/cockpit.js"></script>
      <script type="text/javascript" src="../base1/po.js"></script>
      <script type="text/javascript" src="po.js"></script>
-Index: cockpit/pkg/storaged/index.html
-===================================================================
---- cockpit.orig/pkg/storaged/index.html
-+++ cockpit/pkg/storaged/index.html
-@@ -24,6 +24,7 @@
-     <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link href="storage.css" type="text/css" rel="stylesheet">
-+    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
-     <script src="../base1/cockpit.js"></script>
-     <script src="../base1/po.js"></script>
-     <script src="../manifests.js"></script>
 Index: cockpit/pkg/systemd/hwinfo.html
 ===================================================================
 --- cockpit.orig/pkg/systemd/hwinfo.html
 +++ cockpit/pkg/systemd/hwinfo.html
 @@ -4,6 +4,7 @@
      <title translate="yes">Hardware information</title>
-     <meta charset="utf-8">
-     <link href="hwinfo.css" type="text/css" rel="stylesheet">
-+    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
+     <meta charset="utf-8" />
+     <link href="hwinfo.css" type="text/css" rel="stylesheet" />
++    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
      <script src="../base1/cockpit.js"></script>
      <script src="../base1/po.js"></script>
      <script src="po.js"></script>
@@ -274,23 +250,23 @@ Index: cockpit/pkg/systemd/index.html
 ===================================================================
 --- cockpit.orig/pkg/systemd/index.html
 +++ cockpit/pkg/systemd/index.html
-@@ -7,6 +7,7 @@
-   <meta name="viewport" content="width=device-width, initial-scale=1">
- 
-   <link rel="stylesheet" href="overview.css">
-+  <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
- 
+@@ -6,6 +6,7 @@
+   <meta name="description" content="" />
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <link rel="stylesheet" href="overview.css" />
++  <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet"/>
    <script type="text/javascript" src="../base1/cockpit.js"></script>
    <script type="text/javascript" src="../base1/po.js"></script>
+   <script type="text/javascript" src="overview.js"></script>
 Index: cockpit/pkg/systemd/logs.html
 ===================================================================
 --- cockpit.orig/pkg/systemd/logs.html
 +++ cockpit/pkg/systemd/logs.html
 @@ -23,6 +23,7 @@ along with Cockpit; If not, see <http://
-   <title translate>Journal</title>
-   <meta charset="utf-8">
-   <link href="logs.css" rel="stylesheet">
-+  <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
+   <title translate="yes">Journal</title>
+   <meta charset="utf-8" />
+   <link href="logs.css" rel="stylesheet" />
++  <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
    <script type="text/javascript" src="../base1/cockpit.js"></script>
    <script src="../base1/po.js"></script>
    <script src="po.js"></script>
@@ -299,10 +275,10 @@ Index: cockpit/pkg/systemd/services.html
 --- cockpit.orig/pkg/systemd/services.html
 +++ cockpit/pkg/systemd/services.html
 @@ -5,6 +5,7 @@
-     <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link href="services.css" type="text/css" rel="stylesheet">
-+    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link href="services.css" type="text/css" rel="stylesheet" />
++    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
      <script src="../base1/cockpit.js"></script>
      <script src="../base1/po.js"></script>
      <script src="services.js"></script>
@@ -311,10 +287,10 @@ Index: cockpit/pkg/systemd/terminal.html
 --- cockpit.orig/pkg/systemd/terminal.html
 +++ cockpit/pkg/systemd/terminal.html
 @@ -5,6 +5,7 @@
-     <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link href="terminal.css" type="text/css" rel="stylesheet">
-+    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link href="terminal.css" type="text/css" rel="stylesheet" />
++    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
      <script src="../base1/cockpit.js"></script>
      <script src="../base1/po.js"></script>
      <script src="po.js"></script>
@@ -323,10 +299,10 @@ Index: cockpit/pkg/users/index.html
 --- cockpit.orig/pkg/users/index.html
 +++ cockpit/pkg/users/index.html
 @@ -24,6 +24,7 @@
-     <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link href="users.css" type="text/css" rel="stylesheet">
-+    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link href="users.css" type="text/css" rel="stylesheet" />
++    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
      <script src="../base1/cockpit.js"></script>
      <script src="../base1/po.js"></script>
      <script src="po.js"></script>

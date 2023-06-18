@@ -270,4 +270,23 @@
     <comment></comment>
     <requestid>1064245</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>bf9b9a4a7f01efbba5245a58d5ed3a5d</srcmd5>
+    <version>293</version>
+    <time>1687122448</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fake openSUSE branding target when building on non-openSUSE
+  builds so branding does not need to be removed
+- Remove tests package so we don't have to ship a test PAM module
+
+- new version 293:
+  - https://cockpit-project.org/blog/cockpit-293.html
+- refreshed: css-overrides.patch
+
+- new version 292:
+  - https://cockpit-project.org/blog/cockpit-292.html
+- refreshed patches: css-overrides.patch, hide-pcp.patch,
+  0001-selinux-allow-login-to-read-motd-file.patch</comment>
+    <requestid>1093123</requestid>
+  </revision>
 </revisionlist>

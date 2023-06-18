@@ -2,7 +2,7 @@ Index: cockpit/pkg/metrics/metrics.jsx
 ===================================================================
 --- cockpit.orig/pkg/metrics/metrics.jsx
 +++ cockpit/pkg/metrics/metrics.jsx
-@@ -1234,6 +1234,7 @@ const PCPConfig = ({ buttonVariant, fire
+@@ -1551,6 +1551,7 @@ const PCPConfig = ({ buttonVariant, fire
  
      return (
          <Button variant={buttonVariant} icon={<CogIcon />}
@@ -10,12 +10,3 @@ Index: cockpit/pkg/metrics/metrics.jsx
                  isDisabled={ invalidService(s_pmlogger) || invalidService(s_pmproxy) || invalidService(s_redis) || invalidService(s_redis_server) }
                  onClick={show_dialog}>
              { _("Metrics settings") }
-@@ -1624,7 +1625,7 @@ export const Application = () => {
-                 <PageSection className="ct-pagesection-mobile">
-                     <CurrentMetrics />
-                 </PageSection>
--                <PageSection className="ct-pagesection-mobile">
-+                <PageSection className="pf-u-display-none">
-                     <MetricsHistory firewalldRequest={setFirewalldRequest}
-                                     needsLogout={needsLogout}
-                                     setNeedsLogout={setNeedsLogout} />

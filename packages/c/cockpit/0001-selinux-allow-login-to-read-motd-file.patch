@@ -8,9 +8,9 @@ Index: cockpit/selinux/cockpit.te
 ===================================================================
 --- cockpit.orig/selinux/cockpit.te
 +++ cockpit/selinux/cockpit.te
-@@ -191,3 +191,11 @@ optional_policy(`
-     ')
-     cockpit_read_pid_files(local_login_t)
+@@ -202,3 +202,11 @@ optional_policy(`
+ optional_policy(`
+     gnome_exec_keyringd(cockpit_session_t)
  ')
 +
 +# login may read motd file through pam

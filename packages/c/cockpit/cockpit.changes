@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jun 13 12:39:20 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- Add fake openSUSE branding target when building on non-openSUSE
+  builds so branding does not need to be removed
+- Remove tests package so we don't have to ship a test PAM module
+
+-------------------------------------------------------------------
+Fri Jun  2 13:26:45 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- new version 293:
+  - https://cockpit-project.org/blog/cockpit-293.html
+- refreshed: css-overrides.patch
+
+-------------------------------------------------------------------
+Tue May 30 15:05:45 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- new version 292:
+  - https://cockpit-project.org/blog/cockpit-292.html
+- refreshed patches: css-overrides.patch, hide-pcp.patch,
+  0001-selinux-allow-login-to-read-motd-file.patch
+
+-------------------------------------------------------------------
 Tue Feb  7 15:47:35 UTC 2023 - Stefan Schubert <schubi@suse.com>
 
 - Migration of PAM settings to /usr/lib/pam.d.

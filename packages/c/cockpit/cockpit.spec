@@ -50,7 +50,7 @@ Summary:        Web Console for Linux servers
 License:        LGPL-2.1-or-later
 URL:            https://cockpit-project.org/
 
-Version:        276.1
+Version:        293
 Release:        0
 Source0:        cockpit-%{version}.tar
 Source1:        cockpit.pam
@@ -68,6 +68,11 @@ Patch5:         storage-btrfs.patch
 # SLE Micro specific patches
 Patch101:       hide-pcp.patch
 Patch102:       0002-selinux-temporary-remove-setroubleshoot-section.patch
+
+# Experimental Python support
+%if !%{defined cockpit_enable_python}
+%define cockpit_enable_python 0
+%endif
 
 # in RHEL 8 the source package is duplicated: cockpit (building basic packages like cockpit-{bridge,system})
 # and cockpit-appstream (building optional packages like cockpit-{pcp})
@@ -88,6 +93,17 @@ Patch102:       0002-selinux-temporary-remove-setroubleshoot-section.patch
 %else
 %define build_basic 1
 %define build_optional 1
+%endif
+
+%if 0%{?build_optional} && 0%{?suse_version} == 0
+%define build_tests 1
+%endif
+
+# Allow root login in Cockpit on RHEL 8 and lower as it also allows password login over SSH.
+%if 0%{?rhel} && 0%{?rhel} <= 8
+%define disallow_root 0
+%else
+%define disallow_root 1
 %endif
 
 # Ship custom SELinux policy (but not for cockpit-appstream)
@@ -173,10 +189,26 @@ Suggests: cockpit-pcp
 
 %if 0%{?rhel} == 0
 Recommends: (cockpit-networkmanager if NetworkManager)
+# c-ostree is not in RHEL 8/9
+Recommends: (cockpit-ostree if rpm-ostree)
 Suggests: cockpit-selinux
 %endif
 %if 0%{?rhel} && 0%{?centos} == 0
 Requires: subscription-manager-cockpit
+%endif
+
+%if %{cockpit_enable_python}
+BuildRequires:  python3-devel
+BuildRequires:  python3-pip
+%if 0%{?rhel} == 0
+# All of these are only required for running pytest (which we only do on Fedora)
+BuildRequires:  procps-ng
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python3-pytest-asyncio
+BuildRequires:  python3-pytest-cov
+BuildRequires:  python3-pytest-timeout
+BuildRequires:  python3-tox-current-env
+%endif
 %endif
 
 %prep
@@ -214,6 +246,9 @@ autoreconf -fvi -I tools
     --docdir=%_defaultdocdir/%{name} \
 %endif
     --with-pamdir='%{pamdir}' \
+%if %{cockpit_enable_python}
+    --enable-pybridge \
+%endif
 %if 0%{?build_basic} == 0
     --disable-ssh \
 %endif
@@ -225,6 +260,10 @@ bzip2 -9 cockpit.pp
 
 %check
 make -j$(nproc) check
+
+%if %{cockpit_enable_python} && 0%{?rhel} == 0
+%tox
+%endif
 
 %install
 # In obs we get  write error: stdout
@@ -269,9 +308,6 @@ echo '%{_libexecdir}/cockpit-ssh' >> base.list
 echo '%dir %{_datadir}/cockpit/pcp' > pcp.list
 find %{buildroot}%{_datadir}/cockpit/pcp -type f >> pcp.list
 
-echo '%dir %{_datadir}/cockpit/tuned' > system.list
-find %{buildroot}%{_datadir}/cockpit/tuned -type f >> system.list
-
 echo '%dir %{_datadir}/cockpit/shell' >> system.list
 find %{buildroot}%{_datadir}/cockpit/shell -type f >> system.list
 
@@ -314,28 +350,30 @@ find %{buildroot}%{_datadir}/cockpit/static -type f >> static.list
 
 # when not building basic packages, remove their files
 %if 0%{?build_basic} == 0
-for pkg in base1 branding motd kdump networkmanager selinux shell sosreport ssh static systemd tuned users metrics; do
+for pkg in base1 branding motd kdump networkmanager selinux shell sosreport ssh static systemd users metrics; do
     rm -r %{buildroot}/%{_datadir}/cockpit/$pkg
     rm -f %{buildroot}/%{_datadir}/metainfo/org.cockpit-project.cockpit-${pkg}.metainfo.xml
 done
 for data in doc man pixmaps polkit-1; do
     rm -r %{buildroot}/%{_datadir}/$data
 done
-for lib in systemd tmpfiles.d; do
-    rm -r %{buildroot}/%{_prefix}/%{__lib}/$lib
-done
+rm -r %{buildroot}/%{_prefix}/%{__lib}/tmpfiles.d
+find %{buildroot}/%{_unitdir}/ -type f ! -name 'cockpit-session*' -delete
 for libexec in cockpit-askpass cockpit-session cockpit-ws cockpit-tls cockpit-wsinstance-factory cockpit-client cockpit-client.ui cockpit-desktop cockpit-certificate-helper cockpit-certificate-ensure; do
-    rm %{buildroot}/%{_libexecdir}/$libexec
+    rm -f %{buildroot}/%{_libexecdir}/$libexec
 done
-rm -r %{buildroot}/%{_libdir}/security %{buildroot}/%{_sysconfdir}/motd.d %{buildroot}/%{_sysconfdir}/issue.d
+rm -r %{buildroot}/%{_sysconfdir}/pam.d %{buildroot}/%{_sysconfdir}/motd.d %{buildroot}/%{_sysconfdir}/issue.d
 %if 0%{?suse_version} > 1500
 rm -r %{buildroot}/%{_pam_vendordir}
 %else
 rm -r %{buildroot}/%{_sysconfdir}/pam.d
 %endif
-rm %{buildroot}/usr/bin/cockpit-bridge
+rm -f %{buildroot}/%{_libdir}/security/pam_*
+rm -f %{buildroot}/usr/bin/cockpit-bridge
 rm -f %{buildroot}%{_libexecdir}/cockpit-ssh
 rm -f %{buildroot}%{_datadir}/metainfo/cockpit.appdata.xml
+rm -rf %{buildroot}%{python3_sitelib}/cockpit/
+rm -rf %{buildroot}%{python3_sitelib}/cockpit-%{version}.dist-info/
 %endif
 
 # when not building optional packages, remove their files
@@ -343,12 +381,17 @@ rm -f %{buildroot}%{_datadir}/metainfo/cockpit.appdata.xml
 for pkg in apps packagekit pcp playground storaged; do
     rm -rf %{buildroot}/%{_datadir}/cockpit/$pkg
 done
-# files from -tests
-rm -r %{buildroot}/%{_prefix}/%{__lib}/cockpit-test-assets
 # files from -pcp
 rm -r %{buildroot}/%{_libexecdir}/cockpit-pcp %{buildroot}/%{_localstatedir}/lib/pcp/
 # files from -storaged
 rm -f %{buildroot}/%{_prefix}/share/metainfo/org.cockpit-project.cockpit-storaged.metainfo.xml
+%endif
+
+%if 0%{?build_tests} == 0
+rm -rf %{buildroot}%{_datadir}/cockpit/playground
+rm -f %{buildroot}/%{pamdir}/mock-pam-conv-mod.so
+rm -f %{buildroot}/%{_unitdir}/cockpit-session.socket
+rm -f %{buildroot}/%{_unitdir}/cockpit-session@.service
 %endif
 
 sed -i "s|%{buildroot}||" *.list
@@ -361,6 +404,7 @@ ls --hide={default,kubernetes,opensuse,registry,sle-micro,suse} | xargs rm -rv
 popd
 # need this in SUSE as post build checks dislike stale symlinks
 install -m 644 -D /dev/null %{buildroot}/run/cockpit/motd
+install -m 644 -D /dev/null %{buildroot}/usr/share/cockpit/branding/opensuse/default-1920x1200.jpg ||:
 # remove files of not installable packages
 rm -r %{buildroot}%{_datadir}/cockpit/sosreport
 rm -f %{buildroot}/%{_prefix}/share/metainfo/org.cockpit-project.cockpit-sosreport.metainfo.xml
@@ -381,6 +425,7 @@ cat kdump.list sosreport.list networkmanager.list selinux.list >> system.list
 rm -f %{buildroot}%{_datadir}/metainfo/org.cockpit-project.cockpit-sosreport.metainfo.xml
 rm -f %{buildroot}%{_datadir}/metainfo/org.cockpit-project.cockpit-kdump.metainfo.xml
 rm -f %{buildroot}%{_datadir}/metainfo/org.cockpit-project.cockpit-selinux.metainfo.xml
+rm -f %{buildroot}%{_datadir}/metainfo/org.cockpit-project.cockpit-networkmanager.metainfo.xml
 rm -f %{buildroot}%{_datadir}/pixmaps/cockpit-sosreport.png
 %endif
 
@@ -412,8 +457,6 @@ troubleshooting, interactive command-line sessions, and more.
 Summary: Cockpit bridge server-side component
 Requires: glib-networking
 Provides: cockpit-ssh = %{version}-%{release}
-# PR #10430 dropped workaround for ws' inability to understand x-host-key challenge
-Conflicts: cockpit-ws < 181.x
 # 233 dropped jquery.js, pages started to bundle it (commit 049e8b8dce)
 Conflicts: cockpit-dashboard < 233
 Conflicts: cockpit-networkmanager < 233
@@ -430,6 +473,10 @@ system on behalf of the web based user interface.
 %doc %{_mandir}/man1/cockpit-bridge.1.gz
 %{_bindir}/cockpit-bridge
 %{_libexecdir}/cockpit-askpass
+%if %{cockpit_enable_python}
+%{python3_sitelib}/%{name}/
+%{python3_sitelib}/%{name}-%{version}.dist-info/
+%endif
 
 %package doc
 Summary: Cockpit deployment and developer guide
@@ -454,7 +501,9 @@ Requires: cockpit-bridge >= %{version}-%{release}
 Requires: shadow-utils
 %endif
 Requires: grep
+%if !0%{?sle_version}
 Requires: /usr/bin/pwscore
+%endif
 Requires: /usr/bin/date
 Provides: cockpit-shell = %{version}-%{release}
 Provides: cockpit-systemd = %{version}-%{release}
@@ -477,6 +526,8 @@ Provides: cockpit-sosreport = %{version}-%{release}
 %if 0%{?fedora}
 Recommends: (reportd if abrt)
 %endif
+
+#NPM_PROVIDES
 
 %description system
 This package contains the Cockpit shell and system configuration interfaces.
@@ -530,6 +581,7 @@ authentication via sssd/FreeIPA.
 # created in %post, so that users can rm the files
 %ghost %{_sysconfdir}/issue.d/cockpit.issue
 %ghost %{_sysconfdir}/motd.d/cockpit
+%ghost %attr(0644, root, root) %{_sysconfdir}/cockpit/disallowed-users
 %ghost %dir /run/cockpit
 %ghost /run/cockpit/motd
 %dir %{_datadir}/cockpit/motd
@@ -586,10 +638,16 @@ if [ -x %{_sbindir}/selinuxenabled ]; then
 fi
 
 # set up dynamic motd/issue symlinks on first-time install; don't bring them back on upgrades if admin removed them
+# disable root login on first-time install; so existing installations aren't changed
 if [ "$1" = 1 ]; then
     mkdir -p /etc/motd.d /etc/issue.d
     ln -s ../../run/cockpit/motd /etc/motd.d/cockpit
     ln -s ../../run/cockpit/motd /etc/issue.d/cockpit.issue
+    printf "# List of users which are not allowed to login to Cockpit\n" > /etc/cockpit/disallowed-users
+%if 0%{?disallow_root}
+    printf "root\n" >> /etc/cockpit/disallowed-users
+%endif
+    chmod 644 /etc/cockpit/disallowed-users
 fi
 # switch old self-signed cert group from cockpit-wsintance to cockpit-ws on upgrade
 if [ "$1" = 2 ]; then
@@ -606,7 +664,7 @@ fi
 test -f %{_bindir}/firewall-cmd && firewall-cmd --reload --quiet || true
 
 # check for deprecated PAM config
-if grep --color=auto pam_cockpit_cert %{_sysconfdir}/pam.d/cockpit; then
+if test -f %{_sysconfdir}/pam.d/cockpit &&  grep -q pam_cockpit_cert %{_sysconfdir}/pam.d/cockpit; then
     echo '**** WARNING:'
     echo '**** WARNING: pam_cockpit_cert is a no-op and will be removed in a'
     echo '**** WARNING: future release; remove it from your /etc/pam.d/cockpit.'
@@ -685,6 +743,7 @@ BuildArch: noarch
 The Cockpit component for managing networking.  This package uses NetworkManager.
 
 %files networkmanager -f networkmanager.list
+%{_datadir}/metainfo/org.cockpit-project.cockpit-networkmanager.metainfo.xml
 
 %endif
 
@@ -750,10 +809,11 @@ The Cockpit component for managing storage.  This package uses udisks.
 %dir %{_datadir}/cockpit/storaged/images
 %{_datadir}/metainfo/org.cockpit-project.cockpit-storaged.metainfo.xml
 
+%if 0%{?build_tests}
 %package -n cockpit-tests
 Summary: Tests for Cockpit
-Requires: cockpit-bridge >= 138
-Requires: cockpit-system >= 138
+Requires: cockpit-bridge >= %{required_base}
+Requires: cockpit-system >= %{required_base}
 Requires: openssh-clients
 Provides: cockpit-test-assets = %{version}-%{release}
 
@@ -762,7 +822,12 @@ This package contains tests and files used while testing Cockpit.
 These files are not required for running Cockpit.
 
 %files -n cockpit-tests -f tests.list
-%{_prefix}/%{__lib}/cockpit-test-assets
+%{pamdir}/mock-pam-conv-mod.so
+%{_unitdir}/cockpit-session.socket
+%{_unitdir}/cockpit-session@.service
+
+# /build_tests
+%endif
 
 %package devel
 Summary: Development files for for Cockpit
