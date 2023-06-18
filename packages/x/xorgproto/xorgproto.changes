@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 16 11:16:43 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 2023.2
+  * quick-fix release to address the Present protocol version not
+    being updated in xorgproto-2023.1.
+
+-------------------------------------------------------------------
 Sat Jun 10 11:04:09 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 2023.1

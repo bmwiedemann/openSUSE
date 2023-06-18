@@ -188,4 +188,14 @@ The other changes include various fixes, clarifications and keysym
 definitions updates:</comment>
     <requestid>1091981</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c3e6f0eeb17e56ee58d4e1f7f7e4ecdd</srcmd5>
+    <version>2023.2</version>
+    <time>1687122454</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2023.2
+  * quick-fix release to address the Present protocol version not
+    being updated in xorgproto-2023.1.</comment>
+    <requestid>1093477</requestid>
+  </revision>
 </revisionlist>
