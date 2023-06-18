@@ -1,7 +1,7 @@
 #
 # spec file for package python-dkimpy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 %define commands arcsign arcverify dkimsign dkimverify dknewkey
-%define skip_python2 1
 Name:           python-dkimpy
 Version:        1.0.5
 Release:        0
@@ -35,7 +34,7 @@ Requires:       python-authres
 Requires:       python-dnspython >= 1.16
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyNaCl}
