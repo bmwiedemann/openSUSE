@@ -1,7 +1,7 @@
 #
 # spec file for package cockpit-podman
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cockpit-podman
-Version:        53
+Version:        70
 Release:        0
 Summary:        Cockpit component for Podman containers
 License:        LGPL-2.1-or-later
@@ -26,14 +26,15 @@ Source:         https://github.com/cockpit-project/cockpit-podman/archive/%{vers
 Source10:       package-lock.json
 Source11:       node_modules.spec.inc
 %include %_sourcedir/node_modules.spec.inc
-Patch1:         load-css-overrides.patch
+Patch1:         1299.patch
+Patch10:        load-css-overrides.patch
 BuildArch:      noarch
 BuildRequires:  appstream-glib
 Requires:       cockpit-bridge >= 138
 Requires:       cockpit-shell >= 138
 Requires:       podman >= 2.0.4
 #
-BuildRequires:  cockpit-devel >= 271
+BuildRequires:  cockpit-devel >= 293
 BuildRequires:  local-npm-registry
 BuildRequires:  sassc
 
@@ -46,12 +47,14 @@ rm -r node_modules
 local-npm-registry %{_sourcedir} install --with=dev
 
 %build
+export PREFIX=%{_prefix}
 mkdir -p pkg/lib
 cp -r %{_datadir}/cockpit/devel/lib/* pkg/lib
 
 npm run build
 
 %install
+export PREFIX=%{_prefix}
 %make_install
 appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/*
 

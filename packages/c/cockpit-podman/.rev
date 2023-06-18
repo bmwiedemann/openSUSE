@@ -98,4 +98,23 @@
   * Stability and performance improvements</comment>
     <requestid>1005002</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4d82175f94d8ae1662ad63d3a307dcbd</srcmd5>
+    <version>70</version>
+    <time>1687122455</time>
+    <user>dimstar_suse</user>
+    <comment>- New version 70. Changes since 53 include,
+  * Add ability to prune unused containers
+  * Translation updates
+  * Container list can be sorted
+  * Custom healthcheck actions
+  * Dark theme support
+  * Pod CPU, memory, port and volume details
+  * Create new pod group functionality
+  * Show all containers by default
+  * Stability and performance improvements
+- load-css-overrides.patch: refreshed
+- 1299.patch: fixes build with new PF5</comment>
+    <requestid>1093480</requestid>
+  </revision>
 </revisionlist>

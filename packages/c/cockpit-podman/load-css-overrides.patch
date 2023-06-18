@@ -9,18 +9,15 @@ described at https://github.com/cockpit-project/cockpit/pull/17437
  src/index.html | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/src/index.html b/src/index.html
-index 6963aaf..01ec06d 100644
---- a/src/index.html
-+++ b/src/index.html
-@@ -23,6 +23,7 @@ along with this package; If not, see <http://www.gnu.org/licenses/>.
+Index: cockpit-podman-70/src/index.html
+===================================================================
+--- cockpit-podman-70.orig/src/index.html
++++ cockpit-podman-70/src/index.html
+@@ -23,6 +23,7 @@ along with this package; If not, see <ht
      <meta name="viewport" content="width=device-width, initial-scale=1">
  
      <link rel="stylesheet" href="index.css">
 +    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
  
-     <script type="text/javascript" src="../base1/cockpit.js"></script>
+     <script type="text/javascript" src="index.js"></script>
      <script type="text/javascript" src="po.js"></script>
--- 
-2.36.1
-

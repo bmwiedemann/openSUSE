@@ -1,0 +1,2118 @@
+From ce58262dbb6b9f0b453a84107e7e6dd0f5fbcc96 Mon Sep 17 00:00:00 2001
+From: Cockpit Project <cockpituous@gmail.com>
+Date: Thu, 1 Jun 2023 03:08:22 +0000
+Subject: [PATCH] Makefile: Update Cockpit lib to
+ 756b59469637dd2dee00d086b883cffd16dc5efc
+
+Update to the same PF5 versions as Cockpit. Apply the "-v5" prefixing
+and import adjustments.
+
+Make use of the new pywrap feature from our test.
+
+See starter-kit commit 2215aa3bf801224.
+
+Closes #1299
+---
+ Makefile                     |   8 +-
+ node_modules                 |   2 +-
+ package.json                 |  11 +-
+ src/ContainerCommitModal.jsx |   8 +-
+ src/ContainerHeader.jsx      |   4 +-
+ src/ContainerRenameModal.jsx |   2 +-
+ src/Containers.jsx           |   6 +-
+ src/Containers.scss          |  40 ++--
+ src/DynamicListForm.scss     |  14 +-
+ src/ImageRunModal.jsx        |  42 ++--
+ src/ImageRunModal.scss       |  20 +-
+ src/ImageSearchModal.css     |  18 +-
+ src/ImageSearchModal.jsx     |   4 +-
+ src/Images.css               |  12 +-
+ src/Images.jsx               |   4 +-
+ src/PodCreateModal.jsx       |   2 +-
+ src/PublishPort.jsx          |  12 +-
+ src/Volume.jsx               |   4 +-
+ src/app.jsx                  |   4 +-
+ src/podman.scss              |  42 ++--
+ test/check-application       | 441 +++++++++++++++++------------------
+ 21 files changed, 346 insertions(+), 354 deletions(-)
+
+Index: cockpit-podman-70/Makefile
+===================================================================
+--- cockpit-podman-70.orig/Makefile
++++ cockpit-podman-70/Makefile
+@@ -34,13 +34,11 @@ all: $(DIST_TEST)
+ COCKPIT_REPO_FILES = \
+ 	pkg/lib \
+ 	test/common \
+-	tools/git-utils.sh \
+-	tools/make-bots \
+ 	tools/node-modules \
+ 	$(NULL)
+ 
+ COCKPIT_REPO_URL = https://github.com/cockpit-project/cockpit.git
+-COCKPIT_REPO_COMMIT = 355c0aa59e3991243e10a61183e62ea129d3261a # 292 + 8 commits
++COCKPIT_REPO_COMMIT = 756b59469637dd2dee00d086b883cffd16dc5efc # 293 + conditional pfv5
+ 
+ $(COCKPIT_REPO_FILES): $(COCKPIT_REPO_STAMP)
+ COCKPIT_REPO_TREE = '$(strip $(COCKPIT_REPO_COMMIT))^{tree}'
+@@ -200,8 +198,8 @@ prepare-check: $(NODE_MODULES_TEST) $(VM
+ check: prepare-check
+ 	TEST_AUDIT_NO_SELINUX=1 test/common/run-tests ${RUN_TESTS_OPTIONS}
+ 
+-bots: tools/make-bots
+-	tools/make-bots
++bots: $(COCKPIT_REPO_STAMP)
++	test/common/make-bots
+ 
+ test/reference: test/common
+ 	test/common/pixel-tests pull
+Index: cockpit-podman-70/package.json
+===================================================================
+--- cockpit-podman-70.orig/package.json
++++ cockpit-podman-70/package.json
+@@ -43,11 +43,12 @@
+     "stylelint-formatter-pretty": "^3.1.1"
+   },
+   "dependencies": {
+-    "@patternfly/patternfly": "5.0.0-alpha.43",
+-    "@patternfly/react-core": "5.0.0-alpha.83",
+-    "@patternfly/react-icons": "5.0.0-alpha.12",
+-    "@patternfly/react-styles": "5.0.0-alpha.8",
+-    "@patternfly/react-table": "5.0.0-alpha.85",
++    "@patternfly/patternfly": "5.0.0-alpha.53",
++    "@patternfly/react-core": "5.0.0-alpha.98",
++    "@patternfly/react-icons": "5.0.0-alpha.14",
++    "@patternfly/react-styles": "5.0.0-alpha.10",
++    "@patternfly/react-table": "5.0.0-alpha.100",
++    "@patternfly/react-tokens": "5.0.0-alpha.9",
+     "date-fns": "2.28.0",
+     "docker-names": "1.2.1",
+     "prop-types": "15.8.1",
+Index: cockpit-podman-70/src/ContainerCommitModal.jsx
+===================================================================
+--- cockpit-podman-70.orig/src/ContainerCommitModal.jsx
++++ cockpit-podman-70/src/ContainerCommitModal.jsx
+@@ -91,7 +91,7 @@ const ContainerCommitModal = ({ containe
+                 <TextInput id="commit-dialog-image-name"
+                            value={imageName}
+                            validated={nameError ? "error" : "default"}
+-                           onChange={value => { setNameError(""); setImageName(value) }} />
++                           onChange={(_, value) => { setNameError(""); setImageName(value) }} />
+                 <FormHelper fieldId="commit-dialog-image-name" helperTextInvalid={nameError} />
+             </FormGroup>
+ 
+@@ -99,20 +99,20 @@ const ContainerCommitModal = ({ containe
+                 <TextInput id="commit-dialog-image-tag"
+                            placeholder="latest" // Do not translate
+                            value={tag}
+-                           onChange={value => { setNameError(""); setTag(value) }} />
++                           onChange={(_, value) => { setNameError(""); setTag(value) }} />
+             </FormGroup>
+ 
+             <FormGroup fieldId="commit-dialog-author" label={_("Author")}>
+                 <TextInput id="commit-dialog-author"
+                            placeholder={_("Example, Your Name <yourname@example.com>")}
+                            value={author}
+-                           onChange={setAuthor} />
++                           onChange={(_, value) => setAuthor(value)} />
+             </FormGroup>
+ 
+             <FormGroup fieldId="commit-dialog-command" label={_("Command")}>
+                 <TextInput id="commit-dialog-command"
+                            value={command}
+-                           onChange={setCommand} />
++                           onChange={(_, value) => setCommand(value)} />
+             </FormGroup>
+ 
+             <FormGroup fieldId="commit-dialog-pause" label={_("Options")} isStack hasNoPaddingTop>
+Index: cockpit-podman-70/src/ContainerHeader.jsx
+===================================================================
+--- cockpit-podman-70.orig/src/ContainerHeader.jsx
++++ cockpit-podman-70/src/ContainerHeader.jsx
+@@ -15,7 +15,7 @@ const ContainerHeader = ({ user, twoOwne
+                             {_("Owner")}
+                         </ToolbarItem>
+                         <ToolbarItem>
+-                            <FormSelect id="containers-containers-owner" value={ownerFilter} onChange={handleOwnerChanged}>
++                            <FormSelect id="containers-containers-owner" value={ownerFilter} onChange={(_, value) => handleOwnerChanged(value)}>
+                                 <FormSelectOption value='user' label={user} />
+                                 <FormSelectOption value='system' label={_("System")} />
+                                 <FormSelectOption value='all' label={_("All")} />
+@@ -27,7 +27,7 @@ const ContainerHeader = ({ user, twoOwne
+                     <TextInput id="containers-filter"
+                                    placeholder={_("Type to filter…")}
+                                    value={textFilter}
+-                                   onChange={handleFilterChanged} />
++                                   onChange={(_, value) => handleFilterChanged(value)} />
+                 </ToolbarItem>
+             </ToolbarContent>
+         </Toolbar>
+Index: cockpit-podman-70/src/ContainerRenameModal.jsx
+===================================================================
+--- cockpit-podman-70.orig/src/ContainerRenameModal.jsx
++++ cockpit-podman-70/src/ContainerRenameModal.jsx
+@@ -70,7 +70,7 @@ const ContainerRenameModal = ({ containe
+                         validated={nameError ? "error" : "default"}
+                         type="text"
+                         aria-label={nameError}
+-                        onChange={value => handleInputChange("name", value)} />
++                        onChange={(_, value) => handleInputChange("name", value)} />
+                 <FormHelper fieldId="commit-dialog-image-name" helperTextInvalid={nameError} />
+             </FormGroup>
+         </Form>
+Index: cockpit-podman-70/src/Containers.jsx
+===================================================================
+--- cockpit-podman-70.orig/src/Containers.jsx
++++ cockpit-podman-70/src/Containers.jsx
+@@ -6,7 +6,7 @@ import { Divider } from "@patternfly/rea
+ import { Dropdown, DropdownItem, DropdownSeparator, KebabToggle } from '@patternfly/react-core/dist/esm/deprecated/components/Dropdown/index.js';
+ import { Flex } from "@patternfly/react-core/dist/esm/layouts/Flex";
+ import { Popover } from "@patternfly/react-core/dist/esm/components/Popover";
+-import { LabelGroup } from "@patternfly/react-core/dist/esm/components/LabelGroup";
++import { LabelGroup } from "@patternfly/react-core/dist/esm/components/Label";
+ import { Text, TextVariants } from "@patternfly/react-core/dist/esm/components/Text";
+ import { FormSelect, FormSelectOption } from "@patternfly/react-core/dist/esm/components/FormSelect";
+ import { Tooltip } from "@patternfly/react-core/dist/esm/components/Tooltip";
+@@ -429,7 +429,7 @@ class Containers extends React.Component
+         ];
+ 
+         if (!container.isDownloading) {
+-            columns.push({ title: <ContainerActions version={this.props.version} container={container} healthcheck={healthcheck} onAddNotification={this.props.onAddNotification} localImages={localImages} updateContainerAfterEvent={this.props.updateContainerAfterEvent} />, props: { className: "pf-c-table__action" } });
++            columns.push({ title: <ContainerActions version={this.props.version} container={container} healthcheck={healthcheck} onAddNotification={this.props.onAddNotification} localImages={localImages} updateContainerAfterEvent={this.props.updateContainerAfterEvent} />, props: { className: "pf-v5-c-table__action" } });
+         }
+ 
+         const tty = containerDetail ? !!containerDetail.Config.Tty : undefined;
+@@ -736,7 +736,7 @@ class Containers extends React.Component
+                         {_("Show")}
+                     </ToolbarItem>
+                     <ToolbarItem>
+-                        <FormSelect id="containers-containers-filter" value={this.props.filter} onChange={this.props.handleFilterChange}>
++                        <FormSelect id="containers-containers-filter" value={this.props.filter} onChange={(_, value) => this.props.handleFilterChange(value)}>
+                             <FormSelectOption value='all' label={_("All")} />
+                             <FormSelectOption value='running' label={_("Only running")} />
+                         </FormSelect>
+Index: cockpit-podman-70/src/Containers.scss
+===================================================================
+--- cockpit-podman-70.orig/src/Containers.scss
++++ cockpit-podman-70/src/Containers.scss
+@@ -1,54 +1,54 @@
+ @import "global-variables";
+ 
+ .container-pod {
+-    .pf-c-card__header {
++    .pf-v5-c-card__header {
+         border-color: #ddd;
+-        padding-top: var(--pf-global--spacer--md);
++        padding-top: var(--pf-v5-global--spacer--md);
+     }
+ 
+     .pod-header-details {
+ 	border-color: #ddd;
+-	margin-top: var(--pf-global--spacer--md);
+-	margin-left: var(--pf-global--spacer--md);
+-	margin-right: var(--pf-global--spacer--md);
++	margin-top: var(--pf-v5-global--spacer--md);
++	margin-left: var(--pf-v5-global--spacer--md);
++	margin-right: var(--pf-v5-global--spacer--md);
+     }
+ 
+     .pod-details-button {
+        padding-left: 0;
+        padding-right: 0;
+-       margin-right: var(--pf-global--spacer--md);
++       margin-right: var(--pf-v5-global--spacer--md);
+     }
+ 
+     .pod-details-button-color {
+-       color: var(--pf-c-button--m-secondary--Color);
++       color: var(--pf-v5-c-button--m-secondary--Color);
+     }
+ 
+-    .pf-c-card__title {
++    .pf-v5-c-card__title {
+         padding: 0;
+-        font-weight: var(--pf-global--FontWeight--normal);
+-        font-size: var(--pf-global--FontSize--sm);
++        font-weight: var(--pf-v5-global--FontWeight--normal);
++        font-size: var(--pf-v5-global--FontSize--sm);
+ 
+         .pod-name {
+-            font-weight: var(--pf-global--FontWeight--bold);
+-            font-size: var(--pf-global--FontSize--md);
++            font-weight: var(--pf-v5-global--FontWeight--bold);
++            font-size: var(--pf-v5-global--FontSize--md);
+             padding-right: 1rem;
+         }
+     }
+ 
+-    > .pf-c-card__header {
++    > .pf-v5-c-card__header {
+         &:not(:last-child) {
+-            padding-bottom: var(--pf-global--spacer-sm);
++            padding-bottom: var(--pf-v5-global--spacer-sm);
+         }
+ 
+         // Reduce vertical padding of pod header items
+-        > .pf-c-card__title > .pf-l-flex {
+-            row-gap: var(--pf-global--spacer--sm);
++        > .pf-v5-c-card__title > .pf-l-flex {
++            row-gap: var(--pf-v5-global--spacer--sm);
+         }
+     }
+ }
+ 
+ .pod-stat {
+-    @media (max-width: $pf-global--breakpoint--sm - 1) {
++    @media (max-width: $pf-v5-global--breakpoint--sm - 1) {
+         // Place each pod stat on its own row
+         flex-basis: 100%;
+         display: grid;
+@@ -68,7 +68,7 @@
+ }
+ 
+ .ct-table-empty td {
+-    padding: var(--pf-global--spacer--sm) var(--pf-global--spacer--md) var(--pf-global--spacer--lg);
++    padding: var(--pf-v5-global--spacer--sm) var(--pf-global--spacer--md) var(--pf-global--spacer--lg);
+ }
+ 
+ /* HACK - force DescriptionList to wrap but not fill the width */
+@@ -78,8 +78,8 @@
+ }
+ 
+ /* Upstream issue https://github.com/patternfly/patternfly/pull/3714 */
+-.containers-containers .pf-c-toolbar__content-section {
+-    gap: var(--pf-global--spacer--sm);
++.containers-containers .pf-v5-c-toolbar__content-section {
++    gap: var(--pf-v5-global--spacer--sm);
+ }
+ 
+ /* Drop the excessive margin for a Dropdown button */
+Index: cockpit-podman-70/src/DynamicListForm.scss
+===================================================================
+--- cockpit-podman-70.orig/src/DynamicListForm.scss
++++ cockpit-podman-70/src/DynamicListForm.scss
+@@ -1,11 +1,11 @@
+ @import "global-variables";
+ 
+ .dynamic-form-group {
+-    .pf-c-empty-state {
++    .pf-v5-c-empty-state {
+         padding: 0;
+     }
+ 
+-    .pf-c-form__label {
++    .pf-v5-c-form__label {
+         // Don't allow labels to wrap
+         white-space: nowrap;
+     }
+@@ -19,21 +19,21 @@
+     }
+ 
+     // Set check to the same height as input widgets and vertically align
+-    .pf-c-form__group-control > .pf-c-check {
++    .pf-v5-c-form__group-control > .pf-c-check {
+         // Set height to the same as inputs
+         // Font height is font size * line height (1rem * 1.5)
+         // Widgets have 5px padding, 1px border (top & bottom): (5 + 1) * 2 = 12
+         // This all equals to 36px
+-        height: calc(var(--pf-global--FontSize--md) * var(--pf-global--LineHeight--md) + 12px);
++        height: calc(var(--pf-v5-global--FontSize--md) * var(--pf-global--LineHeight--md) + 12px);
+         align-content: center;
+     }
+ 
+     // We use FormFieldGroup PF component for the nested look and for ability to add buttons to the header
+     // However we want to save space and not add indent to the left so we need to override it
+-    .pf-c-form__field-group-body {
++    .pf-v5-c-form__field-group-body {
+         // Stretch content fully
+-        --pf-c-form__field-group-body--GridColumn: 1 / -1;
++        --pf-v5-c-form__field-group-body--GridColumn: 1 / -1;
+         // Reduce padding at the top
+-        --pf-c-form__field-group-body--PaddingTop: var(--pf-global--spacer--xs);
++        --pf-v5-c-form__field-group-body--PaddingTop: var(--pf-v5-global--spacer--xs);
+     }
+ }
+Index: cockpit-podman-70/src/ImageRunModal.jsx
+===================================================================
+--- cockpit-podman-70.orig/src/ImageRunModal.jsx
++++ cockpit-podman-70/src/ImageRunModal.jsx
+@@ -90,12 +90,12 @@ const EnvVar = ({ id, item, onChange, id
+             <FormGroup className="pf-m-6-col-on-md" label={_("Key")} fieldId={id + "-key-address"}>
+                 <TextInput id={id + "-key"}
+                        value={item.envKey || ''}
+-                       onChange={value => handleEnvValue('envKey', value, idx, onChange, additem, itemCount, item.envValue)} />
++                       onChange={(_, value) => handleEnvValue('envKey', value, idx, onChange, additem, itemCount, item.envValue)} />
+             </FormGroup>
+             <FormGroup className="pf-m-6-col-on-md" label={_("Value")} fieldId={id + "-value-address"}>
+                 <TextInput id={id + "-value"}
+                        value={item.envValue || ''}
+-                       onChange={value => handleEnvValue('envValue', value, idx, onChange, additem, itemCount, item.envKey)} />
++                       onChange={(_, value) => handleEnvValue('envValue', value, idx, onChange, additem, itemCount, item.envKey)} />
+             </FormGroup>
+             <FormGroup className="pf-m-1-col-on-md remove-button-group">
+                 <Button variant='secondary'
+@@ -652,7 +652,7 @@ export class ImageRunModal extends React
+         // Add the search component
+         const footer = (
+             <ToggleGroup className='image-search-footer' aria-label={_("Search by registry")}>
+-                <ToggleGroupItem text={_("All")} key='all' isSelected={this.state.searchByRegistry == 'all'} onChange={(_, ev) => {
++                <ToggleGroupItem text={_("All")} key='all' isSelected={this.state.searchByRegistry == 'all'} onChange={(ev, _) => {
+                     ev.stopPropagation();
+                     this.setState({ searchByRegistry: 'all' });
+                 }}
+@@ -661,7 +661,7 @@ export class ImageRunModal extends React
+                     ev.stopPropagation();
+                 }}
+                 />
+-                <ToggleGroupItem text={_("Local")} key='local' isSelected={this.state.searchByRegistry == 'local'} onChange={(_, ev) => {
++                <ToggleGroupItem text={_("Local")} key='local' isSelected={this.state.searchByRegistry == 'local'} onChange={(ev, _) => {
+                     ev.stopPropagation();
+                     this.setState({ searchByRegistry: 'local' });
+                 }}
+@@ -675,7 +675,7 @@ export class ImageRunModal extends React
+                         <ToggleGroupItem
+                             text={index} key={index}
+                             isSelected={ this.state.searchByRegistry == index }
+-                            onChange={ (_, ev) => {
++                            onChange={ (ev, _) => {
+                                 ev.stopPropagation();
+                                 this.setState({ searchByRegistry: index });
+                             } }
+@@ -694,10 +694,10 @@ export class ImageRunModal extends React
+                            className="image-name"
+                            placeholder={_("Container name")}
+                            value={dialogValues.containerName}
+-                           onChange={value => this.onValueChanged('containerName', value)} />
++                           onChange={(_, value) => this.onValueChanged('containerName', value)} />
+                 </FormGroup>
+                 <Tabs activeKey={activeTabKey} onSelect={this.handleTabClick}>
+-                    <Tab eventKey={0} title={<TabTitleText>{_("Details")}</TabTitleText>} className="pf-c-form pf-m-horizontal">
++                    <Tab eventKey={0} title={<TabTitleText>{_("Details")}</TabTitleText>} className="pf-v5-c-form pf-m-horizontal">
+                         { this.props.userServiceAvailable && this.props.systemServiceAvailable &&
+                         <FormGroup isInline hasNoPaddingTop fieldId='run-image-dialog-owner' label={_("Owner")}
+                                    labelIcon={
+@@ -735,7 +735,7 @@ export class ImageRunModal extends React
+                                                   </TextContent>
+                                               </>
+                                           }>
+-                                           <button onClick={e => e.preventDefault()} className="pf-c-form__group-label-help">
++                                           <button onClick={e => e.preventDefault()} className="pf-v5-c-form__group-label-help">
+                                                <OutlinedQuestionCircleIcon />
+                                            </button>
+                                        </Popover>
+@@ -765,7 +765,7 @@ export class ImageRunModal extends React
+                                         <FlexItem>{cockpit.format(_("Searching: $0"), "quay.io/busybox")}</FlexItem>
+                                     </Flex>
+                                 }>
+-                                  <button onClick={e => e.preventDefault()} className="pf-c-form__group-label-help">
++                                  <button onClick={e => e.preventDefault()} className="pf-v5-c-form__group-label-help">
+                                       <OutlinedQuestionCircleIcon />
+                                   </button>
+                               </Popover>
+@@ -789,7 +789,7 @@ export class ImageRunModal extends React
+                                 onClear={this.clearImageSelection}
+                                 // onFilter must be set or the spinner crashes https://github.com/patternfly/patternfly-react/issues/6384
+                                 onFilter={() => {}}
+-                                onTypeaheadInputChanged={value => this.debouncedInputChanged(value)}
++                                onTypeaheadInputChanged={this.debouncedInputChanged}
+                                 footer={footer}
+                                 isDisabled={!!this.props.image}
+                             >
+@@ -814,7 +814,7 @@ export class ImageRunModal extends React
+                         <FormGroup fieldId='run-image-dialog-command' label={_("Command")}>
+                             <TextInput id='run-image-dialog-command'
+                            value={dialogValues.command || ''}
+-                           onChange={value => this.onValueChanged('command', value)} />
++                           onChange={(_, value) => this.onValueChanged('command', value)} />
+                         </FormGroup>
+ 
+                         <FormGroup fieldId="run=image-dialog-tty">
+@@ -861,7 +861,7 @@ export class ImageRunModal extends React
+                                   <Popover aria-label={_("CPU Shares help")}
+                                       enableFlip
+                                       bodyContent={_("CPU shares determine the priority of running containers. Default priority is 1024. A higher number prioritizes this container. A lower number decreases priority.")}>
+-                                      <button onClick={e => e.preventDefault()} className="pf-c-form__group-label-help">
++                                      <button onClick={e => e.preventDefault()} className="pf-v5-c-form__group-label-help">
+                                           <OutlinedQuestionCircleIcon />
+                                       </button>
+                                   </Popover>
+@@ -893,7 +893,7 @@ export class ImageRunModal extends React
+                               <Popover aria-label={_("Restart policy help")}
+                                 enableFlip
+                                 bodyContent={this.props.userLingeringEnabled ? _("Restart policy to follow when containers exit. Using linger for auto-starting containers may not work in some circumstances, such as when ecryptfs, systemd-homed, NFS, or 2FA are used on a user account.") : _("Restart policy to follow when containers exit.")}>
+-                                  <button onClick={e => e.preventDefault()} className="pf-c-form__group-label-help">
++                                  <button onClick={e => e.preventDefault()} className="pf-v5-c-form__group-label-help">
+                                       <OutlinedQuestionCircleIcon />
+                                   </button>
+                               </Popover>
+@@ -929,7 +929,7 @@ export class ImageRunModal extends React
+                         </Grid>
+                         }
+                     </Tab>
+-                    <Tab eventKey={1} title={<TabTitleText>{_("Integration")}</TabTitleText>} id="create-image-dialog-tab-integration" className="pf-c-form">
++                    <Tab eventKey={1} title={<TabTitleText>{_("Integration")}</TabTitleText>} id="create-image-dialog-tab-integration" className="pf-v5-c-form">
+ 
+                         <DynamicListForm id='run-image-dialog-publish'
+                                  emptyStateString={_("No ports exposed")}
+@@ -960,11 +960,11 @@ export class ImageRunModal extends React
+                                  helperText={_("Paste one or more lines of key=value pairs into any field for bulk import")}
+                                  itemcomponent={ <EnvVar />} />
+                     </Tab>
+-                    <Tab eventKey={2} title={<TabTitleText>{_("Health check")}</TabTitleText>} id="create-image-dialog-tab-healthcheck" className="pf-c-form pf-m-horizontal">
++                    <Tab eventKey={2} title={<TabTitleText>{_("Health check")}</TabTitleText>} id="create-image-dialog-tab-healthcheck" className="pf-v5-c-form pf-m-horizontal">
+                         <FormGroup fieldId='run-image-dialog-healthcheck-command' label={_("Command")}>
+                             <TextInput id='run-image-dialog-healthcheck-command'
+                            value={dialogValues.healthcheck_command || ''}
+-                           onChange={value => this.onValueChanged('healthcheck_command', value)} />
++                           onChange={(_, value) => this.onValueChanged('healthcheck_command', value)} />
+                         </FormGroup>
+ 
+                         <FormGroup fieldId='run-image-healthcheck-interval' label={_("Interval")}
+@@ -972,7 +972,7 @@ export class ImageRunModal extends React
+                                   <Popover aria-label={_("Health check interval help")}
+                                       enableFlip
+                                       bodyContent={_("Interval how often health check is run.")}>
+-                                      <button onClick={e => e.preventDefault()} className="pf-c-form__group-label-help">
++                                      <button onClick={e => e.preventDefault()} className="pf-v5-c-form__group-label-help">
+                                           <OutlinedQuestionCircleIcon />
+                                       </button>
+                                   </Popover>
+@@ -997,7 +997,7 @@ export class ImageRunModal extends React
+                                   <Popover aria-label={_("Health check timeout help")}
+                                       enableFlip
+                                       bodyContent={_("The maximum time allowed to complete the health check before an interval is considered failed.")}>
+-                                      <button onClick={e => e.preventDefault()} className="pf-c-form__group-label-help">
++                                      <button onClick={e => e.preventDefault()} className="pf-v5-c-form__group-label-help">
+                                           <OutlinedQuestionCircleIcon />
+                                       </button>
+                                   </Popover>
+@@ -1022,7 +1022,7 @@ export class ImageRunModal extends React
+                                   <Popover aria-label={_("Health check start period help")}
+                                       enableFlip
+                                       bodyContent={_("The initialization time needed for a container to bootstrap.")}>
+-                                      <button onClick={e => e.preventDefault()} className="pf-c-form__group-label-help">
++                                      <button onClick={e => e.preventDefault()} className="pf-v5-c-form__group-label-help">
+                                           <OutlinedQuestionCircleIcon />
+                                       </button>
+                                   </Popover>
+@@ -1047,7 +1047,7 @@ export class ImageRunModal extends React
+                                   <Popover aria-label={_("Health check retries help")}
+                                       enableFlip
+                                       bodyContent={_("The number of retries allowed before a healthcheck is considered to be unhealthy.")}>
+-                                      <button onClick={e => e.preventDefault()} className="pf-c-form__group-label-help">
++                                      <button onClick={e => e.preventDefault()} className="pf-v5-c-form__group-label-help">
+                                           <OutlinedQuestionCircleIcon />
+                                       </button>
+                                   </Popover>
+@@ -1070,7 +1070,7 @@ export class ImageRunModal extends React
+                                   <Popover aria-label={_("Health failure check action help")}
+                                       enableFlip
+                                       bodyContent={_("Action to take once the container transitions to an unhealthy state.")}>
+-                                      <button onClick={e => e.preventDefault()} className="pf-c-form__group-label-help">
++                                      <button onClick={e => e.preventDefault()} className="pf-v5-c-form__group-label-help">
+                                           <OutlinedQuestionCircleIcon />
+                                       </button>
+                                   </Popover>
+Index: cockpit-podman-70/src/ImageRunModal.scss
+===================================================================
+--- cockpit-podman-70.orig/src/ImageRunModal.scss
++++ cockpit-podman-70/src/ImageRunModal.scss
+@@ -1,14 +1,14 @@
+ @import "global-variables";
+ 
+ // Ensure the width fits within the screen boundaries (with padding on the sides)
+-.pf-c-select__menu {
++.pf-v5-c-select__menu {
+     // 3xl is the left+right padding for an iPhone SE;
+     // this works on other screen sizes as well
+-    max-width: calc(100vw - var(--pf-global--spacer--3xl));
++    max-width: calc(100vw - var(--pf-v5-global--spacer--3xl));
+ }
+ 
+ // Make sure the footer is visible with more then 5 results.
+-.pf-c-select__menu-list {
++.pf-v5-c-select__menu-list {
+     // 35% viewport height is for 1280x720;
+     // since it picks the min of the two, it works everywhere
+     max-height: min(20rem, 35vh);
+@@ -16,14 +16,14 @@
+ }
+ 
+ // Fix the dot next to spinner: https://github.com/patternfly/patternfly-react/issues/6383
+-.pf-c-select__list-item.pf-m-loading {
++.pf-v5-c-select__list-item.pf-m-loading {
+     list-style-type: none;
+ }
+ 
+ .image-search-footer {
+     flex-wrap: wrap;
+ 
+-    .pf-c-toggle-group__text {
++    .pf-v5-c-toggle-group__text {
+         word-wrap: break-word;
+     }
+ }
+@@ -31,17 +31,17 @@
+  // PF4 does not yet support multiple form fields for the same label
+ .ct-input-group-spacer-sm.pf-l-flex {
+     // Limit width for select entries and inputs in the input groups otherwise they take up the whole space
+-    > .pf-c-select, .pf-c-form-control:not(.pf-c-select__toggle-typeahead) {
++    > .pf-v5-c-select, .pf-c-form-control:not(.pf-c-select__toggle-typeahead) {
+       max-width: 8ch;
+     }
+ }
+ 
+ // HACK: A local copy of pf-m-horizontal (as ct-m-horizontal),
+ // but applied at the FormGroup level instead of Form
+-@media (min-width: $pf-global--breakpoint--md) {
+-    .pf-c-form__group.ct-m-horizontal {
++@media (min-width: $pf-v5-global--breakpoint--md) {
++    .pf-v5-c-form__group.ct-m-horizontal {
+         display: grid;
+-        grid-column-gap: var(--pf-c-form--m-horizontal__group-label--md--GridColumnGap);
+-        grid-template-columns: var(--pf-c-form--m-horizontal__group-label--md--GridColumnWidth) var(--pf-c-form--m-horizontal__group-control--md--GridColumnWidth);
++        grid-column-gap: var(--pf-v5-c-form--m-horizontal__group-label--md--GridColumnGap);
++        grid-template-columns: var(--pf-v5-c-form--m-horizontal__group-label--md--GridColumnWidth) var(--pf-c-form--m-horizontal__group-control--md--GridColumnWidth);
+     }
+ }
+Index: cockpit-podman-70/src/ImageSearchModal.css
+===================================================================
+--- cockpit-podman-70.orig/src/ImageSearchModal.css
++++ cockpit-podman-70/src/ImageSearchModal.css
+@@ -1,9 +1,9 @@
+-.podman-search .pf-c-modal-box__body {
++.podman-search .pf-v5-c-modal-box__body {
+     display: grid;
+     grid-auto-flow: row;
+     overflow: hidden;
+     grid-template-rows: auto auto 1fr;
+-    grid-gap: var(--pf-global--spacer--sm);
++    grid-gap: var(--pf-v5-global--spacer--sm);
+ }
+ 
+ .image-list-item {
+@@ -12,11 +12,11 @@
+ }
+ 
+ .image-list-item + .image-list-item {
+-    border-top: 1px solid var(--pf-global--BorderColor--200);
++    border-top: 1px solid var(--pf-v5-global--BorderColor--200);
+ }
+ 
+ .image-list-item > .image-name {
+-    color: var(--pf-global--Color--100);
++    color: var(--pf-v5-global--Color--100);
+ }
+ 
+ @media (min-width: 768px) {
+@@ -44,17 +44,17 @@
+ }
+ 
+ .image-search-tag-form {
+-    margin-bottom: var(--pf-global--spacer--md);
++    margin-bottom: var(--pf-v5-global--spacer--md);
+ }
+ 
+-.podman-search .pf-c-modal-box__footer {
++.podman-search .pf-v5-c-modal-box__footer {
+     display: initial;
+ }
+ 
+-.podman-search .pf-c-data-list {
++.podman-search .pf-v5-c-data-list {
+     overflow-y: auto;
+ }
+ 
+-.podman-search .pf-l-flex .pf-c-form__group:nth-child(2) {
+-    grid-template-columns: 2rem var(--pf-c-form--m-horizontal__group-control--md--GridColumnWidth);
++.podman-search .pf-l-flex .pf-v5-c-form__group:nth-child(2) {
++    grid-template-columns: 2rem var(--pf-v5-c-form--m-horizontal__group-control--md--GridColumnWidth);
+ }
+Index: cockpit-podman-70/src/ImageSearchModal.jsx
+===================================================================
+--- cockpit-podman-70.orig/src/ImageSearchModal.jsx
++++ cockpit-podman-70/src/ImageSearchModal.jsx
+@@ -170,7 +170,7 @@ export class ImageSearchModal extends Re
+                                        placeholder={_("Search by name or description")}
+                                        value={this.state.imageIdentifier}
+                                        onKeyPress={this.onKeyPress}
+-                                       onChange={value => this.onValueChanged('imageIdentifier', value)} />
++                                       onChange={(_event, value) => this.onValueChanged('imageIdentifier', value)} />
+                         </FormGroup>
+                         <FormGroup fieldId="registry-select" label={_("in")}>
+                             <FormSelect id='registry-select'
+@@ -234,7 +234,7 @@ export class ImageSearchModal extends Re
+                                       type='text'
+                                       placeholder="latest"
+                                       value={this.state.imageTag || ''}
+-                                      onChange={value => this.onValueChanged('imageTag', value)} />
++                                      onChange={(_event, value) => this.onValueChanged('imageTag', value)} />
+                            </FormGroup>
+                        </Form>
+                        <Button variant='primary' isDisabled={this.state.selected == undefined} onClick={this.onDownloadClicked}>
+Index: cockpit-podman-70/src/Images.css
+===================================================================
+--- cockpit-podman-70.orig/src/Images.css
++++ cockpit-podman-70/src/Images.css
+@@ -4,15 +4,15 @@
+ }
+ 
+ /* Danger dropdown items should be red */
+-.pf-c-dropdown__menu-item.pf-m-danger:not(.pf-m-disabled, .pf-m-aria-disabled) {
+-    color: var(--pf-global--danger-color--200);
++.pf-v5-c-dropdown__menu-item.pf-m-danger:not(.pf-m-disabled, .pf-m-aria-disabled) {
++    color: var(--pf-v5-global--danger-color--200);
+ }
+ 
+-#containers-images .pf-c-table.pf-m-compact .pf-c-table__action {
+-    --pf-c-table__action--PaddingTop: 0.5rem;
+-    --pf-c-table__action--PaddingBottom: 0.5rem;
++#containers-images .pf-v5-c-table.pf-m-compact .pf-c-table__action {
++    --pf-v5-c-table__action--PaddingTop: 0.5rem;
++    --pf-v5-c-table__action--PaddingBottom: 0.5rem;
+ }
+ 
+-.containers-images .pf-c-expandable-section__content {
++.containers-images .pf-v5-c-expandable-section__content {
+     margin-top: 0;
+ }
+Index: cockpit-podman-70/src/Images.jsx
+===================================================================
+--- cockpit-podman-70.orig/src/Images.jsx
++++ cockpit-podman-70/src/Images.jsx
+@@ -142,7 +142,7 @@ class Images extends React.Component {
+                                      userPodmanRestartAvailable={this.props.userPodmanRestartAvailable}
+                                      userLingeringEnabled={this.props.userLingeringEnabled}
+                                      version={this.props.version} />,
+-                props: { className: 'pf-c-table__action content-action' }
++                props: { className: 'pf-v5-c-table__action content-action' }
+             },
+         ];
+ 
+@@ -288,7 +288,7 @@ class Images extends React.Component {
+                                 <CardTitle>
+                                     <Text component={TextVariants.h2}>{_("Images")}</Text>
+                                 </CardTitle>
+-                                <Flex className="ignore-pixels" style={{ rowGap: "var(--pf-global--spacer--xs)" }}>{imageTitleStats}</Flex>
++                                <Flex className="ignore-pixels" style={{ rowGap: "var(--pf-v5-global--spacer--xs)" }}>{imageTitleStats}</Flex>
+                             </Flex>
+                         </FlexItem>
+                         <FlexItem>
+Index: cockpit-podman-70/src/PodCreateModal.jsx
+===================================================================
+--- cockpit-podman-70.orig/src/PodCreateModal.jsx
++++ cockpit-podman-70/src/PodCreateModal.jsx
+@@ -100,7 +100,7 @@ export const PodCreateModal = ({ user, s
+                        value={podName}
+                        validated={nameError ? "error" : "default"}
+                        aria-label={nameError}
+-                       onChange={value => onValueChanged('podName', value)} />
++                       onChange={(_event, value) => onValueChanged('podName', value)} />
+                 <FormHelper fieldId="create-pod-dialog-name" helperTextInvalid={nameError} />
+             </FormGroup>
+             { userServiceAvailable && systemServiceAvailable &&
+Index: cockpit-podman-70/src/PublishPort.jsx
+===================================================================
+--- cockpit-podman-70.orig/src/PublishPort.jsx
++++ cockpit-podman-70/src/PublishPort.jsx
+@@ -20,14 +20,14 @@ export const PublishPort = ({ id, item,
+                     <Popover aria-label={_("IP address help")}
+                         enableFlip
+                         bodyContent={_("If host IP is set to 0.0.0.0 or not set at all, the port will be bound on all IPs on the host.")}>
+-                        <button onClick={e => e.preventDefault()} className="pf-c-form__group-label-help">
++                        <button onClick={e => e.preventDefault()} className="pf-v5-c-form__group-label-help">
+                             <OutlinedQuestionCircleIcon />
+                         </button>
+                     </Popover>
+                 }>
+                 <TextInput id={id + "-ip-address"}
+                         value={item.IP || ''}
+-                        onChange={value => onChange(idx, 'IP', value)} />
++                        onChange={(_event, value) => onChange(idx, 'IP', value)} />
+             </FormGroup>
+             <FormGroup className="pf-m-2-col-on-md"
+                     label={_("Host port")}
+@@ -36,7 +36,7 @@ export const PublishPort = ({ id, item,
+                         <Popover aria-label={_("Host port help")}
+                             enableFlip
+                             bodyContent={_("If the host port is not set the container port will be randomly assigned a port on the host.")}>
+-                            <button onClick={e => e.preventDefault()} className="pf-c-form__group-label-help">
++                            <button onClick={e => e.preventDefault()} className="pf-v5-c-form__group-label-help">
+                                 <OutlinedQuestionCircleIcon />
+                             </button>
+                         </Popover>
+@@ -47,7 +47,7 @@ export const PublishPort = ({ id, item,
+                             min={1}
+                             max={65535}
+                             value={item.hostPort || ''}
+-                            onChange={value => onChange(idx, 'hostPort', value)} />
++                            onChange={(_event, value) => onChange(idx, 'hostPort', value)} />
+             </FormGroup>
+             <FormGroup className="pf-m-2-col-on-md"
+                         label={_("Container port")}
+@@ -58,12 +58,12 @@ export const PublishPort = ({ id, item,
+                             min={1}
+                             max={65535}
+                             value={item.containerPort || ''}
+-                            onChange={value => onChange(idx, 'containerPort', value)} />
++                            onChange={(_event, value) => onChange(idx, 'containerPort', value)} />
+             </FormGroup>
+             <FormGroup className="pf-m-2-col-on-md"
+                         label={_("Protocol")}
+                         fieldId={id + "-protocol"}>
+-                <FormSelect className='pf-c-form-control container-port-protocol'
++                <FormSelect className='pf-v5-c-form-control container-port-protocol'
+                             id={id + "-protocol"}
+                             value={item.protocol}
+                             onChange={(_event, value) => onChange(idx, 'protocol', value)}>
+Index: cockpit-podman-70/src/Volume.jsx
+===================================================================
+--- cockpit-podman-70.orig/src/Volume.jsx
++++ cockpit-podman-70/src/Volume.jsx
+@@ -22,7 +22,7 @@ export const Volume = ({ id, item, onCha
+             <FormGroup className="pf-m-3-col-on-md" label={_("Container path")} fieldId={id + "-container-path"}>
+                 <TextInput id={id + "-container-path"}
+                     value={item.containerPath || ''}
+-                    onChange={value => onChange(idx, 'containerPath', value)} />
++                    onChange={(_event, value) => onChange(idx, 'containerPath', value)} />
+             </FormGroup>
+             <FormGroup className="pf-m-2-col-on-md" label={_("Mode")} fieldId={id + "-mode"}>
+                 <Checkbox id={id + "-mode"}
+@@ -32,7 +32,7 @@ export const Volume = ({ id, item, onCha
+             </FormGroup>
+             { options && options.selinuxAvailable &&
+             <FormGroup className="pf-m-3-col-on-md" label={_("SELinux")} fieldId={id + "-selinux"}>
+-                <FormSelect id={id + "-selinux"} className='pf-c-form-control'
++                <FormSelect id={id + "-selinux"} className='pf-v5-c-form-control'
+                             value={item.selinux}
+                             onChange={(_event, value) => onChange(idx, 'selinux', value)}>
+                     <FormSelectOption value='' key='' label={_("No label")} />
+Index: cockpit-podman-70/src/app.jsx
+===================================================================
+--- cockpit-podman-70.orig/src/app.jsx
++++ cockpit-podman-70/src/app.jsx
+@@ -139,7 +139,7 @@ class Application extends React.Componen
+         }
+     }
+ 
+-    onContainerFilterChanged(_event, value) {
++    onContainerFilterChanged(value) {
+         this.setState({
+             containersFilter: value
+         });
+@@ -802,7 +802,7 @@ class Application extends React.Componen
+                                  variant={PageSectionVariants.light}>
+                         <ContainerHeader
+                             handleFilterChanged={this.onFilterChanged}
+-                            handleOwnerChanged={(_event, value) => this.onOwnerChanged(value)}
++                            handleOwnerChanged={this.onOwnerChanged}
+                             ownerFilter={this.state.ownerFilter}
+                             textFilter={this.state.textFilter}
+                             twoOwners={this.state.systemServiceAvailable && this.state.userServiceAvailable}
+Index: cockpit-podman-70/src/podman.scss
+===================================================================
+--- cockpit-podman-70.orig/src/podman.scss
++++ cockpit-podman-70/src/podman.scss
+@@ -1,25 +1,25 @@
+ @use "ct-card.scss";
+ @use "page.scss";
+ @import "global-variables";
+-// For pf-line-clamp
++// For pf-v5-line-clamp
+ @import "@patternfly/patternfly/sass-utilities/mixins.scss";
+ // For pf-u-disabled-color-100
+ @import "@patternfly/patternfly/utilities/Text/text.css";
+ 
+-#app .pf-c-card.containers-containers, #app .pf-c-card.containers-images {
++#app .pf-v5-c-card.containers-containers, #app .pf-c-card.containers-images {
+     @extend .ct-card;
+ }
+ 
+ #containers-images, #containers-containers {
+     // Decrease padding for the image/container toggle button list
+-    .pf-c-table.pf-m-compact .pf-c-table__toggle {
++    .pf-v5-c-table.pf-m-compact .pf-c-table__toggle {
+         padding-left: 0;
+     }
+ }
+ 
+ @media screen and (max-width: 768px) {
+     // Badges should not stretch in mobile mode
+-    .pf-c-table [data-label] > .pf-c-badge {
++    .pf-v5-c-table [data-label] > .pf-c-badge {
+         justify-self: start;
+     }
+ }
+@@ -30,12 +30,12 @@
+ }
+ 
+ .container-block small {
+-    @include pf-line-clamp("1");
+-    color: var(--pf-global--Color--200);
++    @include pf-v5-line-clamp("1");
++    color: var(--pf-v5-global--Color--200);
+ }
+ 
+ .container-name {
+-    font-size: var(--pf-global--FontSize--lg);
++    font-size: var(--pf-v5-global--FontSize--lg);
+     font-weight: 400;
+ }
+ 
+@@ -43,7 +43,7 @@
+     max-width: 15em;
+ }
+ 
+-.pf-c-alert__description {
++.pf-v5-c-alert__description {
+     overflow-wrap: anywhere;
+ }
+ 
+@@ -54,26 +54,26 @@
+ }
+ 
+ .ct-badge-container-running, .ct-badge-pod-running {
+-  background-color: var(--pf-global--info-color--100);
++  background-color: var(--pf-v5-global--info-color--100);
+   color: white;
+ }
+ 
+ .ct-badge-container-healthy {
+-  background-color: var(--pf-global--success-color--100);
++  background-color: var(--pf-v5-global--success-color--100);
+   color: white;
+ }
+ 
+ .ct-badge-container-unhealthy {
+-  background-color: var(--pf-global--danger-color--100);
++  background-color: var(--pf-v5-global--danger-color--100);
+   color: white;
+ }
+ 
+ .green {
+-    color: var(--pf-global--success-color--100);
++    color: var(--pf-v5-global--success-color--100);
+ }
+ 
+ .red {
+-  color: var(--pf-global--danger-color--100);
++  color: var(--pf-v5-global--danger-color--100);
+ }
+ 
+ // Hide the header nav from the expandable rows - this should be better done with JS but the current cockpit-listing-panel implementation does not support this variant
+@@ -82,7 +82,7 @@
+ }
+ 
+ .ct-grey-text {
+-   color: var(--pf-global--Color--200);
++   color: var(--pf-v5-global--Color--200);
+ }
+ 
+ .content-action {
+@@ -92,19 +92,19 @@
+ 
+ // Remove doubled-up padding and borders on nested tables in mobile
+ .ct-listing-panel-body .ct-table tr {
+-    --pf-c-table-tr--responsive--PaddingTop: 0;
+-    --pf-c-table-tr--responsive--PaddingRight: 0;
+-    --pf-c-table-tr--responsive--PaddingBottom: 0;
+-    --pf-c-table-tr--responsive--PaddingLeft: 0;
++    --pf-v5-c-table-tr--responsive--PaddingTop: 0;
++    --pf-v5-c-table-tr--responsive--PaddingRight: 0;
++    --pf-v5-c-table-tr--responsive--PaddingBottom: 0;
++    --pf-v5-c-table-tr--responsive--PaddingLeft: 0;
+ }
+ 
+-@media (max-width: $pf-global--breakpoint--md - 1) {
++@media (max-width: $pf-v5-global--breakpoint--md - 1) {
+     .show-only-when-wide {
+         display: none;
+     }
+ }
+ 
+-@media (min-width: $pf-global--breakpoint--md) {
++@media (min-width: $pf-v5-global--breakpoint--md) {
+     .show-only-when-narrow {
+         display: none;
+     }
+@@ -112,6 +112,6 @@
+     // Add  borders to no pod containers list and images list
+     .container-pod.pf-m-plain tbody,
+     .containers-images tbody {
+-        border: var(--pf-c-card--m-flat--BorderWidth) solid var(--pf-c-card--m-flat--BorderColor);
++        border: var(--pf-v5-c-card--m-flat--BorderWidth) solid var(--pf-c-card--m-flat--BorderColor);
+     }
+ }
+Index: cockpit-podman-70/test/check-application
+===================================================================
+--- cockpit-podman-70.orig/test/check-application
++++ cockpit-podman-70/test/check-application
+@@ -1,16 +1,9 @@
+-#!/usr/bin/python3
++#!/usr/bin/python3 -cimport os, sys; os.execv(os.path.dirname(sys.argv[1]) + "/common/pywrap", sys.argv)
+ # Run this with --help to see available options for tracing and debugging
+ # See https://github.com/cockpit-project/cockpit/blob/main/test/common/testlib.py
+ # "class Browser" and "class MachineCase" for the available API.
+ 
+-import os
+ import json
+-import sys
+-
+-# import Cockpit's machinery for test VMs and its browser test API
+-TEST_DIR = os.path.dirname(__file__)
+-sys.path.append(os.path.join(TEST_DIR, "common"))
+-sys.path.append(os.path.join(os.path.dirname(TEST_DIR), "bots/machine"))
+ 
+ from machine_core import ssh_connection  # noqa
+ import testlib  # noqa
+@@ -45,8 +38,8 @@ def podman_version(cls):
+ 
+ 
+ def showImages(browser):
+-    if browser.attr("#containers-images button.pf-c-expandable-section__toggle", "aria-expanded") == 'false':
+-        browser.click("#containers-images button.pf-c-expandable-section__toggle")
++    if browser.attr("#containers-images button.pf-v5-c-expandable-section__toggle", "aria-expanded") == 'false':
++        browser.click("#containers-images button.pf-v5-c-expandable-section__toggle")
+ 
+ 
+ def checkImage(browser, name, owner):
+@@ -146,15 +139,15 @@ class TestApplication(testlib.MachineCas
+ 
+     def performContainerAction(self, container, cmd):
+         b = self.browser
+-        b.click(f"#containers-containers tbody tr:contains('{container}') .pf-c-dropdown__toggle")
+-        b.click(f"#containers-containers tbody tr:contains('{container}') .pf-c-dropdown__menu li:contains({cmd})")
++        b.click(f"#containers-containers tbody tr:contains('{container}') .pf-v5-c-dropdown__toggle")
++        b.click(f"#containers-containers tbody tr:contains('{container}') .pf-v5-c-dropdown__menu li:contains({cmd})")
+ 
+     def getContainerAction(self, container, cmd):
+-        return f"#containers-containers tbody tr:contains('{container}') .pf-c-dropdown__menu li:contains({cmd})"
++        return f"#containers-containers tbody tr:contains('{container}') .pf-v5-c-dropdown__menu li:contains({cmd})"
+ 
+     def toggleExpandedContainer(self, container):
+         b = self.browser
+-        b.click(f"#containers-containers tbody tr:contains('{container}') .pf-c-table__toggle button")
++        b.click(f"#containers-containers tbody tr:contains('{container}') .pf-v5-c-table__toggle button")
+ 
+     def getContainerAttr(self, container, key, selector=""):
+         b = self.browser
+@@ -185,14 +178,14 @@ class TestApplication(testlib.MachineCas
+             try:
+                 b.wait_visible("#containers-containers")
+                 b.wait_not_in_text("#containers-containers", "Loading")
+-                b.wait_not_present("#overview div.pf-c-alert")
++                b.wait_not_present("#overview div.pf-v5-c-alert")
+             except testlib.Error:
+                 if system:
+-                    b.click("#overview div.pf-c-alert .pf-c-alert__action > button:contains(Start)")
+-                    b.wait_not_present("#overview div.pf-c-alert")
++                    b.click("#overview div.pf-v5-c-alert .pf-v5-c-alert__action > button:contains(Start)")
++                    b.wait_not_present("#overview div.pf-v5-c-alert")
+                 else:
+-                    b.click("#app .pf-c-empty-state button.pf-m-primary")
+-                    b.wait_not_present("#app .pf-c-empty-state button")
++                    b.click("#app .pf-v5-c-empty-state button.pf-m-primary")
++                    b.wait_not_present("#app .pf-v5-c-empty-state button")
+ 
+     def waitPodRow(self, podName, present=False):
+         if present:
+@@ -207,9 +200,9 @@ class TestApplication(testlib.MachineCas
+                                    cmd=container["command"], state=container["state"], pod=podName)
+         else:
+             if self.browser.val("#containers-containers-filter") == "all":
+-                self.browser.wait_in_text("#table-" + podName + " .pf-c-empty-state", "No containers in this pod")
++                self.browser.wait_in_text("#table-" + podName + " .pf-v5-c-empty-state", "No containers in this pod")
+             else:
+-                self.browser.wait_in_text("#table-" + podName + " .pf-c-empty-state", "No running containers in this pod")
++                self.browser.wait_in_text("#table-" + podName + " .pf-v5-c-empty-state", "No running containers in this pod")
+ 
+     def waitContainerRow(self, container, present=True):
+         b = self.browser
+@@ -295,10 +288,10 @@ class TestApplication(testlib.MachineCas
+         b.wait(lambda: old_pid != m.execute("podman inspect --format '{{.State.Pid}}' test-pod-1-system".strip()))
+ 
+         self.performPodAction("pod-1", "system", "Delete")
+-        b.click(".pf-c-modal-box button:contains(Delete)")
+-        b.wait_in_text(".pf-c-modal-box__body", "running or paused containers cannot be removed without force")
+-        b.wait_in_text(".pf-c-modal-box__body .pf-c-list", "test-pod-1-system")
+-        b.click(".pf-c-modal-box button:contains('Force delete')")
++        b.click(".pf-v5-c-modal-box button:contains(Delete)")
++        b.wait_in_text(".pf-v5-c-modal-box__body", "running or paused containers cannot be removed without force")
++        b.wait_in_text(".pf-v5-c-modal-box__body .pf-v5-c-list", "test-pod-1-system")
++        b.click(".pf-v5-c-modal-box button:contains('Force delete')")
+         self.waitPodRow("pod-1", False)
+ 
+         b.set_input_text('#containers-filter', '')
+@@ -309,8 +302,8 @@ class TestApplication(testlib.MachineCas
+         self.machine.execute("podman rm --force -t0 test-pod-2-system")
+         self.waitPodContainer("pod-2", [])
+         self.performPodAction("pod-2", "system", "Delete")
+-        b.wait_not_in_text(".pf-c-modal-box__body", "test-pod-2-system")
+-        b.click(".pf-c-modal-box button:contains('Delete')")
++        b.wait_not_in_text(".pf-v5-c-modal-box__body", "test-pod-2-system")
++        b.click(".pf-v5-c-modal-box button:contains('Delete')")
+         self.waitPodRow("pod-2", False)
+ 
+         # Volumes / mounts
+@@ -321,11 +314,11 @@ class TestApplication(testlib.MachineCas
+         # Verify 1 port mapping
+         b.wait_in_text("#table-pod-3-title .pod-details-ports-btn", "1")
+         b.click("#table-pod-3-title .pod-details-ports-btn")
+-        b.wait_in_text(".pf-c-popover__content", "0.0.0.0:9999 → 9999/tcp")
++        b.wait_in_text(".pf-v5-c-popover__content", "0.0.0.0:9999 → 9999/tcp")
+         # Verify 1 mount
+         b.wait_in_text("#table-pod-3-title .pod-details-volumes-btn", "1")
+         b.click("#table-pod-3-title .pod-details-volumes-btn")
+-        b.wait_in_text(".pf-c-popover__content", "/tmp ↔ /app")
++        b.wait_in_text(".pf-v5-c-popover__content", "/tmp ↔ /app")
+ 
+     def testBasicSystem(self):
+         self._testBasic(True)
+@@ -361,19 +354,19 @@ class TestApplication(testlib.MachineCas
+         b.click("#image-actions-dropdown")
+         b.click("button:contains(Download new image)")
+ 
+-        b.wait_visible('div.pf-c-modal-box header:contains("Search for an image")')
+-        b.wait_visible("div.pf-c-modal-box footer button:contains(Download):disabled")
++        b.wait_visible('div.pf-v5-c-modal-box header:contains("Search for an image")')
++        b.wait_visible("div.pf-v5-c-modal-box footer button:contains(Download):disabled")
+         b.wait_not_present("#as-user")
+-        b.click(".pf-c-modal-box button:contains('Cancel')")
+-        b.wait_not_present('div.pf-c-modal-box header:contains("Search for an image")')
++        b.click(".pf-v5-c-modal-box button:contains('Cancel')")
++        b.wait_not_present('div.pf-v5-c-modal-box header:contains("Search for an image")')
+ 
+         # Gain privileges
+         b.become_superuser(passwordless=self.machine.image == "rhel4edge")
+ 
+         # We are notified that we can also start the system one
+-        b.wait_in_text("#overview div.pf-c-alert .pf-c-alert__title", "System Podman service is also available")
+-        b.click("#overview div.pf-c-alert .pf-c-alert__action > button:contains(Start)")
+-        b.wait_not_present("#overview div.pf-c-alert .pf-c-alert__title")
++        b.wait_in_text("#overview div.pf-v5-c-alert .pf-v5-c-alert__title", "System Podman service is also available")
++        b.click("#overview div.pf-v5-c-alert .pf-v5-c-alert__action > button:contains(Start)")
++        b.wait_not_present("#overview div.pf-v5-c-alert .pf-v5-c-alert__title")
+ 
+         checkImage(b, IMG_REGISTRY, "system")
+         checkImage(b, IMG_REGISTRY, "admin")
+@@ -388,11 +381,11 @@ class TestApplication(testlib.MachineCas
+         # Also user selection in image download should be visible
+         b.click("#image-actions-dropdown")
+         b.click("button:contains(Download new image)")
+-        b.wait_visible('div.pf-c-modal-box header:contains("Search for an image")')
+-        b.wait_visible("div.pf-c-modal-box footer button:contains(Download):disabled")
++        b.wait_visible('div.pf-v5-c-modal-box header:contains("Search for an image")')
++        b.wait_visible("div.pf-v5-c-modal-box footer button:contains(Download):disabled")
+         b.wait_visible("#as-user")
+-        b.click(".pf-c-modal-box button:contains('Cancel')")
+-        b.wait_not_present('div.pf-c-modal-box header:contains("Search for an image")')
++        b.click(".pf-v5-c-modal-box button:contains('Cancel')")
++        b.wait_not_present('div.pf-v5-c-modal-box header:contains("Search for an image")')
+ 
+         # Check that when we filter only system stuff an then drop privileges that we show user stuff
+         b.set_val("#containers-containers-owner", "system")
+@@ -411,27 +404,27 @@ class TestApplication(testlib.MachineCas
+         # Check showing of entrypoint
+         b.click("#containers-containers-create-container-btn")
+         b.click("#create-image-image-select-typeahead")
+-        b.click(f'button.pf-c-select__menu-item:contains("{IMG_REGISTRY}")')
++        b.click(f'button.pf-v5-c-select__menu-item:contains("{IMG_REGISTRY}")')
+         b.wait_val("#run-image-dialog-command", '/etc/docker/registry/config.yml')
+         b.wait_text("#run-image-dialog-entrypoint", '/entrypoint.sh')
+ 
+         # Deleting image will cleanup both command and entrypoint
+-        b.click("button.pf-c-select__toggle-clear")
++        b.click("button.pf-v5-c-select__toggle-clear")
+         b.wait_val("#run-image-dialog-command", '')
+         b.wait_not_present("#run-image-dialog-entrypoint")
+ 
+         # Edited command will not be cleared
+         b.click("#create-image-image-select-typeahead")
+-        b.click(f'button.pf-c-select__menu-item:contains("{IMG_REGISTRY}")')
++        b.click(f'button.pf-v5-c-select__menu-item:contains("{IMG_REGISTRY}")')
+         b.wait_val("#run-image-dialog-command", '/etc/docker/registry/config.yml')
+         b.set_input_text("#run-image-dialog-command", '/etc/docker/registry/config.yaml')
+-        b.click("button.pf-c-select__toggle-clear")
++        b.click("button.pf-v5-c-select__toggle-clear")
+         b.wait_not_present("#run-image-dialog-entrypoint")
+         b.wait_val("#run-image-dialog-command", '/etc/docker/registry/config.yaml')
+ 
+         # Setting a new image will still keep the old command and not prefill it
+         b.click("#create-image-image-select-typeahead")
+-        b.click(f'button.pf-c-select__menu-item:contains({IMG_ALPINE})')
++        b.click(f'button.pf-v5-c-select__menu-item:contains({IMG_ALPINE})')
+         b.wait_visible("#run-image-dialog-pull-latest-image")
+         b.wait_val("#run-image-dialog-command", '/etc/docker/registry/config.yaml')
+ 
+@@ -448,7 +441,7 @@ class TestApplication(testlib.MachineCas
+         b.wait_visible("#app")
+ 
+         # `User Service is also available` banner should not be present
+-        b.wait_not_present("#overview div.pf-c-alert")
++        b.wait_not_present("#overview div.pf-v5-c-alert")
+         # There should not be any duplicate images listed
+         # The "busybox" and "alpine" images have been deleted by _testBasic.
+         showImages(b)
+@@ -460,7 +453,7 @@ class TestApplication(testlib.MachineCas
+         # https://github.com/cockpit-project/cockpit-podman/pull/891
+         b.click("#containers-containers-create-container-btn")
+         b.set_input_text("#create-image-image-select-typeahead", "registry")
+-        b.wait_visible('button.pf-c-select__menu-item:contains("registry")')
++        b.wait_visible('button.pf-v5-c-select__menu-item:contains("registry")')
+ 
+     def testBasicUser(self):
+         self._testBasic(False)
+@@ -518,23 +511,23 @@ class TestApplication(testlib.MachineCas
+         # show image listing toggle
+         hello_sel = f"#containers-images tbody tr[data-row-id={images[IMG_HELLO_LATEST]}{auth}]".lower()
+         b.wait_visible(hello_sel)
+-        b.click(hello_sel + " td.pf-c-table__toggle button")
+-        b.click(hello_sel + " .pf-c-dropdown__toggle")
++        b.click(hello_sel + " td.pf-v5-c-table__toggle button")
++        b.click(hello_sel + " .pf-v5-c-dropdown__toggle")
+         b.wait_visible(hello_sel + " button.btn-delete")
+         b.wait_in_text("#containers-images tbody.pf-m-expanded tr .image-details:first-child", "Command/run.sh")
+         # Show history
+-        b.click("#containers-images tbody.pf-m-expanded .pf-c-tabs__list li:nth-child(2) button")
+-        b.wait_in_text("#containers-images .pf-c-table__expandable-row.pf-m-expanded td[data-label=\"ID\"]:first",
++        b.click("#containers-images tbody.pf-m-expanded .pf-v5-c-tabs__list li:nth-child(2) button")
++        b.wait_in_text("#containers-images .pf-v5-c-table__expandable-row.pf-m-expanded td[data-label=\"ID\"]:first",
+                        images[IMG_HELLO_LATEST][:12])
+-        b.wait_in_text("#containers-images .pf-c-table__expandable-row.pf-m-expanded td[data-label=\"Created\"]:first",
++        b.wait_in_text("#containers-images .pf-v5-c-table__expandable-row.pf-m-expanded td[data-label=\"Created\"]:first",
+                        "today at")
+         # topmost (last) layer
+-        b.wait_in_text("#containers-images .pf-c-table__expandable-row.pf-m-expanded td[data-label=\"Created by\"]:first",
++        b.wait_in_text("#containers-images .pf-v5-c-table__expandable-row.pf-m-expanded td[data-label=\"Created by\"]:first",
+                        "COPY")
+-        b.wait_in_text("#containers-images .pf-c-table__expandable-row.pf-m-expanded td[data-label=\"Created by\"]:first",
++        b.wait_in_text("#containers-images .pf-v5-c-table__expandable-row.pf-m-expanded td[data-label=\"Created by\"]:first",
+                        "in /test2.txt")
+         # initial (first) layer
+-        b.wait_in_text("#containers-images .pf-c-table__expandable-row.pf-m-expanded td[data-label=\"Created by\"]:last",
++        b.wait_in_text("#containers-images .pf-v5-c-table__expandable-row.pf-m-expanded td[data-label=\"Created by\"]:last",
+                        "COPY")
+ 
+         self.execute(auth, f"podman rmi {IMG_HELLO_LATEST}")
+@@ -682,31 +675,31 @@ class TestApplication(testlib.MachineCas
+         self.execute(auth, f"podman tag {IMG_BUSYBOX} {IMG_BUSYBOX}:4")
+ 
+         busybox_sel = f"#containers-images tbody tr[data-row-id={images[IMG_BUSYBOX_LATEST]}{auth}]".lower()
+-        b.click(busybox_sel + " td.pf-c-table__toggle button")
++        b.click(busybox_sel + " td.pf-v5-c-table__toggle button")
+ 
+         b.wait_in_text(busybox_sel + " + tr", f"{IMG_BUSYBOX}:1")
+         b.wait_in_text(busybox_sel + " + tr", f"{IMG_BUSYBOX}:2")
+         b.wait_in_text(busybox_sel + " + tr", f"{IMG_BUSYBOX}:3")
+         b.wait_in_text(busybox_sel + " + tr", f"{IMG_BUSYBOX}:4")
+ 
+-        b.click(busybox_sel + " .pf-c-dropdown__toggle")
++        b.click(busybox_sel + " .pf-v5-c-dropdown__toggle")
+         b.click(busybox_sel + " button.btn-delete")
+-        self.assertTrue(b.get_checked(f".pf-c-check__input[aria-label='{IMG_BUSYBOX_LATEST}']"))
+-        b.set_checked(f".pf-c-check__input[aria-label='{IMG_BUSYBOX}:1']", True)
+-        b.set_checked(f".pf-c-check__input[aria-label='{IMG_BUSYBOX}:3']", True)
+-        b.set_checked(f".pf-c-check__input[aria-label='{IMG_BUSYBOX_LATEST}']", False)
++        self.assertTrue(b.get_checked(f".pf-v5-c-check__input[aria-label='{IMG_BUSYBOX_LATEST}']"))
++        b.set_checked(f".pf-v5-c-check__input[aria-label='{IMG_BUSYBOX}:1']", True)
++        b.set_checked(f".pf-v5-c-check__input[aria-label='{IMG_BUSYBOX}:3']", True)
++        b.set_checked(f".pf-v5-c-check__input[aria-label='{IMG_BUSYBOX_LATEST}']", False)
+         self.confirm_modal("Delete")
+         b.wait_in_text(busybox_sel + " + tr", f"{IMG_BUSYBOX_LATEST}")
+         b.wait_in_text(busybox_sel + " + tr", f"{IMG_BUSYBOX}:2")
+         b.wait_not_in_text(busybox_sel + " + tr", f"{IMG_BUSYBOX}:1")
+         b.wait_not_in_text(busybox_sel + " + tr", f"{IMG_BUSYBOX}:3")
+ 
+-        b.click(busybox_sel + " .pf-c-dropdown__toggle")
++        b.click(busybox_sel + " .pf-v5-c-dropdown__toggle")
+         b.click(busybox_sel + " button.btn-delete")
+         b.click("button:contains('select all')")
+-        self.assertTrue(b.get_checked(f".pf-c-check__input[aria-label='{IMG_BUSYBOX_LATEST}']"))
+-        self.assertTrue(b.get_checked(f".pf-c-check__input[aria-label='{IMG_BUSYBOX}:2']"))
+-        self.assertTrue(b.get_checked(f".pf-c-check__input[aria-label='{IMG_BUSYBOX}:4']"))
++        self.assertTrue(b.get_checked(f".pf-v5-c-check__input[aria-label='{IMG_BUSYBOX_LATEST}']"))
++        self.assertTrue(b.get_checked(f".pf-v5-c-check__input[aria-label='{IMG_BUSYBOX}:2']"))
++        self.assertTrue(b.get_checked(f".pf-v5-c-check__input[aria-label='{IMG_BUSYBOX}:4']"))
+         self.confirm_modal("Delete")
+         self.confirm_modal("Force delete")
+         b.wait_not_in_text("#containers-images", busybox_sel)
+@@ -730,8 +723,8 @@ class TestApplication(testlib.MachineCas
+             b.assert_pixels('#app', "overview", ignore=[".ignore-pixels"], skip_layouts=["rtl", "mobile"])
+         alpine_sel = f"#containers-images tbody tr[data-row-id={images[IMG_ALPINE_LATEST]}{auth}]".lower()
+         b.wait_visible(alpine_sel)
+-        b.click(alpine_sel + " td.pf-c-table__toggle button")
+-        b.click(alpine_sel + " .pf-c-dropdown__toggle")
++        b.click(alpine_sel + " td.pf-v5-c-table__toggle button")
++        b.click(alpine_sel + " .pf-v5-c-dropdown__toggle")
+         b.click(alpine_sel + " button.btn-delete")
+         self.confirm_modal("Delete")
+         self.confirm_modal("Force delete")
+@@ -768,10 +761,10 @@ class TestApplication(testlib.MachineCas
+ 
+         # Intermediate images are not shown in create container dialog
+         b.click("#containers-containers-create-container-btn")
+-        b.wait_visible('div.pf-c-modal-box header:contains("Create container")')
++        b.wait_visible('div.pf-v5-c-modal-box header:contains("Create container")')
+         b.click("#create-image-image-select-typeahead")
+-        b.wait_visible(f".pf-c-select__menu-item:contains('{IMG_REGISTRY}')")
+-        b.wait_not_present(".pf-c-select__menu-item:contains('none')")
++        b.wait_visible(f".pf-v5-c-select__menu-item:contains('{IMG_REGISTRY}')")
++        b.wait_not_present(".pf-v5-c-select__menu-item:contains('none')")
+ 
+     def testCommitUser(self):
+         self._testCommit(False)
+@@ -792,9 +785,9 @@ class TestApplication(testlib.MachineCas
+         self.toggleExpandedContainer("test-sh0")
+ 
+         self.performContainerAction("test-sh0", "Commit")
+-        b.wait_visible(".pf-c-modal-box")
++        b.wait_visible(".pf-v5-c-modal-box")
+ 
+-        b.wait_in_text(".pf-c-modal-box__description", "state of the test-sh0 container")
++        b.wait_in_text(".pf-v5-c-modal-box__description", "state of the test-sh0 container")
+ 
+         # Empty name yields warning
+         b.click("button:contains(Commit)")
+@@ -820,15 +813,15 @@ class TestApplication(testlib.MachineCas
+         # Check failing commit
+         b.set_input_text("#commit-dialog-image-name", "TEST")
+         b.click("button:contains(Commit)")
+-        b.wait_in_text(".pf-c-alert", "Failed to commit container test-sh0")
+-        b.wait_in_text(".pf-c-alert", "repository name must be lowercase")
++        b.wait_in_text(".pf-v5-c-alert", "Failed to commit container test-sh0")
++        b.wait_in_text(".pf-v5-c-alert", "repository name must be lowercase")
+ 
+         # Test cancel
+         self.confirm_modal("Cancel")
+ 
+         # Force commit empty container
+         self.performContainerAction("test-sh0", "Commit")
+-        b.wait_visible(".pf-c-modal-box")
++        b.wait_visible(".pf-v5-c-modal-box")
+         # We prefill command
+         b.wait_val("#commit-dialog-command", 'sh -c "ls -a"')
+         # Test docker format
+@@ -852,14 +845,14 @@ class TestApplication(testlib.MachineCas
+ 
+         # Commit with name, tag, author and edited command
+         self.performContainerAction("test-sh0", "Commit")
+-        b.wait_visible(".pf-c-modal-box")
++        b.wait_visible(".pf-v5-c-modal-box")
+         b.set_input_text("#commit-dialog-image-name", "newname")
+         b.set_input_text("#commit-dialog-image-tag", "24")
+         b.set_input_text("#commit-dialog-author", "MM")
+         b.set_input_text("#commit-dialog-command", "sh -c 'ps'")
+ 
+         if auth:
+-            b.assert_pixels(".pf-c-modal-box", "commit", skip_layouts=["rtl"])
++            b.assert_pixels(".pf-v5-c-modal-box", "commit", skip_layouts=["rtl"])
+ 
+         self.confirm_modal("Commit")
+ 
+@@ -871,7 +864,7 @@ class TestApplication(testlib.MachineCas
+         # Test commit of running container
+         self.execute(auth, f"podman run -d --name test-sh2 --stop-timeout 0 {IMG_BUSYBOX} sleep 1000")
+         self.performContainerAction("test-sh2", "Commit")
+-        b.wait_visible(".pf-c-modal-box")
++        b.wait_visible(".pf-v5-c-modal-box")
+         b.set_input_text("#commit-dialog-image-name", "newname")
+         self.confirm_modal("Commit")
+         waitImageCount(self.user_images_count + 3)
+@@ -881,7 +874,7 @@ class TestApplication(testlib.MachineCas
+         # This only works on rootless with cgroupsv2
+         if auth or self.has_cgroupsV2:
+             self.performContainerAction("test-sh2", "Commit")
+-            b.wait_visible(".pf-c-modal-box")
++            b.wait_visible(".pf-v5-c-modal-box")
+             b.set_input_text("#commit-dialog-image-name", "newname")
+             b.set_checked("#commit-dialog-pause", True)
+             b.click("button:contains(Commit)")
+@@ -916,8 +909,8 @@ class TestApplication(testlib.MachineCas
+                 # Open get new image modal
+                 b.click("#image-actions-dropdown")
+                 b.click("button:contains(Download new image)")
+-                b.wait_visible('div.pf-c-modal-box header:contains("Search for an image")')
+-                b.wait_visible("div.pf-c-modal-box footer button:contains(Download):disabled")
++                b.wait_visible('div.pf-v5-c-modal-box header:contains("Search for an image")')
++                b.wait_visible("div.pf-v5-c-modal-box footer button:contains(Download):disabled")
+ 
+                 return self
+ 
+@@ -934,32 +927,32 @@ class TestApplication(testlib.MachineCas
+ 
+             def selectImageAndDownload(self):
+                 # Select and download the self.imageName image
+-                b.wait_visible(f".pf-c-data-list .image-name:contains({self.imageName})")
+-                b.click(f".pf-c-data-list .image-name:contains({self.imageName})")
+-                b.wait_visible("div.pf-c-modal-box footer button:contains(Download):not([disabled])")
+-                b.click("div.pf-c-modal-box footer button:contains(Download)")
++                b.wait_visible(f".pf-v5-c-data-list .image-name:contains({self.imageName})")
++                b.click(f".pf-v5-c-data-list .image-name:contains({self.imageName})")
++                b.wait_visible("div.pf-v5-c-modal-box footer button:contains(Download):not([disabled])")
++                b.click("div.pf-v5-c-modal-box footer button:contains(Download)")
+ 
+                 return self
+ 
+             def expectDownloadErrorForNonExistingTag(self):
+-                b.wait_not_present('div.pf-c-modal-box')
+-                b.wait_visible(f'h4.pf-c-alert__title:contains("Danger alert:Failed to download image localhost:5000/{self.imageName}:{self.imageTag}")')
++                b.wait_not_present('div.pf-v5-c-modal-box')
++                b.wait_visible(f'h4.pf-v5-c-alert__title:contains("Danger alert:Failed to download image localhost:5000/{self.imageName}:{self.imageTag}")')
+ 
+                 return self
+ 
+             def expectSearchErrorForNotExistingImage(self):
+-                b.wait_visible(f".pf-c-modal-box__body:contains(No results for {self.imageName})")
++                b.wait_visible(f".pf-v5-c-modal-box__body:contains(No results for {self.imageName})")
+ 
+                 return self
+ 
+             def expectDownloadSuccess(self):
+                 # Confirm that the modal dialog is not open anymore
+-                b.wait_not_present('div.pf-c-modal-box')
++                b.wait_not_present('div.pf-v5-c-modal-box')
+                 # Confirm that the image got downloaded
+                 checkImage(b, f"localhost:5000/{self.imageName}:{self.imageTag or 'latest'}", "system" if self.user == "system" else "admin")
+ 
+                 # Confirm that no error has happened
+-                b.wait_not_present('h4.pf-c-alert__title:contains("Failed to download image")')
++                b.wait_not_present('h4.pf-v5-c-alert__title:contains("Failed to download image")')
+ 
+                 # Find out this image ID
+                 self.imageSha = execute(self.user == "system", f"podman inspect --format '{{{{.Id}}}}' localhost:5000/{self.imageName}:{self.imageTag or 'latest'}").strip()
+@@ -974,22 +967,22 @@ class TestApplication(testlib.MachineCas
+                 # show image listing toggle
+                 sel = f"#containers-images tbody tr[data-row-id={self.imageSha}{'true' if self.user == 'system' else 'false'}]"
+                 b.wait_visible(sel)
+-                b.click(sel + " td.pf-c-table__toggle button")
++                b.click(sel + " td.pf-v5-c-table__toggle button")
+ 
+                 # Click the delete icon on the image row
+-                b.click(sel + " .pf-c-dropdown__toggle")
++                b.click(sel + " .pf-v5-c-dropdown__toggle")
+                 b.click(sel + ' button.btn-delete')
+ 
+-                b.set_checked(f".pf-c-check__input[aria-label='localhost:5000/{self.imageName}{imageTagSuffix}']", True)
++                b.set_checked(f".pf-v5-c-check__input[aria-label='localhost:5000/{self.imageName}{imageTagSuffix}']", True)
+                 if another:
+-                    b.set_checked(f".pf-c-check__input[aria-label='{another}']", True)
++                    b.set_checked(f".pf-v5-c-check__input[aria-label='{another}']", True)
+ 
+                 # Confirm deletion in the delete dialog
+-                b.click(".pf-c-modal-box #btn-img-delete")
++                b.click(".pf-v5-c-modal-box #btn-img-delete")
+ 
+                 if force:
+                     # Confirm force delete
+-                    b.click(".pf-c-modal-box button:contains('Force delete')")
++                    b.click(".pf-v5-c-modal-box button:contains('Force delete')")
+ 
+                 b.wait_not_present(sel)
+ 
+@@ -1002,19 +995,19 @@ class TestApplication(testlib.MachineCas
+         # Test registries
+         b.click("#image-actions-dropdown")
+         b.click("button:contains(Download new image)")
+-        b.wait_visible('div.pf-c-modal-box header:contains("Search for an image")')
++        b.wait_visible('div.pf-v5-c-modal-box header:contains("Search for an image")')
+         # HACK: Sometimes the value is not shown fully. FIXME
+         b.set_input_text("#search-image-dialog-name", "my-busybox", value_check=False)
+ 
+-        b.wait_visible(".pf-c-data-list .image-name:contains('localhost:5000/my-busybox')")
+-        b.wait_visible(".pf-c-data-list .image-name:contains('localhost:6000/my-busybox')")
++        b.wait_visible(".pf-v5-c-data-list .image-name:contains('localhost:5000/my-busybox')")
++        b.wait_visible(".pf-v5-c-data-list .image-name:contains('localhost:6000/my-busybox')")
+         b.assert_pixels(".podman-search", "download", skip_layouts=["rtl"])
+ 
+         b.set_val('#registry-select', "localhost:6000")
+-        b.wait_not_present(".pf-c-data-list .image-name:contains('localhost:5000/my-busybox')")
+-        b.wait_visible(".pf-c-data-list .image-name:contains('localhost:6000/my-busybox')")
+-        b.click(".pf-c-modal-box button:contains('Cancel')")
+-        b.wait_not_present('div.pf-c-modal-box')
++        b.wait_not_present(".pf-v5-c-data-list .image-name:contains('localhost:5000/my-busybox')")
++        b.wait_visible(".pf-v5-c-data-list .image-name:contains('localhost:6000/my-busybox')")
++        b.click(".pf-v5-c-modal-box button:contains('Cancel')")
++        b.wait_not_present('div.pf-v5-c-modal-box')
+ 
+         dialog0 = DownloadImageDialog('my-busybox', user="system")
+         dialog0.openDialog() \
+@@ -1070,7 +1063,7 @@ class TestApplication(testlib.MachineCas
+ 
+         b.wait_visible("#containers-containers")
+         self.waitContainerRow("swamped-crate")
+-        b.click("#containers-containers tbody tr:contains('swamped-crate') .pf-c-dropdown__toggle")
++        b.click("#containers-containers tbody tr:contains('swamped-crate') .pf-v5-c-dropdown__toggle")
+ 
+         if not auth:
+             # Checkpoint/restore is not supported on user containers yet - the related buttons should not be shown
+@@ -1080,7 +1073,7 @@ class TestApplication(testlib.MachineCas
+         # Health check is not set up
+         b.wait_not_present(self.getContainerAction('swamped-crate', 'Run health check'))
+ 
+-        b.click("#containers-containers tbody tr:contains('swamped-crate') .pf-c-dropdown__toggle")
++        b.click("#containers-containers tbody tr:contains('swamped-crate') .pf-v5-c-dropdown__toggle")
+ 
+         # Start the container
+         self.performContainerAction(IMG_BUSYBOX, "Start")
+@@ -1130,9 +1123,9 @@ class TestApplication(testlib.MachineCas
+         self.waitContainerRow(IMG_BUSYBOX)
+         if not auth:
+             # Check that the checkpoint option is not present for rootless
+-            b.click(f"#containers-containers tbody tr:contains('{IMG_BUSYBOX}') .pf-c-dropdown__toggle")
++            b.click(f"#containers-containers tbody tr:contains('{IMG_BUSYBOX}') .pf-v5-c-dropdown__toggle")
+             b.wait_not_present(self.getContainerAction(IMG_BUSYBOX, 'Checkpoint'))
+-            b.click(f"#containers-containers tbody tr:contains('{IMG_BUSYBOX}') .pf-c-dropdown__toggle")
++            b.click(f"#containers-containers tbody tr:contains('{IMG_BUSYBOX}') .pf-v5-c-dropdown__toggle")
+         # Stop the container
+         self.performContainerAction(IMG_BUSYBOX, "Force stop")
+ 
+@@ -1148,7 +1141,7 @@ class TestApplication(testlib.MachineCas
+ 
+         # Check that console reconnects when container starts
+         b.click(".pf-m-expanded button:contains('Console')")
+-        b.wait_text(".pf-m-expanded .pf-c-empty-state", "Container is not running")
++        b.wait_text(".pf-m-expanded .pf-v5-c-empty-state", "Container is not running")
+         self.performContainerAction("swamped-crate", "Start")
+         b.wait_in_text(".pf-m-expanded .xterm-accessibility-tree", "/ # ")
+         b.focus(".pf-m-expanded .xterm-helper-textarea")
+@@ -1191,12 +1184,12 @@ class TestApplication(testlib.MachineCas
+ 
+             # Checkpoint the container
+             self.performContainerAction(IMG_BUSYBOX, "Checkpoint")
+-            b.set_checked('.pf-c-modal-box input#checkpoint-dialog-keep', True)
+-            b.set_checked('.pf-c-modal-box input#checkpoint-dialog-tcpEstablished', True)
+-            b.click('.pf-c-modal-box button:contains(Checkpoint)')
++            b.set_checked('.pf-v5-c-modal-box input#checkpoint-dialog-keep', True)
++            b.set_checked('.pf-v5-c-modal-box input#checkpoint-dialog-tcpEstablished', True)
++            b.click('.pf-v5-c-modal-box button:contains(Checkpoint)')
+             b.wait_not_present('.modal_dialog')
+ 
+-            b.wait(lambda: "checkpoint/restore requires at least criu" in b.text(".pf-c-alert.pf-m-danger > .pf-c-alert__description").lower())
++            b.wait(lambda: "checkpoint/restore requires at least criu" in b.text(".pf-v5-c-alert.pf-m-danger > .pf-v5-c-alert__description").lower())
+             return
+ 
+         # Run a container
+@@ -1205,9 +1198,9 @@ class TestApplication(testlib.MachineCas
+         b.wait(lambda: self.execute(True, "podman ps --all | grep -e swamped-crate -e Exited"))
+ 
+         # Check that the restore option is not present (i.e. start is a regular button)
+-        b.click(f"#containers-containers tbody tr:contains('{IMG_BUSYBOX}') .pf-c-dropdown__toggle")
++        b.click(f"#containers-containers tbody tr:contains('{IMG_BUSYBOX}') .pf-v5-c-dropdown__toggle")
+         b.wait_not_present(self.getContainerAction(IMG_BUSYBOX, 'Restore'))
+-        b.click(f"#containers-containers tbody tr:contains('{IMG_BUSYBOX}') .pf-c-dropdown__toggle")
++        b.click(f"#containers-containers tbody tr:contains('{IMG_BUSYBOX}') .pf-v5-c-dropdown__toggle")
+ 
+         # Start the container
+         self.performContainerAction("swamped-crate", "Start")
+@@ -1215,29 +1208,29 @@ class TestApplication(testlib.MachineCas
+ 
+         # Checkpoint the container
+         self.performContainerAction("swamped-crate", "Checkpoint")
+-        b.set_checked('.pf-c-modal-box input#checkpoint-dialog-keep', True)
+-        b.set_checked('.pf-c-modal-box input#checkpoint-dialog-tcpEstablished', True)
+-        b.click('.pf-c-modal-box button:contains(Checkpoint)')
++        b.set_checked('.pf-v5-c-modal-box input#checkpoint-dialog-keep', True)
++        b.set_checked('.pf-v5-c-modal-box input#checkpoint-dialog-tcpEstablished', True)
++        b.click('.pf-v5-c-modal-box button:contains(Checkpoint)')
+ 
+         with b.wait_timeout(300):
+-            b.wait_not_present(".pf-c-modal-box")
++            b.wait_not_present(".pf-v5-c-modal-box")
+ 
+         if self.has_criu:
+             b.wait(lambda: self.getContainerAttr("swamped-crate", "State") in NOT_RUNNING)
+         else:
+             # expect proper error message
+-            b.wait_in_text(".pf-c-alert.pf-m-danger", "Failed to checkpoint container swamped-crate")
+-            b.wait(lambda: "checkpoint/restore requires at least criu" in b.text(".pf-c-alert.pf-m-danger > .pf-c-alert__description").lower())
++            b.wait_in_text(".pf-v5-c-alert.pf-m-danger", "Failed to checkpoint container swamped-crate")
++            b.wait(lambda: "checkpoint/restore requires at least criu" in b.text(".pf-v5-c-alert.pf-m-danger > .pf-v5-c-alert__description").lower())
+             return
+ 
+         # Restore the container
+         self.waitContainerRow("swamped-crate")
+         self.performContainerAction("swamped-crate", "Restore")
+-        b.set_checked('.pf-c-modal-box input#restore-dialog-keep', True)
+-        b.set_checked('.pf-c-modal-box input#restore-dialog-tcpEstablished', True)
+-        b.set_checked('.pf-c-modal-box input#restore-dialog-ignoreStaticIP', True)
+-        b.set_checked('.pf-c-modal-box input#restore-dialog-ignoreStaticMAC', True)
+-        b.click('.pf-c-modal-box button:contains(Restore)')
++        b.set_checked('.pf-v5-c-modal-box input#restore-dialog-keep', True)
++        b.set_checked('.pf-v5-c-modal-box input#restore-dialog-tcpEstablished', True)
++        b.set_checked('.pf-v5-c-modal-box input#restore-dialog-ignoreStaticIP', True)
++        b.set_checked('.pf-v5-c-modal-box input#restore-dialog-ignoreStaticMAC', True)
++        b.click('.pf-v5-c-modal-box button:contains(Restore)')
+         b.wait(lambda: self.getContainerAttr("swamped-crate", "State") in 'Running')
+ 
+         # A new MAC address should have been generated
+@@ -1251,8 +1244,8 @@ class TestApplication(testlib.MachineCas
+         # Checkpoint the container without stopping
+         self.waitContainerRow("swamped-crate")
+         self.performContainerAction("swamped-crate", "Checkpoint")
+-        b.set_checked('.pf-c-modal-box input#checkpoint-dialog-leaveRunning', True)
+-        b.click('.pf-c-modal-box button:contains(Checkpoint)')
++        b.set_checked('.pf-v5-c-modal-box input#checkpoint-dialog-leaveRunning', True)
++        b.click('.pf-v5-c-modal-box button:contains(Checkpoint)')
+         b.wait_not_present('.modal_dialog')
+ 
+         # Stop the container
+@@ -1261,7 +1254,7 @@ class TestApplication(testlib.MachineCas
+ 
+         # Restore the container
+         self.performContainerAction("swamped-crate", "Restore")
+-        b.click('.pf-c-modal-box button:contains(Restore)')
++        b.click('.pf-v5-c-modal-box button:contains(Restore)')
+         b.wait(lambda: self.getContainerAttr("swamped-crate", "State") in 'Running')
+ 
+     def testNotRunning(self):
+@@ -1297,7 +1290,7 @@ class TestApplication(testlib.MachineCas
+         self.login_and_go("/podman")
+ 
+         # Troubleshoot action
+-        b.click("#app .pf-c-empty-state button.pf-m-link")
++        b.click("#app .pf-v5-c-empty-state button.pf-m-link")
+         b.enter_page("/system/services")
+         # services page is too slow
+         with b.wait_timeout(60):
+@@ -1306,10 +1299,10 @@ class TestApplication(testlib.MachineCas
+         # Start action, with enabling (by default)
+         b.go("/podman")
+         b.enter_page("/podman")
+-        b.click("#app .pf-c-empty-state button.pf-m-primary")
++        b.click("#app .pf-v5-c-empty-state button.pf-m-primary")
+ 
+         b.wait_visible("#containers-containers")
+-        b.wait_not_present("#overview div.pf-c-alert.pf-m-info")
++        b.wait_not_present("#overview div.pf-v5-c-alert.pf-m-info")
+ 
+         is_active_system("active")
+         is_active_user("active")
+@@ -1319,9 +1312,9 @@ class TestApplication(testlib.MachineCas
+         # Start action, without enabling
+         disable_system()
+         disable_user()
+-        b.click("#app .pf-c-empty-state input[type=checkbox]")
+-        b.assert_pixels("#app .pf-c-empty-state", "podman-service-disabled", skip_layouts=["medium", "mobile"])
+-        b.click("#app .pf-c-empty-state button.pf-m-primary")
++        b.click("#app .pf-v5-c-empty-state input[type=checkbox]")
++        b.assert_pixels("#app .pf-v5-c-empty-state", "podman-service-disabled", skip_layouts=["medium", "mobile"])
++        b.click("#app .pf-v5-c-empty-state button.pf-m-primary")
+ 
+         b.wait_visible("#containers-containers")
+         is_enabled_system("disabled")
+@@ -1335,9 +1328,9 @@ class TestApplication(testlib.MachineCas
+         disable_user()
+         enable_user()
+         self.login_and_go("/podman")
+-        b.wait_in_text("#overview div.pf-c-alert .pf-c-alert__title", "System Podman service is also available")
+-        b.click("#overview div.pf-c-alert .pf-c-alert__action > button:contains(Start)")
+-        b.wait_not_present("#overview div.pf-c-alert")
++        b.wait_in_text("#overview div.pf-v5-c-alert .pf-v5-c-alert__title", "System Podman service is also available")
++        b.click("#overview div.pf-v5-c-alert .pf-v5-c-alert__action > button:contains(Start)")
++        b.wait_not_present("#overview div.pf-v5-c-alert")
+         is_active_system("active")
+         is_active_user("active")
+         is_enabled_user("enabled")
+@@ -1347,9 +1340,9 @@ class TestApplication(testlib.MachineCas
+         disable_user()
+         enable_system()
+         self.login_and_go("/podman")
+-        b.wait_in_text("#overview div.pf-c-alert .pf-c-alert__title", "User Podman service is also available")
+-        b.click("#overview div.pf-c-alert .pf-c-alert__action > button:contains(Start)")
+-        b.wait_not_present("#overview div.pf-c-alert")
++        b.wait_in_text("#overview div.pf-v5-c-alert .pf-v5-c-alert__title", "User Podman service is also available")
++        b.click("#overview div.pf-v5-c-alert .pf-v5-c-alert__action > button:contains(Start)")
++        b.wait_not_present("#overview div.pf-v5-c-alert")
+         is_active_system("active")
+         is_active_user("active")
+         is_enabled_user("enabled")
+@@ -1359,9 +1352,9 @@ class TestApplication(testlib.MachineCas
+         disable_user()
+         disable_system()
+         self.login_and_go("/podman", superuser=False)
+-        b.click("#app .pf-c-empty-state button.pf-m-primary")
++        b.click("#app .pf-v5-c-empty-state button.pf-m-primary")
+         b.wait_visible("#containers-containers")
+-        b.wait_not_present("#overview div.pf-c-alert")
++        b.wait_not_present("#overview div.pf-v5-c-alert")
+ 
+         is_active_system("inactive")
+         is_active_user("active")
+@@ -1375,10 +1368,10 @@ class TestApplication(testlib.MachineCas
+         self.restore_dir("/usr/share/cockpit/systemd")
+         self.machine.execute("rm /usr/share/cockpit/systemd/manifest.json")
+         self.login_and_go("/podman")
+-        b.wait_visible("#app .pf-c-empty-state button.pf-m-primary")
+-        self.assertFalse(b.is_present("#app .pf-c-empty-state button.pf-m-link"))
++        b.wait_visible("#app .pf-v5-c-empty-state button.pf-m-primary")
++        self.assertFalse(b.is_present("#app .pf-v5-c-empty-state button.pf-m-link"))
+         # starting still works
+-        b.click("#app .pf-c-empty-state button.pf-m-primary")
++        b.click("#app .pf-v5-c-empty-state button.pf-m-primary")
+         b.wait_visible("#containers-containers")
+ 
+         self.allow_restart_journal_messages()
+@@ -1414,35 +1407,35 @@ class TestApplication(testlib.MachineCas
+         b = self.browser
+         container_name = "busybox-downloaded"
+ 
+-        b.click("#containers-containers button.pf-c-button.pf-m-primary")
++        b.click("#containers-containers button.pf-v5-c-button.pf-m-primary")
+         b.set_input_text("#run-image-dialog-name", container_name)
+ 
+         # No local results found
+         b.set_input_text("#create-image-image-select-typeahead", "notfound")
+ 
+-        b.click('button.pf-c-toggle-group__button:contains("Local")')
+-        b.wait_text("button.pf-c-select__menu-item.pf-m-disabled", "No images found")
++        b.click('button.pf-v5-c-toggle-group__button:contains("Local")')
++        b.wait_text("button.pf-v5-c-select__menu-item.pf-m-disabled", "No images found")
+ 
+         # Local results found
+         b.set_input_text("#create-image-image-select-typeahead", "registry")
+         if auth:
+-            b.assert_pixels(".pf-c-modal-box", "image-select", skip_layouts=["rtl"])
+-        b.click('button.pf-c-toggle-group__button:contains("Local")')
+-        b.wait_text("button.pf-c-select__menu-item", IMG_REGISTRY_LATEST)
++            b.assert_pixels(".pf-v5-c-modal-box", "image-select", skip_layouts=["rtl"])
++        b.click('button.pf-v5-c-toggle-group__button:contains("Local")')
++        b.wait_text("button.pf-v5-c-select__menu-item", IMG_REGISTRY_LATEST)
+ 
+         # Local registry
+         b.set_input_text("#create-image-image-select-typeahead", "my-busybox")
+-        b.click('button.pf-c-toggle-group__button:contains("localhost:5000")')
+-        b.wait_text("button.pf-c-select__menu-item:not(.pf-m-disabled)", "localhost:5000/my-busybox")
++        b.click('button.pf-v5-c-toggle-group__button:contains("localhost:5000")')
++        b.wait_text("button.pf-v5-c-select__menu-item:not(.pf-m-disabled)", "localhost:5000/my-busybox")
+ 
+         # Select image
+-        b.click('button.pf-c-select__menu-item:contains("localhost:5000/my-busybox")')
++        b.click('button.pf-v5-c-select__menu-item:contains("localhost:5000/my-busybox")')
+ 
+         # Remote image, no pull latest image option
+         b.wait_not_present("#run-image-dialog-pull-latest-image")
+ 
+         # Create Container, image is pulled and should end up being "running"
+-        b.click('.pf-c-modal-box__footer #create-image-create-run-btn')
++        b.click('.pf-v5-c-modal-box__footer #create-image-create-run-btn')
+         sel = " span:not(.downloading)"
+         b.wait(lambda: self.getContainerAttr(container_name, "State", sel) in 'Running')
+         output = self.execute(auth, f"podman exec {container_name} ls -lh /latest || true").strip()
+@@ -1457,21 +1450,21 @@ class TestApplication(testlib.MachineCas
+ 
+         container_name = "busybox-latest"
+ 
+-        b.click("#containers-containers button.pf-c-button.pf-m-primary")
++        b.click("#containers-containers button.pf-v5-c-button.pf-m-primary")
+         b.set_input_text("#run-image-dialog-name", container_name)
+ 
+         # Local registry
+         b.set_input_text("#create-image-image-select-typeahead", "my-busybox")
+-        b.click('button.pf-c-toggle-group__button:contains("Local")')
++        b.click('button.pf-v5-c-toggle-group__button:contains("Local")')
+ 
+         # Select image
+-        b.click('button.pf-c-select__menu-item:contains("localhost:5000/my-busybox")')
++        b.click('button.pf-v5-c-select__menu-item:contains("localhost:5000/my-busybox")')
+ 
+         # Pull the latest image
+         b.set_checked("#run-image-dialog-pull-latest-image", True)
+ 
+         # Create Container, image is pulled and should end up being "running"
+-        b.click('.pf-c-modal-box__footer #create-image-create-run-btn')
++        b.click('.pf-v5-c-modal-box__footer #create-image-create-run-btn')
+         sel = " span:not(.downloading)"
+         b.wait(lambda: self.getContainerAttr(container_name, "State", sel) in 'Running')
+         # Verify that the latest file exists
+@@ -1481,7 +1474,7 @@ class TestApplication(testlib.MachineCas
+         # Test creating a container with
+         if auth:
+             container_name = "busybox-download-admin"
+-            b.click("#containers-containers button.pf-c-button.pf-m-primary")
++            b.click("#containers-containers button.pf-v5-c-button.pf-m-primary")
+ 
+             # Start container as admin
+             b.click('#run-image-dialog-owner-user')
+@@ -1490,10 +1483,10 @@ class TestApplication(testlib.MachineCas
+             b.set_input_text("#run-image-dialog-name", container_name)
+ 
+             b.set_input_text("#create-image-image-select-typeahead", IMG_BUSYBOX)
+-            b.click('button.pf-c-toggle-group__button:contains("Local")')
+-            b.click(f'button.pf-c-select__menu-item:contains("{IMG_BUSYBOX}")')
++            b.click('button.pf-v5-c-toggle-group__button:contains("Local")')
++            b.click(f'button.pf-v5-c-select__menu-item:contains("{IMG_BUSYBOX}")')
+ 
+-            b.click('.pf-c-modal-box__footer #create-image-create-run-btn')
++            b.click('.pf-v5-c-modal-box__footer #create-image-create-run-btn')
+             b.wait(lambda: self.getContainerAttr(container_name, "State", sel) in 'Running')
+ 
+     def testRunImageSystem(self):
+@@ -1512,7 +1505,7 @@ class TestApplication(testlib.MachineCas
+ 
+         self.login(auth)
+ 
+-        b.click("#containers-images button.pf-c-expandable-section__toggle")
++        b.click("#containers-images button.pf-v5-c-expandable-section__toggle")
+ 
+         b.wait_in_text("#containers-images", IMG_BUSYBOX)
+         b.wait_in_text("#containers-images", IMG_ALPINE)
+@@ -1522,7 +1515,7 @@ class TestApplication(testlib.MachineCas
+         # Check command in alpine
+         b.wait_visible(f'#containers-images td[data-label="Image"]:contains("{IMG_ALPINE}")')
+         b.click(f'#containers-images tbody tr:contains("{IMG_ALPINE}") .ct-container-create')
+-        b.wait_visible('div.pf-c-modal-box header:contains("Create container")')
++        b.wait_visible('div.pf-v5-c-modal-box header:contains("Create container")')
+         # depending on the precise container, this can be /bin/sh or /bin/ash
+         cmd = self.execute(auth, 'podman image inspect --format "{{.Config.Cmd}}" ' + IMG_ALPINE)
+         cmd = cmd.strip().replace('[', '').replace(']', '')
+@@ -1532,7 +1525,7 @@ class TestApplication(testlib.MachineCas
+         # Open run image dialog
+         b.wait_visible(f'#containers-images td[data-label="Image"]:contains("{IMG_BUSYBOX}")')
+         b.click(f'#containers-images tbody tr:contains("{IMG_BUSYBOX}") .ct-container-create')
+-        b.wait_visible('div.pf-c-modal-box header:contains("Create container")')
++        b.wait_visible('div.pf-v5-c-modal-box header:contains("Create container")')
+ 
+         # Inspect and fill modal dialog
+         b.wait_val("#create-image-image-select-typeahead", IMG_BUSYBOX_LATEST)
+@@ -1640,7 +1633,7 @@ class TestApplication(testlib.MachineCas
+         else:
+             b.wait_not_present('#run-image-dialog-volume-0-selinux')
+ 
+-        b.set_file_autocomplete_val("#run-image-dialog-volume-0 .pf-c-select", rodir)
++        b.set_file_autocomplete_val("#run-image-dialog-volume-0 .pf-v5-c-select", rodir)
+         b.key_press(["\r"])
+         b.set_input_text('#run-image-dialog-volume-0-container-path', '/tmp/ro')
+         ro_label = m.execute(f"ls -dZ {rodir}").split(" ")[0]
+@@ -1652,8 +1645,8 @@ class TestApplication(testlib.MachineCas
+         b.click('.volume-form .btn-add')
+ 
+         if auth:
+-            b.assert_pixels(".pf-c-modal-box", "integration",
+-                            ignore=["#run-image-dialog-volume-0 input.pf-c-select__toggle-typeahead"],
++            b.assert_pixels(".pf-v5-c-modal-box", "integration",
++                            ignore=["#run-image-dialog-volume-0 input.pf-v5-c-select__toggle-typeahead"],
+                             skip_layouts=["rtl"])
+ 
+         if self.has_selinux:
+@@ -1661,13 +1654,13 @@ class TestApplication(testlib.MachineCas
+         else:
+             b.wait_not_present('#run-image-dialog-volume-1-selinux')
+ 
+-        b.set_file_autocomplete_val("#run-image-dialog-volume-1 .pf-c-select", rwdir)
++        b.set_file_autocomplete_val("#run-image-dialog-volume-1 .pf-v5-c-select", rwdir)
+         b.key_press(["\r"])
+         b.set_input_text('#run-image-dialog-volume-1-container-path', '/tmp/rw')
+         rw_label = m.execute(f"ls -dZ {rwdir}").split(" ")[0]
+ 
+-        b.click('.pf-c-modal-box__footer #create-image-create-run-btn')
+-        b.wait_not_present("div.pf-c-modal-box")
++        b.click('.pf-v5-c-modal-box__footer #create-image-create-run-btn')
++        b.wait_not_present("div.pf-v5-c-modal-box")
+         self.waitContainerRow(IMG_BUSYBOX)
+         sha = self.execute(auth, "podman inspect --format '{{.Id}}' busybox-with-tty").strip()
+         self.waitContainer(sha, auth, name='busybox-with-tty', image=IMG_BUSYBOX,
+@@ -1787,7 +1780,7 @@ class TestApplication(testlib.MachineCas
+         b.wait_visible(f'#containers-images td[data-label="Image"]:contains("{IMG_BUSYBOX}")')
+         self.toggleExpandedContainer(IMG_BUSYBOX)
+         b.click(f'#containers-images tbody tr:contains("{IMG_BUSYBOX}") .ct-container-create')
+-        b.wait_visible('div.pf-c-modal-box header:contains("Create container")')
++        b.wait_visible('div.pf-v5-c-modal-box header:contains("Create container")')
+ 
+         b.wait_val("#create-image-image-select-typeahead", IMG_BUSYBOX_LATEST)
+         b.set_input_text("#run-image-dialog-name", "busybox-without-publish")
+@@ -1798,8 +1791,8 @@ class TestApplication(testlib.MachineCas
+         # Run without tty, console should be able to `exec`
+         b.set_checked("#run-image-dialog-tty", False)
+ 
+-        b.click('.pf-c-modal-box__footer #create-image-create-run-btn')
+-        b.wait_not_present("div.pf-c-modal-box")
++        b.click('.pf-v5-c-modal-box__footer #create-image-create-run-btn')
++        b.wait_not_present("div.pf-v5-c-modal-box")
+ 
+         self.waitContainerRow("busybox-without-publish")
+         self.toggleExpandedContainer("busybox-without-publish")
+@@ -1848,7 +1841,7 @@ class TestApplication(testlib.MachineCas
+         self.filter_containers("running")
+         id_with_tty = self.execute(auth, "podman inspect --format '{{.Id}}' busybox-with-tty").strip()
+ 
+-        b.click(f'#containers-images tbody tr:contains("{IMG_BUSYBOX}") td.pf-c-table__toggle button')
++        b.click(f'#containers-images tbody tr:contains("{IMG_BUSYBOX}") td.pf-v5-c-table__toggle button')
+         # running container, just selects it, but leaves "Only running" alone
+         b.click(f"#containers-images tbody tr:contains('{IMG_BUSYBOX}') + tr div.ct-listing-panel-body dt:contains('Used by') + dd button:contains('busybox-with-tty')")
+         b.wait_js_cond('window.location.hash === "#' + id_with_tty + '"')
+@@ -1862,14 +1855,14 @@ class TestApplication(testlib.MachineCas
+         container_name = "busybox-not-started"
+         b.wait_visible(f'#containers-images td[data-label="Image"]:contains("{IMG_BUSYBOX}")')
+         b.click(f'#containers-images tbody tr:contains("{IMG_BUSYBOX}") .ct-container-create')
+-        b.wait_visible('div.pf-c-modal-box header:contains("Create container")')
++        b.wait_visible('div.pf-v5-c-modal-box header:contains("Create container")')
+ 
+         b.wait_val("#create-image-image-select-typeahead", IMG_BUSYBOX_LATEST)
+         b.set_input_text("#run-image-dialog-name", container_name)
+         b.set_input_text("#run-image-dialog-command", "sh -c sleep infinity")
+ 
+-        b.click('.pf-c-modal-box__footer #create-image-create-btn')
+-        b.wait_not_present("div.pf-c-modal-box")
++        b.click('.pf-v5-c-modal-box__footer #create-image-create-btn')
++        b.wait_not_present("div.pf-v5-c-modal-box")
+ 
+         sha = self.execute(auth, "podman inspect --format '{{.Id}}' " + container_name).strip()
+         self.waitContainer(sha, auth, name=container_name, image=IMG_BUSYBOX, state=['Configured', 'Created'])
+@@ -1883,12 +1876,12 @@ class TestApplication(testlib.MachineCas
+         # auto-expands container details
+         b.wait_in_text("#containers-containers tbody tr:contains('busybox-not-started') + tr", "sleep infinity")
+ 
+-        b.click(f'#containers-images tbody tr:contains("{IMG_ALPINE}") td.pf-c-table__toggle button')
++        b.click(f'#containers-images tbody tr:contains("{IMG_ALPINE}") td.pf-v5-c-table__toggle button')
+         b.wait_in_text(f"#containers-images tbody tr:contains('{IMG_ALPINE}') td[data-label='Used by']", 'unused')
+ 
+         b.set_input_text('#containers-filter', 'foobar')
+-        b.wait_in_text('#containers-containers .pf-c-empty-state', 'No containers that match the current filter')
+-        b.wait_in_text('#containers-images .pf-c-empty-state', 'No images that match the current filter')
++        b.wait_in_text('#containers-containers .pf-v5-c-empty-state', 'No containers that match the current filter')
++        b.wait_in_text('#containers-images .pf-v5-c-empty-state', 'No images that match the current filter')
+         b.set_input_text('#containers-filter', '')
+ 
+         if not auth or not self.machine.ostree_image:  # don't kill ws container
+@@ -1897,10 +1890,10 @@ class TestApplication(testlib.MachineCas
+                 # Remove all containers first as it is not possible to set --time 0 to rmi command
+                 self.execute(auth, "podman rm --all --force --time 0")
+             self.execute(auth, "podman rmi -af")
+-            b.wait_in_text('#containers-containers .pf-c-empty-state', 'No containers')
++            b.wait_in_text('#containers-containers .pf-v5-c-empty-state', 'No containers')
+             b.set_val("#containers-containers-filter", "running")
+-            b.wait_in_text('#containers-containers .pf-c-empty-state', 'No running containers')
+-            b.wait_in_text('#containers-images .pf-c-empty-state', 'No images')
++            b.wait_in_text('#containers-containers .pf-v5-c-empty-state', 'No running containers')
++            b.wait_in_text('#containers-images .pf-v5-c-empty-state', 'No images')
+ 
+     def check_content(self, type, present, not_present):
+         b = self.browser
+@@ -1946,8 +1939,8 @@ class TestApplication(testlib.MachineCas
+     def confirm_modal(self, text):
+         """Wait for the pop up window and click the button with text"""
+         b = self.browser
+-        b.click(f".pf-c-modal-box footer button:contains({text})")
+-        b.wait_not_present(f".pf-c-modal-box footer button:contains({text})")
++        b.click(f".pf-v5-c-modal-box footer button:contains({text})")
++        b.wait_not_present(f".pf-v5-c-modal-box footer button:contains({text})")
+ 
+     def testPruneUnusedImagesSystem(self):
+         self._testPruneUnusedImagesSystem(True)
+@@ -1978,12 +1971,12 @@ class TestApplication(testlib.MachineCas
+         b.click("button:contains(Prune unused images)")
+ 
+         if auth:
+-            b.wait_js_func("ph_count_check", ".pf-c-modal-box__body .pf-c-list li", (self.user_images_count + self.system_images_count) - leftover_images)
++            b.wait_js_func("ph_count_check", ".pf-v5-c-modal-box__body .pf-v5-c-list li", (self.user_images_count + self.system_images_count) - leftover_images)
+         elif root:
+-            b.wait_js_func("ph_count_check", ".pf-c-modal-box__body .pf-c-list li", self.system_images_count - leftover_images)
++            b.wait_js_func("ph_count_check", ".pf-v5-c-modal-box__body .pf-v5-c-list li", self.system_images_count - leftover_images)
+         else:
+-            b.wait_js_func("ph_count_check", ".pf-c-modal-box__body .pf-c-list li", self.user_images_count - leftover_images)
+-        b.click(".pf-c-modal-box button:contains(Prune)")
++            b.wait_js_func("ph_count_check", ".pf-v5-c-modal-box__body .pf-v5-c-list li", self.user_images_count - leftover_images)
++        b.click(".pf-v5-c-modal-box button:contains(Prune)")
+ 
+         # When being superuser, admin images are also removed
+         if auth:
+@@ -2011,16 +2004,16 @@ class TestApplication(testlib.MachineCas
+         # Deselect both
+         b.click("#deleteSystemImages")
+         b.click("#deleteUserImages")
+-        b.wait_visible(".pf-c-modal-box button:contains(Prune):disabled")
++        b.wait_visible(".pf-v5-c-modal-box button:contains(Prune):disabled")
+ 
+         # Admin / user images are selected
+         expected_images = self.user_images_count + self.system_images_count
+         if self.machine.ostree_image:
+             expected_images -= 1
+-        b.wait_js_func("ph_count_check", ".pf-c-modal-box__body .pf-c-list li", expected_images)
++        b.wait_js_func("ph_count_check", ".pf-v5-c-modal-box__body .pf-v5-c-list li", expected_images)
+         # Select user images
+         b.click("#deleteUserImages")
+-        b.click(".pf-c-modal-box button:contains(Prune)")
++        b.click(".pf-v5-c-modal-box button:contains(Prune)")
+ 
+         # System images are left over
+         self.waitNumImages(self.system_images_count)
+@@ -2031,8 +2024,8 @@ class TestApplication(testlib.MachineCas
+         # Pruning again, should delete all system images
+         b.click("#image-actions-dropdown")
+         b.click("button:contains(Prune unused images)")
+-        b.wait_js_func("ph_count_check", ".pf-c-modal-box__body .pf-c-list li", self.system_images_count - 1 if self.machine.ostree_image else self.system_images_count)
+-        b.click(".pf-c-modal-box button:contains(Prune)")
++        b.wait_js_func("ph_count_check", ".pf-v5-c-modal-box__body .pf-v5-c-list li", self.system_images_count - 1 if self.machine.ostree_image else self.system_images_count)
++        b.click(".pf-v5-c-modal-box button:contains(Prune)")
+         self.waitNumImages(1 if self.machine.ostree_image else 0)
+ 
+         # Prune button should now be disabled
+@@ -2070,13 +2063,13 @@ class TestApplication(testlib.MachineCas
+         b.click("button:contains(Prune unused containers)")
+ 
+         if auth:
+-            b.wait_in_text(".pf-c-modal-box__body tbody tr:nth-child(1) td[data-label=Name]", "adminnotrunning")
+-            b.wait_in_text(".pf-c-modal-box__body tbody tr:nth-child(2) td[data-label=Name]", "notrunning")
++            b.wait_in_text(".pf-v5-c-modal-box__body tbody tr:nth-child(1) td[data-label=Name]", "adminnotrunning")
++            b.wait_in_text(".pf-v5-c-modal-box__body tbody tr:nth-child(2) td[data-label=Name]", "notrunning")
+         else:
+-            b.wait_in_text(".pf-c-modal-box__body tbody td[data-label=Name]", "notrunning")
++            b.wait_in_text(".pf-v5-c-modal-box__body tbody td[data-label=Name]", "notrunning")
+ 
+-        b.click(".pf-c-modal-box button:contains(Prune)")
+-        b.wait_not_present(".pf-c-modal-box__body")
++        b.click(".pf-v5-c-modal-box button:contains(Prune)")
++        b.wait_not_present(".pf-v5-c-modal-box__body")
+ 
+         if auth:
+             self.waitContainerRow("notrunning", False)
+@@ -2097,11 +2090,11 @@ class TestApplication(testlib.MachineCas
+ 
+         # Start a podman container which uses a port
+         self.execute(False, f"podman run -d -p 5000:5000 --name registry --stop-timeout 0 {IMG_REGISTRY}")
+-        b.click("#containers-images button.pf-c-expandable-section__toggle")
++        b.click("#containers-images button.pf-v5-c-expandable-section__toggle")
+ 
+         b.wait_visible(f'#containers-images td[data-label="Image"]:contains("{IMG_BUSYBOX}")')
+         b.click(f'#containers-images tbody tr:contains("{IMG_BUSYBOX}") .ct-container-create')
+-        b.wait_visible('div.pf-c-modal-box header:contains("Create container")')
++        b.wait_visible('div.pf-v5-c-modal-box header:contains("Create container")')
+ 
+         b.set_input_text("#run-image-dialog-name", container_name)
+ 
+@@ -2110,12 +2103,12 @@ class TestApplication(testlib.MachineCas
+         b.click('.publish-port-form .btn-add')
+         b.set_input_text('#run-image-dialog-publish-0-host-port', '5000')
+         b.set_input_text('#run-image-dialog-publish-0-container-port', '5000')
+-        b.click('.pf-c-modal-box__footer #create-image-create-run-btn')
+-        b.wait_in_text(".pf-c-alert", "address already in use")
++        b.click('.pf-v5-c-modal-box__footer #create-image-create-run-btn')
++        b.wait_in_text(".pf-v5-c-alert", "address already in use")
+ 
+         # Changing the port should allow creation of container
+         b.set_input_text('#run-image-dialog-publish-0-host-port', '5001')
+-        b.click('.pf-c-modal-box__footer #create-image-create-run-btn')
++        b.click('.pf-v5-c-modal-box__footer #create-image-create-run-btn')
+         self.waitContainerRow(container_name)
+ 
+     def _testHealthcheck(self, auth):
+@@ -2127,11 +2120,11 @@ class TestApplication(testlib.MachineCas
+ 
+         self.login(auth)
+ 
+-        b.click("#containers-images button.pf-c-expandable-section__toggle")
++        b.click("#containers-images button.pf-v5-c-expandable-section__toggle")
+ 
+         b.wait_visible(f'#containers-images td[data-label="Image"]:contains("{IMG_BUSYBOX}")')
+         b.click(f'#containers-images tbody tr:contains("{IMG_BUSYBOX}") .ct-container-create')
+-        b.wait_visible('div.pf-c-modal-box header:contains("Create container")')
++        b.wait_visible('div.pf-v5-c-modal-box header:contains("Create container")')
+ 
+         b.set_input_text("#run-image-dialog-name", "healthy")
+ 
+@@ -2143,14 +2136,14 @@ class TestApplication(testlib.MachineCas
+         b.click('#run-image-healthcheck-retries button:nth-child(1)')
+         b.wait_val("#run-image-healthcheck-retries input", 2)
+         if auth:
+-            b.assert_pixels('.pf-c-modal-box', "healthcheck-modal", skip_layouts=["rtl"])
++            b.assert_pixels('.pf-v5-c-modal-box', "healthcheck-modal", skip_layouts=["rtl"])
+         # Test that the healthcheck option is not available before podman 4.3
+         if podman_version(self) < (4, 3, 0):
+             b.wait_not_present("#run-image-healthcheck-action")
+-        b.click('.pf-c-modal-box__footer #create-image-create-run-btn')
++        b.click('.pf-v5-c-modal-box__footer #create-image-create-run-btn')
+ 
+         self.waitContainerRow("healthy")
+-        b.click("#containers-images button.pf-c-expandable-section__toggle")
++        b.click("#containers-images button.pf-v5-c-expandable-section__toggle")
+ 
+         healthy_sha = self.execute(auth, "podman inspect --format '{{.Id}}' healthy").strip()
+         self.waitContainer(healthy_sha, auth, state='RunningHealthy')
+@@ -2198,18 +2191,18 @@ class TestApplication(testlib.MachineCas
+         self.assertGreater(int(b.text('.pf-m-expanded #container-details-healthcheck dt:contains("Failing streak") + dd')), 3)
+         if auth:
+             b.wait_js_func("ph_count_check", ".pf-m-expanded table[aria-label=Logs] tbody tr", 5)
+-            b.assert_pixels(".pf-m-expanded .pf-c-table__expandable-row-content",
++            b.assert_pixels(".pf-m-expanded .pf-v5-c-table__expandable-row-content",
+                             "healthcheck-details",
+                             ignore=["thead", "#container-details-healthcheck dt:contains('Failing streak') + dd",
+                                     "td[data-label='Started at']"],
+                             skip_layouts=["rtl"])
+ 
+         self.toggleExpandedContainer("sick")
+-        b.click("#containers-images button.pf-c-expandable-section__toggle")
++        b.click("#containers-images button.pf-v5-c-expandable-section__toggle")
+ 
+         b.wait_visible('#containers-images td[data-label="Image"]:contains("busybox:latest")')
+         b.click('#containers-images tbody tr:contains("busybox:latest") .ct-container-create')
+-        b.wait_visible('div.pf-c-modal-box header:contains("Create container")')
++        b.wait_visible('div.pf-v5-c-modal-box header:contains("Create container")')
+ 
+         # Test the health check action, only supported in podman 4.3 and later.
+         # To test this we make a healthcheck which depends on a file, so when starting the
+@@ -2227,7 +2220,7 @@ class TestApplication(testlib.MachineCas
+         b.set_input_text('#run-image-healthcheck-interval input', '1')
+         b.set_input_text('#run-image-healthcheck-timeout input', '1')
+         b.click('#run-image-healthcheck-action-2')
+-        b.click('.pf-c-modal-box__footer #create-image-create-run-btn')
++        b.click('.pf-v5-c-modal-box__footer #create-image-create-run-btn')
+ 
+         self.waitContainerRow(containername)
+         self.toggleExpandedContainer(containername)
+@@ -2270,17 +2263,17 @@ class TestApplication(testlib.MachineCas
+             self.execute(False, f"podman rmi {IMG_BUSYBOX}")
+ 
+         self.login(auth)
+-        b.click("#containers-images button.pf-c-expandable-section__toggle")
++        b.click("#containers-images button.pf-v5-c-expandable-section__toggle")
+ 
+         def create_container(name, policy=None):
+             b.wait_visible(f'#containers-images td[data-label="Image"]:contains("{IMG_BUSYBOX}")')
+             b.click(f'#containers-images tbody tr:contains("{IMG_BUSYBOX}") .ct-container-create')
+-            b.wait_visible('div.pf-c-modal-box header:contains("Create container")')
++            b.wait_visible('div.pf-v5-c-modal-box header:contains("Create container")')
+ 
+             b.set_input_text("#run-image-dialog-name", name)
+             if policy:
+                 b.set_val("#run-image-dialog-restart-policy", "always")
+-            b.click('.pf-c-modal-box__footer #create-image-create-run-btn')
++            b.click('.pf-v5-c-modal-box__footer #create-image-create-run-btn')
+             self.waitContainerRow(name)
+ 
+         container_name = 'none'
+@@ -2315,9 +2308,9 @@ class TestApplication(testlib.MachineCas
+ 
+         b.set_input_text("#run-image-dialog-name", container_name)
+         b.set_input_text("#create-image-image-select-typeahead", IMG_BUSYBOX_LATEST)
+-        b.click('button.pf-c-toggle-group__button:contains("Local")')
+-        b.click(f'button.pf-c-select__menu-item:contains("{IMG_BUSYBOX_LATEST}")')
+-        b.click('.pf-c-modal-box__footer #create-image-create-run-btn')
++        b.click('button.pf-v5-c-toggle-group__button:contains("Local")')
++        b.click(f'button.pf-v5-c-select__menu-item:contains("{IMG_BUSYBOX_LATEST}")')
++        b.click('.pf-v5-c-modal-box__footer #create-image-create-run-btn')
+         b.wait_not_present("#run-image-dialog-name")
+ 
+         container_sha = self.execute(auth, f"podman inspect --format '{{{{.Id}}}}' {container_name}").strip()
+@@ -2460,11 +2453,11 @@ class TestApplication(testlib.MachineCas
+             else:
+                 b.wait_not_present('#create-pod-dialog-volume-0-selinux')
+ 
+-            b.set_file_autocomplete_val("#create-pod-dialog-volume-0 .pf-c-select", rodir)
++            b.set_file_autocomplete_val("#create-pod-dialog-volume-0 .pf-v5-c-select", rodir)
+             b.set_input_text('#create-pod-dialog-volume-0-container-path', '/tmp/ro')
+             b.click('.volume-form .btn-add')
+ 
+-            b.set_file_autocomplete_val("#create-pod-dialog-volume-1 .pf-c-select", rwdir)
++            b.set_file_autocomplete_val("#create-pod-dialog-volume-1 .pf-v5-c-select", rwdir)
+             b.set_input_text('#create-pod-dialog-volume-1-container-path', '/tmp/rw')
+ 
+         b.click("#create-pod-create-btn")
+@@ -2514,7 +2507,7 @@ class TestApplication(testlib.MachineCas
+         self.waitContainerRow(container_name)
+         self.toggleExpandedContainer(container_name)
+         b.click(".pf-m-expanded button:contains('Logs')")
+-        b.wait_in_text(".pf-m-expanded .pf-c-empty-state__content", "failed to obtain logs for Container")
++        b.wait_in_text(".pf-m-expanded .pf-v5-c-empty-state__content", "failed to obtain logs for Container")
+ 
+ 
+ if __name__ == '__main__':

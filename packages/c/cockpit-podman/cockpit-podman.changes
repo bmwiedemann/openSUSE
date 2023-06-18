@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jun 16 10:18:09 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- New version 70. Changes since 53 include,
+  * Add ability to prune unused containers
+  * Translation updates
+  * Container list can be sorted
+  * Custom healthcheck actions
+  * Dark theme support
+  * Pod CPU, memory, port and volume details
+  * Create new pod group functionality
+  * Show all containers by default
+  * Stability and performance improvements
+
+- load-css-overrides.patch: refreshed
+- 1299.patch: fixes build with new PF5
+
+-------------------------------------------------------------------
 Tue Sep 20 10:11:52 UTC 2022 - Adam Majer <adam.majer@suse.de>
 
 - new version 53. Changes since 49.1 include,
