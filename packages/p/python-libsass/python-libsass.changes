@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 18 16:25:47 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Use sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Mon Mar 13 16:27:27 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Clean up the SPEC file and tighten it a bit to be less

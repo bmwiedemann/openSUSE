@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 %define _name   libsass-python
 Name:           python-libsass
 Version:        0.22.0
