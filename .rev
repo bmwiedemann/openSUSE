@@ -94,4 +94,12 @@
   * no upstream changelog</comment>
     <requestid>1087650</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2099d7fcc63b9477f95f21191e24f423</srcmd5>
+    <version>3.17.1</version>
+    <time>1687122510</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093679</requestid>
+  </revision>
 </revisionlist>
