@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun  7 15:40:27 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Move mailman to Python 3.11 on TW and Leap 15.5
+
+-------------------------------------------------------------------
+Wed Jun  7 14:53:12 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Allow the mailman group to write to the data directory
+  * This will hold the postfix database for the domains and we need
+    to be able to write to it as the postfix user (member of mailman group).
+
+-------------------------------------------------------------------
 Thu Mar 30 19:40:53 UTC 2023 - Luiz Angelo Daros de Luca <luizluca@tre-sc.jus.br>
 
 - Compile and include .mo files, used by _() strings

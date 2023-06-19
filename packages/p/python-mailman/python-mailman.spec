@@ -34,11 +34,12 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%if 0%{?suse_version} >= 1550
-# Newest python supported by mailman is Python 3.9 -- https://gitlab.com/mailman/mailman/-/issues/936
-%define pythons python39
-%define mypython python39
-%define mypython_sitelib %{python39_sitelib}
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500
+# Newest python supported by mailman is Python 3.11
+# See https://gitlab.com/mailman/mailman/-/blob/master/src/mailman/docs/NEWS.rst
+%define pythons python311
+%define mypython python311
+%define mypython_sitelib %{python311_sitelib}
 %else
 %{?!python_module:%define python_module() python3-%{**}}
 %define pythons python3
@@ -276,7 +277,7 @@ done
 %endif
 %dir %attr(750,root,mailman) %{_sysconfdir}/%{mailman_name}.d
 %dir %attr(750,mailman,mailman) %{mailman_homedir}
-%dir %attr(750,mailman,mailman) %{mailman_homedir}/data
+%dir %attr(770,mailman,mailman) %{mailman_homedir}/data
 %dir %attr(750,mailman,mailman) %{mailman_spooldir}
 %dir %attr(750,mailman,mailman) %{mailman_logdir}
 %ghost %dir %{mailman_rundir}
