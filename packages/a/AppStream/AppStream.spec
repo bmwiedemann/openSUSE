@@ -23,7 +23,7 @@
 %bcond_without vala
 %endif
 Name:           AppStream
-Version:        0.16.1
+Version:        0.16.2
 Release:        0
 Summary:        Tools and libraries to work with AppStream metadata
 License:        LGPL-2.1-or-later
@@ -33,7 +33,8 @@ Source0:        http://www.freedesktop.org/software/appstream/releases/%{name}-%
 Source1:        http://www.freedesktop.org/software/appstream/releases/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Patch0:         support-meson0.59.patch
-Patch1:         https://github.com/ximion/appstream/commit/bfa8fa6ac4ef645368a93384a6c16ac551a40922.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Do-not-override-default-priority-when-parsing-multip.patch
 BuildRequires:  cairo-devel
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gdk-pixbuf-loader-rsvg

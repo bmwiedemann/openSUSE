@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Jun  2 06:19:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.16.2:
+  Features:
+  * Add API for asking whether the pool is empty
+  * Add DDE to known desktop-environment list
+  * validator: Check if Release Description is inside description tag
+  * Make AppStream use BCP47 for locale in XML data
+  Bugfixes:
+  * Add missing standard::is-hidden attribute to file search enumerator
+  * spdx: Accept brackets in spdx license expression check
+  * introspection: Bring back AS_FORMAT_STYLE_COLLECTION into its enum
+  * compose: Fix crash in asc_l10n_search_translations_qt()
+  * compose: Set lower-cased CID for synthesized components again
+  * Don't crash when non-YAML documents are read as YAML
+  Miscellaneous:
+  * sanitizers: Allow null-dereference check again
+- Drop patch, merged upstream:
+  * bfa8fa6ac4ef645368a93384a6c16ac551a40922.patch
+- Add upstream change:
+  * 0001-Do-not-override-default-priority-when-parsing-multip.patch
+
+-------------------------------------------------------------------
 Mon May 22 06:35:40 UTC 2023 - Jiri Srain <jsrain@suse.com>
 
 - refresh patch for new glib-2.76 from upstream

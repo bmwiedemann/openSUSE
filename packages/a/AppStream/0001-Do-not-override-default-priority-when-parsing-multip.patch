@@ -1,0 +1,45 @@
+From aba40b41f9deb56ca533af0900c8ecc77835d468 Mon Sep 17 00:00:00 2001
+From: Matthias Klumpp <matthias@tenstral.net>
+Date: Sat, 17 Jun 2023 19:15:39 +0200
+Subject: [PATCH] Do not override default-priority when parsing multiple
+ metadata files
+
+The default priority should not be changed when a XML/YAML file is
+parsed, because otherwise it will be applied to all subsequently parsed
+files if those do not set a priority. This leads to merges being applied
+in the wrong order.
+
+Resolves: #495
+---
+ src/as-metadata.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/src/as-metadata.c b/src/as-metadata.c
+index 5df20f2..da27632 100644
+--- a/src/as-metadata.c
++++ b/src/as-metadata.c
+@@ -213,10 +213,9 @@ as_metadata_xml_parse_components_node (AsMetadata *metad, AsContext *context, xm
+ 	/* catalog metadata allows setting a priority for components */
+ 	priority_str = as_xml_get_prop_value (node, "priority");
+ 	if (priority_str != NULL) {
+-		gint default_priority;
+-		default_priority = g_ascii_strtoll (priority_str, NULL, 10);
+-		as_context_set_priority (context, default_priority);
+-		priv->default_priority = default_priority;
++		gint priority;
++		priority = g_ascii_strtoll (priority_str, NULL, 10);
++		as_context_set_priority (context, priority);
+ 	}
+ 	g_free (priority_str);
+ 
+@@ -354,7 +353,6 @@ as_metadata_yaml_parse_catalog_doc (AsMetadata *metad, AsContext *context, const
+ 						if (value != NULL) {
+ 							gint priority = g_ascii_strtoll (value, NULL, 10);
+ 							as_context_set_priority (context, priority);
+-							priv->default_priority = priority;
+ 						}
+ 					} else if (g_strcmp0 (key, "MediaBaseUrl") == 0) {
+ 						if (value != NULL &&
+-- 
+2.41.0
+
