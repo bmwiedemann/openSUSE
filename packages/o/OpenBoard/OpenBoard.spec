@@ -19,10 +19,10 @@
 %define         dest_dir %{_libdir}/%{name}
 %define         namelc openboard
 %define         fqname ch.%{namelc}.%{name}
-%define         githash  9de37af2df1a7c0d88f71c94ab2db1815d082862
-%define         gitshort 9de37af
-%define         gitdate  20221129
-%define         buildver 1129
+%define         githash  2ff8f29ce8a1227541d382e58a06dd591632d811
+%define         gitshort 2ff8f29
+%define         gitdate  20230614
+%define         buildver 230614
 Name:           OpenBoard
 Version:        1.7.0~git%{gitdate}.%{gitshort}
 Release:        0
@@ -31,12 +31,8 @@ License:        GPL-3.0-or-later
 Group:          Amusements/Teaching/Other
 URL:            https://openboard.ch
 Source0:        https://github.com/OpenBoard-org/OpenBoard/archive/%{githash}.zip#/OpenBoard-%{githash}.zip
-# https://github.com/OpenBoard-org/OpenBoard/pull/551
-Patch551:       0551-common-background-drawing.patch
 # https://github.com/OpenBoard-org/OpenBoard/pull/569
 Patch569:       0569-scale-mirror-pixmap.patch
-# https://github.com/OpenBoard-org/OpenBoard/pull/677
-Patch677:       0677-pdf-export-page-size.patch
 # https://github.com/OpenBoard-org/OpenBoard/pull/686
 Patch686:       0686-shortcut-configuration.patch
 # https://github.com/OpenBoard-org/OpenBoard/pull/698
@@ -74,7 +70,7 @@ application designed primarily for use in schools. It was
 originally forked from Open-Sankoré, which was itself based on
 Uniboard.
 
-This build is based on the development branch 1.7-dev and includes
+This build is based on the development branch dev and includes
 a set of additional patches for features and bug fixes.
 
 %prep
@@ -87,7 +83,7 @@ find resources -type f -print0 | xargs -0 chmod a-x
 rm resources/library/applications/Calculator.wgt/.gitignore
 
 %build
-%cmake
+%cmake -DVERSION_TYPE=a -DVERSION_BUILD=%buildver
 %cmake_build
 
 %install

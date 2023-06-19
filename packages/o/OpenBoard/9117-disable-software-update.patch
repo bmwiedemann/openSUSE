@@ -1,4 +1,4 @@
-From 8868eacdd913c1c5bd3040425c507fb8ef527e71 Mon Sep 17 00:00:00 2001
+From 7d50e97af79d7393d7b893bf640b6bccbcf22dd6 Mon Sep 17 00:00:00 2001
 From: letsfindaway <me@letsfindaway.de>
 Date: Wed, 16 Nov 2022 08:31:29 +0100
 Subject: [PATCH] feat: disable software and document update check
@@ -14,7 +14,7 @@ Subject: [PATCH] feat: disable software and document update check
  2 files changed, 5 insertions(+), 4 deletions(-)
 
 diff --git a/resources/etc/OpenBoard.config b/resources/etc/OpenBoard.config
-index 0120f922d..09c11a6dc 100644
+index e7f2e075b..67f21a58e 100644
 --- a/resources/etc/OpenBoard.config
 +++ b/resources/etc/OpenBoard.config
 @@ -1,15 +1,14 @@
@@ -26,7 +26,7 @@ index 0120f922d..09c11a6dc 100644
 -EnableAutomaticSoftwareUpdates=true
 -EnableSoftwareUpdates=true
 +EnableAutomaticSoftwareUpdates=false
- EnableStartupHints=false
+ EnableStartupHints=true
  FavoriteToolURIs=openboardtool://openboard/mask, openboardtool://ruler, openboardtool://compass, openboardtool://protractor, openboardtool://triangle, openboardtool://magnifier, openboardtool://cache
  IsInSoftwareUpdateProcess=false
  LastSessionDocumentUUID=
@@ -37,11 +37,15 @@ index 0120f922d..09c11a6dc 100644
  PreferredLanguage=fr_CH
  ProductWebAddress=http://www.openboard.ch
 diff --git a/src/core/UBPreferencesController.cpp b/src/core/UBPreferencesController.cpp
-index 4e7c5612a..a5bec7b9b 100644
+index 9c7802be9..f4e85c3a6 100644
 --- a/src/core/UBPreferencesController.cpp
 +++ b/src/core/UBPreferencesController.cpp
-@@ -92,2 +92,4 @@ UBPreferencesController::UBPreferencesController(QWidget *parent)
+@@ -90,6 +90,8 @@ UBPreferencesController::UBPreferencesController(QWidget *parent)
+     mPreferencesWindow = new UBPreferencesDialog(this,parent, Qt::Dialog);
+     mPreferencesUI = new Ui::preferencesDialog();  // deleted in destructor
      mPreferencesUI->setupUi(mPreferencesWindow);
 +    mPreferencesUI->softwareUpdateGroupBox->hide();     // disable check for software update
 +    mPreferencesUI->sankoreImporterGroupBox->hide();    // disable check for OpenSankore documents
-     adjustScreens();
+     adjustScreensPreferences();
+ 
+     connect(UBApplication::displayManager, &UBDisplayManager::availableScreenCountChanged, this, &UBPreferencesController::adjustScreensPreferences);

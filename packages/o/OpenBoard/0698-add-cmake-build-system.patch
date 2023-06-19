@@ -1,7 +1,7 @@
-From 6830bd54d42446a4d09acc25da39113ecd808a61 Mon Sep 17 00:00:00 2001
+From 4f121a534dd844f7b66b1275aae11f26ea8bc93c Mon Sep 17 00:00:00 2001
 From: letsfindaway <me@letsfindaway.de>
 Date: Wed, 10 Aug 2022 10:41:15 +0200
-Subject: [PATCH 1/3] chore: add cmake build system
+Subject: [PATCH 1/6] chore: add cmake build system
 
 - add a cmake based build sytem which is
   - easy to understand
@@ -122,7 +122,7 @@ Subject: [PATCH 1/3] chore: add cmake build system
  create mode 100644 src/web/CMakeLists.txt
 
 diff --git a/.gitignore b/.gitignore
-index 46f6fb9f5..3b1d44dc8 100644
+index 5bd5bf9ad..d82a98268 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -45,6 +45,7 @@ Thumbs.db
@@ -899,7 +899,7 @@ index 000000000..ef91e1096
 +    UBWidgetUpgradeAdaptor.h
 +)
 diff --git a/src/adaptors/UBWidgetUpgradeAdaptor.cpp b/src/adaptors/UBWidgetUpgradeAdaptor.cpp
-index 503897c15..cb9c98f18 100644
+index b3df61105..fe782975c 100644
 --- a/src/adaptors/UBWidgetUpgradeAdaptor.cpp
 +++ b/src/adaptors/UBWidgetUpgradeAdaptor.cpp
 @@ -206,7 +206,7 @@ UBWidgetUpgradeAdaptor::Widget::Widget(const QString &dir) : m_path(dir), m_hasU
@@ -988,10 +988,10 @@ index 000000000..eda1052a9
 +    UBTextTools.h
 +)
 diff --git a/src/core/UBApplication.cpp b/src/core/UBApplication.cpp
-index c076241df..c1b0f6236 100644
+index 45365f916..e164d0183 100644
 --- a/src/core/UBApplication.cpp
 +++ b/src/core/UBApplication.cpp
-@@ -139,7 +139,7 @@ UBApplication::UBApplication(const QString &id, int &argc, char **argv) : Single
+@@ -140,7 +140,7 @@ UBApplication::UBApplication(const QString &id, int &argc, char **argv) : Single
  
      setStyle("fusion");
  
@@ -1110,10 +1110,10 @@ index 000000000..15bcab6b5
 +    UBWebEngineView.h
 +)
 diff --git a/src/domain/UBGraphicsWidgetItem.cpp b/src/domain/UBGraphicsWidgetItem.cpp
-index 2ecad9587..53c01e9c8 100644
+index 816d6287b..429c5da4d 100644
 --- a/src/domain/UBGraphicsWidgetItem.cpp
 +++ b/src/domain/UBGraphicsWidgetItem.cpp
-@@ -1279,14 +1279,14 @@ void UBGraphicsW3CWidgetItem::loadNPAPIWrappersTemplates()
+@@ -1283,14 +1283,14 @@ void UBGraphicsW3CWidgetItem::loadNPAPIWrappersTemplates()
      if (!sTemplateLoaded) {
          sNPAPIWrapperTemplates.clear();
  
@@ -1132,7 +1132,7 @@ index 2ecad9587..53c01e9c8 100644
  
                  if (htmlContent.length() > 0) {
                      QStringList tokens = fileName.split(".");
-@@ -1303,7 +1303,7 @@ void UBGraphicsW3CWidgetItem::loadNPAPIWrappersTemplates()
+@@ -1307,7 +1307,7 @@ void UBGraphicsW3CWidgetItem::loadNPAPIWrappersTemplates()
                  }
              }
          }
@@ -1180,7 +1180,7 @@ index 000000000..3bb0d7766
 +    )
 +endif()
 diff --git a/src/frameworks/UBPlatformUtils.h b/src/frameworks/UBPlatformUtils.h
-index da9fd1295..2c9515a5d 100644
+index 3717f1e33..953af0cda 100644
 --- a/src/frameworks/UBPlatformUtils.h
 +++ b/src/frameworks/UBPlatformUtils.h
 @@ -191,6 +191,7 @@ class UBPlatformUtils
@@ -1192,18 +1192,18 @@ index da9fd1295..2c9515a5d 100644
          static void setFileType(const QString &filePath, unsigned long fileType);
          static void fadeDisplayOut();
 diff --git a/src/frameworks/UBPlatformUtils_linux.cpp b/src/frameworks/UBPlatformUtils_linux.cpp
-index cff17b1d3..61a2d0aad 100644
+index e80dff306..117c6b7bf 100644
 --- a/src/frameworks/UBPlatformUtils_linux.cpp
 +++ b/src/frameworks/UBPlatformUtils_linux.cpp
-@@ -33,6 +33,7 @@
- #include <QApplication>
+@@ -34,6 +34,7 @@
  #include <QDBusConnectionInterface>
  #include <QDBusInterface>
+ #include <QDBusMetaType>
 +#include <QProcessEnvironment>
  
  #include <unistd.h>
  #include <X11/keysym.h>
-@@ -50,7 +51,20 @@ void UBPlatformUtils::init()
+@@ -53,7 +54,20 @@ void UBPlatformUtils::init()
  
  QString UBPlatformUtils::applicationResourcesDirectory()
  {
@@ -1225,7 +1225,7 @@ index cff17b1d3..61a2d0aad 100644
  
  void UBPlatformUtils::hideFile(const QString &filePath)
 diff --git a/src/frameworks/UBPlatformUtils_mac.mm b/src/frameworks/UBPlatformUtils_mac.mm
-index 4ecb705a6..14c6ed303 100644
+index 0be545ca9..d7adbcbc8 100644
 --- a/src/frameworks/UBPlatformUtils_mac.mm
 +++ b/src/frameworks/UBPlatformUtils_mac.mm
 @@ -123,6 +123,11 @@ OSStatus emptySetSystemUIMode (
@@ -1241,10 +1241,10 @@ index 4ecb705a6..14c6ed303 100644
  {
      FSRef ref;
 diff --git a/src/frameworks/UBPlatformUtils_win.cpp b/src/frameworks/UBPlatformUtils_win.cpp
-index c85dafa75..bb6f4c68f 100644
+index 2931b56b1..f084ba012 100644
 --- a/src/frameworks/UBPlatformUtils_win.cpp
 +++ b/src/frameworks/UBPlatformUtils_win.cpp
-@@ -51,6 +51,10 @@ QString UBPlatformUtils::applicationResourcesDirectory()
+@@ -53,6 +53,10 @@ QString UBPlatformUtils::applicationResourcesDirectory()
      return QApplication::applicationDirPath();
  }
  
@@ -1577,10 +1577,10 @@ index 000000000..45277ec12
 +    simplebrowser/passworddialog.ui
 +)
 diff --git a/src/web/UBWebController.cpp b/src/web/UBWebController.cpp
-index df3bffba5..31e4e8616 100644
+index c57a3c454..29738daff 100644
 --- a/src/web/UBWebController.cpp
 +++ b/src/web/UBWebController.cpp
-@@ -415,7 +415,7 @@ void UBWebController::injectScripts(QWebEngineView *view)
+@@ -428,7 +428,7 @@ void UBWebController::injectScripts(QWebEngineView *view)
          qDebug() << "Injecting qwebchannel.js";
          QString src = js.readAll();
  
@@ -1590,10 +1590,10 @@ index df3bffba5..31e4e8616 100644
          if (asyncwrapper.open(QIODevice::ReadOnly))
          {
 
-From 5ed9d68afc52d071135640e8da5c35308cd5d318 Mon Sep 17 00:00:00 2001
+From bfc0c6717489fd48a9d212d6045f2b6494592781 Mon Sep 17 00:00:00 2001
 From: letsfindaway <me@letsfindaway.de>
 Date: Sun, 30 Oct 2022 08:09:24 +0100
-Subject: [PATCH 2/3] fix: compatibility with Qt 5.12 and Qt 6
+Subject: [PATCH 2/6] fix: compatibility with Qt 5.12 and Qt 6
 
 - use qt5_add_resources and qt5_add_translation for Qt 5.12
 - add .ui and .ts files using target_sources
@@ -1693,10 +1693,10 @@ index 45277ec12..590476e34 100644
      simplebrowser/downloadmanagerwidget.ui
      simplebrowser/downloadwidget.ui
 
-From 6ff5d2c7f339e1612a8e6e836061f0d96b03d8fc Mon Sep 17 00:00:00 2001
+From a976dc9bc7db4068ae107bf2648d3d6e0928e956 Mon Sep 17 00:00:00 2001
 From: letsfindaway <me@letsfindaway.de>
 Date: Sat, 5 Nov 2022 08:52:48 +0100
-Subject: [PATCH 3/3] chore: add cpack packaging (by @sebojolais)
+Subject: [PATCH 3/6] chore: add cpack packaging (by @sebojolais)
 
 - add cpack packaging instructions
 - configure for deb and rpm packages
@@ -1760,3 +1760,123 @@ index f6900ac39..ebd94ffce 100644
 +
 +# create packager
 +include(CPack)
+
+From 2f99f725e8640724585cdf0343fd0c1c99e39535 Mon Sep 17 00:00:00 2001
+From: letsfindaway <me@letsfindaway.de>
+Date: Sat, 3 Dec 2022 18:30:14 +0100
+Subject: [PATCH 4/6] fixup: remove unused UBIdleTimer
+
+---
+ src/core/CMakeLists.txt    | 2 --
+ src/core/UBApplication.cpp | 1 -
+ 2 files changed, 3 deletions(-)
+
+diff --git a/src/core/CMakeLists.txt b/src/core/CMakeLists.txt
+index eda1052a9..2b362252e 100644
+--- a/src/core/CMakeLists.txt
++++ b/src/core/CMakeLists.txt
+@@ -15,8 +15,6 @@ target_sources(${PROJECT_NAME} PRIVATE
+     UBDownloadThread.h
+     UBForeignObjectsHandler.cpp
+     UBForeignObjectsHandler.h
+-    UBIdleTimer.cpp
+-    UBIdleTimer.h
+     UBMimeData.cpp
+     UBMimeData.h
+     UBOpenSankoreImporter.cpp
+diff --git a/src/core/UBApplication.cpp b/src/core/UBApplication.cpp
+index e164d0183..d89c2009a 100644
+--- a/src/core/UBApplication.cpp
++++ b/src/core/UBApplication.cpp
+@@ -43,7 +43,6 @@
+ #include "UBPersistenceManager.h"
+ #include "UBDocumentManager.h"
+ #include "UBPreferencesController.h"
+-#include "UBIdleTimer.h"
+ #include "UBApplicationController.h"
+ #include "UBShortcutManager.h"
+
+
+From b69c909e9c5f68adbf24de19823a25ae4396a995 Mon Sep 17 00:00:00 2001
+From: letsfindaway <me@letsfindaway.de>
+Date: Wed, 21 Dec 2022 11:47:59 +0100
+Subject: [PATCH 5/6] chore: allow to set build version for build
+
+- make VERSION_BUILD and VERSION_TYPE CACHE variables
+- this allows to overwrite them using -D when invoking cmake
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ebd94ffce..5d884045d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -41,8 +41,8 @@ project(openboard
+     LANGUAGES CXX
+ )
+ 
+-set(VERSION_TYPE a) # a = alpha, b = beta, rc = release candidate, r = release, other => error
+-set(VERSION_BUILD 1027)
++set(VERSION_TYPE r CACHE STRING "a = alpha, b = beta, rc = release candidate, r = release")
++set(VERSION_BUILD 1027 CACHE STRING "Build version for non-release builds")
+ 
+ include(cmake/Version.cmake)
+ include(cmake/Platform.cmake) 
+
+From 087f02bee16740b6886450e1c124caa8365aca9f Mon Sep 17 00:00:00 2001
+From: letsfindaway <me@letsfindaway.de>
+Date: Fri, 24 Mar 2023 14:15:12 +0100
+Subject: [PATCH 6/6] feat: add startup hints to cmake build
+
+- package startupHints directory
+- use absolute paths to make webengine happy
+---
+ CMakeLists.txt                           | 2 ++
+ src/frameworks/UBPlatformUtils_linux.cpp | 6 ++++--
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5d884045d..6d4887722 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -69,6 +69,7 @@ set(OPENBOARD_FONT_DIR      resources/customizations resources/fonts)
+ set(OPENBOARD_ETC_DIR       resources/etc)
+ set(OPENBOARD_LIBRARY_DIR   resources/library)
+ set(OPENBOARD_TEMPLATE_DIR  resources/template)
++set(OPENBOARD_STARTUP_HINTS resources/startupHints)
+ 
+ set(OPENBOARD_ICON_FILE     resources/images/ch.openboard.OpenBoard.svg)
+ 
+@@ -246,6 +247,7 @@ if(LINUX)
+     install(DIRECTORY ${OPENBOARD_ETC_DIR}/         DESTINATION ${OPENBOARD_INSTALL_SYSCONFDIR})
+     install(DIRECTORY ${OPENBOARD_LIBRARY_DIR}      DESTINATION ${OPENBOARD_INSTALL_DATADIR})
+     install(DIRECTORY ${OPENBOARD_TEMPLATE_DIR}     DESTINATION ${OPENBOARD_INSTALL_DATADIR})
++    install(DIRECTORY ${OPENBOARD_STARTUP_HINTS}    DESTINATION ${OPENBOARD_INSTALL_DATADIR})
+     install(DIRECTORY ${PROJECT_BINARY_DIR}/i18n    DESTINATION ${OPENBOARD_INSTALL_DATADIR})
+     install(FILES     ${OPENBOARD_ICON_FILE}        DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/scalable/apps)
+     install(FILES     ${OPENBOARD_DESKTOP_FILE}     DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
+diff --git a/src/frameworks/UBPlatformUtils_linux.cpp b/src/frameworks/UBPlatformUtils_linux.cpp
+index 117c6b7bf..1328539de 100644
+--- a/src/frameworks/UBPlatformUtils_linux.cpp
++++ b/src/frameworks/UBPlatformUtils_linux.cpp
+@@ -55,7 +55,8 @@ void UBPlatformUtils::init()
+ QString UBPlatformUtils::applicationResourcesDirectory()
+ {
+ #ifdef APP_PREFIX
+-    return QProcessEnvironment::systemEnvironment().value("APP_PREFIX", APP_PREFIX);
++    QString prefix = QProcessEnvironment::systemEnvironment().value("APP_PREFIX", APP_PREFIX);
++    return QFileInfo(prefix).absoluteFilePath();
+ #else
+     return QApplication::applicationDirPath();
+ #endif
+@@ -64,7 +65,8 @@ QString UBPlatformUtils::applicationResourcesDirectory()
+ QString UBPlatformUtils::applicationEtcDirectory()
+ {
+ #ifdef ETC_PREFIX
+-    return QProcessEnvironment::systemEnvironment().value("ETC_PREFIX", ETC_PREFIX);
++    QString prefix = QProcessEnvironment::systemEnvironment().value("ETC_PREFIX", ETC_PREFIX);
++    return QFileInfo(prefix).absoluteFilePath();
+ #else
+     return applicationResourcesDirectory() + "/etc";
+ #endif

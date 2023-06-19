@@ -1,4 +1,4 @@
-From d0f5b8299122654592db9e6ac7ac6578b154ff76 Mon Sep 17 00:00:00 2001
+From 92c99bf0a62f6a2d49d3c11a4850361374872479 Mon Sep 17 00:00:00 2001
 From: letsfindaway <me@letsfindaway.de>
 Date: Tue, 2 Mar 2021 10:57:06 +0100
 Subject: [PATCH 1/8] Feature: configurable keyboard and mouse/tablet button
@@ -31,10 +31,10 @@ Subject: [PATCH 1/8] Feature: configurable keyboard and mouse/tablet button
  create mode 100644 src/core/UBShortcutManager.h
 
 diff --git a/resources/forms/preferences.ui b/resources/forms/preferences.ui
-index 24e68040c..9d039e18b 100644
+index 56b4ba004..f5ddf7e3a 100644
 --- a/resources/forms/preferences.ui
 +++ b/resources/forms/preferences.ui
-@@ -1108,6 +1108,175 @@
+@@ -1105,6 +1105,175 @@
         </item>
        </layout>
       </widget>
@@ -211,7 +211,7 @@ index 24e68040c..9d039e18b 100644
        <property name="enabled">
         <bool>true</bool>
 diff --git a/src/core/UBApplication.cpp b/src/core/UBApplication.cpp
-index c076241df..c33473485 100644
+index 45365f916..8e6d39711 100644
 --- a/src/core/UBApplication.cpp
 +++ b/src/core/UBApplication.cpp
 @@ -45,6 +45,7 @@
@@ -222,7 +222,7 @@ index c076241df..c33473485 100644
  
  #include "board/UBBoardController.h"
  #include "board/UBDrawingController.h"
-@@ -634,14 +635,14 @@ bool UBApplication::eventFilter(QObject *obj, QEvent *event)
+@@ -646,14 +647,14 @@ bool UBApplication::eventFilter(QObject *obj, QEvent *event)
          }
      }
  
@@ -239,7 +239,7 @@ index c076241df..c33473485 100644
      {
          boardController->controlView()->setMultiselection(false);
  
-@@ -659,6 +660,34 @@ bool UBApplication::eventFilter(QObject *obj, QEvent *event)
+@@ -671,6 +672,34 @@ bool UBApplication::eventFilter(QObject *obj, QEvent *event)
  #endif
      }
  
@@ -275,7 +275,7 @@ index c076241df..c33473485 100644
  }
  
 diff --git a/src/core/UBPreferencesController.cpp b/src/core/UBPreferencesController.cpp
-index 6fcbcf491..9a9e83de2 100644
+index 798889881..e8d434173 100644
 --- a/src/core/UBPreferencesController.cpp
 +++ b/src/core/UBPreferencesController.cpp
 @@ -37,6 +37,7 @@
@@ -286,7 +286,7 @@ index 6fcbcf491..9a9e83de2 100644
  
  #include "frameworks/UBStringUtils.h"
  
-@@ -77,7 +78,6 @@ void UBPreferencesDialog::closeEvent(QCloseEvent* e)
+@@ -72,7 +73,6 @@ void UBPreferencesDialog::closeEvent(QCloseEvent* e)
  }
  
  
@@ -294,16 +294,16 @@ index 6fcbcf491..9a9e83de2 100644
  UBPreferencesController::UBPreferencesController(QWidget *parent)
      : QObject(parent)
      , mPreferencesWindow(0)
-@@ -92,6 +92,8 @@ UBPreferencesController::UBPreferencesController(QWidget *parent)
-     mPreferencesUI->setupUi(mPreferencesWindow);
-     adjustScreens();
-     connect(UBApplication::displayManager, &UBDisplayManager::availableScreenCountChanged, this, &UBPreferencesController::adjustScreens);
+@@ -88,6 +88,8 @@ UBPreferencesController::UBPreferencesController(QWidget *parent)
+     adjustScreensPreferences();
+ 
+     connect(UBApplication::displayManager, &UBDisplayManager::availableScreenCountChanged, this, &UBPreferencesController::adjustScreensPreferences);
 +    mPreferencesUI->shortcutTab->installEventFilter(this);
 +
      wire();
  }
  
-@@ -107,6 +109,90 @@ UBPreferencesController::~UBPreferencesController()
+@@ -103,6 +105,90 @@ UBPreferencesController::~UBPreferencesController()
      delete mMarkerProperties;
  }
  
@@ -391,10 +391,10 @@ index 6fcbcf491..9a9e83de2 100644
 +    return false;
 +}
 +
- void UBPreferencesController::adjustScreens()
+ void UBPreferencesController::adjustScreensPreferences()
  {
      bool enabled = UBApplication::displayManager->numScreens() > 1;
-@@ -143,6 +229,50 @@ void UBPreferencesController::adjustScreens()
+@@ -139,6 +225,50 @@ void UBPreferencesController::adjustScreensPreferences()
      }
  }
  
@@ -445,7 +445,7 @@ index 6fcbcf491..9a9e83de2 100644
  void UBPreferencesController::show()
  {
      init();
-@@ -301,6 +431,21 @@ void UBPreferencesController::wire()
+@@ -297,6 +427,21 @@ void UBPreferencesController::wire()
      connect(mPreferencesUI->checkSoftwareUpdateAtLaunchCheckBox, SIGNAL(clicked(bool)), settings->appEnableAutomaticSoftwareUpdates, SLOT(setBool(bool)));
  
      connect(mPreferencesUI->checkOpenSankoreAtStartup, SIGNAL(clicked(bool)), settings->appLookForOpenSankoreInstall, SLOT(setBool(bool)));
@@ -467,7 +467,7 @@ index 6fcbcf491..9a9e83de2 100644
  }
  
  void UBPreferencesController::init()
-@@ -361,6 +506,27 @@ void UBPreferencesController::init()
+@@ -357,6 +502,27 @@ void UBPreferencesController::init()
  
      mMarkerProperties->opacitySlider->setValue(settings->boardMarkerAlpha->get().toDouble() * 100);
  
@@ -495,7 +495,7 @@ index 6fcbcf491..9a9e83de2 100644
  }
  
  void UBPreferencesController::close()
-@@ -459,7 +625,8 @@ void UBPreferencesController::defaultSettings()
+@@ -455,7 +621,8 @@ void UBPreferencesController::defaultSettings()
          mPreferencesUI->checkOpenSankoreAtStartup->setChecked(defaultValue);
  
      }
@@ -505,7 +505,7 @@ index 6fcbcf491..9a9e83de2 100644
          bool defaultValue = settings->webUseExternalBrowser->reset().toBool();
          mPreferencesUI->useExternalBrowserCheckBox->setChecked(defaultValue);
          defaultValue = settings->webShowPageImmediatelyOnMirroredScreen->reset().toBool();
-@@ -494,6 +661,23 @@ void UBPreferencesController::defaultSettings()
+@@ -490,6 +657,23 @@ void UBPreferencesController::defaultSettings()
          lightBackgroundCrossOpacityValueChanged(lightBackgroundOpacity);
  
      }
@@ -529,7 +529,7 @@ index 6fcbcf491..9a9e83de2 100644
  }
  
  void UBPreferencesController::darkBackgroundCrossOpacityValueChanged(int value)
-@@ -716,6 +900,70 @@ void UBPreferencesController::setPdfZoomBehavior(bool checked)
+@@ -712,6 +896,70 @@ void UBPreferencesController::setPdfZoomBehavior(bool checked)
      }
  }
  
@@ -601,7 +601,7 @@ index 6fcbcf491..9a9e83de2 100644
                                                 const QList<QColor>& darkBackgroundColors, const QList<QColor>& lightBackgroundSelectedColors,
                                                 const QList<QColor>& darkBackgroundSelectedColors, UBPreferencesController* controller)
 diff --git a/src/core/UBPreferencesController.h b/src/core/UBPreferencesController.h
-index 6f0522a73..708cef47b 100644
+index e260646d3..afc9b8c6f 100644
 --- a/src/core/UBPreferencesController.h
 +++ b/src/core/UBPreferencesController.h
 @@ -70,6 +70,9 @@ class UBPreferencesController : public QObject
@@ -633,7 +633,7 @@ index 6f0522a73..708cef47b 100644
 +        void resetClicked();
  
      private slots:
-         void adjustScreens();
+         void adjustScreensPreferences();
 +        void applyShortcutFilter(const QString& filter, int filterCol = -1);
 +
  
@@ -646,7 +646,7 @@ index 6f0522a73..708cef47b 100644
  
  class UBBrushPropertiesFrame : public Ui::brushProperties
 diff --git a/src/core/UBSettings.cpp b/src/core/UBSettings.cpp
-index 9a7a6f691..9fda51dd2 100644
+index 74962bb41..b5f9cc12b 100644
 --- a/src/core/UBSettings.cpp
 +++ b/src/core/UBSettings.cpp
 @@ -544,17 +544,32 @@ void UBSettings::save()
@@ -1706,7 +1706,7 @@ index 2c09e718a..cac047991 100644
  
  
 
-From fcd39d519fa01968298a73b31915ff229607c743 Mon Sep 17 00:00:00 2001
+From a8ed1a1e2d37179f400c73afe3071c7b78e350ad Mon Sep 17 00:00:00 2001
 From: letsfindaway <me@letsfindaway.de>
 Date: Sat, 20 Mar 2021 08:28:35 +0100
 Subject: [PATCH 2/8] update translation files, add German translation for
@@ -9457,7 +9457,7 @@ index b2d45e269..835afebe3 100644
          <source>Improve zoom execution time (can slightly affect rendering quality)</source>
          <translation type="unfinished"></translation>
 
-From 39456c6e853186b45b395f693f9b251d4d8f3456 Mon Sep 17 00:00:00 2001
+From a302f814b9429d1012f5ec75f00f564e5aa7bd33 Mon Sep 17 00:00:00 2001
 From: letsfindaway <me@letsfindaway.de>
 Date: Wed, 24 Mar 2021 17:58:24 +0100
 Subject: [PATCH 3/8] additional fixes
@@ -9484,7 +9484,7 @@ index a03691ecf..94328abc2 100644
  
      // add builtIn actions
 
-From c2db115607c7baa274a5bb0cbdc19239c20c2d2e Mon Sep 17 00:00:00 2001
+From 3ef2e3daf22d3060f375d58cc65f06a0fb99959e Mon Sep 17 00:00:00 2001
 From: letsfindaway <me@letsfindaway.de>
 Date: Wed, 20 Oct 2021 18:28:41 +0200
 Subject: [PATCH 4/8] add more shortcuts, fix conflicts
@@ -9497,10 +9497,10 @@ Subject: [PATCH 4/8] add more shortcuts, fix conflicts
  3 files changed, 11 insertions(+), 5 deletions(-)
 
 diff --git a/src/board/UBBoardView.cpp b/src/board/UBBoardView.cpp
-index 817d8c4e7..c52a5c6ae 100644
+index 848e6aa56..44acac350 100644
 --- a/src/board/UBBoardView.cpp
 +++ b/src/board/UBBoardView.cpp
-@@ -245,14 +245,15 @@ void UBBoardView::keyPressEvent (QKeyEvent *event)
+@@ -249,14 +249,15 @@ void UBBoardView::keyPressEvent (QKeyEvent *event)
              switch (event->key ())
              {
              case Qt::Key_Plus:
@@ -9558,7 +9558,7 @@ index 6ae25b974..61c06b75f 100644
                  controller->zoomOut ();
                  event->accept ();
 
-From b3617480ced3d4decc4e473226723d430229a2ec Mon Sep 17 00:00:00 2001
+From 41d1b7b3a0d6e9dc5a03d1c915ea66c92e92002b Mon Sep 17 00:00:00 2001
 From: letsfindaway <me@letsfindaway.de>
 Date: Sat, 23 Oct 2021 11:02:23 +0200
 Subject: [PATCH 5/8] seamless switching between tools
@@ -9567,28 +9567,28 @@ Subject: [PATCH 5/8] seamless switching between tools
 - new tool starts at current position
 - fix conflict between panning and page change
 ---
- src/board/UBBoardView.cpp         | 69 +++++++++++++++++--------------
+ src/board/UBBoardView.cpp         | 66 ++++++++++++++++---------------
  src/board/UBDrawingController.cpp | 13 ++++--
  src/board/UBDrawingController.h   |  2 +-
- src/domain/UBGraphicsScene.cpp    | 27 +++++++-----
+ src/domain/UBGraphicsScene.cpp    | 27 +++++++------
  src/domain/UBGraphicsScene.h      |  1 +
- 5 files changed, 64 insertions(+), 48 deletions(-)
+ 5 files changed, 61 insertions(+), 48 deletions(-)
 
 diff --git a/src/board/UBBoardView.cpp b/src/board/UBBoardView.cpp
-index c52a5c6ae..a711cfdd5 100644
+index 44acac350..b233e696d 100644
 --- a/src/board/UBBoardView.cpp
 +++ b/src/board/UBBoardView.cpp
-@@ -198,48 +198,53 @@ void UBBoardView::keyPressEvent (QKeyEvent *event)
+@@ -207,43 +207,45 @@ void UBBoardView::keyPressEvent (QKeyEvent *event)
  
      if (!event->isAccepted ())
      {
 -        switch (event->key ())
--        {
++        if (event->modifiers () == 0)
+         {
 -        case Qt::Key_Up:
 -        case Qt::Key_PageUp:
 -        case Qt::Key_Left:
-+        if (event->modifiers () == 0)
-         {
+-        {
 -            mController->previousScene ();
 -            break;
 -        }
@@ -9628,6 +9628,12 @@ index c52a5c6ae..a711cfdd5 100644
 -        {
 -            mController->lastScene ();
 -            break;
+-        }
+-        case Qt::Key_Insert:
+-        {
+-            mController->addScene ();
+-            break;
+-        }
 +            case Qt::Key_Home:
 +            {
 +                mController->firstScene ();
@@ -9644,20 +9650,6 @@ index c52a5c6ae..a711cfdd5 100644
 +                break;
 +            }
 +            }
-         }
--        case Qt::Key_Insert:
-+
-+        switch (event->key ())
-         {
--            mController->addScene ();
--            break;
--        }
-         case Qt::Key_Control:
-         case Qt::Key_Shift:
--        {
-             setMultiselection(true);
--        }break;
-+            break;
          }
  
 -
@@ -9703,10 +9695,10 @@ index 61d4ad827..b44fe980b 100644
          int currentToolWidthIndex();
          qreal currentToolWidth();
 diff --git a/src/domain/UBGraphicsScene.cpp b/src/domain/UBGraphicsScene.cpp
-index aa6734dfe..7273d9249 100644
+index afc16ebb7..cf70e0d28 100644
 --- a/src/domain/UBGraphicsScene.cpp
 +++ b/src/domain/UBGraphicsScene.cpp
-@@ -500,6 +500,7 @@ bool UBGraphicsScene::inputDeviceMove(const QPointF& scenePos, const qreal& pres
+@@ -501,6 +501,7 @@ bool UBGraphicsScene::inputDeviceMove(const QPointF& scenePos, const qreal& pres
      UBStylusTool::Enum currentTool = (UBStylusTool::Enum)dc->stylusTool();
  
      QPointF position = QPointF(scenePos);
@@ -9714,7 +9706,7 @@ index aa6734dfe..7273d9249 100644
  
      if (currentTool == UBStylusTool::Eraser)
      {
-@@ -667,14 +668,9 @@ bool UBGraphicsScene::inputDeviceRelease(int tool)
+@@ -668,14 +669,9 @@ bool UBGraphicsScene::inputDeviceRelease(int tool)
      }
  
      UBStylusTool::Enum currentTool = (UBStylusTool::Enum)tool;
@@ -9730,7 +9722,7 @@ index aa6734dfe..7273d9249 100644
      {
          if(mArcPolygonItem){
  
-@@ -2398,12 +2394,21 @@ void UBGraphicsScene::resizedMagnifier(qreal newPercent)
+@@ -2402,12 +2398,21 @@ void UBGraphicsScene::resizedMagnifier(qreal newPercent)
  
  void UBGraphicsScene::stylusToolChanged(int tool, int previousTool)
  {
@@ -9758,10 +9750,10 @@ index aa6734dfe..7273d9249 100644
  }
  
 diff --git a/src/domain/UBGraphicsScene.h b/src/domain/UBGraphicsScene.h
-index e824e555f..7bbb9d1a0 100644
+index 48281418d..d0d46b20f 100644
 --- a/src/domain/UBGraphicsScene.h
 +++ b/src/domain/UBGraphicsScene.h
-@@ -460,6 +460,7 @@ public slots:
+@@ -465,6 +465,7 @@ public slots:
          QPointF mPreviousPoint;
          qreal mPreviousWidth;
          qreal mDistanceFromLastStrokePoint;
@@ -9770,7 +9762,7 @@ index e824e555f..7bbb9d1a0 100644
          QList<UBGraphicsPolygonItem*> mPreviousPolygonItems;
  
 
-From 7db64f65e3824c3b09ef1618425901404b133ddc Mon Sep 17 00:00:00 2001
+From bf565ca0799d828c6db50099270547d640747f9e Mon Sep 17 00:00:00 2001
 From: letsfindaway <me@letsfindaway.de>
 Date: Mon, 29 Nov 2021 19:56:42 +0100
 Subject: [PATCH 6/8] fix: load ignoreCtrl setting during startup
@@ -9829,7 +9821,7 @@ index 9e90f7346..e1e6a28bc 100644
      static UBShortcutManager* sShortcutManager;
  };
 
-From 89885f7e4aa32134c0c1c5109af5beb24d541154 Mon Sep 17 00:00:00 2001
+From e0c1a4f0510d9be61d8d653ed633162c28b60b08 Mon Sep 17 00:00:00 2001
 From: letsfindaway <me@letsfindaway.de>
 Date: Sun, 12 Dec 2021 11:04:56 +0100
 Subject: [PATCH 7/8] feat: activate tool while a key is pressed
@@ -9845,10 +9837,10 @@ Subject: [PATCH 7/8] feat: activate tool while a key is pressed
  5 files changed, 146 insertions(+), 3 deletions(-)
 
 diff --git a/src/core/UBApplication.cpp b/src/core/UBApplication.cpp
-index c33473485..c3cfd5b25 100644
+index 8e6d39711..d78c4f289 100644
 --- a/src/core/UBApplication.cpp
 +++ b/src/core/UBApplication.cpp
-@@ -688,6 +688,15 @@ bool UBApplication::eventFilter(QObject *obj, QEvent *event)
+@@ -700,6 +700,15 @@ bool UBApplication::eventFilter(QObject *obj, QEvent *event)
          }
      }
  
@@ -9865,10 +9857,10 @@ index c33473485..c3cfd5b25 100644
  }
  
 diff --git a/src/core/UBPreferencesController.cpp b/src/core/UBPreferencesController.cpp
-index 9a9e83de2..b9d93d7f7 100644
+index e8d434173..a1be9bba3 100644
 --- a/src/core/UBPreferencesController.cpp
 +++ b/src/core/UBPreferencesController.cpp
-@@ -123,7 +123,7 @@ bool UBPreferencesController::handleKeyEvent(QKeyEvent *event)
+@@ -119,7 +119,7 @@ bool UBPreferencesController::handleKeyEvent(QKeyEvent *event)
  
      int keys = mods;
  
@@ -10111,7 +10103,7 @@ index cac047991..611fc59e3 100644
  
  void UBStylusPalette::stylusToolDoubleClicked()
 
-From 1f090911a9c69c1c8ec20a2f9ada6c008e868430 Mon Sep 17 00:00:00 2001
+From 6403ae3713e78de28505e3653667792145d373a6 Mon Sep 17 00:00:00 2001
 From: letsfindaway <me@letsfindaway.de>
 Date: Fri, 18 Mar 2022 18:48:39 +0100
 Subject: [PATCH 8/8] fix: set icon on action instead of button
@@ -10125,10 +10117,10 @@ Subject: [PATCH 8/8] fix: set icon on action instead of button
  1 file changed, 5 insertions(+), 1 deletion(-)
 
 diff --git a/src/gui/UBToolbarButtonGroup.cpp b/src/gui/UBToolbarButtonGroup.cpp
-index 30f697e5e..fe17a5f31 100644
+index e68f11bf1..929c2ca08 100644
 --- a/src/gui/UBToolbarButtonGroup.cpp
 +++ b/src/gui/UBToolbarButtonGroup.cpp
-@@ -116,7 +116,11 @@ void UBToolbarButtonGroup::setIcon(const QIcon &icon, int index)
+@@ -123,7 +123,11 @@ void UBToolbarButtonGroup::setIcon(const QIcon &icon, int index)
          QToolButton *button = qobject_cast<QToolButton*>(widget);
          if (button)
          {
