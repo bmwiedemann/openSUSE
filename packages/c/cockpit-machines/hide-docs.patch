@@ -1,9 +1,9 @@
-diff --git a/src/manifest.json b/src/manifest.json
-index a945d46..3980eb2 100644
---- a/src/manifest.json
-+++ b/src/manifest.json
-@@ -8,7 +8,7 @@
-         "label": "Virtual Machines",
+Index: cockpit-machines-292/src/manifest.json
+===================================================================
+--- cockpit-machines-292.orig/src/manifest.json
++++ cockpit-machines-292/src/manifest.json
+@@ -11,7 +11,7 @@
+         "label": "Virtual machines",
          "path": "index.html",
          "order": 60,
 -        "docs": [

@@ -9,18 +9,15 @@ described at https://github.com/cockpit-project/cockpit/pull/17437
  src/index.html | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/src/index.html b/src/index.html
-index 8c5380c..5be6daa 100644
---- a/src/index.html
-+++ b/src/index.html
+Index: cockpit-machines-292/src/index.html
+===================================================================
+--- cockpit-machines-292.orig/src/index.html
++++ cockpit-machines-292/src/index.html
 @@ -7,6 +7,7 @@
      <meta name="viewport" content="width=device-width, initial-scale=1">
  
      <link rel="stylesheet" href="index.css">
 +    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet">
  
-     <script type="text/javascript" src="../base1/cockpit.js"></script>
-     <script type="text/javascript" src="../*/po.js"></script>
--- 
-2.36.1
-
+     <script type="text/javascript" src="index.js"></script>
+     <script type="text/javascript" src="po.js"></script>

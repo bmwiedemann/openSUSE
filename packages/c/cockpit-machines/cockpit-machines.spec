@@ -1,7 +1,7 @@
 #
 # spec file for package cockpit-machines
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,20 @@
 
 
 Name:           cockpit-machines
-Version:        270.2
+Version:        292
 Release:        0
 Summary:        Cockpit user interface for virtual machines
 License:        LGPL-2.1-or-later AND MIT
 URL:            https://github.com/cockpit-project/cockpit-machines
 # source_validator insists that if obscpio has no version then
 # tarball must neither
-Source:         cockpit-machines.tar
+Source:         https://github.com/cockpit-project/cockpit-machines/archive/refs/tags/%{version}.tar.gz#/cockpit-machines-%{version}.tar.gz
 Source10:       package-lock.json
 Source11:       node_modules.spec.inc
 %include %_sourcedir/node_modules.spec.inc
-Patch0:         hide-docs.patch
-Patch1:         load-css-overrides.patch
-# patches for node modules start with 100
-Patch100:       suse-vv-install.patch
+Patch1:         1088.patch
+Patch10:        hide-docs.patch
+Patch11:        load-css-overrides.patch
 BuildArch:      noarch
 BuildRequires:  appstream-glib
 BuildRequires:  make
@@ -52,7 +51,7 @@ Requires:       virt-install
 Recommends:     libosinfo
 Recommends:     python3-gobject-base
 #
-BuildRequires:  cockpit-devel >= 271
+BuildRequires:  cockpit-devel >= 293
 BuildRequires:  local-npm-registry
 BuildRequires:  sassc
 
@@ -62,25 +61,27 @@ Cockpit component for managing virtual machines.
 If "virt-install" is installed, you can also create new virtual machines.
 
 %prep
-%setup -n %{name}
-%patch0 -p1
+%setup
 %patch1 -p1
+%patch10 -p1
+%patch11 -p1
 rm -f package-lock.json
 local-npm-registry %{_sourcedir} install --with=dev --legacy-peer-deps || ( find ~/.npm/_logs -name '*-debug.log' -print0 | xargs -0 cat; false)
-%patch100 -p1
 
 %build
+export PREFIX=%_prefix
 mkdir -p pkg/lib
 cp -r %{_datadir}/cockpit/devel/lib/* pkg/lib
 NODE_ENV=production npm run build
 
 %install
+export PREFIX=%_prefix
 %make_install
 appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/*
 
 %files
 %doc README.md
-%license LICENSE dist/index.js.LICENSE.txt.gz
+%license LICENSE
 %{_datadir}/cockpit
 %{_datadir}/metainfo/*
 

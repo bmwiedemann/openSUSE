@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jun 16 12:07:39 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- Update to 293
+  * Add manifest condition for the Python bridge
+  * Vsock device support
+  * Apply watchdog changes on next boot if hotplug fails
+  * Option to use RAW volume during VM creation
+  * Redesign VM’s CPU configuration
+  * Indicate need for shutdown
+  * Delete storage file upon disk detachment
+  * Show an alert when virtualization is disabled in BIOS/EFI
+  * Create VM based on cloud image and start it later
+  * Option to forcefully revert a snapshot
+  * Support dark theme
+  * Translation updates
+  * Stability and performance updates
+
+- 1088.patch: WIP for PF5 changes in cockpit
+- hide-docs.patch, load-css-overrides.patch: refreshed
+- suse-vv-install.patch: upstreamed, removed
+
+-------------------------------------------------------------------
 Fri Sep 23 10:30:20 UTC 2022 - Jacek Tomasiak <jtomasiak@suse.com>
 
 - Require qemu-block-curl for installing over https (bsc#1199672) 
