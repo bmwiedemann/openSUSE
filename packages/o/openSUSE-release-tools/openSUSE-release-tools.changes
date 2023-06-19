@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 19 08:26:48 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230619.bd7d620:
+  * skippkg-finder.py: Handle empty configuration values properly
+
+-------------------------------------------------------------------
 Fri Jun 16 07:11:12 UTC 2023 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20230616.d798b51:
