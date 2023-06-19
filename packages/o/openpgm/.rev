@@ -95,4 +95,12 @@ changes file with SLE</comment>
     <comment></comment>
     <requestid>1091348</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>4ae42a19d353939097ca35f10f8f1325</srcmd5>
+    <version>5.3.128</version>
+    <time>1687207807</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093673</requestid>
+  </revision>
 </revisionlist>

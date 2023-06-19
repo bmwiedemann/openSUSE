@@ -33,6 +33,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/steve-o/openpgm
 Source:         https://github.com/steve-o/openpgm/archive/release-%{tarball_version}.tar.gz#/openpgm-release-%{tarball_version}.tar.gz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM https://github.com/steve-o/openpgm/pull/74
+Patch0:         Mark-pgm_family_string-as-inline.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
