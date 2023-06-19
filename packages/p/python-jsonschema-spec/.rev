@@ -34,4 +34,15 @@
     <comment></comment>
     <requestid>1093031</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6776015a5af9d7aac26d442c1595c665</srcmd5>
+    <version>0.1.6</version>
+    <time>1687207836</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.6:
+  * lock typing-extensions just for python37 #22
+  * add python 3.11 support #10
+  * supports read protocol check fix #21</comment>
+    <requestid>1093730</requestid>
+  </revision>
 </revisionlist>

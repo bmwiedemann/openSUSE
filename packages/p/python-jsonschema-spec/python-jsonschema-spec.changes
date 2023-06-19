@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 19 06:41:11 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.1.6:
+  * lock typing-extensions just for python37 #22
+  * add python 3.11 support #10
+  * supports read protocol check fix #21
+
+-------------------------------------------------------------------
 Tue Jun 13 12:12:11 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
