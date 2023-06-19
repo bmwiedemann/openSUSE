@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 19 01:49:58 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.6.1:
+  * No upstream changelog, issue filed.
+- Drop patches redirect-location-assertions.patch, fix-tests.patch.
+- Pin SQLAlchemy requirement to < 2.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Tue Jan  3 12:02:54 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add fix-tests.patch to make tests compatible with latest Flask release

@@ -116,4 +116,16 @@
 </comment>
     <requestid>1046499</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5de121dd18321fdf379c494b500f7a6b</srcmd5>
+    <version>1.6.1</version>
+    <time>1687207835</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.1:
+  * No upstream changelog, issue filed.
+- Drop patches redirect-location-assertions.patch, fix-tests.patch.
+- Pin SQLAlchemy requirement to &lt; 2.
+- Switch to pyproject macros.</comment>
+    <requestid>1093696</requestid>
+  </revision>
 </revisionlist>
