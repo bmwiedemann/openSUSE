@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 17 10:09:50 UTC 2023 - Matthias Bach <marix@marix.org> - 2.5.1
+
+- Update to 2.5.1
+  * Fix Malformed zero width joiner (\u200d) causing IndexError
+
+-------------------------------------------------------------------
 Thu Jun  8 09:15:09 UTC 2023 - Matthias Bach <marix@marix.org> - 2.5.0
 
 - Update to 2.5.0
