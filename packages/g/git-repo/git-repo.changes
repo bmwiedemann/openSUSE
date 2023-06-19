@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Tue Aug 23 18:45:06 UTC 2022 - sebix+novell.com@sebix.at
+
+- Update to version 2.29:
+  * manifest_xml: improve topdir accuracy.
+  * init: hide identify spam when reinitializing
+  * init: show a notice when reinitializing
+  * stage: add missing flush before project prompt
+  * upload: respect --yes with large upload confirmation
+  * launcher: make missing .repo/repo/repo an error
+  * launcher: initialize repo in a temp dir
+  * cherry-pick: tighten up output
+  * git_command: fix input passing
+  * project: initialize new manifests in temp dirs
+  * init: change --depth default to 1 for manifest repo
+  * add a few more docs to existing funcs
+  * init: use --current-branch by default
+  * start: do not swallow git output all the time
+  * pager: catch startup failures on Windows
+  * upload: add --push-options tips & doc link
+  * project: simplify GetRemote a bit
+  * upload: Add ready flag to remove wip
+  * commit-msg: Sync commit-msg from gerrit 3.6.1
+  * sync: handle smartsync HTML responses better
+  * sync: start clearing git settings that disabled pruning
+  * sync: rework --jobs to provide better defaults
+  * Fix the printed path of the ".repo" dir after a fresh init.
+  * Omit local_manifest groups from superproject override.
+  * status, diff: display correct path for multi-manifest
+  * project: simplify if-statement
+  * upload: add ‘--ignore-untracked-files’ option
+  * man: regenerate
+  * Fix Projects.shareable_dirs
+  * Only sync superproject if it will be used.
+
+-------------------------------------------------------------------
+Fri May 27 06:29:59 UTC 2022 - sebix+novell.com@sebix.at
+
+- Update to version 2.26:
+  * sync: add multi-manifest support
+  * project: initial separation of shared project objects
+  * upload: move label validation to core function
+  * tests: switch to tempfile.TemporaryDirectory
+  * project: fix --use-superproject logic for init.
+
+-------------------------------------------------------------------
+Sun May 22 18:43:53 UTC 2022 - sebix+novell.com@sebix.at
+
+- Update to version 2.25:
+  * manifest: add submanifest.default_groups attribute
+  * project: Do not exit early on --standalone-manifest.
+  * project: Add missing imports
+
+-------------------------------------------------------------------
+Thu Apr 21 17:19:48 UTC 2022 - sebix+novell.com@sebix.at
+
+- Update to version 2.24:
+  * progress: optimize progress bar updates a bit
+  * Override the manifest for the entire command
+  * sync: refactor use of self.manifest
+  * Stop passing optparse.Values to git_superproject
+  * ManifestProject: add manifest_platform
+  * forall: fix multi-manifest variables.
+  * git_superproject: only print beta notice once.
+
+-------------------------------------------------------------------
+Mon Apr 18 08:37:38 UTC 2022 - sebix+novell.com@sebix.at
+
+- Update to version 2.23:
+  * manifest_xml: use Superproject to hold XML content
+  * sync: respect `sync-c` manifest option
+  * manifest_xml: Add Load and Unload methods
+  * Fix sub manifest handling
+  * init: add multi-manifest support
+  * Move manifest config logic into ManifestProject
+  * project: add ManifestProject.Sync()
+  * project: Isolate ManifestProject from RepoProject
+  * manifest_file must be an absolute path
+  * trace: allow writing traces to a socket
+  * manifest_xml: group for submanifest projects
+
+-------------------------------------------------------------------
+Fri Feb 25 20:18:03 UTC 2022 - sebix+novell.com@sebix.at
+
+- Update to version 2.22:
+  * Add multi-manifest support with <submanifest> element
+  * Move local-manifest check to manifest_xml.py
+  * project.py: pass --recurse-submodules={value}
+
+-------------------------------------------------------------------
 Fri Feb 04 11:15:47 UTC 2022 - sebix+novell.com@sebix.at
 
 - remove obsolete patch fix-python-readlink.patch
