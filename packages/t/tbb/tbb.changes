@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 15 08:34:01 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2021.9.0:
+  * Hybrid CPU support is now a fully supported feature.
+  * Fixed the issue reported by the Address Sanitizer.
+  * Fixed the input_type alias exposed by flow_graph::join_node.
+- Drop 917.patch (patch was upstreamed).
+- Drop retry-pthread_create.patch (upstream fixed it by using a similar
+  approach).
+
+-------------------------------------------------------------------
 Wed Jan  4 20:08:08 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to v2021.8.0
