@@ -17,7 +17,7 @@
 
 
 Name:           tree
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        File listing as a tree
 License:        GPL-2.0-or-later
