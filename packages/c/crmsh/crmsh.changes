@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 19 06:36:03 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230619.01463a46:
+  * medium: ui_node: fix cib rollback race on node standby
+
+-------------------------------------------------------------------
 Fri Jun 16 08:49:12 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.5.0+20230616.cf763cd1:
