@@ -36,6 +36,7 @@ Source0:        %{url}/src/%{_name}/%{_name}-%{version}.tar.xz
 Source1:        gstreamer-plugins-good.appdata.xml
 Source99:       baselibs.conf
 Patch0:         reduce-required-meson.patch
+Patch1:         adaptivedemux2-uri-data.patch
 
 BuildRequires:  Mesa-libGLESv2-devel
 BuildRequires:  Mesa-libGLESv3-devel

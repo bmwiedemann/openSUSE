@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 13 20:05:38 UTC 2023 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Add patch to fix bug with data url scheme.
+  * adaptivedemux2-uri-data.patch.
+
+-------------------------------------------------------------------
 Wed May 24 14:28:12 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.22.3:
