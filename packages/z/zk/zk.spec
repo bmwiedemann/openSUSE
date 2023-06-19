@@ -46,7 +46,7 @@ BUILDMOD=""
 BUILDMOD="-buildmode=pie"
 %endif
 export RPM_OPT_FLAGS="%{optflags}"
-go build -v -x -mod=vendor $BUILDMOD -a -ldflags "-s -X main.revision=%{version}" --tags "icu json1 fts5 secure_delete"
+go build -v -x -mod=vendor $BUILDMOD -a -ldflags "-s -X main.Version=%{version} -X main.Build=b71a74e" --tags "icu json1 fts5 secure_delete"
 
 %install
 install -Dm755 zk %{buildroot}%{_bindir}/zk
