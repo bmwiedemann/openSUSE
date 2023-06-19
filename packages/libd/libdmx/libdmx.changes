@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun 10 11:00:23 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.5
+  * Update README for gitlab migration
+  * Update configure.ac bug URL for gitlab migration
+  * Fix spelling/wording issues
+  * gitlab CI: add a basic build test
+  * Add deprecation notice to README
+
+-------------------------------------------------------------------
 Sat May 19 15:09:47 UTC 2018 - sndirsch@suse.com
 
 - update to version 1.1.4
