@@ -150,11 +150,11 @@ links.
 %build
 %define _lto_cflags %nil
 ./autogen.sh
+# https://github.com/gluster/glusterfs/issues/3947
 %configure \
 	--without-tcmalloc \
-%if !(0%{?suse_version} >= 1550)
 	--disable-linux-io_uring \
-%else
+%if 0%{?suse_version} >= 1550
 	--with-mountutildir="%_sbindir" \
 %endif
 	--disable-static --with-ipv6-default

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 10 13:29:09 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Disable IO_uring for now [boo#1210894]
+
+-------------------------------------------------------------------
 Tue May 23 23:25:48 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-socket-only-issue-IPPROTO_IPV6-setsockopt-calls-on-A.patch
