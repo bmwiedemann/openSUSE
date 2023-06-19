@@ -18,33 +18,32 @@
 
 %define skip_python2 1
 Name:           python-Flask-Admin
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        Extensible admin interface framework for Flask
 License:        BSD-3-Clause
 URL:            https://github.com/flask-admin/flask-admin/
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Admin/Flask-Admin-%{version}.tar.gz
-Patch0:         redirect-location-assertions.patch
-# PATCH-FIX-UPSTREAM fix-tests.patch
-# gh#flask-admin/flask-admin#2309
-# gh#flask-admin/flask-admin#2316
-Patch1:         fix-tests.patch
 BuildRequires:  %{python_module Flask >= 0.7}
 BuildRequires:  %{python_module Flask-BabelEx}
 BuildRequires:  %{python_module Flask-SQLAlchemy}
 BuildRequires:  %{python_module Pillow >= 3.3.2}
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module SQLAlchemy < 2.0}
 BuildRequires:  %{python_module SQLAlchemy-Utils}
 BuildRequires:  %{python_module WTForms}
 BuildRequires:  %{python_module arrow}
 BuildRequires:  %{python_module colour}
 BuildRequires:  %{python_module peewee}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requre}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Flask >= 0.7
+Requires:       python-SQLAlchemy < 2.0
 Requires:       python-WTForms
 BuildArch:      noarch
 %python_subpackages
@@ -69,10 +68,10 @@ rm -f flask_admin/tests/sqla/test_postgres.py
 rm -f flask_admin/tests/test_form_upload.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -81,8 +80,7 @@ rm -f flask_admin/tests/test_form_upload.py
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%dir %{python_sitelib}/flask_admin
-%{python_sitelib}/flask_admin/*
-%{python_sitelib}/Flask_Admin-%{version}-py*.egg-info
+%{python_sitelib}/flask_admin
+%{python_sitelib}/Flask_Admin-%{version}.dist-info
 
 %changelog
