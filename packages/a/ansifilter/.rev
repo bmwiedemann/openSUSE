@@ -158,4 +158,15 @@ Created in 2007 and actively maintained and enhanced since then.</comment>
 </comment>
     <requestid>1072195</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>cfb2553509ad1ffbeade237216b8dd0f</srcmd5>
+    <version>2.20</version>
+    <time>1687207826</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.20:
+  * Fixed invalid array access (gl#saalen/ansifilter#35).
+  * CLI: Added `--no-default-fg` option to omit default foreground
+    color (gl#saalen/ansifilter#37).</comment>
+    <requestid>1093599</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 17 18:38:15 UTC 2023 - antoine.belvire@opensuse.org
+
+- Update to version 2.20:
+  * Fixed invalid array access (gl#saalen/ansifilter#35).
+  * CLI: Added `--no-default-fg` option to omit default foreground
+    color (gl#saalen/ansifilter#37).
+
+-------------------------------------------------------------------
 Wed Mar 15 20:54:22 UTC 2023 - antoine.belvire@opensuse.org
 
 - Update to version 2.19:
