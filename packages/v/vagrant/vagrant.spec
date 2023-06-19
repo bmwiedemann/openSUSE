@@ -25,7 +25,7 @@
 
 
 Name:           vagrant
-Version:        2.3.6
+Version:        2.3.7
 Release:        0
 Summary:        Tool for building and distributing virtualized development environments
 License:        MIT
@@ -57,6 +57,7 @@ Patch7:         0007-Don-t-abuse-relative-paths-in-plugins.patch
 Patch8:         0008-Skip-failing-tests.patch
 Patch9:         0009-Disable-Subprocess-unit-test.patch
 Patch10:        0010-Remove-dependency-on-grpc-tools.patch
+Patch11:        0011-remove-ssl-extension.patch
 
 # force only one ruby version
 # CAUTION: if you change this, then you *must* also change the sed calls which
@@ -387,6 +388,9 @@ rm -f %{buildroot}%{vagrant_dir}/lib/vagrant/util.rb.orig
 rm -rf %{buildroot}%{vagrant_dir}/{.runner.sh,Dockerfile,Makefile,go.mod,go.sum,shell.nix,nix,gen.go,flake.lock,flake.nix,vagrant-config.hcl}
 # we use our own binstub
 rm -rf %{buildroot}%{vagrant_dir}/binstubs/
+
+# some compatibility helper for winrm which we do not use (https://github.com/hashicorp/vagrant/pull/13178)
+rm -r %{buildroot}%{vagrant_dir}/ext/vagrant_ssl
 
 %fdupes %{buildroot}%{dirname:%vagrant_plugin_dir}
 

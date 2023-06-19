@@ -1,0 +1,37 @@
+--- a/Rakefile	2023-06-15 22:40:35.000000000 +0200
++++ b/Rakefile	2023-06-18 13:28:25.379062875 +0200
+@@ -1,16 +1,11 @@
+ require 'rubygems'
+ require 'bundler/setup'
+-require "rake/extensiontask"
+ 
+ # Immediately sync all stdout so that tools like buildbot can
+ # immediately load in the output.
+ $stdout.sync = true
+ $stderr.sync = true
+ 
+-Rake::ExtensionTask.new "vagrant_ssl" do |ext|
+-  ext.lib_dir = "lib/vagrant"
+-end
+-
+ # Load all the rake tasks from the "tasks" folder. This folder
+ # allows us to nicely separate rake tasks into individual files
+ # based on their role, which makes development and debugging easier
+diff '--color=auto' -ru a/vagrant.gemspec b/vagrant.gemspec
+--- a/vagrant.gemspec	2023-06-15 22:40:35.000000000 +0200
++++ b/vagrant.gemspec	2023-06-18 13:18:26.678462256 +0200
+@@ -49,7 +49,6 @@
+   # Constraint rake to properly handle deprecated method usage
+   # from within rspec
+   s.add_development_dependency "rake", "~> 13.0"
+-  s.add_development_dependency "rake-compiler"
+   s.add_development_dependency "rspec", "~> 3.11"
+   s.add_development_dependency "rspec-its", "~> 1.3.0"
+   s.add_development_dependency "fake_ftp", "~> 0.3.0"
+@@ -105,6 +104,5 @@
+ 
+   s.files         = unignored_files
+   s.executables   = unignored_files.map { |f| f[/^bin\/(.*)/, 1] }.compact
+-  s.extensions    = ["ext/vagrant_ssl/extconf.rb"]
+   s.require_path  = 'lib'
+ end

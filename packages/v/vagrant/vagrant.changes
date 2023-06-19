@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jun 18 10:48:43 UTC 2023 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Update to 2.3.7
+  * https://github.com/hashicorp/vagrant/blob/v2.3.7/CHANGELOG.md#237-june-15-2023
+
+  IMPROVEMENTS:
+  - command/ssh: Enable deprecated key types and algorithms [GH-13179]
+  - core: Update user error message on failed extension installs [GH-13207]
+  - core: Support loading legacy providers in OpenSSL 3 [GH-13178]
+  - provisioner/salt: Verify bootstrap-salt download [GH-13166]
+  
+  BUG FIXES:
+  - communicator/ssh: Remove keyboard-interactive auth method [GH-13194]
+  - provisioner/salt: Fix usage on Windows guests [GH-13086]
+  
+  VAGRANT-GO:
+  - Update data layer implementation [GH-12904]
+  - Update dependencies [GH-13201]
+
+- add 0011-remove-ssl-extension.patch to remove the vagrant ssl extension
+
+-------------------------------------------------------------------
 Tue May 30 07:53:25 UTC 2023 - Илья Индиго <ilya@ilya.cf>
 
 - Updated to 2.3.6
