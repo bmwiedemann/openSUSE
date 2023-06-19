@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 11 14:09:38 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Tue Jun 21 20:54:17 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Actually requires twisted[tls]: python-Twisted-tls on Tumbleweed
