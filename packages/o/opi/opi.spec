@@ -17,7 +17,7 @@
 
 
 Name:           opi
-Version:        2.17.0
+Version:        3.0.0
 Release:        0
 Summary:        OBS Package Installer (CLI)
 License:        GPL-3.0-only
@@ -30,6 +30,7 @@ BuildRequires:  python3
 BuildRequires:  python3-curses
 BuildRequires:  python3-lxml
 BuildRequires:  python3-requests
+BuildRequires:  python3-rpm
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-termcolor
 Requires:       sudo
@@ -39,6 +40,7 @@ Requires:       curl
 Requires:       python3-curses
 Requires:       python3-lxml
 Requires:       python3-requests
+Requires:       python3-rpm
 Requires:       python3-termcolor
 Requires:       zypper
 

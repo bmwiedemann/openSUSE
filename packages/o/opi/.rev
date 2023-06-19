@@ -442,4 +442,16 @@
 - Add jami p2p messenger plugin (#121)</comment>
     <requestid>1076984</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>884cda2c79fe87721a4954bf1c6a0fd4</srcmd5>
+    <version>3.0.0</version>
+    <time>1687207844</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 3.0.0
+- Use best repo for each project (fixes #113)
+- Use new rpm signing key for zoom (fixes #133)
+- cleanup code
+- Remove MS teams as it is discontinued</comment>
+    <requestid>1093751</requestid>
+  </revision>
 </revisionlist>
