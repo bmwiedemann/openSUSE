@@ -196,4 +196,14 @@
 </comment>
     <requestid>1086803</requestid>
   </revision>
+  <revision rev="15" vrev="10">
+    <srcmd5>f283296001f2903b4696359ea8da7985</srcmd5>
+    <version>13.0.1</version>
+    <time>1687207810</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix conflicts/provides for python3-clang to point to
+  %python3_sitelib instead of %python3_sitearch.
+</comment>
+    <requestid>1093399</requestid>
+  </revision>
 </revisionlist>

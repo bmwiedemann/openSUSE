@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 15 23:45:39 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Fix conflicts/provides for python3-clang to point to
+  %python3_sitelib instead of %python3_sitearch.
+
+-------------------------------------------------------------------
 Tue May  9 21:37:34 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Don't use gold for linking anymore: on s390x we use ld.bfd with
