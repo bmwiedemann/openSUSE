@@ -1,7 +1,7 @@
 #
 # spec file for package python-flask-jwt-extended
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-flask-jwt-extended
-Version:        4.3.1
+Version:        4.5.2
 Release:        0
 Summary:        A Flask extension that provides JWT support
 License:        MIT
@@ -28,9 +28,11 @@ BuildRequires:  %{python_module Flask >= 1.0}
 BuildRequires:  %{python_module PyJWT >= 2.0}
 BuildRequires:  %{python_module Werkzeug >= 0.14}
 BuildRequires:  %{python_module cryptography >= 3.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Flask >= 1.0
@@ -58,10 +60,10 @@ Web Tokens easier. These include:
 %setup -q -n Flask-JWT-Extended-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/flask_jwt_extended
 
 %check
@@ -70,8 +72,7 @@ Web Tokens easier. These include:
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%dir %{python_sitelib}/flask_jwt_extended
-%{python_sitelib}/flask_jwt_extended/*
-%{python_sitelib}/Flask_JWT_Extended-%{version}-py*.egg-info
+%{python_sitelib}/flask_jwt_extended
+%{python_sitelib}/Flask_JWT_Extended-%{version}.dist-info
 
 %changelog

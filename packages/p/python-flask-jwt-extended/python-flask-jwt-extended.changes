@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jun 19 06:23:48 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.5.2:
+  * Updated typing of expires_delta and fresh by @eMaerthin in #510
+  * Allow selective disabling of blocklist check by @indrajeet307 in #501
+  * Fix compatibility with flask version 2.3 (#493)
+  * Drop support for python 3.6
+  * Add option to include current_user in jinja templates by default (#478)
+  * Fix mypy type checks for current_user (#488)
+  * Fix mypy explicitly mark exported names #484
+  * Fix verify_type being set to False by default in
+    verify_jwt_in_request() #483
+  * Fix PEP 561 compatibility #480
+  * Drop support for Flask 1
+  * Add verify_type argument to view decorators to allow accepting both
+    refresh & access tokens #460
+  * Relax dependency pinning for cryptography package (#467)
+
+-------------------------------------------------------------------
 Sat Feb 19 18:20:15 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:

@@ -15,4 +15,26 @@
     <comment></comment>
     <requestid>956243</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2357e7b46e567eb7f00a242c282f4270</srcmd5>
+    <version>4.5.2</version>
+    <time>1687207838</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.5.2:
+  * Updated typing of expires_delta and fresh by @eMaerthin in #510
+  * Allow selective disabling of blocklist check by @indrajeet307 in #501
+  * Fix compatibility with flask version 2.3 (#493)
+  * Drop support for python 3.6
+  * Add option to include current_user in jinja templates by default (#478)
+  * Fix mypy type checks for current_user (#488)
+  * Fix mypy explicitly mark exported names #484
+  * Fix verify_type being set to False by default in
+    verify_jwt_in_request() #483
+  * Fix PEP 561 compatibility #480
+  * Drop support for Flask 1
+  * Add verify_type argument to view decorators to allow accepting both
+    refresh &amp; access tokens #460
+  * Relax dependency pinning for cryptography package (#467)</comment>
+    <requestid>1093727</requestid>
+  </revision>
 </revisionlist>
