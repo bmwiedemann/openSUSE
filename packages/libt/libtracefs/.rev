@@ -104,4 +104,37 @@
   * Documentation is built via extra build target</comment>
     <requestid>1063776</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>371368b1f84d7125557b4cb628cb9fb7</srcmd5>
+    <version>1.7.0</version>
+    <time>1687207802</time>
+    <user>dimstar_suse</user>
+    <comment>- Add explicit thread dependency for older versions of meson (i.e SLE-15-SP5)
+  New patch: add-explicit-meson-thread-dependency.patch
+
+- Update to version 1.7.0
+  * Add initial support for meson
+  * Add tracefs_kprobe_destroy() to index man page
+  * State that tracefs_dynevent_create() is needed for tracefs_kprobe_alloc()
+  * Add missing prototypes in top level man page
+  * Add tracefs_kprobe_destory() API
+  * Add helper function to destroy dynamic event
+  * Add tracefs_time_conversion() API
+  * Add tracefs_find_cid_pid() API
+  * Fix crashing of synth test when synths exist
+  * Do not use synth for test_synth element
+  * Clarify the tracefs_synth_create() man page
+  * Do not allow tracefs_synth_set_instance() on created synth
+  * Documentation for tracefs_synth_set_instance
+  * New API to set synthetic event instance
+  * Do not segfault in tests if synthetic events are not configured
+  * Add tracefs_instance_tracers() API
+  * Do not use hwlat tracer and fdb_delete event for test
+  * Add stacktrace to tracefs_sql()
+  * Unit test for tracefs_instance_reset()
+  * Documentation for tracefs_instance_reset()	
+  * New API to reset ftrace instance 
+- Drop patch 0001-libtracefs-Add-initial-support-for-meson.patch (upstream) (forwarded request 1093516 from jones_tony)</comment>
+    <requestid>1093577</requestid>
+  </revision>
 </revisionlist>

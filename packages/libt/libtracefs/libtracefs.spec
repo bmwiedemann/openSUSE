@@ -18,14 +18,13 @@
 
 Name:           libtracefs
 %define lname   libtracefs1
-Version:        1.6.4
+Version:        1.7.0
 Release:        0
 Summary:        Linux kernel trace file system library
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://git.kernel.org/pub/scm/libs/libtrace/libtracefs.git/
 Source:         https://git.kernel.org/pub/scm/libs/libtrace/libtracefs.git/snapshot/%name-%version.tar.gz
-Patch1:         0001-libtracefs-Add-initial-support-for-meson.patch
 BuildRequires:  asciidoc
 BuildRequires:  bison
 BuildRequires:  fdupes
@@ -36,6 +35,7 @@ BuildRequires:  source-highlight
 BuildRequires:  xmlto
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libtraceevent) >= 1.3
+Patch1:         add-explicit-meson-thread-dependency.patch
 
 %description
 This library provides C APIs to access the kernel trace file system.
