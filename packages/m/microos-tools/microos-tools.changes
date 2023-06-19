@@ -39,6 +39,7 @@ Thu Jan 19 10:49:29 UTC 2023 - Ignaz Forster <iforster@suse.com>
 
 - Update to version 2.18:
   - Add TMPDIR to tukit binddirs for Salt
+    [bsc#1211356] [bsc#1205011]
   - 98selinux-microos: Add chroot as dependency
   - Fix spelling error in warning
 
