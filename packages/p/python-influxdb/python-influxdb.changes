@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 19 08:47:41 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix tests with newer pandas:
+  * python-influxdb-new-pandas.patch
+
+-------------------------------------------------------------------
 Fri Jun  2 08:59:55 UTC 2023 - pgajdos@suse.com
 
 - do not require six

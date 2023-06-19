@@ -32,6 +32,8 @@ Patch0:         python-influxdb-remove-nose.patch
 Patch1:         https://github.com/influxdata/influxdb-python/pull/845.patch#/influxdb-pr845-pandas-future.patch
 # do not require six (repo archived in favour of influxdb2, not reporting)
 Patch2:         python-influxdb-no-six.patch
+# fix tests with newer pandas
+Patch3:         python-influxdb-new-pandas.patch
 BuildRequires:  %{python_module python-dateutil >= 2.6.0}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests >= 2.17.0}
