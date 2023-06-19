@@ -381,6 +381,8 @@ Patch36:        clang-test-xfail-gnuless-triple.patch
 Patch37:        llvm-preserve-symbols-used.patch
 # Fix build with Swig 4.1.0: backport of upstream commits 81fc5f7909a4, f0a25fe0b746. (gh#llvm/llvm-project#58018)
 Patch38:        lldb-swig-4.1.0-build-fix.patch
+# Cherry pick from rust llvm project (https://reviews.llvm.org/D146938) - boo#1212264
+Patch39:        llvm14-fix-segfault-on-aarch64.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
 BuildRequires:  fdupes
@@ -675,8 +677,9 @@ Summary:        Python bindings for libclang
 Group:          Development/Libraries/Python
 Requires:       libclang%{_soclang} >= %{version}
 Requires:       python3-base
-Conflicts:      %{python3_sitearch}/clang/
-Provides:       %{python3_sitearch}/clang/
+Conflicts:      %{python3_sitelib}/clang/
+Provides:       %{python3_sitelib}/clang/
+BuildArch:      noarch
 
 %description -n python3-clang%{_sonum}
 This package contains the Python bindings to clang (C language)
@@ -811,6 +814,7 @@ This package contains the development files for Polly.
 %patch27 -p2
 %patch33 -p2
 %patch37 -p2
+%patch39 -p2
 
 pushd clang-%{_version}.src
 %patch2 -p1

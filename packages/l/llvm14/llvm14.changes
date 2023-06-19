@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 15 23:45:39 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Make python3-clang noarch again and fix conflicts/provides to
+  point to %python3_sitelib instead of %python3_sitearch.
+
+-------------------------------------------------------------------
+Tue Jun 13 08:13:42 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix segmentation fault on aarch64 - boo#1212264:
+  * llvm14-fix-segfault-on-aarch64.patch
+
+-------------------------------------------------------------------
 Fri May  5 21:48:49 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - No longer expect test failures on s390x that have disappeared.
