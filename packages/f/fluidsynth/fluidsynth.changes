@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 14 14:32:46 UTC 2023 - Tom Mbrt <tom.mbrt@googlemail.com>
+
+- Update to 2.3.3
+  * Fix choppy sound when selecting pipewire output
+  * Fix build issues on musl-based distros
+  * Terminate MIDI player once internal synth-ticks overflow to prevent
+    filling up the filesystem
+  * Fix a bug that allowed playing notes outside of key and velocity ranges
+
+-------------------------------------------------------------------
 Wed Feb 15 12:35:28 UTC 2023 - Florian <packaging@sp1rit.anonaddy.me>
 
 - Fixed systemd service not starting by linking fluidsynth against
