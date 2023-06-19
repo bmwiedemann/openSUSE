@@ -85,4 +85,12 @@
     <comment>put into adi:32</comment>
     <requestid>415308</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a30bf5cc89a238005d62cb575b9eab1f</srcmd5>
+    <version>4.2.0</version>
+    <time>1687207825</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.2.0</comment>
+    <requestid>1093575</requestid>
+  </revision>
 </revisionlist>

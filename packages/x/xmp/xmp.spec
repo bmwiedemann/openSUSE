@@ -1,7 +1,7 @@
 #
 # spec file for package xmp
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           xmp
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        Extended Module Player for MOD/S3M/XM/IT/etc.
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
-Url:            http://xmp.sf.net/
+URL:            http://xmp.sf.net/
 
-#Git-Clone:	git://git.code.sf.net/p/xmp/xmp-cli
-Source:         http://downloads.sf.net/xmp/%name-%version.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+#Git-Clone:	https://github.com/libxmp/xmp-cli
+Source:         https://github.com/libxmp/xmp-cli/releases/download/xmp-%version/xmp-%version.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa) >= 1
 BuildRequires:  pkgconfig(libpulse-simple)
@@ -40,17 +39,16 @@ Amiga, Atari, Acorn, Apple IIgs, C64, and PC, including Protracker
 Tracker (IT) files.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot"
+%make_install
 
 %files
-%defattr(-,root,root)
 %dir %_sysconfdir/xmp/
 %config %_sysconfdir/xmp/*.conf
 %_bindir/xmp
