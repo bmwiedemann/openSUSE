@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 20 10:02:02 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.59.1
+  * Invalid `dev` version identifiers in `setup.py` (#166), closes (#165)
+
+-------------------------------------------------------------------
 Wed Apr  5 12:43:09 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.59.0
