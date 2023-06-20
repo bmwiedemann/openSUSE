@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jun 15 08:23:12 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Add patterns-base-bootloader explicitly
+
+-------------------------------------------------------------------
+Wed Jun 14 11:02:52 UTC 2023 - Ludwig Nussel <lnussel@suse.de>
+
+- Don't use separate /var partition. SLE Micro doesn't have it either
+- add cryptsetup and device-mapper to allow adding image encryption externally
+
+-------------------------------------------------------------------
+Wed Jun 14 08:00:02 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable Hyper-V image for aarch64
+
+-------------------------------------------------------------------
+Fri May 26 07:11:16 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- Removed patterns-base-bootloader in order to not install grub
+  packages if other bootloaders are used.
+
+-------------------------------------------------------------------
 Wed Apr 19 09:40:50 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Relabel /etc in fstab.script to work around kiwi doing it

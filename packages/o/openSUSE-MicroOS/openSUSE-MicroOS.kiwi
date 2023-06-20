@@ -13,7 +13,7 @@
         <!-- Platforms -->
         <profile name="kvm-and-xen" description="kvm-and-xen" arch="x86_64,aarch64"/>
         <profile name="VMware" description="VMware for x86_64" arch="x86_64"/>
-        <profile name="MS-HyperV" description="Hyper-V for x86_64" arch="x86_64"/>
+        <profile name="MS-HyperV" description="Hyper-V" arch="x86_64,aarch64"/>
         <profile name="OpenStack-Cloud" description="OpenStack Cloud" arch="x86_64,aarch64"/>
         <profile name="DigitalOcean-Cloud" description="DigitalOcean Cloud" arch="x86_64"/>
         <profile name="VirtualBox" description="VirtualBox for x86_64" arch="x86_64"/>
@@ -33,7 +33,7 @@
             <requires profile="VMware"/>
             <requires profile="ContainerHost"/>
         </profile>
-        <profile name="ContainerHost-MS-HyperV" description="MicroOS with Podman for Hyper-V" arch="x86_64">
+        <profile name="ContainerHost-MS-HyperV" description="MicroOS with Podman for Hyper-V" arch="x86_64,aarch64">
             <requires profile="MS-HyperV"/>
             <requires profile="ContainerHost"/>
         </profile>
@@ -79,7 +79,6 @@
             btrfs_root_is_snapshot="true"
             btrfs_root_is_readonly_snapshot="true"
             btrfs_quota_groups="true"
-            spare_part="5G" spare_part_mountpoint="/var" spare_part_fs="btrfs" spare_part_is_last="true" spare_part_fs_attributes="no-copy-on-write"
         >
             <bootloader name="grub2" console="gfxterm" />
             <systemdisk>
@@ -91,6 +90,7 @@
                 <volume name="boot/grub2/x86_64-efi" mountpoint="boot/grub2/x86_64-efi"/>
                 <volume name="boot/writable"/>
                 <volume name="usr/local"/>
+                <volume name="var" copy_on_write="false"/>
             </systemdisk>
             <size unit="G">20</size>
         </type>
@@ -112,7 +112,6 @@
             btrfs_root_is_snapshot="true"
             btrfs_root_is_readonly_snapshot="true"
             btrfs_quota_groups="true"
-            spare_part="5G" spare_part_mountpoint="/var" spare_part_fs="btrfs" spare_part_is_last="true" spare_part_fs_attributes="no-copy-on-write"
         >
             <bootloader name="grub2" console="gfxterm" />
             <systemdisk>
@@ -123,6 +122,7 @@
                 <volume name="boot/grub2/arm64-efi" mountpoint="boot/grub2/arm64-efi"/>
                 <volume name="boot/writable"/>
                 <volume name="usr/local"/>
+                <volume name="var" copy_on_write="false"/>
             </systemdisk>
             <size unit="G">20</size>
         </type>
@@ -175,7 +175,6 @@
             btrfs_root_is_snapshot="true"
             btrfs_root_is_readonly_snapshot="true"
             btrfs_quota_groups="true"
-            spare_part="5G" spare_part_mountpoint="/var" spare_part_fs="btrfs" spare_part_is_last="true" spare_part_fs_attributes="no-copy-on-write"
         >
             <bootloader name="grub2" console="gfxterm" />
             <systemdisk>
@@ -187,6 +186,7 @@
                 <volume name="boot/grub2/x86_64-efi" mountpoint="boot/grub2/x86_64-efi"/>
                 <volume name="boot/writable"/>
                 <volume name="usr/local"/>
+                <volume name="var" copy_on_write="false"/>
             </systemdisk>
             <size unit="G">24</size>
             <machine memory="1024" HWversion="10" guestOS="suse-64"/>
@@ -209,7 +209,6 @@
             btrfs_root_is_snapshot="true"
             btrfs_root_is_readonly_snapshot="true"
             btrfs_quota_groups="true"
-            spare_part="5G" spare_part_mountpoint="/var" spare_part_fs="btrfs" spare_part_is_last="true" spare_part_fs_attributes="no-copy-on-write"
         >
             <bootloader name="grub2" console="gfxterm" />
             <systemdisk>
@@ -221,6 +220,7 @@
                 <volume name="boot/grub2/x86_64-efi" mountpoint="boot/grub2/x86_64-efi"/>
                 <volume name="boot/writable"/>
                 <volume name="usr/local"/>
+                <volume name="var" copy_on_write="false"/>
             </systemdisk>
             <size unit="G">24</size>
         </type>
@@ -242,7 +242,6 @@
             btrfs_root_is_snapshot="true"
             btrfs_root_is_readonly_snapshot="true"
             btrfs_quota_groups="true"
-            spare_part="5G" spare_part_mountpoint="/var" spare_part_fs="btrfs" spare_part_is_last="true" spare_part_fs_attributes="no-copy-on-write"
         >
             <bootloader name="grub2" console="gfxterm" />
             <systemdisk>
@@ -253,6 +252,7 @@
                 <volume name="boot/grub2/arm64-efi" mountpoint="boot/grub2/arm64-efi"/>
                 <volume name="boot/writable"/>
                 <volume name="usr/local"/>
+                <volume name="var" copy_on_write="false"/>
             </systemdisk>
             <size unit="G">24</size>
         </type>
@@ -274,7 +274,6 @@
             btrfs_root_is_snapshot="true"
             btrfs_root_is_readonly_snapshot="true"
             btrfs_quota_groups="true"
-            spare_part="5G" spare_part_mountpoint="/var" spare_part_fs="btrfs" spare_part_is_last="true" spare_part_fs_attributes="no-copy-on-write"
         >
             <bootloader name="grub2" console="gfxterm" />
             <systemdisk>
@@ -286,11 +285,12 @@
                 <volume name="boot/grub2/x86_64-efi" mountpoint="boot/grub2/x86_64-efi"/>
                 <volume name="boot/writable"/>
                 <volume name="usr/local"/>
+                <volume name="var" copy_on_write="false"/>
             </systemdisk>
             <size unit="G">24</size>
         </type>
     </preferences>
-    <preferences profiles="MS-HyperV">
+    <preferences profiles="MS-HyperV" arch="x86_64">
         <version>16.0.0</version>
         <packagemanager>zypper</packagemanager>
         <bootloader-theme>openSUSE</bootloader-theme>
@@ -307,7 +307,6 @@
             btrfs_root_is_snapshot="true"
             btrfs_root_is_readonly_snapshot="true"
             btrfs_quota_groups="true"
-            spare_part="5G" spare_part_mountpoint="/var" spare_part_fs="btrfs" spare_part_is_last="true" spare_part_fs_attributes="no-copy-on-write"
         >
             <bootloader name="grub2" console="gfxterm" timeout="10" />
             <systemdisk>
@@ -319,6 +318,40 @@
                 <volume name="boot/grub2/x86_64-efi" mountpoint="boot/grub2/x86_64-efi"/>
                 <volume name="boot/writable"/>
                 <volume name="usr/local"/>
+                <volume name="var" copy_on_write="false"/>
+            </systemdisk>
+            <!-- Microsoft wants 30GB images -->
+            <size unit="G">30</size>
+        </type>
+    </preferences>
+    <preferences profiles="MS-HyperV" arch="aarch64">
+        <version>16.0.0</version>
+        <packagemanager>zypper</packagemanager>
+        <bootloader-theme>openSUSE</bootloader-theme>
+        <rpm-excludedocs>true</rpm-excludedocs>
+        <locale>en_US</locale>
+        <type
+            image="vmx"
+            filesystem="btrfs"
+            format="vhdx"
+            firmware="uefi"
+            bootpartition="false"
+            bootkernel="custom"
+            devicepersistency="by-uuid"
+            btrfs_root_is_snapshot="true"
+            btrfs_root_is_readonly_snapshot="true"
+            btrfs_quota_groups="true"
+        >
+            <bootloader name="grub2" console="gfxterm" timeout="10" />
+            <systemdisk>
+                <volume name="home"/>
+                <volume name="root"/>
+                <volume name="opt"/>
+                <volume name="srv"/>
+                <volume name="boot/grub2/arm64-efi" mountpoint="boot/grub2/arm64-efi"/>
+                <volume name="boot/writable"/>
+                <volume name="usr/local"/>
+                <volume name="var" copy_on_write="false"/>
             </systemdisk>
             <!-- Microsoft wants 30GB images -->
             <size unit="G">30</size>
@@ -341,7 +374,6 @@
             btrfs_root_is_snapshot="true"
             btrfs_root_is_readonly_snapshot="true"
             btrfs_quota_groups="true"
-            spare_part="5G" spare_part_mountpoint="/var" spare_part_fs="btrfs" spare_part_is_last="true" spare_part_fs_attributes="no-copy-on-write"
         >
             <bootloader name="grub2" console="gfxterm" />
             <systemdisk>
@@ -353,6 +385,7 @@
                 <volume name="boot/grub2/x86_64-efi" mountpoint="boot/grub2/x86_64-efi"/>
                 <volume name="boot/writable"/>
                 <volume name="usr/local"/>
+                <volume name="var" copy_on_write="false"/>
             </systemdisk>
             <size unit="G">20</size>
         </type>
@@ -507,7 +540,6 @@
             btrfs_root_is_snapshot="true"
             btrfs_root_is_readonly_snapshot="true"
             btrfs_quota_groups="true"
-            spare_part="5G" spare_part_mountpoint="/var" spare_part_fs="btrfs" spare_part_is_last="true" spare_part_fs_attributes="no-copy-on-write"
         >
             <bootloader name="grub2" console="gfxterm" />
             <systemdisk>
@@ -519,6 +551,7 @@
                 <volume name="boot/grub2/x86_64-efi" mountpoint="boot/grub2/x86_64-efi"/>
                 <volume name="boot/writable"/>
                 <volume name="usr/local"/>
+		<volume name="var" copy_on_write="false"/>
             </systemdisk>
             <vagrantconfig provider="libvirt" virtualsize="24"/>
             <size unit="G">24</size>
@@ -541,7 +574,6 @@
             btrfs_root_is_snapshot="true"
             btrfs_root_is_readonly_snapshot="true"
             btrfs_quota_groups="true"
-            spare_part="5G" spare_part_mountpoint="/var" spare_part_fs="btrfs" spare_part_is_last="true" spare_part_fs_attributes="no-copy-on-write"
         >
             <bootloader name="grub2" console="gfxterm" />
             <systemdisk>
@@ -552,6 +584,7 @@
                 <volume name="boot/grub2/arm64-efi" mountpoint="boot/grub2/arm64-efi"/>
                 <volume name="boot/writable"/>
                 <volume name="usr/local"/>
+		<volume name="var" copy_on_write="false"/>
             </systemdisk>
             <vagrantconfig provider="libvirt" virtualsize="24"/>
             <size unit="G">24</size>
@@ -605,14 +638,17 @@
     </repository>
     <packages type="image">
         <package name="live-add-yast-repos"/>
+        <package name="patterns-base-bootloader"/>
         <!-- Apparently zypper (?) doesn't like having multiple patterns with the same name,
              so avoid using namedCollection at least for basesystem -->
         <package name="patterns-microos-basesystem"/>
         <package name="patterns-microos-base-zypper"/>
-        <package name="patterns-base-bootloader"/>
         <package name="patterns-microos-defaults"/>
         <package name="patterns-microos-selinux"/>
         <package name="kernel-default"/>
+        <!-- Make it easier to add encryption later, like with https://github.com/lnussel/addimageencryption -->
+        <package name="device-mapper"/>
+        <package name="cryptsetup"/>
     </packages>
     <packages type="image" profiles="SelfInstall,kvm-and-xen,VMware,MS-HyperV,VirtualBox,Pine64,RaspberryPi,RaspberryPi2,Rock64,Vagrant,DigitalOcean-Cloud">
         <!-- Needed for initial configuration, except on OpenStack-Cloud, where cloud-init is used -->
@@ -637,7 +673,7 @@
         <package name="open-vm-tools" arch="x86_64"/>
     </packages>
     <packages type="image" profiles="MS-HyperV">
-        <package name="hyper-v" arch="x86_64"/>
+        <package name="hyper-v"/>
     </packages>
     <packages type="image" profiles="OpenStack-Cloud">
         <package name="patterns-microos-cloud"/>

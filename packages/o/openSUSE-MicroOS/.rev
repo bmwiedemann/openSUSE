@@ -574,4 +574,20 @@
     <comment></comment>
     <requestid>1080291</requestid>
   </revision>
+  <revision rev="61" vrev="61">
+    <srcmd5>8791b5540687bef7c89eee164c35482f</srcmd5>
+    <version>16.0.0</version>
+    <time>1687271996</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patterns-base-bootloader explicitly
+
+- Don't use separate /var partition. SLE Micro doesn't have it either
+- add cryptsetup and device-mapper to allow adding image encryption externally
+
+- Enable Hyper-V image for aarch64
+
+- Removed patterns-base-bootloader in order to not install grub
+  packages if other bootloaders are used.</comment>
+    <requestid>1093904</requestid>
+  </revision>
 </revisionlist>
