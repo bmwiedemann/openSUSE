@@ -1,7 +1,7 @@
 #
 # spec file for package qbs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2018 The Qt Company.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,34 +17,31 @@
 #
 
 
-%define qt5_version 5.14.0
 Name:           qbs
-Version:        1.24.0
+Version:        2.0.2
 Release:        0
-Summary:        Modern build tool for software projects
+Summary:        Build tool for software projects
 # Legal:
 # scripts/ is LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 # share/ is LGPL-2.1-only OR LGPL-3.0-only WITH Qt-LGPL-exception-1.1.
 # src/ is a mix of both licenses combo...except transformerchangetracking.{cpp,h}
 # which is GPL-3.0-only WITH Qt-GPL-exception-1.0
-License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND (LGPL-2.1-only OR LGPL-3.0-only WITH Qt-LGPL-exception-1.1) AND GPL-3.0-only WITH Qt-GPL-exception-1.0
-Group:          Development/Tools/Building
+License:        LGPL-3.0-only
 URL:            https://wiki.qt.io/Qbs
-Source:         https://download.qt.io/official_releases/%{name}/%{version}/%{name}-src-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE
-Patch1:         0001-Use-qmake-qt5-for-openSUSE.patch
+Source:         https://download.qt.io/official_releases/qbs/%{version}/qbs-src-%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  libQt5Concurrent-devel >= %{qt5_version}
-BuildRequires:  libQt5Core-devel >= %{qt5_version}
-BuildRequires:  libQt5Core-private-headers-devel >= %{qt5_version}
-BuildRequires:  libQt5Gui-devel >= %{qt5_version}
-BuildRequires:  libQt5Network-devel >= %{qt5_version}
-BuildRequires:  libQt5Script-devel >= %{qt5_version}
-BuildRequires:  libQt5Test-devel >= %{qt5_version}
-BuildRequires:  libQt5Widgets-devel >= %{qt5_version}
-BuildRequires:  libQt5Xml-devel >= %{qt5_version}
+BuildRequires:  qt6-core-private-devel
+BuildRequires:  cmake(Qt6Concurrent)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Core5Compat)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Xml)
 # Qt Creator used to package qbs too
 Conflicts:      libqt5-creator <= 4.5.0
+# Fails to build on 32bit archs
+ExcludeArch:    %ix86 armv7hl
 
 %description
 Qbs is a tool that helps simplify the build process for developing projects
@@ -59,93 +56,86 @@ This package contains the command line interface. The Qt Creator IDE does
 directly support working qbs projects.
 
 %package devel
-Summary:        Development files for %{name}
-Group:          Development/Tools/Building
+Summary:        Development files for qbs
 Requires:       %{name} = %{version}-%{release}
 
 %description devel
-This package is required to develop applications using %{name} as a library
+This package is required to develop applications using qbs as a library
+
+%package examples
+Summary:        Examples for qbs
+Requires:       %{name}
+# Split from the -devel package
+Conflicts:      qbs-devel < 2.0.2
+
+%description examples
+This package contains examples to show different qbs usages.
 
 %prep
 %autosetup -p1 -n %{name}-src-%{version}
 
 %build
-makeopts=""
-
-# QBS_LIBEXEC_DESTDIR, QBS_RELATIVE_LIBEXEC_PATH need to be
-# set for Leap 15 because the defaults are hardcoded to 'libexec'
-#
-# qbs_enable_project_file_updates allow to build Qt Creator
-# against the installed qbs.
-%qmake5 %{name}.pro -r QBS_INSTALL_PREFIX=%{_prefix} \
-    QBS_LIBRARY_DIRNAME=%{_lib} \
-    QBS_LIBEXEC_INSTALL_DIR=%{_libexecdir}/%{name} \
-    QBS_LIB_INSTALL_DIR=%{_libdir} \
-    QBS_PLUGINS_INSTALL_DIR=%{_libdir} \
-    CONFIG+=qbs_enable_project_file_updates \
-%if 0%{?suse_version} <= 1500
-    QBS_RELATIVE_LIBEXEC_PATH=../lib/%{name} \
-    QBS_LIBEXEC_DESTDIR=../../../lib/%{name}
+%cmake_qt6 \
+  -DQBS_ENABLE_RPATH:BOOL=OFF \
+  -DQBS_INSTALL_MAN_PAGE:BOOL=ON \
+%if 0%{?suse_version} == 1500
+  -DQBS_LIBEXEC_INSTALL_DIR:STRING=lib/qbs \
 %endif
+  -DQBS_LIB_INSTALL_DIR:STRING=%{_lib} \
+  -DQBS_PLUGINS_INSTALL_BASE:STRING=%{_lib} \
+  -DWITH_TESTS:BOOL=OFF
 
-%make_build $makeopts
+%{qt6_build}
 
 %install
-%qmake5_install
+%{qt6_install}
 
-# Cleanup, until the code is ported to python3
-rm %{buildroot}%{_libexecdir}/%{name}/dmgbuild
-rm -r %{buildroot}%{_datadir}/%{name}/python
+# Cleanup
+rm %{buildroot}%{_libexecdir}/qbs/dmgbuild
+rm -r %{buildroot}%{_qt6_sharedir}/qbs/python
 
 # E: version-control-internal-file
-rm %{buildroot}%{_datadir}/qbs/modules/typescript/qbs-tsc-scan/.gitignore
+rm %{buildroot}%{_qt6_sharedir}/qbs/modules/typescript/qbs-tsc-scan/.gitignore
 
-ln -f -s qbs.1.gz %{buildroot}/%{_mandir}/man1/qbs-config.1.gz
-ln -f -s qbs.1.gz %{buildroot}/%{_mandir}/man1/qbs-config-ui.1.gz
-ln -f -s qbs.1.gz %{buildroot}/%{_mandir}/man1/qbs-create-project.1.gz
-ln -f -s qbs.1.gz %{buildroot}/%{_mandir}/man1/qbs-setup-android.1.gz
-ln -f -s qbs.1.gz %{buildroot}/%{_mandir}/man1/qbs-setup-qt.1.gz
-ln -f -s qbs.1.gz %{buildroot}/%{_mandir}/man1/qbs-setup-toolchains.1.gz
+%fdupes %{buildroot}%{_qt6_sharedir}/qbs
 
-%fdupes %{buildroot}%{_datadir}/%{name}
-
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license LGPL_EXCEPTION.txt LICENSE.LGPLv21 LICENSE.LGPLv3 LICENSE.GPL3-EXCEPT
-%doc README.md
-%doc changelogs/%{version}.md
-%dir %{_datadir}/%{name}/
-%dir %{_libdir}/%{name}/
-%dir %{_libdir}/%{name}/plugins/
-%dir %{_libexecdir}/%{name}/
-%{_bindir}/%{name}-config
-%{_bindir}/%{name}-config-ui
-%{_bindir}/%{name}-create-project
-%{_bindir}/%{name}-setup-android
-%{_bindir}/%{name}-setup-qt
-%{_bindir}/%{name}-setup-toolchains
+%doc README.md changelogs/changes-%{version}.md
+%dir %{_libexecdir}/qbs/
+%dir %{_libdir}/qbs
+%dir %{_libdir}/qbs/plugins
+%dir %{_qt6_sharedir}/qbs
 %{_bindir}/qbs
-%{_datadir}/%{name}/imports/
-%{_datadir}/%{name}/module-providers/
-%{_datadir}/%{name}/modules/
-%{_datadir}/%{name}/qml-type-descriptions/
-%{_libdir}/%{name}/plugins/lib%{name}_cpp_scanner.so
-%{_libdir}/%{name}/plugins/lib%{name}_qt_scanner.so
-%{_libdir}/%{name}/plugins/libclangcompilationdbgenerator.so
-%{_libdir}/%{name}/plugins/libiarewgenerator.so
-%{_libdir}/%{name}/plugins/libkeiluvgenerator.so
-%{_libdir}/%{name}/plugins/libmakefilegenerator.so
-%{_libdir}/%{name}/plugins/libvisualstudiogenerator.so
-%{_libdir}/lib%{name}*.so.*
-%{_libexecdir}/%{name}/%{name}_processlauncher
-%{_mandir}/man1/qbs*%{ext_man}
+%{_bindir}/qbs-config
+%{_bindir}/qbs-config-ui
+%{_bindir}/qbs-create-project
+%{_bindir}/qbs-setup-android
+%{_bindir}/qbs-setup-qt
+%{_bindir}/qbs-setup-toolchains
+%{_libdir}/qbs/plugins/libclangcompilationdbgenerator.so
+%{_libdir}/qbs/plugins/libiarewgenerator.so
+%{_libdir}/qbs/plugins/libkeiluvgenerator.so
+%{_libdir}/qbs/plugins/libmakefilegenerator.so
+%{_libdir}/qbs/plugins/libqbs_cpp_scanner.so
+%{_libdir}/qbs/plugins/libqbs_qt_scanner.so
+%{_libdir}/qbs/plugins/libvisualstudiogenerator.so
+%{_libexecdir}/qbs/qbs_processlauncher
+%{_mandir}/man1/qbs.1%{ext_man}
+%{_qt6_libdir}/libqbscore.so.*
+%{_qt6_sharedir}/qbs/imports/
+%{_qt6_sharedir}/qbs/module-providers/
+%{_qt6_sharedir}/qbs/modules/
+%{_qt6_sharedir}/qbs/qml-type-descriptions/
 
 %files devel
-%doc %{_datadir}/%{name}/examples/
-%{_includedir}/%{name}/
-%{_libdir}/lib%{name}*.prl
-%{_libdir}/lib%{name}*.so
+%{_includedir}/qbs/
+%{_qt6_libdir}/libqbscore.so
+
+%files examples
+%dir %{_qt6_sharedir}/qbs
+%{_qt6_sharedir}/qbs/examples/
 
 %changelog
