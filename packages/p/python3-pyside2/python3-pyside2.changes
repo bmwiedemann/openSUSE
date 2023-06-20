@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 19 13:45:19 UTC 2023 - Dmitry Roshchin <dmitry_r@opensuse.org>
+
+- Update to version 5.15.10
+- Fix python 3.11 compatibility, temporary blacklist signal_enum_test
+  * python-3.11-compatibility.patch
+
+-------------------------------------------------------------------
 Wed Jun 14 06:18:31 UTC 2023 - Jiri Srain <jsrain@suse.com>
 
 - update _constrainsts to 8GB of disk to avoid random build
@@ -139,8 +146,8 @@ Fri Apr 23 12:10:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 -------------------------------------------------------------------
 Wed Apr  7 22:56:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- avoid repackaging the pkgconfig and cmake directories - they are 
-  provided by the filesystem package 
+- avoid repackaging the pkgconfig and cmake directories - they are
+  provided by the filesystem package
 
 -------------------------------------------------------------------
 Tue Mar 30 11:01:31 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
@@ -291,7 +298,7 @@ Wed Feb 26 13:08:14 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 Mon Dec 30 09:12:02 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.14.0:
-  * 
+  *
   * [PYSIDE-990] It is no longer possible to nest types in typesystem files by
     by qualifying the namespace components with "::". The elements need to be
     properly nested.
@@ -416,7 +423,7 @@ Thu Jun 27 07:58:17 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
   * Regenerate all example forms using the python-extended rcc of 5.14
   * Fix type name for lookup of QFlags<> converters
   Check the changes-* files for older changes.
-  
+
 -------------------------------------------------------------------
 Mon May  6 08:19:22 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 

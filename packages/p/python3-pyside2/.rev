@@ -244,4 +244,18 @@
   failures</comment>
     <requestid>1093048</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>6be813904f3a39b8cc5965eca9a5e9b6</srcmd5>
+    <version>5.15.10</version>
+    <time>1687272537</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.15.10
+- Fix python 3.11 compatibility, temporary blacklist signal_enum_test
+  * python-3.11-compatibility.patch
+
+- avoid repackaging the pkgconfig and cmake directories - they are
+  provided by the filesystem package
+  *</comment>
+    <requestid>1093899</requestid>
+  </revision>
 </revisionlist>

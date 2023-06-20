@@ -22,7 +22,7 @@
 %global __requires_exclude qmlimport\\((Charts|TextBalloonPlugin)
 
 Name:           python3-pyside2
-Version:        5.15.9
+Version:        5.15.10
 Release:        0
 Summary:        Python bindings for Qt
 # Legal:
@@ -31,7 +31,7 @@ Summary:        Python bindings for Qt
 # shiboken2 contains files under GPL-3.0-only WITH Qt-GPL-exception-1.0
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-2.0-only AND GPL-3.0-only WITH Qt-GPL-exception-1.0
 URL:            https://wiki.qt.io/Qt_for_Python
-Source0:        https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-5.15.9-src/pyside-setup-opensource-src-5.15.9-1.tar.xz
+Source0:        https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-%{version}-src/pyside-setup-opensource-src-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Always-link-to-python-libraries.patch
 # PATCH-FIX-UPSTREAM
@@ -40,6 +40,10 @@ Patch1:         0001-Don-t-try-to-install-or-use-uic-rcc-designer-copies.patch
 Patch2:         0001-cmake-Don-t-assume-qhelpgenerator-is-in-PATH.patch
 # PATCH-FIX-UPSTREAM
 Patch3:         0001-Backport-Fix-GLES-builds.patch
+%if 0%{?suse_version} > 1500
+# PATCH-FIX-UPSTREAM python-3.11-compatibility.patch
+Patch4:         python-3.11-compatibility.patch
+%endif
 # Provide the PyPI names
 Provides:       python3-PySide2 = %{version}-%{release}
 Provides:       python3-shiboken2 = %{version}-%{release}
@@ -139,7 +143,7 @@ BuildArch:      noarch
 Examples and Tutorials for the PySide2 bindings for Qt.
 
 %prep
-%autosetup -p1 -n pyside-setup-opensource-src-5.15.9
+%autosetup -p1 -n pyside-setup-opensource-src-%{version}
 
 %build
 _libsuffix=$(echo %{_lib} | cut -b4-)
@@ -217,6 +221,12 @@ ctest_exclude_regex="$ctest_exclude_regex|QtScriptTools_debugger_test"
 ctest_exclude_regex="$ctest_exclude_regex|registry_existence_test"
 ctest_exclude_regex="$ctest_exclude_regex|QtWebEngineWidgets_pyside-474-qtwebengineview"
 ctest_exclude_regex="$ctest_exclude_regex|QtWebEngineCore_web_engine_custom_scheme"
+
+%if 0%{?suse_version} > 1500
+# Upstream doesn't plan to add support for python > 3.10 in pyside2. Blacklist broken test
+ctest_exclude_regex="$ctest_exclude_regex|signal_enum_test"
+%endif
+
 %ifarch %{arm}
 # bug_307 fails on armv7l only
 ctest_exclude_regex="$ctest_exclude_regex|QtWidget_bug_307"
