@@ -21,9 +21,8 @@ Version:        0.6
 Release:        0
 Summary:        A test case generator for robustness testing, aka a fuzzer
 License:        MIT
-Group:          Development/Tools/Other
-URL:            https://www.ee.oulu.fi/research/ouspg/Radamsa
-Source0:        %{name}-%{version}.tar.gz
+URL:            https://gitlab.com/akihe/radamsa
+Source0:        https://gitlab.com/akihe/radamsa/-/archive/v%{version}/radamsa-v%{version}.tar.bz2
 Source1:        ol.c.gz
 BuildRequires:  curl
 BuildRequires:  wget
@@ -38,7 +37,7 @@ easy to script from command line and has already been used to find a slew
 of bugs in programs that actually matter.
 
 %prep
-%setup -q
+%autosetup -n %{name}-v%{version}
 cp %{SOURCE1} .
 
 %build
