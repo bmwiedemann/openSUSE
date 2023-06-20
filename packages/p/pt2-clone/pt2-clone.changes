@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 19 19:17:53 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.60:
+  * Added an AUTO mode for VIDEOSCALE in protracker.ini. This is
+    now the default. It will use the most optimal window size
+    based on the screen resolution. If you want this feature but
+    don't want to replace protracker.ini, set VIDEOSCALE to AUTO
+    (make sure you have v1.60 or later). Manual settings (2X, 3X,
+    ...) still work like expected.
+  * Removed VIDEOSCALE limit of 2X for ARM systems. This was
+    originally meant for Raspberry Pi, but it would affect all
+    ARM systems (except Apple).
+
+-------------------------------------------------------------------
 Sun Jun 11 08:18:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.59:

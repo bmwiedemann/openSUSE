@@ -17,7 +17,7 @@
 
 
 Name:           pt2-clone
-Version:        1.59
+Version:        1.60
 Release:        0
 Summary:        ProTracker 2 clone
 License:        BSD-3-Clause AND CC-BY-NC-SA-4.0
