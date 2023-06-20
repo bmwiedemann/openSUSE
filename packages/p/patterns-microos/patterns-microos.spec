@@ -52,7 +52,6 @@ Provides:       pattern-category() = MicroOS
 Provides:       pattern-icon() = pattern-kubic
 Provides:       pattern-order() = 9010
 Provides:       pattern-visible()
-Requires:       pattern() = bootloader
 Requires:       pattern() = minimal_base
 %if %{with betatest}
 # need to require it as recommends are off
@@ -723,6 +722,7 @@ Requires:       kernel-default-base
 Provides:       pattern() = microos_alt_onlyDVD
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 9901
+Requires:       pattern() = bootloader
 Requires:       pattern() = microos_apparmor
 Requires:       pattern() = microos_cloud
 Requires:       pattern() = microos_cockpit
