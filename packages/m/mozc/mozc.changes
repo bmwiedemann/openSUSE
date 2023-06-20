@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jun 10 13:33:02 UTC 2023 - Fuminobu Takeyama <ftake@geeko.jp> - 2.29.5111.102
+
+- Upstream update to 2.29.5111.102
+  * Fix overlay of mozc-candidate-style in mozc.el
+  * Enable the candidate window to show on a secondary and later display
+  * Update dictionaries
+  * Introduce MOZC_IBUS_CANDIDATE_WINDOW to disable mozc_renderer
+  * Support Emoji 15.0
+  * Support ImeOn/ImeOff keys
+  * Update absel-cpp and protobuf
+  * Remove add-missing-include.patch
+    - Merged by upstream
+- Update fcitx-mozc
+  * Refresh fcitx-mozc-bazel-build.patch
+- Update zip code dictionaries
+  * Refresh add-sha256sum-for-zipcode-archives.patch
+
+-------------------------------------------------------------------
 Fri Apr 14 16:19:06 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add add-missing-include.patch: Add missing #include <cstdint>,
