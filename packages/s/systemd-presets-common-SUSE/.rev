@@ -247,4 +247,12 @@ It fits better in common-SUSE. I'll remove it from branding. (forwarded request 
     <comment></comment>
     <requestid>1092824</requestid>
   </revision>
+  <revision rev="30" vrev="30">
+    <srcmd5>11ada86ba8349d4a2c8475ab134139a1</srcmd5>
+    <version>15</version>
+    <time>1687271999</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093944</requestid>
+  </revision>
 </revisionlist>

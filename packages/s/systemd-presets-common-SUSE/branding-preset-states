@@ -69,7 +69,7 @@ apply_preset_state_changes () {
 		exec 3<&-
 	done
 	if test -x /usr/bin/systemctl ; then
-		/usr/bin/systemctl list-unit-files "$GLOBAL"
+		/usr/bin/systemctl list-unit-files $GLOBAL
 	fi >systemd_preset-states.rpm-tmp
 	exec 3<systemd_preset-states.rpm-tmp
 	read -u3 PAD
@@ -99,7 +99,7 @@ apply_preset_state_changes () {
 		fi
 		if test "$ENABLE_OLD" != "$ENABLE_NEW" ; then
 			echo "Resetting $SERVICE to the new default: $ENABLE_NEW"
-			/usr/bin/systemctl preset "$GLOBAL" "$SERVICE" || :
+			/usr/bin/systemctl preset $GLOBAL "$SERVICE" || :
 		fi
 	done
 	exec 3<&-

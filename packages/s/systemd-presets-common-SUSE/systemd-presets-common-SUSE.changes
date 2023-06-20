@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 20 08:42:27 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Fix another case of systemctl being called with an empty
+  argument. This if a preemptive fix for a similar issue to
+  bsc#1212496.
+
+-------------------------------------------------------------------
+Mon Jun 19 12:48:36 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Don't call systemctl list-unit-files with an empty argument,
+  this will break enabling of system unit files [bsc#1212496]
+
+-------------------------------------------------------------------
 Fri Jun  9 14:22:41 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add wtmpdb-update-boot.service and wtmpdb-rotate.timer to enable
