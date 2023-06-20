@@ -1,5 +1,0 @@
-<package name="java15-devel-container" project="openSUSE:Factory">
-  <title>Java 15 development container</title>
-  <description>Environment for Java 15 development.</description>
-  <devel project="devel:kubic:containers" package="java15-devel-container"/>
-</package>
