@@ -7,4 +7,12 @@
     <comment>New Old Hungarian fonts</comment>
     <requestid>1061077</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>290f8243ab3b3d822fd797ee5d0f4871</srcmd5>
+    <version>20230614</version>
+    <time>1687272531</time>
+    <user>dimstar_suse</user>
+    <comment>- update 20230619 now the fonts have a better appearance</comment>
+    <requestid>1093851</requestid>
+  </revision>
 </revisionlist>

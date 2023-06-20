@@ -17,14 +17,18 @@
 
 
 Name:           rovasiras-roga-fonts
-Version:        20221112
+Version:        20230614
 Release:        0
 Summary:        A ligatureless variant of the Kende Old Hungarian font
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://github.com/rovasiras/roga
-# https://github.com/rovasiras/roga/archive/refs/tags/Font.tar.gz
-Source:         roga-Font.tar.gz
+#https://github.com/rovasiras/roga/blob/2f079df32f5176d0f8af0324f95892d5c78ebe37/Roga.ttf
+Source0:        Roga.ttf
+#https://github.com/rovasiras/roga/blob/2f079df32f5176d0f8af0324f95892d5c78ebe37/README.md
+Source1:        README.md
+#https://github.com/rovasiras/roga/blob/2f079df32f5176d0f8af0324f95892d5c78ebe37/LICENSE
+Source2:        LICENSE
 BuildRequires:  fontpackages-devel
 BuildArch:      noarch
 %reconfigure_fonts_prereq
@@ -34,7 +38,9 @@ Roga is the ligatureless version of the Kende font. Both are fonts
 for the Old Hungarian script.
 
 %prep
-%autosetup -n roga-Font
+cp %{SOURCE0} .
+cp %{SOURCE1} .
+cp %{SOURCE2} .
 
 %build
 
