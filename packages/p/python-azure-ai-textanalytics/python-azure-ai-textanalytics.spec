@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-ai-textanalytics
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-ai-textanalytics
-Version:        5.2.1
+Version:        5.3.0
 Release:        0
 Summary:        Azure Text Analytics client library for Python
 License:        MIT
@@ -39,7 +39,8 @@ Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
 Requires:       python-azure-core < 2.0.0
 Requires:       python-azure-core >= 1.24.0
-Requires:       python-msrest >= 0.7.0
+Requires:       python-isodate < 1.0.0
+Requires:       python-isodate >= 0.6.1
 Requires:       python-typing_extensions >= 4.0.1
 Conflicts:      python-azure-sdk <= 2.0.0
 BuildArch:      noarch
