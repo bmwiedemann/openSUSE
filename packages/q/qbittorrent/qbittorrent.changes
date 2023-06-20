@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 18 18:50:19 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.5.4
+  Bug fixes:
+  * Allow to disable confirmation of Pause/Resume All
+  * Sync flag icons with upstream
+  Web UI:
+  * Fix category save path
+
+-------------------------------------------------------------------
 Mon May 29 16:47:50 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.5.3
