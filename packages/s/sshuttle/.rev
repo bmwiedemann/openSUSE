@@ -163,4 +163,12 @@ Doesn't require admin. Works with Linux and MacOS. Supports DNS tunneling.</comm
 - drop fix-shebang.patch (obsolete)</comment>
     <requestid>1039877</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>093d6286e6e3d8e6248f871e323ea881</srcmd5>
+    <version>1.1.1</version>
+    <time>1687272523</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1093841</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package sshuttle
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,9 +34,10 @@ Source2:        sysconfig.%{name}
 Patch0:         fix-pytest.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-pip
 BuildRequires:  python3-pytest
-BuildRequires:  python3-setuptools
 BuildRequires:  python3-setuptools_scm
+BuildRequires:  python3-wheel
 Requires(post): %fillup_prereq
 BuildArch:      noarch
 %if (0%{?suse_version} >= 1320 || 0%{?suse_version} == 1310)
@@ -70,10 +71,10 @@ sed -ri 's/(version = )get_version.*/\1 "%{version}"/g' conf.py
 %make_build man
 )
 %endif
-%python3_build
+%pyproject_wheel
 
 %install
-%python3_install
+%pyproject_install
 
 %if (0%{?suse_version} >= 1320 || 0%{?suse_version} == 1310)
 install -d -m 755 %{buildroot}%{_mandir}/man1
