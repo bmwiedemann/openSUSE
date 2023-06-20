@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 19 06:25:26 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Apply "0001-Fix-default-value-of-strict_ssl_read_eof-in-man-page.patch"
+  to fix the documentation of the strict_ssl_read_eof option. The
+  documentation says option would be disabled by default, but it is
+  in fact enabled. [bsc#1200075]
+
+-------------------------------------------------------------------
 Tue Jan  3 16:12:32 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Use valid separator for logrotate config file. [bsc#1192179]
@@ -1304,6 +1312,3 @@ Tue Nov 13 13:30:42 CET 2001 - mmj@suse.de
 Mon Oct 22 15:57:40 CEST 2001 - mmj@suse.de
 
 - Initial package
-
--------------------------------------------------------------------
-Mon Oct 22 15:57:40 CEST 2001 - 

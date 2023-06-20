@@ -97,6 +97,7 @@ Patch42:        use-system-wide-tls-cipher-policy.patch
 Patch43:        vsftpd-allow-dev-log-socket.patch
 Patch44:        vsftpd-enable-sendto-for-prelogin-syslog.patch
 Patch45:        disable-tls13-to-support-older-openssl-versions.patch
+Patch46:        0001-Fix-default-value-of-strict_ssl_read_eof-in-man-page.patch
 BuildRequires:  libcap-devel
 %if 0%{?suse_version} == 1315
 BuildRequires:  libopenssl-1_1-devel >= 1.1.1
@@ -180,10 +181,10 @@ tests.
 %patch42 -p1
 %patch43 -p1
 %patch44 -p1
-
 %if 0%{?sle_version} == 150000
 %patch45 -p1
 %endif
+%patch46 -p1
 
 %build
 %define seccomp_opts -D_GNU_SOURCE -DUSE_SECCOMP
