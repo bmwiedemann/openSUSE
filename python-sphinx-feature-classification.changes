@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 20 00:36:30 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing BuildRequires on six. 
+
+-------------------------------------------------------------------
 Fri Feb 12 13:43:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - replace oslotest with more correct fixtures dependency 
