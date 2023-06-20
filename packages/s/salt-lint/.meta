@@ -1,0 +1,5 @@
+<package name="salt-lint" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="systemsmanagement:saltstack" package="salt-lint"/>
+</package>

@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Wed Jun 14 12:47:46 UTC 2023 - Dominik Heidler <dheidler@suse.de>
+
+- update to 0.9.2
+- Ensure version identification adheres to PEP440 (!304)
+- Revert changes to rule 210 (!299)
+- Rule 219 for catching missing over-indentation of nested dicts (#284).
+- Add Python 3.11 support (#290).
+- Add alternative typos of onchanges in rule 216 (#286).
+
+-------------------------------------------------------------------
+Mon Apr 25 14:37:03 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.8.0
+- make the package only build with the default python version
