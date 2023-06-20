@@ -59,4 +59,31 @@
 </comment>
     <requestid>1087684</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f9051cf8b1a7e0a79937ba9d3df4943b</srcmd5>
+    <version>1.11.3</version>
+    <time>1687272446</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.11.3:
+  Features:
+    * Support display name, type, rotation detection on Wayland (Linux, Display)
+    * Print more useful display name instead of intel_backlight (Linux, Brightness)
+    * Icons module supports Windows (Windows, Icons)
+    * Add Wallpaper module which shows the current wallpaper image path
+    * Add mac address detection --localip-show-mac (LocalIP, #451)
+  Bugfixes:
+    * Fix Gnome version detection on Fedora (DE)
+    * Fix Windows drives detection in WSL (Disk)
+    * Fix a segfault bug, regression of 1.11.1
+  Changes:
+    * In order to make Icons module consistant between different platforms, 
+      --icons-format no longer supports individual GTK / QT icon params.
+    * --theme-format no longer supports individual GTK / plasma theme params.
+    * --local-ip-* and --public-ip-* have been changed to --localip-* and --publicip-*
+    * --localip-compact-type is no longer supported. Fastfetch now display IPs as 
+      --localip-compat-type multiline by default, with --local-compact true can be set as an alias of --localip-compact-type oneline
+    * --localip-v6first is no longer supported.
+</comment>
+    <requestid>1093588</requestid>
+  </revision>
 </revisionlist>
