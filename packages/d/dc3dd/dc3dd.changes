@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 15 11:44:03 UTC 2023 - Avinesh Kumar <avinesh.kumar@suse.com>
+
+- update to version 7.3.1:
+  * use .zip source file
+  * added BuildRequires: unzip
+  * removed BuildRequires for p7zip(-full)
+  * removed patch dc3dd-7.2.646-fix-FTBFS-with-glibc-2.28.patch as
+    changes has been merged in the source
+
+-------------------------------------------------------------------
 Sat May 15 19:22:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - stop owning directories provided by filesystem rpm (bsc#1184786) 

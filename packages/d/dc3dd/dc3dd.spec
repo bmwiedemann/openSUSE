@@ -1,7 +1,7 @@
 #
 # spec file for package dc3dd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,28 +17,22 @@
 
 
 Name:           dc3dd
-Version:        7.2.646
+Version:        7.3.1
 Release:        0
 Summary:        Patched dd with Computer Forensics Features
 License:        GPL-3.0-only
 Group:          Productivity/Archiving/Backup
 URL:            https://sourceforge.net/projects/dc3dd/
-Source0:        https://downloads.sourceforge.net/project/dc3dd/dc3dd/%{version}/%{name}%%20%{version}/%{name}-%{version}.7z
+Source0:        https://sourceforge.net/projects/dc3dd/files/dc3dd/%{version}/%{name}-%{version}.zip
 # PATCH-FIX-UPSTREAMING -- bmwiedemann -- https://sourceforge.net/p/dc3dd/bugs/16/
 Patch0:         reproducible.patch
-# PATCH-FIX-UPSTREAM -- Fix build with glibc 2.28, picked from Debian
-Patch1:         dc3dd-7.2.646-fix-FTBFS-with-glibc-2.28.patch
 BuildRequires:  gcc
 BuildRequires:  gettext
 BuildRequires:  gettext-devel
 BuildRequires:  glibc-devel
 BuildRequires:  make
+BuildRequires:  unzip
 BuildRequires:  perl(Locale::gettext)
-%if 0%{?suse_version} < 1510 && 0%{?sle_version} < 150200
-BuildRequires:  p7zip
-%else
-BuildRequires:  p7zip-full
-%endif
 
 %description
 dc3dd is a patched version of GNU dd to include a number of features useful
@@ -63,7 +57,6 @@ were rewritten for dc3dd.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 # fix end-of-line encoding
 sed -i 's/\r$//' *.txt
 sed -i 's/\r$//' ChangeLog
