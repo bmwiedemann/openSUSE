@@ -1,0 +1,26 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1cb2b3f8922ba451ed2f65edcc01acaa</srcmd5>
+    <version>3.1.1</version>
+    <time>1687272458</time>
+    <user>dimstar_suse</user>
+    <comment>Hello everyone,
+
+I'd like to submit this package to Factory as it is missing.
+
+About the software:
+
+vkbasalt-cli is a python based command line tool and library to be used with the Vulkan post processing layer vkbasalt.
+It's purpose is to make it easier for end-users and applications to generated configuration files for vkbasalt.
+vkbasalt-cli is a stable project, hence it is not in any alpha, beta or RC state.
+
+The only software (I know of) making use of vkbasalt-cli under the hood as of now is bottles which on its own is a managing frontend for Wine and related software.
+Which then, if vkbasalt-cli can be merged with Factory, can be updated to it's latest version.
+
+I apologize for any errors regarding this request as this is the first time for me submitting to Factory.
+
+Kind regards,
+Imo Hester</comment>
+    <requestid>1093650</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,61 @@
+-------------------------------------------------------------------
+Wed Apr 12 11:33:40 UTC 2023 - Imo Hester <vortex@z-ray.de>
+
+- Fixed binary naming
+
+-------------------------------------------------------------------
+Wed Apr 12 11:10:49 UTC 2023 - Imo Hester <vortex@z-ray.de>
+
+- Removed update-alternatives 
+
+-------------------------------------------------------------------
+Wed Apr 12 11:06:35 UTC 2023 - Imo Hester <vortex@z-ray.de>
+
+- Drop build for Python3.9 and 3.11
+- Removed sub modules directive
+
+-------------------------------------------------------------------
+Wed Apr 12 10:42:09 UTC 2023 - Imo Hester <vortex@z-ray.de>
+
+- Licensed changed to LGPL-3.0-only
+- Application name changed to vkbasalt-cli
+- Removed unused build dependencies 
+
+-------------------------------------------------------------------
+Thu Mar 30 16:07:26 UTC 2023 - Imo Hester <vortex@z-ray.de>
+
+- Removed python module redefinition as < 15.0 is not targeted
+
+-------------------------------------------------------------------
+Thu Dec 22 12:03:43 UTC 2022 - Imo Hester <vortex@z-ray.de>
+
+- Update to version 3.1.1
+  * Remove Meson support
+  * Fix CLI for setup.py
+  * Remove appstream
+
+-------------------------------------------------------------------
+Sun Nov 20 13:36:38 UTC 2022 - Imo Hester <vortex@z-ray.de>
+
+- Update to version 3.1.0
+  * Change meson output from `vkbasalt-cli` to `vkbasalt`. This means users will have to run the command using `vkbasalt`
+  * Update documentation
+  * Update metadata file
+- Update to version 3.0
+  * Add setup.py
+  * Move directories
+  * Relicense CLI front-end to GPLv3
+  * Update headers
+  * Update documentation
+  * Improve sentences
+- Update to version 2.0
+  * Dump everything from bottles
+
+-------------------------------------------------------------------
+Sun Nov 20 12:18:59 UTC 2022 - Imo Hester <vortex@z-ray.de>
+
+- Initial obs package
+- Update to version 0.1.1
+  * Fix metainfo file
+- Update to version 0.1
+  * Initial release

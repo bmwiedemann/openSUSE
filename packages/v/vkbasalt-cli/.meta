@@ -1,0 +1,5 @@
+<package name="vkbasalt-cli" project="openSUSE:Factory">
+  <title></title>
+  <description>vkbasalt-cli (filename vkbasalt) is a CLI utility and library in conjunction with vkBasalt. This makes generating configuration files or running vkBasalt with games easier. This is mainly convenient in environments where integrating vkBasalt is wishful, for example a GUI application. Integrating vkbasalt-cli allows a front-end to easily generate and use specific configurations on the fly, without asking the user to manually write a configuration file</description>
+  <devel project="graphics" package="vkbasalt-cli"/>
+</package>
