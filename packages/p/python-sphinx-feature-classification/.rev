@@ -86,4 +86,12 @@
     <comment>- replace oslotest with more correct fixtures dependency</comment>
     <requestid>871440</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>f718a50405ed1f89f0d946999fc2414e</srcmd5>
+    <version>1.1.0</version>
+    <time>1687272528</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing BuildRequires on six.</comment>
+    <requestid>1093846</requestid>
+  </revision>
 </revisionlist>
