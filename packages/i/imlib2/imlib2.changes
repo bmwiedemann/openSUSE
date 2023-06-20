@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 19 10:28:47 UTC 2023 - Simon Lees <sflees@suse.de>
+
+- Changelog update only
+- integer overflow (with resultant invalid memory allocations and 
+  out-of-bounds reads) via an icon with many colors in its color 
+  map was fixed in 1.7.0 (bsc#1171472, CVE-2020-12761)
+
+-------------------------------------------------------------------
 Mon May 29 01:50:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.11.1:
