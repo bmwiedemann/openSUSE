@@ -635,4 +635,12 @@
   * all: Replace deprecated ioutil with io and os (forwarded request 1090961 from jfkw)</comment>
     <requestid>1090962</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>f8c8091273ec4d2a7bad5065c88c7472</srcmd5>
+    <version>0.114.0</version>
+    <time>1687272525</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.114.0: (forwarded request 1093840 from jfkw)</comment>
+    <requestid>1093842</requestid>
+  </revision>
 </revisionlist>

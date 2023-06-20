@@ -17,7 +17,7 @@
 
 
 Name:           hugo
-Version:        0.113.0
+Version:        0.114.0
 Release:        0
 Summary:        Static website generator written in Go
 License:        Apache-2.0

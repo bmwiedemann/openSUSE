@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Mon Jun 19 18:03:50 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.114.0:
+  * Revert "build(deps): bump gocloud.dev from 0.24.0 to 0.29.0"
+  * Add empty Environ when loading test config
+  * common/loggers: Drop the bold INFO etc. prefixes
+  * loggers: Avoid using Logf for the LevelLoggerToWriter
+  * tocss/dartsas: Avoid using Logf for the internal Dart Sass logging
+  * helpers: Remove superflous formatting flag in deprecation warnings
+  * Revert "deps: Update github.com/tdewolff/minify/v2 v2.12.5 => v2.12.6"
+  * all: Fix typos in function names and comments
+  * deploy: Fix deploy defaults for non-zero flag values (e.g. maxDeletes, invalidateCDN)
+  * common/loggers: Re-add trailing newline in logger.Printf
+  * build(deps): bump github.com/evanw/esbuild from 0.18.3 to 0.18.4
+  * Replace the old log setup, with structured logging etc.
+  * Revert "snap: Transition base snap from core20 to core22 (#11101)" (#11125)
+  * build(deps): bump github.com/evanw/esbuild from 0.18.2 to 0.18.3
+  * Fix upstream Go templates bug with reversed key/value assignment
+  * build(deps): bump golang.org/x/sync from 0.2.0 to 0.3.0
+  * common/collections: Always make a copy of the input slice in Append
+  * tpl/collections: Fix append when appending a slice to a slice of slices
+  * build(deps): bump google.golang.org/api from 0.123.0 to 0.127.0
+  * build(deps): bump golang.org/x/tools from 0.9.1 to 0.9.3
+  * Re-add site.RSSLink (and deprecate it)
+  * build(deps): bump github.com/kyokomi/emoji/v2 from 2.2.11 to 2.2.12
+  * build(deps): bump github.com/getkin/kin-openapi from 0.117.0 to 0.118.0
+  * build(deps): bump golang.org/x/net from 0.10.0 to 0.11.0
+  * Fix .Width and .Height for animated gifs
+  * snap: Transition base snap from core20 to core22 (#11101)
+  * build(deps): bump gocloud.dev from 0.24.0 to 0.29.0
+  * tpl/math: Allow variadic math functions to take slice args, add math.Product, math.Sum
+  * Fix config merge regression with root slices (e.g. disableKinds)
+  * build(deps): bump golang.org/x/image from 0.7.0 to 0.8.0
+  * commands: Remove flags log, verboseLog, add flag logLevel, deprecate flags verbose and debug
+  * build(deps): bump github.com/magefile/mage from 1.14.0 to 1.15.0
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.0.6 to 2.0.8
+  * build(deps): bump github.com/evanw/esbuild from 0.17.19 to 0.18.2
+  * Fix handling of aliases (e.g. hugo serve)
+  * cache: Set default cache path based on $USER
+  * build(deps): bump go.uber.org/atomic from 1.10.0 to 1.11.0
+  * build(deps): bump github.com/hairyhenderson/go-codeowners
+  * resources: Remove failing and superflous test assertion
+  * build(deps): bump github.com/frankban/quicktest from 1.14.4 to 1.14.5
+  * build(deps): bump github.com/mattn/go-isatty from 0.0.17 to 0.0.19
+  * build(deps): bump github.com/spf13/afero from 1.9.3 to 1.9.5
+  * commands,config: Fix typo in log and error messages
+  * helpers: Avoid url.Parse in RelURL and AbsURL if we can
+  * Add BenchmarkAbsURL
+  * helpers: Improve schema detection when creating relative URLs
+  * helpers: Add a basic benchmark for RelURL
+  * config: Remove unexpected _merge keys introduced in author and social maps
+  * Upgrade to v2 of the Dart Sass Embedded Protocol
+  * Fix indented SASS imports for Dart Sass
+
+-------------------------------------------------------------------
 Mon Jun 05 16:29:49 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 0.113.0:
