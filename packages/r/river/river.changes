@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 10 01:44:52 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 0.2.4+g953:
+  * riverctl: Add error messages for failed connections
+  * XdgToplevel: store scene node in wlr_surface data
+  * XdgToplevel: keep wlroots updated on view sizes
+
+-------------------------------------------------------------------
 Sun Apr 16 09:25:44 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Change requirement of xdg-desktop-portal-wlr as a suggestion. This is
