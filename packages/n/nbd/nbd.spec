@@ -1,7 +1,7 @@
 #
 # spec file for package nbd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,13 @@
 #
 
 
-%if ! %{defined _fillupdir}
-  %define _fillupdir %{_localstatedir}/adm/fillup-templates
-%endif
 Name:           nbd
-Version:        3.24
+Version:        3.25
 Release:        0
 Summary:        Network Block Device Server and Client Utilities
 License:        GPL-2.0-or-later
-Group:          Productivity/Networking/Other
 URL:            https://nbd.sourceforge.io/
-Source0:        https://sourceforge.net/projects/nbd/files/nbd/%{version}/nbd-%{version}.tar.xz
+Source0:        https://github.com/NetworkBlockDevice/nbd/releases/download/nbd-%{version}/nbd-%{version}.tar.xz
 Source1:        %{name}-server.service
 Source3:        config.example
 Source4:        nbd-server.sysconfig
@@ -61,8 +57,7 @@ The package also contains the nbd-client tools, which you need to
 configure the nbd devices on the client side.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 %configure

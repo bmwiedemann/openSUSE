@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 20 08:27:42 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.25:
+  * nbd-server now implements structured replies with a compliant client.
+  * nbd-server now works as expected when compiled against glib >= 2.76.
+  * various minor bug fixes
+  * nbd-server and nbd-client now no longer have compile-time support for the SDP protocol. Support for this was old and probably not functional; the protocol in itself is also deprecated.
+
+-------------------------------------------------------------------
 Sun Apr 10 14:45:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.24 (bsc#1196827, bsc#1196828, CVE-2022-26495, CVE-2022-26496):

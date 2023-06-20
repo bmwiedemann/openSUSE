@@ -482,4 +482,16 @@ Should go into 12.2 as well. (forwarded request 127441 from a_jaeger)</comment>
     <comment></comment>
     <requestid>970072</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>e0c09205181414f5f4df2cbbe350c2f3</srcmd5>
+    <version>3.25</version>
+    <time>1687272575</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.25:
+  * nbd-server now implements structured replies with a compliant client.
+  * nbd-server now works as expected when compiled against glib &gt;= 2.76.
+  * various minor bug fixes
+  * nbd-server and nbd-client now no longer have compile-time support for the SDP protocol. Support for this was old and probably not functional; the protocol in itself is also deprecated.</comment>
+    <requestid>1093915</requestid>
+  </revision>
 </revisionlist>
