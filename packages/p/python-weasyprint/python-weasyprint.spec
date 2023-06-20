@@ -16,6 +16,17 @@
 #
 
 
+%global brotli_min_version     1.0.1
+%global cffi_min_version       0.6
+%global cssselect2_min_version 0.1
+%global fonttools_min_version  4.0.0
+%global html5lib_min_version   1.1
+%global Pillow_min_version     9.1.0
+%global pypdf_min_version      0.6.0
+%global Pyphen_min_version     0.9.1
+%global tinycss2_min_version   1.1.0
+%global zopfli_min_version     0.1.4
+
 Name:           python-weasyprint
 Version:        59.0
 Release:        0
@@ -34,32 +45,32 @@ Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Requires:       libgobject-2_0-0
 Requires:       pango
-Requires:       python-Pillow >= 9.1.0
-Requires:       python-Pyphen >= 0.9.1
+Requires:       python-Pillow >= %{Pillow_min_version}
+Requires:       python-Pyphen >= %{Pyphen_min_version}
 Requires:       python-base >= 3.7
-Requires:       python-cffi >= 0.6
-Requires:       python-cssselect2 >= 0.1
-Requires:       python-html5lib >= 1.1
-Requires:       python-pydyf >= 0.6.0
-Requires:       python-tinycss2 >= 1.1.0
+Requires:       python-cffi >= %{cffi_min_version}
+Requires:       python-cssselect2 >= %{cssselect2_min_version}
+Requires:       python-html5lib >= %{html5lib_min_version}
+Requires:       python-pydyf >= %{pypdf_min_version}
+Requires:       python-tinycss2 >= %{tinycss2_min_version}
 # SECTION fonttools[woff]
-Requires:       python-FontTools
-Requires:       python-Brotli >= 1.0.1
-Requires:       python-zopfli >= 0.1.4
+Requires:       python-FontTools >= %{fonttools_min_version}
+Requires:       python-Brotli >= %{brotli_min_version}
+Requires:       python-zopfli >= %{zopfli_min_version}
 # /SECTION
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module FontTools}
-BuildRequires:  %{python_module Brotli >= 1.0.1}
-BuildRequires:  %{python_module Pillow >= 9.1.0}
-BuildRequires:  %{python_module Pyphen >= 0.9.1}
-BuildRequires:  %{python_module cffi >= 0.6}
-BuildRequires:  %{python_module cssselect2 >= 0.1}
-BuildRequires:  %{python_module html5lib >= 1.1}
-BuildRequires:  %{python_module pydyf >= 0.6.0}
+BuildRequires:  %{python_module FontTools >= %{fonttools_min_version}}
+BuildRequires:  %{python_module Brotli >= %{brotli_min_version}}
+BuildRequires:  %{python_module Pillow >= %{Pillow_min_version}}
+BuildRequires:  %{python_module Pyphen >= %{Pyphen_min_version}}
+BuildRequires:  %{python_module cffi   >= %{cffi_min_version}}
+BuildRequires:  %{python_module cssselect2 >= %{cssselect2_min_version}}
+BuildRequires:  %{python_module html5lib >= %{html5lib_min_version}}
+BuildRequires:  %{python_module pydyf >= %{pypdf_min_version}}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module tinycss2 >= 1.1.0}
-BuildRequires:  %{python_module zopfli >= 0.1.4}
+BuildRequires:  %{python_module tinycss2 >= %{tinycss2_min_version}}
+BuildRequires:  %{python_module zopfli >= %{zopfli_min_version}}
 BuildRequires:  dejavu-fonts
 BuildRequires:  gs
 BuildRequires:  libgobject-2_0-0
@@ -79,7 +90,7 @@ like WebKit or Gecko. The CSS layout engine is written in Python,
 designed for pagination, and meant to be easy to hack on.
 
 %prep
-%setup -q -n weasyprint-%{version}
+%autosetup -p1 -n weasyprint-%{version}
 sed -i '/addopts/d' pyproject.toml
 
 %build

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 14 11:42:32 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- instead of having to maintain version information in multiple
+  places refactor them out into defines for easier maintenance
+- switch to autosetup
+
+-------------------------------------------------------------------
 Wed Jun 14 04:42:21 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 59.0:
