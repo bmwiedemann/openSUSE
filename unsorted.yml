@@ -7710,17 +7710,6 @@ unsorted:
   - hsqldb-javadoc 
   - hsqldb-manual 
   - ht 
-  - htcondor 
-  - htcondor-bosco 
-  - htcondor-classads 
-  - htcondor-classads-devel 
-  - htcondor-credmon-oauth 
-  - htcondor-credmon-vault 
-  - htcondor-devel 
-  - htcondor-doc 
-  - htcondor-kbdd 
-  - htcondor-procd 
-  - htcondor-vm-gahp 
   - htdig 
   - htdig-devel 
   - htdig-doc 
@@ -17330,7 +17319,6 @@ unsorted:
   - mingzat-fonts 
   - minicom 
   - minicom-lang 
-  - minicondor 
   - minidlna 
   - minigalaxy 
   - minikube 
@@ -22609,7 +22597,6 @@ unsorted:
   - python3-clinkgrammar 
   - python3-clustershell 
   - python3-coconut 
-  - python3-condor 
   - python3-csound 
   - python3-ctypeslib2 
   - python3-dbus-presage 
@@ -28921,6 +28908,7 @@ unsorted:
   - python311-pyuca 
   - python311-pyupgrade 
   - python311-pyusb 
+  - python311-pyuv 
   - python311-pyux 
   - python311-pyvdr 
   - python311-pyvips 
@@ -33130,6 +33118,7 @@ unsorted:
   - qbittorrent-nox 
   - qbs 
   - qbs-devel 
+  - qbs-examples 
   - qca-qt5-devel 
   - qca-qt6 
   - qca-qt6-devel 
@@ -34228,6 +34217,7 @@ unsorted:
   - salt-cloud 
   - salt-doc 
   - salt-fish-completion 
+  - salt-lint 
   - salt-proxy 
   - salt-shaptools 
   - salt-ssh 
@@ -34543,6 +34533,7 @@ unsorted:
   - shadowsocks-libev 
   - shadowsocks-libev-devel 
   - shadowsocks-libev-doc 
+  - shadowsocks-rust 
   - shadowsocks-v2ray-plugin 
   - shairport-sync 
   - shannpersand-comicshanns-fonts 
@@ -44821,7 +44812,7 @@ unsorted:
   - typelib-1_0-UMockdev-1_0 
   - typelib-1_0-Uhm-1_0 
   - typelib-1_0-Urfkill-0_0 
-  - typelib-1_0-Vips-8_13 
+  - typelib-1_0-Vips-8.0 
   - typelib-1_0-Vte-3_91 
   - typelib-1_0-WebKit-6_0 
   - typelib-1_0-WebKit2-4_0 
@@ -45229,7 +45220,7 @@ unsorted:
   - vino 
   - vino-lang 
   - vips-doc 
-  - vips-modules-8.13 
+  - vips-modules-8.0 
   - vips-tools 
   - virglrenderer-devel 
   - virglrenderer-test-server 
@@ -45255,6 +45246,7 @@ unsorted:
   - vit 
   - vitetris 
   - vkbasalt 
+  - vkbasalt-cli 
   - vkd3d-devel 
   - vkd3d-devel-32bit 
   - vkeybd 
