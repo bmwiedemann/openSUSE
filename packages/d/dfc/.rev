@@ -45,4 +45,12 @@
     <comment>- Spec file cleanup</comment>
     <requestid>783362</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>d338ac6838e59d1e745f73c042f55426</srcmd5>
+    <version>3.1.1</version>
+    <time>1687272584</time>
+    <user>dimstar_suse</user>
+    <comment>- Update project and download url</comment>
+    <requestid>1093987</requestid>
+  </revision>
 </revisionlist>
