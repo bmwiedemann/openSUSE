@@ -18,7 +18,7 @@
 
 %define short_name ueberzug
 Name:           ueberzugpp
-Version:        2.8.6
+Version:        2.8.7
 Release:        0
 Summary:        Utility to render images in terminals
 License:        GPL-3.0
@@ -76,8 +76,11 @@ Advantages over w3mimgdisplay and ueberzug:
 
 %files
 %{_bindir}/%{short_name}
+%{_bindir}/%{short_name}pp
 %license LICENSE
 %doc README.md
+%{_mandir}/man1/%{short_name}.1%{?ext_man}
+%{_mandir}/man1/%{short_name}pp.1%{?ext_man}
 
 %changelog
 

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jun 10 16:24:58 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 2.8.7:
+  * add debian packaging
+  * replace layer output flag `wlroots` in favor of `wayland`: it now works with any wayland wms, but only sway and hyprland have proper window positioning, hopefully add support for other wms in the future
+  * support multiple monitors under sway and hyprland
+  * peformance improvements for X11 canvas
+  * update documentation
+  * add more features to cmake install
+  * improve libvips and opencv code
+
+-------------------------------------------------------------------
 Tue May 30 00:57:17 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Adding necessary "BuildRequires" to support `-DENABLE_WLROOTS=ON` after talking
