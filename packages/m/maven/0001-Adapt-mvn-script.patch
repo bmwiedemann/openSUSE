@@ -11,6 +11,15 @@ diff --git a/apache-maven/src/bin/mvn b/apache-maven/src/bin/mvn
 index dfa384b8e..8c03825ed 100755
 --- a/apache-maven/src/bin/mvn
 +++ b/apache-maven/src/bin/mvn
+@@ -22,7 +22,7 @@
+ #
+ # Environment Variable Prerequisites
+ #
+-#   JAVA_HOME       Must point at your Java Development Kit installation.
++#   JAVA_HOME       (Optional) Must point at your Java Development Kit installation.
+ #   MAVEN_ARGS      (Optional) Arguments passed to Maven before CLI arguments.
+ #   MAVEN_OPTS      (Optional) Java runtime options used when Maven is executed.
+ #   MAVEN_SKIP_RC   (Optional) Flag to disable loading of mavenrc files.
 @@ -38,12 +38,24 @@ if [ -z "$MAVEN_SKIP_RC" ] ; then
      . /etc/mavenrc
    fi

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jun 19 15:31:21 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.9.2
+  * Bug
+    + [MNG-7750] - Interpolated properties in originalModel in
+      an active profile.
+    + [MNG-7759] - java.lang.NullPointerException at org.apache
+      .maven.repository.internal.DefaultModelCache.newInstance
+      (DefaultModelCache.java:37)
+  * Improvement
+    + [MNG-7712] - Core should issue a warning if plugin depends
+      on maven-compat
+    + [MNG-7741] - Add more information when using
+      -Dmaven.repo.local.recordReverseTree=true
+    + [MNG-7754] - Improvement and extension of plugin validation
+    + [MNG-7767] - Tone down plugin validation report
+    + [MNG-7776] - don't fingerprint Sigstore signatures (like GPG)
+    + [MNG-7778] - Maven should print suppressed exceptions when a
+      mojo fails
+  * Task
+    + [MNG-7749] - Upgrade animal-sniffer from 1.21 to 1.23
+    + [MNG-7774] - Maven config and command line interpolation
+
+-------------------------------------------------------------------
 Thu May 11 08:39:04 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:
