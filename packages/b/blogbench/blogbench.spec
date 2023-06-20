@@ -1,7 +1,7 @@
 #
 # spec file for package blogbench
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 Name:           blogbench
-Version:        1.1
+Version:        1.2
 Release:        0
 Summary:        Filesystem Benchmark
 License:        ISC
 URL:            https://github.com/jedisct1/Blogbench
 Source0:        https://download.pureftpd.org/pub/%{name}/%{name}-%{version}.tar.bz2
-Source1:        https://download.pureftpd.org/pub/%{name}/%{name}-%{version}.tar.bz2.sig
+Source1:        https://download.pureftpd.org/pub/%{name}/%{name}-%{version}.tar.bz2.minisig
 Source2:        %{name}.keyring
-Patch1:         fix-rewriters-argcount.patch
 
 %description
 Blogbench is a portable filesystem benchmark that tries to reproduce the load
@@ -34,12 +33,11 @@ threads performing random reads, writes, and rewrites in order to get a
 realistic idea of the scalability and the concurrency a system can handle.
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup
 
 %build
 %configure --enable-dependency-tracking --with-largefile
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
