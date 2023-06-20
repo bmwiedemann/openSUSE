@@ -1540,4 +1540,12 @@ Removal of SuSEfirewall2 service.
   * Fixed slapo-remoteauth memory leaks (ITS#9438)</comment>
     <requestid>1079577</requestid>
   </revision>
+  <revision rev="180" vrev="2">
+    <srcmd5>9f938fe3464bc021fdc6e99c5b08fb4c</srcmd5>
+    <version>2.6.4</version>
+    <time>1687272481</time>
+    <user>dimstar_suse</user>
+    <comment>add CVE ref (forwarded request 1093958 from rfrohl)</comment>
+    <requestid>1093975</requestid>
+  </revision>
 </revisionlist>

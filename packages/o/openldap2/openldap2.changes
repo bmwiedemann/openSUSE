@@ -4,7 +4,7 @@ Sat Apr 15 10:42:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
 - update to 2.6.4:
   * Fixed client tools to remove 'h' and 'p' options
   * Fixed ldapsearch memory leak with paged results (ITS#9860)
-  * Fixed libldap ldif_open_urlto check for failure (ITS#9904)
+  * Fixed libldap ldif_open_urlto check for failure (ITS#9904 CVE-2023-2953 boo#1211795)
   * Fixed libldap ldap_url_parsehosts check for failure
   * Fixed liblunicode UTF8bvnormalize buffer size (ITS#9955)
   * Fixed lloadd memory leaks (ITS#9907)
