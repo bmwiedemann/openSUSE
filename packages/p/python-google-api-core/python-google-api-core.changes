@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 20 09:05:22 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.11.1
+  * Add actionable errors for GCE long running operations (#498)
+  * Invalid `dev` version identifiers in `setup.py` (#505)
+
+-------------------------------------------------------------------
 Fri Dec  2 10:03:02 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.11.0
