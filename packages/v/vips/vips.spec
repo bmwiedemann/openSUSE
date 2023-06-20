@@ -1,7 +1,7 @@
 #
 # spec file for package vips
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,31 +19,24 @@
 %define _typelibdir %(pkg-config --variable=typelibdir gobject-introspection-1.0)
 %define _girdir %(pkg-config --variable=girdir gobject-introspection-1.0)
 %define libname lib%{name}
-%define short_version  8.13
-%define short_version_ 8_13
+%define short_version  8.0
+%define short_version_ 8.0
 %define somajor 42
 Name:           vips
-Version:        8.13.3
+Version:        8.14.2
 Release:        0
 Summary:        C/C++ library for processing large images
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://www.libvips.org/
-Source0:        https://github.com/libvips/libvips/releases/download/v%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE libexif-header.patch -- set path to libexif header
-Patch1:         vips-8.4.2_libexif-header.patch
-# PATCH-FIX-OPENSUSE vips-8.9.2-implicit-fortify-decl.patch -- avoid implicit declarations
-Patch2:         vips-8.9.2-implicit-fortify-decl.patch
-# PATCH-FIX-OPENSUSE vips-vipsprofile-python3-shebang.patch -- set shebang to python3
-Patch3:         vips-vipsprofile-python3-shebang.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
+Source0:        https://github.com/libvips/libvips/releases/download/v%{version}/%{name}-%{version}.tar.xz
+BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext
-BuildRequires:  gtk-doc
-BuildRequires:  libtool
-BuildRequires:  orc >= 0.4
+BuildRequires:  giflib-devel
+BuildRequires:  libjxl-devel
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  swig
 BuildRequires:  pkgconfig(ImageMagick)
@@ -52,6 +45,7 @@ BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(imagequant)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libexif)
@@ -66,6 +60,7 @@ BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(matio)
 BuildRequires:  pkgconfig(openslide)
+BuildRequires:  pkgconfig(orc-0.4) >= 0.4
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(poppler-glib)
 BuildRequires:  pkgconfig(pygobject-3.0)
@@ -140,60 +135,52 @@ This package contains documentation about the VIPS library in HTML and PDF
 formats.
 
 %prep
-%autosetup -p1
-
-sed -e 's/8\.0/%{short_version}/' \
-    -e 's/8_0/%{short_version_}/' \
-    -i $(grep -l '8\.0\|8_0' libvips/Makefile*)
+%autosetup
 
 %build
-autoreconf -fiv
-%configure --disable-static
-%make_build
+%meson \
+  -Dcgif=disabled \
+  -Dspng=disabled \
+  -Dpdfium=disabled \
+  -Dnifti=disabled
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
-%find_lang vips%{short_version}
+%meson_install
+%find_lang %{name} --all-name
 %fdupes %{buildroot}%{python_sitearch}/
 
 %check
-%ifarch ppc64 ppc64le
-make check || echo "Warning: ignore make check error for ppc64"
-%else
-make check || { cat test/test-suite.log; exit 1; }
-%endif
+%meson_test
 
-%post -n %{libname}%{somajor} -p /sbin/ldconfig
-%postun -n %{libname}%{somajor} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}%{somajor}
 
-%files -n %{libname}%{somajor} -f vips%{short_version}.lang
-%license COPYING
+%files -n %{libname}%{somajor} -f vips.lang
+%license LICENSE
 %{_libdir}/*.so.%{somajor}*
 
 %files modules-%{short_version}
-%license COPYING
-%{_libdir}/vips-modules-%{short_version}/
+%license LICENSE
+%{_libdir}/vips-modules-8.14/
 
 %files -n typelib-1_0-Vips-%{short_version_}
-%license COPYING
+%license LICENSE
 %{_typelibdir}/Vips-%{short_version}.typelib
 
 %files -n %{libname}-devel
-%license COPYING
+%license LICENSE
 %{_libdir}/*.so
 %{_includedir}/%{name}/
 %{_libdir}/pkgconfig/*
-%{_datadir}/gtk-doc/html/%{libname}/
 %{_girdir}/Vips-%{short_version}.gir
 
 %files tools
-%license COPYING
+%license LICENSE
 %{_bindir}/*
 %{_mandir}/man1/*
 
 %files doc
-%license COPYING
-%doc doc/html AUTHORS NEWS THANKS ChangeLog
+%license LICENSE
+%doc README.md ChangeLog doc
 
 %changelog

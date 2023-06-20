@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jun 20 07:39:09 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 8.14.2:
+  * use a private fontmap in vips_text() [jcupitt]
+  * increase sanity checks on TIFF tile dimensions [lovell]
+  * ensure compatibility with libheif > 1.14.2 [kleisauke]
+  * minor doc fixes [jcupitt]
+  * sanitise dimensions in JPEG-compressed TIFF images [lovell]
+  * fix target pnm write [ewelot]
+  * dedupe FITS header write [ewelot]
+  * fix `strip` parameter in webpsave [jcupitt]
+  * earlier abort of webpsave on kill [dloebl]
+  * fix thumbnail of CMYK images with an embedded ICC profile [kleisauke]
+  * fix ICC handling of RGB images with a monochrome profile [kleisauke]
+  * ensure ICC transforms keep all precision [kleisauke]
+  * fix openslideload associated=XXX load [jcupitt]
+  * fix compatibility with MSVC [SpaceIm]
+- For changes from older releases see provided ChangeLog 
+- Drop no longer needed:
+  * vips-8.9.2-implicit-fortify-decl.patch
+  * vips-8.4.2_libexif-header.patch
+  * vips-vipsprofile-python3-shebang.patch
+
+-------------------------------------------------------------------
 Sat Dec 10 18:02:03 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.13.3:
