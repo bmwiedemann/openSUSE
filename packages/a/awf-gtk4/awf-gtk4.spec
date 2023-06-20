@@ -78,10 +78,10 @@ desktop-file-install --dir=%{buildroot}%{_datadir}/applications/ applications/%{
 %find_lang %{name} --with-man
 
 %files -f %{name}.lang
-%{_mandir}/man1/%{name}.1*
 %license COPYING
 %doc README.md
 %{_bindir}/%{name}
+%{_mandir}/man1/%{name}.1*
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
