@@ -130,8 +130,8 @@ License:        MIT
 Group:          System/Libraries
 URL:            https://www.mesa3d.org
 #Git-Clone:     git://anongit.freedesktop.org/mesa/mesa
-Source:         https://mesa.freedesktop.org/archive/%{_name_archive}-%{_version}.tar.xz
-Source1:        https://mesa.freedesktop.org/archive/%{_name_archive}-%{_version}.tar.xz.sig
+Source:         https://archive.mesa3d.org/%{_name_archive}-%{_version}.tar.xz
+Source1:        https://archive.mesa3d.org/%{_name_archive}-%{_version}.tar.xz.sig
 Source2:        baselibs.conf
 Source3:        README.updates
 Source4:        manual-pages.tar.bz2
@@ -145,6 +145,7 @@ Patch100:       U_fix-mpeg1_2-decode-mesa-20.2.patch
 Patch200:       u_fix-build-on-ppc64le.patch
 Patch400:       n_stop-iris-flicker.patch
 Patch600:       U_glx-Remove-pointless-GLX_INTEL_swap_event-paranoia.patch
+Patch800:       u_fix-glx-context-opengl-4.5.patch
 %ifarch %{ix86} x86_64
 BuildRequires:  DirectX-Headers
 %endif
@@ -781,6 +782,7 @@ rm -rf docs/README.{VMS,WIN32,OS2}
 %patch400 -p1
 # reverse apply to fix a regression (boo#1209005)
 %patch600 -p1 -R
+%patch800 -p1
 
 # Remove requires to vulkan libs from baselibs.conf on platforms
 # where vulkan build is disabled; ugly ...

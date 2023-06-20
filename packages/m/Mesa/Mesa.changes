@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jun 16 15:59:56 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Add patch u_fix-glx-context-opengl-4.5.patch: Fix a regression
+  that causes Wine to crash on GPUs that don't support OpenGL 4.6
+  and later:.
+  Mesa 23.1 has a regression [1] that breaks Wine if the GPU does not 
+  support OpenGL 4.6 (reportedly), Intel HD 4000 is affected.
+  The problem was narrowed down to commit e89e1f504 [2] so this patch
+  removes the offending [3] part from there to fix the problem.
+  It's unlikely that there will be any side effects from that, 
+  should be just as good as it was in Mesa 23.0.
+  [1] https://gitlab.freedesktop.org/mesa/mesa/-/issues/8901
+  [2] https://gitlab.freedesktop.org/mesa/mesa/-/commit/e89e1f5049d3b78542fcd69b7d6106dd4bdafc39
+  [3] https://gitlab.freedesktop.org/mesa/mesa/-/issues/8901#note_1962991
+- Add intel_hasvk icd to baselibs.conf.
+
+-------------------------------------------------------------------
 Fri Jun 16 12:48:49 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - use -Dxlib-lease=enabled also for -drivers build

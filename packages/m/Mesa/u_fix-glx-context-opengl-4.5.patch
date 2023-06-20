@@ -1,0 +1,12 @@
+--- a/src/glx/create_context.c
++++ b/src/glx/create_context.c
+@@ -115,6 +115,9 @@ glXCreateContextAttribsARB(Display *dpy,
+ #endif
+ 
+    if (gc == NULL) {
++      /* increment dpy->request in order to give a unique serial number to the
++       * error */
++      XNoOp(dpy);
+       /* -1 isn't a legal XID, which is sort of the point, we've failed
+        * before we even got to XID allocation.
+        */
