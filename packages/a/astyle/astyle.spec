@@ -17,7 +17,7 @@
 
 
 Name:           astyle
-Version:        3.3.1
+Version:        3.4
 Release:        0
 Summary:        Source Code Indenter, Formatter, and Beautifier for C, C++, C# and Java
 License:        MIT

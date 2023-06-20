@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jun 17 18:59:34 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to 3.4:
+  * Fixed formatting of CS interpolation literals (gl#saalen/astyle#8).
+  * Fixed false lambda recognition (gl#saalen/astyle#11).
+  * Fixed indentation of member declarations (gl#saalen/astyle#10).
+  * Fixed indentation of struct assignments (gl#saalen/astyle#12).
+  * Added new option "--indent-lambda" to to enable new lambda recognition
+    (gl#saalen/astyle#7).
+
+-------------------------------------------------------------------
 Wed Jun  7 17:52:57 UTC 2023 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - spec: add libastylej.rpmlintrc to please factory-auto check
