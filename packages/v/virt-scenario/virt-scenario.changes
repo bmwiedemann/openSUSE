@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 19 16:54:38 UTC 2023 - Antoine Ginies <aginies@suse.com>
+
+- version 2.1.1:
+   * remove 'terminate' button in the scenario selection page
+   * storage window now preload previous data if they have been 
+     already set
+   * improve encryption password checks
+   * cleanup some code
+
+-------------------------------------------------------------------
 Wed Jun 14 12:45:39 UTC 2023 - Antoine Ginies <aginies@suse.com>
 
 - version 2.1.0:
