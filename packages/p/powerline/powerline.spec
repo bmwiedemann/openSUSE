@@ -1,7 +1,7 @@
 #
 # spec file for package powerline
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        MIT
 Group:          System/Console
 URL:            https://github.com/powerline/powerline
 Source0:        https://github.com/powerline/powerline/archive/%{version}/powerline-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM powerline-python3.11-compat.patch gh#powerline/powerline#2209 badshah400@gmail.com -- Make powerline compatible with python 3.11
+Patch0:         https://patch-diff.githubusercontent.com/raw/powerline/powerline/pull/2212.patch#/powerline-python3.11-compat.patch
 BuildRequires:  fdupes
 BuildRequires:  fontconfig
 BuildRequires:  git-core
@@ -36,7 +38,8 @@ BuildRequires:  python3-netifaces
 BuildRequires:  python3-pexpect
 BuildRequires:  python3-psutil
 BuildRequires:  python3-pytest
-BuildRequires:  python3-pyuv
+# python3-pyuv unavailable for python 3.11
+#BuildRequires:  python3-pyuv
 BuildRequires:  python3-setuptools
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  tmux
@@ -50,7 +53,6 @@ Recommends:     python3-netifaces
 Recommends:     python3-pygit2
 Suggests:       i3
 Suggests:       lemonbar
-Suggests:       python3-pyuv
 Suggests:       tmux
 Provides:       python3-powerline-status = %{version}
 Obsoletes:      python3-powerline-status < %{version}
@@ -110,8 +112,13 @@ to your ~/.tmux.conf file.
 
 # remove shebang in file not meant to be directly called
 sed -i -e '1{/^#!/ d}' powerline/bindings/pdb/__main__.py
-# Change shebang in all relevant files in this directory and all subdirectories
-find -type f -exec sed -i '1s=^#!%{_bindir}/\(python\|env python\)[23]\?=#!%{_bindir}/python3=' {} +
+
+# Fix env dependent hashbangs
+sed -Ei "1{s@^#\!/usr/bin/env python@#\!%{_bindir}/python%{python3_version}@}" \
+  powerline/bindings/awesome/powerline-awesome.py \
+  powerline/bindings/bar/powerline-bar.py \
+  powerline/bindings/i3/powerline-i3.py \
+  powerline/bindings/lemonbar/powerline-lemonbar.py
 
 sed -i -e "/DEFAULT_SYSTEM_CONFIG_DIR/ s@None@'%{_sysconfdir}/xdg'@" powerline/config.py
 sed -i -e "/TMUX_CONFIG_DIRECTORY/ s@BINDINGS_DIRECTORY@'%{_prefix}/share'@" powerline/config.py
@@ -122,6 +129,12 @@ export CFLAGS="%{optflags}"
 
 %install
 %python3_install
+
+# Fix hashbangs in exec scripts to refere to exact python3.X version
+for f in %{buildroot}%{_bindir}/*
+do
+  sed -Ei "1{s@^#\!/usr/bin/python3@#\!%{_bindir}/python%{python3_version}@}" ${f}
+done
 
 # build docs
 pushd docs

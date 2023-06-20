@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jun 17 15:58:04 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add powerline-python3.11-compat.patch -- Make powerline
+  compatible with python 3.11 [gh#powerline/powerline#2209].
+- Drop python-pyuv BuildRequires until it is ready for python 3.11.
+- Only fix env based hashbangs for scripts.
+- Make sure hashbangs to python scripts in %_bindir explicitly use
+  the full versioned python3 exec it builds against to avoid issues
+  when distro switches default python versions.
+
+-------------------------------------------------------------------
 Sat Nov  5 08:20:31 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Add BD pyuv, which is the fallback if inotify is not installed,
