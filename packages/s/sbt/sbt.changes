@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 19 16:03:07 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build against maven 3.9.2
+
+-------------------------------------------------------------------
 Wed May  3 11:43:15 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build against maven 3.9.1
