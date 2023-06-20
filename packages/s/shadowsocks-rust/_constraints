@@ -1,0 +1,37 @@
+<constraints>
+
+<overwrite>
+  <conditions>
+    <arch>x86_64</arch>
+  </conditions>
+  <hardware>
+    <physicalmemory>
+    <size unit="G">10</size>
+    </physicalmemory>
+  </hardware>
+</overwrite>
+
+<overwrite>
+  <conditions>
+    <arch>aarch64</arch>
+  </conditions>
+  <hardware>
+    <physicalmemory>
+    <size unit="G">6</size>
+    </physicalmemory>
+  </hardware>
+</overwrite>
+
+<overwrite>
+  <conditions>
+    <arch>ppc64</arch>
+    <arch>ppc64le</arch>
+  </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">80</size>
+      </disk>
+    </hardware>
+</overwrite>
+
+</constraints>

@@ -1,0 +1,95 @@
+-------------------------------------------------------------------
+Tue Jun 20 06:46:10 UTC 2023 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Add Recommends for shadowsocks-v2ray-plugin
+- Update systemd services
+
+-------------------------------------------------------------------
+Mon Jun 19 06:19:16 UTC 2023 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Update version to 1.15.3
+  * local-tun: Support tun_interface_destination for configuring Tun 
+    device's destination address
+  * Support outbound_fwmark, outbound_user_cookie, outbound_bind_interface
+    and outbound_bind_addr in configuration file
+  * AEAD-2022 protoco
+  * SIP002 Extended Format: Allowing unencoded user-info in URL
+  * Manager standalone mode support bypassing ACL files
+  * Allow sslocal run without any servers, which will bypass all connections
+    and packets
+  * "password" is optional for none / plain method
+  * redir-local: Enable dual-stack support on Linux (TProxy) and FreeBSD
+  * Disable md5-asm and sha1-asm: shadowsocks/shadowsocks-crypto
+  * "acl" and "outbound_fwmark" are available in configuration file
+  * Properly handle IPv4-mapped-IPv6 addresses in UDP assocations
+  * Automatically bump RLIMIT_NOFILE on Unix (except Android)
+  * SOCKS5 protocol supports RFC1929 Username/Password Authentication
+  * HKDF-SHA1 uses ring's assembly implementation
+  * Set environment variable SS_SYSTEM_DNS_RESOLVER_FORCE_BUILTIN to use system's
+    builtin DNS resolver
+  * Allow setting "system" in DNS configuration key "dns" to use system provided
+    DNS API
+  * Support setting SO_USER_COOKIE on FreeBSD
+  * Local tun interface refactored the VirtDevice::poll strategy
+  * balancer.check_best_interval could let ping balancer to ping only the choosen
+    best server in this interval
+  * Set a shorter interval in balancer.check_best_interval than
+    balancer.check_interval to check much frequently the best server
+  * efactored local-tun, using smoltcp as a user-space network stack
+  * Support K8S deployment
+  * shadowsocks-crypto switch underlying encryption library to RustCrypto
+  * New binary ssservice with unified features in (sslocal, ssserver and
+    ssmanager)
+  * Removed direct dependency to mio, sending file descriptors through UDS now
+    with sendfd
+  * ACL regular expression rules will try to convert to || (sub-domains) and |
+    (exact match) rules
+  * TCP connects with Happy Eyeballs (RFC6555, RFC8305) strategy
+  * Basic support of tun interface in sslocal (Experimental) Tested on macOS and
+    Linux
+  * Local server will choose remote servers based on their "mode"
+  * ssmanager support --plugin and --plugin-opts as default plugin
+    configurations
+  * ssmanager support starting ssserver in standalone (independent process) mode
+  * ACL support | and || hash-set and domain-tree mode
+  * Support --outbound-bind-interface on Windows
+  * TFO on Linux queue length set to 1024 to match backlogs
+  * Completely remove Replay Attack Protection with Ping-Pong bloom filter in
+    default build configuration
+  * Support Snapcraft
+  * Multi-architecture Docker image for release
+  * Replaced futures::future::abortable with tokio's builtin
+    tokio::task::JoinHandle::abort
+  * Define binaries' exit code with standard in sysexits.h
+  * HTTP local listener supports TCP_NODELAY, SO_KEEPALIVE and dual-stack
+  * Remove slient dropping when replay was detected
+  * Enable TCP Keep Alive for inbound and outbound sockets
+  * Add disabled key for local servers in configuration
+  * Support TFO (TCP Fast Open) on Linux, Windows, macOS (iOS), FreeBSD
+  * Support customizing servers' weight for balancer
+  * HTTP Proxy preserves headers' title case
+  * Support non-standard AEAD ciphers sm4-gcm and sm4-ccm
+  * Support non-standard AEAD ciphers with crypto2, could be enabled by feature
+    aead-cipher-extra
+  * Support protocol in basic configuration format
+  * supports starting multiple instances in the same process
+  * Check repeated salt after first successful decryption
+  * Support setting SO_MARK, SO_BINDTODEVICE on Linux
+  * Support setting SO_SNDBUF and SO_RCVBUF for TCP sockets
+  * Support SIP008 extend server fields server, server_port, remarks
+  * Support sending TCP and UDP queries simutaneously
+  * Support connection reusability
+  * Remove mostly TCP timeout setting for tunnels, connections will only be
+    killed if clients or servers close
+  * Auto-reload DNS resolver configuration from /etc/resolv.conf on *NIX
+    platforms
+  * Allow customizing number of worker-threads for multi-threaded scheduler
+  * Support field disabled in extended server configuration
+  * Support customizing inbound and outbound sockets' SO_SNDBUF and SO_RCVBUF by
+    command line options
+  * Fix bugs
+
+-------------------------------------------------------------------
+Sat Nov 13 12:01:57 UTC 2021 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Initial package for version 1.8.23 
