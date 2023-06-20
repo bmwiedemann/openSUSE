@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun 12 09:29:06 UTC 2023 - Klaus Kämpf <kkaempf@suse.com>
+
+- freeipmi 1.6.11
+  * Fix double free corner case in ipmiseld.
+  * Support ISO 8601 date inputs to date range options in ipmi-sel.
+  * Support Xilinx OEM FRU records.
+  * Fix corner case in libipmimonitoring, support sensor if units
+    is "RPM per minute", but just return "RPM" as the units.
+  * Fix portability compilation on cygwin.
+  * Fix typo in fiid template field that could lead to packet
+    interpretation errors. 
+
+-------------------------------------------------------------------
 Fri Feb 17 09:26:15 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - freeipmi 1.6.10
