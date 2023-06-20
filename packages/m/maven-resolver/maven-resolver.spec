@@ -19,7 +19,7 @@
 %define _buildshell /bin/bash
 %bcond_with tests
 Name:           maven-resolver
-Version:        1.9.8
+Version:        1.9.12
 Release:        0
 Summary:        Apache Maven Artifact Resolver library
 License:        Apache-2.0
@@ -50,7 +50,6 @@ BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  ant-junit
 BuildRequires:  cglib
-BuildRequires:  guava
 BuildRequires:  mockito
 BuildRequires:  objectweb-asm
 BuildRequires:  objenesis
@@ -217,7 +216,6 @@ build-jar-repository -s lib \
 %if %{with tests}
 build-jar-repository -s lib \
   cglib/cglib \
-  guava/guava \
   mockito/mockito-core \
   objectweb-asm/asm \
   objenesis/objenesis \

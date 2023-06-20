@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jun 19 15:06:45 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.9.12
+  * Bug
+    + [MRESOLVER-371] Unjustified WARNING log added by
+      MRESOLVER-364
+    + [MRESOLVER-361] Unreliable TCP and retries on upload
+    + [MRESOLVER-357] ConflictResolver STANDARD verbosity
+      misbehaves
+    + [MRESOLVER-352] Duplicate METADATA_DOWNLOADING event is
+      being sent
+  * Improvement
+    + [MRESOLVER-360] disable checksum by default for .sigstore
+      in addition to .asc
+  * New Feature
+    + [MRESOLVER-370] Lock factory should dump lock states on
+      failure
+    + [MRESOLVER-353] Make aether.checksums.algorithms settable
+      per remote repository
+  * Task
+    + [MRESOLVER-366] Upgrade build plugins
+    + [MRESOLVER-364] Revert MRESOLVER-132
+    + [MRESOLVER-359] Make build be explicit about build time
+      requirements
+    + [MRESOLVER-356] Remove Guava (is unused)
+    + [MRESOLVER-354] Document expected checksums
+
+-------------------------------------------------------------------
 Wed May  3 10:30:23 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.9.8
