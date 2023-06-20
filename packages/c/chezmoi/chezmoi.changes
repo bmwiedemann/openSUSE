@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 19 17:46:53 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.34.2:
+  * chore: Simplify code by using strings.EqualFold, time.Before
+  * chore: Use http.NoBody instead of nil
+  * fix: Handle multiple files in .chezmoidata directory
+  * chore: Update dependencies
+
+-------------------------------------------------------------------
 Mon Jun 12 16:58:23 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.34.1:
