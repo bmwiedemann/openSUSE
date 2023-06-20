@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 20 07:00:47 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- remove: kube-apiserver-admission-plugin-policy.patch 
+  * patch included upstream in the v1.24.15 patch version release
+- remove: kubernetes1.24.13.obscpio 
+
+-------------------------------------------------------------------
 Thu Jun 15 11:24:49 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - v1.24.15 includes Security Patch Fix for CVE-2023-2727 (bsc#1211630) and CVE-2023-2728 (bsc#1211631)
@@ -46,6 +53,14 @@ Mon Jun 12 04:55:15 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
   * Correct detection of 'not mounted' behavior -- umount will exit with a non-zero code.
   * Skip mount point checks when possible during mount cleanup.
   * Return error for localhost seccomp type with no localhost profile defined
+
+-------------------------------------------------------------------
+Thu Jun  8 04:42:55 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+Security Patch Fix for CVE-2023-2727 (bsc#1211630) and CVE-2023-2728 (bsc#1211631)
+* added patch: kube-apiserver-admission-plugin-policy.patch
+* this new kube-apiserver component patch prevents ephemeral containers:
+  ** from using an image that is restricted by ImagePolicyWebhook (CVE-2023-2727)
+  ** from bypassing the mountable secrets policy enforced by the ServiceAccount admission plugin (CVE-2023-2728) 
 
 -------------------------------------------------------------------
 Thu Apr 27 11:52:05 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
