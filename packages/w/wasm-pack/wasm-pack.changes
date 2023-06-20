@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Jun 19 00:00:09 UTC 2023 - william.brown@suse.com
+
+- Update to version 0.12.0~0:
+  * 0.12.0
+  * Respect package.readme in Cargo.toml
+  * chore: Run cargo fmt
+  * Revert "Respect package.readme in Cargo.toml"
+  * cargo update
+  * Invalid wasm-bindgen config is handled by toml parser
+  * update other deps as well
+  * update to clap 4 from structopt
+  * Turn off cargo colors during log level test
+  * chore: Use rust-toolchain@stable
+  * chore: Update Cargo.lock
+  * Revert CHANGELOG
+  * Respect package.readme in Cargo.toml
+  * Add sanity test for custom target directory
+  * Fix getting the target-dir in wasm_bindgen_build
+  * assert non-existence of other files as well
+  * remove reqwest from dev-deps
+  * rm missing feature from cargo test
+  * alias no-pack with no-package
+  * Replace curl with ureq
+  * fix: missing reference
+  * fix: removes `--always-auth` from `npm login`
+  * chore(deps): bump minimatch from 3.0.4 to 3.1.2 in /npm
+  * add package version to header
+  * revert change for var
+  * added USER-AGENT header for http GET request
+  * Replace unmaintained actions-rs/toolchain action in CI workflows
+  * Add option: omit_default_module_path
+  * fix: bump cargo-generate version to 0.18.2
+  * Don't hide install options behind link
+  * feat(build): --no-pack flag
+
+-------------------------------------------------------------------
 Tue May 23 04:31:56 UTC 2023 - william.brown@suse.com
 
 - Update to version 0.11.1~0:
