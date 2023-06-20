@@ -1725,4 +1725,37 @@
   [+ 0001-bond-workaround-6.1-enslave-regression-boo-1206674.patch]</comment>
     <requestid>1064159</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>952f261ef3df031921eb56a0ea309101</srcmd5>
+    <version>0.6.73</version>
+    <time>1687271997</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.6.73 (see also ChangeLog file):
+- spec: cleanup artefacts removing systemv scripts and hooks
+  (not used on any released version) and fix rpmlint warnings
+- arp: allow verify/notify counter and interval configuration
+- arp: handle ENOBUFS sending errors (bsc#1203300)
+- extensions: improve environment variable handling
+- firmware: refactor firmware extension definition to unify
+  its format with system-updater and dbus-service extensions.
+- firmware: improve enable, disable and revert cli command;
+  see wicked-firmware(8) manual page.
+- code cleanup: fix memory leaks, add array/list utils
+- wireless: Ignore not applicable WIRELESS_EAP_AUTH suse ifcfg
+  variable within an within EAP-TLS network (bsc#1211026)
+- cleanup /var/run leftovers in extension scripts (bsc#1194557)
+- json: output formatting improvements, unicode support via iconv
+- removed patches included in the source archive:
+  [- 0001-bond-workaround-6.1-enslave-regression-boo-1206674.patch,
+   - 0002-extensions-nbft-add-post-up-script.bsc-1211647.patch]
+
+- extensions/nbft: add post-up script (bsc#1211647)
+  In multipath scenarios, not all NBFT interfaces and respective
+  connections may have been brought up during initramfs processing.
+  If wicked brings up some NBFT interfaces after switching to the
+  root file system, run a post-up script to initiate the NVMe
+  connections.
+  [+ 0002-extensions-nbft-add-post-up-script.bsc-1211647.patch]</comment>
+    <requestid>1093768</requestid>
+  </revision>
 </revisionlist>
