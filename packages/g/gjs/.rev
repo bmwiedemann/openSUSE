@@ -1742,4 +1742,14 @@ Fri Dec  18 23:51:08 UTC 2015 - damjanovic.ivo@gmail.com
 New stable rel</comment>
     <requestid>1092726</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>a8d74207767ecd3ec6e1d9eaa26d77f4</srcmd5>
+    <version>1.76.2</version>
+    <time>1687272003</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1093227 from iznogood
+
+New stable rel</comment>
+    <requestid>1093707</requestid>
+  </revision>
 </revisionlist>
