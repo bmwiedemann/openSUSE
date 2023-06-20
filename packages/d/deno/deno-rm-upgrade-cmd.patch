@@ -16,7 +16,7 @@ diff --git a/cli/args/flags.rs.1 b/cli/args/flags.rs
 index fa28241..5ef386a 100644
 --- a/cli/args/flags.rs.1
 +++ b/cli/args/flags.rs
-@@ -229,7 +220,6 @@ pub enum DenoSubcommand {
+@@ -262,7 +262,6 @@ pub enum DenoSubcommand {
    Task(TaskFlags),
    Test(TestFlags),
    Types,
@@ -24,7 +24,7 @@ index fa28241..5ef386a 100644
    Vendor(VendorFlags),
  }
  
-@@ -531,7 +521,7 @@ impl Flags {
+@@ -579,7 +578,7 @@ impl Flags {
          std::env::current_dir().ok()
        }
        Bundle(_) | Completions(_) | Doc(_) | Fmt(_) | Init(_) | Install(_)
@@ -33,7 +33,7 @@ index fa28241..5ef386a 100644
      }
    }
  
-@@ -662,7 +652,6 @@ pub fn flags_from_vec(args: Vec<String>) -> clap::error::Result<Flags> {
+@@ -710,7 +709,6 @@ pub fn flags_from_vec(args: Vec<String>) -> clap::error::Result<Flags> {
        "test" => test_parse(&mut flags, &mut m),
        "types" => types_parse(&mut flags, &mut m),
        "uninstall" => uninstall_parse(&mut flags, &mut m),
@@ -41,23 +41,24 @@ index fa28241..5ef386a 100644
        "vendor" => vendor_parse(&mut flags, &mut m),
        _ => unreachable!(),
      }
-@@ -760,7 +749,6 @@ fn clap_root() -> Command {
-     .subcommand(task_subcommand())
-     .subcommand(test_subcommand())
-     .subcommand(types_subcommand())
--    .subcommand(upgrade_subcommand())
-     .subcommand(vendor_subcommand())
+@@ -810,7 +808,6 @@ fn clap_root() -> Command {
+         .subcommand(task_subcommand())
+         .subcommand(test_subcommand())
+         .subcommand(types_subcommand())
+-        .subcommand(upgrade_subcommand())
+         .subcommand(vendor_subcommand())
+     })
      .long_about(DENO_HELP)
-     .after_help(ENV_VARIABLES_HELP)
-@@ -1769,56 +1757,6 @@ The declaration file could be saved and used for typing information.",
-     )
+@@ -1847,58 +1844,6 @@ The declaration file could be saved and used for typing information.",
+   })
  }
  
 -fn upgrade_subcommand() -> Command {
--  Command::new("upgrade")
--    .about("Upgrade deno executable to given version")
--    .long_about(
--      "Upgrade deno executable to the given version.
+-  Command::new("upgrade").defer(|cmd| {
+-    cmd
+-      .about("Upgrade deno executable to given version")
+-      .long_about(
+-        "Upgrade deno executable to the given version.
 -Defaults to latest.
 -
 -The version is downloaded from
@@ -68,45 +69,46 @@ index fa28241..5ef386a 100644
 -update to a different location, use the --output flag
 -
 -  deno upgrade --output $HOME/my_deno",
--    )
--    .arg(
--      Arg::new("version")
--        .long("version")
--        .help("The version to upgrade to"),
--    )
--    .arg(
--      Arg::new("output")
--        .long("output")
--        .help("The path to output the updated version to")
--        .value_parser(value_parser!(PathBuf))
--        .value_hint(ValueHint::FilePath),
--    )
--    .arg(
--      Arg::new("dry-run")
--        .long("dry-run")
--        .help("Perform all checks without replacing old exe")
--        .action(ArgAction::SetTrue),
--    )
--    .arg(
--      Arg::new("force")
--        .long("force")
--        .short('f')
--        .help("Replace current exe even if not out-of-date")
--        .action(ArgAction::SetTrue),
--    )
--    .arg(
--      Arg::new("canary")
--        .long("canary")
--        .help("Upgrade to canary builds")
--        .action(ArgAction::SetTrue),
--    )
--    .arg(ca_file_arg())
+-      )
+-      .arg(
+-        Arg::new("version")
+-          .long("version")
+-          .help("The version to upgrade to"),
+-      )
+-      .arg(
+-        Arg::new("output")
+-          .long("output")
+-          .help("The path to output the updated version to")
+-          .value_parser(value_parser!(PathBuf))
+-          .value_hint(ValueHint::FilePath),
+-      )
+-      .arg(
+-        Arg::new("dry-run")
+-          .long("dry-run")
+-          .help("Perform all checks without replacing old exe")
+-          .action(ArgAction::SetTrue),
+-      )
+-      .arg(
+-        Arg::new("force")
+-          .long("force")
+-          .short('f')
+-          .help("Replace current exe even if not out-of-date")
+-          .action(ArgAction::SetTrue),
+-      )
+-      .arg(
+-        Arg::new("canary")
+-          .long("canary")
+-          .help("Upgrade to canary builds")
+-          .action(ArgAction::SetTrue),
+-      )
+-      .arg(ca_file_arg())
+-  })
 -}
 -
  fn vendor_subcommand() -> Command {
    Command::new("vendor")
-     .about("Vendor remote modules into a local directory")
-@@ -2953,23 +2891,6 @@ fn types_parse(flags: &mut Flags, _matches: &mut ArgMatches) {
+     .defer(|cmd| cmd.about("Vendor remote modules into a local directory")
+@@ -3035,23 +2980,6 @@ fn types_parse(flags: &mut Flags, _matches: &mut ArgMatches) {
    flags.subcommand = DenoSubcommand::Types;
  }
  
@@ -130,7 +132,7 @@ index fa28241..5ef386a 100644
  fn vendor_parse(flags: &mut Flags, matches: &mut ArgMatches) {
    ca_file_arg_parse(flags, matches);
    config_args_parse(flags, matches);
-@@ -3338,25 +3259,6 @@ mod tests {
+@@ -3425,25 +3353,6 @@ mod tests {
      assert_eq!(flags2, flags);
    }
  
@@ -156,7 +158,7 @@ index fa28241..5ef386a 100644
    #[test]
    fn version() {
      let r = flags_from_vec(svec!["deno", "--version"]);
-@@ -5977,25 +5879,6 @@ mod tests {
+@@ -6167,25 +6076,6 @@ mod tests {
      );
    }
  

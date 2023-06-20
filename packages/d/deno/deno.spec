@@ -19,7 +19,7 @@
 
 
 Name:           deno
-Version:        1.34.2
+Version:        1.34.3
 Release:        0
 Summary:        A secure JavaScript and TypeScript runtime
 License:        MIT
@@ -31,6 +31,7 @@ Source2:        cargo_config
 Source99:       revendor_source.sh
 Patch0:         deno-disable-update-check.patch
 Patch1:         deno-rm-upgrade-cmd.patch
+Patch2:         https://github.com/denoland/deno/pull/19537.patch#/deno-pull-19537.patch
 BuildRequires:  cargo-packaging
 # gcc-c++ needed to build SPIRV-Cross
 BuildRequires:  clang

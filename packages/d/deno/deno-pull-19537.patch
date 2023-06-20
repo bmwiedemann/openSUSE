@@ -1,0 +1,40 @@
+From 85825efdaf2ed1f0dbc937994967d428651d8c61 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bartek=20Iwa=C5=84czuk?= <biwanczuk@gmail.com>
+Date: Fri, 16 Jun 2023 17:02:32 +0200
+Subject: [PATCH] chore: add conditional compilation for tokio_unstable feature
+
+---
+ runtime/tokio_util.rs | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/runtime/tokio_util.rs b/runtime/tokio_util.rs
+index 204b928f43dee..4dbaabf442a81 100644
+--- a/runtime/tokio_util.rs
++++ b/runtime/tokio_util.rs
+@@ -3,6 +3,7 @@ use std::fmt::Debug;
+ use std::str::FromStr;
+ 
+ use deno_core::task::MaskFutureAsSend;
++#[cfg(tokio_unstable)]
+ use tokio_metrics::RuntimeMonitor;
+ 
+ /// Default configuration for tokio. In the future, this method may have different defaults
+@@ -70,6 +71,7 @@ where
+   // SAFETY: this this is guaranteed to be running on a current-thread executor
+   let future = unsafe { MaskFutureAsSend::new(future) };
+ 
++  #[cfg(tokio_unstable)]
+   let join_handle = if metrics_enabled {
+     rt.spawn(async move {
+       let metrics_interval: u64 = std::env::var("DENO_TOKIO_METRICS_INTERVAL")
+@@ -93,6 +95,10 @@ where
+   } else {
+     rt.spawn(future)
+   };
++
++  #[cfg(not(tokio_unstable))]
++  let join_handle = rt.spawn(future);
++
+   rt.block_on(join_handle).unwrap().into_inner()
+ }
+ 
