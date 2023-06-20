@@ -18,16 +18,19 @@
 
 %bcond_without  test
 Name:           python-pypet
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        Parameter exploration and storage of results for numerical simulations
 License:        BSD-3-Clause
 URL:            https://github.com/SmokinCaterpillar/pypet
 Source:         https://files.pythonhosted.org/packages/source/p/pypet/pypet-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#SmokinCaterpillar/pypet#65
-Patch0:         support-numpy-1.20.patch
+# PATCH-FIX-OPENSUSE Do not call decode() on objects that do not have that
+# method
+Patch0:         do-not-decode-int.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
@@ -62,11 +65,11 @@ from a single source.
 
 %build
 export LANG=en_US.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
 export LANG=en_US.UTF-8
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %if %{with test}
@@ -81,6 +84,7 @@ $python -B all_single_core_tests.py
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pypet
+%{python_sitelib}/pypet-%{version}.dist-info
 
 %changelog

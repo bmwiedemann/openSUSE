@@ -1,0 +1,14 @@
+Index: pypet-0.6.1/pypet/storageservice.py
+===================================================================
+--- pypet-0.6.1.orig/pypet/storageservice.py
++++ pypet-0.6.1/pypet/storageservice.py
+@@ -3175,7 +3175,8 @@ class HDF5StorageService(StorageService,
+                     # in the list or tuple
+                     for idx, item in enumerate(data):
+                         if typestr == str.__name__:
+-                            data[idx] = data[idx].decode(self._encoding)
++                            if hasattr(data[idx], "decode"):
++                                data[idx] = data[idx].decode(self._encoding)
+                         else:
+                             try:
+                                 data[idx] = pypetconstants.PARAMETERTYPEDICT[typestr](item)

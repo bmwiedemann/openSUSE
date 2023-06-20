@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 20 02:03:34 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.6.1:
+  * Support for NumPy >= 1.20
+- Drop patch support-numpy-1.20.patch, included upstream.
+- Add patch do-not-decode-int.patch, do not call .decode() on ints
+  when storing them.
+
+-------------------------------------------------------------------
 Tue Feb 14 07:05:38 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-numpy-1.20.patch:

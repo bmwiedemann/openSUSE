@@ -63,4 +63,16 @@
   * Support NumPy &gt;= 1.20.</comment>
     <requestid>1065670</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>23d81300a6e3a1207f3a99e4b26592c0</srcmd5>
+    <version>0.6.1</version>
+    <time>1687272530</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.1:
+  * Support for NumPy &gt;= 1.20
+- Drop patch support-numpy-1.20.patch, included upstream.
+- Add patch do-not-decode-int.patch, do not call .decode() on ints
+  when storing them.</comment>
+    <requestid>1093848</requestid>
+  </revision>
 </revisionlist>
