@@ -232,4 +232,15 @@
   * general/depth-clear-with-copy: New test.</comment>
     <requestid>1093126</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a8e1e28b1779409e0fe553af86858f95</srcmd5>
+    <version>1~20230615</version>
+    <time>1687272543</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1~20230615:
+  * cl: fix error in cl-api-create-program-with-binary
+  * arb_gpu_shader5: Test a very specific case of bitfieldInsert
+- Update _constraints to 10G disk space</comment>
+    <requestid>1093882</requestid>
+  </revision>
 </revisionlist>

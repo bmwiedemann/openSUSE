@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 19 13:05:22 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1~20230615:
+  * cl: fix error in cl-api-create-program-with-binary
+  * arb_gpu_shader5: Test a very specific case of bitfieldInsert
+- Update _constraints to 10G disk space
+
+-------------------------------------------------------------------
 Wed Jun 14 11:35:22 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1~20230613:
