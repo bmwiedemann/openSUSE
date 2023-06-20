@@ -18,7 +18,6 @@
 
 %define icondir %{_datadir}/icons
 %define binname nvim-gtk
-
 Name:           neovim-gtk
 Version:        0.2.0+git.1609586374.c036492
 Release:        0
@@ -30,9 +29,10 @@ Source0:        neovim-gtk-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 BuildRequires:  cargo
+BuildRequires:  cargo-packaging
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pango-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo-gobject)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
@@ -43,16 +43,14 @@ GTK UI for Neovim written in Rust using gtk-rs bindings. With ligatures
 support.
 
 %prep
-%setup -q -a1
-%autopatch -p1
+%autosetup -a1 -p1
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
 %build
-cargo build --release
+%{cargo_build}
 
 %install
-# %%makeinstall PREFIX=%%{_prefix}
 mkdir -p %{buildroot}%{_datadir}/%{binname}/
 cp -p -r runtime %{buildroot}%{_datadir}/%{binname}/
 install -p -m 0644 -D desktop/org.daa.NeovimGtk.desktop \

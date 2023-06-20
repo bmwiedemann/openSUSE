@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 20 13:33:36 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update vendored dependencies
+- Use cargo macros 
+
+-------------------------------------------------------------------
 Tue Feb 14 01:50:31 UTC 2023 - William Brown <william.brown@suse.com>
 
 - Automatic update of vendored dependencies
