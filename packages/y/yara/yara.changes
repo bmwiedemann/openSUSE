@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 11 13:22:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.1:
+  * BUGFIX: Functions `import_rva` and `import_delayed_rva` are
+    now case-insensitive (#1904)
+  * BUGFIX: Fix heap-related issue in `dotnet` module on Windows
+    (#1902)
+  * BUGFIX: Fix heap corruption with certain rules that have very
+    long string sets (67cccf0)
+
+-------------------------------------------------------------------
 Thu Mar 30 14:56:03 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Build AVX2 enabled hwcaps library for x86_64-v3
