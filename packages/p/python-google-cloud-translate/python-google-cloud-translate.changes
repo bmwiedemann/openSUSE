@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 20 09:53:38 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.11.1
+  * Fix formatting of request arg in docstring (#487)
+
+-------------------------------------------------------------------
 Fri Mar  3 15:23:57 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.11.0
