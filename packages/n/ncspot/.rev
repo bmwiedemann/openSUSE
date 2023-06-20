@@ -99,4 +99,12 @@ Update to version 0.13.1</comment>
 Update to version 0.13.2</comment>
     <requestid>1087287</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0454b0ebde660629ca16cf19ac2d4ccd</srcmd5>
+    <version>0.13.3</version>
+    <time>1687272443</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093584</requestid>
+  </revision>
 </revisionlist>

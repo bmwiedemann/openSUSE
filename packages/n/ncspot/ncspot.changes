@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jun 17 12:52:24 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 0.13.3
+  Maintenance
+  * Fix incorrect notification ID reuse on XDG
+  * Fix: ListView decrement selected on remove
+  * Support multiple IPC sockets
+  * Refactor the entry point to make it more readable
+  * Fix: command line multi-byte prefix panic
+  * Prevent tab switching from the command line
+  * Fix: config option command_key not working
+  * Remove Snapcraft installation source
+  * Add cargo installation method
+
+-------------------------------------------------------------------
 Mon May 15 17:47:34 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
 
 - Lock vendored dependencies
