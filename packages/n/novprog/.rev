@@ -83,4 +83,16 @@
   * Translation updates: Dutch, Lithuanian</comment>
     <requestid>937753</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>842eb4cf22e6e884caf50ba2bcb190c3</srcmd5>
+    <version>3.2.2</version>
+    <time>1687272587</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.2.2:
+  *Improved Linux deployment
+  * Replaced deprecated code
+- Changes for version 3.2.1:
+  * Switched to Qt 6</comment>
+    <requestid>1094095</requestid>
+  </revision>
 </revisionlist>

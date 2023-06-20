@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 20 13:46:18 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.2.2:
+  *Improved Linux deployment
+  * Replaced deprecated code
+- Changes for version 3.2.1:
+  * Switched to Qt 6
+
+-------------------------------------------------------------------
 Thu Dec  9 10:54:59 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 3.2.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package novprog
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2016 Graeme Gott <graeme@gottcode.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,21 +18,24 @@
 
 
 Name:           novprog
-Version:        3.2.0
+Version:        3.2.2
 Release:        0
 Summary:        Wordcount graphing program
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://gottcode.org/novprog/
-Source:         http://gottcode.org/novprog/%{name}-%{version}-src.tar.bz2
+Source:         https://gottcode.org/novprog/download/?os=source#/%{name}-%{version}-src.tar.bz2
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig
+BuildRequires:  qt6-linguist-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(opengl)
+BuildRequires:  pkgconfig(xkbcommon) >= 0.5.0
 Requires:       hicolor-icon-theme
 
 %description
@@ -45,14 +48,14 @@ graph will show a tooltip with that day's wordcount.
 %lang_package
 
 %prep
-%setup -q
+%autosetup
 
 %build
-%qmake5 PREFIX=%{_prefix}
-%make_jobs
+%cmake
+%cmake_build
 
 %install
-%qmake5_install
+%cmake_install
 %suse_update_desktop_file -u -r %{name} Office Publishing
 %find_lang %{name} --with-qt
 
