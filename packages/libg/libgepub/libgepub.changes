@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 14 15:07:21 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.7.1:
+  + doc: Fix Crash in gepub_doc_new().
+
+-------------------------------------------------------------------
 Thu Sep  1 06:35:49 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.7.0:

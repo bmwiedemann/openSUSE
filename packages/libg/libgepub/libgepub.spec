@@ -1,7 +1,7 @@
 #
 # spec file for package libgepub
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %global sover   0
 
 Name:           libgepub
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        EPUB document reader and render library
 License:        LGPL-2.1-or-later
