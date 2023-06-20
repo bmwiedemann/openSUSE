@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-monitor-ingestion
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Microsoft Azure Monitor Ingestion Client Library for Python
 License:        MIT
