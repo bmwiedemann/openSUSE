@@ -1,8 +1,8 @@
 #
 # spec file for package i2pd
 #
-# Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2022 PurpleI2P team
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2023 PurpleI2P team
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define sysuser i2pd
 %define sysgroup i2pd
 Name:           i2pd
-Version:        2.44.0
+Version:        2.48.0
 Release:        0
 Summary:        C++ implementation of an I2P client
 License:        BSD-3-Clause
@@ -70,7 +70,7 @@ pushd build
     -DWITH_LIBRARY=OFF \
     -DWITH_UPNP=ON \
     -DBUILD_SHARED_LIBS=OFF
-%make_build -j1
+%make_build
 popd
 
 %install
@@ -142,7 +142,6 @@ exit 0
 %attr(0750,%{sysuser},%{sysgroup}) %dir %{_sysconfdir}/i2pd
 %attr(0750,%{sysuser},%{sysgroup}) %dir %{_sysconfdir}/i2pd/tunnels.conf.d
 %config(noreplace) %{_sysconfdir}/i2pd/i2pd.conf
-%config(noreplace) %{_sysconfdir}/i2pd/subscriptions.txt
 %config(noreplace) %{_sysconfdir}/i2pd/tunnels.conf
 %{_sysconfdir}/i2pd/tunnels.conf.d/README
 

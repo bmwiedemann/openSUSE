@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Mon Jun 12 16:59:00 UTC 2023 - R4SAS <r4sas@i2pd.xyz>
+
+- update to 2.48.0:
+  * Added 'critical' log level
+  * Allow user/password authentication method for SOCK5 proxy
+  * Fixed reload tunnels
+  * Don't recognize new router as floodfill until it proves it's real
+  * Fixed incomplete HTTP headers in I2P tunnels
+  * Publish congestion cap 'G' if transit is not accepted
+  * Added webconsole button to drop a remote LeaseSet manually
+  * Publish encrypted RouterInfo through tunnels
+  * Print local b32 address on webconsole destination page
+  * Fixed incorrect address caps for unspecified ipv6 address
+- update to 2.47.0:
+  * DHT for floodfills instead plain list
+  * Process router's messages in separate thread
+  * Don't publish non-reachable router
+  * Fixed memory leak in Windows network state detection
+  * Fixed reseed attempts from invalid address
+  * Add support for domain addresses for Yggdrasil reseeds
+  * Send and check target destination in first streaming SYN packet
+  * Added congestion caps (https://geti2p.net/spec/proposals/162-congestion-caps)
+  * Added SAM UDP port parameter
+- update to 2.46.1:
+  * Fixed race condition while getting router's peer profile
+  * Fixed creation of new router.info
+  * Fixed displaying LeaseSets in the webconsole
+  * Fixed crash when processing ACK request
+- update to 2.46.0:
+  * New algorithm for tunnel creation success rate calculation
+  * Localization to Swedish, Portuguese, Turkish, Polish
+  * Fixed deadlock during processing I2NP block with Garlic in ECIES encrypted message to router
+  * Periodically send Datetime block in NTCP2 and SSU2 and check
+  * Better profiling for unreachable routers
+  * Minimal version for floodfill is 0.9.51
+  * Drop incoming NTCP2 and SSU2 connection if published IP doesn't match actual endpoint
+  * Sort transports by endpoints in webconsole
+  * Don't publish "0.0.0.0" in RouterInfo
+  * Check referer when processing Addresshelper
+  * Select first hop from high bandwidth peers for client tunnels
+  * Exclude unreachable router from NetDB for 2 hours
+  * Fixed missing NTCP2 address in RouterInfo if enabled back
+  * Fixed race condition with encrypted LeaseSets
+- update to 2.45.1:
+  * Fixed UPnP crash if SSU2 or NTCP2 is disabled
+  * Fixed crash on termination for some platforms
+  * Network status is always OK if peer test msg 5 received
+  * Added "Full Cone NAT" status error
+  * Drop duplicated I2NP messages in SSU2
+  * Set rejection code 30 if tunnel with id already exists
+- update to 2.45.0:
+  * Removed SSU transport
+  * Fixed file descriptors leak
+  * 1 and 15 seconds bandwidth calculation for i2pcontrol
+  * Compressible padding for I2P addresses
+  * Don't accept incoming session from invalid/reserved addresses for NTCP2 and SSU2
+  * Drop RouterInfos and LeaseSets with timestamp from future
+  * Increased default max transit tunnels number from 2500 to 5000 or 10000 for floodfill
+  * Fixed ::1 address in RouterInfo
+  * SSU2 network error handling (especially for Windows)
+  * Localization to Czech
+  * NTCP2 and SSU2 timestamps are rounded to seconds
+  * Don't send SSU2 termination again if termination received block received
+  * Fixed random crash on AddressBook update
+  * Test for Symmetric NAT with peer test msgs 6 and 7
+  * Fixed spamming to log if no descriptors
+  * Don't select overloaded peer for next tunnel
+  * Limit simultaneous tunnel build requests by 4 per pool
+  * Fixed RTT self-reduction for long-live streams
+  * Fixed crash if incorrect LeaseSet size
+  * "No Descriptors" router error state
+  * Remove "X-Requested-With" in HTTP Proxy for non-AJAX requests
+  * Fixed SSU2 network error handling (especially for Windows)
+
+-------------------------------------------------------------------
 Tue Dec  6 21:22:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.44.0:
