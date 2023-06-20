@@ -74,6 +74,8 @@ BuildRequires:  pkgconfig(xkbregistry)
 Requires:       %{name}-branding
 # optional: sway integration
 Recommends:     sway
+# Default configurations require Fontawesome 6
+Recommends:     fontawesome-fonts
 
 %description
 A customizable Wayland bar for Sway and Wlroots based compositors.

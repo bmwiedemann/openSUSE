@@ -786,4 +786,13 @@
 </comment>
     <requestid>1089663</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>4fdbf281edff8f331ec91f6baf0401a3</srcmd5>
+    <version>0.9.18</version>
+    <time>1687272496</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fontawesome font as recommended
+</comment>
+    <requestid>1093771</requestid>
+  </revision>
 </revisionlist>
