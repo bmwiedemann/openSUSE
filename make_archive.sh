@@ -1,7 +1,7 @@
 #!/bin/sh
 
-commit=4c5d516fdff227039305eef3411f12bac9f02246
-fcitxcommit=27a5bd7e78ab70329ed5cc75e29dcbacfd788e3f
+commit=9a2f53ad33bc9ccd15f02d69a94f8f3552bd08cd
+fcitxcommit=ebc1ce4c8f66e490aec8964777e5f672264d659c
 
 set -e
 
@@ -20,6 +20,7 @@ if [ -z $withoutmozc ]; then
         cd mozc
     else
         cd mozc
+        git restore .
         git fetch
     fi
 
@@ -44,13 +45,14 @@ if [ -z $withoutfcitx ]; then
         cd fcitx-mozc
     else
         cd fcitx-mozc
+        git restore .
         git fetch
     fi
 
     git checkout $fcitxcommit
 
     git archive --format=tar $fcitxcommit \
-    src/unix/fcitx src/unix/fcitx5 src/BUILD.fcitx.bazel src/BUILD.fcitx5.bazel | \
+    src/unix/fcitx src/unix/fcitx5 | \
     xz > ../fcitx-mozc-`echo $fcitxcommit | cut -c 1-8`.tar.xz
     cd ..
 fi

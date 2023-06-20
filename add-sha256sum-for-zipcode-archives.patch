@@ -2,16 +2,16 @@ Index: mozc-2.28.4715.102/src/WORKSPACE.bazel
 ===================================================================
 --- mozc-2.28.4715.102.orig/src/WORKSPACE.bazel
 +++ mozc-2.28.4715.102/src/WORKSPACE.bazel
-@@ -197,10 +197,12 @@ http_archive(
+@@ -181,10 +181,12 @@ http_archive(
      name = "zip_code_ken_all",
      build_file_content = "exports_files([\"KEN_ALL.CSV\"])",
      url = "https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip",
-+    sha256 = "509c94df91e51c6f6ae95d133b26a2d57e0d257e47a0aa54945c1cdb8afd0134"
++    sha256 = "88fcc0cd3c453a0d9b6dc8811c330515e9d992e7e3a5d27f31a2a3c47a1adb97"
  )
  
  http_archive(
      name = "zip_code_jigyosyo",
      build_file_content = "exports_files([\"JIGYOSYO.CSV\"])",
      url = "https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip",
-+    sha256 = "6e7925ac9f5dd0bc457a7682fc2eeecba141d2d2916ffc3507a2f44eb009740f"
++    sha256 = "767cc05bb9325288f7288aed51d75291b8b25b464d8f4d8ffd44184aad95c70d"
  )

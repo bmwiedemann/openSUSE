@@ -1,29 +1,26 @@
-Index: mozc-2.28.4715.102/src/unix/ibus/gen_mozc_xml.py
-===================================================================
---- mozc-2.28.4715.102.orig/src/unix/ibus/gen_mozc_xml.py
-+++ mozc-2.28.4715.102/src/unix/ibus/gen_mozc_xml.py
-@@ -228,6 +228,30 @@ def main():
-       'layout_variant': '',
-       'layout_option': '',
-       'rank': 80,
-+  },
-+  {
+diff --git a/src/unix/ibus/gen_mozc_xml.py b/src/unix/ibus/gen_mozc_xml.py
+index 75514ea3..7998c0e9 100755
+--- a/src/unix/ibus/gen_mozc_xml.py
++++ b/src/unix/ibus/gen_mozc_xml.py
+@@ -244,6 +244,27 @@ def main():
+       'rank': 99,
+       'symbol': 'A',
+       'composition_mode': 'DIRECT',
++  }, {
 +      'name': 'mozc-jp-jp',
 +      'longname': product_name + " - JP layout",
 +      'layout': 'jp',
 +      'layout_variant': '',
 +      'layout_option': '',
 +      'rank': 0,
-+  },
-+  {
++  }, {
 +      'name': 'mozc-us',
 +      'longname': product_name + " - US layout",
 +      'layout': 'us',
 +      'layout_variant': '',
 +      'layout_option': '',
 +      'rank': 0,
-+  },
-+  {
++  }, {
 +      'name': 'mozc-dv',
 +      'longname': product_name + " - US Dvorak layout",
 +      'layout': 'us',
