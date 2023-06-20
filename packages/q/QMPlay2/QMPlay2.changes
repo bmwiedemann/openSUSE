@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jun 18 10:27:31 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 23.06.17
+   * improve video playback if it's far too slow (display only key
+     frames),
+   * change network buffering options from packets to seconds,
+   * more HWAccel stabilizations (mostly VTB and VA-API),
+   * demux/download only selected streams (if possible),
+   * add more info into audio and video streams menu,
+   * choose best quality for HLS and DASH streams,
+   * add separate live streams buffering option,
+   * generally improve live streams playback,
+   * audio equalizer optimizations,
+   * improve bitrate information,
+   * fix YouTube live streams,
+   * other minor changes.
+- Adjusted 0001-add-opensuse-customizations.patch for the new
+  version.
+
+-------------------------------------------------------------------
 Sun Jun  4 14:07:47 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 23.06.04

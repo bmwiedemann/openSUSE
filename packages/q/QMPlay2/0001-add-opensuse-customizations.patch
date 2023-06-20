@@ -43,11 +43,11 @@ It also adds openSUSE branding to the about screen.
 
 --- a/src/gui/AboutWidget.cpp
 +++ b/src/gui/AboutWidget.cpp
-@@ -43,6 +43,7 @@
-     labelText += "<b>QMPlay2:</b> " + tr("video and audio player");
-     labelText += "<br/><b>" + tr("Programmer") + ":</b> <a href='mailto:spaz16@wp.pl'>Błażej Szczygieł</a>";
-     labelText += "<br/><b>" + tr("Version") + ":</b> " + QMPlay2Core.getSettings().getString("Version") + " (" + QSysInfo::buildCpuArchitecture() + ")";
+@@ -49,6 +49,7 @@
+     labelText += ", " + QGuiApplication::platformName();
+ #endif
+     labelText += ")";
 +    labelText += "<br/><b>This release was supplied by SUSE/openSUSE.</b>";
      QLabel *label = new QLabel(labelText);
- 
+
      QLabel *iconL = new QLabel;

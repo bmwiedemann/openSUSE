@@ -20,7 +20,7 @@
 %bcond_with qt6
 
 Name:           QMPlay2
-Version:        23.06.04
+Version:        23.06.17
 Release:        0
 Summary:        A Qt based media player, streamer and downloader
 License:        LGPL-3.0-or-later
