@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 15 09:51:50 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- update firmware to version 535.54.03 
+  * gsp_ad10x.bin has been renamed to gsp_ga10x.bin
+
+-------------------------------------------------------------------
 Wed May 31 10:43:19 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - make package multiversion capable

@@ -51,4 +51,12 @@
   * added &quot;Provides: multiversion(kernel)&quot;</comment>
     <requestid>1090457</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f110d67879199abaf6bfb33d653d4a84</srcmd5>
+    <version>535.54.03</version>
+    <time>1687272554</time>
+    <user>dimstar_suse</user>
+    <comment>update firmware to version 535.54.03</comment>
+    <requestid>1093938</requestid>
+  </revision>
 </revisionlist>

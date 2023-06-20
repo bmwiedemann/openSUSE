@@ -30,7 +30,7 @@
 
 Name:           kernel-firmware-nvidia-gsp-G06
 URL:            https://www.nvidia.com/en-us/drivers/unix/
-Version:        525.116.04
+Version:        535.54.03
 Release:        0
 Summary:        Kernel firmware file for open NVIDIA kernel module driver G06
 License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
@@ -57,7 +57,7 @@ sh %{_sourcedir}/NVIDIA-Linux-%{arch}-%{version}.run -x
 
 %install
 mkdir -p %{buildroot}%{_firmwaredir}/nvidia/%{version}
-install -m 644 NVIDIA-Linux-%{arch}-%{version}/firmware/{gsp_ad10x.bin,gsp_tu10x.bin} \
+install -m 644 NVIDIA-Linux-%{arch}-%{version}/firmware/{gsp_ga10x.bin,gsp_tu10x.bin} \
   %{buildroot}%{_firmwaredir}/nvidia/%{version}
 %if 0%{simpletest} == 1
 mkdir -p %{buildroot}/usr/lib/%{name}
@@ -74,7 +74,7 @@ ln -snf libnvidia-ml.so.%{version} %{buildroot}/usr/lib/%{name}/libnvidia-ml.so.
 %files
 %dir %{_firmwaredir}/nvidia
 %dir %{_firmwaredir}/nvidia/%{version}
-%{_firmwaredir}/nvidia/%{version}/gsp_ad10x.bin
+%{_firmwaredir}/nvidia/%{version}/gsp_ga10x.bin
 %{_firmwaredir}/nvidia/%{version}/gsp_tu10x.bin
 %if 0%{simpletest} == 1
 %dir /usr/lib/%{name}
