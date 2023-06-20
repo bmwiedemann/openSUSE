@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 19 17:01:07 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding fix_building_for_Python311.patch vs. using non-default
+  master tarball.
+
+-------------------------------------------------------------------
+Sat Jun 17 02:23:40 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Undoing 'Skip build for python 3.11 ...'
+  * Including patch from 2a3d42d on master  for python3.11
+
+-------------------------------------------------------------------
 Tue Feb 21 09:15:15 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Skip build for python 3.11, not supported yet

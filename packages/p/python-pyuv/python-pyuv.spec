@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python311 1
 Name:           python-pyuv
 Version:        1.4.0
 Release:        0
@@ -28,6 +27,7 @@ Source:         https://files.pythonhosted.org/packages/source/p/pyuv/pyuv-%{ver
 # Both patches in https://github.com/saghul/pyuv/pull/262
 Patch0:         tests_async_keyword.patch
 Patch1:         tests_py3.patch
+Patch2:         fix_building_for_Python311.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -44,6 +44,7 @@ Python interface for libuv.
 %setup -q -n pyuv-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 # Force system libuv
 rm -r deps/libuv
 rmdir deps
