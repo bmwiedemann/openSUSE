@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Jun 20 00:27:37 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.17.2:
+  * Integrations: Add support for aiohttp.web #571
+  * Include tests in sdist archives #537
+  * add python 3.11 support #538
+  * shortcuts high level public api expose #465
+  * ParametersError context property deprecated #462
+  * Spec.create deprecated #463
+  * Validators refactor #457
+  * Webhooks support #470
+  * Rename UnmarshalContext to ValidationContext #472
+  * Fix PATH_PARAMETER_PATTERN for DRF default value pattern. #468
+  * Fix falcon response data none #471
+  * Shortcuts backward compatible #482
+  * RequestValidator and ResponseValidator backward compatibility #487
+  * Fix flask decorator function return other types #489
+  * Fix integration Request Response factories check types fix #490
+  * Fix Requests request dont allow fragments #491
+  * Fix openapi packages update and tests #498
+  * unmarshallers integration tests #497
+  * Unmarshallers and validators refactor #508
+  * Shortcuts refactor #517
+  * Media type deserializers refactor #518
+  * validators public api expose #455
+  * allow openapi-schema-validator 0.4 #458
+  * better unmarshaller finders with refactor #447
+  * werkzeug flask root path fix #449
+  * additionalProperties without schema should allow null. #444
+- Switch back to PyPI tarball.
+
+-------------------------------------------------------------------
 Fri Dec  2 21:23:01 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 0.16.2:
