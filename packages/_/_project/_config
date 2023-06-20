@@ -508,6 +508,8 @@ FileProvides: /usr/bin/zsh zsh
 FileProvides: /usr/sbin/ldconfig glibc
 FileProvides: /usr/sbin/showconsole blog
 FileProvides: /usr/bin/chattr e2fsprogs
+FileProvides: /usr/bin/regina Regina-REXX
+FileProvides: /usr/bin/rexx Regina-REXX
 
 # Set preferences for above list - work with negative prefers, in order to be able to catch no-longer existing ones
 Prefer: bash-sh
@@ -868,8 +870,8 @@ Prefer: python310-Shapely:geos
 Prefer: -pipewire-libjack-0_3-devel libjack0
 #Prefer: -libjack-devel -libjack0
 
-# have choice for python3-zeep >= 3.2.0: python310-softlayer-zeep python310-zeep
-Prefer: -python310-softlayer-zeep
+# have choice for python3-zeep >= 3.2.0: python311-softlayer-zeep python311-zeep
+Prefer: -python311-softlayer-zeep
 
 # When perl provides a module that is also in a different package, but the consumer specifies no version, we go with perl/perl-base
 Prefer: perl-base perl
