@@ -1,0 +1,36 @@
+From db317cfa815edfbd18f2d53b445f3b98a0da4bce Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Fri, 19 Aug 2022 12:23:58 +0200
+Subject: [PATCH 154/161] prefs.js: handle different return values of
+ Gtk.accelerator_parse()
+
+See https://github.com/projecthamster/hamster-shell-extension/issues/350
+---
+ extension/prefs.js | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/extension/prefs.js b/extension/prefs.js
+index e20b62c..86b2f5e 100644
+--- a/extension/prefs.js
++++ b/extension/prefs.js
+@@ -161,9 +161,15 @@ class HamsterSettingsWidget extends Gtk.Grid {
+     }
+ 
+     _onHotkeyChange(widget, bananas) {
+-        //global.log(widget, bananas);
+         let hotkey = widget.get_text();
+-        let [key, mods] = Gtk.accelerator_parse(hotkey);
++        let [key, mods] = [null, null];
++
++        if (Gtk.MAJOR_VERSION >= 4) {
++            let _r = null;
++            [_r, key, mods] = Gtk.accelerator_parse(hotkey);
++        } else {
++            [key, mods] = Gtk.accelerator_parse(hotkey);
++        }
+ 
+         if (key != 0) {
+             let parsedName = Gtk.accelerator_name(key, mods);
+-- 
+2.41.0
+

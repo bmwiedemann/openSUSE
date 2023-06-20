@@ -4,8 +4,8 @@
     <param name="url">https://github.com/projecthamster/hamster.git</param>
     <param name="filename">hamster-time-tracker</param>
     <!-- <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param> -->
-    <param name="version">3.0.3~1</param>
-    <param name="revision">19d16009</param>
+    <param name="version">3.0.3~20</param>
+    <param name="revision">d10ae12</param>
     <!-- <param name="versionrewrite-pattern">v(.*)[+]0$</param>
          <param name="versionrewrite-replacement">\1</param> -->
     <param name="changesgenerate">enable</param>

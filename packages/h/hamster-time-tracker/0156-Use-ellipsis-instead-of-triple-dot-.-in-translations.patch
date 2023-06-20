@@ -1,0 +1,244 @@
+From d7e5ab04a6185380e0adad6f59cf4f6c348d4726 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Fri, 21 May 2021 11:42:32 +0200
+Subject: [PATCH 156/161] =?UTF-8?q?Use=20ellipsis=20(=E2=80=A6)=20instead?=
+ =?UTF-8?q?=20of=20triple=20dot=20(...)=20in=20translations?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Based on previous work from epost@anotheragency.no.
+
+Resolves: https://github.com/projecthamster/hamster-shell-extension/pull/279
+(cherry picked from commit f7c775f85287f06171b8bcbf90b3a7cf068d2f8a)
+---
+ data/locale/cs/LC_MESSAGES/hamster-shell-extension.po    | 4 ++--
+ data/locale/de/LC_MESSAGES/hamster-shell-extension.po    | 6 +++---
+ data/locale/es/LC_MESSAGES/hamster-shell-extension.po    | 8 ++++----
+ data/locale/fr/LC_MESSAGES/hamster-shell-extension.po    | 4 ++--
+ data/locale/messages.pot                                 | 4 ++--
+ data/locale/nb_NO/LC_MESSAGES/hamster-shell-extension.po | 4 ++--
+ data/locale/nl/LC_MESSAGES/hamster-shell-extension.po    | 8 ++++----
+ data/locale/pl/LC_MESSAGES/hamster-shell-extension.po    | 8 ++++----
+ data/locale/pt-BR/LC_MESSAGES/hamster-shell-extension.po | 8 ++++----
+ data/locale/ru/LC_MESSAGES/hamster-shell-extension.po    | 8 ++++----
+ data/locale/sv/LC_MESSAGES/hamster-shell-extension.po    | 4 ++--
+ 11 files changed, 33 insertions(+), 33 deletions(-)
+
+diff --git a/data/locale/cs/LC_MESSAGES/hamster-shell-extension.po b/data/locale/cs/LC_MESSAGES/hamster-shell-extension.po
+index 2ed5e2e..22dae47 100644
+--- a/data/locale/cs/LC_MESSAGES/hamster-shell-extension.po
++++ b/data/locale/cs/LC_MESSAGES/hamster-shell-extension.po
+@@ -24,11 +24,11 @@ msgid "Today's activities"
+ msgstr "Dnešní aktivity"
+ 
+ #: widgets/ongoingFactEntry.js:48
+-msgid "Enter activity..."
++msgid "Enter activity…"
+ msgstr "Zadejte aktivitu…"
+ 
+ #: widgets/panelWidget.js:82
+-msgid "Loading..."
++msgid "Loading…"
+ msgstr "Načítání…"
+ 
+ #: widgets/panelWidget.js:103
+diff --git a/data/locale/de/LC_MESSAGES/hamster-shell-extension.po b/data/locale/de/LC_MESSAGES/hamster-shell-extension.po
+index 013829e..6423a02 100644
+--- a/data/locale/de/LC_MESSAGES/hamster-shell-extension.po
++++ b/data/locale/de/LC_MESSAGES/hamster-shell-extension.po
+@@ -23,11 +23,11 @@ msgid "Today's activities"
+ msgstr "Heutige Tätigkeiten"
+ 
+ #: widgets/ongoingFactEntry.js:48
+-msgid "Enter activity..."
+-msgstr "Tätigkeit starten..."
++msgid "Enter activity…"
++msgstr "Tätigkeit starten…"
+ 
+ #: widgets/panelWidget.js:82
+-msgid "Loading..."
++msgid "Loading…"
+ msgstr "Lade…"
+ 
+ #: widgets/panelWidget.js:103
+diff --git a/data/locale/es/LC_MESSAGES/hamster-shell-extension.po b/data/locale/es/LC_MESSAGES/hamster-shell-extension.po
+index 69a5e7c..59923de 100644
+--- a/data/locale/es/LC_MESSAGES/hamster-shell-extension.po
++++ b/data/locale/es/LC_MESSAGES/hamster-shell-extension.po
+@@ -22,12 +22,12 @@ msgid "Today's activities"
+ msgstr "Actividades de hoy"
+ 
+ #: widgets/ongoingFactEntry.js:48
+-msgid "Enter activity..."
+-msgstr "Introduzca actividad..."
++msgid "Enter activity…"
++msgstr "Introduzca actividad…"
+ 
+ #: widgets/panelWidget.js:82
+-msgid "Loading..."
+-msgstr "Cargando..."
++msgid "Loading…"
++msgstr "Cargando…"
+ 
+ #: widgets/panelWidget.js:103
+ msgid "Show Overview"
+diff --git a/data/locale/fr/LC_MESSAGES/hamster-shell-extension.po b/data/locale/fr/LC_MESSAGES/hamster-shell-extension.po
+index 7150be1..7284da2 100644
+--- a/data/locale/fr/LC_MESSAGES/hamster-shell-extension.po
++++ b/data/locale/fr/LC_MESSAGES/hamster-shell-extension.po
+@@ -24,11 +24,11 @@ msgid "Today's activities"
+ msgstr "Activités du jour"
+ 
+ #: widgets/ongoingFactEntry.js:48
+-msgid "Enter activity..."
++msgid "Enter activity…"
+ msgstr "Entrez l'activité…"
+ 
+ #: widgets/panelWidget.js:82
+-msgid "Loading..."
++msgid "Loading…"
+ msgstr "Chargement…"
+ 
+ #: widgets/panelWidget.js:103
+diff --git a/data/locale/messages.pot b/data/locale/messages.pot
+index a3ae48c..7ff2e98 100644
+--- a/data/locale/messages.pot
++++ b/data/locale/messages.pot
+@@ -26,11 +26,11 @@ msgid "Today's activities"
+ msgstr ""
+ 
+ #: extension/widgets/ongoingFactEntry.js:51
+-msgid "Enter activity..."
++msgid "Enter activity…"
+ msgstr ""
+ 
+ #: extension/widgets/panelWidget.js:85
+-msgid "Loading..."
++msgid "Loading…"
+ msgstr ""
+ 
+ #: extension/widgets/panelWidget.js:106
+diff --git a/data/locale/nb_NO/LC_MESSAGES/hamster-shell-extension.po b/data/locale/nb_NO/LC_MESSAGES/hamster-shell-extension.po
+index c2d20b5..1da4760 100644
+--- a/data/locale/nb_NO/LC_MESSAGES/hamster-shell-extension.po
++++ b/data/locale/nb_NO/LC_MESSAGES/hamster-shell-extension.po
+@@ -25,11 +25,11 @@ msgid "Today's activities"
+ msgstr ""
+ 
+ #: extension/widgets/ongoingFactEntry.js:51
+-msgid "Enter activity..."
++msgid "Enter activity…"
+ msgstr ""
+ 
+ #: extension/widgets/panelWidget.js:85
+-msgid "Loading..."
++msgid "Loading…"
+ msgstr ""
+ 
+ #: extension/widgets/panelWidget.js:106
+diff --git a/data/locale/nl/LC_MESSAGES/hamster-shell-extension.po b/data/locale/nl/LC_MESSAGES/hamster-shell-extension.po
+index 2095166..3eb087d 100644
+--- a/data/locale/nl/LC_MESSAGES/hamster-shell-extension.po
++++ b/data/locale/nl/LC_MESSAGES/hamster-shell-extension.po
+@@ -21,12 +21,12 @@ msgid "Today's activities"
+ msgstr "Huidige activiteiten"
+ 
+ #: widgets/ongoingFactEntry.js:48
+-msgid "Enter activity..."
+-msgstr "Activiteit starten..."
++msgid "Enter activity…"
++msgstr "Activiteit starten…"
+ 
+ #: widgets/panelWidget.js:82
+-msgid "Loading..."
+-msgstr "Laden..."
++msgid "Loading…"
++msgstr "Laden…"
+ 
+ #: widgets/panelWidget.js:103
+ msgid "Show Overview"
+diff --git a/data/locale/pl/LC_MESSAGES/hamster-shell-extension.po b/data/locale/pl/LC_MESSAGES/hamster-shell-extension.po
+index 72f35c1..95c103c 100644
+--- a/data/locale/pl/LC_MESSAGES/hamster-shell-extension.po
++++ b/data/locale/pl/LC_MESSAGES/hamster-shell-extension.po
+@@ -22,12 +22,12 @@ msgid "Today's activities"
+ msgstr "Dzisiejsze aktywności"
+ 
+ #: widgets/ongoingFactEntry.js:48
+-msgid "Enter activity..."
+-msgstr "Wpisz aktywność..."
++msgid "Enter activity…"
++msgstr "Wpisz aktywność…"
+ 
+ #: widgets/panelWidget.js:82
+-msgid "Loading..."
+-msgstr "Ładowanie..."
++msgid "Loading…"
++msgstr "Ładowanie…"
+ 
+ #: widgets/panelWidget.js:103
+ msgid "Show Overview"
+diff --git a/data/locale/pt-BR/LC_MESSAGES/hamster-shell-extension.po b/data/locale/pt-BR/LC_MESSAGES/hamster-shell-extension.po
+index 538d0d4..ffec6e6 100644
+--- a/data/locale/pt-BR/LC_MESSAGES/hamster-shell-extension.po
++++ b/data/locale/pt-BR/LC_MESSAGES/hamster-shell-extension.po
+@@ -20,12 +20,12 @@ msgid "Today's activities"
+ msgstr "Atividades de hoje"
+ 
+ #: widgets/ongoingFactEntry.js:48
+-msgid "Enter activity..."
+-msgstr "Digite a atividade..."
++msgid "Enter activity…"
++msgstr "Digite a atividade…"
+ 
+ #: widgets/panelWidget.js:82
+-msgid "Loading..."
+-msgstr "Carregando..."
++msgid "Loading…"
++msgstr "Carregando…"
+ 
+ #: widgets/panelWidget.js:103
+ msgid "Show Overview"
+diff --git a/data/locale/ru/LC_MESSAGES/hamster-shell-extension.po b/data/locale/ru/LC_MESSAGES/hamster-shell-extension.po
+index eea96ef..637869d 100644
+--- a/data/locale/ru/LC_MESSAGES/hamster-shell-extension.po
++++ b/data/locale/ru/LC_MESSAGES/hamster-shell-extension.po
+@@ -22,12 +22,12 @@ msgid "Today's activities"
+ msgstr "Сегодня"
+ 
+ #: widgets/ongoingFactEntry.js:48
+-msgid "Enter activity..."
+-msgstr "Занятие..."
++msgid "Enter activity…"
++msgstr "Занятие…"
+ 
+ #: widgets/panelWidget.js:82
+-msgid "Loading..."
+-msgstr "Загрузка..."
++msgid "Loading…"
++msgstr "Загрузка…"
+ 
+ #: widgets/panelWidget.js:103
+ msgid "Show Overview"
+diff --git a/data/locale/sv/LC_MESSAGES/hamster-shell-extension.po b/data/locale/sv/LC_MESSAGES/hamster-shell-extension.po
+index abed02d..8145736 100644
+--- a/data/locale/sv/LC_MESSAGES/hamster-shell-extension.po
++++ b/data/locale/sv/LC_MESSAGES/hamster-shell-extension.po
+@@ -25,11 +25,11 @@ msgid "Today's activities"
+ msgstr ""
+ 
+ #: extension/widgets/ongoingFactEntry.js:51
+-msgid "Enter activity..."
++msgid "Enter activity…"
+ msgstr ""
+ 
+ #: extension/widgets/panelWidget.js:85
+-msgid "Loading..."
++msgid "Loading…"
+ msgstr ""
+ 
+ #: extension/widgets/panelWidget.js:106
+-- 
+2.41.0
+

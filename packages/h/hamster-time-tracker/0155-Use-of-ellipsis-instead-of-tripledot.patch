@@ -1,0 +1,40 @@
+From 885f55e7deb44519ebcc99b46d006500a4a7e4a4 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Allan=20Nordh=C3=B8y?= <epost@anotheragency.no>
+Date: Fri, 13 Apr 2018 03:20:05 +0200
+Subject: [PATCH 155/161] Use of ellipsis instead of tripledot
+
+(cherry picked from commit f88d196fad8d047dfdbf894976ed94b47178de81)
+---
+ extension/widgets/ongoingFactEntry.js | 2 +-
+ extension/widgets/panelWidget.js      | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/extension/widgets/ongoingFactEntry.js b/extension/widgets/ongoingFactEntry.js
+index 00d24ac..6c23199 100644
+--- a/extension/widgets/ongoingFactEntry.js
++++ b/extension/widgets/ongoingFactEntry.js
+@@ -46,7 +46,7 @@ class OngoingFactEntry extends St.Entry {
+             name: 'searchEntry',
+             can_focus: true,
+             track_hover: true,
+-            hint_text: _("Enter activity..."),
++            hint_text: _("Enter activity…"),
+             style_class: "search-entry"
+         });
+ 
+diff --git a/extension/widgets/panelWidget.js b/extension/widgets/panelWidget.js
+index 41d9bf1..8aaaa85 100644
+--- a/extension/widgets/panelWidget.js
++++ b/extension/widgets/panelWidget.js
+@@ -82,7 +82,7 @@ class PanelWidget extends PanelMenu.Button {
+         _actor.add_style_class_name('panel-status-button');
+ 
+         this.panelLabel = new St.Label({
+-            text: _("Loading..."),
++            text: _("Loading…"),
+             y_align: Clutter.ActorAlign.CENTER
+         });
+ 
+-- 
+2.41.0
+

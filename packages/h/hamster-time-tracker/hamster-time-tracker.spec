@@ -1,7 +1,7 @@
 #
 # spec file for package hamster-time-tracker
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,22 @@
 
 %global ext_version 0.10.0
 
+# ext_gnome_version: latest GNOME shell version supported
+# min_gnome_version: earliest GNOME shell version supported
 %if 0%{?suse_version} >= 1550
-%global ext_gnome_version 42
+%global ext_gnome_version 44
+%global min_gnome_version 3.34
 %else
 %if 0%{?sle_version} >= 150400
 %global ext_gnome_version 41
+%global min_gnome_version 3.34
 %else
 %if 0%{?sle_version} >= 150200
 %global ext_gnome_version 3.34
+%global min_gnome_version 3.32
 %else
-%global ext_gnome_version 3.26
+%global ext_gnome_version 3.30
+%global min_gnome_version 3.10
 %endif
 %endif
 %endif
@@ -36,7 +42,7 @@
 %bcond_without extension
 
 Name:           hamster-time-tracker
-Version:        3.0.3~1
+Version:        3.0.3~20
 Release:        0
 Summary:        A time tracker for GNOME
 License:        CC-BY-SA-3.0 AND GPL-3.0-or-later
@@ -108,16 +114,22 @@ Patch148:       0148-display-total-time-for-the-day.patch
 Patch149:       0149-Extension-configuration-add-a-new-option-center-with.patch
 Patch150:       0150-Improve-description-of-center-positioning.patch
 Patch151:       0151-Default-shortcut-Super-t.patch
-# GNOME 3.41 / 3.42
+# GNOME 41-44
 Patch152:       0152-metadata.json-add-support-for-GNOME-41.patch
 Patch153:       0153-metadata.json.in-add-support-for-GNOME-42.patch
+Patch154:       0154-prefs.js-handle-different-return-values-of-Gtk.accel.patch
+Patch155:       0155-Use-of-ellipsis-instead-of-tripledot.patch
+Patch156:       0156-Use-ellipsis-instead-of-triple-dot-.-in-translations.patch
+Patch157:       0157-Add-Gnome-Shell-43-compatibility.patch
+Patch158:       0158-Add-basic-gnome-44-support.patch
+Patch159:       0159-Report-errors-in-DBUS-calls.patch
+Patch160:       0160-Report-errors-on-initial-DBUS-connection.patch
+Patch161:       0161-Gracefully-handle-hamster-DBUS-disappearing.patch
 
 BuildRequires:  fdupes
 BuildRequires:  intltool
 # For detecting typelib() dependencies
 BuildRequires:  gobject-introspection
-# waf requires python2
-BuildRequires:  python
 # "waf configure" checks for these
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  glib2-devel
@@ -231,6 +243,14 @@ cd hamster-shell-extension-%{ext_version}
 %patch151 -p1
 %patch152 -p1
 %patch153 -p1
+%patch154 -p1
+%patch155 -p1
+%patch156 -p1
+%patch157 -p1
+%patch158 -p1
+%patch159 -p1
+%patch160 -p1
+%patch161 -p1
 %endif
 %endif
 
@@ -288,20 +308,19 @@ tar xz -f hamster-shell-extension-%{ext_version}/dist/%{ext_uuid}.tar.gz \
 %{_datadir}/glib-2.0/schemas/org.gnome.hamster.gschema.xml
 %{_datadir}/help/C/hamster
 
+# Derive "next higher" GNOME version to be able to use "<" in Requires
+%define next_higher() %{lua: x = tonumber(rpm.expand('%1'))
+   if x < 4 then print(string.format("%.02f", x + 0.01)) else print(x + 1) end}
+
 %package -n gnome-shell-extension-hamster-time-tracker
-Version:        3.0.3~1%{ext_version}_%{ext_gnome_version}
+Version:        3.0.3~20_%{ext_version}_%{ext_gnome_version}
 Release:        0
 Summary:        Hamster time tracker extension for GNOME Shell
 License:        GPL-3.0-only
 Group:          System/GUI/GNOME
-Requires:       gnome-shell >= %{ext_gnome_version}
-%if 0%{?sle_version} >= 150200 && 0%{?suse_version} < 1550
-Requires:       gnome-shell < 3.36
-%endif
-%if 0%{?sle_version} < 150200 && 0%{?suse_version} < 1550
-Requires:       gnome-shell < 3.32
-%endif
 Requires:       %{name}
+Requires:       gnome-shell < %{next_higher %{ext_gnome_version}}
+Requires:       gnome-shell >= %{min_gnome_version}
 Supplements:    packageand(gnome-shell:%{name})
 # The predecessor package had a broken version number.
 Obsoletes:      gnome-shell-extension-hamster < 2.2.20.10.1

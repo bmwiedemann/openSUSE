@@ -135,4 +135,41 @@
 </comment>
     <requestid>964949</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>3430dd119f2a02ebe6f95ba0b4df80f2</srcmd5>
+    <version>unknown</version>
+    <time>1687272522</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.3~20 (git d10ae12):
+  * Had to bump pre-release to 20 to fix artefact of broken version
+    for shell extension (&quot;3.0.3~10.10.0_42&quot; instead of &quot;3.0.3~1_0.10.0_42&quot;)
+  * Fix hamster startup failure under python 3.11
+    (remove call to deprecated bind_textdomain_codeset gettext function)
+  * HTML export fixes and clean up (gh#projecthamster/hamster#665)
+  * Apply escaping and preserve newlines in HTML export (gh#projecthamster/hamster#704)
+  * Update Croatian translation, add hr.po
+  * Fix time-activity overlap with wide fonts
+- Update GNOME shell extension to upstream 75541ac
+  * use upstream patches for GNOME shell 44 support
+  * Fix GNOME shell dependency on TW
+  * gracefully handle hamster DBUS service disappearing
+  * del 0154-metadata.json.in-add-support-for-GNOME-44.patch
+  * add 0154-prefs.js-handle-different-return-values-of-Gtk.accel.patch
+  * add 0155-Use-of-ellipsis-instead-of-tripledot.patch
+  * add 0156-Use-ellipsis-instead-of-triple-dot-.-in-translations.patch
+  * add 0157-Add-Gnome-Shell-43-compatibility.patch
+  * add 0158-Add-basic-gnome-44-support.patch
+  * add 0159-Report-errors-in-DBUS-calls.patch
+  * add 0160-Report-errors-on-initial-DBUS-connection.patch
+  * add 0161-Gracefully-handle-hamster-DBUS-disappearing.patch
+ - spec file: Fix GNOME shell dependency so that it works for &quot;44.2&quot;
+
+- GNOME 43 and GNOME 44 support for GNOME shell extension
+  * added 0154-metadata.json.in-add-support-for-GNOME-44.patch
+
+- Remove unneeded BuildRequires on Python 2. 
+
+- Fix version ranges for GNOME shell extension</comment>
+    <requestid>1093837</requestid>
+  </revision>
 </revisionlist>

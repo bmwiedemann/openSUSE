@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Jun 19 15:50:30 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 3.0.3~20 (git d10ae12):
+  * Had to bump pre-release to 20 to fix artefact of broken version
+    for shell extension ("3.0.3~10.10.0_42" instead of "3.0.3~1_0.10.0_42")
+  * Fix hamster startup failure under python 3.11
+    (remove call to deprecated bind_textdomain_codeset gettext function)
+  * HTML export fixes and clean up (gh#projecthamster/hamster#665)
+  * Apply escaping and preserve newlines in HTML export (gh#projecthamster/hamster#704)
+  * Update Croatian translation, add hr.po
+  * Fix time-activity overlap with wide fonts
+- Update GNOME shell extension to upstream 75541ac
+  * use upstream patches for GNOME shell 44 support
+  * Fix GNOME shell dependency on TW
+  * gracefully handle hamster DBUS service disappearing
+  * del 0154-metadata.json.in-add-support-for-GNOME-44.patch
+  * add 0154-prefs.js-handle-different-return-values-of-Gtk.accel.patch
+  * add 0155-Use-of-ellipsis-instead-of-tripledot.patch
+  * add 0156-Use-ellipsis-instead-of-triple-dot-.-in-translations.patch
+  * add 0157-Add-Gnome-Shell-43-compatibility.patch
+  * add 0158-Add-basic-gnome-44-support.patch
+  * add 0159-Report-errors-in-DBUS-calls.patch
+  * add 0160-Report-errors-on-initial-DBUS-connection.patch
+  * add 0161-Gracefully-handle-hamster-DBUS-disappearing.patch
+ - spec file: Fix GNOME shell dependency so that it works for "44.2"
+
+-------------------------------------------------------------------
+Mon May  1 09:41:00 UTC 2023 - Andrey Gankov <gav@qsolution.ru>
+
+- GNOME 43 and GNOME 44 support for GNOME shell extension
+  * added 0154-metadata.json.in-add-support-for-GNOME-44.patch
+
+-------------------------------------------------------------------
+Wed Nov 30 00:41:45 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on Python 2. 
+
+-------------------------------------------------------------------
+Tue Mar 29 07:23:50 UTC 2022 - Martin Wilck <mwilck@suse.com>
+
+- Fix version ranges for GNOME shell extension
+  * Avoid "nothing provides gnome-shell >= 42" errors from factory
+    bot for s390x/ppc64
+  * This will cause conflicts on future GNOME shell updates, but
+    that's what we want, actually.
+
+-------------------------------------------------------------------
 Fri Mar 25 19:53:17 UTC 2022 - mwilck@suse.com
 
 - Update to upstream hamster 3.0.3~1

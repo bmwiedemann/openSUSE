@@ -1,0 +1,167 @@
+From 21db3e1f6446b1a2c298ae7859ede206465edafa Mon Sep 17 00:00:00 2001
+From: Matthijs Kooijman <matthijs@stdin.nl>
+Date: Sun, 30 Apr 2023 23:02:42 +0200
+Subject: [PATCH 159/161] Report errors in DBUS calls
+
+This catches all errors in DBUS calls to hamster and passes them to
+a new reportError method, which logs them and creates a notification to
+also inform the user.
+
+(cherry picked from commit b957a4975f65ae41ddbd476aedea6f0888f009d2)
+---
+ extension/extension.js                 | 18 +++++++++++++++
+ extension/widgets/ongoingFactEntry.js  |  1 +
+ extension/widgets/panelWidget.js       | 32 ++++++++++++++++++++------
+ extension/widgets/todaysFactsWidget.js |  4 ++++
+ 4 files changed, 48 insertions(+), 7 deletions(-)
+
+diff --git a/extension/extension.js b/extension/extension.js
+index d91e719..3964c6d 100644
+--- a/extension/extension.js
++++ b/extension/extension.js
+@@ -210,12 +210,30 @@ class Controller {
+ 
+         this.runningActivitiesQuery = true;
+         this.apiProxy.GetActivitiesRemote("", function([response], err) {
++            this.reportIfError(_("Failed to get activities"), err);
+             this.runningActivitiesQuery = false;
+             this.activities = response;
+             // global.log('ACTIVITIES HAMSTER: ', this.activities);
+         }.bind(this));
+     }
+ 
++    /**
++     * Report an error if one is passed. If error is falsey (e.g.
++     * null), nothing is reported.
++     */
++    reportIfError(msg, error) {
++        if (error) {
++            // Use toString, error can be a string, exception, etc.
++            global.log("error: Hamster: " + msg + ": " + error.toString());
++            // Prefix msg to details (second argument), since the
++            // details are word-wrapped and the title is not.
++            Main.notify("Hamster: " + msg, msg + "\n" + error.toString());
++            // Close menu so notification can be seen
++            if (this.panelWidget)
++                this.panelWidget.close_menu();
++        }
++    }
++
+     /**
+      * Place the actual extension wi
+      * get in the right place according to settings.
+diff --git a/extension/widgets/ongoingFactEntry.js b/extension/widgets/ongoingFactEntry.js
+index 6c23199..cce4929 100644
+--- a/extension/widgets/ongoingFactEntry.js
++++ b/extension/widgets/ongoingFactEntry.js
+@@ -71,6 +71,7 @@ class OngoingFactEntry extends St.Entry {
+     _onEntryActivated() {
+         let text = this.get_text();
+         this._controller.apiProxy.AddFactRemote(text, 0, 0, false, function(response, error) {
++            this._controller.reportIfError(_("Failed to add activity"), error);
+             // not interested in the new id - this shuts up the warning
+ 	}.bind(this));
+         this.set_text('');
+diff --git a/extension/widgets/panelWidget.js b/extension/widgets/panelWidget.js
+index 8aaaa85..0d9e870 100644
+--- a/extension/widgets/panelWidget.js
++++ b/extension/widgets/panelWidget.js
+@@ -178,10 +178,8 @@ class PanelWidget extends PanelMenu.Button {
+ 
+ 		let facts = [];
+ 
+-        // [FIXME]
+-        // This seems a rather naive way to handle potential errors.
+ 		if (err) {
+-		    log(err);
++                    this._controller.reportIfError(_("Failed to get activities"), err);
+ 		} else if (response.length > 0) {
+ 		    facts = Stuff.fromDbusFacts(response);
+ 		}
+@@ -207,6 +205,12 @@ class PanelWidget extends PanelMenu.Button {
+         this.menu.toggle();
+     }
+ 
++    /**
++     * Close the 'popup menu'
++     */
++    close_menu() {
++        this.menu.close();
++    }
+ 
+     /**
+      * Update the rendering of the PanelWidget in the panel itself.
+@@ -286,7 +290,9 @@ class PanelWidget extends PanelMenu.Button {
+                                     now.getMinutes(),
+                                     now.getSeconds());
+         epochSeconds = Math.floor(epochSeconds / 1000);
+-        this._controller.apiProxy.StopTrackingRemote(GLib.Variant.new('i', [epochSeconds]));
++        this._controller.apiProxy.StopTrackingRemote(GLib.Variant.new('i', [epochSeconds]), function(response, err) {
++            this._controller.reportIfError(_("Failed to stop tracking"), err);
++        }.bind(this));
+     }
+ 
+     /**
+@@ -295,7 +301,11 @@ class PanelWidget extends PanelMenu.Button {
+      * @callback panelWidget~_onOpenOverview
+      */
+     _onOpenOverview() {
+-        this._controller.windowsProxy.overviewSync();
++        try {
++            this._controller.windowsProxy.overviewSync();
++        } catch (error) {
++            this._controller.reportIfError(_("Failed to open overview window"), error);
++        }
+     }
+ 
+     /**
+@@ -304,7 +314,11 @@ class PanelWidget extends PanelMenu.Button {
+      * @callback panelWidget~_onOpenAddFact
+      */
+     _onOpenAddFact() {
+-        this._controller.windowsProxy.editSync(GLib.Variant.new('i', [0]));
++        try {
++            this._controller.windowsProxy.editSync(GLib.Variant.new('i', [0]));
++        } catch (error) {
++            this._controller.reportIfError(_("Failed to open add window"), error);
++        }
+     }
+ 
+     /**
+@@ -315,6 +329,10 @@ class PanelWidget extends PanelMenu.Button {
+      * Note: This will open the GUI settings, not the extension settings!
+      */
+     _onOpenSettings() {
+-        this._controller.windowsProxy.preferencesSync();
++        try {
++            this._controller.windowsProxy.preferencesSync();
++        } catch (error) {
++            this._controller.reportIfError(_("Failed to open settings window"), error);
++        }
+     }
+ });
+diff --git a/extension/widgets/todaysFactsWidget.js b/extension/widgets/todaysFactsWidget.js
+index 9f327f6..778f964 100644
+--- a/extension/widgets/todaysFactsWidget.js
++++ b/extension/widgets/todaysFactsWidget.js
+@@ -26,6 +26,9 @@ const Clutter = imports.gi.Clutter;
+ const GLib = imports.gi.GLib;
+ const GObject = imports.gi.GObject;
+ 
++const Gettext = imports.gettext.domain('hamster-shell-extension');
++const _ = Gettext.gettext;
++
+ const Me = imports.misc.extensionUtils.getCurrentExtension();
+ const Stuff = Me.imports.stuff;
+ 
+@@ -114,6 +117,7 @@ class TodaysFactsWidget extends St.ScrollView {
+ 
+ 		/* jshint validthis: true */
+                 controller.apiProxy.AddFactRemote(factStr, 0, 0, false, function(response, err) {
++                    controller.reportIfError(_("Failed to continue activity"), err);
+                     // not interested in the new id - this shuts up the warning
+                 }.bind(this));
+                 menu.close();
+-- 
+2.41.0
+
