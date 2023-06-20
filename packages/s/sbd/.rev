@@ -533,4 +533,15 @@ the sources.</comment>
   * bsc#1180966-0001-Log-sbd-inquisitor-downgrade-the-warning-about-SBD_S.patch (forwarded request 1042333 from yan_gao)</comment>
     <requestid>1042335</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>ccb6d46548219b0f998728928fd376ba</srcmd5>
+    <version>1.5.2+20230316.5ec38cf</version>
+    <time>1687272535</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.2+20230316.5ec38cf:
+- query-watchdog: avoid issues on heap allocation failing (gh#ClusterLabs/sbd#147)
+
+- Update to version 1.5.2+20230109.cf5c220 (v1.5.2): (forwarded request 1093862 from yan_gao)</comment>
+    <requestid>1093863</requestid>
+  </revision>
 </revisionlist>

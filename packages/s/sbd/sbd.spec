@@ -1,7 +1,7 @@
 #
 # spec file for package sbd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 Lars Marowsky-Bree
 #
 # All modifications and additions to the file contributed by third parties
@@ -47,7 +47,7 @@
 %global sync_resource_startup_sysconfig ""
 
 Name:           sbd
-Version:        1.5.1+20221128.8ec8e01
+Version:        1.5.2+20230316.5ec38cf
 Release:        0
 Summary:        Storage-based death
 License:        GPL-2.0-or-later

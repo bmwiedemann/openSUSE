@@ -4,7 +4,7 @@
     <param name="exclude">.git</param>
     <param name="url">https://github.com/ClusterLabs/sbd.git</param>
     <param name="revision">main</param>
-    <param name="versionformat">1.5.1+%cd.%h</param>
+    <param name="versionformat">1.5.2+%cd.%h</param>
     <param name="changesgenerate">enable</param>
   </service>
 
