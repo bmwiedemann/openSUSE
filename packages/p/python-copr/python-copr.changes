@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 20 05:56:05 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.129:
+  * No upstream changelog.
+- Fiddle with {Build,}Requires as appropiate.
+- Move to pyproject macros.
+
+-------------------------------------------------------------------
 Wed Dec  7 15:53:03 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 1.124 

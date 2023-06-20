@@ -1,7 +1,7 @@
 #
 # spec file for package python-copr
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,19 @@
 
 
 Name:           python-copr
-Version:        1.124
+Version:        1.129
 Release:        0
 Summary:        Python client for copr service
 License:        GPL-2.0-or-later
 URL:            https://github.com/fedora-copr/copr
 Source:         https://files.pythonhosted.org/packages/source/c/copr/copr-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-marshmallow
+Requires:       python-filelock
+Requires:       python-future
 Requires:       python-munch
 Requires:       python-requests
 Requires:       python-requests-toolbelt
@@ -34,12 +37,12 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module filelock}
 BuildRequires:  %{python_module future}
-BuildRequires:  %{python_module marshmallow}
 BuildRequires:  %{python_module munch}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-gssapi}
 BuildRequires:  %{python_module requests-toolbelt}
 BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module six}
 # /SECTION
 %python_subpackages
 
@@ -50,10 +53,10 @@ Python client for copr service.
 %setup -q -n copr-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
