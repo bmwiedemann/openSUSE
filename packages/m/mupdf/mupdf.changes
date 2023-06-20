@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 20 07:03:54 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.22.2:
+  * Various bug fixes cherry-picked back from development work
+    required to fix PyMuPDF issues.
+
+-------------------------------------------------------------------
 Fri May 12 12:16:22 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.22.1:
