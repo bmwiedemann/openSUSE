@@ -16660,7 +16660,6 @@ unsorted:
   - mailgraph 
   - mailgraph-apache 
   - mailimporter-devel 
-  - mailman3 
   - mailprocessing 
   - mailutils-delivery 
   - mailutils-devel 
@@ -22420,7 +22419,6 @@ unsorted:
   - python-doc-pdf 
   - python-efl-doc 
   - python-efl-examples 
-  - python-falcon-doc 
   - python-fastcluster-doc 
   - python-flake8-doc 
   - python-flup-doc 
@@ -26466,7 +26464,6 @@ unsorted:
   - python311-PyMsgBox 
   - python311-PyMuPDF 
   - python311-PyMySQL 
-  - python311-PyNaCl 
   - python311-PyNamecheap 
   - python311-PyOgg 
   - python311-PyOpenAL 
@@ -26607,7 +26604,6 @@ unsorted:
   - python311-aioresponses 
   - python311-aiorpcX 
   - python311-aiosignal 
-  - python311-aiosmtpd 
   - python311-aiosmtplib 
   - python311-aiosqlite 
   - python311-aiostream 
@@ -26648,8 +26644,6 @@ unsorted:
   - python311-archmage 
   - python311-arf 
   - python311-argh 
-  - python311-argon2-cffi 
-  - python311-argon2-cffi-bindings 
   - python311-argparse_addons 
   - python311-args 
   - python311-arrow 
@@ -26679,14 +26673,12 @@ unsorted:
   - python311-astunparse 
   - python311-asv 
   - python311-async-lru 
-  - python311-async_generator 
   - python311-asyncclick 
   - python311-asyncpg 
   - python311-asyncssh 
   - python311-atlassian-python-api 
   - python311-atom 
   - python311-atomicwrites 
-  - python311-atpublic 
   - python311-attr 
   - python311-aubio 
   - python311-audio-degrader 
@@ -26694,8 +26686,6 @@ unsorted:
   - python311-audiomate 
   - python311-audioread 
   - python311-augeas 
-  - python311-authheaders 
-  - python311-authres 
   - python311-autobahn 
   - python311-autocommand 
   - python311-autodocsumm 
@@ -27047,7 +27037,6 @@ unsorted:
   - python311-base58 
   - python311-bashate 
   - python311-basictracer 
-  - python311-bcrypt 
   - python311-beartype 
   - python311-beautifulsoup4 
   - python311-before-after 
@@ -27273,7 +27262,6 @@ unsorted:
   - python311-csvkit 
   - python311-cu2qu 
   - python311-cufflinks 
-  - python311-curio 
   - python311-curlylint 
   - python311-curtsies 
   - python311-cwcwidth 
@@ -27450,7 +27438,6 @@ unsorted:
   - python311-djangorestframework-simplejwt 
   - python311-djet 
   - python311-djvulibre 
-  - python311-dkimpy 
   - python311-dmidecode 
   - python311-dns-lexicon 
   - python311-dnslib 
@@ -27548,7 +27535,6 @@ unsorted:
   - python311-factory_boy 
   - python311-fake-useragent 
   - python311-fakeredis 
-  - python311-falcon 
   - python311-fanficfare 
   - python311-fann2 
   - python311-fastapi 
@@ -27610,9 +27596,6 @@ unsorted:
   - python311-flit-scm 
   - python311-flower 
   - python311-fluent 
-  - python311-flufl.bounce 
-  - python311-flufl.i18n 
-  - python311-flufl.lock 
   - python311-flufl.testing 
   - python311-fluidity-sm 
   - python311-flup 
@@ -27719,7 +27702,6 @@ unsorted:
   - python311-gst 
   - python311-gsw 
   - python311-guessit 
-  - python311-gunicorn 
   - python311-guzzle_sphinx_theme 
   - python311-gvm-tools 
   - python311-gwcs 
@@ -27985,8 +27967,6 @@ unsorted:
   - python311-langtable 
   - python311-language-check 
   - python311-latexcodec 
-  - python311-lazr.config 
-  - python311-lazr.delegates 
   - python311-lazr.uri 
   - python311-lazy 
   - python311-lazy-loader 
@@ -28140,7 +28120,6 @@ unsorted:
   - python311-md2workflow 
   - python311-md2workflow-plugins-jira 
   - python311-md2workflow-plugins-redmine 
-  - python311-mdit-py-plugins 
   - python311-mechanize 
   - python311-mediafile 
   - python311-meld3 
@@ -28342,7 +28321,6 @@ unsorted:
   - python311-oscrypto 
   - python311-osmviz 
   - python311-ospd-openvas 
-  - python311-outcome 
   - python311-overrides 
   - python311-ovirt-engine-sdk 
   - python311-pa-ringbuffer 
@@ -28398,7 +28376,6 @@ unsorted:
   - python311-parver 
   - python311-pass-git-helper 
   - python311-passivetotal 
-  - python311-passlib 
   - python311-pastel 
   - python311-pastream 
   - python311-patatt 
@@ -28533,7 +28510,6 @@ unsorted:
   - python311-ptpython-ptipython 
   - python311-ptr 
   - python311-publicsuffix 
-  - python311-publicsuffix2 
   - python311-publicsuffixlist 
   - python311-pudb 
   - python311-pulsectl 
@@ -29126,7 +29102,6 @@ unsorted:
   - python311-screeninfo 
   - python311-screenplain 
   - python311-scripttest 
-  - python311-scrypt 
   - python311-scspell3k 
   - python311-sdnotify 
   - python311-seaborn 
@@ -29139,7 +29114,6 @@ unsorted:
   - python311-seqdiag 
   - python311-serpent 
   - python311-serverfiles 
-  - python311-setproctitle 
   - python311-setuptools-declarative-requirements 
   - python311-setuptools-gettext 
   - python311-setuptools-git 
@@ -29197,7 +29171,6 @@ unsorted:
   - python311-softlayer-zeep 
   - python311-sorl-thumbnail 
   - python311-sortedcollections 
-  - python311-sortedcontainers 
   - python311-sortinghat 
   - python311-sounddevice 
   - python311-soupsieve 
@@ -29378,7 +29351,6 @@ unsorted:
   - python311-toolz 
   - python311-toposort 
   - python311-topy 
-  - python311-tornado 
   - python311-tortilla 
   - python311-towncrier 
   - python311-tox 
@@ -29401,7 +29373,6 @@ unsorted:
   - python311-treq 
   - python311-tri.declarative 
   - python311-tri.struct 
-  - python311-trio 
   - python311-trio-websocket 
   - python311-trove-classifiers 
   - python311-trustme 
@@ -29621,18 +29592,13 @@ unsorted:
   - python311-zipstream 
   - python311-zodbpickle 
   - python311-zope.cachedescriptors 
-  - python311-zope.component 
-  - python311-zope.configuration 
   - python311-zope.copy 
   - python311-zope.deferredimport 
   - python311-zope.deprecation 
   - python311-zope.exceptions 
-  - python311-zope.hookable 
-  - python311-zope.i18nmessageid 
   - python311-zope.location 
   - python311-zope.proxy 
   - python311-zope.proxy-devel 
-  - python311-zope.schema 
   - python311-zope.security 
   - python311-zope.testbrowser 
   - python311-zope.testbrowser-test 
