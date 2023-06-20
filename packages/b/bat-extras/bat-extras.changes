@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun 17 12:47:47 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to release 2023-06-16
+  * batdiff: Add '--staged' flag
+  * batgrep: Add '--help'
+  * batman: Use self as MANPAGER
+  * prettybat: Fix short flags passed to bat
+  * build: Add termux support
+
+-------------------------------------------------------------------
 Sat Mar 25 13:07:25 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
 
 - Update to release 2023-03-21
