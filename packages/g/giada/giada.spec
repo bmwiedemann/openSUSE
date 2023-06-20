@@ -19,13 +19,12 @@
 
 
 Name:           giada
-Version:        0.24.0
+Version:        0.25.0
 Release:        0
 Summary:        Sampler Audio Tool
 License:        GPL-3.0-or-later
 URL:            https://giadamusic.com
 Source0:        %{name}-%{version}.tar.xz
-Patch1:         001-Fix-build-with-fmt-9-GCC-12.patch
 Patch2:         002-fix-include-cstdint.patch
 Patch3:         003-cmake-exclude-juce-from-all.patch
 BuildRequires:  cmake

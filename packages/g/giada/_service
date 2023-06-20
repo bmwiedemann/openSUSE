@@ -2,9 +2,9 @@
   <service name="tar_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://github.com/monocasual/giada.git</param>
-    <param name="revision">v0.24.0</param>
+    <param name="revision">v0.25.0</param>
     <param name="submodules">enable</param>
-    <param name="version">0.24.0</param>
+    <param name="version">0.25.0</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="compression">xz</param>
