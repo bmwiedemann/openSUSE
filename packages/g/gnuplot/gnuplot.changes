@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 19 06:55:17 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Update to gnuplot 5.4.8
+  * FIX   version reporting in Windows binaries
+          No other changes
+
+-------------------------------------------------------------------
 Mon May 22 07:19:52 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Update to gnuplot 5.4.7

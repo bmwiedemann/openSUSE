@@ -1186,4 +1186,14 @@ removed boo#1203092 (forwarded request 1006499 from AndreasStieger)</comment>
   * FIX   Handle nonlinear axes during contour generation               Bug #2593</comment>
     <requestid>1088274</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>4a1fbe74a49a87d03305e5b49cd173ba</srcmd5>
+    <version>5.4.8</version>
+    <time>1687272007</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gnuplot 5.4.8
+  * FIX   version reporting in Windows binaries
+          No other changes</comment>
+    <requestid>1093737</requestid>
+  </revision>
 </revisionlist>
