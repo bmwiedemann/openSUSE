@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://gitlab.com/utsushi/utsushi</param>
-              <param name="changesrevision">839d06a5a80b353cb604eb9f7d352a1648ab1fdf</param></service></servicedata>
+              <param name="changesrevision">a1cfeed44aad2b4bf78eb1b854969af7a2121413</param></service><service name="tar_scm">
+                <param name="url">https://gitlab.com/utsushi/utsushi.git</param>
+              <param name="changesrevision">a1cfeed44aad2b4bf78eb1b854969af7a2121413</param></service></servicedata>

@@ -1,6 +1,6 @@
 <services>
   <service name="obs_scm" mode="disabled">
-    <param name="url">https://gitlab.com/utsushi/utsushi</param>
+    <param name="url">https://gitlab.com/utsushi/utsushi.git</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="exclude">.*</param>

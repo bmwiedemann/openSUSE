@@ -1,7 +1,7 @@
 #
 # spec file for package utsushi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           utsushi
-Version:        1638580181.839d06a
+Version:        1684035837.b296671
 Release:        0
 Summary:        Next Generation Image Acquisition Utilities
 License:        GPL-3.0-or-later
@@ -77,8 +77,11 @@ This is the community maintained fork, based on imagescan upstream.
 %patch1
 %patch2
 %patch3
+# gcc12 patches are relevant only for TW
+%if 0%{?suse_version} > 1500
 %patch4
 %patch5
+%endif
 ./bootstrap
 
 %build

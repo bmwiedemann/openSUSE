@@ -8,4 +8,18 @@
        <size unit="G">11</size>
     </physicalmemory>
   </hardware>
+  <overwrite>
+    <conditions>
+      <arch>armv6l</arch>
+      <arch>armv7l</arch>
+    </conditions>
+    <hardware>
+      <disk>
+        <size unit="G">3</size>
+      </disk>
+      <physicalmemory>
+        <size unit="G">5</size>
+      </physicalmemory>
+    </hardware>
+  </overwrite>
 </constraints>
