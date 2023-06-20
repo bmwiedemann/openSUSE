@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-video-effects
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           gnome-video-effects
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        Collection of GStreamer effects
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://wiki.gnome.org/Projects/GnomeVideoEffects
-Source0:        https://download.gnome.org/sources/gnome-video-effects/0.5/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM gnome-video-effects-meson-pkgconfig-fix.patch -- Various meson improvements and fixes
-Patch0:         gnome-video-effects-meson-pkgconfig-fix.patch
+Source0:        https://download.gnome.org/sources/gnome-video-effects/0.6/%{name}-%{version}.tar.xz
 
 BuildRequires:  intltool
 BuildRequires:  meson

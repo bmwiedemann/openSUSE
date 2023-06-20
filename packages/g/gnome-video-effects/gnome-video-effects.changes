@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 14 15:09:25 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.6.0:
+  + Fix flip effect with recent gstreamer.
+  + Add new scanlines effect using frei0r.
+  + Various meson build fixes.
+  + Updated translations.
+- Drop gnome-video-effects-meson-pkgconfig-fix.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
 Tue Sep 14 10:57:23 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add frei0r-plugins Recommends: This adds a few filters in Cheese.
