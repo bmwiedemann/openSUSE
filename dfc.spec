@@ -1,7 +1,7 @@
 #
 # spec file for package dfc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 Asterios Dramis <asterios.dramis@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,9 +22,8 @@ Version:        3.1.1
 Release:        0
 Summary:        Display file system space usage using graphs and colors
 License:        BSD-3-Clause
-Group:          Productivity/File utilities
-URL:            https://projects.gw-computing.net/projects/dfc/
-Source0:        http://projects.gw-computing.net/attachments/download/615/%{name}-%{version}.tar.gz
+URL:            https://github.com/rolinh/dfc
+Source0:        https://github.com/rolinh/dfc/releases/download/v%{version}/dfc-%{version}.tar.gz
 BuildRequires:  cmake
 
 %description
@@ -34,7 +33,7 @@ colors.
 %lang_package
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %cmake \
