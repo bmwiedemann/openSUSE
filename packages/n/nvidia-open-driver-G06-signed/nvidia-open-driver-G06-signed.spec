@@ -32,7 +32,7 @@
 %define compress_modules xz
 %endif
 Name:           nvidia-open-driver-G06-signed
-Version:        525.116.04
+Version:        535.54.03
 Release:        0
 Summary:        NVIDIA open kernel module driver for GeForce RTX 2000 series and newer
 License:        GPL-2.0-only AND MIT
@@ -52,6 +52,7 @@ Source10:       pci_ids-unsupported
 Source11:       pesign-copy-sources
 Source12:       pesign-spec-macros
 Source13:       generati-pci-table.sh
+Source14:       _constraints
 Patch0:         0001-Don-t-override-INSTALL_MOD_DIR.patch
 Patch2:         persistent-nvidia-id-string.patch
 Patch3:         pci-table.patch

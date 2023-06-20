@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jun 16 13:09:07 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- _constraints: 4GB wasn't enough; trying 8GB now ... 
+
+-------------------------------------------------------------------
+Fri Jun 16 12:25:33 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- _constraints: reserve 4GB of disk space for building in the hope
+  that this will be also sufficient when building for sle15-sp5
+
+-------------------------------------------------------------------
+Thu Jun 15 11:32:21 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 535.54.03 
+
+-------------------------------------------------------------------
 Tue May  9 19:01:34 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 525.116.04 
