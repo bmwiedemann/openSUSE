@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jun 10 07:21:10 UTC 2023 - Dave Plater <davejplater@gmail.com>
+
+- Update to 2.2.14
+- Upstream changes:
+  *Bluefish 2.2.14 fixes three bugs that in certain situations
+   could lead to a segfault. One bug when deleting backup files on 
+   close.
+  *The third bug when the CSS language file was loaded on a 32bit
+   system. It furthermore fixes zencoding functionality with python3.
+   It also adds an option to store the scope of the search dialog to
+   the session or project (this was removed in 2.2.12 because of a 
+   bug-report). It furthermore improves the speed of the bookmarks
+   code. The build infrastructure was also slightly modernised, 
+   intltool is no longer used.
+
+-------------------------------------------------------------------
 Thu May 18 13:31:45 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.2.13:
