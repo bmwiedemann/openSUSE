@@ -222,4 +222,24 @@
   * Update minimum version of Pydantic to &gt;=1.7.4.</comment>
     <requestid>1092291</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a2483e0c3bec9e685081777860518383</srcmd5>
+    <version>0.97.0</version>
+    <time>1687379822</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.97.0: 
+  * Features
+    - Add support for dependencies in WebSocket routes.
+    - Add exception handler for WebSocketRequestValidationError 
+      (which also allows to override it).
+  * Refactors
+    - Upgrade and fully migrate to Ruff, remove isort, includes a 
+      couple of tweaks suggested by the new version of Ruff.
+    - Update internal type annotations and upgrade mypy. 
+    - Simplify AsyncExitStackMiddleware as without Python 3.6 
+      AsyncExitStack is always available.
+  * Upgrades
+    - Upgrade Black.</comment>
+    <requestid>1093963</requestid>
+  </revision>
 </revisionlist>
