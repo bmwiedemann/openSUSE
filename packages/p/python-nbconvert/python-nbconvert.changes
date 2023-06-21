@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 20 18:19:24 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 7.6.0
+  * Update to Mistune v3 #1820 (@TiagodePAlves)
+- Release 7.5.0
+  * Add mermaidjs 10.2.3 #1957 (@bollwyvl)
+  * Fix pdf conversion with explicitly relative paths #2005
+    (@tuncbkose)
+  * Ensure TEXINPUTS is an absolute path #2002 (@tuncbkose)
+
+-------------------------------------------------------------------
 Sun Jun 11 20:00:15 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.4.0

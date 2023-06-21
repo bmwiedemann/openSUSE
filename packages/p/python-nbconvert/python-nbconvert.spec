@@ -29,12 +29,11 @@
 %else
 %bcond_with libalternatives
 %endif
-# avoid rewriting
-%define python3dist python3dist
-# 7.4.0 gets abbreviated by pythondistdeps
-%define shortversion 7.4
+
+# 7.6.0 gets abbreviated by pythondistdeps
+%define shortversion 7.6
 Name:           python-nbconvert%{psuffix}
-Version:        7.4.0
+Version:        7.6.0
 Release:        0
 Summary:        Conversion of Jupyter Notebooks
 License:        BSD-3-Clause AND MIT
@@ -51,17 +50,17 @@ Requires:       python-Jinja2 >= 3.0
 Requires:       python-MarkupSafe >= 2.0
 Requires:       python-Pygments >= 2.4.1
 Requires:       python-beautifulsoup4
-Requires:       python-bleach
 Requires:       python-defusedxml
 Requires:       python-jupyter-core >= 4.7
 Requires:       python-jupyterlab-pygments
 Requires:       python-nbclient >= 0.5
-Requires:       python-nbformat >= 5.1
+Requires:       python-nbformat >= 5.7
 Requires:       python-packaging
 Requires:       python-pandocfilters >= 1.4.1
 Requires:       python-tinycss2
-Requires:       python-traitlets >= 5.0
-Requires:       (python-mistune >= 2.0.3 with python-mistune < 3)
+Requires:       python-traitlets >= 5.1
+Requires:       (python-bleach without python-bleach = 5.0.0)
+Requires:       (python-mistune >= 2.0.3 with python-mistune < 4)
 Recommends:     pandoc
 Recommends:     python-tornado >= 6.1
 Suggests:       %{name}-latex
@@ -97,7 +96,7 @@ This package provides the python interface.
 Summary:        Conversion of Jupyter Notebooks
 Requires:       jupyter-ipykernel
 Requires:       jupyter-jupyter-core
-Requires:       %python3dist(nbconvert) = %{shortversion}
+Requires:       python3dist(nbconvert) = %{shortversion}
 Conflicts:      python3-jupyter_nbconvert < 5.5.0
 
 %description -n jupyter-nbconvert

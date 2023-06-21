@@ -312,4 +312,19 @@
     <comment></comment>
     <requestid>1092410</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a105662c56ac7d262dbc14f8d84db044</srcmd5>
+    <version>7.6.0</version>
+    <time>1687379956</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.6.0
+  * Update to Mistune v3 #1820 (@TiagodePAlves)
+- Release 7.5.0
+  * Add mermaidjs 10.2.3 #1957 (@bollwyvl)
+  * Fix pdf conversion with explicitly relative paths #2005
+    (@tuncbkose)
+  * Ensure TEXINPUTS is an absolute path #2002 (@tuncbkose)
+</comment>
+    <requestid>1094160</requestid>
+  </revision>
 </revisionlist>
