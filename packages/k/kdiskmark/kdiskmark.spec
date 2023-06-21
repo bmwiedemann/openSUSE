@@ -19,7 +19,7 @@
 
 %define _singleapplication_version 3.3.4
 Name:           kdiskmark
-Version:        3.1.3
+Version:        3.1.4
 Release:        0
 Summary:        A simple open-source disk benchmark tool for Linux distros
 License:        GPL-3.0-only
@@ -64,7 +64,8 @@ mv SingleApplication-%{_singleapplication_version}/* src/singleapplication/
 %{_kf5_iconsdir}/hicolor
 %{_kf5_iconsdir}/hicolor/*/*/*
 %dir %{_kf5_sharedir}/%{name}
-%{_kf5_sharedir}/%{name}/translations
+%dir %{_kf5_sharedir}/%{name}/%{name}
+%{_kf5_sharedir}/%{name}/%{name}/translations
 # Helper files
 %{_libexecdir}/kdiskmark_helper
 %{_kf5_dbuspolicydir}/dev.jonmagon.kdiskmark.helperinterface.conf
