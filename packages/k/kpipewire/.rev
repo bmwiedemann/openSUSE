@@ -103,4 +103,12 @@
     <comment>Plasma 5.27.5. Not built yet. (forwarded request 1085751 from Vogtinator)</comment>
     <requestid>1085885</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e18ef08bd0a91a568d9e5f25449d45da</srcmd5>
+    <version>5.27.6</version>
+    <time>1687379879</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.6. plasma5-sdk needed a workaround. On aarch64 something is broken with breeze5-icons, I'm optimistic and triggered a rebuild. (forwarded request 1094155 from Vogtinator)</comment>
+    <requestid>1094180</requestid>
+  </revision>
 </revisionlist>
