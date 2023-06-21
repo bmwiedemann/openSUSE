@@ -22,7 +22,7 @@
 
 %bcond_with     test
 Name:           zellij
-Version:        0.36.0
+Version:        0.37.2
 Release:        0
 Summary:        Terminal workspace with batteries included
 License:        MIT

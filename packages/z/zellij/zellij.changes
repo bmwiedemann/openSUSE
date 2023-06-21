@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Jun 21 10:11:48 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.37.2:
+  * hotfix: include theme files into binary
+  * fix: make plugin hide_self api idempotent
+- Changes from 0.37.1:
+  * hotfix: theme options does not work
+  * fix: various plugin api methods
+- Changes from major release 0.37.0:
+  * fix(plugin): respect hide session option on compact-bar
+  * feat: allow excluding tabs from tab sync in layouts
+  * feat: support default cwd
+  * feat: cli action to reload plugins at runtime for easier plugin development
+  * docs(architecture): update architecture docs
+  * feat(themes): add nightfox themes
+  * feat: provide default themes
+  * feat: update and render plugins asynchronously
+  * fix: support environment variables and shell expansions in layout cwds
+  * fix: add file paths to file not found errors
+  * fix: error loading non-existant themes directory
+  * build: speed up build and ci
+  * fix: sticky bit FreeBSD crash
+  * build: Bump rust toolchain version to 1.67
+  * fix: update config file output
+  * feat: plugin workers for background tasks
+  * fix: cwd of newtab action
+  * feat: plugin system overhaul
+  * feat: add virtually all of Zellij's API to plugins
+  * fix: runtime panic because of local cache
+  * fix: cursor flickering
+  * fix: focus tab as well as pane when relaunching plugin
+  * feat: ui improvements for strider search
+  * fix: only watch fs if plugins explicitly request it
+  * fix: suppress debug logging when not debugging
+  * feat: send pane events to plugins
+  * fix: use debounced watcher for watching filesystem
+  * feat: add more plugin api methods
+
+-------------------------------------------------------------------
 Mon May  1 08:08:07 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 0.36.0:
