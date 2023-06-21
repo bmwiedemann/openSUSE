@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 20 20:50:48 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.4.0:
+  - The Override Decorator
+  - Propagating Type Narrowing to Nested Functions
+  - Narrowing Enum Values Using “==”
+  - Performance Improvements
+
+-------------------------------------------------------------------
 Thu May 11 06:02:09 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Skip over failing testMathOps (gh#python/mypy#15221).

@@ -535,4 +535,17 @@
 </comment>
     <requestid>1086859</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>3e922409e4b4dd58a7e98ae2a3bb9e61</srcmd5>
+    <version>1.4.0</version>
+    <time>1687379963</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.0:
+  - The Override Decorator
+  - Propagating Type Narrowing to Nested Functions
+  - Narrowing Enum Values Using “==”
+  - Performance Improvements
+</comment>
+    <requestid>1094247</requestid>
+  </revision>
 </revisionlist>

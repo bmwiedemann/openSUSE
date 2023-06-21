@@ -23,7 +23,7 @@
 %define types_psutil_version 5.9.5.12
 %define types_setuptools_version 67.7.0.1
 Name:           mypy
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT
@@ -36,21 +36,18 @@ Source2:        https://files.pythonhosted.org/packages/source/t/types-psutil/ty
 # License Source3: Apache-2.0. Only for the test suite, not packaged here.
 Source3:        https://files.pythonhosted.org/packages/source/t/types-setuptools/types-setuptools-%{types_setuptools_version}.tar.gz
 Source99:       mypy-rpmlintrc
-BuildRequires:  %{python_module mypy_extensions >= 0.4.3}
+BuildRequires:  %{python_module mypy_extensions >= 1.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tomli >= 1.1.0 if %python-base < 3.11}
 BuildRequires:  %{python_module typed-ast >= 1.4.0 if %python-base < 3.8}
 BuildRequires:  %{python_module typing_extensions >= 3.10}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-mypy_extensions >= 0.4.3
 Requires:       python-typing_extensions >= 3.10
-%if 0%{?python_version_nodots} < 38
-Requires:       python-typed-ast >= 1.4.0
-%endif
-%if 0%{?python_version_nodots} < 311
-Requires:       python-tomli >= 1.1.0
-%endif
+Requires:       (python-tomli >= 1.1.0 if python3-base < 3.11)
+Requires:       (python-typed-ast >= 1.4.0 if python3-base < 3.8)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
