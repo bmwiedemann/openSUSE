@@ -17,6 +17,7 @@
 
 
 %bcond_without python2
+%{?sle15_python_module_pythons}
 Name:           python-ifaddr
 Version:        0.2.0
 Release:        0
