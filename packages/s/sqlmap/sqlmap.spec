@@ -17,7 +17,7 @@
 
 
 Name:           sqlmap
-Version:        1.7.2
+Version:        1.7.6
 Release:        0
 Summary:        Automatic SQL injection and database takeover tool
 License:        GPL-2.0-or-later
@@ -52,6 +52,7 @@ mv extra/runcmd/src/runcmd/stdafx.cpp extra/runcmd/src/runcmd/stdafx.cpp.txt
 mv extra/runcmd/src/runcmd/stdafx.h extra/runcmd/src/runcmd/stdafx.h.txt
 chmod ugo-x extra/shutils/duplicates.py
 chmod ugo-x thirdparty/identywaf/identYwaf.py
+chmod ugo-x plugins/dbms/clickhouse/*.py
 
 %build
 
