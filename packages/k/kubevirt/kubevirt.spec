@@ -17,7 +17,7 @@
 
 
 Name:           kubevirt
-Version:        0.59.1
+Version:        0.59.2
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
