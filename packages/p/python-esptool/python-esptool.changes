@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 20 16:13:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.6.2:
+  * `ESP32-H2, ESP32-C6`: Fixed byte order in MAC address.
+  * `C900: Too much data`: Fixed occasional compressed upload
+    failures.
+
+-------------------------------------------------------------------
 Sun Jun 11 12:45:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.6.1:

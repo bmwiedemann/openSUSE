@@ -112,4 +112,15 @@
     header are zero, which would break chip type autodetection.</comment>
     <requestid>1092287</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8ccec3f8b3d2548abfb9f02b437f23ef</srcmd5>
+    <version>4.6.2</version>
+    <time>1687379936</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.6.2:
+  * `ESP32-H2, ESP32-C6`: Fixed byte order in MAC address.
+  * `C900: Too much data`: Fixed occasional compressed upload
+    failures.</comment>
+    <requestid>1094120</requestid>
+  </revision>
 </revisionlist>
