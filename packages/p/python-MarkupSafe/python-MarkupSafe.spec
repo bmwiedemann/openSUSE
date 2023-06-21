@@ -16,13 +16,10 @@
 #
 
 
-%define oldpython python
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without test
 %{?sle15_python_module_pythons}
 Name:           python-MarkupSafe
-Version:        2.1.2
+Version:        2.1.3
 Release:        0
 Summary:        Implements a XML/HTML/XHTML Markup safe string for Python
 License:        BSD-3-Clause
@@ -30,16 +27,13 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pallets/markupsafe
 Source:         https://files.pythonhosted.org/packages/source/M/MarkupSafe/MarkupSafe-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-base >= 3.6
 %if %{with test}
 BuildRequires:  %{python_module pytest}
-%endif
-%ifpython2
-Provides:       %{oldpython}-markupsafe = %{version}
-Obsoletes:      %{oldpython}-markupsafe < %{version}
 %endif
 %python_subpackages
 
@@ -52,10 +46,10 @@ safely encode strings for dynamically generated web pages.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 %python_expand rm %{buildroot}%{$python_sitearch}/markupsafe/_speedups.c
 # Upstream changed the Python package metadata to require Python 3.7, but the tests pass on Python 3.6.
@@ -72,6 +66,6 @@ export CFLAGS="%{optflags}"
 %license LICENSE.rst
 %doc README.rst docs/
 %{python_sitearch}/markupsafe/
-%{python_sitearch}/MarkupSafe-%{version}-py*.egg-info
+%{python_sitearch}/MarkupSafe-%{version}.dist-info
 
 %changelog
