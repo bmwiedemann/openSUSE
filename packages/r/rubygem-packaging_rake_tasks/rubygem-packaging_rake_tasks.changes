@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 19 16:06:03 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Fixed crash in "build_dependencies:*" rake tasks when processing
+  some spec files (related to bsc#1211319)
+- 1.5.4
+
+-------------------------------------------------------------------
 Tue May 16 13:55:04 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
 
 - Added support for multi build packages in "build_dependencies:*"

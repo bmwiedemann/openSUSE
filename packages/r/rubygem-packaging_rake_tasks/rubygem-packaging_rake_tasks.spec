@@ -17,7 +17,7 @@
 
 
 Name:           rubygem-packaging_rake_tasks
-Version:        1.5.3
+Version:        1.5.4
 Release:        0
 %define mod_name packaging_rake_tasks
 %define mod_full_name %{mod_name}-%{version}
