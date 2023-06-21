@@ -63,4 +63,12 @@
     <comment>Sync with SLE15-SP5 changelog and spec file. Include ocaml compiler fixes for SLE15-SP5</comment>
     <requestid>1031599</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>dbb2176037ebba078f6e7f158e7a0970</srcmd5>
+    <version>2.2.0</version>
+    <time>1687380035</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 2.2.0</comment>
+    <requestid>1094483</requestid>
+  </revision>
 </revisionlist>

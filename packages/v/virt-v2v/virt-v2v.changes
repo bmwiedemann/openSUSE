@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Feb  8 16:08:19 MST 2023 - carnold@suse.com
+
+- Update to virt-v2v 2.2.0
+  * New virt-v2v-inspector(1) tool. This tool can be used before
+    conversion to collect facts about the source guest, such as
+    number of disks, and to estimate the disk space required after
+    conversion.
+  * Add support for NVMe devices and SATA hard disks when importing
+    from VMware VMX files (Laszlo Ersek).
+  * Add support for importing to KubeVirt using the new
+    experimental -o kubevirt mode.
+  * Windows 11 guests are now supported.
+  * Rocky Linux guest support has been added (Andrey Drobyshev).
+  * The -o json mode was removed. It was intended to be used with
+    KubeVirt but was never actually used there. Use -o kubevirt
+    instead.
+  * Numerous bug fixes and build changes
+
+-------------------------------------------------------------------
 Tue Oct  4 14:00:46 MDT 2022 - carnold@suse.com
 
 - jsc#PED-2113 [Virt Tools] Refresh Virtualization Tools for Xen

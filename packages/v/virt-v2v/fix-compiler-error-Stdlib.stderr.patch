@@ -3,11 +3,11 @@ used and it has no Stdlib module.
 In ocamlc version 4.07 and newer, Pervasives is deprecated
 and Stdlib should be used.
 
-Index: virt-v2v-2.0.7/lib/create_ovf.ml
+Index: virt-v2v-2.2.0/lib/create_ovf.ml
 ===================================================================
---- virt-v2v-2.0.7.orig/lib/create_ovf.ml
-+++ virt-v2v-2.0.7/lib/create_ovf.ml
-@@ -769,7 +769,7 @@ let rec create_ovf source inspect
+--- virt-v2v-2.2.0.orig/lib/create_ovf.ml
++++ virt-v2v-2.2.0/lib/create_ovf.ml
+@@ -787,7 +787,7 @@ let rec create_ovf source inspect
  
    if verbose () then (
      eprintf "OVF:\n";
@@ -16,11 +16,11 @@ Index: virt-v2v-2.0.7/lib/create_ovf.ml
    );
  
    (* Return the OVF document. *)
-Index: virt-v2v-2.0.7/output/output_disk.ml
+Index: virt-v2v-2.2.0/output/output_disk.ml
 ===================================================================
---- virt-v2v-2.0.7.orig/output/output_disk.ml
-+++ virt-v2v-2.0.7/output/output_disk.ml
-@@ -109,7 +109,7 @@ module Disk = struct
+--- virt-v2v-2.2.0.orig/output/output_disk.ml
++++ virt-v2v-2.2.0/output/output_disk.ml
+@@ -122,7 +122,7 @@ module Disk = struct
  
      if verbose () then (
        eprintf "resulting local libvirt XML:\n";
@@ -29,24 +29,11 @@ Index: virt-v2v-2.0.7/output/output_disk.ml
        eprintf "\n%!";
      )
  
-Index: virt-v2v-2.0.7/output/output_json.ml
+Index: virt-v2v-2.2.0/output/output_libvirt.ml
 ===================================================================
---- virt-v2v-2.0.7.orig/output/output_json.ml
-+++ virt-v2v-2.0.7/output/output_json.ml
-@@ -138,7 +138,7 @@ module Json = struct
- 
-     if verbose () then (
-       eprintf "resulting JSON:\n";
--      output_string Stdlib.stderr doc_string;
-+      output_string Pervasives.stderr doc_string;
-       eprintf "\n\n%!";
-     );
- 
-Index: virt-v2v-2.0.7/output/output_libvirt.ml
-===================================================================
---- virt-v2v-2.0.7.orig/output/output_libvirt.ml
-+++ virt-v2v-2.0.7/output/output_libvirt.ml
-@@ -171,7 +171,7 @@ module Libvirt_ = struct
+--- virt-v2v-2.2.0.orig/output/output_libvirt.ml
++++ virt-v2v-2.2.0/output/output_libvirt.ml
+@@ -184,7 +184,7 @@ module Libvirt_ = struct
  
      if verbose () then (
        eprintf "resulting XML for libvirt:\n%!";
@@ -55,11 +42,11 @@ Index: virt-v2v-2.0.7/output/output_libvirt.ml
        eprintf "\n%!";
      );
  
-Index: virt-v2v-2.0.7/convert/convert.ml
+Index: virt-v2v-2.2.0/convert/convert.ml
 ===================================================================
---- virt-v2v-2.0.7.orig/convert/convert.ml
-+++ virt-v2v-2.0.7/convert/convert.ml
-@@ -130,7 +130,7 @@ and get_mpstats g =
+--- virt-v2v-2.2.0.orig/convert/convert.ml
++++ virt-v2v-2.2.0/convert/convert.ml
+@@ -131,7 +131,7 @@ and get_mpstats g =
    if verbose () then (
      (* This is useful for debugging speed / fstrim issues. *)
      eprintf "mpstats:\n";
