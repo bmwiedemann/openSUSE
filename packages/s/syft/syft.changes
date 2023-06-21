@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 21 04:48:16 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.84.0:
+  * Configure chronicle to pre-1.0 mode (#1886)
+  * chore: update SPDX license list to 3.21 (#1885)
+  * chore(deps): update bootstrap tools to latest versions (#1880)
+  * Pad artifact IDs (#1882)
+  * chore(deps): bump golang.org/x/mod from 0.10.0 to 0.11.0
+    (#1878)
+
+-------------------------------------------------------------------
 Wed Jun 14 18:11:48 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.83.1:
