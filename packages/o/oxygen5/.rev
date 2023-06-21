@@ -1265,4 +1265,12 @@ found conflict of filesystem-15.5-261.1.x86_64 with oxygen5-sounds-5.21.5-2.1.no
     <comment>Plasma 5.27.5. Not built yet. (forwarded request 1085751 from Vogtinator)</comment>
     <requestid>1085898</requestid>
   </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>0097df30063caab8f25073f6e8a899f9</srcmd5>
+    <version>5.27.6</version>
+    <time>1687379943</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.6. plasma5-sdk needed a workaround. On aarch64 something is broken with breeze5-icons, I'm optimistic and triggered a rebuild. (forwarded request 1094155 from Vogtinator)</comment>
+    <requestid>1094193</requestid>
+  </revision>
 </revisionlist>
