@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun 20 17:15:03 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.6
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.6
+- Changes since 5.27.5:
+  * Panel: mitigate plasmashell high CPU usage when moving windows
+  * Desktop: set accentColor binding enabled condition
+  * applets/kickoff: consider `devicePixelRatio` in `minimumGridRowCount`
+  * applets/kimpanel: address QStringLiteral data duplication
+  * applets/taskmanager: subscribe to windowViewAvailableChanged signal (kde#469731)
+  * knetattach: don't store username in WebDAV URL
+  * applets/taskmanager: avoid updating dragSource when active is false (kde#466675)
+
+-------------------------------------------------------------------
 Tue May  9 13:44:12 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.5
