@@ -17,7 +17,7 @@
 
 
 Name:           python-aenum
-Version:        3.1.11
+Version:        3.1.12
 Release:        0
 Summary:        Advanced Enumerations, NamedTuples, and NamedConstants
 License:        BSD-3-Clause

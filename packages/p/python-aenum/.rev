@@ -120,4 +120,13 @@ https://build.opensuse.org/request/show/612101</comment>
 </comment>
     <requestid>1059839</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7f8f99a9722253d029095b8bf96b6fad</srcmd5>
+    <version>3.1.12</version>
+    <time>1687379939</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.12:
+  * no changelog available</comment>
+    <requestid>1094127</requestid>
+  </revision>
 </revisionlist>
