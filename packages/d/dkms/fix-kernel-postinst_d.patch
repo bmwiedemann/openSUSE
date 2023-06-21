@@ -1,0 +1,13 @@
+--- dkms-3.0.11/kernel_postinst.d_dkms.orig	2023-05-13 12:40:20.897356596 +0200
++++ dkms-3.0.11/kernel_postinst.d_dkms	2023-05-13 12:40:33.365656164 +0200
+@@ -34,8 +34,8 @@ case "${uname_s}" in
+     ;;
+ esac
+ 
+-if [ -x /usr/lib/dkms/dkms_autoinstaller ]; then
+-    exec /usr/lib/dkms/dkms_autoinstaller start "$inst_kern"
++if [ -x /usr/libexec/dkms/dkms_autoinstaller ]; then
++    exec /usr/libexec/dkms/dkms_autoinstaller start "$inst_kern"
+ fi
+ 
+ if ! _check_kernel_dir "$inst_kern" ; then

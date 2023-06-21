@@ -17,17 +17,21 @@
 
 
 Name:           dkms
-Version:        2.8.8
+Version:        3.0.11
 Release:        0
 Summary:        Dynamic Kernel Module Support Framework
 License:        GPL-2.0-only
 Group:          System/Kernel
 URL:            https://github.com/dell/dkms
-Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        dkms.service
 Source2:        dkms.systemd
 Source3:        dkms.default
 Source100:      %{name}.rpmlintrc
+# PATCH-FIX-OPENSUSE fix-kernel-postinst_d.patch boo#1194723
+Patch1:         fix-kernel-postinst_d.patch
+# PATCH-FIX-OPENSUSE fix-weak-modules_dkms_in.patch boo#1194723
+Patch2:         fix-weak-modules_dkms_in.patch
 BuildRequires:  pkgconfig(systemd)
 Requires:       bash > 1.99
 Requires:       cpio
@@ -53,6 +57,7 @@ module RPMS as originally developed by Dell.
 
 %prep
 %setup -q
+%autopatch -p1 1 2
 
 %build
 
@@ -64,6 +69,13 @@ module RPMS as originally developed by Dell.
   ETC=%{buildroot}%{_sysconfdir}/%{name} \
   BASHDIR=%{buildroot}%{_datadir}/bash-completion/completions \
   LIBDIR=%{buildroot}%{_libexecdir}/%{name}
+
+install -p -m 755 -D kernel_install.d_dkms \
+    %{buildroot}%{_prefix}/lib/kernel/install.d/40-%{name}.install
+
+# Required due to changes in kernel-install
+mv %{buildroot}%{_sysconfdir}/kernel/install.d/%{name} \
+   %{buildroot}%{_sysconfdir}/kernel/install.d/40-%{name}.install
 
 # systemd
 mkdir -p %{buildroot}%{_unitdir}
@@ -109,6 +121,7 @@ exit 0
 %config(noreplace) %{_sysconfdir}/%{name}
 %{_sbindir}/%{name}
 %{_sbindir}/rcdkms
+%{_prefix}/lib/kernel/install.d/40-%{name}.install
 %{_localstatedir}/lib/%{name}
 %{_libexecdir}/%{name}
 %{_tmpfilesdir}/dkms.conf
@@ -116,7 +129,7 @@ exit 0
 # these dirs are for plugins - owned by other packages
 %{_sysconfdir}/kernel/postinst.d/%{name}
 %{_sysconfdir}/kernel/prerm.d/%{name}
-%{_sysconfdir}/kernel/install.d/%{name}
+%{_sysconfdir}/kernel/install.d/40-%{name}.install
 %{_datadir}/bash-completion/completions/%{name}
 %{_unitdir}/dkms.service
 %{_unitdir}/dkms.systemd
@@ -125,5 +138,7 @@ exit 0
 %dir %{_sysconfdir}/kernel/postinst.d
 %dir %{_sysconfdir}/kernel/install.d
 %dir %{_sysconfdir}/kernel/prerm.d
+%dir %{_prefix}/lib/kernel/
+%dir %{_prefix}/lib/kernel/install.d
 
 %changelog

@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Sat May 13 10:43:48 UTC 2023 - Alexandru Gabriel Bradatan <alex.bradatan85@yahoo.it>
+
+- Fix various bugs in dkms.systemd (boo#1194723)
+- Rename /etc/kernel/install.d/dkms to 40-dkms.install (boo#1194723)
+- Add patch `fix-kernel-postinst_d.patch`:
+  * Fix path to dkms_autoinstaller (boo#1194723)
+- Add patch `fix-weak-modules_dkms_in.patch`:
+  * Remove '--no-initrams' from weak_modules_no_initrd
+    (boo#1194723)
+- Add `40-dkms.install` into /usr/lib/kernel/install.d
+- Update to 3.0.11
+  * Fix updating modules with no version
+  * Reinstate NO_WEAK_MODULES section in man
+  * Skip module signing when hash is unknown
+  * Reinstate --enroll-key
+  * Add BUILD_EXCLUSIVE_CONFIG
+  * Misc fixes
+- Update to 3.0.10
+  * Fix warnings for modules with no version
+  * Fix modprobe_on_install not being honored in the config file
+- Update to 3.0.9
+  * Support variable expansion in framework files
+  * Fix --config option
+  * Verify the key of module signature in tests
+  * Handle error cases in autoinstall
+  * Follow the target kernel's module hash algorithm
+  * Fix incomplete deletion of install directory
+  * Correct searching for rpm in PATH
+  * Ensure the kconfig file location is set during building
+  * Fix the search for the path of installed modules
+  * Use exact compiler for dkms as used to build the kernel
+- Update to 3.0.8
+  * Fix using PKCS#11 engine as private key
+- Update to 3.0.7
+  * Bad substitution bugfix
+  * Update dkms.in to passthrough URI to sign-file
+  * Fix commands detecting
+- Update to 3.0.6
+  * Fix typo in dkms_framework.conf
+  * Look for sign-file regardless
+- Update to 3.0.5
+  * Put version comparison before info comparison
+  * Fix typo in commented defaults
+- Update to 3.0.4
+  * Respect PATH
+  * Fallback to uncompressed module when compress fails
+  * Rework signing
+  * Add /etc/dkms/framework.conf.d directory
+- Update to 3.0.3
+  * Fix source only tarballs unpacked with ldtarball
+- Update to 3.0.2
+  * Enable using add, build and install with a directory again
+  * Fix Linux distribution identification through /etc/os-release
+- Update to 3.0.1
+  * Silently consume the old --no-initrd option
+  * Fix creation of temp build dir
+- Update to 3.0.0
+  * Clarify --all switch in the man page
+  * Fix root permissions checking for the various possible actions
+  * The following variables have been deprecated:
+    - REMAKE_INITRD, MODULES_CONF, MODULES_CONF_OBSOLETES,
+      MODULES_CONF_ALIAS_TYPE, and MODULES_CONF_OBSOLETE_ONLY
+  * Misc fixes
+
+-------------------------------------------------------------------
 Thu Jan 19 10:12:58 UTC 2023 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.8.8
@@ -60,7 +125,7 @@ Sun Jan 15 05:30:21 UTC 2017 - i@marguerite.su
   * added support for forcing modules installation with configuration files
   * fixed mkinitrd call when using dracut
   * fixed have_one_kernel for non-zero return code
-  * added --no-depmod action to prevent running depmod 
+  * added --no-depmod action to prevent running depmod
   * fixed removal of module build directory
   * fixed check of obsolete modules
   * added option to symlink modules

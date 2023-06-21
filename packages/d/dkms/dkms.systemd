@@ -5,13 +5,14 @@
 # list dkms modules for the current running kernel
 list_dkms_modules() {
   shopt -s nullglob
-  declare -a DKMS_MOULES
+  declare -ag DKMS_MODULES
   # dkms status needs uname -r to list correctly intalled version for current kernel
-  local modules_path=($(dkms status -k "$(uname -r)"|sed -rn 's#(.*), (.*), (.*), (.*): installed#\1/\2/\3/\4#p'))
+  local modules_path=($(dkms status -k "$(uname -r)"|sed -rn 's#(.*), (.*), (.*): installed#\1/\2/\3#p'))
   for p in "${modules_path[@]}"; do
-    for m in /var/lib/dkms/"$p"/module/*.ko{,gz}; do
+    for m in /var/lib/dkms/"$p"/module/*.ko{,.gz,.zst}; do
       m=${m##*/}
       m=${m%.gz}
+      m=${m%.zst}
       m=${m%.ko}
       DKMS_MODULES+=("$m")
     done

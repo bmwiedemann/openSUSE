@@ -1,0 +1,13 @@
+--- dkms-3.0.11/dkms.in.orig	2023-05-13 12:42:02.523798339 +0200
++++ dkms-3.0.11/dkms.in	2023-05-13 12:42:31.580496476 +0200
+@@ -2564,7 +2564,9 @@ fi
+ 
+ # Since initramfs/initrd rebuild is not requested, skip it with Redhat's weak-modules
+ if [[ $weak_modules ]]; then
+-    weak_modules_no_initrd="--no-initramfs"
++    # Not required for SUSE/openSUSE
++    #weak_modules_no_initrd="--no-initramfs"
++    weak_modules_no_initrd=""
+ fi
+ 
+ # Default to -j<number of CPUs>
