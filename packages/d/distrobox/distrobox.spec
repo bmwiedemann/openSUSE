@@ -17,12 +17,12 @@
 
 
 Name:           distrobox
-Version:        1.4.2.1
+Version:        1.5.0
 Release:        0
 Summary:        Use any linux distribution inside your terminal
 License:        GPL-3.0-only
 URL:            https://github.com/89luca89/distrobox
-Source:         distrobox-%{version}.tar.gz
+Source:         https://github.com/89luca89/distrobox/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        distrobox.conf
 # Default to distrobox-enter when just distrobox is used
 Requires:       %{_bindir}/basename
@@ -74,14 +74,14 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/distrobox/distrobox.conf
 %endif
 
 # Move the icon
-mkdir -p %{buildroot}%{_datadir}/icons/hicolor/1200x1200/apps
-mv %{buildroot}%{_datadir}/icons/terminal-distrobox-icon.png \
-   %{buildroot}%{_datadir}/icons/hicolor/1200x1200/apps
+mkdir -p %{buildroot}%{_datadir}/icons/hicolor/scalable/apps
+mv %{buildroot}%{_datadir}/icons/terminal-distrobox-icon.svg \
+   %{buildroot}%{_datadir}/icons/hicolor/scalable/apps
 
 # Generate all the other icon sizes
 for sz in 16 22 24 32 36 48 64 72 96 128 256; do
     mkdir -p %{buildroot}%{_datadir}/icons/hicolor/${sz}x${sz}/apps
-    convert terminal-distrobox-icon.png -resize ${sz}x${sz} \
+    convert terminal-distrobox-icon.svg -resize ${sz}x${sz} \
         %{buildroot}%{_datadir}/icons/hicolor/${sz}x${sz}/apps/terminal-distrobox-icon.png
 done
 
@@ -103,6 +103,7 @@ done
 %dir %{_datadir}/icons/hicolor/*x*/
 %dir %{_datadir}/icons/hicolor/*x*/apps/
 %{_datadir}/icons/hicolor/*/apps/terminal-distrobox-icon.png
+%{_datadir}/icons/hicolor/scalable/apps/terminal-distrobox-icon.svg
 
 %files bash-completion
 %{_datadir}/bash-completion/completions/%{name}*

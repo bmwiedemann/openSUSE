@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun 18 05:33:20 UTC 2023 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to version 1.5.0:
+  * additional-packages flag in create, to directly add packages during init
+  * NVidia GPU Support for containers: distrobox will attempt to share host's drivers with the container
+  * New distrobox-assemble command lets you declare your distroboxes-as-code, in an easy config file
+  * Now, removing a distrobox will un-export apps and binaries exported by it
+  * Init is now more flexible in how it adds packages, allowing for greater compatibility
+  * Init now supports systemd containers using --additional-packages systemd during creation
+  * General reliability improvements, lots of bug fixes and QoL
+
+-------------------------------------------------------------------
 Tue Feb 21 16:28:39 UTC 2023 - Richard Brown <rbrown@suse.com>
 
 - Remove container_image from .conf, obsoleted by
