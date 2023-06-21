@@ -16,10 +16,6 @@
 #
 
 
-%if 0%{?suse_version} >= 1550
-%define gccver 12
-%endif
-
 %define modname iminuit
 %{?sle15_python_module_pythons}
 Name:           python-%{modname}
@@ -29,6 +25,7 @@ Summary:        Python bindings for MINUIT2
 License:        MIT
 URL:            https://github.com/scikit-hep/iminuit
 Source0:        https://files.pythonhosted.org/packages/source/i/iminuit/%{modname}-%{version}.tar.gz
+Patch0:         missing-headers.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module numpy >= 1.21.0}
@@ -38,7 +35,7 @@ BuildRequires:  %{python_module pybind11-devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake >= 3.13
 BuildRequires:  fdupes
-BuildRequires:  gcc%{?gccver}-c++
+BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.21.0
 Recommends:     python-matplotlib
@@ -64,13 +61,13 @@ and to get model parameter error estimates from likelihood profile analysis.
 
 %prep
 %setup -q -n %{modname}-%{version}
+%patch0 -p1
 # We use external pybind11, just to be sure remove bundled pybind11 entirely
 rm -fr extern/pybind11
 
 %build
-export CXX=g++%{?gccver:-%gccver}
-export CFLAGS="%{optflags}"
-export CMAKE_ARGS="-DIMINUIT_EXTERNAL_PYBIND11=ON"
+export CXXFLAGS="%{optflags}"
+export CMAKE_ARGS="-DIMINUIT_EXTERNAL_PYBIND11=ON -DCMAKE_VERBOSE_MAKEFILE=ON"
 %python_build
 
 %install

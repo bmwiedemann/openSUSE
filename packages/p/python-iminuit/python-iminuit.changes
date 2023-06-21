@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 20 14:15:27 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- missing-headers.patch: add missing headers
+- Use the default compiler
+- Build with %{optflags}
+
+-------------------------------------------------------------------
 Mon May 29 14:28:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - renenable build for python311 (numba available) 
