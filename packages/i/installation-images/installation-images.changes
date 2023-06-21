@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Tue Jun 20 13:59:52 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#648
+- latest kmod package finally works with /usr/lib (bsc#1211796)
+- 17.88
+
+--------------------------------------------------------------------
 Wed May 31 07:50:13 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#646
