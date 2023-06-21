@@ -1,7 +1,7 @@
 #
 # spec file for package sopwith
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sopwith
-Version:        2.1.1
+Version:        2.3.0
 Release:        0
 Summary:        SDL port of the %{name} game
 License:        GPL-2.0-or-later
@@ -68,7 +68,7 @@ cp %{SOURCE1} %{buildroot}%{_datadir}/icons/hicolor/72x72/apps/
 %license COPYING.md
 %doc FAQ.md NEWS.md README.md TODO doc/origdoc.txt
 %{_bindir}/%{name}
-%{_mandir}/man5/sopwith.cfg.5*
+%{_mandir}/man5/sopwith.cfg.5%{?ext_man}
 %{_mandir}/man6/%{name}*
 %{_datadir}/applications/*%{name}.desktop
 %{_datadir}/icons/hicolor/

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jun 16 09:25:59 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.3.0:
+  * Medals are no longer cleared after a crash. 
+  * The purple heart medal is now only awarded to players injured in combat. 
+  * The close button now quits the game (thanks Will Thompson)
+  * The help screen is no longer shown when aborting the game.
+
+- Update to 2.2.0:
+  * Help text is now shown for new players. This is shown on game start in
+    novice mode, but won't be shown again after a successful flight. 
+  * It's no longer possible to flip the plane upside down while sitting
+    motionless on the runway (a bug since the original DOS versions).
+  * It's no longer possible to get wounded on the ground. 
+  * The game no longer freezes up in multiplayer mode if the other player quits.
+  * If the game quits with an error, a friendly dialog box now shows the error.
+  * Some minor manpage fixes
+  * Lots more internal cleanups 
+
+-------------------------------------------------------------------
 Mon Dec  5 14:59:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.1:
