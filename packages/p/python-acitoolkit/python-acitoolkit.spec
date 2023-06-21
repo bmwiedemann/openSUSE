@@ -1,7 +1,7 @@
 #
 # spec file for package python-acitoolkit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -92,6 +92,8 @@ Python samples for using acitoolkit for programming ACI.
 chmod -x LICENSE NOTICE
 
 sed -i '1{/^#!.*env python/d}' acitoolkit/*.py samples/*.py samples/switch-commands/*.py
+# drop unneeded six dependency
+sed -i 's/six.moves.queue/queue/' acitoolkit/acisession.py
 
 rm applications/cableplan/.coverage applications/eventfeeds/.gitignore
 

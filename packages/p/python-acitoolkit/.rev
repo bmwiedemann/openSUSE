@@ -44,4 +44,14 @@
     <comment></comment>
     <requestid>974753</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>a633cd7e4a252bce1ce8d16848cf3185</srcmd5>
+    <version>0.4</version>
+    <time>1687380030</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1094340 from mcalabkova
+
+- Drop unneeded six dependency</comment>
+    <requestid>1094466</requestid>
+  </revision>
 </revisionlist>
