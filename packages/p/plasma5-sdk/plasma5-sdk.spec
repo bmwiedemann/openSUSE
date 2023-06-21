@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           plasma5-sdk
-Version:        5.27.5
+Version:        5.27.6
 Release:        0
 Summary:        Plasma SDK
 License:        GPL-2.0-only AND LGPL-2.0-or-later
@@ -87,6 +87,8 @@ test Plasma data engines without writing a Plasma applet.
 
 %prep
 %autosetup -p1 -n plasma-sdk-%{version}
+# The docs sync duplicated the nl docs somehow
+rm -r po/nl/docs/plasma-sdk/
 
 %build
 %cmake_kf5 -d build
