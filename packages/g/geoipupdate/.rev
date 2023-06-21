@@ -198,4 +198,12 @@ variables: GEOIPUPDATE_CONF_FILE and GEOIPUPDATE_DB_DIR
     <comment></comment>
     <requestid>1079896</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>45bb2bb9f8637cd704369fd436c066bf</srcmd5>
+    <version>5.1.1</version>
+    <time>1687380013</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094336</requestid>
+  </revision>
 </revisionlist>

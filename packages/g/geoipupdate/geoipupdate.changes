@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jun 21 09:48:29 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to 5.1.1:
+  * Based on feedback, the change to use a non-root user in 5.1.0 when using
+    the Docker image has been reverted. There are no non-Docker changes in this
+    release. See GitHub #233.
+
+- Update to 5.1.0:
+  * Fixed the Docker health-check script to use the correct time of the last
+    update attempt. Reported by cford1080. GitHub #225.
+  * Added new --output flag to print JSON to standard output describing the
+    result of the run.
+  * Compilation with Go versions before 1.19 is no longer supported.
+  * When using the provided Docker images, geoipupdate no longer runs as root
+    in the container. Based on pull request by Andreas Grünenfelder. GitHub
+    #200.
+
+- Update to 5.0.4:
+  * On releases 4.9.0 through 5.0.3, the incorrect commit was tagged. This
+    release attempts to fix the release process to prevent this issue. There
+    are no code changes to the binaries provided by MaxMind, either on the
+    GitHub Release page or the MaxMind PPA. 
+
+-------------------------------------------------------------------
 Mon Apr 17 09:18:15 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Update to 5.0.3:
