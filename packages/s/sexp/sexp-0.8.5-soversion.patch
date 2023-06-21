@@ -1,0 +1,12 @@
+Index: sexp-0.8.5/CMakeLists.txt
+===================================================================
+--- sexp-0.8.5.orig/CMakeLists.txt
++++ sexp-0.8.5/CMakeLists.txt
+@@ -124,6 +124,7 @@ add_library(sexp ${TYPE}
+     "include/sexp/sexp-error.h"
+     "include/sexp/ext-key-format.h"
+ )
++set_target_properties(sexp PROPERTIES SOVERSION 0)
+ 
+ target_compile_features(sexp PUBLIC cxx_std_11)
+ target_include_directories(sexp PUBLIC

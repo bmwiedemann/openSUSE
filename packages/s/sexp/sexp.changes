@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 21 19:46:57 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- sexp 0.8.5:
+  * license clarified to MIT
+  * Limit allowed nesting layers in print_xxx
+- drop sexp-0.8.4-shared-lib.patch
+- add sexp-0.8.5-soversion.patch
+
+-------------------------------------------------------------------
 Wed Jun 14 17:46:31 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - sexp 0.8.4, initial package

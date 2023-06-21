@@ -1,6 +1,7 @@
 #
 # spec file for package sexp
 #
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2023 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +19,13 @@
 
 %define soversion 0
 Name:           sexp
-Version:        0.8.4
+Version:        0.8.5
 Release:        0
 Summary:        S-expressions parser and generator library
 License:        MIT
 URL:            https://github.com/rnpgp/sexp
 Source:         https://github.com/rnpgp/sexp/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         sexp-0.8.4-shared-lib.patch
+Patch1:         sexp-0.8.5-soversion.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.14
 BuildRequires:  gtest >= 1.8.1
@@ -62,6 +63,7 @@ This package contains the files required for developing using sexp.
 %build
 %cmake \
 	-DDOWNLOAD_GTEST:BOOL=OFF \
+	-DBUILD_SHARED_LIBS:BOOL=ON \
 	%{nil}
 %cmake_build
 
