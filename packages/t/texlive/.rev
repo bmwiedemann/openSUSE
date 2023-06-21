@@ -1090,4 +1090,12 @@
     <comment>- Move the provides of pdfjam to its usecase (boo#1211877)</comment>
     <requestid>1090192</requestid>
   </revision>
+  <revision rev="89" vrev="92">
+    <srcmd5>46b375d1457d12e4ee576a7825731707</srcmd5>
+    <version>unknown</version>
+    <time>1687379833</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1094096</requestid>
+  </revision>
 </revisionlist>

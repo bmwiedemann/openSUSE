@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 13 13:02:15 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Skip obsolete suse_version 1230 as well as superfluous defattr 
+  in file sections of spec files
+
+-------------------------------------------------------------------
+Tue Jun 13 07:06:38 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update rpmlintrc filters
+
+-------------------------------------------------------------------
 Thu Jun  1 06:15:53 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Move the provides of pdfjam to its usecase (boo#1211877) 

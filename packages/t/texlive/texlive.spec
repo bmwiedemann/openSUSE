@@ -571,9 +571,7 @@ URL:            https://www.tug.org/texlive/
 Requires:       perl = %{perl_version}
 Recommends:     ca-certificates
 Recommends:     ca-certificates-mozilla
-%if 0%{?suse_version} > 1230
 Requires:       perl(Biber) == %{biber_version}
-%endif
 Requires:       perl(LWP::UserAgent)
 Requires:       perl(Text::BibTeX)
 Requires:       perl(Text::Roman)
@@ -597,9 +595,7 @@ URL:            https://www.tug.org/texlive/
 Requires:       perl = %{perl_version}
 Recommends:     ca-certificates
 Recommends:     ca-certificates-mozilla
-%if 0%{?suse_version} > 1230
 Requires:       perl(Biber) == %{biber_version}
-%endif
 Requires:       perl(LWP::UserAgent)
 Requires:       perl(Text::BibTeX)
 Requires:       perl(Text::Roman)
@@ -4862,7 +4858,6 @@ fi
 %endif
 
 %files
-%defattr(-,root,root,755)
 # is part of texlive-texlive.infra
 #%{_texmfdistdir}/tlpkg/TeXLive/TLConfig.pm
 #%{_texmfdistdir}/tlpkg/TeXLive/TLUtils.pm
@@ -4880,137 +4875,107 @@ fi
 %endif
 
 %files a2ping-bin
-%defattr(-,root,root,755)
 %{_bindir}/a2ping
 
 %files accfonts-bin
-%defattr(-,root,root,755)
 %{_bindir}/mkt1font
 %{_bindir}/vpl2ovp
 %{_bindir}/vpl2vpl
 
 %files adhocfilelist-bin
-%defattr(-,root,root,755)
 %{_bindir}/adhocfilelist
 
 %files afm2pl-bin
-%defattr(-,root,root,755)
 %{_bindir}/afm2pl
 
 %files albatross-bin
-%defattr(-,root,root,755)
 %{_bindir}/albatross
 
 %files aleph-bin
-%defattr(-,root,root,755)
 %{_bindir}/aleph
 
 %files amstex-bin
-%defattr(-,root,root,755)
 %{_bindir}/amstex
 
 %files arara-bin
-%defattr(-,root,root,755)
 %{_bindir}/arara
 
 %files asymptote-bin
-%defattr(-,root,root,755)
 %{_bindir}/asy
 %{_bindir}/xasy
 
 %files attachfile2-bin
-%defattr(-,root,root,755)
 %{_bindir}/pdfatfi
 
 %files authorindex-bin
-%defattr(-,root,root,755)
 %{_bindir}/authorindex
 
 %files autosp-bin
-%defattr(-,root,root,755)
 %{_bindir}/autosp
 %{_bindir}/tex2aspc
 
 %files axodraw2-bin
-%defattr(-,root,root,755)
 %{_bindir}/axohelp
 
 %files bib2gls-bin
-%defattr(-,root,root,755)
 %{_bindir}/bib2gls
 %{_bindir}/convertgls2bib
 
 %files bibcop-bin
-%defattr(-,root,root,755)
 %{_bindir}/bibcop
 
 %files biber-ms-bin
-%defattr(-,root,root,755)
 %{_bindir}/biber-ms
 %if %{with buildbiber}
 %{_mandir}/man1/biber-ms.1%{ext_man}
 %endif
 
 %files biber-bin
-%defattr(-,root,root,755)
 %{_bindir}/biber
 %if %{with buildbiber}
 %{_mandir}/man1/biber.1%{ext_man}
 %endif
 
 %files bibexport-bin
-%defattr(-,root,root,755)
 %{_bindir}/bibexport
 
 %files bibtex-bin
-%defattr(-,root,root,755)
 %{_bindir}/bibtex
 
 %files bibtex8-bin
-%defattr(-,root,root,755)
 %{_bindir}/bibtex8
 
 %files bibtexu-bin
-%defattr(-,root,root,755)
 %{_bindir}/bibtexu
 
 %files bundledoc-bin
-%defattr(-,root,root,755)
 %{_bindir}/arlatex
 %{_bindir}/bundledoc
 
 %files cachepic-bin
-%defattr(-,root,root,755)
 %{_bindir}/cachepic
 
 %files checkcites-bin
-%defattr(-,root,root,755)
 %{_bindir}/checkcites
 
 %files checklistings-bin
-%defattr(-,root,root,755)
 %{_bindir}/checklistings
 
 %files chklref-bin
-%defattr(-,root,root,755)
 %{_bindir}/chklref
 
 %files chktex-bin
-%defattr(-,root,root,755)
 %{_bindir}/chktex
 %{_bindir}/chkweb
 %{_bindir}/deweb
 
 %files citation-style-language-bin
-%defattr(-,root,root,755)
 %{_bindir}/citeproc-lua
 
 %files cjk-gs-integrate-bin
-%defattr(-,root,root,755)
 %{_bindir}/cjk-gs-integrate
 
 %files cjkutils-bin
-%defattr(-,root,root,755)
 %{_bindir}/bg5+latex
 %{_bindir}/bg5+pdflatex
 %{_bindir}/bg5conv
@@ -5034,17 +4999,14 @@ fi
 %{_bindir}/sjispdflatex
 
 %files clojure-pamphlet-bin
-%defattr(-,root,root,755)
 %{_bindir}/pamphletangler
 
 %files cluttex-bin
-%defattr(-,root,root,755)
 %{_bindir}/cllualatex
 %{_bindir}/cluttex
 %{_bindir}/clxelatex
 
 %files context-bin
-%defattr(-,root,root,755)
 %{_bindir}/context
 %{_bindir}/context.lua
 %{_bindir}/luametatex
@@ -5054,11 +5016,9 @@ fi
 %{_bindir}/mtx-context.lua
 
 %files convbkmk-bin
-%defattr(-,root,root,755)
 %{_bindir}/convbkmk
 
 %files crossrefware-bin
-%defattr(-,root,root,755)
 %{_bindir}/bbl2bib
 %{_bindir}/bibdoiadd
 %{_bindir}/bibmradd
@@ -5067,38 +5027,30 @@ fi
 %{_bindir}/ltx2crossrefxml
 
 %files cslatex-bin
-%defattr(-,root,root,755)
 %{_bindir}/cslatex
 %{_bindir}/pdfcslatex
 
 %files csplain-bin
-%defattr(-,root,root,755)
 %{_bindir}/csplain
 %{_bindir}/luacsplain
 %{_bindir}/pdfcsplain
 
 %files ctan-o-mat-bin
-%defattr(-,root,root,755)
 %{_bindir}/ctan-o-mat
 
 %files ctanbib-bin
-%defattr(-,root,root,755)
 %{_bindir}/ctanbib
 
 %files ctanify-bin
-%defattr(-,root,root,755)
 %{_bindir}/ctanify
 
 %files ctanupload-bin
-%defattr(-,root,root,755)
 %{_bindir}/ctanupload
 
 %files ctie-bin
-%defattr(-,root,root,755)
 %{_bindir}/ctie
 
 %files cweb-bin
-%defattr(-,root,root,755)
 %{_bindir}/ctangle
 %{_bindir}/ctwill
 %{_bindir}/ctwill-refsort
@@ -5107,57 +5059,44 @@ fi
 %{_bindir}/twill
 
 %files cyrillic-bin-bin
-%defattr(-,root,root,755)
 %{_bindir}/rubibtex
 %{_bindir}/rumakeindex
 
 %files de-macro-bin
-%defattr(-,root,root,755)
 %{_bindir}/de-macro
 
 %files detex-bin
-%defattr(-,root,root,755)
 %{_bindir}/detex
 
 %files diadia-bin
-%defattr(-,root,root,755)
 %{_bindir}/diadia
 
 %files digestif-bin
-%defattr(-,root,root,755)
 %{_bindir}/digestif
 
 %files dosepsbin-bin
-%defattr(-,root,root,755)
 %{_bindir}/dosepsbin
 
 %files dtl-bin
-%defattr(-,root,root,755)
 %{_bindir}/dt2dv
 %{_bindir}/dv2dt
 
 %files dtxgen-bin
-%defattr(-,root,root,755)
 %{_bindir}/dtxgen
 
 %files dviasm-bin
-%defattr(-,root,root,755)
 %{_bindir}/dviasm
 
 %files dvicopy-bin
-%defattr(-,root,root,755)
 %{_bindir}/dvicopy
 
 %files dvidvi-bin
-%defattr(-,root,root,755)
 %{_bindir}/dvidvi
 
 %files dviinfox-bin
-%defattr(-,root,root,755)
 %{_bindir}/dviinfox
 
 %files dviljk-bin
-%defattr(-,root,root,755)
 %{_bindir}/dvihp
 %{_bindir}/dvilj
 %{_bindir}/dvilj2p
@@ -5166,12 +5105,10 @@ fi
 %{_bindir}/dvilj6
 
 %files dviout-util-bin
-%defattr(-,root,root,755)
 %{_bindir}/chkdvifont
 %{_bindir}/dvispc
 
 %files dvipdfmx-bin
-%defattr(-,root,root,755)
 %{_bindir}/dvipdfm
 %{_bindir}/dvipdfmx
 %{_bindir}/rungs
@@ -5181,123 +5118,97 @@ fi
 %{_bindir}/xdvipdfmx
 
 %files dvipng-bin
-%defattr(-,root,root,755)
 %{_bindir}/dvigif
 %{_bindir}/dvipng
 
 %files dvipos-bin
-%defattr(-,root,root,755)
 %{_bindir}/dvipos
 
 %files dvips-bin
-%defattr(-,root,root,755)
 %{_bindir}/afm2tfm
 %{_bindir}/dvips
 
 %files dvisvgm-bin
-%defattr(-,root,root,755)
 %{_bindir}/dvisvgm
 
 %files eplain-bin
-%defattr(-,root,root,755)
 %{_bindir}/eplain
 
 %files epspdf-bin
-%defattr(-,root,root,755)
 %{_bindir}/epspdf
 %{_bindir}/epspdftk
 
 %files epstopdf-bin
-%defattr(-,root,root,755)
 %{_bindir}/epstopdf
 %{_bindir}/repstopdf
 
 %files exceltex-bin
-%defattr(-,root,root,755)
 %{_bindir}/exceltex
 
 %files fig4latex-bin
-%defattr(-,root,root,755)
 %{_bindir}/fig4latex
 
 %files findhyph-bin
-%defattr(-,root,root,755)
 %{_bindir}/findhyph
 
 %files fontinst-bin
-%defattr(-,root,root,755)
 %{_bindir}/fontinst
 
 %files fontools-bin
-%defattr(-,root,root,755)
 %{_bindir}/afm2afm
 %{_bindir}/autoinst
 %{_bindir}/ot2kpx
 
 %files fontware-bin
-%defattr(-,root,root,755)
 %{_bindir}/pltotf
 %{_bindir}/tftopl
 %{_bindir}/vftovp
 %{_bindir}/vptovf
 
 %files fragmaster-bin
-%defattr(-,root,root,755)
 %{_bindir}/fragmaster
 
 %files getmap-bin
-%defattr(-,root,root,755)
 %{_bindir}/getmapdl
 
 %files git-latexdiff-bin
-%defattr(-,root,root,755)
 %{_bindir}/git-latexdiff
 
 %files glossaries-bin
-%defattr(-,root,root,755)
 %{_bindir}/makeglossaries
 %{_bindir}/makeglossaries-lite
 
 %files gregoriotex-bin
-%defattr(-,root,root,755)
 %{_bindir}/gregorio
 
 %files gsftopk-bin
-%defattr(-,root,root,755)
 %{_bindir}/gsftopk
 
 %files hitex-bin
-%defattr(-,root,root,755)
 %{_bindir}/hilatex
 %{_bindir}/hishrink
 %{_bindir}/histretch
 %{_bindir}/hitex
 
 %files hyperxmp-bin
-%defattr(-,root,root,755)
 %{_bindir}/hyperxmp-add-bytecount
 
 %files jadetex-bin
-%defattr(-,root,root,755)
 %{_bindir}/jadetex
 %{_bindir}/pdfjadetex
 
 %files jfmutil-bin
-%defattr(-,root,root,755)
 %{_bindir}/jfmutil
 
 %files ketcindy-bin
-%defattr(-,root,root,755)
 %{_bindir}/ketcindy
 
 %files kotex-utils-bin
-%defattr(-,root,root,755)
 %{_bindir}/jamo-normalize
 %{_bindir}/komkindex
 %{_bindir}/ttf2kotexfont
 
 %files kpathsea-bin
-%defattr(-,root,root,755)
 %{_bindir}/kpseaccess
 %{_bindir}/kpsereadlink
 %{_bindir}/kpsestat
@@ -5307,67 +5218,53 @@ fi
 %{_libexecdir}/mktex/*tex*
 
 %files l3build-bin
-%defattr(-,root,root,755)
 %{_bindir}/l3build
 
 %files lacheck-bin
-%defattr(-,root,root,755)
 %{_bindir}/lacheck
 
 %files latex-bin-dev-bin
-%defattr(-,root,root,755)
 %{_bindir}/dvilualatex-dev
 %{_bindir}/latex-dev
 %{_bindir}/lualatex-dev
 %{_bindir}/pdflatex-dev
 
 %files latex-bin-bin
-%defattr(-,root,root,755)
 %{_bindir}/dvilualatex
 %{_bindir}/latex
 %{_bindir}/lualatex
 %{_bindir}/pdflatex
 
 %files latex-git-log-bin
-%defattr(-,root,root,755)
 %{_bindir}/latex-git-log
 
 %files latex-papersize-bin
-%defattr(-,root,root,755)
 %{_bindir}/latex-papersize
 
 %files latex2man-bin
-%defattr(-,root,root,755)
 %{_bindir}/latex2man
 
 %files latex2nemeth-bin
-%defattr(-,root,root,755)
 %{_bindir}/latex2nemeth
 
 %files latexdiff-bin
-%defattr(-,root,root,755)
 %{_bindir}/latexdiff
 %{_bindir}/latexdiff-vc
 %{_bindir}/latexrevise
 
 %files latexfileversion-bin
-%defattr(-,root,root,755)
 %{_bindir}/latexfileversion
 
 %files latexindent-bin
-%defattr(-,root,root,755)
 %{_bindir}/latexindent
 
 %files latexmk-bin
-%defattr(-,root,root,755)
 %{_bindir}/latexmk
 
 %files latexpand-bin
-%defattr(-,root,root,755)
 %{_bindir}/latexpand
 
 %files lcdftypetools-bin
-%defattr(-,root,root,755)
 %if %{with lcdf_typetools}
 %{_bindir}/cfftot1
 %{_bindir}/mmafm
@@ -5383,116 +5280,92 @@ fi
 %endif
 
 %files light-latex-make-bin
-%defattr(-,root,root,755)
 %{_bindir}/llmk
 
 %files lilyglyphs-bin
-%defattr(-,root,root,755)
 %{_bindir}/lily-glyph-commands
 %{_bindir}/lily-image-commands
 %{_bindir}/lily-rebuild-pdfs
 
 %files listbib-bin
-%defattr(-,root,root,755)
 %{_bindir}/listbib
 
 %files listings-ext-bin
-%defattr(-,root,root,755)
 %{_bindir}/listings-ext.sh
 
 %files lollipop-bin
-%defattr(-,root,root,755)
 %{_bindir}/lollipop
 
 %files ltxfileinfo-bin
-%defattr(-,root,root,755)
 %{_bindir}/ltxfileinfo
 
 %files ltximg-bin
-%defattr(-,root,root,755)
 %{_bindir}/ltximg
 
 %files luafindfont-bin
-%defattr(-,root,root,755)
 %{_bindir}/luafindfont
 
 %files luahbtex-bin
-%defattr(-,root,root,755)
 %{_bindir}/luahbtex
 
 %files luajittex-bin
-%defattr(-,root,root,755)
 %{_bindir}/luajithbtex
 %{_bindir}/luajittex
 %{_bindir}/texluajit
 %{_bindir}/texluajitc
 
 %files luaotfload-bin
-%defattr(-,root,root,755)
 %{_bindir}/luaotfload-tool
 
 %files luatex-bin
-%defattr(-,root,root,755)
 %{_bindir}/dviluatex
 %{_bindir}/luatex
 %{_bindir}/texlua
 %{_bindir}/texluac
 
 %files lwarp-bin
-%defattr(-,root,root,755)
 %{_bindir}/lwarpmk
 
 %files m-tx-bin
-%defattr(-,root,root,755)
 %{_bindir}/m-tx
 %{_bindir}/prepmx
 
 %files make4ht-bin
-%defattr(-,root,root,755)
 %{_bindir}/make4ht
 
 %files makedtx-bin
-%defattr(-,root,root,755)
 %{_bindir}/makedtx
 
 %files makeindex-bin
-%defattr(-,root,root,755)
 %{_bindir}/makeindex
 %{_bindir}/mkindex
 
 %files match_parens-bin
-%defattr(-,root,root,755)
 %{_bindir}/match_parens
 
 %files mathspic-bin
-%defattr(-,root,root,755)
 %{_bindir}/mathspic
 
 %files metafont-bin
-%defattr(-,root,root,755)
 %{_bindir}/inimf
 %{_bindir}/mf
 %{_bindir}/mf-nowin
 
 %files metapost-bin
-%defattr(-,root,root,755)
 %{_bindir}/dvitomp
 %{_bindir}/mfplain
 %{_bindir}/mpost
 %{_bindir}/r-mpost
 
 %files mex-bin
-%defattr(-,root,root,755)
 %{_bindir}/mex
 %{_bindir}/pdfmex
 %{_bindir}/utf8mex
 
 %files mf2pt1-bin
-%defattr(-,root,root,755)
 %{_bindir}/mf2pt1
 
 %files mflua-bin
-%defattr(-,root,root,755)
 %{_bindir}/mflua
 %{_bindir}/mflua-nowin
 %if %{with LuaJIT}
@@ -5503,7 +5376,6 @@ fi
 %endif
 
 %files mfware-bin
-%defattr(-,root,root,755)
 %{_bindir}/gftodvi
 %{_bindir}/gftopk
 %{_bindir}/gftype
@@ -5512,42 +5384,33 @@ fi
 %{_bindir}/pktype
 
 %files mkgrkindex-bin
-%defattr(-,root,root,755)
 %{_bindir}/mkgrkindex
 
 %files mkjobtexmf-bin
-%defattr(-,root,root,755)
 %{_bindir}/mkjobtexmf
 
 %files mkpic-bin
-%defattr(-,root,root,755)
 %{_bindir}/mkpic
 
 %files mltex-bin
-%defattr(-,root,root,755)
 %{_bindir}/mllatex
 %{_bindir}/mltex
 
 %files mptopdf-bin
-%defattr(-,root,root,755)
 %{_bindir}/mptopdf
 
 %files multibibliography-bin
-%defattr(-,root,root,755)
 %{_bindir}/multibibliography
 
 %files musixtex-bin
-%defattr(-,root,root,755)
 %{_bindir}/musixflx
 %{_bindir}/musixtex
 %{_bindir}/pdfmusixtex
 
 %files musixtnt-bin
-%defattr(-,root,root,755)
 %{_bindir}/msxlint
 
 %files omegaware-bin
-%defattr(-,root,root,755)
 %{_bindir}/odvicopy
 %{_bindir}/odvitype
 %{_bindir}/ofm2opl
@@ -5563,130 +5426,102 @@ fi
 %{_bindir}/wovf2ovp
 
 %files optex-bin
-%defattr(-,root,root,755)
 %{_bindir}/optex
 
 %files optexcount-bin
-%defattr(-,root,root,755)
 %{_bindir}/optexcount
 
 %files pagelayout-bin
-%defattr(-,root,root,755)
 %{_bindir}/pagelayoutapi
 %{_bindir}/textestvis
 
 %files patgen-bin
-%defattr(-,root,root,755)
 %{_bindir}/patgen
 
 %files pax-bin
-%defattr(-,root,root,755)
 %{_bindir}/pdfannotextractor
 
 %files pdfbook2-bin
-%defattr(-,root,root,755)
 %{_bindir}/pdfbook2
 
 %files pdfcrop-bin
-%defattr(-,root,root,755)
 %{_bindir}/pdfcrop
 %{_bindir}/rpdfcrop
 
 %files pdfjam-bin
-%defattr(-,root,root,755)
 %{_bindir}/pdfjam
 
 %files pdflatexpicscale-bin
-%defattr(-,root,root,755)
 %{_bindir}/pdflatexpicscale
 
 %files pdftex-quiet-bin
-%defattr(-,root,root,755)
 %{_bindir}/pdftex-quiet
 
 %files pdftex-bin
-%defattr(-,root,root,755)
 %{_bindir}/etex
 %{_bindir}/pdfetex
 %{_bindir}/pdftex
 %{_bindir}/simpdftex
 
 %files pdftosrc-bin
-%defattr(-,root,root,755)
 %{_bindir}/pdftosrc
 
 %files pdfxup-bin
-%defattr(-,root,root,755)
 %{_bindir}/pdfxup
 
 %files pedigree-perl-bin
-%defattr(-,root,root,755)
 %{_bindir}/pedigree
 
 %files perltex-bin
-%defattr(-,root,root,755)
 %{_bindir}/perltex
 
 %files petri-nets-bin
-%defattr(-,root,root,755)
 %{_bindir}/pn2pdf
 
 %files pfarrei-bin
-%defattr(-,root,root,755)
 %{_bindir}/a5toa4
 %{_bindir}/pfarrei
 
 %files pkfix-helper-bin
-%defattr(-,root,root,755)
 %{_bindir}/pkfix-helper
 
 %files pkfix-bin
-%defattr(-,root,root,755)
 %{_bindir}/pkfix
 
 %files platex-bin
-%defattr(-,root,root,755)
 %{_bindir}/platex
 %{_bindir}/platex-dev
 
 %files pmx-bin
-%defattr(-,root,root,755)
 %{_bindir}/pmxab
 %{_bindir}/scor2prt
 
 %files pmxchords-bin
-%defattr(-,root,root,755)
 %{_bindir}/pmxchords
 
 %files ps2eps-bin
-%defattr(-,root,root,755)
 %{_bindir}/bbox
 %{_bindir}/ps2eps
 
 %files ps2pk-bin
-%defattr(-,root,root,755)
 %{_bindir}/mag
 %{_bindir}/pfb2pfa
 %{_bindir}/pk2bm
 %{_bindir}/ps2pk
 
 %files pst-pdf-bin
-%defattr(-,root,root,755)
 %{_bindir}/ps4pdf
 
 %files pst2pdf-bin
-%defattr(-,root,root,755)
 %{_bindir}/pst2pdf
 
 %files ptex-fontmaps-bin
-%defattr(-,root,root,755)
 %{_bindir}/kanji-config-updmap
 %{_bindir}/kanji-config-updmap-sys
 %{_bindir}/kanji-config-updmap-user
 %{_bindir}/kanji-fontmap-creator
 
 %files ptex-bin
-%defattr(-,root,root,755)
 %{_bindir}/eptex
 %{_bindir}/makejvf
 %{_bindir}/mendex
@@ -5700,28 +5535,22 @@ fi
 %{_bindir}/r-pmpost
 
 %files ptex2pdf-bin
-%defattr(-,root,root,755)
 %{_bindir}/ptex2pdf
 
 %files purifyeps-bin
-%defattr(-,root,root,755)
 %{_bindir}/purifyeps
 
 %files pygmentex-bin
-%defattr(-,root,root,755)
 %{_bindir}/pygmentex
 
 %files pythontex-bin
-%defattr(-,root,root,755)
 %{_bindir}/depythontex
 %{_bindir}/pythontex
 
 %files rubik-bin
-%defattr(-,root,root,755)
 %{_bindir}/rubikrotation
 
 %files seetexk-bin
-%defattr(-,root,root,755)
 %{_bindir}/dvibook
 %{_bindir}/dviconcat
 %{_bindir}/dviselect
@@ -5731,40 +5560,31 @@ fi
 %{_bindir}/odd2even
 
 %files spix-bin
-%defattr(-,root,root,755)
 %{_bindir}/spix
 
 %files splitindex-bin
-%defattr(-,root,root,755)
 %{_bindir}/splitindex
 
 %files srcredact-bin
-%defattr(-,root,root,755)
 %{_bindir}/srcredact
 
 %files sty2dtx-bin
-%defattr(-,root,root,755)
 %{_bindir}/sty2dtx
 
 %files svn-multi-bin
-%defattr(-,root,root,755)
 %{_bindir}/svn-multi
 
 %files synctex-bin
-%defattr(-,root,root,755)
 %{_bindir}/synctex
 
 %files tex-bin
-%defattr(-,root,root,755)
 %{_bindir}/initex
 %{_bindir}/tex
 
 %files tex4ebook-bin
-%defattr(-,root,root,755)
 %{_bindir}/tex4ebook
 
 %files tex4ht-bin
-%defattr(-,root,root,755)
 %{_bindir}/ht
 %{_bindir}/htcontext
 %{_bindir}/htlatex
@@ -5779,40 +5599,31 @@ fi
 %{_bindir}/xhlatex
 
 %files texaccents-bin
-%defattr(-,root,root,755)
 %{_bindir}/texaccents
 
 %files texcount-bin
-%defattr(-,root,root,755)
 %{_bindir}/texcount
 
 %files texdef-bin
-%defattr(-,root,root,755)
 %{_bindir}/latexdef
 %{_bindir}/texdef
 
 %files texdiff-bin
-%defattr(-,root,root,755)
 %{_bindir}/texdiff
 
 %files texdirflatten-bin
-%defattr(-,root,root,755)
 %{_bindir}/texdirflatten
 
 %files texdoc-bin
-%defattr(-,root,root,755)
 %{_bindir}/texdoc
 
 %files texdoctk-bin
-%defattr(-,root,root,755)
 %{_bindir}/texdoctk
 
 %files texfot-bin
-%defattr(-,root,root,755)
 %{_bindir}/texfot
 
 %files -n texlive-scripts-extra-bin
-%defattr(-,root,root,755)
 %{_bindir}/allcm
 %{_bindir}/allec
 %{_bindir}/allneeded
@@ -5833,7 +5644,6 @@ fi
 %{_bindir}/texlinks
 
 %files -n texlive-scripts-bin
-%defattr(-,root,root,755)
 %{_bindir}/fmtutil
 %{_bindir}/fmtutil-sys
 %{_bindir}/fmtutil-user
@@ -5848,82 +5658,64 @@ fi
 %{_bindir}/updmap-user
 
 %files texliveonfly-bin
-%defattr(-,root,root,755)
 %{_bindir}/texliveonfly
 
 %files texloganalyser-bin
-%defattr(-,root,root,755)
 %{_bindir}/texloganalyser
 
 %files texlogfilter-bin
-%defattr(-,root,root,755)
 %{_bindir}/texlogfilter
 
 %files texlogsieve-bin
-%defattr(-,root,root,755)
 %{_bindir}/texlogsieve
 
 %files texosquery-bin
-%defattr(-,root,root,755)
 %{_bindir}/texosquery
 %{_bindir}/texosquery-jre5
 %{_bindir}/texosquery-jre8
 
 %files texplate-bin
-%defattr(-,root,root,755)
 %{_bindir}/texplate
 
 %files texsis-bin
-%defattr(-,root,root,755)
 %{_bindir}/texsis
 
 %files texware-bin
-%defattr(-,root,root,755)
 %{_bindir}/dvitype
 %{_bindir}/pooltype
 
 %files thumbpdf-bin
-%defattr(-,root,root,755)
 %{_bindir}/thumbpdf
 
 %files tie-bin
-%defattr(-,root,root,755)
 %{_bindir}/tie
 
 %files tikztosvg-bin
-%defattr(-,root,root,755)
 %{_bindir}/tikztosvg
 
 %files tpic2pdftex-bin
-%defattr(-,root,root,755)
 %{_bindir}/tpic2pdftex
 
 %files ttfutils-bin
-%defattr(-,root,root,755)
 %{_bindir}/ttf2afm
 %{_bindir}/ttf2pk
 %{_bindir}/ttf2tfm
 %{_bindir}/ttfdump
 
 %files typeoutfileinfo-bin
-%defattr(-,root,root,755)
 %{_bindir}/typeoutfileinfo
 
 %files ulqda-bin
-%defattr(-,root,root,755)
 %{_bindir}/ulqda
 
 %files uplatex-bin
-%defattr(-,root,root,755)
 %{_bindir}/uplatex
 %{_bindir}/uplatex-dev
 
 %files upmendex-bin
-%defattr(-,root,root,755)
 %{_bindir}/upmendex
 
 %files uptex-bin
-%defattr(-,root,root,755)
 %{_bindir}/euptex
 %{_bindir}/r-upmpost
 %{_bindir}/upbibtex
@@ -5936,45 +5728,35 @@ fi
 %{_bindir}/wovp2ovf
 
 %files urlbst-bin
-%defattr(-,root,root,755)
 %{_bindir}/urlbst
 
 %files velthuis-bin
-%defattr(-,root,root,755)
 %{_bindir}/devnag
 
 %files vlna-bin
-%defattr(-,root,root,755)
 %{_bindir}/vlna
 
 %files vpe-bin
-%defattr(-,root,root,755)
 %{_bindir}/vpe
 
 %files web-bin
-%defattr(-,root,root,755)
 %{_bindir}/tangle
 %{_bindir}/weave
 
 %files webquiz-bin
-%defattr(-,root,root,755)
 %{_bindir}/webquiz
 
 %files wordcount-bin
-%defattr(-,root,root,755)
 %{_bindir}/wordcount
 
 %files xdvi-bin
-%defattr(-,root,root,755)
 %{_bindir}/xdvi
 %{_bindir}/xdvi-xaw3d
 
 %files xelatex-dev-bin
-%defattr(-,root,root,755)
 %{_bindir}/xelatex-dev
 
 %files xetex-bin
-%defattr(-,root,root,755)
 %{_bindir}/teckit_compile
 %{_bindir}/xelatex
 %{_bindir}/xelatex-unsafe
@@ -5982,66 +5764,53 @@ fi
 %{_bindir}/xetex-unsafe
 
 %files xindex-bin
-%defattr(-,root,root,755)
 %{_bindir}/xindex
 
 %files xml2pmx-bin
-%defattr(-,root,root,755)
 %{_bindir}/xml2pmx
 
 %files xmltex-bin
-%defattr(-,root,root,755)
 %{_bindir}/pdfxmltex
 %{_bindir}/xmltex
 
 %files xpdfopen-bin
-%defattr(-,root,root,755)
 %{_bindir}/pdfclose
 %{_bindir}/pdfopen
 
 %files yplan-bin
-%defattr(-,root,root,755)
 %{_bindir}/yplan
 
 %files -n libkpathsea6
-%defattr(-,root,root,755)
 %{_libdir}/libkpathsea*.so.*
 
 %files -n %{name}-kpathsea-devel
-%defattr(-,root,root)
 %dir %{_includedir}/kpathsea
 %{_includedir}/kpathsea/*
 %{_libdir}/libkpathsea.so
 %{_libdir}/pkgconfig/kpathsea.pc
 
 %files -n libptexenc1
-%defattr(-,root,root,755)
 %{_libdir}/libptexenc*.so.*
 
 %files -n %{name}-ptexenc-devel
-%defattr(-,root,root)
 %dir %{_includedir}/ptexenc
 %{_includedir}/ptexenc/*
 %{_libdir}/libptexenc.so
 %{_libdir}/pkgconfig/ptexenc.pc
 
 %files -n libsynctex2
-%defattr(-,root,root,755)
 %{_libdir}/libsynctex.so.*
 
 %files -n %{name}-synctex-devel
-%defattr(-,root,root)
 %dir %{_includedir}/synctex/
 %{_includedir}/synctex/*.h
 %{_libdir}/libsynctex.so
 %{_libdir}/pkgconfig/synctex.pc
 
 %files -n libtexlua53-5
-%defattr(-,root,root,755)
 %{_libdir}/libtexlua53*so.*
 
 %files -n %{name}-texlua-devel
-%defattr(-,root,root)
 %dir %{_includedir}/texlua[0-9]*/
 %{_includedir}/texlua[0-9]*/*.h*
 %{_libdir}/libtexlua[0-9]*so
@@ -6049,11 +5818,9 @@ fi
 
 %if %{with LuaJIT}
 %files -n libtexluajit2
-%defattr(-,root,root,755)
 %{_libdir}/libtexluajit.so.*
 
 %files -n %{name}-texluajit-devel
-%defattr(-,root,root)
 %dir %{_includedir}/texluajit/
 %{_includedir}/texluajit/*.h*
 %{_libdir}/libtexluajit.so
@@ -6061,11 +5828,9 @@ fi
 %endif
 
 %files -n %{name}-bin-devel
-%defattr(-,root,root,755)
 
 %if %{with buildbiber}
 %files -n perl-biber -f perl-biber.files
-%defattr(-,root,root,755)
 %endif
 
 %changelog
