@@ -20,7 +20,7 @@
 
 %bcond_without released
 Name:           kcm_flatpak
-Version:        5.27.5
+Version:        5.27.6
 Release:        0
 Summary:        Flatpak Permissions Management KCM
 License:        GPL-2.0-or-later
@@ -38,6 +38,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5Declarative)
 BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5ItemModels)
 BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5Quick)
