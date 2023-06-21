@@ -325,4 +325,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>991002</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>10d966a45a07b42dd683508d090d071d</srcmd5>
+    <version>2.0.7+20230607.06c8641</version>
+    <time>1687379844</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.7+20230607.06c8641 (v2.0.7):
+- blackbox: fix potential overlow/memory corruption (gh#ClusterLabs/libqb#486)
+- tests: allow -j to work (gh#ClusterLabs/libqb#485)
+- strlcpy: avoid compiler warning from strncpy (gh#ClusterLabs/libqb#473)
+- timer: Move state check to before time check (gh#ClusterLabs/libqb#479)
+- ipc: Retry receiving credentials if the the message is short (gh#ClusterLabs/libqb#476, rh#2111711)
+- lib: Fix some small bugs spotted by newest covscan (gh#ClusterLabs/libqb#471)
+- doxygen2man: Fix function parameter alignment (gh#ClusterLabs/libqb#468) (forwarded request 1093858 from yan_gao)</comment>
+    <requestid>1093859</requestid>
+  </revision>
 </revisionlist>

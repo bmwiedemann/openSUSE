@@ -1,7 +1,7 @@
 #
 # spec file for package libqb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %bcond_without doxygen2man
 
 Name:           libqb
-Version:        2.0.6+20220323.758044b
+Version:        2.0.7+20230607.06c8641
 Release:        0
 Summary:        An IPC library for high performance servers
 License:        LGPL-2.1-or-later
@@ -37,6 +37,7 @@ BuildRequires:  doxygen
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  procps
+BuildRequires:  util-linux
 # Need git so build-aux/git-version-gen can extract the version number and
 # commit hash during autogen run (not used currently)
 #BuildRequires:  git

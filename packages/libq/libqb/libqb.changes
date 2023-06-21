@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 19 18:31:05 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.7+20230607.06c8641 (v2.0.7):
+- blackbox: fix potential overlow/memory corruption (gh#ClusterLabs/libqb#486)
+- tests: allow -j to work (gh#ClusterLabs/libqb#485)
+- strlcpy: avoid compiler warning from strncpy (gh#ClusterLabs/libqb#473)
+- timer: Move state check to before time check (gh#ClusterLabs/libqb#479)
+- ipc: Retry receiving credentials if the the message is short (gh#ClusterLabs/libqb#476, rh#2111711)
+- lib: Fix some small bugs spotted by newest covscan (gh#ClusterLabs/libqb#471)
+- doxygen2man: Fix function parameter alignment (gh#ClusterLabs/libqb#468)
+
+-------------------------------------------------------------------
 Thu Apr 21 07:50:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - Make sure that the libstat_wrapper.so library is included in the libqb-tests RPM (when built)
