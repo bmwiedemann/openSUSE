@@ -1,0 +1,6 @@
+-- placeholder for future addings
+--
+-- To use functions from this file in a rpm macro you can use
+-- 
+--    rpm --define '%foo  %{lua: require "mingw64-cmake"; myfunc() }' --eval '%foo'
+--

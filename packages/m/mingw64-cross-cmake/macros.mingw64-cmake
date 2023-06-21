@@ -5,10 +5,45 @@
 #
 %__cmake_generator %{lua: if rpm.expand("%__builder") == rpm.expand("%__make") then print("-G'Unix Makefiles'") else print("-GNinja") end}
 
+#
+# macro for configuring a cross build with cmake
+#
+# To override the builtin source and build path defaults 
+#
+#    source path: $(pwd)/%__srcdir
+#    build path:  $(pwd)/%__builddir
+#
+#  add the following to the macro parameter list
+#
+#   -S <sourcedir>
+#   -B <builddir>
+#
+# for other options see cmake -h
+#
 %_mingw64_cmake %{_mingw64_env} ; \
-    mkdir -p %__builddir \
-    cd %__builddir \
-    %__cmake $OLDPWD/%__sourcedir \\\
+    opts="" \
+    for i in "$@"; do  \
+        if test "$i" == "-S"; then \
+            shift \
+            sdir=$i \
+            shift \
+        elif test "$i" == "-B"; then \
+            shift \
+            bdir=$i \
+            shift \
+        else \
+            opts="$opts $i" \
+        fi \
+    done \
+    if test -z "$bdir"; then \
+        bdir=$(pwd)/%__builddir \
+    fi \
+    mkdir -p $bdir \
+    cd $bdir \
+    if test -z "$sdir"; then \
+        sdir=$OLDPWD/%__sourcedir \
+    fi \
+    %__cmake -S $sdir -B $bdir $opts \\\
          %__cmake_generator \\\
         -DCMAKE_SYSTEM_NAME="Windows" \\\
         -DCMAKE_VERBOSE_MAKEFILE=ON \\\

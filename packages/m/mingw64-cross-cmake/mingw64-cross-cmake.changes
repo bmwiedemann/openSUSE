@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jun 14 14:39:59 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 1.1.1
+  * The use of the parametric rpm macro was abandoned because it has
+    too many limitations. With rpm >= 4.17 it would be possible to
+    disable option processing (see 
+    https://rpm-software-management.github.io/rpm/manual/macros.html), 
+    but this is not possible with Leap, which uses rpm 4.14.
+
+-------------------------------------------------------------------
+Mon Jun 12 10:00:25 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 1.1.0
+  * Add mingw64-cmake.lua as placeholder for future Lua functions
+  * %_mingw64_cmake: enabled support for selecting a custom build and
+  source directory by using the cmake options -S/-B (boo#1212238)
+
+-------------------------------------------------------------------
 Sun Feb 26 22:02:36 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Initial version 1.0.0 (boo#1209611)
