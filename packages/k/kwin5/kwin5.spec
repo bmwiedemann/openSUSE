@@ -24,7 +24,7 @@
 %global wayland (0%{?suse_version} >= 1330)
 %bcond_without released
 Name:           kwin5
-Version:        5.27.5
+Version:        5.27.6
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -39,9 +39,6 @@ Source:         https://download.kde.org/stable/plasma/%{version}/kwin-%{version
 Source1:        https://download.kde.org/stable/plasma/%{version}/kwin-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-xcbutils-fix-nativeFloor.patch
-Patch2:         revert-avoid-pointer-warp.patch
 # PATCH-FEATURE-OPENSUSE
 Patch101:       0001-Export-consistent-hostname-as-XAUTHLOCALHOSTNAME.patch
 BuildRequires:  extra-cmake-modules >= 0.0.11

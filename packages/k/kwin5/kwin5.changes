@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jun 20 17:15:01 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.6
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.6
+- Changes since 5.27.5:
+  * xwayland: Remove cursor definition (kde#442839,kde#459468)
+  * screencast: Discard pending buffer and fence if stream state changes
+  * screen edge: Emit cleanup signals if needed on teardown (kde#403354)
+  * effects/magiclamp: Make it look good with hidden panels
+  * XdgPopupWindow: Allow position to be set by Plasma (kde#463272)
+  * plugins/qpa: initialize buffer in backingstore (kde#437062)
+  * tiles: Adjust padding between windows (kde#469720)
+  * Refine order of previous/next screens in Workspace::findOutput (kde#467996)
+  * effects/magiclamp: Improve code readability
+  * effects/magiclamp: Make it look good with floating panels (kde#361121,kde#466177)
+  * effects/magiclamp: Improve animation direction heuristic (kde#463581)
+  * Revert "wayland: Avoid pointer warp if constraint region is invalid" (kde#469555)
+  * xcbutils: fix nativeFloor (kde#459373)
+- Drop patches, now upstream:
+  * 0001-xcbutils-fix-nativeFloor.patch
+  * revert-avoid-pointer-warp.patch
+
+-------------------------------------------------------------------
 Sun May 14 06:52:38 UTC 2023 - Fusion Future <qydwhotmail@gmail.com>
 
 - Add patch to fix pointer constraint region handling (kde#469555):
