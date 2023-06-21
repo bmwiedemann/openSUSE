@@ -402,4 +402,12 @@
   * Optimize incoming parser by reducing call stack (#1116)</comment>
     <requestid>1084251</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>db60241b2f0b2cc6a1a94ebfceaecb96</srcmd5>
+    <version>0.56.0</version>
+    <time>1687379959</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094229</requestid>
+  </revision>
 </revisionlist>
