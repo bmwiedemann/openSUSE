@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>1091072</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f8985f7ff6ecbceec475dceba7c0cb91</srcmd5>
+    <version>0.7.0</version>
+    <time>1687379910</time>
+    <user>dimstar_suse</user>
+    <comment>- Update vendored dependencies. Resolves bsc#1212012
+</comment>
+    <requestid>1093567</requestid>
+  </revision>
 </revisionlist>

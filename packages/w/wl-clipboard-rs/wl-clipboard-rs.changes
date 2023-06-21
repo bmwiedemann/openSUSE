@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  8 09:41:03 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update vendored dependencies. Resolves bsc#1212012
+
+-------------------------------------------------------------------
 Tue Jun  6 07:29:41 UTC 2023 - Denys Kondratenko <stdden@opensuse.org>
 
 - Update vendor dependencies to fix CVE bnc#1212012 
