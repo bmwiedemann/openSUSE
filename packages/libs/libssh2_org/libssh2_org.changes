@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Tue Jun 20 08:17:25 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.11.0:
+  * Enhancements and bugfixes
+    - Adds support for encrypt-then-mac (ETM) MACs
+    - Adds support for AES-GCM crypto protocols
+    - Adds support for sk-ecdsa-sha2-nistp256 and sk-ssh-ed25519 keys
+    - Adds support for RSA certificate authentication
+    - Adds FIDO support with *_sk() functions
+    - Adds RSA-SHA2 key upgrading to OpenSSL, WinCNG, mbedTLS, OS400 backends
+    - Adds Agent Forwarding and libssh2_agent_sign()
+    - Adds support for Channel Signal message libssh2_channel_signal_ex()
+    - Adds support to get the user auth banner message libssh2_userauth_banner()
+    - Adds LIBSSH2_NO_{MD5, HMAC_RIPEMD, DSA, RSA, RSA_SHA1, ECDSA, ED25519,
+      AES_CBC, AES_CTR, BLOWFISH, RC4, CAST, 3DES} options
+    - Adds direct stream UNIX sockets with libssh2_channel_direct_streamlocal_ex()
+    - Adds wolfSSL support to CMake file
+    - Adds mbedTLS 3.x support
+    - Adds LibreSSL 3.5 support
+    - Adds support for CMake "unity" builds
+    - Adds CMake support for building shared and static libs in a single pass
+    - Adds symbol hiding support to CMake
+    - Adds support for libssh2.rc for all build tools
+    - Adds .zip, .tar.xz and .tar.bz2 release tarballs
+    - Enables ed25519 key support for LibreSSL 3.7.0 or higher
+    - Improves OpenSSL 1.1 and 3 compatibility
+    - Now requires OpenSSL 1.0.2 or newer
+    - Now requires CMake 3.1 or newer
+    - SFTP: Adds libssh2_sftp_open_ex_r() and libssh2_sftp_open_r() extended APIs
+    - SFTP: No longer has a packet limit when reading a directory
+    - SFTP: now parses attribute extensions if they exist
+    - SFTP: no longer will busy loop if SFTP fails to initialize
+    - SFTP: now clear various errors as expected
+    - SFTP: no longer skips files if the line buffer is too small
+    - SCP: add option to not quote paths
+    - SCP: Enables 64-bit offset support unconditionally
+    - Now skips leading \r and \n characters in banner_receive()
+    - Enables secure memory zeroing with all build tools on all platforms
+    - No longer logs SSH_MSG_REQUEST_FAILURE packets from keepalive
+    - Speed up base64 encoding by 7x
+    - Assert if there is an attempt to write a value that is too large
+    - WinCNG: fix memory leak in _libssh2_dh_secret()
+    - Added protection against possible null pointer dereferences
+    - Agent now handles overly large comment lengths
+    - Now ensure KEX replies don't include extra bytes
+    - Fixed possible buffer overflow when receiving SSH_MSG_USERAUTH_BANNER
+    - Fixed possible buffer overflow in keyboard interactive code path
+    - Fixed overlapping memcpy()
+    - Fixed Windows UWP builds
+    - Fixed DLL import name
+    - Renamed local RANDOM_PADDING macro to avoid unexpected define on Windows
+    - Support for building with gcc versions older than 8
+    - Improvements to CMake, Makefile, NMakefile, GNUmakefile, autoreconf files
+    - Restores ANSI C89 compliance
+    - Enabled new compiler warnings and fixed/silenced them
+    - Improved error messages
+    - Now uses CIFuzz
+    - Numerous minor code improvements
+    - Improvements to CI builds
+    - Improvements to unit tests
+    - Improvements to doc files
+    - Improvements to example files
+    - Removed "old gex" build option
+    - Removed no-encryption/no-mac builds
+    - Removed support for NetWare and Watcom wmake build files
+  * Rebase libssh2-ocloexec.patch
+
+-------------------------------------------------------------------
 Fri Dec 10 14:41:20 UTC 2021 - David Anes <david.anes@suse.com>
 
 - Bump to version 1.10.0

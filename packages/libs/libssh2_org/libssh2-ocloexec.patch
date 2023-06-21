@@ -9,11 +9,11 @@ Subject: [PATCH] Use O_CLOEXEC where needed
  src/userauth.c  |    2 +-
  3 files changed, 4 insertions(+), 4 deletions(-)
 
-Index: libssh2-1.10.0/src/agent.c
+Index: libssh2-1.11.0/src/agent.c
 ===================================================================
---- libssh2-1.10.0.orig/src/agent.c
-+++ libssh2-1.10.0/src/agent.c
-@@ -109,7 +109,7 @@ agent_connect_unix(LIBSSH2_AGENT *agent)
+--- libssh2-1.11.0.orig/src/agent.c
++++ libssh2-1.11.0/src/agent.c
+@@ -177,7 +177,7 @@ agent_connect_unix(LIBSSH2_AGENT *agent)
                                    "no auth sock variable");
      }
  
@@ -22,11 +22,11 @@ Index: libssh2-1.10.0/src/agent.c
      if(agent->fd < 0)
          return _libssh2_error(agent->session, LIBSSH2_ERROR_BAD_SOCKET,
                                "failed creating socket");
-Index: libssh2-1.10.0/src/knownhost.c
+Index: libssh2-1.11.0/src/knownhost.c
 ===================================================================
---- libssh2-1.10.0.orig/src/knownhost.c
-+++ libssh2-1.10.0/src/knownhost.c
-@@ -963,7 +963,7 @@ libssh2_knownhost_readfile(LIBSSH2_KNOWN
+--- libssh2-1.11.0.orig/src/knownhost.c
++++ libssh2-1.11.0/src/knownhost.c
+@@ -962,7 +962,7 @@ libssh2_knownhost_readfile(LIBSSH2_KNOWN
                                "Unsupported type of known-host information "
                                "store");
  
@@ -35,7 +35,7 @@ Index: libssh2-1.10.0/src/knownhost.c
      if(file) {
          while(fgets(buf, sizeof(buf), file)) {
              if(libssh2_knownhost_readline(hosts, buf, strlen(buf), type)) {
-@@ -1204,7 +1204,7 @@ libssh2_knownhost_writefile(LIBSSH2_KNOW
+@@ -1203,7 +1203,7 @@ libssh2_knownhost_writefile(LIBSSH2_KNOW
                                "Unsupported type of known-host information "
                                "store");
  
@@ -44,24 +44,24 @@ Index: libssh2-1.10.0/src/knownhost.c
      if(!file)
          return _libssh2_error(hosts->session, LIBSSH2_ERROR_FILE,
                                "Failed to open file");
-Index: libssh2-1.10.0/src/userauth.c
+Index: libssh2-1.11.0/src/userauth.c
 ===================================================================
---- libssh2-1.10.0.orig/src/userauth.c
-+++ libssh2-1.10.0/src/userauth.c
-@@ -578,7 +578,7 @@ file_read_publickey(LIBSSH2_SESSION * se
-     _libssh2_debug(session, LIBSSH2_TRACE_AUTH, "Loading public key file: %s",
-                    pubkeyfile);
+--- libssh2-1.11.0.orig/src/userauth.c
++++ libssh2-1.11.0/src/userauth.c
+@@ -654,7 +654,7 @@ file_read_publickey(LIBSSH2_SESSION * se
+     _libssh2_debug((session, LIBSSH2_TRACE_AUTH, "Loading public key file: %s",
+                    pubkeyfile));
      /* Read Public Key */
 -    fd = fopen(pubkeyfile, FOPEN_READTEXT);
 +    fd = fopen(pubkeyfile, FOPEN_READTEXT_CLOEXEC);
      if(!fd) {
          return _libssh2_error(session, LIBSSH2_ERROR_FILE,
                                "Unable to open public key file");
-Index: libssh2-1.10.0/src/libssh2_priv.h
+Index: libssh2-1.11.0/src/libssh2_priv.h
 ===================================================================
---- libssh2-1.10.0.orig/src/libssh2_priv.h
-+++ libssh2-1.10.0/src/libssh2_priv.h
-@@ -1149,6 +1149,8 @@ endings either CRLF or LF so 't' is appr
+--- libssh2-1.11.0.orig/src/libssh2_priv.h
++++ libssh2-1.11.0/src/libssh2_priv.h
+@@ -1218,6 +1218,8 @@ size_t plain_method(char *method, size_t
  #define FOPEN_READTEXT "r"
  #define FOPEN_WRITETEXT "w"
  #define FOPEN_APPENDTEXT "a"

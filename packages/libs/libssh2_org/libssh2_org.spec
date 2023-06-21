@@ -1,7 +1,7 @@
 #
 # spec file for package libssh2_org
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %define pkg_name libssh2
 Name:           libssh2_org
-Version:        1.10.0
+Version:        1.11.0
 Release:        0
 Summary:        A library implementing the SSH2 protocol
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://www.libssh2.org/
-Source0:        https://www.libssh2.org/download/%{pkg_name}-%{version}.tar.gz
-Source1:        https://www.libssh2.org/download/%{pkg_name}-%{version}.tar.gz.asc
+Source0:        https://www.libssh2.org/download/%{pkg_name}-%{version}.tar.xz
+Source1:        https://www.libssh2.org/download/%{pkg_name}-%{version}.tar.xz.asc
 Source2:        baselibs.conf
 Source3:        libssh2_org.keyring
 Patch0:         libssh2-ocloexec.patch
@@ -65,8 +65,7 @@ SECSH-ARCH, SECSH-FILEXFER, SECSH-DHGEX, SECSH-NUMBERS, and
 SECSH-PUBLICKEY.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
-%patch0 -p1
+%autosetup -p1 -n %{pkg_name}-%{version}
 
 %build
 sed -i -e 's@AM_CONFIG_HEADER@AC_CONFIG_HEADERS@g' configure.ac
@@ -76,10 +75,12 @@ autoreconf -fiv
 export CFLAGS="%{optflags} -DOPENSSL_LOAD_CONF"
 %configure \
     --disable-silent_rules \
-    --disable-static \
+    --enable-shared \
     --disable-rpath \
-    --with-libz=%{_prefix} \
-    --with-openssl=%{_prefix}
+    --disable-docker-tests \
+    --with-libssl-prefix=%{_prefix} \
+    --with-libz=%{_prefix}
+
 make %{?_smp_mflags}
 
 %check
@@ -87,7 +88,7 @@ make %{?_smp_mflags} check
 
 %install
 %make_install
-rm -f  %{buildroot}%{_libdir}/*.la %{buildroot}%{_libdir}/*.a
+rm -f %{buildroot}%{_libdir}/*.la %{buildroot}%{_libdir}/*.a
 
 %post -n libssh2-1 -p /sbin/ldconfig
 %postun -n libssh2-1 -p /sbin/ldconfig
@@ -98,7 +99,7 @@ rm -f  %{buildroot}%{_libdir}/*.la %{buildroot}%{_libdir}/*.a
 
 %files -n libssh2-devel
 %defattr(-,root,root)
-%doc NEWS
+%doc NEWS docs/BINDINGS.md docs/HACKING.md docs/TODO
 %{_libdir}/libssh2.so
 %{_includedir}/*.h
 %{_mandir}/man3/*
