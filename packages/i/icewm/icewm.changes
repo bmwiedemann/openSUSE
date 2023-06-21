@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun  5 10:19:21 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.4.0:
+  * Features:
+    - Support keybindings to shifted keys for issue #134.
+    - Support keybindings to literal Latin-1 characters.
+    - Support all UTF-8 code points in keybindings.
+  * Fixes:
+    - Fix for a map request from an unmanaged client for
+      bbidulock/icewm#734.
+    - When the keyboard layout changes, reparse the key bindings.
+  * Changes:
+    - Update the manpage for "icewm-keys".
+    - Updated translations.
+
+-------------------------------------------------------------------
 Thu May 18 12:51:20 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.3.5:
