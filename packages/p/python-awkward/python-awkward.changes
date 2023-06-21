@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 20 16:41:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.3:
+  * feat!: deprecate to_NumpyForm's ``dtype` argument
+  * feat!: deprecate the time __unit__ parameter
+  * fix: don't project records during broadcasting; push index down
+  * fix: protect ak.to_parquet against memory explosion when args are swapped.
+  * fix: str of KeyError for <3.11
+  * fix: support axis != -1 for record reduction
+
+-------------------------------------------------------------------
 Sun Jun 11 08:21:15 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.2:
