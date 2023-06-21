@@ -1,10 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 20 15:23:17 UTC 2023 - Lee Duncan <lduncan@suse.com>
+
+- Fix iscsiuio build version by updating iscsiuio/meson.build
+  and RPM SPEC file (bsc#1210514), updating
+  open-iscsi-SUSE-latest.diff.bz2
+
+-------------------------------------------------------------------
 Thu Jun 15 17:39:33 UTC 2023 - Lee Duncan <lduncan@suse.com>
 
 - Upgrade to upstream version 2.1.9 with tag "2.1.9-suse"
   (bsc#1210514), replacing open-iscsi-2.1.8-suse.tar.bz2 with
   open-iscsi-2.1.9-suse.tar.bz2, and resetting
-  open-iscsi-SUSE-latest.diff.bz2. A summary rom the ChangeLog
+  open-iscsi-SUSE-latest.diff.bz2. A summary from the ChangeLog
   file:
   * Fix discoveryd compiler warning
   * Sync iscsi_if.h with kernel

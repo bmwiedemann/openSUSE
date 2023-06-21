@@ -105,7 +105,7 @@ Obsoletes:      libopeniscsiusr0_2_0 <= 2.1.7
 The iSCSI user-space API from the open-iscsi project.
 
 %package -n iscsiuio
-Version:        0.7.8.6
+Version:        0.7.8.7
 Release:        0
 Summary:        Linux Broadcom NetXtremem II iscsi server
 Group:          Productivity/Networking/Other
