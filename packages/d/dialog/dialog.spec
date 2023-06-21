@@ -1,7 +1,7 @@
 #
 # spec file for package dialog
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define src_date 20210530
+%define src_date 20230209
 %define somajor 15
 Name:           dialog
 Version:        1.3
@@ -25,8 +25,8 @@ Summary:        Menus and Input Boxes for Shell Scripts
 License:        LGPL-2.1-only
 Group:          Development/Tools/Other
 URL:            http://invisible-island.net/dialog/
-Source0:        ftp://ftp.invisible-island.net/dialog/%{name}-%{version}-%{src_date}.tgz
-Source1:        ftp://ftp.invisible-island.net/dialog/%{name}-%{version}-%{src_date}.tgz.asc
+Source0:        https://www.invisible-island.net/archives/%{name}/%{name}-%{version}-%{src_date}.tgz
+Source1:        https://www.invisible-island.net/archives/%{name}/%{name}-%{version}-%{src_date}.tgz.asc
 Source2:        %{name}.keyring
 Source3:        dialog.rc
 Source4:        dialog-rpmlintrc
@@ -76,7 +76,7 @@ Examples of using menus and dialog boxes in shell scripts.
 %build
     CC=gcc
     LIBS=""
-    CFLAGS="%{optflags} -pipe -Wall"
+    CFLAGS="%{optflags} -pipe -Wall -D_GNU_SOURCE"
     for ncurses_conf in ncursesw6-config ncurstesw5-config ; do
 	ncurses_conf=$(type -p $ncurses_conf 2> /dev/null) || continue
 	LIBS="${LIBS:+$LIBS }$($ncurses_conf --libs)"

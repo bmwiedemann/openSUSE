@@ -414,4 +414,41 @@ See e.g. editbox.c (forwarded request 150609 from babelworx)</comment>
   Updated translations. (forwarded request 900363 from dimstar)</comment>
     <requestid>900387</requestid>
   </revision>
+  <revision rev="41" vrev="10">
+    <srcmd5>5c7215bc1ce52c0bf4332b40c67199ba</srcmd5>
+    <version>1.3</version>
+    <time>1687379821</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3-20230209:
+  + install &quot;.pc&quot; files in the test-packages.
+  + add pkg-config &quot;.pc&quot; file, for use with the development library.
+  + change shared-library configuration in test-packages to use the
+    ABI version in the library filename to match its SONAME.
+  + add sample scripts to test-packages, using new makefile rule
+    &quot;install-examples&quot;.
+  + corrected cdialog*.install helper scripts in test-package for Debian
+  + change ftp URLs in test-packages to https
+  + updated configure script, e.g., for compiler-warning fixes.
+  + updated fur.po, zh_TW.po from
+          http://translationproject.org/latest/dialog/
+  + modify slackware.rc to match dialog's output from &quot;make check&quot; using
+    this configuration file (FreeBSD #267777).
+  + fix shellcheck warnings in helper-scripts for building/installing.
+  + updated configure script, e.g., for compiler-warning fixes.
+  + updated hu.po from http://translationproject.org/latest/dialog/
+  + update config.guess, config.sub, install-sh
+  + initialize color-settings before --create-rc option is processed.
+  + add &quot;use_scrollbar&quot; setting in rc-file to use in whiptail.rc
+  + improve manual page discussion of &quot;--&quot; token.
+  + updated configure macro for math-library functions.
+  + updated ca.po from http://translationproject.org/latest/dialog/
+  + update config.guess
+  + fix links in manpages (FreeBSD #264660).
+  + document the built-in key bindings which are not part of widgets.
+  + updated da.po fa.po is.po, added ka.po from
+          http://translationproject.org/latest/dialog/
+  + update config.sub
+  + adjust fallback bindings for backspace/delete to match the curses</comment>
+    <requestid>1093736</requestid>
+  </revision>
 </revisionlist>

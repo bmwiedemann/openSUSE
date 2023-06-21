@@ -2,7 +2,7 @@ Index: util.c
 ===================================================================
 --- util.c.orig
 +++ util.c
-@@ -2421,8 +2421,10 @@ dlg_move_window(WINDOW *win, int height,
+@@ -2406,8 +2406,10 @@ dlg_move_window(WINDOW *win, int height,
  #ifdef HAVE_COLOR
  	    if (p->shadow != 0) {
  		if (dialog_state.use_shadow) {

@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Mon Jun 19 07:11:06 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 1.3-20230209:
+  + install ".pc" files in the test-packages.
+  + add pkg-config ".pc" file, for use with the development library.
+  + change shared-library configuration in test-packages to use the
+    ABI version in the library filename to match its SONAME.
+  + add sample scripts to test-packages, using new makefile rule
+    "install-examples".
+  + corrected cdialog*.install helper scripts in test-package for Debian
+  + change ftp URLs in test-packages to https
+  + updated configure script, e.g., for compiler-warning fixes.
+  + updated fur.po, zh_TW.po from
+          http://translationproject.org/latest/dialog/
+  + modify slackware.rc to match dialog's output from "make check" using
+    this configuration file (FreeBSD #267777).
+  + fix shellcheck warnings in helper-scripts for building/installing.
+  + updated configure script, e.g., for compiler-warning fixes.
+  + updated hu.po from http://translationproject.org/latest/dialog/
+  + update config.guess, config.sub, install-sh
+  + initialize color-settings before --create-rc option is processed.
+  + add "use_scrollbar" setting in rc-file to use in whiptail.rc
+  + improve manual page discussion of "--" token.
+  + updated configure macro for math-library functions.
+  + updated ca.po from http://translationproject.org/latest/dialog/
+  + update config.guess
+  + fix links in manpages (FreeBSD #264660).
+  + document the built-in key bindings which are not part of widgets.
+  + updated da.po fa.po is.po, added ka.po from
+          http://translationproject.org/latest/dialog/
+  + update config.sub
+  + adjust fallback bindings for backspace/delete to match the curses
+    library's sense of backspace (Arch #74379).
+  + amend limit-checks to make --max-input work for sizes greater than
+    2048 (Debian #1004874).
+  + corrected limit-checks in checklist.c, menubox.c, and treeview.c when
+    resizing while the data is scrolled (Debian #1004868).
+  + improve logic for updating form-height after screen-resizing.
+  + move most of the non-API definitions from dialog.h to dlg_internals.h
+  + updated configure macros.
+  + update config.guess, config.sub
+  + updated es.po, tr.po from http://translationproject.org/latest/dialog/
+  + update test-package for Debian to use debhelper.
+  + adjust character-offset in editbox.c in case it is past the end of
+    the string after trimming (Debian #1003185).
+  + updated ro.po from http://translationproject.org/latest/dialog/
+  + fix some inconsistent #if vs #ifdef.
+  + correct off-by-one limit for month when validating parameters of the
+    calendar widget (patch by "viverna", Debian #1000720).
+  + modify dlg_yes_labels to not switch to ok/cancel labels if the
+    extra button is used (report by Стрижак Андрей).
+  + move leak-checking definitions from dialog.h to dlg_internals.h
+  + use mktemp utility rather than tempfile for temporary filename in
+    the sample scripts (patch by Ville Skyttä).
+  + updated id.po, lt.po from http://translationproject.org/latest/dialog/
+  + update config.guess, config.sub
+  + directly include stddef.h for systems which need it for offsetof().
+  + modify gauge's handle_input function to use the file pointer in the
+    object in preference to the global dialog_state.
+  + correct height-computation for fselect and timebox, broken by fixes
+    for auto-layout (Debian #990043, cf: 2019/11/10).
+  + improve configure --with-no-leaks option
+  + amend adjustment to inputbox height so the autosized dimensions match
+    older versions (report by Werner Fink, cf: 2021/01/17).
+  + improve configure checks, to reduce warnings during those checks
+  + updated fr.po from http://translationproject.org/latest/dialog/
+  + update config.guess, config.sub
+- Update keyring with latest key of Thomas E. Dickey
+
+-------------------------------------------------------------------
 Wed Jun 16 11:10:40 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.3-20210530:
