@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 20 16:18:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.13.0:
+  * Support Python 3.12.
+
+-------------------------------------------------------------------
 Thu May  4 23:19:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - drop unmaintained and unused pytest-flake8dir 

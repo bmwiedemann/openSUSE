@@ -113,4 +113,13 @@
     <comment>- drop unmaintained and unused pytest-flake8dir</comment>
     <requestid>1084906</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ea4e6e22d97872e9d926b9d6687a1cf0</srcmd5>
+    <version>3.13.0</version>
+    <time>1687379937</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.13.0:
+  * Support Python 3.12.</comment>
+    <requestid>1094121</requestid>
+  </revision>
 </revisionlist>
