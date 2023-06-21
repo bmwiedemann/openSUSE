@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Jun 20 09:20:04 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- update to version 0.13.3:
+  * https://github.com/pyqtgraph/pyqtgraph/releases/tag/pyqtgraph-0.13.3
+- Changelog of skipped 0.13.2:
+  * https://github.com/pyqtgraph/pyqtgraph/releases/tag/pyqtgraph-0.13.2
+- Re-enable test_rescaleData and add patch to fix it on aarch64:
+  * 2748.patch
+- Update no-sphinx-qt-doc.patch
+
+-------------------------------------------------------------------
+Tue Feb 21 09:24:07 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- update to version 0.13.1:
+  * Bug Fixes
+    + Refactor examples using `Interactor` to run on changing
+      function parameters by @ntjess in
+      https://github.com/pyqtgraph/pyqtgraph/pull/2437
+  * API Change
+    + deprecate GraphicsObject::parentChanged method by @pijyoi
+      in https://github.com/pyqtgraph/pyqtgraph/pull/2420
+  * Other
+    + Move Console to generic template and make font Courier New
+      by @j9ac9k in https://github.com/pyqtgraph/pyqtgraph/pull/2435
+- Changelog of skipped 0.13.0:
+  * https://github.com/pyqtgraph/pyqtgraph/compare/pyqtgraph-0.12.4...pyqtgraph-0.13.0
+- Disable test_rescaleData on aarch64 until fixed upstream
+- Add patch to not build sphinx qt doc as it fails:
+  * no-sphinx-qt-doc.patch
+
+-------------------------------------------------------------------
 Thu Jun 23 06:40:22 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 0.12.4:

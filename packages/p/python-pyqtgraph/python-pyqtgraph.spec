@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyqtgraph
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define skip_python2 1
 %bcond_without  test
 Name:           python-pyqtgraph
-Version:        0.12.4
+Version:        0.13.3
 Release:        0
 Summary:        Scientific Graphics and GUI Library for Python
 License:        MIT
@@ -28,13 +28,20 @@ Group:          Development/Languages/Python
 URL:            https://www.pyqtgraph.org/
 # test data is only in the GitHub archive
 Source:         https://github.com/pyqtgraph/pyqtgraph/archive/refs/tags/pyqtgraph-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE - Borrowed from Fedora - https://src.fedoraproject.org/rpms/python-pyqtgraph/tree/
+# Upstream issue: https://github.com/pyqtgraph/pyqtgraph/issues/2644
+Patch1:         no-sphinx-qt-doc.patch
+# https://github.com/pyqtgraph/pyqtgraph/issues/2645
+Patch2:         2748.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module numpy >= 1.17}
+BuildRequires:  %{python_module pydata-sphinx-theme}
 BuildRequires:  %{python_module qt5 >= 5.12}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210628
 BuildRequires:  python3-Sphinx
+BuildRequires:  python3-sphinx-qt-documentation
 Requires:       python-numpy >= 1.17
 Recommends:     python-colorcet
 Recommends:     python-cupy
@@ -82,6 +89,8 @@ Documentation and help files for %{name}
 
 %prep
 %setup -q -n pyqtgraph-pyqtgraph-%{version}
+%patch1 -p1
+%patch2 -p1
 # Fix rpmlint
 chmod a-x pyqtgraph/examples/Symbols.py
 # only a handful of example scripts have interpreter lines, remove all, they don't have executable bits
