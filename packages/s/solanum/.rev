@@ -24,4 +24,13 @@
   &quot;[-:1] Missing action and name columns&quot; during installation.</comment>
     <requestid>978264</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>f078b93e3dcc00e7db458ce97667f3d4</srcmd5>
+    <version>0~ch560</version>
+    <time>1687379964</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert %sysusers_create_inline into %sysusers_create_package
+  %sysusers_create_inline is deprecated and will go away soon. (forwarded request 1094118 from fbui)</comment>
+    <requestid>1094250</requestid>
+  </revision>
 </revisionlist>

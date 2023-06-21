@@ -1,7 +1,7 @@
 #
 # spec file for package solanum
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          Productivity/Networking/IRC
 URL:            https://github.com/solanum-ircd/solanum
 
 Source:         %name-%version.tar.xz
+Source1:        %name-sysusers.conf
 Source9:        example.conf
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -71,6 +72,8 @@ mv "$b/%_sysconfdir/%name"/*.conf "$b/%_datadir/%name/"
 # Place some config file that will make it run out of the box on localhost
 cp "%{S:9}" "$b/%_sysconfdir/%name/ircd.conf"
 
+install -D %SOURCE1 %{buildroot}%{_sysusersdir}/%name.conf
+
 mkdir -p "$b/%_localstatedir/lib/solanum" \
 	"$b/%_localstatedir/log/solanum" "$b/%_sbindir" \
 	"$b/%_unitdir" "$b/%_sysusersdir" "$b/%_tmpfilesdir"
@@ -84,9 +87,6 @@ cat >"$b/%_unitdir/solanum.service" <<-EOF
 	[Install]
 	WantedBy=multi-user.target
 EOF
-cat >"$b/%_sysusersdir/solanum.conf" <<-EOF
-	u solanum - "Solanum ircd"
-EOF
 cat >"$b/%_tmpfilesdir/solanum.conf" <<-EOF
 	d /run/%name 0755 solanum solanum -
 EOF
@@ -94,12 +94,11 @@ EOF
 rm -Rf "$b/%_libdir/pkgconfig" "$b/%_libdir/libratbox.so"
 
 %pre
-%{sysusers_create_inline u solanum - "Solanum ircd"}
+%sysusers_create_package %name %SOURCE1
 %service_add_pre %name.service
 
 %post
 %service_add_post %name.service
-%sysusers_create %name.conf
 %tmpfiles_create %name.conf
 
 %preun

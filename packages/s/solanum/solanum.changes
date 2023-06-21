@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 20 15:40:08 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Convert %sysusers_create_inline into %sysusers_create_package
+
+  %sysusers_create_inline is deprecated and will go away soon.
+
+-------------------------------------------------------------------
 Fri May 20 11:02:47 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Resolve broken scriptlet, which warned
