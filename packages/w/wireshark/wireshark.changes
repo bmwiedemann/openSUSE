@@ -11,6 +11,7 @@ Thu May 25 07:44:12 UTC 2023 - Robert Frohl <rfrohl@suse.com>
   * CVE-2023-0668: IEEE C37.118 Synchrophasor dissector crash (boo#1211710).
   * CVE-2023-2879: GDSDB dissector infinite loop (boo#1211793).
   * CVE-2023-2952: XRA dissector infinite loop (boo#1211844).
+  * CVE-2023-0667: MS-MMS: failure to validate packet length (bsc#1212084).
 - Further features, bug fixes and updated protocol support as listed in:
   https://www.wireshark.org/docs/relnotes/wireshark-4.0.6.html
 
