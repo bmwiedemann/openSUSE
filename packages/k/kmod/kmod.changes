@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 26 10:22:03 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+
+- On usrmerged system move kernel modules into /usr as well (boo#1211796)
+  * usr-lib-modules.patch
+  * testsuite-Move-setup-rootfs-logic-from-Makefile-to-s.patch
+- Refresh usr-lib-modprobe.patch
+- Refresh no-stylesheet-download.patch
+
+-------------------------------------------------------------------
 Thu May  4 11:17:59 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add _multibuild to define 2nd spec file as additional flavor.

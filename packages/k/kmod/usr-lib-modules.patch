@@ -1,0 +1,521 @@
+From 220ef8e24e731da2d435ae85ad3003d1f215ef2f Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Fri, 26 May 2023 10:38:05 +0200
+Subject: [PATCH] libkmod: Search for kernel modules under $prefix
+
+modprobe.d is now searched under /usr/lib, search kernel modules there as
+well.
+
+With this it shoud be possible to build a kernel without a compatibility
+symlink.
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ Makefile.am                          |   2 +-
+ libkmod/libkmod.c                    |   4 +-
+ man/depmod.d.xml                     |   6 +-
+ man/depmod.xml                       |   4 +-
+ man/modinfo.xml                      |   2 +-
+ man/modprobe.xml                     |   2 +-
+ man/modules.dep.xml                  |   6 +-
+ testsuite/module-playground/Makefile |   2 +-
+ testsuite/setup-rootfs.sh            | 103 +++++++++++++++------------
+ testsuite/test-depmod.c              |  22 +++---
+ testsuite/test-testsuite.c           |   8 +--
+ tools/depmod.c                       |   4 +-
+ tools/modinfo.c                      |   4 +-
+ tools/modprobe.c                     |   4 +-
+ tools/static-nodes.c                 |   6 +-
+ 15 files changed, 96 insertions(+), 83 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 32f4b80e9870..aff931f33348 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -245,7 +245,7 @@ EXTRA_DIST += testsuite/setup-rootfs.sh
+ MODULE_PLAYGROUND = testsuite/module-playground
+ ROOTFS = testsuite/rootfs
+ ROOTFS_PRISTINE = $(top_srcdir)/testsuite/rootfs-pristine
+-CREATE_ROOTFS = $(AM_V_GEN) $(top_srcdir)/testsuite/setup-rootfs.sh $(ROOTFS_PRISTINE) $(ROOTFS) $(MODULE_PLAYGROUND) $(top_builddir)/config.h
++CREATE_ROOTFS = $(AM_V_GEN) PREFIX=$(prefix) $(top_srcdir)/testsuite/setup-rootfs.sh $(ROOTFS_PRISTINE) $(ROOTFS) $(MODULE_PLAYGROUND) $(top_builddir)/config.h
+ 
+ build-module-playground:
+ 	$(AM_V_GEN)if test "$(top_srcdir)" != "$(top_builddir)"; then \
+diff --git a/libkmod/libkmod.c b/libkmod/libkmod.c
+index 75fc8be3fadc..af061a408409 100644
+--- a/libkmod/libkmod.c
++++ b/libkmod/libkmod.c
+@@ -209,7 +209,7 @@ static int log_priority(const char *priority)
+ 	return 0;
+ }
+ 
+-static const char *dirname_default_prefix = "/lib/modules";
++static const char *dirname_default_prefix = PREFIX "/lib/modules";
+ 
+ static char *get_kernel_release(const char *dirname)
+ {
+@@ -231,7 +231,7 @@ static char *get_kernel_release(const char *dirname)
+ /**
+  * kmod_new:
+  * @dirname: what to consider as linux module's directory, if NULL
+- *           defaults to /lib/modules/`uname -r`. If it's relative,
++ *           defaults to PREFIX/lib/modules/`uname -r`. If it's relative,
+  *           it's treated as relative to the current working directory.
+  *           Otherwise, give an absolute dirname.
+  * @config_paths: ordered array of paths (directories or files) where
+diff --git a/man/depmod.d.xml b/man/depmod.d.xml
+index 431ebca6654b..81305737ae39 100644
+--- a/man/depmod.d.xml
++++ b/man/depmod.d.xml
+@@ -70,7 +70,7 @@
+         </term>
+         <listitem>
+           <para>
+-            This allows you to specify the order in which /lib/modules
++            This allows you to specify the order in which @PREFIX@/lib/modules
+             (or other configured module location) subdirectories will
+             be processed by <command>depmod</command>. Directories are
+             listed in order, with the highest priority given to the
+@@ -101,7 +101,7 @@
+             <command>depmod</command> command. It is possible to
+             specify one kernel or all kernels using the * wildcard.
+             <replaceable>modulesubdirectory</replaceable> is the
+-            name of the subdirectory under /lib/modules (or other
++            name of the subdirectory under @PREFIX@/lib/modules (or other
+             module location) where the target module is installed.
+           </para>
+           <para>
+@@ -110,7 +110,7 @@
+             specifying the following command: "override kmod * extra".
+             This will ensure that any matching module name installed
+             under the <command>extra</command> subdirectory within
+-            /lib/modules (or other module location) will take priority
++            @PREFIX@/lib/modules (or other module location) will take priority
+             over any likenamed module already provided by the kernel.
+           </para>
+         </listitem>
+diff --git a/man/depmod.xml b/man/depmod.xml
+index ea0be27280b2..df5cd47ed870 100644
+--- a/man/depmod.xml
++++ b/man/depmod.xml
+@@ -79,7 +79,7 @@
+     </para>
+     <para> <command>depmod</command> creates a list of module dependencies by
+       reading each module under
+-      <filename>/lib/modules/</filename><replaceable>version</replaceable> and
++      <filename>@PREFIX@/lib/modules/</filename><replaceable>version</replaceable> and
+       determining what symbols it exports and what symbols it needs.  By
+       default, this list is written to <filename>modules.dep</filename>, and a
+       binary hashed version named <filename>modules.dep.bin</filename>, in the
+@@ -140,7 +140,7 @@
+         <listitem>
+           <para>
+             If your modules are not currently in the (normal) directory
+-            <filename>/lib/modules/</filename><replaceable>version</replaceable>,
++            <filename>@PREFIX@/lib/modules/</filename><replaceable>version</replaceable>,
+             but in a staging area, you can specify a
+             <replaceable>basedir</replaceable> which is prepended to the
+             directory name.  This <replaceable>basedir</replaceable> is
+diff --git a/man/modinfo.xml b/man/modinfo.xml
+index 9fe0324a2527..9bc58e4930e0 100644
+--- a/man/modinfo.xml
++++ b/man/modinfo.xml
+@@ -54,7 +54,7 @@
+       <command>modinfo</command> extracts information from the Linux Kernel
+       modules given on the command line.  If the module name is not a filename,
+       then the
+-      <filename>/lib/modules/</filename><replaceable>version</replaceable>
++      <filename>@PREFIX@/lib/modules/</filename><replaceable>version</replaceable>
+       directory is searched, as is also done by
+       <citerefentry><refentrytitle>modprobe</refentrytitle><manvolnum>8</manvolnum></citerefentry>
+       when loading kernel modules.
+diff --git a/man/modprobe.xml b/man/modprobe.xml
+index db39c7a18bb7..9074ead11f3e 100644
+--- a/man/modprobe.xml
++++ b/man/modprobe.xml
+@@ -78,7 +78,7 @@
+       is no difference between _ and - in module names (automatic
+       underscore conversion is performed).
+       <command>modprobe</command> looks in the module directory
+-      <filename>/lib/modules/`uname -r`</filename> for all
++      <filename>@PREFIX@/lib/modules/`uname -r`</filename> for all
+       the modules and other files, except for the optional
+       configuration files in the
+       <filename>/etc/modprobe.d</filename> directory
+diff --git a/man/modules.dep.xml b/man/modules.dep.xml
+index ed633694ec9e..c51de2774df8 100644
+--- a/man/modules.dep.xml
++++ b/man/modules.dep.xml
+@@ -34,8 +34,8 @@
+   </refnamediv>
+ 
+   <refsynopsisdiv>
+-    <para><filename>/lib/modules/modules.dep</filename></para>
+-    <para><filename>/lib/modules/modules.dep.bin</filename></para>
++    <para><filename>@PREFIX@/lib/modules/modules.dep</filename></para>
++    <para><filename>@PREFIX@/lib/modules/modules.dep.bin</filename></para>
+   </refsynopsisdiv>
+ 
+   <refsect1><title>DESCRIPTION</title>
+@@ -43,7 +43,7 @@
+       <filename>modules.dep.bin</filename> is a binary file generated by
+       <command>depmod</command> listing the dependencies for
+       every module in the directories under
+-      <filename>/lib/modules/</filename><replaceable>version</replaceable>.
++      <filename>@PREFIX@/lib/modules/</filename><replaceable>version</replaceable>.
+       It is used by kmod tools such as <command>modprobe</command> and
+       libkmod.
+     </para>
+diff --git a/testsuite/module-playground/Makefile b/testsuite/module-playground/Makefile
+index e6045b0dd932..804611afc600 100644
+--- a/testsuite/module-playground/Makefile
++++ b/testsuite/module-playground/Makefile
+@@ -47,7 +47,7 @@ endif
+ 
+ else
+ # normal makefile
+-KDIR ?= /lib/modules/`uname -r`/build
++KDIR ?= $(prefix)/lib/modules/`uname -r`/build
+ KVER ?= `uname -r`
+ ifeq ($(FAKE_BUILD),)
+     FAKE_BUILD=0
+diff --git a/testsuite/setup-rootfs.sh b/testsuite/setup-rootfs.sh
+index d9cc627f7224..a3460d4ec3b4 100755
+--- a/testsuite/setup-rootfs.sh
++++ b/testsuite/setup-rootfs.sh
+@@ -15,6 +15,19 @@ create_rootfs() {
+ 	cp -r "$ROOTFS_PRISTINE" "$ROOTFS"
+ 	find "$ROOTFS" -type d -exec chmod +w {} \;
+ 	find "$ROOTFS" -type f -name .gitignore -exec rm -f {} \;
++	if [ -n "$PREFIX" ] ; then
++		sed -i -e "s|/lib/modules|$PREFIX/lib/modules|g" $(find "$ROOTFS" -name \*.txt -o -name \*.conf -o -name \*.dep)
++		sed -i -e "s|$PREFIX/lib/modules/external|/lib/modules/external|g" $(find "$ROOTFS" -name \*.txt -o -name \*.conf -o -name \*.dep)
++		for i in "$ROOTFS"/*/lib/modules/* "$ROOTFS"/*/*/lib/modules/* ; do
++			version=$(basename $i)
++			[ $version != 'external' ] || continue
++			i=$(dirname $i)
++			lib="$(dirname $i)"
++			up="$(dirname $lib)$PREFIX"
++			mkdir -p "$up"
++			mv "$lib" "$up"
++		done
++	fi
+ }
+ 
+ feature_enabled() {
+@@ -24,52 +37,52 @@ feature_enabled() {
+ 
+ declare -A map
+ map=(
+-    ["test-depmod/search-order-simple/lib/modules/4.4.4/kernel/crypto/"]="mod-simple.ko"
+-    ["test-depmod/search-order-simple/lib/modules/4.4.4/updates/"]="mod-simple.ko"
+-    ["test-depmod/search-order-same-prefix/lib/modules/4.4.4/foo/"]="mod-simple.ko"
+-    ["test-depmod/search-order-same-prefix/lib/modules/4.4.4/foobar/"]="mod-simple.ko"
+-    ["test-depmod/detect-loop/lib/modules/4.4.4/kernel/mod-loop-a.ko"]="mod-loop-a.ko"
+-    ["test-depmod/detect-loop/lib/modules/4.4.4/kernel/mod-loop-b.ko"]="mod-loop-b.ko"
+-    ["test-depmod/detect-loop/lib/modules/4.4.4/kernel/mod-loop-c.ko"]="mod-loop-c.ko"
+-    ["test-depmod/detect-loop/lib/modules/4.4.4/kernel/mod-loop-d.ko"]="mod-loop-d.ko"
+-    ["test-depmod/detect-loop/lib/modules/4.4.4/kernel/mod-loop-e.ko"]="mod-loop-e.ko"
+-    ["test-depmod/detect-loop/lib/modules/4.4.4/kernel/mod-loop-f.ko"]="mod-loop-f.ko"
+-    ["test-depmod/detect-loop/lib/modules/4.4.4/kernel/mod-loop-g.ko"]="mod-loop-g.ko"
+-    ["test-depmod/detect-loop/lib/modules/4.4.4/kernel/mod-loop-h.ko"]="mod-loop-h.ko"
+-    ["test-depmod/detect-loop/lib/modules/4.4.4/kernel/mod-loop-i.ko"]="mod-loop-i.ko"
+-    ["test-depmod/detect-loop/lib/modules/4.4.4/kernel/mod-loop-j.ko"]="mod-loop-j.ko"
+-    ["test-depmod/detect-loop/lib/modules/4.4.4/kernel/mod-loop-k.ko"]="mod-loop-k.ko"
+-    ["test-depmod/search-order-external-first/lib/modules/4.4.4/foo/"]="mod-simple.ko"
+-    ["test-depmod/search-order-external-first/lib/modules/4.4.4/foobar/"]="mod-simple.ko"
++    ["test-depmod/search-order-simple$PREFIX/lib/modules/4.4.4/kernel/crypto/"]="mod-simple.ko"
++    ["test-depmod/search-order-simple$PREFIX/lib/modules/4.4.4/updates/"]="mod-simple.ko"
++    ["test-depmod/search-order-same-prefix$PREFIX/lib/modules/4.4.4/foo/"]="mod-simple.ko"
++    ["test-depmod/search-order-same-prefix$PREFIX/lib/modules/4.4.4/foobar/"]="mod-simple.ko"
++    ["test-depmod/detect-loop$PREFIX/lib/modules/4.4.4/kernel/mod-loop-a.ko"]="mod-loop-a.ko"
++    ["test-depmod/detect-loop$PREFIX/lib/modules/4.4.4/kernel/mod-loop-b.ko"]="mod-loop-b.ko"
++    ["test-depmod/detect-loop$PREFIX/lib/modules/4.4.4/kernel/mod-loop-c.ko"]="mod-loop-c.ko"
++    ["test-depmod/detect-loop$PREFIX/lib/modules/4.4.4/kernel/mod-loop-d.ko"]="mod-loop-d.ko"
++    ["test-depmod/detect-loop$PREFIX/lib/modules/4.4.4/kernel/mod-loop-e.ko"]="mod-loop-e.ko"
++    ["test-depmod/detect-loop$PREFIX/lib/modules/4.4.4/kernel/mod-loop-f.ko"]="mod-loop-f.ko"
++    ["test-depmod/detect-loop$PREFIX/lib/modules/4.4.4/kernel/mod-loop-g.ko"]="mod-loop-g.ko"
++    ["test-depmod/detect-loop$PREFIX/lib/modules/4.4.4/kernel/mod-loop-h.ko"]="mod-loop-h.ko"
++    ["test-depmod/detect-loop$PREFIX/lib/modules/4.4.4/kernel/mod-loop-i.ko"]="mod-loop-i.ko"
++    ["test-depmod/detect-loop$PREFIX/lib/modules/4.4.4/kernel/mod-loop-j.ko"]="mod-loop-j.ko"
++    ["test-depmod/detect-loop$PREFIX/lib/modules/4.4.4/kernel/mod-loop-k.ko"]="mod-loop-k.ko"
++    ["test-depmod/search-order-external-first$PREFIX/lib/modules/4.4.4/foo/"]="mod-simple.ko"
++    ["test-depmod/search-order-external-first$PREFIX/lib/modules/4.4.4/foobar/"]="mod-simple.ko"
+     ["test-depmod/search-order-external-first/lib/modules/external/"]="mod-simple.ko"
+-    ["test-depmod/search-order-external-last/lib/modules/4.4.4/foo/"]="mod-simple.ko"
+-    ["test-depmod/search-order-external-last/lib/modules/4.4.4/foobar/"]="mod-simple.ko"
++    ["test-depmod/search-order-external-last$PREFIX/lib/modules/4.4.4/foo/"]="mod-simple.ko"
++    ["test-depmod/search-order-external-last$PREFIX/lib/modules/4.4.4/foobar/"]="mod-simple.ko"
+     ["test-depmod/search-order-external-last/lib/modules/external/"]="mod-simple.ko"
+-    ["test-depmod/search-order-override/lib/modules/4.4.4/foo/"]="mod-simple.ko"
+-    ["test-depmod/search-order-override/lib/modules/4.4.4/override/"]="mod-simple.ko"
+-    ["test-dependencies/lib/modules/4.0.20-kmod/kernel/fs/foo/"]="mod-foo-b.ko"
+-    ["test-dependencies/lib/modules/4.0.20-kmod/kernel/"]="mod-foo-c.ko"
+-    ["test-dependencies/lib/modules/4.0.20-kmod/kernel/lib/"]="mod-foo-a.ko"
+-    ["test-dependencies/lib/modules/4.0.20-kmod/kernel/fs/"]="mod-foo.ko"
++    ["test-depmod/search-order-override$PREFIX/lib/modules/4.4.4/foo/"]="mod-simple.ko"
++    ["test-depmod/search-order-override$PREFIX/lib/modules/4.4.4/override/"]="mod-simple.ko"
++    ["test-dependencies$PREFIX/lib/modules/4.0.20-kmod/kernel/fs/foo/"]="mod-foo-b.ko"
++    ["test-dependencies$PREFIX/lib/modules/4.0.20-kmod/kernel/"]="mod-foo-c.ko"
++    ["test-dependencies$PREFIX/lib/modules/4.0.20-kmod/kernel/lib/"]="mod-foo-a.ko"
++    ["test-dependencies$PREFIX/lib/modules/4.0.20-kmod/kernel/fs/"]="mod-foo.ko"
+     ["test-init/"]="mod-simple.ko"
+     ["test-remove/"]="mod-simple.ko"
+-    ["test-modprobe/show-depends/lib/modules/4.4.4/kernel/mod-loop-a.ko"]="mod-loop-a.ko"
+-    ["test-modprobe/show-depends/lib/modules/4.4.4/kernel/mod-loop-b.ko"]="mod-loop-b.ko"
+-    ["test-modprobe/show-depends/lib/modules/4.4.4/kernel/mod-simple.ko"]="mod-simple.ko"
++    ["test-modprobe/show-depends$PREFIX/lib/modules/4.4.4/kernel/mod-loop-a.ko"]="mod-loop-a.ko"
++    ["test-modprobe/show-depends$PREFIX/lib/modules/4.4.4/kernel/mod-loop-b.ko"]="mod-loop-b.ko"
++    ["test-modprobe/show-depends$PREFIX/lib/modules/4.4.4/kernel/mod-simple.ko"]="mod-simple.ko"
+     ["test-modprobe/show-exports/mod-loop-a.ko"]="mod-loop-a.ko"
+-    ["test-modprobe/softdep-loop/lib/modules/4.4.4/kernel/mod-loop-a.ko"]="mod-loop-a.ko"
+-    ["test-modprobe/softdep-loop/lib/modules/4.4.4/kernel/mod-loop-b.ko"]="mod-loop-b.ko"
+-    ["test-modprobe/install-cmd-loop/lib/modules/4.4.4/kernel/mod-loop-a.ko"]="mod-loop-a.ko"
+-    ["test-modprobe/install-cmd-loop/lib/modules/4.4.4/kernel/mod-loop-b.ko"]="mod-loop-b.ko"
+-    ["test-modprobe/force/lib/modules/4.4.4/kernel/"]="mod-simple.ko"
+-    ["test-modprobe/oldkernel/lib/modules/3.3.3/kernel/"]="mod-simple.ko"
+-    ["test-modprobe/oldkernel-force/lib/modules/3.3.3/kernel/"]="mod-simple.ko"
+-    ["test-modprobe/alias-to-none/lib/modules/4.4.4/kernel/"]="mod-simple.ko"
+-    ["test-modprobe/module-param-kcmdline/lib/modules/4.4.4/kernel/"]="mod-simple.ko"
++    ["test-modprobe/softdep-loop$PREFIX/lib/modules/4.4.4/kernel/mod-loop-a.ko"]="mod-loop-a.ko"
++    ["test-modprobe/softdep-loop$PREFIX/lib/modules/4.4.4/kernel/mod-loop-b.ko"]="mod-loop-b.ko"
++    ["test-modprobe/install-cmd-loop$PREFIX/lib/modules/4.4.4/kernel/mod-loop-a.ko"]="mod-loop-a.ko"
++    ["test-modprobe/install-cmd-loop$PREFIX/lib/modules/4.4.4/kernel/mod-loop-b.ko"]="mod-loop-b.ko"
++    ["test-modprobe/force$PREFIX/lib/modules/4.4.4/kernel/"]="mod-simple.ko"
++    ["test-modprobe/oldkernel$PREFIX/lib/modules/3.3.3/kernel/"]="mod-simple.ko"
++    ["test-modprobe/oldkernel-force$PREFIX/lib/modules/3.3.3/kernel/"]="mod-simple.ko"
++    ["test-modprobe/alias-to-none$PREFIX/lib/modules/4.4.4/kernel/"]="mod-simple.ko"
++    ["test-modprobe/module-param-kcmdline$PREFIX/lib/modules/4.4.4/kernel/"]="mod-simple.ko"
+     ["test-modprobe/external/lib/modules/external/"]="mod-simple.ko"
+-    ["test-depmod/modules-order-compressed/lib/modules/4.4.4/kernel/drivers/block/cciss.ko"]="mod-fake-cciss.ko"
+-    ["test-depmod/modules-order-compressed/lib/modules/4.4.4/kernel/drivers/scsi/hpsa.ko"]="mod-fake-hpsa.ko"
+-    ["test-depmod/modules-order-compressed/lib/modules/4.4.4/kernel/drivers/scsi/scsi_mod.ko"]="mod-fake-scsi-mod.ko"
++    ["test-depmod/modules-order-compressed$PREFIX/lib/modules/4.4.4/kernel/drivers/block/cciss.ko"]="mod-fake-cciss.ko"
++    ["test-depmod/modules-order-compressed$PREFIX/lib/modules/4.4.4/kernel/drivers/scsi/hpsa.ko"]="mod-fake-hpsa.ko"
++    ["test-depmod/modules-order-compressed$PREFIX/lib/modules/4.4.4/kernel/drivers/scsi/scsi_mod.ko"]="mod-fake-scsi-mod.ko"
+     ["test-modinfo/mod-simple-i386.ko"]="mod-simple-i386.ko"
+     ["test-modinfo/mod-simple-x86_64.ko"]="mod-simple-x86_64.ko"
+     ["test-modinfo/mod-simple-sparc64.ko"]="mod-simple-sparc64.ko"
+@@ -77,20 +90,20 @@ map=(
+     ["test-modinfo/mod-simple-sha256.ko"]="mod-simple.ko"
+     ["test-modinfo/mod-simple-pkcs7.ko"]="mod-simple.ko"
+     ["test-modinfo/external/lib/modules/external/mod-simple.ko"]="mod-simple.ko"
+-    ["test-tools/insert/lib/modules/4.4.4/kernel/"]="mod-simple.ko"
+-    ["test-tools/remove/lib/modules/4.4.4/kernel/"]="mod-simple.ko"
++    ["test-tools/insert$PREFIX/lib/modules/4.4.4/kernel/"]="mod-simple.ko"
++    ["test-tools/remove$PREFIX/lib/modules/4.4.4/kernel/"]="mod-simple.ko"
+ )
+ 
+ gzip_array=(
+-    "test-depmod/modules-order-compressed/lib/modules/4.4.4/kernel/drivers/block/cciss.ko"
++    "test-depmod/modules-order-compressed$PREFIX/lib/modules/4.4.4/kernel/drivers/block/cciss.ko"
+     )
+ 
+ xz_array=(
+-    "test-depmod/modules-order-compressed/lib/modules/4.4.4/kernel/drivers/scsi/scsi_mod.ko"
++    "test-depmod/modules-order-compressed$PREFIX/lib/modules/4.4.4/kernel/drivers/scsi/scsi_mod.ko"
+     )
+ 
+ zstd_array=(
+-    "test-depmod/modules-order-compressed/lib/modules/4.4.4/kernel/drivers/scsi/hpsa.ko"
++    "test-depmod/modules-order-compressed$PREFIX/lib/modules/4.4.4/kernel/drivers/scsi/hpsa.ko"
+     )
+ 
+ attach_sha256_array=(
+diff --git a/testsuite/test-depmod.c b/testsuite/test-depmod.c
+index d7802d7b2e0b..d82ffdf90e7e 100644
+--- a/testsuite/test-depmod.c
++++ b/testsuite/test-depmod.c
+@@ -27,7 +27,7 @@
+ 
+ #define MODULES_ORDER_UNAME "4.4.4"
+ #define MODULES_ORDER_ROOTFS TESTSUITE_ROOTFS "test-depmod/modules-order-compressed"
+-#define MODULES_ORDER_LIB_MODULES MODULES_ORDER_ROOTFS "/lib/modules/" MODULES_ORDER_UNAME
++#define MODULES_ORDER_LIB_MODULES MODULES_ORDER_ROOTFS PREFIX "/lib/modules/" MODULES_ORDER_UNAME
+ static noreturn int depmod_modules_order_for_compressed(const struct test *t)
+ {
+ 	const char *progname = ABS_TOP_BUILDDIR "/tools/depmod";
+@@ -77,8 +77,8 @@ DEFINE_TEST(depmod_search_order_simple,
+ 	},
+ 	.output = {
+ 		.files = (const struct keyval[]) {
+-			{ SEARCH_ORDER_SIMPLE_ROOTFS "/lib/modules/4.4.4/correct-modules.dep",
+-			  SEARCH_ORDER_SIMPLE_ROOTFS "/lib/modules/4.4.4/modules.dep" },
++			{ SEARCH_ORDER_SIMPLE_ROOTFS PREFIX "/lib/modules/4.4.4/correct-modules.dep",
++			  SEARCH_ORDER_SIMPLE_ROOTFS PREFIX "/lib/modules/4.4.4/modules.dep" },
+ 			{ }
+ 		},
+ 	});
+@@ -103,8 +103,8 @@ DEFINE_TEST(depmod_search_order_same_prefix,
+ 	},
+ 	.output = {
+ 		.files = (const struct keyval[]) {
+-			{ SEARCH_ORDER_SAME_PREFIX_ROOTFS "/lib/modules/4.4.4/correct-modules.dep",
+-			  SEARCH_ORDER_SAME_PREFIX_ROOTFS "/lib/modules/4.4.4/modules.dep" },
++			{ SEARCH_ORDER_SAME_PREFIX_ROOTFS PREFIX "/lib/modules/4.4.4/correct-modules.dep",
++			  SEARCH_ORDER_SAME_PREFIX_ROOTFS PREFIX "/lib/modules/4.4.4/modules.dep" },
+ 			{ }
+ 		},
+ 	});
+@@ -158,8 +158,8 @@ DEFINE_TEST(depmod_search_order_external_first,
+ 	},
+ 	.output = {
+ 		.files = (const struct keyval[]) {
+-			{ SEARCH_ORDER_EXTERNAL_FIRST_ROOTFS "/lib/modules/4.4.4/correct-modules.dep",
+-			  SEARCH_ORDER_EXTERNAL_FIRST_ROOTFS "/lib/modules/4.4.4/modules.dep" },
++			{ SEARCH_ORDER_EXTERNAL_FIRST_ROOTFS PREFIX "/lib/modules/4.4.4/correct-modules.dep",
++			  SEARCH_ORDER_EXTERNAL_FIRST_ROOTFS PREFIX "/lib/modules/4.4.4/modules.dep" },
+ 			{ }
+ 		},
+ 	});
+@@ -184,8 +184,8 @@ DEFINE_TEST(depmod_search_order_external_last,
+ 	},
+ 	.output = {
+ 		.files = (const struct keyval[]) {
+-			{ SEARCH_ORDER_EXTERNAL_LAST_ROOTFS "/lib/modules/4.4.4/correct-modules.dep",
+-			  SEARCH_ORDER_EXTERNAL_LAST_ROOTFS "/lib/modules/4.4.4/modules.dep" },
++			{ SEARCH_ORDER_EXTERNAL_LAST_ROOTFS PREFIX "/lib/modules/4.4.4/correct-modules.dep",
++			  SEARCH_ORDER_EXTERNAL_LAST_ROOTFS PREFIX "/lib/modules/4.4.4/modules.dep" },
+ 			{ }
+ 		},
+ 	});
+@@ -213,8 +213,8 @@ DEFINE_TEST(depmod_search_order_override,
+ 	},
+ 	.output = {
+ 		.files = (const struct keyval[]) {
+-			{ SEARCH_ORDER_OVERRIDE_ROOTFS "/lib/modules/4.4.4/correct-modules.dep",
+-			  SEARCH_ORDER_OVERRIDE_ROOTFS "/lib/modules/4.4.4/modules.dep" },
++			{ SEARCH_ORDER_OVERRIDE_ROOTFS PREFIX "/lib/modules/4.4.4/correct-modules.dep",
++			  SEARCH_ORDER_OVERRIDE_ROOTFS PREFIX "/lib/modules/4.4.4/modules.dep" },
+ 			{ }
+ 		},
+ 	});
+diff --git a/testsuite/test-testsuite.c b/testsuite/test-testsuite.c
+index 56e73609f204..26395b5f71ae 100644
+--- a/testsuite/test-testsuite.c
++++ b/testsuite/test-testsuite.c
+@@ -64,7 +64,7 @@ static int testsuite_rootfs_fopen(const struct test *t)
+ 	char s[100];
+ 	int n;
+ 
+-	fp = fopen("/lib/modules/a", "r");
++	fp = fopen(PREFIX "/lib/modules/a", "r");
+ 	if (fp == NULL)
+ 		return EXIT_FAILURE;;
+ 
+@@ -89,7 +89,7 @@ static int testsuite_rootfs_open(const struct test *t)
+ 	char buf[100];
+ 	int fd, done;
+ 
+-	fd = open("/lib/modules/a", O_RDONLY);
++	fd = open(PREFIX "/lib/modules/a", O_RDONLY);
+ 	if (fd < 0)
+ 		return EXIT_FAILURE;
+ 
+@@ -121,12 +121,12 @@ static int testsuite_rootfs_stat_access(const struct test *t)
+ {
+ 	struct stat st;
+ 
+-	if (access("/lib/modules/a", F_OK) < 0) {
++	if (access(PREFIX "/lib/modules/a", F_OK) < 0) {
+ 		ERR("access failed: %m\n");
+ 		return EXIT_FAILURE;
+ 	}
+ 
+-	if (stat("/lib/modules/a", &st) < 0) {
++	if (stat(PREFIX "/lib/modules/a", &st) < 0) {
+ 		ERR("stat failed: %m\n");
+ 		return EXIT_FAILURE;
+ 	}
+diff --git a/tools/depmod.c b/tools/depmod.c
+index a9349b20ee9c..746e2bde6db7 100644
+--- a/tools/depmod.c
++++ b/tools/depmod.c
+@@ -907,7 +907,7 @@ struct vertex;
+ struct mod {
+ 	struct kmod_module *kmod;
+ 	char *path;
+-	const char *relpath; /* path relative to '$ROOT/lib/modules/$VER/' */
++	const char *relpath; /* path relative to '$ROOT$PREFIX/lib/modules/$VER/' */
+ 	char *uncrelpath; /* same as relpath but ending in .ko */
+ 	struct kmod_list *info_list;
+ 	struct kmod_list *dep_sym_list;
+@@ -3009,7 +3009,7 @@ static int do_depmod(int argc, char *argv[])
+ 	}
+ 
+ 	cfg.dirnamelen = snprintf(cfg.dirname, PATH_MAX,
+-				  "%s/lib/modules/%s",
++				  "%s" PREFIX "/lib/modules/%s",
+ 				  root == NULL ? "" : root, cfg.kversion);
+ 
+ 	if (optind == argc)
+diff --git a/tools/modinfo.c b/tools/modinfo.c
+index d0aab200af4e..0c999b49ca5e 100644
+--- a/tools/modinfo.c
++++ b/tools/modinfo.c
+@@ -367,7 +367,7 @@ static void help(void)
+ 		"\t-m, --modname               Handle argument as module name instead of alias or filename\n"
+ 		"\t-F, --field=FIELD           Print only provided FIELD\n"
+ 		"\t-k, --set-version=VERSION   Use VERSION instead of `uname -r`\n"
+-		"\t-b, --basedir=DIR           Use DIR as filesystem root for /lib/modules\n"
++		"\t-b, --basedir=DIR           Use DIR as filesystem root for " PREFIX "/lib/modules\n"
+ 		"\t-V, --version               Show version\n"
+ 		"\t-h, --help                  Show this help\n",
+ 		program_invocation_short_name);
+@@ -462,7 +462,7 @@ static int do_modinfo(int argc, char *argv[])
+ 			}
+ 			kversion = u.release;
+ 		}
+-		snprintf(dirname_buf, sizeof(dirname_buf), "%s/lib/modules/%s",
++		snprintf(dirname_buf, sizeof(dirname_buf), "%s" PREFIX "/lib/modules/%s",
+ 			 root, kversion);
+ 		dirname = dirname_buf;
+ 	}
+diff --git a/tools/modprobe.c b/tools/modprobe.c
+index 2a2ae21f5370..72fb44c71097 100644
+--- a/tools/modprobe.c
++++ b/tools/modprobe.c
+@@ -142,7 +142,7 @@ static void help(void)
+ 		"\t-n, --show                  Same as --dry-run\n"
+ 
+ 		"\t-C, --config=FILE           Use FILE instead of default search paths\n"
+-		"\t-d, --dirname=DIR           Use DIR as filesystem root for /lib/modules\n"
++		"\t-d, --dirname=DIR           Use DIR as filesystem root for " PREFIX "/lib/modules\n"
+ 		"\t-S, --set-version=VERSION   Use VERSION instead of `uname -r`\n"
+ 
+ 		"\t-s, --syslog                print to syslog, not stderr\n"
+@@ -970,7 +970,7 @@ static int do_modprobe(int argc, char **orig_argv)
+ 			kversion = u.release;
+ 		}
+ 		snprintf(dirname_buf, sizeof(dirname_buf),
+-				"%s/lib/modules/%s", root,
++				"%s" PREFIX "/lib/modules/%s", root,
+ 				kversion);
+ 		dirname = dirname_buf;
+ 	}
+diff --git a/tools/static-nodes.c b/tools/static-nodes.c
+index 8d2356da73f3..b74ad35fedd7 100644
+--- a/tools/static-nodes.c
++++ b/tools/static-nodes.c
+@@ -212,15 +212,15 @@ static int do_static_nodes(int argc, char *argv[])
+ 		goto finish;
+ 	}
+ 
+-	snprintf(modules, sizeof(modules), "/lib/modules/%s/modules.devname", kernel.release);
++	snprintf(modules, sizeof(modules), PREFIX "/lib/modules/%s/modules.devname", kernel.release);
+ 	in = fopen(modules, "re");
+ 	if (in == NULL) {
+ 		if (errno == ENOENT) {
+-			fprintf(stderr, "Warning: /lib/modules/%s/modules.devname not found - ignoring\n",
++			fprintf(stderr, "Warning: " PREFIX "/lib/modules/%s/modules.devname not found - ignoring\n",
+ 				kernel.release);
+ 			ret = EXIT_SUCCESS;
+ 		} else {
+-			fprintf(stderr, "Error: could not open /lib/modules/%s/modules.devname - %m\n",
++			fprintf(stderr, "Error: could not open " PREFIX "/lib/modules/%s/modules.devname - %m\n",
+ 				kernel.release);
+ 			ret = EXIT_FAILURE;
+ 		}
+-- 
+2.40.0
+

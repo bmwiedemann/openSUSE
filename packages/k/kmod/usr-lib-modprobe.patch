@@ -1,7 +1,7 @@
-From fc1b2c14e2ca4d7ccd4a3b75a435ab7d927533bc Mon Sep 17 00:00:00 2001
+From 99208681c29cec2097cb9c7a4b109d9c3d3f47a9 Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
 Date: Tue, 12 Jan 2021 16:54:46 +0100
-Subject: [PATCH] modprobe.d, depmod.d: load from /usr/lib.
+Subject: [PATCH] modprobe.d, depmod.d: load from $prefix/lib.
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -16,14 +16,15 @@ Cc: Dominique Leuenberger <dimstar@opensuse.org>
 Signed-off-by: Michal Suchanek <msuchanek@suse.de>
 ---
  Makefile.am        | 1 +
- libkmod/libkmod.c  | 1 +
- man/depmod.d.xml   | 1 +
+ libkmod/libkmod.c  | 3 ++-
+ man/Makefile.am    | 1 +
+ man/depmod.d.xml   | 3 ++-
  man/modprobe.d.xml | 1 +
  tools/depmod.c     | 1 +
- 5 files changed, 5 insertions(+)
+ 6 files changed, 8 insertions(+), 2 deletions(-)
 
 diff --git a/Makefile.am b/Makefile.am
-index d859c240178f..8553368988c0 100644
+index 0e4877074f40..e7313fa8a33e 100644
 --- a/Makefile.am
 +++ b/Makefile.am
 @@ -19,6 +19,7 @@ AM_CPPFLAGS = \
@@ -35,7 +36,7 @@ index d859c240178f..8553368988c0 100644
  
  AM_CFLAGS = $(OUR_CFLAGS)
 diff --git a/libkmod/libkmod.c b/libkmod/libkmod.c
-index 7c2b889d713e..ddf13fb3d822 100644
+index 7c2b889d713e..75fc8be3fadc 100644
 --- a/libkmod/libkmod.c
 +++ b/libkmod/libkmod.c
 @@ -65,6 +65,7 @@ static const char *default_config_paths[] = {
@@ -46,32 +47,52 @@ index 7c2b889d713e..ddf13fb3d822 100644
  	"/lib/modprobe.d",
  	NULL
  };
+@@ -237,7 +238,7 @@ static char *get_kernel_release(const char *dirname)
+  *                to load from user-defined configuration parameters such as
+  *                alias, blacklists, commands (install, remove). If NULL
+  *                defaults to /etc/modprobe.d, /run/modprobe.d,
+- *                /usr/local/lib/modprobe.d and /lib/modprobe.d. Give an empty
++ *                /usr/local/lib/modprobe.d and PREFIX/lib/modprobe.d. Give an empty
+  *                vector if configuration should not be read. This array must
+  *                be null terminated.
+  *
+diff --git a/man/Makefile.am b/man/Makefile.am
+index 11514d52a190..b6603e34c4bf 100644
+--- a/man/Makefile.am
++++ b/man/Makefile.am
+@@ -23,3 +23,4 @@ CLEANFILES = $(dist_man_MANS)
+ 		--stringparam man.output.quietly 1 \
+ 		--param funcsynopsis.style "'ansi'" \
+ 		http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl $<
++	sed -i -e 's|@PREFIX@|$(prefix)|g' $@
 diff --git a/man/depmod.d.xml b/man/depmod.d.xml
-index b315e931d635..8a898cf4a9eb 100644
+index 76548e92a312..431ebca6654b 100644
 --- a/man/depmod.d.xml
 +++ b/man/depmod.d.xml
-@@ -39,6 +39,7 @@
+@@ -39,7 +39,8 @@
    </refnamediv>
  
    <refsynopsisdiv>
+-    <para><filename>/usr/lib/depmod.d/*.conf</filename></para>
 +    <para><filename>/lib/depmod.d/*.conf</filename></para>
-     <para><filename>/usr/lib/depmod.d/*.conf</filename></para>
++    <para><filename>@PREFIX@/lib/depmod.d/*.conf</filename></para>
      <para><filename>/usr/local/lib/depmod.d/*.conf</filename></para>
      <para><filename>/run/depmod.d/*.conf</filename></para>
+     <para><filename>/etc/depmod.d/*.conf</filename></para>
 diff --git a/man/modprobe.d.xml b/man/modprobe.d.xml
-index 0ab3e9110a7e..8a7c696dcee1 100644
+index 0ab3e9110a7e..e8a91d7668af 100644
 --- a/man/modprobe.d.xml
 +++ b/man/modprobe.d.xml
 @@ -41,6 +41,7 @@
  
    <refsynopsisdiv>
      <para><filename>/lib/modprobe.d/*.conf</filename></para>
-+    <para><filename>/usr/lib/modprobe.d/*.conf</filename></para>
++    <para><filename>@PREFIX@/lib/modprobe.d/*.conf</filename></para>
      <para><filename>/usr/local/lib/modprobe.d/*.conf</filename></para>
      <para><filename>/run/modprobe.d/*.conf</filename></para>
      <para><filename>/etc/modprobe.d/*.conf</filename></para>
 diff --git a/tools/depmod.c b/tools/depmod.c
-index eb810b811e35..8f6a4f8cd7cb 100644
+index 364b7d4faa9e..a9349b20ee9c 100644
 --- a/tools/depmod.c
 +++ b/tools/depmod.c
 @@ -54,6 +54,7 @@ static const char *default_cfg_paths[] = {
@@ -83,5 +104,5 @@ index eb810b811e35..8f6a4f8cd7cb 100644
  	NULL
  };
 -- 
-2.26.2
+2.40.0
 

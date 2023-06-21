@@ -1,0 +1,90 @@
+From 846439397efd9fa54763cc80da0e6d8bdf27c0e5 Mon Sep 17 00:00:00 2001
+From: Lucas De Marchi <lucas.de.marchi@gmail.com>
+Date: Thu, 9 Feb 2023 11:19:45 -0800
+Subject: [PATCH] testsuite: Move setup-rootfs logic from Makefile to script
+
+It's easier to implement the logic outside of the Makefile, so rename
+the populate-modules.sh script to setup-rootfs.sh and move the
+additional logic from the makefile to the script.
+
+Signed-off-by: Lucas De Marchi <lucas.de.marchi@gmail.com>
+Reviewed-by: Emil Velikov <emil.l.velikov@gmail.com>
+---
+ Makefile.am                                   | 10 ++--------
+ .../{populate-modules.sh => setup-rootfs.sh}  | 19 +++++++++++++++++--
+ 2 files changed, 19 insertions(+), 10 deletions(-)
+ rename testsuite/{populate-modules.sh => setup-rootfs.sh} (94%)
+
+diff --git a/Makefile.am b/Makefile.am
+index e7313fa8a33e..32f4b80e9870 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -240,18 +240,12 @@ endif
+ # TESTSUITE
+ # ------------------------------------------------------------------------------
+ 
+-EXTRA_DIST += testsuite/populate-modules.sh
++EXTRA_DIST += testsuite/setup-rootfs.sh
+ 
+ MODULE_PLAYGROUND = testsuite/module-playground
+ ROOTFS = testsuite/rootfs
+ ROOTFS_PRISTINE = $(top_srcdir)/testsuite/rootfs-pristine
+-CREATE_ROOTFS = $(AM_V_GEN) ( $(RM) -rf $(ROOTFS) && mkdir -p $(dir $(ROOTFS)) && \
+-				cp -r $(ROOTFS_PRISTINE) $(ROOTFS) && \
+-				find $(ROOTFS) -type d -exec chmod +w {} \; && \
+-				find $(ROOTFS) -type f -name .gitignore -exec rm -f {} \; && \
+-				$(top_srcdir)/testsuite/populate-modules.sh \
+-					$(MODULE_PLAYGROUND) $(ROOTFS) $(top_builddir)/config.h ) && \
+-				touch testsuite/stamp-rootfs
++CREATE_ROOTFS = $(AM_V_GEN) $(top_srcdir)/testsuite/setup-rootfs.sh $(ROOTFS_PRISTINE) $(ROOTFS) $(MODULE_PLAYGROUND) $(top_builddir)/config.h
+ 
+ build-module-playground:
+ 	$(AM_V_GEN)if test "$(top_srcdir)" != "$(top_builddir)"; then \
+diff --git a/testsuite/populate-modules.sh b/testsuite/setup-rootfs.sh
+similarity index 94%
+rename from testsuite/populate-modules.sh
+rename to testsuite/setup-rootfs.sh
+index 099f02669156..d9cc627f7224 100755
+--- a/testsuite/populate-modules.sh
++++ b/testsuite/setup-rootfs.sh
+@@ -2,9 +2,20 @@
+ 
+ set -e
+ 
+-MODULE_PLAYGROUND=$1
++ROOTFS_PRISTINE=$1
+ ROOTFS=$2
+-CONFIG_H=$3
++MODULE_PLAYGROUND=$3
++CONFIG_H=$4
++
++# create rootfs from rootfs-pristine
++
++create_rootfs() {
++	rm -rf "$ROOTFS"
++	mkdir -p $(dirname "$ROOTFS")
++	cp -r "$ROOTFS_PRISTINE" "$ROOTFS"
++	find "$ROOTFS" -type d -exec chmod +w {} \;
++	find "$ROOTFS" -type f -name .gitignore -exec rm -f {} \;
++}
+ 
+ feature_enabled() {
+ 	local feature=$1
+@@ -94,6 +105,8 @@ attach_pkcs7_array=(
+     "test-modinfo/mod-simple-pkcs7.ko"
+     )
+ 
++create_rootfs
++
+ for k in "${!map[@]}"; do
+     dst=${ROOTFS}/$k
+     src=${MODULE_PLAYGROUND}/${map[$k]}
+@@ -138,3 +151,5 @@ done
+ for m in "${attach_pkcs7_array[@]}"; do
+     cat "${MODULE_PLAYGROUND}/dummy.pkcs7" >>"${ROOTFS}/$m"
+ done
++
++touch testsuite/stamp-rootfs
+-- 
+2.40.0
+

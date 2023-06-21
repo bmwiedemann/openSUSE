@@ -43,6 +43,8 @@ Patch6:         0012-modprobe-print-unsupported-status.patch
 Patch7:         usr-lib-modprobe.patch
 Patch8:         no-stylesheet-download.patch
 Patch9:         0001-testsuite-repair-read-of-uninitialized-memory.patch
+Patch10:        testsuite-Move-setup-rootfs-logic-from-Makefile-to-s.patch
+Patch11:        usr-lib-modules.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
@@ -114,6 +116,9 @@ in %lname.
 
 %prep
 %autosetup -p1
+%if 0%{?suse_version} < 1550
+%patch11 -p1 -R
+%endif
 
 %build
 GTKDOCIZE=/bin/true autoreconf -fi
