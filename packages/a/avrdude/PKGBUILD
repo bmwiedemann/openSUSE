@@ -3,18 +3,17 @@
 # This is for Arch Linux.
 
 pkgname=avrdude
-pkgver=6.3
+pkgver=7.1
 pkgrel=1
 epoch=1
 pkgdesc="Download/upload/manipulate the ROM and EEPROM contents of AVR microcontrollers"
 arch=('any')
-url="https://github.com/owncloud/administration"
-url="http://savannah.nongnu.org/projects/avrdude"
+url="https://github.com/avrdudes/avrdude"
 license=('GPL-2.0+')
 depends=('readline' 'libftdi' 'libusb-compat' 'elfutils')
 makedepends=('bison')
 options=('!strip')
-source=(http://download.savannah.gnu.org/releases/avrdude/${pkgname}-${pkgver}.tar.gz)
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/avrdudes/avrdude/archive/refs/tags/v${pkgver}.tar.gz)
 # must not have a *sig or it fails.
 # must say SKIP so that it builds.
 sha1sums=('SKIP')

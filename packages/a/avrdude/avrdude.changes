@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Tue Jun 20 17:52:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update PKGBUILD url
+
+-------------------------------------------------------------------
+Fri Jun  9 12:36:02 UTC 2023 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- really disable huge docs (it looks like this was intended but
+  executed poorly ;-) -- this gets rid of texlive(!) build dep
+- fix build on Leap 15.x where CMake defaults to wrong shared
+  linker flags, which in turn break package build and where
+  /usr/etc is not yet a thing
+
+-------------------------------------------------------------------
+Fri Jun  2 12:56:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1:
+  * Provide a new programmer -c urclock for bootloader
+    urprotocol
+  * Urclock fully supports vector bootloaders at no extra
+    code size
+  * Protects itself from overwriting
+  * Vector bootloaders: can protect the reset vector
+  * Offers Chip Erase function (quicker than uploading 0xff's)
+  * Urclock when compiled with libreadline supports
+    bootloaders in terminal mode (preventing them from WDT timeout)
+  * The -c urclock programmer provides a metadata
+    interface that allows unused flash to be used as storage
+    avrdude -c urclock is backward compatible with
+  * Add TPI support for Microchip tools #1205
+  * Add C-strings, C characters and double to terminal
+    write
+  * Provide write flash in the terminal (using a cache)
+  * Provide page erase in the terminal as pgerase
+  * Add support for NetBSD and OpenBSD to build.sh
+  * urclock           = Urclock programmer for bootloaders
+    using urprotocol
+  * xplainedmini_tpi  = Atmel AVR XplainedMini in TPI mode
+  * xplainedpro_pdi   = Atmel AVR XplainedPro in PDI mode
+  * atmelice_tpi      = Atmel-ICE (ARM/AVR) in TPI mode
+  * powerdebugger_tpi = Atmel PowerDebugger (ARM/AVR) in
+    TPI mode
+  * pickit4           = MPLAB(R) PICkit 4 in JTAG mode
+  * pickit4_tpi       = MPLAB(R) PICkit 4 in TPI mode
+  * snap              = MPLAB(R) SNAP in JTAG mode
+  * snap_tpi          = MPLAB(R) SNAP in TPI mode
+  * arduino_gemma     = Arduino Gemma bootloader disguised
+    as USBtiny
+  * adafruit_gemma    = Adafruit Trinket Gemma bootloader
+    disguised as USBtiny
+  * digilent-hs2      = Digilient JTAG HS2 (MPSSE)
+  * tigard            = Tigard interface board
+  * Issues fixed:
+  * Fix micronucleus bootloader to check for unresponsive
+    USB devices #945
+  * Fix src/CMakeLists.txt to honor CMAKE_INSTALL_LIBDIR
+
+-------------------------------------------------------------------
 Mon Mar  7 16:11:33 UTC 2022 - Martin Wilck <mwilck@suse.com>
 
 - Add code for safe modprobe.d migration

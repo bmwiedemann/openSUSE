@@ -1,7 +1,7 @@
 #
 # spec file for package avrdude
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,44 +12,41 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%global modprobe_d_files 50-avrdude_parport.conf
+%define         libname   lib%{name}
+%define         libsoname %{libname}1
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150300
 # systemd-rpm-macros is wrong in 15.3 and below
 %define _modprobedir /lib/modprobe.d
 %endif
-%global modprobe_d_files 50-avrdude_parport.conf
-
-%define         libname   lib%{name}
-%define         libsoname %{libname}1
 Name:           avrdude
-Version:        6.3
+Version:        7.1
 Release:        0
 Summary:        Upload tool for AVR microcontrollers
-License:        GPL-2.0+
-Url:            http://savannah.nongnu.org/projects/avrdude
-Source0:        http://download.savannah.gnu.org/releases/avrdude/%{name}-%{version}.tar.gz
-Source1:        http://download.savannah.gnu.org/releases/avrdude/%{name}-%{version}.tar.gz.sig
+License:        GPL-2.0-or-later
+URL:            https://github.com/avrdudes/avrdude
+Source0:        https://github.com/avrdudes/avrdude/archive/refs/tags/v%{version}.tar.gz#/avrdude-%{version}.tar.gz
+Source1:        https://github.com/avrdudes/avrdude/releases/download/v%{version}/avrdude-%{version}.tar.gz.sig
+Source2:        avrdude.keyring
 Source3:        modprobe.avrdude_parport
 Source4:        avrdude-usbdevices
-Source5:        avrdude.keyring
 Source6:        debian.avrdude.udev
 Patch0:         avrdude-5.11-no-builddate.diff
 Patch1:         avrdude-ipv6.patch
-BuildRequires:  automake
-BuildRequires:  bison
+BuildRequires:  cmake
 BuildRequires:  flex
+BuildRequires:  bison
 BuildRequires:  libelf-devel
-BuildRequires:  libtool
+BuildRequires:  libhidapi-devel
 BuildRequires:  libusb-devel
 BuildRequires:  readline-devel
-BuildRequires:  texinfo
-Requires(post): %{install_info_prereq}
-Requires(postun): %{install_info_prereq}
 Requires(post): /sbin/modprobe
 Provides:       avr-programmer
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires:       %{libsoname} >= %{version}
 %if 0%{?is_opensuse}
 BuildRequires:  libftdi1-devel
 %endif
@@ -75,24 +72,22 @@ This package contains development files for %{name}.
 %prep
 %setup -q
 # avrdude-5.11-no-builddate.diff
-%patch0 -p1
+# %patch0 -p1
 # %patch1
-touch lexer.l
+#touch lexer.l
 
 %build
-./bootstrap
-sed -i 's/--clean /--tidy /g' doc/Makefile.in
-%configure \
-        --enable-linuxgpio \
-        --disable-static
-make %{?_smp_mflags}
-make %{?_smp_mflags} -C doc info
+%if 0%{?suse_version} < 1600
+# 15.4 at least has "-Wl,--no-undefined" in there which breaks library build
+EXTRA_CMAKE="-DCMAKE_SHARED_LINKER_FLAGS='-Wl,--as-needed -Wl,-z,now'"
+%endif
+
+%cmake -DHAVE_LINUXGPIO=1 -DHAVE_LINUXSPI=1 -DBUILD_DOC=0 "$EXTRA_CMAKE"
+%cmake_build
 
 %install
-%make_install DOC_INST_DIR=%{buildroot}%{_docdir}/%{name}
-make -C doc install-info DESTDIR=%{buildroot}
+%cmake_install
 install -D -m 644 %{SOURCE3} %{buildroot}%{_modprobedir}/50-avrdude_parport.conf
-rm %{buildroot}%{_libdir}/lib%{name}.la
 
 %if 0%{?suse_version} >= 1230
 %global udevdir %{_prefix}/lib/udev
@@ -110,14 +105,16 @@ while IFS=" " read major minor comment;do
 done <%{SOURCE4} >> $RULESFILE
 chmod 644 $RULESFILE
 
-install -d -m 755 %{buildroot}%{_docdir}/%{name}
-install -m 644 AUTHORS COPYING NEWS README %{buildroot}%{_docdir}/%{name}
+# pre-usrmerged
+%if 0%{?suse_version} < 1600
+mv %{buildroot}/usr/etc %{buildroot}
+%endif
 
 %pre
 # Avoid restoring outdated stuff in posttrans
 for _f in %{?modprobe_d_files}; do
-    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
-        mv -f "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}.rpmsave.old" || :
+    [ ! -f "%{_sysconfdir}/modprobe.d/${_f}.rpmsave" ] || \
+        mv -f "%{_sysconfdir}/modprobe.d/${_f}.rpmsave" "%{_sysconfdir}/modprobe.d/${_f}.rpmsave.old" || :
 done
 
 %post
@@ -139,32 +136,32 @@ fi
 
 %post -n %{libsoname} -p /sbin/ldconfig
 %postun -n %{libsoname} -p /sbin/ldconfig
-
 %posttrans
 # Migration of modprobe.conf files to _modprobedir
 for _f in %{?modprobe_d_files}; do
-    [ ! -f "/etc/modprobe.d/${_f}.rpmsave" ] || \
-        mv -fv "/etc/modprobe.d/${_f}.rpmsave" "/etc/modprobe.d/${_f}" || :
+    [ ! -f "%{_sysconfdir}/modprobe.d/${_f}.rpmsave" ] || \
+        mv -fv "%{_sysconfdir}/modprobe.d/${_f}.rpmsave" "%{_sysconfdir}/modprobe.d/${_f}" || :
 done
 
 %files
-%defattr (-, root, root)
-%{_docdir}/%{name}
-%{_mandir}/*/*
-%{_infodir}/%{name}.info%{ext_info}
-%config %{_sysconfdir}/avrdude.conf
 %dir %{_modprobedir}
+%doc NEWS README.md
+%license COPYING
+%{_bindir}/avrdude
+%{_mandir}/*/*
+%if 0%{?suse_version} < 1600
+%{_sysconfdir}/avrdude.conf
+%else
+%{_prefix}%{_sysconfdir}/avrdude.conf
+%endif
 %{_modprobedir}/50-avrdude_parport.conf
 %{udevdir}
-%{_bindir}/*
 
 %files devel
-%defattr (-, root, root)
 %{_includedir}/libavrdude.h
 %{_libdir}/libavrdude.so
 
 %files -n %{libsoname}
-%defattr(-,root,root)
 %{_libdir}/libavrdude.so.*
 
 %changelog
