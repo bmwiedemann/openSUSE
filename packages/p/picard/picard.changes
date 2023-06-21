@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 19 18:51:36 UTC 2023 - Benjamin Greiner <code@bnavigator.de>
+
+- Remove obsolete python-sip (v4) module from BuildRequires
+- Remove obsolete distribution switches for suse_version < 1500
+- Use PEP517 macros instead of deprecated setup.py
+- Enable tests
+- Add picard-requirements.patch, update requirements
+
+-------------------------------------------------------------------
 Tue Dec  6 13:48:58 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.8.5:

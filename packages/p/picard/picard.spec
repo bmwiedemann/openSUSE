@@ -1,7 +1,7 @@
 #
 # spec file for package picard
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,26 +24,40 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://picard.musicbrainz.org
 Source0:        https://codeload.github.com/metabrainz/picard/tar.gz/release-%{version}#/%{name}-%{version}.tar.gz
+# PATCH-FIX-SUSE picard-requirements.patch, code@bnavigator.de -- clean python requirements metadata
+Patch0:         picard-requirements.patch
 BuildRequires:  desktop-file-utils
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libofa-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
-BuildRequires:  python3-fasteners
-BuildRequires:  python3-mutagen >= 1.37
-BuildRequires:  python3-qt5 >= 5.11
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
-BuildRequires:  python3-sip
+BuildRequires:  python3-wheel
 BuildRequires:  update-desktop-files
-Requires:       python3-Markdown
-Requires:       python3-PyYAML
-Requires:       python3-dateutil >= 2.7.3
-Requires:       python3-fasteners
+Requires:       python3-Markdown >= 3.2
+Requires:       python3-PyJWT >= 2.0
+Requires:       python3-PyQt5 >= 5.11
+Requires:       python3-PyYAML >= 5.1
+Requires:       python3-discid >= 1.0
+Requires:       python3-fasteners >= 0.14
 Requires:       python3-mutagen >= 1.37
-Requires:       python3-qt5 >= 5.11
+Requires:       python3-python-dateutil >= 2.7
 Recommends:     chromaprint-fpcalc
-Recommends:     python3-discid
+# SECTION test
+BuildRequires:  python3-python-dateutil >= 2.7
+BuildRequires:  python3-Markdown >= 3.2
+BuildRequires:  python3-PyJWT >= 2.0
+BuildRequires:  python3-PyQt5 >= 5.11
+BuildRequires:  python3-PyYAML >= 5.1
+BuildRequires:  python3-discid >= 1.0
+BuildRequires:  python3-fasteners >= 0.14
+BuildRequires:  python3-mutagen >= 1.37
+BuildRequires:  python3-pytest
+BuildRequires:  python3-pytest-xvfb
+# /SECTION
 
 %description
 MusicBrainz Picard is a MusicBrainz tag editor written in Python.
@@ -53,16 +67,15 @@ track-based tagging.
 %lang_package
 
 %prep
-%setup -q -n %{name}-release-%{version}
+%autosetup -p1 -n %{name}-release-%{version}
 
 %build
 export LANG=en_US.UTF-8
-python3 setup.py config
-python3 setup.py build
+%python3_pyproject_wheel
 
 %install
 export LANG=en_US.UTF-8
-python3 setup.py install --skip-build --prefix=%{_prefix} --root=%{buildroot}
+%python3_pyproject_install
 
 %suse_update_desktop_file -G "Music Tagger" -N "picard" org.musicbrainz.Picard
 
@@ -71,21 +84,18 @@ rm -rfv %{buildroot}%{_datadir}/locale/sco
 %find_lang %{name} %{name}.lang
 %find_lang %{name}-countries %{name}.lang
 %find_lang %{name}-attributes %{name}.lang
+%fdupes %{buildroot}%{python3_sitearch}
 
-%if 0%{?suse_version} < 1500
-%post
-%icon_theme_cache_post
-
-%postun
-%icon_theme_cache_postun
-%endif
+%check
+pytest -v
 
 %files
 %doc AUTHORS.txt NEWS.md
 %license COPYING.txt
 %{_bindir}/picard
 %{_datadir}/applications/org.musicbrainz.Picard.desktop
-%{python3_sitearch}/picard*
+%{python3_sitearch}/picard
+%{python3_sitearch}/picard-%{version}.dist-info
 %{_datadir}/icons/hicolor/*/apps/org.musicbrainz.Picard.png
 %{_datadir}/icons/hicolor/*/apps/org.musicbrainz.Picard.svg
 %{_datadir}/metainfo/org.musicbrainz.Picard.appdata.xml

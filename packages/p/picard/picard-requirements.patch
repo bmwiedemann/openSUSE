@@ -1,0 +1,24 @@
+diff -ur picard-release-2.8.5.o/requirements.txt picard-release-2.8.5/requirements.txt
+--- picard-release-2.8.5.o/requirements.txt	2023-06-20 08:30:49.086031685 +0200
++++ picard-release-2.8.5/requirements.txt	2023-06-20 08:31:10.326725906 +0200
+@@ -1,12 +1,8 @@
+-python-dateutil~=2.7
+-discid~=1.0
+-fasteners~=0.14
+-markdown~=3.2
+-mutagen~=1.37
+-PyJWT~=2.0
+-pyobjc-core>=6.2, <10; sys_platform == 'darwin'
+-pyobjc-framework-Cocoa>=6.2, <10; sys_platform == 'darwin'
+-PyQt5~=5.11
+-PyQt5-sip<=12.9.1; python_version < '3.7'
+-pywin32; sys_platform == 'win32'
+-pyyaml>=5.1, <7
++python-dateutil>=2.7
++discid>=1.0
++fasteners>=0.14
++markdown>=3.2
++mutagen>=1.37
++PyJWT>=2.0
++PyQt5>=5.11
++pyyaml>=5.1
