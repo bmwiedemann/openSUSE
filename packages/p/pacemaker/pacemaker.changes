@@ -1,4 +1,140 @@
 -------------------------------------------------------------------
+Mon Jun 19 08:57:42 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- rpm: build with --with-sbd-sync-default="true" only for sle_version >= 150400 (bsc#1180966)
+- rpm: build with --enable-legacy-links only for suse_version < 1600
+- rpm: build with --enable-compat-2.0 only for suse_version < 1600 (jsc#PED-106, jsc#PED-294)
+- rpm: build with --with-concurrent-fencing-default=true only for sle_version >= 150400
+- rpm: build with --with-resource-stickiness-default=1 only for sle_version >= 150400
+- rpm: build with --with-nagios=true only for suse_version < 1600 (jsc#PED-3877, jsc#PED-4446)
+- agents: create symlink ocf:pacemaker:NodeUtilization only for suse_version < 1600 in favor of ocf:heartbeat:NodeUtilization (bsc#1070347)
+
+-------------------------------------------------------------------
+Sat Jun 17 14:14:47 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.6+20230524.6fdc9deea (Pacemaker-2.1.6):
+- scheduler: ensure earlier group member starts happen after later member stops
+
+-------------------------------------------------------------------
+Sat Jun 17 12:29:11 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.5+20230502.802a72226 (Pacemaker-2.1.6-rc2):
+- rpm: avoid bare wildcards under shared directories in spec
+- scheduler: consider mandatory colocations before optional
+
+-------------------------------------------------------------------
+Sat Jun 17 12:19:07 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.5+20230501.832463d94:
+- daemons: pacemakerd -S should wait for shutdown before returning (bsc#1210857)
+
+-------------------------------------------------------------------
+Sat Jun 17 12:13:21 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.5+20230501.b049bbeea:
+- scheduler: deprecate support for Nagios resources (jsc#PED-3877, jsc#PED-4446)
+- scheduler: deprecate "moon" in date_spec elements in rules
+- daemons: Preserve transient attrs when possible
+- daemons: Sync remote connection info with new controllers.
+- daemons: Record the node hosting a remote connection resource.
+- daemons: Add node hosting connection resource to state XML.
+- daemons: Broadcast remote node state changes to all controllers
+- daemons: Add daemon uptime to execd XML replies.
+
+-------------------------------------------------------------------
+Sat Jun 17 11:47:18 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.5+20230424.6127934e3:
+- fencer: fencing timeout sent to peer takes no delay into account (bsc#1210074)
+- libpacemaker: initial timeout for fencing callback takes any requested fencing delay into account (bsc#1210074)
+- controller: use "target" terminology consistently (bsc#1210074)
+- controller: log fencing timeout consistently in seconds as priority fencing delay (bsc#1210074)
+- controller: initial timeout for fencing callback takes any priority fencing delay into account (bsc#1210074)
+- fencer: apply requested fencing delay only for the first device (bsc#1210074)
+- fencer: fencing timeouts take any pcmk_delay_base into account (bsc#1210074)
+- fencer: add correct values of pcmk_delay_base/max to query rely (bsc#1210074)
+- fencer: per-operation fencing timeout takes any requested fencing delay into account (bsc#1210074)
+- fencer: total fencing timeout takes any requested fencing delay into account (bsc#1210074)
+- cts-fencing: regression test for fencing timeouts taking fencing delays into account (bsc#1210074)
+
+-------------------------------------------------------------------
+Fri Jun 16 18:32:29 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.5+20230418.ccc3b3344:
+- python: Default CTS iterations to 1.
+
+-------------------------------------------------------------------
+Fri Jun 16 18:09:17 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.5+20230417.095c09eee (Pacemaker-2.1.6-rc1):
+- NLS: update translations for current code base
+- sysconfig: improve help text
+- sysconfig: overhaul enviroment variable descriptions
+- tools: avoid use-after-free of attribute ID
+- tools: fix use-after-free of attribute set name
+
+-------------------------------------------------------------------
+Fri Jun 16 17:54:21 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.5+20230411.dbe567bfd:
+- controller: avoid use-after-free when disconnecting proxy IPCs during shutdown (bsc#1209640)
+
+-------------------------------------------------------------------
+Fri Jun 16 11:25:54 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.5+20230410.97fbe1f31:
+- daemons: Add the default port to pacemaker-remoted help output.
+- controller: Don't use "//" in the fence XML query.
+- scheduler: attenuate chained "with this" colocation scores
+- scheduler: don't add group colocations twice
+- controller: Unlocked lrm_resource should include cleared/expired
+- controller: Ensure we don't ignore relevant CIB replacements
+- based: Use correct local-only diff logic
+- scheduler: make asymmetric ordering handling more efficient
+- scheduler: use correct action when determining order set flags
+
+- Rebase:
+  * bug-806256_pacemaker-log-level-notice.patch
+  * bug-977201_pacemaker-controld-self-fencing.patch
+
+-------------------------------------------------------------------
+Wed Jun 14 12:32:29 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.5+20230403.7945075ce:
+- tools: Deprecate crm_mon --simple-status
+- tools: crm_mon can use update mode with XML, text, none
+- tools: Last-one-wins for crm_mon --daemonize and --one-shot
+- tools: Fix crm_mon seg fault when curses is missing (CLBZ#5512)
+- tools: Don't ignore invalid format in reconcile_output_formats
+- tools: Case-sensitive comparisons in reconcile_output_format()
+- tools: Implement --output-as=none in crm_mon.c
+
+-------------------------------------------------------------------
+Wed Jun 14 10:19:08 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.5+20230328.76c42a514:
+- python: Disable the too-many-statements warning from pylint.
+- scheduler: NULL-check when adding colocations to list
+- scheduler: always add clone constraints to instances' lists
+- scheduler: avoid trace log and method call if not needed
+- scheduler: always add group's own "this with" colocations
+- scheduler: always add group's own "with this" colocations
+- scheduler: add "group with" colocations to later members independent of assignment
+- scheduler: always add "group with" colocations to first member
+- scheduler: always add "with group" colocations to last member
+- controller: Delay join finalization if a transition is in progress
+
+-------------------------------------------------------------------
+Wed Jun 14 08:26:11 UTC 2023 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.5+20230323.ee1bc67ff:
+- crm_resource: Add the --element option for delete & set
+- extra/resources/SysInfo.in: This calculation of cpu_load returns an incorrect value in Darwin and Linux
+
+- Rebase:
+  * bug-995365_pacemaker-cts-restart-systemd-journald.patch
+
+-------------------------------------------------------------------
 Wed Mar 22 16:11:09 UTC 2023 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.1.5+20230320.22590c566:
@@ -1601,8 +1737,8 @@ Fri Sep 10 14:04:23 UTC 2021 - Yan Gao <ygao@suse.com>
 - scheduler: Output the clone header if there are no instances.
 - scheduler: Sort brief output of resources.
 - scheduler: Fix display of active resources on offline nodes.
-- tools: avoid memory leaks in crm_mon
-- tools: avoid (insignificant) memory leaks
+- tools: avoid memory leaks in crm_mon (bsc#1211678)
+- tools: avoid (insignificant) memory leaks (bsc#1211678)
 
 -------------------------------------------------------------------
 Fri Sep 10 13:45:08 UTC 2021 - Yan Gao <ygao@suse.com>
@@ -2062,12 +2198,12 @@ Fri Mar 19 14:36:46 UTC 2021 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.0.5+20210128.aa41a984d:
 - cibsecret: use crmadmin -N (which also lists guest and remote nodes) to get nodes to sync to
-- tools: Free --resource=/--node= memory in crm_mon.
-- scheduler: Free the result of pe__node_display_name in one place.
-- tools: Free command-line related memory.
-- libcrmcommon: Don't leak memory in pcmk__cmdline_preproc.
-- libcrmcommon: Free the results in various test cases.
-- libpe_rules, libcrmcommon: Free the whole xml doc, not just the node.
+- tools: Free --resource=/--node= memory in crm_mon. (bsc#1211678)
+- scheduler: Free the result of pe__node_display_name in one place. (bsc#1211678)
+- tools: Free command-line related memory. (bsc#1211678)
+- libcrmcommon: Don't leak memory in pcmk__cmdline_preproc. (bsc#1211678)
+- libcrmcommon: Free the results in various test cases. (bsc#1211678)
+- libpe_rules, libcrmcommon: Free the whole xml doc, not just the node. (bsc#1211678)
 - crmadmin: use cluster instead of member term and remove pacemaker_remote node type
 - crmadmin: list remote/guest nodes and add parameter/variable to choose which node type(s) to list
 

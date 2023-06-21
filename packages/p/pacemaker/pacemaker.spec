@@ -57,13 +57,21 @@
 ## to synchronization improves safety, without requiring higher-level tools
 ## to be aware of the setting or requiring users to modify configurations
 ## after upgrading to versions that support synchronization.
+%if 0%{?suse_version} >= 1540 || 0%{?sle_version} >= 150400
 %bcond_without sbd_sync
+%else
+%bcond_with sbd_sync
+%endif
 
 ## Add option to turn off hardening of libraries and daemon executables
 %bcond_with hardening
 
 ## Add option to disable links for legacy daemon names
+%if 0%{?suse_version} < 1600
 %bcond_without legacy_links
+%else
+%bcond_with legacy_links
+%endif
 
 # Define globals for convenient use later
 
@@ -72,13 +80,19 @@
 ## Distro-specific configuration choices
 
 ### Use 2.0-style output when other distro packages don't support current output
+%if 0%{?suse_version} < 1600
 %global compat20 --enable-compat-2.0
+%endif
 
 ### Default concurrent-fencing to true when distro prefers that
+%if 0%{?suse_version} >= 1540 || 0%{?sle_version} >= 150400
 %global concurrent_fencing --with-concurrent-fencing-default=true
+%endif
 
 ### Default resource-stickiness to 1 when distro prefers that
+%if 0%{?suse_version} >= 1540 || 0%{?sle_version} >= 150400
 %global resource_stickiness --with-resource-stickiness-default=1
+%endif
 
 # Python-related definitions
 
@@ -98,13 +112,18 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
+%if 0%{?suse_version} < 1600
 %define with_nagios             1
+%else
+%define with_nagios             0
+%endif
+
 %define enable_cluster_libs_pkg  0
 %define enable_fatal_warnings   0
 %define with_regression_tests   0
 
 Name:           pacemaker
-Version:        2.1.5+20230320.22590c566
+Version:        2.1.6+20230524.6fdc9deea
 Release:        0
 Summary:        Scalable High-Availability cluster resource manager
 # AGPL-3.0 licensed extra/clustermon.sh is not present in the binary
@@ -395,6 +414,8 @@ autoreconf -fvi
         --disable-silent-rules                     \
 %if %{with_nagios}
         --with-nagios=true                         \
+%else
+        --with-nagios=false                        \
 %endif
 %if !%{enable_fatal_warnings}
         --enable-fatal-warnings=no                 \
@@ -451,7 +472,9 @@ ln -s service %{buildroot}%{_sbindir}/rccrm_mon
 mv %{buildroot}%{_sbindir}/crm_report %{buildroot}%{_sbindir}/crm_report.pacemaker
 install -m 755 %{SOURCE1} %{buildroot}%{_sbindir}/crm_report
 
+%if 0%{?suse_version} < 1600
 ln -s ../heartbeat/NodeUtilization %{buildroot}%{ocf_root}/resource.d/pacemaker/
+%endif
 
 %fdupes -s %{buildroot}
 
@@ -630,20 +653,21 @@ fi
 
 %config(noreplace) %{_fillupdir}/sysconfig.pacemaker
 %config(noreplace) %{_fillupdir}/sysconfig.crm_mon
-%{_mandir}/man7/*
+%{_mandir}/man7/*pacemaker*
 %exclude %{_mandir}/man7/pacemaker-controld.*
 %exclude %{_mandir}/man7/pacemaker-schedulerd.*
 %exclude %{_mandir}/man7/pacemaker-fenced.*
 %exclude %{_mandir}/man7/ocf_pacemaker_controld.*
 %exclude %{_mandir}/man7/ocf_pacemaker_o2cb.*
 %exclude %{_mandir}/man7/ocf_pacemaker_remote.*
-%{_mandir}/man8/*
-%if %{with stonithd}
-%exclude %{_mandir}/man8/fence_legacy.*
+%{_mandir}/man8/crm*.8%{ext_man}
+%{_mandir}/man8/attrd_updater.*
+%{_mandir}/man8/cibadmin.*
+%if %{with cibsecrets}
+%{_mandir}/man8/cibsecret.*
 %endif
-%exclude %{_mandir}/man8/fence_watchdog.*
-%exclude %{_mandir}/man8/pacemakerd.*
-%exclude %{_mandir}/man8/pacemaker-remoted.*
+%{_mandir}/man8/iso8601.*
+%{_mandir}/man8/stonith_admin.*
 
 #%license licenses/GPLv2
 %license COPYING
@@ -718,8 +742,16 @@ fi
 
 %files devel
 %{_includedir}/pacemaker
-%{_libdir}/*.so
-%{_libdir}/pkgconfig/*.pc
+%{_libdir}/libcib.so
+%{_libdir}/liblrmd.so
+%{_libdir}/libcrmservice.so
+%{_libdir}/libcrmcommon.so
+%{_libdir}/libpe_status.so
+%{_libdir}/libpe_rules.so
+%{_libdir}/libpacemaker.so
+%{_libdir}/libstonithd.so
+%{_libdir}/libcrmcluster.so
+%{_libdir}/pkgconfig/*pacemaker*.pc
 #%license licenses/LGPLv2.1
 %license COPYING
 %doc ChangeLog

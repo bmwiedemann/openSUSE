@@ -2121,4 +2121,41 @@
 - schemas: New crm_shadow and instruction schemas (forwarded request 1074949 from yan_gao)</comment>
     <requestid>1074950</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>9141c9076c5db1e8e6c7d09fe24cf0c9</srcmd5>
+    <version>2.1.6+20230524.6fdc9deea</version>
+    <time>1687379816</time>
+    <user>dimstar_suse</user>
+    <comment>- rpm: build with --with-sbd-sync-default=&quot;true&quot; only for sle_version &gt;= 150400 (bsc#1180966)
+- rpm: build with --enable-legacy-links only for suse_version &lt; 1600
+- rpm: build with --enable-compat-2.0 only for suse_version &lt; 1600 (jsc#PED-106, jsc#PED-294)
+- rpm: build with --with-concurrent-fencing-default=true only for sle_version &gt;= 150400
+- rpm: build with --with-resource-stickiness-default=1 only for sle_version &gt;= 150400
+- rpm: build with --with-nagios=true only for suse_version &lt; 1600 (jsc#PED-3877, jsc#PED-4446)
+- agents: create symlink ocf:pacemaker:NodeUtilization only for suse_version &lt; 1600 in favor of ocf:heartbeat:NodeUtilization (bsc#1070347)
+
+- Update to version 2.1.6+20230524.6fdc9deea (Pacemaker-2.1.6):
+- scheduler: ensure earlier group member starts happen after later member stops
+
+- Update to version 2.1.5+20230502.802a72226 (Pacemaker-2.1.6-rc2):
+- rpm: avoid bare wildcards under shared directories in spec
+- scheduler: consider mandatory colocations before optional
+
+- Update to version 2.1.5+20230501.832463d94:
+- daemons: pacemakerd -S should wait for shutdown before returning (bsc#1210857)
+
+- Update to version 2.1.5+20230501.b049bbeea:
+- scheduler: deprecate support for Nagios resources (jsc#PED-3877, jsc#PED-4446)
+- scheduler: deprecate &quot;moon&quot; in date_spec elements in rules
+- daemons: Preserve transient attrs when possible
+- daemons: Sync remote connection info with new controllers.
+- daemons: Record the node hosting a remote connection resource.
+- daemons: Add node hosting connection resource to state XML.
+- daemons: Broadcast remote node state changes to all controllers
+- daemons: Add daemon uptime to execd XML replies.
+
+- Update to version 2.1.5+20230424.6127934e3:
+- fencer: fencing timeout sent to peer takes no delay into account (bsc#1210074) (forwarded request 1093808 from yan_gao)</comment>
+    <requestid>1093809</requestid>
+  </revision>
 </revisionlist>
