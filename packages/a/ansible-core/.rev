@@ -121,4 +121,12 @@
   new stack supported by SUSE</comment>
     <requestid>1088276</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>02eeda037ee2337b6b1d08bc7a9a3eb8</srcmd5>
+    <version>2.15.1</version>
+    <time>1687379995</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094258</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Jun 21 04:46:09 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 2.15.1:
+  * Minor Changes
+    - ansible-test - Allow float values for the --timeout option to
+      the env command. This simplifies testing.
+    - ansible-test - Refactored env command logic and timeout
+      handling.
+    - ansible-test - Use datetime.datetime.now with tz specified
+      instead of datetime.datetime.utcnow.
+  * Bugfixes
+    - Properly disable jinja2_native in the template module when
+      jinja2 override is used in the template (#80605)
+    - ansible-galaxy - Fix variable type error when installing
+      subdir collections (#80943)
+    - ansible-test - Fix a traceback that occurs when attempting to
+      test Ansible source using a different ansible-test. A clear
+      error message is now given when this scenario occurs.
+    - ansible-test - Fix handling of timeouts exceeding one day.
+    - ansible-test - Fix various cases where the test timeout could
+      expire without terminating the tests.
+    - ansible-test local change detection - use git merge-base
+      <branch> HEAD instead of git merge-base --fork-point <branch>
+      (#79734).
+    - deb822_repository - use http-agent for receiving content
+      (#80809).
+    - dnf5 - Update dnf5 module to handle API change for setting
+      the download directory (#80887)
+    - man page build - Remove the dependency on the docs directory
+      for building man pages.
+    - pep517 build backend - Copy symlinks when copying the source
+      tree. This avoids tracebacks in various scenarios, such as
+      when a venv is present in the source tree.
+    - uri - fix search for JSON type to include complex strings
+      containing '+'
+
+-------------------------------------------------------------------
 Mon May 15 19:29:21 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - major update to 2.15.0:
