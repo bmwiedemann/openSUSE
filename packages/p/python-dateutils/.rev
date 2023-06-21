@@ -16,4 +16,14 @@
   * Manually adding a release for the last published version.</comment>
     <requestid>1059913</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>02d6280d8c1f1bc486c4a47b6ee1a6dd</srcmd5>
+    <version>0.6.12</version>
+    <time>1687380031</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1094344 from ecsos
+
+- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1094469</requestid>
+  </revision>
 </revisionlist>
