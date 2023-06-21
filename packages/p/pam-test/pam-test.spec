@@ -1,7 +1,7 @@
 #
 # spec file for package pam-test
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,20 @@
 
 
 Name:           pam-test
-Version:        0.0+git.20161214
+Version:        0.0+git.20191111
 Release:        0
 Summary:        Test of a PAM stack for authentication and password change
 License:        GPL-2.0-only
 URL:            https://github.com/pbrezina/pam-test
-Buildrequires:  pam-devel
-Source:         %{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.gz
+BuildRequires:  pam-devel
 
 %description
 This application can be used to test a PAM stack for authentication and
 password change.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 cc %{optflags} -o pam_test src/main.c -lpam -lpam_misc
@@ -41,6 +41,7 @@ install -Dpm 0755 pam_test \
 
 %files
 %doc README.md
+%license COPYING
 %{_bindir}/pam_test
 
 %changelog
