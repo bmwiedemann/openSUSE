@@ -1,7 +1,7 @@
 #
 # spec file for package wayshot
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,14 +25,15 @@ Summary:        Screenshot tool for wlroots based compositors
 License:        (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND BSD-3-Clause AND ISC AND MIT AND Zlib AND BSD-2-Clause
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/waycrate/wayshot
-Source0:        %{name}-%{version}.tar.gz
-Source1:        vendor.tar.gz
+Source0:        %{name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
 Source2:        cargo_config
 %if 0%{?suse_version} >= 1500
 BuildRequires:  cargo-packaging
 %else
 BuildRequires:  cargo
 %endif
+BuildRequires:  zstd
 
 %description
 A screenshot tool for wlroots based compositors implementing zwlr_screencopy_v1
