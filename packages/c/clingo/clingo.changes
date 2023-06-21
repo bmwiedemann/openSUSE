@@ -29,8 +29,8 @@ Mon Dec  5 12:55:18 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Thu Sep  1 00:13:39 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not use python_module macro, which requires other macros to fire
-  correctly.
-- Mark the license file using %license macro. 
+  correctly (bsc#1212554).
+- Mark the license file using %license macro.
 
 -------------------------------------------------------------------
 Tue Dec 14 09:50:18 UTC 2021 - Christian Goll <cgoll@suse.com>
