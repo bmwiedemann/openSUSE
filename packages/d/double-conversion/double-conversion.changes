@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 19 19:53:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.0:
+  * Fix some compile warnings in Visual Studio
+  * Set permissions for github workflows
+  * Add flags to control trailing decimal and zero in exponent
+    form when input has one significant digit
+
+-------------------------------------------------------------------
 Wed Aug 17 20:09:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.1

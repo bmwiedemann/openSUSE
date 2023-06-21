@@ -130,4 +130,16 @@
   * Issue #184 : Fixed all -Wzero-as-null-pointer-constant warnings (forwarded request 997609 from dirkmueller)</comment>
     <requestid>998147</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f075556aaabd27da05ff8016fe2ab23a</srcmd5>
+    <version>3.3.0</version>
+    <time>1687379827</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.3.0:
+  * Fix some compile warnings in Visual Studio
+  * Set permissions for github workflows
+  * Add flags to control trailing decimal and zero in exponent
+    form when input has one significant digit (forwarded request 1093823 from dirkmueller)</comment>
+    <requestid>1093988</requestid>
+  </revision>
 </revisionlist>
