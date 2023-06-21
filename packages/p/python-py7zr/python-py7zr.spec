@@ -24,7 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
+%{?sle15_python_module_pythons}
 Name:           python-py7zr%{psuffix}
 Version:        0.20.5
 Release:        0

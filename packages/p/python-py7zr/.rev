@@ -68,4 +68,14 @@
     SIGABORT and SIGSEGV on pypy</comment>
     <requestid>1084851</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>df784cfab8f6e01b9c21b0760821585a</srcmd5>
+    <version>0.20.5</version>
+    <time>1687380032</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1094348 from ecsos
+
+- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1094470</requestid>
+  </revision>
 </revisionlist>
