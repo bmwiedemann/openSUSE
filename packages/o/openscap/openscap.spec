@@ -23,7 +23,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           openscap
-Version:        1.3.7
+Version:        1.3.8
 Release:        0
 Summary:        A Set of Libraries for Integration with SCAP
 License:        LGPL-2.1-or-later
@@ -185,9 +185,9 @@ This package contains the Script Checking Engine Library (SCE) for OpenSCAP.
 
 %build
 %if 0%{?with_bindings}
-%cmake -DENABLE_DOCS=TRUE -DCMAKE_SHARED_LINKER_FLAGS=""
+%cmake -DENABLE_DOCS=TRUE -DCMAKE_SHARED_LINKER_FLAGS="" -DENABLE_OSCAP_REMEDIATE_SERVICE=TRUE
 %else
-%cmake -DENABLE_DOCS=TRUE -DENABLE_PYTHON3=FALSE -DENABLE_PERL=FALSE -DCMAKE_SHARED_LINKER_FLAGS=""
+%cmake -DENABLE_DOCS=TRUE -DENABLE_PYTHON3=FALSE -DENABLE_PERL=FALSE -DCMAKE_SHARED_LINKER_FLAGS="" -DENABLE_OSCAP_REMEDIATE_SERVICE=TRUE
 %endif
 %if 0%{?sle_version} > 150100 || 0%{?suse_version} == 1599
 %cmake_build
@@ -231,6 +231,8 @@ mv %{buildroot}%{_sysconfdir}/bash_completion.d/* %{buildroot}%{_datadir}/bash-c
 ln -s  %{_datadir}/openscap/scap-yast2sec-oval.xml %{buildroot}/%{_datadir}/openscap/scap-oval.xml
 ln -s  %{_datadir}/openscap/scap-yast2sec-xccdf.xml %{buildroot}/%{_datadir}/openscap/scap-xccdf.xml
 
+# for some reason the serivce file is put under /usr/usr/lib/systemd..
+mv %{buildroot}/usr/%{_unitdir}/oscap-remediate.service %{buildroot}/%{_unitdir}
 # oscap-remediate should be in /usr/libexec but this is not well supported in
 # older versions of the distro
 %if 0%{?suse_version} != 1599
