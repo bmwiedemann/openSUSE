@@ -1,7 +1,26 @@
 -------------------------------------------------------------------
+Tue Jun 20 18:40:03 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.102:
+  + Minimal UI support
+  + Support DefaultVersion and CompanionFile in File element
+  + Handle AllowDowngrades and AllowSameVersionUpgrades in
+    MajorUpgrade
+  + Default Win64 to true on 64-bit arch
+  + Support all CustomAction Execute types properly
+  + Add sys.BUILDARCH preprocessor variable
+  + Strip scheduling condition nodes
+  + Add IniFile support
+  + Remove default UI actions from
+    AdminUISequence/InstallUISequence
+  + Add support for ProgressText element
+  + Various build fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Feb  2 23:25:47 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
-- Update to version 101:
+- Update to version 0.101:
   * convert the build system to Meson
   * remove uuid dependency
   * wixl: Make the ServiceControl attributes Remove/Start/Stop

@@ -1,7 +1,7 @@
 #
 # spec file for package msitools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           msitools
-Version:        0.101
+Version:        0.102
 Release:        0
 Summary:        Tools to inspect and build Windows Installer (.MSI) files
 License:        GPL-2.0-or-later
