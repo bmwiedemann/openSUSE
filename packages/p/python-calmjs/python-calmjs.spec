@@ -16,7 +16,7 @@
 #
 
 
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-calmjs
 Version:        3.4.4
 Release:        0
