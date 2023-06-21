@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           plasma5-welcome
-Version:        5.27.5
+Version:        5.27.6
 Release:        0
 Summary:        Onboarding wizard for Plasma
 License:        GPL-2.0-only OR GPL-3.0-only
