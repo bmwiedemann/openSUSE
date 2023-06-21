@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Wed Jun 21 12:37:44 UTC 2023 - kastl@b1-systems.de
+
+- BuildRequire go1.20
+- Update to version 2.19.0:
+  * build(deps): bump google.golang.org/grpc from 1.53.0 to 1.56.0
+  * bump compose-go to version v1.15.0
+  * ci: build fix for new buildx
+  * ci: upgrade to buildx v0.11
+  * otel: refactor root command span reporting
+  * fix race condition, waiting for containers when one exit
+  * build(deps): bump github.com/AlecAivazis/survey/v2 from 2.3.6
+    to 2.3.7 (#10699)
+  * use main branch of Docker Desktop repo to trigger remote
+    workflow
+  * add missing comma in desktop-edge-test job
+  * introduce run --cap-add to run maintenance commands using
+    service image
+  * otel: fix initialization / error-handling (#10717)
+  * build(deps): bump golang.org/x/sync from 0.2.0 to 0.3.0
+  * don't apply "rebuild" watch strategy by default
+  * warn user build.secrets uid,gid,mode are not implemented
+  * specify origin repo in generation token step of docker desktop
+    edge testing
+  * add vars. prefix to DOCKERDESKTOP_APP_ID
+  * use directly DOCKERDESKTOP_APP_ID without env. prefix
+  * fix typo in merge workflow for DOCKERDESKTOP_APP_ID
+  * Update .github/workflows/merge.yml
+  * escape containerimage.digest attribut in merge.yml GHA worlflow
+  * use `--progress` to configure progress UI stylet push
+  * cli: fix timeout behavior on up / restart / stop (#10672)
+  * ci: add more ignore rules to dependabot
+  * ci: fix merge workflow (#10685)
+  * add GitHub action to trigger Docker Desktop e2e tests with
+    Compose edge version
+  * build(deps): bump github.com/Microsoft/go-winio from 0.5.2 to
+    0.6.1
+  * trace: add OTEL initialization (#10526)
+  * ci: merge Go coverage reports before upload (#10666)
+  * create directory in container using `mkdir -p`
+  * ci: upgrade to Go 1.20.5 and Moby v24.x
+  * assume we receive logs by lines and don't ignore those without
+    EOL
+  * build(deps): bump github.com/sirupsen/logrus from 1.9.2 to
+    1.9.3 (#10653)
+  * ci: bump golangci-lint to v1.53.x (#10659)
+  * don't skip `compose` used as project name
+  * better diagnostic message on network label mismatch
+  * bump buildx and use confutil.ConfigDir
+  * detect network conflict as name is not guaranteed to be unique
+    (#10612)
+  * forward signal to container
+  * fix build issue
+  * add Windows drive prefix to temp dir usage in the doc
+    generation task
+  * build(deps): bump github.com/stretchr/testify from 1.8.3 to
+    1.8.4
+  * e2e: make test re-runnable on the same machine
+  * e2e: add a cuke feature to test compose errors with port
+    conflicts
+  * up should not silently ignore missing depends_on service
+  * prevent buildkt's progress to render `Building` when no built
+    is needed
+  * e2e test to cover logs -f managing service being added/scaled
+  * detect new container from project have started when running
+    `compose logs` with no explicit services
+  * compute service hash with a default DeployConfig
+  * Fix typo in warning about existing volume
+  * build(deps): bump github.com/stretchr/testify from 1.8.2 to
+    1.8.3
+  * build(deps): bump github.com/cloudflare/cfssl from 1.4.1 to
+    1.6.4
+  * progress: remove errant import (#10614)
+  * fix display of volumes flag in down help command
+  * detect conflict removing volume/image and warn user
+  * introduce WithRootNodesAndDown to walk the graph from specified
+    nodes and down
+  * introduce ability to select service to be stopped by `compose
+    down`
+  * scale: sort containers by creation date to remove older ones
+    first (#10571)
+  * watch: only monitor configured paths (#10599)
+  * secrets: only set CopyUIDGID when required (#10598)
+  * update docs to reflect dry run mode is feature complete
+  * fix support for project name set by COMPOSE_PROJECT_NAME env
+    var
+  * go.mod: golang.org/x/oauth2 v0.1.0
+  * fix detection of swarm mode
+  * build(deps): bump github.com/sirupsen/logrus from 1.9.0 to
+    1.9.2
+
+-------------------------------------------------------------------
 Wed May 17 17:38:20 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.18.1:
