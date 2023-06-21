@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 20 12:51:02 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Remove useless --with-64bit/--with-32bit
+
+-------------------------------------------------------------------
 Tue Jun  9 12:14:29 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to override build date (boo#1047218)

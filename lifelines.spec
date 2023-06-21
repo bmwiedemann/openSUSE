@@ -1,7 +1,7 @@
 #
 # spec file for package lifelines
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -72,32 +72,21 @@ system but requires knowledge in the ll format.
 
 %prep
 %setup -q -c -T -n %{name}-%{commit}
-tar -x  --strip-components=1 -z -f %{SOURCE0} 
+tar -x  --strip-components=1 -z -f %{SOURCE0}
 %patch0 -p0 -b .p0
 %patch1 -p0 -b .p1
 %patch2 -p1 -b .p2
 
 %build
-if test $(getconf LONG_BIT) -gt 32
-then
-    arch=--with-64bit
-else
-    arch=--with-32bit
-fi
 CFLAGS="%{optflags} -fno-strict-aliasing -pipe $(pkg-config ncursesw --cflags) $(getconf LFS_CFLAGS)"
 CPPFLAGS="-D_GNU_SOURCE -D_XOPEN_CURSES"
 LIBS="$(pkg-config ncursesw --libs)"
 CC=gcc
 export CC CFLAGS CPPFLAGS LIBS
 autoreconf -fi
-%ifarch aarch64 %arm
-# gcc on aarch64 does not know about -m64 ...
-sed -ri 's/[[:space:]]*-m(64|32)//' configure
-%endif
 %configure  --disable-rpath			\
 	    --with-gnu-ld			\
 	    --with-docs				\
-	    $arch				\
 	    --with-libintl-prefix=%{_prefix}
 make %{?_smp_mflags}
 make -C docs/
