@@ -159,7 +159,8 @@ CPPFLAGS_FOR_TARGET="-DGC_NOT_DLL %{_mingw32_cflags}" \
   --enable-libgomp \
   --enable-linker-build-id \
   --disable-vtable-verify \
-  --with-pkgversion="SUSE Linux"
+  --with-pkgversion="SUSE Linux" \
+  --enable-link-serialization
 
 make %{?_smp_mflags} all || make all
 

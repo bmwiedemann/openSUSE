@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 15 07:41:58 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Configure with --enable-link-serialization to reduce memory use
+
+-------------------------------------------------------------------
 Wed Aug 24 11:13:06 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to version 12.2.0
