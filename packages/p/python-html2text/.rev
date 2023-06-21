@@ -204,4 +204,14 @@
 </comment>
     <requestid>924042</requestid>
   </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>c1a84008bd22b2d853406a08b6bef8b6</srcmd5>
+    <version>2020.1.16</version>
+    <time>1687380033</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1094395 from ecsos
+
+- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1094473</requestid>
+  </revision>
 </revisionlist>
