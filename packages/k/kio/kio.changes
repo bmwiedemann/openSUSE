@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 20 17:17:11 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix crash on thumbnail generation (kde#470845):
+  * 0001-previewjob-Check-whether-thumbRootDevice-is-valid-be.patch
+
+-------------------------------------------------------------------
 Mon Jun  5 07:44:02 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.107.0

@@ -1,0 +1,32 @@
+From daa0b06ae8621f731327b547f268bddc9784001b Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sat, 10 Jun 2023 14:49:30 +0200
+Subject: [PATCH] [previewjob] Check whether thumbRootDevice is valid before
+ access
+
+storageAccessFromPath may return an invalid device, e.g. because the thumbnail directory doesn't exist yet
+
+In that case we must not use the device
+
+BUG: 470845
+(cherry picked from commit 3fdcb7bcdae3a3dc95ce5b3d15740802450b129e)
+---
+ src/widgets/previewjob.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/widgets/previewjob.cpp b/src/widgets/previewjob.cpp
+index cffdce302..214e3b3b3 100644
+--- a/src/widgets/previewjob.cpp
++++ b/src/widgets/previewjob.cpp
+@@ -829,7 +829,7 @@ PreviewJobPrivate::CachePolicy PreviewJobPrivate::canBeCached(const QString &pat
+             // Or, if the checked device is unencrypted, allow thumbnailing.
+             if (device.as<Solid::StorageAccess>()->isEncrypted()) {
+                 const Solid::Device thumbRootDevice = Solid::Device::storageAccessFromPath(thumbRoot);
+-                shouldAllow = thumbRootDevice.as<Solid::StorageAccess>()->isEncrypted();
++                shouldAllow = thumbRootDevice.isValid() && thumbRootDevice.as<Solid::StorageAccess>()->isEncrypted();
+             } else {
+                 shouldAllow = true;
+             }
+-- 
+2.41.0
+
