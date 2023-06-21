@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 13 12:11:42 UTC 2023 - Michal Filka <mfilka@suse.com>
+
+- bsc#1211431
+  - Do not crash installation when storing vlan configuration into
+    NetworkManager
+- 4.6.4
+
+-------------------------------------------------------------------
 Wed May 10 07:29:32 UTC 2023 - Knut Anderssen <kanderssen@suse.com>
 
 - Do not write the EAP auth attribute when writing a wireless
