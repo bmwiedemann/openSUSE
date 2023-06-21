@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Tue Jun 20 07:23:31 UTC 2023 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.447.g9d1fc722:
+  This a is backport of the most important fixes and features from the upstream master branch,
+  while the release date of version 060 is still undefined.
+
+  Features:
+  * chore(shfmt): update to pass with shfmt v3.5.1
+  * feat(dracut-init.sh): do not print by default if an udev rule is skipped
+  * feat(lsinitrd): notify user on missing compressor
+  * feat(dracut): use log level indicator in console output
+  * feat(kernel-modules): driver support for macbook keyboards
+  * feat(dracut-init.sh): specify if a module cannot be found or cannot be installed
+
+  Fixes:
+  * fix(multipath): explicitly check if `hostonly_cmdline` is `yes`
+  * fix(systemd-timedated): correct typo in override path
+  * fix(systemd-resolved): correct typo in override path
+  * fix(systemd-networkd): correct typos in override paths
+  * fix(dracut-init.sh): correct check in `is_qemu_virtualized` function
+  * fix(Makefile): execute command -v instead of which
+  * fix(network-legacy): typo
+  * fix(network,dbus): improve dependency checking
+  * fix(systemd-pcrphase): only include systemd-pcrphase-initrd.service
+  * fix(systemd-tmpfiles): do not include systemd-tmpfiles-clean.timer
+  * fix(systemd-journald): do not include systemd-journal-flush.service
+  * fix(systemd): do not include systemd-random-seed.service
+  * fix(kernel-modules): add interconnect drivers
+  * fix(dracut-lib.sh): remove successful finished initqueue scripts
+  * fix(udev-rules): remove firmware.rules
+  * fix(dracut.sh): silence the output of hardlinking files by default
+  * fix(virtiofs): add virtio_pci kernel module to virtiofs
+  * fix(dracut-systemd): rootfs-generator cannot write outside of generator dir
+  * fix(dracut-systemd): check and create generator dir outside of inner function
+  * fix(dracut-systemd): do not hardcode the systemd generator directory
+  * fix(dracut-functions): avoid calling grep with PCRE (-P)
+  * fix(dracut-initramfs-restore.sh): handle /etc/machine-id empty or uninitialized
+  * fix(lsinitrd.sh): handle /etc/machine-id empty or uninitialized
+  * fix(dracut.sh): handle /etc/machine-id empty or uninitialized
+  * fix(systemd-networkd): add missing conf files and services
+  * fix(dracut-functions.sh): convert mmcblk to the real kernel module name
+  * fix(multipath): remove dependency on multipathd.socket
+  * fix(99base): adjust to allow mksh as initrd shell
+  * fix(base): do not quote $CLINE in the `set` command
+  * fix(systemd-ac-power): correct systemd-ac-power binary path
+  * fix(dracut.sh): use dynamically uefi's sections offset
+  * fix(lvmthinpool-monitor): activate lvm thin pool before extend its size
+  * fix(dmsquash-live): restore compatibility with earlier releases
+  * fix(dracut.sh): kmoddir does not handle trailing /
+  * fix(udev-rules): remove old eudev specific rule
+  * fix(udev-rules): remove old redhat specific rule
+  * fix(udev-rules): remove old edd_id extra rules
+  * fix(udev-rules): remove old debian specific rules
+  * fix(kernel-modules): add UFS drivers
+  * fix(kernel-modules): use modalias info in get_dev_module()
+  * fix(crypt): add missing libraries
+  * revert(network-manager): avoid restarting NetworkManager
+  * fix(dracut.sh): handle sbsign errors for UEFI builds
+  * fix(dracut.sh): handle out of space error for UEFI builds
+  * fix(network): IPv6: don't wait for RA for static IPv6 assignments
+  * fix(network-legacy): always include af_packet
+  * fix(network): don't assume prefix length 64 by default
+  * fix(iscsi): prefix syntax for static iBFT IPv6 addresses
+  * fix(iscsi): install 8021q module unconditionally
+  * fix(plymouth): remove /etc/system-release dependency
+  * fix(network-manager): add "After" dependency on dbus.service
+  * fix(fido2): libfido2.so depends on libz.so
+  * fix(dracut-install): continue parsing if ldd prints "cannot execute binary file"
+  * fix: make iso-scan trigger udev events
+  * fix(install): do not undef _FILE_OFFSET_BITS
+  * fix(dracut.sh): --sysroot option broken if global variables not set in conf
+  * fix(lsinitrd.sh): handle filenames with special characters
+  * fix(dracut-systemd): remove unused argument
+  * fix(dracut-init.sh): correct typo in comment
+  * fix(dracut.sh): correct --help and --version exit codes
+  * fix(crypt-gpg): do not use always --card-status
+  * fix(dmsquash-live): live:/dev/*
+  * fix(load_fstype): avoid false positive searchs
+  * fix: shellcheck 0.8.0
+
+-------------------------------------------------------------------
 Mon Apr 24 09:35:19 UTC 2023 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.375.gafb362e4:
