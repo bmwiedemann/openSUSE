@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 21 08:39:40 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Add hatch-pr828-pth-tests.patch, gh#pypa/hatch#828 fixing
+  test failure with hatchling >= 1.17.1
+
+-------------------------------------------------------------------
+Sun Jun 11 08:38:31 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Wed May 10 16:07:25 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add fix-sdist-target.patch to fix tests: gh#pypa/hatch@1b10663e645e

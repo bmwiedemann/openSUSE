@@ -24,7 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
+%{?sle15_python_module_pythons}
 Name:           python-hatch%{psuffix}
 Version:        1.7.0
 Release:        0
@@ -35,6 +35,8 @@ URL:            https://hatch.pypa.io/latest/
 Source:         https://github.com/pypa/hatch/archive/refs/tags/hatch-v%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix-sdist-target.patch -- gh#pypa/hatch@1b10663e645e
 Patch0:         fix-sdist-target.patch
+# PATCH-FIX-UPSTREAM hatch-pr828-pth-tests.patch, gh#pypa/hatch#828
+Patch1:         hatch-pr828-pth-tests.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatchling >= 1.14}
 BuildRequires:  %{python_module pip}
@@ -48,6 +50,8 @@ Requires:       git-core
 %if %{with test}
 BuildRequires:  %{python_module filelock >= 3.7.1}
 BuildRequires:  %{python_module hatch = %{version}}
+# Due to Patch1, gh#pypa/hatch#828
+BuildRequires:  %{python_module hatchling >= 1.17.1}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-randomly}
 BuildRequires:  %{python_module pytest-rerunfailures}
