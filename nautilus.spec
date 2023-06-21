@@ -27,6 +27,9 @@ Source0:        https://download.gnome.org/sources/nautilus/44/%{name}-%{version
 Source1:        set_trusted.desktop
 Source2:        set_trusted.sh
 
+# PATCH-FIX-UPSTREAM fix-crash-when-closing-tabs.patch -- based on commit 3a931f61
+Patch1:         https://gitlab.gnome.org/GNOME/nautilus/-/commit/3a931f61.patch
+
 # needed for directory ownership
 BuildRequires:  dbus-1
 BuildRequires:  fdupes
