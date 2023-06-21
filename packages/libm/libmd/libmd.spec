@@ -1,7 +1,7 @@
 #
 # spec file for package libmd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,12 @@
 #
 
 
-%define sover    0
+%define sover   0
 Name:           libmd
-Version:        1.0.4
+Version:        1.1.0
 Release:        0
 Summary:        Message digest functions from BSD systems
 License:        BSD-2-Clause OR BSD-3-Clause OR ISC OR SUSE-Public-Domain
-Group:          Development/Languages/C and C++
 URL:            https://www.hadrons.org/software/libmd/
 Source0:        https://archive.hadrons.org/software/libmd/libmd-%{version}.tar.xz
 Source1:        https://archive.hadrons.org/software/libmd/libmd-%{version}.tar.xz.asc
@@ -36,7 +35,6 @@ API.
 
 %package -n %{name}%{sover}
 Summary:        Provides message digest functions from BSD systems
-Group:          System/Libraries
 
 %description -n %{name}%{sover}
 The libmd library provides a few message digest ("hash") functions, as
@@ -47,7 +45,6 @@ Digests supported: MD2/4/5, RIPEMD160, SHA1, SHA2-256/384/512.
 
 %package devel
 Summary:        Provides message digest functions from BSD systems
-Group:          Development/Languages/C and C++
 Requires:       %{name}%{sover} = %{version}
 
 %description devel
@@ -64,15 +61,7 @@ Digests supported: MD2/4/5, RIPEMD160, SHA1, SHA2-256/384/512.
 %configure \
   --disable-static \
   --disable-silent-rules
-
-%if %{do_profiling}
-  %make_build CFLAGS="%{optflags} %{cflags_profile_generate}"
-  %make_build check CFLAGS="%{optflags} %{cflags_profile_generate}"
-  %make_build clean
-  %make_build CFLAGS="%{optflags} %{cflags_profile_feedback}"
-%else
   %make_build
-%endif
 
 %install
 %make_install
@@ -81,8 +70,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %check
 %make_build check
 
-%post -n %{name}%{sover} -p /sbin/ldconfig
-%postun -n %{name}%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{name}%{sover}
 
 %files -n %{name}%{sover}
 %license COPYING
@@ -95,5 +83,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/libmd.pc
 %{_mandir}/man3/*.3%{?ext_man}
+%{_mandir}/man7/libmd.7%{?ext_man}
 
 %changelog

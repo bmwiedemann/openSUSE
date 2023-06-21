@@ -90,4 +90,31 @@
     <comment></comment>
     <requestid>925977</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a6d7521fe6bed6a1f7e2929758dd56d2</srcmd5>
+    <version>1.1.0</version>
+    <time>1687379825</time>
+    <user>dimstar_suse</user>
+    <comment>-  Update to version 1.1.0:
+   * man: Add new libmd(7) man page
+   * doc: Move mailing list reference to the end
+   * build: Fix version script linker support detection
+   * build: Switch to debian:latest Docker image
+   * build: Fix configure.ac indentation
+   * build: Require automake 1.11
+   * build: Do not use strong aliases on macOS
+   * On Darwin use assembler to support symbol aliases
+   * build: Rename libmd_alias() to libmd_strong_alias()
+   * Remove unused &lt;assert.h&gt;
+   * Sync MD2 changes from NetBSD
+   * Sync MD4 changes from OpenBSD
+   * Sync MD5 changes from OpenBSD
+   * Sync RMD160 changes from OpenBSD
+   * Sync SHA1 changes from OpenBSD
+   * Sync SHA2 changes from OpenBSD
+   * test: Add a new test_eq() helper function
+   * test: Add cases for SHA224 and SHA512-256
+   * build: Terminate lists in variables with «# EOL»</comment>
+    <requestid>1093972</requestid>
+  </revision>
 </revisionlist>

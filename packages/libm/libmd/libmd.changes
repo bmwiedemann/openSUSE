@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jun 20 11:51:30 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+-  Update to version 1.1.0:
+   * man: Add new libmd(7) man page
+   * doc: Move mailing list reference to the end
+   * build: Fix version script linker support detection
+   * build: Switch to debian:latest Docker image
+   * build: Fix configure.ac indentation
+   * build: Require automake 1.11
+   * build: Do not use strong aliases on macOS
+   * On Darwin use assembler to support symbol aliases
+   * build: Rename libmd_alias() to libmd_strong_alias()
+   * Remove unused <assert.h>
+   * Sync MD2 changes from NetBSD
+   * Sync MD4 changes from OpenBSD
+   * Sync MD5 changes from OpenBSD
+   * Sync RMD160 changes from OpenBSD
+   * Sync SHA1 changes from OpenBSD
+   * Sync SHA2 changes from OpenBSD
+   * test: Add a new test_eq() helper function
+   * test: Add cases for SHA224 and SHA512-256
+   * build: Terminate lists in variables with «# EOL»
+
+-------------------------------------------------------------------
 Sat Oct 16 10:18:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.4:
