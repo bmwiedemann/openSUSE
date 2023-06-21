@@ -96,4 +96,14 @@
   * Add Document::Parse(std::string), Document::Parse(const</comment>
     <requestid>1092134</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2f86aeb27ceab2e937078ce5444dc427</srcmd5>
+    <version>17</version>
+    <time>1687379958</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 17:
+  * Make GenericSchemaDocument constructor explicit (#674)
+  * Optimize FindMember when use std::string (#690)</comment>
+    <requestid>1094143</requestid>
+  </revision>
 </revisionlist>

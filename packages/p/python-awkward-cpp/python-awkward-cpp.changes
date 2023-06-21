@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 20 16:37:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 17:
+  * Make GenericSchemaDocument constructor explicit (#674)
+  * Optimize FindMember when use std::string (#690)
+
+-------------------------------------------------------------------
 Sun Jun 11 08:23:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 16:
