@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun 20 17:32:29 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Revert to 0.16.x branch
+  * python-jupyterlab-server-openapi (jupyterlab-server[openapi])
+   is the only consumer in the distribution and requires
+   openapi-core~=0.16.1
+  * See gh#jupyterlab/jupyterlab_server#400
+- Changelog from 0.16.1 to 0.16.6:
+  * openapi-schema-validator 0.5.2 tests compatibility fix #527
+  * validators public api expose #455
+  * allow openapi-schema-validator 0.4 #458
+  * better unmarshaller finders with refactor #447
+  * werkzeug flask root path fix #449
+  * additionalProperties without schema should allow null. #444
+  * Add NullUnmarshaller #432
+  * Multi type unmarshaller #433
+  * Unmarshaller format refactor #434
+
+-------------------------------------------------------------------
 Tue Jun 20 00:27:37 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.17.2:
