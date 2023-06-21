@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jun 20 14:36:44 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.43:
+  * Default to Lua 5.3, and permit use of other versions
+  * Add support for setting and deleting window properties
+  * Add get_process_name(), which returns the name of the process
+    owning the window (if possible)
+  * Add get_monitor_index() and get_monitor_geometry(); improve
+    monitor index/geometry discovery
+  * Add get_window_is_decorated() (which uses the Motif window hints)
+  * Alias center() as centre()
+  * Extend centre() to allow centring on a given monitor and to allow
+    horizontal or vertical only
+  * Extend set_window_position() to allow positioning on a given
+    monitor and control which corner is measured from.
+    (Behaviour with two parameters is unchanged.)
+  * Quote the option hyphens in the man page (preventing replacement)
+  * Various const & compiler warning (gcc -Wextra) fix-ups
+  * Support for UTF-8 strings in window properties
+  * Allow replacements for pkg-config at compile time
+
+-------------------------------------------------------------------
 Fri Feb 12 07:33:37 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Requires lua-5.1 as its only one supported now

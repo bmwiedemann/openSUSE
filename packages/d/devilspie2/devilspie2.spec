@@ -1,7 +1,7 @@
 #
 # spec file for package devilspie2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,16 @@
 
 
 Name:           devilspie2
-Version:        0.43
+Version:        0.44
 Release:        0
 Summary:        A window matching utility
 License:        GPL-3.0-or-later
-Group:          System/X11/Utilities
 URL:            https://www.nongnu.org/devilspie2/
-Source0:        http://download.savannah.gnu.org/releases/devilspie2/%{name}_%{version}-src.tar.gz
-Source1:        http://download.savannah.gnu.org/releases/devilspie2/%{name}_%{version}-src.tar.gz.asc
-Source2:        %{name}.keyring
+Source0:        http://download.savannah.nongnu.org/releases/devilspie2/devilspie2-%{version}.tar.xz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libwnck-3.0)
-BuildRequires:  pkgconfig(lua5.1)
+BuildRequires:  pkgconfig(lua5.3)
 
 %description
 Devilspie 2 is based on the excellent program Devil's Pie by Ross Burton, and
