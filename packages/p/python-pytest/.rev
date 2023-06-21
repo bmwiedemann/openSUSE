@@ -1192,4 +1192,25 @@
 </comment>
     <requestid>1092827</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>9cbce1b17e610357151e3eccda05faca</srcmd5>
+    <version>7.3.2</version>
+    <time>1687379817</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.3.2:
+  * Fix bug where very long option
+    names could cause pytest to break with ``OSError: [Errno 36]
+    File name too long`` on some systems.
+  * Support for Python 3.12
+  * honored to load root ``conftests``.
+  * The `monkeypatch` `setitem`/`delitem` type annotations now
+    allow `TypedDict` arguments.
+  * Fixed bug in assertion rewriting
+    where a variable assigned with the walrus operator could not
+    be used later in a function call.
+  * Fixed ``--last-failed``'s
+    &quot;(skipped N files)&quot; functionality for files inside of
+    packages (directories with `__init__.py` files).</comment>
+    <requestid>1093826</requestid>
+  </revision>
 </revisionlist>
