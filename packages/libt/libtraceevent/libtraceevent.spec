@@ -22,7 +22,7 @@
 %define sodname %{dname}%{sonum}
 
 Name:           libtraceevent
-Version:        1.7.2
+Version:        1.7.3
 Release:        0
 Summary:        Linux kernel trace event library
 License:        GPL-2.0-only AND LGPL-2.1-only
@@ -30,7 +30,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://git.kernel.org/pub/scm/libs/libtrace/libtraceevent.git/
 Source:         https://git.kernel.org/pub/scm/libs/libtrace/%{name}.git/snapshot/%{name}-%{version}.tar.gz
 Source9:        %name-rpmlintrc
-Patch1:         0001-libtraceevent-Add-initial-support-for-meson.patch
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  glibc-devel

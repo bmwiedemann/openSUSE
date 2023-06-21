@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 15 18:30:52 UTC 2023 - Tony Jones <tonyj@suse.com>
+
+- Update to version 1.7.3
+  * Handle printf '%+d" case
+  * Add initial support for meson
+  * Handle %c
+
+- Drop patch 0001-libtraceevent-Add-initial-support-for-meson.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Apr 27 22:15:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.2:
