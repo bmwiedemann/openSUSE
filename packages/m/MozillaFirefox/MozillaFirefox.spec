@@ -1,5 +1,5 @@
 #
-# spec file for MozillaFirefox
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2006-2023 Wolfgang Rosenauer <wr@rosenauer.org>
@@ -29,8 +29,8 @@
 # major 69
 # mainver %%major.99
 %define major          114
-%define mainver        %major.0.1
-%define orig_version   114.0.1
+%define mainver        %major.0.2
+%define orig_version   114.0.2
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -52,7 +52,7 @@
 
 # No i586 on SLE-12, as the rpmlints are broken and can't handle the big rpms resulting from this build.
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
-ExclusiveArch: aarch64 ppc64le x86_64 s390x
+ExclusiveArch:  aarch64 ppc64le x86_64 s390x
 %else
 # Firefox only supports i686
 %ifarch %ix86
@@ -102,8 +102,8 @@ BuildRequires:  gcc11-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-BuildRequires:  rust1.69
 BuildRequires:  cargo1.69
+BuildRequires:  rust1.69
 %if 0%{useccache} != 0
 BuildRequires:  ccache
 %endif
@@ -490,7 +490,7 @@ ac_add_options --enable-optimize="-O1"
 %ifarch x86_64
 # LTO needs newer toolchain stack only (at least GCC 8.2.1 (r268506)
 %if 0%{?suse_version} > 1500
-ac_add_options --enable-lto
+#ac_add_options --enable-lto
 %if 0%{?do_profiling}
 ac_add_options MOZ_PGO=1
 %endif

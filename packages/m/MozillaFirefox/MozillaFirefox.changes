@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 20 19:49:51 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- Mozilla Firefox 114.0.2:
+  * Several crash fixes
+  * Web Extensions: Fixes for 114 regressions in Native Messaging
+    support
+
+-------------------------------------------------------------------
+Tue Jun 20 06:30:02 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- do not enable LTO as it caused crashes now (boo#1212101)
+
+-------------------------------------------------------------------
 Sat Jun 10 14:48:07 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - Mozilla Firefox 114.0.1
@@ -10,7 +23,7 @@ Fri Jun  9 11:05:47 UTC 2023 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 - Only install vaapitest for wayland-enabled builds, where it gets built
 - Rebase mozilla-silence-no-return-type.patch
 - Rebase s390x-patches, and remove obsolete patches:
-  mozilla-bmo1005535.patch mozilla-s390x-skia-gradient.patch  
+  mozilla-bmo1005535.patch mozilla-s390x-skia-gradient.patch
 
 -------------------------------------------------------------------
 Mon Jun  5 21:22:19 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
