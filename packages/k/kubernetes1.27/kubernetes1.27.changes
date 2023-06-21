@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jun 21 05:02:05 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update: `BuildRequires:  go >= 1.20.5`
+- Update to version 1.27.3:
+  * Release commit for Kubernetes v1.27.3
+  * update-vendor: update vendored go.sums
+  * releng/go: Update images, dependencies and version to Go 1.20.5
+  * kube-proxy avoid race condition using LocalModeNodeCIDR
+  * Add ephemeralcontainer to imagepolicy securityaccount admission plugin
+  * supported version of etcd 3.5.7-0 for Kubernetes v1.27.0-rc.0
+  * e2e framework retry on Service unavailable errors
+  * e2e: apply timeout for CSI Storage Capacity test only to node
+  * Add DisruptionTarget condition when preempting for critical pod
+  * update webhook test to go 1.21
+  * Test APIService safe handling at startup
+  * Fix waiting for CRD sync at server start
+  * kubeadm: fix a bug where the static pod changes detection logic is inconsistent with kubelet
+  * kubeadm: Make etcd member removal idempotent
+  * kubeadm: Add etcd client unit tests
+  * kubeadm: Use internal etcd client through an interface
+
+-------------------------------------------------------------------
 Mon Jun 12 05:12:03 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update: `BuildRequires:  go >= 1.20.4`
