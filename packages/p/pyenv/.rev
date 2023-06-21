@@ -242,4 +242,12 @@
   * Update 3.12-dev and add 3.13-dev</comment>
     <requestid>1092159</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>08b5122f1f9b2184a86b40d60eccacea</srcmd5>
+    <version>2.3.21</version>
+    <time>1687380029</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094464</requestid>
+  </revision>
 </revisionlist>

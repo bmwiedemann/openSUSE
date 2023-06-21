@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jun 21 14:40:56 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.21
+
+- Update to 2.3.21
+  - Add graalpy-23.0.0 by @msimacek in #2724
+  - Add PyPy 7.3.12 by @edgarrmondragon in #2726
+  - Fix occasional 'libexec/pyenv-latest: line 39: printf: write error:
+    Broken pipe' by @native-api in #2729
+
+Full Changelog: https://github.com/pyenv/pyenv/compare/v2.3.20...v2.3.21
+
+-------------------------------------------------------------------
+Wed Jun 21 14:40:56 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.20
+
+- Update to 2.3.20
+  - Backport bpo-42351 to 3.5.10 by @native-api in #2717
+  - Add missing patches for Python 3.7/3.8/3.9 by @tomkins in #2718
+
+Full Changelog: https://github.com/pyenv/pyenv/compare/v2.3.19...v2.3.20
+
+-------------------------------------------------------------------
 Sun Jun 11 08:59:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.19:
