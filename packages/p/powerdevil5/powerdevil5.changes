@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 20 17:15:06 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.6
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.6
+- Changes since 5.27.5:
+  * Fix ddcutil for laptop user (kde#469895)
+  * Take property update frequency into account for smoothed remaining time
+  * Delay Solid::Battery instatiation until actually required
+  * Avoid repeated Solid::Battery instantiations on charge level change
+
+-------------------------------------------------------------------
 Tue May  9 13:44:18 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.5
