@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 20 16:19:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.1:
+  * #36: Refactored to restore docs builds without warning-
+    errors.
+
+-------------------------------------------------------------------
 Sun Jun 11 09:08:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.7.0:
