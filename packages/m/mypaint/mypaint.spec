@@ -1,7 +1,7 @@
 #
 # spec file for package mypaint
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            http://mypaint.org
 Source:         https://github.com/mypaint/mypaint/releases/download/v%{version}/%{name}-%{version}.tar.xz
+Patch0:         https://patch-diff.githubusercontent.com/raw/mypaint/mypaint/pull/1193.patch
 BuildRequires:  ImageMagick
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -63,7 +64,7 @@ pencils, ink, or paint.
 %autosetup -p1
 
 %build
-%python3_build 
+%python3_build
 
 %install
 %python3_install

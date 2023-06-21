@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 21 11:56:34 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 1193.patch: fix build against python 3.11.
+
+-------------------------------------------------------------------
 Sat Feb 20 01:05:11 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop BuildRequires: python-rpm-macros and use python3 macros to
