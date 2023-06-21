@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 20 11:21:51 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernise spec file
+- Split lang subpackage 
+
+-------------------------------------------------------------------
 Fri Apr 28 08:21:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add py311.patch to fix build against python 3.11

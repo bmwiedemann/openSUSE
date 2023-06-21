@@ -201,4 +201,13 @@
     <comment></comment>
     <requestid>1083495</requestid>
   </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>22a389961fc0b3f2ddf63f6761360689</srcmd5>
+    <version>0.23.90</version>
+    <time>1687379823</time>
+    <user>dimstar_suse</user>
+    <comment>- Modernise spec file
+- Split lang subpackage</comment>
+    <requestid>1093969</requestid>
+  </revision>
 </revisionlist>

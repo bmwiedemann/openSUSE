@@ -24,7 +24,6 @@ Version:        0.23.90
 Release:        0
 Summary:        Bar code reader
 License:        LGPL-2.0-or-later
-Group:          Productivity/Other
 URL:            https://github.com/mchehab/zbar
 Source0:        https://linuxtv.org/downloads/%{name}/%{name}-%{version}.tar.bz2
 Source98:       baselibs.conf
@@ -46,9 +45,7 @@ BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xv)
-%if 0%{?suse_version} < 1500
-BuildRequires:  gcc7
-%endif
+%lang_package
 
 %description
 ZBar reads bar codes from various sources, such as video streams,
@@ -61,7 +58,6 @@ or integrated by other programs through a library.
 
 %package -n %{libname}
 Summary:        Bar code reading library
-Group:          System/Libraries
 
 %description -n %{libname}
 ZBar reads bar codes from various sources, such as video streams,
@@ -73,7 +69,6 @@ This package provides the ZBar library.
 
 %package -n lib%{name}-devel
 Summary:        Development environment for the ZBar library
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 
 %description -n lib%{name}-devel
@@ -83,14 +78,12 @@ applications using the zbar library.
 
 %package -n lib%{name}qt0
 Summary:        ZBar Qt bindings
-Group:          System/Libraries
 
 %description -n lib%{name}qt0
 This package provides ZBar Qt bindings.
 
 %package -n lib%{name}qt-devel
 Summary:        Development environment for the ZBar Qt bindings library
-Group:          Development/Libraries/C and C++
 Requires:       lib%{name}-devel = %{version}
 Requires:       lib%{name}qt0 = %{version}
 
@@ -101,7 +94,6 @@ applications using the zbar-qt library.
 
 %package -n python3-zbar
 Summary:        Python3 module for ZBar
-Group:          Development/Languages/Python
 
 %description -n python3-zbar
 This package contains the module to use ZBar from python3.
@@ -110,9 +102,6 @@ This package contains the module to use ZBar from python3.
 %autosetup -p1
 
 %build
-test -x "$(type -p gcc)" && export CC=$_
-test -x "$(type -p gcc-7)" && export CC=$_
-test -x "$(type -p gcc-8)" && export CC=$_
 %configure \
   --docdir=%{_docdir}/%{name} \
   --disable-static \
@@ -127,22 +116,22 @@ find %{buildroot} -name "*.la"  -or -name "*.a" | xargs rm -f
 rm -rf %{buildroot}%{_datadir}/doc/zbar-%{version}/
 rm -f %{buildroot}%{_docdir}/zbar/{COPYING,LICENSE.md,INSTALL.md}
 
-%{find_lang} %{name}
+%find_lang %{name}
 # Lets wait for review first
 rm -rf %{buildroot}%{_sysconfdir}/dbus-1/system.d/org.linuxtv.Zbar.conf
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
-%post -n libzbarqt0 -p /sbin/ldconfig
-%postun -n libzbarqt0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
+%ldconfig_scriptlets -n libzbarqt0
 
-%files -f %{name}.lang
+%files
 %license COPYING LICENSE.md
 %{_defaultdocdir}/%{name}/
 %{_bindir}/zbarimg
 %{_bindir}/zbarcam
 %{_bindir}/zbarcam-qt
 %{_mandir}/man1/*
+
+%files lang -f %{name}.lang
 
 %files -n %{libname}
 %{_libdir}/libzbar.so.%{sover}*
