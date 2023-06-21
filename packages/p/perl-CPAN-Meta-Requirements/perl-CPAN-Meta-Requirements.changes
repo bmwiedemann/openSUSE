@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 20 07:46:14 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 2.143:
+  * Fix regression with implicit minimum value and multiple requirements
+
+-------------------------------------------------------------------
 Wed May 10 03:06:07 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.142

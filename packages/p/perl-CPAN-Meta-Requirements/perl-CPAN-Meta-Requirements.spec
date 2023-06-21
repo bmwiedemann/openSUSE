@@ -18,10 +18,10 @@
 
 %define cpan_name CPAN-Meta-Requirements
 Name:           perl-CPAN-Meta-Requirements
-Version:        2.142000
+Version:        2.143000
 Release:        0
-%define cpan_version 2.142
-Provides:       perl(CPAN::Meta::Requirements) = 2.142000
+%define cpan_version 2.143
+Provides:       perl(CPAN::Meta::Requirements) = 2.143000
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Set of version requirements for a CPAN dist
 URL:            https://metacpan.org/release/%{cpan_name}
