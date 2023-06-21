@@ -1,7 +1,7 @@
 #
 # spec file for package libksba
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define soname 8
 Name:           libksba
-Version:        1.6.3
+Version:        1.6.4
 Release:        0
 Summary:        A X.509 Library
 License:        (GPL-2.0-or-later OR LGPL-3.0-or-later) AND GPL-3.0-or-later AND MIT
