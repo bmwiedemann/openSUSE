@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 20 12:56:47 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Security Patch Fix for CVE-2023-2431 (bsc#1212493)
+  * added patch: fix-seccomp-localhost-error-handling.patch
+  * this new kubelet component patch returns an error when a Pod or Container's SecurityContext has a localhost seccomp type but an empty localhostProfile field. 
+
+-------------------------------------------------------------------
 Thu Jun 15 11:36:19 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Security Patch Fix for CVE-2023-2727 (bsc#1211630) and CVE-2023-2728 (bsc#1211631)

@@ -51,6 +51,8 @@ Patch4:         kubeadm-opensuse-flexvolume.patch
 Patch5:         revert-coredns-image-renaming.patch
 # Patch to fix CVE-2023-2727 and CVE-2023-2728, by preventing ephemeral containers from using an image that is restricted by ImagePolicyWebhook and from bypassing the mountable secrets policy enforced by the ServiceAccount admission plugin
 Patch6:         kube-apiserver-admission-plugin-policy.patch
+# Patch to fix CVE-2023-2431, to return error when a Pod or Container's SecurityContext has a localhost seccomp type but an empty localhostProfile field.
+Patch7:         fix-seccomp-localhost-error-handling.patch
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  go-go-md2man
@@ -67,6 +69,7 @@ management of containerized applications.
 
 It groups containers that make up an application into logical units
 for management and discovery.
+
 
 
 
@@ -219,6 +222,7 @@ Fish command line completion support for %{name}-client.
 %patch4 -p0
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 %build
 # This is fixing bug bsc#1065972
