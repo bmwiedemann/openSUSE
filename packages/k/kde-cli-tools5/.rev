@@ -1273,4 +1273,12 @@
   * 0001-kinfo-Use-kcmshell5-with-Plasma-5.patch</comment>
     <requestid>1085978</requestid>
   </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>44d7bddbc90fae7a879573d151c2c4c9</srcmd5>
+    <version>5.27.6</version>
+    <time>1687379873</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.6. plasma5-sdk needed a workaround. On aarch64 something is broken with breeze5-icons, I'm optimistic and triggered a rebuild. (forwarded request 1094155 from Vogtinator)</comment>
+    <requestid>1094174</requestid>
+  </revision>
 </revisionlist>
