@@ -509,4 +509,18 @@
     <comment></comment>
     <requestid>1081816</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>6aae3c3a4ff99ac3929c9d8472ddde05</srcmd5>
+    <version>23.2.0</version>
+    <time>1687379832</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.2.0:
+  * Removed ``X509StoreFlags.NOTIFY_POLICY``.
+  * ``cryptography`` maximum version has been increased to
+    41.0.x.
+  * Invalid versions are now rejected in
+    ``OpenSSL.crypto.X509Req.set_version``.
+  * Added ``X509VerificationCodes`` to ``OpenSSL.SSL``.</comment>
+    <requestid>1093835</requestid>
+  </revision>
 </revisionlist>

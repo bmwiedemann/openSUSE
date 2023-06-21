@@ -1,8 +1,8 @@
-Index: pyOpenSSL-22.1.0/tests/test_ssl.py
+Index: pyOpenSSL-23.2.0/tests/test_ssl.py
 ===================================================================
---- pyOpenSSL-22.1.0.orig/tests/test_ssl.py
-+++ pyOpenSSL-22.1.0/tests/test_ssl.py
-@@ -1244,6 +1244,7 @@ class TestContext:
+--- pyOpenSSL-23.2.0.orig/tests/test_ssl.py
++++ pyOpenSSL-23.2.0/tests/test_ssl.py
+@@ -1252,6 +1252,7 @@ class TestContext:
          reason="set_default_verify_paths appears not to work on Windows.  "
          "See LP#404343 and LP#404344.",
      )
@@ -10,20 +10,20 @@ Index: pyOpenSSL-22.1.0/tests/test_ssl.py
      def test_set_default_verify_paths(self):
          """
          `Context.set_default_verify_paths` causes the platform-specific CA
-Index: pyOpenSSL-22.1.0/setup.cfg
+Index: pyOpenSSL-23.2.0/setup.cfg
 ===================================================================
---- pyOpenSSL-22.1.0.orig/setup.cfg
-+++ pyOpenSSL-22.1.0/setup.cfg
-@@ -2,6 +2,8 @@
- minversion = 3.0.1
- strict = true
+--- pyOpenSSL-23.2.0.orig/setup.cfg
++++ pyOpenSSL-23.2.0/setup.cfg
+@@ -1,6 +1,8 @@
+ [tool:pytest]
+ addopts = "-r s --strict-markers"
  testpaths = tests
 +markers =
 +   network: test case requires network connection
  
  [metadata]
  license_file = LICENSE
-@@ -16,4 +18,3 @@ doc_files = doc/_build/html
+@@ -15,4 +17,3 @@ doc_files = doc/_build/html
  [egg_info]
  tag_build = 
  tag_date = 0

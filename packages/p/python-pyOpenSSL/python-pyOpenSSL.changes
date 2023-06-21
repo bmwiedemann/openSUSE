@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 19 20:25:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.2.0:
+  * Removed ``X509StoreFlags.NOTIFY_POLICY``.
+  * ``cryptography`` maximum version has been increased to
+    41.0.x.
+  * Invalid versions are now rejected in
+    ``OpenSSL.crypto.X509Req.set_version``.
+  * Added ``X509VerificationCodes`` to ``OpenSSL.SSL``.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:30:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
