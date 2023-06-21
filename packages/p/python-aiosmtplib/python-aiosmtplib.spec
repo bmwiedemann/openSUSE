@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-aiosmtplib
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        Python asyncio SMTP client
 License:        MIT

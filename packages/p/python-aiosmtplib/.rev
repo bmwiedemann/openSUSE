@@ -103,4 +103,15 @@
     not packages, so that they do not get put in site-packages.</comment>
     <requestid>1064217</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c52efe4f2de6d8e8726a0cc05fc93d86</srcmd5>
+    <version>2.0.2</version>
+    <time>1687379940</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.2:
+  * Bugfix: don't send extra EHLO/HELO before QUIT
+  * Change: added SMTPConnectionResponseError for invalid
+    response on connect only</comment>
+    <requestid>1094128</requestid>
+  </revision>
 </revisionlist>
