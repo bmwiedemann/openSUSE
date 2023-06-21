@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 20 16:50:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.6:
+  * Add `optgroup.help_option` decorator to add help option to
+    the group (PR #50)
+  * Use GitHub Actions instead of Travis CI for CI
+  * Delete tox runner
+  * Add Python 3.11 to the setup classifiers
+
+-------------------------------------------------------------------
 Sun May 14 06:14:06 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - remove Suggests for coverage packages
