@@ -32,5 +32,8 @@
 # the internal default.
 
 NAME="_`basename $0|tr -- - _`"
-DEFINE=${MINGW64_MACROS:+--define="${MINGW64_MACROS}"}
-eval "`rpm "${DEFINE}" --eval "%${NAME} $(printf " %q" "${@}")"`"
+if [ "${MINGW64_MACROS+1}" ]; then
+    eval "`rpm --define="${MINGW64_MACROS}" --eval "%${NAME} $(printf " %q" "${@}")"`"
+else
+    eval "`rpm --eval "%${NAME} $(printf " %q" "${@}")"`"
+fi
