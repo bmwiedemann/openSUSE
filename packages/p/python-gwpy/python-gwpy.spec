@@ -16,61 +16,65 @@
 #
 
 
-# Python2 no longer supported upstream
-%define         skip_python2 1
-
 Name:           python-gwpy
-Version:        3.0.4
+Version:        3.0.5
 Release:        0
 Summary:        A python package for gravitational-wave astrophysics
 License:        GPL-3.0-only
 URL:            https://gwpy.github.io/
 Source:         https://files.pythonhosted.org/packages/source/g/gwpy/gwpy-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-astropy >= 3.0.0
+Requires:       python-astropy >= 4.3.0
 Requires:       python-dqsegdb2
-Requires:       python-gwosc
-Requires:       python-h5py
-Requires:       python-lal
-Requires:       python-ligo-lw
-Requires:       python-ligo-segments
-Requires:       python-matplotlib >= 3.1.0
-Requires:       python-numpy
+Requires:       python-gwdatafind >= 1.1.0
+Requires:       python-gwosc >= 0.5.3
+Requires:       python-h5py >= 3
+Requires:       python-ligo-segments >= 1.0.0
+Requires:       python-ligotimegps >= 1.2.1
+Requires:       python-matplotlib >= 3.3.0
+Requires:       python-numpy >= 1.17
 Requires:       python-python-dateutil
 Requires:       python-requests
-Requires:       python-scipy
-Requires:       python-tqdm
+Requires:       python-scipy >= 1.2.0
+Requires:       python-tqdm >= 4.10.0
 Recommends:     python-PyCBC
 Recommends:     python-PyMySQL
 Recommends:     python-lalsimulation
 Recommends:     python-lscsoft-glue
+Suggests:       python-inspiral-range
 BuildArch:      noarch
 # SECTION test requirements
 # BuildRequires:  %%{python_module PyCBC} -- optional, not available on aarch64
 BuildRequires:  %{python_module PyMySQL}
-BuildRequires:  %{python_module astropy >= 3.0.0}
+BuildRequires:  %{python_module astropy >= 4.3.0}
 BuildRequires:  %{python_module dqsegdb2}
-BuildRequires:  %{python_module framel}
-BuildRequires:  %{python_module freezegun}
-BuildRequires:  %{python_module gwosc}
-BuildRequires:  %{python_module h5py}
-BuildRequires:  %{python_module lalsimulation}
-BuildRequires:  %{python_module lal}
-BuildRequires:  %{python_module ligo-lw}
-BuildRequires:  %{python_module ligo-segments}
-BuildRequires:  %{python_module matplotlib >= 3.1.0}
-BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pytest >= 3.3}
+BuildRequires:  %{python_module gwdatafind >= 1.1.0}
+BuildRequires:  %{python_module gwosc >= 0.5.3}
+BuildRequires:  %{python_module h5py >= 3}
+BuildRequires:  %{python_module ligo-segments >= 1.0.0}
+BuildRequires:  %{python_module ligotimegps >= 1.2.1}
+BuildRequires:  %{python_module lscsoft-glue}
+BuildRequires:  %{python_module matplotlib >= 3.3.0}
+BuildRequires:  %{python_module numpy >= 1.17}
+BuildRequires:  %{python_module pytest-freezegun}
+BuildRequires:  %{python_module pytest-socket}
+BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module requests-mock}
-BuildRequires:  %{python_module scipy}
-BuildRequires:  %{python_module tqdm}
+BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module scipy >= 1.2.0}
+BuildRequires:  %{python_module tqdm >= 4.10.0}
+# extra not defined upstream but needed for tests
+BuildRequires:  %{python_module ligo-lw}
 # /SECTION
 # Unsupported archs by upstream
-ExcludeArch:    %ix86
+ExcludeArch:    %{ix86}
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %python_subpackages

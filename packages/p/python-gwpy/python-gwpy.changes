@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jun 21 14:12:43 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.0.5
+  * [#1613] Update all GWOSC URLs to gwosc.org
+  * [#1608] Fix issues writing StateVector.bits to HDF5
+  * [#1610] Fix plotting TimeSeriesDict on separate Axes
+  * [#1611] Resample time series for coherence calculation when
+    sampling rates differ
+  * [#1622] Update LatexInlineDimensional unit formatter for
+    Astropy 5.3
+  * [#1621] Fix issues with Series.crop precision
+  * [#1617] Document the copy keyword for TimeSeriesBaseDict.crop
+  * [#1619] Address inconsistency in transfer_function between CSD
+    and PSD averaging methods
+  * [#1628] Add H0 and L0 to dynamic_scaled exclusion list
+- Update requirements
+
+-------------------------------------------------------------------
 Tue May 23 16:46:18 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.0.4:
