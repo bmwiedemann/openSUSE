@@ -1,0 +1,68 @@
+From 3a931f617674193dba33448143866aa0735cbd32 Mon Sep 17 00:00:00 2001
+From: Corey Berla <corey@berla.me>
+Date: Sun, 30 Apr 2023 07:56:24 -0700
+Subject: [PATCH] view-cell: Make view property a weak pointer
+
+When the gtk list view is in the process of being destroyed, some of the
+cells might still exist with an invalid reference to the nautilus view.
+We are having an problem where the double click idle timeout from the
+gesture click on the nautilus-view-cell times out when the view-cell
+hasn't be freed but the nautilus view has. A good way to test this is
+by clicking an item immediately followed by ctrl+w to close the tab
+(freeing the view).
+
+I played around with trying to get the gtk list view to free earlier
+in the process (i.e. before the nautilus list base), but there were
+still instances where the cell still existed by the time the nautilus
+view was freed.
+
+To be safe, make the unowned nautilus view a weak pointer of the
+nautilus view cell so we can safely check for NULL values.
+
+Fixes: https://gitlab.gnome.org/GNOME/nautilus/-/issues/2859
+---
+ src/nautilus-list-base.c | 6 ++++++
+ src/nautilus-view-cell.c | 3 ++-
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/src/nautilus-list-base.c b/src/nautilus-list-base.c
+index 22440bacd0..4aef5b7004 100644
+--- a/src/nautilus-list-base.c
++++ b/src/nautilus-list-base.c
+@@ -432,6 +432,12 @@ on_item_click_stopped (GtkGestureClick *gesture,
+     g_autoptr (NautilusListBase) self = nautilus_view_cell_get_view (cell);
+     NautilusListBasePrivate *priv = nautilus_list_base_get_instance_private (self);
+ 
++    if (self == NULL)
++    {
++        /* The view may already be gone before the cell finalized. */
++        return;
++    }
++
+     rubberband_set_state (self, TRUE);
+     priv->activate_on_release = FALSE;
+     priv->deny_background_click = FALSE;
+diff --git a/src/nautilus-view-cell.c b/src/nautilus-view-cell.c
+index 6f28fd8ff7..a16f365672 100644
+--- a/src/nautilus-view-cell.c
++++ b/src/nautilus-view-cell.c
+@@ -86,7 +86,7 @@ nautilus_view_cell_set_property (GObject      *object,
+     {
+         case PROP_VIEW:
+         {
+-            priv->view = g_value_get_object (value);
++            g_set_weak_pointer (&priv->view, g_value_get_object (value));
+         }
+         break;
+ 
+@@ -116,6 +116,7 @@ nautilus_view_cell_finalize (GObject *object)
+     NautilusViewCellPrivate *priv = nautilus_view_cell_get_instance_private (self);
+ 
+     g_clear_object (&priv->item);
++    g_clear_weak_pointer (&priv->view);
+ 
+     G_OBJECT_CLASS (nautilus_view_cell_parent_class)->finalize (object);
+ }
+-- 
+GitLab
+
