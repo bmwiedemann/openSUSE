@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 20 07:12:11 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 2.5.6:
+  * Fix logging of confidential data. [rA0fc31770fa]
+  * Fix memory wiping. [T5977]
+  * Fix macOS build problem. [T5440,T5610]
+  * Upgrade autoconf stuff.
+  * Release-info: https://dev.gnupg.org/T6542
+
+-------------------------------------------------------------------
 Fri Mar 26 14:56:15 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.5.5:
