@@ -493,4 +493,15 @@
   * Add `zh_CN` bank locale</comment>
     <requestid>1089351</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>2a8e3062870b6f6c490dee9eaf3e2632</srcmd5>
+    <version>18.10.1</version>
+    <time>1687379841</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 18.10.1:
+  * Fix handling leap year in `en_US` Passport provider.
+  * Add `passport` Provider and `en_US` Implementation.
+  * Fix `fr_FR` `postcode` length.</comment>
+    <requestid>1094144</requestid>
+  </revision>
 </revisionlist>

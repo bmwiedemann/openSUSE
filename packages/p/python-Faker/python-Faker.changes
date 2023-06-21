@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 20 17:41:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 18.10.1:
+  * Fix handling leap year in `en_US` Passport provider.
+  * Add `passport` Provider and `en_US` Implementation.
+  * Fix `fr_FR` `postcode` length.
+
+-------------------------------------------------------------------
 Sat May 27 21:11:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 18.9.0:
