@@ -123,4 +123,13 @@
   * Fix test_bad_lock_file for other OSes</comment>
     <requestid>1092285</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>97faa550ea400eb2b612b6ef0831e70e</srcmd5>
+    <version>3.12.2</version>
+    <time>1687379838</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.12.2:
+  * Restore 'if TYPE_CHECKING' syntax for FileLock definition</comment>
+    <requestid>1094132</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 20 16:59:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.12.2:
+  * Restore 'if TYPE_CHECKING' syntax for FileLock definition
+
+-------------------------------------------------------------------
 Sun Jun 11 12:40:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.12.1:
