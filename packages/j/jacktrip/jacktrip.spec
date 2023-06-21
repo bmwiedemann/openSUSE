@@ -18,13 +18,14 @@
 
 
 Name:           jacktrip
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
 Summary:        Multi-machine network music performance over the Internet
 License:        MIT
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://github.com/jcacerec/jacktrip
-Source:         https://github.com/jcacerec/jacktrip/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/jcacerec/jacktrip/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        Simple-FFT.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  libqt5-linguist
 BuildRequires:  meson
@@ -52,6 +53,9 @@ audio signal streaming.
 
 %prep
 %autosetup
+pushd externals
+tar xf %{_sourcedir}/Simple-FFT.tar.gz
+popd
 
 %build
 mv build .build

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jun 20 13:22:49 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.10.0
+  * Use Device Authorization Flow by @dhing1024 in #1037
+  * Improvements and Fixes for Device Flow Code by @dhing1024 in #1039
+  * More Informative Loading Message by @dhing1024 in #1041
+  * Cleanup Audio When Switching to Classic Mode by @dhing1024 in #1042
+  * Optimize PLC regulator performance by using double instead of long double by @mikedickey in #1043
+  * Optimized performance of virtual studio volume meters by @mikedickey in #1044
+  * Detect Feedback Loops by @dhing1024 in #1035
+  * Optionally Disable Feedback Detection by @dhing1024 in #1049
+  * Fixing connected view errors by @nwang92 in #1057
+  * Improve FFT Performance by @dhing1024 in #1055
+  * Fixed issue with RTAudio scanning interfaces several times at startup by @mikedickey in #1063
+  * Add audio interface blacklist to exclude Realtek ASIO driver by @mikedickey in #1066
+  * Add timestamps to debug window by @psiborg112 in #1068
+  * Updating new FeedbackDetection setting to be enabled by default by @mikedickey in #1073
+  * Fixing bug with "Change Device Settings" dialog being empty by @mikedickey in #1072
+
+- Provide separate source for Simple-FFT library (https://github.com/jacktrip/jacktrip/issues/1079)
+
+-------------------------------------------------------------------
 Mon May 15 13:11:47 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.9.0
