@@ -230,4 +230,12 @@ Rebase patches:
 - Make 0006-Fix-libclang-usage.patch work with Clang 16. (forwarded request 1076732 from aaronpuchert)</comment>
     <requestid>1076735</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4f3a476d3d8bbceba77d4b072fcdf337</srcmd5>
+    <version>2023.06.0+421</version>
+    <time>1687379998</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094313</requestid>
+  </revision>
 </revisionlist>

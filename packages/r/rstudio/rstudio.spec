@@ -94,11 +94,11 @@
 %define boost_version %{?rstudio_boost_requested_version}%{?!rstudio_boost_requested_version:1.69}
 
 %global rstudio_version_major 2023
-%global rstudio_version_minor 03
+%global rstudio_version_minor 06
 %global rstudio_version_patch 0
-%global rstudio_version_suffix 386
+%global rstudio_version_suffix 421
 # commit of the tag belonging to %%{version}
-%global rstudio_git_revision_hash 3c53477afb13ab959aeb5b34df1f10c237b256c3
+%global rstudio_git_revision_hash 583b465ecc45e60ee9de085148cd2f9741cc5214
 Name:           rstudio
 Version:        %{rstudio_version_major}.%{rstudio_version_minor}.%{rstudio_version_patch}+%{rstudio_version_suffix}
 Release:        0
