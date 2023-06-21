@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun 13 11:34:02 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 6.16
+    * Fix for Virustotal privacy warning before upload or sending file hash only
+    * Remove (hopefully) no longer needed lines; improve a few others (Scan.pm)
+    * Updated language files: Dutch (nl)
+    * Update README and site links for updated GPG key
+
+- Update to version 6.15
+---------------
+    * Fix for Unable to delete previous analysis result 
+    * Updated language files: Indonesian (id), Swedish (sv), German (de), Chinese (zh_CN), Burmese (my)
+    * Fix to German language string in clamtk.desktop 
+    * Update DISCLAIMER to use markdown (DISCLAIMER.md)
+
+-------------------------------------------------------------------
 Thu Dec  9 22:27:02 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 6.14

@@ -1,7 +1,7 @@
 #
 # spec file for package clamtk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           clamtk
-Version:        6.14
+Version:        6.16
 Release:        0
 Summary:        GUI for the ClamAV Antivirus
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -30,7 +30,7 @@ Source2:        %{name}.keyring
 Patch0:         clamtk-add_searchpath.patch
 BuildRequires:  update-desktop-files
 Requires:       clamav >= 0.88
-Requires:       gnome-icon-theme
+Requires:       gnome-icon-theme >= 3
 Requires:       zenity
 Requires:       perl(Cwd)
 Requires:       perl(Digest::SHA)
@@ -95,12 +95,12 @@ done
 
 %files
 %license LICENSE
-%doc CHANGES DISCLAIMER README.md
+%doc CHANGES DISCLAIMER.md README.md
 %{_bindir}/clamtk
 %{perl_vendorlib}/ClamTk
 %{_datadir}/pixmaps/clamtk.png
 %{_datadir}/applications/%{name}.desktop
-%{_mandir}/man1/clamtk.1%{ext_man}
+%{_mandir}/man1/clamtk.1%{?ext_man}
 
 %files lang -f %{name}.lang
 
