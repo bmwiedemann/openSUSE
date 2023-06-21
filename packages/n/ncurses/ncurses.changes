@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 19 07:43:18 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20230617
+  + markup manpages with revision information (prompted by discussion
+    with Bjarni Ingi Gislason).
+
+-------------------------------------------------------------------
 Fri Jun 16 07:04:14 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20230615

@@ -4180,4 +4180,14 @@
   + fixes for compiler warnings/cppcheck.</comment>
     <requestid>1093491</requestid>
   </revision>
+  <revision rev="242" vrev="15">
+    <srcmd5>2a9cc67358875900bb8cd5412b0e7818</srcmd5>
+    <version>unknown</version>
+    <time>1687379811</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20230617
+  + markup manpages with revision information (prompted by discussion
+    with Bjarni Ingi Gislason).</comment>
+    <requestid>1093740</requestid>
+  </revision>
 </revisionlist>
