@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 21 11:13:11 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Sun Feb 26 19:06:23 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Upstream became stale, switching to the fork

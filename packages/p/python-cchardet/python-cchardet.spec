@@ -18,6 +18,7 @@
 
 %define skip_python2 1
 %define modname faust-cchardet
+%{?sle15_python_module_pythons}
 Name:           python-cchardet
 Version:        2.1.18
 Release:        0

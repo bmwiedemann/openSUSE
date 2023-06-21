@@ -50,4 +50,14 @@
     <comment></comment>
     <requestid>1067843</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5c7f015895c6f0e09d9386217538fce2</srcmd5>
+    <version>2.1.18</version>
+    <time>1687380032</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1094349 from ecsos
+
+- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1094472</requestid>
+  </revision>
 </revisionlist>
