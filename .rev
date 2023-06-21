@@ -50,4 +50,13 @@
   * add makefile</comment>
     <requestid>682841</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5d112398358e322063a189b02a8c23e6</srcmd5>
+    <version>1.2.0</version>
+    <time>1687380027</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up SPEC file
+</comment>
+    <requestid>1094398</requestid>
+  </revision>
 </revisionlist>

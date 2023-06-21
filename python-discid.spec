@@ -1,7 +1,7 @@
 #
 # spec file for package python-discid
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013 Johannes Dewender <novell@JonnyJD.net>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-discid
 Version:        1.2.0
 Release:        0
@@ -26,8 +25,9 @@ License:        LGPL-3.0-or-later
 Group:          Development/Libraries/Python
 URL:            https://github.com/JonnyJD/python-discid
 Source:         https://files.pythonhosted.org/packages/source/d/discid/discid-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -54,23 +54,23 @@ pythonic API and uses objects and exceptions.
 
 %prep
 %setup -q -n discid-%{version}
-sed -i "s|^#!%{_bindir}/env python$|#!python3|" examples.py
+sed -i "s|^#!%{_bindir}/env python$|#!%{_bindir}/python3|" examples.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # skip tests that require /dev/sr0
-%python_expand py.test-%{$python_bin_suffix} -v -k "not (test_read_simple or test_read_put or test_read_features)"
+%pytest -k "not (test_read_simple or test_read_put or test_read_features)"
 
 %files %{python_files}
 %license COPYING COPYING.LESSER
 %doc CHANGES.rst README.rst
-%{python_sitelib}/discid/
-%{python_sitelib}/discid-%{version}-py*.egg-info
+%{python_sitelib}/discid
+%{python_sitelib}/discid-%{version}*-info
 
 %changelog
