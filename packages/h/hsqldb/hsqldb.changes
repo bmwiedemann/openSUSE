@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 20 14:27:13 UTC 2023 - David Anes <david.anes@suse.com>
+
+- Upgrade to version 2.7.2: 
+  * adds support for JSON constructor functions 
+  * add direct CSV data load and unload
+
+-------------------------------------------------------------------
 Mon Oct 24 15:55:11 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Upgrade to upstream version 2.7.1: (bsc#1204521, CVE-2022-41853)

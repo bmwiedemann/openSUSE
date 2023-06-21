@@ -1,7 +1,7 @@
 #
 # spec file for package hsqldb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           hsqldb
-Version:        2.7.1
+Version:        2.7.2
 Release:        0
 Summary:        HyperSQL Database Engine
 License:        BSD-3-Clause
