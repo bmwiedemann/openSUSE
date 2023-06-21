@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jun 21 04:55:08 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update: `BuildRequires:  go >= 1.19.10`
+- Update to version 1.26.6:
+  * Release commit for Kubernetes v1.26.6
+  * update-vendor: update vendored go.sums
+  * [release-1.26] releng/go: Update images, dependencies and version to Go 1.19.10
+  * kube-proxy avoid race condition using LocalModeNodeCIDR
+  * Add ephemeralcontainer to imagepolicy securityaccount admission plugin
+  * Add DisruptionTarget condition when preempting for critical pod
+  * update webhook test to go 1.21
+  * Test APIService safe handling at startup
+  * Fix waiting for CRD sync at server start
+  * kubeadm: fix a bug where the static pod changes detection logic is inconsistent with kubelet
+  * kubeadm: Make etcd member removal idempotent
+  * kubeadm: Add etcd client unit tests
+  * kubeadm: Use internal etcd client through an interface
+  * run update-vendor.sh
+  * vclib: Modify x509.UnknownAuthorityError unwrap check
+  * vsphere: Adapt to govmomi version bumps
+  * *: Bump version of vmware/govmomi
+
+-------------------------------------------------------------------
 Mon Jun 12 05:04:12 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update BuildRequires:  `go >= 1.19.9`
