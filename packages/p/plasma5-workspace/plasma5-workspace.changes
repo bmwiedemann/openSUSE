@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Jun 20 17:15:05 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.6
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.6
+- Changes since 5.27.5:
+  * applets/kicker: fix test error in testrunnermodel
+  * kcms/krdb: Set X root window cursor
+  * shell: make accent color optional, and enable accent color after slot connection (kde#470280)
+  * libtaskmanager: fix copy leftover in document
+  * runners/calculator: implement thread-safety in QalculateEngine::evaluate (kde#470219)
+  * applets/batterymonitor: Fix wrong tooltip when plugged in but discharging (kde#470632)
+  * applets/mediacontroller: add busy indicator for remote images
+  * Widgetexplorer: Properly handle translations for applet categories (kde#460523)
+  * wallpapers/image: resize svg wallpaper to requested size (kde#469294)
+  * Klipper config: set UI state when loading the same way as when editing
+  * holidaysevents: reload event data when config changes (kde#437654)
+  * runners/services: Do not match categories for short queries (kde#469769)
+  * components/calendar: reset label under Gregorian date when plugin list changes
+  * components/calendar: use QHash::contains instead of QHash::count
+  * applets/digital-clock: show today's sublabel in tooltip if there is one
+  * applets/systemtray: fix highlight being on top of first column items (kde#456180)
+  * applets/digital-clock: Fix localization for TimeZoneModel (kde#469196)
+  * applets/digital-clock: Allow event titles to be wrapped
+  * Export a new helper function that read Xft.dpi value
+  * libtaskmanager: Fix appmenu caching (kde#422786)
+
+-------------------------------------------------------------------
 Thu May 11 13:06:07 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Require cpp explicitly, xrdb doesn't do it anymore
