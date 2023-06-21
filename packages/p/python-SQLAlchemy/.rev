@@ -1108,4 +1108,23 @@ Remove 0001-fix-sqlite3.10.0-test.patch. Applied upstream.</comment>
   * Repaired the base Uuid datatype for the PostgreSQL dialect to</comment>
     <requestid>1089853</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>2896fa1fcd67feebab837010748dcb15</srcmd5>
+    <version>2.0.16</version>
+    <time>1687379819</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.16:
+  * Python 3.12 support
+  * Fixed regression in the 2.0 series where the default value of
+    validates.include_backrefs got changed to False for the
+    validates() function
+  * Unified the custom PostgreSQL operator definitions
+  * Added support for PostgreSQL 10 NULLS NOT DISTINCT feature of
+    unique indexes and unique constraints
+  * Use proper precedence on PostgreSQL specific operators, such as
+    @&gt;
+  * see 
+  https://docs.sqlalchemy.org/en/20/changelog/changelog_20.html#change-2.0.16</comment>
+    <requestid>1093828</requestid>
+  </revision>
 </revisionlist>

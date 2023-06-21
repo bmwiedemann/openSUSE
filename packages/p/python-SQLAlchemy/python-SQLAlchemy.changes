@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun 19 20:22:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.16:
+  * Python 3.12 support
+  * Fixed regression in the 2.0 series where the default value of
+    validates.include_backrefs got changed to False for the
+    validates() function
+  * Unified the custom PostgreSQL operator definitions
+  * Added support for PostgreSQL 10 NULLS NOT DISTINCT feature of
+    unique indexes and unique constraints
+  * Use proper precedence on PostgreSQL specific operators, such as
+    @>
+  * see 
+  https://docs.sqlalchemy.org/en/20/changelog/changelog_20.html#change-2.0.16
+
+-------------------------------------------------------------------
 Tue May 30 15:57:30 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Switch documentation to be within the main package.
