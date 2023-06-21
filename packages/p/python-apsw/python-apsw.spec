@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-apsw
 Version:        3.42.0.0
 Release:        0
@@ -29,7 +29,7 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(sqlite3) >= 3.30
+BuildRequires:  pkgconfig(sqlite3) >= 3.42
 %python_subpackages
 
 %description
