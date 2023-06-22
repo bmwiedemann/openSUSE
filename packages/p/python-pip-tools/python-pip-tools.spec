@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-pip-tools
-Version:        6.12.2
+Version:        6.13.0
 Release:        0
 Summary:        Tool to keep pinned dependencies up to date
 License:        BSD-3-Clause
@@ -77,6 +77,8 @@ donttest="network"
 donttest+=" or test_direct_reference_with_extras"
 # test_local_duplicate_subdependency_combined also requires network
 donttest+=" or test_local_duplicate_subdependency_combined"
+# test_compile_recursive_extras also requires network
+donttest+=" or test_compile_recursive_extras"
 %pytest -k "not ($donttest)"
 
 %files %{python_files}

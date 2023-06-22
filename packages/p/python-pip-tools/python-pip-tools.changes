@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 22 12:40:48 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.13.0
+  * Add support for self-referential extras
+  * Add support for pip 23.1
+  * Pass --cache-dir to --pip-args for backtracking resolver
+
+-------------------------------------------------------------------
 Fri Feb 24 11:53:48 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 6.12.2
