@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Wed Jun 21 13:35:22 UTC 2023 - Osama Alrifai <osamaalrifai18@gmail.com>
+
+- update to version 0.18.0
+
+Breaking changes
+
+    Remove deprecated rhcos variant
+
+Features
+
+    Support offline Tang provisioning via pre-shared advertisement (fcos 1.5.0+,
+    openshift 4.14.0-exp)
+    Support local file embedding for SSH keys and systemd units (fcos 1.5.0+,
+    flatcar 1.1.0+, openshift 4.14.0-exp, r4e 1.1.0+)
+    Allow enabling discard passthrough on LUKS devices (fcos 1.5.0+,
+    flatcar 1.1.0+, openshift 4.14.0-exp)
+    Allow specifying arbitrary LUKS open options (fcos 1.5.0+,
+    flatcar 1.1.0+, openshift 4.14.0-exp)
+    Allow specifying user password hash (openshift 4.13.0+)
+    Stabilize Fedora CoreOS spec 1.5.0, targeting Ignition spec 3.4.0
+    Stabilize Flatcar spec 1.1.0, targeting Ignition spec 3.4.0
+    Stabilize OpenShift spec 4.13.0, targeting Ignition spec 3.2.0
+    Stabilize RHEL for Edge spec 1.1.0, targeting Ignition spec 3.4.0
+    Add Fedora CoreOS spec 1.6.0-experimental, targeting Ignition spec
+    3.5.0-experimental
+    Add Flatcar spec 1.2.0-experimental, targeting Ignition spec
+    3.5.0-experimental
+    Add OpenShift spec 4.14.0-experimental, targeting Ignition spec
+    3.5.0-experimental
+    Add RHEL for Edge spec 1.2.0-experimental, targeting Ignition spec
+    3.5.0-experimental
+
+Bug fixes
+
+    Use systemd default dependencies in mount units for Tang-backed LUKS volumes
+    Allow setting storage.trees.local to the --files-dir directory
+
+Misc. changes
+
+    Roll back to Ignition spec 3.2.0 (openshift 4.13.0)
+    Drop extensions section (fcos 1.5.0+, openshift 4.13.0+)
+    Drop LuksOption and RaidOption types (Go API for fcos 1.5.0+,
+    flatcar 1.1.0+, openshift 4.14.0-experimental)
+    Require Go 1.18+
+
+Docs changes
+
+    Document that hash fields describe decompressed data
+    Clarify spec docs for files/luks hash fields
+    Document SSH key file path used by OpenShift 4.13+ (openshift)
+    Document command to generate GRUB password hashes
+
+
+-------------------------------------------------------------------
 Thu Feb 16 15:22:46 UTC 2023 - Avinesh Kumar <avinesh.kumar@suse.com>
 
 - Update to version 0.17.0

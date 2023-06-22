@@ -18,7 +18,7 @@
 
 
 Name:           butane
-Version:        0.17.0
+Version:        0.18.0
 Release:        0
 Summary:        Tool to generate Ignition configs from Butane Configs
 Group:          System/Management
@@ -26,7 +26,7 @@ License:        Apache-2.0
 URL:            https://github.com/coreos/butane
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 
-BuildRequires:  golang(API) >= 1.15
+BuildRequires:  golang(API) >= 1.18
 
 # Upgrade from old fcct/ignition-config-transpiler
 Obsoletes:      ignition-config-transpiler < %{version}-%{release}
