@@ -16,8 +16,7 @@
 #
 
 
-%define skip_python2 1
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-django-appconf
 Version:        1.0.5
 Release:        0
