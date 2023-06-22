@@ -27,19 +27,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Werkzeug%{psuffix}
-Version:        2.2.3
+Version:        2.3.6
 Release:        0
 Summary:        The Swiss Army knife of Python web development
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://werkzeug.palletsprojects.com
 Source:         https://files.pythonhosted.org/packages/source/W/Werkzeug/Werkzeug-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM moved_root.patch bsc#[0-9]+ mcepl@suse.com
-# this patch makes things totally awesome
-Patch1:         moved_root.patch
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 %if %{with test}
 BuildRequires:  %{python_module Werkzeug = %{version}}
 BuildRequires:  %{python_module cryptography}
@@ -50,12 +48,13 @@ BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest-xprocess}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module sortedcontainers}
+BuildRequires:  %{python_module watchdog >= 3.0.0}
 %endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-MarkupSafe >= 2.1.1
+Requires:       python-MarkupSafe >= 2.1.2
 Recommends:     python-termcolor
-Recommends:     python-watchdog
+Recommends:     python-watchdog >= 3.0.0
 Obsoletes:      python-Werkzeug-doc < %{version}
 Provides:       python-Werkzeug-doc = %{version}
 BuildArch:      noarch
@@ -82,11 +81,11 @@ bulletin boards, etc.).
 sed -i "1d" examples/manage-{i18nurls,simplewiki,shorty,couchy,cupoftee,webpylike,plnt,coolmagic}.py # Fix non-executable scripts
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if ! %{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
