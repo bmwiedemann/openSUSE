@@ -5,7 +5,7 @@
   <artifactId>bcutil-jdk18on</artifactId>
   <packaging>jar</packaging>
   <name>Bouncy Castle ASN.1 Extension and Utility APIs</name>
-  <version>1.73</version>
+  <version>1.74</version>
   <description>The Bouncy Castle Java APIs for ASN.1 extension and utility APIs used to support bcpkix and bctls. This jar contains APIs for JDK 1.8 and up.</description>
   <url>https://www.bouncycastle.org/java.html</url>
   <licenses>
@@ -33,7 +33,7 @@
     <dependency>
       <groupId>org.bouncycastle</groupId>
       <artifactId>bcprov-jdk18on</artifactId>
-      <version>1.73</version>
+      <version>1.74</version>
       <type>jar</type>
     </dependency>
   </dependencies>

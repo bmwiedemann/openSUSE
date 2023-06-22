@@ -1,7 +1,73 @@
 -------------------------------------------------------------------
+Mon Jun 19 10:26:53 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 1.74: [bsc#1212508, CVE-2023-33201]
+  * Defects Fixed:
+    - AsconEngine: Fixed a buffering bug when decrypting across
+      multiple processBytes calls (ascon128a unaffected).
+    - Context based sanity checking on PGP signatures has been added.
+    - The ParallelHash clone constructor was not copying all fields.
+    - The maximimum number of blocks for CTR/SIC modes was 1 block
+      less than it should have been.
+  * Additional Features and Functionality:
+    - The PGP API now supports wildcard key IDs for public key
+      based data encryption.
+    - LMS now supports SHA256/192, SHAKE256/192, and SHAKE256/256
+      (the additional SP 8000-208 parameter sets).
+    - The PGP API now supports V5 and V6 AEAD encryption for
+      encrypted data packets.
+    - The PGP examples have been updated to reflect key size and algorithm
+      changes that have occurred since they were first written (10+ years...).
+    - (D)TLS: A new callback 'TlsPeer.notifyConnectionClosed' will be called
+      when the connection is closed (including by failure).
+    - BCJSSE: Improved logging of connection events and include unique IDs
+      in connection-specific log messages.
+    - BCJSSE: Server now logs the offered cipher suites when it fails to
+      select one.
+    - BCJSSE: Added support for SSLParameters namedGroups and
+      signatureSchemes properties (can also be used via BCJSSE
+      extension API in earlier Java versions).
+    - DTLS: The initial handshake re-send time is now configurable by
+      overriding 'TlsPeer.getHandshakeResendTimeMillis'.
+    - DTLS: Added support for connection IDs per RFC 9146.
+    - DTLS: Performance of DTLSVerifier has been improved so that it can
+      reasonably be used for all incoming packets.
+    - Initial support has been added for A Mechanism for Encoding
+      Differences in Paired Certificates.
+    - The PGP API now supports parsing, encoding, and fingerprinting
+      of V6 EC/EdEC keys.
+    - A thread safe verifier API has been added to the PGP API to support
+      multi-threaded verification of certifications on keys and user IDs.
+    - The number of keys/sub-keys in a PGPKeyRing can now be found by
+      calling PGPKeyRing.size().
+    - The PQC algorithms LMS/HSS, SPHINCS+, Dilithium, Falcon, and NTRU
+      are now supported directly by the BC provider.
+  * Notes:
+    - The now defunct PQC SIKE algorithm has been removed, this has also
+      meant the removal of its resource files so the provider is now quite
+      a bit smaller.
+    - As a precaution, HC128 now enforces a 128 bit IV, previous behaviour
+      for shorter IVs can be supported where required by padding the IV to
+      the 128 bits with zero.
+    - PGP encrypted data generation now uses integrity protection by default.
+      Previous behaviour for encrypted data can be supported where required
+      by calling PGPDataEncryptorBuilder.setWithIntegrityPacket(false) when
+      data encryption is set up.
+    - There are now additional sanity checks in place to prevent accidental
+      mis-use of PGPSignature objects. If this change causes any issues, you
+      might want to check what your code is up to as there is probably a bug.
+  * Security Advisories:
+    - CVE-2023-33201: this release fixes an issue with the X509LDAPCertStoreSpi
+      where a specially crafted certificate subject could be used to try and
+      extract extra information out of an LDAP server with wild-card matthing
+      enabled.
+  * Rebase bouncycastle-javadoc.patch
+  * Add bouncycastle-notests.patch
+
+-------------------------------------------------------------------
 Tue Apr 25 10:26:27 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
-- Update to version 1.73:
+- Update to version 1.73: [jsc#PED-3756]
   * Defects Fixed:
     - BCJSSE: Instantiating a JSSE provider in some contexts could
       cause an AccessControl exception.

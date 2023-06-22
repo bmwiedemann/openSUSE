@@ -335,4 +335,12 @@ view</comment>
     <comment></comment>
     <requestid>1082727</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>9d4581f44077ef4f40fc9ac7b85b7f9d</srcmd5>
+    <version>1.74</version>
+    <time>1687469096</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1212508</comment>
+    <requestid>1094295</requestid>
+  </revision>
 </revisionlist>

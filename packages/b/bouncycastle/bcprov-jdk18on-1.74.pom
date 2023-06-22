@@ -2,11 +2,11 @@
 <project>
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.bouncycastle</groupId>
-  <artifactId>bctls-jdk18on</artifactId>
+  <artifactId>bcprov-jdk18on</artifactId>
   <packaging>jar</packaging>
-  <name>Bouncy Castle JSSE provider and TLS/DTLS API</name>
-  <version>1.73</version>
-  <description>The Bouncy Castle Java APIs for TLS and DTLS, including a provider for the JSSE.</description>
+  <name>Bouncy Castle Provider</name>
+  <version>1.74</version>
+  <description>The Bouncy Castle Crypto package is a Java implementation of cryptographic algorithms. This jar contains JCE provider and lightweight API for the Bouncy Castle Cryptography APIs for JDK 1.8 and up.</description>
   <url>https://www.bouncycastle.org/java.html</url>
   <licenses>
     <license>
@@ -29,18 +29,4 @@
       <email>feedback-crypto@bouncycastle.org</email>
     </developer>
   </developers>
-  <dependencies>
-    <dependency>
-      <groupId>org.bouncycastle</groupId>
-      <artifactId>bcprov-jdk18on</artifactId>
-      <version>1.73</version>
-      <type>jar</type>
-    </dependency>
-    <dependency>
-      <groupId>org.bouncycastle</groupId>
-      <artifactId>bcutil-jdk18on</artifactId>
-      <version>1.73</version>
-      <type>jar</type>
-    </dependency>
-  </dependencies>
 </project>

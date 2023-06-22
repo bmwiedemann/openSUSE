@@ -17,7 +17,7 @@
 
 
 %global ver_major 1
-%global ver_minor 73
+%global ver_minor 74
 %global gittag r%{ver_major}rv%{ver_minor}
 %global archivever jdk18on-%{ver_major}%{ver_minor}
 %global classname org.bouncycastle.jce.provider.BouncyCastleProvider
@@ -37,8 +37,11 @@ Source4:        https://repo1.maven.org/maven2/org/%{name}/bcmail-jdk18on/%{vers
 Source5:        https://repo1.maven.org/maven2/org/%{name}/bctls-jdk18on/%{version}/bctls-jdk18on-%{version}.pom
 Source6:        https://repo1.maven.org/maven2/org/%{name}/bcutil-jdk18on/%{version}/bcutil-jdk18on-%{version}.pom
 Source7:        https://repo1.maven.org/maven2/org/%{name}/bcjmail-jdk18on/%{version}/bcjmail-jdk18on-%{version}.pom
+# PATCH-FIX-OPENSUSE Fix javadoc build
 Patch0:         bouncycastle-javadoc.patch
+# PATCH-FIX-OPENSUSE Add OSGi manifests to the distributed jars
 Patch1:         bouncycastle-osgi.patch
+Patch2:         bouncycastle-notests.patch
 BuildRequires:  ant
 BuildRequires:  ant-junit
 BuildRequires:  fdupes
@@ -142,9 +145,7 @@ Group:          Development/Libraries/Java
 API documentation for the Bouncy Castle Cryptography APIs.
 
 %prep
-%setup -q -n bc-java-%{gittag}
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1 -n bc-java-%{gittag}
 
 # Remove provided binaries
 find . -type f -name "*.class" -exec rm -f {} \;
