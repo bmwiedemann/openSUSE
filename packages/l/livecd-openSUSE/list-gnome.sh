@@ -7,6 +7,7 @@ buildignore libreoffice-icon-theme-hicontrast
 buildignore colord
 buildignore apparmor-utils
 buildignore java-11-openjdk-headless
+buildignore patterns-base-fips
 install branding-openSUSE
 
 # adobe-sourcecodepro-fonts is the monospace font for openSUSE

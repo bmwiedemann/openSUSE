@@ -1618,4 +1618,13 @@
     <comment></comment>
     <requestid>1078653</requestid>
   </revision>
+  <revision rev="203" vrev="203">
+    <srcmd5>fe0192cb48037b957f443ca5a8bac3de</srcmd5>
+    <version>unknown</version>
+    <time>1687414525</time>
+    <user>dimstar_suse</user>
+    <comment>- list-gnome.sh: don't add patterns-base-fips: FIPS support in TW
+  is merely there for reference for future SUSE products, but it is
+  not a certified distro.</comment>
+  </revision>
 </revisionlist>
