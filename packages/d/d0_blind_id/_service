@@ -3,7 +3,7 @@
     <param name="url">http://git.xonotic.org/xonotic/d0_blind_id.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">xonotic-v0.8.5</param>
+    <param name="revision">xonotic-v0.8.6</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">xonotic-v(.*)</param>

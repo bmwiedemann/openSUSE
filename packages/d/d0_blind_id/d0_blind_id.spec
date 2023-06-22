@@ -17,7 +17,7 @@
 
 
 Name:           d0_blind_id
-Version:        0.8.5
+Version:        0.8.6
 Release:        0
 Summary:        Blind-ID library
 License:        BSD-3-Clause
