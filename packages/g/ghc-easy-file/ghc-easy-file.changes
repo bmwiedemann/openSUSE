@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May  1 07:15:52 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update easy-file to version 0.2.5.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Wed Apr 26 04:31:34 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update easy-file to version 0.2.4.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:06:40 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

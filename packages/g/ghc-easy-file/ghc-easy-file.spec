@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.3
+Version:        0.2.5
 Release:        0
 Summary:        Cross-platform File handling
 License:        BSD-3-Clause
