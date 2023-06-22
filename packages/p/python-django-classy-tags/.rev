@@ -60,4 +60,12 @@
   * Add support for Django &gt;= 4.1</comment>
     <requestid>1005946</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>8be736765059e6aa4d6b7531745e9db8</srcmd5>
+    <version>3.0.1</version>
+    <time>1687469163</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094462</requestid>
+  </revision>
 </revisionlist>
