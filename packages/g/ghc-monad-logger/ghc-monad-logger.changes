@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun  5 11:14:59 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update monad-logger to version 0.3.40.
+  ## 0.3.40
+
+  * Relax `fast-logger` upper bound from 3.2 to 3.3
+  * Add `Alternative` instances for `LoggingT` and `NoLoggingT`
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:36 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
