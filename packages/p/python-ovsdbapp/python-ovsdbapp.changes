@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun 15 20:21:45 UTC 2023 - cloud-devel@suse.de
+
+- update to version 2.3.0
+  - [CI] Set the default OS_TEST_PATH in the stestr conf file
+  - Use OVN's OVS submodule for functional tests
+  - Add Interface paramteres to ``OvsdbIdl.add_port`` method.
+  - All ``AddCommand`` child classes return the new register UUID
+  - Update master for stable/2023.1
+  - Add support for manipulating BFD entries
+  - Add new function ls_get_localnet_ports
+  - Add 'no timeout' option to wait_for_change
+  - Add if_exists and **kwargs columns to db_set
+
+-------------------------------------------------------------------
 Mon Mar  6 15:50:49 UTC 2023 - cloud-devel@suse.de
 
 - update to version 2.2.1

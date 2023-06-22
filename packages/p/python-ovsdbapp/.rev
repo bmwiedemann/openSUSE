@@ -219,4 +219,21 @@
   - Define &quot;LbAddIpPortMappingCommand&quot; with latin chars</comment>
     <requestid>1069689</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4c960ad8b9a4e41a3dcc5efce02b6e23</srcmd5>
+    <version>2.3.0</version>
+    <time>1687469103</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.3.0
+  - [CI] Set the default OS_TEST_PATH in the stestr conf file
+  - Use OVN's OVS submodule for functional tests
+  - Add Interface paramteres to ``OvsdbIdl.add_port`` method.
+  - All ``AddCommand`` child classes return the new register UUID
+  - Update master for stable/2023.1
+  - Add support for manipulating BFD entries
+  - Add new function ls_get_localnet_ports
+  - Add 'no timeout' option to wait_for_change
+  - Add if_exists and **kwargs columns to db_set</comment>
+    <requestid>1093366</requestid>
+  </revision>
 </revisionlist>
