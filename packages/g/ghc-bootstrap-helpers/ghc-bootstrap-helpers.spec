@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-bootstrap-helpers
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define         alex_ver 3.2.7.1
 %define         happy_ver 1.20.0
 
@@ -22,7 +23,7 @@ Name:           ghc-bootstrap-helpers
 Version:        1.3
 Release:        0
 Summary:        Dependencies to build ghc
-License:        BSD-3-Clause AND BSD-2-Clause
+License:        BSD-2-Clause AND BSD-3-Clause
 URL:            https://build.opensuse.org/project/show/devel:languages:haskell
 Source:         https://hackage.haskell.org/package/alex-%{alex_ver}/alex-%{alex_ver}.tar.gz
 Source1:        https://hackage.haskell.org/package/happy-%{happy_ver}/happy-%{happy_ver}.tar.gz

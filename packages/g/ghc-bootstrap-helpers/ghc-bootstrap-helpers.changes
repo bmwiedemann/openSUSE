@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 25 13:12:35 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Adjust constraints for riscv64
+
+-------------------------------------------------------------------
 Mon Jan 30 17:04:15 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update alex to version 3.2.7.1 for bootstrapping ghc-9.4.4.

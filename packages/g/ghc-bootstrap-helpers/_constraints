@@ -9,9 +9,9 @@
       <arch>riscv64</arch>
     </conditions>
     <hardware>
-      <physicalmemory>
-        <size unit="G">8</size>
-      </physicalmemory>
+      <memory>
+        <size unit="G">14</size>
+      </memory>
     </hardware>
   </overwrite>
 </constraints>
