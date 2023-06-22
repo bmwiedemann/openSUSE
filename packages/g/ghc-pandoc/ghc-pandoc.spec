@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.1.2
+Version:        3.1.3
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
@@ -144,12 +144,16 @@ BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-time-prof
+BuildRequires:  ghc-typst-devel
+BuildRequires:  ghc-typst-prof
 BuildRequires:  ghc-unicode-collation-devel
 BuildRequires:  ghc-unicode-collation-prof
 BuildRequires:  ghc-unicode-transforms-devel
 BuildRequires:  ghc-unicode-transforms-prof
 BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-unix-prof
+BuildRequires:  ghc-vector-devel
+BuildRequires:  ghc-vector-prof
 BuildRequires:  ghc-xml-conduit-devel
 BuildRequires:  ghc-xml-conduit-prof
 BuildRequires:  ghc-xml-devel
@@ -256,10 +260,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 %dir %{_datadir}/%{pkg_name}-%{version}/data/docx/word/theme
 %dir %{_datadir}/%{pkg_name}-%{version}/data/dzslides
 %dir %{_datadir}/%{pkg_name}-%{version}/data/odt
-%dir %{_datadir}/%{pkg_name}-%{version}/data/odt/Configurations2
-%dir %{_datadir}/%{pkg_name}-%{version}/data/odt/Configurations2/accelerator
 %dir %{_datadir}/%{pkg_name}-%{version}/data/odt/META-INF
-%dir %{_datadir}/%{pkg_name}-%{version}/data/odt/Thumbnails
 %dir %{_datadir}/%{pkg_name}-%{version}/data/pptx
 %dir %{_datadir}/%{pkg_name}-%{version}/data/pptx/_rels
 %dir %{_datadir}/%{pkg_name}-%{version}/data/pptx/docProps
@@ -305,14 +306,11 @@ This package provides the Haskell %{pkg_name} profiling library.
 %{_datadir}/%{pkg_name}-%{version}/data/dzslides/template.html
 %{_datadir}/%{pkg_name}-%{version}/data/epub.css
 %{_datadir}/%{pkg_name}-%{version}/data/init.lua
-%{_datadir}/%{pkg_name}-%{version}/data/odt/Configurations2/accelerator/current.xml
 %{_datadir}/%{pkg_name}-%{version}/data/odt/META-INF/manifest.xml
-%{_datadir}/%{pkg_name}-%{version}/data/odt/Thumbnails/thumbnail.png
 %{_datadir}/%{pkg_name}-%{version}/data/odt/content.xml
 %{_datadir}/%{pkg_name}-%{version}/data/odt/manifest.rdf
 %{_datadir}/%{pkg_name}-%{version}/data/odt/meta.xml
 %{_datadir}/%{pkg_name}-%{version}/data/odt/mimetype
-%{_datadir}/%{pkg_name}-%{version}/data/odt/settings.xml
 %{_datadir}/%{pkg_name}-%{version}/data/odt/styles.xml
 %{_datadir}/%{pkg_name}-%{version}/data/pptx/?Content_Types?.xml
 %{_datadir}/%{pkg_name}-%{version}/data/pptx/_rels/.rels
