@@ -7,7 +7,6 @@ buildignore libreoffice-icon-theme-hicontrast
 buildignore colord
 buildignore apparmor-utils
 buildignore java-11-openjdk-headless
-buildignore patterns-base-fips
 install branding-openSUSE
 
 # adobe-sourcecodepro-fonts is the monospace font for openSUSE
@@ -47,6 +46,7 @@ buildignore gnome-software
 
 # Pulls in color management tools
 buildignore gnome-control-center-color
+buildignore gnome-control-center-user-faces
 
 # 17 MiB, really?
 buildignore libgweather-lang

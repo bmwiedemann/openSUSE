@@ -1627,4 +1627,12 @@
   is merely there for reference for future SUSE products, but it is
   not a certified distro.</comment>
   </revision>
+  <revision rev="204" vrev="204">
+    <srcmd5>00236d1c3b2073a3566ee56641ffe7f6</srcmd5>
+    <version>unknown</version>
+    <time>1687416226</time>
+    <user>dimstar_suse</user>
+    <comment>- list-gnome.sh: ignore gnome-control-center-user-faces: gain some
+  space; user generation on the live system is not relevant.</comment>
+  </revision>
 </revisionlist>

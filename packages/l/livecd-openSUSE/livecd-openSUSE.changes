@@ -1,9 +1,8 @@
 -------------------------------------------------------------------
 Thu Jun 22 06:14:21 UTC 2023 - Dominique Leuenberger <dleuenberger@suse.com>
 
-- list-gnome.sh: don't add patterns-base-fips: FIPS support in TW
-  is merely there for reference for future SUSE products, but it is
-  not a certified distro.
+- list-gnome.sh: ignore gnome-control-center-user-faces: gain some
+  space; user generation on the live system is not relevant.
 
 -------------------------------------------------------------------
 Wed Apr 12 12:02:26 UTC 2023 - Fabian Vogt <fvogt@suse.com>
