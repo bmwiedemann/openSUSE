@@ -60,4 +60,12 @@
 - Declare -doc subpackage as noarch.</comment>
     <requestid>1093016</requestid>
   </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>64a1145c16ac5438fd95476687c6cf60</srcmd5>
+    <version>1.0.1</version>
+    <time>1687469205</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094650</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 22 08:19:27 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Drop sphinx .doctrees to make package build reproducible
+
+-------------------------------------------------------------------
 Wed Jun 14 05:57:12 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Rejig sphinx.patch to not require Sphinx's setuptools machinery.

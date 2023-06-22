@@ -71,7 +71,7 @@ HTML Documentation and examples for %name.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 PYTHONPATH=%{buildroot}%{python_sitearch} python3 -m sphinx doc/sphinx/source build/sphinx/html
-rm -rf build/sphinx/html/.buildinfo
+rm -rf build/sphinx/html/.buildinfo build/sphinx/html/.doctrees
 
 %check
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
