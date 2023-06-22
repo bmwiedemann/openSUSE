@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun 22 11:57:58 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2023.06.22
+   * youtube: add IOS to default clients used
+
+-------------------------------------------------------------------
+Wed Jun 21 07:26:11 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2023.06.21
+  * Add option --compat-option playlist-match-filter
+  * Add options --no-quiet, option --color, --netrc-cmd, --xff
+  * Auto-select default format in -f-
+  * Improve HTTP redirect handling
+  * Support decoding multiple content encodings
+
+-------------------------------------------------------------------
 Tue May  9 09:18:49 UTC 2023 - Max Lin <mlin@suse.com>
 
 - Use python3.11 on Leap 15.5
