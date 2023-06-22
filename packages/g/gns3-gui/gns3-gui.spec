@@ -17,42 +17,37 @@
 
 
 Name:           gns3-gui
-Version:        2.2.38
+Version:        2.2.40.1
 Release:        0
 Summary:        GNS3 graphical interface for the GNS3 server
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Other
 URL:            http://github.com/GNS3/%{name}
 Source:         https://github.com/GNS3/gns3-gui/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         %{name}_fix_desktop_file.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 BuildRequires:  update-desktop-files
-%if 0%{?suse_version} > 1500
-Requires:       python3-jsonschema >= 3.2.0
-%else
-Requires:       python3-jsonschema < 3
-Requires:       python3-jsonschema >= 2.4.0
-%endif
 Requires:       python3-distro >= 1.6.0
-Requires:       python3-psutil >= 2.2.1
+Requires:       python3-jsonschema >= 4.17.3
+Requires:       python3-psutil >= 5.9.4
 Requires:       python3-qt5
-Requires:       python3-sentry-sdk >= 1.5.4
+Requires:       python3-sentry-sdk >= 1.17.0
 Recommends:     gns3-server
 Recommends:     libcap-progs
 Recommends:     sudo
 Recommends:     telnet
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  python3-distro >= 1.7.0
-BuildRequires:  python3-jsonschema >= 2.4.0
-BuildRequires:  python3-psutil >= 2.2.1
+BuildRequires:  python3-distro >= 1.8.0
+BuildRequires:  python3-jsonschema >= 4.17.3
+BuildRequires:  python3-psutil >= 5.9.4
 BuildRequires:  python3-pytest
 BuildRequires:  python3-qt5
-BuildRequires:  python3-sentry-sdk >= 1.5.4
-BuildRequires:  python3-sip
+BuildRequires:  python3-sentry-sdk >= 1.17.0
 BuildRequires:  xvfb-run
 # /SECTION
 
@@ -75,30 +70,21 @@ find . -type f -name "*\.py" -exec sed -i 's/^#!\/usr\/bin\/env python/#!\/usr\/
 
 # Relax strict requirements
 sed -i -r 's/==/>=/g' requirements.txt
-sed -i -r 's/sentry-sdk.*//g' requirements.txt
+sed -i -r '/jsonschema/ s/,<.*$//' requirements.txt
+sed -i -r '/sentry-sdk/ s/,<.*$//' requirements.txt
 sed -i -r '/setuptools/d' requirements.txt
-# Lower psutil>=5.8.0
-sed -i -r 's/psutil>=5.9.4/psutil>=5.8.0/' requirements.txt
-sed -i -r 's/distro>=1.7.*/distro>=1.6.0/' requirements.txt
-sed -i -r 's/jsonschema>=4.17.3/jsonschema>=3.2.0/' requirements.txt
+# It's required but missing
+echo qt5 >> requirements.txt
 # Disable update alerts
 sed -i 's/"check_for_update": True,/"check_for_update": False,/' gns3/settings.py
 # Disable anonymous data collection
 sed -i 's/"send_stats": True,/"send_stats": False,/' gns3/settings.py
 
 %build
-%if 0%{?suse_version} > 1315
-%python3_build
-%else
-python3 setup.py build
-%endif
+%python3_pyproject_wheel
 
 %install
-%if 0%{?suse_version} > 1315
-%python3_install
-%else
-python3 setup.py install --root=%{buildroot} --prefix=%{_prefix}
-%endif
+%python3_pyproject_install
 
 rm %{buildroot}/%{python3_sitelib}/gns3/static/.keep
 #
@@ -107,24 +93,20 @@ find %{buildroot}/%{python3_sitelib}/gns3  -type f -name "*\.py" -exec grep -Hl 
 find %{buildroot}/%{python3_sitelib}/gns3  -name "*.svg" -exec chmod -x {} \;
 #
 install -D -m0644 %{name}.appdata.xml %{buildroot}/%{_datadir}/appdata/gns3.appdata.xml
-%fdupes %{buildroot}
+%suse_update_desktop_file gns3 System Emulator
+%fdupes %{buildroot}%{python3_sitelib}
+%fdupes %{buildroot}%{_datadir}/icons
 
+%check
 rm tests/test_main_window.py
 xvfb-run python3 -m pytest -rs
-
-%post
-%{_bindir}/update-mime-database %{_datadir}/mime > /dev/null 2>&1 || :
-%{_bindir}/update-desktop-database
-
-%postun
-%{_bindir}/update-mime-database %{_datadir}/mime > /dev/null 2>&1 || :
-%{_bindir}/update-desktop-database
 
 %files
 %license LICENSE
 %doc AUTHORS README.md
 %{_bindir}/gns3
-%{python3_sitelib}/gns3*
+%{python3_sitelib}/gns3
+%{python3_sitelib}/gns3_gui-%{version}.dist-info
 %{_datadir}/icons/hicolor/*
 %{_datadir}/applications/gns3.desktop
 %{_datadir}/mime/packages/gns3-gui.xml

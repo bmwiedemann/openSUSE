@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jun 19 15:26:19 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+
+- Update to 2.2.40.1
+  * Change log messages for Websocket errors
+  * Do not proceed if an appliance symbol cannot be downloaded. Ref
+    #3466
+  * Delete a node or link from topology summary view using Delete
+    key. Ref #3445
+  * Fix "Start the capture visualization program" checkbox works
+    only one (first) time for a given link. Fixes #3442
+  * Let the selected link style applied when editing a link. Fixes
+    #3460
+  * Fix hovered color shown in style editing dialog. Fixes #3460
+- Release 2.2.39
+  * Fix nodes are not snapped to the grid at the moment of creation
+  * Upgrade distro and aiohttp dependencies
+- Remove version unpinnings: Not required for Tumbleweed, older
+  distributions have failed to provide the lowered requirements
+  already months ago
+- Remove old python-sip (v4) from BuildRequires: not needed
+- Remove unused old distro install methods, replace by PEP517
+  pyproject macros
+- Remove gns3-gui_fix_desktop_file.patch replace by macro
+
+-------------------------------------------------------------------
 Fri Mar 17 16:41:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.38:
