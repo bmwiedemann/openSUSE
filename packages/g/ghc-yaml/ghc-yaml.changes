@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 14 12:46:51 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update yaml to version 0.11.11.1.
+  ## 0.11.11.1
+
+  * For optparse-applicative-0.18: use `pretty` instead of `text` [#216](https://github.com/snoyberg/yaml/pull/216)
+
+-------------------------------------------------------------------
 Thu Mar 30 17:09:10 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
