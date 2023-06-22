@@ -1,7 +1,7 @@
 #
 # spec file for package mawk
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2010 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,16 +18,15 @@
 
 
 %define _upver 1.3.4
-%define _datever 20200120
+%define _datever 20230525
 Name:           mawk
 Version:        %{_upver}.%{_datever}
 Release:        0
 Summary:        Implementation of New/POSIX AWK
 License:        GPL-2.0-only
-Group:          Productivity/Text/Utilities
 URL:            https://invisible-island.net/mawk/mawk.html
-Source0:        ftp://ftp.invisible-island.net/mawk/mawk-%{_upver}-%{_datever}.tgz
-Source1:        ftp://ftp.invisible-island.net/mawk/mawk-%{_upver}-%{_datever}.tgz.asc
+Source0:        https://invisible-island.net/archives/mawk/mawk-%{_upver}-%{_datever}.tgz
+Source1:        https://invisible-island.net/archives/mawk/mawk-%{_upver}-%{_datever}.tgz.asc
 Source2:        %{name}.keyring
 # PATCH-FIX-OPENSUSE -- bmwiedemann -- drop timestamp / for build-compare
 Patch0:         reproducible.patch
@@ -40,8 +39,7 @@ POSIX 1003.2 (draft 11.3) definition of the AWK language and additionally
 provides a small number of extensions.
 
 %prep
-%setup -q -n mawk-%{_upver}-%{_datever}
-%patch0 -p1
+%autosetup -n mawk-%{_upver}-%{_datever} -p1
 chmod 755 examples/*
 
 %build
@@ -54,12 +52,6 @@ chmod 755 examples/*
 %install
 %make_install
 
-%if 0%{?suse_version} < 1550
-# compatibility symlink
-install -d -m 755 %{buildroot}/bin
-ln -s %{_bindir}/mawk %{buildroot}/bin/mawk
-%endif
-
 %check
 %make_build check
 
@@ -68,8 +60,5 @@ ln -s %{_bindir}/mawk %{buildroot}/bin/mawk
 %doc ACKNOWLEDGMENT CHANGES README examples/
 %{_bindir}/mawk
 %{_mandir}/man1/mawk.1%{?ext_man}
-%if 0%{?suse_version} < 1550
-/bin/mawk
-%endif
 
 %changelog
