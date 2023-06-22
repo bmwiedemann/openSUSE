@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-black
 Version:        23.3.0
@@ -30,7 +29,6 @@ BuildRequires:  %{python_module aiohttp_cors}
 BuildRequires:  %{python_module attrs >= 18.1.0}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module click >= 8.0.0}
-BuildRequires:  %{python_module dataclasses if %python-base < 3.7}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling >= 1.8.0}
@@ -41,7 +39,6 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module platformdirs >= 2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tomli >= 1.1.0}
-BuildRequires:  %{python_module typed-ast >= 1.4.2 if %python-base < 3.8}
 BuildRequires:  %{python_module typing_extensions >= 3.10.0.0 if %python-base < 3.10}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
