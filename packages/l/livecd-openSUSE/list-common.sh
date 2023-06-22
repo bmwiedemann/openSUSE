@@ -119,6 +119,7 @@ buildignore pam_kwallet
 
 buildignore apparmor-docs
 buildignore mutt-doc
+buildignore coreutils-doc
 
 # Do not buildignore here. Needed by pidgin in Xfce Live CD.
 # buildignore cyrus-sasl

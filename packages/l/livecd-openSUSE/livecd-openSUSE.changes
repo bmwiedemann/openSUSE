@@ -3,6 +3,8 @@ Thu Jun 22 06:14:21 UTC 2023 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - list-gnome.sh: ignore gnome-control-center-user-faces: gain some
   space; user generation on the live system is not relevant.
+- list-common.sh: drop coreutils-doc: a little bit more space for
+  all.
 
 -------------------------------------------------------------------
 Wed Apr 12 12:02:26 UTC 2023 - Fabian Vogt <fvogt@suse.com>

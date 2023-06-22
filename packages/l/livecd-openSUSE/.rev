@@ -1635,4 +1635,12 @@
     <comment>- list-gnome.sh: ignore gnome-control-center-user-faces: gain some
   space; user generation on the live system is not relevant.</comment>
   </revision>
+  <revision rev="205" vrev="205">
+    <srcmd5>f63f27a5375b6c3a54276dd9071dc627</srcmd5>
+    <version>unknown</version>
+    <time>1687417267</time>
+    <user>dimstar_suse</user>
+    <comment>- list-common.sh: drop coreutils-doc: a little bit more space for
+  all.</comment>
+  </revision>
 </revisionlist>

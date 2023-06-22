@@ -243,6 +243,8 @@
     <ignore name="apparmor-docs"/>
     <package name="aaa_base" replaces="mutt-doc"/>
     <ignore name="mutt-doc"/>
+    <package name="aaa_base" replaces="coreutils-doc"/>
+    <ignore name="coreutils-doc"/>
     <package name="aaa_base" replaces="unar"/>
     <ignore name="unar"/>
     <package name="aaa_base" replaces="jing"/>
