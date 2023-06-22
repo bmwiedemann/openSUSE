@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-Markdown
 Version:        3.4.3
 Release:        0
