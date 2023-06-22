@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">v0.19.0</param>
+    <param name="revision">v0.24.0</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>
   <service name="tar" mode="buildtime"/>
@@ -16,6 +16,6 @@
     <param name="basename">blackbox_exporter</param>
   </service>
   <service name="go_modules" mode="disabled">
-    <param name="archive">blackbox_exporter-0.19.0.tar.gz</param>
+    <param name="archive">blackbox_exporter-0.24.0.tar.gz</param>
   </service>
 </services>

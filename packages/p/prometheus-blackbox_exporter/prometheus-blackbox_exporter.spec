@@ -26,7 +26,7 @@
 %endif
 
 Name:           prometheus-blackbox_exporter
-Version:        0.19.0
+Version:        0.24.0
 Release:        0
 Summary:        Prometheus blackbox prober exporter
 License:        Apache-2.0
@@ -36,11 +36,11 @@ Source0:        blackbox_exporter-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        prometheus-blackbox_exporter.service
 # This patch has been applied before generating vendor tarball
-Patch1:         0001-Update-go-modules.patch
+#Patch1:         0001-Update-go-modules.patch
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 %if 0%{?rhel}
-BuildRequires:  golang >= 1.14
+BuildRequires:  golang >= 1.19
 BuildRequires:  libcap
 %else
 BuildRequires:  libcap-progs
