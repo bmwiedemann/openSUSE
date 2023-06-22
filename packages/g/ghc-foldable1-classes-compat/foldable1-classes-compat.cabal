@@ -1,0 +1,149 @@
+cabal-version: >=1.10
+name:          foldable1-classes-compat
+version:       0.1
+x-revision: 2
+synopsis:
+  Compatibility package for the Foldable1 and Bifoldable1 type classes
+
+description:
+  A compatibility package for the @Foldable1@ and @Bifoldable1@ type classes,
+  which were introduced in @base-4.18.0.0@ (GHC 9.6.1). For more information,
+  see <https://github.com/haskell/core-libraries-committee/issues/9 this Core
+  Libraries Committee proposal>.
+  .
+  @Foldable1@ and @Bifoldable1@ classify non-empty data structures that can be
+  folded to a summary value.
+
+license:       BSD3
+maintainer:    Ryan Scott <ryan.gl.scott@gmail.com>
+author:        Edward Kmett, Oleg Grenrus
+homepage:      https://github.com/haskell-compat/foldable1-classes-compat
+bug-reports:   https://github.com/haskell-compat/foldable1-classes-compat/issues
+category:      Data, Compatibility
+license-file:  LICENSE
+build-type:    Simple
+extra-source-files:
+  CHANGELOG.markdown
+  README.markdown
+tested-with:
+  GHC ==7.0.4
+   || ==7.2.2
+   || ==7.4.2
+   || ==7.6.3
+   || ==7.8.4
+   || ==7.10.3
+   || ==8.0.2
+   || ==8.2.2
+   || ==8.4.4
+   || ==8.6.5
+   || ==8.8.4
+   || ==8.10.7
+   || ==9.0.2
+   || ==9.2.5
+   || ==9.4.4
+   || ==9.6.1
+
+-- , GHCJS ==8.4
+
+source-repository head
+  type:     git
+  location: https://github.com/haskell-compat/foldable1-classes-compat.git
+
+flag tagged
+  description:
+    You can disable the use of the `tagged` package using `-f-tagged`.
+    .
+    Disabling this is an unsupported configuration, but it may be useful for accelerating builds in sandboxes for expert users.
+
+  default:     True
+  manual:      True
+
+library
+  default-language: Haskell2010
+  ghc-options:      -Wall
+  build-depends:    base >=4.3 && <4.19
+
+  if !impl(ghc >= 9.6)
+    hs-source-dirs: src
+    build-depends:
+        containers    >=0.4 && <0.7
+      , transformers  >=0.3 && <0.7
+    exposed-modules:
+      Data.Foldable1
+      Data.Bifoldable1
+
+  if !impl(ghc >=8.6)
+    build-depends: base-orphans >=0.8.1 && <0.10
+
+  if !impl(ghc >=8.2)
+    build-depends: bifunctor-classes-compat >=0.1 && <0.2
+
+  if !impl(ghc >=8.0)
+    build-depends:
+        semigroups           >=0.18.5 && <0.21
+      , transformers-compat  >=0.6    && <0.8
+
+  if !impl(ghc >= 7.2)
+    build-depends: generic-deriving >=1.14 && <1.15
+
+  if flag(tagged)
+    build-depends: tagged >=0.4.4 && <1
+
+  if impl(ghc >= 9.0)
+    build-depends: ghc-prim >= 0.7 && <0.11
+  else
+    if !impl(ghc >=7.6)
+      build-depends: ghc-prim
+
+test-suite test
+  default-language: Haskell2010
+  type:             exitcode-stdio-1.0
+  ghc-options:      -Wall
+  hs-source-dirs:   test
+  main-is:          Tests.hs
+
+  -- because of quickcheck-instances
+  if !impl(ghc >=7.4)
+    buildable: False
+
+  build-depends:
+      base
+    , containers
+    , foldable1-classes-compat
+    , transformers
+
+  if !impl(ghc >=8.0)
+    build-depends:
+        semigroups
+      , transformers-compat
+
+  build-depends:
+      QuickCheck                  >=2.13.2  && <2.15
+    , quickcheck-instances        >=0.3.27  && <0.4
+    , test-framework              >=0.8.2.0 && <0.9
+    , test-framework-quickcheck2  >=0.3.0.5 && <0.4
+
+benchmark bench
+  default-language: Haskell2010
+  type:             exitcode-stdio-1.0
+  ghc-options:      -Wall
+  hs-source-dirs:   bench
+  main-is:          Bench.hs
+
+  if !impl(ghc >=7.6)
+    buildable: False
+
+  build-depends:
+      base
+    , containers
+    , foldable1-classes-compat
+    , transformers
+
+  if !impl(ghc >=8.0)
+    build-depends:
+        semigroups
+      , transformers-compat
+
+  build-depends:
+      criterion  >=1.5.6.1 && <1.7
+    , deepseq    >=1.3     && <1.5
