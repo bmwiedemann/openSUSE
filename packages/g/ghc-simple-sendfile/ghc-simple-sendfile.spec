@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.31
+Version:        0.2.32
 Release:        0
 Summary:        Cross platform library for the sendfile system call
 License:        BSD-3-Clause
@@ -46,6 +46,8 @@ BuildRequires:  ghc-conduit-extra-prof
 BuildRequires:  ghc-conduit-prof
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-directory-prof
+BuildRequires:  ghc-easy-file-devel
+BuildRequires:  ghc-easy-file-prof
 BuildRequires:  ghc-hspec-devel
 BuildRequires:  ghc-hspec-prof
 BuildRequires:  ghc-process-devel
