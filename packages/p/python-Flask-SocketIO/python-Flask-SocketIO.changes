@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 21 21:36:05 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up SPEC file, make rpmlint happy.
+
+-------------------------------------------------------------------
+Wed Jun 21 19:56:26 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- update to version 5.3.4
+  * For a full changelog see https://github.com/miguelgrinberg/Flask-SocketIO/blob/main/CHANGES.md
+
+-------------------------------------------------------------------
 Sat Oct 23 15:18:45 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - Update to version 5.1.1 

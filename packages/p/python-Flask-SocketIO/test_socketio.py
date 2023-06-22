@@ -3,7 +3,7 @@ import unittest
 
 from flask import Flask, session, request, json as flask_json
 from flask_socketio import SocketIO, send, emit, join_room, leave_room, \
-    Namespace, disconnect
+    Namespace, disconnect, ConnectionRefusedError
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret'
@@ -16,11 +16,12 @@ def on_connect(auth):
     if auth != {'foo': 'bar'}:  # pragma: no cover
         return False
     if request.args.get('fail'):
-        return False
+        raise ConnectionRefusedError('failed!')
     send('connected')
     send(json.dumps(request.args.to_dict(flat=False)))
     send(json.dumps({h: request.headers[h] for h in request.headers.keys()
                      if h not in ['Host', 'Content-Type', 'Content-Length']}))
+    emit('dummy', to='nobody')
 
 
 @socketio.on('disconnect')
@@ -47,7 +48,12 @@ def on_disconnect_test():
 def message(message):
     send(message)
     if message == 'test session':
-        session['a'] = 'b'
+        if not socketio.manage_session and 'a' in session:
+            raise RuntimeError('session is being stored')
+        if 'a' not in session:
+            session['a'] = 'b'
+        else:
+            session['a'] = 'c'
     if message not in "test noackargs":
         return message
 
@@ -345,6 +351,25 @@ class TestSocketIO(unittest.TestCase):
         client.disconnect('/test')
         self.assertEqual(disconnected, '/test')
 
+    def test_message_queue_options(self):
+        app = Flask(__name__)
+        socketio = SocketIO(app, message_queue='redis://')
+        self.assertFalse(socketio.server_options['client_manager'].write_only)
+
+        app = Flask(__name__)
+        socketio = SocketIO(app)
+        socketio.init_app(app, message_queue='redis://')
+        self.assertFalse(socketio.server_options['client_manager'].write_only)
+
+        app = Flask(__name__)
+        socketio = SocketIO(message_queue='redis://')
+        self.assertTrue(socketio.server_options['client_manager'].write_only)
+
+        app = Flask(__name__)
+        socketio = SocketIO()
+        socketio.init_app(None, message_queue='redis://')
+        self.assertTrue(socketio.server_options['client_manager'].write_only)
+
     def test_send(self):
         client = socketio.test_client(app, auth={'foo': 'bar'})
         client.get_received()
@@ -454,7 +479,7 @@ class TestSocketIO(unittest.TestCase):
         self.assertEqual(received[0]['args'][0]['a'], 'b')
         self.assertEqual(len(client3.get_received()), 0)
 
-    def test_session(self):
+    def test_managed_session(self):
         flask_client = app.test_client()
         flask_client.get('/session')
         client = socketio.test_client(app, flask_test_client=flask_client,
@@ -468,6 +493,21 @@ class TestSocketIO(unittest.TestCase):
         self.assertEqual(
             socketio.server.environ[client.eio_sid]['saved_session'],
             {'a': 'b', 'foo': 'bar'})
+        client.send('test session')
+        self.assertEqual(
+            socketio.server.environ[client.eio_sid]['saved_session'],
+            {'a': 'c', 'foo': 'bar'})
+
+    def test_unmanaged_session(self):
+        socketio.manage_session = False
+        flask_client = app.test_client()
+        flask_client.get('/session')
+        client = socketio.test_client(app, flask_test_client=flask_client,
+                                      auth={'foo': 'bar'})
+        client.get_received()
+        client.send('test session')
+        client.send('test session')
+        socketio.manage_session = True
 
     def test_room(self):
         client1 = socketio.test_client(app, auth={'foo': 'bar'})
@@ -647,11 +687,18 @@ class TestSocketIO(unittest.TestCase):
 
     def test_server_disconnected(self):
         client = socketio.test_client(app, namespace='/ns')
+        client2 = socketio.test_client(app, namespace='/ns')
         client.get_received('/ns')
+        client2.get_received('/ns')
         client.emit('exit', {}, namespace='/ns')
         self.assertFalse(client.is_connected('/ns'))
+        self.assertTrue(client2.is_connected('/ns'))
         with self.assertRaises(RuntimeError):
             client.emit('hello', {}, namespace='/ns')
+        client2.emit('exit', {}, namespace='/ns')
+        self.assertFalse(client2.is_connected('/ns'))
+        with self.assertRaises(RuntimeError):
+            client2.emit('hello', {}, namespace='/ns')
 
     def test_emit_class_based(self):
         client = socketio.test_client(app, namespace='/ns')

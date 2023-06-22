@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>927833</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>952f8a8d70942d33c92f294b3e2975ed</srcmd5>
+    <version>5.3.4</version>
+    <time>1687469167</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up SPEC file, make rpmlint happy.
+- update to version 5.3.4
+  * For a full changelog see https://github.com/miguelgrinberg/Flask-SocketIO/blob/main/CHANGES.md
+</comment>
+    <requestid>1094493</requestid>
+  </revision>
 </revisionlist>
