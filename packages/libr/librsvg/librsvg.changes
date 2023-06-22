@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 21 06:22:07 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %build_rustflags instead of the deprecated
+  %__default_rustflags macro. Requires at least cargo-packaging
+  1.2.0+3 (boo#1212333).
+
+-------------------------------------------------------------------
 Wed Jun 14 06:24:36 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %__default_rustflags instead of the deprecated %__rustflags
