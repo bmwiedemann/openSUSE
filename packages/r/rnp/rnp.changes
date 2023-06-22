@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 19 21:10:24 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- fix s390x tests - add rnp-v0.17.0-tests.patch
+
+-------------------------------------------------------------------
 Wed Jun 14 21:01:38 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - build with system sexp library

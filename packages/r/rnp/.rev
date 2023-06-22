@@ -87,4 +87,13 @@
 Needs SR#1093175</comment>
     <requestid>1093176</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>cd0d7a644604cd9bba3102d5c4157a2c</srcmd5>
+    <version>0.17.0</version>
+    <time>1687469164</time>
+    <user>dimstar_suse</user>
+    <comment>- fix s390x tests - add rnp-v0.17.0-tests.patch
+</comment>
+    <requestid>1094487</requestid>
+  </revision>
 </revisionlist>
