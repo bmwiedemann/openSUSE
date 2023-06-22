@@ -19,12 +19,13 @@
 %global pkg_name cabal-plan
 %global pkgver %{pkg_name}-%{version}
 Name:           %{pkg_name}
-Version:        0.7.2.3
+Version:        0.7.3.0
 Release:        0
 Summary:        Library and utility for processing cabal's plan.json file
 License:        GPL-2.0-or-later
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/1.cabal#/%{name}.cabal
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
@@ -139,6 +140,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup
+cp -p %{SOURCE1} %{name}.cabal
 
 %build
 %define cabal_configure_options -fexe

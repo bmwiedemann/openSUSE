@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun 21 11:40:42 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update cabal-plan to version 0.7.3.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Apr 26 08:14:08 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update cabal-plan to version 0.7.3.0.
+  Upstream has not updated the file "ChangeLog.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:05:39 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
