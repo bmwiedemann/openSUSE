@@ -622,4 +622,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1086101</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>f07316c3af208ccc4254f23cb1cffa97</srcmd5>
+    <version>3.10.11</version>
+    <time>1687469090</time>
+    <user>dimstar_suse</user>
+    <comment>- Add bpo-37596-make-set-marshalling.patch making marshalling of
+  `set` and `frozenset` deterministic (bsc#1211765).</comment>
+    <requestid>1094243</requestid>
+  </revision>
 </revisionlist>
