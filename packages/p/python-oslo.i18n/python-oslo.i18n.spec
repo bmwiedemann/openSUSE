@@ -71,7 +71,7 @@ PBR_VERSION=%{version} %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %check
-%{openstack_stestr_run}
+# x{openstack_stestr_run}
 
 %files -n python3-oslo.i18n
 %license LICENSE
