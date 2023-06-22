@@ -1,7 +1,7 @@
 #
 # spec file for package bup
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 %define with_test 0
 Name:           bup
-Version:        0.32
+Version:        0.32.1
 Release:        0
 Summary:        Backup program based on git
 License:        LGPL-2.0-only
