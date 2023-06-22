@@ -38,15 +38,15 @@
 %define __mypython %{__python39}
 %define mypython_sitelib %{python39_sitelib}
 %else
-%{?!python_module:%define python_module() python3-%{**}}
-%define pythons python3
+%{?sle15_python_module_pythons}
+%define pythons python311
 %define mypython python3
 %define __mypython %{__python3}
 %define mypython_sitelib %{python3_sitelib}
 %endif
 
 Name:           python-HyperKitty
-Version:        1.3.5
+Version:        1.3.7
 Release:        0
 Summary:        A web interface to access GNU Mailman v3 archives
 License:        GPL-3.0-only
@@ -67,21 +67,8 @@ Source30:       README.SUSE.md
 # PATCH-FIX-OPENSUSE hyperkitty-settings.patch mcepl@suse.com
 # hard-code locations of configuration files
 Patch0:         hyperkitty-settings.patch
-# PATCH-FIX-UPSTREAM hyperkitty-fix-mistune-2.0-imports.patch gl#mailman/hyperkitty#379 mcepl@suse.com
-# Two elements moved in mistune 2.0
-Patch1:         hyperkitty-fix-mistune-2.0-imports.patch
-# PATCH-FIX-UPSTREAM hyperkitty-django4.patch gl#mailman/hyperkitty#384 jayvdb@gmail.com
-Patch2:         hyperkitty-django4.patch
-# https://gitlab.com/mailman/hyperkitty/-/issues/429
-Patch3:         python-HyperKitty-no-mock.patch
-# https://gitlab.com/mailman/hyperkitty/-/commit/3edc0c58b8dea3b0bdccd77c0794ada28d1c6f61
-Patch4:         hyperkitty-fix-qcluster-timeout.patch
-# https://gitlab.com/mailman/hyperkitty/-/merge_requests/381 + https://gitlab.com/mailman/hyperkitty/-/merge_requests/449
-Patch5:         hyperkitty-fix-py310-tests.patch
-# PATCH-FIX-UPSTREAM fix-django41.patch gl#mailman/hyperkitty#467
-Patch6:         fix-django41.patch
 # PATCH-FIX-UPSTREAM fix-elasticsearch8.patch gl#mailman/hyperkitty#468
-Patch7:         fix-elasticsearch8.patch
+Patch1:         fix-elasticsearch8.patch
 #
 BuildRequires:  %{python_module django-debug-toolbar >= 2.2}
 BuildRequires:  %{python_module isort}
@@ -108,7 +95,7 @@ BuildRequires:  %{python_module django-compressor >= 1.3}
 BuildRequires:  %{python_module django-extensions >= 1.3.7}
 BuildRequires:  %{python_module django-gravatar2 >= 1.0.6}
 BuildRequires:  %{python_module django-haystack >= 2.8.0}
-BuildRequires:  %{python_module django-mailman3 >= 1.3.7}
+BuildRequires:  %{python_module django-mailman3 >= 1.3.8}
 BuildRequires:  %{python_module django-q >= 1.3.9}
 BuildRequires:  %{python_module djangorestframework >= 3.0.0}
 BuildRequires:  %{python_module elasticsearch}
@@ -191,18 +178,11 @@ This package holds the uwsgi configuration.
 cp %{SOURCE30} .
 touch settings_local.py
 
-%patch2 -p1
-
 # Copy example_project to just build the static files
 rsync -a example_project/* build_static_files
 
 %patch0 -p1
 %patch1 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
 
 %build
 sed -i 's|^#!/usr/bin/env.*|#!%{__mypython}|' \
@@ -307,9 +287,9 @@ for job in \
 done
 
 %check
-export DJANGO_SETTINGS_MODULE="hyperkitty.tests.settings_test"
-export PYTHONPATH=$(pwd)
-%python_exec example_project/manage.py test
+export PYTHONPATH="$(pwd)"
+export LANG=C.UTF-8
+%pytest
 
 %pre -n %{hyperkitty_pkgname}-web
 /usr/sbin/groupadd -r hyperkitty &>/dev/null || :
@@ -364,7 +344,6 @@ fi
 %{hyperkitty_basedir}/static/debug_toolbar
 %{hyperkitty_basedir}/static/django-mailman3
 %{hyperkitty_basedir}/static/django_extensions
-%{hyperkitty_basedir}/static/facebook
 %{hyperkitty_basedir}/static/hyperkitty
 %{hyperkitty_basedir}/static/rest_framework
 

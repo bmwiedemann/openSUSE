@@ -1,7 +1,59 @@
 -------------------------------------------------------------------
+Sun Jun 18 16:12:47 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.3.7
+  * ``hyperkitty_import`` will now import messages to a list with archiving
+    disabled.  (Closes #451)
+  * Add support for Python 3.11.
+- Use sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Wed Apr  5 09:44:44 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Add missing requires for sassc used by manage.py
+
+-------------------------------------------------------------------
+Mon Nov 21 09:34:53 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.3.6
+  * Fixed an issue in hyperkitty_import with an empty Message-ID. (Closes #396)
+  * Set Q_CLUSTER retry > timeout in example_project. (Closes #402)
+  * Set DEFAULT_AUTO_FIELD to silence errors with Django >= 3.2.
+  * Require mistune >= 2.0.0 and fix a problem with importing from it. (Closes
+    #395)
+  * Adapt parsing of emails to be compatible with python 3.10. (Closes #401)
+  * Add gitlab-ci integration for python 3.10.
+  * Skip lists with private archives in the find list search. (Closes #237)
+  * Add a new setting HYPERKITTY_MBOX_EXPORT which, when set to false, removes
+    the :guilabel:`Download` button and disables the export view. ( Fixes #386)
+  * Return 400 instead of 500 when the sort mode is invalid. (Fixes #270)
+  * Allow HyperKitty to find attachments in either the database or the
+    HYPERKITTY_ATTACHMENT_FOLDER. (Closes #213)
+  * Implemented a new attachments_to_file management command to move attachment
+    content to the file system after setting HYPERKITTY_ATTACHMENT_FOLDER.
+    (Closes #413)
+  * Handle exception when a banned address tries to post. (Fixes #325)
+  * Add an index on the 'name' column (fqdn)for the MailingList table since it
+    is most frequently used to query the MailingList object.
+  * Add the ability to view a thread without Javascript enabled. This uses the
+    same mechanism we use with bot-detection and rendering of the entire page
+    at once, which will be slow to load but allow reading. (See #422)
+  * Improve the performance of the thread view for logged-in users by
+    optimizing the total database calls made. (See !409)
+  * Add support for Django <= 4.1
+  * Remove support for Django < 3.2
+  * Remove support for Python 3.6
+  * Fix tests to be compatible with Python 3.10
+  * Replace use of mock with unittest.mock in all tests. (Closes #429)
+  * The check for writability of HYPERKITTY_ATTACHMENT_FOLDER when set has been
+    improved to avoid a potential race condition. (Closes #389)
+- Run complete testsuite with pytest
+- Removed hyperkitty-django4.patch
+- Removed hyperkitty-fix-mistune-2.0-imports.patch
+- Removed python-HyperKitty-no-mock.patch
+- Removed hyperkitty-fix-qcluster-timeout.patch
+- Removed hyperkitty-fix-py310-tests.patch
+- Removed fix-django41.patch
 
 -------------------------------------------------------------------
 Thu Oct  6 12:07:43 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>

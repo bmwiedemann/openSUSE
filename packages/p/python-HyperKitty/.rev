@@ -227,4 +227,170 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1078733</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c10210e63a712bad7254cb4d9ee46102</srcmd5>
+    <version>1.3.7</version>
+    <time>1687469223</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.7
+  * ``hyperkitty_import`` will now import messages to a list with archiving
+    disabled.  (Closes #451)
+  * Add support for Python 3.11.
+- Use sle15_python_module_pythons
+- Add missing requires for sassc used by manage.py
+- Update to version 1.3.6
+  * Fixed an issue in hyperkitty_import with an empty Message-ID. (Closes #396)
+  * Set Q_CLUSTER retry &gt; timeout in example_project. (Closes #402)
+  * Set DEFAULT_AUTO_FIELD to silence errors with Django &gt;= 3.2.
+  * Require mistune &gt;= 2.0.0 and fix a problem with importing from it. (Closes
+    #395)
+  * Adapt parsing of emails to be compatible with python 3.10. (Closes #401)
+  * Add gitlab-ci integration for python 3.10.
+  * Skip lists with private archives in the find list search. (Closes #237)
+  * Add a new setting HYPERKITTY_MBOX_EXPORT which, when set to false, removes
+    the :guilabel:`Download` button and disables the export view. ( Fixes #386)
+  * Return 400 instead of 500 when the sort mode is invalid. (Fixes #270)
+  * Allow HyperKitty to find attachments in either the database or the
+    HYPERKITTY_ATTACHMENT_FOLDER. (Closes #213)
+  * Implemented a new attachments_to_file management command to move attachment
+    content to the file system after setting HYPERKITTY_ATTACHMENT_FOLDER.
+    (Closes #413)
+  * Handle exception when a banned address tries to post. (Fixes #325)
+  * Add an index on the 'name' column (fqdn)for the MailingList table since it
+    is most frequently used to query the MailingList object.
+  * Add the ability to view a thread without Javascript enabled. This uses the
+    same mechanism we use with bot-detection and rendering of the entire page
+    at once, which will be slow to load but allow reading. (See #422)
+  * Improve the performance of the thread view for logged-in users by
+    optimizing the total database calls made. (See !409)
+  * Add support for Django &lt;= 4.1
+  * Remove support for Django &lt; 3.2
+  * Remove support for Python 3.6
+  * Fix tests to be compatible with Python 3.10
+  * Replace use of mock with unittest.mock in all tests. (Closes #429)
+  * The check for writability of HYPERKITTY_ATTACHMENT_FOLDER when set has been
+    improved to avoid a potential race condition. (Closes #389)
+- Run complete testsuite with pytest
+- Removed hyperkitty-django4.patch
+- Removed hyperkitty-fix-mistune-2.0-imports.patch
+- Removed python-HyperKitty-no-mock.patch
+- Removed hyperkitty-fix-qcluster-timeout.patch
+- Removed hyperkitty-fix-py310-tests.patch
+- Removed fix-django41.patch
+- Add fix-django41.patch to fix issues with django4.1
+- Add fix-elasticsearch8.patch to fix issues with elasticsearch 8.0.0
+- Rename the built package to python prefixless HyperKitty
+  * Doesn't imply any false impression of multiflavor
+- Go back to python39 -- highest supported Python by mailman
+- Add hyperkitty-fix-py310-tests.patch
+  * Fix test failures on Python 3.10 (and Python 3.9.13)
+  * https://gitlab.com/mailman/hyperkitty/-/issues/401
+  * https://gitlab.com/mailman/hyperkitty/-/merge_requests/381
+  * https://gitlab.com/mailman/hyperkitty/-/merge_requests/449
+- Fix django warning that timeout is bigger than retry
+  * Added hyperkitty-fix-qcluster-timeout.patch
+- First Make migrations on update, then call migrate
+- do not require python-mock for build
+- added patches
+  fix https://gitlab.com/mailman/hyperkitty/-/issues/429
+  + python-HyperKitty-no-mock.patch
+- Add hyperkitty-django4.patch to support Django 4
+- Add hyperkitty-fix-mistune-2.0-imports.patch ... two function
+  moved in mistune 2.0 (gl#mailman/hyperkitty#379).
+- Add a patch that fixes compatibility with the full release of mistune 2.0
+- Update to version 1.3.5
+  * https://gitlab.com/mailman/hyperkitty/-/blob/1.3.5/doc/news.rst
+- Fixes CVE-2021-35057
+- Removed obsolete python-HyperKitty-CVE-2021-33038.patch
+- Fix log dir permissions
+- security update
+- added patches
+  fix CVE-2021-33038 [bsc#1186575], information disclosure when importing a private mailing list
+  + python-HyperKitty-CVE-2021-33038.patch
+- Remove the hyperkitty-admin user
+- Create static files as part of the build process
+- Fixed CVE-2021-25322
+- restrict to primary python3 flavor due to mailman 
+- Update to version 1.3.4
+  * Sync owners and moderators from Mailman Core for MailingList. (Fixes #302)
+  * Implemented a new HYPERKITTY_JOBS_UPDATE_INDEX_LOCK_LIFE setting to set the
+    lock lifetime for the update_and_clean_index job. (Closes #300)
+  * Implemented a new HYPERKITTY_ALLOW_WEB_POSTING that allows disabling the
+    web posting feature. (Closes #264)
+  * Add the ability to disable Gravatar using HYPERKITTY_ENABLE_GRAVATAR
+    settings. (Closes #303)
+  * Replaced deprecated ugettext functions with gettext. (Closes #310)
+  * Fix export of Email message where the In-Reply-To header doesn’t include
+    the &lt;&gt; brackets. (Closes #331)
+  * We now catch a few more exceptions in hyperkitty_import when getting
+    messages from a mbox. (Closes #313 and #314)
+  * Added a new contrib/check_hk_import script to check mboxes before running
+    hyperkitty_import.
+  * We now ignore a ValueError in hyperkitty_import when trying to replace a
+    Subject: header. (Closes #317)
+  * hyperkitty_import now includes the mbox name in error messages when
+    importing multiple mboxes. (Closes #318)
+  * `` at `` is now only replaced with @ in From: header values when necessary
+    and not unconditionally. (Closes #320)
+  * The wildcard notation for any host '*' is now supported into
+    MAILMAN_ARCHVER_FROM to disable Hyperkitty clients IP checking.
+  * Join the searchbar and search button like it was before bootstrap 4
+    migration. (See !301)
+  * Use the umd builds for popper.js instead of the regular ones. (See !309)
+  * Exceptions thrown by smtplib in sending replies are now caught and give an
+    appropriate error message. (Closes #309)
+- Removed hyperkitty-fix-tests.patch
+- Fixed build on tumbleweed
+- Fix quarter hourly timer
+- Fix access to CACHE dir
+- Improve documentation (README.SUSE.md)
+- Fix quaterly timer and service
+- Added hyperkitty-qcluster.service
+- Added hyperkitty-runjob.service and hyperkitty-runjob.timer
+- Create a HyperKitty-web package with webroot files
+- Create a HyperKitty-web-uwsgi with uwsgi configuration
+- Added hyperkitty-settings.patch
+  * Sets the FHS default paths
+- Added hyperkitty-fix-tests.patch
+  * Make migration compatible with django &gt;= 3.1
+- Added rpmlint config
+- Version update to 1.3.3
+  * Allow SHOW_INACTIVE_LISTS_DEFAULT setting to be configurable. (Closes #276)
+  * Fix a bug where the user couldn’t chose the address to send reply or new post as. (Closes #288)
+  * Improve the Django admin command reference from hyperkitty_import. (Closes #281)
+  * Fix FILTER_VHOST to work with web hosts other than the email host. (Closes #254)
+  * Fixed a bug where export can fail if certain headers are wrapped. (Closes #292)
+  * Fixed hyperkitty_import to allow odd line endings in a folded message subject. (Closes #280)
+  * Fixed a bug that could throw an IndexError when exporting messages. (Closes #293)
+  * Use errors='replace' when encoding attachments. (Closes #294)
+- Drop merged python-HyperKitty-remove-legacy-use-of-available_attrs.patch
+- version update to 1.3.2
+  - Remove support for Django 1.11. (Closes #273)
+  - Skip ``Thread.DoesNotExist`` exception when raised within
+    ``rebuild_thread_cache_votes``. (Closes #245)
+  - Send 400 status code for ``ValueError`` when archiving. (Closes #271)
+  - Fix a bug where exception for elasticsearch backend would not be caught. (Closes #263)  
+- added patches
+  https://gitlab.com/mailman/hyperkitty/-/commit/03c99ad5beefeac4474b5a00c840fd9debccba02
+  + python-HyperKitty-remove-legacy-use-of-available_attrs.patch
+- fix dependency (django_compressor -&gt; django-compressor)
+- version update to 1.3.1
+  * Add support to delete mailing list. (Closes #3)
+  * Fix a bug where messages with attachments would skip adding the body when
+    exporting the email. (Closes #252)
+  * Fix a bug where exporting mbox with messages that have attachments saved
+    to disk would raise exception and return a corrupt mbox. (Closes #258)
+  * Fix a bug where downloaded attachments are returned as a memoryview object
+    instead of bytes and hence fail to download. (Closes #247)
+  * Fix a bug where migrations would fail with exceptions on postgresl. (Closes
+    #266)
+  * Add support for Django 3.0.
+- call spec-cleaner
+- package documentation
+- require python-libsass
+- run the testsuite correctly
+- initial version 1.3.0 [SLE-7686]
+</comment>
+    <requestid>1094670</requestid>
+  </revision>
 </revisionlist>
