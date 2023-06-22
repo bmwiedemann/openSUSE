@@ -1,0 +1,382 @@
+-------------------------------------------------------------------
+Thu Jun 22 05:05:56 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.26.0:
+  * Update README to point download link to 0.26.0
+  * Update docs for release 0.26.0
+  * Update the helm reference
+  * Update helm chart to 4.0.24 to use gitops 0.26.0
+  * Update javascript library version to 0.26.0
+  * Update layout to accept components (#3798)
+  * fix container heights (#3795)
+  * Link PolicyName in violationDetails to policyDetails page
+    (#3794)
+  * Make Layout reusable by EE (#3679)
+  * swap success and feedback colors for EE dark mode (#3793)
+  * Fixes the dashboard port annotation on gitops run with session
+    (#3788)
+  * Add policy full details to list endpoint
+  * Backport explorer docs to older versions
+  * Update query syntax docs
+  * Improve readability of the logged Flux version.
+  * Add edit icon, modify Pipelines and Delivery icons for EE dark
+    mode (#3781)
+  * Add installed dashboard detection to the `gitops create
+    dashboard` command.
+  * Log out cookie sizes when setting them (#3785)
+  * docs: Fix TOC for WGE
+  * Update javascript library version to 0.25.1-rc.1
+  * fix exported components (#3777)
+
+-------------------------------------------------------------------
+Tue Jun 13 06:07:47 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.25.0:
+  * fix link to wge
+  * fix path naming
+  * fix redirection
+  * refactor file paths in docs
+  * Update README to point download link to 0.25.0
+  * Update docs for release 0.25.0
+  * Update the helm reference
+  * Update helm chart to 4.0.23 to use gitops 0.25.0
+  * Update javascript library version to 0.25.0
+  * fix config file (#3774)
+  * fix main page index
+  * fix getting started location for helm-docs
+  * Add clusterName to policies list (#3768)
+  * fix: Updating script to match new path/filename
+  * add unit tests for policy validations (#3755)
+  * ci: Use fossa-contrib/fossa-action@v2
+  * ci: Use jgehrcke/github-repo-stats@v1.4.2
+  * ci: Use goreleaser/goreleaser-action@v3
+  * ci: Use docker/metadata-action@v4
+  * ci: Use google-github-actions/setup-gcloud@v1
+  * ci: Use docker/build-push-action@v3
+  * ci: Use docker/setup-buildx-action@v2
+  * ci: Use aws-actions/configure-aws-credentials@v2
+  * Update Nav highlight for Policy-details (#3765)
+  * add entity kind to policy violation (#3764)
+  * Streamline user guide page flows for intro and "getting
+    started," update docs and links (#3757)
+  * Allow removal of securityContext with Helm values
+  * Add Violations tab to Policy Details Page (#3744)
+  * add parens (#3758)
+  * Add a config for the `protolint` Protobuf linter.
+  * send the right key for the right API call
+  * disable Sync btn while loading and invalidate the right react
+    query request
+  * add dm switch to sign in component (#3740)
+  * Refactor docs to clarify open source and Enterprise (#3738)
+  * remove unnecessary checks on listPolicies
+  * adding monitoring section for explorer (#3705)
+  * updated cache-control  upload-file staging-release step
+    according to readme recommendations
+  * fix prettier
+  * refactor Policy mode component
+  * run make proto
+  * fix lintting
+  * update policies test
+  * fix linting
+  * remove un used imports
+  * add YamlView Component
+  * fix prettier warnings
+  * update package lock
+  * fix lint warnings
+  * ci: Use actions/download-artifact@v3
+  * ci: Use actions/upload-artifact@v3
+  * ci: Update Go version to 1.20
+  * ci: Use docker/login-action@v2
+  * ci: Use google-github-actions/upload-cloud-storage@v1
+  * ci: Use google-github-actions/auth@v1
+  * ci: Use actions/setup-go@v4 which caches Go modules by default
+  * ci: Use actions/setup-node@v3
+  * ci: Use actions/checkout@v3
+  * Show Application Violations in WeaveGitOps OSS (#3712)
+  * fix type
+  * fix lint warnings
+  * fix: Broken link
+  * Fixes and additions to user docs (#3719)
+  * update clusterName validation
+  * remove policyAgent v1 dependecies
+  * Add Policy tests
+  * replace cluster Component
+  * remove moment package
+  * fix PR comments
+  * replace div with flex
+  * fix UI Bugs
+  * update navigation
+  * add docker file to gitignore
+  * Fix navigation (#3731)
+  * remove tenant from OSS
+  * add docs to upgrade to Flux GA (#3717)
+  * Weave Gitops Enterprise 0.24.0 Release Notes (#3725)
+  * Dark Mode UI bug follow ups (#3724)
+  * fix ui bugs
+  * chore: Update go-git-providers to 0.16.0
+  * fix ui issues
+  * fix navigation
+  * Update README to point download link to 0.24.0
+  * Update docs for release 0.24.0
+  * Update the helm reference
+  * Update helm chart to 4.0.22 to use gitops 0.24.0
+  * Update javascript library version to 0.24.0
+  * Properly set up Link styled-component (#3716)
+  * remove support for PA v1
+  * fix policy mode
+  * fix call api
+  * fix toggle
+  * adding cluster name 'default' incase OSS
+  * fix params
+  * adding apis to policies
+  * passing component to cluster field
+  * adding policiesList & policy details
+  * remove unnecessary fields from policies list
+  * Add Policies endpoint
+  * Add policy to kinds
+
+-------------------------------------------------------------------
+Thu May 25 06:21:11 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.24.0:
+  * Update README to point download link to 0.24.0
+  * Update docs for release 0.24.0
+  * Update the helm reference
+  * Update helm chart to 4.0.22 to use gitops 0.24.0
+  * Update javascript library version to 0.24.0
+  * Revert fix for #3702 as we need more time to investigate how
+    RBAC rules work
+  * Bump docusaurus to 2.4.1 to fix snyk warnings
+  * Change nsaccess to allow namespaces when resourceName is
+    specified.
+  * Update javascript library version to 0.24.0-rc.1
+  * remove divider from sign in (#3715)
+  * Add prop to hide dark mode switch (#3711)
+  * dark mode imports to not crash ent (#3710)
+  * App Observability - Surface Flagger Status (#3708)
+  * add autofocus
+  * Add dark mode theme to the UI (#3677)
+  * Increase memory allocation to nodejs (#3701)
+  * Adding missing namespace in sops doc command (#3696)
+  * add autofocus to username input field
+  * Fix url for enterprise intro page
+  * Updated the from link for redirect
+  * added yarn clear in docs workflow
+  * Updated pages with the correct getting started links
+  * added a redirect for old dashboard page
+
+-------------------------------------------------------------------
+Thu May 11 04:45:24 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.23.0:
+  * Update README to point download link to 0.23.0
+  * Update docs for release 0.23.0
+  * Update the helm reference
+  * Update helm chart to 4.0.21 to use gitops 0.23.0
+  * Update javascript library version to 0.23.0
+  * UI application details followup (#3680)
+  * docs: Minor addition to mention PAT usage (#3688)
+  * The nsaccess pkg stops checking on finding incomplete access
+    (#3668)
+  * Update javascript library version to 0.23.0-rc.1
+  * Fix code tag style of `react-syntax-highlighter`.
+  * Add syntax highlighting to the YamlView with
+    `react-syntax-highlighter`.
+  * Change "G" logo to Weaveworks logo (#3675)
+  * Trick bundler into correctly building D3
+  * Add icon and status for tf plans that are waiting for user
+    action (#3658)
+  * documentation for externalised collector serviceaccount (#3656)
+  * Improve release process docs (#3662)
+  * 2704 redesign application details (#3655)
+  * Update nav icons and colors (#3660)
+  * Add an additional page status for automations that summarizes
+    their canaries (#3651)
+  * Update docs for explorer v22 configuration on
+    `useQueryServiceBackend` (#3657)
+  * adding authz documentation for collector  (#3643)
+  * Add WGE 0.22.0 release notes (#3654)
+
+-------------------------------------------------------------------
+Wed Apr 26 18:51:37 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.22.0:
+  * Update README to point download link to 0.22.0
+  * Update docs for release 0.22.0
+  * Update the helm reference
+  * Update helm chart to 4.0.20 to use gitops 0.22.0
+  * Update javascript library version to 0.22.0
+  * Adding more checks (#3647)
+  * Update javascript library version to 0.22.0-rc.1
+  * Remove the `yaml` package from direct website dependencies.
+  * Upgrade the `yaml` package to version 2.2.2 to resolve the
+    vulnerability, reported by Snyk.
+  * Add the `sourceignore` package with functions to create the
+    `.sourceignore` file and read ignore patterns from it.
+  * Adding more health checks (#3635)
+  * Update frontend dev process docs (#3623)
+  * Wge 2693 - explorer documentation (#3610)
+  * Add oidc prefix support for impersonation
+  * fix the clean-up process
+  * Fix broken test. (#3629)
+  * Fix concurrently refreshing the ID token (#3597)
+  * Allow group claim to be string, not only []string (#3605)
+  * Add docs for using a private helm repository in wge-profiles
+    (#3620)
+  * fix code blocks by fixing spaces (#3622)
+  * [user-guide] Adds the 0.21.2 EE and 0.8.0 gitopssets-controller
+    releases (#3621)
+  * Add Secrets docs to the website (#3602)
+
+-------------------------------------------------------------------
+Thu Apr 13 09:22:04 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.21.2:
+  * Update README to point download link to 0.21.2
+  * Update docs for release 0.21.2
+  * Update the helm reference
+  * Update helm chart to 4.0.19 to use gitops 0.21.2
+  * Update javascript library version to 0.21.2
+  * Revert "Merge pull request #3542 from
+    weaveworks/2237-use-dynamic-secret-name-for-admin-credentials"
+
+-------------------------------------------------------------------
+Thu Apr 13 07:07:09 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.21.1:
+  * Update README to point download link to 0.21.1
+  * Update docs for release 0.21.1
+  * Update the helm reference
+  * Update helm chart to 4.0.18 to use gitops 0.21.1
+  * Update javascript library version to 0.21.1
+  * Resources health checks (#3590)
+
+-------------------------------------------------------------------
+Thu Apr 13 07:03:29 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.21.0:
+  * Update README to point download link to 0.21.0
+  * Update docs for release 0.21.0
+  * Update the helm reference
+  * Update helm chart to 4.0.18 to use gitops 0.21.0
+  * Update javascript library version to 0.21.0
+  * docs: Add instructions on configuring WGE to create PRs in
+    Azure DevOps (#3612)
+  * Swap out some nav icons (#3609)
+  * fix url checking reg exp and make it readable
+  * Add a hardcoded secret name for the Tilt auth.
+  * implement remove run for non-session mode
+  * Adds user-guide for raw templates and chart paths (#3587)
+  * Adds installation instructions for the gitopssets-controller
+    (#3592)
+  * Add exiting the dashboard type switch statement earlier for
+    readability.
+  * Add sort disable logic to DataTable
+  * Break DataTable component up into smaller files
+  * use client-side apply for dashboard for better interactivity
+  * Add Text component to use in EE and update Flex to accept
+    data-testid as prop (#3584)
+  * Add support for the dynamic admin secret user name to the
+    gitops-server code.
+  * Update chart files with dynamic admin secret name.
+  * Merge gitopssets docs (#3586)
+  * Use custom svgs instead of MUI for Nav icons (#3579)
+
+-------------------------------------------------------------------
+Thu Mar 30 08:11:32 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.20.0:
+  * Update README to point download link to 0.20.0
+  * Update docs for release 0.20.0
+  * Update the helm reference
+  * Update helm chart to 4.0.17 to use gitops 0.20.0
+  * Update javascript library version to 0.20.0
+  * Export Graph to be used in EE (#3577)
+  * [Follow up] updating the props to meet what EE needs (#3574)
+  * Get inventory updates (#3565)
+  * Restore getting the value of the
+    `WEAVE_GITOPS_FEATURE_TELEMETRY` flag as a string.
+  * fix the verbosity to not flood the logs (#3555)
+  * Add Modal to exports (#3560)
+  * Add detail page for Pods (#3524)
+  * Speedup resource details (#3517)
+  * vertically centers enterprise nav header text (#3559)
+  * docs: Improve Pipeline docs (#3526)
+  * use safe buffer to avoid race condition in port forwarding
+  * add rlock to clustermgr hash to avoid a race condition
+  * Move feature flag status check to useFeatureFlags hook (#3551)
+  * Upgrade Go to version 1.20 throughout the project.
+  * scrollable variant and equal header margins for enterprise
+    (#3541)
+  * Support yaml commands for objects without a namespace (#3539)
+  * Add DetailModal for Yaml display in EE (#3535)
+  * add key to nav text labels (#3538)
+  * ci: Remove job from CI (#3533)
+  * Change refresh token to expire after the ID token. (#3469)
+  * Replace the install script to install the Flux CLI with the
+    `Setup Flux CLI` action.
+  * Docs: add new feature to git generator (#3521)
+  * Export ChipGroup
+
+-------------------------------------------------------------------
+Tue Mar 28 10:54:13 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- bash-completion subpackage now Requires bash-completion
+
+-------------------------------------------------------------------
+Thu Mar 16 06:07:56 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- change packaging to obscpio, remove tarball
+  - run tar and recompress service at buildtime, to generate
+    tarball on the fly
+
+-------------------------------------------------------------------
+Thu Mar 16 05:47:42 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.19.0:
+  * Update README to point download link to 0.19.0
+  * Update docs for release 0.19.0
+  * Update the helm reference
+  * Update helm chart to 4.0.16 to use gitops 0.19.0
+  * Update javascript library version to 0.19.0
+  * Update gitopssets docs with API reference info (#3510)
+  * Enable the `gocritic` linter.
+  * Enable the `unconvert` linter.
+  * Enable the `whitespace` linter.
+  * Enable the `unparam` linter.
+  * Add trimming the password string after reading it.
+  * Upgrade `webpack` to version 5.76.0 to fix the sandbox bypass
+    vulnerability in docusaurus.
+  * Update GitOpsSets docs.
+  * docs: Tidy up the Policy docs (#3471)
+  * feat: Parse Azure DevOps repository URLs (#3500)
+  * Expand area that is clickable for logo and collapse in nav
+    (#3498)
+  * Disconnect new nav from oss nav hooks and export it (#3468)
+  * Update the helm reference
+  * Update javascript library version to 0.19.0-rc.1
+  * Switch to getting the dashboard pod by labels instead of pod
+    name during the execution of the `gitops create dashboard`
+    command.
+  * Add DetailModal component, and convert pop up YamlViews to use
+    it (#3462)
+  * bump flux to v0.40.2
+  * Add initial azure devops  support (#3489)
+  * implement vcluster connect capability
+  * skip port-forward annotation when no port-forward is setup
+  * docs: Minor improvements to custom metadata guide (#3454)
+  * Update SSO button customization for EE (#3482)
+  * docs: Tidy up the GitOpsTemplate docs (#3467)
+  * Add clear docs link to navbar (#3481)
+  * docs: Add issue template for documentation (#3455)
+  * Uninstall Fluent Bit when stopping a GitOps Run session
+  * Adds release notes for WGE 0.18.0 (#3473)
+  * docs: Add instruction for how to disable CAPI (#3465)
+  * docs: Add manual promotion docs (#3472)
+
+-------------------------------------------------------------------
+Fri Mar  3 08:48:22 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package weave-gitops: Weave GitOps is a simple open source
+  developer platform for people who want cloud native applications,
+  without needing Kubernetes expertise.

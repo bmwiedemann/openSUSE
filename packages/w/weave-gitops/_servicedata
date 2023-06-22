@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/weaveworks/weave-gitops</param>
+              <param name="changesrevision">e97d8ae479065678478e4ca704ff823a5518fef9</param></service></servicedata>
