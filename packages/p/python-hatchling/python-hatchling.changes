@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 21 08:25:58 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.18.0
+  * Drop support for Python 3.7
+  * Update the list of directories that are always excluded for
+    builds
+
+-------------------------------------------------------------------
 Sat Jun  3 18:21:13 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.17.1:
