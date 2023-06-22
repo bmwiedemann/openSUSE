@@ -15,23 +15,24 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           shadowsocks-rust
 Version:        1.15.3
 Release:        0
 Summary:        Rust port of Shadowsocks
 License:        MIT
 Group:          Productivity/Networking/Web/Proxy
-Url:            https://github.com/shadowsocks/shadowsocks-rust
+URL:            https://github.com/shadowsocks/shadowsocks-rust
 Source0:        https://github.com/shadowsocks/shadowsocks-rust/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        %{name}.json
 Source3:        %{name}-client.service
 Source4:        %{name}-server.service
 Source5:        %{name}-manager.service
-BuildRequires:  cargo-packaging
 BuildRequires:  cargo
-BuildRequires:  pkgconfig(openssl)
+BuildRequires:  cargo-packaging
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(openssl)
 Recommends:     shadowsocks-v2ray-plugin
 # ExcludeArch:    ppc ppc64 ppc64le s390 s390x
 %{?systemd_ordering}
