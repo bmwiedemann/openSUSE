@@ -20,20 +20,24 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.17.0.0
+Version:        0.18.1.0
 Release:        0
 Summary:        Utilities and combinators for parsing command line options
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-ansi-wl-pprint-devel
-BuildRequires:  ghc-ansi-wl-pprint-prof
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-prettyprinter-ansi-terminal-devel
+BuildRequires:  ghc-prettyprinter-ansi-terminal-prof
+BuildRequires:  ghc-prettyprinter-devel
+BuildRequires:  ghc-prettyprinter-prof
 BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-process-prof
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-text-devel
+BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-transformers-compat-devel
 BuildRequires:  ghc-transformers-compat-prof
 BuildRequires:  ghc-transformers-devel

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue May 30 03:40:17 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update optparse-applicative to version 0.18.1.0.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/optparse-applicative-0.18.1.0/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Tue May 23 10:09:19 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update optparse-applicative to version 0.17.1.0.
+  ## Version 0.17.1.0 (21 May 2023)
+
+  - Widen bounds for `ansi-wl-pprint`. This supports the use of `prettyprinter`
+    in a non-breaking way, as the `ansi-wl-pprint > 1.0` support the newer
+    library.
+
+  - Export `helpIndent` from `Options.Applicative`.
+
+  - Export completion script generators from `Options.Applicative.BashCompletion`.
+
+  - Add `simpleVersioner` utility for adding a '--version' option to a parser.
+
+  - Improve documentation.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:46 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
