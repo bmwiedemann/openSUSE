@@ -275,4 +275,12 @@ Add support for ppc64le.</comment>
     <comment>update</comment>
     <requestid>1082946</requestid>
   </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>f0319e5cefe1a4a678aa79b5b65ddc22</srcmd5>
+    <version>9.2.3</version>
+    <time>1687469144</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1094476</requestid>
+  </revision>
 </revisionlist>
