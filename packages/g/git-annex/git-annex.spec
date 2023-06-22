@@ -24,6 +24,7 @@ License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND BSD-2-Clause AND MIT 
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://github.com/opensuse-haskell/git-annex/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         0001-persistent-2.12.0.1-include-the-code-from-persistent.patch
+Patch1:         0001-Adapt-code-to-optparse-applicative-0.18.1-and-later.patch
 BuildRequires:  bash-completion
 BuildRequires:  chrpath
 BuildRequires:  curl

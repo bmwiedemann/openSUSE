@@ -1,0 +1,42 @@
+From e2c69174088403e41fd4988082509f7bc2bc39dd Mon Sep 17 00:00:00 2001
+From: Peter Simons <simons@cryp.to>
+Date: Wed, 21 Jun 2023 16:46:54 +0200
+Subject: [PATCH] Adapt code to optparse-applicative 0.18.1 and later.
+
+optparse-applicative switched to the 'prettyprinter' library in its latest
+release, which means the 'H.text' function has disappeared. Instead, 'H.pretty'
+can be used to convert all 'Pretty a' types into a renderable document.
+---
+ CmdLine.hs      | 2 +-
+ git-annex.cabal | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CmdLine.hs b/CmdLine.hs
+index a170434107..004198c40a 100644
+--- a/CmdLine.hs
++++ b/CmdLine.hs
+@@ -116,7 +116,7 @@ parseCmd progname progdesc allargs allcmds getparser =
+ 		<*> getparser c
+ 		<*> parserAnnexOptions (cmdannexoptions c)
+ 	synopsis n d = n ++ " - " ++ d
+-	intro = mconcat $ concatMap (\l -> [H.text l, H.line])
++	intro = mconcat $ concatMap (\l -> [H.pretty l, H.line])
+ 		(synopsis progname progdesc : commandList allcmds)
+ 
+ {- Selects the Command that matches the subcommand name.
+diff --git a/git-annex.cabal b/git-annex.cabal
+index 53270e572a..4abbc7b686 100644
+--- a/git-annex.cabal
++++ b/git-annex.cabal
+@@ -311,7 +311,7 @@ Executable git-annex
+   Build-Depends:
+    base (>= 4.11.1.0 && < 5.0),
+    network-uri (>= 2.6),
+-   optparse-applicative (>= 0.14.1),
++   optparse-applicative (>= 0.18.1),
+    containers (>= 0.5.8),
+    exceptions (>= 0.6),
+    stm (>= 2.3),
+-- 
+2.40.1
+

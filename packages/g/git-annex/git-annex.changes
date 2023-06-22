@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 21 14:52:10 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Apply "0001-Adapt-code-to-optparse-applicative-0.18.1-and-later.patch"
+  to allow git-annex to build with the latest release of the
+  optparse-applicative library.
+
+-------------------------------------------------------------------
 Fri Apr  7 17:37:48 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update git-annex to version 10.20230407.
@@ -71,7 +78,7 @@ Wed Mar 29 20:09:41 UTC 2023 - Peter Simons <psimons@suse.com>
     so git-annex can be built again without yesod etc installed.
   * Improve error message when unable to read a sqlite database due to
     permissions problem.
-  * sync: Fix a bug that caused files to be removed from an 
+  * sync: Fix a bug that caused files to be removed from an
     importtree=yes exporttree=yes special remote when the remote's
     annex-tracking-branch was not the currently checked out branch.
   * S3: Support a region= configuration useful for some non-Amazon S3
@@ -829,7 +836,7 @@ Tue Apr  6 08:36:35 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 -------------------------------------------------------------------
 Wed Mar 31 14:32:42 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- drop atto.patch 
+- drop atto.patch
 
 -------------------------------------------------------------------
 Wed Mar 31 14:28:17 UTC 2021 - psimons@suse.com
@@ -876,7 +883,7 @@ Wed Mar 31 14:28:17 UTC 2021 - psimons@suse.com
 -------------------------------------------------------------------
 Thu Mar 25 09:47:23 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- add atto.patch fixing build with attoparsec-0.14+ 
+- add atto.patch fixing build with attoparsec-0.14+
 
 -------------------------------------------------------------------
 Thu Mar 11 08:23:16 UTC 2021 - psimons@suse.com
@@ -1050,9 +1057,9 @@ Tue Dec 29 21:16:10 UTC 2020 - psimons@suse.com
 
 -------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
- 
+
 - disable %{ix86} build
- 
+
 -------------------------------------------------------------------
 Sun Nov 29 15:48:14 UTC 2020 - psimons@suse.com
 
@@ -1113,7 +1120,7 @@ Mon Nov 16 21:55:38 UTC 2020 - psimons@suse.com
 -------------------------------------------------------------------
 Sat Nov  7 22:15:09 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- add ./0001-enable-extensions-needed-by-new-version-of-persisten.patch 
+- add ./0001-enable-extensions-needed-by-new-version-of-persisten.patch
 
 -------------------------------------------------------------------
 Sat Nov  7 15:34:35 UTC 2020 - psimons@suse.com
@@ -1358,4 +1365,3 @@ Thu Jun 18 02:00:26 UTC 2020 - psimons@suse.com
 Tue Jun  9 09:26:18 UTC 2020 - psimons@suse.com
 
 - Add git-annex at version 8.20200522.
-
