@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 22 12:05:26 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- livecd.kiwi.in, list-common.sh: Make use of patterns-base-bootloader and
+  drop redundant package inclusions. This also adds mokutil (boo#1209985).
+- Drop gfxboot, kiwi uses grub2 on ix86 for some time now
+
+-------------------------------------------------------------------
 Thu Jun 22 06:14:21 UTC 2023 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - list-gnome.sh: ignore gnome-control-center-user-faces: gain some

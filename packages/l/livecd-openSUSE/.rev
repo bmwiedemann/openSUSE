@@ -1643,4 +1643,14 @@
     <comment>- list-common.sh: drop coreutils-doc: a little bit more space for
   all.</comment>
   </revision>
+  <revision rev="206" vrev="206">
+    <srcmd5>89682253447eedc18279c7786ee2c11c</srcmd5>
+    <version>unknown</version>
+    <time>1687469217</time>
+    <user>dimstar_suse</user>
+    <comment>- livecd.kiwi.in, list-common.sh: Make use of patterns-base-bootloader and
+  drop redundant package inclusions. This also adds mokutil (boo#1209985).
+- Drop gfxboot, kiwi uses grub2 on ix86 for some time now (forwarded request 1094664 from favogt)</comment>
+    <requestid>1094667</requestid>
+  </revision>
 </revisionlist>

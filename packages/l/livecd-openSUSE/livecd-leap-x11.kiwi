@@ -37,8 +37,7 @@
   </users>
   <packages type="image" patternType="plusRecommended">
     <package name="kernel-default"/>
-    <package name="gfxboot-branding-openSUSE" bootinclude="true" bootdelete="true" arch="i686"/>
-    <package name="grub2-branding-openSUSE" bootinclude="true"/>
+    <package name="patterns-base-bootloader"/>
     <package name="dracut-kiwi-live"/>
     <!-- workaround for bnc#892087 -->
     <package name="e2fsprogs" bootinclude="true"/>
@@ -49,8 +48,6 @@
     <package name="tar"/>
     <package name="patch"/>
     <package name="zypper"/>
-    <package name="grub2-x86_64-efi" arch="x86_64"/>
-    <package name="grub2-arm64-efi" arch="aarch64"/>
     <package name="memtest86+" arch="i686,x86_64"/>
     <package name="live-langset-data"/>
     <package name="live-add-yast-repos"/>
@@ -163,8 +160,6 @@
     <package name="aaa_base" replaces="sane-backends"/>
     <ignore name="sane-backends"/>
     <package name="branding-openSUSE"/>
-    <package name="gfxboot" arch="i686"/>
-    <package name="shim" arch="x86_64"/>
     <package name="aaa_base" replaces="glibc-32bit"/>
     <ignore name="glibc-32bit"/>
     <package name="aaa_base" replaces="libvdpau_r300"/>

@@ -53,8 +53,6 @@ buildignore inxi
 buildignore sane-backends
 
 install branding-openSUSE
-install gfxboot i686
-install shim x86_64
 
 # Don't pull in any -32bit libs
 buildignore glibc-32bit
