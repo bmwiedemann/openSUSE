@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 21 10:50:33 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to 4.1.0
+  * https://github.com/django-cms/django-sekizai/releases
+- Use sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Tue May 25 10:38:38 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Do not package tests

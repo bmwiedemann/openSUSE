@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-sekizai
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-django-sekizai
-Version:        2.0.0
+Version:        4.1.0
 Release:        0
 Summary:        Django Template Blocks with extra functionality
 License:        MIT
@@ -47,7 +46,6 @@ Django Template Blocks with extra functionality
 
 %install
 %python_install
-%python_expand rm -r %{buildroot}%{$python_sitelib}/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -55,7 +53,7 @@ export PYTHONPATH='.'
 %python_exec tests/settings.py
 
 %files %{python_files}
-%license LICENSE.txt
+%license LICENSE
 %doc README.rst
 %{python_sitelib}/*
 
