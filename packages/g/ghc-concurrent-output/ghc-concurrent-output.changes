@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May 15 20:34:00 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update concurrent-output to version 1.10.18.
+  concurrent-output (1.10.18) unstable; urgency=medium
+
+    * Avoid some build warnings on Windows.
+    * Allow ansi-terminal-1.0
+
+   -- Joey Hess <id@joeyh.name>  Mon, 15 May 2023 16:32:50 -0400
+
+-------------------------------------------------------------------
 Thu Mar 30 17:06:17 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
