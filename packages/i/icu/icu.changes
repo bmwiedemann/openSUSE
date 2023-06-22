@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 14 00:08:48 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 73.2
+  * CLDR extends the support for “short” Chinese sort orders to
+    cover some additional, required characters for Level 2. This
+    is carried over into ICU collation.
+  * ICU has a modified character conversion table, mapping some
+    GB18030 characters to Unicode characters that were encoded
+    after GB18030-2005.
+- Delete icu-UCHAR-uint16t.patch (merged)
+
+-------------------------------------------------------------------
 Thu May 25 12:52:50 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add icu-UCHAR-uint16t.patch: fixes builds where UCHAR_TYPE is

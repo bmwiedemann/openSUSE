@@ -713,4 +713,12 @@ Jan added the patch name of all changed patches.</comment>
 - Update to release 73.1</comment>
     <requestid>1089063</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>251a228dc3d3156332803dc39cb769a0</srcmd5>
+    <version>73.2</version>
+    <time>1687469092</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1094248</requestid>
+  </revision>
 </revisionlist>
