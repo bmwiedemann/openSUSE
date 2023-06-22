@@ -462,4 +462,16 @@
   - Remove Extension.extras</comment>
     <requestid>1073029</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>0b93d6a64391f63055cf77bea60ba38a</srcmd5>
+    <version>5.1.0</version>
+    <time>1687469101</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 5.1.0
+  - Moves supported python runtimes from version 3.8 to 3.10
+  - Catch NotADirectoryError error
+  - Update master for stable/2023.1
+  - Revert &quot;Moves supported python runtimes from version 3.8 to 3.10&quot;</comment>
+    <requestid>1093364</requestid>
+  </revision>
 </revisionlist>
