@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 15 06:46:53 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.060:
+  * Tolerate DB downtime (#392)
+  * Cache mirror report in case if DB or subsidiary is down (#393)
+  * Fix value of METALINK_GREEDY in meta4 (#389)
+  * Honor links for MIRRORCACHE_REDIRECT (#390)
+  * Rework and fix /rest/stat (#387)
+
+-------------------------------------------------------------------
 Mon May 08 13:47:15 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.059:
