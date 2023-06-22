@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 12 15:01:15 UTC 2023 - Kirk Allan <kallan@suse.com>
+
+- Fix (bsc#1212143) - (CVE-2023-20867) - VUL-0: CVE-2023-20867:
+  open-vm-tools: Authentication Bypass vulnerability in the vgauth
+  module
+  + Add patch: 2023-20867-Remove-some-dead-code.patch
+
+-------------------------------------------------------------------
 Tue May  2 20:40:18 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-build-put-l-specifiers-into-LIBADD-not-LDFLAGS.patch,

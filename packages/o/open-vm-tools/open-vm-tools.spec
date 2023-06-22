@@ -155,6 +155,7 @@ ExclusiveArch:  %ix86 x86_64 aarch64
 #Upstream patches
 Patch2:         0001-build-put-l-specifiers-into-LIBADD-not-LDFLAGS.patch
 Patch3:         0002-build-use-grpc-pkgconfig-to-retrieve-flags-libraries.patch
+Patch4:         2023-20867-Remove-some-dead-code.patch
 
 #SUSE specific patches
 Patch0:         pam-vmtoolsd.patch
@@ -259,6 +260,7 @@ sed -i -e "s/\r//" README
 #Upstream patches
 %patch2 -p2
 %patch3 -p2
+%patch4 -p2
 
 #SUSE specific patches
 %patch0 -p2
