@@ -1,7 +1,7 @@
 #
 # spec file for package libevdev
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sonum	2
 Name:           libevdev
-Version:        1.13.0
+Version:        1.13.1
 Release:        0
 Summary:        A wrapper library for evdev devices
 License:        MIT

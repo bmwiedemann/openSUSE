@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 20 20:46:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.13.1:
+  * include: sync event codes with kernel 6.2
+  * CI fixes 
+
+-------------------------------------------------------------------
 Wed Aug 17 18:56:24 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.13.0:
