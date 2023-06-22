@@ -19,7 +19,7 @@
 %global pkg_name cairo
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.13.8.2
+Version:        0.13.10.0
 Release:        0
 Summary:        Binding to the Cairo library
 License:        BSD-3-Clause
@@ -87,7 +87,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cabal-tweak-dep-ver text '>= 1.0.0.0 && < 1.3' '< 5'
 
 %build
 %ghc_lib_build
