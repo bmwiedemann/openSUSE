@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 22 05:07:36 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.2.3:
+  * add test for required fields on builtin checks (#965)
+  * FWI-4307 - fix checks category (#964)
+
+-------------------------------------------------------------------
 Wed Jun 14 17:36:49 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 8.2.2:
