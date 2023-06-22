@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 21 17:07:34 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Relax overspecified constraint on base-compat.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:06:46 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
