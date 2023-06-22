@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 21 12:33:30 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 3.2.4:
+  * No changelog provided 
+- Fix server-side request forgery (SSRF) vulnerability, bsc#1212359
+
+-------------------------------------------------------------------
 Sat Jan 21 17:30:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.3:
