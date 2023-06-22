@@ -1,7 +1,7 @@
 #
 # spec file for package c_count
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,14 +18,13 @@
 
 
 Name:           c_count
-Version:        7.20
+Version:        7.22
 Release:        0
 Summary:        Source Code Measure Counter for C/C++/Java
 License:        MIT
-Group:          Development/Tools/Other
 URL:            https://invisible-island.net/c_count/
-Source0:        ftp://ftp.invisible-island.net/c_count/%{name}-%{version}.tgz
-Source1:        ftp://ftp.invisible-island.net/c_count/%{name}-%{version}.tgz.asc
+Source0:        https://invisible-island.net/archives/c_count/%{name}-%{version}.tgz
+Source1:        https://invisible-island.net/archives/c_count/%{name}-%{version}.tgz.asc
 Source2:        %{name}.keyring
 
 %description

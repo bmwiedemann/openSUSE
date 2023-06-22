@@ -107,4 +107,14 @@
     <comment></comment>
     <requestid>886277</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7f8e177cda3840faf5732fbde4773708</srcmd5>
+    <version>7.22</version>
+    <time>1687469206</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 7.22
+  * see provided CHANGES for list of changes
+- Refresh source url and gpg keyring</comment>
+    <requestid>1094653</requestid>
+  </revision>
 </revisionlist>
