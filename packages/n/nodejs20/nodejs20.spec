@@ -31,7 +31,7 @@
 %endif
 
 Name:           nodejs20
-Version:        20.3.0
+Version:        20.3.1
 Release:        0
 
 # Double DWZ memory limits
@@ -293,7 +293,7 @@ BuildRequires:  openssl >= %{openssl_req_ver}
 %else
 # bundled openssl
 %if %node_version_number <= 12 && 0%{?suse_version} == 1315 && 0%{?sle_version} < 120400
-Provides:       bundled(openssl) = 3.0.8
+Provides:       bundled(openssl) = 3.0.9
 %else
 BuildRequires:  bundled_openssl_should_not_be_required
 %endif
@@ -375,7 +375,7 @@ BuildRequires:  pkgconfig(libbrotlidec)
 %endif
 
 
-Provides:       bundled(llhttp) = 8.1.0
+Provides:       bundled(llhttp) = 8.1.1
 Provides:       bundled(ngtcp2) = 0.8.1
 Provides:       bundled(base64) = 0.5.0
 Provides:       bundled(simdutf) = 3.2.12
