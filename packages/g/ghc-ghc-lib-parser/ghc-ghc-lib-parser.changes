@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 30 01:12:50 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update ghc-lib-parser to version 9.4.5.20230430.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:06:50 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
