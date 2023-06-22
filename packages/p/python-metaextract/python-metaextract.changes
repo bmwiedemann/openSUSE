@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 21 15:27:55 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Fri Oct 14 05:40:11 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Change preun to postun for update alternatives
