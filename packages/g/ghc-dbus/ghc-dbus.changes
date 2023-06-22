@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 12 21:05:44 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update dbus to version 1.2.29.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Mon Apr  3 19:01:23 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update dbus to version 1.2.28.
