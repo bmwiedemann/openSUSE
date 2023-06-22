@@ -19,7 +19,7 @@
 %global pkg_name basement
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.0.15
+Version:        0.0.16
 Release:        0
 Summary:        Foundation scrap box of array & string
 License:        BSD-3-Clause
