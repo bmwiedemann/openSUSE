@@ -565,4 +565,18 @@
 - Use sysuser-tools unconditionally (bsc#1205161)</comment>
     <requestid>1043600</requestid>
   </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>7cff4a560c555eb1f9b3267f6f63b04a</srcmd5>
+    <version>6.5</version>
+    <time>1687469080</time>
+    <user>dimstar_suse</user>
+    <comment>- Use conditionals for sysusers_requires to allow quilt setup
+- Remove workarounds for old TCL
+- Enable parallel build again
+- Don't use %tmpfiles_create_package anymore.
+  This macro cannot work on transactional systems. However this macro was
+  supposed to be used only when the tmpfiles stuff was needed in advance, which
+  doesn't seem to be the case for brltty.</comment>
+    <requestid>1094353</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun 20 20:20:20 UTC 2023 - olaf@aepfle.de
+
+- Use conditionals for sysusers_requires to allow quilt setup
+- Remove workarounds for old TCL
+- Enable parallel build again
+
+-------------------------------------------------------------------
+Tue Jun 20 15:14:57 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Don't use %tmpfiles_create_package anymore.
+
+  This macro cannot work on transactional systems. However this macro was
+  supposed to be used only when the tmpfiles stuff was needed in advance, which
+  doesn't seem to be the case for brltty.
+
+-------------------------------------------------------------------
 Sat Dec 17 09:09:09 UTC 2022 - olaf@aepfle.de
 
 - Use tmpfiles_create_package
