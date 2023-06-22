@@ -2482,4 +2482,13 @@ Recommended for 12.3</comment>
 New stable release</comment>
     <requestid>1090838</requestid>
   </revision>
+  <revision rev="269" vrev="2">
+    <srcmd5>f975298eb0c2765640868280a9343089</srcmd5>
+    <version>3.48.3</version>
+    <time>1687469072</time>
+    <user>dimstar_suse</user>
+    <comment>- Add abdcc5af227972da8db1731f05e66a14eb4f6656.patch: fix
+  &quot;HTML attachment viewport is tiny&quot; (glgo#GNOME/evolution#2400).</comment>
+    <requestid>1094331</requestid>
+  </revision>
 </revisionlist>
