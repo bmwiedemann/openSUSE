@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 22 11:17:00 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not use python_module macro, but rather specify python3-FOO
+  directly: this package is not a python module, but rather an
+  application written in python.
+
+-------------------------------------------------------------------
 Sun Oct  9 16:47:54 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.0.0:

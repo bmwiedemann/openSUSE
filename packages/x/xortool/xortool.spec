@@ -1,7 +1,7 @@
 #
 # spec file for package xortool
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define pythons python3
 Name:           xortool
 Version:        1.0.0
 Release:        0
@@ -25,12 +24,12 @@ License:        MIT
 Group:          Productivity/Security
 URL:            https://github.com/hellman/xortool
 Source:         https://github.com/hellman/xortool/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  %{python_module docopt}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
-Requires:       %{python_module docopt}
+BuildRequires:  python3-docopt
+BuildRequires:  python3-pip
+BuildRequires:  python3-poetry
+BuildRequires:  python3-wheel
+Requires:       python3-docopt
 BuildArch:      noarch
 
 %description
@@ -42,10 +41,10 @@ A tool to do some xor analysis:
 %autosetup -p1
 
 %build
-%pyproject_wheel
+%python3_pyproject_wheel
 
 %install
-%pyproject_install
+%python3_pyproject_install
 
 %files
 %doc README.md
