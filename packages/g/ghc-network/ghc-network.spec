@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.1.2.8
+Version:        3.1.4.0
 Release:        0
 Summary:        Low-level networking interface
 License:        BSD-3-Clause
