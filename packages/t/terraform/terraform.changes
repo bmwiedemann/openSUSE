@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 21 11:24:31 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.5.1:
+  * BUG FIXES:
+    - core: plan validation would fail for providers using nested
+      set attributes with computed object attribute
+      ([#33377](https://github.com/hashicorp/terraform/issues/33377))
+
+-------------------------------------------------------------------
 Mon Jun 12 19:50:06 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 1.5.0:
