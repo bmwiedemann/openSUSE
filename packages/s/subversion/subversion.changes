@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 21 12:45:29 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints to avoid some aarch64 workers for
+  subversion:testsuite to avoid to hang
+
+-------------------------------------------------------------------
 Fri Mar 10 08:48:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add swig4.patch for better support with SWIG 4.x (bsc#1209110) 

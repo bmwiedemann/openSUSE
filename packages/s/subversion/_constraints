@@ -5,5 +5,16 @@
       <size unit="M">1024</size>
     </memory>
   </hardware>
+  <overwrite>
+    <conditions>
+      <arch>aarch64</arch>
+      <package>subversion:testsuite</package>
+    </conditions>
+    <hardware>
+      <cpu>
+        <flag>asimdrdm</flag>
+      </cpu>
+    </hardware>
+  </overwrite>
 </constraints>
 

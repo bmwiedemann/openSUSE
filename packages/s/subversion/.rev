@@ -1670,4 +1670,12 @@
     <comment>- add swig4.patch for better support with SWIG 4.x (bsc#1209110)</comment>
     <requestid>1070632</requestid>
   </revision>
+  <revision rev="192" vrev="6">
+    <srcmd5>98e3ec3544ea8d84db309e6add453930</srcmd5>
+    <version>1.14.2</version>
+    <time>1687469083</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094373</requestid>
+  </revision>
 </revisionlist>
