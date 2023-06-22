@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 22 15:39:36 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.13.1
+  Bugfix release:
+  * When a case statement in filter had an empty branch, it crashed
+    BIRD.
+  * fixed a bug in BGP Roles manifesting when the other party sent
+    no capabilities at all.
+
+-------------------------------------------------------------------
 Mon Apr 24 15:32:30 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.13
