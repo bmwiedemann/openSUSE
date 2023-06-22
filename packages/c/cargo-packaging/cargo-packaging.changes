@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 19 23:37:09 UTC 2023 - william.brown@suse.com
+
+- Update to version 1.2.0+3:
+  * rename variable for bitwarden
+
+-------------------------------------------------------------------
 Tue Jun 13 00:09:47 UTC 2023 - william.brown@suse.com
 
 - bsc#1212226 - add rust-packaging compat

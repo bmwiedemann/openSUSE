@@ -17,7 +17,7 @@
 
 
 Name:           cargo-packaging
-Version:        1.2.0+2
+Version:        1.2.0+3
 Release:        0
 Summary:        Macros and tools to assist with cargo and rust packaging
 License:        MPL-2.0
