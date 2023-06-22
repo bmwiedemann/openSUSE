@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jun 22 13:29:44 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.17.2:
+  * Bugfixes
+    - Allow use as a reusable github action (#3513) @ssbarnea
+    - Add action and args properties to task class (#3576)
+      @ssbarnea
+    - Fixed error when sarif file option is provided (#3587)
+      @ajinkyau
+    - Add NetBSD as a recognized platform (#3586) @he32
+    - Display ansible-compat version alongwith with other deps
+      (#3584) @ajinkyau
+    - Refactored syntax-checking (#3568) @ssbarnea
+    - Avoid app reinitialization during syntax-check (#3563)
+      @ssbarnea
+    - Allow config file to have `.yaml` extension (#3559) @bdsoha
+    - Allow lists of lists of strings for vars_files (#3561)
+      @ajinkyau
+
+-------------------------------------------------------------------
 Tue Jun 13 16:51:19 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 6.17.1:
