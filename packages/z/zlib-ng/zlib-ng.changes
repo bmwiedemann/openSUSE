@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jun 22 08:21:11 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.1.2:
+  * Many improvements to the CMake scripts.
+  * Improved support for detecting memory alignment functions.
+  * Improved support for unaligned access by letting the compiler promote code to unaligned if supported by the CPU.
+  * Remove x86 cpu feature detection for TZCNT, safely fallback to BSF.
+  * Enable using AVX512 intrinsics with GCC <9.
+  * Decompression is a lot faster (56% faster measured on AVX2-capable x86-64)
+  * Compresson is improved for Level 9, at the cost of a little performance.
+  * Compression is improved for Level 3, by switching from deflate_fast to deflate_medium.
+  * Levels 3 and 4 have been reconfigured to provide a better gradual tradeoff for speed/compression between levels 2 and 5.
+  * Deflate_quick (Level 1) has been improved to default to a bigger windowsize and support changing the window size like the other levels.
+  * Deflate_rle has been optimized with its own compare_256 implementation.
+  * Adler32 implementation using AVX512, AVX512-VNNI, VMX.
+  * CRC32-B implementation using VPCLMULQDQ & IBM-Z.
+  * Slide hash implementation using VMX.
+  * Compare256 implementations using SSE2, Neon, & POWER9.
+  * Inflate chunk copying using SSSE3 & VSX.
+
+-------------------------------------------------------------------
 Thu Apr  6 10:21:43 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 2.0.7:

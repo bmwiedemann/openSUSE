@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package zlib-ng
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -17,23 +17,20 @@
 
 
 %define target @BUILD_FLAVOR@%{nil}
-%if "%target" == "compat"
+%if "%{target}" == "compat"
 %bcond_without zlib_compat
 %else
 %bcond_with zlib_compat
 %endif
-
+%bcond_with     systemtap
 %if %{with zlib_compat}
 %define soversion 1
 %define compat_suffix -compat
 %else
 %define soversion 2
 %endif
-
-%bcond_with     systemtap
-
 Name:           zlib-ng%{?compat_suffix}
-Version:        2.0.7
+Version:        2.1.2
 Release:        0
 Summary:        Zlib replacement with SIMD optimizations
 License:        Zlib
@@ -42,6 +39,7 @@ Source0:        https://github.com/zlib-ng/zlib-ng/archive/refs/tags/%{version}.
 Source1:        baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  gcc
+BuildRequires:  gcc-c++
 %if %{with systemtap}
 BuildRequires:  systemtap-sdt-devel
 %endif
@@ -85,7 +83,8 @@ developing application that use %{name}.
 %if %{with zlib_compat}
   -DZLIB_COMPAT=ON \
 %endif
-  -DINSTALL_LIB_DIR=%{_libdir}
+  -DINSTALL_LIB_DIR=%{_libdir} \
+  -DWITH_GTEST=OFF
 %cmake_build
 
 %install
@@ -113,11 +112,13 @@ export LD_LIBRARY_PATH=%{buildroot}/%{_libdir}
 %if %{with zlib_compat}
 %{_includedir}/zconf.h
 %{_includedir}/zlib.h
+%{_includedir}/zlib_name_mangling.h
 %{_libdir}/libz.so
 %{_libdir}/pkgconfig/zlib.pc
 %else
 %{_includedir}/zconf-ng.h
 %{_includedir}/zlib-ng.h
+%{_includedir}/zlib_name_mangling-ng.h
 %{_libdir}/libz-ng.so
 %{_libdir}/pkgconfig/zlib-ng.pc
 %endif
