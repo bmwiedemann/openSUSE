@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyghmi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           python-pyghmi
-Version:        1.5.29
+Version:        1.5.61
 Release:        0
 Summary:        General Hardware Management Initiative (IPMI and others)
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/pyghmi
-Source0:        https://files.pythonhosted.org/packages/source/p/pyghmi/pyghmi-1.5.29.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/pyghmi/pyghmi-1.5.61.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-cryptography >= 2.1
 BuildRequires:  python3-devel
@@ -73,14 +73,14 @@ this library into python code
 
 %build
 %{py3_build}
-PYTHONPATH=. PBR_VERSION=1.5.29 %sphinx_build -b html doc/source doc/build/html
+PYTHONPATH=. PBR_VERSION=1.5.61 %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
 %{py3_install}
 
 %check
-python3 -m stestr.cli run
+%{openstack_stestr_run}
 
 %files -n python3-pyghmi
 %doc README.md ChangeLog

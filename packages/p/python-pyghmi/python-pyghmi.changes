@@ -1,4 +1,173 @@
 -------------------------------------------------------------------
+Thu Jun 15 20:20:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.61:
+  * Follow state of validate job when updating firmware
+  * Handle FRU with blank mac area
+  * Stage alternate power meter support
+
+-------------------------------------------------------------------
+Wed May  3 12:30:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.60:
+  * Avoid doing extra AddNewVolWithNaAsync calls
+  * Update storage code to handle 2023 XCC FW
+  * Fix for newer SMMv2 firmware
+  * Specify wildcard etag during set\_bootdevice
+  * Add check\_storage\_configuration to Redfish code
+  * Add xClarity Update Manager to firmware
+  * Add retry logic to web fetch
+  * Add decode of DDR5 SPD
+  * Correct variable name in set\_net6\_configuration
+  * Fix missing attribute on redfish command objects
+  * Correct the Purley check for config
+  * Allow fast setting retrieval for Purley
+  * Support non-PCI adapter firmware inventory
+  * Avoid using broken UEFI configuration on Purley
+  * Fix fnmatch import
+  * Add IPv6 configuration for redfish and IPMI
+  * Validate fapm data availability before use of fapm
+  * Leave Purley generation on the IPMI path
+  * Fix expectation of return on bmc reset
+  * Add support for custom role names
+  * Do not expect a reply to bmc reset
+  * Use Lenovo OEM system configuration
+  * Refactor system configuration management to OEM
+  * Add support for HTTP access to system configuration
+  * Support newer python is\_alive method name
+  * Correct typo in imm.py
+  * Extend IPMI privilege to redfish role
+  * Implement OEM user deletion
+  * Add support for new RDOC API
+  * Correct mistake in the security mode change
+  * Implement XCC cryptography settings
+  * Add reset to defaults to tsma
+  * Only use one extra keep alive session
+  * Fix the SMM timezone treatment
+  * Add TimeZone to SMM configuration
+  * Interface to implement \`get guid\` command
+  * Fix web role setting on SMM
+  * Migrate V2 and newer systems to new meters
+  * Add more info to SMM inventory output
+  * Improve Whitley vs Purley storage API detection
+  * Remove DIMM temperatures from XCC sensor
+  * Mitigate web session consumption
+  * Revert assertion mask usage
+  * Update to newer XCC storage syntax
+  * Correct the choice of slow/fast timeout
+  * More aggressively timeout on unconnected systems
+  * Fix handling of 'blocked' slots in FPC
+  * Avoid creating onlog loops before established
+  * Add SMM2 VPD to configuration for SMM
+  * Add port forwarding over usb to bmc settings
+  * Allow virtualmedia on Systems instead of Managers
+  * Clean up socket on deletion
+  * Rework the relog logic
+  * Execute internal cleanup on logout
+  * Ignore stub log entries
+  * Clean onlogpayload on timeout response
+  * Handle XCC not sending thermal data in some situations
+  * Add SMM virtual reseat
+  * More aggressively give up on initial connection
+  * Go back to trusting XCC health assessment
+  * Fix the remote sequence number bug introduced by recent
+    commit
+  * Fix remseqnumber not initialized
+  * Retry login on dead session
+  * Ensure fresh webclient for SMM interaction
+  * Add water cooled 9-PSU variant
+  * Remove the ironic test
+  * Fix Python2 compat in new SDR cache code
+  * Add check for sharedio on reseat
+  * Move away from pickle for cache
+  * Harden pickling in SDR cache
+  * Block FFDC data from FPC
+  * Try iso-8859-1 decode if utf8 fails
+  * Do not attempt PSU inventory on FPC
+  * Add capping to the Lenovo dense servers
+  * Fix str\_to\_size logic
+  * Have XCC raid configuration proceed with new state
+  * Amend incorrect logic in the redfish push
+  * Have XCC redfish handler use redfish push update
+  * Detect and use redfish push update
+  * Support newer SMMv2 firmware for PSU
+  * Adapt to more variants in the capacitystr
+  * Fix SMM inventory parameters
+  * Add iDrac virtual cd/floppy
+  * Update generic redfish remote media for eject/insert
+  * Refactor oemmap lookup
+  * Better tolerate issues during pause
+  * Fix bmc network configuration over ipv6 client
+  * remove wrong used ipmicmd in command.py
+  * Fix size of SDR records becoming a float
+  * ipmi/command.py: Add bridge\_request argument to
+    set|get\_power
+  * Fix nonce login
+  * Remove library level logging
+  *  Support SDR extention in oem handler
+  * add \*\*kwargs to support parameter extention
+  * Fix redfish operation over ipv6 link local
+  * Fix power state fetch
+  * Add channel parameter to add\_extra\_net\_configuration
+  * remove the check as it may cause RD650 failure
+  * Support nonce based web login
+  * Fix construction of pet acknowledgement
+  * Do not reap refreshing web sessions
+  * Detect 'default'  nic by matching connection address
+  * Recognize another etag message
+  * Use str as key instead of float to avoid computing problems
+  * Fix decode\_eventdata in events
+  * Try to log out of a stale web session
+  * Improve tests
+  * Support extention for alert destination handling
+  * Revert to using the sensor reading
+  * Support alarm level definition extention
+  *     Support extention for set\_power/get\_power     1.
+    support extention handle in plugins     2. add log for bug
+    locating     3. refactor to avoid duplicate code
+  * Add optane dimm for XCC systems
+  * add check to avoid exception and add some fields
+  * Add method for power capping get/set
+  * Add handler for kent
+  * Add firmware version to device\_id for some devices change
+    with version
+  * Add extention for user operation
+  * Add extention for get/set asset tag, fix bugs for overriding
+  * Support getting net configuration from oem handler
+  * Fix build id on SMMv1
+  * Support plugin loading mechanism
+  * configure the destination type to PET trap first
+  * Change PSU Redundancy mode event data
+  * miss to add field "ControllerIndex" in drive.py
+  * Support sensor for kent
+  * Get/Set management controller identifier
+  * Support Kent
+  * workaround for kent fw defect 45862
+  * Support led for ts460
+  * Support RS160
+  * set pci vendorid presence to true
+  * change chunksize from 240 to 224
+  * check the fruinf again as the oem process may return None
+  * Memory part number length is 20
+  * fix remote console function for thinkserver
+  * TSMC failed to configure the trap destination
+  * Bug 100958 - Israel Land Authority - LXCA reporting x3650 M4
+    false warning
+  * Discard disused webclient
+  * Use weak reference to return a proxy of object for gc
+  * add PSU Redundancy sensor type
+  * Edit FRU parser to get board Id
+  * Fix raid drive parameter
+  * Accept utf8 strings in FRU data
+  * visualize version numbers according to format x.x.x
+  * Allow Confluent to create users with KVM bit
+  * Incomplete memory data for blue Draco
+  * IMMv1 "Unable To Process Request" message
+  * Fix expired weakref reference exception
+  * Compatible with python3
+  * Honor access=readonly for Lenovo config
+
+-------------------------------------------------------------------
 Mon Dec  6 09:28:49 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.29:

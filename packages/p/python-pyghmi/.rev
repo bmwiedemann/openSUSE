@@ -341,4 +341,41 @@
   * Fix SMMv2 ffdc download</comment>
     <requestid>983966</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a25bfb7c4a89a6ae90f6a0088b29a2f8</srcmd5>
+    <version>1.5.61</version>
+    <time>1687469103</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.61:
+  * Follow state of validate job when updating firmware
+  * Handle FRU with blank mac area
+  * Stage alternate power meter support
+
+- update to 1.5.60:
+  * Avoid doing extra AddNewVolWithNaAsync calls
+  * Update storage code to handle 2023 XCC FW
+  * Fix for newer SMMv2 firmware
+  * Specify wildcard etag during set\_bootdevice
+  * Add check\_storage\_configuration to Redfish code
+  * Add xClarity Update Manager to firmware
+  * Add retry logic to web fetch
+  * Add decode of DDR5 SPD
+  * Correct variable name in set\_net6\_configuration
+  * Fix missing attribute on redfish command objects
+  * Correct the Purley check for config
+  * Allow fast setting retrieval for Purley
+  * Support non-PCI adapter firmware inventory
+  * Avoid using broken UEFI configuration on Purley
+  * Fix fnmatch import
+  * Add IPv6 configuration for redfish and IPMI
+  * Validate fapm data availability before use of fapm
+  * Leave Purley generation on the IPMI path
+  * Fix expectation of return on bmc reset
+  * Add support for custom role names
+  * Do not expect a reply to bmc reset
+  * Use Lenovo OEM system configuration
+  * Refactor system configuration management to OEM
+  * Add support for HTTP access to system configuration</comment>
+    <requestid>1093365</requestid>
+  </revision>
 </revisionlist>
