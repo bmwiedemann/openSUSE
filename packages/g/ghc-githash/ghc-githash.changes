@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 21 05:05:14 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update githash to version 0.1.7.0.
+  ## 0.1.7.0
+
+  * Expose giFiles to users.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:06:51 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
