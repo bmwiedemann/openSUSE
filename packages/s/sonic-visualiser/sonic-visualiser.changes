@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Jun 22 03:10:24 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 4.5.2
+- Remove sonic-visualiser-Fix-build-failure.patch as fixed in upstream
+- Use system vamp host sdk
+  * Support multi-line text labels on time instants
+ 
+  * Improve refresh and rendering of text labels in various layers
+
+  * Improve abbreviation of layer names in the key at bottom-right of a
+    pane
+
+  * Fix repeated writes to settings file when rendering time-ruler
+    layers at close zoom levels
+
+  * Use system Vamp host SDK if provided 
+
+- Changes in 4.5.1
+  * Update to use Rubber Band v3 with its higher quality timestretcher
+    (the older, lower-CPU one is still available in preferences). This
+    means the build requires rubberband-3.0.0 or newer, so you may need
+    to install it separately if building on an older system.
+
+  * Fix inability to select Hz as the unit of a layer following import
+
+  * Provisional fix to bailing out on startup when invoked with "Open
+    With..." on Mac
+
+  * Fix nonsense display when showing frequency scaled points with value
+    of 0Hz
+
+-------------------------------------------------------------------
 Tue Oct 25 00:41:40 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Add patch sonic-visualiser-Fix-build-failure.patch

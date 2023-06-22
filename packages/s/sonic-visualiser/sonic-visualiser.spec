@@ -1,7 +1,7 @@
 #
 # spec file for package sonic-visualiser
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2016 Tom Mbrt <tom.mbrt@googlemail.com>
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 # Copyright (c) 2011 Evstifeev Roman <someuniquename@gmail.com>
@@ -22,7 +22,7 @@
 
 #%%define urlcode 2786
 Name:           sonic-visualiser
-Version:        4.5
+Version:        4.5.2
 Release:        0
 Summary:        A program for viewing and analysing contents of audio files
 License:        GPL-2.0-or-later
@@ -33,7 +33,6 @@ Source0:        https://github.com/sonic-visualiser/sonic-visualiser/releases/do
 Source1:        %{name}.xml
 # PATCH-FIX-OPENSUSE sonic-visualiser-system-dataquay.patch aloisio@gmx.com -- force use of system libdataquay
 Patch0:         sonic-visualiser-system-dataquay.patch
-Patch1:         sonic-visualiser-Fix-build-failure.patch
 BuildRequires:  capnproto
 BuildRequires:  dssi
 BuildRequires:  flac
@@ -81,7 +80,7 @@ BuildRequires:  pkgconfig(serd-0)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(sord-0)
 BuildRequires:  pkgconfig(speex)
-BuildRequires:  pkgconfig(vamp-sdk) >= 2.5
+BuildRequires:  pkgconfig(vamp-hostsdk) >= 2.10
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(zlib)
@@ -123,8 +122,6 @@ With Sonic Visualiser you can:
 %if 0%{?BUILD_ORIG}
 %patch0 -p1
 %endif
-
-%patch1 -p1
 
 # required with capnproto 0.7.0
 for x in *.pr* config* Makefile* ; do perl -i -p -e 's/c\+\+11/c++14/g' "$x" ; done
