@@ -25066,7 +25066,6 @@ unsorted:
   - python310-pip-api 
   - python310-pip-licenses 
   - python310-pip-run 
-  - python310-pip-shims 
   - python310-pip-test 
   - python310-pip-tools 
   - python310-pip-wheel 
@@ -28418,7 +28417,6 @@ unsorted:
   - python311-pip-api 
   - python311-pip-licenses 
   - python311-pip-run 
-  - python311-pip-shims 
   - python311-pip-test 
   - python311-pip-tools 
   - python311-pip-wheel 
@@ -31843,7 +31841,6 @@ unsorted:
   - python39-pip-api 
   - python39-pip-licenses 
   - python39-pip-run 
-  - python39-pip-shims 
   - python39-pip-test 
   - python39-pip-tools 
   - python39-pip-wheel 
@@ -34059,7 +34056,6 @@ unsorted:
   - rpcgen 
   - rpcs3 
   - rpcsvc-proto-devel 
-  - rpi-eeprom-config 
   - rpi-imager 
   - rpm-32bit 
   - rpm-build 
@@ -46242,6 +46238,7 @@ unsorted:
   - zathura-zsh-completion 
   - zaz 
   - zbar 
+  - zbar-lang 
   - zchunk 
   - zdbsp 
   - zeal 
