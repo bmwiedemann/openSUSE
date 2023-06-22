@@ -19,7 +19,7 @@
 %define asan_build 0
 %define debug_build 0
 Name:           tiff
-Version:        4.5.0
+Version:        4.5.1
 Release:        0
 Summary:        Tools for Converting from and to the Tagged Image File Format
 License:        HPND
@@ -33,12 +33,6 @@ Source99:       tiff.keyring
 Patch0:         tiff-4.0.3-seek.patch
 # http://bugzilla.maptools.org/show_bug.cgi?id=2442
 Patch1:         tiff-4.0.3-compress-warning.patch
-# PATCH-FIX-UPSTREAM mvetter@suse.com tiff-CVE-2022-48281.patch -- bsc#1207413
-Patch2:         tiff-CVE-2022-48281.patch
-# PATCH-FIX-UPSTREAM mvetter@suse.com -- bsc#1208226 bsc#1208227 bsc#1208228 bsc#1208229 bsc#1208230
-Patch3:         tiff-CVE-2023-0795,CVE-2023-0796,CVE-2023-0797,CVE-2023-0798,CVE-2023-0799.patch
-# PATCH-FIX-UPSTREAM mvetter@suse.com -- bsc#1208231 bsc#1208232 bsc#1208233 bsc#1208234 bsc#1208236
-Patch4:         tiff-CVE-2023-0800,CVE-2023-0801,CVE-2023-0802,CVE-2023-0803,CVE-2023-0804.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libjbig-devel
 BuildRequires:  libjpeg-devel
@@ -116,8 +110,7 @@ for i in tools test; do
 	(cd $i && make %{?_smp_mflags} check)
 done
 
-%post -n libtiff6 -p /sbin/ldconfig
-%postun -n libtiff6 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libtiff6
 
 %files
 %{_bindir}/*

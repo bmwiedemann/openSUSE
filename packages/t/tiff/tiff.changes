@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Jun 20 07:16:56 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.5.1:
+  * Definition of tags reformatted (clang-format off) for better readability of tag comments in tiff.h and tif_dirinfo.c
+  * Do not install libtiff-4.pc when tiff-install is reset.
+  * Add versioninfo resource files for DLL and tools compiled with Windows MSVC and MINGW.
+  * Disable clang-formatting for tif_config.h.cmake.in and tiffconf.h.cmake.in because sensitive for CMake scripts.
+  * CMake: make WebP component name compatible with upstream ConfigWebP.cmake
+  * CMake: make Findliblzma with upstream CMake config file
+  * CMake: FindDeflate.cmake: fix several errors (issue #526).
+  * CMake: FindLERC.cmake: version string return added.
+  * CMake: export TiffConfig.cmake and TiffConfigVersion.cmake files
+  * CMake: fix export of INTERFACE_INCLUDE_DIRECTORIES
+  * Hardcode HOST_FILLORDER to FILLORDER_LSB2MSB and make 'H' flag of TIFFOpen() to warn and an alias of FILLORDER_MSB2LSB. tif_lerc.c: use WORDS_BIGENDIAN instead of HOST_BIGENDIAN.
+  * Optimize relative seeking within TIFFSetDirectory() by using the learned list of IFD offsets.
+  * Improve internal IFD offset and directory number map handling.
+  * Behavior of TIFFOpen() mode "r+" in the Windows implementation adjusted to that of Linux.
+  * TIFFDirectory td_fieldsset type changed from unsigned long, which can be 32 or 64 bits, to uint32_t (fixes issue #484).
+  * tif_ojpeg.c: checking for division by zero (fixes issue #554).
+  * LZWDecode(): avoid crash when trying to read again from a strip whith a missing end-of-information marker (fixes issue #548).
+  * Fixed runtime error: applying zero offset to null pointer in countInkNamesString().
+  * Fixing crash in TIFFUnlinkDirectory() when called with directory number zero ("TIFFUnlinkDirectory(0)") as well as fixing incorrect behaviour when unlinking the first directory.
+  * tif_luv: check and correct for NaN data in uv_encode() (issue #530).
+  * TIFFClose() avoid NULL pointer dereferencing (issue #515).
+  * tif_hash_set.c: include tif_hash_set.h after tif_config.h to let a chance for GDAL symbol renaming trick.
+  * Fax3: fix failure to decode some fax3 number_of_images and add test for Fax3 decoding issues (issue #513).
+  * TIFFSetDirectory() and TIFFWriteDirectorySec() avoid harmless unsigned-integer-overflow (due to gdal oss-fuzz #54311 and #54343).
+  * tif_ojpeg.c: fix issue #554 by checking for division by zero in OJPEGWriteHeaderInfo().
+  * LZWDecode(): avoid crash when trying to read again from a strip whith a missing end-of-information marker (issue #548).
+- Drop no longer needed patches:
+  * tiff-CVE-2023-0795,CVE-2023-0796,CVE-2023-0797,CVE-2023-0798,CVE-2023-0799.patch
+  * tiff-CVE-2022-48281.patch
+  * tiff-CVE-2023-0800,CVE-2023-0801,CVE-2023-0802,CVE-2023-0803,CVE-2023-0804.patch 
+
+-------------------------------------------------------------------
 Wed Feb 22 15:05:33 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - security update:
