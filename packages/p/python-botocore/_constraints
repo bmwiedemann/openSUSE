@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<constraints>
+  <overwrite>
+    <conditions>
+      <package>python-botocore:test</package>
+    </conditions>
+    <hardware>
+      <physicalmemory>
+        <size unit="G">8</size>
+      </physicalmemory>
+    </hardware>
+  </overwrite>
+</constraints>
+

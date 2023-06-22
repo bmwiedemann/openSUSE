@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 20 15:03:53 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add _constraints to avoid OOM in %check
+
+-------------------------------------------------------------------
 Wed Jun 14 09:57:18 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update 1.29.153:
