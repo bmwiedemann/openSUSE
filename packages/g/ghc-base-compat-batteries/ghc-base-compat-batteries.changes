@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jun 10 12:07:43 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update base-compat-batteries to version 0.13.0.
+  ## Changes in 0.13.0 [2023.03.10]
+   - This coincides with the `base-compat-0.13.0` release. Refer to the
+     [`base-compat` changelog](https://github.com/haskell-compat/base-compat/blob/master/base-compat/CHANGES.markdown#changes-in-0130-20230310)
+     for more details.
+   - Require `OneTuple-0.4` or later on GHC 7.4+, as that is the first `OneTuple`
+     release to backport the `MkSolo` data constuctor for `Solo`. See
+     `Data.Tuple.Compat`.
+   - Introduce `Data.Foldable1.Compat` and `Data.Bifoldable1.Compat` modules,
+     which correspond to changes made in `base-4.18.0.0`. `base-compat-batteries`
+     uses the `foldable1-classes-compat` library to backport this code to older
+     versions of `base`.
+   - Depend on `bifunctor-classes-compat` to backport the `Bifunctor`,
+     `Bifoldable`, and `Bitraversable` classes instead of the
+     `bifunctors` library, which has more dependencies.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:05:55 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
