@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 15 07:19:22 UTC 2023 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to bugfix release 3.3:
+  + adds translations for 2 more languages: Arabic and Esperanto.
+  + bug fixes on multiple activities "Path encoding", 
+    "Letter in word", "Ballcatch" and "Piano composition".
+  + improvements of keyboard handling (shortcuts, focus...).
+  + contains new graphics and improvements on "Photo hunter".
+
+-------------------------------------------------------------------
 Wed Apr  5 19:45:12 UTC 2023 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to bugfix release 3.2
