@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 22 13:00:22 UTC 2023 - andrea.manzini@suse.com
+
+- Update to version 3.0.2+2:
+  * Fix a potential issue when using multiple AMDGPUs.
+  * Fix amdgpu wrong tx/rx computation
+  * Remove workaround for driver bug
+  * Uniqueness is pdev+id on amdgpu
+  * Uniqueness is pdev+id on intel
+  * README MSM information.
+  * MSM and Adreno support
+
+-------------------------------------------------------------------
 Sat Apr 01 17:37:28 UTC 2023 - malcolmlewis@opensuse.org
 
 - Update to version 3.0.1+29:
