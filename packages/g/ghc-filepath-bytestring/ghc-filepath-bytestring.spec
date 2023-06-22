@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.4.2.1.12
+Version:        1.4.2.1.13
 Release:        0
 Summary:        Library for manipulating RawFilePaths in a cross platform way
 License:        BSD-3-Clause

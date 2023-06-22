@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 20 16:23:05 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update filepath-bytestring to version 1.4.2.1.13.
+  filepath-bytestring (1.4.2.1.13) unstable; urgency=medium
+
+    * Relax bounds to allow base-4.18 and filepath-1.4.100.3 (ghc 9.6).
+
+   -- Joey Hess <id@joeyh.name>  Tue, 20 Jun 2023 12:22:31 -0400
+
+-------------------------------------------------------------------
 Thu Mar 30 17:06:47 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
