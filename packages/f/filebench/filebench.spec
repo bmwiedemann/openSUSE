@@ -1,7 +1,7 @@
 #
 # spec file for package filebench
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,18 @@
 
 
 Name:           filebench
-Version:        1.4.9.1
+Version:        1.4.9.1+git.20200220
 Release:        0
 Summary:        File system and storage benchmark
 License:        CDDL-1.0
-Group:          System/Benchmark
 URL:            https://github.com/filebench/filebench/wiki
-Source0:        https://github.com/filebench/filebench/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        %{name}.1
-Patch0:         make-dofile-global.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  flex
+BuildRequires:  libtool
 
 %description
 Filebench is a file system and storage benchmark that allows to generate a
@@ -41,23 +40,28 @@ database servers). Filebench is quick to set up and easy to use compared to
 deploying real applications. It is also a handy tool for micro-benchmarking.
 
 %prep
-%autosetup -p0
+%autosetup
 
 %build
+mkdir m4
 autoreconf -fiv
-%configure
+%configure \
+  --enable-static=no
 %make_build
 
 %install
 %make_install
 install -Dpm 0644 %{SOURCE1} \
   %{buildroot}%{_mandir}/man1/%{name}.1
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %license COPYING LICENSE
-%doc AUTHORS ChangeLog NEWS README TODO
+%doc AUTHORS ChangeLog NEWS README
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
+%dir %{_libdir}/%{name}
+%{_libdir}/%{name}/*
 %{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog

@@ -33,4 +33,23 @@
     <comment>- Small packaging cleanup</comment>
     <requestid>850468</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8d26005a3c3dbd663d719af1d4392d9c</srcmd5>
+    <version>1.4.9.1+git.20200220</version>
+    <time>1687469229</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.9.1+git.20200220:
+  * Fix issue #138
+  * check fs_readonly flag in fileset_alloc_file
+  * Update procflow.c
+  * wifcontinued
+  * Fix filebench build on FreeBSD
+  * fix off-by-one error in shm_bitmap
+  * Removing obsolute attributes from oltp.f workload
+  * Fixing netsfs.f workload
+  * Perform complete random variable initialization
+- Drop no longer needed:
+  * make-dofile-global.patch</comment>
+    <requestid>1094689</requestid>
+  </revision>
 </revisionlist>

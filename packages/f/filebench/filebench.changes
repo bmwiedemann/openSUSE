@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun 22 15:10:30 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.4.9.1+git.20200220:
+  * Fix issue #138
+  * check fs_readonly flag in fileset_alloc_file
+  * Update procflow.c
+  * wifcontinued
+  * Fix filebench build on FreeBSD
+  * fix off-by-one error in shm_bitmap
+  * Removing obsolute attributes from oltp.f workload
+  * Fixing netsfs.f workload
+  * Perform complete random variable initialization
+- Drop no longer needed:
+  * make-dofile-global.patch
+
+-------------------------------------------------------------------
 Tue Nov 24 12:14:04 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Small packaging cleanup
