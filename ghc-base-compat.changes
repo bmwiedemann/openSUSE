@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat May 27 12:07:35 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update base-compat to version 0.13.0.
+  ## Changes in 0.13.0 [2023.03.10]
+   - Sync with `base-4.18`/GHC 9.6
+   - Backport `liftA2` being re-exported from `Prelude.Compat`.
+   - `Data.Tuple.Compat`'s `Solo` API now matches what is present in `Data.Tuple`
+     in `base-4.18`. In particular, we now re-export both the `MkSolo` and `Solo`
+     data constructors when building with `ghc-prim-0.10.0` or later, with
+     `MkSolo` being preferred over `Solo`. If you want to backport `MkSolo` to
+     earlier versions of GHC, import `Data.Tuple.Compat` from
+     `base-compat-batteries` instead.
+   - Backport `traceWith`, `traceShowWith`, and `traceEventWith` to `Debug.Trace`.
+     Note that `traceEventWith` is only provided when building with `base-4.5` or
+     later, as that is the first version of `base` to provide the `traceEvent`
+     primitive on which `traceEventWith` is defined.
+   - Backport `inits1` and `tails1` to `Data.List.NonEmpty.Compat`.
+   - Backport `minusNaturalMaybe` to `Numeric.Natural.Compat`.
+   - Backport `applyWhen` to `Data.Function.Compat`.
+   - Backport `mapAccumM` and `forAccumM` to `Data.Traversable.Compat`.
+   - Backport `heqT` to `Data.Typeable.Compat`. Note that `heqT` is only defined
+     when building with `base-4.10` or later, as that is the first version of
+     `base` to provide the primitives needed to define `heqT`.
+   - Introduce `Data.Foldable1.Compat` and `Data.Bifoldable1.Compat` modules,
+     which correspond to changes made in `base-4.18.0.0`. You may consider using
+     `base-compat-batteries` instead if you want increase the range of `base`
+     versions that are supported.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:05:54 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
