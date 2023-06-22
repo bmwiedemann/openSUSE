@@ -335,4 +335,41 @@ Switched to tar_scm to pass auto review.</comment>
     <comment></comment>
     <requestid>1090004</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>051b76609947eac077dcbe2d26dd90e0</srcmd5>
+    <version>2.31.0</version>
+    <time>1687469173</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete constructs from spec file
+
+- Update to version 2.31.0:
+  * Add timeouts to keyring operations (#7580)
+  * Alphabetically sort labels for `pr/issue view` (#7587)
+  * output URL on project commands (#7578)
+  * refactor: nest if (#7596)
+  * Fix alias import clobber flag (#7569)
+  * Fix error handling for extension and shell alias commands (#7567)
+  * chore: pkg imported more than once (#7591)
+  * Added wantErrOut property
+  * Speed up listing extensions by lazy-loading extension information when needed (#7493)
+  * build(deps): bump github.com/AlecAivazis/survey/v2 from 2.3.6 to 2.3.7
+  * Set upstream remote to track all branches after initial fetch (#7542)
+  * api: output a single JSON array in REST pagination mode (#7190)
+  * Introduce `gh project` commands (#7375)
+  * fix tests
+  * fix test
+  * :nail_care: json export
+  * fixed a type
+  * Codespaces view command updates
+  * build(deps): bump github.com/cli/go-gh/v2 from 2.0.0 to 2.0.1
+  * Use homebrew fork in cli org and update token
+  * Change site deployment ssh key to PAT
+  * Resolve tests/lint errors
+  * update gh auth status to write to stdout on success
+  * Remove unused linter flag
+  * Replace SurveyAskOne with Prompter
+  * Add gist selector option to gist edit command
+  * Improve docs around run rerun job flag (#7527)</comment>
+    <requestid>1094582</requestid>
+  </revision>
 </revisionlist>
