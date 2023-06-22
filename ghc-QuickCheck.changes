@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May 31 15:38:24 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update QuickCheck to version 2.14.3.
+  QuickCheck 2.14.3 (released 2023-05-31)
+  	* Add shrinkBoundedEnum (thanks to Jonathan Knowles)
+  	* Add discardAfter for discarding tests on timeout (thanks to Justus Sagemüller)
+  	* Add assertWith for monadic testing (thanks to KtorZ)
+  	* Add functionElements to Test.QuickCheck.Function (thanks to Oleg Grenrus)
+  	* Add Arbitrary instance for Newline (thanks to Daniel Bramucci)
+  	* Improve Arbitrary instances for Float and Double (thanks to Oleg Grenrus)
+  	* Improve arbitrarySizedFractional (thanks to Bodigrim)
+  	* Fix shrinkRealFrac and shrinkDecimal, which were broken
+  	* Speed up printing of progress messages (thanks to Bodigrim)
+  	* Add COMPLETE pragmas for Fn and family (thanks to ilkecan)
+  	* Make templateHaskell flag manual (thanks to Oleg Grenrus)
+
+-------------------------------------------------------------------
 Thu Mar 30 17:08:00 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
