@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 21 10:51:42 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update xml-conduit to version 1.9.1.3.
+  Upstream has not updated the file "ChangeLog.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:09:07 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
