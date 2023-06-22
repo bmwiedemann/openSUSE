@@ -239,4 +239,17 @@
   - Imported Translations from Zanata</comment>
     <requestid>1069829</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ff9d866df71872d46ef793683d51a82b</srcmd5>
+    <version>3.4.0</version>
+    <time>1687469105</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.4.0
+  - Revert &quot;Moves supported python runtimes from version 3.8 to 3.10&quot;
+  - Update master for stable/2023.1
+  - Imported Translations from Zanata
+  - Moves supported python runtimes from version 3.8 to 3.10
+  - Allow bmemcached to be optional for memcache_pool</comment>
+    <requestid>1093378</requestid>
+  </revision>
 </revisionlist>

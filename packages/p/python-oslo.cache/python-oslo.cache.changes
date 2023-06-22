@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 15 20:40:09 UTC 2023 - cloud-devel@suse.de
+
+- update to version 3.4.0
+  - Revert "Moves supported python runtimes from version 3.8 to 3.10"
+  - Update master for stable/2023.1
+  - Imported Translations from Zanata
+  - Moves supported python runtimes from version 3.8 to 3.10
+  - Allow bmemcached to be optional for memcache_pool
+
+-------------------------------------------------------------------
 Tue Mar  7 06:52:28 UTC 2023 - cloud-devel@suse.de
 
 - update to version 3.3.1
