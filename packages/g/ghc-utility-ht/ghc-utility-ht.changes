@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 28 10:51:29 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update utility-ht to version 0.0.17.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:08:52 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

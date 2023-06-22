@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.0.16
+Version:        0.0.17
 Release:        0
 Summary:        Various small helper functions for Lists, Maybes, Tuples, Functions
 License:        BSD-3-Clause
