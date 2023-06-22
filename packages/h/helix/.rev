@@ -186,4 +186,12 @@ This will increase possible helix users.</comment>
 * CHANGELOG information is too large. For more info, go to https://github.com/helix-editor/helix/blob/master/CHANGELOG.md#2305-2023-05-18</comment>
     <requestid>1088494</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>e07c4bc9de1eaa42fa7e47dc5aace20e</srcmd5>
+    <version>23.05</version>
+    <time>1687469219</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094660</requestid>
+  </revision>
 </revisionlist>

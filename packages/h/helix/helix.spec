@@ -76,7 +76,7 @@ Zsh command-line completion support for %{name}.
 %package        runtime
 Summary:        Runtime files for %{name}
 Version:        %{version}
-Recommends:     %{name}
+Requires:       %{name}
 
 %description runtime
 Helix runtime files. Separated due to how huge the runtime files are.
