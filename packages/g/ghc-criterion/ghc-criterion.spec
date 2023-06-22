@@ -20,21 +20,18 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.6.0.0
+Version:        1.6.2.0
 Release:        0
 Summary:        Robust, reliable performance measurement and analysis
 License:        BSD-2-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Glob-devel
 BuildRequires:  ghc-Glob-prof
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-aeson-prof
-BuildRequires:  ghc-ansi-wl-pprint-devel
-BuildRequires:  ghc-ansi-wl-pprint-prof
 BuildRequires:  ghc-base-compat-batteries-devel
 BuildRequires:  ghc-base-compat-batteries-prof
 BuildRequires:  ghc-base-devel
@@ -73,6 +70,10 @@ BuildRequires:  ghc-optparse-applicative-devel
 BuildRequires:  ghc-optparse-applicative-prof
 BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-parsec-prof
+BuildRequires:  ghc-prettyprinter-ansi-terminal-devel
+BuildRequires:  ghc-prettyprinter-ansi-terminal-prof
+BuildRequires:  ghc-prettyprinter-devel
+BuildRequires:  ghc-prettyprinter-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-statistics-devel
 BuildRequires:  ghc-statistics-prof
@@ -145,7 +146,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
