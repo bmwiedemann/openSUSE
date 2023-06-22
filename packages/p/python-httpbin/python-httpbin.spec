@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # The PyPI version is 0.7.0 but the metadata reads an internal file with version 0.9.2
 %define internalversion 0.9.2
 %{?sle15_python_module_pythons}
@@ -25,7 +24,6 @@ Version:        0.7.0+git20181107.f8ec666
 Release:        0
 Summary:        HTTP Request and Response Service
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/Runscope/httpbin
 Source:         python-httpbin-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM werkzeug.patch -- gh#postmanlabs/httpbin#555
@@ -34,11 +32,12 @@ Patch0:         werkzeug.patch
 Patch1:         fix-setup-py.patch
 # PATCH-FIX-UPSTREAM httpbin-pr674-wekzeug2.1.patch -- gh#postmanlabs/httpbin#674
 Patch2:         httpbin-pr674-wekzeug2.1.patch
+# PATCH-FIX-OPENSUSE Support Werkzeug >= 2.3
+Patch3:         support-werkzeug-2.3.patch
 BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module Flask >= 2.1}
 BuildRequires:  %{python_module MarkupSafe}
 BuildRequires:  %{python_module Werkzeug >= 2.0}
-BuildRequires:  %{python_module blinker}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module flasgger}
 BuildRequires:  %{python_module gevent}
@@ -51,7 +50,6 @@ Requires:       python-Brotli
 Requires:       python-Flask >= 2.1
 Requires:       python-MarkupSafe
 Requires:       python-Werkzeug >= 2.0
-Requires:       python-blinker
 Requires:       python-decorator
 Requires:       python-flasgger
 Requires:       python-gevent

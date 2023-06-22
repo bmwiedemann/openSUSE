@@ -70,4 +70,14 @@
     <comment></comment>
     <requestid>1081898</requestid>
   </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>0ca7a0ed2daa69bfca3fd25caf9da5ae</srcmd5>
+    <version>0.7.0+git20181107.f8ec666</version>
+    <time>1687469100</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-werkzeug-2.3.patch, support Werkzeug 2.3.
+  (bsc#1212557)
+- Remove now unneeded blinker from {Build,}Requires.</comment>
+    <requestid>1094317</requestid>
+  </revision>
 </revisionlist>

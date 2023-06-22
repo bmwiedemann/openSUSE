@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 21 08:35:31 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-werkzeug-2.3.patch, support Werkzeug 2.3.
+  (bsc#1212557)
+- Remove now unneeded blinker from {Build,}Requires.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:26:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
