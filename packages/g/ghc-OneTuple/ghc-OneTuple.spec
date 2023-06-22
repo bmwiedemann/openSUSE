@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.1
+Version:        0.4.1.1
 Release:        0
 Summary:        Singleton Tuple
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/3.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
@@ -35,6 +34,8 @@ BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-template-haskell-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
+BuildRequires:  ghc-foldable1-classes-compat-devel
+BuildRequires:  ghc-foldable1-classes-compat-prof
 BuildRequires:  ghc-hashable-devel
 BuildRequires:  ghc-hashable-prof
 %endif
@@ -42,7 +43,7 @@ BuildRequires:  ghc-hashable-prof
 %description
 This package is a compatibility package for a singleton data type
 
-> data Solo a = Solo a
+> data Solo a = MkSolo a
 
 Note: it's not a 'newtype'
 
@@ -76,7 +77,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

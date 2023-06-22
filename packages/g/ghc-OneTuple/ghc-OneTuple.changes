@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jun  1 16:17:21 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update OneTuple to version 0.4.1.1.
+  # 0.4.1.1
+
+  - Support GHC-7.2 and GHC-7.0.
+
+  # 0.4.1
+
+  - Mark `MkSolo` pattern synonym as `COMPLETE`
+
+  # 0.4
+
+  - Rename constructor to `MkSolo` as in `base-4.17`.
+    The compatibility pattern synonym is provided.
+  - Add `Foldable1 Solo` instance
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:44 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
