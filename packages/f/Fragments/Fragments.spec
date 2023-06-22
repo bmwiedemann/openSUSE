@@ -32,7 +32,7 @@ Source3:        cargo_config
 BuildRequires:  appstream-glib
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
-BuildRequires:  cargo-packaging >= 1.2.0+2
+BuildRequires:  cargo-packaging >= 1.2.0+3
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  git
@@ -60,17 +60,17 @@ mkdir .cargo
 cp %{SOURCE3} .cargo/config
 
 %build
-export RUSTFLAGS="%{__default_rustflags}"
+export RUSTFLAGS="%{build_rustflags}"
 %meson
 %meson_build
 
 %install
-export RUSTFLAGS="%{__default_rustflags}"
+export RUSTFLAGS="%{build_rustflags}"
 %meson_install
 %find_lang fragments %{?no_lang_C}
 
 %check
-export RUSTFLAGS="%{__default_rustflags}"
+export RUSTFLAGS="%{build_rustflags}"
 %meson_test
 %cargo_test
 
