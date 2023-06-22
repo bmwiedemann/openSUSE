@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 12 13:57:42 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update gtk2hs-buildtools to version 0.13.10.0.
+  Upstream does not provide a change log file.
+
+- Drop obsolete "fix-ghc-9.4.x-build.patch" patch. The upstream
+  version compiles fine with ghc 9.4.x now.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:09:15 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
@@ -13,4 +22,3 @@ Wed Feb  1 16:26:01 UTC 2023 - Peter Simons <psimons@suse.com>
 Thu Mar 24 09:06:25 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Add gtk2hs-buildtools at version 0.13.8.3.
-
