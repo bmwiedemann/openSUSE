@@ -1,0 +1,5 @@
+<package name="python-django-graphql-jwt" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python:django" package="python-django-graphql-jwt"/>
+</package>
