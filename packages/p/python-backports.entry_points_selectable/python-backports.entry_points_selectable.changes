@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 22 15:14:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- remove paths only relevant for obsolete python versions
+
+-------------------------------------------------------------------
 Mon May  8 11:07:05 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 1.2.0:

@@ -43,4 +43,12 @@
 </comment>
     <requestid>1085501</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>842005027e3505114765122b95865c72</srcmd5>
+    <version>1.2.0</version>
+    <time>1687469231</time>
+    <user>dimstar_suse</user>
+    <comment>- remove paths only relevant for obsolete python versions</comment>
+    <requestid>1094688</requestid>
+  </revision>
 </revisionlist>

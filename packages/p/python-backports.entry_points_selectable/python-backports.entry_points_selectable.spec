@@ -16,7 +16,6 @@
 #
 
 
-%bcond_without python2
 %{?sle15_python_module_pythons}
 Name:           python-backports.entry_points_selectable
 Version:        1.2.0
@@ -25,21 +24,14 @@ Summary:        Compatibility shim providing selectable entry points for older i
 License:        MIT
 URL:            https://github.com/jaraco/backports.entry_points_selectable
 Source:         https://files.pythonhosted.org/packages/source/b/backports.entry_points_selectable/backports.entry_points_selectable-%{version}.tar.gz
-BuildRequires:  %{python_module importlib-metadata if %python-base < 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 4.6}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module wheel}
-%if %{with python2}
-BuildRequires:  python-backports
-%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%ifpython2
-Requires:       python-backports
-%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -72,10 +64,6 @@ fi
 %doc CHANGES.rst README.rst
 %license LICENSE
 %dir %{python_sitelib}/backports
-%ifpython2
-# provided by python2-backports
-%exclude %{python_sitelib}/backports/__init__.py*
-%endif
 %{python_sitelib}/backports/entry_points_selectable.py*
 %pycache_only %dir %{python_sitelib}/backports/__pycache__
 %pycache_only %{python_sitelib}/backports/__pycache__/*
