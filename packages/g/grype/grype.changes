@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jun 22 05:08:42 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.63.0:
+  * Configure chronicle to pre-1.0 mode (#1356)
+  * chore(deps): update Syft to v0.84.0 (#1354)
+  * chore(deps): update bootstrap tools to latest versions (#1353)
+  * chore(deps): update Syft to v0.83.1 (#1352)
+  * chore(deps): bump golang.org/x/term from 0.8.0 to 0.9.0 (#1350)
+  * chore(deps): bump peter-evans/create-pull-request from 5.0.1 to
+    5.0.2 (#1351)
+  * chore(deps): bump github/codeql-action from 2.3.6 to 2.13.4
+    (#1344)
+  * chore: Update the contributing guide (#1347)
+  * feat: add community template folder and new table template
+    (#1343)
+  * chore: log unsupported package qualifier as debug (#1340)
+  * feat: add package info to search by for all match details
+    (#1339)
+
+-------------------------------------------------------------------
 Mon Jun 12 19:46:06 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.62.3:
