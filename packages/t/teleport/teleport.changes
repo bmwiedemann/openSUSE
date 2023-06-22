@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Thu Jun 22 05:14:09 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 13.1.2:
+  * Release 13.1.2 (#28124)
+  * [v13] update message on empty tsh ls results (#28120)
+  * Add skip-confirm flag for headless approval. (#27823) (#27864)
+  * bump e (#28101)
+  * Fix invalid command example. (#28018)
+  * AWS OIDC Integration: Deploy DB Service in a single click
+    (#27035) (#28051)
+  * fix: Ignore staticcheck false positive on darwin (#28042)
+  * Update ssh-approval-slack.mdx (#28081)
+  * Add reviewer and requester roles. (#28076)
+  * [v13] Okta service docs only show in enterprise and cloud.
+    (#28069)
+  * [v13] Docs: Update Okta SSO Guide (#27950)
+  * docs: mention required scope for GitHub app (#27910)
+  * Provide client login IP when SSO initiated in a browser.
+    (#27896)
+  * [v13] Update e ref. (#28060)
+  * Add mapping between user groups and applications. (#27962)
+  * [v13] Add a delete confirmation step to SyncInventory (#27961)
+  * Add HasPluginType to plugins interface. (#28052)
+  * update eref (#28044)
+  * [v13] Fix `Assist` import so it does not break storybook
+    (#28047)
+  * [v13] Connect: Fix overlapping placeholder and keyboard
+    shortcut in the search bar (#28048)
+  * Reorder resource filters in the search bar (#28034)
+  * [v13] Update Electron to 25.1 and TypeScript to 5.1 (#28027)
+  * [v13] Fix `tsh` relogin on not found errors (#27974)
+  * add saml wizard to ui (#27949)
+  * [v13] Update e ref. (#28036)
+  * docs: include tsh install in connect your client tsh page
+    (#27971)
+  * [v13] Gracefully handle errors in Assist frontend (#27669)
+    (#27935)
+  * OpenSearch AWS autodiscovery (#27537) (#27942)
+  * [v13] helm: Use local auth server address in auth pod to
+    prevent extra connections (#27980)
+  * [v13] Vendors the `pagerduty` plugin source into `teleport`
+    (#27612)
+  * [v13] helm: add hostAliases support (#27880)
+  * [v13] docs: update cloud downloads (#27963)
+  * Make Teleport config instructions easier to follow (#27968)
+  * Add a diagram to the Linux Server guide (#27808)
+  * Temporarily ignore Device Trust deprecation warnings (#27969)
+  * Ensure SSH_SESSION_WEBPROXY_ADDR is set for all sessions
+    (#27865)
+  * Add more accurate info to cloud download page re: `tbot`
+    (#27946)
+  * [v13] Device Trust: `tsh` privilege elevation for TPM
+    enrollment (#27959)
+  * [v13] Fixes the "Run as different user" window freezing
+    (#27874)
+  * design updates for team gated features (#27756) (#27897)
+  * [v13] Make use of keepAliveInterval in terminal handler
+    (#27914)
+  * [v13] CHANGELOG spelling fixes (#27955)
+  * [v13] Add Machine ID tip when `tctl auth sign` is used (#27928)
+  * chore: Bump golangci-lint to v1.53.3 (#27898) (#27911)
+  * [v13] MongoDB Atlas IAM authentication docs (#27493)
+  * Added 06/15 Upcoming Releases Update (#27901)
+  * docs: update version (#27917)
+  * [v13] Docs: Update ADFS SSO guide (#27891)
+  * [v13] Pass context through `UpsertAuthServer` (#27887)
+  * [v13] [Assist] New UI & rewrite (#27791)
+  * [v13] docs: document label expressions (#27878)
+  * [v13] Update e ref. (#27883)
+  * [v13] Add the notion of friendly names to access request
+    details. (#27803)
+  * [v13] docs: Fix more installation commands on Windows (#27877)
+  * [v13] chore: Bump Buf and Go versions (#27860)
+  * [v13] Omit empty fields from DeviceCredential resources
+    (#27869)
+  * Fix `TestDiagnoseSSHConnection` flakiness (#27762) (#27849)
+  * [v13] fix: Observe accurate `backend_read_seconds` duration
+    (#27857)
+  * [v13] Update Locking docs to refer `server-id` (#27845)
+
+-------------------------------------------------------------------
 Wed Jun 14 18:37:49 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 13.1.1:
