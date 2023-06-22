@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 20 20:48:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.54.0:
+  * nghttpx: Consistent error handling and use of high-level API
+  * h2load: Fix http3 upload stall
+  * h2load: Use std::chrono::steady_clock for quic timestamp
+
+-------------------------------------------------------------------
 Thu May 18 04:53:42 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.53.0:

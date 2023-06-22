@@ -707,4 +707,12 @@
   * https://nghttp2.org/blog/2023/05/10/nghttp2-v1-53-0/</comment>
     <requestid>1087728</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>79ddbae496c17fc2154e8e5a7a55255a</srcmd5>
+    <version>1.54.0</version>
+    <time>1687469088</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094238</requestid>
+  </revision>
 </revisionlist>
