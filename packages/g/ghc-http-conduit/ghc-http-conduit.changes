@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun  9 08:19:08 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update http-conduit to version 2.3.8.2.
+  ## 2.3.8.2
+
+  * Add missing `crypton-connection` dependency
+
+  ## 2.3.8.1
+
+  * Drop `connection` dependency
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:11 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
