@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Jun 22 07:30:57 UTC 2023 - hpj@urpla.net
+
+- Update to version 2.4.25:
+  * Release files for 2.4.25 (#2440)
+  * Fix that zero-byte files do not have a hash as reported by the OneDrive API thus should not generate an error message (#2436)
+  * Update Docker files June 2023 (#2438)
+  * Update testbuild.yaml (#2439)
+  * Add Ubuntu 23.04 Instructions (#2437)
+  * Update util.d (#2428)
+  * Release files for 2.4.24 v2 (#2427)
+  * Revert "Release files for 2.4.24 (#2426)"
+  * Release files for 2.4.24 (#2426)
+  * Implement #2414 to allow HTTP session timeout(s) tuning via config (#2425)
+  * Remove sha1 use and cleanup defunct remaining crc32 use (#2424)
+  * Update INSTALL.md
+  * Update INSTALL.md (#2421)
+  * Update ubuntu-package-install.md
+  * Update ubuntu-package-install.md
+  * Update Docker.md (#2409)
+  * Update ubuntu-package-install.md (#2405)
+  * Update INSTALL.md (#2403)
+  * Fix Unable to perform a database vacuum: out of memory when exiting (#2398)
+  * Update README.md (#2393)
+  * Update Docker gosu version to 1.16 to resolve current vulnerabilities (#2386)
+  * Update to Fedora Docker file to use Fedora 37 to resolve current vulnerabilities (#2383)
+  * Update to Alpine Docker file to resolve current vulnerabilities (#2384)
+  * Update to Debian Docker file to resolve current vulnerabilities (#2385)
+  * Update USAGE.md (#2382)
+  * Update USAGE.md (#2374)
+  * Update ubuntu-package-install.md
+  * Update Docker and Podman documents and clarify i386|i686 support (#2370)
+  * Update Docker.md
+  * Fix deprecation warnings with dmd 2.103.0 (#2364)
+  * Add warning regarding SharePoint Library use (#2354)
+  * Update testbuild.yaml (#2356)
+  * Fix that folders are renamed despite using --dry-run (#2343)
+  * Update USAGE.md
+  * Fix that a HTTP 504 - Gateway Timeout causes local files to be deleted when using --download-only & --cleanup-local-files mode (#2342)
+  * Fix webhook subscription creation for SharePoint Libraries (#2339)
+  * Fix for extra encoded quotation marks surrounding Docker environment variables (#2319)
+  * Update INSTALL.md (#2333)
+  * Update USAGE.md (#2331)
+  * Add --get-file-link option to shell completions  (#2308)
+  * Update Docker.md (#2321)
+  * Update Docker documentation to support locales for for double-byte language support (#2317)
+  * Add single directory sync to docker (#2309)
+  * Podman: Fix test volume is used (#2297)
+  * Release 2.5.0 Development Prep (#2281)
+
+-------------------------------------------------------------------
 Fri Jan 06 18:35:48 UTC 2023 - hpj@urpla.net
 
 - Update to version 2.4.23:
