@@ -83,4 +83,12 @@ provides from elf metadata of vendored deps
     <comment></comment>
     <requestid>1092719</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>86b265e19cfcc00688c70f9f3a5b782b</srcmd5>
+    <version>1.2.0+3</version>
+    <time>1687469070</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1093844</requestid>
+  </revision>
 </revisionlist>
