@@ -1,7 +1,7 @@
 cabal-version:       >= 1.10
 name:                ansi-wl-pprint
 version:             0.6.9
-x-revision:          3
+x-revision:          4
 
 category:            User Interfaces, Text
 synopsis:            The Wadler/Leijen Pretty Printer for colored ANSI terminal output
@@ -19,7 +19,7 @@ maintainer:          Edward Kmett <ekmett@gmail.com>
 bug-reports:         http://github.com/ekmett/ansi-wl-pprint/issues
 homepage:            http://github.com/ekmett/ansi-wl-pprint
 build-type:          Simple
-tested-with:         GHC==7.0.4, GHC==7.2.2, GHC==7.4.2, GHC==7.6.3, GHC==7.8.4, GHC==7.10.3, GHC==8.0.2, GHC==8.2.2, GHC==8.4.3, GHC==8.6.5, GHC==8.8.4, GHC==8.10.7, GHC==9.0.1, GHC==9.2.1
+tested-with:         GHC==7.0.4, GHC==7.2.2, GHC==7.4.2, GHC==7.6.3, GHC==7.8.4, GHC==7.10.3, GHC==8.0.2, GHC==8.2.2, GHC==8.4.3, GHC==8.6.5, GHC==8.8.4, GHC==8.10.7, GHC==9.0.2, GHC==9.2.7, GHC==9.4.5, GHC==9.6.1
 
 source-repository head
   type: git
@@ -46,7 +46,7 @@ library
     -- see also notes in Text.PrettyPrint.ANSI.Leijen
     build-depends: semigroups >= 0.18.5 && < 0.21
 
-  build-depends: ansi-terminal >= 0.9.1 && < 0.12
+  build-depends: ansi-terminal >= 0.9.1 && < 1.1
   build-depends: base >= 4.3 && < 5
 
   if impl(ghc >= 7.4)
