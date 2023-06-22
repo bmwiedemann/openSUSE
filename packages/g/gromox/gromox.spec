@@ -19,7 +19,7 @@
 %define _libexecdir %_prefix/libexec
 
 Name:           gromox
-Version:        2.9
+Version:        2.10
 Release:        0
 Summary:        Groupware server backend with RPC, IMAP,POP3, PHP-MAPI support
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-3.0-or-later
@@ -160,6 +160,7 @@ cp -a "$b/usr/share/gromox/fpm-gromox.conf.sample" "$b/etc/php-fpm.d/gromox.conf
 %endif
 perl -i -lpe 's{Type=simple}{Type=simple\nRestart=on-failure}' "$b/%_unitdir"/*.service
 %fdupes %buildroot/%_prefix
+echo hi >%buildroot/usr/libexec/gromox/x.xml
 
 %global services gromox-delivery.service gromox-delivery-queue.service gromox-event.service gromox-http.service gromox-imap.service gromox-midb.service gromox-pop3.service gromox-snapshot.service gromox-snapshot.timer gromox-timer.service gromox-zcore.service
 

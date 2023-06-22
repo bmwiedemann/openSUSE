@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun 15 15:24:02 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.10
+  * DNSBL filtering mechanism, cf. man dnsbl_filter
+  * Address book name resolution now evaluates alias addresses
+  * pff2mt: speedup operation by 70%+
+  * emsmdb: strike limits (raise to infinity) for session
+    handles, user handles and notify handles, and raise limit for
+    ems_max_pending_sesnotif to 1K
+  * emsmdb: new configuration directives ems_max_active_notifh,
+    ems_max_active_sessions, ems_max_active_users,
+    ems_max_pending_sesnotif
+  * mbop: new subcommands clear-photo, clear-profile,
+    purge-softdelete, purge-datafiles
+
+-------------------------------------------------------------------
 Wed May 10 09:07:18 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.9
