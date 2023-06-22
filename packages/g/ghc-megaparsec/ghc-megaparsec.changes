@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 18 18:11:54 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update megaparsec to version 9.3.1.
+  ## Megaparsec 9.3.1
+
+  * Fixed a bug related to processing of tabs when error messages are
+    rendered. [Issue 524](https://github.com/mrkkrp/megaparsec/issues/524).
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:29 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

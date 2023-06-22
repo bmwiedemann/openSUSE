@@ -19,7 +19,7 @@
 %global pkg_name megaparsec
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        9.3.0
+Version:        9.3.1
 Release:        0
 Summary:        Monadic parser combinators
 License:        BSD-2-Clause
