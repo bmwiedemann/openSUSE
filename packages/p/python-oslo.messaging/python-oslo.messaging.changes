@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 15 20:28:57 UTC 2023 - cloud-devel@suse.de
+
+- update to version 14.3.1
+  - Increase ACK_REQUEUE_EVERY_SECONDS_MAX to exceed default kombu_reconnect_delay
+  - Fix typo in quorum-related variables for RabbitMQ
+  - Disable greenthreads for RabbitDriver "listen" connections
+  - Update master for stable/2023.1
+
+-------------------------------------------------------------------
 Wed May  3 12:20:24 UTC 2023 - cloud-devel@suse.de
 
 - update to version 14.2.0

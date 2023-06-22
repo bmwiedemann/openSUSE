@@ -566,4 +566,16 @@
   - Remove logging from ProducerConnection._produce_message</comment>
     <requestid>1084312</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>fa859de979601e8d57f0acfe9b72c427</srcmd5>
+    <version>14.3.1</version>
+    <time>1687469104</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 14.3.1
+  - Increase ACK_REQUEUE_EVERY_SECONDS_MAX to exceed default kombu_reconnect_delay
+  - Fix typo in quorum-related variables for RabbitMQ
+  - Disable greenthreads for RabbitDriver &quot;listen&quot; connections
+  - Update master for stable/2023.1</comment>
+    <requestid>1093367</requestid>
+  </revision>
 </revisionlist>
