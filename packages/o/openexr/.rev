@@ -805,4 +805,15 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
     fixes a build issue with zlib. (forwarded request 1079570 from dirkmueller)</comment>
     <requestid>1080129</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>19a7ad1d9625ee628b375376265c7d9c</srcmd5>
+    <version>3.1.8</version>
+    <time>1687469094</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.8:
+  * Support for DWA compression in OpenEXRCore
+  * Fix OSS-fuzz 59070 Stack-buffer-overflow in
+    DwaCompressor_readChannelRules (forwarded request 1094236 from dirkmueller)</comment>
+    <requestid>1094254</requestid>
+  </revision>
 </revisionlist>
