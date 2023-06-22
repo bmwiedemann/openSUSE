@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 29 17:23:54 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update microlens-th to version 0.4.3.13.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/microlens-th-0.4.3.13/src/CHANGELOG.md
+
+-------------------------------------------------------------------
 Mon Apr  3 05:21:56 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update microlens-th to version 0.4.3.12.
