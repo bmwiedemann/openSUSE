@@ -47,7 +47,7 @@
 %endif
 
 Name:           nextcloud
-Version:        25.0.7
+Version:        26.0.3
 Release:        0
 Summary:        File hosting service
 License:        AGPL-3.0-only
@@ -85,8 +85,8 @@ Requires:       php-posix
 Requires:       php-zip
 #
 %if 0%{?fedora_version} || 0%{?rhel} || 0%{?rhel_version} || 0%{?centos_version}
-Requires:       php < 8.2.0
-Requires:       php >= 7.4.0
+Requires:       php < 8.3.0
+Requires:       php >= 8.0.0
 Requires:       php-process
 Requires:       php-xml
 Recommends:     sqlite
@@ -108,6 +108,7 @@ Requires:       php-zlib
 Recommends:     sqlite3
 %{?systemd_requires}
 %endif
+Recommends:     php-sysvsem
 # Database connectors:
 Recommends:     php-sqlite
 #Recommends:     php-pgsql
@@ -139,8 +140,8 @@ Group:          Productivity/Networking/Web/Utilities
 BuildRequires:  apache2 >= 2.4
 Requires:       %{name} = %{version}
 Requires:       apache2
-Requires:       mod_php_any < 8.2.0
-Requires:       mod_php_any >= 7.4.0
+Requires:       mod_php_any < 8.3.0
+Requires:       mod_php_any >= 8.0.0
 Supplements:    packageand(apache2:%name)
 
 %description apache
