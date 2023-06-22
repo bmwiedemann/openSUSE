@@ -761,4 +761,13 @@ not get invalid dependencies (forwarded request 390575 from dimstar)</comment>
     <comment> (forwarded request 1074261 from iznogood)</comment>
     <requestid>1074643</requestid>
   </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>d7fea18f5131ea718cd9f53e4d77ee4e</srcmd5>
+    <version>3.44.1</version>
+    <time>1687469072</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %{?sle15_python_module_pythons}: build additional python
+  flavors besides the 'default' when building for SLE15.</comment>
+    <requestid>1094329</requestid>
+  </revision>
 </revisionlist>

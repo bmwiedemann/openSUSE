@@ -28,6 +28,7 @@
 %global __requires_exclude typelib\\(%%namespaces\\)
 %global __requires_exclude_from ^%{_libdir}/python.*/site-packages/gi/__init__.py$
 %define _name   pygobject
+%{?sle15_python_module_pythons}
 Name:           python-gobject
 Version:        3.44.1
 Release:        0
