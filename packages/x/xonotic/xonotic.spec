@@ -18,7 +18,7 @@
 
 %bcond_without systemd
 Name:           xonotic
-Version:        0.8.5
+Version:        0.8.6
 Release:        0
 Summary:        Fast-paced first person shooter
 License:        GPL-2.0-or-later

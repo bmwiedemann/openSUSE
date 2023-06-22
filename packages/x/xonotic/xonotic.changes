@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 22 17:19:18 UTC 2023 - Akseli Lahtinen <akselmo@akselmo.dev>
+
+- Update to version 0.8.6
+  SECURITY ALERT: A bug was discovered in versions older than 0.8.6
+  that is believed to be exploitable by malicious server admins to
+  crash clients or, if they defeat mitigations, execute arbitrary code.
+  boo#1212632
+
+-------------------------------------------------------------------
 Sun Jul 17 15:50:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8.5:
