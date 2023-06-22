@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 13 17:48:52 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update assoc to version 1.1.
+  ## 1.1
+
+  - Depend on `bifunctor-classes-compat` only.
+    Instances for types defined in `bifunctors` package are moved there.
+    With this change `assoc` only depends on `base` and `tagged`.
+  - Mark modules as explicitly Safe
+
+-------------------------------------------------------------------
 Thu Mar 30 17:05:49 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
