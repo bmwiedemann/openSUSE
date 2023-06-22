@@ -173,6 +173,9 @@ Patch37:        CVE-2023-24329-blank-URL-bypass.patch
 # PATCH-FIX-UPSTREAM CVE-2007-4559-filter-tarfile_extractall.patch bsc#1203750 mcepl@suse.com
 # PEP 706 – Filter for tarfile.extractall
 Patch38:        CVE-2007-4559-filter-tarfile_extractall.patch
+# PATCH-FIX-UPSTREAM bpo-37596-make-set-marshalling.patch bsc#1211765 mcepl@suse.com
+# Make `set` and `frozenset` marshalling deterministic
+Patch39:        bpo-37596-make-set-marshalling.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -432,7 +435,6 @@ other applications.
 %prep
 %setup -q -n %{tarname}
 %patch02 -p1
-
 %patch06 -p1
 %patch07 -p1
 %patch08 -p1
@@ -447,6 +449,7 @@ other applications.
 %patch36 -p1
 %patch37 -p1
 %patch38 -p1
+%patch39 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
