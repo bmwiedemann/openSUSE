@@ -1,6 +1,6 @@
 Name:                connection
 Version:             0.3.1
-x-revision: 1
+x-revision: 2
 Description:
     Simple network library for all your connection need.
     .
@@ -17,7 +17,7 @@ Synopsis:            Simple and easy network connections API
 Build-Type:          Simple
 Category:            Network
 stability:           experimental
-Cabal-Version:       >=1.6
+Cabal-Version:       >=1.8
 Homepage:            https://github.com/vincenthz/hs-connection
 extra-source-files:  README.md
                      CHANGELOG.md
@@ -29,7 +29,7 @@ Library
                    , containers
                    , data-default-class
                    , network >= 2.6.3
-                   , tls >= 1.4
+                   , tls >= 1.4 && < 1.7
                    , socks >= 0.6
                    , x509 >= 1.5
                    , x509-store >= 1.5
