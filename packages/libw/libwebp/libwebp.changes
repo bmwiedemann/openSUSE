@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 30 01:20:57 UTC 2023 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add libwebp-double-free.patch: Avoid a double free, upstream
+  commit a486d800 (bsc#1210212 CVE-2023-1999).
+
+-------------------------------------------------------------------
 Thu May  4 07:46:40 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - update baselibs.conf for the new libsharpyuv

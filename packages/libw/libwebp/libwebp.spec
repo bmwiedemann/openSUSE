@@ -1,7 +1,7 @@
 #
 # spec file for package libwebp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,10 @@ Source:         https://storage.googleapis.com/downloads.webmproject.org/release
 Source2:        https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-%version.tar.gz.asc
 Source3:        %name.keyring
 Source4:        baselibs.conf
+
+# PATCH-FIX-UPSTREAM libwebp-double-free.patch bsc#1210212 CVE-2023-1999 xwang@suse.com -- Avoid a double free
+Patch0:         libwebp-double-free.patch
+
 BuildRequires:  giflib-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glut)
@@ -118,11 +122,11 @@ common imports - WebPImportGray/WebPImportRGB565/WebPImportRGB4444.
 %package devel
 Summary:        Development files for libwebp, a library for the WebP format
 Group:          Development/Libraries/C and C++
+Requires:       libsharpyuv0 = %version
 Requires:       libwebp7 = %version
 Requires:       libwebpdecoder3 = %version
 Requires:       libwebpdemux2 = %version
 Requires:       libwebpmux3 = %version
-Requires:       libsharpyuv0 = %version
 %if %{with extras}
 Requires:       libwebpextras0 = %version
 %endif
