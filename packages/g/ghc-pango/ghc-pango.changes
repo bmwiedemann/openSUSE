@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May 12 14:39:25 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update pango to version 0.13.10.0.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:49 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
