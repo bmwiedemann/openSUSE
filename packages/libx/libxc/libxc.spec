@@ -18,11 +18,10 @@
 
 %define sover 12
 Name:           libxc
-Version:        6.2.0
+Version:        6.2.2
 Release:        0
 Summary:        Library of exchange and correlation functionals to be used in DFT codes
 License:        MPL-2.0
-Group:          Productivity/Scientific/Physics
 URL:            https://www.tddft.org/programs/libxc/
 Source:         https://www.tddft.org/programs/libxc/down.php?file=%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
@@ -69,7 +68,7 @@ meta-GGAs. The library provides values for the energy density and its
 This package contains the library of libxc.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure \
@@ -81,8 +80,7 @@ This package contains the library of libxc.
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libxc%{sover} -p /sbin/ldconfig
-%postun -n libxc%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libxc%{sover}
 
 %files -n libxc%{sover}
 %license COPYING

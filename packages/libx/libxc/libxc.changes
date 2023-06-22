@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 22 08:14:13 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.2.2:
+  * Dimension of v4rhosigma2lapl, v4rhosigma2tau, v4rhosigmatau2,
+    v4sigma3tau arrays was wrong
+  * CMake employed ENABLE_XHOST=ON by default, resulting in
+    binaries specific to the host processor
+
+-------------------------------------------------------------------
 Mon May 29 19:36:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.2.0:
