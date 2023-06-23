@@ -1,7 +1,7 @@
 #
 # spec file for package virt-bootstrap
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,9 +24,11 @@ Version:        1.1.1
 Release:        0
 Summary:        System container rootfs creation tool
 License:        GPL-3.0-or-later
-Group:          Productivity/Other
 URL:            https://github.com/virt-manager/virt-bootstrap
 Source:         http://virt-manager.org/download/sources/virt-bootstrap/%{name}-%{version}.tar.gz
+Patch0:         7704260f28c111b141e96e4e717a9522b23bc816.patch
+Patch1:         c8ce262cf346535713d45b4660cfdc02c99cfd4c.patch
+Patch2:         e30315182c5d95e6f5c14b4b743504434f966edd.patch
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module libguestfs}
 BuildRequires:  %{python_module passlib}
@@ -47,10 +49,10 @@ Provides a way to create the root file system to use for
 libvirt containers.
 
 %prep
-%setup -q
-sed -i '1 {/env python/ d}' src/virtBootstrap/virt_bootstrap.py
+%autosetup -p1
 
 %build
+sed -i '1 {/env python/ d}' src/virtBootstrap/virt_bootstrap.py
 %python_build
 
 %install

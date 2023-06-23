@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 19 12:34:56 UTC 2023 - ohering@suse.de
+
+- Add upstream 7704260f28c111b141e96e4e717a9522b23bc816.patch
+- Add upstream c8ce262cf346535713d45b4660cfdc02c99cfd4c.patch
+- Add upstream e30315182c5d95e6f5c14b4b743504434f966edd.patch
+
+-------------------------------------------------------------------
 Tue Dec 14 14:14:14 UTC 2021 - ohering@suse.de
 
 - Add python-rpm-macros (bsc#1180125)
