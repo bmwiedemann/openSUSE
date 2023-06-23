@@ -1,4 +1,13 @@
 --------------------------------------------------------------------
+Thu Jun 22 07:58:15 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#937
+- query version of lsscsi (preparation for using json output)
+- coding style
+- extended documentation
+- 4.5.121
+
+--------------------------------------------------------------------
 Thu Jun 15 14:36:02 UTC 2023 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#936
