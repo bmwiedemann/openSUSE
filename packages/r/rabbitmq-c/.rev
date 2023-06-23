@@ -58,4 +58,35 @@
   [bsc#1198202]</comment>
     <requestid>973171</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>10818f4e88071f87706e440692fc6578</srcmd5>
+    <version>0.13.0</version>
+    <time>1687550018</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 0.13.0
+  ## v0.13.0 - 2023-02-05
+  ## Fixed
+  - Fixed missing option to not install static library (#665)
+  - Missing pkgconfig version in v0.12.0 output (#755, #751)
+  - Correct return value from amqp_ssl_socket_set_key_buffer (#723)
+  ## Changed
+  - Remove OpenSSL code no longer needed when used with OpenSSL &gt;= 1.1.0. (Fixed: #715, #737)
+  ## Added
+  - Integration with OSS-Fuzz (#736)
+  ## v0.12.0 - 2023-01-31
+  ## Changed
+  - rabbitmq-c now compiles as C99
+  - CMake 3.12 is new minimum required version
+  - CMake -DBUILD_TESTS renamed to -DBUILD_TESTING
+  - CMake -DBUILD_EXAMPLES now defaults to OFF
+  - CMake -DBUILD_TOOLS now defaults to OFF
+  - Unix library version now matches the release version, SONAME remains the same.
+  - Modernized CMake scripts to better adopt modern standards
+  - Public headers have moved to rabbitmq-c/ directory
+  - Dropped support for MSVC older than VS 2010
+  - Dropped support for OpenSSL v1.1.0 and older
+  - Minimum SSL version set to TLSv1.2
+  - Updated to RabbitMQ framing to v3.8.19</comment>
+    <requestid>1094846</requestid>
+  </revision>
 </revisionlist>
