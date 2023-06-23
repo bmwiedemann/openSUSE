@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Thu Jun 22 13:55:09 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#649
+- add shim, mokutil, and grub2-i386-efi to rescue system (bsc#1209985)
+- add shim and grub2-i386-efi to rescue system (bsc#1209985)
+- 17.89
+
+--------------------------------------------------------------------
 Tue Jun 20 13:59:52 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#648
