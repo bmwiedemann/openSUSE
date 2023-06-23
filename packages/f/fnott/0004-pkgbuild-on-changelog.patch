@@ -1,0 +1,21 @@
+From ef971871c4393feed13beb17a2dacf64fef2407c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Ekl=C3=B6f?= <daniel@ekloef.se>
+Date: Tue, 13 Jun 2023 17:08:46 +0200
+Subject: [PATCH] pkgbuild: add changelog
+
+---
+ PKGBUILD | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/PKGBUILD b/PKGBUILD
+index 01810e0..55e038e 100644
+--- a/PKGBUILD
++++ b/PKGBUILD
+@@ -10,6 +10,7 @@ depends=(
+   'wayland' 'pixman' 'libpng' 'dbus'
+   'fcft>=3.0.0' 'fcft<4.0.0')
+ source=()
++changelog=CHANGELOG.md
+ 
+ pkgver() {
+   cd ../.git &> /dev/null && git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||

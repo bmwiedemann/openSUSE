@@ -1,0 +1,42 @@
+From e5843c62d7347842f40b1ca476e1709d60dda17e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Ekl=C3=B6f?= <daniel@ekloef.se>
+Date: Tue, 13 Jun 2023 17:08:53 +0200
+Subject: [PATCH] =?UTF-8?q?notification:=20commit=20surface,=20even=20when?=
+ =?UTF-8?q?=20there=E2=80=99s=20already=20a=20pending=20buffer?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This is necessary to push e.g. margin changes to the compositor.
+---
+ CHANGELOG.md   | 2 ++
+ notification.c | 3 +++
+ 2 files changed, 5 insertions(+)
+
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index d7f0479..510208f 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -20,6 +20,8 @@
+ ### Fixed
+ 
+ * Compilation errors with clang 15.x ([#96][96])
++* Notifications initially positioned outside the screen not being
++  visible after being moved up in the notification stack.
+ 
+ [96]: https://codeberg.org/dnkl/fnott/issues/96
+ 
+diff --git a/notification.c b/notification.c
+index 8c56ef2..d8e412a 100644
+--- a/notification.c
++++ b/notification.c
+@@ -1836,6 +1836,9 @@ notif_show(struct notif *notif, int y)
+         if (notif->pending != NULL)
+             notif->pending->busy = false;
+         notif->pending = buf;
++
++        /* Commit size+margins, but not the new buffer */
++        wl_surface_commit(notif->surface);
+     } else {
+         assert(notif->pending == NULL);
+         commit_buffer(notif, buf);

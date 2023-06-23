@@ -1,0 +1,41 @@
+From 54500cdbc82dd9e140e80c283180e4f28a7a1d9e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Ekl=C3=B6f?= <daniel@ekloef.se>
+Date: Fri, 31 Mar 2023 10:09:11 +0200
+Subject: [PATCH] =?UTF-8?q?changelog:=20add=20a=20new=20=E2=80=98unrelease?=
+ =?UTF-8?q?d=E2=80=99=20section?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ CHANGELOG.md | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 687aacb..b8f84f6 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -1,5 +1,6 @@
+ # Changelog
+ 
++* [Unreleased](#unreleased)
+ * [1.4.0](#1-4-0)
+ * [1.3.0](#1-3-0)
+ * [1.2.1](#1-2-1)
+@@ -11,6 +12,16 @@
+ * [1.0.0](#1-0-0)
+ 
+ 
++## Unreleased
++### Added
++### Changed
++### Deprecated
++### Removed
++### Fixed
++### Security
++### Contributors
++
++
+ ## 1.4.0
+ 
+ ### Added

@@ -24,6 +24,12 @@ License:        MIT
 Group:          System/GUI/Other
 URL:            https://codeberg.org/dnkl/fnott
 Source0:        https://codeberg.org/dnkl/fnott/archive/%{version}.tar.gz
+Patch0:         https://codeberg.org/dnkl/fnott/commit/54500cdbc82dd9e140e80c283180e4f28a7a1d9e.patch#/0000-unreleased-changelog.patch
+Patch1:         https://codeberg.org/dnkl/fnott/commit/cee8e61a02ccd85112b819270f1f2afcf812e75c.patch#/0001-decoded-len-unused.patch
+Patch2:         https://codeberg.org/dnkl/fnott/commit/543df54c54fbd0a40e4ce1003e1bcf45dbefdb63.patch#/0002-include-stdc-predef.patch
+Patch3:         https://codeberg.org/dnkl/fnott/commit/059cdb6aa397de39e29273133a1300af490014fa.patch#/0003-clang-fixes-on-changelog.patch
+Patch4:         https://codeberg.org/dnkl/fnott/commit/ef971871c4393feed13beb17a2dacf64fef2407c.patch#/0004-pkgbuild-on-changelog.patch
+Patch5:         https://codeberg.org/dnkl/fnott/commit/e5843c62d7347842f40b1ca476e1709d60dda17e.patch#/0005-clang-plus-notification-stack-fix.patch
 BuildRequires:  meson >= 0.58
 BuildRequires:  pkgconfig
 BuildRequires:  python3
@@ -48,7 +54,7 @@ BuildRequires:  gcc >= 8
 Lightweight notification daemon for Wayland.
 
 %prep
-%autosetup -n %{name}
+%autosetup -p1 -n %{name}
 
 %package        zsh-completion
 Summary:        Zsh Completion for %{name}

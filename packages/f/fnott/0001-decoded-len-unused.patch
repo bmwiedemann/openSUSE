@@ -1,0 +1,22 @@
+From cee8e61a02ccd85112b819270f1f2afcf812e75c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Ekl=C3=B6f?= <daniel@ekloef.se>
+Date: Fri, 31 Mar 2023 13:07:52 +0200
+Subject: [PATCH] uri: deocoded_len is unused
+
+---
+ uri.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/uri.c b/uri.c
+index 7b35e70..53cee41 100644
+--- a/uri.c
++++ b/uri.c
+@@ -178,7 +178,7 @@ uri_parse(const char *uri, size_t len,
+         char *p = decoded;
+ 
+         size_t encoded_len = path_len;
+-        size_t decoded_len = 0;
++        size_t decoded_len __attribute__((unused)) = 0;
+ 
+         while (true) {
+             /* Find next '%' */

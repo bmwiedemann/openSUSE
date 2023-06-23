@@ -1,0 +1,26 @@
+From 059cdb6aa397de39e29273133a1300af490014fa Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Ekl=C3=B6f?= <daniel@ekloef.se>
+Date: Fri, 31 Mar 2023 13:12:31 +0200
+Subject: [PATCH] changelog: clang 15.x compilation fixes
+
+---
+ CHANGELOG.md | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index b8f84f6..d7f0479 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -18,6 +18,12 @@
+ ### Deprecated
+ ### Removed
+ ### Fixed
++
++* Compilation errors with clang 15.x ([#96][96])
++
++[96]: https://codeberg.org/dnkl/fnott/issues/96
++
++
+ ### Security
+ ### Contributors
+ 

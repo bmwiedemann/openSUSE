@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jun 16 13:13:42 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add the following patches:
+  * 0000-unreleased-changelog.patch
+  * 0001-decoded-len-unused.patch
+  * 0002-include-stdc-predef.patch
+  * 0003-clang-fixes-on-changelog.patch
+  * 0004-pkgbuild-on-changelog.patch
+  * 0005-clang-plus-notification-stack-fix.patch (originally as 0000-clang-plus-notification-stack-fix.patch)
+
+- These patches bring some small improvements and fixes
+
+-------------------------------------------------------------------
+Fri Jun 16 12:37:10 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add 0000-clang-plus-notification-stack-fix.patch
+  * Notifications initially positioned outside the screen not being
+  * visible after being moved up in the notification stack.
+
+-------------------------------------------------------------------
 Mon Apr  3 08:33:16 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 1.4.0

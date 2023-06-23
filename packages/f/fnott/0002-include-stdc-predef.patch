@@ -1,0 +1,26 @@
+From 543df54c54fbd0a40e4ce1003e1bcf45dbefdb63 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Ekl=C3=B6f?= <daniel@ekloef.se>
+Date: Fri, 31 Mar 2023 13:08:19 +0200
+Subject: [PATCH] char32: include stdc-predef.h to ensure we pull in
+ __STDC_ISO_10646__
+
+---
+ char32.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/char32.c b/char32.c
+index b3eda5b..5d80d88 100644
+--- a/char32.c
++++ b/char32.c
+@@ -7,6 +7,11 @@
+ #include <wctype.h>
+ #include <wchar.h>
+ 
++#if defined __has_include
++ #if __has_include (<stdc-predef.h>)
++   #include <stdc-predef.h>
++ #endif
++#endif
+ 
+ #define LOG_MODULE "char32"
+ #define LOG_ENABLE_DBG 0
