@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 23 07:12:40 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.2.4:
+  * Fix nil pointer issue with webhook (#966)
+
+-------------------------------------------------------------------
 Thu Jun 22 05:07:36 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 8.2.3:
