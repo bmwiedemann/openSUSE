@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 23 02:42:02 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-tox-4.patch:
+  * Support tox 4
+- Refresh upstream tarball due to repo move.
+
+-------------------------------------------------------------------
 Tue Apr 25 02:05:35 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v2023.4.22

@@ -63,4 +63,14 @@
     <comment></comment>
     <requestid>1083339</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b331e8db9e5cffc4551973f385397490</srcmd5>
+    <version>2023.4.22</version>
+    <time>1687549948</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-tox-4.patch:
+  * Support tox 4
+- Refresh upstream tarball due to repo move.</comment>
+    <requestid>1094736</requestid>
+  </revision>
 </revisionlist>
