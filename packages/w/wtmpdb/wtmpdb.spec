@@ -18,7 +18,7 @@
 
 %define lname   libwtmpdb0
 Name:           wtmpdb
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        Reports last logged in users and system reboots
 License:        BSD-2-Clause
@@ -78,7 +78,8 @@ pam-config -a --wtmpdb --wtmpdb-skip_if=sshd
 if [ "$1" -eq 0 ]; then
     pam-config -d --wtmpdb
 fi
-%service_del_postun_without_restart wtmpdb-update-boot.service wtmpdb-rotate.timer
+%service_del_postun_without_restart wtmpdb-update-boot.service
+%service_del_postun wtmpdb-rotate.timer
 
 %post   -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig

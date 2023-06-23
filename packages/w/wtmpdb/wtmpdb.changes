@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 21 06:52:21 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.7.0
+  - wtmpdb rotate: use sqlite3_bind_* internal
+  - wtmpdb last: Implement -x, -d, -i and -w options
+
+-------------------------------------------------------------------
 Wed Jun  7 15:18:21 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.6.0

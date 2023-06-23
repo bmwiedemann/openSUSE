@@ -32,4 +32,14 @@
   - wtmpdb rotate: move old log entries into wtmpdb_&lt;yyyymmdd&gt;.db (forwarded request 1092601 from kukuk)</comment>
     <requestid>1092602</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fe23b71ae8988c58e15f6d37bbead2ab</srcmd5>
+    <version>0.7.0</version>
+    <time>1687549930</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.0
+  - wtmpdb rotate: use sqlite3_bind_* internal
+  - wtmpdb last: Implement -x, -d, -i and -w options</comment>
+    <requestid>1094677</requestid>
+  </revision>
 </revisionlist>
