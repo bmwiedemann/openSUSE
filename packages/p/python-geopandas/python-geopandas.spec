@@ -25,41 +25,43 @@
 %bcond_with test
 %endif
 Name:           python-geopandas%{psuffix}
-Version:        0.11.1
+Version:        0.13.2
 Release:        0
 Summary:        Geographic pandas extensions
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://geopandas.org
 Source:         https://files.pythonhosted.org/packages/source/g/geopandas/geopandas-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 61}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Fiona
-Requires:       python-pandas >= 0.23.0
-Requires:       python-pyproj
-Requires:       python-shapely
+Requires:       proj
+Requires:       python-Fiona >= 1.8.19
+Requires:       python-packaging
+Requires:       python-pandas >= 1.1.0
+Requires:       python-pyproj >= 3.0.1
+Requires:       python-shapely >= 1.7.1
 Recommends:     python-geopy
 Recommends:     python-matplotlib
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module Fiona}
 BuildRequires:  %{python_module Rtree}
 BuildRequires:  %{python_module folium}
+BuildRequires:  %{python_module fsspec}
+BuildRequires:  %{python_module geopandas = %{version}}
 BuildRequires:  %{python_module geopy}
 BuildRequires:  %{python_module matplotlib}
-# mapclassify not yet available
-#BuildRequires: %%{python_module mapclassify}
-BuildRequires:  %{python_module pandas >= 0.23.0}
-BuildRequires:  %{python_module pygeos}
-BuildRequires:  %{python_module pyproj}
+BuildRequires:  %{python_module psycopg2}
+BuildRequires:  %{python_module pyarrow}
+BuildRequires:  %{python_module pygeos >= 0.10}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
-BuildRequires:  %{python_module shapely}
-BuildRequires:  libgdal-devel
-BuildRequires:  proj
-BuildRequires:  proj-devel
+BuildRequires:  %{python_module sqlalchemy}
+# mapclassify not yet available
+#BuildRequires: %%{python_module mapclassify}
 %endif
 %python_subpackages
 
@@ -73,7 +75,7 @@ require a spatial database such as PostGIS.
 %autosetup -p1 -n geopandas-%{version}
 
 %build
-%if ! %{with wheel}
+%if ! %{with test}
 %pyproject_wheel
 %endif
 
@@ -85,14 +87,23 @@ require a spatial database such as PostGIS.
 
 %check
 %if %{with test}
-%pytest -rs -k 'not test_overlay'
+# online resource
+donttest="test_read_file_url"
+# test files missing in sdist
+donttest="$donttest or test_overlay"
+donttest="$donttest or (test_arrow and (test_read_versioned_file or test_read_gdal_file))"
+# wrong shapely type
+donttest="$donttest or (test_geom_methods and test_sample_points_array)"
+donttest="$donttest or (test_random and test_uniform and geom)"
+%pytest -rsfE -k "not ($donttest)"
 %endif
 
 %if !%{with test}
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
-%{python_sitelib}/geopandas*/
+%{python_sitelib}/geopandas
+%{python_sitelib}/geopandas-%{version}.dist-info
 %endif
 
 %changelog
