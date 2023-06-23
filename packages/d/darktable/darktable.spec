@@ -107,11 +107,11 @@
 %endif
 
 %if 0%{?suse_version} && 0%{?suse_version} < 1550
-%global force_gcc_version 10
+%global force_gcc_version 12
 %endif
 
 Name:           darktable
-Version:        4.2.1
+Version:        4.4.0
 Release:        0
 %global pkg_name darktable
 %global pkg_version %{version}
@@ -119,6 +119,7 @@ URL:            http://www.darktable.org/
 Source0:        https://github.com/darktable-org/darktable/releases/download/release-%{version}/%{pkg_name}-%{version}.tar.xz
 Source1:        https://github.com/darktable-org/darktable/releases/download/release-%{version}/%{pkg_name}-%{version}.tar.xz.asc
 Source2:        %{pkg_name}-rpmlintrc
+Source3:        %{pkg_name}.keyring
 #
 Source97:       darktable.dsc
 Source98:       debian.tar.xz
@@ -128,7 +129,7 @@ Patch0:         darktable-old-glib.patch
 #
 ExclusiveArch:  x86_64 aarch64 ppc64le
 # build time tools
-BuildRequires:  clang
+BuildRequires:  clang >= 13
 BuildRequires:  cmake >= 3.18
 BuildRequires:  fdupes
 BuildRequires:  llvm-devel
@@ -136,7 +137,7 @@ BuildRequires:  llvm-devel
 BuildRequires:  llvm-static
 %endif
 %if %{without clang}
-BuildRequires:  gcc%{?force_gcc_version}-c++ >= 10
+BuildRequires:  gcc%{?force_gcc_version}-c++ >= 12
 %if 0%{?force_gcc_version}
 #!BuildIgnore:  libgcc_s1
 %endif
@@ -167,7 +168,7 @@ BuildRequires:  pkgconfig(pugixml)
 #
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ImageMagick)
-BuildRequires:  pkgconfig(OpenEXR)
+BuildRequires:  pkgconfig(OpenEXR) >= 3
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(colord)
 BuildRequires:  pkgconfig(colord-gtk)
