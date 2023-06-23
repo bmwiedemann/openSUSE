@@ -1,0 +1,16 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>429c0616cad484704729fb5e6ad423fe</srcmd5>
+    <version>3.2.1</version>
+    <time>1687550000</time>
+    <user>dimstar_suse</user>
+    <comment>Nyxt is an innovative and extensible web browser written in Common Lisp.
+It is in heavy development and v3.0.0 was just released after 2 years of work.
+I maintained a git build in my home repo for 1 year during this time and would like to submit and maintain the stable version to Factory.
+
+I already submitted it 1 month ago but it was rejected because of dynamically loading .so issues: https://build.opensuse.org/request/show/1087966
+
+These issues are now fixed with a patch, hence this new submission.</comment>
+    <requestid>1094811</requestid>
+  </revision>
+</revisionlist>
