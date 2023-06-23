@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 23 10:06:55 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 63:
+  * Updat all api documentation for api4
+  * Switch to C++17 for the entire project
+  * Add a warning every time the deprecated cache filter is instantiated and ignored
+  * Fix a regression with alpha nodes in vspipe introduced in r62
+
+-------------------------------------------------------------------
 Fri Mar 31 06:54:53 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 62:
