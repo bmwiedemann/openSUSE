@@ -628,4 +628,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1082365</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>843193bccf1f5eb409f5834e72721da6</srcmd5>
+    <version>1.10.4</version>
+    <time>1687549970</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.4:
+  * contact/display-name: quote &quot;names&quot; with '@'
+  * gmime-test: fix leak
+  * mu4e: run mu4e-view-rendered-hook non-read-only (#2500)
+  * mu4e: don't error out in mu4e-view-quit (#2487)
+  * mu4e: add mu4e-fetch-field
+  * message: remove control characters from subject (#2477)
+  * meson.build: avoid clang build warning</comment>
+    <requestid>1094747</requestid>
+  </revision>
 </revisionlist>
