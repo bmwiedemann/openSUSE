@@ -24,7 +24,7 @@
 %endif
 
 Name:           audacity
-Version:        3.3.2
+Version:        3.3.3
 Release:        0
 Summary:        A Multi Track Digital Audio Editor
 License:        CC-BY-3.0 AND GPL-2.0-or-later AND GPL-3.0-only
@@ -33,14 +33,16 @@ URL:            http://audacityteam.org/
 Source:         https://github.com/audacity/audacity/archive/Audacity-%{version}.tar.gz
 Source1:        audacity-license-nyquist
 Source2:        audacity-rpmlintrc
-Source3:        vst3sdk-3.7.7_build_19.tar.xz
+Source3:        vst3sdk-3.7.3_build_20.tar.xz
 # PATCH-FIX-OPENSUSE audacity-no_buildstamp.patch davejplater@gmail.com -- Remove the buildstamp.
 Patch0:         audacity-no_buildstamp.patch
 # PATCH-FIX-UPSTREAM audacity-no_return_in_nonvoid.patch - Fix false positive errors Two new gcc10 ones ignoring assert
 Patch1:         audacity-no_return_in_nonvoid.patch
 Patch2:         mod-script-pipe-disable-rpath.patch
-Patch95:        vst3sdk-fix-include-cstdint-for-gcc13.patch
-Patch96:        vst3sdk-fix-limits-include-moduleinfoparser.patch
+# PATCH-FIX-OPENSUSE vst-system-path.patch - search fo vsts in /usr/lib64 in x86_64 and ARM system
+Patch3:         vst-system-path.patch
+Patch94:        vst3sdk-fix-std-atomic-for-gcc12.patch
+Patch95:        vst3sdk-fix-include-cstdint.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
@@ -117,6 +119,10 @@ physical memory size can be edited.
 %patch1 -p1
 %patch2 -p1
 
+%ifarch x86_64 aarch64
+%patch3 -p1
+%endif
+
 cp -f %{SOURCE1} LICENSE_NYQUIST.txt
 # Make sure we use the system versions.
 rm -rf lib-src/{expat,libvamp,libsoxr,ffmpeg,lame}/
@@ -126,8 +132,9 @@ touch include/RevisionIdent.h
 
 %if %{with vst}
 tar xf %{SOURCE3} --strip-components=1 --one-top-level=vst3sdk
+
+%patch94 -p1 -d vst3sdk
 %patch95 -p1 -d vst3sdk
-%patch96 -p1 -d vst3sdk
 %endif
 
 %build
@@ -150,7 +157,8 @@ export CFLAGS="%{optflags} -fno-strict-aliasing -ggdb $(wx-config --cflags)"
 %if %{without vst}
        -Daudacity_has_vst3=off \
 %endif
-       -Daudacity_use_ffmpeg:STRING=loaded
+       -Daudacity_use_ffmpeg:STRING=loaded \
+       -DVST3_DEFAULT_INSTALL_PATH=%{_libdir}/vst3/
 
 # Workaround for an old cmake in Leap 15.3
 %if 0%{?sle_version} == 150300 && 0%{?is_opensuse}

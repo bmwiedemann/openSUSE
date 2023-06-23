@@ -1,0 +1,23 @@
+diff -ur vst3sdk-3.7.4_build_25.orig/pluginterfaces/base/funknown.cpp vst3sdk-3.7.4_build_25/pluginterfaces/base/funknown.cpp
+--- vst3sdk-3.7.4_build_25.orig/pluginterfaces/base/funknown.cpp	2022-01-18 10:42:29.305860504 +1000
++++ vst3sdk-3.7.4_build_25/pluginterfaces/base/funknown.cpp	2022-05-17 10:22:42.306950103 +1000
+@@ -88,7 +88,7 @@
+ int32 PLUGIN_API atomicAdd (int32& var, int32 d)
+ {
+ #if SMTG_USE_STDATOMIC_H
+-	return atomic_fetch_add (reinterpret_cast<atomic_int_least32_t*> (&var), d) + d;
++	return std::atomic_fetch_add (reinterpret_cast<std::atomic_int_least32_t*> (&var), d) + d;
+ #else
+ #if SMTG_OS_WINDOWS
+ #ifdef __MINGW32__
+diff -ur vst3sdk-3.7.4_build_25.orig/pluginterfaces/base/funknown.h vst3sdk-3.7.4_build_25/pluginterfaces/base/funknown.h
+--- vst3sdk-3.7.4_build_25.orig/pluginterfaces/base/funknown.h	2022-01-18 10:42:29.305860504 +1000
++++ vst3sdk-3.7.4_build_25/pluginterfaces/base/funknown.h	2022-05-17 10:22:52.071191240 +1000
+@@ -20,6 +20,7 @@
+ #include "pluginterfaces/base/ftypes.h"
+ #include "pluginterfaces/base/smartpointer.h"
+ #include <cstring>
++#include <atomic>
+ 
+ #if SMTG_CPP11_STDLIBSUPPORT
+ #include <type_traits>

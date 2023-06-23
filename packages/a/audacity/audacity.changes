@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jun 22 04:13:22 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 3.3.3
+- Downgrade vst3stk to 3.7.3_build_20 as most compatible with audacity
+- Rework vst3sdk patches vst3sdk-3.7.3_build_20:
+  remove vst3sdk-fix-include-cstdint-for-gcc13.patch,
+         vst3sdk-fix-limits-include-moduleinfoparser.patch
+  add vst3sdk-fix-std-atomic-for-gcc12.patch,
+      vst3sdk-fix-include-cstdint.patch
+
+- Add vst-system-path.patch changes vst(3) search path to /usr/lib64
+
+  This is a hotfix release. It fixes the following bugs:
+  
+  * #4618 Fixed EQ not scaling properly when resizing the window.
+  * #4743 Fixed the audio.com upload flow.
+
+-------------------------------------------------------------------
 Fri May 19 18:18:47 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to 3.3.2

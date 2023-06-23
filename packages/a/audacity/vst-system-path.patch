@@ -1,0 +1,36 @@
+diff -ur audacity-Audacity-3.3.3.orig/libraries/lib-vst3/module_linux.cpp audacity-Audacity-3.3.3/libraries/lib-vst3/module_linux.cpp
+--- audacity-Audacity-3.3.3.orig/libraries/lib-vst3/module_linux.cpp	2023-06-08 06:17:02.000000000 -0700
++++ audacity-Audacity-3.3.3/libraries/lib-vst3/module_linux.cpp	2023-06-08 15:55:40.689042067 -0700
+@@ -278,7 +278,7 @@
+ 	 * Application				: /$APPFOLDER/vst3/
+ 	 */
+ 
+-	const auto systemPaths = {"/usr/lib/vst3/", "/usr/local/lib/vst3/"};
++	const auto systemPaths = {"/usr/lib64/vst3/", "/usr/local/lib/vst3/"};
+ 
+ 	PathList list;
+ 	if (auto homeDir = getenv ("HOME"))
+diff -ur audacity-Audacity-3.3.3.orig/libraries/lib-vst3/VST3EffectsModule.cpp audacity-Audacity-3.3.3/libraries/lib-vst3/VST3EffectsModule.cpp
+--- audacity-Audacity-3.3.3.orig/libraries/lib-vst3/VST3EffectsModule.cpp	2023-06-08 06:17:02.000000000 -0700
++++ audacity-Audacity-3.3.3/libraries/lib-vst3/VST3EffectsModule.cpp	2023-06-08 15:55:54.309041756 -0700
+@@ -169,7 +169,7 @@
+    pathList.push_back("/Network/Library/Audio/Plug-ins/VST3/");
+ #elif __WXGTK__
+    pathList.push_back(wxGetHomeDir() + "/.vst3/");
+-   pathList.push_back("/usr/lib/vst3/");
++   pathList.push_back("/usr/lib64/vst3/");
+    pathList.push_back("/usr/local/lib/vst3/");
+ #endif
+ 
+diff -ur audacity-Audacity-3.3.3.orig/src/effects/VST/VSTEffect.cpp audacity-Audacity-3.3.3/src/effects/VST/VSTEffect.cpp
+--- audacity-Audacity-3.3.3.orig/src/effects/VST/VSTEffect.cpp	2023-06-08 06:17:02.000000000 -0700
++++ audacity-Audacity-3.3.3/src/effects/VST/VSTEffect.cpp	2023-06-08 15:58:57.777037560 -0700
+@@ -346,7 +346,7 @@
+       pathList.push_back(wxT(LIBDIR) wxT("/vst"));
+ 
+       // These are the defaults used by other hosts
+-      pathList.push_back(wxT("/usr/lib/vst"));
++      pathList.push_back(wxT("/usr/lib64/vst"));
+       pathList.push_back(wxT("/usr/local/lib/vst"));
+       pathList.push_back(wxGetHomeDir() + wxFILE_SEP_PATH + wxT(".vst"));
+    }

@@ -1,0 +1,13 @@
+Submodule public.sdk contains modified content
+diff --git a/public.sdk/source/vst/utility/stringconvert.h b/public.sdk/source/vst/utility/stringconvert.h
+index ff910aa..9dbd984 100644
+--- a/public.sdk/source/vst/utility/stringconvert.h
++++ b/public.sdk/source/vst/utility/stringconvert.h
+@@ -38,6 +38,7 @@
+ 
+ #include "pluginterfaces/vst/vsttypes.h"
+ #include <string>
++#include <cstdint>
+ 
+ //------------------------------------------------------------------------
+ namespace VST3 {
