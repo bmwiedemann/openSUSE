@@ -1653,4 +1653,12 @@
 - Drop gfxboot, kiwi uses grub2 on ix86 for some time now (forwarded request 1094664 from favogt)</comment>
     <requestid>1094667</requestid>
   </revision>
+  <revision rev="207" vrev="207">
+    <srcmd5>44132b62cadaf84f7a6543c0d16a20e1</srcmd5>
+    <version>unknown</version>
+    <time>1687513495</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094807</requestid>
+  </revision>
 </revisionlist>

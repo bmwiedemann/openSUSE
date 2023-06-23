@@ -81,6 +81,9 @@ buildignore fwupd-lang
 # There's eog, enough for live
 buildignore gnome-photos
 
+# > 40MiB. We use the openSUSE wallpaper by default.
+buildignore gnome-backgrounds
+
 # Moved here from list-common.sh. cyrus-sasl is needed by Pidgin in Xfce Live CD
 buildignore cyrus-sasl
 
