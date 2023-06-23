@@ -1,7 +1,7 @@
 #
 # spec file for package ulogd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ulogd
-Version:        2.0.7
+Version:        2.0.8
 Release:        0
 Summary:        Userspace logging for Netfilter
 License:        GPL-2.0-only
@@ -28,9 +28,9 @@ URL:            http://netfilter.org/projects/ulogd/
 #DL-URL:	http://netfilter.org/projects/ulogd/files/
 Source:         http://netfilter.org/projects/ulogd/files/%name-%version.tar.bz2
 Source2:        http://netfilter.org/projects/ulogd/files/%name-%version.tar.bz2.sig
+Source3:        %name.keyring
 Source4:        ulogd.service
 Source5:        ulogd.conf
-Patch1:         0001-build-adjust-configure-for-postgresql-10-11.patch
 Patch4:         ulogd-conf.diff
 
 BuildRequires:  autoconf >= 2.50
@@ -40,7 +40,6 @@ BuildRequires:  libpcap-devel
 BuildRequires:  libtool
 BuildRequires:  lksctp-tools-devel
 BuildRequires:  pkg-config >= 0.21
-BuildRequires:  sqlite3-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
@@ -51,6 +50,7 @@ BuildRequires:  pkgconfig(libnetfilter_conntrack) >= 1.0.2
 BuildRequires:  pkgconfig(libnetfilter_log) >= 1.0.0
 BuildRequires:  pkgconfig(libnfnetlink) >= 1.0.1
 BuildRequires:  pkgconfig(libpq)
+BuildRequires:  pkgconfig(sqlite3)
 %sysusers_requires
 
 %description
@@ -130,6 +130,7 @@ install -m 644 %{SOURCE5} "$b/%_sysusersdir/"
 %_sbindir/ulogd
 %dir %_libdir/%name
 %_libdir/%name/ulogd_[fir]*.so*
+%_libdir/%name/ulogd_output_IPFIX.so*
 %_libdir/%name/ulogd_output_GRAPHITE.so*
 %_libdir/%name/ulogd_output_GPRINT.so*
 %_libdir/%name/ulogd_output_LOGEMU.so*

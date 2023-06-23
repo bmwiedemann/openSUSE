@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  2 12:29:26 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.8
+  * Add IPFIX output plugin
+- Delete 0001-build-adjust-configure-for-postgresql-10-11.patch
+
+-------------------------------------------------------------------
 Fri Nov 26 08:40:03 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s) (bsc#1181400). Modified:
