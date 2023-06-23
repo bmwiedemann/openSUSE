@@ -471,4 +471,12 @@
   * plus several bugfixes mostly dealing with corner-case conditions</comment>
     <requestid>1070834</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>e2cd26eab07c98a56a309b70b3672a3a</srcmd5>
+    <version>0.12.2</version>
+    <time>1687549983</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094785</requestid>
+  </revision>
 </revisionlist>
