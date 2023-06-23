@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Jun 22 08:04:23 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 9.18.16
+  Security Fixes:
+  * The overmem cleaning process has been improved, to prevent the
+    cache from significantly exceeding the configured
+    max-cache-size limit. (CVE-2023-2828)
+  * A query that prioritizes stale data over lookup triggers a
+    fetch to refresh the stale data in cache. If the fetch is
+    aborted for exceeding the recursion quota, it was possible for
+    named to enter an infinite callback loop and crash due to stack
+    overflow. This has been fixed. (CVE-2023-2911)
+
+  New Features:
+  * The system test suite can now be executed with pytest (along
+    with pytest-xdist for parallel execution).
+
+  Removed Features:
+  * TKEY mode 2 (Diffie-Hellman Exchanged Keying) is now
+    deprecated, and will be removed in a future release. A warning
+    will be logged when the tkey-dhkey option is used in
+    named.conf.
+
+  Bug Fixes:
+  * BIND could get stuck on reconfiguration when a listen-on
+    statement for HTTP is removed from the configuration. That has
+    been fixed.
+  * Previously, it was possible for a delegation from cache to be
+    returned to the client after the stale-answer-client-timeout
+    duration. This has been fixed.
+  * BIND could allocate too big buffers when sending data via
+    stream-based DNS transports, leading to increased memory usage.
+    This has been fixed.
+  * When the stale-answer-enable option was enabled and the
+    stale-answer-client-timeout option was enabled and larger than
+    0, named previously allocated two slots from the
+    clients-per-query limit for each client and failed to gradually
+    auto-tune its value, as configured. This has been fixed.
+
+-------------------------------------------------------------------
 Wed May 17 09:39:55 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to release 9.18.15
