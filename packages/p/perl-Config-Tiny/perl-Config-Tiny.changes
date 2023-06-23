@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 24 22:28:58 UTC 2023 - Andrew Daugherity <adaugherity@tamu.edu>
+
+- fix build on SLES 12 (no make_build macro) 
+
+-------------------------------------------------------------------
 Thu Apr  6 03:06:08 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.29

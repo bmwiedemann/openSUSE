@@ -35,6 +35,11 @@ Requires:       perl(File::Spec) >= 3.30
 Requires:       perl(File::Temp) >= 0.22
 %{perl_requires}
 
+# make_build doesn't exist on SLES 12
+%if %{undefined make_build}
+%define make_build %{__make} %{?_smp_mflags}
+%endif
+
 %description
 'Config::Tiny' is a Perl class to read and write .ini style configuration
 files with as little code as possible, reducing load time and memory
