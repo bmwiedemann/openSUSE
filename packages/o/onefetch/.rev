@@ -355,4 +355,20 @@
   * upgrade gitoxide to v0.44 and incorporate #1023 #1024</comment>
     <requestid>1083621</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>8ccacea641237503c3214aec77939cde</srcmd5>
+    <version>2.18.0~0</version>
+    <time>1687549978</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.18.0:
+  * add new info line called &quot;Churn&quot; which displays the files with
+    the most modifications (commits) (#1071)
+  * add Hlsl support (#1082)
+  * performance: optimize case where repo has a commit-graph for
+    massive performance gains (#1081)
+  * docs: add a cmd.exe version of the cd snippet (#1048)
+  * refacto: use the builder pattern to instantiate the Info struct (#1047)
+  * improve bot regex (#1086)</comment>
+    <requestid>1094771</requestid>
+  </revision>
 </revisionlist>
