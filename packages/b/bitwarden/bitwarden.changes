@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 22 17:00:22 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 2023.5.1
+  * Fix bug when the user selects a region it will set baseUrl in environment service
+- Revert build_rustflags hack (boo#1212226)
+
+-------------------------------------------------------------------
 Mon Jun 12 15:08:13 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - Replace deprecated rust-packaging with cargo-packaging (boo#1211624)
 - Fix unresolvable build on Fedora

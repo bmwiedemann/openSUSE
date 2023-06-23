@@ -18,16 +18,12 @@
 #
 
 Name:       bitwarden
-Version:    2023.5.0
+Version:    2023.5.1
 Release:    0
 Summary:    A secure and free password manager for all of your devices
 Group:      Productivity/Security
 License:    GPL-3.0-only and MIT and (Apache-2.0 or MIT)
 URL:        https://github.com/bitwarden/clients
-
-%if 0%{?suse_version}
-%global build_rustflags %{__rustflags}
-%endif
 
 #x86 electron requires SSE2
 %ifarch %ix86
@@ -86,7 +82,12 @@ BuildRequires: cargo
 %if 0%{?fedora}
 BuildRequires:  rust-srpm-macros
 %else
-BuildRequires:  cargo-packaging
+%if 0%{?suse_version} >= 1600
+BuildRequires:  cargo-packaging >= 1.2.0+3
+%else
+BuildRequires:  rust-packaging
+%endif
+BuildRequires:  cargo-auditable
 %endif
 BuildRequires: fdupes
 BuildRequires: fontpackages-devel
