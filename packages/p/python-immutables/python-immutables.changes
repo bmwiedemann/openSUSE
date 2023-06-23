@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 22 15:25:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- limit to newer python versions, older are no longer needed
+
+-------------------------------------------------------------------
 Fri Apr 21 12:26:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
@@ -30,6 +35,11 @@ Tue Jul 19 12:26:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Fix iteration when tree is 7 levels deep and has collissions
   * Test on python 3.10
   * consolidate mypy and pytest config into pyproject.toml
+
+-------------------------------------------------------------------
+Mon Apr 25 12:49:18 UTC 2022 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Add the package to SUSE Linux Enterprise 15 (jsc#SLE-24404)
 
 -------------------------------------------------------------------
 Tue Feb 22 09:01:33 UTC 2022 - Dirk Müller <dmueller@suse.com>

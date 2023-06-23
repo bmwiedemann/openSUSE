@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-immutables
 Version:        0.19
@@ -26,15 +24,11 @@ Summary:        Immutable collections for Python
 License:        Apache-2.0
 URL:            https://github.com/MagicStack/immutables
 Source:         https://files.pythonhosted.org/packages/source/i/immutables/immutables-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.6}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module typing-extensions >= 3.7.4.3 if %python-base < 3.8}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %python_version_nodots < 38
-Requires:       python-typing-extensions >= 3.7.4.3
-%endif
 %python_subpackages
 
 %description
