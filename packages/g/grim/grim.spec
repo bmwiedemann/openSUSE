@@ -1,7 +1,7 @@
 #
 # spec file for package grim
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           grim
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Wayland compositor image grabber
 License:        MIT
 Group:          Productivity/Graphics/Other
-URL:            https://github.com/emersion/grim
-Source:         https://github.com/emersion/grim/archive/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-write_jpg-fix-printf-format-specifier.patch
+URL:            https://git.sr.ht/~emersion/grim
+Source:         https://git.sr.ht/~emersion/grim/refs/download/v%{version}/grim-%{version}.tar.gz
 BuildRequires:  meson >= 0.59.0
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc

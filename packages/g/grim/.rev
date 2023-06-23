@@ -98,4 +98,16 @@
     <comment></comment>
     <requestid>958015</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6c73e3d0dcfb05c026cd610e89f8ae51</srcmd5>
+    <version>1.4.1</version>
+    <time>1687550007</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.1:
+  * render: print error message when image alloc fails
+  * write_jpg: fix printf format specifier
+  * Fail when more than one arguments are passed in
+- Drop 0001-write_jpg-fix-printf-format-specifier.patch</comment>
+    <requestid>1094838</requestid>
+  </revision>
 </revisionlist>

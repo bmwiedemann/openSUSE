@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 23 10:15:53 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.4.1:
+  * render: print error message when image alloc fails
+  * write_jpg: fix printf format specifier
+  * Fail when more than one arguments are passed in
+- Drop 0001-write_jpg-fix-printf-format-specifier.patch
+
+-------------------------------------------------------------------
 Mon Feb 28 10:07:27 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream change:
