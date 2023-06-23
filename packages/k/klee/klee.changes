@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jun 15 06:54:19 UTC 2023 - jslaby@suse.cz
+
+- Update to version 3.0+20230611:
+  * Rewrote has_permission in the POSIX runtime.
+  * SpecialFunctionHandler: use std::array for handlerInfo
+  * fix ktest-randgen: use after free
+  * Fixed a format specifier pointed to by a compiler warning.
+  * Build and push Docker image as part of a release
+  * Use recommended LLVM 13 as part of the Docker image
+  * ktest-gen: remove unused function
+  * Further improve KDAlloc memory usage with infinite quarantine
+  * test/Feature/StackTraceOutput.c: relative checks, clang-format
+  * re-enable StackTraceOutput.c test
+  * make BatchingSearcher more readable
+  * fix BatchingSearcher's disabled time budget
+  * also check for default CHECK directive in ArrayOpt Tests
+  * CMake: use check_c_source_compiles() for FSTATAT_PATH_ACCEPTS_NULL
+  * config.h: include FSTATAT_PATH_ACCEPTS_NULL
+  * doxygen.cfg.in: DOXYGEN_OUTPUT_DIR
+  * and much more
+- remove
+  * 0001-gcc13-include-cstint-for-int-_t.patch (in upstream)
+
+-------------------------------------------------------------------
 Mon Mar 27 10:31:57 UTC 2023 - jslaby@suse.cz
 
 - Update to version 2.3+20230326:

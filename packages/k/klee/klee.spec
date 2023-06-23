@@ -31,7 +31,7 @@ Name:           klee
 Summary:        LLVM Execution Engine
 License:        NCSA
 Group:          Development/Languages/Other
-Version:        2.3+20230326
+Version:        3.0+20230611
 Release:        0
 URL:            http://klee.github.io/
 Source0:        %{name}-%{version}.tar.xz
@@ -39,7 +39,6 @@ Source1:        %{name}-rpmlintrc
 Source2:        https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-%{llvm_version_major}.0.0/llvm/utils/not/not.cpp
 Source3:        https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-%{llvm_version_major}.0.0/llvm/utils/FileCheck/FileCheck.cpp
 Patch0:         0001-test-disable-until-it-is-fixed.patch
-Patch2:         0001-gcc13-include-cstint-for-int-_t.patch
 BuildRequires:  clang%{llvm_version}
 BuildRequires:  cmake
 BuildRequires:  gperftools-devel

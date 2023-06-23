@@ -1322,4 +1322,12 @@ build with uclibc</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1076898</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>e90a3262dca0bf1a6d8878a233dd2bcb</srcmd5>
+    <version>3.0+20230611</version>
+    <time>1687549964</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1094768</requestid>
+  </revision>
 </revisionlist>
