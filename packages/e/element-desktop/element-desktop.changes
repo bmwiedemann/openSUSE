@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 23 11:03:57 UTC 2023 - Dominik Heidler <dheidler@suse.de>
+
+- Be multi-arch friendly - Add aarch64 support
+
+-------------------------------------------------------------------
 Thu Jun 15 13:12:37 UTC 2023 - Dominik Heidler <dheidler@suse.de>
 
 - Build with native extensons

@@ -40,7 +40,6 @@ BuildRequires:  rust
 BuildRequires:  cargo
 BuildRequires:  python3
 BuildRequires:  sqlcipher-devel
-BuildRequires:  openssh-fips
 BuildRequires:  libsecret-devel
 BuildRequires:  gcc-c++
 Requires:       element-web = %{version}
@@ -48,6 +47,9 @@ Requires:       nodejs-electron
 %if 0%{?suse_version} <= 1540
 BuildRequires:  nodejs18
 %endif
+
+# hak*.tar.gz only available for those architectures
+ExclusiveArch:  x86_64 aarch64
 
 %description
 A glossy Matrix collaboration client - desktop
@@ -64,6 +66,11 @@ jq '.piwik=false | .update_base_url=null' < element.io/release/config.json | spo
 # build tools expect python3 interpreter behind "python"
 mkdir -p $HOME/bin
 ln -sf /usr/bin/python3 $HOME/bin/python
+
+%ifarch aarch64
+mv -v .hak/matrix-seshat/x86_64-unknown-linux-gnu .hak/matrix-seshat/aarch64-unknown-linux-gnu
+mv -v .hak/keytar/x86_64-unknown-linux-gnu .hak/keytar/aarch64-unknown-linux-gnu
+%endif
 
 %build
 echo 'yarn-offline-mirror "./npm-packages-offline-cache"' >> .yarnrc
@@ -130,7 +137,7 @@ done
 %config(noreplace) %{_sysconfdir}/element/config.json
 %{_sysconfdir}/webapps/element/config.json
 %{_datadir}/webapps/element/config.json
-%{_sysconfdir}/element/
+%dir %{_sysconfdir}/element/
 %{_datadir}/applications/io.element.Element.desktop
 %{_datadir}/icons/hicolor/scalable/apps/io.element.Element.svg
 %{_datadir}/icons/hicolor/*/apps/io.element.Element.png
