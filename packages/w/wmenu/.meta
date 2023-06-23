@@ -1,0 +1,5 @@
+<package name="wmenu" project="openSUSE:Factory">
+  <title>A dynamic menu for Sway and wlroots based Wayland compositors</title>
+  <description></description>
+  <devel project="X11:Wayland" package="wmenu"/>
+</package>
