@@ -518,4 +518,12 @@ All packages broken by this update should be fixed now.</comment>
     <comment></comment>
     <requestid>1092401</requestid>
   </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>9bfd356bca429a6a7c593aaef15b3d66</srcmd5>
+    <version>2.0.2</version>
+    <time>1687549926</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094649</requestid>
+  </revision>
 </revisionlist>

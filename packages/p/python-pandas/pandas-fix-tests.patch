@@ -1,0 +1,28 @@
+--- pandas-2.0.2/pandas/tests/frame/indexing/test_setitem.py.orig	2023-06-22 09:00:10.272775300 +0200
++++ pandas-2.0.2/pandas/tests/frame/indexing/test_setitem.py	2023-06-22 09:00:48.663682100 +0200
+@@ -61,7 +61,8 @@ class TestDataFrameSetItem:
+         "dtype", ["int32", "int64", "uint32", "uint64", "float32", "float64"]
+     )
+     def test_setitem_dtype(self, dtype, float_frame):
+-        arr = np.random.randn(len(float_frame))
++        # Use randint since casting negative floats to uints is undefined
++        arr = np.random.randint(1, 10, len(float_frame))
+ 
+         float_frame[dtype] = np.array(arr, dtype=dtype)
+         assert float_frame[dtype].dtype.name == dtype
+--- pandas-2.0.2/pandas/tests/series/methods/test_nlargest.py.orig	2023-06-22 09:02:58.788342500 +0200
++++ pandas-2.0.2/pandas/tests/series/methods/test_nlargest.py	2023-06-22 09:03:26.743975800 +0200
+@@ -217,7 +217,12 @@ class TestSeriesNLargestNSmallest:
+     def test_nlargest_nullable(self, any_numeric_ea_dtype):
+         # GH#42816
+         dtype = any_numeric_ea_dtype
+-        arr = np.random.randn(10).astype(dtype.lower(), copy=False)
++        if dtype.startswith("UInt"):
++            # Can't cast from negative float to uint on some platforms
++            arr = np.random.randint(1, 10, 10)
++        else:
++            arr = np.random.randn(10)
++        arr = arr.astype(dtype.lower(), copy=False)
+ 
+         ser = Series(arr.copy(), dtype=dtype)
+         ser[1] = pd.NA

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 22 09:36:06 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix tests on aarch64:
+  * pandas-fix-tests.patch
+
+-------------------------------------------------------------------
 Sun Jun 11 19:51:26 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - do not use %elif for python-numpy dependency condition
