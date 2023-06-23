@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 23 04:59:34 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.4.11
+  No changelog from upstream.
+  See instead here:
+  https://github.com/kovidgoyal/html5-parser/compare/v0.4.10...v0.4.11?diff=unified&name=v0.4.11
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Dec 23 11:59:31 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Skip python2 to fix build error for Leap in devel repo.
