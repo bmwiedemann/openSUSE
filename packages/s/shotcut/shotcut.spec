@@ -27,7 +27,7 @@
 #%%(pkg-config --modversion Qt6Core)
 %bcond_with    x264
 Name:           shotcut
-Version:        23.05.14
+Version:        23.06.14
 Release:        0
 Summary:        Video and audio editor and creator
 License:        GPL-3.0-or-later
@@ -141,9 +141,6 @@ popd
 chmod 0755 %{buildroot}/%{_datadir}/%{name}/qml/export-edl/rebuild.sh
 chmod 0755 %{buildroot}/%{_datadir}/%{name}/qml/export-chapters/rebuild.sh
 %fdupes -s %{buildroot}/%{_datadir}
-
-# remove tmp file
-rm %{buildroot}%{_datadir}/shotcut/qml/filters/speed/SpeedUI.qml~
 
 %post
 %mime_database_post
