@@ -1,0 +1,41 @@
+From 996b00ede87d6a870332e63974a7d4def3c2f1b0 Mon Sep 17 00:00:00 2001
+From: msizanoen <msizanoen@qtmlabs.xyz>
+Date: Mon, 12 Jun 2023 10:30:12 +0700
+Subject: [PATCH 5002/5002] Revert "core/service: when resetting PID also reset
+ known flag"
+
+This reverts commit ff32060f2ed37b68dc26256b05e2e69013b0ecfe.
+
+This change is incorrect as we don't want to mark the PID as invalid but
+only mark it as dead.
+
+The change in question also breaks user level socket activation for
+`podman.service` as the termination of the main `podman system service`
+process is not properly handled, causing any application accessing the
+socket to hang.
+
+This is because the user-level `podman.service` unit also hosts two
+non-main processes: `rootlessport` and `rootlessport-child` which causes
+the `cgroup_good` check to still succeed.
+
+The original submitter of this commit is recommended to find another
+more correct way to fix the cgroupsv1 issue on CentOS 8.
+---
+ src/core/service.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/core/service.c b/src/core/service.c
+index 171e091dff..cecdd3bf50 100644
+--- a/src/core/service.c
++++ b/src/core/service.c
+@@ -3752,7 +3752,6 @@ static void service_sigchld_event(Unit *u, pid_t pid, int code, int status) {
+                         return;
+ 
+                 s->main_pid = 0;
+-                s->main_pid_known = false;
+                 exec_status_exit(&s->main_exec_status, &s->exec_context, pid, code, status);
+ 
+                 if (s->main_command) {
+-- 
+2.35.3
+

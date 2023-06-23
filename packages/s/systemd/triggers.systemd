@@ -68,11 +68,14 @@ elseif pid > 0 then
     posix.wait(pid)
 end
 
-%transfiletriggerin -P 100700 -p <lua> -- /usr/lib/sysusers.d
+%transfiletriggerin -P 1000700 -p <lua> -- /usr/lib/sysusers.d
 -- This script will process files installed in /usr/lib/sysusers.d to create
 -- specified users automatically. The priority is set such that it
 -- will run before the tmpfiles file trigger.
-assert(rpm.execute("systemd-sysusers"))
+-- Note: /run is never mounted during transactional updates.
+if posix.access("/run/systemd/system") then
+    assert(rpm.execute("systemd-sysusers"))
+end
 
 %if %{without bootstrap}
 %transfiletriggerin -P 1000700 -n udev -p <lua> -- /usr/lib/udev/hwdb.d
@@ -102,7 +105,8 @@ end
 -- This script will process files installed in /usr/lib/tmpfiles.d to create
 -- tmpfiles automatically. The priority is set such that it will run
 -- after the sysusers file trigger, but before any other triggers.
-if os.getenv("TRANSACTIONAL_UPDATE") == nil then
+-- Note: /run is never mounted during transactional updates.
+if posix.access("/run/systemd/system") then
     assert(rpm.execute("systemd-tmpfiles", "--create"))
 endf
 

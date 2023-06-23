@@ -1,8 +1,52 @@
 -------------------------------------------------------------------
+Wed Jun 21 10:30:58 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Make sure to pre-install the groups systemd and udev rely on. This is needed
+  when the tmpfiles are run at package installation time. Theoretically with
+  only "Requires(pre): group()", rpm is allowed to drop the group at the end of
+  the package installations hence let's keep "Requires: group()" dep.
+
+  Note: this is also needed when (post)file-triggers are enabled due to the
+  current limitation of the default libzypp transaction backend.
+
+-------------------------------------------------------------------
+Wed Jun 21 09:28:29 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- file-triggers: fix lua trigger priority for sysusers (bsc#1212376)
+
+  A single digit in the priority used for sysusers got dropped somehow and
+  upstream commit cd621954ed643c6ee0d869132293e26056a48826 forgot to restore it
+  in the lua implementation.
+
+-------------------------------------------------------------------
+Tue Jun 20 15:46:04 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- file-triggers: skip the call to systemd-tmpfiles in chroot too. That way we
+  ensure that packages that really need the tmpfiles in advance use the right
+  API which is %tmpfiles_create_package.
+
+- file-triggers: to be consistent with what we already does with tmpfiles, we
+  skip the call to systemd-sysusers and delay system user creations until the
+  next reboot.
+
+-------------------------------------------------------------------
+Tue Jun 20 07:05:34 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Temporarily add
+  5002-Revert-core-service-when-resetting-PID-also-reset-kn.patch until it's
+  backported to the next stable release
+
+  See https://github.com/systemd/systemd/pull/28000
+
+-------------------------------------------------------------------
 Fri Jun 16 14:38:33 UTC 2023 - Franck Bui <fbui@suse.com>
 
-- Make sure to skip the call to systemd-tmpfile in the file-triggers when
-  running on transaction systems
+- file-triggers: make sure to skip the call to systemd-tmpfile in the
+  file-triggers when running on transaction systems (bsc#1212449)
+
+  systemd-tmpfiles usually modifies paths that are not supposed to change during
+  transactional updates (e.g. /var, /run). On transaction systems changes will
+  happen on the next reboot.
 
 -------------------------------------------------------------------
 Thu Jun  1 15:58:24 UTC 2023 - Franck Bui <fbui@suse.com>

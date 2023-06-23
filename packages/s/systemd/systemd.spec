@@ -138,14 +138,16 @@ Requires:       systemd-default-settings-branding
 Requires:       systemd-presets-branding
 Requires:       util-linux >= 2.27.1
 Requires:       group(lock)
-# This Recommends because some symbols of libpcre2 are dlopen()ed by journalctl
-Recommends:     libpcre2-8-0
-Recommends:     libbpf0
-
+# The next dependency is also needed with file-triggers enabled due to the way
+# the libzypp default transaction backend works.
+Requires(pre):  group(lock)
 Requires(post): coreutils
 Requires(post): findutils
 Requires(post): systemd-presets-branding
 Requires(post): pam-config >= 0.79-5
+# This Recommends because some symbols of libpcre2 are dlopen()ed by journalctl
+Recommends:     libpcre2-8-0
+Recommends:     libbpf0
 %endif
 Conflicts:      filesystem < 11.5
 Conflicts:      mkinitrd < 2.7.0
@@ -216,6 +218,7 @@ Patch12:        0009-pid1-handle-console-specificities-weirdness-for-s390.patch
 # will be removed as soon as a proper fix will be merged by upstream.
 Patch5000:      5000-core-manager-run-generators-directly-when-we-are-in-.patch
 Patch5001:      5001-Revert-core-propagate-stop-too-if-restart-is-issued.patch
+Patch5002:      5002-Revert-core-service-when-resetting-PID-also-reset-kn.patch
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB
@@ -323,6 +326,9 @@ Requires:       filesystem
 Requires:       kmod
 Requires:       system-group-hardware
 Requires:       group(kvm)
+# The next dependency is also needed with file-triggers enabled due to the way
+# the libzypp default transaction backend works.
+Requires(pre):  group(kvm)
 Requires(post): sed
 Requires(post): coreutils
 Requires(postun):coreutils
@@ -1096,14 +1102,14 @@ fi
 %endif
 
 %post container
+%if %{with machined}
 %if %{without filetriggers}
 %tmpfiles_create systemd-nspawn.conf
 %endif
-%if %{with machined}
 %systemd_post machines.target
 %ldconfig
-%endif
 %{_systemd_util_dir}/rpm/fixlet-container-post.sh $1 || :
+%endif
 
 %if %{with coredump}
 %post coredump
