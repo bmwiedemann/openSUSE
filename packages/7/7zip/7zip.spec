@@ -1,7 +1,7 @@
 #
 # spec file for package 7zip
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define stripped_version 2201
+%define stripped_version 2301
 Name:           7zip
-Version:        22.01
+Version:        23.01
 Release:        0
 Summary:        File Archivier
 # CPP/7zip/Compress/LzfseDecoder.cpp is under the BSD-3-Clause
@@ -58,7 +58,7 @@ chmod -x DOC/*.txt
 sed -i 's/-Werror//' CPP/7zip/7zip_gcc.mak
 %if 0%{?suse_version} < 1550
 # (gcc 7.x) Remove -Waddress-of-packed-member to make build succeed
-sed -i -e 's/-Waddress-of-packed-member//' -e 's/-Wcast-align=strict//' C/warn_gcc.mak CPP/7zip/warn_gcc.mak
+sed -i -e 's/-Waddress-of-packed-member//' -e 's/-Wcast-align=strict//' -e 's/-Wmissing-attributes//' C/warn_gcc.mak CPP/7zip/warn_gcc.mak
 %endif
 # Inject CFLAGS
 sed -i 's/^ -fPIC/ -fPIC %{optflags}/' CPP/7zip/7zip_gcc.mak

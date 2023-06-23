@@ -26,14 +26,15 @@ Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
  OpenCallbackConsole.cpp |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff -Nru 7zip/CPP/7zip/UI/Console/OpenCallbackConsole.cpp 7zip_2/CPP/7zip/UI/Console/OpenCallbackConsole.cpp
---- 7zip/CPP/7zip/UI/Console/OpenCallbackConsole.cpp	2017-02-18 00:42:14.000000000 +0100
-+++ 7zip_2/CPP/7zip/UI/Console/OpenCallbackConsole.cpp	2022-01-26 08:40:15.616512459 +0100
-@@ -87,7 +87,7 @@
+Index: 7zip/CPP/7zip/UI/Console/OpenCallbackConsole.cpp
+===================================================================
+--- 7zip.orig/CPP/7zip/UI/Console/OpenCallbackConsole.cpp
++++ 7zip/CPP/7zip/UI/Console/OpenCallbackConsole.cpp
+@@ -87,7 +87,7 @@ HRESULT COpenCallbackConsole::Open_Crypt
    if (!PasswordIsDefined)
    {
      ClosePercents();
--    RINOK(GetPassword_HRESULT(_so, Password));
+-    RINOK(GetPassword_HRESULT(_so, Password))
 +    GetPassword_HRESULT(_so, Password);
      PasswordIsDefined = true;
    }

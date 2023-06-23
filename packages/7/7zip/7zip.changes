@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Jun 21 10:15:05 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 23.01:
+  * 7-Zip now can use new ARM64 filter for compression to 7z and xz archives.
+    ARM64 filter can increase compression ratio for data containing executable files
+    compiled for ARM64 (AArch64) architecture.
+  * Default section size for BCJ2 filter was changed from 64 MiB to 240 MiB. It
+    can increase compression ratio for executable files larger than 64 MiB.
+  * UDF: support was improved.
+  * cpio: support for hard links.
+  * Some changes and optimizations in WIM creation code.
+  * When new 7-Zip creates multivolume archive, 7-Zip keeps in open state only
+    volumes that still can be changed. Previous versions kept all volumes in open
+    state until the end of the archive creation.
+  * 7-Zip now can reduce the number of simultaneously open files, when
+    7-Zip opens, extracts or creates multivolume archive. It allows to avoid the
+    failures for cases with big number of volumes, bacause there is a limitation for
+    number of open files allowed for a single program in Linux.
+  * The bugs were fixed:
+    * ZIP archives: if multithreaded zip compression was performed with
+      more than one file to stdout stream (-so switch), 7-zip didn't write "data
+      descriptor" for some files.
+    * ext4 archives: 7-Zip couldn't correctly extract symbolic link to directory from ext4 archives.
+    * HFS and APFS archives: 7-Zip incorrectly decoded uncompressed blocks (64 KiB) in compressed forks.
+    * Some another bugs were fixed.
+- Refresh fix-compatib-with-p7zip.patch
+
+-------------------------------------------------------------------
 Mon Dec 12 21:18:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - build for x86_64 subarchs the same way like for baseline 
