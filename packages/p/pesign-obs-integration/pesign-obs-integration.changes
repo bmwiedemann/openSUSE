@@ -1,8 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 22 13:11:39 UTC 2023 - Joey Lee <jlee@suse.com>
+
+- Modify pesign-obs-integration.changes, add bsc#1211849 to changelog.
+  The supporting of filetriggers and transfiletriggers in
+  pesign-gen-repackage-spec in 10.2+git20230612.4699910 is for
+  bsc#1211849.
+
+-------------------------------------------------------------------
 Mon Jun 12 05:20:28 UTC 2023 - jlee@suse.com
 
 - Update to version 10.2+git20230612.4699910:
-  * pesign-gen-repackage-spec: support filetriggers and transfiletriggers
+  * pesign-gen-repackage-spec: support filetriggers and transfiletriggers (bsc#1211849)
   * Add support for dependency generators
   * pesign-gen-repackage-spec: fix the filename issue in the scripts of generated ueficert package
   * Verfiy the signatures before attaching them
