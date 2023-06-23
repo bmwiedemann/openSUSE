@@ -23,7 +23,7 @@
 %define release 1
 
 Name:           R-base
-Version:        4.3.0
+Version:        4.3.1
 Release:        %release
 %define Rversion %{version}
 Source0:        R-%{version}.tar.xz
@@ -1180,7 +1180,7 @@ This packages provides R-boot, one of the recommended packages.
 
 %package -n R-class
 Summary:        Package provides recommended R-class
-Version:        7.3.21
+Version:        7.3.22
 Release:        %release
 Requires:       R-base
 
@@ -1297,7 +1297,7 @@ This packages provides R-foreign, one of the recommended packages.
 
 %package -n R-KernSmooth
 Summary:        Package provides recommended R-KernSmooth
-Version:        2.23.20
+Version:        2.23.21
 Release:        %release
 Requires:       R-base
 
@@ -1360,7 +1360,7 @@ This packages provides R-lattice, one of the recommended packages.
 
 %package -n R-MASS
 Summary:        Package provides recommended R-MASS
-Version:        7.3.58
+Version:        7.3.60
 Release:        %release
 Requires:       R-base
 
@@ -1503,7 +1503,7 @@ This packages provides R-nlme, one of the recommended packages.
 
 %package -n R-nnet
 Summary:        Package provides recommended R-nnet
-Version:        7.3.18
+Version:        7.3.19
 Release:        %release
 Requires:       R-base
 
