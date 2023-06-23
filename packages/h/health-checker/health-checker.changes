@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 22 16:04:47 UTC 2023 - Ignaz Forster <iforster@suse.com>
+
+- Update to version 1.9
+  * Fix failing subvolume mount checks with certain characters in
+    mount point [gh#openSUSE/health-checker#14].
+
+-------------------------------------------------------------------
 Mon May  8 22:12:48 UTC 2023 - Ignaz Forster <iforster@suse.com>
 
 - Update to version 1.8
