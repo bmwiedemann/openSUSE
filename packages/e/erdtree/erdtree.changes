@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 23 09:31:18 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.0.2:
+  * Fix segmentation fault when invalid group or user #193
+  * Update deprecated Nerd symbols #192
+  * Change CJK and emoji block icons #194
+
+-------------------------------------------------------------------
 Mon May 29 07:56:33 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.0.1:

@@ -129,4 +129,15 @@
   * Some code-cleanup.</comment>
     <requestid>1089523</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>575063470bbc7218d119c0deb62708dd</srcmd5>
+    <version>3.0.2~0</version>
+    <time>1687550003</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.2:
+  * Fix segmentation fault when invalid group or user #193
+  * Update deprecated Nerd symbols #192
+  * Change CJK and emoji block icons #194</comment>
+    <requestid>1094823</requestid>
+  </revision>
 </revisionlist>
