@@ -217,13 +217,16 @@ fi										\
 :										\
 %{nil}
 
+# For cases where the sysusers or tmpfiles data need to be created in advance
+# (when a system user needs to be installed in %%pre so proper ownership are
+# used when package's files are installed for example) then use the
+# '*_create_package()' variants.
 #
-# Since we moved to file triggers the 2 following macros are deprecated. If the
-# sysusers or tmpfiles data need to be created in advance (when a system user
-# needs to be installed in %%pre so proper ownership are used when package's
-# files are installed for example) then use the '*_create_package()' variants.
+# FIXME: these macros could be converted to NOPs since we moved to file
+# triggers. However some packages might assume that the macros effects are
+# effective as soon as the macros return. This reason is actually moot since
+# this can't work on transactional systems anyway.
 #
-
 %tmpfiles_create()								\
 %{expand:%%{?__systemd_someargs_%#:%%__systemd_someargs_%# tmpfiles_create}}	\
 [ -z "${TRANSACTIONAL_UPDATE}" ] && [ -x /usr/bin/systemd-tmpfiles ] &&		\
@@ -232,29 +235,8 @@ fi										\
 
 %sysusers_create()								\
 %{expand:%%{?__systemd_someargs_%#:%%__systemd_someargs_%# sysusers_create}}	\
-[ -x /usr/bin/systemd-sysusers ] && /usr/bin/systemd-sysusers %{?*} || :	\
-%{nil}
-
-# This may be used by package installation scripts to create files according to
-# their tmpfiles configuration from a package installation script, even before
-# the files of that package are installed on disk.
-#
-# Example:
-#   Source1: %{name}-tmpfiles.conf
-#   ...
-#   %install
-#   install -D %SOURCE1 %{buildroot}%{_tmpfilesdir}/%{name}.conf
-#   %pre
-#   %tmpfiles_create_package %{name} %SOURCE1
-#   %files
-#   %{_tmpfilesdir}/%{name}.conf
-#
-%tmpfiles_create_package() \
-%{expand:%%{?!__systemd_twoargs_%#:%%{error:The %%%%tmpfiles_create_package macro requires two arguments}}} \
-[ -d /run/systemd/system ] && \
-	/usr/bin/systemd-tmpfiles --replace=%_tmpfilesdir/%1.conf --create - <<SYSTEMD_INLINE_EOF || : \
-%(cat %2) \
-SYSTEMD_INLINE_EOF\
+[ -z "${TRANSACTIONAL_UPDATE}" ] && [ -x /usr/bin/systemd-sysusers ] &&		\
+	/usr/bin/systemd-sysusers %{?*} || :					\
 %{nil}
 
 # This should be used by package installation scripts which require users or
@@ -271,17 +253,13 @@ SYSTEMD_INLINE_EOF\
 #   %files
 #   %{_sysusersdir}/%{name}.conf
 #
+# Note: writing to /etc is not recommended on transactional systems but the
+# sysusers must be created now since by calling this macro the package explicitly
+# requests that.
+#
 %sysusers_create_package() \
 %{expand:%%{?!__systemd_twoargs_%#:%%{error:The %%%%sysusers_create_package macro requires two arguments}}} \
-[ -z "${TRANSACTIONAL_UPDATE}" ] && [ -x /usr/bin/systemd-tmpfiles ] && \
-	/usr/bin/systemd-sysusers --replace=%_sysusersdir/%1.conf - <<SYSTEMD_INLINE_EOF || : \
+[ -x /usr/bin/systemd-sysusers ] && /usr/bin/systemd-sysusers --replace=%_sysusersdir/%1.conf - <<SYSTEMD_INLINE_EOF || : \
 %(cat %2) \
-SYSTEMD_INLINE_EOF\
-%{nil}
-
-# Deprecated. Use %sysusers_create_package instead
-%sysusers_create_inline() \
-[ -x /usr/bin/systemd-sysusers ] && /usr/bin/systemd-sysusers - <<SYSTEMD_INLINE_EOF || : \
-%{?*} \
 SYSTEMD_INLINE_EOF\
 %{nil}

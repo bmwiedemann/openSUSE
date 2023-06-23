@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Jun 20 16:08:47 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Bump to version 24
+
+-------------------------------------------------------------------
+Tue Jun 20 16:01:33 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Drop %tmpfiles_create_package
+
+  It can't work during transactional updates because the paths that
+  systemd-tmpfiles usually operates on (such as /var) can't be changed. It
+  appears that the only user of this macro doesn't really need this macro so
+  let's drop it.
+
+-------------------------------------------------------------------
+Tue Jun 20 15:57:37 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Drop %sysusers_create_inline
+
+  It's deprecated and the only user of this macro is being converted to
+  %sysusers_create_package. So drop it now before the deprecated macro attracts
+  more users.
+
+-------------------------------------------------------------------
+Tue Jun 20 14:58:35 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Unlike systemd-tmpfiles call in %tmpfiles_create_package(), systemd-sysusers
+  must always be called by %sysusers_create_package() even on transactional
+  systems since it's part of the macro contract. Writing to /etc is not
+  recommended on such systems but it has to work anyways.
+
+-------------------------------------------------------------------
 Fri Jun 16 13:11:34 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Bump to version 23

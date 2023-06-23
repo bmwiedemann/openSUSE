@@ -710,4 +710,28 @@
   The check has been mistakenly dropped during the switch to file-triggers.</comment>
     <requestid>1093498</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>c289f2bea589ac9c36483e9e95f6c9a3</srcmd5>
+    <version>24</version>
+    <time>1687549940</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to version 24
+
+- Drop %tmpfiles_create_package
+  It can't work during transactional updates because the paths that
+  systemd-tmpfiles usually operates on (such as /var) can't be changed. It
+  appears that the only user of this macro doesn't really need this macro so
+  let's drop it.
+
+- Drop %sysusers_create_inline
+  It's deprecated and the only user of this macro is being converted to
+  %sysusers_create_package. So drop it now before the deprecated macro attracts
+  more users.
+
+- Unlike systemd-tmpfiles call in %tmpfiles_create_package(), systemd-sysusers
+  must always be called by %sysusers_create_package() even on transactional
+  systems since it's part of the macro contract. Writing to /etc is not
+  recommended on such systems but it has to work anyways.</comment>
+    <requestid>1094319</requestid>
+  </revision>
 </revisionlist>
