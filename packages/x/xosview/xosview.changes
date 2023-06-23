@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 23 08:11:54 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 1.24
+  * Fix many compiler warnings
+- Port patches
+  * xosview-1.19-appdef.patch
+  * xosview-1.21-lmstemp.patch
+
+-------------------------------------------------------------------
 Tue Sep 20 13:20:25 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Update to version 1.23

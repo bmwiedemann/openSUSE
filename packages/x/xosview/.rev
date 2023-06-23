@@ -427,4 +427,16 @@ the other licenses are consolidated into the GPL license of the derived binary (
   * Many fixes for serialmeter on linux platforms</comment>
     <requestid>1004977</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>ac5b9d3c63103cfea2488156dbceeba9</srcmd5>
+    <version>1.24</version>
+    <time>1687549982</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.24
+  * Fix many compiler warnings
+- Port patches
+  * xosview-1.19-appdef.patch
+  * xosview-1.21-lmstemp.patch</comment>
+    <requestid>1094802</requestid>
+  </revision>
 </revisionlist>

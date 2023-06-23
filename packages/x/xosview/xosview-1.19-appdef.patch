@@ -12,7 +12,7 @@
  #include <ctype.h>
  #include <unistd.h>  //  for access(), etc.  BCG
  #include <iostream>
-@@ -135,34 +136,35 @@ Listed from weakest to strongest:
+@@ -136,34 +137,35 @@ Listed from weakest to strongest:
  
    //  Merge in the system resource database.
    char rfilename[2048];
