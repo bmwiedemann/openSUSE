@@ -781,4 +781,29 @@
   + mlterm-wayland-Detect-compiler-flags.patch (forwarded request 1067838 from michals)</comment>
     <requestid>1067901</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>0be35835ff7f2c6d686a952b05fa97bc</srcmd5>
+    <version>3.9.3</version>
+    <time>1687550005</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 3.9.3
+  * mlterm-wl supports xdg-decoration.
+  * Add --disable-compact-truecolor option to ./configure script.
+  * Add vte 0.68 API symbols to libvte compatible library.
+  * Add libvterm 0.2 API symbols to libvterm compatible library.
+  * Add --sdpr / simple_scrollbar_dpr option.
+    (https://github.com/arakiken/mlterm/issues/64)
+  * Set &quot;COLORTERM=truecolor&quot; environmental variable.
+    (https://github.com/arakiken/mlterm/issues/36)
+  * Update unicode property table (generated from UnicodeData.txt and
+    EastAsianWidth.txt) to version 15.0.0.
+  * Support mosh-1.4.0.
+- deleted patches
+  - CVE-2022-24130-c_sixel.c-Fix-segmentation-fault-when-the-repeat-cou.patch (upstreamed)
+  - mlfc-Fix-crash-with-more-than-1024-font-faces-installed.patch (upstreamed)
+  - mlterm-Fix-buffer-overflow-with-long-plugin-suffix.patch (upstreamed)
+  - mlterm-SDL2-UI-also-needs-math-libs.patch (upstreamed)
+  - mlterm-wayland-Detect-compiler-flags.patch (upstreamed)</comment>
+    <requestid>1094862</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %global _configure ../configure
 %global flavors with-gui=wayland with-gui=sdl2 with-gtk=3.0
 Name:           mlterm
-Version:        3.9.2
+Version:        3.9.3
 Release:        0
 Summary:        Multilingual Terminal Emulator for X and Wayland
 License:        BSD-3-Clause
@@ -28,11 +28,6 @@ URL:            https://mlterm.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/project/mlterm/01release/%{name}-%{version}/%{name}-%{version}.tar.gz
 Source10:       %{name}.desktop
 Patch0:         etc.patch
-Patch1:         CVE-2022-24130-c_sixel.c-Fix-segmentation-fault-when-the-repeat-cou.patch
-Patch2:         mlterm-Fix-buffer-overflow-with-long-plugin-suffix.patch
-Patch3:         mlfc-Fix-crash-with-more-than-1024-font-faces-installed.patch
-Patch4:         mlterm-SDL2-UI-also-needs-math-libs.patch
-Patch5:         mlterm-wayland-Detect-compiler-flags.patch
 BuildRequires:  ccache
 BuildRequires:  coreutils
 BuildRequires:  fwnn-devel
@@ -241,7 +236,6 @@ cp -a %{buildroot}%{_mandir}/man1/mlterm.1 %{buildroot}%{_mandir}/man1/mlterm-sd
 mv %{buildroot}%{_libdir}/mlterm/mlterm/mlterm-zoom \
    %{buildroot}%{_bindir}/mlterm-zoom
 find %{buildroot} -type f -name "*.la" -delete -print
-%find_lang mlconfig
 %suse_update_desktop_file -i %{name} TerminalEmulator
 
 %post -n %{name}-common -p /sbin/ldconfig
@@ -272,7 +266,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/mlterm/mlterm/mlconfig
 %{_libdir}/mlterm/mlterm/mlmenu
 
-%files common -f mlconfig.lang
+%files common
 %license LICENCE*
 %doc README* doc/en doc/ja
 %{_bindir}/mlclient
