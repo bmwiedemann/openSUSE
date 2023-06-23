@@ -551,4 +551,21 @@
     incorrect translations.</comment>
     <requestid>1080114</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>45d14fabaf97dfc364b7fe425effe014</srcmd5>
+    <version>1.4.1</version>
+    <time>1687549971</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.1:
+  * Fixed showing of the number of selected characters when selection
+    highlighting is disabled.
+  * Added an option for a small margin around the text.
+  * Fixed a problem with non-Linux systems.
+  * In Preferences dialog, prevent unintentional changes to the
+    values of spin and combo boxes. Also, set their
+  * to default when they're cleared.
+  * Don't remove single trailing spaces with LaTeX.
+  * Prevent window dragging from the line number strip.</comment>
+    <requestid>1094770</requestid>
+  </revision>
 </revisionlist>
