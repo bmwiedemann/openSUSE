@@ -1,7 +1,7 @@
 #
 # spec file for package libabigail
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,22 @@
 
 
 Name:           libabigail
-%define lname   libabigail0
-Version:        2.0
+%define lname   libabigail2
+Version:        2.3
 Release:        0
 Summary:        Application Binary Interface Generic Analysis and Instrumentation Library
 License:        GPL-3.0-or-later AND LGPL-2.0-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://sourceware.org/libabigail/
 
-Source:         %name-%version.tar.xz
+Source:         http://mirrors.kernel.org/sourceware/libabigail/%name-%version.tar.xz
 Patch1:         no-tests.diff
 BuildRequires:  autoconf >= 2.63
 BuildRequires:  automake >= 1.11.1
 BuildRequires:  dpkg
 BuildRequires:  gcc-c++ >= 4.7
+BuildRequires:  libbpf-devel
 BuildRequires:  libdw-devel >= 0.170
-%if 0%{?suse_version} < 1550
-BuildRequires:  libebl-devel
-%endif
 BuildRequires:  libtool >= 2.2
 BuildRequires:  libzip-devel
 BuildRequires:  makeinfo
@@ -115,7 +113,7 @@ popd
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%_libdir/libabigail.so.0*
+%_libdir/libabigail.so.2*
 
 %files devel
 %_includedir/%name/

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 23 02:59:18 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.3
+  * Added an option to ignore SONAME differences in libraries
+  * abicompat: support reading CTF and abixml
+  * symtab: add support for CRC values from __kcrctab
+  * dwarf-reader: Support DW_OP_GNU_variable_value
+  * Support binaries with empty symbol table
+  * Better support an ELF symbol alias that designates several
+    functions
+  * Add support for BTF
+
+-------------------------------------------------------------------
 Sun Feb 13 23:37:46 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.0
