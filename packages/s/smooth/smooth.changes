@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Jun 23 05:21:06 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.9.10
+  - windowgdi.cpp
+    - apply dark mode to top window edge too on Windows 10 and 11
+  - fontcairo.cpp
+    - respect text scaling factor in addition to font size setting
+  - surfacecairo.cpp
+    - attempt to read desktop scale factor from KDE settings if GDK query fails
+  - backendxlib.cpp
+    - added support for KDE color schemes (including dark mode)
+  - windowxlib.cpp
+    - improved compatibility of drag & drop implementation with KDE running under Wayland
+    - fixed focus handling for windows without window manager decorations
+  - surfacecocoa.mm
+    - fixed crash trying to draw to windows before they are fully constructed
+  - application.cpp
+    - fixed determination of application path when running under Rosetta
+  - listbox.cpp
+    - fixed and improved list entry dragging behavior
+  - http.cpp
+    - fixed libcurl proxy feature detection
+  - cpu.cpp
+    - fixed number of cores reported for CPUs with different core types (performance/efficiency)
+    - fixed number of cores reported for SMP systems (now reporting total number of cores)
+  - instream.cpp
+    - allow data pointer to be NULL in InputData if number of bytes is 0
+  - outstream.cpp
+    - allow data pointer to be NULL in OutputData if number of bytes is 0
+  - various minor performance optimizations
+  - fixed long paths being converted to 8.3 format on recent versions of Windows
+  - fixed handling of long UNC paths on Windows
+  - upgraded fribidi to version 1.0.12
+  - upgraded libcpuid to version 0.6.2
+  - upgraded libxml2 to version 2.10.3
+  - upgraded libcurl to version 7.87.0
+  - upgraded libiconv to version 1.17
+  - upgraded libpng to version 1.6.39
+  - upgraded libwebp to version 1.3.0
+  - upgraded zlib to version 1.2.13
+
+-------------------------------------------------------------------
 Wed Jun 22 12:09:55 UTC 2022 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.9.9
