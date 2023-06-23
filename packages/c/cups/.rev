@@ -1273,4 +1273,12 @@ Apple grant an openssl linking exception (and an exception for linking on Apple 
     <comment>Fix for CVE-2023-32324 Heap buffer overflow in cupsd bsc#1211643 (forwarded request 1090271 from jsmeix)</comment>
     <requestid>1090272</requestid>
   </revision>
+  <revision rev="168" vrev="6">
+    <srcmd5>f72d5e5264af1ff771b0f98bd7a20fd0</srcmd5>
+    <version>2.4.2</version>
+    <time>1687549922</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for CVE-2023-34241 use-after-free in cupsdAcceptClient() bsc#1212230 (forwarded request 1094634 from jsmeix)</comment>
+    <requestid>1094635</requestid>
+  </revision>
 </revisionlist>

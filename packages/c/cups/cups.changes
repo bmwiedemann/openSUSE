@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 22 10:50:34 UTC 2023 - Johannes Meixner <jsmeix@suse.com>
+
+- cups-2.4.2-CVE-2023-34241.patch fixes CVE-2023-34241
+  "use-after-free in cupsdAcceptClient()"
+  https://github.com/OpenPrinting/cups/security/advisories/GHSA-qjgh-5hcq-5f25
+  bsc#1212230
+
+-------------------------------------------------------------------
 Thu Jun  1 11:31:26 UTC 2023 - Johannes Meixner <jsmeix@suse.com>
 
 - cups-2.4.2-CVE-2023-32324.patch fixes CVE-2023-32324
