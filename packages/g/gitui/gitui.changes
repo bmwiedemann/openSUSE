@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Jun 23 13:11:54 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 0.23.0
+  - Breaking Change
+      * focus_XYZ key bindings are merged into the move_XYZ set, so only one way to bind arrow-like keys from now on
+  - Added
+      * allow reset (soft,mixed,hard) from commit log
+      * support reword of commit from log
+      * fuzzy find branch
+      * list changes in commit message inside external editor
+      * allow detaching HEAD and checking out specific commit from log view
+      * add no-verify option on commits to not run hooks
+      * allow fetch on status tab
+      * allow copy file path on revision files and status tree
+      * print message of where log will be written if -l is set
+      * show remote branches in log
+  - Fixes
+      * fixed side effect of crossterm 0.26 on windows that caused double input of all keys
+      * commit msg history ordered the wrong way
+      * improve help documentation for amend cmd
+      * lag issue when showing files tab
+      * fix key binding shown in bottom bar for stash_open
+      * --bugreport does not require param
+      * edit-file command shown on commits msg
+      * crash on branches popup in small terminal
+      * edit command duplication
+      * syntax errors in key_bindings.ron will be logged
+      * Fix UI freeze when copying with xclip installed on Linux
+      * Fix UI freeze when copying with wl-copy installed on Linux
+      * commit hooks report "command not found" on Windows with wsl2 installed
+      * crashes on entering submodules
+      * fix race issue: revlog messages sometimes appear empty
+      * default to tick-based updates
+      * add support for options handling in log and stashes views
+  - Changed
+      * minimum supported rust version bumped to 1.65 (thank you time crate)
+
+-------------------------------------------------------------------
 Sat Mar 11 08:37:45 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Set worker disk size to 4GB to fix "No space left on device" on pp64.
