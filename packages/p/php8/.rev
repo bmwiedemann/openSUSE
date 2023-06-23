@@ -522,4 +522,27 @@
   + php-unicode-allow-redistribution.patch</comment>
     <requestid>1093234</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>37b535680bc44f8fa82499a642fe930d</srcmd5>
+    <version>8.2.7</version>
+    <time>1687549931</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 8.2.7
+  * Readonly classes
+  * Disjunctive Normal Form (DNF) Types
+  * Allow null, false, and true as stand-alone types
+  * New &quot;Random&quot; extension
+  * Constants in traits
+  * Deprecate dynamic properties
+  * for details, see
+    https://www.php.net/releases/8.2/en.php
+    https://www.php.net/manual/en/migration82.php
+- modified patches
+  % php-ar-flags.patch (refreshed)
+  % php-build-reproducible-phar.patch (refreshed)
+  % php-date-regenerate-lexers.patch (refreshed)
+  % php-ini.patch (refreshed)
+  % php-systzdata-v23.patch (refreshed)</comment>
+    <requestid>1094682</requestid>
+  </revision>
 </revisionlist>

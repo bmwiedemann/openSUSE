@@ -1,7 +1,7 @@
-Index: php-8.1.19/php.ini-production
+Index: php-8.2.7/php.ini-production
 ===================================================================
---- php-8.1.19.orig/php.ini-production
-+++ php-8.1.19/php.ini-production
+--- php-8.2.7.orig/php.ini-production
++++ php-8.2.7/php.ini-production
 @@ -742,7 +742,7 @@ default_charset = "UTF-8"
  ;;;;;;;;;;;;;;;;;;;;;;;;;
  
@@ -11,7 +11,7 @@ Index: php-8.1.19/php.ini-production
  ;
  ; Windows: "\path1;\path2"
  ;include_path = ".;c:\php\includes"
-@@ -975,7 +975,7 @@ cli_server.color = On
+@@ -976,7 +976,7 @@ cli_server.color = On
  [Date]
  ; Defines the default timezone used by the date functions
  ; https://php.net/date.timezone
@@ -20,7 +20,7 @@ Index: php-8.1.19/php.ini-production
  
  ; https://php.net/date.default-latitude
  ;date.default_latitude = 31.7667
-@@ -1164,7 +1164,7 @@ mysqli.max_persistent = -1
+@@ -1169,7 +1169,7 @@ mysqli.max_persistent = -1
  
  ; Allow or prevent persistent links.
  ; https://php.net/mysqli.allow-persistent
@@ -29,10 +29,10 @@ Index: php-8.1.19/php.ini-production
  
  ; Maximum number of links.  -1 means no limit.
  ; https://php.net/mysqli.max-links
-Index: php-8.1.19/sapi/fpm/www.conf.in
+Index: php-8.2.7/sapi/fpm/www.conf.in
 ===================================================================
---- php-8.1.19.orig/sapi/fpm/www.conf.in
-+++ php-8.1.19/sapi/fpm/www.conf.in
+--- php-8.2.7.orig/sapi/fpm/www.conf.in
++++ php-8.2.7/sapi/fpm/www.conf.in
 @@ -27,6 +27,8 @@
  ;                 If the group is not set, the user's group is used.
  user = @php_fpm_user@

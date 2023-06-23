@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jun 22 13:49:44 UTC 2023 - pgajdos@suse.com
+
+- version update to 8.2.7
+  * Readonly classes
+  * Disjunctive Normal Form (DNF) Types
+  * Allow null, false, and true as stand-alone types
+  * New "Random" extension
+  * Constants in traits
+  * Deprecate dynamic properties
+  * for details, see
+    https://www.php.net/releases/8.2/en.php
+    https://www.php.net/manual/en/migration82.php
+- modified patches
+  % php-ar-flags.patch (refreshed)
+  % php-build-reproducible-phar.patch (refreshed)
+  % php-date-regenerate-lexers.patch (refreshed)
+  % php-ini.patch (refreshed)
+  % php-systzdata-v23.patch (refreshed)
+
+-------------------------------------------------------------------
 Tue May 30 16:59:37 UTC 2023 - pgajdos@suse.com
 
 - version update to 8.1.20
