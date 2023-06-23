@@ -92,4 +92,12 @@
 - Update Requires from setup.py (forwarded request 1058866 from glaubitz)</comment>
     <requestid>1058909</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7d10d49451cd2077379ce4a905ebc525</srcmd5>
+    <version>1.0.0b6</version>
+    <time>1687549974</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094773</requestid>
+  </revision>
 </revisionlist>
