@@ -202,4 +202,13 @@
     Edit your hyprland.conf.</comment>
     <requestid>1089691</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>dfb2daeb95d2b4765b78f9f17c0bf344</srcmd5>
+    <version>1.12.1</version>
+    <time>1687549972</time>
+    <user>dimstar_suse</user>
+    <comment>- Update 1.12.1
+  * Add Russian translation #182</comment>
+    <requestid>1094772</requestid>
+  </revision>
 </revisionlist>
