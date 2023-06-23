@@ -17,11 +17,7 @@
 
 
 %define rname kdev-python
-%if 0%{suse_version} >= 1550
-%define mypython python310
-%else 
 %define mypython python3
-%endif
 %bcond_without released
 Name:           kdevelop5-plugin-python3
 Version:        23.04.2
@@ -85,6 +81,9 @@ Provides translations to the package %{name}
 %install
 %kf5_makeinstall -C build
 
+# Remove obsolete docs
+rm -r %{buildroot}%{_kf5_sharedir}/kdevpythonsupport/documentation_files/{PyKDE4,PyQt4}
+
 %find_lang kdevpython %{name}.lang
 
 %fdupes -s %{buildroot}
@@ -97,7 +96,7 @@ Provides translations to the package %{name}
 %{_kf5_appstreamdir}/org.kde.kdev-python.metainfo.xml
 %{_kf5_debugdir}/kdevpythonsupport.categories
 %{_kf5_libdir}/libkdev*python*.so*
-%{_kf5_plugindir}/
+%{_kf5_plugindir}/kdevplatform/
 %{_kf5_sharedir}/kdevappwizard/
 %{_kf5_sharedir}/kdevpythonsupport/
 
