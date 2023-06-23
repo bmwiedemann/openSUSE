@@ -55,4 +55,12 @@
   proper upgrade from previous version 1.0.0b4 (forwarded request 1066789 from glaubitz)</comment>
     <requestid>1066803</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>741939cb116f7e972a230ac4685b85d8</srcmd5>
+    <version>1.1.0</version>
+    <time>1687549976</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094776</requestid>
+  </revision>
 </revisionlist>
