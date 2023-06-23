@@ -1,7 +1,7 @@
 #
 # spec file for package accountsservice
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_without vala
 
 Name:           accountsservice
-Version:        22.08.8
+Version:        23.13.9
 Release:        0
 Summary:        D-Bus Service to Manipulate User Account Information
 License:        GPL-3.0-or-later
@@ -97,9 +97,9 @@ querying and manipulating user account information.
 %package vala
 Summary:        Vala bindings for accountsservice
 Group:          Development/Libraries/C and C++
+BuildRequires:  vala
 Requires:       libaccountsservice0 = %{version}
 Requires:       typelib-1_0-AccountsService-1_0 = %{version}
-BuildRequires:  vala
 
 %description vala
 The accountsservice server provides a set of D-Bus interfaces for
