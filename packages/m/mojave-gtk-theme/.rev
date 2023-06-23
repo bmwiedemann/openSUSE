@@ -130,4 +130,14 @@
   * Fixed gnome-shell 43 issues</comment>
     <requestid>1030841</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3ebaf56419f6c871ff81438eed89b323</srcmd5>
+    <version>20230613</version>
+    <time>1687549961</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20230613:
+  * Fixed gnome 44.0 issues
+  * Render and dpi enhancements #236</comment>
+    <requestid>1094769</requestid>
+  </revision>
 </revisionlist>
