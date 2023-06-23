@@ -5189,6 +5189,10 @@ unsorted:
   - ghc-filepattern-doc 
   - ghc-filepattern-prof 
   - ghc-filesystem 
+  - ghc-foldable1-classes-compat 
+  - ghc-foldable1-classes-compat-devel 
+  - ghc-foldable1-classes-compat-doc 
+  - ghc-foldable1-classes-compat-prof 
   - ghc-foldl 
   - ghc-foldl-devel 
   - ghc-foldl-doc 
@@ -5654,6 +5658,10 @@ unsorted:
   - ghc-optparse-applicative-devel 
   - ghc-optparse-applicative-doc 
   - ghc-optparse-applicative-prof 
+  - ghc-ordered-containers 
+  - ghc-ordered-containers-devel 
+  - ghc-ordered-containers-doc 
+  - ghc-ordered-containers-prof 
   - ghc-pandoc 
   - ghc-pandoc-devel 
   - ghc-pandoc-doc 
@@ -6117,6 +6125,14 @@ unsorted:
   - ghc-typed-process-devel 
   - ghc-typed-process-doc 
   - ghc-typed-process-prof 
+  - ghc-typst 
+  - ghc-typst-devel 
+  - ghc-typst-doc 
+  - ghc-typst-prof 
+  - ghc-typst-symbols 
+  - ghc-typst-symbols-devel 
+  - ghc-typst-symbols-doc 
+  - ghc-typst-symbols-prof 
   - ghc-uglymemo 
   - ghc-uglymemo-devel 
   - ghc-uglymemo-doc 
@@ -23942,6 +23958,7 @@ unsorted:
   - python310-django-filter 
   - python310-django-formtools 
   - python310-django-geoposition 
+  - python310-django-graphql-jwt 
   - python310-django-grappelli 
   - python310-django-gravatar2 
   - python310-django-guardian 
@@ -24279,6 +24296,7 @@ unsorted:
   - python310-graphviz 
   - python310-greenlet 
   - python310-greenlet-devel 
+  - python310-grimoirelab-toolkit 
   - python310-grpc-google-iam-v1 
   - python310-grpcio 
   - python310-grpcio-gcp 
@@ -27354,6 +27372,7 @@ unsorted:
   - python311-django-filter 
   - python311-django-formtools 
   - python311-django-geoposition 
+  - python311-django-graphql-jwt 
   - python311-django-grappelli 
   - python311-django-gravatar2 
   - python311-django-guardian 
@@ -27677,6 +27696,7 @@ unsorted:
   - python311-graphql-relay 
   - python311-graphviz 
   - python311-greenlet-devel 
+  - python311-grimoirelab-toolkit 
   - python311-grpc-google-iam-v1 
   - python311-grpcio 
   - python311-grpcio-gcp 
@@ -30719,6 +30739,7 @@ unsorted:
   - python39-django-filter 
   - python39-django-formtools 
   - python39-django-geoposition 
+  - python39-django-graphql-jwt 
   - python39-django-grappelli 
   - python39-django-gravatar2 
   - python39-django-guardian 
@@ -31056,6 +31077,7 @@ unsorted:
   - python39-graphviz 
   - python39-greenlet 
   - python39-greenlet-devel 
+  - python39-grimoirelab-toolkit 
   - python39-grpc-google-iam-v1 
   - python39-grpcio 
   - python39-grpcio-gcp 
@@ -45392,6 +45414,10 @@ unsorted:
   - wcslib-tools 
   - wdiff 
   - wdiff-lang 
+  - weave-gitops 
+  - weave-gitops-bash-completion 
+  - weave-gitops-fish-completion 
+  - weave-gitops-zsh-completion 
   - weave-k8s-yaml 
   - weave-kube 
   - weave-npc 
