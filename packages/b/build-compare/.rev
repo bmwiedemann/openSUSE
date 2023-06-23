@@ -1093,4 +1093,14 @@ In home:RedDwarf/kdenlive makes a difference. You can see the openSUSE_Factory/x
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1085182</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>65b78e8c1ef1fe9e73e3e30088f5d627</srcmd5>
+    <version>20230617T171717.50241a8</version>
+    <time>1687549935</time>
+    <user>dimstar_suse</user>
+    <comment>- Filter dune language version in dune-package files
+
+- Fix filtering compiled Python modules to handle Python &gt;= 3.7</comment>
+    <requestid>1094273</requestid>
+  </revision>
 </revisionlist>

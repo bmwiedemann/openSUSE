@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun 17 17:17:17 UTC 2023 - olaf@aepfle.de
+
+- Filter dune language version in dune-package files
+
+-------------------------------------------------------------------
+Wed May  3 17:32:18 UTC 2023 - Oleg Girko <ol@infoserver.lv>
+
+- Fix filtering compiled Python modules to handle Python >= 3.7
+
+-------------------------------------------------------------------
 Fri Apr 28 21:21:21 UTC 2023 - olaf@aepfle.de
 
 - remove timestamps from png files

@@ -64,7 +64,26 @@ filter_xenefi() {
 }
 
 filter_pyc() {
-   perl -e "open fh, '+<', '$f'; seek fh, 4, SEEK_SET; print fh '0000';"
+   perl -e '
+   my $ts_off = 4;
+   my $f = shift;
+   open fh, "+<", $f;
+   my $data;
+   die "Unexpected EOF while reading $f" if read(fh, $data, 2) < 2;
+   my $magic1 = unpack "v", $data;
+   die "Unexpected EOF while reading $f" if read(fh, $data, 2) < 2;
+   my $magic2 = unpack "v", $data;
+   die "File $f is not a compiled Python module" if $magic2 != 0x0a0d;
+   if ($magic1 >= 3392 && $magic1 < 20000) {
+     $ts_off += 4;
+     die "Unexpected EOF while reading $f" if read(fh, $data, 4) < 4;
+     my $flags = unpack "V", $data;
+     $ts_off += 8 if $flags & 0x1;
+   }
+   seek fh, $ts_off, SEEK_SET;
+   print fh "0000";
+   close fh;
+   ' "$f"
 }
 
 filter_dvi() {
@@ -644,6 +663,9 @@ normalize_file()
       # packaged by libguestfs
       sed -i 's/^127.0.0.1[[:blank:]].*/127.0.0.1 hst/' "old/$file"
       sed -i 's/^127.0.0.1[[:blank:]].*/127.0.0.1 hst/' "new/$file"
+      ;;
+    */dune-package)
+      sed -i '1s@^(lang dune [^)]\+)@(lang dune 0.0)@' "old/$file" "new/$file"
       ;;
   esac
 }
