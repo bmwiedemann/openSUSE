@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jun 23 07:15:53 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.5.3
+  * Fixed missing reason from !tembanip and !fulltempbanip commands
+  * Fixed move up/down script in GUI causing invalid memory usage
+    for disabled script
+  * Fixed non-functional SQL wildcards in !getipinfo command
+  * Fixed a crash when script stopped next running script in some
+    cases
+  * Fixed a crash on script error in OnTimer when timer was removed
+  * Fixed issues with Ban commands caused wrong nick and reason
+    length counting
+- Delete gcc7.diff (obsolete)
+
+-------------------------------------------------------------------
 Sat Feb 13 09:30:54 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Cure build failure with Lua 5.4 by adding pkg-config results

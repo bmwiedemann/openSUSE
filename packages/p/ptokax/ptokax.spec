@@ -1,7 +1,7 @@
 #
 # spec file for package ptokax
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ptokax
-Version:        0.5.2.2
+Version:        0.5.3
 Release:        0
 Summary:        Server application for the Neo-Modus DC++ sharing network
 License:        GPL-3.0-only
@@ -27,12 +27,11 @@ BuildRequires:  gcc-c++
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  tinyxml-devel
 BuildRequires:  zlib-devel
-BuildRequires:  pkgconfig(lua)
-Source:         http://www.ptokax.org/files/%version-nix-src.tgz
+BuildRequires:  pkgconfig(lua) >= 5.1
+Source:         http://www.ptokax.org/files/0.5.3.0-nix-src.tgz
 Source1:        ptokax.service
 Patch1:         logs.patch
 Patch2:         nodate.diff
-Patch3:         gcc7.diff
 Requires(pre):  shadow
 
 %description
@@ -50,8 +49,9 @@ rm -rf tinyxml
 
 %build
 perl -i -pe '
-	s{^CXXFLAGS = .*}{CXXFLAGS = %optflags '"$(pkg-config lua --cflags)"'}g;
-	s{-llua5.3\b}{'"$(pkg-config lua --libs)"'}g;
+	s{^CXXFLAGS = .*}{CXXFLAGS = %optflags}g;
+	s{-llua5.\d+\b}{'"$(pkg-config lua --libs)"'}g;
+	s{-I/usr/include/lua5.\d+\b}{'"$(pkg-config lua --cflags)"'}g;
 ' makefile
 %make_build
 
