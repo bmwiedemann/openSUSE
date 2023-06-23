@@ -61,13 +61,6 @@ cp %{SOURCE2} .
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-# Do not package .so built for foreign architectures
-%ifnarch %{ix86} x86_64
-%python_expand rm %{buildroot}%{$python_sitelib}/selenium/webdriver/firefox/x86/x_ignore_nofocus.so
-%endif
-%ifnarch x86_64
-%python_expand rm %{buildroot}%{$python_sitelib}/selenium/webdriver/firefox/amd64/x_ignore_nofocus.so
-%endif
 
 %check
 export PYTHONDONTWRITEBYTECODE=1

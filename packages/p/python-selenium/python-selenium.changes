@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 21 08:09:17 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix packaging for non-x86_64 architectures
+
+-------------------------------------------------------------------
 Fri Jun  9 06:29:05 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.10.0:
