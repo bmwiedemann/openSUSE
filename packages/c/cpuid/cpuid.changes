@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jun 21 09:18:20 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to release 20230614
+  * Improved (synth) identification for Intel Xeon Scalable (3rd
+    Gen) (Cooper Lake A0), Intel Xeon D-1700/2700 (Ice Lake-D),
+    Intel Pentium Gold 8500 series, pure Atom x7000E, Atom C1100
+    Arizona Beach.
+  * Made the (simple synth) fields non-default. The (simple synth)
+    fields still are available, but only with the -S/--simple
+    option.
+- Update to release 20230505
+  * Fixed CPU counts for higher levels
+    not dividing out counts from lower levels.
+  * Differentiate Core i3-N300 N-Series from ordinary N-Series.
+  * Added hypervisor+4/eax bit 21: use hypercalls for MMIO config
+    space I/O, based on LX*.
+  * Added (synth) decoding for Xeon W version of Sapphire Rapids,
+    Meteor Lake-M B0.
+  * Added (synth) & (uarch synth) Emerald Rapids family: Raptor
+    Cove, and Granite Rapids family: Redwood Cove.
+
+-------------------------------------------------------------------
 Fri Apr 14 07:02:53 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Update to release 20230406:
