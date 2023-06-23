@@ -63,8 +63,6 @@ Source1014:     README.build
 # workarounds
 Source1100:     qcom-post
 Source1101:     uncompressed-post
-# Temporary fixes
-Patch1:         cirrus-WHENCE-link-fixes.patch
 BuildRequires:  fdupes
 BuildRequires:  suse-module-tools
 Requires(post): %{_bindir}/mkdir
@@ -127,8 +125,6 @@ all files that have been provided by kernel-firmware package.
 
 %prep
 %setup -q -n kernel-firmware-%{version}
-# temporary fix
-%patch1 -p1
 # additional firmwares
 cat %{SOURCE1} >> WHENCE
 cp %{SOURCE2} %{SOURCE8} %{SOURCE9} %{SOURCE10} .

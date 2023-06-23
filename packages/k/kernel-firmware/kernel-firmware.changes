@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jun 22 08:07:54 UTC 2023 - tiwai@suse.com
+
+- Update to version 20230620 (git commit 045b2136a619):
+  * amdgpu: update DMCUB to v0.0.172.0 for various AMDGPU ASICs
+  * fix broken cirrus firmware symlinks
+  * qcom: Update the microcode files for Adreno a630 GPUs.
+  * qcom: sdm845: rename the modem firmware
+  * qcom: sdm845: update remoteproc firmware
+  * rtl_bt: Update RTL8852A BT USB firmware to 0xDAC7_480D
+  * rtl_bt: Update RTL8852C BT USB firmware to 0x040D_7225
+  * amdgpu: DMCUB updates for various AMDGPU asics
+  * linux-firmware: update firmware for MT7922 WiFi device
+  * linux-firmware: update firmware for MT7921 WiFi device
+  * linux-firmware: update firmware for mediatek bluetooth chip (MT7922)
+  * linux-firmware: update firmware for mediatek bluetooth chip (MT7921)
+  * i915: Add HuC v8.5.0 for MTL
+  * mediatek: Update mt8195 SCP firmware to support hevc
+- Drop obsoleted patch for WHENCE:
+  cirrus-WHENCE-link-fixes.patch
+- Update aliases
+
+-------------------------------------------------------------------
 Mon Jun 05 15:39:19 UTC 2023 - tiwai@suse.com
 
 - Update to version 20230531 (git commit 9d4c9a52c237):

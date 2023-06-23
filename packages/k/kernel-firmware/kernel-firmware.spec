@@ -21,11 +21,11 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20230531
+%define version_unconverted 20230620
 # Force bzip2 instead of lzma compression (bsc#1176981)
 %define _binary_payload w9.bzdio
 Name:           kernel-firmware
-Version:        20230531
+Version:        20230620
 Release:        0
 Summary:        Linux kernel firmware files
 License:        GPL-2.0-only AND SUSE-Firmware AND GPL-2.0-or-later AND MIT
@@ -63,8 +63,6 @@ Source1014:     README.build
 # workarounds
 Source1100:     qcom-post
 Source1101:     uncompressed-post
-# Temporary fixes
-Patch1:         cirrus-WHENCE-link-fixes.patch
 BuildRequires:  fdupes
 BuildRequires:  suse-module-tools
 Requires(post): %{_bindir}/mkdir
@@ -3494,6 +3492,8 @@ Supplements:    modalias(of:N*T*Cnvidia,tegra234-nvdec)
 Supplements:    modalias(of:N*T*Cnvidia,tegra234-nvdecC*)
 Supplements:    modalias(of:N*T*Cnvidia,tegra234-vic)
 Supplements:    modalias(of:N*T*Cnvidia,tegra234-vicC*)
+Supplements:    modalias(of:N*T*Cnvidia,tegra234-xusb)
+Supplements:    modalias(of:N*T*Cnvidia,tegra234-xusbC*)
 Supplements:    modalias(of:N*T*Cnvidia,tegra30-dc)
 Supplements:    modalias(of:N*T*Cnvidia,tegra30-dcC*)
 Supplements:    modalias(of:N*T*Cnvidia,tegra30-gr2d)
@@ -4054,8 +4054,14 @@ Supplements:    modalias(of:N*T*Cqcom,mdss_mdp)
 Supplements:    modalias(of:N*T*Cqcom,mdss_mdpC*)
 Supplements:    modalias(of:N*T*Cqcom,msm8226-adsp-pil)
 Supplements:    modalias(of:N*T*Cqcom,msm8226-adsp-pilC*)
+Supplements:    modalias(of:N*T*Cqcom,msm8909-mss-pil)
+Supplements:    modalias(of:N*T*Cqcom,msm8909-mss-pilC*)
 Supplements:    modalias(of:N*T*Cqcom,msm8916-mss-pil)
 Supplements:    modalias(of:N*T*Cqcom,msm8916-mss-pilC*)
+Supplements:    modalias(of:N*T*Cqcom,msm8953-adsp-pil)
+Supplements:    modalias(of:N*T*Cqcom,msm8953-adsp-pilC*)
+Supplements:    modalias(of:N*T*Cqcom,msm8953-mss-pil)
+Supplements:    modalias(of:N*T*Cqcom,msm8953-mss-pilC*)
 Supplements:    modalias(of:N*T*Cqcom,msm8974-adsp-pil)
 Supplements:    modalias(of:N*T*Cqcom,msm8974-adsp-pilC*)
 Supplements:    modalias(of:N*T*Cqcom,msm8974-mss-pil)
@@ -4116,6 +4122,10 @@ Supplements:    modalias(of:N*T*Cqcom,sc8180x-mpss-pas)
 Supplements:    modalias(of:N*T*Cqcom,sc8180x-mpss-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sc8280xp-adsp-pas)
 Supplements:    modalias(of:N*T*Cqcom,sc8280xp-adsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sc8280xp-dpu)
+Supplements:    modalias(of:N*T*Cqcom,sc8280xp-dpuC*)
+Supplements:    modalias(of:N*T*Cqcom,sc8280xp-mdss)
+Supplements:    modalias(of:N*T*Cqcom,sc8280xp-mdssC*)
 Supplements:    modalias(of:N*T*Cqcom,sc8280xp-nsp0-pas)
 Supplements:    modalias(of:N*T*Cqcom,sc8280xp-nsp0-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sc8280xp-nsp1-pas)
@@ -4134,10 +4144,16 @@ Supplements:    modalias(of:N*T*Cqcom,sdm845-mss-pil)
 Supplements:    modalias(of:N*T*Cqcom,sdm845-mss-pilC*)
 Supplements:    modalias(of:N*T*Cqcom,sdx55-mpss-pas)
 Supplements:    modalias(of:N*T*Cqcom,sdx55-mpss-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm6115-adsp-pas)
+Supplements:    modalias(of:N*T*Cqcom,sm6115-adsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm6115-cdsp-pas)
+Supplements:    modalias(of:N*T*Cqcom,sm6115-cdsp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sm6115-dpu)
 Supplements:    modalias(of:N*T*Cqcom,sm6115-dpuC*)
 Supplements:    modalias(of:N*T*Cqcom,sm6115-mdss)
 Supplements:    modalias(of:N*T*Cqcom,sm6115-mdssC*)
+Supplements:    modalias(of:N*T*Cqcom,sm6115-mpss-pas)
+Supplements:    modalias(of:N*T*Cqcom,sm6115-mpss-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sm6350-adsp-pas)
 Supplements:    modalias(of:N*T*Cqcom,sm6350-adsp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sm6350-cdsp-pas)
@@ -4170,6 +4186,10 @@ Supplements:    modalias(of:N*T*Cqcom,sm8350-adsp-pas)
 Supplements:    modalias(of:N*T*Cqcom,sm8350-adsp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sm8350-cdsp-pas)
 Supplements:    modalias(of:N*T*Cqcom,sm8350-cdsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8350-dpu)
+Supplements:    modalias(of:N*T*Cqcom,sm8350-dpuC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8350-mdss)
+Supplements:    modalias(of:N*T*Cqcom,sm8350-mdssC*)
 Supplements:    modalias(of:N*T*Cqcom,sm8350-mpss-pas)
 Supplements:    modalias(of:N*T*Cqcom,sm8350-mpss-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sm8350-slpi-pas)
@@ -4178,10 +4198,24 @@ Supplements:    modalias(of:N*T*Cqcom,sm8450-adsp-pas)
 Supplements:    modalias(of:N*T*Cqcom,sm8450-adsp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sm8450-cdsp-pas)
 Supplements:    modalias(of:N*T*Cqcom,sm8450-cdsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8450-dpu)
+Supplements:    modalias(of:N*T*Cqcom,sm8450-dpuC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8450-mdss)
+Supplements:    modalias(of:N*T*Cqcom,sm8450-mdssC*)
 Supplements:    modalias(of:N*T*Cqcom,sm8450-mpss-pas)
 Supplements:    modalias(of:N*T*Cqcom,sm8450-mpss-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sm8450-slpi-pas)
 Supplements:    modalias(of:N*T*Cqcom,sm8450-slpi-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8550-adsp-pas)
+Supplements:    modalias(of:N*T*Cqcom,sm8550-adsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8550-cdsp-pas)
+Supplements:    modalias(of:N*T*Cqcom,sm8550-cdsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8550-dpu)
+Supplements:    modalias(of:N*T*Cqcom,sm8550-dpuC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8550-mdss)
+Supplements:    modalias(of:N*T*Cqcom,sm8550-mdssC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8550-mpss-pas)
+Supplements:    modalias(of:N*T*Cqcom,sm8550-mpss-pasC*)
 
 %description qcom
 This package contains compressed kernel firmware files for
@@ -6093,6 +6127,8 @@ Supplements:    modalias(acpi*:PNPB006%3A*)
 Supplements:    modalias(hdaudio:v11020011r*a01*)
 Supplements:    modalias(of:N*T*Cmediatek,mt8186-dsp)
 Supplements:    modalias(of:N*T*Cmediatek,mt8186-dspC*)
+Supplements:    modalias(of:N*T*Cmediatek,mt8188-dsp)
+Supplements:    modalias(of:N*T*Cmediatek,mt8188-dspC*)
 Supplements:    modalias(of:N*T*Cmediatek,mt8195-dsp)
 Supplements:    modalias(of:N*T*Cmediatek,mt8195-dspC*)
 Supplements:    modalias(pci:v00001073d00000004sv*sd*bc*sc*i*)
@@ -6336,8 +6372,6 @@ various USB WiFi / Ethernet drivers.
 
 %prep
 %setup -q -n kernel-firmware-%{version}
-# temporary fix
-%patch1 -p1
 # additional firmwares
 cat %{SOURCE1} >> WHENCE
 cp %{SOURCE2} %{SOURCE8} %{SOURCE9} %{SOURCE10} .
