@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Fri Jun 23 08:56:03 UTC 2023 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to version 10.0.1:
+  * Security fixes
+    - Fix authentication bypass using Azure AD OAuth
+      (CVE-2023-3128, bsc#1212641)
+
+  * Features and enhancements
+    - Alerting: Update alerting module to
+      20230524181453-a8e75e4dfdda.
+    - Schema: Improve Dashboard kind docs and remove deprecated
+      props.
+
+  * Bug fixes
+    - Alerting: Fix notification policies inheritance algorithm.
+    - CodeEditor: Ensure suggestions only apply to the instance of
+      the edit….
+    - Plugins: Wrap original check health error.
+    - Alerting: Add heuristics back to datasource healthchecks.
+    - Alerting: Fix "show all instances".
+    - Alerting: Fix broken UI because of query being optional for
+      some ExpressionQuer….
+    - Alerting: Fix email template for text/plain emails.
+    - Alerting: Fix provisioned templates being ignored by
+      alertmanager.
+    - Alerting: Support newer http_config struct.
+    - Auth: Show invite button if disable login form is set to
+      false.
+    - Azure: Fix Kusto auto-completion for Azure datasources.
+    - CloudMonitoring: Improve parsing of GCM labels.
+    - Command Palette: Links opened in a new tab now route
+      correctly when Grafana is served under a subpath.
+    - Command palette: Include help links.
+    - Dashboards: Remove Explore option from panel menu when
+      panel's datasource uid is "-- Dashboard --".
+    - Dashboards: Variables - Improve slow template variable
+      loading due same variable loaded multiple times on time range
+      change.
+    - Explore: Fixed Starred query history tab to show all starred
+      queries.
+    - Explore: Improve logs volume panel empty state.
+    - Explore: Run remaining queries when one is removed from a
+      pane.
+    - Heatmap: Sort fields by numeric names when single frame.
+    - InfluxDB: Interpolate retention policies.
+    - Log Context: Fix split view button using the wrong query.
+    - Loki: Fix error when empty template variables response.
+    - Loki: Fix including of template variables in variable query
+      editor.
+    - NestedFolders: Fix select all in folder view selecting items
+      out of folder.
+    - Pyroscope: Fix wrong defaults when importing query from
+      different datasource.
+    - SQLStore: Align SQLite IsUniqueConstraintViolation() with
+      other backend implementations.
+    - Templating: Fix updating of definition to empty string.
+    - Tempo: Use pipe in TraceQL by default for multi-value
+      variables.
+    - TextPanel: Fix styling missing the disclosure triangle.
+    - Util: Fix panic when generating UIDs concurrently.
+    - XYChart/Trend: Fix min/max and units/decimals X field
+      overrides.
+    - XYChart: Fix formatting of axis ticks (units, decimals).
+    - XYChart: Fix variable interpolation in datalinks/toggletip.
+
+-------------------------------------------------------------------
+Thu Jun 22 15:20:23 UTC 2023 - marius.kittler@suse.com
+
+- Update to version 10.0.0:
+  * Breaking changes
+    - Angular is deprecated and turned off by default for new
+      Grafana Cloud stacks
+    - Grafana legacy alerting is deprecated and no longer accepts
+      internal or external contributions
+    - API keys are migrating to service accounts
+    - The experimental “dashboard previews” feature is removed
+    - Usernames are now case-insensitive by default
+    - Grafana OAuth integrations do not work anymore with email
+      lookups
+    - The “Alias” field in the CloudWatch data source is removed
+    - Athena data source plugin must be updated to version >=2.9.3
+    - Redshift data source plugin must be updated to
+      version >=1.8.3
+    - DoiT International BigQuery plugin no longer supported
+    - Checkout https://grafana.com/docs/grafana/next/breaking-changes/breaking-changes-v10-0
+      for details
+
+  * Features and enhancements
+    - Themes: Unify secondary button and ToolbarButton.
+
+  * Bug fixes
+    - Query Editor: Ensure dropdown menus position correctly.
+    - Drawer: Fixes closeOnMaskClick false issue.
+
+-------------------------------------------------------------------
 Tue Jun 06 10:24:18 UTC 2023 - marius.kittler@suse.com
 
 - Update to version 9.5.3:
