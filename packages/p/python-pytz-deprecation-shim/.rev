@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>1081580</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>6b0902fde8856deece13f26c97165d1d</srcmd5>
+    <version>0.1.0.post0</version>
+    <time>1687549932</time>
+    <user>dimstar_suse</user>
+    <comment>- limit to newer python versions, older are no longer needed</comment>
+    <requestid>1094693</requestid>
+  </revision>
 </revisionlist>
