@@ -1,0 +1,26 @@
+From 15d475774e4f9e0498618466f8e349070688f4dc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Fri, 23 Jun 2023 16:35:09 +0200
+Subject: [PATCH] Fix compilation with Exiv 0.28
+
+Extracted from commit a593c2b10c9090b5f991718148d61c0fa156fb41.
+---
+ src/core/exif.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/core/exif.cpp b/src/core/exif.cpp
+index 6bc5c52..266abec 100644
+--- a/src/core/exif.cpp
++++ b/src/core/exif.cpp
+@@ -108,7 +108,7 @@ int siril_get_thumbnail_exiv(const char *path, uint8_t **buffer, size_t *size, c
+ 		//std::cerr << "[exiv2] "<< path << ": found thumbnail "<< preview.width() << "x" << preview.height() << std::endl;
+ 		memcpy(*buffer, tmp, _size);
+ 		return 0;
+-	} catch (Exiv2::AnyError &e) {
++	} catch (Exiv2::Error &e) {
+ 		std::string s(e.what());
+ 		std::cerr << "[exiv2]: " << s << std::endl;
+ 		return 1;
+-- 
+2.41.0
+

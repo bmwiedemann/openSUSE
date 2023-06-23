@@ -1,7 +1,7 @@
 #
 # spec file for package siril
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        BSL-1.0 AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Physics
 URL:            https://www.siril.org/
 Source:         https://gitlab.com/free-astro/siril/-/archive/%{version}/siril-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM -- https://gitlab.com/free-astro/siril/-/commit/a593c2b10c9090b5f991718148d61c0fa156fb41
+Patch0:         0001-Fix-compilation-with-Exiv-0.28.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.53.0
