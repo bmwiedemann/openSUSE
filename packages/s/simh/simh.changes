@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 23 07:41:14 UTC 2023 - Klaus Kämpf <kkaempf@suse.com>
+
+- Update to 3.12_4
+  This release is mostly bug fixes, particularly in the PDP-11 and
+  Sigma simulators.
+  Support for running SimH on MacOS "Classic" (pre-OSX) and OS/2
+  has been dropped.
+  See the detailed revision histories in individual source code
+  modules for details. 
+
+  * simh-s3 got dropped upstream
+
+-------------------------------------------------------------------
 Sun Jun  7 09:49:22 UTC 2020 - Klaus Kämpf <kkaempf@suse.com>
 
 - Update to 3.11
