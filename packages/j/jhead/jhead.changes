@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 23 07:51:24 UTC 2023 - pgajdos@suse.com
+
+- version update to 3.08
+  * Fix various "issues" people have found with fuzz testing.
+    These can only be produced when running jhead in some memory access testing setup
+    such as ASAN and throwing carefully crafted garbage at it, causing jhead to read
+    some bytes past memory it malloced.  no real life consequences.
+- deleted patches
+  - jhead-CVE-2021-34055.patch (upstreamed)
+  - jhead-CVE-2022-41751-1.patch (upstreamed)
+  - jhead-CVE-2022-41751-2.patch (upstreamed)
+  - jhead-CVE-2022-41751-3.patch (upstreamed)
+
+-------------------------------------------------------------------
 Thu Feb 16 15:35:12 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Remove hunk that enables -fsanitize=address (bsc#1208386), note it's

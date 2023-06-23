@@ -17,25 +17,14 @@
 
 
 Name:           jhead
-Version:        3.06.0.1
+Version:        3.08
 Release:        0
 Summary:        Tool to Manipulate the Nonimage Part of EXIF Compliant JPEG Files
 License:        SUSE-Public-Domain
 Group:          Productivity/Graphics/Other
-URL:            http://www.sentex.net/~mwandel/jhead/
+URL:            https://github.com/Matthias-Wandel/jhead
 Source0:        https://github.com/Matthias-Wandel/jhead/archive/refs/tags/%{version}.tar.gz
 Source1:        %{name}.changes
-# PATCH FIX UPSTREAM arbitrary OS commands by placing them in a JPEG filename
-# https://github.com/Matthias-Wandel/jhead/pull/57
-Patch0:         jhead-CVE-2022-41751-1.patch
-# PATCH FIX UPSTREAM arbitrary OS commands by placing them in a JPEG filename
-# https://github.com/Matthias-Wandel/jhead/commit/ec67262b8e5a4b05d8ad6898a09f1dc3fc032062
-Patch1:         jhead-CVE-2022-41751-2.patch
-# PATCH FIX UPSTREAM heap-buffer-overflow of exif.c in function Put16u
-# https://github.com/Matthias-Wandel/jhead/commit/f0a884210cc46830b176f71fd61569adc8f230a7
-Patch2:         jhead-CVE-2021-34055.patch
-# [bsc#1207150], https://github.com/Matthias-Wandel/jhead/commit/2a237d866581b3774ebe63d6c312e76459bd0866
-Patch3:         jhead-CVE-2022-41751-3.patch
 Requires:       %{_bindir}/jpegtran
 Requires:       %{_bindir}/mogrify
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

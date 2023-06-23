@@ -239,4 +239,21 @@
   https://github.com/Matthias-Wandel/jhead/commit/34f61c3f1408e6b00f6f65dd3d7832f4f8e9318b (forwarded request 1066207 from marxin)</comment>
     <requestid>1066328</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>1ff1248c8195877a68fe3c43f94915f8</srcmd5>
+    <version>3.08</version>
+    <time>1687549984</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 3.08
+  * Fix various &quot;issues&quot; people have found with fuzz testing.
+    These can only be produced when running jhead in some memory access testing setup
+    such as ASAN and throwing carefully crafted garbage at it, causing jhead to read
+    some bytes past memory it malloced.  no real life consequences.
+- deleted patches
+  - jhead-CVE-2021-34055.patch (upstreamed)
+  - jhead-CVE-2022-41751-1.patch (upstreamed)
+  - jhead-CVE-2022-41751-2.patch (upstreamed)
+  - jhead-CVE-2022-41751-3.patch (upstreamed)</comment>
+    <requestid>1094797</requestid>
+  </revision>
 </revisionlist>
