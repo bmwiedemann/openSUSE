@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 22 11:16:52 UTC 2023 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 3.1.6
+  - fix regression in mount rules (boo#1211989)
+  - some additions to the base and authentification abstractions
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.1.6
+    for the full upstream changelog
+
+-------------------------------------------------------------------
 Sun Jun 11 14:13:18 UTC 2023 - Christian Boltz <suse-beta@cboltz.de>
 
 - update to AppArmor 3.1.5

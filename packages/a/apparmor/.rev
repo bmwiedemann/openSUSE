@@ -2602,4 +2602,16 @@ so you might want to pick this SR into Staging:O (forwarded request 953283 from 
   loading profiles. (forwarded request 1092349 from cboltz)</comment>
     <requestid>1092351</requestid>
   </revision>
+  <revision rev="193" vrev="1">
+    <srcmd5>bd4439df6bd19448d9eaf361d57a607e</srcmd5>
+    <version>3.1.6</version>
+    <time>1687549927</time>
+    <user>dimstar_suse</user>
+    <comment>- update to AppArmor 3.1.6
+  - fix regression in mount rules (boo#1211989)
+  - some additions to the base and authentification abstractions
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.1.6
+    for the full upstream changelog (forwarded request 1094654 from cboltz)</comment>
+    <requestid>1094655</requestid>
+  </revision>
 </revisionlist>

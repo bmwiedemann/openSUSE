@@ -54,7 +54,7 @@
 %define JAR_FILE changeHatValve.jar
 
 Name:           apparmor
-Version:        3.1.5
+Version:        3.1.6
 Release:        0
 Summary:        AppArmor userlevel parser utility
 License:        GPL-2.0-or-later
