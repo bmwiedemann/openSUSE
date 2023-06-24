@@ -51,7 +51,7 @@ BuildRequires:  pkgconfig(gthread-2.0)
 ExclusiveArch:  x86_64 aarch64 ppc64 ppc64le s390x
 # PATCH-FIX-OPENSUSE - Disable LTO (to reduce req memory)
 %ifarch %{arm} aarch64
-Patch2:         deno-disable-lto.patch
+Patch10:        deno-disable-lto.patch
 %endif
 
 %description
