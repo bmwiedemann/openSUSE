@@ -18,7 +18,7 @@
 
 %define pythons python3
 Name:           codespell
-Version:        2.2.4
+Version:        2.2.5
 Release:        0
 Summary:        Source code checker for common misspellings
 License:        GPL-2.0-only
@@ -65,6 +65,6 @@ export PATH=$PATH:%{buildroot}%{_bindir}
 %doc README.rst
 %{_bindir}/codespell
 %{python3_sitelib}/codespell_lib
-%{python3_sitelib}/%{name}-%{version}.dist-info
+%{_prefix}/lib/python3.11/site-packages/codespell-2.2.5.dist-info/
 
 %changelog
