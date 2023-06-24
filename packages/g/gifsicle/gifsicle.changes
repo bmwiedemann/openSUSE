@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 23 22:18:01 UTC 2023 - Manfred Schwarb <manfred99@gmx.ch>
+
+- Update to version 1.94:
+  * Fix some bugs, including fix for CVE-2023-36193 (bsc#1212645). 
+
+-------------------------------------------------------------------
 Wed Jun 30 08:14:58 UTC 2021 - Manfred Schwarb <manfred99@gmx.ch>
 
 - re-introduce make_build macro, as SLE targets are disabled now per default
