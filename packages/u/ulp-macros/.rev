@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>85e79d60f3eed157620922d41082d5b4</srcmd5>
+    <version>1.0</version>
+    <time>1687630427</time>
+    <user>dimstar_suse</user>
+    <comment>- This package factors out code necessary to add support for Userspace Livepatching into packages.
+- This is not supposed to be installed into client machines. It is supposed to be included as a dependency to packages supporting by Userspace Livepatching.</comment>
+    <requestid>1094963</requestid>
+  </revision>
+</revisionlist>
