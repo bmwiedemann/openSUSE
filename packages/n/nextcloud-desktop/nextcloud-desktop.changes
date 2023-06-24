@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 23 07:41:23 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Split off nextcloudcmd into nextcloud-cli subpackage, which is
+  required by nextcloud-desktop. Allow users of text-only remote
+  systems to interact with a nextcloud instance without the need to
+  pull ub a full graphical stack. Users of 'nextcloud-desktop', the
+  'leading' package, will get the -cli tool installed by
+  dependency.
+- Move /etc/Netcloud to the -cli sub package. This is the common
+  denominator for all installations (text-only users will pick the
+  -cli package, graphical users pick nextcloud-desktop, which in
+  turn requires the -cli package.
+
+-------------------------------------------------------------------
 Wed Jun 14 06:27:26 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.9.0

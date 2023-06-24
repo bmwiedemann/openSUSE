@@ -69,6 +69,7 @@ Recommends:     cloudproviders-extension-nextcloud = %{version}
 Requires:       %{soname}%{sover} = %{version}
 Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtquickcontrols2
+Requires:       nextcloud-cli = %{version}
 Provides:       nextcloud-client = %{version}
 Obsoletes:      nextcloud-client < %{version}
 Provides:       nextcloud-client-lang = %{version}
@@ -186,6 +187,15 @@ This package provides the necessary plugin libraries for the
 Dolphin filemanager to display overlay icons.
 %endif
 
+%package -n nextcloud-cli
+Summary:        Nextcloud sync client - Command-line utility
+
+%description -n nextcloud-cli
+The Nextcloud Desktop Client is a tool to synchronise files from
+the Nextcloud Server with your computer.
+
+This package provides Nextcloud's command-line sync utility.
+
 %prep
 %autosetup -p1 -n desktop-%{version}
 cp -a %{SOURCE1} sysctl-sync-inotify.conf
@@ -234,9 +244,8 @@ done
 
 %files
 %license COPYING*
-%config %{_sysconfdir}/Nextcloud/
 #%%config %%{_sysconfdir}/sysctl.d/99-%%{name}-sync-inotify.conf
-%{_bindir}/nextcloud*
+%{_bindir}/nextcloud
 %dir %{_datadir}/nextcloud/
 %{_datadir}/applications/com.nextcloud.desktopclient.nextcloud.desktop
 %dir %{_datadir}/icons/hicolor/1024x1024/
@@ -297,5 +306,10 @@ done
 %dir %{_libdir}/qt5/plugins/kf5/kfileitemaction/
 %{_libdir}/qt5/plugins/kf5/kfileitemaction/nextclouddolphinactionplugin.so
 %endif
+
+%files -n nextcloud-cli
+%license COPYING
+%config %{_sysconfdir}/Nextcloud/
+%{_bindir}/nextcloudcmd
 
 %changelog
