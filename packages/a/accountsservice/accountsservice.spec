@@ -35,6 +35,8 @@ Patch0:         accountsservice-sysconfig.patch
 Patch1:         accountsservice-filter-suse-accounts.patch
 # PATCH-FIX-OPENSUSE harden_accounts-daemon.service.patch jsegitz@suse.com -- For details please see https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
 Patch2:         harden_accounts-daemon.service.patch
+# PATCH-FIX-UPSTREAM accountsservice-assume-gdm.patch boo#1212675 dimstar@opensuse.org -- Assume GDM if not able to detect the right DM
+Patch3:         accountsservice-assume-gdm.patch
 
 ## SLE and Leap only patches start at 1000
 # PATCH-FEATURE-SLE as-fate318433-prevent-same-account-multi-logins.patch fate#318433 cxiong@suse.com -- prevent multiple simultaneous login.
@@ -115,6 +117,7 @@ This package contains the Vala bindings for accountservice.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 # SLE and Leap patches start at 1000
 %if 0%{?sle_version}

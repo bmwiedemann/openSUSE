@@ -1134,4 +1134,12 @@ By now, it's required for sle-15, so synchronized the updated specfile and chang
     <comment></comment>
     <requestid>1094657</requestid>
   </revision>
+  <revision rev="83" vrev="2">
+    <srcmd5>5d81e06f5bbfce3c74ecc1c09372f431</srcmd5>
+    <version>23.13.9</version>
+    <time>1687630420</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095051</requestid>
+  </revision>
 </revisionlist>
