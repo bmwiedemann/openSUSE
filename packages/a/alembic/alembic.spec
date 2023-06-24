@@ -1,7 +1,7 @@
 #
 # spec file for package alembic
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -65,6 +65,8 @@ you will need to install %{name}-devel.
 %prep
 %setup -q
 %patch0 -p1
+# Where to install the Alembic's cmake files
+sed -i "s/\(ConfigPackageLocation\) lib/\1 %{_lib}/" lib/Alembic/CMakeLists.txt
 
 %build
 %cmake \
@@ -81,7 +83,6 @@ export LD_LIBRARY_PATH="%{buildroot}%{_libdir}"
 
 %install
 %cmake_install
-rm -r %{buildroot}%{_prefix}/lib/cmake
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
@@ -93,6 +94,7 @@ rm -r %{buildroot}%{_prefix}/lib/cmake
 %files devel
 %{_includedir}/Alembic
 %{_libdir}/*.so
+%{_libdir}/cmake/Alembic
 %doc ACKNOWLEDGEMENTS.txt FEEDBACK.txt NEWS.txt README.txt
 
 %changelog
