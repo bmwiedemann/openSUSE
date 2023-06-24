@@ -12,12 +12,11 @@ fixed:
   * The generated constants are given the 'ull' suffix to prevent
     warnings about constants that are too large.
 ---
- Makefile         |   2 +-
- utils/key2pub.py | 146 ++++++++++++++++++++++++++++---------------------------
+ Makefile         |    2 
+ utils/key2pub.py |  146 +++++++++++++++++++++++++++----------------------------
  2 files changed, 75 insertions(+), 73 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index a3ead30..65fc780 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -112,7 +112,7 @@ $(REG_BIN):
@@ -25,12 +24,11 @@ index a3ead30..65fc780 100644
  	$(NQ) '  GEN ' $@
  	$(NQ) '  Trusted pubkeys:' $(wildcard $(PUBKEY_DIR)/*.pem)
 -	$(Q)./utils/key2pub.py --$* $(wildcard $(PUBKEY_DIR)/*.pem) $@
-+	$(Q) python3 ./utils/key2pub.py --$* $(wildcard $(PUBKEY_DIR)/*.pem) $@
++	$(Q)python3 ./utils/key2pub.py --$* $(wildcard $(PUBKEY_DIR)/*.pem) $@
  
- $(LIBREG): regdb.h reglib.h reglib.c
+ $(LIBREG): reglib.c regdb.h reglib.h
  	$(NQ) '  CC  ' $@
 diff --git a/utils/key2pub.py b/utils/key2pub.py
-index 3e84cd2..ff92748 100755
 --- a/utils/key2pub.py
 +++ b/utils/key2pub.py
 @@ -1,126 +1,128 @@
@@ -256,4 +254,3 @@ index 3e84cd2..ff92748 100755
      idx += 1
  
  modes[mode][1](output, idx - 1)
-

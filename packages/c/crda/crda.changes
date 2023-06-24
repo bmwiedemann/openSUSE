@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 23 10:57:35 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Update to crda 4.15
+- Remove patches now upstream
+  * crda-67f1e6ddbdfade357e234c9d58a30fe0a283fe60.patch
+  * crda-f4ef2531698fb9ba006e8b31a223b3269be8bc7c.patch
+- Port patch crda-python3.patch
+
+-------------------------------------------------------------------
 Tue Dec 27 10:29:57 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

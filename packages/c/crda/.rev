@@ -248,4 +248,16 @@ License is ISC, not BSD-3-Clause (forwarded request 134144 from babelworx)</comm
     <comment></comment>
     <requestid>1058864</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>179df3b3293e88752a07035a3a7f9239</srcmd5>
+    <version>4.15</version>
+    <time>1687630413</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to crda 4.15
+- Remove patches now upstream
+  * crda-67f1e6ddbdfade357e234c9d58a30fe0a283fe60.patch
+  * crda-f4ef2531698fb9ba006e8b31a223b3269be8bc7c.patch
+- Port patch crda-python3.patch</comment>
+    <requestid>1094860</requestid>
+  </revision>
 </revisionlist>

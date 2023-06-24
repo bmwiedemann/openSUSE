@@ -24,7 +24,7 @@ Summary:        802.11 central regulatory domain agent
 License:        SUSE-Copyleft-Next-0.3.0
 Group:          Hardware/Wifi
 URL:            https://wireless.wiki.kernel.org/en/developers/Regulatory/CRDA
-Version:        4.14
+Version:        4.15
 Release:        0
 Source0:        https://git.kernel.org/pub/scm/linux/kernel/git/mcgrof/crda.git/snapshot/crda-%{version}.tar.gz
 Source1:        crda.default
@@ -34,6 +34,7 @@ BuildRequires:  pkg-config
 BuildRequires:  python3
 BuildRequires:  python3-pycrypto
 BuildRequires:  wireless-regdb
+BuildRequires:  pkgconfig(libgcrypt)
 BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(udev)
 Requires:       wireless-regdb
@@ -42,12 +43,8 @@ Supplements:    kernel >= 2.6.29
 Patch0:         gcc6-fix-errors.patch
 # PATCH-FIX-OPENSUSE python2 is gone, port to python3
 Patch1:         crda-python3.patch
-# PATCH-FIX-UPSTREAM crda-67f1e6ddbdfade357e234c9d58a30fe0a283fe60.patch
-Patch2:         crda-67f1e6ddbdfade357e234c9d58a30fe0a283fe60.patch
-# PATCH-FIX-UPSTREAM crda-f4ef2531698fb9ba006e8b31a223b3269be8bc7c.patch
-Patch3:         crda-f4ef2531698fb9ba006e8b31a223b3269be8bc7c.patch
 # PATCH-FIX-SUSE crda-default.patch
-Patch4:         crda-default.patch
+Patch2:         crda-default.patch
 
 %description
 The crda binary provides access to the wireless-regdb to the kernel
@@ -55,17 +52,16 @@ through udev.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%patch0 -p1 -b .p0
+%patch1 -p1 -b .p1
+%patch2 -p1 -b .p2
 # make install calls 'ldconfig' and fails if it cannot run it...
 ln -s /bin/true ldconfig
 
 %build
+export CC="gcc"
 export CFLAGS="%{optflags}"
-make all_noverify %{?_smp_mflags} V=1
+%make_build all_noverify %{?_smp_mflags} V=1
 
 %install
 # to find ldconfig...
