@@ -85,11 +85,11 @@ Group:          Development/Languages/Python
 %endif
 # ulbuild == python
 
-Version:        2.38.1
+Version:        2.39
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://www.kernel.org/pub/linux/utils/util-linux/
-Source:         https://www.kernel.org/pub/linux/utils/util-linux/v2.38/util-linux-%{version}.tar.xz
+Source:         https://www.kernel.org/pub/linux/utils/util-linux/v2.39/util-linux-%{version}.tar.xz
 Source2:        util-linux-login_defs-check.sh
 Source3:        util-linux-rpmlintrc
 Source6:        etc_filesystems
@@ -98,7 +98,7 @@ Source8:        login.pamd
 Source9:        remote.pamd
 Source10:       su.pamd
 Source11:       su.default
-Source12:       https://www.kernel.org/pub/linux/utils/util-linux/v2.38/util-linux-%{version}.tar.sign
+Source12:       https://www.kernel.org/pub/linux/utils/util-linux/v2.39/util-linux-%{version}.tar.sign
 Source13:       %{_name}.keyring
 Source14:       runuser.pamd
 Source15:       runuser-l.pamd
@@ -110,12 +110,10 @@ Patch1:         libmount-print-a-blacklist-hint-for-unknown-filesyst.patch
 Patch2:         Add-documentation-on-blacklisted-modules-to-mount-8-.patch
 # PATCH-FIX-SUSE util-linux-bash-completion-su-chsh-l.patch bsc1172427 -- Fix "su -s" bash completion.
 Patch4:         util-linux-bash-completion-su-chsh-l.patch
-# PATCH-FIX-SUSE util-linux-fix-tests-when-@-in-path.patch bsc#1194038 -- rpmbuild %checks fail when @ in the directory path
-Patch5:         util-linux-fix-tests-when-at-symbol-in-path.patch
-# https://github.com/util-linux/util-linux/commit/0c0fb46dcef6c63c74094486e499e376fdb33a04.diff
-Patch6:         util-linux-honor-noclear-when-reprint-issue.patch
-# Patch-FIX_UPSTREAM: fix-lib-internal-cache-size.patch bsc#1210164 -- gh#util-linux/util-linux@2fa4168c8bc9
-Patch7:         fix-lib-internal-cache-size.patch
+# PATCH-FIX-UPSTREAM util-linux-fix-tests-with-64k-pagesize.patch -- fadvise: fix tests with 64k pagesize
+Patch5:         util-linux-fix-tests-with-64k-pagesize.patch
+# https://github.com/util-linux/util-linux/pull/2331
+Patch6:         0001-libmount-fix-sync-options-between-context-and-fs-str.patch
 BuildRequires:  audit-devel
 BuildRequires:  bc
 BuildRequires:  binutils-devel
@@ -363,6 +361,14 @@ Requires:       libuuid-devel = %{version}
 Files to develop applications using the library to generate universally
 unique IDs (UUIDs).
 
+%lang_package
+%endif
+# ulsubset == core
+
+####################
+# Systemd packages #
+####################
+%if "%ulsubset" == "systemd"
 %package -n util-linux-tty-tools
 Summary:        Tools for writing to TTYs
 License:        BSD-3-Clause
@@ -376,14 +382,6 @@ Provides:       util-linux:%{_bindir}/write
 %description -n util-linux-tty-tools
 Tools that write to TTYs that the current user does not own.
 
-%lang_package
-%endif
-# ulsubset == core
-
-####################
-# Systemd packages #
-####################
-%if "%ulsubset" == "systemd"
 %package -n uuidd
 Summary:        Helper daemon to guarantee uniqueness of time-based UUIDs
 License:        GPL-2.0-or-later
@@ -495,6 +493,7 @@ configure_options+="--with-systemd "
 	--enable-fs-paths-default="/sbin:/usr/sbin"\
 	--enable-static\
 	--with-vendordir=%{_distconfdir} \
+	--disable-libmount-mountfd-support \
 	$configure_options
 make %{?_smp_mflags}
 }
@@ -528,7 +527,7 @@ bash ./util-linux-login_defs-check.sh
 #
 # WARNING: Never edit following line without doing all suggested in the echo below!
 UTIL_LINUX_KNOWN_SYSTEMD_DEPS='./login-utils/lslogins.c ./misc-utils/findmnt.c ./misc-utils/logger.c ./misc-utils/lsblk-properties.c ./misc-utils/uuidd.c '
-UTIL_LINUX_FOUND_SYSTEMD_DEPS=$(grep -rl 'HAVE_LIB\(SYSTEMD\|UDEV\)' . | grep -F '.c' | LC_ALL=C sort | tr '\n' ' ')
+UTIL_LINUX_FOUND_SYSTEMD_DEPS=$(find . -type f -name "*.c" -exec grep -l '#.*if.*HAVE_LIB\(SYSTEMD\|\UDEV\)' '{}' '+' | LC_ALL=C sort | tr '\n' ' ')
 if test "$UTIL_LINUX_KNOWN_SYSTEMD_DEPS" != "$UTIL_LINUX_FOUND_SYSTEMD_DEPS" ; then
 	echo "List of utilities depending on systemd have changed.
 Please check the new util-linux-systemd file list, file removal and update of Conflicts for safe update!
@@ -718,11 +717,14 @@ exit "$result"
 %verifyscript
 %verify_permissions -e %{_bindir}/mount -e %{_bindir}/umount
 %verify_permissions -e %{_bindir}/su
+%endif
+%dnl # ulsubset == core, ulbuild == base
 
+%if "%ulsubset" == "systemd"
 %verifyscript -n util-linux-tty-tools
 %verify_permissions -e %{_bindir}/wall -e %{_bindir}/write
 %endif
-%dnl # ulsubset == core, ulbuild == base
+%dnl # ulsubset == systemd, ulbuild == base
 
 %endif
 %dnl # ulbuild == base
@@ -797,9 +799,6 @@ done
 
 %postun -n libfdisk1 -p /sbin/ldconfig
 
-%post -n util-linux-tty-tools
-%set_permissions %{_bindir}/wall %{_bindir}/write
-
 %endif
 %dnl # ulsubset == core, pre & post
 %dnl
@@ -844,6 +843,9 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 
 %postun -n uuidd
 %{service_del_postun uuidd.socket uuidd.service}
+
+%post -n util-linux-tty-tools
+%set_permissions %{_bindir}/wall %{_bindir}/write
 
 %endif
 %dnl # ulsubset == systemd, pre & post
@@ -938,6 +940,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %core %{_bindir}/colrm
 %core %{_bindir}/column
 %core %{_bindir}/dmesg
+%core %{_bindir}/fadvise
 %core %{_bindir}/fallocate
 %core %{_bindir}/fincore
 
@@ -973,6 +976,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %core %verify(not mode) %attr(%ul_suid,root,root) %{_bindir}/mount
 %core %{_bindir}/namei
 %core %{_bindir}/nsenter
+%core %{_bindir}/pipesz
 %core %{_bindir}/prlimit
 %core %{_bindir}/rename
 %core %{_bindir}/renice
@@ -993,11 +997,13 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %core %{_bindir}/uuidgen
 %core %{_bindir}/uuidparse
 %core %{_bindir}/uname26
+%core %{_bindir}/waitpid
 %core %{_bindir}/wdctl
 %core %{_sbindir}/addpart
 %core %{_sbindir}/agetty
 %core %{_sbindir}/blkid
 %core %{_sbindir}/blkdiscard
+%core %{_sbindir}/blkpr
 
 # blkzone depends on linux/blkzoned.h
 %if 0%{?suse_version} >= 1330
@@ -1128,6 +1134,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %core %{_mandir}/man1/column.1.gz
 %core %{_mandir}/man1/dmesg.1.gz
 %core %{_mandir}/man1/eject.1.gz
+%core %{_mandir}/man1/fadvise.1.gz
 %core %{_mandir}/man1/fallocate.1.gz
 %core %{_mandir}/man1/fincore.1.gz
 %core %{_mandir}/man1/flock.1.gz
@@ -1152,6 +1159,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %core %{_mandir}/man1/nsenter.1.gz
 %core %{_mandir}/man1/ionice.1.gz
 %core %{_mandir}/man1/irqtop.1.gz
+%core %{_mandir}/man1/pipesz.1.gz
 %core %{_mandir}/man1/prlimit.1.gz
 %core %{_mandir}/man1/rename.1.gz
 %core %{_mandir}/man1/rev.1.gz
@@ -1173,6 +1181,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %core %{_mandir}/man1/utmpdump.1.gz
 %core %{_mandir}/man1/uuidgen.1.gz
 %core %{_mandir}/man1/uuidparse.1.gz
+%core %{_mandir}/man1/waitpid.1.gz
 %core %{_mandir}/man5/adjtime_config.5.gz
 %core %{_mandir}/man5/fstab.5.gz
 %core %{_mandir}/man5/terminal-colors.d.5.gz
@@ -1185,6 +1194,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 # suse_version >= 1330
 
 %core %{_mandir}/man8/blockdev.8.gz
+%core %{_mandir}/man8/blkpr.8.gz
 %core %{_mandir}/man8/chmem.8.gz
 %core %{_mandir}/man8/ctrlaltdel.8.gz
 %core %{_mandir}/man8/delpart.8.gz
@@ -1305,6 +1315,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %exclude %{_datadir}/bash-completion/completions/dmesg
 %exclude %{_datadir}/bash-completion/completions/eject
 %exclude %{_datadir}/bash-completion/completions/fallocate
+%exclude %{_datadir}/bash-completion/completions/fadvise
 %exclude %{_datadir}/bash-completion/completions/fdformat
 %exclude %{_datadir}/bash-completion/completions/fdisk
 %exclude %{_datadir}/bash-completion/completions/fincore
@@ -1348,6 +1359,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %exclude %{_datadir}/bash-completion/completions/namei
 %exclude %{_datadir}/bash-completion/completions/nsenter
 %exclude %{_datadir}/bash-completion/completions/partx
+%exclude %{_datadir}/bash-completion/completions/pipesz
 %exclude %{_datadir}/bash-completion/completions/pivot_root
 %exclude %{_datadir}/bash-completion/completions/prlimit
 %exclude %{_datadir}/bash-completion/completions/readprofile
@@ -1379,6 +1391,7 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %exclude %{_datadir}/bash-completion/completions/utmpdump
 %exclude %{_datadir}/bash-completion/completions/uuidgen
 %exclude %{_datadir}/bash-completion/completions/uuidparse
+%exclude %{_datadir}/bash-completion/completions/waitpid
 %exclude %{_datadir}/bash-completion/completions/wdctl
 %exclude %{_datadir}/bash-completion/completions/whereis
 %exclude %{_datadir}/bash-completion/completions/wipefs
@@ -1478,18 +1491,6 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_libdir}/libuuid.so.1
 %{_libdir}/libuuid.so.1.*
 
-%files -n util-linux-tty-tools
-%{_bindir}/mesg
-%verify(not mode) %attr(0755,root,tty) %{_bindir}/wall
-%verify(not mode) %attr(0755,root,tty) %{_bindir}/write
-%{_mandir}/man1/mesg.1.gz
-%{_mandir}/man1/wall.1.gz
-%{_mandir}/man1/write.1.gz
-
-%{_datadir}/bash-completion/completions/wall
-%{_datadir}/bash-completion/completions/write
-%{_datadir}/bash-completion/completions/mesg
-
 # devel, lang and uuidd files are not packaged in staging mode
 # and packaged separately in full mode
 # FIXME: Is it needed?
@@ -1560,6 +1561,19 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_sbindir}/rcuuidd
 %{_unitdir}/uuidd.service
 %{_unitdir}/uuidd.socket
+
+%files -n util-linux-tty-tools
+%{_bindir}/mesg
+%verify(not mode) %attr(0755,root,tty) %{_bindir}/wall
+%verify(not mode) %attr(0755,root,tty) %{_bindir}/write
+%{_mandir}/man1/mesg.1.gz
+%{_mandir}/man1/wall.1.gz
+%{_mandir}/man1/write.1.gz
+
+%{_datadir}/bash-completion/completions/wall
+%{_datadir}/bash-completion/completions/write
+%{_datadir}/bash-completion/completions/mesg
+
 %endif
 # ulsubset == systemd
 

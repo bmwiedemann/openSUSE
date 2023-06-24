@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Jun 23 07:35:02 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix regression with mount options handling (gh#util-linux/util-linux#2326):
+  * 0001-libmount-fix-sync-options-between-context-and-fs-str.patch
+
+-------------------------------------------------------------------
+Wed Jun 14 13:33:48 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Set --disable-libmount-mountfd-support, it's very broken and needs
+  both util-linux and kernel fixes (gh#util-linux/util-linux#2287)
+
+-------------------------------------------------------------------
+Tue Jun 13 11:48:38 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- UTIL_LINUX_FOUND_SYSTEMD_DEPS: make grep more robust
+- util-linux-tty-tools: build together with systemd in preparation
+  of util-linux 2.40 together with systemd v254
+
+-------------------------------------------------------------------
+Fri Jun  9 13:35:33 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Upgrade to version 2.39:
+  * blkpr: New command to run persistent reservations ioctls on a device.
+  * pipesz: New command to set or examine pipe and FIFO buffer sizes.
+  * waitpid: New command to wait for arbitrary processes.
+  * mount, libmount: Supports new file descriptors based mount kernel API.
+  * mount, libmount: New mount options X-mount.idmap=, X-mount.auto-fstypes,
+    X-mount.{owner,group,mode}=, rootcontext=@target.
+  * renice: Supports posix-compliant -n (via POSIXLY_CORRECT) and add a new
+    option --relative.
+  * dmesg: Supports subsecond granularity for --since and --until.
+  * dmesg: Option --level accepts '+' prefix or postfix for a level name to specify
+    all higher or all lower levels.
+  * blkid, libblkid: Supports bcachefs.
+  * fstrim: New option --types to filter out by filesystem types.
+  * lsblk: --nvme and --virtio are new options to filter out devices.
+  * lsblk: Improves detection of hotplug and removable status.
+  * nsenter: New option --env for allowing environment variables inheritance.
+  * namei: New option -Z to report SELinux contexts.
+  * Many other new features and fixes. For complete list see
+    https://kernel.org/pub/linux/utils/util-linux/v2.39/v2.39-ReleaseNotes
+- Dropped upstreamed patches:
+  * fix-lib-internal-cache-size.patch
+  * util-linux-fix-tests-when-at-symbol-in-path.patch
+  * util-linux-honor-noclear-when-reprint-issue.patch
+- Add upstream patch util-linux-fix-tests-with-64k-pagesize.patch
+  * Fixes fadvise tests for ppc64
+
+-------------------------------------------------------------------
 Tue May  9 19:46:41 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Suppress error messages for grep command where the input file 

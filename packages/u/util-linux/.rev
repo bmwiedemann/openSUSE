@@ -2468,4 +2468,16 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
     <comment></comment>
     <requestid>1085804</requestid>
   </revision>
+  <revision rev="271" vrev="1">
+    <srcmd5>5781a690b608b4c2732e9992845a08d0</srcmd5>
+    <version>2.39</version>
+    <time>1687630405</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix regression with mount options handling (gh#util-linux/util-linux#2326):
+  * 0001-libmount-fix-sync-options-between-context-and-fs-str.patch
+
+- Set --disable-libmount-mountfd-support, it's very broken and needs
+  both util-linux and kernel fixes (gh#util-linux/util-linux#2287) (forwarded request 1094801 from favogt)</comment>
+    <requestid>1094821</requestid>
+  </revision>
 </revisionlist>
