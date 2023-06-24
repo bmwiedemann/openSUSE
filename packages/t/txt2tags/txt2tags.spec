@@ -1,7 +1,7 @@
 #
 # spec file for package txt2tags
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2013,2019 Christoph Junghans <junghans@votca.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           txt2tags
-Version:        3.7
+Version:        3.8
 Release:        0
 Summary:        Converts text files to HTML, XHTML, sgml, LaTeX, man and others
 License:        GPL-2.0-only
@@ -45,7 +45,7 @@ There are GUI, Web and cmdline interfaces. It's a single Python script and
 no external commands or libraries are needed.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %python_build
