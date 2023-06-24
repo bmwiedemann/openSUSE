@@ -1171,4 +1171,41 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
 - Avoid fuser for detecting if sendmail is listen on MTA port</comment>
     <requestid>1090230</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>7618149f013d2c2a4efeacd6e8627beb</srcmd5>
+    <version>8.17.2</version>
+    <time>1687630416</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to pre version sendmail 8.17.2
+  * Make sure DANE checks (if enabled) are performed even if
+    CACertPath or CACertFile are not set or unusable.
+  * Note: if the code to set up TLS in the client fails, then
+    {verify} will be set to TEMP but DANE requirements
+    will be ignored, i.e., by default mail will be sent
+    without STARTTLS.  This can be changed via a
+    LOCAL_TLS_SERVER ruleset.
+  * Pass server name to clt_features ruleset instead of client
+    name to account for limitations in macro availability
+    described below in CONFIG section.  This may break
+    custom clt_features rulesets which expect to receive
+    the client name as input.
+  * Fix a regression introduced in 8.17.1: aliases file which
+    contain continuation lines caused parsing errors.
+  * Add an FFR (for future release) compile time option _FFR_LOG_STAGE
+    to log the protocol stage as stage= for some errors during
+    delivery attempts to make troubleshooting simpler.  This
+    new logging may be enabled in a future release.
+  * When EAI is enabled, milters also got the arguments of MAIL/RCPT
+    commands in argv[0] for xxfi_envfrom()/xxfi_envrcpt()
+    callbacks instead of just the mail address.
+    Problem reported by Dilyan Palauzo.
+  * When EAI is enabled, mailq prints UTF-8 addresses as such
+    if SMTPUTF8 was used.
+  * When EAI is enabled, the $h macro is now in the correct format.
+    Previously this could cause wrong values for relay=
+    in log entries and the mailer argument vector.
+  * When the compile time option USE_EAI is enabled, vacation could
+    fail to respond when it should.  Problem reported by</comment>
+    <requestid>1094805</requestid>
+  </revision>
 </revisionlist>

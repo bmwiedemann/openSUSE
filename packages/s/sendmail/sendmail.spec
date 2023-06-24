@@ -110,7 +110,7 @@ Conflicts:      postfix
 Conflicts:      postfix-tls
 Conflicts:      smail
 Obsoletes:      sendmail-tls
-Version:        8.17.1
+Version:        8.17.2
 Release:        0
 Summary:        BSD Sendmail
 License:        Sendmail
@@ -126,7 +126,7 @@ Source7:        sendmail.tmpfiles
 Source42:       https://ftp.sendmail.org/PGPKEYS#/%{name}.keyring
 Source43:       https://ftp.sendmail.org/%{name}.%{version}.tar.gz.sig
 # PATCH-FIX-OPENSUSE: Add our m4 extensions and maintenance scripts
-Patch0:         sendmail-8.17.1.dif
+Patch0:         sendmail-8.17.2.dif
 # PATCH-FIX-OPENSUSE: if select(2) is interrupted the timeout become undefined
 Patch1:         sendmail-8.14.7-select.dif
 # PATCH-FIX-UPSTREAM: Detect shared libraries
