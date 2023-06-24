@@ -1,7 +1,7 @@
 #
 # spec file for package LibVNCServer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libnum  1
 Name:           LibVNCServer
-Version:        0.9.13
+Version:        0.9.14
 Release:        0
 Summary:        VNC Development Library
 License:        GPL-2.0-or-later
@@ -32,14 +32,6 @@ Patch0:         redef-keysym.patch
 #PATCH-FEATURE-UPSTREAM TLS security type enablement patches gh#LibVNC/libvncserver!234
 Patch10:        0001-libvncserver-Add-API-to-add-custom-I-O-entry-points.patch
 Patch11:        0002-libvncserver-Add-channel-security-handlers.patch
-# https://github.com/LibVNC/libvncserver/commit/87c52ee0551b7c4e76855d270d475b9e3039fe08
-Patch12:        0003-libvncserver-auth-don-t-keep-security-handlers-from-.patch
-# PATCH-FIX-UPSTREAM Fix crash on all runs after the first gh#LibVNC/libvncserver!444 rh#1882718
-Patch13:        0004-zlib-Clear-buffer-pointers-on-cleanup-444.patch
-# PATCH-FIX-UPSTREAM Fix another crasher glgo#GNOME/gnome-remote-desktop#45 rh#1882718
-Patch14:        0001-libvncserver-don-t-NULL-out-internal-of-the-default-.patch
-# CVE-2020-29260 [bsc#1203106], memory leakage via rfbClientCleanup()
-Patch15:        LibVNCServer-CVE-2020-29260.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libavahi-devel
@@ -146,11 +138,12 @@ make test
 
 %files devel
 %defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog NEWS.md README.md TODO.md
+%doc AUTHORS COPYING ChangeLog NEWS.md README.md
 %{_includedir}/rfb/*
 %dir /usr/include/rfb
 %{_libdir}/libvncclient.so
 %{_libdir}/libvncserver.so
 %{_libdir}/pkgconfig/*.pc
+%{_libdir}/cmake/LibVNCServer
 
 %changelog

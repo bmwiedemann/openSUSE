@@ -12,11 +12,11 @@ override the default read/write/peek functions.
  rfb/rfb.h                | 17 +++++++++
  3 files changed, 93 insertions(+), 7 deletions(-)
 
-diff --git a/libvncserver/rfbserver.c b/libvncserver/rfbserver.c
-index e9eaa5fc..72e9ba79 100644
---- a/libvncserver/rfbserver.c
-+++ b/libvncserver/rfbserver.c
-@@ -319,6 +319,10 @@ rfbNewTCPOrUDPClient(rfbScreenInfoPtr rfbScreen,
+Index: libvncserver-LibVNCServer-0.9.14/libvncserver/rfbserver.c
+===================================================================
+--- libvncserver-LibVNCServer-0.9.14.orig/libvncserver/rfbserver.c
++++ libvncserver-LibVNCServer-0.9.14/libvncserver/rfbserver.c
+@@ -321,6 +321,10 @@ rfbNewTCPOrUDPClient(rfbScreenInfoPtr rf
  
      cl->screen = rfbScreen;
      cl->sock = sock;
@@ -27,21 +27,21 @@ index e9eaa5fc..72e9ba79 100644
      cl->viewOnly = FALSE;
      /* setup pseudo scaling */
      cl->scaledScreen = rfbScreen;
-diff --git a/libvncserver/sockets.c b/libvncserver/sockets.c
-index 2c87376b..4bb881ec 100644
---- a/libvncserver/sockets.c
-+++ b/libvncserver/sockets.c
-@@ -101,6 +101,9 @@ int deny_severity=LOG_WARNING;
- int rfbMaxClientWait = 20000;   /* time (ms) after which we decide client has
+Index: libvncserver-LibVNCServer-0.9.14/libvncserver/sockets.c
+===================================================================
+--- libvncserver-LibVNCServer-0.9.14.orig/libvncserver/sockets.c
++++ libvncserver-LibVNCServer-0.9.14/libvncserver/sockets.c
+@@ -102,6 +102,9 @@ int rfbMaxClientWait = 20000;   /* time
                                     gone away - needed to stop us hanging */
  
-+static rfbBool
+ static rfbBool
 +rfbHasPendingOnSocket(rfbClientPtr cl);
 +
- static rfbBool
++static rfbBool
  rfbNewConnectionFromSock(rfbScreenInfoPtr rfbScreen, rfbSocket sock)
  {
-@@ -364,16 +367,20 @@ rfbCheckFds(rfbScreenInfoPtr rfbScreen,long usec)
+     const int one = 1;
+@@ -364,16 +367,20 @@ rfbCheckFds(rfbScreenInfoPtr rfbScreen,l
  	tv.tv_usec = usec;
  	nfds = select(rfbScreen->maxFd + 1, &fds, NULL, NULL /* &fds */, &tv);
  	if (nfds == 0) {
@@ -63,7 +63,7 @@ index 2c87376b..4bb881ec 100644
  	}
  
  	if (nfds < 0) {
-@@ -449,9 +456,11 @@ rfbCheckFds(rfbScreenInfoPtr rfbScreen,long usec)
+@@ -449,9 +456,11 @@ rfbCheckFds(rfbScreenInfoPtr rfbScreen,l
  	    if (cl->onHold)
  		continue;
  
@@ -77,7 +77,7 @@ index 2c87376b..4bb881ec 100644
                  {
  #ifdef LIBVNCSERVER_WITH_WEBSOCKETS
                      do {
-@@ -614,6 +623,30 @@ rfbConnect(rfbScreenInfoPtr rfbScreen,
+@@ -638,6 +647,30 @@ rfbConnect(rfbScreenInfoPtr rfbScreen,
      return sock;
  }
  
@@ -108,7 +108,7 @@ index 2c87376b..4bb881ec 100644
  /*
   * ReadExact reads an exact number of bytes from a client.  Returns 1 if
   * those bytes have been read, 0 if the other end has closed, or -1 if an error
-@@ -635,10 +668,10 @@ rfbReadExactTimeout(rfbClientPtr cl, char* buf, int len, int timeout)
+@@ -659,10 +692,10 @@ rfbReadExactTimeout(rfbClientPtr cl, cha
          } else if (cl->sslctx) {
  	    n = rfbssl_read(cl, buf, len);
  	} else {
@@ -121,7 +121,7 @@ index 2c87376b..4bb881ec 100644
  #endif
  
          if (n > 0) {
-@@ -670,6 +703,10 @@ rfbReadExactTimeout(rfbClientPtr cl, char* buf, int len, int timeout)
+@@ -694,6 +727,10 @@ rfbReadExactTimeout(rfbClientPtr cl, cha
  		    continue;
  	    }
  #endif
@@ -132,7 +132,7 @@ index 2c87376b..4bb881ec 100644
              FD_ZERO(&fds);
              FD_SET(sock, &fds);
              tv.tv_sec = timeout / 1000;
-@@ -706,6 +743,18 @@ int rfbReadExact(rfbClientPtr cl,char* buf,int len)
+@@ -730,6 +767,18 @@ int rfbReadExact(rfbClientPtr cl,char* b
      return(rfbReadExactTimeout(cl,buf,len,rfbMaxClientWait));
  }
  
@@ -151,7 +151,7 @@ index 2c87376b..4bb881ec 100644
  /*
   * PeekExact peeks at an exact number of bytes from a client.  Returns 1 if
   * those bytes have been read, 0 if the other end has closed, or -1 if an
-@@ -726,7 +775,7 @@ rfbPeekExactTimeout(rfbClientPtr cl, char* buf, int len, int timeout)
+@@ -750,7 +799,7 @@ rfbPeekExactTimeout(rfbClientPtr cl, cha
  	    n = rfbssl_peek(cl, buf, len);
  	else
  #endif
@@ -160,7 +160,7 @@ index 2c87376b..4bb881ec 100644
  
          if (n == len) {
  
-@@ -782,6 +831,22 @@ rfbPeekExactTimeout(rfbClientPtr cl, char* buf, int len, int timeout)
+@@ -806,6 +855,22 @@ rfbPeekExactTimeout(rfbClientPtr cl, cha
      return 1;
  }
  
@@ -183,7 +183,7 @@ index 2c87376b..4bb881ec 100644
  /*
   * WriteExact writes an exact number of bytes to a client.  Returns 1 if
   * those bytes have been written, or -1 if an error occurred (errno is set to
-@@ -826,7 +891,7 @@ rfbWriteExact(rfbClientPtr cl,
+@@ -863,7 +928,7 @@ rfbWriteExact(rfbClientPtr cl,
  	    n = rfbssl_write(cl, buf, len);
  	else
  #endif
@@ -192,11 +192,11 @@ index 2c87376b..4bb881ec 100644
  
          if (n > 0) {
  
-diff --git a/rfb/rfb.h b/rfb/rfb.h
-index 5e9ba86f..3c0b25a3 100644
---- a/rfb/rfb.h
-+++ b/rfb/rfb.h
-@@ -387,6 +387,14 @@ typedef struct sraRegion* sraRegionPtr;
+Index: libvncserver-LibVNCServer-0.9.14/rfb/rfb.h
+===================================================================
+--- libvncserver-LibVNCServer-0.9.14.orig/rfb/rfb.h
++++ libvncserver-LibVNCServer-0.9.14/rfb/rfb.h
+@@ -398,6 +398,14 @@ typedef struct sraRegion* sraRegionPtr;
  typedef void (*ClientGoneHookPtr)(struct _rfbClientRec* cl);
  typedef void (*ClientFramebufferUpdateRequestHookPtr)(struct _rfbClientRec* cl, rfbFramebufferUpdateRequestMsg* furMsg);
  
@@ -211,10 +211,10 @@ index 5e9ba86f..3c0b25a3 100644
  typedef struct _rfbFileTransferData {
    int fd;
    int compressionEnabled;
-@@ -680,6 +688,11 @@ typedef struct _rfbClientRec {
-     rfbBool useExtDesktopSize;
-     int requestedDesktopSizeChange;
-     int lastDesktopSizeChangeError;
+@@ -707,6 +715,11 @@ typedef struct _rfbClientRec {
+     int tightPngDstDataLen;
+ #endif
+ #endif
 +
 +    ClientReadFromSocket readFromSocket;         /* Read data from socket */
 +    ClientPeekAtSocket peekAtSocket;             /* Peek at data from socket */
@@ -223,7 +223,7 @@ index 5e9ba86f..3c0b25a3 100644
  } rfbClientRec, *rfbClientPtr;
  
  /**
-@@ -732,8 +745,12 @@ extern void rfbDisconnectUDPSock(rfbScreenInfoPtr rfbScreen);
+@@ -759,8 +772,12 @@ extern void rfbDisconnectUDPSock(rfbScre
  extern void rfbCloseClient(rfbClientPtr cl);
  extern int rfbReadExact(rfbClientPtr cl, char *buf, int len);
  extern int rfbReadExactTimeout(rfbClientPtr cl, char *buf, int len,int timeout);
@@ -236,6 +236,3 @@ index 5e9ba86f..3c0b25a3 100644
  extern int rfbCheckFds(rfbScreenInfoPtr rfbScreen,long usec);
  extern rfbSocket rfbConnect(rfbScreenInfoPtr rfbScreen, char* host, int port);
  extern rfbSocket rfbConnectToTcpAddr(char* host, int port);
--- 
-2.28.0
-

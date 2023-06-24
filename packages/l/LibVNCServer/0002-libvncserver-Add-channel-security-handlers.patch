@@ -18,11 +18,11 @@ initiated, the regular security handler list is sent.
  rfb/rfb.h                |  15 +++-
  3 files changed, 142 insertions(+), 38 deletions(-)
 
-diff --git a/libvncserver/auth.c b/libvncserver/auth.c
-index 814a8142..55e0b3c9 100644
---- a/libvncserver/auth.c
-+++ b/libvncserver/auth.c
-@@ -37,18 +37,17 @@ void rfbClientSendString(rfbClientPtr cl, const char *reason);
+Index: libvncserver-LibVNCServer-0.9.14/libvncserver/auth.c
+===================================================================
+--- libvncserver-LibVNCServer-0.9.14.orig/libvncserver/auth.c
++++ libvncserver-LibVNCServer-0.9.14/libvncserver/auth.c
+@@ -37,18 +37,17 @@ void rfbClientSendString(rfbClientPtr cl
   * Handle security types
   */
  
@@ -48,7 +48,7 @@ index 814a8142..55e0b3c9 100644
  
  	if(handler == NULL)
  		return;
-@@ -57,39 +56,35 @@ rfbRegisterSecurityHandler(rfbSecurityHandler* handler)
+@@ -57,39 +56,35 @@ rfbRegisterSecurityHandler(rfbSecurityHa
  
  	while(head != NULL) {
  		if(head == handler) {
@@ -99,7 +99,7 @@ index 814a8142..55e0b3c9 100644
  
  	while(cur) {
  		if(cur == handler) {
-@@ -99,7 +94,50 @@ rfbUnregisterSecurityHandler(rfbSecurityHandler* handler)
+@@ -99,7 +94,50 @@ rfbUnregisterSecurityHandler(rfbSecurity
  		pre = cur;
  		cur = cur->next;
  	}
@@ -151,7 +151,7 @@ index 814a8142..55e0b3c9 100644
  }
  
  /*
-@@ -197,9 +235,22 @@ static rfbSecurityHandler VncSecurityHandlerNone = {
+@@ -197,9 +235,22 @@ static rfbSecurityHandler VncSecurityHan
      NULL
  };
                          
@@ -176,7 +176,7 @@ index 814a8142..55e0b3c9 100644
  {
      /* The size of the message is the count of security types +1,
       * since the first byte is the number of types. */
-@@ -207,9 +258,10 @@ rfbSendSecurityTypeList(rfbClientPtr cl, int primaryType)
+@@ -207,9 +258,10 @@ rfbSendSecurityTypeList(rfbClientPtr cl,
      rfbSecurityHandler* handler;
  #define MAX_SECURITY_TYPES 255
      uint8_t buffer[MAX_SECURITY_TYPES+1];
@@ -187,8 +187,8 @@ index 814a8142..55e0b3c9 100644
 +    primaryType = determinePrimarySecurityType(cl);
      switch (primaryType) {
      case rfbSecTypeNone:
-         rfbRegisterSecurityHandler(&VncSecurityHandlerNone);
-@@ -221,6 +273,9 @@ rfbSendSecurityTypeList(rfbClientPtr cl, int primaryType)
+ 	rfbUnregisterSecurityHandler(&VncSecurityHandlerVncAuth);
+@@ -223,6 +275,9 @@ rfbSendSecurityTypeList(rfbClientPtr cl,
  
      for (handler = securityHandlers;
  	    handler && size<MAX_SECURITY_TYPES; handler = handler->next) {
@@ -198,7 +198,7 @@ index 814a8142..55e0b3c9 100644
  	buffer[size] = handler->type;
  	size++;
      }
-@@ -249,7 +304,29 @@ rfbSendSecurityTypeList(rfbClientPtr cl, int primaryType)
+@@ -251,7 +306,29 @@ rfbSendSecurityTypeList(rfbClientPtr cl,
      cl->state = RFB_SECURITY_TYPE;
  }
  
@@ -228,7 +228,7 @@ index 814a8142..55e0b3c9 100644
  
  
  /*
-@@ -297,18 +374,19 @@ rfbSendSecurityType(rfbClientPtr cl, int32_t securityType)
+@@ -299,18 +376,19 @@ rfbSendSecurityType(rfbClientPtr cl, int
  void
  rfbAuthNewClient(rfbClientPtr cl)
  {
@@ -255,7 +255,7 @@ index 814a8142..55e0b3c9 100644
  	if (securityType == rfbSecTypeInvalid) {
  	    rfbLog("VNC authentication disabled - RFB 3.3 client rejected\n");
  	    rfbClientConnFailed(cl, "Your viewer cannot handle required "
-@@ -316,9 +394,13 @@ rfbAuthNewClient(rfbClientPtr cl)
+@@ -318,9 +396,13 @@ rfbAuthNewClient(rfbClientPtr cl)
  	    return;
  	}
  	rfbSendSecurityType(cl, securityType);
@@ -270,7 +270,7 @@ index 814a8142..55e0b3c9 100644
      }
  }
  
-@@ -332,6 +414,7 @@ rfbProcessClientSecurityType(rfbClientPtr cl)
+@@ -334,6 +416,7 @@ rfbProcessClientSecurityType(rfbClientPt
      int n;
      uint8_t chosenType;
      rfbSecurityHandler* handler;
@@ -278,7 +278,7 @@ index 814a8142..55e0b3c9 100644
      
      /* Read the security type. */
      n = rfbReadExact(cl, (char *)&chosenType, 1);
-@@ -344,8 +427,17 @@ rfbProcessClientSecurityType(rfbClientPtr cl)
+@@ -346,8 +429,17 @@ rfbProcessClientSecurityType(rfbClientPt
  	return;
      }
  
@@ -297,11 +297,11 @@ index 814a8142..55e0b3c9 100644
  	if (chosenType == handler->type) {
  	      rfbLog("rfbProcessClientSecurityType: executing handler for type %d\n", chosenType);
  	      handler->handler(cl);
-diff --git a/libvncserver/rfbserver.c b/libvncserver/rfbserver.c
-index 72e9ba79..48eada64 100644
---- a/libvncserver/rfbserver.c
-+++ b/libvncserver/rfbserver.c
-@@ -652,6 +652,7 @@ rfbProcessClientMessage(rfbClientPtr cl)
+Index: libvncserver-LibVNCServer-0.9.14/libvncserver/rfbserver.c
+===================================================================
+--- libvncserver-LibVNCServer-0.9.14.orig/libvncserver/rfbserver.c
++++ libvncserver-LibVNCServer-0.9.14/libvncserver/rfbserver.c
+@@ -670,6 +670,7 @@ rfbProcessClientMessage(rfbClientPtr cl)
      case RFB_PROTOCOL_VERSION:
          rfbProcessClientProtocolVersion(cl);
          return;
@@ -309,11 +309,11 @@ index 72e9ba79..48eada64 100644
      case RFB_SECURITY_TYPE:
          rfbProcessClientSecurityType(cl);
          return;
-diff --git a/rfb/rfb.h b/rfb/rfb.h
-index 3c0b25a3..d136f884 100644
---- a/rfb/rfb.h
-+++ b/rfb/rfb.h
-@@ -144,6 +144,11 @@ typedef struct {
+Index: libvncserver-LibVNCServer-0.9.14/rfb/rfb.h
+===================================================================
+--- libvncserver-LibVNCServer-0.9.14.orig/rfb/rfb.h
++++ libvncserver-LibVNCServer-0.9.14/rfb/rfb.h
+@@ -147,6 +147,11 @@ typedef struct {
    } data; /**< there have to be count*3 entries */
  } rfbColourMap;
  
@@ -325,7 +325,7 @@ index 3c0b25a3..d136f884 100644
  /**
   * Security handling (RFB protocol version 3.7)
   */
-@@ -152,6 +157,7 @@ typedef struct _rfbSecurity {
+@@ -155,6 +160,7 @@ typedef struct _rfbSecurity {
  	uint8_t type;
  	void (*handler)(struct _rfbClientRec* cl);
  	struct _rfbSecurity* next;
@@ -333,7 +333,7 @@ index 3c0b25a3..d136f884 100644
  } rfbSecurityHandler;
  
  /**
-@@ -480,7 +486,7 @@ typedef struct _rfbClientRec {
+@@ -491,7 +497,7 @@ typedef struct _rfbClientRec {
                                  /** Possible client states: */
      enum {
          RFB_PROTOCOL_VERSION,   /**< establishing protocol version */
@@ -342,18 +342,15 @@ index 3c0b25a3..d136f884 100644
          RFB_AUTHENTICATION,     /**< authenticating */
          RFB_INITIALISATION,     /**< sending initialisation messages */
          RFB_NORMAL,             /**< normal protocol messages */
-@@ -488,7 +494,9 @@ typedef struct _rfbClientRec {
-         /* Ephemeral internal-use states that will never be seen by software
+@@ -500,6 +506,7 @@ typedef struct _rfbClientRec {
           * using LibVNCServer to provide services: */
  
--        RFB_INITIALISATION_SHARED /**< sending initialisation messages with implicit shared-flag already true */
-+        RFB_INITIALISATION_SHARED, /**< sending initialisation messages with implicit shared-flag already true */
-+
-+        RFB_CHANNEL_SECURITY_TYPE, /**< negotiating security (RFB v.3.7) */
+         RFB_INITIALISATION_SHARED, /**< sending initialisation messages with implicit shared-flag already true */
++	RFB_CHANNEL_SECURITY_TYPE, /**< negotiating security (RFB v.3.7) */
+         RFB_SHUTDOWN            /**< Client is shutting down */
      } state;
  
-     rfbBool reverseConnection;
-@@ -840,6 +848,9 @@ extern void rfbProcessClientSecurityType(rfbClientPtr cl);
+@@ -870,6 +877,9 @@ extern void rfbProcessClientSecurityType
  extern void rfbAuthProcessClientMessage(rfbClientPtr cl);
  extern void rfbRegisterSecurityHandler(rfbSecurityHandler* handler);
  extern void rfbUnregisterSecurityHandler(rfbSecurityHandler* handler);
@@ -363,6 +360,3 @@ index 3c0b25a3..d136f884 100644
  
  /* rre.c */
  
--- 
-2.28.0
-
