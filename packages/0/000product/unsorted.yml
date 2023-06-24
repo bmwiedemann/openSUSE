@@ -10523,7 +10523,7 @@ unsorted:
   - libaal-minimal0 
   - libabigail-devel 
   - libabigail-tools 
-  - libabigail0 
+  - libabigail2 
   - libabiword-3_0 
   - libabiword-3_0-devel 
   - libabsl2301_0_0 
@@ -15443,7 +15443,7 @@ unsorted:
   - libvamp-hostsdk3-32bit 
   - libvamp-sdk2 
   - libvamp-sdk2-32bit 
-  - libvapoursynth-62 
+  - libvapoursynth-63 
   - libvapoursynth-script0 
   - libvarnishapi3 
   - libvbr2 
@@ -18743,6 +18743,7 @@ unsorted:
   - nwg-launchers 
   - nxtvepg 
   - nyancat 
+  - nyxt 
   - o2locktop 
   - o2scl-devel 
   - o2scl-doc 
@@ -19176,6 +19177,7 @@ unsorted:
   - openQA-devel 
   - openQA-doc 
   - openQA-local-db 
+  - openQA-munin 
   - openQA-python-scripts 
   - openQA-single-instance 
   - openQA-worker 
@@ -25827,6 +25829,7 @@ unsorted:
   - python310-sge-pygame 
   - python310-sgmllib3k 
   - python310-sgp4 
+  - python310-sgqlc 
   - python310-sh 
   - python310-shaptools 
   - python310-shellingham 
@@ -29133,6 +29136,7 @@ unsorted:
   - python311-sge-pygame 
   - python311-sgmllib3k 
   - python311-sgp4 
+  - python311-sgqlc 
   - python311-sh 
   - python311-shaptools 
   - python311-shellingham 
@@ -32606,6 +32610,7 @@ unsorted:
   - python39-sge-pygame 
   - python39-sgmllib3k 
   - python39-sgp4 
+  - python39-sgqlc 
   - python39-sh 
   - python39-shaptools 
   - python39-shellingham 
@@ -45527,6 +45532,7 @@ unsorted:
   - wlroots10-devel 
   - wlsunset 
   - wm-icons 
+  - wmenu 
   - wmpomme 
   - wmutils 
   - wob 
