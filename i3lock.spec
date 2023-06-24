@@ -1,7 +1,7 @@
 #
 # spec file for package i3lock
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2014 B1 Systems GmbH, Vohburg, Germany.
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
@@ -20,18 +20,18 @@
 
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 Name:           i3lock
-Version:        2.13
+Version:        2.14.1
 Release:        0
 Summary:        Screen Locker for the i3 Window Manager
 License:        BSD-3-Clause
 URL:            https://i3wm.org/i3lock/
-Source:         https://i3wm.org/i3lock/%{name}-%{version}.tar.bz2
+Source:         https://i3wm.org/i3lock/%{name}-%{version}.tar.xz
 # borrowed from gnome-icon-theme
 Source2:        i3lock-icon.png
 Source3:        xlock.sh
 BuildRequires:  gcc
 BuildRequires:  glibc-devel
-BuildRequires:  make
+BuildRequires:  meson
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo)
@@ -62,12 +62,12 @@ i3lock instead of xlock with them.
 %autosetup -p 1
 
 %build
-%configure
 export CFLAGS="%{optflags}"
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 install -D -m0644 %{name}.1 "%{buildroot}%{_mandir}/man1/%{name}.1"
 install -D -m0644 %{SOURCE2} %{buildroot}%{_datadir}/i3lock-xlock-compat/i3lock-icon.png
