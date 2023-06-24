@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-ruby-dbus
-Version:        0.23.0.beta1
+Version:        0.23.0.beta2
 Release:        0
 %define mod_name ruby-dbus
 %define mod_full_name %{mod_name}-%{version}
@@ -44,7 +44,7 @@ URL:            https://github.com/mvidner/ruby-dbus
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Ruby module for interaction with D-Bus
-License:        LGPL-2.1-only
+License:        LGPL-2.1-or-later
 Group:          Development/Languages/Ruby
 
 %description
