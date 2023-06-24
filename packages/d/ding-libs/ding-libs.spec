@@ -1,7 +1,7 @@
 #
 # spec file for package ding-libs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,24 +23,20 @@
 %global ref_array_version 0.1.5
 %global basicobjects_version 0.1.1
 %global ini_config_version 1.3.1
+
 Name:           ding-libs
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 Summary:        "Ding is not GLib" assorted utility libraries
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-URL:            https://pagure.io/SSSD/ding-libs
+URL:            https://github.com/SSSD/ding-libs
 
-#Git-Clone:	https://pagure.io/SSSD/ding-libs
-Source:         https://fedorahosted.org/released/ding-libs/%name-%version.tar.gz
-Source2:        https://fedorahosted.org/released/ding-libs/%name-%version.tar.gz.asc
+Source:         https://github.com/SSSD/ding-libs/releases/download/%version/%name-%version.tar.gz
+Source2:        https://github.com/SSSD/ding-libs/releases/download/%version/%name-%version.tar.gz.asc
 Source3:        %name.keyring
 Source4:        baselibs.conf
 Patch1:         0001-increase-ini-max-value-length.patch
-Patch2:         INI-Fix-detection-of-error-messages.patch
-Patch3:         INI-Silence-ini_augment-match-failures.patch
-Patch4:         TEST-validators_ut_check-Fix-fail-with-new-glibc.patch
-Patch5:         INI-Remove-definiton-of-TRACE_LEVEL.patch
 BuildRequires:  doxygen
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(check) >= 0.9.5
@@ -187,22 +183,22 @@ A dynamically-growing, reference-counted array
 
 %build
 %configure --disable-static
-make %{?_smp_mflags} all docs
+%make_build all docs
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %install
 %make_install
-find %buildroot -type f -name "*.la" -delete -print
+rm -fv "%buildroot/%_libdir"/*.la
 
 # Remove the example files from the output directory
 # We will copy them directly from the source directory
 # for packaging
-rm -f \
-    "%buildroot/%_datadir/doc/ding-libs"/README.* \
-    "%buildroot/%_datadir/doc/ding-libs/examples/dhash_example.c" \
-    "%buildroot/%_datadir/doc/ding-libs/examples/dhash_test.c"
+rm -fv \
+	"%buildroot/%_datadir/doc/ding-libs"/README.* \
+	"%buildroot/%_datadir/doc/ding-libs/examples/dhash_example.c" \
+	"%buildroot/%_datadir/doc/ding-libs/examples/dhash_test.c"
 
 # Remove document install script. RPM is handling this
 rm -f */doc/html/installdox
