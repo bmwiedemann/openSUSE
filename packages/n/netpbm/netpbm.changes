@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Jun 23 09:11:02 UTC 2023 - pgajdos@suse.com
+
+- version update to 11.2.0
+  * jpegtopnm: Add -traceexif
+  * pbmtextps: Add -asciihex, -ascii85.
+  * pcdovtoppm: remove dependency on obsolete 'tempfile' program.
+  * jpegtopnm: Many fixes to -dumpexif.  Always broken.
+    (-dumpexif was new in Netpbm 9.18 (September 2001))
+  * pamtopng: fix -chroma option: always rejected.  Always broken.
+    (pamtopng was new in Netpbm 10.70 (June 2015)).
+  * pnmtopng: fix -rgb option: always rejected.  Always broken
+    (-rgb was new in Netpbm 10.30 (October 2005)).
+  * build: change the way you add the separately distributed
+    'hpcdtoppm' code to the build.
+  * lot of changes since last version update, see
+    https://sourceforge.net/p/netpbm/code/HEAD/tree/advanced/doc/HISTORY
+- modified patches
+  % netpbm-gcc-warnings.patch (refreshed)
+  % netpbm-security-code.patch (refreshed)
+  % netpbm-security-scripts.patch (refreshed)
+- deleted patches
+  - netpbm-tmpfile.patch (upstreamed)
+  - ppmforge-fix-overflow.patch (upstreamed)
+  - signed-char.patch (upstreamed)
+
+-------------------------------------------------------------------
 Thu Jan 19 09:15:10 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Drop patch big-endian.patch, already in upstream since 10.87.00

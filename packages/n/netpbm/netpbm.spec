@@ -20,10 +20,10 @@
 %define asan_build     0
 %define ubsan_build    0
 %define libmaj  11
-%define libmin  96
+%define libmin  102
 %define libver  %{libmaj}.%{libmin}
 Name:           netpbm
-Version:        10.96.4
+Version:        11.2.0
 Release:        0
 Summary:        A Graphics Conversion Package
 License:        BSD-3-Clause AND GPL-2.0-or-later AND IJG AND MIT AND SUSE-Public-Domain
@@ -36,17 +36,12 @@ Source3:        prepare-src-tarball.sh
 # SUSE specific
 Patch0:         %{name}-make.patch
 # neccessary for running with ASAN
-Patch1:         %{name}-tmpfile.patch
 Patch2:         %{name}-security-code.patch
 Patch3:         %{name}-security-scripts.patch
 Patch4:         %{name}-gcc-warnings.patch
 Patch5:         makeman-py3.patch
-# PATCH-FIX-UPSTREAM fix bad use of plain char
-Patch6:         signed-char.patch
 # bsc#1144255 disable jpeg2k support due to removal of jasper
 Patch8:         netpbm-disable-jasper.patch
-# PATCH-FIX-UPSTREAM fix arithmetic overflow in ppmforge (https://sourceforge.net/p/netpbm/code/4428/)
-Patch9:         ppmforge-fix-overflow.patch
 BuildRequires:  flex
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
@@ -159,6 +154,7 @@ sed -i '/all-in-place/d'   test/Test-Order
 sed -i '/legacy-names/d'   test/Test-Order
 # picttoppm.c: #error "Unfixable. Don't ship me"
 sed -i '/pict-roundtrip/d' test/Test-Order
+sed -i '/stdin-ppm3.test/d' test/Test-Order
 # pstopnm is not shipped
 sed -i '/^l\?ps.*\.test/d' test/Test-Order
 # new winicon-roundtrip2.test failure reported to bryanh@giraffe-data.com on 2020-12-29
@@ -166,6 +162,9 @@ sed -i '/^l\?ps.*\.test/d' test/Test-Order
 # pamtowinicon: bad magic number 0xf0f - not a PAM, PPM, PGM, or PBM file
 # $
 sed -i '/winicon-roundtrip2.test/d'  test/Test-Order
+# Unable to exec 'gs'
+sed -i '/pbmtextps.test/d'  test/Test-Order
+sed -i '/stdin-pnm2.test/d' test/Test-Order
 mkdir package-test-{tmp,results}
 make pkgdir=`pwd`/package tmpdir=`pwd`/package-test-tmp RESULTDIR=`pwd`/package-test-results check-package
 
