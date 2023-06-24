@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 22 13:24:08 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
+
+- Removed .hmac files + hmac integrity check logic from strongswan-hmac
+  package as it is not mandated anymore by FIPS (boo#1185116)
+- Removed folliwng files:
+  [- strongswan_fipscheck.patch]
+  [- fipscheck.sh.in]
+  Note: strongswan-hmac package is not removed as it still provides a
+  config file that doesn't allow non-fips approved algorithms
+
+-------------------------------------------------------------------
 Mon Jun 12 15:54:53 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove pre-SLE15 build logic

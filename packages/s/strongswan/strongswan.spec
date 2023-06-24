@@ -55,13 +55,9 @@ Source3:        %{name}-rpmlintrc
 Source4:        README.SUSE
 Source5:        %{name}.keyring
 %if %{with fipscheck}
-Source6:        fipscheck.sh.in
 Source7:        fips-enforce.conf
 %endif
 Patch2:         %{name}_ipsec_service.patch
-%if %{with fipscheck}
-Patch3:         %{name}_fipscheck.patch
-%endif
 Patch5:         0005-ikev1-Don-t-retransmit-Aggressive-Mode-response.patch
 Patch6:         harden_strongswan.service.patch
 BuildRequires:  bison
@@ -95,9 +91,6 @@ BuildRequires:  pkgconfig(libsystemd)
 %{!?_tmpfilesdir: %global _tmpfilesdir /usr/lib/tmpfiles.d}
 BuildRequires:  autoconf
 BuildRequires:  automake
-%if %{with fipscheck}
-BuildRequires:  fipscheck
-%endif
 BuildRequires:  libtool
 Requires:       strongswan-ipsec = %{version}
 
@@ -153,18 +146,14 @@ StrongSwan is an IPsec-based VPN solution for Linux.
 This package provides the strongswan library and plugins.
 
 %package hmac
-Summary:        HMAC files for FIPS-140-2 integrity in strongSwan
+Summary:        Config file to disable non FIPS-140-2 algos in strongSwan
 Group:          Productivity/Networking/Security
-Requires:       fipscheck
 Requires:       strongswan-ipsec = %{version}
 Requires:       strongswan-libs0 = %{version}
 
 %description hmac
-The package provides HMAC hash files for FIPS-140-2 integrity checks,
-a config file disabling alternative algorithm implementations and a
-_fipscheck helper script preforming the integrity checks before e.g.
-"ipsec start" action is executed, when FIPS-140-2 compliant operation
-mode is enabled.
+The package provides a config file disabling alternative algorithm
+implementation when FIPS-140-2 compliant operation mode is enabled.
 
 %package ipsec
 Summary:        IPsec-based VPN solution
@@ -230,21 +219,10 @@ and the load testing plugin for IKEv2 daemon.
 %prep
 %setup -q -n %{name}-%{upstream_version}
 %patch2 -p1
-%if %{with fipscheck}
-%patch3 -p1
-%endif
 %patch5 -p1
 sed -e 's|@libexecdir@|%_libexecdir|g'    \
      < %{_sourcedir}/strongswan.init.in \
      > strongswan.init
-%if %{with fipscheck}
-sed -e 's|@IPSEC_DIR@|%{_libexecdir}/ipsec|g' \
-    -e 's|@IPSEC_LIBDIR@|%{_libdir}/ipsec|g'  \
-    -e 's|@IPSEC_SBINDIR@|%{_sbindir}|g'      \
-    -e 's|@IPSEC_BINDIR@|%{_bindir}|g'        \
-     < %{_sourcedir}/fipscheck.sh.in        \
-     > _fipscheck
-%endif
 %patch6 -p1
 
 %build
@@ -412,33 +390,10 @@ install -c -m644 %{_sourcedir}/README.SUSE \
 install -d -m 0755 %{buildroot}%{_tmpfilesdir}
 echo 'd %{_rundir}/%{name} 0770 root root' > %{buildroot}%{_tmpfilesdir}/%{name}.conf
 %if %{with fipscheck}
-#
-# note: keep the following, _fipscheck's and file lists in sync
-#
-install -c -m750 _fipscheck %{buildroot}/%{_libexecdir}/ipsec/
 install -c -m644 %{_sourcedir}/fips-enforce.conf \
                  %{buildroot}/%{strongswan_configs}/charon/zzz_fips-enforce.conf
 # disable bypass-lan plugin by default
 sed -i 's/\(load[ ]*=[ ]*\)yes/\1no/g' %{buildroot}/%{strongswan_configs}/charon/bypass-lan.conf
-# create fips hmac hashes _after_ install post run
-%{expand:%%global __os_install_post {%__os_install_post
-	for f in %{buildroot}/%{strongswan_libdir}/lib*.so.*.*.* \
-		 %{buildroot}/%{strongswan_libdir}/imcvs/*.so \
-		 %{buildroot}/%{strongswan_plugins}/*.so \
-		 %{buildroot}/%{_libexecdir}/ipsec/charon \
-		 %{buildroot}/%{_libexecdir}/ipsec/charon-nm \
-		 %{buildroot}/%{_libexecdir}/ipsec/stroke \
-		 %{buildroot}/%{_libexecdir}/ipsec/starter \
-		 %{buildroot}/%{_libexecdir}/ipsec/pool \
-		 %{buildroot}/%{_libexecdir}/ipsec/imv_policy_manager \
-		 %{buildroot}/%{_libexecdir}/ipsec/_fipscheck \
-		 %{buildroot}/%{_bindir}/pt-tls-client \
-		 %{buildroot}/%{_sbindir}/ipsec \
-		;
-	do
-		/usr/bin/fipshmac "$f"
-	done
-}}
 %endif
 
 %post libs0
@@ -498,16 +453,6 @@ fi
 %dir %{strongswan_configs}
 %dir %{strongswan_configs}/charon
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/zzz_fips-enforce.conf
-%dir %{strongswan_libdir}
-%{strongswan_libdir}/.*.hmac
-%{strongswan_libdir}/imcvs/.*.hmac
-%dir %{strongswan_plugins}
-%{strongswan_plugins}/.*.hmac
-%dir %{_libexecdir}/ipsec
-%{_libexecdir}/ipsec/_fipscheck
-%{_libexecdir}/ipsec/.*.hmac
-%{_sbindir}/.ipsec.hmac
-%{_bindir}/.pt-tls-client.hmac
 %endif
 
 %files ipsec
