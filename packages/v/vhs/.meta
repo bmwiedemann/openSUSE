@@ -1,0 +1,6 @@
+<package name="vhs" project="openSUSE:Factory">
+  <title>vhs</title>
+  <description>Write terminal GIFs as code for integration testing and demoing your CLI tools.</description>
+  <devel project="utilities" package="vhs"/>
+  <url>https://github.com/charmbracelet/vhs</url>
+</package>

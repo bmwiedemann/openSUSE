@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Sun Jun 18 00:57:46 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 0.5.0:
+  * feat: Added `Alt+Enter` input
+  * feat: Added Source command
+  * docs: correct release year in license
+  * docs: update license
+  * fix: use `--writable` command for `ttyd`
+  * fix: allow `Output` commands to be at end
+  * fix: record sleep only in supported time units
+
+-------------------------------------------------------------------
+Thu Feb 23 23:32:09 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Requires ttyd and ffmpeg
+
+-------------------------------------------------------------------
+Fri Feb 17 07:45:42 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Initial spec for vhs 0.2.0
