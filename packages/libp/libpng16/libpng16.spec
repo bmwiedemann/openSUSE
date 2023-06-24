@@ -20,7 +20,7 @@
 %define asan_build  0
 %define major   1
 %define minor   6
-%define micro   39
+%define micro   40
 %define branch  %{major}%{minor}
 %define libname libpng%{branch}-%{branch}
 %define debug_package_requires %{libname} = %{version}-%{release}
@@ -29,7 +29,6 @@ Version:        %{major}.%{minor}.%{micro}
 Release:        0
 Summary:        Library for the Portable Network Graphics Format (PNG)
 License:        libpng-2.0
-Group:          Development/Libraries/C and C++
 URL:            http://www.libpng.org/pub/png/libpng.html
 Source0:        https://prdownloads.sourceforge.net/libpng/libpng-%{version}.tar.xz
 Source2:        libpng16.keyring
@@ -42,12 +41,10 @@ BuildRequires:  pkgconfig(zlib)
 
 %package -n %{libname}
 Summary:        Library for the Portable Network Graphics Format (PNG)
-Group:          System/Libraries
 Provides:       libpng = %{version}
 
 %package devel
 Summary:        Development tools for applications which will use libpng
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Requires:       glibc-devel
 Requires:       pkgconfig
@@ -57,7 +54,6 @@ Recommends:     libpng%{branch}-compat-devel
 
 %package compat-devel
 Summary:        Development tools for applications which will use libpng
-Group:          Development/Libraries/C and C++
 Requires:       libpng%{branch}-devel = %{version}
 Conflicts:      libpng-devel
 Provides:       libpng-devel = %{version}
@@ -65,7 +61,6 @@ Obsoletes:      libpng-devel < 1.2.44
 
 %package tools
 Summary:        Tools for Manipulating PNG Images
-Group:          Productivity/Graphics/Other
 Conflicts:      libpng-tools
 Provides:       libpng-tools = %{version}
 
@@ -96,7 +91,7 @@ Package consists of low level tools for manipulating and fixing particular
 PNG files.
 
 %prep
-%setup -q -n libpng-%{version}
+%autosetup -n libpng-%{version}
 
 %build
 # PNG_SAFE_LIMITS_SUPPORTED: http://www.openwall.com/lists/oss-security/2015/01/10/1

@@ -734,4 +734,18 @@
     <comment>- do not use NEON instructions [bsc#1211176]</comment>
     <requestid>1087176</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>8eeabf42bee29e66dd27130239e4e4e2</srcmd5>
+    <version>1.6.40</version>
+    <time>1687630411</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.40:
+  * Fixed the eXIf chunk multiplicity checks.
+  * Fixed a memory leak in pCAL processing.
+  * Corrected the validity report about tRNS inside png_get_valid().
+  * Fixed various build issues on *BSD, Mac and Windows.
+  * Updated the configurations and the scripts for continuous integration.
+  * Cleaned up the code, the build scripts, and the documentation. (forwarded request 1094720 from pluskalm)</comment>
+    <requestid>1094850</requestid>
+  </revision>
 </revisionlist>

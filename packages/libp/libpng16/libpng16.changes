@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 22 18:04:49 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.6.40:
+  * Fixed the eXIf chunk multiplicity checks.
+  * Fixed a memory leak in pCAL processing.
+  * Corrected the validity report about tRNS inside png_get_valid().
+  * Fixed various build issues on *BSD, Mac and Windows.
+  * Updated the configurations and the scripts for continuous integration.
+  * Cleaned up the code, the build scripts, and the documentation.
+
+-------------------------------------------------------------------
 Mon May 15 07:30:04 UTC 2023 - pgajdos@suse.com
 
 - do not use NEON instructions [bsc#1211176]
