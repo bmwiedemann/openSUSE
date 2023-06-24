@@ -17,7 +17,7 @@
 
 
 %define srcversion 6.3
-%define patchversion 6.3.7
+%define patchversion 6.3.9
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -29,9 +29,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-riscv64
-Version:        6.3.7
+Version:        6.3.9
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gb5f9ff5
+Release:        <RELEASE>.g0df701d
 %else
 Release:        0
 %endif
@@ -53,6 +53,8 @@ Source3:        kernel-source.rpmlintrc
 Source14:       series.conf
 Source16:       guards
 Source17:       apply-patches
+Source19:       kernel-binary-conflicts
+Source20:       obsolete-kmps
 Source21:       config.conf
 Source23:       supported.conf
 Source33:       check-for-config-changes
@@ -112,6 +114,7 @@ Source109:      patches.kernel.org.tar.bz2
 Source110:      patches.apparmor.tar.bz2
 Source111:      patches.rt.tar.bz2
 Source113:      patches.kabi.tar.bz2
+Source114:      patches.drm.tar.bz2
 Source120:      kabi.tar.bz2
 Source121:      sysctl.tar.bz2
 # These files are found in the kernel-source package:
@@ -120,6 +123,8 @@ NoSource:       3
 NoSource:       14
 NoSource:       16
 NoSource:       17
+NoSource:       19
+NoSource:       20
 NoSource:       21
 NoSource:       23
 NoSource:       33
@@ -179,6 +184,7 @@ NoSource:       109
 NoSource:       110
 NoSource:       111
 NoSource:       113
+NoSource:       114
 NoSource:       120
 NoSource:       121
 
@@ -225,7 +231,7 @@ Device Tree files for StarFive based riscv64 systems.
 
 %prep
 # Unpack all sources and patches
-%setup -q -c -T -a 0 -a 100 -a 101 -a 102 -a 103 -a 104 -a 105 -a 106 -a 108 -a 109 -a 110 -a 111 -a 113 -a 120 -a 121
+%setup -q -c -T -a 0 -a 100 -a 101 -a 102 -a 103 -a 104 -a 105 -a 106 -a 108 -a 109 -a 110 -a 111 -a 113 -a 114 -a 120 -a 121
 cd linux-%srcversion
 %_sourcedir/apply-patches %_sourcedir/series.conf ..
 

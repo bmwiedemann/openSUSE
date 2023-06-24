@@ -17,13 +17,12 @@
 
 
 %define srcversion 6.3
-%define patchversion 6.3.7
+%define patchversion 6.3.9
 %define variant %{nil}
-
-%include %_sourcedir/kernel-spec-macros
-
 %define build_html 1
 %define build_pdf 0
+
+%include %_sourcedir/kernel-spec-macros
 
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
@@ -31,9 +30,9 @@ Name:           kernel-docs
 Summary:        Kernel Documentation
 License:        GPL-2.0-only
 Group:          Documentation/Man
-Version:        6.3.7
+Version:        6.3.9
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gb5f9ff5
+Release:        <RELEASE>.g0df701d
 %else
 Release:        0
 %endif
@@ -50,11 +49,26 @@ BuildRequires:  ImageMagick
 BuildRequires:  graphviz
 BuildRequires:  graphviz-gd
 BuildRequires:  graphviz-gnome
+%if ! 0%{?suse_version} || 0%{?suse_version} > 1500
+BuildRequires:  python3-base
 BuildRequires:  python3-Sphinx
 BuildRequires:  texlive-amscls
+%else
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
+BuildRequires:  python-packaging
+BuildRequires:  python-six
+BuildRequires:  python-Sphinx
+%else
+BuildRequires:  python3-Sphinx < 3
+%endif
+%endif
 BuildRequires:  texlive-anyfontsize
 %if %build_pdf
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
+BuildRequires:  python-Sphinx-latex
+%else
 BuildRequires:  python3-Sphinx-latex
+%endif
 BuildRequires:  texlive-adjustbox
 BuildRequires:  texlive-dejavu
 BuildRequires:  texlive-dejavu-fonts
@@ -67,13 +81,15 @@ BuildRequires:  texlive-zapfding
 %endif
 URL:            https://www.kernel.org/
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-b5f9ff562b088767ac46cc215eaecdd209a0b42a
+Provides:       %name-srchash-0df701dd2c208f4843cf219b4b26b533ada9bd34
 BuildArch:      noarch
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
 Source14:       series.conf
 Source16:       guards
 Source17:       apply-patches
+Source19:       kernel-binary-conflicts
+Source20:       obsolete-kmps
 Source21:       config.conf
 Source23:       supported.conf
 Source33:       check-for-config-changes
@@ -133,6 +149,7 @@ Source109:      patches.kernel.org.tar.bz2
 Source110:      patches.apparmor.tar.bz2
 Source111:      patches.rt.tar.bz2
 Source113:      patches.kabi.tar.bz2
+Source114:      patches.drm.tar.bz2
 Source120:      kabi.tar.bz2
 Source121:      sysctl.tar.bz2
 # These files are found in the kernel-source package:
@@ -141,6 +158,8 @@ NoSource:       3
 NoSource:       14
 NoSource:       16
 NoSource:       17
+NoSource:       19
+NoSource:       20
 NoSource:       21
 NoSource:       23
 NoSource:       33
@@ -200,6 +219,7 @@ NoSource:       109
 NoSource:       110
 NoSource:       111
 NoSource:       113
+NoSource:       114
 NoSource:       120
 NoSource:       121
 
@@ -231,7 +251,7 @@ These are HTML documents built from the current kernel sources.
 %endif
 
 %prep
-%setup -q -c -T -a 0 -a 100 -a 101 -a 102 -a 103 -a 104 -a 105 -a 106 -a 108 -a 109 -a 110 -a 111 -a 113 -a 120 -a 121
+%setup -q -c -T -a 0 -a 100 -a 101 -a 102 -a 103 -a 104 -a 105 -a 106 -a 108 -a 109 -a 110 -a 111 -a 113 -a 114 -a 120 -a 121
 cp -a linux-%srcversion/{COPYING,CREDITS,MAINTAINERS,README} .
 cd linux-%srcversion
 %_sourcedir/apply-patches %_sourcedir/series.conf %my_builddir %symbols
@@ -241,11 +261,19 @@ cd linux-%srcversion
 export LANG=en_US.utf8
 %if %build_html
 mkdir -p html
-make %{?make_arg} O=$PWD/html PYTHON=python3 htmldocs
+make %{?make_arg} O=$PWD/html \
+%if ! 0%{?suse_version} || 0%{?suse_version} > 1500
+	     PYTHON=python3 \
+%endif
+	     htmldocs
 %endif
 %if %build_pdf
 mkdir -p pdf
-make %{?make_arg} O=$PWD/pdf PYTHON=python3 pdfdocs
+make %{?make_arg} O=$PWD/pdf \
+%if ! 0%{?suse_version} || 0%{?suse_version} > 1500
+	     PYTHON=python3 \
+%endif
+	     pdfdocs
 %endif
 
 %install

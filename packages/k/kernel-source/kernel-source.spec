@@ -17,7 +17,7 @@
 
 
 %define srcversion 6.3
-%define patchversion 6.3.7
+%define patchversion 6.3.9
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -30,9 +30,9 @@
 %endif
 
 Name:           kernel-source
-Version:        6.3.7
+Version:        6.3.9
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gb5f9ff5
+Release:        <RELEASE>.g0df701d
 %else
 Release:        0
 %endif
@@ -49,7 +49,7 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-b5f9ff562b088767ac46cc215eaecdd209a0b42a
+Provides:       %name-srchash-0df701dd2c208f4843cf219b4b26b533ada9bd34
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
@@ -61,6 +61,8 @@ Source3:        kernel-source.rpmlintrc
 Source14:       series.conf
 Source16:       guards
 Source17:       apply-patches
+Source19:       kernel-binary-conflicts
+Source20:       obsolete-kmps
 Source21:       config.conf
 Source23:       supported.conf
 Source33:       check-for-config-changes
@@ -120,6 +122,7 @@ Source109:      patches.kernel.org.tar.bz2
 Source110:      patches.apparmor.tar.bz2
 Source111:      patches.rt.tar.bz2
 Source113:      patches.kabi.tar.bz2
+Source114:      patches.drm.tar.bz2
 Source120:      kabi.tar.bz2
 Source121:      sysctl.tar.bz2
 BuildArch:      noarch
@@ -210,7 +213,7 @@ Vanilla Linux kernel sources with minor build fixes.
 echo "Symbol(s): %symbols"
 
 # Unpack all sources and patches
-%setup -q -c -T -a 100 -a 101 -a 102 -a 103 -a 104 -a 105 -a 106 -a 108 -a 109 -a 110 -a 111 -a 113 -a 120 -a 121
+%setup -q -c -T -a 100 -a 101 -a 102 -a 103 -a 104 -a 105 -a 106 -a 108 -a 109 -a 110 -a 111 -a 113 -a 114 -a 120 -a 121
 
 %build
 %install
@@ -223,10 +226,6 @@ find . -xtype l -delete -printf "deleted '%f'\n"
 if test "%srcversion" != "%kernelrelease%variant"; then
 	mv linux-%srcversion linux-%kernelrelease%variant
 fi
-%if 0%{?usrmerged}
-# fix MODLIB so kmps install to /usr
-sed -ie 's,/lib/modules/,%{kernel_module_directory}/,' linux-%kernelrelease%variant/Makefile
-%endif
 
 %if %do_vanilla
 	cp -al \
@@ -234,6 +233,10 @@ sed -ie 's,/lib/modules/,%{kernel_module_directory}/,' linux-%kernelrelease%vari
 cd linux-%kernelrelease-vanilla
 %_sourcedir/apply-patches --vanilla %_sourcedir/series.conf %my_builddir %symbols
 rm -f $(find . -name ".gitignore")
+%if 0%{?usrmerged}
+# fix MODLIB so kmps install to /usr
+sed -ie 's,/lib/modules/,%{kernel_module_directory}/,' Makefile scripts/depmod.sh
+%endif
 # Hardlink duplicate files automatically (from package fdupes).
 %fdupes $PWD
 cd ..
@@ -246,6 +249,10 @@ rm -f $(find . -name ".gitignore")
 if [ -f %_sourcedir/localversion ] ; then
     cat %_sourcedir/localversion > localversion
 fi
+%if 0%{?usrmerged}
+# fix MODLIB so kmps install to /usr
+sed -ie 's,/lib/modules/,%{kernel_module_directory}/,' Makefile scripts/depmod.sh
+%endif
 # Hardlink duplicate files automatically (from package fdupes).
 %fdupes $PWD
 cd ..

@@ -18,12 +18,16 @@
 
 
 %define srcversion 6.3
-%define patchversion 6.3.7
+%define patchversion 6.3.9
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
 %define livepatch livepatch%{nil}
 %define livepatch_rt %{nil}
+%define sb_efi_only 0
+%define split_base 0
+%define split_optional 0
+%define supported_modules_check 0
 
 %include %_sourcedir/kernel-spec-macros
 
@@ -89,9 +93,6 @@ done )
 %{expand:%(eval "$(test -n "%cpu_arch_flavor" && tar -xjf %_sourcedir/config.tar.bz2 --to-stdout config/%cpu_arch_flavor)"; for config in %config_vars; do echo "%%global $config ${!config:-n}"; done)}
 %define split_extra ("%CONFIG_MODULES" == "y" && "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y")
 
-# Split Leap-only modules to kernel-*-optional subpackage?
-%define split_optional	0
-
 %if "%CONFIG_MODULES" != "y"
 	%define klp_symbols 0
 %endif
@@ -111,9 +112,9 @@ Name:           kernel-lpae
 Summary:        Kernel for LPAE enabled systems
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.3.7
+Version:        6.3.9
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gb5f9ff5
+Release:        <RELEASE>.g0df701d
 %else
 Release:        0
 %endif
@@ -225,29 +226,36 @@ Obsoletes:      microcode_ctl < 1.18
 %define _no_recompute_build_ids 1
 # prevent usr/lib/debug/boot/vmlinux-4.12.14-11.10-default-4.12.14-11.10.ppc64le.debug
 %undefine _unique_debug_names
-# dead network if installed on SLES10, otherwise it will work (mostly)
-Conflicts:      sysfsutils < 2.0
-Conflicts:      apparmor-profiles <= 2.1
-Conflicts:      apparmor-parser < 2.3
-# root-lvm only works with newer udevs
-Conflicts:      udev < 118
-Conflicts:      lvm2 < 2.02.33
-# Interface to hv_kvp_daemon changed
-Conflicts:      hyper-v < 4
+
+%{lua:	fd, err = io.open(rpm.expand('%_sourcedir') .. '/kernel-binary-conflicts')
+	if not fd then io.stderr:write(err) end
+	unpack = table.unpack or unpack
+	for l in fd:lines() do
+		if #l > 0 and l:sub(1,1) ~= '#' then
+			words = {} ; for w in l:gmatch("([^%s]+)%s*") do table.insert(words, w) end
+			package, version = unpack(words)
+			print('Conflicts: ' .. package .. ' < '.. version .. '\n')
+		end
+	end
+	fd:close()
+}
+
 %ifarch %ix86
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-b5f9ff562b088767ac46cc215eaecdd209a0b42a
-Provides:       kernel-srchash-b5f9ff562b088767ac46cc215eaecdd209a0b42a
+Provides:       kernel-%build_flavor-base-srchash-0df701dd2c208f4843cf219b4b26b533ada9bd34
+Provides:       kernel-srchash-0df701dd2c208f4843cf219b4b26b533ada9bd34
 # END COMMON DEPS
-Provides:       %name-srchash-b5f9ff562b088767ac46cc215eaecdd209a0b42a
+Provides:       %name-srchash-0df701dd2c208f4843cf219b4b26b533ada9bd34
 %obsolete_rebuilds %name
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
 Source14:       series.conf
 Source16:       guards
 Source17:       apply-patches
+Source19:       kernel-binary-conflicts
+Source20:       obsolete-kmps
 Source21:       config.conf
 Source23:       supported.conf
 Source33:       check-for-config-changes
@@ -307,6 +315,7 @@ Source109:      patches.kernel.org.tar.bz2
 Source110:      patches.apparmor.tar.bz2
 Source111:      patches.rt.tar.bz2
 Source113:      patches.kabi.tar.bz2
+Source114:      patches.drm.tar.bz2
 Source120:      kabi.tar.bz2
 Source121:      sysctl.tar.bz2
 # These files are found in the kernel-source package:
@@ -315,6 +324,8 @@ NoSource:       3
 NoSource:       14
 NoSource:       16
 NoSource:       17
+NoSource:       19
+NoSource:       20
 NoSource:       21
 NoSource:       23
 NoSource:       33
@@ -374,6 +385,7 @@ NoSource:       109
 NoSource:       110
 NoSource:       111
 NoSource:       113
+NoSource:       114
 NoSource:       120
 NoSource:       121
 
@@ -390,8 +402,27 @@ BuildArch:      i686
 %endif
 %endif
 
-# Will modules not listed in supported.conf abort the kernel build (0/1)?
-%define supported_modules_check 0
+%if %build_default
+%if "%CONFIG_PREEMPT_DYNAMIC" == "y"
+Provides:       kernel-preempt = %version-%release
+Provides:       kernel-preempt_%_target_cpu = %version-%source_rel
+%endif
+%endif
+
+%{lua:	fd, err = io.open(rpm.expand('%_sourcedir') .. '/obsolete-kmps')
+	if not fd then io.stderr:write(err) end
+	unpack = table.unpack or unpack
+	for l in fd:lines() do
+		if #l > 0 and l:sub(1,1) ~= '#' then
+			words = {} ; for w in l:gmatch("([^%s]+)%s*") do table.insert(words, w) end
+			package, version = unpack(words)
+			print('Obsoletes: ' .. package .. '-kmp-' .. rpm.expand('%build_flavor') .. ' <= '.. version .. '\n')
+			print('Provides: ' .. package .. '-kmp = ' .. version .. '.1\n')
+			print('Provides: ' .. package .. '-kmp-' .. rpm.expand('%build_flavor') .. ' = '.. version .. '.1\n')
+		end
+	end
+	fd:close()
+}
 
 %description
 The kernel for all 32-bit ARM platforms that support LPAE. This includes all
@@ -413,7 +444,7 @@ if test -e %_sourcedir/extra-symbols; then
 fi
 
 # Unpack all sources and patches
-%setup -q -c -T -a 0 -a 100 -a 101 -a 102 -a 103 -a 104 -a 105 -a 106 -a 108 -a 109 -a 110 -a 111 -a 113 -a 120 -a 121
+%setup -q -c -T -a 0 -a 100 -a 101 -a 102 -a 103 -a 104 -a 105 -a 106 -a 108 -a 109 -a 110 -a 111 -a 113 -a 114 -a 120 -a 121
 
 mkdir -p %kernel_build_dir
 
@@ -472,6 +503,10 @@ cd linux-%srcversion
 	--vanilla \
 %endif
 	%_sourcedir/series.conf .. $SYMBOLS
+%if 0%{?usrmerged}
+# fix MODLIB so kmps install to /usr
+sed -ie 's,/lib/modules/,%{kernel_module_directory}/,' Makefile scripts/depmod.sh
+%endif
 
 cd %kernel_build_dir
 
@@ -673,20 +708,12 @@ done
 
 %install
 
-%if 0%{?usrmerged}
-# add symlink for usrmerge so install scripts will just follow the
-# link and end up placing files in /usr/lib. The link will be
-# removed later and is not packaged here.
-mkdir -p %{buildroot}/usr/lib
-ln -s usr/lib %{buildroot}/lib
-%endif
-
 # get rid of /usr/lib/rpm/brp-strip-debug
 # strip removes too much from the vmlinux ELF binary
 export NO_BRP_STRIP_DEBUG=true
 export STRIP_KEEP_SYMTAB='*/vmlinux*'
 
-# /lib/modules/%kernelrelease-%build_flavor/source points to the source
+# %kernel_module_directory/%kernelrelease-%build_flavor/source points to the source
 # directory installed by kernel-devel. The kernel-%build_flavor-devel package
 # has a correct dependency on kernel-devel, but the brp check does not see
 # kernel-devel during build.
@@ -779,11 +806,13 @@ BRP_PESIGN_FILES="%modules_dir/%image"
 BRP_PESIGN_FILES="/boot/%image-%kernelrelease-%build_flavor"
 %endif
 %endif
+%if ! %sb_efi_only
 %ifarch s390x ppc64 ppc64le
 %if 0%{?usrmerged}
 BRP_PESIGN_FILES="%modules_dir/%image"
 %else
 BRP_PESIGN_FILES="/boot/%image-%kernelrelease-%build_flavor"
+%endif
 %endif
 %endif
 %if "%CONFIG_MODULE_SIG" == "y"
@@ -831,7 +860,7 @@ fi
 %if %install_vdso
 # Install the unstripped vdso's that are linked in the kernel image
 make vdso_install $MAKE_ARGS INSTALL_MOD_PATH=%buildroot
-rm -rf %buildroot/lib/modules/%kernelrelease-%build_flavor/vdso/.build-id
+rm -rf %buildroot%kernel_module_directory/%kernelrelease-%build_flavor/vdso/.build-id
 %endif
 
 # Create a dummy initrd with roughly the size the real one will have.
@@ -884,7 +913,11 @@ if [ %CONFIG_MODULES = y ]; then
             find %kernel_build_dir -name "*.ipa-clones" ! -size 0 | sed -e 's|^%kernel_build_dir/||' | sort > ipa-clones.list
             cp ipa-clones.list %rpm_install_dir/%cpu_arch/%build_flavor
             echo %obj_install_dir/%cpu_arch/%build_flavor/ipa-clones.list >> %my_builddir/livepatch-files.no_dir
-            tar -C %kernel_build_dir --verbatim-files-from -T ipa-clones.list -cf- | tar -C %rpm_install_dir/%cpu_arch/%build_flavor -xvf-
+            tar -C %kernel_build_dir \
+%if ! 0%{?suse_version} || 0%{?suse_version} >= 1500
+		    --verbatim-files-from \
+%endif
+		    -T ipa-clones.list -cf- | tar -C %rpm_install_dir/%cpu_arch/%build_flavor -xvf-
             cat ipa-clones.list | sed -e 's|^|%obj_install_dir/%cpu_arch/%build_flavor/|' >> %my_builddir/livepatch-files.no_dir
         %endif
     %endif
@@ -908,11 +941,11 @@ if [ %CONFIG_MODULES = y ]; then
     # We were building in %my_builddir/linux-%srcversion, but the sources will
     # later be installed in /usr/src/linux-%srcversion-%source_rel. Fix up the
     # build symlink.
-    rm -f %buildroot/lib/modules/%kernelrelease-%build_flavor/{source,build}
+    rm -f %buildroot%kernel_module_directory/%kernelrelease-%build_flavor/{source,build}
     ln -s %src_install_dir \
-	%buildroot/lib/modules/%kernelrelease-%build_flavor/source
+	%buildroot%kernel_module_directory/%kernelrelease-%build_flavor/source
     ln -s %obj_install_dir/%cpu_arch/%build_flavor \
-	%buildroot/lib/modules/%kernelrelease-%build_flavor/build
+	%buildroot%kernel_module_directory/%kernelrelease-%build_flavor/build
 
     # Abort if there are any undefined symbols
     msg="$(/sbin/depmod -F %buildroot/boot/System.map-%kernelrelease-%build_flavor \
@@ -939,8 +972,8 @@ if [ %CONFIG_MODULES = y ]; then
     # checksums. As the file is not included in the resulting RPM, it's
     # pointless to rely on its contents. Replacing by zeros to make the
     # checksums always the same for several builds of the same package.
-    test -s %buildroot/lib/modules/%kernelrelease-%build_flavor/modules.dep && \
-    dd if=/dev/zero of=%buildroot/lib/modules/%kernelrelease-%build_flavor/modules.dep ibs=$(stat -c%s %buildroot/lib/modules/%kernelrelease-%build_flavor/modules.dep) count=1
+    test -s %buildroot%kernel_module_directory/%kernelrelease-%build_flavor/modules.dep && \
+    dd if=/dev/zero of=%buildroot%kernel_module_directory/%kernelrelease-%build_flavor/modules.dep ibs=$(stat -c%s %buildroot%kernel_module_directory/%kernelrelease-%build_flavor/modules.dep) count=1
 
     res=0
     if test -e %my_builddir/kabi/%cpu_arch/symvers-%build_flavor; then
@@ -1005,10 +1038,6 @@ if [ %CONFIG_MODULES = y ]; then
 fi
 
 rm -rf %{buildroot}/lib/firmware
-%if 0%{?usrmerged}
-# remove usrmerge aid
-rm %{buildroot}/lib
-%endif
 
 add_dirs_to_filelist() {
     sed -rn '
@@ -1109,7 +1138,7 @@ add_dirs_to_filelist >> %my_builddir/kernel-devel.files
     done
 
     if [ %CONFIG_MODULES = y ]; then
-	MODULES=%{?usrmerged:usr/}lib/modules/%kernelrelease-%build_flavor
+	MODULES=%{lua: print(rpm.expand('%kernel_module_directory'):sub(2))}/%kernelrelease-%build_flavor
 	find "$MODULES" \
 %if 0%{?separate_vdso}
 	    -path "$MODULES/vdso" -prune -o \
@@ -1238,6 +1267,134 @@ fi
   --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
 %endif
 %files -f kernel-main.files
+
+%if "%CONFIG_MODULES" == "y" && %split_base
+%package base
+Summary:        Kernel for LPAE enabled systems - base modules
+Group:          System/Kernel
+Url:            http://www.kernel.org/
+Provides:       kernel-base = %version-%source_rel
+Provides:       multiversion(kernel)
+Conflicts:      %name = %version-%source_rel
+Requires(pre):  suse-kernel-rpm-scriptlets
+Requires(post): suse-kernel-rpm-scriptlets
+Requires:       suse-kernel-rpm-scriptlets
+Requires(preun): suse-kernel-rpm-scriptlets
+Requires(postun): suse-kernel-rpm-scriptlets
+Requires(pre):  coreutils awk
+# For /usr/lib/module-init-tools/weak-modules2
+Requires(post): suse-module-tools
+# For depmod (modutils is a dependency provided by both module-init-tools and
+# kmod-compat)
+Requires(post): modutils
+# This Requires is wrong, because the post/postun scripts have a
+# test -x update-bootloader, having perl-Bootloader is not a hard requirement.
+# But, there is no way to tell rpm or yast to schedule the installation
+# of perl-Bootloader before kernel-binary.rpm if both are in the list of
+# packages to install/update. Likewise, this is true for dracut.
+# Need a perl-Bootloader with /usr/lib/bootloader/bootloader_entry
+Requires(post): perl-Bootloader >= 0.4.15
+Requires(post): dracut
+# Install the package providing /etc/SuSE-release early enough, so that
+# the grub entry has correct title (bnc#757565)
+Requires(post): distribution-release
+# Do not install p-b and dracut for the install check, the %post script is
+# able to handle this
+#!BuildIgnore: perl-Bootloader dracut distribution-release
+# Remove some packages that are installed automatically by the build system,
+# but are not needed to build the kernel
+#!BuildIgnore: autoconf automake gettext-runtime libtool cvs gettext-tools udev insserv
+
+%ifarch s390 s390x
+%if %build_vanilla && 0%{?suse_version} < 1130
+BuildRequires:  dwarfextract
+%endif
+%endif
+%ifarch %arm
+BuildRequires:  u-boot-tools
+%endif
+%if 0%{?usrmerged}
+# make sure we have a post-usrmerge system
+Conflicts:      filesystem < 16
+%endif
+
+Obsoletes:      microcode_ctl < 1.18
+
+# Force bzip2 instead of lzma compression to
+# 1) allow install on older dist versions, and
+# 2) decrease build times (bsc#962356 boo#1175882)
+%define _binary_payload w9.bzdio
+# Do not recompute the build-id of vmlinux in find-debuginfo.sh (bsc#964063)
+%undefine _unique_build_ids
+%define _no_recompute_build_ids 1
+# prevent usr/lib/debug/boot/vmlinux-4.12.14-11.10-default-4.12.14-11.10.ppc64le.debug
+%undefine _unique_debug_names
+
+%{lua:	fd, err = io.open(rpm.expand('%_sourcedir') .. '/kernel-binary-conflicts')
+	if not fd then io.stderr:write(err) end
+	unpack = table.unpack or unpack
+	for l in fd:lines() do
+		if #l > 0 and l:sub(1,1) ~= '#' then
+			words = {} ; for w in l:gmatch("([^%s]+)%s*") do table.insert(words, w) end
+			package, version = unpack(words)
+			print('Conflicts: ' .. package .. ' < '.. version .. '\n')
+		end
+	end
+	fd:close()
+}
+
+%ifarch %ix86
+Conflicts:      libc.so.6()(64bit)
+%endif
+Provides:       kernel = %version-%source_rel
+Provides:       kernel-%build_flavor-base-srchash-0df701dd2c208f4843cf219b4b26b533ada9bd34
+Provides:       kernel-srchash-0df701dd2c208f4843cf219b4b26b533ada9bd34
+
+%obsolete_rebuilds %name-base
+%ifarch %ix86
+Conflicts:      libc.so.6()(64bit)
+%endif
+
+%description base
+The kernel for all 32-bit ARM platforms that support LPAE. This includes all
+Cortex A15 based SoCs, like the Exynos5, OMAP5 or Calxeda ECX-2000.
+
+This package contains only the base modules, required in all installs.
+
+
+%source_timestamp
+%pre base
+/usr/lib/module-init-tools/kernel-scriptlets/rpm-pre --name "%name-base" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
+
+%post base
+/usr/lib/module-init-tools/kernel-scriptlets/rpm-post --name "%name-base" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
+
+%preun base
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/rpm-preun --name "%name-base" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
+
+%postun base
+%run_if_exists /usr/lib/module-init-tools/kernel-scriptlets/rpm-postun --name "%name-base" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
+
+%posttrans base
+/usr/lib/module-init-tools/kernel-scriptlets/rpm-posttrans --name "%name-base" \
+  --version "%version" --release "%release" --kernelrelease "%kernelrelease" \
+  --image "%image" --flavor "%build_flavor" --variant "%variant" \
+  --usrmerged "0%{?usrmerged}" --certs "%certs" "$@"
+
+%files base -f kernel-base.files
+%endif
 
 %package extra
 Summary:        Kernel for LPAE enabled systems - Unsupported kernel modules
