@@ -522,6 +522,7 @@ interface(`container_filetrans_named_content',`
     files_var_lib_filetrans($1, container_ro_file_t, dir, "kata-containers")
     files_var_lib_filetrans($1, container_var_lib_t, dir, "containerd")
     files_var_lib_filetrans($1, container_var_lib_t, dir, "buildkit")
+    files_var_lib_filetrans($1, container_ro_file_t, dir, "shared")
 
     filetrans_pattern($1, container_var_lib_t, container_file_t, dir, "_data")
     filetrans_pattern($1, container_var_lib_t, container_ro_file_t, file, "config.env")
@@ -997,7 +998,6 @@ interface(`container_kubelet_domtrans',`
 interface(`container_kubelet_run',`
 	gen_require(`
 		type kubelet_t;
-		class dbus send_msg;
 	')
 
 	container_kubelet_domtrans($1)

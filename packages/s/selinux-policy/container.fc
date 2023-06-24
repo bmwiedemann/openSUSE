@@ -59,6 +59,7 @@
 /etc/crio(/.*)?		gen_context(system_u:object_r:container_config_t,s0)
 /exports(/.*)?		gen_context(system_u:object_r:container_var_lib_t,s0)
 
+/var/lib/shared(/.*)?	gen_context(system_u:object_r:container_ro_file_t,s0)
 /var/lib/registry(/.*)?	gen_context(system_u:object_r:container_var_lib_t,s0)
 /var/lib/lxc(/.*)?	gen_context(system_u:object_r:container_var_lib_t,s0)
 /var/lib/lxd(/.*)?	gen_context(system_u:object_r:container_var_lib_t,s0)
@@ -111,10 +112,15 @@ HOME_DIR/\.local/share/containers/storage/volumes/[^/]*/.*	gen_context(system_u:
 /var/lib/containers/storage/overlay2-images(/.*)?	gen_context(system_u:object_r:container_ro_file_t,s0)
 /var/lib/ocid(/.*)?	gen_context(system_u:object_r:container_var_lib_t,s0)
 /var/lib/ocid/sandboxes(/.*)?	gen_context(system_u:object_r:container_ro_file_t,s0)
+
+/var/cache/containers(/.*)?	gen_context(system_u:object_r:container_var_lib_t,s0)
 /var/cache/kata-containers(/.*)?	gen_context(system_u:object_r:container_ro_file_t,s0)
 /var/lib/kata-containers(/.*)?	gen_context(system_u:object_r:container_ro_file_t,s0)
 
 /var/run/kata-containers(/.*)?	gen_context(system_u:object_r:container_kvm_var_run_t,s0)
+
+/var/local-path-provisioner(/.*)?		gen_context(system_u:object_r:container_file_t,s0)
+/opt/local-path-provisioner(/.*)?		gen_context(system_u:object_r:container_file_t,s0)
 
 /var/lib/origin(/.*)?	gen_context(system_u:object_r:container_file_t,s0)
 /var/lib/kubernetes/pods(/.*)?	gen_context(system_u:object_r:container_file_t,s0)

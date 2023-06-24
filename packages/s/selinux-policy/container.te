@@ -1,4 +1,4 @@
-policy_module(container, 2.210.0)
+policy_module(container, 2.219.0)
 
 gen_require(`
 	class passwd rootok;
@@ -16,6 +16,13 @@ gen_require(`
 ##  </p>
 ## </desc>
 gen_tunable(container_connect_any, false)
+
+## <desc>
+##  <p>
+##  Allow all container domains to read cert files and directories
+##  </p>
+## </desc>
+gen_tunable(container_read_certs, false)
 
 ## <desc>
 ##  <p>
@@ -81,7 +88,7 @@ ifdef(`enable_mls',`
 	range_transition container_runtime_t conmon_exec_t:process s0;
 ')
 
-type spc_t, container_domain;
+type spc_t;
 domain_type(spc_t)
 role system_r types spc_t;
 
@@ -169,6 +176,7 @@ allow container_runtime_domain self:tcp_socket create_stream_socket_perms;
 allow container_runtime_domain self:udp_socket create_socket_perms;
 allow container_runtime_domain self:capability2 block_suspend;
 allow container_runtime_domain container_port_t:tcp_socket name_bind;
+allow container_runtime_domain port_t:icmp_socket name_bind;
 allow container_runtime_domain self:filesystem associate;
 allow container_runtime_domain self:packet_socket create_socket_perms;
 allow container_runtime_domain self:socket create_socket_perms;
@@ -205,19 +213,24 @@ manage_dirs_pattern(container_runtime_domain, container_home_t, container_home_t
 manage_lnk_files_pattern(container_runtime_domain, container_home_t, container_home_t)
 userdom_admin_home_dir_filetrans(container_runtime_domain, container_home_t, dir, ".container")
 userdom_manage_user_home_content(container_runtime_domain)
+userdom_map_user_home_files(container_runtime_t)
 
 manage_dirs_pattern(container_runtime_domain, container_config_t, container_config_t)
 manage_files_pattern(container_runtime_domain, container_config_t, container_config_t)
-files_etc_filetrans(container_runtime_domain, container_config_t, dir, "container")
+files_etc_filetrans(container_runtime_domain, container_config_t, dir, "containers")
 
 manage_dirs_pattern(container_runtime_domain, container_lock_t, container_lock_t)
 manage_files_pattern(container_runtime_domain, container_lock_t, container_lock_t)
 files_lock_filetrans(container_runtime_domain, container_lock_t, { dir file }, "lxc")
+files_manage_generic_locks(container_runtime_domain)
 
 manage_dirs_pattern(container_runtime_domain, container_log_t, container_log_t)
 manage_files_pattern(container_runtime_domain, container_log_t, container_log_t)
 manage_lnk_files_pattern(container_runtime_domain, container_log_t, container_log_t)
+
+logging_read_syslog_pid(container_runtime_domain)
 logging_log_filetrans(container_runtime_domain, container_log_t, { dir file lnk_file })
+
 allow container_runtime_domain container_log_t:dir_file_class_set { relabelfrom relabelto };
 filetrans_pattern(container_runtime_domain, container_var_lib_t, container_log_t, file, "container-json.log")
 allow container_runtime_domain { container_var_lib_t container_ro_file_t }:file entrypoint;
@@ -243,8 +256,23 @@ manage_chr_files_pattern(container_runtime_domain, container_ro_file_t, containe
 manage_blk_files_pattern(container_runtime_domain, container_ro_file_t, container_ro_file_t)
 manage_files_pattern(container_runtime_domain, container_ro_file_t, container_ro_file_t)
 manage_lnk_files_pattern(container_runtime_domain, container_ro_file_t, container_ro_file_t)
+manage_sock_files_pattern(container_runtime_domain, container_ro_file_t, container_ro_file_t)
 allow container_runtime_domain container_ro_file_t:dir_file_class_set { relabelfrom relabelto };
 can_exec(container_runtime_domain, container_ro_file_t)
+
+manage_dirs_pattern(container_runtime_domain, container_var_lib_t, container_var_lib_t)
+manage_files_pattern(container_runtime_domain, container_var_lib_t, container_var_lib_t)
+manage_lnk_files_pattern(container_runtime_domain, container_var_lib_t, container_var_lib_t)
+manage_chr_files_pattern(container_runtime_domain, container_var_lib_t, container_var_lib_t)
+manage_blk_files_pattern(container_runtime_domain, container_var_lib_t, container_var_lib_t)
+manage_sock_files_pattern(container_runtime_domain, container_var_lib_t, container_var_lib_t)
+
+manage_dirs_pattern(container_runtime_domain, container_ro_file_t, container_ro_file_t)
+manage_files_pattern(container_runtime_domain, container_ro_file_t, container_ro_file_t)
+manage_lnk_files_pattern(container_runtime_domain, container_ro_file_t, container_ro_file_t)
+manage_chr_files_pattern(container_runtime_domain, container_ro_file_t, container_ro_file_t)
+manage_blk_files_pattern(container_runtime_domain, container_ro_file_t, container_ro_file_t)
+
 filetrans_pattern(container_runtime_domain, container_var_lib_t, container_ro_file_t, dir, "init")
 filetrans_pattern(container_runtime_domain, container_var_lib_t, container_ro_file_t, dir, "overlay")
 filetrans_pattern(container_runtime_domain, container_var_lib_t, container_ro_file_t, dir, "overlay2")
@@ -262,6 +290,7 @@ manage_sock_files_pattern(container_runtime_domain, container_var_lib_t, contain
 manage_lnk_files_pattern(container_runtime_domain, container_var_lib_t, container_var_lib_t)
 allow container_runtime_domain container_var_lib_t:dir_file_class_set { relabelfrom relabelto };
 files_var_lib_filetrans(container_runtime_domain, container_var_lib_t, { dir file lnk_file })
+files_var_filetrans(container_runtime_domain, container_var_lib_t, dir, "containers")
 
 manage_dirs_pattern(container_runtime_domain, container_var_run_t, container_var_run_t)
 manage_files_pattern(container_runtime_domain, container_var_run_t, container_var_run_t)
@@ -270,17 +299,30 @@ manage_sock_files_pattern(container_runtime_domain, container_var_run_t, contain
 manage_lnk_files_pattern(container_runtime_domain, container_var_run_t, container_var_run_t)
 files_pid_filetrans(container_runtime_domain, container_var_run_t, { dir file lnk_file sock_file })
 files_tmp_filetrans(container_runtime_domain, container_var_run_t, { dir file lnk_file sock_file })
+allow container_runtime_domain container_var_run_t:dir_file_class_set relabelfrom;
 
 allow container_runtime_domain container_devpts_t:chr_file { relabelfrom rw_chr_file_perms setattr_chr_file_perms };
 term_create_pty(container_runtime_domain, container_devpts_t)
 term_use_all_ttys(container_runtime_domain)
 term_use_all_inherited_terms(container_runtime_domain)
 
+mls_file_read_to_clearance(container_runtime_t)
+mls_file_relabel_to_clearance(container_runtime_t)
+mls_file_write_to_clearance(container_runtime_t)
+mls_process_read_to_clearance(container_runtime_t)
+mls_process_write_to_clearance(container_runtime_t)
+mls_socket_read_to_clearance(container_runtime_t)
+mls_socket_write_to_clearance(container_runtime_t)
+mls_sysvipc_read_to_clearance(container_runtime_t)
+mls_sysvipc_write_to_clearance(container_runtime_t)
+
 kernel_read_network_state(container_runtime_domain)
 kernel_read_all_sysctls(container_runtime_domain)
 kernel_rw_net_sysctls(container_runtime_domain)
 kernel_setsched(container_runtime_domain)
 kernel_rw_all_sysctls(container_runtime_domain)
+kernel_mounton_all_proc(container_runtime_domain)
+fs_getattr_all_fs(container_runtime_domain)
 
 domain_obj_id_change_exemption(container_runtime_t)
 domain_subj_id_change_exemption(container_runtime_t)
@@ -390,7 +432,10 @@ optional_policy(`
 ')
 
 optional_policy(`
-	iptables_domtrans(container_runtime_domain)
+	gen_require(`
+		role unconfined_r;
+	')
+	iptables_run(container_runtime_domain, unconfined_r)
 
 	container_read_pid_files(iptables_t)
 	container_read_state(iptables_t)
@@ -458,33 +503,38 @@ dev_rw_loop_control(container_runtime_domain)
 dev_rw_lvm_control(container_runtime_domain)
 dev_read_mtrr(container_runtime_domain)
 
+userdom_map_user_home_files(container_runtime_t)
+
 files_getattr_isid_type_dirs(container_runtime_domain)
 files_manage_isid_type_dirs(container_runtime_domain)
 files_manage_isid_type_files(container_runtime_domain)
 files_manage_isid_type_symlinks(container_runtime_domain)
 files_manage_isid_type_chr_files(container_runtime_domain)
 files_manage_isid_type_blk_files(container_runtime_domain)
+files_manage_etc_dirs(container_runtime_domain)
+files_manage_etc_files(container_runtime_domain)
 files_exec_isid_files(container_runtime_domain)
 files_mounton_isid(container_runtime_domain)
 files_mounton_non_security(container_runtime_domain)
 files_mounton_isid_type_chr_file(container_runtime_domain)
 
-fs_mount_all_fs(container_runtime_domain)
-fs_unmount_all_fs(container_runtime_domain)
-fs_remount_all_fs(container_runtime_domain)
 files_mounton_isid(container_runtime_domain)
+fs_getattr_all_fs(container_runtime_domain)
+fs_list_hugetlbfs(container_runtime_domain)
 fs_manage_cgroup_dirs(container_runtime_domain)
 fs_manage_cgroup_files(container_runtime_domain)
-fs_rw_nsfs_files(container_runtime_domain)
-fs_relabelfrom_xattr_fs(container_runtime_domain)
-fs_relabelfrom_tmpfs(container_runtime_domain)
-fs_read_tmpfs_symlinks(container_runtime_domain)
-fs_getattr_all_fs(container_runtime_domain)
-fs_rw_inherited_tmpfs_files(container_runtime_domain)
-fs_read_tmpfs_symlinks(container_runtime_domain)
-fs_search_tmpfs(container_runtime_domain)
-fs_list_hugetlbfs(container_runtime_domain)
 fs_manage_hugetlbfs_files(container_runtime_domain)
+fs_mount_all_fs(container_runtime_domain)
+fs_read_tmpfs_symlinks(container_runtime_domain)
+fs_read_tmpfs_symlinks(container_runtime_domain)
+fs_relabelfrom_tmpfs(container_runtime_domain)
+fs_relabelfrom_xattr_fs(container_runtime_domain)
+fs_remount_all_fs(container_runtime_domain)
+fs_rw_inherited_tmpfs_files(container_runtime_domain)
+fs_rw_nsfs_files(container_runtime_domain)
+fs_search_tmpfs(container_runtime_domain)
+fs_set_xattr_fs_quotas(container_runtime_domain)
+fs_unmount_all_fs(container_runtime_domain)
 
 
 term_use_generic_ptys(container_runtime_domain)
@@ -561,6 +611,10 @@ tunable_policy(`container_use_cephfs',`
 	manage_dirs_pattern(container_domain, cephfs_t, cephfs_t)
 	exec_files_pattern(container_domain, cephfs_t, cephfs_t)
 	allow container_domain cephfs_t:file execmod;
+')
+
+tunable_policy(`container_read_certs',`
+	miscfiles_read_all_certs(container_domain)
 ')
 
 gen_require(`
@@ -648,12 +702,12 @@ optional_policy(`
 		role unconfined_r;
 	')
 	role unconfined_r types container_user_domain;
+	role unconfined_r types spc_t;
 	unconfined_domain(container_runtime_t)
 	unconfined_run_to(container_runtime_t, container_runtime_exec_t)
-	role_transition unconfined_r container_runtime_exec_t system_r;
 	allow container_domain unconfined_domain_type:fifo_file { rw_fifo_file_perms map };
 	allow container_runtime_domain unconfined_t:fifo_file setattr;
-	allow unconfined_domain_type container_domain:process {transition dyntransition };
+	allow unconfined_domain_type container_domain:process {transition dyntransition};
 	allow unconfined_t unlabeled_t:key manage_key_perms;
 	allow container_runtime_t unconfined_t:process transition;
 	allow unconfined_domain_type { container_var_lib_t container_ro_file_t }:file entrypoint;
@@ -692,7 +746,7 @@ tunable_policy(`container_connect_any',`
 #
 # spc local policy
 #
-allow spc_t { container_var_lib_t container_ro_file_t }:file entrypoint;
+allow spc_t { container_file_t container_var_lib_t container_ro_file_t }:file entrypoint;
 role system_r types spc_t;
 
 domtrans_pattern(container_runtime_domain, container_ro_file_t, spc_t)
@@ -700,17 +754,20 @@ domtrans_pattern(container_runtime_domain, container_var_lib_t, spc_t)
 domtrans_pattern(container_runtime_domain, fusefs_t, spc_t)
 fs_tmpfs_filetrans(spc_t, container_file_t, { dir file lnk_file })
 
-allow container_runtime_domain spc_t:process2 nnp_transition;
+allow container_runtime_domain spc_t:process2 { nnp_transition nosuid_transition };
+
 admin_pattern(spc_t, kubernetes_file_t)
 
 allow spc_t container_runtime_domain:fifo_file manage_fifo_file_perms;
 allow spc_t { container_ro_file_t container_file_t }:system module_load;
 
-allow container_runtime_domain spc_t:process { setsched signal_perms };
+allow container_runtime_domain spc_t:process { dyntransition setsched signal_perms };
 ps_process_pattern(container_runtime_domain, spc_t)
 allow container_runtime_domain spc_t:socket_class_set { relabelto relabelfrom };
 allow spc_t unlabeled_t:key manage_key_perms;
 allow spc_t unlabeled_t:socket_class_set create_socket_perms;
+fs_fusefs_entrypoint(spc_t)
+corecmd_entrypoint_all_executables(spc_t)
 
 init_dbus_chat(spc_t)
 
@@ -731,6 +788,7 @@ optional_policy(`
 	# This should eventually be in upstream policy.
 	# https://github.com/fedora-selinux/selinux-policy/pull/806
 	allow spc_t domain:bpf { map_create map_read map_write prog_load prog_run };
+	allow daemon spc_t:dbus send_msg;
 ')
 
 optional_policy(`
@@ -744,7 +802,10 @@ optional_policy(`
 	gen_require(`
 		attribute virt_domain;
 		type virtd_t;
+		role unconfined_r;
 	')
+	role unconfined_r types virt_domain;
+	role unconfined_r types virtd_t;
 	container_spc_read_state(virt_domain)
 	container_spc_rw_pipes(virt_domain)
 	allow container_runtime_t virtd_t:process transition;
@@ -857,7 +918,7 @@ dontaudit container_domain self:capability2  block_suspend ;
 allow container_domain self:unix_stream_socket { sendto create_stream_socket_perms };
 fs_rw_onload_sockets(container_domain)
 fs_fusefs_entrypoint(container_domain)
-
+fs_fusefs_entrypoint(spc_t)
 
 container_read_share_files(container_domain)
 container_exec_share_files(container_domain)
@@ -998,7 +1059,6 @@ allow container_net_domain self:socket create_socket_perms;
 allow container_net_domain self:rawip_socket create_stream_socket_perms;
 allow container_net_domain self:netlink_kobject_uevent_socket create_socket_perms;
 allow container_net_domain self:netlink_xfrm_socket create_netlink_socket_perms;
-
 
 kernel_unlabeled_domtrans(container_runtime_domain, spc_t)
 kernel_unlabeled_entry_type(spc_t)
@@ -1188,6 +1248,8 @@ optional_policy(`
 		attribute userdomain;
 	')
 
+	allow userdomain container_domain:process transition;
+
 	can_exec(userdomain, container_runtime_exec_t)
 	container_manage_files(userdomain)
 	container_manage_share_dirs(userdomain)
@@ -1280,6 +1342,7 @@ logging_send_syslog_msg(container_kvm_t)
 optional_policy(`
 	qemu_entry_type(container_kvm_t)
 	qemu_exec(container_kvm_t)
+	allow container_kvm_t qemu_exec_t:file { entrypoint execute execute_no_trans getattr ioctl lock map open read };
 ')
 
 manage_sock_files_pattern(container_kvm_t, container_file_t, container_file_t)
@@ -1316,8 +1379,8 @@ optional_policy(`
 ')
 
 tunable_policy(`container_use_devices',`
-	allow container_domain device_node:chr_file rw_chr_file_perms;
-	allow container_domain device_node:blk_file rw_blk_file_perms;
+	allow container_domain device_node:chr_file {rw_chr_file_perms map};
+	allow container_domain device_node:blk_file {rw_blk_file_perms map};
 ')
 
 tunable_policy(`virt_sandbox_use_sys_admin',`
@@ -1384,7 +1447,6 @@ optional_policy(`
 	gen_require(`
 		type sysadm_t;
 		role sysadm_r;
-		attribute userdomain;
 		role unconfined_r;
 	')
 
@@ -1403,6 +1465,7 @@ allow container_device_t device_node:chr_file rw_chr_file_perms;
 container_domain_template(container_device_plugin, container)
 allow container_device_plugin_t device_node:chr_file rw_chr_file_perms;
 dev_rw_sysfs(container_device_plugin_t)
+kernel_read_debugfs(container_device_plugin_t)
 container_kubelet_stream_connect(container_device_plugin_t)
 
 # Standard container which needs to be allowed to use any device and
@@ -1441,3 +1504,32 @@ tunable_policy(`sshd_launch_containers',`
 	container_runtime_domtrans(sshd_t)
 	dontaudit systemd_logind_t iptables_var_run_t:dir read;
 ')
+
+role container_user_r;
+userdom_restricted_user_template(container_user)
+userdom_manage_home_role(container_user_r, container_user_t)
+
+allow container_user_t container_domain:process { getattr getcap getsched sigchld sigkill signal signull sigstop };
+
+role container_user_r types container_domain;
+role container_user_r types container_user_domain;
+role container_user_r types container_net_domain;
+role container_user_r types container_file_type;
+container_runtime_run(container_user_t, container_user_r)
+
+fs_manage_cgroup_dirs(container_user_t)
+fs_manage_cgroup_files(container_user_t)
+
+selinux_compute_access_vector(container_user_t)
+systemd_dbus_chat_hostnamed(container_user_t)
+systemd_start_systemd_services(container_user_t)
+
+
+allow container_domain container_file_t:file entrypoint;
+allow container_domain container_ro_file_t:file { entrypoint execmod execute execute_no_trans getattr ioctl lock map open read };
+allow container_domain container_var_lib_t:file entrypoint;
+allow container_domain fusefs_t:file { append create entrypoint execmod execute execute_no_trans getattr ioctl link lock map mounton open read rename setattr unlink watch watch_reads write };
+
+corecmd_entrypoint_all_executables(container_kvm_t)
+allow svirt_sandbox_domain exec_type:file { entrypoint execute execute_no_trans getattr ioctl lock map open read };
+allow svirt_sandbox_domain mountpoint:file entrypoint;

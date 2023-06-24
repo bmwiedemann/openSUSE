@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun 22 12:14:15 UTC 2023 - jsegitz@suse.com
+
+- Update to version 20230622:
+  * Allow keyutils_dns_resolver_exec_t be an entrypoint
+  * Allow collectd_t read network state symlinks
+  * Revert "Allow collectd_t read proc_net link files"
+  * Allow nfsd_t to list exports_t dirs
+  * Allow cupsd dbus chat with xdm
+  * Allow haproxy read hardware state information
+  * Label /dev/userfaultfd with userfaultfd_t
+  * Allow blueman send general signals to unprivileged user domains
+  * Allow dkim-milter domain transition to sendmail
+
+-------------------------------------------------------------------
 Tue Apr 25 15:12:47 UTC 2023 - cathy.hu@suse.com
 
 - Update to version 20230425:
