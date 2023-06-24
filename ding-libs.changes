@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun 20 09:07:05 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to 0.6.2:
+  * Minor maintenance update:
+    INI: Silent ini_argument match failures
+    INI: Fix detection of error message
+- Remove patches fixed upstream
+  * INI-Fix-detection-of-error-messages.patch
+  * INI-Silence-ini_augment-match-failures.patch
+  * TEST-validators_ut_check-Fix-fail-with-new-glibc.patch
+  * INI-Remove-definiton-of-TRACE_LEVEL.patch
+- Use github sources
+
+-------------------------------------------------------------------
 Tue Jun 18 08:50:40 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch fixing errors writeout to stdout:
