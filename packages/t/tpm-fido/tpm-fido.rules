@@ -1,0 +1,2 @@
+KERNEL=="tpmrm[0-9]*", MODE="0660", GROUP="tss"
+KERNEL=="uhid", MODE="0660", GROUP="tss"

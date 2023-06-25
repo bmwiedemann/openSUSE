@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Fri Jun 23 14:15:56 UTC 2023 - dheidler@suse.de
+
+- Update to version 20230621.5f8828b:
+  * Add build/test workflow
+  * Fix builds on 32bit architectures
+
+-------------------------------------------------------------------
+Tue Jun 20 01:51:03 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Add BuildRequires: golang(API) >= 1.16 (min version per go.mod)
+  This or metapackage BuildRequires: go are recommended to pull in
+  the Go toolchain.
+- Drop Requires: golang-packaging. The original macros for file
+  movements into GOPATH are obsolete with Go modules. Macro
+  go_nostrip is no longer needed with current binutils and Go.
+- Remove manual call to strip the binary. Go binaries are stripped
+  automatically in the default configuration.
+  Refs boo#1210938
+  * GNU strip circa 2016 would incorrectly strip Go intermediate
+    step .a binaries (which are not .a ar archives) and write out
+    an invalid binary instead of erroring on unrecognized format.
+  * Error manifested in Go applications as fmt.a: go archive is
+    missing __.PKGDEF on OBS built Go binaries which had passed
+    their binary build step but fail at debuginfo creation step
+    (which involves binary stripping).
+  * The primary use of Go intermediate step .a binaries was for a
+    precompiled standard library cache. The .a files comprised
+    large fraction of the on-disk <go1.20 toolchain package size.
+  * go1.20+ now use the normal Go build cache for the Go standard
+    library. Go intermediate step .a archives are no longer part of
+    the regular build process and not affected by GNU strip
+    misidentifying them as ar archives.
+    https://go.dev/doc/go1.20#go-command
+- Use _service mode manual as better alias name than disabled
+
+-------------------------------------------------------------------
+Mon Jun 19 12:59:56 UTC 2023 - Dominik Heidler <dheidler@suse.de>
+
+- Initial Packaging

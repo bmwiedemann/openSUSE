@@ -1,0 +1,12 @@
+[Unit]
+Description=TPM FIDO
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/tpm-fido
+Restart=on-failure
+Slice=session.slice
+Environment=DISPLAY=:0.0
+
+[Install]
+WantedBy=basic.target
