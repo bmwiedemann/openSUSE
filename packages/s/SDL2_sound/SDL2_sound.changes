@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 25 05:54:59 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 2.0.1+g60 (53f66a30)
+  * Avoid division by zero with certain uncompressed WAV files
+  * A pkgconfig file was added
+
+-------------------------------------------------------------------
 Wed Mar 30 13:26:51 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Move to 2.0.1.g17 (df3fc77)

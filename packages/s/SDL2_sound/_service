@@ -3,9 +3,9 @@
 		<param name="filename">SDL_sound</param>
 		<param name="scm">git</param>
 		<param name="url">https://github.com/icculus/SDL_sound</param>
-		<param name="revision">df3fc779774c2c5dc1147239da1af858c88f1a74</param>
+		<param name="revision">53f66a30755ad0db12524b22c0553dd63d64377e</param>
 		<param name="parent-tag">v2.0.1</param>
-		<param name="versionformat">2.0.1.g@TAG_OFFSET@</param>
+		<param name="versionformat">2.0.1+g@TAG_OFFSET@</param>
 	</service>
 	<service name="recompress" mode="disabled">
 		<param name="file">*.tar</param>

@@ -1,7 +1,7 @@
 #
 # spec file for package SDL2_sound
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           SDL2_sound
 %define lname	libSDL2_sound2
-Version:        2.0.1.g17
+Version:        2.0.1+g60
 Release:        0
 Summary:        Sound Sample Library for SDL (Simple DirectMedia Layer)
 License:        LGPL-2.1-or-later
@@ -87,6 +87,8 @@ on-the-fly and behind-the-scenes.
 %files devel
 %_bindir/playsound*
 %_includedir/SDL2/
+%_libdir/cmake/
 %_libdir/lib*.so
+%_libdir/pkgconfig/*.pc
 
 %changelog
