@@ -41,12 +41,14 @@
 %bcond_without arm_bti
 %bcond_without system_icu
 %bcond_without ffmpeg_51
+%bcond_without qt6
 %else
 %bcond_with system_harfbuzz
 %bcond_with system_freetype
 %bcond_with arm_bti
 %bcond_with system_icu
 %bcond_with ffmpeg_51
+%bcond_with qt6
 %endif
 %bcond_with system_avif
 # LLVM version
@@ -307,6 +309,10 @@ BuildRequires:  pkgconfig(libyuv)
 %if %{with qt}
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Widgets)
+%endif
+%if %{with qt6}
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Widgets)
 %endif
 %if %{with clang}
 %if 0%{?suse_version} < 1550
@@ -825,6 +831,9 @@ myconf_gn+=" gtk_version=4"
 %endif
 %if %{without qt}
 myconf_gn+=" use_qt=false"
+%endif
+%if %{with qt6}
+myconf_gn+=" use_qt6=true"
 %endif
 # See dependency logic in third_party/BUILD.gn
 %if %{with system_harfbuzz}
