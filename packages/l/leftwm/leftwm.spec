@@ -1,7 +1,7 @@
 #
 # spec file for package leftwm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,21 @@
 
 
 Name:           leftwm
-Version:        0.4.0+git56
+Version:        0.4.2
 Release:        0
 Summary:        A tiling window manager for adventurers
 License:        Apache-2.0 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR MPL-2.0) AND BSD-2-Clause AND BSD-3-Clause AND (MIT OR Unlicense)
 Group:          System/GUI/Other
 URL:            https://github.com/leftwm/leftwm
-Source0:        %{name}-%{version}.tar.xz
-Source1:        vendor.tar.xz
+Source0:        %{name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
 Source2:        cargo_config
 Source3:        %{name}-rpmlintrc
 BuildRequires:  cargo-packaging
 BuildRequires:  libX11-devel
 BuildRequires:  libXinerama-devel
 BuildRequires:  libXrandr-devel
+BuildRequires:  zstd
 Recommends:     xorg-x11-server
 Suggests:       polybar
 Suggests:       lemonbar

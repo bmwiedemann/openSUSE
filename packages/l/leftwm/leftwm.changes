@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jun 25 07:15:33 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 0.4.2:
+  * prepare 0.4.2 release (#1089)
+  * Add Optional Behavior Settings for FocusNextTag and
+    FocusPreviousTag (#1086)
+  * feat(leftwm-check): Add a check for other binaries to
+    leftwm-check so that packagers can ensure all current binaries
+    are installed. (#1077)
+  * update deps and fix builderror with `git_version` macro (#1075)
+  * fix basic_lemonbar template.liquid (#1080)
+  * fix - when window gets detroyed, find the last focused (#1055)
+  * on entering fullscreen, save order. On exit, restore. (#1052)
+  * docs(themes/basic_eww): correct writing and improve formatting
+    (#1076)
+  * Make configuration errors more visible (#1072)
+  * Simplify async tests with `tokio::test` (#1069)
+- Added _service file
+
+-------------------------------------------------------------------
 Fri Feb  3 10:24:40 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Add suggested packages with leftwm
