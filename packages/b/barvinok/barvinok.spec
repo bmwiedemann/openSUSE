@@ -1,7 +1,7 @@
 #
 # spec file for package barvinok
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libbarvinok23
 Name:           barvinok
-Version:        0.41.6
+Version:        0.41.7
 Release:        0
 Summary:        Library for computing homotopy continuation of roots
 License:        GPL-2.0-or-later
@@ -31,8 +31,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  glpk-devel
 BuildRequires:  libtool
 BuildRequires:  ntl-devel
-BuildRequires:  pkgconfig(gmpxx)
-BuildRequires:  pkgconfig(isl)
+BuildRequires:  pkgconfig(gmp)
+BuildRequires:  pkgconfig(isl) >= 0.21
 BuildRequires:  pkgconfig(polylibgmp)
 Provides:       bundled(4ti2) = 1.3.1
 
@@ -52,6 +52,8 @@ of one dimensional sections of bivariate complex polynomials.
 Summary:        Development files for PolyLib
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
+Requires:       pkgconfig(gmp)
+Requires:       pkgconfig(isl)
 
 %description devel
 This is a library for computing homotopy continuation of a given root of one
@@ -88,7 +90,6 @@ find %buildroot -type f -name "*.la" -delete -print
 %files
 %_bindir/barvinok_*
 %_bindir/iscc
-%_bindir/polytope_scan
 
 %files -n %lname
 %_libdir/libbarvinok.so.23*
