@@ -16,8 +16,6 @@
 #
 
 
-%global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
-
 Name:           alacritty
 Version:        0.12.1
 Release:        0
@@ -38,6 +36,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xclip
 BuildRequires:  pkgconfig(fontconfig)
+Suggests:       terminfo
 
 %description
 Alacritty is a terminal emulator written in Rust that leverages the GPU for
@@ -84,7 +83,7 @@ sed -i -e 's#"config.guess":"e0c1d7ef8ce964fb57c35e7704ae8661d7e4ca87d6a3c18950e
 %endif
 
 %build
-RUSTFLAGS=%{rustflags} %{cargo_build}
+%{cargo_build}
 
 %install
 mkdir -p "%{buildroot}%{_bindir}"
@@ -94,19 +93,24 @@ install -D -m 0755 target/release/alacritty %{buildroot}%{_bindir}/alacritty
 rm -fr %{buildroot}%{_datadir}
 
 # install man page and completions
-install -Dm 0644 extra/linux/Alacritty.desktop %{buildroot}/%{_datadir}/applications/Alacritty.desktop
-install -Dm 0644 extra/logo/alacritty-simple.svg %{buildroot}/%{_datadir}/pixmaps/Alacritty.svg
+install -Dm 0644 extra/linux/Alacritty.desktop \
+    %{buildroot}/%{_datadir}/applications/Alacritty.desktop
+install -Dm 0644 extra/logo/alacritty-simple.svg \
+    %{buildroot}/%{_datadir}/pixmaps/Alacritty.svg
 install -Dm 0644 extra/linux/org.alacritty.Alacritty.appdata.xml \
-                 %{buildroot}/%{_datadir}/appdata/org.alacritty.Alacritty.appdata.xml
+    %{buildroot}/%{_datadir}/appdata/org.alacritty.Alacritty.appdata.xml
 install -Dm 0644 extra/%{name}.man %{buildroot}/%{_mandir}/man1/%{name}.1
-install -Dm 0644 extra/completions/%{name}.bash %{buildroot}/%{_datadir}/bash-completion/completions/%{name}
-install -Dm 0644 extra/completions/%{name}.fish %{buildroot}/%{_datadir}/fish/vendor_completions.d/%{name}.fish
-install -Dm 0644 extra/completions/_%{name}  %{buildroot}/%{_datadir}/zsh/site-functions/_%{name}
+install -Dm 0644 extra/completions/%{name}.bash \
+    %{buildroot}/%{_datadir}/bash-completion/completions/%{name}
+install -Dm 0644 extra/completions/%{name}.fish \
+    %{buildroot}/%{_datadir}/fish/vendor_completions.d/%{name}.fish
+install -Dm 0644 extra/completions/_%{name} \
+    %{buildroot}/%{_datadir}/zsh/site-functions/_%{name}
 
 # install desktop file
 %suse_update_desktop_file Alacritty
 
-%fdupes %{buildroot}
+%fdupes %{buildroot}%{_datadir}
 
 %files
 %license LICENSE-APACHE

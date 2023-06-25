@@ -1,6 +1,22 @@
-To rebuild the source tarball, run:
+To update this package to a new upstream release, run:
 
-$ osc service manualrun tar_scm
-$ osc service manualrun recompress
+$ current_version=$(ls alacritty-*.tar.xz)
+$ osc service disabledrun
 
-You must also vendor the cargo dependencies.
+This should be enough do make a tarball out of the GitHub source tree AND
+vendor all the needed Rust crates. If the cargo-audit source service detect
+some bad enough vulnerability and give you the red light go visit
+https://github.com/openSUSE/obs-service-cargo_audit to further instructions,
+and/or contact the Alacritty maintainers.
+
+Otherwise you should be good to go:
+
+$ rm ${current_version}; osc addremove
+
+# If you have the power to build locally:
+$ osc build
+
+$ new_version=$(ls alacritty-*.tar.xz)
+$ osc ci -m "Update to ${new_version} release"
+$ osc sr -m "Update to ${new_version} release"
+

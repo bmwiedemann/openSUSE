@@ -1,6 +1,4 @@
-<!--
-# vim: set syntax=xml
--->
+<!-- vim: set syntax=xml: -->
 
 <services>
   <service name="obs_scm" mode="disabled">

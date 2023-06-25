@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jun 18 15:00:33 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Make terminfo package a suggested dependency
+- Do not install terminfo anymore
+
+-------------------------------------------------------------------
+Fri Jun 16 23:24:35 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Install forgotten terminfo database entry, so software can have
+  access to information about Alacritty's capabilities.
+- Drop no longer needed rustflags/RUSTFLAGS macro/variable
+  definition in spec file, as the macros provided by
+  cargo-packaging already define and make use of them for us.
+- Update README.suse-maint to show newcomers how to update the
+  package with current sensible packaging practices.
+
+-------------------------------------------------------------------
 Mon May 29 12:21:42 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
 
 - Update to version 0.12.1:
