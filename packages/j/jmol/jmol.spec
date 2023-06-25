@@ -1,7 +1,7 @@
 #
 # spec file for package jmol
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jmol
-Version:        14.32.73
+Version:        16.1.13
 Release:        0
 Summary:        3D Viewer for chemical structures
 License:        LGPL-2.1-only

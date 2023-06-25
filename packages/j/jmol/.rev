@@ -57,4 +57,12 @@
     <comment>update</comment>
     <requestid>999991</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6f4b11b7237beb62bdedcd18de030e13</srcmd5>
+    <version>16.1.13</version>
+    <time>1687722164</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 16.1.13</comment>
+    <requestid>1095210</requestid>
+  </revision>
 </revisionlist>
