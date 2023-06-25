@@ -1,7 +1,7 @@
 #
 # spec file for package smlnj
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           smlnj
-Version:        110.99
+Version:        110.99.3
 Release:        0
 Summary:        Standard ML of New Jersey
 License:        BSD-3-Clause
@@ -78,7 +78,6 @@ echo "export SMLNJ_HOME=%{_libdir}/smlnj" > %{buildroot}%{_sysconfdir}/profile.d
 
 %files
 %doc %{version}-*
-%{_bindir}/asdlgen
 %{_bindir}/ml-antlr
 %{_bindir}/ml-build
 %{_bindir}/ml-burg

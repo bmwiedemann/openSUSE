@@ -206,4 +206,100 @@
     <comment></comment>
     <requestid>1033015</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>7b2ab2a6572235963d5e11ce15fd00c1</srcmd5>
+    <version>110.99.3</version>
+    <time>1687722171</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 110.99.3:
+  * Implemented Basis Library proposal 2021-001 (Add getWindowSz
+    function to Posix.TTY structure).
+  * Implemented Basis Library proposal 2022-001 (Add tau to MATH signature).
+  * Fix for makeml and installml scripts do not like locations with spaces.
+  * Fix for Last branch of case expression omitted by PPAst.ppAst.
+  * Fix for Pretty printing of Absyn in error message does not respect fixity.
+  * Fix for Unable to interrupt execution by using SIGINT.
+  * Fixed some interfaces that did not agree with the SML Basis
+    Library specification. Bugs #318 (IEEEReal.decimal_approx
+    does not match the Basis Library) and #319 (Type of
+    Real.fromDecimal does not match the Basis Library).
+  * Fixed bug #316 (Real.fromManExp does not return expected value if man = 0.0).
+  * Fixed bug #317 (Conversion from string to real does not accept non-finite values).
+  * Fixed bug #314 (IEEEReal.float_class does not match the Basis
+    Library). For some reason, the NAN constructor took an
+    argument in our implementation. This code was probably an
+    early design of the API that was changed in the Basis Library
+    specification, but not in our code.
+  * Fixed bug #313 (Real.fromLargeInt crashes on large integer
+    input). Changed the assembly code for the AMD64 to return
+    infinity when the scaled exponent exceeds the maximum allowed
+    (instead of generating an overflow).
+  * Adding support for generating a SIG_GC signal when there is a garbage collection.
+  * Fixed bug #314 (IEEEReal.setRoundingMode is a no-op on Linux).
+  * Fixed bug #312 (CM.make is unable to handle filenames that
+    contain a backslash). We have changed the semantics of paths
+    given to the functions in the CM structure to be interpreted
+    using the native pathname syntax (instead of CM's generic syntax).
+  * Fixed bug #284 (Compiler bug: Contract: UsageMap on 132). The
+    problem was the the CPSTrans.cpstrans function was generating
+    code for loading spilled parameters in reverse order. In
+    addition to fixing the bug, added some detailed documentation of the code.
+  * Fixed bug #310 (Error when REPL tries to print value of type 
+    Posix.FileSys.ST.stat).
+  * Fixed bug #306 (Word8VectorSlice: mapping a subslice produces
+    wrong result or crashes SML/NJ).
+  * Fix a module compilation performance bug by removing packStr
+    and packFct from Elaborator/modules/sigmatch.sml (reducing
+    the size of that file by about 25%), and removing the call of
+    packStr (in function constrStr) in Elaborator/elaborate/elabmod.
+    sml, replacing it with a call to Instantiate.instAbstr.
+    Goodbye at last to packStr!
+  * Fix for MSI installer for SMLNJ 110.99.2 reports as version 0.0.0.0.
+  * Fix for ml-build fails on Windows with error
+  * support for macOS 13 (Ventura)
+- includes 110.99.2:
+  * Fix a benign bug where the size of a floating-point spill
+    record was twice as large as necessary on 64-bit systems.
+  * Split out the Real.toLargeInt implementation into target-word-
+    size versions (the Real64ToIntInf module). For 64-bit targets,
+    the new version uses the bit representation of the real
+    number to compute the result. The 32-bit version is the old code
+    that uses floating-point operations. This change fixes bug #279 (
+    Real.toLargeInt returns zero for anything in range [-512,512]).
+  * In the translation from Absyn to PLambda, there was a
+    function (inlops) that was used to build the primop and type
+    data structures for numeric types. This function was being
+    called for every primitive operator, even though its results
+    only depended on the numeric type. I added a hash table to cache
+    the results indexed numeric kind. This change speeds up the
+    compiler by about 3% (e.g., compiling the compiler went from 58s
+    to 55s on a MacBookPro with a 2.4GHz Intel i9 processor).
+  * support installing and running SML/NJ on macOS 12 (Monterey)
+- includes 110.99.1:
+  * Changed the AMD64 frame layout to include a word to hold the
+    Overflow exception. This value is used by the LLVM backend to
+    generate the exception for checked arithmetic operations.
+  * Some minor restructuring of the logic in the generic installer.
+  * Fixed a bug with how FLINT numeric types were being
+    translated to CPS types. Specifically, types that were smaller
+    than the default integer size (e.g., word8) should have been
+    marked as having a tagged representation.
+  * Fixed a serious performance bug in the implementation of the
+    CharBuffer and MonoBuffer structures. Essentially, if one did
+    not reserve sufficient space for the contents, it could take
+    quadratic time to fill the buffer. We now grow the buffer by a
+    factor of 1.5 of its current size, with an upper bound on the extra growth of 256K.
+  * Fix for bug #280 (110.99 config/install.sh -64 fails on macOS
+    10.15.7). I was unable to reproduce this problem, but after
+    some investigation, it appears that the problem was inconsistent
+    build tools being picked up from the user’s path. To protect
+    against this issue, I made the paths to the ar and ranlib tools absolute.
+  * Added support for running SML/NJ on M1 Macs via the Rosetta2
+    emulator. The change is to identify the arm processor as amd64
+    in the config/_arch-n-opsys script. Note that while the system
+    basically seems to work okay under rosetta, trying to run the
+    makeml command after having compiled the complier caused a crash.
+</comment>
+    <requestid>1095229</requestid>
+  </revision>
 </revisionlist>
