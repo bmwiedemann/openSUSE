@@ -14,10 +14,10 @@ Signed-off-by: Michal Rostecki <mrostecki@opensuse.org>
  src/firewall/config/__init__.py.in | 2 +-
  3 files changed, 4 insertions(+), 4 deletions(-)
 
-Index: firewalld-1.2.1/config/firewalld.conf
-===================================================================
---- firewalld-1.2.1.orig/config/firewalld.conf
-+++ firewalld-1.2.1/config/firewalld.conf
+diff --git a/config/firewalld.conf b/config/firewalld.conf
+index 7c9305e..43663b3 100644
+--- a/config/firewalld.conf
++++ b/config/firewalld.conf
 @@ -63,8 +63,8 @@ FirewallBackend=nftables
  # configuration was retained during a reload, namely; interface to zone
  # assignment, and direct rules. This was confusing to users. To get the old
@@ -29,10 +29,10 @@ Index: firewalld-1.2.1/config/firewalld.conf
  
  # RFC3964_IPv4
  # As per RFC 3964, filter IPv6 traffic with 6to4 destination addresses that
-Index: firewalld-1.2.1/doc/xml/firewalld.conf.xml
-===================================================================
---- firewalld-1.2.1.orig/doc/xml/firewalld.conf.xml
-+++ firewalld-1.2.1/doc/xml/firewalld.conf.xml
+diff --git a/doc/xml/firewalld.conf.xml b/doc/xml/firewalld.conf.xml
+index 1b74f70..a45c8df 100644
+--- a/doc/xml/firewalld.conf.xml
++++ b/doc/xml/firewalld.conf.xml
 @@ -190,7 +190,7 @@
                  runtime configuration was retained during a reload, namely;
                  interface to zone assignment, and direct rules. This was
@@ -42,11 +42,11 @@ Index: firewalld-1.2.1/doc/xml/firewalld.conf.xml
                  </para>
              </listitem>
          </varlistentry>
-Index: firewalld-1.2.1/src/firewall/config/__init__.py.in
-===================================================================
---- firewalld-1.2.1.orig/src/firewall/config/__init__.py.in
-+++ firewalld-1.2.1/src/firewall/config/__init__.py.in
-@@ -132,6 +132,6 @@ FALLBACK_INDIVIDUAL_CALLS = False
+diff --git a/src/firewall/config/__init__.py.in b/src/firewall/config/__init__.py.in
+index 468daf5..5ec116c 100644
+--- a/src/firewall/config/__init__.py.in
++++ b/src/firewall/config/__init__.py.in
+@@ -132,7 +132,7 @@ FALLBACK_INDIVIDUAL_CALLS = False
  FALLBACK_LOG_DENIED = "off"
  FALLBACK_AUTOMATIC_HELPERS = "no"
  FALLBACK_FIREWALL_BACKEND = "nftables"
@@ -54,3 +54,4 @@ Index: firewalld-1.2.1/src/firewall/config/__init__.py.in
 +FALLBACK_FLUSH_ALL_ON_RELOAD = False
  FALLBACK_RFC3964_IPV4 = True
  FALLBACK_ALLOW_ZONE_DRIFTING = False
+ FALLBACK_NFTABLES_FLOWTABLE = "off"

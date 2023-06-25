@@ -1275,4 +1275,12 @@ This is a bug fix only release.
     <comment></comment>
     <requestid>1093236</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>09e8b31847e3b16613c325ca7ca86606</srcmd5>
+    <version>2.0.0</version>
+    <time>1687722117</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095079</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jun 24 14:20:24 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
+
+- update to version 2.0.0:
+  * This is a major release. The major version is being bumped symbolically
+    to reflect significant changes done in commit f4d2b80 ("fix(policy):
+    disallow zone drifting"). It does not contain any deliberate breaking
+    changes. 
+  * Complete changelog:
+    https://github.com/firewalld/firewalld/releases/tag/v2.0.0 
+
+-------------------------------------------------------------------
 Thu Jun 15 07:48:48 UTC 2023 - Mohd Saquib <mohd.saquib@suse.com>
 
 - update to 1.3.3:
