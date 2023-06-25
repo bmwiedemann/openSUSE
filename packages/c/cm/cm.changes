@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jun 24 14:42:15 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.4.2
+  * When ECPP certificates are output to a file, a second file in
+    Primo format is created automatically.
+  * ECPP certificate creation uses class field towers
+    unconditionally.
+  * An optional primality test is carried out before starting ECPP.
+  * For larger numbers, the BPSW primality test of GMP is replaced
+    by a Miller-Rabin test to base 2.
+  * New command line options make it possible to compute only the
+    first or only the second phase.
+  * Phase 2 results are stored in any order as they come in, which
+    requires the file format to change. Checkpoint files ending in
+    .cert2 from previous releases are not compatible.
+  * Add an optional dependency on FLINT to speed up root finding
+    in the second ECPP phase.
+
+-------------------------------------------------------------------
 Sat Aug 27 06:27:27 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 0.4.0+gb2b8d4bd
