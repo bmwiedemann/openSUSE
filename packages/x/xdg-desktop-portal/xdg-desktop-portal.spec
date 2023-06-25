@@ -1,7 +1,7 @@
 #
 # spec file for package xdg-desktop-portal
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://github.com/flatpak/xdg-desktop-portal
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-portal-impl-Only-return-found-implementation-if-it-launched.patch
 
 BuildRequires:  libtool
 BuildRequires:  pkgconfig

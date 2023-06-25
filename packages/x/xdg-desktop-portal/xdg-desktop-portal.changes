@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 23 09:54:14 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to avoid creating portals with
+  non-functional backends . This was mentioned in bsc#1212037 and
+  since I included this fix in the SP4 update that fixed the issue,
+  I'm fixing this in Factory/SP5 too for consistentcy.
+  * 0001-portal-impl-Only-return-found-implementation-if-it-launched.patch
+
+-------------------------------------------------------------------
 Tue Dec 13 08:23:42 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.16.0:
