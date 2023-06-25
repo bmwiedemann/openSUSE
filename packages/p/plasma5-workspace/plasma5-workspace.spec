@@ -16,7 +16,7 @@
 #
 
 
-%global __requires_exclude qmlimport\\((org\\.kde\\.plasma\\.private|org\\.kde\\.private\\.kcm|org\\.kde\\.plasma\\.kcm|LocaleListModel|FingerprintModel|kcmregionandlang).*
+%global __requires_exclude qmlimport\\((org\\.kde\\.plasma\\.private|org\\.kde\\.private\\.kcm|org\\.kde\\.plasma\\.kcm|LocaleListModel|FingerprintModel|kcmregionandlang|org\\.kde\\.userfeedback\\.kcm).*
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %{!?_fillupdir: %global _fillupdir %{_localstatedir}/adm/fillup-templates}
@@ -97,8 +97,7 @@ BuildRequires:  cmake(KF5Wayland) >= %{kf5_version}
 BuildRequires:  cmake(KF5XmlRpcClient)
 BuildRequires:  cmake(KPipeWire)
 BuildRequires:  cmake(KScreenLocker) >= %{_plasma5_version}
-# Disabled until upstream complies with the KDE policies
-#BuildRequires:  cmake(KUserFeedback)
+BuildRequires:  cmake(KUserFeedback)
 BuildRequires:  cmake(Phonon4Qt5) >= 4.6.60
 BuildRequires:  cmake(PlasmaWaylandProtocols) >= 1.1.0
 #!BuildIgnore:  kdialog
@@ -430,6 +429,7 @@ fi
 %{_kf5_applicationsdir}/kcm_autostart.desktop
 %{_kf5_applicationsdir}/kcm_colors.desktop
 %{_kf5_applicationsdir}/kcm_cursortheme.desktop
+%{_kf5_applicationsdir}/kcm_feedback.desktop
 %{_kf5_applicationsdir}/kcm_fontinst.desktop
 %{_kf5_applicationsdir}/kcm_fonts.desktop
 %{_kf5_applicationsdir}/kcm_icons.desktop
@@ -496,9 +496,9 @@ fi
 %{_kf5_applicationsdir}/org.kde.plasmashell.desktop
 %{_kf5_applicationsdir}/org.kde.systemmonitor.desktop
 %{_kf5_applicationsdir}/org.kde.plasmawindowed.desktop
+%{_kf5_configkcfgdir}/feedbacksettings.kcfg
 %{_kf5_configkcfgdir}/freespacenotifier.kcfg
 %{_kf5_configkcfgdir}/iconssettingsbase.kcfg
-# %%{_kf5_configkcfgdir}/feedbacksettings.kcfg
 %dir %{_kf5_sharedir}/krunner/
 %dir %{_kf5_sharedir}/krunner/dbusplugins/
 %{_kf5_sharedir}/kpackage/
@@ -553,8 +553,8 @@ fi
 %{_kf5_debugdir}/*.categories
 %dir %{_kf5_sharedir}/kpackage
 %dir %{_kf5_sharedir}/kpackage/kcms
-# %%{_kf5_sharedir}/kpackage/kcms/kcm_feedback
 %{_kf5_sharedir}/kpackage/kcms/kcm_desktoptheme
+%{_kf5_sharedir}/kpackage/kcms/kcm_feedback
 %dir %{_libexecdir}/kauth
 %{_libexecdir}/kauth/fontinst
 %{_libexecdir}/kauth/fontinst_helper

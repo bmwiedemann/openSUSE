@@ -2103,4 +2103,14 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>Plasma 5.27.6. plasma5-sdk needed a workaround. On aarch64 something is broken with breeze5-icons, I'm optimistic and triggered a rebuild. (forwarded request 1094155 from Vogtinator)</comment>
     <requestid>1094213</requestid>
   </revision>
+  <revision rev="215" vrev="2">
+    <srcmd5>6d506d3d476c0baa420faa1c609e2347</srcmd5>
+    <version>5.27.6</version>
+    <time>1687722118</time>
+    <user>dimstar_suse</user>
+    <comment>- Mark org.kde.userfeedback.kcm as internal QML import
+
+- Enabled KUserFeedback, since new KDE privacy policy now complies. See https://invent.kde.org/websites/kde-org/-/commit/71992cc8a177c959706088d02413c1a97f989749</comment>
+    <requestid>1095138</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 24 20:37:55 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Mark org.kde.userfeedback.kcm as internal QML import
+
+-------------------------------------------------------------------
 Tue Jun 20 17:15:05 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.6
@@ -26,6 +31,11 @@ Tue Jun 20 17:15:05 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
   * applets/digital-clock: Allow event titles to be wrapped
   * Export a new helper function that read Xft.dpi value
   * libtaskmanager: Fix appmenu caching (kde#422786)
+
+-------------------------------------------------------------------
+Wed Jun 14 11:35:33 UTC 2023 - Moon Glass <moonglass@gmx.net>
+
+- Enabled KUserFeedback, since new KDE privacy policy now complies. See https://invent.kde.org/websites/kde-org/-/commit/71992cc8a177c959706088d02413c1a97f989749
 
 -------------------------------------------------------------------
 Thu May 11 13:06:07 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
