@@ -7,4 +7,13 @@
     <comment></comment>
     <requestid>834929</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3da9ec9d1160b4f5a1c836d8c888fe36</srcmd5>
+    <version>5.22.5</version>
+    <time>1687722119</time>
+    <user>dimstar_suse</user>
+    <comment>- Support SLE 15.x build
+- Require gmp from polylib-devel</comment>
+    <requestid>1095073</requestid>
+  </revision>
 </revisionlist>

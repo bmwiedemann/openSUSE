@@ -1,7 +1,7 @@
 #
 # spec file for package polylib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,9 +27,12 @@ URL:            https://icps.u-strasbg.fr/polylib/
 Source:         https://icps.u-strasbg.fr/polylib/polylib_src/%name-%version.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  ntl-devel
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gmpxx)
-BuildRequires:  pkgconfig(isl)
+BuildRequires:  pkg-config
+%if 0%{?suse_version} >= 1590
+BuildRequires:  pkgconfig(gmp)
+%else
+BuildRequires:  gmp-devel
+%endif
 
 %description
 The Polyhedral Library (PolyLib) operates on objects made up of
@@ -47,6 +50,11 @@ unions of polyhedra of any dimension.
 Summary:        Development files for PolyLib
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
+%if 0%{?suse_version} >= 1590
+Requires:       pkgconfig(gmp)
+%else
+Requires:       gmp-devel
+%endif
 
 %description devel
 The Polyhedral Library (PolyLib) operates on objects made up of
@@ -64,7 +72,7 @@ developing with PolyLib.
 %autosetup -p1
 
 %build
-%configure --disable-static --with-isl=system --with-libgmp
+%configure --disable-static --with-libgmp
 %make_build
 
 %install
