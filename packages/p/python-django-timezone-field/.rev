@@ -23,4 +23,15 @@
     <comment></comment>
     <requestid>1009740</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9712c31721ebcdbe247a9703e7a4b94c</srcmd5>
+    <version>5.1</version>
+    <time>1687722171</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.1:
+  - Add django as a dependency of this package, with correct version constraints
+  - Add support for django 4.1, 4.2
+  - Add support for python 3.11</comment>
+    <requestid>1095228</requestid>
+  </revision>
 </revisionlist>

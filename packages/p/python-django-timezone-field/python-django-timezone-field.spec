@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-timezone-field
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-django-timezone-field
-Version:        5.0
+Version:        5.1
 Release:        0
 Summary:        Django app providing database and form fields for pytz timezone objects
 License:        BSD-2-Clause
@@ -38,9 +38,9 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module djangorestframework}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest-lazy-fixture}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 # /SECTION
 %python_subpackages
