@@ -331,4 +331,12 @@
   * Fix bugs (forwarded request 1092471 from hillwood)</comment>
     <requestid>1092473</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>23a46b8123a74f0b4e2793456b5a36eb</srcmd5>
+    <version>5.7.0</version>
+    <time>1687722128</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop vendor in filelist (forwarded request 1095190 from hillwood)</comment>
+    <requestid>1095191</requestid>
+  </revision>
 </revisionlist>

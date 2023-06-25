@@ -79,6 +79,7 @@ mv %{_builddir}/go/bin/main %{_builddir}/go/bin/v2ray
 %install
 %goinstall
 %gosrc
+rm -rf %{buildroot}%{go_contribsrcdir}/%{import_path}/vendor
 %gofilelist
 
 install -d %{buildroot}%{_datadir}/v2ray
