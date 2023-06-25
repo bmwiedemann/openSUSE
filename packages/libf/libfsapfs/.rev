@@ -95,4 +95,12 @@
     <comment>add missing libbfio-devel</comment>
     <requestid>1046579</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>cfc014fff985ab263ba7f997fd45bd1d</srcmd5>
+    <version>20230617</version>
+    <time>1687722125</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1095162</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 Name:           libfsapfs
 %define lname   libfsapfs1
-Version:        20221102
+Version:        20230617
 Release:        0
 Summary:        Library and tools to access the Apple File System (APFS)
 License:        LGPL-3.0-only
