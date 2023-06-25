@@ -1124,4 +1124,12 @@ goes in line with 946250</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1086756</requestid>
   </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>bc24132635e487f268001ac2423c43b7</srcmd5>
+    <version>2.9.1</version>
+    <time>1687722114</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to relese 2.9.1</comment>
+    <requestid>1094909</requestid>
+  </revision>
 </revisionlist>

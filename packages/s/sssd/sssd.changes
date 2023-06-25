@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun 23 14:49:30 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to relese 2.9.1
+  * A regression was fixed that prevented autofs lookups to
+    function correctly when cache_first is set to True.
+  * A regression where SSSD failed to properly watch for changes
+    in ``/etc/resolv.conf`` when it was a symbolic link or was a
+    relative path, was fixed.
+
+-------------------------------------------------------------------
 Fri May  5 10:47:41 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.9
