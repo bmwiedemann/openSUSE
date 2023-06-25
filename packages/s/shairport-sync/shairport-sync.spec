@@ -40,6 +40,7 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(avahi-client)
 BuildRequires:  pkgconfig(libconfig)
 BuildRequires:  pkgconfig(libdaemon)
+BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(popt)
@@ -75,6 +76,7 @@ autoreconf -i -f
            --with-ssl=openssl \
            --with-alsa \
            --with-pa \
+           --with-pw \
            --with-pipe \
            --with-avahi \
            --with-soxr \
@@ -92,6 +94,7 @@ mkdir -p %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 %pre
+getent group audio >/dev/null || %{_sbindir}/groupadd --system audio
 getent group %{name} >/dev/null || %{_sbindir}/groupadd --system %{name}
 getent passwd %{name} >/dev/null || %{_sbindir}/useradd --system -c "%{name} User" \
         -d %{_localstatedir}/%{name} -m -g %{name} -s %{_sbindir}/nologin \

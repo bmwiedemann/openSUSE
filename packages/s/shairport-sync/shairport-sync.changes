@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 25 11:44:48 UTC 2023 - Niklas Haas <obs@haasn.xyz>
+
+- Add pipewire audio output support.
+
+-------------------------------------------------------------------
+Sun Jun 25 11:38:12 UTC 2023 - Niklas Haas <obs@haasn.xyz>
+
+- Add missing `audio` group during setup.
+
+-------------------------------------------------------------------
 Sun May 21 20:32:51 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 4.2.
