@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 26 06:09:30 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Use sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Mon May  9 09:57:51 UTC 2022 - pgajdos@suse.com
 
 - python-mock is not required for build

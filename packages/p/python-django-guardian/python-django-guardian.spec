@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
+%{?sle15_python_module_pythons}
 %define pypi_package_name django-guardian
-%define skip_python2 1
-%define skip_python36 1
 Name:           python-%{pypi_package_name}
 Version:        2.4.0
 Release:        0

@@ -188,4 +188,12 @@ SPDX syntax (http://www.spdx.org/licenses) (forwarded request 83930 from babelwo
     <comment></comment>
     <requestid>975767</requestid>
   </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>e779666b4fcf065875bf8318717ec918</srcmd5>
+    <version>2.4.0</version>
+    <time>1687796200</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095392</requestid>
+  </revision>
 </revisionlist>
