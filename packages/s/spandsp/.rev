@@ -107,4 +107,12 @@
     <comment></comment>
     <requestid>1074914</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>111817a8160b4a8c074f1c89aac2c33e</srcmd5>
+    <version>3.0.0+g21</version>
+    <time>1687796135</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 3.0.0+g21 (0d2e6ac6)</comment>
+    <requestid>1095164</requestid>
+  </revision>
 </revisionlist>

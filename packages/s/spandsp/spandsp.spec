@@ -18,7 +18,7 @@
 
 Name:           spandsp
 %define lname	libspandsp3
-Version:        3.0.0.g15
+Version:        3.0.0+g21
 Release:        0
 Summary:        A DSP library for Telephony and SoftFAX
 License:        GPL-2.0-only AND LGPL-2.1-only

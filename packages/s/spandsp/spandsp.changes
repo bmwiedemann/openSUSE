@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 25 05:42:17 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 3.0.0+g21 (0d2e6ac6)
+  * Ensure we never copy too much from pitch_overlap
+    to the output buffer.
+
+-------------------------------------------------------------------
 Tue Mar 28 05:17:02 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Enable LTO as it builds with now (boo#1136056).
