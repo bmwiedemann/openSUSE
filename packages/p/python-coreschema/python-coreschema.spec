@@ -1,7 +1,7 @@
 #
 # spec file for package python-coreschema
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-coreschema
 Version:        0.0.4
 Release:        0
 Summary:        Core Schema for Core API
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/core-api/python-coreschema
+URL:            https://github.com/core-api/python-coreschema
 Source:         https://github.com/core-api/python-coreschema/archive/0.0.4.tar.gz#/coreschema-%{version}.tar.gz
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module pytest}

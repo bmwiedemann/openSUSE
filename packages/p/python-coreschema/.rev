@@ -12,4 +12,14 @@
 </comment>
     <requestid>677642</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b8890123054eed4a6e7370ef3648ed2a</srcmd5>
+    <version>0.0.4</version>
+    <time>1687796144</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1095184 from gladiac
+
+- Use sle15_python_module_pythons</comment>
+    <requestid>1095242</requestid>
+  </revision>
 </revisionlist>
