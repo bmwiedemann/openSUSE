@@ -18,7 +18,7 @@
 
 
 Name:           bottom
-Version:        0.9.2~0
+Version:        0.9.3~0
 Release:        0
 Summary:        Yet another graphical process/system monitor
 License:        MIT

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 26 05:37:15 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.3:
+  * #1216: Fix arguments not being sorted alphabetically.
+  * #1219: Fix overflow/underflow in graph timespan zoom.
+  * #1221: Support human times for rate.
+  * #1206: Add .rpm package generation.
+  * #1220: Update documentation for features supporting human times.
+
+-------------------------------------------------------------------
 Mon Jun 12 07:21:14 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.2:

@@ -154,4 +154,17 @@
   * #1199: bottom should build on aarch64-linux-android with features disabled.</comment>
     <requestid>1092472</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>40bfa23d6ac05b0df05512244bb9ba42</srcmd5>
+    <version>0.9.3~0</version>
+    <time>1687796184</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.3:
+  * #1216: Fix arguments not being sorted alphabetically.
+  * #1219: Fix overflow/underflow in graph timespan zoom.
+  * #1221: Support human times for rate.
+  * #1206: Add .rpm package generation.
+  * #1220: Update documentation for features supporting human times.</comment>
+    <requestid>1095314</requestid>
+  </revision>
 </revisionlist>
