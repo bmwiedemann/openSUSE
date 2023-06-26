@@ -18,7 +18,7 @@
 
 %bcond_without python2
 Name:           python-cassandra-driver
-Version:        3.26.0
+Version:        3.28.0
 Release:        0
 Summary:        Python driver for Cassandra
 License:        Apache-2.0
