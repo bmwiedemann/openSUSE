@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Jun 26 05:20:06 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 0.12.3:
+  * ez: store sent prefixes with the tag message
+  * Properly quote the address before adding into From
+  * shazam: switch to top of git tree before running git-am
+  * trailers: normalize address after parsing
+  * Fix wrong CTR header after 8bit cover content is mixed in
+  * ez: make it easier to send single-patch series
+  * ez: make message-ids use today's date
+  * ez: only include base-branch when using non-default strategy
+  * Fix to properly handle under-scissors patches with a unixfrom line
+  * Clean headers before adding them to the pre-scissors email
+  * b4: Fix envelopeSender handling
+  * am, shazam: allow cherry-picking an out-of-series patch
+  * mbox.py::make_am: simplify check for early return
+  * ez: Fix 'trailers -F' used on a single commit
+  * b4.sh: keep existing PYTHONPATH if set
+  * b4: Allow prep new branch while on a b4 managed branch
+  * docs: fix smtpServerPort option
+  * trailers: add 'Closes' as recognized link trailer
+  * trailers: accept recognized link trailers
+  * Consider '@' safe in msgid URLs
+  * ez: better fix for "no follow-up trailers" condition
+  * Add subscribe/unsubscribe to badtrailers
+  * ez: do not trust local commands to properly reflect
+  * ez-trailers: don't crash when there are no follow-ups received
+
+-------------------------------------------------------------------
 Thu Jun 22 10:56:42 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not use python_module macro, but rather specify python3-FOO
