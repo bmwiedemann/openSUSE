@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 26 05:25:01 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.18.1:
+  * don't fail when computing diff on partial clones (#1093)
+  * fetch banner info from github (#1094)
+
+-------------------------------------------------------------------
 Fri Jun 23 06:20:09 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.18.0:

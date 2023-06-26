@@ -371,4 +371,14 @@
   * improve bot regex (#1086)</comment>
     <requestid>1094771</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1495a3adab0a569260eb21c5ea617f31</srcmd5>
+    <version>2.18.1~0</version>
+    <time>1687796181</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.18.1:
+  * don't fail when computing diff on partial clones (#1093)
+  * fetch banner info from github (#1094)</comment>
+    <requestid>1095312</requestid>
+  </revision>
 </revisionlist>
