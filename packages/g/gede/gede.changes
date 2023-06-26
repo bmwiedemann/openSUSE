@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 26 05:18:12 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 2.18.3
+  * Add “focus after stop” option
+- Do not unnecessarily compile code with PIC relocations
+
+-------------------------------------------------------------------
 Tue Feb 15 22:06:03 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 - Use qmake rpm macros directly instead of calling build.py to set CFLAGS correctly.
 

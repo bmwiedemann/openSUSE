@@ -18,7 +18,7 @@
 
 
 Name:           gede
-Version:        2.18.2
+Version:        2.18.3
 Release:        0
 Summary:        Qt-based GUI to GDB
 License:        BSD-2-Clause
@@ -41,6 +41,8 @@ Gede supports debugging programs written in Ada, FreeBasic, C++, C, Rust, Fortra
 %build
 cd src
 %qmake5
+#Qmake adds this relocation model which is not needed for the main binary and produces worse code
+sed -i 's/ -fPIC / /g' Makefile
 %make_jobs
 
 %install
