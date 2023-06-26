@@ -25,14 +25,17 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-pdm%{psuffix}
-Version:        2.4.9
+Version:        2.7.4
 Release:        0
 Summary:        Python Development Master
 License:        MIT
 URL:            https://github.com/pdm-project/pdm/
 Source0:        https://files.pythonhosted.org/packages/source/p/pdm/pdm-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module importlib-metadata if %python-base <= 3.9}
+BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pdm-pep517 >= 1.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
@@ -43,6 +46,7 @@ Requires:       python-certifi
 Requires:       python-findpython >= 0.2.2
 Requires:       python-installer
 Requires:       python-packaging >= 20.9
+Requires:       python-pdm-backend
 Requires:       python-platformdirs
 Requires:       python-pyproject-hooks
 Requires:       python-python-dotenv >= 0.15
@@ -58,7 +62,7 @@ Requires:       python-lockfile >= 0.9
 %if 0%{?python_version_nodots} < 311
 Requires:       python-tomli >= 1.1.0
 %endif
-%if 0%{?python_version_nodots} < 38
+%if 0%{?python_version_nodots} <= 39
 Requires:       python-importlib-metadata
 Requires:       python-typing-extensions
 %endif
@@ -68,6 +72,7 @@ BuildArch:      noarch
 # SECTION test requirements
 %if %{with test}
 BuildRequires:  %{python_module pdm = %{version}}
+BuildRequires:  %{python_module pytest-httpserver}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}

@@ -332,4 +332,12 @@
     <comment>- Remove pep517 requirement.</comment>
     <requestid>1077652</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>dcacdbed0e60c21a2617056734b90c0a</srcmd5>
+    <version>2.7.4</version>
+    <time>1687796219</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1094865</requestid>
+  </revision>
 </revisionlist>

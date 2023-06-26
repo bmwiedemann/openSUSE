@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun 22 07:41:39 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix building with Python 3.9
+
+-------------------------------------------------------------------
+Mon Jun 19 14:02:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 2.7.4
+  * Fix the warning of extras not found due to extra names not normalized.
+    #2006
+  * Pop up a warning when the deprecated parser argument is passed to
+    BaseCommand.__init__() method. #2007
+  * Fix a bug that merging settings with AoTs causing a failure. #2011 
+
+-------------------------------------------------------------------
 Thu Apr  6 06:26:23 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove pep517 requirement. 
