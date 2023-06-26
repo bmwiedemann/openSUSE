@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 23 12:23:14 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Adapt test exceptions for PPC64 etc., TestFReturnCharacter
+  instead of TestF77ReturnCharacter, TestF90ReturnCharacter
+
+-------------------------------------------------------------------
 Fri May 12 04:22:36 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch remove-deprecated-hypothesis-funcs.patch:

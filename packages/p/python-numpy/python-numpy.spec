@@ -296,8 +296,7 @@ test_failok+=" or test_ppc64_ibm_double_double128"
 %endif
 # these tests fail on big endian gh#numpy/numpy#11831
 %ifarch s390x ppc ppc64
-test_failok+=" or TestF77ReturnCharacter"
-test_failok+=" or TestF90ReturnCharacter"
+test_failok+=" or TestFReturnCharacter"
 %endif
 # missing instruction set
 %ifarch s390x
