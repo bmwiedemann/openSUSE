@@ -16,7 +16,7 @@
 #
 
 
-%global skip_python2 1
+%{?sle15_python_module_pythons}
 %bcond_without tests
 Name:           python-uritemplate
 Version:        4.1.1

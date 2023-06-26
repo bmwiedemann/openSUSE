@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 25 07:09:34 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Use sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Fri Feb 10 21:05:49 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Remove completely unnecessary dependency on python-simplejson.
