@@ -7,4 +7,14 @@
     <comment></comment>
     <requestid>679853</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>383ee9437c8742f0535a86c5fe519391</srcmd5>
+    <version>2.3.3</version>
+    <time>1687796146</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1095187 from gladiac
+
+- Use sle15_python_module_pythons</comment>
+    <requestid>1095245</requestid>
+  </revision>
 </revisionlist>
