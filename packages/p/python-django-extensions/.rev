@@ -191,4 +191,12 @@
     drop_test_database)</comment>
     <requestid>1092274</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>67eb7ca789dd83d0acf362b7c6c24146</srcmd5>
+    <version>3.2.3</version>
+    <time>1687796222</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095439</requestid>
+  </revision>
 </revisionlist>

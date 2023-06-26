@@ -16,8 +16,7 @@
 #
 
 
-%define skip_python2 1
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-django-extensions
 Version:        3.2.3
 Release:        0
