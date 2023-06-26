@@ -7,4 +7,15 @@
     <comment>This is a new dependency for mailmain3.</comment>
     <requestid>1037265</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a9ea74af04da4f0301f5ec0e68dc0e6f</srcmd5>
+    <version>0.0.5</version>
+    <time>1687796153</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1095198 from gladiac
+
+- Update to version 0.0.5
+  - Use sle15_python_module_pythons</comment>
+    <requestid>1095250</requestid>
+  </revision>
 </revisionlist>
