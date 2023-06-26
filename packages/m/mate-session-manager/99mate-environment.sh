@@ -1,5 +1,7 @@
 # This file is sourced by Xsession(5), not executed.
 
+# to be sourced
+
 # Copyright (C) 2014-2015, Martin Wimpress <code@flexion.org>
 # Copyright (C) 2015, Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
 #
@@ -15,7 +17,6 @@
 # .
 # On Debian systems, the complete text of the GNU General Public
 # License version 2 can be found in "/usr/share/common-licenses/GPL-2".
-
 
 if [ "x$DESKTOP_SESSION" = "xmate" ] || [ "x$XDG_SESSION_DESKTOP" = "xmate" ]; then
     if [ -z "$GTK_MODULES" ] ; then
@@ -33,7 +34,7 @@ if [ "x$DESKTOP_SESSION" = "xmate" ] || [ "x$XDG_SESSION_DESKTOP" = "xmate" ]; t
     #  - Telegram doesn't work with QT_STYLE_OVERRIDE=gtk
     # export QT_STYLE_OVERRIDE=gtk
 
-    # Workaround clutter issue (LP: #1462445)
-    export CLUTTER_BACKEND=x11
+    # Workaround clutter issue (LP: #1462445, Debian #954783)
+    export CLUTTER_BACKEND="x11,*"
 fi
 
