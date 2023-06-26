@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 18 09:41:47 UTC 2023 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to version 1.0.10:
+  * small bug fix for Guile 2.x
+
+-------------------------------------------------------------------
 Fri Nov  6 16:56:37 UTC 2020 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
 
 - Update to version 1.0.9:
