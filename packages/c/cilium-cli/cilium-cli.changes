@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Jun 26 04:59:38 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.14.8:
+  * Prepare for v0.14.8 release
+  * renovate: let renovate update default Cilium version
+  * sysdump: Add more envoy resource types
+  * fix(deps): update github.com/cilium/tetragon/pkg/k8s digest to
+    a1bca94
+  * chore(deps): update all go dependencies main
+  * Using direnv to set CLI env vars
+  * Refactor cilium cluster version detection
+  * Add Helm Clustermesh disconnect command
+  * connectivity: Address migrate-svc changes
+  * fix(deps): update github.com/cilium/tetragon/pkg/k8s digest to
+    dbf8f0c
+  * .github/workflows: don't error out if pkill finds no processes
+  * internal/cli/cmd: Fix error displayed on failure to disable
+    Hubble
+  * internal/cli/cmd: Add line breaks after error messages
+  * install: Normalize --helm-* flags
+  * connectivity: Add checks for drops due to missed tail calls
+  * connectivity: Check for Cilium agent errors
+  * while applying policies, wait for all expected policy
+    revisions.
+  * chore(deps): update aws-actions/configure-aws-credentials
+    action to v2.2.0
+  * clustermesh enable: add enable-kvstoremesh flag
+  * chore(deps): update docker/setup-buildx-action action to v2.7.0
+  * sysdump: collect spire server and agent configuration
+  * sysdump: collect spire server statefulset & agent daemonset
+  * sysdump: collect SPIRE agent and server Pod logs
+  * fix(deps): update all go dependencies main
+  * chore(deps): update docker/build-push-action action to v4.1.1
+  * chore(deps): update golangci/golangci-lint docker tag to
+    v1.53.3
+  * sysdump: collect CiliumPodIPPools
+  * bgp: minor fix to bgp command help output
+  * fix(deps): update module github.com/cilium/cilium to
+    v1.14.0-snapshot.4
+  * sysdump: Fix wrong CiliumLoadBalancerIPPools collector
+  * connectivity: Add upgrade tests
+  * connectivity: Add --flush-ct
+  * fix(deps): update all go dependencies main
+  * Update stable release to v0.14.7
+
+-------------------------------------------------------------------
 Wed Jun 14 17:37:46 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.14.7:
