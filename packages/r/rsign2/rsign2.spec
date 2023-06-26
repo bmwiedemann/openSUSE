@@ -25,7 +25,7 @@
 #
 
 Name:           %{short_name}2
-Version:        0.6.1+0
+Version:        0.6.3+0
 Release:        0
 Summary:        Command-line tool to sign files and verify signatures
 License:        MIT
@@ -34,8 +34,8 @@ URL:            https://github.com/jedisct1/%{name}
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
-# on 20220115 at least crate bitflags had this minimum version requirement
-BuildRequires:  cargo >= 1.46
+# on 20230623 at least crate "clap" had this minimum version requirement
+BuildRequires:  cargo >= 1.64
 BuildRequires:  vendored_licenses_packager
 Provides:       %{short_name} = %{version}-%{release}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 23 12:00:00 UTC 2023 - cunix@mail.de
+
+- Update to 0.6.3
+  * support passwordless secret keys
+  * dependencies updated
+
+- Bump minimum Rust version to 1.64
+
+-------------------------------------------------------------------
 Wed Mar 22 12:00:00 UTC 2022 - cunix@mail.de
 
 - switched to vendored_licenses_packager as build dependency
