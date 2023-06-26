@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 26 07:06:58 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Use sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Tue Oct 11 09:30:19 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Drop unnecessary clean-cache.patch

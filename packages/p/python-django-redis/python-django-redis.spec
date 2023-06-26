@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-redis
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-django-redis
 Version:        5.2.0
 Release:        0
@@ -29,9 +27,9 @@ Source:         https://files.pythonhosted.org/packages/source/d/django-redis/dj
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module lz4 >= 0.15}
 BuildRequires:  %{python_module msgpack >= 0.4.6}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest-mock >= 3.0}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module redis >= 2.10.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
