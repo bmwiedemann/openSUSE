@@ -69,4 +69,12 @@ Upstream doesn't have a solution yet, but I'll follow the issue there...
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1008853</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>429e826aa13ac23c366410146fb6e905</srcmd5>
+    <version>0.16.3</version>
+    <time>1687796160</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1095260</requestid>
+  </revision>
 </revisionlist>

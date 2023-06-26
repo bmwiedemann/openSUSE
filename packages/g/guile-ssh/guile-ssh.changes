@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 18 20:43:12 UTC 2023 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to 0.16.3:
+  * Fix Guile-SSH/libssh channel leak
+  * Bugfix in test "string->public-key, ECDSA"
+  * Disable the tests that require DSA algorithm by default
+  * Add '--enable-dsa' Autoconf option
+  * (ssh version): 'dsa-support?': New procedure 
+
+-------------------------------------------------------------------
 Fri Sep 30 16:28:30 UTC 2022 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
 
 - Update to 0.16.0:
