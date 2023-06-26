@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun 21 18:23:15 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 5.2.2
+  * Fixed `Encryption\Crypt::checkCipherHashIsAvailable` to allow
+    proper setting of the hash [#16314]
+  * Removed `unlikely` from `if` statements from the Stream storage
+    adapter and Json serializer [#16339]
+  * Fixed `Storage\Adapter\Stream::get()/set()` to correctly calculate
+    the path if the prefix is present in the key [#16348]
+  * Fixed `Html\Helper\Input\Checkbox` to correctly process empty
+    values [#15959]
+
+-------------------------------------------------------------------
 Sun Mar  5 21:22:47 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 5.2.1

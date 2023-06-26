@@ -31,7 +31,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-Version:        5.2.1
+Version:        5.2.2
 Release:        0
 Summary:        PHP Extension Module
 License:        BSD-3-Clause
