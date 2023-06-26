@@ -109,4 +109,22 @@ Needed by python-seaborn, see request 436927</comment>
     <comment></comment>
     <requestid>1058136</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a734a30299e93a04f55eb1851a161da8</srcmd5>
+    <version>0.14.0</version>
+    <time>1687796154</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1095114 from bnavigator
+
+- Update to 0.14.0
+    * Treatment effect estimation and inference
+    * Hurdle and Truncated Count Regression
+    * Archimedean copulas have been extended to more than
+      2-dimensions.
+    * Multiseason STL decomposition (MSTL)
+    * Improved compatibility with current and future NumPy, SciPy,
+      and pandas.
+  - Drop use_old_setuptools_scm.patch</comment>
+    <requestid>1095241</requestid>
+  </revision>
 </revisionlist>

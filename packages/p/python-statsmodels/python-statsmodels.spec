@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,28 +26,28 @@
 %endif
 
 Name:           python-statsmodels%{psuffix}
-Version:        0.13.5
+Version:        0.14.0
 Release:        0
 Summary:        A Python module that allows users to explore data
 License:        BSD-3-Clause
 URL:            https://github.com/statsmodels/statsmodels
 Source:         https://files.pythonhosted.org/packages/source/s/statsmodels/statsmodels-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE use_old_setuptools_scm.patch mcepl@suse.com
-# Use older version setuptools_scm
-Patch0:         use_old_setuptools_scm.patch
-BuildRequires:  %{python_module Cython >= 0.29.32}
-BuildRequires:  %{python_module devel >= 3.7}
-BuildRequires:  %{python_module numpy-devel >= 1.17}
-BuildRequires:  %{python_module scipy >= 1.3}
+BuildRequires:  %{python_module Cython >= 0.29.26 with %python-Cython < 3}
+BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module numpy-devel >= 1.18}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module scipy >= 1.4}
 BuildRequires:  %{python_module setuptools >= 0.59.2}
-BuildRequires:  %{python_module setuptools_scm >= 6}
+BuildRequires:  %{python_module setuptools_scm >= 7}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-fortran
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.17
-Requires:       python-pandas >= 0.25
+Requires:       python-numpy >= 1.18
+Requires:       python-packaging >= 21.3
+Requires:       python-pandas >= 1.0
 Requires:       python-patsy >= 0.5.2
-Requires:       python-scipy >= 1.3
+Requires:       python-scipy >= 1.4
 Recommends:     python-matplotlib >= 3
 %if %{with test}
 # SECTION mandatory
@@ -91,12 +91,12 @@ sed -i 's/\r$//' README_l1.txt
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 # force cythonization
 export SM_FORCE_C=1
-%python_build
+%pyproject_wheel
 %endif
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 %endif
 
@@ -109,13 +109,18 @@ rm -rf $testdir
 mkdir $testdir
 cp setup.cfg $testdir
 pushd $testdir
+# test results not packaged: https://github.com/statsmodels/statsmodels/issues/8928, test_stl see below
+donttest="test_mstl"
 %ifarch %{ix86} %{arm32}
 # Note: there is no upstream 32-bit support for testing
 # gh#statsmodels/statsmodels#7463
-%define donttest  -k "not (test_seasonal_order or (test_holtwinters and test_forecast_index) or (test_discrete and test_basic))"
+donttest="$donttest or test_seasonal_order"
+donttest="$donttest or (test_holtwinters and test_forecast_index)"
+donttest="$donttest or (test_discrete and test_basic)"
+donttest="$donttest or test_fit_regularized"
 %endif
 # not slow: some tests in tsa and discrete take AGES to run in OBS, like 2h per the folder
-%pytest_arch -n auto -p no:cacheprovider -m "not slow" %{?donttest} %{$python_sitearch}/statsmodels
+%pytest_arch -n auto -p no:cacheprovider -m "not slow" -k "not (${donttest})" %{$python_sitearch}/statsmodels --ignore %{$python_sitearch}/statsmodels/tsa/stl/tests/test_stl.py
 popd
 rm -r $testdir
 %endif
@@ -126,7 +131,7 @@ rm -r $testdir
 %doc examples/
 %license COPYRIGHTS.txt LICENSE.txt
 %{python_sitearch}/statsmodels/
-%{python_sitearch}/statsmodels-%{version}*-info
+%{python_sitearch}/statsmodels-%{version}.dist-info
 %endif
 
 %changelog

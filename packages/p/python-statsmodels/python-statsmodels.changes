@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 23 16:24:37 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.14.0
+  * Treatment effect estimation and inference
+  * Hurdle and Truncated Count Regression
+  * Archimedean copulas have been extended to more than
+    2-dimensions.
+  * Multiseason STL decomposition (MSTL)
+  * Improved compatibility with current and future NumPy, SciPy,
+    and pandas.
+- Drop use_old_setuptools_scm.patch
+
+-------------------------------------------------------------------
 Thu Jan 12 15:34:03 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Don't remove the tests after install, we need them in the check
