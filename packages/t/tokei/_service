@@ -3,9 +3,9 @@
     <param name="url">https://github.com/XAMPPRocky/tokei</param>
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param>
     <param name="scm">git</param>
-    <param name="revision">251283677d1da3b1f379254f59a2ac3d70ab091c</param>
-    <param name="versionrewrite-pattern">tokei\@(\d+\.\d+\.\d+)</param>
-    <param name="versionrewrite-replacement">\1</param>
+    <param name="revision">5257078123695a9ffb47751e84086939cb0dcb79</param>
+    <param name="versionrewrite-pattern">tokei\@(\d+\.\d+\.\d+)-(\w+\.\d+)</param>
+    <param name="versionrewrite-replacement">\1.\2</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">socvirnyl.estela@gmail.com</param>
   </service>
@@ -17,7 +17,7 @@
   <service mode="disabled" name="set_version"/>
   <service name="cargo_vendor" mode="disabled">
      <param name="srcdir">tokei</param>
-     <param name="compression">xz</param>
+     <param name="compression">zst</param>
      <param name="update">true</param>
   </service>
   <service name="cargo_audit" mode="disabled">

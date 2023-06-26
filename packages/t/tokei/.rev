@@ -39,4 +39,33 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1036810</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>330af33182de837720cd6704715d5441</srcmd5>
+    <version>13.0.0.alpha.0+git14</version>
+    <time>1687796224</time>
+    <user>dimstar_suse</user>
+    <comment>- Manually vendor dependencies.
+  * Add vendor.tar.zst
+- Update service file.
+- Update to version 13.0.0.alpha.0+git14:
+  * add --languages ouput formatter
+  * Add Nuget Config, Bazel and EdgeQL Support, Fix Output Formatter
+  * show nushell in the readme
+  * Add support for Redscript
+  * Add support for jq
+  * Add support for Astro
+  * Use XDG conventions on macOS too
+  * Add JSON5 support for languages.json
+  * Delete Smalltalk.cs.st
+  * Add support for smalltalk
+  * Disable *-android
+  * Add HiCAD to languages.json
+  * Add Nushell to languages.json
+  * Disable aarch64-linux-android
+  * Add language support for SQF
+  * Fix link to speed comparison in README.md
+  * Add Hy support
+</comment>
+    <requestid>1095443</requestid>
+  </revision>
 </revisionlist>
