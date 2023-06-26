@@ -169,4 +169,12 @@
   * addressed a packaging issue with 3.0.0</comment>
     <requestid>1055856</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>302f82e8b1ef2e9881f049bdc5e0b195</srcmd5>
+    <version>3.1.0</version>
+    <time>1687796201</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095395</requestid>
+  </revision>
 </revisionlist>
