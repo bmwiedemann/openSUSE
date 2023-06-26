@@ -16,9 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-# Python2 support has been dropped in version 2.0.0
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 %define oldpython python
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"

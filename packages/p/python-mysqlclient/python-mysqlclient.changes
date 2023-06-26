@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 25 08:28:34 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Use sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Wed May  3 11:10:33 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Use sphinx-build and do not depend on removed build_sphinx
