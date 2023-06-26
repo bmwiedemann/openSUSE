@@ -16,8 +16,8 @@
 #
 
 
+%{?sle15_python_module_pythons}
 %define mod_name django_compressor
-%define skip_python2 1
 Name:           python-django-compressor
 Version:        4.3.1
 Release:        0
