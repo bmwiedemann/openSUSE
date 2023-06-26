@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 26 06:58:15 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Use sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Fri Aug  5 14:24:34 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Add missing Requires for python-redis
