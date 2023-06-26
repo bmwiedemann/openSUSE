@@ -1878,6 +1878,7 @@ unsorted:
   - capnproto 
   - capstone 
   - capstone-doc 
+  - carat 
   - cardpeek 
   - cargo 
   - cargo-audit 
@@ -11260,7 +11261,7 @@ unsorted:
   - libclxclient3 
   - libclzma-suse0 
   - libclzma-suse0-x86-64-v3 
-  - libcm0 
+  - libcm1 
   - libcmap4-32bit 
   - libcmh0 
   - libcmis-0_5-5 
@@ -44428,6 +44429,7 @@ unsorted:
   - totem-plugin-gnome-dvb-daemon 
   - touchegg 
   - tp_smapi-kmp-default 
+  - tpm-fido 
   - tpm-quote-tools 
   - tpm-tools 
   - tpm-tools-devel 
