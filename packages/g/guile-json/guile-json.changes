@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 18 20:35:43 UTC 2023 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to 4.7.3:
+  * Fix a regression introduced in 4.7.1 where (json->RECORD) was not working
+    with nested fields. 
+
+-------------------------------------------------------------------
 Sat Sep 17 07:52:47 UTC 2022 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
 
 - Update to 4.7.2:
