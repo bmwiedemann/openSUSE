@@ -1,7 +1,7 @@
 #
 # spec file for package guile-gnutls
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           guile-gnutls
-Version:        3.7.11
+Version:        3.7.12
 Release:        0
 Summary:        Guile bindings to GnuTLS
 License:        LGPL-2.1-or-later

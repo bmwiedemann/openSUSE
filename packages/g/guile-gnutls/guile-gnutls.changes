@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 18 20:48:28 UTC 2023 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to 3.7.12:
+  * The gnutls-guile library can now use newer gnutls features
+  * Bind the HMAC and hash functions from GnuTLS
+  * Correctly handle blocking writes to session record ports 
+
+-------------------------------------------------------------------
 Thu Dec 29 00:12:52 UTC 2022 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
 
 - Add provides and obsoletes 
