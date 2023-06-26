@@ -210,4 +210,14 @@
   * First XPath 3.1 implementation (without UCA collation support)</comment>
     <requestid>1086658</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>dd8426f56700a4b1d07b21b7b397d1f2</srcmd5>
+    <version>4.1.3</version>
+    <time>1687796130</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.3:
+  * Fix XP30+ fn:path
+  * Fix weak tests</comment>
+    <requestid>1095230</requestid>
+  </revision>
 </revisionlist>
