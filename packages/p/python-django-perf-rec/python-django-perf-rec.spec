@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-perf-rec
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,25 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
 Name:           python-django-perf-rec
-Version:        4.11.0
+Version:        4.23.0
 Release:        0
 Summary:        Keep detailed records of the performance of your Django code
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/adamchainz/django-perf-rec
-Source:         https://files.pythonhosted.org/packages/source/d/django-perf-rec/django-perf-rec-%{version}.tar.gz
+Source:         https://github.com/adamchainz/django-perf-rec/archive/refs/tags/%{version}.tar.gz#/django-perf-rec-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 2.2
+Requires:       python-Django >= 3.2
 Requires:       python-PyYAML
 Requires:       python-sqlparse >= 0.4.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 2.2}
+BuildRequires:  %{python_module Django >= 3.2}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module sqlparse >= 0.4.0}
@@ -49,10 +49,10 @@ Keep detailed records of the performance of your Django code.
 %setup -q -n django-perf-rec-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
