@@ -132,4 +132,15 @@
     <comment></comment>
     <requestid>1092225</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>36316788cf20e5a81475a374522de7a5</srcmd5>
+    <version>4.2.0</version>
+    <time>1687796156</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1094952 from bnavigator
+
+- Remove xfail_strict from pytest config
+    * pyside2 and py311 XPASS a test, gh#pytest-dev/pytest-qt#419</comment>
+    <requestid>1095240</requestid>
+  </revision>
 </revisionlist>

@@ -111,6 +111,8 @@ like key presses and mouse clicks.
 %prep
 %setup -q -n pytest-qt-%{version}
 dos2unix LICENSE
+# https://github.com/pytest-dev/pytest-qt/pull/419#discussion_r1240198866
+sed -i /xfail_strict/d setup.cfg
 
 %if ! %{with test}
 %build
@@ -127,7 +129,7 @@ dos2unix LICENSE
 %check
 export QT_QPA_PLATFORM=offscreen
 export PYTEST_QT_API=%{test_qtapi}
-%pytest %{?testflavorargs}
+%pytest %{?testflavorargs} -rsxXfE
 %endif
 
 %if ! %{with test}

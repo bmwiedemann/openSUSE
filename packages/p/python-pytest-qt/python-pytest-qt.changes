@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 23 19:07:24 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Remove xfail_strict from pytest config
+  * pyside2 and py311 XPASS a test, gh#pytest-dev/pytest-qt#419
+
+-------------------------------------------------------------------
 Sat Jun 10 09:43:01 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
