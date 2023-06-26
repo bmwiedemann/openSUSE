@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 25 19:38:55 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1687532073.e11feac:
+  * Do not hardlink symlink assets
+  * Reclone external/os-autoinst-common subrepo
+
+-------------------------------------------------------------------
 Fri Jun 23 11:38:55 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1687510203.8d9fc92:
