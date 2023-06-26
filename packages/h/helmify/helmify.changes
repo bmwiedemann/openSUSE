@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 26 05:00:22 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.4.4:
+  * Move existing annotations to values.yaml
+  * Prevent empty white line before serviceaccount annotations
+  * Properly set serviceaccount annotation variable
+  * fixing cases where theres empty annotations
+  * adding metaopt to processobjmeta
+  * test_data and examples
+  * fixing annotations yams
+  * ensuring annotations are always present
+  * [serviceaccount] Annotations as Values Support
+
+-------------------------------------------------------------------
 Sun Apr 30 10:52:45 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.4.3:
