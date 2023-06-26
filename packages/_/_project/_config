@@ -20,10 +20,6 @@ BuildFlags: vmfstype:ext4
 BuildFlags: vmfsoptions:nodirindex
 
 # Help with the switch to the gcc<n> provided libs:
-# Do not use the -gcc11 variants if different providers exist
-Prefer: -libgfortran5-gcc11
-Prefer: -libubsan1-gcc11
-Prefer: -libubsan1-gcc11-32bit
 # Do not use the -gcc12 variants if different providers exist
 Prefer: -libasan8-gcc12
 Prefer: -libasan8-gcc12-32bit
@@ -841,7 +837,7 @@ Prefer: -kubernetes1.24-client-common -kubernetes1.25-client-common
 Prefer: -deepin-kwin-devel
 
 # have choice for html2text
-Prefer: -python38-html2text -python39-html2text -python310-html2text -python311-html2text
+Prefer: -python39-html2text -python310-html2text -python311-html2text
 
 # have choice for (gnome-session or budgie-desktop) needed by gnome-shell: budgie-desktop gnome-session
 Prefer: -budgie-desktop
@@ -860,7 +856,6 @@ Prefer: PackageKit-backend-zypp
 
 # have choice for python3-sip: python3-sip-devel python3-sip4
 Prefer: -python39-sip6-devel -python310-sip6-devel -python311-sip6-devel
-Prefer: -python38-sip4 -python38-sip4-devel
 Prefer: -python39-sip4 -python39-sip4-devel
 Prefer: -python310-sip4 -python310-sip4-devel
 
@@ -943,7 +938,7 @@ Prefer: -libz-ng-compat1 -zlib-ng-compat-devel
 Prefer: -patterns-microos-desktop-common
 
 #  unresolvable: have choice for libomp.so()(64bit) needed by libispcrt_1: libomp11-devel libomp12-devel libomp13-devel libomp14-devel libomp15-devel, have choice for libomp.so(VERSION)(64bit) needed by libispcrt_1: libomp11-devel libomp12-devel libomp13-devel libomp14-devel libomp15-devel 
-Prefer: -libomp11-devel -libomp12-devel -libomp13-devel -libomp14-devel
+Prefer: -libomp13-devel -libomp14-devel
 
 # have choice for pkgconfig(libindi): indi-devel libindi-devel
 Prefer: -indi-devel
@@ -1369,7 +1364,7 @@ Prefer: libqca-qt5-2 qca-qt5-plugins
 Prefer: -xaw3dd -amanda
 Prefer: libgcc_s1 libgcc_s1-32bit libgcc_s1-64bit
 Prefer: libffi-devel
-Prefer: libatomic1 libitm1 liblsan0 libtsan0 libubsan0 -libtsan0-gcc11
+Prefer: libatomic1 libitm1 liblsan0 libtsan0 libubsan0
 Prefer: libatomic1-32bit libcilkrts5-32bit libitm1-32bit libubsan0-32bit
 Prefer: libgomp1 libgomp1-32bit libgomp1-64bit
 Prefer: libobjc4 libquadmath0
@@ -1460,7 +1455,7 @@ Ignore: autoyast2:yast2-schema
 # not during build
 Ignore: yast2-x11:sax2-libsax-perl
 Ignore: openslp-devel:openssl-devel
-Ignore: tetex:xorg-x11-libs,expat,fontconfig,freetype2,libjpeg,ghostscript-x11,xaw3d,gd,dialog
+Ignore: tetex:expat,fontconfig,freetype2,libjpeg,ghostscript-x11,xaw3d,gd,dialog
 Ignore: texlive-bin:ghostscript-x11
 Ignore: texlive-bin-omega:ghostscript-x11
 Ignore: yast2-country:yast2-trans-stats
@@ -3435,7 +3430,6 @@ BuildFlags: onlybuild:xorg-cf-files
 BuildFlags: onlybuild:xorg-sgml-doctools
 BuildFlags: onlybuild:xorg-x11
 BuildFlags: onlybuild:xorg-x11-fonts
-BuildFlags: onlybuild:xorg-x11-libs
 BuildFlags: onlybuild:xorg-x11-server
 BuildFlags: onlybuild:xorgproto
 BuildFlags: onlybuild:xprop
@@ -3609,9 +3603,6 @@ Prefer: java-1_8_0-openj9-devel java-1_8_0-openj9 java-1_8_0-openj9-headless
 %endif
 Prefer: java-1_8_0-openjdk-devel java-1_8_0-openjdk java-1_8_0-openjdk-headless java-1_8_0-openjdk-javadoc
 Prefer: java-20-openjdk-devel java-20-openjdk java-20-openjdk-headless java-20-openjdk-javadoc
-Prefer: java-19-openjdk-devel java-19-openjdk java-19-openjdk-headless java-19-openjdk-javadoc
-Prefer: java-18-openjdk-devel java-18-openjdk java-18-openjdk-headless java-18-openjdk-javadoc
-Prefer: java-15-openjdk-devel java-15-openjdk java-15-openjdk-headless java-15-openjdk-javadoc
 
 %ifarch x86_64 ppc64 s390x sparc64
 Substitute: glibc-devel-32bit glibc-devel-32bit glibc-32bit
