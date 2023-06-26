@@ -959,4 +959,41 @@ run -osc service localrun format_spec_file to fix copyright
   * Inability to exit search mode when `quit` is bound to `BACKSPACE` (#2336)</comment>
     <requestid>1074593</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d38dfb195e794eea821a506e0648b9b5</srcmd5>
+    <version>2.32</version>
+    <time>1687796178</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.32:
+  Added:
+  * contrib: a filter to remove Substack's &quot;Subscribe now&quot; prompts
+    from the posts (NunoSempere)
+  * contrib: an image pager which can spot all the images in a
+    post and display them with either `feh` or `kitty`'s `icat`
+    (whyrgola)
+  * Tags in OPML export. This is implemented as a new option,
+    `--export-to-opml2`, because the output format is OPML version
+    2.0 rather than the 1.0 that `--export-to-opml` produces.
+    We intend to make OPML 2.0 the default in some future major
+    release of Newsboat (#871) (Gwyneth Morgan)
+  Changed:
+  * Enclosures are only enqueued if their MIME type looks like
+    a podcast or is empty. This prevents Newsboat from e.g.
+    enqueueing images from Mastodon feeds (#2367) (Dennis van der
+    Schagt)
+  * Asciidoctor is a truly optional dependency now. `make all`
+    still builds docs, but at least one can `make newsboat`
+    and such without installing Asciidoctor (#2353) (Alexander
+    Batischev)
+  * Newlines are now removed from the author's name (#2434)
+    (blankie)
+  * If the same URL is used in `&lt;a&gt;` and/or `&lt;img&gt;`/`&lt;iframe&gt;`,
+    it's marked as &quot;image&quot; or &quot;iframe&quot; rather than simply a
+    &quot;link&quot; (#2432) (blankie)
+  * `goto-title` operation now searches for the titles *as you
+    see them*, i.e. if a feed doesn't have a title and Newsboat
+    displays its URL instead, `goto-feed` will use that URL rather
+    than the (empty) title (#2451) (blankie)</comment>
+    <requestid>1095315</requestid>
+  </revision>
 </revisionlist>
