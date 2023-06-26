@@ -22,17 +22,18 @@
 #
 %_mingw64_cmake %{_mingw64_env} ; \
     opts="" \
-    for i in "$@"; do  \
-        if test "$i" == "-S"; then \
+    while (( "$#" )); do  \
+        if test "$1" == "-S"; then \
             shift \
-            sdir=$i \
+            sdir=$1 \
             shift \
-        elif test "$i" == "-B"; then \
+        elif test "$1" == "-B"; then \
             shift \
-            bdir=$i \
+            bdir=$1 \
             shift \
         else \
-            opts="$opts $i" \
+            opts="$opts $1" \
+            shift \
         fi \
     done \
     if test -z "$bdir"; then \

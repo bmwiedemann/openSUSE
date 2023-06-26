@@ -16,7 +16,7 @@
 #
 
 Name:           mingw64-cross-cmake
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Cross build support for CMake
 License:        BSD-3-Clause
