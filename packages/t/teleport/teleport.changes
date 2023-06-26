@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Jun 26 06:58:12 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 13.1.3:
+  * Release 13.1.3 (#28243)
+  * [v13] bump e-ref (#28241)
+  * log why the TeleportReady event is not being emitted (#28239)
+  * Warn about clamshell-related touch ID unavailability (#28214)
+  * Added 06/22 Upcoming Releases (#28155)
+  * [v13] Edit the server access Getting Started guide (#28172)
+  * [v13] InstallScripts: pin teleport version using ServerVersion
+    (#28149) (#28208)
+  * [v13] update helm docs (#28068)
+  * [v13] Specify how host user creation invokes `useradd` (#28194)
+  * Bump 'e' ref (#28206)
+  * docs: fix kubernetes guide (#28164)
+  * docs: remove note about supporting any platform supporting Go
+    (#28178)
+  * [v13] Update teleport cloud faq.mdx (#28174)
+  * [v13] Add Opsgenie plugin (#28098)
+  * [v13] permission-warning.mdx: Advise NOT TO give access,editor
+    to users (#28132)
+  * [v13] docs: update macos tsh install instructions (#28135)
+  * [v13] Use the one-liner in install-linux.mdx (#27907)
+  * docs: Fix syntax error (#28142)
+  * bump docs to 13.1.1 (#28153)
+  * feat: add support for label expressions to k8s operator
+    (#28156)
+  * Correct the backend_requests metric help text (#28107)
+  * [v13] feat: adds motd to the ui (#27922)
+  * [branch/v13] Bumped `e` ref (#28144)
+  * Remove deprecated/unused device trust protos (#27975) (#28075)
+  * [v13] Integrate AMI buids into drone (#27354) (#28127)
+
+-------------------------------------------------------------------
 Thu Jun 22 05:14:09 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 13.1.2:
