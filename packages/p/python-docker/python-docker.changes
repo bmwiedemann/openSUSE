@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Fri Jun 23 13:38:27 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 6.1.3:
+  * Bugfixes
+    - Fix eventlet compatibility (#3132)
+- update to 6.1.2:
+  * Bugfixes
+    - Fix for socket timeouts on long docker exec calls (#3125)
+    - Respect timeout param on Windows (#3112)
+- update to 6.1.1:
+  * Upgrade Notes (6.1.x)
+    - Errors are no longer returned during client initialization if
+      the credential helper cannot be found. A warning will be
+      emitted instead, and an error is returned if the credential
+      helper is used.
+  * Bugfixes
+    - Fix containers.stats() hanging with stream=True
+    - Correct return type in docs for containers.diff() method
+- update to 6.1.0:
+  * Upgrade Notes
+    - Errors are no longer returned during client initialization if
+      the credential helper cannot be found. A warning will be
+      emitted instead, and an error is returned if the credential
+      helper is used.
+  * Features
+    - Python 3.11 support
+    - Use poll() instead of select() on non-Windows platforms
+    - New API fields
+      - network_driver_opt on container run / create
+      - one-shot on container stats
+      - status on services list
+  * Bugfixes
+    - Support for requests 2.29.0+ and urllib3 2.x
+    - Do not strip characters from volume names
+    - Fix connection leak on container.exec_* operations
+    - Fix errors closing named pipes on Windows
+- update to 6.0.1:
+  * Notice
+    This version is not compatible with requests 2.29+ or urllib3
+    2.x.
+    Either add requests < 2.29 and urllib3 < 2 to your requirements
+    or upgrade to to the latest docker-py release.
+  * Bugfixes
+    - Fix for The pipe has been ended errors on Windows (#3056)
+    - Support floats for timestamps in Docker logs (since / until)
+      (#3031)
+- update to 6.0.0:
+  * Upgrade Notes
+    - Minimum supported Python version is 3.7+
+    - When installing with pip, the docker[tls] extra is deprecated
+      and a no-op, use docker for same functionality (TLS support
+      is always available now)
+    - Native Python SSH client (used by default /
+      use_ssh_client=False) will now
+    - reject unknown host keys with
+      paramiko.ssh_exception.SSHException
+    - Short IDs are now 12 characters instead of 10 characters
+      (same as Docker CLI)
+    - Version metadata is now exposed as __version__
+  * Features
+    - Python 3.10 support
+    - Automatically negotiate most secure TLS version
+    - Add platform (e.g. linux/amd64, darwin/arm64) to container
+      create & run
+    - Add support for GlobalJob and ReplicatedJobs for Swarm
+    - Add remove() method on Image
+    - Add force param to disable() on Plugin
+  * Bugfixes
+    - Fix install issues on Windows related to pywin32
+    - Do not accept unknown SSH host keys in native Python SSH mode
+    - Use 12 character short IDs for consistency with Docker CLI
+    - Ignore trailing whitespace in .dockerignore files
+    - Fix IPv6 host parsing when explicit port specified
+    - Fix ProxyCommand option for SSH connections
+    - Do not spawn extra subshell when launching external SSH
+      client
+    - Improve exception semantics to preserve context
+    - Documentation improvements (formatting, examples, typos,
+      missing params)
+  * Miscellaneous
+    - Upgrade dependencies in requirements.txt to latest versions
+    - Remove extraneous transitive dependencies
+    - Eliminate usages of deprecated functions/methods
+    - Test suite reliability improvements
+    - GitHub Actions workflows for linting, unit tests, integration
+      tests, and publishing releases
+
+-------------------------------------------------------------------
 Tue May  9 11:20:16 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons

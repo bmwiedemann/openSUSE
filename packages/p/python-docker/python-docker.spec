@@ -18,60 +18,57 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-docker
-Version:        5.0.3
+Version:        6.1.3
 Release:        0
-Summary:        Docker API Client
+Summary:        A Python library for the Docker Engine API
 License:        Apache-2.0
-Group:          System/Management
-URL:            https://pypi.org/project/docker
-Source0:        https://files.pythonhosted.org/packages/source/d/docker/docker-%{version}.tar.gz
-BuildRequires:  %{python_module docker-pycreds >= 0.4.0}
-BuildRequires:  %{python_module paramiko >= 2.4.2}
+URL:            https://github.com/docker/docker-py
+Source:         https://files.pythonhosted.org/packages/source/d/docker/docker-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest >= 4.3.1}
-BuildRequires:  %{python_module pytest-cov >= 2.1.0}
-BuildRequires:  %{python_module pytest-timeout >= 1.2.1}
-BuildRequires:  %{python_module requests >= 2.20.0}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module websocket-client >= 0.40.0}
-BuildRequires:  fdupes
+BuildRequires:  %{python_module setuptools >= 45}
+BuildRequires:  %{python_module setuptools_scm >= 6.2}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
-Requires:       python-docker-pycreds >= 0.4.0
-Requires:       python-paramiko >= 2.4.2
-Requires:       python-requests >= 2.20.0
-Requires:       python-websocket-client >= 0.40.0
-# docker-py got renamed to docker in 2017
-Obsoletes:      python-docker-py < %{version}
-Provides:       python-docker-py = %{version}
+# SECTION test requirements
+BuildRequires:  %{python_module packaging >= 14.0}
+BuildRequires:  %{python_module paramiko >= 2.11.0}
+BuildRequires:  %{python_module pytest >= 7.1.2}
+BuildRequires:  %{python_module pytest-timeout >= 2.1.0}
+BuildRequires:  %{python_module requests >= 2.26.0}
+BuildRequires:  %{python_module setuptools >= 65.5.1}
+BuildRequires:  %{python_module urllib3 >= 2.0}
+BuildRequires:  %{python_module websocket-client >= 0.32.0}
+# /SECTION
+BuildRequires:  fdupes
+Requires:       python-packaging >= 14.0
+Requires:       python-requests >= 2.26.0
+Requires:       python-urllib3 >= 1.26.0
+Requires:       python-websocket-client >= 0.32.0
+Suggests:       python-pywin32 >= 304
+Suggests:       python-paramiko >= 2.4.3
 BuildArch:      noarch
-%if 0%{?suse_version} < 1320
-BuildRequires:  %{python_module backports.ssl_match_hostname >= 3.5}
-BuildRequires:  python3
-%endif
 %python_subpackages
 
 %description
-A docker API client in Python
+A Python library for the Docker Engine API.
 
 %prep
-%setup -q -n docker-%{version}
+%autosetup -p1 -n docker-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest tests/unit
 
 %files %{python_files}
-%license LICENSE
 %doc README.md
-%dir %{python_sitelib}/docker
-%dir %{python_sitelib}/docker-%{version}-*.egg-info
-%{python_sitelib}/docker/*
-%{python_sitelib}/docker*egg-info/*
+%license LICENSE
+%{python_sitelib}/docker
+%{python_sitelib}/docker-%{version}.dist-info
 
 %changelog
