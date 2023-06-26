@@ -504,4 +504,14 @@
   * Fix `fr_FR` `postcode` length.</comment>
     <requestid>1094144</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>a272a384cfb0a04c04f0b6bb8443d903</srcmd5>
+    <version>18.11.1</version>
+    <time>1687796131</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 18.11.1:
+  * Update Ukraine Country Code in `phone_number`
+  * Add digit-above-two type to numerify function</comment>
+    <requestid>1095231</requestid>
+  </revision>
 </revisionlist>

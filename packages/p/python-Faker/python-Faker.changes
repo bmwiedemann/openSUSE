@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 25 18:47:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 18.11.1:
+  * Update Ukraine Country Code in `phone_number`
+  * Add digit-above-two type to numerify function
+
+-------------------------------------------------------------------
 Tue Jun 20 17:41:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 18.10.1:
