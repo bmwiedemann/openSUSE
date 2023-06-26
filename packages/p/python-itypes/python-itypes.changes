@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 25 07:07:41 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Use sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Sun Aug 29 19:21:21 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Enable tests (we need to get source tarball from GitHub
