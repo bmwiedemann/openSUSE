@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jun 26 12:31:13 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Update to opensbi 1.3
+  * Allow platform to influence cold boot HART selection
+  * Starfive JH7110 platform support
+  * Split RX and RW firmware regions
+  * Advertise nonretentive suspend for allwinner D1 platform
+  * Byteorder/endianness conversion macros
+  * SBI debug console extension (Experimental)
+  * Configure the PMA regions for RZ/Five platform
+  * SBI system suspend extension (Experimental)
+  * SBI PMU platform firmware events (Experimental)
+  * SBI CPPC extension (Experimental)
+  * Optimized remote TLB flushes
+  * Simple heap for boot time memory allocations
+  * Bring back no-map DT property for reserved memory nodes
+
+-------------------------------------------------------------------
 Sat Dec 24 15:29:37 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Update to opensbi 1.2
