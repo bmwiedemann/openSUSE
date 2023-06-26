@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Mon Jun 26 06:20:32 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Do not package test files for xdp-tools
+  + this also means we longer get the arch-dependent-file-in-usr-share rpmlint
+  error, so xdp-tools.rpmlintrc can be removed
+
+-------------------------------------------------------------------
+Sat Jun 17 12:45:34 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Specify which group each package belong
+- Add patch markup for the 2 patches in the package
+
+-------------------------------------------------------------------
+Thu Jun  8 09:00:03 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Use %set_build_flags macro to set the CFLAGS and LDFLAGS environment
+  variable
+- Add util-xdp_samples-Only-ignore-Wstringop-truncation-di.patch to compile on
+  GCC 7 and earlier
+- Add lib-Install-BPF-objects-as-non-executable.patch to prevent stripping of
+  BPF object files
+
+-------------------------------------------------------------------
+Wed Jun  7 14:36:16 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Update to v1.3.1 from v1.2.0
+- Add /usr/sbin to PATH during build so bpftool can be found
+
+-------------------------------------------------------------------
+Wed Nov  3 07:03:52 UTC 2021 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Initial commit of xdp-tools

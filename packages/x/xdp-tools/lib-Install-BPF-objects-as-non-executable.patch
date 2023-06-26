@@ -1,0 +1,44 @@
+From 3d8728f0814c260ab287f12569037f1466cd6da0 Mon Sep 17 00:00:00 2001
+From: Shung-Hsi Yu <shung-hsi.yu@suse.com>
+Date: Thu, 8 Jun 2023 15:53:39 +0800
+Subject: [PATCH 1/1] lib: Install BPF objects as non-executable
+
+The BPF/XDP objects installed into BPF_OBJECT_DIR are not meant to be
+executed directly, so don't install them as executable. This should also
+prevent find-debuginfo from stripping them.
+
+Signed-off-by: Shung-Hsi Yu <shung-hsi.yu@suse.com>
+---
+ lib/common.mk       | 2 +-
+ lib/libxdp/Makefile | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/common.mk b/lib/common.mk
+index b680a75..ba329d7 100644
+--- a/lib/common.mk
++++ b/lib/common.mk
+@@ -73,7 +73,7 @@ install: all install_local
+ 	install -m 0755 -d $(DESTDIR)$(SBINDIR)
+ 	install -m 0755 -d $(DESTDIR)$(BPF_OBJECT_DIR)
+ 	$(if $(USER_TARGETS),install -m 0755 $(USER_TARGETS) $(DESTDIR)$(SBINDIR))
+-	$(if $(XDP_OBJ_INSTALL),install -m 0755 $(XDP_OBJ_INSTALL) $(DESTDIR)$(BPF_OBJECT_DIR))
++	$(if $(XDP_OBJ_INSTALL),install -m 0644 $(XDP_OBJ_INSTALL) $(DESTDIR)$(BPF_OBJECT_DIR))
+ 	$(if $(MAN_FILES),install -m 0755 -d $(DESTDIR)$(MANDIR)/man8)
+ 	$(if $(MAN_FILES),install -m 0644 $(MAN_FILES) $(DESTDIR)$(MANDIR)/man8)
+ 	$(if $(SCRIPTS_FILES),install -m 0755 -d $(DESTDIR)$(SCRIPTSDIR))
+diff --git a/lib/libxdp/Makefile b/lib/libxdp/Makefile
+index 431932a..43de3e8 100644
+--- a/lib/libxdp/Makefile
++++ b/lib/libxdp/Makefile
+@@ -54,7 +54,7 @@ install: all
+ 	$(Q)install -m 0644 $(LIB_HEADERS) $(DESTDIR)$(HDRDIR)/
+ 	$(Q)install -m 0644 $(PC_FILE) $(DESTDIR)$(LIBDIR)/pkgconfig/
+ 	$(Q)cp -fpR $(SHARED_LIBS) $(STATIC_LIBS) $(DESTDIR)$(LIBDIR)
+-	$(Q)install -m 0755 $(XDP_OBJS) $(DESTDIR)$(BPF_OBJECT_DIR)
++	$(Q)install -m 0644 $(XDP_OBJS) $(DESTDIR)$(BPF_OBJECT_DIR)
+ 	$(if $(MAN_FILES),$(Q)install -m 0755 -d $(DESTDIR)$(MANDIR)/man3)
+ 	$(if $(MAN_FILES),$(Q)install -m 0644 $(MAN_FILES) $(DESTDIR)$(MANDIR)/man3)
+ 
+-- 
+2.40.1
+

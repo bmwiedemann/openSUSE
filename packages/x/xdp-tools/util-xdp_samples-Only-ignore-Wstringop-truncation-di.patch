@@ -1,0 +1,30 @@
+From eab11e5edbf10a4632b8144ba4816744c5965c63 Mon Sep 17 00:00:00 2001
+From: Shung-Hsi Yu <shung-hsi.yu@suse.com>
+Date: Thu, 8 Jun 2023 14:08:44 +0800
+Subject: [PATCH 1/1] util/xdp_samples: Only ignore -Wstringop-truncation
+ diagnostic on GCC 8 or greater
+
+String truncation detection is only available on GCC 8 or greater.
+Ignore it only when it is recognized by GCC.
+
+Signed-off-by: Shung-Hsi Yu <shung-hsi.yu@suse.com>
+---
+ lib/util/xdp_sample.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/util/xdp_sample.h b/lib/util/xdp_sample.h
+index 2b6038d..0aa5e5c 100644
+--- a/lib/util/xdp_sample.h
++++ b/lib/util/xdp_sample.h
+@@ -54,7 +54,7 @@ const char *get_driver_name(int ifindex);
+ int get_mac_addr(int ifindex, void *mac_addr);
+ 
+ #pragma GCC diagnostic push
+-#ifndef __clang__
++#if !defined(__clang__) && (__GNUC__ > 7)
+ #pragma GCC diagnostic ignored "-Wstringop-truncation"
+ #endif
+ __attribute__((unused))
+-- 
+2.40.1
+
