@@ -177,4 +177,14 @@ See request 531880 : https://build.opensuse.org/request/show/531880</comment>
     <comment></comment>
     <requestid>1041387</requestid>
   </revision>
+  <revision rev="19" vrev="5">
+    <srcmd5>4c220cedd9a1c7fd92ceeae1537f4e22</srcmd5>
+    <version>4.5.2</version>
+    <time>1687796134</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1095195 from gladiac
+
+- Use sle15_python_module_pythons</comment>
+    <requestid>1095248</requestid>
+  </revision>
 </revisionlist>
