@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 26 06:59:29 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Use sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Thu Nov  3 10:55:45 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add drop-python2-support.patch to remove python-six dependency
