@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-pdm-backend
 Version:        2.1.0
@@ -23,19 +24,20 @@ Summary:        Backend used by PDM
 License:        MIT
 URL:            https://github.com/pdm-project/pdm-backend
 Source:         https://files.pythonhosted.org/packages/8f/aa/df3ad85bf4eeb7a7a3364610ca399f56812e4827cff6495c2a20e4bf1bb4/pdm_backend-2.1.0.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module editables}
+BuildRequires:  %{python_module importlib-metadata >= 3.6.0 if %python-base < 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module editables}
-BuildRequires:  git
 BuildRequires:  fdupes
+BuildRequires:  git-core
+BuildRequires:  python-rpm-macros
+Requires:       python-importlib-metadata >= 3.6.0
 BuildArch:      noarch
 %python_subpackages
 
 %description
 The build backend used by [PDM] that supports latest packaging standards.
-
 
 %prep
 %autosetup -p1 -n pdm_backend-%{version}

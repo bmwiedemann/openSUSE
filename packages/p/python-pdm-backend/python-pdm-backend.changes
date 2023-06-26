@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 19 13:41:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add importlib-metadata dependency
+- git-core is sufficient for the testsuite
+
+-------------------------------------------------------------------
 Thu Jun 15 13:05:51 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Initial package
