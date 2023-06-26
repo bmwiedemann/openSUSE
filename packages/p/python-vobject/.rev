@@ -33,4 +33,12 @@
 - Fix the fdupes call</comment>
     <requestid>655697</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>c6b3b66dc72477b0136797e6f75794d9</srcmd5>
+    <version>0.9.6.1</version>
+    <time>1687796137</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095203</requestid>
+  </revision>
 </revisionlist>

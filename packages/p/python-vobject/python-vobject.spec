@@ -1,7 +1,7 @@
 #
 # spec file for package python-vobject
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 %global modname vobject
 Name:           python-vobject
 Version:        0.9.6.1
@@ -35,7 +35,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil >= 2.4.0
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 Recommends:     python-PyICU
 Provides:       %{modname} = %{version}
 Obsoletes:      %{modname} < 0.9.2
