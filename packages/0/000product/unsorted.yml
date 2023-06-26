@@ -15840,6 +15840,8 @@ unsorted:
   - libxdg-basedir-devel 
   - libxdg-basedir1 
   - libxdot4 
+  - libxdp-devel 
+  - libxdp1 
   - libxerces-c-devel 
   - libxfce4ui-branding-upstream 
   - libxfce4ui-devel 
@@ -18686,6 +18688,7 @@ unsorted:
   - npm-default 
   - npth-devel 
   - nqp 
+  - nqptp 
   - nrpe 
   - nrpe-doc 
   - nsd 
@@ -22422,7 +22425,6 @@ unsorted:
   - python-demo 
   - python-designateclient-doc 
   - python-devel 
-  - python-djvulibre-doc 
   - python-doc 
   - python-doc-pdf 
   - python-efl-doc 
@@ -24032,7 +24034,6 @@ unsorted:
   - python310-djangorestframework-camel-case 
   - python310-djangorestframework-simplejwt 
   - python310-djet 
-  - python310-djvulibre 
   - python310-dkimpy 
   - python310-dmidecode 
   - python310-dns-lexicon 
@@ -25844,7 +25845,6 @@ unsorted:
   - python310-sidecar 
   - python310-sidpy 
   - python310-sievelib 
-  - python310-sigal 
   - python310-signedjson 
   - python310-simpleaudio 
   - python310-simplebayes 
@@ -27447,7 +27447,6 @@ unsorted:
   - python311-djangorestframework-camel-case 
   - python311-djangorestframework-simplejwt 
   - python311-djet 
-  - python311-djvulibre 
   - python311-dmidecode 
   - python311-dns-lexicon 
   - python311-dnslib 
@@ -29151,7 +29150,6 @@ unsorted:
   - python311-sidecar 
   - python311-sidpy 
   - python311-sievelib 
-  - python311-sigal 
   - python311-signedjson 
   - python311-simpleaudio 
   - python311-simplebayes 
@@ -30815,7 +30813,6 @@ unsorted:
   - python39-djangorestframework-camel-case 
   - python39-djangorestframework-simplejwt 
   - python39-djet 
-  - python39-djvulibre 
   - python39-dkimpy 
   - python39-dmidecode 
   - python39-dns-lexicon 
@@ -32625,7 +32622,6 @@ unsorted:
   - python39-sidecar 
   - python39-sidpy 
   - python39-sievelib 
-  - python39-sigal 
   - python39-signedjson 
   - python39-simpleaudio 
   - python39-simplebayes 
@@ -45477,6 +45473,7 @@ unsorted:
   - wezterm-mux-server 
   - wezterm-zsh-completion 
   - wf-recorder 
+  - wg-info 
   - wget2 
   - wgetpaste 
   - whatsapp-for-linux 
@@ -45700,6 +45697,7 @@ unsorted:
   - xdo 
   - xdotool 
   - xdotool-devel 
+  - xdp-tools 
   - xdriinfo 
   - xed 
   - xed-devel 
