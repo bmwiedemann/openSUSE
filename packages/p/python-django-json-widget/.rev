@@ -57,4 +57,14 @@
   * update readme for django 3.1</comment>
     <requestid>1055869</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>fa00e8fb1d81e8cd943058c049a1ae3b</srcmd5>
+    <version>1.1.1</version>
+    <time>1687796150</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1094900 from gladiac
+
+- Use sle15_python_module_pythons</comment>
+    <requestid>1095238</requestid>
+  </revision>
 </revisionlist>

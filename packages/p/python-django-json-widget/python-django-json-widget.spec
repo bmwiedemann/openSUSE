@@ -16,8 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-django-json-widget
 Version:        1.1.1
 Release:        0
