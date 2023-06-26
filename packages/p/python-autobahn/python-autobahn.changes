@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Jun 23 11:21:53 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 23.6.2
+  * fix: use regular PyPI bitarray>=2.7.5 rather than from GitHub master
+  23.6.1
+  * fix: updated bitarray to make eth-account work on pypy
+  * fix: updated web3 and eth-abi to not use beta versions (#1616)
+  23.1.2
+  * fix: monkey patch web3/eth_abi for python 3.11
+  23.1.1
+  * fix: support for Python up to v3.11
+  * fix: update GitHub CI
+  * fix: copyright transferred to typedef int GmbH - no license change!
+  * fix: remove coverage crap
+  22.12.1
+  * new: expand WAMP Flatbuffers schemata (session ID in each message for MUXing)
+  * new: update flatc v22.12.06 and regenerate WAMP Flatbuffers type libraries
+  * fix: Twisted 22.10.0 incompability (#1604)
+  * fix: Rapid Cancelling Of Tasks Can Cause InvalidStateError (#1600)
+  * fix: identify_realm_name_category (#1590)
+  * fix: support Python 3.11 (#1599)
+  * fix: building _nvx_utf8validator extension on non-x86 systems (#1596)
+  * fix: asyncio rawsocket protocol transport details (#1592)
+  * new: expand EIP712AuthorityCertificate; more tests
+
+-------------------------------------------------------------------
 Thu Aug  4 09:13:28 UTC 2022 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Update to 22.7.1:
