@@ -81,4 +81,20 @@
     <comment>- Add %{?sle15_python_module_pythons}</comment>
     <requestid>1092368</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>53b7371d9f4d06f796ee0f458e1899f7</srcmd5>
+    <version>1.2.1</version>
+    <time>1687796139</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.1:
+  * Apply headers in ``ClientSecretJWT.sign`` method
+  * Allow falsy but non-None grant uri params
+  * Fixed ``authorize_redirect`` for Starlette v0.26.0
+  * Removed ``has_client_secret`` method and documentation
+  * Removed ``request_invalid`` and ``token_revoked`` remaining
+    occurences and documentation.
+  * Fixed RFC7591 ``grant_types`` and ``response_types`` default
+    values</comment>
+    <requestid>1095232</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jun 25 18:48:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.1:
+  * Apply headers in ``ClientSecretJWT.sign`` method
+  * Allow falsy but non-None grant uri params
+  * Fixed ``authorize_redirect`` for Starlette v0.26.0
+  * Removed ``has_client_secret`` method and documentation
+  * Removed ``request_invalid`` and ``token_revoked`` remaining
+    occurences and documentation.
+  * Fixed RFC7591 ``grant_types`` and ``response_types`` default
+    values
+
+-------------------------------------------------------------------
 Sun Jun 11 14:11:54 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
