@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jsonschema-specifications
-Version:        2023.5.2
+Version:        2023.6.1
 Release:        0
 Summary:        The JSON Schema meta-schemas and vocabularies, exposed as a Registry
 License:        MIT

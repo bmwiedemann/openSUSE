@@ -31,4 +31,14 @@
     <comment></comment>
     <requestid>1090045</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5943d4d02a4c603eb106159cfc245991</srcmd5>
+    <version>2023.6.1</version>
+    <time>1687796193</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1095302 from ojkastl_buildservice
+
+update to 2023.6.1</comment>
+    <requestid>1095371</requestid>
+  </revision>
 </revisionlist>
