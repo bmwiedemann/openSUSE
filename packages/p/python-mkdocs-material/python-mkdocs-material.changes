@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 26 04:59:35 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.1.17:
+  * Fixed #5633: Code annotations with nested lists incorrectly
+    mounted
+  * Fixed #5628: Regression in new social plugin configuration
+    scheme
+
+-------------------------------------------------------------------
 Fri Jun 16 05:17:19 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 9.1.16:

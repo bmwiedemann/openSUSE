@@ -105,4 +105,12 @@ update to 9.1.12</comment>
     <comment></comment>
     <requestid>1093681</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c2b1fbaaefdfbd91b0258bc14428a7f6</srcmd5>
+    <version>9.1.17</version>
+    <time>1687796186</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095365</requestid>
+  </revision>
 </revisionlist>
