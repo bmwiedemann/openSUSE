@@ -26,6 +26,7 @@ Summary:        MC event generator for Simulation of High-Energy Reactions of PA
 License:        GPL-2.0-or-later AND GPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://sherpa-team.gitlab.io/
+#Git-Clone:     https://gitlab.com/sherpa-team/sherpa.git
 Source:         https://www.hepforge.org/downloads/sherpa/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM SHERPA-MC-no-return-in-non-void-function.patch badshah400@gmail.com -- Fix a non-void (bool) function that was not returning any data to return "true"
 Patch0:         SHERPA-MC-no-return-in-non-void-function.patch
