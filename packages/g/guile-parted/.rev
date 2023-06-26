@@ -48,4 +48,12 @@ dependency of guix</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1005737</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>108a4a46004a7dc66eb06dfb0c0ad2db</srcmd5>
+    <version>0.0.7</version>
+    <time>1687796159</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1095259</requestid>
+  </revision>
 </revisionlist>

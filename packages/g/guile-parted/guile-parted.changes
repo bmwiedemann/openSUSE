@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 18 20:39:21 UTC 2023 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
+
+- Update to 0.0.7:
+  * Remove the finalizer on device pointers 
+
+-------------------------------------------------------------------
 Sat Sep 17 08:42:50 UTC 2022 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
 
 - remove unused RPM lint filters, add one for devel dependency 
