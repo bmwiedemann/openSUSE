@@ -1,0 +1,82 @@
+From 45b2eb83cc87c8a261f78eb10058ac644d6b5556 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fvogt@suse.de>
+Date: Thu, 29 Jun 2023 09:59:41 +0200
+Subject: [PATCH 3/4] Revert "loader: Force building the main loader as PIE on
+ 64-bit."
+
+This reverts commit 78ed343842dcd8ffb95c416420953e121959d40d.
+---
+ configure          | 29 ++++++++++++++++++++++++++++-
+ configure.ac       |  3 ++-
+ loader/Makefile.in |  1 -
+ 3 files changed, 30 insertions(+), 3 deletions(-)
+
+diff --git a/configure b/configure
+index 4d00a023d18..a38400ad529 100755
+--- a/configure
++++ b/configure
+@@ -10342,7 +10342,34 @@ then :
+ fi
+         ;;
+       *)
+-        WINELOADER_LDFLAGS="$WINELOADER_LDFLAGS -pie"
++        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether the compiler supports -Wl,-pie" >&5
++printf %s "checking whether the compiler supports -Wl,-pie... " >&6; }
++if test ${ac_cv_cflags__Wl__pie+y}
++then :
++  printf %s "(cached) " >&6
++else $as_nop
++  ac_wine_try_cflags_saved=$CFLAGS
++CFLAGS="$CFLAGS -Wl,-pie"
++cat confdefs.h - <<_ACEOF >conftest.$ac_ext
++/* end confdefs.h.  */
++int main(int argc, char **argv) { return 0; }
++_ACEOF
++if ac_fn_c_try_link "$LINENO"
++then :
++  ac_cv_cflags__Wl__pie=yes
++else $as_nop
++  ac_cv_cflags__Wl__pie=no
++fi
++rm -f core conftest.err conftest.$ac_objext conftest.beam \
++    conftest$ac_exeext conftest.$ac_ext
++CFLAGS=$ac_wine_try_cflags_saved
++fi
++{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_cflags__Wl__pie" >&5
++printf "%s\n" "$ac_cv_cflags__Wl__pie" >&6; }
++if test "x$ac_cv_cflags__Wl__pie" = xyes
++then :
++  WINELOADER_LDFLAGS="$WINELOADER_LDFLAGS -Wl,-pie"
++fi
+         ;;
+     esac
+     ;;
+diff --git a/configure.ac b/configure.ac
+index 2255db13046..b9b3ee4ffc3 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -787,7 +787,8 @@ case $host_os in
+                         [WINELOADER_LDFLAGS="$WINELOADER_LDFLAGS -Wl,-z,max-page-size=0x1000"])
+         ;;
+       *)
+-        WINELOADER_LDFLAGS="$WINELOADER_LDFLAGS -pie"
++        WINE_TRY_CFLAGS([-Wl,-pie],
++                        [WINELOADER_LDFLAGS="$WINELOADER_LDFLAGS -Wl,-pie"])
+         ;;
+     esac
+     ;;
+diff --git a/loader/Makefile.in b/loader/Makefile.in
+index 30413fc8677..7302c231915 100644
+--- a/loader/Makefile.in
++++ b/loader/Makefile.in
+@@ -12,7 +12,6 @@ SOURCES = \
+ 
+ PROGRAMS = $(WINELOADER_PROGRAMS)
+ INSTALL_LIB = $(WINELOADER_PROGRAMS)
+-UNIX_CFLAGS = -fPIE
+ 
+ preloader_EXTRADEFS = -fno-builtin
+ 
+-- 
+2.41.0
+

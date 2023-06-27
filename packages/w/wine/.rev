@@ -4832,4 +4832,17 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1212823</comment>
   </revision>
+  <revision rev="413" vrev="2">
+    <srcmd5>ffc6deeaebc7d8af067b7f8874f648ab</srcmd5>
+    <version>8.11</version>
+    <time>1688147916</time>
+    <user>dimstar_suse</user>
+    <comment>- Add reverts to fix startup on 64bit
+  (https://bugs.winehq.org/show_bug.cgi?id=55139):
+  * 0001-Revert-loader-Build-the-preloader-as-PIE-on-64-bit.patch
+  * 0002-Revert-loader-Always-build-the-main-loader-as-PIE-if.patch
+  * 0003-Revert-loader-Force-building-the-main-loader-as-PIE-.patch
+  * 0004-Revert-loader-Make-the-loader-position-independent-o.patch (forwarded request 1095938 from favogt)</comment>
+    <requestid>1095999</requestid>
+  </revision>
 </revisionlist>

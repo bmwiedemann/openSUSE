@@ -29,8 +29,8 @@
 %endif
 
 # needs to be on top due to usage of %version macro below
-%define realver 8.10
-Version:        8.10
+%define realver 8.11
+Version:        8.11
 Release:        0
 
 %if "%{flavor}" != ""
@@ -148,6 +148,11 @@ Source6:        wine-msi.desktop
 Source5:        ubuntuwine.tar.bz2
 Source7:        baselibs.conf
 Source8:        wine-rpmlintrc
+# PATCH-FIX-UPSTREAM (hopefully temporary reverts for https://bugs.winehq.org/show_bug.cgi?id=55139)
+Patch1:         0001-Revert-loader-Build-the-preloader-as-PIE-on-64-bit.patch
+Patch2:         0002-Revert-loader-Always-build-the-main-loader-as-PIE-if.patch
+Patch3:         0003-Revert-loader-Force-building-the-main-loader-as-PIE-.patch
+Patch4:         0004-Revert-loader-Make-the-loader-position-independent-o.patch
 # SUSE specific patches
 # - currently none, but add them here
 Recommends:     wine-gecko >= 2.47.3
@@ -168,7 +173,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64 ppc armv7l armv7hl aarch64
 %if %{staging}
 # upstream patch target version
-%define staging_version 8.10
+%define staging_version 8.11
 Source100:      wine-staging-%{staging_version}.tar.xz
 BuildRequires:  gtk3-devel
 BuildRequires:  libOSMesa-devel

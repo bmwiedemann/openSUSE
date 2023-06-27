@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jun 29 08:01:59 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Add reverts to fix startup on 64bit
+  (https://bugs.winehq.org/show_bug.cgi?id=55139):
+  * 0001-Revert-loader-Build-the-preloader-as-PIE-on-64-bit.patch
+  * 0002-Revert-loader-Always-build-the-main-loader-as-PIE-if.patch
+  * 0003-Revert-loader-Force-building-the-main-loader-as-PIE-.patch
+  * 0004-Revert-loader-Make-the-loader-position-independent-o.patch
+
+-------------------------------------------------------------------
+Mon Jun 26 07:57:27 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 8.11 release
+  - More mouse cursor clipping improvements.
+  - Support for TLS alerts.
+  - Increased available address space in WoW64 mode.
+  - Various bug fixes.
+- update staging to 8.11 release
+
+-------------------------------------------------------------------
 Mon Jun 12 06:58:24 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 8.10 release
