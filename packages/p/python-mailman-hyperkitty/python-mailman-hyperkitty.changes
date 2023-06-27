@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 26 20:31:18 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.2.1
+- Use sle15_python_module_pythons
+- Removed python-mailman-hyperkitty-no-mock.patch
+
+-------------------------------------------------------------------
 Mon Jul  4 11:12:24 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Go back to python39 -- highest supported Python by mailman3

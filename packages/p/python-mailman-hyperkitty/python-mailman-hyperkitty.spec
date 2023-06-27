@@ -1,7 +1,7 @@
 #
 # spec file for package python-mailman-hyperkitty
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,20 @@
 
 %if 0%{?suse_version} >= 1550
 # Newest python supported by mailman is Python 3.9 -- https://gitlab.com/mailman/mailman/-/issues/936
-%define pythons python39
+%define pythons python311
 %else
-%{?!python_module:%define python_module() python3-%{**}}
-%define pythons python3
+%{?sle15_python_module_pythons}
+%define pythons python311
 %endif
 Name:           python-mailman-hyperkitty
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Mailman archiver plugin for HyperKitty
 License:        GPL-3.0-only
 URL:            https://gitlab.com/mailman/mailman-hyperkitty/
 Source:         https://files.pythonhosted.org/packages/source/m/mailman-hyperkitty/mailman-hyperkitty-%{version}.tar.gz
 # https://gitlab.com/mailman/mailman-hyperkitty/-/issues/28
-Patch0:         python-mailman-hyperkitty-no-mock.patch
-Patch1:         python-mailman-hyperkitty-fix-archiver-test.patch
+Patch0:         python-mailman-hyperkitty-fix-archiver-test.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
