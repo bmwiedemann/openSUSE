@@ -1279,4 +1279,15 @@ Now with build cycle removed.</comment>
   * util: gTLD data autopull updates for 2023-06-10T15:11:56 UTC (#1774)</comment>
     <requestid>1093071</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>7c2706f77b13d6b676901372dace71bb</srcmd5>
+    <version>20230616</version>
+    <time>1687900570</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230616:
+  * Add 63 geographical domains for .vn ccTLD (#1776)
+  * util: gTLD data autopull updates for 2023-06-16T15:12:40 UTC (#1778)
+  * util: gTLD data autopull updates for 2023-06-14T15:13:06 UTC (#1777)</comment>
+    <requestid>1095556</requestid>
+  </revision>
 </revisionlist>

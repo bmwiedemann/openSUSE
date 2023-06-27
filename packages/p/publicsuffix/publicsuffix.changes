@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 27 08:20:26 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20230616:
+  * Add 63 geographical domains for .vn ccTLD (#1776)
+  * util: gTLD data autopull updates for 2023-06-16T15:12:40 UTC (#1778)
+  * util: gTLD data autopull updates for 2023-06-14T15:13:06 UTC (#1777)
+
+-------------------------------------------------------------------
 Wed Jun 14 08:08:37 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20230613:
