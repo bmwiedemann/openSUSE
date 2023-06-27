@@ -551,4 +551,13 @@
     <comment></comment>
     <requestid>1092968</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>37cb90c76bf7300d951320035f032a41</srcmd5>
+    <version>1.16.5</version>
+    <time>1687900691</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.16.5:
+  * Changed where new tabs are placed with the regular &quot;New Tab&quot; command.</comment>
+    <requestid>1095650</requestid>
+  </revision>
 </revisionlist>
