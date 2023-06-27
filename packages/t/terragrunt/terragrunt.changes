@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 27 04:50:41 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.48.0:
+  * Add support for Terraform 1.5 (#2616)
+  * Circleci resource_class update (#2609)
+
+-------------------------------------------------------------------
 Fri Jun 16 05:13:44 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.47.0:
