@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 26 12:32:11 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 102.12.0:
+  + Various security fixes.
+  + CVE-2023-34414: Click-jacking certificate exceptions through
+    rendering lag.
+
+-------------------------------------------------------------------
 Tue May  9 07:49:33 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 102.11.0:
