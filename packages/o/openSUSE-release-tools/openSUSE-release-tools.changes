@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 29 09:50:23 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230629.009689f:
+  * gocd/rabbit-openqa.py: Ignore projects without a staging setup
+
+-------------------------------------------------------------------
 Thu Jun 29 07:29:32 UTC 2023 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20230629.3b612be:
