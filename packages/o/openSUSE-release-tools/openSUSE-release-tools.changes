@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 27 15:17:04 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230627.8db5f62:
+  * Don't decline SRs from non-devel project for scmsync packages from the bot
+  * Add type hints to action_ methods of ReviewBot
+
+-------------------------------------------------------------------
 Thu Jun 22 14:43:57 UTC 2023 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20230622.459489f:
