@@ -1,7 +1,7 @@
 #
 # spec file for package VecCore
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           VecCore
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        C++ Library for Portable SIMD Vectorization
 License:        Apache-2.0
 URL:            https://root-project.github.io/veccore
 Source:         https://github.com/root-project/veccore/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake(Vc) >= 1.3.3
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
+BuildRequires:  cmake(Vc) >= 1.3.3
 BuildRequires:  pkgconfig(gtest) >= 1.11.0
 
 %description
