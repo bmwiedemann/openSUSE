@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 27 04:49:49 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.5
+  * Do not try to set Keep-Alive on Redis unix sockets
+
+-------------------------------------------------------------------
 Wed May  3 23:02:52 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.0.4

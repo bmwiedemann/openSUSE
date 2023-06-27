@@ -63,4 +63,12 @@
     <comment>- Update to release 2.0.4</comment>
     <requestid>1084493</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cf8076a578132017b4746dc4039b8ceb</srcmd5>
+    <version>2.0.5</version>
+    <time>1687900603</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.0.5</comment>
+    <requestid>1095506</requestid>
+  </revision>
 </revisionlist>
