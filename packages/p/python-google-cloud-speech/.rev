@@ -173,4 +173,15 @@
 - Update BuildRequires and Requires from setup.py (forwarded request 1075495 from glaubitz)</comment>
     <requestid>1075513</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f13b22c91fbbed46711bdb4bd72c4384</srcmd5>
+    <version>2.20.0</version>
+    <time>1687900679</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.20.0
+  * **v2:** Add processing strategy to batch recognition requests (#514)
+- Refresh patches for new version
+  * python-google-cloud-speech-no-mock.patch (forwarded request 1095634 from glaubitz)</comment>
+    <requestid>1095649</requestid>
+  </revision>
 </revisionlist>

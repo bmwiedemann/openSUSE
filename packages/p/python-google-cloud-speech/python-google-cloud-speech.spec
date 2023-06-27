@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-google-cloud-speech
-Version:        2.19.0
+Version:        2.20.0
 Release:        0
 Summary:        Google Cloud Speech API client library
 License:        Apache-2.0
