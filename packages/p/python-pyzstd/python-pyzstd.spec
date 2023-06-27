@@ -17,6 +17,7 @@
 
 
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pyzstd
 Version:        0.15.6
 Release:        0

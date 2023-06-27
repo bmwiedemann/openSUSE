@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 27 13:03:38 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Fri Apr  7 09:36:49 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.15.6
