@@ -1,5 +1,5 @@
 #
-# spec file for package zlib-ng
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -37,6 +37,8 @@ License:        Zlib
 URL:            https://github.com/zlib-ng/zlib-ng
 Source0:        https://github.com/zlib-ng/zlib-ng/archive/refs/tags/%{version}.tar.gz#/zlib-ng-%{version}.tar.gz
 Source1:        baselibs.conf
+# https://github.com/zlib-ng/zlib-ng/pull/1526 - boo#1212735
+Patch1:         1526.patch
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++

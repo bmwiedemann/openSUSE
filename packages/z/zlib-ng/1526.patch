@@ -1,0 +1,26 @@
+From 457dafd5dbc67ca353ae4776e6cd9b22565dd06d Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fvogt@suse.de>
+Date: Tue, 27 Jun 2023 09:47:04 +0200
+Subject: [PATCH] Handle complete overlap in chunkcopy_safe
+
+Fixes #1525
+---
+ inflate_p.h | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/inflate_p.h b/inflate_p.h
+index a007cd05d..eff73876d 100644
+--- a/inflate_p.h
++++ b/inflate_p.h
+@@ -161,6 +161,11 @@ static inline uint8_t* chunkcopy_safe(uint8_t *out, uint8_t *from, uint64_t len,
+         return out + len;
+     }
+ 
++    /* Complete overlap: Source == destination */
++    if (out == from) {
++        return out + len;
++    }
++
+     /* We are emulating a self-modifying copy loop here. To do this in a way that doesn't produce undefined behavior,
+      * we have to get a bit clever. First if the overlap is such that src falls between dst and dst+len, we can do the
+      * initial bulk memcpy of the nonoverlapping region. Then, we can leverage the size of this to determine the safest

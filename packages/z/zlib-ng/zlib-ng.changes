@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 27 08:11:40 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix boo#1212735:
+  * 1526.patch
+
+-------------------------------------------------------------------
 Thu Jun 22 08:21:11 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.1.2:
