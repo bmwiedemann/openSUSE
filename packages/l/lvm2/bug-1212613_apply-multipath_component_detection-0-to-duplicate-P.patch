@@ -1,0 +1,53 @@
+From 99ce09ae778c2cc4aa2611e425bba5287b8b9513 Mon Sep 17 00:00:00 2001
+From: David Teigland <teigland@redhat.com>
+Date: Mon, 25 Jul 2022 13:50:43 -0500
+Subject: [PATCH] apply multipath_component_detection=0 to duplicate PV
+ handling
+
+multipath_component_detection=0 has always applied to the filter-based
+component detection.  Also apply this setting to the duplicate-PV
+handling which also eliminates multipath components (based on duplicate
+PVs having the same wwid.)
+---
+ lib/cache/lvmcache.c                  |  3 +++
+ test/shell/duplicate-pvs-multipath.sh | 10 +++++++---
+ 2 files changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/lib/cache/lvmcache.c b/lib/cache/lvmcache.c
+index a1c4a61c82fa..00916885c509 100644
+--- a/lib/cache/lvmcache.c
++++ b/lib/cache/lvmcache.c
+@@ -652,6 +652,9 @@ static int _all_multipath_components(struct cmd_context *cmd, struct lvmcache_in
+ 
+ 	*dev_mpath = NULL;
+ 
++	if (!find_config_tree_bool(cmd, devices_multipath_component_detection_CFG, NULL))
++		return 0;
++
+ 	/* This function only makes sense with more than one dev. */
+ 	if ((info && dm_list_empty(altdevs)) || (!info && (dm_list_size(altdevs) == 1))) {
+ 		log_debug("Skip multipath component checks with single device for PVID %s", pvid);
+diff --git a/test/shell/duplicate-pvs-multipath.sh b/test/shell/duplicate-pvs-multipath.sh
+index 59c15b0d4f9b..bc98d2d5aa8c 100644
+--- a/test/shell/duplicate-pvs-multipath.sh
++++ b/test/shell/duplicate-pvs-multipath.sh
+@@ -24,9 +24,13 @@ modprobe --dry-run scsi_debug || skip
+ multipath -l || skip
+ multipath -l | grep scsi_debug && skip
+ 
+-# Turn off multipath_component_detection so that the duplicate
+-# resolution of mpath components is used.
+-aux lvmconf 'devices/multipath_component_detection = 0'
++# FIXME: setting multipath_component_detection=0 now also disables
++# the wwid-based mpath component detection, so this test will need
++# to find another way to disable only the filter-mpath code (using
++# sysfs and multipath/wwids) while keeping the code enabled that
++# eliminates duplicates based on their matching wwids which this
++# tries to test.
++
+ # Prevent wwids from being used for filtering.
+ aux lvmconf 'devices/multipath_wwids_file = "/dev/null"'
+ # Need to use /dev/mapper/mpath
+-- 
+2.35.3
+

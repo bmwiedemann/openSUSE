@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -86,6 +86,7 @@ Patch0012:      0012-devices-file-fix-pvcreate-uuid-matching-pvid-entry-w.patch
 Patch0013:      0013-vgimportdevices-change-result-when-devices-are-not-a.patch
 Patch0014:      0014-vgimportdevices-fix-locking-when-creating-devices-fi.patch
 Patch0015:      bug-1203216_lvmlockd-purge-the-lock-resources-left-in-previous-l.patch
+Patch0016:      bug-1212613_apply-multipath_component_detection-0-to-duplicate-P.patch
 # SUSE patches: 1000+ for LVM
 # Never upstream
 Patch1001:      cmirrord_remove_date_time_from_compilation.patch
@@ -107,6 +108,7 @@ BuildRequires:  kmod-compat
 BuildRequires:  libaio-devel
 BuildRequires:  pkgconfig
 BuildRequires:  thin-provisioning-tools >= %{thin_provisioning_version}
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev)
 Requires:       device-mapper >= %{device_mapper_version}
 Requires:       modutils
@@ -121,13 +123,11 @@ BuildRequires:  gcc-c++
 BuildRequires:  suse-module-tools
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libsepol)
-BuildRequires:  pkgconfig(systemd)
 %else
 BuildRequires:  libcorosync-devel
 BuildRequires:  pkgconfig(blkid)
 %if %{with lockd}
 BuildRequires:  libdlm-devel >= %{dlm_version}
-BuildRequires:  pkgconfig(libsystemd)
 %if 0%{_supportsanlock} == 1
 BuildRequires:  sanlock-devel >= %{sanlock_version}
 %endif
@@ -135,7 +135,6 @@ BuildRequires:  sanlock-devel >= %{sanlock_version}
 BuildRequires:  gcc-c++
 BuildRequires:  libselinux-devel
 BuildRequires:  readline-devel
-BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 %endif
 %endif
@@ -161,6 +160,7 @@ Volume Manager.
 %patch0013 -p1
 %patch0014 -p1
 %patch0015 -p1
+%patch0016 -p1
 %patch1001 -p1
 %patch1002 -p1
 %patch1003 -p1

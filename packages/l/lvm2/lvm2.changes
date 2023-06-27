@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 23 06:38:00 UTC 2023 - Heming Zhao <heming.zhao@suse.com>
+
+- multipath_component_detection = 0 in lvm.conf does not have any effect (bsc#1212613)
+  - bug-1212613_apply-multipath_component_detection-0-to-duplicate-P.patch
+
+-------------------------------------------------------------------
 Tue Dec 27 13:08:23 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)
