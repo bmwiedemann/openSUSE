@@ -1,0 +1,22 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/golang/tools.git</param>
+    <param name="scm">git</param>
+    <param name="include">gopls</param>
+    <param name="include">LICENSE</param>
+    <param name="revision">gopls/v0.12.4</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="changesgenerate">enable</param>
+    <param name="versionrewrite-pattern">gopls/v(.*)</param>
+    <param name="filename">gopls</param>
+  </service>
+  <service name="set_version" mode="manual">
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="go_modules" mode="manual">
+    <param name="subdir">gopls</param>
+  </service>
+</services>

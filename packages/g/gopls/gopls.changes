@@ -1,0 +1,56 @@
+-------------------------------------------------------------------
+Mon Jun 26 14:35:38 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.12.4:
+  * gopls/internal/lsp/cache: don't panic when import fails during analysis
+  * gopls: update go.mod for v0.12.4
+  * gopls/internal/lsp/cache: don't record edges to invalid packages
+
+-------------------------------------------------------------------
+Thu Jun 22 19:36:57 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.12.3:
+  * gopls: update go.mod for v0.12.3
+  * gopls/internal/lsp/cache: fix nil panic in analysis toSourceDiagnostic
+  * gopls/internal/lsp/debug: update hard-coded version for v0.12.3
+  * gopls/internal/lsp/cache: add debugging assertion for golang/go#60904
+  * gopls/internal/lsp/cache: guard against "unsafe" by package path, not ID
+  * gopls/internal/lsp/cache: use types.Unsafe in analysisPackage
+  * gopls/internal/lsp/work: don't crash when hovering over broken mod dir
+  * gopls/internal/lsp/cache: reduce importing in analysis
+  * gopls/internal/regtest: fix goimports on windows when using vendoring
+  * gopls/internal/lsp/source/completion: ensuring completion completeness
+  * gopls/internal/regtest/codelens: set GOWORK=off for go mod vendor
+  * gopls/internal/lsp/cache: two minor simplifications
+  * gopls/internal/lsp/filecache: reduce lifespan of os.FileInfos
+  * gopls/internal/lsp: enable min/max builtin completion test
+
+-------------------------------------------------------------------
+Mon Jun  5 16:43:33 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Refactor tarball unpacked sources layout with gopls/ as subdir.
+  This allows us to include the LICENSE file at the upstream
+  monorepo repository root. The changes required for the subdir
+  layout are perhaps excessive for including just one metadata
+  file, but serves as a good exercise for packaging other utilities
+  under Go x/tools monorepo.
+  * Upstream uses monorepo x/tools/ with gopls/ and others in subdirs
+  * Upstream monorepo shared tools/LICENSE file in repository root dir
+  * Move param subdir gopls usage from tar_scm to go_modules
+  * tar_scm param include gopls and LICENSE
+  * tar_scm param drop extraneous param exclude .git
+  * Creates gopls-0.12.2.tar.gz unpacked layout gopls-0.12.2/gopls/go.mod
+  * New layout requires moving LICENSE and vendor/ to subdir in %prep
+  * New layout requires change to subdir in %build
+  * New layout requires use path to subdir in %check, %install, %files
+
+-------------------------------------------------------------------
+Mon Jun  5 04:54:12 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Initial package version 0.12.2:
+  * Upstream uses monorepo x/tools/ with gopls/ and others in subdirs
+  * service tar_scm use params subdir and filename both set to gopls
+  * service go_modules_scm do not use any params
+  * Creates gopls-0.12.2.tar.gz unpacked layout gopls-0.12.2/go.mod
+  * Upstream monorepo shared tools/LICENSE file is one level above
+    where we package
