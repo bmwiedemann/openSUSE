@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 21 08:17:08 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.13
+  * io: do not fail HX_mkdir when a component is a symlink to a
+    directory
+  * xml_helper: fix infinite recursion in xml_getnsprop
+
+-------------------------------------------------------------------
 Mon Feb 27 13:57:50 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.12

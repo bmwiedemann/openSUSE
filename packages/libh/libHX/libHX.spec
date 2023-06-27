@@ -18,7 +18,7 @@
 
 Name:           libHX
 %define lname   libHX32
-Version:        4.12
+Version:        4.13
 Release:        0
 Summary:        Collection of routines for C and C++ programming
 License:        LGPL-2.1-or-later
@@ -27,7 +27,6 @@ URL:            https://inai.de/projects/libhx/
 
 Source:         https://inai.de/files/libhx/libHX-%version.tar.xz
 Source2:        https://inai.de/files/libhx/libHX-%version.tar.asc
-Source3:        baselibs.conf
 Source4:        %name.keyring
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
