@@ -335,4 +335,12 @@
     <comment>Update to 3.2.5</comment>
     <requestid>1090012</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>66c539f94aec130a78c06003adcc7476</srcmd5>
+    <version>3.2.6</version>
+    <time>1687900661</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095553</requestid>
+  </revision>
 </revisionlist>
