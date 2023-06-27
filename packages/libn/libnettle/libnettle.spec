@@ -114,6 +114,10 @@ autoreconf -fiv
 chmod 0755 %{buildroot}%{_libdir}/libnettle.so.%{soname}
 chmod 0755 %{buildroot}%{_libdir}/libhogweed.so.%{hogweed_soname}
 
+for arch in x86_64 s390x powerpc64 arm arm64 ; do
+    cp ${arch}/README ${arch}.README
+done
+
 # the hmac hashes:
 #
 # this is a hack that re-defines the __os_install_post macro
@@ -152,7 +156,7 @@ chmod 0755 %{buildroot}%{_libdir}/libhogweed.so.%{hogweed_soname}
 
 %files -n libnettle-devel
 %license COPYING*
-%doc AUTHORS ChangeLog NEWS README descore.README nettle.html nettle.pdf
+%doc AUTHORS ChangeLog NEWS README *.README nettle.html nettle.pdf
 %{_includedir}/nettle
 %{_libdir}/libnettle.so
 %{_libdir}/libhogweed.so
