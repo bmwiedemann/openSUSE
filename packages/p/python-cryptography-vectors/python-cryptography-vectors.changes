@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 19 20:09:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 41.0.1:
+  * Update test vectors to match python-cryptography 41.0.1 
+
+-------------------------------------------------------------------
 Fri Apr 21 12:23:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

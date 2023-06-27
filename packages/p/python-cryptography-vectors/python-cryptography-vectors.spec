@@ -22,7 +22,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-cryptography-vectors
 # ALWAYS KEEP IN SYNC WITH python-cryptography!
-Version:        40.0.2
+Version:        41.0.1
 Release:        0
 Summary:        Test vectors for the cryptography package
 License:        Apache-2.0 OR BSD-3-Clause
@@ -31,7 +31,8 @@ URL:            https://github.com/pyca/cryptography
 Source0:        https://files.pythonhosted.org/packages/source/c/cryptography_vectors/cryptography_vectors-%{version}.tar.gz
 Source2:        %{name}.keyring
 Source3:        python-cryptography-vectors-rpmlintrc
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -44,10 +45,10 @@ Vectors for testing of the python cryptography package.
 %setup -q -n cryptography_vectors-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 #%%check
@@ -56,6 +57,6 @@ Vectors for testing of the python cryptography package.
 %files %{python_files}
 %license LICENSE*
 %{python_sitelib}/cryptography_vectors
-%{python_sitelib}/cryptography_vectors-%{version}*-info
+%{python_sitelib}/cryptography_vectors-%{version}.dist-info
 
 %changelog
