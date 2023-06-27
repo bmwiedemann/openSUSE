@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jun 26 14:21:34 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.4.46:
+  + Operations:
+    - local-threshold: new operation that does neighborhood aware 
+      and optionallyantialiased thresholding of an image. 
+    - chamfer: new operation in workshop that useis 
+      distance-transform and emboss or LinuxBeaver’s research 
+      into modeling different bevels with combinations of blurs.
+    - ff-load,ff-save: clean up of deprecated API, builds with 
+      ffmpeg-6.0 but ff-save hasn’t been made to work with this 
+      release of ffmpeg yet.
+  + Updated vendored libraries:
+    - ctx and libnsgif have been updated from upstream.
+  + Build:
+    - Depend on meson 0.55.0
+    - Various cleanups including re-enabling of deprecation
+      warnings.
+    - make ctx be an internal library.
+
+-------------------------------------------------------------------
 Thu Mar 30 14:09:16 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 0.4.44:
