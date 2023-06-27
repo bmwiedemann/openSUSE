@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jun 27 14:57:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.89.6:
+  * Decorated log and release notes:
+    https://github.com/ocornut/imgui/releases/tag/v1.89.6
+  * Breaking changes:
+  * Clipper: Commented out obsolete redirection constructor which
+    was marked obsolete in 1.79:
+    'ImGuiListClipper(int items_count, float items_height)'
+    --> Use 'ImGuiListClipper() + clipper.Begin()'.
+  * Backends: SDL_Renderer: Renamed
+    'imgui_impl_sdlrenderer.h/cpp' to
+    'imgui_impl_sdlrenderer2.h/cpp',
+    in order to accomodate for upcoming SDL3 and change in its
+    SDL_Renderer API.
+  * Backends: GLUT: Removed call to ImGui::NewFrame() from
+    ImGui_ImplGLUT_NewFrame().
+    It needs to be called from the main app loop, like with
+    every other backends.
+
+-------------------------------------------------------------------
 Mon May 29 01:41:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.89.5:

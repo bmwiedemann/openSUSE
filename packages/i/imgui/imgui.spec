@@ -17,7 +17,7 @@
 
 
 Name:           imgui
-Version:        1.89.5
+Version:        1.89.6
 Release:        0
 Summary:        Immediate Mode Graphical User interface for C++ with minimal dependencies
 License:        MIT
