@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-inflate64
 Version:        0.3.1
 Release:        0
