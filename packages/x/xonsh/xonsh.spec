@@ -1,7 +1,7 @@
 #
 # spec file for package xonsh
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define pythons python3
 Name:           xonsh
-Version:        0.13.4
+Version:        0.14.0
 Release:        0
 Summary:        A general purpose, Python-powered shell
 License:        BSD-2-Clause AND BSD-3-Clause

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Jun 26 20:20:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.0:
+  * key_bindings: map `escape-f` as another word completer for macOS
+  * Added ``history pull`` command to SQLite history backend to pull
+    the history from parallel sessions and add to the current
+    session.
+  * Add support for `Semantic Prompt for line continuations in
+    multiline prompts via two environment variables: 
+    ``$MULTILINE_PROMPT_PRE``  and ``$MULTILINE_PROMPT_POS``
+    (e.g., ``\x01\x1b]133;B\x07\x02``) that are inserted
+    before/after each continuation line 'dots' block to mark input
+  * Wheels for Python 3.11 are part of the automated release action
+  * Added ``chdir`` to ``xonsh.tools``. This allows to use 
+    ``with chdir("dir"):`` to run commands block in the certain
+    directory without manually cd-ing.
+  * Display the current branch of Fossil VCS checkouts in the prompt,
+    similar to git and hg.
+  * Added link to xonsh on Mastodon - https://mastodon.online/@xonsh
+  * xontrib load: added option ``-s`` to skip warning about not
+    installed xontribs.
+  * Altered documentation for xonshrc to remove Python REPL prompts
+    so that you can copy the code without having to edit it.
+  * xonsh AppImage - bumped python to 3.11
+  * The prompt end character switched to ``@``.
+  * The `command not found` error will show the ``repr(cmd)``
+    to uncover the cases when the command name has ``\n``, ``\t``
+    or not visible color codes and raises the error.
+
+-------------------------------------------------------------------
 Sat Dec 10 08:57:13 UTC 2022 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 0.13.4:
