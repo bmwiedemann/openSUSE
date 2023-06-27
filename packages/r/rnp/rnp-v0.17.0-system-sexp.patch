@@ -1,8 +1,17 @@
-Index: rnp-v0.17.0/CMakeLists.txt
-===================================================================
---- rnp-v0.17.0.orig/CMakeLists.txt
-+++ rnp-v0.17.0/CMakeLists.txt
-@@ -176,10 +176,8 @@ if (ENABLE_FUZZERS)
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0fa5aa14c..d64927540 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -58,6 +58,8 @@ option(ENABLE_COVERAGE "Enable code coverage testing.")
+ option(ENABLE_SANITIZERS "Enable ASan and other sanitizers.")
+ option(ENABLE_FUZZERS "Enable fuzz targets.")
+ option(DOWNLOAD_GTEST "Download Googletest" On)
++option(SYSTEM_LIBSEXPP "Use system sexpp library" OFF)
++
+ # crypto components
+ function(tristate_feature_auto NAME DESCRIPTION)
+   set(${NAME} Auto CACHE STRING ${DESCRIPTION})
+@@ -182,10 +184,22 @@ if (ENABLE_FUZZERS)
  endif()
  add_subdirectory(src/common)
  
@@ -10,8 +19,113 @@ Index: rnp-v0.17.0/CMakeLists.txt
 -set(WITH_SEXP_TESTS OFF)
 -set(CMAKE_INSTALL_DEFAULT_COMPONENT_NAME development)
 -add_subdirectory(src/libsexp EXCLUDE_FROM_ALL)
-+find_package(PkgConfig REQUIRED)
-+pkg_check_modules(SEXP REQUIRED sexp)
++if (SYSTEM_LIBSEXPP)
++  find_package(PkgConfig)
++  pkg_check_modules(REQUIRED sexpp>=0.8.7)
++else (SYSTEM_LIBSEXPP)
++# If we use system libsexpp is not used we build sexpp static library
++# If librnp is shared, libsexpp.a is a transient artifact which is hidden from
++# the end user. 
++# If librnp is static we install libsexpp.a aside
++  set(SAVED_BUILD_SHARED_LIBS ${BUILD_SHARED_LIBS})
++  set(BUILD_SHARED_LIBS OFF)
++  set(WITH_SEXP_CLI OFF)
++  set(WITH_SEXP_TESTS OFF)
++  set(CMAKE_INSTALL_DEFAULT_COMPONENT_NAME development)
++  add_subdirectory(src/libsexpp EXCLUDE_FROM_ALL)
++  set(BUILD_SHARED_LIBS ${SAVED_BUILD_SHARED_LIBS})
++endif (SYSTEM_LIBSEXPP)
  
  add_subdirectory(src/lib)
  add_subdirectory(src/rnp)
+diff --git a/src/lib/CMakeLists.txt b/src/lib/CMakeLists.txt
+index d931701a5..19059c2fa 100755
+--- a/src/lib/CMakeLists.txt
++++ b/src/lib/CMakeLists.txt
+@@ -342,7 +342,7 @@ elseif (CRYPTO_BACKEND_OPENSSL)
+   target_link_libraries(librnp-obj PRIVATE OpenSSL::Crypto)
+ endif()
+ 
+-target_link_libraries(librnp-obj PRIVATE sexp)
++target_link_libraries(librnp-obj PRIVATE sexpp)
+ 
+ set_target_properties(librnp-obj PROPERTIES CXX_VISIBILITY_PRESET hidden)
+ if (TARGET BZip2::BZip2)
+@@ -398,7 +398,7 @@ foreach (prop LINK_LIBRARIES INTERFACE_LINK_LIBRARIES INCLUDE_DIRECTORIES INTERF
+   get_target_property(val librnp-obj ${prop})
+   if (BUILD_SHARED_LIBS)
+     set_property(TARGET librnp-static PROPERTY ${prop} ${val})
+-    list(REMOVE_ITEM val "$<LINK_ONLY:sexp>")
++    list(REMOVE_ITEM val "$<LINK_ONLY:sexpp>")
+     set_property(TARGET librnp PROPERTY ${prop} ${val})
+   else()
+     set_property(TARGET librnp PROPERTY ${prop} ${val})
+@@ -431,12 +431,11 @@ endif()
+ # On Unix like systems we will build/install/pack either shared library librnp.so or static  librnp.a
+ # On Windows we will build/install/pack either dynamic and import libraries rnp.dll, rnp.lib or static library rnp-static.lib
+ 
+-# If a client application uses shared rnp library, sexp is statically linked to librnp.so and libsexp.a is not installed
+-# If a client application uses static rnp library, it still needs libsexp.a and it is installed
++# If a client application uses shared rnp library, sexpp is statically linked to librnp.so and libsexpp.a is not installed
++# If a client application uses static rnp library, it still needs libsexpp.a and it is installed
+ 
+ if (BUILD_SHARED_LIBS)
+-# both static and shared libraries
+-install(TARGETS librnp
++  install(TARGETS librnp
+     EXPORT rnp-targets
+     LIBRARY
+       DESTINATION  "${CMAKE_INSTALL_LIBDIR}"
+@@ -456,13 +455,23 @@ install(TARGETS librnp
+     )
+   endif(WIN32)
+ else(BUILD_SHARED_LIBS)
+-# static libraries only
+-  install(TARGETS librnp sexp
++# static libraries
++# install libsexpp unless system-installed libsexpp is used
++  if (SYSTEM_LIBSEXPP)
++    install(TARGETS librnp
++      EXPORT rnp-targets
++      ARCHIVE
++        DESTINATION  "${CMAKE_INSTALL_LIBDIR}"
++        COMPONENT development
++    )
++  else (SYSTEM_LIBSEXPP)       
++    install(TARGETS librnp sexpp
+     EXPORT rnp-targets
+     ARCHIVE
+       DESTINATION  "${CMAKE_INSTALL_LIBDIR}"
+       COMPONENT development
+-)
++    )
++  endif (SYSTEM_LIBSEXPP)       
+ endif(BUILD_SHARED_LIBS)
+ 
+ # install headers
+diff --git a/src/librekey/g23_sexp.hpp b/src/librekey/g23_sexp.hpp
+index b888680f5..b062c52f1 100644
+--- a/src/librekey/g23_sexp.hpp
++++ b/src/librekey/g23_sexp.hpp
+@@ -27,8 +27,8 @@
+ #ifndef RNP_G23_SEXP_HPP
+ #define RNP_G23_SEXP_HPP
+ 
+-#include "sexp/sexp.h"
+-#include "sexp/ext-key-format.h"
++#include "sexpp/sexp.h"
++#include "sexpp/ext-key-format.h"
+ 
+ #define SXP_MAX_DEPTH 30
+ 
+--- a/src/tests/CMakeLists.txt
++++ b/src/tests/CMakeLists.txt
+@@ -186,7 +186,7 @@ target_link_libraries(rnp_tests
+   PRIVATE
+     librnp-static
+     JSON-C::JSON-C
+-    sexp
++    sexpp
+     ${GTestMain}
+ )
+ if (CRYPTO_BACKEND_LOWERCASE STREQUAL "openssl")

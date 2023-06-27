@@ -96,4 +96,13 @@ Needs SR#1093175</comment>
 </comment>
     <requestid>1094487</requestid>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>014e8106c598e52ce914032f07129955</srcmd5>
+    <version>0.17.0</version>
+    <time>1687900593</time>
+    <user>dimstar_suse</user>
+    <comment>- build with system sexpp library (renamed)
+</comment>
+    <requestid>1095488</requestid>
+  </revision>
 </revisionlist>

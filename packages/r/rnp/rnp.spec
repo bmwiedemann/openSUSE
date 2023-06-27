@@ -38,7 +38,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(botan-2) >= 2.14.0
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(json-c) >= 0.11
-BuildRequires:  pkgconfig(sexp) >= 0.8.2
+BuildRequires:  pkgconfig(sexpp) >= 0.8.7
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  rubygem(asciidoctor)
 
@@ -69,6 +69,7 @@ rm -rf src/libsexp
 %cmake \
 	-DDOWNLOAD_GTEST:BOOL=OFF \
 	-DBUILD_TESTING:BOOL=ON \
+	-DSYSTEM_LIBSEXPP:BOOL=ON \
 	%{nil}
 %cmake_build
 
