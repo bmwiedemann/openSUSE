@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 27 14:18:18 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- Remove unused grep requirement
+
+-------------------------------------------------------------------
+Mon Jun 26 12:51:12 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- Resolve choice on openSUSE distributions for libcontainer-policy
+  by suggesting the libcontainers-openSUSE-policy explicitly.
+
+-------------------------------------------------------------------
 Mon Jun  5 12:04:33 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
 
 - Enforce BCI verification via Podman on openSUSE distributions
