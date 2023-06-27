@@ -1,7 +1,7 @@
 #
 # spec file for package python-jenkinsapi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-jenkinsapi
-Version:        0.3.11
+Version:        0.3.13
 Release:        0
 Summary:        A Python API for accessing resources on a Jenkins continuous integration server
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/salimfadhley/jenkinsapi
 Source:         https://files.pythonhosted.org/packages/source/j/jenkinsapi/jenkinsapi-%{version}.tar.gz
 # https://github.com/pycontribs/jenkinsapi/issues/819
@@ -36,12 +34,15 @@ BuildRequires:  python-rpm-macros
 Requires:       python-pytz >= 2014.4
 Requires:       python-requests >= 2.3.0
 Requires:       python-six >= 1.10.0
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module astroid >= 1.4.8}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-kerberos}
+BuildRequires:  %{python_module six}
 # /SECTION
 %python_subpackages
 
@@ -70,8 +71,8 @@ and has
  * Ability to add/remove/modify Jenkins views
 
 %prep
-%setup -q -n jenkinsapi-%{version}
-%patch0 -p1
+%autosetup -p1 -n jenkinsapi-%{version}
+rm pyproject.toml # Just utterly broken
 
 %build
 %python_build
@@ -100,6 +101,8 @@ and has
 %license license.txt
 %python_alternative %{_bindir}/jenkins_invoke
 %python_alternative %{_bindir}/jenkinsapi_version
-%{python_sitelib}/*
+%{python_sitelib}/jenkinsapi
+%{python_sitelib}/jenkinsapi_tests
+%{python_sitelib}/jenkinsapi-%{version}-*-info
 
 %changelog

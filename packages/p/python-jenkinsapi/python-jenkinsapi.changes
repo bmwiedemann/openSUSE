@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 27 06:38:58 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.3.13:
+  * Unable to locate upstream changelog.
+- Re-add missing BuildRequires on six.
+- Stop using greedy globs in %files.
+- Rebase python-jenkinsapi-no-mock.patch
+- Add missing Requires on update-alternatives
+- Switch to autosetup
+
+-------------------------------------------------------------------
 Tue May  3 07:40:34 UTC 2022 - pgajdos@suse.com
 
 - do not require python-mock for build
@@ -11,7 +22,7 @@ Fri Apr 17 06:51:42 UTC 2020 - pgajdos@suse.com
 
 - use pytest -k instead of removing tests
 
--------------------------------------------------------------------
+------------------------------------------------------------------
 Thu Apr 16 12:13:33 UTC 2020 - pgajdos@suse.com
 
 - version update to 0.3.11

@@ -1,16 +1,18 @@
-diff -upr jenkinsapi-0.3.11.orig/jenkinsapi_tests/unittests/test_artifact.py jenkinsapi-0.3.11/jenkinsapi_tests/unittests/test_artifact.py
---- jenkinsapi-0.3.11.orig/jenkinsapi_tests/unittests/test_artifact.py	2022-05-03 09:35:57.849050984 +0200
-+++ jenkinsapi-0.3.11/jenkinsapi_tests/unittests/test_artifact.py	2022-05-03 09:36:46.685349578 +0200
+Index: jenkinsapi-0.3.13/jenkinsapi_tests/unittests/test_artifact.py
+===================================================================
+--- jenkinsapi-0.3.13.orig/jenkinsapi_tests/unittests/test_artifact.py
++++ jenkinsapi-0.3.13/jenkinsapi_tests/unittests/test_artifact.py
 @@ -1,5 +1,5 @@
  import pytest
--from mock import (
-+from unittest.mock import (
-     Mock,
-     patch,
-     call
-diff -upr jenkinsapi-0.3.11.orig/jenkinsapi_tests/unittests/test_executors.py jenkinsapi-0.3.11/jenkinsapi_tests/unittests/test_executors.py
---- jenkinsapi-0.3.11.orig/jenkinsapi_tests/unittests/test_executors.py	2022-05-03 09:35:57.849050984 +0200
-+++ jenkinsapi-0.3.11/jenkinsapi_tests/unittests/test_executors.py	2022-05-03 09:36:46.685349578 +0200
+-from mock import Mock, patch, call
++from unittest.mock import Mock, patch, call
+ from requests.exceptions import HTTPError
+ from jenkinsapi.artifact import Artifact
+ from jenkinsapi.jenkinsbase import JenkinsBase
+Index: jenkinsapi-0.3.13/jenkinsapi_tests/unittests/test_executors.py
+===================================================================
+--- jenkinsapi-0.3.13.orig/jenkinsapi_tests/unittests/test_executors.py
++++ jenkinsapi-0.3.13/jenkinsapi_tests/unittests/test_executors.py
 @@ -1,5 +1,5 @@
  import pytest
 -import mock
@@ -18,9 +20,10 @@ diff -upr jenkinsapi-0.3.11.orig/jenkinsapi_tests/unittests/test_executors.py je
  from jenkinsapi.jenkins import Jenkins
  from jenkinsapi.executors import Executors
  from jenkinsapi.executor import Executor
-diff -upr jenkinsapi-0.3.11.orig/jenkinsapi_tests/unittests/test_job_folders.py jenkinsapi-0.3.11/jenkinsapi_tests/unittests/test_job_folders.py
---- jenkinsapi-0.3.11.orig/jenkinsapi_tests/unittests/test_job_folders.py	2022-05-03 09:35:57.853051009 +0200
-+++ jenkinsapi-0.3.11/jenkinsapi_tests/unittests/test_job_folders.py	2022-05-03 09:36:46.685349578 +0200
+Index: jenkinsapi-0.3.13/jenkinsapi_tests/unittests/test_job_folders.py
+===================================================================
+--- jenkinsapi-0.3.13.orig/jenkinsapi_tests/unittests/test_job_folders.py
++++ jenkinsapi-0.3.13/jenkinsapi_tests/unittests/test_job_folders.py
 @@ -1,5 +1,5 @@
  import pytest
 -import mock
@@ -28,18 +31,20 @@ diff -upr jenkinsapi-0.3.11.orig/jenkinsapi_tests/unittests/test_job_folders.py 
  from jenkinsapi.jenkins import JenkinsBase
  
  
-diff -upr jenkinsapi-0.3.11.orig/jenkinsapi_tests/unittests/test_job_get_all_builds.py jenkinsapi-0.3.11/jenkinsapi_tests/unittests/test_job_get_all_builds.py
---- jenkinsapi-0.3.11.orig/jenkinsapi_tests/unittests/test_job_get_all_builds.py	2022-05-03 09:35:57.853051009 +0200
-+++ jenkinsapi-0.3.11/jenkinsapi_tests/unittests/test_job_get_all_builds.py	2022-05-03 09:36:46.685349578 +0200
+Index: jenkinsapi-0.3.13/jenkinsapi_tests/unittests/test_job_get_all_builds.py
+===================================================================
+--- jenkinsapi-0.3.13.orig/jenkinsapi_tests/unittests/test_job_get_all_builds.py
++++ jenkinsapi-0.3.13/jenkinsapi_tests/unittests/test_job_get_all_builds.py
 @@ -1,4 +1,4 @@
 -import mock
 +from unittest import mock
+ 
  # To run unittests on python 2.6 please use unittest2 library
  try:
-     import unittest2 as unittest
-diff -upr jenkinsapi-0.3.11.orig/jenkinsapi_tests/unittests/test_job.py jenkinsapi-0.3.11/jenkinsapi_tests/unittests/test_job.py
---- jenkinsapi-0.3.11.orig/jenkinsapi_tests/unittests/test_job.py	2022-05-03 09:35:57.853051009 +0200
-+++ jenkinsapi-0.3.11/jenkinsapi_tests/unittests/test_job.py	2022-05-03 09:36:46.685349578 +0200
+Index: jenkinsapi-0.3.13/jenkinsapi_tests/unittests/test_job.py
+===================================================================
+--- jenkinsapi-0.3.13.orig/jenkinsapi_tests/unittests/test_job.py
++++ jenkinsapi-0.3.13/jenkinsapi_tests/unittests/test_job.py
 @@ -1,6 +1,6 @@
  # -*- coding: utf-8 -*-
  import pytest
@@ -48,18 +53,10 @@ diff -upr jenkinsapi-0.3.11.orig/jenkinsapi_tests/unittests/test_job.py jenkinsa
  import json
  from . import configs
  from jenkinsapi.job import Job
-diff -upr jenkinsapi-0.3.11.orig/jenkinsapi_tests/unittests/test_job_scm_hg.py jenkinsapi-0.3.11/jenkinsapi_tests/unittests/test_job_scm_hg.py
---- jenkinsapi-0.3.11.orig/jenkinsapi_tests/unittests/test_job_scm_hg.py	2022-05-03 09:35:57.853051009 +0200
-+++ jenkinsapi-0.3.11/jenkinsapi_tests/unittests/test_job_scm_hg.py	2022-05-03 09:36:46.689349602 +0200
-@@ -1,4 +1,4 @@
--import mock
-+from unittest import mock
- # To run unittests on python 2.6 please use unittest2 library
- try:
-     import unittest2 as unittest
-diff -upr jenkinsapi-0.3.11.orig/jenkinsapi_tests/unittests/test_plugins.py jenkinsapi-0.3.11/jenkinsapi_tests/unittests/test_plugins.py
---- jenkinsapi-0.3.11.orig/jenkinsapi_tests/unittests/test_plugins.py	2022-05-03 09:35:57.853051009 +0200
-+++ jenkinsapi-0.3.11/jenkinsapi_tests/unittests/test_plugins.py	2022-05-03 09:36:46.689349602 +0200
+Index: jenkinsapi-0.3.13/jenkinsapi_tests/unittests/test_plugins.py
+===================================================================
+--- jenkinsapi-0.3.13.orig/jenkinsapi_tests/unittests/test_plugins.py
++++ jenkinsapi-0.3.13/jenkinsapi_tests/unittests/test_plugins.py
 @@ -1,7 +1,7 @@
  """
  jenkinsapi_tests.test_plugins
@@ -69,45 +66,46 @@ diff -upr jenkinsapi-0.3.11.orig/jenkinsapi_tests/unittests/test_plugins.py jenk
  
  # To run unittests on python 2.6 please use unittest2 library
  try:
-@@ -215,7 +215,7 @@ class TestPlugins(unittest.TestCase):
-     @mock.patch.object(Plugins, '_poll')
-     @mock.patch.object(Plugins, 'plugin_version_already_installed')
-     @mock.patch.object(Plugins, 'restart_required',
--                       new_callable=mock.mock.PropertyMock)
-+                       new_callable=unittest.mock.PropertyMock)
-     @mock.patch.object(Plugins, '_wait_until_plugin_installed')
-     @mock.patch.object(Requester, 'post_xml_and_confirm_status')
-     @mock.patch.object(Jenkins, 'safe_restart')
-@@ -234,7 +234,7 @@ class TestPlugins(unittest.TestCase):
-     @mock.patch.object(Plugins, '_poll')
-     @mock.patch.object(Plugins, 'plugin_version_already_installed')
-     @mock.patch.object(Plugins, 'restart_required',
--                       new_callable=mock.mock.PropertyMock)
-+                       new_callable=unittest.mock.PropertyMock)
-     @mock.patch.object(Plugins, '_wait_until_plugin_installed')
-     @mock.patch.object(Requester, 'post_xml_and_confirm_status')
-     @mock.patch.object(Jenkins, 'safe_restart')
-@@ -284,7 +284,7 @@ class TestPlugins(unittest.TestCase):
- 
-     @mock.patch.object(Plugins, '_poll')
-     @mock.patch.object(Plugins, 'update_center_install_status',
--                       new_callable=mock.mock.PropertyMock)
-+                       new_callable=unittest.mock.PropertyMock)
-     def test_restart_required_after_plugin_installation(self, status,
-                                                         _poll_plugins):
-         _poll_plugins.return_value = self.DATA
-@@ -305,7 +305,7 @@ class TestPlugins(unittest.TestCase):
- 
-     @mock.patch.object(Plugins, '_poll')
-     @mock.patch.object(Plugins, 'update_center_install_status',
--                       new_callable=mock.mock.PropertyMock)
-+                       new_callable=unittest.mock.PropertyMock)
-     def test_restart_not_required_after_plugin_installation(self, status,
-                                                             _poll_plugins):
-         _poll_plugins.return_value = self.DATA
-diff -upr jenkinsapi-0.3.11.orig/jenkinsapi_tests/unittests/test_requester.py jenkinsapi-0.3.11/jenkinsapi_tests/unittests/test_requester.py
---- jenkinsapi-0.3.11.orig/jenkinsapi_tests/unittests/test_requester.py	2022-05-03 09:35:57.853051009 +0200
-+++ jenkinsapi-0.3.11/jenkinsapi_tests/unittests/test_requester.py	2022-05-03 09:36:46.689349602 +0200
+@@ -226,7 +226,7 @@ class TestPlugins(unittest.TestCase):
+     @mock.patch.object(Plugins, "_poll")
+     @mock.patch.object(Plugins, "plugin_version_already_installed")
+     @mock.patch.object(
+-        Plugins, "restart_required", new_callable=mock.mock.PropertyMock
++        Plugins, "restart_required", new_callable=mock.PropertyMock
+     )
+     @mock.patch.object(Plugins, "_wait_until_plugin_installed")
+     @mock.patch.object(Requester, "post_xml_and_confirm_status")
+@@ -252,7 +252,7 @@ class TestPlugins(unittest.TestCase):
+     @mock.patch.object(Plugins, "_poll")
+     @mock.patch.object(Plugins, "plugin_version_already_installed")
+     @mock.patch.object(
+-        Plugins, "restart_required", new_callable=mock.mock.PropertyMock
++        Plugins, "restart_required", new_callable=mock.PropertyMock
+     )
+     @mock.patch.object(Plugins, "_wait_until_plugin_installed")
+     @mock.patch.object(Requester, "post_xml_and_confirm_status")
+@@ -316,7 +316,7 @@ class TestPlugins(unittest.TestCase):
+     @mock.patch.object(
+         Plugins,
+         "update_center_install_status",
+-        new_callable=mock.mock.PropertyMock,
++        new_callable=mock.PropertyMock,
+     )
+     def test_restart_required_after_plugin_installation(
+         self, status, _poll_plugins
+@@ -343,7 +343,7 @@ class TestPlugins(unittest.TestCase):
+     @mock.patch.object(
+         Plugins,
+         "update_center_install_status",
+-        new_callable=mock.mock.PropertyMock,
++        new_callable=mock.PropertyMock,
+     )
+     def test_restart_not_required_after_plugin_installation(
+         self, status, _poll_plugins
+Index: jenkinsapi-0.3.13/jenkinsapi_tests/unittests/test_requester.py
+===================================================================
+--- jenkinsapi-0.3.13.orig/jenkinsapi_tests/unittests/test_requester.py
++++ jenkinsapi-0.3.13/jenkinsapi_tests/unittests/test_requester.py
 @@ -3,7 +3,7 @@ import pytest
  import requests
  from jenkinsapi.jenkins import Requester
@@ -117,47 +115,13 @@ diff -upr jenkinsapi-0.3.11.orig/jenkinsapi_tests/unittests/test_requester.py je
  
  
  def test_no_parameters_uses_default_values():
-diff -upr jenkinsapi-0.3.11.orig/jenkinsapi_tests/unittests/test_result_set.py jenkinsapi-0.3.11/jenkinsapi_tests/unittests/test_result_set.py
---- jenkinsapi-0.3.11.orig/jenkinsapi_tests/unittests/test_result_set.py	2022-05-03 09:35:57.853051009 +0200
-+++ jenkinsapi-0.3.11/jenkinsapi_tests/unittests/test_result_set.py	2022-05-03 09:36:46.689349602 +0200
+Index: jenkinsapi-0.3.13/jenkinsapi_tests/unittests/test_result_set.py
+===================================================================
+--- jenkinsapi-0.3.13.orig/jenkinsapi_tests/unittests/test_result_set.py
++++ jenkinsapi-0.3.13/jenkinsapi_tests/unittests/test_result_set.py
 @@ -1,4 +1,4 @@
 -import mock
 +from unittest import mock
+ 
  # To run unittests on python 2.6 please use unittest2 library
  try:
-     import unittest2 as unittest
-@@ -30,7 +30,7 @@ class TestResultSet(unittest.TestCase):
-                                    'className': 'nose.failure.Failure',
-                                    'duration': 0.0,
-                                    'errorDetails': 'No module named mock',
--                                   'errorStackTrace': 'Traceback (most recent call last):\n  File "/usr/lib/python2.7/unittest/case.py", line 332, in run\n    testMethod()\n  File "/usr/lib/python2.7/dist-packages/nose/loader.py", line 390, in loadTestsFromName\n    addr.filename, addr.module)\n  File "/usr/lib/python2.7/dist-packages/nose/importer.py", line 39, in importFromPath\n    return self.importFromDir(dir_path, fqname)\n  File "/usr/lib/python2.7/dist-packages/nose/importer.py", line 86, in importFromDir\n    mod = load_module(part_fqname, fh, filename, desc)\n  File "/var/lib/jenkins/jobs/test_jenkinsapi/workspace/jenkinsapi/src/jenkinsapi_tests/unittests/test_build.py", line 1, in <module>\n    import mock\nImportError: No module named mock\n',  # noqa
-+                                   'errorStackTrace': 'Traceback (most recent call last):\n  File "/usr/lib/python2.7/unittest/case.py", line 332, in run\n    testMethod()\n  File "/usr/lib/python2.7/dist-packages/nose/loader.py", line 390, in loadTestsFromName\n    addr.filename, addr.module)\n  File "/usr/lib/python2.7/dist-packages/nose/importer.py", line 39, in importFromPath\n    return self.importFromDir(dir_path, fqname)\n  File "/usr/lib/python2.7/dist-packages/nose/importer.py", line 86, in importFromDir\n    mod = load_module(part_fqname, fh, filename, desc)\n  File "/var/lib/jenkins/jobs/test_jenkinsapi/workspace/jenkinsapi/src/jenkinsapi_tests/unittests/test_build.py", line 1, in <module>\n    from unittest import mock\nImportError: No module named mock\n',  # noqa
-                                    'failedSince': 88,
-                                    'name': 'runTest',
-                                    'skipped': False,
-diff -upr jenkinsapi-0.3.11.orig/jenkinsapi_tests/unittests/test_view.py jenkinsapi-0.3.11/jenkinsapi_tests/unittests/test_view.py
---- jenkinsapi-0.3.11.orig/jenkinsapi_tests/unittests/test_view.py	2022-05-03 09:35:57.849050984 +0200
-+++ jenkinsapi-0.3.11/jenkinsapi_tests/unittests/test_view.py	2022-05-03 09:36:46.689349602 +0200
-@@ -1,4 +1,4 @@
--import mock
-+from unittest import mock
- 
- import pytest
- 
-@@ -60,13 +60,13 @@ JOB_DATA = {
- 
- @pytest.fixture
- def jenkins():
--    jenkins = mock.MagicMock(auto_spec=True)
-+    jenkins = mock.MagicMock(autospec=True)
-     jenkins.has_job.return_value = False
-     return jenkins
- 
- 
--@mock.patch.object(Job, '_poll', auto_spec=True)
--@mock.patch.object(View, '_poll', auto_spec=True)
-+@mock.patch.object(Job, '_poll', autospec=True)
-+@mock.patch.object(View, '_poll', autospec=True)
- @pytest.fixture
- def view(_view_poll, _job_poll, jenkins):
-     _view_poll.return_value = DATA
