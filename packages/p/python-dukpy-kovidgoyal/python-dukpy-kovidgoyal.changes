@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 27 13:05:48 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Tue Nov 23 09:47:18 UTC 2021 - Bernhard M. Demo2 Wiedemann <opensusedemo+test2@lsmod.de>
 
 - Add reproducible.patch to sort the file list (boo#1041090)
