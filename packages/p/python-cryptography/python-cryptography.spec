@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -29,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-cryptography%{psuffix}
-Version:        40.0.2
+Version:        41.0.1
 Release:        0
 Summary:        Python library which exposes cryptographic recipes and primitives
 License:        Apache-2.0 OR BSD-3-Clause
@@ -50,12 +48,12 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module exceptiongroup}
 BuildRequires:  %{python_module setuptools-rust}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  cargo >= 1.41.0
+BuildRequires:  cargo >= 1.56.0
 BuildRequires:  fdupes
 BuildRequires:  libopenssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  rust >= 1.41.0
+BuildRequires:  rust >= 1.56.0
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(libffi)
 # python-base is not enough, we need the _ssl module
@@ -93,6 +91,8 @@ cp %{SOURCE3} .cargo/config
 rm -v src/rust/Cargo.lock
 
 %build
+# https://github.com/pyca/cryptography/issues/9023
+%global _lto_cflags %{nil}
 export RUSTFLAGS=%{rustflags}
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_build
