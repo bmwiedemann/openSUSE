@@ -554,4 +554,12 @@
     <comment></comment>
     <requestid>1080447</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>66f73bbeec3bef2ef4ffbb1eaa0026d5</srcmd5>
+    <version>4.4.4</version>
+    <time>1687900547</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-avcodec-libsvtav1-remove-compressed_ten_bit_format-a.patch</comment>
+    <requestid>1095543</requestid>
+  </revision>
 </revisionlist>
