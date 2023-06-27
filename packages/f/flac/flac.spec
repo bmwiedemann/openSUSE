@@ -20,7 +20,7 @@
 %define sover_plus 10
 
 Name:           flac
-Version:        1.4.2
+Version:        1.4.3
 Release:        0
 Summary:        Free Lossless Audio Codec
 License:        BSD-3-Clause AND GPL-2.0-or-later AND GFDL-1.2-only
@@ -29,7 +29,7 @@ URL:            https://xiph.org/flac/
 #Git-Web:       https://github.com/xiph/flac
 #Git-Clone:     https://github.com/xiph/flac.git
 #Changelog:     https://xiph.org/flac/changelog.html
-Source:         https://downloads.xiph.org/releases/flac/%{name}-%{version}.tar.xz
+Source:         https://github.com/xiph/flac/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source2:        baselibs.conf
 
 BuildRequires:  autoconf >= 2.60
