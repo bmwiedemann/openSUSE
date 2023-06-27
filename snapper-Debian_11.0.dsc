@@ -1,6 +1,6 @@
 Format: 1.0
 Source: snapper
-Version: 0.10.4-1
+Version: 0.10.5-1
 Binary: snapper
 Maintainer: Arvin Schnell <aschnell@suse.com>
 Architecture: any
@@ -11,4 +11,4 @@ Build-Depends: debhelper (>= 4.1.16), acl-dev, dbus, g++, libboost-dev, libboost
 #  423a20ae6e882d44e65a4eff97f2269f 630905 snapper-0.2.8.tar.gz
 #
 Files:
-db2d536fa606a2534faba0726e8c6ea1 531168 snapper-0.10.4.tar.xz
+c3e8640d01f42f809d0f504347b1f556 532812 snapper-0.10.5.tar.xz
