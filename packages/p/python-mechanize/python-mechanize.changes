@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 27 13:08:45 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Fri Mar 31 07:05:30 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python-311.patch:

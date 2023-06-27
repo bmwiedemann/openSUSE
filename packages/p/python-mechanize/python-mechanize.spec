@@ -17,6 +17,7 @@
 
 
 %define modname mechanize
+%{?sle15_python_module_pythons}
 Name:           python-mechanize
 Version:        0.4.8
 Release:        0
