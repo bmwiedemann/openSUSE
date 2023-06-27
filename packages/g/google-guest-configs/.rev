@@ -141,4 +141,13 @@
   * Set hostname: consider fully qualified static hostname (#46) (forwarded request 1091420 from glaubitz)</comment>
     <requestid>1091423</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7eaa380a6a7045db45e1837e399b5051</srcmd5>
+    <version>20230626.00</version>
+    <time>1687900672</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230626.00 (bsc#1212418, bsc#1212759)
+  * Revert &quot;Replace `xxd` to `cut` for google_nvme_id (#49)&quot; (#54) (forwarded request 1095598 from glaubitz)</comment>
+    <requestid>1095625</requestid>
+  </revision>
 </revisionlist>

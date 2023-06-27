@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 27 11:54:42 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20230626.00 (bsc#1212418, bsc#1212759)
+  * Revert "Replace `xxd` to `cut` for google_nvme_id (#49)" (#54)
+
+-------------------------------------------------------------------
 Thu Jun  8 11:11:12 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20230526.00
