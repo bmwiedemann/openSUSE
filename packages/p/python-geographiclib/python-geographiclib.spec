@@ -1,7 +1,7 @@
 #
 # spec file for package python-geographiclib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-geographiclib
 Version:        1.50
 Release:        0
@@ -25,7 +25,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://geographiclib.sourceforge.io/
 Source:         https://files.pythonhosted.org/packages/source/g/geographiclib/geographiclib-%{version}.tar.gz
-Source1:        https://sourceforge.net/p/geographiclib/code/ci/master/tree/LICENSE.txt?format=raw#/LICENSE.txt
+Source1:        https://sourceforge.net/p/geographiclib/code/ci/release/tree/LICENSE.txt?format=raw#/LICENSE.txt
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
