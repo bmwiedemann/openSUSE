@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun 26 14:32:06 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.114.1:
+  * Revert "build(deps): bump gocloud.dev from 0.24.0 to 0.30.0"
+  * Fix broken nodeploy setup
+  * snap: Switch from Embedded Dart Sass to Dart Sass (#11146)
+  * commands: Make hugo env respect --logLevel
+  * commands: Update Jekyll post-import output
+  * build(deps): bump gocloud.dev from 0.24.0 to 0.30.0
+  * build(deps): bump github.com/evanw/esbuild from 0.18.4 to 0.18.5
+  * deps: Update github.com/tdewolff/minify/v2 v2.12.5 => v2.12.7
+
+-------------------------------------------------------------------
 Mon Jun 19 18:03:50 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 0.114.0:

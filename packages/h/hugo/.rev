@@ -643,4 +643,20 @@
     <comment>- Update to version 0.114.0: (forwarded request 1093840 from jfkw)</comment>
     <requestid>1093842</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>e876f6039eab4db9f6120f4085cb1fb7</srcmd5>
+    <version>0.114.1</version>
+    <time>1687900585</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.114.1:
+  * Revert &quot;build(deps): bump gocloud.dev from 0.24.0 to 0.30.0&quot;
+  * Fix broken nodeploy setup
+  * snap: Switch from Embedded Dart Sass to Dart Sass (#11146)
+  * commands: Make hugo env respect --logLevel
+  * commands: Update Jekyll post-import output
+  * build(deps): bump gocloud.dev from 0.24.0 to 0.30.0
+  * build(deps): bump github.com/evanw/esbuild from 0.18.4 to 0.18.5
+  * deps: Update github.com/tdewolff/minify/v2 v2.12.5 =&gt; v2.12.7 (forwarded request 1095449 from jfkw)</comment>
+    <requestid>1095450</requestid>
+  </revision>
 </revisionlist>
