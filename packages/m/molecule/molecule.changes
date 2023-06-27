@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jun 26 05:10:13 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- remove fix_ansible_compat.patch that is no longer needed
+- update to 5.1.0:
+  * Minor Changes
+    - Ensure external drivers are installed (#3901) @apatard
+    - Update dependency doc (#3916) @zhan9san
+    - Improve documentation for upgrade scenario (#3899) @fauust
+  * Bugfixes
+    - Fix documentation links (#3940) @ssbarnea
+    - Fix quoted strings templating (#3911) @samiam
+    - Adds Support for Shell Type Instance Param to Delegated
+      Driver (#3932) @zollo
+    - Fix dead link in documentation (#3923) @rtakasuke
+    - Use backwards incompatible change from ansible-compat 4.0.1
+      (#3904) @asmacdo
+
+-------------------------------------------------------------------
 Mon May 22 13:30:53 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Add fix_ansible_compat.patch from upstream pull request to fix
