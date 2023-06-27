@@ -1,7 +1,7 @@
 #
 # spec file for package transifex-client
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ BuildRequires:  python3-pytest
 BuildRequires:  python3-python-slugify
 BuildRequires:  python3-requests >= 2.19.1
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-six < 2.0.0
 BuildRequires:  python3-urllib3 >= 1.24.2
 Requires:       python3-python-slugify
 Requires:       python3-requests >= 2.19.1

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 26 15:12:45 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire python3-six: used to be pulled in by other
+  dependencies, but is explicitly used in this package.
+
+-------------------------------------------------------------------
 Tue Apr 26 11:43:00 UTC 2022 - pgajdos@suse.com
 
 - fix tests on 32 bit arch
