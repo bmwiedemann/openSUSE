@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 31 18:36:12 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
+
+- lock group is created by system-group-hardware
+
+-------------------------------------------------------------------
+Mon Apr 27 13:01:23 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
+
+- use sysusers mechanism to create lock group and tmpfiles for
+  /{var/,}run (boo#1078466)
+- add lockdev-debug.diff
+
+-------------------------------------------------------------------
 Wed Aug  1 14:16:45 UTC 2018 - schwab@suse.de
 
 - sysmacros.patch: Include <sys/sysmacros.h> for major/minor

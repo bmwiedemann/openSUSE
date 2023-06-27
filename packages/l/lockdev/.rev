@@ -187,4 +187,15 @@
     <comment></comment>
     <requestid>626994</requestid>
   </revision>
+  <revision rev="25" vrev="32">
+    <srcmd5>7e3cd1158076427f46e65f434e9fe49c</srcmd5>
+    <version>1.0.3_git201003141408</version>
+    <time>1687900581</time>
+    <user>dimstar_suse</user>
+    <comment>- lock group is created by system-group-hardware
+- use sysusers mechanism to create lock group and tmpfiles for
+  /{var/,}run (boo#1078466)
+- add lockdev-debug.diff</comment>
+    <requestid>1095640</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package lockdev
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,35 +12,36 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %bcond_with lockdev_debug
-
 Name:           lockdev
+Version:        1.0.3_git201003141408
+Release:        0
 Summary:        A library for locking devices
 License:        LGPL-2.0-only
 Group:          System/Base
-Version:        1.0.3_git201003141408
-Release:        0
-Url:            http://packages.debian.org/unstable/source/lockdev
+URL:            https://packages.debian.org/unstable/source/lockdev
 #Source0:        http://ftp.debian.org/debian/pool/main/l/lockdev/%{name}_%{version}.orig.tar.gz
 Source0:        http://ftp.debian.org/debian/pool/main/l/lockdev/%{name}-%{version}.tar.bz2
+Source21:       tmpfiles-lockdev.conf
 Source90:       baselibs.conf
 Patch0:         lockdev-drop-baudboy.h.diff
 Patch1:         lockdev-fix-implicit-declarations.diff
 Patch2:         lockdev-reserve-some-space-to-avoid-buffer-overflow.diff
 Patch3:         lockdev-pie.diff
 Patch4:         sysmacros.patch
-#
-Requires(pre):  pwdutils permissions
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Patch5:         lockdev-debug.diff
 #
 BuildRequires:  libtool
 BuildRequires:  perl
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  perl(ExtUtils::MakeMaker)
+Requires(pre):  permissions
+Requires(pre):  group(lock)
 
 %description
 Lockdev provides a reliable way to put an exclusive lock to devices
@@ -49,9 +50,9 @@ using both FSSTND and SVr4 methods.
 %package -n liblockdev1
 Summary:        The header files for the lockdev library
 Group:          System/Base
-Requires:       /usr/sbin/lockdev
+Requires:       %{_sbindir}/lockdev
 Requires(post): glibc
-Requires(postun): glibc
+Requires(postun):glibc
 
 %description -n liblockdev1
 Lockdev provides a reliable way to put an exclusive lock to devices
@@ -61,7 +62,7 @@ using both FSSTND and SVr4 methods.
 Summary:        A library for locking devices
 Group:          Development/Libraries/C and C++
 Requires:       lockdev = %{version}
-Recommends:     pkg-config
+Recommends:     pkgconfig
 
 %description devel
 The lockdev library provides a reliable way to put an exclusive lock
@@ -69,17 +70,12 @@ on devices using both FSSTND and SVr4 methods. The lockdev-devel
 package contains the development headers.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%autosetup -p1
 
 %build
 cat > VERSION <<EOF
 Package: lockdev
-Version: %version
+Version:        %{version}
 Release-Date: Unreleased
 Released-By: Unreleased
 EOF
@@ -92,46 +88,40 @@ autoreconf -f -i
 	%{?with_lockdev_debug:--enable-debug}
 #
 make %{?_smp_mflags}
+#
 
 %check
 objdump -p src/.libs/lockdev | grep -q "NEEDED.*liblockdev.so.1"
 
 %install
-%makeinstall
+%make_install
 #
 # no need for this
-rm -f %{buildroot}/%{_libdir}/*.la
+find %{buildroot} -type f -name "*.la" -delete -print
 #
-mkdir -p $RPM_BUILD_ROOT/var/lock
-
-%pre
-getent group lock >/dev/null || groupadd -r lock || :
+install -D -m644 %{SOURCE21} %{buildroot}%{_tmpfilesdir}/lockdev.conf
 
 %post
-%set_permissions /usr/sbin/lockdev
+%tmpfiles_create lockdev.conf
+%set_permissions %{_sbindir}/lockdev
 
 %post -n liblockdev1 -p /sbin/ldconfig
-
 %postun -n liblockdev1 -p /sbin/ldconfig
 
 %verifyscript
-%verify_permissions -e /usr/sbin/lockdev
-
-%clean
-rm -fr $RPM_BUILD_ROOT
+%verify_permissions -e %{_sbindir}/lockdev
 
 %files
-%defattr(-,root,root)
-%doc COPYING AUTHORS
+%license COPYING
+%doc AUTHORS
 %verify(not mode) %attr(2755,root,lock) %{_sbindir}/lockdev
 %{_mandir}/man8/*
+%{_tmpfilesdir}/lockdev.conf
 
 %files -n liblockdev1
-%defattr(-,root,root)
 %{_libdir}/*.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/lockdev.pc
 %{_mandir}/man3/*

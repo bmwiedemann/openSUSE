@@ -1,0 +1,13 @@
+Index: lockdev-1.0.3_git201003141408/src/lockdev.c
+===================================================================
+--- lockdev-1.0.3_git201003141408.orig/src/lockdev.c
++++ lockdev-1.0.3_git201003141408/src/lockdev.c
+@@ -154,7 +154,7 @@ static inline	int	_dl_pid_exists		( pid_
+ 
+ #if DEBUG
+ static	int	liblockdev_debug = DEBUG;	/* 1 by default */
+-#	define	_debug(val,fmt,arg...)	(liblockdev_debug && (liblockdev_debug >= val) && printf(fmt,##arg))
++#	define	_debug(val,fmt,arg...)	do { if (liblockdev_debug && (liblockdev_debug >= val)) { printf(fmt,##arg); } } while(0)
+ static	int	env_var_debug = -1;		/* record set from env var */
+ #	define	_env_var	"LIBLOCKDEV_DEBUG"
+ #else
