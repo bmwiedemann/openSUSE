@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 21 14:29:52 UTC 2023 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 20230331
+  * Add C Flexible Array support.
+  * Add support for 64 bit LoongArch compilation.
+  * Add first batch of RISC-V related definitions.
+  * hwvalid: Drop port I/O validation.
+  * iASL: Added full macro support in the preprocessor.
+  * Add support for AMD Secure Processor Table (ASPT) version 1.
+  * Add support for Arm's MPAM ACPI table version 2.
+  * ACPI 6.5: MADT: add support for trace buffer extension in GICC.
+  * Headers: Delete bogus NodeArray array of pointers from AEST table.
+
+-------------------------------------------------------------------
 Tue Dec 27 23:13:22 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 20221020:

@@ -1,7 +1,7 @@
 #
 # spec file for package acpica
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,12 @@
 %define kver %(rpm -q --qf '%%{VERSION}' kernel-source)
 %define dmp_ver %{kver}
 Name:           acpica
-Version:        20221020
+Version:        20230331
 Release:        0
 Summary:        A set of tools to display and debug BIOS ACPI tables
 License:        GPL-2.0-only
 URL:            https://acpica.org
-Source:         https://acpica.org/sites/acpica/files/%{src_dir}.tar_0.gz
+Source:         https://acpica.org/sites/acpica/files/%{src_dir}.tar.gz
 Source1:        ec_access.c
 Source2:        acpi_genl.tar.bz2
 Source3:        acpi_validate
