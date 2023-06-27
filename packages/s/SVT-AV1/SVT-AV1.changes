@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jun 26 08:53:46 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Enable build on riscv64
+
+-------------------------------------------------------------------
+Mon Jun 19 23:25:45 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.0
+  * Improved the tradeoffs for the random access mode across
+    presets M1-M13:
+  * Speeding up the higher quality presets by 30-40%
+  * Improving the BD-rate by 1-4% for the faster presets
+  * Improved the tradeoffs for the low delay mode for both screen
+    content and non-screen content encoding modes
+  * Added a toggle to remove the legacy one-frame buffer at the
+    input of the pipeline allowing the low delay mode to operate
+    at sub-frame processing latencies
+  * Added a new API allowing the user to specify quantization
+    offsets for a region of interest per frame
+
+-------------------------------------------------------------------
 Thu Mar 30 09:10:48 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Enable build on aarch64
