@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 27 13:08:16 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Sun May 22 16:48:02 UTC 2022 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 6.0.10:
