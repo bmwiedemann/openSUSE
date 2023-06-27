@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 27 01:08:52 UTC 2023 - Tim Serong <tserong@suse.com>
+
+- Remove _constraints file, add README-constraints.txt and pre_checkin.env
+
+-------------------------------------------------------------------
 Wed May 24 06:26:03 UTC 2023 - Tim Serong <tserong@suse.com>
 
 - Add "#!BuildConstraint" to spec files for compatibility with _multibuild 

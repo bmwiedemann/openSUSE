@@ -156,9 +156,11 @@ Group: System/Filesystems
 URL: http://ceph.com/
 Source0: %{?_remote_tarball_prefix}ceph-16.2.13-66-g54799ee0666.tar.bz2
 %if 0%{?suse_version}
-Source94: ceph-rpmlintrc
-Source95: checkin.sh
-Source96: pre_checkin.sh
+Source92: ceph-rpmlintrc
+Source93: checkin.sh
+Source94: pre_checkin.sh
+Source95: pre_checkin.env
+Source96: README-constraints.txt
 Source97: README-ceph-test.txt
 Source98: README-checkin.txt
 Source99: README-packaging.txt

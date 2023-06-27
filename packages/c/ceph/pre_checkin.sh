@@ -283,6 +283,15 @@ function set_build_constraints {
 PACKAGE="ceph-test"
 SPEC_FILE="ceph.spec"
 
+source ./pre_checkin.env
+if [ -z "$CEPH_BUILD_DISK_SIZE_GB" -o \
+     -z "$CEPH_BUILD_MEMORY_SIZE_GB" -o \
+     -z "$CEPH_TEST_BUILD_DISK_SIZE_GB" -o \
+     -z "$CEPH_TEST_BUILD_MEMORY_SIZE_GB" ]; then
+  echo "ERROR: build constraints not set (see README-constraints.txt)";
+  exit 1
+fi
+
 files=`packages_files $SPEC_FILE $PACKAGE`
 if [[ "$?" == "1" ]]; then
  echo "ERROR: "
@@ -298,9 +307,11 @@ transform_spec_file $SPEC_FILE $PACKAGE "$rm_files" "$summ" "$desc" "$reqs" > $P
 insert_line_before "$PACKAGE.spec" "Source99: README-packaging.txt" "_insert_obs_source_lines_here"
 insert_line_before "$PACKAGE.spec" "Source98: README-checkin.txt" "^Source99:"
 insert_line_before "$PACKAGE.spec" "Source97: README-ceph-test.txt" "^Source98:"
-insert_line_before "$PACKAGE.spec" "Source96: pre_checkin.sh" "^Source97:"
-insert_line_before "$PACKAGE.spec" "Source95: checkin.sh" "^Source96:"
-insert_line_before "$PACKAGE.spec" "Source94: ceph-rpmlintrc" "^Source95:"
+insert_line_before "$PACKAGE.spec" "Source96: README-constraints.txt" "^Source97:"
+insert_line_before "$PACKAGE.spec" "Source95: pre_checkin.env" "^Source96:"
+insert_line_before "$PACKAGE.spec" "Source94: pre_checkin.sh" "^Source95:"
+insert_line_before "$PACKAGE.spec" "Source93: checkin.sh" "^Source94:"
+insert_line_before "$PACKAGE.spec" "Source92: ceph-rpmlintrc" "^Source93:"
 copy_changes_file $PACKAGE
-set_build_constraints $SPEC_FILE "hardware:disk:size unit=G 50" "hardware:memory:size unit=G 8"
-set_build_constraints "$PACKAGE.spec" "hardware:disk:size unit=G 60" "hardware:memory:size unit=G 10"
+set_build_constraints $SPEC_FILE "hardware:disk:size unit=G ${CEPH_BUILD_DISK_SIZE_GB}" "hardware:memory:size unit=G ${CEPH_BUILD_MEMORY_SIZE_GB}"
+set_build_constraints "$PACKAGE.spec" "hardware:disk:size unit=G ${CEPH_TEST_BUILD_DISK_SIZE_GB}" "hardware:memory:size unit=G ${CEPH_TEST_BUILD_MEMORY_SIZE_GB}"

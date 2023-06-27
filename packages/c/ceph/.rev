@@ -736,4 +736,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1089932</requestid>
   </revision>
+  <revision rev="90" vrev="3">
+    <srcmd5>bf34e43b354ae2c9c39d7041791ee4a3</srcmd5>
+    <version>16.2.13.66+g54799ee0666</version>
+    <time>1687900558</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove _constraints file, add README-constraints.txt and pre_checkin.env</comment>
+    <requestid>1095539</requestid>
+  </revision>
 </revisionlist>
