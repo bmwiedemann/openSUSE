@@ -18,35 +18,34 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-CacheControl
-Version:        0.12.11
+Version:        0.13.1
 Release:        0
 Summary:        Caching library for Python requests
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://github.com/ionrock/cachecontrol
-Source:         https://github.com/ionrock/cachecontrol/archive/v%{version}.tar.gz#/CacheControl-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM requests-fix.patch -- gh#ionrock/cachecontrol#301, gh#ionrock/cachecontrol#304
-Patch0:         requests-fix.patch
+URL:            https://github.com/psf/cachecontrol
+Source:         https://github.com/psf/cachecontrol/archive/v%{version}.tar.gz#/cachecontrol-%{version}.tar.gz
+BuildRequires:  %{python_module flit-core >= 3.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-msgpack >= 0.5.2
-Requires:       python-requests
+Requires:       python-requests >= 2.16.0
 Provides:       python-cachecontrol = %{version}-%{release}
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-Recommends:     python-lockfile >= 0.9
+Recommends:     python-filelock >= 3.8.0
 Suggests:       python-redis >= 2.10.5
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module CherryPy}
-BuildRequires:  %{python_module lockfile >= 0.9}
+BuildRequires:  %{python_module filelock >= 3.8.0}
 BuildRequires:  %{python_module msgpack >= 0.5.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module redis >= 2.10.5}
-BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module requests >= 2.16.0}
 # /SECTION
 %python_subpackages
 
@@ -56,7 +55,6 @@ requests session object.
 
 %prep
 %autosetup -p1 -n cachecontrol-%{version}
-sed -i -e 's/^from mock/from unittest.mock/' -e 's/^import mock/from unittest import mock/' tests/*.py
 
 %build
 %pyproject_wheel
@@ -85,6 +83,6 @@ sed -i -e 's/^from mock/from unittest.mock/' -e 's/^import mock/from unittest im
 %doc README.rst
 %python_alternative %{_bindir}/doesitcache
 %{python_sitelib}/cachecontrol
-%{python_sitelib}/CacheControl-%{version}*-info
+%{python_sitelib}/cachecontrol-%{version}*-info
 
 %changelog
