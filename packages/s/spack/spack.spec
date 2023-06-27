@@ -39,7 +39,7 @@ ExclusiveArch:  do_not_build
 %define spack_trigger_recommended_compilers  gcc gcc-c++ gcc-fortran
 
 # packages recognized by spack, but not recommended
-%define spack_trigger_packages ghostscript go fish fzf hugo java-11-openjdk-devel java-14-openjdk-devel java-15-openjdk-devel java-16-openjdk-devel java-1_8_0-openjdk-devel ruby openmpi1-devel openmpi2-devel openmpi3-devel openmpi4-devel openmpi1-gnu-hpc-devel openmpi2-gnu-hpc-devel openmpi3-gnu-hpc-devel openmpi4-gnu-hpc-devel mpich-gnu-hpc-devel mvapich2-devel mpich-devel
+%define spack_trigger_packages ghostscript go fish fzf hwloc-devel hugo java-11-openjdk-devel java-14-openjdk-devel java-15-openjdk-devel java-16-openjdk-devel java-1_8_0-openjdk-devel ruby sqlite3 openmpi1-devel openmpi2-devel openmpi3-devel openmpi4-devel openmpi1-gnu-hpc-devel openmpi2-gnu-hpc-devel openmpi3-gnu-hpc-devel openmpi4-gnu-hpc-devel mpich-gnu-hpc-devel mvapich2-devel mpich-devel
 
 %define spack_trigger_compilers gcc7 gcc8 gcc9 gcc10 gcc11 gcc12 gcc7-c++ gcc8-c++ gcc9-c++ gcc10-c++ gcc11-c++ gcc12-c++ gcc7-fortran gcc8-fortran gcc9-fortran gcc10-fortran gcc11-fortran gcc12-fortran
 
@@ -94,6 +94,8 @@ Requires:       tar
 Requires:       unzip
 Requires:       xz
 Recommends:     %spack_trigger_recommended_packages %spack_trigger_recommended_compilers
+Requires:       (hwloc if hwloc-devel)
+Requires:       (hwloc-devel if hwloc)
 %else
 BuildRequires:  git
 BuildRequires:  makeinfo
@@ -206,7 +208,7 @@ while [ -n "$1" ]; do
   case $1 in
     --*) shift ;;
     graph|spec|unit-test) exit 0 ;;
-    *) exec /usr/bin/spack ${args} ;;
+    *) exec %{_bindir}/spack ${args} ;;
   esac;
 done
 exit 0' > $tmpdir/spack
@@ -231,10 +233,10 @@ compilers:
 - compiler:
     spec: gcc@7.5.0
     paths:
-      cc: /usr/bin/gcc
-      cxx: /usr/bin/g++
-      f77: /usr/bin/gfortran
-      fc: /usr/bin/gfortran
+      cc: %{_bindir}/gcc
+      cxx: %{_bindir}/g++
+      f77: %{_bindir}/gfortran
+      fc: %{_bindir}/gfortran
     flags: {}
     operating_system: SUSE
     target: x86_64
@@ -250,9 +252,9 @@ gzip _build/texinfo/Spack.info _build/man/spack.1
 # with doc
 %endif
 cd -
-grep -rl '#! /usr/bin/env bash' . | xargs -i@ sed -i 's|#! /usr/bin/env bash|#!/usr/bin/bash|g' @
-grep -rl '#!/bin/env sh' . | xargs -i@ sed -i 's|#!/bin/env sh|#!/usr/bin/sh|g' @
-grep -rl '#!/usr/bin/env bash' . | xargs -i@ sed -i 's|#!/usr/bin/env bash|#!/usr/bin/bash|g' @
+grep -rl '#! /usr/bin/env bash' . | xargs -i@ sed -i 's|#! /usr/bin/env bash|#!%{_bindir}/bash|g' @
+grep -rl '#!/bin/env sh' . | xargs -i@ sed -i 's|#!/bin/env sh|#!%{_bindir}/sh|g' @
+grep -rl '#!/usr/bin/env bash' . | xargs -i@ sed -i 's|#!/usr/bin/env bash|#!%{_bindir}/bash|g' @
 grep -rl '/var/spack/repos' | grep -v "cmd/list.py" | \
     xargs -i@ sed -i 's|/var/spack/repos|/usr/share/spack/repos|g' @
 grep -rl "spack/" . | xargs -i@ sed -i \
@@ -347,10 +349,10 @@ compilers:
 - compiler:
     spec: gcc@GCC_FULL_VERSION
     paths:
-      cc: /usr/bin/gcc-GCC_VERSION
-      cxx: /usr/bin/g++-GCC_VERSION
-      f77: /usr/bin/gfortran-GCC_VERSION
-      fc: /usr/bin/gfortran-GCC_VERSION
+      cc: %{_bindir}/gcc-GCC_VERSION
+      cxx: %{_bindir}/g++-GCC_VERSION
+      f77: %{_bindir}/gfortran-GCC_VERSION
+      fc: %{_bindir}/gfortran-GCC_VERSION
     flags: {}
     operating_system: SUSE_VERSION
     target: HOSTTYPE

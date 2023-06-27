@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 26 12:26:10 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Add hwloc-devel and sqlite3 to the packages that trigger a
+  `spack external find`.
+- Change /usr/bin to %{_bindir}.
+- Make sure, libhwloc and hwloc are installed together when
+  spack is installed.
+
+-------------------------------------------------------------------
 Thu Jun  1 11:32:36 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Do not attempt to build documentation for 32-bit, s390x and

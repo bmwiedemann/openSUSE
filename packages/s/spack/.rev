@@ -345,4 +345,13 @@
   ppc64*. There are build issues on some build targets. (forwarded request 1090531 from eeich)</comment>
     <requestid>1090534</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>ae0af1d416de69832ed34ed12765dfd1</srcmd5>
+    <version>0.20.0</version>
+    <time>1687900662</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure, libhwloc and hwloc are installed together when
+  spack is installed. (forwarded request 1095549 from eeich)</comment>
+    <requestid>1095551</requestid>
+  </revision>
 </revisionlist>
