@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Fri Jun 23 22:34:10 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.21+ change default GOTOOLCHAIN=auto to local to prevent go
+  tool commands from downloading upstream go1.x toolchain binaries
+  Refs boo#1212669
+  * go1.21+ introduce new default behavior that can download
+    additional versions of go1.x toolchain binaries built by
+    upstream. See https://go.dev/doc/toolchain for details. The go
+    tool would attempt toolchain downloads as needed to satisfy a
+    minimum go version specified in go.mod of the program
+    containing main() or any of its dependencies.
+  * Builds in OBS can not access the network, download attempts
+    would fail.
+  * Builds in OBS should not use third party binary toolchains.
+  * When GOTOOLCHAIN is set to local, the go command always runs
+    the bundled Go toolchain.
+  * Users can override the default GOTOOLCHAIN setting with
+    go env -w, stored in in ~/.config/go/env.
+
+-------------------------------------------------------------------
+Fri Jun 23 20:26:19 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Add missing go.env to package. go.env sets defaults including:
+  GOPROXY GOSUMDB GOTOOLCHAIN
+  Refs boo#1212667
+  * Starting in go1.21+ a missing go.env defaults to GOPROXY=''
+    resulting in errors e.g. with online cmds e.g. go mod download:
+    "GOPROXY list is not the empty string, but contains no entries"
+    It is not clear why GOPROXY='' is not evaluated as "the empty
+    string".
+
+-------------------------------------------------------------------
+Wed Jun 21 15:40:05 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.21rc2 (released 2023-06-21) is a release candidate version of
+  go1.21 cut from the master branch at the revision tagged
+  go1.21rc2. https://go.dev/blog/go1.21rc
+  Refs boo#1212475 go1.21 release tracking
+
+-------------------------------------------------------------------
+Fri Jun 16 14:21:46 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.21rc1 (released 2023-06-16) is a release candidate version of
+  go1.21 cut from the master branch at the revision tagged
+  go1.21rc1.
+  Refs boo#1212475 go1.21 release tracking

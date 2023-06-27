@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>09e9d09bc4c0f8b329ae803aa9a6f5f0</srcmd5>
+    <version>1.21rc2</version>
+    <time>1687900583</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.21rc2 (released 2023-06-21) is a release candidate version of
+  go1.21 cut from the master branch at the revision tagged
+  go1.21rc2. https://go.dev/blog/go1.21rc
+  Refs boo#1212475 go1.21 release tracking
+- Add missing go.env to package. go.env sets defaults including:
+  GOPROXY GOSUMDB GOTOOLCHAIN
+  Refs boo#1212667
+- go1.21+ change default GOTOOLCHAIN=auto to local to prevent go
+  tool commands from downloading upstream go1.x toolchain binaries
+  Refs boo#1212669</comment>
+    <requestid>1095300</requestid>
+  </revision>
+</revisionlist>
