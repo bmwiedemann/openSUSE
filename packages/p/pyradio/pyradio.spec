@@ -1,8 +1,8 @@
 #
 # spec file for package pyradio
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2019-2020 Malcolm J Lewis <malcolmlewis@opensuse.org>
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2019-2023 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 
 Name:           pyradio
-Version:        0.8.9.9
+Version:        0.9.2.11
 Release:        0
 Summary:        Curses based internet radio player
 License:        MIT
 URL:            https://www.coderholic.com/pyradio
 Source0:        https://github.com/coderholic/pyradio/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# Ignore zero length notification file.
+Source99:       pyradio-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
