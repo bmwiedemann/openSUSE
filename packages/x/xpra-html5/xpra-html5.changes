@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Tue Jun 20 15:01:07 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 9.0+git20230615.cdd9ea7:
+  * forgot to bump version here
+  * #227 disable offscreen with safari
+  * if an argument is missing, return an empty value
+  * default to non-legacy mode: 'rencodeplus'
+  * simplify
+  * fix path to eye-icon
+  * #249 allow spaces in passwords
+
+-------------------------------------------------------------------
+Tue May 23 15:54:15 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 9.0+git20230515.2add797:
+  * #240 honour the 'decorations' flag
+  * #240 don't duplicate the 'decorations' logic
+  * whitespace
+  * remove unnecessary cruft
+  * #246 typo underscore vs dash in capability name
+  * also hide upload if file transfers are disabled client side
+  * fix logging from window
+  * restore console.warn
+
+-------------------------------------------------------------------
+Mon May 08 00:23:27 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 9.0+git20230506.58e96fc:
+  * better wording
+  * bump version
+  * update the release notes
+
+-------------------------------------------------------------------
+Thu May 04 12:52:30 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 8.0+git20230504.9a7687f:
+  * always use the preferred keywords for variable declaration
+  * use cleaner / simpler for loop syntax
+  * document empty functions
+  * remove unused statements
+  * the keys are strings
+  * use the computed arguments
+  * doh: we want to assign the callback function
+  * make linter happier
+  * we want a loose match here
+  * function must take 5 args
+  * Update README.md
+  * #244 we need a jquery object to call trigger on
+  * hide file upload if not supported by the server
+  * #242 don't show 'shutdown' option when it isn't available
+  * Update README.md - Sonarqube build test
+  * Update README - Test sonarqube
+  * Create build.yml
+  * Create sonar-project.properties
+  * don't overflow the div
+  * #236 disable screenshot when offscreen api is in use
+  * #235 also update call from menu
+  * #235 only request window-close
+  * function is no longer used
+  * #230 when re-connecting, ignore page 'unload'
+  * #230 don't close windows when re-connecting
+  * #232 partial revert of 0e8652e30e2741d3561a78067ad482f54e910fce
+  * remove unused vars
+  * forward port of 6be1053f5650690634685ee7357351acba68a5b6
+
+-------------------------------------------------------------------
+Mon Mar 13 13:26:15 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 8.0+git20230313.4e515ef:
+  * bump version
+  * update the release notes
+  * #226 skip auto-focus and polling when clipboard is disabled
+  * #226 the problem is with Safari, not MacOS
+
+-------------------------------------------------------------------
+Fri Mar 10 20:25:04 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 7.0+git20230310.0171476:
+  * forward port 253118c34bbd6b56a3ab91937eaaa793760f97a9
+  * workaround missing hasOwn in older versions of Safari
+
+-------------------------------------------------------------------
+Mon Mar 06 20:07:01 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 7.0+git20230303.19b416b:
+  * if we can't get sensible linting, get rid of it
+  * log the packet data causing the error
+  * re-use the parsed cursor data
+  * bump revision no
+  * fix linter warning, make code less dense
+  * provide more useful name to the server
+  * cosmetic
+  * the close_window function now takes 2 arguments
+  * variables for our windows should not shadow the browser's 'window' object
+  * simplify focus methods, fix window menu actions
+  * make linter happier
+  * make linter happier
+  * #228 correct location for h264 availability check?
+  * #226 don't enable clipboard with Safari and SSL
+  * #228 remove broadway
+  * avoid errors if the window's title is unset
+  * use a more distinct id for windows
+  * #223 catch wheel events on windows
+  * #225 use path relative to index.html instead
+  * only send 'sound-stop' if audio is enabled
+  * silence linter warning: readable is better
+  * #224 use correct window constructor signature
+  * oops: remove debug
+  * fix linter warnings
+  * remove outdated workaround
+  * #222 remove vp9, for now
+  * fix wrong context for logging call
+  * Disable VP9, prefer h264
+  * Fix #217
+  * don't spam the console
+  * truncate large clipboard buffers
+  * propagate the video decoding error message
+  * whitespace
+  * Less scaling for offscreen decoding
+
+-------------------------------------------------------------------
 Tue Dec 27 20:08:05 UTC 2022 - scott.bradnick@suse.com
 
 - Update to version 7.0+git20221227.017148e:

@@ -4,7 +4,7 @@
     <param name="scm">git</param>
     <!-- TESTING -->
     <!-- LAST KNOWN GOOD:  (older) ;  (newer)
-    <param name="revision">21cabde</param>
+    <param name="revision">58e96fc</param>
     -->
     <!-- VERIFIED GOOD:  (older) ;  (newer)
     <param name="revision">8aea0a5</param>
@@ -18,15 +18,16 @@
     <param name="revision">caf9971</param>
     <param name="revision">f4e08d5</param>
     <param name="revision">c248091</param>
+    <param name="revision">21cabde</param>
     -->
     <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
     <!--  This comes from setup.py which defines
       a 'VERSION = ' based off a tag; current
-      release is 'v6.1' (Tags) but master defines
-      it as 7.0
+      release is 'v7.0' (Tags) but master defines
+      it as 8.0 (per `grep -r 'VERSION =' xpra-html5`)
     -->
-    <param name="versionrewrite-pattern">v6.0</param>
-    <param name="versionrewrite-replacement">7.0</param>
+    <param name="versionrewrite-pattern">v8.0</param>
+    <param name="versionrewrite-replacement">9.0</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="set_version" mode="disabled"/>
