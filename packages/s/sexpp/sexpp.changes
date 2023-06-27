@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Mon Jun 26 20:45:29 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- upstream and library renamed to sexp
+
+-------------------------------------------------------------------
+Fri Jun 23 12:10:51 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- sexp 0.8.6
+  * Explicitly indicate library versioning (SOVERSION)
+  * Add a manpage for the sexp CLI
+- drop sexp-0.8.5-soversion.patch
+
+-------------------------------------------------------------------
+Wed Jun 21 19:46:57 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- sexp 0.8.5:
+  * license clarified to MIT
+  * Limit allowed nesting layers in print_xxx
+- drop sexp-0.8.4-shared-lib.patch
+- add sexp-0.8.5-soversion.patch
+
+-------------------------------------------------------------------
+Wed Jun 14 17:46:31 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- sexp 0.8.4, initial package

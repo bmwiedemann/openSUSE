@@ -1,0 +1,10 @@
+<package name="sexpp" project="openSUSE:Factory">
+  <title>S-expressions parser and generator library</title>
+  <description>This is a C++ library for working with S-expressions. S-expressions
+are a data structure for representing complex data as a variation on
+LISP S-expressions.
+
+</description>
+  <devel project="security:privacy" package="sexpp"/>
+  <url>https://github.com/rnpgp/sexp</url>
+</package>
