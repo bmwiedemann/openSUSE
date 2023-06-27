@@ -13,4 +13,12 @@ I already submitted it 1 month ago but it was rejected because of dynamically lo
 These issues are now fixed with a patch, hence this new submission.</comment>
     <requestid>1094811</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5605617682b3f7f508fae37af4f2dffc</srcmd5>
+    <version>3.3.0</version>
+    <time>1687900697</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 3.3.0</comment>
+    <requestid>1095677</requestid>
+  </revision>
 </revisionlist>

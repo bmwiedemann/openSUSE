@@ -17,11 +17,11 @@
 
 
 # WebExtension support is not included by default because it's unfinished
-# and possibly prone to security issues. 
+# and possibly prone to security issues.
 %bcond_with webextensions
 
 Name:           nyxt
-Version:        3.2.1
+Version:        3.3.0
 Release:        0
 Summary:        Keyboard-oriented, Common Lisp extensible web-browser
 License:        BSD-3-Clause
@@ -29,22 +29,24 @@ Group:          Productivity/Networking/Web/Browsers
 URL:            https://nyxt.atlas.engineer
 Source:         nyxt-%{version}-source-with-submodules.tar.xz
 Patch0:         so_ver_fix.patch
-Requires:       libwebkit2gtk-4_1-0
-Requires:       libfixposix4
 Requires:       enchant-tools
 Requires:       glib-networking
 Requires:       gsettings-desktop-schemas
+Requires:       libfixposix4
+Requires:       libwebkit2gtk-4_1-0
 Requires:       xclip
-BuildRequires:  pkgconfig(libfixposix)
-BuildRequires:  pkgconfig(webkit2gtk-4.1)
-Buildrequires:  pkgconfig(libcrypto)
-BuildRequires:  sbcl
 BuildRequires:  gcc-c++
 BuildRequires:  git
+BuildRequires:  sbcl
+BuildRequires:  pkgconfig(libcrypto)
+BuildRequires:  pkgconfig(libfixposix)
+BuildRequires:  pkgconfig(webkit2gtk-4.1)
 Conflicts:      nyxt-git
 
 %description
-Nyxt is a keyboard-oriented, extensible web-browser designed for power users. It has familiar key-bindings (Emacs, VI, CUA), is fully configurable and extensible in Lisp, and has powerful features for productive professionals.
+Nyxt is a keyboard-oriented, extensible web-browser designed for power users.
+It has familiar key-bindings (Emacs, VI, CUA), is fully configurable and
+extensible in Lisp, and has powerful features for productive professionals.
 
 %prep
 %setup -q -c nyxt-%{version}
@@ -57,7 +59,6 @@ make all web-extensions PREFIX=/usr LIBDIR=%{_libdir} NASDF_COMPRESS=T
 %else
 make all PREFIX=/usr LIBDIR=%{_libdir} NASDF_COMPRESS=T
 %endif
-
 
 %install
 
