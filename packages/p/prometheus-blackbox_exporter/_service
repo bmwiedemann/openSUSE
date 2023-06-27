@@ -16,6 +16,6 @@
     <param name="basename">blackbox_exporter</param>
   </service>
   <service name="go_modules" mode="disabled">
-    <param name="archive">blackbox_exporter-0.24.0.tar.gz</param>
+    <param name="archive">blackbox_exporter-0.24.0.obscpio</param>
   </service>
 </services>

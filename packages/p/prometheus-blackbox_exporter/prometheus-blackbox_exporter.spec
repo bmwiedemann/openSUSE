@@ -62,7 +62,9 @@ Prometheus blackbox exporter allows blackbox probing of endpoints over HTTP, HTT
 
 %build
 %goprep github.com/prometheus/blackbox_exporter
-%gobuild -mod=vendor "" ...
+export LDFLAGS="-X 'github.com/prometheus/common/version.Version=%{version}' \
+-X 'github.com/prometheus/common/version.BuildDate=$SOURCE_DATE_EPOCH'"
+%gobuild -ldflags="$LDFLAGS" -mod=vendor "" ...
 
 %install
 %goinstall

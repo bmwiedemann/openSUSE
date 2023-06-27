@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 26 10:19:52 UTC 2023 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Use obscpio for go modules service
+- Set version number
+- Set build date from SOURCE_DATE_EPOCH
+
+-------------------------------------------------------------------
 Fri Jun 16 20:12:53 UTC 2023 - Luiz Angelo Daros de Luca <luizluca@tre-sc.jus.br>
 
-- Update to 0.24.0
+- Update to 0.24.0 (bsc#1212279, jsc#PED-4556)
   * Requires go1.19
 - Drop:
   * 0001-Update-go-modules.patch
