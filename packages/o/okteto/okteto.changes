@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 27 04:50:20 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.16.4:
+  * fix: search first in dev registry (#3750) (#3752)
+
+-------------------------------------------------------------------
 Mon Jun 12 20:14:43 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.16.3:
