@@ -99,8 +99,9 @@ Tue Jun 06 10:24:18 UTC 2023 - marius.kittler@suse.com
 - Update to version 9.5.3:
   * Bug fixes
     - Query: Prevent crash while executing concurrent mixed queries
+      (bsc#1212099, CVE-2023-2801)
     - Alerting: Require alert.notifications:write permissions to
-      test receivers and templates
+      test receivers and templates (bsc#1212100, CVE-2023-2183)
 
 -------------------------------------------------------------------
 Thu May 11 08:52:03 UTC 2023 - marius.kittler@suse.com
