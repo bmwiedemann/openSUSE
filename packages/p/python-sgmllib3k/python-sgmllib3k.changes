@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 27 13:11:47 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Feb  7 20:35:47 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add test_sgmllib.py and sgml_input.html as vendored sources.
