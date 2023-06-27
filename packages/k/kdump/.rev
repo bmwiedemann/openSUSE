@@ -1167,4 +1167,41 @@ URL-decode the target URL. (forwarded request 234827 from ptesarik)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1091281</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>6a62acfd9b3c0b2a827cc309fa272932</srcmd5>
+    <version>1.9.2</version>
+    <time>1687900574</time>
+    <user>dimstar_suse</user>
+    <comment>- upgrade to version 1.9.2
+  * adapt kdumptool to work with YaST
+  * wait for SMTP server to become reachable
+
+- upgrade to version 1.9.1
+  * reimplement e-mail notifications
+
+- upgrade to version 1.9
+  * complete rewrite of kdump-save and parts of initrd generation
+    * mounts are now entirely handled by dracut
+    * deprecated: split dumps (saving to more than one targets at once)
+    * deprecated: KDUMPTOOL_FLAGS option removed; original XENALLDOMAINS is now
+      the default, disable with MAKEDUMPFILE_OPTIONS=-X
+    * deprecated: notification e-mails
+    * deprecated: copying of the kernel image (KDUMP_COPY_KERNEL)
+    * FTP and SFTP are now handled by lftp, added to the spec file as Recommends:
+    * SSH and SFTP now support passwords provided in the URL
+    * fixed KDUMP_SSH_HOST_KEY, now needs to include the key type    
+    * new KDUMP_DUMPFORMAT=raw, will save an unmodified /proc/vmcore
+    * the output directory name is now YYYY-MM-DD-HH-MM, i.e. the separator between
+      HH and MM changed 
+    * unified default KDUMP_SAVEDIR across config, code and man to /var/crash
+    * ping is now used to detect network is up; disable with KDUMP_NET_TIMEOUT=0    
+    * all the yes/no options changed to true/false; yes/no/1/0 still accepted
+  * put the kdump initrd in /var/lib/kdump/initrd
+  * use default kernel symlink (/boot/vmlinuz) instead of kernel autodetection
+  * KDUMP_KERNELVER can specify an absolute path to a kernel image
+  * improved mkdumprd detection of changed settings
+  * removed all of kdumptool except the calibrate subcommand
+  * cleaned up dependencies (ssh now only Recommended)</comment>
+    <requestid>1093182</requestid>
+  </revision>
 </revisionlist>

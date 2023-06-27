@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Jun 14 22:42:43 UTC 2023 - Jiri Bohac <jbohac@suse.com>
+
+- upgrade to version 1.9.2
+  * adapt kdumptool to work with YaST
+  * wait for SMTP server to become reachable
+
+-------------------------------------------------------------------
+Wed Jun 14 11:13:51 UTC 2023 - Jiri Bohac <jbohac@suse.com>
+
+- upgrade to version 1.9.1
+  * reimplement e-mail notifications
+
+-------------------------------------------------------------------
+Thu Jun  8 16:43:28 UTC 2023 - Jiri Bohac <jbohac@suse.com>
+
+- upgrade to version 1.9
+  * complete rewrite of kdump-save and parts of initrd generation
+    * mounts are now entirely handled by dracut
+    * deprecated: split dumps (saving to more than one targets at once)
+    * deprecated: KDUMPTOOL_FLAGS option removed; original XENALLDOMAINS is now
+      the default, disable with MAKEDUMPFILE_OPTIONS=-X
+    * deprecated: notification e-mails
+    * deprecated: copying of the kernel image (KDUMP_COPY_KERNEL)
+    * FTP and SFTP are now handled by lftp, added to the spec file as Recommends:
+    * SSH and SFTP now support passwords provided in the URL
+    * fixed KDUMP_SSH_HOST_KEY, now needs to include the key type    
+    * new KDUMP_DUMPFORMAT=raw, will save an unmodified /proc/vmcore
+    * the output directory name is now YYYY-MM-DD-HH-MM, i.e. the separator between
+      HH and MM changed 
+    * unified default KDUMP_SAVEDIR across config, code and man to /var/crash
+    * ping is now used to detect network is up; disable with KDUMP_NET_TIMEOUT=0    
+    * all the yes/no options changed to true/false; yes/no/1/0 still accepted
+  * put the kdump initrd in /var/lib/kdump/initrd
+  * use default kernel symlink (/boot/vmlinuz) instead of kernel autodetection
+  * KDUMP_KERNELVER can specify an absolute path to a kernel image
+  * improved mkdumprd detection of changed settings
+  * removed all of kdumptool except the calibrate subcommand
+  * cleaned up dependencies (ssh now only Recommended)
+
+-------------------------------------------------------------------
 Wed May 31 08:10:21 UTC 2023 - Jiri Bohac <jbohac@suse.com>
 
 - bumped version update to v1.0.3

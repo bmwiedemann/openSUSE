@@ -53,7 +53,7 @@
 %define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           kdump
-Version:        1.0.3
+Version:        1.9.2
 Release:        0
 Summary:        Kernel crash dump scripts and utilities
 License:        GPL-2.0-or-later
@@ -66,15 +66,9 @@ BuildRequires:  asciidoc
 BuildRequires:  cmake >= 3.7
 BuildRequires:  gcc-c++
 BuildRequires:  libblkid-devel
-BuildRequires:  libcurl-devel
-BuildRequires:  libelf-devel
-BuildRequires:  libesmtp-devel
-BuildRequires:  libmount-devel
-BuildRequires:  libxslt
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-sysvinit
 BuildRequires:  util-linux-systemd
-BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 #!BuildIgnore:  fop
@@ -95,11 +89,9 @@ BuildRequires:  systemd-sysvinit
 BuildRequires:  util-linux-systemd
 %endif
 Requires:       /usr/bin/sed
-Requires:       curl
 Requires:       dracut >= 047
 Requires:       kexec-tools
 Requires:       makedumpfile
-Requires:       openssh
 %ifarch ppc64 ppc64le
 Requires:       servicelog
 BuildRequires:  servicelog
@@ -111,7 +103,10 @@ PreReq:         /usr/bin/mkdir
 PreReq:         /usr/bin/rm
 PreReq:         /usr/bin/touch
 Recommends:     cifs-utils
+Recommends:     lftp
 Recommends:     nfs-client
+Recommends:     openssh
+Suggests:       mailx
 # update should detect the split-off from kexec-tools
 Provides:       kexec-tools:%{_initddir}/kdump
 ExcludeArch:    s390 ppc %arm32
@@ -162,6 +157,7 @@ make VERBOSE=1
 %cmake_install
 # empty directory
 mkdir -p %{buildroot}%{_localstatedir}/crash
+mkdir -p %{buildroot}%{_localstatedir}/lib/kdump
 
 %if !%{with calibrate}
 # get distro_prefix-prefixed lines from calibrate.conf.all
@@ -178,12 +174,12 @@ cat  %{buildroot}/usr/lib/kdump/calibrate.conf
 %endif
 
 # symlink for init script
-rm %{buildroot}%{_initddir}/boot.kdump
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rckdump
 
 %pre
 %service_add_pre kdump.service
 %service_add_pre kdump-early.service
+%service_add_pre kdump-notify.service
 
 %post
 # change only permission if the file exists before /etc/sysconfig/kdump
@@ -195,7 +191,8 @@ fi
 %{fillup_only -n kdump}
 %service_add_post kdump.service
 %service_add_post kdump-early.service
-# ensure newly added kdump-early.service is-enabled matches prior state
+%service_add_post kdump-notify.service
+# ensure newly added kdump-*.service is-enabled matches prior state
 if [ -x %{_bindir}/systemctl ] && %{_bindir}/systemctl is-enabled kdump.service &>/dev/null ; then
 	%{_bindir}/systemctl reenable kdump.service || :
 fi
@@ -219,6 +216,7 @@ servicelog_notify --remove --command=/usr/lib/kdump/kdump-migrate-action.sh
 echo "Stopping kdump ..."
 %service_del_preun kdump.service
 %service_del_preun kdump-early.service
+%service_del_preun kdump-notify.service
 
 %postun
 # force regeneration of kdumprd
@@ -227,6 +225,7 @@ touch %{_sysconfdir}/sysconfig/kdump
 rm %{_localstatedir}/log/dump >/dev/null 2>&1 || true
 %service_del_postun kdump.service
 %service_del_postun kdump-early.service
+%service_del_postun kdump-notify.service
 
 %files
 %defattr(-,root,root)
@@ -236,7 +235,6 @@ rm %{_localstatedir}/log/dump >/dev/null 2>&1 || true
 %{_sbindir}/mkdumprd
 %{_mandir}/man5/kdump.5%{?ext_man}
 %{_mandir}/man7/kdump.7%{?ext_man}
-%{_mandir}/man8/kdumptool.8%{?ext_man}
 %{_mandir}/man8/mkdumprd.8%{?ext_man}
 %{_fillupdir}/sysconfig.kdump
 %dir %{dracutlibdir}
@@ -246,6 +244,8 @@ rm %{_localstatedir}/log/dump >/dev/null 2>&1 || true
 /usr/lib/kdump/*
 %{_unitdir}/kdump.service
 %{_unitdir}/kdump-early.service
+%{_unitdir}/kdump-notify.service
 %{_sbindir}/rckdump
+%dir /var/lib/kdump
 
 %changelog
