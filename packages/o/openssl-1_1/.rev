@@ -435,4 +435,14 @@
   * Fixed an issue where invalid certificate policies in leaf certificates are</comment>
     <requestid>1089973</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>04340cef5af6ea253324a52d2e85ce5c</srcmd5>
+    <version>1.1.1u</version>
+    <time>1687900576</time>
+    <user>dimstar_suse</user>
+    <comment>- Improve cross-package provides/conflicts [boo#1210313]
+  * Add Provides/Conflicts: ssl-devel
+  * Remove explicit conflicts with other devel-libraries</comment>
+    <requestid>1095609</requestid>
+  </revision>
 </revisionlist>
