@@ -1,0 +1,159 @@
+-------------------------------------------------------------------
+Tue Jun 27 08:56:13 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+
+- Update to version 0+git.20230612:
+  * add __realpath_chk()
+  * add RTC support
+  * handle read() on timer fd
+  * permit TFD_NONBLOCK flag on timerfd_create() call
+  * fix debug message format
+  * allow sending packets to nonexisting nodes and subnets
+  * add client option to dump network traffic to pcap
+  * fill more fields in generated ethernet frames
+  * provide PHC index as device minor in stat
+  * avoid init recursion via dlsym()
+  * add delay and jitter to PTP_SYS_OFFSET readings
+  * provide frequency error to clients
+  * add ioctl(PTP_SYS_OFFSET_EXTENDED)
+  * allow sending to port 0
+  * fix sequence number in duplicated PPS samples
+  * handle NUMERIC* flags in getnameinfo()
+  * add __syslog_chkieee128()
+  * drop assertion for number of open sockets
+  * don't allow connecting to broadcast and network address
+  * add __recv_chk()
+  * limit maximum time which can be set
+  * advance time in none fuzz mode
+  * handle unknown addresses in fuzz mode
+  * add refclocks based on node clocks
+  * add option to swap PHC devices
+  * bash: remove default options for phc2sys
+  * include linux/limits.h for PATH_MAX
+  * add realpath()
+  * accept SO_TIMESTAMPING with new so_timestamping struct
+  * init symbols in stat()
+  * disable debuginfod for valgrind
+  * add support for strace
+  * bash: allow custom client library preload
+  * fix undefined behavior in clock IDs
+  * update comments
+  * fix clock_gettime() for some clocks
+  * add support for Unix domain sockets
+  * avoid searching for nonexisting fstat
+  * fix __fxstat to call correct function
+  * add workaround for redirected adjtimex and fopen
+  * use __fxstat if available
+  * fix crash with missing refclock configuration
+  * add fstat() and __fxstat()
+  * init symbols in open()
+  * allow trailing dot in getaddrinfo()
+  * fix getaddrinfo() to not read outside buffer
+  * split initialization
+  * add __fread_chk()
+  * bash: redirect and check valgrind output
+  * bash: rename wrapper variables
+  * avoid uninitialized data in adjtimex request
+  * add support for valgrind
+  * add PPS support
+
+-------------------------------------------------------------------
+Tue Sep 15 15:15:15 UTC 2020 - olaf@aepfle.de
+
+- Update to version 0+git.20200817
+
+-------------------------------------------------------------------
+Fri Jul 20 11:12:38 UTC 2018 - mpluskal@suse.com
+
+- Update to version 0+git.20180618:
+  * fix nanosleep() to handle interrupts
+  * add support for delayed reading of transmit timestamp
+  * add support for nsm from linuxptp
+
+-------------------------------------------------------------------
+Wed Feb 14 09:54:02 UTC 2018 - mpluskal@suse.com
+
+- Update to version 0+git.20170921:
+  * set ifindex in IP_PKTINFO control message
+  * add ioctl(PTP_SYS_OFFSET_PRECISE)
+  * fix rx_filters in ioctl(SIOCETHTOOL)
+  * initialize unused timestamps in timestamping message
+  * improve support for timestamping options
+  * fix client random seed initialization
+  * set and adjust TAI-UTC offset
+  * add getrandom()
+  * fix compiler warning
+  * bash: allow configuration of temp directory
+  * fix crash with new OpenSSL
+  * add support for SW timestamping in chrony
+  * add fileno()
+
+-------------------------------------------------------------------
+Thu Nov 24 10:56:48 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0+git.20161118:
+  * fix compilation with older glibc headers
+
+-------------------------------------------------------------------
+Thu Nov 03 10:13:41 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0+git.20161031:
+  * support multiple SHM refclocks
+  * fix recv functions with new glibc headers
+  * interleave refclock offsets with multiple SHM refclocks
+  * fix packet stats with reordered packets
+  * add recvmmsg()
+  * bash: extend generate_config3 to allow asymmetric delay
+  * start refclock generator when SHM is attached
+  * allow multiple control messages in recvmsg()
+  * set ipi_addr in struct in_pktinfo
+  * use correct subnet for address in struct in_pktinfo
+
+-------------------------------------------------------------------
+Fri Jul 01 08:27:09 UTC 2016 - rmaliska@suse.com
+
+- Update to version 0+git.20160613:
+  * intercept fopen() on /dev/urandom
+  * fix cancelling of leap second
+  * always initialize client random() seed
+  * add IP_PKTINFO socket option
+  * accept environment variables in make
+  * fix building with FORTIFY_SOURCE
+  * fix compiler warning
+  * support multiple SHM refclocks
+  * fix recv functions with new glibc headers
+  * interleave refclock offsets with multiple SHM refclocks
+
+-------------------------------------------------------------------
+Sat May 07 14:14:02 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0+git.20160419:
+  * fix building with FORTIFY_SOURCE
+  * fix compiler warning
+
+-------------------------------------------------------------------
+Sat Apr 16 17:55:44 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0+git.20160407:
+  * accept environment variables in make
+
+-------------------------------------------------------------------
+Wed Apr 06 11:08:44 UTC 2016 - mpluskal@suse.com
+
+- Update to version 0~git.20160324:
+  + bash: don't set logconfig for ntpd
+  + fuzz: honor CLKNETSIM_RANDOM_SEED variable
+  + fuzz: add more modes
+  + fuzz: improve handling of some requests
+  + add readonly adjtime()
+  + don't drop packets in sleep-only select()
+  + intercept fopen() on /dev/urandom
+  + fix cancelling of leap second
+  + always initialize client random() seed
+  + add IP_PKTINFO socket option
+
+-------------------------------------------------------------------
+Wed Apr  6 11:06:34 UTC 2016 - mpluskal@suse.com
+
+- Initial package
+  * add clknetsim-cflags.patch

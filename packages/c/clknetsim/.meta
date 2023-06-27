@@ -1,0 +1,13 @@
+<package name="clknetsim" project="openSUSE:Factory">
+  <title>Clock and Network Simulator</title>
+  <description>clknetsim is a tool designed to test programs which synchronize the system
+clock, either over network or from a hardware reference clock. It simulates
+a system or a number of systems connected to each other in a network and
+the tested programs discipline the simulated system clocks. It can be used
+to quickly test how well the programs control the system clocks in various
+conditions or to test the network protocols.
+
+</description>
+  <devel project="network:time" package="clknetsim"/>
+  <url>https://github.com/mlichvar/clknetsim</url>
+</package>
