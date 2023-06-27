@@ -1,7 +1,7 @@
 #
 # spec file for package cdk
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define lname lib%{name}6_2_4
+%define lname lib%{name}%(set -- $(tar --wildcards -Oxf %{S:0} '*/VERSION'|sed -r 's/:/_/g'); echo $1)
 %define mainver 5.0
-%define datever 20210324
+%define datever 20230201
 
 Name:           cdk
 URL:            https://invisible-island.net/cdk/
@@ -30,11 +30,10 @@ Release:        0
 Summary:        The Runtime for the Curses Development Kit
 License:        BSD-3-Clause
 Group:          System/Libraries
-Source:         https://invisible-mirror.net/archives/cdk/cdk-%{mainver}-%{datever}.tgz
-Source1:        https://invisible-mirror.net/archives/cdk/cdk-%{mainver}-%{datever}.tgz.asc
+Source0:        https://www.invisible-island.net/archives/%{name}/%{name}-%{mainver}-%{datever}.tgz
+Source1:        https://www.invisible-island.net/archives/%{name}/%{name}-%{mainver}-%{datever}.tgz.asc
 Source2:        %name.keyring
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%global         root        %{_tmppath}/%{name}-%{version}-store
+%global root    %{_tmppath}/%{name}-%{version}-store
 
 %description
 CDK is a widget set developed on top of the basic curses library. It
@@ -46,6 +45,7 @@ menu, a radio list, a viewer widget, and a dialog box.
 Summary:        The Runtime for the Curses Development Kit - Shared library
 Group:          Development/Libraries/C and C++
 Conflicts:      libcdk5
+Conflicts:      libcdk6_2_4
 
 %description -n %lname
 CDK is a widget set developed on top of the basic curses library. It
@@ -108,9 +108,9 @@ rm -rf %{buildroot}%{_datadir}/doc
 %files -n %lname
 %if %{defined license}
 %license COPYING
-%doc EXPANDING NOTES TODO README CHANGES VERSION
+%doc README CHANGES VERSION
 %else
-%doc EXPANDING NOTES TODO README CHANGES VERSION COPYING
+%doc README CHANGES VERSION COPYING
 %endif
 %{_libdir}/libcdk*.so.*
 

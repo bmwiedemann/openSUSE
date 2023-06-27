@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Jun 23 10:44:54 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Let libcdk6_3_4 conflict with older libcdk6_2_4 
+
+-------------------------------------------------------------------
+Fri Jun 23 06:18:15 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 5.0.20230201
+  + improve compiler-warnings in configure-checks.
+  + change library dependencies in rpm spec-file.
+  + update license in test-packages.
+  + relicense as MIT-X11
+  + reduce shellcheck warnings in support-scripts
+  + updated configure script to work around regression in GNU grep 3.8
+  + updated configure macros from xterm and ncurses development
+  + update config.guess, config.sub
+  + fix cppcheck style-warnings.
+  + improve makefile header-dependencies by accounting for all generated
+    headers (report/patch by Sergei Trofimovich).
+  + updated configure macros from xterm and ncurses development:
+    CF_ADD_INCDIR CF_APPEND_CFLAGS CF_DISABLE_ECHO CF_MAKEFLAGS
+    CF_NCURSES_CONFIG CF_NCURSES_LIBS CF_PKG_CONFIG CF_REMOVE_CFLAGS
+    CF_SHARED_OPTS CF_TRY_XOPEN_SOURCE CF_XOPEN_SOURCE
+  + build-fix for HP-UX curses, which provides only part of the ACS_xxx
+    definitions compatible with chtype's.
+  + correct calls on SetViewSize in scroll.c, overlooked in 2005/04/24 
+    (report by Brad Hines).
+  + updated configure macros from xterm and ncurses development:
+    CF_C11_NORETURN CF_CHECK_LIBTOOL_VERSION CF_CONST_X_STRING
+    CF_DISABLE_LEAKS CF_FUNC_LSTAT CF_GETOPT_HEADER CF_NCURSES_CONFIG
+    CF_NO_LEAKS_OPTION CF_SHARED_OPTS CF_UTF8_LIB CF_XOPEN_CURSES
+    CF_XOPEN_SOURCE
+  + update config.guess, config.sub
+  + updated configure script, for _Noreturn and exit_curses checks.
+  + spelling fixes, per codespell.
+  + updated configure script, for quoting/escaping fixes
+  + update config.guess, config.sub
+  + updated configure script, for compiler-warnings
+  + update config.guess, config.sub
+  + updated configure script, to work around ncurses 6.2 vs xcode's c99
+    "-W" option.
+  + update config.guess, config.sub
+  + fix issues found with check-manpage
+  + updated configure macros, from xterm and ncurses development:
+    CF_ADD_LIBS CF_GCC_VERSION CF_GCC_WARNINGS CF_PROG_CC CF_PROG_LINT
+    CF_X_TOOLKIT
+  + update config.guess, config.sub
+
+-------------------------------------------------------------------
 Tue Apr 26 09:33:18 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Resolve rpmlint report "libcdk5.x86_64: E:
@@ -11,6 +60,16 @@ Mon May  3 18:24:40 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 - Update to version 5.0.20210324
   * Spelling fixes, per codespell
   * Updated build system
+
+-------------------------------------------------------------------
+Tue Mar  5 10:09:59 UTC 2019 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 5.0.20190303
+  + deprecate installCDKLibrary rule by install.libs, which is used in
+    the newer shared-library macros.
+  + conditionally-comment action lines for the part of install-rules
+    which conflict with the newer shared-library rules (report by Tom
+    Brownridge).
 
 -------------------------------------------------------------------
 Wed Feb 27 08:06:48 UTC 2019 - Dr. Werner Fink <werner@suse.de>
