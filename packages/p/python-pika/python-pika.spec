@@ -19,7 +19,7 @@
 %define mod_name pika
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-%{mod_name}
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Pika Python AMQP Client Library
 License:        BSD-3-Clause
