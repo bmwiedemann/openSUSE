@@ -15,10 +15,9 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-geopy
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 License:        MIT
 Summary:        Python Geocoding Toolbox
