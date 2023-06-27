@@ -355,4 +355,14 @@
     <comment></comment>
     <requestid>1093836</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>86b382eeb34572653652574c58a66039</srcmd5>
+    <version>2.6</version>
+    <time>1687900690</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6:
+  * Add support for setting driver specific quirks.
+  * Add support for disabling power saving mode. (forwarded request 1095642 from dirkmueller)</comment>
+    <requestid>1095655</requestid>
+  </revision>
 </revisionlist>
