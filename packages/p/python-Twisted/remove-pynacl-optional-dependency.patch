@@ -1,0 +1,360 @@
+From 1716d312600a9c49279e6c15da9ad8ca21431580 Mon Sep 17 00:00:00 2001
+From: Glyph <code@glyph.im>
+Date: Thu, 8 Jun 2023 18:13:11 -0700
+Subject: [PATCH 1/2] remove PyNaCl optional dependency
+
+---
+ docs/installation/howto/optional.rst          |   3 -
+ pyproject.toml                                |   6 -
+ src/twisted/conch/newsfragments/11871.removal |   1 +
+ src/twisted/conch/ssh/_keys_pynacl.py         | 104 ------------
+ src/twisted/conch/ssh/keys.py                 |   9 +-
+ src/twisted/conch/test/test_keys.py           | 157 +-----------------
+ tox.ini                                       |   4 +-
+ 7 files changed, 6 insertions(+), 278 deletions(-)
+ create mode 100644 src/twisted/conch/newsfragments/11871.removal
+ delete mode 100644 src/twisted/conch/ssh/_keys_pynacl.py
+
+Index: Twisted-22.10.0/docs/installation/howto/optional.rst
+===================================================================
+--- Twisted-22.10.0.orig/docs/installation/howto/optional.rst
++++ Twisted-22.10.0/docs/installation/howto/optional.rst
+@@ -67,7 +67,6 @@ The following optional dependencies are
+ .. _service_identity: https://pypi.python.org/pypi/service_identity
+ .. _pyasn1: https://pypi.python.org/pypi/pyasn1
+ .. _cryptography: https://pypi.python.org/pypi/cryptography
+-.. _PyNaCl: https://pypi.python.org/pypi/PyNaCl
+ .. _SOAPpy: https://pypi.python.org/pypi/SOAPpy
+ .. _pyserial: https://pypi.python.org/pypi/pyserial
+ .. _pyobjc: https://pypi.python.org/pypi/pyobjc
+Index: Twisted-22.10.0/src/twisted/conch/newsfragments/11871.removal
+===================================================================
+--- /dev/null
++++ Twisted-22.10.0/src/twisted/conch/newsfragments/11871.removal
+@@ -0,0 +1 @@
++Due to changes in the way raw private key byte serialization are handled in Cryptography, and widespread support for Ed25519 in current versions of OpenSSL, we no longer support PyNaCl as a fallback for Ed25519 keys in Conch.
+Index: Twisted-22.10.0/src/twisted/conch/ssh/_keys_pynacl.py
+===================================================================
+--- Twisted-22.10.0.orig/src/twisted/conch/ssh/_keys_pynacl.py
++++ /dev/null
+@@ -1,104 +0,0 @@
+-# -*- test-case-name: twisted.conch.test.test_keys -*-
+-# Copyright (c) Twisted Matrix Laboratories.
+-# See LICENSE for details.
+-
+-"""
+-Optional PyNaCl fallback code for Ed25519 keys.
+-"""
+-
+-from cryptography.exceptions import InvalidSignature
+-from cryptography.hazmat.primitives import serialization
+-from cryptography.hazmat.primitives.asymmetric import ed25519
+-from nacl.exceptions import BadSignatureError
+-from nacl.signing import SigningKey, VerifyKey
+-
+-
+-class Ed25519PublicKey(ed25519.Ed25519PublicKey):
+-    def __init__(self, data: bytes):
+-        self._key = VerifyKey(data)
+-
+-    def __bytes__(self) -> bytes:
+-        return bytes(self._key)
+-
+-    def __hash__(self) -> int:
+-        return hash(bytes(self))
+-
+-    def __eq__(self, other: object) -> bool:
+-        if not isinstance(other, self.__class__):
+-            return False
+-        return self._key == other._key
+-
+-    def __ne__(self, other: object) -> bool:
+-        return not (self == other)
+-
+-    @classmethod
+-    def from_public_bytes(cls, data: bytes) -> ed25519.Ed25519PublicKey:
+-        return cls(data)
+-
+-    def public_bytes(
+-        self,
+-        encoding: serialization.Encoding,
+-        format: serialization.PublicFormat,
+-    ) -> bytes:
+-        if (
+-            encoding is not serialization.Encoding.Raw
+-            or format is not serialization.PublicFormat.Raw
+-        ):
+-            raise ValueError("Both encoding and format must be Raw")
+-        return bytes(self)
+-
+-    def verify(self, signature: bytes, data: bytes) -> None:
+-        try:
+-            self._key.verify(data, signature)
+-        except BadSignatureError as e:
+-            raise InvalidSignature(str(e))
+-
+-
+-class Ed25519PrivateKey(ed25519.Ed25519PrivateKey):
+-    def __init__(self, data: bytes):
+-        self._key = SigningKey(data)
+-
+-    def __bytes__(self) -> bytes:
+-        return bytes(self._key)
+-
+-    def __hash__(self) -> int:
+-        return hash(bytes(self))
+-
+-    def __eq__(self, other: object) -> bool:
+-        if not isinstance(other, self.__class__):
+-            return False
+-        return self._key == other._key
+-
+-    def __ne__(self, other: object) -> bool:
+-        return not (self == other)
+-
+-    @classmethod
+-    def generate(cls) -> ed25519.Ed25519PrivateKey:
+-        return cls(bytes(SigningKey.generate()))
+-
+-    @classmethod
+-    def from_private_bytes(cls, data: bytes) -> ed25519.Ed25519PrivateKey:
+-        return cls(data)
+-
+-    def public_key(self) -> ed25519.Ed25519PublicKey:
+-        return Ed25519PublicKey(bytes(self._key.verify_key))
+-
+-    def private_bytes(
+-        self,
+-        encoding: serialization.Encoding,
+-        format: serialization.PrivateFormat,
+-        encryption_algorithm: serialization.KeySerializationEncryption,
+-    ) -> bytes:
+-        if (
+-            encoding is not serialization.Encoding.Raw
+-            or format is not serialization.PrivateFormat.Raw
+-            or not isinstance(encryption_algorithm, serialization.NoEncryption)
+-        ):
+-            raise ValueError(
+-                "Encoding and format must be Raw and "
+-                "encryption_algorithm must be NoEncryption"
+-            )
+-        return bytes(self)
+-
+-    def sign(self, data: bytes) -> bytes:
+-        return self._key.sign(data).signature
+Index: Twisted-22.10.0/src/twisted/conch/ssh/keys.py
+===================================================================
+--- Twisted-22.10.0.orig/src/twisted/conch/ssh/keys.py
++++ Twisted-22.10.0/src/twisted/conch/ssh/keys.py
+@@ -14,7 +14,6 @@ import unicodedata
+ import warnings
+ from base64 import b64encode, decodebytes, encodebytes
+ from hashlib import md5, sha256
+-from typing import Optional, Type
+ 
+ import bcrypt
+ from cryptography import utils
+@@ -68,18 +67,8 @@ _secToNist = {
+ }
+ 
+ 
+-Ed25519PublicKey: Optional[Type[ed25519.Ed25519PublicKey]]
+-Ed25519PrivateKey: Optional[Type[ed25519.Ed25519PrivateKey]]
+-
+-if default_backend().ed25519_supported():
+-    Ed25519PublicKey = ed25519.Ed25519PublicKey
+-    Ed25519PrivateKey = ed25519.Ed25519PrivateKey
+-else:  # pragma: no cover
+-    try:
+-        from twisted.conch.ssh._keys_pynacl import Ed25519PrivateKey, Ed25519PublicKey
+-    except ImportError:
+-        Ed25519PublicKey = None
+-        Ed25519PrivateKey = None
++Ed25519PublicKey = ed25519.Ed25519PublicKey
++Ed25519PrivateKey = ed25519.Ed25519PrivateKey
+ 
+ 
+ class BadKeyError(Exception):
+Index: Twisted-22.10.0/src/twisted/conch/test/test_keys.py
+===================================================================
+--- Twisted-22.10.0.orig/src/twisted/conch/test/test_keys.py
++++ Twisted-22.10.0/src/twisted/conch/test/test_keys.py
+@@ -22,20 +22,15 @@ if cryptography is None:
+     skipCryptography = "Cannot run without cryptography."
+ 
+ pyasn1 = requireModule("pyasn1")
+-_keys_pynacl = requireModule("twisted.conch.ssh._keys_pynacl")
+-
+ 
+ if cryptography and pyasn1:
+-    from cryptography.exceptions import InvalidSignature
+     from cryptography.hazmat.backends import default_backend
+     from cryptography.hazmat.primitives import hashes
+     from cryptography.hazmat.primitives.asymmetric import padding
+ 
+     from twisted.conch.ssh import common, keys, sexpy
+ 
+-    ED25519_SUPPORTED = (
+-        default_backend().ed25519_supported() or _keys_pynacl is not None
+-    )
++    ED25519_SUPPORTED = default_backend().ed25519_supported()
+ else:
+     ED25519_SUPPORTED = False
+ 
+@@ -1676,156 +1671,6 @@ attr n:
+         )
+ 
+ 
+-class PyNaClKeyTests(KeyTests):
+-    """
+-    Key tests, but forcing the use of C{PyNaCl}.
+-    """
+-
+-    if cryptography is None:
+-        skip = skipCryptography
+-    if _keys_pynacl is None:
+-        skip = "Cannot run without PyNaCl"
+-
+-    def setUp(self):
+-        super().setUp()
+-        self.patch(keys, "Ed25519PublicKey", _keys_pynacl.Ed25519PublicKey)
+-        self.patch(keys, "Ed25519PrivateKey", _keys_pynacl.Ed25519PrivateKey)
+-
+-    def test_naclPrivateBytes(self):
+-        """
+-        L{_keys_pynacl.Ed25519PrivateKey.private_bytes} and
+-        L{_keys_pynacl.Ed25519PrivateKey.from_private_bytes} round-trip.
+-        """
+-        from cryptography.hazmat.primitives import serialization
+-
+-        key = _keys_pynacl.Ed25519PrivateKey.generate()
+-        key_bytes = key.private_bytes(
+-            serialization.Encoding.Raw,
+-            serialization.PrivateFormat.Raw,
+-            serialization.NoEncryption(),
+-        )
+-        self.assertIsInstance(key_bytes, bytes)
+-        self.assertEqual(
+-            key, _keys_pynacl.Ed25519PrivateKey.from_private_bytes(key_bytes)
+-        )
+-
+-    def test_naclPrivateBytesInvalidParameters(self):
+-        """
+-        L{_keys_pynacl.Ed25519PrivateKey.private_bytes} only accepts certain parameters.
+-        """
+-        from cryptography.hazmat.primitives import serialization
+-
+-        key = _keys_pynacl.Ed25519PrivateKey.generate()
+-        self.assertRaises(
+-            ValueError,
+-            key.private_bytes,
+-            serialization.Encoding.PEM,
+-            serialization.PrivateFormat.Raw,
+-            serialization.NoEncryption(),
+-        )
+-        self.assertRaises(
+-            ValueError,
+-            key.private_bytes,
+-            serialization.Encoding.Raw,
+-            serialization.PrivateFormat.PKCS8,
+-            serialization.NoEncryption(),
+-        )
+-        self.assertRaises(
+-            ValueError,
+-            key.private_bytes,
+-            serialization.Encoding.Raw,
+-            serialization.PrivateFormat.Raw,
+-            serialization.BestAvailableEncryption(b"password"),
+-        )
+-
+-    def test_naclPrivateHash(self):
+-        """
+-        L{_keys_pynacl.Ed25519PrivateKey.__hash__} allows instances to be hashed.
+-        """
+-        key = _keys_pynacl.Ed25519PrivateKey.generate()
+-        d = {key: True}
+-        self.assertTrue(d[key])
+-
+-    def test_naclPrivateEquality(self):
+-        """
+-        L{_keys_pynacl.Ed25519PrivateKey} implements equality test methods.
+-        """
+-        key1 = _keys_pynacl.Ed25519PrivateKey.generate()
+-        key2 = _keys_pynacl.Ed25519PrivateKey.generate()
+-        self.assertEqual(key1, key1)
+-        self.assertNotEqual(key1, key2)
+-        self.assertNotEqual(key1, bytes(key1))
+-
+-    def test_naclPublicBytes(self):
+-        """
+-        L{_keys_pynacl.Ed25519PublicKey.public_bytes} and
+-        L{_keys_pynacl.Ed25519PublicKey.from_public_bytes} round-trip.
+-        """
+-        from cryptography.hazmat.primitives import serialization
+-
+-        key = _keys_pynacl.Ed25519PrivateKey.generate().public_key()
+-        key_bytes = key.public_bytes(
+-            serialization.Encoding.Raw, serialization.PublicFormat.Raw
+-        )
+-        self.assertIsInstance(key_bytes, bytes)
+-        self.assertEqual(
+-            key, _keys_pynacl.Ed25519PublicKey.from_public_bytes(key_bytes)
+-        )
+-
+-    def test_naclPublicBytesInvalidParameters(self):
+-        """
+-        L{_keys_pynacl.Ed25519PublicKey.public_bytes} only accepts certain parameters.
+-        """
+-        from cryptography.hazmat.primitives import serialization
+-
+-        key = _keys_pynacl.Ed25519PrivateKey.generate().public_key()
+-        self.assertRaises(
+-            ValueError,
+-            key.public_bytes,
+-            serialization.Encoding.PEM,
+-            serialization.PublicFormat.Raw,
+-        )
+-        self.assertRaises(
+-            ValueError,
+-            key.public_bytes,
+-            serialization.Encoding.Raw,
+-            serialization.PublicFormat.PKCS1,
+-        )
+-
+-    def test_naclPublicHash(self):
+-        """
+-        L{_keys_pynacl.Ed25519PublicKey.__hash__} allows instances to be hashed.
+-        """
+-        key = _keys_pynacl.Ed25519PrivateKey.generate().public_key()
+-        d = {key: True}
+-        self.assertTrue(d[key])
+-
+-    def test_naclPublicEquality(self):
+-        """
+-        L{_keys_pynacl.Ed25519PublicKey} implements equality test methods.
+-        """
+-        key1 = _keys_pynacl.Ed25519PrivateKey.generate().public_key()
+-        key2 = _keys_pynacl.Ed25519PrivateKey.generate().public_key()
+-        self.assertEqual(key1, key1)
+-        self.assertNotEqual(key1, key2)
+-        self.assertNotEqual(key1, bytes(key1))
+-
+-    def test_naclVerify(self):
+-        """
+-        L{_keys_pynacl.Ed25519PublicKey.verify} raises appropriate exceptions.
+-        """
+-        key = _keys_pynacl.Ed25519PrivateKey.generate()
+-        self.assertIsInstance(key, keys.Ed25519PrivateKey)
+-        signature = key.sign(b"test data")
+-        self.assertIsNone(key.public_key().verify(signature, b"test data"))
+-        self.assertRaises(
+-            InvalidSignature, key.public_key().verify, signature, b"wrong data"
+-        )
+-        self.assertRaises(
+-            InvalidSignature, key.public_key().verify, b"0" * 64, b"test data"
+-        )
+-
+-
+ class PersistentRSAKeyTests(unittest.TestCase):
+     """
+     Tests for L{keys._getPersistentRSAKey}.

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 26 20:21:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add regenerate-cert-to-work-with-latest-service-identity.patch
+  remove-pynacl-optional-dependency.patch: backports from main
+  git to fix tests with newer dependency versions
+
+-------------------------------------------------------------------
 Sun Apr 23 23:34:51 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Switch documentation to be within the main package.

@@ -52,6 +52,10 @@ Patch6:         remove-dependency-version-upper-bounds.patch
 Patch7:         py311-tests-compat.patch
 # PATCH-FIX-UPSTREAM gh#twisted/twisted#11787
 Patch8:         support-new-glibc.patch
+# PATCH-FIX-UPSTREAM gh#twisted/twisted#11878
+Patch9:         regenerate-cert-to-work-with-latest-service-identity.patch
+# PATCH-FIX-UPSTREAM gh#twisted/twisted#11873
+Patch10:        remove-pynacl-optional-dependency.patch
 BuildRequires:  %{python_module incremental >= 21.3.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -124,14 +128,11 @@ Twisted Conch: The Twisted Shell. Terminal emulation, SSHv2 and telnet.
 
 %package conch_nacl
 Summary:        Conch w/ NaCl for Twisted
-Requires:       python-PyNaCl
 Requires:       python-Twisted-conch = %{version}
 
 %description conch_nacl
 Twisted is an extensible framework for Python programming, with special focus
 on event-based network programming and multiprotocol integration.
-
-This metapackage is for the optional feature Conch with NaCl
 
 %package serial
 Summary:        Serial support for Twisted

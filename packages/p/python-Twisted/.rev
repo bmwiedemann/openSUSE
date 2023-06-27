@@ -1519,4 +1519,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1089049</requestid>
   </revision>
+  <revision rev="63" vrev="7">
+    <srcmd5>a268b49bba1c39777311af320a488b38</srcmd5>
+    <version>22.10.0</version>
+    <time>1687900553</time>
+    <user>dimstar_suse</user>
+    <comment>- add regenerate-cert-to-work-with-latest-service-identity.patch
+  remove-pynacl-optional-dependency.patch: backports from main
+  git to fix tests with newer dependency versions</comment>
+    <requestid>1095481</requestid>
+  </revision>
 </revisionlist>
