@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Jun 27 10:17:27 UTC 2023 - petr@cervinka.net
+
+- Update to version 0+20230615.154e652:
+  * block/034: Test memory is released by null-blk driver with memory_backed=1
+  * nvme/040: Free loop back resources
+  * block/011: recover test target NVME device capacity
+  * block/011: skip when mounted block devices are affected
+  * common/rc: introduce _get_pci_from_dev_sysfs
+  * nvmeof-mp: Remove nvmeof-mp tests
+  * nvme/rc: remove _filter_discovery
+  * nvme/{016,017}: use _check_genctr instead of _filter_discovery
+  * nvme/rc: Cleanup fc resource before module unloading
+  * nvme/rc: Cleanup fc ports in reverse order
+  * tests: Add ublk tests
+  * src/miniublk: add user recovery
+  * srp/rc: Replace _have_module() with _have_driver()
+  * nvme/{016,017}: Make the number iterations configurable
+  * nvme/{002,030}: Move discovery generation counter code to rc
+  * nvme/{045,047}: Calculate IO size for random fio jobs
+  * nvme: Add minimal test image size requirement
+  * nvme: Make test image size configurable
+  * Documentation: Add info on nvme_trtype
+  * nvme/{032,040}: Use runtime fio background jobs
+  * common/xfs: Limit fio size job to fit into xfs fs
+  * common/xfs: Make size argument optional for _xfs_run_fio_verify_io
+  * nvme/{014/015}: Do not hard code device size for dd test
+  * nvme/rc: Auto convert test device size info
+  * block/{001,002,027}: allow to run with built-in scsi_debug and sd_mod
+  * scsi/{004,005}: allow to run with built-in scsi_debug
+  * common/scsi_debug: introduce _configure_scsi_debug
+  * common/scsi_debug: factor out _setup_scsi_debug_vars
+  * common/scsi_debug, tests/*: re-define _have_scsi_debug
+  * common/rc: skip module file check if modules path does not exist
+  * loop/009: add test for loop partition uvents
+  * test/nvme: add missing _have_fio check for nvme/045
+  * tests/dm: add dm test group and a test for self-map
+  * common/rc: fix kernel version parse failure
+  * block/{014,015,030}: don't require modular null_blk for fault-injection
+  * src/Makefile: forward LDFLAGS to $(CC)
+  * nvme/039: avoid failure by error message rate limit
+  * nvme/049: add test for uring-passthrough
+  * common,fio: helper for version check
+  * nvme/048: test queue count changes on reconnect
+  * nvme/rc: Add timeout argument parsing to _nvme_connect_subsys()
+  * nvme/047: Test different queue types for fabrics transports
+  * nvme/rc: Add parametric transport required check
+  * nvme/rc: Add nr queue parser arguments to _nvme_connect_subsys()
+  * nvme/rc: Parse optional arguments in _nvme_connect_subsys()
+  * tests/block/013.out: remove the unused 013.out file
+  * tests: add the missing +x mode
+
+-------------------------------------------------------------------
 Sun Apr 02 17:08:00 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 0+20230302.676d42c:
