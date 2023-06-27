@@ -763,4 +763,12 @@ Build tested.
   this package requires libjack.so.0, so we best use our own
   implementation.</comment>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>bbc10934b396bd92a0049a2bf5abdf3f</srcmd5>
+    <version>0.3.72</version>
+    <time>1687900544</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095401</requestid>
+  </revision>
 </revisionlist>

@@ -60,7 +60,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        0.3.71
+Version:        0.3.72
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -70,8 +70,6 @@ Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE reduce-meson-dependency.patch
 Patch0:         reduce-meson-dependency.patch
-# PATCH-FIX-UPSTREAM 0001-jack-update-bufsize-and-samplerate-when-skipping-not.patch
-Patch1:         0001-jack-update-bufsize-and-samplerate-when-skipping-not.patch
 BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -119,6 +117,7 @@ BuildRequires:  libcamera-devel >= 0.0.1
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  pkgconfig(libffado)
 %if %{with aptx}
 BuildRequires:  pkgconfig(libfreeaptx)
 %endif
@@ -187,9 +186,6 @@ Summary:        PipeWire libjack replacement libraries
 Group:          Development/Libraries/C and C++
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-Conflicts:      libjack0
-Conflicts:      libjacknet0
-Conflicts:      libjackserver0
 
 %description libjack-%{apiver_str}
 PipeWire is a server and user space API to deal with multimedia pipelines.
@@ -367,9 +363,16 @@ Recommends:     jack-dbus
 Conflicts:      jack-daemon
 Provides:       jack-daemon
 #Provides:       pulseaudio-module-jack
+# We want applications to link with pipewire-libjack libraries and
+# not the original ones
+Conflicts:      libjack0
+Conflicts:      libjacknet0
+Conflicts:      libjackserver0
 
 %description jack
-This package provides a JACK implementation based on PipeWire
+This package provides an ld.so.conf file that makes all JACK clients
+use the JACK implementation based on PipeWire instead of the original
+JACK libraries.
 
 %lang_package
 
@@ -378,7 +381,6 @@ This package provides a JACK implementation based on PipeWire
 %if %{?pkg_vcmp:%{pkg_vcmp meson <= 0.61.0}}
 %patch0 -p1
 %endif
-%patch1 -p1
 
 %build
 %if %{pkg_vcmp gcc < 8}
@@ -662,6 +664,7 @@ fi
 %{_bindir}/pw-jack
 %{_mandir}/man1/pw-jack-%{apiver}.1%{?ext_man}
 %{_mandir}/man1/pw-jack.1%{?ext_man}
+%{_datadir}/pipewire/jack.conf
 
 %files libjack-%{apiver_str}-devel
 %{_libdir}/pipewire-%{apiver}/jack/libjack.so
@@ -747,7 +750,6 @@ fi
 
 %files jack
 %config %{_sysconfdir}/ld.so.conf.d/pipewire-jack-%{_arch}.conf
-%{_datadir}/pipewire/jack.conf
 
 %files lang -f %{name}.lang
 
