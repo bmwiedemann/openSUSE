@@ -181,4 +181,13 @@
     <comment></comment>
     <requestid>929785</requestid>
   </revision>
+  <revision rev="23" vrev="4">
+    <srcmd5>66c14cfabbc538aac4c7a3250df18697</srcmd5>
+    <version>1.31</version>
+    <time>1687900610</time>
+    <user>dimstar_suse</user>
+    <comment>- Add option to change evaluation logic of multiple link-watchers (jsc@PED2209)
+  Add 0001-teamd-Add-option-to-change-evaluation-logic-of-multi.patch (forwarded request 1095530 from ohollmann)</comment>
+    <requestid>1095531</requestid>
+  </revision>
 </revisionlist>

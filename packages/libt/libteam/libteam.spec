@@ -1,7 +1,7 @@
 #
 # spec file for package libteam
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,7 +23,7 @@ Name:           libteam
 Version:        1.31
 Release:        0
 Summary:        Utilities for controlling 802.1AX team network device
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          System/Kernel
 URL:            http://libteam.org/
 
@@ -33,8 +33,10 @@ Patch1:         check_if_psr_ops_were_initialized.patch
 Patch2:         start_teamd_from_usr_sbin.patch
 Patch3:         ignore_ebusy_for_team_hwaddr_set.patch
 Patch4:         0001-allow-send_interface-dbus.patch
-Patch5:	harden_teamd@.service.patch
+Patch5:         harden_teamd@.service.patch
 Patch6:         better_handle_failures_to_chown.patch
+# PATCH-FIX-UPSTREAM jsc#PED-2209 Add option to change link-watchers logic
+Patch7:         0001-teamd-Add-option-to-change-evaluation-logic-of-multi.patch
 BuildRequires:  doxygen
 BuildRequires:  libcap-devel
 BuildRequires:  libtool

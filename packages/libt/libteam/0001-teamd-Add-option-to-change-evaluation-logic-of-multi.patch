@@ -1,0 +1,217 @@
+From 7cb5de8b01be132bd4150eff460bfd83296414b6 Mon Sep 17 00:00:00 2001
+From: Otto Hollmann <otto.hollmann@suse.com>
+Date: Tue, 2 May 2023 17:36:15 +0200
+Subject: [PATCH] teamd: Add option to change evaluation logic of multiple
+ link-watchers
+
+Now, if multiple link watchers are used, link is up if any of the
+link-watchers reports the link up.
+
+Introduce new option "link_watch_policy" to change this behaviour.
+Possible values are "any" and "all". If nothing specified, default value
+"any" will be used and there will be no change in current behaviour. If
+value "all" will be set, link will be up only if ALL the link-watchers
+report the link up.
+
+Signed-off-by: Otto Hollmann <otto.hollmann@suse.com>
+Signed-off-by: Jiri Pirko <jiri@nvidia.com>
+---
+ man/teamd.conf.5                              | 47 +++++++++++++++++++
+ .../activebackup_multi_lw_2.conf              | 25 ++++++++++
+ teamd/teamd.c                                 | 26 ++++++++++
+ teamd/teamd.h                                 |  1 +
+ teamd/teamd_link_watch.c                      | 27 +++++++++--
+ 5 files changed, 121 insertions(+), 5 deletions(-)
+ create mode 100644 teamd/example_configs/activebackup_multi_lw_2.conf
+
+diff --git a/man/teamd.conf.5 b/man/teamd.conf.5
+index dc913cd..8c65c33 100644
+--- a/man/teamd.conf.5
++++ b/man/teamd.conf.5
+@@ -407,6 +407,23 @@ Default:
+ .TP
+ .BR "link_watch.target_host "| " ports.PORTIFNAME.link_watch.target_host " (hostname)
+ Hostname to be converted to IPv6 address which will be filled into NS packet as target address.
++.TP
++.BR "link_watch_policy " (string)
++Name of link-watchers evaluation policy. Available options are following:
++.RS 7
++.PP
++.BR "any "\(em
++Link is up if
++.BR any
++of the link-watchers reports the link up.
++.PP
++.BR "all "\(em
++Link is up if
++.BR all
++of the link-watchers reports the link up.
++.PP
++Default:
++.BR "any"
+ .SH EXAMPLES
+ .PP
+ .nf
+@@ -518,6 +535,36 @@ This configuration uses ARP ping link watch.
+ Similar to the previous one, only this time two link watchers are used at the same time.
+ .PP
+ .nf
++{
++  "device": "team0",
++  "runner": {"name": "activebackup"},
++  "link_watch_policy": "all",
++  "link_watch": [
++    {
++    "name": "arp_ping",
++    "interval": 100,
++    "missed_max": 30,
++    "target_host": "192.168.23.1"
++    },
++    {
++    "name": "ethtool"
++    }
++  ],
++  "ports":  {
++    "eth1": {
++      "prio": -10,
++      "sticky": true
++    },
++    "eth2": {
++      "prio": 100
++    }
++  }
++}
++.fi
++.PP
++Two link-watchers are used at the same time. Link is up only if all configured link-watchers report link is up.
++.PP
++.nf
+ {
+   "device": "team0",
+   "runner": {
+diff --git a/teamd/example_configs/activebackup_multi_lw_2.conf b/teamd/example_configs/activebackup_multi_lw_2.conf
+new file mode 100644
+index 0000000..a9073d7
+--- /dev/null
++++ b/teamd/example_configs/activebackup_multi_lw_2.conf
+@@ -0,0 +1,25 @@
++{
++	"device":	"team0",
++	"runner":	{"name": "activebackup"},
++	"link_watch_policy": "all",
++	"link_watch":	[
++		{
++		"name": "arp_ping",
++		"interval": 100,
++		"missed_max": 30,
++		"target_host": "192.168.23.1"
++		},
++		{
++		"name": "ethtool"
++		}
++	],
++	"ports":	{
++		"eth1": {
++			"prio": -10,
++			"sticky": true
++		},
++		"eth2": {
++			"prio": 100
++		}
++	}
++}
+\ No newline at end of file
+diff --git a/teamd/teamd.c b/teamd/teamd.c
+index a89b702..f351599 100644
+--- a/teamd/teamd.c
++++ b/teamd/teamd.c
+@@ -1805,6 +1805,28 @@ static int teamd_drop_privileges()
+ 
+ #endif
+ 
++static int teamd_get_link_watch_policy(struct teamd_context *ctx)
++{
++	int err;
++	const char *link_watch_policy;
++
++	err = teamd_config_string_get(ctx, &link_watch_policy, "$.link_watch_policy");
++	if (!err) {
++		if (!strcmp(link_watch_policy, "all")) {
++			ctx->evaluate_all_watchers = true;
++		} else if (!strcmp(link_watch_policy, "any")) {
++			ctx->evaluate_all_watchers = false;
++		} else {
++			teamd_log_err("Unrecognized value for link_watch_policy.");
++			teamd_log_err("Only \"any\" or \"all\" are allowed but \"%s\" found in config.", link_watch_policy);
++			return -EINVAL;
++		}
++	} else {
++		teamd_log_dbg(ctx, "No link_watch_policy specified in config, using default value \"any\".");
++	}
++	return 0;
++}
++
+ int main(int argc, char **argv)
+ {
+ 	enum teamd_exit_code ret = TEAMD_EXIT_FAILURE;
+@@ -1863,6 +1885,10 @@ int main(int argc, char **argv)
+ 	if (err)
+ 		goto config_free;
+ 
++	err = teamd_get_link_watch_policy(ctx);
++	if (err)
++		goto config_free;
++
+ 	err = teamd_set_default_pid_file(ctx);
+ 	if (err)
+ 		goto config_free;
+diff --git a/teamd/teamd.h b/teamd/teamd.h
+index 541d2a7..bc2ce36 100644
+--- a/teamd/teamd.h
++++ b/teamd/teamd.h
+@@ -105,6 +105,7 @@ struct teamd_context {
+ 	bool				no_quit_destroy;
+ 	bool				init_no_ports;
+ 	bool				pre_add_ports;
++	bool				evaluate_all_watchers;
+ 	char *				config_file;
+ 	char *				config_text;
+ 	json_t *			config_json;
+diff --git a/teamd/teamd_link_watch.c b/teamd/teamd_link_watch.c
+index cae6549..11f4697 100644
+--- a/teamd/teamd_link_watch.c
++++ b/teamd/teamd_link_watch.c
+@@ -133,11 +133,28 @@ bool teamd_link_watch_port_up(struct teamd_context *ctx,
+ 	if (!tdport)
+ 		return true;
+ 	link = true;
+-	teamd_for_each_port_priv_by_creator(common_ppriv, tdport,
+-					    LW_PORT_PRIV_CREATOR_PRIV) {
+-		link = common_ppriv->link_up;
+-		if (link)
+-			return link;
++	if (ctx->evaluate_all_watchers) {
++		/*
++		 * If multiple link-watchers used at the same time,
++		 * link is up if ALL of the link-watchers reports the link up.
++		 */
++		teamd_for_each_port_priv_by_creator(common_ppriv, tdport,
++						    LW_PORT_PRIV_CREATOR_PRIV) {
++			link = common_ppriv->link_up;
++			if (!link)
++				return link;
++		}
++	} else {
++		/*
++		 * If multiple link-watchers used at the same time,
++		 * link is up if ANY of the link-watchers reports the link up.
++		 */
++		teamd_for_each_port_priv_by_creator(common_ppriv, tdport,
++						    LW_PORT_PRIV_CREATOR_PRIV) {
++			link = common_ppriv->link_up;
++			if (link)
++				return link;
++		}
+ 	}
+ 	return link;
+ }

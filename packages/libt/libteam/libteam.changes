@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 26 13:28:06 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Add option to change evaluation logic of multiple link-watchers (jsc@PED2209)
+  Add 0001-teamd-Add-option-to-change-evaluation-logic-of-multi.patch
+
+-------------------------------------------------------------------
 Fri Nov  5 17:14:17 UTC 2021 - Otto Hollmann <otto.hollmann@suse.com>
 
 - teamd: better handle failures to chown(TEAMD_RUN_DIR) during
