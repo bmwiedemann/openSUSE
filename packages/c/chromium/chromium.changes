@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 27 07:39:29 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 114.0.5735.198 (boo#1212755):
+  * CVE-2023-3420: Type Confusion in V8
+  * CVE-2023-3421: Use after free in Media
+  * CVE-2023-3422: Use after free in Guest View
+
+-------------------------------------------------------------------
 Sun Jun 25 09:54:37 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Install Qt5 library & prepare for Qt6 in 115
