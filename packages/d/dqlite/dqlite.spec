@@ -18,7 +18,7 @@
 
 %define lname libdqlite0
 Name:           dqlite
-Version:        1.14.0
+Version:        1.15.1
 Release:        0
 Summary:        Distributed SQLite
 License:        LGPL-3.0-only WITH LGPL-3.0-linking-exception
