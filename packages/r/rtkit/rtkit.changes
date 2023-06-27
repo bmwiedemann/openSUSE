@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 23 11:30:20 UTC 2023 - Jean Delvare <jdelvare@suse.com>
+
+- rtkit-daemon: Don't log debug messages by default (bsc#1206745).
+  Added patch(es):
+  * rtkit-silent-debug-messages-by-default.patch
+
+-------------------------------------------------------------------
 Fri Dec 31 13:12:17 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Change to using systemd-sysusers

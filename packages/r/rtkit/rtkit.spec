@@ -1,7 +1,7 @@
 #
 # spec file for package rtkit
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,12 +27,13 @@ Group:          System/Base
 URL:            https://github.com/heftig/rtkit
 Source:         https://github.com/heftig/rtkit/releases/download/v%{version}/rtkit-%{version}.tar.xz
 Source1:        rtkit.sysusers
-Patch0:	harden_rtkit-daemon.service.patch
+Patch0:         harden_rtkit-daemon.service.patch
+Patch1:         rtkit-silent-debug-messages-by-default.patch
 BuildRequires:  automake
 BuildRequires:  libcap-devel
 BuildRequires:  pkg-config
-BuildRequires:  sysuser-tools
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 BuildRequires:  vim
 BuildRequires:  xz
 BuildRequires:  pkgconfig(dbus-1) >= 1.2
@@ -52,6 +53,7 @@ scheduling to be used by normal user processes.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %sysusers_generate_pre %{SOURCE1} rtkit rtkit.conf
