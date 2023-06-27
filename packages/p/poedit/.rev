@@ -630,4 +630,17 @@ installing all /icons/hicolor/*/*/*   might have been only some png and a single
 </comment>
     <requestid>1087447</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>7b76243f7f14937d5a7ca81a4b2781df</srcmd5>
+    <version>3.3.2</version>
+    <time>1687900666</time>
+    <user>dimstar_suse</user>
+    <comment>- Poedit 3.3.2:
+  * Added support for WebExtension JSON files.
+  * Fixed failure to extract from source code and malformed Plural-Forms
+    warning.
+  * Minor UI fixes.
+</comment>
+    <requestid>1095563</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 27 08:56:40 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Poedit 3.3.2:
+  * Added support for WebExtension JSON files.
+  * Fixed failure to extract from source code and malformed Plural-Forms
+    warning.
+  * Minor UI fixes.
+
+-------------------------------------------------------------------
 Tue May 16 14:57:41 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Poedit 3.3.1: Fixed catalog losing source language information on update
