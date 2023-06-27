@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jun 25 19:30:35 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up SPEC file.
+- Add remove_six.patch which removes the need to use six.
+
+-------------------------------------------------------------------
+Sun Jun 25 07:21:50 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 2.11
+  * fixed bug PluralFormat.format accepting python strings, which are immutable
+  * fixed bug with UWordBreak wrapping wrong enum (UBreakIteratorType)
+  * added wrappers for UBreakIteratorType, ULine|SentenceBreakTag
+  * added wrappers for DateTimePatternGenerator::set|getDateTimeFormat()
+  * added wrappers for Precision::incrementExact()
+  * Locale objects can now be sorted (Fredrik Roubert)
+  * added wrapper for Calendar::inTemporalLeapYear()
+  * added wrappers for Calendar::get|getTemporalMonthCode()
+  * changed all Calendar setters to return self instead of None, setter chaining
+- Use sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Thu Oct 27 10:57:22 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - update to version 2.10.2

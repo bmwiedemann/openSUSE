@@ -128,4 +128,25 @@
     <comment></comment>
     <requestid>1031560</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>94f51cb707566d8e5d9df528cf487477</srcmd5>
+    <version>2.11</version>
+    <time>1687900538</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up SPEC file.
+- Add remove_six.patch which removes the need to use six.
+- Update to version 2.11
+  * fixed bug PluralFormat.format accepting python strings, which are immutable
+  * fixed bug with UWordBreak wrapping wrong enum (UBreakIteratorType)
+  * added wrappers for UBreakIteratorType, ULine|SentenceBreakTag
+  * added wrappers for DateTimePatternGenerator::set|getDateTimeFormat()
+  * added wrappers for Precision::incrementExact()
+  * Locale objects can now be sorted (Fredrik Roubert)
+  * added wrapper for Calendar::inTemporalLeapYear()
+  * added wrappers for Calendar::get|getTemporalMonthCode()
+  * changed all Calendar setters to return self instead of None, setter chaining
+- Use sle15_python_module_pythons
+</comment>
+    <requestid>1095261</requestid>
+  </revision>
 </revisionlist>

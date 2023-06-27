@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,22 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global modname PyICU
 Name:           python-%{modname}
-Version:        2.10.2
+Version:        2.11
 Release:        0
 Summary:        Python Extension Wrapping the ICU C++ API
 License:        MIT
 Group:          Development/Libraries/Python
 URL:            https://gitlab.pyicu.org
-Source0:        https://files.pythonhosted.org/packages/source/P/PyICU/%{modname}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/P/PyICU/PyICU-2.11.tar.gz
+# PATCH-FEATURE-UPSTREAM remove_six.patch mcepl@suse.com
+# Remove dependency on six
+Patch0:         remove_six.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -39,6 +41,7 @@ BuildRequires:  pkgconfig(icu-uc)
 Provides:       %{modname} = %{version}
 Provides:       python-ICU = %{version}
 Obsoletes:      python-ICU < 1.2
+%{?sle15_python_module_pythons}
 %python_subpackages
 
 %description
@@ -46,15 +49,15 @@ Python extension wrapping IBM's International Components for Unicode C++
 library (ICU).
 
 %prep
-%setup -q -n %{modname}-%{version}
+%autosetup -p1 -n %{modname}-%{version}
 
 %build
 export CXXFLAGS="%{optflags} -fno-strict-aliasing"
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -63,6 +66,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %files %{python_files}
 %license LICENSE
 %doc CHANGES CREDITS README.md
-%{python_sitearch}/*
+%{python_sitearch}/icu
+%{python_sitearch}/PyICU-%{version}*-info
 
 %changelog
