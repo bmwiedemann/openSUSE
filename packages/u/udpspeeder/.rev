@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>866530</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c3429364b48578a7d3a429ffbdfb8310</srcmd5>
+    <version>20230206.0</version>
+    <time>1687900592</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20230206.0:
+  * Fix bug in https://github.com/wangyu-/UDPspeeder/issues/290.</comment>
+    <requestid>1095483</requestid>
+  </revision>
 </revisionlist>

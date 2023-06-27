@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 26 20:23:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 20230206.0:
+  * Fix bug in https://github.com/wangyu-/UDPspeeder/issues/290.
+
+-------------------------------------------------------------------
 Sun Jan 17 21:40:31 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 20210116.0
