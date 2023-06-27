@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jun 21 13:47:12 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 23.1.0
+  * Removed
+    - All Python versions up to and including 3.7 have been dropped.
+    - Support for commonName in certificates has been dropped.
+      It has been deprecated since 2017 and isn't supported by any
+      major browser.
+    - The oldest supported pyOpenSSL version (when using the
+      pyopenssl backend) is now 17.0.0.
+      When using such an old pyOpenSSL version, you have to pin
+      cryptography yourself to ensure compatibility between them.
+      Please check out contraints/oldest-pyopenssl.txt to verify
+      what we are testing against.
+  * Deprecated
+    - If you've used service_identity.(cryptography|pyopenssl).extract_ids(),
+      please switch to the new names extract_patterns(). #56
+  * Added
+    - service_identity.(cryptography|pyopenssl).extract_patterns()
+      are now public APIs (FKA extract_ids()).
+      You can use them to extract the patterns from a certificate
+      without verifying anything. #55
+    - service-identity is now fully typed. #57
+
+-------------------------------------------------------------------
 Fri Apr 21 12:33:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

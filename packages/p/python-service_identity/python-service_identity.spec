@@ -19,7 +19,7 @@
 %define oname   service_identity
 %{?sle15_python_module_pythons}
 Name:           python-service_identity
-Version:        21.1.0
+Version:        23.1.0
 Release:        0
 Summary:        Service identity verification for pyOpenSSL
 License:        MIT
@@ -29,9 +29,12 @@ URL:            https://github.com/pyca/service_identity
 Source:         https://github.com/pyca/service_identity/archive/%{version}.tar.gz
 BuildRequires:  %{python_module attrs >= 19.1.0}
 BuildRequires:  %{python_module cryptography}
+BuildRequires:  %{python_module hatch-fancy-pypi-readme}
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module hatchling >= 1.14.0}
 BuildRequires:  %{python_module idna}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyOpenSSL >= 0.14}
+BuildRequires:  %{python_module pyOpenSSL >= 17.0.0}
 BuildRequires:  %{python_module pyasn1-modules}
 BuildRequires:  %{python_module pyasn1}
 BuildRequires:  %{python_module pytest}
@@ -75,7 +78,7 @@ relevant RFCs too.
 
 %files %{python_files}
 %license LICENSE
-%doc AUTHORS.rst README.rst
+%doc README.md
 %{python_sitelib}/%{oname}
 %{python_sitelib}/%{oname}-%{version}*-info
 
