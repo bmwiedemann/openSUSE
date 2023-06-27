@@ -386,4 +386,21 @@ versions of libva(2)</comment>
   implemented in libva meanwhile (boo#1209134)</comment>
     <requestid>1070714</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>5defde0ae01c31ae9544c023c02d7275</srcmd5>
+    <version>23.1.6</version>
+    <time>1687900677</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 12.1.6:
+  * Official quarterly release including some enhancements and
+    key fixes.
+  * Enhanced AVC/HEVC/AV1 decode robustness for error case
+    handling.
+  * Enabled AV1 encoding error-resilient mode.
+  * Fixed VP9 encoding segment fault issue with unaligned
+    resolution.
+  * Fixed a random crash issue for OCA log resource in multi VPP
+    case.</comment>
+    <requestid>1095652</requestid>
+  </revision>
 </revisionlist>
