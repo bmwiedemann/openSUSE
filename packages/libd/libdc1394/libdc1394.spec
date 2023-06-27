@@ -1,7 +1,7 @@
 #
 # spec file for package libdc1394
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libdc1394
-Version:        2.2.6
+Version:        2.2.7
 Release:        0
 Summary:        1394-Based Digital Camera Control Library
 License:        LGPL-2.1-or-later
@@ -42,11 +42,11 @@ conforms to the 1394-Based Digital Camera Specification. It utilizes
 the low-level functionality provided by libraw1394 to communicate with
 the camera.
 
-%package -n libdc1394-25
+%package -n libdc1394-26
 Summary:        1394-based Digital Camera Control library
 Group:          System/Libraries
 
-%description -n libdc1394-25
+%description -n libdc1394-26
 This library provides functionality for controlling any camera that
 conforms to the 1394-Based Digital Camera Specification (which can be
 found at http://www.1394ta.org/Download/Technology/Specifications/Camera120.pdf).
@@ -57,7 +57,7 @@ communicate with the camera.
 Summary:        Development libraries and header files for dc1394
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-tools = %{version}
-Requires:       libdc1394-25 = %{version}
+Requires:       libdc1394-26 = %{version}
 Requires:       pkgconfig(libraw1394)
 
 %description devel
@@ -94,8 +94,8 @@ rm -f %{buildroot}%{_mandir}/man1/dc1394_multiview.1*
 rm -f %{buildroot}%{_mandir}/man1/grab_*_image.1*
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libdc1394-25 -p /sbin/ldconfig
-%postun -n libdc1394-25 -p /sbin/ldconfig
+%post -n libdc1394-26 -p /sbin/ldconfig
+%postun -n libdc1394-26 -p /sbin/ldconfig
 
 %files tools
 %license COPYING
@@ -103,8 +103,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_bindir}/dc1394_reset_bus
 %{_mandir}/man1/dc1394_reset_bus.1%{?ext_man}
 
-%files -n libdc1394-25
-%{_libdir}/libdc1394.so.25*
+%files -n libdc1394-26
+%{_libdir}/libdc1394.so.26*
 
 %files devel
 %{_includedir}/dc1394

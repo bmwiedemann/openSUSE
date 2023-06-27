@@ -378,4 +378,12 @@ Fix swab patch also. (forwarded request 225109 from matwey)</comment>
     <comment></comment>
     <requestid>760918</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>38e9fe78befc36c0d2e6a9598c860002</srcmd5>
+    <version>2.2.7</version>
+    <time>1687900518</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095424</requestid>
+  </revision>
 </revisionlist>
