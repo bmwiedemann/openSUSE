@@ -25,7 +25,7 @@
 %{!?_distconfdir:%global _distconfdir /etc}
 
 Name:           perl-Bootloader
-Version:        1.2
+Version:        1.4
 Release:        0
 Requires:       coreutils
 Requires:       perl-base = %{perl_version}
@@ -37,6 +37,7 @@ URL:            https://github.com/openSUSE/perl-bootloader
 Source:         %{name}-%{version}.tar.xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
+BuildRequires:  rubygem(asciidoctor)
 #!BuildIgnore: mdadm e2fsprogs limal-bootloader
 
 %description
@@ -49,6 +50,10 @@ Shell script wrapper for configuring various boot loaders.
 
 %install
 make install DESTDIR=%{buildroot} SBINDIR=%{sbindir} ETCDIR=%{_distconfdir}
+make doc
+install -D -m 644 pbl.8 %{buildroot}%{_mandir}/man8/pbl.8
+install -D -m 644 bootloader_entry.8 %{buildroot}%{_mandir}/man8/bootloader_entry.8
+install -D -m 644 update-bootloader.8 %{buildroot}%{_mandir}/man8/update-bootloader.8
 mkdir -p %{buildroot}/var/log
 touch %{buildroot}/var/log/pbl.log
 
