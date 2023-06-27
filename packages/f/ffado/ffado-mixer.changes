@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jun 26 11:07:01 UTC 2023 - Dave Plater <davejplater@gmail.com>
+
+- Update to 2.4.7
+- Upstream changes:
+  *Address type-related issues encounted in ffado-mixer when using
+   python 3.10. Components affected were the crossbar router and
+   the M-Audio device mixer.
+  *Use a dark theme by default in ffado-mixer.
+  *Remember the user’s ffado-mixer theme choice.
+  *The ffado-mixer desktop file includes a Dutch translation.
+  *Saffire mixers gain additional tool tips.
+  *Reduce the need for scrolling of the Saffire Pro24 panel in
+   ffado-mixer.
+  *Correct ffado-mixer routing assignments for the
+   Profire-2626 device.
+
+-------------------------------------------------------------------
 Fri May 29 15:12:31 UTC 2020 - Edgar Aichinger <edogawa@aon.at>
 
 - update to release 2.4.3

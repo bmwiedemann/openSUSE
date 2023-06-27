@@ -20,7 +20,7 @@
 %define docs 0
 %define tname libffado
 Name:           ffado-mixer
-Version:        2.4.3
+Version:        2.4.7
 Release:        0
 Summary:        FireWire 1394 support for audio devices, svn snapshot
 License:        GPL-2.0-or-later

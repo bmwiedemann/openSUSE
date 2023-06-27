@@ -17,12 +17,11 @@
 
 
 %define sover 2
-%define gcc7 0
 %define tname libffado
 Name:           ffado
-Version:        2.4.3
+Version:        2.4.7
 Release:        0
-Summary:        FireWire 1394 support for audio devices, svn snapshot
+Summary:        FireWire 1394 support for audio devices
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            http://www.ffado.org/
@@ -106,12 +105,6 @@ for i in `grep -rl "/usr/bin/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/pyth
 for i in `grep -rl "/usr/bin/python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/python3/' ${i} ;done
 
 %build
-%if %{gcc7} == 1
-%define gcc_version 7
-export CC=gcc-7
-export CPP=cpp-7
-export CXX=g++-7
-%endif
 export EXTRA_FLAGS="-Wno-deprecated-declarations -fpermissive --std=gnu++11"
 %if 0%{?gcc_version} > 5
 export EXTRA_FLAGS="${EXTRA_FLAGS}  -Werror=date-time"
@@ -142,12 +135,6 @@ scons %{_smp_mflags} \
 
 %install
 # WARNING: the install scons statement must be identical to the build one otherwise a complete rebuild is executed.
-%if %{gcc7} == 1
-%define gcc_version 7
-export CC=gcc-7
-export CPP=cpp-7
-export CXX=g++-7
-%endif
 export EXTRA_FLAGS="-Wno-deprecated-declarations -fpermissive --std=gnu++11"
 %if 0%{?gcc_version} > 5
 export EXTRA_FLAGS="${EXTRA_FLAGS}  -Werror=date-time"

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun 26 11:08:10 UTC 2023 - Dave Plater <davejplater@gmail.com>
+
+- Update to version 2.4.7
+- Upstream changes:
+  *Update config.guess to the latest version. This supports newer
+   architectures such as RISCV64.
+  *Address compiler warnings reported by newer versions of gcc.
+  *Add a configuration entry for the Apogee Duet.
+  *Spelling, capitalisation and quoting fixes in documentation and
+   source code.
+  *Correctly report the Saffire Pro 24 and Pro 56 in messages from
+   the driver when these interfaces are in use.
+  *Build correctly under scons 3.0.5 and above.
+
+-------------------------------------------------------------------
 Mon Apr 24 10:03:35 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add _multibuild to define 2nd spec file as additional flavor.
