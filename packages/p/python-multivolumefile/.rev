@@ -7,4 +7,12 @@
     <comment>required by py7zr update</comment>
     <requestid>1044223</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ed125646dbd5510f85eb45af36f8463e</srcmd5>
+    <version>0.2.3</version>
+    <time>1687900682</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095660</requestid>
+  </revision>
 </revisionlist>

@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-multivolumefile
 Version:        0.2.3
 Release:        0
