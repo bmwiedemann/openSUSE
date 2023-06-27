@@ -4812,4 +4812,17 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 8.10 release</comment>
     <requestid>1092604</requestid>
   </revision>
+  <revision rev="411" vrev="1">
+    <srcmd5>673edeb1ea8e435ca6247b22c2054f18</srcmd5>
+    <version>8.11</version>
+    <time>1687900698</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 8.11 release
+  - More mouse cursor clipping improvements.
+  - Support for TLS alerts.
+  - Increased available address space in WoW64 mode.
+  - Various bug fixes.
+- update staging to 8.11 release</comment>
+    <requestid>1095686</requestid>
+  </revision>
 </revisionlist>
