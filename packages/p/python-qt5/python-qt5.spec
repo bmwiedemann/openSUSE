@@ -230,6 +230,13 @@ dos2unix examples/tools/codecs/encodedfiles/iso-8859-15.txt
 %python_clone -a %{buildroot}%{_bindir}/pylupdate5
 %python_clone -a %{buildroot}%{_bindir}/pyrcc5
 
+# we need to fix up these helper scripts, because the build env just replaces shebang args
+# but these are plain shell scripts, where the wrong interpreter is called from the second line
+%{python_expand for p in pyuic5 pylupdate5 pyrcc5; do \
+  sed -ri '2s@python[0-9.]+@python%{$python_bin_suffix}@' %{buildroot}%{_bindir}/$p-%{$python_bin_suffix};
+done
+}
+
 # Provide the legacy path to the SIP files for packages stuck on sip4
 mkdir -p %{buildroot}%{_datadir}/sip/
 %{python_expand ln -sr \

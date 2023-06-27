@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 26 12:04:36 UTC 2023 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Fix shell stubs of pyuic5 pylupdate5 pyrcc5 in order to run the 
+  correct interpreter
+
+-------------------------------------------------------------------
 Sat Jun 10 09:36:20 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
