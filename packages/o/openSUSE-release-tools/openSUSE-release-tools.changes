@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 27 19:06:14 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230627.8b1c308:
+  * check_source: fix condition checking for <scmsync> for git packaging
+
+-------------------------------------------------------------------
 Tue Jun 27 15:17:04 UTC 2023 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20230627.8db5f62:
