@@ -44,4 +44,22 @@
     <comment></comment>
     <requestid>975404</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f111853e3365364e285ec037c4defaee</srcmd5>
+    <version>4.0.1</version>
+    <time>1687980811</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.1:
+  * github3.repos.comparison.Comparison.commits was renamed to
+    original_commits.
+  * Add tests for Python 3.11
+  * Add function for getting repos for github app
+  * Cancel and failed invitation
+  * Allow to set GitHub API version
+  * Remove support to EOL Python 3.6
+  * Missing set permission for collaborators
+  * Modernize the build: switch to hatchling
+- Stop using greedy globs in %files.</comment>
+    <requestid>1095764</requestid>
+  </revision>
 </revisionlist>
