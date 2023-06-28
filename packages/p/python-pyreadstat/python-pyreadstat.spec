@@ -17,7 +17,7 @@
 
 
 Name:           python-pyreadstat
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Package to read and write statistical data files into pandas
 License:        Apache-2.0

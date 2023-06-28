@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 27 12:06:04 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- update to 1.2.2
+  * added num_rows to multiprocessing to allow processing of xport, 
+    por and sav files not having the number of rows in the metadata.
+
+-------------------------------------------------------------------
 Mon Mar 13 08:42:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.1:
