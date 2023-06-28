@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 23 18:44:02 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Use sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Thu Jan 26 02:27:22 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
 
 - Skip two tests failing upstream with latest Markdown.
