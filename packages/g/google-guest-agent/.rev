@@ -275,4 +275,12 @@
   * Add a support of TrustedUserCAKeys into sshd configuration (#206) (forwarded request 1091050 from glaubitz)</comment>
     <requestid>1091077</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>607d5faf41f76311ec173302e34ad7da</srcmd5>
+    <version>20230601.00</version>
+    <time>1687980803</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230601.00 (bsc#1212418, bsc#1212759) (forwarded request 1095599 from glaubitz)</comment>
+    <requestid>1095624</requestid>
+  </revision>
 </revisionlist>
