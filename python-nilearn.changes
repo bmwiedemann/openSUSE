@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jun 27 10:58:39 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.10.1
+  * New function load_sample_motor_activation_image to load example 
+    contrast map
+  * fsaverage meshes accessed through fetch_surf_fsaverage now come 
+    with flat maps for all resolutions
+  * Improve how first_level_from_bids handles fetching slice timing 
+    metadata and add additional input validation. In release 0.12 
+    the default slice_time_ref will be None instead of 0
+  * Fixes several bugs in first_level_from_bids.
+  * Add correct “zscore_sample” strategy to signal._standardize 
+    which will replace the default “zscore” strategy in release 0.13
+  * Moved packaging from setup.py and setuptools build backend to 
+    pyproject.toml and hatchling backend.
+  * Restore resample_img compatibility with all nibabel.spatialimages.SpatialImage objects
+
+-------------------------------------------------------------------
 Fri Apr 14 08:53:23 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Skip a failing array test.
