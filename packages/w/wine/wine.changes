@@ -1,14 +1,4 @@
 -------------------------------------------------------------------
-Mon Jun 26 07:57:27 UTC 2023 - Marcus Meissner <meissner@suse.com>
-
-- Updated to 8.11 release
-  - More mouse cursor clipping improvements.
-  - Support for TLS alerts.
-  - Increased available address space in WoW64 mode.
-  - Various bug fixes.
-- update staging to 8.11 release
-
--------------------------------------------------------------------
 Mon Jun 12 06:58:24 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 8.10 release

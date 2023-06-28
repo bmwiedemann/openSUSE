@@ -4825,4 +4825,11 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 8.11 release</comment>
     <requestid>1095686</requestid>
   </revision>
+  <revision rev="412" vrev="2">
+    <srcmd5>3540f5bbf58e374846fee04a934f2272</srcmd5>
+    <version>8.10</version>
+    <time>1687980568</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1212823</comment>
+  </revision>
 </revisionlist>
