@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 28 03:27:42 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch deal-with-missing-socket.patch
+- Pin SQLAlchemy < 2, this requires 1.4
+- Stop using greedy globs in %files
+- Light spring cleaning of the spec file.
+- Refresh patch from GitHub, the short shas gained one character.
+
+-------------------------------------------------------------------
 Fri May  7 18:20:13 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add logbook-pr316-sqlalchemy-count.patch for compatibility with

@@ -1,0 +1,14 @@
+Index: Logbook-1.5.3/logbook/queues.py
+===================================================================
+--- Logbook-1.5.3.orig/logbook/queues.py
++++ Logbook-1.5.3/logbook/queues.py
+@@ -229,7 +229,8 @@ class ZeroMQHandler(Handler):
+             self.export_record(record)).encode("utf-8"))
+ 
+     def close(self, linger=-1):
+-        self.socket.close(linger)
++        if hasattr(self, 'socket'):
++            self.socket.close(linger)
+ 
+     def __del__(self):
+         # When the Handler is deleted we must close our socket in a

@@ -1,7 +1,7 @@
 #
 # spec file for package python-Logbook
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
 Name:           python-Logbook
 Version:        1.5.3
 Release:        0
@@ -27,10 +25,11 @@ URL:            https://github.com/getlogbook/logbook
 Source:         https://files.pythonhosted.org/packages/source/L/Logbook/Logbook-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM logbook-pr316-sqlalchemy-count.patch -- gh#getlogbook/logbook#316
 Patch1:         https://github.com/getlogbook/logbook/pull/316.patch#/logbook-pr316-sqlalchemy-count.patch
+Patch2:         deal-with-missing-socket.patch
 BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Jinja2}
-BuildRequires:  %{python_module SQLAlchemy}
+BuildRequires:  %{python_module SQLAlchemy < 2}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module execnet >= 1.0.9}
 BuildRequires:  %{python_module gevent}
@@ -46,14 +45,11 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  redis
 BuildRequires:  util-linux
 Recommends:     python-Jinja2
-Recommends:     python-SQLAlchemy
+Recommends:     python-SQLAlchemy < 2
 Recommends:     python-execnet >= 1.0.9
 Recommends:     python-gevent
 Recommends:     python-pyzmq
 Recommends:     python-redis
-%if %{with python2}
-BuildRequires:  python-mock
-%endif
 %python_subpackages
 
 %description
@@ -84,6 +80,7 @@ kill %%1
 %files %{python_files}
 %license LICENSE
 %doc CHANGES
-%{python_sitearch}/*
+%{python_sitearch}/logbook
+%{python_sitearch}/Logbook-%{version}-*-info
 
 %changelog

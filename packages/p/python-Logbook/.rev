@@ -69,4 +69,16 @@
     <comment></comment>
     <requestid>891394</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>c2c74a49c290a64ef8774f6b13df3c72</srcmd5>
+    <version>1.5.3</version>
+    <time>1687980793</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch deal-with-missing-socket.patch
+- Pin SQLAlchemy &lt; 2, this requires 1.4
+- Stop using greedy globs in %files
+- Light spring cleaning of the spec file.
+- Refresh patch from GitHub, the short shas gained one character.</comment>
+    <requestid>1095703</requestid>
+  </revision>
 </revisionlist>

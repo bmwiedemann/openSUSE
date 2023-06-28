@@ -8,7 +8,7 @@ Subject: [PATCH] replace removed SQLAlchemy Table.count() method
  1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/logbook/ticketing.py b/logbook/ticketing.py
-index 7321fa3..4f94ab8 100644
+index 7321fa32..4f94ab8e 100644
 --- a/logbook/ticketing.py
 +++ b/logbook/ticketing.py
 @@ -243,7 +243,10 @@ def record_ticket(self, record, data, hash, app_id):
