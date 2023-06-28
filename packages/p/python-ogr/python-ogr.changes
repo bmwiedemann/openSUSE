@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun 27 11:25:57 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.45.0
+  * OGR now supports PyGithub >= 1.58.
+  * OGR now understands a few community-hosted GitLab instances 
+    that could not be determined automatically from the hostname. 
+  * Fixes an issue with project->service mapping where the service 
+    with an url not containing the service type wasn't matched.
+  * A bug in ogr resulting in returning only first page of pull 
+    requests for Pagure has been fixed.
+  * ogr now raises GitForgeInternalError rather than PagureAPIException 
+    when getting 50x response from the Pagure API.
+
+-------------------------------------------------------------------
 Fri Dec  2 21:18:38 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 0.41.0 
