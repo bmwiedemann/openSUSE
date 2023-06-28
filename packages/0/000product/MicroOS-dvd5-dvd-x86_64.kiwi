@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20230626" schemaversion="4.1">
+<image name="OBS__MicroOS___20230627" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230626</productvar>
+      <productvar name="VERSION">20230627</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230626,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230627,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230626/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230627/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -830,6 +830,7 @@
       <repopackage name="lastlog2"/>
       <repopackage name="layer-shell-qt5"/>
       <repopackage name="less"/>
+      <repopackage name="lftp"/>
       <repopackage name="libabw-0_1-1"/>
       <repopackage name="libaccounts-glib0"/>
       <repopackage name="libaccounts-qt5-1"/>
@@ -871,6 +872,7 @@
       <repopackage name="libavahi-common3"/>
       <repopackage name="libavahi-core7"/>
       <repopackage name="libavahi-glib1"/>
+      <repopackage name="libavc1394-0"/>
       <repopackage name="libavcodec60"/>
       <repopackage name="libavfilter9"/>
       <repopackage name="libavformat60"/>
@@ -951,6 +953,7 @@
       <repopackage name="libcolord2"/>
       <repopackage name="libcolorhug2"/>
       <repopackage name="libcom_err2"/>
+      <repopackage name="libconfig++11"/>
       <repopackage name="libconfig11"/>
       <repopackage name="libcontainers-common"/>
       <repopackage name="libcontainers-default-policy"/>
@@ -973,7 +976,7 @@
       <repopackage name="libdbus-1-3"/>
       <repopackage name="libdbus-glib-1-2"/>
       <repopackage name="libdbusmenu-qt5-2"/>
-      <repopackage name="libdc1394-25"/>
+      <repopackage name="libdc1394-26"/>
       <repopackage name="libdca0"/>
       <repopackage name="libdconf1"/>
       <repopackage name="libdebuginfod1"/>
@@ -1044,6 +1047,7 @@
       <repopackage name="libFcitx5GClient2"/>
       <repopackage name="libfdisk1"/>
       <repopackage name="libfdk-aac2"/>
+      <repopackage name="libffado2"/>
       <repopackage name="libffi8"/>
       <repopackage name="libfftw3-3"/>
       <repopackage name="libfido2-1"/>
@@ -1212,6 +1216,7 @@
       <repopackage name="libid3tag0_16_2"/>
       <repopackage name="libidn2-0"/>
       <repopackage name="libidn2-lang"/>
+      <repopackage name="libiec61883-0"/>
       <repopackage name="libIex-3_1-30"/>
       <repopackage name="libIlmThread-3_1-30"/>
       <repopackage name="libimaevm4"/>
@@ -1904,6 +1909,7 @@
       <repopackage name="libxkbfile1"/>
       <repopackage name="libxkbregistry0"/>
       <repopackage name="libxklavier16"/>
+      <repopackage name="libxml++-3_0-1"/>
       <repopackage name="libxml2-2"/>
       <repopackage name="libxml2-tools"/>
       <repopackage name="libxmlb2"/>

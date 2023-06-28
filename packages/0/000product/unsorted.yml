@@ -2166,6 +2166,7 @@ unsorted:
   - cliquer-devel 
   - clisp 
   - clisp-doc 
+  - clknetsim 
   - cln 
   - cln-devel 
   - clojure 
@@ -6854,6 +6855,10 @@ unsorted:
   - go1.20-doc 
   - go1.20-libstd 
   - go1.20-race 
+  - go1.21 
+  - go1.21-doc 
+  - go1.21-libstd 
+  - go1.21-race 
   - go1.9 
   - go1.9-doc 
   - go1.9-race 
@@ -7035,6 +7040,7 @@ unsorted:
   - google-worksans-fonts-doc 
   - googleapis-source 
   - googler 
+  - gopls 
   - gops 
   - gos-wallpapers 
   - gosec 
@@ -9836,7 +9842,6 @@ unsorted:
   - leveldb-devel 
   - leveldb-devel-static 
   - levmar-devel 
-  - lftp 
   - lha 
   - lhasa-devel 
   - lib2geom-devel 
@@ -11170,7 +11175,7 @@ unsorted:
   - libcdio_paranoia2-32bit 
   - libcdirectory-devel 
   - libcdirectory1 
-  - libcdk6_2_4 
+  - libcdk6_3_4 
   - libcdr-devel 
   - libcdr-devel-doc 
   - libcdr-tools 
@@ -11306,7 +11311,6 @@ unsorted:
   - libcomps-doc 
   - libcomps0 
   - libconfig++-devel 
-  - libconfig++11 
   - libconfig++11-32bit 
   - libconfig-devel 
   - libconfig11-32bit 
@@ -11472,7 +11476,7 @@ unsorted:
   - libdbusmenu-qt5-devel 
   - libdbusmenu-qt5-devel-32bit 
   - libdbusmenu-tools 
-  - libdc1394-25-32bit 
+  - libdc1394-26-32bit 
   - libdc1394-devel 
   - libdc1394-tools 
   - libdca-devel 
@@ -11775,7 +11779,6 @@ unsorted:
   - libff-1_0_0 
   - libff-devel 
   - libffado-devel 
-  - libffado2 
   - libffado2-32bit 
   - libffcall0 
   - libffi-devel 
@@ -14765,6 +14768,7 @@ unsorted:
   - libserialport-devel 
   - libserialport0 
   - libsexp0 
+  - libsexpp0 
   - libsfcUtil0 
   - libsfml2-2_5 
   - libsgutils-devel 
@@ -15878,7 +15882,6 @@ unsorted:
   - libxlsreader8 
   - libxmi0 
   - libxml++-2_6-2 
-  - libxml++-3_0-1 
   - libxml++-3_0-1-32bit 
   - libxml++-5_0-1 
   - libxml++-devel 
@@ -28092,6 +28095,7 @@ unsorted:
   - python311-magic-wormhole-mailbox-server 
   - python311-magic-wormhole-transit-relay 
   - python311-magicalimport 
+  - python311-mailman-hyperkitty 
   - python311-mailman3-fedmsg-plugin 
   - python311-mailmanclient 
   - python311-main-wrapper 
@@ -31502,7 +31506,6 @@ unsorted:
   - python39-magic-wormhole-mailbox-server 
   - python39-magic-wormhole-transit-relay 
   - python39-magicalimport 
-  - python39-mailman-hyperkitty 
   - python39-mailman3-fedmsg-plugin 
   - python39-mailmanclient 
   - python39-main-wrapper 
@@ -34534,6 +34537,8 @@ unsorted:
   - sevctl 
   - sexp 
   - sexp-devel 
+  - sexpp 
+  - sexpp-devel 
   - sfcgal 
   - sfcgal-devel 
   - sfftobmp 
