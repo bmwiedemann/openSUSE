@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun 21 16:05:29 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 2.1:
+  + Additional --selection remote commands
+  + Split view additional 3-image layout
+  + Many bug fixes
+  + Some progress in GTK4 migration
+  + Change source code from c to c++
+  + Much progress in making source code warning-free
+  + Updated language support
+- Remove 6c4226ff.patch and eb9d0e10.patch
+  they are part of the release
+- Disable LUA to work around gh#BestImageViewer/geeqie#1117
+
+-------------------------------------------------------------------
 Tue May  9 17:05:21 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop conditional set for pkgconfig(libraw) BuildRequires, fixes
