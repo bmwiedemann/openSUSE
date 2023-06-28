@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 28 02:49:50 UTC 2023 - william.brown@suse.com
+
+- Update to version 0.12.1~0:
+  * 0.12.1
+  * Fix value parser for `Option<PathBuf>`
+  * Restore --version command
+
+-------------------------------------------------------------------
 Mon Jun 19 00:00:09 UTC 2023 - william.brown@suse.com
 
 - Update to version 0.12.0~0:
