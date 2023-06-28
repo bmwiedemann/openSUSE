@@ -7,4 +7,12 @@
     <comment> </comment>
     <requestid>767039</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cc84f60cbaa594e05c76d1f9804a436a</srcmd5>
+    <version>0.5.0</version>
+    <time>1687980810</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing BuildRequires on six.</comment>
+    <requestid>1095756</requestid>
+  </revision>
 </revisionlist>

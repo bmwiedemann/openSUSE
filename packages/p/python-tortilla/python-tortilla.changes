@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 28 07:36:35 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing BuildRequires on six.
+
+-------------------------------------------------------------------
 Fri Jan 24 20:44:32 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.5.0
