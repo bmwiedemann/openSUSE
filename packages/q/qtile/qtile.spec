@@ -16,7 +16,7 @@
 #
 
 
-%bcond_without test
+%bcond_with test
 %define pythons python3
 Name:           qtile
 Version:        0.22.1
@@ -26,8 +26,9 @@ Summary:        A pure-Python tiling window manager
 License:        GPL-3.0-or-later AND MIT
 Group:          System/X11/Displaymanagers
 URL:            http://qtile.org
-Source:         https://files.pythonhosted.org/packages/source/q/%{name}/%{name}-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/q/%{name}/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
+# Patch0:         https://github.com/qtile/qtile/pull/3985.patch#/0000-fix-and-new-features-on-latest-wlroots.patch
 BuildRequires:  fdupes
 BuildRequires:  gdk-pixbuf-loader-rsvg
 BuildRequires:  librsvg
@@ -37,15 +38,17 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-cairocffi >= 0.9.0
 BuildRequires:  python3-cffi >= 1.1.0
 BuildRequires:  python3-devel
+BuildRequires:  python3-pip
 BuildRequires:  python3-pywlroots
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-setuptools_scm
+BuildRequires:  python3-wheel
 BuildRequires:  python3-xcffib >= 0.10.1
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libinput)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(wlroots) < 0.16.1
+BuildRequires:  pkgconfig(wlroots)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xwayland)
 Requires:       python3-cairocffi >= 0.9.0
@@ -77,7 +80,7 @@ BuildRequires:  graphviz
 BuildRequires:  libgtk-3-0
 BuildRequires:  libnotify
 # libnotify-tools seems to introduce more fails in v0.21.0
-#BuildRequires:  libnotify-tools
+# BuildRequires:  libnotify-tools
 BuildRequires:  librsvg
 BuildRequires:  procps
 BuildRequires:  python3-bowler
@@ -86,6 +89,7 @@ BuildRequires:  python3-curses
 BuildRequires:  python3-dbus_next
 BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-Gdk
+BuildRequires:  python3-mypy
 BuildRequires:  python3-pytest
 BuildRequires:  python3-pyxdg
 BuildRequires:  xcalc
@@ -110,20 +114,23 @@ A pure-Python tiling window manager.
 * Qtile is unit-tested using this remote scriptability feature.
 
 %prep
-%setup -q -n qtile-%{version}
+%autosetup -p1
 # Fix rpmlint warning
 sed -i '/#!\/usr\/bin\/env python/d' libqtile/scripts/cmd_obj.py
 
+# Disable use of scm
+sed -i '104s/True/False/' setup.py
+
 %build
 # wlr headers try to import wayland-server-core.h , which is in wayland/wayland-server-core.h
-export CFLAGS="%optflags $(pkg-config --cflags wayland-client libinput xkbcommon)"
-%python3_build
+export CFLAGS="%optflags $(pkg-config --cflags wayland-client libinput xkbcommon wlroots) -I/usr/include/wlr"
+%python_build
 
 %install
-export CFLAGS="%optflags $(pkg-config --cflags wayland-client libinput xkbcommon)"
+export CFLAGS="%optflags $(pkg-config --cflags wayland-client libinput xkbcommon wlroots) -I/usr/include/wlr"
 # Initial steps from https://github.com/qtile/qtile/blob/master/scripts/ffibuild
 ./scripts/ffibuild
-%python3_install
+%python_install
 mkdir -p %{buildroot}%{_datadir}/xsessions/
 install -m 644 %{_builddir}/qtile-%{version}/resources/qtile.desktop %{buildroot}%{_datadir}/xsessions/
 
@@ -138,7 +145,7 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 
 %if %{with test}
 %check
-export CFLAGS="%optflags $(pkg-config --cflags wayland-client libinput xkbcommon)"
+export CFLAGS="%optflags $(pkg-config --cflags wayland-client libinput xkbcommon wlroots) -I/usr/include/wlr"
 mkdir -vp ${PWD}/bin
 ln -svf %{buildroot}%{_bindir}/qtile ${PWD}/bin/qtile
 export LC_TYPE=en_US.UTF-8
@@ -147,7 +154,7 @@ export PATH="${PWD}/bin:${PATH}"
 export PYTHONDONTWRITEBYTECODE=1
 
 # See https://github.com/qtile/qtile/issues/3682 for details of test failures
-xvfb-run python3 -m pytest -vv -rs --backend x11 --backend wayland -k 'not (TreeTab or fakescreen or manager or test_window or test_prompt or test_cycle_layouts or test_multiple_borders or (notify and test_parse_text))'
+xvfb-run python3 -m pytest -vv -rs --backend x11 -k 'not (TreeTab or fakescreen or manager or test_window or test_prompt or test_cycle_layouts or test_multiple_borders or (notify and test_parse_text))'
 %endif
 
 %post

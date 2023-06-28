@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Jun 21 04:17:53 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove 0000-fix-and-new-features-on-latest-wlroots.patch.
+
+-------------------------------------------------------------------
+Mon Jun 19 07:33:07 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Disable tests. I get a lot of build workers disliking it
+
+-------------------------------------------------------------------
+Fri Jun 16 01:09:25 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add mypy to tests.
+
+-------------------------------------------------------------------
+Fri Jun 16 00:39:13 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Disable tests on wayland temporarily. Reenable if PR for 
+  0.16.x support lands.
+
+-------------------------------------------------------------------
+Fri Jun 16 00:06:17 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Migrate back to python hosted sources through py2pack.
+
+-------------------------------------------------------------------
+Thu Jun 15 23:59:08 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Disable patch for now.
+- Use wlroots10-devel, also called wlroots 0.15.1. Patch is still draft
+  after all.
+- Change to upstream sources
+
+-------------------------------------------------------------------
+Thu Jun 15 23:21:18 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add 0000-fix-and-new-features-on-latest-wlroots.patch.
+   ** ATTENTION **
+  This is a temporary fix for building qtile on latest wlroots. The
+  PR is still a draft.
+
+-------------------------------------------------------------------
+Thu May 18 03:00:56 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Fix CFLAGS in spec to include wlroots.
+
+-------------------------------------------------------------------
 Tue Feb  7 03:52:18 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Excluded arm because lots of failures.
