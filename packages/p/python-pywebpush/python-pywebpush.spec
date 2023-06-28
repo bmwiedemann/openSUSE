@@ -1,7 +1,7 @@
 #
 # spec file for package python-pywebpush
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pywebpush
 Version:        1.14.0
 Release:        0
@@ -24,6 +23,8 @@ Summary:        WebPush publication library
 License:        MPL-2.0
 URL:            https://github.com/web-push-libs/pywebpush
 Source:         https://files.pythonhosted.org/packages/source/p/pywebpush/pywebpush-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Do not require six module
+Patch0:         no-more-six.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -47,7 +48,7 @@ BuildRequires:  %{python_module requests >= 2.21.0}
 WebPush publication library.
 
 %prep
-%setup -q -n pywebpush-%{version}
+%autosetup -p1 -n pywebpush-%{version}
 
 %build
 %python_build
@@ -72,6 +73,7 @@ sed -i 's:from mock:from unittest.mock:' pywebpush/tests/test_webpush.py
 %doc CHANGELOG.md README.md README.rst
 %license LICENSE
 %python_alternative %{_bindir}/pywebpush
-%{python_sitelib}/*
+%{python_sitelib}/pywebpush
+%{python_sitelib}/pywebpush-%{version}*-*info
 
 %changelog

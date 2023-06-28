@@ -1,0 +1,40 @@
+Index: pywebpush-1.14.0/pywebpush/__init__.py
+===================================================================
+--- pywebpush-1.14.0.orig/pywebpush/__init__.py
++++ pywebpush-1.14.0/pywebpush/__init__.py
+@@ -13,7 +13,6 @@ try:
+ except ImportError:  # pragma nocover
+     from urlparse import urlparse
+ 
+-import six
+ import http_ece
+ import requests
+ from cryptography.hazmat.backends import default_backend
+@@ -152,7 +151,7 @@ class WebPusher:
+             for k in ['p256dh', 'auth']:
+                 if keys.get(k) is None:
+                     raise WebPushException("Missing keys value: {}".format(k))
+-                if isinstance(keys[k], six.text_type):
++                if isinstance(keys[k], str):
+                     keys[k] = bytes(keys[k].encode('utf8'))
+             receiver_raw = base64.urlsafe_b64decode(
+                 self._repad(keys['p256dh']))
+@@ -206,7 +205,7 @@ class WebPusher:
+             format=serialization.PublicFormat.UncompressedPoint
+         )
+ 
+-        if isinstance(data, six.text_type):
++        if isinstance(data, str):
+             data = bytes(data.encode('utf8'))
+         if content_encoding == "aes128gcm":
+             self.verb("Encrypting to aes128gcm...")
+Index: pywebpush-1.14.0/requirements.txt
+===================================================================
+--- pywebpush-1.14.0.orig/requirements.txt
++++ pywebpush-1.14.0/requirements.txt
+@@ -1,5 +1,4 @@
+ cryptography>=2.6.1
+ http-ece>=1.1.0
+ requests>=2.21.0
+-six>=1.15.0
+ py-vapid>=1.7.0

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 28 06:43:49 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-six.patch:
+  * Do not require six.
+- Do not use greedy globs in %files.
+
+-------------------------------------------------------------------
 Fri Apr  8 10:03:17 UTC 2022 - pgajdos@suse.com
 
 - do not require python-mock for build

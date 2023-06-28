@@ -26,4 +26,14 @@
     <comment></comment>
     <requestid>967921</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>127ac3e9acc26e358e9b456ae50e90b9</srcmd5>
+    <version>1.14.0</version>
+    <time>1687980803</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch no-more-six.patch:
+  * Do not require six.
+- Do not use greedy globs in %files.</comment>
+    <requestid>1095729</requestid>
+  </revision>
 </revisionlist>
