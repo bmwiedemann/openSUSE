@@ -352,4 +352,11 @@
     - openssl-CVE-2023-0465.patch</comment>
     <requestid>1095610</requestid>
   </revision>
+  <revision rev="37" vrev="19">
+    <srcmd5>d14daec491888b8988b56b3f033325b2</srcmd5>
+    <version>1.0.2u</version>
+    <time>1687940495</time>
+    <user>dimstar_suse</user>
+    <comment>Revert; change needs to be synced with openssl 3.0 update</comment>
+  </revision>
 </revisionlist>
