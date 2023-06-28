@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jun 28 11:44:19 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.11.0:
+  - Rewrite to new structure and abandoning setuptools
+- Update to 0.10.3:
+  - refactor: rearrange the project to the src/ layout
+    (https://todo.sr.ht/~mcepl/pygn/7)
+    - Fix also pyproject.toml to generate what seems right.
+    - Add the explicit dependency on nntplib for Python >= 3.12
+      (gh#python/cpython!104894).
+  - Use email.policy.SMTP to be perfectly conforming with RFCs.
+    Perhaps fixes: https://todo.sr.ht/~mcepl/pygn/6
+  - Rename README to README.md
+  - Switch hosting of the project to Sourcehut.
+  - Also add the text of GPLv3.
+  - When sending nntp message fails, log the message to temporary
+    file.
+  - Convert documentation from .maff to plain HTML.
+  - Parse email messages from binary files (Fixes #24
+    on GitLab (see also gh#python/cpython#69731 and
+    gh#python/cpython#85479)
+- We actually don't need pytest.
+
+-------------------------------------------------------------------
 Wed Nov 30 17:46:32 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Clean up SPEC file, make rpmlint happy.

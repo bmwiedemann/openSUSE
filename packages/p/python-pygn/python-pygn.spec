@@ -1,7 +1,7 @@
 #
 # spec file for package python-pygn
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,21 @@
 
 
 Name:           python-pygn
-Version:        0.10.2
+Version:        0.11.0
 Release:        0
 Summary:        The Python Gateway Script: news2mail mail2news gateway
 License:        GPL-3.0-only
 Group:          Productivity/Networking/News/Utilities
-URL:            https://gitlab.com/mcepl/pyg
+URL:            https://git.sr.ht/~mcepl/pygn
 Source:         https://files.pythonhosted.org/packages/source/p/pygn/pygn-%{version}.tar.gz
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module nntplib if %python-base >= 3.12}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module rply}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-rply
+Requires:       (python-nntplib if python-base >= 3.12)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
@@ -57,16 +60,16 @@ It refers to rfc 822 (mail) and 850 (news).
 %autosetup -p1 -n pygn-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pygm2n
 %python_clone -a %{buildroot}%{_bindir}/pygn2m
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pyunittest discover -v test
 
 %post
 %python_install_alternative pygm2n pygn2m

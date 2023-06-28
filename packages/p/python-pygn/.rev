@@ -15,4 +15,32 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1041198</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b9e0db0df2de1e062414165009532ee4</srcmd5>
+    <version>0.11.0</version>
+    <time>1687980823</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.0:
+  - Rewrite to new structure and abandoning setuptools
+- Update to 0.10.3:
+  - refactor: rearrange the project to the src/ layout
+    (https://todo.sr.ht/~mcepl/pygn/7)
+    - Fix also pyproject.toml to generate what seems right.
+    - Add the explicit dependency on nntplib for Python &gt;= 3.12
+      (gh#python/cpython!104894).
+  - Use email.policy.SMTP to be perfectly conforming with RFCs.
+    Perhaps fixes: https://todo.sr.ht/~mcepl/pygn/6
+  - Rename README to README.md
+  - Switch hosting of the project to Sourcehut.
+  - Also add the text of GPLv3.
+  - When sending nntp message fails, log the message to temporary
+    file.
+  - Convert documentation from .maff to plain HTML.
+  - Parse email messages from binary files (Fixes #24
+    on GitLab (see also gh#python/cpython#69731 and
+    gh#python/cpython#85479)
+- We actually don't need pytest.
+</comment>
+    <requestid>1095794</requestid>
+  </revision>
 </revisionlist>
