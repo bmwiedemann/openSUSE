@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 21 01:27:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Also use llvm 15 on Leap 15.4. A new llvm version was submitted
+  to 15.4 which caused crashes when trying to run qdoc with an
+  older version.
+
+-------------------------------------------------------------------
 Wed May 24 07:45:44 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.5.1
