@@ -216,6 +216,7 @@ splitter-whitelist =
 
 # now just for testing
 source_projects_expand = devel:languages:haskell
+allowed-scm-submission-sources = devel:Factory:git-workflow:staging
 
 # 
 devel-whitelist = systemsmanagement:Agama:Devel
@@ -253,7 +254,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20230626</value>
+    <value>20230627</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
