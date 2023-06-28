@@ -25,6 +25,7 @@ Fri Jun 23 09:43:39 UTC 2023 - pgajdos@suse.com
   - Dropped support for OpenSSL v1.1.0 and older
   - Minimum SSL version set to TLSv1.2
   - Updated to RabbitMQ framing to v3.8.19
+- fixes CVE-2023-35789 [bsc#1212499]
 
 -------------------------------------------------------------------
 Wed Apr 27 09:09:53 UTC 2022 - pgajdos@suse.com

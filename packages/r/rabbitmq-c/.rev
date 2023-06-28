@@ -89,4 +89,12 @@
   - Updated to RabbitMQ framing to v3.8.19</comment>
     <requestid>1094846</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d62fd42e32364001d9f331a97fddb692</srcmd5>
+    <version>0.13.0</version>
+    <time>1687980802</time>
+    <user>dimstar_suse</user>
+    <comment>- fixes CVE-2023-35789 [bsc#1212499]</comment>
+    <requestid>1095527</requestid>
+  </revision>
 </revisionlist>
