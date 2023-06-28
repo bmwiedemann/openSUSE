@@ -18,15 +18,17 @@
 
 
 Name:           python-emoji
-Version:        2.5.1
+Version:        2.6.0
 Release:        0
 Summary:        Emoji for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/carpedm20/emoji/
 Source:         https://files.pythonhosted.org/packages/source/e/emoji/emoji-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -59,10 +61,10 @@ By default, the language is English (``language='en'``). Further supported langa
 %autosetup -n emoji-%{version} -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/emoji*
 
 %check

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 28 09:38:08 UTC 2023 - Matthias Bach <marix@marix.org> - 2.6.0
+
+- Update to 2.6.0
+  * New function purely_emoji() | Check if a string contains only
+    emojis
+- Switch package to modern Python package build instead of legacy
+  setup.py invocation.
+
+-------------------------------------------------------------------
 Sat Jun 17 10:09:50 UTC 2023 - Matthias Bach <marix@marix.org> - 2.5.1
 
 - Update to 2.5.1
