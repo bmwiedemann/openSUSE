@@ -318,4 +318,13 @@
 </comment>
     <requestid>1077857</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>142ad0b738cec657f77061c69327456f</srcmd5>
+    <version>5.2.73</version>
+    <time>1687980808</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.73 (no changelog)
+</comment>
+    <requestid>1095733</requestid>
+  </revision>
 </revisionlist>
