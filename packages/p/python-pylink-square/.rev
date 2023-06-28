@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>300721989eb588e0cfa775518e0c511d</srcmd5>
+    <version>1.1.0</version>
+    <time>1687980826</time>
+    <user>dimstar_suse</user>
+    <comment>required by python-spsdk (see SR#1095807), which is required by nitropy aka pynitrokey</comment>
+    <requestid>1095819</requestid>
+  </revision>
+</revisionlist>
