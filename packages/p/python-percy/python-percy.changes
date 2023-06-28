@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 27 11:53:34 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Adapt to changes in urllib3 v2
+
+-------------------------------------------------------------------
 Tue Mar 31 08:05:49 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Initial commit, needed by dash

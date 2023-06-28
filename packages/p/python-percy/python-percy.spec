@@ -1,7 +1,7 @@
 #
 # spec file for package python-percy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,6 +40,8 @@ Python client library for visual regression testing with Percy.
 
 %prep
 %setup -q -n percy-%{version}
+# support urllib3 v2
+sed -i 's/method_whitelist/allowed_methods/g' percy/connection.py
 
 %build
 %python_build
