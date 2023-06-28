@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 26 13:02:05 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Remove obsolete_python_versioned macro again. This mechanism
+  has no business to be in Python 3.11, because we have abolished
+  with it whole interpreter+setuptools+pip product. Python 3.11
+  should not be replaced by later versions anymore.
+
+-------------------------------------------------------------------
 Sun Apr 30 18:13:16 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
-- Why in the world we download from HTTP?
 - Add 103213-fetch-CONFIG_ARGS.patch (gh#python/cpython#103053).
 - Add skip_if_buildbot-extend.patch to avoid the bug altogether
   (extending what skip_if_buildbot covers).

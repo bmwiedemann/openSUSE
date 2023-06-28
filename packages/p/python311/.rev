@@ -864,4 +864,15 @@ C API
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1092590</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>1f9b6dd0400b9a706f20e4f49eddcd12</srcmd5>
+    <version>3.11.3</version>
+    <time>1687980791</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete_python_versioned macro again. This mechanism
+  has no business to be in Python 3.11, because we have abolished
+  with it whole interpreter+setuptools+pip product. Python 3.11
+  should not be replaced by later versions anymore.</comment>
+    <requestid>1095626</requestid>
+  </revision>
 </revisionlist>

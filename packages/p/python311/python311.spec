@@ -43,16 +43,6 @@
 %define primary_interpreter 0
 %endif
 
-%if 0%{?sle_version} && 0%{?suse_version} < 1550
-# Obsoleting previous "latest" Python versions
-# Next versions will get more lines like for older versions
-%define obsolete_python_versioned() \
-Obsoletes:      python39%{?1:-%{1}} \
-Obsoletes:      python310%{?1:-%{1}}
-%else
-%define obsolete_python_versioned() %{nil}
-%endif
-
 # Setting up variables
 %define _version %(c=%{version}; echo ${c/[a-z]*/})
 %define tar_suffix %(c=%{_version}; echo ${c#%{_version}})
@@ -227,7 +217,6 @@ Provides:       %{python_pkg_name}-sqlite3
 Recommends:     %{python_pkg_name}-curses
 Recommends:     %{python_pkg_name}-dbm
 Recommends:     %{python_pkg_name}-pip
-%obsolete_python_versioned
 %if %{primary_interpreter}
 Provides:       python3 = %{python_version}
 Provides:       python3-readline
@@ -253,7 +242,6 @@ development environment (python3-idle).
 %package -n %{python_pkg_name}-tk
 Summary:        TkInter, a Python Tk Interface
 Requires:       %{python_pkg_name} = %{version}
-%obsolete_python_versioned tk
 %if %{primary_interpreter}
 Provides:       python3-tk = %{version}
 %endif
@@ -264,7 +252,6 @@ Python interface to Tk. Tk is the GUI toolkit that comes with Tcl.
 %package -n %{python_pkg_name}-curses
 Summary:        Python Interface to the (N)Curses Library
 Requires:       %{python_pkg_name} = %{version}
-%obsolete_python_versioned curses
 %if %{primary_interpreter}
 Provides:       python3-curses
 %endif
@@ -276,7 +263,6 @@ Console User Interface.
 %package -n %{python_pkg_name}-dbm
 Summary:        Python Interface to the GDBM Library
 Requires:       %{python_pkg_name} = %{version}
-%obsolete_python_versioned dbm
 %if %{primary_interpreter}
 Provides:       python3-dbm
 %endif
@@ -289,7 +275,6 @@ the GNU implementation GDBM.
 Summary:        An Integrated Development Environment for Python
 Requires:       %{python_pkg_name} = %{version}
 Requires:       %{python_pkg_name}-tk
-%obsolete_python_versioned idle
 %if %{primary_interpreter}
 Provides:       python3-idle = %{version}
 %endif
@@ -303,7 +288,6 @@ a debugger.
 %package -n %{python_pkg_name}-doc
 Summary:        Package Documentation for Python 3
 Enhances:       %{python_pkg_name} = %{python_version}
-%obsolete_python_versioned doc
 %if %{primary_interpreter}
 Provides:       python3-doc = %{version}
 %endif
@@ -315,7 +299,6 @@ Python, and Macintosh Module Reference in HTML format.
 
 %package -n %{python_pkg_name}-doc-devhelp
 Summary:        Additional Package Documentation for Python 3 in devhelp format
-%obsolete_python_versioned doc-devhelp
 %if %{primary_interpreter}
 Provides:       python3-doc-devhelp = %{version}
 %endif
@@ -329,7 +312,6 @@ Python, and Macintosh Module Reference in format for devhelp.
 Summary:        Python 3 Interpreter and Stdlib Core
 Requires:       libpython%{so_version} = %{version}
 Recommends:     %{python_pkg_name} = %{version}
-%obsolete_python_versioned base
 #Recommends:     python3-ensurepip
 # python 3.1 didn't have a separate python-base, so it is wrongly
 # not a conflict to have python3-3.1 and python3-base > 3.1
@@ -337,10 +319,8 @@ Obsoletes:      python3 < 3.2
 # no Provides, because python3 is obviously provided by package python3
 # python 3.4 provides asyncio
 Provides:       %{python_pkg_name}-asyncio = %{version}
-%obsolete_python_versioned asyncio
 # python 3.6 provides typing
 Provides:       %{python_pkg_name}-typing = %{version}
-%obsolete_python_versioned typing
 # python3-xml was merged into python3, now moved into -base
 Provides:       %{python_pkg_name}-xml = %{version}
 %if %{primary_interpreter}
@@ -370,7 +350,6 @@ Summary:        Python Utility and Demonstration Scripts
 Requires:       %{python_pkg_name}-base = %{version}
 Provides:       %{python_pkg_name}-2to3 = %{version}
 Provides:       %{python_pkg_name}-demo = %{version}
-%obsolete_python_versioned tools
 %if %{primary_interpreter}
 Provides:       python3-2to3 = %{version}
 Provides:       python3-demo = %{version}
@@ -386,7 +365,6 @@ and a set of demonstration programs.
 %package -n %{python_pkg_name}-devel
 Summary:        Include Files and Libraries Mandatory for Building Python Modules
 Requires:       %{python_pkg_name}-base = %{version}
-%obsolete_python_versioned devel
 %if %{primary_interpreter}
 Provides:       python3-devel = %{version}
 %endif
@@ -406,7 +384,6 @@ package up to version 2.2.2.
 Summary:        Unit tests for Python and its standard library
 Requires:       %{python_pkg_name} = %{version}
 Requires:       %{python_pkg_name}-tk = %{version}
-%obsolete_python_versioned testsuite
 %if %{primary_interpreter}
 Provides:       python3-testsuite = %{version}
 %endif
