@@ -445,4 +445,11 @@
   * Remove explicit conflicts with other devel-libraries</comment>
     <requestid>1095609</requestid>
   </revision>
+  <revision rev="47" vrev="3">
+    <srcmd5>2c3495826f72ec841512c01a3bcb5d32</srcmd5>
+    <version>1.1.1u</version>
+    <time>1687940477</time>
+    <user>dimstar_suse</user>
+    <comment>Revert; change needs to be synced with openssl 3.0 update</comment>
+  </revision>
 </revisionlist>

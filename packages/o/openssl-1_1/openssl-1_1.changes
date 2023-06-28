@@ -1,11 +1,4 @@
 -------------------------------------------------------------------
-Tue Jun 20 15:18:56 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
-
-- Improve cross-package provides/conflicts [boo#1210313]
-  * Add Provides/Conflicts: ssl-devel
-  * Remove explicit conflicts with other devel-libraries
-
--------------------------------------------------------------------
 Wed May 31 08:31:09 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Update to 1.1.1u:

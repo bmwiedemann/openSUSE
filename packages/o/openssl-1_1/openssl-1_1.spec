@@ -134,7 +134,6 @@ Patch79:        openssl-1_1-Fix-AES-GCM-on-Power-8-CPUs.patch
 Patch80:        openssl-1_1-openssl-config.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
-Provides:       ssl
 Requires:       libopenssl1_1 = %{version}-%{release}
 %if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550
 Requires:       crypto-policies
@@ -181,7 +180,8 @@ Requires:       libopenssl1_1 = %{version}
 Requires:       pkgconfig(zlib)
 Recommends:     %{name} = %{version}
 Conflicts:      ssl-devel
-Provides:       ssl-devel
+# Conflicting names with libopenssl-3-devel
+Conflicts:      libopenssl-3-devel
 # Needed for clean upgrade from former openssl-1_1_0, boo#1081335
 Obsoletes:      libopenssl-1_1_0-devel
 # Needed for clean upgrade from SLE-12 openssl-1_0_0, bsc#1158499
