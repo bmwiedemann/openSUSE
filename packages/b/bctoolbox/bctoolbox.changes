@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 28 06:37:03 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.2.73 (no changelog)
+
+-------------------------------------------------------------------
 Wed May  3 13:53:42 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Also set the devel-package dependency on mbedtls-devel to < 3: no

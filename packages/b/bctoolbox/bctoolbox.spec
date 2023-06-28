@@ -18,7 +18,7 @@
 
 %define sover   1
 Name:           bctoolbox
-Version:        5.2.49
+Version:        5.2.73
 Release:        0
 Summary:        Utility library for software from Belledonne Communications
 License:        GPL-3.0-or-later

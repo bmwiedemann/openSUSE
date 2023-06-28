@@ -407,4 +407,13 @@
     <comment></comment>
     <requestid>1084348</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>6c295be67137bf1673d510bc7703a1fd</srcmd5>
+    <version>5.2.73</version>
+    <time>1687980805</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.73 (no changelog)
+</comment>
+    <requestid>1095730</requestid>
+  </revision>
 </revisionlist>
