@@ -1,7 +1,7 @@
 #
 # spec file for package python-drms
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
-%define         skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-drms
-Version:        0.6.2
+Version:        0.6.4
 Release:        0
 Summary:        Tool to access HMI, AIA and MDI data with Python
 License:        MIT

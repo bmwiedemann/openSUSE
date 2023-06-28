@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 27 08:43:40 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.6.4
+  * Modified `drms.client.Client._convert_numeric_keywords` to use 
+    a row-centric approach for handling hexadecimal strings. 
+  * Modified `drms.utils.to_datetime` to work with Pandas 2.0. 
+
+-------------------------------------------------------------------
 Thu Aug  5 18:39:53 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.6.2
