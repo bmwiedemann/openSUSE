@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-containers
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,6 @@ Provides:       pattern-order() = 9030
 Provides:       pattern-visible()
 Requires:       containers-systemd
 Requires:       podman
-Requires:       podman-cni-config
 Requires:       (distrobox if patterns-microos-desktop-common else toolbox)
 Suggests:       toolbox
 Requires:       pattern() = basesystem
