@@ -1,7 +1,7 @@
 #
 # spec file for package moolticute
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global UDEVDIR %{_udevrulesdir}
 %global QMAKE_BIN qmake-qt5
 Name:           moolticute
-Version:        1.00.1.r0.gf211d93
+Version:        1.01.0.r0.g77100ea
 Release:        0
 Summary:        Companion GUI application for Mooltipass password manager devices
 License:        GPL-3.0-only

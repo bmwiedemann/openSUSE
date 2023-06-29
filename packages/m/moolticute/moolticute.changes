@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jun 29 07:08:47 UTC 2023 - Stefan Weiberg <opensuse@hibiki.eu>
+
+- Update to v1.01.0
+    [BLE] Remove not tagged notes during import
+    [BLE] Fetch notes after import
+    [BLE] Fix import data nodes
+    [BLE] Display when entered multiple domain is invalid
+    [BLE] Fix multiple low battery notification
+    [BLE] Improve NoBundle FW upload
+    Fix application exit on Mac
+    bug fix: in a "no bundle" case, allow moolticute to fetch platform info
+    Mini BLE: increase file size to 20kB
+    Fix saving credential without passwords Qt6
+    changing hidden tabs shortcuts to SHIFT + Fx
+    increasing daemon log size
+    Mini: fix files upload
+
+-------------------------------------------------------------------
 Thu Dec  1 05:48:08 UTC 2022 - Bob Haley <fawz@use.startmail.com>
 
 - Update to v1.00.1
