@@ -17,7 +17,7 @@
 
 
 Name:           ckb-next
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        RGB driver for Corsair keyboard and mice
 License:        BSD-3-Clause AND GPL-2.0-only
@@ -35,8 +35,6 @@ Patch4:         ckb-next-udev.patch
 # PATCH-FIX-OPENSUSE 422.patch boo#1135528
 Patch5:         422.patch
 Patch6:         harden_ckb-next-daemon.service.patch
-# PATCH-FIX-UPSTREAM fix_buffer_overflow_FORTIFY_SOURCE.patch
-Patch7:         fix_buffer_overflow_FORTIFY_SOURCE.patch
 BuildRequires:  ImageMagick
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
@@ -51,7 +49,6 @@ BuildRequires:  cmake(Qt5Widgets) >= 5.2
 BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  cmake(dbusmenu-qt5)
 BuildRequires:  pkgconfig(libpulse)
-BuildRequires:  pkgconfig(libpulse-simple)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(xcb)
@@ -113,6 +110,7 @@ ln -sf service %{buildroot}%{_sbindir}/rc%{name}-daemon
 %{_sbindir}/rc%{name}-daemon
 %{_libexecdir}/%{name}-daemon
 %{_libexecdir}/%{name}-animations
+%{_libexecdir}/%{name}-sinfo
 %{_udevrulesdir}/99-%{name}-daemon.rules
 %{_unitdir}/%{name}-daemon.service
 

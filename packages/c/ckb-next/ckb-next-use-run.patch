@@ -1,14 +1,13 @@
-Index: ckb-next-0.5.0/ckb-next-dev-detect
-===================================================================
---- ckb-next-0.5.0.orig/ckb-next-dev-detect
-+++ ckb-next-0.5.0/ckb-next-dev-detect
+diff -Naur ckb-next-0.6.0.orig/ckb-next-dev-detect ckb-next-0.6.0/ckb-next-dev-detect
+--- ckb-next-0.6.0.orig/ckb-next-dev-detect	2023-06-22 23:07:29.000000000 +0200
++++ ckb-next-0.6.0/ckb-next-dev-detect	2023-06-25 10:58:28.109452264 +0200
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env bash
 +#!/bin/bash
  
  # Newline
  N=$'\n'
-@@ -69,7 +69,7 @@ else
+@@ -69,7 +69,7 @@
              OUT="${OUT}${N}${N}Daemon on current boot:${N}`journalctl -o short-precise -b 0 --unit=ckb-next-daemon 2>&1`"
              OUT="${OUT}${N}${N}Daemon on last boot:${N}`journalctl -o short-precise -b -1 --unit=ckb-next-daemon 2>&1`"
          fi
@@ -17,10 +16,9 @@ Index: ckb-next-0.5.0/ckb-next-dev-detect
          OUT="${OUT}${N}${N}Kernel command line:${N}`cat /proc/cmdline`"
          GUIPATH="$(which ckb-next)"
          OUT="${OUT}${N}${N}GUI ldd:${N}`ldd ${GUIPATH}`"
-Index: ckb-next-0.5.0/src/daemon/devnode.c
-===================================================================
---- ckb-next-0.5.0.orig/src/daemon/devnode.c
-+++ ckb-next-0.5.0/src/daemon/devnode.c
+diff -Naur ckb-next-0.6.0.orig/src/daemon/devnode.c ckb-next-0.6.0/src/daemon/devnode.c
+--- ckb-next-0.6.0.orig/src/daemon/devnode.c	2023-06-22 23:07:29.000000000 +0200
++++ ckb-next-0.6.0/src/daemon/devnode.c	2023-06-25 11:00:12.833333006 +0200
 @@ -7,13 +7,7 @@
  #include "profile.h"
  #include <ckbnextconfig.h>
@@ -28,18 +26,17 @@ Index: ckb-next-0.5.0/src/daemon/devnode.c
 -// OSX doesn't like putting FIFOs in /dev for some reason
 -// Don't make these pointers, as doing so will result in sizeof() not producing the correct result.
 -#ifndef OS_MAC
--const char devpath[] = "/dev/input/ckb";
+-#define DEVPATH "/dev/input/ckb"
 -#else
--const char devpath[] = "/var/run/ckb";
+-#define DEVPATH "/var/run/ckb"
 -#endif
-+const char devpath[] = "/run/ckb";
++#define DEVPATH "/run/ckb"
  
+ const char devpath[] = DEVPATH;
  #define DEVPATH_LEN (sizeof(devpath) - 1)
- 
-Index: ckb-next-0.5.0/src/gui/kbmanager.cpp
-===================================================================
---- ckb-next-0.5.0.orig/src/gui/kbmanager.cpp
-+++ ckb-next-0.5.0/src/gui/kbmanager.cpp
+diff -Naur ckb-next-0.6.0.orig/src/gui/kbmanager.cpp ckb-next-0.6.0/src/gui/kbmanager.cpp
+--- ckb-next-0.6.0.orig/src/gui/kbmanager.cpp	2023-06-22 23:07:29.000000000 +0200
++++ ckb-next-0.6.0/src/gui/kbmanager.cpp	2023-06-25 11:01:01.785277266 +0200
 @@ -2,11 +2,7 @@
  #include "idletimer.h"
  #include <limits>
