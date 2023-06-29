@@ -1,7 +1,7 @@
 #
 # spec file for package linuxrc-devtools
 #
-# Copyright (c) 2022 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           linuxrc-devtools
-Version:        1.1
+Version:        1.2
 Release:        0
 Source:         %{name}-%{version}.tar.xz
 
 BuildRequires:  make
 
-Url:            http://github.com/openSUSE/linuxrc-devtools
+URL:            http://github.com/openSUSE/linuxrc-devtools
 Summary:        Tools to submit from Git to OBS via Jenkins
 License:        MIT
 Group:          Development/Tools

@@ -1,4 +1,14 @@
 --------------------------------------------------------------------
+Wed Jun 28 19:43:06 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc-devtools#32
+- add --no-tag option
+- add --from option to allow submitting from one project to another
+- create package in target project if missing
+- set version number
+- 1.2
+
+--------------------------------------------------------------------
 Mon Aug 8 12:46:25 UTC 2022 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc-devtools#31
