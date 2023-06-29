@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jun 21 07:43:42 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.28
+  * Added SDL_HasWindowSurface() and SDL_DestroyWindowSurface() to
+    switch between the window surface and rendering APIs.
+  * Added a display event SDL_DISPLAYEVENT_MOVED which is sent
+    when the primary monitor changes or displays change position
+    relative to each other.
+  * Added the hint SDL_HINT_ENABLE_SCREEN_KEYBOARD to control
+    whether the on-screen keyboard should be shown when text input
+    is active.
+- Delete 0001-Cleanup-add-brace-6545.patch,
+  0002-Update-for-SDL3-coding-style-6717.patch,
+  0003-Clang-Tidy-fixes-6725.patch (inapplicable),
+  0004-evdev_kbd-Use-current-keymap.patch (merged).
+
+-------------------------------------------------------------------
 Tue Apr 11 08:02:18 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.26.5

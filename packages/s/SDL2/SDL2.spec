@@ -19,7 +19,7 @@
 %define sle_version 0
 Name:           SDL2
 %define lname   libSDL2-2_0-0
-Version:        2.26.5
+Version:        2.28.0
 Release:        0
 Summary:        Simple DirectMedia Layer Library
 License:        Zlib
@@ -31,10 +31,6 @@ Source2:        https://libsdl.org/release/%name-%version.tar.gz.sig
 Source3:        %name.keyring
 Source4:        baselibs.conf
 Patch1:         sdl2-symvers.patch
-Patch2:         0001-Cleanup-add-brace-6545.patch
-Patch3:         0002-Update-for-SDL3-coding-style-6717.patch
-Patch4:         0003-Clang-Tidy-fixes-6725.patch
-Patch5:         0004-evdev_kbd-Use-current-keymap.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libdecor-devel

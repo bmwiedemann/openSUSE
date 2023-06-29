@@ -420,4 +420,12 @@
     <comment>- Update to release 2.26.5</comment>
     <requestid>1078367</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>dcb697662b475dc6b5a01e8781bacd3b</srcmd5>
+    <version>2.28.0</version>
+    <time>1688052453</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1095776</requestid>
+  </revision>
 </revisionlist>
