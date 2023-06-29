@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 28 20:43:13 UTC 2023 - Jan Baier <jbaier@suse.com>
+
+- update to 0.7.4
+  * Change: Use a single replacenew-type 'SIGNALS' instead of 3 different constants. by @frosch123 in https://github.com/OpenTTD/nml/pull/297
+  * Fix #295: Adjust version_openttd for OpenTTD >= 12.0. by @frosch123 in https://github.com/OpenTTD/nml/pull/296
+  * Fix dfb4499: incomplete read only checks (again) by @glx22 in https://github.com/OpenTTD/nml/pull/292
+  * Change: Support extended DCxx string range, and station names for IDs > 255 by @glx22 in https://github.com/OpenTTD/nml/pull/293
+  * Support for roadtype direction markings (OTTD #10282) by @FLHerne in https://github.com/OpenTTD/nml/pull/274
+  * Update: changelog for 0.7.4 by @glx22 in https://github.com/OpenTTD/nml/pull/298
+
+-------------------------------------------------------------------
 Mon May 22 09:44:03 UTC 2023 - Jan Baier <jbaier@suse.com>
 
 - update to 0.7.3
