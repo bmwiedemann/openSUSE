@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Jun 28 06:13:22 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 13.1.5:
+  * Release 13.1.5 (#28364)
+  * [v13] Clarify permissions for Okta API tokens. (#28294)
+  * [v13] Fix TestSQSMessagesCollectorErrorsOnReceive flakiness
+    (#28184)
+  * [v13] Allow setting max_session_ttl from clusterauth
+    preferences (#28130)
+
+-------------------------------------------------------------------
+Tue Jun 27 05:01:42 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 13.1.4:
+  * Release 13.1.4 (#28327)
+  * Fix audit log report of `kubernetes_users` and
+    `kubernetes_groups` (#28323)
+  * Docs: Update recommended role (#28278)
+  * Reduce debug log spam for TeleportReady events (#28319)
+  * Use the long-form --config flag in shell example (#28299)
+  * Pass teleport-reversetunnelv2 for auth connections (#28316)
+  * Returned Vars to the code output (#28225)
+  * only apply stripe csp for team/usage users (#28198) (#28308)
+  * docs: include desktops for cloud faq reverse tunnel (#28305)
+  * Respect client idle timeout setting (#28202)
+  * Don't add keys to agent during headless login. (#28236)
+  * [v13] Preserve applications original URL's query (#28218)
+  * Converts the default Content-Security-Policy representation to
+    a map (#27182) (#28307)
+  * [v13] Add associated applications and user groups to UI
+    objects. (#28303)
+  * Move "Device Trust" to a top-level docs item (#28108) (#28199)
+  * Improve the upload completer logs (#28211)
+  * [v13] Use supplied tarball when building AMIs  (#28128)
+  * [v13] docs: default https ports for tsh login (#28288)
+  * Always collect `deny` arm of `kubernetes_resources` (#28285)
+  * Support `assume_role_arn` for database dynamic resources
+    (#28039) (#28210)
+  * [v13] Windows Device Trust documentation (#28050)
+
+-------------------------------------------------------------------
 Mon Jun 26 06:58:12 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 13.1.3:
