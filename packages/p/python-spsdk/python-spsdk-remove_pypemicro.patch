@@ -1,0 +1,47 @@
+From 835e24b7cd0b3ba6a62f0abfbb094ad7ee3ab524 Mon Sep 17 00:00:00 2001
+From: Johannes Kastl <kastl@b1-systems.de>
+Date: Mon, 15 May 2023 13:27:29 +0200
+Subject: [PATCH] remove pypemicro
+
+based on
+https://github.com/archlinux/svntogit-community/blob/19938f5cab9adf93da26c09ebeb8111ed1bdc59b/trunk/python-spsdk-1.6.0-remove_pypemicro.patch
+
+Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
+---
+ spsdk/debuggers/__init__.py | 1 -
+ spsdk/debuggers/utils.py    | 2 --
+ 2 files changed, 3 deletions(-)
+
+diff --git a/spsdk/debuggers/__init__.py b/spsdk/debuggers/__init__.py
+index adefa19..52afffd 100644
+--- a/spsdk/debuggers/__init__.py
++++ b/spsdk/debuggers/__init__.py
+@@ -9,5 +9,4 @@
+ 
+ from .debug_probe import DebugProbe
+ from .debug_probe_jlink import DebugProbePyLink
+-from .debug_probe_pemicro import DebugProbePemicro
+ from .debug_probe_pyocd import DebugProbePyOCD
+diff --git a/spsdk/debuggers/utils.py b/spsdk/debuggers/utils.py
+index c6ba667..ba22335 100644
+--- a/spsdk/debuggers/utils.py
++++ b/spsdk/debuggers/utils.py
+@@ -16,7 +16,6 @@ import prettytable
+ from spsdk import SPSDKError
+ from spsdk.debuggers.debug_probe import DebugProbe, SPSDKDebugProbeError, SPSDKProbeNotFoundError
+ from spsdk.debuggers.debug_probe_jlink import DebugProbePyLink
+-from spsdk.debuggers.debug_probe_pemicro import DebugProbePemicro
+ 
+ # Import all supported debug probe classes
+ from spsdk.debuggers.debug_probe_pyocd import DebugProbePyOCD
+@@ -24,7 +23,6 @@ from spsdk.debuggers.debug_probe_pyocd import DebugProbePyOCD
+ PROBES: Dict[str, Type[DebugProbe]] = {
+     "pyocd": DebugProbePyOCD,
+     "jlink": DebugProbePyLink,
+-    "pemicro": DebugProbePemicro,
+ }
+ 
+ logger = logging.getLogger(__name__)
+-- 
+2.40.1
+

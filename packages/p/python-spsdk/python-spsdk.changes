@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Wed May 31 05:46:17 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- do no longer package the *.c and *.bin files in
+  spsdk/data/cpu_data/ (see
+  https://github.com/nxp-mcuxpresso/spsdk/issues/60)
+
+-------------------------------------------------------------------
+Mon May 15 11:57:52 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- add patch python-spsdk-remove_pypemicro.patch to remove
+  dependency on pypemicro, which contains a binary blob and cannot
+  be distributed on OBS as is
+  (see https://github.com/nxp-mcuxpresso/spsdk/issues/30)
+- remove Requires for pyocd-pemicro
+
+-------------------------------------------------------------------
+Fri May 12 05:18:05 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package python-spsdk, required by pynitrokey
