@@ -1646,4 +1646,14 @@ Changes:
 - container: fixes for startdocker in chroot</comment>
     <requestid>1089263</requestid>
   </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>56640fc95fbfdaf9914ce9d588dbc4b1</srcmd5>
+    <version>20230628</version>
+    <time>1688052449</time>
+    <user>dimstar_suse</user>
+    <comment>- --vm-type=podman added (supports also root-less builds)
+- Also support build constraints in the Dockerfile
+- minor fixes</comment>
+    <requestid>1095759</requestid>
+  </revision>
 </revisionlist>

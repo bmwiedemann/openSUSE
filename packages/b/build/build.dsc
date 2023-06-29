@@ -1,6 +1,6 @@
 Format: 1.0
 Source: build
-Version: 20230527
+Version: 20230628
 Binary: build
 Maintainer: Adrian Schroeter <adrian@suse.de>
 Architecture: all
