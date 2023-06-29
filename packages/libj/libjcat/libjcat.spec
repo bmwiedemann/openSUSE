@@ -19,7 +19,7 @@
 %define sover 1
 
 Name:           libjcat
-Version:        0.1.13
+Version:        0.1.14
 Release:        0
 Summary:        Library for reading and writing gzip-compressed JSON catalog files
 License:        LGPL-2.1-or-later
