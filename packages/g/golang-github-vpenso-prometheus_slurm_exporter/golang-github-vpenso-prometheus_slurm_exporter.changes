@@ -1,0 +1,70 @@
+-------------------------------------------------------------------
+Tue Jun 27 11:19:12 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Adjust-GPU-data-gathering-to-work-with-all-Slurm-versions-since-18.08.patch
+  Fix to make GPU data gathering works with all Slurm versions since 18.08.
+- Add a sysconfig settings to make daemon command line args easily.
+- Fix service file names to match upstream:
+    prometheus-slurm_exporter.service -> prometheus-slurm-exporter.service
+    rcprometheus-slurm_exporter -> rcprometheus-slurm-exporter
+  To support updates, the old name is still kept as sym-link.
+  Add README.SUSE to inform about sysconfig file.
+
+-------------------------------------------------------------------
+Thu Jun 16 11:35:34 UTC 2022 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.20
+  * Multiple README fix.
+  * Improve build process.
+
+-------------------------------------------------------------------
+Thu Jul 22 13:23:12 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Update to version 0.19
+  * GPUs accounting has to be activated explicitly via cmd line option.
+  * Export detailed usage info for every node (CPU, Memory).
+  NOTE: With the present version of Slurm (20.11), GPU accounting
+  in the prometheus-slurm-exporter will cause the exporter to
+  terminate, thus it must not be enabled for the time being.
+- Do not ship sources.
+
+-------------------------------------------------------------------
+Thu Mar 18 15:04:01 UTC 2021 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- New version 0.17
+  * Export information about shares via sshare
+- New version 0.16
+  * Add support to provide information about GPU GREs usage
+
+-------------------------------------------------------------------
+Wed Dec  2 12:51:19 UTC 2020 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- New version 0.15 
+  * Metric updates
+  * Bugfixes
+- Upstream now provides go.mod, update packaging accordingly.
+
+-------------------------------------------------------------------
+Wed Dec 18 16:54:26 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- List all source files.
+
+-------------------------------------------------------------------
+Wed Dec 11 13:52:46 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Remove grafana-dashboards and do not add the dashboard in the tarball,
+  its license needs to be clarified. It's also easier for users 
+  to install the board from grafana.com 
+
+-------------------------------------------------------------------
+Fri Dec  6 10:21:32 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Add new package with grafana-dashboards
+- Add README.packaging
+- Document use_sbin.patch
+
+-------------------------------------------------------------------
+Mon Dec  2 11:57:46 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
+
+- Initial release. 
+

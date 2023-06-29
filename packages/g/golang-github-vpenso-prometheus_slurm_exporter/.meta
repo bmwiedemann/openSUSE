@@ -1,0 +1,5 @@
+<package name="golang-github-vpenso-prometheus_slurm_exporter" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="server:monitoring" package="golang-github-vpenso-prometheus_slurm_exporter"/>
+</package>
