@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 21 06:39:49 UTC 2023 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 4.22.1
+ * Viewing number of recently unread messages in top node description when top
+   node collapsed in account list. Also changed the icon for the top node.
+ * Added support for new data-box type PFO_REQ.
+ * User can specify which information he wants to disclose to the recipient
+   about the sender.
+
+-------------------------------------------------------------------
 Wed Nov 23 06:52:13 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
 
 - Update to 4.21.1
