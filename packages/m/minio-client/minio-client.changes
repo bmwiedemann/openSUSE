@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun 29 08:35:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230628T215417Z:
+  * Upgrade madmin-go/v3 to 3.0.4 (#4618)
+  * Fix issues related to 'mc admin svcacct list --json' cmd
+    (#4619)
+  * improve user messaging in 'support perf' and 'mc rm --dry-run'
+    (#4617)
+  *  fix: allow cluster bucket export to export single bucket
+     (#4614)
+  * Improve consistency in mc cmds (#4609)
+  * Update minio dependencies (#4610)
+
+-------------------------------------------------------------------
 Tue Jun 20 04:55:56 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 20230619T193119Z:
