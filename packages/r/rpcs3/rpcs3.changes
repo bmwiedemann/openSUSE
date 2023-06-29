@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Wed Jun 21 15:08:13 UTC 2023 - i@guoyunhe.me
+
+- Update to version 0.0.28~git20230620:
+  * Fix PPU debug setting with PPU interpreter
+  * Fix Create PPU Cache
+  * jit: fix assertion in GDBJITRegistrationListener
+  * Move connect workaround to connect interface
+  * Windows: silence uncritical performance counter error
+  * Nicer variable names
+  * vk: Latch query copy requests to reduce number of vulkan commands used
+  * progress dialog fix
+  * Qt: use shift+click to append the button instead of replacing it
+  * evdev: don't release buttons while other buttons are still pressed
+  * input: allow multiple key codes per button
+  * logging: minor trace optimizations
+  * Qt/logging: add format function for QString
+  * Settings: Move Accurate SPU DMA to Advanced
+  * Settings: Add Output Scaling to Home Menu
+  * Settings: Enable hot-reloading of Output Scaling
+  * Settings: Reorder settings in Debug
+  * Settings: Reorder settings in Emulator
+  * Settings: Move Automatically start games after boot to Debug
+  * Settings: Rename to Force GPU Texture Scaling
+  * Settings: Rename to Pause emulation after loading savestates
+  * Settings: Remove PPU Interpreter (dynamic)
+  * Settings: Move Accurate GETLLAR to Advanced
+  * Settings: Move Accurate PPU Float Condition Control to Debug
+  * Settings: Move Accurate PPU Vector NaN Handling to Debug
+  * Settings: Move Accurate PPU Non-Java Mode to Debug
+  * Settings: Move Accurate PPU Saturation Bit to Debug
+  * Settings: Add Show PPU compilation hint
+  * Settings: Move Start Savestates Paused to Emulator
+  * Settings: Move Disable Vertex Cache to Advanced
+  * Settings: Remove Full Width AVX-512 from the UI
+  * Settings: Enable Full Width AVX-512 by default
+  * PPUAnalyser: fix std::move nonsense
+  * vk: Do not hard-sync on first sign of fragmentation
+  * vk: On pool recovery, rescan the subpool table in case a new pool really cannot be created
+  * vk: Handle VK_ERROR_FRAGMENTATION when allocating descriptor pools
+  * np_handler: fix warning: check socket in discover_ip_address
+  * Loader: remove dead code
+  * Log Frame: Make clear act clear pending messages (#14004)
+  * input: add controller index to SDL controllers
+  * input: add new buttons for Dualsense Edge
+  * input: merge some duplicate code
+  * input: Add dualsense edge PID
+  * fs/linux: fix potential copy_file issue
+  * Fix EINVAL returned on connect call to connecting socket
+  * Qt: Improve PS3 Binaries Decryption tool
+  * System.cpp: Updated the definition of user-space LV2 CoreOS SELFs
+  * CI: switch FreeBSD back to /latest after llvm16 re-appeared
+  * overlays: update progress dialog workaround
+  * vk: Cleaner approach to object lifetime management
+  * vk: Improved OOM handling
+  * rsx: Minor annotations and refactoring
+  * rsx: Drop format information from the vertex cache and use a simpler model that is much faster
+  * rsx: Import robin-hood unordered map which is much faster than std
+  * rsx: Rewrite the find method to avoid unnecessary allocations
+  * rsx: Allow the vertex cache to be enabled independently of MTRSX
+  * rsx: Capture stats about vertex cache performance
+  * SPU/Debugger: Add RawSPU debug data
+  * PPU: Fix thread entry detection false positives
+  * cellMsgDialog: Fix segfault when closing non-blocking Qt dialogs
+  * Qt: add ability to style richtext href links
+  * input: fix some warnings
+  * PSF: improve load readability
+  * fix whitespace
+  * Qt: do not set play/pause button texts to 'Resume' on emu stop or ready
+  * Qt: always use last boot path for game boot actions
+  * System: fix config path in restore_on_no_boot
+  * System: use const ref for libs map
+  * Qt: fix start/restart shortcut
+  * Rename ProcureCurrentEmulationCourseInformation to GetEmulationIdentifier
+  * debugger_frame: don't query cpu thread if emulation is stopped anyway
+  * unself.cpp: Always reset the old SELF header information before loading
+  * input: add pressure intensity toggle mode
+  * vk: Disable conditional rendering on MacOS
+  * Force disable conditional render on macOS
+  * PPU: Sleep after returning from thread entry function
+  * sys_ppu_thread: Optimize joined thread notification
+  * debugger: Fix trailing spaces in PPU register dump
+  * register_editor_dialog: Improve selection
+  * Fix _sys_interrupt_thread_disestablish with lingering thread copies
+  * Fix sys_ppu_thread_detach/exit with lingering thread copies
+  * Logs: Fix trailing space, nbsp and unintended character
+  * Fix spu_thread::cleanup()
+  * input: fix pad profile override with existing custom pad configs
+  * sys_fs: fix map entry removal in destructor
+  * Fixed a bug in fs::get_parent_dir()
+  * Update sys_usbd.cpp
+  * debugger(CallStack): Make Return act as double click
+  * debugger: Fix potential null dereference
+  * debugger: Fix key events when CallStack is focused
+  * debugger: Avoid incorrect update timer restart
+  * debugger: Fix use of invalid pointers
+  * sys_usbd: Implemented sys_usbd_unregister_extra_ldd()
+  * sys_usbd: USB VID/PID logging format fixup
+  * sys_ss: Further implemented Update Manager service for VSH
+  * sys_fs: Implemented sys_fs_mount(prot=1) read-only mounting & fixed up some operation and permission checks
+  * CI: temporarily switch FreeBSD to /quarterly packages
+  * CI: upgrade FreeBSD to 13.2
+  * Update sys_timer.cpp
+  * Update sys_timer.cpp
+  * Update sys_mutex.h
+  * Update sys_lwmutex.h
+  * Update sys_lwmutex.h
+  * Update sys_mutex.h
+
+-------------------------------------------------------------------
 Sat Jun 03 01:46:30 UTC 2023 - i@guoyunhe.me
 
 - Update to version 0.0.28~git20230602:
