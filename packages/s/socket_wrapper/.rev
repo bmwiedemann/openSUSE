@@ -213,4 +213,12 @@ Note: socket_wrapper fails if built on 'lamb'</comment>
 </comment>
     <requestid>1067431</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>aaf166a685a5cac84fc7a130fc1cbe7c</srcmd5>
+    <version>1.4.1</version>
+    <time>1688052454</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1095788</requestid>
+  </revision>
 </revisionlist>

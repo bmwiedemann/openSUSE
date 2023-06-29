@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 21 10:45:26 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.4.1
+  * Fixed issue with fnctl() on 32bit
+  * Added openat64() to detect stale fds
+- Remove socket_wrapper-fix-cmocka-1.1.6+-support.patch
+
+-------------------------------------------------------------------
 Thu Feb 23 14:24:07 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Fix building with cmocka >= 1.1.6

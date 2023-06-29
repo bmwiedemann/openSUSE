@@ -24,7 +24,7 @@
 ############################# NOTE ##################################
 
 Name:           socket_wrapper
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        A library passing all socket communications through Unix sockets
 License:        BSD-3-Clause
@@ -35,7 +35,6 @@ Source0:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz
 Source1:        https://ftp.samba.org/pub/cwrap/%{name}-%{version}.tar.gz.asc
 Source2:        socket_wrapper.keyring
 Source3:        %{name}-rpmlintrc
-Patch0:         socket_wrapper-fix-cmocka-1.1.6+-support.patch
 #
 BuildRequires:  cmake
 BuildRequires:  libcmocka-devel
