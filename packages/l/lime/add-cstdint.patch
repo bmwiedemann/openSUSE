@@ -1,6 +1,7 @@
-diff -ru orig/src/lime_double_ratchet.cpp mod/src/lime_double_ratchet.cpp
---- orig/src/lime_double_ratchet.cpp	2022-11-09 23:33:57.000000000 +0100
-+++ mod/src/lime_double_ratchet.cpp	2023-03-28 08:12:25.447825643 +0200
+Index: lime-5.2.73/src/lime_double_ratchet.cpp
+===================================================================
+--- lime-5.2.73.orig/src/lime_double_ratchet.cpp
++++ lime-5.2.73/src/lime_double_ratchet.cpp
 @@ -25,6 +25,7 @@
  #include "bctoolbox/exception.hh"
  
@@ -9,12 +10,13 @@ diff -ru orig/src/lime_double_ratchet.cpp mod/src/lime_double_ratchet.cpp
  
  
  using namespace::std;
-diff -ru orig/src/lime_settings.hpp mod/src/lime_settings.hpp
---- orig/src/lime_settings.hpp	2022-11-09 23:33:57.000000000 +0100
-+++ mod/src/lime_settings.hpp	2023-03-28 08:11:58.683669300 +0200
-@@ -20,6 +20,8 @@
- #ifndef lime_settings_hpp
+Index: lime-5.2.73/src/lime_settings.hpp
+===================================================================
+--- lime-5.2.73.orig/src/lime_settings.hpp
++++ lime-5.2.73/src/lime_settings.hpp
+@@ -21,6 +21,8 @@
  #define lime_settings_hpp
+ 
  
 +#include <cstdint>
 +
