@@ -1,7 +1,7 @@
 #
 # spec file for package xmlgraphics-batik
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2000-2008, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -34,7 +34,6 @@ Patch1:         0001-Fix-imageio-codec-lookup.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
-BuildRequires:  jython
 BuildRequires:  rhino >= 1.6
 BuildRequires:  xml-commons-apis >= 1.3.03
 BuildRequires:  xmlgraphics-commons
@@ -176,9 +175,12 @@ done
 # for eclipse
 %pom_xpath_set pom:Bundle-SymbolicName org.apache.batik.util.gui batik-gui-util
 
+%pom_remove_dep :jython batik-script
+rm -rf batik-script/src/main/java/org/apache/batik/script/jpython
+
 %pom_disable_module batik-test-old
 
-build-jar-repository -s lib js xml-apis xml-commons-apis-ext xmlgraphics-commons jython
+build-jar-repository -s lib js xml-apis xml-commons-apis-ext xmlgraphics-commons
 
 %build
 export CLASSPATH=

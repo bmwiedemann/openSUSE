@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 28 14:27:24 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Remove the optional dependency on jython
+  * fixes new build cycles
+
+-------------------------------------------------------------------
 Fri Sep 23 07:28:24 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 1.15

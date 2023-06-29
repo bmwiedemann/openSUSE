@@ -329,4 +329,12 @@
     <comment>reference a missing CVE</comment>
     <requestid>1009586</requestid>
   </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>d6bb087992f1561d10c1f184e70eb4f2</srcmd5>
+    <version>1.15</version>
+    <time>1688052457</time>
+    <user>dimstar_suse</user>
+    <comment>remove dependency on jython</comment>
+    <requestid>1095829</requestid>
+  </revision>
 </revisionlist>
