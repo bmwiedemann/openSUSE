@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun 27 15:51:36 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 5.6.5:
+ * bugfix: lp#2024243 when creating splits for income transactions,
+   expenses are added as incomes regardless of amount sign
+ * bugfix: lp#2023388 account cannot be deleted message is not
+   precise enough
+ * bugfix: lp#2022049 windows: displayed values overflow int32 in
+   5.6.4
+ * bugfix: lp#2019312 status column included in export detail txn
+   from report break re-import
+ * bugfix: lp#2018039 lock icon for reconciled txn is not displayed
+   in report detail
+
+-------------------------------------------------------------------
 Fri May 19 15:37:28 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - update to 5.6.4:
