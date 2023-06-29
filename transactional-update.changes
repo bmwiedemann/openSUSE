@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 28 15:01:34 UTC 2023 - Ignaz Forster <iforster@suse.com>
+
+- Version 4.3.0
+  - Replace custom tu-rebuild-kdump-initrd with call to mkdumprd
+    [gh#openSUSE/transactional-update#107].
+  - Add support for libmount 2.39. The behaviour change was not
+    intended and will be changed in 2.39.1 (see
+    [gh#util-linux/util-linux#2326], but it was easy to fix it
+    anyway.
+  - Honor LIBMOUNT_DEBUG variable for additional output.
+
+-------------------------------------------------------------------
 Mon May  8 17:38:24 UTC 2023 - Ignaz Forster <iforster@suse.com>
 
 - Version 4.2.1
