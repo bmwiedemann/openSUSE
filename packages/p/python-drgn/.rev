@@ -41,4 +41,18 @@
 </comment>
     <requestid>1057008</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a2a7e92cd68a01f957818be861a281f5</srcmd5>
+    <version>0.0.23</version>
+    <time>1688052561</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to drgn-0.0.23:
+  * Support Linux 6.3 and 6.4
+  * Full s390x support
+  * Extend idr helpers for pre-4.11 Linux
+  * Support GNU-style compressed .zdebug_* sections
+  * New scripts in contrib
+</comment>
+    <requestid>1095952</requestid>
+  </revision>
 </revisionlist>

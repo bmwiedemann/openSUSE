@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 29 09:48:44 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- Update to drgn-0.0.23:
+  * Support Linux 6.3 and 6.4
+  * Full s390x support
+  * Extend idr helpers for pre-4.11 Linux
+  * Support GNU-style compressed .zdebug_* sections
+  * New scripts in contrib
+
+-------------------------------------------------------------------
 Sat Jan  7 20:40:49 UTC 2023 - Petr Tesařík <ptesarik@suse.com>
 
 - Update to drgn-0.0.22:
