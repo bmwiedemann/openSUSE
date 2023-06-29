@@ -18,15 +18,13 @@
 
 %bcond_without test
 Name:           python-semver
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        Python helper for Semantic Versioning
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/python-semver/python-semver
-Source:         https://github.com/python-semver/python-semver/archive/refs/tags/3.0.0-dev.4.tar.gz#/%{name}-3.0.0-dev.4-gh.tar.gz
-# PATCH-FIX-UPSTREAM - setup-remove-asterisk.patch
-Patch0:         https://github.com/python-semver/python-semver/pull/398.patch#/setup-remove-asterisk.patch
+Source:         https://github.com/python-semver/python-semver/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -45,8 +43,7 @@ A Python module for semantic versioning. Simplifies comparing versions.
 See also http://semver.org/
 
 %prep
-%setup -q -n python-semver-3.0.0-dev.4
-%patch0 -p1
+%setup -q -n python-semver-%{version}
 sed -i '/-cov/d' setup.cfg
 
 %build

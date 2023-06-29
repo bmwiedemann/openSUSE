@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun 21 20:11:42 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- remove obsolete setup-remove-asterisk.patch
+- update to version 3.0.1:
+ - Remove incorrect dependencies from build-system section of pyproject.toml by @mgorny in #405
+ - correct typo in function description of next_version by @treee111 in #406
+ - Improve GitHub Action by @tomschr in #408
+ - Add CITATION.cff for citation by @tomschr in #409
+ - Add Version class to __all__ export. Fix #410 by @Soneji in #411
+ - Configure docformatter by @tomschr in #412
+ - Prepare version 3.0.1 by @tomschr in #413
+
+-------------------------------------------------------------------
 Sat May  6 15:59:50 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 3.0.0:
