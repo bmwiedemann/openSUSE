@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Jun 28 06:12:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.6.0:
+  * release: v2.6.0 (#8921)
+  * feat: support tempalte parameterization for helm (#8911)
+  * feat: implement skaffold delete for docker deployer using
+    docker labels (#8885)
+  * chore: port apply-setter krm function over to skaffold (#8902)
+  * fix: Clean up dev images except the last (#8897)
+  * fix: add docker to the LTS container images (#8905)
+  * chore: bump github/codeql-action from 2.20.0 to 2.20.1 (#8903)
+  * chore: upgrade go version (#8893)
+  * feat: new verify timeout config feature (#8801)
+  * chore: bump github/codeql-action from 1.0.26 to 2.20.0 (#8888)
+  * fix: Go default template doesn't work for tagging (#8881)
+  * fix: #8870 manifest kustomize paths using env var with absolute
+    path (#8877)
+  * fix: condition to not update helm deployer hook patches, is not
+    needed (#8862)
+  * chore: bump schema version to v4beta6 (#8849)
+  * fix: logic to interrupt a k8sjob logs as soon as it fails
+    (#8847)
+  * chore: bump peter-evans/create-or-update-comment from 3.0.1 to
+    3.0.2 (#8865)
+  * fix: Always Pass skaffold binary in post-render to add labels
+    for status-check (#8826)
+  * chore: add lock to jib cache lookup (#8850)
+  * feat: logic to only emit the tags related with verify on
+    `skaffold verify` (#8851)
+  * fix: conditionally drain docker logs on stop to avoid docker
+    deployer to stay in infinite loop (#8838)
+  * fix(ko): Ko builder push vs load behavior (#8845)
+  * chore: update release build script to support internal scanning
+    (#8834)
+  * fix: Replace Kustomize field `patches` in examples (#8757)
+  * test: increase progressDeadlineSeconds timeout to make
+    TestRunUnstableChecked pass (#8833)
+
+-------------------------------------------------------------------
 Mon Jun 12 19:57:16 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.5.1:
