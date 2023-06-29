@@ -1,8 +1,7 @@
-diff --git a/src/utils/ffmpeg-priv.c b/src/utils/ffmpeg-priv.c
-index a3a801a9..9d696f17 100644
---- a/src/utils/ffmpeg-priv.c
-+++ b/src/utils/ffmpeg-priv.c
-@@ -23,31 +23,22 @@
+diff -ru a/src/utils/ffmpeg-priv.c b/src/utils/ffmpeg-priv.c
+--- a/src/utils/ffmpeg-priv.c	2023-06-14 09:45:13.000000000 +0200
++++ b/src/utils/ffmpeg-priv.c	2023-06-28 09:33:18.234674791 +0200
+@@ -24,31 +24,22 @@
  
  #ifndef HAVE_FUN_avcodec_encode_video2
  int avcodec_encode_video2 (AVCodecContext *avctx, AVPacket *avpkt, const AVFrame *frame, int *got_packet_ptr) {
@@ -45,11 +44,11 @@ index a3a801a9..9d696f17 100644
  #endif
  
  
-diff --git a/src/utils/ffmpeg-priv.h b/src/utils/ffmpeg-priv.h
-index 18338201..3ffeb088 100644
---- a/src/utils/ffmpeg-priv.h
-+++ b/src/utils/ffmpeg-priv.h
-@@ -79,6 +79,29 @@ static inline int avcodec_decode_video2(AVCodecContext *avctx, AVFrame *picture,
+Only in b/src/utils: ffmpeg-priv.c.orig
+diff -ru a/src/utils/ffmpeg-priv.h b/src/utils/ffmpeg-priv.h
+--- a/src/utils/ffmpeg-priv.h	2023-06-14 09:45:13.000000000 +0200
++++ b/src/utils/ffmpeg-priv.h	2023-06-28 09:33:18.238674814 +0200
+@@ -80,6 +80,29 @@
                           AVPacket *avpkt){
  	return avcodec_decode_video(avctx,picture, got_picture_ptr,avpkt->data,avpkt->size);
  }
@@ -79,7 +78,7 @@ index 18338201..3ffeb088 100644
  #endif
  #if HAVE_AVCODEC_OLD_CODEC_IDS
  #include <libavcodec/old_codec_ids.h>
-@@ -119,11 +142,6 @@ extern "C" {
+@@ -120,11 +143,6 @@
  int avcodec_encode_video2 (AVCodecContext *avctx, AVPacket *avpkt, const AVFrame *frame, int *got_packet_ptr);
  #endif
  
@@ -91,11 +90,11 @@ index 18338201..3ffeb088 100644
  #ifndef HAVE_FUN_avcodec_open2 /**/
  int avcodec_open2 (AVCodecContext *avctx, AVCodec *codec, AVDictionary **options);
  #endif
-diff --git a/src/utils/jpgloader-ffmpeg.c b/src/utils/jpgloader-ffmpeg.c
-index 62cf41db..9952fab7 100644
---- a/src/utils/jpgloader-ffmpeg.c
-+++ b/src/utils/jpgloader-ffmpeg.c
-@@ -75,7 +75,6 @@ mblk_t *jpeg2yuv(uint8_t *jpgbuf, int bufsize, MSVideoSize *reqsize){
+Only in b/src/utils: ffmpeg-priv.h.orig
+diff -ru a/src/utils/jpgloader-ffmpeg.c b/src/utils/jpgloader-ffmpeg.c
+--- a/src/utils/jpgloader-ffmpeg.c	2023-06-14 09:45:13.000000000 +0200
++++ b/src/utils/jpgloader-ffmpeg.c	2023-06-28 09:33:18.238674814 +0200
+@@ -76,7 +76,6 @@
  		return NULL;
  	}
  
@@ -103,24 +102,23 @@ index 62cf41db..9952fab7 100644
  	if (avcodec_open2(&av_context,codec,NULL)<0){
  		ms_error("jpeg2yuv: avcodec_open failed");
  		return NULL;
-diff --git a/src/videofilters/ffmpegjpegwriter.c b/src/videofilters/ffmpegjpegwriter.c
-index 5ee16b8d..8d1638f6 100644
---- a/src/videofilters/ffmpegjpegwriter.c
-+++ b/src/videofilters/ffmpegjpegwriter.c
-@@ -174,7 +174,7 @@ static void jpg_process(MSFilter *f){
- 			sws_freeContext(sws_ctx);
+Only in b/src/utils: jpgloader-ffmpeg.c.orig
+diff -ru a/src/videofilters/ffmpegjpegwriter.c b/src/videofilters/ffmpegjpegwriter.c
+--- a/src/videofilters/ffmpegjpegwriter.c	2023-06-14 09:45:13.000000000 +0200
++++ b/src/videofilters/ffmpegjpegwriter.c	2023-06-28 09:34:02.362930213 +0200
+@@ -192,7 +192,7 @@
+ 		sws_freeContext(sws_ctx);
  
- 			av_frame_unref(s->pict);
--			avpicture_fill((AVPicture*)s->pict,(uint8_t*)jpegm->b_rptr,avctx->pix_fmt,avctx->width,avctx->height);
-+			av_image_fill_arrays(s->pict->data,s->pict->linesize,(uint8_t*)jpegm->b_rptr,avctx->pix_fmt,avctx->width,avctx->height, 1);
- 			packet.data=comp_buf;
- 			packet.size=(int)comp_buf_sz;
- 			packet.pts = frame_ts;
-diff --git a/src/videofilters/h264dec.cpp b/src/videofilters/h264dec.cpp
-index e3cd82cc..bed94bb0 100644
---- a/src/videofilters/h264dec.cpp
-+++ b/src/videofilters/h264dec.cpp
-@@ -66,17 +66,15 @@ typedef struct _DecData{
+ 		av_frame_unref(s->pict);
+-		avpicture_fill((AVPicture *)s->pict, (uint8_t *)jpegm->b_rptr, avctx->pix_fmt, avctx->width, avctx->height);
++    av_image_fill_arrays(s->pict->data,s->pict->linesize,(uint8_t*)jpegm->b_rptr,avctx->pix_fmt,avctx->width,avctx->height, 1);
+ 		packet.data = comp_buf;
+ 		packet.size = (int)comp_buf_sz;
+ 		packet.pts = frame_ts;
+diff -ru a/src/videofilters/h264dec.cpp b/src/videofilters/h264dec.cpp
+--- a/src/videofilters/h264dec.cpp	2023-06-14 09:45:13.000000000 +0200
++++ b/src/videofilters/h264dec.cpp	2023-06-28 09:33:18.238674814 +0200
+@@ -67,17 +67,15 @@
  static void ffmpeg_init(void){
  	static bool_t done=FALSE;
  	if (!done){
@@ -139,7 +137,7 @@ index e3cd82cc..bed94bb0 100644
  	error=avcodec_open2(&d->av_context,codec, NULL);
  	if (error!=0){
  		ms_fatal("avcodec_open() failed.");
-@@ -164,7 +162,7 @@ static mblk_t *get_as_yuvmsg(MSFilter *f, DecData *s, AVFrame *orig){
+@@ -165,7 +163,7 @@
  		ms_error("%s: error in sws_scale().",f->desc->name);
  	}
  #if LIBAVUTIL_VERSION_INT >= AV_VERSION_INT(50,43,0) // backward compatibility with Debian Squeeze (6.0)
@@ -148,11 +146,11 @@ index e3cd82cc..bed94bb0 100644
  #endif
  	return yuv_msg;
  }
-diff --git a/src/videofilters/videodec.c b/src/videofilters/videodec.c
-index d5dbcaa2..2b223349 100644
---- a/src/videofilters/videodec.c
-+++ b/src/videofilters/videodec.c
-@@ -69,7 +69,6 @@ static void dec_init(MSFilter *f, enum CodecID cid){
+Only in b/src/videofilters: h264dec.cpp.orig
+diff -ru a/src/videofilters/videodec.c b/src/videofilters/videodec.c
+--- a/src/videofilters/videodec.c	2023-06-14 09:45:13.000000000 +0200
++++ b/src/videofilters/videodec.c	2023-06-28 09:33:18.238674814 +0200
+@@ -70,7 +70,6 @@
  	DecState *s=(DecState *)ms_new0(DecState,1);
  	ms_ffmpeg_check_init();
  
@@ -160,7 +158,7 @@ index d5dbcaa2..2b223349 100644
  	s->allocator = ms_yuv_buf_allocator_new();
  	s->av_codec=NULL;
  	s->codec=cid;
-@@ -661,7 +660,7 @@ static mblk_t *get_as_yuvmsg(MSFilter *f, DecState *s, AVFrame *orig){
+@@ -662,7 +661,7 @@
  #endif
  		ms_error("%s: error in ms_sws_scale().",f->desc->name);
  	}
@@ -169,11 +167,11 @@ index d5dbcaa2..2b223349 100644
  	return yuv_msg;
  }
  /* Bitmasks to select bits of a byte from low side */
-diff --git a/src/videofilters/videoenc.c b/src/videofilters/videoenc.c
-index 42d3a05e..7e3575d4 100644
---- a/src/videofilters/videoenc.c
-+++ b/src/videofilters/videoenc.c
-@@ -128,7 +128,6 @@ void ms_ffmpeg_log_callback(void* ptr, int level, const char* fmt, va_list vl)
+Only in b/src/videofilters: videodec.c.orig
+diff -ru a/src/videofilters/videoenc.c b/src/videofilters/videoenc.c
+--- a/src/videofilters/videoenc.c	2023-06-14 09:45:13.000000000 +0200
++++ b/src/videofilters/videoenc.c	2023-06-28 09:33:18.238674814 +0200
+@@ -129,7 +129,6 @@
  
  void ms_ffmpeg_check_init(){
  	if(!avcodec_initialized){
@@ -181,7 +179,7 @@ index 42d3a05e..7e3575d4 100644
  		avcodec_initialized=TRUE;
  #ifdef ENABLE_LOG_FFMPEG
  		av_log_set_level(AV_LOG_WARNING);
-@@ -268,7 +267,6 @@ static void prepare(EncState *s){
+@@ -269,7 +268,6 @@
  	AVCodecContext *c=&s->av_context;
  	const int max_br_vbv=128000;
  
@@ -189,7 +187,7 @@ index 42d3a05e..7e3575d4 100644
  	if (s->codec==CODEC_ID_MJPEG)
  	{
  		ms_message("Codec bitrate set to %i",(int)c->bit_rate);
-@@ -332,7 +330,6 @@ static void prepare_h263(EncState *s){
+@@ -333,7 +331,6 @@
  #if LIBAVCODEC_VERSION_INT < ((52<<16)+(0<<8)+0)
          c->rtp_mode = 1;
  #endif
@@ -197,7 +195,7 @@ index 42d3a05e..7e3575d4 100644
  	if (s->profile==0){
  		s->codec=CODEC_ID_H263;
  	}else{
-@@ -815,7 +812,7 @@ static void process_frame(MSFilter *f, mblk_t *inm){
+@@ -816,7 +813,7 @@
  	ms_yuv_buf_init_from_mblk(&yuv, inm);
  	/* convert image if necessary */
  	av_frame_unref(s->pict);
@@ -206,3 +204,4 @@ index 42d3a05e..7e3575d4 100644
  
  	/* timestamp used by ffmpeg, unset here */
  	s->pict->pts=AV_NOPTS_VALUE;
+Only in b/src/videofilters: videoenc.c.orig

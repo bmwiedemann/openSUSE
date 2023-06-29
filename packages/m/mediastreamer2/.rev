@@ -588,4 +588,14 @@
 </comment>
     <requestid>1077859</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>a6b045dd9ef34a3ac76d991aaf4a56d1</srcmd5>
+    <version>5.2.73</version>
+    <time>1688052506</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.73 (no changelog)
+- Rebase fix-build-ffmpeg5.patch
+</comment>
+    <requestid>1095757</requestid>
+  </revision>
 </revisionlist>
