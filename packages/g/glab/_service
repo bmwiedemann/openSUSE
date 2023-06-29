@@ -2,7 +2,7 @@
   <service name="tar_scm" mode="disabled">
     <param name="url">https://gitlab.com/gitlab-org/cli.git</param>
     <param name="scm">git</param>
-    <param name="revision">v1.30.0</param>
+    <param name="revision">v1.31.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="filename">glab</param>
@@ -14,6 +14,6 @@
     <param name="compression">gz</param>
   </service>
   <service name="go_modules" mode="disabled">
-      <param name="archive">glab-1.30.0.tar.gz</param>
+      <param name="archive">glab-1.31.0.tar.gz</param>
   </service>
 </services>

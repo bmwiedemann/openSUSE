@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jun 28 06:37:40 UTC 2023 - pdostal@suse.com
+
+- Update to version 1.31.0:
+  * chore: Sync canonical repo
+  * fix(repo view): consider current host when viewing a repo details
+  * chore: Keeping in regular repo in sync
+  * docs: add installation options with wakemeops
+  * docs: fix mr create example
+  * chore: Continue to rename 'when pipeline succeeds' to 'auto merge'
+  * docs: Clarifying method change when using --update for api command
+  * feat(incident): add incident subscribe command
+  * chore: Renames strings to auto-merge
+  * fix: Update multiple labels bug for glab mr create labels
+  * feat(schedule): Fixed broken test for delete schedule
+  * fix(check-update): always show error when check-update fails
+  * feat(schedule): Add commands to create and delete schedules
+  * feat(mr/checkout): Track by default without adding extra remotes
+  * fix: Adjusting timeout value to prevent hangs
+  * feat: Make mr create prompt for reviewers
+  * fix(check-update): remove unicode characters in favor of ascii
+  * fix(repo list): #1327 fix filters
+
+-------------------------------------------------------------------
 Sat May 20 10:34:07 UTC 2023 - pdostal@suse.com
 
 - Update to version 1.30.0:
