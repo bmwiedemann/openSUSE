@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 26 15:21:45 UTC 2023 - Dave Plater <davejplater@gmail.com>
+
+- Update to 1.5.6
+- Upstream changes:
+  *Bug fix: Overburning with cdrskin option -force ended by a
+   libburn error
+  *New API call burn_write_opts_set_bdr_obs_exempt()
+  *New cdrskin option --bdr_obs_exempt
+  *Officially enabled overburning with burn_write_opts_set_force(,1)
+
+-------------------------------------------------------------------
 Tue Feb 23 19:18:51 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.4:

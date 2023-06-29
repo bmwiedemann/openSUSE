@@ -1,7 +1,7 @@
 #
 # spec file for package libburn
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %define so_ver 4
-%define basever 1.5.4
+%define basever 1.5.6
 Name:           libburn
-Version:        1.5.4
+Version:        1.5.6
 Release:        0
 Summary:        Library for Writing Preformatted Data onto Optical Media
 License:        GPL-2.0-or-later
