@@ -816,4 +816,14 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
     DwaCompressor_readChannelRules (forwarded request 1094236 from dirkmueller)</comment>
     <requestid>1094254</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>5a9062aaaa1cc96331b2acfd70010f37</srcmd5>
+    <version>3.1.9</version>
+    <time>1688052445</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 3.1.9
+  * Patch release that addresses miscelleneous build and doc issues, as well as:
+    . OSS-fuzz 59382 Heap-buffer-overflow in internal_huf_decompress</comment>
+    <requestid>1095758</requestid>
+  </revision>
 </revisionlist>

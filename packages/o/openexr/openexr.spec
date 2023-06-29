@@ -22,7 +22,7 @@
 %define sonum 30
 %global so_suffix -3_1
 Name:           openexr
-Version:        3.1.8
+Version:        3.1.9
 Release:        0
 Summary:        Utilities for working with HDR images in OpenEXR format
 License:        BSD-3-Clause
@@ -159,6 +159,7 @@ export CXXFLAGS="%{optflags} -O0"
 %cmake_install
 
 %check
+# test failure on LE: https://github.com/AcademySoftwareFoundation/openexr/issues/1460
 %ifnarch i586 ppc ppc64 s390 s390x
 export LD_LIBRARY_PATH="%{buildroot}/%{_libdir}"
 # tests can take longer than the default timeout of 25 minutes
