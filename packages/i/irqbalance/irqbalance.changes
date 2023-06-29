@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jun 26 20:33:50 UTC 2023 - trenn@suse.de
+
+- Resurrect _service file and old git patch no versioning
+A _service
+A _servicedata
+A irqbalance.obsinfo
+- Update to version 1.9.2.24.git+184c950:
+  * procinterrupts: fix initialisation of regex_t struct
+  * Fix it so we actually stop when we hit an interrupt condition
+  * Fix signedness of error handling
+  * Revert "Fix CPU number condition in service file"
+  * Issue 259: select NL_SKIP / NL_STOP based on error
+  * fix CPU number condition in service file
+- Already included upstream:
+D irqbalance-systemd-netlink.patch
+
+-------------------------------------------------------------------
 Fri Dec 16 12:38:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - build for x86_64 subarchs the same way like for baseline

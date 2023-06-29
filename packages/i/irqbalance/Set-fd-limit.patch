@@ -2,11 +2,13 @@
  misc/irqbalance.service |    1 +
  1 file changed, 1 insertion(+)
 
---- a/misc/irqbalance.service
-+++ b/misc/irqbalance.service
-@@ -14,6 +14,7 @@
+Index: irqbalance-1.9.2.24.git+184c950/misc/irqbalance.service
+===================================================================
+--- irqbalance-1.9.2.24.git+184c950.orig/misc/irqbalance.service
++++ irqbalance-1.9.2.24.git+184c950/misc/irqbalance.service
+@@ -13,6 +13,7 @@ ReadOnlyPaths=/
  ReadWritePaths=/proc/irq
- RestrictAddressFamilies=AF_UNIX
+ RestrictAddressFamilies=AF_UNIX AF_NETLINK
  RuntimeDirectory=irqbalance/
 +LimitNOFILE=4096
  

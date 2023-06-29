@@ -596,4 +596,12 @@ D proc-interrupts.patch
     <comment>- build for x86_64 subarchs the same way like for baseline</comment>
     <requestid>1043326</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>4f95903d28ec7276f4246de022a1d3ef</srcmd5>
+    <version>1.9.2.24.git+184c950</version>
+    <time>1688052463</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095580</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package irqbalance
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,29 +21,28 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           irqbalance
-Version:        1.9.2
+Version:        1.9.2.24.git+184c950
 Release:        0
 Summary:        Daemon to balance IRQs on SMP machines
 License:        GPL-2.0-or-later
 Group:          System/Daemons
 URL:            https://github.com/Irqbalance/irqbalance
-Source:         https://github.com/Irqbalance/irqbalance/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+#Source:         https://github.com/Irqbalance/irqbalance/archive/refs/tags/v%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Source3:        sysconfig.irqbalance
 Patch1:         Set-fd-limit.patch
-# PATCH-FIX-UPSTREAM: https://github.com/Irqbalance/irqbalance/pull/250
-Patch2:         irqbalance-systemd-netlink.patch
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
-%ifarch x86_64 %{?x86_64}
-BuildRequires:  pkgconfig(libnl-3.0)
-%endif
 Requires(pre):  %fillup_prereq
 Recommends:     %{name}-ui
 ExcludeArch:    s390 s390x
 %{?systemd_ordering}
+%ifarch x86_64 %{?x86_64}
+BuildRequires:  pkgconfig(libnl-3.0)
+%endif
 %ifnarch %{arm}
 BuildRequires:  libnuma-devel
 %endif
