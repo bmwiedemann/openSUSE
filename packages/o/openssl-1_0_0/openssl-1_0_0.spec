@@ -136,8 +136,8 @@ BuildRequires:  bc
 BuildRequires:  ed
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
-Conflicts:      ssl
 Provides:       ssl
+Conflicts:      openssl(cli)
 Provides:       openssl(cli)
 
 %description
@@ -148,7 +148,6 @@ OpenSSL contains an implementation of the SSL and TLS protocols.
 
 %package -n libopenssl1_0_0
 Summary:        Secure Sockets and Transport Layer Security
-License:        OpenSSL
 Group:          Productivity/Networking/Security
 Recommends:     ca-certificates-mozilla
 # Merge back the hmac files bsc#1185116
@@ -163,7 +162,6 @@ OpenSSL contains an implementation of the SSL and TLS protocols.
 
 %package -n libopenssl10
 Summary:        Secure Sockets and Transport Layer Security
-License:        OpenSSL
 Group:          Productivity/Networking/Security
 
 %description -n libopenssl10
@@ -178,7 +176,6 @@ compatibility with third party packages.
 
 %package -n libopenssl1_0_0-steam
 Summary:        Secure Sockets and Transport Layer Security for steam
-License:        OpenSSL
 Group:          Productivity/Networking/Security
 
 %description -n libopenssl1_0_0-steam
@@ -191,7 +188,6 @@ This subpackage is providing special patched edition for steam
 
 %package -n libopenssl-1_0_0-devel
 Summary:        Development files for OpenSSL
-License:        OpenSSL
 Group:          Development/Libraries/C and C++
 Requires:       libopenssl1_0_0 = %{version}
 Requires:       pkgconfig(zlib)
@@ -208,7 +204,6 @@ that want to make use of the OpenSSL C API.
 
 %package doc
 Summary:        Additional Package Documentation
-License:        OpenSSL
 Group:          Productivity/Networking/Security
 Conflicts:      openssl-doc
 Provides:       openssl-doc = %{version}
@@ -221,7 +216,6 @@ this package's base documentation.
 
 %package cavs
 Summary:        CAVS testing framework and utilities
-License:        OpenSSL
 Group:          Productivity/Networking/Security
 Requires:       libopenssl1_0_0 = %{version}-%{release}
 
