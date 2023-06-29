@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           osv-scanner
-Version:        1.3.4
+Version:        1.3.5
 Release:        0
 Summary:        Vulnerability scanner written in Go
 License:        Apache-2.0
