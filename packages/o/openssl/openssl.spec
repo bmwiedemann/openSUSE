@@ -32,6 +32,7 @@ Requires:       openssl-%{_sonum} = %{version}
 # the debuginfo package is now openssl-%%{_sonum}-debuginfo (boo#1040172)
 Obsoletes:      openssl-debuginfo
 BuildArch:      noarch
+Conflicts:      openssl(cli)
 Provides:       openssl(cli)
 
 %description

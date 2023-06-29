@@ -1707,4 +1707,14 @@ fixes its regression.
 - Update to 3.1.0</comment>
     <requestid>1089934</requestid>
   </revision>
+  <revision rev="166" vrev="2">
+    <srcmd5>eb91f0c0f74e95b8e42e1a5d413fb537</srcmd5>
+    <version>3.1.1</version>
+    <time>1688052468</time>
+    <user>dimstar_suse</user>
+    <comment>- Improve cross-package provides/conflicts [boo#1210313]
+  * Add Conflicts: openssl(cli) for mutual exclusion between
+    openssl, openssl-1_0_0 and libressl.</comment>
+    <requestid>1095606</requestid>
+  </revision>
 </revisionlist>
