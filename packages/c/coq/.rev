@@ -393,4 +393,22 @@
 </comment>
     <requestid>1075082</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>565afed2bf55a3e245a520f124a73e54</srcmd5>
+    <version>8.17.1</version>
+    <time>1688052532</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 8.17.1.
+  * Fixed incorrect paths emitted by coqdep in some cases for META
+    files which prevented dune builds for plugins from working
+    correctly.
+  * Fixed shadowing of record fields in extraction to OCaml.
+  * Fixed an impossible-to-turn-off debug message &quot;backtracking and
+    redoing byextend on ...&quot;.
+  * Fixed a major memory regression affecting MathComp 2.
+- Classify desktop entry under Science instead of Education.
+- Add screenshot URL to AppStream metadata.
+</comment>
+    <requestid>1095883</requestid>
+  </revision>
 </revisionlist>

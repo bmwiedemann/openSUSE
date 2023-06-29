@@ -40,7 +40,7 @@
   <url type="homepage">https://coq.inria.fr/</url>
   <url type="bugtracker">https://github.com/coq/coq/issues</url>
   <url type="faq">https://github.com/coq/coq/wiki/The-Coq-FAQ</url>
-  <url type="help">https://coq.inria.fr/documentation</url>
+  <url type="help">https://coq.inria.fr/refman/practical-tools/coqide.html</url>
   <url type="donation">https://coq.inria.fr/consortium</url>
   <url type="vcs-browser">https://github.com/coq/coq</url>
   <url type="contribute">https://github.com/coq/coq/blob/master/CONTRIBUTING.md</url>
@@ -56,5 +56,12 @@
     <binary>coqide</binary>
   </provides>
   <project_license>LGPL-2.1-only</project_license>
+  <screenshots>
+    <screenshot type="default">
+      <image type="source">
+        https://coq.inria.fr/refman/_images/coqide.png
+      </image>
+    </screenshot>
+  </screenshots>
   <content_rating type="oars-1.1"/>
 </component>

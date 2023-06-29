@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 28 21:03:07 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 8.17.1.
+  * Fixed incorrect paths emitted by coqdep in some cases for META
+    files which prevented dune builds for plugins from working
+    correctly.
+  * Fixed shadowing of record fields in extraction to OCaml.
+  * Fixed an impossible-to-turn-off debug message "backtracking and
+    redoing byextend on ...".
+  * Fixed a major memory regression affecting MathComp 2.
+- Classify desktop entry under Science instead of Education.
+- Add screenshot URL to AppStream metadata.
+
+-------------------------------------------------------------------
 Tue Mar 28 21:18:57 UTC 2023 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 8.17.0.
