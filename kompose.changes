@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun 29 07:03:43 UTC 2023 - opensuse@hibiki.eu
+
+- Update to version 1.28.0:
+  * 1.28.0 Release (#1562)
+  * remove unused js files (#1561)
+  * owners: Remove surajssd (#1555)
+  * chore: require go >=1.18, bump deps and get rid of replace directives (#1552)
+  * Fix CI (#1550)
+  * Remove old scripts, modify manual syncing doc script (#1549)
+  * feat: migrate from libcompose to compose-go (#1547)
+  * fix: update match output function (#1546)
+  * Fix: Make the out flag print to one file using seperator (#1541)
+  * chore: add AhmedGrati as owner of Kompose (#1540)
+
+-------------------------------------------------------------------
 Thu Apr 07 16:06:48 UTC 2022 - sweiberg@suse.com
 
 - Update to version 1.26.1:
