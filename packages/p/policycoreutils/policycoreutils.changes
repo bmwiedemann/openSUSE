@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jun 26 08:38:19 UTC 2023 - William Brown <william.brown@suse.com>
+
+- Recommend setools-console as these cli tools compliment policycoreutils
+  for analysis and debugging of policy issues
+
+-------------------------------------------------------------------
+Mon Jun 26 07:15:17 UTC 2023 - William Brown <william.brown@suse.com>
+
+- Add requires for policycoreutils-devel for selinux-policy-devel as
+  policycoreutils-devel requires this
+
+-------------------------------------------------------------------
+Wed Jun 21 10:55:18 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Adjust python requirement for newer SLES versions
+
+-------------------------------------------------------------------
+Mon Jun 19 17:36:54 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Add Leap compatibility symlinks between /usr/sbin and /sbin (bsc#1210482)
+- Refresh GPG keyring
+
+-------------------------------------------------------------------
 Tue May  9 09:08:51 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add python-wheel build dependency to build correctly with latest

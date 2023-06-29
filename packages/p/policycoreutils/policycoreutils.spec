@@ -69,6 +69,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3
 BuildRequires:  update-desktop-files
 BuildRequires:  xmlto
+Recommends:     setools-console
 Requires:       gawk
 Requires:       libsepol2 >= %{libsepol_ver}
 Requires:       rpm
@@ -95,7 +96,12 @@ Group:          Productivity/Security
 Requires:       %{name} = %{version}-%{release}
 Requires:       checkpolicy
 Requires:       python3-audit >= %{libaudit_ver}
+%if 0%{?sle_version} == 150500
+#BuildRequires:  %{python_module selinux}
+Requires:       python311-selinux
+%else
 Requires:       python3-selinux
+%endif
 Requires:       python3-semanage >= %{libsepol_ver}
 Requires:       python3-setools >= %{setools_ver}
 Requires:       python3-setuptools
@@ -124,6 +130,7 @@ Group:          Productivity/Security
 Requires:       %{_bindir}/make
 Requires:       python3-%{name} = %{version}-%{release}
 Requires:       python3-distro
+Requires:       selinux-policy-devel
 Recommends:     %{_sbindir}/ausearch
 Conflicts:      %{name}-python <= 2.6
 
@@ -184,10 +191,14 @@ make %{?_smp_mflags} LIBEXECDIR="%{_libexecdir}"
 
 %install
 export PYTHON="python3"
+
 mkdir -p %{buildroot}%{_localstatedir}/lib/selinux
 mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_sbindir}
+# Do not create legacy /sbin folder on newer systems
+%if 0%{?suse_version} <= 1500
 mkdir -p %{buildroot}/sbin
+%endif
 mkdir -p %{buildroot}%{_mandir}/man1
 mkdir -p %{buildroot}%{_mandir}/man8
 mkdir -p %{buildroot}%{_sysconfdir}/security/console.apps
@@ -196,7 +207,9 @@ mkdir -p %{buildroot}%{_pam_vendordir}
 %else
 mkdir -p %{buildroot}%{_sysconfdir}/pam.d
 %endif
-make LSPP_PRIV=y DESTDIR=%{buildroot} install LIBEXECDIR=%{_libexecdir}
+
+# Set the SBINDIR to the openSUSE one (/usb/sbin)
+make LSPP_PRIV=y DESTDIR=%{buildroot} SBINDIR=%{_sbindir} install LIBEXECDIR=%{_libexecdir}
 %if 0%{?suse_version} > 1500
 cp -f %{SOURCE13} %{buildroot}%{_pam_vendordir}/newrole
 rm %{buildroot}%{_sysconfdir}/pam.d/newrole
@@ -204,36 +217,34 @@ mv %{buildroot}%{_sysconfdir}/pam.d/run_init %{buildroot}%{_pam_vendordir}/run_i
 %else
 cp -f %{SOURCE13} %{buildroot}%{_sysconfdir}/pam.d/newrole
 %endif
-install -D -m 644 %{SOURCE12} %{buildroot}%{_datadir}/pixmaps/system-config-selinux.png
+
 %if 0%{?suse_version} < 1500
-install -m 644 %{SOURCE13} %{buildroot}%{_sysconfdir}/pam.d/system-config-selinux
-install -m 644 %{SOURCE13} %{buildroot}%{_sysconfdir}/pam.d/selinux-polgengui
-%endif
-install -m 644 %{SOURCE10} %{buildroot}%{_sysconfdir}/security/console.apps/system-config-selinux
 install -m 644 %{SOURCE12} %{buildroot}%{_sysconfdir}/security/console.apps/selinux-polgengui
-rm -f %{buildroot}%{_mandir}/ru/man8/genhomedircon.8.gz
+install -m 644 %{SOURCE10} %{buildroot}%{_sysconfdir}/security/console.apps/system-config-selinux
+install -m 644 %{SOURCE13} %{buildroot}%{_sysconfdir}/pam.d/selinux-polgengui
+install -m 644 %{SOURCE13} %{buildroot}%{_sysconfdir}/pam.d/system-config-selinux
+install -D -m 644 %{SOURCE12} %{buildroot}%{_datadir}/pixmaps/system-config-selinux.png
 ln -sf consolehelper %{buildroot}%{_bindir}/system-config-selinux
 ln -sf consolehelper %{buildroot}%{_bindir}/selinux-polgengui
-mkdir -p %{buildroot}%{_libexecdir}/selinux/hll/
-mkdir -p %{buildroot}%{_localstatedir}/lib/sepolgen
 %suse_update_desktop_file -i system-config-selinux System Security Settings
 %suse_update_desktop_file -i selinux-polgengui System Security Settings
+%endif
+
+# Add compatibility symlinks from /usr/sbin to /sbin on Leap
+%if 0%{?suse_version} <= 1500
+for f in `ls -1 %{buildroot}%{_sbindir}`
+do
+ln -rs "%{buildroot}%{_sbindir}/$f" "%{buildroot}/sbin/$f"
+done
+%endif
+
+mkdir -p %{buildroot}%{_libexecdir}/selinux/hll/
+mkdir -p %{buildroot}%{_localstatedir}/lib/sepolgen
+
 (cd selinux-python-%{version}/po && make DESTDIR=%{buildroot} install)
 %find_lang %{name}
 %find_lang selinux-python
 %fdupes -s %{buildroot}%{_datadir}
-
-%if 0%{?suse_version} >= 1500
-rm %{buildroot}%{_sysconfdir}/security/console.apps/selinux-polgengui \
-   %{buildroot}%{_sysconfdir}/security/console.apps/system-config-selinux \
-   %{buildroot}%{_bindir}/selinux-polgengui \
-   %{buildroot}%{_bindir}/system-config-selinux \
-   %{buildroot}%{_datadir}/applications/selinux-polgengui.desktop \
-   %{buildroot}%{_datadir}/applications/system-config-selinux.desktop \
-   %{buildroot}%{_datadir}/pixmaps/system-config-selinux.png
-%endif
-
-mv %{buildroot}/sbin/* %{buildroot}/usr/sbin/
 
 %if 0%{?suse_version} > 1500
 %pre
@@ -288,6 +299,21 @@ done
 %{_sbindir}/run_init
 %{_sbindir}/open_init_pty
 %{_bindir}/secon
+# Compatibility symlinks from /usr/sbin to /sbin on Leap
+%if 0%{?suse_version} <= 1500
+/sbin/fixfiles
+/sbin/genhomedircon
+/sbin/load_policy
+/sbin/open_init_pty
+/sbin/restorecon
+/sbin/restorecon_xattr
+/sbin/run_init
+/sbin/semodule
+/sbin/sestatus
+/sbin/setfiles
+/sbin/setsebool
+%endif
+# PAM
 %if 0%{?suse_version} > 1500
 %{_pam_vendordir}/run_init
 %else
@@ -343,6 +369,10 @@ done
 %{_bindir}/audit2why
 %{_bindir}/chcat
 %{_sbindir}/semanage
+# Compatibility symlinks from /usr/sbin to /sbin on Leap
+%if 0%{?suse_version} <= 1500
+/sbin/semanage
+%endif
 %{_mandir}/man1/audit2allow.1%{?ext_man}
 %{_mandir}/ru/man1/audit2allow.1%{?ext_man}
 %{_mandir}/man1/audit2why.1%{?ext_man}
