@@ -54,7 +54,7 @@ install -D -m 755 trivy %{buildroot}/%{_bindir}/%{name}
 
 %files
 %license LICENSE
-%doc README.md
+%doc NOTICE README.md
 %{_bindir}/%{name}
 
 %changelog

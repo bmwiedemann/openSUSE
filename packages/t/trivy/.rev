@@ -945,4 +945,12 @@
   * fix(misconf): Remove debug print while scanning (#4521)</comment>
     <requestid>1092482</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>6a40307f15f59808b595f78e5cd55c05</srcmd5>
+    <version>0.42.1</version>
+    <time>1688052553</time>
+    <user>dimstar_suse</user>
+    <comment>🤖: Submission of trivy via https://src.opensuse.org/pool/trivy/pulls/1 by dirkmueller</comment>
+    <requestid>1095924</requestid>
+  </revision>
 </revisionlist>
