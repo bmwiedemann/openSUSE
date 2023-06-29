@@ -116,4 +116,15 @@
   * Update openssl.keyring with key</comment>
     <requestid>1089933</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>e129064fce1fde012b6e66afcbd1f051</srcmd5>
+    <version>3.1.1</version>
+    <time>1688052469</time>
+    <user>dimstar_suse</user>
+    <comment>- Improve cross-package provides/conflicts [boo#1210313]
+  * Add Provides/Conflicts: ssl-devel
+  * Remove explicit conflicts with other devel-libraries
+  * Remove Provides: openssl(cli) - it's managed by meta package</comment>
+    <requestid>1095607</requestid>
+  </revision>
 </revisionlist>

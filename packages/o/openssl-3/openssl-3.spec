@@ -55,9 +55,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
 Requires:       libopenssl3 = %{version}-%{release}
 Requires:       openssl
-Conflicts:      ssl
 Provides:       ssl
-Provides:       openssl(cli)
 # Needed for clean upgrade path, boo#1070003
 Obsoletes:      openssl-1_0_0
 # Needed for clean upgrade from former openssl-1_1_0, boo#1081335
@@ -102,9 +100,8 @@ Summary:        Development files for OpenSSL
 Requires:       libopenssl3 = %{version}
 Requires:       pkgconfig(zlib)
 Recommends:     %{name} = %{version}
-# Conflicting names with libopenssl-1_1-devel
-Conflicts:      libopenssl-1_1-devel
-Conflicts:      libressl-devel
+Provides:       ssl-devel
+Conflicts:      ssl-devel
 # Needed for clean upgrade from former openssl-1_1_0, boo#1081335
 Obsoletes:      libopenssl-1_1_0-devel
 # Needed for clean upgrade from SLE-12 openssl-1_0_0, bsc#1158499
