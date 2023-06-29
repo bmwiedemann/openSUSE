@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun  6 15:13:43 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Readd libXNVCtrl support as an optional plugin.
+- Add OpenCL support as an optional plugin.
+- Ship GUI tool in a separate package. This avoids installing
+  undesirable X11 dependencies.
+
+-------------------------------------------------------------------
 Tue May  9 13:20:12 UTC 2023 - Thomas Blume <thomas.blume@suse.com>
 
 - remove header files for feature we don't ship (jsc#PED-4156)

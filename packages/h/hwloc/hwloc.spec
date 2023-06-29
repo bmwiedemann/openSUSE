@@ -16,13 +16,23 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without XNVCtrl
+%else
+%bcond_with XNVCtrl
+%endif
+%if 0%{?sle_version} < 150600
+%bcond_with OpenCL
+%else
+%bcond_without OpenCL
+%endif
+
 %global lname libhwloc15
 Name:           hwloc
 Version:        2.9.0
 Release:        0
 Summary:        Portable Hardware Locality
 License:        BSD-3-Clause
-Group:          Productivity/Clustering/Computing
 URL:            https://www.open-mpi.org/projects/hwloc/
 Source0:        https://download.open-mpi.org/release/hwloc/v2.9/hwloc-%{version}.tar.bz2
 BuildRequires:  autoconf
@@ -41,6 +51,13 @@ BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(pciaccess)
 BuildRequires:  pkgconfig(x11)
+%if %{with XNVCtrl}
+BuildRequires:  libXNVCtrl-devel
+%endif
+%if %{with OpenCL}
+BuildRequires:  opencl-headers
+BuildRequires:  pkgconfig(OpenCL)
+%endif
 Requires:       %{lname} = %{version}-%{release}
 Requires:       perl-JSON
 Requires:       perl-base >= 5.18.2
@@ -62,9 +79,15 @@ hwloc may display the topology in multiple convenient formats.
 It also offers a powerful programming interface (C API) to gather information
 about the hardware, bind processes, and much more.
 
+%package gui
+Summary:        Hwloc GUI tool
+Requires:       %{name} = %{version}
+
+%description gui
+Hwloc GUI visualization tool - requires X11
+
 %package devel
 Summary:        Headers and shared development libraries for hwloc
-Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 Provides:       libhwloc-devel = %{version}
 Obsoletes:      libhwloc-devel < %{version}
@@ -76,7 +99,6 @@ for the hwloc.
 
 %package -n %{lname}
 Summary:        Runtime libraries for hwloc
-Group:          System/Libraries
 Requires:       %{name}-data
 
 %description -n %{lname}
@@ -84,7 +106,6 @@ This package contains the run time libraries for hwloc.
 
 %package data
 Summary:        Run time data for hwloc
-Group:          Development/Libraries/C and C++
 BuildArch:      noarch
 
 %description data
@@ -92,20 +113,39 @@ This package contains the run time data for the hwloc.
 
 %package doc
 Summary:        Documentation for hwloc
-Group:          Documentation/Other
 BuildArch:      noarch
 
 %description doc
 This package contains the documentation for hwloc.
+
+%package gl
+Summary:        OpenGL Plugin for HWLOC (NVIDIA Only)
+Requires:       hwloc
+
+%description gl
+Plugin for HWLOC to detect and enumerate OpenGL devices. This works only
+for NVIDIA devices running the proprietary driver by using the NV-CONTROL
+X Window System extension.
+
+%package opencl
+Summary:        OpenCL Plugin for HWLOC
+Requires:       hwloc
+
+%description opencl
+Plugin for HWLOC to detect and enumerate OpenCL devices. It detects
+HW accelerators from AMD and NVIDIA
 
 %prep
 %setup -q
 
 %build
 autoreconf -fvi
-
+# We let the supported components autodetect and mark those as plugins
+# which we don't want to have included statically - regardless available
 %configure \
-    --disable-silent-rules
+    --disable-silent-rules \
+    --enable-plugins=opencl,gl,cuda,levelzero,nvml,rsmi \
+    --with-hwloc-plugins-path=%{_libdir}/hwloc
 %make_build
 
 %install
@@ -116,6 +156,8 @@ rm -rf %{buildroot}%{_libdir}/libhwloc.la
 
 # documentation will be handled by % doc macro
 rm -rf %{buildroot}%{_datadir}/doc/
+# remove .la files for plugins
+rm -f %{buildroot}/%{_libdir}/hwloc/*.la
 
 # This binary is built only for intel architectures
 %ifarch %{ix86} x86_64
@@ -126,12 +168,14 @@ rm %{buildroot}%{_datadir}/hwloc/hwloc-dump-hwdata.service
 #remove headers for features we don't ship
 rm %{buildroot}%{_includedir}/hwloc/rsmi.h
 rm %{buildroot}%{_includedir}/hwloc/nvml.h
-rm %{buildroot}%{_includedir}/hwloc/opencl.h
 rm %{buildroot}%{_includedir}/hwloc/levelzero.h
 rm %{buildroot}%{_includedir}/hwloc/cuda.h
 rm %{buildroot}%{_includedir}/hwloc/cudart.h
+%{!?with_XNVCtrl:rm %{buildroot}%{_includedir}/hwloc/gl.h}
+%{!?with_OpenCL:rm %{buildroot}%{_includedir}/hwloc/opencl.h}
 
 %fdupes -s %{buildroot}/%{_mandir}/man1
+%fdupes -s %{buildroot}/%{_mandir}/man3
 %fdupes -s %{buildroot}/%{_mandir}/man7
 
 %check
@@ -162,17 +206,19 @@ rm %{buildroot}%{_includedir}/hwloc/cudart.h
 %ifarch %{ix86} x86_64
 %service_del_postun hwloc-dump-hwdata.service
 %endif
-
 %desktop_database_postun
 
 %files
 %license COPYING
 %doc NEWS README VERSION
+%if %{with OpenCL} || %{with XNVCtrl}
+%dir %{_libdir}/hwloc
+%endif
 %{_mandir}/man7/hwloc*
 %{_mandir}/man1/hwloc*
-%{_mandir}/man1/lstopo*
+%{_mandir}/man1/lstopo-no-graphics*
 %{_bindir}/hwloc*
-%{_bindir}/lstopo*
+%{_bindir}/lstopo-no-graphics
 %{_datadir}/applications/*.desktop
 %{_datadir}/bash-completion/completions/%{name}
 %ifarch %{ix86} x86_64
@@ -180,7 +226,13 @@ rm %{buildroot}%{_includedir}/hwloc/cudart.h
 %{_unitdir}/hwloc-dump-hwdata.service
 %endif
 
+%files gui
+%{_bindir}/lstopo
+%{_mandir}/man1/lstopo.*
+
 %files devel
+%exclude %{_includedir}/hwloc/opencl.h
+%exclude %{_includedir}/hwloc/gl.h
 %{_includedir}/hwloc
 %{_includedir}/hwloc.h
 %{_libdir}/libhwloc.so
@@ -197,6 +249,16 @@ rm %{buildroot}%{_includedir}/hwloc/cudart.h
 %{_datadir}/hwloc/hwloc2.dtd
 %{_datadir}/hwloc/hwloc-valgrind.supp
 %{_datadir}/hwloc/hwloc-ps.www/*
+
+%if %{with OpenCL}
+%files opencl
+%{_libdir}/hwloc/hwloc_opencl.so
+%endif
+
+%if %{with XNVCtrl}
+%files gl
+%{_libdir}/hwloc/hwloc_gl.so
+%endif
 
 %files doc
 %doc ./doc/doxygen-doc/html/*
