@@ -26,7 +26,7 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           transactional-update
-Version:        4.2.1
+Version:        4.3.0
 Release:        0
 Summary:        Transactional Updates with btrfs and snapshots
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -272,7 +272,6 @@ done
 %{_unitdir}/transactional-update-cleanup.service
 %{_unitdir}/transactional-update-cleanup.timer
 %{_sbindir}/transactional-update
-%{_sbindir}/tu-rebuild-kdump-initrd
 %if %{?suse_version} <= 1500
 %dir %{_distconfdir}
 %endif

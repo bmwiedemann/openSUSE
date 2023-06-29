@@ -1088,4 +1088,20 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
 </comment>
     <requestid>1085717</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>5b96e3d9da3e6f52ddc3bce02cdad4e3</srcmd5>
+    <version>4.3.0</version>
+    <time>1688052458</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 4.3.0
+  - Replace custom tu-rebuild-kdump-initrd with call to mkdumprd
+    [gh#openSUSE/transactional-update#107].
+  - Add support for libmount 2.39. The behaviour change was not
+    intended and will be changed in 2.39.1 (see
+    [gh#util-linux/util-linux#2326], but it was easy to fix it
+    anyway.
+  - Honor LIBMOUNT_DEBUG variable for additional output.
+</comment>
+    <requestid>1095846</requestid>
+  </revision>
 </revisionlist>
