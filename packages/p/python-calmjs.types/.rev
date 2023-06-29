@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>766794</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>6b2ea6ab6c2c4e8139f390ddbb355925</srcmd5>
+    <version>1.0.1</version>
+    <time>1688052545</time>
+    <user>dimstar_suse</user>
+    <comment>- Use sle15_python_module_pythons
+</comment>
+    <requestid>1095906</requestid>
+  </revision>
 </revisionlist>
