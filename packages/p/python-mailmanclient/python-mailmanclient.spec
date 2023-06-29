@@ -1,7 +1,7 @@
 #
 # spec file for package python-mailmanclient
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,32 +22,32 @@ Name:           python-mailmanclient
 Version:        3.3.4
 Release:        0
 Summary:        Python bindings for the Mailman REST API
-Group:          Productivity/Networking/Email/Mailinglists
 License:        LGPL-3.0-only
+Group:          Productivity/Networking/Email/Mailinglists
 URL:            https://www.list.org/
 Source:         https://files.pythonhosted.org/packages/source/m/mailmanclient/mailmanclient-%{version}.tar.gz
-%if 0%{?sle_version} && 0%{?sle_version} <= 150300
-Patch0:         mailmanclient-skip-httpx-tests.patch
-%endif
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests
 BuildArch:      noarch
+%if 0%{?sle_version} && 0%{?sle_version} <= 150300
+Patch0:         mailmanclient-skip-httpx-tests.patch
+%endif
 # SECTION test requirements
-BuildRequires:  mailman3 >= 3.3.5
 BuildRequires:  %{python_module falcon}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-services}
+BuildRequires:  %{python_module pytest-vcr}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests}
+BuildRequires:  mailman3 >= 3.3.5
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 BuildRequires:  %{python_module httpx}
 %endif
 %if 0%{?sle_version} <= 150400
 BuildRequires:  %{python_module async_generator}
 %endif
-BuildRequires:  %{python_module pytest-asyncio}
-BuildRequires:  %{python_module pytest-services}
-BuildRequires:  %{python_module pytest-vcr}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests}
 # /SECTION
 %python_subpackages
 
@@ -72,10 +72,7 @@ export LC_ALL=C.UTF-8
 #     self.socket.send(msg)
 # OSError: [Errno 9] Bad file descriptor
 export LC_ALL=C.UTF-8
-%if %{pkg_vcmp python3-pytest-asyncio >= 0.19}
-asynciomode="--asyncio-mode=auto"
-%endif
-%pytest -k 'not using.rst' $asynciomode
+%pytest -k 'not using.rst' --asyncio-mode=auto
 
 %files %{python_files}
 %doc README.rst

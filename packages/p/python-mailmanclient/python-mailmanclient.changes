@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 29 13:03:21 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Remove weird %if %{pkg_vcmp python3-pytest-asyncio >= 0.19}
+  construct. It just cannot work correctly (bsc#1212834).
+
+-------------------------------------------------------------------
 Mon Nov 21 10:38:25 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 3.3.4

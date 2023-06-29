@@ -98,4 +98,14 @@
     <comment></comment>
     <requestid>1037268</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>89e618e3f0283bbebae952eea0d5bb99</srcmd5>
+    <version>3.3.4</version>
+    <time>1688052574</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove weird %if %{pkg_vcmp python3-pytest-asyncio &gt;= 0.19}
+  construct. It just cannot work correctly (bsc#1212834).
+</comment>
+    <requestid>1095990</requestid>
+  </revision>
 </revisionlist>
