@@ -106,6 +106,10 @@ Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
 Patch9:         ffmpeg-4.4-CVE-2020-22046.patch
 Patch10:        ffmpeg-chromium.patch
+Patch11:        0001-avcodec-libsvtav1-replace-vbv_bufsize-with-maximum_b.patch
+Patch12:        0002-avcodec-libsvtav1-remove-compressed_ten_bit_format-a.patch
+Patch13:        0003-avcodec-libsvtav1-only-set-max_buf_sz-if-both-bitrat.patch
+Patch14:        0004-avcodec-libsvtav1-use-larger-of-bit-rate-and-max-rat.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
 Patch93:        soname.diff
 

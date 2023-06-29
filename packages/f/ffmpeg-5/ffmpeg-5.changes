@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 29 12:26:41 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-avcodec-libsvtav1-replace-vbv_bufsize-with-maximum_b.patch,
+  0002-avcodec-libsvtav1-remove-compressed_ten_bit_format-a.patch,
+  0003-avcodec-libsvtav1-only-set-max_buf_sz-if-both-bitrat.patch,
+  0004-avcodec-libsvtav1-use-larger-of-bit-rate-and-max-rat.patch
+
+-------------------------------------------------------------------
 Wed Apr 19 20:09:16 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 5.1.3:
