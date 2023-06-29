@@ -1,7 +1,7 @@
 #
 # spec file for package lbdb
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,17 @@
 
 
 Name:           lbdb
-Version:        0.49.1
+Version:        0.51.1
 Release:        0
 Summary:        Address Database for mutt
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Email/Utilities
 URL:            https://www.spinnaker.de/lbdb/
-Source:         https://www.spinnaker.de/lbdb/download/lbdb_%{version}.tar.gz
+Source:         https://www.spinnaker.de/lbdb/download/lbdb-%{version}.tar.gz
 Patch0:         lbdb.rc.dif
 Patch2:         lbdb-hostname.diff
 Suggests:       perl(Getopt::Long)
 Suggests:       perl(Net::LDAP)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 The Little Brother's Database (lbdb) consists of a set of small tools
@@ -45,9 +44,7 @@ To use the database in mutt, put the following line into your .muttrc:
 set query_command="lbdbq %{s}"
 
 %prep
-%setup -q
-%patch0 -p1
-%patch2 -p1
+%autosetup -p1
 
 %build
 export \
@@ -64,7 +61,7 @@ export \
 %configure \
 	--libdir=%{_libdir}/lbdb \
 	--enable-lbdb-dotlock
-make %{?_smp_mflags}
+%make_build
 
 %install
 mkdir -p %{buildroot}%{_sysconfdir}
@@ -78,7 +75,7 @@ make \
 
 %files
 %license COPYING
-%doc README TODO
+%doc README.md TODO
 %config(noreplace) %{_sysconfdir}/*
 %{_bindir}/*
 %{_libdir}/lbdb/
