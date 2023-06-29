@@ -1,8 +1,8 @@
-Index: sddm-0.14.0/services/sddm.service.in
+Index: sddm-0.19.0+git20230203.7df16ce/services/sddm.service.in
 ===================================================================
---- sddm-0.14.0.orig/services/sddm.service.in
-+++ sddm-0.14.0/services/sddm.service.in
-@@ -6,6 +6,7 @@ After=systemd-user-sessions.service gett
+--- sddm-0.19.0+git20230203.7df16ce.orig/services/sddm.service.in
++++ sddm-0.19.0+git20230203.7df16ce/services/sddm.service.in
+@@ -9,6 +9,7 @@ StartLimitBurst=2
  
  [Service]
  ExecStart=@CMAKE_INSTALL_FULL_BINDIR@/sddm

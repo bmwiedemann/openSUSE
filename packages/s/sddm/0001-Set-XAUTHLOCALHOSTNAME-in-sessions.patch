@@ -1,4 +1,4 @@
-From 259ec546a821f40536dc4aa2ff510a1e197b6e0d Mon Sep 17 00:00:00 2001
+From 39d30f19ac7948eb5e9ab2ef0f219ae770644f55 Mon Sep 17 00:00:00 2001
 From: Fabian Vogt <fabian@ritter-vogt.de>
 Date: Sat, 24 Oct 2020 13:57:05 +0200
 Subject: [PATCH] Set XAUTHLOCALHOSTNAME in sessions
@@ -15,7 +15,7 @@ it's likely that it equals the hostname set by the session manager later
  1 file changed, 2 insertions(+)
 
 diff --git a/src/helper/Backend.cpp b/src/helper/Backend.cpp
-index a053310..5e6941e 100644
+index 91ca211..1b0bb6f 100644
 --- a/src/helper/Backend.cpp
 +++ b/src/helper/Backend.cpp
 @@ -27,6 +27,7 @@
@@ -26,7 +26,7 @@ index a053310..5e6941e 100644
  
  #include <pwd.h>
  
-@@ -68,6 +69,7 @@ namespace SDDM {
+@@ -73,6 +74,7 @@ namespace SDDM {
              env.insert(QStringLiteral("SHELL"), QString::fromLocal8Bit(pw->pw_shell));
              env.insert(QStringLiteral("USER"), QString::fromLocal8Bit(pw->pw_name));
              env.insert(QStringLiteral("LOGNAME"), QString::fromLocal8Bit(pw->pw_name));
@@ -35,5 +35,5 @@ index a053310..5e6941e 100644
          /* get additional environment variables via setclassenvironment();
              this needs to be done here instead of in UserSession::setupChildProcess
 -- 
-2.25.1
+2.39.1
 

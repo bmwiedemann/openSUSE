@@ -1,4 +1,4 @@
-From 392b0353f31c1a68520857657660fdbfad7ed755 Mon Sep 17 00:00:00 2001
+From 0374d7dd1432714c03c91a3ce6e21b87ba46175d Mon Sep 17 00:00:00 2001
 From: Hrvoje Senjan <hrvoje.senjan@gmail.com>
 Date: Sat, 2 Sep 2017 11:27:01 +0200
 Subject: [PATCH] Read the DISPLAYMANAGER_AUTOLOGIN value from
@@ -16,22 +16,22 @@ This is controlled only by sddm.conf file.
  4 files changed, 11 insertions(+), 2 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index fc3f2ce..b6b9237 100644
+index 4f5c92e..7ab509c 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -197,6 +197,7 @@ set(WAYLAND_SESSION_COMMAND     "${DATA_INSTALL_DIR}/scripts/wayland-session"
- set(CONFIG_FILE                 "${CMAKE_INSTALL_FULL_SYSCONFDIR}/sddm.conf"        CACHE PATH      "Path of the sddm config file")
+@@ -194,6 +194,7 @@ set(CONFIG_FILE                 "${CMAKE_INSTALL_FULL_SYSCONFDIR}/sddm.conf"
  set(CONFIG_DIR                  "${CMAKE_INSTALL_FULL_SYSCONFDIR}/sddm.conf.d"      CACHE PATH      "Path of the sddm config directory")
+ set(ACCOUNTSSERVICE_DATA_DIR    "/var/lib/AccountsService"                          CACHE PATH      "Path of the accountsservice data directory")
  set(SYSTEM_CONFIG_DIR           "${CMAKE_INSTALL_PREFIX}/lib/sddm/sddm.conf.d"      CACHE PATH      "Path of the system sddm config directory")
 +set(DISPLAY_MANAGER_CONFIG_FILE "${CMAKE_INSTALL_FULL_SYSCONFDIR}/sysconfig/displaymanager"        CACHE PATH      "Path of the sysconfig/displaymanager config file")
  set(LOG_FILE                    "${CMAKE_INSTALL_FULL_LOCALSTATEDIR}/log/sddm.log"  CACHE PATH      "Path of the sddm log file")
  set(DBUS_CONFIG_FILENAME        "org.freedesktop.DisplayManager.conf"               CACHE STRING    "Name of the sddm config file")
  set(COMPONENTS_TRANSLATION_DIR  "${DATA_INSTALL_DIR}/translations"                  CACHE PATH      "Components translations directory")
 diff --git a/src/common/Configuration.h b/src/common/Configuration.h
-index a7e0585..ff314a7 100644
+index b8f317a..d54fca6 100644
 --- a/src/common/Configuration.h
 +++ b/src/common/Configuration.h
-@@ -94,14 +94,15 @@ namespace SDDM {
+@@ -101,14 +101,15 @@ namespace SDDM {
  
          Section(Autologin,
              Entry(User,                QString,     QString(),                                  _S("Username for autologin session"));
@@ -50,10 +50,10 @@ index a7e0585..ff314a7 100644
              Entry(User,            QString,     QString(),                                      _S("Name of the last logged-in user.\n"
                                                                                                     "This user will be preselected when the login screen appears"));
 diff --git a/src/common/Constants.h.in b/src/common/Constants.h.in
-index f09858c..098c77b 100644
+index 7b2669e..9968d44 100644
 --- a/src/common/Constants.h.in
 +++ b/src/common/Constants.h.in
-@@ -35,6 +35,7 @@
+@@ -36,6 +36,7 @@
  #define CONFIG_FILE                 "@CONFIG_FILE@"
  #define CONFIG_DIR                  "@CONFIG_DIR@"
  #define SYSTEM_CONFIG_DIR           "@SYSTEM_CONFIG_DIR@"
@@ -62,7 +62,7 @@ index f09858c..098c77b 100644
  #define LOG_FILE                    "@LOG_FILE@"
  #define PID_FILE                    "@PID_FILE@"
 diff --git a/src/daemon/Display.cpp b/src/daemon/Display.cpp
-index b95f6e5..e3a5566 100644
+index 1b019df..276cb37 100644
 --- a/src/daemon/Display.cpp
 +++ b/src/daemon/Display.cpp
 @@ -35,6 +35,7 @@
@@ -73,7 +73,7 @@ index b95f6e5..e3a5566 100644
  
  #include <pwd.h>
  #include <unistd.h>
-@@ -143,6 +144,11 @@ namespace SDDM {
+@@ -240,6 +241,11 @@ namespace SDDM {
          // log message
          qDebug() << "Display server started.";
  
@@ -86,5 +86,5 @@ index b95f6e5..e3a5566 100644
              !mainConfig.Autologin.User.get().isEmpty()) {
              // reset first flag
 -- 
-2.25.1
+2.40.0
 

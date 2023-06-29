@@ -17,33 +17,27 @@
 
 
 Name:           sddm
-Version:        0.19.0
+Version:        0.20.0
 Release:        0
 Summary:        QML-based display manager
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://github.com/sddm/sddm
-Source:         https://github.com/%{name}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
+Source:         https://github.com/sddm/sddm/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        X11-displaymanagers-%{name}
-Source2:        00-general.conf
-Source3:        10-theme.conf
-Source4:        sddm-tmpfiles.conf
-Source5:        system-user-sddm.conf
+# Distro configs
+Source10:       00-general.conf
+Source11:       10-theme.conf
+# Use kwin_wayland for DisplayServer=wayland.
+# Adapted from https://invent.kde.org/plasma/plasma-workspace/-/blob/Plasma/5.27/sddm-wayland-session/plasma-wayland.conf
+Source12:       11-kwin_wayland.conf
 # PAM configuration
 Source20:       sddm.pam
 Source21:       sddm-autologin.pam
 Source22:       sddm-greeter.pam
 # Patch0-100: PATCH-FIX-UPSTREAM
-Patch0:         0001-Use-PAM-s-username.patch
-Patch1:         0001-Add-fish-etc-profile-and-HOME-.profile-sourcing-1331.patch
-Patch2:         0004-Retry-starting-the-display-server.patch
-Patch3:         0001-disable-automatic-portal-launching.patch
-Patch4:         0001-Process-all-available-auth-messages-in-a-loop.patch
-Patch5:         0001-Avoid-starting-a-new-session-on-exit.patch
-# Not merged yet: https://github.com/sddm/sddm/pull/997
-Patch50:        0001-Remove-suffix-for-Wayland-session.patch
-# Not merged yet: https://github.com/sddm/sddm/pull/1230
-Patch55:        0001-Redesign-Xauth-handling.patch
+# https://github.com/sddm/sddm/pull/1746
+Patch0:         0001-Session-Parse-.desktop-files-manually-again.patch
 # Patch100-?: PATCH-FIX-OPENSUSE
 Patch101:       0001-Write-the-daemon-s-PID-to-a-file-on-startup.patch
 Patch102:       0001-Set-XAUTHLOCALHOSTNAME-in-sessions.patch
@@ -51,8 +45,6 @@ Patch103:       0001-Read-the-DISPLAYMANAGER_AUTOLOGIN-value-from-sysconf.patch
 # sddm has some rudimentary support for plymouth handling, which only works with plymouth-quit.service
 # (the servce is not enabled on openSUSE). For users of sddm.service, we need to issue plymouth quit command by hand in this case
 Patch104:       sddm-service-handle-plymouth.patch
-# Use tty7 by default in the systemd service unit
-Patch105:       0001-Systemd-service-unit-Use-tty7-by-default.patch
 Patch107:       0003-Leave-duplicate-symlinks-out-of-the-SessionModel.patch
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules >= 1.4.0
@@ -63,8 +55,9 @@ BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 # Autodetect UID_MIN and UID_MAX from /etc/login.defs
 BuildRequires:  shadow
+BuildRequires:  python3-docutils
 BuildRequires:  sysuser-tools
-BuildRequires:  pkgconfig(Qt5Core) >= 5.6.0
+BuildRequires:  pkgconfig(Qt5Core) >= 5.15.0
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Quick)
@@ -78,23 +71,26 @@ BuildRequires:  update-alternatives
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Requires(post): diffutils
+Requires(post): %{_sbindir}/update-alternatives
+Requires(postun):%{_sbindir}/update-alternatives
 Requires:       sddm-branding = %{version}
 Requires:       xdm
 # Merged the -lang package back into the main package
 Provides:       %{name}-lang = %{version}
 Obsoletes:      %{name}-lang < %{version}
-BuildRequires:  python3-docutils
 
 %description
-SDDM is a display manager for X11. It uses technologies like QtQuick,
-which in turn gives the designer the ability to create animated user
+SDDM is a display manager for X11 and Wayland. It uses technologies like
+QtQuick, which gives the designer the ability to create animated user
 interfaces.
 
 %package branding-openSUSE
-Summary:        openSUSE branding for SDDM, a QML-based display manager
+Summary:        openSUSE branding for SDDM
 Group:          System/GUI/KDE
 Requires:       %{name} = %{version}
 Requires:       sddm-theme-openSUSE
+# See 11-kwin_wayland.conf
+Requires:       kwin5 >= 5.26.90
 Requires(post): %{name}
 Requires(post): diffutils
 Supplements:    (plasma5-workspace and branding-openSUSE)
@@ -102,13 +98,10 @@ Conflicts:      sddm-branding
 Provides:       sddm-branding = %{version}
 
 %description branding-openSUSE
-SDDM is a display manager for X11. It uses technologies like QtQuick,
-which in turn gives the designer the ability to create animated user
-interfaces.
 This package provides the openSUSE branding for SDDM.
 
 %package branding-upstream
-Summary:        Upstream branding for SDDM, a QML-based display manager
+Summary:        Upstream branding for SDDM
 Group:          System/GUI/KDE
 Requires:       %{name} = %{version}
 Requires(post): %{name}
@@ -118,24 +111,18 @@ Conflicts:      sddm-branding
 Provides:       sddm-branding = %{version}
 
 %description branding-upstream
-SDDM is a display manager for X11. It uses technologies like QtQuick,
-which in turn gives the designer the ability to create animated user
-interfaces.
 This package provides upstream branding for SDDM.
 
 %prep
 %autosetup -p1
 
 %build
-%sysusers_generate_pre %{SOURCE5} sddm system-user-sddm.conf
 LOGIN_DEFS_PATH="%{_sysconfdir}/login.defs"
-if test \( -n "%{?_distconfdir}" -a -e "%{_distconfdir}/login.defs" \); then
-  LOGIN_DEFS_PATH="%{_distconfdir}/login.defs"
-fi
+[ -e "$LOGIN_DEFS_PATH" ] || LOGIN_DEFS_PATH="%{_distconfdir}/login.defs"
 
+# SDDM_INITIAL_VT does not work for X: https://github.com/sddm/sddm/issues/1650
 %cmake \
       -DCMAKE_BUILD_TYPE=Release \
-      -DMINIMUM_VT=7 \
       -DCMAKE_INSTALL_LIBEXECDIR="%{_libexecdir}/%{name}" \
       -DIMPORTS_INSTALL_DIR="%{_libdir}/qt5/qml" \
       -DSESSION_COMMAND="%{_sysconfdir}/X11/xdm/Xsession" \
@@ -144,7 +131,7 @@ fi
       -DDBUS_CONFIG_DIR=%{_datadir}/dbus-1/system.d \
       -DRUNTIME_DIR="/run/sddm" \
       -DPID_FILE="/run/sddm.pid" \
-      -DLOGIN_DEFS_PATH:path="${LOGIN_DEFS_PATH}"
+      -DLOGIN_DEFS_PATH:path="${LOGIN_DEFS_PATH}" \
   %make_jobs
 
 %install
@@ -159,9 +146,11 @@ fi
   popd
 
   install -Dm 0644 %{SOURCE1} %{buildroot}%{_prefix}/lib/X11/displaymanagers/%{name}
-  install -Dm 0644 %{SOURCE2} %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/00-general.conf
-  install -Dm 0644 %{SOURCE3} %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/10-theme.conf
-  install -Dm 0644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/sddm.conf
+  install -Dm 0644 %{SOURCE10} %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/00-general.conf
+  # Adjust paths to X session scripts in 00-general.conf
+  sed -e 's-/usr/etc-%{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}-g' -i %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/00-general.conf
+  install -Dm 0644 %{SOURCE11} %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/10-theme.conf
+  install -Dm 0644 %{SOURCE12} %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/11-kwin_wayland.conf
 
   # Install PAM config
   rm -r %{buildroot}%{_sysconfdir}/pam.d # Remove sddm's config, for debian only
@@ -175,9 +164,6 @@ fi
     sed -i'' '/postlogin-/d' %{buildroot}${pam_dest}/*
   %endif
 
-  # Adjust paths to X session scripts in 00-general.conf
-  sed -e 's-/usr/etc-%{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}-g' -i %{buildroot}%{_prefix}/lib/sddm/sddm.conf.d/00-general.conf
-
   mkdir -p %{buildroot}%{_sysconfdir}/alternatives
   touch %{buildroot}%{_sysconfdir}/alternatives/default-displaymanager
   ln -s %{_sysconfdir}/alternatives/default-displaymanager %{buildroot}%{_prefix}/lib/X11/displaymanagers/default-displaymanager
@@ -189,7 +175,7 @@ fi
   install -d %{buildroot}%{_sbindir}
   ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcsddm
 
-  install -Dm 0644 %{SOURCE5} %{buildroot}%{_sysusersdir}/system-user-sddm.conf
+  %sysusers_generate_pre %{buildroot}%{_sysusersdir}/sddm.conf sddm sddm.conf
 
   %fdupes %{buildroot}%{_datadir}/sddm
 
@@ -227,9 +213,9 @@ fi
 
 %if 0%{?suse_version} > 1500
 %posttrans
-# Migration to /usr/etc, restore just created .rpmsave
-for i in pam.d/sddm pam.d/sddm-autologin pam.d/sddm-greeter ; do
-     test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
+# Migration to /usr/lib/pam.d/, restore just created .rpmsave
+for i in pam.d/sddm pam.d/sddm-autologin pam.d/sddm-greeter; do
+    [ -f %{_sysconfdir}/${i}.rpmsave ] && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} || :
 done
 %endif
 
@@ -307,6 +293,8 @@ fi
 %{_prefix}/lib/sddm/sddm.conf.d/00-general.conf
 %dir %{_libexecdir}/sddm
 %{_libexecdir}/sddm/sddm-helper
+%{_libexecdir}/sddm/sddm-helper-start-wayland
+%{_libexecdir}/sddm/sddm-helper-start-x11user
 %{_datadir}/sddm/faces/
 %{_datadir}/sddm/flags/
 %{_datadir}/sddm/scripts/
@@ -316,13 +304,14 @@ fi
 %ghost %attr(750,sddm,sddm) %dir %{_localstatedir}/lib/sddm
 %{_mandir}/man*/sddm*%{ext_man}
 %{_unitdir}/sddm.service
-%{_sysusersdir}/system-user-sddm.conf
+%{_sysusersdir}/sddm.conf
 %{_tmpfilesdir}/sddm.conf
 
 %files branding-openSUSE
 %license LICENSE*
 %doc README*
 %{_prefix}/lib/sddm/sddm.conf.d/10-theme.conf
+%{_prefix}/lib/sddm/sddm.conf.d/11-kwin_wayland.conf
 
 %files branding-upstream
 %license LICENSE*

@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Mon Jun 26 09:54:44 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix parsing some session .desktop files:
+  * 0001-Session-Parse-.desktop-files-manually-again.patch
+
+-------------------------------------------------------------------
+Sat Jun 24 14:07:16 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 0.20.0:
+  + Initial Qt6 support (Will break themes which rely on Qt 5)
+  + **Experimental** support for running the greeter with Wayland
+  + Enable HiDPI scaling by default
+  + Support for running X11 display server without root privileges
+  + Greeter: Support setting environment variables
+  + Allow additional env vars to be defined in session files (#1370)
+  + Make accountsservice data directory overridable via CMake
+  + Add support for X11 cursor size configuration
+  + Search XDG Base Directories for session files
+  + Display information and errors from PAM in the greeter (#1486)
+  * Remove the Passwd backend, make PAM mandatory
+  * Bump minimum CMake version to 3.4
+  * Introduce SDDM_INITIAL_VT as the TTY to reach out to
+  * Set XCURSOR_SIZE in XorgDisplayServer::start
+  * Make it possible to start ConsoleKit D-Bus service during SDDM startup
+  * pam: Do not use tally2 if faillock is present
+  * Bump to Qt 5.15, port away from deprecated APIs
+  * remove `-logfile` arg that causes server to fail
+  - Set RUNTIME_DIR to /run/sddm when using systemd to follow FHS 3.0
+  - Use avatars in FacesDir first and if not found search other locations
+  - Switch to using libxau with `FamilyWild` (#1230)
+  - New interface to access config values from themes (#1097)
+  - Session names are translated now (#1645)
+  - Many more bugfixes
+- Important change: SDDM now uses the first free VT, it no longer prefers
+  tty7 (the InitialVT option in 00-general.conf has no effect anymore)
+- Remove patches, now upstream:
+  * 0001-Use-PAM-s-username.patch
+  * 0001-Add-fish-etc-profile-and-HOME-.profile-sourcing-1331.patch
+  * 0004-Retry-starting-the-display-server.patch
+  * 0001-disable-automatic-portal-launching.patch
+  * 0001-Remove-suffix-for-Wayland-session.patch
+  * 0001-Redesign-Xauth-handling.patch
+  * 0002-Use-QTemporaryFile-with-xauth_XXXXXX-ih-XAuth.patch
+  * 0001-Process-all-available-auth-messages-in-a-loop.patch
+  * 0001-Avoid-starting-a-new-session-on-exit.patch
+- Remove files, now upstream:
+  * sddm-tmpfiles.conf
+  * system-user-sddm.conf
+- Rebased patches:
+  * 0001-Redesign-Xauth-handling.patch
+  * 0001-Write-the-daemon-s-PID-to-a-file-on-startup.patch
+  * 0001-Set-XAUTHLOCALHOSTNAME-in-sessions.patch
+  * 0001-Read-the-DISPLAYMANAGER_AUTOLOGIN-value-from-sysconf.patch
+  * sddm-service-handle-plymouth.patch
+  * 0003-Leave-duplicate-symlinks-out-of-the-SessionModel.patch
+- Drop patches, not applicable anymore:
+  * 0001-Systemd-service-unit-Use-tty7-by-default.patch
+- Add 11-kwin_wayland.conf to use kwin_wayland as wayland compositor
+
+-------------------------------------------------------------------
 Wed Apr 19 16:40:02 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix delays on shutdown (boo#1210391):
