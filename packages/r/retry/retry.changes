@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 28 12:01:48 UTC 2023 - okurz@suse.com
+
+- Update to version 1687953576.0230dc5:
+  * dist: Add missing dependency on util-linux for getopt
+
+-------------------------------------------------------------------
 Mon Jun 27 12:33:18 UTC 2022 - okurz@suse.com
 
 - Update to version 1655407786.7ff7de5:

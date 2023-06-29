@@ -1,7 +1,7 @@
 #
 # spec file for package retry
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           retry
-Version:        1655407786.7ff7de5
+Version:        1687953576.0230dc5
 Release:        0
 Summary:        A simple tool for retrying command executions in plain POSIX sh
 License:        MIT
@@ -25,6 +25,7 @@ Group:          Development/Tools/Other
 BuildArch:      noarch
 URL:            https://github.com/okurz/retry
 Source0:        %{name}-%{version}.tar.xz
+Requires:       util-linux
 
 %description
 A simple tool for retrying command executions in plain POSIX sh.
