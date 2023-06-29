@@ -1,7 +1,8 @@
-diff -Naur FreeFileSync_11.23_Source_orig/FreeFileSync/Source/ffs_paths.cpp FreeFileSync_11.23_Source/FreeFileSync/Source/ffs_paths.cpp
---- FreeFileSync_11.23_Source_orig/FreeFileSync/Source/ffs_paths.cpp	2022-07-23 15:18:28.000000000 +0200
-+++ FreeFileSync_11.23_Source/FreeFileSync/Source/ffs_paths.cpp	2022-08-26 15:41:30.007973691 +0200
-@@ -49,7 +49,8 @@
+Index: FreeFileSync-12.4/FreeFileSync/Source/ffs_paths.cpp
+===================================================================
+--- FreeFileSync-12.4.orig/FreeFileSync/Source/ffs_paths.cpp
++++ FreeFileSync-12.4/FreeFileSync/Source/ffs_paths.cpp
+@@ -55,7 +55,8 @@ Zstring fff::getInstallDirPath()
  
  Zstring fff::getResourceDirPath()
  {
