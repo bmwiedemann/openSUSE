@@ -1,7 +1,7 @@
 #
 # spec file for package libcec
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Guillaume GARDET <guillaume@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,6 @@ Version:        6.0.2
 Release:        0
 Summary:        Library to control devices with TV remote control via HDMI
 License:        GPL-2.0-or-later
-Group:          Hardware/TV
 URL:            https://github.com/Pulse-Eight/libcec
 Source:         https://github.com/Pulse-Eight/libcec/archive/libcec-%{version}.tar.gz
 Patch1:         libcec-cmake_install_lib_dir.patch
@@ -37,7 +36,6 @@ BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  swig
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(lockdev)
 BuildRequires:  pkgconfig(p8-platform)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(udev)
@@ -124,8 +122,7 @@ This subpackage contains the headers for libcec.
 %install
 %cmake_install
 
-%post   -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n cec-client
 %defattr(755,root,root)

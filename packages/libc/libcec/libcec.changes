@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 28 07:29:33 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Small packaging cleanup
+
+-------------------------------------------------------------------
+Wed Jun 28 07:03:10 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
+
+- Don't buildrequire lockdev, it's not actually used
+
+-------------------------------------------------------------------
 Thu Feb 11 04:23:45 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to drop build host name (boo#1084909)
