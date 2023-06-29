@@ -1,7 +1,7 @@
 #
 # spec file for package hawk2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,6 @@
 %define	vendor_ruby	vendor_ruby
 %define	init_style	suse
 %define	pkg_group	Productivity/Clustering/HA
-
 
 %define www_base %{_datadir}
 %define www_tmp  %{_localstatedir}/lib/hawk/tmp
@@ -42,7 +41,7 @@ License:        GPL-2.0-only
 Group:          %{pkg_group}
 Version:        2.6.4+git.1682509819.1ff135ea
 Release:        0
-Url:            http://www.clusterlabs.org/wiki/Hawk
+URL:            http://www.clusterlabs.org/wiki/Hawk
 Source:         %{name}-%{version}.tar.bz2
 Source1:        sysconfig.hawk
 Source2:        js-routes-1.4.1.gem
@@ -95,9 +94,9 @@ Requires:       rubygem(%{rb_default_ruby_abi}:kramdown) >= 1.14
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:uglifier) >= 1.14
 Requires:       rubygem(%{rb_default_ruby_abi}:uglifier) >= 1.14
 
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:execjs) >= 2.8
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:gettext) >= 3.2
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:uglifier) >= 3
-BuildRequires:  rubygem(%{rb_default_ruby_abi}:execjs) >= 2.8
 # TODO: remove execjs below
 Requires:       rubygem(%{rb_default_ruby_abi}:execjs) >= 2.8
 
@@ -114,10 +113,8 @@ BuildRequires:  pam-devel
 A web-based GUI for managing and monitoring the Pacemaker
 High-Availability cluster resource manager.
 
-
 %prep
 %setup
-
 
 %build
 
@@ -192,7 +189,7 @@ getent passwd %{uname} >/dev/null || useradd -r -g %{gname} -u 189 -s /sbin/nolo
 
 # A workaround. Hawk fails with the newer js-routes-2.x.y
 # And we don't want to submit the js-routes-1.4.1 to the factory
-# So let's attach js-routes-1.4.1 and 
+# So let's attach js-routes-1.4.1 and
 # update it to the version 2 later (TODO!)
 gem install --local %{www_base}/hawk/vendor/cache/js-routes-1.4.1.gem
 
@@ -202,14 +199,13 @@ gem install --local %{www_base}/hawk/vendor/cache/js-routes-1.4.1.gem
 %postun
 %service_del_postun hawk.service hawk-backend.service
 
-
 %files -f hawk.lang
 %defattr(644,root,root,755)
 %{_fillupdir}/sysconfig.hawk
 %attr(4750, root, %{gname})%{_sbindir}/hawk_chkpwd
 %dir %{www_base}/hawk
 # To let the hacluster write the hawk/Gemfile.lock
-%attr(-, %{uname},%{gname})%{www_base}/hawk
+%attr(-, %{uname},%{gname})%{www_base}/hawk/Gemfile.lock
 %{www_base}/hawk/log
 %{www_base}/hawk/tmp
 %{www_base}/hawk/app
@@ -235,7 +231,7 @@ gem install --local %{www_base}/hawk/vendor/cache/js-routes-1.4.1.gem
 %{www_base}/hawk/Rakefile
 # We want Gemfile to explicitelly tell puma which gems to use
 %{www_base}/hawk/Gemfile
-%exclude %{www_base}/hawk/Gemfile.lock
+%{www_base}/hawk/Gemfile.lock
 %{www_base}/hawk/COPYING
 %{www_base}/hawk/config.ru
 %{www_base}/hawk/test
@@ -256,4 +252,3 @@ gem install --local %{www_base}/hawk/vendor/cache/js-routes-1.4.1.gem
 %attr(-,root,root) %{_sbindir}/rchawk
 
 %changelog
-

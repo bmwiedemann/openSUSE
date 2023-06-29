@@ -7,4 +7,12 @@
     <comment>Hi, this is the hawk2 that we use in our HA.</comment>
     <requestid>1087396</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6a6b1b088edd76a7a9e85fec0eb6669f</srcmd5>
+    <version>2.6.4+git.1682509819.1ff135ea</version>
+    <time>1688052551</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095922</requestid>
+  </revision>
 </revisionlist>

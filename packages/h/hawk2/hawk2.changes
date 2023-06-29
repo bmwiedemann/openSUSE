@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 22 12:35:47 UTC 2023 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Strengthen /usr/share/hawk permissions (bsc#1211848)
+
+-------------------------------------------------------------------
 Thu Apr 27 14:18:54 UTC 2023 - aburlakov@suse.com
 
 - Update to version 2.6.4+git.1682509819.1ff135ea:
