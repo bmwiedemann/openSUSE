@@ -23628,6 +23628,7 @@ unsorted:
   - python310-billiard 
   - python310-binary 
   - python310-binaryornot 
+  - python310-bincopy 
   - python310-bindep 
   - python310-biopython 
   - python310-biplist 
@@ -23753,6 +23754,7 @@ unsorted:
   - python310-cli-helpers 
   - python310-click 
   - python310-click-aliases 
+  - python310-click-command-tree 
   - python310-click-completion 
   - python310-click-default-group 
   - python310-click-didyoumean 
@@ -24673,6 +24675,7 @@ unsorted:
   - python310-libsmraw 
   - python310-libtmux 
   - python310-libusb1 
+  - python310-libusbsio 
   - python310-libvhdi 
   - python310-libvirt-python 
   - python310-libvmdk 
@@ -25317,6 +25320,7 @@ unsorted:
   - python310-pyliblo-doc 
   - python310-pylibmc 
   - python310-pylineclip 
+  - python310-pylink-square 
   - python310-pylint 
   - python310-pylint-ignore 
   - python310-pylint-venv 
@@ -25870,6 +25874,7 @@ unsorted:
   - python310-slip 
   - python310-slip-dbus 
   - python310-slixmpp 
+  - python310-sly 
   - python310-slycot 
   - python310-smart-open 
   - python310-smartypants 
@@ -27063,6 +27068,7 @@ unsorted:
   - python311-billiard 
   - python311-binary 
   - python311-binaryornot 
+  - python311-bincopy 
   - python311-bindep 
   - python311-biopython 
   - python311-biplist 
@@ -27180,6 +27186,7 @@ unsorted:
   - python311-cleo 
   - python311-cli-helpers 
   - python311-click-aliases 
+  - python311-click-command-tree 
   - python311-click-completion 
   - python311-click-default-group 
   - python311-click-didyoumean 
@@ -28046,6 +28053,7 @@ unsorted:
   - python311-libsmraw 
   - python311-libtmux 
   - python311-libusb1 
+  - python311-libusbsio 
   - python311-libvhdi 
   - python311-libvmdk 
   - python311-libvsapm 
@@ -28652,6 +28660,7 @@ unsorted:
   - python311-pyliblo 
   - python311-pyliblo-doc 
   - python311-pylineclip 
+  - python311-pylink-square 
   - python311-pylint 
   - python311-pylint-ignore 
   - python311-pylint-venv 
@@ -29169,6 +29178,7 @@ unsorted:
   - python311-slack-sdk 
   - python311-slimit 
   - python311-slixmpp 
+  - python311-sly 
   - python311-slycot 
   - python311-smart-open 
   - python311-smartypants 
@@ -30407,6 +30417,7 @@ unsorted:
   - python39-billiard 
   - python39-binary 
   - python39-binaryornot 
+  - python39-bincopy 
   - python39-bindep 
   - python39-biopython 
   - python39-biplist 
@@ -30533,6 +30544,7 @@ unsorted:
   - python39-cli-helpers 
   - python39-click 
   - python39-click-aliases 
+  - python39-click-command-tree 
   - python39-click-completion 
   - python39-click-default-group 
   - python39-click-didyoumean 
@@ -31452,6 +31464,7 @@ unsorted:
   - python39-libsmraw 
   - python39-libtmux 
   - python39-libusb1 
+  - python39-libusbsio 
   - python39-libvhdi 
   - python39-libvirt-python 
   - python39-libvmdk 
@@ -32095,6 +32108,7 @@ unsorted:
   - python39-pyliblo-doc 
   - python39-pylibmc 
   - python39-pylineclip 
+  - python39-pylink-square 
   - python39-pylint 
   - python39-pylint-ignore 
   - python39-pylint-venv 
@@ -32647,6 +32661,7 @@ unsorted:
   - python39-slip 
   - python39-slip-dbus 
   - python39-slixmpp 
+  - python39-sly 
   - python39-slycot 
   - python39-smart-open 
   - python39-smartypants 
