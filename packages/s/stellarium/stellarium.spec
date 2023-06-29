@@ -32,6 +32,8 @@ URL:            https://stellarium.org/
 Source0:        https://github.com/Stellarium/stellarium/releases/download/v%{version}/stellarium-%{version}.tar.gz
 Source1:        https://github.com/Stellarium/stellarium/releases/download/v%{version}/stellarium-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
+# PATCH-FIX-UPSTREAM https://github.com/Stellarium/stellarium/pull/3269
+Patch0:         indi2_support.patch
 BuildRequires:  cmake >= 3.16.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 7
@@ -41,7 +43,7 @@ BuildRequires:  libxkbcommon-devel >= 0.5.0
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(libindi) < 2.0.0
+BuildRequires:  pkgconfig(libindi) >= 2.0.0
 BuildRequires:  pkgconfig(zlib)
 %if %{with Qt5}
 BuildRequires:  libQt5Core-private-headers-devel >= 5.9.0
