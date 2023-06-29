@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 29 07:51:01 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- Update to version 1.5
+  * Fix crashes if a disassembler is not implemented.
+  * Fix a couple of build issues.
+- Patches moved to upstream:
+  * kdumpid-Fix-build-for-binutils-2.40.patch
+
+-------------------------------------------------------------------
 Thu Apr 13 18:35:49 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
 
 - kdumpid-Fix-build-for-binutils-2.40.patch: Fix build for

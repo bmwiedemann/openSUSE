@@ -16,13 +16,27 @@
 #
 
 
+# Begin compatibility cruft
+#
+
+%if 0%{!?have_zstd:1}
+%if 0%{?sle_version} >= 152000
+%define have_zstd 1
+%else
+%define have_zstd 0
+%endif
+%endif
+
+#
+# End compatibility cruft
+
 #Url:
 
 Name:           kdumpid
 BuildRequires:  binutils-devel
 BuildRequires:  libkdumpfile-devel
 BuildRequires:  zlib-devel
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        Utility to extract information from vmcores
 License:        GPL-2.0-or-later
@@ -30,7 +44,6 @@ Group:          System/Kernel
 URL:            http://sourceforge.net/p/kdumpid
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source:         %{name}-%{version}.tar.bz2
-Patch1:         %{name}-Fix-build-for-binutils-2.40.patch
 
 %description
 Kdumpid extracts information such as type of dump, architecture

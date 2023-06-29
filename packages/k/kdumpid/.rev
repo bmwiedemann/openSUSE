@@ -33,4 +33,17 @@
 </comment>
     <requestid>1079287</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ea1cad836412d23e534c60822ebd725f</srcmd5>
+    <version>1.5</version>
+    <time>1688052555</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5
+  * Fix crashes if a disassembler is not implemented.
+  * Fix a couple of build issues.
+- Patches moved to upstream:
+  * kdumpid-Fix-build-for-binutils-2.40.patch
+</comment>
+    <requestid>1095928</requestid>
+  </revision>
 </revisionlist>
