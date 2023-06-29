@@ -1065,4 +1065,12 @@ Adds an explicit provides line, so that &quot;zypper in jpegtran&quot; will work
   Eliminates the need for source package links in OBS. (forwarded request 1084624 from dimstar)</comment>
     <requestid>1084656</requestid>
   </revision>
+  <revision rev="69" vrev="76">
+    <srcmd5>a014518e7e19adfeefddd216c428e53e</srcmd5>
+    <version>unknown</version>
+    <time>1688052448</time>
+    <user>dimstar_suse</user>
+    <comment>- merge two spec files into one</comment>
+    <requestid>1095708</requestid>
+  </revision>
 </revisionlist>

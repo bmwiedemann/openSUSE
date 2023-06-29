@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 23 17:39:37 UTC 2023 - pgajdos@suse.com
+
+- merge two spec files into one
+
+-------------------------------------------------------------------
 Thu May  4 11:37:31 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add _multibuild to define 2nd spec file as additional flavor.
