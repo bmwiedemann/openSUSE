@@ -23,7 +23,7 @@ Name:           libdb_java-4_8
 Version:        %{major}.%{minor}.30
 Release:        0
 Summary:        Java Bindings for the Berkeley DB
-License:        BSD-3-Clause
+License:        BSD-3-Clause AND Sleepycat
 Group:          Productivity/Databases/Servers
 URL:            https://oracle.com/technetwork/products/berkeleydb/
 Source:         http://download.oracle.com/berkeley-db/db-%{version}.tar.gz

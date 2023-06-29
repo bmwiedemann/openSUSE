@@ -24,7 +24,7 @@ Name:           libdb-4_8
 Version:        %{major}.%{minor}.30
 Release:        0
 Summary:        Berkeley DB Database Library Version 4.8
-License:        Sleepycat
+License:        BSD-3-Clause AND Sleepycat
 Group:          System/Libraries
 URL:            https://oracle.com/technetwork/products/berkeleydb/
 Source:         http://download.oracle.com/berkeley-db/db-%{version}.tar.gz

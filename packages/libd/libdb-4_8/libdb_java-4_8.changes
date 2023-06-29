@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 21 12:42:57 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix incomplete license tag. [bsc#1099695]
+
+-------------------------------------------------------------------
 Thu May  4 13:52:39 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Add _multibuild to define additional spec files as additional
