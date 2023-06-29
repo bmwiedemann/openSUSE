@@ -137,10 +137,6 @@ Requires:       netcfg >= 11.5
 Requires:       systemd-default-settings-branding
 Requires:       systemd-presets-branding
 Requires:       util-linux >= 2.27.1
-Requires:       group(lock)
-# The next dependency is also needed with file-triggers enabled due to the way
-# the libzypp default transaction backend works.
-Requires(pre):  group(lock)
 Requires(post): coreutils
 Requires(post): findutils
 Requires(post): systemd-presets-branding

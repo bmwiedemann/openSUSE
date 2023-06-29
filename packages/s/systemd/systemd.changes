@@ -1,12 +1,26 @@
 -------------------------------------------------------------------
+Tue Jun 27 13:02:40 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Change the group owner of /run/lock from "lock" to "root" (bsc#1212674)
+
+  This allows to drop the dependency "Requires: group(lock)" that was introduced
+  previously to make sure that the "lock" group will be kept around. This
+  dependency introduced a dependency cycle.
+
+-------------------------------------------------------------------
+Mon Jun 26 14:26:28 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- file-triggers: fix a typo that sneaked in the script dealing with tmpfiles
+  (bsc#1212733)
+
+-------------------------------------------------------------------
 Wed Jun 21 10:30:58 UTC 2023 - Franck Bui <fbui@suse.com>
 
-- Make sure to pre-install the groups systemd and udev rely on. This is needed
-  when the tmpfiles are run at package installation time. Theoretically with
-  only "Requires(pre): group()", rpm is allowed to drop the group at the end of
-  the package installations hence let's keep "Requires: group()" dep.
+- Make sure to keep the groups systemd and udev rely on installed. Theoretically
+  with only "Requires(pre): group(x)", rpm is allowed to drop group 'x' at the
+  end of the package installations.
 
-  Note: this is also needed when (post)file-triggers are enabled due to the
+  Note: this is also needed when (trans)file-triggers are enabled due to the
   current limitation of the default libzypp transaction backend.
 
 -------------------------------------------------------------------

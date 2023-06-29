@@ -6665,4 +6665,23 @@ handle manual pages that consist only of a .so directive such as
   happen on the next reboot.</comment>
     <requestid>1094372</requestid>
   </revision>
+  <revision rev="395" vrev="4">
+    <srcmd5>a8d43610c4ed9d57a6befa675ce35fd6</srcmd5>
+    <version>253.5</version>
+    <time>1688052447</time>
+    <user>dimstar_suse</user>
+    <comment>- Change the group owner of /run/lock from &quot;lock&quot; to &quot;root&quot; (bsc#1212674)
+  This allows to drop the dependency &quot;Requires: group(lock)&quot; that was introduced
+  previously to make sure that the &quot;lock&quot; group will be kept around. This
+  dependency introduced a dependency cycle.
+
+- file-triggers: fix a typo that sneaked in the script dealing with tmpfiles
+  (bsc#1212733)
+
+- Make sure to keep the groups systemd and udev rely on installed. Theoretically
+  with only &quot;Requires(pre): group(x)&quot;, rpm is allowed to drop group 'x' at the
+  end of the package installations.
+  Note: this is also needed when (trans)file-triggers are enabled due to the</comment>
+    <requestid>1095850</requestid>
+  </revision>
 </revisionlist>

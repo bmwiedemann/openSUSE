@@ -108,7 +108,7 @@ end
 -- Note: /run is never mounted during transactional updates.
 if posix.access("/run/systemd/system") then
     assert(rpm.execute("systemd-tmpfiles", "--create"))
-endf
+end
 
 %if %{without bootstrap}
 %transfiletriggerin -P 1000600 -n udev -p <lua> -- /usr/lib/udev/rules.d
