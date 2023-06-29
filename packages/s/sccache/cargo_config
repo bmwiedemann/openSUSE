@@ -1,7 +1,7 @@
 [source.crates-io]
 replace-with = "vendored-sources"
 
-[source."https://github.com/Firstyear/opensuse-proxy-cache.git"]
+[source."git+https://github.com/Firstyear/opensuse-proxy-cache.git"]
 git = "https://github.com/Firstyear/opensuse-proxy-cache.git"
 replace-with = "vendored-sources"
 
