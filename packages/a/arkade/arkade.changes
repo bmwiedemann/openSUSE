@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jun 29 11:39:19 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.9.23:
+  * unblock installs on arm64 nodes
+  * Add 1password and task CLIs to arkage get
+  * Bump github.com/otiai10/copy from 1.11.0 to 1.12.0
+  * update chart url
+  * permit postgresql install on arm64
+  * Bump golang.org/x/mod from 0.10.0 to 0.11.0
+  * fix format
+  * shorten name
+  * add binaryBase optional field
+  * update inletsctl unit test
+  * fix: linux aarch64
+  * Update tools.go
+  * Bump golang.org/x/crypto from 0.9.0 to 0.10.0
+  * Add extra notes for test-tool.sh
+  * Add test tool note to PR template
+  * Update Kustomize to v5.0.3 and support Windows
+
+-------------------------------------------------------------------
 Tue Jun 13 11:04:00 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.9.22:
