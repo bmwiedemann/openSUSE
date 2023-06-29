@@ -6908,6 +6908,7 @@ unsorted:
   - golang-github-prometheus-promu 
   - golang-github-shadowsocks-v2ray-plugin 
   - golang-github-v2fly-v2ray-core 
+  - golang-github-vpenso-prometheus_slurm_exporter 
   - golang-gopkgin-check 
   - golang-org-x-sys 
   - golang-packaging 
@@ -7781,6 +7782,8 @@ unsorted:
   - hwloc-data 
   - hwloc-devel 
   - hwloc-doc 
+  - hwloc-gl 
+  - hwloc-gui 
   - hwmixvolume 
   - hxtools 
   - hxtools-data 
@@ -14767,7 +14770,6 @@ unsorted:
   - libserializer-javadoc 
   - libserialport-devel 
   - libserialport0 
-  - libsexp0 
   - libsexpp0 
   - libsfcUtil0 
   - libsfml2-2_5 
@@ -23481,6 +23483,7 @@ unsorted:
   - python310-azure-mgmt-machinelearningcompute 
   - python310-azure-mgmt-machinelearningservices 
   - python310-azure-mgmt-maintenance 
+  - python310-azure-mgmt-managednetworkfabric 
   - python310-azure-mgmt-managedservices 
   - python310-azure-mgmt-managementgroups 
   - python310-azure-mgmt-managementpartner 
@@ -25953,6 +25956,7 @@ unsorted:
   - python310-sphobjinv 
   - python310-spidev 
   - python310-spotipy 
+  - python310-spsdk 
   - python310-spur 
   - python310-spyder-kernels 
   - python310-sqlalchemy-migrate 
@@ -26065,6 +26069,7 @@ unsorted:
   - python310-tkreadonly 
   - python310-tld 
   - python310-tldextract 
+  - python310-tlv8 
   - python310-tmx 
   - python310-tokenize-rt 
   - python310-toml 
@@ -26922,6 +26927,7 @@ unsorted:
   - python311-azure-mgmt-machinelearningcompute 
   - python311-azure-mgmt-machinelearningservices 
   - python311-azure-mgmt-maintenance 
+  - python311-azure-mgmt-managednetworkfabric 
   - python311-azure-mgmt-managedservices 
   - python311-azure-mgmt-managementgroups 
   - python311-azure-mgmt-managementpartner 
@@ -29255,6 +29261,7 @@ unsorted:
   - python311-sphobjinv 
   - python311-spidev 
   - python311-spotipy 
+  - python311-spsdk 
   - python311-spur 
   - python311-spyder-kernels 
   - python311-sqlalchemy-migrate 
@@ -29367,6 +29374,7 @@ unsorted:
   - python311-tkreadonly 
   - python311-tld 
   - python311-tldextract 
+  - python311-tlv8 
   - python311-tmx 
   - python311-tokenize-rt 
   - python311-tomli-w 
@@ -30270,6 +30278,7 @@ unsorted:
   - python39-azure-mgmt-machinelearningcompute 
   - python39-azure-mgmt-machinelearningservices 
   - python39-azure-mgmt-maintenance 
+  - python39-azure-mgmt-managednetworkfabric 
   - python39-azure-mgmt-managedservices 
   - python39-azure-mgmt-managementgroups 
   - python39-azure-mgmt-managementpartner 
@@ -32740,6 +32749,7 @@ unsorted:
   - python39-sphobjinv 
   - python39-spidev 
   - python39-spotipy 
+  - python39-spsdk 
   - python39-spur 
   - python39-spyder-kernels 
   - python39-sqlalchemy-migrate 
@@ -32852,6 +32862,7 @@ unsorted:
   - python39-tkreadonly 
   - python39-tld 
   - python39-tldextract 
+  - python39-tlv8 
   - python39-tmx 
   - python39-tokenize-rt 
   - python39-toml 
@@ -34542,7 +34553,6 @@ unsorted:
   - sesdev-qa 
   - setconf 
   - sethdlc 
-  - setools-console 
   - setools-gui 
   - setroubleshoot 
   - setroubleshoot-doc 
@@ -34550,8 +34560,6 @@ unsorted:
   - setroubleshoot-plugins-lang 
   - setroubleshoot-server 
   - sevctl 
-  - sexp 
-  - sexp-devel 
   - sexpp 
   - sexpp-devel 
   - sfcgal 
