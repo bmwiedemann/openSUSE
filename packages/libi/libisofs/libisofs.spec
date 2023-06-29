@@ -1,7 +1,7 @@
 #
 # spec file for package libisofs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define so_ver 6
 Name:           libisofs
-Version:        1.5.4
+Version:        1.5.6
 Release:        0
 Summary:        Library for Creating ISO-9660 Filesystems
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
