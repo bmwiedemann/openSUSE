@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Jun 27 10:51:30 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.21.0
+  * Add framework for BYOID metrics headers (#1332)
+  * Pypy unit test build (#1335)
+- from version 2.20.0
+  * Add public API load_credentials_from_dict (#1326)
+  * Expiry in compute_engine.IDTokenCredentials (#1327), closes (#1323)
+  * Expiry in impersonated_credentials.IDTokenCredentials (#1330)
+  * Invalid `dev` version identifiers in `setup.py` (#1322), closes (#1321)
+- from version 2.19.1
+  * Check id token error response (#1315)
+  * Fix "AttributeError: 'str' object has no attribute 'get'" (dac7cc3)
+  * Replacing abc.com with example.com (dac7cc3)
+- from version 2.19.0
+  * Add metrics (part 1) (#1298)
+  * Add metrics (part 2) (#1303)
+  * Add metrics (part 3) (#1305)
+  * Expose `universe_domain` for external account creds (#1296)
+  * Remove python 2.7 from setup.py and nox tests (#1301)
+- from version 2.18.1
+  * Self signed jwt token should be string type (#1294)
+- from version 2.18.0
+  * Add smbios check to detect GCE residency (#1276)
+  * Universe domain support for service account (#1286)
+- Refresh patches for new version
+  * python-google-auth-no-mock.patch
+
+-------------------------------------------------------------------
 Sat May 27 07:26:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - drop urllib3-2.patch and limit to urllib3 < 2.x as that

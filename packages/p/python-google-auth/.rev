@@ -358,4 +358,12 @@
   matches the requires and avoids coinstallability isuses</comment>
     <requestid>1089287</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>f9d9d43c4d5c974e7fa19c6c7744e75c</srcmd5>
+    <version>2.21.0</version>
+    <time>1688052465</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1095589</requestid>
+  </revision>
 </revisionlist>
