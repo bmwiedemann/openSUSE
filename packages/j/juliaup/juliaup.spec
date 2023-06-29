@@ -21,17 +21,19 @@
 %global latest_julia_version 1.8.3
 
 Name:           juliaup
-Version:        1.8.16
+Version:        1.11.0
 Release:        0
 Summary:        Julia installer and version multiplexer
 License:        (0BSD OR MIT OR Apache-2.0) AND Apache-2.0 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND Apache-2.0 AND ISC AND MIT AND MPL-2.0 AND MIT
 Group:          Development/Languages/Other
 URL:            https://github.com/JuliaLang/juliaup
-Source0:        %{name}-%{version}.tar.xz
-Source1:        vendor.tar.xz
+Source0:        %{name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
 BuildRequires:  rust+cargo
+BuildRequires:  zstd
+ExclusiveArch:  %{rust_tier1_arches}
 
 # It doesn't make sense to do this anyway.
 # Provides:       julia = %%{latest_julia_version}
@@ -55,7 +57,7 @@ cp %{SOURCE2} .cargo/config
 
 %install
 %{cargo_install} --no-default-features
-ln -sfv "%{_bindir}/julialauncher" "%{buildroot}/%{_bindir}/julia"
+# ln -sfv "%%{_bindir}/julialauncher" "%%{buildroot}/%{_bindir}/julia"
 
 %files
 %license LICENSE

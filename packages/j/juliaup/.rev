@@ -229,4 +229,64 @@
 </comment>
     <requestid>1055782</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b20f89735d270de309941d32c98f3ac5</srcmd5>
+    <version>1.11.0</version>
+    <time>1688052507</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.11.0:
+  * Add all binaries to Cargo.toml
+  * Build everythin before running tests
+  * Add metadata to Cargo.toml
+  * Exclude some files from package
+  * Only buildnecessary binaries in release workflow
+  * Added a bit more error messages
+  * Fix warning about symlink folder not being on PATH
+  * Absolutize path for link command
+  * chore: Release juliaup version 1.10.0
+  * Add override documentation to README
+  * Rename `override list` to `override status`
+  * Add override tests
+  * Prevent deletion of channel that is used in override
+  * Format paths nicer on Windows
+  * Use override in launcher
+  * Add basic override management
+  * Add basic override scaffolding
+  * Add docs for JULIAUP_CHANNEL
+  * Go back to simpler error implementation
+  * Add tests for channel selection
+  * Add JULIAUP_CHANNEL env var
+  * Add SOCKS5 support on Linux/Mac
+  * Use more standard syntax
+  * Commit Cargo.lock
+  * Fix formatting
+  * Simplify http get request
+  * Revert test.yml changes
+  * Use reqwest
+  * use optional input
+  * work on better parsers
+  * Reorder args
+  * chore: added back ureq for macos deps
+  * chore: initial reqwest migration
+  * chore: generate new lockfile
+  * chore: replace ureq to reqwest in Cargo.toml
+  * fix: replace atty with is-terminal
+  * Update version db (#606)
+  * add a blame ignore revision file to avoid formatting changes to pollute git blame (#599)
+  * run cargo format on all files (#595)
+  * Update version db (#591)
+  * remove double negative from input
+  * add more cli parameters for automated install
+  * Sleep for 30 seconds before and after purging the Fastly cache
+  * Update juliaup.rs
+  * Fix update to work with removed channels
+  * Use better error messages
+- Update vendored dependencies.
+- Restrict to Tier 1 architectures.
+- Declare disk size to 8GB to avoid &quot;No space left on device&quot;.
+- Automatic update of vendored dependencies.
+- Use zstd compression for tarballs.
+</comment>
+    <requestid>1095773</requestid>
+  </revision>
 </revisionlist>
