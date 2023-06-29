@@ -31,4 +31,12 @@
     <comment>Don't warn about yield</comment>
     <requestid>1072650</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>782adae7d361ed16af46a4c8ab1bf1bf</srcmd5>
+    <version>2.2~pre2</version>
+    <time>1688052526</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1212801</comment>
+    <requestid>1095861</requestid>
+  </revision>
 </revisionlist>

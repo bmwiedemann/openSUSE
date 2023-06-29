@@ -45,7 +45,6 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
 BuildRequires:  zip
-BuildRequires:  pkgconfig(lockdev)
 Requires:       librxtx%{libversion}
 Obsoletes:      %{name}-src
 %if 0%{?sle_version} > 150100 || 0%{?suse_version} >= 1550 || %{force_aqute_bnd}
@@ -102,10 +101,7 @@ export THREADS_FLAG=native
 rm acinclude.m4 config.guess config.sub install-sh ltmain.sh missing mkinstalldirs aclocal.m4 Makefile.in ltconfig stamp-h.in
 ./autogen.sh
 CFLAGS="%{optflags}" LDFLAGS=-s \
-	%configure \
-%if 0%{?suse_version} > 1130
-	--enable-liblock=yes
-%endif
+%configure
 
 %make_build
 

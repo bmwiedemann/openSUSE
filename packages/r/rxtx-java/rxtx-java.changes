@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 28 18:14:00 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build with liblock support (bsc#1212801)
+
+-------------------------------------------------------------------
 Mon Mar 13 16:12:19 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
