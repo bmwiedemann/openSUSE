@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Wed Jun 28 15:33:04 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 1.21.0:
+  * all: Bump to v1.21.0 (#3428)
+  * proc: skip TestDebugStripped on linux/386/pie (#3427)
+  * service/dap: fix typos in comments (#3426)
+  * pkg/proc: improve stripped binary support with PIE (#3421)
+  * proc: only print warning when gopclntab can not be read for first image (#3420)
+  * service,terminal: when libraries don't have debug_info print reason (#3419)
+  * pkg/terminal: regenerate starlark mappings (#3418)
+  * pkg/proc: fix ebpf probe tracing backen uprobe handling (#3417)
+  * pkg/proc: enable basic debug functionality for stripped ELF binaries (#3408)
+  * terminal/starbind: add online help for starlark (#3388)
+  * service/dap: update go-dap to latest (#3414)
+  * TeamCity: fix linux/arm64 build (second attempt) (#3411)
+  * terminal: expand ~ in paths passed to 'source' (#3387)
+  * proc/test: reenable cgo testing on FreeBSD (#3394)
+  * terminal: ask for confirmation when using 'quit -c' with breakpoints (#3398)
+  * TeamCity: fix linux/arm64 build (#3403)
+  * rpc2, debugger: Fix comments around goroutine grouping (#3374)
+  * cmd/commands: Fix to read debug info file from the correct directory when using trace command with -e option. (#3405)
+  * starbind: fix use of ptr variables in starlark  (#3386)
+  * debugger: inline clearBreakpoint, createLogicalBreakpoint (#3389)
+  * TeamCity: actually run linux/386 tests on linux/386 (#3392)
+  * service/rpccommon: correct wrong comments (#3397)
+  * docgen: fix links with trailing dots  (#3399)
+  * dwarf: ignore DeclLine for function args (#3400)
+  * _scripts: fix typos (#3402)
+  * dwarf/op: use readMemory function (#3391)
+  * starbind: Make the time module available to star scripts (#3375)
+  * documentation: add a note about starlark structs (#3376)
+  * debuginfod-find stderr may contain diagnostics; look at stdout only for filename (#3381)
+  * dwarf,proc: fix typos in comments and error messages (#3379)
+  * service: fix typos in comments, logs, tests, and vars (#3378)
+  * proc: remove addrret field from Stackframe struct (#3373)
+  * pkg/proc,pkg/terminal: close response body in tests (#3372)
+  * cmd/dlv,service/dap: use randomized name as default output binary (#3366)
+  * pkg/proc: pad variable mem in extractVarInfoFromEntry (#3365)
+  * cmd/dlv: logger is not closed in connect command (#3367)
+  * proc: fix runtime type handling for Go 1.21 (#3370)
+  * proc,terminal: read command line of new processes (#3346)
+  * trace: add timestamp to the output (#3358)
+  * service/dap: refactor funcs always returning nil error (#3357)
+  * dwarf/godwarf: fix alignment calculation for typedef types (#3362)
+  * refactor: replace `Readdir(-1)` with `os.ReadDir` (#3361)
+  * chore: don't ignore directory cmd/dlv (#3359)
+  * pkg/proc: add missing response body Close in test (#3355)
+  * pkg/proc: remove memlock limit for ebpf trace backend (#3353)
+  * *: misc improvements to config command and substitute-path rules (#3335)
+  * service/dap: use reloaded value
+  * service/dap,service/debugger: refactor regexp funcs
+  * proc/test: replace old func testName with T.Name
+  * service: fix typos in comments (#3344)
+  * Add additional information to how to filter goroutines
+  * service/debugger,terminal: API and user interface for follow exec mode (#3286)
+  * proc/native: support core dumping on FreeBSD (#3305)
+  * debugger: do not panic if defer location can not be found (#3329)
+  * proc: Simplify eBPF backend implementation (#3325)
+  * proc: step breakpoints shouldn't hide normal breakpoints (#3287)
+  * service/dap: fix failing test on Go 1.21 (#3312)
+  * proc: disable flaky tests on windows/arm64 (#3328)
+  * proc: fix match condition in TestGnuDebuglink
+  * proc: fix test by adding missing assert
+
+-------------------------------------------------------------------
 Thu Apr 06 19:56:10 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 1.20.2:

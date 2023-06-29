@@ -86,4 +86,12 @@
 - Packaging update source service mode to manual formerly disabled (forwarded request 1077786 from jfkw)</comment>
     <requestid>1077787</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6133f298d32c604540db51674d1d2c3b</srcmd5>
+    <version>1.21.0</version>
+    <time>1688052524</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.21.0: (forwarded request 1095852 from jfkw)</comment>
+    <requestid>1095857</requestid>
+  </revision>
 </revisionlist>
