@@ -103,7 +103,7 @@ Obsoletes:      python39%{?1:-%{1}}
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.10.11
+Version:        3.10.12
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -166,13 +166,6 @@ Patch35:        fix_configure_rst.patch
 # PATCH-FIX-UPSTREAM bpo-46811 gh#python/cpython#7da97f61816f mcepl@suse.com
 # NOTE: SUSE version of expat 2.4.4 is patched in SUSE for CVE-2022-25236
 Patch36:        support-expat-CVE-2022-25236-patched.patch
-# PATCH-FIX-UPSTREAM CVE-2023-24329-blank-URL-bypass.patch bsc#1208471 mcepl@suse.com
-# blocklist bypass via the urllib.parse component when supplying
-# a URL that starts with blank characters
-Patch37:        CVE-2023-24329-blank-URL-bypass.patch
-# PATCH-FIX-UPSTREAM CVE-2007-4559-filter-tarfile_extractall.patch bsc#1203750 mcepl@suse.com
-# PEP 706 – Filter for tarfile.extractall
-Patch38:        CVE-2007-4559-filter-tarfile_extractall.patch
 # PATCH-FIX-UPSTREAM bpo-37596-make-set-marshalling.patch bsc#1211765 mcepl@suse.com
 # Make `set` and `frozenset` marshalling deterministic
 Patch39:        bpo-37596-make-set-marshalling.patch
@@ -447,8 +440,6 @@ other applications.
 %endif
 %patch35 -p1
 %patch36 -p1
-%patch37 -p1
-%patch38 -p1
 %patch39 -p1
 
 # drop Autoconf version requirement
