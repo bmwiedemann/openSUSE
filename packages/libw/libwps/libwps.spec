@@ -1,7 +1,7 @@
 #
 # spec file for package libwps
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 %define libname libwps-0_4-4
 Name:           libwps
-Version:        0.4.13
+Version:        0.4.14
 Release:        0
 Summary:        Library for the Microsoft Works text and spreadsheet formats
 License:        LGPL-2.1-or-later AND MPL-2.0
