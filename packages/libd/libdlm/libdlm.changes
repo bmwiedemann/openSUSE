@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jun 27 12:44:30 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update to v4.2.0 
+ * remove patches included upstream
+   + bug-1191734_0001-libdlm-add-stdint.h-to-api-header.patch
+   + bug-1191734_0002-dlm_controld-create-var-parent-directories.patch
+   + bug-1191734_0003-stonith_helper-fix-build.patch
+   + bug-1191734_0004-plock-move-clear-waiter-to-debug-info.patch
+   + bug-1191734_0005-treewide-try-to-resolve-symbols-at-linking-time.patch
+   + bug-1191734_0006-dlm_controld-add-version-check-for-libquorum.patch
+   + bug-1191734_0007-dlm_tool-man-add-command-joinleave-USAGE.patch
+   + bug-1191734_0008-man-add-reload_config-in-dlm_tool-dlm.conf.patch
+   + bug-1191734_0009-add-new-dlm_tool-command-reload_config.patch
+   + bug-1191734_0010-dlm_tool-man-add-new-command-set_config.patch
+   + bug-1191734_0011-dlm_tool-dlm_controld-add-new-feature-set_config.patch
+   + bug-1191734_0012-fix-some-minor-bugs.patch
+   + bug-1191734_0013-dlm_controld-fix-string-copies.patch
+   + bug-1191734_0014-man-page-updates.patch
+ * patch to disable annobin (still not available in openSUSE)
+   + 0005-build-dlm_controld-disable-annobin-plugin.patch
+ * patch to remove unnecesary header (boo#1212767)
+   + 0006-dlm_controld-remove-unnecessary-header-include.patch
+ * patch to remove -fcf-protection=full, not supported in SLE15
+   + 0007-Revert-treewide-add-fcf-protection-full-to-CFLAGS.patch
+
+-------------------------------------------------------------------
 Fri May 27 06:12:29 UTC 2022 - Yan Gao <ygao@suse.com>
 
 - Adjust BuildRequires libpacemaker-devel -> pkgconfig(pacemaker)

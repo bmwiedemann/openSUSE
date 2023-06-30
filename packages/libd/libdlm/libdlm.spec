@@ -1,7 +1,7 @@
 #
 # spec file for package libdlm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,26 +34,10 @@ Name:           libdlm
 Summary:        Application interface to the kernel's distributed lock manager
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Clustering/HA
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 URL:            https://pagure.io/dlm/
 Source:         https://releases.pagure.org/dlm/dlm-%{version}.tar.gz
-####################
-# upstream patch
-Patch001:       bug-1191734_0001-libdlm-add-stdint.h-to-api-header.patch
-Patch002:       bug-1191734_0002-dlm_controld-create-var-parent-directories.patch
-Patch003:       bug-1191734_0003-stonith_helper-fix-build.patch
-Patch004:       bug-1191734_0004-plock-move-clear-waiter-to-debug-info.patch
-Patch005:       bug-1191734_0005-treewide-try-to-resolve-symbols-at-linking-time.patch
-Patch006:       bug-1191734_0006-dlm_controld-add-version-check-for-libquorum.patch
-Patch007:       bug-1191734_0007-dlm_tool-man-add-command-joinleave-USAGE.patch
-Patch008:       bug-1191734_0008-man-add-reload_config-in-dlm_tool-dlm.conf.patch
-Patch009:       bug-1191734_0009-add-new-dlm_tool-command-reload_config.patch
-Patch010:       bug-1191734_0010-dlm_tool-man-add-new-command-set_config.patch
-Patch011:       bug-1191734_0011-dlm_tool-dlm_controld-add-new-feature-set_config.patch
-Patch012:       bug-1191734_0012-fix-some-minor-bugs.patch
-Patch013:       bug-1191734_0013-dlm_controld-fix-string-copies.patch
-Patch014:       bug-1191734_0014-man-page-updates.patch
 # suse special patch
 Patch101:       0001-makefile-for-diff-arch.patch
 Patch102:       0002-remove-sd-notify.patch
@@ -61,6 +45,9 @@ Patch103:       0003-bnc#874705-nodes-without-quorum.patch
 Patch104:       0004-man-dlm.conf-add-note-that-the-file-is-not-creat.patch
 Patch105:       bug-1191734_0015-Revert-dlm_controld-add-version-check-for-libquorum.patch
 Patch106:       bug-1191734_0016-Revert-dlm_controld-use-new-quorum-api-to-detect-mis.patch
+Patch107:       0005-build-dlm_controld-disable-annobin-plugin.patch
+Patch108:       0006-dlm_controld-remove-unnecessary-header-include.patch
+Patch109:       0007-Revert-treewide-add-fcf-protection-full-to-CFLAGS.patch
 ###################
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel
