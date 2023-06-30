@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 29 07:46:18 UTC 2023 - Michal Kubecek <mkubecek@suse.cz>
+
+- fix segfault when turning monitor back on (bsc#1212840):
+  Fix-the-callback-signature-to-fix-a-crash.patch
+
+-------------------------------------------------------------------
 Mon May  2 18:09:19 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to stable release 0.3.0

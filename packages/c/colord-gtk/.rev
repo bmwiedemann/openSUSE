@@ -116,4 +116,13 @@
     <comment>Push GNOME:Factory</comment>
     <requestid>981308</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>9cb55557c5f413352ccf6dda043fa292</srcmd5>
+    <version>0.3.0</version>
+    <time>1688147882</time>
+    <user>dimstar_suse</user>
+    <comment>- fix segfault when turning monitor back on (bsc#1212840):
+  Fix-the-callback-signature-to-fix-a-crash.patch</comment>
+    <requestid>1095980</requestid>
+  </revision>
 </revisionlist>
