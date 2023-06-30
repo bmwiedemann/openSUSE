@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Tue Jun  6 14:41:21 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Build with gcc11 and gcc11-c++ on older distributions
+
+-------------------------------------------------------------------
+Sun Jan 29 18:36:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- Initial Package (2.1.0) 
