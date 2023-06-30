@@ -1,7 +1,7 @@
 #
 # spec file for package libtommath
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2009 Exata T.I., Maringa, PR, Brasil.
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,12 +24,13 @@ Release:        0
 Summary:        Routines For a Integer Based Number Theoretic Applications
 License:        Unlicense
 Group:          System/Libraries
-Url:            https://github.com/libtom/libtommath
+URL:            https://github.com/libtom/libtommath
 Source:         https://github.com/libtom/libtommath/releases/download/v%{version}/ltm-%{version}.tar.xz
 Source2:        https://github.com/libtom/libtommath/releases/download/v%{version}/ltm-%{version}.tar.xz.asc
 Source3:        %{name}.keyring
 Source4:        baselibs.conf
 Source5:        libtommath-rpmlintrc
+Patch1:         https://patch-diff.githubusercontent.com/raw/libtom/libtommath/pull/546.patch
 BuildRequires:  dos2unix
 BuildRequires:  libtool
 BuildRequires:  pkg-config
@@ -44,7 +45,6 @@ key cryptography). LibTomMath is not a cryptographic toolkit itself but it
 can be used to write one [Used in LibTomCrypt for RSA, DH and ECC public key
 routines].
 
-
 %package -n %{libsoname}
 Summary:        Routines For a Integer Based Number Theoretic Applications
 Group:          System/Libraries
@@ -55,7 +55,6 @@ majority of integer based number theoretic applications (including public
 key cryptography). LibTomMath is not a cryptographic toolkit itself but it
 can be used to write one [Used in LibTomCrypt for RSA, DH and ECC public key
 routines].
-
 
 %package devel
 Summary:        Development files for LibTomMath
@@ -73,12 +72,12 @@ key cryptography). LibTomMath is not a cryptographic toolkit itself but it
 can be used to write one [Used in LibTomCrypt for RSA, DH and ECC public key
 routines].
 
-
 %package examples
 Summary:        Example files for LibTomMath
 Group:          Development/Libraries/Other
 Provides:       libtommath0-examples = %{version}
 Obsoletes:      libtommath0-examples < 1
+BuildArch:      noarch
 
 %description examples
 Demo *.c files showing how to use TomMath library.
@@ -89,9 +88,9 @@ key cryptography). LibTomMath is not a cryptographic toolkit itself but it
 can be used to write one [Used in LibTomCrypt for RSA, DH and ECC public key
 routines].
 
-
 %prep
 %setup -q
+%patch1 -p1
 
 %build
 export CFLAGS="%{optflags}"
@@ -107,6 +106,7 @@ dos2unix etc/timer.asm
 make DESTDIR=%{buildroot} LIBPATH=%{_libdir} INCPATH=%{_includedir} %{?_smp_mflags} -f makefile.shared install
 # we don't want to ship any static libraries or .la files
 find %{buildroot} -type f \( -name '*.a' -o -name '*.la' \) -delete -print
+chmod +x %{buildroot}%{_libdir}/libtommath.so.*
 
 %post -n %{libsoname} -p /sbin/ldconfig
 

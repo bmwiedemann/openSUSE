@@ -1,2 +1,3 @@
 addFilter("libtommath-examples\.[^:]*: W: shlib-policy-nonversioned-dir")
 addFilter("libtommath-examples\.[^:]*: W: shlib-policy-missing-lib")
+addFilter("libtommath-examples\.[^:]*: W: package-with-huge-docs")

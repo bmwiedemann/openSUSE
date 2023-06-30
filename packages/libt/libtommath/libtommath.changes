@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun 28 15:07:14 UTC 2023 - Michal Kubecek <mkubecek@suse.cz>
+
+- handle rpmlint warnings/errors:
+  * update rpmlintrc to address new Factory warnings
+  * make libtommath-examples noarch
+  * make shared library executable
+
+-------------------------------------------------------------------
+Wed Jun 28 14:53:06 UTC 2023 - Michal Kubecek <mkubecek@suse.cz>
+
+- specfile style changes enforced by hard to avoid format_spec_file
+  service
+
+-------------------------------------------------------------------
+Wed Jun 28 12:58:35 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 546.patch: Fix possible integer overflow.
+
+-------------------------------------------------------------------
 Fri Mar 10 13:59:27 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Build AVX2 enabled hwcaps library for x86_64-v3

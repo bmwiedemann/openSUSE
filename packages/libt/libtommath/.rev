@@ -32,4 +32,13 @@
     <comment></comment>
     <requestid>1070741</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>6afc38d50f680873d5094e161ef987e7</srcmd5>
+    <version>1.2.0</version>
+    <time>1688147877</time>
+    <user>dimstar_suse</user>
+    <comment>- fix possible integer overflow
+- address some rpmlint warnings/errors</comment>
+    <requestid>1095881</requestid>
+  </revision>
 </revisionlist>
