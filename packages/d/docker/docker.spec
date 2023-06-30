@@ -129,7 +129,8 @@ Requires(post): shadow
 Recommends:     lvm2 >= 2.2.89
 Recommends:     git-core >= 1.7
 # Required for "docker buildx" support.
-Recommends:     docker-buildx
+Recommends:     %{name}-buildx
+Recommends:     %{name}-rootless-extras
 ExcludeArch:    s390 ppc
 
 %description
@@ -140,6 +141,20 @@ repeatability across servers.
 Docker is a great building block for automating distributed systems: large-scale
 web deployments, database clusters, continuous deployment systems, private PaaS,
 service-oriented architectures, etc.
+
+%package rootless-extras
+Summary:        Rootless support for Docker
+Group:          System/Management
+Requires:       %{name} = %{version}
+Requires:       slirp4netns >= 0.4
+Requires:       fuse-overlayfs >= 0.7
+Requires:       rootlesskit
+BuildArch:      noarch
+
+%description rootless-extras
+Rootless support for Docker.
+Use dockerd-rootless.sh to run the daemon.
+Use dockerd-rootless-setuptool.sh to setup systemd for dockerd-rootless.sh.
 
 %package bash-completion
 Summary:        Bash Completion for %{name}
@@ -297,6 +312,10 @@ install -p -m0644 %{cli_builddir}/man/man8/*.8 %{buildroot}%{_mandir}/man8
 # sysusers.d
 install -D -m0644 %{SOURCE106} %{buildroot}%{_sysusersdir}/%{name}.conf
 
+# rootless extras
+install -D -p -m 0755 contrib/dockerd-rootless.sh %{buildroot}/%{_bindir}/dockerd-rootless.sh
+install -D -p -m 0755 contrib/dockerd-rootless-setuptool.sh %{buildroot}/%{_bindir}/dockerd-rootless-setuptool.sh
+
 %fdupes %{buildroot}
 
 %pre -f %{name}.pre
@@ -366,5 +385,10 @@ grep -q '^dockremap:' /etc/subgid || \
 %files fish-completion
 %defattr(-,root,root)
 %{_datadir}/fish/vendor_completions.d/%{name}.fish
+
+%files rootless-extras
+%defattr(-,root,root)
+%{_bindir}/dockerd-rootless.sh
+%{_bindir}/dockerd-rootless-setuptool.sh
 
 %changelog

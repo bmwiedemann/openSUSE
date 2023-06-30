@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 29 10:07:13 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- Recommend docker-rootless-extras instead of Require(ing) it, given
+  it's an additional functionality and not inherently required for
+  docker to function.
+
+-------------------------------------------------------------------
+Tue Jun 20 15:28:13 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- Add docker-rootless-extras subpackage
+  (https://docs.docker.com/engine/security/rootless)
+
+-------------------------------------------------------------------
 Wed Jun 14 13:02:01 UTC 2023 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 24.0.2-ce. See upstream changelog online at
