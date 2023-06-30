@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 29 13:34:39 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Make sure last stays in busybox-util-linux, even if we moved
+  the original binary from util-linux to wtmpdb
+
+-------------------------------------------------------------------
 Tue Dec 27 10:28:04 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

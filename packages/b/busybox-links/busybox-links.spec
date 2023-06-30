@@ -208,6 +208,8 @@ This package contains the symlinks to replace findutils with busybox.
 %package -n busybox-util-linux
 Summary:        Busybox applets replacing util-linux
 Requires:       busybox = %{version}
+# wtmpdb contains now /usr/bin/last
+Conflicts:      wtmpdb
 Conflicts:      util-linux
 Conflicts:      util-linux-systemd
 
@@ -639,6 +641,13 @@ touch used/ifdown used/ifenslave used/ifup used/ipaddr used/iplink used/ipneigh 
 for i in `/bin/ls used/` ; do
     rm apps/$i
 done
+
+# /usr/bin/last is now in wtmpdb, but should stay in busybox-util-linux
+if [ -e apps/last ]; then
+    echo -e "/usr/bin/last" >> filelist-util-linux.txt
+    touch used/last
+    rm -f apps/last
+fi
 
 for i in `cat %{_datadir}/busybox/busybox.links` ; do
     prog=`basename $i`
