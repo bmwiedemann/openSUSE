@@ -1,7 +1,7 @@
 #
 # spec file for package libunwind
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,25 @@
 #
 
 
+# Note the wrong version number from upstream
+%global _bversion 1.70
 Name:           libunwind
-Version:        1.6.2
+Version:        1.7.0
 Release:        0
 Summary:        Call chain detection library
 License:        MIT
 Group:          System/Base
 URL:            https://savannah.nongnu.org/projects/libunwind/
-Source0:        https://download.savannah.gnu.org/releases/%{name}/%{name}-%{version}.tar.gz
-Source1:        https://download.savannah.gnu.org/releases/%{name}/%{name}-%{version}.tar.gz.sig
+Source0:        https://github.com/libunwind/libunwind/releases/download/v1.7.0/libunwind-%{_bversion}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        https://github.com/libunwind/libunwind/releases/download/v1.7.0/libunwind-%{_bversion}.tar.gz.sig#/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
+BuildRequires:  automake >= 1.14
 BuildRequires:  gcc-c++
+BuildRequires:  libtool
 BuildRequires:  lzma-devel
 BuildRequires:  pkgconfig
+BuildRequires:  texlive-latex2man
 ExcludeArch:    s390
 
 %description
@@ -90,9 +95,10 @@ program (libunwind), of a coredump image (libunwind-coredump), or of a separate
 process (libunwind-ptrace).
 
 %prep
-%autosetup
+%autosetup -p1 -n %{name}-%{_bversion}
 
 %build
+autoreconf -fiv
 %configure \
     --enable-minidebuginfo
 %make_build
@@ -104,7 +110,7 @@ process (libunwind-ptrace).
 %install
 %make_install
 find %{buildroot} -iregex '.*\.l?a$' -delete -print
-# Help packagers with %files
+# Help packagers with %%files
 find %{buildroot}/%{_libdir} -type f | sort
 
 %post   -n libunwind8 -p /sbin/ldconfig
@@ -117,6 +123,8 @@ find %{buildroot}/%{_libdir} -type f | sort
 %postun -n libunwind-setjmp0 -p /sbin/ldconfig
 
 %files -n libunwind8
+%license COPYING
+%doc README NEWS
 %{_libdir}/libunwind.so.8*
 %ifarch %arm
 %{_libdir}/libunwind-arm.so.8*
@@ -155,5 +163,6 @@ find %{buildroot}/%{_libdir} -type f | sort
 %{_includedir}/*
 %{_libdir}/%{name}*.so
 %{_libdir}/pkgconfig/%{name}*.pc
+%{_mandir}/man3/*
 
 %changelog

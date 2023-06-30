@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Jun 23 18:49:48 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.7.0:
+  * DWARF: dwarf4 fix cie parsing.
+  * x86_64: Stop aliasing RSP and CFA.
+  * Prefer EXTBL unwinding on ARM.
+  * [GCC pedantic] Fix "error: comma at end of enumerator list"
+    when linking to libunwind.
+  * Fix table indexing in dwarf_search_unwind_table.
+  * Expose function-pointer-to-name API.
+  * Add port for Linux on LoongArch.
+  * Add more POSIX polyfills for nix cross-build on win.
+  * DWARF: avoid a data race.
+  * skip latex2man check with --disable-documentation.
+  * Skip init_mem_validate calls during remote unwind.
+  * [Loongarch64] amend the LoongArch64's CMakeLists.txt and compiling error.
+  * Update license in pal-single-threaded.c.
+  * Fix to malloc call in tdep_get_elf_image.
+  * Updated to determine PAGE_SIZE dynamically.
+  * Unwind with pointer authentication on arm64.
+  * Make some structs non-empty.
+  * DWARF: avoid invalid memory access with invalid CFI.
+  * fix incorrect store in AArch64 getcontext.
+  * avoid leaking registers across sigreturn.
+  * Use constant for array size in os-linux.
+  * added coredump support for s390x.
+  * Allow an alternate LOG_DRIVER to be specified.
+  * Remove bashisms from tests/check-namespace.sh.
+  * Add autodetection of procfs_status type.
+  * Add remote unwinding support for macOS.
+  * Expose get_proc_info_in_range API.
+  * Autodetect presence of elf_fpregset_t.
+  * coredump: stop assuming .text and .eh_frame are both in the first
+    segment of an ELF file.
+  * Make sigaltstack() optional.
+  * Add support for arm fp registers unwind.
+  * updated dist to focal for s390x jobs.
+  * Add RISC-V machine value in remote unwind.
+  * Fix SOFTFP case for arm getcontext.
+  * Added support for unwinding from the vsyscall region.
+  * Stop the autotools nag about AC_CONFIG_MACRO_DIRS.
+  * Fix make distcheck due to missing coredump header.
+  * Fix undefined behavior issues in aarch64.
+  * Account for lr in aarch64's uc_addr.
+  * tests/run-coredump-unwind: Skip test if no coredump has been created.
+  * [LoongArch64] Update the port to latest kernel ABI.
+  * arm64: Add support for unwinding in SVE functions
+  * check-namespace.sh: adjust aarch64 symbols.
+  * Updated to determine PAGE_SIZE dynamically for loongarch64.
+  * Gia64-test-nat.c: #include <signal.h> for sigaction().
+  * Fix for unw_backtrace fast path does not work on x86_64.
+  * fix the way load offset is detected so it works with lld linker.
+  * Remove the unused powerpc setcontext() dummies.
+  * Add unw_backtrace2 function.
+- Include the man pages, README and LICENSE files.
+- Update libunwind.keyring file.
+
+-------------------------------------------------------------------
 Mon May 23 07:40:56 UTC 2022 - Andreas Schwab <schwab@suse.de>
 
 - Fix dependencies
