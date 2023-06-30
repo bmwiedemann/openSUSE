@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 29 07:00:11 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.11
+  * Update to SWIG 4.1.1
+  * Require Graphviz 2.46+
+  * Fix passthrough of graph attributes when copying
+  * Update install instructions
+
+-------------------------------------------------------------------
 Tue Jun 13 11:10:33 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

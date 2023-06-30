@@ -16,11 +16,10 @@
 #
 
 
-%global skip_python2 1
 %bcond_without tests
 %{?sle15_python_module_pythons}
 Name:           python-pygraphviz
-Version:        1.10
+Version:        1.11
 Release:        0
 Summary:        Python interface to Graphviz
 License:        BSD-3-Clause
