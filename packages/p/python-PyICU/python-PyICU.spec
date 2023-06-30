@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 %global modname PyICU
 Name:           python-%{modname}
 Version:        2.11
@@ -41,7 +42,6 @@ BuildRequires:  pkgconfig(icu-uc)
 Provides:       %{modname} = %{version}
 Provides:       python-ICU = %{version}
 Obsoletes:      python-ICU < 1.2
-%{?sle15_python_module_pythons}
 %python_subpackages
 
 %description
@@ -61,7 +61,12 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
+%if 0%{?sle_version} && 0%{?sle_version} <= 150500
+# The timezone package is not up to date
+%pytest_arch -v -k 'not (testAcceptLanguage or testAcceptLanguageFromHTTP or testTransition)' -rs test
+%else
 %pytest_arch -v -k 'not (testAcceptLanguage or testAcceptLanguageFromHTTP)' -rs test
+%endif
 
 %files %{python_files}
 %license LICENSE

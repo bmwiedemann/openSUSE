@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 29 07:13:31 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Disable testTransition on Leap
+- Fix position of sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Sun Jun 25 19:30:35 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Clean up SPEC file.
