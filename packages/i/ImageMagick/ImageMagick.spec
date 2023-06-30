@@ -20,7 +20,7 @@
 %define asan_build     0
 %define maj            7
 %define mfr_version    %{maj}.1.1
-%define mfr_revision   11
+%define mfr_revision   12
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
 %define clibver        10
@@ -55,6 +55,8 @@ Patch2:         ImageMagick-library-installable-in-parallel.patch
 Patch4:         ImageMagick-filter.t-disable-Contrast.patch
 #%%endif
 #%%endif
+# CVE-2023-3428 [bsc#1212847], heap-buffer-overflow in coders/tiff.c
+Patch5:         ImageMagick-CVE-2023-3428.patch
 BuildRequires:  chrpath
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
@@ -297,6 +299,7 @@ preserved.
 %patch4 -p1
 %endif
 %endif
+%patch5 -p1
 
 %build
 # bsc#1088463

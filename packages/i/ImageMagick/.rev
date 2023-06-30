@@ -3634,4 +3634,15 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * fixes CVE-2023-34474 [bsc#1212237]</comment>
     <requestid>1093259</requestid>
   </revision>
+  <revision rev="277" vrev="1">
+    <srcmd5>b9b4f60f432fa3a5755b2551241b62b0</srcmd5>
+    <version>7.1.1.12</version>
+    <time>1688147880</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.1.1.12
+- added patches
+  fix CVE-2023-3428 [bsc#1212847], heap-buffer-overflow in coders/tiff.c
+  + ImageMagick-CVE-2023-3428.patch</comment>
+    <requestid>1095937</requestid>
+  </revision>
 </revisionlist>

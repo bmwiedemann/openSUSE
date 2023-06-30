@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 29 09:17:27 UTC 2023 - pgajdos@suse.com
+
+- version update to 7.1.1.12
+- added patches
+  fix CVE-2023-3428 [bsc#1212847], heap-buffer-overflow in coders/tiff.c
+  + ImageMagick-CVE-2023-3428.patch
+
+-------------------------------------------------------------------
 Tue May 30 08:33:42 UTC 2023 - pgajdos@suse.com
 
 - version update to 7.1.1.11
