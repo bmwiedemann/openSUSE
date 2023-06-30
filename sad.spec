@@ -1,7 +1,7 @@
 #
 # spec file for package sad
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sad
-Version:        0.4.22
+Version:        0.4.23
 Release:        0
 Summary:        CLI search and replace batch file editing tool
 URL:            https://github.com/ms-jpq/sad
@@ -26,6 +26,7 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
+BuildRequires:  python3
 Recommends:     fzf
 
 %description

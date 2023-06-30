@@ -3,7 +3,7 @@
     <param name="url">https://github.com/ms-jpq/sad</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">3d709fc2d8c1f504e92378c46f19360b91c65828</param>
+    <param name="revision">ecbb271</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
