@@ -21,7 +21,7 @@
 %define libopenmpt_modplug_version 0.8.9.0
 
 Name:           libopenmpt
-Version:        0.6.10
+Version:        0.7.2
 Release:        0
 Summary:        C++ and C library to decode tracker music files
 License:        BSD-3-Clause
@@ -130,15 +130,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %dir %{_docdir}/%{name}-devel/
 %{_docdir}/%{name}-devel/*
 %dir %{_includedir}/libopenmpt/
-%{_includedir}/libopenmpt/libopenmpt.h
-%{_includedir}/libopenmpt/libopenmpt.hpp
-%{_includedir}/libopenmpt/libopenmpt_config.h
-%{_includedir}/libopenmpt/libopenmpt_ext.hpp
-%{_includedir}/libopenmpt/libopenmpt_stream_callbacks_fd.h
-%{_includedir}/libopenmpt/libopenmpt_stream_callbacks_file.h
-%{_includedir}/libopenmpt/libopenmpt_version.h
-%{_includedir}/libopenmpt/libopenmpt_ext.h
-%{_includedir}/libopenmpt/libopenmpt_stream_callbacks_buffer.h
+%{_includedir}/libopenmpt/*
 %{_libdir}/libopenmpt.so
 %{_libdir}/pkgconfig/libopenmpt.pc
 

@@ -1,4 +1,195 @@
 -------------------------------------------------------------------
+Thu Jun 29 09:03:50 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 0.7.2:
+  * [New] MOD: Can now read modified 8-channel MOD files from the DOS game Aleshar - The World Of Ice.
+  * [Sec] Possible out-of-bounds read or write when reading malformed MED files. (r19389)
+  * [Bug] The Opal OPL3 emulator symbols were not namespaced properly.
+
+-------------------------------------------------------------------
+Mon May  8 08:37:38 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.7.1
+  * IT: Improved fingerprinting of early ModPlug Tracker versions.
+  * XMF: Modules from Astroidea demos can now be read as well.
+- Changes in 0.7.0:
+  * [New] 667 files from Composer 667 are now supported.
+  * [New] GTK and GT2 files from Gramouf Tracker are now supported.
+  * [New] Can now read a variant of the DSMI AMF format called DMF,
+    as found in various DOS games distributed by Webfoot (Tronic,
+    H2O, PowBall, etc.).
+  * [New] DSM files from Dynamic Studio are now supported.
+  * [New] XMF files from the DOS game Imperium Galactica are now
+    supported.
+  * [New] Can now read the hacked MOD format (DMF) from the game
+    “Apocalypse Abyss”.
+  * [New] libopenmpt: New APIs for getting the current tempo as a
+    floating point value: openmpt::module::get_current_tempo2()
+    (C++), and openmpt_module_get_current_tempo2() (C).
+  * [New] C API: New stream callbacks for various platform
+    extensions to the C stdio interface:
+      openmpt_stream_get_file_posix_lfs64_callbacks()
+      in libopenmpt/libopenmpt_stream_callbacks_file_posix_lfs64.h
+      for explicit off64_t on Posix systems,
+      openmpt_stream_get_file_posix_callbacks()
+      in libopenmpt/libopenmpt_stream_callbacks_file_posix.h
+      for off_t on Posix systems,
+      openmpt_stream_get_file_msvcrt_callbacks()
+      in libopenmpt/libopenmpt_stream_callbacks_file_msvcrt.h
+      for 64bit file support on Windows systems with the Microsoft
+      C runtime, and openmpt_stream_get_file_mingw_callbacks()
+      in libopenmpt/libopenmpt_stream_callbacks_file_mingw.h
+      for 64bit file support when targetting MinGW.
+      The old openmpt_stream_get_file_callbacks() has been
+      deprecated in favour of a stricly standard conforming
+      openmpt_stream_get_file_callbacks2() in the same
+      libopenmpt/libopenmpt_stream_callbacks_file.h header.
+      libopenmpt/libopenmpt.h defines
+      LIBOPENMPT_STREAM_CALLBACKS_FILE_POSIX_LFS64,
+      LIBOPENMPT_STREAM_CALLBACKS_FILE_POSIX,
+      LIBOPENMPT_STREAM_CALLBACKS_FILE_MSVCRT,
+      and LIBOPENMPT_STREAM_CALLBACKS_FILE_MINGW respectively
+      in order to allow for checking header availability.
+  * [New] C API: New stream callbacks for memory buffers.
+    openmpt_stream_get_buffer_callbacks() and
+    openmpt_stream_buffer_init() are deprecated.
+    Use openmpt_stream_get_buffer_callbacks2() and
+    openmpt_stream_buffer_init2() instead.
+    The new variants do not support loading only a file prefix and
+    checking for overflow any more. This was only useful when using
+    the old openmpt_could_open_probability2() style interface from
+    the libopenmpt 0.2 API, which has been superseded by
+    openmpt_probe_file_header(),
+    openmpt_probe_file_header_without_filesize(), and
+    openmpt_probe_file_header_from_stream() in libopenmpt 0.3.0.
+  * [New] libopenmpt_ext: New interface interactive3 adding
+    openmpt::ext::interactive3::set_current_tempo2() (C++) and
+    openmpt_module_ext_interface_interactive3.set_current_tempo2()
+    (C) which allow setting non-integer tempo values.
+  * [New] New Makefile option CONFIG=mingw-w64 which consolidates
+    all MinGW-w64 build configurations with the following options:
+    MINGW_FLAVOUR=[|-posix|-win32], WINDOWS_ARCH=[x86|amd64],
+    WINDOWS_FAMILY=[|desktop-app|app|phone-app|pc-app],
+    and WINDOWS_VERSION=[win95|win98|winme|winnt4|win2000|winxp|winxp64|winvista|win7|win8|win8.1|win10|win11].
+  * [New] New Makefile option CONFIG=mingw which consolidates all
+    MinGW build configurations with the following options:
+    MINGW_FLAVOUR=[|-posix|-win32],
+    and WINDOWS_VERSION=[win95|win98|winme|winnt4|win2000|winxp].
+  * [New] Building with MSYS2 is now fully supported for Makefile
+    and Autotools build systems.
+  * [New] Makefile CONFIG=djgpp now supports CPU= option to build
+    optimized for a particular CPU. See build/make/config-djgpp.mk
+    for all available options. FLAVOURED_DIR=1 places the
+    CPU-specific optimized builds in separate folders below bin/.
+  * [New] Building with a MinGW32 CRTDLL toolchain is now supported
+    via Makefile option CONFIG=mingw32crt.
+  * [New] Makefile now uses PKG_CONFIG as path to pkg-config.
+  * [New] The C++ API is now also enabled for Emscripten builds
+    by default.
+  * [New] Support for GCC 7 has been restored.
+  * [New] Support for Clang 6 has been restored.
+  * [New] Support for Android NDK 18 has been restored.
+  * [New] openmpt123: --banner [0|1|2] allows changing the
+    openmpt123 banner style to hidden, shown, or verbose,
+    respectively.
+  * [New] openmpt123: --assume-terminal allows skipping the
+    openmpt123 terminal check, and thus allows running the UI with
+    non-terminal stdin, which can be useful for some very basic
+    remote control functionality.
+  * [Change] xmp-openmpt: The Amiga resampler emulation is now
+    enabled by default.
+  * [Change] in_openmpt: The Amiga resampler emulation is now
+    enabled by default.
+  * [Change] The official Windows builds (x86, amd64, arm, arm64)
+    now require Windows 10 21H2 (or later). The official legacy
+    Windows builds (x86-legacy, amd64-legacy) are unchanged and
+    still require Windows 7 (or later).
+  * [Change] "date" metadata will now exlude the UTC time zone
+    signifier Z if the precise time zone is unknown.
+  * [Change] ctl seek.sync_samples now defaults to 1.
+  * [Change] Makefile CONFIG=generic is gone. Please use
+    CONFIG=standard instead.
+  * [Change] Makefile CONFIG=macosx and CONFIG=haiku have been
+    removed. The OS is auto-detected.
+  * [Change] Makefile options CONFIG=mingw64-win32,
+    CONFIG=mingw64-win64, CONFIG=mingw64-winrt-x86,
+    CONFIG=mingw64-winrt-amd64, and CONFIG=mingw-win9x have been
+    replaced by CONFIG=mingw-w64, and CONFIG=mingw.
+  * [Change] Autotools now default to C++20 and only fall back to
+    C++17 when C++20 is not supported.
+  * [Change] Makefile now defaults to C++20 and only falls back to
+    C++17 when C++20 is not supported by the compiler.
+  * [Change] Makefile now defaults to C17 and only falls back to
+    C11 when C17 is not supported by the compiler.
+  * [Change] Makefile CONFIG=djgpp option USE_ALLEGRO42 now
+    defaults to 1 and implies building a liballegro42 locally.
+    This requires executing build/download_externals.sh before
+    building to download the liballegro42 sources.
+  * [Change] in_openmpt: The Winamp input plugin in_openmpt is now
+    deprecated for use with the latest Winamp or WACUP releases.
+    Please use the native implementations available in
+    Winamp >=5.9.0 or WACUP instead. This does not mean that
+    in_openmpt/in_mod will not receive further development,
+    it just means that the responsibility now lies with the player
+    implementors themselves. We will still maintain the status quo
+    of our in_openmpt input plugin for users of earlier Winamp
+    version, or users on older systems, or users of compatible
+    players.
+  * [Change] The POSIX fd file callbacks implementation now handles
+    EINTR and retries the read() call.
+  * [Regression] Full support for Visual Studio 2017 has been
+    removed. We still support targeting Windows XP with
+    Visual Studio 2017.
+  * [Regression] Support for mingw-std-threads has been removed.
+    If you require a thread-safe libopenmpt, please build with
+    POSIX threading model and/or complain to MinGW/GCC about not
+    properly supporting C++11 features in 2023.
+  * [Regression] Support for Emscripten versions older than 3.1.1
+    has been removed.
+  * [Regression] C API: openmpt_stream_get_file_callbacks() used to
+    provide 64bit file access on some platforms where long is
+    32bit. This never worked reliably for all platforms though.
+    The behaviour is now changed to always stick to what standard
+    C supports with fseek and ftell, where the offset type is long.
+    openmpt_stream_get_file_callbacks() is deprecated now due to
+    behavioral change.
+    Please migrate to openmpt_stream_get_file_callbacks2().
+  * [Regression] Using the system-provided liballegro42 is no
+    longer supported. The option BUNDLED_ALLEGRO42=1 does not exist
+    any more.
+  * Reduced aliasing when downsampling with the Sinc + Low-Pass
+    resampler.
+  * The sample position is now rounded instead of truncated when
+    resampling without interpolation.
+  * Seeking with sample sync now supports portamento up / down
+    commands as well as IMF/ PTM note slides. Tone portamento is
+    now synchronized correctly when seeking in DBM, 669 and MED
+    with fast slides (first tick of portamento was previously not
+    executed).
+  * The filter cutoff frequency is no longer rounded to integer
+    frequency values.
+  * MED: Tempos higher than 255 BPM can now be imported in pattern
+    data.
+  * MED: MMD1 files with more than 16 channels are now supported.
+  * ULT: Import 8-bit volume commands with full precision.
+  * IT: Initial “last note memory” of every channel is C-0, so a
+    lone instrument number without note triggers that note.
+  * S3M: Better approximation of old “stereo control” SAx command
+    used in Purple Motion’s PANIC.S3M.
+  * S3M: In ScreamTracker 3.03 and later, OPL notes with tone
+    portamento next to them are delayed until the next row and then
+    the new pitch is used instantly.
+  * MO3: Envelope sustain was not imported correctly if the source
+    file was an XM.
+  * MOD: Lone instrument number with retrigger effect swap sample
+    immediately.
+  * Recalling a sample’s default volume using an instrument number
+    (as opposed to regular volume commands) previously ramped the
+    volume change smoothly over a whole tick. Now the
+    user-configured ramp settings are used instead (as it would
+    happen when using a volume command to achieve the same effect).
+
+-------------------------------------------------------------------
 Tue Apr 18 18:50:53 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 0.6.10
