@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 22 07:04:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- remove outdated constructs, we no longer support < 3.8
+
+-------------------------------------------------------------------
 Mon May  8 09:37:31 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 23.1.0:

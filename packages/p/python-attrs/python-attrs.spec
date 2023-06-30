@@ -24,7 +24,6 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%global skip_python36 1
 %{?sle15_python_module_pythons}
 Name:           python-attrs%{psuffix}
 Version:        23.1.0
@@ -37,15 +36,11 @@ Source:         https://files.pythonhosted.org/packages/source/a/attrs/attrs-%{v
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
-BuildRequires:  %{python_module importlib_metadata if %python-base < 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-%if 0%{python_version_nodots} < 38
-Requires:       python-importlib_metadata
-%endif
 %if %{with test}
 BuildRequires:  %{python_module Pympler}
 BuildRequires:  %{python_module hypothesis}
