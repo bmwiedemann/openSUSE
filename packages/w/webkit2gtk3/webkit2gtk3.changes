@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 28 16:41:25 UTC 2023 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.40.3:
+  + Make memory pressure monitor honor memory.memsw.usage_in_bytes
+    if exists.
+  + Include key modifiers in wheel events.
+  + Apply cookie blocking policy to WebSocket handshakes.
+  + Remove accidental dependency on GLib 2.70.
+  + Fix the build with BUBBLEWRAP_SANDBOX disabled.
+  + Fix several crashes and rendering issues.
+
+-------------------------------------------------------------------
 Wed May 31 16:05:38 UTC 2023 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.40.2 (boo#1211846):
