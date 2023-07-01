@@ -1,0 +1,89 @@
+---
+ Doc/library/tarfile.rst |   11 -----------
+ 1 file changed, 11 deletions(-)
+
+--- a/Doc/library/tarfile.rst
++++ b/Doc/library/tarfile.rst
+@@ -504,7 +504,6 @@ be finalized; only the internally used f
+       Return an :class:`io.BufferedReader` object.
+ 
+ .. attribute:: TarFile.errorlevel
+-   :type: int
+ 
+    If *errorlevel* is ``0``, errors are ignored when using :meth:`TarFile.extract`
+    and :meth:`TarFile.extractall`.
+@@ -683,19 +682,16 @@ A ``TarInfo`` object has the following p
+ 
+ 
+ .. attribute:: TarInfo.name
+-   :type: str
+ 
+    Name of the archive member.
+ 
+ 
+ .. attribute:: TarInfo.size
+-   :type: int
+ 
+    Size in bytes.
+ 
+ 
+ .. attribute:: TarInfo.mtime
+-   :type: int | float
+ 
+    Time of last modification in seconds since the :ref:`epoch <epoch>`,
+    as in :attr:`os.stat_result.st_mtime`.
+@@ -707,7 +703,6 @@ A ``TarInfo`` object has the following p
+       attribute.
+ 
+ .. attribute:: TarInfo.mode
+-   :type: int
+ 
+    Permission bits, as for :func:`os.chmod`.
+ 
+@@ -727,14 +722,12 @@ A ``TarInfo`` object has the following p
+ 
+ 
+ .. attribute:: TarInfo.linkname
+-   :type: str
+ 
+    Name of the target file name, which is only present in :class:`TarInfo` objects
+    of type :const:`LNKTYPE` and :const:`SYMTYPE`.
+ 
+ 
+ .. attribute:: TarInfo.uid
+-   :type: int
+ 
+    User ID of the user who originally stored this member.
+ 
+@@ -745,7 +738,6 @@ A ``TarInfo`` object has the following p
+       attribute.
+ 
+ .. attribute:: TarInfo.gid
+-   :type: int
+ 
+    Group ID of the user who originally stored this member.
+ 
+@@ -756,7 +748,6 @@ A ``TarInfo`` object has the following p
+       attribute.
+ 
+ .. attribute:: TarInfo.uname
+-   :type: str
+ 
+    User name.
+ 
+@@ -767,7 +758,6 @@ A ``TarInfo`` object has the following p
+       attribute.
+ 
+ .. attribute:: TarInfo.gname
+-   :type: str
+ 
+    Group name.
+ 
+@@ -778,7 +768,6 @@ A ``TarInfo`` object has the following p
+       attribute.
+ 
+ .. attribute:: TarInfo.pax_headers
+-   :type: dict
+ 
+    A dictionary containing key-value pairs of an associated pax extended header.
+ 

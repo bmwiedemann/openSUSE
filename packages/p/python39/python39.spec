@@ -93,7 +93,7 @@
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.9.16
+Version:        3.9.17
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -161,16 +161,12 @@ Patch35:        support-expat-CVE-2022-25236-patched.patch
 # PATCH-FIX-UPSTREAM 98437-sphinx.locale._-as-gettext-in-pyspecific.patch gh#python/cpython#98366 mcepl@suse.com
 # this patch makes things totally awesome
 Patch37:        98437-sphinx.locale._-as-gettext-in-pyspecific.patch
-# PATCH-FIX-UPSTREAM CVE-2023-24329-blank-URL-bypass.patch bsc#1208471 mcepl@suse.com
-# blocklist bypass via the urllib.parse component when supplying
-# a URL that starts with blank characters
-Patch38:        CVE-2023-24329-blank-URL-bypass.patch
-# PATCH-FIX-UPSTREAM CVE-2007-4559-filter-tarfile_extractall.patch bsc#1203750 mcepl@suse.com
-# Implement PEP-706 to filter outcome of the tarball extracing
-Patch39:        CVE-2007-4559-filter-tarfile_extractall.patch
 # PATCH-FIX-UPSTREAM 99366-patch.dict-can-decorate-async.patch bsc#[0-9]+ mcepl@suse.com
 # Patch for gh#python/cpython#98086
 Patch40:        99366-patch.dict-can-decorate-async.patch
+# PATCH-FIX-OPENSUSE downport-Sphinx-features.patch mcepl@suse.com
+# Make documentation build with older Sphinx
+Patch41:        downport-Sphinx-features.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -429,9 +425,10 @@ other applications.
 %endif
 %patch35 -p1
 %patch37 -p1
-%patch38 -p1
-%patch39 -p1
 %patch40 -p1
+%if 0%{?sle_version} && 0%{?sle_version} <= 150500
+%patch41 -p1
+%endif
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
