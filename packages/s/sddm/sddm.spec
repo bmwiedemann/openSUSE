@@ -38,6 +38,9 @@ Source22:       sddm-greeter.pam
 # Patch0-100: PATCH-FIX-UPSTREAM
 # https://github.com/sddm/sddm/pull/1746
 Patch0:         0001-Session-Parse-.desktop-files-manually-again.patch
+# https://github.com/sddm/sddm/pull/1753
+Patch1:         0001-greeter-Look-at-WAYLAND_DISPLAY-for-platform-detecti.patch
+Patch2:         0002-Ignore-InputMethod-qtvirtualkeyboard-on-wayland.patch
 # Patch100-?: PATCH-FIX-OPENSUSE
 Patch101:       0001-Write-the-daemon-s-PID-to-a-file-on-startup.patch
 Patch102:       0001-Set-XAUTHLOCALHOSTNAME-in-sessions.patch

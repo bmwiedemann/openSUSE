@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 30 09:37:44 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patches to allow dropping InputMethod= from 11-kwin_wayland.conf
+  (boo#1212880):
+  * 0001-greeter-Look-at-WAYLAND_DISPLAY-for-platform-detecti.patch
+  * 0002-Ignore-InputMethod-qtvirtualkeyboard-on-wayland.patch
+
+-------------------------------------------------------------------
 Mon Jun 26 09:54:44 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix parsing some session .desktop files:
