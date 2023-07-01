@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-lsp-black
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,29 @@
 
 
 Name:           python-python-lsp-black
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        Black plugin for the Python LSP Server
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-black
 Source:         https://github.com/python-lsp/python-lsp-black/archive/refs/tags/v%{version}.tar.gz#/python-lsp-black-%{version}-gh.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module black >= 22.3.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-lsp-server >= 1.4.0}
-BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module tomli if %python-base < 3.11}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-black >= 22.3.0
 Requires:       python-python-lsp-server
-Requires:       python-toml
+%if 0%{?python_version_nodots} < 311
+Requires:       python-tomli
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -54,10 +58,10 @@ To avoid unexpected results you should make sure yapf and autopep8 are not insta
 %setup -q -n python-lsp-black-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -66,6 +70,6 @@ To avoid unexpected results you should make sure yapf and autopep8 are not insta
 %files %{python_files}
 %doc README.md
 %{python_sitelib}/pylsp_black
-%{python_sitelib}/python_lsp_black-%{version}*-info
+%{python_sitelib}/python_lsp_black-%{version}.dist-info
 
 %changelog
