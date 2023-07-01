@@ -26,7 +26,7 @@
 %define keychain_version 0.4.0
 
 Name:           owncloud-client
-Version:        4.0.0
+Version:        4.1.0
 Release:        0
 Summary:        The ownCloud synchronization client
 License:        GPL-2.0-only AND GPL-3.0-only

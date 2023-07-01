@@ -1,7 +1,29 @@
 -------------------------------------------------------------------
+Thu Jun 29 15:10:46 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.1.0:
+  * Follow same site redirects in the Wizard
+    (gh#owncloud/enterprise#5743).
+  * Show systray status when a sync error occurred
+    (gh#owncloud/client#10834).
+  * Owncloudcmd: Ensure plugin path is initialized on Linux
+    (gh#owncloud/client#10842).
+  * Use correct user name with basic auth and LDAP
+    (gh#owncloud/client#10856).
+  * Allow users to call commandline client from AppImage
+    (gh#owncloud/client#10888).
+
+-------------------------------------------------------------------
 Wed Jun  7 13:41:46 UTC 2023 - Klaas Freitag <opensuse@freisturz.de>
 
-- Update to upstream version 4.0.0 
+- Update to upstream version 4.0.0
+  * Enable sync of locked office files
+  * Improvements for oCIS space handling, ie display quota
+  * Webfinger workflow for multiple instance detection
+  * Open sharing information in Web
+  * Improved integration of the online documentation
+  * better error handling in the owncloudcmd client
+  * many other small bug fixes
 
 -------------------------------------------------------------------
 Thu Mar 16 07:33:56 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
@@ -18,12 +40,12 @@ Sat Feb 25 17:43:17 UTC 2023 - Christophe Marin <christophe@krop.fr>
 Thu Feb 23 10:26:43 UTC 2023 - Klaas Freitag <opensuse@freisturz.de>
 
 - Update to upstream version 3.2.0 and use of liblibregaphapi
-  Changelog https://github.com/owncloud/client/releases/tag/v3.2.0 
+  Changelog https://github.com/owncloud/client/releases/tag/v3.2.0
 
 -------------------------------------------------------------------
 Thu Feb  2 16:54:21 UTC 2023 - Klaas Freitag <opensuse@freisturz.de>
 
-- remove patch fix-systray-menu-pos.patch as it is not longer needed 
+- remove patch fix-systray-menu-pos.patch as it is not longer needed
 
 -------------------------------------------------------------------
 Thu Jan 19 11:20:22 UTC 2023 - Matthias Gerstner <matthias.gerstner@suse.com>
@@ -39,51 +61,51 @@ Fri Sep  2 08:55:56 UTC 2022 - Klaas Freitag <opensuse@freisturz.de>
 -------------------------------------------------------------------
 Mon Aug 22 14:23:31 UTC 2022 - Klaas Freitag <opensuse@freisturz.de>
 
-- Update to new verion 2.11.0 with a bunch of bugfixes and 
+- Update to new verion 2.11.0 with a bunch of bugfixes and
   improvements.
-- Removed patch fix-gcc12-build.patch which went upstream. 
+- Removed patch fix-gcc12-build.patch which went upstream.
 
 -------------------------------------------------------------------
 Fri May 20 14:06:42 UTC 2022 - Klaas Freitag <opensuse@freisturz.de>
 
-- Add upstream patch fix-gcc12-build.patch to fix build with gcc12 
+- Add upstream patch fix-gcc12-build.patch to fix build with gcc12
 
 -------------------------------------------------------------------
 Wed Apr  6 15:43:58 UTC 2022 - Klaas Freitag <opensuse@freisturz.de>
 
-- Update to upstream version 2.10.1: Minor bugfix release. 
+- Update to upstream version 2.10.1: Minor bugfix release.
 
 -------------------------------------------------------------------
 Sun Feb 27 09:52:08 UTC 2022 - Klaas Freitag <opensuse@freisturz.de>
 
-- Remove patch fix-cloudproviders-install from file collection. 
+- Remove patch fix-cloudproviders-install from file collection.
 
 -------------------------------------------------------------------
 Fri Feb 25 08:22:36 UTC 2022 - Klaas Freitag <opensuse@freisturz.de>
 
-- Update to upstream version 2.10.0 
-- Removed patch fix-cloudproviders-install.patch   
+- Update to upstream version 2.10.0
+- Removed patch fix-cloudproviders-install.patch
 
 -------------------------------------------------------------------
 Sat Dec  4 09:57:18 UTC 2021 - Klaas Freitag <opensuse@freisturz.de>
 
-- Update to version 2.9.2 
+- Update to version 2.9.2
   * Upstream bugfix release
 - Add upstream patch to fix install directory of libcloudproviders
-  config file: fix-cloudproviders-install.patch 
+  config file: fix-cloudproviders-install.patch
 
 -------------------------------------------------------------------
 Thu Oct 14 07:44:16 UTC 2021 - Klaas Freitag <opensuse@freisturz.de>
 
 - Update to version 2.9.1
-  * Upstream bugfix release 
+  * Upstream bugfix release
 
 -------------------------------------------------------------------
 Thu Sep  9 20:02:44 UTC 2021 - Klaas Freitag <opensuse@freisturz.de>
 
 - Update to version 2.9.0
 
-- Removed patch fix-use-of-deleted-function.patch as it went upstream. 
+- Removed patch fix-use-of-deleted-function.patch as it went upstream.
 
 -------------------------------------------------------------------
 Fri Jul  9 07:39:48 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
@@ -102,17 +124,17 @@ Thu May 27 08:35:43 UTC 2021 - Klaas Freitag <opensuse@freisturz.de>
 - Update to upstream version 2.8.1
 
   Upstream bugfix release, see for details:
-  https://github.com/owncloud/client/releases/tag/v2.8.1 
+  https://github.com/owncloud/client/releases/tag/v2.8.1
 
 -------------------------------------------------------------------
 Sat Apr 24 18:09:10 UTC 2021 - Klaas Freitag <opensuse@freisturz.de>
 
-- Update to upstream version 2.7.6 
+- Update to upstream version 2.7.6
 
   Upstream bugfix release, see for details:
   https://github.com/owncloud/client/releases/tag/v2.7.6
-- Rename sysctl file to 69-sync-inotify.conf otherwise it is not 
-  executed by sysctl. 
+- Rename sysctl file to 69-sync-inotify.conf otherwise it is not
+  executed by sysctl.
 
 -------------------------------------------------------------------
 Fri Jan 29 16:32:15 UTC 2021 - Klaas Freitag <opensuse@freisturz.de>
@@ -120,7 +142,7 @@ Fri Jan 29 16:32:15 UTC 2021 - Klaas Freitag <opensuse@freisturz.de>
 - Update to upstream version 2.7.5
 
   Upstream bugfix release, see for details:
-  https://github.com/owncloud/client/releases/tag/v2.7.5 
+  https://github.com/owncloud/client/releases/tag/v2.7.5
 
 -------------------------------------------------------------------
 Sun Jan 17 13:59:57 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
@@ -138,55 +160,55 @@ Tue Jan  5 20:26:31 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 -------------------------------------------------------------------
 Wed Dec 30 21:12:58 UTC 2020 - Klaas Freitag <opensuse@freisturz.de>
 
-- Removed previous used asc file. 
+- Removed previous used asc file.
 
 -------------------------------------------------------------------
 Wed Dec 30 19:05:33 UTC 2020 - Klaas Freitag <opensuse@freisturz.de>
 
 - Update to the latest upstream version 2.7.4.
   That is mainly crash fixes for the Windows platform.
-- Back to the special unpackaged tarball for openSUSE. See the 
+- Back to the special unpackaged tarball for openSUSE. See the
   README file for reasons.
 
 -------------------------------------------------------------------
 Sun Dec 20 15:36:15 UTC 2020 - Klaas Freitag <opensuse@freisturz.de>
 
-- Fix source link. 
+- Fix source link.
 
 -------------------------------------------------------------------
 Wed Dec  9 16:10:08 UTC 2020 - Klaas Freitag <opensuse@freisturz.de>
 
-- Remove patch fix-qpainterpath.patch - fixed upstream. 
+- Remove patch fix-qpainterpath.patch - fixed upstream.
 
 -------------------------------------------------------------------
 Wed Dec  9 15:24:44 UTC 2020 - Klaas Freitag <opensuse@freisturz.de>
 
-- Fix Fix BOO#1179175 - add a config file to the package to not 
-  call home for version checks. 
+- Fix Fix BOO#1179175 - add a config file to the package to not
+  call home for version checks.
 
 -------------------------------------------------------------------
 Wed Dec  9 14:55:21 UTC 2020 - Klaas Freitag <opensuse@freisturz.de>
 
 - Remove patch no_theme_icons.patch because the theme icons are now
-  cloud specific, no reason to ignore any more. 
+  cloud specific, no reason to ignore any more.
 
 -------------------------------------------------------------------
 Wed Dec  9 09:22:37 UTC 2020 - Klaas Freitag <opensuse@freisturz.de>
 
-- Update to upstream version 2.7.2 
-  Compared to 2.7.1 little additional fixes to a severe bug. 
+- Update to upstream version 2.7.2
+  Compared to 2.7.1 little additional fixes to a severe bug.
 
 -------------------------------------------------------------------
 Sat Nov 28 18:08:18 UTC 2020 - Klaas Freitag <opensuse@freisturz.de>
 
 - Update to upstream version 2.7.1
   Many updates and bugfixes
-  Changelog https://github.com/owncloud/client/releases/tag/v2.7.1 
+  Changelog https://github.com/owncloud/client/releases/tag/v2.7.1
 
 -------------------------------------------------------------------
 Wed Jun 24 09:31:41 UTC 2020 - Klaas Freitag <opensuse@freisturz.de>
 
-- Fix BOO#1173252: Install the correct SOURCEs. 
+- Fix BOO#1173252: Install the correct SOURCEs.
 
 -------------------------------------------------------------------
 Thu Jun 18 08:29:08 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
@@ -227,7 +249,7 @@ Fri Jan 31 08:10:43 UTC 2020 - Klaas Freitag <opensuse@freisturz.de>
 
 - update to 2.6.1, a bugfix release for 2.6.0 with little improvements
   as well.
-  Changelog: https://github.com/owncloud/client/releases/tag/v2.6.1 
+  Changelog: https://github.com/owncloud/client/releases/tag/v2.6.1
 
 -------------------------------------------------------------------
 Thu Nov 28 12:01:41 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -248,23 +270,23 @@ Sat Nov 16 08:46:39 UTC 2019 - Klaas Freitag <opensuse@freisturz.de>
     (https://github.com/owncloud/client/wiki/Virtual-Files)
   * Add basic support for libcloudproviders for gtk/gnome integration (#7209)
   * Remove support for Shibboleth auth, please use OAuth2 server app (#6451)
-  * Many bugfixes and other improvements, more to read at 
+  * Many bugfixes and other improvements, more to read at
     https://github.com/owncloud/client/releases/tag/v2.6.0
 
 -------------------------------------------------------------------
 Sat Nov  2 10:01:07 UTC 2019 - Klaas Freitag <opensuse@freisturz.de>
 
-- Update to 2.6.0 RC4. 
+- Update to 2.6.0 RC4.
 
 -------------------------------------------------------------------
 Tue Oct 22 16:13:51 UTC 2019 - Klaas Freitag <opensuse@freisturz.de>
 
-- Update to 2.6.0 RC2. 
+- Update to 2.6.0 RC2.
 
 -------------------------------------------------------------------
 Thu Sep  5 08:59:40 UTC 2019 - Klaas Freitag <opensuse@freisturz.de>
 
-- Update to 2.6.0 RC1. 
+- Update to 2.6.0 RC1.
 
 -------------------------------------------------------------------
 Mon May 20 12:36:11 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
@@ -275,7 +297,7 @@ Mon May 20 12:36:11 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 Wed Mar 20 19:58:37 UTC 2019 - Klaas Freitag <opensuse@freisturz.de>
 
 - Update to upstream release 2.5.4 with various bugfixes
-  Details at https://github.com/owncloud/client/releases/tag/v2.5.4 
+  Details at https://github.com/owncloud/client/releases/tag/v2.5.4
 
 -------------------------------------------------------------------
 Thu Feb  7 20:44:44 UTC 2019 - Klaas Freitag <opensuse@freisturz.de>
@@ -291,25 +313,25 @@ Tue Jan 29 21:28:47 UTC 2019 - Klaas Freitag <opensuse@freisturz.de>
 
 - Update to upstream version 2.5.2
   Changelog available at https://owncloud.org/changelog/desktop-client/
-- Added no_theme_icons.patch to avoid icon mix in the app 
+- Added no_theme_icons.patch to avoid icon mix in the app
 
 -------------------------------------------------------------------
 Fri Nov  9 20:14:20 UTC 2018 - Klaas Freitag <opensuse@freisturz.de>
 
-- update to upstream version 2.5.1 
-  Changelog available at https://owncloud.org/changelog/desktop-client/ 
+- update to upstream version 2.5.1
+  Changelog available at https://owncloud.org/changelog/desktop-client/
 
 -------------------------------------------------------------------
 Tue Sep 18 15:12:04 UTC 2018 - klaas.freitag@suse.com
 
-- Really removed the rpath.diff file. 
+- Really removed the rpath.diff file.
 
 -------------------------------------------------------------------
 Tue Sep 18 09:19:12 UTC 2018 - klaas.freitag@suse.com
 
 - update to upstream version 2.5.0
   Changelog available at https://owncloud.org/changelog/desktop-client/
-  
+
   * Removed patch rpath.diff as not longer required.
   * Added some doc cleanup as the version installs too much.
 
@@ -317,7 +339,7 @@ Tue Sep 18 09:19:12 UTC 2018 - klaas.freitag@suse.com
 Tue Sep  4 05:27:18 UTC 2018 - klaas.freitag@suse.com
 
 - Fixed patch fix-systray-menu-pos.patch to avoid segfault as
-  described in boo#1106103. Should be fixed with this. 
+  described in boo#1106103. Should be fixed with this.
 
 -------------------------------------------------------------------
 Wed Aug 15 09:45:40 UTC 2018 - klaas.freitag@suse.com
@@ -333,53 +355,53 @@ Wed Jul 25 16:06:20 UTC 2018 - klaas.freitag@suse.com
 - Update to upstream version 2.4.2
   * Coming with some bugfixes, Changelog:
     https://owncloud.org/changelog/desktop-client/
-- Added patch fix-systray-menu-pos.patch to fix a problem with 
+- Added patch fix-systray-menu-pos.patch to fix a problem with
   older Qt versions. Applies only to versions Leap 15 and older,
   fixes https://github.com/owncloud/client/issues/5968
- 
+
 -------------------------------------------------------------------
 Fri Mar 16 20:58:43 UTC 2018 - freitag@owncloud.com
 
-- Updated changelog for upstream release. 
+- Updated changelog for upstream release.
 
 -------------------------------------------------------------------
 Tue Mar  6 11:03:15 UTC 2018 - klaas.freitag@suse.com
 
-- Update to upstream version 2.4.1 
+- Update to upstream version 2.4.1
   * Enhanced Nautilus integration.
-  * Cleaner User Experience and overall improvements to 
+  * Cleaner User Experience and overall improvements to
     notifications and the synchronization of files.
   * Better implementation and integration of Client Filesystems.
   * Improved Sharing dialogue
-  * and a lot more... 
-  Changelog: https://github.com/owncloud/client/releases 
+  * and a lot more...
+  Changelog: https://github.com/owncloud/client/releases
 
 -------------------------------------------------------------------
 Wed Feb 28 10:58:38 UTC 2018 - klaas.freitag@suse.com
 
-- Add explicit BuildRequires on Qt5Sql to fix TW build. 
+- Add explicit BuildRequires on Qt5Sql to fix TW build.
 
 -------------------------------------------------------------------
 Mon Jan  1 21:03:19 UTC 2018 - freitag@owncloud.com
 
-- Removed superflous patch force_qdbus_tray_workaround.patch 
+- Removed superflous patch force_qdbus_tray_workaround.patch
 
 -------------------------------------------------------------------
 Mon Jan  1 19:50:51 UTC 2018 - freitag@owncloud.com
 
 - Bring back the doc macro to mark the documentation files.
-  Fix building by utilizing the exclude macro. 
+  Fix building by utilizing the exclude macro.
 
 -------------------------------------------------------------------
 Fri Dec 29 11:41:41 UTC 2017 - freitag@owncloud.com
 
-- Fixed documentation installation by avoiding the %doc macro. 
+- Fixed documentation installation by avoiding the %doc macro.
 
 -------------------------------------------------------------------
 Thu Dec 28 21:15:16 UTC 2017 - freitag@owncloud.com
 
 - Added rpath.diff: Fix the rpath to the private libs of owncloud
-  Fixed documentation file list issue  
+  Fixed documentation file list issue
 
 -------------------------------------------------------------------
 Wed Dec 27 11:58:22 UTC 2017 - freitag@owncloud.com
@@ -394,17 +416,17 @@ Mon Dec 25 11:34:37 UTC 2017 - freitag@owncloud.com
 - Update to version 2.4.0 with lots of fixes and additions.
   Detailed changelog:
   https://raw.githubusercontent.com/owncloud/client/master/ChangeLog
-- Drop force_qdbus_tray_workaround.patch: Problem fixed upstream. 
+- Drop force_qdbus_tray_workaround.patch: Problem fixed upstream.
 
 -------------------------------------------------------------------
 Sat Oct 21 20:34:57 UTC 2017 - klaas.freitag@suse.com
 
-- Do not install README.source file as requested in sr 
+- Do not install README.source file as requested in sr
 
 -------------------------------------------------------------------
 Tue Sep 12 07:21:21 UTC 2017 - freitag@opensuse.org
 
-- Install README.source to doc. Make pack checker in Factory happy. 
+- Install README.source to doc. Make pack checker in Factory happy.
 
 -------------------------------------------------------------------
 Fri Sep  8 21:33:53 UTC 2017 - freitag@opensuse.org
@@ -418,8 +440,8 @@ Fri Sep  8 21:33:53 UTC 2017 - freitag@opensuse.org
 -------------------------------------------------------------------
 Wed Sep  6 10:02:11 UTC 2017 - freitag@suse.com
 
-- Added updstream patch force_qdbus_tray_workaround.patch to fix a 
-  problem with the Qt lib on Leap 42.2 only  
+- Added updstream patch force_qdbus_tray_workaround.patch to fix a
+  problem with the Qt lib on Leap 42.2 only
 
 -------------------------------------------------------------------
 Mon Sep  4 13:50:42 UTC 2017 - klaas.freitag@suse.com
@@ -446,7 +468,7 @@ Mon Sep  4 13:50:42 UTC 2017 - klaas.freitag@suse.com
 -------------------------------------------------------------------
 Tue Jun 13 11:05:10 UTC 2017 - klaas.freitag@suse.com
 
-- Fix: Build the dolphin overlays also for Tumbleweed. 
+- Fix: Build the dolphin overlays also for Tumbleweed.
 
 -------------------------------------------------------------------
 Wed May 10 15:17:37 UTC 2017 - klaas.freitag@suse.com
@@ -462,7 +484,7 @@ Wed May 10 15:17:37 UTC 2017 - klaas.freitag@suse.com
 -------------------------------------------------------------------
 Wed May  3 11:28:41 UTC 2017 - klaas.freitag@suse.com
 
-- Use desktop database update script in postinstall and uninstall 
+- Use desktop database update script in postinstall and uninstall
 
 -------------------------------------------------------------------
 Fri Apr 28 12:53:02 UTC 2017 - klaas.freitag@suse.com
@@ -488,7 +510,7 @@ Fri Apr 28 05:09:04 UTC 2017 - badshah400@gmail.com
 -------------------------------------------------------------------
 Thu Mar 30 11:59:14 UTC 2017 - klaas.freitag@suse.com
 
-- fix condition for kde dolphin plugin, do not build on 13.2 
+- fix condition for kde dolphin plugin, do not build on 13.2
 
 -------------------------------------------------------------------
 Thu Mar 30 09:14:02 UTC 2017 - freitag@opensuse.org
@@ -545,12 +567,12 @@ Fri Mar  3 16:22:55 UTC 2017 - freitag@opensuse.org
 -------------------------------------------------------------------
 Sat Dec  3 09:41:26 UTC 2016 - freitag@opensuse.org
 
-- Renamed inotify configuration file to not conflict with nc client 
+- Renamed inotify configuration file to not conflict with nc client
 
 -------------------------------------------------------------------
 Fri Dec  2 21:34:05 UTC 2016 - freitag@opensuse.org
 
-- README file removed from package source dir. Not used. 
+- README file removed from package source dir. Not used.
 
 -------------------------------------------------------------------
 Fri Dec  2 21:26:40 UTC 2016 - freitag@opensuse.org
@@ -561,31 +583,31 @@ Fri Dec  2 21:26:40 UTC 2016 - freitag@opensuse.org
 Fri Dec  2 20:27:32 UTC 2016 - freitag@opensuse.org
 
 - Removed bogus stuff from changes file and use pkgconfig, following
-  suggestions in the pull request.  
+  suggestions in the pull request.
 
 -------------------------------------------------------------------
 Thu Dec  1 16:59:40 UTC 2016 - freitag@opensuse.org
 
-- Build dolphin plugin only in newer SUSE distros 
+- Build dolphin plugin only in newer SUSE distros
 
 -------------------------------------------------------------------
 Wed Nov 30 11:45:40 UTC 2016 - freitag@opensuse.org
 
-- More specfile refinements and cleanups. 
+- More specfile refinements and cleanups.
 
 -------------------------------------------------------------------
 Fri Nov 18 09:36:36 UTC 2016 - freitag@opensuse.org
 
-- Added accidentially removed file again. 
+- Added accidentially removed file again.
 
 -------------------------------------------------------------------
 Fri Nov 18 09:28:46 UTC 2016 - freitag@opensuse.org
 
-- Remove left-over files 
+- Remove left-over files
 
 -------------------------------------------------------------------
 Fri Nov 18 09:27:03 UTC 2016 - freitag@opensuse.org
 
 - Stripped down to a simple openSUSE-only spec to use it to push the
-  client to Tumbleweed. 
+  client to Tumbleweed.
 
