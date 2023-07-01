@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20230629" schemaversion="4.1">
+<image name="OBS__MicroOS___20230630" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230629</productvar>
+      <productvar name="VERSION">20230630</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230629,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230630,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230629/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230630/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -275,6 +275,7 @@
       <repopackage name="docker"/>
       <repopackage name="docker-bash-completion"/>
       <repopackage name="docker-buildx"/>
+      <repopackage name="docker-rootless-extras"/>
       <repopackage name="dolphin"/>
       <repopackage name="dolphin-part"/>
       <repopackage name="dolphin-part-lang"/>
@@ -831,6 +832,7 @@
       <repopackage name="layer-shell-qt5"/>
       <repopackage name="less"/>
       <repopackage name="lftp"/>
+      <repopackage name="libabsl2301_0_0"/>
       <repopackage name="libabw-0_1-1"/>
       <repopackage name="libaccounts-glib0"/>
       <repopackage name="libaccounts-qt5-1"/>
@@ -1565,8 +1567,8 @@
       <repopackage name="libproc2-0"/>
       <repopackage name="libprocps8"/>
       <repopackage name="libprotobuf-c1"/>
-      <repopackage name="libprotobuf-lite3_21_12"/>
-      <repopackage name="libprotobuf3_21_12"/>
+      <repopackage name="libprotobuf-lite22_5_0"/>
+      <repopackage name="libprotobuf22_5_0"/>
       <repopackage name="libproxy1"/>
       <repopackage name="libproxy1-config-gnome3"/>
       <repopackage name="libproxy1-config-kde"/>
@@ -2491,6 +2493,7 @@
       <repopackage name="rebootmgr"/>
       <repopackage name="redis"/>
       <repopackage name="rgb"/>
+      <repopackage name="rootlesskit"/>
       <repopackage name="rpcbind"/>
       <repopackage name="rpm"/>
       <repopackage name="rpm-config-SUSE"/>
