@@ -1943,4 +1943,14 @@ https://gitlab.gnome.org/GNOME/gnome-control-center/commit/3e82d5386033e8fbf3f5b
   + Updated translations.</comment>
     <requestid>1089506</requestid>
   </revision>
+  <revision rev="229" vrev="1">
+    <srcmd5>edeb54c8c6d07d8878f4aceb53915586</srcmd5>
+    <version>44.3</version>
+    <time>1688246254</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1096090 from iznogood
+
+New stable rel</comment>
+    <requestid>1096190</requestid>
+  </revision>
 </revisionlist>
