@@ -1068,4 +1068,14 @@ cd - (forwarded request 199127 from Zaitor)</comment>
   + Updated translations.</comment>
     <requestid>1089504</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>e0bd184523c61801747693ff78454131</srcmd5>
+    <version>44.3</version>
+    <time>1688246265</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1096133 from iznogood
+
+New stable release</comment>
+    <requestid>1096195</requestid>
+  </revision>
 </revisionlist>
