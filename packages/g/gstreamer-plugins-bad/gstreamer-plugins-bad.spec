@@ -71,7 +71,7 @@
 %endif
 
 Name:           gstreamer-plugins-bad
-Version:        1.22.3
+Version:        1.22.4
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
