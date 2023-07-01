@@ -1,7 +1,7 @@
 #
 # spec file for package freemarker
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -96,7 +96,7 @@ rm ivysettings.xml
 
 # Correct classpath for Javadoc generation
 sed -i 's/cachepath conf="IDE"/cachepath conf="javadoc"/' build.xml
-sed -i '/conf name="IDE"/i<conf name="javadoc" extends="build.jython2.2,build.jsp2.1" />' ivy.xml
+sed -i '/conf name="IDE"/i<conf name="javadoc" extends="build.jython2.5,build.jsp2.1" />' ivy.xml
 
 # Drop unnecessary dep on avalon
 sed -i -e '/avalon-logkit/d' ivy.xml
