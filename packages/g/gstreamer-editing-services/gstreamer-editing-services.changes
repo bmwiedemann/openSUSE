@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 26 14:47:30 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.4:
+  + ges: launcher: Never put sinks in a GstPipeline.
+- Rebase reduce-required-meson.patch.
+
+-------------------------------------------------------------------
 Wed May 24 15:22:12 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.22.3:
