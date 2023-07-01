@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 26 14:45:26 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.4:
+  + python: More functions can be called before gst_init().
+- Rebase reduce-required-meson.patch.
+
+-------------------------------------------------------------------
 Wed May 24 15:34:07 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.22.3:
