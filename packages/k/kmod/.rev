@@ -673,4 +673,20 @@ testsuite still needs zstd command, the library can do without.</comment>
     <comment></comment>
     <requestid>1089967</requestid>
   </revision>
+  <revision rev="75" vrev="5">
+    <srcmd5>e1243e15c95a897ea16a65773f972cf6</srcmd5>
+    <version>30</version>
+    <time>1688246285</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix up usrmerge patches to make the feature configurable (boo#1212835)
+   * testsuite-Handle-different-sysconfdir.patch
+   * testsuite-depmod-use-defines-for-the-rootfs-lib_modu.patch
+   * depmod-Introduce-outdir-option.patch
+   * man-depmod.d-Fix-incorrect-usr-lib-search-path.patch
+   * kmod-Add-config-command-to-show-compile-time-configu.patch
+- Refresh usr-lib-modprobe.patch
+- Refresh usr-lib-modules.patch
+- Refresh no-stylesheet-download.patch (forwarded request 1096182 from michals)</comment>
+    <requestid>1096217</requestid>
+  </revision>
 </revisionlist>

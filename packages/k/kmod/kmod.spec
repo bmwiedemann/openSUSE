@@ -40,11 +40,16 @@ Patch3:         0009-libkmod-Implement-filtering-of-unsupported-modules-o.patch
 Patch4:         0010-modprobe-Implement-allow-unsupported-modules.patch
 Patch5:         0011-Do-not-filter-unsupported-modules-when-running-a-van.patch
 Patch6:         0012-modprobe-print-unsupported-status.patch
-Patch7:         usr-lib-modprobe.patch
-Patch8:         no-stylesheet-download.patch
-Patch9:         0001-testsuite-repair-read-of-uninitialized-memory.patch
+Patch7:         0001-testsuite-repair-read-of-uninitialized-memory.patch
+Patch8:         man-depmod.d-Fix-incorrect-usr-lib-search-path.patch
+Patch9:         usr-lib-modprobe.patch
 Patch10:        testsuite-Move-setup-rootfs-logic-from-Makefile-to-s.patch
-Patch11:        usr-lib-modules.patch
+Patch11:        depmod-Introduce-outdir-option.patch
+Patch12:        testsuite-Handle-different-sysconfdir.patch
+Patch13:        testsuite-depmod-use-defines-for-the-rootfs-lib_modu.patch
+Patch14:        kmod-Add-config-command-to-show-compile-time-configu.patch
+Patch15:        usr-lib-modules.patch
+Patch16:        no-stylesheet-download.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
@@ -116,9 +121,6 @@ in %lname.
 
 %prep
 %autosetup -p1
-%if 0%{?suse_version} < 1550
-%patch11 -p1 -R
-%endif
 
 %build
 GTKDOCIZE=/bin/true autoreconf -fi
@@ -134,6 +136,9 @@ export LDFLAGS="-Wl,-z,relro,-z,now"
 %endif
 	--includedir="%_includedir/kmod" \
 	--with-rootlibdir="%_libdir" \
+%if 0%{?suse_version} > 1500
+	--with-module-prefix="%_prefix" \
+%endif
 	--bindir="%_bindir"
 %make_build
 

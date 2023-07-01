@@ -1,0 +1,90 @@
+From be701954b3e730944f949c1c3fc7dc5144e37de0 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Fri, 30 Jun 2023 16:16:24 +0200
+Subject: [PATCH 3/9] kmod: Add config command to show compile time
+ configuration as JSON
+
+Show prefix (where configuration files are searched/to be installed)
+and module compressions supported.
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ man/kmod.xml |  6 ++++++
+ tools/kmod.c | 34 ++++++++++++++++++++++++++++++++++
+ 2 files changed, 40 insertions(+)
+
+diff --git a/man/kmod.xml b/man/kmod.xml
+index 0706ad58c2cc..f992a500f836 100644
+--- a/man/kmod.xml
++++ b/man/kmod.xml
+@@ -71,6 +71,12 @@
+           <para>Show the help message.</para>
+         </listitem>
+       </varlistentry>
++      <varlistentry>
++        <term><command>config</command></term>
++        <listitem>
++          <para>Show compile time options in JSON.</para>
++        </listitem>
++      </varlistentry>
+       <varlistentry>
+         <term><command>list</command></term>
+         <listitem>
+diff --git a/tools/kmod.c b/tools/kmod.c
+index 55689c075ab1..28aefb463492 100644
+--- a/tools/kmod.c
++++ b/tools/kmod.c
+@@ -37,9 +37,11 @@ static const struct option options[] = {
+ };
+ 
+ static const struct kmod_cmd kmod_cmd_help;
++static const struct kmod_cmd kmod_cmd_config;
+ 
+ static const struct kmod_cmd *kmod_cmds[] = {
+ 	&kmod_cmd_help,
++	&kmod_cmd_config,
+ 	&kmod_cmd_list,
+ 	&kmod_cmd_static_nodes,
+ 
+@@ -95,6 +97,38 @@ static const struct kmod_cmd kmod_cmd_help = {
+ 	.help = "Show help message",
+ };
+ 
++static const char *compressions[] = {
++#ifdef ENABLE_ZSTD
++			"zstd",
++#endif
++#ifdef ENABLE_XZ
++			"xz",
++#endif
++#ifdef ENABLE_ZLIB
++			"gz",
++#endif
++			NULL
++};
++
++static int kmod_config(int argc, char *argv[])
++{
++	unsigned i;
++	printf("{\"prefix\":\"" PREFIX "\""
++			",\"module_compression\":[");
++	for(i = 0; compressions[i]; i++) {
++		printf("%s\"%s\"", i ? "," : "", compressions[i]);
++	}
++	printf("]}\n");
++
++	return EXIT_SUCCESS;
++}
++
++static const struct kmod_cmd kmod_cmd_config = {
++	.name = "config",
++	.cmd = kmod_config,
++	.help = "Show compile time options in JSON",
++};
++
+ static int handle_kmod_commands(int argc, char *argv[])
+ {
+ 	const char *cmd;
+-- 
+2.41.0
+

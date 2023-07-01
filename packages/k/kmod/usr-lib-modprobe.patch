@@ -1,7 +1,8 @@
-From 99208681c29cec2097cb9c7a4b109d9c3d3f47a9 Mon Sep 17 00:00:00 2001
+From 9d4c3adcd051408a9a4489984be73f9c06b938ab Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
 Date: Tue, 12 Jan 2021 16:54:46 +0100
-Subject: [PATCH] modprobe.d, depmod.d: load from $prefix/lib.
+Subject: [PATCH 2/9] libkmod, depmod: Load modprobe.d, depmod.d from
+ $prefix/lib.
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -10,6 +11,13 @@ There is an ongoing effort to limit use of files outside of /usr (or
 $prefix on general). Currently all modprobe.d paths are hardcoded to
 outside of $prefix. Teach kmod to load modprobe.d from $prefix/lib.
 
+On some distributions /usr/lib and /lib are the same directory because
+of a compatibility symlink, and it is possible to craft configuration
+files with sideeffects that would behave differently when loaded twice.
+However, the override semantic ensures that one 'overrides' the other,
+and only one configuration file of the same name is loaded from any of
+the seach directories.
+
 Cc: Marcus Rückert <mrueckert@suse.com>
 Cc: Takashi Iwai <tiwai@suse.com>
 Cc: Dominique Leuenberger <dimstar@opensuse.org>
@@ -17,11 +25,11 @@ Signed-off-by: Michal Suchanek <msuchanek@suse.de>
 ---
  Makefile.am        | 1 +
  libkmod/libkmod.c  | 3 ++-
- man/Makefile.am    | 1 +
- man/depmod.d.xml   | 3 ++-
+ man/Makefile.am    | 9 +++++++--
+ man/depmod.d.xml   | 1 +
  man/modprobe.d.xml | 1 +
  tools/depmod.c     | 1 +
- 6 files changed, 8 insertions(+), 2 deletions(-)
+ 6 files changed, 13 insertions(+), 3 deletions(-)
 
 diff --git a/Makefile.am b/Makefile.am
 index 0e4877074f40..e7313fa8a33e 100644
@@ -57,24 +65,34 @@ index 7c2b889d713e..75fc8be3fadc 100644
   *                be null terminated.
   *
 diff --git a/man/Makefile.am b/man/Makefile.am
-index 11514d52a190..b6603e34c4bf 100644
+index 11514d52a190..ad07c30bbd24 100644
 --- a/man/Makefile.am
 +++ b/man/Makefile.am
-@@ -23,3 +23,4 @@ CLEANFILES = $(dist_man_MANS)
+@@ -17,9 +17,14 @@ EXTRA_DIST = $(MAN5:%.5=%.xml) $(MAN8:%.8=%.xml)
+ CLEANFILES = $(dist_man_MANS)
+ 
+ %.5 %.8: %.xml
+-	$(AM_V_XSLT)$(XSLT) \
++	$(AM_V_XSLT)if [ -n '$(prefix)' ] ; then \
++		sed -e 's|@PREFIX@|$(prefix)|g' $< ; \
++	else \
++		sed -e '/@PREFIX@/d' $< ; \
++	fi | \
++	$(XSLT) \
+ 		-o $@ \
+ 		--nonet \
  		--stringparam man.output.quietly 1 \
  		--param funcsynopsis.style "'ansi'" \
- 		http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl $<
-+	sed -i -e 's|@PREFIX@|$(prefix)|g' $@
+-		http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl $<
++		http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl -
 diff --git a/man/depmod.d.xml b/man/depmod.d.xml
-index 76548e92a312..431ebca6654b 100644
+index 8d3d821cddc8..431ebca6654b 100644
 --- a/man/depmod.d.xml
 +++ b/man/depmod.d.xml
-@@ -39,7 +39,8 @@
-   </refnamediv>
+@@ -40,6 +40,7 @@
  
    <refsynopsisdiv>
--    <para><filename>/usr/lib/depmod.d/*.conf</filename></para>
-+    <para><filename>/lib/depmod.d/*.conf</filename></para>
+     <para><filename>/lib/depmod.d/*.conf</filename></para>
 +    <para><filename>@PREFIX@/lib/depmod.d/*.conf</filename></para>
      <para><filename>/usr/local/lib/depmod.d/*.conf</filename></para>
      <para><filename>/run/depmod.d/*.conf</filename></para>
@@ -104,5 +122,5 @@ index 364b7d4faa9e..a9349b20ee9c 100644
  	NULL
  };
 -- 
-2.40.0
+2.41.0
 

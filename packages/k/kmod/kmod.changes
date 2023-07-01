@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 30 16:39:17 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix up usrmerge patches to make the feature configurable (boo#1212835)
+   * testsuite-Handle-different-sysconfdir.patch
+   * testsuite-depmod-use-defines-for-the-rootfs-lib_modu.patch
+   * depmod-Introduce-outdir-option.patch
+   * man-depmod.d-Fix-incorrect-usr-lib-search-path.patch
+   * kmod-Add-config-command-to-show-compile-time-configu.patch
+- Refresh usr-lib-modprobe.patch
+- Refresh usr-lib-modules.patch
+- Refresh no-stylesheet-download.patch
+
+-------------------------------------------------------------------
 Fri May 26 10:22:03 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
 
 - On usrmerged system move kernel modules into /usr as well (boo#1211796)

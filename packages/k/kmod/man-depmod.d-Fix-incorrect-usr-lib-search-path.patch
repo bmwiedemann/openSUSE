@@ -1,0 +1,29 @@
+From a792ef9a42b9bd8cc76260b4aa61a681f6998364 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Fri, 30 Jun 2023 10:56:31 +0200
+Subject: [PATCH 1/9] man/depmod.d: Fix incorrect /usr/lib search path
+
+depmod searches /lib/depmod.d but the man page says /usr/lib/depmod.d is
+reached. Aling the documentation with the code.
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ man/depmod.d.xml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/man/depmod.d.xml b/man/depmod.d.xml
+index 76548e92a312..8d3d821cddc8 100644
+--- a/man/depmod.d.xml
++++ b/man/depmod.d.xml
+@@ -39,7 +39,7 @@
+   </refnamediv>
+ 
+   <refsynopsisdiv>
+-    <para><filename>/usr/lib/depmod.d/*.conf</filename></para>
++    <para><filename>/lib/depmod.d/*.conf</filename></para>
+     <para><filename>/usr/local/lib/depmod.d/*.conf</filename></para>
+     <para><filename>/run/depmod.d/*.conf</filename></para>
+     <para><filename>/etc/depmod.d/*.conf</filename></para>
+-- 
+2.41.0
+

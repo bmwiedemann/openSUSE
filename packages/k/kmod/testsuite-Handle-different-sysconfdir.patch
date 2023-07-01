@@ -1,0 +1,178 @@
+From 94fe372a5f6163f5bc8b620e6068ea2f1d99f858 Mon Sep 17 00:00:00 2001
+From: Lucas De Marchi <lucas.de.marchi@gmail.com>
+Date: Thu, 9 Feb 2023 11:19:46 -0800
+Subject: [PATCH 6/9] testsuite: Handle different sysconfdir
+
+Instead of skipping tests if sysconfdir isn't /etc, just handle it
+during the rootfs setup logic.
+
+Signed-off-by: Lucas De Marchi <lucas.de.marchi@gmail.com>
+Reviewed-by: Emil Velikov <emil.l.velikov@gmail.com>
+---
+ Makefile.am                |  6 +-----
+ configure.ac               |  3 ---
+ testsuite/setup-rootfs.sh  |  8 ++++++++
+ testsuite/test-blacklist.c |  3 ---
+ testsuite/test-depmod.c    | 15 ---------------
+ testsuite/test-modprobe.c  |  6 ------
+ 6 files changed, 9 insertions(+), 32 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 32f4b80e9870..246d4f5b138f 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -245,7 +245,7 @@ EXTRA_DIST += testsuite/setup-rootfs.sh
+ MODULE_PLAYGROUND = testsuite/module-playground
+ ROOTFS = testsuite/rootfs
+ ROOTFS_PRISTINE = $(top_srcdir)/testsuite/rootfs-pristine
+-CREATE_ROOTFS = $(AM_V_GEN) $(top_srcdir)/testsuite/setup-rootfs.sh $(ROOTFS_PRISTINE) $(ROOTFS) $(MODULE_PLAYGROUND) $(top_builddir)/config.h
++CREATE_ROOTFS = $(AM_V_GEN) $(top_srcdir)/testsuite/setup-rootfs.sh $(ROOTFS_PRISTINE) $(ROOTFS) $(MODULE_PLAYGROUND) $(top_builddir)/config.h $(sysconfdir)
+ 
+ build-module-playground:
+ 	$(AM_V_GEN)if test "$(top_srcdir)" != "$(top_builddir)"; then \
+@@ -330,10 +330,6 @@ TESTSUITE_LDADD = \
+ 	testsuite/libtestsuite.la libkmod/libkmod-internal.la \
+ 	shared/libshared.la
+ 
+-if KMOD_SYSCONFDIR_NOT_ETC
+-TESTSUITE_CPPFLAGS += -DKMOD_SYSCONFDIR_NOT_ETC
+-endif
+-
+ check_LTLIBRARIES += testsuite/libtestsuite.la
+ testsuite_libtestsuite_la_SOURCES = \
+ 	testsuite/testsuite.c testsuite/testsuite.h
+diff --git a/configure.ac b/configure.ac
+index 6989e9360da2..a74d3baf0a42 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -224,9 +224,6 @@ GTK_DOC_CHECK([1.14],[--flavour no-tmpl-flat])
+ ], [
+ AM_CONDITIONAL([ENABLE_GTK_DOC], false)])
+ 
+-# Some tests are skipped when sysconfdir != /etc.
+-AM_CONDITIONAL([KMOD_SYSCONFDIR_NOT_ETC], [test "x$sysconfdir" != "x/etc"])
+-
+ #####################################################################
+ # Default CFLAGS and LDFLAGS
+ #####################################################################
+diff --git a/testsuite/setup-rootfs.sh b/testsuite/setup-rootfs.sh
+index 3e814d22d813..8b13a40f2cae 100755
+--- a/testsuite/setup-rootfs.sh
++++ b/testsuite/setup-rootfs.sh
+@@ -6,6 +6,7 @@ ROOTFS_PRISTINE=$1
+ ROOTFS=$2
+ MODULE_PLAYGROUND=$3
+ CONFIG_H=$4
++SYSCONFDIR=$5
+ 
+ # create rootfs from rootfs-pristine
+ 
+@@ -15,6 +16,13 @@ create_rootfs() {
+ 	cp -r "$ROOTFS_PRISTINE" "$ROOTFS"
+ 	find "$ROOTFS" -type d -exec chmod +w {} \;
+ 	find "$ROOTFS" -type f -name .gitignore -exec rm -f {} \;
++
++	if [ "$SYSCONFDIR" != "/etc" ]; then
++		find "$ROOTFS" -type d -name etc -printf "%h\n" | while read -r e; do
++			mkdir -p "$(dirname $e/$SYSCONFDIR)"
++			mv $e/{etc,$SYSCONFDIR}
++		done
++	fi
+ }
+ 
+ feature_enabled() {
+diff --git a/testsuite/test-blacklist.c b/testsuite/test-blacklist.c
+index d03eedb60106..969567ddc817 100644
+--- a/testsuite/test-blacklist.c
++++ b/testsuite/test-blacklist.c
+@@ -95,9 +95,6 @@ fail_lookup:
+ }
+ 
+ DEFINE_TEST(blacklist_1,
+-#if defined(KMOD_SYSCONFDIR_NOT_ETC)
+-        .skip = true,
+-#endif
+ 	.description = "check if modules are correctly blacklisted",
+ 	.config = {
+ 		[TC_ROOTFS] = TESTSUITE_ROOTFS "test-blacklist/",
+diff --git a/testsuite/test-depmod.c b/testsuite/test-depmod.c
+index 6e3ae562d766..42878cb4eb22 100644
+--- a/testsuite/test-depmod.c
++++ b/testsuite/test-depmod.c
+@@ -41,9 +41,6 @@ static noreturn int depmod_modules_order_for_compressed(const struct test *t)
+ }
+ 
+ DEFINE_TEST(depmod_modules_order_for_compressed,
+-#if defined(KMOD_SYSCONFDIR_NOT_ETC)
+-        .skip = true,
+-#endif
+ 	.description = "check if depmod let aliases in right order when using compressed modules",
+ 	.config = {
+ 		[TC_UNAME_R] = MODULES_ORDER_UNAME,
+@@ -75,9 +72,6 @@ static noreturn int depmod_modules_outdir(const struct test *t)
+ }
+ 
+ DEFINE_TEST(depmod_modules_outdir,
+-#if defined(KMOD_SYSCONFDIR_NOT_ETC)
+-        .skip = true,
+-#endif
+ 	.description = "check if depmod honours the outdir option",
+ 	.config = {
+ 		[TC_UNAME_R] = MODULES_OUTDIR_UNAME,
+@@ -158,9 +152,6 @@ static noreturn int depmod_detect_loop(const struct test *t)
+ 	exit(EXIT_FAILURE);
+ }
+ DEFINE_TEST(depmod_detect_loop,
+-#if defined(KMOD_SYSCONFDIR_NOT_ETC)
+-        .skip = true,
+-#endif
+ 	.description = "check if depmod detects module loops correctly",
+ 	.config = {
+ 		[TC_UNAME_R] = "4.4.4",
+@@ -184,9 +175,6 @@ static noreturn int depmod_search_order_external_first(const struct test *t)
+ 	exit(EXIT_FAILURE);
+ }
+ DEFINE_TEST(depmod_search_order_external_first,
+-#if defined(KMOD_SYSCONFDIR_NOT_ETC)
+-        .skip = true,
+-#endif
+ 	.description = "check if depmod honor external keyword with higher priority",
+ 	.config = {
+ 		[TC_UNAME_R] = "4.4.4",
+@@ -239,9 +227,6 @@ static noreturn int depmod_search_order_override(const struct test *t)
+ 	exit(EXIT_FAILURE);
+ }
+ DEFINE_TEST(depmod_search_order_override,
+-#if defined(KMOD_SYSCONFDIR_NOT_ETC)
+-        .skip = true,
+-#endif
+ 	.description = "check if depmod honor override keyword",
+ 	.config = {
+ 		[TC_UNAME_R] = "4.4.4",
+diff --git a/testsuite/test-modprobe.c b/testsuite/test-modprobe.c
+index 0255f1aaccb5..bbdf11443d47 100644
+--- a/testsuite/test-modprobe.c
++++ b/testsuite/test-modprobe.c
+@@ -83,9 +83,6 @@ static noreturn int modprobe_show_alias_to_none(const struct test *t)
+ 	exit(EXIT_FAILURE);
+ }
+ DEFINE_TEST(modprobe_show_alias_to_none,
+-#if defined(KMOD_SYSCONFDIR_NOT_ETC)
+-        .skip = true,
+-#endif
+ 	.description = "check if modprobe --show-depends doesn't explode with an alias to nothing",
+ 	.config = {
+ 		[TC_UNAME_R] = "4.4.4",
+@@ -175,9 +172,6 @@ static noreturn int modprobe_softdep_loop(const struct test *t)
+ 	exit(EXIT_FAILURE);
+ }
+ DEFINE_TEST(modprobe_softdep_loop,
+-#if defined(KMOD_SYSCONFDIR_NOT_ETC)
+-        .skip = true,
+-#endif
+ 	.description = "check if modprobe breaks softdep loop",
+ 	.config = {
+ 		[TC_UNAME_R] = "4.4.4",
+-- 
+2.41.0
+

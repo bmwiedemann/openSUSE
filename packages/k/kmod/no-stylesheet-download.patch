@@ -1,7 +1,7 @@
-From e89e12c40ab05fb26066e7f4f82326b545041bd3 Mon Sep 17 00:00:00 2001
+From cd775d005f7d36395ef554d128c849fac5430f37 Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
 Date: Mon, 6 Sep 2021 14:52:35 +0200
-Subject: [PATCH] Do not download the docbook stylesheet during build, use
+Subject: [PATCH 9/9] Do not download the docbook stylesheet during build, use
  local copy instead.
 
 Signed-off-by: Michal Suchanek <msuchanek@suse.de>
@@ -10,16 +10,15 @@ Signed-off-by: Michal Suchanek <msuchanek@suse.de>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/man/Makefile.am b/man/Makefile.am
-index b6603e34c4bf..7dc73b348ce2 100644
+index 1a9a92f9c224..6b89400e9d39 100644
 --- a/man/Makefile.am
 +++ b/man/Makefile.am
-@@ -22,5 +22,5 @@ CLEANFILES = $(dist_man_MANS)
+@@ -28,4 +28,4 @@ CLEANFILES = $(dist_man_MANS)
  		--nonet \
  		--stringparam man.output.quietly 1 \
  		--param funcsynopsis.style "'ansi'" \
--		http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl $<
-+		/usr/share/xml/docbook/stylesheet/nwalsh/current/manpages/docbook.xsl $<
- 	sed -i -e 's|@PREFIX@|$(prefix)|g' $@
+-		http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl -
++		/usr/share/xml/docbook/stylesheet/nwalsh/current/manpages/docbook.xsl -
 -- 
-2.40.0
+2.41.0
 

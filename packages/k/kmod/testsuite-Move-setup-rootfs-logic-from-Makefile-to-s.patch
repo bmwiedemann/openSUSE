@@ -1,7 +1,8 @@
-From 846439397efd9fa54763cc80da0e6d8bdf27c0e5 Mon Sep 17 00:00:00 2001
+From 00c15bc0710c399749421335c2c9372c9afee080 Mon Sep 17 00:00:00 2001
 From: Lucas De Marchi <lucas.de.marchi@gmail.com>
 Date: Thu, 9 Feb 2023 11:19:45 -0800
-Subject: [PATCH] testsuite: Move setup-rootfs logic from Makefile to script
+Subject: [PATCH 4/9] testsuite: Move setup-rootfs logic from Makefile to
+ script
 
 It's easier to implement the logic outside of the Makefile, so rename
 the populate-modules.sh script to setup-rootfs.sh and move the
@@ -86,5 +87,5 @@ index 099f02669156..d9cc627f7224 100755
 +
 +touch testsuite/stamp-rootfs
 -- 
-2.40.0
+2.41.0
 
