@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-Fabric
 Version:        2.7.1
 Release:        0

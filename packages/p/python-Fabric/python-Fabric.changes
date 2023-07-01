@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jul  1 09:04:21 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Tue Oct 25 19:56:39 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Remove conditional definition of python_module.
