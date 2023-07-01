@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jul  1 09:12:10 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Fri Jun 16 06:55:06 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing six BuildRequires.
