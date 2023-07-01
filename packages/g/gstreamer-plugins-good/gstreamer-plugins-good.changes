@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jun 26 14:23:55 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.4:
+  + flacparse: Avoid integer overflow in available data check for
+    image tags.
+  + flvmux: use the correct timestamp to calculate wait times.
+  + isomp4: Fix (E)AC-3 channel count handling.
+  + jpegdec: fixes related to interlaced jpeg.
+  + pngdec: Fix wrong colours output from 16bit RGB images.
+  + qtmux, qtdemux: fix byte order for opus extension.
+  + rtspsrc: Do not try send dropped get/set parameter.
+  + qt5, qt6: Add more meson options and eliminate all automagic.
+  + qt: glrenderer: don't attempt to use QWindow from non-Qt main
+    thread.
+  + qml6glsink: Support building on win32.
+  + v4l2src: fix support for bayer format.
+  + v4l2: Change to query only up to
+    V4L2_CID_PRIVATE_BASE+V4L2_CID_MAX_CTRLS.
+  + v4l2videodec: treat MPEG-1 format as MPEG-2.
+  + v4l2videoenc: support force keyframe event in v4l2 encoder.
+  + tests: rtpbin_buffer_list: fix possible unaligned write/read on
+    32-bit ARM.
+- Add libQt5Gui-private-headers-devel BuildRequires: New
+  explicit dependency.
+- Rebase reduce-required-meson.patch.
+- Drop adaptivedemux2-uri-data.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Tue Jun 13 20:05:38 UTC 2023 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Add patch to fix bug with data url scheme.

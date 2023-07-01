@@ -26,7 +26,7 @@
 %define gst_branch 1.0
 
 Name:           gstreamer-plugins-good
-Version:        1.22.3
+Version:        1.22.4
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -36,7 +36,6 @@ Source0:        %{url}/src/%{_name}/%{_name}-%{version}.tar.xz
 Source1:        gstreamer-plugins-good.appdata.xml
 Source99:       baselibs.conf
 Patch0:         reduce-required-meson.patch
-Patch1:         adaptivedemux2-uri-data.patch
 
 BuildRequires:  Mesa-libGLESv2-devel
 BuildRequires:  Mesa-libGLESv3-devel
@@ -58,6 +57,7 @@ BuildRequires:  python3-base
 BuildRequires:  python3-xml
 BuildRequires:  zlib-devel
 
+BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Qml)
