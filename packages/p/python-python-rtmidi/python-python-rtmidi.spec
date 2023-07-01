@@ -15,9 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-# Do not support python 3.11 yet, gh#SpotlightKid/python-rtmidi#115
-%define skip_python311 1
 Name:           python-python-rtmidi
 Version:        1.4.9
 Release:        0
@@ -25,11 +22,14 @@ Summary:        Python binding for the RtMidi C++ library
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://spotlightkid.github.io/python-rtmidi/
-Source:         https://files.pythonhosted.org/packages/source/p/python-rtmidi/python-rtmidi-%{version}.tar.gz
+Source:        https://files.pythonhosted.org/packages/source/p/python-rtmidi/python-rtmidi-%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module Cython <= 1.0.0}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
@@ -62,9 +62,10 @@ Contains HTML documentation and examples for python-rtmidi.
 %prep
 %setup -q -n python-rtmidi-%{version}
 sed -i 's,/usr/bin/env python,%{_bindir}/%{python_for_executables},' examples/*.py examples/*/*.py
+rm src/_rtmidi.cpp
 
 %build
-%python_build
+%pyproject_wheel
 
 # docs
 rm docs/rtmidi.rst
@@ -76,7 +77,7 @@ cat docs/api.rst.inc >> docs/rtmidi.rst
 rm docs/_build/html/.buildinfo docs/_build/html/objects.inv
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 # not running tests since they require working JACK/ALSA,
