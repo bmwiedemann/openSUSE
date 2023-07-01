@@ -18,7 +18,7 @@
 
 %define gio_real_package %(rpm -q --qf '%%{name}' --whatprovides gio)
 Name:           glib-networking
-Version:        2.76.0
+Version:        2.76.1
 Release:        0
 Summary:        Network-related GIO modules for glib
 License:        LGPL-2.1-or-later
@@ -26,6 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.gnome.org
 Source0:        https://download.gnome.org/sources/glib-networking/2.76/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
+
 BuildRequires:  ca-certificates-mozilla
 # For directory ownership
 BuildRequires:  dbus-1

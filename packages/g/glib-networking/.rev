@@ -683,4 +683,14 @@ a newer version not fitting</comment>
     <comment>New stable release (forwarded request 1072679 from iznogood)</comment>
     <requestid>1073170</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>41bee924887456f39950f8615711d580</srcmd5>
+    <version>2.76.1</version>
+    <time>1688246260</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1096091 from iznogood
+
+New stable rel</comment>
+    <requestid>1096191</requestid>
+  </revision>
 </revisionlist>
