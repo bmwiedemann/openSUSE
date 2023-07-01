@@ -1,7 +1,7 @@
 #
-# spec file for package python-xapian-haystack
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020 Stasiek Michalski <hellcp@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 %global modname xapian-haystack
-%define skip_python2 1
 Name:           python-%{modname}
 Version:        2.1.1
 Release:        0
@@ -28,8 +27,8 @@ License:        GPL-2.0-only
 URL:            https://github.com/notanumber/xapian-haystack
 Source:         https://files.pythonhosted.org/packages/source/x/xapian-haystack/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 1.8}
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module django-haystack >= 2.5.1}
+BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 1.8
 Requires:       python-django-haystack >= 2.5.1
 BuildArch:      noarch

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jul  1 10:30:03 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Use sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Mon Aug 17 06:43:46 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix requirements to match setup.py
