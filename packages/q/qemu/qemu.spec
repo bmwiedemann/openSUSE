@@ -313,12 +313,10 @@ This package acts as an umbrella package to the other QEMU sub-packages.
 %_datadir/%name/qemu-nsis.bmp
 %_datadir/%name/trace-events-all
 %_mandir/man1/%name.1.gz
-%_mandir/man1/qemu-storage-daemon.1.gz
 %_mandir/man7/qemu-block-drivers.7.gz
 %_mandir/man7/qemu-cpu-models.7.gz
 %_mandir/man7/qemu-qmp-ref.7.gz
 %_mandir/man7/qemu-ga-ref.7.gz
-%_mandir/man7/qemu-storage-daemon-qmp-ref.7.gz
 /usr/lib/supportconfig/plugins/%name
 %license COPYING COPYING.LIB LICENSE
 
@@ -987,7 +985,7 @@ make -O V=1 VERBOSE=1 -j1 check-qtest
 Summary:        Minimum set of packages for having a functional QEMU
 Group:          System/Emulators/PC
 Requires:       qemu
-Requires:       qemu-tools
+Requires:       qemu-img
 %if %{legacy_qemu_kvm}
 Requires:       qemu-kvm
 %endif
@@ -1547,10 +1545,40 @@ QEMU.
 %_datadir/%name/vhost-user/50-qemu-gpu.json
 %_libexecdir/vhost-user-gpu
 
+%package img
+Summary:        QEMU disk image utility
+Group:          System/Emulators/PC
+
+%description img
+This package provides command line tools for manipulating disk images.
+
+%files img
+%_bindir/qemu-img
+%_bindir/qemu-io
+%_bindir/qemu-nbd
+%_bindir/qemu-storage-daemon
+%_mandir/man1/qemu-img.1.gz
+%_mandir/man8/qemu-nbd.8.gz
+%_mandir/man1/qemu-storage-daemon.1.gz
+%_mandir/man7/qemu-storage-daemon-qmp-ref.7.gz
+
+%package pr-helper
+Summary:        QEMU persistent reservation helper
+Group:          System/Emulators/PC
+
+%description pr-helper
+This package provides a helper utility for SCSI persistent reservations.
+
+%files pr-helper
+%_bindir/qemu-pr-helper
+%_mandir/man8/qemu-pr-helper.8.gz
+
 %package tools
 Summary:        Tools for QEMU
 Group:          System/Emulators/PC
 Requires(pre):  permissions
+Requires:       qemu-img
+Requires:       qemu-pr-helper
 Requires:       group(kvm)
 # Upstream virtiofsd does not even build on 32 bit systems...
 %ifnarch %ix86 %arm
@@ -1569,20 +1597,12 @@ a virtfs helper, ivshmem, disk utilities and scripts for various purposes.
 %files tools
 %_bindir/analyze-migration.py
 %_bindir/qemu-edid
-%_bindir/qemu-img
-%_bindir/qemu-io
 %_bindir/qemu-keymap
-%_bindir/qemu-nbd
-%_bindir/qemu-pr-helper
-%_bindir/qemu-storage-daemon
 %_bindir/vmstate-static-checker.py
 %_bindir/vmxcap
 %verify(not mode) %attr(4750,root,kvm) %_libexecdir/qemu-bridge-helper
 %_libexecdir/virtfs-proxy-helper
-%_mandir/man1/qemu-img.1.gz
 %_mandir/man1/virtfs-proxy-helper.1.gz
-%_mandir/man8/qemu-nbd.8.gz
-%_mandir/man8/qemu-pr-helper.8.gz
 %dir %_sysconfdir/%name
 %config(noreplace) %_sysconfdir/%name/bridge.conf
 

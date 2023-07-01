@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 30 15:03:37 UTC 2023 - dfaggioli@suse.com
+
+- Patches added (first one is relevant for boo#1197298 and bsc#1212768):
+  * [openSUSE][RPM] Use --preserve-argv0 in qemu-linux-user (#32)
+  * [openSUSE][RPM] Split qemu-tools package (#31)
+
+-------------------------------------------------------------------
 Thu Jun 01 23:16:19 UTC 2023 - dfaggioli@suse.com
 
 - Update to version 8.0.2:

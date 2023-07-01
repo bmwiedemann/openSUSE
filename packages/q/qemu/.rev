@@ -3384,4 +3384,15 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1090583</requestid>
   </revision>
+  <revision rev="255" vrev="2">
+    <srcmd5>7ee8263d05a39cc3f8e9b491e6410a7c</srcmd5>
+    <version>8.0.2</version>
+    <time>1688246271</time>
+    <user>dimstar_suse</user>
+    <comment>- Patches added (first one is relevant for boo#1197298 and bsc#1212768):
+  * [openSUSE][RPM] Use --preserve-argv0 in qemu-linux-user (#32)
+  * [openSUSE][RPM] Split qemu-tools package (#31)
+</comment>
+    <requestid>1096174</requestid>
+  </revision>
 </revisionlist>

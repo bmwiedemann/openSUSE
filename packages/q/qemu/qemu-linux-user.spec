@@ -315,7 +315,7 @@ unlink %{buildroot}%_datadir/qemu/trace-events-all
 install -d -m 755 %{buildroot}%_sbindir
 install -m 755 scripts/qemu-binfmt-conf.sh %{buildroot}%_sbindir
 install -d -m 755 %{buildroot}%{_prefix}/lib/binfmt.d/
-scripts/qemu-binfmt-conf.sh --systemd ALL --persistent yes --exportdir %{buildroot}%{_prefix}/lib/binfmt.d/
+scripts/qemu-binfmt-conf.sh --systemd ALL --persistent yes --preserve-argv0 yes --exportdir %{buildroot}%{_prefix}/lib/binfmt.d/
 
 %fdupes -s %{buildroot}
 
