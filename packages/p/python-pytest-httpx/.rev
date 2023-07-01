@@ -66,4 +66,12 @@
   * Add explicit support for `python` `3.11`.</comment>
     <requestid>1090223</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>044dfa24b8dcd9d3b023b9d79c3cb920</srcmd5>
+    <version>0.22.0</version>
+    <time>1688246309</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096277</requestid>
+  </revision>
 </revisionlist>
