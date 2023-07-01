@@ -16,6 +16,8 @@
 #
 
 
+%{?sle15_python_module_pythons}
+
 %global webapps_dir /srv/www/webapps
 
 %global postorius_pkgname   postorius
@@ -38,9 +40,9 @@
 %else
 %{?sle15_python_module_pythons}
 %define pythons python311
-%define mypython python3
-%define __mypython %{__python3}
-%define mypython_sitelib %{python3_sitelib}
+%define mypython python311
+%define __mypython %{__python311}
+%define mypython_sitelib %{python311_sitelib}
 %endif
 
 Name:           python-postorius
