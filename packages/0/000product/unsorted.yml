@@ -7430,6 +7430,7 @@ unsorted:
   - gtypist 
   - gtypist-lang 
   - guake 
+  - guake-doc 
   - guake-lang 
   - guava 
   - guava-javadoc 
@@ -8774,7 +8775,6 @@ unsorted:
   - jython 
   - jython-demo 
   - jython-javadoc 
-  - jython-manual 
   - jzlib 
   - jzlib-demo 
   - jzlib-javadoc 
@@ -10535,7 +10535,7 @@ unsorted:
   - libabigail2 
   - libabiword-3_0 
   - libabiword-3_0-devel 
-  - libabsl2301_0_0 
+  - libabsl2301_0_0-32bit 
   - libabw-devel 
   - libabw-devel-doc 
   - libabw-tools 
@@ -12236,9 +12236,9 @@ unsorted:
   - libgravatar-devel 
   - libgromacs8 
   - libgromacs_mpi8 
-  - libgrpc++1_54 
-  - libgrpc1_54 
-  - libgrpc31 
+  - libgrpc++1_56 
+  - libgrpc1_56 
+  - libgrpc33 
   - libgsasl-devel 
   - libgsequencer0 
   - libgsettings-qt1 
@@ -12546,7 +12546,7 @@ unsorted:
   - libhomfly-devel 
   - libhomfly0 
   - libhowl0 
-  - libhpdf2_4_2 
+  - libhpdf2 
   - libhpx1 
   - libhs5 
   - libhs5-vectorscan5 
@@ -14101,11 +14101,15 @@ unsorted:
   - libprofiler0 
   - libproj25 
   - libprotobuf-c-devel 
+  - libprotobuf-lite22_5_0-32bit 
   - libprotobuf-lite3_21_12-32bit 
   - libprotobuf-mutator-devel 
   - libprotobuf-mutator0 
   - libprotobuf-nanopb0 
+  - libprotobuf22_5_0-32bit 
   - libprotobuf3_21_12-32bit 
+  - libprotoc22_5_0 
+  - libprotoc22_5_0-32bit 
   - libprotoc3_21_12 
   - libprotoc3_21_12-32bit 
   - libproxy-devel 
@@ -14229,7 +14233,9 @@ unsorted:
   - libqsastime0 
   - libqscintilla2_qt5-15 
   - libqscintilla2_qt6-15 
+  - libqt5-dwaylandplugin 
   - libqt5-dxcbplugin 
+  - libqt5-kwayland-shellplugin 
   - libqt5-linguist 
   - libqt5-linguist-devel 
   - libqt5-qt3d-devel 
@@ -15377,7 +15383,7 @@ unsorted:
   - libunwind-setjmp0 
   - libunwind-setjmp0-32bit 
   - libunwind8-32bit 
-  - libupb31 
+  - libupb33 
   - libupm1 
   - libupnp-devel 
   - libupnpp-devel 
@@ -17099,6 +17105,7 @@ unsorted:
   - mdbtools-devel 
   - mdds-1_5-devel 
   - mdds-2_0-devel 
+  - mdds-2_1-devel 
   - meabo 
   - meanwhile-devel 
   - meanwhile-doc 
@@ -21774,6 +21781,7 @@ unsorted:
   - plplot-doc 
   - plplot-driver-cairo 
   - plplot-driver-ntk 
+  - plplot-driver-pdf 
   - plplot-driver-ps 
   - plplot-driver-psttf 
   - plplot-driver-svg 
@@ -21781,7 +21789,6 @@ unsorted:
   - plplot-driver-xwin 
   - plplot-java 
   - plplot-lua 
-  - plplot-python3-qt 
   - plplot-tcltk-devel 
   - plplot-tcltk-libs 
   - plplot-wxwidgets 
@@ -22227,7 +22234,8 @@ unsorted:
   - proteus 
   - protobuf-devel 
   - protobuf-java 
-  - protobuf-source 
+  - protobuf21-devel 
+  - protobuf21-source 
   - protonvpn-cli 
   - protonvpn-gui 
   - proxychains-ng 
@@ -22794,7 +22802,6 @@ unsorted:
   - python3-partio 
   - python3-pcp 
   - python3-plist 
-  - python3-plplot 
   - python3-pocketsphinx 
   - python3-pocketsphinx5 
   - python3-prelude-correlator 
@@ -25115,6 +25122,8 @@ unsorted:
   - python310-plette 
   - python310-plotly 
   - python310-plotly-jupyter 
+  - python310-plplot 
+  - python310-plplot-pyqt5 
   - python310-pluggy 
   - python310-pluginbase 
   - python310-plumbum 
@@ -28476,6 +28485,7 @@ unsorted:
   - python311-plette 
   - python311-plotly 
   - python311-plotly-jupyter 
+  - python311-plplot 
   - python311-pluggy 
   - python311-pluginbase 
   - python311-plumbum 
@@ -31908,6 +31918,8 @@ unsorted:
   - python39-plette 
   - python39-plotly 
   - python39-plotly-jupyter 
+  - python39-plplot 
+  - python39-plplot-pyqt5 
   - python39-pluggy 
   - python39-pluginbase 
   - python39-plumbum 
@@ -34100,7 +34112,6 @@ unsorted:
   - rook-k8s-yaml 
   - rook-rookflex 
   - root-tail 
-  - rootlesskit 
   - rosegarden 
   - rott 
   - roundcubemail 
