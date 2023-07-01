@@ -1,5 +1,9 @@
-diff --git a/eventlet/patcher.py b/eventlet/patcher.py
-index b249d6f19..4eeb93439 100644
+---
+ eventlet/patcher.py                                    |   42 +++++++++++++----
+ tests/isolated/patcher_existing_logging_module_lock.py |   30 ++++++++++++
+ tests/patcher_test.py                                  |    4 +
+ 3 files changed, 68 insertions(+), 8 deletions(-)
+
 --- a/eventlet/patcher.py
 +++ b/eventlet/patcher.py
 @@ -412,6 +412,23 @@ def _green_existing_locks():
@@ -66,9 +70,6 @@ index b249d6f19..4eeb93439 100644
  
  
  def _green_os_modules():
-diff --git a/tests/isolated/patcher_existing_logging_module_lock.py b/tests/isolated/patcher_existing_logging_module_lock.py
-new file mode 100644
-index 000000000..2acad62ee
 --- /dev/null
 +++ b/tests/isolated/patcher_existing_logging_module_lock.py
 @@ -0,0 +1,30 @@
@@ -102,11 +103,9 @@ index 000000000..2acad62ee
 +    t.join(timeout=0.1)
 +    assert not t.is_alive()
 +    print("pass")
-diff --git a/tests/patcher_test.py b/tests/patcher_test.py
-index dbf6e1c71..e8d6f3300 100644
 --- a/tests/patcher_test.py
 +++ b/tests/patcher_test.py
-@@ -485,6 +485,10 @@ def test_patcher_existing_locks_unlocked():
+@@ -485,6 +485,10 @@ def test_patcher_existing_locks_unlocked
      tests.run_isolated('patcher_existing_locks_unlocked.py')
  
  

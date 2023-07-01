@@ -1,20 +1,14 @@
-Index: eventlet-0.33.0/setup.py
-===================================================================
---- eventlet-0.33.0.orig/setup.py
-+++ eventlet-0.33.0/setup.py
-@@ -27,7 +27,7 @@ setuptools.setup(
-             'README.rst'
-         )
-     ).read(),
--    test_suite='nose.collector',
-+    test_suite='tests',
-     classifiers=[
-         "Development Status :: 4 - Beta",
-         "Intended Audience :: Developers",
-Index: eventlet-0.33.0/eventlet.egg-info/SOURCES.txt
-===================================================================
---- eventlet-0.33.0.orig/eventlet.egg-info/SOURCES.txt
-+++ eventlet-0.33.0/eventlet.egg-info/SOURCES.txt
+---
+ eventlet.egg-info/SOURCES.txt |    3 
+ setup.py                      |    2 
+ tests/__init__.py             |    3 
+ tests/dagpool_test.py         |  149 ++++++++++++++++++++----------------------
+ tests/greenio_test.py         |    8 --
+ tests/nosewrapper.py          |   13 ---
+ 6 files changed, 83 insertions(+), 95 deletions(-)
+
+--- a/eventlet.egg-info/SOURCES.txt
++++ b/eventlet.egg-info/SOURCES.txt
 @@ -175,7 +175,6 @@ tests/greenthread_test.py
  tests/hub_test.py
  tests/mock.py
@@ -30,71 +24,19 @@ Index: eventlet-0.33.0/eventlet.egg-info/SOURCES.txt
 -tests/stdlib/test_urllib2_localnet.py
 \ No newline at end of file
 +tests/stdlib/test_urllib2_localnet.py
-Index: eventlet-0.33.0/tests/greenio_test.py
-===================================================================
---- eventlet-0.33.0.orig/tests/greenio_test.py
-+++ eventlet-0.33.0/tests/greenio_test.py
-@@ -9,8 +9,6 @@ import socket as _orig_sock
- import sys
- import tempfile
- 
--from nose.tools import eq_
--
- import eventlet
- from eventlet import event, greenio, debug
- from eventlet.hubs import get_hub
-@@ -39,7 +37,7 @@ def expect_socket_timeout(function, *arg
-         raise AssertionError("socket.timeout not raised")
-     except socket.timeout as e:
-         assert hasattr(e, 'args')
--        eq_(e.args[0], 'timed out')
-+        assert e.args[0] == 'timed out'
- 
- 
- def min_buf_size():
-@@ -674,8 +672,8 @@ class TestGreenSocket(tests.LimitedTestC
-         sender.sendto(b'second', 0, address)
- 
-         sender_address = ('127.0.0.1', sender.getsockname()[1])
--        eq_(receiver.recvfrom(1024), (b'first', sender_address))
--        eq_(receiver.recvfrom(1024), (b'second', sender_address))
-+        assert receiver.recvfrom(1024) == (b'first', sender_address)
-+        assert receiver.recvfrom(1024) == (b'second', sender_address)
- 
- 
- def test_get_fileno_of_a_socket_works():
-Index: eventlet-0.33.0/tests/nosewrapper.py
-===================================================================
---- eventlet-0.33.0.orig/tests/nosewrapper.py
-+++ eventlet-0.33.0/tests/nosewrapper.py
-@@ -1,20 +1,13 @@
- """ This script simply gets the paths correct for testing eventlet with the
- hub extension for Nose."""
--import nose
- from os.path import dirname, realpath, abspath
- import sys
-+import unittest
- 
- 
- parent_dir = dirname(dirname(realpath(abspath(__file__))))
- if parent_dir not in sys.path:
-     sys.path.insert(0, parent_dir)
- 
--# hudson does a better job printing the test results if the exit value is 0
--zero_status = '--force-zero-status'
--if zero_status in sys.argv:
--    sys.argv.remove(zero_status)
--    launch = nose.run
--else:
--    launch = nose.main
--
--launch(argv=sys.argv)
-+if __name__ == '__main__':
-+    unittest.main()
-Index: eventlet-0.33.0/tests/__init__.py
-===================================================================
---- eventlet-0.33.0.orig/tests/__init__.py
-+++ eventlet-0.33.0/tests/__init__.py
+--- a/setup.py
++++ b/setup.py
+@@ -30,7 +30,7 @@ setuptools.setup(
+             'README.rst'
+         )
+     ).read(),
+-    test_suite='nose.collector',
++    test_suite='tests',
+     classifiers=[
+         "Development Status :: 4 - Beta",
+         "Intended Audience :: Developers",
+--- a/tests/__init__.py
++++ b/tests/__init__.py
 @@ -20,7 +20,7 @@ import sys
  import unittest
  import warnings
@@ -112,10 +54,8 @@ Index: eventlet-0.33.0/tests/__init__.py
          raise SkipTest('CPU usage testing not supported (`import resource` failed)')
  
      r1 = resource.getrusage(resource.RUSAGE_SELF)
-Index: eventlet-0.33.0/tests/dagpool_test.py
-===================================================================
---- eventlet-0.33.0.orig/tests/dagpool_test.py
-+++ eventlet-0.33.0/tests/dagpool_test.py
+--- a/tests/dagpool_test.py
++++ b/tests/dagpool_test.py
 @@ -5,7 +5,6 @@
  @brief  Test DAGPool class
  """
@@ -433,3 +373,60 @@ Index: eventlet-0.33.0/tests/dagpool_test.py
 +    assert dict(pool.wait_each_exception("ab")) == dict(b=bogub)
 +    assert dict(pool.wait_each_exception("a")) == {}
 +    assert dict(pool.wait_each_exception("b")) == dict(b=bogub)
+--- a/tests/greenio_test.py
++++ b/tests/greenio_test.py
+@@ -9,8 +9,6 @@ import socket as _orig_sock
+ import sys
+ import tempfile
+ 
+-from nose.tools import eq_
+-
+ import eventlet
+ from eventlet import event, greenio, debug
+ from eventlet.hubs import get_hub
+@@ -39,7 +37,7 @@ def expect_socket_timeout(function, *arg
+         raise AssertionError("socket.timeout not raised")
+     except socket.timeout as e:
+         assert hasattr(e, 'args')
+-        eq_(e.args[0], 'timed out')
++        assert e.args[0] == 'timed out'
+ 
+ 
+ def min_buf_size():
+@@ -674,8 +672,8 @@ class TestGreenSocket(tests.LimitedTestC
+         sender.sendto(b'second', 0, address)
+ 
+         sender_address = ('127.0.0.1', sender.getsockname()[1])
+-        eq_(receiver.recvfrom(1024), (b'first', sender_address))
+-        eq_(receiver.recvfrom(1024), (b'second', sender_address))
++        assert receiver.recvfrom(1024) == (b'first', sender_address)
++        assert receiver.recvfrom(1024) == (b'second', sender_address)
+ 
+ 
+ def test_get_fileno_of_a_socket_works():
+--- a/tests/nosewrapper.py
++++ b/tests/nosewrapper.py
+@@ -1,20 +1,13 @@
+ """ This script simply gets the paths correct for testing eventlet with the
+ hub extension for Nose."""
+-import nose
+ from os.path import dirname, realpath, abspath
+ import sys
++import unittest
+ 
+ 
+ parent_dir = dirname(dirname(realpath(abspath(__file__))))
+ if parent_dir not in sys.path:
+     sys.path.insert(0, parent_dir)
+ 
+-# hudson does a better job printing the test results if the exit value is 0
+-zero_status = '--force-zero-status'
+-if zero_status in sys.argv:
+-    sys.argv.remove(zero_status)
+-    launch = nose.run
+-else:
+-    launch = nose.main
+-
+-launch(argv=sys.argv)
++if __name__ == '__main__':
++    unittest.main()

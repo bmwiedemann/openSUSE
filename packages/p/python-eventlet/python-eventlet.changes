@@ -2,6 +2,8 @@
 Fri Apr 21 12:24:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
+- Remove upstreamed newdnspython.patch (bsc#1208126).
+- skip test_raise_dns_tcp test (gh#eventlet/eventlet#803)
 
 -------------------------------------------------------------------
 Thu Apr 13 22:41:06 UTC 2023 - Matej Cepl <mcepl@suse.com>

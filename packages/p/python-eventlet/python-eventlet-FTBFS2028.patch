@@ -13,11 +13,9 @@ This showed up failing tests in our package build.
 
 See https://reproducible-builds.org/ for why this matters.
 ---
- tests/test_server.crt | 16 ++++++++--------
+ tests/test_server.crt |   16 ++++++++--------
  1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/tests/test_server.crt b/tests/test_server.crt
-index 67c9adc8b..78759e810 100644
 --- a/tests/test_server.crt
 +++ b/tests/test_server.crt
 @@ -2,7 +2,7 @@
@@ -29,7 +27,7 @@ index 67c9adc8b..78759e810 100644
  djELMAkGA1UEBhMCVFMxDTALBgNVBAgMBFRlc3QxDTALBgNVBAcMBFRlc3QxFjAU
  BgNVBAoMDVRlc3QgRXZlbnRsZXQxDTALBgNVBAsMBFRlc3QxDTALBgNVBAMMBFRl
  c3QxEzARBgkqhkiG9w0BCQEWBFRlc3QwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAw
-@@ -13,11 +13,11 @@ Lvc6cJHMKaxHCeIBOL+z/9kJqhh30eqsmNB5AXSoV8b2B3MV3glW2vd5WJVYEWxl
+@@ -13,11 +13,11 @@ Lvc6cJHMKaxHCeIBOL+z/9kJqhh30eqsmNB5AXSo
  3+GNgzZJ3KGape7pcBYER7zg/yZLZxgNFlTCOZiysjNxC0liJA9tgUQhRc1gsqA8
  dQxzvqW8kuZedmatjyM58WixvjymobC3AgMBAAGjUzBRMB0GA1UdDgQWBBQT3V3f
  8vCoqGXe6zySSjVP+J/P7zAfBgNVHSMEGDAWgBQT3V3f8vCoqGXe6zySSjVP+J/P

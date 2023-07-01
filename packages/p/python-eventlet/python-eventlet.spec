@@ -29,8 +29,6 @@ Source:         https://files.pythonhosted.org/packages/source/e/eventlet/eventl
 # PATCH-FEATURE-UPSTREAM remove_nose.patch gh#eventlet/eventlet#638 mcepl@suse.com
 # Removes dependency on nose
 Patch0:         denose-eventlet.patch
-# PATCH-FIX-UPSTREAM newdnspython.patch mcepl@suse.com -- patch is from gh#rthalley/dnspython#519, discussion in gh#eventlet/eventlet#638
-Patch1:         newdnspython.patch
 # PATCH-FIX-UPSTREAM https://github.com/eventlet/eventlet/pull/643
 Patch2:         python-eventlet-FTBFS2028.patch
 # PATCH-FIX-UPSTREAM fix-py3-rlock.patch gh#eventlet/eventlet#754
@@ -68,8 +66,7 @@ is implicit, which means Eventlet can be used from the Python
 interpreter, or as part of a larger application.
 
 %prep
-%setup -q -n eventlet-%{version}
-%autopatch -p1
+%autosetup -p1 -n eventlet-%{version}
 
 # Fix non-executable script
 sed -i '1{/^#!/ d}' eventlet/support/greendns.py
@@ -96,6 +93,8 @@ skiptests+=" or test_leakage_from_tracebacks"
 skiptests+=" or test_017_ssl_zeroreturnerror"
 # it is racy, see: https://lore.kernel.org/all/CADVnQy=AnJY9NZ3w_xNghEG80-DhsXL0r_vEtkr=dmz0ugcoVw@mail.gmail.com/ (bsc#1202188)
 skiptests+=" or test_018b_http_10_keepalive_framing"
+# gh#eventlet/eventlet#803
+skiptests+=" or test_raise_dns_tcp"
 
 # Unknown Python 3.6 specific errors
 # TypeError: _wrap_socket() argument 1 must be _socket.socket, not SSLSocket
