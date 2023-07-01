@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 14 01:51:08 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 0.10.0:
+  + Updated translations.
+- Drop merged upstream patches:
+  0001-Add-man-subdir-to-top-level-meson.build.patch and
+  0001-Replace-deprecated-attr-xattr.h-with-sys-xattr.h.patch.
+- Move English translations from the lang sub-package to the main
+  one. This should offer translations for the main English locales
+  without the need to install any additional package by default.
+- Add eiciel.rpmlintrc file to filter out the "file-not-in-%lang"
+  RPM Lint warning for the reason above.
+
+-------------------------------------------------------------------
 Tue Oct 18 02:30:20 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to 0.10.0.rc2 version:

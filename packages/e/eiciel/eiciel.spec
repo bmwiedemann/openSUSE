@@ -1,7 +1,7 @@
 #
 # spec file for package eiciel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,21 +19,14 @@
 %define _libnautilus_extensiondir %(pkg-config --variable extensiondir libnautilus-extension-4)
 
 Name:           eiciel
-Version:        0.10.0.rc2
+Version:        0.10.0
 Release:        0
 Summary:        GNOME ACL viewer and editor
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
-URL:            http://rofi.roger-ferrer.org/eiciel/
-# Source0:        http://rofi.roger-ferrer.org/eiciel/files/%%{name}-%%{version}.tar.bz2
-Source0:        https://github.com/rofirrim/eiciel/archive/refs/tags/0.10.0-rc2.tar.gz#/%{name}-%{version}.tar.gz
-
-# FIX-UPSTREAM-PATCH 0001-Add-man-subdir-to-top-level-meson.build.patch luc14n0@opensuse.org
-# Intall the manpage that was silently being ignored by Meson
-Patch1:         0001-Add-man-subdir-to-top-level-meson.build.patch
-# FIX-UPSTREAM-PATCH 0001-Replace-deprecated-attr-xattr.h-with-sys-xattr.h.patch luc14n0@opensuse.org
-# Use sys/xattr.h in place of deprecated attr/xattr.h
-Patch2:         0001-Replace-deprecated-attr-xattr.h-with-sys-xattr.h.patch
+URL:            https://rofi.roger-ferrer.org/eiciel/
+Source0:        https://github.com/rofirrim/eiciel/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source99:       %{name}.rpmlintrc
 
 BuildRequires:  gcc-c++
 BuildRequires:  itstool
@@ -61,7 +54,7 @@ A Nautilus extension that allows viewing and editing ACL permissions.
 %lang_package
 
 %prep
-%autosetup -p1 -n eiciel-0.10.0-rc2
+%autosetup -p1
 
 %build
 %meson          \
@@ -76,17 +69,23 @@ A Nautilus extension that allows viewing and editing ACL permissions.
 %files
 %license COPYING
 %doc AUTHORS README.md
-%{_datadir}/help/C/%{name}
 %{_bindir}/eiciel
 %{_mandir}/man1/eiciel.1%{?ext_man}
 %{_datadir}/applications/org.roger_ferrer.Eiciel.desktop
 %{_datadir}/icons/hicolor/*/apps/*eiciel.*
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.roger_ferrer.Eiciel.appdata.xml
+# English should be offered to every installation by default.
+%{_datadir}/locale/en_GB/
+%{_datadir}/locale/en_US/
+%{_datadir}/help/C/%{name}
 
 %files -n nautilus-eiciel
 %{_libnautilus_extensiondir}/libeiciel-nautilus.so
 
 %files lang -f %{name}.lang
+# Those shouldn't be here in the first place.
+%exclude %{_datadir}/locale/en_GB/
+%exclude %{_datadir}/locale/en_US/
 
 %changelog
