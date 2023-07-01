@@ -2491,4 +2491,14 @@ New stable release</comment>
   &quot;HTML attachment viewport is tiny&quot; (glgo#GNOME/evolution#2400).</comment>
     <requestid>1094331</requestid>
   </revision>
+  <revision rev="270" vrev="1">
+    <srcmd5>30eb7cc7f3df32eebbc4a7d98fb777b8</srcmd5>
+    <version>3.48.4</version>
+    <time>1688246262</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1096096 from iznogood
+
+New stable rel</comment>
+    <requestid>1096193</requestid>
+  </revision>
 </revisionlist>
