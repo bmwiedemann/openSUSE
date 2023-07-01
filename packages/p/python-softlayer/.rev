@@ -298,4 +298,12 @@
   * New Command: virtual notifications</comment>
     <requestid>1066676</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>65b6e3b639e849f67ebdf2c17391fc23</srcmd5>
+    <version>6.1.4</version>
+    <time>1688246303</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096278</requestid>
+  </revision>
 </revisionlist>

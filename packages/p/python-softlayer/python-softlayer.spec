@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-softlayer
 Version:        6.1.4
 Release:        0
