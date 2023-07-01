@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Jun 26 14:13:11 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.4:
+  + Highlighted bugfixes:
+    - Security fixes for flacparse, dvdspu, and subparse.
+    - d3d11videosink: Fix error on pause and play.
+    - decklink: Correctly handle SDK strings on macOS and free
+      strings after usage on Linux.
+    - filesink: Fix buffered mode writing of buffer lists and
+      buffers with multiple memories.
+    - gldownload: handle passthrough without a critical.
+    - h265parse: Fix framerate handling regression.
+    - oggdemux: vp8 fixes.
+    - mp4mux, qtmux, qtdemux: Opus audio mapping fixes.
+    - pngdec: Fix wrong colours output from 16bit RGB images.
+    - ptp clock: Work around ptpd bug in default configuration.
+    - srtpdec: fix critical warnings on shutdown.
+    - v4l2src: fix support for bayer format.
+    - v4l2videoenc: support force-keyframe event in v4l2 encoder.
+    - vtenc: apply DTS offset to ensure DTS <= PTS.
+    - gst-python: allow more functions to be called before
+      gst_init().
+    - various bug fixes, memory leak fixes, and other stability and
+      reliability improvements.
+  + gstreamer:
+    - filesink: Fix buffered mode writing of buffer lists and
+      buffers with multiple memories.
+    - basesink: Clear EOS flag on STREAM-START event.
+    - typefindhelper: downgrade bogus error level debug log
+      message.
+    - ptp:
+      . Correctly parse clock ID from the commandline parameters in
+        the helper.
+      . Work around bug in ptpd in default configuration.
+- Rebase reduce-required-meson.patch.
+
+-------------------------------------------------------------------
 Wed May 24 14:20:04 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.22.3:
