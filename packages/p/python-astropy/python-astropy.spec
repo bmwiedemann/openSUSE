@@ -31,30 +31,24 @@
 %bcond_without systemlibs
 
 %if %{with systemlibs}
-%bcond_without system_cfitsio
 %bcond_without system_expat
 %bcond_without system_wcslib
 %else
-%bcond_with system_cfitsio
 %bcond_with system_expat
 %bcond_with system_wcslib
 %endif
 
-%if %{with system_cfitsio}
-%define unbundle_cfitsio export ASTROPY_USE_SYSTEM_CFITSIO=1
-%endif
 %if %{with system_expat}
 %define unbundle_expat   export ASTROPY_USE_SYSTEM_EXPAT=1
 %endif
 %if %{with system_wcslib}
 %define unbundle_wcs     export ASTROPY_USE_SYSTEM_WCSLIB=1
 %endif
-%define unbundle_libs %{?unbundle_cfitsio} \
-                      %{?unbundle_expat} \
+%define unbundle_libs %{?unbundle_expat} \
                       %{?unbundle_wcs}
 
 Name:           python-astropy%{psuffix}
-Version:        5.2.2
+Version:        5.3
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
@@ -64,13 +58,13 @@ Source:         https://files.pythonhosted.org/packages/source/a/astropy/astropy
 # Mark wcs headers as false positives for devel-file-in-non-devel-package
 # These are used by the python files so they must be available.
 Source100:      python-astropy-rpmlintrc
-# https://docs.astropy.org/en/v5.2/install.html#requirements
-BuildRequires:  %{python_module Cython >= 0.29.30}
+# https://docs.astropy.org/en/v5.3/install.html#requirements
+BuildRequires:  %{python_module Cython >= 0.29.34}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML >= 3.13}
-BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module extension-helpers}
-BuildRequires:  %{python_module numpy-devel >= 1.20}
+BuildRequires:  %{python_module numpy-devel >= 1.21}
 BuildRequires:  %{python_module packaging >= 19.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyerfa >= 2.0}
@@ -83,7 +77,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 3.13
 Requires:       python-dbm
-Requires:       python-numpy >= 1.20
+Requires:       python-numpy >= 1.21
 Requires:       python-packaging >= 19.0
 Requires:       python-pyerfa >= 2.0
 Requires(post): update-alternatives
@@ -94,10 +88,11 @@ Recommends:     python-asdf >= 2.9.2
 Recommends:     python-asdf-astropy
 Recommends:     python-beautifulsoup4
 Recommends:     python-bleach
+Recommends:     python-fsspec >= 2022.8.2
 Recommends:     python-h5py
 Recommends:     python-html5lib
 Recommends:     python-jplephem
-Recommends:     python-matplotlib >= 3.1
+Recommends:     python-matplotlib >= 3.3
 Recommends:     python-mpmath
 Recommends:     python-pandas
 Recommends:     python-pyarrow >= 5
@@ -108,9 +103,6 @@ Recommends:     python-typing_extensions >= 3.10.0.1
 Conflicts:      perl-Data-ShowTable
 Conflicts:      python-matplotlib = 3.4.0
 Conflicts:      python-matplotlib = 3.5.2
-%if %{with system_cfitsio}
-BuildRequires:  pkgconfig(cfitsio)
-%endif
 %if %{with system_expat}
 BuildRequires:  pkgconfig(expat)
 %endif
@@ -127,9 +119,10 @@ BuildRequires:  %{python_module bleach}
 BuildRequires:  %{python_module h5py}
 BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module jplephem}
-BuildRequires:  %{python_module matplotlib >= 3.1}
+BuildRequires:  %{python_module matplotlib >= 3.3}
 BuildRequires:  %{python_module mpmath}
 BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pyarrow >= 5}
 BuildRequires:  %{python_module scipy >= 1.3}
 BuildRequires:  %{python_module sortedcontainers}
 BuildRequires:  %{python_module typing_extensions >= 3.10.0.1}
@@ -165,9 +158,6 @@ managing them.
 echo '# empty module' > astropy/samp/setup_package.py
 
 # Make sure bundled libs are not used
-%if %{with system_cfitsio}
-rm -rf cextern/cfitsio
-%endif
 %if %{with system_expat}
 rm -rf cextern/expat
 rm licenses/EXPAT_LICENSE.rst
@@ -211,8 +201,6 @@ donttest+=" or (test_wcs and test_spectra)"
 donttest+=" or (test_standard_profile and test_main)"
 # segfaults on obs, but are okay when run on live system -- gh#astropy/astropy/13286
 donttest+=" or test_celprm or test_prjprm"
-# gh#astropy/astropy#13805 -- requires fix in matplotlib
-donttest+=" or test_units"
 %ifarch aarch64
 # doctest failure because of precision errors
   donttest+=" or bayesian_info_criterion_lsq"

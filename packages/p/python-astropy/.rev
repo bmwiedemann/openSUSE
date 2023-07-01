@@ -1539,4 +1539,24 @@
     <comment></comment>
     <requestid>1082980</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>e68a1af492e15f202b665e3b501cb700</srcmd5>
+    <version>5.3</version>
+    <time>1688246313</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.3
+  * New flat astropy.cosmology classes
+  * New union operators for Table
+  * Efficient data access for compressed FITS files
+  * Added support for NOCOMPRESS for compressed FITS files
+  * New fraction option for representing units as strings
+  * Change in order in unit string representations
+  * Support for collapse operations on arbitrary axes in nddata
+  * Refresh cached observatory site registry for EarthLocation
+    methods
+  * Support for collapse operations on arbitrary axes in nddata
+  * New LombScargleMultiband class for multiband datasets
+- Remove unbundling of cfitsio -- gh#astropy/astropy#14311</comment>
+    <requestid>1096299</requestid>
+  </revision>
 </revisionlist>
