@@ -52,4 +52,12 @@
 - drop localzone-dnspython-2.1.patch (upstream)</comment>
     <requestid>1056830</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>50477ce4bbcb6c1b090067eb52c542ab</srcmd5>
+    <version>0.9.8</version>
+    <time>1688246300</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096274</requestid>
+  </revision>
 </revisionlist>
