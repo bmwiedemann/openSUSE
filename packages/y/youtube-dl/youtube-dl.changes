@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 29 15:45:39 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add 10795-facebook-plugin.patch fixing download from
+  facebook.com/plugin URLs (gh#ytdl-org/youtube-dl#10795).
+
+-------------------------------------------------------------------
 Tue May 30 08:12:26 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Add Recommends: attr for --xattrs option.

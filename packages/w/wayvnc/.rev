@@ -79,4 +79,12 @@
   * Symbol to key code mapping now works better with xwayland</comment>
     <requestid>1061540</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>23f44677521925d8ef666596e73d9641</srcmd5>
+    <version>0.6.2</version>
+    <time>1688147920</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096024</requestid>
+  </revision>
 </revisionlist>

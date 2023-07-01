@@ -17,7 +17,7 @@
 
 
 Name:           tkimg
-Version:        1.4.13
+Version:        1.4.14
 Release:        0
 Summary:        More Image Formats for Tk
 Group:          Development/Libraries/Tcl
@@ -25,8 +25,6 @@ License:        BSD-3-Clause
 URL:            https://sourceforge.net/projects/tkimg
 Source0:        https://sourceforge.net/projects/tkimg/files/tkimg/1.4/tkimg%%20%{version}/Img-%{version}-Source.tar.gz
 Patch0:         tests-add-destdir-tcllibpath.patch
-# PATCH-FIX-UPSTREAM fix-aarch64-neon.patch -- https://sourceforge.net/p/tkimg/patches/13/
-Patch1:         fix-aarch64-neon.patch
 BuildRequires:  dos2unix
 BuildRequires:  tcllib
 BuildRequires:  tk-devel
@@ -48,7 +46,7 @@ Group:          Development/Libraries/Tcl
 Files needed to compile/link C code against tkimg.
 
 %prep
-%autosetup -p1 -n Img-%{version}
+%autosetup -p1 -n Img-%{version}-Source
 # Source archive is likly created on Windows, so fix some issues
 # 1. Fix file permissions: Executable bit is set on every file, fix that
 find . -type f -not -name configure -exec chmod 0644 \{\} +

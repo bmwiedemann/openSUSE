@@ -122,4 +122,12 @@
 - This updates fixes bsc#1196493 (CVE-2022-25643)</comment>
     <requestid>957630</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>449bd7e51eb21c4e7d59bc6f71f3c608</srcmd5>
+    <version>0.7.0</version>
+    <time>1688147981</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1096072</requestid>
+  </revision>
 </revisionlist>

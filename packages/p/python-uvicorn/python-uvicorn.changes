@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 22 15:25:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- limit to newer python versions, older are no longer needed
+
+-------------------------------------------------------------------
 Fri May 12 08:24:05 UTC 2023 - daniel.garcia@suse.com
 
 - Add fix-websocket-tests.patch gh#encode/uvicorn#1929

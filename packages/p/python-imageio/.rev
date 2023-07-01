@@ -99,4 +99,24 @@
     <comment></comment>
     <requestid>1006881</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>738e822dfeb086d9919edcfc01590a95</srcmd5>
+    <version>2.31.1</version>
+    <time>1688148007</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up SPEC file.
+- update to 2.31.1
+  * Add support for Python 3.11
+  * Tifffile v3 support
+  * Add audio support for ffmpeg writer
+  * small improvements to pyav
+  * Consistently apply color palettes by default
+  * Add n_images to ImageProperties
+  * Expose v3 plugins via v2 API
+  * Decode gray 16-bit PNG as uint16 (not int32) if pillow allows
+- update to 2.22.1:
+  * Raise ImportError when iio-ffmpeg is missing  
+</comment>
+    <requestid>1096162</requestid>
+  </revision>
 </revisionlist>

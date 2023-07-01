@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 30 16:51:18 UTC 2023 - dmueller@suse.com
+
+- Update to version 0.31:
+  * Also ignore .gitattributes file
+  * Exempt obs services from the cargo audit requirement
+  * helpers/spec_query: Handle %include
+  * Unify _multibuild handling and do it like OBS
+
+-------------------------------------------------------------------
 Fri May 05 10:33:00 UTC 2023 - dmueller@suse.com
 
 - Update to version 0.30:

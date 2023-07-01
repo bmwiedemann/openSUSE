@@ -73,7 +73,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  containerd-devel
 BuildRequires:  grpc-devel
 BuildRequires:  libcurl-devel
-BuildRequires:  protobuf-devel
+BuildRequires:  protobuf-devel < 22
 %define         arg_containerinfo --enable-containerinfo=yes
 %else
 %define         arg_containerinfo --enable-containerinfo=no

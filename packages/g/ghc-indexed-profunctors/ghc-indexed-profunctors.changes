@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 22 21:12:45 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update indexed-profunctors to version 0.1.1.1.
+  # indexed-profunctors-0.1.1.1 (2023-06-22)
+  * Add INLINE pragmas to small functions that really should inline
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:15 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

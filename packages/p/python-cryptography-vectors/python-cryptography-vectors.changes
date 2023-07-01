@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Jun 19 20:09:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- update to 41.0.1:
+- update to 41.0.1 (bsc#1212568):
   * Update test vectors to match python-cryptography 41.0.1 
 
 -------------------------------------------------------------------

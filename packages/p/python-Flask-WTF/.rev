@@ -92,4 +92,21 @@ Required for python-puppetboard SR# 263316</comment>
     <comment></comment>
     <requestid>967944</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a95b12224b3b716a6ac501738528545f</srcmd5>
+    <version>1.1.1</version>
+    <time>1688147988</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.1:
+  * Fixed `validate` `extra_validators` parameter. :pr:`548`
+  * Drop support for Python 3.6.
+  * ``validate_on_submit`` takes a ``extra_validators`` parameters :pr:`479`
+  * Stop supporting Flask-Babelex :pr:`540`
+  * Support for python 3.11 :pr:`542`
+  * Remove unused call to `JSONEncoder` :pr:`536`
+- Add patch flask-2.3-support.patch:
+  * Support Flask 2.3 changes.
+- Switch to pyproject macros.</comment>
+    <requestid>1096052</requestid>
+  </revision>
 </revisionlist>

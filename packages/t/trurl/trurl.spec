@@ -18,7 +18,7 @@
 
 
 Name:           trurl
-Version:        0.7
+Version:        0.8
 Release:        0
 Summary:        Command line tool for URL parsing and manipulation
 License:        MIT

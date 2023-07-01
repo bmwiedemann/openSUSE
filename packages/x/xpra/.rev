@@ -521,4 +521,41 @@
     <comment></comment>
     <requestid>1062338</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>c078c1c685a5def7098373e62e15d335</srcmd5>
+    <version>5.0+git20230617.2a908f54</version>
+    <time>1688147910</time>
+    <user>dimstar_suse</user>
+    <comment>- Adding &quot;Source100: xpra-rpmlintrc&quot; to appease SR#1095874
+  being declined
+
+- Adding more Recommends per:
+  https://github.com/Xpra-org/xpra/blob/master/docs/Build/Dependencies.md
+
+- Update to version 5.0+git20230617.2a908f54:
+  * minor type hint fixes
+  * use the more common filename
+  * more type hints
+  * replace buster with trixie
+  * same file, but more consistent filename
+  * #3863 use the new key everywhere
+  * more type hints
+  * unused import
+  * get_nsview_ptr needs a gdk window
+  * misname callback
+  * PyOpenGL-accelerate 3.1.7 requires numpy to load
+  * more type hints
+  * try harder to format the log record
+  * don't ship cython's html files
+  * no need for nested exceptions
+  * skip None values
+  * '&lt;' means '&lt;=' and we have to use '&lt;&lt;' to mean less than
+  * replace 'assert' with more specific exception types
+  * try harder to prevent conflicts with older 'xpra' packages
+  * wrap all tuples, for better compatibility with type hints
+  * older versions of Python struggle with the type hints syntax
+  * more type hints
+  * missing build deps</comment>
+    <requestid>1095879</requestid>
+  </revision>
 </revisionlist>

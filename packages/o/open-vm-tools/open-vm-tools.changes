@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 27 19:54:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- limit to protobuf < 22 for now until build failures have been fixed 
+
+-------------------------------------------------------------------
 Mon Jun 12 15:01:15 UTC 2023 - Kirk Allan <kallan@suse.com>
 
 - Fix (bsc#1212143) - (CVE-2023-20867) - VUL-0: CVE-2023-20867:

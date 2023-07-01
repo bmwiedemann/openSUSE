@@ -41,4 +41,13 @@
     <comment>- Install into _libdir [bsc#1191069] (forwarded request 922119 from kukuk)</comment>
     <requestid>922120</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f527c30be3ecc01ea8d8ea38ee8161f5</srcmd5>
+    <version>3.2</version>
+    <time>1688147997</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.2
+  - Do not call malloc_usable_size [bsc#1207551]</comment>
+    <requestid>1096110</requestid>
+  </revision>
 </revisionlist>

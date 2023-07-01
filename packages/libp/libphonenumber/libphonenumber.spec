@@ -1,7 +1,7 @@
 #
 # spec file for package libphonenumber
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,26 @@
 
 
 Name:           libphonenumber
-Version:        8.12.23
+Version:        8.13.15
 Release:        0
 %define lib_ver 8
-%define lib_ver2 8.12
+%define lib_ver2 8.13
 Summary:        Library for parsing, formatting, and validating international phone numbers
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/google/libphonenumber
 Source:         %{name}-%{version}.tar.xz
+# PATCH-FIX-DOWNSTREAM (for using system abseil)
+Patch1:         0001-Build-with-C-17.patch
+# PATCH-FIX-DOWNSTREAM (see https://github.com/google/libphonenumber/pull/2874)
+Patch2:         0001-Revert-Fix-typo-in-arguments-to-add_metadata_gen_tar.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  java
 BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
+# Actual version requirement unknown
+BuildRequires:  cmake(absl)
 BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(icu-i18n) >= 4.4
 BuildRequires:  pkgconfig(icu-uc) >= 4.4
@@ -55,6 +60,7 @@ for running on smartphones, and is used by the Android framework since 4.0
 Summary:        Library for parsing, formatting, and validating international phone numbers
 Group:          Development/Libraries/C and C++
 Requires:       %{name}%{lib_ver} = %{version}
+Requires:       cmake(absl)
 Requires:       pkgconfig(protobuf) >= 2.4
 
 %description    devel
@@ -74,7 +80,7 @@ that use libphonenumber.
 cd cpp
 # Enabling the geocoder breaks quite a lot due to broken cmakelists
 # (https://github.com/google/libphonenumber/pull/2556)
-%cmake -DBUILD_STATIC_LIB=OFF -DBUILD_SHARED_LIB=ON -DBUILD_TESTING=ON -DBUILD_GEOCODER=OFF
+%cmake -DBUILD_STATIC_LIB=OFF -DBUILD_SHARED_LIB=ON -DBUILD_TESTING=ON -DBUILD_GEOCODER=OFF -DREGENERATE_METADATA=OFF
 %make_jobs
 
 %install
@@ -96,5 +102,7 @@ cd cpp/build
 %files devel
 %{_libdir}/libphonenumber.so
 %{_includedir}/phonenumbers/
+%dir %{_libdir}/cmake/
+%{_libdir}/cmake/libphonenumber/
 
 %changelog

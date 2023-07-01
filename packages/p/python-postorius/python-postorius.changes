@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 25 08:12:39 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 1.3.8
+  * The buttons and confirmation page for removing members have been revised in
+    an attempt to reduce accidental removal of all members. (Fixes #545)
+  * Add bounce score for members in the Members table (See #12)
+  * Add support for Python 3.11.
+- Use sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Thu Nov 17 15:07:07 UTC 2022 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 1.3.7

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jun 30 14:59:22 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up SPEC file.
+
+-------------------------------------------------------------------
+Fri Jun 30 14:22:20 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- update to 2.31.1
+  * Add support for Python 3.11
+  * Tifffile v3 support
+  * Add audio support for ffmpeg writer
+  * small improvements to pyav
+  * Consistently apply color palettes by default
+  * Add n_images to ImageProperties
+  * Expose v3 plugins via v2 API
+  * Decode gray 16-bit PNG as uint16 (not int32) if pillow allows
+
+-------------------------------------------------------------------
+Sun Oct 16 17:47:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.22.1:
+  * Raise ImportError when iio-ffmpeg is missing  
+
+-------------------------------------------------------------------
 Thu Sep 29 02:30:37 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 2.22.0 

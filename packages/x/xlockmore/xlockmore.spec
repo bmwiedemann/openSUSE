@@ -17,7 +17,7 @@
 
 
 Name:           xlockmore
-Version:        5.69
+Version:        5.71
 Release:        0
 Summary:        Screen Saver and Locker for the X Window System
 License:        MIT

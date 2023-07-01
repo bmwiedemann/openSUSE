@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Jun 25 06:45:13 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Adapt specfile to build plplot against multiple python flavours.
+- Set $HOME to current dir during %check to ensure fontconfig does
+  not complain about un-writable cache dirs.
+- Add plplot-libharu-version-check.patch: Fix check for libharu
+  version when configuring build with cmake.
+- New subpackages:
+  * plplot-driver-pdf: PDf driver based on libharu; new
+    BuildRequires: libharu-devel.
+  * plplot-pyqt5-cmake: CMake files for building cmake based
+    projects using python3-plplot-pyqt5. CMake files are not
+    versioned according to python3 versioning, and so can only
+    help when using the pyqt5 bindings with the primary python3
+    version. NOTE: Currently pkg is noop as pyqt5 bindings do not
+    build for python 3.11, since sip4 is not available for the
+    latter.
+- Make doc package noarch.
+- Have python310-plplot-pyqt5 obsolete plplot-python3-qt5.
+- Have python311-plplot explicitly obsolete python3-plplot to
+  avoid file conflicts during upgrades.
+- Let python310-plplot = %{version}-%{release} conflict with
+  python3-plplot < %{version}-%{release}.
+
+-------------------------------------------------------------------
 Wed May  3 06:35:14 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Disable octave also for TW (openSUSE >= 1550) since plplot does

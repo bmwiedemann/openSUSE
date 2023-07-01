@@ -936,4 +936,12 @@ this is ever going to be fixed</comment>
     <comment></comment>
     <requestid>1094245</requestid>
   </revision>
+  <revision rev="113" vrev="5">
+    <srcmd5>ea016fd3316b9b6c6eead0d016b62e2b</srcmd5>
+    <version>12.2.0</version>
+    <time>1688147900</time>
+    <user>dimstar_suse</user>
+    <comment>- limit to protobuf &lt; 22 for now until build failures have been fixed</comment>
+    <requestid>1095693</requestid>
+  </revision>
 </revisionlist>

@@ -26,7 +26,7 @@ URL:            https://github.com/encode/uvicorn
 Source:         https://github.com/encode/uvicorn/archive/%{version}.tar.gz#/uvicorn-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix-websocket-tests.patch -- gh#encode/uvicorn#1929
 Patch0:         fix-websocket-tests.patch
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -35,9 +35,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click >= 7.0
 Requires:       python-h11 >= 0.8.0
-%if 0%{python_version_nodots} < 38
-Requires:       python-typing_extensions
-%endif
 Recommends:     python-PyYAML >= 5.1
 Recommends:     python-httptools >= 0.4.0
 Recommends:     python-websockets >= 8.0
@@ -61,7 +58,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dotenv}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module trustme}
-BuildRequires:  %{python_module typing_extensions if %python-base < 3.8}
 %if 0%{?suse_version} > 1500
 BuildRequires:  %{python_module uvloop >= 0.14.0}
 %endif

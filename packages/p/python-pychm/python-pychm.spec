@@ -1,7 +1,7 @@
 #
-# spec file for package python-pychm
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 %define pkgname pychm
 Name:           python-%{pkgname}
 Version:        0.8.6
@@ -51,7 +51,9 @@ export CFLAGS="%{optflags}"
 %fdupes %{buildroot}
 
 %files %{python_files}
-%doc COPYING README
-%{python_sitearch}/*
+%license COPYING
+%doc README
+%{python_sitearch}/chm
+%{python_sitearch}/pychm-%{version}*-info
 
 %changelog

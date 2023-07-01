@@ -1,0 +1,87 @@
+From 603318bfb31958572ff250fa29fc4e4678d438c8 Mon Sep 17 00:00:00 2001
+From: Matt Shaw <matthew-shaw@users.noreply.github.com>
+Date: Tue, 25 Apr 2023 22:07:52 +0100
+Subject: [PATCH 1/2] fix #561
+
+---
+ src/flask_wtf/recaptcha/widgets.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: Flask-WTF-1.1.1/src/flask_wtf/recaptcha/widgets.py
+===================================================================
+--- Flask-WTF-1.1.1.orig/src/flask_wtf/recaptcha/widgets.py
++++ Flask-WTF-1.1.1/src/flask_wtf/recaptcha/widgets.py
+@@ -1,6 +1,7 @@
++from urllib.parse import urlencode
++
+ from flask import current_app
+-from flask import Markup
+-from werkzeug.urls import url_encode
++from markupsafe import Markup
+ 
+ RECAPTCHA_SCRIPT_DEFAULT = "https://www.google.com/recaptcha/api.js"
+ RECAPTCHA_DIV_CLASS_DEFAULT = "g-recaptcha"
+@@ -22,7 +23,7 @@ class RecaptchaWidget:
+         if not script:
+             script = RECAPTCHA_SCRIPT_DEFAULT
+         if params:
+-            script += "?" + url_encode(params)
++            script += "?" + urlencode(params)
+         attrs = current_app.config.get("RECAPTCHA_DATA_ATTRS", {})
+         attrs["sitekey"] = public_key
+         snippet = " ".join(f'data-{k}="{attrs[k]}"' for k in attrs)  # noqa: B028
+Index: Flask-WTF-1.1.1/docs/changes.rst
+===================================================================
+--- Flask-WTF-1.1.1.orig/docs/changes.rst
++++ Flask-WTF-1.1.1/docs/changes.rst
+@@ -1,6 +1,14 @@
+ Changes
+ =======
+ 
++Version 1.1.2
++-------------
++
++Unreleased
++
++-   Fixed Flask 2.3 deprecations of ``werkzeug.urls.url_encode`` and
++    ``flask.Markup`` `:pr:`565` :issue:`561`
++
+ Version 1.1.1
+ -------------
+ 
+Index: Flask-WTF-1.1.1/src/flask_wtf/recaptcha/validators.py
+===================================================================
+--- Flask-WTF-1.1.1.orig/src/flask_wtf/recaptcha/validators.py
++++ Flask-WTF-1.1.1/src/flask_wtf/recaptcha/validators.py
+@@ -1,9 +1,9 @@
+ import json
+ from urllib import request as http
++from urllib.parse import urlencode
+ 
+ from flask import current_app
+ from flask import request
+-from werkzeug.urls import url_encode
+ from wtforms import ValidationError
+ 
+ RECAPTCHA_VERIFY_SERVER_DEFAULT = "https://www.google.com/recaptcha/api/siteverify"
+@@ -54,7 +54,7 @@ class Recaptcha:
+         if not verify_server:
+             verify_server = RECAPTCHA_VERIFY_SERVER_DEFAULT
+ 
+-        data = url_encode(
++        data = urlencode(
+             {"secret": private_key, "remoteip": remote_addr, "response": response}
+         )
+ 
+Index: Flask-WTF-1.1.1/tests/test_recaptcha.py
+===================================================================
+--- Flask-WTF-1.1.1.orig/tests/test_recaptcha.py
++++ Flask-WTF-1.1.1/tests/test_recaptcha.py
+@@ -80,7 +80,6 @@ def test_render_custom_args(app):
+     app.config["RECAPTCHA_DATA_ATTRS"] = {"red": "blue"}
+     f = RecaptchaForm()
+     render = f.recaptcha()
+-    # new versions of url_encode allow more characters
+     assert "?key=(value)" in render or "?key=%28value%29" in render
+     assert 'data-red="blue"' in render
+ 

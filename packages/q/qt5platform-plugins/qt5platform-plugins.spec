@@ -30,6 +30,7 @@ Url:            https://github.com/linuxdeepin/qt5platform-plugins
 Source0:        https://github.com/linuxdeepin/qt5platform-plugins/archive/%{version}/%{name}-%{version}.tar.gz
 Patch0:         support-Qt-5_15_8.patch
 Patch1:         support-Qt-5_15_9.patch
+Patch2:         support-Qt-5_15_10.patch
 BuildRequires:  libqt5-linguist
 BuildRequires:  wayland-devel
 BuildRequires:  libQt5Widgets-private-headers-devel
@@ -79,21 +80,21 @@ Group:          Development/Libraries/X11
 The libqt5-dxcbplugin is the Qt platform dxcbp plugin for Deepin Desktop
 Environment.
 
-#%package -n libqt5-dwaylandplugin
-#Summary:        A Qt platform integration plugin
-#Group:          Development/Libraries/X11
+%package -n libqt5-dwaylandplugin
+Summary:        A Qt platform integration plugin
+Group:          Development/Libraries/X11
 
-#%description -n libqt5-dwaylandplugin
-#The libqt5-dxcbplugin is the Qt platform dwayland plugin for Deepin Desktop
-#Environment.
+%description -n libqt5-dwaylandplugin
+The libqt5-dxcbplugin is the Qt platform dwayland plugin for Deepin Desktop
+Environment.
 
-#%package -n libqt5-kwayland-shellplugin
-#Summary:        A Qt platform integration plugin
-#Group:          Development/Libraries/X11
+%package -n libqt5-kwayland-shellplugin
+Summary:        A Qt platform integration plugin
+Group:          Development/Libraries/X11
 
-#%description -n libqt5-kwayland-shellplugin
-#The libqt5-dxcbplugin is the Qt platform kwayland-shell plugin for Deepin Desktop
-#Environment.
+%description -n libqt5-kwayland-shellplugin
+The libqt5-dxcbplugin is the Qt platform kwayland-shell plugin for Deepin Desktop
+Environment.
 
 %prep
 # %setup -q -a1 -n %{name}-%{version}
@@ -113,8 +114,8 @@ qmake-qt5 DEFINES+=QT_NO_DEBUG_OUTPUT \
           PREFIX=%{_prefix} \
           LIB_INSTALL_DIR=%{_libdir} \
           LIBSUFFIX=%{lib} \
-          CONFIG+=DISABLE_WAYLAND \
-          QT_XCB_PRIVATE_INCLUDE=%{_builddir}/%{name}-%{version}/xcb/libqt5xcbqpa-dev/$Qt_version
+#          CONFIG+=DISABLE_WAYLAND \
+
 %make_build
 
 %install
@@ -127,18 +128,18 @@ qmake-qt5 DEFINES+=QT_NO_DEBUG_OUTPUT \
 %dir %{_libdir}/qt5/plugins/platforms/
 %{_libdir}/qt5/plugins/platforms/libdxcb.so
 
-# %files -n libqt5-dwaylandplugin
-# %defattr(-,root,root,-)
-# %doc CHANGELOG.md README.md
-# %license LICENSE
-# %dir %{_libdir}/qt5/plugins/platforms/
-# %{_libdir}/qt5/plugins/platforms/libdwayland.so
+%files -n libqt5-dwaylandplugin
+%defattr(-,root,root,-)
+%doc CHANGELOG.md README.md
+%license LICENSE
+%dir %{_libdir}/qt5/plugins/platforms/
+%{_libdir}/qt5/plugins/platforms/libdwayland.so
 
-# %files -n libqt5-kwayland-shellplugin
-# %defattr(-,root,root,-)
-# %doc CHANGELOG.md README.md
-# %license LICENSE
-# %dir %{_libdir}/qt5/plugins/wayland-shell-integration/
-# %{_libdir}/qt5/plugins/wayland-shell-integration/libkwayland-shell.so
+%files -n libqt5-kwayland-shellplugin
+%defattr(-,root,root,-)
+%doc CHANGELOG.md README.md
+%license LICENSE
+%dir %{_libdir}/qt5/plugins/wayland-shell-integration/
+%{_libdir}/qt5/plugins/wayland-shell-integration/libkwayland-shell.so
 
 %changelog

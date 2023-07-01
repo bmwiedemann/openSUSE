@@ -145,4 +145,18 @@
     <comment></comment>
     <requestid>1083046</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>891aa32626c888638496a705b8866b3b</srcmd5>
+    <version>1.4.14</version>
+    <time>1688148006</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.14
+  * Added support for reading RAW images with 32-bit integer and
+    64-bit double pixel values.
+  * Fixed compilation of libpng for ARM Neon.
+    Obsoletes fix-aarch64-neon.patch .
+  * Updated external libraries: JPEG 9e, PNG 1.6.38, TIFF 4.4.0,
+    ZLIB 1.2.13.</comment>
+    <requestid>1096128</requestid>
+  </revision>
 </revisionlist>

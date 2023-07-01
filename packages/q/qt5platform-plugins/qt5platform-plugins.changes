@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun 30 13:03:36 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add support-Qt-5_15_10.patch, support Qt 5.15.10 
+
+-------------------------------------------------------------------
+Tue Jun 13 03:40:25 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Enable wayland 
+
+-------------------------------------------------------------------
 Thu Jun  1 08:00:09 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 
 - Refresh support-Qt-5_15_9.patch, fix crash bug 

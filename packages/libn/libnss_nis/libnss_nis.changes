@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 30 08:32:53 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 3.2
+  - Do not call malloc_usable_size [bsc#1207551]
+
+-------------------------------------------------------------------
 Wed Sep 29 07:39:22 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Install into _libdir [bsc#1191069]

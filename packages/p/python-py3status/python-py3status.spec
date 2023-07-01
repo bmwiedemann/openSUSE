@@ -17,24 +17,25 @@
 
 
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-py3status
-Version:        3.50
+Version:        3.51
 Release:        0
 Summary:        Python extensible i3status wrapper
 License:        BSD-3-Clause
 URL:            https://github.com/ultrabug/py3status
 Source:         https://files.pythonhosted.org/packages/source/p/py3status/py3status-%{version}.tar.gz
 BuildRequires:  %{python_module gevent >= 1.1}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyudev >= 0.21.0}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     i3status
+Recommends:     python-dbus-python
 Recommends:     python-gevent >= 1.1
 Recommends:     python-pyudev >= 0.21.0
 Provides:       py3status = %{version}
@@ -59,10 +60,10 @@ a py3status-modules-only i3bar.
 %setup -q -n py3status-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/py3status
 %python_clone -a %{buildroot}%{_bindir}/py3-cmd
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -84,6 +85,7 @@ export LANG=en_US.UTF8
 %doc CHANGELOG README.md
 %python_alternative %{_bindir}/py3status
 %python_alternative %{_bindir}/py3-cmd
-%{python_sitelib}/py3status*
+%{python_sitelib}/py3status
+%{python_sitelib}/py3status-%{version}*-info
 
 %changelog

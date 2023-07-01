@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 29 11:31:20 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Add patch strip-spaces.patch (bsc#1212852)
+  * sent upstream: https://github.com/mozilla/bleach/pull/706
+
+-------------------------------------------------------------------
 Mon May  8 11:57:24 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 6.0.0:

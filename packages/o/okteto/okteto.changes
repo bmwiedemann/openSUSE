@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 29 10:13:25 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.16.5:
+  * fix: wrong registry hostname parse as url (#3743) (#3758)
+
+-------------------------------------------------------------------
 Tue Jun 27 04:50:20 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.16.4:

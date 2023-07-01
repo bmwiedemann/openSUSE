@@ -6,13 +6,13 @@ diff -Nur startdde-5.9.49/main.go startdde-5.9.49-new/main.go
  
  func shouldUseDDEKWin() bool {
 -	_, err := os.Stat("/usr/bin/kwin_no_scale")
-+	_, err := os.Stat("/usr/bin/kwin_x11")
++	_, err := os.Stat("/usr/bin/deepin-kwin_x11")
  	return err == nil
  }
  
  const (
 -	cmdKWin                = "/usr/bin/kwin_no_scale"
-+	cmdKWin                = "/usr/bin/kwin_x11"
++	cmdKWin                = "/usr/bin/deepin-kwin_x11"
  	cmdDdeSessionDaemon    = "/usr/lib/deepin-daemon/dde-session-daemon"
  	cmdDdeDock             = "/usr/bin/dde-dock"
  	cmdDdeDesktop          = "/usr/bin/dde-desktop"
@@ -24,7 +24,7 @@ diff -Nur startdde-5.9.49/main_test.go startdde-5.9.49-new/main_test.go
  	t.Run("Test is should use DDE KWin", func(t *testing.T) {
  		should := shouldUseDDEKWin()
 -		exist := Exist("/usr/bin/kwin_no_scale")
-+		exist := Exist("/usr/bin/kwin_x11")
++		exist := Exist("/usr/bin/deepin-kwin_x11")
  		assert.Equal(t, exist, should)
  	})
  }
@@ -36,7 +36,7 @@ diff -Nur startdde-5.9.49/watchdog/dde_kwin.go startdde-5.9.49-new/watchdog/dde_
  const (
  	kWinServiceName = "org.kde.KWin"
 -	ddeKWinCommand  = "kwin_no_scale"
-+	ddeKWinCommand  = "kwin_x11"
++	ddeKWinCommand  = "deepin-kwin_x11"
  )
  
  func isDdeKWinRunning() (bool, error) {
@@ -48,7 +48,7 @@ diff -Nur startdde-5.9.49/watchdog/watchdog_test.go startdde-5.9.49-new/watchdog
  
  func isUseKwin() bool {
 -	_, err := os.Stat("/usr/bin/kwin_no_scale")
-+	_, err := os.Stat("/usr/bin/kwin_x11")
++	_, err := os.Stat("/usr/bin/deepin-kwin_x11")
  	return err == nil
  }
  

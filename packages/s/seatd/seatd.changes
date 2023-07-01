@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 23 05:49:32 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.7.0:
+  * Support for NetBSD and wscons devices
+  * Fix for a polling bug in the logind libseat backend
+  * Removal of SEATD_SOCK and runtime socket path configuration
+  * Removal of SEATD_LOGLEVEL, replaced by a command-line argument
+
+-------------------------------------------------------------------
 Fri Feb 25 16:15:51 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.4

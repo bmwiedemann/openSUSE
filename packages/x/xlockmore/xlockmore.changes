@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jun 29 16:42:38 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 5.71:
+  * Patch for Theobromine, Niacin, and Cobalamin from Richard Narron,
+    richard AT aaazen.com.
+  * Added cuboctahedron from mxico to ico mode.
+  * xmlock updates for Athena for toggles.  Fix also for Xaw3d.  I think
+    it has most of the working parts to the Motif version now.
+- 5.70 changelog:
+  * Patach for Cannabidiol and Fentanyl from Richard Narron, richard AT
+    aaazen.com.
+  * I was able to get DtScreen to work on Linux with CDE with slight
+    modification to Makefile (documented in README) with help from Per
+    Backman, 229pele AT tufftuff.net.
+  * xmlock updates for Athena.  In generated Makefile will have to change
+    HAVE_MOTIF to HAVE_ATHENA and change -lXm to -lXaw or -lXaw3d.  Just
+    bare bones right now.
+  * t3d.c: following recommendated change for configure "warning: Update your
+    code to rely only on HAVE_SYS_TIME_H".  Also other assorted changes
+    in configure.ac when I ran autoupdate (did not accept everything as
+    it seemed to go wrong).
+
+-------------------------------------------------------------------
 Tue Jan  3 15:28:45 UTC 2023 - Stefan Schubert <schubi@suse.com>
 
 - Migration of PAM settings to /usr/lib/pam.d. 

@@ -75,4 +75,12 @@
   dde-kwin crash issue (forwarded request 1031550 from hillwood)</comment>
     <requestid>1031554</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>990991b1f3291db0d1f8f07e1f0993b3</srcmd5>
+    <version>5.9.49</version>
+    <time>1688148001</time>
+    <user>dimstar_suse</user>
+    <comment>- Update workaround-dde-kwin-crash.patch, use deepin-kwin (forwarded request 1096139 from hillwood)</comment>
+    <requestid>1096140</requestid>
+  </revision>
 </revisionlist>

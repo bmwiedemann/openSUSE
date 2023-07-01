@@ -1,4 +1,1398 @@
 -------------------------------------------------------------------
+Wed Jun 28 21:10:27 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding "Source100: xpra-rpmlintrc" to appease SR#1095874
+  being declined
+
+-------------------------------------------------------------------
+Wed Jun 21 20:34:45 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding more Recommends per:
+  https://github.com/Xpra-org/xpra/blob/master/docs/Build/Dependencies.md
+
+-------------------------------------------------------------------
+Tue Jun 20 14:55:16 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 5.0+git20230617.2a908f54:
+  * minor type hint fixes
+  * use the more common filename
+  * more type hints
+  * replace buster with trixie
+  * same file, but more consistent filename
+  * #3863 use the new key everywhere
+  * more type hints
+  * unused import
+  * get_nsview_ptr needs a gdk window
+  * misname callback
+  * PyOpenGL-accelerate 3.1.7 requires numpy to load
+  * more type hints
+  * try harder to format the log record
+  * don't ship cython's html files
+  * no need for nested exceptions
+  * skip None values
+  * '<' means '<=' and we have to use '<<' to mean less than
+  * replace 'assert' with more specific exception types
+  * try harder to prevent conflicts with older 'xpra' packages
+  * wrap all tuples, for better compatibility with type hints
+  * older versions of Python struggle with the type hints syntax
+  * more type hints
+  * missing build deps
+  * better exception message
+  * compatibility with newer versions of python-cryptography
+  * reuse the new util function
+  * don't access stderr directly
+  * don't build nvidia modules if cuda is disabled
+  * #3895 use xpra[_cmd].exe to launch subcommands
+  * unused import
+  * #3895 better error message
+  * fixup pydev spurious import, and add more hints
+  * avoid crashes on MS Windows when exiting using key shortcuts
+  * Make pulseaudio scheduling configurable via XPRA_PULSEAUDIO_* env-vars
+  * cosmetic (for testing gpg signature)
+  * testing signature
+  * minor type hints updates
+  * more type hints
+  * do_process_mouse_common must return a bool
+  * #3872 dumb capture and encode streaming mode
+  * #3750 make code reusable
+  * more type hints
+  * #3750 register the correct type
+  * more type hints
+  * whitespace
+  * silence warning
+  * minor type hint update
+  * better debug logging and error handling
+  * also handle 'ValueError' in fallback path
+  * better debug logging, type hint
+  * #3883 all focus updates must go through 'recheck'
+  * better wording
+  * remove debug
+  * show more of the overly large packets
+  * handle one pixel oddities more gracefully
+  * missing return value (oops)
+  * always free the AVFrame in error paths
+  * fix libspng link
+  * fixup mess that pydev added
+  * fix invalid type hint
+  * improve type hints
+  * more type hints
+  * more type hints
+  * fix vsock parsing: use the new function name
+  * pylsqpack 0.3.17
+  * more type hints
+  * fix type hint
+  * more type hints
+  * fix linter warning
+  * fix linter warnings
+  * don't rely on initialization order
+  * VideoSubregion needs timeout_add and source_remove defined
+  * remove unused import
+  * more type hints
+  * #3882 fixup 053b87fb56664ca2bebed23a577af4c508440691
+  * improved type hints
+  * type hints for delegated platform functions
+  * return None explicitly
+  * whitespace
+  * remove now unused import
+  * linter warning
+  * don't bother with session tickets
+  * more linter warnings
+  * more complete implementation: add close_notify
+  * doh: server_window_signals is a whitelist
+  * add type hints
+  * f-stringify
+  * re-enable wheel event handler
+  * debug to match actual code
+  * missed module from name stripping
+  * minor linter type hints warnings
+  * saner handling of scalar X11 properties
+  * #1995 the new api doesn't use the 'format' attribute
+  * better detection of X11 vs Wayland
+  * add debug logging, use default display from env
+  * oops: forgot to update this test
+  * setuptools workaround needs another workaround
+  * use consistent datatypes for authentication functions
+  * fix more linter warnings and add type hints
+  * fix more linter warnings and add type hints
+  * silence linter warnings
+  * factors use a dictionary with further details
+  * rounding gives us more "precision" of sorts
+  * add type hints
+  * add docstring, fix linter warnings
+  * a cleaner / simpler method makes the linter happier
+  * hide python logging logger instance attribute
+  * don't access the 'logging' logger directly
+  * remove unused code
+  * keep track of shell commands
+  * merge 'gtk_base' into gtk3
+  * make code easier to follow
+  * use List to make it easier to manipulate
+  * remove unused attribute
+  * clearer decision making
+  * fix crashes on win32 when using keys to close
+  * move all environment init to platform support files
+  * filename was wrong, did not match anything
+  * #3875 all entrypoints need the cryptography openssl workaround
+  * fix linter warnings on non-posix OSes
+  * some Cython / gcc versions can't handle XIf_predicate
+  * #3877 fixup 1da6fe5bbe9e456d5aae12bfd1e6501dbce67281
+  * add xsettings type
+  * syntax compatible with older Python versions
+  * use hints from 'typing' module
+  * #3872 add 'stream' encoding option
+  * type hints
+  * missed from mass rename
+  * fix minor linter warnings
+  * minor type hints updates
+  * missed from mass renaming
+  * minor linter warnings, type hints
+  * actually replace with new option name
+  * hook horizontal wheel events
+  * re-enable event handlers (was libffi build issue?)
+  * remove unused code
+  * don't close twice - as was intended?
+  * actually update the 'senstivity' of the maximize option
+  * doh: check all values
+  * don't raise generic 'Exception'
+  * #1995 fixup type name
+  * simplify server mixin names
+  * simplify source mixin names
+  * use typing module for hints
+  * move gtk bits to gtk server base
+
+-------------------------------------------------------------------
+Mon May 29 15:30:52 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 5.0+git20230529.246ad1fe:
+  * round to nearest for smoother scrolling
+  * more mypy type hints
+  * typo
+  * #3868 catch KeyError and log it
+  * more mypy type hints and fixes
+  * #3859 fix undefined variable
+  * Mar 12 2023 was a Sunday
+  * doh
+  * find_session_by_name now always returns a string
+  * accept tuples as packets, silence validation warnings during tests
+  * more mostly automatic type hints
+  * more mypy inspired type hints and tweaks
+  * #3867 update clipboard to use XIDs directly
+  * more mypy inspired type hints
+  * mypy finds latent bugs
+  * mypy config and fixes
+  * repos: define available architectures (amd64, arm64) for deb822-format On multi-arch systems (e.g. i386<->amd64) without specification of supported architectures "apt update" warns about missing packages (e.g. "Skipping acquire of configured file 'main/binary-i386/Packages' as repository 'https://xpra.org jammy InRelease' doesn't support architecture 'i386'")
+  * add type hints
+  * Fix side buttons on win32 shadow server
+  * control-c just gets out
+
+-------------------------------------------------------------------
+Thu May 25 19:50:20 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 5.0+git20230525.b53aab5f:
+  * #3582 only include socket info when XPRA_FULL_INFO>0
+  * move exception handling
+  * trays don't send the buttons parameter
+  * strip newlines from backtrace
+  * simplify: make_instance will discard None values
+  * explicit: always return a type, or None
+  * unused import
+  * compatibility with the latest cx_Freeze
+
+-------------------------------------------------------------------
+Thu May 25 13:41:55 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 5.0+git20230525.08cf69d4:
+  * #1995 fixup tray support
+  * simplify: convert to tuple of strings early
+  * also use appindicator for application trays
+  * don't try to use Gtk.StatusIcon on wayland
+  * #3789 import can raise a ValueError..
+  * also remove the patch file
+  * Cython 3.0.0b3
+  * #3860 add missing fake function
+  * one more missed from the bindings renaming
+  * oops: searched and replaced wrong
+  * forgot to update some tests in eeb3b2686626f7f236d2d70680fcb4f58d811ac7
+  * even more detailed error message
+  * typo
+  * match signature change for X11Window.XGetWindowProperty
+  * rename x11 bindings (strip duplicated string)
+  * more detailed error messages
+  * debug logging to match new function names
+  * forgot to update test
+  * missed from 99731ac62e633d4c8b304f8f04fbe8ad60f71735
+  * just use the default screen
+  * more resilient checks
+  * #1995 remove xsettings from gtk prop, display source shim
+  * #1995 strip out more gtk bits
+  * oops: 'reject' is a local function
+  * add type hints
+  * don't try to stop the same timer twice
+  * more helpful failure message
+  * fixup 'init-from' debugging
+  * add some project urls
+  * #3822 copy window depth and visual from parent window
+  * this should not be needed
+  * rename attribute for more consistency
+  * only use synthetic unfocus events when needed
+  * linter warning
+  * typo
+  * fix linter warning
+  * #1995 split pure-X11 event parsing into a new module
+  * move get_children to pure X11 bindings
+  * simplify client rejection handling
+  * add type hints
+  * we can't get the server time from the root window
+  * fixup! Support set_platform_layout in posix platform keyboard
+  * fixup! Support set_platform_layout in win32 platform keyboard
+  * fixup! Round-robin the keyboard layout_option by next-keyboard-layout shortkey
+  * fixup! Support bool args for --key-shortcut=action(yes,true,on|no,false,off)
+  * Support set_platform_layout in posix platform keyboard
+  * Support set_platform_layout in win32 platform keyboard
+  * Round-robin the keyboard layout_option by next-keyboard-layout shortkey
+  * Fix the win32 keyboard layout constants for "ir" / "Persian (Standard)"
+  * Support bool args for --key-shortcut=action(yes,true,on|no,false,off)
+  * Fix parsing of the action("str") arguments for --key-shortcut option
+  * #1995 use the X11 server time where really needed
+  * #1995 re-implement server time
+  * honour 'locked' keyboard helper config
+  * Revert "use the non-deprecated variant"
+  * remove debug and cancel timer on exit, fix indentation
+  * #3857 poll for keyboard layout changes
+  * missed from cf6cd99967c7d185cce5be9fcee77e4c5c21210a which was meant to be a move
+  * doh: signature must be a pair
+  * move Gtk icon loopup out of x11 window models
+  * #1995 use xid for the parking window
+  * better debug and error messages
+  * #3822 use plain X11 calls to manage the corral window
+  * docs say we should not process events with negative codes
+  * Fix side buttons on Win32
+  * #1995 don't try to manage the 'world-window'
+  * use xid wherever possible
+  * unused imports
+  * the spec says that hints must use 'sv' as dictionary signature
+  * only guess the signature if not provided
+  * also wrap the keys
+  * remove the gdk 'client_window' from the models
+  * fix calls to window_info: must use xid
+  * use hex for xids, skip send-event=True
+  * don't raise exceptions when a window is not found
+  * oops: add missing 'destroy' call, was leaking event receivers
+  * more info details
+  * make it easier to get the root xid
+  * doh: we now use xid
+  * no need to keep a reference to the root window here
+  * fix desktop servers: pass xid
+  * split root-overlay code into dedicated functions
+  * use Python booleans where appropriate
+  * move send_wm to pure x11 bindings module
+  * typo: invalid logging category
+  * validate xid to prevent bugs
+  * only return the wm-name if we have a valid ewmh window
+  * fast-start means no audio at all
+  * doh: we can show the name, not the codec (which is missing)
+  * #3822 don't keep a reference to the 'client-window'
+  * #1995 don't convert xid to window in event parser
+  * #1995 extricate Gdk window from more models
+  * #1995 use xid for damage, composite and event routing
+  * #1995 start replacing Gdk.Window with plain xid
+  * add debug logging
+  * setting debug events once is enough
+  * #3822 use a weak reference to the gdk window object
+  * just use the cached dimensions
+  * also send pings on websocket connections
+  * show what capture backend is used
+  * add debug logging: gtk is deactivating it..
+  * use the non-deprecated variant
+  * this trims VirtualBox driver information
+  * ensure the capture instance is ready to produce images
+  * debug race condition in video helper init
+  * prettier enums with older Python versions
+  * we need more elements to play bell.wav
+  * #3750 MSYS2 builds Streamer without NVidia support
+  * zeroconf says 'server' defaults to 'name'
+  * drop support for python-zeroconf versions older than 0.23
+  * #3848 use a different repo file for CentOS 7
+  * #3376 override the default logger with our own
+  * #3850 move close-after-write handling
+  * better XError handling
+  * #3376 uvloop packaging for MacOS
+  * use a more correct exit code
+  * MacOS needs cffi, even with crypto baked in
+  * #3376 use a new QuicConnection for each connection attempt
+  * prettier
+  * #3376 allow InitExit exception to propagate
+  * enable color for 'info' and 'version' subcommands
+  * lookup CC once and log it
+  * fail early with a more useful message
+  * more packaging workarounds
+  * we don't build libaom on MacOS, skip the loader warning
+  * make debug logging slightly less dense
+  * #3850 use the asyncio thread to call transmit() and send_data()
+  * remove unused logger, transmit after clearing flag
+  * ignore empty values
+  * doh: use any address, not local address
+  * also clean cpp files
+  * prefer IPv6 on Posix
+  * clarify Xvfb vs Xdummy
+  * recent versions already use a readable enum
+  * disable substreams for now
+  * fixup mmap datatypes
+  * we have dropped the 'python-' package prefix
+  * #3850 only use IPv6 if the target is also IPv6
+  * prettier
+  * ipv6 fixes for udp sockets
+  * use a prefix for splash screen subprocess
+  * prettier
+  * #3850 try harder to handle failures more gracefully
+  * #3850 simplify
+  * #3850 skip empty values
+  * #3850 honour empty SUBSTREAM_PACKET_TYPES
+  * #3850 continue without sub-streams if we get a NoAvailablePushIDError
+  * #3376 nothing can be sent if the closed flag is set
+  * these amf elements are not available via MSYS2 on MS Windows
+  * getuid is posix only
+  * prefer python-zeroconf
+  * try harder to support IPv6 addresses
+  * improve IPv6 parsing
+  * stop as soon as we find a valid backend
+  * use explicit runtime error
+  * typo
+  * function is no longer exposed
+  * update test to match refactoring
+  * pydev, why here??
+  * add type hints
+  * better debug logging
+  * move function where it is used
+  * only allow logging tweaks via env vars for non-root users
+  * fix some linter warnings
+  * audio is the new sound
+  * re-use gstreamer utility functions more
+  * #3750 add AMD AMF API encoders
+  * #3750 re-use the same functions and encoder options
+  * easier to read?
+  * shadow window models can come and go (WIP)
+  * #3750 notify user when capture fails
+  * cache gcc version
+  * convert enums to rencodable values
+  * more type hints
+  * add type hints and use stricter types
+  * we need the pipewire gstreamer element for fd portal shadow
+  * #3750 add pure video mode if the client supports h264
+  * only skip xpra's x11 displays
+  * value must be a byte string
+  * use the 'node_id' as window id
+  * don't exit server when capture fails
+  * we don't need gui access for 'displays' subcommand
+  * simplify: _add_new_window_common already returns the wid
+  * f-stringify and simplify
+  * call x11 bindings more directly
+  * missing logging argument
+  * shortcut out if we can't access the display
+  * simplify and verify 'default' cursor encoding is supported before using it
+  * don't modify the list passed in
+  * if we're connecting locally, skip video modules
+  * prettier formatting
+  * remove debug logging
+  * dummy 0.4.1
+  * better formatting
+  * remove unused return value
+  * minor warnings and type hints
+  * avoid compilation errors with gcc version 7 and older
+  * architecture in filename should be generic so it works on arm64
+  * this is no longer needed - I think
+  * pydev made more of a mess
+  * avoid errors when running without a client
+  * fix logging arguments error
+  * no av1enc on MacOS
+  * avoid permissions issues with mv
+  * use a nest dictionary
+  * update and re-order
+  * simplify
+  * use namespace for mmap
+  * continue and accept the connection even if we get errors
+  * use the new form
+  * use a different user uuid for sending the file
+  * move notifications, build and remote-logging to a caps prefix
+  * don't use 'hello' packet to send the default cursor
+  * only run systemd-run if supported
+  * don't use '--user' argument as root
+  * #3845 the newly added NV12 functions can't scale
+  * allocate the buffer earlier, before locking the memory contexts
+  * handle 'RGBA' window icon data
+  * make it easier to run some scripts without GLib installed
+  * f-stringify and add debug
+  * more setuptools paths workarounds :(
+  * ugly but more generic way to figure out the PYTHONPATH
+  * document empty method
+  * add type hints
+  * setuptools behave differently on CI, obviously
+  * fix force_flush_queue: Queue objects have get but not read
+  * honour the prefix as install dir
+  * f-stringify more
+  * try to lookup ipv6 interfaces
+  * more resilient: run even without sys.stderr
+  * f-stringify
+  * remove unused logging argument
+
+-------------------------------------------------------------------
+Thu May 04 13:00:55 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 5.0+git20230504.f088bc04:
+  * pydev had made a mess of things
+  * more linter warnings
+  * linter finds real bugs
+  * minor linter warnings
+  * remove redundant statements
+  * simplify
+  * fix minor linter warnings
+  * simplify
+  * avoid raising a generic 'Exception'
+  * invalid lines get logged, that's enough
+  * avoid raising a generic 'Exception'
+  * simplify
+  * make props optional, same as uinput device
+  * remove unused screen parameter
+  * return value is always None
+  * remove unused argument
+  * fix linter warning: ignore device_id on win32
+  * list_directory takes a single arg
+  * comment out unreachable code
+  * x and y aren't meant to be defined in this code path
+  * continue even if we can't create the cursor we want to use
+  * pygst.version is long gone
+  * ignore 'mod2' aka 'Num_Lock' with Wayland clients
+  * update the window's title when the window manager changes
+  * enumify
+  * this is an x11 desktop, so use x11 functions
+  * clients should not use the session dir for sockets
+  * better wording for invalid connection handlers
+  * add missing context managers
+  * better formatting
+  * oops: forgot to update some paths during refactoring
+  * rename xposix -> posix
+  * move more x11 functions out of (x)posix
+  * this looks better, apparently
+  * unset XDG_MENU_PREFIX in sanitize_env
+  * #3842 don't set attach=True if the html5 client will be connecting
+  * move default ports constants to net module
+  * #3842 open html5 client with --html=open or --html=firefox
+  * #3841 fixup, doh: continue to support specifying a local display
+  * #3841 simpler syntax
+  * handle runtime failures gracefully
+  * disable debug logging
+  * use the already-running shortcut for more modes
+  * expand doesn't require x11
+  * always use lossless encoding for 'text', even when scrolling
+  * minor updates: use dummy v0.4 rather than patch
+  * don't warn about socket o750 permission for shared sockets
+  * this test still fails on CI
+  * update list of failing tests
+  * include more details in failure messages
+  * continue to test fakeXinerama configs without the lib
+  * fix error when remote version is missing
+  * use tuples for version data
+  * cosmetic
+  * don't always use root fallback directories
+  * add debug logging
+  * f-stringify
+  * don't use XAUTHORITY files that are not writable
+  * simplify
+  * more numeric versions
+  * #3582 trim all version numbers
+  * use numeric version numbers for opengl properties
+  * also use numeric values for xpra versions
+  * try harder to ensure that versions are numeric
+  * doh: override os.environ
+  * fail with an explicit message
+  * simplify: merge version info functions
+  * don't force 'x11' Gdk backend so early
+  * move 'bypass_no_gtk' to the function that imports Gtk
+  * don't force the x11 backend for shadow servers
+  * doh: negate switch
+  * make it possible to override these Gtk settings
+  * simplify: move env code to the context manager
+  * automatically choose the current wayland display if we have one
+  * silence linter warnings
+  * Fix links in Image-Depth.md
+  * make root and max size optional
+  * use AUTHENTICATION_FAILED for all session setup failures
+  * fix client disconnection
+  * remove unused code
+  * we want StrEnum if available
+  * missing attribute can raise a TypeError here
+  * don't log api response at error level
+  * update defaults to what 0.15 clients supported
+  * #3838 older versions of GStreamer don't have 'leaky-type'
+  * older versions of Python don't have StrEnum
+  * enumify move-resize constants
+  * enumify notification ids
+  * don't exit when screencast fails, just disconnect the client
+  * log backtrace at debug level
+  * enumify
+  * simplify
+  * Fixed many typos
+  * show pid
+  * doh: we need xauthority, just NOT under wayland shadow
+  * try to prevent audio from accessing the DISPLAY
+  * try to access keymap just once
+  * log warning if we can't access the keymap
+  * avoid crashes with wayland shadow servers
+  * ignore 'none' value in video / csc lists
+  * don't save 'xauthority' file for wayland shadow servers
+  * skip XWayland and 'DEAD' displays when shadowing
+  * use saved xauthority location for access X11 displays
+  * log compressed size
+  * detect xwayland displays as best we can
+  * make randr bindings more reusable
+  * unused imports
+  * #3582 add prefix for encryption caps
+  * simplify
+  * log hello in both directions
+  * simplify / safer: use whitelisting
+  * #3582 skip version info
+  * #3592 add prefix for file caps
+  * force X11 Gdk backend for opengl probing
+  * unused import
+  * move var to where it is used
+  * delay loading of video modules
+  * fix X11 vfb access check
+  * #3835 add 'audio=on|off'
+  * unused default implementation should use a valid signature
+  * choose the shadow backend based on the display
+  * expose default info
+  * parse wayland display sockets
+  * add weak dep on package needed for patent encumbered libva codecs
+  * better fix than 896c1228164f088545b1dbbc246bd8afa5d7c224: let the caller provide opts
+  * restore wrongly commented out tests
+  * find_session_by_name function takes a single argument
+  * initial support for wayland session names
+  * oops: test the return value
+  * add some type hints
+  * don't flood the screen or log file
+  * the window mixin requires this one
+  * handle missing features more gracefully
+  * skip X11 warnings under wayland
+  * add more details at debug level
+  * handle missing display more gracefully
+  * better reporting of opengl display probing errors
+  * fail more gracefully when we can't access the display
+  * add missing import
+  * add type hints
+  * #3582 don't expose encryption caps unless the connection needs them
+  * simplify
+  * odd sizes still cause us problems
+  * when guessing the display, try LIVE ones
+  * fix X11 socket filename (X prefix instead of ':')
+  * simplify
+  * wait longer for the display to be killed
+  * stat the socket to ensure the X11 server is alive
+  * don't ignore BlockingIOError, simplify try block
+  * list wayland displays in 'xpra displays'
+  * add type hint
+  * enablenvh264dec unless we don't find nvidia hardware
+  * cosmetic
+  * require PyOpenGL 3.1.4 or later (released in 2019)
+  * fail all nvidia modules the same way
+  * also honour png/L when scrolling
+  * nonsensical: partial revert of c5c8a105fb6c2b535bfed0169208d72433df43c5
+  * #3825 also honour 'png/P' when scrolling
+  * #3832 try harder to prevent invalid values sneaking in
+  * ignore error closing session
+  * #3826 honour png/P
+  * fixup encoding validation, case matters
+  * we don't use brotli for pixel data
+  * simplify?
+  * query list of encodings just once
+  * fix error showing list of valid client encodings
+  * #3824 it should be safe to re-enable this test now
+  * enable intra-refresh and add env var toggle
+  * ignore 'DISPLAY' when we are shadowing a WAYLAND_DISPLAY
+  * don't lose the 'WAYLAND_DISPLAY' when shadowing
+  * don't try to probe OpenGL on Wayland
+  * having opengl properties is not sufficient
+  * f-stringify
+  * can't use intra-refresh with i_frame_reference>1
+  * there is no exception to show
+  * audio wrapper uses 'cleanup' but video interface calls it 'clean'..
+  * Pass max buffer size to BrotliEncoderCompress
+  * Update README - SonarQube + Discord
+  * README.md - SonarQube test
+  * Create build.yml
+  * Create sonar-project.properties
+  * #3823 fixup: having a dummy driver version would disable Xdummy
+  * #3750 close the session when the last user exits
+  * show which display is failing
+  * #3750 working, albeit slow, fd portal support
+  * unused import
+  * honour 'nox11' in pulseaudio utils
+  * when using wayland screencasting, don't load any X11 bindings
+  * use more explicit exception types
+  * #3706 commented out stub for svt based encoders
+  * intra refresh uses more bandwidth overall but avoids latency spikes with IDR frames
+  * unused import
+  * don't try to access X11 bindings under wayland
+  * #3706 enable hevc decoding via vaapi
+  * #3706 nable hevc via vaapi
+  * #3706 my Intel laptop's libva can't do 'I420'
+  * include more details with missing module failures
+  * #3706 package gstlibav on macos
+  * #3808 simplify Fedora 38 builds
+  * #3706 refactor element signal tracking
+  * #3706 fix gc element leak
+  * use correct stream format attributes for av1enc
+  * #3706 don't enable gst nvenc by default
+  * #3706 enable av1enc, use caps so we don't need a videoconvert
+  * #3706 support more decoders, including nvdec
+  * add backtrace at debug level
+  * #3706 move some functions to common
+  * #3706 add more decoding options - some need do-timestamp=1
+  * #3706 cleanup and add type annotations
+  * #3822 always call trap pop after calling trap push
+  * simplify
+  * #3823 command line option for specifying the dummy driver version
+  * add more CUDA error codes, move to a single location
+  * nvidia-ml-py 11.525.112
+  * use full tests in verbose mode
+  * use more explicit exceptions
+  * #3706 refactoring + disable b-frames for now
+  * fixup 863cc2c994cba84414a3350e7c17ca3b244f7613
+  * remove unused method and add annotations
+  * convert gravity to an enum
+  * add type annotations
+  * the value is actually an int - the x264 codec can still use a float
+  * #3818 support more combinations
+  * #3706 refactoring, make it easier to understand
+  * link to the html5 client
+  * add more type annotations
+  * #3706 make x264 speed and quality functions reusable
+  * #3818 support create test wrappers from image file paths
+  * #3818 make it easier to convert back to BGRX
+  * add standard prefix for error
+  * add standard prefix for error
+  * #3816 gstreamer can pass the tests with uniform source images
+  * simplify
+  * use explicit exception types
+  * #3706 doh, we want only a single byte per value
+  * #3706 use the sample images for the given colorspace
+  * #3818 alpha should be unused, but set it to opaque anyway
+  * #3818 verify that the encoder doesn't modify the input buffer
+  * make it possible to override 'readonly' flag from Python
+  * fixup 1755bea6889bd16f46d4ffcc82f744eba6f0249d
+  * #3706 add more complete roundtrip tests
+  * improve exceptions and their messages
+  * doh: we have to repeat the package name here
+  * silence linter warnings
+  * test all combinations of encoders and decoders
+  * remove outdated mpeg1 and mpeg2 encodings
+  * add test for YUV444P
+  * make test code reusable
+  * improve exception message
+  * remove redundant lists
+  * make this the default list for all centos builds
+  * simplify: only covert to bytes when calling C api
+  * expose the profile with the initial frame
+  * the profile must be a byte string
+  * #3706 simplify
+  * add env var for selecting a profile for all csc modes
+  * fix GLib lost timer warnings
+  * #3706 increase initial timeout
+  * #3706 log more codec details with timeout errors
+  * add type hints
+  * #3706 move some code out of the global scope
+  * #3706 need to specify the stream-format
+  * more mixins rely on 'server_packet_types' to enable features
+  * #2556 reorder mixins so the xdg-menu is sent after the windows
+  * this is the generic module, not xdg related
+  * this test only fails on the CI
+  * fix errors logging the raw packet size
+  * use a method to modifying attributes
+  * don't bother showing the bitness
+  * #3812 fix logging of packet sizes, log sending too
+  * #3592 older versions can't handle a nested dictionary
+  * make it possible to auto-recurse down dictionaries
+  * whitespace
+  * #3812 use 'configure-display' to send 'icc' data after the handshake
+  * #1942 for now, 'desktop-size' is still needed to trigger set_screen_size
+  * #3813 add 'icc' data to 'configure-display' packet
+  * move SYNC_ICC env option to common location
+  * #1942 use new packet format for configuring the display
+  * defaults can use immutable tuples
+  * re-enable new packet types, but disable problematic sequence no
+  * move dpi limits to common
+  * #3812 filter out audio properties
+  * #3812 filter out platform data
+  * #3812 transparently lookup nested dictionaries with '.' separated keys
+  * also filter out GLU.extensions
+  * let them try to build, it will probably fail later
+  * don't expose the them icon data by default
+  * remove opengl extensions from caps unless FULL_INFO>1
+  * send the keyboard data after the connection is established
+  * if we don't have keycodes to map, don't translate them
+  * more readable
+  * remove redundant args
+  * don't build csc_cython
+  * stop using private libraries
+  * doh: fixup package name
+  * remove extra debug logging
+  * warn just once for all missing codecs
+  * the compression test compares python-lz4 with our bindings
+  * use the same display for all the authentication tests
+  * #3680 by default turn off most options
+  * make it easier to override the XPRA_COMMAND and XPRA_CONF_DIR
+  * we no longer use private libs
+  * #3664 broken symlinks don't exist, but are links..
+  * AFAICT, we don't need this
+  * fix CI: use full imports
+  * more actionable message
+  * make it less scary to run the xpra-client-gtk without xpra-x11
+  * unused imports
+  * less scary message when X11 bell cannot be used
+  * only warn if something is actually missing
+  * #3811 we need the Xorg server installed to detect its path
+  * #3811 we have dummy builds for all RHEL and clones
+  * use dedicated space for video decoder info
+  * #3796 show paint stats on window info
+  * most backing info properties are redundant here
+  * make it easier to test initialization thread delays
+  * 'Breaks' should prevent file conflicts during upgrades from earlier versions
+  * try harder to prevent conflicts with older versions during upgrades
+  * #3807 KISS: just make the pxd match the pyx
+  * #3807 use the same uint64_t definition in the pxd
+  * #3807 CI unit tests just runs 'install'..
+  * #3807 auto-apply the patch to fix builds with older versions of Cython
+  * nogil should be after noexcept
+  * #3807 also add explicit 'noexcept' to pxd
+  * #3807 add explicit 'noexcept'
+  * even the ones loosely matched should be listed
+  * make limit configurable
+  * partial revert of 6c924cb21f804568ff9586e16ded608898af84d6: exclude nvidia bits
+  * silence more linter warnings
+  * skip warnings with clang
+  * silence warnings
+  * #3703 add sample pkgconfig file
+  * cleanup
+  * css overrides belong in common
+  * #3809 the spinner code has been moved to gui
+  * #3808 also skip generating the 'xpra-codecs-nvidia' package on Fedora 38
+  * #3808 doh, workaround is needed for Fedora 38 and later
+  * #3808 explicitly disable nvidia for Fedora 38
+  * #3808 doh: actually add the patch
+  * #3808 build latest Cython for all Fedora builds
+  * #3808 disable CUDA and strict mode on Fedora 38, for now
+  * avoid warning, bundle the patch
+  * #3808 add py3.12 patch
+  * we don't want a python2 shebang
+  * convert to pkgconfig(lib)
+  * this is no longer necessary
+  * #3807 coerce setuptools
+  * match file renaming
+  * split xpra.buffers from modules
+  * simplify: use aliases for cython switch
+  * avoid errors if 'nvidia_codecs' value ends up being empty
+  * make it possible to build without cython
+  * detect cuda availability
+  * nvidia disabled disables cuda kernels and rebuild
+  * we need pkgconfig
+  * avoid warning
+  * this version does build OK
+  * make it possible to try cuda on unsupported platforms
+  * simplify nvidia toggle
+  * none of the RPM distros require the wrapper
+  * skip xsettings dpi when the x11 bindings are missing
+  * make more x11 bits optional
+  * we always need the logger
+  * minor linter warnings
+  * make it possible to run the shadow server without xpra-x11
+  * verify we have xpra-x11 for the subcommands that need it
+  * move gdk x11 display source init to a single location
+  * fix zero dimension check
+  * warn just once per missing encoding
+  * #3806 recommend some more gstreamer elements
+  * gtk3 graph was pointing to python3!
+  * we don't use private libraries any more
+  * we don't use private libraries any more
+  * doh: typo
+  * ignore another debuild generated file
+  * the binary versions should always match
+  * the default 'xpra' package should be mostly unchanged
+  * exclude extra codecs from codecs
+  * newish distros can have more codecs enabled
+  * this module should really be avoided
+  * we have to repeat ourselves
+  * libyuv is now available in newish distros
+  * typo
+  * split extra codecs into a new package
+  * no longer used
+  * move the systemd bits to xpra-server
+  * split the man pages into the sub-packages
+  * gstreamer codecs belong in codecs-extra
+  * even the readme should be installed with xpra-common
+  * the icons are in xpra-common now
+  * the xpra meta package should be empty
+  * xpra-x11 is not a hard dependency of the gtk3 client
+  * add explicit dependency on gtk3
+  * unused import
+  * #3802 pandoc is in the EPEL repos
+  * #3802 split X11 bindings to a separate package
+  * refresh patch context
+  * move gui commands to client-gtk3 and silence all lintian warnings
+  * ignore files generated by the debian build tools
+  * fix extended-description-is-empty linter warning
+  * simplify
+  * ignore nvidia codecs, which have their own package
+  * add missing notification screenshot, fix image paths
+  * move screenshots to github
+  * re-enable nvfbc
+  * #3797 split debian packaging
+  * oops: missed one more
+  * missed from client gui path refactoring
+  * f-stringify some more
+  * move more gtk ui bits to xpra-client-gtk3
+  * let %pycached take care of __pycache__
+  * last one missed?
+  * fix up refactored path to gobject client
+  * libspng is actually called libspng0, because reasons
+  * don't run tests on OracleLinux 8
+  * more useful validation message
+  * #3457 build avif codec on newish distros
+  * show which elements are missing
+  * add oraclelinux and CentOS stream repo files
+  * add repo files for RHEL clones
+  * make sure the version of the codecs package matches
+  * libspng is not in the bookworm repos yet
+  * libavif is in the EPEL repos
+  * we need to support libvpx 1.7 for RHEL 8 and clones
+  * ignore xpra.egg-info
+  * also use epel for those
+  * remove ffmpeg-xpra and x264-xpra from build lists
+  * this syntax avoids warnings
+  * we can always start remote servers
+  * #3797 split gtk3 client
+  * split problematic codecs into xpra-codecs-extras
+  * backing var had gone missing
+  * #3376 no need for a full backtrace for file paths errors
+  * add general env option to silence AT-SPI whining
+  * log which backend we're loading
+  * #3373 #3374 also add spng runtime dependency
+  * preserve ssl command line options when launching client
+  * minor fixes: missing import, clean each listener
+  * #3376 expose quic sockets as udp via mdns
+  * oops: missing import
+  * more linter warnings, force GTK v3
+  * make it possible to skip 'sha1'
+  * avoid errors if 'md5' has already been removed
+  * more linter warnings, force GTK v3
+  * fix linter warnings, force GTK v3
+  * fix usage from the command line
+  * import cleanups
+  * #3376 add dedicated documentation page for QUIC
+  * add sponsors info
+  * no need for a summary here
+  * Update System-Tray.md
+  * #3789 they've also changed the bindings name
+  * #3789 yuk: two version numbers as part of the package name
+  * #3789 hopefully one of these packages works
+  * Update encoder.py
+  * Remove stream-format=avc
+  * #3706 restore longer initial timeout
+  * add one more aac encoder option (untested)
+  * #3706 add NV12 input colorspace option for vaapi
+  * make it easier to choose which formats are enabled
+  * #3793 workaround even more exotic version strings
+  * server now correctly sends a fake challenge
+  * turn off subsystems we don't need
+  * try harder to get a valid window name to show
+  * useless statement could actually cause errors
+  * _NET_WM_NAME is in utf8
+  * update to new auth api and f-stringify
+  * only validate the caps when a challenge is required
+  * f-stringify
+  * #3790 add 'require-challenge' option for using the password in the command
+  * send fake challenge whenever needed
+  * f-stringify authentication logging
+  * the encodings mixin may not be loaded
+  * move profile function to a common location
+  * simplify and move default profile
+  * simplify
+  * oops add missing options argument
+  * #3706 make h264 encoding profile configurable
+  * move method to a re-usable function
+  * add link to the new graphs
+  * dependency graphs
+  * #3790 generic exec authentication module
+  * cosmetic
+  * #3776 only keep a single ui client when the session is unshared
+  * connection-lost handler would error
+  * #3373 / #3374 add spng for bookworm, sid and lunar
+  * add note on using ctypes
+  * we manage the buffer pointers ourselves
+  * only negative values are errors
+  * also enable codec check debug logging in verbose mode
+  * make the list of encodings more easily configurable
+  * make frame queue timeout configurable
+  * this fixes crashes, apparently
+
+-------------------------------------------------------------------
+Fri Mar 10 18:50:40 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 5.0+git20230310.df416a21:
+  * can only build 2022.1 on EL8
+  * don't show a useless message
+  * #3769 workaround GTK breakage
+  * #3784 handle memoryview clipboard data
+  * make it easier to override them all
+  * import from the correct location
+
+-------------------------------------------------------------------
+Mon Mar 06 20:14:21 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 5.0+git20230303.deed5680:
+  * #3781 set default username_format via env var
+  * fix focal beta component
+  * no longer needed either
+  * no longer needed
+  * downgrade since there are too many build issues
+  * Cython backwards compatibility: avoid 'noexcept'
+  * #3769 disable OpenGL on MacOS, again
+  * #3778 ':' is only needed if a password is also specified
+  * simplify: XXH64_hash_t is actually uint64_t
+  * make ScrollData optional
+  * validate Cython extension before enabling 'scroll'
+  * missed from b7481ea7d2ec1717f3ac6cd41a82f65812df62b5
+  * #3774 UInputPointerDevice must accept the props argument
+  * just remove $PYTHON and path to gtk-mac-bundler
+  * with newer versions of clang, ignore unreachable-code-fallthrough
+  * workaround new Cython 3.0.0b1 warning
+  * fix Cython 3.0.0b1 warnings: default to C++11
+  * #3390 simplify evdi build
+  * revert c3e17e3: prefer non-auto audio sinks
+  * #3774 also fix calls in the verify method
+  * #3774 match API change: removal of screen argument
+  * #3769 re-enable OpenGL on MacOS
+  * the bug has been "fixed" by downgrading libffi
+  * make it possible to override build options
+  * Cython 3.0.0b1 triggers -Wsign-compare warning on MS Windows
+  * ffmpeg 6.0 compatibility: these enums have been removed
+  * ffmpeg 6.0
+  * workaround new warning with Cython 3.0.0b1 on win32
+  * doh: apply patch for versions 0.x, add debug logging
+  * auto apply cython patch before running the unittests
+  * doh: older cython versions use 0.x numbers
+  * workaround for older versions of cython
+  * more correct exception values
+  * Cython 3.0.0b1 compatibility fix
+  * cython 3.0.0b1
+  * the jhbuild config goes into ~/.config
+  * the python_provide macro should be placed after version attributes
+  * add checksum verification step
+  * fix bogus changelog date
+  * add 3.1.x branch note
+  * ignore missing attributes on autoaudiosink
+  * move all non-auto sink attributes together
+  * autoaudiosink does not have an 'async' attribute
+  * gstreamer needs this env var
+  * gtk-mac-bundler wants an executable name here
+  * don't use hardcoded paths
+  * bootstrap is not part of "configure" step
+  * must bootstrap before we can update
+  * the custom config file path has moved
+  * fix script download
+  * oops: wrong version no
+  * pynvml 11.515.84
+  * add missing changelogs
+  * ffmpeg 5.1.2
+  * python3 pbr 5.11.1
+  * python3-lz4 4.3.2
+  * Cython 0.29.33
+  * nasm 2.16.01
+  * bump version
+  * pygtk support was removed a long time ago
+  * #3059 add missing prefix to env var names
+  * #3706 macos packaging of gstreamer video encoder dependencies
+  * vp9 fails mysteriously on MacOS, just skip it
+  * postponing this codec
+  * setDelegate_() is still causing crashes..
+  * we also need to silence cryptography on MacOS
+  * some libraries must be installed via pip3
+  * #3769 disable OpenGL on MacOS for now
+  * AppDelegate works with pyobjc 9.0.1
+  * current pyobjc crashes on 'setDelegate_'
+  * objc crashes if these objects are garbage collected
+  * tell gtk-mac-bundler we don't want gtk2
+  * use the git version of gtk-mac-bundler
+  * yet more breakage caused by setuptools
+  * set `SSL_CERT_FILE` and use our own copy of `gtk-osx-setup.sh`
+  * revert 613017eee596faf60565199de4439522b8bb5879 which broke the github CI
+  * handle version generic requests
+  * workaround more setuptools breakage
+  * the scripts directory was removed a long time ago
+  * #1598 try to enable nvfbc if needed
+  * forgot to update some paths in fa3e6ed7a02c4a5e8aef95102431c423df25c689
+  * #3767 hide pointer overlay when we're moving it
+  * add type hints and debug logging
+  * #3767 send the latest pointer-position to all clients
+  * cosmetic: f-string
+  * simplify
+  * #3592 use generic requests, remove legacy per-request flag
+  * #3592 handle 'exit' and 'stop' generic requests
+  * #3706 don't try vaapi on MS Windows and MacOS by default
+  * don't try to load pulseaudio bits on MacOS or MS Windows
+  * forgot to update MS Windows and MacOS shadow server API
+  * #3601 no longer needed
+  * try to make it clearer what is needed
+  * also skip empty dummy names, remove debug
+  * skip empty 'Canvas' line
+  * more readable repr string
+  * #3744 cleanup will call stop
+  * try to tidy up
+  * no need for a dict, add memleak referer debugging
+  * use filter(), better error messages, faster using set()
+  * #3744 re-work the encoding filtering
+  * show the gstreamer element in the encoder spec repr
+  * #3744 add more debug logging
+  * show the encoder element used
+  * the class instantiation may fail
+  * #3083 only source /etc/profile on Posix and not on MacOS
+  * remove unused import
+  * remove '64-bit'
+  * #3706 do enable vaapi when no nvidia hardware is found
+  * only enable an encoding if we have an encoder for it
+  * better use of new ExitCode enum
+  * distinguish network vs session connected state
+  * fix missing 'host' with ssh modes
+  * #721 disable openh264 for now
+  * should be able to copy errors and warnings
+  * typo
+  * fix 32-bit timestamp overflow giving negative values
+  * only round dimensions
+  * log the buggy dpi values
+  * don't use nvjpeg as video fallback encoding
+  * #1026 bump size limit
+  * use hex for xid, but only during output
+  * clarify that this is xpra's own tray menu
+  * more compatct debug logging
+  * allow more space for the new 'gstreamer' codec name
+  * give the real path to the script
+  * log the message given
+  * differentiate from plain 'jpeg' encoder
+  * only report scaling when used
+  * prefer large screen updates for 'desktop' content type
+  * filter the window's rgb formats, not just all potential formats
+  * rename method and simplify calculate_scaling
+  * favour video more if we have a hardware encoder
+  * remove warning level debug logging
+  * all desktop / monitor windows have a title
+  * we now allow negative coordinates
+  * some desktops may use negative coordinates
+  * #3750 freedesktop portal screencast support
+  * avoid log warning if the notification is simply closed
+  * move thread check to a utility method
+  * keep track of the keymap change timer
+  * split icon function
+  * every call to init_context should have a matching clean
+  * don't bother testing pipelines for elements we don't have
+  * always release the write lock safely
+  * choose shadow backend in platform code
+  * ignore if we double free the write lock
+  * #3750 stub screencast capture
+  * default implementation should be callable
+  * avoid errors when there is no keyboard config
+  * all get_keycode methods must now return a group
+  * fix MS Windows paths
+  * prettify win32 display names
+  * silence context messages - for now?
+  * split cursor function
+  * Always try to find headers from /usr/include, /usr/local/include on !WIN32
+  * sort the switches, must use 'globals' to find them
+  * #3539 add lunar, fix 'Components' cut&paste blooper
+  * #3750 win32 d3d11 and dx9 capture options
+  * latest GStreamer combined the elements
+  * silence linter warning
+  * MSYS2's openssl3 disables legacy modes but python3-cryptography checks them
+  * remove unused xid parameter, verify capture works before use
+  * make gstreamer capture code more re-usable
+  * python pbr 5.11.1
+  * pytools 2022.1.14
+  * new upstream snapshot
+  * pynvml 11.515.84
+  * #3706 same default stride rounding as what gstreamer expects
+  * #3747 a value means it exists
+  * #3706 restride the image if required
+  * #3754 refactoring: add utility buffer method
+  * #3706 we can and should use a full mask for RGB input formats
+  * #3573 try harder to find a valid menu prefix
+  * #3706 can't use a factory for codec_class
+  * #3539 add repository files so we can link to them reliably
+  * #3749 also use 'desktop-fullscreen' with shadow mode
+  * clarify what 'autoconnect' does
+  * add quic to transport options
+  * switch to IntEnum for exit codes
+  * use a separate sub-command for single-window
+  * don't try to setup ssh agent forwarding with shadow servers
+  * add backtrace at debug level
+  * #3749 mirror monitor layout when the client requests desktop-fullscreen
+  * cosmetic
+  * use legacy packet types until bugs are fixed
+  * fix debug logging erro
+  * Fix file name
+  * Fix links
+  * #3750 PoC GStreamer capture for X11
+  * log ImportError at debug level
+  * avoid f-string formatting error
+  * don't refresh the window models but continue to run the timer
+  * fix logging formatting error
+  * fix new-stream-sound on MS Windows
+  * import cleanup
+  * subprocesses take longer to start on MS Windows
+  * move new-stream-sound to a dedicated method
+  * paramiko can raise RuntimeException if it fails its self tests
+  * also bump minimum version here
+  * doh: typo
+  * only bail out if we are certain
+  * only bother trying to load drm on posix
+  * oops: match DLL name
+  * get sdk version early
+  * don't use markdown backticks in shell scripts
+  * tune vp9 so it doesn't timeout
+  * #3703 add video elements to binary builds
+  * #3703 add video elements to MacOS builds
+  * f-stringify add vp9, skip ffmpeg element on win32
+  * remove unused def, fixup vp9, fix vaapi check
+  * silence linter warning
+  * #3709 ship 'removesilence' element with binary builds
+  * unused import
+  * latest config files used for building
+  * move platform + cuda dispatching code in one place
+  * needed for building on MS Windows
+  * prefer 'autoaudiosink' on all platforms
+  * we want 'win' for MS Windows here
+  * fixup 5903bdd4d4ffbf19189fbcd6b1cc7497f01c1aff
+  * always use '-Wno-error=address' when compiling C++ on MS Windows
+  * (new?) extra missing dependencies
+  * #3703 working decoder (needs hooking up with cuda context)
+  * better debug logging + silence linter warning
+  * more loose matching
+  * more correct debug message wording
+  * always log full opengl backtrace at debug level
+  * more readable output format
+  * don't drop out of sequence numbers until properly fixed
+  * don't assume nvidia hardware is present
+  * skip comparing versions when empty
+  * fixup 5a0b8f7cefce366b844108f220f5f10a2a641902
+  * add debug logging
+  * silence warnings during initialization
+  * ignore empty lines (ie: env var)
+  * f-stringify
+  * skip individual gstreamer encoders that fail self-tests
+  * bump minimum requirements
+  * validate image size in NV12 path
+  * forgot to update path in full self test
+  * allow multiple encoder pseudo-classes per encoder module
+  * #3703 fix cpu / gpu cost if statement
+  * add more plugins for testing the new gstreamer encoder / decoder
+  * we need the python bindings
+  * this test data works with all decoders
+  * we know what you mean
+  * safer YUV values
+  * simplify: don't use 'global'
+  * try to figure out why this test fails on Ubuntu CI
+  * use safer / bigger test sizes
+  * clearer error messages
+  * simplify and remove failed encodings
+  * fail early if python-cryptography was not loaded properly
+  * warn just once
+  * better diagnostic messages
+  * match the requested desktop size exactly
+  * desktop model must call RandR directly
+  * #3703 add (unused) parser code
+  * add more test data
+  * always memset the struct before use
+  * oops: fixup test data format
+  * add more codec test data
+  * #3703 nvdec has a per-encoding minimum dimension
+  * more thorough decoder tests: multi-frames and different resolutions
+  * #3703 nvdec rounds up the height
+  * stop using nvdec if we hit cuda download errors
+  * #3703 fixed NV12-to-RGB shader usage
+  * #3703 nvdec cuda to opengl NV12
+  * make it possible to force a specific pixel format
+  * P10 formats also use more than one byte per pixel
+  * reduce amount of debug logging
+  * vaapi should be using the GPU
+  * make it easier to override the codecs we enable by default
+  * cosmetic
+  * #3703 make code more generic
+  * lower threshold for using hardware decoders
+  * #3703 add NV12 to RGB via libyuv (unscaled for now)
+  * #3703 use nvdec for jpeg (without opengl for now)
+  * use autoprefix when discarding module names
+  * fix linter warnings
+  * add type hints
+  * only YUV420 is subsampled vertically, YUV422 is not
+  * we _do_ support 'jpega'
+  * warn if an invalid codec name is used
+  * callbacks args can include pixel data (very large)
+  * match refactoring: moved to cuda context module
+  * simplify and make more robust
+  * fix content-type environment variable parsing
+  * #3703 add nvdec to registry
+  * #3703 download NV12 data to a host buffer
+  * include exception string
+  * avoid pixel format naming confusion
+  * some 'video' decoders handle picture formats like 'jpeg' and 'webp'
+  * make cuda image wrapper re-usable
+  * #3703 add cuda error strings
+  * #3703 use NV12 as output format
+  * make 'enc_', 'csc_' and 'dec_' prefixes optional
+  * #3734 basic openh264 encoder
+  * YUV422P does not subsample vertically, only YUV420P does
+  * better formatting
+  * #3738 show which Cython module is actually used
+  * #3738 executable needs shebang
+  * #3738 make it runnable for testing
+  * #3738 also update clean and ignore list
+  * Separate Cython extensions for libprocps/libproc2
+  * Fix dependencies for Debian stable
+  * Update proc Cython extension to use public API
+  * Update compilation settings for libproc2
+  * Update dependency on proc library
+  * disable all ffmpeg / nvidia codecs with one switch
+  * #3734 openh264 is only available in f37
+  * until we remove it, better have it installed
+  * #3734 forgot to specify which rpm it does into
+  * #3734 forgot to call Uninitialize - which frees the memory
+  * #3734 add openh264 decoder
+  * load all codecs before showing the list
+  * add validation message
+  * 'encoding' packet handler had gone MIA
+  * re-order imports
+  * use ints for timers and add type annotations
+  * nvenc can handle odd widths and heights
+  * re-use the same default cuda context in nvjpeg and nvdec
+  * handle None root window here too
+  * also enable individual codec module debug logging with '-v' / '--verbose'
+  * #3706 don't bother trying vaapi with nvidia by default
+  * #3706 add rpm dependencies
+  * more helpful error message
+  * Added check for MSYSTEM_CARCH environment variable
+  * add toggle for proxy encoder
+  * need gcc to build
+  * remove unnecessary f-string
+  * re-order imports
+  * oops: d7ce3926effe2c55085ae793734070c0ee57d2a7 already increases the frame counter
+  * #3706 expose 'frame' counter
+  * fixup c48a1f9eb98cb8938bd04e0b560f75bfb2dace8a: update unit test
+  * move utility functions
+  * oops: had removed install step
+  * remove rdf stuff and patch
+  * new upstream release: 4.3.2
+  * patches no longer required
+  * fail early if GStreamer is not found
+  * don't run the tests by default
+  * deal with missing menu items more gracefully
+  * pyopengl 3.1.6
+  * maintain current version externally with a symlink
+  * test all possible codec + chroma combinations
+  * need a cuda context to use nvdec
+  * use specific pkgconfig file for nvdec
+  * #3376 can't use datagram without changes to packet reception code
+  * group imports
+  * #1942 convert button-action to the more generic packet format
+  * #1942 turn 'packet-types' into a feature request
+  * once is enough
+  * #1942 let the server tell the client about its packet-types
+  * #1942 WIP conversion of pointer-position packets
+  * remote-logging should not be used with 'quic' debugging
+  * ninth time's the charm: format-of-override-files says this is correct?
+  * try once more to silence dumb debian linter
+  * oops - wrong location
+  * we get the libc6 dependency transitively
+  * try harder to tell lintian that it is wrong, not us
+  * #3493 packaging files had also been missed
+  * avoid description-synopsis-starts-with-article linter warning
+  * fix annoying and pointless python-package-missing-depends-on-python warning
+  * hide tests that don't work on Wayland
+  * better message
+  * add debug switch
+  * unused import
+  * enable faster codecs in some corner cases
+  * don't convert encodings to lowercase
+  * add encoding help entry for 'jpega'
+  * use more consistent naming and probe the actual encoder / decoder module
+  * prettify
+  * #3722 avoid warnings with newer versions of GTK3
+  * never send focus events for OR windows
+  * silence some minor linter warnings
+  * #3719 start_server_subprocess assumes the options have the correct type
+  * make debug make sense
+  * #3714 xi2 needs an X11 context error checker
+  * #3714 don't specify an encoding with binary IO
+  * don't specify an empty display for remote start
+  * add debug logging on function entry
+  * make it clearer that the distro is at fault here
+  * #3716 set both dpi coordinates
+  * #3701 paramiko is the new default for most installations
+  * python-pbr 5.11.0
+  * nasm 2.16
+  * pytools 2022.1.13
+  * ffmpeg 5.1.2
+  * pycuda 2022.2.2
+  * pycuda 2022.2.1
+  * #3651 dependency fixes
+  * path fixups
+  * #3709 switch to 'removesilence'
+  * safer and cheap to always audioconvert
+  * #3706 add 'av1' via gstreamer
+  * #3706 decode h264 via gst + avcodec
+  * #3706 we don't need videoconvert
+  * #3706 gstreamer decoder
+  * no longer needed
+  * missed from 531bbab34c21944f2755721dcc3c914a724e21fb which meant to move it
+  * #3706 use this encoder for vaapi
+  * #3706 try to avoid copying pixels too many times
+  * more readable diagnostics
+  * don't log pipeline stop events for video
+  * less confusing method name
+  * #3706 faster: remove queue, tune for speed, add selftest
+  * use the more standard spelling
+  * can dismiss the splash screen with a key press
+  * #3706 make it possible to choose the encoder plugin
+  * remove redundant enc prefix
+  * #3706 packaging for gstreamer encoder
+  * #3706 PoC gstreamer encoder
+  * the parser rejects zero size payload
+  * never send empty buffers
+  * only set CUDA_PATH when running from a frozen app
+  * fixup c2e317ac0c6b1894434a611cbad033dfe2089871
+  * pycuda already appends 'bin' to this path
+  * #3651 Debian packaging is a pain
+  * add 'HTTP' proxy type
+  * runner fix relative path to test file
+  * log the dpi actually used: calculate it
+  * #56 choose a higher default DPI for higher resolutions
+  * #56 honour dpi when setting initial resolution
+  * #3376 also avoid potential memoryview errors when using send_datagram
+  * #3376 send some packet types using datagram instead of stream
+  * unused import
+  * #3376 only servers can use send_push_promise
+  * someone tell pydev to stop adding random imports
+  * #3703 prepare most API calls
+  * forgot to update path to cups backend
+  * silence warning
+  * forgot to update this test for new write() signature
+  * #3703 stub nvdec decoder
+  * #3376 add quic to socket tests
+  * aioquic would try to load (anf fail) using an empty filename
+  * update test harness with new write() interface
+  * #3376 use separate streams for audio and ping
+  * 'legacy_frame_per_chunk' has already been removed
+  * remove unused var
+  * fix nvidia codec availability check
+  * #3695 use os.pathsep as path separator
+  * Handle missing display number
+
+-------------------------------------------------------------------
 Mon Jan 16 14:21:33 UTC 2023 - Stefan Schubert <schubi@suse.com>
 
 - Migration of PAM settings to /usr/lib/pam.d.

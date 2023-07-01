@@ -40,7 +40,7 @@
 %bcond_without qhull
 
 # FIXME Doesn't build with fPIC (it seems)
-%bcond_with ada
+%define ada_enabled 0
 
 %define X_display ":98"
 
@@ -54,6 +54,9 @@
 %define qt_shlib libplplotqt2
 %define wx_shlib libplplotwxwidgets1
 # DONT SPLIT OUT plplot-tcltk-libs INTO INDIVIDUAL SHARED LIBS AS THEY ARE ALL REQUIRED TOGETHER AND THEIR SO NUMBERING CHANGE IN-STEP WITH EACH OTHER
+
+# Until we have sip for python 3.11
+#%%define pythons python310
 
 Name:           plplot
 Version:        5.15.0
@@ -75,12 +78,14 @@ Patch3:         plplot-drop-FindLua-cmake-module.patch
 Patch4:         0001-Use-reentrant-libqhull_r-instead-of-deprecated-libqh.patch
 # PATCH-FIX-UPSTREAM support-python3-pythondemos.patch Use print function, so the script works with Python 3
 Patch5:         support-python3-pythondemos.patch
+# PATCH-FIX-UPSTREAM plplot-libharu-version-check.patch badshah400@gmail.com -- Include correct header for libharu version checks
+Patch6:         plplot-libharu-version-check.patch
 # List based on build_ada in gcc.spec
 ExclusiveArch:  %ix86 x86_64 ppc ppc64 ppc64le s390 s390x ia64 aarch64 riscv64
 BuildRequires:  cmake >= 3.13.2
 BuildRequires:  fdupes
 BuildRequires:  freefont
-%if %{with ada}
+%if 0%{?ada_enabled}
 BuildRequires:  gcc-ada
 %endif
 BuildRequires:  gcc-fortran >= 6
@@ -88,6 +93,7 @@ BuildRequires:  itcl-devel
 BuildRequires:  itk
 BuildRequires:  java-devel
 BuildRequires:  lapack-devel
+BuildRequires:  libharu-devel >= 2.3.0
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 %if %{with ocaml_camlidl}
@@ -96,13 +102,12 @@ BuildRequires:  ocaml-rpm-macros
 BuildRequires:  ocamlfind(camlidl)
 BuildRequires:  ocamlfind(findlib)
 %endif
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module qt5-devel}
+BuildRequires:  %{python_module sip4-devel if %python-base < 3.11}
 BuildRequires:  pkgconfig
-BuildRequires:  python3-devel
-BuildRequires:  python3-numpy-devel
-BuildRequires:  python3-qt5-devel
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
-BuildRequires:  python3-sip4-devel
-%endif
+BuildRequires:  python-rpm-macros
 %if %{with qhull}
 BuildRequires:  qhull-devel
 %endif
@@ -114,6 +119,7 @@ BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(gdlib)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangoft2)
 BuildRequires:  pkgconfig(shapelib)
@@ -122,16 +128,17 @@ BuildRequires:  hdf5-devel
 %if %{?octave_enabled}
 BuildRequires:  octave-devel
 %endif
-BuildRequires:  wxWidgets-devel >= 3
+BuildRequires:  wxGTK3-devel >= 3.1
 BuildRequires:  xorg-x11-server
 BuildRequires:  perl(XML::DOM)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(lasi)
 BuildRequires:  pkgconfig(lua)
-
 Requires:       libtool
-Requires:       python3-numpy
+Requires:       python-numpy
 Recommends:     %{name}-doc = %{version}
+%define python_subpackage_only 1
+%python_subpackages
 
 %description
 PLplot is a library of functions that are useful for making scientific
@@ -231,7 +238,7 @@ in C.
 %preun devel
 /sbin/install-info --delete %{_infodir}/plplotdoc.info %{_infodir}/dir
 
-%files devel -f %{name}.filelist.ocaml
+%files devel -f %{_builddir}/%{name}.filelist.ocaml
 %license COPYING.LIB Copyright
 %doc AUTHORS FAQ README README.release
 %{_bindir}/pltek
@@ -305,6 +312,7 @@ in C.
 Summary:        Documentation for PLplot and its bindings
 License:        LGPL-2.1-or-later
 Group:          Documentation/Other
+BuildArch:      noarch
 
 %description doc
 PLplot is a library of functions that are useful for making scientific
@@ -318,7 +326,7 @@ modules.
 %{_docdir}/%{name}-doc/*
 ##########################################################################
 
-%if %{with ada}
+%if 0%{?ada_enabled}
 %package -n %{ada_shlib}
 ##########################################################################
 Summary:        Shared libraries for PLplot's Ada bindings
@@ -503,25 +511,52 @@ plotting with Octave.
 %endif
 ##########################################################################
 
-%package python3-qt
+%if "%{python_flavor}" != "python311"
+%package -n python-plplot-pyqt5
 ##########################################################################
-Summary:        PLplot functions for scientific plotting with python-qt4
+Summary:        PLplot functions for scientific plotting with python-qt5
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Python
 Requires:       %{name}-common = %{version}
-Requires:       python3-qt5
+Requires:       python-qt5
+# Python 3.10 is the last version of Python with sip4 support
+%if "%{python_flavor}" == "python3" || "%{python_flavor}" == "python310"
+Obsoletes:      plplot-python3-qt < %{version}-%{release}
+Provides:       plplot-python3-qt = %{version}-%{release}
+Recommends:     plplot-pyqt5-cmake
+%endif
 
-%description python3-qt
+%description -n python-plplot-pyqt5
 PLplot is a library of functions that are useful for making scientific
 plots.
 
 This package provides the PLplot functions required for scientific
 plotting with python-qt.
 
-%files python3-qt
-%{python3_sitearch}/plplot_pyqt5.so
+%files %{python_files plplot-pyqt5}
+%{python_sitearch}/plplot_pyqt5.so
+%endif
+##########################################################################
+
+%package -n plplot-pyqt5-cmake
+##########################################################################
+Summary:        PLplot functions for scientific plotting with python-qt5
+License:        LGPL-2.1-or-later
+Group:          Development/Libraries/Python
+Requires:       python3-plplot-pyqt5
+
+%description -n plplot-pyqt5-cmake
+PLplot is a library of functions that are useful for making scientific
+plots.
+
+This package provides the cmake files optionally required for building
+cmake based projects with plplot-pyqt5.
+
+%if ("%{python_flavor}" == "python3" || "%{python_provides}" == "python3") && "%{python_flavor}" != "python311"
+%files -n plplot-pyqt5-cmake
 %{_libdir}/cmake/plplot/export_plplot_pyqt5.cmake
 %{_libdir}/cmake/plplot/export_plplot_pyqt5-*.cmake
+%endif
 ##########################################################################
 
 %package -n %{qt_shlib}
@@ -655,9 +690,9 @@ This package provides the development files for using PLplot with Tcl/Tk.
 %{_libdir}/cmake/plplot/export_plplottcltk-*.cmake
 %{_libdir}/cmake/plplot/export_Pltk_init.cmake
 %{_libdir}/cmake/plplot/export_Pltk_init-*.cmake
-%{python3_sitearch}/Plframe.py*
-%{python3_sitearch}/TclSup.py*
-%{python3_sitearch}/*Pltk_init.*
+%{python_sitearch}/Plframe.py*
+%{python_sitearch}/TclSup.py*
+%{python_sitearch}/*Pltk_init.*
 %endif
 
 ##########################################################################
@@ -858,29 +893,35 @@ This package provides the shared lib for PLplot's qsatime.
 %{_libdir}/libqsastime.so.*
 ##########################################################################
 
-%package -n python3-%{name}
+%package -n python-%{name}
 ##########################################################################
 Summary:        PLplot functions for scientific plotting with Python
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 Requires:       %{name}-common = %{version}
-Provides:       python-%{name}
+Requires:       python-base
+Requires:       python-numpy
+# For update from the last python3-plplot package built against python3.10
+%if "%{python_flavor}" == "python310"
+Conflicts:      python3-%{name} < %{version}-%{release}
+%endif
+%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
+Obsoletes:      python3-%{name} < %{version}-%{release}
+Provides:       python3-%{name} = %{version}-%{release}
+%endif
 
-%description -n python3-%{name}
+%description -n python-%{name}
 PLplot is a library of functions that are useful for making scientific
 plots.
 
 This package provides the PLplot's Python binding.
 
-%files -n python3-%{name}
-%{python3_sitearch}/_plplotc.so
-%{python3_sitearch}/plplot.py*
-%{python3_sitearch}/plplotc.py*
-%{python3_sitearch}/_plplotc.so
-%{python3_sitearch}/plplot.py*
-%{python3_sitearch}/plplotc.py*
-%{_datadir}/plplot%{version}/examples/python/
-%{_datadir}/plplot%{version}/examples/test_python.sh
+%files %{python_files %{name}}
+%{python_sitearch}/_plplotc.so
+%{python_sitearch}/plplot.py
+%{python_sitearch}/plplotc.py
+%{_datadir}/plplot%{version}/examples/python%{python_version}/
+%{_datadir}/plplot%{version}/examples/test_python%{python_version}.sh
 ##########################################################################
 
 %package driver-cairo
@@ -921,6 +962,26 @@ This package provides the ntk driver for plotting using PLplot.
 %{_libdir}/plplot%{version}/drivers/ntk.so
 %{_libdir}/cmake/plplot/export_ntk.cmake
 %{_libdir}/cmake/plplot/export_ntk-*.cmake
+##########################################################################
+
+%package driver-pdf
+##########################################################################
+Summary:        PLplot driver using the pdf backend
+License:        LGPL-2.1-or-later
+Group:          System/Libraries
+Requires:       plplot-common = %{version}
+
+%description driver-pdf
+PLplot is a library of functions that are useful for making scientific
+plots.
+
+This package provides the pdf driver for plotting using PLplot.
+
+%files driver-pdf
+%{_libdir}/plplot%{version}/drivers/pdf.driver_info
+%{_libdir}/plplot%{version}/drivers/pdf.so
+%{_libdir}/cmake/plplot/export_pdf.cmake
+%{_libdir}/cmake/plplot/export_pdf-*.cmake
 ##########################################################################
 
 %package driver-ps
@@ -1045,56 +1106,94 @@ export DISPLAY=%{X_display}
 Xvfb -noreset %{X_display} >& Xvfb.log &
 trap "kill $! || true" EXIT
 sleep 5
-%cmake \
-        -DCMAKE_INSTALL_LIBDIR:PATH=%{_libdir} \
-        -DENABLE_compiler_diagnostics=ON \
-        -DPL_FREETYPE_FONT_PATH:PATH="%{_datadir}/fonts/truetype" \
-        -DUSE_RPATH:BOOL=OFF \
-        -DCMAKE_SKIP_RPATH:BOOL=OFF \
-        -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
-        -DENABLE_ada:BOOL=%{?with_ada:ON}%{!?with_ada:OFF} \
-%if 0%{?octave_enabled}
-        -DENABLE_octave:BOOL=ON \
-        -DTRY_OCTAVE4=ON \
-%else
-        -DENABLE_octave:BOOL=OFF \
-%endif
-        -DENABLE_d:BOOL=ON \
+%{python_expand #Set the $python var
+# Define cmake common opts
+export CMAKE_COMMON_OPTS="-DCMAKE_INSTALL_LIBDIR:PATH=%{_libdir} \
+-DENABLE_compiler_diagnostics=ON \
+-DPL_FREETYPE_FONT_PATH:PATH=\"%{_datadir}/fonts/truetype\" \
+-DUSE_RPATH:BOOL=OFF \
+-DCMAKE_SKIP_RPATH:BOOL=OFF \
+-DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
+-DBUILD_DOC:BOOL=OFF \
+-DBUILD_TEST:BOOL=ON  \
+-DENABLE_python:BOOL=ON \
+-DENABLE_qt:BOOL=ON \
+-DPLPLOT_PYTHON_EXACT_VERSION=%{$python_version} \
+-DPLPLOT_USE_QT5:BOOL=ON \
+-DPLD_pdfcairo:BOOL=ON \
+-DPLD_pngcairo:BOOL=ON \
+-DPLD_pscairo:BOOL=ON \
+-DPLD_epscairo:BOOL=ON \
+-DPLD_svgcairo:BOOL=ON \
+-DPLD_epsqt:BOOL=OFF \
+-DPLD_pdfqt:BOOL=ON \
+-DPLD_bmpqt:BOOL=ON \
+-DPLD_jpgqt:BOOL=ON \
+-DPLD_pngqt:BOOL=ON \
+-DPLD_ppmqt:BOOL=ON \
+-DPLD_tiffqt:BOOL=ON \
+-DPLD_svgqt:BOOL=ON \
+-DPLD_pdf:BOOL=ON \
+-DPLD_ps:BOOL=ON \
+-DPLD_psc:BOOL=ON \
+-DPLD_psttf:BOOL=ON \
+-DPLD_psttfc:BOOL=ON \
+-DPLD_qtwidget:BOOL=ON \
+-DPLD_svg:BOOL=ON \
+-DPLD_xfig:BOOL=ON \
+-DPLD_xcairo:BOOL=ON \
+-DPLD_extcairo:BOOL=ON \
+-DPLD_extqt:BOOL=ON \
+-DPLD_wxpng:BOOL=OFF \
+-DPLD_wxwidgets:BOOL=ON
+"
+
+mkdir ../$python
+cp -pr ./* ../$python
+pushd ../$python
+if [ ${python_flavor} = python311 ]; then
+  export CMAKE_COMMON_OPTS="${CMAKE_COMMON_OPTS} -DENABLE_pyqt5:BOOL=OFF"
+else
+  export CMAKE_COMMON_OPTS="${CMAKE_COMMON_OPTS} -DENABLE_pyqt5:BOOL=ON"
+fi
+%cmake ${CMAKE_COMMON_OPTS} \
+%if "$python_" == "python3_" || "%{$python_provides}" == "python3"
+        -DENABLE_ada:BOOL=%{?ada_enabled:ON}%{!?ada_enabled:OFF} \
+        -DENABLE_cxx:BOOL=ON \
+        -DENABLE_d:BOOL=OFF \
+        -DENABLE_fortran:BOOL=ON \
         -DENABLE_itcl:BOOL=ON \
-%if 0%{?tk_enabled}
-        -DENABLE_itk:BOOL=ON \
-        -DENABLE_tk:BOOL=ON \
-%else
-        -DENABLE_itk:BOOL=OFF \
-        -DENABLE_tk:BOOL=OFF \
-%endif
-%if %{with ocaml_camlidl}
-        -DENABLE_ocaml:BOOL=ON \
-%else
-        -DENABLE_ocaml:BOOL=OFF \
-%endif
-        -DPLD_aqt:BOOL=ON \
-        -DPLD_plmeta:BOOL=OFF \
-        -DPLD_svg:BOOL=ON \
-        -DPLD_wxwidgets:BOOL=ON \
-        -DBUILD_DOC:BOOL=OFF \
-        -DPREBUILT_DOC:BOOL=ON \
-        -DJAVAWRAPPER_DIR:PATH="%{_libdir}/plplot%{version}" \
-        -DBUILD_TEST:BOOL=ON  \
+        -DENABLE_itk:BOOL=%{?tk_enabled:ON}%{!?tk_enabled:OFF} \
+        -DENABLE_java:BOOL=ON \
         -DENABLE_lua:BOOL=ON \
-        -DPLPLOT_USE_QT5:BOOL=ON
+        -DENABLE_ocaml:BOOL=%{?with_ocaml_camlidl:ON}%{!?with_ocaml_camlidl:OFF} \
+        -DENABLE_octave:BOOL=%{?octave_enabled:ON}%{!?octave_enabled:OFF} \
+        -DENABLE_tcl:BOOL=ON \
+        -DENABLE_tk:BOOL=%{?tk_enabled:ON}%{!?tk_enabled:OFF} \
+        -DENABLE_wxwidgets:BOOL=ON \
+        -DPREBUILT_DOC:BOOL=ON \
+				-DJAVAWRAPPER_DIR:PATH="%{_libdir}/plplot%{version}" \
+        -DTRY_OCTAVE4=ON
+%else
+        -DDEFAULT_NO_BINDINGS:BOOL=ON \
+        -DPREBUILT_DOC:BOOL=OFF
+%endif
 
 %cmake_build
+popd
+}
 
 %install
+%{python_expand pushd ../$python
 %cmake_install
-> %{name}.filelist.ocaml
+> %{_builddir}/%{name}.filelist.ocaml
 %if %{with ocaml_camlidl}
 : creating '%{name}.files' and '%{name}.files.devel'
 %ocaml_create_file_list
-mv %{name}.files.devel %{name}.filelist.ocaml
+mv %{name}.files.devel %{_builddir}/%{name}.filelist.ocaml
 %endif
 
+%if "$python_" == "python3_" || "%{$python_provides}" == "python3"
 # Fix up tclIndex files so they are the same on all builds
 for file in %{buildroot}%{_datadir}/plplot%{version}/examples/*/tclIndex
 do
@@ -1127,21 +1226,42 @@ chmod +x %{buildroot}%{_datadir}/%{name}%{version}/examples/tk/tk03
 #Remove a fortran static library
 rm %{buildroot}%{_libdir}/libplfortrandemolib*.a
 
-#Fix python hashbangs for examples (/usr/bin/env python -> /usr/bin/python3)
-sed -i "1{s/\/usr\/bin\/env python/\/usr\/bin\/python3/;}" %{buildroot}%{_datadir}/%{name}%{version}/examples/python/x*
-sed -i "1{s/\/usr\/bin\/env python/\/usr\/bin\/python3/;}" %{buildroot}%{_datadir}/%{name}%{version}/examples/python/*.py
-sed -i "1{s/\/usr\/bin\/env python/\/usr\/bin\/python3/;}" %{buildroot}%{_datadir}/%{name}%{version}/examples/python/pytkdemo
+sed -i "1{s@/usr/bin/env python@%{_bindir}/python%{$python_bin_suffix}@;}" %{buildroot}%{_datadir}/%{name}%{version}/examples/python/pytkdemo
+%endif
+
+#Fix python hashbangs for examples (/usr/bin/env python -> /usr/bin/pythonX.Y)
+sed -i "1{s@/usr/bin/env python@%{_bindir}/python%{$python_bin_suffix}@;}" %{buildroot}%{_datadir}/%{name}%{version}/examples/python/x*
+sed -i "1{s@/usr/bin/env python@%{_bindir}/python%{$python_bin_suffix}@;}" %{buildroot}%{_datadir}/%{name}%{version}/examples/python/*.py
+
+# Move examples to versioned python dirs
+mv %{buildroot}%{_datadir}/plplot%{version}/examples/python \
+   %{buildroot}%{_datadir}/plplot%{version}/examples/python%{$python_version}
+mv %{buildroot}%{_datadir}/plplot%{version}/examples/test_python.sh \
+   %{buildroot}%{_datadir}/plplot%{version}/examples/test_python%{$python_version}.sh
+
+# Only keep for primary flavour
+if [ "${python_flavor}" != "python3" ] && [ "%{$python_provides}" != "python3" ]
+then
+  rm %{buildroot}%{_libdir}/cmake/plplot/export_plplot_pyqt5*.cmake
+fi
 
 %fdupes %{buildroot}%{_datadir}/
+popd
+}
 
 %check
-pushd %__builddir
 export DISPLAY=%{X_display}
 Xvfb %{X_display} >& Xvfb.log &
+trap "kill $! || true" EXIT
 sleep 5
+%{python_expand pushd ../$python
+cd %__builddir
 # Octave tests fail, known issue with tests
 # Qt tests fail on Xvfb
+# Avoid fontconfig warnings about un-writable cache dirs by setting HOME to pwd
+export HOME=.
 ctest -V -E "octave|qt" %{?_smp_mflags}
 popd
+}
 
 %changelog

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 30 05:16:29 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.1.1:
+  * Fixed `validate` `extra_validators` parameter. :pr:`548`
+  * Drop support for Python 3.6.
+  * ``validate_on_submit`` takes a ``extra_validators`` parameters :pr:`479`
+  * Stop supporting Flask-Babelex :pr:`540`
+  * Support for python 3.11 :pr:`542`
+  * Remove unused call to `JSONEncoder` :pr:`536`
+- Add patch flask-2.3-support.patch:
+  * Support Flask 2.3 changes.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Sat Apr  9 02:30:54 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - update to version 1.0.1:

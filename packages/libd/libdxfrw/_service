@@ -4,9 +4,10 @@
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">libdxfrw</param>
+    <param name="revision">LibreCAD_2</param>
     <param name="versionformat">@PARENT_TAG@+git.%cd</param>
-    <param name="versionrewrite-pattern">-</param>
-    <param name="versionrewrite-replacement">~</param>
+    <param name="versionrewrite-pattern">LC</param>
+    <param name="versionrewrite-replacement"></param>
   </service>
   <service mode="disabled" name="set_version"/>
   <service name="tar" mode="buildtime"/>

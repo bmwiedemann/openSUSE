@@ -626,4 +626,16 @@ last submission had wrong tar ball for unknown reason</comment>
   * skip debian.lintian-overrides as well</comment>
     <requestid>1085032</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>d8da4eb5bebabf223c24cd673968b5c0</srcmd5>
+    <version>0.31</version>
+    <time>1688148009</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.31:
+  * Also ignore .gitattributes file
+  * Exempt obs services from the cargo audit requirement
+  * helpers/spec_query: Handle %include
+  * Unify _multibuild handling and do it like OBS</comment>
+    <requestid>1096177</requestid>
+  </revision>
 </revisionlist>

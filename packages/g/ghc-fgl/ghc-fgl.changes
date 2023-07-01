@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 22 19:46:07 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update fgl to version 5.8.0.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:06:46 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

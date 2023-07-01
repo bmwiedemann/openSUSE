@@ -18,17 +18,17 @@
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define sover 3_21_12
 %define tarname protobuf
-%define src_install_dir %{_prefix}/src/%{name}
 %define extra_java_flags -source 7 -target 7
 # requires gmock, which is not yet in the distribution
 %bcond_with    check
 %bcond_without java
-%bcond_without python2
 %bcond_without python3
 Name:           protobuf
-Version:        21.12
+Version:        22.5
+# python module have their own version specified in python/google/protobuf/__init__.py
+%global         gversion 22.5
+%global         sover 22_5_0
 Release:        0
 Summary:        Protocol Buffers - Google's data interchange format
 License:        BSD-3-Clause
@@ -38,17 +38,17 @@ Source0:        https://github.com/protocolbuffers/protobuf/archive/v%{version}.
 Source1:        manifest.txt.in
 Source2:        baselibs.conf
 Source1000:     %{name}-rpmlintrc
-Patch0:         gcc12-disable-__constinit-with-c++-11.patch
-# https://github.com/protocolbuffers/protobuf/pull/10355
-Patch1:         10355.patch
+Patch0:         add-missing-stdint-header.patch
+# PATCH-FIX-UPSTREAM https://github.com/protocolbuffers/protobuf/commit/4329fde9cf3fab7d1b3a9abe0fbeee1ad8a8b111
+Patch1:         0001-Use-the-same-ABI-for-static-and-shared-libraries-on-.patch
+BuildRequires:  %{python_module abseil}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  autoconf
-BuildRequires:  automake
+BuildRequires:  abseil-cpp-devel >= 20230125
+BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(zlib)
@@ -105,29 +105,39 @@ RPC protocols and file formats.
 %package devel
 Summary:        Header files, libraries and development documentation for %{name}
 Group:          Development/Libraries/C and C++
+Requires:       abseil-cpp-devel >= 20230125
 Requires:       gcc-c++
-Requires:       libprotobuf%{sover} = %{version}
+Requires:       libprotobuf%{sover} = %{gversion}
 Requires:       libprotobuf-lite%{sover}
 Requires:       pkgconfig(zlib)
 Conflicts:      protobuf2-devel
-Provides:       libprotobuf-devel = %{version}
+Conflicts:      protobuf21-devel
+Provides:       libprotobuf-devel = %{gversion}
 
 %description devel
 Protocol Buffers are a way of encoding structured data in an efficient yet
 extensible format. Google uses Protocol Buffers for almost all of its internal
 RPC protocols and file formats.
 
-%package source
-Summary:        Source code of protobuf
-Group:          Development/Sources
-BuildArch:      noarch
+%if 0%{?python_subpackage_only}
+%package -n python-%{name}
+Version:        4.%{gversion}
+Summary:        Python Bindings for Google Protocol Buffers
+Group:          Development/Libraries/Python
 
-%description source
-Protocol Buffers are a way of encoding structured data in an efficient yet
-extensible format. Google uses Protocol Buffers for almost all of its internal
-RPC protocols and file formats.
+%description -n python-%{name}
+This package contains the Python bindings for Google Protocol Buffers.
 
-This package contains source code for Protocol Buffers.
+%else
+
+%package -n python3-%{name}
+Version:        4.%{gversion}
+Summary:        Python3 Bindings for Google Protocol Buffers
+Group:          Development/Libraries/Python
+
+%description -n python3-%{name}
+This package contains the Python bindings for Google Protocol Buffers.
+%endif
 
 %package -n %{name}-java
 Summary:        Java Bindings for Google Protocol Buffers
@@ -137,44 +147,14 @@ Requires:       java >= 1.6.0
 %description -n %{name}-java
 This package contains the Java bindings for Google Protocol Buffers.
 
-%if 0%{?python_subpackage_only}
-%package -n python-%{name}
-Summary:        Python Bindings for Google Protocol Buffers
-Group:          Development/Libraries/Python
-Requires:       python-six >= 1.9
-
-%description -n python-%{name}
-This package contains the Python bindings for Google Protocol Buffers.
-
-%else
-
-%package -n python2-%{name}
-Summary:        Python2 Bindings for Google Protocol Buffers
-Group:          Development/Libraries/Python
-Provides:       python-%{name} = %{version}
-Obsoletes:      python-%{name} < %{version}
-Requires:       python2-six >= 1.9
-
-%description -n python2-%{name}
-This package contains the Python bindings for Google Protocol Buffers.
-
-%package -n python3-%{name}
-Summary:        Python3 Bindings for Google Protocol Buffers
-Group:          Development/Libraries/Python
-Requires:       python3-six >= 1.9
-
-%description -n python3-%{name}
-This package contains the Python bindings for Google Protocol Buffers.
-%endif
-
 %prep
-%autosetup -p1 -n %{tarname}-%{version}
+%autosetup -p1 -n %{tarname}-%{gversion}
 
 # The previous blank line is crucial for older system being able
 # to use the autosetup macro
 mkdir gmock
 
-%if %{with python2} || %{with python3}
+%if %{with python3}
 # only needed for test suite which we don't call anyways.
 # googleapis is broken on sle12
 sed -i '/apputils/d' python/setup.py
@@ -184,15 +164,17 @@ sed -i '/google_test_dir/d' python/setup.py
 sed -i -e '/env python/d' python/google/protobuf/internal/*.py
 
 %build
-autoreconf -fvi
-%configure \
-	--disable-static
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 
-%make_build
+# tests are not part of offical tar ball
+%cmake \
+  -Dprotobuf_BUILD_TESTS=OFF \
+  -Dprotobuf_ABSL_PROVIDER=package
+%cmake_build
 
 %if %{with java}
-pushd java
-../src/protoc --java_out=core/src/main/java -I../src ../src/google/protobuf/descriptor.proto
+pushd ../java
+../build/protoc --java_out=core/src/main/java -I../src ../src/google/protobuf/descriptor.proto
 mkdir classes
 javac %{extra_java_flags} -d classes core/src/main/java/com/google/protobuf/*.java
 sed -e 's/@VERSION@/%{version}/' < %{SOURCE1} > manifest.txt
@@ -200,7 +182,8 @@ jar cfm %{name}-java-%{version}.jar manifest.txt -C classes com
 popd
 %endif
 
-pushd python
+pushd ../python
+export PROTOC=../build/protoc
 %python_build
 popd
 
@@ -210,10 +193,8 @@ popd
 %endif
 
 %install
-%make_install
+%cmake_install
 install -Dm 0644 editors/proto.vim %{buildroot}%{_datadir}/vim/site/syntax/proto.vim
-# no need for that
-find %{buildroot} -type f -name "*.la" -delete -print
 
 %if %{with java}
 pushd java
@@ -229,26 +210,10 @@ popd
 %endif
 
 pushd python
+export PROTOC=../build/protoc
 %python_install
 popd
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-
-mkdir -p %{buildroot}%{src_install_dir}
-tar -xzf %{SOURCE0} --strip-components=1 -C %{buildroot}%{src_install_dir}
-%fdupes %{buildroot}%{src_install_dir}
-# Fix env-script-interpreter rpmlint error
-find %{buildroot}%{src_install_dir} -type f -name "*.js" -exec sed -i 's|#!.*%{_bindir}/env node|#!%{_bindir}/node|' "{}" +
-find %{buildroot}%{src_install_dir} -type f -name "*.py" -exec sed -i 's|#!.*%{_bindir}/env python2.7|#!%{_bindir}/python2.7|' "{}" +
-find %{buildroot}%{src_install_dir} -type f -name "*.py" -exec sed -i 's|#!.*%{_bindir}/env python|#!%{_bindir}/python|' "{}" +
-find %{buildroot}%{src_install_dir} -type f -name "*.rb" -exec sed -i 's|#!.*%{_bindir}/env ruby|#!%{_bindir}/ruby|' "{}" +
-find %{buildroot}%{src_install_dir} -type f -name "*.sh" -exec sed -i 's|#!.*%{_bindir}/env bash|#!/bin/bash|' "{}" +
-# And stop requiring ridiculously old Python version
-find %{buildroot}%{src_install_dir} -type f -name "*.py" -exec sed -i 's|#!%{_bindir}/python2.4|#!%{_bindir}/python2.7|' "{}" +
-# Fix spurious-executable-perm rpmlint error
-chmod -x %{buildroot}%{src_install_dir}/src/google/protobuf/arenastring.h
-chmod -x %{buildroot}%{src_install_dir}/src/google/protobuf/reflection.h
-# Fix version-control-internal-file rpmlint warning
-find %{buildroot}%{src_install_dir} -type f -name ".gitignore" -exec rm -f "{}" +
 
 %fdupes %{buildroot}%{_prefix}
 
@@ -261,42 +226,41 @@ find %{buildroot}%{src_install_dir} -type f -name ".gitignore" -exec rm -f "{}" 
 
 %files -n libprotobuf%{sover}
 %license LICENSE
-%{_libdir}/libprotobuf-3.%{version}.so
+%{_libdir}/libprotobuf.so.%{gversion}.0
 
 %files -n libprotoc%{sover}
-%{_libdir}/libprotoc-3.%{version}.so
+%{_libdir}/libprotoc.so.%{gversion}.0
 
 %files -n libprotobuf-lite%{sover}
-%{_libdir}/libprotobuf-lite-3.%{version}.so
+%{_libdir}/libprotobuf-lite.so.%{gversion}.0
 
 %files devel
-%doc CHANGES.txt CONTRIBUTORS.txt README.md
-%{_bindir}/protoc
+%doc CONTRIBUTORS.txt README.md
+%{_bindir}/protoc*
 %{_includedir}/google
+%{_includedir}/*.h
+%{_libdir}/cmake/protobuf
+%{_libdir}/cmake/utf8_range
 %{_libdir}/pkgconfig/*
 %{_libdir}/libprotobuf-lite.so
 %{_libdir}/libprotobuf.so
 %{_libdir}/libprotoc.so
+%{_libdir}/libutf8_range.a
+%{_libdir}/libutf8_validity.a
 %{_datadir}/vim
-
-%files source
-%{src_install_dir}
 
 %if %{with java}
 %files -n %{name}-java -f java/.mfiles
 %{_javadir}/%{name}.jar
 %endif
 
-%if %{with python2} && ! 0%{?python_subpackage_only}
-%files -n python2-%{name}
-%license LICENSE
-%{python2_sitelib}/*
-%endif
-
-%if %{with python3} || ( %{with python2} && 0%{?python_subpackage_only} )
+%if %{with python3}
 %files %{python_files %{name}}
 %license LICENSE
-%{python_sitelib}/*
+%dir %{python_sitelib}/google
+%{python_sitelib}/google/protobuf
+%{python_sitelib}/protobuf*nspkg.pth
+%{python_sitelib}/protobuf*info
 %endif
 
 %changelog

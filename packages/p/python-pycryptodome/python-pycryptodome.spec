@@ -18,6 +18,7 @@
 
 %define oldpython python
 %define min_version %{lua:rpm.expand("%{version}"):gsub("^(%d+%.%d+).*", "%1")}
+%{?sle15_python_module_pythons}
 Name:           python-pycryptodome
 Version:        3.18.0
 Release:        0

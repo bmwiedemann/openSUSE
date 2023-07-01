@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun 25 15:57:57 UTC 2023 - Niklas Haas <obs@haasn.xyz>
+
+- Fix systemd unit file patch to properly apply hardening even
+  when building with avahi enabled (as present in the spec), and also
+  fix hardening patch to not restrict realtime priority.
+
+-------------------------------------------------------------------
+Sun Jun 25 15:37:02 UTC 2023 - Niklas Haas <obs@haasn.xyz>
+
+- Update to use Airplay 2 protocol.
+
+-------------------------------------------------------------------
 Sun Jun 25 11:44:48 UTC 2023 - Niklas Haas <obs@haasn.xyz>
 
 - Add pipewire audio output support.

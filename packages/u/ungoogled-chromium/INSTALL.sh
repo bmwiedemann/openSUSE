@@ -90,6 +90,18 @@ sed -e 's|${ICD_LIBRARY_PATH}|./libvk_swiftshader.so|g' third_party/swiftshader/
 # Install the ICD json file to point ANGLE to libvk_swiftshader.so
 install -m 644 "${OUTPUTDIR}/vk_swiftshader_icd.json" "${STAGEDIR}/${INSTALLDIR}/"
 
+# QT shim
+if [ -f "${OUTPUTDIR}/libqt5_shim.so" ]; then
+  file="libqt5_shim.so"
+  buildfile="${OUTPUTDIR}/${file}"
+  install -m ${SHLIB_PERMS} "${buildfile}" "${STAGEDIR}/${INSTALLDIR}/${file}"
+fi
+if [ -f "${OUTPUTDIR}/libqt6_shim.so" ]; then
+  file="libqt6_shim.so"
+  buildfile="${OUTPUTDIR}/${file}"
+  install -m ${SHLIB_PERMS} "${buildfile}" "${STAGEDIR}/${INSTALLDIR}/${file}"
+fi
+
 # default apps
 if [ -d "${OUTPUTDIR}/default_apps" ]; then
     cp -a "${OUTPUTDIR}/default_apps" "${STAGEDIR}/${INSTALLDIR}/"

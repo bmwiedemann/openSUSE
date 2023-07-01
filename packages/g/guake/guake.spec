@@ -16,83 +16,101 @@
 #
 
 
+# Need to re-define pythons to get pyproject_* macros working
+%define pythons python3
 Name:           guake
-Version:        3.9.0
+Version:        3.10
 Release:        0
 Summary:        Drop-down terminal for GNOME
-License:        GPL-2.0-only
-Group:          System/X11/Terminals
+License:        GPL-2.0-or-later
 URL:            http://guake-project.org/
-# Use PyPI source, not GitHub tag-ref tarballs, see https://guake.readthedocs.io/en/latest/user/installing.html#install-from-source
-Source0:        https://files.pythonhosted.org/packages/source/g/%{name}/%{name}-%{version}.tar.gz
-# PyPI tarball missed this file
+Source0:        https://files.pythonhosted.org/packages/source/g/guake/guake-%{version}.tar.gz
+# Needed to install desktop app supporting files to FHS location; the PyPI
+# source misses this, being geared towards installing everything to python module dir
 Source1:        https://raw.githubusercontent.com/Guake/guake/%{version}/guake/paths.py.in
-BuildRequires:  desktop-file-utils
+Source2:        %{name}.rpmlintrc
+# PATCH-FEATURE-OPENSUSE guake-Makefile-generate-install-paths.patch badshah400@gmail.com -- Ensure data paths in python script point to the correct system installed paths
+Patch0:         guake-Makefile-generate-install-paths.patch
 BuildRequires:  fdupes
-BuildRequires:  gettext-tools
 BuildRequires:  glib2-tools
 BuildRequires:  gobject-introspection
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools >= 57.5.0
 BuildRequires:  python3-setuptools_scm
 BuildRequires:  python3-wheel
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(libwnck-3.0)
+Requires:       libutempter0
 Requires:       python3-cairo
 Requires:       python3-dbus-python
 Requires:       python3-gobject-Gdk
 Requires:       python3-pyaml
-Recommends:     libutempter0
-Suggests:       gtk3-metatheme-numix
+Requires:       python3-typing
+Recommends:     %{name}-doc
 BuildArch:      noarch
-# Other requirements documented upstream but apparently not needed:
-#     dconf-editor
-#     glade
-#     gnome-tweak-tool
-#     gsettings-desktop-schemas
+# SECTION BuildRequires for documentation
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-reno
+BuildRequires:  python311-sphinxcontrib-programoutput
+# /SECTION
 
 %lang_package
 
 %description
 Guake is a dropdown terminal made for the GNOME desktop environment.
 
-%prep
-%autosetup -p1
-cp %{SOURCE1} ./guake/
-# Remove a useless placeholder dir from docs
-rm -fr ./docs/source/_static
+%package doc
+Summary:        Documentation for Guake
+Requires:       %{name}
 
-sed -i 's/\r$//' ./docs/make.bat
+%description doc
+Guake is a dropdown terminal made for the GNOME desktop environment.
+
+This package provides the HTML documentation for Guake.
+
+%prep
+%autosetup -p1 -n guake-%{version}
+cp %{SOURCE1} guake/
 
 %build
-%make_build
-# docs cannot be built as they require a local git repository
+# Note: At least `make generate-paths` needs to run before pyproject_wheel to set up the correct paths in guake/paths.py
+%make_build PREFIX=%{_prefix} generate-desktop generate-mo generate-paths
+%pyproject_wheel
+
+# Build documentation
+%make_build -C docs html man
+rm docs/_build/html/.buildinfo
 
 %install
-%make_install PREFIX=%{_prefix}
+%pyproject_install
+%make_build DESTDIR=%{buildroot} PREFIX=%{_prefix} install-locale install-schemas
 
-rm -fr %{buildroot}%{_datadir}/%{name}/po
+# Install documentation
+mkdir -p %{buildroot}%{_docdir}/guake
+cp -r docs/_build/html %{buildroot}%{_docdir}/guake/
+mkdir -p %{buildroot}%{_mandir}/man1
+install -m0644 docs/_build/man/*.1 %{buildroot}%{_mandir}/man1/guake.1
 
-# conflicts with libgio-2_0-0
-rm %{buildroot}%{_datadir}/glib-2.0/schemas/gschemas.compiled
-%fdupes %{buildroot}
-%suse_update_desktop_file -G "Guake Preferences" %{name}-prefs Settings DesktopSettings
-%suse_update_desktop_file -G "Guake Terminal" %{name} System TerminalEmulator
 %find_lang %{name} %{?no_lang_C}
+%fdupes %{buildroot}%{python3_sitelib}/guake/
 
 %files
-%doc README.rst NEWS.rst docs/
+%doc README.rst
 %license COPYING
-%{python3_sitelib}/guake/
-%{python3_sitelib}/guake-%{version}-py%{python3_version}.egg-info/
 %{_bindir}/guake
 %{_bindir}/guake-toggle
-%{_datadir}/applications/guake-prefs.desktop
-%{_datadir}/applications/guake.desktop
-%{_datadir}/glib-2.0/schemas/org.guake.gschema.xml
-%{_datadir}/metainfo/guake.desktop.metainfo.xml
-%{_datadir}/pixmaps/guake.png
+%{_mandir}/man1/guake.1%{?ext_man}
+%{_datadir}/applications/*.desktop
+%{_datadir}/glib-2.0/schemas/*
 %{_datadir}/guake/
+%{_datadir}/metainfo/*.metainfo.xml
+%{_datadir}/pixmaps/*.png
+%{python3_sitelib}/guake/
+%{python3_sitelib}/guake-%{version}.dist-info
+
+%files doc
+%license COPYING
+%doc %{_docdir}/guake/html
 
 %files lang -f %{name}.lang
 %license COPYING

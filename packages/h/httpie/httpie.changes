@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 23 20:18:48 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Temporarily disable tests that fail with python 3.11
+
+-------------------------------------------------------------------
 Wed Jun 14 21:50:14 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
 
 - Enforce building against the primary python version of the

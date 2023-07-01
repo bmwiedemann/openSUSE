@@ -33,7 +33,9 @@ BuildRequires:  glibc-devel
 BuildRequires:  libtool
 BuildRequires:  make
 BuildRequires:  pkgconfig
-BuildRequires:  protobuf-devel >= 2.6.0
+# not compatible with v22 due to https://protobuf.dev/news/2022-08-03/#cpp-changes
+# see https://github.com/protobuf-c/protobuf-c/issues/544
+BuildRequires:  (protobuf-devel >= 2.6.0 with protobuf-devel < 22)
 
 %description
 This package provides a code generator and runtime libraries to use Protocol
@@ -53,7 +55,7 @@ Buffers from pure C (not C++).
 Summary:        C bindings for Google's Protocol Buffers
 Group:          Development/Libraries/C and C++
 Requires:       libprotobuf-c%sover = %version
-Recommends:     protobuf-devel
+Recommends:     (protobuf-devel >= 2.6.0 with protobuf-devel < 22)
 Provides:       %name = %version
 Obsoletes:      %name <= 1.4.0
 

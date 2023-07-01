@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 20 07:19:24 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to version 0.5.44
+  * response: only trim spaces at headers names end
+  * response: skips lines before response line
+  * headers: log a warning for chunks extension
+
+-------------------------------------------------------------------
 Fri Apr 21 12:33:55 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Update to version 0.5.43

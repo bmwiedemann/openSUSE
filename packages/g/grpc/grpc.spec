@@ -16,11 +16,11 @@
 #
 
 
-%define lver 31
-%define lverp 1_54
+%define lver 33
+%define lverp 1_56
 %define src_install_dir /usr/src/%name
 Name:           grpc
-Version:        1.54.1
+Version:        1.56.0
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
@@ -34,10 +34,9 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  opencensus-proto-source
 BuildRequires:  pkg-config
-BuildRequires:  zypper
-BuildRequires:  pkgconfig(libcares)
+BuildRequires:  pkgconfig(libcares) >= 1.13.0
 BuildRequires:  pkgconfig(openssl) >= 1.0.1
-BuildRequires:  pkgconfig(protobuf) >= 3.8.0
+BuildRequires:  pkgconfig(protobuf) >= 22
 BuildRequires:  pkgconfig(re2)
 BuildRequires:  pkgconfig(zlib)
 

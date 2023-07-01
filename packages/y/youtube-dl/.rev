@@ -1612,4 +1612,13 @@
     <comment></comment>
     <requestid>1089750</requestid>
   </revision>
+  <revision rev="179" vrev="8">
+    <srcmd5>4a6d3e3615209f8d7cb901a5e922c456</srcmd5>
+    <version>2021.12.17</version>
+    <time>1688147933</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 10795-facebook-plugin.patch fixing download from
+  facebook.com/plugin URLs (gh#ytdl-org/youtube-dl#10795). (forwarded request 1096011 from mcepl)</comment>
+    <requestid>1096042</requestid>
+  </revision>
 </revisionlist>

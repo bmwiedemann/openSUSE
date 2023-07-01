@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 29 09:52:24 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Add baselibs.conf to make protobuf happy. Hopefully temporary.
+
+-------------------------------------------------------------------
 Thu May 25 07:40:01 UTC 2023 - Adrian Schröter <adrian@suse.de>
 
 - update to 20230125.3

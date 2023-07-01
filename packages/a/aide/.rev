@@ -318,4 +318,17 @@
   according to documentation at https://en.opensuse.org/openSUSE:Systemd_packaging_guidelines#Registering_unit_files_in_install_scripts (forwarded request 1090912 from amanzini)</comment>
     <requestid>1090921</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>02250f9177a1f7e870e9d245f995446c</srcmd5>
+    <version>0.18.4</version>
+    <time>1688147998</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.4:
+    * Fix handling of extended attributes on symlinks
+    * Add missing ')' to log message
+    * Fix static linking of the aide binary
+    * Don't require database_out for --dry-init
+    * Remove strerror() calls from thread log messages (forwarded request 1096114 from polslinux)</comment>
+    <requestid>1096118</requestid>
+  </revision>
 </revisionlist>

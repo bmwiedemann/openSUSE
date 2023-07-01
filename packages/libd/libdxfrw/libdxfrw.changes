@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun 23 06:08:55 UTC 2023 - jslaby@suse.cz
+
+- Update to version 2.2.0+git.20221210:
+  * fix: DWG reading failed always after 1st error
+  * Do not treat warnings as errors on MSVC
+  * fixed #64, DRW_Solid::fourthCorner() returns wrong coord
+  * fixed #71, erroneous upper/lower string comparison
+  * README.md : Improve formatting
+  * CMake building of doc and dwg2dxf optional
+  * add FUNDING.yml for sponsors [ci skip]
+
+-------------------------------------------------------------------
 Mon Sep 19 07:24:31 UTC 2022 - jslaby@suse.cz
 
 - Update to version 1.1.0~rc1+git.20220905:

@@ -36,7 +36,7 @@
 # ----
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        5.0+git20221127.3e61ef1c
+Version:        5.0+git20230617.2a908f54
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -44,6 +44,7 @@ Group:          System/X11/Utilities
 URL:            https://www.xpra.org/
 Source0:        %{name}-%{version}.tar.gz
 Source1:        xpra-icon.png
+Source100:      xpra-rpmlintrc
 # ----
 BuildRequires:  ImageMagick
 BuildRequires:  brotli
@@ -126,14 +127,27 @@ Requires(post): %fillup_prereq
 Recommends:     lsb-release
 Recommends:     pinentry
 Recommends:     pulseaudio-module-x11
+Recommends:     python3-asn1crypto
+Recommends:     python3-cffi
+Recommends:     python3-cryptography
+Recommends:     python3-decorator
 Recommends:     python3-dnspython
+Recommends:     python3-idna
+Recommends:     python3-ipaddress
 Recommends:     python3-netifaces
 Recommends:     python3-opencv
 Recommends:     python3-opengl
 Recommends:     python3-opengl-accelerate
+Recommends:     python3-packaging
 Recommends:     python3-paramiko
+Recommends:     python3-pyasn1
+Recommends:     python3-pycparser
 Recommends:     python3-pyinotify
+Recommends:     python3-pynacl
+Recommends:     python3-pyparsing
 Recommends:     python3-pyxdg
+Recommends:     python3-setuptools
+Recommends:     python3-six
 Recommends:     xdg-menu
 # Overflow errors on 32-bit
 ExcludeArch:    %ix86

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun 30 11:30:03 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Update to version 1.4.14
+  * Added support for reading RAW images with 32-bit integer and
+    64-bit double pixel values.
+  * Fixed compilation of libpng for ARM Neon.
+    Obsoletes fix-aarch64-neon.patch .
+  * Updated external libraries: JPEG 9e, PNG 1.6.38, TIFF 4.4.0,
+    ZLIB 1.2.13.
+
+-------------------------------------------------------------------
 Wed Apr 26 14:37:59 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Replace BuildRequire on xorg-x11-devel by pkgconfig(...)

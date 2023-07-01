@@ -1,0 +1,14 @@
+--- jython-2.7.3/src/shell/jython.orig	2017-08-11 16:24:32.831309328 +0100
++++ jython-2.7.3/src/shell/jython	2017-08-11 16:23:55.346726416 +0100
+@@ -242,6 +242,11 @@
+   fi
+ fi
+ 
++# Detect absence of tty
++if ! tty -s; then
++  JAVA_OPTS="$JAVA_OPTS -Dpython.launcher.tty=false"
++fi
++
+ if [ -n "$profile_requested" -o -z "$boot_requested" ] ; then
+   [ -n "$profile_requested" ] && echo "Running with instrumented profiler"
+   java_args=("${java_args[@]}" -classpath "$CP$CP_DELIMITER$CLASSPATH")

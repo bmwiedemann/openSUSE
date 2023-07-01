@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 12 20:06:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- limit to protobuf < 22 as it is not compatible with newer
+  versions (gh#protobuf-c#544) 
+
+-------------------------------------------------------------------
 Mon Apr 24 11:19:07 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - Add protobuf-devel to devel package recommends as the binary there

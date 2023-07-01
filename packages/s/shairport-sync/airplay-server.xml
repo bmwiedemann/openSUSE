@@ -2,8 +2,13 @@
 <service>
   <short>airplay-server</short>
   <description>Airplay Server</description>
+  <port protocol="tcp" port="3689"/>
   <port protocol="tcp" port="5000"/>
-  <port protocol="udp" port="6001"/>
-  <port protocol="udp" port="6002"/>
-  <port protocol="udp" port="6003"/>
+  <port protocol="tcp" port="7000"/>
+  <port protocol="tcp" port="32768-60999"/>
+  <port protocol="udp" port="319"/>
+  <port protocol="udp" port="320"/>
+  <port protocol="udp" port="5353"/>
+  <port protocol="udp" port="6000-6009"/>
+  <port protocol="udp" port="32768-60999"/>
 </service>

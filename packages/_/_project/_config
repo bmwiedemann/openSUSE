@@ -798,6 +798,7 @@ Prefer: -python39-txt2tags -python310-txt2tags
 # unresolvable: have choice for libcontainers-policy >= 20230214 needed by libcontainers-common: libcontainers-default-policy libcontainers-openSUSE-policy
 Prefer: -libcontainers-default-policy
 
+Prefer: -protobuf21-devel
 
 Prefer: -python39-urllib3_1 -python310-urllib3_1 -python311-urllib3_1
 # have choice for python3-magic: python38-magic python38-python-magic
@@ -2741,6 +2742,7 @@ BuildFlags: onlybuild:printproto
 BuildFlags: onlybuild:procmail
 BuildFlags: onlybuild:procps
 BuildFlags: onlybuild:protobuf
+BuildFlags: onlybuild:protobuf21
 BuildFlags: onlybuild:protobuf-c
 BuildFlags: onlybuild:psmisc
 BuildFlags: onlybuild:psutils
@@ -2774,6 +2776,8 @@ BuildFlags: onlybuild:python-SecretStorage
 BuildFlags: onlybuild:python-Sphinx
 BuildFlags: onlybuild:python-Twisted
 BuildFlags: onlybuild:python-Werkzeug
+BuildFlags: onlybuild:python-abseil
+BuildFlags: onlybuild:abseil-cpp
 BuildFlags: onlybuild:python-aiodns
 BuildFlags: onlybuild:python-aiohttp
 BuildFlags: onlybuild:python-aiosignal

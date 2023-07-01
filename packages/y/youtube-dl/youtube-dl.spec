@@ -42,6 +42,9 @@ Patch1:         no-pandoc-32bit.patch
 # Patch from gh#yt-dlp/yt-dlp@149eb0bbf34f
 # Fix uploader_id extraction regexp
 Patch2:         fix-uploader-id-extraction.patch
+# PATCH-FIX-UPSTREAM 10795-facebook-plugin.patch gh#ytdl-org/youtube-dl#10795 mcepl@suse.com
+# Plugin to fix download from Facebook plugin URLs
+Patch3:         10795-facebook-plugin.patch
 BuildRequires:  make >= 4
 BuildRequires:  python3-devel
 BuildRequires:  python3-xml

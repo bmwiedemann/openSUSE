@@ -26,6 +26,8 @@ License:        Apache-2.0
 URL:            https://github.com/jsocol/bleach
 Source:         https://files.pythonhosted.org/packages/source/b/bleach/bleach-%{version}.tar.gz
 Patch0:         de-vendor.patch
+# https://github.com/mozilla/bleach/pull/706
+Patch1:         strip-spaces.patch
 BuildRequires:  %{python_module html5lib >= 1.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -62,8 +64,7 @@ rm -rf bleach/_vendor
 
 %check
 # gh#mozilla/bleach#503
-# https://github.com/mozilla/bleach/issues/543
-%pytest -k 'not (test_uri_value_allowed_protocols or test_bleach_html_parser or test_css_parsing_gauntlet_regex_backtracking)'
+%pytest -k 'not test_uri_value_allowed_protocols'
 
 %files %{python_files}
 %license LICENSE

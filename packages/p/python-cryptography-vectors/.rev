@@ -239,4 +239,12 @@
   * Update test vectors to match python-cryptography 41.0.1</comment>
     <requestid>1093834</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>a9de3a21afafc9ae14daf1a9527f6774</srcmd5>
+    <version>41.0.1</version>
+    <time>1688147902</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1096023</requestid>
+  </revision>
 </revisionlist>

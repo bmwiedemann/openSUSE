@@ -1,0 +1,2 @@
+addFilter("potential-bashisms /usr/bin/xpra_Xdummy");
+addFilter("dbus-policy-allow-receive <allow receive_sender="org.xpra.Server"/> /etc/dbus-1/system.d/xpra.conf");

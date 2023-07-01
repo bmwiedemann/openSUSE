@@ -41,4 +41,17 @@
 </comment>
     <requestid>1093654</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>eccf31f5b1f3d2e47566c35745a81a3a</srcmd5>
+    <version>114.0.5735.198</version>
+    <time>1688147935</time>
+    <user>dimstar_suse</user>
+    <comment>- ungoogled-chromium 114.0.5735.198:
+  * CVE-2023-3420: Type Confusion in V8
+  * CVE-2023-3421: Use after free in Media
+  * CVE-2023-3422: Use after free in Guest View
+- Install Qt5 library &amp; prepare for Qt6 in 115
+</comment>
+    <requestid>1096043</requestid>
+  </revision>
 </revisionlist>

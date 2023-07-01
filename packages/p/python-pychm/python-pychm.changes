@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 29 16:59:51 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up SPEC file.
+
+-------------------------------------------------------------------
+Wed Jun 28 13:35:34 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Mar 19 05:39:59 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.8.6:

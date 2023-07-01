@@ -36,18 +36,25 @@ BuildRequires:  gcc-c++
 BuildRequires:  gnome-common
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  xxd
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(avahi-client)
+BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libconfig)
 BuildRequires:  pkgconfig(libdaemon)
+BuildRequires:  pkgconfig(libgcrypt)
 BuildRequires:  pkgconfig(libpipewire-0.3)
+BuildRequires:  pkgconfig(libplist-2.0)
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libsodium)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(popt)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(soxr)
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(uuid)
 Requires:       firewalld
+Requires:       nqptp
 Requires(pre):  shadow
 %{?systemd_ordering}
 
@@ -82,7 +89,8 @@ autoreconf -i -f
            --with-soxr \
            --with-metadata \
            --with-configfiles \
-           --with-convolution
+           --with-convolution \
+           --with-airplay-2
 %make_build
 
 %install

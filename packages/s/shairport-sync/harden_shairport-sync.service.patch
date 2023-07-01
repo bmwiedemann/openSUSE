@@ -1,7 +1,8 @@
-diff -Nur shairport-sync-4.1/scripts/shairport-sync.service.in shairport-sync-4.1-new/scripts/shairport-sync.service.in
---- shairport-sync-4.1/scripts/shairport-sync.service.in	2022-10-28 23:31:18.000000000 +0800
-+++ shairport-sync-4.1-new/scripts/shairport-sync.service.in	2022-11-13 22:26:15.785234171 +0800
-@@ -5,6 +5,17 @@
+diff --git a/scripts/shairport-sync.service-avahi.in b/scripts/shairport-sync.service-avahi.in
+index 4a874c54..6bc80c1e 100644
+--- a/scripts/shairport-sync.service-avahi.in
++++ b/scripts/shairport-sync.service-avahi.in
+@@ -7,6 +7,16 @@ Wants=network-online.target
  After=network.target network-online.target
  
  [Service]
@@ -14,8 +15,28 @@ diff -Nur shairport-sync-4.1/scripts/shairport-sync.service.in shairport-sync-4.
 +ProtectKernelModules=true
 +ProtectKernelLogs=true
 +ProtectControlGroups=true
-+RestrictRealtime=true
-+# end of automatic additions 
++# end of automatic additions
+ ExecStart=@prefix@/bin/shairport-sync --log-to-syslog
+ User=shairport-sync
+ Group=shairport-sync
+diff --git a/scripts/shairport-sync.service.in b/scripts/shairport-sync.service.in
+index 18df3f35..791fd89f 100644
+--- a/scripts/shairport-sync.service.in
++++ b/scripts/shairport-sync.service.in
+@@ -5,6 +5,16 @@ Wants=network-online.target
+ After=network.target network-online.target
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++# end of automatic additions
  ExecStart=@prefix@/bin/shairport-sync --log-to-syslog
  User=shairport-sync
  Group=shairport-sync

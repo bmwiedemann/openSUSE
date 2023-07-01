@@ -30,16 +30,13 @@ BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc
 BuildRequires:  wayland-devel
-BuildRequires:  pkgconfig(egl)
-BuildRequires:  pkgconfig(gegl-0.4)
-BuildRequires:  pkgconfig(gegl-sc-0.4)
-BuildRequires:  pkgconfig(glesv2)
-BuildRequires:  pkgconfig(glx)
 BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libdrm_amdgpu)
+%ifnarch s390x
 BuildRequires:  pkgconfig(libdrm_intel)
+%endif
 BuildRequires:  pkgconfig(libdrm_nouveau)
 BuildRequires:  pkgconfig(libdrm_radeon)
 BuildRequires:  pkgconfig(libglvnd)

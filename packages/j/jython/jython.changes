@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jun 28 10:40:43 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 2.7.3: [bsc#1186065]
+  * See full changelog in the NEWS file.
+  * Fetch sources by source _service in order to exclude
+    the different binary jar files
+  * Add jython-fix-tty-detection.patch
+  * Rebase patches:
+    - jython-dont-validate-pom.patch
+    - jython-build.patch
+    - jython-cachedir.patch
+  * Remove patches fixed upstream:
+    - jython-makeCompiledFilename.patch
+    - jython-module.patch
+    - jython-nofullbuildpath.patch
+    - jython-cacheperms.patch
+    - jython-compareto.patch
+    - jython-sourcetarget.patch
+    - jython-cached-classes.patch
+
+-------------------------------------------------------------------
 Sun Mar 20 12:20:10 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:

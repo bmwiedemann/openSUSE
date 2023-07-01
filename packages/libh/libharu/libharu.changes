@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Jun 29 07:07:46 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Move Conflicts against libhpdf2_4_2 to devel package.
+
+-------------------------------------------------------------------
+Mon Jun 26 12:52:05 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add libharu-so-versioning.patch -- Add correct versioning to
+  shared object libhpdf.so [gh#libharu/libharu#284]; patch sent
+  upstream.
+- Drop so version setting snippet from specfile in light of
+  above patch.
+- Re-name shared library as libhpdf2; add Conflicts against
+  previously named libhpdf2_4_2, which violated the SLPP.
+- Use fdupes to clean up a duplicate.
+
+-------------------------------------------------------------------
+Sat Oct 15 00:32:47 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- update to 2.4.3:
+  * Add static hpdf_version.h header
+  * hpdf_version.h included again
+  * File attachment issue resolved
+  * Renamed *_LIBZ defines to _*ZLIB, enables compression of
+    PDF files again.
+- Clean up spec file
+- Add SOVERSION to library, remove rpmlintrc
+
+-------------------------------------------------------------------
 Mon Sep 12 08:53:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.2:

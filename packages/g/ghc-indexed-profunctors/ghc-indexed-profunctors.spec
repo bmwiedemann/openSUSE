@@ -19,7 +19,7 @@
 %global pkg_name indexed-profunctors
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.1.1
+Version:        0.1.1.1
 Release:        0
 Summary:        Utilities for indexed profunctors
 License:        BSD-3-Clause

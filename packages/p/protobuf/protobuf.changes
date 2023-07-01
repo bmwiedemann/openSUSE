@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Jun 14 08:32:55 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to fix linking ThreadSafeArena:
+  * 0001-Use-the-same-ABI-for-static-and-shared-libraries-on-.patch
+- Drop the protobuf-source package, no longer used
+
+-------------------------------------------------------------------
+Tue Jun 13 06:12:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 22.5:
+  C++
+  * Add missing cstdint header
+  * Fix: missing -DPROTOBUF_USE_DLLS in pkg-config (#12700)
+  * Avoid using string(JOIN..., which requires cmake 3.12
+  * Explicitly include GTest package in examples
+  * Bump Abseil submodule to 20230125.3 (#12660)
+- update to 22.4:
+  C++
+  * Fix libprotoc: export useful symbols from .so
+  * Fix btree issue in map tests.
+  Python
+  * Fix bug in _internal_copy_files where the rule would fail in
+    downstream repositories.
+  Other
+  * Bump utf8_range to version with working pkg-config (#12584)
+  * Fix declared dependencies for pkg-config
+  * Update abseil dependency and reorder dependencies to ensure
+    we use the version specified in protobuf_deps.
+  * Turn off clang::musttail on i386
+
+-------------------------------------------------------------------
+Sun Jun 11 19:19:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- drop python2 handling
+- fix version handling and package the private libs again
+
+-------------------------------------------------------------------
+Tue May  9 09:26:46 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix confusion in versions
+
+-------------------------------------------------------------------
 Fri Apr 28 07:07:50 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Mention the rpmlintrc file in the spec.
@@ -8,6 +50,54 @@ Thu Apr 27 06:59:31 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Make possible to build on older systems, like SLE12 that miss
   some of the used macros.
+
+-------------------------------------------------------------------
+Mon Apr 24 12:30:51 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- update to v22.3
+  UPB (Python/PHP/Ruby C-Extension)
+  * Remove src prefix from proto import
+  * Fix .gitmodules to use the correct absl branch
+  * Remove erroneous dependency on googletest
+- update to 22.2:
+  Java
+  * Add version to intra proto dependencies and add kotlin stdlib
+    dependency
+  * Add $ back for osgi header
+  * Remove $ in pom files
+- update to 22.1:
+  * Add visibility of plugin.proto to python directory
+  * Strip "src" from file name of plugin.proto
+  * Add OSGi headers to pom files.
+  * Remove errorprone dependency from kotlin protos.
+  * Version protoc according to the compiler version number.
+- update to 22.0:
+  * This version includes breaking changes to: Cpp.
+    Please refer to the migration guide for information:
+    https://protobuf.dev/support/migration/#compiler-22
+
+  * [Cpp] Migrate to Abseil's logging library.
+  * [Cpp] `proto2::Map::value_type` changes to `std::pair`.
+  * [Cpp] Mark final ZeroCopyInputStream, ZeroCopyOutputStream,
+    and DefaultFieldComparator classes.
+  * [Cpp] Add a dependency on Abseil (#10416)
+  * [Cpp] Remove all autotools usage (#10132)
+  * [Cpp] Add C++20 reserved keywords
+  * [Cpp] Dropped C++11 Support
+  * [Cpp] Delete Arena::Init
+  * [Cpp] Replace JSON parser with new implementation
+  * [Cpp] Make RepeatedField::GetArena non-const in order to
+    support split RepeatedFields.
+  * long list of bindings specific fixes see
+    https://github.com/protocolbuffers/protobuf/releases/tag/v22.0
+- python sub packages version is set 4.22.3 as defined in
+  python/google/protobuf/__init__.py to stay compatible
+- skip python2 builds by default
+- drop patches: 
+  * 10355.patch,
+  * gcc12-disable-__constinit-with-c++-11.patch (merged upstream)
+- added patches:
+  * add-missing-stdint-header.patch   added for compile fixes
 
 -------------------------------------------------------------------
 Thu Mar 23 09:01:50 UTC 2023 - Martin Liška <mliska@suse.cz>

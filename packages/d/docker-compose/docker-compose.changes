@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 30 04:43:25 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.19.1:
+  * ci: upgrade compose-go to v1.15.1 (#10757)
+  * up: fix race condition on network connect
+  * Updated documentation files for my contribution
+  * Fix capitalization error in sentence by adding an uppercase
+    letter at beginning
+  * fix typos
+  * watch: add warning when a path is already used by a bind mount
+    volume (#10741)
+
+-------------------------------------------------------------------
 Wed Jun 21 12:37:44 UTC 2023 - kastl@b1-systems.de
 
 - BuildRequire go1.20

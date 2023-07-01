@@ -1,0 +1,25 @@
+---
+ youtube_dl/extractor/facebook.py |    8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
+
+--- a/youtube_dl/extractor/facebook.py
++++ b/youtube_dl/extractor/facebook.py
+@@ -681,8 +681,7 @@ class FacebookIE(InfoExtractor):
+ 
+ 
+ class FacebookPluginsVideoIE(InfoExtractor):
+-    _VALID_URL = r'https?://(?:[\w-]+\.)?facebook\.com/plugins/video\.php\?.*?\bhref=(?P<id>https.+)'
+-
++    _VALID_URL = r'(?s)https?://(?:[\w-]+\.)?facebook\.com/(?:v[\d.]+/)?plugins/video\.php\?(?:.*?&)?href=(?P<id>(?:http|%2[fF]|/).+?)(?:$|&)'
+     _TESTS = [{
+         'url': 'https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fgov.sg%2Fvideos%2F10154383743583686%2F&show_text=0&width=560',
+         'md5': '5954e92cdfe51fe5782ae9bda7058a07',
+@@ -704,6 +703,5 @@ class FacebookPluginsVideoIE(InfoExtract
+     }]
+ 
+     def _real_extract(self, url):
+-        return self.url_result(
+-            compat_urllib_parse_unquote(self._match_id(url)),
+-            FacebookIE.ie_key())
++        return self.url_result(urljoin(
++            'https://www.facebook.com', compat_urllib_parse_unquote(self._match_id(url))))

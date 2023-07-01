@@ -1,7 +1,7 @@
 #
 # spec file for package libharu
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,20 @@
 #
 
 
-%define relver 2_4_2
-%define lname	libhpdf%{relver}
+%define relver 2
+%define lname   libhpdf%{relver}
 Name:           libharu
-Version:        2.4.2
+Version:        2.4.3
 Release:        0
 Summary:        Library for generating PDF files
 License:        Zlib
 Group:          Productivity/Office/Other
 URL:            http://libharu.org
 Source0:        https://github.com/libharu/libharu/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM libharu-so-versioning.patch gh#libharu/libharu#284 badshah400@gmail.com -- Add correct versioning to shared object libhpdf.so
+Patch0:         libharu-so-versioning.patch
 BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  libpng-devel
 BuildRequires:  zlib-devel
 
@@ -45,8 +47,8 @@ It supports the following features:
 
 %package -n %{lname}
 Summary:        Library for generating PDF files
-# used wrong shlib packaging name..
 Group:          System/Libraries
+
 
 %description -n %{lname}
 libHaru is a library for generating PDF files.
@@ -66,21 +68,25 @@ Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 Requires:       libpng-devel
 Requires:       zlib-devel
+Conflicts:      libhpdf2_4_2
 
 %description    devel
 This package contains libraries and header files for developing
 applications that use %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%cmake -DLIBHPDF_STATIC=NO
-%make_jobs
+%cmake \
+  -DBUILD_SHARED_LIBS:BOOL=ON \
+  %{nil}
+%cmake_build
 
 %install
 %cmake_install
-find %{buildroot} -type f -name "*.la" -delete -print
+
+%fdupes %{buildroot}%{_datadir}/%{name}/
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
@@ -88,9 +94,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n %{lname}
 %license LICENSE
 %doc README.md
-%{_libdir}/libhpdf.so
+%{_libdir}/libhpdf.so.*
 
 %files devel
+%{_libdir}/libhpdf.so
 %{_includedir}/*.h
 %{_datadir}/%{name}/
 

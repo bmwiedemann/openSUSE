@@ -569,4 +569,33 @@
     <comment></comment>
     <requestid>1084705</requestid>
   </revision>
+  <revision rev="72" vrev="17">
+    <srcmd5>a5e56fbc5656bb9fc6bb5d3121061300</srcmd5>
+    <version>5.15.0</version>
+    <time>1688147912</time>
+    <user>dimstar_suse</user>
+    <comment>- Adapt specfile to build plplot against multiple python flavours.
+- Set $HOME to current dir during %check to ensure fontconfig does
+  not complain about un-writable cache dirs.
+- Add plplot-libharu-version-check.patch: Fix check for libharu
+  version when configuring build with cmake.
+- New subpackages:
+  * plplot-driver-pdf: PDf driver based on libharu; new
+    BuildRequires: libharu-devel.
+  * plplot-pyqt5-cmake: CMake files for building cmake based
+    projects using python3-plplot-pyqt5. CMake files are not
+    versioned according to python3 versioning, and so can only
+    help when using the pyqt5 bindings with the primary python3
+    version. NOTE: Currently pkg is noop as pyqt5 bindings do not
+    build for python 3.11, since sip4 is not available for the
+    latter.
+- Make doc package noarch.
+- Have python310-plplot-pyqt5 obsolete plplot-python3-qt5.
+- Have python311-plplot explicitly obsolete python3-plplot to
+  avoid file conflicts during upgrades.
+- Let python310-plplot = %{version}-%{release} conflict with
+  python3-plplot &lt; %{version}-%{release}.
+</comment>
+    <requestid>1096047</requestid>
+  </revision>
 </revisionlist>

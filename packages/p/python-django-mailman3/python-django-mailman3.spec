@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-mailman3
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 %define modname django_mailman3
 Name:           python-django-mailman3
-Version:        1.3.8
+Version:        1.3.9
 Release:        0
 Summary:        Django library to help interaction with Mailman
 License:        GPL-3.0-only
 URL:            https://gitlab.com/mailman/django-mailman3
-Source:         https://files.pythonhosted.org/packages/source/d/django-mailman3/django-mailman3-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/04/b0/34331deb242988466cd34ffaa04c316c5eaf40760998d9ff2055142e2c6a/django-mailman3-1.3.9.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Jun 26 09:00:14 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- absl is also needed for using the -devel package
+
+-------------------------------------------------------------------
+Fri Jun 23 06:14:07 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 8.13.15:
+  * Updated phone metadata for region code(s): BE, BF, IL, MN, NE, OM, SO, SV
+  * Updated carrier data for country calling code(s):
+    226 (en), 227 (en), 252 (en), 351 (en), 968 (en), 972 (en)
+
+-------------------------------------------------------------------
+Wed Jun 14 06:51:08 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 8.13.14:
+  * Many data changes
+  * Removal of unused leading_zero_possible proto field in
+    phonemetadata.proto and all generated code
+  * https://github.com/google/libphonenumber/blob/v8.13.14/release_notes.txt
+- Depends on abseil now
+- Turn metadata regeneration off explicitly, wasn't done previously
+  either. This allows dropping the java dependency.
+- Add patches to fix building:
+  * 0001-Build-with-C-17.patch
+  * 0001-Revert-Fix-typo-in-arguments-to-add_metadata_gen_tar.patch
+- protobuf got fixed, builds fine with 22 now
+
+-------------------------------------------------------------------
+Tue Jun 13 16:03:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- prefer protobuf 21 as it is not compatible with v22
+
+-------------------------------------------------------------------
 Thu May 20 16:16:04 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 8.12.23:

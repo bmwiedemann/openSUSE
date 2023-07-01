@@ -1,44 +1,99 @@
---- jython-svn-Release_2_2_1/maven/build.xml	2007-03-26 22:02:00.000000000 +0200
-+++ jython-svn-Release_2_2_1/maven/build.xml	2018-11-23 10:04:54.897037648 +0100
-@@ -85,8 +85,6 @@
- 		
- 		<move file="${stage}/${install.name}.jar"
- 			tofile="${install.dir}/${install.name}.jar"/>
--		<move file="${stage}/${install.name}-sources.jar"
--			tofile="${install.dir}/${install.name}-sources.jar"/>
- 		
- 		<checksum algorithm="SHA1" fileext=".sha1">
- 			<fileset dir="${install.dir}" excludes="*.sha1,*.md5,*.tmp"/>
-@@ -114,7 +112,7 @@
- 	<!-- 
- 		Performs Maven build staging
- 	-->
--	<target name="stage" depends="validate-pom">
-+	<target name="stage">
- 		<property name="stage" value="${build}/"/>
- 		<mkdir dir="${stage}"/>
- 		
-@@ -135,23 +133,6 @@
- 		</jar>
- 	</target>
+Only in jython-2.7.3: build.xml.orig
+Only in jython-2.7.3: build.xml.rej
+--- jython-2.7.3/maven/build.xml	2023-06-27 13:47:28.639774958 +0200
++++ jython-2.7.3/maven/build.xml	2023-06-27 13:58:10.216237299 +0200
+@@ -155,9 +155,6 @@
+                 </filterset>
+             </copy>
  
--	<!-- 
--		Performs POM Schema validation.
--	-->
--	<target name="validate-pom">
--		<xmlvalidate failonerror="true" file="maven/pom.xml">
--			<attribute name="http://xml.org/sax/features/validation"
--				value="true"/>
--			<attribute name="http://apache.org/xml/features/validation/schema"
--				value="true"/>
--			<attribute name="http://xml.org/sax/features/namespaces"
--				value="true"/>
--			<property
--				name="http://apache.org/xml/properties/schema/external-noNamespaceSchemaLocation"
--				value="maven/maven-v4_0_0.xsd"/>
--		</xmlvalidate>
--	</target>
--	
- 	<target name="build-jython" depends="clean">
- 		<ant antfile="build.xml" target="developer-build"/>
- 	</target>
+-            <!-- Sign everything. -->
+-            <sign-all stageDir="@{stageDir}" artifactId="@{artifactId}" version="@{version}" />
+-
+             <!-- JAR-up the entire contents of the staging directory. -->
+             <jar jarfile="${pubs.dir}/@{basename}-bundle.jar">
+                 <fileset dir="@{stageDir}" />
+@@ -175,9 +172,6 @@
+         <attribute name="stageDir" default="${build.maven}" />
+         <attribute name="basename" default="@{artifactId}-@{version}" />
+         <sequential>
+-            <!-- Validate the POM -->
+-            <validate-pom file="@{fromdir}/@{basename}.pom" />
+-
+             <!-- Clean the staging directory. -->
+             <delete dir="@{stageDir}" />
+             <mkdir dir="@{stageDir}" />
+@@ -190,9 +184,6 @@
+                 </fileset>
+             </copy>
+ 
+-            <!-- Sign everything. -->
+-            <sign-all stageDir="@{stageDir}" artifactId="@{artifactId}" version="@{version}" />
+-
+             <!-- JAR-up the entire contents of the staging directory. -->
+             <jar jarfile="${pubs.dir}/@{basename}-bundle.jar">
+                 <fileset dir="@{stageDir}" />
+@@ -200,61 +191,11 @@
+         </sequential>
+     </macrodef>
+ 
+-    <!-- Add detached signature for single artifact in staging directory. -->
+-    <macrodef name="sign-detached">
+-        <attribute name="file" />
+-        <attribute name="stageDir" />
+-        <sequential>
+-            <!-- Generate a detached signature for each artifact in the bundle. -->
+-            <exec executable="gpg" dir="@{stageDir}">
+-                <arg value="-ab" />
+-                <arg value="@{file}" />
+-            </exec>
+-        </sequential>
+-    </macrodef>
+-
+-    <!-- Add detached signatures for group of artifacts in staging directory. -->
+-    <macrodef name="sign-all">
+-        <attribute name="artifactId" />
+-        <attribute name="version" />
+-        <attribute name="stageDir" />
+-        <attribute name="basename" default="@{artifactId}-@{version}" />
+-        <sequential>
+-            <sign-detached stageDir="@{stageDir}" file="@{basename}.pom" />
+-            <sign-detached stageDir="@{stageDir}" file="@{basename}.jar" />
+-            <sign-detached stageDir="@{stageDir}" file="@{basename}-sources.jar" />
+-            <sign-detached stageDir="@{stageDir}" file="@{basename}-javadoc.jar" />
+-        </sequential>
+-    </macrodef>
+-
+-    <!-- Validate a Maven POM . -->
+-    <macrodef name="validate-pom">
+-        <attribute name="file" />
+-        <sequential>
+-            <xmlvalidate failonerror="true" file="@{file}">
+-                <attribute name="http://xml.org/sax/features/validation" value="true" />
+-                <attribute name="http://apache.org/xml/features/validation/schema" value="true" />
+-                <attribute name="http://xml.org/sax/features/namespaces" value="true" />
+-                <property name="http://apache.org/xml/properties/schema/external-noNamespaceSchemaLocation" value="maven/maven-v4_0_0.xsd" />
+-            </xmlvalidate>
+-        </sequential>
+-    </macrodef>
+-
+-    <!-- Validate the POM template. -->
+-    <target name="validate-template-pom">
+-        <validate-pom file="maven/pom-template.xml"/>
+-    </target>
+-
+-    <!-- Validate the base POM produced by Gradle task generatePomFileForMainPublication. -->
+-    <target name="validate-gradle-pom" depends="version">
+-        <validate-pom file="${gradle.base}/publications/main/pom-default.xml"/>
+-    </target>
+-
+     <target name="build-jython" if="do.build">
+         <ant antfile="build.xml" target="all-jars" />
+     </target>
+ 
+-    <target name="prepare" depends="build-jython, validate-template-pom, version">
++    <target name="prepare" depends="build-jython, version">
+         <local name="artifacts" />
+         <property name="artifacts" value="${gradle.repo}/${m2.groupDir}/jython-slim/${jython.version}" />
+         <condition property="gradle.published">
+Only in jython-2.7.3/maven: build.xml.orig
+Only in jython-2.7.3/maven: build.xml.rej

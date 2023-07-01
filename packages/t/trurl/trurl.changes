@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jun 17 12:01:48 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8
+  Changes:
+  * add --urlencode
+  Bugfixes:
+  * --json/--get: .[].parts and {component} should be urldecoded
+    not encoded
+  * tests: use empty file instead of /dev/null
+  * typos in manpage
+  * Makefile: Allow CFLAGS to be appendable
+  * Makefile: be explicit in C standard to use
+
+-------------------------------------------------------------------
 Tue Jun 13 13:17:57 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 0.7

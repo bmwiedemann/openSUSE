@@ -1,7 +1,7 @@
 #
 # spec file for package python-postorius
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,27 +30,27 @@
 %global postorius_datadir   %{postorius_libdir}/data
 
 %if 0%{?suse_version} >= 1550
-# Newest python supported by mailman is Python 3.9 -- https://gitlab.com/mailman/mailman/-/issues/936
-%define pythons python39
-%define mypython python39
-%define __mypython %{__python39}
-%define mypython_sitelib %{python39_sitelib}
+# Newest python supported by mailman is Python 3.11
+%define pythons python311
+%define mypython python311
+%define __mypython %{__python311}
+%define mypython_sitelib %{python311_sitelib}
 %else
-%{?!python_module:%define python_module() python3-%{**}}
-%define pythons python3
+%{?sle15_python_module_pythons}
+%define pythons python311
 %define mypython python3
 %define __mypython %{__python3}
 %define mypython_sitelib %{python3_sitelib}
 %endif
 
 Name:           python-postorius
-Version:        1.3.7
+Version:        1.3.8
 Release:        0
 Summary:        A web user interface for GNU Mailman
 License:        GPL-3.0-only
 URL:            https://gitlab.com/mailman/postorius
 #
-Source0:        https://files.pythonhosted.org/packages/source/p/postorius/postorius-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/5b/47/0546fb950c3db35401c02ee77c66da7f78e2e276ee86198d1aa6929f9818/postorius-1.3.8.tar.gz
 Source1:        python-postorius-rpmlintrc
 #
 Source10:       postorius-manage.sh

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jun 28 07:09:25 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Remove unnecessary BuildRequires: zypper
+
+-------------------------------------------------------------------
+Mon Jun 19 03:28:40 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.56.0
+  * core: Add support for vsock transport.
+  * EventEngine: Change TXT lookup result type to
+    std::vector<std::string>.
+  * C++/Authz: support customizable audit functionality for
+    authorization policy.
+
+-------------------------------------------------------------------
+Tue Jun 13 21:09:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- pin to protobuf < 22 until next version update 
+
+-------------------------------------------------------------------
 Tue May  2 10:15:43 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.54.1

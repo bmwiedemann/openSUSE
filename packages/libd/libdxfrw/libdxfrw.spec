@@ -1,7 +1,7 @@
 #
 # spec file for package libdxfrw
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2015 Asterios Dramis <asterios.dramis@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define so_ver 1
 
 Name:           libdxfrw
-Version:        1.1.0~rc1+git.20220905
+Version:        2.2.0+git.20221210
 Release:        0
 Summary:        Library to read and write DXF files
 License:        GPL-2.0-or-later

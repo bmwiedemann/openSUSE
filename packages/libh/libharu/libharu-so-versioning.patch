@@ -1,0 +1,11 @@
+Index: libharu-2.4.3/src/CMakeLists.txt
+===================================================================
+--- libharu-2.4.3.orig/src/CMakeLists.txt
++++ libharu-2.4.3/src/CMakeLists.txt
+@@ -93,3 +93,6 @@ install(
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+ )
++
++set_target_properties(hpdf PROPERTIES VERSION ${HPDF_MAJOR_VERSION}.${HPDF_MINOR_VERSION}.${HPDF_BUGFIX_VERSION})
++set_target_properties(hpdf PROPERTIES SOVERSION ${HPDF_MAJOR_VERSION})

@@ -1,7 +1,7 @@
 #
 # spec file for package libnss_nis
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libnss_nis
-Version:        3.1
+Version:        3.2
 Release:        0
 Summary:        NSS NIS plugin for glibc
 License:        LGPL-2.1-only

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun 30 10:05:30 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.18.4:
+    * Fix handling of extended attributes on symlinks
+    * Add missing ')' to log message
+    * Fix static linking of the aide binary
+    * Don't require database_out for --dry-init
+    * Remove strerror() calls from thread log messages
+
+-------------------------------------------------------------------
 Mon Jun  5 12:16:24 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - switched service macros from %systemd_* to %service_* 

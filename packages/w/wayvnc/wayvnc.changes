@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 29 16:31:23 UTC 2023 - Joan Torres <joan.torres@suse.com>
+
+- Drop egl, gegl, gles and glx dependencies which aren't needed
+  for build.
+- libdrm_intel is not required neither available for s390x so stop
+  requiring it when is s390x arch.
+
+-------------------------------------------------------------------
 Fri Jan 27 12:20:55 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Prefixe include of wayland-client.h with directory name
