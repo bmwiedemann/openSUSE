@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-dns-lexicon
 Version:        3.11.7
 Release:        0
