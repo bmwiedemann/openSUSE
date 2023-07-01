@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jun 29 08:08:05 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.42.8:
+  + Add support for ppp 2.5.0.
+  + Fix nft rules for balance-slb bonding.
+  + Support port priority for bonding.
+  + Fix regression handling the PKEY_ID for infiniband profiles in
+    ifcfg-rh format.
+  + Fix race in nm-cloud-setup that caused partial configuration
+    and loss of connectivity with multiple interfaces.
+  + Don't touch "net.ipv6.conf.$IFACE.forwarding" unless explicitly
+    required for IPv6 sharing.
+  + Various bugfixes related to team, Wi-Fi P2P, IPv6LL.
+  + Automatically unblock autoconnect of profiles during reapply.
+
+-------------------------------------------------------------------
+Wed May 31 03:30:40 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update https://www.gnome.org/projects/NetworkManager/ URL tag to
+  NM's newest home page: https://networkmanager.dev/, and main
+  package summary to: standard Linux network configuration tool
+  suite.
+
+-------------------------------------------------------------------
 Sat May 13 16:50:57 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add nm-runstatedir.patch: to correct rundir from /var/run to /run

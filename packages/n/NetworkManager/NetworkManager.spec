@@ -64,12 +64,12 @@
 %endif
 
 Name:           NetworkManager
-Version:        1.42.6
+Version:        1.42.8
 Release:        0
-Summary:        Network Link Manager and user applications for it
+Summary:        Standard Linux network configuration tool suite
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/System
-URL:            https://www.gnome.org/projects/NetworkManager/
+URL:            https://networkmanager.dev/
 Source0:        https://download.gnome.org/sources/NetworkManager/1.42/%{name}-%{version}.tar.xz
 Source1:        nfs
 Source2:        NetworkManager.conf
@@ -166,8 +166,8 @@ Obsoletes:      NetworkManager-wifi < %{version}
 
 %description
 NetworkManager attempts to keep an active network connection available
-at all times.  The point of NetworkManager is to make networking
-configuration and setup as painless and automatic as possible.	If
+at all times. The point of NetworkManager is to make networking
+configuration and setup as painless and automatic as possible. If
 using DHCP, NetworkManager is intended to replace default routes,
 obtain IP addresses from a DHCP server, and change name servers
 whenever it sees fit.

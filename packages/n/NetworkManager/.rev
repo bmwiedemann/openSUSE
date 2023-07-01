@@ -2168,4 +2168,14 @@ WANTED for 13.1 - BLUEZ5 FIX (forwarded request 203010 from Zaitor)</comment>
   for systemd FHS compatibility (forwarded request 1087942 from gmbr3)</comment>
     <requestid>1088412</requestid>
   </revision>
+  <revision rev="259" vrev="1">
+    <srcmd5>f2ccd9d52ec4a14dd606468205deddbc</srcmd5>
+    <version>1.42.8</version>
+    <time>1688246252</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1095920 from iznogood
+
+New stable release</comment>
+    <requestid>1096189</requestid>
+  </revision>
 </revisionlist>
