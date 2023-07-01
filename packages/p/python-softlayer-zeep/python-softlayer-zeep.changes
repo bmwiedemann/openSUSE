@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jul  1 09:08:59 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Fri Jul  8 07:47:52 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - make it provide/obsolete python-zeep as it is a fork of it 
