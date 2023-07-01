@@ -17,6 +17,7 @@
 
 
 %define oldpython python
+%{?sle15_python_module_pythons}
 Name:           python-tldextract
 Version:        3.4.4
 Release:        0
