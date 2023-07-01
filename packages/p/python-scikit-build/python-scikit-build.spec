@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-scikit-build%{psuffix}
-Version:        0.17.5
+Version:        0.17.6
 Release:        0
 Summary:        Improved build system generator for Python C/C++/Fortran/Cython extensions
 License:        MIT
@@ -60,7 +60,6 @@ BuildRequires:  %{python_module build >= 0.7}
 BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
 BuildRequires:  %{python_module pytest >= 6.0.0}
 BuildRequires:  %{python_module pytest-mock >= 1.10.4}
-BuildRequires:  %{python_module pytest-virtualenv >= 1.2.5}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module scikit-build = %{version}}
 BuildRequires:  %{python_module virtualenv}

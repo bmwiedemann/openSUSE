@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jul  1 13:49:46 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.17.6
+  * Support added for SunOS by @mtelka in #983.
+  * Support added for AIX (with recent CMake) by @bhuntsman in
+    #988.
+  * Tests now pass on CPython 3.12.0b1 in #879.
+  * Tests no longer use pytest-virtualenv in #879.
+  * isolated marker now includes test_distribution tests in #879.
+  * Tests avoid incorrect get_map match by @keszybz in #990.
+
+-------------------------------------------------------------------
 Tue May 16 19:21:48 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.17.5
