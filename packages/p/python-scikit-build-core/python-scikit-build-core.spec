@@ -17,12 +17,13 @@
 
 
 Name:           python-scikit-build-core
-Version:        0.2.2
+Version:        0.4.7
 Release:        0
 Summary:        Build backend for CMake based projects
 License:        Apache-2.0
 URL:            https://github.com/scikit-build/scikit-build-core
-Source:         https://files.pythonhosted.org/packages/source/s/scikit_build_core/scikit_build_core-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/s/scikit_build_core/scikit_build_core-%{version}.tar.gz
+Source1:        %{name}.rpmlintrc
 # PATCH-FEATURE-OPENSUSE scikit-build-core-offline-wheelhouse.patch provide the testing wheels without runtime download code@bnavigator.de
 Patch1:         scikit-build-core-offline-wheelhouse.patch
 BuildRequires:  %{python_module base >= 3.7}
@@ -105,10 +106,13 @@ Python CMake adaptor and Python API for plugins: The extra requirement to build 
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# A writable temp dir is required for some tests
+mkdir ./tmp
+export PYTEST_DEBUG_TEMPROOT=./tmp
 # no wheel dependencies for isolated build provided
 donttestmark="isolated"
 # different hash due to different build environment:
-donttest="test_pep517_sdist_hash"
+donttest="test_pep517_sdist_hash or test_pep518_sdist"
 %pytest -m "not ($donttestmark)" -k "not ($donttest)"
 
 %files %{python_files}

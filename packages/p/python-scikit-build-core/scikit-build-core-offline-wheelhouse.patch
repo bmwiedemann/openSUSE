@@ -1,7 +1,8 @@
-diff -ur scikit_build_core-0.1.5.orig/tests/conftest.py scikit_build_core-0.1.5/tests/conftest.py
---- scikit_build_core-0.1.5.orig/tests/conftest.py	2023-01-27 19:49:07.842530605 +0100
-+++ scikit_build_core-0.1.5/tests/conftest.py	2023-01-27 19:56:01.269327907 +0100
-@@ -27,49 +27,7 @@
+Index: scikit_build_core-0.4.7/tests/conftest.py
+===================================================================
+--- scikit_build_core-0.4.7.orig/tests/conftest.py
++++ scikit_build_core-0.4.7/tests/conftest.py
+@@ -36,50 +36,7 @@ BASE = DIR.parent
  
  @pytest.fixture(scope="session")
  def pep518_wheelhouse(tmp_path_factory: pytest.TempPathFactory) -> Path:
@@ -21,8 +22,9 @@ diff -ur scikit_build_core-0.1.5.orig/tests/conftest.py scikit_build_core-0.1.5/
 -    )
 -    packages = [
 -        "build",
+-        "hatchling",
+-        "pip>=23",
 -        "pybind11",
--        "rich",
 -        "setuptools",
 -        "virtualenv",
 -        "wheel",

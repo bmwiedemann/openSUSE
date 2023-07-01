@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jun 30 18:52:43 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.4.7:
+  * remove SKBUILD_STATE unused message when building
+    [gh#scikit-build/scikit-build-core#401].
+  * logging environment should use reprs
+    [gh#scikit-build/scikit-build-core#409].
+- Add %{name}.rpmlintrc file to suppress false positives about
+  missing required or left-over python modules.
+- Disable an additional sdist test that requires access to the
+  network.
+- Rebase scikit-build-core-offline-wheelhouse.patch so that it
+  applies cleanly against updated sources.
+
+-------------------------------------------------------------------
 Thu Apr  6 07:20:09 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.2.2:

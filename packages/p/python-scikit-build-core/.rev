@@ -40,4 +40,12 @@
   * tests: add isolated marker to test_pep518_sdist</comment>
     <requestid>1077669</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>90f9c569501dfd37a533827b9186f1e2</srcmd5>
+    <version>0.4.7</version>
+    <time>1688246308</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096282</requestid>
+  </revision>
 </revisionlist>
