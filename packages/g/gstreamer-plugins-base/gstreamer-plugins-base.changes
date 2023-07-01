@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jun 26 14:18:54 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.4:
+  + alsasink: Fix stall for transition from PAUSED to READY with
+    USB speakerphone.
+  + appsink: unref buffer in prev sample early so buffers from v4l2
+    can be released properly.
+  + basetextoverlay: Fix typo in "text-y" property description.
+  + gldownload: handle passthrough without a critical.
+  + glfilter: add parent meta to output buffer for input buffer.
+  + oggdemux: vp8: Push headers downstream and detect keyframe
+    packets.
+  + opus: Fix potential crash when getting unexpected channel
+    position.
+  + streamsynchronizer: reset eos on STREAM_START.
+  + subparse: Look for the closing > of a tag after the opening <.
+  + video: convertframe: Add D3D11 specific conversion path.
+  + videometa: Only validate the alignment only when it contains
+    some info.
+  + video-blend: Fix linking error with C++.
+- Rebase reduce-required-meson.patch.
+
+-------------------------------------------------------------------
 Wed May 24 14:25:12 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.22.3:
