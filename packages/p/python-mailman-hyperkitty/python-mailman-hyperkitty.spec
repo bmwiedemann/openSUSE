@@ -19,9 +19,11 @@
 %if 0%{?suse_version} >= 1550
 # Newest python supported by mailman is Python 3.9 -- https://gitlab.com/mailman/mailman/-/issues/936
 %define pythons python311
+%define mypython python311
 %else
 %{?sle15_python_module_pythons}
 %define pythons python311
+%define mypython python311
 %endif
 Name:           python-mailman-hyperkitty
 Version:        1.2.1
@@ -35,10 +37,10 @@ Patch0:         python-mailman-hyperkitty-fix-archiver-test.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-mailman
-Requires:       python-requests
-Requires:       python-setuptools
-Requires:       python-zope.interface
+Requires:       %{mypython}-requests
+Requires:       %{mypython}-setuptools
+Requires:       %{mypython}-zope.interface
+Requires:       mailman3 >= 3.3.5
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  mailman3 >= 3.3.5
