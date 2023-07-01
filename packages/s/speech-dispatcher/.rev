@@ -328,4 +328,15 @@
     <comment></comment>
     <requestid>1042910</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>2a49ffac323379f8acad566bbc17dd63</srcmd5>
+    <version>0.11.4</version>
+    <time>1688246277</time>
+    <user>dimstar_suse</user>
+    <comment>- Use always python3.11 to build, so Leap use also python3.11 to
+  build.
+
+Now as requested only for Leap (forwarded request 1096175 from ecsos)</comment>
+    <requestid>1096178</requestid>
+  </revision>
 </revisionlist>

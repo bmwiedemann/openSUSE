@@ -1,7 +1,7 @@
 #
 # spec file for package speech-dispatcher
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,11 @@
 %define espeak    espeak
 %define espeakdev espeak-devel
 %endif
+%if 0%{?suse_version} > 1500
+%define _python python3
+%else
+%define _python python311
+%endif
 Name:           speech-dispatcher
 Version:        0.11.4
 Release:        0
@@ -38,6 +43,7 @@ Patch0:         harden_speech-dispatcherd.service.patch
 # Logrotate file taken from Debian
 Source2:        speech-dispatcher.logrotate
 Source99:       baselibs.conf
+BuildRequires:  %{_python}-setuptools
 BuildRequires:  %{espeakdev}
 BuildRequires:  alsa-devel
 BuildRequires:  dotconf-devel
@@ -49,10 +55,9 @@ BuildRequires:  libpulse-devel
 BuildRequires:  libsndfile-devel
 BuildRequires:  libtool
 BuildRequires:  makeinfo
-BuildRequires:  python3-setuptools
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(systemd)
-Requires:       python3-speechd
+Requires:       %{_python}-speechd
 # FIXME: use proper Requires(pre/post/preun/...)
 PreReq:         %{install_info_prereq}
 Suggests:       festival
@@ -79,8 +84,8 @@ tricky aspects of the speech subsystem.
 Summary:        Configuration tool for Speech Dispatcher
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Daemons
+Requires:       %{_python}-pyxdg
 Requires:       %{name} = %{version}
-Requires:       python3-pyxdg
 Enhances:       %{name}
 
 %description configure
@@ -150,13 +155,15 @@ to speech synthesis. The application neither needs to talk to the
 devices directly nor to handle concurrent access, sound output and other
 tricky aspects of the speech subsystem.
 
-%package -n python3-speechd
+%package -n %{_python}-speechd
 Summary:        Device independent layer for speech synthesis - Python Bindings
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Python
 Requires:       %{name} >= %{version}
+Provides:       python3-speechd = %{version}
+Obsoletes:      python3-speechd < %{version}
 
-%description -n python3-speechd
+%description -n %{_python}-speechd
 The goal of Speech Dispatcher project is to provide a high-level device
 independent layer for speech synthesis through a simple, stable and
 well documented interface.
@@ -177,6 +184,9 @@ sed -i "s/#AddModule \"%{espeak}\"/AddModule \"%{espeak}\"/" -i config/speechd.c
 
 %build
 %global optflags %{optflags} -fcommon
+%if 0%{?suse_version} <= 1500
+export PYTHON=/usr/bin/python3.11
+%endif
 %configure --disable-static \
         --with-libao \
         --with-alsa \
@@ -212,10 +222,14 @@ rm -f %{buildroot}%{_sysconfdir}/speech-dispatcher/modules/ibmtts.conf
 test -d %{buildroot}%{_infodir}/dir && rm %{buildroot}%{_infodir}/dir
 %find_lang %{name}
 # rpmlint
-sed -i -e 's|/usr/bin/env python3|/usr/bin/python3|g' %{buildroot}%{_bindir}/spd-conf
+sed -i -e 's|/usr/bin/env python3|/usr/bin/%{_python}|g' %{buildroot}%{_bindir}/spd-conf
 
 # Deduplicate python bytecode
+%if 0%{?suse_version} > 1500
 %fdupes %{buildroot}%{python3_sitearch}/speechd*
+%else
+%fdupes %{buildroot}%{python311_sitearch}/speechd*
+%endif
 
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
@@ -290,7 +304,11 @@ done
 
 %files configure
 %{_bindir}/spd-conf
+%if 0%{?suse_version} > 1500
 %{python3_sitearch}/speechd_config/
+%else
+%{python311_sitearch}/speechd_config/
+%endif
 %{_datadir}/speech-dispatcher/
 
 %files module-espeak
@@ -306,7 +324,11 @@ done
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/%{name}.pc
 
-%files -n python3-speechd
+%files -n %{_python}-speechd
+%if 0%{?suse_version} > 1500
 %{python3_sitearch}/speechd/
+%else
+%{python311_sitearch}/speechd/
+%endif
 
 %changelog

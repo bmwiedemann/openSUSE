@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 28 14:19:26 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Use always python3.11 to build, so Leap use also python3.11 to
+  build.
+
+-------------------------------------------------------------------
 Tue Dec 13 19:23:02 UTC 2022 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 0.11.4:
