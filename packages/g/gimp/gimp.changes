@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 30 07:45:24 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop baselibs.conf: the biarch module is not used anymore.
+
+-------------------------------------------------------------------
 Tue Apr 18 08:53:17 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not recommend gimp-plugins-python even when we build it: it

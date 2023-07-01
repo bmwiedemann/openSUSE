@@ -42,7 +42,6 @@ Source:         https://download.gimp.org/pub/gimp/v2.10/%{name}-%{version}.tar.
 Source1:        macros.gimp
 # openSUSE palette file
 Source2:        openSUSE.gpl
-Source99:       baselibs.conf
 
 BuildRequires:  aalib-devel
 BuildRequires:  alsa-devel >= 1.0.0
