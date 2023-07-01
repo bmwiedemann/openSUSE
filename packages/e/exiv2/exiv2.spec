@@ -18,7 +18,7 @@
 
 %bcond_with docs
 Name:           exiv2
-Version:        0.27.6
+Version:        0.28.0
 Release:        0
 Summary:        Tool to access image Exif metadata
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -27,17 +27,20 @@ URL:            https://exiv2.org/
 Source0:        https://github.com/Exiv2/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch0:         exiv2-build-date.patch
-Patch1:         CVE-2022-3953.patch
-Patch2:         always-use-signed-char-for-conversion.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc11-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  gettext-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libxslt
 BuildRequires:  python3-base
-#BuildRequires:  pkgconfig(libbrotlidec)
+BuildRequires:  pkgconfig(inih)
+BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(zlib)
 Recommends:     %{name}-lang = %{version}
 %if %{with docs}
@@ -55,32 +58,25 @@ BuildRequires:  gmock
 BuildRequires:  gtest
 BuildRequires:  libxml2-tools
 BuildRequires:  which
+%{?suse_build_hwcaps_libs}
 
 %description
 Exiv2 is a command line utility to access image metadata from tags like
 Exif.
 
-%package -n libexiv2-27
+%package -n libexiv2-28
 Summary:        Library to access image metadata
 Group:          System/Libraries
 
-%description -n libexiv2-27
+%description -n libexiv2-28
 libexiv2 is a C++ library with a C compatibility interface to access
 image metadata, esp from Exif tags.
-
-%package -n libexiv2-xmp-static
-Summary:        Library required too link libexiv2
-Group:          System/Libraries
-
-%description -n libexiv2-xmp-static
-libexiv2-xmp is a static library required to link with libexiv2.
 
 %package -n libexiv2-devel
 Summary:        Development Headers for Exiv2
 Group:          Development/Libraries/C and C++
-Requires:       libexiv2-27 = %{version}
+Requires:       libexiv2-28 = %{version}
 # needed by exiv2Config.cmake
-Requires:       libexiv2-xmp-static
 Requires:       libexpat-devel
 Requires:       libstdc++-devel
 Requires:       pkgconfig(zlib)
@@ -102,11 +98,11 @@ documentation in HTML format.
 
 %prep
 %autosetup -p1
-# Upstream will switch to C++11 with 0.28.0, but googletest requires C++11
-# See https://github.com/Exiv2/exiv2/issues/1163
-sed -i -e 's/CXX_STANDARD 98/CXX_STANDARD 11/' cmake/mainSetup.cmake
 
 %build
+%if 0%{?suse_version} < 1600
+export CXX='g++-11'
+%endif
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 export CXXFLAGS="%{optflags} $(getconf LFS_CFLAGS)"
 export CFLAGS="%{optflags} $(getconf LFS_CFLAGS)"
@@ -181,8 +177,8 @@ done
 %find_lang exiv2
 %fdupes -s %{buildroot}%{_docdir}/libexiv2
 
-%post -n libexiv2-27 -p /sbin/ldconfig
-%postun -n libexiv2-27 -p /sbin/ldconfig
+%post -n libexiv2-28 -p /sbin/ldconfig
+%postun -n libexiv2-28 -p /sbin/ldconfig
 
 %files lang -f exiv2.lang
 
@@ -192,16 +188,12 @@ done
 %{_bindir}/exiv2
 %{_mandir}/man1/*
 
-%files -n libexiv2-27
+%files -n libexiv2-28
 %{_libdir}/libexiv2.so.*
-
-%files -n libexiv2-xmp-static
-%{_libdir}/libexiv2-xmp.a
 
 %files -n libexiv2-devel
 %{_includedir}/exiv2
 %{_libdir}/libexiv2.so
-# needed by exiv2Config.cmake
 %{_libdir}/pkgconfig/exiv2.pc
 %dir %{_libdir}/cmake
 %dir %{_libdir}/cmake/exiv2

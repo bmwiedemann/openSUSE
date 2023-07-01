@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Jun 30 16:44:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add a x86-64-v3 build, remove 32bit build (not used)
+
+-------------------------------------------------------------------
+Wed Jun 21 07:48:56 UTC 2023 - Michal Kubecek <mkubecek@suse.cz>
+
+- drop old C++ standard hack (patched line dropped in 0.28)
+- use g++-11 for Leap 15 builds (fix for failed std::filesystem
+  check)
+
+-------------------------------------------------------------------
+Mon Jun 19 20:06:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.28.0:
+  - long list of improvements and security fixes, see
+   https://github.com/Exiv2/exiv2/issues/2406#issuecomment-1529139799
+- drop always-use-signed-char-for-conversion.patch (code no longer exists)
+- drop CVE-2022-3953.patch (merged upstream)
+- drop xml-static subpackage, cannot be built from shared builds anymore
+  and appears to be unused
+
+-------------------------------------------------------------------
 Tue Jan 24 17:42:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add always-use-signed-char-for-conversion.patch for test suite
