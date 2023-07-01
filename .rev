@@ -1432,4 +1432,14 @@ Also wanted for 13.1</comment>
     <comment></comment>
     <requestid>1092847</requestid>
   </revision>
+  <revision rev="185" vrev="1">
+    <srcmd5>e44bab83627733852033a1738aed7dd1</srcmd5>
+    <version>1.50.5</version>
+    <time>1688246264</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1096132 from iznogood
+
+New stable rel</comment>
+    <requestid>1096194</requestid>
+  </revision>
 </revisionlist>
