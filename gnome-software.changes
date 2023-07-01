@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 30 12:53:31 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.3:
+  + Fix a crash when refining a flatpak app.
+  + Fix a state recover after a failed app update.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri May 26 13:23:19 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.2:
