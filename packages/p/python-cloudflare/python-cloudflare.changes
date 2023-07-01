@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jul  1 10:07:10 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.11.1
+ - more api endpoints
+ - firewall rules example
+ - add openapi support, added tuna for testing
+ - add openapi support, delay yaml and jsonlines load to speed up everything, other cleanup
+ - add openapi support, delay bs4 load to speed up everything, improve requests imports
+ - missing import json, speed up to import requests
+   For full changelog see: 
+   https://github.com/cloudflare/python-cloudflare/blob/master/CHANGELOG.md
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Sun Jan 23 16:44:10 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.15:

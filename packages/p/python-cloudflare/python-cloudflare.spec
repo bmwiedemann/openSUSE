@@ -1,7 +1,7 @@
 #
 # spec file for package python-cloudflare
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-cloudflare
-Version:        2.8.15
+Version:        2.11.1
 Release:        0
 Summary:        Python wrapper for the Cloudflare v4 API
 License:        MIT
@@ -54,9 +54,6 @@ Python wrapper for the Cloudflare Client API v4.
 
 %install
 %python_install
-mkdir -p %{buildroot}%{_mandir}/man1
-mv %{buildroot}/usr/man/man1/cli4.man %{buildroot}%{_mandir}/man1/cli4.1
-rm -rf %{buildroot}/usr/man
 %python_clone -a %{buildroot}%{_bindir}/cli4
 %python_clone -a %{buildroot}%{_mandir}/man1/cli4.1
 # remove examples from sitelib
@@ -73,10 +70,10 @@ rm -rf %{buildroot}/usr/man
 %python_uninstall_alternative cli4 cli4.1
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/cli4
-%python_alternative %{_mandir}/man1/cli4.1%{?ext_man}
+%python_alternative %{_mandir}/man1/cli4.1
 %{python_sitelib}/*
 
 %changelog
