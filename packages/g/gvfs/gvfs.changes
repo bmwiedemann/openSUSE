@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jun 30 12:49:52 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.50.5:
+  + smbbrowse: Fix empty device listing after unrelated mount
+    failure.
+  + udisks: Fix missing unmount notifications.
+  + trash:
+    - Fix nfs4 and cifs monitoring.
+    - Fix wrongly reported item-count.
+  + smb: Allow renaming a file to the same name with a different
+    case.
+  + mtp: Emit delete event on device disconnection.
+  + Some other fixes and improvements.
+  + Updated translations.
+- Drop patches fixed upstream:
+  + fc2669f63c5def1528dda2e7833db5774aa08e22.patch
+  + 85bfb701fc95abeaa8a8ca3d9059378a9490f738.patch
+  + 41862c0179f834d8bc3bd84ce78ee495050f2676.patch
+
+-------------------------------------------------------------------
 Sun Jun 11 20:55:10 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add upstream fixes from the stable branch:
