@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jul  1 13:38:40 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.7.4
+  * Fixes token initialization when reporting progress.
+  * Resolves home dir references in Jedi environment path.
+  * Fixes Pylint hanging on files with many errors.
+- Release 1.7.3
+  * Adds support for Yapf 0.33
+    (upstreamed python-lsp-server-pr377-unpin-yapf.patch)
+  * Fix an empty current working directory value for Pylint
+
+-------------------------------------------------------------------
 Tue May  9 20:07:36 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Unpin yapf

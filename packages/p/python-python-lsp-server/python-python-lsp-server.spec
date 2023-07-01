@@ -17,14 +17,12 @@
 
 
 Name:           python-python-lsp-server
-Version:        1.7.2
+Version:        1.7.4
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-lsp-server/python-lsp-server-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM python-lsp-server-pr377-unpin-yapf.patch gh#python-lsp/python-lsp-server#377
-Patch0:         python-lsp-server-pr377-unpin-yapf.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}
