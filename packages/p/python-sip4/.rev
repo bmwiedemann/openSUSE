@@ -65,4 +65,12 @@
     <comment>not compatible with python311</comment>
     <requestid>1066654</requestid>
   </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>884062ba605e19af62dd8902d6c6c9fb</srcmd5>
+    <version>4.19.25</version>
+    <time>1688246310</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096289</requestid>
+  </revision>
 </revisionlist>

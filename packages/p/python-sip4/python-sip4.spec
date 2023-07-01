@@ -36,7 +36,6 @@
 # where X is the python flavor
 # python-sip4-doc and python-sip4-common are flavorless
 %define oldpython python
-%define skip_python311 1
 
 Name:           python-%{pname}
 Version:        4.19.25
@@ -50,6 +49,8 @@ Source0:        https://www.riverbankcomputing.com/static/Downloads/sip/%{versio
 Patch0:         disable-rpaths.diff
 # PATCH-FIX-OPENSUSE disable-strip.diff -- Disable stripping
 Patch1:         disable-strip.diff
+# PATCH-FIX-OPENSUSE -- Use accessor for python frame object
+Patch2:         python311_frame.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  c++_compiler

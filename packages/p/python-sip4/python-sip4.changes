@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul  1 00:12:29 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Enable python311, libArcus does not support SIP > 4.
+  Add python311_frame.patch
+
+-------------------------------------------------------------------
 Sun Feb 19 20:29:32 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Don't build for python311: not supported
