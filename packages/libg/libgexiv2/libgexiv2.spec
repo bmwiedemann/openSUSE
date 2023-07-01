@@ -27,7 +27,10 @@ License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://wiki.gnome.org/Projects/gexiv2
 Source0:        https://download.gnome.org/sources/gexiv2/0.14/%{tarname}-%{version}.tar.xz
-Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM 06adc8fb70cb8c77c0cd364195d8251811106ef8.patch -- Fix compatibility with exiv2 main branch
+Patch0:         https://gitlab.gnome.org/GNOME/gexiv2/-/commit/06adc8fb70cb8c77c0cd364195d8251811106ef8.patch
+# PATCH-FIX-UPSTREAM fix-32bit-compat.patch https://gitlab.gnome.org/GNOME/gexiv2/-/merge_requests/75 -- Fix 32bit build
+Patch1:         fix-32bit-compat.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection

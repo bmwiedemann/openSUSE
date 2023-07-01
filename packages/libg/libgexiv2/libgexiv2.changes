@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jun 30 07:42:43 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop baselibs.conf: the biarch module is not used anymore.
+
+-------------------------------------------------------------------
+Wed Jun 28 09:04:19 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add fix-32bit-compat.patch: Fix 32bit build compatibility. Taken
+  from https://gitlab.gnome.org/GNOME/gexiv2/-/merge_requests/75
+
+-------------------------------------------------------------------
+Fri Jun 23 18:31:44 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 06adc8fb70cb8c77c0cd364195d8251811106ef8.patch: Fix
+  compatibility with exiv2 main branch.
+
+-------------------------------------------------------------------
 Sun May  7 10:48:16 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.14.1:
