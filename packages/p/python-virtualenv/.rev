@@ -718,4 +718,12 @@ ers toes by using a lock while creating the base images. By :user:`gaborbernat`.
     23.1 - by @szleb. (#2560)</comment>
     <requestid>1088293</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>9305781034e09097b248d900679423ec</srcmd5>
+    <version>20.23.1</version>
+    <time>1688246280</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096211</requestid>
+  </revision>
 </revisionlist>

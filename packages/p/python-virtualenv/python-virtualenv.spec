@@ -28,7 +28,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-virtualenv%{psuffix}
-Version:        20.23.0
+Version:        20.23.1
 Release:        0
 Summary:        Virtual Python Environment builder
 License:        MIT
@@ -64,6 +64,8 @@ BuildRequires:  %{python_module flaky >= 3}
 BuildRequires:  %{python_module packaging >= 20.0}
 BuildRequires:  %{python_module pytest >= 4.0.0}
 BuildRequires:  %{python_module pytest-env >= 0.6.2}
+# note: is unmaintained, was upstream-replaced by pytest-freezer, which we don't have in the distribution yet
+# but they both contain the needed fixture, so this is OK until pytest-freezegun dies for good
 BuildRequires:  %{python_module pytest-freezegun >= 0.4.1}
 BuildRequires:  %{python_module pytest-mock >= 2.0.0}
 BuildRequires:  %{python_module pytest-timeout >= 1.3.4}

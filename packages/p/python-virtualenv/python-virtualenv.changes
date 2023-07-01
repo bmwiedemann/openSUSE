@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 30 15:40:31 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to v20.23.1
+  * update and simplify nushell activation script
+
+-------------------------------------------------------------------
 Mon May 22 08:32:57 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing BuildRequires on time-machine 
