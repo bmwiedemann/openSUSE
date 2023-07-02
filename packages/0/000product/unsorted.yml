@@ -6412,6 +6412,7 @@ unsorted:
   - gimp-plugins-python 
   - gimp-save-for-web 
   - gimp-save-for-web-lang 
+  - gimp-ufraw 
   - ginac 
   - ginac-devel 
   - ginac-doc-html 
@@ -11717,8 +11718,8 @@ unsorted:
   - libexif-gtk-devel 
   - libexif-gtk5 
   - libexif12-32bit 
+  - libexiv2-28-x86-64-v3 
   - libexiv2-devel 
-  - libexiv2-xmp-static 
   - libexmdbpp-devel 
   - libexmdbpp0 
   - libexpat-devel 
@@ -12313,6 +12314,7 @@ unsorted:
   - libgtkhotkey1 
   - libgtkhtml-4_0-0 
   - libgtkhtml-editor-4_0-0 
+  - libgtkimageview0 
   - libgtkmm-2_4-1 
   - libgtkpod1 
   - libgtksourceview-2_0-0 
@@ -28922,6 +28924,8 @@ unsorted:
   - python311-python-redis-lock 
   - python311-python-redmine 
   - python311-python-rpm-spec 
+  - python311-python-rtmidi 
+  - python311-python-rtmidi-doc 
   - python311-python-snappy 
   - python311-python-socketio 
   - python311-python-socks 
@@ -29188,6 +29192,8 @@ unsorted:
   - python311-single-version 
   - python311-siosocks 
   - python311-sip-devel 
+  - python311-sip4 
+  - python311-sip4-devel 
   - python311-sip6-devel 
   - python311-siphashc 
   - python311-sklearn-pandas 
@@ -44945,6 +44951,8 @@ unsorted:
   - udunits2-devel 
   - ueberzugpp 
   - ufiformat 
+  - ufraw 
+  - ufraw-lang 
   - uftpd 
   - uget 
   - uget-integrator 
