@@ -1,7 +1,7 @@
 #
 # spec file for package python-dparse
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without  test
-%define skip_python2 1
 Name:           python-dparse
-Version:        0.6.2
+Version:        0.6.3
 Release:        0
 Summary:        Python dependency file parser
 License:        MIT
@@ -32,13 +30,13 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
 Requires:       python-packaging
+Requires:       (python-tomli if python-base < 3.11)
 Recommends:     python-pipenv
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module toml}
 %endif
 %python_subpackages
 

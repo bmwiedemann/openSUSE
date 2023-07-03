@@ -50,4 +50,14 @@
     <comment></comment>
     <requestid>1032191</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>969b2f40a0f45353470c2162401c6c6e</srcmd5>
+    <version>0.6.3</version>
+    <time>1688398934</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.3:
+  * Use the modern tomli/tomllib to parse TOML files.
+  * Drop Python 3.5 from our CI.</comment>
+    <requestid>1096324</requestid>
+  </revision>
 </revisionlist>
