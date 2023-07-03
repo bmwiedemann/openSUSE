@@ -64,4 +64,15 @@
   * Add template bootstrap5-responsive.html (#896) by @mschoettle</comment>
     <requestid>1079723</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9c979ceb6b42ea4b7d171e8e224e689d</srcmd5>
+    <version>2.6.0</version>
+    <time>1688398937</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.6.0:
+  * Fix bootstrap5-responsive template to extend bootstrap5
+  * Add support for django 4.2
+  * Drop python 3.7 and django 4.0 support (#920)</comment>
+    <requestid>1096322</requestid>
+  </revision>
 </revisionlist>
