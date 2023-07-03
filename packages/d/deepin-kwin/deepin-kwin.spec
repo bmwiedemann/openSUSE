@@ -22,7 +22,7 @@
 %global wayland (0%{?suse_version} >= 1330)
 
 Name:           deepin-kwin
-Version:        5.25.0
+Version:        5.25.5
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -125,6 +125,7 @@ BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xcb-xfixes) >= 1.10
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xkbcommon) >= 0.7.0
+BuildRequires:  pkgconfig(xscrnsaver)
 BuildRequires:  pkgconfig(xtst)
 %if %{wayland}
 BuildRequires:  pkgconfig(gbm)
@@ -214,9 +215,12 @@ sed -i 's#/usr/bin/env python3#/usr/bin/python3#' %{buildroot}%{_kf5_sharedir}/k
 
 %files
 %defattr(-,root,root,-)
-#%doc CHANGELOG.md
-#%license LICENSE
-%config %{_sysconfdir}/deepin-*
+%doc README.md README.zh_CN.md
+# %license LICENSE
+%dir %{_sysconfdir}/skel/.config
+%config %{_sysconfdir}/skel/.config/kglobalshortcutsrc
+%config %{_sysconfdir}/xdg/deepin-*
+%config %{_sysconfdir}/xdg/kglobalshortcutsrc
 %if %{wayland}
 %verify(not caps) %{_kf5_bindir}/%{name}_wayland
 %{_kf5_bindir}/%{name}_wayland_wrapper

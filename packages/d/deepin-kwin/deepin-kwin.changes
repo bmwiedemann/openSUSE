@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun  4 07:51:04 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.25.5
+  * Allow window cropping on screen update
+  * Set all windows 0 rounded corners by defaults
+  * Remove some default shortcuts
+  * Pick the best fillet
+  * Fix bugs
+
+-------------------------------------------------------------------
 Tue Apr 18 14:59:39 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.25.0
