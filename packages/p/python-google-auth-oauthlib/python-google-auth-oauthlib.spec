@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-google-auth-oauthlib
 Version:        1.0.0
 Release:        0
