@@ -2543,6 +2543,7 @@ unsorted:
   - crmsh 
   - crmsh-scripts 
   - crmsh-test 
+  - croc 
   - cronic 
   - cronie-anacron 
   - cross-aarch64-binutils 
@@ -15578,6 +15579,8 @@ unsorted:
   - libvsapm-devel 
   - libvsapm-tools 
   - libvsapm1 
+  - libvsg-devel 
+  - libvsg13 
   - libvsgpt-devel 
   - libvsgpt-tools 
   - libvsgpt1 
