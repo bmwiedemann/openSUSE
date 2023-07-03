@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Fri Jun 30 15:07:58 UTC 2023 - nyslay@gmail.com
+
+- Update to version 0.31.8:
+  * v0.31.8
+  * update NEWS.md
+  * update inotify code not to use deprecated fns
+  * update deps (fixes build on latest nightly)
+  * switch to upstream git zbus
+  * use is_some_and(..) instead of map_or(false, ..)
+  * build(deps): bump openssl from 0.10.54 to 0.10.55
+  * update README
+  * Temporarily switch to a fork of zbus
+  * v0.30.7
+
+-------------------------------------------------------------------
+Fri Jun 30 15:01:18 UTC 2023 - Dawid Adam <nyslay@gmail.com>
+
+- Update to version 0.31.8:
+  * Music block now functions properly when a player name contains -.
+
+-------------------------------------------------------------------
+Fri Jun 30 15:01:18 UTC 2023 - Dawid Adam <nyslay@gmail.com>
+
+- Update to version 0.31.7:
+  * Maildir: Support glob expansions in inboxes (for example, this now works: inboxes = ["~/Maildir/account1/*"]).
+  * Battery(sysfs): Handle the case when charge rate is lower than current power usage.
+  * Keyboard layout: Add support for keyboard layout variant to setxkbmap driver.
+  * Blocks that make web requests will now do 3 retries before displaying an error.
+  * Blocks can now recover from "Failed to render full text" errors.
+
+-------------------------------------------------------------------
+Fri Jun 30 15:01:18 UTC 2023 - Dawid Adam <nyslay@gmail.com>
+
+- Update to version 0.31.6:
+  * Support custom separators in rotating text. Example: format = " $title.str(max_w:30, rot_interval:0.2, rot_separator:' - ') |".
+  * Battery(sysfs): calculate battery level based on {charge,energy}_{now,full} instead of kernel-provided capacity (see #1906).
+  * Text formatting now operates on graphemes instead of "chars". This means that symbols like "a̐" are now processed correctly.
+
+-------------------------------------------------------------------
+Fri Jun 30 15:01:18 UTC 2023 - Dawid Adam <nyslay@gmail.com>
+
+- Update to version 0.31.5:
+  * Net: do not consider IPs with scope host or lower.
+  * Net: Define an "active" interface as an interface with 1) state UP or 2) state UNKNOWN but has an IP. Previously only part 1) was considered.
+  * Net: add inactive_format.
+
+-------------------------------------------------------------------
+Fri Jun 30 15:01:18 UTC 2023 - Dawid Adam <nyslay@gmail.com>
+
+- Update to version 0.31.4:
+  * Update Cargo.lock.
+
+-------------------------------------------------------------------
+Fri Jun 30 15:01:18 UTC 2023 - Dawid Adam <nyslay@gmail.com>
+
+- Update to version 0.31.3:
+  * Kdeconnect: Add connectivity report (cell network)
+  * Add vertical option for bar formatting (▁ ▂ ▃ ▄ ▅ ▆ ▇)
+
+-------------------------------------------------------------------
+Fri Jun 30 15:01:18 UTC 2023 - Dawid Adam <nyslay@gmail.com>
+
+- Update to version 0.31.2:
+  * Vpn: add mullvad driver.
+  * Don't require block = "..." to be the first field.
+  * Battery: automatically recover from some errors.
+  * Sound: automatically reconnect to pulseaudio server when connection fails.
+
+-------------------------------------------------------------------
+Fri Jun 30 15:01:18 UTC 2023 - Dawid Adam <nyslay@gmail.com>
+
+- Update to version 0.31.1:
+  * Update material-nf icon set for Nerd Fonts v3.
+  * Temperature: the icon now reflects the max temperature (material-nf icon set only).
+
+-------------------------------------------------------------------
+Fri Jun 30 15:01:18 UTC 2023 - Dawid Adam <nyslay@gmail.com>
+
+- Update to version 0.31.0:
+  * Sound: mappings_use_regex now defaults to true.
+  * block = "..." is now required to be the first field of block configs. However, an error in a block's config will not break the entire bar.
+  * Battery: added charging_format config option.
+  * Net: fix missing_format option.
+  * Backlight: fix "calibright config error".
+  * The default release profile no longer strips the binary.
+  * Added release-debug-info profile.
+
+-------------------------------------------------------------------
 Wed Apr 19 08:41:43 UTC 2023 - nyslay@gmail.com
 
 - Update to version 0.30.7:
