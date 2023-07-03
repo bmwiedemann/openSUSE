@@ -26,7 +26,7 @@ RUN zypper -n install \
            containerized-data-importer-uploadserver \
            curl \
            libnbd \
-           qemu-tools \
+           qemu-img \
            shadow \
            tar \
            util-linux && \
