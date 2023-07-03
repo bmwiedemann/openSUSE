@@ -1,7 +1,7 @@
 #
 # spec file for package direnv
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define gopackagepath github.com/direnv/direnv
 Name:           direnv
-Version:        2.32.2
+Version:        2.32.3
 Release:        0
 Summary:        Environment switcher for shells
 License:        MIT
