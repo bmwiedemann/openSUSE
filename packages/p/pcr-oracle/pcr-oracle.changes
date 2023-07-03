@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jun  5 07:45:13 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 0.4.5
+  - update manpage to reflect added support of unseal w/ tpm2.0 key
+    format
+  - Implement unseal for TPM 2.0 Key File
+  - Update manpage to describe the new key-format switch
+  - Add TPM 2.0 Key File support to 'seal-secret' and 'sign'
+  - Add comment to SRK template regarding NODA flag.
+  - pcr-oracle.8: add a section on pcr policy sealing
+  - Add self-test subcommand to pcr-oracle
+  - Rename __tss_check_error -> tss_check_error
+  - Moved two tss related functions to a file of their own
+  - Add test-pcr.sh script
+  - Use the same SRK template as the one in grub2
+  - Implement seal/unseal using a regular PCR policy
+  - When displaying the DevicePath, print ACPI PNP ids
+  - Handle failure to read EFI variables more gracefully
+  - Gracefully handle AUTHORITY events for eg driver BSAs that
+    reside in ROM
+  - efi-variable rehash: break out the code to detect how the
+    firmware hashed the event
+
+-------------------------------------------------------------------
 Thu Jun  1 07:07:04 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - build with optflags, remove unneeded clean section, macro bindir

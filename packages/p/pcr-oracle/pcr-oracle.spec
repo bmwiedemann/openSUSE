@@ -18,7 +18,7 @@
 
 
 Name:           pcr-oracle
-Version:        0.4.2
+Version:        0.4.5
 Release:        0
 Summary:        Predict TPM PCR values
 License:        GPL-2.0-only
