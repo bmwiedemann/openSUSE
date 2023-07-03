@@ -320,4 +320,17 @@
   * fix: support axis != -1 for record reduction</comment>
     <requestid>1094142</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a99bbe5cf413b1df8b778943abc1e6ad</srcmd5>
+    <version>2.2.4</version>
+    <time>1688398941</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.4:
+  * feat!: canonicalise union of indexed
+  * feat: add array dispatcher (inline)
+  * fix: patch NDArrayOperatorsMixin
+  * fix: improve performance of Form.select_columns
+  * refactor: add internal with_operation_context</comment>
+    <requestid>1096327</requestid>
+  </revision>
 </revisionlist>
