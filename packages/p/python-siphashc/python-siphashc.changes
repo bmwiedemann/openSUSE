@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul  1 14:12:26 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.1 (also from 2020)
+  * Dropped support for Python 2.
+
+-------------------------------------------------------------------
 Wed Jun  3 09:47:37 UTC 2020 - pgajdos@suse.com
 
 - use %pytest macro
