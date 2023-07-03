@@ -162,4 +162,13 @@ please place in same staging as gcompris-qt
 </comment>
     <requestid>1077681</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>509e1bcbb192957bc2b522f1aae328c1</srcmd5>
+    <version>3.3~20230606</version>
+    <time>1688398898</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.3~20230606 for gcompris-qt 3.3 with the right fixes for the expected version (3.3)
+</comment>
+    <requestid>1096493</requestid>
+  </revision>
 </revisionlist>
