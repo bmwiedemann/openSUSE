@@ -17,7 +17,7 @@
 
 
 Name:           dxvk
-Version:        2.1
+Version:        2.2
 Release:        0
 Summary:        Vulkan-based D3D11 implementation for Linux / Wine
 License:        zlib-acknowledgement
@@ -65,7 +65,7 @@ export LDFLAGS="-fPIC -Wl,--sort-common -Wl,--gc-sections -Wl,-O1 -fuse-linker-p
 
 mkdir ../build
 
-meson \
+meson setup \
     --cross-file build-win$(arch | tail -c 3 | sed 's|86|32|g').txt \
     --strip \
     --buildtype "release" \

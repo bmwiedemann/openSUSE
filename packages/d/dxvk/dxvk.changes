@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Wed May 24 02:29:22 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Update to 2.2
+  * 3D11On12 support
+  In order to enable D3D12 support in recent Unity Engine titles such
+  as Lego Builder's Journey, this release introduces support for creating D3D11
+  devices from a D3D12 device using D3D11On12CreateDevice, as well as
+  the basic ID3D11On12Device interface. This is achieved by importing
+  the Vulkan device and resource handles from vkd3d-proton into DXVK,
+  and otherwise uses DXVK's existing D3D11 implementation.
+
+  A vkd3d-proton build as of HansKristian-Work/vkd3d-proton@26c4fed
+  or later is required for this to work.
+
+  * D3D9 Partial Presentation
+  DXVK now supports presenting to parts of a window by copying the contents of the backbuffer
+  to system memory and then drawing them into the window on the CPU.
+  This improves compatibility with game launchers, particularly those
+  based on Microsoft's WPF toolkit, and some visual novels.
+  It will however come with a noticable performance hit.
+
+  Additionally, overall behaviour of D3D9 swap chains was improved and
+  the d3d9.noExplicitFrontBuffer option was removed.
+  * Logging changes
+  When running on Proton or plain Wine, DXVK will no longer create
+  log files by default and instead only write log messages to the console
+  using wine-specific functionality, in order to avoid creating unnecessary extra files.
+  This matches vkd3d-proton behaviour. Note that log file creation
+  can be re-enabled by setting the environment variable DXVK_LOG_PATH to a valid path.
+
+  When filing bug reports, users are encouraged to upload the full Proton log.
+
+  * Warnings about unknown interfaces being queried via QueryInterface
+    will only be logged once   in order to avoid growing log files
+    indefinitely in some games. (#3231)
+  * Fixed a regression when rendering YUY2 or UYUY texture formats.
+    This fixes in-game videos in Jade Empire (#3182) and
+    Sid Meier's Pirates (#3189) (PR #3342)
+  * Fixed an issue wherein threads were not properly destroyed.
+  * Fixed Vulkan validation errors caused by incorrect layout tracking
+    when enabling feedback loops for a texture.
+  * Fixed Vulkan validation errors caused by 0x0 sized clears in D3D9.
+  * D3D9 StateBlocks now only allocate memory for the parts that are actually used.
+    This fixes Total War: Shogun 2 running out of address space when
+    using the D3D9 renderer. (#2703, PR #3248)
+  * Improved usage of some VK_EXT_extended_dynamic_state3 features to
+    avoid hitting slow paths on some drivers.
+  * Improved enumeration of DXGI outputs on systems with multiple GPUs.
+    This fixes performance issues with recent RE Engine games (D3D12) on such systems.
+  * Significantly reduced memory usage in situations where games create unused D3D11 devices.
+  * Battle Fantasia Revised Edition: Locked frame rate to 60 FPS
+    to work around game bugs at higher frame rates. (PR #3256)
+  * Cold Fear: Fixed missing geometry (#3293, PR #3390)
+  * Dawn of Magic 2: Fixed a crash upon start (#3271, PR #3272)
+  * DC Universe Online: Fixed a hang after alt-tabbing out and back in. (#3314, PR #3316)
+  * Far Cry 2: Work around rendering issues on Intel hardware,
+    as well as low performance on all GPUs. (PR #3241)
+  * Halo: The Master Chief Collection: Fixed memory leak due to invalid
+    query usage by the game (PR #3273)
+  * Warhammer 40k: Space Marine: Fixed shadow rendering (#3298, PR #3305)
+
+
+-------------------------------------------------------------------
 Fri May  5 22:16:37 UTC 2023 - Björn Bidar <bjorn.bidar@thaodan.de>
 
 - Keep setup_dxvk.sh script that was deleted by upstream.
