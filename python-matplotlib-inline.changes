@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jul  1 10:34:02 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Sat Aug 20 14:59:06 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:
