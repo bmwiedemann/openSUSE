@@ -278,4 +278,15 @@
   * Various build fixes related to for example new Autoconf and Emscripten versions.</comment>
     <requestid>883514</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>11b785083f3d1b2ff9fede907e66196b</srcmd5>
+    <version>4.3.2</version>
+    <time>1688398890</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.3.2:
+  * Update C++ standard from C++11 to C++14.
+  * Compilation fixes for recent versions of GCC and Emscripten.
+  * Small fixes to JS API and Finnish grammar checker</comment>
+    <requestid>1096329</requestid>
+  </revision>
 </revisionlist>

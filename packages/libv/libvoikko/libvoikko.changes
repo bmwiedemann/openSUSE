@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul  1 21:19:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.2:
+  * Update C++ standard from C++11 to C++14.
+  * Compilation fixes for recent versions of GCC and Emscripten.
+  * Small fixes to JS API and Finnish grammar checker 
+
+-------------------------------------------------------------------
 Tue Apr  6 11:20:51 UTC 2021 - Timo Jyrinki <tjyrinki@suse.com>
 
 - Update to version 4.3.1

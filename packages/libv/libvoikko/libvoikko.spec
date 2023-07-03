@@ -1,7 +1,7 @@
 #
 # spec file for package libvoikko
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           libvoikko
-Version:        4.3.1
+Version:        4.3.2
 Release:        0
 Summary:        Library of free natural language processing tools
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Spell
-URL:            http://voikko.puimula.org
-Source0:        http://www.puimula.org/voikko-sources/%{name}/%{name}-%{version}.tar.gz
-Source1:        http://www.puimula.org/voikko-sources/%{name}/%{name}-%{version}.tar.gz.asc
+URL:            https://voikko.puimula.org
+Source0:        https://www.puimula.org/voikko-sources/%{name}/%{name}-%{version}.tar.gz
+Source1:        https://www.puimula.org/voikko-sources/%{name}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source99:       baselibs.conf
 BuildRequires:  gcc-c++
@@ -122,10 +122,10 @@ can be used to perform various natural language analysis tasks on text.
 	--disable-silent_rules \
 	--disable-static \
 	--with-dictionary-path=%{_libexecdir}/voikko:%{_datadir}/voikko
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} check || :
+%make_build check || :
 
 %install
 %make_install
