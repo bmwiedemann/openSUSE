@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Jul  3 08:08:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.56.0:
+  * Add type stub generation support to grpcio-tools.
+  * [aio types] Fix some grpc.aio python types.
+  * [Bazel Python3.11] Update Bazel dependencies for Python 3.11
+  * Build native MacOS arm64 artifacts (universal2).
+  * Build with System OpenSSL on Mac OS arm64.
+  * Change Aio abort() function return type to NoReturn.
+  * Change the annotated return type of UnaryStreamCall and StreamStreamCall from AsyncIterable to AsyncIterator.
+  * De-experimentalize compression.
+  * De-experimentalize wait-for-ready.
+  * [EventEngine] Disable EventEngine polling in gRPC Python
+  * Fix DeprecationWarning when calling asyncio.get_event_loop().
+  * Fix lack of cooldown between poll attempts.
+  * Include .pyi file.
+  * Remove enum and future.
+  * Remove references to deprecated syntax field.
+  * [Remove Six] Remove dependency on six.
+  * Respect CC variable in grpcio python build.
+  * Revert "Build with System OpenSSL on Mac OS arm64
+  * Support Python 3.11.
+  * Support python 3.11 on aarch64.
+  * Update xds-protos package to pull in protobuf 4.X.
+
+-------------------------------------------------------------------
+Sun Jul  2 12:34:18 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Apr  7 12:01:10 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Initial build
