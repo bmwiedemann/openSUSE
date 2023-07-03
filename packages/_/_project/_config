@@ -859,6 +859,7 @@ Prefer: PackageKit-backend-zypp
 Prefer: -python39-sip6-devel -python310-sip6-devel -python311-sip6-devel
 Prefer: -python39-sip4 -python39-sip4-devel
 Prefer: -python310-sip4 -python310-sip4-devel
+Prefer: -python311-sip4 -python311-sip4-devel
 
 Prefer: python310-Shapely:geos
 
