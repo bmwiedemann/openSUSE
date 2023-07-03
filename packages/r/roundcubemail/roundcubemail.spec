@@ -20,7 +20,7 @@
 %define roundcubeconfigpath %{_sysconfdir}/%{name}
 
 Name:           roundcubemail
-Version:        1.6.1
+Version:        1.6.2
 Release:        0
 Summary:        A browser-based multilingual IMAP client
 License:        BSD-3-Clause AND GPL-2.0-only AND GPL-3.0-or-later
