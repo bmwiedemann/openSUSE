@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul  2 15:23:07 UTC 2023 - Lee Duncan <lduncan@suse.com>
+
+- Upgrade to latest upstream version v1.1.30:
+ * setup.py: relax pyparsing version restriction
+ * Replace more occurrences of getargspec() with getfullargspec()
+ * replace getargspec() with getfullargspec()
+
+-------------------------------------------------------------------
 Fri Apr 21 12:23:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
