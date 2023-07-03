@@ -2631,4 +2631,110 @@ Fix regression in Kobo driver that caused the on device column to not be updated
     <comment></comment>
     <requestid>1083246</requestid>
   </revision>
+  <revision rev="301" vrev="1">
+    <srcmd5>ed1215253924d53270552c70314abaaa</srcmd5>
+    <version>6.21.0</version>
+    <time>1688398927</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.21.0
+  * New Features
+    - DOCX Output: Add support for SVG images
+    - E-book viewer: Allow configuring the actions triggered by
+      touch gestures
+    - DOCX Input: Add support for SVG images
+  * Bug Fixes
+    - Windows: Fix a regression in the previous release that could
+      cause files to be deleted if one of the files/folders was
+      open in another program while changing title/author in calibre
+    - macOS: Fix extra dock icons visible when doing a job using
+      Qt WebEngine such as converting to PDF or searching in Get books
+    - macOS and Linux: Fix an error when changing metadata or
+      deleting books whose files are owned by another user
+    - CHM Input: Yet another regression opening CHM files with
+      missing internal files on windows
+    - CHM Input: Resolve absolute links to resource files from the
+      root of the CHM file
+- Changes from 6.20.0
+  * Bug Fixes
+    - CHM Input: Fix a regression in the previous release that
+      broke conversion of CHM files
+    - Windows: Make moving files in the calibre library folder more
+      robust, locking folders in addition to files, before the start
+      of the move
+    - Get books: Update Barnes and Noble store plugin for website
+      changes
+    - Kindle output: Only re-encode JPEG images with EXIF metadata
+      if the metadata contains actual transpose operations
+    - PDF Output: Fix error when input document contains multiple
+      instances of a font some with vertical metrics and some without
+    - PDF Output: Fix using CSS Multicolumns for body causing
+      conversion to fail when header/footer is specified
+    - MOBI Input: Fix a crash when converting some corrupted
+      palmdoc compressed MOBI files
+    - E-book viewer: Ensure CSS stylesheets are interpreted as UTF-8
+- Changes from 6.19.1
+  * Bug Fixes
+    - 6.19.1 fixes a bug in 6.19.0 that broke the edit metadata dialog
+- Changes from 6.19.0
+  * New Features
+    - HTML Input: Restrict adding of resources like images to only
+      files within the folder hierarchy starting at the parent
+      folder of the root HTML file Can be controlled by customizing
+      the HTML to Zip plugin in Preferences-&gt;Plugins or the 
+      --allow-local-files-outside-root option to the ebook-convert
+      command
+  * Bug Fixes
+    - PDF Output: Fix regression in previous release causing
+      non-English entries to be incorrectly encoded into the PDF
+      bookmarks
+    - PDF Output: Fix regression in previous release that caused
+      blank pages when generating headers or footers
+    - Book list: Fix editing-in-place not pre-selecting existing
+      text for some column types
+    - Amazon.de metadata download: Update for site changes
+    - PDF Output: Set /Creator and /Producer in /Info
+    - Fix row height incorrect in Manage category dialog when blank
+- Changes from 6.18.1
+  * Bug Fixes
+    - 6.18.1 fixes a regression that broke setting metadata and
+      generating PDF files in the macOS and Linux binary builds
+- Changes from 6.18.0
+  * New Features
+    - Cover download: Allowing saving alternate covers to disk or
+      in the book's data folder by right clicking on the cover
+    - Content server: Allow disabling full text search via the web
+      interface
+    - When sending books to the device confirm the overwrite if the
+      book already exists on the device
+    - E-book viewer: Handle horizontal wheel events as section
+      jumps in paged mode
+    - Comic Input: When grayscaling comic images use 16bit gray
+      instead of 8bit for better fidelity
+    - Add a new option in Preferences-&gt;Searching to disable keyboard
+      searching in book list (i.e. you can turn off the behavior
+      that pressing a key will jump to the first book whose title
+      starts with that letter)
+    - Manage categories dialog: Use alternating row colors and
+      allow adjusting row height
+    - Allow assigning a keyboard shortcut in Preferences-&gt;Shortcuts
+      to open the data folder of a book
+    - Various improvements to syntax highlighting for the Markdown
+      long text editor
+  * Bug Fixes
+    - Fix a regression in 6.16 that broke restoring of the database
+    - Tag browser: Fix using F2 to edit items not allowing completion
+    - Book details: Fix formatting of text when copying all book
+      details in narrow mode
+    - Book details: Fix copy all not respecting line breaks in fields
+    - Fix a regression in previous release that broke scrolling
+      when using the scroll_per_row tweak
+    - Fix a regression in the previous release that broke the
+      category manager dialog in some situations    
+- Add calibre-revert-new-podofo.patch to fix build error with podofo.
+- Drop calibre-python_test.patch and disable tests in spec file.
+- Comment out mathjax and hyphenation-dictionaries for now.
+- Use only python 3.11 to build packages, so Leap can also build.
+</comment>
+    <requestid>1096286</requestid>
+  </revision>
 </revisionlist>

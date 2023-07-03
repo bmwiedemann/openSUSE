@@ -16,8 +16,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           calibre
-Version:        6.17.0
+Version:        6.21.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -34,12 +35,12 @@ Source5:        https://github.com/LibreOffice/dictionaries/archive/master/hyphe
 # Use from inside https://github.com/kovidgoyal/calibre/releases/download/v6.14.0/calibre-6.14.0-x86_64.txz
 Source6:        user-agent-data.json
 Source100:      %{name}-rpmlintrc
-# PATCH-FIX-OPENSUSE: disabling unrar test, disable zeroconf test
-Patch1:         %{name}-python_test.patch
 # PATCH-FIX-OPENSUSE: install locale files the openSUSE way
 Patch2:         %{name}-setup.install.py.diff
 # PATCH-FIX-OPENSUSE: disabling Autoupdate Searcher
 Patch3:         %{name}-no-update.diff
+# PATCH-FIX-OPENSUSE: revert new podofo
+Patch4:         %{name}-revert-new-podofo.patch
 ExclusiveArch:  aarch64 x86_64 riscv64
 BuildRequires:  fdupes
 BuildRequires:  help2man
@@ -82,7 +83,7 @@ BuildRequires:  qt6-gui-private-devel >= 6.3.1
 BuildRequires:  qt6-imageformats-devel >= 6.3.1
 BuildRequires:  qt6-platformsupport-private-devel  >= 6.3.1
 BuildRequires:  qt6-wayland-devel >= 6.3.1
-#BuildRequires:  python3-dbus-python
+#BuildRequires:  python311-dbus-python
 BuildRequires:  xdg-utils >= 1.0.2
 BuildRequires:  pkgconfig(Qt6Core) >= 6.3.1
 BuildRequires:  pkgconfig(Qt6Gui) >= 6.3.1
@@ -108,9 +109,10 @@ BuildRequires:  pkgconfig(libmspack)
 BuildRequires:  pkgconfig(libopenjp2) >= 2.4.0
 BuildRequires:  pkgconfig(libpng16) >= 1.6.37
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.24
-BuildRequires:  pkgconfig(ncurses) >= 6.3
-# upstream use pkgconfig(python3) >= 3.10.1
-BuildRequires:  pkgconfig(python3) >= 3.10
+# upstream use BuildRequires:  pkgconfig(ncurses) >= 6.3
+BuildRequires:  pkgconfig(ncurses) >= 6.1
+# upstream use pkgconfig(python311) >= 3.10.1
+BuildRequires:  python311-devel >= 3.10
 BuildRequires:  pkgconfig(readline) >= 8.1
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(uchardet) >= 0.0.7
@@ -121,60 +123,63 @@ BuildRequires:  pkgconfig(ImageMagick) >= 6.5.9
 BuildRequires:  jxrlib-devel >= 0.2.4
 BuildRequires:  libjpeg-turbo >= 2.0.5
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-Brotli >= 1.0.9
-BuildRequires:  python3-FontTools >= 4.39.3
-BuildRequires:  python3-Markdown >= 3.3.6
-BuildRequires:  python3-Pillow >= 8.4.0
-BuildRequires:  python3-Pygments >= 2.10.0
-BuildRequires:  python3-apsw >= 3.36.0-r1
-BuildRequires:  python3-beautifulsoup4 >= 4.10.0
-BuildRequires:  python3-cchardet >= 2.1.7
-BuildRequires:  python3-chardet >= 4.0.0
-BuildRequires:  python3-css-parser >= 1.0.8
-BuildRequires:  python3-dateutil >= 2.8.2
-BuildRequires:  python3-dnspython >= 2.1.0
-BuildRequires:  python3-dukpy-kovidgoyal >= 0.3
-BuildRequires:  python3-feedparser >= 6.0.8
-BuildRequires:  python3-html2text >= 2020.1.16
-BuildRequires:  python3-html5-parser >= 0.4.10
-BuildRequires:  python3-html5lib >= 1.1
-BuildRequires:  python3-ifaddr >= 0.1.7
-BuildRequires:  python3-jeepney >= 0.7.1
-BuildRequires:  python3-lxml >= 4.9.1
-BuildRequires:  python3-mechanize >= 0.4.7
-BuildRequires:  python3-msgpack >= 1.0.3
-BuildRequires:  python3-netifaces >= 0.11.0
-BuildRequires:  python3-odfpy
-BuildRequires:  python3-packaging >= 20.4
-BuildRequires:  python3-psutil >= 5.8.0
-BuildRequires:  python3-pychm >= 0.8.6
-BuildRequires:  python3-pycryptodome >= 3.11.0
-BuildRequires:  python3-pyparsing >= 3.0.6
-BuildRequires:  python3-pyzstd >= 0.15.6
-# upstream use: BuildRequires:  python3-pyqt-builder >= 1.13.0
-BuildRequires:  python3-pyqt-builder >= 1.12.2
-BuildRequires:  python3-qt6-devel >= 6.3.1
-BuildRequires:  python3-regex >= 2021.11.10
-BuildRequires:  python3-setuptools >= 57.4.0
-BuildRequires:  python3-sgmllib3k >= 1.0.0
-BuildRequires:  python3-sip-devel >= 6.6.2
-BuildRequires:  python3-texttable >= 1.6.4
-BuildRequires:  python3-toml >= 0.10.2
+BuildRequires:  python311-Brotli >= 1.0.9
+BuildRequires:  python311-FontTools >= 4.39.3
+BuildRequires:  python311-Markdown >= 3.3.6
+BuildRequires:  python311-Pillow >= 8.4.0
+BuildRequires:  python311-Pygments >= 2.10.0
+BuildRequires:  python311-apsw >= 3.36.0-r1
+BuildRequires:  python311-beautifulsoup4 >= 4.10.0
+BuildRequires:  python311-cchardet >= 2.1.7
+BuildRequires:  python311-chardet >= 4.0.0
+BuildRequires:  python311-css-parser >= 1.0.8
+BuildRequires:  python311-dateutil >= 2.8.2
+BuildRequires:  python311-dnspython >= 2.1.0
+BuildRequires:  python311-dukpy-kovidgoyal >= 0.3
+BuildRequires:  python311-feedparser >= 6.0.8
+BuildRequires:  python311-html2text >= 2020.1.16
+BuildRequires:  python311-html5-parser >= 0.4.10
+BuildRequires:  python311-html5lib >= 1.1
+BuildRequires:  python311-ifaddr >= 0.1.7
+BuildRequires:  python311-jeepney >= 0.7.1
+BuildRequires:  python311-lxml >= 4.9.1
+BuildRequires:  python311-mechanize >= 0.4.7
+BuildRequires:  python311-msgpack >= 1.0.3
+BuildRequires:  python311-netifaces >= 0.11.0
+BuildRequires:  python311-odfpy
+BuildRequires:  python311-packaging >= 20.4
+BuildRequires:  python311-psutil >= 5.8.0
+BuildRequires:  python311-pychm >= 0.8.6
+BuildRequires:  python311-pycryptodome >= 3.11.0
+BuildRequires:  python311-pyparsing >= 3.0.6
+BuildRequires:  python311-pyzstd >= 0.15.6
+# upstream use: BuildRequires:  python311-pyqt-builder >= 1.13.0
+BuildRequires:  python311-pyqt-builder >= 1.12.2
+BuildRequires:  python311-qt6-devel >= 6.3.1
+BuildRequires:  python311-regex >= 2021.11.10
+BuildRequires:  python311-setuptools >= 57.4.0
+BuildRequires:  python311-sgmllib3k >= 1.0.0
+BuildRequires:  python311-sip-devel >= 6.6.2
+BuildRequires:  python311-texttable >= 1.6.4
+BuildRequires:  python311-toml >= 0.10.2
 BuildRequires:  pkgconfig(libjpeg) >= 2.1.2
 BuildRequires:  pkgconfig(libwebp) >= 1.2.1
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.14
 BuildRequires:  pkgconfig(libxslt) >= 1.1.35
 # Need at buildtime too, to produce the bash completion
-BuildRequires:  python3-qtwebengine-qt6 >= 6.3.1
-BuildRequires:  python3-six >= 1.16.0
-BuildRequires:  python3-soupsieve >= 2.3.1
+BuildRequires:  python311-qtwebengine-qt6 >= 6.3.1
+BuildRequires:  python311-six >= 1.16.0
+BuildRequires:  python311-soupsieve >= 2.3.1
 #BuildRequires:  python-unrardll >= 0.1.5
-# upstream use: BuildRequires:  python3-py7zr >= 0.15.0
-BuildRequires:  python3-py7zr >= 0.11.1
-# upstream use: BuildRequires:  python3-speechd >= 0.11.1
-BuildRequires:  python3-speechd >= 0.10.2
-BuildRequires:  python3-webencodings >= 0.5.1
-BuildRequires:  python3-zeroconf >= 0.37.0
+# upstream use: BuildRequires:  python311-py7zr >= 0.15.0
+BuildRequires:  python311-py7zr >= 0.11.1
+%if 0%{?suse_version} > 1500
+BuildRequires:  python3-speechd >= 0.11.1
+%else
+BuildRequires:  python311-speechd >= 0.11.1
+%endif
+BuildRequires:  python311-webencodings >= 0.5.1
+BuildRequires:  python311-zeroconf >= 0.37.0
 #
 Requires:       chmlib >= 0.40
 #Requires:       dbus-1-python3 >= 1.2.0
@@ -185,56 +190,60 @@ Requires:       libwmf >= 0.2.8
 Requires:       optipng >= 0.7.5
 Requires:       podofo >= 0.9.7
 Requires:       poppler-tools >= 21.11.0
-Requires:       python3 >= 3.10
-Requires:       python3-Brotli >= 1.0.9
-Requires:       python3-Markdown >= 3.3.6
-Requires:       python3-Pillow >= 8.4.0
-Requires:       python3-Pygments >= 2.10.0
-Requires:       python3-apsw >= 3.36.0-r1
-Requires:       python3-beautifulsoup4 >= 4.10.0
-Requires:       python3-cchardet >= 2.1.7
-Requires:       python3-chardet >= 4.0.0
-Requires:       python3-css-parser >= 1.0.8
-Requires:       python3-dateutil >= 2.8.2
-#Requires:       python3-dbus-python
-Requires:       python3-dnspython >= 2.1.0
-Requires:       python3-FontTools >= 4.39.3
-Requires:       python3-PyQt6-sip >= 13.4.0
-Requires:       python3-dukpy-kovidgoyal >= 0.3
-Requires:       python3-feedparser >= 6.0.8
-Requires:       python3-html2text >= 2020.1.16
-Requires:       python3-html5-parser >= 0.4.10
-Requires:       python3-html5lib >= 1.1
-Requires:       python3-ifaddr >= 0.1.7
-Requires:       python3-jeepney >= 0.7.1
-Requires:       python3-lxml >= 4.9.1
-Requires:       python3-mechanize >= 0.4.7
-Requires:       python3-msgpack >= 1.0.3
-Requires:       python3-netifaces >= 0.11.0
-Requires:       python3-odfpy
-Requires:       python3-psutil >= 5.8.0
-Requires:       python3-pychm >= 0.8.6
-Requires:       python3-pycryptodome >= 3.11.0
-Requires:       python3-pyzstd >= 0.15.6
-Requires:       python3-qt6 >= 6.3.1
-Requires:       python3-qtwebengine-qt6 >= 6.3.1
-Requires:       python3-regex >= 2021.11.10
-Requires:       python3-sgmllib3k >= 1.0.0
-Requires:       python3-six >= 1.16.0
-Requires:       python3-soupsieve >= 2.3.1
-Requires:       python3-texttable >= 1.6.4
-#Requires:       python3-unrardll >= 0.1.5
-Requires:       python3-py7zr >= 0.11.1
-Requires:       python3-speechd >= 0.10.2
-Requires:       python3-webencodings >= 0.5.1
-Requires:       python3-zeroconf >= 0.37.0
+Requires:       python311 >= 3.10
+Requires:       python311-Brotli >= 1.0.9
+Requires:       python311-Markdown >= 3.3.6
+Requires:       python311-Pillow >= 8.4.0
+Requires:       python311-Pygments >= 2.10.0
+Requires:       python311-apsw >= 3.36.0-r1
+Requires:       python311-beautifulsoup4 >= 4.10.0
+Requires:       python311-cchardet >= 2.1.7
+Requires:       python311-chardet >= 4.0.0
+Requires:       python311-css-parser >= 1.0.8
+Requires:       python311-dateutil >= 2.8.2
+#Requires:       python311-dbus-python
+Requires:       python311-dnspython >= 2.1.0
+Requires:       python311-FontTools >= 4.39.3
+Requires:       python311-PyQt6-sip >= 13.4.0
+Requires:       python311-dukpy-kovidgoyal >= 0.3
+Requires:       python311-feedparser >= 6.0.8
+Requires:       python311-html2text >= 2020.1.16
+Requires:       python311-html5-parser >= 0.4.10
+Requires:       python311-html5lib >= 1.1
+Requires:       python311-ifaddr >= 0.1.7
+Requires:       python311-jeepney >= 0.7.1
+Requires:       python311-lxml >= 4.9.1
+Requires:       python311-mechanize >= 0.4.7
+Requires:       python311-msgpack >= 1.0.3
+Requires:       python311-netifaces >= 0.11.0
+Requires:       python311-odfpy
+Requires:       python311-psutil >= 5.8.0
+Requires:       python311-pychm >= 0.8.6
+Requires:       python311-pycryptodome >= 3.11.0
+Requires:       python311-pyzstd >= 0.15.6
+Requires:       python311-qt6 >= 6.3.1
+Requires:       python311-qtwebengine-qt6 >= 6.3.1
+Requires:       python311-regex >= 2021.11.10
+Requires:       python311-sgmllib3k >= 1.0.0
+Requires:       python311-six >= 1.16.0
+Requires:       python311-soupsieve >= 2.3.1
+Requires:       python311-texttable >= 1.6.4
+#Requires:       python311-unrardll >= 0.1.5
+Requires:       python311-py7zr >= 0.11.1
+%if 0%{?suse_version} > 1500
+Requires:       python3-speechd >= 0.11.1
+%else
+Requires:       python311-speechd >= 0.11.1
+%endif
+Requires:       python311-webencodings >= 0.5.1
+Requires:       python311-zeroconf >= 0.37.0
 #
 Requires:       sqlite3
 Requires:       bzip2 >= 1.0.8
 Requires:       expat >= 2.4.1
 Requires:       unrar >= 6.1.2
 Requires:       xdg-utils >= 1.0.2
-Requires:       xz >= 5.2.5
+Requires:       xz >= 5.2.3
 Requires:       zlib >= 1.2.11
 
 Requires(pretrans):findutils
@@ -250,9 +259,9 @@ into ebooks for convenient reading.
 
 %prep
 %setup -q -a4 -a5
-%patch1 -p1
 %patch2 -p1
 %patch3 -p1 -b .no-update
+%patch4 -p1
 
 # dos2unix newline conversion
 sed -i 's/\r//' src/calibre/web/feeds/recipes/*
@@ -286,22 +295,26 @@ LANG="en_US.UTF8" \
 CFLAGS="%{optflags}" \
 CXXFLAGS="%{optflags}" \
 OVERRIDE_CFLAGS="%{optflags}" \
-CALIBRE_PY3_PORT=1 python3 setup.py build
+
 ###python setup.py build
-%{__python3} setup.py iso639
-%{__python3} setup.py iso3166
-%{__python3} setup.py translations
-%{__python3} setup.py gui
-%{__python3} setup.py resources \
-	--path-to-liberation_fonts %{_datadir}/fonts/truetype \
-	--system-liberation_fonts \
-	--path-to-hyphenation `pwd`/dictionaries-master \
-	--path-to-mathjax `pwd`/MathJax-3.1.4
-#%%{__python3} setup.py man_pages
+CALIBRE_PY3_PORT=1 python3.11 setup.py build
+
+python3.11 setup.py iso639
+python3.11 setup.py iso3166
+python3.11 setup.py translations
+python3.11 setup.py gui
+
+#%%{__python3} setup.py resources \
+#	--path-to-liberation_fonts %%{_datadir}/fonts/truetype \
+#	--system-liberation_fonts \
+#	--path-to-hyphenation `pwd`/dictionaries-master \
+#	--path-to-mathjax `pwd`/MathJax-3.1.4
+
+#%%{__python311} setup.py man_pages
 
 %install
 ###python setup.py install \
-CALIBRE_PY3_PORT=1 python3 setup.py install \
+CALIBRE_PY3_PORT=1 python3.11 setup.py install \
    --prefix=%{_prefix} \
    --root=%{buildroot}%{_prefix} \
    --staging-bindir=%{buildroot}%{_bindir} \
@@ -367,7 +380,15 @@ if st and st.type == "directory" then
 end
 
 %check
-CALIBRE_PY3_PORT=1 SKIP_QT_BUILD_TEST=1 python3 setup.py test
+# don't know why Leap rise up an error. Does anyone know the reason?
+%if 0%{?suse_version} > 1500
+TEST_EXCLUDE=(
+    --exclude-test-name unrar                       # is not in openSUSE oss
+    --exclude-test-name zeroconf                    # rise up build error
+)
+
+CALIBRE_PY3_PORT=1 SKIP_QT_BUILD_TEST=1 python3.11 setup.py test "${TEST_EXCLUDE[@]}"
+%endif
 
 %if 0%{?suse_version} <= 1320
 %post
@@ -397,6 +418,6 @@ CALIBRE_PY3_PORT=1 SKIP_QT_BUILD_TEST=1 python3 setup.py test
 %{_datadir}/bash-completion/completions/%{name}*
 %{_datadir}/bash-completion/completions/*ebook*
 %{_datadir}/bash-completion/completions/lrf*
-%{python3_sitearch}/init_calibre.py
+%{python_sitearch}/init_calibre.py
 
 %changelog
