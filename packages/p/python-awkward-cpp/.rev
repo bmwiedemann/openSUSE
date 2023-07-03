@@ -106,4 +106,13 @@
   * Optimize FindMember when use std::string (#690)</comment>
     <requestid>1094143</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>417c4d4217305a9bb9252a3c7bf87dc0</srcmd5>
+    <version>18</version>
+    <time>1688398940</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 18:
+  * update pyodide parts a bit</comment>
+    <requestid>1096326</requestid>
+  </revision>
 </revisionlist>
