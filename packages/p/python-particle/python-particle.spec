@@ -20,12 +20,13 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-particle
-Version:        0.22.0
+Version:        0.22.1
 Release:        0
 Summary:        PDG particle data and identification codes
 License:        BSD-3-Clause
 URL:            https://github.com/scikit-hep/particle
 Source0:        https://files.pythonhosted.org/packages/source/p/particle/%{modname}-%{version}.tar.gz
+Source1:        python-particle.rpmlintrc
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
@@ -34,6 +35,7 @@ BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Deprecated
 Requires:       python-attrs >= 19.2
 Requires:       python-hepunits >= 2.0.0
 Recommends:     python-pandas
@@ -42,7 +44,6 @@ BuildArch:      noarch
 # SECTION For tests
 BuildRequires:  %{python_module Deprecated}
 BuildRequires:  %{python_module hepunits}
-BuildRequires:  %{python_module importlib_resources}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest}
 # /SECTION

@@ -1,0 +1,5 @@
+# rpmlint cannot read conditionalised python modules
+## only needed for python < 3.9
+addFilter("W: python-missing-require importlib-resources")
+## only needed for python < 3.8
+addFilter("W: python-missing-require typing-extensions")
