@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul  1 20:37:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.6.1:
+  * Required a newer version of django-js-asset which actually works
+    with Django 4.1.
+  * CKEditor 4.21.0
+  * Fixed the CKEditor styles when used with the dark Django admin theme. 
+
+-------------------------------------------------------------------
 Fri Jan 13 09:51:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.5.1:
