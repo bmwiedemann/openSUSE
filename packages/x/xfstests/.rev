@@ -23,4 +23,12 @@
     <comment>- Update to version 1.1.1+git.20220820: (forwarded request 1001251 from dsterba)</comment>
     <requestid>1001253</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>df15894998aaf3b24d9e44a5bd5359e5</srcmd5>
+    <version>1.1.1+git.20230528</version>
+    <time>1688398909</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1096181</requestid>
+  </revision>
 </revisionlist>
