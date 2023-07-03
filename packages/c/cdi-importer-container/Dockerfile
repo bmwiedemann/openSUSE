@@ -33,10 +33,8 @@ RUN zypper -n install \
            nbdkit-curl-plugin \
            nbdkit-gzip-filter \
            nbdkit-xz-filter \
-           qemu-block-curl \
-           qemu-tools \
+           qemu-img \
            shadow \
-           skopeo \
            tar \
            util-linux
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 15 16:55:53 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Drop unneeded packages: qemu-block-curl and skopeo
+- Install qemu-img explicitly instead of qemu-tools
+
+-------------------------------------------------------------------
 Thu Oct 13 16:33:59 UTC 2022 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Create an unprivileged user to run as non-root
