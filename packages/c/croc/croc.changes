@@ -1,0 +1,75 @@
+-------------------------------------------------------------------
+Tue Jun 06 22:28:21 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 9.6.4:
+  * bump 9.6.4
+  * Upgrade Go version to 1.20 and dependencies to latest
+  * Update CI to run on main branch events
+  * Chmod new file based on the source file mode
+  * Small optimization + consistent variable names style
+  * Implement tab completion for words
+  * path -> fpath
+  * run through gofumpt
+  * Typo fix
+  * revert back to flate instead of zstd
+  * Replaced zstd package
+  * Added zstd as a compression algorithm
+  * addresses #496 gettings ports doing LAN
+  * println -> print os.stderr
+  * remove zip compression and add --zip to send command
+  * Fixed relative path / bug
+  * Added support for sending relative folder
+  * Unzipping file at the reciever end
+  * Added UnzipDirectory function
+  * Modified the argument for GetFilesInfo in tests
+  * Handling the --zip flag
+  * Added --zip CLI argument for zipping all the dir specified
+  * added ZipDirectory function
+  * don't show number of folders if the number is 0
+  * update ui
+  * Fix relay IPv4 address resolution behind DNS64
+  * add Fedora instructions to README
+  * avoid deadlock
+  * new support system
+  * #463 fixed display at receiving end
+  * #463 fixed croc tests for empty folders, and to work in
+    Windows
+  * #463 fixed display for empty folders
+  * #463 added capability to send/receive empty folders
+  * update default curve
+  * default to P-256
+  * update readme
+  * Drop shebang for bash completion
+  * tcp: send error on fail
+  * fix ui when sending text
+  * #431 fixed remote folder name for Windows
+  * #431 Integrate GetFilesInfo function with the code
+  * #431 added file informations retrival functions to replace
+    getPaths
+  * #454 fixed local transfer
+  * fix sending file with prefix "croc-stdin" renaming on
+    receiver end
+  * allow remembering --internal-dns flag
+  * fix hash file error
+
+-------------------------------------------------------------------
+Sun Dec 05 12:57:23 UTC 2021 - orville@anislet.dev
+
+- Update to version 9.5.0:
+  * bump 9.5.0
+  * Fix Typos (revised)
+  * fix ports for tests
+  * update deps
+  * refactor: move from io/ioutil to io and os packages
+  * build: upgrade to Go 1.17
+  * Fixed an error
+
+-------------------------------------------------------------------
+Fri Dec  3 14:38:49 UTC 2021 - Orville Q. Song <orville@anislet.dev>
+
+- Init croc Package.
+
+croc could help you easily and securely send things from one computer to another.
+
+Current Release: v9.5.0
+Commit Hash: 7390e7ed45bbf4037fa5e7e6d3545e0813b3529d

@@ -1,0 +1,6 @@
+<package name="croc" project="openSUSE:Factory">
+  <title></title>
+  <description>Easily and securely send things from one computer to another 🐊 📦</description>
+  <devel project="network" package="croc"/>
+  <url>https://github.com/schollz/croc</url>
+</package>
