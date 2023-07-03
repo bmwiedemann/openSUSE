@@ -659,4 +659,12 @@ See https://bugzilla.opensuse.org/show_bug.cgi?id=1195398
     <comment></comment>
     <requestid>1092772</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>39a16b9a6c8fdb36613fd8cfb8e22ad4</srcmd5>
+    <version>12.64</version>
+    <time>1688399068</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096605</requestid>
+  </revision>
 </revisionlist>

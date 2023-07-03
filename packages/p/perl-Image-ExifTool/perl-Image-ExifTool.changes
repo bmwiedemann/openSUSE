@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jul  3 13:35:00 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 12.64:
+  * Added a new Sony LensType (thanks Jos Roost)
+  * Added config_files/guano.config to the distribution (thanks StarGeek)
+  * Added support for Garmin Low-resolution Video (GLV) files
+  * Added JUMBF to the list of deletable groups
+  * Added (untested) read support for spherical video tags in Matroska videos
+  * Decode a number of new Nikon Z9 tags (thanks Warren Hatch)
+  * Decode AmbisonicAudio tags in spherical MP4 vidoes
+  * Decode another Apple tag
+  * Improved French translations (thanks Philippe Bonnaure of GraphicConverter)
+  * Patched to allow writing QuickTime-based videos where the audio/video sample
+    description comes after the sample pointers
+  * Fixed parsing of GPS from Insta360 videos to properly skip void fixes
+  * Fixed problem where Apple iPhone 14 images produced invalid XML in -X
+    output when using -struct option
+  * API Changes:
+    + Added StructFormat option[1] to allow JSON-format serialized structures
+    + Added NoDups option to eliminate duplicate items from queued values
+      when writing List-type tags
+
+-------------------------------------------------------------------
 Mon Jun 12 11:20:08 UTC 2023 - Gus Kenion <gkenion@suse.com>
 
 - Update to 12.63:
