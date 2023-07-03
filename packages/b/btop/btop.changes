@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Jun 23 17:22:29 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.2.13+git20230615.7e50b03:
+  * Fix integer overflows in btop_collect.cpp
+  * Enable Clang as a compiler.
+  * Remove pthread_exit().
+  * Replace `statvfs64` with `statvfs` and define `_FILE_OFFSET_BITS=64`.
+  * Include <codecvt> required by Clang.
+  * Move `#include` to top level and exclude Clang from compiler version check.
+  * Insert `std::` for warning `unqualified call to std::move`.
+  * Include 3rd party headers with isystem to silence warnings.
+  * amend! update cpu load average display
+  * update cpu load average display
+  * chore: remove spaces before language in code blocks
+  * chore: update readme to include --recursive
+  * chore: adjust worflows to recursively clone the repository
+  * feat: prefer fmt submodule over copy-and-paste headers
+  * println -> fmt::println
+  * Readd using namespace fmt
+  * fix: prefix with `fmt::` to fix ambiguous call to `format()`, that also refers to `/usr/include/c++/13.1.1/format`
+  * Debug times thousand separator
+  * Debug times box changes
+  * btop.cpp -> fmt
+  * Fix link to themes folder
+
+-------------------------------------------------------------------
+Wed Apr 26 19:24:18 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.2.13+git20230318.872eb3e:
+  * Silence "warning: unqualified call to 'std::move'" in clang.
+  * Update everforest-dark-hard.theme
+
+-------------------------------------------------------------------
+Thu Feb 23 18:38:20 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.2.13+git20230223.471c68f:
+  * readme: Add zfs_arc_cached documentation
+  * Linux: subtract ZFS ARC min size from available memory
+  * Replace -ftree-loop-vectorize with -ftree-vectorize.
+  * Create adwaita.theme
+  * fix zfs on freebsd not reporting IO
+
+-------------------------------------------------------------------
 Tue Jan 03 18:19:48 UTC 2023 - scott.bradnick@suse.com
 
 - Update to version 1.2.13+git20221215.c4ee41e:
