@@ -1,7 +1,7 @@
 #
 # spec file for package python-augeas
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-augeas
-Version:        0.5.0
+Version:        1.1.0
 Release:        0
 Summary:        Python bindings for Augeas
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Python
-Url:            http://augeas.net/
-Source:         https://fedorahosted.org/released/python-augeas/python-augeas-%{version}.tar.gz
+URL:            http://augeas.net/
+Source:         https://github.com/hercules-team/python-augeas/archive/v%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module cffi >= 1.0.0}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  augeas-lenses
 BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
 Requires:       augeas
 # We'd always want to have augeas-lenses installed
 Requires:       augeas-lenses
@@ -46,6 +47,9 @@ configuration files.
 
 %install
 %python_install
+
+# do not pack tests
+%python_expand rm -rf %{buildroot}%{$python_sitelib}/test
 
 %check
 cd test
