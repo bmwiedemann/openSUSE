@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jun 26 13:26:48 UTC 2023 - pgajdos@suse.com
+
+- version update to 1.6.21
+  * build: avoid disting build artifacts from vendor/*
+  * extstore: fix data bugs on high overwrite key
+  * proxy: fixes for memory tracking
+  * meta: fix ms c flag reflecting s flag
+  * extstore: fail to start if given no disk space
+  * extstore: Handle incorrect units gracefully
+  * proxy: mcp.internal() support ascii multiget
+  * proxy: fix segfault for reqs with too few tokens
+  * proxy: fix per-worker-thread backend mode batching
+  * proxy: fix meta set M flag for mcp.internal()
+  * proxy: add await tests in proxyunits.t
+  * proxy: add response API tests in proxyunits.t
+
+-------------------------------------------------------------------
 Mon May 29 19:43:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.20:
