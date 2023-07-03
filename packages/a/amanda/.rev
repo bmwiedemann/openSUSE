@@ -56,4 +56,12 @@ aware of the risks and this is still in usage</comment>
     <comment></comment>
     <requestid>1073619</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>2d294a65ae32e7b96fa90cb8aca86ba6</srcmd5>
+    <version>3.5.3</version>
+    <time>1688399049</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the user owner of the files in /usr from amanda to root, bsc#1172572 (forwarded request 1096531 from dspinella)</comment>
+    <requestid>1096532</requestid>
+  </revision>
 </revisionlist>

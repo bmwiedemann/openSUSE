@@ -259,7 +259,7 @@ ln -s amrecover.8.gz %{buildroot}%{_mandir}/man8/amoldrecover.8
 %{perl_vendorlib}/Amanda/*.pm
 %{perl_vendorlib}/auto/Amanda/*/*.so
 %{perl_vendorlib}/auto/Amanda/*/*/*.so
-%defattr(755,amanda,%{amanda_group})
+%defattr(755,root,%{amanda_group})
 %{_sbindir}/amadmin
 %{_sbindir}/ambackup
 %{_sbindir}/amreindex
@@ -274,7 +274,7 @@ ln -s amrecover.8.gz %{buildroot}%{_mandir}/man8/amoldrecover.8
 %{_sbindir}/amoverview
 %{_sbindir}/amplot
 %{_sbindir}/amcheck
-%attr(0750,amanda,%{amanda_group}) %{_sbindir}/amrecover
+%attr(0750,root,%{amanda_group}) %{_sbindir}/amrecover
 %{_sbindir}/amreport
 %{_sbindir}/amrestore
 %{_sbindir}/amrmtape
@@ -299,13 +299,13 @@ ln -s amrecover.8.gz %{buildroot}%{_mandir}/man8/amoldrecover.8
 %{_sbindir}/amservice
 %{_sbindir}/amvault
 %{_sbindir}/activate-devpay
-%defattr(644,amanda,%{amanda_group})
+%defattr(644,root,%{amanda_group})
 %{_libexecdir}/amanda/suidlist
 %{_libexecdir}/amanda/amcat.awk
 %{_libexecdir}/amanda/amplot.awk
 %{_libexecdir}/amanda/amplot.g
 %{_libexecdir}/amanda/amplot.gp
-%defattr(755,amanda,%{amanda_group})
+%defattr(755,root,%{amanda_group})
 %{_libexecdir}/amanda/amandad
 %{_libexecdir}/amanda/amdumpd
 %{_libexecdir}/amanda/amidxtaped

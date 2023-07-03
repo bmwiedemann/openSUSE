@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  3 11:16:07 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix the user owner of the files in /usr from amanda to root, bsc#1172572
+
+-------------------------------------------------------------------
 Tue Mar 21 16:16:06 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to version 3.5.3:
