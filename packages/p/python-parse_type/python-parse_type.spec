@@ -1,7 +1,7 @@
 #
 # spec file for package python-parse_type
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,28 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-parse_type
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        Extension to the parse module
-License:        BSD-3-Clause
+License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jenisys/parse_type
 Source:         https://github.com/jenisys/parse_type/archive/v%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-parse >= 1.12.0
+Requires:       python-six >= 1.11
+BuildArch:      noarch
 %if %{with python2}
 BuildRequires:  python-enum34
 %endif
-Requires:       python-parse >= 1.12.0
-Requires:       python-six >= 1.11
 %ifpython2
 Requires:       python-enum34
 %endif
-BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module parse >= 1.12.0}
 BuildRequires:  %{python_module pytest >= 3.0}
@@ -58,7 +58,7 @@ the following features:
     primary type converter
 
 %prep
-%setup -q -n parse_type-%{version}
+%autosetup -p1 -n parse_type-%{version}
 
 # no extra pytest options are needed
 rm pytest.ini
@@ -67,10 +67,10 @@ rm parse_type/parse.py
 rm tests/test_parse.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -79,6 +79,7 @@ rm tests/test_parse.py
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/parse_type
+%{python_sitelib}/parse_type-%{version}*-info
 
 %changelog

@@ -44,4 +44,23 @@
     <comment></comment>
     <requestid>958027</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c60106da720b2351233e7e546c7575e6</srcmd5>
+    <version>0.6.1</version>
+    <time>1688398982</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.1:
+  - Switch to MIT license (same as: parse module)
+  - Use SPDX-License-Identifier in source code (to simplify
+    understanding)
+  - UPDATE/SYNC to parse v1.19.1
+  - ADDED: pyproject.toml to support newer pip versions
+  - REASON: setup.py becomes DEPRECATED in 2023-09 for newer pip
+    versions.
+  - Issue #19: 0.6.0: pytest is failing in two units (caused by:
+    parse v1.19.1)
+  - Issue #1: Licensing confusion
+</comment>
+    <requestid>1096413</requestid>
+  </revision>
 </revisionlist>

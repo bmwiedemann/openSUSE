@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jul  2 15:18:54 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.6.1:
+  - Switch to MIT license (same as: parse module)
+  - Use SPDX-License-Identifier in source code (to simplify
+    understanding)
+  - UPDATE/SYNC to parse v1.19.1
+  - ADDED: pyproject.toml to support newer pip versions
+  - REASON: setup.py becomes DEPRECATED in 2023-09 for newer pip
+    versions.
+  - Issue #19: 0.6.0: pytest is failing in two units (caused by:
+    parse v1.19.1)
+  - Issue #1: Licensing confusion
+
+-------------------------------------------------------------------
 Mon Feb 28 10:33:12 UTC 2022 - pgajdos@suse.com
 
 - version update to 0.6.0
