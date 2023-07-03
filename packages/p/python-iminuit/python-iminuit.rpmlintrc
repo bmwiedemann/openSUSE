@@ -1,0 +1,2 @@
+# False +ve, not required for python >= 3.9
+addFilter("W: python-missing-require typing_extensions")

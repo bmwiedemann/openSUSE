@@ -19,20 +19,25 @@
 %define modname iminuit
 %{?sle15_python_module_pythons}
 Name:           python-%{modname}
-Version:        2.21.3
+Version:        2.22.0
 Release:        0
 Summary:        Python bindings for MINUIT2
 License:        MIT
 URL:            https://github.com/scikit-hep/iminuit
 Source0:        https://files.pythonhosted.org/packages/source/i/iminuit/%{modname}-%{version}.tar.gz
-Patch0:         missing-headers.patch
+Source1:        python-iminuit.rpmlintrc
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module numpy >= 1.21.0}
 BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module pathspec}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pybind11 >= 2.9.0}
 BuildRequires:  %{python_module pybind11-devel}
+BuildRequires:  %{python_module pyproject-metadata}
+BuildRequires:  %{python_module scikit-build-core >= 0.3.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  cmake >= 3.13
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -41,12 +46,12 @@ Requires:       python-numpy >= 1.21.0
 Recommends:     python-matplotlib
 Recommends:     python-scipy
 # SECTION test requirements
+BuildRequires:  %{python_module ipywidgets}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numba}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module tabulate}
-BuildRequires:  %{python_module typing_extensions}
 # Fix unresolved status for Leap 15.x on account of multiple choices for python3-importlib-metadata (python3-importlib-metadata and python3-importlib_metadata)
 BuildRequires:  %{python_module importlib-metadata}
 # /SECTION
@@ -61,17 +66,16 @@ and to get model parameter error estimates from likelihood profile analysis.
 
 %prep
 %setup -q -n %{modname}-%{version}
-%patch0 -p1
 # We use external pybind11, just to be sure remove bundled pybind11 entirely
 rm -fr extern/pybind11
 
 %build
 export CXXFLAGS="%{optflags}"
 export CMAKE_ARGS="-DIMINUIT_EXTERNAL_PYBIND11=ON -DCMAKE_VERBOSE_MAKEFILE=ON"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -86,6 +90,6 @@ export CMAKE_ARGS="-DIMINUIT_EXTERNAL_PYBIND11=ON -DCMAKE_VERBOSE_MAKEFILE=ON"
 %doc README.rst
 %license LICENSE
 %{python_sitearch}/%{modname}/
-%{python_sitearch}/%{modname}-%{version}-py%{python_version}.egg-info/
+%{python_sitearch}/%{modname}-%{version}*.*-info/
 
 %changelog

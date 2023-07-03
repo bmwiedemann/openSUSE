@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri Jun 30 18:24:19 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.22.0:
+  * add basic latex display support if unicodeit is installed
+    [gh#scikit-help/iminuit#858].
+  * replace flake8 with ruff [gh#scikit-help/iminuit#859].
+  * Integer as variable [gh#scikit-help/iminuit#860].
+  * experimental mncontour algorithm [gh#scikit-help/iminuit#861].
+  * improve error message for cost function
+    [gh#scikit-help/iminuit#863].
+  * Add RooFit tutorial [gh#scikit-help/iminuit#867].
+  * Use unicodeitplus instead of unicodeit to render LaTeX as
+    unicode [gh#scikit-help/iminuit#868].
+  * Better ruff settings and adjustments, improvements to README
+    [gh#scikit-help/iminuit#871].
+  * Update Progressbar [gh#scikit-help/iminuit#872].
+  * Add hide_modules and deprecated_parameters
+    [gh#scikit-help/iminuit#873].
+  * Forward kwargs in Minuit.visualize to plotting function
+    [gh#scikit-help/iminuit#874].
+  * Ignore missing matplotlib when calling Minuit.repr_html()
+    [gh#scikit-help/iminuit#875].
+  * Rename keyword nbins to bins in UnbinnedCost.visualize
+    [gh#scikit-help/iminuit#876].
+  * Roofit tutorials [gh#scikit-help/iminuit#877].
+  * better log-spacing detection [gh#scikit-help/iminuit#878].
+  * Add LeastSquares.pulls and LeastSquares.prediction
+    [gh#scikit-help/iminuit#880].
+  * fix-typo-in-basic [gh#scikit-help/iminuit#888].
+  * Update fcn.hpp [gh#scikit-help/iminuit#889].
+  * Improve docs [gh#scikit-help/iminuit#890].
+  * Make covariance fields in display easier to understand
+    [gh#scikit-help/iminuit#891].
+  * New benchmarks [gh#scikit-help/iminuit#893].
+  * Add Minuit.fixto [gh#scikit-help/iminuit#894].
+  * fix: make nograd not use grad at all in automatic diff doc
+    [gh#scikit-help/iminuit#895].
+  * Use scikit-build-core [gh#scikit-help/iminuit#812].
+  * Update conclusions after the fix from Jonas
+    [gh#scikit-help/iminuit#899].
+  * Hide confusing notes in docs: "Not to be initialized by
+    users." [gh#scikit-help/iminuit#906].
+- Drop missing-headers.patch: Incorporated upstream.
+- Add BuildRequires: python-scikit-build-core > 0.3.0.
+- Add %{name}.rpmlintc to suppress a false positive about a
+  missing python module (only required for python < 3.9).
+
+-------------------------------------------------------------------
 Tue Jun 20 14:15:27 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - missing-headers.patch: add missing headers
