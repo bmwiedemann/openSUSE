@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun 28 13:52:21 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1687960328.0df62a5:
+  * Apply best practices to Dockerfiles
+  * Bump version number
+  * git subrepo pull (merge) external/os-autoinst-common
+  * Isotovideo/Interface.pm: Bump interface to 39
+  * t/22-svirt.t: Update to define serial console for user (sut-serial)
+  * Remove non-functional save_storage_drives from testapi
+  * Add unit tests for multiple click points
+  * Allow a needle to have multiple click points
+
+-------------------------------------------------------------------
 Fri May 12 10:10:12 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1683886197.05274f7:
