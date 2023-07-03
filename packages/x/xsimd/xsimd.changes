@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jun 27 15:32:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 11.1.0:
+  * Introduce XSIMD_DEFAULT_ARCH to force default architecture
+    (if any)
+  * Remove C++ requirement on xsimd::exp10 scalar implementation
+  * Improve and test documentation
+  * Provide a generic reducer
+  * Fix ``find_package(xsimd)`` for xtl enabled xsimd, reloaded
+  * Cleanup benchmark code
+  * Provide avx512f implementation of FMA and variant
+  * Hexadecimal floating points are not a C++11 feature
+  * back to slow implementation of exp10 on Windows
+  * Changed bitwise_cast API
+  * Provide generic signed /unsigned type conversion
+  * Fixed sde location
+  * Feature/incr decr
+  * Cleanup documentation
+
+-------------------------------------------------------------------
 Sat Dec  3 16:55:40 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.0.0:
