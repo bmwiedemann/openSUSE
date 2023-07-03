@@ -74,4 +74,12 @@
   * [#248] Update sphinx version (forwarded request 1040797 from dirkmueller)</comment>
     <requestid>1041319</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5a815f7456c58362c6e8aaf40de20a03</srcmd5>
+    <version>3.1.9</version>
+    <time>1688398893</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096355</requestid>
+  </revision>
 </revisionlist>

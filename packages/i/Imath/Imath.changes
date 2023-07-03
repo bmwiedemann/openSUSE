@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 27 15:06:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.9:
+  * Fix Heap-buffer-overflow in internal_huf_decompress
+  * Support for DWA compression in OpenEXRCore
+  * Fix for threadpool deadlocks during shutdown on Windows
+  *  Stack-buffer-overflow in DwaCompressor_readChannelRules
+
+-------------------------------------------------------------------
 Tue Dec  6 20:47:37 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.6:
