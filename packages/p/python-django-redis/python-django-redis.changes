@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jul  1 20:30:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.0:
+  * Add support for django 4 
+  * Access `django_redis.cache.DJANGO_REDIS_SCAN_ITERSIZE` and
+    `django_redis.client.herd.CACHE_HERD_TIMEOUT` in runtime to
+    not read Django settings in import time. 
+  * Skipping pickle serializer test for django >= 4.2 
+  * Speed up deleting multiple keys by a pattern with pipelines
+    and larger itersize 
+  * Print full exception traceback when logging ignored
+    exceptions 
+  * Fix mypy linting 
+  * Added support for python 3.11 
+  * Fix CI, running tox<4 to still support Python 3.6. 
+  * Dropped support for django 2.2 and 3.1 
+  * Run actions & tox against Django 4..2 
+
+-------------------------------------------------------------------
 Mon Jun 26 07:06:58 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Use sle15_python_module_pythons

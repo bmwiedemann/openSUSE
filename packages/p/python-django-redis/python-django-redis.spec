@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-redis
-Version:        5.2.0
+Version:        5.3.0
 Release:        0
 Summary:        A redis cache backend for Django
 License:        BSD-3-Clause
