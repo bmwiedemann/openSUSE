@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTTP-Tiny
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name HTTP-Tiny
 Name:           perl-HTTP-Tiny
-Version:        0.082
+Version:        0.086
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Small, simple, correct HTTP/1.1 client
