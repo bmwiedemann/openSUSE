@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Jun 29 07:57:14 UTC 2023 - Jan Baier <jbaier@suse.com>
+
+- update to 1.7.15
+  * Add configuration options and command-line flags for backing up a database
+    from one location while restoring it somewhere else.
+  * Add a documentation troubleshooting note for MySQL/MariaDB authentication
+    errors.
+  * Remove upgrade-borgmatic-config command for upgrading borgmatic 1.1.0
+    INI-style configuration.
+  * Deprecate generate-borgmatic-config in favor of new "config generate"
+    action.
+  * Deprecate validate-borgmatic-config in favor of new "config validate"
+    action.
+  * Extract borgmatic configuration from backup via new "config bootstrap"
+    action—even when borgmatic has no configuration yet!
+  * Add sample systemd user service for running borgmatic as a non-root user.
+  * Fix an error when "data" check time files are accessed without getting
+    upgraded first.
+
+- update to 1.7.14:
+  * Add a new verbosity level (-2) to disable output entirely (for console,
+    syslog, log file, or monitoring), so not even errors are shown.
+  * Tweak archive check probing logic to use the newest timestamp found when
+    multiple exist.
+  * Add Borg 2 date-based matching flags to various actions for archive
+    selection.
+  * Fix an error when loading the configuration schema on Fedora Linux.
+  * Fix "check" action error when repository and archive checks are configured
+    but the archive gets skipped due to the configured frequency.
+  * Fix "--archive latest" on "list" and "info" actions that only worked on the
+    first of multiple configured repositories.
+
+-------------------------------------------------------------------
 Fri Jun  2 21:25:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.13:

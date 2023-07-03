@@ -17,7 +17,7 @@
 
 
 Name:           borgmatic
-Version:        1.7.13
+Version:        1.7.15
 Release:        0
 Summary:        Automation tool for borgbackup
 License:        GPL-3.0-only
@@ -51,7 +51,6 @@ BuildRequires:  python3-pluggy
 BuildRequires:  python3-py
 BuildRequires:  python3-pycodestyle
 BuildRequires:  python3-pyflakes
-BuildRequires:  python3-pykwalify
 BuildRequires:  python3-pytest
 BuildRequires:  python3-pytest-cov
 BuildRequires:  python3-python-dateutil
@@ -59,11 +58,11 @@ BuildRequires:  python3-requests
 BuildRequires:  python3-ruamel.yaml
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-toml
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libsystemd)
 Requires:       borgbackup
 Requires:       python3-colorama
 Requires:       python3-jsonschema >= 3.2.0
-Requires:       python3-pykwalify
 Requires:       python3-requests
 Requires:       python3-ruamel.yaml < 0.18.0
 Requires:       python3-ruamel.yaml > 0.15.0
@@ -92,7 +91,9 @@ sed -i -e "s/^LogRateLimitIntervalSec=/#LogRateLimitIntervalSec=/" sample/system
 # Make sample files use the borgmatic command on /usr/bin, not /usr/local/bin
 perl -pi -e "s,PATH=\\$PATH:/usr/local/bin /root/.local/bin/borgmatic,/usr/bin/borgmatic," sample/cron/borgmatic
 perl -pi -e "s,/root/.local/bin/borgmatic,/usr/bin/borgmatic," sample/systemd/borgmatic.service
+perl -pi -e "s,/root/.local/bin/borgmatic,/usr/bin/borgmatic," sample/systemd/borgmatic-user.service
 perl -pi -e "s,=sleep,=/usr/bin/sleep," sample/systemd/borgmatic.service
+perl -pi -e "s,=sleep,=/usr/bin/sleep," sample/systemd/borgmatic-user.service
 perl -pi -e "s,=systemd-inhibit,=/usr/bin/systemd-inhibit," sample/systemd/borgmatic.service
 perl -pi -e "s/ruamel.yaml>0.15.0,<0.17.0/ruamel.yaml/" setup.py
 perl -pi -e "s/packages=find_packages\(\)/packages=find_packages(exclude=('tests*',))/" setup.py
@@ -107,8 +108,10 @@ install -d %{buildroot}%{_sysconfdir}/borgmatic
 install -d %{buildroot}%{_sysconfdir}/borgmatic.d
 install -d %{buildroot}%{_docdir}/%{name}/sample/cron
 install -m 0644 sample/cron/borgmatic %{buildroot}%{_docdir}/%{name}/sample/cron/
+install -d %{buildroot}%{_docdir}/%{name}/sample/systemd
+install -m 0644 sample/systemd/borgmatic* %{buildroot}%{_docdir}/%{name}/sample/systemd/
 install -d %{buildroot}%{_unitdir}/
-install -m 0644 sample/systemd/borgmatic* %{buildroot}%{_unitdir}/
+install -m 0644 sample/systemd/borgmatic.* %{buildroot}%{_unitdir}/
 
 install -D -m 0644 borgmatic.1 %{buildroot}%{_mandir}/man1/borgmatic.1
 mkdir -p %{buildroot}%{_sbindir}
@@ -129,13 +132,7 @@ PYTHONPATH=$(pwd) py.test -v --pyargs borgmatic tests
 %post
 %service_add_post borgmatic.service
 if [ "$1" = 1 -a ! -f "%{_sysconfdir}/borgmatic/config.yaml" ]; then
-    %{_bindir}/generate-borgmatic-config
-elif [ "$1" = 2 ]; then
-    if [ -f "%{_sysconfdir}/borgmatic/config" -a ! -f "%{_sysconfdir}/borgmatic/config.yaml" ]; then
-       echo "The configuration files have changed. %{_bindir}/upgrade-borgmatic-config will be run now to upgrade the configuration to the new format."
-       echo ""
-       %{_bindir}/upgrade-borgmatic-config
-    fi
+    %{_bindir}/borgmatic config generate
 fi
 
 %pre
@@ -155,6 +152,7 @@ fi
 %dir %{_sysconfdir}/borgmatic.d
 %dir %{_docdir}/%{name}/sample
 %dir %{_docdir}/%{name}/sample/cron
+%dir %{_docdir}/%{name}/sample/systemd
 %{python3_sitelib}/borgmatic/
 %{python3_sitelib}/borgmatic-%{version}-py%{py3_ver}.egg-info
 %{_unitdir}/borgmatic.service
@@ -162,9 +160,9 @@ fi
 %{_bindir}/borgmatic
 %{_sbindir}/rcborgmatic
 %{_bindir}/generate-borgmatic-config
-%{_bindir}/upgrade-borgmatic-config
 %{_bindir}/validate-borgmatic-config
 %{_mandir}/man1/borgmatic.1%{?ext_man}
-%{_docdir}/%{name}/sample/cron
+%{_docdir}/%{name}/sample/cron/
+%{_docdir}/%{name}/sample/systemd/
 
 %changelog
