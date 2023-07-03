@@ -1,9 +1,11 @@
 <services>
 	<service name="tar_scm" mode="disabled">
-		<param name="scm">svn</param>
-		<param name="url">svn://svn.icculus.org/rott/trunk</param>
+		<param name="scm">git</param>
+		<param name="url">https://github.com/fabiangreffrath/rott</param>
 		<param name="filename">rott</param>
-		<param name="versionformat">1.1.2+svn%r</param>
+		<param name="revision">99e8523e425c35cbfcac3b876ec9cc5dc63558da</param>
+		<param name="parent-tag">aede78d6690cc7f62324eaf3ac16cff3e4342734</param>
+		<param name="versionformat">1.2~git@TAG_OFFSET@</param>
 	</service>
 	<service name="recompress" mode="disabled">
 		<param name="file">*.tar</param>

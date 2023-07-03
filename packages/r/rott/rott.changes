@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul  2 11:42:54 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 1.2~git66 (99e8523e425c)
+  * Switch from SDL1 to SDL2
+
+-------------------------------------------------------------------
 Sun Jun 28 18:21:25 UTC 2015 - jengelh@inai.de
 
 - Initial package (version 1.1.2.s287) for build.opensuse.org
