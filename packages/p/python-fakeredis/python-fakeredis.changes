@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Jul  1 20:33:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.15.0:
+  * Implemented support for various stream groups commands:
+  * `XGROUP CREATE` #161, `XGROUP DESTROY` #164, `XGROUP SETID`
+    #165, `XGROUP DELCONSUMER` #162,
+  * `XGROUP CREATECONSUMER` #163, `XINFO GROUPS` #168, `XINFO
+    CONSUMERS` #168, `XINFO STREAM` #169, `XREADGROUP` #171,
+  * `XACK` #157, `XPENDING` #170, `XCLAIM` #159, `XAUTOCLAIM`
+  * Implemented sorted set commands:
+  * `ZRANDMEMBER` #192, `ZDIFF` #187, `ZINTER` #189, `ZUNION`
+    #194, `ZDIFFSTORE` #188,
+  * `ZINTERCARD` #190, `ZRANGESTORE` #193
+  * Implemented list commands:
+  * `BLMOVE` #182,
+  * Improved documentation.
+  * Fix documentation link
+  * Fix requirement for packaging.Version #177
+  * Implement `HRANDFIELD` #156
+  * Implement `JSON.MSET`
+  * Improve streams code
+
+-------------------------------------------------------------------
 Mon May 29 13:33:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.13.0:
