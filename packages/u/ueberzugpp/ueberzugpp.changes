@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun 23 21:05:42 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 2.8.8:
+  * use xcb-res for obtaining pid of windows
+  * use xcb-errors for useful error logging (disabled by default)
+  * fix syncronization issues and performance improvements for x11 canvas
+  * improve terminal selection
+  * fixes for hyprland
+  * improve throughput of unix socket
+
+-------------------------------------------------------------------
 Sat Jun 10 16:24:58 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 2.8.7:
