@@ -30,7 +30,7 @@ RUN zypper -n install \
               kubevirt-virt-handler \
               lsscsi \
               nftables \
-              qemu-tools \
+              qemu-img \
               system-user-qemu \
               tar \
               util-linux-systemd && \
