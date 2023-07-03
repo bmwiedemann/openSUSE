@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul  1 20:32:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.4:
+  * Fix select of prefixed names
+  * Fix zero length *xs:base64Binary*
+
+-------------------------------------------------------------------
 Sun Jun 25 18:47:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.1.3:

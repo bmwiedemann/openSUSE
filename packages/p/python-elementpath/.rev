@@ -220,4 +220,14 @@
   * Fix weak tests</comment>
     <requestid>1095230</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7799c1f408926274017c8f2b7ca5ba12</srcmd5>
+    <version>4.1.4</version>
+    <time>1688398889</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.4:
+  * Fix select of prefixed names
+  * Fix zero length *xs:base64Binary*</comment>
+    <requestid>1096318</requestid>
+  </revision>
 </revisionlist>
