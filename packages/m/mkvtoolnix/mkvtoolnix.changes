@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Jul  3 07:55:14 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 78.0
+  New features and enhancements:
+  * MKVToolNix GUI: header editor: for files that only contain
+    legacy track language elements but no IETF language elements
+    the header editor will now derive the IETF language elements
+    from the legacy elements.
+  Bug fixes:
+  * all: Linux: if initializing the locale system based on the
+    system's settings fails, e.g. if environment variables such
+    as `LC_ALL` have been set to `fr_FR.UTF-8` but the locale
+    for `fr_FR.UTF-8` hasn't been built, MKVToolNix
+    will try to fall back to `en_US.UTF-8` first & `C.UTF-8`
+    second. If neither of the three succeeds, an error message
+    will be shown, and the program will abort. This fixes the
+    programs not catching an exception from the
+    `boost::filesystem` library which doesn't cope with
+    mis-configured locale systems well.
+  * mkvmerge: sorting tracks by type did not work properly when
+    some tracks weren't copied.
+  * mkvmerge: track numbers in the destination file were
+    assigned out-of-order when the track order in the source
+    files differs from the one in the destination file. Now
+    they're assigned sequentially in the order the tracks
+    appear in the destination file again.
+  * MKVToolNix GUI: under certain circumstances the GUI would
+    try to display error messages from a secondary thread, which
+    isn't allowed in Qt, causing to program to either hang or
+    outright crash.
+  * MKVToolNix GUI: the GUI will check for several potential
+    installation issues wrt. to having write access to certain
+    directories (system's temporary directory, MKVToolNix's file
+    identification cache directory and others) & display proper
+    error messages if not.
+  * MKVToolNix GUI: header editor: fixed the application
+    crashing whenever you change a property below the "segment
+    information" node. This bug was introduced in v77.
+  * MKVToolNix GUI: header editor: when reading files that only
+    contain legacy track language elements but no IETF track
+    language elements, the header editor was showing all tracks
+    as having "English" as the language. This bug was introduced
+    in v77.
+  * MKVToolNix GUI: header editor: when a legacy track language
+    element contains a country code (e.g. `fr-CA`), the header
+    editor was wrongfully using `und` = "undetermined" as the
+    language for that element. Now it'll use the language from
+    the language/country pair, which would be `fr` in the earlier
+    example.
+  * MKVToolNix GUI: header editor: the keyboard shortcuts from
+    the "modify selected track" sub-menu didn't work right after
+    opening a file. They only started working after opening the
+    "header editor" menu.
+  Build system changes:
+  * The compilation database (`compile_commands.json`) is now
+    always built. The variable `BUILD_COMPILATION_DATABASE` is
+    not evaluated anymore.
+
+-------------------------------------------------------------------
 Sun Jun  4 16:25:45 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to  version 77.0
