@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Jul  2 17:59:39 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.1.2:
+  * Fix loading .erdtree.toml on Windows #218
+  * Fixed race to print #220
+
+-------------------------------------------------------------------
+Sun Jul  2 17:59:14 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.1.1:
+  * Fix deadlock issue #214
+
+-------------------------------------------------------------------
+Sun Jul  2 17:57:37 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.1:
+  * Multiple configs with .erdtree.toml
+  * Increased performance with --suppress-size
+  * -x, --one-file-system
+  * Support for NO_COLOR
+  * Inverted flat layout
+  * Aliases: atime, ctime, and mtime
+  * ctrlc handler to restore cursor if progress indicator is enabled
+  * .erdtreerc will be deprecated by v3.3 in favor of .erdtree.toml.
+    Please be sure to migrate by then and be sure to visit the Changelog
+    for further details about .erdtree.toml and the new release.
+
+-------------------------------------------------------------------
 Fri Jun 23 09:31:18 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.0.2:

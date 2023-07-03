@@ -140,4 +140,29 @@
   * Change CJK and emoji block icons #194</comment>
     <requestid>1094823</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9a4a87164c4da2f7212bb5fb81f367de</srcmd5>
+    <version>3.1.2~0</version>
+    <time>1688399011</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.2:
+  * Fix loading .erdtree.toml on Windows #218
+  * Fixed race to print #220
+
+- Update to 3.1.1:
+  * Fix deadlock issue #214
+
+- Update to 3.1:
+  * Multiple configs with .erdtree.toml
+  * Increased performance with --suppress-size
+  * -x, --one-file-system
+  * Support for NO_COLOR
+  * Inverted flat layout
+  * Aliases: atime, ctime, and mtime
+  * ctrlc handler to restore cursor if progress indicator is enabled
+  * .erdtreerc will be deprecated by v3.3 in favor of .erdtree.toml.
+    Please be sure to migrate by then and be sure to visit the Changelog
+    for further details about .erdtree.toml and the new release.</comment>
+    <requestid>1096418</requestid>
+  </revision>
 </revisionlist>
