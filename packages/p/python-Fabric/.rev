@@ -380,4 +380,35 @@
     <comment></comment>
     <requestid>1096272</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>1ff2b6b2fe526c35059da936aea16dc7</srcmd5>
+    <version>3.0.1</version>
+    <time>1688398981</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.1
+  * [Bug] #2241: A typo prevented Fabric’s command runner from properly
+    calling its superclass stop() method, which in tandem with a related
+    Invoke bug meant messy or long shutdowns in many scenarios.
+- Changes from 3.0.0
+  * [Feature]: Change the default configuration value for inline_ssh_env
+    from False to True, to better align with the practicalities of common
+    SSH server configurations.
+    - Warning
+      This change is backwards incompatible if you were using 
+      environment-variable-setting kwargs or config settings,
+      such as Connection.run(command, env={'SOME': 'ENV VARS'}),
+      and were not already explicitly specifying the value of inline_ssh_env.
+  * [Bug] #1981: (fixed in #2195) Automatically close any open SFTP session
+    during fabric.connection.Connection.close; this avoids issues encountered
+    upon re-opening a previously-closed connection object.
+  * [Support]: Drop support for Python &lt;3.6, including Python 2.
+    - Warning
+      This is a backwards incompatible change if you are not yet on
+      Python 3.6 or above; however, pip shouldn’t offer you this
+      version of Fabric as long as your pip version understands
+      python_requires metadata.
+- Drop remove-mock.patch because now in upstream.
+- Drop remove-pathlib2.patch because now in upstream.</comment>
+    <requestid>1096411</requestid>
+  </revision>
 </revisionlist>
