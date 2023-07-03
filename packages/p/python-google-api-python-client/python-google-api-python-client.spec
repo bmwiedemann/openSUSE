@@ -17,6 +17,7 @@
 
 
 %define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-google-api-python-client
 Version:        2.89.0
 Release:        0
