@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Jun 30 19:24:59 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 2.6.1:
+  - libkfont:
+    * Fix font saving from linux kernel if KD_FONT_OP_GET_TALL is available.
+    * Respect font height when writing psf2 header. 
+  - keymaps:
+    * Create new 'mac-fr' layout for contemporary French Macs.
+- Version 2.6.0 changelog:
+  - libkfont:
+    * Leverage KD_FONT_OP_GET/SET_TALL font operations. The new
+      KD_FONT_OP_GET/SET_TALL font operations allow to load fonts taller
+      than 32 pixels by dropping the VGA-specific vertical pitch limitation
+      (requires kernel 6.2 or later).
+    * Use threadsafe strtok_r.
+    * Increase soname version.
+  - setvtrgb:
+    * Fix read from pipe. The pipe is not rewindable, but we don't really
+      need to rewind() but we need to unread one character.
+  - keymaps:
+    * i386/dvorak/dvorak-de.map: Add dvorak-de.map from console-data.
+    * i386/qwerty/is-latin1.map: the circumflex should also be available in
+      its original level-3 position.
+    * i386/qwerty/la-latin1.map: Convert the characters expressed in Latin-1
+      to the named constants, to ease up transition to Unicode.
+    * pine/en.map: New version of pinephone keyboard map file.
+  - unimaps:
+    * Add mapping for U+25CF. The unicode maps in font files like
+      eurlatgr.psfu and cp850-8x16.psfu have an entry for U+25CF, but the
+      plaintext unimap files do not.
+  - tests:
+    * Use strace to track syscalls. Now strace is powerful enough to show
+      ioctls specific to console configuration. 
+  - po:
+    * Update translations (from translationproject.org).
+
+-------------------------------------------------------------------
 Fri Apr 28 08:34:54 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Remove additional vfonts, they are freeware, not opensource
