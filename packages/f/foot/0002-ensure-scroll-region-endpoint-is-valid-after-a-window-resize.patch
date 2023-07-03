@@ -1,0 +1,28 @@
+From: Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+Date: Tue Jun 27 05:49:33 AM PST 2023
+Subject: [PATCH] render: ensure scroll region’s endpoint is valid after a window resize
+
+If we had a non-empty bottom scroll region, and the window was resized
+to a smaller size, the scroll region was not reset correctly.
+
+This led to a crash when scrolling the screen content.
+
+Fix by making sure the scroll region’s endpoint is within range.
+
+Based on commit https://codeberg.org/dnkl/foot/commit/e2baa6523875aaa13b6b7db80b7985978b8ee492
+---
+
+diff --git a/render.c b/render.c
+index f16898b4..d39c9489 100644
+--- a/render.c
++++ b/render.c
+@@ -4128,8 +4128,7 @@ maybe_resize(struct terminal *term, int width, int height, bool force)
+ 
+     if (term->scroll_region.start >= term->rows)
+         term->scroll_region.start = 0;
+-
+-    if (term->scroll_region.end >= old_rows)
++    if (term->scroll_region.end > term->rows)
+         term->scroll_region.end = term->rows;
+ 
+     term->render.last_cursor.row = NULL;

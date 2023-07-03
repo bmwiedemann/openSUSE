@@ -1,0 +1,41 @@
+From: Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+Date: Mon, Jun 26 05:13:10 PM PST 2023
+Subject: [PATCH] term: scroll: only record scroll damage when viewport is at
+the bottom. Patch adapted from commit https://codeberg.org/dnkl/foot/commit/8a3620bafaa4119b9f6d3f74189c2dac78614d3c
+
+diff --git a/terminal.c b/terminal.c
+index 0415351..e8eb49b 100644
+--- a/terminal.c
++++ b/terminal.c
+@@ -2693,6 +2693,7 @@ term_scroll_partial(struct terminal *term, struct scroll_region region, int rows
+     term->grid->offset &= term->grid->num_rows - 1;
+ 
+     if (likely(view_follows)) {
++        term_damage_scroll(term, DAMAGE_SCROLL, region, rows);
+         selection_view_down(term, term->grid->offset);
+         term->grid->view = term->grid->offset;
+     } else if (unlikely(rows > view_sb_start_distance)) {
+@@ -2716,7 +2717,6 @@ term_scroll_partial(struct terminal *term, struct scroll_region region, int rows
+         erase_line(term, row);
+     }
+ 
+-    term_damage_scroll(term, DAMAGE_SCROLL, region, rows);
+     term->grid->cur_row = grid_row(term->grid, term->grid->cursor.point.row);
+ 
+ #if defined(_DEBUG)
+@@ -2779,6 +2779,7 @@ term_scroll_reverse_partial(struct terminal *term,
+     xassert(term->grid->offset < term->grid->num_rows);
+ 
+     if (view_follows) {
++        term_damage_scroll(term, DAMAGE_SCROLL_REVERSE, region, rows);
+         selection_view_up(term, term->grid->offset);
+         term->grid->view = term->grid->offset;
+     }
+@@ -2797,7 +2798,6 @@ term_scroll_reverse_partial(struct terminal *term,
+         erase_line(term, row);
+     }
+ 
+-    term_damage_scroll(term, DAMAGE_SCROLL_REVERSE, region, rows);
+     term->grid->cur_row = grid_row(term->grid, term->grid->cursor.point.row);
+ 
+ #if defined(_DEBUG)

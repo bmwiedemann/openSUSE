@@ -1,0 +1,61 @@
+From: Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+Date: Mon Jun 26 05:47:26 PM PST 2023
+Subject: [PATCH] render: resize: fix crash when reflowing the alt screen
+
+When doing an interactive resize, and `resize-delay-ms` > 0 (the
+default), we would crash if the original screen size (i.e. the size
+before the interactive resize started) was larger than the last window
+size.
+
+For example, if we interactively go from 85 rows to 75, and then
+non-interactively went from 75 to 80, we’d crash.
+
+The resizes had to be made in a single go. One way to trigger this was
+to start an interactive resize on a floating window, and then *while
+resizing* toggle the window’s floating mode.
+
+Based on commit https://codeberg.org/dnkl/foot/commit/3a59cbbaa3906da6f9ab73ad949bc598318be7e4
+---
+
+diff --git a/render.c b/render.c
+index 340e0378..1858467d 100644
+--- a/render.c
++++ b/render.c
+@@ -4030,7 +4030,9 @@ maybe_resize(struct terminal *term, int width, int height, bool force)
+             term->interactive_resizing.old_hide_cursor = term->hide_cursor;
+             term->interactive_resizing.grid = xmalloc(sizeof(*term->interactive_resizing.grid));
+             *term->interactive_resizing.grid = term->normal;
+-            term->interactive_resizing.selection_coords = term->selection.coords;
++
++            if (term->grid == &term->normal)
++                term->interactive_resizing.selection_coords = term->selection.coords;
+         } else {
+             /* We’ll replace the current temporary grid, with a new
+              * one (again based on the original grid) */
+@@ -4118,6 +4120,8 @@ maybe_resize(struct terminal *term, int width, int height, bool force)
+     } else {
+         /* Full text reflow */
+ 
++        int old_normal_rows = old_rows;
++
+         if (term->interactive_resizing.grid != NULL) {
+             /* Throw away the current, truncated, “normal” grid, and
+              * use the original grid instead (from before the resize
+@@ -4129,7 +4133,7 @@ maybe_resize(struct terminal *term, int width, int height, bool force)
+             term->hide_cursor = term->interactive_resizing.old_hide_cursor;
+             term->selection.coords = term->interactive_resizing.selection_coords;
+ 
+-            old_rows = term->interactive_resizing.old_screen_rows;
++            old_normal_rows = term->interactive_resizing.old_screen_rows;
+ 
+             term->interactive_resizing.grid = NULL;
+             term->interactive_resizing.old_screen_rows = 0;
+@@ -4145,7 +4149,7 @@ maybe_resize(struct terminal *term, int width, int height, bool force)
+         };
+ 
+         grid_resize_and_reflow(
+-            &term->normal, new_normal_grid_rows, new_cols, old_rows, new_rows,
++            &term->normal, new_normal_grid_rows, new_cols, old_normal_rows, new_rows,
+             term->selection.coords.end.row >= 0 ? ALEN(tracking_points) : 0,
+             tracking_points);
+     }

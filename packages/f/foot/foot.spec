@@ -23,6 +23,11 @@ Summary:        A Wayland terminal emulator
 License:        MIT
 URL:            https://codeberg.org/dnkl/foot
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch1:         0000-fix-scroll-damage-crash.patch
+Patch2:         0001-fix-crash-when-reflowing-alt-screen.patch
+Patch3:         0002-ensure-scroll-region-endpoint-is-valid-after-a-window-resize.patch
+Patch4:         https://codeberg.org/dnkl/foot/commit/a2db3cdd5b3b6ce0b782b5ee51d174f4b4890f26.patch#/0003-keep-empty-bottom-scroll-margin-empty-after-resize.patch
+Patch5:         https://codeberg.org/dnkl/foot/commit/8859e134efa422d50e53c0bbb0e83d07ddf66091.patch#/0004-fix-non-utf8-complaint.patch
 Requires:       terminfo
 Requires:       utempter
 BuildRequires:  meson >= 0.58
@@ -69,7 +74,7 @@ This package contains popular themes for the foot terminal emulator providing
 users an easy way to theme foot.
 
 %prep
-%autosetup -n %{name}
+%autosetup -p1 -n %{name}
 
 %build
 %meson \

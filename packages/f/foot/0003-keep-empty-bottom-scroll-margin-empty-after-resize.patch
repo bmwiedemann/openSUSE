@@ -1,0 +1,27 @@
+From a2db3cdd5b3b6ce0b782b5ee51d174f4b4890f26 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Ekl=C3=B6f?= <daniel@ekloef.se>
+Date: Wed, 12 Apr 2023 18:09:41 +0200
+Subject: [PATCH] render: regression: keep empty bottom scroll margin empty
+ after resize
+
+---
+ render.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/render.c b/render.c
+index d39c9489..521c8b7f 100644
+--- a/render.c
++++ b/render.c
+@@ -4128,8 +4128,11 @@ maybe_resize(struct terminal *term, int width, int height, bool force)
+ 
+     if (term->scroll_region.start >= term->rows)
+         term->scroll_region.start = 0;
+-    if (term->scroll_region.end > term->rows)
++    if (term->scroll_region.end > term->rows ||
++        term->scroll_region.end >= old_rows)
++    {
+         term->scroll_region.end = term->rows;
++    }
+ 
+     term->render.last_cursor.row = NULL;
+ 

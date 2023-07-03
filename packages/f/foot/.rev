@@ -344,4 +344,22 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1083658</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>1aa5762210c79447f217b1acfe073ffa</srcmd5>
+    <version>1.14.0</version>
+    <time>1688398921</time>
+    <user>dimstar_suse</user>
+    <comment>- Modify 0002-ensure-scroll-region-endpoint-is-valid-after-a-window-resize.patch
+- Add patches
+  * 0003-keep-empty-bottom-scroll-margin-empty-after-resize.patch
+  * 0004-fix-non-utf8-complaint.patch
+- Add 0002-ensure-scroll-region-endpoint-is-valid-after-a-window-resize.patch
+  * render: ensure scroll region’s endpoint is valid after a window resize
+- Add 0001-fix-crash-when-reflowing-alt-screen.patch
+  * render: resize: fix crash when reflowing the alt screen
+- Add 0000-fix-scroll-damage-crash.patch.
+  * term: scroll: only record scroll damage when viewport is at the bottom.
+</comment>
+    <requestid>1096219</requestid>
+  </revision>
 </revisionlist>

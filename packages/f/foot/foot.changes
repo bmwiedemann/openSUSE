@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Jun 27 09:48:27 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Modify 0002-ensure-scroll-region-endpoint-is-valid-after-a-window-resize.patch
+
+-------------------------------------------------------------------
+Mon Jun 26 21:58:34 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add patches
+  * 0003-keep-empty-bottom-scroll-margin-empty-after-resize.patch
+  * 0004-fix-non-utf8-complaint.patch
+
+-------------------------------------------------------------------
+Mon Jun 26 21:51:34 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add 0002-ensure-scroll-region-endpoint-is-valid-after-a-window-resize.patch
+  * render: ensure scroll region’s endpoint is valid after a window resize
+
+-------------------------------------------------------------------
+Mon Jun 26 09:49:10 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add 0001-fix-crash-when-reflowing-alt-screen.patch
+  * render: resize: fix crash when reflowing the alt screen
+
+-------------------------------------------------------------------
+Mon Jun 26 09:15:54 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Add 0000-fix-scroll-damage-crash.patch.
+  * term: scroll: only record scroll damage when viewport is at the bottom.
+
+-------------------------------------------------------------------
 Sat Apr 22 15:36:15 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
 
 - Fix dependency on tllist to be >=1.1.0 since the code uses a feature

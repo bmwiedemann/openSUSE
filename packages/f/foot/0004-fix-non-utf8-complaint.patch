@@ -1,0 +1,59 @@
+From 8859e134efa422d50e53c0bbb0e83d07ddf66091 Mon Sep 17 00:00:00 2001
+From: Phillip Susi <phill@thesusis.net>
+Date: Tue, 30 May 2023 15:49:01 -0400
+Subject: [PATCH] Fix non UTF-8 locale complaint
+
+If the locale isn't UTF-8, foot tries to fall back to C.UTF-8 and
+prints a warning.  The warning was garbled because the name of the
+original locale is no longer valid after calling setlocale() a
+second time.  Use strdup to stash the original string.
+
+Closes #1362
+---
+ main.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/main.c b/main.c
+index 3f9846f3..f58e170f 100644
+--- a/main.c
++++ b/main.c
+@@ -450,6 +450,7 @@ main(int argc, char *const *argv)
+             "C.UTF-8",
+             "en_US.UTF-8",
+         };
++        char *saved_locale = xstrdup(locale);
+ 
+         /*
+          * Try to force an UTF-8 locale. If we succeed, launch the
+@@ -461,12 +462,12 @@ main(int argc, char *const *argv)
+ 
+             if (setlocale(LC_CTYPE, fallback_locale) != NULL) {
+                 LOG_WARN("'%s' is not a UTF-8 locale, using '%s' instead",
+-                         locale, fallback_locale);
++                         saved_locale, fallback_locale);
+ 
+                 user_notification_add_fmt(
+                     &user_notifications, USER_NOTIFICATION_WARNING,
+                     "'%s' is not a UTF-8 locale, using '%s' instead",
+-                    locale, fallback_locale);
++                    saved_locale, fallback_locale);
+ 
+                 bad_locale = false;
+                 break;
+@@ -476,13 +477,14 @@ main(int argc, char *const *argv)
+         if (bad_locale) {
+             LOG_ERR(
+                 "'%s' is not a UTF-8 locale, and failed to find a fallback",
+-                locale);
++                saved_locale);
+ 
+             user_notification_add_fmt(
+                 &user_notifications, USER_NOTIFICATION_ERROR,
+                 "'%s' is not a UTF-8 locale, and failed to find a fallback",
+-                locale);
++                saved_locale);
+         }
++        free(saved_locale);
+     }
+ 
+     struct config conf = {NULL};
