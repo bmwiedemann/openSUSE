@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jun 30 18:26:00 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.63.1:
+  * Add a simple CSV format template to the templates/ directory
+    and tweak docs (#1366)
+  * chore(deps): update Syft to v0.84.1 (#1372)
+  * fix: Add more log4j-adjacent package ignore rules (#1358)
+  * chore: bump the quality gate labels (#1369)
+  * add oss community board auto-add workflow (#1364)
+  * fix: totals for vulnerability matches (#1359)
+  * chore(deps): bump ossf/scorecard-action from 2.1.3 to 2.2.0
+    (#1363)
+  * chore(deps): bump anchore/sbom-action from 0.14.2 to 0.14.3
+    (#1357)
+
+-------------------------------------------------------------------
 Thu Jun 22 05:08:42 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.63.0:
