@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 27 15:11:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.3:
+  * When --no-decorate is given the default output will
+  * include no colors
+  * Correctly split networks with /31
+
+-------------------------------------------------------------------
 Mon Jan  2 20:43:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.2:
