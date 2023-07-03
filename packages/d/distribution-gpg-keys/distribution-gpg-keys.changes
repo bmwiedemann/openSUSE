@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Jun 12 10:40:12 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to v1.88
+  + Update copr keys
+  + Add per distro/version link to proper key for remi
+  + Update brave keys
+  + Add Docker key
+  + Add mullvad key
+- Changes from v1.87
+  + Update copr keys
+  + Update virtualbox key
+  + Update openSUSE-Backports key
+  + Update skype key
+- Changes from v1.86
+  + Update copr keys
+  + Add Jenkins 2023
+  + Add keys for Bacula & Baculum
+  + Add keys for Google Cloud
+  + Add VeraCrypt keys
+  + Add Element keys
+- Changes from v1.85
+  + Update copr keys
+  + Add Amazon Linux 2023 and remove Amazon Linux 2022 key
+  + Add AnyDesk GPG key
+- Changes from v1.84
+  + Add tumbleweed key
+  + Add RPM Fusion keys for Fedora 39
+  + Update copr keys
+  + Add elastic gpg key
+- Changes from v1.82
+  + Move symlink of fedora-rawhide to fedora-39
+  + Add openEuler new key
+  + Update copr keys
+  + Add fedora 40 gpg key
+- Changes from v1.81
+  + Update copr keys
+  + Add remi 2023 key
+  + Add TeamViewer key
+- Changes from v1.80
+  + Add SME Server keys
+  + Update copr keys
+
+-------------------------------------------------------------------
 Wed Dec 14 01:15:26 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
 
 - Update to v1.79
