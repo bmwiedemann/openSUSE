@@ -40,4 +40,12 @@
     <comment></comment>
     <requestid>985465</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>71ee8f541ff3edc3b50a66dd1bfae1ff</srcmd5>
+    <version>21.2.0</version>
+    <time>1688399063</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1096555</requestid>
+  </revision>
 </revisionlist>
