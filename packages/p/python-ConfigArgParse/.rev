@@ -23,4 +23,13 @@
     <comment>- Add %{?sle15_python_module_pythons}</comment>
     <requestid>1092491</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>22ffb53aad5e54b37c7f416f4c7c32f0</srcmd5>
+    <version>1.5.5</version>
+    <time>1688398933</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.5:
+  * no upstream changelog available</comment>
+    <requestid>1096321</requestid>
+  </revision>
 </revisionlist>
