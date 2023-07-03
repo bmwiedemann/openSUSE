@@ -7,4 +7,30 @@
     <comment>don't separate vala</comment>
     <requestid>920388</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b38b782620603dc1af4304c3a4fe6cbc</srcmd5>
+    <version>1.0.10</version>
+    <time>1688398943</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.10:
+  * New error code: LIS_ERR_OFFLINE: returned when attempting to
+    use the scanner and the scanner is offline.
+  * normalizers/raw24: fix unpacking of 1bit images.
+  * New workaround for Sane: 'hide_source_auto':
+    + remove sources 'Auto'|'Automatic':
+      those source behavior depends on the scanner and cannot be
+      used reliably.
+  * New workaround for Sane + Brother scanners:
+    'invalid_page_size':
+      some Brother scanners/drivers report there is still a page
+      in the feeder, but when requesting the page, we get an
+      absurd size (2500x0 for example).
+  * dedicated process: do not try to log messages through the log
+    socket if one of the socket has just died (happens if the master
+    process crashes)
+  * dedicated_process: disable backtrace support when another
+    Libc than GLIBC is used 
+  * dedicated_process: fix build with some Libc</comment>
+    <requestid>1096328</requestid>
+  </revision>
 </revisionlist>

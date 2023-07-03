@@ -1,7 +1,7 @@
 #
 # spec file for package libinsane
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libinsane
-Version:        1.0.9
+Version:        1.0.10
 Release:        0
 Summary:        Library for accessing image scanners
 Group:          Productivity/Office/Other
@@ -30,10 +30,10 @@ BuildRequires:  graphviz
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  plantuml
+BuildRequires:  vala
 BuildRequires:  valgrind
 BuildRequires:  pkgconfig(cunit)
 BuildRequires:  pkgconfig(sane-backends)
-BuildRequires:  vala
 
 %description
 Libinsane is a library to access scanners on multiple platforms.
