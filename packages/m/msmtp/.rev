@@ -491,4 +491,14 @@ I hope it's ok this time. (forwarded request 138894 from benoit_monin)</comment>
     <comment></comment>
     <requestid>1062990</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>432b91bf52a393bc428e18a2446b2e89</srcmd5>
+    <version>1.8.24</version>
+    <time>1688399061</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1096207 from benoit_monin
+
+update to version 1.8.24</comment>
+    <requestid>1096525</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 30 20:50:45 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.8.24:
+  * Added a new configuration command 'from_full_name' to set a
+    full name for the From header (like -F on the command line)
+  * Fixed the allow_from_override command
+
+-------------------------------------------------------------------
 Mon Jan 30 19:29:56 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.8.23:
