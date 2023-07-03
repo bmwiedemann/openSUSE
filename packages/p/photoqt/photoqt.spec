@@ -17,7 +17,7 @@
 
 
 Name:           photoqt
-Version:        3.1
+Version:        3.3
 Release:        0
 Summary:        A Qt-based image viewer
 License:        GPL-2.0-or-later
@@ -29,6 +29,7 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  freeimage-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  libQt5PlatformHeaders-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(IL)
@@ -57,7 +58,8 @@ PhotoQt is a configurable image viewer.
 %cmake -DCRYPTKEY:STRING=4242 \
        -DCHROMECAST=OFF \
        -DGRAPHICSMAGICK=OFF \
-       -DIMAGEMAGICK=ON
+       -DIMAGEMAGICK=ON \
+       -DVIDEO_MPV=OFF
 
 make %{?_smp_mflags}
 
