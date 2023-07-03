@@ -331,4 +331,13 @@
     * Remove strerror() calls from thread log messages (forwarded request 1096114 from polslinux)</comment>
     <requestid>1096118</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>4cbc1b43d7d88243ac9d2435ab954bfc</srcmd5>
+    <version>0.18.5</version>
+    <time>1688399048</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.18.5:
+  * Fix child directory processing on equal match (forwarded request 1096508 from polslinux)</comment>
+    <requestid>1096515</requestid>
+  </revision>
 </revisionlist>

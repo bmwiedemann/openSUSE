@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul  3 08:30:54 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.18.5:
+  * Fix child directory processing on equal match
+
+-------------------------------------------------------------------
 Fri Jun 30 10:05:30 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.18.4:
