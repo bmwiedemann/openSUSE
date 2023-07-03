@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -26,6 +25,7 @@
 %bcond_with test
 %endif
 %define         skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-google-api-core
 Version:        2.11.1
 Release:        0
