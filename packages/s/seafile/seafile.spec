@@ -17,7 +17,7 @@
 
 
 Name:           seafile
-Version:        9.0.1
+Version:        9.0.3
 Release:        0
 Summary:        Cloud storage client
 License:        GPL-2.0-only
