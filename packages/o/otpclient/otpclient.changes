@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul  3 14:28:57 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.1.9:
+  * Fix db corruption when symbols are used (#301).
+  * Fix crash when user changes db multiple times. 
+
+-------------------------------------------------------------------
 Wed Jun 14 12:00:53 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.1.8:

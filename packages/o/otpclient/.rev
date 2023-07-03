@@ -311,4 +311,15 @@
 </comment>
     <requestid>1093278</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>94cfd42a8414935aa3b443e3f700569d</srcmd5>
+    <version>3.1.9</version>
+    <time>1688399067</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.1.9:
+  * Fix db corruption when symbols are used (#301).
+  * Fix crash when user changes db multiple times. 
+</comment>
+    <requestid>1096606</requestid>
+  </revision>
 </revisionlist>
