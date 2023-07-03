@@ -403,4 +403,26 @@
 - drop remove-sha1.patch (upstream)</comment>
     <requestid>1069757</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d0c65b57a8a2b37b27f5fd930f6ac5d1</srcmd5>
+    <version>2.13.2</version>
+    <time>1688398934</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.13.2:
+  * Fixed an issue with host-based authentication when using
+    proxy_command, allowing it to be used if the caller 
+    explicitly specifies client_host.
+  * Improved handling of signature algorithms for OpenSSH
+    certificates so that RSA SHA-2 signatures will work with
+    both older and newer versions of OpenSSH.
+  * Worked around an issue with some Cisco SSH implementations
+    generating invalid &quot;ignore&quot; packets.
+  * Fixed unit tests to avoid errors when cryptography's version
+    of * OpenSSL disables support for SHA-1 signatures.
+  * Fixed unit tests to avoid errors when the filesystem enforces
+    that filenames be valid UTF-8 strings.
+  * Added documentation about which config options apply when
+    passing a string as a tunnel argument.</comment>
+    <requestid>1096323</requestid>
+  </revision>
 </revisionlist>

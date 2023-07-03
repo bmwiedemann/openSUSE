@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jul  1 20:43:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.13.2:
+  * Fixed an issue with host-based authentication when using
+    proxy_command, allowing it to be used if the caller 
+    explicitly specifies client_host.
+  * Improved handling of signature algorithms for OpenSSH
+    certificates so that RSA SHA-2 signatures will work with
+    both older and newer versions of OpenSSH.
+  * Worked around an issue with some Cisco SSH implementations
+    generating invalid "ignore" packets.
+  * Fixed unit tests to avoid errors when cryptography's version
+    of * OpenSSL disables support for SHA-1 signatures.
+  * Fixed unit tests to avoid errors when the filesystem enforces
+    that filenames be valid UTF-8 strings.
+  * Added documentation about which config options apply when
+    passing a string as a tunnel argument.
+
+-------------------------------------------------------------------
 Mon Mar  6 21:40:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.13.1:
