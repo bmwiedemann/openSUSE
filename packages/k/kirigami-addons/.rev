@@ -39,4 +39,12 @@
     <comment></comment>
     <requestid>1079555</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0af34e2854e85ffc6070841dcccd2708</srcmd5>
+    <version>0.9.0</version>
+    <time>1688399039</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.9.0 (forwarded request 1096488 from krop)</comment>
+    <requestid>1096497</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul  3 07:00:05 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.9.0
+  * Added MobileForm.FormGridContainer API
+  * MobileForm.AboutPage now can contains extra content
+  * Validator support in MobileForm.FormTextFieldDelegate
+  * The BasicTreeItem component now uses correct spacing
+    between items
+
+-------------------------------------------------------------------
 Fri Apr 14 09:39:03 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.8.0
