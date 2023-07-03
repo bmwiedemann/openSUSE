@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 03 08:48:37 UTC 2023 - info@paolostivanin.com
+
+- Update to version 3.3.0.20230527:
+  * Close socket when failed to connect name pipe (#65)
+  * Support compile universal (#64)
+
+-------------------------------------------------------------------
 Wed Apr 12 09:47:50 UTC 2023 - info@paolostivanin.com
 
 - Update to version 3.3.0.20230224:

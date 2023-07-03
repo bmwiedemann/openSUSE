@@ -18,7 +18,7 @@
 
 %define sover   1
 Name:           libsearpc
-Version:        3.3.0.20230224
+Version:        3.3.0.20230527
 Release:        0
 Summary:        Simple C language RPC framework based on GObject system
 License:        Apache-2.0
