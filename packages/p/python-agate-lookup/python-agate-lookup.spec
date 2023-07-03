@@ -1,7 +1,7 @@
 #
 # spec file for package python-agate-lookup
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_with     test
 Name:           python-agate-lookup
-Version:        0.3.1
+Version:        0.3.2
 Release:        0
 License:        MIT
 Summary:        Remote lookup tables for agate

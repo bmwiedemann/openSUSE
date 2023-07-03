@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>894791</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7682a9ae9d692f03c07efa1bf4df8440</srcmd5>
+    <version>0.3.2</version>
+    <time>1688398939</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.2:
+  * Use ``yaml.safe_load``.</comment>
+    <requestid>1096316</requestid>
+  </revision>
 </revisionlist>
