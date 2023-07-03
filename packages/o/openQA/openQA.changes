@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jul 02 04:54:54 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1688124489.7f4be1c:
+  * Include nginx config in RPM
+  * Make sure munin config survives package update
+  * Consider devel mode test stable after recent changes
+  * Workaround line not being marked as covered
+  * Make it more obvious when devel mode fullstack test lacks files
+  * Fix race condition at the end of developer mode test
+  * Workaround sporadic failures of developer mode test
+  * De-duplicate code for re-login in devel mode test
+  * t: Reduce likelyhood of sporadic error about not logged in user
+
+-------------------------------------------------------------------
 Thu Jun 29 15:34:00 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1688038171.b33d284:
