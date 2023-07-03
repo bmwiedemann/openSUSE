@@ -1219,4 +1219,43 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1075321</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>814db59a3962772610cb2a5ca1f7f726</srcmd5>
+    <version>1.0.18</version>
+    <time>1688398944</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.18
+  + Bugfixes:
+   + Fixed reading disc from QObuz songs (#1168).
+   + Fixed volume being reset on playback with PulseAudio (#1174).
+   + Fixed &lt;br&gt; tags in SQL query error message.
+   + Fixed compile with Qt 6 without XCB (QX11Application).
+   + Fixed smart playlist editor not properly loading search terms (#1172).
+   + Fixed use of fixed icon for playlist favorite star icon (#1178).
+   + Possible fix for collection thumbnails using disk cache having identical covers for albums with hashtag (#) in the album title (#1183).
+   + Fixed listenbrainz scrobbling for songs with multiple artist mbids.
+   + Fixed listenbrainz scrobbling for songs without duration.
+   + Fixed gapless playback sometimes not working.
+   + Fixed writing PNG images as embedded covers (#1209).
+   + Fixed greyscale album covers not working in OSD D-Bus (#1205).
+   + Fixed collection thumbnail disk cache with Qt 6.5.1 and newer.
+   + Fixed moodbar disk cache with Qt 6.5.1 and newer.
+   + Fixed playlist edit tag F2 shortcut only working for title tag (#1210).
+   + Append number to filename if the destination file already exist when transcoding audio (#1200).
+   + Fixed abseil linking issues with protobuf 1.22.0 and newer.
+ + Enhancements:
+   + Reduce memory overhead with album cover handling (#1046).
+   + Improved listenbrainz error handling.
+   + Show error dialog for listenbrainz errors similar to last.fm/libre.fm.
+   + Reduce NetworkAccessManager instances.
+   + Replace SingleApplication with KDSingleApplication.
+   + Require Qt 5.12 or higher.
+   + Add new database fields for art_embedded and art_unset.
+   + Rewrite album cover loader.
+   + Move cover filename settings from collection to covers settings.
+   + Add setting to set priorities for album cover types.
+   + Add rating filtering to playlist search (#1212).
+</comment>
+    <requestid>1096334</requestid>
+  </revision>
 </revisionlist>
