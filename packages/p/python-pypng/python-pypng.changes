@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Jul  3 07:00:03 UTC 2023 - Torsten Gruner <simmphonie@opensuse.org>
+
+- update to version  0.20220715.0
+  * Development moved to gitlab: https://gitlab.com/drj11/pypng
+  * If you pass an empty file to PyPNG
+    it now raises the builtin Python exception EOFError.
+    This should make it easier to diagnose empty file problems separately
+    from genuine format errors
+    (which use png.FormatError).
+    This is a slightly breaking change to the API.
+  * New prirowpng tool to join PNG images in a row left-to-right
+    (old internal pipcat tool).
+  * New pricolpng tool to join PNG images in a column top-to-bottom.
+  * Support for plain PGM files (magic number P2) added to pripamtopng.
+  * New priplan9topng tool to convert from Plan 9 image format to PNG.
+    In reality this has been lurking in the codebase for years, but
+    has recently been converted to Python 3.
+    The author has only a limited collection of Plan 9 images,
+    which limits the testing that can be done.
+    The author welcomes bug reports for Plan 9 images.
+  * The priplan9topng tool has an even more experimental option
+    --font which converts Plan 9 subfont files to a sequence of PNG files.
+- release 0.0.21
+  * Support for Python 2 is dropped.
+  * Python 3.5 and onwards are supported.
+  * Some of the ancillary tools are modified to work on Python 3.
+  * Installs via wheel files.
+  * prichunkpng command line tool now has some new options to add
+  * chunks:
+    --iccprofile to add a iCCP chunk (ICC Profile);
+    --physical to add a pHYs chunk, specifying the intended pixel size;
+    --sigbit to add a sBIT chunk, specifying the encoded significant bits;
+    --transparent to add a tRNS chunk, specifying the transparent colour.
+  * priditherpng command line tool standardised and
+    converted to Python 3.
+  * pripngtopam tool now has a --plain option to output plain PGM
+    and PPM formats. The topam part of the name is a bit of a
+    misnomer: when possible (L and RGB PNG files) the tool will
+    output either a PGM (grey) or a PPM (RGB) file. Essentially all
+    tools that can process a PAM file can also process a PGM or a
+    PPM file. PAM files cannot be plain so using the option
+    will raise an error in the case where a true PAM file is
+    written.
+  * Better error messages when you write the wrong number of rows.
+    (Slightly experimentally) running the png module as a command
+    line tool, with python -m png, will report the version and
+    file location of the png module.
+- remove pr_106.patch
+- remove pypng-pr104-py39.patch
+
+-------------------------------------------------------------------
 Fri Oct  7 12:15:18 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Fix u-a scriptlets
