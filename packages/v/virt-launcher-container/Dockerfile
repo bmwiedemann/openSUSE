@@ -40,11 +40,11 @@ RUN zypper -n install \
               ncat \
               nftables \
               qemu-hw-usb-redirect \
-              qemu-tools \
               socat \
               tar \
               timezone \
               vim-small \
+              virtiofsd \
               xorriso
 
 #!ArchExclusiveLine: x86_64

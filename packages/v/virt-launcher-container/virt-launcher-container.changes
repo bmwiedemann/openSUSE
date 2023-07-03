@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 15 16:59:48 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Install virtiofsd explicitly instead of qemu-tools
+
+-------------------------------------------------------------------
 Thu Mar  2 07:49:24 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Update the container image for KubeVirt v0.59.0
