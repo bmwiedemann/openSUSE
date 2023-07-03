@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul  1 23:38:14 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.28.1
+  * Added support for the Nintendo Online Famicom controllers
+  * Improved support for third-party Nintendo Switch controllers
+  * Fixed setting the player LED on Nintendo Switch controllers
+  * Added Linux controller mapping for the Logitech Chillstream
+
+-------------------------------------------------------------------
 Wed Jun 21 07:43:42 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.28
