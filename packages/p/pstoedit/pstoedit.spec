@@ -1,7 +1,7 @@
 #
 # spec file for package pstoedit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,13 @@
 
 
 Name:           pstoedit
-Version:        3.78
+Version:        4.00
 Release:        0
 Summary:        PostScript and PDF Converter
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/PS
 URL:            http://www.pstoedit.net/
 Source:         https://sourceforge.net/projects/pstoedit/files/pstoedit/%{version}/%{name}-%{version}.tar.gz
-Patch1:         reproducible.patch
-# PATCH-FIX-BUILD pstoedit-include.patch sbrabec@suse.com -- Add missing include needed by libstdc++ 12.1.
-Patch2:         pstoedit-include.patch
-# PATCH-FIX-OPENSUSE pstoedit-unversioned.patch sbrabec@suse.com -- Do not use version numbers for modules that are loaded as *.so.
-Patch3:         pstoedit-unversioned.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -91,10 +86,7 @@ Requires:       libzip-devel
 PostScript and PDF converter development headers and library files.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1
 for CRLFFILE in doc/readme.txt examples/figtext.ps ; do
 	tr -d '\r' <$CRLFFILE >$CRLFFILE.lf
 	touch -r $CRLFFILE $CRLFFILE.lf
@@ -126,15 +118,17 @@ rm -rf %{buildroot}/usr/share/doc/%{name}
 %postun -p /sbin/ldconfig
 
 %files
-%license copying
-%doc examples doc/readme.txt
-%doc doc/*.htm doc/%{name}.pdf
 %{_bindir}/pstoedit
 %{_libdir}/*.so.*
 %dir %{_libdir}/pstoedit
 %{_libdir}/pstoedit/*.so
 %{_datadir}/%{name}
 %{_mandir}/man?*/*.*
+# Remove +x attribute from doc files
+%defattr(0644, root, root, 0755)
+%license copying
+%doc examples doc/readme.txt
+%doc doc/*.htm doc/%{name}.pdf
 
 %files devel
 %{_libdir}/*.so

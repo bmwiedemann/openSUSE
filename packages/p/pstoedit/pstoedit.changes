@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jun 30 18:23:13 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 4.00:
+  * Many changes in internal APIs for supporting a GUI.
+  * First version of QT base GUI. Not yet part of standard build 
+    process. Sources are in QT/PstoeditQtGui directory. Just run 
+    "make GUI" in there to build the GUI.
+  * Code cleanup.
+  * Some fixes to pass newer Coverity checks. Src code has again 0
+    Coverity defects.
+  * Documentation update and cleanup.
+  * Fix compilation problem with newer GNU libstdc++.
+  * Use unversioned .so libs for the driver plugins. Contributed 
+    by the Suse team.
+  * Remove the usage of __DATE__ in source code to allow "reproducible" 
+    builds. Contributed by the Suse team.
+- Drop upstreamed patches:
+  * pstoedit-include.patch
+  * pstoedit-unversioned.patch
+  * reproducible.patch
+- Add default attributes for documentation files. 
+  Fixes doc files having executable flag.
+
+-------------------------------------------------------------------
 Wed Jun 15 15:13:00 UTC 2022 - Stanislav Brabec <sbrabec@suse.com>
 
 - Fix build with libstdc++ 12.1 (pstoedit-include.patch).
