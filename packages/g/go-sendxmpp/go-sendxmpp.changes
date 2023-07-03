@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jul  2 17:55:45 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.0:
+  Added:
+  * Add support for sending Out of Band Data (OOB).
+  * Add SCRAM-SHA-1, SCRAM-SHA-256 and SCRAM-SHA512 support (via go-xmpp commit bef3e54).
+  * Add support for messages of type headline.
+  Changed:
+  * Print --help output to stdout instead of stderr.
+  * Print sent stanzas when --debug is used (via go-xmpp commit 9129a110df1b).
+  * Allow JIDs without localpart.
+  * Use single quotes for attributes in stanzas created by github.com/beevik/etree (vial etree v1.1.4).
+  * Fix SRV lookup when the domain has a CNAME (via xmppsrv v0.2.5).
+  * Fall back to directTLS on port 5223 (instead of StartTLS on port 5222)
+    if no SRV records are provided and -t is set.
+  * Remove trailing newlines in interactive mode.
+
+-------------------------------------------------------------------
 Sun Nov 13 20:12:18 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.6:

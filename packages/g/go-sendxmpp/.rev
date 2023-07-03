@@ -74,4 +74,25 @@
   * Fix Ox key generation.</comment>
     <requestid>1035535</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fac3d87f6c06eb484894b6b48fa27bd7</srcmd5>
+    <version>0.6.0</version>
+    <time>1688399006</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.0:
+  Added:
+  * Add support for sending Out of Band Data (OOB).
+  * Add SCRAM-SHA-1, SCRAM-SHA-256 and SCRAM-SHA512 support (via go-xmpp commit bef3e54).
+  * Add support for messages of type headline.
+  Changed:
+  * Print --help output to stdout instead of stderr.
+  * Print sent stanzas when --debug is used (via go-xmpp commit 9129a110df1b).
+  * Allow JIDs without localpart.
+  * Use single quotes for attributes in stanzas created by github.com/beevik/etree (vial etree v1.1.4).
+  * Fix SRV lookup when the domain has a CNAME (via xmppsrv v0.2.5).
+  * Fall back to directTLS on port 5223 (instead of StartTLS on port 5222)
+    if no SRV records are provided and -t is set.
+  * Remove trailing newlines in interactive mode.</comment>
+    <requestid>1096417</requestid>
+  </revision>
 </revisionlist>
