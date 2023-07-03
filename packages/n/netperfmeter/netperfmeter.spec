@@ -1,7 +1,7 @@
 #
 # spec file for package netperfmeter
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           netperfmeter
-Version:        1.9.0
+Version:        1.9.4
 Release:        0
 Summary:        Network performance meter for the UDP, TCP, SCTP and DCCP protocols
 License:        GPL-3.0-or-later
-Group:          Productivity/Networking/Diagnostic
 URL:            https://www.uni-due.de/~be0001/netperfmeter/
 #Git-Clone:     https://github.com/dreibh/netperfmeter.git
 Source:         https://www.uni-due.de/~be0001/netperfmeter/download/%{name}-%{version}.tar.xz
@@ -42,7 +41,7 @@ vector and scalar files.
 The vector files can e.g. be used to create plots of the results.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 # FIXME: you should use the %%cmake macros
@@ -52,7 +51,7 @@ cmake .. \
     -DWITH_NEAT=0 \
     -DBUILD_TEST_PROGRAMS=1 \
     -DBUILD_PLOT_PROGRAMS=1
-%make_build
+%cmake_build
 
 %install
 %cmake_install
