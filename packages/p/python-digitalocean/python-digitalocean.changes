@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jul  2 12:24:05 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Sat Jan 15 16:19:25 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.17.0:
