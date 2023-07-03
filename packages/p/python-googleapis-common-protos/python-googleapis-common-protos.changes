@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jul  2 12:30:42 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Tue Jun 20 10:02:02 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.59.1

@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname googleapis-common-protos
 %define pkgname %{lua:pname,_ = string.gsub(rpm.expand('%modname'), '-' , '_');print(pname)}
+%{?sle15_python_module_pythons}
 Name:           python-googleapis-common-protos
 Version:        1.59.1
 Release:        0
@@ -62,6 +62,7 @@ install -p -D -t tests/unit %{SOURCE1}
 %files %{python_files}
 %license LICENSE
 %doc README.rst
+%dir %{python_sitelib}/google
 %{python_sitelib}/google/type
 %{python_sitelib}/google/longrunning
 %{python_sitelib}/google/rpc
