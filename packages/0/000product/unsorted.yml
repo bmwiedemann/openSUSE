@@ -3829,6 +3829,7 @@ unsorted:
   - fd-zsh-completion 
   - fde-firstboot 
   - fde-tools 
+  - fde-tools-bash-completion 
   - fdo-client 
   - fdo-client-devel 
   - featherpad 
@@ -6452,6 +6453,7 @@ unsorted:
   - git-deps-html 
   - git-doc 
   - git-filter-repo 
+  - git-fzlog 
   - git-lfs 
   - git-merge-changelog 
   - git-mr 
@@ -13760,6 +13762,8 @@ unsorted:
   - libortools_flatzinc9 
   - libortp15 
   - libosdCPU3_4_4 
+  - libosg2vsg-devel 
+  - libosg2vsg0 
   - libosinfo-devel 
   - libosip2-15 
   - libosip2-devel 
@@ -14104,15 +14108,15 @@ unsorted:
   - libprofiler0 
   - libproj25 
   - libprotobuf-c-devel 
-  - libprotobuf-lite22_5_0-32bit 
+  - libprotobuf-lite23_3_0-32bit 
   - libprotobuf-lite3_21_12-32bit 
   - libprotobuf-mutator-devel 
   - libprotobuf-mutator0 
   - libprotobuf-nanopb0 
-  - libprotobuf22_5_0-32bit 
+  - libprotobuf23_3_0-32bit 
   - libprotobuf3_21_12-32bit 
-  - libprotoc22_5_0 
-  - libprotoc22_5_0-32bit 
+  - libprotoc23_3_0 
+  - libprotoc23_3_0-32bit 
   - libprotoc3_21_12 
   - libprotoc3_21_12-32bit 
   - libproxy-devel 
@@ -14781,7 +14785,7 @@ unsorted:
   - libserialport0 
   - libsexpp0 
   - libsfcUtil0 
-  - libsfml2-2_5 
+  - libsfml2-2_6 
   - libsgutils-devel 
   - libsha1detectcoll-devel 
   - libshaderc_shared1-32bit 
@@ -15581,6 +15585,10 @@ unsorted:
   - libvsapm1 
   - libvsg-devel 
   - libvsg13 
+  - libvsgImGui-devel 
+  - libvsgImGui0 
+  - libvsgXchange-devel 
+  - libvsgXchange1 
   - libvsgpt-devel 
   - libvsgpt-tools 
   - libvsgpt1 
@@ -35260,6 +35268,7 @@ unsorted:
   - system-user-prometheus 
   - system-user-uuidd 
   - system-user-velociraptor 
+  - systemd-boot 
   - systemd-default-settings-branding-SLE-Micro 
   - systemd-default-settings-branding-upstream 
   - systemd-devel 
@@ -45364,6 +45373,8 @@ unsorted:
   - votca-tutorials 
   - vpcs 
   - vpx-tools 
+  - vsgExamples 
+  - vsgXchange 
   - vsqlite++-devel 
   - vst-lsp-plugins 
   - vst-rnnoise 
