@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul  3 10:17:43 UTC 2023 - llyyr <llyyr.public@gmail.com>
+
+- Update to version 1.32:
+  * ext-foreign-toplevel-list: new protocol
+  * cursor-shape-v1: new protocol
+  * security-context-v1: new protocol
+  * xdg-shell: add suspended toplevel state
+  * Apart from these new additions, this release also brings the
+    usual clarifications, cleanups and fixes.
+
+-------------------------------------------------------------------
 Tue Nov 29 18:34:53 UTC 2022 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 1.31:
