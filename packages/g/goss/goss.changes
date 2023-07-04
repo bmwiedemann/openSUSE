@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 27 13:01:37 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com> - 0.3.23
+
+- Update to version 0.3.23 with updated dependencies in vendor file
+  * Add: log level to be set (gh#802)
+  * kgoss: add new GOSS_KUBECTL_OPTS env var to inject more options (gh#792)
+  * Fix: Error message encoding when output is set to JSON (gh#788)
+  * Add: Implement prometheus output support (gh#607)
+  * Add: Add optional TLS client cert authentication + custom ca-file (gh#686)
+  * Fix: json typo in http resource (gh#673)
+  * Fix: kgoss Remove --generator as it has been deprecated (gh#768)
+  * Fix: kgoss Fixed kgoss kubectl cp issue (gh#773)
+
+-------------------------------------------------------------------
 Sat Sep 10 20:06:45 UTC 2022 - Jochen Breuer <brejoc@gmail.com> - 0.3.18
 
 - Update to version 0.3.18 with updated dependencies in vendor file

@@ -1,7 +1,7 @@
 #
 # spec file for package goss
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,16 +22,16 @@
 %define dcgoss_name dcgoss
 
 Name:           goss
-Version:        0.3.18
+Version:        0.3.23
 Release:        0
 Summary:        Quick and Easy server testing/validation
 License:        Apache-2.0
 Group:          Development/Tools/Other
 URL:            https://github.com/aelsabbahy/goss
-Source0:        goss-%{version}.tar.gz
+Source0:        https://github.com/goss-org/goss/archive/refs/tags/v%{version}.tar.gz#/goss-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.13
+BuildRequires:  golang(API) >= 1.18
 
 %description
 Goss is a YAML based serverspec alternative tool for validating a server’s configuration. It eases the process of writing tests by allowing the user to generate tests from the current system state. Once the test suite is written they can be executed, waited-on, or served as a health endpoint.
