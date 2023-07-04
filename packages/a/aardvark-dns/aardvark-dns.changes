@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Jul 03 11:38:00 UTC 2023 - danish.prakash@suse.com
+
+- Update to version 1.7.0:
+  * release v1.7.0
+  * Update release notes for v1.7.0
+  * fix(deps): update rust crate tokio to 1.29.0
+  * fix(deps): update rust crate clap to 4.3.8
+  * fix(deps): update rust crate clap to 4.3.5
+  * run cargo update
+  * [CI:BUILD] Packit: add Fedora downstream tasks
+  * fix(deps): update rust crate clap to 4.3.4
+  * chore(deps): update dependency containers/automation_images to v20230614
+  * fix(deps): update rust crate clap to 4.3.3
+  * fix(deps): update rust crate log to 0.4.19
+  * fix(deps): update rust crate clap to 4.3.2
+  * fix(deps): update rust crate clap to 4.3.1
+  * cirrus: remove verify_vendor task
+  * chore(deps): update dependency containers/automation_images to v20230601
+  * fix(deps): update rust crate trust-dns-server to 0.22.1
+  * chore(deps): update rust crate chrono to 0.4.26
+  * fix(deps): update rust crate tokio to 1.28.2
+  * fix(deps): update rust crate log to 0.4.18
+  * chore(deps): update rust crate chrono to 0.4.25
+  * fix(deps): update rust crate clap to 4.3.0
+  * chore(deps): update dependency containers/automation_images to v20230517
+  * fix(deps): update rust crate tokio to 1.28.1
+  * chore(deps): update dependency containers/automation_images to v20230426
+  * fix(deps): update rust crate clap to 4.2.7
+  * fix(deps): update rust crate anyhow to 1.0.71
+  * fix typo in makefile
+  * fix(deps): update rust crate tokio to 1.28.0
+  * fix(deps): update rust crate clap to 4.2.5
+  * fix(deps): update rust crate syslog to ^6.1.0
+  * fix(deps): update rust crate clap to 4.2.4
+  * fix(deps): update rust crate clap to 4.2.3
+  * fix(deps): update rust crate clap to v4
+  * chore(deps): update dependency containers/automation_images to v20230405
+  * bump to v1.7.0-dev
+
+-------------------------------------------------------------------
 Wed Apr 12 06:00:21 UTC 2023 - danish.prakash@suse.com
 
 - Update to version 1.6.0:
