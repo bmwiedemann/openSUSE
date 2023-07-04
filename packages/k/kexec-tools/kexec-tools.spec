@@ -16,18 +16,18 @@
 #
 
 
+# Temporarily bump version to aid package split
+%global realversion 2.0.26
 Name:           kexec-tools
-Version:        2.0.26
+Version:        %{realversion}.0
 Release:        0
 Summary:        Tools for loading replacement kernels into memory
 License:        GPL-2.0-or-later
 Group:          System/Kernel
 URL:            https://projects.horms.net/projects/kexec/
-Source:         https://kernel.org/pub/linux/utils/kernel/kexec/%{name}-%{version}.tar.xz
-Source100:      https://kernel.org/pub/linux/utils/kernel/kexec/%{name}-%{version}.tar.sign
-Source101:      kexec-tools.keyring
-Source1:        kexec-bootloader
-Source2:        kexec-bootloader.8
+Source:         https://kernel.org/pub/linux/utils/kernel/kexec/%{name}-%{realversion}.tar.xz
+Source1:        https://kernel.org/pub/linux/utils/kernel/kexec/%{name}-%{realversion}.tar.sign
+Source2:        kexec-tools.keyring
 Source3:        kexec-load.service
 Source4:        %{name}-rpmlintrc
 Patch3:         %{name}-disable-test.patch
@@ -41,7 +41,7 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  zlib-devel
 #!BuildIgnore:  fop
 #!BuildIgnore:  gcc-PIE
-Requires:       perl-Bootloader
+Requires:       perl-Bootloader >= 1.6
 Requires(post): suse-module-tools
 Requires(postun):suse-module-tools
 %{?systemd_requires}
@@ -57,7 +57,7 @@ kernel may be asked to start the loaded kernel on reboot, or to start
 the loaded kernel after it panics.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{realversion}
 %autopatch -p1
 
 %build
@@ -70,11 +70,9 @@ export LDFLAGS="-pie"
 
 %install
 %make_install
-install -c -m 0644 %{SOURCE2} %{buildroot}/%{_mandir}/man8
-mkdir -p %{buildroot}/%{_sbindir}
-install -m 0755 %{SOURCE1} %{buildroot}/%{_sbindir}
 mkdir -p %{buildroot}/%{_unitdir}
 install -m644 %{SOURCE3} %{buildroot}/%{_unitdir}
+mkdir -p %{buildroot}/%{_sbindir}
 ln -s service %{buildroot}%{_sbindir}/rckexec-load
 %if 0%{?suse_version} < 1550
 mkdir -p %{buildroot}/sbin
@@ -119,7 +117,6 @@ ln -s %{_sbindir}/kexec %{buildroot}/sbin
 %endif
 %{_sbindir}/rckexec-load
 %{_sbindir}/kexec
-%{_sbindir}/kexec-bootloader
 %{_sbindir}/vmcore-dmesg
 %{_unitdir}/kexec-load.service
 

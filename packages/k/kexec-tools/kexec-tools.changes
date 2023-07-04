@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 28 15:10:51 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Pull kexec-bootloader from perl-Bootloader, bump version so that
+  perl-Bootloader can obsolete kexec-tools containing kexec-bootloader
+  (bsc#1211082).
+
+-------------------------------------------------------------------
 Tue Apr  4 04:04:04 UTC 2023 - olaf@aepfle.de
 
 - Update kexec-tools-SYS_getrandom.patch to fix build errors on
