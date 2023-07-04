@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-s3transfer
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        Python S3 transfer manager
 License:        Apache-2.0
