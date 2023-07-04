@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  3 15:16:38 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Split off sd-boot into separate "systemd-boot" subpackage
+
+-------------------------------------------------------------------
 Tue Jun 27 13:02:40 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Change the group owner of /run/lock from "lock" to "root" (bsc#1212674)

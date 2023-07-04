@@ -312,10 +312,6 @@ This library provides several of the systemd C APIs:
 Summary:        A rule-based device node and kernel event manager
 License:        GPL-2.0-only
 URL:            http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html
-%if %{with sd_boot}
-BuildRequires:  gnu-efi
-BuildRequires:  pesign-obs-integration
-%endif
 Requires:       %{name} = %{version}-%{release}
 %systemd_requires
 Requires:       filesystem
@@ -387,6 +383,32 @@ Provides:       systemd:%{_bindir}/coredumpctl
 Systemd tools to store and manage coredumps.
 
 Visit https://systemd.io/COREDUMP for more details.
+%endif
+
+%if %{with sd_boot}
+%package boot
+Summary:        A simple UEFI boot manager
+License:        LGPL-2.1-or-later
+BuildRequires:  gnu-efi
+BuildRequires:  pesign-obs-integration
+
+%description boot
+This package provides systemd-boot (short: sd-boot), which is a simple UEFI boot
+manager. It provides a textual menu to select the entry to boot and an editor
+for the kernel command line. systemd-boot supports systems with UEFI firmware
+only.
+
+This package also contains bootctl(1) and services to manage boot loaders that
+implement the Boot Loader Specification[1] and the Boot Loader Interface[2] on
+EFI systems, such as systemd-boot.
+
+Note that systemd-boot is not fully integrated in openSUSE distributions yet
+hence its installation requires special care and manual steps when used on
+systems supporting secure boot or snapshots. For more details, visit:
+https://en.opensuse.org/Systemd-boot
+
+[1] https://uapi-group.org/specifications/specs/boot_loader_specification/
+[2] https://systemd.io/BOOT_LOADER_INTERFACE/
 %endif
 
 %package container
@@ -702,6 +724,7 @@ export CFLAGS="%{optflags} -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2"
         -Delfutils=%{when_not bootstrap} \
         -Dhtml=%{when_not bootstrap} \
         -Dima=%{when_not bootstrap} \
+        -Dkernel-install=%{when_not bootstrap} \
         -Dlibcryptsetup-plugins=%{when_not bootstrap} \
         -Dman=%{when_not bootstrap} \
         -Dnss-myhostname=%{when_not bootstrap} \
@@ -721,7 +744,6 @@ export CFLAGS="%{optflags} -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2"
         \
         -Dgnu-efi=%{when sd_boot} \
         -Defi-color-highlight="black,green" \
-        -Dkernel-install=%{when sd_boot} \
         \
         -Dsbat-distro="%{?sbat_distro}" \
         -Dsbat-distro-summary="%{?sbat_distro_summary}" \
@@ -1233,7 +1255,12 @@ fi
 %files -n udev%{?mini}
 %defattr(-,root,root)
 %include %{SOURCE201}
+
+%if %{with sd_boot}
+%files boot
+%defattr(-,root,root)
 %include %{SOURCE206}
+%endif
 
 %files container
 %defattr(-,root,root)

@@ -6,6 +6,8 @@
 %if %{without bootstrap}
 %dir %{_libdir}/cryptsetup
 %dir %{_modulesloaddir}
+%dir %{_prefix}/lib/kernel
+%dir %{_prefix}/lib/kernel/install.d
 %endif
 %dir %{_prefix}/lib/udev
 %if %{without bootstrap}
@@ -23,16 +25,19 @@
 %ghost %attr(644, root, root) %{_prefix}/lib/udev/compat-symlink-generation
 %ghost %{_localstatedir}/lib/systemd/backlight
 %if %{without bootstrap}
+%{_bindir}/kernel-install
 %{_bindir}/systemd-cryptenroll
 %endif
 %{_bindir}/systemd-hwdb
 %{_bindir}/udevadm
 %if %{without bootstrap}
+%{_datadir}/bash-completion/completions/kernel-install
 %{_datadir}/bash-completion/completions/systemd-cryptenroll
 %{_datadir}/bash-completion/completions/udevadm
 %endif
 %{_datadir}/pkgconfig/udev.pc
 %if %{without bootstrap}
+%{_datadir}/zsh/site-functions/_kernel-install
 %{_datadir}/zsh/site-functions/_udevadm
 %endif
 %if %{without bootstrap}
@@ -49,6 +54,7 @@
 %{_mandir}/man5/veritytab.5.gz
 %{_mandir}/man7/hwdb.7.gz
 %{_mandir}/man7/udev.7.gz
+%{_mandir}/man8/kernel-install.8.gz
 %{_mandir}/man8/systemd-backlight.8.gz
 %{_mandir}/man8/systemd-backlight@.service.8.gz
 %{_mandir}/man8/systemd-cryptsetup-generator.8.gz
@@ -90,6 +96,10 @@
 %{_mandir}/man8/systemd-volatile-root.8.gz
 %{_mandir}/man8/systemd-volatile-root.service.8.gz
 %{_mandir}/man8/udevadm.8.gz
+%{_prefix}/lib/kernel/install.conf
+%{_prefix}/lib/kernel/install.d/50-depmod.install
+%{_prefix}/lib/kernel/install.d/90-loaderentry.install
+%{_prefix}/lib/kernel/install.d/90-uki-copy.install
 %endif
 %{_prefix}/lib/udev/ata_id
 %{_prefix}/lib/udev/cdrom_id

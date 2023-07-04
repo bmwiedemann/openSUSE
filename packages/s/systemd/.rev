@@ -6684,4 +6684,12 @@ handle manual pages that consist only of a .so directive such as
   Note: this is also needed when (trans)file-triggers are enabled due to the</comment>
     <requestid>1095850</requestid>
   </revision>
+  <revision rev="396" vrev="5">
+    <srcmd5>123544f063009804d41c4732e251a37c</srcmd5>
+    <version>253.5</version>
+    <time>1688476904</time>
+    <user>dimstar_suse</user>
+    <comment>- Split off sd-boot into separate &quot;systemd-boot&quot; subpackage</comment>
+    <requestid>1096633</requestid>
+  </revision>
 </revisionlist>
