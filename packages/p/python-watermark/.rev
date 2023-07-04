@@ -108,4 +108,21 @@
     <comment></comment>
     <requestid>980900</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>be1061494d5ca72366c11203cde4d55f</srcmd5>
+    <version>2.4.3</version>
+    <time>1688476922</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.3
+  * Make py3nvml installation for GPU info optional.
+    (replaces watermark-pr92-optional-py3nvml.patch)
+
+- Update to 2.4.2
+  * Adds a new --gpu flag to print out GPU information (currently
+    limited to NVIDIA devices) (#90, via contribution by
+    907Resident)
+  * (2.4.0 to 2.4.2: Packaging fixes)
+- Add watermark-pr92-optional-py3nvml.patch gh#rasbt/watermark#92</comment>
+    <requestid>1096410</requestid>
+  </revision>
 </revisionlist>

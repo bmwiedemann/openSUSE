@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jul  2 15:02:31 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.4.3
+  * Make py3nvml installation for GPU info optional.
+    (replaces watermark-pr92-optional-py3nvml.patch)
+
+-------------------------------------------------------------------
+Fri Jun  2 13:14:54 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.4.2
+  * Adds a new --gpu flag to print out GPU information (currently
+    limited to NVIDIA devices) (#90, via contribution by
+    907Resident)
+  * (2.4.0 to 2.4.2: Packaging fixes)
+- Add watermark-pr92-optional-py3nvml.patch gh#rasbt/watermark#92
+
+-------------------------------------------------------------------
 Sun Jun  5 13:41:11 UTC 2022 - Arun Persaud <arun@gmx.de>
 
 - specfile:

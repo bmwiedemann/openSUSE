@@ -1,7 +1,7 @@
 #
 # spec file for package python-watermark
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define         skip_python2 1
 Name:           python-watermark
-Version:        2.3.1
+Version:        2.4.3
 Release:        0
 Summary:        IPython magic function to psystem information
 License:        BSD-3-Clause
@@ -27,11 +25,17 @@ Group:          Development/Languages/Python
 URL:            https://github.com/rasbt/watermark
 Source:         https://files.pythonhosted.org/packages/source/w/watermark/watermark-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module ipython}
+BuildRequires:  %{python_module importlib-metadata >= 1.4}
+BuildRequires:  %{python_module ipython >= 6}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-ipython
+Requires:       python-importlib-metadata >= 1.4
+Requires:       python-ipython >= 6
+Requires:       python-setuptools
+Suggests:       python-py3nvml >= 0.2
 Provides:       python-jupyter_watermark = %{version}
 Obsoletes:      python-jupyter_watermark < %{version}
 BuildArch:      noarch
@@ -45,13 +49,13 @@ An Jupyter magic extension for printing date and time stamps, version numbers,
 and hardware information.
 
 %prep
-%setup -q -n watermark-%{version}
+%autosetup -p1 -n watermark-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,6 +66,6 @@ and hardware information.
 %doc README.md
 %license LICENSE
 %{python_sitelib}/watermark-%{version}*-info
-%{python_sitelib}/watermark/
+%{python_sitelib}/watermark
 
 %changelog
