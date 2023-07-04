@@ -26,7 +26,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc6-c++
 %endif
 Name:           lnav
-Version:        0.11.1
+Version:        0.11.2
 Release:        0
 Summary:        Logfile Navigator
 License:        BSD-2-Clause
@@ -35,8 +35,6 @@ URL:            https://lnav.org
 #Git-Clone:     https://github.com/tstack/lnav.git
 Source:         https://github.com/tstack/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        lnav.desktop
-# PATCH-FIX-UPSTREAM e25d3e3c69fcf57bbaec2333846b9a43c4d1fc90.patch -- Fix build with GCC 13 (add missing <cstdint> include)
-Patch:          https://github.com/tstack/lnav/commit/e25d3e3c69fcf57bbaec2333846b9a43c4d1fc90.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libcurl-devel
