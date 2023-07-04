@@ -1,6 +1,6 @@
-diff -Nru oci-cli-3.29.1.orig/requirements.txt oci-cli-3.29.1/requirements.txt
---- oci-cli-3.29.1.orig/requirements.txt	2023-06-21 00:54:35.000000000 +0200
-+++ oci-cli-3.29.1/requirements.txt	2023-06-22 12:01:51.334890518 +0200
+diff -Nru oci-cli-3.29.2.orig/requirements.txt oci-cli-3.29.2/requirements.txt
+--- oci-cli-3.29.2.orig/requirements.txt	2023-06-28 00:37:36.000000000 +0200
++++ oci-cli-3.29.2/requirements.txt	2023-06-29 14:08:48.758204203 +0200
 @@ -2,44 +2,44 @@
  # (https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format),
  # you may need to use the --extra-index-url option instead.
@@ -18,7 +18,7 @@ diff -Nru oci-cli-3.29.1.orig/requirements.txt oci-cli-3.29.1/requirements.txt
 -jmespath==0.10.0
 -ndg-httpsclient==0.4.2
 -mock==2.0.0
--oci==2.104.3
+-oci==2.105.0
 -packaging==20.2
 -pluggy==0.13.0
 -py==1.10.0
@@ -38,7 +38,7 @@ diff -Nru oci-cli-3.29.1.orig/requirements.txt oci-cli-3.29.1/requirements.txt
 +jmespath>=0.10.0
 +ndg-httpsclient>=0.4.2
 +mock>=2.0.0
-+oci>=2.104.3
++oci>=2.105.0
 +packaging>=20.2
 +pluggy>=0.13.0
 +py>=1.10.0
@@ -82,34 +82,30 @@ diff -Nru oci-cli-3.29.1.orig/requirements.txt oci-cli-3.29.1/requirements.txt
 -setuptools==59.6.0; python_version == '3.6'
 \ No newline at end of file
 +setuptools>=59.6.0; python_version >= '3.6'
-diff -Nru oci-cli-3.29.1.orig/setup.py oci-cli-3.29.1/setup.py
---- oci-cli-3.29.1.orig/setup.py	2023-06-21 00:54:35.000000000 +0200
-+++ oci-cli-3.29.1/setup.py	2023-06-22 12:00:40.878177225 +0200
+diff -Nru oci-cli-3.29.2.orig/setup.py oci-cli-3.29.2/setup.py
+--- oci-cli-3.29.2.orig/setup.py	2023-06-28 00:37:36.000000000 +0200
++++ oci-cli-3.29.2/setup.py	2023-06-29 14:08:07.717216704 +0200
 @@ -30,23 +30,23 @@
      readme = f.read()
  
  requires = [
--    'oci==2.104.3',
-+    'oci>=2.104.3',
+-    'oci==2.105.0',
++    'oci>=2.105.0',
      'arrow>=1.0.0',
      'certifi',
 -    'click==8.0.4',
--    'cryptography>=3.2.1,<40.0.0',
--    'jmespath==0.10.0',
--    'python-dateutil>=2.5.3,<3.0.0',
 +    'click>=8.0.4',
-+    'cryptography>=3.2.1',
+     'cryptography>=3.2.1,<40.0.0',
+-    'jmespath==0.10.0',
 +    'jmespath>=0.10.0',
-+    'python-dateutil>=2.5.3',
+     'python-dateutil>=2.5.3,<3.0.0',
      'pytz>=2016.10',
      'six>=1.15.0',
 -    'terminaltables==3.1.0',
--    'pyOpenSSL>=17.5.0,<24.0.0',
--    'PyYAML>=5.4,<=6',
--    'prompt-toolkit==3.0.29'
 +    'terminaltables>=3.1.0',
-+    'pyOpenSSL>=17.5.0',
-+    'PyYAML>=5.4',
+     'pyOpenSSL>=17.5.0,<24.0.0',
+     'PyYAML>=5.4,<=6',
+-    'prompt-toolkit==3.0.29'
 +    'prompt-toolkit>=3.0.29'
  ]
  
