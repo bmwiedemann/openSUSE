@@ -338,4 +338,12 @@
 - Add signature file and keyring (forwarded request 1001391 from wolfi323)</comment>
     <requestid>1001397</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>9d52d4072be82114715f2028fb3e2e19</srcmd5>
+    <version>5.0.2</version>
+    <time>1688476958</time>
+    <user>dimstar_suse</user>
+    <comment>Add fix for exiv 0.28</comment>
+    <requestid>1096668</requestid>
+  </revision>
 </revisionlist>

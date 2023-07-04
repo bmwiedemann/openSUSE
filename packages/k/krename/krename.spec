@@ -30,6 +30,9 @@ Source2:        %{name}.keyring
 Patch0:         servicemenus-files.patch
 # PATCH-FIX-UPSTREAM remove-gplv2-code.diff dmueller@suse.de -- Remove GPLv2 only code (only used for self-testing)
 Patch1:         remove-gplv2-code.diff
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150400
+Patch2:         0001-Fix-build-with-exiv2-0.28-raise-minimum-to-0.27.patch
+%endif
 BuildRequires:  extra-cmake-modules
 BuildRequires:  freetype2-devel
 BuildRequires:  libexiv2-devel

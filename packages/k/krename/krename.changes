@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  4 06:37:49 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add patch:
+  * 0001-Fix-build-with-exiv2-0.28-raise-minimum-to-0.27.patch
+
+-------------------------------------------------------------------
 Tue Sep  6 08:22:59 UTC 2022 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 5.0.2:
