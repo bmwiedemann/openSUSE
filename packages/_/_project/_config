@@ -3779,6 +3779,9 @@ Macros:
 %ext_info .gz
 %ext_man .gz
 
+# from update-bootloader-rpm-macros - impacts build deps
+%update_bootloader_requires %nil
+
 :Macros
 
 # UsrMerge - 2021-05-25
