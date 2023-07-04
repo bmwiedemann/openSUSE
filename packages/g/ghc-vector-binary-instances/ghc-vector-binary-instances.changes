@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun 25 20:36:17 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update vector-binary-instances to version 0.2.5.2 revision 5.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Fri Jun 23 07:29:06 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update vector-binary-instances to version 0.2.5.2 revision 4.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:08:55 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

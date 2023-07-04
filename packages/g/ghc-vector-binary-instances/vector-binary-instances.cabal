@@ -1,7 +1,7 @@
 Cabal-version:       3.0
 Name:                vector-binary-instances
 Version:             0.2.5.2
-x-revision: 3
+x-revision: 5
 Synopsis:            Instances of Data.Binary for vector
 Description:
    Instances for Binary for the types defined in the vector package,
@@ -27,16 +27,31 @@ Description:
    instances.
 
 -- URL for the project homepage or repository.
-Homepage:            https://github.com/bos/vector-binary-instances
-bug-reports:         https://github.com/bos/vector-binary-instances/issues
+Homepage:            https://github.com/haskell/vector-binary-instances
+bug-reports:         https://github.com/haskell/vector-binary-instances/issues
 License:             BSD-3-Clause
 License-file:        LICENSE
 Author:              Don Stewart
 Maintainer:          dons00@gmail.com, bos@serpentine.com, Ben Gamari <ben@smart-cactus.org>
-Tested-With:         GHC==8.10.1, GHC==8.8.3, GHC==8.6.5, GHC==8.0.2, GHC==7.10.3, GHC==7.8.4, GHC==7.6.3, GHC==7.4.2
 Stability:           Experimental
 Category:            Data
 Build-type:          Simple
+
+tested-with:
+  GHC == 9.6.2
+  GHC == 9.4.5
+  GHC == 9.2.8
+  GHC == 9.0.2
+  GHC == 8.10.7
+  GHC == 8.8.4
+  GHC == 8.6.5
+  GHC == 8.4.4
+  GHC == 8.2.2
+  GHC == 8.0.2
+  GHC == 7.10.3
+  GHC == 7.8.4
+  GHC == 7.6.3
+  GHC == 7.4.2
 
 Library
   Ghc-options: -Wall
@@ -46,7 +61,7 @@ Library
 
   -- Packages needed in order to build this package.
   Build-depends:
-    base > 3 && < 4.18,
+    base   >= 4.5 && < 5,
     vector >= 0.6 && < 0.14,
     binary >= 0.5 && < 0.11
   Default-Language: Haskell2010
@@ -79,4 +94,4 @@ Test-Suite tests
 
 source-repository head
   type:     git
-  location: https://github.com/bos/vector-binary-instances
+  location: https://github.com/haskell/vector-binary-instances
