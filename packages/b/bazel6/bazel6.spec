@@ -1,7 +1,7 @@
 #
-# spec file for package bazel6.0
+# spec file
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define shortver 6
 
 Name:           bazel%{shortver}
-Version:        6.1.2
+Version:        6.2.1
 Release:        0
 Summary:        Tool for the automation of building and testing of software
 License:        Apache-2.0
@@ -41,8 +41,8 @@ BuildRequires:  unzip
 BuildRequires:  zip
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(zlib)
-Requires(post):	update-alternatives
-Requires(postun): update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 # Bazel6.0 does not support Java 8 and 17
 Requires:       java-11-openjdk-devel
 Provides:       bazel = %{version}

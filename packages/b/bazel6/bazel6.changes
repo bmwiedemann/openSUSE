@@ -1,4 +1,122 @@
 -------------------------------------------------------------------
+Fri Jun 30 14:04:18 UTC 2023 - Fuminobu Takeyama <ftake@geeko.jp> - 6.2.1
+
+- Upstream update to 6.2.1
+  * Fix bazel run test_target exit code issue (#18512)
+  * Use extension rather than local names in ModuleExtensionMetadata
+    (#18535)
+- Upstream update to 6.2.0
+  * Highlights
+    * Added preliminary support for a lockfile for Bzlmod. It's
+      disabled by default; use --lockfile_mode=update to enable it.
+      (#18143)
+  * General
+    * @foo labels can now be used on the command line as the
+      top-level target. Double-dot syntax is now forbidden. (#17945)
+    * The aquery and cquery commands now respect the --query_file flag
+      just like the query command. (#17823)
+    * Patch zlib to fix compatibility with latest Xcode (#18000)
+    * profile: add profile_finish_ts (#18129)
+    * Use ctime in file digest cache key (#18105)
+    * Include cause when reporting ActionExecutionException (#18185)
+    * Check for the nullness of AspectValue. (#18186)
+    * Force the Bazel server Java runtime to use the root locale
+      (#17733)
+    * Fix message generation of ActionExecutionException (#18257)
+  * Android
+    * Added coverage metric support to android_local_test (#17467)
+    * Include build-tools/X.Y.Z/{lib,lib64}/** in the minimal set of
+      SDK files used by the Android integration tests (#17826)
+    * Fix worker and multiplex workers for DexBuilder and Desugar
+      actions (#17965)
+  * C++ / Objective-C
+    * Fix wasm dynamic library extension crash (#17765)
+    * Enable C++ deps pruning on Windows when PARSE_SHOWINCLUDES is
+      available. (#17957)
+    * Add attribute provides = [CcInfo] to _cc_proto_aspect (#17979)
+    * Expose cc_proto_aspect as a top level symbol. (#17980)
+  * CLI
+    * Handle SIGWINCH under bazel run //some:test (i.e. test rules)
+      correctly. (#17760)
+    * Use less subshells and tees in running tests with bazel run.
+      (#17869)
+  * Configurability
+    * Allow multiple matching select branches if they resolve to the
+      same value (#18066)
+    * cquery --output-starlark: better alias support (#17786)
+    * Fix crashes on select()able target_compatible_with attributes
+      (#18135)
+    * Add "did you mean?" suggestions for typoed rule attribute names
+      (#17855)
+    * Turn applicable_licenses on platform() into a no-op (#18089)
+  * External Dependencies
+    * Added native.module_name() and native.module_version() to allow
+      BUILD macro authors to acquire information about which Bazel
+      module the current repo is associated with (#17893)
+    * Added a new max_compatibility_level attribute to the bazel_dep
+      directive, which allows version selection to upgrade a
+      dependency up to the specified compatibility level (#18178)
+    * Added module_ctx.is_dev_dependency, allowing an extension to
+      see whether a tag is specified to be a dev dependency (#17934)
+    * Added module_ctx.extension_metadata, allowing the extension to
+      specify the list of repos the root module can use_repo on
+      (#18174)
+    * Fixed an issue where WORKSPACE and WORKSPACE-loaded .bzl files
+      couldn't see the Bzlmod root module's mappings when Bzlmod is
+      enabled (#17818)
+    * Added suggestions to invalid tag class errors (#17896)
+    * Workspace relative paths are now supported in --override_module
+      (#17906)
+    * Fail early if use_extension has a bad label (#17926)
+    * Added dev_dependency to register_{execution_platforms,toolchains}
+      (#18259)
+  * Java
+    * Silence setlocale warnings in Java stub (#17741)
+    * Split darwin java_tools to x86_64 and arm64 (#18197)
+    * Upgrade Azul JDK 17 archives (#17852)
+    * Add version to JavaRuntimeInfo (#17913)
+    * Update default_java_toolchain.bzl to fix a regression (#18225)
+    * Updated java_tools to v12.3 to fix BazelTestRunner
+      compatibility with jre8 (#18328)
+  * Python
+    * Removed temporary module space created for zip-based binaries
+      (#17764)
+    * Set envvar for runfiles manifest, not runfiles dir, when using
+      a manifest (#18133)
+  * Remote Execution
+    * Skip empty directories instead of throwing in the prefetcher
+      (#17718)
+    * Remove actionId from RemoteFileArtifactValue (#17724)
+    * Correctly handle templated tree artifacts in the prefetcher
+      (#17735)
+    * [credentialhelper] Ignore failing to provide request (#17745)
+    * [remote] upload: treat ALREADY_EXISTS as success (#17732)
+    * Fix data race in prefetcher (#17744)
+    * Clear all remote metadata if any of them are evicted from
+      remote cache (#17770)
+    * Fix seeking of empty chunkers (#17830)
+    * Rework ByteStreamUploader early return logic (#17832)
+    * Avoid unnecessary copying when building Merkle trees (#17930)
+    * Cache Merkle trees for tree artifacts (#17998)
+    * Deduplicate concurrent computations of the same Merkle tree
+      (#18015)
+    * Add exception message to 'failed to create output directory'
+      (#18067)
+    * Prevent failures creating output directories (#18062)
+    * Gracefully handle output symlinks with BwoB (#18106)
+    * Automatically retry the build if encountered remote cache
+      eviction error (#18171)
+    * Allow remote retry max delay to be user configurable (#18061)
+    * Rename --experimental_remote_grpc_log to --remote_grpc_log
+      (#18193)
+    * Construct TreeArtifactValues on multiple threads (#18194)
+    * Fix crash on multiple output symlinks with BwoB (#18226)
+  * Starlark / Build Language
+    * Relax JSON parser, ensure duplicate keys are overridden
+      (#17868)
+
+
+-------------------------------------------------------------------
 Wed May 10 12:40:16 UTC 2023 - Fuminobu Takeyama <ftake@geeko.jp> - 6.1.2
 
 - initial package based on Bazel 3.2 

@@ -7,4 +7,12 @@
     <comment>This SR adds a newer version of Bazel, which is required in order to update Mozc.</comment>
     <requestid>1089311</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b3551216425a857635fe0a5da8a6cd03</srcmd5>
+    <version>6.2.1</version>
+    <time>1688476971</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096692</requestid>
+  </revision>
 </revisionlist>
