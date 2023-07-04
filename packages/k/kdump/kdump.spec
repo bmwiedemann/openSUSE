@@ -53,7 +53,7 @@
 %define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           kdump
-Version:        1.9.2
+Version:        1.9.3
 Release:        0
 Summary:        Kernel crash dump scripts and utilities
 License:        GPL-2.0-or-later
@@ -61,7 +61,6 @@ Group:          System/Kernel
 URL:            https://github.com/openSUSE/kdump
 Source:         %{name}-%{version}.tar.xz
 Source1:        calibrate.conf.all
-Source2:        %{name}-rpmlintrc
 BuildRequires:  asciidoc
 BuildRequires:  cmake >= 3.7
 BuildRequires:  gcc-c++
@@ -78,7 +77,10 @@ BuildRequires:  dhcp-client
 BuildRequires:  dracut >= 047
 BuildRequires:  iputils
 BuildRequires:  kernel-default
+BuildRequires:  lftp
 BuildRequires:  makedumpfile
+BuildRequires:  openssh-clients
+BuildRequires:  pciutils
 BuildRequires:  procps
 BuildRequires:  python3
 %ifnarch s390x
@@ -105,7 +107,7 @@ PreReq:         /usr/bin/touch
 Recommends:     cifs-utils
 Recommends:     lftp
 Recommends:     nfs-client
-Recommends:     openssh
+Recommends:     openssh-clients
 Suggests:       mailx
 # update should detect the split-off from kexec-tools
 Provides:       kexec-tools:%{_initddir}/kdump

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 28 10:00:07 UTC 2023 - Jiri Bohac <jbohac@suse.com>
+
+- upgrade to version 1.9.3
+  * fix calibrate
+  * update kdump(7) manpage
+  * turn missing ssh, lftp or host key into a fatal error
+  * depend on openssh-clients not openssh
+- refreshed calibrate values
+
+-------------------------------------------------------------------
 Wed Jun 14 22:42:43 UTC 2023 - Jiri Bohac <jbohac@suse.com>
 
 - upgrade to version 1.9.2

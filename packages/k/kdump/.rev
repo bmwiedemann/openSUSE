@@ -1204,4 +1204,17 @@ URL-decode the target URL. (forwarded request 234827 from ptesarik)</comment>
   * cleaned up dependencies (ssh now only Recommended)</comment>
     <requestid>1093182</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>e2e8b007402ea23b81ed059eafb8cca3</srcmd5>
+    <version>1.9.3</version>
+    <time>1688476913</time>
+    <user>dimstar_suse</user>
+    <comment>- upgrade to version 1.9.3
+  * fix calibrate
+  * update kdump(7) manpage
+  * turn missing ssh, lftp or host key into a fatal error
+  * depend on openssh-clients not openssh
+- refreshed calibrate values</comment>
+    <requestid>1096604</requestid>
+  </revision>
 </revisionlist>
