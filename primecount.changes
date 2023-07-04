@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 04 07:25:00 UTC 2023 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primecount-7.9 (API & ABI are backwards compatible).
+- Add unit tests for pi_gourdon(x) function.
+- Fix Appveyor CI tests.
+- Update to latest libprimesieve-11.1.
+
+-------------------------------------------------------------------
 Mon May 22 12:25:00 UTC 2023 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primecount-7.8 (API & ABI are backwards compatible).
