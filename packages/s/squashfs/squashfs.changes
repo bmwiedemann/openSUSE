@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul  3 13:48:44 UTC 2023 - Torsten Duwe <duwe@suse.com>
+
+- For reference: previous updates fixed
+  * CVE-2021-40153 (bsc#1189936)
+  * CVE-2015-4645, CVE-2015-4646 (bsc#935380)
+
+-------------------------------------------------------------------
 Sat Apr 15 09:55:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.6.1:
