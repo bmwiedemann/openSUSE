@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul  4 07:44:10 UTC 2023 - Olaf Kirch <okir@suse.com>
+
+- Added a _service file
+- BuildRequire libopenssl-devel rather than openssl
+- Updated to version 0.4.6:
+  - recognize SOURCE_DATE_EPOCH for reproducible builds
+  - Remove authorized policy file from the unseal action
+  - Unseal the data without calling __pcr_policy_make()
+  - Skip the variable event with 0 length (#26)
+  - Add the new parameter: policy-name (#27)
+  - Skip the leading operators when matching grub2 commands (#28)
+  - microconf change: force rebuilding the sed script
+
+-------------------------------------------------------------------
 Mon Jun  5 07:45:13 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to version 0.4.5
