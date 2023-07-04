@@ -16,15 +16,15 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-ipykernel
-Version:        6.23.1
+Version:        6.23.3
 Release:        0
 Summary:        IPython Kernel for Jupyter
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/ipython/ipykernel
 Source:         https://files.pythonhosted.org/packages/source/i/ipykernel/ipykernel-%{version}.tar.gz
-Requires:       jupyter-jupyter-client >= 6.1.12
 Provides:       python-jupyter_ipykernel = %{version}
 Obsoletes:      python-jupyter_ipykernel < %{version}
 Provides:       %{python_module ipykernel-doc = %{version}}
@@ -55,6 +55,7 @@ BuildRequires:  %{python_module pyzmq >= 20}
 BuildRequires:  %{python_module tornado >= 6.1}
 BuildRequires:  %{python_module traitlets >= 5.1.0}
 BuildRequires:  %{python_module jupyter-core >= 5.1 or (%python-jupyter-core >= 4.12 with %python-jupyter-core < 5.0)}
+Requires:       jupyter-jupyter-client >= 6.1.12
 Requires:       python-comm >= 0.1.1
 Requires:       python-debugpy >= 1.6.5
 Requires:       python-ipython >= 7.23.1
@@ -96,7 +97,6 @@ sed -i -e 's/--color=yes//' pyproject.toml
 %install
 %pyproject_install
 
-%if 0%{?suse_version} >= 1550
 # use the symlink for the default python3 flavor, which was installed during the install but used python3.X name
 # from the primary flavor.
 sed -i "s|$(readlink -f python3)|python3|" %{buildroot}%{_jupyter_kernel_dir}/python3/kernel.json
@@ -107,15 +107,14 @@ $python -m ipykernel install \
     --name python%{$python_bin_suffix} \
     --display-name 'Python %{$python_bin_suffix} (ipykernel)'
 }
-%endif
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %fdupes  %{buildroot}%{_jupyter_kernel_dir}
 
 %check
-# flaky: bad timings in obs often cause this to fail
-donttest="test_shutdown_subprocesses"
 # fails in obs setups
 ignoretests="--ignore ipykernel/tests/test_debugger.py"
+# flaky obs timeouts
+donttest="test_init_ipc_socket"
 # we don't want ipyparallel and its dependencies in Ring1
 ignoretests="$ignoretests --ignore ipykernel/tests/test_pickleutil.py"
 donttest="$donttest or test_do_apply"
@@ -128,9 +127,7 @@ donttest="$donttest or test_do_apply"
 %{python_sitelib}/ipykernel_launcher.py
 %{python_sitelib}/ipykernel-%{version}*-info
 %pycache_only %{python_sitelib}/__pycache__/ipykernel_launcher*.pyc
-%if 0%{?suse_version} >= 1550
 %{_jupyter_kernel_dir}/python%{python_bin_suffix}
-%endif
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
 %{_jupyter_kernel_dir}/python3
 %endif

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jul  2 06:34:01 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Fix test suite hangs
+- Don't assume only Tumbleweed can have more than one flavor
+
+-------------------------------------------------------------------
+Sat Jul  1 16:27:15 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.23.3
+  * Check existence of connection_file before writing #1127
+    (@fecet)
+- Release 6.23.2
+  * Avoid ResourceWarning on implicitly closed event pipe sockets
+    #1125 (@minrk)
+  * fix: protect stdout/stderr restoration in
+    InProcessKernel._redirected_io #1122 (@charles-cooper)
+
+-------------------------------------------------------------------
 Fri Jun  2 12:42:05 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.23.1
