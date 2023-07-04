@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  4 06:56:45 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add patch:
+  * 0001-fix-broken-compilation-with-Exiv2-0.28-missing-heade.patch
+
+-------------------------------------------------------------------
 Thu Apr 20 11:43:43 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add the sonnet build dependency (boo#1210689)

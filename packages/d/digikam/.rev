@@ -1847,4 +1847,12 @@ General : Update internal Libraw to snapshot 202110
     <comment>- Add the sonnet build dependency (boo#1210689)</comment>
     <requestid>1080838</requestid>
   </revision>
+  <revision rev="214" vrev="4">
+    <srcmd5>dee9ec23bc40508dc056196c72cd0d33</srcmd5>
+    <version>8.0.0</version>
+    <time>1688476960</time>
+    <user>dimstar_suse</user>
+    <comment>Exiv 0.28 fixes</comment>
+    <requestid>1096679</requestid>
+  </revision>
 </revisionlist>
