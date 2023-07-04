@@ -16,8 +16,7 @@
 #
 
 
-# No longer build for python2
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-apache-libcloud
 Version:        3.7.0
 Release:        0

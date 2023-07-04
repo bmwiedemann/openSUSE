@@ -500,4 +500,12 @@ https://github.com/apache/libcloud/blob/trunk/CHANGES.rst#changes-in-apache-libc
     <comment></comment>
     <requestid>1085867</requestid>
   </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>d464ac12e338658a09a8c15bb56ae19b</srcmd5>
+    <version>3.7.0</version>
+    <time>1688476907</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096551</requestid>
+  </revision>
 </revisionlist>

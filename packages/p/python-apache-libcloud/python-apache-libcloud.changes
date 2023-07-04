@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  3 11:38:42 UTC 2023 - ecsosa <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Tue May  9 10:36:53 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable broken tests because python-requests-mock and urllib3
