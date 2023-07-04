@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Thu Jun 22 10:48:02 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 1.0.5
+- Add _service file to get tarball as xz archive format
+
+-------------------------------------------------------------------
+Wed Mar 22 22:09:43 UTC 2023 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 1.0.3
+- Adjust Url: tag
+- Drop _service file
+
+-------------------------------------------------------------------
+Mon Dec 12 15:15:05 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update version to 1.0.1
+- Drop patch 0001-Do-not-install-data-subdirectory.patch
+
+-------------------------------------------------------------------
+Mon Nov 21 16:21:00 UTC 2022 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update version to 1.0.0
+- Add 0001-Do-not-install-data-subdirectory.patch
+- Data files added to the main package as they are needed
