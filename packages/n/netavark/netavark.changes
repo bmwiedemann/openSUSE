@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Mon Jul 03 11:22:33 UTC 2023 - danish.prakash@suse.com
+
+- Update to version 1.7.0:
+  * release v1.7.0
+  * Update release notes for v1.7.0
+  * fix(deps): update rust crate tokio to 1.29
+  * netavark: make --config required for dns
+  * fix(deps): update rust crate serde_json to 1.0.99
+  * fix(deps): update rust crate clap to 4.3.8
+  * [CI:BUILD] Packit: add Fedora downstream tasks
+  * run cargo update
+  * fix(deps): update rust crate serde_json to 1.0.97
+  * fix(deps): update rust crate sha2 to 0.10.7
+  * fix(deps): update rust crate clap to 4.3.4
+  * chore(deps): update dependency containers/automation_images to v20230614
+  * fix(deps): update rust crate clap to 4.3.3
+  * fix(deps): update rust crate log to 0.4.19
+  * aardvark: fix missleading dns disabled log
+  * firewall: add NETAVARK_ISOLATION_3 chain for strict isolation
+  * docs: fix link to getting started
+  * fix(deps): update rust crate serde to 1.0.164
+  * netlink: fix incorrect info log for del_route
+  * dhcp-proxy: apply new ip address/gateway
+  * test-dhcp: fix broekn has_ip() check
+  * dhcp-proxy: actually implement renewing leases
+  * dhcp-proxy: simplify code
+  * dhcp-proxy: drop macaddr dependency
+  * dhcp-proxy: remove some unused traits
+  * fix(deps): update rust crate zbus to 3.13.1
+  * fix(deps): update rust crate clap to 4.3.2
+  * chore(deps): update rust crate once_cell to 1.18.0
+  * fix(deps): update rust crate url to 2.4.0
+  * fix(deps): update rust crate clap to 4.3.1
+  * chore(deps): update dependency containers/automation_images to v20230601
+  * chore(deps): update rust crate chrono to 0.4.26
+  * chore(deps): update rust crate chrono to 0.4.25
+  * fix(deps): update rust crate log to 0.4.18
+  * chore(deps): update rust crate once_cell to 1.17.2
+  * macvlan: add bclim option
+  * parse_option(): return option instead of default
+  * add no_default_gateway option
+  * fix(deps): update rust crate clap to 4.3.0
+  * chore(deps): update dependency containers/automation_images to v20230517
+  * fix(deps): update rust crate serde to 1.0.163
+  * Add ability to add static route
+  * fix(deps): update rust crate serde to 1.0.162
+  * Cirrus: Update fedora name to match image
+  * fix(deps): update rust crate clap to 4.2.7
+  * chore(deps): update dependency containers/automation_images to v20230426
+  * correct typo in Makefile
+  * simplify path printing
+  * fix(deps): update rust crate tokio to 1.28
+  * aardvark-dns pid: return better errors
+  * fix comment in Subnet definition
+  * aardvark: no error when aardvark config is not there
+  * fix(deps): update rust crate zbus to 3.12.0
+  * fix(deps): update rust crate clap to 4.2.4
+  * fix(deps): update rust crate clap to 4.2.2
+  * fix(deps): update rust crate serde_json to 1.0.96
+  * update clap to v4
+  * fix(deps): update rust crate serde to 1.0.160
+  * bump to v1.7.0-dev
+
+-------------------------------------------------------------------
 Fri Jun 23 13:50:40 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
 
 - Add aardvark-dns as Requires for netavark
