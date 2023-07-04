@@ -1,4 +1,140 @@
 -------------------------------------------------------------------
+Thu Jun 29 10:28:56 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update 1.29.163:
+  * api-change:``internetmonitor``: This release adds a new feature for Amazon CloudWatch Internet
+    Monitor that enables customers to set custom thresholds, for performance and availability drops,
+    for triggering when to create a health event.
+  * api-change:``kinesisanalyticsv2``: Support for new runtime environment in Kinesis Data Analytics
+    Studio: Zeppelin-0.10, Apache Flink-1.15
+  * api-change:``lambda``: Surface ResourceConflictException in DeleteEventSourceMapping
+  * api-change:``omics``: Add Common Workflow Language (CWL) as a supported language for Omics
+    workflows
+  * api-change:``rds``: Amazon Relational Database Service (RDS) now supports joining a RDS for SQL
+    Server instance to a self-managed Active Directory.
+  * api-change:``s3``: The S3 LISTObjects, ListObjectsV2 and ListObjectVersions API now supports a
+    new optional header x-amz-optional-object-attributes. If header contains RestoreStatus as the
+    value, then S3 will include Glacier restore status i.e. isRestoreInProgress and RestoreExpiryDate
+    in List response.
+  * api-change:``sagemaker``: This release adds support for Model Cards Model Registry integration.
+- from version 1.29.162
+  * bugfix:Parsers: Fixes datetime parse error handling for out-of-range and negative timestamps
+    (`#2564 <https://github.com/boto/botocore/issues/2564>`__).
+  * api-change:``appfabric``: Initial release of AWS AppFabric for connecting SaaS applications for
+    better productivity and security.
+  * api-change:``appflow``: This release adds support to bypass SSO with the SAPOData connector when
+    connecting to an SAP instance.
+  * api-change:``emr-serverless``: This release adds support to update the release label of an EMR
+    Serverless application to upgrade it to a different version of Amazon EMR via UpdateApplication API.
+  * api-change:``ivs``: IVS customers can now revoke the viewer session associated with an auth
+    token, to prevent and stop playback using that token.
+  * api-change:``kinesisvideo``: General Availability (GA) release of Kinesis Video Streams at Edge,
+    enabling customers to provide a configuration for the Kinesis Video Streams EdgeAgent running on an
+    on-premise IoT device. Customers can now locally record from cameras and stream videos to the cloud
+    on a configured schedule.
+  * api-change:``macie2``: This release adds support for configuring new classification jobs to use
+    the set of managed data identifiers that we recommend for jobs. For the managed data identifier
+    selection type (managedDataIdentifierSelector), specify RECOMMENDED.
+  * api-change:``privatenetworks``: This release allows Private5G customers to choose different
+    commitment plans (60-days, 1-year, 3-years) when placing new orders, enables automatic renewal
+    option for 1-year and 3-years commitments. It also allows customers to update the commitment plan
+    of an existing radio unit.
+  * api-change:``sagemaker-featurestore-runtime``: Introducing TTL for online store records for
+    feature groups.
+  * api-change:``sagemaker``: Introducing TTL for online store records in feature groups.
+  * api-change:``ssm``: Systems Manager doc-only update for June 2023.
+  * api-change:``verifiedpermissions``: This update fixes several broken links to the Cedar
+    documentation.
+- from version 1.29.161
+  * api-change:``connect``: This release provides a way to search for existing tags within an
+    instance. Before tagging a resource, ensure consistency by searching for pre-existing key:value
+    pairs.
+  * api-change:``glue``: Timestamp Starting Position For Kinesis and Kafka Data Sources in a Glue
+    Streaming Job
+  * api-change:``guardduty``: Add support for user.extra.sessionName in Kubernetes Audit Logs
+    Findings.
+  * api-change:``iam``: Support for a new API "GetMFADevice" to present MFA device metadata such as
+    device certifications
+  * api-change:``pinpoint``: Added time zone estimation support for journeys
+- from version 1.29.160
+  * api-change:``devops-guru``: This release adds support for encryption via customer managed keys.
+  * api-change:``fsx``: Update to Amazon FSx documentation.
+  * api-change:``rds``: Documentation improvements for create, describe, and modify DB clusters and
+    DB instances.
+  * api-change:``verifiedpermissions``: Added improved descriptions and new code samples to SDK
+    documentation.
+- from version 1.29.159
+  * api-change:``chime-sdk-identity``: AppInstanceBots can be configured to be invoked or not using
+    the Target or the CHIME.mentions attribute for ChannelMessages
+  * api-change:``chime-sdk-messaging``: ChannelMessages can be made visible to sender and intended
+    recipient rather than all channel members with the target attribute. For example, a user can send
+    messages to a bot and receive messages back in a group channel without other members seeing them.
+  * api-change:``kendra``: Introducing Amazon Kendra Retrieve API that can be used to retrieve
+    relevant passages or text excerpts given an input query.
+  * api-change:``stepfunctions``: Update stepfunctions client to latest version
+- from version 1.29.158
+  * api-change:``dynamodb``: Documentation updates for DynamoDB
+  * api-change:``emr``: Update emr client to latest version
+  * api-change:``inspector2``: This release adds support for Software Bill of Materials (SBOM) export
+    and the general availability of code scanning for AWS Lambda functions.
+  * api-change:``mediaconvert``: This release introduces the bandwidth reduction filter for the HEVC
+    encoder, increases the limits of outputs per job, and updates support for the Nagra SDK to version
+- from version 1.14.7.
+  * api-change:``mq``: The Cross Region Disaster Recovery feature allows to replicate a brokers state
+    from one region to another in order to provide customers with multi-region resiliency in the event
+    of a regional outage.
+  * api-change:``sagemaker``: This release provides support in SageMaker for output files in training
+    jobs to be uploaded without compression and enable customer to deploy uncompressed model from S3 to
+    real-time inference Endpoints. In addition, ml.trn1n.32xlarge is added to supported instance type
+    list in training job.
+  * api-change:``transfer``: This release adds a new parameter StructuredLogDestinations to
+    CreateServer, UpdateServer APIs.
+- from version 1.29.157
+  * api-change:``appflow``: This release adds new API to reset connector metadata cache
+  * api-change:``config``: Updated ResourceType enum with new resource types onboarded by AWS Config
+    in May 2023.
+  * api-change:``ec2``: Adds support for targeting Dedicated Host allocations by assetIds in AWS
+    Outposts
+  * api-change:``lambda``: This release adds RecursiveInvocationException to the Invoke API and
+    InvokeWithResponseStream API.
+  * api-change:``redshift``: Added support for custom domain names for Redshift Provisioned clusters.
+    This feature enables customers to create a custom domain name and use ACM to generate fully secure
+    connections to it.
+- from version 1.29.156
+  * api-change:``cloudformation``: Specify desired CloudFormation behavior in the event of ChangeSet
+    execution failure using the CreateChangeSet OnStackFailure parameter
+  * api-change:``ec2``: API changes to AWS Verified Access to include data from trust providers in
+    logs
+  * api-change:``ecs``: Documentation only update to address various tickets.
+  * api-change:``glue``: This release adds support for creating cross region table/database resource
+    links
+  * api-change:``pricing``: This release updates the PriceListArn regex pattern.
+  * api-change:``route53domains``: Update MaxItems upper bound to 1000 for ListPricesRequest
+  * api-change:``sagemaker``: Amazon Sagemaker Autopilot releases CreateAutoMLJobV2 and
+    DescribeAutoMLJobV2 for Autopilot customers with ImageClassification, TextClassification and
+    Tabular problem type config support.
+- from version 1.29.155
+  * api-change:``account``: Improve pagination support for ListRegions
+  * api-change:``connect``: Updates the *InstanceStorageConfig APIs to support a new ResourceType:
+    SCREEN_RECORDINGS to enable screen recording and specify the storage configurations for publishing
+    the recordings. Also updates DescribeInstance and ListInstances APIs to include InstanceAccessUrl
+    attribute in the API response.
+  * api-change:``discovery``: Add Amazon EC2 instance recommendations export
+  * api-change:``iam``: Documentation updates for AWS Identity and Access Management (IAM).
+  * api-change:``s3``: This release adds SDK support for request-payer request header and
+    request-charged response header in the "GetBucketAccelerateConfiguration", "ListMultipartUploads",
+    "ListObjects", "ListObjectsV2" and "ListObjectVersions" S3 APIs.
+- from version 1.29.154
+  * api-change:``auditmanager``: This release introduces 2 Audit Manager features: CSV exports and
+    new manual evidence options. You can now export your evidence finder results in CSV format. In
+    addition, you can now add manual evidence to a control by entering free-form text or uploading a
+    file from your browser.
+  * api-change:``efs``: Update efs client to latest version
+  * api-change:``guardduty``: Updated descriptions for some APIs.
+  * api-change:``location``: Amazon Location Service adds categories to places, including filtering
+    on those categories in searches. Also, you can now add metadata properties to your geofences.
+
+-------------------------------------------------------------------
 Tue Jun 20 15:03:53 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add _constraints to avoid OOM in %check
