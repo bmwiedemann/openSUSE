@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Jul  3 12:56:48 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 4.3.6.0:
+  * added new Deflektor style steel slope game elements for MM game engine
+  * added new Deflektor style fixed mirror game elements for MM game engine
+  * added flipping and rotating brushes in level editor using keys “x”, “y” and “z”
+  * added supporting reference elements for custom element explosion content
+  * improved showing game music on music info screen
+  * fixed bug with playing game music for first level of level set
+  * fixed centering credits text when using fonts with different width
+  * fixed drawing mouse pointer global animation above MM engine tile cursor
+  * fixed bug with triggering “entered by player” event when pushing element
+
+- Update to version 4.3.5.0:
+  * improved Mirror Magic graphics engine to support more custom graphics
+  * added new animations for some game elements in Mirror Magic game engine
+  * added customizability of gray ball content for Mirror Magic game engine
+  * added support for text envelope elements for the Mirror Magic game engine
+  * added support for “stacked” global animations
+  * fixed a lot of bugs and problems in the Mirror Magic game engine
+  * fixed bug with broken graphics when pushing elements into explosions
+  * fixed potential crash bug when running in headless mode
+  * fixed regression bug with growing steel wall turning into normal wall
+  * fixed bug with not scaling images despite using option “.scale_up_factor”
+  * changed logging to write to one single log file “rocksndiamonds.log”
+
+- compressed icons to save some space
+
+-------------------------------------------------------------------
 Tue Jan 24 06:26:44 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 4.3.4.0:

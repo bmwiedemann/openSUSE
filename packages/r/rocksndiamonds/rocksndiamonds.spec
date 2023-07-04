@@ -17,14 +17,14 @@
 
 
 Name:           rocksndiamonds
-Version:        4.3.4.0
+Version:        4.3.6.0
 Release:        0
 Summary:        Colorful Boulderdash'n'Emerald Mine'n'Sokoban'n'Stuff
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Arcade
 URL:            https://www.artsoft.org/rocksndiamonds/
 Source0:        https://www.artsoft.org/RELEASES/linux/%{name}/%{name}-%{version}-linux.tar.gz
-Source1:        %{name}-icons.tar
+Source1:        %{name}-icons.tar.gz
 Source2:        %{name}.desktop
 # PATCH-FIX-UPSTREAM Permissions
 Patch0:         %{name}-src_libgame_setup.c-CVE-2011-4606.patch
@@ -49,8 +49,7 @@ If you know the game Boulder Dash (Commodore C64) or Emerald Mine (Amiga),
 you know what Rocks'n'Diamonds is about.
 
 %prep
-%setup -q -b 1
-%patch0 -p1
+%autosetup -p1 -b1
 
 # Remove not needed files
 find levels -name '*.orig' -delete
