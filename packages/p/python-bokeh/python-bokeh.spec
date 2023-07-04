@@ -29,7 +29,7 @@
 %bcond_with testexamples
 
 Name:           python-bokeh%{psuffix}
-Version:        3.1.1
+Version:        3.2.0
 Release:        0
 Summary:        Statistical interactive HTML plots for Python
 License:        BSD-3-Clause
@@ -78,6 +78,7 @@ BuildRequires:  %{python_module bokeh = %{version}}
 BuildRequires:  %{python_module colorcet}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module icalendar}
+BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module json5}
 BuildRequires:  %{python_module nbconvert >= 5.4}
 BuildRequires:  %{python_module networkx}
@@ -87,6 +88,7 @@ BuildRequires:  %{python_module pydot}
 BuildRequires:  %{python_module pygraphviz}
 BuildRequires:  %{python_module pyshp}
 BuildRequires:  %{python_module pytest-asyncio >= 0.18.1}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 1.2.3}
@@ -141,6 +143,9 @@ deselectname+=" or test_examples"
 # testfile not available
 deselectname+=" or test_with_INLINE_resources"
 deselectname+=" or test_with_CDN_resources"
+deselectname+=" or test_with_Server_resources"
+deselectname+=" or test_with_Server_resources_dev"
+deselectname+=" or test_cross"
 # does not expect pytest-$binsuffix
 deselectname+=" or test_detect_current_filename"
 # cannot open socket / address already in use / no pattern detected
@@ -165,6 +170,7 @@ deselectname+=" or (TestModelCls and test_get_class)"
 deselectname+=" or test_external_js_and_css_resource_ordering"
 # for finding the  sampledata (packaged in Source99)
 export HOME=$PWD
+export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
 %pytest -v -m "not selenium" -k "not ($deselectname)" --no-js -n auto
 %endif
 

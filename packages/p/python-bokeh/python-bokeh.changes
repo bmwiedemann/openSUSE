@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul  3 13:50:36 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.2.0:
+  * Too many changes to list, see online
+    https://github.com/bokeh/bokeh/blob/3.2.0/docs/CHANGELOG.
+- Re-generate bokeh-sampledata.tar.xz for update.
+- BuildRequires: python-pytest-timeout, python-ipython needed for
+  tests.
+- Disable a few more tests without necessary data files.
+
+-------------------------------------------------------------------
 Thu May 18 14:39:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.1:
