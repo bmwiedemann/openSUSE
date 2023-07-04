@@ -17,7 +17,7 @@
 
 
 Name:           trivy
-Version:        0.42.1
+Version:        0.43.0
 Release:        0
 Summary:        A Simple and Comprehensive Vulnerability Scanner for Containers
 License:        Apache-2.0
@@ -25,6 +25,7 @@ Group:          System/Management
 URL:            https://github.com/aquasecurity/trivy
 Source:         %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+Patch1:         eol-dates.patch
 BuildRequires:  golang-packaging
 BuildRequires:  zstd
 BuildRequires:  golang(API) = 1.19
@@ -43,7 +44,7 @@ scan. All you need to do for scanning is to specify a target such as an image
 name of the container.
 
 %prep
-%setup -qa1
+%autosetup -p1 -a1
 
 %build
 export CGO_ENABLED=1

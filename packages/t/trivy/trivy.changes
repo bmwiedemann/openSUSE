@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Jul 03 13:22:20 UTC 2023 - dmueller@suse.com
+
+- Update to version 0.43.0:
+  * chore(deps): Update defsec to v0.90.1 (#4739)
+  * feat(nodejs): support yarn workspaces (#4664)
+  * feat(cli): add include-dev-deps flag (#4700)
+  * fix(image): pass the secret scanner option to scan the img config (#4735)
+  * fix: scan job pod it not found on k8s-1.27.x (#4729)
+  * feat(docker): add support for mTLS authentication when connecting to registry (#4649)
+  * chore(deps): Update defsec to v0.90.0 (#4723)
+  * fix: skip scanning the gpg-pubkey package (#4720)
+  * Fix http registry oci pull (#4701)
+  * feat(misconf): Support skipping services (#4686)
+  * docs: fix supported modes for pubspec.lock files (#4713)
+  * fix(misconf): disable the terraform plan analyzer for other scanners (#4714)
+  * clarifying a dir path is required for custom policies (#4716)
+  * chore: update alpine base images (#4715)
+  * fix last-history-created (#4697)
+  * feat: kbom and cyclonedx v1.5 spec support (#4708)
+  * docs: add information about Aqua (#4590)
+  * fix: k8s escape resource filename on windows os (#4693)
+  * ci: ignore merge queue branches (#4696)
+  * chore(deps): bump actions/checkout from 2.4.0 to 3.5.3 (#4695)
+  * chore(deps): bump aquaproj/aqua-installer from 2.1.1 to 2.1.2 (#4694)
+  * feat: cyclondx sbom custom property support (#4688)
+  * ci: do not trigger tests in main (#4692)
+  * add SUSE Linux Enterprise Server 15 SP5 and update SP4 eol date (#4690)
+  * use group field for jar in cyclonedx (#4674)
+  * feat(java): capture licenses from pom.xml (#4681)
+  * feat(helm): make sessionAffinity configurable (#4623)
+  * fix: Show the correct URL of the secret scanning (#4682)
+  * document expected file pattern definition format (#4654)
+  * fix: format arg error (#4642)
+  * feat(k8s): cyclonedx kbom support (#4557)
+  * fix(nodejs): remove unused fields for the pnpm lockfile (#4630)
+  * fix(vm): update ext4-filesystem parser for parse multi block extents (#4616)
+  * ci: update build IDs (#4641)
+  * fix(debian): update EOL for Debian 12 (#4647)
+  * chore(deps): bump go-containerregistry (#4639)
+  * chore: unnecessary use of fmt.Sprintf (S1039) (#4637)
+  * fix(db): change argument order in Exists query for JavaDB (#4595)
+  * feat(aws): Add support to see successes in results (#4427)
+  * chore(deps): bump golangci/golangci-lint-action from 3.5.0 to 3.6.0 (#4613)
+  * ci: do not trigger tests in main (#4614)
+  * chore(deps): bump sigstore/cosign-installer (#4609)
+  * chore(deps): bump CycloneDX/gh-gomod-generate-sbom from 1 to 2 (#4608)
+  * ci: bypass the required status checks (#4611)
+  * ci: support merge queue (#3652)
+  * ci: matrix build for testing (#4587)
+  * feat: trivy k8s private registry support (#4567)
+  * docs: add general coverage page (#3859)
+  * chore: create SECURITY.md (#4601)
+
+-------------------------------------------------------------------
+Fri Jun 30 15:06:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add eol-dates.patch to list SLE/Leap 15.5
+
+-------------------------------------------------------------------
 Thu Jun 22 08:39:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add NOTICE to doc

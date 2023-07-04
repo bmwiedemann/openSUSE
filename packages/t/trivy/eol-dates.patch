@@ -1,0 +1,22 @@
+From 08770a6dfefcd1ad3c11abd395cef1af7c4a14a3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dirk=20M=C3=BCller?= <dirk@dmllr.de>
+Date: Fri, 30 Jun 2023 16:48:52 +0200
+Subject: [PATCH] fix(suse): Add openSUSE Leap 15.5 eol date as well
+
+Taken directly from https://en.opensuse.org/Lifetime
+---
+ pkg/detector/ospkg/suse/suse.go | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/pkg/detector/ospkg/suse/suse.go b/pkg/detector/ospkg/suse/suse.go
+index 11a4d70c5a8..cbf0c4fd991 100644
+--- a/pkg/detector/ospkg/suse/suse.go
++++ b/pkg/detector/ospkg/suse/suse.go
+@@ -55,6 +55,7 @@ var (
+ 		"15.2": time.Date(2021, 11, 30, 23, 59, 59, 0, time.UTC),
+ 		"15.3": time.Date(2022, 11, 30, 23, 59, 59, 0, time.UTC),
+ 		"15.4": time.Date(2023, 11, 30, 23, 59, 59, 0, time.UTC),
++		"15.5": time.Date(2024, 12, 31, 23, 59, 59, 0, time.UTC),
+ 	}
+ )
+ 

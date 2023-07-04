@@ -953,4 +953,12 @@
     <comment>🤖: Submission of trivy via https://src.opensuse.org/pool/trivy/pulls/1 by dirkmueller</comment>
     <requestid>1095924</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>d0f51b47aa24276e0e78578f2319e6e1</srcmd5>
+    <version>0.43.0</version>
+    <time>1688476916</time>
+    <user>dimstar_suse</user>
+    <comment>🤖: Submission of trivy via https://src.opensuse.org/pool/trivy/pulls/3 by dirkmueller</comment>
+    <requestid>1096591</requestid>
+  </revision>
 </revisionlist>
