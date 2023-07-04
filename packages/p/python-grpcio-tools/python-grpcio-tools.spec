@@ -18,7 +18,7 @@
 
 # PYTHON2 NOT SUPPORTED BY UPSTREAM
 %define         skip_python2 1
-
+%{?sle15_python_module_pythons}
 Name:           python-grpcio-tools
 Version:        1.56.0
 Release:        0
@@ -27,7 +27,7 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://grpc.io
 Source:         https://files.pythonhosted.org/packages/source/g/grpcio-tools/grpcio-tools-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

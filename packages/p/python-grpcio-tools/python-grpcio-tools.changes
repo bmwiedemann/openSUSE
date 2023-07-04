@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul  2 12:33:48 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+- Upstream only supports python >= 3.7, so adjust BuildRequires
+  accordingly.
+
+-------------------------------------------------------------------
 Fri Jun 30 15:49:31 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.56.0:
