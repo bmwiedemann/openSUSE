@@ -19,6 +19,7 @@
 %global modname grpcio
 # PYTHON2 NOT SUPPORTED BY UPSTREAM
 %define         skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-grpcio
 Version:        1.56.0
 Release:        0
@@ -30,7 +31,7 @@ Source:         https://files.pythonhosted.org/packages/source/g/grpcio/grpcio-%
 # PATCH-FIX-UPSTREAM python-grpcio-disable-boring-ssl.patch gh#grpc/grpc#24498 badshah400@gmail.com -- Make enabling system ssl disable boring ssl; patch taken from upstream PR
 Patch0:         python-grpcio-disable-boring-ssl.patch
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  ca-certificates
 BuildRequires:  fdupes
