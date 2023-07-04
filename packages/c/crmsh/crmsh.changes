@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jul 04 06:55:43 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230704.509d113d:
+  * Fix: unittest: fix unit tests for crmsh.bootstrap.Context.set_context
+  * Dev: codecov: do not post comment in pull requests until all behave tests are finished
+  * Dev: testcases: update the cases to adapt to updated version of pacemaker
+  * Dev: behave: install coverage.py in docker image
+  * Dev: test_container: refactor Dockerfile for better performance
+  * Dev: github-actions: add codecov
+  * Dev: behave: add coverage to functional test
+  * Fix: upgradeutil: do not tried to upgrade when the cluster is partially set up
+  * Dev: behave: adjust functional tests for previous changes
+  * Dev: unittest: add unit tests for bootstrap.Context.initialize_user
+  * Dev: unittest: adjust unit tests for previous changes
+  * Fix: bootstrap: fix the validation of option -N and -c (bsc#1212436)
+  * switch to the new container image
+  * Dev: behave: adjust functional test for previous changes
+  * Fix: geo_cluster: the behavior of choosing a default user in geo_join/geo_init_arbitrator is different with `cluster join` (bsc#1211817)
+  * Fix: utils: do not use sudoer user to create ssh session unless it is specified explicitly (bsc#1211817)
+  * Dev: behave: add a function `assert_in` to print the difference when the assertion fails
+  * Fix: behave: specify username explicitly in non-root cases for option --qnetd-hostname/--cluster-node
+  * Dev: behave: rewrite check_service_state with the new agent
+  * Dev: behave: use a standalone agent instead of crmsh.parallax to run commands
+
+-------------------------------------------------------------------
 Mon Jun 19 06:36:03 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.5.0+20230619.01463a46:
