@@ -212,4 +212,13 @@ Update to 4.6.1</comment>
     <comment></comment>
     <requestid>1072963</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c2f55169e642698017e5dd0a132ca461</srcmd5>
+    <version>5.3.1</version>
+    <time>1688476921</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.3.1
+  * Better handling of config migration #356 (@smartass101)</comment>
+    <requestid>1096306</requestid>
+  </revision>
 </revisionlist>
