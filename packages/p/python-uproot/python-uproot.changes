@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul  3 13:47:02 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.0.9:
+  * fix: if using form remapping start off with full list of
+    remapped columns [gh#scikit-hep/uproot5#905].
+- Now BuildRequires scikit-hep-testdata >= 0.4.31 for tests.
+- For checks, some tests now require a writable tmp dir; create
+  one in working dir using mktemp and set PYTEST_DEBUG_TEMPROOT.
+
+-------------------------------------------------------------------
 Sat May 27 21:27:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - reenable build for python 3.11, dask is available

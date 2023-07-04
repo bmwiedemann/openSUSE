@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %global modname uproot
 Name:           python-uproot
-Version:        5.0.7
+Version:        5.0.9
 Release:        0
 Summary:        ROOT I/O in pure Python and Numpy
 License:        BSD-3-Clause
@@ -54,7 +54,7 @@ BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module scikit-hep-testdata >= 0.4.30}
+BuildRequires:  %{python_module scikit-hep-testdata >= 0.4.31}
 BuildRequires:  %{python_module xxhash}
 BuildRequires:  %{python_module boost-histogram >= 0.13 if (%python-base without python2-base)}
 # /SECTION
@@ -84,6 +84,7 @@ if [ $(getconf LONG_BIT) -eq 32 ]; then
 # pandas tests assume 64bit types
 skiptests32=("-k" "not (test_jagged_pandas or test_pandas_vector_TLorentzVector or test_iterate_pandas_2 or test_function_iterate_pandas_2 or test_0430)")
 fi
+export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
 %pytest -rfEs -m "not network" "${skiptests32[@]}"
 
 %files %{python_files}
