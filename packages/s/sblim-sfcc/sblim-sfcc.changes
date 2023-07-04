@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 26 14:54:35 UTC 2023 - Klaus Kämpf <kkaempf@suse.com>
+
+- Update to 2.2.9~rc1
+  Forked from sblim.sourceforge.net
+  Mostly internal cleanups.
+
+-------------------------------------------------------------------
 Tue Jan  2 17:04:38 UTC 2018 - jengelh@inai.de
 
 - Remove no-effect --with-pic. Inline autoconfiscate.sh.

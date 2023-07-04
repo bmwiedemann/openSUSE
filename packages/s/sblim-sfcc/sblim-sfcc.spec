@@ -1,7 +1,7 @@
 #
 # spec file for package sblim-sfcc
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           sblim-sfcc
-Version:        2.2.8
+Version:        2.2.9~rc1
 Release:        0
-Url:            http://sblim.sourceforge.net/wiki/index.php/Sfcc
+URL:            https://github.com/kkaempf/sblim-sfcc
 Summary:        Small Footprint CIM Client Library
 License:        EPL-1.0
 Group:          System/Management
-Source:         %{name}-%{version}.tar.bz2
+Source:         %{name}-2.2.9-preview.tar.gz
 Source2:        %{name}-rpmlintrc
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -40,7 +40,10 @@ BuildRequires:  curl-devel
 %endif
 
 %description
-Small Footprint CIM Client Library
+The small footprint CIM client library is a C API allowing client
+applications to interface with CIM implementations (e.g. CIM servers).
+Due to it's small memory and disk footprint it is well-suited for
+embedded environments.
 
 %package -n libcimcClientXML0
 Summary:        Small Footprint CIM Client Library
@@ -76,7 +79,7 @@ Small Footprint CIM Client Library (sfcc) Header Files and Link
 Libraries
 
 %prep
-%setup -q
+%setup -q -n %{name}-2.2.9-preview
 
 %build
 autoreconf -fi
@@ -110,7 +113,8 @@ rm %{buildroot}%{_libdir}/*.la
 %{_libdir}/libcimcclient.so
 %{_libdir}/libcmpisfcc.so
 %{_mandir}/man3/*
-%doc AUTHORS COPYING ChangeLog NEWS README
+%doc AUTHORS ChangeLog NEWS README
+%license COPYING
 %dir %{_docdir}/%{name}
 %{_docdir}/%{name}/*
 
