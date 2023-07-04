@@ -1,0 +1,174 @@
+From b1719d6b337059e070b2db812eb3b747a3e5a627 Mon Sep 17 00:00:00 2001
+From: Tobias Leupold <tl@stonemx.de>
+Date: Sat, 20 May 2023 22:33:44 +0200
+Subject: [PATCH 1/3] Fixed compilation with exiv2 0.28
+
+---
+ DB/FileInfo.cpp                 | 11 ++++++++++-
+ lib/kpaexif/Database.cpp        | 13 +++++++++++--
+ lib/kpaexif/DatabaseElement.cpp | 21 ++++++++++++++-------
+ lib/kpaexif/Info.cpp            |  9 +++++++++
+ 4 files changed, 44 insertions(+), 10 deletions(-)
+
+diff --git a/DB/FileInfo.cpp b/DB/FileInfo.cpp
+index dc4c9819..ca18ddc2 100644
+--- a/DB/FileInfo.cpp
++++ b/DB/FileInfo.cpp
+@@ -1,5 +1,6 @@
+ // SPDX-FileCopyrightText: 2003-2010 Jesper K. Pedersen <blackie@kde.org>
+ // SPDX-FileCopyrightText: 2021 Johannes Zarl-Zierl <johannes@zarl-zierl.at>
++// SPDX-FileCopyrightText: 2023 Tobias Leupold <tl at stonemx dot de>
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+@@ -13,6 +14,8 @@
+ #include <QFileInfo>
+ #include <QRegularExpression>
+ 
++#include <exiv2/version.hpp>
++
+ using namespace DB;
+ 
+ FileInfo FileInfo::read(const DB::FileName &fileName, DB::ExifMode mode)
+@@ -79,8 +82,14 @@ void DB::FileInfo::parseEXIV2(const DB::FileName &fileName)
+         const Exiv2::Exifdatum &datum = m_exifMap["Exif.Image.Orientation"];
+ 
+         int orientation = 0;
+-        if (datum.count() > 0)
++        if (datum.count() > 0) {
++#if EXIV2_TEST_VERSION(0, 28, 0)
++            orientation = datum.toUint32();
++#else
+             orientation = datum.toLong();
++#endif
++        }
++
+         m_angle = orientationToAngle(orientation);
+     }
+ 
+diff --git a/lib/kpaexif/Database.cpp b/lib/kpaexif/Database.cpp
+index 4d0e228c..930d1c8e 100644
+--- a/lib/kpaexif/Database.cpp
++++ b/lib/kpaexif/Database.cpp
+@@ -1,6 +1,6 @@
+ // SPDX-FileCopyrightText: 2003-2020 The KPhotoAlbum Development Team
+-// SPDX-FileCopyrightText: 2021 Johannes Zarl-Zierl <johannes@zarl-zierl.at>
+-// SPDX-FileCopyrightText: 2022 Johannes Zarl-Zierl <johannes@zarl-zierl.at>
++// SPDX-FileCopyrightText: 2021-2022 Johannes Zarl-Zierl <johannes@zarl-zierl.at>
++// SPDX-FileCopyrightText: 2023 Tobias Leupold <tl at stonemx dot de>
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+@@ -21,6 +21,7 @@
+ #include <QSqlQuery>
+ #include <exiv2/exif.hpp>
+ #include <exiv2/image.hpp>
++#include <exiv2/version.hpp>
+ 
+ using namespace Exif;
+ 
+@@ -320,7 +321,11 @@ bool Exif::Database::add(const DB::FileName &fileName)
+         return false;
+ 
+     try {
++#if EXIV2_TEST_VERSION(0, 28, 0)
++        Exiv2::Image::UniquePtr image = Exiv2::ImageFactory::open(fileName.absolute().toLocal8Bit().data());
++#else
+         Exiv2::Image::AutoPtr image = Exiv2::ImageFactory::open(fileName.absolute().toLocal8Bit().data());
++#endif
+         Q_ASSERT(image.get() != nullptr);
+         image->readMetadata();
+         Exiv2::ExifData &exifData = image->exifData();
+@@ -341,7 +346,11 @@ bool Exif::Database::add(const DB::FileNameList &list)
+ 
+     for (const DB::FileName &fileName : list) {
+         try {
++#if EXIV2_TEST_VERSION(0, 28, 0)
++            Exiv2::Image::UniquePtr image = Exiv2::ImageFactory::open(fileName.absolute().toLocal8Bit().data());
++#else
+             Exiv2::Image::AutoPtr image = Exiv2::ImageFactory::open(fileName.absolute().toLocal8Bit().data());
++#endif
+             Q_ASSERT(image.get() != nullptr);
+             image->readMetadata();
+             map << DBExifInfo(fileName, image->exifData());
+diff --git a/lib/kpaexif/DatabaseElement.cpp b/lib/kpaexif/DatabaseElement.cpp
+index 4e7ba198..e218bb5e 100644
+--- a/lib/kpaexif/DatabaseElement.cpp
++++ b/lib/kpaexif/DatabaseElement.cpp
+@@ -1,13 +1,15 @@
+-/* SPDX-FileCopyrightText: 2003-2010 Jesper K. Pedersen <blackie@kde.org>
++// SPDX-FileCopyrightText: 2003-2010 Jesper K. Pedersen <blackie@kde.org>
++// SPDX-FileCopyrightText: 2023 Tobias Leupold <tl at stonemx dot de>
++//
++// SPDX-License-Identifier: GPL-2.0-or-later
+ 
+-   SPDX-License-Identifier: GPL-2.0-or-later
+-*/
+ #include "DatabaseElement.h"
+ 
+ #include <kpabase/Logging.h>
+ 
+ #include <QVariant>
+ #include <exiv2/exif.hpp>
++#include <exiv2/version.hpp>
+ 
+ static QString replaceDotWithUnderscore(const char *cstr)
+ {
+@@ -76,10 +78,15 @@ QString Exif::IntExifElement::queryString() const
+ 
+ QVariant Exif::IntExifElement::valueFromExif(Exiv2::ExifData &data) const
+ {
+-    if (data[m_tag].count() > 0)
+-        return QVariant { (int)data[m_tag].toLong() };
+-    else
+-        return QVariant { (int)0 };
++    if (data[m_tag].count() > 0) {
++#if EXIV2_TEST_VERSION(0, 28, 0)
++        return QVariant((int) data[m_tag].toUint32());
++#else
++        return QVariant((int) data[m_tag].toLong());
++#endif
++    } else {
++        return QVariant(0);
++    }
+ }
+ 
+ Exif::RationalExifElement::RationalExifElement(const char *tag)
+diff --git a/lib/kpaexif/Info.cpp b/lib/kpaexif/Info.cpp
+index 5f77fc81..d72d88b3 100644
+--- a/lib/kpaexif/Info.cpp
++++ b/lib/kpaexif/Info.cpp
+@@ -1,5 +1,6 @@
+ // SPDX-FileCopyrightText: 2003-2020 The KPhotoAlbum Development Team
+ // SPDX-FileCopyrightText: 2021 Johannes Zarl-Zierl <johannes@zarl-zierl.at>
++// SPDX-FileCopyrightText: 2023 Tobias Leupold <tl at stonemx dot de>
+ //
+ // SPDX-License-Identifier: GPL-2.0-or-later
+ 
+@@ -166,7 +167,11 @@ Info::Info()
+ void Exif::writeExifInfoToFile(const DB::FileName &srcName, const QString &destName, const QString &imageDescription)
+ {
+     // Load Exif from source image
++#if EXIV2_TEST_VERSION(0, 28, 0)
++    Exiv2::Image::UniquePtr image = Exiv2::ImageFactory::open(QFile::encodeName(srcName.absolute()).data());
++#else
+     Exiv2::Image::AutoPtr image = Exiv2::ImageFactory::open(QFile::encodeName(srcName.absolute()).data());
++#endif
+     image->readMetadata();
+     Exiv2::ExifData data = image->exifData();
+ 
+@@ -201,7 +206,11 @@ Exif::Metadata Exif::Info::metadata(const DB::FileName &fileName)
+ {
+     try {
+         Exif::Metadata result;
++#if EXIV2_TEST_VERSION(0, 28, 0)
++        Exiv2::Image::UniquePtr image = Exiv2::ImageFactory::open(QFile::encodeName(fileName.absolute()).data());
++#else
+         Exiv2::Image::AutoPtr image = Exiv2::ImageFactory::open(QFile::encodeName(fileName.absolute()).data());
++#endif
+         Q_ASSERT(image.get() != nullptr);
+         image->readMetadata();
+         result.exif = image->exifData();
+-- 
+2.41.0
+

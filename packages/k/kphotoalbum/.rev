@@ -97,4 +97,12 @@
     <comment>Update to 5.10.0</comment>
     <requestid>1079986</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>4842fe35d2449bee682305a6aa98cf32</srcmd5>
+    <version>5.10.0</version>
+    <time>1688476959</time>
+    <user>dimstar_suse</user>
+    <comment>Fixes for exiv 0.28</comment>
+    <requestid>1096670</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,90 @@
+From 82520a00bb8ca3f6400c7cc053066072e5055594 Mon Sep 17 00:00:00 2001
+From: Tobias Leupold <tl@stonemx.de>
+Date: Sat, 20 May 2023 23:00:42 +0200
+Subject: [PATCH 2/3] Less macros by simply using "auto"
+
+Also added const where possible
+---
+ lib/kpaexif/Database.cpp | 13 ++-----------
+ lib/kpaexif/Info.cpp     | 13 ++-----------
+ 2 files changed, 4 insertions(+), 22 deletions(-)
+
+diff --git a/lib/kpaexif/Database.cpp b/lib/kpaexif/Database.cpp
+index 930d1c8e..985713ce 100644
+--- a/lib/kpaexif/Database.cpp
++++ b/lib/kpaexif/Database.cpp
+@@ -21,7 +21,6 @@
+ #include <QSqlQuery>
+ #include <exiv2/exif.hpp>
+ #include <exiv2/image.hpp>
+-#include <exiv2/version.hpp>
+ 
+ using namespace Exif;
+ 
+@@ -321,11 +320,7 @@ bool Exif::Database::add(const DB::FileName &fileName)
+         return false;
+ 
+     try {
+-#if EXIV2_TEST_VERSION(0, 28, 0)
+-        Exiv2::Image::UniquePtr image = Exiv2::ImageFactory::open(fileName.absolute().toLocal8Bit().data());
+-#else
+-        Exiv2::Image::AutoPtr image = Exiv2::ImageFactory::open(fileName.absolute().toLocal8Bit().data());
+-#endif
++        const auto image = Exiv2::ImageFactory::open(fileName.absolute().toLocal8Bit().data());
+         Q_ASSERT(image.get() != nullptr);
+         image->readMetadata();
+         Exiv2::ExifData &exifData = image->exifData();
+@@ -346,11 +341,7 @@ bool Exif::Database::add(const DB::FileNameList &list)
+ 
+     for (const DB::FileName &fileName : list) {
+         try {
+-#if EXIV2_TEST_VERSION(0, 28, 0)
+-            Exiv2::Image::UniquePtr image = Exiv2::ImageFactory::open(fileName.absolute().toLocal8Bit().data());
+-#else
+-            Exiv2::Image::AutoPtr image = Exiv2::ImageFactory::open(fileName.absolute().toLocal8Bit().data());
+-#endif
++            const auto image = Exiv2::ImageFactory::open(fileName.absolute().toLocal8Bit().data());
+             Q_ASSERT(image.get() != nullptr);
+             image->readMetadata();
+             map << DBExifInfo(fileName, image->exifData());
+diff --git a/lib/kpaexif/Info.cpp b/lib/kpaexif/Info.cpp
+index d72d88b3..162a05d1 100644
+--- a/lib/kpaexif/Info.cpp
++++ b/lib/kpaexif/Info.cpp
+@@ -17,7 +17,6 @@
+ #include <QTextCodec>
+ #include <exiv2/exv_conf.h>
+ #include <exiv2/image.hpp>
+-#include <exiv2/version.hpp>
+ 
+ using namespace Exif;
+ 
+@@ -167,11 +166,7 @@ Info::Info()
+ void Exif::writeExifInfoToFile(const DB::FileName &srcName, const QString &destName, const QString &imageDescription)
+ {
+     // Load Exif from source image
+-#if EXIV2_TEST_VERSION(0, 28, 0)
+-    Exiv2::Image::UniquePtr image = Exiv2::ImageFactory::open(QFile::encodeName(srcName.absolute()).data());
+-#else
+-    Exiv2::Image::AutoPtr image = Exiv2::ImageFactory::open(QFile::encodeName(srcName.absolute()).data());
+-#endif
++    auto image = Exiv2::ImageFactory::open(QFile::encodeName(srcName.absolute()).data());
+     image->readMetadata();
+     Exiv2::ExifData data = image->exifData();
+ 
+@@ -206,11 +201,7 @@ Exif::Metadata Exif::Info::metadata(const DB::FileName &fileName)
+ {
+     try {
+         Exif::Metadata result;
+-#if EXIV2_TEST_VERSION(0, 28, 0)
+-        Exiv2::Image::UniquePtr image = Exiv2::ImageFactory::open(QFile::encodeName(fileName.absolute()).data());
+-#else
+-        Exiv2::Image::AutoPtr image = Exiv2::ImageFactory::open(QFile::encodeName(fileName.absolute()).data());
+-#endif
++        auto image = Exiv2::ImageFactory::open(QFile::encodeName(fileName.absolute()).data());
+         Q_ASSERT(image.get() != nullptr);
+         image->readMetadata();
+         result.exif = image->exifData();
+-- 
+2.41.0
+

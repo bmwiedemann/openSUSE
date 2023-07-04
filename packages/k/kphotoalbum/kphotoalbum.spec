@@ -29,6 +29,10 @@ Source:         https://download.kde.org/stable/%{name}/%{version}/%{name}-%{ver
 Source1:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz.sig
 Source2:        kphotoalbum.keyring
 %endif
+# Exiv 0.28 fixes
+Patch0:         0001-Fixed-compilation-with-exiv2-0.28.patch
+Patch1:         0002-Less-macros-by-simply-using-auto.patch
+Patch2:         0003-Use-Exifdatum-toInt64-instead-of-toUint32.patch
 BuildRequires:  QtAV-devel
 BuildRequires:  cmake >= 3.18.0
 BuildRequires:  fdupes

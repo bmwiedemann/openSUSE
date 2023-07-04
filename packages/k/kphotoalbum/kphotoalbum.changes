@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul  4 06:47:31 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add patches:
+  * 0001-Fixed-compilation-with-exiv2-0.28.patch
+  * 0002-Less-macros-by-simply-using-auto.patch
+  * 0003-Use-Exifdatum-toInt64-instead-of-toUint32.patch
+
+-------------------------------------------------------------------
 Sun Apr 16 19:22:33 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 5.10.0
