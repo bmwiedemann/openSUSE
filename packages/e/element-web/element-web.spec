@@ -17,7 +17,7 @@
 
 
 Name:           element-web
-Version:        1.11.32
+Version:        1.11.34
 Release:        0
 Summary:        A glossy Matrix collaboration client - web files
 License:        Apache-2.0
