@@ -69,4 +69,12 @@ Fixed problems found by factory-repo-checker (see superseded request)</comment>
     <comment></comment>
     <requestid>659947</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7f71c2ee88252169474106b4f3fc7e82</srcmd5>
+    <version>2.6.0</version>
+    <time>1688476987</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096757</requestid>
+  </revision>
 </revisionlist>

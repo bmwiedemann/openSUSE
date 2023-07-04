@@ -1,7 +1,7 @@
 #
 # spec file for package sfml2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define so_ver -2_5
+%define so_ver -2_6
 Name:           sfml2
-Version:        2.5.1
+Version:        2.6.0
 Release:        0
 Summary:        C++ multimedia library with access to input, sound and display
 License:        Zlib
 Group:          Development/Libraries/C and C++
-URL:            http://www.sfml-dev.org/
+URL:            https://www.sfml-dev.org/
 Source0:        https://github.com/SFML/SFML/archive/%{version}/SFML-%{version}.tar.gz
 Source1:        baselibs.conf
 BuildRequires:  cmake
@@ -42,6 +42,7 @@ BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(vorbisenc)
 BuildRequires:  pkgconfig(vorbisfile)
 BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xrandr)
 Requires:       lib%{name}%{so_ver} = %{version}
 
@@ -96,7 +97,7 @@ This subpackage contains the developer documentation.
 %cmake -DSFML_BUILD_DOC=TRUE \
        -DSFML_INSTALL_PKGCONFIG_FILES=TRUE \
        -DCMAKE_BUILD_TYPE=RelWithDebInfo
-make VERBOSE=1 %{?_smp_mflags}
+%cmake_build
 
 cd doc/html
 %fdupes -s .
@@ -104,9 +105,8 @@ cd doc/html
 %install
 %cmake_install
 
-# Remove doc from wrong location
-rm -r %{buildroot}%{_datadir}/SFML/doc
-rm %{buildroot}%{_datadir}/SFML/*.md
+mkdir -p %{buildroot}%{_docdir}/SFML
+mv %{buildroot}%{_datadir}/doc/SFML %{buildroot}%{_docdir}/SFML
 
 %post -n lib%{name}%{so_ver} -p /sbin/ldconfig
 %postun -n lib%{name}%{so_ver} -p /sbin/ldconfig
@@ -121,9 +121,8 @@ rm %{buildroot}%{_datadir}/SFML/*.md
 %{_libdir}/libsfml-*.so
 %{_libdir}/pkgconfig/sfml-*.pc
 %{_libdir}/cmake/SFML
-%{_datadir}/SFML/
 
 %files doc
-%doc build/doc/html/* CONTRIBUTING.md
+%doc %{_docdir}/SFML
 
 %changelog
