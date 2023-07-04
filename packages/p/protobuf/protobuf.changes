@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jul  3 07:58:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.3:
+  C++
+  * Regenerate stale files
+  * Use the same ABI for static and shared libraries on non-
+    Windows platforms
+  * Add a workaround for GCC constexpr bug
+
+  Objective-C
+  * Regenerate stale files
+  UPB (Python/PHP/Ruby C-Extension)
+  * Fixed a bug in `upb_Map_Delete()` that caused crashes in
+    map.delete(k) for Ruby when string-keyed maps were in use.
+
+  Compiler
+  * Add missing header to Objective-c generator
+  * Add a workaround for GCC constexpr bug
+
+  Java
+  * Rollback of: Simplify protobuf Java message builder by
+    removing methods that calls the super class only.
+
+  Csharp
+  * [C#] Replace regex that validates descriptor names
+- drop 0001-Use-the-same-ABI-for-static-and-shared-libraries-on-.patch (upstream)
+
+-------------------------------------------------------------------
 Wed Jun 14 08:32:55 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to fix linking ThreadSafeArena:

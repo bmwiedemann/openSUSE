@@ -25,10 +25,8 @@
 %bcond_without java
 %bcond_without python3
 Name:           protobuf
-Version:        22.5
-# python module have their own version specified in python/google/protobuf/__init__.py
-%global         gversion 22.5
-%global         sover 22_5_0
+Version:        23.3
+%global         sover 23_3_0
 Release:        0
 Summary:        Protocol Buffers - Google's data interchange format
 License:        BSD-3-Clause
@@ -39,8 +37,6 @@ Source1:        manifest.txt.in
 Source2:        baselibs.conf
 Source1000:     %{name}-rpmlintrc
 Patch0:         add-missing-stdint-header.patch
-# PATCH-FIX-UPSTREAM https://github.com/protocolbuffers/protobuf/commit/4329fde9cf3fab7d1b3a9abe0fbeee1ad8a8b111
-Patch1:         0001-Use-the-same-ABI-for-static-and-shared-libraries-on-.patch
 BuildRequires:  %{python_module abseil}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module python-dateutil}
@@ -107,12 +103,12 @@ Summary:        Header files, libraries and development documentation for %{name
 Group:          Development/Libraries/C and C++
 Requires:       abseil-cpp-devel >= 20230125
 Requires:       gcc-c++
-Requires:       libprotobuf%{sover} = %{gversion}
+Requires:       libprotobuf%{sover} = %{VERSION}
 Requires:       libprotobuf-lite%{sover}
 Requires:       pkgconfig(zlib)
 Conflicts:      protobuf2-devel
 Conflicts:      protobuf21-devel
-Provides:       libprotobuf-devel = %{gversion}
+Provides:       libprotobuf-devel = %{VERSION}
 
 %description devel
 Protocol Buffers are a way of encoding structured data in an efficient yet
@@ -121,7 +117,7 @@ RPC protocols and file formats.
 
 %if 0%{?python_subpackage_only}
 %package -n python-%{name}
-Version:        4.%{gversion}
+Version:        4.%{VERSION}
 Summary:        Python Bindings for Google Protocol Buffers
 Group:          Development/Libraries/Python
 
@@ -131,7 +127,7 @@ This package contains the Python bindings for Google Protocol Buffers.
 %else
 
 %package -n python3-%{name}
-Version:        4.%{gversion}
+Version:        4.%{VERSION}
 Summary:        Python3 Bindings for Google Protocol Buffers
 Group:          Development/Libraries/Python
 
@@ -148,7 +144,10 @@ Requires:       java >= 1.6.0
 This package contains the Java bindings for Google Protocol Buffers.
 
 %prep
-%autosetup -p1 -n %{tarname}-%{gversion}
+%autosetup -p1 -n %{tarname}-%{VERSION}
+
+# python module have their own version specified in python/google/protobuf/__init__.py
+grep -qF "'4.%{VERSION}'" python/google/protobuf/__init__.py
 
 # The previous blank line is crucial for older system being able
 # to use the autosetup macro
@@ -226,13 +225,13 @@ popd
 
 %files -n libprotobuf%{sover}
 %license LICENSE
-%{_libdir}/libprotobuf.so.%{gversion}.0
+%{_libdir}/libprotobuf.so.%{VERSION}.0
 
 %files -n libprotoc%{sover}
-%{_libdir}/libprotoc.so.%{gversion}.0
+%{_libdir}/libprotoc.so.%{VERSION}.0
 
 %files -n libprotobuf-lite%{sover}
-%{_libdir}/libprotobuf-lite.so.%{gversion}.0
+%{_libdir}/libprotobuf-lite.so.%{VERSION}.0
 
 %files devel
 %doc CONTRIBUTORS.txt README.md
