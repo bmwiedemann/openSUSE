@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Mon Jul 3 18:49:35 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#133
+- avoid linking problems with libsamba (bsc#1212756)
+- 22.3
+
+--------------------------------------------------------------------
 Mon Jan 9 14:05:07 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/hwinfo#126
