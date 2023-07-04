@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul  1 16:35:08 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 8.3.0
+  * Allow kwargs when writting connection_file #953 (@fecet)
+
+-------------------------------------------------------------------
 Fri Jun 16 07:45:36 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove entrypoints Requires, it was dropped in 8.0.

@@ -332,4 +332,13 @@ Update to 5.3.4</comment>
     <comment>- Remove entrypoints Requires, it was dropped in 8.0.</comment>
     <requestid>1093445</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>14e98b2fd36386973f5fa40922842087</srcmd5>
+    <version>8.3.0</version>
+    <time>1688476920</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.3.0
+  * Allow kwargs when writting connection_file #953 (@fecet)</comment>
+    <requestid>1096305</requestid>
+  </revision>
 </revisionlist>
