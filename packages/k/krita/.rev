@@ -729,4 +729,12 @@
     <comment>Update to 5.1.5</comment>
     <requestid>1058693</requestid>
   </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>1edb291f7bdd0f846809370685ac1e51</srcmd5>
+    <version>5.1.5</version>
+    <time>1688476961</time>
+    <user>dimstar_suse</user>
+    <comment>Exiv 0.28 fixes</comment>
+    <requestid>1096687</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,45 @@
+From 92a643544928c056a1192cd903e0c6666fd2f8c9 Mon Sep 17 00:00:00 2001
+From: psykose -- <alice@ayaya.dev>
+Date: Thu, 15 Jun 2023 08:48:43 +0000
+Subject: [PATCH] KisExiv2IoDevice: fix types on 32-bit host with exiv2 0.28
+
+upstream commit
+https://github.com/Exiv2/exiv2/commit/813566526c9ecdc92fc55c7a7d4de2d8e73e125a
+now uses int64_t instead of long
+
+this worked for 64-bit ILP64 since long was int64_t, but it does not
+match on 32-bit platforms
+---
+ plugins/metadata/common/KisExiv2IODevice.cpp | 2 +-
+ plugins/metadata/common/KisExiv2IODevice.h   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/plugins/metadata/common/KisExiv2IODevice.cpp b/plugins/metadata/common/KisExiv2IODevice.cpp
+index bf5cdc2bd6..ed08543739 100644
+--- a/plugins/metadata/common/KisExiv2IODevice.cpp
++++ b/plugins/metadata/common/KisExiv2IODevice.cpp
+@@ -175,7 +175,7 @@ void KisExiv2IODevice::transfer(Exiv2::BasicIo &src)
+     }
+ }
+ 
+-#if defined(_MSC_VER)
++#if defined(_MSC_VER) || EXIV2_TEST_VERSION(0,28,0)
+ int KisExiv2IODevice::seek(int64_t offset, Exiv2::BasicIo::Position position)
+ #else
+ int KisExiv2IODevice::seek(long offset, Exiv2::BasicIo::Position position)
+diff --git a/plugins/metadata/common/KisExiv2IODevice.h b/plugins/metadata/common/KisExiv2IODevice.h
+index 27f5f8d5fc..a72ae01f59 100644
+--- a/plugins/metadata/common/KisExiv2IODevice.h
++++ b/plugins/metadata/common/KisExiv2IODevice.h
+@@ -44,7 +44,7 @@ public:
+ #endif
+     int getb() override;
+     void transfer(BasicIo &src) override;
+-#if defined(_MSC_VER)
++#if defined(_MSC_VER) || EXIV2_TEST_VERSION(0,28,0)
+     int seek(int64_t offset, Position pos) override;
+ #else
+     int seek(long offset, Position pos) override;
+-- 
+2.41.0
+

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  4 07:14:23 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add patches:
+  * 0001-Fix-build-with-exiv2-0.28.patch
+  * 0001-KisExiv2IoDevice-fix-types-on-32-bit-host-with-exiv2.patch
+
+-------------------------------------------------------------------
 Mon Jan 16 10:44:28 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.1.5

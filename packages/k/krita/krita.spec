@@ -38,6 +38,9 @@ Source0:        https://download.kde.org/stable/krita/%{version}/krita-%{version
 Source1:        https://download.kde.org/stable/krita/%{version}/krita-%{version}.tar.xz.sig
 Source2:        krita.keyring
 %endif
+# Exiv 0.28 build fixes
+Patch0:         0001-Fix-build-with-exiv2-0.28.patch
+Patch1:         0001-KisExiv2IoDevice-fix-types-on-32-bit-host-with-exiv2.patch
 BuildRequires:  OpenEXR-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fftw3-devel
