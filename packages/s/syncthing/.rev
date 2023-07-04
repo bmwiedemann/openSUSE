@@ -1299,4 +1299,18 @@
 </comment>
     <requestid>1091076</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>7f389dd2ff4ecbabc13a6a966dbf851f</srcmd5>
+    <version>1.23.6</version>
+    <time>1688476990</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.13.6
+  * Bugfixes:
+    #7638: favicon not working Firefox &amp; derivative browsers
+    #8899: Omitting %s from LDAP bind DN sends corrupted bind DN string to LDAP server
+    #8920: Untrusted device should be disallowed from being an introducer
+    #8960: relaysrv and discosrv docker images haven't been updated for more than year
+</comment>
+    <requestid>1096702</requestid>
+  </revision>
 </revisionlist>

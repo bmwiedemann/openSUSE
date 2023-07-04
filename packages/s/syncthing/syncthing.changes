@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul  4 08:37:29 UTC 2023 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.13.6
+  * Bugfixes:
+    #7638: favicon not working Firefox & derivative browsers
+    #8899: Omitting %s from LDAP bind DN sends corrupted bind DN string to LDAP server
+    #8920: Untrusted device should be disallowed from being an introducer
+    #8960: relaysrv and discosrv docker images haven't been updated for more than year
+
+-------------------------------------------------------------------
 Tue Jun  6 08:49:11 UTC 2023 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.13.5
