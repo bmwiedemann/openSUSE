@@ -226,4 +226,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1089723 from glaubitz)</comment>
     <requestid>1089816</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>23484e83cd29eea4872b77f92c887196</srcmd5>
+    <version>0.1.0b2840062</version>
+    <time>1688476942</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.1.0b2840062
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1096599 from glaubitz)</comment>
+    <requestid>1096628</requestid>
+  </revision>
 </revisionlist>
