@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Mon Jul 3 12:40:36 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#154
+- move kexec-bootloader from kexec-tools to perl-Bootloader
+- 1.6
+
+--------------------------------------------------------------------
 Wed Jun 28 13:58:27 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/perl-bootloader#153

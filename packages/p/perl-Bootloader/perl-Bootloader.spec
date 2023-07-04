@@ -25,11 +25,12 @@
 %{!?_distconfdir:%global _distconfdir /etc}
 
 Name:           perl-Bootloader
-Version:        1.5
+Version:        1.6
 Release:        0
 Requires:       coreutils
 Requires:       perl-base = %{perl_version}
 Obsoletes:      perl-Bootloader-YAML < %{version}
+Conflicts:      kexec-tools < 2.0.26.0
 Summary:        Tool for boot loader configuration
 License:        GPL-2.0-or-later
 Group:          System/Boot
@@ -54,6 +55,7 @@ make doc
 install -D -m 644 pbl.8 %{buildroot}%{_mandir}/man8/pbl.8
 install -D -m 644 bootloader_entry.8 %{buildroot}%{_mandir}/man8/bootloader_entry.8
 install -D -m 644 update-bootloader.8 %{buildroot}%{_mandir}/man8/update-bootloader.8
+install -D -m 644 kexec-bootloader.8 %{buildroot}%{_mandir}/man8/kexec-bootloader.8
 mkdir -p %{buildroot}/var/log
 touch %{buildroot}/var/log/pbl.log
 
@@ -68,6 +70,7 @@ chmod 600 /var/log/pbl.log
 %doc boot.readme
 %{sbindir}/update-bootloader
 %{sbindir}/pbl
+%{sbindir}/kexec-bootloader
 /usr/lib/bootloader
 %if "%{_distconfdir}" == "/etc"
 %config(noreplace) %{_distconfdir}/logrotate.d/pbl
