@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jul  4 08:22:24 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.18.3
+  * Displays: Fix finding a valid mode by refresh rate
+  * dialogs: Secure use of GSettings
+  * xfsettingsd: Fix wrong test for property removal
+  * xfsettingsd: Update also the type when updating a value
+  * keyboard-settings: Fix critical when opening layout selection
+    dialog
+  * appearance-install-theme: Fix error message
+  * appearance-install-theme: Do not mention file size in error
+    message
+  * appearance-install-theme: Check for theme package validity
+  * appearance-install-theme: Update GTK icon cache after installing
+  * appearance-install-theme: detect icon themes first (#271)
+  * appearance-install-theme: make cleanup safer
+  * appearance-install-theme: Use recommended way of command
+    substitution.
+  * appearance-install-theme: Convert to POSIX
+  * Update bug report address
+  * display: Check for XError on transform apply
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sat Feb 11 09:32:38 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.18.2

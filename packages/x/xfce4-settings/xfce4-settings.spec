@@ -19,7 +19,7 @@
 %bcond_with git
 
 Name:           xfce4-settings
-Version:        4.18.2
+Version:        4.18.3
 Release:        0
 Summary:        Tools for Managing Xfce Settings
 License:        GPL-2.0-only AND GPL-2.0-or-later
@@ -31,6 +31,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(exo-2) >= 0.11.0
 BuildRequires:  pkgconfig(fontconfig) >= 2.6.0
 BuildRequires:  pkgconfig(garcon-1) >= 0.1.10
+BuildRequires:  pkgconfig(gio-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24
 BuildRequires:  pkgconfig(libcanberra)
