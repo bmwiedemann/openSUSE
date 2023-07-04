@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  4 07:34:26 UTC 2023 - James Pearson <jamesp@vicidial.com>
+
+- DB schema files are in schema not etc/schema in packaged tarball 
+
+-------------------------------------------------------------------
 Tue May  9 11:02:10 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add subpackge php-fpm with php-fpm configuration.

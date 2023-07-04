@@ -339,7 +339,7 @@ sed -i '1 s~#!.*~#!%{php_bin}~' %{buildroot}/%{bindir}/icingacli
 %endif
 sed -i 's|\/usr\/bin\/env php|\/usr\/bin\/php|g' %{buildroot}/%{basedir}/library/vendor/lessphp/bin/lessc
 cp -pv packages/files/public/index.php %{buildroot}/%{basedir}/public
-cp -prv etc/schema %{buildroot}/%{docsdir}
+cp -prv schema %{buildroot}/%{docsdir}
 cp -prv packages/files/config/modules/{setup,translation} %{buildroot}/%{configdir}/modules
 %if 0%{?use_selinux}
 cd selinux
