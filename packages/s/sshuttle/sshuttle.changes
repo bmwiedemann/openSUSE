@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul  4 08:17:54 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Remove
+  * PrivateDevices=true
+  * ProtectHostname=true
+  * ProtectClock=true
+  * ProtectKernelTunables=true
+  * ProtectKernelModules=true
+  * ProtectKernelLogs=true
+  * RestrictRealtime=true
+  settings from service file as they imply NNP, which doesn't work 
+  with the sudo setup sshuttle uses (bsc#1212949)
+
+-------------------------------------------------------------------
 Mon Jun 12 22:28:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - switch to pep517 build for better shebangs 

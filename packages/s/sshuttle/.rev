@@ -171,4 +171,12 @@ Doesn't require admin. Works with Linux and MacOS. Supports DNS tunneling.</comm
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1093841</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>9f70ab5f5cd76d2d29e63f62f72e3281</srcmd5>
+    <version>1.1.1</version>
+    <time>1688476994</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096793</requestid>
+  </revision>
 </revisionlist>
