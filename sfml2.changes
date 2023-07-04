@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jun 21 13:42:07 UTC 2023 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 2.6.0
+  * Allow creation of a window without an OpenGL context
+  * Add support for creating Vulkan window surfaces
+  * Scancode support
+  * Add support for colored cursors in Unix implementation
+  * Add support for X Input Method
+  * Add support for Direct Rendering Mode (DRM) / Kernel Mode Setting (KMS)
+  * Added getPosition() and getSize() to sf::Rect
+  * Implement smoothing for fonts
+  * Add Min and Max blend modes
+  * Update stb_image to 2.28, thus adding support for more image formats
+  * Add MP3 decoding support
+  * Added method to get the current read position of sf::Packet
+  * Many bugfixes
+
+-------------------------------------------------------------------
 Fri Dec 14 16:20:39 UTC 2018 - rpm@fthiessen.de
 
 - Update to 2.5.1
