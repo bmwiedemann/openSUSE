@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul  4 09:01:24 UTC 2023 - José Iván López González <jlopez@suse.com>
+
+- Fix detection of the zFCP controller running mode to check
+  whether the controller is doing auto LUN scan (related to
+  gh#openSUSE/agama#634).
+- 4.6.4
+
+-------------------------------------------------------------------
 Wed Jun 14 14:38:18 UTC 2023 - José Iván López González <jlopez@suse.com>
 
 - Add info about allow_lun_scan option (related to
