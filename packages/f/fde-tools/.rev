@@ -7,4 +7,14 @@
     <comment>fde-tools for full disk encryption</comment>
     <requestid>1090821</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cb4ba83f287d5d9d48b34e49e5cc362c</srcmd5>
+    <version>0.6.5</version>
+    <time>1688476915</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.5
+- Add fde-tools-avoid-cleaning-temp-dir.patch to avoid cleaning
+  the temp directory when calling tpm_test</comment>
+    <requestid>1096676</requestid>
+  </revision>
 </revisionlist>

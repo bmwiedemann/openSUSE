@@ -17,7 +17,7 @@
 
 
 Name:           fde-tools
-Version:        0.6.3
+Version:        0.6.5
 Release:        0
 Summary:        Tools required for Full Disk Encryption
 License:        GPL-2.0-only
@@ -26,15 +26,14 @@ URL:            https://github.com/openSUSE/fde-tools
 Source:         https://github.com/openSUSE/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        fde-tools.service
 Patch:          fde-tools-firstboot-alp-snapshot.patch
-Patch1:         fde-tools-set-stop-event-for-tpm_authorize.patch
-Patch2:         fde-tools-fix-paths.patch
-BuildRequires:  dracut
-BuildRequires:  jeos-firstboot
-BuildRequires:  libfido2-devel
+Patch1:         fde-tools-avoid-cleaning-temp-dir.patch
+BuildRequires:  help2man
 BuildRequires:  openssl >= 0.9.8
 BuildRequires:  tpm2-0-tss-devel
+BuildRequires:  pkgconfig(libcryptsetup)
+BuildRequires:  pkgconfig(libfido2)
 Requires:       cryptsetup
-Requires:       pcr-oracle >= 0.4.2
+Requires:       pcr-oracle >= 0.4.5
 # Requires:	tpm2.0-tools
 Requires:       mokutil
 ExclusiveArch:  aarch64 s390x ppc64le x86_64 riscv64
@@ -52,6 +51,17 @@ Encryption.
 %description -n fde-firstboot
 This package contains the scripts necessary to plug Full Disk Encryption
 into the JeOS Firstboot framework used for image based delivery of ALP.
+
+%package bash-completion
+Summary:        Bash completion for fde-tools
+Group:          Productivity/File utilities
+Requires:       bash-completion
+Requires:       fde-tools
+Supplements:    (fde-tools and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Bash shell completions for fde-tools
 
 %prep
 %autosetup -p1
@@ -83,13 +93,22 @@ cp %{S:1} %{buildroot}%{_unitdir}/fde-tpm-enroll.service
 
 %files
 %{_sbindir}/fdectl
-%{_bindir}/fde-token
+%{_sbindir}/fde-token
+%{_sbindir}/fdectl-grub-tpm2
 %dir /etc/fde
 %{_fillupdir}/sysconfig.*
 %{_datadir}/fde
 %{_unitdir}/fde-tpm-enroll.service
+%{_mandir}/man8/fdectl.8.gz
+%dir %{_libdir}/cryptsetup/
+%{_libdir}/cryptsetup/libcryptsetup-token-*.so
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/fdectl
 
 %files -n fde-firstboot
+%dir %{_datadir}/jeos-firstboot
+%dir %{_datadir}/jeos-firstboot/modules
 %{_datadir}/jeos-firstboot/modules/fde
 
 %changelog

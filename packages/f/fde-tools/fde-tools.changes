@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Tue Jul  4 07:02:19 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add fde-tools-avoid-cleaning-temp-dir.patch to avoid cleaning
+  the temp directory when calling tpm_test
+
+-------------------------------------------------------------------
+Tue Jul  4 02:59:34 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 0.6.5
+  + LUKS2 keyslot management with the grub-tpm2 token
+  + Replace mkinitrd with dracut
+
+-------------------------------------------------------------------
+Wed Jun 14 02:39:26 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 0.6.4
+  + Add man page and bash completion support
+  + Switch to TPM 2.0 Key File for grub2
+  + Update the installation paths
+  + Enable authorized policy by default
+  + Implement 'tpm-disable' command (bsc#1208834)
+- Add a subpackage: fde-tools-bash-completion
+- Use 'tpm-activate' in the systemd service file
+- Add help2man to BuildRequires
+- Drop the upstreamed patches
+  + fde-tools-tpm2.0-key-file-support.patch
+  + fde-tools-fix-paths.patch
+  + fde-tools-set-stop-event-for-tpm_authorize.patch
+  + fde-tools-enable-authorized-policy-by-default.patch
+  + fde-tools-reduce-iterations.patch
+  + fde-tools-set-grub.cfg-as-stop-event.patch
+
+-------------------------------------------------------------------
+Thu Jun  8 08:31:15 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Fix the path in fde-tools.service
+
+-------------------------------------------------------------------
+Wed Jun  7 00:57:26 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add fde-tools-tpm2.0-key-file-support.patch to support TPM 2.0
+  Key File for grub2
+- Bump the required pcr-oracle version to 0.4.5 for the TPM 2.0 Key
+  File support
+- Add fde-tools-reduce-iterations.patch to reduce the iterations
+  for the key created by luks_add_random_key
+- Add fde-tools-set-grub.cfg-as-stop-event.patch to set grub.cfg as
+  the stop event for the PCR prediction
+- Add fde-tools-enable-authorized-policy-by-default.patch to switch
+  FDE_USE_AUTHORIZED_POLICIES to yes
+
+-------------------------------------------------------------------
+Tue Jun  6 07:32:24 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- remove dracut and jeos-firstboot from buildrequires, just specify
+  the directory.
+
+-------------------------------------------------------------------
 Wed May 17 08:37:47 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add fde-tools-fix-paths.patch to fix the installation paths

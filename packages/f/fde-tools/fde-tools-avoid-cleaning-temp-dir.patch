@@ -1,0 +1,29 @@
+From c7a39ab858c2022855353eadedc768af85b92cc9 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Tue, 4 Jul 2023 14:56:57 +0800
+Subject: [PATCH] Don't clean up the temp directory in tpm_test
+
+Both firstboot/fde and fdectl clean up the temp directory on exit.
+Calling fde_clean_tempdir in tpm_test would unset FDE_TEMP_DIR and make
+fde_make_tempdir fail afterward.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ share/tpm | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/share/tpm b/share/tpm
+index aa9084f..90a3da3 100644
+--- a/share/tpm
++++ b/share/tpm
+@@ -94,7 +94,6 @@ function tpm_test {
+ 	result=0
+     fi
+ 
+-    fde_clean_tempdir
+     return $result
+ }
+ 
+-- 
+2.35.3
+

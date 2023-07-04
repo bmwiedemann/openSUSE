@@ -4,7 +4,7 @@ Wants=local-fs.target
 
 [Service]
 Type=oneshot
-ExecStart=/sbin/fdectl tpm-enable
+ExecStart=/usr/sbin/fdectl tpm-activate
 
 [Install]
 WantedBy=default.target
