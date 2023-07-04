@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul  4 07:50:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.5.1
+  * Added support for using OPDS catalogs as data sources (kde#468698)
+  * Added support for reading images from data urls
+  * Added support to save entry template config for custom collections
+  * Fixed including the Image Grid template in the package
+
+-------------------------------------------------------------------
 Tue May 16 19:22:03 UTC 2023 - Victorhck <victorhck@opensuse.org>
 
 - Update to 3.5

@@ -752,4 +752,12 @@
     <comment></comment>
     <requestid>1088161</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>2a37ac05271ffc8b4584d2a6fee25834</srcmd5>
+    <version>3.5.1</version>
+    <time>1688476966</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.5.1</comment>
+    <requestid>1096690</requestid>
+  </revision>
 </revisionlist>

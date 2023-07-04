@@ -17,14 +17,13 @@
 
 
 Name:           tellico
-Version:        3.5
+Version:        3.5.1
 Release:        0
 Summary:        A Collection Manager
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://tellico-project.org/
 Source0:        https://tellico-project.org/files/%{name}-%{version}.tar.xz
-
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  libcsv-devel
