@@ -1,20 +1,28 @@
 From: Egbert Eich <eich@suse.com>
-Date: Mon Mar 13 15:27:01 2023 +0100
-Subject: Add call to slurm_init() - this makes sure, the config options are set.
+Date: Mon Mar 13 18:21:34 2023 +0100
+Subject: slurm_plugin: Call slurm_init() once before any call to Slurm API
 Patch-mainline: Not yet
-Git-commit: b158df3b522360247bef95544c54708b05f069f7
+Git-repo: https://github.com/chaos/pdsh
+Git-commit: 2a8eea95c524a72ef20802a16500b87ed4710f56
 References: 
+
+Since Slurm 20.11, slurm_init() needs to be called before any call
+to the Slurm API to make sure the config file is read in.
+We cannot call it in mod_slurm_init() or in mod_slurm_wcoll() directly
+as it requires slurm to be configured before use, thus pdsh would
+fail whenever the slurm plugin is found but Slurm is not configured
+correctly.
 
 Signed-off-by: Egbert Eich <eich@suse.com>
 Signed-off-by: Egbert Eich <eich@suse.de>
 ---
- src/modules/slurm.c | 19 +++++++++++++++++++
- 1 file changed, 19 insertions(+)
+ src/modules/slurm.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 diff --git a/src/modules/slurm.c b/src/modules/slurm.c
-index 48e6dde..20613c2 100644
+index 5594c4f..d95994c 100644
 --- a/src/modules/slurm.c
 +++ b/src/modules/slurm.c
-@@ -295,6 +295,19 @@ static hostlist_t _hl_append (hostlist_t hl, char *nodes)
+@@ -299,6 +299,20 @@ static hostlist_t _hl_append (hostlist_t hl, char *nodes)
      return (hl);
  }
  
@@ -26,38 +34,36 @@ index 48e6dde..20613c2 100644
 +
 +  if (_inited)
 +    return;
-+
++#if SLURM_VERSION_NUMBER >= SLURM_VERSION_NUM(20,11,0)
 +  slurm_init(NULL);
++#endif
 +  _inited = true;
 +}
 +
  static hostlist_t _slurm_wcoll (List joblist)
  {
      int i;
-@@ -306,6 +319,8 @@ static hostlist_t _slurm_wcoll (List joblist)
+@@ -310,6 +324,7 @@ static hostlist_t _slurm_wcoll (List joblist)
      if ((joblist == NULL) && (envjobid = _slurm_jobid()) < 0)
          return (NULL);
  
-+    _slurm_init(NULL);
-+
++    _slurm_init();
      if (slurm_load_jobs((time_t) NULL, &msg, SHOW_ALL) < 0) 
          errx ("Unable to contact slurm controller: %s\n", 
                slurm_strerror (errno));
-@@ -355,6 +370,8 @@ static hostlist_t _slurm_wcoll_partition (List partitionlist)
+@@ -359,6 +374,7 @@ static hostlist_t _slurm_wcoll_partition (List partitionlist)
      partition_info_t * p;
      ListIterator li;
  
-+    _slurm_init(NULL);
-+
++    _slurm_init();
      if (slurm_load_partitions((time_t) NULL, &msg, SHOW_ALL) < 0)
          errx ("Unable to contact slurm controller: %s\n",
                slurm_strerror (errno));
-@@ -398,6 +415,8 @@ static hostlist_t _slurm_wcoll_constraint (hostlist_t wl, List constraintlist)
+@@ -402,6 +418,7 @@ static hostlist_t _slurm_wcoll_constraint (hostlist_t wl, List constraintlist)
      char *c;
      ListIterator li;
  
-+    _slurm_init(NULL);
-+
++    _slurm_init();
      if (slurm_load_node((time_t) NULL, &msg, SHOW_ALL) < 0)
          errx ("Unable to contact slurm controller: %s\n",
                slurm_strerror (errno));

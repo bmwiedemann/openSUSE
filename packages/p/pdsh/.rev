@@ -412,4 +412,12 @@ SDPX format (http://www.spdx.org/licenses) (forwarded request 89922 from babelwo
     <comment>- Fix multibuild file (forwarded request 1091381 from eeich)</comment>
     <requestid>1091382</requestid>
   </revision>
+  <revision rev="50" vrev="12">
+    <srcmd5>ab39986bb28ced87407324e02372b442</srcmd5>
+    <version>2.34</version>
+    <time>1688476943</time>
+    <user>dimstar_suse</user>
+    <comment>- Only call slurm_init() if Slurm &gt; 21.02 (bsc#1212946). (forwarded request 1096619 from eeich)</comment>
+    <requestid>1096630</requestid>
+  </revision>
 </revisionlist>

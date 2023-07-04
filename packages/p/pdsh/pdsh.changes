@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  3 15:15:52 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Only call slurm_init() if Slurm > 21.02 (bsc#1212946).
+
+-------------------------------------------------------------------
 Thu Jun  8 05:55:44 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Preparing pdsh for Slurm 23.02.
