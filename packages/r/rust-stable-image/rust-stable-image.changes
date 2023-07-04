@@ -1,0 +1,34 @@
+-------------------------------------------------------------------
+Tue Jun 27 15:55:34 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Fix reference label
+
+-------------------------------------------------------------------
+Fri Jun 23 15:33:33 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- label capitalization and related cleanups
+
+-------------------------------------------------------------------
+Thu Jun 22 16:56:53 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- Order the stability buildtag first in the list and prefix them with an stability index to avoid overlaps
+
+-------------------------------------------------------------------
+Tue Jun 20 17:27:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- switch stable to rust 1.70
+
+-------------------------------------------------------------------
+Tue Jun 13 15:18:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- rename to stable
+
+-------------------------------------------------------------------
+Tue May 30 06:52:56 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Add release stage and lifecycle url
+
+-------------------------------------------------------------------
+Sat Apr 29 11:13:40 UTC 2023 - SUSE Update Bot <bci-internal@suse.de>
+
+- First version of the Rust 1.69 BCI
