@@ -478,4 +478,12 @@ Please use same ADI as https://build.opensuse.org/request/show/918731
     <comment></comment>
     <requestid>1094867</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>0dfafbad63058f0aa941c699810664ee</srcmd5>
+    <version>1.11.34</version>
+    <time>1688476934</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1096602</requestid>
+  </revision>
 </revisionlist>
