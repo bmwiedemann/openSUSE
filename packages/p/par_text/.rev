@@ -25,4 +25,12 @@
 </comment>
     <requestid>986720</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>5b024c26dc26f42f43972e2011362a6b</srcmd5>
+    <version>1.53.0+git.1584347654.eb0590f</version>
+    <time>1688476917</time>
+    <user>dimstar_suse</user>
+    <comment>🤖: Submission of par_text via https://src.opensuse.org/pool/par_text/pulls/1 by scm-staging-bot</comment>
+    <requestid>1096556</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package par_text
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,7 @@ end in the same column.
 %autosetup -p1 -n %{upname}-%{version}
 
 %build
-make -f protoMakefile %{?_smp_mflags} CFLAGS="%{optflags}" $*
+%make_build -f protoMakefile CFLAGS="%{optflags}" $*
 
 %install
 install -D -t %{buildroot}/%{_bindir} par

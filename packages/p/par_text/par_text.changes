@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jul  1 09:28:03 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up SPEC file.
+
+-------------------------------------------------------------------
 Mon Jul  4 18:11:38 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Do not unset various variables when calling make (only CFLAGS
