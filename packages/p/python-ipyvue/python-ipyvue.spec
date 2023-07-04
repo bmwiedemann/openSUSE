@@ -16,10 +16,10 @@
 #
 
 
-%define anypython3dist python3dist
-%define python3dist_version 1.9.1
+# This is important for versions ending in .0
+%define python3dist_version 1.9.2
 Name:           python-ipyvue
-Version:        1.9.1
+Version:        1.9.2
 Release:        0
 Summary:        Jupyter widgets base for Vue libraries
 License:        MIT
@@ -49,7 +49,7 @@ Jupyter widgets base for Vue libraries
 %package     -n jupyter-ipyvue-nbextension
 Summary:        Jupyter widgets base for Vue libraries - nbextension
 Requires:       jupyter-notebook
-Requires:       %{anypython3dist}(ipyvue) = %{python3dist_version}
+Requires:       python3dist(ipyvue) = %{python3dist_version}
 
 %description -n jupyter-ipyvue-nbextension
 Jupyter widgets base for Vue libraries
@@ -59,7 +59,7 @@ This package provides the jupyter notebook extension.
 %package     -n jupyter-jupyterlab-ipyvue
 Summary:        Jupyter widgets base for Vue libraries - labextension
 Requires:       jupyter-jupyterlab
-Requires:       %{anypython3dist}(ipyvue) = %{python3dist_version}
+Requires:       python3dist(ipyvue) = %{python3dist_version}
 
 %description -n jupyter-jupyterlab-ipyvue
 Jupyter widgets base for Vue libraries
