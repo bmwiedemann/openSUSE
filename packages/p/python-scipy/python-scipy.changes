@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 29 07:21:08 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Use sle15_python_module_pythons
+- Require GCC >= 8
+
+-------------------------------------------------------------------
 Fri Mar 10 14:18:09 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Fix i686 tests for GCC 13 due to:

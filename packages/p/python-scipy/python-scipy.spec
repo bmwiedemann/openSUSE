@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 %global flavor @BUILD_FLAVOR@%{nil}
 %define _ver 1_10_1
 %define shortname scipy
@@ -123,8 +124,14 @@ BuildRequires:  %{python_module threadpoolctl}
 %endif
 %if %{without hpc}
 BuildRequires:  %{python_module numpy-devel >= 1.18.5}
-BuildRequires:  gcc-c++
-BuildRequires:  gcc-fortran
+%if 0%{?sle_version} && 0%{?sle_version} <= 150500
+# The default gcc on SLE15 is gcc7 we need something newer
+BuildRequires:  gcc10-c++
+BuildRequires:  gcc10-fortran
+%else
+BuildRequires:  gcc-c++ >= 8
+BuildRequires:  gcc-fortran >= 8
+%endif
 Requires:       python-numpy >= 1.18.5
 Requires:       python-pybind11 >= 2.4.3
 Suggests:       python-pooch
@@ -173,6 +180,12 @@ sed -i "s/option('lapack', type: 'string', value: 'openblas'/option('lapack', ty
 
 %if !%{with test}
 %build
+%if 0%{?sle_version} && 0%{?sle_version} <= 150500
+# We need gcc >= 8 for SLE15
+export CC=gcc-10
+export CXX=g++-10
+export FC=gfortran-10
+%endif
 # makes sure that the cython and pythran commands from the correct flavor are in PATH
 %python_flavored_alternatives
 %{python_expand #
