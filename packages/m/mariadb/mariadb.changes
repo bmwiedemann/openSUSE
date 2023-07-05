@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 12 12:42:03 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 11.0.2:
+  * release notes and changelog:
+    https://mariadb.com/kb/en/mariadb-11-0-2-release-notes/
+    https://mariadb.com/kb/en/mariadb-11-0-2-changelog/
+
+-------------------------------------------------------------------
 Mon Jun  5 08:16:57 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Skip test on s390x to fix build on ALP, bsc#1211859

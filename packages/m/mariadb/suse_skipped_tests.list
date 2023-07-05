@@ -117,3 +117,5 @@ rpl.rpl_rewrite_db_sys_vars                      : since 10.11.2 - all
 
 unit.aes                                         : since 10.11.3 - s390x
 
+innodb.log_file_size_online                      : since 11.0.2 - all
+
