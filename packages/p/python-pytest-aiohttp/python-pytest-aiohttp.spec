@@ -17,6 +17,7 @@
 
 
 %define pyname pytest-aiohttp
+%{?sle15_python_module_pythons}
 Name:           python-pytest-aiohttp
 Version:        1.0.4
 Release:        0

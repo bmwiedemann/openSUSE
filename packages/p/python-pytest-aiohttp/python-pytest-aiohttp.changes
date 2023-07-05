@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  4 11:34:16 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Wed Nov 30 07:21:17 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add pytest72.patch to make it compatible with pytest 7.2.0
