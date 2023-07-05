@@ -1,5 +1,0 @@
-<package name="python-aldjemy" project="openSUSE:Factory">
-  <title></title>
-  <description>SQLAlchemy to Django integration library</description>
-  <devel project="devel:languages:python:django" package="python-aldjemy"/>
-</package>
