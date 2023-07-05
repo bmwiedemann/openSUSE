@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 26 17:37:36 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update safe-exceptions to version 0.1.7.4.
+  ## 0.1.7.4
+
+  * Add `HasCallStack` when `exceptions >= 0.10.6` [#41](https://github.com/fpco/safe-exceptions/issues/41)
+
+-------------------------------------------------------------------
 Thu Mar 30 17:08:07 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
