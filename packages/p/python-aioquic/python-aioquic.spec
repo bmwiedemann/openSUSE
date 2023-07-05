@@ -16,8 +16,7 @@
 #
 
 
-%define skip_python2 1
-%define skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-aioquic
 Version:        0.9.20
 Release:        0

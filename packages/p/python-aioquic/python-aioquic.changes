@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  4 12:39:09 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Wed Jan 25 08:33:15 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to v0.9.20
