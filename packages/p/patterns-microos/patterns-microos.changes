@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  3 01:02:33 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add KDE partition manager to the default plasma install (boo#1212925) 
+
+-------------------------------------------------------------------
 Mon Jun 19 09:03:38 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add bootlader dependency to the onlyDVD pattern: we still shoult

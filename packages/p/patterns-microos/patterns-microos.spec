@@ -581,6 +581,8 @@ Requires:       plasma-branding-MicroOS
 # Some basic system tools
 Requires:       kate
 Requires:       konsole
+# Add KDE Partition Manager to install pattern (boo#1212925)
+Requires:       partitionmanager
 
 # Recommended by kde_plasma
 Requires:       bluedevil5
