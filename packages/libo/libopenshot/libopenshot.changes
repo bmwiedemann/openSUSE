@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jul 05 10:57:05 UTC 2023 - adrian@suse.de
+
+- Update to version 0.3.2:
+  * Adding lock around SetCache method, which causes some crashes. Detected in Sentry: OPENSHOT-1Q
+  * Fixing memory leak on Clips, where we were not clearing cache on Close, or forcing Close on destruction. Especially noticeable on projects with a ton of clips. Tweaking unit tests to prevent crash due to new Clip destructor behavior when using stack variables.
+  * Add additional logging to audio device init
+  * Add logging into Audio thread initialization - to add more clarity into which audio device is tested and found
+  * Bumping version to 0.3.2, SO 25 (min libopenshot-audio set to range 0.3.0...0.3.2)
+  * Small refactor to ensure that audio files have no image data - and allow videos below them to show through...
+  * Fix webm packet reading, to correctly retry packets. Sometimes we must send more packets before receiving decoded data, and sometimes we need to receive more decoded data before sending more packets. We had a logic error in this code.
+  * Do not divide by zero when normalizing audio waveforms full of 0.0 values
+  * Clean-up of whitespace
+  * - Removed possible black background from Tracker and Object Detector effects when using a child clip - Small refactor to Tracker and Object Detector drawImage code when drawing a Child Clip ID - Some light code clean-up
+  * Allow clearing of the child_clip_id property
+  * Removing magick++ library, as it conflicts with catch2 library
+  * Experimental catch2 install for github Linux builders
+  * Experimental catch2 install for github Linux builders
+  * Protect calls to ParentClipProperties
+  * Attempting to upgrade to the latest catch2 package
+  * Updating old github action target to use new Ubuntu builder
+  * Protect child_clip_id from accessing NULL parentClip property
+
+-------------------------------------------------------------------
 Tue Apr 11 07:34:31 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.3.1:

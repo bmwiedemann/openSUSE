@@ -16,10 +16,10 @@
 #
 
 
-%define sover 24
+%define sover 25
 
 Name:           libopenshot
-Version:        0.3.1
+Version:        0.3.2
 Release:        0
 Summary:        The core library for the OpenShot video editor
 License:        LGPL-3.0-or-later
