@@ -281,4 +281,21 @@
   * fix: ensure `raw`-scoped rules are run on code (forwarded request 1088746 from jfkw)</comment>
     <requestid>1088747</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>371766f4cf3f5e5c9b1ea834c1d34f38</srcmd5>
+    <version>2.28.0</version>
+    <time>1688563869</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.28.0:
+  * fix: set base path for `VALE_CONFIG_PATH`
+  * feat: support `VALE_CONFIG_PATH`
+  * fix: normalizePath tilde expansion on Windows (#656)
+  * fix: update GitLab CI
+  * feat: add clojure support (#649)
+  * refactor: make capitalization threshold `&gt;=`
+  * docs: typo
+  * fix: broken README.md link
+  * Update README.md (#638) (forwarded request 1096856 from jfkw)</comment>
+    <requestid>1096857</requestid>
+  </revision>
 </revisionlist>

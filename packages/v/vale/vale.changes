@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul 04 21:17:01 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 2.28.0:
+  * fix: set base path for `VALE_CONFIG_PATH`
+  * feat: support `VALE_CONFIG_PATH`
+  * fix: normalizePath tilde expansion on Windows (#656)
+  * fix: update GitLab CI
+  * feat: add clojure support (#649)
+  * refactor: make capitalization threshold `>=`
+  * docs: typo
+  * fix: broken README.md link
+  * Update README.md (#638)
+
+-------------------------------------------------------------------
 Tue May 23 23:56:37 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 2.27.0:

@@ -17,7 +17,7 @@
 
 
 Name:           vale
-Version:        2.27.0
+Version:        2.28.0
 Release:        0
 Summary:        CLI tool to lint prose text with syntax awareneness and extensible markup format support
 License:        MIT
