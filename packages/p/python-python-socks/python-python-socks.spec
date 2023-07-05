@@ -16,8 +16,7 @@
 #
 
 
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-python-socks
 Version:        2.1.1
 Release:        0
@@ -25,7 +24,8 @@ Summary:        Core proxy client functionality for Python
 License:        Apache-2.0
 URL:            https://github.com/romis2012/python-socks
 Source:         https://files.pythonhosted.org/packages/source/p/python-socks/python-socks-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -38,22 +38,23 @@ Supports SOCKS4(a), SOCKS5, HTTP (tunneling) proxy and provides sync and async
 directly. It is used internally by aiohttp-socks and httpx-socks packages.
 
 %prep
-%setup -q -n python-socks-%{version}
+%autosetup -p1 -n python-socks-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # try at least a simple import
-echo 'from python_socks import ProxyType' | python3
+%python_exec -c 'from python_socks import ProxyType'
 
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/python_socks
+%{python_sitelib}/python_socks-%{version}*-info
 
 %changelog

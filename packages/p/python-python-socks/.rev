@@ -31,4 +31,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1068359</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e14fadc782c260c2340820fee81c6a21</srcmd5>
+    <version>2.1.1</version>
+    <time>1688563861</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up SPEC file.
+- Add %{?sle15_python_module_pythons}
+</comment>
+    <requestid>1096900</requestid>
+  </revision>
 </revisionlist>
