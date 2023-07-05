@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 04 19:26:31 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 0.12.2:
+  * Fix the crash when shrinking scrolled terminal
+  * Fix freeze with some drivers when using GLX
+  * Fix hyperlink preview for 2 lines terminal
+  * Bump `actions/checkout` to v3
+
+-------------------------------------------------------------------
 Sun Jun 18 15:00:33 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
 
 - Make terminfo package a suggested dependency
