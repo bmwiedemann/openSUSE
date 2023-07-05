@@ -16,9 +16,10 @@
 #
 
 
+%{?sle15_python_module_pythons}
 %define with_php 1
 %if 0%{?suse_version} > 1320
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 %define php  php8
 %else
 %define php  php7
@@ -150,7 +151,7 @@ Provides:       uwsgi-ugreen = %{version}
 Obsoletes:      uwsgi-ugreen < 1.9.11
 Provides:       uwsgi-zergpool = %{version}
 Obsoletes:      uwsgi-zergpool < 1.9.11
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500
 # these must be the last directives before the description
 %define python_subpackage_only 1
 %python_subpackages
@@ -340,7 +341,7 @@ uWSGI is a self-healing application container server coded in pure C.
 
 This package contains support for Python applications using PyPy.
 
-%if 0%{suse_version} < 1550
+%if 0%{?sle_version} && 0%{?sle_version} <= 150400
 
 %package python3
 Summary:        Python 3 Plugin for uWSGI
@@ -539,10 +540,10 @@ export UWSGICONFIG_LUAPC="lua"
 export UWSGICONFIG_RUBYPATH="ruby1.9"
 export CFLAGS="%{optflags} -Wno-error=deprecated-declarations -I%{_includedir}/glusterfs -I$(echo %{_libdir}/erlang/lib/erl_interface-*/include) -I%{_jvmdir}/java/include/linux -L$UWSGICONFIG_JVM_LIBPATH/jli"
 %{?jobs:export CPUCOUNT=%jobs}
-python3 uwsgiconfig.py --build opensuse
+%python_expand PYTHON=$python $python uwsgiconfig.py --build opensuse
 
 # Build python3 plugins
-%if 0%{?suse_version} < 1550
+%if 0%{?sle_version} && 0%{?sle_version} <= 150400
 python3 uwsgiconfig.py --plugin plugins/python opensuse python3
 %else
 # https://uwsgi-docs.readthedocs.io/en/latest/WSGIquickstart.html#bonus-multiple-python-versions-for-the-same-uwsgi-binary
@@ -571,7 +572,7 @@ install -m 0644 %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} %{buildroot}%{_sysco
 install -m 0644 vassals/broodlord.ini %{buildroot}%{_sysconfdir}/uwsgi/vassals/broodlord.ini.example
 install -m 0644 vassals/cc.ini %{buildroot}%{_sysconfdir}/uwsgi/vassals/cc.ini.example
 install -m 0644 vassals/multi.xml %{buildroot}%{_sysconfdir}/uwsgi/vassals/multi.xml.example
-%if 0%{suse_version} < 1550
+%if 0%{?sle_version} && 0%{?sle_version} <= 150400
 install -D -m 0644 uwsgidecorators.py %{buildroot}%{python3_sitelib}/uwsgidecorators.py
 %else
 %{python_expand #
@@ -763,7 +764,7 @@ install -m 0644 %{SOURCE9} %{buildroot}/%{_tmpfilesdir}/uwsgi.conf
 %defattr(-,root,root,-)
 %{_libdir}/uwsgi/pypy_plugin.so
 
-%if 0%{suse_version} < 1550
+%if 0%{?sle_version} && 0%{?sle_version} <= 150400
 
 %files python3
 %defattr(-,root,root,-)
