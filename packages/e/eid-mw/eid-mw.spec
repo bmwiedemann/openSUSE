@@ -23,7 +23,7 @@
 %define src_name eid-mw-%{version}-v%{version}
 
 Name:           eid-mw
-Version:        5.1.4
+Version:        5.1.11
 Release:        0
 URL:            https://eid.belgium.be/nl
 Summary:        Belgium electronic identity card PKCS#11 module and Firefox plugin
