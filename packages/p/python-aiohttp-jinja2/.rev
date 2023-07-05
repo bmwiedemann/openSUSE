@@ -36,4 +36,12 @@
     @template (deprecated since 0.16).</comment>
     <requestid>1064213</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>034bd282c3d019e0b7254538091a709c</srcmd5>
+    <version>1.5.1</version>
+    <time>1688563854</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1096818</requestid>
+  </revision>
 </revisionlist>
