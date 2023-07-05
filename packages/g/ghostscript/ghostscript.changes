@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul  4 06:16:33 UTC 2023 - Johannes Meixner <jsmeix@suse.com>
+
+- CVE-2023-36664.patch fixes CVE-2023-36664
+  see https://bugs.ghostscript.com/show_bug.cgi?id=706761
+  "OS command injection in %pipe% access"
+  and https://bugs.ghostscript.com/show_bug.cgi?id=706778
+  "%pipe% allowed_path bypass"
+  and bsc#1212711
+  "permission validation mishandling for pipe devices
+   (with the %pipe% prefix or the | pipe character prefix)"
+
+-------------------------------------------------------------------
 Wed Apr 26 19:08:09 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Replace BuildRequire on xorg-x11-devel by pkgconfig(...)
@@ -15,35 +27,50 @@ Tue Apr 11 09:09:56 UTC 2023 - Johannes Meixner <jsmeix@suse.com>
 Mon Jul 18 07:28:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 9.56.1:
-  * New PDF Interpreter: This is an entirely new implementation written in C
-    (rather than PostScript, as before)
-  * Calling Ghostscript via the GS API is now thread safe. The one limitation
-    is that the X11 devices for Unix-like systems (x11, x11alpha, x11cmyk,
-    x11cmyk2, x11cmyk4, x11cmyk8, x11gray2, x11gray4 and x11mono) cannot be
-    made thread safe, due to their interaction with the X11 server, those
-    devices have been modified to only allow one instance in an executable.
-  * The PSD output device now writes ICC profiles to their output files, for
-    improved color fidelity.
+  Highlights in this release include
+  (excerpts from the Ghostscript upstream release summary
+   in https://ghostscript.com/docs/9.56.1/News.htm):
+  * New PDF Interpreter: This is an entirely new implementation
+    written in C (rather than PostScript, as before)
+  * Calling Ghostscript via the GS API is now thread safe. The one
+    limitation is that the X11 devices for Unix-like systems (x11,
+    x11alpha, x11cmyk, x11cmyk2, x11cmyk4, x11cmyk8, x11gray2,
+    x11gray4 and x11mono) cannot be made thread safe, due to their
+    interaction with the X11 server, those devices have been
+    modified to only allow one instance in an executable.
+  * The PSD output device now writes ICC profiles to their output
+    files, for improved color fidelity.
   * Our efforts in code hygiene and maintainability continue.
-  * The usual round of bug fixes, compatibility changes, and incremental
-    improvements.
+  * The usual round of bug fixes, compatibility changes, and
+    incremental improvements.
   * We have added the capability to build with the Tesseract OCR
-    engine. In such a build, new devices are available (pdfocr8/pdfocr24/
-    pdfocr32) which render the output file to an image, OCR that image, and
-    output the image "wrapped" up as a PDF file, with the OCR generated text
-    information included as "invisible" text (in PDF terms, text rendering mode
-    3).
-- drop CVE-2021-3781.patch, CVE-2021-45949.patch: upstream
+    engine. In such a build, new devices are available
+    (pdfocr8/pdfocr24/pdfocr32) which render the output file to an
+    image, OCR that image, and output the image "wrapped" up as a
+    PDF file, with the OCR generated text information included
+    as "invisible" text (in PDF terms, text rendering mode 3).
+    Mainly due to time constraints, we only support including
+    Tesseract from source included in our release packages,
+    and not linking to Tesseract/Leptonica shared libraries.
+    Whether we add this capability will be largely dependent
+    on community demand for the feature. See Enabling OCR
+    at https://www.ghostscript.com/ocr.html for more details.
+  For a release summary see:
+  https://www.ghostscript.com/doc/9.54.0/News.htm
+  For details see the News.htm and History9.htm files.
+- Configure --without-tesseract because this requires C++ (it
+  might be added if Tesseract support in Ghostscript is needed).
+- Drop CVE-2021-3781.patch, CVE-2021-45949.patch: upstream
 
 -------------------------------------------------------------------
 Mon Jul 18 06:38:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- use _multibuild 
+- Use _multibuild 
 
 -------------------------------------------------------------------
 Wed Apr 13 11:12:39 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- use system zlib (bsc#1198449) 
+- Use system zlib (bsc#1198449) 
 
 -------------------------------------------------------------------
 Thu Apr  7 08:14:51 UTC 2022 - Frederic Crozat <fcrozat@suse.com>

@@ -53,6 +53,18 @@ Patch101:       ijs_exec_server_dont_use_sh.patch
 # cf. https://bugs.ghostscript.com/show_bug.cgi?id=706494
 # and https://bugzilla.suse.com/show_bug.cgi?id=1210062
 Patch102:       CVE-2023-28879.patch
+# Patch103 CVE-2023-36664.patch is
+# https://git.ghostscript.com/?p=ghostpdl.git;a=commitdiff;h=505eab7782b429017eb434b2b95120855f2b0e3c
+# and
+# https://git.ghostscript.com/?p=ghostpdl.git;a=commitdiff;h=0974e4f2ac0005d3731e0b5c13ebc7e965540f4d
+# that fixes CVE-2023-36664
+# see https://bugs.ghostscript.com/show_bug.cgi?id=706761
+# "OS command injection in %pipe% access"
+# and https://bugs.ghostscript.com/show_bug.cgi?id=706778
+# "%pipe% allowed_path bypass"
+# and https://bugzilla.suse.com/show_bug.cgi?id=1212711
+# "permission validation mishandling for pipe devices (with the %pipe% prefix or the | pipe character prefix)"
+Patch103:       CVE-2023-36664.patch
 BuildRequires:  freetype2-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  liblcms2-devel
@@ -257,6 +269,18 @@ This package contains the development files for Ghostscript.
 # cf. https://bugs.ghostscript.com/show_bug.cgi?id=706494
 # and https://bugzilla.suse.com/show_bug.cgi?id=1210062
 %patch102
+# Patch103 CVE-2023-36664.patch is
+# https://git.ghostscript.com/?p=ghostpdl.git;a=commitdiff;h=505eab7782b429017eb434b2b95120855f2b0e3c
+# and
+# https://git.ghostscript.com/?p=ghostpdl.git;a=commitdiff;h=0974e4f2ac0005d3731e0b5c13ebc7e965540f4d
+# that fixes CVE-2023-36664
+# see https://bugs.ghostscript.com/show_bug.cgi?id=706761
+# "OS command injection in %pipe% access"
+# and https://bugs.ghostscript.com/show_bug.cgi?id=706778
+# "%pipe% allowed_path bypass"
+# and https://bugzilla.suse.com/show_bug.cgi?id=1212711
+# "permission validation mishandling for pipe devices (with the %pipe% prefix or the | pipe character prefix)"
+%patch103
 # Remove patch backup files to avoid packaging
 # cf. https://build.opensuse.org/request/show/581052
 rm -f Resource/Init/*.ps.orig
@@ -325,15 +349,27 @@ autoreconf -fi
 #   (replacing JasPer - although JasPer is still included for this release)
 #   Performance, reliability and memory use whilst decoding JPX streams are all improved.
 #   see also http://bugs.ghostscript.com/show_bug.cgi?id=691430
-# --without-ufst and --without-luratech because those are relevant to commercial releases only
+# --without-ufst because this is relevant to commercial releases only
 #   which would require a commercial license.
 # --disable-compile-inits to disable compiling of resources (Fonts, init postscript files, ...)
 #   into the library, which is the upstream recommendation for distributions. This also allows
 #   unbundling the 35 Postscript Standard fonts, provided by the URW font package
 # --without-libpaper disables libpaper support because SUSE does not have libpaper.
+# --without-tesseract because this requires C++ (it might be added if Tesseract support in Ghostscript is needed).
 %define gs_font_path %{_datadir}/fonts/truetype:%{_datadir}/fonts/Type1:%{_datadir}/fonts/CID:%{_datadir}/fonts/URW
 # See http://bugs.ghostscript.com/show_bug.cgi?id=693100
 export SUSE_ASNEEDED=0
+# The RPM configure macro results in the build log e.g. on Tumbleweed x86_64 (very long line shown wrapped here)
+#   ./configure --host=x86_64-suse-linux-gnu --build=x86_64-suse-linux-gnu --program-prefix= --disable-dependency-tracking
+#     --prefix=/usr --exec-prefix=/usr --bindir=/usr/bin --sbindir=/usr/sbin --sysconfdir=/etc --datadir=/usr/share
+#     --includedir=/usr/include --libdir=/usr/lib64 --libexecdir=/usr/libexec --localstatedir=/var --sharedstatedir=/var/lib
+#     --mandir=/usr/share/man --infodir=/usr/share/info
+#     --with-fontpath=/usr/share/fonts/truetype:/usr/share/fonts/Type1:/usr/share/fonts/CID:/usr/share/fonts/URW
+#     --with-libiconv=maybe --enable-freetype --with-jbig2dec --enable-openjpeg --enable-dynamic --disable-compile-inits
+#     --without-local-zlib --with-ijs --enable-cups --with-drivers=ALL --with-x
+#     --disable-gtk --without-ufst --without-libpaper --without-tesseract
+#   configure: WARNING: unrecognized options: --disable-dependency-tracking
+# so the "unrecognized options: --disable-dependency-tracking" warning comes from the RPM configure macro.
 %configure \
     --with-fontpath=%{gs_font_path} \
     --with-libiconv=maybe \
@@ -358,8 +394,8 @@ export SUSE_ASNEEDED=0
 %endif
     --disable-gtk \
     --without-ufst \
-    --without-luratech \
-    --without-libpaper
+    --without-libpaper \
+    --without-tesseract
 
 # Make libgs.so and two programs which use it, gsx and gsc:
 # With --disable-gtk, gsx and gsc are identical. It provides a command line
