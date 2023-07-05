@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul  3 21:14:59 UTC 2023 - munix9@googlemail.com
+
+- Fix for Factory/TW: Use protobuf < 22.5
+- Add f2fs-tools as a requirement: Required for 'fastboot format:f2fs ...'
+  (link /usr/bin/make_f2fs to /usr/sbin/mkfs.f2fs)
+
+-------------------------------------------------------------------
 Mon May 15 16:12:50 UTC 2023 - munix9@googlemail.com
 
 - Update to version 34.0.1

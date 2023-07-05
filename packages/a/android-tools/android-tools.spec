@@ -42,6 +42,7 @@ Source2:        man-pages.tar.gz
 Patch0:         fix-install-completion.patch
 BuildRequires:  clang
 BuildRequires:  cmake >= 3.12
+BuildRequires:  f2fs-tools
 BuildRequires:  go
 BuildRequires:  llvm-gold
 BuildRequires:  ninja
@@ -54,8 +55,9 @@ BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libunwind-generic)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libzstd)
-BuildRequires:  pkgconfig(protobuf)
+BuildRequires:  pkgconfig(protobuf) < 22.5
 Requires:       android-udev-rules
+Requires:       f2fs-tools
 Requires:       python%{_pyn}
 Suggests:       %{name}-mkbootimg = %{version}
 Suggests:       %{name}-partition = %{version}
@@ -119,6 +121,9 @@ export GOFLAGS="-mod=vendor -buildmode=pie -trimpath -ldflags=-buildid="
 %install
 %cmake_install
 
+# required by 'fastboot format:f2fs ...'
+ln -s %{_sbindir}/mkfs.f2fs %{buildroot}%{_bindir}/make_f2fs
+
 # fix non-executable-script
 chmod 0755 %{buildroot}%{_datadir}/%{name}/mkbootimg/gki/generate_gki_certificate.py
 
@@ -143,6 +148,7 @@ mkbootimg --help
 %{_bindir}/ext2simg
 %{_bindir}/fastboot
 %{_bindir}/img2simg
+%{_bindir}/make_f2fs
 %{_bindir}/mke2fs.android
 %{_bindir}/simg2img
 %{_mandir}/man1/adb.1%{?ext_man}
