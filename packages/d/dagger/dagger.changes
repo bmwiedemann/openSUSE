@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Jul 05 05:39:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.6.3:
+  * docs: Added Azure Pipelines sample in CI guide (#5166)
+  * Fix Python provision tests (#5403)
+  * Python: migrate back to hatch (#5401)
+  * bump github.com/Khan/genqlient from 0.5.0 to 0.6.0 (#5402)
+  * build(deps): bump github.com/vito/progrock from 0.6.0 to 0.7.0
+    (#5385)
+  * build(deps): bump typescript from 4.9.5 to 5.0.4 in /website
+    (#5394)
+  * build(deps): bump golang.org/x/oauth2 from 0.8.0 to 0.9.0
+    (#5387)
+  * build(deps): bump github.com/prometheus/procfs from 0.10.1 to
+    0.11.0 (#5384)
+  * build(deps): bump sass from 1.61.0 to 1.63.6 in /website
+    (#5393)
+  * Fix returning lists of objects (#5375)
+  * core: improve image publish/export format compatibility.
+    (#5365)
+  * project: update runtimes to use Dagger types. (#5360)
+  * Fix hacks in project commands and sync (#5353)
+  * engine: add cloud cache token env var (#5356)
+  * engine: remove old cache config env from autoprovision. (#5355)
+  * project: also kebab flag names. (#5354)
+  * Python linting fixes (#5352)
+  * Replace exitCode with sync in docs (#5327)
+  * Fix failing tests due to outdated merge (#5350)
+  * project: partial support for returning host dirs/files. (#5346)
+  * project: convert camel command names to kebab (#5349)
+  * cache: set dagger cloud default magicache URL (#5343)
+  * cli: fix incorrect subcommand being called. (#5344)
+  * Python Project Commands: Create thin wrapper around strawberry
+    (#5300)
+  * `dagger project` CLI (#5308)
+  * core: use include filter in host.file (#5345)
+  * Send Progrock updates to Cloud (#5297)
+  * Improve releasing during 0.6.2 (#5325)
+
+-------------------------------------------------------------------
 Fri Jun 16 05:46:40 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.6.2:
