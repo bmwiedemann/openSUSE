@@ -1,7 +1,7 @@
 #
 # spec file for package nsd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define zonesdir   %{configdir}/zones
 %define pidfile    %{_rundir}/nsd/nsd.pid
 Name:           nsd
-Version:        4.6.1
+Version:        4.7.0
 Release:        0
 #
 Summary:        An authoritative-only domain name server
@@ -44,19 +44,18 @@ Source2:        tmpfiles-nsd.conf
 #
 Source4:        nsd.keyring
 Source5:        https://www.nlnetlabs.nl/downloads/nsd/nsd-%{version}.tar.gz.asc
-Source10:       nsd-rpmlintrc
 #
 BuildRequires:  libevent-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pwdutils
 BuildRequires:  tcpd-devel
-Requires:       pwdutils
-Requires(pre):  coreutils
+Requires:       shadow
 Requires(post): coreutils
 Requires(post): findutils
-Requires(pre):  shadow
 Requires(post): shadow
+Requires(pre):  coreutils
+Requires(pre):  shadow
 %{?systemd_requires}
 
 %description
@@ -80,7 +79,7 @@ by NLnet Labs, with the purpose of creating more diversity in the DNS landscape.
     --enable-mmap                      \
     --with-user=_nsd                   \
     --enable-ratelimit
-make %{?_smp_mflags}
+%make_build
 iconv -f iso8859-1 -t utf-8 doc/RELNOTES > doc/RELNOTES.utf8
 iconv -f iso8859-1 -t utf-8 doc/CREDITS > doc/CREDITS.utf8
 mv -f doc/RELNOTES.utf8 doc/RELNOTES
@@ -131,11 +130,11 @@ systemd-tmpfiles --create  %{_tmpfilesdir}/%{name}.conf || :
 %{_sbindir}/nsd-control-setup
 %{_sbindir}/nsd-checkconf
 %{_sbindir}/nsd-checkzone
-%{_mandir}/man5/nsd.conf.5*
-%{_mandir}/man8/nsd-checkconf.8*
-%{_mandir}/man8/nsd-checkzone.8*
-%{_mandir}/man8/nsd.8*
-%{_mandir}/man8/nsd-control.8*
+%{_mandir}/man5/nsd.conf.5%{?ext_man}
+%{_mandir}/man8/nsd-checkconf.8%{?ext_man}
+%{_mandir}/man8/nsd-checkzone.8%{?ext_man}
+%{_mandir}/man8/nsd.8%{?ext_man}
+%{_mandir}/man8/nsd-control.8%{?ext_man}
 #
 %config(noreplace) %attr(-,root,_nsd) %{configdir}
 %ghost %config %attr(640,_nsd,_nsd) %{configdir}/nsd.conf

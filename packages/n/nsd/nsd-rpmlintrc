@@ -1,3 +1,0 @@
-# failed check. chroot immediately follows chdir
-addFilter("W: missing-call-to-chdir-with-chroot /usr/sbin/nsd")
-

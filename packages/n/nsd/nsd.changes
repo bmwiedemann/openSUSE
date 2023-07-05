@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jun 21 13:52:55 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- New upstream release 4.7.0
+  This release adds a script for bash autocompletion for nsd-control. Also
+  nsd-control can be configured to use unencrypted operation also when
+  compiled without openssl. There is also a systemd service unit example
+  file contributed. The dnstap log service can be contacted over TCP, with
+  the dnstap-ip: ip option. It is also possible to use TLS, with
+  dnstap-tls, it is enabled by default, and can be configured with the
+  dnstap-server-name, dnstap-cert-bundle, dnstap-client-key-file and
+  dnstap-client-cert-file options. 
+
+  FEATURES:
+    * Fix #267: Allow unencrypted local operation of nsd-control.
+    * Fix #271: DNSTAP over TCP, with dnstap-ip: "127.0.0.1@3333".
+    * dnstap over TLS, default enabled. Configured with the
+      options dnstap-tls, dnstap-tls-server-name, dnstap-tls-cert-bundle,
+      dnstap-tls-client-key-file and dnstap-tls-client-cert-file.
+
+  BUGFIXES:
+    see https://github.com/NLnetLabs/nsd/releases/tag/NSD_4_7_0_REL
+
+
+-------------------------------------------------------------------
 Thu Nov 10 18:23:54 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - New upstream release 4.6.1

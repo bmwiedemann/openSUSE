@@ -321,4 +321,12 @@ BUG FIXES:
     <comment></comment>
     <requestid>1035226</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>f7034a60f1036d515b440744db7c7646</srcmd5>
+    <version>4.7.0</version>
+    <time>1688563899</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1096942</requestid>
+  </revision>
 </revisionlist>
