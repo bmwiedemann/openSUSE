@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  5 07:58:55 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.12.2:
+  * Fix crash on attempt to split an image #183
+
+-------------------------------------------------------------------
 Fri Jun 23 06:29:33 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update 1.12.1

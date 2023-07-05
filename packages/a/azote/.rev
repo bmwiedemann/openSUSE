@@ -211,4 +211,13 @@
   * Add Russian translation #182</comment>
     <requestid>1094772</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7cb5592cf0bd3ca779b162068c3b7377</srcmd5>
+    <version>1.12.2</version>
+    <time>1688563882</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.12.2:
+  * Fix crash on attempt to split an image #183</comment>
+    <requestid>1096902</requestid>
+  </revision>
 </revisionlist>
