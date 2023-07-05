@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul  3 19:37:53 UTC 2023 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.32:
+  * rpm-script: check for regenerate-initrd-posttrans in %posttrans
+    (boo#1212957)
+
+-------------------------------------------------------------------
 Tue Jun  6 13:05:55 UTC 2023 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.31:

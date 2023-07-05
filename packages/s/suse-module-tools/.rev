@@ -657,4 +657,14 @@ source service setup which messed up my spec file.
   * rpm-script: skip run_bootloader check (boo#1208117) (forwarded request 1091089 from mwilck)</comment>
     <requestid>1091090</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>1a332e4bcb75867ffc104ef92df0d79e</srcmd5>
+    <version>16.0.32</version>
+    <time>1688563821</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.32:
+  * rpm-script: check for regenerate-initrd-posttrans in %posttrans
+    (boo#1212957) (forwarded request 1096641 from mwilck)</comment>
+    <requestid>1096642</requestid>
+  </revision>
 </revisionlist>
