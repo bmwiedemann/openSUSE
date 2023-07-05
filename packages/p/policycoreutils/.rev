@@ -553,4 +553,14 @@ sepolgen: Add back attributes flag to fix exception crash from Dan Walsh.
     <comment></comment>
     <requestid>1095397</requestid>
   </revision>
+  <revision rev="69" vrev="4">
+    <srcmd5>76226d10a736b60ed989a57fa374b09e</srcmd5>
+    <version>3.5</version>
+    <time>1688563834</time>
+    <user>dimstar_suse</user>
+    <comment>- Only recommend policycoreutils-devel. The requires causes build issues
+  and this can be used with a policy from a different source
+- Required fixed python3-selinux, not version dependend sub-packages</comment>
+    <requestid>1096746</requestid>
+  </revision>
 </revisionlist>

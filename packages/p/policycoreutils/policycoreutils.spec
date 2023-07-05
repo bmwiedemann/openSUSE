@@ -96,12 +96,7 @@ Group:          Productivity/Security
 Requires:       %{name} = %{version}-%{release}
 Requires:       checkpolicy
 Requires:       python3-audit >= %{libaudit_ver}
-%if 0%{?sle_version} == 150500
-#BuildRequires:  %{python_module selinux}
-Requires:       python311-selinux
-%else
 Requires:       python3-selinux
-%endif
 Requires:       python3-semanage >= %{libsepol_ver}
 Requires:       python3-setools >= %{setools_ver}
 Requires:       python3-setuptools
@@ -130,8 +125,8 @@ Group:          Productivity/Security
 Requires:       %{_bindir}/make
 Requires:       python3-%{name} = %{version}-%{release}
 Requires:       python3-distro
-Requires:       selinux-policy-devel
 Recommends:     %{_sbindir}/ausearch
+Recommends:     selinux-policy-devel
 Conflicts:      %{name}-python <= 2.6
 
 %description devel
