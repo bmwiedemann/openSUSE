@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul  4 23:36:32 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.14.1
+  * Bugfix release
+- Update to version 0.14.0
+  * Tectonic’s BibTeX engine has been partially translated from C to Rust 
+
+Full changelog at https://github.com/tectonic-typesetting/tectonic/compare/tectonic%400.13.1...tectonic%400.14.1
+
+-------------------------------------------------------------------
 Tue May 23 14:32:32 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 0.13.1:
