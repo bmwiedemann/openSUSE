@@ -48,6 +48,7 @@ BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5Widgets)
+Requires:       /usr/bin/fusermount
 Requires:       plasma-vault-backend
 # We recommend encfs for now as cryfs has certain issues
 Recommends:     plasma-vault-backend-encfs
@@ -59,8 +60,9 @@ Plasma Vault is a plasmoid for creating and managing encrypted vaults
 Summary:        Necessary packages for plasma-vault to support encfs vaults
 Group:          Productivity/Security
 Requires:       %{name} = %{version}
-Requires:       encfs
+Requires:       encfs >= 1.9.1
 Provides:       plasma-vault-backend
+BuildArch:      noarch
 
 %description backend-encfs
 This package pulls in dependencies for the plasma-vault encfs backend.
@@ -72,9 +74,21 @@ Requires:       %{name} = %{version}
 # Previous versions could not update properly
 Requires:       cryfs >= 0.9.9
 Provides:       plasma-vault-backend
+BuildArch:      noarch
 
 %description backend-cryfs
 This package pulls in dependencies for the plasma-vault cryfs backend.
+
+%package backend-gocryptfs
+Summary:        Necessary packages for plasma-vault to support gocryptfs vaults
+Group:          Productivity/Security
+Requires:       %{name} = %{version}
+Requires:       gocryptfs >= 1.8
+Provides:       plasma-vault-backend
+BuildArch:      noarch
+
+%description backend-gocryptfs
+This package pulls in dependencies for the plasma-vault gocryptfs backend.
 
 %lang_package
 
@@ -109,6 +123,9 @@ This package pulls in dependencies for the plasma-vault cryfs backend.
 %license LICENSES/*
 
 %files backend-cryfs
+%license LICENSES/*
+
+%files backend-gocryptfs
 %license LICENSES/*
 
 %changelog

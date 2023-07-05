@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 22 19:22:25 UTC 2023 - munix9@googlemail.com
+
+- Add the subpackage plasma-vault-backend-gocryptfs.
+- Add required versions and /usr/bin/fusermount as a requirement.
+- Make the backend-subpackages "noarch".
+
+-------------------------------------------------------------------
 Tue Jun 20 17:15:06 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.6
