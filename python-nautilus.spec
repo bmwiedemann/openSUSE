@@ -1,7 +1,7 @@
 #
 # spec file for package python-nautilus
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ License:        GPL-2.0-or-later
 Group:          Development/Libraries/Python
 URL:            https://wiki.gnome.org/Projects/NautilusPython
 Source:         https://download.gnome.org/sources/nautilus-python/4.0/%{_name}-%{version}.tar.xz
+# PATCH-FIX-OPENSUSE: fix-hwcaps.patch -- bsc#1212474
+Patch1:         fix-hwcaps.patch
 
 BuildRequires:  %{python_module devel}
 BuildRequires:  gtk-doc
@@ -99,9 +101,9 @@ sed -i "s|docdir =.*|docdir = '%{_docdir}/$python-nautilus'|g" meson.build
 # New dir where python extensions get installed. It's not created by make
 # install (bgo#638890).
 test ! -d %{buildroot}%{_datadir}/nautilus-python/extensions
-mkdir -p %{buildroot}%{_datadir}/nautilus-python/extensions
 find %{buildroot} -type f -name "*.la" -delete -print
 find %{buildroot} -size 0 -delete
+mkdir -p %{buildroot}%{_datadir}/nautilus-python/extensions
 
 %files %{python_files}
 %license COPYING
