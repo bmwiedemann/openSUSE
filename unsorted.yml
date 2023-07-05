@@ -9252,9 +9252,7 @@ unsorted:
   - kpkpass 
   - kpkpass-devel 
   - kplotting-devel 
-  - kpmcore 
   - kpmcore-devel 
-  - kpmcore-lang 
   - kproperty 
   - kproperty-devel 
   - kproperty-lang 
@@ -12875,7 +12873,6 @@ unsorted:
   - libkolabxml-devel 
   - libkomparediff2-devel 
   - libkonkretcmpi0 
-  - libkpmcore12 
   - libkrb5-26 
   - libkrun-devel 
   - libkrun-sev-devel 
@@ -13714,7 +13711,7 @@ unsorted:
   - libopenshot-audio-devel 
   - libopenshot-audio9 
   - libopenshot-devel 
-  - libopenshot24 
+  - libopenshot25 
   - libopenslide-devel 
   - libopenslide0 
   - libopensm9 
@@ -19835,8 +19832,6 @@ unsorted:
   - partio 
   - partio-devel 
   - partio-doc 
-  - partitionmanager 
-  - partitionmanager-lang 
   - parzip 
   - pass-import 
   - pass-otp 
@@ -21702,6 +21697,7 @@ unsorted:
   - plasma-vault 
   - plasma-vault-backend-cryfs 
   - plasma-vault-backend-encfs 
+  - plasma-vault-backend-gocryptfs 
   - plasma-vault-lang 
   - plasma-wayland-protocols 
   - plasma5-addons-devel 
@@ -23195,7 +23191,6 @@ unsorted:
   - python310-ajsonrpc 
   - python310-akismet 
   - python310-alabaster 
-  - python310-aldjemy 
   - python310-alembic 
   - python310-allpairspy 
   - python310-alsa 
@@ -23218,6 +23213,7 @@ unsorted:
   - python310-anyjson 
   - python310-anymarkup-core 
   - python310-apache-libcloud 
+  - python310-apacheconfig 
   - python310-apfel 
   - python310-apipkg 
   - python310-apiron 
@@ -26655,7 +26651,6 @@ unsorted:
   - python311-ajsonrpc 
   - python311-akismet 
   - python311-alabaster 
-  - python311-aldjemy 
   - python311-allpairspy 
   - python311-alsa 
   - python311-altair 
@@ -26676,6 +26671,7 @@ unsorted:
   - python311-anyjson 
   - python311-anymarkup-core 
   - python311-apache-libcloud 
+  - python311-apacheconfig 
   - python311-apfel 
   - python311-apiron 
   - python311-apns2 
@@ -29997,7 +29993,6 @@ unsorted:
   - python39-ajsonrpc 
   - python39-akismet 
   - python39-alabaster 
-  - python39-aldjemy 
   - python39-alembic 
   - python39-allpairspy 
   - python39-alsa 
@@ -30020,6 +30015,7 @@ unsorted:
   - python39-anyjson 
   - python39-anymarkup-core 
   - python39-apache-libcloud 
+  - python39-apacheconfig 
   - python39-apfel 
   - python39-apipkg 
   - python39-apiron 
@@ -33241,6 +33237,7 @@ unsorted:
   - qemu-skiboot 
   - qemu-uefi-aarch32 
   - qemu-uefi-aarch64 
+  - qemu-uefi-riscv64 
   - qemu-ui-dbus 
   - qemu-vhost-user-gpu 
   - qgis 

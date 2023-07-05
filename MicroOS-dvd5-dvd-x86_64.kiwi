@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20230704" schemaversion="4.1">
+<image name="OBS__MicroOS___20230705" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230704</productvar>
+      <productvar name="VERSION">20230705</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230704,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230705,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230704/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230705/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -799,6 +799,8 @@
       <repopackage name="kpeople5"/>
       <repopackage name="kpeople5-lang"/>
       <repopackage name="kpipewire-imports"/>
+      <repopackage name="kpmcore"/>
+      <repopackage name="kpmcore-lang"/>
       <repopackage name="kquickcharts"/>
       <repopackage name="krb5"/>
       <repopackage name="kscreen5"/>
@@ -1372,6 +1374,7 @@
       <repopackage name="libKPipeWire5-lang"/>
       <repopackage name="libKPipeWireDmaBuf5"/>
       <repopackage name="libKPipeWireRecord5"/>
+      <repopackage name="libkpmcore12"/>
       <repopackage name="libksba8"/>
       <repopackage name="libkscreen2-plugin"/>
       <repopackage name="libKScreenLocker5"/>
@@ -2156,6 +2159,8 @@
       <repopackage name="paratype-pt-serif-fonts"/>
       <repopackage name="parted"/>
       <repopackage name="parted-lang"/>
+      <repopackage name="partitionmanager"/>
+      <repopackage name="partitionmanager-lang"/>
       <repopackage name="patterns-base-base"/>
       <repopackage name="patterns-base-bootloader"/>
       <repopackage name="patterns-base-documentation"/>
