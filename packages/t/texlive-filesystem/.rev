@@ -577,4 +577,12 @@
   way via setpriv(8) (boo#1212006)</comment>
     <requestid>1090926</requestid>
   </revision>
+  <revision rev="57" vrev="60">
+    <srcmd5>fa9f80b7f05d9a9408b6b7a73975ab39</srcmd5>
+    <version>unknown</version>
+    <time>1688563836</time>
+    <user>dimstar_suse</user>
+    <comment>- Rework lua(meta)tex/context resource findings</comment>
+    <requestid>1096749</requestid>
+  </revision>
 </revisionlist>

@@ -523,6 +523,7 @@ make_context_fmts()
 	LUATEXDIR=${TEXMFDIST}/scripts/context/lua \
 	TEXMFCACHE=${TEXMFVAR} \
 	TEXMFCNF="home:texmf/web2c;${TEXMFCNFFILE%/*};${TEXMFDIST}/web2c" \
+	TEXMF=${TEXMFDIST} \
 	/usr/bin/context $fmt --make  < /dev/null 1>&4 2>&4
 	let status+=$?
     done
@@ -535,6 +536,7 @@ make_context_fmts()
 	LUATEXDIR=${TEXMFDIST}/scripts/context/lua \
 	TEXMFCACHE=${TEXMFVAR} \
 	TEXMFCNF="home:texmf/web2c;${TEXMFCNFFILE%/*};${TEXMFDIST}/web2c" \
+	TEXMF=${TEXMFDIST} \
 	/usr/bin/context $fmt --luatex --make  < /dev/null 1>&4 2>&4
 	let status+=$?
     done
@@ -542,6 +544,7 @@ make_context_fmts()
     LUATEXDIR=${TEXMFDIST}/scripts/context/lua \
     TEXMFCACHE=${TEXMFVAR} \
     TEXMFCNF="home:texmf/web2c;${TEXMFCNFFILE%/*};${TEXMFDIST}/web2c" \
+    TEXMF=${TEXMFDIST} \
     /usr/bin/mtxrun  --script fonts --reload  < /dev/null 1>&4 2>&4
     let status+=$?
 
@@ -558,6 +561,7 @@ if test -x /usr/bin/mtxrun ; then
     LUATEXDIR=${TEXMFDIST}/scripts/context/lua \
     TEXMFCACHE=${TEXMFVAR} \
     TEXMFCNF="home:texmf/web2c;${TEXMFCNFFILE%/*};${TEXMFDIST}/web2c" \
+    TEXMF=${TEXMFDIST} \
     /usr/bin/mtxrun --generate < /dev/null 1>&4 2>&4
     let rc+=$?
 
@@ -565,12 +569,14 @@ if test -x /usr/bin/mtxrun ; then
     LUATEXDIR=${TEXMFDIST}/scripts/context/lua \
     TEXMFCACHE=${TEXMFVAR} \
     TEXMFCNF="home:texmf/web2c;${TEXMFCNFFILE%/*};${TEXMFDIST}/web2c" \
+    TEXMF=${TEXMFDIST} \
     /usr/bin/context --luatex --generate < /dev/null 1>&4 2>&4
     let rc+=$?
 
     LUATEXDIR=${TEXMFDIST}/scripts/context/lua \
     TEXMFCACHE=${TEXMFVAR} \
     TEXMFCNF="home:texmf/web2c;${TEXMFCNFFILE%/*};${TEXMFDIST}/web2c" \
+    TEXMF=${TEXMFDIST} \
     /usr/bin/mtxrun  --script fonts --reload  < /dev/null 1>&4 2>&4
     let rc+=$?
 
@@ -587,7 +593,7 @@ if test -x /usr/bin/mtxrun ; then
 	TEXMFCACHE=${TEXMFVAR} \
 	TEXMFCNF=${TEXMFCNFFILE%/*} \
 	LUAINPUTS="$(kpsewhich --var-value=LUAINPUTS)" \
-	/usr/bin/luaotfload-tool --update --prefer-texmf --formats=+afm --log=stdout < /dev/null 1>&4 2>&4
+	/usr/bin/luaotfload-tool --update --force --log=stdout < /dev/null 1>&4 2>&4
 	let rc+=$?
     fi
 fi
