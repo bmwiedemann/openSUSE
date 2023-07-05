@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Jul 04 00:40:59 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.115.1:
+  * Fix buildStats when tags and classes are disabled
+  * Rework the build.writeStats struct
+  * snap: Explicitly set security.exec.osenv during build
+  * snap: Restore security.exec.osenv whitelist
+  * github: Build for Dragonfly in CI build
+  * Make build.writeStats a struct
+  * build(deps): bump github.com/evanw/esbuild from 0.18.10 to 0.18.11
+  * build(deps): bump github.com/alecthomas/chroma/v2 from 2.7.0 to 2.8.0
+  * commands: Fix index out of range in hugo mod get
+  * Only print the path warnings once
+
+-------------------------------------------------------------------
+Tue Jul 04 00:40:14 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.115.0:
+  * Misc permalinks adjustments
+  * commands: Handle hugo mod get --help
+  * commands: Fix panic when running hugo new theme without theme name
+  * Print help message when triggered with no flags
+  * Fix output formats and media type  per language config regression
+  * build(deps): bump github.com/evanw/esbuild from 0.18.5 to 0.18.10
+  * common/collections: Fix append regression to allow appending nil
+  * commands: Fix help message for hugo new theme
+  * Don't panic on invalid security whitelist regexp
+  * Fix false path warnings with resources.PostProcess
+  * docs: Update permalinks documentation
+  * resources/page: Allow section and taxonomy pages to have a permalink configuration
+  * tpl/tplimpl: Fix typo in global variable name
+  * commands: Enable format flag with hugo new site
+  * Fix broken nodeploy setup
+  * build(deps): bump github.com/niklasfasching/go-org from 1.6.6 to 1.7.0
+
+-------------------------------------------------------------------
 Mon Jun 26 14:32:06 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 0.114.1:

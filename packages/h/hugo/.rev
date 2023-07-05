@@ -659,4 +659,12 @@
   * deps: Update github.com/tdewolff/minify/v2 v2.12.5 =&gt; v2.12.7 (forwarded request 1095449 from jfkw)</comment>
     <requestid>1095450</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>d5cef2368e54200ccf386a3e8f8badbf</srcmd5>
+    <version>0.115.1</version>
+    <time>1688563864</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.115.1: (forwarded request 1096660 from jfkw)</comment>
+    <requestid>1096852</requestid>
+  </revision>
 </revisionlist>
