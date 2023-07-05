@@ -269,4 +269,12 @@ There are 4 months worth of complicated commit, and I cannot go through them all
     <comment>update to 1.96.4</comment>
     <requestid>1093269</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>4c9c0e32f93a65becd9c5d37ef3ef32b</srcmd5>
+    <version>1.96.5</version>
+    <time>1688563896</time>
+    <user>dimstar_suse</user>
+    <comment>update to 1.96.5</comment>
+    <requestid>1096931</requestid>
+  </revision>
 </revisionlist>
