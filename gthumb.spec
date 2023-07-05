@@ -25,8 +25,11 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://wiki.gnome.org/Apps/gthumb
 Source0:        https://download.gnome.org/sources/gthumb/3.12/%{name}-%{version}.tar.xz
-# PATCH-FIx-UPSTREAM da0d3f22.patch dimstar@opensuse.org -- Fix build with libraw 0.21
+# PATCH-FIX-UPSTREAM da0d3f22.patch dimstar@opensuse.org -- Fix build with libraw 0.21
 Patch0:         https://gitlab.gnome.org/GNOME/gthumb/-/commit/da0d3f22.patch
+# PATCH-FIX-UPSTREAM 3376550a.patch -- exiv2: added support for version 0.28
+Patch1:         https://gitlab.gnome.org/GNOME/gthumb/-/commit/3376550a.patch
+
 BuildRequires:  AppStream
 BuildRequires:  bison
 BuildRequires:  fdupes

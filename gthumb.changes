@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul  3 08:49:26 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 3376550a.patch: exiv2: added support for version 0.28.
+- Refresh da0d3f22.patch from upstream git.
+
+-------------------------------------------------------------------
 Mon Jan 16 12:07:51 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add da0d3f22.patch: Fix build with libraw 0.21.
