@@ -20,14 +20,13 @@
 %global skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-argcomplete
-Version:        3.0.8
+Version:        3.1.1
 Release:        0
 Summary:        Bash tab completion for argparse
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/kislyuk/argcomplete
 Source:         https://files.pythonhosted.org/packages/source/a/argcomplete/argcomplete-%{version}.tar.gz
-Patch1:         trim-test-deps.patch
 # Don't fail the test suite when zsh is not available
 Patch2:         without_zsh.patch
 # Use correct place for auxiliary bashrc.sh file from pexpect
@@ -95,7 +94,7 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %doc README.rst
 %license LICENSE.rst
-%{python_sitelib}/argcomplete-%{version}*-info
+%{python_sitelib}/argcomplete-*-info
 %{python_sitelib}/argcomplete
 %python_alternative %{_bindir}/python-argcomplete-check-easy-install-script
 %python_alternative %{_bindir}/register-python-argcomplete

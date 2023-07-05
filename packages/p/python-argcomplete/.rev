@@ -259,4 +259,23 @@
     <comment></comment>
     <requestid>1090044</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0bde446e890e99a8bebcbb50d25f7562</srcmd5>
+    <version>3.1.1</version>
+    <time>1688563846</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1.1
+  *  Search through asdf shims
+  *  Use \` as escape character in PowerShell (#434)
+- from version 3.1.0
+  * setup.py -&gt; pyproject.toml migration start (#427)
+  *  Improve user install logic in activate-global-python-argcomplete (#437)
+  * Ensure Python 3.7 compatibility in check_console_script (#436)
+  * ZSH implementation fixes (#431, #433)
+  * Documentation improvements
+- Drop obsolete patch
+  * trim-test-deps.patch
+</comment>
+    <requestid>1096831</requestid>
+  </revision>
 </revisionlist>

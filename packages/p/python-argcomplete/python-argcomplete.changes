@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul  4 11:24:40 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.1.1
+  *  Search through asdf shims
+  *  Use \` as escape character in PowerShell (#434)
+- from version 3.1.0
+  * setup.py -> pyproject.toml migration start (#427)
+  *  Improve user install logic in activate-global-python-argcomplete (#437)
+  * Ensure Python 3.7 compatibility in check_console_script (#436)
+  * ZSH implementation fixes (#431, #433)
+  * Documentation improvements
+- Drop obsolete patch
+  * trim-test-deps.patch
+
+-------------------------------------------------------------------
 Tue May 30 16:02:49 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - bash-repl.patch: Use correct place for auxiliary bashrc.sh file from pexpect
