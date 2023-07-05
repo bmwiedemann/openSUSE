@@ -128,7 +128,7 @@ This package holds the web interface.
 %package -n %{postorius_pkgname}-web-uwsgi
 Summary:        Postorius - uwsgi configuration
 Requires:       %{postorius_pkgname}-web
-%if 0%{suse_version} >= 1550
+%if 0%{suse_version} >= 1550 || 0%{?sle_version} >= 150500
 Requires:       %{mypython}-uwsgi-python3
 %else
 Requires:       uwsgi-python3
