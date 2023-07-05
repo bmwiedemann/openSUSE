@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  4 11:31:05 UTC 2023 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix typo when writing the wireless channel (bsc#1212976)
+- 4.6.5
+
+-------------------------------------------------------------------
 Tue Jun 13 12:11:42 UTC 2023 - Michal Filka <mfilka@suse.com>
 
 - bsc#1211431
