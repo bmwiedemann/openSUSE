@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jun 30 11:50:17 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Update to 0.9.3
+  * Added the options
+    -billionLaughsAttackProtectionMaximumAmplification and
+    -billionLaughsAttackProtectionActivationThreshold to dom parse
+    and the by the xml::parser/expat command created parser
+    commands.
+  * Schema command methods validate, validatefile and
+    validatechannel enhanced with options to control external
+    entity resolving.
+  * Added option -forest to dom parse.
+  * Added commands tdom::fsnewNode and tdom::fsinsertNode.
+
+-------------------------------------------------------------------
 Tue Feb  7 12:27:06 UTC 2023 - Reinhard Max <max@suse.com>
 
 - bsc#1207959: Install binaries and scripts under %tcl_archdir

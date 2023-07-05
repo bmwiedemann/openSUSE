@@ -161,4 +161,22 @@
 - Obsoletes install-libraries-libdir.patch</comment>
     <requestid>1063622</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>e0a21846fcf729b22d76216ef2326d0e</srcmd5>
+    <version>0.9.3</version>
+    <time>1688563900</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.3
+  * Added the options
+    -billionLaughsAttackProtectionMaximumAmplification and
+    -billionLaughsAttackProtectionActivationThreshold to dom parse
+    and the by the xml::parser/expat command created parser
+    commands.
+  * Schema command methods validate, validatefile and
+    validatechannel enhanced with options to control external
+    entity resolving.
+  * Added option -forest to dom parse.
+  * Added commands tdom::fsnewNode and tdom::fsinsertNode.</comment>
+    <requestid>1096954</requestid>
+  </revision>
 </revisionlist>
