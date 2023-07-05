@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-fido2
 Version:        1.1.1
 Release:        0
