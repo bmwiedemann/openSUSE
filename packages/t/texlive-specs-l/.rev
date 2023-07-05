@@ -503,4 +503,20 @@
     <comment>Map the upstream license fdl tag to newer GFDL-1.3.or-later (bsc#1210680)</comment>
     <requestid>1082674</requestid>
   </revision>
+  <revision rev="50" vrev="53">
+    <srcmd5>5fa9c1c1b08db2aafc90a11275762646</srcmd5>
+    <version>unknown</version>
+    <time>1688563837</time>
+    <user>dimstar_suse</user>
+    <comment>- Rework lua(meta)tex/context resource findings
+
+- Add requirement in invoice2 for siunitx as shown upstream 
+
+- Add patch context_shell-escape.dif
+  * Add upstream fix for enabling --socket and --shell-escape 
+
+- Drop gracht.mp, detcow.mp, and mycow.mp from context.doc as
+  only given with CC-BY-NC-SA-3.0, a non-commercial license</comment>
+    <requestid>1096750</requestid>
+  </revision>
 </revisionlist>
