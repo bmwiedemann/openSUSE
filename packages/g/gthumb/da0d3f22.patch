@@ -10,7 +10,7 @@ Subject: [PATCH] Fixed build with libraw 0.21
  3 files changed, 10 insertions(+), 3 deletions(-)
 
 diff --git a/extensions/raw_files/gth-metadata-provider-raw.c b/extensions/raw_files/gth-metadata-provider-raw.c
-index 2d9f5020..1aa8a727 100644
+index 2d9f5020c..1aa8a727e 100644
 --- a/extensions/raw_files/gth-metadata-provider-raw.c
 +++ b/extensions/raw_files/gth-metadata-provider-raw.c
 @@ -62,7 +62,7 @@ gth_metadata_provider_raw_read (GthMetadataProvider *self,
@@ -23,7 +23,7 @@ index 2d9f5020..1aa8a727 100644
  		goto fatal_error;
  
 diff --git a/extensions/raw_files/gth-metadata-provider-raw.h b/extensions/raw_files/gth-metadata-provider-raw.h
-index 6406c68b..cf19434d 100644
+index 6406c68bf..cf19434df 100644
 --- a/extensions/raw_files/gth-metadata-provider-raw.h
 +++ b/extensions/raw_files/gth-metadata-provider-raw.h
 @@ -25,6 +25,13 @@
@@ -41,7 +41,7 @@ index 6406c68b..cf19434d 100644
  #define GTH_TYPE_METADATA_PROVIDER_RAW         (gth_metadata_provider_raw_get_type ())
  #define GTH_METADATA_PROVIDER_RAW(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GTH_TYPE_METADATA_PROVIDER_RAW, GthMetadataProviderRaw))
 diff --git a/extensions/raw_files/main.c b/extensions/raw_files/main.c
-index 25829c12..0673c2c7 100644
+index 25829c120..0673c2c75 100644
 --- a/extensions/raw_files/main.c
 +++ b/extensions/raw_files/main.c
 @@ -213,7 +213,7 @@ _cairo_image_surface_create_from_raw (GInputStream  *istream,
