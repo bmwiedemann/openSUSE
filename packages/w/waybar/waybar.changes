@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Jul  4 21:32:57 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 0.9.19:
+  * Fix broken link in README
+  * fix(dwl-module): fix typo to avoid null pointer
+  * river/window: Add tooltip.
+  * Fixing 'incomplete type error' during building
+  * [hyprland/window] Add css class for empty window name
+  * Small performance fixies
+  * Tray module causes: Invalid id passed to g_bus_unwatch_name()
+  * deprecated: implicit capture of 'this' via '[=]'
+  * [sway/workspaces] fix: change icons priority
+  * Lift reverse-scrolling option into AModule
+  * sway/window: fix appid style not cleared
+  * Issue#2204
+  * Upower native-path filter
+  * More robust Hyprland backend
+  * hyprland/window: Add CSS customization similar to sway/window
+  * support multiple items in hwmon-path of temperature module
+  * [wrl/taskbar] fix: use empty class for empty taskbar
+  * Add output port (display) of workspace to template function of
+    sway/workspace
+  * Fixed some build warnings
+  * feat: hyprland/workspaces
+  * Refresh Gentoo docker
+  * Wake all sleeping threads when leaving suspend
+  * Fixes for hyprland/workspaces
+  * Don't apply reverse scrolling to mice wheels
+  * wireplumber: Support for scrolling
+  * Fix random segfault on GTK icon functions
+  * [hyperland/workspaces] fix: segfault on create/destroy
+  * Catch2 bump
+  * Fix rare segfault when destroying workspace
+  * Stop MPRIS module from updating every ~20ms
+  * wlr/taskbar: add support for rewrite rules
+  * Add a new start_hidden flag
+  * Image tooltip
+  * improve nix dev shell; override the nixpkgs waybar
+  * sway/workspaces: setting to not warp to window when scrolling
+  * mpris: dynamic tag ordering and separator customization
+  * Add output parameter format to manpage
+  * Partially revert 3af1853 to fix use-after-free
+
+-------------------------------------------------------------------
 Mon Jun 19 12:02:36 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Add fontawesome font as recommended
