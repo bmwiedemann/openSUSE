@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sun Jun 25 17:54:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.98.0:
+  * Allow disabling `redirect_slashes` at the FastAPI app
+    level.
+  * Update `Annotated` notes in `docs/en/docs/tutorial/schema-
+    extra-example.md`. PR #9620 by @Alexandrhub.
+  * Fix typo `Annotation` -> `Annotated` in
+    `docs/en/docs/tutorial/query-params-str-validations.md`.
+  * Use in memory database for testing SQL in docs.
+  * Add Russian translation for
+    `docs/ru/docs/tutorial/metadata.md`.
+  * Fix typo in Spanish translation for
+    `docs/es/docs/tutorial/first-steps.md`.
+  * Add Russian translation for `docs/tutorial/path-operation-
+    configuration.md`.
+  * Add Chinese translation for
+    `docs/zh/docs/advanced/security/index.md`.
+  * Add Chinese translations for
+    `docs/zh/docs/advanced/settings.md`.
+  * Add Chinese translations for
+    `docs/zh/docs/advanced/websockets.md`.
+  * Add Chinese translation for
+    `docs/zh/docs/tutorial/testing.md`.
+  * Add Russian translation for `docs/tutorial/extra-
+    models.md`.
+  * Add Russian translation for `docs/tutorial/cors.md`.
+  * Add Polish translation for `docs/pl/docs/features.md`.
+  * Add Russian translation for `docs/ru/docs/tutorial/body-
+    nested-models.md`.
+
+-------------------------------------------------------------------
 Tue Jun 20 10:11:51 UTC 2023 - David Anes <david.anes@suse.com>
 
 - update to 0.97.0: 

@@ -242,4 +242,12 @@
     - Upgrade Black.</comment>
     <requestid>1093963</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>6db13803ec931b76a588526d77c9776e</srcmd5>
+    <version>0.98.0</version>
+    <time>1688563844</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1096434</requestid>
+  </revision>
 </revisionlist>
