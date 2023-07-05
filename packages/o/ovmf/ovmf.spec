@@ -20,6 +20,11 @@
 %undefine _build_create_debug
 %global openssl_version 1.1.1n
 %global softfloat_version b64af41c3276f
+%if 0%{?suse_version} < 1599
+%bcond_with build_riscv64
+%else
+%bcond_without build_riscv64
+%endif
 
 Name:           ovmf
 Version:        202302
@@ -64,6 +69,7 @@ Patch13:        %{name}-Revert-ArmVirtPkg-make-EFI_LOADER_DATA-non-executabl.pat
 Patch14:        %{name}-Revert-OvmfPkg-OvmfXen-Set-PcdFSBClock.patch
 # Bug 1209266 - OVMF firmware hangs when booting SEV or SEV-ES guest
 Patch15:        %{name}-Revert-OvmfPkg-PlatformPei-Update-ReserveEmuVariable.patch
+Patch16:        ovmf-riscv64-missing-memcpy.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -85,14 +91,28 @@ BuildRequires:  unzip
 %ifarch x86_64
 BuildRequires:  cross-aarch64-binutils
 BuildRequires:  cross-aarch64-gcc%{gcc_version}
+%if %{with build_riscv64}
+BuildRequires:  cross-riscv64-binutils
+BuildRequires:  cross-riscv64-gcc%{gcc_version}
+%endif
 %endif
 %ifarch aarch64
 BuildRequires:  cross-x86_64-binutils
 BuildRequires:  cross-x86_64-gcc%{gcc_version}
+%if %{with build_riscv64}
+BuildRequires:  cross-riscv64-binutils
+BuildRequires:  cross-riscv64-gcc%{gcc_version}
+%endif
+%endif
+%ifarch riscv64
+BuildRequires:  cross-x86_64-binutils
+BuildRequires:  cross-x86_64-gcc%{gcc_version}
+BuildRequires:  cross-aarch64-binutils
+BuildRequires:  cross-aarch64-gcc%{gcc_version}
 %endif
 # Only build on the architectures with
 #  1. cross-compilers, 2. iasl, 3. qemu-arm and qemu-x86
-ExclusiveArch:  x86_64 aarch64
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 %description
 The Open Virtual Machine Firmware (OVMF) project aims to support
@@ -165,6 +185,17 @@ BuildArch:      noarch
 This package contains the UEFI rom image (AArch32) for QEMU cortex-a15
 virt board.
 
+%if %{with build_riscv64}
+%package -n qemu-uefi-riscv64
+Summary:        UEFI QEMU rom image (RISC-V 64)
+Group:          System/Emulators/PC
+BuildArch:      noarch
+
+%description -n qemu-uefi-riscv64
+This package contains the UEFI rom image (RISC-V 64) for QEMU
+virt board.
+%endif
+
 %prep
 %setup -q -n edk2-edk2-stable%{version}
 
@@ -188,6 +219,7 @@ rm -rf $PKG_TO_REMOVE
 %patch13 -p1
 %patch14 -p1
 %patch15 -p1
+%patch16 -p1
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl
@@ -270,6 +302,17 @@ BUILD_OPTIONS_AA32=" \
 	-b DEBUG \
 	-t $TOOL_CHAIN \
 "
+%if %{with build_riscv64}
+# Flavors for riscv
+FLAVORS_RV64=("riscv")
+BUILD_OPTIONS_RV64=" \
+	$OVMF_FLAGS \
+	-a RISCV64 \
+	-p OvmfPkg/RiscVVirt/RiscVVirtQemu.dsc \
+	-b DEBUG \
+	-t $TOOL_CHAIN \
+"
+%endif
 
 # Build BaseTools
 %ifarch x86_64
@@ -277,6 +320,9 @@ BUILD_OPTIONS_AA32=" \
 %endif
 %ifarch aarch64
 	ARCH=AARCH64 make -C BaseTools
+%endif
+%ifarch riscv64
+	ARCH=RISCV64 make -C BaseTools
 %endif
 
 # Import the build functions
@@ -421,6 +467,25 @@ dd of="aavmf-aarch32-vars.bin" if="/dev/zero" bs=1M count=64
 # Remove the temporary build files to reduce the disk usage (bsc#1178244)
 rm -rf Build/ArmVirtQemu-ARM/
 
+### Build RISCV64 UEFI Images ###
+%if %{with build_riscv64}
+%ifnarch riscv64
+# Assign the cross-compiler prefix
+export ${TOOL_CHAIN}_RISCV64_PREFIX="riscv64-suse-linux-"
+%endif
+# Build the UEFI image without keys
+build $BUILD_OPTIONS_RV64
+
+cp Build/RiscVVirtQemu/DEBUG_GCC*/FV/RISCV_VIRT.fd qemu-uefi-riscv64.bin
+dd of="ovmf-riscv64-code.bin" if="/dev/zero" bs=1M count=32
+dd of="ovmf-riscv64-code.bin" if="qemu-uefi-riscv64.bin" conv=notrunc
+dd of="ovmf-riscv64-vars.bin" if="/dev/zero" bs=1M count=32
+
+# Remove the temporary build files to reduce the disk usage (bsc#1178244)
+rm -rf Build/RiscVVirtQemu/
+
+%endif
+
 ### Build the variable store templates ###
 
 # Default key sources: ms suse opensuse
@@ -549,6 +614,13 @@ install -m 0644 X64/*.efi %{buildroot}/%{_datadir}/ovmf/
 %ifarch aarch64
 install -m 0644 AARCH64/*.efi %{buildroot}/%{_datadir}/ovmf/
 %endif
+%ifarch riscv64
+install -m 0644 RISCV64/*.efi %{buildroot}/%{_datadir}/ovmf/
+%endif
+
+%if %{without build_riscv64}
+rm %{buildroot}%{_datadir}/qemu/firmware/*-riscv64*.json
+%endif
 
 %files
 %doc README
@@ -600,5 +672,16 @@ install -m 0644 AARCH64/*.efi %{buildroot}/%{_datadir}/ovmf/
 %{_datadir}/qemu/aavmf-aarch32-vars.bin
 %dir %{_datadir}/qemu/firmware
 %{_datadir}/qemu/firmware/*-aarch32*.json
+
+%if %{with build_riscv64}
+%files -n qemu-uefi-riscv64
+%license License.txt
+%dir %{_datadir}/qemu/
+%{_datadir}/qemu/qemu-uefi-riscv64.bin
+%{_datadir}/qemu/ovmf-riscv64-code.bin
+%{_datadir}/qemu/ovmf-riscv64-vars.bin
+%dir %{_datadir}/qemu/firmware
+%{_datadir}/qemu/firmware/*-riscv64*.json
+%endif
 
 %changelog

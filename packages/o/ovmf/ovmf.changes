@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 30 13:08:37 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Initial riscv64 support
+  * Update descriptors.tar.xz
+  * Enable on TW/16 (riscv64 toolchain not available on 15)
+- Add ovmf-riscv64-missing-memcpy.patch: fixes undefined memcpy
+
+-------------------------------------------------------------------
 Mon Mar 20 13:28:55 UTC 2023 - Joey Lee <jlee@suse.com>
 
 - Add ovmf-Revert-OvmfPkg-PlatformPei-Update-ReserveEmuVariable.patch

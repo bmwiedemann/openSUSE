@@ -1,0 +1,12 @@
+--- edk2-edk2-stable202302.orig/CryptoPkg/Library/IntrinsicLib/IntrinsicLib.inf
++++ edk2-edk2-stable202302/CryptoPkg/Library/IntrinsicLib/IntrinsicLib.inf
+@@ -43,6 +43,9 @@
+ [Sources.X64]
+   CopyMem.c
+ 
++[Sources.RISCV64]
++  CopyMem.c
++
+ [Packages]
+   MdePkg/MdePkg.dec
+ 
