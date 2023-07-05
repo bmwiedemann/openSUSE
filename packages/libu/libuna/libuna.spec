@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define lname libuna1
 
 Name:           libuna%psuffix
-Version:        20220611
+Version:        20230702
 Release:        0
 Summary:        Library to support Unicode and ASCII (byte string) conversions
 License:        LGPL-3.0-or-later
@@ -37,12 +37,12 @@ Source3:        libuna.keyring
 Source99:       libuna-rpmlintrc
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcdatetime) >= 20220104
+BuildRequires:  pkgconfig(libcdatetime) >= 20230115
 BuildRequires:  pkgconfig(libcerror) >= 20220101
 %if "@BUILD_FLAVOR@" != "mini"
 BuildRequires:  pkgconfig(libcfile) >= 20220106
 %endif
-BuildRequires:  pkgconfig(libclocale) >= 20220107
+BuildRequires:  pkgconfig(libclocale) >= 20221218
 BuildRequires:  pkgconfig(libcnotify) >= 20220108
 # Various notes: https://en.opensuse.org/libyal
 

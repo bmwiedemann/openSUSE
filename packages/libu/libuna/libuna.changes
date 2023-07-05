@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul  3 04:55:16 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20230702
+  * Added support to allow UTF-16 stream unpaired surrogates
+  * Added support for 6-byte UTF-8
+
+-------------------------------------------------------------------
 Sat Nov 26 16:43:24 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Delete system-libs.patch (not needed - system libs are
