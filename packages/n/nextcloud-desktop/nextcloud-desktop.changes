@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun 29 18:50:15 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add nextcloud-fix-HiDPI-window-size.patch -- Fix huge sized
+  windows for nextcloud client settings and crash-reporter on
+  HiDPI systems.
+- Set SOURCE_DATE_EPOCH from the last modified time of source
+  files to avoid non-reproducible builds due to __DATE__/__TIME__;
+  this replaces nextcloud-desktop-remove-datetime.patch which is
+  therefore dropped. Requires cmake >= 3.8.0. Using
+  SOURCE_DATE_EPOCH seems to be a better solution than the patch
+  as this still preserves the date and time shown on the Settings
+  window and could prove useful for debugging upstream. On the
+  contrary, the patch simply removed __DATE__/__TIME__ from the
+  sources and was not going to be accepted by upstream anyway.
+
+-------------------------------------------------------------------
 Fri Jun 23 07:41:23 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Split off nextcloudcmd into nextcloud-cli subpackage, which is

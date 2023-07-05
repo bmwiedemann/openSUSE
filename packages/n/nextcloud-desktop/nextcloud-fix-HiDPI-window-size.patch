@@ -1,0 +1,27 @@
+Index: desktop-3.9.0/src/gui/main.cpp
+===================================================================
+--- desktop-3.9.0.orig/src/gui/main.cpp
++++ desktop-3.9.0/src/gui/main.cpp
+@@ -65,6 +65,8 @@ int main(int argc, char **argv)
+ 
+     QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps, true);
+     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
++    QApplication::setHighDpiScaleFactorRoundingPolicy(
++            Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
+ #ifdef Q_OS_MAC
+     Mac::CocoaInitializer cocoaInit; // RIIA
+ #endif
+Index: desktop-3.9.0/src/crashreporter/main.cpp
+===================================================================
+--- desktop-3.9.0.orig/src/crashreporter/main.cpp
++++ desktop-3.9.0/src/crashreporter/main.cpp
+@@ -25,6 +25,8 @@
+ int main(int argc, char *argv[])
+ {
+     QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps, true);
++    QApplication::setHighDpiScaleFactorRoundingPolicy(
++            Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
+ #ifdef Q_OS_WIN
+     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
+ #endif // !Q_OS_WIN
+

@@ -27,10 +27,10 @@ Group:          Productivity/Networking/File-Sharing
 URL:            https://nextcloud.com/
 Source:         https://github.com/nextcloud/desktop/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        sysctl-sync-inotify.conf
-# PATCH-FIX-OPENSUSE nextcloud-desktop-remove-datetime.patch sor.alexei@meowr.ru -- Remove __TIME__ and __DATE__.
-Patch1:         nextcloud-desktop-remove-datetime.patch
+# PATCH-FIX-UPSTREAM nextcloud-fix-HiDPI-window-size.patch badshah400@gmail.com -- Fix huge size of the nextcloud client settings and crash-reporter windows on HiDPI systems
+Patch0:         nextcloud-fix-HiDPI-window-size.patch
 BuildRequires:  AppStream
-BuildRequires:  cmake >= 3.2
+BuildRequires:  cmake >= 3.8.0
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -201,7 +201,8 @@ This package provides Nextcloud's command-line sync utility.
 cp -a %{SOURCE1} sysctl-sync-inotify.conf
 
 %build
-
+# Set SOURCE_DATE_EPOCH to set __DATE__/__TIME__ based on tarball creation date and make build reproducible
+export SOURCE_DATE_EPOCH=`date -r VERSION.cmake +"%s"`
 %cmake \
 %if 0%{?is_opensuse}
   -DWITH_DOC=ON \
