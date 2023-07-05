@@ -1,7 +1,7 @@
 #
 # spec file for package tclx
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tclx
-Version:        8.4.4
+Version:        8.6.2
 Release:        0
 Summary:        TclX - Extended Tcl
 License:        BSD-3-Clause AND SUSE-Permissive
@@ -37,19 +37,20 @@ automatically loaded on the first attempt to execute it.
 In addition, a detailed help system is available for Tcl/Tk: tclhelp.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 autoreconf -fi
 export CFLAGS="%optflags -fno-strict-aliasing"
 %configure \
 	--with-tcl=%_libdir \
+	--libdir=%tcl_archdir \
 	--with-help \
 	--enable-threads
 %make_build
 
 %install
-%make_install pkglibdir=%tcl_archdir/%{name}8.6
+%make_install
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig

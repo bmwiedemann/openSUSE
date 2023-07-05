@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  4 09:04:32 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 8.6.2
+  * filter rresvport if not present
+
+-------------------------------------------------------------------
 Tue Oct 25 13:46:45 UTC 2022 - Reinhard Max <max@suse.com>
 
 - Version 8.4.4 presents itself as being 8.6 internally. Adjust
