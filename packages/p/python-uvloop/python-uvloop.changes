@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  4 13:13:21 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Wed Oct 12 18:17:57 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 0.17.0 
