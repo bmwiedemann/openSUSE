@@ -1,0 +1,5 @@
+<package name="golang-stable-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed BCI Golang 1.20 Container Image</title>
+  <description>Golang 1.20 development environment based on the SLE Base Container Image.</description>
+  <devel project="devel:BCI:Tumbleweed" package="golang-stable-image"/>
+</package>
