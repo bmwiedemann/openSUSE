@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  4 13:08:24 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Fri Sep 17 07:03:50 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not build for python 3.6: the required dependency uvloop does
