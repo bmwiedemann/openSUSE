@@ -209,4 +209,12 @@ no _service here, yo stupid bot</comment>
   * Fixed FD leak when using --block-devices-as-files</comment>
     <requestid>1070020</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e20cd96d806a27e293b40f2e166cfd9a</srcmd5>
+    <version>1.17.3</version>
+    <time>1688563823</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1096673</requestid>
+  </revision>
 </revisionlist>

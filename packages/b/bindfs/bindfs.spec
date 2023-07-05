@@ -17,16 +17,15 @@
 
 
 Name:           bindfs
-Version:        1.17.2
+Version:        1.17.3
 Release:        0
 Summary:        Filesystem for mapping directories with alternate permissions
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://bindfs.org/
-
 #Git-Clone:	https://github.com/mpartel/bindfs
 Source:         https://bindfs.org/downloads/%name-%version.tar.gz
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fuse3) >= 3.10.2
 
 %description
@@ -48,6 +47,6 @@ mountpoint can be altered using various rules.
 %doc ChangeLog
 %license COPYING
 %_bindir/%name
-%_mandir/man1/%name.1%ext_man
+%_mandir/man1/%name.1%{?ext_man}
 
 %changelog
