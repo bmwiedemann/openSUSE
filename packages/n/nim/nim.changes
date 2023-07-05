@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 28 08:30:53 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.6.14:
+  * more than 179 commits providing bugfixes and general improvements, 
+    details at https://github.com/nim-lang/Nim/compare/v1.6.12...v1.6.14 
+
+- removed patch nim-fix-tests-certificate-key-too-small.patch as no longer needed
+
+-------------------------------------------------------------------
 Mon Mar 13 15:19:34 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.6.12:

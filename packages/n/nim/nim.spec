@@ -17,7 +17,7 @@
 
 
 Name:           nim
-Version:        1.6.12
+Version:        1.6.14
 Release:        0
 Summary:        A statically typed compiled systems programming language
 License:        MIT
@@ -26,10 +26,8 @@ URL:            https://nim-lang.org/
 Source0:        https://nim-lang.org/download/nim-%{version}.tar.xz
 Source1:        nim-rpmlintrc
 Patch0:         nim-nim-gdb_fix_interpreter.patch
-# UPSTREAM FIX: https://github.com/nim-lang/Nim/commit/8c100a37b93607806acec51733fe5e2fda392d44.patch
-Patch1:         nim-fix-tests-certificate-key-too-small.patch
 # UPSTREAM FIX: https://github.com/nim-lang/Nim/commit/2c73e84436a11cae1676c7da0228158ba1a885cc
-Patch2:         nim-fix-tests-ip-protocol-missing.patch
+Patch1:         nim-fix-tests-ip-protocol-missing.patch
 BuildRequires:  binutils-devel
 BuildRequires:  ca-certificates
 BuildRequires:  ca-certificates-mozilla
@@ -93,8 +91,7 @@ Elegant:
 * Statements are grouped by indentation but can span multiple lines.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags}"
