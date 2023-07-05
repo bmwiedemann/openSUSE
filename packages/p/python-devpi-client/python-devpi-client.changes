@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jul  4 10:32:15 UTC 2023 - Torsten Gruner <simmphonie@opensuse.org>
+
+- update to 6.0.5
+  * Remember URL when ``devpi use`` causes a 403, so one can
+    use ``devpi login`` afterwards.
+  * Fix #978: Quote username and password when adding to URL.
+  * Fix #980: Remove long deprecated backward compatibility for
+    old pluggy versions to fix error with pluggy 1.1.0.
+- split package to prevent build dependency with python-tox (multibuild)
+
+-------------------------------------------------------------------
+Mon Jul  3 13:00:13 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add missing dependency
+
+-------------------------------------------------------------------
 Fri Jun  9 07:34:26 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

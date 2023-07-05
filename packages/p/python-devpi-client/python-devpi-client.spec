@@ -1,5 +1,5 @@
 #
-# spec file for package python-devpi-client
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -16,9 +16,17 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %{?sle15_python_module_pythons}
-Name:           python-devpi-client
-Version:        6.0.4
+Name:           python-devpi-client%{psuffix}
+Version:        6.0.5
 Release:        0
 Summary:        Client for devpi
 License:        MIT
@@ -34,7 +42,9 @@ BuildRequires:  python-rpm-macros
 Requires:       python-build
 Requires:       python-check-manifest >= 0.28
 Requires:       python-devpi-common >= 3.6.0
+Requires:       python-iniconfig
 Requires:       python-pkginfo >= 1.4.2
+Requires:       python-platformdirs
 Requires:       python-pluggy >= 0.6.0
 Requires:       python-py >= 1.4.31
 Requires:       python-tox >= 3.1.0
@@ -45,9 +55,12 @@ Recommends:     git-core
 Recommends:     python-Sphinx
 BuildArch:      noarch
 # SECTION test requirements
+%if %{with test}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module check-manifest >= 0.28}
+BuildRequires:  %{python_module colorama}
+BuildRequires:  %{python_module devpi-client = %{version}}
 BuildRequires:  %{python_module devpi-common >= 3.6.0}
 BuildRequires:  %{python_module devpi-server}
 BuildRequires:  %{python_module pkginfo >= 1.4.2}
@@ -57,6 +70,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tox >= 3.1.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  git-core
+%endif
 # /SECTION
 %python_subpackages
 
@@ -77,11 +91,14 @@ sed -i 's/"python", "setup.py"/sys.executable, "setup.py"/' testing/test_test.py
 %pyproject_wheel
 
 %install
+%if !%{with test}
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/devpi
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 export LANG=en_US.UTF-8
 export PYTHONDONTWRITEBYTECODE=1
 export PATH=$PATH:%{buildroot}/%{_bindir}
@@ -96,6 +113,7 @@ donttest+=" or test_derive_devpi_token or test_derive_legacy_token or test_deriv
 # error deleting VIRTUAL_ENV
 donttest+=" or test_simple_install_missing_venvdir"
 %pytest -k "not ($donttest)"
+%endif
 
 %post
 %python_install_alternative devpi
@@ -103,11 +121,13 @@ donttest+=" or test_simple_install_missing_venvdir"
 %postun
 %python_uninstall_alternative devpi
 
+%if !%{with test}
 %files %{python_files}
 %doc AUTHORS CHANGELOG README.rst
 %license LICENSE
 %python_alternative %{_bindir}/devpi
 %{python_sitelib}/devpi
 %{python_sitelib}/devpi_client-%{version}*-info
+%endif
 
 %changelog
