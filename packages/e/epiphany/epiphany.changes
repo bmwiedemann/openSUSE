@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jun 30 14:17:31 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.5:
+  + Fix Sync Now button appearing when Firefox Sync is not enabled,
+    leading to crash.
+
+-------------------------------------------------------------------
+Fri Jun 30 07:49:44 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.4:
+  + Bring back URL scheme in address bar, fixing incorrect URLs
+    loaded in narrow mode.
+  + Fix duplicate permission requests.
+  + Fix changing web app title and URL with preferences dialog.
+  + Fix failure to create web app when no icon or favicon is
+    available.
+  + Fix address bar stealing mouse clicks.
+  + Fix broken Mute Tab context menu item.
+  + Fix critical when creating WebExtension web view.
+
+-------------------------------------------------------------------
 Fri May 26 13:26:10 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.3:

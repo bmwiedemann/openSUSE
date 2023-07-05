@@ -1664,4 +1664,14 @@ MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme
   + Updated translations.</comment>
     <requestid>1089505</requestid>
   </revision>
+  <revision rev="202" vrev="1">
+    <srcmd5>73268551797875d1167b29dfbc35429e</srcmd5>
+    <version>44.5</version>
+    <time>1688563876</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1096156 from iznogood
+
+New stable release</comment>
+    <requestid>1096872</requestid>
+  </revision>
 </revisionlist>
