@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul  4 17:01:14 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.34.3:
+  * fix: Check .chezmoiignore before protected paths
+  * fix: Parse hostnames from all loopback addresses in /etc/hosts
+  * fix: Respect persistentState config variable
+  * chore: Miscellaneous fixes
+  * chore: Update dependencies
+
+-------------------------------------------------------------------
 Mon Jun 19 17:46:53 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.34.2:
