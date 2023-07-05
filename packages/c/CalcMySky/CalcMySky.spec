@@ -24,7 +24,7 @@
 %endif
 
 Name:           CalcMySky
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        Software package that simulates scattering of light by the atmosphere
 License:        GPL-3.0-or-later

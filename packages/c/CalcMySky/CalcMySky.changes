@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 28 06:45:20 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.3.1:
+  * on GPUs that compute mip maps of non-power-of-two textures poorly,
+    eclipsed atmosphere rendering now works as expected;
+  * atmosphere model examples now don't include Rayleigh phase function
+    in the texture, this change fixes a "round cap around zenith" artifact.
+
+-------------------------------------------------------------------
 Thu Apr 20 09:48:51 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Fix packaging issue.
