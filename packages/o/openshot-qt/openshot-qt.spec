@@ -18,7 +18,7 @@
 
 %define appname org.openshot.OpenShot
 Name:           openshot-qt
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        Non-linear video editor with broad format support
 License:        GPL-3.0-or-later

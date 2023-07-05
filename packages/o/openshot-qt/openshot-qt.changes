@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Jul 05 10:58:59 UTC 2023 - adrian@suse.de
+
+- Update to version 3.1.1:
+  * Adding back in "layers", "markers" to webview changes - since we accidentally filtered them out.
+  * Allow "duration" to be sent to the webview, to allow auto-increase project duration / auto resize the timeline
+  * Protect setWindowTitle from being called by a different thread (preview_thread - if sample_rate is updated). Protect preview_thread::update() method from triggering with 'sample_rate' update.
+  * Protecting timeline webview from unrelated changes - which can sometimes happen prior to the webview being fully loaded (causing a freeze on launch of OpenShot)
+  * On launch of OpenShot, convert float sample_rate into Integer (if needed), and update settings::sample_rate if needed. This causes our audio device to freeze
+  * Bumping version to 3.1.1, min libopenshot dependency to 0.3.2
+  * Updating donors and supporters
+  * Updating translations for 3.1.1 release
+  * Protect from generating a waveform for a NULL clip (we should skip clips that we can't find or query). Reported in Sentry: OPENSHOT-1WJ5
+  * Show friendly error to user when Export dialog fails to parse project JSON data: Reported in Sentry: OPENSHOT-6X
+  * Refactor some logic in Parent / Child property context menus - to be simpler, and more efficient. This solves a bug on Windows also, where file paths were not matching correctly.
+  * Adding debug logs to property widget context menus
+  * Removing items from "Parent" and "Child Clip ID" and "Parent Effect" context menus in the Property dialog - for example, clips with no effects, or clips with no tracking data, etc... Also, making things more consistent with parent folders in context menus (None, Clips, Tracked Objects)
+  * Fix object detector and tracker effects when using context menus, color pickers, and other property dialog editors - to correctly update the JSON without destroying certain data or "objects"
+  * Allow clearing the "Parent" and "Child Clip ID" properties of a clip / effect, and allow setting of the initial value to work correctly.
+  * Extending objects protections to color_update and remove_keyframe methods - to ignore when an object_id is not found, or a clip has no 'objects' dict
+  * Updating timeline `changed` callback to always reset the current value of ENABLE_PLAYBACK_CACHING. For example, sometimes we have already disabled this setting before changing the timeline data - and we would like it to stay disabled until further notice. This method was accidentally re-enabling the caching when we were not expecting it to.
+  * Protecting property widget exception when a label returns an invalid data tuple for the current selected property label: Sentry reported this error: OPENSHOT-43. This also fixes a regression related to updating ObjectDetector and Tracker objects.
+  * Protecting property widget exception when a label returns an invalid data tuple for the current selected property label: Setnry reported this error: OPENSHOT-43.
+  * Protecting timeline args from non-Integer values. Detected on Sentry: OPENSHOT-245G
+  * Fix for editing a title and trying to update a thumbnail on the timeline - was missing a required arg
+  * Removing freeze from github actions - too difficult to maintain compatibility with all the different builders
+  * Fixing issue where we still had many duplicate profile descriptions causing issues. Adding `- width x height | DAR` suffix for only the duplicate ones.
+  * Removing old ubuntu 18.04 github builder, adding 22.04
+  * Ignore profile folders on Export dialog init - removes warning log about "failed to process" profile folder
+  * Adding Profile search button to Preferences for easier filtering and searching for a default profile
+  * Updating duplicate profile names to use unique name (with DAR appended onto the end)
+
+-------------------------------------------------------------------
 Tue Apr 11 07:13:41 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.1.0:
