@@ -16,8 +16,7 @@
 #
 
 
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-aiohttp-socks
 Version:        0.8.0
 Release:        0
@@ -25,7 +24,8 @@ Summary:        SOCKS proxy connector for aiohttp
 License:        Apache-2.0
 URL:            https://github.com/romis2012/aiohttp-socks
 Source:         https://files.pythonhosted.org/packages/source/a/aiohttp_socks/aiohttp_socks-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -36,10 +36,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module aiohttp >= 2.3.2}
 BuildRequires:  %{python_module attrs >= 1.0.1}
-#BuildRequires:  %%{python_module pytest-asyncio}
 BuildRequires:  %{python_module python-socks >= 2.0.0}
-#BuildRequires:  %%{python_module pytest}
-#BuildRequires:  3proxy
 # /SECTION
 %python_subpackages
 
@@ -47,14 +44,14 @@ BuildRequires:  %{python_module python-socks >= 2.0.0}
 SOCKS proxy connector for aiohttp
 
 %prep
-%setup -q -n aiohttp_socks-%{version}
+%autosetup -p1 -n aiohttp_socks-%{version}
 dos2unix README.md
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,11 +59,12 @@ dos2unix README.md
 #%%pytest
 
 # so try at least a simple import
-echo 'from aiohttp_socks import ProxyConnector'|python3
+%python_exec -c 'from aiohttp_socks import ProxyConnector'
 
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/aiohttp_socks
+%{python_sitelib}/aiohttp_socks-%{version}*-info
 
 %changelog
