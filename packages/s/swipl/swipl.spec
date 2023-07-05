@@ -1,7 +1,7 @@
 #
 # spec file for package swipl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,12 +27,12 @@ Source98:       swipl-rpmlintrc
 # For SOURCE_DATE_EPOCH variable- reproducible builds
 Source99:       %{name}.changes
 BuildRequires:  cmake
-BuildRequires:  ninja
 BuildRequires:  db-devel
 BuildRequires:  fdupes
 BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
+BuildRequires:  gperftools-devel
 BuildRequires:  java-devel >= 1.8.0
 # For %%check
 BuildRequires:  junit
@@ -40,7 +40,7 @@ BuildRequires:  libarchive-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libunwind-devel
 BuildRequires:  ncurses-devel
-BuildRequires:  gperftools-devel
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  unixODBC-devel
@@ -49,8 +49,8 @@ BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(ossp-uuid)
 BuildRequires:  pkgconfig(sm)
-BuildRequires:  pkgconfig(xaw6)
 BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xaw6)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xinerama)
@@ -64,7 +64,7 @@ Provides:       swi_pl = %{version}
 Obsoletes:      swi-prolog < %{version}
 Obsoletes:      swi_pl < %{version}
 
-#  jpackage-utils \
+#  jpackage-utils
 
 %description
 Edinburgh-style Prolog compiler including modules, autoload, libraries,
@@ -73,6 +73,9 @@ Emacs interface, a very fast compiler,and an X11 interface using XPCE.
 
 %prep
 %autosetup -p1
+
+sed -i -e "s|#!%{_bindir}/env swipl|#!%{_bindir}/swipl|" \
+    packages/protobufs/bootstrap/protoc-gen-swipl
 
 %build
 export SOURCE_DATE_EPOCH="$(sed -n '/^----/n;s/ - .*$//;p;q' %{SOURCE99} | date -u -f - +%%s)"
@@ -96,8 +99,8 @@ install -D -m 0644 %{buildroot}%{_datadir}/pkgconfig/swipl.pc \
 rm -v %{buildroot}%{_datadir}/pkgconfig/swipl.pc
 rmdir -v %{buildroot}%{_datadir}/pkgconfig
 
-%fdupes %{buildroot}/%{_libdir}/%{name}
-%fdupes %{buildroot}/%{_libdir}/%{name}-%{version}
+%fdupes %{buildroot}/%{_libdir}/%{name}*
+%fdupes %{buildroot}/%{_prefix}/lib/%{name}*
 %fdupes %{buildroot}/%{_docdir}/%{name}-%{version}
 
 %check
