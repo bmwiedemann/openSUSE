@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul  5 19:40:20 UTC 2023 - James.Bottomley@HansenPartnership.com
+
+- Update to version 4.0.1
+  * Fixes for intel-tss and openssl < 3
+  * Fix support for the non-reference swtpm (although you should use the
+    reference implementation for testing)
+  * Doc updates to the draft RFC to make it ready for ietf submission
+  * Fix openssl BOOLEAN issues
+
+-------------------------------------------------------------------
 Wed Mar 29 13:28:51 UTC 2023 - James.Bottomley@HansenPartnership.com
 
 - Update to version 4.0.0
