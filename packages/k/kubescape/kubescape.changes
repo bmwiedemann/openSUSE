@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jul 06 09:33:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.3.7:
+  * submit file scanning
+  * Update grafana-kubescape-dashboard.json
+  * update messaging based on Oshrats comments
+  * update submit message
+  * deprecate the login flags
+  * ignore adaptors if credentials are not set
+  * deprecate host-scan-yaml flag
+  * remove unused file
+  * Changed Assistance Remediation to Assited Remediation
+  * Deprecated host-scanner
+  * fxi test jsons
+  * update regolibrary to v1.0.286-rc.0
+  * Update docs/providers/armo.md
+  * Updating overview
+  * fixed wording
+  * Split the installation command from scanning
+  * update installation steps
+  * initialize ns in case we don't have one in YAML
+
+-------------------------------------------------------------------
 Fri Jun 16 05:13:23 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.3.6:
