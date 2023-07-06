@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Thu Jul  6 11:17:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.5:
+  * Fix hard-coded class reference in fromkeys() resulting in
+    always using `dict` for `fromkeys()` (instead of OrderedDict
+    in ImmutableOrderedDict for example)
+
+-------------------------------------------------------------------
+Sat Apr  8 21:26:20 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package
