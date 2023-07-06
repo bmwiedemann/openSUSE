@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  6 10:29:10 UTC 2023 - ecsos <ecsos@opeensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Tue Oct 20 13:36:23 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 Skip python2: poetry no longer works with python2 thereby breaking this package on Leap.

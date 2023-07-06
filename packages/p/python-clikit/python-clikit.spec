@@ -17,7 +17,7 @@
 
 
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-clikit
 Version:        0.6.2
 Release:        0
