@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 29 13:43:42 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.3.5:
+  - Add support for Python 3.11.
+
+-------------------------------------------------------------------
 Thu Jun 29 13:03:21 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Remove weird %if %{pkg_vcmp python3-pytest-asyncio >= 0.19}

@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-mailmanclient
-Version:        3.3.4
+Version:        3.3.5
 Release:        0
 Summary:        Python bindings for the Mailman REST API
 License:        LGPL-3.0-only
@@ -45,7 +44,7 @@ BuildRequires:  mailman3 >= 3.3.5
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 BuildRequires:  %{python_module httpx}
 %endif
-%if 0%{?sle_version} <= 150400
+%if 0%{?sle_version} && 0%{?sle_version} <= 150400
 BuildRequires:  %{python_module async_generator}
 %endif
 # /SECTION
