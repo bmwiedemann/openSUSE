@@ -94,7 +94,7 @@
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.11.3
+Version:        3.11.4
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -157,9 +157,6 @@ Patch35:        fix_configure_rst.patch
 # PATCH-FIX-UPSTREAM support-expat-CVE-2022-25236-patched.patch jsc#SLE-21253 mcepl@suse.com
 # Makes Python resilient to changes of API of libexpat
 Patch36:        support-expat-CVE-2022-25236-patched.patch
-# PATCH-FIX-UPSTREAM CVE-2007-4559-filter-tarfile_extractall.patch bsc#1203750 mcepl@suse.com
-# PEP 706 – Filter for tarfile.extractall
-Patch37:        CVE-2007-4559-filter-tarfile_extractall.patch
 # PATCH-FIX-UPSTREAM 103213-fetch-CONFIG_ARGS.patch gh#python/cpython#103053 mcepl@suse.com
 # Fetch CONFIG_ARGS from original python instance
 Patch38:        103213-fetch-CONFIG_ARGS.patch
@@ -424,7 +421,6 @@ other applications.
 %endif
 %patch35 -p1
 %patch36 -p1
-%patch37 -p1
 %patch38 -p1
 %patch39 -p1
 
