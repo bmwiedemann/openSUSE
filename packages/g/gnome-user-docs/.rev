@@ -743,4 +743,14 @@
     <comment></comment>
     <requestid>1082378</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>dae7308009a3e7c94c970972bb8cdbe6</srcmd5>
+    <version>44.3</version>
+    <time>1688660872</time>
+    <user>favogt_factory</user>
+    <comment>Forwarded request #1096311 from iznogood
+
+New stable release</comment>
+    <requestid>1096875</requestid>
+  </revision>
 </revisionlist>
