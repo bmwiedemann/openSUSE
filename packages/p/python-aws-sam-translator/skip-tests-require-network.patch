@@ -1,25 +1,27 @@
-diff -Nru serverless-application-model-1.51.0.orig/tests/plugins/application/test_serverless_app_plugin.py serverless-application-model-1.51.0/tests/plugins/application/test_serverless_app_plugin.py
---- serverless-application-model-1.51.0.orig/tests/plugins/application/test_serverless_app_plugin.py	2022-09-13 20:17:17.000000000 +0200
-+++ serverless-application-model-1.51.0/tests/plugins/application/test_serverless_app_plugin.py	2022-09-20 15:15:16.316869823 +0200
+diff -Nru serverless-application-model-1.68.0.orig/tests/plugins/application/test_serverless_app_plugin.py serverless-application-model-1.68.0/tests/plugins/application/test_serverless_app_plugin.py
+--- serverless-application-model-1.68.0.orig/tests/plugins/application/test_serverless_app_plugin.py	2023-05-25 20:47:48.000000000 +0200
++++ serverless-application-model-1.68.0/tests/plugins/application/test_serverless_app_plugin.py	2023-06-15 16:12:56.049114662 +0200
 @@ -1,5 +1,6 @@
- import boto3
- import itertools
-+import unittest
- from botocore.exceptions import ClientError
- 
+ from unittest import TestCase
  from unittest.mock import Mock, patch
-@@ -99,6 +100,7 @@
-         self.assertEqual(self.plugin._parameters, parameters)
++import unittest
  
+ import boto3
+ from botocore.exceptions import ClientError
+@@ -114,7 +115,7 @@
+         self.assertEqual(plugin._sar_client, sar_client)
+         self.client_mock.assert_not_called()
  
+-
 +@unittest.skip("Skip tests that requires network")
  class TestServerlessAppPlugin_on_before_transform_template_translate(TestCase):
      def setUp(self):
          client = boto3.client("serverlessrepo", region_name="us-east-1")
-@@ -440,6 +442,7 @@
+@@ -453,7 +454,7 @@
+         self.assertEqual(client.get_cloud_formation_template.call_count, 2)
          self.assertEqual(plugin._get_sleep_time_sec.call_count, 1)  # make sure we slept once
  
- 
+-
 +@unittest.skip("Skip tests that requires network")
  class TestServerlessAppPlugin_on_before_and_on_after_transform_template(TestCase):
      @patch("samtranslator.plugins.application.serverless_app_plugin.SamTemplate")

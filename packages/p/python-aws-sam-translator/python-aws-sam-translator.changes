@@ -1,4 +1,388 @@
 -------------------------------------------------------------------
+Wed Jun  7 13:24:54 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.68.0
+  * chore: Upgrade ruff to 0.0.263 and enable more rules by @aahung in (#3127)
+  * docs: mention what transform tests are by @hoffa in (#3129)
+  * chore(schema): update by @github-actions in (#3131)
+  * Merge main to develop by @ssenchenko in (#3136)
+  * feat: actionable error on non-ARN policy by @hoffa in (#3132)
+  * chore(schema): update by @github-actions in (#3137)
+  * feat(SimpleTable): add PointInTimeRecoverySpecification by @hoffa in (#3138)
+  * chore(schema): update by @github-actions in (#3139)
+  * chore: mark test_request_parameters_open_api as @nonblocking by @hoffa in #(3141)
+  * chore(schema): update by @github-actions in (#3143)
+  * docs: remove automatic type/bug label by @hoffa in (#3147)
+  * chore(schema): update by @github-actions in (#3148)
+  * chore: update bundled managed policies by @hoffa in (#3149)
+  * chore(schema): update by @github-actions in (#3150)
+  * AppSync Api -> Lambda connector by @ssenchenko in (#3145)
+  * Revert "feat: actionable error on non-ARN policy (#3132)" by @hoffa in (#3153)
+  * chore: add Policies test with every type by @hoffa in (#3155)
+  * Release 1.68.0 (to main) by @GavinZZ in (#3185)
+- from version 1.67.0
+  * chore(schema): update by @github-actions in (#3104)
+  * chore: Enable termination protection for companion stacks by @GavinZZ in (#3105)
+  * chore(schema): update by @github-actions in (#3108)
+  * fix: Availability Dip Fix for MergeDefinitions property by @GavinZZ in (#3115)
+  * chore(schema): update by @github-actions in (#3116)
+  * chore: bundle aws-cn AWS managed policies by @hoffa in (#3117)
+  * Merge main to develop by @xazhao in (#3119)
+  * fix: Add ScheduleV2 OmitName to omit generated Name in
+    Scheduler::Schedule by @aahung in (#3120)
+  * chore: Use importlib.metadata to get package version by @aahung in (#3121)
+  * chore(schema): update by @github-actions in (#3124)
+  * chore: Add sar_client_creator to ServerlessAppPlugin constructor by @aahung in (#3126)
+  * Release 1.67.0 (to main) by @hoffa in (#3167)
+- from version 1.66.0
+  * chore: Use TypeGuard to avoid unncessary type casts by @aahung in #3090
+  * chore(schema): update by @github-actions in #3092
+  * chore: Fix public_interface not catching all constants and
+    enable Path rules (ruff 0.261) by @aahung in #3091
+  * Merge main to develop by @aahung in #3094
+  * chore: Enable DynamoDB on demand mode by @GavinZZ in #3098
+  * chore(schema): update by @github-actions in #3096
+  * chore(schema): update by @github-actions in #3099
+  * chore: update bundled managed policies by @hoffa in #3100
+  * chore: remove mix destination connector integ test because
+    transform test is… by @xazhao in #3101
+  * Release 1.66.0 (to main) by @ssenchenko in #3135
+- from version 1.65.0
+  * feat: scaffolding for improved pass-throughs in schema by @hoffa in #3055
+  * feat: improve schema pass-through handling by @hoffa in #3056
+  * chore: more improved schema pass-throughs by @hoffa in #3057
+  * fix: pin cfn-lint to bypass issue in latest by @hoffa in #3063
+  * fix: Fix availability dip from API MergeDefinitions property by @GavinZZ in #3062
+  * chore: improve cfn-lint install by @hoffa in #3064
+  * fix: Shorten Location IndexName property by @GavinZZ in #3065
+  * chore: more improved pass-through schemas by @hoffa in #3060
+  * Merge main to develop by @GavinZZ in #3069
+  * chore: Upgrade ruff to 0.0.259 and enable C4 rules by @aahung in #3066
+  * chore: remove description in favor of markdownDescription by @hoffa in #3068
+  * chore: more typed schema pass-throughs by @hoffa in #3072
+  * chore(schema): update by @github-actions in #3074
+  * chore: and more typed schema pass-throughs by @hoffa in #3078
+  * fix: Add Name property to SAM Statemachine EventBridgeRule event by @aaythapa in #3087
+  * chore(schema): update by @github-actions in #3084
+  * fix: Connector "Type" cannot be Serverless resource types by @GavinZZ in #3088
+  * Release 1.65.0 (to main) by @xazhao in #3118
+- from version 1.64.0
+  * chore(schema): update by @github-actions in #3034
+  * chore: run test coverage command in parallel by @aaythapa in #3037
+  * feat: Add a new property SeparateRecordSetGroup to disable merging into record set group by @xazhao in #2993
+  * chore: upgrade mypy by @hoffa in #3039
+  * fix: add DeletionProtection to AWS::Cognito::UserPool by @hoffa in #3041
+  * docs: add clause about internal to guidelines by @hoffa in #3044
+  * chore(schema): update by @github-actions in #3043
+  * fix: Skip MQ Integ Test and add it to Transform Test by @GavinZZ in #3045
+  * feat: allow classes that inherit Resource to disable setattr validation by @pradhapanr in #3047
+  * chore(schema): update by @github-actions in #3048
+  * feat: appsync datasource to lambda connector by @ssenchenko in #3046
+  * fix: integ test for AppSync DataSource -> DDB connector by @ssenchenko in #3049
+  * chore: update schema docs by @hoffa in #3052
+  * Release 1.64.0 (to main) by @aahung in #3093
+  * feat: Support InvokeMode in lambda function URL config by @valerena
+- from version 1.63.0
+  * chore: adding some type checks as constants by @xazhao in #2986
+  * feat: new SESBulkTemplatedCrudPolicy_v2 policy by @aaythapa in #2929
+  * chore: fix local transform format by @xazhao in #2990
+  * ci: test on Python 3.11 by @hoffa in #2991
+  * chore: add Python 3.11 to classifiers by @hoffa in #2992
+  * chore(schema): update by @github-actions in #2994
+  * chore(schema): update by @github-actions in #2997
+  * Feature: SNS Event FilterPolicyScope attribute by @mustafa-sadiq in #2988
+  * ci: ignore unused parameter cfn-lint rule by @hoffa in #3003
+  * chore(schema): update by @github-actions in #3002
+  * fix: Fix add transform test by @GavinZZ in #3010
+  * chore(schema): update by @github-actions in #3009
+  * Merge main to develop by @aahung in #3012
+  * chore: Add integration test service detector for SNS FilterPolicyScope by @aahung in #3015
+  * chore: Add skip_using_service_detector to sns integ tests by @aahung in #3016
+  * ci: Trigger gh actions on merge group by @aahung in #3017
+  * fix: Defining CORS when ApiKeyRequired is true results in an OPTIONS method that requires an API key by @ConnorRobertson in #2981
+  * chore: Upgrade ruff to 0.0.254 by @aahung in #3014
+  * chore: Get rid of py2 import stuff by @aahung in #3018
+  * chore: Enable pyupgrade check by @aahung in #3019
+  * chore(schema): update by @github-actions in #3020
+  * feat: Add EnableFunctionDefaultPermissions property to HTTP Api by @aaythapa in #3001
+  * fix: integration test cors_with_apikey_and_cors by @ConnorRobertson in #3021
+  * fix: Call correct exception when Connectors attribute is non-dict by @aaythapa in #3022
+  * fix: Fix two places that could cause internal errors by @aahung in #3023
+  * fix: cors integ test by @ConnorRobertson in #3024
+  * Add Region & SetIdentifier properties to Route53 to enable latency based routing by @davidcolclazier in #2998
+  * chore: Add type to metrics code and deprecate CWMetricsPublisher by @aahung in #3025
+  * ci: Exclude samtranslator.internal from interface scan by @aahung in #3027
+  * Merge main to develop by @hoffa in #3029
+  * chore: update properties in schema with new docs by @aaythapa in #3026
+  * chore(schema): update by @github-actions in #3030
+  * fix: remove Region/SetIdentifier-related integration tests by @hoffa in #3033
+- from version 1.62.0
+  * chore: add stricter typing to construct assume role policy function by @pradhapanr in #2965
+  * ci: Make transform test error json easier to diff/review by @aahung in #2968
+  * feat: v2 of Start SFN execution policy by @ssenchenko in #2955
+  * ci: Rename make black* to make format* by @aahung in #2970
+  * fix: multiple mq source event policy name (add DynamicPolicyName) by @ssenchenko in #2953
+  * fix: Truncate Event Bridge Rule if Id is over 64 characters by @GavinZZ in #2967
+  * fix: Remove logical id change for Events Rule by @GavinZZ in #2972
+  * fix: Useful error message when "Properties" key is missing in embedded connectors by @aaythapa in #2966
+  * chore: Do not install “schema_source” to site-packages by @musicinmybrain in #2973
+  * fix: Add MergeDefinitions property to Global Section by @GavinZZ in #2976
+  * feat: add AlwaysDeploy to AWS::Serverless::Api by @hoffa in #2935
+  * fix: Decouple samtranslator.models and *.intrinsics and add import tests by @aahung in #2977
+  * chore: Merge main to develop by @aws-sam-cli-bot in #2979
+  * ci: Upgrade ruff to 0.0.253 and enable more rules by @aahung in #2983
+  * chore: Update Add Transform Tests Script by @GavinZZ in #2984
+  * chore: Release 1.62.0 (to main) by @hoffa in #3028
+- from version 1.61.0
+  * chore(schema): add Connectors resource attribute to CFN resources by @hoffa in #2908
+  * chore(schema): update by @github-actions in #2909
+  * chore: add GeneratedProperty for CloudFormation Resource properties by @hoffa in #2907
+  * refactor: preliminary changes for managed policy improvements by @hoffa in #2910
+  * feat: New DisableFunctionDefaultPermissions property to block the creation of permissions resource from SAM API Auth by @aaythapa in #2885
+  * feat: load managed policies locally by @hoffa in #2839
+  * chore: Loose typing_extensions version requirement by @jakob-keller in #2916
+  * feat: Appsync to DynamoDb connector by @ssenchenko in #2915
+  * Move schema files by @GavinZZ in #2919
+  * Add resource validator using schema models by @GavinZZ in #2917
+  * fix: make MemorySize a pass-through by @hoffa in #2923
+  * fix: Make pass-through properties pass-through in serverless::function by @aahung in #2924
+  * docs: add link to GeneratedProperty by @hoffa in #2925
+  * chore(schema): update by @github-actions in #2926
+  * Remove property validations for lambda resources by @xazhao in #2928
+  * Update doc path by @GavinZZ in #2931
+  * chore: replace generated properties by GeneratedProperty() by @hoffa in #2934
+  * fix: Fix two places that could cause uncatched errors by @aahung in #2930
+  * Chore: another scan of replacing generated properties by GeneratedProperty() by @xazhao in #2937
+  * chore: Batch update dev dependencies by @aahung in #2936
+  * fix: appsync-ddb connector integ tests by @ssenchenko in #2938
+  * chore(schema): update by @github-actions in #2946
+  * chore: Remove "type: ignore" in samtranslator/translator by @aahung in #2947
+  * Downgrade TriggerFunction node to v14 because 18 is not available in all regions by @ssenchenko in #2948
+  * feat: Support SAM API MergeDefinitions property by @GavinZZ in #2943
+  * chore: Replace py36 with py310 in black config by @aahung in #2949
+  * One more fix for integ tests by @ssenchenko in #2951
+  * chore: Update "Development Status" classifiers by @aahung in #2950
+  * chore: remove soft template validation by @hoffa in #2961
+  * chore: do not load managed policies if already ARN by @hoffa in #2964
+- from version 1.60.1
+  * fix: Decouple samtranslator.models and *.intrinsics and add import tests #2977
+  * Release 1.60.1 (to main) by @aws-sam-cli-bot in #2978
+- from version 1.60.0
+  * chore: simpler way to update schema data by @hoffa in #2817
+  * feat: CloudFormation docs in schema by @hoffa in #2816
+  * feat: Allow resource attributes to be used on connectors by @aaythapa in #2822
+  * feat: multiple destination connector by @xazhao in #2796
+  * Sync Connectors from Profile Source of Truth by @awood45 in #2824
+  * chore: Move schema source/generation out of samtranslator package by @aahung in #2825
+  * fix(schema): more robust docs mapping by @hoffa in #2827
+  * Add location tests by @GavinZZ in #2826
+  * ci: mypy/pylint/format schema_source package by @aahung in #2828
+  * Skip Location service integ tests if service is not supported by @GavinZZ in #2831
+  * Revert last change and Re-add location exclusion in connector tests by @GavinZZ in #2832
+  * ci: (experimental) Add ruff before pylint to lint the codebase by @aahung in #2833
+  * ci: (experimental) Enable more ruff rules by @aahung in #2834
+  * chore: update schema by @hoffa in #2836
+  * ci: (experimental) Enable more ruff rules by @aahung in #2835
+  * fix(schema): better docs parsing by @hoffa in #2837
+  * ci: Remove pylint by @aahung in #2843
+  * chore: use https to pull docs by @hoffa in #2846
+  * ci: Upgrade ruff to 0.0.239 by @aahung in #2847
+  * feat: New opt-in property to update Lambda version whenever a property changes by @aaythapa in #2838
+  * ci(schema): scheduled updates by @hoffa in #2845
+  * fix: workflow typo by @hoffa in #2848
+  * chore(schema): update by @github-actions in #2849
+  * fix(schema): improve docs parsing by @hoffa in #2850
+  * docs: schema generation by @hoffa in #2851
+  * docs: add workshop by @hoffa in #2852
+  * chore: filter CFN docs by @hoffa in #2853
+  * feat: Ssm paramater policy fix by @aaythapa in #2693
+  * ci: add schema update PR body by @hoffa in #2855
+  * chore(schema): update by @github-actions in #2858
+  * fix(schema): support Alexa::* docs by @hoffa in #2859
+  * chore(schema): update by @github-actions in #2860
+  * ci(schema): add PR checks workaround to description by @hoffa in #2861
+  * chore(schema): update by @github-actions in #2862
+  * chore: remove tox and flake8 dependency by @hoffa in #2863
+  * ci: Add public_interface command by @aahung in #2864
+  * chore: remove docopt by @hoffa in #2865
+  * Merge main to develop by @acristin in #2871
+  * ci: Add public interface command check by @aahung in #2872
+  * fix(sam-translate.py): add samtranslator to path by @hoffa in #2875
+  * chore(schema): update by @github-actions in #2876
+  * fix: recognize license by @hoffa in #2882
+  * ci: Fix interface scan omits types (e.g., ConnectorResourceReference) by @aahung in #2880
+  * ci: Add GH Action to detect compatibility breaking chages by @aahung in #2877
+  * Adding metadata property for unsupported connector profile by @GavinZZ in #2879
+  * chore: Remove outdated CompatibleRuntimes in basic_layer.yaml (from sam-cli#4672) by @aahung in #2881
+  * ci: Use pull_request instead of pull_request_target in compatibility action by @aahung in #2883
+  * chore: Upgrade ruff to 0.0.244 by @aahung in #2884
+  * chore: Add decorator @deprecated and add it to is_str() by @aahung in #2889
+  * chore: Upgrade mypy to 1.0.0 and type hint cw_timer by @aahung in #2890
+  * chore: Upgrade black to 23.1.0 (depending on click 8) and format files by @aahung in #2892
+  * chore: Use ParamSpec from PEP 612 by @aahung in #2891
+  * chore: Remove click from dev.txt by @aahung in #2893
+  * chore: Enable linting for tests and integration by @aahung in #2895
+  * chore: Fix make integ-test as integration contains non-py files by @aahung in #2896
+  * chore(schema): update by @github-actions in #2897
+  * Use consistent method of determining AWS Partition from a region by @acristin in #2899
+  * chore(schema): update by @github-actions in #2898
+  * fix: Fix TestCustomDomains unit tests have side effect on others by @aahung in #2900
+  * fix: Avoid hardcoded eventbus name in integ test by @aahung in #2901
+  * fix: ChangeEmptyError constructor access self.stack_name before assigning by @aahung in #2902
+  * fix: Add partition attribute to BaseTest by @acristin in #2903
+  * Release 1.60.0 (to main) by @aws-sam-cli-bot in #2962
+  * feat: Support DocumentDB event source by @msharris1
+- from version 1.59.0
+  * Allow Qualifier to be defined with Id in Serverless Connectors by @aaythapa in #2768
+  * chore: Routinely add type hints by @aahung in #2771
+  * chore: Cache get_partition_name to reduce transform latency by @aahung in #2774
+  * chore: update schema docs by @hoffa in #2775
+  * chore: use latest cfn-lint by @hoffa in #2777
+  * Replace Fn::GetAtt Key.APIKeyId with Ref: Key by @acristin in #2779
+  * Remove not implemented methods by @GavinZZ in #2780
+  * chore: Remove all # type: ignore[attr-defined] by @aahung in #2783
+  * refactor: Refactor ImplicitHttpApiPlugin and ImplicitRestApiPlugin by @aahung in #2784
+  * chore: Enable some pylint rules and make our code comply by @aahung in #2788
+  * Update sam_expect to be used for resource attributes by @aaythapa in #2789
+  * chore: Loose pydantic version requirement by @aahung in #2790
+  * chore: Loose pydantic version requirement ~1.10 -> ~1.8 by @aahung in #2791
+  * chore: sort schema keys by @hoffa in #2792
+  * chore: Adding more type hints by @GavinZZ in #2787
+  * feat: unified SAM/CloudFormation schema by @hoffa in #2793
+  * fix(schema): required pass-through fields by @hoffa in #2797
+  * chore: more unified schema tests by @hoffa in #2798
+  * chore: make unified schema the default by @hoffa in #2799
+  * fix: better property title by @hoffa in #2800
+  * feat: Attach connectors to source by @aaythapa in #2772
+  * chore: Merge branch "main" into "develop" to apply the patch and version bump by @aahung in #2812
+  * fix: Make StartingPosition not required in event source schemas by @aahung in #2813
+  * chore: Add back argument "name" to BasePlugin for compatibility by @aahung in #2814
+  * Release 1.59.0 (to main) by @aws-sam-cli-bot in #2870
+- from version 1.58.1
+  * chore: Add back samtranslator.model.types.is_str for compatibility by @aahung in #2810
+- from version 1.58.0
+  * chore: Update node.js version in test by @acristin in #2722
+  * fix: Raise correct exception when "ResponseParameters" is not dict by @aahung in #2725
+  * fix: Raise correct exception when DestinationConfig or DestinationConfig.x is not dict by @aahung in #2727
+  * fix: Raise correct exception when S3 event referring to a bucket whose properties is not dict by @aahung in #2728
+  * Add a cache on top of python27 hashing by @acristin in #2724
+  * Fix warning when using default stage name and FailOnWarnings is on by @GavinZZ in #2726
+  * fix: Handle when httpapi Auth could be null by @aahung in #2729
+  * fix: Raise correct exception when Fn::If value is not a list by @aahung in #2731
+  * Update caller credential partition by @GavinZZ in #2730
+  * fix: Raise correct exception when rest api auth is not a dict by @aahung in #2732
+  * Update DEVELOPMENT_GUIDE.md to use modern python by @acristin in #2733
+  * docs: add clause to backward compatibility guidelines by @hoffa in #2723
+  * Add typing and remove 'type: ignore' Part One by @GavinZZ in #2738
+  * fix: Raise correct exception FindInMap used on parameters not a 2-level-map by @aahung in #2740
+  * fix: Raise correct exception when bucket tags are not list by @aahung in #2742
+  * fix: Raise correct exception when ApplicationId or Version of app is not valid by @aahung in #2741
+  * chore: re-enable cfn-lint by @hoffa in #2745
+  * Add typing and remove 'type: ignore' Part Two by @GavinZZ in #2744
+  * chore: adding types part 1 by @aaythapa in #2746
+  * Make jwtConfiguration fields lower case by @ssenchenko in #2737
+  * fix: Deduplicate error message in InvalidResourceException by @aahung in #2748
+  * fix: Prevent infinite recursion when resolving policy parameter when the parameter refs a CFN parameter with the same name by @aahung in #2751
+  * fix: Extend validation of apiauth Identity sub values from Headers only by @aahung in #2747
+  * chore: Make PropertyType.expected_type auto gen for dict and str by @aahung in #2752
+  * Add typing and remove 'type: ignore' Part Three by @GavinZZ in #2750
+  * fix: Raise correct exception when apigateway-endpoint-configuration is not a map by @aahung in #2753
+  * chore: adding types part 2 by @aaythapa in #2749
+  * refactor: Combine function/sfn Api event logics about adding Auth by @aahung in #2755
+  * fix: Raise correct exception when Domain BasePath contains non-str items by @aahung in #2756
+  * Type Ignore Fixes Part Four by @GavinZZ in #2757
+  * Add support for AT_TIMESTAMP and StartingPositionTimestamp by @GavinZZ in #2758
+  * Format policy_templates.json by @mustafa-sadiq in #2760
+  * Added support for mTLS auth for MSK and Kafka by @mbfreder in #2690
+  * chore: Add cw_timer to deepcopy in SwaggerEditor and OpenApiEditor by @aahung in #2764
+  * chore: Optimize the use of deepcopy in Translator._get_function_names() by @aahung in #2765
+  * chore: Format other files in samtranslator/policy_templates_data by @aahung in #2762
+  * chore: Move some PullEventSource validations to subclasses by @aahung in #2767
+  * feat: Support RuntimeManagementConfig by @valerena
+- from version 1.57.0
+  * feat: Support SQS Maximum Concurrency by @msharris1
+- from version 1.56.0
+  * ci: Allow build workflow to be triggered manually or by gh-cli by @aahung in #2593
+  * feat: add UnescapeMappingTemplate to state machine Api event by @hoffa in #2591
+  * chore: Type improvements in sam_resources.py by @aahung in #2594
+  * fix: correct URL suffix by @hoffa in #2595
+  * chore: Add CODEOWNERS file by @jfuss in #2592
+  * docs: mention Property vs PropertyType by @hoffa in #2596
+  * chore: Prevent bin/ from installed as a package by @aahung in #2597
+  * chore: Add --add-test-metadata option to yaml formatter by @aahung in #2598
+  * chore: Remove auto added yaml version in yaml formatter by @aahung in #2600
+  * feat: Support "Name" for AWS::Serverless::HttpApi by @aahung in #2492
+  * chore: Add PassThroughProperty and use it in :HttpApi Name by @aahung in #2601
+  * docs: mention PassThroughProperty by @hoffa in #2602
+  * fix: Raise correct exception when Api authorizer identity is not a dict by @aahung in #2603
+  * chore: flexible jsonschema version by @jordanvance in #2511
+  * fix: Raise correct exception when !Sub variable value (Parameter.Default) is not string by @aahung in #2607
+  * fix: Raise correct exception when FunctionUrlConfig.Cors is not dict by @aahung in #2608
+  * fix: Raise correct exception when swagger: securityDefinitions is not dict by @aahung in #2609
+  * fix: Raise correct exception when swagger: responses.headers is not a dict by @aahung in #2610
+  * fix: Raise correct exception when api authorizer is not a dict by @aahung in #2611
+  * fix: KeyError: u'AWS_IAM' and add typing by @GavinZZ in #2604
+  * adding support for all SSM Parameters types by @aaythapa in #2605
+  * fix: Raise correct exception when restapi authorizer is not a dict by @aahung in #2613
+  * fix: Raise correct exception when kafka SourceAccessConfigurations is not a list by @aahung in #2614
+  * chore: Enforce formatting for yaml/json and add Test Metadata by @GavinZZ in #2617
+  * feat: initial JSON schema by @hoffa in #2616
+  * chore: add schema types for Connector and SimpleTable by @hoffa in #2618
+  * chore: add schema types to Application by @hoffa in #2619
+  * chore: add schema types to LayerVersion by @hoffa in #2620
+  * fix: Handle when openapi/swagger security property is null by @aahung in #2615
+  * chore: Experiment on unitify property value validation messages by @aahung in #2621
+  * fix: Raise correct exception when Api.Domain is not a map by @aahung in #2622
+  * feat: fast schema validation by @hoffa in #2624
+  * chore: add state machine events schema skeleton by @hoffa in #2625
+  * Maintainer list update: Add GavinZZ and Aayush and Connor by @GavinZZ in #2626
+  * fix: Raise correct exception when Identity.Headers is not of valid type by @aahung in #2627
+  * chore: add state machine schema types by @hoffa in #2628
+  * Add Schema Type to AWS::Serverless::Lambda by @GavinZZ in #2623
+  * Skeleton Lambda Events Schema by @GavinZZ in #2629
+  * chore: ensure latest schema is always generated by @hoffa in #2632
+  * fix: Raise correct exception when httpapi event RouteSettings is not dict by @aahung in #2630
+  * fix: Raise correct exception when event OnFailure is not of valid type by @aahung in #2633
+  * chore: add HttpApi schema by @hoffa in #2634
+  * fix: Raise correct exception when DefaultAuthorizer is not of valid type by @aahung in #2636
+  * Add detailed type to AWS::Serverless::Lambda Schema by @GavinZZ in #2635
+  * fix: Raise correct exception when some properties are not dict when used with .get() by @aahung in #2637
+  * Create SAM StateMachine without providing a role or policy by @ConnorRobertson in #2606
+  * Add detailed type to AWS::Serverless::Api schema by @GavinZZ in #2638
+  * chore: refactor schema by @hoffa in #2639
+  * Add schema types to global section by @GavinZZ in #2641
+  * chore: scaffolding for schema docs by @hoffa in #2644
+  * Validate schema as unit test by @GavinZZ in #2643
+  * fix: Raise correct exception when some properties are not dict when used dict methods by @aahung in #2646
+  * chore: Add connect timeout to serverlessrepo clients by @aahung in #2650
+  * Fix wrong types for schema by @GavinZZ in #2649
+  * Use SamIntrinsicable to replace all Union[SamIntrinsics, T] by @GavinZZ in #2651
+  * feat: more docs scaffolding + AWS::Serverless::Function by @hoffa in #2652
+  * chore: docs to Connector/Application/LayerVersion/SimpleTable by @hoffa in #2654
+  * chore: add schema docs to AWS::Serverless::Api by @hoffa in #2655
+  * chore: add docs for Function event Type/Properties by @hoffa in #2656
+  * add schema docs to AWS::Serverless::HttpApi by @GavinZZ in #2658
+  * chore: add schema docs to AWS::Serverless::StateMachine by @aaythapa in #2657
+  * Multi dest connector by @xazhao in #2647
+  * feat: Role Path for AWS::Serverless::Function by @GavinZZ in #2659
+  * chore: add JSON schema version by @hoffa in #2663
+  * chore: remove feature request issue template by @hoffa in #2668
+  * docs: update contribution guidelines for feature requests by @hoffa in #2669
+  * chore: Refactor some chained dict.get() with dict_deep_get() by @aahung in #2648
+  * feat: update transform test script to update ManagedPolicyArn with partion by @xazhao in #2660
+  * Convert Relative Paths to Full Paths In Schema by @GavinZZ in #2671
+  * fix: schema state machine Policies by @hoffa in #2672
+  * chore: schema fix and polish by @hoffa in #2673
+  * Release 1.55.0 (to develop) by @aws-sam-cli-bot in #2675
+  * chore: more schema tests for invalid Type by @hoffa in #2677
+  * chore: tighter schema type for RestApiId by @hoffa in #2679
+  * chore: Add SnapStart into invalid Global error message by @aahung in #2678
+  * Add a API test with BasePath containing hyphen by @GavinZZ in #2681
+  * chore: Refactor OpenApiEditor and SwaggerEditor to reduce duplicate code by @aahung in #2682
+  * fix: Raise corr...
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Mon Dec  5 20:57:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.55.0:

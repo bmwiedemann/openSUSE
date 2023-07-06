@@ -1,7 +1,7 @@
 #
 # spec file for package python-aws-sam-translator
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %define skip_python2 1
 %endif
 Name:           python-aws-sam-translator
-Version:        1.55.0
+Version:        1.68.0
 Release:        0
 Summary:        AWS SAM template to AWS CloudFormation template translator
 License:        Apache-2.0
@@ -39,6 +39,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-boto3 >= 1.19.5
 Requires:       python-jsonschema >= 3.2
+Requires:       python-pydantic >= 1.8
+Requires:       (python-typing_extensions >= 4.4.0 if python-base < 3.7)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
@@ -52,6 +54,7 @@ BuildRequires:  %{python_module coverage >= 5.3}
 BuildRequires:  %{python_module docopt >= 0.6.2}
 BuildRequires:  %{python_module jsonschema >= 3.2}
 BuildRequires:  %{python_module parameterized >= 0.7.4}
+BuildRequires:  %{python_module pydantic >= 1.8}
 BuildRequires:  %{python_module pytest >= 3.0.7}
 BuildRequires:  %{python_module pytest-cov >= 2.10.1}
 BuildRequires:  %{python_module pytest-rerunfailures}
