@@ -7,4 +7,20 @@
     <comment>Next try</comment>
     <requestid>990264</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1391f0918aa40405f28cd3d7105e7ec2</srcmd5>
+    <version>unknown</version>
+    <time>1688660949</time>
+    <user>favogt_factory</user>
+    <comment>- label capitalization and related cleanups
+
+- Add release stage and lifecycle url
+
+- Correct org.opensuse.reference label
+
+- Add org.opencontainers.image.source label set to %SOURCEURL%
+
+- Disable systemd colors</comment>
+    <requestid>1097011</requestid>
+  </revision>
 </revisionlist>
