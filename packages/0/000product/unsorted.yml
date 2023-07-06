@@ -16338,6 +16338,7 @@ unsorted:
   - lua-libguestfs 
   - lua-libprelude 
   - lua-lmod 
+  - lua-lmod-apparmor-abstractions 
   - lua-lmod-doc 
   - lua-macros 
   - lua-penlight-doc 
@@ -22361,7 +22362,6 @@ unsorted:
   - pulseaudio 
   - pulseaudio-bash-completion 
   - pulseaudio-equalizer 
-  - pulseaudio-gdm-hooks 
   - pulseaudio-lang 
   - pulseaudio-module-bluetooth 
   - pulseaudio-module-gsettings 
@@ -24434,6 +24434,7 @@ unsorted:
   - python310-imbox 
   - python310-img2pdf 
   - python310-iminuit 
+  - python310-immutabledict 
   - python310-immutables 
   - python310-impacket 
   - python310-importlab 
@@ -27832,6 +27833,7 @@ unsorted:
   - python311-imbox 
   - python311-img2pdf 
   - python311-iminuit 
+  - python311-immutabledict 
   - python311-impacket 
   - python311-importlab 
   - python311-imread 
@@ -31236,6 +31238,7 @@ unsorted:
   - python39-imbox 
   - python39-img2pdf 
   - python39-iminuit 
+  - python39-immutabledict 
   - python39-immutables 
   - python39-impacket 
   - python39-importlab 
