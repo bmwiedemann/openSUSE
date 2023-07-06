@@ -1,0 +1,39 @@
+-------------------------------------------------------------------
+Fri Jun 23 15:33:33 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- label capitalization and related cleanups
+
+-------------------------------------------------------------------
+Tue May 30 06:52:56 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Add release stage and lifecycle url
+
+-------------------------------------------------------------------
+Tue May 23 06:45:17 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- Use standard naming for registry image
+
+-------------------------------------------------------------------
+Wed Apr  5 16:55:15 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- Shorten descriptions
+
+-------------------------------------------------------------------
+Fri Mar  3 07:24:36 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Add org.opencontainers.image.source label set to %SOURCEURL%
+
+-------------------------------------------------------------------
+Mon Jan  2 12:22:14 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Bump copyright year
+
+-------------------------------------------------------------------
+Wed Dec 21 14:05:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- BuildTag sorting and consistency fixes
+
+-------------------------------------------------------------------
+Wed Dec 21 14:04:07 UTC 2022 - Dirk Müller <dmueller@suse.com>
+
+- Add :latest tag
