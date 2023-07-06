@@ -1,4 +1,184 @@
 -------------------------------------------------------------------
+Thu Jul  6 09:31:26 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 1.63.0:
+  * New backends
+    - Pikpak
+    - New S3 providers
+      + petabox.io
+      + Google Cloud Storage
+    - New WebDAV providers
+      + Fastmail
+  * Major changes
+    - Files will be copied to a temporary name ending in `.partial` when copying to `local`, `ftp`,
+      `sftp` then renamed at the end of the transfer.
+      + This helps with data integrity as we don't delete the existing file until the new one is
+        complete.
+      + It can be disabled with the --inplace flag.
+      + This behaviour will also happen if the backend is wrapped, for example `sftp` wrapped with
+        `crypt`.
+    - The s3, azureblob and gcs backends now support directory markers so empty directories are
+      supported
+    - The --default-time flag now controls the unknown modification time of files/dirs
+      + If a file or directory does not have a modification time rclone can read then rclone will
+        display this fixed time instead.
+      + For the old behaviour use `--default-time 0s` which will set this time to the time rclone
+        started up.
+  * New Features
+    - build
+      + Modernise linters in use and fixup all affected code
+      + Push docker beta to GHCR (GitHub container registry)
+    - cat: Add `--separator` option to cat command
+    - config
+      + Do not remove/overwrite other files during config file save
+      + Do not overwrite config file symbolic link
+      + Stop `config create` making invalid config files
+    - doc updates
+    - fs
+      + Add `size` to JSON logs when moving or copying an object
+      + Allow boolean features to be enabled with `--disable !Feature`
+    - genautocomplete: Rename to `completion` with alias to the old name
+    - librclone: Added example on using `librclone` with Go
+    - lsjson: Make `--stat` more efficient
+    - operations
+      + Implement `--multi-thread-write-buffer-size` for speed improvements on downloads
+      + Reopen downloads on error when using `check --download` and `cat`
+    - rc: `config/listremotes` includes remotes defined with environment variables
+    - selfupdate: Obey `--no-check-certificate` flag
+    - serve restic: Trigger systemd notify
+    - serve webdav: Implement owncloud checksum and modtime extensions
+    - sync: `--suffix-keep-extension` preserve 2 part extensions like .tar.gz
+  * Bug Fixes
+    - accounting
+      + Fix Prometheus metrics to be the same as `core/stats`
+      + Bwlimit signal handler should always start
+    - bisync: Fix `maxDelete` parameter being ignored via the rc
+    - cmd/ncdu: Fix screen corruption when logging
+    - filter: Fix deadlock with errors on `--files-from`
+    - fs
+      + Fix interaction between `--progress` and `--interactive`
+      + Fix infinite recursive call in pacer ModifyCalculator (fixes issue reported by
+        the staticcheck linter)
+    - lib/atexit: Ensure OnError only calls cancel function once
+    - lib/rest: Fix problems re-using HTTP connections
+    - rc
+      + Fix `operations/stat` with trailing `/`
+      + Fix missing `--rc` flags
+      + Fix output of Time values in `options/get`
+    - serve dlna: Fix potential data race
+    - version: Fix reported os/kernel version for windows
+  * Mount
+    - Add `--mount-case-insensitive` to force the mount to be case insensitive
+    - Removed unnecessary byte slice allocation for reads
+    - Clarify rclone mount error when installed via homebrew
+    - Added _netdev to the example mount so it gets treated as a remote-fs rather than local-fs
+  * Mount2
+    - Updated go-fuse version
+    - Fixed statfs
+    - Disable xattrs
+  * VFS
+    - Add MkdirAll function to make a directory and all beneath
+    - Fix reload: failed to add virtual dir entry: file does not exist
+    - Fix writing to a read only directory creating spurious directory entries
+    - Fix potential data race
+    - Fix backends being Shutdown too early when startup takes a long time
+  * Local
+    - Fix filtering of symlinks with `-l`/`--links` flag
+    - Fix /path/to/file.rclonelink when `-l`/`--links` is in use
+    - Fix crash with `--metadata` on Android
+  * Cache
+    - Fix backends shutting down when in use when used via the rc
+  * Crypt
+    - Add `--crypt-suffix` option to set a custom suffix for encrypted files
+    - Add `--crypt-pass-bad-blocks` to allow corrupted file output
+    - Fix reading 0 length files
+    - Try not to return "unexpected EOF" error
+    - Reduce allocations
+    - Recommend Dropbox for `base32768` encoding
+  * Azure Blob
+    - Empty directory markers
+    - Support azure workload identities
+    - Fix azure blob uploads with multiple bits of metadata
+    - Fix azurite compatibility by sending nil tier if set to empty string
+  * Combine
+    - Implement missing methods
+    - Fix goroutine stack overflow on bad object
+  * Drive
+    - Add `--drive-env-auth` to get IAM credentials from runtime
+    - Update drive service account guide
+    - Fix change notify picking up files outside the root
+    - Fix trailing slash mis-identificaton of folder as file
+    - Fix incorrect remote after Update on object
+  * Dropbox
+    - Implement `--dropbox-pacer-min-sleep` flag
+    - Fix the dropbox batcher stalling
+  * Fichier
+    - Add `--ficicher-cdn` option to use the CDN for download
+  * FTP
+    - Lower log message priority when `SetModTime` is not supported to debug
+    - Fix "unsupported LIST line" errors on startup
+    - Fix "501 Not a valid pathname." errors when creating directories
+  * Google Cloud Storage
+    - Empty directory markers
+    - Added `--gcs-user-project` needed for requester pays
+  * HTTP
+    - Add client certificate user auth middleware. This can auth `serve restic` from the username
+      in the client cert.
+  * Jottacloud
+    - Fix vfs writeback stuck in a failed upload loop with file versioning disabled
+  * Onedrive
+    - Add `--onedrive-av-override` flag to download files flagged as virus
+    - Fix quickxorhash on 32 bit architectures
+    - Report any list errors during `rclone cleanup`
+  * Putio
+    - Fix uploading to the wrong object on Update with overriden remote name
+    - Fix modification times not being preserved for server side copy and move
+    - Fix server side copy failures (400 errors)
+  * S3
+    - Empty directory markers
+    - Update Scaleway storage classes
+    - Fix `--s3-versions` on individual objects
+    - Fix hang on aborting multpart upload with iDrive e2
+    - Fix missing "tier" metadata
+    - Fix V3sign: add missing subresource delete
+    - Fix Arvancloud Domain and region changes and alphabetise the provider
+    - Fix Qiniu KODO quirks virtualHostStyle is false
+  * SFTP
+    - Add `--sftp-host-key-algorithms ` to allow specifying SSH host key algorithms
+    - Fix using `--sftp-key-use-agent` and `--sftp-key-file` together needing private key file
+    - Fix move to allow overwriting existing files
+    - Don't stat directories before listing them
+    - Don't check remote points to a file if it ends with /
+  * Sharefile
+    - Disable streamed transfers as they no longer work
+  * Smb
+    - Code cleanup to avoid overwriting ctx before first use (fixes issue reported by
+      the staticcheck linter)
+  * Storj
+    - Fix "uplink: too many requests" errors when uploading to the same file
+    - Fix uploading to the wrong object on Update with overriden remote name
+  * Swift
+    - Ignore 404 error when deleting an object
+  * Union
+    - Implement missing methods
+    - Allow errors to be unwrapped for inspection
+  * Uptobox
+    - Add `--uptobox-private` flag to make all uploaded files private
+    - Fix improper regex
+    - Fix Update returning the wrong object
+    - Fix rmdir declaring that directories weren't empty
+  * WebDAV
+    - nextcloud: Add support for chunked uploads
+    - Set modtime using propset for owncloud and nextcloud
+    - Make pacer minSleep configurable with `--webdav-pacer-min-sleep`
+    - Fix server side copy/move not overwriting
+    - Fix modtime on server side copy for owncloud and nextcloud
+  * Yandex
+    - Fix 400 Bad Request on transfer failure
+  * Zoho
+    - Fix downloads with `Range:` header returning the wrong data
+
+-------------------------------------------------------------------
 Sun Apr  2 05:44:04 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Use gcc11 for openSUSE Leap 15.5, fix building
