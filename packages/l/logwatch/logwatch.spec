@@ -1,7 +1,7 @@
 #
 # spec file for package logwatch
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           logwatch
-Version:        7.7
+Version:        7.8
 Release:        0
 Summary:        Tool to analyze and report on system logs
 License:        MIT
@@ -31,8 +31,6 @@ Patch0:         logwatch-firewall.patch
 Patch2:         logwatch-timestamp_in_var.patch
 Patch3:         harden_logwatch.service.patch
 Patch4:         harden_logwatch_dmeventd.service.patch
-# PATCH-FIX-UPSTREAM https://sourceforge.net/p/logwatch/bugs/109/
-Patch5:         logwatch-7.5.5-egrep.patch
 BuildRequires:  xz
 Requires:       grep
 Requires:       mailx
@@ -68,7 +66,6 @@ cp %{SOURCE3} .
 sed -i -e 's,%{_datadir}/doc/logwatch-\*,%{_defaultdocdir}/logwatch,' logwatch.8
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
 
 %build
 
