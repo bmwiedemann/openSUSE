@@ -61,4 +61,12 @@
   * Switch build-backend to flit_core</comment>
     <requestid>1008558</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>952a7efa5f3002f55815892537f3ad39</srcmd5>
+    <version>0.4</version>
+    <time>1688661006</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1097116</requestid>
+  </revision>
 </revisionlist>
