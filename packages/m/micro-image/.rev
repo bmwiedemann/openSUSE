@@ -7,4 +7,20 @@
     <comment>Next try</comment>
     <requestid>990265</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>456e3ee83f33c3e2fff50fa0ca72d458</srcmd5>
+    <version>2023</version>
+    <time>1688660950</time>
+    <user>favogt_factory</user>
+    <comment>- label capitalization and related cleanups
+
+- Add release stage and lifecycle url
+
+- switch versioning to rolling Tumbleweed schema 
+
+- Add org.opencontainers.image.source label set to %SOURCEURL%
+
+- Bump copyright year</comment>
+    <requestid>1097013</requestid>
+  </revision>
 </revisionlist>

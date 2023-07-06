@@ -1,44 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- SPDX-License-Identifier: MIT -->
 
-<!-- OBS-AddTag: bci/bci-micro:%OS_VERSION_ID_SP% bci/bci-micro:%OS_VERSION_ID_SP%.%RELEASE% bci/bci-micro:latest -->
+<!-- OBS-AddTag: opensuse/bci/bci-micro:%OS_VERSION_ID_SP% opensuse/bci/bci-micro:%OS_VERSION_ID_SP%.%RELEASE% opensuse/bci/bci-micro:latest -->
 <!-- OBS-Imagerepo: obsrepositories:/ -->
 
 <image schemaversion="6.5" name="micro-image" xmlns:suse_label_helper="com.suse.label_helper">
   <description type="system">
     <author>openSUSE Project</author>
     <contact>https://www.suse.com/</contact>
-    <specification>openSUSE Tumbleweed BCI %OS_VERSION% Micro Container Image</specification>
+    <specification>openSUSE Tumbleweed BCI openSUSE Tumbleweed Micro Container Image</specification>
   </description>
   <preferences>
     <type image="docker">
       <containerconfig
-          name="bci/bci-micro"
+          name="opensuse/bci/bci-micro"
           tag="%OS_VERSION_ID_SP%"
           maintainer="openSUSE (https://www.opensuse.org/)"
           additionaltags="%OS_VERSION_ID_SP%.%RELEASE%,latest">
         <labels>
-          <!-- See https://en.opensuse.org/Building_derived_containers#Labels -->
           <suse_label_helper:add_prefix prefix="org.opensuse.bci.micro">
-            <label name="org.opencontainers.image.title" value="openSUSE Tumbleweed BCI %OS_VERSION% Micro Container Image"/>
+            <label name="org.opencontainers.image.title" value="openSUSE Tumbleweed BCI openSUSE Tumbleweed Micro"/>
             <label name="org.opencontainers.image.description" value="A micro environment for containers based on the SLE Base Container Image."/>
             <label name="org.opencontainers.image.version" value="%OS_VERSION_ID_SP%.%RELEASE%"/>
             <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
             <label name="org.opencontainers.image.vendor" value="openSUSE Project"/>
+            <label name="org.opencontainers.image.source" value="%SOURCEURL%"/>
             <label name="org.opencontainers.image.url" value="https://www.opensuse.org"/>
-            <label name="org.opensuse.reference" value="registry.opensuse.org/bci/bci-micro:%OS_VERSION_ID_SP%.%RELEASE%"/>
+            <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/bci/bci-micro:%OS_VERSION_ID_SP%.%RELEASE%"/>
             <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
 
-            <label name="com.suse.release-stage" value="released"/>
-
+            <label name="org.opensuse.release-stage" value="released"/>
+            <label name="org.opensuse.lifecycle-url" value="https://en.opensuse.org/Lifetime"/>
           </suse_label_helper:add_prefix>
         </labels>
-
-
-
       </containerconfig>
     </type>
-    <version>15.Tumbleweed.0</version>
+    <version>2023</version>
     <packagemanager>zypper</packagemanager>
     <rpm-check-signatures>false</rpm-check-signatures>
     <rpm-excludedocs>true</rpm-excludedocs>
