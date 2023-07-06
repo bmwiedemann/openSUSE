@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jul  3 13:31:07 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.20.5
+  * revert previous fix from 1.20.4, make it optional.
+- Update to version 1.20.4
+  * fix "Peer refused to agree to his IP address" message.
+- Update to version 1.20.3
+  * minor change in a warning message.
+  * documentation improvement.
+  * minor changes in build and test files.
+- Update to version 1.20.2
+  * fix regression: do attempt to apply duplicate routes, log
+     INFO instead of WARN.
+  * minor changes in log messages.
+- Update patch:
+  * harden_openfortivpn@.service.patch
+
+-------------------------------------------------------------------
 Mon Feb 27 13:39:27 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to versoin 1.20.1

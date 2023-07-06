@@ -17,7 +17,7 @@
 
 
 Name:           openfortivpn
-Version:        1.20.1
+Version:        1.20.5
 Release:        0
 Summary:        Client for PPP+SSL VPN tunnel services
 License:        GPL-3.0-or-later
