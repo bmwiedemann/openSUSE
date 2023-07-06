@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Thu Jul 06 07:24:27 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 13.2.0:
+  * Release 13.2.0 (#28696)
+  * Fix Machine ID guide index and adjust FAQ (#28700)
+  * Rename `database_labels` to `db_labels` (#28687)
+  * update eref (#28699)
+  * Update agentless mode description (#28682)
+  * Update `e` reference (#28684)
+  * improve startup with empty db or discovery config (#28622)
+  * `tsh db connect` should prefer mongosh (#28668)
+  * Script to configure IAM for the DeployService (#28436) (#28643)
+  * [v13] lib/teleterm: Remove misleading error log after
+    LocalAgent.GetKey (#28664)
+  * [v13] Move database validation to gRPC methods (#28638)
+  * Teleport Proxy Behind ALB support for IP Pinning (#26623)
+    (#28466)
+  * Add option to allow for host users not to be deleted (#28432)
+  * [v13] Update e ref. (#28615)
+  * [v13] Add custom component prop type for react-select (#28617)
+  * [v13] Web: Improve no access message and remove hard coded
+    color (#28550)
+  * [v13] Backport Assist related changes (#28480)
+  * Improve copy on the integrations page (#28611)
+  * [v13] Web related tweaks for access request user groups
+    (#28545)
+  * backport jamf default checks to branch/v13 (#28558)
+  * Update `e` (#28605)
+  * AWS OIDC - DeployService: configure IAM (#28088) (#28597)
+  * dynamodbbk: don't delete non-expired items on Get (#28600)
+  * [v13] Add light & dark themes to YAML editor  (#28517)
+  * Change copy "Go To Dashboard" for "Go To Cluster" on new
+    account screen (#28434) (#28520)
+  * athena audit logs - add migration script (#28182)
+  * Disable disk-based logger for web tests (#28557)
+  * [v13] integrations/operator: Try to delete bot role (#28543)
+  * [v13] fix: Use correct sync defaults and validation (#28553)
+  * Fix header levels in the authorization docs page (#28495)
+  * Fix the username on self-hosted DB doc pages (#28521)
+  * clarify source of user cert TTL (#28534)
+  * remove sentence fragment and link (#28483)
+  * Added 06/29 Upcoming Releases Update (#28478)
+  * update device trust guide (#28365) (#28523)
+  * Add unauthenticated rate limiter constants (#28538)
+  * Promote IAC docs for agents and dynamic resources (#28526)
+  * docs: replace "Golang" with "Go" (#28171)
+  * [v13] Docs: Document that root clusters can't populate OS users
+    from leaves. (#28531)
+  * [v13] Discover: Add deployed method field to deploy service
+    event (#28507)
+  * [v13] Web terminal themes (light & dark) (#28408)
+  * Add omitempty to new ResourceMatcherAWS block for best
+    backwards compat (#28419)
+  * Emit default role `editor` changes (#28209) (#28481)
+  * docs: fix upcoming release descriptions (#28504)
+  * adding name to docker run command (#28502)
+  * [v13] Add security notes to the session recording guide
+    (#28462)
+  * Describe subject flags in Event Handler guides (#28431)
+  * [v13] Fix moderated session presence checking (#28456)
+  * Remove most t.Log() from tests (#28471)
+  * [v13] Docs: Update Google Workspace SSO Guide (#28475)
+  * docs: bump cloud to 13.1.5 (#28404) (#28450)
+  * Update tsh scp command description to match ssh node commands
+    (#28467)
+  * Replace xitongsys/parquet-go with segment-io lib (#28472)
+  * use teleport.sh instead of dashboard.goteleport.com for license
+    retrieval (#28426)
+  * [v13] Drain database connections on graceful shutdown (#28369)
+  * [v13] Expand Docker installation instructions (#28447)
+  * Machine ID: Add support for BotJoin analytics event (#28293)
+    (#28425)
+  * Clarify the disablesse S3 backend setting (#28401)
+  * copy edits (#28423)
+  * Hide wait subcommands (#28416)
+  * athena audit logs - use sqs attribute as oldest metric (#28274)
+  * chore: Bump Buf to v1.22.0 (#28381)
+  * [v13] k8s operator supports Okta import rules. (#28377)
+  * [v13] Machine ID: Add usage event for bot creation (#28366)
+  * Update `e` (#28406)
+  * [v13] Connect: Light theme (#28277)
+  * Teleport One Off Script (#27852) (#28347)
+  * [v13] Remove absolute goteleport.com/docs links (#28395)
+  * [v13] Add a note on the `admin` database permission requirement
+    for MongoDB (#28362)
+  * docs: update version (#28389)
+  * [v13] Add username to headless authentication backend key
+    (#28380)
+  * [v13] docs: backports (#28331)
+  * update installation video (#28370)
+  * Add opsgenie static credentials check and test (#27655)
+    (#28326)
+  * [v13] Restore resource requests guide with an admonition.
+    (#28348)
+
+-------------------------------------------------------------------
 Wed Jun 28 06:13:22 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 13.1.5:
