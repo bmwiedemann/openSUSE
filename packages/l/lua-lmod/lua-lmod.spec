@@ -26,6 +26,8 @@
 %define build_pdf 1
 %endif
 
+ExcludeArch:    i586 %arm s390
+
 %define lmod_min_lua_version 5.1
 %define version_name_suffix() %{lua: x=string.gsub(rpm.expand("%*"),"([0-9]+)%.([0-9]+).*","%1%2"); print(x)}
 %{!?lua_pref:%define lua_pref lua}
@@ -45,6 +47,7 @@ Version:        8.7.17
 Release:        0
 URL:            https://github.com/TACC/Lmod
 Source0:        https://github.com/TACC/Lmod/archive/%{version}.tar.gz#$/%{name}-%{version}.tar.gz
+Source1:        %{name}-rpmlintrc
 Patch1:         Messages-Remove-message-about-creating-a-consulting-ticket.patch
 Patch2:         Doc-Ugly-workaround-for-bug-in-Sphinx.patch
 
@@ -62,15 +65,17 @@ Requires:       lua%{version_name_suffix %lua_version}-luafilesystem
 Requires:       lua%{version_name_suffix %lua_version}-luaposix
 Requires:       lua%{version_name_suffix %lua_version}-luaterm
 Requires:       tcl
+Requires:       (lua-lmod-apparmor-abstractions if apparmor-abstractions)
 Conflicts:      Modules
 %if 0%{suse_version} >= 1550
 BuildRequires:  python3-Sphinx
 %else
 BuildRequires:  python-Sphinx
 %endif
+Provides:       environment-modules
 Provides:       lua-lmod-man = %{version}-%{release}
 Provides:       ml = %{version}
-Provides:       modules = %{version}
+Conflicts:      environment-modules
 %if 0%{?build_pdf:1}
 
 %if 0%{suse_version} >= 1550
@@ -129,6 +134,16 @@ BuildArch:      noarch
 
 %description doc
 Documentation (pdf) for the Lmod Environment Modules System.
+
+%package apparmor-abstractions
+Summary:        Apparmor bash Abstraction for Lmod
+BuildRequires:  apparmor-abstractions
+BuildRequires:  apparmor-rpm-macros
+Requires:       apparmor-abstractions
+BuildArch:      noarch
+
+%description apparmor-abstractions
+Profile for shell source scripts for lua-lmod
 
 %prep
 %setup -q -n Lmod-%{version}
@@ -266,10 +281,20 @@ source %{_datadir}/lmod/%{version}/init/csh >/dev/null
 module try-add suse-hpc
 
 EOF
+install -d -m755 %{buildroot}%{_sysconfdir}/apparmor.d/abstractions/bash.d
+cat <<EOF > %{buildroot}%{_sysconfdir}/apparmor.d/abstractions/bash.d/lmod
+   abi <abi/3.0>,
+
+   %_datadir/lmod/%{version}/init/*    r,
+EOF
 
 mkdir -p %{buildroot}/%{_mandir}/man1
 install -p -m644 docs/build/man/lmod.1 %{buildroot}/%{_mandir}/man1/
 %endif
+
+%posttrans apparmor-abstractions
+rm -rf /var/cache/apparmor/* 2>/dev/null
+systemctl is-active -q apparmor && systemctl reload apparmor ||:
 
 %if 0%{!?build_pdf:1}
 %files
@@ -284,6 +309,10 @@ install -p -m644 docs/build/man/lmod.1 %{buildroot}/%{_mandir}/man1/
 %{_rpmmacrodir}/macros.lmod
 %{_datadir}/lmod/*
 %{_mandir}/man1/lmod.1.*
+
+%files apparmor-abstractions
+%dir %{_sysconfdir}/apparmor.d/abstractions/bash.d
+%{_sysconfdir}/apparmor.d/abstractions/bash.d/lmod
 %endif
 
 %if 0%{?build_pdf}

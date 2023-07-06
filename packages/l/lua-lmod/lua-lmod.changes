@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul  4 17:08:22 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Add apparmor bash abstraction for Lmod (bsc#1212837).
+- Create an rpmlint file.
+- Rename Provides: modules to environment-modules. This way,
+  it is compatible with the other provider.
+- Stop building on 32 bit.
+
+-------------------------------------------------------------------
 Tue Feb  7 19:25:14 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Match the Lua version and version name suffix of Lua libraries

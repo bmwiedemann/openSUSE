@@ -444,4 +444,19 @@
   fallback). (forwarded request 1063842 from eeich)</comment>
     <requestid>1063843</requestid>
   </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>cd953ade9525be276e3055352cecf603</srcmd5>
+    <version>8.7.17</version>
+    <time>1688660919</time>
+    <user>favogt_factory</user>
+    <comment>- Add apparmor bash abstraction for Lmod (bsc#1212837).
+- Create an rpmlint file.
+- Rename Provides: modules to environment-modules. This way,
+  it is compatible with the other provider.
+- Stop building on 32 bit.
+
+* Use ExcludeArch instead of an ExclusiveArch construct.
+* Make sure, apparmor cache subdirectories are deleted as well.</comment>
+    <requestid>1097041</requestid>
+  </revision>
 </revisionlist>

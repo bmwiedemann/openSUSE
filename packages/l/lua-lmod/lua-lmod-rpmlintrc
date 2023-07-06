@@ -1,0 +1,2 @@
+# lua-lmod contains some arch-specific paths so it cannot be marked 'noarch'.
+addFilter("lua-lmod.*: (W|E): no-binary")
