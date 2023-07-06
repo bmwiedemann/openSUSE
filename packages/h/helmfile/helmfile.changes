@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Thu Jul  6 06:43:51 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.155.0:
+  What's Changed
+  * fix: more stringent condition checking by @thejan2009 in #869
+  * build(deps): bump github.com/imdario/mergo from 0.3.15 to 0.3.16
+    by @dependabot in #873
+  * build(deps): bump github.com/stretchr/testify from 1.8.3 to
+    1.8.4 by @dependabot in #876
+  * feat: update repo Spec var type skipTLSVerify to bool by
+    @yxxhero in #877
+  * feat: set RepositorySpec.PassCredentials var type to bool by
+    @yxxhero in #878
+  * cleanup: remove tls configures about helm v2 by @yxxhero in #880
+  * Upgrade helm diff version by @yxxhero in #883
+  * Add insecure skip tls verify support by @yxxhero in #882
+  * chore(docs): fix table by @josephgardner in #881
+  * Feat: add --strip-args-values-on-exit-error by @jkroepke in #887
+  * Stop failing on single helmfile part missing specified env by
+    @mumoshu in #885
+  * fix(docs): table and list formatting by @josephgardner in #891
+  * add unittest for storage by @yxxhero in #894
+  * cleanup: remove panic in testutil by @yxxhero in #890
+  * fix: chartifyOpts ignore release set values by @yxxhero in #896
+  * build(deps): bump golang.org/x/term from 0.8.0 to 0.9.0 by
+    @dependabot in #897
+  * build(deps): bump golang.org/x/sync from 0.2.0 to 0.3.0 by
+    @dependabot in #898
+  * bump helm to v3.12.1 by @yxxhero in #899
+  * build(deps): bump k8s.io/apimachinery from 0.27.2 to 0.27.3 by
+    @dependabot in #900
+  * replace interface{} by any by @yxxhero in #901
+  * fix set-file cannot find the file on windows by @xiaomudk in #908
+  * feat: add starhistory by @yxxhero in #909
+
+- Update to version 0.154.0:
+  What's Changed
+  * Feat: support helm flag --enable-dns by @vincentstchu in #830
+  * Make helmfile respect signals send by kill command (not only
+    Ctrl+C in terminal) by @dm3ch in #750
+  * build(deps): bump golang.org/x/term from 0.7.0 to 0.8.0 by
+    @dependabot in #846
+  * build(deps): bump golang.org/x/sync from 0.1.0 to 0.2.0 by
+    @dependabot in #847
+  * feat: add --skip-trailing-cr to helmfile diff by @rezonant
+    in #625
+  * fix: loadBases overrodeEnv issue by @yxxhero in #838
+  * build(deps): bump go.szostok.io/version from 1.1.0 to 1.2.0
+    by @dependabot in #852
+  * bump helm to v3.12.0 by @yxxhero in #855
+  * build(deps): bump github.com/docker/distribution from
+    2.8.1+incompatible to 2.8.2+incompatible by @dependabot in #857
+  * Feat add cascade support by @yxxhero in #860
+  * docs: update cascade by @yxxhero in #861
+  * fix extra args missing in helmfile apply subcommand by
+    @yxxhero in #858
+  * build(deps): bump k8s.io/apimachinery from 0.27.1 to 0.27.2
+    by @dependabot in #865
+  * build(deps): bump github.com/stretchr/testify from 1.8.2 to
+    1.8.3 by @dependabot in #866
+  * feat: make environment context available by @SeWieland in #832
+  * Fix set flag are ignored when used in conjunction with
+    jsonPatches by @xiaomudk in #867
+
+-------------------------------------------------------------------
 Thu May  4 14:03:01 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.153.1:
