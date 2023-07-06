@@ -12,11 +12,11 @@ sed -i \
 -e 's|^#include [\"<]libpng1[0-9]/png.h[\">]|#include <png.h>|g' \
 {} \;
 
-Index: ppsspp-1.14.4/CMakeLists.txt
+Index: ppsspp-1.15.4/CMakeLists.txt
 ===================================================================
---- ppsspp-1.14.4.orig/CMakeLists.txt
-+++ ppsspp-1.14.4/CMakeLists.txt
-@@ -319,7 +319,7 @@ foreach (LANGUAGE C CXX)
+--- ppsspp-1.15.4.orig/CMakeLists.txt
++++ ppsspp-1.15.4/CMakeLists.txt
+@@ -326,7 +326,7 @@ foreach (LANGUAGE C CXX)
  endforeach()
  
  if(NOT MSVC)
@@ -25,7 +25,7 @@ Index: ppsspp-1.14.4/CMakeLists.txt
  	add_definitions(-DPNG_ARM_NEON_OPT=0)
  
  	if(ANDROID)
-@@ -1036,7 +1036,7 @@ else()
+@@ -1069,7 +1069,7 @@ else()
  	set(LIBZIP_LIBRARY libzip)
  endif()
  
@@ -34,7 +34,7 @@ Index: ppsspp-1.14.4/CMakeLists.txt
  if(ANDROID OR ARMV7 OR ARM64 OR ARM OR IOS)
  	set(PNG_REQUIRED_VERSION 1.7)
  else()
-@@ -1051,43 +1051,43 @@ if(PNG_FOUND)
+@@ -1084,43 +1084,43 @@ if(PNG_FOUND)
  else()
  	if(ARM)
  		set(PNG_ARM_INCLUDES
@@ -107,11 +107,11 @@ Index: ppsspp-1.14.4/CMakeLists.txt
 +	include_directories(ext/libpng16)
  endif()
  
- set(nativeExtra)
-Index: ppsspp-1.14.4/ext/native/tools/atlastool.cpp
+ add_library(basis_universal STATIC
+Index: ppsspp-1.15.4/ext/native/tools/atlastool.cpp
 ===================================================================
---- ppsspp-1.14.4.orig/ext/native/tools/atlastool.cpp
-+++ ppsspp-1.14.4/ext/native/tools/atlastool.cpp
+--- ppsspp-1.15.4.orig/ext/native/tools/atlastool.cpp
++++ ppsspp-1.15.4/ext/native/tools/atlastool.cpp
 @@ -19,7 +19,7 @@
  // dist-per-pixel
  

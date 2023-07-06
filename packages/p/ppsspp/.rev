@@ -151,4 +151,12 @@
     <comment>gcc13 fixes for TW</comment>
     <requestid>1077376</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9b2d3f6b287956893131fa1c90401869</srcmd5>
+    <version>1.15.4</version>
+    <time>1688660936</time>
+    <user>favogt_factory</user>
+    <comment>ppsspp 1.15.4</comment>
+    <requestid>1097003</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul  5 19:50:58 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
+
+- ppsspp 1.15.4
+  * Fixes to tilt controls, performance improvements, various crash
+    or lock issues, problems with some controllers, textures
+  * Fixes for games DJ Max, WWE 2009, Rockman 2 (audio)
+  * Stutter caused by shader compilation has been reduced drastically
+  * Texture replacement improvements
+  * VR features: Top down camera, Head rotation control, more
+    stereo support
+- drop ppsspp-1.14.4-gcc13.patch now upstream
+
+-------------------------------------------------------------------
 Tue Apr  4 20:44:11 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Address GCC13 build failures, add ppsspp-1.14.4-gcc13.patch

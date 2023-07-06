@@ -18,7 +18,7 @@
 
 %define _lto_cflags %{nil}
 Name:           ppsspp
-Version:        1.14.4
+Version:        1.15.4
 Release:        0
 Summary:        PlayStation Portable Emulator
 License:        GPL-2.0-or-later
@@ -26,7 +26,6 @@ Group:          System/Emulators/Other
 URL:            https://www.ppsspp.org
 Source:         https://github.com/hrydgard/ppsspp/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Patch0:         ppsspp-1.14.4-system-png.patch
-Patch1:         ppsspp-1.14.4-gcc13.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  cmake >= 3.6
 BuildRequires:  fdupes
