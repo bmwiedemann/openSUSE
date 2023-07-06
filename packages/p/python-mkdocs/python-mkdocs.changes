@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  6 11:53:49 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Fri Mar 17 07:58:09 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 1.4.2:

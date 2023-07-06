@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-mkdocs
 Version:        1.4.2
 Release:        0
