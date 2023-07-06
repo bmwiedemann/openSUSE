@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 06 09:42:21 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.9.24:
+  * Bump golang.org/x/mod from 0.11.0 to 0.12.0
+  * Fix kube-burner
+  * Fix renamed org for sops
+
+-------------------------------------------------------------------
 Thu Jun 29 11:39:19 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.9.23:
