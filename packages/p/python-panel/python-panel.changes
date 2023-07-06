@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Jul  5 09:12:20 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.1.1
+  ## Enhancements
+  * Implement per_session cache (#5117)
+  * Enhancements for ChatBox including methods to update rows and
+    hide names (#5118, #5118)
+  ## Bug fixes
+  * Fix Progress indicator sizing_mode (#5051)
+  * Fix various ChatBox issues (#5065, #5101, #5101)
+  * Ensure kernel shutdown futures are not collected in Jupyter
+    server extension (#5069)
+  * Add bokeh version check for notebook to better support bokeh
+    dev versions (#5071, #5093)
+  * Fix false warning emitted when constructing a Param pane with
+    throttled or onkeyup (#5078)
+  * Allow to updating/clearing enabled_dates on DatetimePicker
+    (#5089)
+  * Ensure session arguments are correctly parsed by Jupyter
+    executor (#5106)
+  * Fix defer_load handling (#5107)
+  * Fix styling with filters in Tabulator (#5110)
+  * Fix issues when using in filter with single value on Tabulator
+    (#5125)
+  * Add fallback if ReactiveHTML shadow DOM lookup fails (#5126)
+  * Allow automatic loading of extensions during launch and warn
+    about missing extensions (#5144)
+  * Correctly process fields on Vega (and altair) selections
+    (#5145)
+  * Immediately dispatch ColumnDataChangedEvent fixing Plotly plots
+    not updating (#5147)
+  ## Compatibility
+  * Correctly serialize new IPyWidget models on creation (#5114)
+  * Ensure we handle JupyterLab 4 comm messages correctly (#5140)
+  ## Backward compatibility
+  * Renamed Trend parameter title to name (#5092)
+- Add panel-pr5185-bokeh3.2.patch gh#holoviz/panel#5185
+  * Bump bokeh upper pin
+- Don't test on 32-bit it fails randomly
+
+-------------------------------------------------------------------
 Wed Jun  7 15:37:00 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.1.0

@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-panel%{psuffix}
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        A high level app and dashboarding solution for Python
 License:        BSD-3-Clause
@@ -34,9 +34,11 @@ Group:          Development/Languages/Python
 URL:            https://panel.holoviz.org
 Source:         https://files.pythonhosted.org/packages/source/p/panel/panel-%{version}.tar.gz
 Source99:       python-panel-rpmlintrc
+# PATCH-FIX-UPSTREAM panel-pr5185-bokeh3.2.patch gh#holoviz/panel#5185
+Patch0:         https://github.com/holoviz/panel/pull/5185.patch#/panel-pr5185-bokeh3.2.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module bleach}
-BuildRequires:  %{python_module bokeh >= 3.1.1 with %python-bokeh < 3.2}
+BuildRequires:  %{python_module bokeh >= 3.1.1 with %python-bokeh < 3.3}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module param >= 1.9.2}
 BuildRequires:  %{python_module pip}
@@ -61,6 +63,8 @@ BuildRequires:  %{python_module ipython >= 7.0}
 BuildRequires:  %{python_module panel = %{version}}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module plotly >= 4.0}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module streamz}
@@ -80,7 +84,7 @@ Requires:       python-requests
 Requires:       python-tqdm >= 4.48.0
 Requires:       python-typing_extensions
 Requires:       python-xyzservices >= 2021.09.1
-Requires:       (python-bokeh >= 3.1.1 with python-bokeh  < 3.2.0)
+Requires:       (python-bokeh >= 3.1.1 with python-bokeh  < 3.3.0)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-Pillow
@@ -146,7 +150,12 @@ donttest="$donttest or (test_svg_scale_ and True)"
 donttest="$donttest or (test_svg_stretch_ and True)"
 # flaky async test
 donttest="$donttest or test_server_async_callbacks"
-%pytest -ra -k "not ($donttest)"
+# upstream skips it for win and osx, we skip it because it (flakily) terminates everything on aarch64
+donttest="$donttest or (test_terminal and test_subprocess)"
+# Don't test on 32-bit: asyncio is too flaky
+[ $(getconf LONG_BIT) -eq 32 ] && exit 0
+#
+%pytest -n auto -rsfE -k "not ($donttest)"
 %endif
 
 %post

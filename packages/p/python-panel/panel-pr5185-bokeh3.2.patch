@@ -1,0 +1,99 @@
+From 1ec8788110933887517ae1bd404481aa84fa130b Mon Sep 17 00:00:00 2001
+From: Philipp Rudiger <prudiger@anaconda.com>
+Date: Thu, 29 Jun 2023 13:54:57 +0200
+Subject: [PATCH] Bump bokeh version to 3.2
+
+---
+ panel/package-lock.json | 14 +++++++-------
+ panel/package.json      |  2 +-
+ pyproject.toml          |  2 +-
+ setup.py                |  4 ++--
+ 4 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/panel/package-lock.json b/panel/package-lock.json
+index 6811cec0f4..10162fc1ee 100644
+--- a/panel/package-lock.json
++++ b/panel/package-lock.json
+@@ -9,7 +9,7 @@
+       "version": "1.1.1",
+       "license": "BSD-3-Clause",
+       "dependencies": {
+-        "@bokeh/bokehjs": "~3.1.1",
++        "@bokeh/bokehjs": "~3.2.0",
+         "@luma.gl/constants": "^8.0.3",
+         "@types/debounce": "^1.2.0",
+         "@types/gl-matrix": "^2.4.5",
+@@ -24,9 +24,9 @@
+       }
+     },
+     "node_modules/@bokeh/bokehjs": {
+-      "version": "3.1.1",
+-      "resolved": "https://registry.npmjs.org/@bokeh/bokehjs/-/bokehjs-3.1.1.tgz",
+-      "integrity": "sha512-+S3hqhIaOS17Xp0Oy7fB+hhOPe+v3jeIew40sWaH4/DEEMuUmhDZZMFowWhicuwTN9J6Bay9bp/62YJc5Na1Qg==",
++      "version": "3.2.0",
++      "resolved": "https://registry.npmjs.org/@bokeh/bokehjs/-/bokehjs-3.2.0.tgz",
++      "integrity": "sha512-YxKpc9IRux99S+SW1vqHA+H8X5nFwPWKQ/xlI14dJPHtnsQKkzPG1qXpWhjN/WBOu/H8urWPfIqBow976F3h0g==",
+       "engines": {
+         "node": ">=16.0",
+         "npm": ">=8.0"
+@@ -79,9 +79,9 @@
+   },
+   "dependencies": {
+     "@bokeh/bokehjs": {
+-      "version": "3.1.1",
+-      "resolved": "https://registry.npmjs.org/@bokeh/bokehjs/-/bokehjs-3.1.1.tgz",
+-      "integrity": "sha512-+S3hqhIaOS17Xp0Oy7fB+hhOPe+v3jeIew40sWaH4/DEEMuUmhDZZMFowWhicuwTN9J6Bay9bp/62YJc5Na1Qg=="
++      "version": "3.2.0",
++      "resolved": "https://registry.npmjs.org/@bokeh/bokehjs/-/bokehjs-3.2.0.tgz",
++      "integrity": "sha512-YxKpc9IRux99S+SW1vqHA+H8X5nFwPWKQ/xlI14dJPHtnsQKkzPG1qXpWhjN/WBOu/H8urWPfIqBow976F3h0g=="
+     },
+     "@luma.gl/constants": {
+       "version": "8.1.0"
+diff --git a/panel/package.json b/panel/package.json
+index 97c1ca5b8c..f0596746b1 100644
+--- a/panel/package.json
++++ b/panel/package.json
+@@ -8,7 +8,7 @@
+     "url": "https://github.com/holoviz/panel.git"
+   },
+   "dependencies": {
+-    "@bokeh/bokehjs": "~3.1.1",
++    "@bokeh/bokehjs": "~3.2.0",
+     "@luma.gl/constants": "^8.0.3",
+     "@types/debounce": "^1.2.0",
+     "@types/gl-matrix": "^2.4.5",
+diff --git a/pyproject.toml b/pyproject.toml
+index 3f3eb26c61..a6d69a2050 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -3,7 +3,7 @@ requires = [
+     "param >=1.9.2",
+     "pyct >=0.4.4",
+     "setuptools >=42",
+-    "bokeh >=3.1.1,<3.2.0",
++    "bokeh >=3.1.1,<3.3.0",
+     "pyviz_comms >=0.7.4",
+     "requests",
+     "bleach",
+diff --git a/setup.py b/setup.py
+index 121f34b308..034fd3f899 100644
+--- a/setup.py
++++ b/setup.py
+@@ -101,7 +101,7 @@ def run(self):
+ ########## dependencies ##########
+ 
+ install_requires = [
+-    'bokeh >=3.1.1,<3.2.0',
++    'bokeh >=3.1.1,<3.3.0',
+     'param >=1.12.0',
+     'pyviz_comms >=0.7.4',
+     'xyzservices >=2021.09.1', # Bokeh dependency, but pyodide 23.0.0 does not always pick it up
+@@ -218,7 +218,7 @@ def run(self):
+     'setuptools >=42',
+     'requests',
+     'packaging',
+-    'bokeh >=3.1.1,<3.2.0',
++    'bokeh >=3.1.1,<3.3.0',
+     'pyviz_comms >=0.7.4',
+     'bleach',
+     'tqdm >=4.48.0',
