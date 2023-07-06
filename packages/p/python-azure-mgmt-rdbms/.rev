@@ -270,4 +270,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1089999 from glaubitz)</comment>
     <requestid>1090001</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0585c1c7d8851122be67cfeb9d34b1c5</srcmd5>
+    <version>10.2.0b10</version>
+    <time>1688661013</time>
+    <user>favogt_factory</user>
+    <comment>- New upstream release
+  + Version 10.2.0b10
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1097057 from glaubitz)</comment>
+    <requestid>1097146</requestid>
+  </revision>
 </revisionlist>
