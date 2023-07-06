@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  4 22:28:07 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add 165-use-ipaddress-library.patch to use standard ipaddress
+  library to parse IP addresses (gh#gruns/furl#164).
+
+-------------------------------------------------------------------
 Fri Apr 21 12:24:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

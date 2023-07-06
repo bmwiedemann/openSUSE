@@ -1,0 +1,145 @@
+From 38587f3dca7e2f75b04cb0d80e4fc30ea6e139dc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=89loi=20Rivard?= <eloi.rivard@aquilenet.fr>
+Date: Sat, 24 Sep 2022 15:40:59 +0200
+Subject: [PATCH] Use ipaddress to detect valid and invalid IPs
+
+---
+ furl/furl.py       | 47 +++++++++++++++++++++++++++++++++++++---------
+ setup.py           |  1 +
+ tests/test_furl.py | 21 +++++++++++----------
+ 3 files changed, 50 insertions(+), 19 deletions(-)
+
+diff --git a/furl/furl.py b/furl/furl.py
+index cd6d710..451767f 100644
+--- a/furl/furl.py
++++ b/furl/furl.py
+@@ -12,6 +12,7 @@
+ 
+ import re
+ import abc
++import ipaddress
+ import warnings
+ from copy import deepcopy
+ from posixpath import normpath
+@@ -241,6 +242,37 @@ def is_valid_host(hostname):
+     return '' not in toks  # Adjacent periods aren't allowed.
+ 
+ 
++def is_valid_ipv4(ip):
++    if isinstance(ip, six.binary_type):
++        ip = ip.decode()
++
++    try:
++        ipaddress.IPv4Address(ip)
++        return True
++    except ValueError:
++        return False
++
++
++def is_valid_ipv6(ip):
++    if isinstance(ip, six.binary_type):
++        ip = ip.decode()
++
++    # ipaddress handle IPs without brackets
++    if (
++        callable_attr(ip, 'startswith')
++        and callable_attr(ip, 'endswith')
++        and ip.startswith("[")
++        and ip.endswith("]")
++    ):
++        ip = ip[1:-1]
++
++    try:
++        ipaddress.IPv6Address(ip)
++        return True
++    except ValueError:
++        return False
++
++
+ def get_scheme(url):
+     if url.startswith(':'):
+         return ''
+@@ -1434,15 +1466,12 @@ def host(self, host):
+         """
+         Raises: ValueError on invalid host or malformed IPv6 address.
+         """
+-        # Invalid IPv6 literal.
+-        urllib.parse.urlsplit('http://%s/' % host)  # Raises ValueError.
+-
+-        # Invalid host string.
+-        resembles_ipv6_literal = (
+-            host is not None and lget(host, 0) == '[' and ':' in host and
+-            lget(host, -1) == ']')
+-        if (host is not None and not resembles_ipv6_literal and
+-           not is_valid_host(host)):
++        if (
++            host
++            and not is_valid_host(host)
++            and not is_valid_ipv4(host)
++            and not is_valid_ipv6(host)
++        ):
+             errmsg = (
+                 "Invalid host '%s'. Host strings must have at least one "
+                 "non-period character, can't contain any of '%s', and can't "
+diff --git a/setup.py b/setup.py
+index 8322619..887ca2e 100644
+--- a/setup.py
++++ b/setup.py
+@@ -114,6 +114,7 @@ def run_tests(self):
+     install_requires=[
+         'six>=1.8.0',
+         'orderedmultidict>=1.0.1',
++        'ipaddress>=1.0.23; python_version < "3.3"',
+     ],
+     cmdclass={
+         'test': RunTests,
+diff --git a/tests/test_furl.py b/tests/test_furl.py
+index bc268c8..5666be7 100644
+--- a/tests/test_furl.py
++++ b/tests/test_furl.py
+@@ -1655,10 +1655,10 @@ def test_hosts(self):
+         # addresses.
+         f = furl.furl('http://1.2.3.4.5.6/')
+ 
+-        # Invalid, but well-formed, IPv6 addresses shouldn't raise an
+-        # exception because urlparse.urlsplit() doesn't raise an
+-        # exception on invalid IPv6 addresses.
+-        furl.furl('http://[0:0:0:0:0:0:0:1:1:1:1:1:1:1:1:9999999999999]/')
++        # Invalid, but well-formed, IPv6 addresses should raise an
++        # exception.
++        with self.assertRaises(ValueError):
++            furl.furl('http://[0:0:0:0:0:0:0:1:1:1:1:1:1:1:1:9999999999999]/')
+ 
+         # Malformed IPv6 should raise an exception because urlparse.urlsplit()
+         # raises an exception on malformed IPv6 addresses.
+@@ -1684,12 +1684,17 @@ def test_netloc(self):
+         assert f.host == '1.2.3.4.5.6'
+         assert f.port == 999
+ 
+-        netloc = '[0:0:0:0:0:0:0:1:1:1:1:1:1:1:1:9999999999999]:888'
++        netloc = '[1:2:3:4:5:6:7:8]:888'
+         f.netloc = netloc
+         assert f.netloc == netloc
+-        assert f.host == '[0:0:0:0:0:0:0:1:1:1:1:1:1:1:1:9999999999999]'
++        assert f.host == '[1:2:3:4:5:6:7:8]'
+         assert f.port == 888
+ 
++        # Well-formed but invalid IPv6 should raise an exception
++        netloc = '[0:0:0:0:0:0:0:1:1:1:1:1:1:1:1:9999999999999]:888'
++        with self.assertRaises(ValueError):
++            f.netloc = netloc
++
+         # Malformed IPv6 should raise an exception because
+         # urlparse.urlsplit() raises an exception
+         with self.assertRaises(ValueError):
+@@ -1703,10 +1708,6 @@ def test_netloc(self):
+         with self.assertRaises(ValueError):
+             f.netloc = 'pump2pump.org:777777777777'
+ 
+-        # No side effects.
+-        assert f.host == '[0:0:0:0:0:0:0:1:1:1:1:1:1:1:1:9999999999999]'
+-        assert f.port == 888
+-
+         # Empty netloc.
+         f = furl.furl('//')
+         assert f.scheme is None and f.netloc == '' and f.url == '//'

@@ -71,4 +71,16 @@
     <comment>- add sle15_python_module_pythons (jsc#PED-68)</comment>
     <requestid>1083113</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>2628f67574423cdc71f5ba4e575a5cc3</srcmd5>
+    <version>2.1.3</version>
+    <time>1688660868</time>
+    <user>favogt_factory</user>
+    <comment>FOR STAGING:A
+
+- Add 165-use-ipaddress-library.patch to use standard ipaddress
+  library to parse IP addresses (gh#gruns/furl#164).
+</comment>
+    <requestid>1096865</requestid>
+  </revision>
 </revisionlist>

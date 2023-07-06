@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
+%define skip_python2 1
 Name:           python-furl
 Version:        2.1.3
 Release:        0
@@ -27,7 +26,11 @@ License:        Unlicense
 Group:          Development/Languages/Python
 URL:            https://github.com/gruns/furl
 Source:         https://files.pythonhosted.org/packages/source/f/furl/furl-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+# PATCH-FIX-UPSTREAM 165-use-ipaddress-library.patch gh#gruns/furl#164 mcepl@suse.com
+# use ipaddress to parse IP addresses
+Patch0:         165-use-ipaddress-library.patch
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-orderedmultidict >= 1.0.1
@@ -48,10 +51,10 @@ furl is a Python library for parsing and manipulating URLs.
 chmod -x *.md furl.egg-info/*
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
