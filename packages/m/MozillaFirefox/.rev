@@ -6242,4 +6242,41 @@
     <comment></comment>
     <requestid>1094241</requestid>
   </revision>
+  <revision rev="402" vrev="1">
+    <srcmd5>545848d7fd4f013fabeff8f204004451</srcmd5>
+    <version>115.0</version>
+    <time>1688660886</time>
+    <user>favogt_factory</user>
+    <comment>- Mozilla Firefox 115.0
+  * Support for importing payment methods saved in Chrome-based browser
+  * Hardware video decoding is now enabled for Intel GPUs on Linux
+  * The Tab Manager dropdown now features close buttons, so tabs
+    can be closed more quickly
+  * Streamlined the user interface for importing data in from other browsers
+  * Users without platform support for H264 video decoding can now
+    fallback to Cisco's OpenH264 plugin for playback.
+  * Undo and redo are now available in Password fields
+  * Changed: On Linux, middle clicks on the new tab button will
+    now open the xclipboard contents in the new tab. If the
+    xclipboard content is a URL then that URL is opened, any
+    other text is opened with your default search provider.
+  * Changed: For users with a Firefox Colorways built-in theme,
+    the theme will be automatically migrated to the same theme
+    hosted on addons.mozilla.org for Firefox profiles that have
+    disabled add-ons auto-updates. This will allow users to keep
+    their Colorways theme when they are later removed from
+    Firefox installer files.
+  * Changed: Certain Firefox users may come across a message in
+    the extensions panel indicating that their add-ons are not
+    allowed on the site currently open. We have introduced a new
+    back-end feature to only allow some extensions monitored by
+    Mozilla to run on specific websites for various reasons,
+    including security concerns.
+  * HTML5: The builtin editor now behaves similarly to other
+    browsers with `contenteditable` and `designMode` when
+    splitting a node, e.g. typing Enter to split a paragraph, and
+    also when joining two nodes, e.g. typing Backspace at the
+    start of a paragraph to join the paragraph and the previous</comment>
+    <requestid>1097019</requestid>
+  </revision>
 </revisionlist>

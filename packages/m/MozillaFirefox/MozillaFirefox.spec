@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %%major.99
-%define major          114
-%define mainver        %major.0.2
-%define orig_version   114.0.2
+%define major          115
+%define mainver        %major.0
+%define orig_version   115.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -98,7 +98,8 @@ BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
 BuildRequires:  memory-constraints
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150500
-BuildRequires:  gcc11-c++
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
 %else
 BuildRequires:  gcc-c++
 %endif
@@ -113,9 +114,9 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.35
-BuildRequires:  mozilla-nss-devel >= 3.89.1
+BuildRequires:  mozilla-nss-devel >= 3.90
 BuildRequires:  nasm >= 2.14
-BuildRequires:  nodejs >= 10.22.1
+BuildRequires:  nodejs >= 12.22.12
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
 BuildRequires:  libXtst-devel
 BuildRequires:  python-libxml2
@@ -226,7 +227,9 @@ Patch18:        mozilla-silence-no-return-type.patch
 Patch19:        mozilla-bmo531915.patch
 Patch20:        one_swizzle_to_rule_them_all.patch
 Patch21:        svg-rendering.patch
-Patch22:        mozilla-buildfixes.patch
+Patch22:        mozilla-partial-revert-1768632.patch
+Patch23:        mozilla-bmo1775202.patch
+Patch24:        mozilla-rust-disable-future-incompat.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
@@ -347,12 +350,12 @@ sed -i "s|potential_python_binary = f\"python3.{i}\"|potential_python_binary = f
 export PYTHON3=/usr/bin/python3.9
 %endif
 
-#
 kdehelperversion=$(cat toolkit/xre/nsKDEUtils.cpp | grep '#define KMOZILLAHELPER_VERSION' | cut -d ' ' -f 3)
 if test "$kdehelperversion" != %{kde_helper_version}; then
   echo fix kde helper version in the .spec file
   exit 1
 fi
+
 # When doing only_print_mozconfig, this file isn't necessarily available, so skip it
 cp %{SOURCE4} .obsenv.sh
 %else
@@ -373,8 +376,8 @@ export MOZ_TELEMETRY_REPORTING=1
 export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
 export CFLAGS="%{optflags}"
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150500
-export CC=gcc-11
-export CXX=g++-11
+export CC=gcc-12
+export CXX=g++-12
 %else
 %if 0%{?clang_build} == 0
 export CC=gcc
@@ -393,7 +396,7 @@ export GC_SECTIONS_BREAKS_DEBUG_RANGES=yes
 export LDFLAGS="\$LDFLAGS -fPIC -Wl,-z,relro,-z,now"
 %ifarch ppc64 ppc64le
 %if 0%{?clang_build} == 0
-export CFLAGS="\$CFLAGS -mminimal-toc"
+#export CFLAGS="\$CFLAGS -mminimal-toc"
 %endif
 %endif
 %ifarch %ix86

@@ -1,4 +1,117 @@
 -------------------------------------------------------------------
+Sun Jul  2 16:00:53 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 115.0
+  * Support for importing payment methods saved in Chrome-based browser
+  * Hardware video decoding is now enabled for Intel GPUs on Linux
+  * The Tab Manager dropdown now features close buttons, so tabs
+    can be closed more quickly
+  * Streamlined the user interface for importing data in from other browsers
+  * Users without platform support for H264 video decoding can now
+    fallback to Cisco's OpenH264 plugin for playback.
+  * Undo and redo are now available in Password fields
+  * Changed: On Linux, middle clicks on the new tab button will
+    now open the xclipboard contents in the new tab. If the
+    xclipboard content is a URL then that URL is opened, any
+    other text is opened with your default search provider.
+  * Changed: For users with a Firefox Colorways built-in theme,
+    the theme will be automatically migrated to the same theme
+    hosted on addons.mozilla.org for Firefox profiles that have
+    disabled add-ons auto-updates. This will allow users to keep
+    their Colorways theme when they are later removed from
+    Firefox installer files.
+  * Changed: Certain Firefox users may come across a message in
+    the extensions panel indicating that their add-ons are not
+    allowed on the site currently open. We have introduced a new
+    back-end feature to only allow some extensions monitored by
+    Mozilla to run on specific websites for various reasons,
+    including security concerns.
+  * HTML5: The builtin editor now behaves similarly to other
+    browsers with `contenteditable` and `designMode` when
+    splitting a node, e.g. typing Enter to split a paragraph, and
+    also when joining two nodes, e.g. typing Backspace at the
+    start of a paragraph to join the paragraph and the previous
+    one.
+    When a node is split, the builtin editor creates a new node
+    after the original one instead of before, i.e. creates the
+    right node instead of the left node.
+    Similarly, when two nodes are joined, the builtin editor
+    deletes the latter node and moves its children to the end of
+    the preceding node instead of deleting the former node and
+    moving its child to the start of the following node.
+  * HTML5: WebRTC application developers can now specify a target
+    in milliseconds of media for the jitter buffer to hold.
+    Altering the target value allows applications to control the
+    tradeoff between playout delay and the risk of running out of
+    audio or video frames due to network jitter.
+  * HTML5: Change array by copy provides additional methods on
+    `Array.prototype` and `TypedArray.prototype` to enable
+    changes on the array by returning a new copy of it with the
+    change.
+  * HTML5: The animation-composition property is now supported,
+    allowing a declarative way to define the composite operation
+    used when multiple animations affect the same property
+    simultaneously.
+  * HTML5: Added the URL.canParse() function to allow easy and
+    fast checking if URLs are valid and parseable.
+  * HTML5: IndexedDB is now also supported in private browsing
+    without memory limits thanks to encrypted storage on disk.
+    The temporary keys to decrypt the information are hold in RAM
+    only and all stored information is purged at the normal end
+    of a private browsing session from disk.
+  * HTML5: Supports conditions are now supported in CSS import
+    rules @import supports(...)
+  * Developer: In web development, we rely on third-party
+    libraries which you may not be interested in while debugging.
+    These can be ignored. Ignoring them means that breakpoints
+    will not get hit and they are skipped during stepping.
+    You can now choose to **Hide ignore-listed sources** in the
+    Developer Tools source tree
+  * Developer: We have introduced a new option,
+    `devtools.f12_enabled`, that can be utilized to prevent the
+    accidental use of the F12 key, which opens the DevTools
+    toolbox (bug).
+  * Enterprise: You can find information about policy updates and
+    enterprise specific bug fixes in the Firefox for Enterprise
+    115 Release Notes.
+  MFSA 2023-22 (bsc#1212438)
+  * CVE-2023-3482 (bmo#1839464)
+    Block all cookies bypass for localstorage
+  * CVE-2023-37201 (bmo#1826002)
+    Use-after-free in WebRTC certificate generation
+  * CVE-2023-37202 (bmo#1834711)
+    Potential use-after-free from compartment mismatch in SpiderMonkey
+  * CVE-2023-37203 (bmo#291640)
+    Drag and Drop API may provide access to local system files
+  * CVE-2023-37204 (bmo#1832195)
+    Fullscreen notification obscured via option element
+  * CVE-2023-37205 (bmo#1704420)
+    URL spoofing in address bar using RTL characters
+  * CVE-2023-37206 (bmo#1813299)
+    Insufficient validation of symlinks in the FileSystem API
+  * CVE-2023-37207 (bmo#1816287)
+    Fullscreen notification obscured
+  * CVE-2023-37208 (bmo#1837675)
+    Lack of warning when opening Diagcab files
+  * CVE-2023-37209 (bmo#1837993)
+    Use-after-free in `NotifyOnHistoryReload`
+  * CVE-2023-37210 (bmo#1821886)
+    Full-screen mode exit prevention
+  * CVE-2023-37211 (bmo#1832306, bmo#1834862, bmo#1835886,
+    bmo#1836550, bmo#1837450)
+    Memory safety bugs fixed in Firefox 115, Firefox ESR 102.13,
+    and Thunderbird 102.13
+  * CVE-2023-37212 (bmo#1750870, bmo#1825552, bmo#1826206, bmo#1827076,
+    bmo#1828690, bmo#1833503, bmo#1835710, bmo#1838587)
+    Memory safety bugs fixed in Firefox 115
+- Requires NSS 3.90
+- Add patches:
+  mozilla-rust-disable-future-incompat.patch
+  mozilla-bmo1775202.patch
+  mozilla-partial-revert-1768632.patch
+- removed obsolete mozilla-buildfixes.patch
+
+-------------------------------------------------------------------
 Tue Jun 20 19:49:51 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - Mozilla Firefox 114.0.2:

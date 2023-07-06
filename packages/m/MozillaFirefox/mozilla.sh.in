@@ -100,7 +100,7 @@ if [ "$WAYLAND_DISPLAY" ]; then
 fi
 
 # xinput2 (boo#1173320)
-. /etc/os-release
+source /etc/os-release
 if [ "$ID" = "opensuse-tumbleweed" ]; then
   export MOZ_USE_XINPUT2=1
 fi
@@ -151,7 +151,7 @@ if [ $MOZILLA_DOWN -ne 0 ]; then
     # Try with a local variant first, then without a local variant
     SHORTMOZLOCALE=`echo $CURRENT_LOCALE | sed "s|_\([^.]*\).*||g" | sed "s|\..*||g"`
     MOZLOCALE=`echo $CURRENT_LOCALE | sed "s|_\([^.]*\).*|-\1|g" | sed "s|\..*||g"`
-    create_langpack_link() {
+    function create_langpack_link() {
         local language=$*
         local langpack=langpack-${language}@firefox.mozilla.org.xpi
         if [ -f $MOZ_LANGPACKS_DIR/$langpack ]; then

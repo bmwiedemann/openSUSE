@@ -1,16 +1,12 @@
 # HG changeset patch
 # User Wolfgang Rosenauer <wr@rosenauer.org>
-# Parent  d6f551c7b3dc20bb47526e06c44646fd159f3dd1
+# Parent  9959fe2a13a39cbeb98ca1bef2e21caba16717bd
 
-diff --git a/build/moz.configure/lto-pgo.configure b/build/moz.configure/lto-pgo.configure
---- a/build/moz.configure/lto-pgo.configure
-+++ b/build/moz.configure/lto-pgo.configure
-@@ -242,34 +242,34 @@ def lto(
-             "configure."
-         )
- 
-     if c_compiler.type == "clang":
-         if value == "full":
+Index: firefox-115.0/build/moz.configure/lto-pgo.configure
+===================================================================
+--- firefox-115.0.orig/build/moz.configure/lto-pgo.configure
++++ firefox-115.0/build/moz.configure/lto-pgo.configure
+@@ -251,8 +251,8 @@ def lto(
              cflags.append("-flto")
              ldflags.append("-flto")
          else:
@@ -19,18 +15,10 @@ diff --git a/build/moz.configure/lto-pgo.configure b/build/moz.configure/lto-pgo
 +            cflags.append("-flto")
 +            ldflags.append("-flto")
  
-         if target.os == "Android" and value == "cross":
+         if target.os == "Android" and "cross" in values:
              # Work around https://github.com/rust-lang/rust/issues/90088
-             # by enabling the highest level of SSE the rust targets default
-             # to.
-             # https://github.com/rust-lang/rust/blob/bdfcb88e8b6203ccb46a2fb6649979b773efc8ac/compiler/rustc_target/src/spec/i686_linux_android.rs#L13
-             # https://github.com/rust-lang/rust/blob/8d1083e319841624f64400e1524805a40d725439/compiler/rustc_target/src/spec/x86_64_linux_android.rs#L7
-             if target.cpu == "x86":
-                 ldflags.append("-Wl,-plugin-opt=-mattr=+ssse3")
-             elif target.cpu == "x86_64":
-                 ldflags.append("-Wl,-plugin-opt=-mattr=+sse4.2")
-     elif c_compiler.type == "clang-cl":
-         if value == "full":
+@@ -268,7 +268,7 @@ def lto(
+         if "full" in values:
              cflags.append("-flto")
          else:
 -            cflags.append("-flto=thin")
@@ -38,20 +26,11 @@ diff --git a/build/moz.configure/lto-pgo.configure b/build/moz.configure/lto-pgo
          # With clang-cl, -flto can only be used with -c or -fuse-ld=lld.
          # AC_TRY_LINKs during configure don't have -c, so pass -fuse-ld=lld.
          cflags.append("-fuse-ld=lld")
- 
-         # Explicitly set the CPU to optimize for so the linker doesn't
-         # choose a poor default.  Rust compilation by default uses the
-         # pentium4 CPU on x86:
-         #
-diff --git a/build/pgo/profileserver.py b/build/pgo/profileserver.py
---- a/build/pgo/profileserver.py
-+++ b/build/pgo/profileserver.py
-@@ -6,17 +6,17 @@
- 
- import glob
- import json
- import os
- import subprocess
+Index: firefox-115.0/build/pgo/profileserver.py
+===================================================================
+--- firefox-115.0.orig/build/pgo/profileserver.py
++++ firefox-115.0/build/pgo/profileserver.py
+@@ -11,7 +11,7 @@ import subprocess
  import sys
  
  import mozcrash
@@ -60,17 +39,7 @@ diff --git a/build/pgo/profileserver.py b/build/pgo/profileserver.py
  from mozfile import TemporaryDirectory
  from mozhttpd import MozHttpd
  from mozprofile import FirefoxProfile, Preferences
- from mozprofile.permissions import ServerLocations
- from mozrunner import CLI, FirefoxRunner
- from six import string_types
- 
- PORT = 8888
-@@ -82,19 +82,32 @@ if __name__ == "__main__":
-         docroot=os.path.join(build.topsrcdir, "build", "pgo"),
-         path_mappings=path_mappings,
-     )
-     httpd.start(block=False)
- 
+@@ -87,9 +87,22 @@ if __name__ == "__main__":
      locations = ServerLocations()
      locations.add_host(host="127.0.0.1", port=PORT, options="primary,privileged")
  
@@ -96,17 +65,7 @@ diff --git a/build/pgo/profileserver.py b/build/pgo/profileserver.py
  
      with TemporaryDirectory() as profilePath:
          # TODO: refactor this into mozprofile
-         profile_data_dir = os.path.join(build.topsrcdir, "testing", "profiles")
-         with open(os.path.join(profile_data_dir, "profiles.json"), "r") as fh:
-             base_profiles = json.load(fh)["profileserver"]
- 
-         prefpaths = [
-@@ -208,16 +221,20 @@ if __name__ == "__main__":
- 
-         # Try to move the crash reports to the artifacts even if Firefox appears
-         # to exit successfully, in case there's a crash that doesn't set the
-         # return code to non-zero for some reason.
-         if get_crashreports(profilePath, name="Firefox exited successfully?") != 0:
+@@ -213,6 +226,10 @@ if __name__ == "__main__":
              print("Firefox exited successfully, but produced a crashreport")
              sys.exit(1)
  
@@ -117,18 +76,11 @@ diff --git a/build/pgo/profileserver.py b/build/pgo/profileserver.py
          llvm_profdata = env.get("LLVM_PROFDATA")
          if llvm_profdata:
              profraw_files = glob.glob("*.profraw")
-             if not profraw_files:
-                 print(
-                     "Could not find profraw files in the current directory: %s"
-                     % os.getcwd()
-                 )
-diff --git a/build/unix/mozconfig.unix b/build/unix/mozconfig.unix
---- a/build/unix/mozconfig.unix
-+++ b/build/unix/mozconfig.unix
-@@ -1,14 +1,23 @@
- . "$topsrcdir/build/mozconfig.common"
- 
- if [ -n "$FORCE_GCC" ]; then
+Index: firefox-115.0/build/unix/mozconfig.unix
+===================================================================
+--- firefox-115.0.orig/build/unix/mozconfig.unix
++++ firefox-115.0/build/unix/mozconfig.unix
+@@ -4,6 +4,15 @@ if [ -n "$FORCE_GCC" ]; then
      CC="$MOZ_FETCHES_DIR/gcc/bin/gcc"
      CXX="$MOZ_FETCHES_DIR/gcc/bin/g++"
  
@@ -144,34 +96,21 @@ diff --git a/build/unix/mozconfig.unix b/build/unix/mozconfig.unix
      # We want to make sure we use binutils and other binaries in the tooltool
      # package.
      mk_add_options "export PATH=$MOZ_FETCHES_DIR/gcc/bin:$MOZ_FETCHES_DIR/binutils/bin:$PATH"
- else
-     # For some builds we don't want to have Clang based static-analysis activated
-     if [ -z "$DISABLE_CLANG_PLUGIN" ]; then
-         export ENABLE_CLANG_PLUGIN=1
-     fi
-diff --git a/extensions/spellcheck/src/moz.build b/extensions/spellcheck/src/moz.build
---- a/extensions/spellcheck/src/moz.build
-+++ b/extensions/spellcheck/src/moz.build
-@@ -23,8 +23,10 @@ LOCAL_INCLUDES += [
-     "../hunspell/glue",
-     "../hunspell/src",
-     "/dom/base",
- ]
- EXPORTS.mozilla += [
+Index: firefox-115.0/extensions/spellcheck/src/moz.build
+===================================================================
+--- firefox-115.0.orig/extensions/spellcheck/src/moz.build
++++ firefox-115.0/extensions/spellcheck/src/moz.build
+@@ -28,3 +28,5 @@ EXPORTS.mozilla += [
      "mozInlineSpellChecker.h",
      "mozSpellChecker.h",
  ]
 +
 +CXXFLAGS += ['-fno-devirtualize']
-diff --git a/toolkit/components/terminator/nsTerminator.cpp b/toolkit/components/terminator/nsTerminator.cpp
---- a/toolkit/components/terminator/nsTerminator.cpp
-+++ b/toolkit/components/terminator/nsTerminator.cpp
-@@ -455,16 +455,21 @@ void nsTerminator::StartWatchdog() {
-       // Defend against overflow
-       crashAfterMS = INT32_MAX;
-     } else {
-       crashAfterMS *= scaleUp;
-     }
+Index: firefox-115.0/toolkit/components/terminator/nsTerminator.cpp
+===================================================================
+--- firefox-115.0.orig/toolkit/components/terminator/nsTerminator.cpp
++++ firefox-115.0/toolkit/components/terminator/nsTerminator.cpp
+@@ -460,6 +460,11 @@ void nsTerminator::StartWatchdog() {
    }
  #endif
  
@@ -183,8 +122,3 @@ diff --git a/toolkit/components/terminator/nsTerminator.cpp b/toolkit/components
    UniquePtr<Options> options(new Options());
    // crashAfterTicks is guaranteed to be > 0 as
    // crashAfterMS >= ADDITIONAL_WAIT_BEFORE_CRASH_MS >> HEARTBEAT_INTERVAL_MS
-   options->crashAfterTicks = crashAfterMS / HEARTBEAT_INTERVAL_MS;
- 
-   DebugOnly<PRThread*> watchdogThread =
-       CreateSystemThread(RunWatchdog, options.release());
-   MOZ_ASSERT(watchdogThread);

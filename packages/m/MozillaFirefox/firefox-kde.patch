@@ -11,15 +11,11 @@ How to apply this patch:
 4. Replace #ifndef with #ifdef in the line above (this hanges the button order from Gnome-style to KDE-style)
 5. hg qrefresh
 
-diff --git a/browser/components/preferences/main.js b/browser/components/preferences/main.js
---- a/browser/components/preferences/main.js
-+++ b/browser/components/preferences/main.js
-@@ -296,16 +296,23 @@ var gMainPane = {
-         }, backoffTimes[this._backoffIndex + 1 < backoffTimes.length ? this._backoffIndex++ : backoffTimes.length - 1]);
-       };
- 
-       window.setTimeout(() => {
-         window.requestIdleCallback(pollForDefaultBrowser);
+Index: firefox-115.0/browser/components/preferences/main.js
+===================================================================
+--- firefox-115.0.orig/browser/components/preferences/main.js
++++ firefox-115.0/browser/components/preferences/main.js
+@@ -293,6 +293,13 @@ var gMainPane = {
        }, backoffTimes[this._backoffIndex]);
      }
  
@@ -33,17 +29,7 @@ diff --git a/browser/components/preferences/main.js b/browser/components/prefere
      this.initBrowserContainers();
      this.buildContentProcessCountMenuList();
  
-     this.updateDefaultPerformanceSettingsPref();
- 
-     let defaultPerformancePref = Preferences.get(
-       "browser.preferences.defaultPerformanceSettings.enabled"
-     );
-@@ -1298,16 +1305,27 @@ var gMainPane = {
-       this._backoffIndex = 0;
- 
-       let shellSvc = getShellService();
-       if (!shellSvc) {
-         return;
+@@ -1762,6 +1769,17 @@ var gMainPane = {
        }
        try {
          shellSvc.setDefaultBrowser(true, false);
@@ -61,20 +47,11 @@ diff --git a/browser/components/preferences/main.js b/browser/components/prefere
        } catch (ex) {
          console.error(ex);
          return;
-       }
- 
-       let isDefault = shellSvc.isDefaultBrowser(false, true);
-       let setDefaultPane = document.getElementById("setDefaultPane");
-       setDefaultPane.classList.toggle("is-default", isDefault);
-diff --git a/browser/components/shell/moz.build b/browser/components/shell/moz.build
---- a/browser/components/shell/moz.build
-+++ b/browser/components/shell/moz.build
-@@ -31,16 +31,18 @@ if CONFIG["MOZ_WIDGET_TOOLKIT"] == "coco
-     ]
- elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "gtk":
-     XPIDL_SOURCES += [
-         "nsIGNOMEShellService.idl",
-     ]
+Index: firefox-115.0/browser/components/shell/moz.build
+===================================================================
+--- firefox-115.0.orig/browser/components/shell/moz.build
++++ firefox-115.0/browser/components/shell/moz.build
+@@ -36,6 +36,8 @@ elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "gt
  
      SOURCES += [
          "nsGNOMEShellService.cpp",
@@ -83,15 +60,10 @@ diff --git a/browser/components/shell/moz.build b/browser/components/shell/moz.b
      ]
      if CONFIG["MOZ_ENABLE_DBUS"]:
          SOURCES += [
-             "nsGNOMEShellDBusHelper.cpp",
-             "nsGNOMEShellSearchProvider.cpp",
-         ]
-         include("/ipc/chromium/chromium-config.mozbuild")
- 
-diff --git a/browser/components/shell/nsKDEShellService.cpp b/browser/components/shell/nsKDEShellService.cpp
-new file mode 100644
+Index: firefox-115.0/browser/components/shell/nsKDEShellService.cpp
+===================================================================
 --- /dev/null
-+++ b/browser/components/shell/nsKDEShellService.cpp
++++ firefox-115.0/browser/components/shell/nsKDEShellService.cpp
 @@ -0,0 +1,109 @@
 +/* -*- Mode: C++; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
 +/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -202,10 +174,10 @@ new file mode 100644
 +    return NS_ERROR_NOT_IMPLEMENTED;
 +}
 +
-diff --git a/browser/components/shell/nsKDEShellService.h b/browser/components/shell/nsKDEShellService.h
-new file mode 100644
+Index: firefox-115.0/browser/components/shell/nsKDEShellService.h
+===================================================================
 --- /dev/null
-+++ b/browser/components/shell/nsKDEShellService.h
++++ firefox-115.0/browser/components/shell/nsKDEShellService.h
 @@ -0,0 +1,32 @@
 +/* -*- Mode: C++; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
 +/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -239,10 +211,10 @@ new file mode 100644
 +};
 +
 +#endif // nskdeshellservice_h____
-diff --git a/browser/components/shell/nsUnixShellService.cpp b/browser/components/shell/nsUnixShellService.cpp
-new file mode 100644
+Index: firefox-115.0/browser/components/shell/nsUnixShellService.cpp
+===================================================================
 --- /dev/null
-+++ b/browser/components/shell/nsUnixShellService.cpp
++++ firefox-115.0/browser/components/shell/nsUnixShellService.cpp
 @@ -0,0 +1,22 @@
 +/* -*- Mode: C++; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
 +/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -266,10 +238,10 @@ new file mode 100644
 +        return nsKDEShellServiceConstructor( aIID, aResult );
 +    return nsGNOMEShellServiceConstructor( aIID, aResult );
 +}
-diff --git a/browser/components/shell/nsUnixShellService.h b/browser/components/shell/nsUnixShellService.h
-new file mode 100644
+Index: firefox-115.0/browser/components/shell/nsUnixShellService.h
+===================================================================
 --- /dev/null
-+++ b/browser/components/shell/nsUnixShellService.h
++++ firefox-115.0/browser/components/shell/nsUnixShellService.h
 @@ -0,0 +1,15 @@
 +/* -*- Mode: C++; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
 +/* This Source Code Form is subject to the terms of the Mozilla Public
