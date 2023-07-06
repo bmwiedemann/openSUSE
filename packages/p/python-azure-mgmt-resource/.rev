@@ -243,4 +243,16 @@
     CHANGELOG.md file provided with this package (forwarded request 1088297 from glaubitz)</comment>
     <requestid>1088299</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>265c6f43fbc21458a2427c8d4f02304d</srcmd5>
+    <version>23.1.0~b2</version>
+    <time>1688661014</time>
+    <user>favogt_factory</user>
+    <comment>- New upstream release
+  + Version 23.1.0b2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 23.1.0~b2 (forwarded request 1097060 from glaubitz)</comment>
+    <requestid>1097148</requestid>
+  </revision>
 </revisionlist>
