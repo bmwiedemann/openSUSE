@@ -68,7 +68,7 @@ Index: nss/lib/softoken/pkcs11c.c
 ===================================================================
 --- nss.orig/lib/softoken/pkcs11c.c
 +++ nss/lib/softoken/pkcs11c.c
-@@ -2679,7 +2679,7 @@ nsc_DSA_Verify_Stub(void *ctx, void *sig
+@@ -2653,7 +2653,7 @@ nsc_DSA_Verify_Stub(void *ctx, void *sig
  static SECStatus
  nsc_DSA_Sign_Stub(void *ctx, void *sigBuf,
                    unsigned int *sigLen, unsigned int maxSigLen,
@@ -77,7 +77,7 @@ Index: nss/lib/softoken/pkcs11c.c
  {
      SECItem signature, digest;
      SECStatus rv;
-@@ -2697,6 +2697,22 @@ nsc_DSA_Sign_Stub(void *ctx, void *sigBu
+@@ -2671,6 +2671,22 @@ nsc_DSA_Sign_Stub(void *ctx, void *sigBu
      return rv;
  }
  
@@ -100,7 +100,7 @@ Index: nss/lib/softoken/pkcs11c.c
  static SECStatus
  nsc_ECDSAVerifyStub(void *ctx, void *sigBuf, unsigned int sigLen,
                      void *dataBuf, unsigned int dataLen)
-@@ -2714,7 +2730,7 @@ nsc_ECDSAVerifyStub(void *ctx, void *sig
+@@ -2688,7 +2704,7 @@ nsc_ECDSAVerifyStub(void *ctx, void *sig
  static SECStatus
  nsc_ECDSASignStub(void *ctx, void *sigBuf,
                    unsigned int *sigLen, unsigned int maxSigLen,
@@ -109,7 +109,7 @@ Index: nss/lib/softoken/pkcs11c.c
  {
      SECItem signature, digest;
      SECStatus rv;
-@@ -2732,6 +2748,22 @@ nsc_ECDSASignStub(void *ctx, void *sigBu
+@@ -2706,6 +2722,22 @@ nsc_ECDSASignStub(void *ctx, void *sigBu
      return rv;
  }
  
@@ -132,7 +132,7 @@ Index: nss/lib/softoken/pkcs11c.c
  /* NSC_SignInit setups up the signing operations. There are three basic
   * types of signing:
   *      (1) the tradition single part, where "Raw RSA" or "Raw DSA" is applied
-@@ -3601,6 +3633,22 @@ NSC_VerifyInit(CK_SESSION_HANDLE hSessio
+@@ -3575,6 +3607,22 @@ NSC_VerifyInit(CK_SESSION_HANDLE hSessio
          info->hashOid = SEC_OID_##mmm;                    \
          goto finish_rsa;
  
@@ -155,7 +155,7 @@ Index: nss/lib/softoken/pkcs11c.c
      switch (pMechanism->mechanism) {
          INIT_RSA_VFY_MECH(MD5)
          INIT_RSA_VFY_MECH(MD2)
-@@ -4829,6 +4877,73 @@ loser:
+@@ -4807,6 +4855,73 @@ loser:
  #define PAIRWISE_DIGEST_LENGTH SHA224_LENGTH /* 224-bits */
  #define PAIRWISE_MESSAGE_LENGTH 20           /* 160-bits */
  
@@ -229,7 +229,7 @@ Index: nss/lib/softoken/pkcs11c.c
  /*
   * FIPS 140-2 pairwise consistency check utilized to validate key pair.
   *
-@@ -4882,8 +4997,6 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
+@@ -4860,8 +4975,6 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
  
      /* Variables used for Signature/Verification functions. */
      /* Must be at least 256 bits for DSA2 digest */
@@ -238,7 +238,7 @@ Index: nss/lib/softoken/pkcs11c.c
      CK_ULONG signature_length;
  
      if (keyType == CKK_RSA) {
-@@ -5037,76 +5150,32 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
+@@ -5015,76 +5128,32 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
          }
      }
  

@@ -1,0 +1,135 @@
+# HG changeset patch
+# Parent  5786c2bb5c229b530e95e435ee0cf51314359e7b
+
+Index: nss/lib/softoken/pkcs11c.c
+===================================================================
+--- nss.orig/lib/softoken/pkcs11c.c
++++ nss/lib/softoken/pkcs11c.c
+@@ -17,6 +17,7 @@
+  *   In this implementation, session objects are only visible to the session
+  *   that created or generated them.
+  */
++#include "lowkeyti.h"
+ #include "seccomon.h"
+ #include "secitem.h"
+ #include "secport.h"
+@@ -4922,6 +4923,88 @@ pairwise_signverify_mech (CK_SESSION_HAN
+     return crv;
+ }
+ 
++/* This function regenerates a public key from a private key 
++ * (not simply returning the saved public key) and compares it
++ * to the given publicKey
++ */
++static CK_RV
++regeneratePublicKeyFromPrivateKeyAndCompare(NSSLOWKEYPrivateKey *currPrivKey,
++                                  NSSLOWKEYPublicKey *currPubKey)
++{
++    NSSLOWKEYPublicKey *pubk;
++    SECItem publicValue;
++    PLArenaPool *arena;
++
++    arena = PORT_NewArena(DER_DEFAULT_CHUNKSIZE);
++    if (arena == NULL) {
++        PORT_SetError(SEC_ERROR_NO_MEMORY);
++        return CKR_HOST_MEMORY;
++    }
++
++    switch (currPrivKey->keyType) {
++        case NSSLOWKEYDHKey:
++            pubk = (NSSLOWKEYPublicKey *)PORT_ArenaZAlloc(arena,
++                                                          sizeof(NSSLOWKEYPublicKey));
++            if (pubk != NULL) {
++                SECStatus rv;
++
++                pubk->arena = arena;
++                pubk->keyType = currPrivKey->keyType;
++
++                // Regenerate the publicValue
++                rv = DH_Derive(&currPrivKey->u.dh.base, &currPrivKey->u.dh.prime,
++                               &currPrivKey->u.dh.privateValue, &publicValue, 0);
++                if (rv != SECSuccess) {
++                    break;
++                }
++                rv = SECITEM_CopyItem(arena, &pubk->u.dh.publicValue,
++                                      &publicValue);
++                SECITEM_ZfreeItem(&publicValue, PR_FALSE);
++                if (rv != SECSuccess) {
++                    break;
++                }
++
++                if (SECITEM_CompareItem(&pubk->u.dh.publicValue, &currPubKey->u.dh.publicValue) != SECEqual) {
++                    nsslowkey_DestroyPublicKey(pubk);
++                    return CKR_GENERAL_ERROR;
++                }
++                nsslowkey_DestroyPublicKey(pubk);
++                return CKR_OK;
++            }
++            break;
++        case NSSLOWKEYECKey:
++            {
++                ECPrivateKey *privk = NULL;
++                SECStatus rv;
++
++                /* The "seed" is an octet stream corresponding to our private key.
++                 * The new public key is derived from this + the parameters and
++                 * stored in the new private key's publicValue. */
++                rv = EC_NewKeyFromSeed (&currPrivKey->u.ec.ecParams,
++                                        &privk,
++                                        currPrivKey->u.ec.privateValue.data,
++                                        currPrivKey->u.ec.privateValue.len);
++                if (rv != SECSuccess)
++                    break;
++
++                /* Verify that the passed-in public value is equal to the one derived */
++                if (SECITEM_CompareItem (&privk->publicValue, &currPubKey->u.ec.publicValue) != SECEqual) {
++                    PORT_FreeArena (privk->ecParams.arena, PR_TRUE);
++                    return CKR_GENERAL_ERROR;
++                }
++
++                PORT_FreeArena (privk->ecParams.arena, PR_TRUE);
++                return CKR_OK;
++            }
++            break;
++        default:
++            break;
++    }
++
++    PORT_FreeArena(arena, PR_TRUE);
++    return CKR_GENERAL_ERROR;
++}
++
+ /*
+  * FIPS 140-2 pairwise consistency check utilized to validate key pair.
+  *
+@@ -5268,6 +5351,30 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
+         }
+     }
+ 
++    // Regenerate the publicKey from the privateKey and compare it to the
++    // original publicKey
++    if (keyType == CKK_DH || keyType == CKK_EC) {
++        NSSLOWKEYPrivateKey *currPrivKey = sftk_GetPrivKey(privateKey, CKK_DH, &crv);
++        if (crv != CKR_OK) {
++            return crv;
++        }
++        if (!currPrivKey) {
++            return CKR_DEVICE_ERROR;
++        }
++
++        NSSLOWKEYPublicKey *currPubKey = sftk_GetPubKey(publicKey, CKK_DH, &crv);
++        if (crv != CKR_OK) {
++            return crv;
++        }
++        if (!currPubKey) {
++            return CKR_DEVICE_ERROR;
++        }
++
++        crv = regeneratePublicKeyFromPrivateKeyAndCompare(currPrivKey, currPubKey);
++        if (crv != CKR_OK) {
++            return crv;
++        }
++    }
+     return CKR_OK;
+ }
+ 

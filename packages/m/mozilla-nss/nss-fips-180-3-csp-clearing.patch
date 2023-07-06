@@ -16,7 +16,7 @@ Index: nss/lib/softoken/sftkdb.c
 ===================================================================
 --- nss.orig/lib/softoken/sftkdb.c
 +++ nss/lib/softoken/sftkdb.c
-@@ -1506,7 +1506,7 @@ loser:
+@@ -1538,7 +1538,7 @@ loser:
          PORT_ZFree(data, dataSize);
      }
      if (arena) {

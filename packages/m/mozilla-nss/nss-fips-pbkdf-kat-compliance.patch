@@ -1,6 +1,6 @@
-diff --git nss/lib/softoken/lowpbe.c b/nss/lib/softoken/lowpbe.c
-index fae9e18..1c55642 100644
---- nss/lib/softoken/lowpbe.c
+Index: nss/lib/softoken/lowpbe.c
+===================================================================
+--- nss.orig/lib/softoken/lowpbe.c
 +++ nss/lib/softoken/lowpbe.c
 @@ -1756,7 +1756,7 @@ loser:
      return ret_algid;
@@ -11,7 +11,7 @@ index fae9e18..1c55642 100644
  SECStatus
  sftk_fips_pbkdf_PowerUpSelfTests(void)
  {
-@@ -1766,16 +1766,21 @@ sftk_fips_pbkdf_PowerUpSelfTests(void)
+@@ -1766,16 +1766,22 @@ sftk_fips_pbkdf_PowerUpSelfTests(void)
      unsigned char iteration_count = 5;
      unsigned char keyLen = 64;
      char *inKeyData = TEST_KEY;
@@ -22,6 +22,7 @@ index fae9e18..1c55642 100644
 +        0x48, 0x99, 0xF4, 0x6D, 0xB7, 0x48, 0xE3, 0x3B,
 +        0x91, 0xBF, 0x65, 0xA9, 0x26, 0x83, 0xE8, 0x22
 +    };
++
      static const unsigned char pbkdf_known_answer[] = {
 -        0x31, 0xf0, 0xe5, 0x39, 0x9f, 0x39, 0xb9, 0x29,
 -        0x68, 0xac, 0xf2, 0xe9, 0x53, 0x9b, 0xb4, 0x9c,
@@ -42,7 +43,7 @@ index fae9e18..1c55642 100644
      };
  
      sftk_PBELockInit();
-@@ -1804,11 +1809,12 @@ sftk_fips_pbkdf_PowerUpSelfTests(void)
+@@ -1804,11 +1810,12 @@ sftk_fips_pbkdf_PowerUpSelfTests(void)
       * for NSSPKCS5_PBKDF2 */
      pbe_params.iter = iteration_count;
      pbe_params.keyLen = keyLen;

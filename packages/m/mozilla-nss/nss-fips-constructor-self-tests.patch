@@ -63,6 +63,16 @@ Index: nss/lib/freebl/blapi.h
  
  /*********************************************************************/
  extern const SECHashObject *HASH_GetRawHashObject(HASH_HashType hashType);
+@@ -1791,6 +1791,9 @@ extern SECStatus EC_CopyParams(PLArenaPo
+  */
+ extern int EC_GetPointSize(const ECParams *params);
+ 
++/* Unconditionally run the integrity check. */
++extern void BL_FIPSRepeatIntegrityCheck(void);
++
+ SEC_END_PROTOS
+ 
+ #endif /* _BLAPI_H_ */
 Index: nss/lib/freebl/fips-selftest.inc
 ===================================================================
 --- /dev/null
@@ -149,7 +159,7 @@ Index: nss/lib/freebl/fips-selftest.inc
 +    abort();
 +}
 +
-+/* check whether FIPS moode is mandated by the kernel */
++/* check whether FIPS mode is mandated by the kernel */
 +static int
 +fips_isWantedProc(void)
 +{
@@ -247,7 +257,7 @@ Index: nss/lib/freebl/fips-selftest.inc
 +    }
 +    fips_requests += fips_isWantedEnv();
 +
-+    return fips_requests;
++    return fips_requests < 1 ? 0 : 1;
 +}
 +
 +static PRBool
@@ -641,12 +651,12 @@ Index: nss/lib/freebl/fipsfreebl.c
  }
  
  /*
-@@ -2251,28 +2279,104 @@ bl_startup_tests(void)
+@@ -2251,19 +2279,12 @@ bl_startup_tests(void)
   * power on selftest failed.
   */
  SECStatus
--BL_FIPSEntryOK(PRBool freebl_only)
-+BL_FIPSEntryOK(PRBool my_freebl_only)
+-BL_FIPSEntryOK(PRBool freebl_only, PRBool rerun)
++BL_FIPSEntryOK(PRBool my_freebl_only, PRBool rerun)
  {
 -#ifdef NSS_NO_INIT_SUPPORT
 -    /* this should only be set on platforms that can't handle one of the INIT
@@ -660,9 +670,10 @@ Index: nss/lib/freebl/fipsfreebl.c
          bl_startup_tests();
      }
 -#endif
-+
-     /* if the general self tests succeeded, we're done */
-     if (self_tests_success) {
+     if (rerun) {
+         /* reset the flags */
+         self_tests_freebl_ran = PR_FALSE;
+@@ -2277,10 +2298,104 @@ BL_FIPSEntryOK(PRBool freebl_only, PRBoo
          return SECSuccess;
      }
      /* standalone freebl can initialize */
@@ -673,6 +684,17 @@ Index: nss/lib/freebl/fipsfreebl.c
      PORT_SetError(SEC_ERROR_LIBRARY_FAILURE);
      return SECFailure;
  }
++
++void
++BL_FIPSRepeatIntegrityCheck(void)
++{
++    fips_state = fips_initTest("freebl", NULL, NULL);
++
++    if (!fips_state)
++    {
++        fatal ("fips - freebl: Integrity test re-run failed - aborting.");
++    }
++}
 +
 +/* returns the FIPS mode we are running in or the one that we aspire to if the
 + * tests have not completed yet - which might happen during the crypto selftest
@@ -756,11 +778,27 @@ Index: nss/lib/freebl/fipsfreebl.c
 +}
 +
  #endif
++
 Index: nss/lib/freebl/loader.c
 ===================================================================
 --- nss.orig/lib/freebl/loader.c
 +++ nss/lib/freebl/loader.c
-@@ -1213,11 +1213,11 @@ AESKeyWrap_DecryptKWP(AESKeyWrapContext
+@@ -95,6 +95,14 @@ BL_Init(void)
+     return (vector->p_BL_Init)();
+ }
+ 
++void
++BL_FIPSRepeatIntegrityCheck(void)
++{
++    if (!vector && PR_SUCCESS != freebl_RunLoaderOnce())
++        return;
++    (vector->p_BL_FIPSRepeatIntegrityCheck)();
++}
++
+ RSAPrivateKey *
+ RSA_NewKey(int keySizeInBits, SECItem *publicExponent)
+ {
+@@ -1213,11 +1221,11 @@ AESKeyWrap_DecryptKWP(AESKeyWrapContext
  }
  
  PRBool
@@ -774,7 +812,7 @@ Index: nss/lib/freebl/loader.c
  }
  
  /*
-@@ -1227,12 +1227,12 @@ BLAPI_SHVerify(const char *name, PRFuncP
+@@ -1227,12 +1235,12 @@ BLAPI_SHVerify(const char *name, PRFuncP
   * in freebl_LoadDSO) to p_BLAPI_VerifySelf.
   */
  PRBool
@@ -789,7 +827,7 @@ Index: nss/lib/freebl/loader.c
  }
  
  /* ============== New for 3.006 =============================== */
-@@ -1836,11 +1836,11 @@ SHA224_Clone(SHA224Context *dest, SHA224
+@@ -1836,11 +1844,11 @@ SHA224_Clone(SHA224Context *dest, SHA224
  }
  
  PRBool
@@ -827,6 +865,16 @@ Index: nss/lib/freebl/loader.h
  
      /* Version 3.013 came to here */
  
+@@ -834,6 +834,9 @@ struct FREEBLVectorStr {
+ 
+     /* Add new function pointers at the end of this struct and bump
+      * FREEBL_VERSION at the beginning of this file. */
++
++    /* SUSE patch: Goes last */
++    void (*p_BL_FIPSRepeatIntegrityCheck)(void);
+ };
+ 
+ typedef struct FREEBLVectorStr FREEBLVector;
 Index: nss/lib/freebl/manifest.mn
 ===================================================================
 --- nss.orig/lib/freebl/manifest.mn
@@ -873,12 +921,12 @@ Index: nss/lib/freebl/shvfy.c
      return SECSuccess;
  }
  
--static PRBool blapi_SHVerifyFile(const char *shName, PRBool self);
-+static PRBool blapi_SHVerifyFile(const char *shName, PRBool self, int *err);
+-static PRBool blapi_SHVerifyFile(const char *shName, PRBool self, PRBool rerun);
++static PRBool blapi_SHVerifyFile(const char *shName, PRBool self, PRBool rerun, int *err);
  
  static PRBool
--blapi_SHVerify(const char *name, PRFuncPtr addr, PRBool self)
-+blapi_SHVerify(const char *name, PRFuncPtr addr, PRBool self, int *err)
+-blapi_SHVerify(const char *name, PRFuncPtr addr, PRBool self, PRBool rerun)
++blapi_SHVerify(const char *name, PRFuncPtr addr, PRBool self, PRBool rerun, int *err)
  {
      PRBool result = PR_FALSE; /* if anything goes wrong,
 -                   * the signature does not verify */
@@ -888,100 +936,119 @@ Index: nss/lib/freebl/shvfy.c
      if (!shName) {
          goto loser;
      }
--    result = blapi_SHVerifyFile(shName, self);
-+    result = blapi_SHVerifyFile(shName, self, err);
+-    result = blapi_SHVerifyFile(shName, self, rerun);
++    result = blapi_SHVerifyFile(shName, self, rerun, err);
  
  loser:
      if (shName != NULL) {
-@@ -311,15 +311,15 @@ loser:
+@@ -311,25 +311,25 @@ loser:
  }
  
  PRBool
 -BLAPI_SHVerify(const char *name, PRFuncPtr addr)
 +BLAPI_SHVerify(const char *name, PRFuncPtr addr, int *err)
  {
--    return blapi_SHVerify(name, addr, PR_FALSE);
-+    return blapi_SHVerify(name, addr, PR_FALSE, err);
+     PRBool rerun = PR_FALSE;
+     if (name && *name == BLAPI_FIPS_RERUN_FLAG) {
+         name++;
+         rerun = PR_TRUE;
+     }
+-    return blapi_SHVerify(name, addr, PR_FALSE, rerun);
++    return blapi_SHVerify(name, addr, PR_FALSE, rerun, err);
  }
  
  PRBool
 -BLAPI_SHVerifyFile(const char *shName)
 +BLAPI_SHVerifyFile(const char *shName, int *err)
  {
--    return blapi_SHVerifyFile(shName, PR_FALSE);
-+    return blapi_SHVerifyFile(shName, PR_FALSE, err);
+     PRBool rerun = PR_FALSE;
+     if (shName && *shName == BLAPI_FIPS_RERUN_FLAG) {
+         shName++;
+         rerun = PR_TRUE;
+     }
+-    return blapi_SHVerifyFile(shName, PR_FALSE, rerun);
++    return blapi_SHVerifyFile(shName, PR_FALSE, rerun, err);
  }
  
  #ifndef NSS_STRICT_INTEGRITY
-@@ -421,7 +421,7 @@ blapi_SHVerifyHMACCheck(PRFileDesc *shFD
+@@ -432,7 +432,7 @@ blapi_SHVerifyHMACCheck(PRFileDesc *shFD
+ }
+ 
+ static PRBool
+-blapi_SHVerifyFile(const char *shName, PRBool self, PRBool rerun)
++blapi_SHVerifyFile(const char *shName, PRBool self, PRBool rerun, int *err)
+ {
+     char *checkName = NULL;
+     PRFileDesc *checkFD = NULL;
+@@ -446,7 +446,7 @@ blapi_SHVerifyFile(const char *shName, P
+     int pid = 0;
+ #endif
+     PRBool result = PR_FALSE; /* if anything goes wrong,
+-               * the signature does not verify */
++                               * the signature does not verify */
+     NSSSignChkHeader header;
+ #ifndef NSS_STRICT_INTEGRITY
+     DSAPublicKey key;
+@@ -473,14 +473,17 @@ blapi_SHVerifyFile(const char *shName, P
+     /* open the check File */
+     checkFD = PR_Open(checkName, PR_RDONLY, 0);
+     if (checkFD == NULL) {
++        if (err) {
++            *err = PORT_GetError();
++        }
+ #ifdef DEBUG_SHVERIFY
+-        fprintf(stderr, "Failed to open the check file %s: (%d, %d)\n",
+-                checkName, (int)PR_GetError(), (int)PR_GetOSError());
++        fprintf(stderr, "Failed to open the check file %s: (%d)\n",
++                checkName, (int)PORT_GetError());
+ #endif /* DEBUG_SHVERIFY */
+         goto loser;
      }
  
-     static PRBool
--    blapi_SHVerifyFile(const char *shName, PRBool self)
-+    blapi_SHVerifyFile(const char *shName, PRBool self, int *err)
-     {
-         char *checkName = NULL;
-         PRFileDesc *checkFD = NULL;
-@@ -462,14 +462,17 @@ blapi_SHVerifyHMACCheck(PRFileDesc *shFD
-         /* open the check File */
-         checkFD = PR_Open(checkName, PR_RDONLY, 0);
-         if (checkFD == NULL) {
-+            if (err) {
-+                *err = PORT_GetError();
-+            }
- #ifdef DEBUG_SHVERIFY
--            fprintf(stderr, "Failed to open the check file %s: (%d, %d)\n",
--                    checkName, (int)PR_GetError(), (int)PR_GetOSError());
-+            fprintf(stderr, "Failed to open the check file %s: (%d)\n",
-+                    checkName, (int)PR_GetError());
- #endif /* DEBUG_SHVERIFY */
-             goto loser;
-         }
- 
--        /* read and Verify the headerthe header */
-+        /* read and Verify the header */
-         bytesRead = PR_Read(checkFD, &header, sizeof(header));
-         if (bytesRead != sizeof(header)) {
-             goto loser;
-@@ -550,7 +553,7 @@ blapi_SHVerifyHMACCheck(PRFileDesc *shFD
-             goto loser;
-         }
+-    /* read and Verify the headerthe header */
++    /* read and Verify the header */
+     bytesRead = PR_Read(checkFD, &header, sizeof(header));
+     if (bytesRead != sizeof(header)) {
+         goto loser;
+@@ -561,7 +564,7 @@ blapi_SHVerifyFile(const char *shName, P
+         goto loser;
+     }
  
 -/* open our library file */
 +    /* open our library file */
  #ifdef FREEBL_USE_PRELINK
-         shFD = bl_OpenUnPrelink(shName, &pid);
+     shFD = bl_OpenUnPrelink(shName, &pid);
  #else
-@@ -558,8 +561,8 @@ blapi_SHVerifyHMACCheck(PRFileDesc *shFD
+@@ -569,8 +572,8 @@ blapi_SHVerifyFile(const char *shName, P
  #endif
-         if (shFD == NULL) {
+     if (shFD == NULL) {
  #ifdef DEBUG_SHVERIFY
--            fprintf(stderr, "Failed to open the library file %s: (%d, %d)\n",
--                    shName, (int)PR_GetError(), (int)PR_GetOSError());
-+            fprintf(stderr, "Failed to open the library file %s: (%d)\n",
-+                    shName, (int)PR_GetError());
+-        fprintf(stderr, "Failed to open the library file %s: (%d, %d)\n",
+-                shName, (int)PR_GetError(), (int)PR_GetOSError());
++        fprintf(stderr, "Failed to open the library file %s: (%d)\n",
++                shName, (int)PORT_GetError());
  #endif /* DEBUG_SHVERIFY */
-             goto loser;
-         }
-@@ -620,7 +623,7 @@ blapi_SHVerifyHMACCheck(PRFileDesc *shFD
+         goto loser;
      }
+@@ -631,7 +634,7 @@ loser:
+ }
  
-     PRBool
--    BLAPI_VerifySelf(const char *name)
-+    BLAPI_VerifySelf(const char *name, int *err)
-     {
-         if (name == NULL) {
-             /*
-@@ -629,7 +632,7 @@ blapi_SHVerifyHMACCheck(PRFileDesc *shFD
-          */
-             return PR_TRUE;
-         }
--        return blapi_SHVerify(name, (PRFuncPtr)decodeInt, PR_TRUE);
-+        return blapi_SHVerify(name, (PRFuncPtr)decodeInt, PR_TRUE, err);
+ PRBool
+-BLAPI_VerifySelf(const char *name)
++BLAPI_VerifySelf(const char *name, int *err)
+ {
+     if (name == NULL) {
+         /*
+@@ -640,7 +643,7 @@ BLAPI_VerifySelf(const char *name)
+      */
+         return PR_TRUE;
      }
+-    return blapi_SHVerify(name, (PRFuncPtr)decodeInt, PR_TRUE, PR_FALSE);
++    return blapi_SHVerify(name, (PRFuncPtr)decodeInt, PR_TRUE, PR_FALSE, err);
+ }
  
  #else /* NSS_FIPS_DISABLED */
-@@ -645,7 +648,7 @@ BLAPI_SHVerify(const char *name, PRFuncP
+@@ -656,7 +659,7 @@ BLAPI_SHVerify(const char *name, PRFuncP
      return PR_FALSE;
  }
  PRBool
@@ -994,7 +1061,7 @@ Index: nss/lib/softoken/fips.c
 ===================================================================
 --- /dev/null
 +++ nss/lib/softoken/fips.c
-@@ -0,0 +1,40 @@
+@@ -0,0 +1,50 @@
 +#include "../freebl/fips-selftest.inc"
 +
 +#include "fips.h"
@@ -1007,7 +1074,7 @@ Index: nss/lib/softoken/fips.c
 +static fips_check_status
 +fips_checkCryptoSoftoken(void)
 +{
-+    if (CKR_OK == sftk_FIPSEntryOK()) {
++    if (CKR_OK == sftk_FIPSEntryOK(PR_FALSE)) {
 +	return CHECK_OK;
 +    } else {
 +	return CHECK_FAIL_CRYPTO;
@@ -1035,18 +1102,33 @@ Index: nss/lib/softoken/fips.c
 +
 +    return;
 +}
++
++void
++fips_repeatTestSoftoken(void)
++{
++    fips_initTestSoftoken();
++    if (!fips_state)
++    {
++        fatal ("fips - softokn: Integrity test re-run failed - aborting.");
++    }
++}
 Index: nss/lib/softoken/fips.h
 ===================================================================
 --- /dev/null
 +++ nss/lib/softoken/fips.h
-@@ -0,0 +1,10 @@
+@@ -0,0 +1,15 @@
 +#ifndef FIPS_H
 +#define FIPS_H
 +
++#include "prtypes.h"
 +#include "softoken.h"
 +
-+CK_RV FIPS_cryptoSelftestSoftoken(void);
++SEC_BEGIN_PROTOS
++
 +CK_RV sftk_fipsPowerUpSelfTest(void);
++extern void sftk_FIPSRepeatIntegrityCheck(void);
++
++SEC_END_PROTOS
 +
 +#endif
 +
@@ -1382,15 +1464,15 @@ Index: nss/lib/softoken/fipstest.c
  static PRBool sftk_self_tests_ran = PR_FALSE;
  static PRBool sftk_self_tests_success = PR_FALSE;
  
-@@ -694,7 +1015,6 @@ static void
- sftk_startup_tests(void)
+@@ -694,7 +1015,6 @@ void
+ sftk_startup_tests_with_rerun(PRBool rerun)
  {
      SECStatus rv;
--    const char *libraryName = SOFTOKEN_LIB_NAME;
+-    const char *libraryName = rerun ? BLAPI_FIPS_RERUN_FLAG_STRING SOFTOKEN_LIB_NAME : SOFTOKEN_LIB_NAME;
  
      PORT_Assert(!sftk_self_tests_ran);
      PORT_Assert(!sftk_self_tests_success);
-@@ -706,6 +1026,7 @@ sftk_startup_tests(void)
+@@ -706,6 +1026,7 @@ sftk_startup_tests_with_rerun(PRBool rer
      if (rv != SECSuccess) {
          return;
      }
@@ -1398,7 +1480,7 @@ Index: nss/lib/softoken/fipstest.c
      /* make sure freebl is initialized, or our RSA check
       * may fail. This is normally done at freebl load time, but it's
       * possible we may have shut freebl down without unloading it. */
-@@ -723,12 +1044,21 @@ sftk_startup_tests(void)
+@@ -723,12 +1044,21 @@ sftk_startup_tests_with_rerun(PRBool rer
      if (rv != SECSuccess) {
          return;
      }
@@ -1424,9 +1506,9 @@ Index: nss/lib/softoken/fipstest.c
      rv = sftk_fips_IKE_PowerUpSelfTests();
      if (rv != SECSuccess) {
          return;
-@@ -760,17 +1090,11 @@ sftk_startup_tests(void)
+@@ -766,17 +1096,10 @@ sftk_startup_tests(void)
  CK_RV
- sftk_FIPSEntryOK()
+ sftk_FIPSEntryOK(PRBool rerun)
  {
 -#ifdef NSS_NO_INIT_SUPPORT
 -    /* this should only be set on platforms that can't handle one of the INIT
@@ -1440,10 +1522,27 @@ Index: nss/lib/softoken/fipstest.c
          sftk_startup_tests();
      }
 -#endif
-+
-     if (!sftk_self_tests_success) {
-         return CKR_DEVICE_ERROR;
+     if (rerun) {
+         sftk_self_tests_ran = PR_FALSE;
+         sftk_self_tests_success = PR_FALSE;
+@@ -787,6 +1110,17 @@ sftk_FIPSEntryOK(PRBool rerun)
      }
+     return CKR_OK;
+ }
++
++void fips_repeatTestSoftoken(void);
++
++void
++sftk_FIPSRepeatIntegrityCheck()
++{
++    /* These will abort if the checksum fails in FIPS mode */
++    BL_FIPSRepeatIntegrityCheck();
++    fips_repeatTestSoftoken();
++}
++
+ #else
+ #include "pkcs11t.h"
+ CK_RV
 Index: nss/lib/softoken/legacydb/fips.c
 ===================================================================
 --- /dev/null
@@ -1521,14 +1620,14 @@ Index: nss/lib/softoken/manifest.mn
 ===================================================================
 --- nss.orig/lib/softoken/manifest.mn
 +++ nss/lib/softoken/manifest.mn
-@@ -31,6 +31,7 @@ PRIVATE_EXPORTS = \
- 	softkver.h \
- 	sdb.h \
- 	sftkdbt.h \
+@@ -22,6 +22,7 @@ endif
+ EXPORTS = \
+ 	lowkeyi.h \
+ 	lowkeyti.h \
 +	fips.h \
  	$(NULL)
  
- CSRCS = \
+ PRIVATE_EXPORTS = \
 @@ -55,6 +56,7 @@ CSRCS = \
  	softkver.c  \
  	tlsprf.c   \
@@ -1537,3 +1636,47 @@ Index: nss/lib/softoken/manifest.mn
  	$(NULL)
  
  ifndef NSS_DISABLE_DBM
+Index: nss/lib/softoken/softoken.h
+===================================================================
+--- nss.orig/lib/softoken/softoken.h
++++ nss/lib/softoken/softoken.h
+@@ -59,6 +59,9 @@ extern unsigned char *CBC_PadBuffer(PLAr
+ /* make sure Power-up selftests have been run. */
+ extern CK_RV sftk_FIPSEntryOK(PRBool rerun);
+ 
++/* Unconditionally run the crypto self-tests. */
++extern PRBool sftk_FIPSRunTests();
++
+ /*
+ ** make known fixed PKCS #11 key types to their sizes in bytes
+ */
+Index: nss/lib/freebl/ldvector.c
+===================================================================
+--- nss.orig/lib/freebl/ldvector.c
++++ nss/lib/freebl/ldvector.c
+@@ -375,9 +375,12 @@ static const struct FREEBLVectorStr vect
+     /* End of version 3.024 */
+     ChaCha20_InitContext,
+     ChaCha20_CreateContext,
+-    ChaCha20_DestroyContext
++    ChaCha20_DestroyContext,
+ 
+     /* End of version 3.025 */
++
++    /* SUSE patch: Goes last */
++    BL_FIPSRepeatIntegrityCheck
+ };
+ 
+ const FREEBLVector*
+Index: nss/lib/softoken/softokn.def
+===================================================================
+--- nss.orig/lib/softoken/softokn.def
++++ nss/lib/softoken/softokn.def
+@@ -34,6 +34,7 @@ NSC_GetInterfaceList;
+ C_GetInterface;
+ FC_GetInterface;
+ NSC_GetInterface;
++sftk_FIPSRepeatIntegrityCheck;
+ ;+    local:
+ ;+       *;
+ ;+};

@@ -12,7 +12,7 @@ Index: nss/lib/freebl/nsslowhash.c
 ===================================================================
 --- nss.orig/lib/freebl/nsslowhash.c
 +++ nss/lib/freebl/nsslowhash.c
-@@ -2,6 +2,9 @@
+@@ -2,9 +2,13 @@
   * License, v. 2.0. If a copy of the MPL was not distributed with this
   * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
  
@@ -22,7 +22,11 @@ Index: nss/lib/freebl/nsslowhash.c
  #ifdef FREEBL_NO_DEPEND
  #include "stubs.h"
  #endif
-@@ -25,6 +28,23 @@ struct NSSLOWHASHContextStr {
++
+ #include "prtypes.h"
+ #include "prenv.h"
+ #include "secerr.h"
+@@ -25,6 +29,23 @@ struct NSSLOWHASHContextStr {
  };
  
  #ifndef NSS_FIPS_DISABLED
@@ -46,7 +50,7 @@ Index: nss/lib/freebl/nsslowhash.c
  static int
  nsslow_GetFIPSEnabled(void)
  {
-@@ -52,6 +72,7 @@ nsslow_GetFIPSEnabled(void)
+@@ -52,6 +73,7 @@ nsslow_GetFIPSEnabled(void)
  #endif /* LINUX */
      return 1;
  }
@@ -54,13 +58,13 @@ Index: nss/lib/freebl/nsslowhash.c
  #endif /* NSS_FIPS_DISABLED */
  
  static NSSLOWInitContext dummyContext = { 0 };
-@@ -67,7 +88,7 @@ NSSLOW_Init(void)
+@@ -67,7 +89,7 @@ NSSLOW_Init(void)
  #ifndef NSS_FIPS_DISABLED
      /* make sure the FIPS product is installed if we are trying to
       * go into FIPS mode */
 -    if (nsslow_GetFIPSEnabled()) {
 +    if (nsslow_GetFIPSEnabled() || getFIPSEnv()) {
-         if (BL_FIPSEntryOK(PR_TRUE) != SECSuccess) {
+         if (BL_FIPSEntryOK(PR_TRUE, PR_FALSE) != SECSuccess) {
              PORT_SetError(SEC_ERROR_LIBRARY_FAILURE);
              post_failed = PR_TRUE;
 Index: nss/lib/sysinit/nsssysinit.c
