@@ -1,4 +1,13 @@
 --------------------------------------------------------------------
+Wed Jul 5 14:15:18 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#321
+- adjust code to updated libhd API
+- fix mediacheck test for valid app_id
+- replace obsolete CURLOPT_PROGRESSFUNCTION
+- 9.0
+
+--------------------------------------------------------------------
 Wed Feb 8 10:01:27 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#318
