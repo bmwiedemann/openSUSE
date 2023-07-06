@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jul  5 11:42:20 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Disable test_deprecated_no_scheme so it needs network connection to
+  run correctly.
+
+-------------------------------------------------------------------
+Mon Jun 19 20:26:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.3:
+  * Allowed alternative SSL libraries such as LibreSSL, while
+    still issuing a warning as we cannot help users facing issues
+    with implementations other than OpenSSL.
+  * Deprecated URLs which don't have an explicit scheme
+  * Fixed response decoding with Zstandard when compressed data
+    is made of several frames.
+  * Fixed ``assert_hostname=False`` to correctly skip hostname
+    check.
+
+-------------------------------------------------------------------
 Sun May 14 12:37:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.2:
