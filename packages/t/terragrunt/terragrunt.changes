@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 06 07:19:36 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.48.1:
+  * Updated source version identification (#2630)
+  * Update documentation to reference Terragrunt Github action
+    (#2628)
+  * [skip ci] git-xargs programmatic commit (#2623)
+
+-------------------------------------------------------------------
 Tue Jun 27 04:50:41 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.48.0:
