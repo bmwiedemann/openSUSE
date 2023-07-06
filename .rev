@@ -84,4 +84,12 @@
 - Drop patch sqlalchemy1442.patch, included upstream.</comment>
     <requestid>1091001</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>1d3441fd2ffb0030e5886bae9c724d63</srcmd5>
+    <version>0.7.0</version>
+    <time>1688661006</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1097117</requestid>
+  </revision>
 </revisionlist>
