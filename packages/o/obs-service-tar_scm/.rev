@@ -1430,4 +1430,22 @@ Mon Feb  13 15:52:19 GMT 2012 - aspiers@suse.com
   * Avoid getting confused by _scmsync.obsinfo files</comment>
     <requestid>1087953</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>8a502775d74d9bbfdbfe7a9cd86613c6</srcmd5>
+    <version>0.10.39</version>
+    <time>1688660910</time>
+    <user>favogt_factory</user>
+    <comment>- Update to version 0.10.39:
+  * Add gpg as a dependency (needed for gpg validation)
+
+- Update to version 0.10.38:
+  * Python 2 is no longer supported by GitHub actions, stop testing it
+  * FD leak / flake8 / py311 fixes
+  * updated debian files
+  * disabled pylint 'no-member' because of false positives in py311
+  * removed unittest2 from BuildRequires in spec
+  * fixed fixtures and new Exception class
+  * updated KankuFile to Tumbleweed and removed python2 tests</comment>
+    <requestid>1096990</requestid>
+  </revision>
 </revisionlist>

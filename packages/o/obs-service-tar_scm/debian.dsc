@@ -1,12 +1,12 @@
 Format: 1.0
 Source: obs-service-tar-scm
-Version: 0.10.36
+Version: 0.10.39
 Provides: obs-service-obs_scm, obs-service-tar
 Binary: obs-service-tar_scm
 Maintainer: Adrian Schroeter <adrian@suse.de>
 Architecture: all
 Standards-Version: 3.7.2
-Build-Depends: debhelper (>= 8.0.0), python3, python-argparse, python3-dateutil, dh-python
+Build-Depends: debhelper (>= 8.0.0), python3, python3-dateutil, dh-python, python3-yaml
 
 Package: obs-service-tar-scm
 Architecture: all

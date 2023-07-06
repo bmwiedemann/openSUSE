@@ -3,15 +3,13 @@
     <param name="url">https://github.com/openSUSE/obs-service-tar_scm.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="version">0.10.36</param>
     <param name="changesgenerate">enable</param>
+    <param name="revision">master</param>
+    <param name="versionformat">@PARENT_TAG@</param>
     <param name="extract">dist/obs-service-tar_scm.spec</param>
-    <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="revision">0.10.36</param>
-<!--
+    <param name="extract">dist/debian.dsc</param>
     <param name="latest-signed-tag">true</param>
     <param name="maintainers-asc">_maintainers</param>
--->
   </service>
   <service name="set_version" mode="disabled">
     <param name="basename">obs-service-tar_scm</param>

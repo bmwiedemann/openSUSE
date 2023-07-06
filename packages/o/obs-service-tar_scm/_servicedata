@@ -2,15 +2,16 @@
 <service name="tar_scm">
             <param name="url">git://github.com/adrianschroeter/obs-service-tar_scm.git</param>
           <param name="changesrevision">d44d677cf006d48b261f5e2054ba2126bed64ae1</param></service>
-<service name="tar_scm">
-            <param name="url">git://github.com/M0ses/obs-service-tar_scm.git</param>
-          <param name="changesrevision">9e8b88b088778c44db56781e6a908a0e82e27cf2</param></service>
-<service name="tar_scm">
-                <param name="url">git://github.com/openSUSE/obs-service-tar_scm.git</param>
-              <param name="changesrevision">85bfc3fabb06212b49a389afb3310bfbf2996913</param></service><service name="tar_scm">
-                <param name="url">https://github.com/openSUSE/obs-service-tar_scm.git</param>
-              <param name="changesrevision">gpg: Signature made Fri 19 May 2023 02:54:32 PM CEST
-gpg:                using RSA key D50175CE6FE935BBF28602C5918D8C954C08DB67
-gpg: Good signature from "Adrian Schroeter (OBS Project Manager) &lt;adrian@suse.de&gt;" [ultimate]
-Primary key fingerprint: D501 75CE 6FE9 35BB F286  02C5 918D 8C95 4C08 DB67
-cf704bc3d3eaa7867c2ca6c029112c26b58294ef</param></service></servicedata>
+  <service name="tar_scm">
+    <param name="url">git://github.com/M0ses/obs-service-tar_scm.git</param>
+    <param name="changesrevision">9e8b88b088778c44db56781e6a908a0e82e27cf2</param>
+  </service>
+  <service name="tar_scm">
+    <param name="url">git://github.com/openSUSE/obs-service-tar_scm.git</param>
+    <param name="changesrevision">85bfc3fabb06212b49a389afb3310bfbf2996913</param>
+  </service>
+  <service name="tar_scm">
+    <param name="url">https://github.com/openSUSE/obs-service-tar_scm.git</param>
+    <param name="changesrevision">ce886908f2586834a3e8d123ea758ff332bd07c4</param>
+  </service>
+</servicedata>

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jul 05 17:01:56 UTC 2023 - dmueller@suse.com
+
+- Update to version 0.10.39:
+  * Add gpg as a dependency (needed for gpg validation)
+
+-------------------------------------------------------------------
+Wed Jul 05 12:33:14 UTC 2023 - dmueller@suse.com
+
+- Update to version 0.10.38:
+  * Python 2 is no longer supported by GitHub actions, stop testing it
+  * FD leak / flake8 / py311 fixes
+  * updated debian files
+  * disabled pylint 'no-member' because of false positives in py311
+  * removed unittest2 from BuildRequires in spec
+  * fixed fixtures and new Exception class
+  * updated KankuFile to Tumbleweed and removed python2 tests
+
+-------------------------------------------------------------------
 Fri May 19 14:37:24 UTC 2023 - adrian@suse.de
 
 - Update to version 0.10.36:
