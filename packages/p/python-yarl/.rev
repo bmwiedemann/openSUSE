@@ -231,4 +231,14 @@
 </comment>
     <requestid>1082898</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>5e34555c73c3b88b72a5c31ec416baf6</srcmd5>
+    <version>1.9.2</version>
+    <time>1688660866</time>
+    <user>favogt_factory</user>
+    <comment>- Add 882-sq_bracket_in_URL_netloc.patch fixing handling of
+  square bracket handling in URL netloc (gh#aio-libs/yarl#876).
+</comment>
+    <requestid>1096862</requestid>
+  </revision>
 </revisionlist>

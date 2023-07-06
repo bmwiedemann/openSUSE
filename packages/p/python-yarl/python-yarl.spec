@@ -24,13 +24,17 @@ Summary:        Yet another URL library
 License:        Apache-2.0
 URL:            https://github.com/aio-libs/yarl/
 Source:         https://files.pythonhosted.org/packages/source/y/yarl/yarl-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM 882-sq_bracket_in_URL_netloc.patch gh#aio-libs/yarl#876 mcepl@suse.com
+# Correct square bracket handling in URL netloc
+Patch0:         882-sq_bracket_in_URL_netloc.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module idna >= 2.0}
 # test requirements
 BuildRequires:  %{python_module multidict >= 4.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-idna >= 2.0
@@ -46,10 +50,10 @@ sed -i '/addopts/d' setup.cfg
 
 %build
 export CFLAGS="%{optflags} -Wno-return-type"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check

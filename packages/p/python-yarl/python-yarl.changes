@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  4 21:47:32 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add 882-sq_bracket_in_URL_netloc.patch fixing handling of
+  square bracket handling in URL netloc (gh#aio-libs/yarl#876).
+
+-------------------------------------------------------------------
 Wed Apr 26 07:02:00 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to version 1.9.2
