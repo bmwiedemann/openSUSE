@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 05 20:43:12 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1688579291.d13a461:
+  * Use tempfile TMPDIR option
+  * Use a tempfile template to easily identify tempfiles
+  * Apply best practices to Dockerfiles
+  * Bump version number
+  * git subrepo pull (merge) external/os-autoinst-common
+  * Remove non-functional save_storage_drives from testapi
+  * Add unit tests for multiple click points
+  * Allow a needle to have multiple click points
+
+-------------------------------------------------------------------
 Wed Jun 28 13:52:21 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1687960328.0df62a5:
