@@ -1323,4 +1323,14 @@
     <comment></comment>
     <requestid>1093974</requestid>
   </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>ddd874ad2c808fcc5087e1601d046496</srcmd5>
+    <version>44.3</version>
+    <time>1688660871</time>
+    <user>favogt_factory</user>
+    <comment>Forwarded request #1096304 from iznogood
+
+New stable release</comment>
+    <requestid>1096874</requestid>
+  </revision>
 </revisionlist>

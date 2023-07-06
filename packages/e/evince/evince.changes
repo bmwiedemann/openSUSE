@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul  1 16:35:07 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.3:
+  + Add support for validating appdata versions.
+  + Check for NEWS and appdata updates for new releases.
+  + Don't discard matches without text area in the find bar.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Jun 17 20:43:22 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.2:
