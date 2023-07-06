@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-configobj
@@ -27,8 +26,11 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/DiffSK/configobj
 Source:         https://files.pythonhosted.org/packages/source/c/configobj/configobj-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
+# PATCH-FIX-UPSTREAM remove_six.patch gh#DiffSK/configobj#239 mcepl@suse.com
+# We don't need six anymore
+Patch0:         remove_six.patch
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six
@@ -60,18 +62,18 @@ It has lots of other features though:
  * Powerful ``unrepr`` mode for storing/retrieving Python data-types
 
 %prep
-%setup -q -n configobj-%{version}
+%autosetup -p1 -n configobj-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %{python_sitelib}/configobj
 %{python_sitelib}/validate
-%{python_sitelib}/configobj-%{version}-py*.egg-info
+%{python_sitelib}/configobj-%{version}*-info
 
 %changelog

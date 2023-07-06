@@ -167,4 +167,14 @@ Refers only to the license available at http://www.voidspace.org.uk/python/licen
   * update broken links / non-existent services and references</comment>
     <requestid>1084843</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>b71d61e92636f05ce3d8db4d2fff0fab</srcmd5>
+    <version>5.0.8</version>
+    <time>1688660879</time>
+    <user>favogt_factory</user>
+    <comment>- Add remove_six.patch (gh#DiffSK/configobj#239) removing the
+  need for six.
+</comment>
+    <requestid>1096898</requestid>
+  </revision>
 </revisionlist>
