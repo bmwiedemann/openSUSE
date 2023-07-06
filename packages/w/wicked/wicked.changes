@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  5 08:06:15 UTC 2023 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- ifconfig: fix arp notify loop (boo#1212806) and burst sending
+  [+ 0001-fix_arp_notify_loop_and_burst_sending.patch]  
+
+-------------------------------------------------------------------
 Thu Jun 15 16:15:04 UTC 2023 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - update to version 0.6.73 (see also ChangeLog file):

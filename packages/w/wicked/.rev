@@ -1758,4 +1758,13 @@
   [+ 0002-extensions-nbft-add-post-up-script.bsc-1211647.patch]</comment>
     <requestid>1093768</requestid>
   </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>7970d4ed2e141047c30ce3a89165e01f</srcmd5>
+    <version>0.6.73</version>
+    <time>1688660876</time>
+    <user>favogt_factory</user>
+    <comment>- ifconfig: fix arp notify loop (boo#1212806) and burst sending
+  [+ 0001-fix_arp_notify_loop_and_burst_sending.patch]</comment>
+    <requestid>1096908</requestid>
+  </revision>
 </revisionlist>

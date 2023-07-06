@@ -1,0 +1,301 @@
+From b90abe647fc300cda51c30031416dd2c4b69d0f1 Mon Sep 17 00:00:00 2001
+From: Clemens Famulla-Conrad <cfamullaconrad@suse.de>
+Date: Mon, 3 Jul 2023 10:24:51 +0200
+Subject: [PATCH 1/6] arp: fix start time setting
+
+---
+ src/arp.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/arp.c b/src/arp.c
+index 5c3dac7a..389aec4f 100644
+--- a/src/arp.c
++++ b/src/arp.c
+@@ -440,7 +440,6 @@ ni_arp_verify_send(ni_arp_socket_t *sock, ni_arp_verify_t *vfy, ni_timeout_t *ti
+ 	}
+ 
+ 	need_wait = FALSE;
+-	vfy->started = now;
+ 	for (i = 0; i < vfy->ipaddrs.count; ++i) {
+ 		vap = vfy->ipaddrs.data[i];
+ 		ap  = vap->address;
+@@ -485,6 +484,7 @@ ni_arp_verify_send(ni_arp_socket_t *sock, ni_arp_verify_t *vfy, ni_timeout_t *ti
+ 		}
+ 	}
+ 	if (need_wait) {
++		ni_timer_get_time(&vfy->started);
+ 		vfy->last_timeout = ni_timeout_random_range(vfy->probe_min_ms, vfy->probe_max_ms);
+ 		*timeout = vfy->last_timeout;
+ 		return NI_ARP_SEND_PROGRESS;
+@@ -561,7 +561,6 @@ ni_arp_notify_send(ni_arp_socket_t *sock, ni_arp_notify_t *nfy, ni_timeout_t *ti
+ 		return TRUE;
+ 
+ 	if (nfy->nclaims && nfy->ipaddrs.count) {
+-		nfy->started = now;
+ 		need_wait = FALSE;
+ 
+ 		for (i = 0; i < nfy->ipaddrs.count; ++i) {
+@@ -606,6 +605,7 @@ ni_arp_notify_send(ni_arp_socket_t *sock, ni_arp_notify_t *nfy, ni_timeout_t *ti
+ 			}
+ 		}
+ 		if (need_wait) {
++			ni_timer_get_time(&nfy->started);
+ 			*timeout = nfy->wait_ms;
+ 			return TRUE;
+ 		}
+-- 
+2.39.1
+
+
+From ac5985e564e791b02be81dfb03ac20ce23737956 Mon Sep 17 00:00:00 2001
+From: Clemens Famulla-Conrad <cfamullaconrad@suse.de>
+Date: Mon, 3 Jul 2023 10:24:51 +0200
+Subject: [PATCH 2/6] ifconfig: fix arp notify for peer-to-peer addresses
+ (boo#1212806)
+
+---
+ src/ifconfig.c | 19 ++++++-------------
+ 1 file changed, 6 insertions(+), 13 deletions(-)
+
+diff --git a/src/ifconfig.c b/src/ifconfig.c
+index 661a12e9..bbb47ecc 100644
+--- a/src/ifconfig.c
++++ b/src/ifconfig.c
+@@ -5066,25 +5066,18 @@ ni_address_updater_arp_send(ni_addrconf_updater_t *updater, ni_netdev_t *dev, ni
+ {
+ 	ni_timeout_t wait_verify = 0, wait_notify = 0;
+ 	ni_address_updater_t *au;
+-	const ni_config_arp_t *arpcfg = ni_config_addrconf_arp(owner, dev->name);
+ 
+ 	if (!dev || !(au = ni_addrconf_address_updater_get(updater)))
+ 		return FALSE;
+ 
+-	if (au->notify.nclaims) {
+-		if (ni_arp_notify_send(au->sock, &au->notify, &wait_notify)) {
+-			updater->timeout = wait_notify;
+-			return TRUE;
+-		}
+-		ni_arp_notify_reset(&au->notify, &arpcfg->notify);
++	if (ni_arp_notify_send(au->sock, &au->notify, &wait_notify)) {
++		updater->timeout = wait_notify;
++		return TRUE;
+ 	}
+ 
+-	if (au->verify.nprobes) {
+-		if (ni_arp_verify_send(au->sock, &au->verify, &wait_verify) == NI_ARP_SEND_PROGRESS) {
+-			updater->timeout = wait_verify;
+-			return TRUE;
+-		}
+-		ni_arp_verify_reset(&au->verify, &arpcfg->verify);
++	if (ni_arp_verify_send(au->sock, &au->verify, &wait_verify) == NI_ARP_SEND_PROGRESS) {
++		updater->timeout = wait_verify;
++		return TRUE;
+ 	}
+ 
+ 	return FALSE;
+-- 
+2.39.1
+
+
+From 3c01cb81cd6681035f78a970dd12d265c4329fcd Mon Sep 17 00:00:00 2001
+From: Clemens Famulla-Conrad <cfamullaconrad@suse.de>
+Date: Mon, 3 Jul 2023 10:24:51 +0200
+Subject: [PATCH 3/6] arp: fix burst sending of arp-probes
+
+---
+ src/arp.c          | 19 +++++++++++++++++++
+ src/ifconfig.c     |  9 ++++++++-
+ src/netinfo_priv.h |  1 +
+ 3 files changed, 28 insertions(+), 1 deletion(-)
+
+diff --git a/src/arp.c b/src/arp.c
+index 389aec4f..1297bbab 100644
+--- a/src/arp.c
++++ b/src/arp.c
+@@ -232,6 +232,7 @@ static ni_define_ptr_array_init(ni_arp_address);
+ static ni_define_ptr_array_destroy(ni_arp_address);
+ static ni_define_ptr_array_realloc(ni_arp_address, NI_ARP_ADDRESS_ARRAY_CHUNK);
+ static ni_define_ptr_array_append(ni_arp_address);
++static ni_define_ptr_array_delete_at(ni_arp_address);
+ 
+ static ni_bool_t
+ ni_arp_address_array_append_addr(ni_arp_address_array_t *arr, ni_address_t *addr)
+@@ -320,6 +321,24 @@ ni_arp_verify_add_address(ni_arp_verify_t *vfy,  ni_address_t *ap)
+ 	return vfy->ipaddrs.count;
+ }
+ 
++ni_bool_t
++ni_arp_verify_remove_address(ni_arp_verify_t *vfy,  ni_address_t *ap)
++{
++	unsigned int index = 0;
++
++	if (!vfy || !ap)
++		return FALSE;
++
++	if (ap->family != AF_INET || !ni_sockaddr_is_ipv4_specified(&ap->local_addr))
++		return FALSE;
++
++	if (!ni_arp_address_array_find_match_addr(&vfy->ipaddrs, ap, &index,
++				ni_address_equal_local_addr))
++		return FALSE;
++
++	return ni_arp_address_array_delete_at(&vfy->ipaddrs, index);
++}
++
+ unsigned int
+ ni_arp_verify_add_in_addr(ni_arp_verify_t * vfy, struct in_addr addr)
+ {
+diff --git a/src/ifconfig.c b/src/ifconfig.c
+index bbb47ecc..ba488c66 100644
+--- a/src/ifconfig.c
++++ b/src/ifconfig.c
+@@ -5236,7 +5236,14 @@ __ni_netdev_update_addrs(ni_netdev_t *dev,
+ 		if (ni_address_is_duplicate(ap))
+ 			continue;
+ 
+-		if (ni_address_is_tentative(ap)) {
++		if (!ni_address_is_tentative(ap)) {
++			/*
++			 *  Remove address from verify array, as it isn't
++			 *  tentative anymore and we need space for the
++			 *  next burst (NI_ADDRCONF_UPDATE_MAX_ADDR_CHANGES)
++			 */
++			ni_arp_verify_remove_address(&au->verify, ap);
++		} else {
+ 			count = ni_arp_verify_add_address(&au->verify, ap);
+ 			if (count >= NI_ADDRCONF_UPDATER_MAX_ADDR_CHANGES)
+ 				break;
+diff --git a/src/netinfo_priv.h b/src/netinfo_priv.h
+index 15418a50..3f764566 100644
+--- a/src/netinfo_priv.h
++++ b/src/netinfo_priv.h
+@@ -234,6 +234,7 @@ extern void				ni_arp_verify_init(ni_arp_verify_t *, const ni_config_arp_verify_
+ extern void				ni_arp_verify_reset(ni_arp_verify_t *, const ni_config_arp_verify_t *);
+ extern void				ni_arp_verify_destroy(ni_arp_verify_t *);
+ extern unsigned int			ni_arp_verify_add_address(ni_arp_verify_t *,  ni_address_t *);
++extern ni_bool_t			ni_arp_verify_remove_address(ni_arp_verify_t *,  ni_address_t *);
+ extern unsigned int			ni_arp_verify_add_in_addr(ni_arp_verify_t *, struct in_addr);
+ extern ni_arp_send_status_t			ni_arp_verify_send(ni_arp_socket_t *, ni_arp_verify_t *, ni_timeout_t *);
+ extern ni_arp_address_t *		ni_arp_reply_match_address(ni_arp_socket_t *, ni_arp_address_array_t *,
+-- 
+2.39.1
+
+
+From b0d883f17d1d37d0fd4bb141002cc85446a0cbf8 Mon Sep 17 00:00:00 2001
+From: Clemens Famulla-Conrad <cfamullaconrad@suse.de>
+Date: Mon, 3 Jul 2023 10:24:52 +0200
+Subject: [PATCH 4/6] arp: do not wait after last arp-notify send
+
+---
+ src/arp.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/arp.c b/src/arp.c
+index 1297bbab..e9993cc4 100644
+--- a/src/arp.c
++++ b/src/arp.c
+@@ -603,7 +603,8 @@ ni_arp_notify_send(ni_arp_socket_t *sock, ni_arp_notify_t *nfy, ni_timeout_t *ti
+ 			ip = &ap->local_addr.sin.sin_addr;
+ 			if (ni_arp_send_grat_request(sock, *ip) > 0) {
+ 				aa->nattempts++;
+-				need_wait = TRUE;
++				if (nfy->nclaims > aa->nattempts)
++					need_wait = TRUE;
+ 			} else {
+ 				if (errno == ENOBUFS) {
+ 					aa->nerrors++;
+-- 
+2.39.1
+
+
+From 9b94b6010cdf5788ac083b21e72952470463afe1 Mon Sep 17 00:00:00 2001
+From: Clemens Famulla-Conrad <cfamullaconrad@suse.de>
+Date: Mon, 3 Jul 2023 10:24:52 +0200
+Subject: [PATCH 5/6] appconfig: do not allow arp.count == 0
+
+---
+ src/appconfig.c | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/src/appconfig.c b/src/appconfig.c
+index 82afb403..b3a6cc05 100644
+--- a/src/appconfig.c
++++ b/src/appconfig.c
+@@ -75,6 +75,7 @@ static void		ni_config_addrconf_arp_default(ni_config_arp_t *);
+ #define NI_ADDRCONF_ARP_NOTIFY_INTERVAL		300					/* ANNOUNCE_INTERVAL */
+ #define NI_ADDRCONF_ARP_INTERVAL_MIN		100
+ #define NI_ADDRCONF_ARP_MAX_DURATION		15000
++#define NI_ADDRCONF_ARP_COUNT_MIN		1
+ 
+ /*
+  * Create an empty config object
+@@ -1316,15 +1317,23 @@ static ni_bool_t
+ ni_config_parse_addrconf_arp_verify(ni_config_arp_verify_t *verify, const xml_node_t *node)
+ {
+ 	xml_node_t *child;
++	unsigned int tmp;
+ 	ni_config_arp_verify_t vfy_tmp = *verify;
+ 
+ 	for (child = node->children; child; child = child->next) {
+ 		if (ni_string_eq(child->name, "count")) {
+-			if (ni_parse_uint(child->cdata, &vfy_tmp.count, 0) < 0) {
++			if (ni_parse_uint(child->cdata, &tmp, 0) < 0) {
+ 				ni_warn("[%s] unable to parse <count>%s</count>",
+ 						xml_node_location(child), child->cdata);
+ 				continue;
+ 			}
++			if (tmp < NI_ADDRCONF_ARP_COUNT_MIN) {
++				ni_warn("[%s] ignore invalid count value %u, min: %d",
++						xml_node_location(child), tmp,
++						NI_ADDRCONF_ARP_COUNT_MIN);
++				continue;
++			}
++			vfy_tmp.count = tmp;
+ 		}
+ 
+ 		if (ni_string_eq(child->name, "interval")) {
+@@ -1393,6 +1402,12 @@ ni_config_parse_addrconf_arp_notify(ni_config_arp_notify_t *notify, const xml_no
+ 						xml_node_location(child), child->cdata);
+ 				continue;
+ 			}
++			if (tmp < NI_ADDRCONF_ARP_COUNT_MIN) {
++				ni_warn("[%s] ignore invalid count value %u, min: %d",
++						xml_node_location(child), tmp,
++						NI_ADDRCONF_ARP_COUNT_MIN);
++				continue;
++			}
+ 			nfy_tmp.count = tmp;
+ 		}
+ 
+-- 
+2.39.1
+
+
+From 59801779bee24eb9af4a6c31aaa58344459e1b04 Mon Sep 17 00:00:00 2001
+From: Clemens Famulla-Conrad <cfamullaconrad@suse.de>
+Date: Mon, 3 Jul 2023 10:24:52 +0200
+Subject: [PATCH 6/6] ifconfig: set max addr changes to 128
+
+---
+ src/ifconfig.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/ifconfig.c b/src/ifconfig.c
+index ba488c66..1c8aa553 100644
+--- a/src/ifconfig.c
++++ b/src/ifconfig.c
+@@ -4861,9 +4861,9 @@ ni_netdev_addr_needs_update(ni_netdev_t *dev, ni_address_t *o, ni_address_t *n)
+  * Update the addresses and routes assigned to an interface
+  * for a given addrconf method
+  */
+-#define NI_ADDRCONF_UPDATER_MAX_ADDR_CHANGES	256
++#define NI_ADDRCONF_UPDATER_MAX_ARP_MESSAGES	256
++#define NI_ADDRCONF_UPDATER_MAX_ADDR_CHANGES	(NI_ADDRCONF_UPDATER_MAX_ARP_MESSAGES / 2)
+ #define NI_ADDRCONF_UPDATER_MAX_ADDR_TIMEOUT	100
+-#define NI_ADDRCONF_UPDATER_MAX_ARP_MESSAGES	NI_ADDRCONF_UPDATER_MAX_ADDR_CHANGES
+ 
+ typedef struct ni_address_updater {
+ 	ni_arp_verify_t		verify;
+-- 
+2.39.1
+
