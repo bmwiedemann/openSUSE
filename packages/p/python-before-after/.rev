@@ -17,4 +17,12 @@
 - Drop {Build,}Requires on mock.</comment>
     <requestid>964447</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>114c6de8ef681f9c458847f20f058b0c</srcmd5>
+    <version>1.0.1</version>
+    <time>1688661011</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1097123</requestid>
+  </revision>
 </revisionlist>

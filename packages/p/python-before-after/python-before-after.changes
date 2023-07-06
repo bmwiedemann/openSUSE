@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  6 10:22:05 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Mar 24 04:44:38 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add pr_10.patch:
