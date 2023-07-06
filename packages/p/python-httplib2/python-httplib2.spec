@@ -26,7 +26,8 @@ Summary:        A Python HTTP client library
 License:        Apache-2.0 AND MIT AND (GPL-2.0-or-later OR MPL-1.1 OR LGPL-2.1-or-later)
 URL:            https://github.com/httplib2/httplib2
 Source:         https://files.pythonhosted.org/packages/source/h/httplib2/httplib2-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       ca-certificates
@@ -45,27 +46,21 @@ A comprehensive HTTP client library that supports many features
 left out of other HTTP libraries.
 
 %prep
-%setup -q -n httplib2-%{version}
+%autosetup -p1 -n httplib2-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with tests}
 %check
-%if %{have_python2}
-python2 python2/httplib2test.py
-%endif
-%if %{have_python3}
-python3 python3/httplib2test.py
-%endif
-%endif
+# Tests require network connection
+# python3 python3/httplib2test.py
 
 %files %{python_files}
-%{python_sitelib}/httplib2-%{version}-py*.egg-info
+%{python_sitelib}/httplib2-%{version}*-info
 %{python_sitelib}/httplib2
 
 %changelog

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul  5 07:47:13 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up SPEC file.
+
+-------------------------------------------------------------------
 Tue Jun 13 08:39:56 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

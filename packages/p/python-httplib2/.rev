@@ -462,4 +462,13 @@ __init__.py contains code derived from a Google owned Apache project. cacerts.tx
     <comment></comment>
     <requestid>1093050</requestid>
   </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>06ea7c4693cb0a1c3cbb09bd82680c5a</srcmd5>
+    <version>0.22.0</version>
+    <time>1688660880</time>
+    <user>favogt_factory</user>
+    <comment>- Clean up SPEC file.
+</comment>
+    <requestid>1096901</requestid>
+  </revision>
 </revisionlist>
