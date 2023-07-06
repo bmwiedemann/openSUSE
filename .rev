@@ -87,4 +87,12 @@ This library is &quot;required&quot; by libewf in the security repo for its apps
   * Fix issue with python 3.10</comment>
     <requestid>1055996</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>e6f3db511c46ab06d4ee68841341ae05</srcmd5>
+    <version>1.0.5</version>
+    <time>1688661005</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1097115</requestid>
+  </revision>
 </revisionlist>
