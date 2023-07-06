@@ -16,7 +16,7 @@
 #
 
 
-%define         skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-Glances
 Version:        3.3.1
 Release:        0

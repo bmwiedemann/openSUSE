@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  6 11:11:15 UTC 2023 - ecsos <ecsos@openssuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Tue Apr 25 15:51:39 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 3.3.1
