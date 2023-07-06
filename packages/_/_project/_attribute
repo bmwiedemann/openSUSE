@@ -261,7 +261,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20230705</value>
+    <value>20230706</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -289,6 +289,8 @@ products:
   - csi-resizer-image:
     - x86_64
   - csi-snapshotter-image:
+    - x86_64
+  - distribution-image:
     - x86_64
   - kubic-coredns-image:
     - x86_64
@@ -443,7 +445,13 @@ products:
     - x86_64
   - microos-docserv-image:
     - x86_64
+  - openjdk-20-devel-image:
+    - x86_64
+  - openjdk-20-image:
+    - x86_64
   - opensuse-memcached-image:
+    - x86_64
+  - postgres-15-image:
     - x86_64
   - rust-keylime-image:
     - x86_64
