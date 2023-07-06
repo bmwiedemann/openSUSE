@@ -43,4 +43,18 @@
     <comment></comment>
     <requestid>1081932</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>551a0cdf199271149f09f08d12385e7c</srcmd5>
+    <version>1.1.2</version>
+    <time>1688660869</time>
+    <user>favogt_factory</user>
+    <comment>- Update to 1.1.2:
+  - Changed handling of exceptions in exception group handler
+    callbacks to not wrap a single exception in an exception
+    group, as per CPython issue gh#python/cpython#103590.
+- Add skip-test_catch_handler_raises-for-older-311.patch 
+  (gh#agronholm/exceptiongroup#64).
+</comment>
+    <requestid>1096944</requestid>
+  </revision>
 </revisionlist>

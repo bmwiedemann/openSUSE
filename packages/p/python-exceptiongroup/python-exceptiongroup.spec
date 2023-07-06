@@ -29,12 +29,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-exceptiongroup%{psuffix}
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Backport of PEP 654 (exception groups)
 License:        MIT AND Python-2.0
 URL:            https://github.com/agronholm/exceptiongroup
 Source:         https://github.com/agronholm/exceptiongroup/archive/refs/tags/%{version}.tar.gz#/exceptiongroup-%{version}-gh.tar.gz
+# PATCH-FIX-UPSTREAM skip-test_catch_handler_raises-for-older-311.patch gh#agronholm/exceptiongroup#64 mcepl@suse.com
+# Skip test_catch_handler_raises() on Python 3.11 if the Python version is less than 3.11.4
+Patch0:         skip-test_catch_handler_raises-for-older-311.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module flit-scm}
 BuildRequires:  %{python_module pip}
@@ -75,7 +78,7 @@ exception group classes are used instead, ``TracebackException`` is not monkey p
 and the exception hook won't be installed.
 
 %prep
-%setup -q -n exceptiongroup-%{version}
+%autosetup -p1 -n exceptiongroup-%{version}
 
 %if !%{with test}
 %build

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul  4 22:32:27 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.1.2:
+  - Changed handling of exceptions in exception group handler
+    callbacks to not wrap a single exception in an exception
+    group, as per CPython issue gh#python/cpython#103590.
+- Add skip-test_catch_handler_raises-for-older-311.patch 
+  (gh#agronholm/exceptiongroup#64).
+
+-------------------------------------------------------------------
 Fri Apr 21 12:24:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
