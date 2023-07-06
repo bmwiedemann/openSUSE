@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jul  5 13:07:43 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.90.1:
+  * Detect headsets with kernel batteries such as Logitech and
+    Steelseries headsets, and make them automatically disappear if
+    the headset is turned off (if the kernel driver supports the
+    wireless_status attribute)
+  * Hide duplicate Logitech Bluetooth devices (Bolt-compatible devices
+    connected through Bluetooth would show as 2 batteries)
+  * Hide duplicate Logitech wireless devices when they get connected
+    through USB as well
+  * Fix Bluetooth device names not synchronising, and use user-chosen
+    names when available
+  * Handle the "present" sysfs attribute changing
+  * Fix iDevices not appearing
+  * Fix reading capacity_level with newer libgudev
+
+-------------------------------------------------------------------
 Fri Sep  2 08:18:42 UTC 2022 - Frederic Crozat <fcrozat@suse.com>
 
 - update to 1.90.0:
