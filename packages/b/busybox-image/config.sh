@@ -1,6 +1,6 @@
 #!/bin/sh
 # SPDX-License-Identifier: MIT
-# SPDX-FileCopyrightText: (c) 2022 SUSE LLC
+# SPDX-FileCopyrightText: (c) 2022-2023 SUSE LLC
 
 set -euo pipefail
 
@@ -16,7 +16,11 @@ if command -v rpm > /dev/null; then
     suseImportBuildKey
 fi
 
+
 sed -i 's|/bin/bash|/bin/sh|' /etc/passwd
+# Will be recreated by the next rpm(1) run as root user
+rm -v /usr/lib/sysimage/rpm/Index.db
+
 
 #=======================================
 # Clean up after zypper if it is present

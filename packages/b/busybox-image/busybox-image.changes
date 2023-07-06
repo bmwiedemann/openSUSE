@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Jun 23 15:33:33 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- label capitalization and related cleanups
+
+-------------------------------------------------------------------
+Tue May 30 06:52:56 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Add release stage and lifecycle url
+
+-------------------------------------------------------------------
+Tue Apr 25 22:24:05 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- Reduce busybox image size by removing Index.db
+
+  Index.db is being created on demand by rpm(1) (as long as it is run as root)
+  so we don't strictly have to ship it. currently the Index.db has a lot of
+  empty space within which we could optimize away.
+
+  until then removing the file saves 10% of the total compressed size.
+
+- switch versioning to rolling Tumbleweed schema
+
+-------------------------------------------------------------------
+Fri Mar  3 07:24:36 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Add org.opencontainers.image.source label set to %SOURCEURL%
+
+-------------------------------------------------------------------
+Mon Jan  2 12:22:14 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Bump copyright year
+
+-------------------------------------------------------------------
 Fri Jul 15 11:09:19 UTC 2022 - Dan Čermák <dcermak@suse.com>
 
 - Increase compatibility with openSUSE
