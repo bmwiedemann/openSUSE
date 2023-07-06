@@ -22,7 +22,7 @@
 %define binary_name buildx
 
 Name:           docker-buildx
-Version:        0.11.0
+Version:        0.11.1
 Release:        0
 Summary:        Docker CLI plugin for extended build capabilities with BuildKit
 License:        Apache-2.0
@@ -53,6 +53,7 @@ Key features:
 go build \
    -mod=vendor \
    -buildmode=pie \
+   -ldflags="-X github.com/docker/buildx/version.Version=%{version} -X github.com/docker/buildx/version.Revision=v%{version}" \
    -o bin/docker-buildx ./cmd/buildx
 
 %install

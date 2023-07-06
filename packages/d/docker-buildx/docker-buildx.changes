@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jul 06 06:56:26 UTC 2023 - kastl@b1-systems.de
+
+- fix wrong version output by using the git tag as the commit hash
+- Update to version 0.11.1:
+  * Revert "bake: fix incorrect dockerfile resolution against
+    cwd:// context"
+  * vendor: update tonistiigi/vt100 to master@f9a4f7ef6531
+  * build: fix host-gateway handling
+  * docs: update generated content
+  * vendor: update cli-docs-tool to 0.6.0
+  * test: build details output
+  * build: missing newline when printing build details on error
+  * dockerfile: update docker to 24.0.2
+  * controller: include CgroupParent in build.Options
+  * bake: ignore profiles in compose definitions
+  * chore: make docs
+  * docs: set experimental annotation
+  * builder: skip name validation for docker context
+  * bake: fix incorrect dockerfile resolution against cwd://
+    context
+
+-------------------------------------------------------------------
 Wed Jun 14 14:09:08 UTC 2023 - Aleksa Sarai <asarai@suse.com>
 
 - Move /usr/lib/docker and /usr/lib/docker/cli-plugins to the main docker
