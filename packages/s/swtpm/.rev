@@ -204,4 +204,12 @@
     <comment>- remove python3 dependency, no longer needed after rewrite (bsc#1211010) (forwarded request 1084023 from msmeissn)</comment>
     <requestid>1084024</requestid>
   </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>f62ab80d03cb43662c19bccea978ba34</srcmd5>
+    <version>0.8.0</version>
+    <time>1688660874</time>
+    <user>favogt_factory</user>
+    <comment>- Make selinux optional to allow building this package for Leap, too. (forwarded request 1093513 from manfred-h)</comment>
+    <requestid>1096892</requestid>
+  </revision>
 </revisionlist>

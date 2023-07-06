@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 16 11:32:11 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Make selinux optional to allow building this package for Leap, too.
+
+-------------------------------------------------------------------
 Tue May  2 09:55:28 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - remove python3 dependency, no longer needed after rewrite (bsc#1211010)

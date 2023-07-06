@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 01500
+%bcond_without use_selinux
+%else
+%bcond_with use_selinux
+%endif
+
 # Scripts in this package are python3
 %define skip_python2 1
 # SELinux
@@ -47,13 +53,17 @@ BuildRequires:  libtasn1-devel
 BuildRequires:  libtool
 BuildRequires:  libtpms-devel
 BuildRequires:  pkgconfig
+%if %{with use_selinux}
 BuildRequires:  selinux-policy-devel
 BuildRequires:  selinux-policy-targeted
+%endif
 BuildRequires:  socat
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(systemd)
 Requires:       iproute2
+%if %{with use_selinux}
 Requires:       (%{name}-selinux if selinux-policy-base)
+%endif
 Requires(pre):  user(tss)
 
 %description
@@ -74,6 +84,7 @@ Requires:       libtpms-devel
 %description    devel
 The development files for SWTPM
 
+%if %{with use_selinux}
 %package        selinux
 Summary:        SELinux module for the Software TPM emulator
 Group:          System/Management
@@ -83,6 +94,7 @@ BuildArch:      noarch
 
 %description    selinux
 This package provides the SELinux module for the Software TPM emulator.
+%endif
 
 %prep
 %autosetup
@@ -94,14 +106,20 @@ autoreconf -fiv
 export PATH="$PATH:%{_sbindir}"
 %configure --with-openssl --disable-static \
      --with-tss-user=root --with-tss-group=tss \
+%if %{with use_selinux}
      --with-selinux
+%else
+
+%endif
 %make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
+%if %{with use_selinux}
 mkdir %{buildroot}%{_datadir}/selinux/packages/targeted
 mv %{buildroot}%{_datadir}/selinux/packages/*.pp %{buildroot}%{_datadir}/selinux/packages/targeted
+%endif
 mkdir -p %{buildroot}%{_localstatedir}/lib/swtpm-localca
 sed -e 's|#!/usr/bin/env |#!/usr/bin/|g' -i %{buildroot}%{_datadir}/swtpm/swtpm-create-tpmca
 sed -e 's|#!/usr/bin/env |#!/usr/bin/|g' -i %{buildroot}%{_datadir}/swtpm/swtpm-create-user-config-files
@@ -109,6 +127,7 @@ sed -e 's|#!/usr/bin/env |#!/usr/bin/|g' -i %{buildroot}%{_datadir}/swtpm/swtpm-
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
+%if %{with use_selinux}
 %pre selinux
 %selinux_relabel_pre -s %{selinuxtype}
 
@@ -126,6 +145,7 @@ fi
 
 %posttrans selinux
 %selinux_relabel_post -s %{selinuxtype}
+%endif
 
 %files
 %doc CHANGES README TODO
@@ -144,10 +164,12 @@ fi
 %{_includedir}/swtpm
 %{_mandir}/man3/swtpm*%{?ext_man}
 
+%if %{with use_selinux}
 %files selinux
 %{_datadir}/selinux/packages/targeted/*.pp
 %ghost %verify(not md5 size mtime) %{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/%{modulename1}
 %ghost %verify(not md5 size mtime) %{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/%{modulename2}
 %ghost %verify(not md5 size mtime) %{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/%{modulename3}
+%endif
 
 %changelog
