@@ -37,13 +37,11 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Sound Daemons
 Url:            https://www.freedesktop.org/wiki/Software/PulseAudio/
 Source:         https://www.freedesktop.org/software/pulseaudio/releases/%{name}-%{version}.tar.xz
-Source1:        default.pa-for-gdm
 Source2:        setup-pulseaudio
 Source3:        sysconfig.sound-pulseaudio
 Source5:        pulseaudio.service
 Source6:        disable_flat_volumes.conf
 Source7:        pulseaudio.tmpfiles
-Source8:        pulseaudio-gdm-hooks.tmpfiles
 Source9:        client-system.conf
 Source10:       system-user-pulse.conf
 Source98:       pulseaudio-rpmlintrc
@@ -290,24 +288,6 @@ improved drop-in replacement for the Enlightened Sound Daemon (ESOUND).
 This package provides utilies for making use of the PulseAudio sound
 server.
 
-%package gdm-hooks
-Summary:        PulseAudio GDM integration
-Group:          Productivity/Multimedia/Other
-#avoid cycle
-#!BuildIgnore:  gdm
-Requires:       %{name} = %{version}
-Requires:       gdm >= 2.22
-Supplements:    (pulseaudio and gdm)
-#for the gdm user
-Requires(pre):  gdm
-
-%description gdm-hooks
-pulseaudio is a networked sound server for Linux and other Unix like
-operating systems and Microsoft Windows. It is intended to be an
-improved drop-in replacement for the Enlightened Sound Daemon (ESOUND).
-
-This package contains GDM integration hooks for the PulseAudio sound server.
-
 %package bash-completion
 Summary:        PulseAudio Bash completion
 Group:          System/Shells
@@ -401,9 +381,6 @@ touch %{buildroot}%{_sysconfdir}/profile.d/pulseaudio.sh
 touch %{buildroot}%{_sysconfdir}/profile.d/pulseaudio.csh
 mkdir -p %{buildroot}%{_prefix}/lib/tmpfiles.d
 install -m 644 %{SOURCE7} %{buildroot}%{_prefix}/lib/tmpfiles.d/pulseaudio.conf
-install -m 644 %{SOURCE8} %{buildroot}%{_prefix}/lib/tmpfiles.d/pulseaudio-gdm-hooks.conf
-mkdir -p %{buildroot}%{_prefix}/share/factory/var/lib/gdm/.pulse
-install -m 644 %{SOURCE1} %{buildroot}%{_prefix}/share/factory/var/lib/gdm/.pulse/default.pa
 # create .d conf dirs (since 8.0)
 mkdir -p %{buildroot}%{_sysconfdir}/pulse/client.conf.d
 install -m 0644 %{SOURCE9} %{buildroot}%{_sysconfdir}/pulse/client.conf.d/50-system.conf
@@ -473,9 +450,6 @@ exit 0
 
 %post setup
 %{fillup_only -an sound}
-
-%post gdm-hooks
-%tmpfiles_create pulseaudio-gdm-hooks.conf
 
 %files
 %doc README
@@ -594,17 +568,6 @@ exit 0
 # created by setup-pulseaudio script
 %ghost %{_sysconfdir}/profile.d/pulseaudio.sh
 %ghost %{_sysconfdir}/profile.d/pulseaudio.csh
-
-%files gdm-hooks
-%attr(0750, gdm, gdm) %ghost %dir %{_localstatedir}/lib/gdm
-%attr(0700, gdm, gdm) %ghost %dir %{_localstatedir}/lib/gdm/.pulse
-%attr(0600, gdm, gdm) %ghost %{_localstatedir}/lib/gdm/.pulse/default.pa
-%dir %{_prefix}/share/factory/var
-%dir %{_prefix}/share/factory/var/lib
-%dir %{_prefix}/share/factory/var/lib/gdm
-%dir %{_prefix}/share/factory/var/lib/gdm/.pulse
-%{_prefix}/share/factory/var/lib/gdm/.pulse/default.pa
-%{_prefix}/lib/tmpfiles.d/pulseaudio-gdm-hooks.conf
 
 %files -n libpulse%{soname}
 %license LICENSE GPL LGPL

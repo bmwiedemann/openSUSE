@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 30 11:01:11 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Drop pulseaudio-gdm-hooks subpackage including default.pa-for-gdm
+  and pulseaudio-gdm-hooks.tmpfiles. Moved to gdm instead.
+
+-------------------------------------------------------------------
 Thu Mar 23 14:59:04 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Enable LTO as the GCC issue is fixed with gcc13 (boo#1133278).
