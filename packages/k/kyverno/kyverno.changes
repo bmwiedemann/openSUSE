@@ -1,4 +1,112 @@
 -------------------------------------------------------------------
+Thu Jul 06 08:37:04 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.10.1:
+  * release 1.10.1 (#7762)
+  * feat: Add option to add imagePullSecrets to cleanup CronJobs
+    (#7730) (#7732)
+  * fix: remove show goreleaser version step (#7712)
+  * fix: release signing (#7711)
+  * fix goreleaser version (#7707)
+  * fix: lock schema manager when updating it (#7704) (#7706)
+  * release v1.10.1-rc.1 (#7701)
+  * fix: customizable tracer configuration (#7644) (#7700)
+  * fix: Swap any/all in the error message. (#7688) (#7696)
+  * Fix deferred loading (#7597) (#7694)
+  * fix: image verification (#7652) (#7692)
+  * feat: add lazy loading feature flag (#7680) (#7691)
+  * refactor: migrate context loaders (part 2) from #7597 (#7677)
+    (#7690)
+  * fix: cleanup controller rbac (#7669) (#7679)
+  * refactor: migrate context loaders (part 1) from #7597 (#7676)
+    (#7678)
+  * refactor: add specific loaders from #7597 (#7671) (#7675)
+  * feat: add cluster select and relabling config for
+    ServiceMonitors (#7659) (#7674)
+  * chore bump (#7666)
+  * fix: auth checks with the APIVersion and the subresource
+    (#7628) (#7641)
+  * enable webhook clean up (#7633) (#7637)
+  * fix: update the flag descriptions of the reports-controller
+    (#7617) (#7621)
+  * Add nancy-ignore to make it pass with current dependencies
+    (#7590) (#7602)
+  * fix: make configuring max procs not exit in case of error
+    (#7588) (#7591)
+  * fix: deletion mismatch for the generate policy (#7579) (#7606)
+  * fix: autogen not working correctly with cronjob conditions
+    (#7571) (#7604)
+  * reduce sleep duration for generate kuttl tests (#7589) (#7603)
+  * fix: CLI tests (#7596) (#7601)
+  * fix: background image verification not working (#7564) (#7570)
+  * feat: sign released artifacts (#7478) (#7560)
+  * feat: cleanup jobs resources (#7337) (#7559)
+  * Fix: Error cause is missing (#7563) (#7565)
+  * fix: recursive lazy loading (#7552) (#7562)
+  * fix: autogen not generating the correct kind (#7455) (#7561)
+  * feat: obey the order field in patchStrategicMerge method
+    (#7336) (#7558)
+  * fix: Delete downstream objects on precondition fail (#7496)
+    (#7549)
+  * fix: update kyverno admission-controller role to have delete
+    verb for… (#7527) (#7544)
+  * fix: add type conversion error judgment to avoid program panic
+    (#6526) (#7534)
+  * refactor: generate reconciliation on policy updates (#7531)
+    (#7533)
+  * fix: Remove ownerReferences when cloning across Namespaces
+    (#7517) (#7523)
+  * fix: misleading error message in deny conditions (#7503)
+    (#7520)
+  * fix: log level initialisation (#7515) (#7522)
+  * add debug env BACKGROUND_SCAN_INTERVAL (#7504) (#7519)
+  * fix: target scope validation for the generate rule (#7479)
+    (#7518)
+  * fix: cloneList sync behavior (#7466) (#7514)
+  * fix: log kind/namespace/name in scan errors (#7498) (#7500)
+  * fix (#7473) (#7477)
+  * fix: image pull secrets in admission controller (#7474) (#7476)
+  * fix: rule name not required in the crd schema (#7464) (#7465)
+  * fix: add missing webhook timeouts (#7435) (#7467)
+  * fix: the same source cannot be used for multiple targets with a
+    generate clone rule (#7436) (#7454)
+  * fix flaky tests (#7460) (#7461)
+  * fixed typo in admission controller chart template (#7440)
+    (#7442)
+  * fix: error reported when sanity check fails (#7439) (#7441)
+  * fix: exceptions not considered on delete (#7433) (#7437)
+  * fix: helm template for cleanup jobs image (#7430) (#7434)
+  * fix: array element removal should be synced to the downstream
+    resource with a generate data sync rule (#7417) (#7432)
+  * fix: reports discovery error (#7428) (#7431)
+  * feat: hold custom labels (#7416) (#7419)
+  * update migration guide with generate guidance (#7409) (#7410)
+  * fix: missing extraEnvVars in helm chart (#7403) (#7407)
+  * Fix: [Bug] The default field in a context variable does not
+    replace nil results  (#7251) (#7400)
+  * fix mutate targets validation (#7387) (#7399)
+  * Remove policy validation prevent loop for generate  (#7388)
+    (#7398)
+  * Allow setting verbs for clusterrole extraresources on
+    backgroundController (#7380) (#7392)
+  * fix: missing/incorrect env variables (#7383) (#7389)
+  * Add missing delete verb to admission cleanup clusterrole
+    (#7375) (#7384)
+  * fix: permission validation message (#7362) (#7371)
+  * feat(cronjobs): Enable podAnnotations on CronJobs (#7366)
+    (#7370)
+  * fix: protect managed resource not considering other components
+    (#7363) (#7367)
+  * fix: helm migration guide (#7360) (#7364)
+  * feat: cleanup job tolerations (#7331) (#7351)
+  * fix: flaky kuttl test add-external-secret-prefix (#7338)
+    (#7343)
+  * Add scaling testing instructions (#7295) (#7348)
+  * chore: new helm chart version (#7349)
+  * fix: config map name in helm chart (#7341) (#7342)
+  * fix: panic in background reports (#7332) (#7334)
+
+-------------------------------------------------------------------
 Tue May 30 14:04:50 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - BuildRequire go1.20
