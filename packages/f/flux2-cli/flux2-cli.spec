@@ -15,22 +15,20 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 %define repo_name flux2
-# temporarily added to accomodate pre-release versioning while making sure
-# the upstream version is preserved in the CLI
-%define raw_version 2.0.0-rc.5
 
 Name:           flux2-cli
-Version:        2.0.0~rc5
+Version:        2.0.0
 Release:        0
 Summary:        CLI for Flux2CD
 License:        Apache-2.0
 URL:            https://github.com/fluxcd/flux2
 Source:         %{repo_name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Source11:	helm-controller.crds.yaml
+Source11:       helm-controller.crds.yaml
 Source12:       helm-controller.deployment.yaml
 Source13:       image-automation-controller.crds.yaml
 Source14:       image-automation-controller.deployment.yaml
@@ -44,10 +42,10 @@ Source21:       source-controller.crds.yaml
 Source22:       source-controller.deployment.yaml
 Source101:      Packaging_README.md
 Source102:      download_yaml.sh
-BuildRequires:  go >= 1.20
-BuildRequires:  kustomize
-BuildRequires:  helm
 BuildRequires:  git-core
+BuildRequires:  go >= 1.20
+BuildRequires:  helm
+BuildRequires:  kustomize
 
 %description
 Flux is a tool for keeping Kubernetes clusters in sync with sources of configuration (like Git repositories and OCI artifacts), and automating updates to configuration when there is new code to deploy.
@@ -96,32 +94,32 @@ Fish command line completion support for %{name}.
 %build
 cp %{SOURCE11} ./manifests/bases/helm-controller/
 cp %{SOURCE12} ./manifests/bases/helm-controller/
-sed -i 's_https://github.com/fluxcd/helm-controller/releases/download/v0.34.1/__g' manifests/bases/helm-controller/kustomization.yaml
+sed -i 's_https://github.com/fluxcd/helm-controller/releases/download/v0.35.0/__g' manifests/bases/helm-controller/kustomization.yaml
 cat manifests/bases/helm-controller/kustomization.yaml
 
 cp %{SOURCE13} ./manifests/bases/image-automation-controller/
 cp %{SOURCE14} ./manifests/bases/image-automation-controller/
-sed -i 's_https://github.com/fluxcd/image-automation-controller/releases/download/v0.34.1/__g' manifests/bases/image-automation-controller/kustomization.yaml
+sed -i 's_https://github.com/fluxcd/image-automation-controller/releases/download/v0.35.0/__g' manifests/bases/image-automation-controller/kustomization.yaml
 cat manifests/bases/image-automation-controller/kustomization.yaml
 
 cp %{SOURCE15} ./manifests/bases/image-reflector-controller/
 cp %{SOURCE16} ./manifests/bases/image-reflector-controller/
-sed -i 's_https://github.com/fluxcd/image-reflector-controller/releases/download/v0.28.0/__g' manifests/bases/image-reflector-controller/kustomization.yaml
+sed -i 's_https://github.com/fluxcd/image-reflector-controller/releases/download/v0.29.0/__g' manifests/bases/image-reflector-controller/kustomization.yaml
 cat manifests/bases/image-reflector-controller/kustomization.yaml
 
 cp %{SOURCE17} ./manifests/bases/kustomize-controller/
 cp %{SOURCE18} ./manifests/bases/kustomize-controller/
-sed -i 's_https://github.com/fluxcd/kustomize-controller/releases/download/v1.0.0-rc.4/__g' manifests/bases/kustomize-controller/kustomization.yaml
+sed -i 's_https://github.com/fluxcd/kustomize-controller/releases/download/v1.0.0/__g' manifests/bases/kustomize-controller/kustomization.yaml
 cat manifests/bases/kustomize-controller/kustomization.yaml
 
 cp %{SOURCE19} ./manifests/bases/notification-controller/
 cp %{SOURCE20} ./manifests/bases/notification-controller/
-sed -i 's_https://github.com/fluxcd/notification-controller/releases/download/v1.0.0-rc.4/__g' manifests/bases/notification-controller/kustomization.yaml
+sed -i 's_https://github.com/fluxcd/notification-controller/releases/download/v1.0.0/__g' manifests/bases/notification-controller/kustomization.yaml
 cat manifests/bases/notification-controller/kustomization.yaml
 
 cp %{SOURCE21} ./manifests/bases/source-controller/
 cp %{SOURCE22} ./manifests/bases/source-controller/
-sed -i 's_https://github.com/fluxcd/source-controller/releases/download/v1.0.0-rc.5/__g' manifests/bases/source-controller/kustomization.yaml
+sed -i 's_https://github.com/fluxcd/source-controller/releases/download/v1.0.0/__g' manifests/bases/source-controller/kustomization.yaml
 cat manifests/bases/source-controller/kustomization.yaml
 
 ./manifests/scripts/bundle.sh
@@ -129,7 +127,7 @@ cat manifests/bases/source-controller/kustomization.yaml
 go build \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags="-s -w -X main.VERSION=%{raw_version}" \
+   -ldflags="-s -w -X main.VERSION=%{version}" \
    -o bin/flux ./cmd/flux
 
 %install

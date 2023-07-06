@@ -50,7 +50,7 @@ spec:
               fieldPath: metadata.namespace
         - name: TUF_ROOT
           value: /tmp/.sigstore
-        image: fluxcd/source-controller:v1.0.0-rc.5
+        image: fluxcd/source-controller:v1.0.0
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
