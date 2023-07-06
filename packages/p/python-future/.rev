@@ -187,4 +187,14 @@
     <comment></comment>
     <requestid>1081909</requestid>
   </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>76d8bef3162f14871974316f98dd7183</srcmd5>
+    <version>0.18.3</version>
+    <time>1688660867</time>
+    <user>favogt_factory</user>
+    <comment>- Add 619-test-zero-byte.patch to fix
+  gh#PythonCharmers/python-future#618.
+</comment>
+    <requestid>1096863</requestid>
+  </revision>
 </revisionlist>

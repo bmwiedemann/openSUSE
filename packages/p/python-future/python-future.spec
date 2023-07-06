@@ -33,8 +33,12 @@ Patch1:         future-correct-mimetype.patch
 # PATCH-FIX-UPSTREAM python39-build.patch gh#PythonCharmers/python-future#578 mcepl@suse.com
 # Overcome incompatibilites with python 3.9
 Patch2:         python39-build.patch
+# PATCH-FIX-UPSTREAM 619-test-zero-byte.patch gh#PythonCharmers/python-future#618 mcepl@suse.com
+# incompatibilities with 3.11.4
+Patch3:         619-test-zero-byte.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if 0%{suse_version} >= 1550 || (0%{suse_version} == 1500 && 0%{?sle_version} >= 150400)
@@ -53,15 +57,14 @@ It allows you to use a single Python 3.x-compatible codebase to
 support both Python 2 and Python 3.
 
 %prep
-%setup -q -n future-%{version}
-%autopatch -p1
+%autosetup -p1 -n future-%{version}
 sed -i -e '/^#!\//, 1d' src/future/backports/test/pystone.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %python_clone -a %{buildroot}%{_bindir}/futurize
 %python_clone -a %{buildroot}%{_bindir}/pasteurize
