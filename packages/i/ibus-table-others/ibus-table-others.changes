@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul  6 08:26:53 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 1.3.16
+ * feat: several improvements to Old Hungarian
+ * fix: remove { and } from VALID_INPUT_CHARS in LaTeX table
+
+-------------------------------------------------------------------
 Mon Aug  1 04:40:10 UTC 2022 - Gordon Leung <pirateclip@protonmail.com>
 
 feat: use _service files to automate fetching sources
