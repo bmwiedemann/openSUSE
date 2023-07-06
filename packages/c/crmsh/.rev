@@ -2977,4 +2977,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>1096671</requestid>
   </revision>
+  <revision rev="301" vrev="1">
+    <srcmd5>ba1b844cc8cc791ad42615d1ce27a278</srcmd5>
+    <version>4.5.0+20230705.ea8c76ff</version>
+    <time>1688660923</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1096978</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 05 13:45:36 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230705.ea8c76ff:
+  * Fix: codecov: specify token explicitly
+  * Fix: ui_context: wait4dc should assume a subcommand completes successfully if no exceptions are raised (bsc#1212992)
+
+-------------------------------------------------------------------
 Tue Jul 04 06:55:43 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.5.0+20230704.509d113d:
