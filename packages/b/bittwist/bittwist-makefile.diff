@@ -1,20 +1,22 @@
 diff --git a/Makefile b/Makefile
-index e681d85..f121fe3 100644
+index 70cf633..f23bb45 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -19,22 +19,22 @@ INSTALL_DATA = ${INSTALL} -m 644
+@@ -51,10 +51,10 @@ INSTALL_DATA = ${INSTALL} -m 644
  all: bittwist bittwiste
  
  bittwist:
--	$(CC) $(CFLAGS) $(SRC)/bittwist.c -o $(SRC)/bittwist -I/usr/local/include -L/usr/local/lib -lpcap
-+	$(CC) $(CFLAGS) $(SRC)/bittwist.c -o $(SRC)/bittwist `pcap-config --libs --cflags`
+-	$(CC) $(CFLAGS) $(SRC)/bittwist.c $(SRC)/token_bucket.c -o $(SRC)/bittwist -I/usr/local/include -L/usr/local/lib -lpcap
++	$(CC) $(CFLAGS) $(SRC)/bittwist.c $(SRC)/token_bucket.c -o $(SRC)/bittwist `pcap-config --libs --cflags`
  
  bittwiste:
--	$(CC) $(CFLAGS) $(SRC)/bittwiste.c -o $(SRC)/bittwiste -I/usr/local/include -L/usr/local/lib -lpcap
-+	$(CC) $(CFLAGS) $(SRC)/bittwiste.c -o $(SRC)/bittwiste `pcap-config --libs --cflags`
+-	$(CC) $(CFLAGS) $(SRC)/bittwiste.c $(SRC)/tinymt/tinymt64.c $(SRC)/template_pcap.c -o $(SRC)/bittwiste -I $(SRC)/tinymt -I/usr/local/include -L/usr/local/lib -lpcap
++	$(CC) $(CFLAGS) $(SRC)/bittwiste.c $(SRC)/tinymt/tinymt64.c $(SRC)/template_pcap.c -o $(SRC)/bittwiste -I $(SRC)/tinymt `pcap-config --libs --cflags`
  
  clean:
  	rm -f $(SRC)/bittwist $(SRC)/bittwiste
+@@ -66,18 +66,18 @@ format:
+ 	$(CLANG_FORMAT) -i src/def.h src/token_bucket.h src/token_bucket.c src/template_pcap.h src/template_pcap.c src/bittwist.h src/bittwist.c src/bittwiste.h src/bittwiste.c
  
  install:
 -	mkdir -p $(bindir)
@@ -24,14 +26,21 @@ index e681d85..f121fe3 100644
 -	chmod 755 $(mandir)
 -	$(INSTALL_DATA) $(DOC)/bittwist.1 $(DOC)/bittwiste.1 $(mandir)
 +	mkdir -p $(DESTDIR)$(bindir)
-+	chmod 755 $(DESTDIR)$(bindir)
++	chmod 755  $(DESTDIR)$(bindir)
 +	$(INSTALL_PROGRAM) $(SRC)/bittwist $(SRC)/bittwiste $(DESTDIR)$(bindir)
 +	mkdir -p $(DESTDIR)$(mandir)
 +	chmod 755 $(DESTDIR)$(mandir)
 +	$(INSTALL_DATA) $(DOC)/bittwist.1 $(DOC)/bittwiste.1 $(DESTDIR)$(mandir)
  
  uninstall:
--	rm -f $(bindir)/bittwist $(bindir)/bittwiste
--	rm -f $(mandir)/bittwist.1 $(mandir)/bittwiste.1
-+	rm -f $(bindir)/bittwist $(DESTDIR)$(bindir)/bittwiste
-+	rm -f $(mandir)/bittwist.1 $(DESTDIR)$(mandir)/bittwiste.1
+-	@rm -vf $(wildcard $(bindir)/bittwist)
+-	@rm -vf $(wildcard $(bindir)/bittwiste)
+-	@rm -vf $(wildcard $(mandir)/bittwist.1)
+-	@rm -vf $(wildcard $(mandir)/bittwiste.1)
++	@rm -vf $(wildcard $(DESTDIR)$(bindir)/bittwist)
++	@rm -vf $(wildcard $(DESTDIR)$(bindir)/bittwiste)
++	@rm -vf $(wildcard $(DESTDIR)$(mandir)/bittwist.1)
++	@rm -vf $(wildcard $(DESTDIR)$(mandir)/bittwiste.1)
+ 	@rm -vf $(wildcard $(old_bindir)/bittwist)
+ 	@rm -vf $(wildcard $(old_bindir)/bittwiste)
+ 	@rm -vf $(wildcard $(old_mandir)/bittwist.1)

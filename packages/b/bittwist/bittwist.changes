@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sun Jul  2 11:53:58 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.7
+  Changes since 2.0:
+  general
+  * added support for trace files with nanosecond resolution.
+  * updated manual pages.
+  * use in-memory trace files when sending packets in loop.
+  * fixed integer overflow in stats output.
+  * added static code analysis in Makefile (make check).
+  * reformatted source files for C17 standard.
+  * added initial python testing framework for Linux systems.
+  bittwist (generator):
+  * 30% speed up when sending large pcap file.
+  * fixed linerate throttling.
+  * updated -p option to send packets at set packets per second
+    (pps).
+  * added -t option to set inter-packet gap (this was previously
+    -p option).
+  * removed speed (-m) flag; use -p/-r to shape throughput.
+  * updated linerate (-r) flag to use token bucket algorithm.
+  bittwiste (editor)
+  * added -G option to set fixed or random inter-packet gap in
+    microseconds.
+  * added support for CIDR notation when modifying IPv4/IPv6
+    addressA.
+  * added support for random MAC address.
+  * added option to edit IPv6 next header.
+  * added random number support for id, ttl, proto, next header,
+    hop limit.
+  * added option to set uniformly distributed random number
+    (mersenne twister). for tcp/udp source/destination port and
+    tcp sequence/acknowledgment number.
+  * added -N flag to duplicate packets from trace file, e.g.
+    -N 100000 to repeat packets from trace file for 100,000 times
+  * added ip6tcp and ip6udp templates.
+  * updated -I flag to allow loading trace file from built-in
+    templates.
+  * options to edit IPv4/IPv6 packets to allow testing of
+    classification/queuing.  features of switches/routers, e.g.
+    + -T ip -e 3 to indicate congestion to the end hosts
+    + -T ip6 -c 16 to classify packet for operation and management
+      of the network
+    + -T ip6 -f 0xfffff to set custom flow label
+  * added support for IPv6 packets.
+  * improved cksum().
+  * expanded test cases.
+- Update patch:
+  * bittwist-makefile.diff
+- Update URL
+
+-------------------------------------------------------------------
 Fri May 26 10:39:30 UTC 2017 - jengelh@inai.de
 
 - Trim filler wording from description.
