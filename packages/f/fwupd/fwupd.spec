@@ -16,7 +16,7 @@
 #
 
 
-%ifarch %{ix86} x86_64 aarch64
+%ifarch %{ix86} x86_64 aarch64 riscv64
 %bcond_without efi_fw_update
 %else
 %bcond_with efi_fw_update
@@ -316,10 +316,10 @@ rm -fr %{buildroot}%{_datadir}/fish
 %{_unitdir}/fwupd-refresh.service
 %{_unitdir}/fwupd-refresh.timer
 %{_libexecdir}/fwupd
-%{_bindir}/fwupdagent
 %{_bindir}/fwupdmgr
 %{_bindir}/fwupdtool
 %if %{with efi_fw_update}
+%{_bindir}/fwupdagent
 %{_bindir}/fwupdate
 %{_bindir}/dbxtool
 %endif
@@ -392,10 +392,12 @@ rm -fr %{buildroot}%{_datadir}/fish
 %{_libdir}/fwupd-%{version}/libfwupdutil.so
 %{_datadir}/%{name}/quirks.d/builtin.quirk.gz
 
+%if %{with efi_fw_update}
 %files -n dfu-tool
 %{_bindir}/dfu-tool
 %if 0%{?docs}
 %{_mandir}/man1/dfu-tool.1%{?ext_man}
+%endif
 %endif
 
 %files -n libfwupd%{shlib_sover}

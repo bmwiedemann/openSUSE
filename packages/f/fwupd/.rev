@@ -512,4 +512,12 @@ Please do not fwd without building it, and checking new rpmlint warnings we may 
     <comment></comment>
     <requestid>1093064</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>970f2a0352d7034b673c30e29115f2ab</srcmd5>
+    <version>1.8.16</version>
+    <time>1688660905</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1096970</requestid>
+  </revision>
 </revisionlist>
