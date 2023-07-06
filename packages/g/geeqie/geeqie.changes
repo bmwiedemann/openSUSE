@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  5 15:21:33 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Add exiv_0-28.patch, fixing a bug with exiv2-0.28 and removing the
+  version restriction
+
+-------------------------------------------------------------------
 Wed Jun 21 16:05:29 UTC 2023 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 2.1:

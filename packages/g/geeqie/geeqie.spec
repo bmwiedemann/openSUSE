@@ -26,6 +26,8 @@ URL:            http://www.geeqie.org
 Source0:        https://github.com/BestImageViewer/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/BestImageViewer/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        geeqie.keyring
+# PATCH-FIX-UPSTREAM exiv_0-28.patch Fix an Issue with exiv2 0.28
+Patch0:         exiv_0-28.patch
 BuildRequires:  c++_compiler
 BuildRequires:  docbook_4
 BuildRequires:  doxygen
