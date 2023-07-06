@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 05 20:22:47 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1688565452.efc15ea:
+  * Use indented here-documents
+  * Fix tests due to postgres error msg filtered in wrong language
+
+-------------------------------------------------------------------
 Sun Jul 02 04:54:54 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1688124489.7f4be1c:
