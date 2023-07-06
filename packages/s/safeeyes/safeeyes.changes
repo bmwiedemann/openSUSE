@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul  5 07:55:14 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 2.1.6:
+  * Reverse-DNS scheme for icons & Broken initialize logic fix & Add appstream (#519)
+  * Display a traceback of plugin loading errors when --debug is given (#506)
+  * Remove executable permission from safeeyes.desktop (#512) 
+  * Fix incorrectly skipped long breaks (#443)
+  * Take short or long breaks from tray (#347)
+  * Add sub-menu to take any, short or long breaks
+  * Update translations
+
+-------------------------------------------------------------------
 Thu Dec 22 08:25:31 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 2.1.4:

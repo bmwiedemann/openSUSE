@@ -1,7 +1,7 @@
 #
 # spec file for package safeeyes
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2017 Malcolm J Lewis <malcolmlewis@opensuse.org>
 # Copyright (c) 2020 opensuse.lietuviu.kalba@gmail.com
 #
@@ -19,7 +19,7 @@
 
 
 Name:           safeeyes
-Version:        2.1.4
+Version:        2.1.6
 Release:        0
 Summary:        Tool for reminding the user to take breaks
 License:        GPL-3.0-only
@@ -67,7 +67,6 @@ python3 setup.py build
 
 %install
 python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
-%suse_update_desktop_file -r safeeyes Utility Clock
 
 # localization
 %find_lang %{name}
@@ -76,7 +75,7 @@ python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 %doc README.md
 %license LICENSE
 %{_bindir}/safeeyes
-%{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/io.github.slgobinath.SafeEyes.desktop
 %{_datadir}/icons/hicolor/*/*/
 %{python3_sitelib}/%{name}
 %{python3_sitelib}/%{name}-%{version}-py%{py3_ver}.egg-info
