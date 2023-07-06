@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Fri Jun 23 15:33:33 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- label capitalization and related cleanups
+
+-------------------------------------------------------------------
+Tue May 30 06:52:56 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Add release stage and lifecycle url
+
+-------------------------------------------------------------------
+Thu Mar 30 15:12:51 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- Fix signal handling and use ~postgres/data as the default PGDATA location
+
+-------------------------------------------------------------------
+Wed Mar 29 13:44:26 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Correct file permissions for chmod calls in docker-entrypoint.sh
+
+-------------------------------------------------------------------
+Mon Mar 13 15:23:17 UTC 2023 - SUSE Update Bot <bci-internal@suse.de>
+
+- First version of the PostgreSQL 15 BCI
