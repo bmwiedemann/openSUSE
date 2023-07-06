@@ -1,4 +1,6 @@
 d /var/lib/gdm 0750 gdm gdm -
+d /var/lib/gdm/.pulse 0700 gdm gdm -
+C /var/lib/gdm/.pulse/default.pa 0600 gdm gdm - /usr/share/factory/var/lib/gdm/.pulse/default.pa
 d /var/log/gdm 0711 root gdm -
 d /var/cache/gdm 1755 root root -
 d /run/gdm 0711 root gdm -

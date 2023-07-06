@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun 30 11:28:29 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Merge pulseaudio-gdm-hooks into the gdm package. This was previously
+  part of pulseaudio.spec, which was fairly complex (dir ownership,
+  separate tmpfiles, dependencies) and it also caused pulseaudio.spec
+  to runtime depend on gdm. Avoid all of that by just adding it here:
+  + Add default.pa
+  + Add entries to gdm.tmpfiles
+
+-------------------------------------------------------------------
 Fri May  5 18:22:08 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.1:

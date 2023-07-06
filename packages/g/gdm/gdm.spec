@@ -55,6 +55,8 @@ Source12:       gdm-sle.pamd
 Source13:       gdm-autologin-sle.pamd
 Source14:       gdm-fingerprint-sle.pamd
 Source15:       gdm-smartcard-sle.pamd
+# Configuration for pulseaudio
+Source20:       default.pa
 # WARNING: do not remove/significantly change patch0 without updating the relevant patch in accountsservice too
 # PATCH-FIX-OPENSUSE gdm-s390-not-require-g-s-d_wacom.patch bsc#1129412 yfjiang@suse.com -- Remove the runtime requirement of g-s-d Wacom plugin
 Patch0:         gdm-s390-not-require-g-s-d_wacom.patch
@@ -140,6 +142,8 @@ Provides:       gdm2 = %{version}
 Obsoletes:      gdm2 < %{version}
 Provides:       gnome-applets-gdm = %{version}
 Obsoletes:      gnome-applets-gdm < %{version}
+Provides:       pulseaudio-gdm-hooks = 16.1
+Obsoletes:      pulseaudio-gdm-hooks <= 16.1
 DocDir:         %{_defaultdocdir}
 %ifnarch s390 s390x
 BuildRequires:  pkgconfig(xorg-server)
@@ -331,6 +335,8 @@ install -m 644 %{SOURCE10} %{buildroot}%{_prefix}/lib/systemd/logind.conf.d/rese
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 644 %{SOURCE11} %{buildroot}%{_sysusersdir}/gdm.conf
 
+install -D -m 644 %{SOURCE20} %{buildroot}%{_prefix}/share/factory/var/lib/gdm/.pulse/default.pa
+
 %find_lang %{name} %{?no_lang_C}
 %fdupes -s %{buildroot}%{_datadir}/help
 
@@ -369,6 +375,9 @@ dconf update
 %dir %{_datadir}/dconf
 %dir %{_datadir}/dconf/profile
 %{_datadir}/dconf/profile/gdm
+%dir %{_datadir}/factory/var
+%dir %{_datadir}/factory/var/lib
+%{_datadir}/factory/var/lib/gdm
 %{_datadir}/gdm/
 %{_datadir}/gnome-session/sessions/gnome-login.session
 %{_pam_moduledir}/pam_gdm.so
@@ -376,6 +385,8 @@ dconf update
 %{_libexecdir}/gdm/gdm-*
 %{_libexecdir}/gdm/gdmflexiserver
 %ghost %attr(750,gdm,gdm) %dir %{_localstatedir}/lib/gdm
+%attr(0700, gdm, gdm) %ghost %dir %{_localstatedir}/lib/gdm/.pulse
+%attr(0600, gdm, gdm) %ghost %{_localstatedir}/lib/gdm/.pulse/default.pa
 %ghost %attr(711,root,gdm) %dir %{_localstatedir}/log/gdm
 %ghost %dir %{_localstatedir}/cache/gdm
 %ghost %attr(711,root,gdm) %dir /run/gdm
