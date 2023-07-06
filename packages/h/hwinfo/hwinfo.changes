@@ -1,4 +1,20 @@
 --------------------------------------------------------------------
+Wed Jul 5 15:12:32 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#137
+- adjust exported symbols to yast2-hardware-detection test case
+- 23.1
+
+--------------------------------------------------------------------
+Wed Jul 5 12:01:36 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#134
+- restrict libhd exported symbols to the documented API
+  (bsc#1212756)
+- fix pppoe compile warning
+- 23.0
+
+--------------------------------------------------------------------
 Mon Jul 3 18:49:35 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/hwinfo#133
