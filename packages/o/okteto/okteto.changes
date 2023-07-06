@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Wed Jul 05 14:39:44 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.17.0:
+  * Compute hash for divert annotation to limit the size of the
+    annotation (#3787) (#3789)
+  * Jlopezbarb/fix-security-issues (#3762) (#3763)
+  * fix: wrong registry hostname parse as url (#3743) (#3759)
+  * Fix kubetoken usage message (#3606)
+  * Fix integration hybrid (#3749)
+  * fix: search first in dev registry (#3750)
+  * Update the log message when no endpoints are available (#3722)
+  * Update hybrid analytics (#3742)
+  * fix: no optional locks on git read only commands (#3707)
+  * Fix silent error when build images as part of "okteto deploy"
+    (#3736)
+  * build(deps): Bump mheap/github-action-required-labels from 4 to
+    5 (#3702)
+  * docs(helper): improve description of label flag (#3740)
+  * chore: make labels errors explicit (#3718)
+  * Removed feature for automatically export/import the build cache
+    (#3729)
+  * gracefull shutdown for hybrid process (#3683)
+  * Propagate "--wait" and "--timeout" flags to "okteto deploy
+    --remote" (#3732)
+  * Always create ".dockerignore" for "okteto destroy" (#3726)
+  * Use ARG instead of ENV to pass metadata for "--remote" (#3725)
+  * Remove dependency on okteto installer image (#3724)
+  * Create "/etc/ssl/certs/" if it doesn't exist in the image
+    (#3733)
+  * Don't copy ca-certs on deploy image (#3723)
+  * Fix depends on when loading stack from file (#3703)
+  * Revert "update config with new builder and version of golang-ci
+    (#3715)" (#3716)
+  * feat: add label flag to preview list cmd (#3711)
+  * update config with new builder and version of golang-ci (#3715)
+  * Revert "update golang-ci at circleci config (#3712)" (#3714)
+  * update golang-ci at circleci config (#3712)
+  * feat: add label flag to deploy preview command (#3611)
+  * Revert "Show error if deploying services with PV as disabled
+    (#3706)"
+  * Show error if deploying services with PV as disabled (#3706)
+  * Set the stage for deploy command with no output (#3701)
+  * Fix PersistentPreRun at context command (#3705)
+  * chore: make git logs debug lvl (#3680)
+  * Revert "Restore "Okteto kubeconfig will use kubetoken client
+    auth if available on okteto server"" (#3515)" (#3693)
+  * Support for node selector in the docker-compose spec (#3695)
+  * Fix variables deploy installer (#3696)
+  * Revert "Fix variables deploy installer (#3688)" (#3694)
+  * fix: variable expansion on buildargs that only have one env
+    (#3689)
+  * Fix variables deploy installer (#3688)
+  * fix: endpoints should only return the json if the flag specify
+    it (#3682)
+  * Modified okteto ns create command to select new ns as current
+    ns when flag is provided (#3595)
+  * fix send on closed channel panic in isClean (#3677)
+  * Add os environ to RunOktetoEndpoints (#3675)
+  * Restore "Okteto kubeconfig will use kubetoken client auth if
+    available on okteto server"" (#3515)
+  * Mask variables at destroy (#3667)
+  * changes applied (#3584)
+  * fix: performance issues on `git status` (#3648)
+  * add local envs for hybrid command (#3666)
+  * remove secret content from build hash (#3635)
+  * fix windows e2e hybrid development (#3669)
+  * Fix RC in divert (weaver) when the cache has outdated
+    information (#3655)
+  * fix: vanilla up with compose (#3664)
+  * fix(build): vanilla cluster should not reach out to okteto
+    registry (#3658)
+  * fix: buil args expansion (#3657)
+  * Add destinationURL.Host to request Host at proxy handler
+    (#3639)
+  * support hybrid development (#3571)
+  * Use chart runner and installer images for remote deploy/destroy
+    (#3626)
+  * feat: include system cert pool in withCredentials (#3629)
+  * fix(build): expand build args (#3633)
+  * fix: panic on e2e tests (#3631)
+  * Update .gitignore (#3624)
+  * Pass --server-name to okteto remote deploy (#3620)
+  * fix endpoints retrieval e2e (#3615)
+  * deploy command works if only dependencies are specified in
+    manifest (#3614)
+  * feat: add test cases for `namespace sleep|wake` (#3605)
+  * modify .gitignore (#3610)
+
+-------------------------------------------------------------------
 Thu Jun 29 10:13:25 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.16.5:
