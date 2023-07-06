@@ -238,4 +238,16 @@
 </comment>
     <requestid>1088976</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>63532aca6c092032ae3663e4c85b9f1c</srcmd5>
+    <version>1.10.9</version>
+    <time>1688660886</time>
+    <user>favogt_factory</user>
+    <comment>- update to 1.10.9:
+  * Fix trailing zeros not ignored in Decimal validation
+  * Fix mypy plugin for v1.4.0
+  * Add future and past date hypothesis strategies
+  * Discourage usage of Cython 3 with Pydantic 1.x</comment>
+    <requestid>1096962</requestid>
+  </revision>
 </revisionlist>

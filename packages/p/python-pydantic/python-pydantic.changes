@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul  5 13:07:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10.9:
+  * Fix trailing zeros not ignored in Decimal validation
+  * Fix mypy plugin for v1.4.0
+  * Add future and past date hypothesis strategies
+  * Discourage usage of Cython 3 with Pydantic 1.x
+
+-------------------------------------------------------------------
 Thu May 25 07:32:32 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to v1.10.8
