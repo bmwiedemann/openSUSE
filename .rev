@@ -686,4 +686,23 @@
   * Changed all parameters in the HTTPConnection and HTTPSConnection</comment>
     <requestid>1087259</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>0f14a3ca2d45618717f59c23d31175d9</srcmd5>
+    <version>2.0.3</version>
+    <time>1688660884</time>
+    <user>favogt_factory</user>
+    <comment>- Disable test_deprecated_no_scheme so it needs network connection to
+  run correctly.
+- update to 2.0.3:
+  * Allowed alternative SSL libraries such as LibreSSL, while
+    still issuing a warning as we cannot help users facing issues
+    with implementations other than OpenSSL.
+  * Deprecated URLs which don't have an explicit scheme
+  * Fixed response decoding with Zstandard when compressed data
+    is made of several frames.
+  * Fixed ``assert_hostname=False`` to correctly skip hostname
+    check.
+</comment>
+    <requestid>1096959</requestid>
+  </revision>
 </revisionlist>

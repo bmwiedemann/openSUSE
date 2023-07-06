@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-urllib3%{psuffix}
-Version:        2.0.2
+Version:        2.0.3
 Release:        0
 Summary:        HTTP library with thread-safe connection pooling, file post, and more
 License:        MIT
@@ -112,6 +112,8 @@ skiplist="test_ssl_read_timeout or test_ssl_failed_fingerprint_verification or t
 skiplist+=" or test_recent_date"
 # too slow to run in obs (checks 2GiB of data)
 skiplist+=" or test_requesting_large_resources_via_ssl"
+# Try to access external evil.com
+skiplist+=" or test_deprecated_no_scheme"
 %pytest -k "not (${skiplist})" --ignore test/with_dummyserver/test_socketlevel.py
 %endif
 
