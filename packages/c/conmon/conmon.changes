@@ -6,7 +6,7 @@ Wed Mar 15 14:36:27 UTC 2023 - Dan Čermák <dcermak@suse.com>
 
 ### Bug Fixes
 Fix leaking symbolic links in the opt_socket_path directory
-cgroup: Stumble on if we can't set up oom handling
+cgroup: Stumble on if we can't set up oom handling (bsc#1208737)
 
 2.1.6:
 

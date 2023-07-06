@@ -231,4 +231,12 @@
     <comment></comment>
     <requestid>1072139</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>4021677af0d18ea75283d884de8c6dfd</srcmd5>
+    <version>2.1.7</version>
+    <time>1688660894</time>
+    <user>favogt_factory</user>
+    <comment>Amend changelog (forwarded request 1096811 from dancermak)</comment>
+    <requestid>1096887</requestid>
+  </revision>
 </revisionlist>
