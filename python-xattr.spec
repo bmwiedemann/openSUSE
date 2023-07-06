@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-xattr
 Version:        0.10.1
 Release:        0
