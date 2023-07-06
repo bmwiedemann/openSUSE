@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jun 27 11:48:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.03:
+  * Added new timeline menu option to move selection to a new
+    step.
+  * Place new pieces relative to the side of the piece under the
+    mouse.
+  * Scan submodels when dragging a new piece into the model.
+  * Added support for trackpad pan gesture.
+  * Slow down mouse wheel zoom when the shift key is down.
+  * Added option to print from the instructions dialog.
+  * Weight vertex normals based on the angle of each face.
+  * Customizable object colors.
+  * Removed commas from descriptions in csv files.
+  * Added --export-csv command line option.
+  * Almost unlimited control points in synthesized pieces
+  * Fixed menus in fullscreen mode on Windows.
+  * Fixed missing steps at the end of instructions.
+  * Fixed submodels not being added to instructions.
+  * Fixed gradient background tiles.
+  * Fixed POV render issues with synth parts.
+  * Don't show invalid submodels in properties parts list.
+
+-------------------------------------------------------------------
 Tue Jul 12 14:49:34 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 21.06:
