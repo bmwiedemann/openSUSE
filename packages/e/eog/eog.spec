@@ -17,7 +17,7 @@
 
 
 Name:           eog
-Version:        44.2
+Version:        44.3
 Release:        0
 Summary:        Image Viewer for GNOME
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -33,9 +33,9 @@ BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(exempi-2.0) >= 1.99.5
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.36.5
 BuildRequires:  pkgconfig(gi-docgen)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.53.4
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.53.4
-BuildRequires:  pkgconfig(glib-2.0) >= 2.53.4
+BuildRequires:  pkgconfig(gio-2.0) >= 2.73.2
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.73.2
+BuildRequires:  pkgconfig(glib-2.0) >= 2.73.2
 BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 2.91.2
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 2.91.92

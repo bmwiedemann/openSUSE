@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul  1 18:29:58 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.3:
+  + EOG gets stuck in infinite while loop if animation loops a
+    finite number of times.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun May 28 09:14:24 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.2:
