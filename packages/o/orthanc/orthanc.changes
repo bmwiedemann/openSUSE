@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Jul  5 17:24:07 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.12.1
+  * Orthanc now anonymizes according to Basic Profile of PS 3.15-2023b Table E.1-1
+  * Added metrics:
+    - "orthanc_storage_read_bytes" 
+    - "orthanc_storage_written_bytes"
+    - "orthanc_memory_trimming_duration_ms"
+
+  * API version upgraded to 21
+  * "/tools/create-dicom" can now be used to create Encapsulated 3D
+    Manufacturing Model IODs (MTL, OBJ, or STL)
+  * Added a route to delete the output of an asynchronous job (right now
+    only for archive jobs): e.g. DELETE /jobs/../archive
+
+  * Added "OrthancPluginLoadDicomInstance()" to load DICOM instances from the database
+  * Added "OrthancPluginSetMetricsIntegerValue()" to track metrics with integer values
+
+  * Fix decoding of YBR_FULL RLE images for which the "Planar Configuration" 
+    tag (0028,0006) equals 1
+  * Made Orthanc more resilient to common spelling errors in SpecificCharacterSet
+  * Modality worklists plugin: Allow searching on private tags (exact match only)
+  * Fix orphan files remaining in storage when working with MaximumStorageSize
+    (https://discourse.orthanc-server.org/t/issue-with-deleting-incoming-dicoms-when-maximumstoragesize-is-reached/3510)
+  * When deleting a resource, the "LastUpdate" metadata of its parents are now updated
+  * Reduced the memory usage when downloading archives when "ZipLoaderThreads" > 0
+  * Metrics can be stored either as floating-point numbers, or as integers
+  * Reduce the frequency of memory trimming from 100ms to 30s to avoid high idle
+    CPU load (https://discourse.orthanc-server.org/t/onchange-callbacks-and-cpu-loads/3534).
+  * Upgraded dependencies for static builds:
+    - boost 1.82.0
+
+-------------------------------------------------------------------
 Sun Apr 16 19:52:25 UTC 2023 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.12.0

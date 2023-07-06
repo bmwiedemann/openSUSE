@@ -18,7 +18,7 @@
 
 
 Name:           orthanc
-Version:        1.12.0
+Version:        1.12.1
 Release:        0
 Summary:        RESTful DICOM server for healthcare and medical research
 License:        GPL-3.0-or-later
