@@ -1,0 +1,27 @@
+From 994f268079d4c56262e19f874b0e7091b9199e70 Mon Sep 17 00:00:00 2001
+From: Konrad Kujawa <konrad.kujawa@qt.io>
+Date: Thu, 22 Jun 2023 16:00:22 +0200
+Subject: [PATCH 3/3] Add missing memory include
+
+Pick-to: 6.6
+Change-Id: I1235a410865cc7f7dfab37c6b73aebd6f9cbb14e
+Reviewed-by: Alexey Edelev <alexey.edelev@qt.io>
+---
+ src/tools/qtprotobufgen/qprotobufgenerator.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/tools/qtprotobufgen/qprotobufgenerator.h b/src/tools/qtprotobufgen/qprotobufgenerator.h
+index 1266f02..552f7f2 100644
+--- a/src/tools/qtprotobufgen/qprotobufgenerator.h
++++ b/src/tools/qtprotobufgen/qprotobufgenerator.h
+@@ -7,6 +7,7 @@
+ 
+ #include "generatorbase.h"
+ 
++#include <memory>
+ #include <set>
+ 
+ namespace google::protobuf {
+-- 
+2.41.0
+

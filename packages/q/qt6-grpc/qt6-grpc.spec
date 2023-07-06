@@ -34,6 +34,10 @@ Summary:        gRPC and Protobuf generator and bindings for Qt framework
 License:        GPL-3.0-or-later
 URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-include-of-std-set.patch
+Patch1:         0002-Remove-protobuf-logging.h-include.patch
+Patch2:         0003-Add-missing-memory-include.patch
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-core-private-devel
 BuildRequires:  cmake(Qt6Core) = %{real_version}
@@ -44,7 +48,8 @@ BuildRequires:  cmake(Qt6QuickControls2) = %{real_version}
 BuildRequires:  cmake(Qt6Widgets) = %{real_version}
 BuildRequires:  pkgconfig(grpc++)
 BuildRequires:  pkgconfig(libprotobuf-c)
-BuildRequires:  pkgconfig(protobuf)
+# qtgrpc is not compatible with protobuf 23 and protobuf-c is not compatible with 22 either
+BuildRequires:  pkgconfig(protobuf) < 22
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
 %{qt6_doc_packages}

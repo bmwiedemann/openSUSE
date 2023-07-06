@@ -15,4 +15,17 @@
     <comment>Qt 6.5.1 (forwarded request 1088916 from krop)</comment>
     <requestid>1089085</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>387c4bb27d8d2c9f533235282e1050f0</srcmd5>
+    <version>6.5.1</version>
+    <time>1688660918</time>
+    <user>favogt_factory</user>
+    <comment>- Request protobuf &lt; 22 (QTBUG-114833)
+
+- Add upstream changes:
+  * 0001-Fix-include-of-std-set.patch
+  * 0002-Remove-protobuf-logging.h-include.patch
+  * 0003-Add-missing-memory-include.patch</comment>
+    <requestid>1097103</requestid>
+  </revision>
 </revisionlist>

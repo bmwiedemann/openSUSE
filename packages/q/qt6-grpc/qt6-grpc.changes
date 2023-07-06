@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul  6 10:43:38 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Request protobuf < 22 (QTBUG-114833)
+
+-------------------------------------------------------------------
+Tue Jul  4 22:16:25 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream changes:
+  * 0001-Fix-include-of-std-set.patch
+  * 0002-Remove-protobuf-logging.h-include.patch
+  * 0003-Add-missing-memory-include.patch
+
+-------------------------------------------------------------------
 Wed May 24 07:45:36 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.5.1

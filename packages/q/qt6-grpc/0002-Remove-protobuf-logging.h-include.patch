@@ -1,0 +1,79 @@
+From 13905778c4b04e18bf19f4bf47055068613d86bd Mon Sep 17 00:00:00 2001
+From: Konrad Kujawa <konrad.kujawa@qt.io>
+Date: Thu, 22 Jun 2023 15:33:11 +0200
+Subject: [PATCH] Remove protobuf logging.h include
+
+This include was removed in the new version of the protobuf,
+and it was unused anyway.
+
+Pick-to: 6.6
+Change-Id: I5c68f960c031d7f366ab3dc1b690dc9050369975
+Reviewed-by: Alexey Edelev <alexey.edelev@qt.io>
+---
+ src/tools/qtgrpcgen/clientdeclarationprinter.cpp | 1 -
+ src/tools/qtgrpcgen/qgrpcgenerator.cpp           | 5 ++---
+ src/tools/qtprotobufgen/qprotobufgenerator.cpp   | 1 -
+ src/tools/qtprotoccommon/generatorbase.cpp       | 3 +--
+ 4 files changed, 3 insertions(+), 7 deletions(-)
+
+diff --git a/src/tools/qtgrpcgen/clientdeclarationprinter.cpp b/src/tools/qtgrpcgen/clientdeclarationprinter.cpp
+index 9bd57a1..eedb91f 100644
+--- a/src/tools/qtgrpcgen/clientdeclarationprinter.cpp
++++ b/src/tools/qtgrpcgen/clientdeclarationprinter.cpp
+@@ -8,7 +8,6 @@
+ #include <google/protobuf/io/printer.h>
+ #include <google/protobuf/io/zero_copy_stream.h>
+ #include <google/protobuf/stubs/common.h>
+-#include <google/protobuf/stubs/logging.h>
+ 
+ #include <string>
+ #include <unordered_set>
+diff --git a/src/tools/qtgrpcgen/qgrpcgenerator.cpp b/src/tools/qtgrpcgen/qgrpcgenerator.cpp
+index 3c2597e..ef2ce62 100644
+--- a/src/tools/qtgrpcgen/qgrpcgenerator.cpp
++++ b/src/tools/qtgrpcgen/qgrpcgenerator.cpp
+@@ -11,11 +11,10 @@
+ #include "options.h"
+ 
+ #include <google/protobuf/compiler/code_generator.h>
+-#include <google/protobuf/stubs/logging.h>
+-#include <google/protobuf/stubs/common.h>
++#include <google/protobuf/descriptor.h>
+ #include <google/protobuf/io/printer.h>
+ #include <google/protobuf/io/zero_copy_stream.h>
+-#include <google/protobuf/descriptor.h>
++#include <google/protobuf/stubs/common.h>
+ 
+ using namespace ::QtGrpc;
+ using namespace ::qtprotoccommon;
+diff --git a/src/tools/qtprotobufgen/qprotobufgenerator.cpp b/src/tools/qtprotobufgen/qprotobufgenerator.cpp
+index 8eaab81..941ef97 100644
+--- a/src/tools/qtprotobufgen/qprotobufgenerator.cpp
++++ b/src/tools/qtprotobufgen/qprotobufgenerator.cpp
+@@ -16,7 +16,6 @@
+ #include <cassert>
+ #include <numeric>
+ 
+-#include <google/protobuf/stubs/logging.h>
+ #include <google/protobuf/stubs/common.h>
+ #include <google/protobuf/io/printer.h>
+ #include <google/protobuf/io/zero_copy_stream.h>
+diff --git a/src/tools/qtprotoccommon/generatorbase.cpp b/src/tools/qtprotoccommon/generatorbase.cpp
+index bc51206..eeb05f2 100644
+--- a/src/tools/qtprotoccommon/generatorbase.cpp
++++ b/src/tools/qtprotoccommon/generatorbase.cpp
+@@ -5,10 +5,9 @@
+ #include "generatorbase.h"
+ 
+ #include <google/protobuf/descriptor.h>
+-#include <google/protobuf/stubs/logging.h>
+-#include <google/protobuf/stubs/common.h>
+ #include <google/protobuf/io/printer.h>
+ #include <google/protobuf/io/zero_copy_stream.h>
++#include <google/protobuf/stubs/common.h>
+ 
+ #include "utils.h"
+ #include "commontemplates.h"
+-- 
+2.41.0
+
