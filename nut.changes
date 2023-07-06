@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 30 21:03:35 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
+
+- Rerelease of package and switch to GPG signed package
+  + add nut.keyring
+
+-------------------------------------------------------------------
 Wed Mar  1 19:11:17 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - Fix reproducible build (remove files only needed for packaging)
