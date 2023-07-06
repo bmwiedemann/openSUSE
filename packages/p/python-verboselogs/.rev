@@ -50,4 +50,12 @@
     <comment>- Remove now unrequired mock BuildRequires.</comment>
     <requestid>980508</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>497e78a6195e919fb15bd37f97ba9972</srcmd5>
+    <version>1.7</version>
+    <time>1688661007</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1097118</requestid>
+  </revision>
 </revisionlist>
