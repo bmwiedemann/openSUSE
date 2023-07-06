@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  6 10:24:12 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Fri Jun  4 15:53:17 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Initial release of python-brotlicffi 1.0.9.2

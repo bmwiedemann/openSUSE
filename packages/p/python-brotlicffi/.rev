@@ -7,4 +7,12 @@
     <comment>New package python-brotlicffi required by python-httpx &gt;0.18.1</comment>
     <requestid>900733</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dcf596dd73411dff000631f50d648e7c</srcmd5>
+    <version>1.0.9.2</version>
+    <time>1688661009</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1097121</requestid>
+  </revision>
 </revisionlist>
