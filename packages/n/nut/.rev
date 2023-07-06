@@ -708,4 +708,12 @@ This is exactly like request 221664, just Source URI was fixed and ENABLE_IPMI w
     <comment></comment>
     <requestid>1079467</requestid>
   </revision>
+  <revision rev="75" vrev="3">
+    <srcmd5>06b8fca7bafb0864511364ee09ce0900</srcmd5>
+    <version>2.8.0</version>
+    <time>1688660955</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1097023</requestid>
+  </revision>
 </revisionlist>

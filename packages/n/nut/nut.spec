@@ -61,10 +61,11 @@ Summary:        Network UPS Tools Core (Uninterruptible Power Supply Monitoring)
 License:        GPL-2.0-or-later
 Group:          Hardware/UPS
 URL:            https://www.networkupstools.org/
-Source0:        https://github.com/networkupstools/nut/releases/download/v2.8.0/%{name}-%{version}.tar.gz
-Source1:        https://github.com/networkupstools/nut/releases/download/v2.8.0/%{name}-%{version}.tar.gz.sha256
+Source0:        https://github.com/networkupstools/nut/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source1:        https://github.com/networkupstools/nut/releases/download/v%{version}/%{name}-%{version}.tar.gz.sig
 Source2:        README.SUSE
 Source3:        nut.rpmlintrc
+Source4:        nut.keyring
 Source6:        nut.system-sleep
 Patch0:         nut-preconfig.patch
 Patch1:         nut-notifyflag.patch
