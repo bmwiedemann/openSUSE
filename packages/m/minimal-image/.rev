@@ -7,4 +7,21 @@
     <comment>Next try</comment>
     <requestid>990266</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>257f919bc83fefb054625408cfa96fe7</srcmd5>
+    <version>2023</version>
+    <time>1688660950</time>
+    <user>favogt_factory</user>
+    <comment>- label capitalization and related cleanups
+
+- Add release stage and lifecycle url
+
+- switch versioning to rolling Tumbleweed schema
+- Correct org.opensuse.reference label
+
+- Add org.opencontainers.image.source label set to %SOURCEURL%
+
+- Bump copyright year</comment>
+    <requestid>1097014</requestid>
+  </revision>
 </revisionlist>
