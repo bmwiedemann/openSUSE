@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Jul  7 05:14:46 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.15.0
+  * matomo-org/matomo
+    - #20785 Correctly escape report name in CSV exports
+    - #12165 Submit Matomo to Google Tag Manager Community Template Galleries
+    - #20915 Single click copy button for code snippets
+    - #20636 [PHP 8.1 compatibility] Fix array access warning on float 
+      – /plugins/Goals/DataTable/Filter/CalculateConversionPageRate.php
+    - #20658 [PHP 8.1 compatibility] IPUtils.php(27): Deprecated 
+      – trim(): Passing null to parameter #1 ($string) of type string
+    - #20589 Allow goals processed metrics to appear in API.getProcessedReport output
+    - #20606 Added GTM installation guide in no-data and tracking code pages
+    - #20649 Added WordPress installation guide for no-data and tracking code pages
+    - #20679 Fixed two issues with handling of processing dependent archives
+    - #20681 Don’t show empty categories in widget listing
+    - #20682 Allow reports to override the min/max label width values
+    - #20683 add Live.initializeVisitorActions event to allow plugins 
+      to collapse actions in visitor log if they need to
+    - #20700 Improves UI/UX on no data screen
+    - #20710 Update Google Tag Manager instructions on no data screen
+    - #20748 Improved WordPress instruction tab on the no data screen
+    - #20790 Adds Vue.js instruction tab on no data screen
+    - #20815 Allow reports to specify a column/metadata other than “label” that uniquely identifies a row
+    - #20862 Improvements to notifications under tracking code on no data screen
+    - #20882 Improve handling of deactivating incompatible plugins during update
+    - #20890 Add instruction tab for React.js to no data screen & improve JS code instruction tab
+    - #20928 Adds new SPA/PWA instruction tab for no data screen
+
+-------------------------------------------------------------------
 Tue Apr 18 09:50:40 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.14.2
