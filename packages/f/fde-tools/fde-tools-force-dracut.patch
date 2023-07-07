@@ -1,0 +1,51 @@
+From 346e41ac7d9e5b1b37dd3e315078b99c58f59799 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Fri, 7 Jul 2023 16:31:31 +0800
+Subject: [PATCH] firstboot/fde: use functions as the aliases for bootloader
+ functions
+
+Aliases are not expanded in non-interactive mode by default, so those
+function aliases defined in the 'grub2' script won't work for firstboot.
+Manually define the bootloader specific functions in firstboot/fde to
+avoid the potential 'command not found' error.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ firstboot/fde | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
+
+diff --git a/firstboot/fde b/firstboot/fde
+index 530baed..157a9bd 100755
+--- a/firstboot/fde
++++ b/firstboot/fde
+@@ -38,6 +38,27 @@ fi
+ ##################################################################
+ KIWI_ROOT_KEYFILE=/root/.root.keyfile
+ 
++##################################################################
++# Aliases are not expanded in non-interactive mode.
++# Set the bootloader specific functions here as aliases
++##################################################################
++
++function bootloader_enable_fde_pcr_policy {
++    grub_enable_fde_pcr_policy "$@"
++}
++
++function bootloader_enable_fde_without_tpm {
++    grub_enable_fde_without_tpm "$@"
++}
++
++function bootloader_get_fde_password {
++    grub_get_fde_password "$@"
++}
++
++##################################################################
++# FDE Firstboot functions
++##################################################################
++
+ function fde_protect_tpm {
+ 
+     local luks_dev=$1
+-- 
+2.35.3
+

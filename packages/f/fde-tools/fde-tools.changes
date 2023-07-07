@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul  7 08:40:25 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add fde-tools-fix-bootloader-func.patch
+  + Define the bootloader specific functions in the firstboot
+    script since the aliases are not expanded
+- Add fde-tools-force-dracut.patch
+  + Always regenerate initrd
+
+-------------------------------------------------------------------
 Tue Jul  4 07:02:19 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add fde-tools-avoid-cleaning-temp-dir.patch to avoid cleaning

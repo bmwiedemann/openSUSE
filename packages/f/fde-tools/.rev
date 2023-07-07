@@ -17,4 +17,12 @@
   the temp directory when calling tpm_test</comment>
     <requestid>1096676</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>9c8c70a280b3e0df62764377d9f40bed</srcmd5>
+    <version>0.6.5</version>
+    <time>1688737792</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1097489</requestid>
+  </revision>
 </revisionlist>

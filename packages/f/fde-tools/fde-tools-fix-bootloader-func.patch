@@ -1,0 +1,29 @@
+From 97336e85f6f271891f8b1ddb5ae04935c0d80fae Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Fri, 7 Jul 2023 16:36:00 +0800
+Subject: [PATCH] firstboot/fde: forcefully invoke dracut
+
+To make sure the initrd is always recreated, specify '--force' to
+dracut.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ firstboot/fde | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/firstboot/fde b/firstboot/fde
+index 157a9bd..f1a95ab 100755
+--- a/firstboot/fde
++++ b/firstboot/fde
+@@ -206,7 +206,7 @@ function fde_setup_unencrypted {
+     rm -f /etc/crypttab
+ 
+     display_infobox "Re-creating initial ramdisk"
+-    if ! dracut >&2; then
++    if ! dracut --force >&2; then
+ 	display_errorbox "Failed to rebuild initrd"
+ 	return 1
+     fi
+-- 
+2.35.3
+
