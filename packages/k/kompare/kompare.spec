@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kompare
-Version:        23.04.2
+Version:        23.04.3
 Release:        0
 Summary:        File Comparator
 License:        GPL-2.0-only AND GFDL-1.2-only
