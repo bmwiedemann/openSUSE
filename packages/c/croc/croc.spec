@@ -1,5 +1,7 @@
+#
 # spec file for package croc
 #
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2021 Orville Q. Song <orville@anislet.dev>
 #
 # All modifications and additions to the file contributed by third parties
@@ -14,6 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global provider        github
 %global provider_tld    com
 %global project         schollz
@@ -22,7 +25,7 @@
 %global import_path     %{provider_prefix}/%{repo}
 
 Name:           croc
-Version:        9.6.4
+Version:        9.6.5
 Release:        0
 Summary:        Easily and securely send things from one computer to another
 License:        MIT

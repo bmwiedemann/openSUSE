@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jul 06 15:32:06 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 9.6.5:
+  * update deps
+  * croc.service: use DynamicUser
+  * upgrade dependencies
+  * Update: update error messages for http proxy
+  * Feat: support http proxy as a complementary way to use in
+    network limited environments.
+  * Fix some typos
+  * localhost -> 127.0.0.1 Fixes #513
+  * Bump actions/setup-go from 2 to 4
+  * Enhance tab completion
+  * Bump docker/setup-buildx-action from 1 to 2
+  * add dependabot
+  * add Winget installation instructions
+  * add winget releaser workflow
+
+-------------------------------------------------------------------
 Tue Jun 06 22:28:21 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Update to version 9.6.4:
