@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           zanshin
-Version:        23.04.2
+Version:        23.04.3
 Release:        0
 Summary:        TODO Application
 License:        GPL-2.0-only
