@@ -19,7 +19,7 @@
 %define kf5_version 5.103.0
 %bcond_without released
 Name:           kdepim-runtime
-Version:        23.04.2
+Version:        23.04.3
 Release:        0
 Summary:        Akonadi resources for PIM applications
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
