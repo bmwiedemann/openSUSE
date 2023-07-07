@@ -19,7 +19,7 @@
 %global libMAJOR 28
 %bcond_without released
 Name:           cantor
-Version:        23.04.2
+Version:        23.04.3
 Release:        0
 Summary:        Worksheet GUI for mathematical software
 License:        GPL-2.0-or-later
