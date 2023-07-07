@@ -11,11 +11,14 @@ echo "Configure image: [$kiwi_iname]..."
 #--------------------------------------
 suseImportBuildKey
 
+# don't have multiple licenses of the same type
+jdupes -1 -L -r /usr/share/licenses
+
 #======================================
 # Add repos from control.xml
 #--------------------------------------
 add-yast-repos
-zypper --non-interactive rm -u live-add-yast-repos
+zypper --non-interactive rm -u live-add-yast-repos jdupes
 
 #======================================
 # Disable recommends

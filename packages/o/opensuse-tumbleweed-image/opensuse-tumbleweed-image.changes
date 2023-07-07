@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul  6 09:01:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add lsb-release
+- hardlink the license files (saves 612352 bytes, which is enough
+  to fit in 12000 bytes of lsb-release) 
+
+-------------------------------------------------------------------
 Mon Apr  3 07:38:39 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - config.sh: attempt to force delete /var/log/lastlog; don't fail
