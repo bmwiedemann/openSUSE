@@ -16,8 +16,7 @@
 #
 
 
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-typogrify
 Version:        2.0.7
 Release:        0

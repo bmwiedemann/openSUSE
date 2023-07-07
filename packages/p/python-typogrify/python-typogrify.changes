@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  6 11:08:55 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Jan  4 07:37:25 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - spec-cleaner to pass the Factory checks
