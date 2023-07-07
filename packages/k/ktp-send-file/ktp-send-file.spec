@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           ktp-send-file
-Version:        23.04.2
+Version:        23.04.3
 Release:        0
 Summary:        File manager plugin
 License:        LGPL-2.1-or-later
