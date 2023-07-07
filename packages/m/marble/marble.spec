@@ -20,7 +20,7 @@
 %define _so_astro 1
 %bcond_without released
 Name:           marble
-Version:        23.04.2
+Version:        23.04.3
 Release:        0
 Summary:        Generic map viewer
 # License note: the tools directory contains GPL-3 tools, but they are neither built nor installed by the package
@@ -67,7 +67,7 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
-BuildRequires:  pkgconfig(protobuf)
+BuildRequires:  pkgconfig(protobuf) < 22
 Requires:       %{name}-data = %{version}
 Requires:       libastro%{_so_astro} = %{version}
 Requires:       libmarblewidget-qt5%{_so} = %{version}
