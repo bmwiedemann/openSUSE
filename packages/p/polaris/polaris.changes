@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 06 13:08:02 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 8.3.0:
+  * Add insights prompt (#968)
+  * Bump github.com/AlecAivazis/survey/v2 from 2.3.6 to 2.3.7
+    (#961)
+  * Add option to filter audit results by severity level (#969)
+  * Bump k8s.io/client-go from 0.27.2 to 0.27.3 (#960)
+
+-------------------------------------------------------------------
 Fri Jun 23 07:12:40 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 8.2.4:
