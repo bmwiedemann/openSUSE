@@ -19,7 +19,7 @@
 %define kf5_version 5.99.0
 %bcond_without released
 Name:           grantlee-editor
-Version:        23.04.2
+Version:        23.04.3
 Release:        0
 Summary:        Messageviewer header theme editor based on Grantlee
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
