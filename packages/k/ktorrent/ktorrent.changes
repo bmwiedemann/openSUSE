@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul  4 10:20:18 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.3/
+- Changes since 23.04.2:
+  * Import Torrent dialog: fix file filter (kde#464350)
+
+-------------------------------------------------------------------
 Tue Jun  6 20:01:35 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.2
