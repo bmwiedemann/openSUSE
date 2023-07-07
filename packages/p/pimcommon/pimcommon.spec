@@ -19,7 +19,7 @@
 %define kf5_version 5.99.0
 %bcond_without released
 Name:           pimcommon
-Version:        23.04.2
+Version:        23.04.3
 Release:        0
 Summary:        Base package of KDE PIM PimCommon library
 License:        GPL-2.0-only AND LGPL-2.1-or-later
