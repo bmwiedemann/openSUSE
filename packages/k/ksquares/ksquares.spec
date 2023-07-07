@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           ksquares
-Version:        23.04.2
+Version:        23.04.3
 Release:        0
 Summary:        "Dots and boxes" board game
 License:        GPL-2.0-or-later
