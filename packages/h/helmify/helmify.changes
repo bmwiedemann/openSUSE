@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 06 16:08:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.4.5:
+  * fix goreleaser
+  * added cert-manager flag to Readme
+  * added cert-manager-version flag
+
+-------------------------------------------------------------------
 Mon Jun 26 05:00:22 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.4.4:
