@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  6 07:16:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- rebuild bind-utils on libuv updates (bsc#1212090) 
+
+-------------------------------------------------------------------
 Thu Jun 22 08:04:23 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to release 9.18.16

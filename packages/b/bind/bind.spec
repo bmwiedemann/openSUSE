@@ -133,6 +133,9 @@ includes also the BIND Administrator Reference Manual (ARM).
 Summary:        Libraries for "bind" and utilities to query and test DNS
 # Needed for dnssec parts
 Group:          Productivity/Networking/DNS/Utilities
+# Needs a rebuild as libuv will otherwise abort the program with:
+# fatal error: libuv version too new: running with libuv 1.X+1 when compiled with libuv 1.X will lead to libuv failures
+%requires_eq    libuv1
 Provides:       bind9-utils
 Provides:       bindutil
 Provides:       dns_utils

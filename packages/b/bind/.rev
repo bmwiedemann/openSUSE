@@ -2152,4 +2152,12 @@ New Features
 </comment>
     <requestid>1094609</requestid>
   </revision>
+  <revision rev="197" vrev="2">
+    <srcmd5>44a9d8e1f5d9cfd40726c072da3ade27</srcmd5>
+    <version>9.18.16</version>
+    <time>1688737554</time>
+    <user>favogt_factory</user>
+    <comment>- rebuild bind-utils on libuv updates (bsc#1212090)</comment>
+    <requestid>1097046</requestid>
+  </revision>
 </revisionlist>
