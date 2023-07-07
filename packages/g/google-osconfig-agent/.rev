@@ -284,4 +284,36 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1069743</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>43b7759a6031a64a50ff478134014e08</srcmd5>
+    <version>20230706.02</version>
+    <time>1688737793</time>
+    <user>favogt_factory</user>
+    <comment>- Update to version 20230706.02 (bsc#1212418, bsc#1212759)
+  * Update go version in go.mod (#479)
+- from version 20230706.01
+  * Fix condition to have 10 attempts rather than 11. (#477)
+- from version 20230706.00
+  * Remove tests for Ubuntu 18.04 (EOL) (#476)
+- from version 20230605.00
+  * Update old SLES images paths (#475)
+- from version 20230602.00
+  * Adding what exit codes mean for OS Config policy (#474)
+- from version 20230504.00
+  * Set DEBIAN_FRONTEND=noninteractive for apt-get (#472)
+- from version 20230403.00
+  * Disable repos clean-up (#471)
+- from version 20230330.00
+  * Revert &quot;Call FQDN (#454)&quot; (#470)
+- from version 20230327.00
+  * support new format of zypper patch (#469)
+  * Fix comparing exec.Cmd in mock on Go1.20
+- from version 20230316.00
+  * Remove old images from e2e tests image list
+- from version 20230227.01
+  * Update dependencies (#466)
+- from version 20230227.00
+  * Bump golang.org/x/sys from 0.0.0-20210923061019-b8560ed6a9b7 to 0.1.0 (#463) (forwarded request 1097495 from glaubitz)</comment>
+    <requestid>1097515</requestid>
+  </revision>
 </revisionlist>
