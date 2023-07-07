@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kolourpaint
-Version:        23.04.2
+Version:        23.04.3
 Release:        0
 Summary:        Paint Program
 # See boo#717722 for license details
