@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  6 10:23:41 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Fri Mar 24 12:30:29 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove not needed requirement setuptools

@@ -18,6 +18,7 @@
 
 %define skip_python2 1
 %define modname breathe
+%{?sle15_python_module_pythons}
 Name:           python-breathe
 Version:        4.34.0
 Release:        0

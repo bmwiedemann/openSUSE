@@ -258,4 +258,12 @@
     <comment>- Remove not needed requirement setuptools</comment>
     <requestid>1074170</requestid>
   </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>af75e5c4c25f8e9b6af96e101bcc64da</srcmd5>
+    <version>4.34.0</version>
+    <time>1688737559</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1097122</requestid>
+  </revision>
 </revisionlist>
