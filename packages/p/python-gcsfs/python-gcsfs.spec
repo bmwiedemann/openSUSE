@@ -17,7 +17,7 @@
 
 
 Name:           python-gcsfs
-Version:        2023.5.0
+Version:        2023.6.0
 Release:        0
 Summary:        Filesystem interface over GCS
 License:        BSD-3-Clause
@@ -25,7 +25,9 @@ URL:            https://github.com/fsspec/gcsfs
 # Use the GitHub tarball for test data
 Source:         https://github.com/fsspec/gcsfs/archive/refs/tags/%{version}.tar.gz#/gcsfs-%{version}-gh.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-aiohttp
@@ -76,10 +78,10 @@ This package provides the optional FUSE interface.
 sed -i 's/--color=yes//' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -97,12 +99,14 @@ export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/gcsfs/tests/fake-secret.json
 donttest="test_fuse"
 # finds an existing path on the non-first multiflavor test runs"
 donttest+=" or test_mkdir_with_path"
+# no http error (which is expected) without network
+donttest+=" or test_credentials_from_raw_token"
 %pytest -rfEs -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/gcsfs-%{version}*-info
+%{python_sitelib}/gcsfs-%{version}.dist-info
 %{python_sitelib}/gcsfs/
 %exclude %{python_sitelib}/gcsfs/cli/
 

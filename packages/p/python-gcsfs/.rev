@@ -137,4 +137,16 @@
   * Prevent upload retry from closing the file being sent (#540)</comment>
     <requestid>1091179</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ded2f94739713e78e071835a51739cdc</srcmd5>
+    <version>2023.6.0</version>
+    <time>1688737652</time>
+    <user>favogt_factory</user>
+    <comment>- Update to 2023.6.0
+  * allow raw/session token for auth (#554)
+  * fix listings_expiry_time kwargs (#551)
+  * allow setting fixed metadata on put/pipe (#550)
+</comment>
+    <requestid>1097064</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul  5 08:50:51 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2023.6.0
+  * allow raw/session token for auth (#554)
+  * fix listings_expiry_time kwargs (#551)
+  * allow setting fixed metadata on put/pipe (#550)
+
+-------------------------------------------------------------------
 Wed Jun  7 04:27:24 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2023.5.0:
