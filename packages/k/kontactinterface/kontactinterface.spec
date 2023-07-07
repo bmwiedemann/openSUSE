@@ -19,7 +19,7 @@
 %define kf5_version 5.99.0
 %bcond_without released
 Name:           kontactinterface
-Version:        23.04.2
+Version:        23.04.3
 Release:        0
 Summary:        KDE PIM Libraries: Interface to Contacts
 License:        LGPL-2.1-or-later
