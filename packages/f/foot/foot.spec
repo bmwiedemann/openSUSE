@@ -28,6 +28,7 @@ Patch2:         0001-fix-crash-when-reflowing-alt-screen.patch
 Patch3:         0002-ensure-scroll-region-endpoint-is-valid-after-a-window-resize.patch
 Patch4:         https://codeberg.org/dnkl/foot/commit/a2db3cdd5b3b6ce0b782b5ee51d174f4b4890f26.patch#/0003-keep-empty-bottom-scroll-margin-empty-after-resize.patch
 Patch5:         https://codeberg.org/dnkl/foot/commit/8859e134efa422d50e53c0bbb0e83d07ddf66091.patch#/0004-fix-non-utf8-complaint.patch
+Patch6:         https://codeberg.org/dnkl/foot/commit/72bc0acfbd4b002ebf26d65368bb65601452353e.patch#/0005-fix-wayland-protocols-1.32.patch
 Requires:       terminfo
 Requires:       utempter
 BuildRequires:  meson >= 0.58

@@ -1,0 +1,66 @@
+From 72bc0acfbd4b002ebf26d65368bb65601452353e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Ekl=C3=B6f?= <daniel@ekloef.se>
+Date: Mon, 3 Jul 2023 14:36:03 +0200
+Subject: [PATCH] wayland: handle enum value XDG_TOPLEVEL_STATE_SUSPENDED
+
+Added in wayland-protocols-1.32
+---
+ wayland.c | 23 +++++++++++++++--------
+ 1 file changed, 15 insertions(+), 8 deletions(-)
+
+diff --git a/wayland.c b/wayland.c
+index 406aba6d..5160240b 100644
+--- a/wayland.c
++++ b/wayland.c
+@@ -651,6 +651,7 @@ xdg_toplevel_configure(void *data, struct xdg_toplevel *xdg_toplevel,
+     bool is_tiled_bottom = false;
+     bool is_tiled_left = false;
+     bool is_tiled_right = false;
++    bool is_suspended UNUSED = false;
+ 
+ #if defined(LOG_ENABLE_DBG) && LOG_ENABLE_DBG
+     char state_str[2048];
+@@ -665,29 +666,35 @@ xdg_toplevel_configure(void *data, struct xdg_toplevel *xdg_toplevel,
+         [XDG_TOPLEVEL_STATE_TILED_RIGHT] = "tiled:right",
+         [XDG_TOPLEVEL_STATE_TILED_TOP] = "tiled:top",
+         [XDG_TOPLEVEL_STATE_TILED_BOTTOM] = "tiled:bottom",
++#if defined(XDG_TOPLEVEL_STATE_SUSPENDED_SINCE_VERSION)  /* wayland-protocols >= 1.32 */
++        [XDG_TOPLEVEL_STATE_SUSPENDED] = "suspended",
++#endif
+     };
+ #endif
+ 
+     enum xdg_toplevel_state *state;
+     wl_array_for_each(state, states) {
+         switch (*state) {
+-        case XDG_TOPLEVEL_STATE_ACTIVATED:    is_activated = true; break;
+-        case XDG_TOPLEVEL_STATE_FULLSCREEN:   is_fullscreen = true; break;
+         case XDG_TOPLEVEL_STATE_MAXIMIZED:    is_maximized = true; break;
++        case XDG_TOPLEVEL_STATE_FULLSCREEN:   is_fullscreen = true; break;
++        case XDG_TOPLEVEL_STATE_RESIZING:     is_resizing = true; break;
++        case XDG_TOPLEVEL_STATE_ACTIVATED:    is_activated = true; break;
+         case XDG_TOPLEVEL_STATE_TILED_LEFT:   is_tiled_left = true; break;
+         case XDG_TOPLEVEL_STATE_TILED_RIGHT:  is_tiled_right = true; break;
+         case XDG_TOPLEVEL_STATE_TILED_TOP:    is_tiled_top = true; break;
+         case XDG_TOPLEVEL_STATE_TILED_BOTTOM: is_tiled_bottom = true; break;
+-        case XDG_TOPLEVEL_STATE_RESIZING:     is_resizing = true; break;
+-        }
++
++#if defined(XDG_TOPLEVEL_STATE_SUSPENDED_SINCE_VERSION)
++        case XDG_TOPLEVEL_STATE_SUSPENDED:    is_suspended = true; break;
++#endif
++    }
+ 
+ #if defined(LOG_ENABLE_DBG) && LOG_ENABLE_DBG
+-        if (*state >= XDG_TOPLEVEL_STATE_MAXIMIZED &&
+-            *state <= XDG_TOPLEVEL_STATE_TILED_BOTTOM)
+-        {
++        if (*state >= 0 && *state < ALEN(strings)) {
+             state_chars += snprintf(
+                 &state_str[state_chars], sizeof(state_str) - state_chars,
+-                "%s, ", strings[*state]);
++                "%s, ",
++                strings[*state] != NULL ? strings[*state] : "<unknown>");
+         }
+ #endif
+     }

@@ -362,4 +362,13 @@
 </comment>
     <requestid>1096219</requestid>
   </revision>
+  <revision rev="22" vrev="4">
+    <srcmd5>7bb412d021203d1effb67c112c151a08</srcmd5>
+    <version>1.14.0</version>
+    <time>1688737669</time>
+    <user>favogt_factory</user>
+    <comment>- Add patch 0005-fix-wayland-protocols-1.32.patch.
+  * wayland: handle enum value XDG_TOPLEVEL_STATE_SUSPENDED</comment>
+    <requestid>1097442</requestid>
+  </revision>
 </revisionlist>
