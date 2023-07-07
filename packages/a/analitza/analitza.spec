@@ -20,7 +20,7 @@
 %define kf5_version 5.90.0
 %bcond_without released
 Name:           analitza
-Version:        23.04.2
+Version:        23.04.3
 Release:        0
 Summary:        A library to add mathematical features to programs
 License:        LGPL-2.1-or-later
