@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           ktp-common-internals
-Version:        23.04.2
+Version:        23.04.3
 Release:        0
 Summary:        Telepathy common module
 License:        LGPL-2.1-or-later
