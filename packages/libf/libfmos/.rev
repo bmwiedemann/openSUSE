@@ -15,4 +15,12 @@
     <comment>delete system-libs.patch</comment>
     <requestid>1038461</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>aab677c976d6e93d6dd777ff22dfa992</srcmd5>
+    <version>20230707</version>
+    <time>1688737671</time>
+    <user>favogt_factory</user>
+    <comment>- Update to release 20230707</comment>
+    <requestid>1097456</requestid>
+  </revision>
 </revisionlist>
