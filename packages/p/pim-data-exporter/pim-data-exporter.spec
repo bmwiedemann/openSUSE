@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           pim-data-exporter
-Version:        23.04.2
+Version:        23.04.3
 Release:        0
 Summary:        Data exporter for KDE PIM applications
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
