@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jul  6 09:34:43 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.18.0
+  * Use only ``autodoc`` to generate the API documentation by
+    @DanielNoord in
+    https://github.com/python-jsonschema/jsonschema/pull/1021
+  * Replace codecov with coverage (7)'s native markdown support by
+    @Julian in
+    https://github.com/python-jsonschema/jsonschema/pull/1025
+  * Add annotations for `_Error` by @DanielNoord in
+    https://github.com/python-jsonschema/jsonschema/pull/1022
+  * Replace `$ref` & `$dynamicRef` support / `RefResolver` with the
+    new referencing library by @Julian in
+    https://github.com/python-jsonschema/jsonschema/pull/1049
+  * Maybe fix PDF builds (in ReadTheDocs). by @Julian in
+    https://github.com/python-jsonschema/jsonschema/pull/1055
+  * documentation mistype fix by @aryanA101a in
+    https://github.com/python-jsonschema/jsonschema/pull/1063
+  * fix: Python 3.11 date.fromisoformat() allows extra formats by
+    @jvtm in
+    https://github.com/python-jsonschema/jsonschema/pull/1076
+  * Do not validate for unevaluatedProperties by @ikonst in
+    https://github.com/python-jsonschema/jsonschema/pull/1075
+
+-------------------------------------------------------------------
 Fri Apr 21 12:27:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

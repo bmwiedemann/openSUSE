@@ -33,13 +33,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jsonschema%{psuffix}
-Version:        4.17.3
+Version:        4.18.0
 Release:        0
 Summary:        An implementation of JSON-Schema validation for Python
 License:        MIT
 URL:            https://github.com/python-jsonschema/jsonschema
 Source:         https://files.pythonhosted.org/packages/source/j/jsonschema/jsonschema-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
@@ -47,14 +47,19 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 %if %{with test}
-BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module jsonschema = %{version}}
 BuildRequires:  %{python_module jsonschema-format = %{version}}
 BuildRequires:  %{python_module jsonschema-format-nongpl = %{version}}
+BuildRequires:  %{python_module jsonschema-specifications}
+BuildRequires:  %{python_module rpds-py}
+BuildRequires:  %{python_module virtue}
 BuildRequires:  git-core
 %endif
 Requires:       python-attrs >= 17.4.0
+Requires:       python-jsonschema-specifications
 Requires:       python-pyrsistent >= 0.14.0
+Requires:       python-referencing
+Requires:       python-rpds-py
 %if 0%{python_version_nodots} < 38
 Requires:       python-importlib-metadata
 Requires:       python-typing-extensions
@@ -136,7 +141,7 @@ This subpackage provides the [format-nongpl] extra
 export JSON_SCHEMA_TEST_SUITE=$PWD/json
 %{python_expand # see tox.ini
 export PYTHONPATH=%{buildroot}%{$python_sitelib}
-$python -B -m twisted.trial jsonschema
+$python -B -m virtue jsonschema
 }
 %endif
 
