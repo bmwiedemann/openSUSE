@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           ktp-accounts-kcm
-Version:        23.04.2
+Version:        23.04.3
 Release:        0
 Summary:        Configuration module to set up Telepathy accounts
 License:        LGPL-2.1-or-later
