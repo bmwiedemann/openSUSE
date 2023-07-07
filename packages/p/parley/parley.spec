@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           parley
-Version:        23.04.2
+Version:        23.04.3
 Release:        0
 Summary:        Vocabulary Trainer
 License:        GPL-2.0-or-later
