@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jul  4 10:20:10 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.3/
+- Changes since 23.04.2:
+  * Drop implausible section paths
+  * Apply check for physical limits also to walking sections
+  * Fix long distance bus line mode for VOR
+  * Remove dead OTP endpoints in Münster and Ulm
+  * Also request the top-level transport mode for Entur stopover queries
+  * Parse OTP transit legs without a transport mode subtype correctly
+  * Make VRS work again
+  * Add support for PKCS#12 client certificate bundles
+  * Apply SSL configuration to IVV ASS network requests as well
+  * Don't crash when setting custom QNAM when there isn't a default one yet
+
+-------------------------------------------------------------------
 Tue Jun  6 20:01:27 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.2
