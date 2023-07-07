@@ -1,5 +1,5 @@
 #
-# spec file for package kernel-default-base
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -25,7 +25,7 @@
 %define extrasummary base modules
 %define extradescription This package contains only the base modules, required in all installs.
 
-%define misc_modules button edd i6300esb efivarfs qemu_fw_cfg hid-generic iscsi_ibft
+%define misc_modules button edd i6300esb efivarfs qemu_fw_cfg hid-generic iscsi_ibft ptp_kvm
 
 %define virtio_modules virtio virtio_.* virtio-.*
 

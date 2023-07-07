@@ -217,4 +217,12 @@
     <comment>- Do not build on s390 (bsc#1210729)</comment>
     <requestid>1082550</requestid>
   </revision>
+  <revision rev="28" vrev="28">
+    <srcmd5>f55c47e0d95f838e2c8c3f3df3cf35fc</srcmd5>
+    <version>MACRO</version>
+    <time>1688737562</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1097149</requestid>
+  </revision>
 </revisionlist>

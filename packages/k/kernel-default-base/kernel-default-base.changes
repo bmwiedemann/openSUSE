@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun  8 13:30:19 UTC 2023 - Guilherme Moro <gmoro@suse.com>
+
+- Add ptp_kvm (bsc#1211969)
+
+-------------------------------------------------------------------
 Mon Apr 24 12:29:26 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - Do not build on s390 (bsc#1210729)
