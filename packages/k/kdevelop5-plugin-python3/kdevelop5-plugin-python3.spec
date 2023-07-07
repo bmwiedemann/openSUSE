@@ -20,7 +20,7 @@
 %define mypython python3
 %bcond_without released
 Name:           kdevelop5-plugin-python3
-Version:        23.04.2
+Version:        23.04.3
 Release:        0
 Summary:        Python support for KDevelop
 License:        GPL-2.0-or-later
