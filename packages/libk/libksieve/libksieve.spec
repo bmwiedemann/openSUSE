@@ -19,7 +19,7 @@
 %define soversion 5
 %bcond_without released
 Name:           libksieve
-Version:        23.04.2
+Version:        23.04.3
 Release:        0
 Summary:        Sieve and Managesieve support library for KDE PIM applications
 License:        GPL-2.0-only AND LGPL-2.1-or-later
