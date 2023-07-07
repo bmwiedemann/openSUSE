@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kblackbox
-Version:        23.04.2
+Version:        23.04.3
 Release:        0
 Summary:        Logic game with elements of hide-and-seek
 License:        GPL-2.0-or-later
