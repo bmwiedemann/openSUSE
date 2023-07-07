@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  6 07:16:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- rebuild cmake-full on libuv updates (bsc#1212090)
+
+-------------------------------------------------------------------
 Mon Jun 12 22:59:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - modify shebang to the actual python interpreter on install 

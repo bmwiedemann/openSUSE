@@ -82,6 +82,11 @@ BuildRequires:  pkgconfig(libuv) >= 1.28
 %if "%{flavor}" == ""
 Requires:       cmake-implementation = %{version}
 %endif
+%if %{with full}
+# Needs a rebuild as libuv will otherwise abort the program with:
+# fatal error: libuv version too new: running with libuv 1.X+1 when compiled with libuv 1.X will lead to libuv failures
+%requires_eq  libuv1
+%endif
 %if %{with full} || %{with mini}
 Requires:       make
 # bnc#953842 - A python file is shipped so require python base so it can be run.
