@@ -19553,10 +19553,12 @@ unsorted:
   - orthanc-indexer 
   - orthanc-mysql 
   - orthanc-neuro 
+  - orthanc-ohif 
   - orthanc-postgresql 
   - orthanc-python 
   - orthanc-source 
   - orthanc-tcia 
+  - orthanc-volview 
   - orthanc-webviewer 
   - orthanc-wsi 
   - orthos-client 
@@ -27938,7 +27940,6 @@ unsorted:
   - python311-jsonschema-format 
   - python311-jsonschema-format-nongpl 
   - python311-jsonschema-spec 
-  - python311-jsonschema-specifications 
   - python311-jsonslicer 
   - python311-jsonxs 
   - python311-junit-xml 
@@ -29045,7 +29046,6 @@ unsorted:
   - python311-redbaron 
   - python311-redfish 
   - python311-reedsolo 
-  - python311-referencing 
   - python311-regex 
   - python311-relatorio 
   - python311-releases 
@@ -29100,7 +29100,6 @@ unsorted:
   - python311-roman 
   - python311-rope 
   - python311-rpcq 
-  - python311-rpds-py 
   - python311-rply 
   - python311-rpmfile 
   - python311-rpmlb 
