@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jul  4 10:19:21 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.3/
+- Changes since 23.04.2:
+  * Add 23.04.3 release notes
+  * Ensure we pass content: URLs fully encoded to Android API and QFile (kde#470643)
+  * Add icon for boat/ferry reservations in the calendar
+  * Explicitly specify supported types when importing from a calendar
+  * Add map argument unit test for static elements at the begin/end
+  * Fix infinite loop in computing static location map arguments
+  * Fail less dramatically when ending up with an unknown pass
+  * Work around the Android back key closing the app on secondary layers
+
+-------------------------------------------------------------------
 Tue Jun  6 20:00:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.2
