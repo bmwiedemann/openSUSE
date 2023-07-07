@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Jul 06 14:19:20 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.27.0:
+  * Adapt goreleaser.yml after "replacements" field deprecation
+  * Update README to point download link to 0.27.0
+  * Update docs for release 0.27.0
+  * Update the helm reference
+  * Update helm chart to 4.0.25 to use gitops 0.27.0
+  * Update javascript library version to 0.27.0
+  * Align flux-dependencies in go.mod (#3819)
+  * Revert "Update Flux dependencies" (#3818)
+  * fix: Reference the related GitHub issue in linter suppresions
+  * fix: Remove v1 API scheme registrations
+  * fix: Fix proto version
+  * fix: wait.Poll and wait.PollImmediate have been deprecated.
+    This commit ignores the linter warnings but needless to say
+    this needs to be resolved properly, in a follow-up PR.
+  * fix: Add Flux v1 API versions
+  * chore(deps): Updated the following dependencies:
+    - github.com/fluxcd/kustomize-controller/api v0.34.0 =>
+      v1.0.0-rc.4
+    - github.com/fluxcd/source-controller/api v1.0.0-rc.1 =>
+      v1.0.0-rc.5
+    - github.com/fluxcd/notification-controller/api v0.32.1 =>
+      v1.0.0-rc.4
+    - github.com/fluxcd/pkg/runtime v0.29.0 => v0.39.0
+  * Docs for collector_cluster_watcher metric (#3753)
+  * Terraform section docs changes (#3804)
+  * add dm transition color (#3807)
+  * adds dm input autofill override (#3806)
+  * Update theme (#3796)
+  * new pipelines icon (#3803)
+  * Docs cleanup for Cluster Management and related install page
+    (#3779)
+
+-------------------------------------------------------------------
 Thu Jun 22 05:05:56 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.26.0:

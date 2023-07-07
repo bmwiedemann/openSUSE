@@ -7,4 +7,12 @@
     <comment>new package weave-gitops: Weave GitOps is a simple open source developer platform for people who want cloud native applications, without needing Kubernetes expertise. This package contains the CLI.</comment>
     <requestid>1094608</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>aaf28386be64db3d76ebcb6c9f15da03</srcmd5>
+    <version>0.27.0</version>
+    <time>1688737654</time>
+    <user>favogt_factory</user>
+    <comment></comment>
+    <requestid>1097418</requestid>
+  </revision>
 </revisionlist>
