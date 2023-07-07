@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           kiten
-Version:        23.04.2
+Version:        23.04.3
 Release:        0
 Summary:        Japanese Reference/Study Tool
 # Data files are under CC-BY-SA-3.0 (edict) and CC-BY-SA-4.0 ("kanjidic"/SKIP numbers therein)
