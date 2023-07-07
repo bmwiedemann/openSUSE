@@ -1,7 +1,7 @@
 #
 # spec file for package libArcus
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,13 +33,10 @@ Patch1:         0001-Use-single-parameter-SetTotalBytesLimit-fix-protobuf.patch
 BuildRequires:  cmake >= 3.6
 BuildRequires:  gcc-c++
 BuildRequires:  protobuf-devel >= 3.0.0
+BuildRequires:  python3-devel
 BuildRequires:  python3-packaging
-BuildRequires:  python3-sip-devel < 5
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
 BuildRequires:  python3-qt5-sip
-%else
-BuildRequires:  python3-sip
-%endif
+BuildRequires:  python3-sip4-devel
 
 %description
 Communication library between internal components for Ultimaker software
@@ -58,7 +55,7 @@ Summary:        Header files for libArcus
 Group:          Development/Libraries/C and C++
 Requires:       libArcus%{sover} = %{version}
 Requires:       protobuf-devel >= 3.0.0
-Requires:       python3-sip-devel < 5
+Requires:       python3-sip4-devel < 5
 
 %description devel
 The %{name}-devel package includes the header files, libraries and development
@@ -68,17 +65,15 @@ tools necessary for compiling and linking programs which use %{name}.
 Summary:        Python bindings for libArcus
 Group:          Development/Languages/Python
 Requires:       libArcus-Ultimaker
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
 Requires:       python3-qt5-sip
-%else
-Requires:       python3-sip
-%endif
 
 %description -n python3-Arcus
 Python bindings for the Arcus communication library.
 
 %prep
 %autosetup -n %{name}-%{sversion} -p1
+# Do not override C++17 default with C++11
+sed -i -e '/COMPILE_FLAGS.*c++11/ d' examples/CMakeLists.txt
 
 %build
 %cmake

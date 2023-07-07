@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul  6 14:26:42 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove explicit --std=c++11 in example compile flags, keep c++17
+  default required by absl.
+
+-------------------------------------------------------------------
+Sat Jul  1 00:14:47 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Depend on python3-sip4-devel explicitly, as it no longer
+  provides python3-sip-devel.
+
+-------------------------------------------------------------------
 Tue Jun 21 15:49:04 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add egg-info, to enable automatic creation of versioned python
