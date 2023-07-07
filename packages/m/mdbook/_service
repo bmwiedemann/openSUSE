@@ -3,7 +3,7 @@
     <param name="url">https://github.com/rust-lang/mdBook</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">v0.4.30</param>
+    <param name="revision">v0.4.31</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>

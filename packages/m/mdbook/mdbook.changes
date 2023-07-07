@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun 30 10:42:55 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 0.4.31:
+  * Document that strikethrough can also use a single tilde.
+  * Update proc-macro2
+  * Fix some spellings
+  * Fix flicker when setting sidebar scroll position
+- Update vendored dependencies.
+
+-------------------------------------------------------------------
 Sat Jun 03 04:19:39 UTC 2023 - william.brown@suse.com
 
 - Update vendored dependencies.
