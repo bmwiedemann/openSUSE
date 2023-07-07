@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jul  4 10:19:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 23.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/23.04.3/
+- Changes since 23.04.2:
+  * Use a faster regex for matching Grimaldi Line passenger data
+  * Add Color Line extractor script
+  * Support onepagebooking PDFs as well
+  * Expand the Fjord Line trigger expression to cover newer tickets
+  * Treat any sequence of * characters as RCT2 empty marker
+  * Accept also slightly larger ERA SSBv3 codes
+  * Simplify Trenitalia extractor
+  * Extract DJH membership card barcodes
+  * Fix extraction of multi-page Trenitalia tickets
+  * Improve handling of Flixbus train tickets
+  * Add additional sanity checks for ERA SSBv2 tickets
+  * Relax the SNCB barcode trigger pattern a bit
+
+-------------------------------------------------------------------
 Tue Jun  6 20:01:10 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 23.04.2
