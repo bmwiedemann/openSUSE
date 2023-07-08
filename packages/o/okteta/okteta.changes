@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul  7 14:29:19 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.26.12
+  * Improved: translations
+  * Improved: Structures tool: show char arrays as string with
+    the type entry
+  * Fixed: Exporting: no more duplicated overwrite confirmation
+    dialog
+  * Fixed: Saving: no more duplicated overwrite confirmation
+    dialog
+
+-------------------------------------------------------------------
 Wed Jun 14 10:00:56 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.26.11:
