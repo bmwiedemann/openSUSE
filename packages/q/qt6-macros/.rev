@@ -56,4 +56,12 @@
     <comment>Update to 6.5.0 (forwarded request 1077258 from Vogtinator)</comment>
     <requestid>1077329</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fd8d367009f6b1e254ef1f00fe528080</srcmd5>
+    <version>20230629</version>
+    <time>1688849232</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1097547</requestid>
+  </revision>
 </revisionlist>

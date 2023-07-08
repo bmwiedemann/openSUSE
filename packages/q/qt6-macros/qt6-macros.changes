@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 28 16:20:06 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Change %_qt6_libexecdir to %_libexecdir/qt6 (bsc#1174075)
+
+-------------------------------------------------------------------
+Mon Jun 19 09:34:04 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Use gcc12 by default on Leap 15
+
+-------------------------------------------------------------------
 Wed Nov 30 10:45:38 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update the %_qt6_metatypesdir location to match upstream changes

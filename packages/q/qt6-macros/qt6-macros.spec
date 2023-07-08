@@ -17,7 +17,7 @@
 
 
 Name:           qt6-macros
-Version:        20221130
+Version:        20230629
 Release:        0
 Summary:        RPM macros for Qt6 packages
 License:        MIT
