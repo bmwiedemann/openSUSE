@@ -1,7 +1,7 @@
 #
 # spec file for package gnucash
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %endif
 
 Name:           gnucash
-Version:        4.14
+Version:        5.3
 Release:        0
 Summary:        Personal Finance Manager
 License:        SUSE-GPL-2.0-with-openssl-exception OR SUSE-GPL-3.0-with-openssl-exception
@@ -43,21 +43,20 @@ Patch0:         gnucash-cpan-warning.patch
 Patch1:         gnucash-libm.patch
 Patch2:         gnucash-4.1-fix-gtest-path.patch
 
-BuildRequires:  boost-devel >= 1.60.0
-BuildRequires:  cmake >= 3.5
+BuildRequires:  cmake >= 3.10
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gmock >= 1.8.0
 BuildRequires:  gtest >= 1.8.0
 BuildRequires:  guile-devel
-BuildRequires:  libboost_date_time-devel >= 1.60.0
-BuildRequires:  libboost_filesystem-devel >= 1.60.0
-BuildRequires:  libboost_headers-devel >= 1.60.0
-BuildRequires:  libboost_locale-devel >= 1.60.0
-BuildRequires:  libboost_program_options-devel >= 1.60.0
-BuildRequires:  libboost_regex-devel >= 1.60.0
-BuildRequires:  libboost_system-devel >= 1.60.0
+BuildRequires:  libboost_date_time-devel-impl >= 1.67.0
+BuildRequires:  libboost_filesystem-devel-impl >= 1.67.0
+BuildRequires:  libboost_headers-devel-impl >= 1.67.0
+BuildRequires:  libboost_locale-devel-impl >= 1.67.0
+BuildRequires:  libboost_program_options-devel-impl >= 1.67.0
+BuildRequires:  libboost_regex-devel-impl >= 1.67.0
+BuildRequires:  libboost_system-devel-impl >= 1.67.0
 BuildRequires:  libdbi-drivers-dbd-sqlite3
 BuildRequires:  makeinfo
 BuildRequires:  ninja
@@ -74,7 +73,7 @@ BuildRequires:  pkgconfig(gmodule-2.0) >= 2.40
 BuildRequires:  pkgconfig(gnome-keyring-1) >= 0.6
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.40
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.40
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.10.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.29
 BuildRequires:  pkgconfig(gwenhywfar) >= 3.99.20
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(icu-uc)
@@ -82,7 +81,7 @@ BuildRequires:  pkgconfig(ktoblzcheck)
 BuildRequires:  pkgconfig(libglade-2.0)
 BuildRequires:  pkgconfig(libofx) >= 0.9.0
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
-BuildRequires:  pkgconfig(libxml-2.0) >= 2.7.0
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.4
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(webkit2gtk-4.1)
 Recommends:     %{name}-docs
@@ -144,7 +143,8 @@ a personal finance manager.
     -DGMOCK_ROOT=%{_includedir}/gmock \
     -DGTEST_ROOT=%{_includedir}/gtest \
     -DWITH_PYTHON=ON \
-    -DCOMPILE_GSCHEMAS=OFF
+    -DCOMPILE_GSCHEMAS=OFF \
+    -DCMAKE_CXX_FLAGS=-Wno-error
 %cmake_build
 
 %install
@@ -161,6 +161,7 @@ rm %{buildroot}%{_docdir}/%{name}/LICENSE
 %files
 %license LICENSE
 %{_bindir}/gnc-fq-*
+%{_bindir}/finance-quote-wrapper
 %{_bindir}/gnucash
 %{_bindir}/gnucash-cli
 %{_bindir}/gnucash-valgrind
