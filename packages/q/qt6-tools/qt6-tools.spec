@@ -120,6 +120,7 @@ This package contains the Qt 6 Designer Library.
 Summary:        Qt 6 Designer libraries - Development files
 Requires:       libQt6Designer6 = %{version}
 Requires:       cmake(Qt6Gui) = %{real_version}
+Requires:       cmake(Qt6OpenGL) = %{real_version}
 Requires:       cmake(Qt6OpenGLWidgets) = %{real_version}
 Requires:       cmake(Qt6Widgets) = %{real_version}
 Requires:       cmake(Qt6Xml) = %{real_version}

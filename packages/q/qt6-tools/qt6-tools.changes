@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 30 15:13:16 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update subpackages requirements
+
+-------------------------------------------------------------------
 Wed Jun 21 01:27:39 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Also use llvm 15 on Leap 15.4. A new llvm version was submitted
