@@ -71,7 +71,9 @@ The Qt 6 RemoteObjects library.
 Summary:        Qt 6 RemoteObjects library - Development files
 Requires:       libQt6RemoteObjects6 = %{version}
 Requires:       qt6-remoteobjects-tools = %{version}
+Requires:       cmake(Qt6Gui) = %{real_version}
 Requires:       cmake(Qt6Network) = %{real_version}
+Requires:       cmake(Qt6Qml) = %{real_version}
 
 %description devel
 Development files for the Qt 6 RemoteObjects library.
@@ -79,6 +81,7 @@ Development files for the Qt 6 RemoteObjects library.
 %package private-devel
 Summary:        Non-ABI stable API for the Qt 6 RemoteObjects library
 Requires:       cmake(Qt6RemoteObjects) = %{real_version}
+%requires_eq    qt6-core-private-devel
 
 %description private-devel
 This package provides private headers of libQt6RemoteObjects that do not have
