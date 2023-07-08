@@ -68,7 +68,7 @@ Development files for the Qt 6 ShaderTools library
 %package private-devel
 Summary:        Non-ABI stable API for the Qt 6 ShaderTools library
 Requires:       cmake(Qt6ShaderTools) = %{real_version}
-%requires_eq    qt6-core-private-devel
+%requires_eq    qt6-gui-private-devel
 
 %description private-devel
 This package provides private headers of libQt6ShaderTools that do not have any
