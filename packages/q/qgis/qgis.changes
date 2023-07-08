@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  7 06:41:39 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to build with exiv2 0.28+ - boo#1212936
+  * exiv2-0.28.patch
+
+-------------------------------------------------------------------
 Wed Jun 14 08:59:01 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 3.30.3 (monthly bugfix)
