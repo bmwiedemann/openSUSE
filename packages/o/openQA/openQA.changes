@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jul 12 14:00:47 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1689162874.c51d4b9:
+  * Avoid worker to wait until setup timeout on asset errors
+  * Add nginx config for tls
+  * Avoid asset caching ending up with `Job terminated unexpectedly`
+  * Avoid errors in the logs when invalid group IDs are passed
+  * Provide single-instance-apache from single-instance
+  * Introduce nginx version of the single-instance rpm
+  * Prevent bootstrap script retry failed proxy conf with remote script
+  * Avoid errors in the logs when invalid job IDs are passed
+  * Install nginx webserver in bootstrap script if requested
+  * bootstrap: Use correct syntax to pass args to remote script
+  * Fix openqa-bootstrap script referencing unbound var
+
+-------------------------------------------------------------------
 Sat Jul 08 04:22:57 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1688760836.a3a5f95:

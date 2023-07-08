@@ -78,7 +78,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        4.6.1688760836.a3a5f95
+Version:        4.6.1689162874.c51d4b9
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -238,14 +238,27 @@ You only need this package if you have a local postgresql server
 next to the webui.
 
 %package single-instance
-Summary:        Convenience package for a single-instance setup
+Summary:        Convenience package for a single-instance setup using apache proxy
 Group:          Development/Tools/Other
+Provides:       %{name}-single-instance-apache
+Provides:       %{name}-single-instance-apache2
 Requires:       %{name} = %{version}
 Requires:       %{name}-local-db
 Requires:       %{name}-worker = %{version}
 Requires:       apache2
 
 %description single-instance
+Use this package to setup a local instance with all services provided together.
+
+%package single-instance-nginx
+Summary:        Convenience package for a single-instance setup using nginx proxy
+Group:          Development/Tools/Other
+Requires:       %{name} = %{version}
+Requires:       %{name}-local-db
+Requires:       %{name}-worker = %{version}
+Requires:       nginx
+
+%description single-instance-nginx
 Use this package to setup a local instance with all services provided together.
 
 %package bootstrap
