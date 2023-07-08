@@ -87,7 +87,9 @@ Development files for the Qt 6 Quick3DPhysics library.
 
 %package -n qt6-quick3dphysics-private-devel
 Summary:        Non-ABI stable API for the Qt 6 Quick3DPhysics library
+Requires:       cmake(Qt6Quick3D) = %{real_version}
 Requires:       cmake(Qt6Quick3DPhysics) = %{real_version}
+%requires_eq    qt6-core-private-devel
 %requires_eq    qt6-gui-private-devel
 %requires_eq    qt6-qml-private-devel
 %requires_eq    qt6-quick-private-devel
