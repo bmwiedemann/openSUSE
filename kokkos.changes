@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  5 12:00:00 UTC 2023 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 4.1.00
+
+- Update to new upstream release 4.1.00:
+  see https://github.com/kokkos/kokkos/blob/4.1.00/CHANGELOG.md
+- Use a tarball as Source0 instead of an URL.
+
+-------------------------------------------------------------------
 Wed May  3 12:00:01 UTC 2023 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 4.0.01
 
 - Update to new upstream release 4.0.01:
