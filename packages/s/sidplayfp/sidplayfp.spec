@@ -18,14 +18,14 @@
 
 
 Name:           sidplayfp
-Version:        2.4.1
+Version:        2.5.0
 Release:        0
 Summary:        SID chip music module player
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 #Git-Clone:     https://github.com/libsidplayfp/sidplayfp.git
 URL:            https://sourceforge.net/projects/sidplay-residfp/
-Source0:        https://sourceforge.net/projects/sidplay-residfp/files/sidplayfp/2.4/sidplayfp-%{version}.tar.gz
+Source0:        https://sourceforge.net/projects/sidplay-residfp/files/sidplayfp/2.5/sidplayfp-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
@@ -38,7 +38,7 @@ A player for playing SID music modules originally created on the Commodore 64
 and compatibles.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure
