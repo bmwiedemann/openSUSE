@@ -56,4 +56,14 @@ war rightfully raised in my previous one.</comment>
   * Make inline comments work on subsequent lines of multiline values</comment>
     <requestid>989548</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ec13cbd83d7baaf85ae5e445624c0aba</srcmd5>
+    <version>57</version>
+    <time>1688849190</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 57
+  * Added a GetUnsigned function for getting unsigned values.
+  * Added GetInteger64 and GetUnsigned64 to read 64-bit integers.</comment>
+    <requestid>1097525</requestid>
+  </revision>
 </revisionlist>
