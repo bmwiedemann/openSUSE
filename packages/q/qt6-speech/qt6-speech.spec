@@ -69,6 +69,7 @@ The QTextToSpeech class provides a convenient access to text-to-speech engines.
 %package -n qt6-texttospeech-devel
 Summary:        Qt 6 TextToSpeech library - Development files
 Requires:       libQt6TextToSpeech6 = %{version}
+Requires:       cmake(Qt6QmlIntegration) = %{real_version }
 
 %description -n qt6-texttospeech-devel
 Development files for the Qt 6 TextToSpeech library.
