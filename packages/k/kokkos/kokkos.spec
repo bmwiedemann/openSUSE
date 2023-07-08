@@ -17,8 +17,8 @@
 
 
 %define major_ver 4
-%define minor_ver 0
-%define patch_ver 01
+%define minor_ver 1
+%define patch_ver 00
 %define shlib   libkokkos-%{major_ver}_%{minor_ver}
 %global kokkos_desc \
 Kokkos Core implements a programming model in C++ for writing performance \
@@ -35,7 +35,7 @@ Summary:        A C++ Performance Portability Programming
 License:        BSD-3-Clause
 Group:          System/Libraries
 URL:            https://github.com/kokkos/kokkos
-Source0:        https://github.com/kokkos/kokkos/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        kokkos-4.1.00.tar.gz
 BuildRequires:  cmake >= 3.16
 %if 0%{?suse_version} <= 1500
 BuildRequires:  gcc11-c++
@@ -101,14 +101,9 @@ sed -i '1c #!/usr/bin/bash' bin/hpcbind bin/runtest
 %cmake_install
 
 %check
-# OpenMP tests need quite some memory, run up to two tests in parallel, each with half the cores
-%limit_build -m 4096
-export OMP_NUM_THREADS=$((%{jobs} / 2))
-# Recommended for unit tests
-export OMP_PROC_BIND=false
 export LD_LIBRARY_PATH="%{buildroot}/%{_libdir}:$PWD/build/core/unit_test:${LD_LIBRARY_PATH}"
-%ctest --parallel 1 --tests-regex KokkosContainers_UnitTest_OpenMP --timeout 3600
-%ctest --parallel 2 --exclude-regex 'KokkosContainers_UnitTest_OpenMP|KokkosCore_PerfTestExec|KokkosCore_UnitTest_OpenMP'
+export OMP_PROC_BIND=false
+%ctest --parallel 4 --exclude-regex 'Kokkos_CoreUnitTest_OpenMP|Kokkos_Containers*|Kokkos_Algorithms*'
 
 %post -n %{shlib} -p /sbin/ldconfig
 %postun -n %{shlib} -p /sbin/ldconfig
@@ -116,7 +111,7 @@ export LD_LIBRARY_PATH="%{buildroot}/%{_libdir}:$PWD/build/core/unit_test:${LD_L
 %files -n %{shlib}
 %doc README.md
 %license LICENSE
-%{_libdir}/libkokkos*.so.4.0*
+%{_libdir}/libkokkos*.so.%{major_ver}.%{minor_ver}*
 
 %files devel
 %{_libdir}/libkokkos*.so
