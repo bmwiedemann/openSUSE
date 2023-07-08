@@ -97,6 +97,7 @@ The Qt 6 ChartsQml library.
 Summary:        Qt 6 ChartsQml library - Development files
 Requires:       libQt6ChartsQml6 = %{version}
 Requires:       cmake(Qt6Charts) = %{real_version}
+Requires:       cmake(Qt6Gui) = %{real_version}
 Requires:       cmake(Qt6OpenGL) = %{real_version}
 Requires:       cmake(Qt6Qml) = %{real_version}
 Requires:       cmake(Qt6Quick) = %{real_version}
