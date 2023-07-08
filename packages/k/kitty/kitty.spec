@@ -19,7 +19,7 @@
 # sphinx_copybutton not in Factory
 %bcond_with docs
 Name:           kitty
-Version:        0.28.1
+Version:        0.29.0
 Release:        0
 Summary:        A GPU-based terminal emulator
 License:        GPL-3.0-only
@@ -27,12 +27,12 @@ Group:          System/X11/Terminals
 URL:            https://github.com/kovidgoyal/kitty
 Source:         https://github.com/kovidgoyal/kitty/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+Source2:        kitty-rpmlintrc
 # PATCH-FIX-OPENSUSE optional-disable-docs.diff -- Optionally disable building documentation files
 Patch0:         optional-disable-docs.diff
 # PATCH-FIX-OPENSUSE fix-librsync-leap.diff -- Fix for Leap, as librsync header is missing the stdio.h header for FILE*
 Patch1:         fix-librsync-leap.diff
 Patch2:         go-buildmode-pie.diff
-Patch3:         wayland-protocols-1.32.diff
 BuildRequires:  ImageMagick-devel
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  fdupes
@@ -110,10 +110,9 @@ shell-integration [bash,fish,zsh] file(s) for the Kitty terminal; this package c
 %prep
 #%%autosetup -p1 -a 1
 %setup -a 1
-%patch0 -p1
+%patch0
 %patch1 -p1
 %patch2
-%patch3
 
 %if 0%{?suse_version} > 1500
 find . -type f -exec sed -i 's@#!/usr/bin/env python3$@#!%{_bindir}/python3@' {} +

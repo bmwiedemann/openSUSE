@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Mon Jul 10 15:55:28 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding kitty-rpmlintrc as a source file
+
+-------------------------------------------------------------------
+Mon Jul 10 14:47:10 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.29.0
+  * Removing wayland-protocols-1.32.diff as it's no longer required
+  * A new escape code <ESC>[22J that moves the current contents of the screen
+    into the scrollback before clearing it
+  * A new kitten run-shell to allow creating sub-shells with shell integration
+    enabled
+  * A new option background_blur to blur the background for transparent
+    windows (#6135)
+  * The --hold flag now holds the window open at a shell prompt instead of
+    asking the user to press a key
+  * A new option text_fg_override_threshold to force text colors to have high
+    contrast regardless of color scheme (#6283)
+  * When resizing OS Windows make the animation less jerky. Also show the
+    window size in cells during the resize (#6341)
+  * unicode_input kitten: Fix a regression in 0.28.0 that caused the order of
+    recent and favorites entries to not be respected (#6214)
+  * unicode_input kitten: Fix a regression in 0.28.0 that caused editing of
+    favorites to sometimes hang
+  * clipboard kitten: Fix a bug causing the last MIME type available on the
+    clipboard not being recognized when pasting
+  * clipboard kitten: Dont set clipboard when getting clipboard in filter
+    mode (#6302)
+  * Fix regression in 0.28.0 causing color fringing when rendering in
+    transparent windows on light backgrounds (#6209)
+  * show_key kitten: In kitty mode show the actual bytes sent by the terminal
+    rather than a re-encoding of the parsed key event
+  * hints kitten: Fix a regression in 0.28.0 that broke using sub-groups in
+    regexp captures (#6228)
+  * hints kitten: Fix a regression in 0.28.0 that broke using
+    lookahead/lookbehind in regexp captures (#6265)
+  * diff kitten: Fix a regression in 0.28.0 that broke using relative paths
+    as arguments to the kitten (#6325)
+  * Fix re-using the image id of an animated image for a still image causing
+    a crash (#6244)
+  * kitty +open: Ask for permission before executing script files that are not
+    marked as executable. This prevents accidental execution of script files
+    via MIME type association from programs that unconditionally “open”
+    attachments/downloaded files
+  * edit-in-kitty: Fix running edit-in-kitty with elevated privileges to edit a
+    restricted file not working (#6245)
+  * ssh kitten: Fix a regression in 0.28.0 that caused interrupt during setup
+    to not be handled gracefully (#6254)
+  * ssh kitten: Allow configuring the ssh kitten to skip some hosts via a new
+    delegate config directive
+  * Graphics: Move images up along with text when the window is shrunk
+    vertically (#6278)
+  * Fix a regression in 0.28.0 that caused a buffer overflow when clearing the
+    screen (#6306, #6308)
+  * Fix a regression in 0.27.0 that broke setting of specific edge
+    padding/margin via remote control (#6333)
+  * macOS: Fix window shadows not being drawn for transparent
+    windows (#2827, #6416)
+  * Do not echo invalid DECRQSS queries back, behavior inherited from xterm
+    (CVE-2008-2383). Similarly, fix an echo bug in the file transfer protocol
+    due to insufficient sanitization of safe strings.
+
+-------------------------------------------------------------------
 Fri Jul  7 15:43:07 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
 
 - patch file fix-librsync-leap.patch is being deleted as part of a rename
