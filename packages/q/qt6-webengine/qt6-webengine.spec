@@ -205,6 +205,7 @@ Requires:       libQt6PdfQuick6 = %{version}
 Requires:       qt6-pdf-private-devel = %{version}
 Requires:       cmake(Qt6Gui) = %{real_version}
 Requires:       cmake(Qt6Qml) = %{real_version}
+Requires:       cmake(Qt6Quick) = %{real_version}
 %requires_eq    qt6-quick-private-devel
 
 %description -n qt6-pdfquick-devel
@@ -279,7 +280,9 @@ The Qt6 WebEngineQuick library.
 %package -n qt6-webenginequick-devel
 Summary:        Development files for the Qt 6 WebEngineQuick library
 Requires:       libQt6WebEngineQuick6 = %{version}
+Requires:       cmake(Qt6Gui) = %{real_version}
 Requires:       cmake(Qt6Qml) = %{real_version}
+Requires:       cmake(Qt6Quick) = %{real_version}
 Requires:       cmake(Qt6WebEngineCore) = %{real_version}
 
 %description -n qt6-webenginequick-devel
@@ -304,9 +307,10 @@ Summary:        Development files for the Qt 6 WebEngineWidgets library
 Requires:       libQt6WebEngineWidgets6 = %{version}
 Requires:       cmake(Qt6Gui) = %{real_version}
 Requires:       cmake(Qt6PrintSupport) = %{real_version}
+Requires:       cmake(Qt6Quick) = %{real_version}
 Requires:       cmake(Qt6QuickWidgets) = %{real_version}
 Requires:       cmake(Qt6WebEngineCore) = %{real_version}
-%requires_eq    qt6-quick-private-devel
+Requires:       cmake(Qt6Widgets) = %{real_version}
 
 %description -n qt6-webenginewidgets-devel
 Development files for the Qt 6 WebEngineWidgets library.
