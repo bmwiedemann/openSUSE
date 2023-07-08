@@ -71,8 +71,8 @@ This library does not have any ABI or API guarantees.
 
 %package -n qt6-bodymovin-private-devel
 Summary:        Development files for the Qt 6 Bodymovin library
-Requires:       cmake(Qt6BodymovinPrivate) = %{real_version}
 Requires:       cmake(Qt6Gui) = %{real_version}
+%requires_eq    qt6-gui-private-devel
 # Renamed in 6.2.0
 Provides:       qt6-bodymovin-devel = 6.2.0
 Obsoletes:      qt6-bodymovin-devel < 6.2.0
