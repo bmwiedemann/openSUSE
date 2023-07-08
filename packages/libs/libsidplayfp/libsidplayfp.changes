@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul  6 20:55:10 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.5.0
+  * residfp: reworked the combined waveforms model by separating pulldown effect from waveform generation
+  * residfp: tweaked the 8580 filter parameters for increased volume and less distortion (#45)
+  * Updated to latest resid
+  * Use OpenMP to speedup LUTs initialization
+  * CIA: minor rework based on chip reverse engineering
+  * Use c++17 where available
+  * Added sanity check for buffer size
+  * Minor mixer optimizations
+  * Other minor changes
+
+-------------------------------------------------------------------
 Sat Apr  1 21:08:40 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add fix-missing-include.patch: Add missing include exposed by gcc

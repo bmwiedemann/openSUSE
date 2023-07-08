@@ -19,14 +19,14 @@
 %define soname 6
 %define stilview_soname 0
 Name:           libsidplayfp
-Version:        2.4.2
+Version:        2.5.0
 Release:        0
 Summary:        A library to play Commodore 64 music
 License:        GPL-2.0-or-later
 Group:          System/Libraries
 #Git-Clone:     https://github.com/libsidplayfp/libsidplayfp.git
 URL:            https://sourceforge.net/projects/sidplay-residfp/
-Source0:        https://sourceforge.net/projects/sidplay-residfp/files/libsidplayfp/2.4/libsidplayfp-%{version}.tar.gz
+Source0:        https://sourceforge.net/projects/sidplay-residfp/files/libsidplayfp/2.5/libsidplayfp-%{version}.tar.gz
 Patch0:         fix-missing-include.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libgcrypt-devel
