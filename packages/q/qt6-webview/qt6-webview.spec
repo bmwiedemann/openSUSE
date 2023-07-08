@@ -84,6 +84,7 @@ Development files for the Qt 6 WebView library
 %package private-devel
 Summary:        Non-ABI stable API for the Qt 6 WebView library
 Requires:       cmake(Qt6WebView) = %{real_version}
+%requires_eq    qt6-core-private-devel
 %requires_eq    qt6-gui-private-devel
 
 %description private-devel
@@ -99,10 +100,10 @@ The Qt6 WebViewQuick library.
 %package -n qt6-webviewquick-devel
 Summary:        Qt 6 WebViewQuick library - Development files
 Requires:       libQt6WebViewQuick6 = %{version}
-Requires:       qt6-webview-private-devel = %{version}
 Requires:       cmake(Qt6OpenGL) = %{real_version}
 Requires:       cmake(Qt6QmlModels) = %{real_version}
 Requires:       cmake(Qt6Quick) = %{real_version}
+Requires:       cmake(Qt6WebView) = %{real_version}
 
 %description -n qt6-webviewquick-devel
 Development files for the Qt 6 WebViewQuick library.
