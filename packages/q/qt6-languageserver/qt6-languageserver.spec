@@ -50,8 +50,8 @@ specification.
 %package private-devel
 Summary:        Qt 6 LanguageServer library - Development files
 Requires:       libQt6LanguageServer6 = %{version}
-Requires:       qt6-core-private-devel = %{version}
 Requires:       qt6-jsonrpc-private-devel = %{version}
+%requires_eq    qt6-core-private-devel
 
 %description private-devel
 Development files for the Qt 6 LanguageServer private library.
