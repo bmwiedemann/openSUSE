@@ -83,7 +83,7 @@ Development files for the Qt 6 Sensors library.
 %package private-devel
 Summary:        Non-ABI stable API for the Qt 6 Sensors library
 Requires:       cmake(Qt6Sensors) = %{real_version}
-%requires_eq    qt6-qml-private-devel
+%requires_eq    qt6-core-private-devel
 
 %description private-devel
 This package provides private headers of libQt6Sensors that do not have any
