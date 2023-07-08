@@ -73,8 +73,6 @@ Summary:        Qt 6 DataVisualization library - Development files
 Requires:       libQt6DataVisualization6 = %{version}
 Requires:       cmake(Qt6Gui) = %{real_version}
 Requires:       cmake(Qt6OpenGL) = %{real_version}
-Requires:       cmake(Qt6Qml) = %{real_version}
-Requires:       cmake(Qt6Quick) = %{real_version}
 
 %description -n qt6-datavisualization-devel
 Development files for the Qt 6 DataVisualization library.
@@ -96,7 +94,7 @@ The Qt 6 DataVisualizationQml library.
 %package -n qt6-datavisualizationqml-devel
 Summary:        Qt 6 DataVisualizationQml library - Development files
 Requires:       libQt6DataVisualizationQml6 = %{version}
-Requires:       qt6-datavisualization-private-devel = %{real_version}
+Requires:       cmake(Qt6DataVisualization) = %{real_version}
 Requires:       cmake(Qt6Gui) = %{real_version}
 Requires:       cmake(Qt6OpenGL) = %{real_version}
 Requires:       cmake(Qt6Qml) = %{real_version}
