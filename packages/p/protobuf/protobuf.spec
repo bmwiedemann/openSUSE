@@ -25,8 +25,8 @@
 %bcond_without java
 %bcond_without python3
 Name:           protobuf
-Version:        23.3
-%global         sover 23_3_0
+Version:        23.4
+%global         sover 23_4_0
 Release:        0
 Summary:        Protocol Buffers - Google's data interchange format
 License:        BSD-3-Clause

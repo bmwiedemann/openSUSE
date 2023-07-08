@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul  7 12:04:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.4:
+  * Add dllexport_decl for generated default instance.
+  * Deps: Update Guava to 32.0.1
+
+-------------------------------------------------------------------
 Mon Jul  3 07:58:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.3:

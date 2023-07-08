@@ -801,4 +801,14 @@
 - drop 0001-Use-the-same-ABI-for-static-and-shared-libraries-on-.patch (upstream)</comment>
     <requestid>1096499</requestid>
   </revision>
+  <revision rev="75" vrev="6">
+    <srcmd5>00888a7224b1e5320d4eb181c664ac29</srcmd5>
+    <version>unknown</version>
+    <time>1688849186</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.4:
+  * Add dllexport_decl for generated default instance.
+  * Deps: Update Guava to 32.0.1</comment>
+    <requestid>1097523</requestid>
+  </revision>
 </revisionlist>
