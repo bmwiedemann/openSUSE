@@ -61,7 +61,6 @@ QHttpServer is a simplified API for QAbstractHttpServer and QHttpServerRouter.
 %package -n qt6-httpserver-devel
 Summary:        Qt 6 HttpServer library - Development files
 Requires:       libQt6HttpServer6 = %{version}
-Requires:       cmake(Qt6Concurrent) = %{real_version}
 Requires:       cmake(Qt6Network) = %{real_version}
 Requires:       cmake(Qt6WebSockets) = %{real_version}
 
@@ -71,6 +70,9 @@ Development files for the Qt 6 HttpServer library.
 %package -n qt6-httpserver-private-devel
 Summary:        Non-ABI stable API for the Qt 6 HttpServer Library
 Requires:       cmake(Qt6HttpServer) = %{real_version}
+%requires_eq    qt6-core-private-devel
+%requires_eq    qt6-network-private-devel
+%requires_eq    qt6-websockets-private-devel
 
 %description -n qt6-httpserver-private-devel
 This package provides private headers of libQt6HttpServer that do not have any
