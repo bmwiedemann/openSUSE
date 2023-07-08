@@ -125,7 +125,10 @@ Development files for the Qt 6 3DAnimation library.
 
 %package -n qt6-3danimation-private-devel
 Summary:        Non-ABI stable API for the Qt 6 3DAnimation library
+Requires:       qt6-3dcore-private-devel = %{version}
+Requires:       qt6-3drender-private-devel = %{version}
 Requires:       cmake(Qt63DAnimation) = %{real_version}
+%requires_eq    qt6-core-private-devel
 
 %description -n qt6-3danimation-private-devel
 This package provides private headers of libQt63DAnimation that do not have any
@@ -150,6 +153,9 @@ Development files for the Qt 6 3DCore library.
 %package -n qt6-3dcore-private-devel
 Summary:        Non-ABI stable API for the Qt 6 3DCore library
 Requires:       cmake(Qt63DCore) = %{real_version}
+Requires:       cmake(Qt6Concurrent) = %{real_version}
+%requires_eq    qt6-core-private-devel
+%requires_eq    qt6-gui-private-devel
 
 %description -n qt6-3dcore-private-devel
 This package provides private headers of libQt63DCore that do not have any
@@ -168,13 +174,17 @@ Requires:       cmake(Qt63DCore) = %{real_version}
 Requires:       cmake(Qt63DInput) = %{real_version}
 Requires:       cmake(Qt63DLogic) = %{real_version}
 Requires:       cmake(Qt63DRender) = %{real_version}
+Requires:       cmake(Qt6Gui) = %{real_version}
 
 %description -n qt6-3dextras-devel
 Development files for the Qt 6 3DExtras library.
 
 %package -n qt6-3dextras-private-devel
 Summary:        Non-ABI stable API for the Qt 6 3DExtras library
+Requires:       qt6-3dcore-private-devel = %{version}
+Requires:       qt6-3drender-private-devel = %{version}
 Requires:       cmake(Qt63DExtras) = %{real_version}
+%requires_eq    qt6-core-private-devel
 
 %description -n qt6-3dextras-private-devel
 This package provides private headers of libQt63DExtras that do not have any
@@ -190,13 +200,16 @@ The Qt 6 3DInput library.
 Summary:        Development files for the Qt 6 3DInput library
 Requires:       libQt63DInput6 = %{version}
 Requires:       cmake(Qt63DCore) = %{real_version}
+Requires:       cmake(Qt6Gui) = %{real_version}
 
 %description -n qt6-3dinput-devel
 Development files for the Qt 6 3DInput library.
 
 %package -n qt6-3dinput-private-devel
 Summary:        Non-ABI stable API for the Qt 6 3DInput library
+Requires:       qt6-3dcore-private-devel = %{version}
 Requires:       cmake(Qt63DInput) = %{real_version}
+%requires_eq    qt6-core-private-devel
 
 %description -n qt6-3dinput-private-devel
 This package provides private headers of libQt63DInput that do not have any
@@ -212,13 +225,17 @@ The Qt 6 3DLogic library.
 Summary:        Development files for the Qt 6 3DLogic library
 Requires:       libQt63DLogic6 = %{version}
 Requires:       cmake(Qt63DCore) = %{real_version}
+Requires:       cmake(Qt6Gui) = %{real_version}
 
 %description -n qt6-3dlogic-devel
 Development files for the Qt 6 3DLogic library.
 
 %package -n qt6-3dlogic-private-devel
 Summary:        Non-ABI stable API for the Qt 6 3DLogic library
+Requires:       qt6-3dcore-private-devel = %{version}
 Requires:       cmake(Qt63DLogic) = %{real_version}
+%requires_eq    qt6-core-private-devel
+%requires_eq    qt6-gui-private-devel
 
 %description -n qt6-3dlogic-private-devel
 This package provides private headers of libQt63DLogic that do not have any
@@ -233,7 +250,9 @@ The Qt 6 3DQuick library.
 %package -n qt6-3dquick-devel
 Summary:        Development files for the Qt 6 3DQuick library
 Requires:       libQt63DQuick6 = %{version}
+Requires:       qt6-3dcore-private-devel = %{version}
 Requires:       cmake(Qt63DCore) = %{real_version}
+Requires:       cmake(Qt6Gui) = %{real_version}
 Requires:       cmake(Qt6Qml) = %{real_version}
 Requires:       cmake(Qt6Quick) = %{real_version}
 
@@ -243,6 +262,10 @@ Development files for the Qt 6 3DQuick library.
 %package -n qt6-3dquick-private-devel
 Summary:        Non-ABI stable API for the Qt 6 3DQuick library
 Requires:       cmake(Qt63DQuick) = %{real_version}
+%requires_eq    qt6-core-private-devel
+%requires_eq    qt6-gui-private-devel
+%requires_eq    qt6-qml-private-devel
+%requires_eq    qt6-quick-private-devel
 
 %description -n qt6-3dquick-private-devel
 This package provides private headers of libQt63DQuick that do not have any
@@ -269,7 +292,12 @@ Development files for the Qt 6 3DQuickAnimation library.
 
 %package -n qt6-3dquickanimation-private-devel
 Summary:        Non-ABI stable API for the Qt 6 3DQuickAnimation library
+Requires:       qt6-3dcore-private-devel = %{version}
+Requires:       qt6-3dquick-private-devel = %{version}
+Requires:       qt6-3drender-private-devel = %{version}
 Requires:       cmake(Qt63DQuickAnimation) = %{real_version}
+%requires_eq    qt6-core-private-devel
+%requires_eq    qt6-qml-private-devel
 
 %description -n qt6-3dquickanimation-private-devel
 This package provides private headers of libQt63DQuickAnimation that do not
@@ -287,6 +315,7 @@ Requires:       libQt63DQuickExtras6 = %{version}
 Requires:       cmake(Qt63DCore) = %{real_version}
 Requires:       cmake(Qt63DExtras) = %{real_version}
 Requires:       cmake(Qt63DInput) = %{real_version}
+Requires:       cmake(Qt63DLogic) = %{real_version}
 Requires:       cmake(Qt63DQuick) = %{real_version}
 Requires:       cmake(Qt63DRender) = %{real_version}
 Requires:       cmake(Qt6Gui) = %{real_version}
@@ -297,7 +326,12 @@ Development files for the Qt 6 3DQuickExtras library.
 
 %package -n qt6-3dquickextras-private-devel
 Summary:        Non-ABI stable API for the Qt 6 3DQuickExtras library
+Requires:       qt6-3dextras-private-devel = %{version}
+Requires:       qt6-3dquick-private-devel = %{version}
+Requires:       qt6-3drender-private-devel = %{version}
 Requires:       cmake(Qt63DQuickExtras) = %{real_version}
+%requires_eq    qt6-core-private-devel
+%requires_eq    qt6-qml-private-devel
 
 %description -n qt6-3dquickextras-private-devel
 This package provides private headers of libQt63DQuickExtras that do not have
@@ -323,7 +357,12 @@ Development files for the Qt 6 3DQuickInput library.
 
 %package -n qt6-3dquickinput-private-devel
 Summary:        Non-ABI stable API for the Qt 6 3DQuickInput library
+Requires:       qt6-3dcore-private-devel = %{version}
+Requires:       qt6-3dinput-private-devel = %{version}
+Requires:       qt6-3dquick-private-devel = %{version}
 Requires:       cmake(Qt63DQuickInput) = %{real_version}
+%requires_eq    qt6-core-private-devel
+%requires_eq    qt6-qml-private-devel
 
 %description -n qt6-3dquickinput-private-devel
 This package provides private headers of libQt63DQuickInput that do not have any
@@ -349,7 +388,12 @@ Development files for the Qt 6 3DQuickRender library.
 
 %package -n qt6-3dquickrender-private-devel
 Summary:        Non-ABI stable API for the Qt 6 3DQuickRender library
+Requires:       qt6-3dcore-private-devel = %{version}
+Requires:       qt6-3dquick-private-devel = %{version}
+Requires:       qt6-3drender-private-devel = %{version}
 Requires:       cmake(Qt63DQuickRender) = %{real_version}
+%requires_eq    qt6-core-private-devel
+%requires_eq    qt6-qml-private-devel
 
 %description -n qt6-3dquickrender-private-devel
 This package provides private headers of libQt63DQuickRender that do not have
@@ -375,7 +419,12 @@ Development files for the Qt 6 3DQuickScene2D library.
 
 %package -n qt6-3dquickscene2d-private-devel
 Summary:        Non-ABI stable API for the Qt 6 3DQuickScene2D library
+Requires:       qt6-3dcore-private-devel = %{version}
+Requires:       qt6-3dquick-private-devel = %{version}
+Requires:       qt6-3drender-private-devel = %{version}
 Requires:       cmake(Qt63DQuickScene2D) = %{real_version}
+%requires_eq    qt6-core-private-devel
+%requires_eq    qt6-qml-private-devel
 
 %description -n qt6-3dquickscene2d-private-devel
 This package provides private headers of libQt63DQuickScene2D that do not have
@@ -399,7 +448,10 @@ Development files for the Qt 6 3DRender library.
 
 %package -n qt6-3drender-private-devel
 Summary:        Non-ABI stable API for the Qt 6 3DRender library
+Requires:       qt6-3dcore-private-devel = %{version}
 Requires:       cmake(Qt63DRender) = %{real_version}
+Requires:       cmake(Qt6Concurrent) = %{real_version}
+%requires_eq    qt6-core-private-devel
 
 %description -n qt6-3drender-private-devel
 This package provides private headers of libQt63DRender that do not have any
