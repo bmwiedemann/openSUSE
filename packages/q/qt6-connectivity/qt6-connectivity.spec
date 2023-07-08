@@ -82,9 +82,10 @@ Development files for the Qt6 connectivity libraries.
 
 %package private-devel
 Summary:        Non-ABI stable API for the Qt 6 connectivity libraries
-Requires:       qt6-core-private-devel
 Requires:       cmake(Qt6Bluetooth) = %{real_version}
 Requires:       cmake(Qt6Nfc) = %{real_version}
+%requires_eq    qt6-core-private-devel
+%requires_eq    qt6-network-private-devel
 
 %description private-devel
 This package provides private headers of qt6-connectivity that are normally
