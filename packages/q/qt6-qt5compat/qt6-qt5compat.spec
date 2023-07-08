@@ -75,7 +75,7 @@ The Qt 6 Core 5 Compat library
 %package devel
 Summary:        Qt 6 Core 5 Compat library - Development files
 Requires:       libQt6Core5Compat6 = %{version}
-Requires:       qt6-core-private-devel
+Requires:       cmake(Qt6Core) = %{real_version}
 
 %description devel
 Development files for the Qt 6 Core 5 Compat library
