@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 11 09:30:38 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to make qmlimportscanner usable with qml-autoreqprov
+  again (QTBUG-115170):
+  * 0001-qmlimportscanner-Include-module-versions-again.patch
+
+-------------------------------------------------------------------
 Fri Jun 30 15:13:09 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update subpackages requirements

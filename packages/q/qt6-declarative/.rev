@@ -216,4 +216,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1097542</requestid>
   </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>40c303dd39b1962a0a52c64b0b92380c</srcmd5>
+    <version>6.5.1</version>
+    <time>1689083843</time>
+    <user>anag+factory</user>
+    <comment>- Add patch to make qmlimportscanner usable with qml-autoreqprov
+  again (QTBUG-115170):
+  * 0001-qmlimportscanner-Include-module-versions-again.patch</comment>
+    <requestid>1098107</requestid>
+  </revision>
 </revisionlist>
