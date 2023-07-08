@@ -69,7 +69,9 @@ Development files for the Qt 6 CoAP library.
 
 %package private-devel
 Summary:        Non-ABI stable API for the Qt 6 CoAP library
+Requires:       qt6-core-private-devel = %{version}
 Requires:       cmake(Qt6Coap) = %{real_version}
+Requires:       cmake(Qt6Network) = %{real_version}
 
 %description private-devel
 This package provides private headers of libQt6Coap that do not have any

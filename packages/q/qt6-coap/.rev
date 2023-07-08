@@ -167,4 +167,12 @@
     <comment>Qt 6.5.1</comment>
     <requestid>1089148</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>8de53f9a3ff48407e015cf641881a5f4</srcmd5>
+    <version>6.5.1</version>
+    <time>1688849259</time>
+    <user>dimstar_suse</user>
+    <comment>Update subpackages requirements</comment>
+    <requestid>1097619</requestid>
+  </revision>
 </revisionlist>
