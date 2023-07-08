@@ -72,7 +72,9 @@ Development files for the Qt 6 SerialBus library.
 
 %package private-devel
 Summary:        Non-ABI stable API for the Qt 6 SerialBus library
+Requires:       cmake(Qt6Network) = %{real_version}
 Requires:       cmake(Qt6SerialBus) = %{real_version}
+Requires:       cmake(Qt6SerialPort) = %{real_version}
 %requires_eq    qt6-core-private-devel
 
 %description private-devel
