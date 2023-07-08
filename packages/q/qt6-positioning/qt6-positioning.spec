@@ -129,6 +129,7 @@ The Qt 6 PositioningQuick library.
 %package -n qt6-positioningquick-devel
 Summary:        Qt 6 PositioningQuick library - Development files
 Requires:       libQt6PositioningQuick6 = %{version}
+Requires:       cmake(Qt6Positioning) = %{real_version}
 Requires:       cmake(Qt6Qml) = %{real_version}
 Requires:       cmake(Qt6Quick) = %{real_version}
 
@@ -137,9 +138,8 @@ Development files for the Qt 6 PositioningQuick library.
 
 %package -n qt6-positioningquick-private-devel
 Summary:        Non-ABI stable API for the Qt 6 PositioningQuick Library
+Requires:       qt6-positioning-private-devel = %{version}
 Requires:       cmake(Qt6PositioningQuick) = %{real_version}
-%requires_eq    qt6-core-private-devel
-%requires_eq    qt6-qml-private-devel
 %requires_eq    qt6-quick-private-devel
 
 %description -n qt6-positioningquick-private-devel
