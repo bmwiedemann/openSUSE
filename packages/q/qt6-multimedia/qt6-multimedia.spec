@@ -104,6 +104,8 @@ Development files for the Qt 6 Multimedia library.
 %package private-devel
 Summary:        Non-ABI stable API for the Qt 6 Multimedia Library
 Requires:       cmake(Qt6Multimedia) = %{real_version}
+%requires_eq    qt6-core-private-devel
+%requires_eq    qt6-gui-private-devel
 
 %description private-devel
 This package provides private headers of libQt6Multimedia that do not have any
@@ -118,6 +120,7 @@ The Qt 6 MultimediaWidgets library.
 %package -n qt6-multimediawidgets-devel
 Summary:        Qt 6 MultimediaWidgets library - Development files
 Requires:       libQt6MultimediaWidgets6 = %{version}
+Requires:       cmake(Qt6Gui) = %{real_version}
 Requires:       cmake(Qt6Multimedia) = %{real_version}
 Requires:       cmake(Qt6Widgets) = %{real_version}
 
@@ -126,6 +129,7 @@ Development files for the Qt 6 MultimediaWidgets library.
 
 %package -n qt6-multimediawidgets-private-devel
 Summary:        Non-ABI stable API for the Qt 6 MultimediaWidgets Library
+Requires:       qt6-multimedia-private-devel = %{version}
 Requires:       cmake(Qt6MultimediaWidgets) = %{real_version}
 %requires_eq    qt6-widgets-private-devel
 
@@ -142,8 +146,7 @@ The Qt 6 SpatialAudio library.
 %package -n qt6-spatialaudio-devel
 Summary:        Qt 6 SpatialAudio library - Development files
 Requires:       libQt6SpatialAudio6 = %{version}
-Requires:       cmake(Qt6Gui) = %{real_version}
-Requires:       cmake(Qt6Network) = %{real_version}
+Requires:       cmake(Qt6Multimedia) = %{real_version}
 
 %description -n qt6-spatialaudio-devel
 Development files for the Qt 6 SpatialAudio library.
@@ -169,7 +172,9 @@ This library does not have any ABI or API guarantees.
 Summary:        Qt 6 MultimediaQuick library - Development files
 Requires:       libQt6MultimediaQuick6 = %{version}
 Requires:       qt6-multimedia-private-devel = %{version}
+Requires:       cmake(Qt6Multimedia) = %{real_version}
 Requires:       cmake(Qt6Quick) = %{real_version}
+%requires_eq    qt6-quick-private-devel
 
 %description -n qt6-multimediaquick-private-devel
 Development files for the Qt 6 Multimedia private library.
@@ -185,8 +190,9 @@ This library does not have any ABI or API guarantees.
 %package -n qt6-quick3dspatialaudio-private-devel
 Summary:        Qt 6 Quick3DSpatialAudio library - Development files
 Requires:       libQt6Quick3DSpatialAudio6 = %{version}
-Requires:       qt6-multimedia-private-devel = %{version}
-Requires:       cmake(Qt6Quick) = %{real_version}
+Requires:       cmake(Qt6Quick3D) = %{version}
+Requires:       cmake(Qt6SpatialAudio) = %{version}
+%requires_eq    qt6-quick3d-private-devel
 
 %description -n qt6-quick3dspatialaudio-private-devel
 Development files for the Qt 6 Quick3DSpatialAudio private library.
