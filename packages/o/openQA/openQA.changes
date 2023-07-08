@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jul 08 04:22:57 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1688760836.a3a5f95:
+  * Quote shell vars
+  * Remove unreachable shift statement from script arg parsing
+  * Convert script/configure-web-proxy from POSIX sh to bash
+  * Fix escaping in test tables
+  * Allow nginx setup via configure-web-proxy and openqa-bootstrap script
+  * Improved nginx config: Provide template and includes
+  * Extend install doc to cover nginx
+
+-------------------------------------------------------------------
 Wed Jul 05 20:22:47 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1688565452.efc15ea:
