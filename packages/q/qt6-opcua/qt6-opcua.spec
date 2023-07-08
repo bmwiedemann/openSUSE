@@ -76,6 +76,8 @@ Development files for the Qt 6 OpcUa library.
 %package private-devel
 Summary:        Non-ABI stable API for the Qt 6 OpcUa library
 Requires:       cmake(Qt6OpcUa) = %{real_version}
+%requires_eq    qt6-core-private-devel
+%requires_eq    qt6-network-private-devel
 
 %description private-devel
 This package provides private headers of libQt6Opcua that do not have any
