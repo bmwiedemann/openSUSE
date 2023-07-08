@@ -102,8 +102,8 @@ This library does not have any ABI or API guarantees.
 %package -n qt6-hunspellinputmethod-private-devel
 Summary:        Development files for the Qt 6 HunspellInputMethod library
 Requires:       libQt6HunspellInputMethod6 = %{version}
-Requires:       qt6-virtualkeyboard-private-devel = %{version}
 Requires:       cmake(Qt6Gui) = %{real_version}
+Requires:       cmake(Qt6VirtualKeyboard) = %{real_version}
 # Renamed in 6.2.0
 Provides:       qt6-hunspellinputmethod-devel = 6.2.0
 Obsoletes:      qt6-hunspellinputmethod-devel < 6.2.0
@@ -157,7 +157,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledTcime
 %{_qt6_cmakedir}/Qt6/FindCerence*.cmake
 %{_qt6_cmakedir}/Qt6/FindMyScript.cmake
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtVirtualKeyboardTestsConfig.cmake
-%{_qt6_cmakedir}/Qt6VirtualKeyboard
+%{_qt6_cmakedir}/Qt6VirtualKeyboard/
 %{_qt6_descriptionsdir}/VirtualKeyboard.json
 %{_qt6_includedir}/QtVirtualKeyboard/
 %{_qt6_libdir}/libQt6VirtualKeyboard.prl
