@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun 30 15:13:07 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update subpackages requirements
+
+-------------------------------------------------------------------
+Thu Jun 29 11:13:42 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Replace 0001-Require-GCC-10.patch with 0001-Require-GCC-12.patch
+
+-------------------------------------------------------------------
 Wed Jun  7 17:58:46 UTC 2023 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Add patch for QTabBar regression in Qt 6.5.1 (QTBUG-114204)

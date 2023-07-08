@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package qt6-base
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -47,15 +47,15 @@ Patch100:       0001-Tell-the-truth-about-private-API.patch
 # No need to pollute the library dir with object files, install them in the qt6 subfolder
 Patch101:       0001-CMake-Install-objects-files-into-ARCHDATADIR.patch
 %if 0%{?suse_version} == 1500
-Patch102:       0001-Require-GCC-10.patch
+Patch102:       0001-Require-GCC-12.patch
 %endif
 ##
 BuildRequires:  cmake >= 3.18.3
 BuildRequires:  cups-devel
 # The default GCC version in Leap 15 is too old
 %if 0%{?suse_version} == 1500
-BuildRequires:  gcc10-PIE
-BuildRequires:  gcc10-c++
+BuildRequires:  gcc12-PIE
+BuildRequires:  gcc12-c++
 %else
 BuildRequires:  gcc-c++
 %endif
@@ -236,8 +236,8 @@ Requires:       libQt6Core6 = %{version}
 Requires:       qt6-base-common-devel = %{version}
 %if 0%{?suse_version} == 1500
 # Some public classes require C++ 17 features
-Requires:       gcc10-PIE
-Requires:       gcc10-c++
+Requires:       gcc12-PIE
+Requires:       gcc12-c++
 %endif
 
 %description -n qt6-core-devel
@@ -327,6 +327,7 @@ Requires:       cmake(Qt6DeviceDiscoverySupportPrivate) = %{real_version}
 Requires:       cmake(Qt6EglFSDeviceIntegrationPrivate) = %{real_version}
 Requires:       cmake(Qt6EglFsKmsSupportPrivate) = %{real_version}
 Requires:       cmake(Qt6FbSupportPrivate) = %{real_version}
+Requires:       cmake(Qt6Gui) = %{real_version}
 Requires:       cmake(Qt6InputSupportPrivate) = %{real_version}
 Requires:       pkgconfig(xkbcommon)
 
@@ -578,8 +579,8 @@ BuildArch:      noarch
 %description -n qt6-docs-common
 This package contains common files used for building Qt documentation.
 
-
 ### Static libraries ###
+
 %package -n qt6-exampleicons-devel-static
 Summary:        Qt ExampleIcons module
 # TODO
@@ -636,8 +637,8 @@ Requires:       qt6-platformsupport-devel-static = %{version}
 This package provides private headers of libQt6PlatformSupport that do not have
 any ABI or API guarantees.
 
-
 ### Plugins ###
+
 %package -n qt6-networkinformation-glib
 Summary:        Network information for QNetworkInformation using GNetworkMonitor
 
