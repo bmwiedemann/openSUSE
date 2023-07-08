@@ -69,11 +69,11 @@ The Qt 6 Location library.
 %package -n qt6-location-devel
 Summary:        Qt 6 Location library - Development files
 Requires:       libQt6Location6 = %{version}
-Requires:       qt6-quick-private-devel
 Requires:       cmake(Qt6Gui) = %{real_version}
-Requires:       cmake(Qt6Network) = %{real_version}
 Requires:       cmake(Qt6Positioning) = %{real_version}
 Requires:       cmake(Qt6PositioningQuick) = %{real_version}
+Requires:       cmake(Qt6Qml) = %{real_version}
+Requires:       cmake(Qt6Quick) = %{real_version}
 Requires:       cmake(Qt6QuickShapesPrivate) = %{real_version}
 
 %description -n qt6-location-devel

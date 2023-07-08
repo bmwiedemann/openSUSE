@@ -23,4 +23,12 @@
     <comment>Qt 6.5.1 (forwarded request 1088916 from krop)</comment>
     <requestid>1089089</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>8c7bbb048a8cd3efe3693439d219437c</srcmd5>
+    <version>6.5.1</version>
+    <time>1688849231</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1097545</requestid>
+  </revision>
 </revisionlist>
