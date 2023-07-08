@@ -30,6 +30,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
 ## MANUAL BEGIN
+Requires:       python3-rich
 Recommends:     vlc-noX
 ## MANUAL END
 BuildArch:      noarch
