@@ -75,6 +75,7 @@ Summary:        Qt 6 Scxml library - Development files
 Requires:       %{name} = %{version}
 Requires:       libQt6Scxml6 = %{version}
 Requires:       cmake(Qt6Core) = %{real_version}
+Requires:       cmake(Qt6Qml) = %{real_version}
 
 %description devel
 Development files for the Qt 6 Scxml library.
@@ -82,7 +83,7 @@ Development files for the Qt 6 Scxml library.
 %package private-devel
 Summary:        Non-ABI stable API for the Qt 6 Scxml library
 Requires:       cmake(Qt6Scxml) = %{real_version}
-%requires_eq    qt6-qml-private-devel
+%requires_eq    qt6-core-private-devel
 
 %description private-devel
 This package provides private headers of libQt6Scxml that do not have any
@@ -153,8 +154,6 @@ Development files for the Qt 6 StateMachineQml library.
 %package -n qt6-statemachineqml-private-devel
 Summary:        Non-ABI stable API for the Qt 6 StateMachineQml library
 Requires:       cmake(Qt6StateMachineQml) = %{real_version}
-%requires_eq    qt6-core-private-devel
-%requires_eq    qt6-gui-private-devel
 
 %description -n qt6-statemachineqml-private-devel
 This package provides private headers of libQt6StateMachineQml that do not have any
