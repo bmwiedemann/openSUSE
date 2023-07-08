@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jul  7 02:49:40 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Avoid duplication in the %build section for the pie ppc64 case.
+  Just use line continuation for the build cmdline and %ifnarch
+  ppc64 to enable pie mode on everything but ppc64
+
+-------------------------------------------------------------------
+Fri Jul  7 02:48:21 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix the rclone version update by properly setting  the package
+  variable during the build
+
+-------------------------------------------------------------------
+Fri Jul  7 02:29:50 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- added fix-nextcloud-chunked.patch:
+  The patch is a slightly modified version of
+  73d1b72bd759f838ad322b42e75111652eafe02e, which should give the
+  user more guidance to check the configuration.
+  This should fix https://github.com/rclone/rclone/issues/7103
+
+-------------------------------------------------------------------
 Thu Jul  6 09:31:26 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to 1.63.0:

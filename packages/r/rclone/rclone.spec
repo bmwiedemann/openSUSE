@@ -26,6 +26,7 @@ Group:          Productivity/Networking/Web/Utilities
 URL:            https://rclone.org/
 Source:         %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
+Patch1:         fix-nextcloud-chunked.patch
 BuildRequires:  fdupes
 BuildRequires:  go >= 1.20
 BuildRequires:  golang-packaging
@@ -65,17 +66,21 @@ Zsh command line completion support for %{name}.
 %prep
 %setup -q
 %setup -q -D -T -a 1
+%autopatch -p1
 
 %build
 %if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
 export CC="gcc-11"
 %endif
-%ifarch ppc64
-# pie not supported
-go build -o %{name} -mod=vendor
-%else
-go build -o %{name} -mod=vendor -buildmode=pie
+# pie not supported on ppc64
+go build -o %{name} \
+%ifnarch ppc64
+  -buildmode=pie \
 %endif
+  -mod=vendor \
+  --ldflags '-X github.com/rclone/rclone/fs.Version=v%{version}'
+
+./%{name} version
 
 ./%{name} genautocomplete bash completion.bash
 ./%{name} genautocomplete zsh  completion.zsh
