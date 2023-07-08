@@ -1,4 +1,753 @@
 -------------------------------------------------------------------
+Thu Jun  8 17:49:10 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.85.2
+  - Bugfixes
+    - Fix regression where using TLS for HTTP replication between
+      workers did not work. Introduced in v1.85.0. (#15746)
+
+-------------------------------------------------------------------
+Wed Jun  7 15:28:24 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.85.1
+  Note: this release only fixes a bug that stopped some deployments
+  from upgrading to v1.85.0. There is no need to upgrade to v1.85.1
+  if successfully running v1.85.0.
+
+  - Bugfixes
+    - Fix bug in schema delta that broke upgrades for some
+      deployments. Introduced in v1.85.0. (#15738, #15739)
+
+-------------------------------------------------------------------
+Tue Jun  6 11:34:10 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- make use that the pythons define and use_python do not diverge by
+  moving them closer to each other.
+
+-------------------------------------------------------------------
+Tue Jun  6 10:06:46 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.85.0
+  - Security
+
+    - GHSA-26c5-ppr8-f33p / CVE-2023-32682 — Low Severity It may be
+      possible for a deactivated user to login when using uncommon
+      configurations. (boo#1212055)
+
+    - GHSA-98px-6486-j7qc / CVE-2023-32683 — Low Severity A
+      discovered oEmbed or image URL can bypass the
+      url_preview_url_blacklist setting potentially allowing server
+      side request forgery or bypassing network policies. Impact is
+      limited to IP addresses allowed by the
+      url_preview_ip_range_blacklist setting (by default this only
+      allows public IPs). (boo#1212054) 
+
+  - Features
+    - Improve performance of backfill requests by performing
+      backfill of previously failed requests in the background.
+      (#15585)
+    - Add a new admin API to create a new device for a user.
+      (#15611)
+    - Add Unix socket support for Redis connections. Contributed by
+      Jason Little. (#15644)
+  - Bugfixes
+    - Fix a performance issue introduced in Synapse v1.83.0 which
+      meant that purging rooms was very slow and
+      database-intensive. (#15693)
+    - Fix a long-standing bug where setting the read marker could
+      fail when using message retention. Contributed by Nick @
+      Beeper (@Fizzadar). (#15464)
+    - Fix a long-standing bug where the url_preview_url_blacklist
+      configuration setting was not applied to oEmbed or image URLs
+      found while previewing a URL. (#15601)
+    - Fix a long-standing bug where filters with multiple
+      backslashes were rejected. (#15607)
+    - Fix a bug introduced in Synapse 1.82.0 where the error
+      message displayed when validation of the
+      app_service_config_files config option fails would be
+      incorrectly formatted. (#15614)
+    - Fix a long-standing bug where deactivated users were still
+      able to login using the custom org.matrix.login.jwt login
+      type (if enabled). (#15624)
+    - Fix a long-standing bug where deactivated users were able to
+      login in uncommon situations. (#15634)
+  - Improved Documentation
+    - Warn users that at least 3.75GB of space is needed for the
+      nix Synapse development environment. (#15613)
+    - Remove outdated comment from the generated and sample
+      homeserver log configs. (#15648)
+    - Improve contributor docs to make it more clear that Rust is a
+      necessary prerequisite. Contributed by @grantm. (#15668)
+  - Deprecations and Removals
+    - Deprecate calling the /register endpoint with an unspecced
+      user property for application services. (#15703)
+    - Remove the old version of the R30 (30-day retained users)
+      phone-home metric. (#10428)
+  - Internal Changes
+    - Speed up background jobs populate_full_user_id_user_filters
+      and populate_full_user_id_profiles. (#15700)
+    - Create dependabot changelogs at release time. (#15481)
+    - Add not null constraint to column full_user_id of tables
+      profiles and user_filters. (#15537)
+    - Allow connecting to HTTP Replication Endpoints by using
+      worker_name when constructing the request. (#15578)
+    - Make the thread_id column on event_push_actions,
+      event_push_actions_staging, and event_push_summary non-null.
+      (#15597)
+    - Run mypy type checking with the minimum supported Python
+      version to catch new usage that isn't backwards-compatible.
+      (#15602)
+    - Fix subscriptable type usage in Python <3.9. (#15604)
+    - Update internal terminology. (#15606, #15620)
+    - Instrument state and state_group storage-related operations
+      to better picture what's happening when tracing. (#15610,
+      #15647)
+    - Trace how many new events from the backfill response we need
+      to process. (#15633)
+    - Re-type config paths in ConfigErrors to be StrSequences
+      instead of Iterable[str]s. (#15615)
+    - Update Mutual Rooms (MSC2666) implementation to match new
+      proposal text. (#15621)
+    - Remove the unstable identifiers from faster joins (MSC3706).
+      (#15625)
+    - Fix the olddeps CI. (#15626)
+    - Remove duplicate timestamp from test logs
+      (_trial_temp/test.log). (#15636)
+    - Fix two memory leaks in trial test runs. (#15630)
+    - Limit the size of the HomeServerConfig cache in trial test
+      runs. (#15646)
+    - Improve type hints. (#15658, #15659)
+    - Add requesting user id parameter to key claim methods in
+      TransportLayerClient. (#15663)
+    - Speed up rebuilding of the user directory for local users.
+      (#15665)
+    - Implement "option 2" for MSC3820: Room version 11. (#15666,
+      #15678)
+
+-------------------------------------------------------------------
+Fri May 26 19:16:23 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.84.1
+  This patch release fixes a major issue with homeservers that do
+  not have an instance_map defined but which do use workers. If you
+  have already upgraded to Synapse 1.84.0 and your homeserver is
+  working normally, then there is no need to update to this patch
+  release.
+
+  - Bugfixes
+    - Fix a bug introduced in Synapse v1.84.0 where workers do not
+      start up when no instance_map was provided. (#15672)
+  - Internal Changes
+    - Add dch and notify-send to the development Nix flake so that
+      the release script can be used. (#15673)
+
+-------------------------------------------------------------------
+Wed May 24 00:15:46 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.84.0
+  The worker_replication_* configuration settings have been
+  deprecated in favour of configuring the main process consistently
+  with other instances in the instance_map. The deprecated settings
+  will be removed in Synapse v1.88.0, but changing your
+  configuration in advance is recommended. See the upgrade notes
+  for more information.
+
+  https://github.com/matrix-org/synapse/blob/release-v1.84/docs/upgrade.md#upgrading-to-v1840
+
+  - Features
+    - Add an option to prevent media downloads from configured
+      domains. (#15197)
+    - Add forget_rooms_on_leave config option to automatically
+      forget rooms when users leave them or are removed from them.
+      (#15224)
+    - Add redis TLS configuration options. (#15312)
+    - Add a config option to delay push notifications by a random
+      amount, to discourage time-based profiling. (#15516)
+    - Stabilize support for MSC2659: application service ping
+      endpoint. Contributed by Tulir @ Beeper. (#15528)
+    - Implement MSC4009 to expand the supported characters in
+      Matrix IDs. (#15536)
+    - Advertise support for Matrix 1.6 on /_matrix/client/versions.
+      (#15559)
+    - Print full error and stack-trace of any exception that occurs
+      during startup/initialization. (#15569)
+  - Bugfixes
+    - Fix a bug introduced in Synapse 1.84.0rc1 where errors during
+      startup were not reported correctly on Python < 3.10.
+      (#15599)
+    - Don't fail on federation over TOR where SRV queries are not
+      supported. Contributed by Zdzichu. (#15523)
+    - Experimental support for MSC4010 which rejects setting the
+      "m.push_rules" via account data. (#15554, #15555)
+    - Fix a long-standing bug where an invalid membership event
+      could cause an internal server error. (#15564)
+    - Require at least poetry-core v1.1.0. (#15566, #15571)
+  - Deprecations and Removals
+    - Remove need for worker_replication_* based settings in worker
+      configuration yaml by placing this data directly on the
+      instance_map instead. (#15491)
+  - Updates to the Docker image
+    - Add pkg-config package to Stage 0 to be able to build
+      Dockerfile on ppc64le architecture. (#15567)
+  - Improved Documentation
+    - Clarify documentation of the "Create or modify account" Admin
+      API. (#15544)
+    - Fix path to the statistics/database/rooms admin API in
+      documentation. (#15560)
+    - Update and improve Mastodon Single Sign-On documentation.
+      (#15587)
+  - Internal Changes
+    - Use oEmbed to generate URL previews for YouTube Shorts.
+      (#15025)
+    - Create new Client for use with HTTP Replication between
+      workers. Contributed by Jason Little. (#15470)
+    - Remove need for worker_replication_* based settings in worker
+      configuration yaml by placing this data directly on the
+      instance_map instead. (#15491)
+    - Bump pyicu from 2.10.2 to 2.11. (#15509)
+    - Remove references to supporting per-user flag for MSC2654.
+      (#15522)
+    - Don't use a trusted key server when running the demo scripts.
+      (#15527)
+    - Speed up rebuilding of the user directory for local users.
+      (#15529)
+    - Speed up deleting of old rows in event_push_actions. (#15531)
+    - Install the xmlsec and mdbook packages and switch back to the
+      upstream cachix/devenv repo in the nix development
+      environment. (#15532, #15533, #15545)
+    - Implement MSC3987 by removing "dont_notify" from the list of
+      actions in default push rules. (#15534)
+    - Move various module API callback registration methods to a
+      dedicated class. (#15535)
+    - Proxy /user/devices federation queries to application
+      services for MSC3984. (#15539)
+    - Factor out an is_mine_server_name method. (#15542)
+    - Allow running Complement tests using podman by adding a
+      PODMAN environment variable to scripts-dev/complement.sh.
+      (#15543)
+    - Bump serde from 1.0.160 to 1.0.162. (#15548)
+    - Bump types-setuptools from 67.6.0.5 to 67.7.0.1. (#15549)
+    - Bump sentry-sdk from 1.19.1 to 1.22.1. (#15550)
+    - Bump ruff from 0.0.259 to 0.0.265. (#15551)
+    - Bump hiredis from 2.2.2 to 2.2.3. (#15552)
+    - Bump types-requests from 2.29.0.0 to 2.30.0.0. (#15553)
+    - Add org.matrix.msc3981 info to /_matrix/client/versions.
+      (#15558)
+    - Declare unstable support for MSC3391 under
+      /_matrix/client/versions if the experimental implementation
+      is enabled. (#15562)
+    - Implement MSC3821 to update the redaction rules. (#15563)
+    - Implement updated redaction rules from MSC3389. (#15565)
+    - Allow pip install to use setuptools_rust 1.6.0 when building
+      Synapse. (#15570)
+    - Deal with upcoming Github Actions deprecations. (#15576)
+    - Export run_as_background_process from the module API.
+      (#15577)
+    - Update build system requirements to allow building with
+      poetry-core==1.6.0. (#15588)
+    - Bump serde from 1.0.162 to 1.0.163. (#15589)
+    - Bump phonenumbers from 8.13.7 to 8.13.11. (#15590)
+    - Bump types-psycopg2 from 2.9.21.9 to 2.9.21.10. (#15591)
+    - Bump types-commonmark from 0.9.2.2 to 0.9.2.3. (#15592)
+    - Bump types-setuptools from 67.7.0.1 to 67.7.0.2. (#15594)
+
+-------------------------------------------------------------------
+Tue May  9 18:58:15 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.83.0
+  - Features
+    - Experimental support to recursively provide relations per
+      MSC3981. (#15315)
+    - Experimental support for MSC3970: Scope transaction IDs to
+      devices. (#15318)
+    - Add an admin API endpoint to support per-user feature flags.
+      (#15344)
+    - Add a module API to send an HTTP push notification. (#15387)
+    - Add an admin API endpoint to query the largest rooms by disk
+      space used in the database. (#15482)
+  - Bugfixes
+    - Disable push rule evaluation for rooms excluded from sync.
+      (#15361)
+    - Fix a long-standing bug where cached server key results which
+      were directly fetched would not be properly re-used. (#15417)
+    - Fix a bug introduced in Synapse 1.73.0 where some
+      experimental push rules were returned by default. (#15494)
+  - Improved Documentation
+    - Add Nginx loadbalancing example with sticky mxid for workers.
+      (#15411)
+    - Update outdated development docs that mention restrictions in
+      versions of SQLite that we no longer support. (#15498)
+  - Internal Changes
+    - Speedup tests by caching HomeServerConfig instances. (#15284)
+    - Add denormalised event stream ordering column to membership
+      state tables for future use. Contributed by Nick @ Beeper
+      (@fizzadar). (#15356)
+    - Always use multi-user device resync replication endpoints.
+      (#15418)
+    - Add column full_user_id to tables profiles and user_filters.
+      (#15458)
+    - Update support for MSC3983 to allow always returning
+      fallback-keys in a /keys/claim request. (#15462)
+    - Improve type hints. (#15465, #15496, #15497)
+    - Support claiming more than one OTK at a time. (#15468)
+    - Bump types-pyyaml from 6.0.12.8 to 6.0.12.9. (#15471)
+    - Bump pyasn1-modules from 0.2.8 to 0.3.0. (#15473)
+    - Bump cryptography from 40.0.1 to 40.0.2. (#15474)
+    - Bump types-netaddr from 0.8.0.7 to 0.8.0.8. (#15475)
+    - Bump types-jsonschema from 4.17.0.6 to 4.17.0.7. (#15476)
+    - Ask bug reporters to provide logs as text. (#15479)
+    - Add a Nix flake for use as a development environment.
+      (#15495)
+    - Bump anyhow from 1.0.70 to 1.0.71. (#15507)
+    - Bump types-pillow from 9.4.0.19 to 9.5.0.2. (#15508)
+    - Bump packaging from 23.0 to 23.1. (#15510)
+    - Bump types-requests from 2.28.11.16 to 2.29.0.0. (#15511)
+    - Bump setuptools-rust from 1.5.2 to 1.6.0. (#15512)
+    - Update the check_schema_delta script to account for when the
+      schema version has been bumped locally. (#15466)
+- Allow newer setuptools-rust
+
+-------------------------------------------------------------------
+Tue Apr 25 11:53:22 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.82.0
+  - Features
+    - Allow loading the /directory/room/{roomAlias} endpoint on
+      workers. (#15333)
+    - Add some validation to instance_map configuration loading.
+      (#15431)
+    - Allow loading the /capabilities endpoint on workers. (#15436)
+  - Bugfixes
+    - Delete server-side backup keys when deactivating an account.
+      (#15181)
+    - Fix and document untold assumption that on_logged_out module
+      hooks will be called before the deletion of pushers. (#15410)
+    - Improve robustness when handling a perspective key response
+      by deduplicating received server keys. (#15423)
+    - Synapse now correctly fails to start if the config option
+      app_service_config_files is not a list. (#15425)
+    - Disable loading RefreshTokenServlet
+      (/_matrix/client/(r0|v3|unstable)/refresh) on workers.
+      (#15428)
+  - Improved Documentation
+    - Note that the delete_stale_devices_after background job
+      always runs on the main process. (#15452)
+  - Deprecations and Removals
+    - Remove the broken, unspecced registration fallback. Note that
+      the login fallback is unaffected by this change. (#15405)
+  - Internal Changes
+    - Improve DB performance of clearing out old data from
+      stream_ordering_to_exterm. (#15382, #15429)
+    - Implement MSC3989 redaction algorithm. (#15393)
+    - Implement MSC2175 to stop adding creator to create events.
+      (#15394)
+    - Implement MSC2174 to move the redacts key to a content
+      property. (#15395)
+    - Trust dtonlay/rust-toolchain in CI. (#15406)
+    - Explicitly install Synapse during typechecking in CI.
+      (#15409)
+    - Only load the SSO redirect servlet if SSO is enabled.
+      (#15421)
+    - Refactor SimpleHttpClient to pull out a base class. (#15427)
+    - Improve type hints. (#15432)
+    - Convert async to normal tests in TestSSOHandler. (#15433)
+    - Speed up the user directory background update. (#15435)
+    - Disable directory listing for static resources in
+      /_matrix/static/. (#15438)
+    - Move various module API callback registration methods to a
+      dedicated class. (#15453)
+
+-------------------------------------------------------------------
+Fri Apr 14 12:07:11 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.81.0
+  Synapse now attempts the versioned appservice paths before
+  falling back to the legacy paths. Usage of the legacy routes
+  should be considered deprecated.
+
+  Additionally, Synapse has supported sending the application
+  service access token via the Authorization header since v1.70.0.
+  For backwards compatibility it is also sent as the access_token
+  query parameter. This is insecure and should be considered
+  deprecated.
+
+  A future version of Synapse (v1.88.0 or later) will remove
+  support for legacy application service routes and query parameter
+  authorization.
+
+  - Features
+    - Add the ability to enable/disable registrations when in the
+      OIDC flow. (#14978)
+    - Add a primitive helper script for listing worker endpoints.
+      (#15243)
+    - Experimental support for passing One Time Key and device key
+      requests to application services (MSC3983 and MSC3984).
+      (#15314, #15321)
+    - Allow loading /password_policy endpoint on workers. (#15331)
+    - Add experimental support for Unix sockets. Contributed by
+      Jason Little. (#15353)
+    - Build Debian packages for Ubuntu 23.04 (Lunar Lobster).
+      (#15381)
+  - Bugfixes
+    - Fix the set_device_id_for_pushers_txn background update
+      crash. (#15391)
+    - Fix a long-standing bug where edits of non-m.room.message
+      events would not be correctly bundled. (#15295)
+    - Fix a bug introduced in Synapse v1.55.0 which could delay
+      remote homeservers being able to decrypt encrypted messages
+      sent by local users. (#15297)
+    - Add a check to SQLite port_db script
+    - to ensure that the sqlite database passed to the script
+      exists before trying to port from it. (#15306)
+    - Fix a bug introduced in Synapse 1.76.0 where responses from
+      worker deployments could include an internal _INT_STREAM_POS
+      key. (#15309)
+    - Fix a long-standing bug that Synpase only used the legacy
+      appservice routes. (#15317)
+    - Fix a long-standing bug preventing users from rejoining rooms
+      after being banned and unbanned over federation. Contributed
+      by Nico. (#15323)
+    - Fix bug in worker mode where on a rolling restart of workers
+      the "typing" worker would consume 100% CPU until it got
+      restarted. (#15332)
+    - Fix a long-standing bug where some to_device messages could
+      be dropped when using workers. (#15349)
+    - Fix a bug introduced in Synapse 1.70.0 where the background
+      sync from a faster join could spin for hours when one of the
+      events involved had been marked for backoff. (#15351)
+    - Fix missing app variable in mail subject for password resets.
+      Contributed by Cyberes. (#15352)
+    - Fix a rare bug introduced in Synapse 1.66.0 where initial
+      syncs would fail when the user had been kicked from a faster
+      joined room that had not finished syncing. (#15383)
+  - Improved Documentation
+    - Fix a typo in login requests ratelimit defaults. (#15341)
+    - Add some clarification to the doc/comments regarding TCP
+      replication. (#15354)
+    - Note that Synapse 1.74 queued a rebuild of the user directory
+      tables. (#15386)
+  - Internal Changes
+    - Update CI to run complement under the latest stable go
+      version. (#15403)
+    - Use immutabledict instead of frozendict. (#15113)
+    - Add developer documentation for the Federation Sender and add
+      a documentation mechanism using Sphinx. (#15265, #15336)
+    - Make the pushers rely on the device_id instead of the
+      access_token_id for various operations. (#15280)
+    - Bump sentry-sdk from 1.15.0 to 1.17.0. (#15285)
+    - Allow running the Twisted trunk job against other branches.
+      (#15302)
+    - Remind the releaser to ask for changelog feedback in
+      #synapse-dev. (#15303)
+    - Bump dtolnay/rust-toolchain from
+      e12eda571dc9a5ee5d58eecf4738ec291c66f295 to
+      fc3253060d0c959bea12a59f10f8391454a0b02d. (#15304)
+    - Reject events with an invalid "mentions" property per
+      MSC3952. (#15311)
+    - As an optimisation, use TRUNCATE on Postgres when clearing
+      the user directory tables. (#15316)
+    - Fix .gitignore rule for the Complement source tarball
+      downloaded automatically by complement.sh. (#15319)
+    - Bump serde from 1.0.157 to 1.0.158. (#15324)
+    - Bump regex from 1.7.1 to 1.7.3. (#15325)
+    - Bump types-pyopenssl from 23.0.0.4 to 23.1.0.0. (#15326)
+    - Bump furo from 2022.12.7 to 2023.3.23. (#15327)
+    - Bump ruff from 0.0.252 to 0.0.259. (#15328)
+    - Bump cryptography from 40.0.0 to 40.0.1. (#15329)
+    - Bump mypy-zope from 0.9.0 to 0.9.1. (#15330)
+    - Speed up unit tests when using SQLite3. (#15334)
+    - Speed up pydantic CI job. (#15339)
+    - Speed up sample config CI job. (#15340)
+    - Fix copyright year in SSO footer template. (#15358)
+    - Bump peaceiris/actions-gh-pages from 3.9.2 to 3.9.3. (#15369)
+    - Bump serde from 1.0.158 to 1.0.159. (#15370)
+    - Bump serde_json from 1.0.94 to 1.0.95. (#15371)
+    - Speed up membership queries for users with forgotten rooms.
+      (#15385)
+
+-------------------------------------------------------------------
+Thu Mar 30 20:56:38 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.80.0
+  - Features
+    - Stabilise support for MSC3966: event_property_contains push
+      condition. (#15187)
+    - Implement MSC2659: application service ping endpoint.
+      Contributed by Tulir @ Beeper. (#15249)
+    - Allow loading /register/available endpoint on workers.
+      (#15268)
+    - Improve performance of creating and authenticating events.
+      (#15195)
+    - Add topic and name events to group of events that are batch
+      persisted when creating a room. (#15229)
+  - Bugfixes
+    - Fix a bug in which the POST
+      /_matrix/client/v3/rooms/{roomId}/report/{eventId} endpoint
+      would return the wrong error if the user did not have
+      permission to view the event. This aligns Synapse's
+      implementation with MSC2249. (#15298, #15300)
+    - Fix a bug introduced in Synapse 1.75.0rc1 where the SQLite
+      port_db script
+    - would fail to open the SQLite database. (#15301)
+    - Fix a long-standing bug in which the user directory would
+      assume any remote membership state events represent a profile
+      change. (#14755, #14756)
+    - Implement MSC3873 to fix a long-standing bug where properties
+      with dots were handled ambiguously in push rules. (#15190)
+    - Faster joins: Fix a bug introduced in Synapse 1.66 where
+      spurious "Failed to find memberships ..." errors would be
+      logged. (#15232)
+    - Fix a long-standing error when sending message into deleted
+      room. (#15235)
+    - Updates to the Docker image
+    - Ensure the Dockerfile builds on platforms that don't have a
+      cryptography wheel. (#15239)
+    - Mirror images to the GitHub Container Registry
+      (ghcr.io/matrix-org/synapse). (#15281, #15282)
+  - Improved Documentation
+    - Add a missing endpoint to the workers documentation. (#15223)
+  - Internal Changes
+    - Add additional functionality to declaring worker types when
+      starting Complement in worker mode. (#14921)
+    - Add Synapse-Trace-Id to access-control-expose-headers header.
+      (#14974)
+    - Make the HttpTransactionCache use the Requester in addition
+      of the just the Request to build the transaction key.
+      (#15200)
+    - Improve log lines when purging rooms. (#15222)
+    - Improve type hints. (#15230, #15231, #15238)
+    - Move various module API callback registration methods to a
+      dedicated class. (#15237)
+    - Configure GitHub Actions for merge queues. (#15244)
+    - Add schema comments about the destinations and
+      destination_rooms tables. (#15247)
+    - Skip processing of auto-join room behaviour if there are no
+      auto-join rooms configured. (#15262)
+    - Remove unused store method
+      _set_destination_retry_timings_emulated. (#15266)
+    - Reorganize URL preview code. (#15269)
+    - Clean-up direct TCP replication code. (#15272, #15274)
+    - Make configure_workers_and_start script used in Complement
+      tests compatible with older versions of Python. (#15275)
+    - Add a /versions flag for MSC3952. (#15293)
+    - Bump hiredis from 2.2.1 to 2.2.2. (#15252)
+    - Bump serde from 1.0.152 to 1.0.155. (#15253)
+    - Bump pysaml2 from 7.2.1 to 7.3.1. (#15254)
+    - Bump msgpack from 1.0.4 to 1.0.5. (#15255)
+    - Bump gitpython from 3.1.30 to 3.1.31. (#15256)
+    - Bump cryptography from 39.0.1 to 39.0.2. (#15257)
+    - Bump pydantic from 1.10.4 to 1.10.6. (#15286)
+    - Bump serde from 1.0.155 to 1.0.157. (#15287)
+    - Bump anyhow from 1.0.69 to 1.0.70. (#15288)
+    - Bump txredisapi from 1.4.7 to 1.4.9. (#15289)
+    - Bump pygithub from 1.57 to 1.58.1. (#15290)
+    - Bump types-requests from 2.28.11.12 to 2.28.11.15. (#15291)
+
+-------------------------------------------------------------------
+Tue Mar 14 19:50:05 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.79.0
+  - Features
+    - Add two new Third Party Rules module API callbacks:
+      on_add_user_third_party_identifier and
+      on_remove_user_third_party_identifier. (#15044)
+    - Experimental support for MSC3967 to not require UIA for
+      setting up cross-signing on first use. (#15077)
+    - Add media information to the command line user data export
+      tool. (#15107)
+    - Add an admin API to delete a specific event report. (#15116)
+    - Add support for knocking to workers. (#15133)
+    - Allow use of the /filter Client-Server APIs on workers.
+      (#15134)
+    - Update support for MSC2677: remove support for server-side
+      aggregation of reactions. (#15172)
+    - Stabilise support for MSC3758: event_property_is push
+      condition. (#15185)
+  - Bugfixes
+    - Fix a bug introduced in Synapse 1.79.0rc1 where attempting to
+      register a on_remove_user_third_party_identifier module API
+      callback would be a no-op. (#15227)
+    - Fix a rare bug introduced in Synapse 1.73 where events could
+      remain unsent to other homeservers after a faster-join to a
+      room. (#15248)
+    - Fix a bug introduced in Synapse 1.75 that caused experimental
+      support for deleting account data to raise an internal server
+      error while using an account data writer worker. (#14869)
+    - Fix a long-standing bug where Synapse handled an unspecced
+      field on push rules. (#15088)
+    - Fix a long-standing bug where a URL preview would break if
+      the discovered oEmbed failed to download. (#15092)
+    - Fix a long-standing bug where an initial sync would not
+      respond to changes to the list of ignored users if there was
+      an initial sync cached. (#15163)
+    - Add the transaction_id in the events included in many
+      endpoints' responses. (#15174)
+    - Fix a bug introduced in Synapse 1.78.0 where requests to
+      claim dehydrated devices would fail with a 405 error.
+      (#15180)
+    - Stop applying edits when bundling aggregations, per MSC3925.
+      (#15193)
+    - Fix a long-standing bug where the user directory search was
+      not case-insensitive for accented characters. (#15143)
+  - Updates to the Docker image
+    - Improve startup logging in the with-workers Docker image.
+      (#15186)
+  - Improved Documentation
+    - Document how to use caches in a module. (#14026)
+    - Clarify which worker processes the ThirdPartyRules'
+      on_new_event module API callback runs on. (#15071)
+    - Document using Shibboleth as an OpenID Provider. (#15112)
+    - Correct reference to federation_verify_certificates in
+      configuration documentation. (#15139)
+    - Correct small documentation errors in some
+      MatrixFederationHttpClient methods. (#15148)
+    - Correct the description of the behavior of
+      registration_shared_secret_path on startup. (#15168)
+  - Deprecations and Removals
+    - Deprecate the on_threepid_bind module callback, to be
+      replaced by on_add_user_third_party_identifier. See upgrade
+      notes. ([#15044]
+    - Remove the unspecced room_alias field from the /createRoom
+      response. (#15093)
+    - Remove the unspecced PUT on the /knock/{roomIdOrAlias}
+      endpoint. (#15189)
+    - Remove the undocumented and unspecced type parameter to the
+      /thumbnail endpoint. (#15137)
+    - Remove unspecced and buggy PUT method on the unstable
+      /rooms/<room_id>/batch_send endpoint. (#15199)
+  - Internal Changes
+    - Refactor filter_events_for_server. (#15240)
+    - Run the integration test suites with the asyncio reactor
+      enabled in CI. (#14101)
+    - Batch up storing state groups when creating a new room.
+      (#14918)
+    - Update MSC3952 support based on changes to the MSC. (#15051)
+    - Refactor writing json data in FileExfiltrationWriter.
+      (#15095)
+    - Tighten the login ratelimit defaults. (#15135)
+    - Fix a typo in an experimental config setting. (#15138)
+    - Refactor the media modules. (#15146, #15175)
+    - Improve type hints. (#15164)
+    - Move get_event_report and get_event_reports_paginate from
+      RoomStore to RoomWorkerStore. (#15165)
+    - Remove dangling reference to being a reference implementation
+      in docstring. (#15167)
+    - Add an option to force a rebuild of the "editable" complement
+      image. (#15184)
+    - Use nightly rustfmt in CI. (#15188)
+    - Add a get_next_txn method to StreamIdGenerator to match
+      MultiWriterIdGenerator. (#15191)
+    - Combine AbstractStreamIdTracker and
+      AbstractStreamIdGenerator. (#15192)
+    - Automatically fix errors with ruff. (#15194)
+    - Refactor database transaction for query users' devices to
+      reduce database pool contention. (#15215)
+    - Correct test_icu_word_boundary_punctuation so that it passes
+      with the ICU versions available in Alpine and macOS. (#15177)
+
+-------------------------------------------------------------------
+Tue Feb 28 22:35:35 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.78.0
+  - Features
+    - Implement the experimental exact_event_match push rule
+      condition from MSC3758. (#14964)
+    - Add account data to the command line user data export tool.
+      (#14969)
+    - Implement MSC3873 to disambiguate push rule keys with dots in
+      them. (#15004)
+    - Allow Synapse to use a specific Redis logical database in
+      worker-mode deployments. (#15034)
+    - Tag opentracing spans for federation requests with the name
+      of the worker serving the request. (#15042)
+    - Implement the experimental exact_event_property_contains push
+      rule condition from MSC3966. (#15045)
+    - Remove spurious dont_notify action from the defaults for the
+      .m.rule.reaction pushrule. (#15073)
+    - Update the error code returned when user sends a duplicate
+      annotation. (#15075)
+  - Bugfixes
+    - Fix a bug introduced in Synapse 1.76 where 5s delays would
+      occasionally occur in deployments using workers. (#15150)
+    - Prevent clients from reporting nonexistent events. (#13779)
+    - Return spec-compliant JSON errors when unknown endpoints are
+      requested. (#14605)
+    - Fix a long-standing bug where the room aliases returned could
+      be corrupted. (#15038)
+    - Fix a bug introduced in Synapse 1.76.0 where partially-joined
+      rooms could not be deleted using the purge room API. (#15068)
+    - Fix a long-standing bug where federated joins would fail if
+      the first server in the list of servers to try is not in the
+      room. (#15074)
+    - Fix a bug introduced in Synapse v1.74.0 where searching with
+      colons when using ICU for search term tokenisation would fail
+      with an error. (#15079)
+    - Reduce the likelihood of a rare race condition where
+      rejoining a restricted room over federation would fail.
+      (#15080)
+    - Fix a bug introduced in Synapse 1.76 where workers would fail
+      to start if the health listener was configured. (#15096)
+    - Fix a bug introduced in Synapse 1.75 where the portdb script
+      would fail to run after a room had been faster-joined.
+      (#15108)
+  - Improved Documentation
+    - Document how to start Synapse with Poetry. Contributed by
+      @thezaidbintariq. (#14892, #15022)
+    - Update delegation documentation to clarify that SRV DNS
+      delegation does not eliminate all needs to serve files from
+      .well-known locations. Contributed by @williamkray. (#14959)
+    - Fix a mistake in registration_shared_secret_path docs.
+      (#15078)
+    - Refer to a more recent blog post on the Database Maintenance
+      Tools page. Contributed by @jahway603. (#15083)
+  - Internal Changes
+    - Re-type hint some collections as read-only. (#13755)
+    - Faster joins: don't stall when another user joins during a
+      partial-state room resync. (#14606)
+    - Add a class UnpersistedEventContext to allow for the batching
+      up of storing state groups. (#14675)
+    - Add a check to ensure that locked dependencies have source
+      distributions available. (#14742)
+    - Tweak comment on _is_local_room_accessible as part of room
+      visibility in /hierarchy to clarify the condition for a room
+      being visible. (#14834)
+    - Prevent WARNING: there is already a transaction in progress
+      lines appearing in PostgreSQL's logs on some occasions.
+      (#14840)
+    - Use StrCollection to avoid potential bugs with
+      Collection[str]. (#14929)
+    - Improve performance of /sync in a few situations. (#14973)
+    - Limit concurrent event creation for a room to avoid state
+      resolution when sending bursts of events to a local room.
+      (#14977)
+    - Skip calculating unread push actions in /sync when
+      enable_push is false. (#14980)
+    - Add a schema dump symlinks inside contrib, to make it easier
+      for IDEs to interrogate Synapse's database schema. (#14982)
+    - Improve type hints. (#15008, #15026, #15027, #15028, #15031,
+      #15035, #15052, #15072, #15084)
+    - Update MSC3952 support based on changes to the MSC. (#15037)
+    - Avoid mutating a cached value in get_user_devices_from_cache.
+      (#15040)
+    - Fix a rare exception in logs on start up. (#15041)
+    - Update pyo3-log to v0.8.1. (#15043)
+    - Avoid mutating cached values in
+      _generate_sync_entry_for_account_data. (#15047)
+    - Refactor arguments of try_unbind_threepid and
+      _try_unbind_threepid_with_id_server to not use dictionaries.
+      (#15053)
+    - Merge debug logging from the hotfixes branch. (#15054)
+    - Faster joins: omit device list updates originating from
+      partial state rooms in /sync responses without lazy loading
+      of members enabled. (#15069)
+    - Fix clashing database transaction name. (#15070)
+    - Upper-bound frozendict dependency. This works around us being
+      unable to test installing our wheels against Python 3.11 in
+      CI. (#15114)
+    - Tweak logging for when a worker waits for its view of a
+      replication stream to catch up. (#15120)
+
+-------------------------------------------------------------------
 Mon Feb 20 12:45:02 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - lock matrix-synapse until frozendict can enable python 3.11

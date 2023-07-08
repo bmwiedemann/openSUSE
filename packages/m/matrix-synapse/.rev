@@ -692,4 +692,41 @@ mostly-working synapse than nothing at all) and the package has been update to
   support</comment>
     <requestid>1066823</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>4f3e68933ccbf5bb061ce2b68fd7e9b2</srcmd5>
+    <version>1.85.2</version>
+    <time>1688849200</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.85.2
+  - Bugfixes
+    - Fix regression where using TLS for HTTP replication between
+      workers did not work. Introduced in v1.85.0. (#15746)
+
+- Update to 1.85.1
+  Note: this release only fixes a bug that stopped some deployments
+  from upgrading to v1.85.0. There is no need to upgrade to v1.85.1
+  if successfully running v1.85.0.
+  - Bugfixes
+    - Fix bug in schema delta that broke upgrades for some
+      deployments. Introduced in v1.85.0. (#15738, #15739)
+
+- make use that the pythons define and use_python do not diverge by
+  moving them closer to each other.
+
+- Update to 1.85.0
+  - Security
+    - GHSA-26c5-ppr8-f33p / CVE-2023-32682 — Low Severity It may be
+      possible for a deactivated user to login when using uncommon
+      configurations. (boo#1212055)
+    - GHSA-98px-6486-j7qc / CVE-2023-32683 — Low Severity A
+      discovered oEmbed or image URL can bypass the
+      url_preview_url_blacklist setting potentially allowing server
+      side request forgery or bypassing network policies. Impact is
+      limited to IP addresses allowed by the
+      url_preview_ip_range_blacklist setting (by default this only
+      allows public IPs). (boo#1212054) 
+  - Features
+    - Improve performance of backfill requests by performing</comment>
+    <requestid>1097110</requestid>
+  </revision>
 </revisionlist>

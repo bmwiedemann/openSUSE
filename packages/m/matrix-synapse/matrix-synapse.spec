@@ -27,22 +27,23 @@
 %global attrs_version                 22.2.0
 %global bcrypt_version                4.0.1
 %global bleach_version                5.0.1
-%global canonicaljson_version         1.6.4
-%global canonicaljson_max_version     2
-%global cryptography_version          38.0.4
-%global frozendict_version            2.3.4
+%global canonicaljson_version         2.0.0
+%global cryptography_version          40.0.2
+%global immutabledict_version         2.2.4
 %global idna_version                  3.4
 %global ijson_version                 3.1.4
 %global jsonschema_version            4.17.3
 %global matrix_common_version         1.3.0
 %global matrix_common_max_version     2
-%global msgpack_version               1.0.4
+%global msgpack_version               1.0.5
 %global netaddr_version               0.8.0
+# TODO: 8.13.11
 %global phonenumbers_version          8.13.5
-%global prometheus_client_version     0.16.0
+%global prometheus_client_version     0.17.0
 %global psutil_version                2.0.0
 %global pyOpenSSL_version             23.0.0
 %global pyasn1_version                0.4.8
+# TODO 0.3.0
 %global pyasn1_modules_version        0.2.8
 %global pymacaroons_version           0.13.0
 %global service_identity_version      21.1.0
@@ -54,20 +55,22 @@
 %global treq_version                  22.2.0
 %global unpaddedbase64_version        2.1.0
 %global matrix_synapse_ldap3_version  0.2.2
-# TODO: bump to 22.0
-%global packaging_version             23.0
-%global psycopg2_version              2.9.5
+%global packaging_version             23.1
+%global psycopg2_version              2.9.6
+# TODO             7.3.1
 %global pysaml2_version               7.2.1
 %global Authlib_version               1.2.0
 %global lxml_version                  4.9.2
-%global sentry_sdk_version            1.11.1
+%global sentry_sdk_version            1.22.1
 %global PyJWT_version                 2.4.0
 %global jaeger_client_version         4.8.0
 %global opentracing_version           2.4.0
-%global hiredis_version               2.0.0
-%global txredisapi_version            1.4.7
+# TODO: 2.2.3
+%global hiredis_version               2.2.2
+%global txredisapi_version            1.4.9
 %global Pympler_version               1.0.1
 %global pydantic_version              1.9.1
+# TODO: 2.10.2
 %global pyicu_version                 2.10.2
 %else
 # some version locks based on poetry.lock
@@ -78,10 +81,9 @@
 %global attrs_version                 21.1.1
 %global bcrypt_version                3.1.7
 %global bleach_version                1.4.3
-%global canonicaljson_version         1.6.3
-%global canonicaljson_max_version     2
+%global canonicaljson_version         2.0.0
 %global cryptography_version          3.4.7
-%global frozendict_version            2.1.3
+%global immutabledict_version         2.0
 %global idna_version                  2.5
 %global ijson_version                 3.2.0
 %global jsonschema_version            3.0.0
@@ -122,8 +124,10 @@
 %endif
 
 %define requires_peq() %(echo '%*' | LC_ALL=C xargs -r rpm -q --whatprovides --qf 'Requires: %%{name} = %%{epoch}:%%{version}\\n' | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
-# only switch this back to python3 when frozendict supports the current default python version
-%define pythons python310
+
+%define use_python python3
+
+%define pythons %{use_python}
 
 # These come from matrix-synapse's CONDITIONAL_REQUIREMENTS.
 # missing deps
@@ -146,18 +150,11 @@
 #   https://github.com/matrix-org/synapse/releases or synapse/CHANGES.md
 # * Commit+submit
 
-#if 0%{?suse_version} >= 1550
-#define use_python python38
-#define __python3 #{_bindir}/python3
-#else
-%define use_python python310
-#endif
-
 %define         modname synapse
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.77.0
+Version:        1.85.2
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -182,7 +179,6 @@ Patch1:         bump-dependencies.patch
 Source100:      10719-Fix-instert-of-duplicate-key-into-event_json.patch
 BuildRequires:  %{use_python}-base >= 3.8
 BuildRequires:  %{use_python}-pip
-BuildRequires:  %{use_python}-poetry-core >= 1.0.0
 BuildRequires:  %{use_python}-setuptools
 BuildRequires:  %{use_python}-wheel
 BuildRequires:  cargo
@@ -192,10 +188,11 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildRequires:  unzip
+BuildRequires:  (%{use_python}-poetry-core >= 1.0.0 with %{use_python}-poetry-core =< 1.6.1)
 %{?systemd_ordering}
 %{sysusers_requires}
 %requires_peq   %{use_python}-base
-BuildRequires:  (%{use_python}-setuptools-rust >= 1.3 with %{use_python}-setuptools-rust < 1.5.3)
+BuildRequires:  (%{use_python}-setuptools-rust >= 1.3 with %{use_python}-setuptools-rust =< 1.6.0)
 # NOTE: Keep this is in the same order as pyproject.toml.
 # some version locks based on poetry.lock
 BuildRequires:  %{use_python}-Jinja2 >= %{Jinja2_version}
@@ -212,12 +209,12 @@ BuildRequires:  %{use_python}-bcrypt >= %{bcrypt_version}
 %requires_peq   %{use_python}-bcrypt
 BuildRequires:  %{use_python}-bleach >= %{bleach_version}
 %requires_peq   %{use_python}-bleach
-BuildRequires:  (%{use_python}-canonicaljson >= %{canonicaljson_version} with %{use_python}-canonicaljson <  %{canonicaljson_max_version})
+BuildRequires:  (%{use_python}-canonicaljson >= %{canonicaljson_version})
 %requires_peq   %{use_python}-canonicaljson
 BuildRequires:  %{use_python}-cryptography >= %{cryptography_version}
 %requires_peq   %{use_python}-cryptography
-BuildRequires:  %{use_python}-frozendict >= %{frozendict_version}
-%requires_peq   %{use_python}-frozendict
+BuildRequires:  (%{use_python}-immutabledict >= %{immutabledict_version})
+%requires_peq   %{use_python}-immutabledict
 BuildRequires:  %{use_python}-idna >= %{idna_version}
 %requires_peq   %{use_python}-idna
 BuildRequires:  %{use_python}-ijson >= %{ijson_version}
