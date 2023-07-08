@@ -1,10 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul  7 13:37:21 UTC 2023 - Matthias Bach <marix@marix.org> - 57
+
+- Update to version 57
+  * Added a GetUnsigned function for getting unsigned values.
+  * Added GetInteger64 and GetUnsigned64 to read 64-bit integers.
+
+-------------------------------------------------------------------
 Sat Jul 16 08:19:28 UTC 2022 - Matthias Bach <marix@marix.org> - 56
 
-- Update to version 55
+- Update to version 56
   * Fix redundant cast-to-int when INI_USE_STACK!=0
   * Make inline comments work on subsequent lines of multiline values
-
 
 -------------------------------------------------------------------
 Fri Mar 25 22:03:32 UTC 2022 - Matthias Bach <marix@marix.org> - 55
