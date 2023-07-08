@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Jul  7 15:43:07 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- patch file fix-librsync-leap.patch is being deleted as part of a rename
+- patch file fix-librsync-leap.diff is being added as part of a rename
+- patch optional-disable-docs.patch is being deleted as part of a rename
+- patch optional-disable-docs.diff is being added as part of a rename
+- patch go-buildmode-pie.diff is being added so that 'go build' includes '-buildmode=pie'
+
+-------------------------------------------------------------------
+Thu Jul  6 16:47:05 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding wayland-protocols-1.32.diff patch to account for 'compiler crashes'
+  from wayland-protocols-devel update (#6422)
+  * This is patched upstream via 95d1564 and 7d2dc25
+- Removing -Wno-error=switch flag as this was a workaround to deal with
+  scenario from above
+
+-------------------------------------------------------------------
+Tue Jul  4 20:51:36 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Renaming the following files:
+  * fix-librsync-leap{.patch -> .diff}
+  * optional-disable-docs{.patch -> diff}
+
+-------------------------------------------------------------------
+Tue Jul  4 19:58:53 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
+
+- Set -Wno-error=switch flag to prevent compiler crashes for RISCV
+  and ARM
+
+-------------------------------------------------------------------
+Thu Jun 29 20:22:40 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Cleaning up "wayland-devel obsoletes libwayland-egl-devel"
+- Adding 'Recommends: python3-importlib_resources'
+
+-------------------------------------------------------------------
+Tue May  9 09:23:45 UTC 2023 - Max Lin <mlin@suse.com>
+
+- Use python3.11 on Leap 15.5
+  * python3.11 is the only python3 > 3.6 version would be shipped
+    in Leap 15.5
+
+-------------------------------------------------------------------
 Fri Apr 21 09:59:52 UTC 2023 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to 0.28.1:
