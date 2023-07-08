@@ -183,4 +183,12 @@
     <comment>Qt 6.5.1 (forwarded request 1088916 from krop)</comment>
     <requestid>1089112</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>fd22475b76da05a7805c278eff37dd5d</srcmd5>
+    <version>6.5.1</version>
+    <time>1688849246</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1097561</requestid>
+  </revision>
 </revisionlist>

@@ -110,6 +110,7 @@ Requires:       libQt6WaylandClient6 = %{version}
 # qtwaylandscanner is required
 Requires:       qt6-wayland = %{version}
 Requires:       cmake(Qt6Gui) = %{real_version}
+Requires:       cmake(Qt6WaylandCompositor) = %{real_version}
 Requires:       cmake(Qt6WaylandGlobalPrivate) = %{real_version}
 
 %description -n qt6-waylandclient-devel
@@ -118,6 +119,8 @@ Development files for the Qt6 WaylandClient library.
 %package -n qt6-waylandclient-private-devel
 Summary:        Non-ABI stable API for the Qt 6 WaylandClient library
 Requires:       cmake(Qt6WaylandClient) = %{real_version}
+%requires_eq    qt6-core-private-devel
+%requires_eq    qt6-gui-private-devel
 
 %description -n qt6-waylandclient-private-devel
 This package provides private headers of libQt6WaylandClient that do not have
@@ -144,6 +147,10 @@ Development files for the Qt6 WaylandCompositor library.
 %package -n qt6-waylandcompositor-private-devel
 Summary:        Non-ABI stable API for the Qt6 WaylandCompositor library
 Requires:       cmake(Qt6WaylandCompositor) = %{real_version}
+%requires_eq    qt6-core-private-devel
+%requires_eq    qt6-gui-private-devel
+%requires_eq    qt6-qml-private-devel
+%requires_eq    qt6-quick-private-devel
 
 %description -n qt6-waylandcompositor-private-devel
 This package provides private headers of libQt6WaylandCompositor that do not
@@ -203,8 +210,8 @@ This library does not have any ABI or API guarantees.
 %package -n qt6-wlshellintegration-private-devel
 Summary:        Qt 6 WlShellIntegration library - Development files
 Requires:       libQt6WlShellIntegration6 = %{version}
-Requires:       qt6-waylandclient-private-devel = %{version}
-%requires_eq    qt6-gui-private-devel
+Requires:       cmake(Qt6Gui) = %{real_version}
+Requires:       cmake(Qt6WaylandClient) = %{real_version}
 
 %description -n qt6-wlshellintegration-private-devel
 Development files for the Qt 6 WlShellIntegration library.
