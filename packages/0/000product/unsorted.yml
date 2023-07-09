@@ -3430,6 +3430,7 @@ unsorted:
   - eiskaltdcpp-daemon 
   - eiskaltdcpp-qt 
   - eiskaltdcpp-qt-lang 
+  - eksctl 
   - element-desktop 
   - element-web 
   - elementary-cmake-modules 
@@ -44381,6 +44382,10 @@ unsorted:
   - timewarrior 
   - timezonemap-devel 
   - timidity 
+  - timoni 
+  - timoni-bash-completion 
+  - timoni-fish-completion 
+  - timoni-zsh-completion 
   - tinc 
   - tini 
   - tini-static 
