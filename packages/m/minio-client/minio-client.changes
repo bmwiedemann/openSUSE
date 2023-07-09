@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 12 06:39:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230711T233044Z:
+  * This release contains a security fix in the Golang `net/http`
+    standard library - it is built with Go 1.19.11.
+  * add update UBI image to 8.8 (#4625)
+
+-------------------------------------------------------------------
 Sat Jul 08 19:38:03 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 20230707T052551Z:
