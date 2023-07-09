@@ -9127,6 +9127,8 @@ unsorted:
   - kitinerary 
   - kitinerary-devel 
   - kitty 
+  - kitty-shell-integration 
+  - kitty-terminfo 
   - kiwi-man-pages 
   - kiwi-pxeboot 
   - kiwi-systemdeps 
@@ -12869,7 +12871,7 @@ unsorted:
   - libknet1-devel 
   - libknet1-plugins-all 
   - libknot13 
-  - libkokkos-4_0 
+  - libkokkos-4_1 
   - libkolabxml-devel 
   - libkomparediff2-devel 
   - libkonkretcmpi0 
@@ -14105,15 +14107,15 @@ unsorted:
   - libprofiler0 
   - libproj25 
   - libprotobuf-c-devel 
-  - libprotobuf-lite23_3_0-32bit 
+  - libprotobuf-lite23_4_0-32bit 
   - libprotobuf-lite3_21_12-32bit 
   - libprotobuf-mutator-devel 
   - libprotobuf-mutator0 
   - libprotobuf-nanopb0 
-  - libprotobuf23_3_0-32bit 
+  - libprotobuf23_4_0-32bit 
   - libprotobuf3_21_12-32bit 
-  - libprotoc23_3_0 
-  - libprotoc23_3_0-32bit 
+  - libprotoc23_4_0 
+  - libprotoc23_4_0-32bit 
   - libprotoc3_21_12 
   - libprotoc3_21_12-32bit 
   - libproxy-devel 
