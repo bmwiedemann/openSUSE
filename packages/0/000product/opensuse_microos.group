@@ -1465,7 +1465,6 @@
     <package name="liblldp_clif1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-hardware -->
     <package name="liblmdb-0_9_30" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libloader" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
-    <package name="liblockdev1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="liblouis-data" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="liblouis20" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="liblpsolve55-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
@@ -1957,7 +1956,6 @@
     <package name="libzvbi0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-gnome -->
     <package name="libzypp" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libzypp-plugin-appdata" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
-    <package name="lockdev" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="login_defs" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="logrotate" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="lsof" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
