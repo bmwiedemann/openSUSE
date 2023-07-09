@@ -4845,4 +4845,16 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
   * 0004-Revert-loader-Make-the-loader-position-independent-o.patch (forwarded request 1095938 from favogt)</comment>
     <requestid>1095999</requestid>
   </revision>
+  <revision rev="414" vrev="1">
+    <srcmd5>67b5d0843b79f36b2e243552f85e6f1a</srcmd5>
+    <version>8.12</version>
+    <time>1688928068</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 8.12 release
+  - Initial support for painting windows in the Wayland driver.
+  - Command stream performance improvements in WineD3D.
+  - Various bug fixes.
+- update staging to 8.12 release</comment>
+    <requestid>1097829</requestid>
+  </revision>
 </revisionlist>

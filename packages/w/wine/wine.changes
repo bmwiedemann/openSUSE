@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jul  9 09:12:06 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 8.12 release
+  - Initial support for painting windows in the Wayland driver.
+  - Command stream performance improvements in WineD3D.
+  - Various bug fixes.
+- update staging to 8.12 release
+
+-------------------------------------------------------------------
 Thu Jun 29 08:01:59 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Add reverts to fix startup on 64bit
