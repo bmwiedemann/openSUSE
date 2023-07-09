@@ -927,4 +927,12 @@ Bugfixes
     <comment>Update to version 4.5.1 (forwarded request 1089562 from danishprakash)</comment>
     <requestid>1089696</requestid>
   </revision>
+  <revision rev="108" vrev="2">
+    <srcmd5>4c3dfa5a2d9187c4364ab203b8ca10f5</srcmd5>
+    <version>4.5.1</version>
+    <time>1688928045</time>
+    <user>dimstar_suse</user>
+    <comment>Don't unconditionally Obsolete podman-cni-config, ensure clean upgrade path (forwarded request 1095941 from danishprakash)</comment>
+    <requestid>1095943</requestid>
+  </revision>
 </revisionlist>

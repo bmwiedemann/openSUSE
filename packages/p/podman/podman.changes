@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 29 09:19:01 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- Don't unconditionally Obsolete podman-cni-config, ensure clean upgrade path.
+
+-------------------------------------------------------------------
+Tue Jun 27 12:04:49 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- Prefer Podman's new network stack (netavark) exclusively on ALP
+- Remove unused podman-cni-config subpackage, add systemd
+
+-------------------------------------------------------------------
 Mon May 29 10:56:00 UTC 2023 - danish.prakash@suse.com
 
 - Update to version 4.5.1:

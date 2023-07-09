@@ -28,7 +28,6 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        podman.conf
 Source2:        README.SUSE.SLES
 BuildRequires:  bash-completion
-BuildRequires:  cni
 BuildRequires:  device-mapper-devel
 BuildRequires:  fdupes
 BuildRequires:  git-core
@@ -41,16 +40,23 @@ BuildRequires:  libassuan-devel
 BuildRequires:  libbtrfs-devel
 BuildRequires:  libcontainers-common
 BuildRequires:  libgpgme-devel
+BuildRequires:  libostree-devel
 BuildRequires:  libseccomp-devel
 # at least go 1.18 is needed from go.mod
 BuildRequires:  golang(API) > 1.18
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(systemd)
 Recommends:     apparmor-abstractions
 Recommends:     apparmor-parser
 Requires:       catatonit >= 0.1.7
+# prefer Podman's new network stack on ALP
+%if 0%{suse_version} >= 1600 && !0%{?is_opensuse}
+Requires:       netavark
+%else
 Requires:       cni
 Requires:       cni-plugins
+%endif
 Requires:       conmon >= 2.0.24
 Requires:       fuse-overlayfs
 Requires:       iptables
@@ -58,9 +64,11 @@ Requires:       libcontainers-common >= 20230214
 Requires:       runc >= 1.0.1
 Requires:       slirp4netns >= 0.4.0
 Requires:       timezone
-Recommends:     %{name}-cni-config = %{version}
 Suggests:       katacontainers
-BuildRequires:  libostree-devel
+
+# deprecate unused podman-cni-config subpackage
+Provides:       %{name}-cni-config = %{version}
+Obsoletes:      %{name}-cni-config < 4.5.1
 
 
 %description
@@ -82,19 +90,6 @@ Provides:       podman:%{_bindir}/%{name}-remote
 
 %description remote
 This client allows controlling podman on a separate host, e.g. over SSH.
-
-%package cni-config
-Summary:        Basic CNI configuration for podman
-Group:          System/Management
-Requires:       %{name} = %{version}
-# iproute2 is needed by the %%triggerun scriplet
-Requires:       iproute2
-BuildArch:      noarch
-
-%description cni-config
-A "basic" CNI configuration for podman that makes networking usable for basic
-setups. In more complicated setups, users are recommended to write their own
-CNI configurations.
 
 %package docker
 Summary:        Emulate Docker CLI using podman
@@ -193,9 +188,6 @@ install -D -m 0644 %{SOURCE2} %{buildroot}%{_docdir}/%{name}/README.SUSE
 %dir %{_datadir}/fish/
 %dir %{_datadir}/fish/vendor_completions.d/
 %{_datadir}/fish/vendor_completions.d/podman-remote.fish
-
-%files cni-config
-%license LICENSE
 
 %files docker
 %{_bindir}/docker
