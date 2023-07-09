@@ -1703,4 +1703,11 @@ Main motivation is to have the license files in MicroOS also in /usr/, not in /e
     <comment>podman-cni-config is no more</comment>
     <requestid>1097756</requestid>
   </revision>
+  <revision rev="239" vrev="237">
+    <srcmd5>e9ad98fbbc433c055ce02f151760b7e9</srcmd5>
+    <version>unknown</version>
+    <time>1688974164</time>
+    <user>dimstar_suse</user>
+    <comment>no kernel-default-base on s390x</comment>
+  </revision>
 </revisionlist>
