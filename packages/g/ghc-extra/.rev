@@ -301,4 +301,12 @@ are simple additions, filling out missing functionality.</comment>
     <comment>version update</comment>
     <requestid>1077766</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>8d410dbc07aa6c6e53459c6474ea942e</srcmd5>
+    <version>1.7.14</version>
+    <time>1688928061</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1097775</requestid>
+  </revision>
 </revisionlist>
