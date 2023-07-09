@@ -24,7 +24,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           breeze5-icons
-Version:        5.107.0
+Version:        5.108.0
 Release:        0
 Summary:        Breeze icon theme
 License:        LGPL-3.0-only
@@ -42,7 +42,6 @@ BuildRequires:  python3
 BuildRequires:  python3-lxml
 BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5Test) >= 5.15.0
-BuildArch:      noarch
 
 %description
 Breeze-icons is a freedesktop.org compatible icon theme.
@@ -89,6 +88,7 @@ ln -s yast-software-group.svg %{buildroot}%{_kf5_iconsdir}/breeze/preferences/32
 %exclude %{_kf5_iconsdir}/breeze-dark/breeze-icons-dark.rcc
 %{_kf5_iconsdir}/breeze/
 %{_kf5_iconsdir}/breeze-dark/
+%{_kf5_cmakedir}/KF5BreezeIcons/
 
 %files rcc
 %dir %{_kf5_iconsdir}/breeze

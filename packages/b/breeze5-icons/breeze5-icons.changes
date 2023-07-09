@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul  3 07:01:35 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.108.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.108.0
+- Changes since 5.107.0:
+  * Export cmake config so that a app can ensure that breeze-icons is installed
+  * Remove qt6 CI builds
+
+-------------------------------------------------------------------
 Mon Jun  5 07:43:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.107.0
