@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>abc646c18dd021b2f15e7e95c8d4d680</srcmd5>
+    <version>0.10.0</version>
+    <time>1688928059</time>
+    <user>dimstar_suse</user>
+    <comment>new package timoni: package manager for Kubernetes, powered by CUE and inspired by Helm</comment>
+    <requestid>1097765</requestid>
+  </revision>
+</revisionlist>

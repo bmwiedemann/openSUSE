@@ -1,0 +1,153 @@
+-------------------------------------------------------------------
+Sat Jul 08 19:36:44 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.10.0:
+  * ci: Pin cuelang version to v0.5.0
+  * ci: Enable dependabot grouping
+  * Normalise the SLSA provenance files
+  * Document how to build bundles from JSON/YAML
+  * test: add bundle files test
+  * feat: add json support
+  * feat: add yaml support for bundles
+  * Bump anchore/sbom-action from 0.14.2 to 0.14.3
+
+-------------------------------------------------------------------
+Fri Jun 23 07:12:01 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.9.0:
+  * Enabled reproducible builds of OCI artifacts Use the source
+    date epoch (recommend by reproducible-builds.org) to set the
+    OCI artifact created timestamp. The source date is extracted
+    from Git metadata and requires the `git` CLI to be in PATH.
+    This ensures that `timoni mod push` will generate an artifact
+    with the same digest, if run multiple times on the same checked
+    out commit.
+  * Update dependencies
+  * Add support for env var injection in bundles
+  * Bump goreleaser/goreleaser-action from 4.2.0 to 4.3.0
+  * Bump slsa-framework/slsa-github-generator from 1.6.0 to 1.7.0
+  * Bump actions/checkout from 3.5.2 to 3.5.3
+  * Bump github/codeql-action from 2.3.6 to 2.13.4
+  * Bump github/codeql-action from 2.3.5 to 2.3.6
+  * Add env injector to CUE engine
+  * docs: Normalise page titles
+  * Add Helm comparison to docs
+
+-------------------------------------------------------------------
+Mon May 29 17:56:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.2:
+  * Merge the bundle values with the module defaults
+
+-------------------------------------------------------------------
+Mon May 29 17:55:24 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.1:
+  * Add CUE version to `timoni version` output
+  * Map the timeout flag to apply wait operations
+  * Bump github/codeql-action from 2.3.3 to 2.3.5
+
+-------------------------------------------------------------------
+Mon May 29 17:52:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.0:
+  * Increase default timeout to 5m
+  * Add spinner to long-running operations
+  * Pass logger via command context
+  * Add pretty print for logs and diff output
+  * Update dependencies to Kubernetes 1.27
+  * update cue to v0.5.0
+  * Bump helm/kind-action from 1.5.0 to 1.7.0
+  * Bump actions/setup-go from 4.0.0 to 4.0.1
+  * Document SLSA Provenance & SBOMs
+
+-------------------------------------------------------------------
+Tue May 16 18:18:24 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.7.1:
+  * Generate SLSA3+ Provenance
+
+-------------------------------------------------------------------
+Tue May 16 09:13:39 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.7.0:
+  * Add security policy Explain how to report a vulnerability and
+    how we handle vulnerability disclosures for the Timoni project.
+  * test: bundle build cmd
+  * docs: bundle build cmd
+  * feat: add bundle build command
+  * Bump github.com/docker/distribution
+
+-------------------------------------------------------------------
+Thu May 11 12:45:38 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.6.0:
+  * Fix apply dry-run for new namespaces
+  * Add `timoni.ignore` to module documentation
+  * Add support for `timoni.ignore` - Allow defining ignore patters
+    with `timoni.ignore` (same format as `.gitignore`) - Add a
+    default ignore file to `timoni mod init` - Exclude ignored
+    files and directories when pushing modules to registry - Load
+    `timoni.ignore` when performing operations with local modules
+  * Bump anchore/sbom-action from 0.14.1 to 0.14.2
+  * Bump github/codeql-action from 2.3.2 to 2.3.3
+
+-------------------------------------------------------------------
+Thu May 04 04:39:53 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.5.0:
+  * Update example modules and bundles
+    - bump podinfo to 6.3.6
+    - bump redis to 7.0.11
+  * Target all namespaces when deleting a named bundle
+  * Implement native linting
+  * Enforce instance schema validation
+  * Add instance schema to API
+  * Enable name-oriented bundle management
+  * Bump github/codeql-action from 2.2.12 to 2.3.2
+  * Ensure all CUE build errors are printed
+  * Improve how `GetResource` works
+  * Bump github/codeql-action from 2.2.11 to 2.2.12
+  * Bump actions/checkout from 3.5.0 to 3.5.2
+  * Add force upgrade option to bundle docs
+  * Add a bundle example to quickstart
+  * Correct target of mod push doc link
+
+-------------------------------------------------------------------
+Thu Apr 13 07:05:01 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.4.0:
+  * Document how bundles work
+  * Implement delete command for bundles
+  * Add bundle test for digest and latest version
+  * Add bundle tests for module digest
+  * Refactor bundle apply
+    - use BundleBuilder to validate and extract instances
+    - allow pinning a module by its OCI digest
+    - pull latest module when the version and digest are not
+      specified
+    - when both the module version and the digest are specified,
+      error out if the OCI digest of the version doesn't match the
+      specified digest
+  * Use the bundle builder for linting
+  * Add bundle builder to engine The BundleBuilder compiles CUE
+    definitions to Go Bundle objects, and extracts and validates
+    instances.
+  * Fetch module by OCI digest
+  * Add digest optional field to Bundle API
+  * Implement listing command for module versions The `timoni mod
+    list oci://<module-url>` command prints a table with a module's
+    versions and their OCI digests.
+  * Bump github/codeql-action from 2.2.9 to 2.2.11
+  * Add Arkade install method
+  * Add image digest to examples
+  * Bump redis to 7.0.10
+  * Bump podinfo to 6.3.5
+  * Document module publishing and versioning
+  * Bump github.com/docker/docker
+
+-------------------------------------------------------------------
+Thu Apr  6 06:29:54 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package timoni: package manager for Kubernetes, powered by
+  CUE and inspired by Helm
