@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jul 13 04:49:53 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.149.0:
+  * Fix origin check in release script (#6800)
+  * Release notes for 0.149.0
+  * Bump dependencies (#6788)
+  * Fix AWS_REGION and AWS_DEFAULT_REGION support for eksctl
+    commands (#6787)
+  * Undo changes to tag-common.sh
+  * Update generated files
+  * Update current github urls with new org urls
+  * Fix generating mocks for aws-sdk-go-v2 interfaces
+  * Revert "Support for Inf2 and trn1n instance types"
+  * Pin K8s dependencies chain to 1.25 (#6677)
+  * Adding Inf2 and trn1n support
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
 Sat Jul 08 19:36:23 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.148.0:

@@ -7,4 +7,12 @@
     <comment>new package eksctl: The official CLI for Amazon EKS</comment>
     <requestid>1097766</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2af5b353d0149776fe2ef6061de8b101</srcmd5>
+    <version>0.149.0</version>
+    <time>1689261504</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1098448</requestid>
+  </revision>
 </revisionlist>
