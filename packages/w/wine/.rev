@@ -4857,4 +4857,12 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 8.12 release</comment>
     <requestid>1097829</requestid>
   </revision>
+  <revision rev="415" vrev="2">
+    <srcmd5>7dc3f0619bd0b4fcb57bac9709b1ed31</srcmd5>
+    <version>8.12</version>
+    <time>1689083812</time>
+    <user>anag+factory</user>
+    <comment>- fixed aarch64 build</comment>
+    <requestid>1097966</requestid>
+  </revision>
 </revisionlist>

@@ -513,9 +513,9 @@ chmod 755 %winedir/my-find-requires.sh
 %{_libdir}/wine/*-windows/*.[b-z]*
 %{_libdir}/wine/*-windows/*.ax
 %{_libdir}/wine/*-windows/*.acm
-%ifarch aarch64
-%{_libdir}/wine/*-windows/st*
-%endif
+#ifarch aarch64
+#{_libdir}/wine/*-windows/st*
+#endif
 %dir %{_libdir}/wine/*-unix
 %{_libdir}/wine/*-unix/*.so*
 
@@ -532,7 +532,9 @@ chmod 755 %winedir/my-find-requires.sh
 %{_bindir}/wmc
 %{_bindir}/wrc
 %dir %{_libdir}/wine/*-unix
+%ifnarch aarch64
 %{_libdir}/wine/*-unix/*.a
+%endif
 %if 0%{?suse_version} >= 1550
 %ifarch %{ix86} x86_64
 # only generated with mingw
