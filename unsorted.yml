@@ -289,6 +289,8 @@ unsorted:
   - SampleICC 
   - SecLists 
   - ServiceReport 
+  - Setzer 
+  - Setzer-lang 
   - ShellCheck 
   - SimGear-devel 
   - SoQt-devel 
@@ -6597,7 +6599,6 @@ unsorted:
   - glibc-profile 
   - glibc-profile-32bit 
   - glibc-utils 
-  - glibc-utils-32bit 
   - glibmm2-devel 
   - glibmm2_4-devel 
   - glm-devel 
@@ -6658,7 +6659,6 @@ unsorted:
   - gnome-calendar-lang 
   - gnome-colors-icon-theme 
   - gnome-commander 
-  - gnome-commander-devel 
   - gnome-commander-lang 
   - gnome-common 
   - gnome-connections 
@@ -7302,17 +7302,10 @@ unsorted:
   - gtk2-devel 
   - gtk2-devel-32bit 
   - gtk2-engine-aurora 
-  - gtk2-engine-clearlooks-32bit 
-  - gtk2-engine-crux-32bit 
   - gtk2-engine-equinox 
-  - gtk2-engine-glide-32bit 
-  - gtk2-engine-industrial-32bit 
-  - gtk2-engine-mist-32bit 
   - gtk2-engine-nimbus 
   - gtk2-engine-oxygen 
   - gtk2-engine-oxygen-32bit 
-  - gtk2-engine-redmond95-32bit 
-  - gtk2-engine-thinice-32bit 
   - gtk2-engines-devel 
   - gtk2-immodule-amharic-32bit 
   - gtk2-immodule-inuktitut-32bit 
@@ -7342,7 +7335,6 @@ unsorted:
   - gtk2-metatheme-yaru-mate 
   - gtk2-metatheme-yuyo 
   - gtk2-theme-oxygen 
-  - gtk2-theming-engine-adwaita-32bit 
   - gtk2-tools-32bit 
   - gtk2hs-buildtools 
   - gtk3-branding-upstream 
@@ -9511,6 +9503,7 @@ unsorted:
   - kubeval 
   - kubevirt-container-disk 
   - kubevirt-manifests 
+  - kubevirt-pr-helper-conf 
   - kubevirt-tests 
   - kubevirt-virt-api 
   - kubevirt-virt-controller 
@@ -9692,7 +9685,6 @@ unsorted:
   - ldc-phobos-devel 
   - ldc-runtime-devel 
   - ldirectord 
-  - ldmtool 
   - ldns 
   - ldns-devel 
   - leafnode 
@@ -9900,9 +9892,7 @@ unsorted:
   - libFLAC12-x86-64-v3 
   - libFOX-1_6-0 
   - libFS-devel 
-  - libFS-devel-32bit 
   - libFS6 
-  - libFS6-32bit 
   - libFcitx5Config6 
   - libFcitx5Core7 
   - libFcitx5GClient-devel 
@@ -10328,13 +10318,10 @@ unsorted:
   - libSDL2-2_0-0-32bit 
   - libSDL2_Pango4 
   - libSDL2_gfx-1_0-0 
-  - libSDL2_gfx-1_0-0-32bit 
   - libSDL2_gfx-devel 
-  - libSDL2_gfx-devel-32bit 
   - libSDL2_image-2_0-0 
   - libSDL2_mixer-2_0-0 
   - libSDL2_net-2_0-0 
-  - libSDL2_net-2_0-0-32bit 
   - libSDL2_sound2 
   - libSDL2_ttf-2_0-0 
   - libSDL_Pango1 
@@ -10344,22 +10331,14 @@ unsorted:
   - libSDL_gfx-devel-32bit 
   - libSDL_gfx15-32bit 
   - libSDL_image-1_2-0 
-  - libSDL_image-1_2-0-32bit 
   - libSDL_image-devel 
-  - libSDL_image-devel-32bit 
   - libSDL_mixer-1_2-0 
-  - libSDL_mixer-1_2-0-32bit 
   - libSDL_mixer-devel 
-  - libSDL_mixer-devel-32bit 
   - libSDL_net-1_2-0 
-  - libSDL_net-1_2-0-32bit 
   - libSDL_net-devel 
-  - libSDL_net-devel-32bit 
   - libSDL_sound-1_0-1 
   - libSDL_ttf-2_0-0 
-  - libSDL_ttf-2_0-0-32bit 
   - libSDL_ttf-devel 
-  - libSDL_ttf-devel-32bit 
   - libSFCGAL1 
   - libSHERPA-MC0 
   - libSHERPA-MC0-config 
@@ -10445,9 +10424,7 @@ unsorted:
   - libXdmcp-devel-32bit 
   - libXdmcp6-32bit 
   - libXevie-devel 
-  - libXevie-devel-32bit 
   - libXevie1 
-  - libXevie1-32bit 
   - libXext-devel 
   - libXext-devel-32bit 
   - libXext6-32bit 
@@ -10455,15 +10432,11 @@ unsorted:
   - libXfixes-devel-32bit 
   - libXfixes3-32bit 
   - libXfont-devel 
-  - libXfont-devel-32bit 
-  - libXfont1-32bit 
   - libXfont2-2-32bit 
   - libXfont2-devel 
   - libXfont2-devel-32bit 
   - libXfontcache-devel 
-  - libXfontcache-devel-32bit 
   - libXfontcache1 
-  - libXfontcache1-32bit 
   - libXft-devel 
   - libXft-devel-32bit 
   - libXft2-32bit 
@@ -10490,9 +10463,7 @@ unsorted:
   - libXpm4-32bit 
   - libXpresent-devel 
   - libXprintAppUtil-devel 
-  - libXprintAppUtil-devel-32bit 
   - libXprintAppUtil1 
-  - libXprintAppUtil1-32bit 
   - libXprintUtil-devel 
   - libXprintUtil-devel-32bit 
   - libXprintUtil1 
@@ -10522,8 +10493,6 @@ unsorted:
   - libXvMC1-32bit 
   - libXvnc-devel 
   - libXxf86dga-devel 
-  - libXxf86dga-devel-32bit 
-  - libXxf86dga1-32bit 
   - libXxf86vm-devel 
   - libXxf86vm-devel-32bit 
   - libXxf86vm1-32bit 
@@ -10747,7 +10716,6 @@ unsorted:
   - libav-tools 
   - libavahi-devel 
   - libavahi-glib-devel 
-  - libavahi-glib1-32bit 
   - libavahi-gobject-devel 
   - libavahi-libevent1 
   - libavahi-qt5-1 
@@ -11270,7 +11238,6 @@ unsorted:
   - libclocale1 
   - libcloudproviders-devel 
   - libclthreads2 
-  - libclutter-1_0-0-32bit 
   - libclxclient3 
   - libclzma-suse0 
   - libclzma-suse0-x86-64-v3 
@@ -11298,8 +11265,6 @@ unsorted:
   - libcob4 
   - libcodec2-1_1-32bit 
   - libcogl-gles2-20 
-  - libcogl-pango20-32bit 
-  - libcogl20-32bit 
   - libcollectdclient-devel 
   - libcollectdclient1 
   - libcollection-devel 
@@ -11307,7 +11272,6 @@ unsorted:
   - libcolord-devel 
   - libcolord-gtk-devel 
   - libcolord-gtk1 
-  - libcolord-gtk1-32bit 
   - libcolord2-32bit 
   - libcom_err-devel 
   - libcom_err-devel-32bit 
@@ -11552,9 +11516,7 @@ unsorted:
   - libdmr0_1 
   - libdmtx-devel 
   - libdmx-devel 
-  - libdmx-devel-32bit 
   - libdmx1 
-  - libdmx1-32bit 
   - libdnet-devel 
   - libdnet1 
   - libdnf-devel 
@@ -11825,7 +11787,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla36 
+  - libfilezilla40 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -11969,7 +11931,6 @@ unsorted:
   - libfunambol-9_0_1 
   - libfunambol-devel 
   - libfuse2-32bit 
-  - libfuse3-3-32bit 
   - libfusn-devel 
   - libfusn1 
   - libfuzzy-devel 
@@ -12167,7 +12128,6 @@ unsorted:
   - libgnome-games-support-lang 
   - libgnome-games-support1_3-devel 
   - libgnome-keyring-devel 
-  - libgnome-keyring0-32bit 
   - libgnomekbd-devel 
   - libgnomesu-devel 
   - libgnt-devel 
@@ -12190,8 +12150,6 @@ unsorted:
   - libgo21-32bit 
   - libgo22 
   - libgo22-32bit 
-  - libgoa-1_0-0-32bit 
-  - libgoa-backend-1_0-1-32bit 
   - libgobject-2_0-0-32bit 
   - libgoffice-0_10-10 
   - libgomp1-32bit 
@@ -12338,7 +12296,6 @@ unsorted:
   - libgudev-1_0-devel 
   - libguess-devel 
   - libguess1 
-  - libguestfs-appliance 
   - libguestfs-bash-completion 
   - libguestfs-devel 
   - libguestfs-gobject-1_0 
@@ -12543,7 +12500,6 @@ unsorted:
   - libhidapi-libusb0 
   - libhinawa-devel 
   - libhinawa2 
-  - libhivex0 
   - libhl1 
   - libhmac-devel 
   - libhmac-tools 
@@ -12562,7 +12518,6 @@ unsorted:
   - libhts3 
   - libhtscodecs2 
   - libhttp_parser2_9 
-  - libhttp_parser2_9-32bit 
   - libhttrack2 
   - libhubbub-devel 
   - libhubbub0 
@@ -12592,7 +12547,6 @@ unsorted:
   - libical-doc 
   - libical-glib-devel 
   - libical-glib-doc 
-  - libical-glib3-32bit 
   - libical3-32bit 
   - libicecream-devel 
   - libicns-devel 
@@ -12750,7 +12704,6 @@ unsorted:
   - libjasper-devel 
   - libjavamapscript 
   - libjavascriptcoregtk-4_0-18-32bit 
-  - libjavascriptcoregtk-4_1-0-32bit 
   - libjaylink-devel 
   - libjbig-devel 
   - libjbig-devel-32bit 
@@ -12926,9 +12879,7 @@ unsorted:
   - liblazy-devel 
   - liblazy1 
   - liblbxutil-devel 
-  - liblbxutil-devel-32bit 
   - liblbxutil1 
-  - liblbxutil1-32bit 
   - liblc3-1-32bit 
   - liblc3-devel 
   - liblc3-tools 
@@ -12944,7 +12895,6 @@ unsorted:
   - libldb-devel 
   - libldl-doc 
   - libldl2 
-  - libldm-1_0-0 
   - libldm-1_0-0-devel 
   - libldns3 
   - libleechcraft-util-db-qt5-0_6_75_1 
@@ -13009,6 +12959,7 @@ unsorted:
   - libloader-javadoc 
   - libloadpng44-devel 
   - libloadpng4_4 
+  - liblockdev1 
   - liblockdev1-32bit 
   - liblockfile-devel 
   - liblockfile1 
@@ -13049,7 +13000,6 @@ unsorted:
   - liblua5_1-5-32bit 
   - liblua5_4-5-32bit 
   - libluabind0_9_1 
-  - libluajit-5_1-2-32bit 
   - liblucene++0 
   - libluksde-devel 
   - libluksde-tools 
@@ -13132,7 +13082,6 @@ unsorted:
   - libmatio11 
   - libmatroska-devel 
   - libmaxminddb-devel 
-  - libmaxminddb0-32bit 
   - libmbd 
   - libmbd-devel 
   - libmbd-mvapich2 
@@ -13216,7 +13165,6 @@ unsorted:
   - libmicrohttpd12 
   - libmikmod-devel 
   - libmikmod3 
-  - libmikmod3-32bit 
   - libmilter-doc 
   - libmimalloc2 
   - libmimetic-devel 
@@ -13261,7 +13209,6 @@ unsorted:
   - libmodi1 
   - libmodplug-devel 
   - libmodplug1 
-  - libmodplug1-32bit 
   - libmodsecurity3 
   - libmodulemd-devel 
   - libmongoose-doc 
@@ -13542,12 +13489,10 @@ unsorted:
   - libnsfdb-tools 
   - libnsfdb1 
   - libnsl-devel 
-  - libnsl3-32bit 
   - libnss_nis2 
   - libnss_slurm2 
   - libnss_usrfiles2-32bit 
   - libnsssharedhelper0 
-  - libnsssharedhelper0-32bit 
   - libnsync-devel 
   - libnsync1 
   - libnsync_cpp1 
@@ -13568,7 +13513,6 @@ unsorted:
   - libnutscan2 
   - libnvidia-egl-wayland-devel 
   - libnvidia-egl-wayland1 
-  - libnvidia-egl-wayland1-32bit 
   - libnvme-devel 
   - libnxml-devel 
   - libnxml0 
@@ -13607,9 +13551,7 @@ unsorted:
   - liboil-devel 
   - liboil-doc 
   - liboldX-devel 
-  - liboldX-devel-32bit 
   - liboldX6 
-  - liboldX6-32bit 
   - libolecf-devel 
   - libolecf-tools 
   - libolecf1 
@@ -13890,8 +13832,6 @@ unsorted:
   - libparquet1200 
   - libparserutils-devel 
   - libparserutils0 
-  - libparted-fs-resize0-32bit 
-  - libparted2-32bit 
   - libpartio1 
   - libpasswdqc0 
   - libpath_utils-devel 
@@ -14189,7 +14129,6 @@ unsorted:
   - libpython3_12-1_0 
   - libpython3_12-1_0-x86-64-v3 
   - libpython3_8-1_0 
-  - libpython3_8-1_0-32bit 
   - libpython3_9-1_0 
   - libpython3_9-1_0-32bit 
   - libqaccessibilityclient-qt5-devel 
@@ -14609,7 +14548,6 @@ unsorted:
   - libressl-devel 
   - libressl-devel-doc 
   - librest-0_7-0 
-  - librest-1_0-0-32bit 
   - librest-devel 
   - librest0_7-devel 
   - libretro-gtk-1-0 
@@ -14913,8 +14851,8 @@ unsorted:
   - libspatialindex6 
   - libspatialite-devel 
   - libspatialite7 
-  - libspdlog1_11 
-  - libspdlog1_11-32bit 
+  - libspdlog1_12 
+  - libspdlog1_12-32bit 
   - libspdylay7 
   - libspectre-devel 
   - libspeechd-devel 
@@ -14969,7 +14907,6 @@ unsorted:
   - libstaroffice-devel 
   - libstaroffice-devel-doc 
   - libstaroffice-tools 
-  - libstartup-notification-1-0-32bit 
   - libstatgrab-devel 
   - libstatgrab10 
   - libstdc++-devel-32bit 
@@ -15170,7 +15107,6 @@ unsorted:
   - libtecla_r1 
   - libteec1 
   - libtelepathy-farstream3 
-  - libtelepathy-glib0-32bit 
   - libtelepathy-logger-qt5 
   - libtelepathy-qt5-0 
   - libtelepathy-qt5-farstream0 
@@ -15637,7 +15573,6 @@ unsorted:
   - libwebcam-devel 
   - libwebcam0 
   - libwebkit2gtk-4_0-37-32bit 
-  - libwebkit2gtk-4_1-0-32bit 
   - libwebp-devel 
   - libwebp-devel-32bit 
   - libwebp-tools 
@@ -15892,12 +15827,9 @@ unsorted:
   - libxkbfile1-32bit 
   - libxkbregistry-devel 
   - libxkbui-devel 
-  - libxkbui-devel-32bit 
   - libxkbui1 
-  - libxkbui1-32bit 
   - libxklavier-devel 
   - libxklavier-doc 
-  - libxklavier16-32bit 
   - libxls-devel 
   - libxls-tools 
   - libxlsreader8 
@@ -16246,6 +16178,7 @@ unsorted:
   - lnav 
   - lndir 
   - local-npm-registry 
+  - lockdev 
   - lockdev-devel 
   - lockfile 
   - log4cplus-devel 
@@ -20322,7 +20255,6 @@ unsorted:
   - perl-Crypt-SSLeay 
   - perl-Crypt-SaltedHash 
   - perl-Crypt-UnixCrypt_XS 
-  - perl-CryptX 
   - perl-Curses 
   - perl-CursesWidgets 
   - perl-Cwd-Guard 
@@ -20490,6 +20422,7 @@ unsorted:
   - perl-ExtUtils-MakeMaker 
   - perl-ExtUtils-MakeMaker-CPANfile 
   - perl-ExtUtils-Manifest 
+  - perl-ExtUtils-PkgConfig 
   - perl-ExtUtils-Typemaps-Default 
   - perl-ExtUtils-XSpp 
   - perl-FFI-CheckLib 
@@ -21209,6 +21142,7 @@ unsorted:
   - perl-Test-File 
   - perl-Test-File-Contents 
   - perl-Test-File-ShareDir 
+  - perl-Test-Fork 
   - perl-Test-Future-IO-Impl 
   - perl-Test-HTTP-MockServer 
   - perl-Test-HasVersion 
@@ -22710,7 +22644,6 @@ unsorted:
   - python3-keystoneclient 
   - python3-keystonemiddleware 
   - python3-kiwi 
-  - python3-kiwi-keg 
   - python3-kiwi_crossprepare_plugin 
   - python3-ktoblzcheck 
   - python3-lammps 
@@ -24400,6 +24333,7 @@ unsorted:
   - python310-httmock 
   - python310-http-ece 
   - python310-http-parser 
+  - python310-httpagentparser 
   - python310-httpbin 
   - python310-httpcore 
   - python310-httplib2 
@@ -24555,6 +24489,9 @@ unsorted:
   - python310-jsonschema-format-nongpl 
   - python310-jsonschema-spec 
   - python310-jsonschema-specifications 
+  - python310-jsonschema417 
+  - python310-jsonschema417-format 
+  - python310-jsonschema417-format-nongpl 
   - python310-jsonslicer 
   - python310-jsonxs 
   - python310-junit-xml 
@@ -24606,6 +24543,7 @@ unsorted:
   - python310-kismetdb 
   - python310-kiss-headers 
   - python310-kitchen 
+  - python310-kiwi-keg 
   - python310-kiwisolver 
   - python310-kmatch 
   - python310-kmod 
@@ -25584,7 +25522,6 @@ unsorted:
   - python310-python-mpd2 
   - python310-python-mpv 
   - python310-python-multipart 
-  - python310-python-nmap 
   - python310-python-openid-cla 
   - python310-python-openid-teams 
   - python310-python-pam 
@@ -27804,6 +27741,7 @@ unsorted:
   - python311-httmock 
   - python311-http-ece 
   - python311-http-parser 
+  - python311-httpagentparser 
   - python311-httpbin 
   - python311-httplib2 
   - python311-httpretty 
@@ -27943,6 +27881,9 @@ unsorted:
   - python311-jsonschema-format 
   - python311-jsonschema-format-nongpl 
   - python311-jsonschema-spec 
+  - python311-jsonschema417 
+  - python311-jsonschema417-format 
+  - python311-jsonschema417-format-nongpl 
   - python311-jsonslicer 
   - python311-jsonxs 
   - python311-junit-xml 
@@ -27993,6 +27934,7 @@ unsorted:
   - python311-kismetdb 
   - python311-kiss-headers 
   - python311-kitchen 
+  - python311-kiwi-keg 
   - python311-kiwisolver 
   - python311-kmatch 
   - python311-kmod 
@@ -28921,7 +28863,6 @@ unsorted:
   - python311-python-mpd2 
   - python311-python-mpv 
   - python311-python-multipart 
-  - python311-python-nmap 
   - python311-python-openid-cla 
   - python311-python-openid-teams 
   - python311-python-pam 
@@ -29681,9 +29622,7 @@ unsorted:
   - python312-tools 
   - python312-x86-64-v3 
   - python38 
-  - python38-32bit 
   - python38-base 
-  - python38-base-32bit 
   - python38-curses 
   - python38-dbm 
   - python38-devel 
@@ -31201,6 +31140,7 @@ unsorted:
   - python39-httmock 
   - python39-http-ece 
   - python39-http-parser 
+  - python39-httpagentparser 
   - python39-httpbin 
   - python39-httpcore 
   - python39-httplib2 
@@ -31356,6 +31296,9 @@ unsorted:
   - python39-jsonschema-format-nongpl 
   - python39-jsonschema-spec 
   - python39-jsonschema-specifications 
+  - python39-jsonschema417 
+  - python39-jsonschema417-format 
+  - python39-jsonschema417-format-nongpl 
   - python39-jsonslicer 
   - python39-jsonxs 
   - python39-junit-xml 
@@ -31407,6 +31350,7 @@ unsorted:
   - python39-kismetdb 
   - python39-kiss-headers 
   - python39-kitchen 
+  - python39-kiwi-keg 
   - python39-kiwisolver 
   - python39-kmatch 
   - python39-kmod 
@@ -32383,7 +32327,6 @@ unsorted:
   - python39-python-mpd2 
   - python39-python-mpv 
   - python39-python-multipart 
-  - python39-python-nmap 
   - python39-python-openid-cla 
   - python39-python-openid-teams 
   - python39-python-pam 
@@ -45487,6 +45430,7 @@ unsorted:
   - wcslib-tools 
   - wdiff 
   - wdiff-lang 
+  - wdisplays 
   - weave-gitops 
   - weave-gitops-bash-completion 
   - weave-gitops-fish-completion 
@@ -46349,7 +46293,6 @@ unsorted:
   - zellij-fish-completion 
   - zellij-zsh-completion 
   - zerobranestudio 
-  - zerofree 
   - zeromq-devel 
   - zfp 
   - zfp-devel 

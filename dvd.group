@@ -1194,6 +1194,7 @@
     <package name="lame" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="lastlog2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="layer-shell-qt5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="ldmtool" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="lensfun-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="less" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="lftp" supportstatus="unsupported"/> <!-- reason: dvd:kdump -->
@@ -2033,6 +2034,7 @@
     <package name="libgucharmap_2_90-7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libgudev-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libguestfs" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libguestfs-appliance" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libguestfs-xfs" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libguestfs0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libguile-3_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -2061,6 +2063,7 @@
     <package name="libheif1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libhidapi-hidraw0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libhiredis1_1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="libhivex0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libhogweed6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libhogweed6-32bit" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libhugetlbfs" supportstatus="unsupported"/> <!-- reason: dvd:nvme-cli -->
@@ -2195,6 +2198,7 @@
     <package name="libldapcpp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libldb2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libldb2-32bit" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="libldm-1_0-0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="liblensfun1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="liblhasa0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="liblightdm-gobject-1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-desktop-imaging -->
@@ -2203,7 +2207,6 @@
     <package name="libliveMedia107" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="liblmdb-0_9_30" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libloader" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="liblockdev1" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="liblogging0" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
     <package name="liblognorm5" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
     <package name="liblouis-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2464,8 +2467,6 @@
     <package name="libpurple-plugin-sipe" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libpurple-plugin-sipe-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libpurple-plugin-skypeweb" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libpurple-plugin-telegram" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="libpurple-plugin-telegram-lang" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libpurple-plugin-xmpp-http-upload" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libpurple-tcl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libpurple0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -2917,7 +2918,6 @@
     <package name="linux-glibc-devel" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="lklug-fonts" supportstatus="unsupported"/> <!-- reason: dvd:lklug-fonts -->
     <package name="llvm16-gold" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
-    <package name="lockdev" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="login_defs" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="logrotate" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="lokalize" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
@@ -3250,6 +3250,7 @@
     <package name="perl-Crypt-OpenSSL-RSA" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Crypt-OpenSSL-Random" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Crypt-SmbHash" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
+    <package name="perl-CryptX" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-DBD-mysql" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="perl-DBI" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="perl-Digest-HMAC" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -3259,7 +3260,6 @@
     <package name="perl-Encode-Detect" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Encode-Locale" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Error" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="perl-ExtUtils-PkgConfig" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-File-Listing" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-File-RandomAccess" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="perl-GD" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -3309,7 +3309,6 @@
     <package name="perl-SNMP" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="perl-Socket6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="perl-Term-ReadKey" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="perl-Test-Fork" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-TimeDate" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Try-Tiny" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Types-Serialiser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -3368,7 +3367,6 @@
     <package name="pidgin-plugin-rocketchat" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="pidgin-plugin-sipe" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="pidgin-plugin-skypeweb" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
-    <package name="pidgin-plugin-telegram" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="pigz" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="pim-data-exporter" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="pim-data-exporter-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -4847,6 +4845,7 @@
     <package name="zd1211-firmware" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="zenity" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="zenity-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="zerofree" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="zeromq-tools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="zip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="zisofs-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
