@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul  7 21:29:05 UTC 2023 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 24.0.4-ce. See upstream changelog online at
+  <https://docs.docker.com/engine/release-notes/24.0/#2404>.
+
+-------------------------------------------------------------------
+Fri Jul  7 02:35:02 UTC 2023 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 24.0.3-ce. See upstream changelog online at
+  <https://docs.docker.com/engine/release-notes/24.0/#2403>. bsc#1213120
+- Rebase patches:
+  * cli-0001-docs-include-required-tools-in-source-tree.patch
+
+-------------------------------------------------------------------
 Thu Jun 29 10:07:13 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
 
 - Recommend docker-rootless-extras instead of Require(ing) it, given

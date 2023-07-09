@@ -1,4 +1,4 @@
-From c46107746f7676a09590008584a17d3f907f7926 Mon Sep 17 00:00:00 2001
+From 3461d391fcee06e89b3bb4768bc15779d92388b8 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Wed, 26 Apr 2023 10:13:48 +1000
 Subject: [PATCH] docs: include required tools in source tree
@@ -395,7 +395,7 @@ index 4d0006e43e79..7d98e161df5d 100755
  mkdir -p docs/yaml
  set -x
 diff --git a/vendor.mod b/vendor.mod
-index 9b171b28e5b3..0aeec6f36cc5 100644
+index 93b252033bb8..694d6bb790e9 100644
 --- a/vendor.mod
 +++ b/vendor.mod
 @@ -8,7 +8,9 @@ go 1.18
@@ -406,7 +406,7 @@ index 9b171b28e5b3..0aeec6f36cc5 100644
  	github.com/creack/pty v1.1.18
 +	github.com/docker/cli-docs-tool v0.5.1
  	github.com/docker/distribution v2.8.2+incompatible
- 	github.com/docker/docker v24.0.1+incompatible
+ 	github.com/docker/docker v24.0.2+incompatible
  	github.com/docker/docker-credential-helpers v0.7.0
 @@ -67,6 +69,7 @@ require (
  	github.com/prometheus/common v0.37.0 // indirect
@@ -423,7 +423,7 @@ index 9b171b28e5b3..0aeec6f36cc5 100644
 +	gopkg.in/yaml.v3 v3.0.1 // indirect
  )
 diff --git a/vendor.sum b/vendor.sum
-index adb8ce424999..b577d7bb7242 100644
+index 15bc7cd703d3..55870c81da53 100644
 --- a/vendor.sum
 +++ b/vendor.sum
 @@ -85,6 +85,7 @@ github.com/cockroachdb/logtags v0.0.0-20190617123548-eb05cc24525f/go.mod h1:i/u9
@@ -23717,7 +23717,7 @@ index 000000000000..e88f9c54aecb
 +
 +}
 diff --git a/vendor/modules.txt b/vendor/modules.txt
-index 5fc4fe641043..8dfd03ef0dd2 100644
+index 1baed2ba4d14..c3e1679730a4 100644
 --- a/vendor/modules.txt
 +++ b/vendor/modules.txt
 @@ -18,9 +18,17 @@ github.com/containerd/containerd/errdefs
@@ -23766,5 +23766,5 @@ index 5fc4fe641043..8dfd03ef0dd2 100644
  ## explicit; go 1.13
  gotest.tools/v3/assert
 -- 
-2.40.1
+2.41.0
 
