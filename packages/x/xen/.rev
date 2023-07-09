@@ -2838,4 +2838,12 @@
     <comment>Security fix for bsc#1211433, CVE-2022-42336, XSA-431</comment>
     <requestid>1089051</requestid>
   </revision>
+  <revision rev="333" vrev="1">
+    <srcmd5>5675090901c0ec1ad65b9c484a74a7ef</srcmd5>
+    <version>4.17.1_06</version>
+    <time>1688928046</time>
+    <user>dimstar_suse</user>
+    <comment>A few upstream bug fixes for Xen</comment>
+    <requestid>1097441</requestid>
+  </revision>
 </revisionlist>

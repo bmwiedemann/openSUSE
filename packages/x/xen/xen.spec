@@ -119,7 +119,7 @@ BuildRequires:  pesign-obs-integration
 %endif
 Provides:       installhint(reboot-needed)
 
-Version:        4.17.1_04
+Version:        4.17.1_06
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -160,7 +160,11 @@ Patch2:         643e3810-CONFIG_DEBUG_INFO-no-EXPERT.patch
 Patch3:         643e387f-xen-update-CONFIG_DEBUG_INFO-help-text.patch
 Patch4:         6447a8fd-x86-EFI-permit-crash-dump-analysis.patch
 Patch5:         64525c61-tools-libs-guest-assist-gcc13s-realloc-analyzer.patch
-Patch6:         64639e84-amd-fix-legacy-setting-of-SSBD-on-AMD-Family-17h.patch
+Patch6:         645dec48-AMD-IOMMU-assert-boolean-enum.patch
+Patch7:         64639e84-amd-fix-legacy-setting-of-SSBD-on-AMD-Family-17h.patch
+Patch8:         646b782b-PCI-pci_get_pdev-respect-segment.patch
+Patch9:         647dfb0e-x86-missing-unlock-in-microcode_update_helper.patch
+Patch10:        648863fc-AMD-IOMMU-Invalidate-All-check.patch
 # EMBARGOED security fixes
 # libxc
 Patch301:       libxc-bitmap-long.patch

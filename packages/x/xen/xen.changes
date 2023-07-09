@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul  6 13:41:00 CET 2023 - jbeulich@suse.com
+
+- Upstream bug fixes (bsc#1027519)
+  645dec48-AMD-IOMMU-assert-boolean-enum.patch
+  646b782b-PCI-pci_get_pdev-respect-segment.patch
+  647dfb0e-x86-missing-unlock-in-microcode_update_helper.patch
+  648863fc-AMD-IOMMU-Invalidate-All-check.patch
+
+-------------------------------------------------------------------
 Mon May 22 07:52:57 MDT 2023 - carnold@suse.com
 
 - bsc#1211433 - VUL-0: CVE-2022-42336: xen: Mishandling of guest
