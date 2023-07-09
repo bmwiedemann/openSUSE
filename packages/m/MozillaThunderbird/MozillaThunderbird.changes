@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jul  7 12:47:11 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 102.13.0
+  * Upstream RNP version numbers now recognized as official in about:support
+  MFSA 2023-24 (bsc#1212438)
+  * CVE-2023-37201 (bmo#1826002)
+    Use-after-free in WebRTC certificate generation
+  * CVE-2023-37202 (bmo#1834711)
+    Potential use-after-free from compartment mismatch in
+    SpiderMonkey
+  * CVE-2023-37207 (bmo#1816287)
+    Fullscreen notification obscured
+  * CVE-2023-37208 (bmo#1837675)
+    Lack of warning when opening Diagcab files
+  * CVE-2023-37211 (bmo#1832306, bmo#1834862, bmo#1835886,
+    bmo#1836550, bmo#1837450)
+    Memory safety bugs fixed in Firefox 115, Firefox ESR 102.13,
+    and Thunderbird 102.13
+- mozilla-llvm16.patch has been applied upstream, remove it here
+
+-------------------------------------------------------------------
 Sun Jun  4 08:22:58 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 102.12.0:
