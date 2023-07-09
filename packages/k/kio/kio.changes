@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jul  3 07:01:50 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.108.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.108.0
+- Changes since 5.107.0:
+  * Remove qt6 CI builds
+  * KUrlRequester: restore unnamed filter compatibility with Plasma file dialog
+  * KUrlRequester::setFilter: note syntax change in compiler deprecation warning
+  * Add KUrlRequester::nameFilters, deprecate KUrlRequester::filter (kde#369542)
+  * KUrlRequester::setFilter: note special filter syntax, allow unnamed filters
+  * KCoreDirLister::nameFilter: revert to non-partial matching again
+  * filewidgets/kfilewidget: Select and focus filename after canceling overwrite (kde#444515)
+  * [previewjob] Check whether thumbRootDevice is valid before access (kde#470845)
+- Drop patch, merged upstream:
+  * 0001-previewjob-Check-whether-thumbRootDevice-is-valid-be.patch
+
+-------------------------------------------------------------------
 Tue Jun 20 17:17:11 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix crash on thumbnail generation (kde#470845):
