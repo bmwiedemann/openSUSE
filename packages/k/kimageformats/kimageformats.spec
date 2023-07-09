@@ -33,7 +33,7 @@
 # Only needed for the package signature condition
 %bcond_without released
 Name:           kimageformats
-Version:        5.107.0
+Version:        5.108.0
 Release:        0
 Summary:        Image format plugins for Qt
 License:        LGPL-2.1-or-later
@@ -58,8 +58,8 @@ BuildRequires:  cmake(libavif) >= 0.8.2
 BuildRequires:  cmake(libheif) >= 1.10.0
 %endif
 %if 0%{?with_jxl}
-BuildRequires:  pkgconfig(libjxl) >= 0.6.1
-BuildRequires:  pkgconfig(libjxl_threads) >= 0.6.1
+BuildRequires:  pkgconfig(libjxl) >= 0.7.0
+BuildRequires:  pkgconfig(libjxl_threads) >= 0.7.0
 %endif
 BuildRequires:  pkgconfig(libraw) >= 0.20.2
 BuildRequires:  pkgconfig(libraw_r) >= 0.20.2
