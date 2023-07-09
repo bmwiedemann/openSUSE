@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  5 14:20:23 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 3.8.7:
+  * update translations
+  * Fixed bug #2011352: pressing tab causes blinking in taskbar 
+
+-------------------------------------------------------------------
 Tue Aug  9 20:36:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.8.5:
