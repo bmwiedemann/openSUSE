@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Jul  3 07:01:34 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.108.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.108.0
+- Changes since 5.107.0:
+  * [Document] Fix parameter name for setParentId
+  * [WriteTransaction] Avoid false warning when removing empty xattr terms
+  * [DocumentUrlDB] Remove recursive removal of parent directories
+  * [AdvancedQueryParser] Correctly parse empty quoted strings
+  * [AdvancedQueryParser] Fix minor error in test case
+  * Remove qt6 CI builds
+  * [UnindexedFileIndexer] Split into multiple transactions
+  * [FirstRunIndexer] Split initial index run into multiple transactions
+  * Move basic indexing test/benchmark to autotests
+  * [BasicIndexingTest] Add options for transaction size and index dir
+  * [WriteIoTest] Set required parent id
+  * Minor fixes for manual tests
+  * Fix signedness mismatch compiler warning
+  * Fix compiler warning by using an STL-style iterator instead
+  * Remove redundant transactiontest
+  * [UnindexedFileIndexer] Skip document when BasicIndexingJob fails
+  * [Transaction] Allow to fully reset the transaction state
+  * [WriteTransactionTest] Use unique_ptr for DB and temp dir
+  * [Transaction] Use unique_ptr for write transaction
+  * Verify parentId when adding documents
+  * [DatabaseDbis] Use default member initializers instead of constructor
+  * Remove unused QMimeDatabase instance from UnindexedFileIndexer
+
+-------------------------------------------------------------------
 Mon Jun  5 07:43:47 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.107.0
