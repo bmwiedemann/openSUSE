@@ -970,4 +970,12 @@ depends on sr#237875</comment>
     <comment>KDE Frameworks 5.107.0 (forwarded request 1091205 from krop)</comment>
     <requestid>1091897</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>8d7fefb7ac16f9827e8832df9f702647</srcmd5>
+    <version>5.108.0</version>
+    <time>1688927970</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.108.0 (forwarded request 1097055 from krop)</comment>
+    <requestid>1097674</requestid>
+  </revision>
 </revisionlist>
