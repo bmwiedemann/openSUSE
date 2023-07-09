@@ -159,7 +159,7 @@ handling.
 %define libqt5_examplesdir	%{libqt5_archdatadir}/examples
 %define libqt5_includedir	%{_includedir}/qt5
 %define libqt5_importdir	%{libqt5_archdatadir}/imports
-%define libqt5_libexecdir	%{libqt5_archdatadir}/libexec
+%define libqt5_libexecdir	%{_libexecdir}/qt5
 %define libqt5_plugindir	%{libqt5_archdatadir}/plugins
 %define libqt5_sysconfdir	%{_sysconfdir}/xdg
 %define libqt5_translationdir	%{libqt5_datadir}/translations

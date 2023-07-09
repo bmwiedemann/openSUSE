@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 28 16:18:03 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
+
+- Change %_libqt5_libexecdir to %_libexecdir/qt5 (bsc#1174075)
+
+-------------------------------------------------------------------
 Tue Jun 13 12:58:24 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.15.10+kde129, rebased upstream:

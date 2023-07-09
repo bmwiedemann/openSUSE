@@ -7,7 +7,7 @@
 %_libqt5_examplesdir      %{_libqt5_archdatadir}/examples
 %_libqt5_includedir       %{_includedir}/qt5
 %_libqt5_importdir        %{_libqt5_archdatadir}/imports
-%_libqt5_libexecdir       %{_libqt5_archdatadir}/libexec
+%_libqt5_libexecdir       %{_libexecdir}/qt5
 %_libqt5_plugindir        %{_libqt5_archdatadir}/plugins
 %_libqt5_sysconfdir       %{_sysconfdir}/xdg
 %_libqt5_translationdir   %{_libqt5_datadir}/translations
