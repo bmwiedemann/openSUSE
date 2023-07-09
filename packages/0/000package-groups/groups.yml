@@ -422,7 +422,6 @@ opensuse_microos:
   - patterns-microos-onlyDVD: [aarch64,ppc64le,s390x,x86_64]
   - patterns-microos-alt_onlyDVD: [aarch64,ppc64le,s390x,x86_64]
   - patterns-containers-container_runtime: [aarch64,ppc64le,s390x,x86_64]
-  - podman-cni-config: [aarch64,ppc64le,s390x,x86_64]
   - kernel-default-base: [aarch64,ppc64le,s390x,x86_64]
   - patterns-base-bootloader: [ppc64le]
   # Have a bootable system for RPi3/4 - boo#1172574
