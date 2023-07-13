@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Jul 13 04:49:43 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.85.0:
+  * implement ui handle waiter (#1930)
+  * fix: background reader apart from global handler for testing
+    (#1929)
+  * chore(deps): bump modernc.org/sqlite from 1.23.1 to 1.24.0
+    (#1928)
+  * fix: allow valid cyclonedx input with no components (#1873)
+  * fix: "or-later" suffix updated to consider deprecated "+"
+    operator (#1907)
+  * feat: CLI flag for directory base (#1867)
+  * Fix CPE gen for k8s python client (#1921)
+  * chore: update iterations to protect against race (#1927)
+  * chore(deps): update bootstrap tools to latest versions (#1922)
+  * fix: Don't use the actual redis or grpc CPEs for gems (#1926)
+  * fix(install): return with right error code (#1915)
+  * Remove erroneous Java CPEs from generation (#1918)
+  * chore(deps): bump golang.org/x/net from 0.11.0 to 0.12.0
+    (#1916)
+  * Switch UI to bubbletea (#1888)
+  * fix: use filepath.EvalSymlinks if os.Readlink fails to evaluate
+    the link (#1884)
+  * add file source digest support (#1914)
+  * chore(deps): update bootstrap tools to latest versions (#1908)
+  * chore(deps): bump golang.org/x/mod from 0.11.0 to 0.12.0
+    (#1912)
+  * chore(deps): bump golang.org/x/term from 0.9.0 to 0.10.0
+    (#1913)
+  * doc(readme): add installation section with scoop (#1909)
+  * Refactor source API (#1846)
+  * chore(deps): update bootstrap tools to latest versions (#1905)
+
+-------------------------------------------------------------------
 Fri Jun 30 04:42:50 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.84.1:
