@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 12 16:11:42 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.10.5:
+  * Resolve thread safety issues in word wrap runner
+
+-------------------------------------------------------------------
 Fri Jun  9 14:03:17 BST 2023 - Adam Spiers <suse@adamspiers.org>
 
 - Update to 1.10.4
