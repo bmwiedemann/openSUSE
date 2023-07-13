@@ -36,18 +36,18 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       alts
 Requires:       python-PyYAML >= 5.3
-Requires:       python-jsonschema-format-nongpl >= 3.2.0
 Requires:       python-python-json-logger >= 2.0.4
 Requires:       python-rfc3339-validator
 Requires:       python-rfc3986-validator >= 0.1.1
 Requires:       python-traitlets >= 5.3
+Requires:       (python-jsonschema-format-nongpl >= 3.2.0 with python-jsonschema-format-nongpl < 4.18)
 Provides:       python-jupyter_events = %{version}-%{release}
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module rfc3339-validator}
 BuildRequires:  %{python_module PyYAML >= 5.3}
 BuildRequires:  %{python_module click}
-BuildRequires:  %{python_module jsonschema-format-nongpl >= 3.2.0}
+BuildRequires:  %{python_module jsonschema-format-nongpl >= 3.2.0 with %python-jsonschema-format-nongpl < 4.18}
 BuildRequires:  %{python_module pytest >= 7}
 BuildRequires:  %{python_module pytest-asyncio >= 0.19.0}
 BuildRequires:  %{python_module pytest-console-scripts}

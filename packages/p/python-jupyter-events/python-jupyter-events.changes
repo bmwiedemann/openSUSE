@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 13 12:53:46 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Restrict to jsonschema < 4.18 in order to resolve conflicts with
+  other jupyter packages
+
+-------------------------------------------------------------------
 Thu Mar 30 19:48:36 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Work around gh#rpm-software-management/rpmlint#1043

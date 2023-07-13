@@ -40,4 +40,13 @@
   * See also gh#pypa/hatch#801, gh#jupyter/jupyter_events#70 (forwarded request 1075682 from bnavigator)</comment>
     <requestid>1075683</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>82ca715988948c03d65c7312fffa5b90</srcmd5>
+    <version>0.6.3</version>
+    <time>1689261561</time>
+    <user>anag+factory</user>
+    <comment>- Restrict to jsonschema &lt; 4.18 in order to resolve conflicts with
+  other jupyter packages</comment>
+    <requestid>1098539</requestid>
+  </revision>
 </revisionlist>
