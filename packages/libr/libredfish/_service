@@ -2,6 +2,7 @@
   <service mode="localonly" name="obs_scm">
     <param name="url">https://github.com/DMTF/libredfish.git</param>
     <param name="scm">git</param>
+    <param name="revision">main</param>
     <param name="changesgenerate">enable</param>
     <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@+git.%h</param>
   </service>

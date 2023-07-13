@@ -1,0 +1,13 @@
+Index: libredfish-1.3.7.1+git.74758f1/CMakeLists.txt
+===================================================================
+--- libredfish-1.3.7.1+git.74758f1.orig/CMakeLists.txt
++++ libredfish-1.3.7.1+git.74758f1/CMakeLists.txt
+@@ -24,7 +24,7 @@ if(NOT DEFINED CMAKE_INSTALL_LIBDIR)
+   set(CMAKE_INSTALL_LIBDIR lib)
+ endif()
+ 
+-set(CMAKE_C_FLAGS_DEBUG "-D_DEBUG")
++set(CMAKE_C_FLAGS "-D_DEBUG")
+ 
+ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}")
+ 

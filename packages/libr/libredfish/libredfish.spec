@@ -1,7 +1,7 @@
 #
 # spec file for package libredfish
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,27 +15,28 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define 	MAJOR 1
-
-
 Name:           libredfish
-Version:        1.3.6.4+git.a0788d4
+Version:        1.3.7.1+git.74758f1
 Release:        0%{?dist}
 Summary:        Redfish C Client Library
 License:        BSD-3-Clause
-Group: 		Development/Libraries/C
+Group:          Development/Libraries/C
 URL:            https://github.com/DMTF/libredfish
 Source0:        libredfish-%{version}.tar.xz
-Patch1:		add_crypto.patch
-BuildRequires:  gcc-c++
-BuildRequires:  libczmq4
-BuildRequires:  libopenssl1_1
-BuildRequires:  libopenssl-1_1-devel
+Patch1:         Make-use-of-standard-variables-for-installation.patch
+Patch2:         Add-configure_file-and-pkg-config-template.patch
+Patch3:         add_debug.patch
+BuildRequires:  cmake
 BuildRequires:  czmq
 BuildRequires:  czmq-devel
-BuildRequires:  cmake
-BuildRequires:  libjansson-devel
+BuildRequires:  gcc-c++
 BuildRequires:  libcurl-devel
+BuildRequires:  libczmq4
+BuildRequires:  libjansson-devel
+BuildRequires:  libopenssl-1_1-devel
+BuildRequires:  libopenssl1_1
 BuildRequires:  readline-devel
 Requires:       readline
 
@@ -86,4 +87,3 @@ This package contains headers required to build applications that use libredfish
 %{_includedir}/*
 
 %changelog
-
