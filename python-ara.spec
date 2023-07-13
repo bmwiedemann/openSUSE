@@ -1,7 +1,7 @@
 #
 # spec file for package python-ara
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@
 %bcond_with test
 %endif
 %define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # plugin for Ansible package
 %define pythons python3
 Name:           python-ara
@@ -106,7 +105,8 @@ ara-manage test ara
 %license LICENSE
 %python_alternative %{_bindir}/ara
 %python_alternative %{_bindir}/ara-manage
-%{python_sitelib}/*
+%{python_sitelib}/ara-%{version}*-info
+%{python_sitelib}/ara
 %endif
 
 %changelog

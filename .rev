@@ -168,4 +168,13 @@
     <comment></comment>
     <requestid>992784</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>41b15ae7e9ab6cfbe46f6fb3667dbc21</srcmd5>
+    <version>1.5.8</version>
+    <time>1689261488</time>
+    <user>anag+factory</user>
+    <comment>- Clean up the SPEC file.
+</comment>
+    <requestid>1098405</requestid>
+  </revision>
 </revisionlist>
