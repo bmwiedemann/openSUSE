@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Thu Jul 13 04:57:33 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 13.2.1:
+  * Release 13.2.1. (#29021)
+  * [v13] Dont allow cloud tenants to update certain cluster
+    networking config fields (#28992)
+  * Ignore SIGQUIT in exec sessions. (#29020)
+  * fix operator crashing on first startup (#29013)
+  * Fix Azure join for identities across resource groups (#28961)
+  * remove alert maximums (#28967) (#28983)
+  * [v13] Mention agentless in the OpenSSH guide for better SEO
+    (#28923)
+  * Set lower temperature to ChatGPT calls (#28959)
+  * Install Script: don't enable Automatic Upgrades for non-systemd
+    systems. (#28987)
+  * tctl alerts ack: Make --reason optional (#28955)
+  * Fix listing servers when creating a new lock via webui (#28963)
+  * desktop access: clean up error handling (#28974)
+  * [v13] [Docs] Add missing 'resources' config field to
+    application service docs (#28971)
+  * [v13] include endpoint_url parameter for tctl sso configure
+    github (#28968)
+  * [v13] docs: openssh updates (#28726)
+  * docs: update version (#28933)
+  * supports newline and whitespace in motd: (#28937)
+  * feat(dbcmd): add `sqlcmd` support (#28944)
+  * Remove preview from several features (#28924) (#28928)
+  * Fix ssh env var parsing by checking after cf.AuthConnector is
+    guaranteed to be set. (#28922)
+  * Update tough-cookie and @grpc/grpc-js (#28914)
+  * [v13] add Athena URL parameter to configure AWS region (#28912)
+  * tctl alert ls: Always show alert ID (#28906)
+  * [v13] Backports PagerDuty hosted plugin (#28883)
+  * chore: Bump Buf to v1.23.1 (#28894)
+  * [v13] docs: Add clarification on event types in enhanced
+    recording mode (#28893)
+  * [v13] DeployService: auto upsert IAM Join Token (#28799)
+  * DeployService: use correct version when auto-upgrades are
+    enabled (#28874)
+  * Machine ID: Add guides to the Enroll Integration page (#28646)
+    (#28888)
+  * Add IDToken attributes to GCP join audit event (#28673)
+    (#28882)
+  * docs: use -o file instead of sudo tee (#28771)
+  * teleport-connect.mdx: Fix typo (you with -> you wish) (#28875)
+  * rework instance hbs to be more scalable and to track upgraders
+    (#27895) (#28847)
+  * Support specifying `assume_role_arn` for Kube cluster matchers
+    (#28282) (#28832)
+  * Minor wording change (#28778)
+  * Add redirects introduced by docs reorganization (#28822)
+  * Update keep_alive comments auth-service.yaml (#28820)
+  * typo correction (#28827)
+  * [v13] Fix theme not loading on first login & overflowing
+    command result summary (#28770)
+  * docs: bump cloud to 13.2.0 (#28788)
+  * removed cloud warning (#28815)
+  * Fix `tsh kube credentials` lock when no-login is required
+    (#28811)
+  * Edit playbook user in the Ansible guide (#28791)
+  * Use more restrictive S3 object permissions (#28765)
+  * Change signup links to mention Teleport Team (#28680)
+  * Fix Okta docs that mentioned "Application Service" (#28792)
+  * [v13] Fixed CPIO digest mismatch on RHEL 8 (#28794)
+  * Added 07/03 Upcoming Releases Update (#28796)
+  * Increased the gh-trigger-workflow polling period (#28783)
+  * [v13] update attributes to roles (#28695)
+  * [v13] document create_host_users_mode (#28639)
+  * Add t.Parallel() to several tsh tests (#28613)
+  * [v13] Update assist docs (#28732)
+  * [v13] Firestore backend improvements  (#28737)
+  * [v13] Machine ID: GCP Delegated Joining support (#28762)
+  * add docs for idp-initiated sso for grafana (#28645)
+  * Document Jamf `exit_on_sync` toggle (#28394) (#28415)
+  * Support GCP joining when `google` claim is not present (#28759)
+  * Document Jamf service and auto-enroll (#28167) (#28393)
+  * [v13] Docs: Update GitLab SSO docs (#28693)
+  * specify enterprise in commercial prereq cloud tab... (#28524)
+  * [v13] Connect: Add docs for theme (#28407)
+  * docs: edits to the headless webauthn guide (#28733)
+  * docs: correct docker installation table (#28652)
+  * [v13] User groups in access requests will expand list of
+    applications. (#28603)
+
+-------------------------------------------------------------------
 Thu Jul 06 07:24:27 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 13.2.0:
