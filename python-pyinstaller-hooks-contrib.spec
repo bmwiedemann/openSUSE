@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pyinstaller-hooks-contrib%{psuffix}
-Version:        2023.0
+Version:        2023.5
 Release:        0
 Summary:        Community maintained hooks for PyInstaller
 License:        Apache-2.0 OR GPL-2.0-only
@@ -44,10 +44,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  timezone
 # SECTION optional, the depending tests would be skipped without these
 # most of the libraries enable only two tests, so adding just scikit-learn to run at least any tests
-#
-# Disabled because it's broken with the latest release 1.2.1
-# gh#pyinstaller/pyinstaller-hooks-contrib#547
-# BuildRequires:  %{python_module scikit-learn}
+BuildRequires:  %{python_module scikit-learn}
 # /SECTION
 %endif
 %python_subpackages

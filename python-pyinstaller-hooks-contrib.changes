@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 11 12:57:59 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2023.5
+  * Update sklearn hooks for compatibility with scikit-learn 1.2.0 and 1.2.1.
+  * Extend cv2 hook with support for OpenCV built manually from source and 
+    for OpenCV installed using the official Windows installer. This support 
+    requires PyInstaller >= 5.3 to work properly.
+  * Many new hooks and hook updates, see upstream changelog
+
+-------------------------------------------------------------------
 Sat Jun 10 09:48:00 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
