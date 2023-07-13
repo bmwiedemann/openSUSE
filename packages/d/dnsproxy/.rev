@@ -32,4 +32,23 @@
 - Use zstd for vendored dependencies (forwarded request 1093386 from VaiTon)</comment>
     <requestid>1093398</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9783f82ab0b4c0e270513a2dbcb93f4e</srcmd5>
+    <version>0.51.0</version>
+    <time>1689261512</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.51.0:
+  * Pull request 264: AGDNS-1528 fallback ups conf
+  * Pull request: 5285-doq-errors
+  * Pull request 261: 333-opt-timeout
+- Allow ppc64 to compile by not using pie
+- Remove %{go_nostrip} macro which is no longer recommended
+- Drop Requires: golang-packaging. The original macros for file
+  movements into GOPATH are obsolete with Go modules. Macro
+  go_nostrip is no longer needed with current binutils and Go.
+- Add BuildRequires: golang(API) &gt;= 1.19 (min version per go.mod)
+  This or metapackage BuildRequires: go are recommended to pull in
+  the Go toolchain. (forwarded request 1098450 from jfkw)</comment>
+    <requestid>1098451</requestid>
+  </revision>
 </revisionlist>

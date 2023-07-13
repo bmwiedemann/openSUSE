@@ -17,7 +17,7 @@
 
 
 Name:           dnsproxy
-Version:        0.50.2
+Version:        0.51.0
 Release:        0
 Summary:        A DNS proxy server
 License:        Apache-2.0
@@ -25,9 +25,8 @@ Group:          Productivity/Networking/DNS/Utilities
 URL:            https://github.com/AdguardTeam/dnsproxy
 Source:         dnsproxy-%{version}.tar
 Source1:        vendor.tar.zstd
-BuildRequires:  golang-packaging
 BuildRequires:  zstd
-%{go_nostrip}
+BuildRequires:  golang(API) >= 1.19
 
 %description
 A DNS proxy server that supports numerous protocols, including
@@ -41,7 +40,9 @@ server.
 %build
 go build \
    -mod=vendor \
+%ifnarch ppc64 # Does not support pie
    -buildmode=pie
+%endif
 
 %install
 install -D -m0755 %{name} %{buildroot}%{_bindir}/%{name}
