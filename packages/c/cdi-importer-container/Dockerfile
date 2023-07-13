@@ -10,9 +10,6 @@
 #  BuildFlags: dockerarg:KUBEVIRTFROM=opensuse/tumbleweed
 ARG KUBEVIRTFROM
 FROM $KUBEVIRTFROM
-# TARGETARCH defined in prjconf, to handle architecture specific bits
-# since TARGETARCH is not defined in OBS builds yet. Default to amd64.
-ARG TARGETARCH=amd64
 
 # Mandatory labels for the build service:
 #   https://en.opensuse.org/Building_derived_containers
@@ -40,9 +37,9 @@ RUN zypper -n install \
 
 # nbdkit-vddk-plugin is available only on x86_64
 #!ArchExclusiveLine: x86_64
-RUN if [ "$TARGETARCH" = "amd64" ]; then \
-              zypper -n install nbdkit-vddk-plugin ; \
-              fi;
+RUN if [ "$(uname -m)" = "x86_64" ]; then \
+        zypper -n install nbdkit-vddk-plugin ; \
+    fi;
 
 RUN zypper clean -a && \
     useradd -u 1001 --create-home -s /bin/bash cdi-importer
