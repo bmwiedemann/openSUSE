@@ -1,7 +1,7 @@
 #
 # spec file for package calamares
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %define _sover  3
 Name:           calamares
-Version:        3.2.36
+Version:        3.2.62
 Release:        0
 Summary:        Installer from a live CD/DVD/USB to disk
 License:        GPL-3.0-or-later
@@ -129,13 +129,12 @@ Requires:       %{name}%{?_isa} = %{version}
 %description    webview
 Optional webview module for the Calamares installer.
 
-
 %package branding-upstream
 Summary:        Branding for %{name}
 # This theme is nor pure upstream, nor specific to openSUSE,
 # but is close to upstream
 Group:          System/Management
-Supplements:    packageand(%name:branding-upstream)
+Supplements:    (%name and branding-upstream)
 %if 0%{?sle_version} == 150000
 Conflicts:      otherproviders(%{name}-branding)
 %endif
@@ -157,7 +156,7 @@ based custom appliances.
 %autosetup -N
 cp -f %{SOURCE3} src/branding/default/
 %autopatch -p1
-# fix shebang 
+# fix shebang
 find . -wholename "./src/modules/*/main.py" -exec sed -re "1s/^#\!\/usr\/bin\/env python3/#\!\/usr\/bin\/python3/" -i {} \;
 
 %build

@@ -4,7 +4,7 @@ GRUB2 is default bootloader in openSUSE and openSUSE based appliances.
 diff --git a/src/modules/bootloader/bootloader.conf b/src/modules/bootloader/bootloader.conf
 --- a/src/modules/bootloader/bootloader.conf
 +++ b/src/modules/bootloader/bootloader.conf
-@@ -26,10 +26,10 @@
+@@ -33,10 +33,10 @@ timeout: "10"
  # GRUB functionality (notably grub-probe) to work. As needed, you may use
  # complete paths like `/usr/bin/efibootmgr` for the executables.
  #

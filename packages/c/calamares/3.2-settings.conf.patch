@@ -10,7 +10,8 @@ Thus here we justion mention this option, but not enabling.
 diff --git a/settings.conf b/settings.conf
 --- a/settings.conf
 +++ b/settings.conf
-@@ -111,16 +111,18 @@
+@@ -139,17 +139,19 @@ sequence:
+ #  - luksopenswaphookcfg
  #  - dracutlukscfg
  #  - plymouthcfg
 -  - initcpiocfg

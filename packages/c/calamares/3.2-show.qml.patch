@@ -3,7 +3,7 @@ Comment explanatory parts
 diff -ur a/src/branding/default/show.qml b/src/branding/default/show.qml
 --- a/src/branding/default/show.qml
 +++ b/src/branding/default/show.qml
-@@ -28,7 +28,7 @@
+@@ -19,7 +19,7 @@ Presentation
          console.log("QML Component (default slideshow) Next slide");
          presentation.goToNextSlide();
      }
@@ -12,7 +12,7 @@ diff -ur a/src/branding/default/show.qml b/src/branding/default/show.qml
      Timer {
          id: advanceTimer
          interval: 1000
-@@ -36,7 +36,7 @@
+@@ -27,7 +27,7 @@ Presentation
          repeat: true
          onTriggered: nextSlide()
      }
@@ -21,7 +21,7 @@ diff -ur a/src/branding/default/show.qml b/src/branding/default/show.qml
      Slide {
  
          Image {
-@@ -46,6 +46,7 @@
+@@ -37,6 +37,7 @@ Presentation
              fillMode: Image.PreserveAspectFit
              anchors.centerIn: parent
          }
@@ -29,7 +29,7 @@ diff -ur a/src/branding/default/show.qml b/src/branding/default/show.qml
          Text {
              anchors.horizontalCenter: background.horizontalCenter
              anchors.top: background.bottom
-@@ -58,8 +59,9 @@
+@@ -49,8 +50,9 @@ Presentation
              width: presentation.width
              horizontalAlignment: Text.Center
          }
@@ -40,7 +40,7 @@ diff -ur a/src/branding/default/show.qml b/src/branding/default/show.qml
      Slide {
          centeredText: qsTr("This is a second Slide element.")
      }
-@@ -67,7 +69,7 @@
+@@ -58,7 +60,7 @@ Presentation
      Slide {
          centeredText: qsTr("This is a third Slide element.")
      }
