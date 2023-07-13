@@ -1,7 +1,7 @@
 #
 # spec file for package python-user-agents
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,20 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-user-agents
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        A library to identify device capabilities (phones, tablets)
 License:        MIT
 URL:            https://github.com/selwin/python-user-agents
 Source:         https://github.com/selwin/python-user-agents/archive/v%{version}.tar.gz
-BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module ua-parser >= 0.8.0}
+BuildRequires:  %{python_module ua-parser >= 0.10.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PyYAML
-Requires:       python-ua-parser >= 0.8.0
+Requires:       python-ua-parser >= 0.10.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -43,18 +42,19 @@ strings.
 %setup -q
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}/%{$python_sitelib}
 
 %check
-%python_expand $python -m unittest discover
+%pyunittest
 
 %files %{python_files}
 %license LICENSE.txt
-%doc README.rst
-%{python_sitelib}/*
+%doc README.md
+%{python_sitelib}/user_agents
+%{python_sitelib}/user_agents-%{version}.dist-info
 
 %changelog

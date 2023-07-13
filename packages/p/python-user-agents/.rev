@@ -39,4 +39,17 @@
     <comment></comment>
     <requestid>783387</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>280efe9844438b2214ca24131ff34a30</srcmd5>
+    <version>2.2.0</version>
+    <time>1689261515</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.2.0:
+  * ua-parser &gt;= 0.10.0 is required.
+  * Added get_device(), get_os() and get_browser() instance methods
+    to UserAgent.
+- Stop using greedy globs in %files.
+- Switch to pyproject and more recent testing macros.</comment>
+    <requestid>1098455</requestid>
+  </revision>
 </revisionlist>

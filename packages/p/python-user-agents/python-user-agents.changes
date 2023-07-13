@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 13 05:53:34 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.2.0:
+  * ua-parser >= 0.10.0 is required.
+  * Added get_device(), get_os() and get_browser() instance methods
+    to UserAgent.
+- Stop using greedy globs in %files.
+- Switch to pyproject and more recent testing macros.
+
+-------------------------------------------------------------------
 Tue Mar 10 12:29:47 UTC 2020 - pgajdos@suse.com
 
 - version update to 2.1.0
