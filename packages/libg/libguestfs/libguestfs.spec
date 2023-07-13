@@ -74,7 +74,7 @@ BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(rpm) >= 4.6.0
 BuildRequires:  pkgconfig(tinfo)
 
-Requires:       supermin >= 5.1.18
+Requires:       libguestfs-appliance
 Obsoletes:      guestfs-tools <= 1.44.2
 
 %description
@@ -355,6 +355,7 @@ Requires:       libpcre1
 
 # For core disk features
 Requires:       qemu-tools
+Requires:       supermin >= 5.1.18
 
 # Optional packages that could be picked up by supermin
 Recommends:     btrfsprogs
