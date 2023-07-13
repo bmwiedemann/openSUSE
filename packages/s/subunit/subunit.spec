@@ -17,14 +17,9 @@
 
 
 %define skip_python2 1
-%if 0%{?suse_version} >= 1550
-# TW: generate subpackages for every python3 flavor
 %define python_subpackage_only 1
-%else
-%define python_sitelib %{python3_sitelib}
-%define python_files() -n python3-%{**}
-%endif
 %bcond_with python2
+%{?sle15_python_module_pythons}
 Name:           subunit
 Version:        1.4.2
 %global majver  %(awk 'BEGIN { OFS="."; FS="[\\.\\+]+" } {print $1, $2, $3}' <<< %{version})
@@ -252,11 +247,16 @@ touch -r c++/SubunitTestProgressListener.h \
 touch -r perl/subunit-diff %{buildroot}%{_bindir}/subunit-diff
 
 %check
+%if 0%{?suse_version} > 1500
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib} PYTHON=%{$python}
 # https://bugs.launchpad.net/subunit/+bug/1323410
 find . -name sample\*.py -exec chmod +x '{}' \;
+# replace hardcoded python3 with the python executable that is actually used
+find . -name sample\*.py -exec sed -i "1{s/python3.*$/python%{$python_version}/;}" {} +
+sed -i '/testtools.run/ s#$(PYTHON)#/usr/bin/python%{$python_version}#' Makefile
 %make_build check
 }
+%endif
 
 %post -n libsubunit0 -p /sbin/ldconfig
 %postun -n libsubunit0 -p /sbin/ldconfig

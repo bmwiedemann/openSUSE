@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul 13 08:59:30 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- remove hardcoded python executable names from Makefile and test
+  scripts
+- Use python_subpackage_only 1 everywhere, not only on Tumbleweed
+  and Leap 15.5
+
+-------------------------------------------------------------------
+Mon Jul  3 11:43:29 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+- Use python_subpackage_only 1 from Tumbleweed for Leap 15.5 also.
+
+-------------------------------------------------------------------
 Fri Mar 24 06:07:32 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - set PYTHON environment variable in %build step, to allow
