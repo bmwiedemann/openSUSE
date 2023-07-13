@@ -2985,4 +2985,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>1096978</requestid>
   </revision>
+  <revision rev="302" vrev="2">
+    <srcmd5>c36eb7b46086f9b8165ec3b34229af95</srcmd5>
+    <version>4.5.0+20230705.ea8c76ff</version>
+    <time>1689261562</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1098537</requestid>
+  </revision>
 </revisionlist>

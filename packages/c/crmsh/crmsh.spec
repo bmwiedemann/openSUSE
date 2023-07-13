@@ -1,7 +1,7 @@
 #
 # spec file for package crmsh
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,13 +32,17 @@
 %define pkg_group Productivity/Clustering/HA
 %endif
 
+%if %{undefined python3_sitelib}
+%global python3_sitelib %(%{__python3} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
+%endif
+
 Name:           crmsh
 Summary:        High Availability cluster command-line interface
 License:        GPL-2.0-or-later
 Group:          %{pkg_group}
 Version:        4.5.0+20230705.ea8c76ff
 Release:        0
-Url:            http://crmsh.github.io
+URL:            http://crmsh.github.io
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        %{name}.tmpfiles.d.conf
 
@@ -51,8 +55,8 @@ Requires(pre):  pacemaker
 Requires:       %{name}-scripts >= %{version}-%{release}
 Requires:       /usr/bin/which
 Requires:       python3 >= 3.4
+Requires:       python3-PyYAML
 Requires:       python3-lxml
-Requires:       python3-python-dateutil
 BuildRequires:  python3-lxml
 BuildRequires:  python3-setuptools
 
@@ -63,15 +67,13 @@ Requires:       csync2
 %endif
 
 %if 0%{?suse_version}
-Requires:       python3-PyYAML
 # Suse splits this off into a separate package
 Requires:       python3-curses
+Requires:       python3-python-dateutil
 BuildRequires:  fdupes
 BuildRequires:  python3-curses
-%endif
-
-%if 0%{?fedora_version}
-Requires:       PyYAML
+%else
+Requires:       python3-dateutil
 %endif
 
 # Required for core functionality
@@ -103,24 +105,24 @@ Summary:        Test package for crmsh
 Group:          %{pkg_group}
 Requires:       crmsh
 %if %{with regression_tests}
-Requires(post):  mailx
-Requires(post):  procps
-Requires(post):  python3-python-dateutil
-Requires(post):  python3-tox
-Requires(post):  pacemaker
+Requires(post): mailx
+Requires(post): procps
+%if 0%{?suse_version}
+Requires(post): python3-python-dateutil
+%else
+Requires(post): python3-dateutil
+%endif
+Requires(post): python3-tox
+Requires(post): pacemaker
 %if 0%{?suse_version} > 1110
 BuildArch:      noarch
 %endif
 %if 0%{?suse_version}
-Requires(post):  libglue-devel
+Requires(post): libglue-devel
 %else
-Requires(post):  cluster-glue-libs-devel
+Requires(post): cluster-glue-libs-devel
 %endif
-%if 0%{?fedora_version}
-Requires(post):  PyYAML
-%else
-Requires(post):  python3-PyYAML
-%endif
+Requires(post): python3-PyYAML
 %endif
 
 %description test

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 13 09:16:00 UTC 2023 - XinLiang <XLiang@suse.com>
+
+- Dev: spec: Define python3_sitelib if it is not defined 
+- Dev: spec: Update package dependency
+
+-------------------------------------------------------------------
 Wed Jul 05 13:45:36 UTC 2023 - XLiang@suse.com
 
 - Update to version 4.5.0+20230705.ea8c76ff:
