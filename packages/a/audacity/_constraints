@@ -12,5 +12,15 @@
     </physicalmemory>
     </hardware>
   </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>riscv64</arch>
+    </conditions>
+    <hardware>
+      <memory>
+	<size unit="G">14</size>
+      </memory>
+    </hardware>
+  </overwrite>
 </constraints>
 
