@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>57baa71daee668d7caf6364b74266f05</srcmd5>
+    <version>unknown</version>
+    <time>1689261555</time>
+    <user>anag+factory</user>
+    <comment>- Initial container for qemu-pr-helper
+
+The container is a part of KubeVirt deployment.</comment>
+    <requestid>1098527</requestid>
+  </revision>
+</revisionlist>
