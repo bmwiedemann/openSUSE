@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 12 06:53:31 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Drop TARGETARCH argument (detect arch during build)
+
+-------------------------------------------------------------------
 Thu Jun 15 16:59:48 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Install virtiofsd explicitly instead of qemu-tools

@@ -10,9 +10,6 @@
 #  BuildFlags: dockerarg:KUBEVIRTFROM=opensuse/tumbleweed
 ARG KUBEVIRTFROM
 FROM $KUBEVIRTFROM
-# TARGETARCH defined in prjconf, to handle architecture specific bits
-# since TARGETARCH is not defined in OBS builds yet. Default to amd64.
-ARG TARGETARCH=amd64
 
 # Mandatory labels for the build service:
 #   https://en.opensuse.org/Building_derived_containers
@@ -48,15 +45,15 @@ RUN zypper -n install \
               xorriso
 
 #!ArchExclusiveLine: x86_64
-RUN if [ "$TARGETARCH" = "amd64" ]; then \
-    zypper -n install qemu-x86 ; \
+RUN if [ "$(uname -m)" = "x86_64" ]; then \
+        zypper -n install qemu-x86 ; \
     fi;
 
 #!ArchExclusiveLine: aarch64
-RUN if [ "$TARGETARCH" = "arm64" ]; then \
-    zypper -n install \
-              qemu-arm \
-              qemu-uefi-aarch64 ; \
+RUN if [ "$(uname -m)" = "aarch64" ]; then \
+        zypper -n install \
+                  qemu-arm \
+                  qemu-uefi-aarch64 ; \
     fi;
 
 RUN zypper clean -a
@@ -66,18 +63,18 @@ RUN ln -s ncat /usr/bin/nc
 RUN mkdir -p /usr/share/OVMF
 
 #!ArchExclusiveLine: x86_64
-RUN if [ "$TARGETARCH" = "amd64" ]; then \
-    ln -s ../qemu/ovmf-x86_64-code.bin /usr/share/OVMF/OVMF_CODE.fd && \
-    ln -s ../qemu/ovmf-x86_64-vars.bin /usr/share/OVMF/OVMF_VARS.fd && \
-    ln -s ../qemu/ovmf-x86_64-code.bin /usr/share/OVMF/OVMF_CODE.cc.fd && \
-    ln -s ../qemu/ovmf-x86_64-smm-ms-code.bin /usr/share/OVMF/OVMF_CODE.secboot.fd && \
-    ln -s ../qemu/ovmf-x86_64-smm-ms-vars.bin /usr/share/OVMF/OVMF_VARS.secboot.fd ; \
+RUN if [ "$(uname -m)" = "x86_64" ]; then \
+        ln -s ../qemu/ovmf-x86_64-code.bin /usr/share/OVMF/OVMF_CODE.fd && \
+        ln -s ../qemu/ovmf-x86_64-vars.bin /usr/share/OVMF/OVMF_VARS.fd && \
+        ln -s ../qemu/ovmf-x86_64-code.bin /usr/share/OVMF/OVMF_CODE.cc.fd && \
+        ln -s ../qemu/ovmf-x86_64-smm-ms-code.bin /usr/share/OVMF/OVMF_CODE.secboot.fd && \
+        ln -s ../qemu/ovmf-x86_64-smm-ms-vars.bin /usr/share/OVMF/OVMF_VARS.secboot.fd ; \
     fi;
 
 #!ArchExclusiveLine: aarch64
-RUN if [ "$TARGETARCH" = "arm64" ]; then \
-    ln -s ../qemu/aavmf-aarch64-code.bin /usr/share/OVMF/AAVMF_CODE.fd && \
-    ln -s ../qemu/aavmf-aarch64-vars.bin /usr/share/OVMF/AAVMF_VARS.fd ; \
+RUN if [ "$(uname -m)" = "aarch64" ]; then \
+        ln -s ../qemu/aavmf-aarch64-code.bin /usr/share/OVMF/AAVMF_CODE.fd && \
+        ln -s ../qemu/aavmf-aarch64-vars.bin /usr/share/OVMF/AAVMF_VARS.fd ; \
     fi;
 
 # KubeVirt expects virtiofsd to be installed in /usr/libexec
