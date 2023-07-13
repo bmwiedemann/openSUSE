@@ -294,4 +294,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1096595 from glaubitz)</comment>
     <requestid>1096627</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>6ba9396e6ac7f7130b9cabeecba745d3</srcmd5>
+    <version>7.11.1</version>
+    <time>1689261559</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 7.11.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1098500 from glaubitz)</comment>
+    <requestid>1098514</requestid>
+  </revision>
 </revisionlist>
