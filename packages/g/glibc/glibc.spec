@@ -49,6 +49,10 @@
 %bcond_with usrmerged
 %endif
 
+%if %{gcc_version} < 12
+%define with_gcc 12
+%endif
+
 # Enable support for livepatching.
 %ifarch x86_64
 %bcond_without livepatching
@@ -205,8 +209,11 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  systemtap-headers
 BuildRequires:  sysuser-tools
 BuildRequires:  xz
+%if 0%{?with_gcc:1}
+BuildRequires:  gcc%{with_gcc}
+%endif
 %if %{build_testsuite}
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?with_gcc}-c++
 BuildRequires:  gdb
 BuildRequires:  glibc-devel-static
 BuildRequires:  libidn2-0
@@ -219,7 +226,7 @@ BuildRequires:  libpng-devel
 BuildRequires:  zlib-devel
 %endif
 %if %{build_cross}
-BuildRequires:  cross-%{cross_arch}-gcc%{gcc_version}-bootstrap
+BuildRequires:  cross-%{cross_arch}-gcc%{!?with_gcc:%{gcc_version}}%{?with_gcc}-bootstrap
 BuildRequires:  cross-%{cross_arch}-linux-glibc-devel
 %endif
 %if "%flavor" == "i686"
@@ -288,14 +295,28 @@ Patch1000:      printf-grouping.patch
 Patch1001:      strftime-time64.patch
 # PATCH-FIX-UPSTREAM getlogin_r: fix missing fallback if loginuid is unset (BZ #30235)
 Patch1002:      getlogin-no-loginuid.patch
+# PATCH-FIX-UPSTREAM Always to locking when accessing streams (BZ #15142)
+Patch1003:      fix-locking-in-_IO_cleanup.patch
+# PATCH-FIX-UPSTREAM gshadow: Matching sgetsgent, sgetsgent_r ERANGE handling (BZ #30151)
+Patch1004:      gshadow-erange-rhandling.patch
+# PATCH-FIX-UPSTREAM posix: Fix system blocks SIGCHLD erroneously (BZ #30163)
+Patch1005:      system-sigchld-block.patch
+# PATCH-FIX-UPSTREAM gmon: Fix allocated buffer overflow (BZ #29444)
+Patch1006:      gmon-buffer-alloc.patch
+# PATCH-FIX-UPSTREAM __check_pf: Add a cancellation cleanup handler (BZ #20975)
+Patch1007:      check-pf-cancel-handler.patch
+# PATCH-FIX-UPSTREAM io: Fix F_GETLK, F_SETLK, and F_SETLKW for powerpc64
+Patch1008:      powerpc64-fcntl-lock.patch
+# PATCH-FIX-UPSTREAM realloc: Limit chunk reuse to only growing requests (BZ #30579)
+Patch1009:      realloc-limit-chunk-reuse.patch
+# PATCH-FIX-UPSTREAM elf: _dl_find_object may return 1 during early startup (BZ #30515)
+Patch1010:      dl-find-object-return.patch
 
 ###
 # Patches awaiting upstream approval
 ###
-# PATCH-FIX-UPSTREAM Always to locking when accessing streams (BZ #15142)
-Patch2000:      fix-locking-in-_IO_cleanup.patch
 # PATCH-FIX-UPSTREAM Avoid concurrency problem in ldconfig (BZ #23973)
-Patch2001:      ldconfig-concurrency.patch
+Patch2000:      ldconfig-concurrency.patch
 
 # Non-glibc patches
 # PATCH-FIX-OPENSUSE Remove debianisms from manpages
@@ -516,10 +537,17 @@ library in a cross compilation setting.
 %patch1000 -p1
 %patch1001 -p1
 %patch1002 -p1
+%patch1003 -p1
+%patch1004 -p1
+%patch1005 -p1
+%patch1006 -p1
+%patch1007 -p1
+%patch1008 -p1
+%patch1009 -p1
+%patch1010 -p1
 %endif
 
 %patch2000 -p1
-%patch2001 -p1
 
 %patch3000
 rm -f manpages/catchsegv.1
@@ -579,8 +607,13 @@ done
 %if "%flavor" == "i686"
 BuildFlags+=" -march=i686 -mtune=generic"
 %endif
+%if 0%{?with_gcc:1}
+BuildCC="gcc-%{with_gcc}"
+BuildCCplus="g++-%{with_gcc}"
+%else
 BuildCC="%__cc"
 BuildCCplus="%__cxx"
+%endif
 
 #
 #now overwrite for some architectures

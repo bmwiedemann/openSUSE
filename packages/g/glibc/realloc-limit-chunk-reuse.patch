@@ -1,0 +1,68 @@
+From 0930ff8eb35cb493c945f176c3c9ab320f4d1b86 Mon Sep 17 00:00:00 2001
+From: Siddhesh Poyarekar <siddhesh@sourceware.org>
+Date: Thu, 6 Jul 2023 11:09:44 -0400
+Subject: [PATCH] realloc: Limit chunk reuse to only growing requests [BZ
+ #30579]
+
+The trim_threshold is too aggressive a heuristic to decide if chunk
+reuse is OK for reallocated memory; for repeated small, shrinking
+allocations it leads to internal fragmentation and for repeated larger
+allocations that fragmentation may blow up even worse due to the dynamic
+nature of the threshold.
+
+Limit reuse only when it is within the alignment padding, which is 2 *
+size_t for heap allocations and a page size for mmapped allocations.
+There's the added wrinkle of THP, but this fix ignores it for now,
+pessimizing that case in favor of keeping fragmentation low.
+
+This resolves BZ #30579.
+
+Signed-off-by: Siddhesh Poyarekar <siddhesh@sourceware.org>
+Reported-by: Nicolas Dusart <nicolas@freedelity.be>
+Reported-by: Aurelien Jarno <aurelien@aurel32.net>
+Reviewed-by: Aurelien Jarno <aurelien@aurel32.net>
+Tested-by: Aurelien Jarno <aurelien@aurel32.net>
+(cherry picked from commit 2fb12bbd092b0c10f1f2083216e723d2406e21c4)
+---
+ malloc/malloc.c | 23 +++++++++++++++--------
+ 1 file changed, 15 insertions(+), 8 deletions(-)
+
+diff --git a/malloc/malloc.c b/malloc/malloc.c
+index fd8b52bfac..67df9f8c51 100644
+--- a/malloc/malloc.c
++++ b/malloc/malloc.c
+@@ -3398,16 +3398,23 @@ __libc_realloc (void *oldmem, size_t bytes)
+   if (__glibc_unlikely (mtag_enabled))
+     *(volatile char*) oldmem;
+ 
+-  /* Return the chunk as is whenever possible, i.e. there's enough usable space
+-     but not so much that we end up fragmenting the block.  We use the trim
+-     threshold as the heuristic to decide the latter.  */
+-  size_t usable = musable (oldmem);
+-  if (bytes <= usable
+-      && (unsigned long) (usable - bytes) <= mp_.trim_threshold)
+-    return oldmem;
+-
+   /* chunk corresponding to oldmem */
+   const mchunkptr oldp = mem2chunk (oldmem);
++
++  /* Return the chunk as is if the request grows within usable bytes, typically
++     into the alignment padding.  We want to avoid reusing the block for
++     shrinkages because it ends up unnecessarily fragmenting the address space.
++     This is also why the heuristic misses alignment padding for THP for
++     now.  */
++  size_t usable = musable (oldmem);
++  if (bytes <= usable)
++    {
++      size_t difference = usable - bytes;
++      if ((unsigned long) difference < 2 * sizeof (INTERNAL_SIZE_T)
++	  || (chunk_is_mmapped (oldp) && difference <= GLRO (dl_pagesize)))
++	return oldmem;
++    }
++
+   /* its size */
+   const INTERNAL_SIZE_T oldsize = chunksize (oldp);
+ 
+-- 
+2.41.0
+

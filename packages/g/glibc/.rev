@@ -2807,4 +2807,28 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   ASM written functions (bsc#1210777)</comment>
     <requestid>1089001</requestid>
   </revision>
+  <revision rev="276" vrev="5">
+    <srcmd5>3c8c90466cfc6f88504b3c3a7d052c69</srcmd5>
+    <version>2.37</version>
+    <time>1689261459</time>
+    <user>anag+factory</user>
+    <comment>- gshadow-erange-rhandling.patch: gshadow: Matching sgetsgent, sgetsgent_r
+  ERANGE handling (BZ #30151)
+- system-sigchld-block.patch: posix: Fix system blocks SIGCHLD erroneously
+  (BZ #30163)
+- gmon-buffer-alloc.patch: gmon: Fix allocated buffer overflow (BZ #29444)
+- check-pf-cancel-handler.patch: __check_pf: Add a cancellation cleanup
+  handler (BZ #20975)
+- powerpc64-fcntl-lock.patch: io: Fix F_GETLK, F_SETLK, and F_SETLKW for
+  powerpc64
+- realloc-limit-chunk-reuse.patch: realloc: Limit chunk reuse to only
+  growing requests (BZ #30579)
+- dl-find-object-return.patch: elf: _dl_find_object may return 1 during
+  early startup (BZ #30515)
+
+- Need to build with GCC 12 as minimum
+
+- fix-locking-in-_IO_cleanup.patch: Update to final version (forwarded request 1098077 from Andreas_Schwab)</comment>
+    <requestid>1098078</requestid>
+  </revision>
 </revisionlist>
