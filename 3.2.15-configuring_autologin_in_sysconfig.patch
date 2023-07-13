@@ -6,7 +6,7 @@ configuration file.
 
 --- a/src/modules/displaymanager/displaymanager.conf
 +++ b/src/modules/displaymanager/displaymanager.conf
-@@ -13,13 +13,7 @@
+@@ -16,14 +16,7 @@
  # is attempted. You can also list "sysconfig" in this list instead.
  #
  displaymanagers:
@@ -17,11 +17,12 @@ configuration file.
 -  - mdm
 -  - lxdm
 -  - kdm
-+    sysconfig
+-  - greetd
++  - sysconfig
  
  # Enable the following settings to force a desktop environment
  # in your displaymanager configuration file. This will attempt
-@@ -55,4 +55,4 @@
+@@ -59,4 +52,4 @@ basicSetup: false
  # The preferred way to pick sysconfig is to just list it in the
  # *displaymanagers* list (as the only one).
  #

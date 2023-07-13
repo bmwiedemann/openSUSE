@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun  2 14:08:03 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update to version 3.2.62
+  * See changelog at https://github.com/calamares/calamares/blob/calamares/CHANGES-3.2
+- Refresh patches
+- Remove obsolete rpmlintrc entries
+- Update obsolete field Supplements using packageand
+
+-------------------------------------------------------------------
 Mon Feb  8 11:17:52 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 3.2.36.

@@ -5,7 +5,7 @@ Calamares packages is no longer needed after installation.
 diff --git a/src/modules/packages/packages.conf b/src/modules/packages/packages.conf
 --- a/src/modules/packages/packages.conf
 +++ b/src/modules/packages/packages.conf
-@@ -13,7 +13,7 @@
+@@ -35,7 +35,7 @@
  # Not actually a package manager, but suitable for testing:
  #  - dummy       - Dummy manager, only logs
  #
@@ -14,7 +14,7 @@ diff --git a/src/modules/packages/packages.conf b/src/modules/packages/packages.
  
  #
  # Often package installation needs an internet connection.
-@@ -37,7 +37,7 @@
+@@ -59,7 +59,7 @@ backend: dummy
  # Therefore set also "update_system" to 'true'.
  #
  skip_if_no_internet: false
@@ -22,8 +22,8 @@ diff --git a/src/modules/packages/packages.conf b/src/modules/packages/packages.
 +update_db: false
  update_system: false
  
- #
-@@ -163,12 +163,6 @@
+ # pacman specific options
+@@ -202,12 +202,6 @@ pacman:
  # of packages, this can lead to a considerable time savings.
  #
  operations:

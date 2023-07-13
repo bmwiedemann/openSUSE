@@ -16,7 +16,7 @@ diff --git a/calamares.desktop b/calamares.desktop
  GenericName=System Installer
  Keywords=calamares;system;installer;
  TryExec=calamares
--Exec=pkexec /usr/bin/calamares
+-Exec=sh -c "pkexec calamares"
 +Exec=kdesu -c /usr/bin/calamares
  Comment=Calamares — System Installer
  Icon=calamares

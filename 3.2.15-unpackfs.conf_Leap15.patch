@@ -7,8 +7,8 @@ https://github.com/OSInside/kiwi/issues/1558
 https://github.com/OSInside/kiwi/commit/89f85e45041eb39f686f6b20f909a20bb48277cc#diff-473d8885cf8c5da1798144d6eaeb94c386af31c776c34336331040ca49b667d8
 
 diff -ruN a/src/modules/unpackfs/unpackfs.conf b/src/modules/unpackfs/unpackfs.conf
---- a/src/modules/unpackfs/unpackfs.conf	2020-11-16 18:28:28.000000000 +0700
-+++ b/src/modules/unpackfs/unpackfs.conf	2020-11-19 22:47:42.918846533 +0700
+--- a/src/modules/unpackfs/unpackfs.conf
++++ b/src/modules/unpackfs/unpackfs.conf
 @@ -88,13 +88,15 @@
  # for its destination name, as in the example below.
  
