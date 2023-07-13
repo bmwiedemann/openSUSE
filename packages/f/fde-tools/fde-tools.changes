@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 13 06:57:46 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add fde-tools-enable-authpol-in-firstboot.patch to enable
+  authorized policy in the firstboot script
+
+-------------------------------------------------------------------
 Fri Jul  7 08:40:25 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add fde-tools-fix-bootloader-func.patch

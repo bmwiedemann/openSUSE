@@ -29,6 +29,7 @@ Patch:          fde-tools-firstboot-alp-snapshot.patch
 Patch1:         fde-tools-avoid-cleaning-temp-dir.patch
 Patch2:         fde-tools-fix-bootloader-func.patch
 Patch3:         fde-tools-force-dracut.patch
+Patch4:         fde-tools-enable-authpol-in-firstboot.patch
 BuildRequires:  help2man
 BuildRequires:  openssl >= 0.9.8
 BuildRequires:  tpm2-0-tss-devel

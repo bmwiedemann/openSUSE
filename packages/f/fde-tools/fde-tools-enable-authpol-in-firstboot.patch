@@ -1,0 +1,145 @@
+From 23e675bb74905bd21a60ac6d9e97ac3c2e8d57d7 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Thu, 13 Jul 2023 14:48:41 +0800
+Subject: [PATCH 1/2] fdectl: add '--passfile' option to read the password file
+
+In some cases, we may need to read the recovery password from a file.
+This commit adds the new option to read the password from a file.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ fde.sh     | 7 ++++++-
+ share/util | 3 +++
+ 2 files changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/fde.sh b/fde.sh
+index 0198d4a..ffc9801 100755
+--- a/fde.sh
++++ b/fde.sh
+@@ -29,6 +29,7 @@ opt_uefi_bootdir=""
+ opt_ui=shell
+ opt_keyfile=""
+ opt_password=""
++opt_passfile=""
+ 
+ ##################################################################
+ # Display a usage message.
+@@ -61,6 +62,8 @@ Global options:
+   --password
+ 	Specify the LUKS recovery password. Should be used by the
+ 	installer only.
++  --passfile
++	Specify the path to a LUKS recovery password file.
+ 
+ Commands:
+   help		display this message
+@@ -121,7 +124,7 @@ function fde_maybe_chroot {
+ 
+ fde_maybe_chroot "$@"
+ 
+-long_options="help,version,bootloader:,device:,use-dialog,keyfile:,uefi-boot-dir:,password:"
++long_options="help,version,bootloader:,device:,use-dialog,keyfile:,uefi-boot-dir:,password:,passfile:"
+ 
+ if ! getopt -Q -n fdectl -l "$long_options" -o h -- "$@"; then
+     fde_usage
+@@ -156,6 +159,8 @@ while [ $# -gt 0 ]; do
+ 	opt_keyfile=$1; shift;;
+     --password)
+ 	opt_password=$1; shift;;
++    --passfile)
++	opt_passfile=$1; shift;;
+     --uefi-boot-dir)
+ 	opt_uefi_bootdir=$1; shift;;
+     *)
+diff --git a/share/util b/share/util
+index 0a305ce..a9482aa 100644
+--- a/share/util
++++ b/share/util
+@@ -32,6 +32,9 @@ function fde_request_recovery_password {
+     if [ -n "$opt_password" ]; then
+ 	result_password="$opt_password"
+ 	return 0
++    elif [ -n "$opt_passfile" -a -f "$opt_passfile" ]; then
++	result_password="$(<$opt_passfile)"
++	return 0
+     fi
+ 
+     # Ask for the recovery password just once
+-- 
+2.35.3
+
+
+From ce1b3907bbf76bc9719c7d81a951548f5c9122ea Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Thu, 13 Jul 2023 14:50:08 +0800
+Subject: [PATCH 2/2] firstboot: use 'fdectl regenerate-key' to enroll the key
+
+Directly invoke 'fdectl regenerate-key' to create the new random key and
+seal it with the TPM PCR policy.
+
+Also enable fde-tpm-enroll.service if the key is sealed successfully.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ firstboot/fde | 28 +++-------------------------
+ 1 file changed, 3 insertions(+), 25 deletions(-)
+
+diff --git a/firstboot/fde b/firstboot/fde
+index f1a95ab..4143961 100755
+--- a/firstboot/fde
++++ b/firstboot/fde
+@@ -43,10 +43,6 @@ KIWI_ROOT_KEYFILE=/root/.root.keyfile
+ # Set the bootloader specific functions here as aliases
+ ##################################################################
+ 
+-function bootloader_enable_fde_pcr_policy {
+-    grub_enable_fde_pcr_policy "$@"
+-}
+-
+ function bootloader_enable_fde_without_tpm {
+     grub_enable_fde_without_tpm "$@"
+ }
+@@ -59,18 +55,6 @@ function bootloader_get_fde_password {
+ # FDE Firstboot functions
+ ##################################################################
+ 
+-function fde_protect_tpm {
+-
+-    local luks_dev=$1
+-    local luks_keyfile=$2
+-
+-    luks_set_random_key "${luks_dev}" "${luks_keyfile}"
+-
+-    bootloader_enable_fde_pcr_policy "${luks_keyfile}"
+-
+-    return $?
+-}
+-
+ function fde_protect_notpm {
+ 
+     local luks_dev=$1
+@@ -150,18 +134,12 @@ function fde_setup_encrypted {
+     luks_reencrypt "${luks_dev}" "${pass_keyfile}"
+ 
+     if $with_tpm; then
+-	# Generate a random key again
+-	luks_keyfile="/root/.root.keyfile"
+-	luks_add_random_key "${luks_dev}" "${pass_keyfile}" "${luks_keyfile}"
+-
+-	# FIXME: fde_protect_tpm should not have to change key slot key any more.
+-	if ! fde_protect_tpm "${luks_dev}" "${luks_keyfile}"; then
++	if ! fdectl regenerate-key --passfile "${pass_keyfile}"; then
+ 	    display_errorbox "Failed to protect encrypted volume with TPM"
+ 	    with_tpm=false
++	else
++	    systemctl enable fde-tpm-enroll.service
+ 	fi
+-
+-	rm -f "${luks_keyfile}"
+-	luks_keyfile=""
+     else
+ 	# Update grub.cfg to attempt a cryptomount and ask the user for the
+ 	# password
+-- 
+2.35.3
+
