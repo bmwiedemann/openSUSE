@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Thu Jul 13 04:46:17 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.15.2:
+  * Prepare for v0.15.2 release
+  * chore(deps): update dependency go to v1.20.6
+  * fix(deps): update all go dependencies main
+  * metrics: Fix format error log in validateMetric
+  * peer: Add a method on service to return the name without the
+    namespace
+  * hooks: Add a setup and validate a new hook for extras
+  * fixup! sysdump: Collect node init Pod logs and DaemonSet
+  * sysdump: Collect node init Pod logs and DaemonSet
+  * sysdump: do not fail if cilium is not installed
+  * Update stable release to v0.15.1
+  * Fix pod summary for large numbers of pods
+  * GHA: fix 'install-cilium-cli' issue when building from source
+
+-------------------------------------------------------------------
+Wed Jul 12 06:38:38 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.15.1:
+  * Prepare for v0.15.1 release
+  * chore(deps): update helm/kind-action action to v1.8.0
+  * Eksctl version pinned.
+  * connectivity: Remove test-conn-disrupt tolerations
+  * fix(deps): update github.com/cilium/tetragon/pkg/k8s digest to
+    8a837d8
+  * connectivity: Ignore failedToListCRDs error
+  * connectivity: enable IPv6 test for per-endpoint routing
+  * Create a separate RESTClientGetter for Helm client
+  * fix(deps): update all go dependencies main
+  * chore(deps): update docker/setup-buildx-action action to v2.9.0
+  * fix(deps): update all go dependencies main
+  * Fix link in reference to helm mode
+  * connectivity: fix service propagation check with mismatching IP
+    families
+  * .github/workflows: remove master mirror
+  * kind multi cluster: Use a dot in cluster names
+  * Helm mode: Handle "cluster.name" Helm value
+  * chore(deps): update docker.io/library/busybox:stable-glibc
+    docker digest to 95101b8
+  * fix(deps): update github.com/cilium/tetragon/pkg/k8s digest to
+    6e47916
+  * Helm mode: don't suggest removed Azure flag
+  * sysdump: Use intermediate import package for supported envoy
+    resources
+  * dep: Bump cilium/cilium to v1.14.0-rc0
+  * chore(deps): update docker/setup-buildx-action action to v2.8.0
+  * chore(deps): update docker.io/library/busybox:stable-glibc
+    docker digest to 7f1b8b8
+  * connectivity: Fix trailing newline in tail call drop counts
+  * fix(deps): update all go dependencies main
+  * connectivity: Add op=Exists toleration for test-conn-disrupt
+  * Update stable release to v0.15.0
+
+-------------------------------------------------------------------
+Thu Jun 29 08:32:32 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.15.0:
+  * Prepare for v0.15.0 release
+  * connectivity: wait for service propagation in agents
+  * connectivity: extract and uniform wait functions
+  * connectivity: add Logger interface
+  * Use Helm mode by default
+  * eks-uninstall: Set CILIUM_CLI_MODE environment variable
+  * uninstall: Remove io.cilium/aws-node-enabled node selector
+  * defaults: update connectivity test alpine curl image version
+  * connectivity: Expose Features on ConnectivityTest
+  * GHA: extend 'install-cilium-cli' to build from source
+  * Update stable release to v0.14.8
+  * chore(deps): update dependency cilium/cilium to v1.13.4
+
+-------------------------------------------------------------------
 Mon Jun 26 04:59:38 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.14.8:
