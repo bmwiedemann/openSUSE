@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 12 12:35:05 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Jan 23 14:25:52 UTC 2023 - Matthias Bach <marix@marix.org> - 1.6.1
 
 - Update to 1.6.1
