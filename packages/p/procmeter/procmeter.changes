@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 12 08:58:23 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add procmeter-avoid-build-race.patch to make
+  package build reproducible (boo#1102408)
+
+-------------------------------------------------------------------
 Fri Feb 11 00:01:03 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to latest svn version 3.6+svn415:

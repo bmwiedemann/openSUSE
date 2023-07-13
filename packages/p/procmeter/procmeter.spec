@@ -27,6 +27,8 @@ Source:         procmeter3-%{version}.tar.xz
 Source1:        procmeter3.desktop
 # PATCH-FIX-UPSTREAM procmeter3-loff_t.patch
 Patch0:         procmeter3-loff_t.patch
+# PATCH-FIX-UPSTREAM boo#1102408
+Patch1:         procmeter-avoid-build-race.patch
 BuildRequires:  libsensors4-devel
 BuildRequires:  update-desktop-files
 Provides:       procmtr
@@ -58,6 +60,7 @@ This package provides files needed to build modules for procmeter.
 %prep
 %setup -q -n procmeter3-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 make %{?_smp_mflags} INSTDIR=%{_prefix} CFLAGS="%{optflags}"
