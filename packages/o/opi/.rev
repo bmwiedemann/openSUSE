@@ -454,4 +454,23 @@
 - Remove MS teams as it is discontinued</comment>
     <requestid>1093751</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>4496bf648a3f297769fac6551736c3be</srcmd5>
+    <version>3.1.0</version>
+    <time>1689175656</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 3.1.0
+- Add MapTool RPM tool</comment>
+    <requestid>1098237</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>b8768607ec5ae11ea753734960455ca2</srcmd5>
+    <version>3.2.0</version>
+    <time>1689261537</time>
+    <user>anag+factory</user>
+    <comment>- Version 3.2.0
+- fix: add missing format string marks, remove empty lines
+- Make release.sh more robust</comment>
+    <requestid>1098487</requestid>
+  </revision>
 </revisionlist>
