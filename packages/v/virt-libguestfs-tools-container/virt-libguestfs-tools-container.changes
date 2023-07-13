@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 12 06:55:40 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Drop TARGETARCH argument (detect arch during build)
+
+-------------------------------------------------------------------
 Thu Mar  2 18:15:49 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Use qcow2 format to store the appliance rootfs

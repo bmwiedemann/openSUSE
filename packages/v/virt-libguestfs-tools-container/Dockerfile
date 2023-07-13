@@ -10,9 +10,6 @@
 #  BuildFlags: dockerarg:KUBEVIRTFROM=opensuse/tumbleweed
 ARG KUBEVIRTFROM
 FROM $KUBEVIRTFROM
-# TARGETARCH defined in prjconf, to handle architecture specific bits
-# since TARGETARCH is not defined in OBS builds yet. Default to amd64.
-ARG TARGETARCH=amd64
 
 # Mandatory labels for the build service:
 #   https://en.opensuse.org/Building_derived_containers
@@ -57,15 +54,15 @@ RUN zypper -n install \
               zerofree
 
 #!ArchExclusiveLine: x86_64
-RUN if [ "$TARGETARCH" = "amd64" ]; then \
-              zypper -n install qemu-x86 ; \
-              fi;
+RUN if [ "$(uname -m)" = "x86_64" ]; then \
+        zypper -n install qemu-x86 ; \
+    fi;
 
 # qemu-x86 is required on aarch64 to get the test to pass (allow fallback to non KVM mode)
 #!ArchExclusiveLine: aarch64
-RUN if [ "$TARGETARCH" = "arm64" ]; then \
-              zypper -n install qemu-arm qemu-uefi-aarch64 qemu-x86; \
-              fi;
+RUN if [ "$(uname -m)" = "aarch64" ]; then \
+        zypper -n install qemu-arm qemu-uefi-aarch64 qemu-x86; \
+    fi;
 
 # Make a "fixed appliance" for libguestfs.
 # Note: the resulting 'appliance/root' is a sparse file. Docker does not
