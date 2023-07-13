@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul 12 07:54:37 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.0.0
+  Release notes https://github.com/kubevirt/kubevirt/releases/tag/v1.0.0
+- Drop patches
+  0001-Vulnerability-fix-limit-operator-secrets-permission.patch
+  0002-Fix-qemu-system-lookup.patch
+- Add 0001-Fix-qemu-system-lookup.patch
+- Add registry path for SLE15 SP6
+
+-------------------------------------------------------------------
+Mon Jul 10 11:19:52 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Fix qemu-system-<arch> process lookup
+  0002-Fix-qemu-system-lookup.patch
+
+-------------------------------------------------------------------
 Wed Jun 21 05:24:13 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Update to version 0.59.2

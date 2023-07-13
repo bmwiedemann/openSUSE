@@ -17,7 +17,7 @@
 
 
 Name:           kubevirt
-Version:        0.59.2
+Version:        1.0.0
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
@@ -28,7 +28,7 @@ Source1:        kubevirt_containers_meta
 Source2:        kubevirt_containers_meta.service
 Source3:        %{url}/releases/download/v%{version}/disks-images-provider.yaml
 Source100:      %{name}-rpmlintrc
-Patch0:         0001-Vulnerability-fix-limit-operator-secrets-permission.patch
+Patch1:         0001-Fix-qemu-system-lookup.patch
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
@@ -106,6 +106,14 @@ Group:          System/Packages
 %description    virt-operator
 The virt-opertor package provides an operator for kubevirt CRD
 
+%package        pr-helper-conf
+Summary:        Configuration files for persistent reservation helper
+Group:          System/Packages
+
+%description    pr-helper-conf
+The pr-helper-conf package provides configuration files for persistent
+reservation helper
+
 %package        manifests
 Summary:        YAML manifests used to install kubevirt
 Group:          System/Packages
@@ -169,6 +177,11 @@ case "${distro}" in
     ;;
 150500:0)
     tagprefix=suse/sles/15.5
+    labelprefix=com.suse.kubevirt
+    registry=registry.suse.com
+    ;;
+150600:0)
+    tagprefix=suse/sles/15.6
     labelprefix=com.suse.kubevirt
     registry=registry.suse.com
     ;;
@@ -254,6 +267,10 @@ install -p -m 0644 cmd/virt-handler/nsswitch.conf %{buildroot}%{_datadir}/kube-v
 # virt-launcher SELinux policy needs to land in virt-handler container
 install -p -m 0644 cmd/virt-handler/virt_launcher.cil %{buildroot}%{_datadir}/kube-virt/virt-handler/
 
+# Persistent reservation helper configuration files
+mkdir -p %{buildroot}%{_datadir}/kube-virt/pr-helper
+install -p -m 0644 cmd/pr-helper/multipath.conf %{buildroot}%{_datadir}/kube-virt/pr-helper/
+
 # Install release manifests
 mkdir -p %{buildroot}%{_datadir}/kube-virt/manifests/release
 install -m 0644 _out/manifests/release/kubevirt-operator.yaml %{buildroot}%{_datadir}/kube-virt/manifests/release/
@@ -324,6 +341,13 @@ install -m 0644 %{S:2} %{buildroot}%{_prefix}/lib/obs/service
 %license LICENSE
 %doc README.md
 %{_bindir}/virt-operator
+
+%files pr-helper-conf
+%license LICENSE
+%doc README.md
+%dir %{_datadir}/kube-virt
+%dir %{_datadir}/kube-virt/pr-helper
+%{_datadir}/kube-virt/pr-helper
 
 %files manifests
 %license LICENSE

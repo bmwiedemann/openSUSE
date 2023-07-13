@@ -546,4 +546,20 @@ SLE identical and thus derived from a common source. Thanks!
     <comment></comment>
     <requestid>1094271</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>9906e646f708f90a8082167d6993592c</srcmd5>
+    <version>0.59.2</version>
+    <time>1689000035</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1097921</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>90a4549dacf33981839c8753aad54253</srcmd5>
+    <version>1.0.0</version>
+    <time>1689261556</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1098530</requestid>
+  </revision>
 </revisionlist>
