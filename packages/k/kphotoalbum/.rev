@@ -105,4 +105,12 @@
     <comment>Fixes for exiv 0.28</comment>
     <requestid>1096670</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2da9d8b0a234dc32ded9f30ec6d2bf4b</srcmd5>
+    <version>5.11.0</version>
+    <time>1689261493</time>
+    <user>anag+factory</user>
+    <comment>Update to 5.11.0</comment>
+    <requestid>1098425</requestid>
+  </revision>
 </revisionlist>

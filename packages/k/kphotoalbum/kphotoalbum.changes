@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jul 12 16:19:58 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.11.0
+  * Fix issue where non-empty time units in the date bar were
+    incorrectly greyed out (kde#467903)
+  * Fix bug with the date bar showing and selecting incorrect
+    date ranges (kde#468045)
+  * Fix crash when the annotation dialog is opened from the
+    viewer window and the viewer is closed before the
+    annotation dialog (kde#470889)
+  * Fix inconsistent UI where menu actions would not immediately
+    be updated to reflect a change (kde#472109, kde#472113)
+- Drop patches, now upstream:
+  * 0001-Fixed-compilation-with-exiv2-0.28.patch
+  * 0002-Less-macros-by-simply-using-auto.patch
+  * 0003-Use-Exifdatum-toInt64-instead-of-toUint32.patch
+
+-------------------------------------------------------------------
 Tue Jul  4 06:47:31 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add patches:
