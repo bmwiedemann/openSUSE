@@ -103,4 +103,20 @@
     <comment></comment>
     <requestid>1069166</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>aab8d361b3a07065241e3d267c33751a</srcmd5>
+    <version>0.20.0</version>
+    <time>1689175671</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1098314</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>438a4846f37458e4e2ddfa65b7c0c537</srcmd5>
+    <version>0.20.1</version>
+    <time>1689261534</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1098484</requestid>
+  </revision>
 </revisionlist>

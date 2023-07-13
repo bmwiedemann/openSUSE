@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jul 13 04:46:28 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.20.1:
+  * Version 0.20.1
+  * Update runner images
+
+-------------------------------------------------------------------
+Wed Jul 12 07:19:52 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- modify _service file to always create the vendor.tar.xz file
+
+-------------------------------------------------------------------
+Wed Jul 12 06:36:04 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.20.0:
+  * Version 0.20.0
+  * Run 'cargo update'
+  * Run 'cargo clippy' and apply fixes
+  * Run 'cargo fmt'
+  * Update README.md
+  * Add support for pre/post shell hooks to bash.
+  * fix(nushell): Replace `remove_matches` by `replace`
+  * feat(nushell): Add support for prompt in nushell
+  * feat(nushell): Add support for nushell
+
+-------------------------------------------------------------------
 Fri Mar  3 09:44:22 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - bash-completion subpackage now Requires bash-completion
