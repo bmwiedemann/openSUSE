@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jul 13 06:07:24 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.11.3
+  Bugfixes:
+  * Fixed color picker buttons in subtitles settings not
+    reflecting the current color
+  * Fixed subtitles color changes not applying immediately
+ 
+-------------------------------------------------------------------
+Sun Jul  9 18:17:48 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.11.2
+  Bugfixes:
+  * Fixed osd not showing
+  * Fixed adding items to the playlist
+  * Fixed wrong values being shown in the osd
+  * Fixed subtitle font size setting not being loaded from config
+  * Fixed progress bar changing size when not using a
+    monospaced/fixed-width font
+  * Fixed footer/bottom toolbar not hiding when moving to the
+    monitor below, while Haruna is in fullscreen
+
+-------------------------------------------------------------------
 Mon May 29 06:17:45 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.11.1
