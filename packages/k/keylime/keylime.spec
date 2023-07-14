@@ -27,7 +27,7 @@
   %define _config_norepl %config(noreplace)
 %endif
 Name:           keylime
-Version:        7.2.5
+Version:        7.3.0
 Release:        0
 Summary:        Open source TPM software for Bootstrapping and Maintaining Trust
 License:        Apache-2.0 AND MIT
@@ -50,19 +50,20 @@ BuildRequires:  sysuser-tools
 Requires:       libtss2-tcti-device0
 Requires:       libtss2-tcti-tabrmd0
 Requires:       procps
-Requires:       python-M2Crypto
-Requires:       python-PyYAML
-Requires:       python-SQLAlchemy
-Requires:       python-alembic
-Requires:       python-cryptography
-Requires:       python-gpg
-Requires:       python-jsonschema
-Requires:       python-lark
-Requires:       python-psutil
-Requires:       python-pyzmq
-Requires:       python-requests
-Requires:       python-tornado
-Requires:       python-typing_extensions
+Requires:       python3-M2Crypto
+Requires:       python3-PyYAML
+Requires:       python3-SQLAlchemy
+Requires:       python3-alembic
+Requires:       python3-cryptography
+Requires:       python3-gpg
+Requires:       python3-jsonschema
+Requires:       python3-lark
+Requires:       python3-packaging
+Requires:       python3-psutil
+Requires:       python3-pyzmq
+Requires:       python3-requests
+Requires:       python3-tornado
+Requires:       python3-typing_extensions
 Requires:       tpm2-0-tss
 Requires:       tpm2.0-abrmd
 Requires:       tpm2.0-tools

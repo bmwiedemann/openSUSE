@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jul 12 14:14:35 UTC 2023 - aplanas@suse.com
+
+- Drop migrations_use_sa_text_for_raw_SQL.patch, merged upstream
+- Update to version v7.3.0:
+  * Monthly release (7.3.0)
+  * tenant: log cleanup and output improvements
+  * mba: moving the boot event log parsing to the MBA subdirectory
+  * Add secure mount sanity test to packit testing
+  * templates: Set empty string as default value for tpm_ownerpassword
+  * migrations: use sa.text for raw SQL
+  * ima: only log the accept list on validation failure
+  * ima: remove code used for reading the IMA log from disk
+  * tpm: Move functions from tpm_astract.py to tpm_util.py
+  * tpm: Move splitting of quote string into reusable function
+  * tpm: Change default value of Hash parameter to Hash.SHA256 from None
+  * [tests] Enable basic allowlist/excludelist test
+  * installer.sh: update TPM2TOOLS_VER to 5.5 and cherry-pick patches to fix the bug of parsing for most newer logs with the tpm2_eventlog command.
+  * web_util: Remove check for code being 'None' since it is always an int
+  * verifier: Remove possibility for agent to be None and remove error case
+  * verifier: Remove conversion of agent to dict
+  * verifier: Remove possibility for agent to be None and remove error case
+  * verifier: Remove check for agent is None since it cannot be None
+
+-------------------------------------------------------------------
+Tue Jun  6 14:51:55 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add migrations_use_sa_text_for_raw_SQL.patch to fix migrations in
+  new SQLAlchemy versions
+
+-------------------------------------------------------------------
 Mon Jun 05 08:39:23 UTC 2023 - aplanas@suse.com
 
 - Update to version v7.2.5:
