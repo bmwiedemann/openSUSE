@@ -39,6 +39,8 @@ Source1:        matplotlib-mplsetup.cfg
 # Bundled version of freetype and qhull for testing purposes only
 Source98:       http://www.qhull.org/download/qhull-2020-src-8.0.2.tgz
 Source99:       https://downloads.sourceforge.net/project/freetype/freetype2/2.6.1/freetype-2.6.1.tar.gz
+# PATCH-FIX-OPENSUSE mmachova@suse.com workaround for boo#1213007 suggested in https://github.com/matplotlib/matplotlib/issues/26152#issuecomment-1607594392
+Patch:          pyparsing-workaround-setName.patch
 Recommends:     ghostscript
 Recommends:     libxml2-tools
 Recommends:     poppler-tools

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 11 11:10:04 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- add pyparsing-workaround-setName.patch as a part of a workaround
+  for boo#1213007
+  * it changes the behaviour for the debugging purposes, the laic
+    end user shouldn't notice
+
+-------------------------------------------------------------------
 Mon May  8 06:08:18 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons
