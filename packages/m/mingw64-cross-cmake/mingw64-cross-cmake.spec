@@ -16,7 +16,7 @@
 #
 
 Name:           mingw64-cross-cmake
-Version:        1.1.2
+Version:        1.1.3
 Release:        0
 Summary:        Cross build support for CMake
 License:        BSD-3-Clause
@@ -53,7 +53,7 @@ with cross compiled binaries.
 mkdir -p %{buildroot}%{_rpmmacrodir}
 cp %{SOURCE1} %{buildroot}%{_rpmmacrodir}/macros.mingw64-cmake
 mkdir -p %{buildroot}%{_bindir}
-ln -s ../lib/mingw64-scripts %{buildroot}%{_bindir}/mingw64-cmake
+ln -s %{_libexecdir}/mingw64-scripts %{buildroot}%{_bindir}/mingw64-cmake
 
 # cmake support
 install -m 0755 %{SOURCE2} %{buildroot}%{_rpmconfigdir}

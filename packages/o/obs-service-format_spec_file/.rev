@@ -764,4 +764,14 @@
   * Add needspubkeyforbuild</comment>
     <requestid>1088428</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>737108e9017ea56bbcd815c6923f42af</srcmd5>
+    <version>20230712</version>
+    <time>1689175689</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230712:
+  * Sync SPDX licenses
+  * Sync SPDX licenses</comment>
+    <requestid>1098351</requestid>
+  </revision>
 </revisionlist>

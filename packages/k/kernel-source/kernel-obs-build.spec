@@ -19,7 +19,7 @@
 
 #!BuildIgnore: post-build-checks
 
-%define patchversion 6.3.9
+%define patchversion 6.4.2
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -44,7 +44,7 @@ BuildRequires:  util-linux
 %endif
 %endif
 %endif
-BuildRequires:  kernel%kernel_flavor-srchash-0df701dd2c208f4843cf219b4b26b533ada9bd34
+BuildRequires:  kernel%kernel_flavor-srchash-b97b89494481f3409297e494e466bdd42b1311ab
 
 %if 0%{?rhel_version}
 BuildRequires:  kernel
@@ -56,9 +56,9 @@ BuildRequires:  dracut
 Summary:        package kernel and initrd for OBS VM builds
 License:        GPL-2.0-only
 Group:          SLES
-Version:        6.3.9
+Version:        6.4.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g0df701d
+Release:        <RELEASE>.gb97b894
 %else
 Release:        0
 %endif
@@ -156,10 +156,6 @@ cp -v /tmp/initrd.kvm %{buildroot}/.build.initrd.kvm
 
 # inform worker kernel parameters to invoke
 CMDLINE="elevator=noop nmi_watchdog=0 rw"
-%if 0%{?suse_version} && 0%{?suse_version} < 1315
-# kvmclock has always been disabled for old kernels, keep it for historic compatibility
-CMDLINE+=" no-kvmclock"
-%endif
 echo "$CMDLINE" > %{buildroot}/.build.cmdline.kvm
 
 # inform worker about availability of virtio-serial

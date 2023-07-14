@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jul  6 03:08:25 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.32
+   see /usr/share/doc/packages/perl-Module-ScanDeps/Changes
+
+  1.32  2023-07-05
+  - Ensure $inc gets removed from the start of $File::Find::name
+    On Windows, if $inc contains backslashes then it won't always get removed
+    from the start of $File::Find::name because the latter may be canonicalized
+    to only contain forward slashes.
+  - Provide dedicated test scripts for some tests instead of using
+    the test scripts themselves: Test::More draws in all kinds of stuff,
+    totally unpredictable
+  - Rewrite test helpers in t/Utils.pm to use Test::More's subtest feature
+  - Code cleanup; fix detection of 'do STRING' (cf PR #15)
+  - scandeps.pl:  sort items in "used by" column
+  - Handle spaces after quote operator, e.g. eval qq {Some::Module}
+  - Fixes #12: share dir not returned when require module is in an eval
+  - Recognize constructs like "eval qq{require Inline::C}".
+  - Recognize idioms like "if (eval { require Foo }) { ..."
+  - Add %preload rules for some Mojo resource files
+    Fixes rschupp/PAR-Packer#44
+  - Bump perl dependency to guard against ancient perls without FindBin::again()
+  - Add tool to trace when (and from where) Perl searches for a module
+
+-------------------------------------------------------------------
 Thu Apr 22 03:09:13 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.31

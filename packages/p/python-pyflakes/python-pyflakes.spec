@@ -25,6 +25,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/PyCQA/pyflakes
 Source:         https://files.pythonhosted.org/packages/source/p/pyflakes/pyflakes-%{version}.tar.gz
+#PATCH-FIX-UPSTREAM https://github.com/PyCQA/pyflakes/commit/836631f2f73d45baa4021453d89fc9fd6f52be58 fix error reporter and testsuite in 3.11.4+
+Patch:          py3114.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -42,7 +44,7 @@ works by parsing the source file, not importing it, so it is safe to use on
 modules with side effects. It's also much faster.
 
 %prep
-%setup -q -n pyflakes-%{version}
+%autosetup -p1 -n pyflakes-%{version}
 
 %build
 %python_build

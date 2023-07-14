@@ -131,4 +131,23 @@
 * etc. https://github.com/sile-typesetter/sile/releases/tag/v0.14.9</comment>
     <requestid>1078548</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ecfd86af1bb61172b4b5d7c8e8714d3f</srcmd5>
+    <version>0.14.10</version>
+    <time>1689175660</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.10
+ * Features
+  - cli: Allow more than one input document
+  - i18n: Add localized strings for Cantonese and Chinese
+  - packages: Add document class styling in autodoc
+  - packages: Provide API for registering raw handlers linked to packages
+ * Bug Fixes:
+  - build: Avoid build artifacts being listed for installation
+  - core: Avoid stack overflow in Harfbuzz module
+  - outputters: Setup --makedeps to play along without explicit --output
+  - packages: Converters package no longer worked after 0.13.0
+  - packages: Correct chord line height and chord font use (forwarded request 1098263 from Pi-Cla)</comment>
+    <requestid>1098264</requestid>
+  </revision>
 </revisionlist>

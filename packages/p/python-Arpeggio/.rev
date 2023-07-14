@@ -141,4 +141,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>997713</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d19bccec7b2095e6e5b3218fd96f30f7</srcmd5>
+    <version>2.0.2</version>
+    <time>1689175628</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.2:
+  * fix: drop deprecated `setup_requires` and `tests_require`
+  * fix: replace ` ` with `\n` in error reports for matches</comment>
+    <requestid>1098174</requestid>
+  </revision>
 </revisionlist>

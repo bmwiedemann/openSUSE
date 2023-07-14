@@ -16,22 +16,18 @@
 #
 
 
-%define srcversion 6.3
-%define patchversion 6.3.9
+%define srcversion 6.4
+%define patchversion 6.4.2
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
 
-%if 0%{?suse_version} > 1320 || ( 0%{?suse_version} == 1315 && 0%{?sle_version} >= 120300 )
-%define dtc_symbols 1
-%endif
-
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-armv7l
-Version:        6.3.9
+Version:        6.4.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g0df701d
+Release:        <RELEASE>.gb97b894
 %else
 Release:        0
 %endif
@@ -41,11 +37,7 @@ Group:          System/Boot
 URL:            https://www.kernel.org/
 ExclusiveArch:  armv7l armv7hl
 BuildRequires:  cpp
-%if 0%{?dtc_symbols}
 BuildRequires:  dtc >= 1.4.3
-%else
-BuildRequires:  dtc >= 1.4.0
-%endif
 BuildRequires:  xz
 Requires:       kernel = %version
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
@@ -596,9 +588,7 @@ SRCDIR=$PWD/$source
 mkdir pp
 PPDIR=$PWD/pp
 export DTC_FLAGS="-R 4 -p 0x1000"
-%if 0%{?dtc_symbols}
 DTC_FLAGS="$DTC_FLAGS -@"
-%endif
 
 cd $source/arch/arm/boot/dts
 for dts in am335x-*.dts am3517*.dts am57xx-*.dts armada-370-*.dts armada-375-*.dts armada-385-*.dts armada-388-*.dts armada-398-*.dts armada-xp-*.dts bcm2836*.dts dove-*.dts exynos4*.dts exynos5*.dts imx5*.dts imx6*.dts imx7*.dts keystone-*.dts meson6-*.dts meson8-*.dts meson8b-*.dts mt76*.dts omap3*.dts omap4*.dts omap5*.dts qcom-*.dts rk3*.dts socfpga_*.dts ste-*.dts sun4i-*.dts sun5i-*.dts sun6i-*.dts sun7i-*.dts sun8i-*.dts sun9i-*.dts tegra20-*.dts tegra30-*.dts tegra114-*.dts tegra124-*.dts vexpress-*.dts vf500-*.dts vf610-*.dts xenvm-*.dts zynq-*.dts ; do

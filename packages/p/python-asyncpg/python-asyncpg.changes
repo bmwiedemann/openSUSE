@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul 11 13:32:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.28.0:
+  * Minor fixes and improvements.
+  * Do not try to cleanup statements (#981)
+  * Add Pool.is_closing() method (#973)
+  * Fix test_tls_version for LibreSSL (#974)
+  * Handle environments without home dir (#1011)
+  * fix: salt and iterations parsing for scram (#1026)
+  * Add support for target_session_attrs (#987)
+  * Add support for READ UNCOMMITTED (#1039)
+  * Update benchmarks, add psycopg3 (#1042)
+
+-------------------------------------------------------------------
 Tue Jul  4 13:09:00 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

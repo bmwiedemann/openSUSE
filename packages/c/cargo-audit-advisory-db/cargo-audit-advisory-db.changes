@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul 11 00:47:33 UTC 2023 - william.brown@suse.com
+
+- Update to version 20230711:
+  * Bump rustsec-admin to 0.8.6 (#1728)
+  * Update aliases from GHSA OSV export (#1727)
+  * Update RUSTSEC-2021-0145.md with stable IsTerminal (#1725)
+  * Assigned RUSTSEC-2023-0046 to cyfs-base (#1723)
+  * report misaligned pointer dereference in cyfs-base (#1718)
+  * Assigned RUSTSEC-2023-0045 to memoffset (#1722)
+  * Add advisory to `memoffset` (#1721)
+  * Assigned RUSTSEC-2023-0044 to openssl (#1720)
+  * Report buffer-overread in OpenSSL (#1719)
+  * Update RUSTSEC-2023-0042 to reflect patch. (#1717)
+
+-------------------------------------------------------------------
 Tue May 30 04:33:12 UTC 2023 - william.brown@suse.com
 
 - Update to version 20230530:

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jul  7 19:32:15 UTC 2023 - Tina Müller <tina.mueller@suse.com>
+
+- Updated GD-cflags.patch
+
+-------------------------------------------------------------------
+Wed Jul  5 03:07:11 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.78
+   see /usr/share/doc/packages/perl-GD/ChangeLog
+
+  2.78    * Fix Use of uninitialized value $pkg in concatenation warning
+            (RT #148899 and GH #47). Thanks to ppisar for the analysis.
+            Adds a new hard Test::NoWarnings test requirement.
+  2.77    * add BMP support with libgd 2.1.0, PR #49 by PeterCJ
+          * don't link to -lXPM without XPM nor X11, GH #45
+          * rename ANIMGIF feature to GIFANIM
+          * fix unused variable failure in GH CI, RT #141125 by PhilterPaper
+
+-------------------------------------------------------------------
 Thu May 11 15:37:41 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - update cpanspec.yml and recreate spec file

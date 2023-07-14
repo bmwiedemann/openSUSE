@@ -33,9 +33,6 @@ BuildRequires:  systemd-rpm-macros
 # aardvark-dns and %%{name} are usually released in sync
 Requires:       aardvark-dns >= %{version}
 # Provides: container-network-stack = 2
-# Disable this line if you wish to support all platforms.
-# In most situations, you will likely only target tier1 arches for user facing components.
-ExclusiveArch:  %{rust_tier1_arches}
 
 %description
 Netavark is a rust based network stack for containers. It is being

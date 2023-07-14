@@ -584,4 +584,27 @@
   * v6.19.3-dev</comment>
     <requestid>1091221</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>964473fbbe041aacfa46e801a7ff9f53</srcmd5>
+    <version>6.20.0</version>
+    <time>1689000022</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.20.0:
+  * v6.20.0
+  * v6.20.0-dev
+  * Zephyr solo mining: fix for blocks with transactions
+  * Zephyr coin support
+  * KawPow: fixed data race when building programs
+  * Code cleanup.
+  * Disallow direct use of HwlocCpuInfo class.
+  * Code cleanup.
+  * Fixed compatibility with hwloc 1.11.
+  * Added new CMake options ARM_V8 and ARM_V7.
+  * Added new ARM CPU names.
+  * v6.19.4-dev
+  * Add API rebind polling
+  * fix(cuda): receive CUDA loader error on linux too.
+  * Add x86 to README</comment>
+    <requestid>1097894</requestid>
+  </revision>
 </revisionlist>

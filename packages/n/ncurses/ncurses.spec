@@ -424,9 +424,9 @@ export CFLAGS_SHARED
     test ! -f /.buildenv || . /.buildenv
        OPATH=$PATH
 %ifarch s390x s390
-      FALLBK="unknown,dumb,xterm,ibm327x,vt100,vt102,vt220"
+      FALLBK="unknown,dumb,xterm,xterm-256color,ibm327x,ms-terminal,vt100,vt102,vt220"
 %else
-      FALLBK="unknown,dumb,xterm,linux,vt100,vt102,vt220"
+      FALLBK="unknown,dumb,xterm,xterm-256color,linux,ms-terminal,vt100,vt102,vt220"
 %endif
 	  CC=gcc
 	 CXX=g++

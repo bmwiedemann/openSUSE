@@ -16,9 +16,7 @@
 #
 
 
-# python2 is not supported
-%define skip_python2 1
-
+%{?sle15_python_module_pythons}
 Name:           python-keyring-keyutils
 Version:        0.1.1
 Release:        0

@@ -1,6 +1,6 @@
 Format: 1.0
 Source: obs-service-format-spec-file
-Version: 20230522
+Version: 20230712
 Binary: obs-service-format-spec-file
 Maintainer: Adrian Schroeter <adrian@suse.de>
 Architecture: all

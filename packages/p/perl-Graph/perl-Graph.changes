@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 26 03:06:21 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.9727
+   see /usr/share/doc/packages/perl-Graph/Changes
+
+  0.9727 2023-06-25
+  - fix biconnectivity to work with refvertexed (#29) - thanks @merkys for report
+
+-------------------------------------------------------------------
 Sun Feb 12 03:06:44 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.9726

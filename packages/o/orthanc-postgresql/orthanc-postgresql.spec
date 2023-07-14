@@ -1,8 +1,8 @@
 #
 # spec file for package orthanc-postgresql
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2019-2021 Dr. Axel Braun
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2019-2023 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,12 @@ Name:           orthanc-postgresql
 Summary:        Database plugin for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Databases/Tools
-Version:        4.0
+Version:        5.1
 Release:        0
 URL:            https://orthanc-server.com
 Source0:        https://www.orthanc-server.com/downloads/get.php?path=/plugin-postgresql/OrthancPostgreSQL-%{version}.tar.gz
 Source1:        orthanc-postgresql-readme.SUSE
 Source2:        postgresql.json
-Patch0:         psql114.patch
 BuildRequires:  cmake
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  gcc-c++
@@ -45,6 +44,7 @@ BuildRequires:  openssl-devel
 BuildRequires:  orthanc-devel
 BuildRequires:  orthanc-source
 BuildRequires:  postgresql-devel
+BuildRequires:  protobuf-devel
 #TW/Leap 15.2
 %if 0%{?sle_version} > 150100 || 0%{?suse_version} > 1500
 BuildRequires:  postgresql-server-devel
@@ -63,8 +63,7 @@ PostgreSQL Database plugin for Orthanc, replaces SQLite database
 
 %prep
 
-%setup -q -n OrthancPostgreSQL-%{version}
-%patch0 -p2
+%setup -q -n OrthancPostgresql-%{version}
 
 %build
 

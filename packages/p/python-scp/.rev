@@ -113,4 +113,12 @@
   * Update type hints for pyright</comment>
     <requestid>990229</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>cd60222be7e77dc70b86fb29d48ec406</srcmd5>
+    <version>0.14.4</version>
+    <time>1689000055</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1097953</requestid>
+  </revision>
 </revisionlist>

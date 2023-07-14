@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Output
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Test-Output
 Name:           perl-Test-Output
-Version:        1.033
+Version:        1.034
 Release:        0
-Summary:        Utilities to test STDOUT and STDERR messages
 License:        Artistic-2.0
+Summary:        Utilities to test STDOUT and STDERR messages
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/B/BD/BDFOY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -29,6 +29,7 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Capture::Tiny) >= 0.17
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
 BuildRequires:  perl(File::Temp) >= 0.17
 BuildRequires:  perl(Test::More) >= 1
 BuildRequires:  perl(Test::Tester) >= 0.107

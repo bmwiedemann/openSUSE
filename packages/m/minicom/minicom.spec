@@ -1,7 +1,7 @@
 #
 # spec file for package minicom
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,6 @@ Patch4:         minicom-2.8-replace-sigrelse.patch
 Patch5:         minicom-2.8-fix-undefined-reference.patch
 BuildRequires:  ckermit
 BuildRequires:  gettext-devel
-BuildRequires:  lockdev-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  pkg-config
 Requires:       ckermit

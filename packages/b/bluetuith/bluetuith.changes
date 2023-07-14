@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 10 05:47:43 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.1.5:
+  * ui: device: Show address if name is empty 
+  * agent: Display pincode in a modal #14
+
+-------------------------------------------------------------------
 Fri Jun 23 09:30:29 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.1.5:

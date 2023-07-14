@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 22 03:08:11 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.636
+   see /usr/share/doc/packages/perl-Proc-ProcessTable/Changes
+
+  0.636 2023-06-23
+    - Fix compilation with MinGW32 runtime (redefine WINVER if too low)
+
+-------------------------------------------------------------------
 Tue May  9 03:07:38 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.635

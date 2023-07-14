@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 Name:           python-django-request
-Version:        1.6.2
+Version:        1.6.3
 Release:        0
 Summary:        Django statistics app
 License:        BSD-2-Clause

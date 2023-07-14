@@ -33,4 +33,23 @@
     <comment></comment>
     <requestid>1093058</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>880f53b21cbdf64a27ed1d5f3c47160c</srcmd5>
+    <version>0.4.13</version>
+    <time>1688999994</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.13:
+  * Update mapping for python-slugify
+  * Update mapping socketio to python-socketio
+  * Add mapping for python-constraint
+  * Mitigation for dependency confusion (bsc#1212933, CVE-2023-31543)
+  * enh: include airflow mapping
+  * Mapping Telegram to python-telegram-bot
+  * added =&gt; and ~= support through the &quot;mode&quot; option
+- Don't use greedy globs in %files.
+- Switch to pyproject macros.
+- Skip more tests that require network access.
+- Drop unneeded Requires on setuptools.</comment>
+    <requestid>1097856</requestid>
+  </revision>
 </revisionlist>

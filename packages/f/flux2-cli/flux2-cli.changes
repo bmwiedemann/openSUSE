@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 11 13:36:20 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.0.1:
+  * Update dependencies - bump the APIs packages in tests - bump
+    golang crypto and term to latest
+  * Take into account the server-side inventory for local diff
+  * Update toolkit components
+  * ci: release: extract the image tag from GITHUB_REF
+  * ci: backport: set write permissions
+  * ci: release: disable interpretation backslash esc
+
+-------------------------------------------------------------------
 Wed Jul 05 14:39:30 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.0.0:

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 11 09:04:16 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Bump version to 1.2
+- qmldirreqprov.sh:
+  * Fix parsing of "depends"
+  * Add support for "optional plugin"
+- qml.req: Handle imports without minor version requirement
+
+-------------------------------------------------------------------
 Tue Oct 19 18:45:25 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Check for a Qt runtime directory instead of qmake to also work if

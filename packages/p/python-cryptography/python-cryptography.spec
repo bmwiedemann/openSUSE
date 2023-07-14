@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-cryptography%{psuffix}
-Version:        41.0.1
+Version:        41.0.2
 Release:        0
 Summary:        Python library which exposes cryptographic recipes and primitives
 License:        Apache-2.0 OR BSD-3-Clause
@@ -40,9 +40,9 @@ Source2:        vendor.tar.zst
 Source3:        cargo_config
 Source4:        python-cryptography.keyring
 Patch2:         skip_openssl_memleak_test.patch
-%if 0%{?sle_version} && 0%{?sle_version} <= 150400
-Patch3:         remove_python_3_6_deprecation_warning.patch
-%endif
+# PATCH-FEATURE-OPENSUSE no-pytest_benchmark.patch mcepl@suse.com
+# We don't need no benchmarking and coverage measurement
+Patch4:         no-pytest_benchmark.patch
 BuildRequires:  %{python_module cffi >= 1.12}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module exceptiongroup}
@@ -66,7 +66,6 @@ BuildRequires:  %{python_module hypothesis >= 1.11.4}
 BuildRequires:  %{python_module iso8601}
 BuildRequires:  %{python_module pretend}
 BuildRequires:  %{python_module pytest > 6.0}
-BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-subtests}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytz}

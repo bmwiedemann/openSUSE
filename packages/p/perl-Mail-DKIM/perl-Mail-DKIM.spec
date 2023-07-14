@@ -18,7 +18,7 @@
 
 %define cpan_name Mail-DKIM
 Name:           perl-Mail-DKIM
-Version:        1.20230212
+Version:        1.20230630
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Signs/verifies Internet mail with DKIM/DomainKey signatures
@@ -29,6 +29,7 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Crypt::OpenSSL::RSA)
+BuildRequires:  perl(Crypt::PK::Ed25519)
 BuildRequires:  perl(Digest::SHA)
 BuildRequires:  perl(Mail::Address)
 BuildRequires:  perl(Mail::AuthenticationResults::Header::AuthServID)
@@ -39,6 +40,7 @@ BuildRequires:  perl(Net::DNS::Resolver::Mock)
 BuildRequires:  perl(Test::RequiresInternet)
 BuildRequires:  perl(YAML::XS)
 Requires:       perl(Crypt::OpenSSL::RSA)
+Requires:       perl(Crypt::PK::Ed25519)
 Requires:       perl(Digest::SHA)
 Requires:       perl(Mail::Address)
 Requires:       perl(Mail::AuthenticationResults::Header::AuthServID)
@@ -72,7 +74,7 @@ headers will get sorted keys
 %prep
 %autosetup  -n %{cpan_name}-%{version}
 
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

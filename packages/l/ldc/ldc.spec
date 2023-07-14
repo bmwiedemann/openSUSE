@@ -22,6 +22,23 @@
 %define lname_phobos  libphobos2-%{name}
 %define _bashcompletionsdir %{_datadir}/bash-completion/completions
 
+%define HOST_ARCH %(echo %{_host_cpu} | sed -e "s/i.86/i586/;s/ppc/powerpc/;s/sparc64.*/sparc64/;s/sparcv.*/sparc/;")
+%ifarch ppc
+%define LDCDIST powerpc64-suse-linux
+%else
+%ifarch %sparc
+%define LDCDIST sparc64-suse-linux
+%else
+%ifarch %arm
+%define LDCDIST %{HOST_ARCH}-suse-linux-gnueabi
+%else
+%define LDCDIST %{HOST_ARCH}-suse-linux
+%endif
+%endif
+%endif
+
+%define ldcincludedir %{_libdir}/ldc/%{LDCDIST}/include/d
+
 # With bootstrap enabled (the default), gdc is used (through the gdmd wrapper)
 # to build ldc (and shared runtime), then the built ldc is used to build ldc
 # itself again. The final ldc with shared runtime is then installed.
@@ -50,7 +67,7 @@
 %endif
 
 Name:           ldc
-Version:        1.32.0
+Version:        1.32.2
 Release:        0
 Summary:        The LLVM D Compiler
 License:        Artistic-1.0 AND BSD-3-Clause
@@ -192,7 +209,7 @@ touch no-suse-rules
     -DCMAKE_C_COMPILER="%{_bindir}/clang" \
     -DCMAKE_CXX_COMPILER="%{_bindir}/clang++" \
 %endif
-    -DINCLUDE_INSTALL_DIR:PATH=%{_includedir}/d \
+    -DINCLUDE_INSTALL_DIR:PATH=%{ldcincludedir} \
     -DD_COMPILER:PATH=%{_bindir}/gdmd%{?gdc_suffix} \
     -DCMAKE_CXX_FLAGS="-std=c++11"
 %make_build
@@ -217,7 +234,7 @@ touch no-suse-rules
     -DCMAKE_C_COMPILER="%{_bindir}/clang" \
     -DCMAKE_CXX_COMPILER="%{_bindir}/clang++" \
 %endif
-    -DINCLUDE_INSTALL_DIR:PATH=%{_includedir}/d \
+    -DINCLUDE_INSTALL_DIR:PATH=%{ldcincludedir} \
 %if %{with ldc_bootstrap}
     -DD_COMPILER:PATH=$PWD/../build-bootstrap/bin/ldmd2 \
 %endif
@@ -276,12 +293,15 @@ rm -rf %{buildroot}%{_prefix}/lib/debug
 %{_libdir}/%{lname_runtime}-shared.so
 %{_libdir}/%{lname_runtime}-debug-shared.so
 %{_libdir}/ldc_rt.dso.o
-%dir %{_includedir}/d
-%{_includedir}/d/core
-%{_includedir}/d/ldc
-%{_includedir}/d/__builtins.di
-%{_includedir}/d/importc.h
-%{_includedir}/d/object.d
+%dir %{_libdir}/ldc
+%dir %{_libdir}/ldc/%{LDCDIST}
+%dir %{_libdir}/ldc/%{LDCDIST}/include
+%dir %{ldcincludedir}
+%{ldcincludedir}/core
+%{ldcincludedir}/ldc
+%{ldcincludedir}/__builtins.di
+%{ldcincludedir}/importc.h
+%{ldcincludedir}/object.d
 
 %files -n %{lname_phobos}%{so_ver}
 %{_libdir}/%{lname_phobos}-shared.so.%{so_ver}
@@ -302,8 +322,8 @@ rm -rf %{buildroot}%{_prefix}/lib/debug
 %files phobos-devel
 %{_libdir}/%{lname_phobos}-shared.so
 %{_libdir}/%{lname_phobos}-debug-shared.so
-%{_includedir}/d%{_sysconfdir}
-%{_includedir}/d/std
+%{ldcincludedir}%{_sysconfdir}
+%{ldcincludedir}/std
 
 %files bash-completion
 %dir %{_datadir}/bash-completion

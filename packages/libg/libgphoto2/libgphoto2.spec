@@ -43,7 +43,6 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libtool
 BuildRequires:  libusb-1_0-devel
 BuildRequires:  libxml2-devel
-BuildRequires:  lockdev-devel
 BuildRequires:  pkg-config
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(udev)

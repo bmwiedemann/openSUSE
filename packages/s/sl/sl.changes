@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 10 13:10:14 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to versione 5.05:
+  * add -G option that add an orange TGV
+- Changed upstream repository to new fork https://github.com/eyJhb/sl
+- removed patch update_to_master_at_923e7d7.patch
+- run spec-cleaner
+
+-------------------------------------------------------------------
 Sat Aug 24 06:22:26 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Clarify description.

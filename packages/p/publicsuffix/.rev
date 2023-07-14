@@ -1290,4 +1290,15 @@ Now with build cycle removed.</comment>
   * util: gTLD data autopull updates for 2023-06-14T15:13:06 UTC (#1777)</comment>
     <requestid>1095556</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>240ce268bfaaad6464987eee954d9dad</srcmd5>
+    <version>20230709</version>
+    <time>1689083777</time>
+    <user>anag+factory</user>
+    <comment> Update to version 20230709:
+  * util: gTLD data autopull updates for 2023-07-08T15:13:17 UTC (#1796)
+  * util: gTLD data autopull updates for 2023-07-01T15:13:05 UTC (#1791)
+  * AWS Submissions to the Public Suffix List - Q1 2023 (#1600)</comment>
+    <requestid>1097895</requestid>
+  </revision>
 </revisionlist>

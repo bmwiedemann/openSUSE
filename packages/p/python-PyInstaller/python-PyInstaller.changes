@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Jul 11 12:38:14 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.13.0
+  * Allow controlling the build log level (--log-level) via a 
+    PYI_LOG_LEVEL environment variable.
+  * Fixes an issue with gi shared libraries not being packaged if 
+    they don’t have version suffix and are in a special location 
+    set by LD_LIBRARY_PATH instead of a typical library path.
+  * The deprecated PEP-302 find_module() and load_module() methods 
+    have been removed from PyInstaller’s FrozenImporter.
+  * Compile the collected GLib schema files using glib-schema-compiler 
+    instead of collecting the pre-compiled gschemas.compiled.
+  * The archive_viewer utility has been rewritten with modified 
+    command-line interface (--log has been renamed to --list) and 
+    with changed output formatting. 
+  * Extend PySide6 hooks for PySide6 6.5.0 compatibility.
+  * Ensure that binaries that are manually specified in the .spec file 
+    (or via corresponding --add-binary or --collect-binaries 
+    command-line switches) undergo the binary dependency analysis, 
+    so their dependencies are automatically collected. 
+  * Remove the use of the TOC class in the analysis / build process, 
+    and use plain list instances instead. 
+  * Attempt to fix compatibility of PyInstaller’s PyiFrozenImporter 
+    with importlib.util.LazyLoader.
+  * Add support for Python 3.12.
+  * Limit the import of collected packages prior to performing binary 
+    dependency analysis to only Windows, where it is actually useful.
+
+-------------------------------------------------------------------
 Mon May  8 07:30:04 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons

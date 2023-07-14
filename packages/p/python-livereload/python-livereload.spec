@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-livereload
 Version:        2.6.3
 Release:        0

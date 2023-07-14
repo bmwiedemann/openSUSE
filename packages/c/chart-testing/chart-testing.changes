@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Jul 10 17:36:40 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 3.9.0:
+  * Fix for Dockerfile smell DL3048 (#543)
+  * add --extra-helm-args to ct lint (#552)
+  * update golangci and helm (#575)
+  * Bump docker/setup-buildx-action from 2.7.0 to 2.8.0 (#573)
+  * Bump sigstore/cosign-installer from 3.1.0 to 3.1.1 (#574)
+  * Bump anchore/sbom-action from 0.14.2 to 0.14.3 (#570)
+  * Bump sigstore/cosign-installer from 3.0.5 to 3.1.0 (#571)
+  * close readers when done with reading (#557)
+  * Bump docker/setup-buildx-action from 2.6.0 to 2.7.0 (#569)
+  * Bump docker/setup-buildx-action from 2.5.0 to 2.6.0 (#568)
+  * Bump goreleaser/goreleaser-action from 4.2.0 to 4.3.0 (#567)
+  * Bump docker/setup-qemu-action from 2.1.0 to 2.2.0 (#565)
+  * Bump actions/checkout from 3.5.2 to 3.5.3 (#566)
+  * Bump golangci/golangci-lint-action from 3.5.0 to 3.6.0 (#564)
+  * Bump docker/login-action from 2.1.0 to 2.2.0 (#563)
+  * Bump github.com/hashicorp/go-retryablehttp from 0.7.2 to 0.7.4
+    (#562)
+  * Bump github.com/stretchr/testify from 1.8.3 to 1.8.4 (#560)
+  * Bump golangci/golangci-lint-action from 3.4.0 to 3.5.0 (#561)
+  * Bump github.com/spf13/viper from 1.15.0 to 1.16.0 (#559)
+  * add github grouping of log lines (#556)
+  * Bump sigstore/cosign-installer from 3.0.3 to 3.0.5 (#554)
+  * Bump helm/kind-action from 1.5.0 to 1.7.0 (#553)
+  * Bump github.com/stretchr/testify from 1.8.2 to 1.8.3 (#555)
+  * Bump alpine from 3.17 to 3.18 (#551)
+  * Bump actions/setup-go from 4.0.0 to 4.0.1 (#550)
+  * Bump anchore/sbom-action from 0.14.1 to 0.14.2 (#549)
+  * Bump sigstore/cosign-installer from 3.0.2 to 3.0.3 (#548)
+  * Bump actions/checkout from 3.5.0 to 3.5.2 (#546)
+  * feat: verify if targetBranch is present in git repo (#511)
+  * Bump anchore/sbom-action from 0.13.4 to 0.14.1 (#542)
+  * Bump github.com/spf13/cobra from 1.6.1 to 1.7.0 (#544)
+  * Bump sigstore/cosign-installer from 3.0.1 to 3.0.2 (#545)
+  * update goreleaser flags (#539)
+
+-------------------------------------------------------------------
 Mon Mar 27 12:31:53 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add requirements, see README.md

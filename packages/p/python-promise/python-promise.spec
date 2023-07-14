@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-promise
 Version:        2.3.0
 Release:        0

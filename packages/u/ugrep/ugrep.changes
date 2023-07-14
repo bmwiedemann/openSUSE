@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 11 05:26:40 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.12.2:
+  * Speed improvements to further speed up common search patterns
+  * Improved man page
+  * The ug and ug+ commands now enable --pretty by default
+    (that is, if a .ugrep configuration file does not override it
+    with no-pretty).
+
+-------------------------------------------------------------------
 Sun Jun  4 18:18:13 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - update to 3.12.1:

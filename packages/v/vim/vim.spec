@@ -48,12 +48,18 @@ Source19:       gvim.desktop
 Source20:       spec.skeleton
 Source21:       spec.vim
 Source23:       apparmor.vim
+# Generated using: epstopdf runtime/vimlogo.eps && pdf2svg runtime/vimlogo.pdf gvim.svg
 Source24:       gvim.svg
+# Section Bitmap icons generated from gvim.svg using rsvg-convert
 Source25:       gvim_24.png
 Source26:       gvim_32.png
 Source27:       gvim_48.png
 Source28:       gvim_64.png
 Source29:       gvim_96.png
+Source30:       gvim_128.png
+Source31:       gvim_256.png
+Source32:       gvim_512.png
+# /Section
 Source98:       vim-changelog.sh
 Source99:       %{name}-7.4-rpmlintrc
 Patch3:         %{name}-7.4-disable_lang_no.patch
@@ -332,7 +338,7 @@ gcc %{optflags} %{SOURCE13} -o vitmp
 %install
 %make_install STRIP=:
 # create icon directories and install the icons into it
-for SIZE in 24 32 48 64 96; do
+for SIZE in 24 32 48 64 96 128 256 512; do
   install -d -m 0755 %{buildroot}%{_datadir}/icons/hicolor/${SIZE}x${SIZE}/apps
   install -m 0644 %{_sourcedir}/gvim_${SIZE}.png %{buildroot}%{_datadir}/icons/hicolor/${SIZE}x${SIZE}/apps/gvim.png
 done

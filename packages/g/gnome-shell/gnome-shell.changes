@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul  6 18:14:15 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.3:
+  + Fix cursor offset when using magnifier.
+  + Fix missing workspace borders after wallpaper changes.
+  + Revert screencast optimization that results in bogus windows.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Jun  5 07:39:49 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.2:

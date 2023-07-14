@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Module-Build-Tiny
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Module-Build-Tiny
-Version:        0.039
-Release:        0
 %define cpan_name Module-Build-Tiny
-Summary:        A tiny replacement for Module::Build
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Module-Build-Tiny/
-Source:         http://www.cpan.org/authors/id/L/LE/LEONT/%{cpan_name}-%{version}.tar.gz
+Name:           perl-Module-Build-Tiny
+Version:        0.046
+Release:        0
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Tiny replacement for Module::Build
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/L/LE/LEONT/%{cpan_name}-%{version}.tar.gz
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(CPAN::Meta)
@@ -37,7 +35,6 @@ BuildRequires:  perl(ExtUtils::InstallPaths) >= 0.002
 BuildRequires:  perl(ExtUtils::ParseXS)
 BuildRequires:  perl(Getopt::Long) >= 2.36
 BuildRequires:  perl(JSON::PP) >= 2
-BuildRequires:  perl(Module::Build)
 BuildRequires:  perl(TAP::Harness::Env)
 BuildRequires:  perl(Test::More) >= 0.88
 Requires:       perl(CPAN::Meta)
@@ -58,14 +55,14 @@ Traditionally, Build.PL uses Module::Build as the underlying build system.
 This module provides a simple, lightweight, drop-in replacement.
 
 Whereas Module::Build has over 6,700 lines of code; this module has less
-than 120, yet supports the features needed by most distributions.
+than 200, yet supports the features needed by most distributions.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Build.PL --installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
@@ -75,7 +72,7 @@ than 120, yet supports the features needed by most distributions.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes LICENSE README Todo
+%doc Changes README Todo
+%license LICENSE
 
 %changelog

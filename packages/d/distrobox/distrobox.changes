@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jul  7 07:16:32 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to version 1.5.0.2:
+  * Fix typo in instructions for setting podman-host path
+  * Fix user initialization for ubuntu 23.04
+  * Compatibility: add openEULER and Linux Mint containers
+  * Fix docker minimum version to 19.03.15. 
+  * Better container detection in host-exec
+  * fix host file sync when unsharing network
+- Changes from version 1.5.0.1:
+  * Fix bashism in assemble.
+  * Revert to using distrobox-enter for upgrade.
+  * Fix bug in init_readlink with relative paths in init.
+  * Improve dry-run output to show a flag for each line in enter/create.
+
+-------------------------------------------------------------------
 Sun Jun 18 05:33:20 UTC 2023 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Update to version 1.5.0:

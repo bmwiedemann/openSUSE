@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul  6 03:09:43 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.034
+   see /usr/share/doc/packages/perl-Test-Output/Changes
+
+  1.034 2023-07-05T14:46:18Z
+  	* Remove unnecessary -T from pod tests. Now that v5.38 allows you
+  	to compile without taint support and those perls won't run if
+  	they see a -T, these tests needlessly fail there.
+  	* Edward Betts corrected some of the docs.
+
+-------------------------------------------------------------------
 Thu Feb 11 03:09:02 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.033

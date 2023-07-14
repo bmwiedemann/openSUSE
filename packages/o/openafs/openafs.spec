@@ -57,11 +57,11 @@
 
 # used for %setup only
 # leave upstream tar-balls untouched for integrity checks.
-%define upstream_version 1.8.9
+%define upstream_version 1.8.10
 
 Name:           openafs
 
-Version:        1.8.9
+Version:        1.8.10
 Release:        0
 Summary:        OpenAFS Distributed File System
 License:        IPL-1.0
@@ -102,14 +102,6 @@ Source57:       openafs.ThisCell
 Source58:       openafs.cacheinfo
 Source98:       kmp_only.files
 Source99:       openafs.changes
-
-# PATCH-FIX-UPSTREAM fix build with kernel 6.2
-Patch1:         b885159.diff
-# PATCH-FIX-UPSTREAM fix build with kernel 6.3
-Patch2:         f6fbb85.diff
-Patch3:         7a3ad3bc.diff
-# PATCH-FIX-UPSTREAM make configure detect ncurses 6 correctly
-Patch4:         4cf7a9a.diff
 
 #	GENERAL BuildRequires and Requires
 #
@@ -320,10 +312,6 @@ for src_file in %{S:0}  %{S:1}; do
 done
 
 %setup -q -n openafs-%{upstream_version} -T -b 0 -b 1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
 ./regen.sh
 
@@ -367,7 +355,6 @@ export afslogsdir='/var/log/openafs'
 export afsdbdir='/var/lib/openafs/db'
 %configure \
     --disable-transarc-paths \
-    --disable-pam \
     --disable-strip-binaries \
     --includedir=%{_includedir}/openafs \
     --sysconfdir=%{_sysconfdir} \

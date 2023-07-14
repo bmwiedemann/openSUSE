@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jul  7 16:13:24 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 0.10.6
+  * Fixed potential segfault with invalid semver strings
+  * Fixed sign error when buying artifacts in the
+    Baron Prince mission
+  * Fixed behaviour of naev.trigger with parameters
+  * Fixed Lua spfx volume changing with game speed
+  * Fixed memory leak in luaspfx trails
+  * Fixed missions doing things in systems they should not
+  * Fixed Adrenal Gland III's time speed up effect
+  * Fixed Misi giving upgrades for free
+  * Fixed minor planet check in frontier war missions
+  * Fixed silent installs on windows
+  * Fixed typos
+
+-------------------------------------------------------------------
 Sun Apr 23 09:51:56 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 0.10.5

@@ -601,4 +601,16 @@ Update to tag 1.3.92
     <comment></comment>
     <requestid>994740</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>5bc573c8da6b349bd0fb22ac41bcf4d4</srcmd5>
+    <version>1.4.0~rc2</version>
+    <time>1689083816</time>
+    <user>anag+factory</user>
+    <comment>- Fix build on tumbleweed with clementine-cpp17-force.patch by
+  forcing -std=c++17 on protobuf-using subdirectories.
+- Add clementine-ix86-build-fix.patch to fix ix86 build
+  (missing protobuf link libs).
+</comment>
+    <requestid>1097984</requestid>
+  </revision>
 </revisionlist>

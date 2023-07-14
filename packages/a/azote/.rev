@@ -220,4 +220,13 @@
   * Fix crash on attempt to split an image #183</comment>
     <requestid>1096902</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>898813221cfd9366e7b4aa50c63a9a71</srcmd5>
+    <version>1.12.3</version>
+    <time>1689083831</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.12.3:
+  * Fix crash on spaces in directory names #184</comment>
+    <requestid>1098036</requestid>
+  </revision>
 </revisionlist>

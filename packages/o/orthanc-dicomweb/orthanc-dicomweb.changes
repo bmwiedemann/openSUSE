@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 11 13:57:47 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.14
+  * speed improvements:
+    - Speeded up instance metadata retrieval using OrthancPluginLoadDicomInstance() from SDK 1.12.1
+    - Using multiple threads to compute the studies/../series/../metadata route when in "Full" mode.
+      New configuration: "MetadataWorkerThreadsCount" defaults to 4
+    - Small speed-up the studies/../series/../metadata route when in "MainDicomTags" mode.
+  * Support "X-Forwarded-Host" and "X-Forwarded-Proto" headers to compute BulkDataURI.
+  * Fix issue #216 (Requests fail due to bad parsing of the accept HTTP header (semi-colons))
+
+-------------------------------------------------------------------
 Sat Apr 15 21:14:04 UTC 2023 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.13

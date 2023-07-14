@@ -1,7 +1,7 @@
 #
 # spec file for package perl-IO-Interactive
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,17 @@
 
 %define cpan_name IO-Interactive
 Name:           perl-IO-Interactive
-Version:        1.023
+Version:        1.025
 Release:        0
-Summary:        Utilities for interactive I/O
 License:        Artistic-2.0
+Summary:        Utilities for interactive I/O
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/B/BD/BDFOY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
 BuildRequires:  perl(Test::More) >= 1
 %{perl_requires}
 
@@ -62,6 +63,9 @@ currently selected). The usual suspect here is '*STDERR':
     if ( is_interactive(*STDERR) ) {
         carp $warning;
     }
+
+Note that 'is_interactive' may return true in a Windows Scheduled Task. See
+Github #6 (https://github.com/briandfoy/io-interactive/issues/6).
 
 * 'interactive()'
 

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ ExclusiveArch:  do_not_build
 %else
 Name:           %{flavor}-%{mod_name}
 %endif
-Version:        1.2.0
+Version:        1.3.1
 Release:        0
 Summary:        A Lua binding for OpenSSL
 License:        MIT

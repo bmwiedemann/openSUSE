@@ -1,7 +1,7 @@
 #
 # spec file for package sl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 <vodoo@vakw.ch>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,15 +18,14 @@
 
 
 Name:           sl
-Version:        5.02
+Version:        5.05
 Release:        0
 Summary:        Steam Locomotive in ASCII art
 # The warranty claim is a bit different, but the rights are the same as in ISC
 License:        ISC
 Group:          Amusements/Toys/Other
-URL:            https://github.com/mtoyoda/sl
-Source:         https://github.com/mtoyoda/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
-Patch0:         update_to_master_at_923e7d7.patch
+URL:            https://github.com/eyJhb/sl
+Source:         https://github.com/eyJhb/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  ncurses-devel
 Conflicts:      python3-softlayer
 
@@ -35,11 +34,10 @@ Conflicts:      python3-softlayer
 It is a joke command intended to catch any mistypings of "ls".
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
-make OPTFLAGS="%{optflags}" %{?_smp_mflags}
+%make_build OPTFLAGS="%{optflags}"
 
 %install
 install -d %{buildroot}%{_bindir}

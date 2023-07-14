@@ -30,7 +30,7 @@ Index: src/mt.c
 ===================================================================
 --- src/mt.c.orig
 +++ src/mt.c
-@@ -333,11 +333,11 @@ main (int argc, char **argv)
+@@ -332,11 +332,11 @@ main (int argc, char **argv)
  #ifdef MTERASE
      case MTERASE:
  #endif
@@ -42,13 +42,13 @@ Index: src/mt.c
 -      tapedesc = rmtopen (tapedev, O_RDONLY, 0, rsh_command_option);
 +      tapedesc = rmtopen (tapedev, O_RDONLY | O_NONBLOCK, 0, rsh_command_option);
      }
-   
+ 
    if (tapedesc == -1)
 Index: src/util.c
 ===================================================================
 --- src/util.c.orig
 +++ src/util.c
-@@ -801,14 +801,14 @@ open_archive (char *file)
+@@ -799,14 +799,14 @@ open_archive (char *file)
    copy_in = process_copy_in;
  
    if (copy_function == copy_in)

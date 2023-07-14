@@ -38,7 +38,7 @@ Patch0:         uucp-1.07.dif
 Patch1:         uucp-1.07-contrib.dif
 Patch2:         uucp-1.07-grade.patch
 Patch3:         uucp-1.07-cu.patch
-Patch4:         uucp-1.07-lockdev.patch
+Patch4:         uucp-1.07-locking.patch
 Patch5:         drop_ftime.patch
 Patch6:         uucp-texinfo-5.0.patch
 Patch7:         address-wildcard-in-port.patch
@@ -47,9 +47,13 @@ Patch9:         uucp-1.07-lfs.patch
 Patch10:        uucp-1.07-sigfpe2.patch
 Patch11:        uucp-1.07-initgroups.patch
 Patch12:        uucp-1.07-configure.patch
+Patch13:        improved-pipe.patch
+Patch14:        manpage.patch
+Patch15:        option-to-not-force-hw-control.patch
+Patch16:        spelling.patch
+Patch17:        wait-for-correct-parent.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  lockdev-devel
 BuildRequires:  makeinfo
 BuildRequires:  ncurses-devel
 BuildRequires:  pam-devel
@@ -107,7 +111,7 @@ service units.
 %patch1 -p0 -b .cont
 %patch2 -p0 -b .grad
 %patch3 -p0 -b .cu
-%patch4 -p0 -b .lockdev
+%patch4 -p0 -b .locking
 %patch0 -p0 -b .p0
 %patch5 -p1 -b .p5
 %patch6 -p1 -b .p6
@@ -117,10 +121,15 @@ service units.
 %patch10 -p1 -b .p10
 %patch11 -p0 -b .p11
 %patch12 -p0 -b .p12
+%patch13 -p0 -b .p13
+%patch14 -p0 -b .p14
+%patch15 -p0 -b .p15
+%patch16 -p0 -b .p16
+%patch17 -p0 -b .p17
 
 %build
 autoreconf -fvi
-export CFLAGS="%{optflags} -fno-strict-aliasing -fPIE -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE64_SOURCE"
+export CFLAGS="%{optflags} -fno-strict-aliasing -fPIE -D_GNU_SOURCE $(getconf LFS_CFLAGS)"
 %configure \
 	--with-newconfigdir=%{_sysconfdir}/uucp \
 	--with-oldconfigdir=%{_sysconfdir}/uucp/hdb_config

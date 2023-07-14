@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  5 07:52:43 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Enable build on riscv64
+- Skip all tests using valgrind when running under QEmu user-space emulation
+
+-------------------------------------------------------------------
 Wed Jun 28 08:30:53 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.6.14:

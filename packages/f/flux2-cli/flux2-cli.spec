@@ -21,7 +21,7 @@
 %define repo_name flux2
 
 Name:           flux2-cli
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        CLI for Flux2CD
 License:        Apache-2.0
@@ -104,12 +104,12 @@ cat manifests/bases/image-automation-controller/kustomization.yaml
 
 cp %{SOURCE15} ./manifests/bases/image-reflector-controller/
 cp %{SOURCE16} ./manifests/bases/image-reflector-controller/
-sed -i 's_https://github.com/fluxcd/image-reflector-controller/releases/download/v0.29.0/__g' manifests/bases/image-reflector-controller/kustomization.yaml
+sed -i 's_https://github.com/fluxcd/image-reflector-controller/releases/download/v0.29.1/__g' manifests/bases/image-reflector-controller/kustomization.yaml
 cat manifests/bases/image-reflector-controller/kustomization.yaml
 
 cp %{SOURCE17} ./manifests/bases/kustomize-controller/
 cp %{SOURCE18} ./manifests/bases/kustomize-controller/
-sed -i 's_https://github.com/fluxcd/kustomize-controller/releases/download/v1.0.0/__g' manifests/bases/kustomize-controller/kustomization.yaml
+sed -i 's_https://github.com/fluxcd/kustomize-controller/releases/download/v1.0.1/__g' manifests/bases/kustomize-controller/kustomization.yaml
 cat manifests/bases/kustomize-controller/kustomization.yaml
 
 cp %{SOURCE19} ./manifests/bases/notification-controller/
@@ -119,7 +119,7 @@ cat manifests/bases/notification-controller/kustomization.yaml
 
 cp %{SOURCE21} ./manifests/bases/source-controller/
 cp %{SOURCE22} ./manifests/bases/source-controller/
-sed -i 's_https://github.com/fluxcd/source-controller/releases/download/v1.0.0/__g' manifests/bases/source-controller/kustomization.yaml
+sed -i 's_https://github.com/fluxcd/source-controller/releases/download/v1.0.1/__g' manifests/bases/source-controller/kustomization.yaml
 cat manifests/bases/source-controller/kustomization.yaml
 
 ./manifests/scripts/bundle.sh

@@ -18,6 +18,7 @@
 
 %define modname aniso8601
 %bcond_without python2
+%{?sle15_python_module_pythons}
 Name:           python-%{modname}
 Version:        9.0.1
 Release:        0

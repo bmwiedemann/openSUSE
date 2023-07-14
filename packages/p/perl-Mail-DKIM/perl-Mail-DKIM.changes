@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun 30 03:06:43 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.20230630
+   see /usr/share/doc/packages/perl-Mail-DKIM/Changes
+
+  1.20230630 2023-06-30 UTC
+    * Add support for Ed25519 signature types
+      Thanks to  Matthäus Wander @mwander
+    * Option to add custom tags to generated signatures
+
+-------------------------------------------------------------------
 Mon Feb 13 03:06:54 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.20230212

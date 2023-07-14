@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 20 03:06:02 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.26
+   see /usr/share/doc/packages/perl-B-Keywords/Changes
+
+  1.25 2023-06-19 15:16:08 rurban
+    - Add Corinna keywords, new with Perl 5.38.0 (PR #8, @trwyant)
+      ADJUST class field method
+  1.26 2023-06-19 18:43 rurban
+    - Updated README
+
+-------------------------------------------------------------------
 Wed Feb 23 03:06:02 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.24

@@ -577,4 +577,12 @@ a new setuid binary.
     <comment>Update spice-gtk to version 0.42</comment>
     <requestid>1067272</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>ea351cb9c0bb6a574569e84ac900016c</srcmd5>
+    <version>0.42</version>
+    <time>1689083799</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1098003</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-flynt
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-flynt
-Version:        0.76
+Version:        0.78
 Release:        0
 Summary:        CLI tool to convert a python project's %-formatted strings to f-strings
 License:        MIT
 URL:            https://github.com/ikamensh/flynt
-Source:         https://files.pythonhosted.org/packages/source/f/flynt/flynt-%{version}.tar.gz
+Source:         https://github.com/ikamensh/flynt/archive/%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-astor
@@ -44,10 +47,10 @@ CLI tool to convert a python project's %-formatted strings to f-strings.
 %setup -q -n flynt-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/flynt
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -64,6 +67,7 @@ CLI tool to convert a python project's %-formatted strings to f-strings.
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/flynt
-%{python_sitelib}/*
+%{python_sitelib}/flynt
+%{python_sitelib}/flynt-%{version}*-info
 
 %changelog

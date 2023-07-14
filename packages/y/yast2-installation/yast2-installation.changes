@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 11 07:20:29 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Fixed yupdate script to properly run pre/post scripts
+  when patching from GitHub (bsc#1213197)
+- 4.6.5
+
+-------------------------------------------------------------------
 Thu Jun 15 15:01:13 UTC 2023 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Don't always enable sshd and open the ssh port (bsc#1211764)

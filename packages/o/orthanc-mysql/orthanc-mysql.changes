@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul 11 13:49:36 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- version 5.1
+  * Optimization of LookupResources mainly used in tools/find, C-Find and QIDO-RS.
+
+- version 5.0
+  * Added support for labels
+  * Compatibility with Orthanc SDK 1.12.0 (communications between the
+    Orthanc core and the database plugin using Google Protocol Buffers)
+  * Upgraded dependencies for static builds (notably on Windows and LSB):
+    - openssl 3.1.0
+    
+-------------------------------------------------------------------
 Thu Jul 22 19:42:56 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - version 4.3

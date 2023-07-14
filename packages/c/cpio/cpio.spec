@@ -17,7 +17,7 @@
 
 
 Name:           cpio
-Version:        2.13
+Version:        2.14
 Release:        0
 Summary:        A Backup and Archiving Utility
 License:        GPL-3.0-only
@@ -40,15 +40,10 @@ Patch18:        cpio-default_tape_dev.patch
 Patch20:        cpio-close_files_after_copy.patch
 Patch21:        cpio-pattern-file-sigsegv.patch
 Patch23:        paxutils-rtapelib_mtget.patch
-# see https://lists.gnu.org/archive/html/bug-cpio/2019-11/msg00016.html
-Patch24:        cpio-revert-CVE-2015-1197-fix.patch
 Patch25:        cpio-fix_truncation_check.patch
-# PATCH-FIX-UPSTREAM danilo.spinella@suse.com bsc#1189206
-# Remote code execution caused by an integer overflow in ds_fgetstr
-Patch26:        fix-CVE-2021-38185.patch
-Patch27:        fix-CVE-2021-38185_2.patch
-Patch28:        fix-CVE-2021-38185_3.patch
-BuildRequires:  autoconf
+# PATCH-FIX-UPSTREAM
+Patch26:        fix-operation-no-absolute-filenames.patch
+BuildRequires:  autoconf >= 2.71
 BuildRequires:  automake
 #Requires(post): %{xinstall_info_prereq}
 #Requires(preun): %{xinstall_info_prereq}
@@ -87,11 +82,8 @@ This package includes the 'mt', a local tape drive control program.
 ###
 %patch21 -p1
 %patch23 -p1
-%patch24 -p1
 %patch25 -p1
 %patch26 -p1
-%patch27 -p1
-%patch28 -p1
 
 %build
 gettextize -f --no-changelog

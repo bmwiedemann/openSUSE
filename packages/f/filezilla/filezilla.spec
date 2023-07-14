@@ -16,10 +16,10 @@
 #
 
 
-%define libversion 3.64.0
+%define libversion 3.65.0
 
 Name:           filezilla
-Version:        3.64.0
+Version:        3.65.0
 Release:        0
 Summary:        A GUI FTP and SFTP Client
 License:        GPL-2.0-or-later
@@ -33,6 +33,11 @@ BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
+%if 0%{?suse_version} > 1500
+BuildRequires:  libboost_regex-devel >= 1.76.0
+%else
+BuildRequires:  libboost_regex-devel-impl >= 1.76.0
+%endif
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 # needs long long support in pugixml
@@ -43,7 +48,7 @@ BuildRequires:  xdg-utils
 BuildRequires:  pkgconfig(cppunit)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(libfilezilla) >= 0.42.2
+BuildRequires:  pkgconfig(libfilezilla) >= 0.44.0
 BuildRequires:  pkgconfig(libidn)
 BuildRequires:  pkgconfig(nettle) >= 3.1
 BuildRequires:  pkgconfig(sqlite3) >= 3.7.0

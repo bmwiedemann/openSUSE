@@ -1810,4 +1810,12 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
 New stable rel</comment>
     <requestid>1090848</requestid>
   </revision>
+  <revision rev="206" vrev="1">
+    <srcmd5>8da890a04e5f35af85389679df77a4b7</srcmd5>
+    <version>44.3</version>
+    <time>1689083783</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1097925</requestid>
+  </revision>
 </revisionlist>

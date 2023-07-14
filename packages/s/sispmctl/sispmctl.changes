@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul  9 19:08:31 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 4.11
+  * Create /etc/sispmctl/ in passwordsetup.sh
+  * Avoid incorrect web output if not in quiet mode
+  * Include artwork in distribution file
+
+-------------------------------------------------------------------
 Thu Dec 22 22:13:10 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 4.10

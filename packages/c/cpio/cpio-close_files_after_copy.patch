@@ -5,7 +5,7 @@ Index: src/copyin.c
 @@ -1420,6 +1420,19 @@ process_copy_in ()
  
    cpio_file_stat_free (&file_hdr);
-   
+ 
 +  if (tty_in)
 +  {
 +    fclose(tty_in);

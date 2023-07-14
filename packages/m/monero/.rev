@@ -206,4 +206,12 @@
   * epee: dont shrink slice when storing to binary [release]</comment>
     <requestid>1069545</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fd93b93c40a8877a40789303da6c6066</srcmd5>
+    <version>0.18.2.2</version>
+    <time>1688999998</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1097881</requestid>
+  </revision>
 </revisionlist>

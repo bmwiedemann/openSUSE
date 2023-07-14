@@ -462,4 +462,17 @@ Stephan Kulow (7):
 </comment>
     <requestid>1060487</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>cc13e78255424358fb2bb8c36d0ae9b2</srcmd5>
+    <version>1.84.00.1688930749.8cd1dcd</version>
+    <time>1688999982</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.84.00.1688930749.8cd1dcd:
+  * v1.84.00
+  * Fix code for Module::Build(::Tiny) (#46)
+  * Exlude scripts/ from removing executable bit (#45)
+  * Ignore toml and yml files (#43)
+</comment>
+    <requestid>1097846</requestid>
+  </revision>
 </revisionlist>

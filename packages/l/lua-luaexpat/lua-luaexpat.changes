@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 11 11:38:13 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to version 1.5.1:
+ * Added option "allowDTD" to the threat protection parser
+ * Add configuration for Billion Laughs Attack prevention
+ * Expose Expat compile time constants (lxp._EXPAT_FEATURES)
+ * lxp now uses $(INSTALL_DATA)
+ * makefile now uses $(RPM_OPT_FLAGS) $(RPM_LD_FLAGS)
+
+-------------------------------------------------------------------
 Thu Mar 16 18:13:00 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Change upstream homepage to the current one at Lunar Modules.

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jul  8 16:46:01 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.16.1:
+  + Fix problem when using the default external viewer and opening
+    a file from remote
+  + When choosing 'Other Application' to open a file, don't close
+    the dialog if the given command is not found
+  + Issue #130: Do not install not needed header files
+  + Updated translations.
+- Drop 96f706fa7833af79e01625c0118b36f6c83c7d44.patch: Fixed
+  upstream.
+- Drop devel sub-package.
+
+-------------------------------------------------------------------
 Fri Feb 10 00:41:35 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
 
 - Add 96f706fa7833af79e01625c0118b36f6c83c7d44.patch: avoid the 

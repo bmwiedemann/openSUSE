@@ -1,8 +1,8 @@
 #
 # spec file for package orthanc-mysql
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2020-2021 Dr. Axel Braun
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2020-2023 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           orthanc-mysql
 Summary:        Database plugin for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Databases/Tools
-Version:        4.3
+Version:        5.1
 Release:        0
 URL:            http://orthanc-server.com
 Source0:        https://www.orthanc-server.com/downloads/get.php?path=/plugin-mysql/OrthancMySQL-%{version}.tar.gz
@@ -44,6 +44,7 @@ BuildRequires:  libmysqld-devel
 BuildRequires:  openssl-devel
 BuildRequires:  orthanc-devel
 BuildRequires:  orthanc-source
+BuildRequires:  protobuf-devel
 BuildRequires:  unzip
 BuildRequires:  uuid-devel
 BuildRequires:  zlib-devel

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 10 09:28:42 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 4.2.3 (bsc#1212742, CVE-2023-36053)
+  + CVE-2023-36053: Potential regular expression denial of service
+    vulnerability in EmailValidator/URLValidator
+  + Bugfixes
+    * Fixed a regression in Django 4.2 that caused incorrect alignment
+      of timezone warnings for DateField and TimeField in the admin
+    * Fixed a regression in Django 4.2 that caused incorrect
+      highlighting of rows in the admin changelist view when
+      ModelAdmin.list_editable contained a BooleanField
+
+-------------------------------------------------------------------
 Fri Jun  9 11:41:19 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

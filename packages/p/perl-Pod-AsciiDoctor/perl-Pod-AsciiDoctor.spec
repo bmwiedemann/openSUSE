@@ -18,7 +18,7 @@
 
 %define cpan_name Pod-AsciiDoctor
 Name:           perl-Pod-AsciiDoctor
-Version:        0.101002
+Version:        0.101003
 Release:        0
 License:        Apache-2.0
 Summary:        Convert from POD to AsciiDoc
@@ -46,14 +46,14 @@ Convert from POD to AsciiDoc
 %autosetup  -n %{cpan_name}-%{version}
 
 %build
-perl Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files

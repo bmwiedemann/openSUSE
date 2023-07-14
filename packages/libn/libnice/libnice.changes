@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul  7 10:26:09 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 4b63250c.patch: agent/meson: Replace filename with basename.
+  This avoids emitting absolute paths into generated sourcecode, it
+  improves reproducibility.
+
+-------------------------------------------------------------------
 Thu Apr 13 15:37:03 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add libnice-port-gupnp-igd-bump.patch: Port to new gupnp-igd.

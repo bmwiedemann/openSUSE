@@ -17,82 +17,55 @@
 #
 
 
-%{!?_defaultdocdir: %global _defaultdocdir %{_datadir}/doc}
-%{!?__python3: %global __python3 /usr/bin/python3}
-
-%if %{undefined python3_sitelib}
-%global python3_sitelib %(%{__python3} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
-%endif
-
-%if 0%{?el7}
-%global python3_pkgversion 36
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
 %else
-%{!?python3_pkgversion:%global python3_pkgversion 3}
+%bcond_with libalternatives
 %endif
 
-%if 0%{?debian} || 0%{?ubuntu}
-%global is_deb 1
-%global pygroup python
-%global sysgroup admin
-%global develsuffix dev
-%else
-%global pygroup Development/Languages/Python
-%global sysgroup System/Management
-%global develsuffix devel
-%endif
-
+%define         skip_python2 1
 Name:           python-kiwi-keg
-Version:        2.0.3
+Version:        2.1.0
 Release:        0
 URL:            https://github.com/SUSE-Enceladus/keg
 Summary:        KEG - Image Composition Tool
 License:        GPL-3.0-or-later
-%if "%{_vendor}" == "debbuild"
-# Needed to set Maintainer in output debs
-%endif
-Group:          %{pygroup}
 Source:         keg-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  python%{python3_pkgversion}-%{develsuffix}
-BuildRequires:  python%{python3_pkgversion}-Jinja2
-BuildRequires:  python%{python3_pkgversion}-Sphinx
-BuildRequires:  python%{python3_pkgversion}-setuptools
 BuildArch:      noarch
+Requires:       python-Jinja2
+Requires:       python-PyYAML
+Requires:       python-docopt
+Requires:       python-schema
+Requires:       python3-kiwi >= 9.21.21
+%if %python_version_nodots < 37
+Requires:       python-iso8601
+%endif
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+%endif
+Provides:       python3-kiwi-keg = %version
+Obsoletes:      python3-kiwi-keg < %version
+
+%python_subpackages
 
 %description
-KEG is an image composition tool for KIWI image descriptions
-
-
-# python3-kiwi-keg
-
-%package -n python%{python3_pkgversion}-kiwi-keg
-Summary:        KEG - Image Composition Tool
-Group:          Development/Languages/Python
-Requires:       python%{python3_pkgversion}-Jinja2
-Requires:       python%{python3_pkgversion}-docopt
-Requires:       python%{python3_pkgversion}-kiwi >= 9.21.21
-Requires:       python%{python3_pkgversion}-schema
-Requires:       python%{python3_pkgversion}-setuptools
-%if 0%{?ubuntu} || 0%{?debian}
-Requires:       python%{python3_pkgversion}-yaml
-%else
-Requires:       python%{python3_pkgversion}-PyYAML
-%endif
-%if 0%{?suse_version}
-Requires:       python%{python3_pkgversion}-Cerberus
-%else
-Requires:       python%{python3_pkgversion}-cerberus
-%endif
-
-%description -n python%{python3_pkgversion}-kiwi-keg
 KEG is an image composition tool for KIWI image descriptions
 
 %package -n obs-service-compose_kiwi_description
 Summary:        An OBS service: generate KIWI description using KEG
 Group:          Development/Tools/Building
 Requires:       git
-Requires:       python%{python3_pkgversion}-kiwi-keg
+Requires:       python3-kiwi-keg = %version
 
 %description -n obs-service-compose_kiwi_description
 This is a source service for openSUSE Build Service.
@@ -106,32 +79,37 @@ auto-generation of change log files from commit history.
 
 %build
 # Build Python 3 version
-python3 setup.py build
+%python_build
 
 # Build man pages
 make -C doc man
 
 %install
-# Install Python 3 version
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot} %{?is_deb:--install-layout=deb}
-
-# Install man pages
+%python_install
 make buildroot=%{buildroot}/ docdir=%{_defaultdocdir}/ install
 
-# Install LICENSE and README
-make buildroot=%{buildroot}/ docdir=%{_defaultdocdir}/ install_package_docs
+%python_clone -a %{buildroot}%{_bindir}/keg
+%python_clone -a %{buildroot}%{_bindir}/generate_recipes_changelog
+%python_clone -a %{buildroot}%{_mandir}/man1/keg.1
+%python_clone -a %{buildroot}%{_mandir}/man1/generate_recipes_changelog.1
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%files -n python%{python3_pkgversion}-kiwi-keg
-%dir %{_defaultdocdir}/python-kiwi-keg
-%dir %{_usr}/lib/obs
-%{_bindir}/generate_recipes_changelog
-%{_bindir}/keg
-%{python3_sitelib}/kiwi_keg*
-%{_defaultdocdir}/python-kiwi-keg/LICENSE
-%{_defaultdocdir}/python-kiwi-keg/README
-%doc %{_mandir}/man1/*
+%post
+%python_install_alternative keg keg.1 generate_recipes_changelog
+%python_install_alternative generate_recipes_changelog.1
+
+%files %{python_files}
+%python_alternative %{_bindir}/generate_recipes_changelog
+%python_alternative %{_bindir}/keg
+%{python_sitelib}/kiwi_keg
+%{python_sitelib}/kiwi_keg-*
+%license LICENSE
+%doc README.rst
+%python_alternative %{_mandir}/man1/keg.1%{?ext_man}
+%python_alternative %{_mandir}/man1/generate_recipes_changelog.1%{?ext_man}
 
 %files -n obs-service-compose_kiwi_description
+%dir %{_usr}/lib/obs
 %{_usr}/lib/obs/service
 
 %changelog

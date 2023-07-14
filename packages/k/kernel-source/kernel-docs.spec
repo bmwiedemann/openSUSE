@@ -16,8 +16,8 @@
 #
 
 
-%define srcversion 6.3
-%define patchversion 6.3.9
+%define srcversion 6.4
+%define patchversion 6.4.2
 %define variant %{nil}
 %define build_html 1
 %define build_pdf 0
@@ -30,9 +30,9 @@ Name:           kernel-docs
 Summary:        Kernel Documentation
 License:        GPL-2.0-only
 Group:          Documentation/Man
-Version:        6.3.9
+Version:        6.4.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g0df701d
+Release:        <RELEASE>.gb97b894
 %else
 Release:        0
 %endif
@@ -59,6 +59,7 @@ BuildRequires:  python-packaging
 BuildRequires:  python-six
 BuildRequires:  python-Sphinx
 %else
+BuildRequires:  python3-base
 BuildRequires:  python3-Sphinx < 3
 %endif
 %endif
@@ -67,6 +68,7 @@ BuildRequires:  texlive-anyfontsize
 %if 0%{?suse_version} && 0%{?suse_version} < 1500
 BuildRequires:  python-Sphinx-latex
 %else
+BuildRequires:  python3-base
 BuildRequires:  python3-Sphinx-latex
 %endif
 BuildRequires:  texlive-adjustbox
@@ -81,7 +83,7 @@ BuildRequires:  texlive-zapfding
 %endif
 URL:            https://www.kernel.org/
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-0df701dd2c208f4843cf219b4b26b533ada9bd34
+Provides:       %name-srchash-b97b89494481f3409297e494e466bdd42b1311ab
 BuildArch:      noarch
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
@@ -262,7 +264,7 @@ export LANG=en_US.utf8
 %if %build_html
 mkdir -p html
 make %{?make_arg} O=$PWD/html \
-%if ! 0%{?suse_version} || 0%{?suse_version} > 1500
+%if ! 0%{?suse_version} || 0%{?suse_version} >= 1500
 	     PYTHON=python3 \
 %endif
 	     htmldocs
@@ -270,7 +272,7 @@ make %{?make_arg} O=$PWD/html \
 %if %build_pdf
 mkdir -p pdf
 make %{?make_arg} O=$PWD/pdf \
-%if ! 0%{?suse_version} || 0%{?suse_version} > 1500
+%if ! 0%{?suse_version} || 0%{?suse_version} >= 1500
 	     PYTHON=python3 \
 %endif
 	     pdfdocs

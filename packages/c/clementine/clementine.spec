@@ -1,7 +1,7 @@
 #
 # spec file for package clementine
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,6 +46,12 @@ Patch1:         clementine-udisks-headers.patch
 Patch2:         clementine-moodbar-fpic.patch
 # PATCH-FEATURE-OPENSUSE
 Patch6:         use_system_qxtglobalshortcut.patch
+%if 0%{?suse_version} > 1500
+# Patch fix build with recent protobuf
+Patch3:         clementine-cpp17-force.patch
+# Patch fix ix86 build for missing protobuf link libs
+Patch4:         clementine-ix86-build-fix.patch
+%endif
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  freeglut-devel

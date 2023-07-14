@@ -18,6 +18,7 @@
 
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-textfsm
 Version:        1.1.3
 Release:        0

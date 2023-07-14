@@ -20,7 +20,7 @@
 
 %define flavor @BUILD_FLAVOR@
 %define mod_name    luaexpat
-Version:        1.4.1
+Version:        1.5.1
 Release:        0
 Summary:        A SAX XML parser based on the Expat library
 License:        MIT
@@ -28,7 +28,8 @@ Group:          Productivity/Networking/Other
 URL:            https://lunarmodules.github.io/luaexpat/
 Source:         https://github.com/lunarmodules/luaexpat/archive/%{version}/%{mod_name}-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
-BuildRequires:  libexpat-devel
+# See: https://github.com/lunarmodules/luaexpat/releases/tag/1.5.0
+BuildRequires:  libexpat-devel >= 2.4.6
 BuildRequires:  lua-macros
 Requires:       %{flavor}
 %lua_provides

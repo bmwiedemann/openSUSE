@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun 15 03:11:03 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.34
+   see /usr/share/doc/packages/perl-XS-Parse-Keyword/Changes
+
+  0.34    2023-06-14
+          [CHANGES]
+           * Swap all unit tests from Test::More to Test2::V0
+
+          [BUGFIXES]
+           * Remember to set `-std=c99` compiler flag on Perls before v5.36
+           * Skip whitespace between pieces of SEQUENCE or SEPARATEDLIST
+
+-------------------------------------------------------------------
 Sun Feb 19 03:06:55 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.33

@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Jul 10 11:22:03 UTC 2023 - jgleissner@suse.com
+
+- Update to version 2.1.0:
+  * Bump version: 2.0.3 → 2.1.0
+  * Alter unit test for 100% coverage
+  * Fix support for dict-type preferences
+  * Allow preferences to be dict in list command
+  * Allow preferences key to be type dict
+  * Fix new-image-change parameter
+  * Update compose_kiwi_description.service
+  * Remove superfluous comma
+  * Fix namespace names in unit test data
+  * Handle namespaces transparently in schema
+  * Update change log handling
+  * Be more explicit on merge errors
+  * Do not print comments for unnamed namespaces
+  * Packaging related updates
+  * Fix e-mail address in setup.py
+  * Improve list command
+  * Rename variable
+  * Document xmlfiles definition
+  * Add support for generating custom XML files
+  * Minor rewording of mockup image description
+  * Add recommends to spec template
+  * Use python 3.10 instead of 3.8 for unit tests
+  * Update setup.py
+  * Slight reformat of mocked output
+  * Unit tests: use unittest.mock
+  * Add a link to docs, to the readme
+  * Use python 3.10 for publishing
+
+-------------------------------------------------------------------
 Wed Feb 08 17:18:54 UTC 2023 - jgleissner@suse.com
 
 - Update to version 2.0.3:

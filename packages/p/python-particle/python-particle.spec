@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-particle
-Version:        0.22.1
+Version:        0.23.0
 Release:        0
 Summary:        PDG particle data and identification codes
 License:        BSD-3-Clause
@@ -74,7 +74,7 @@ cp -R src/particle/lhcb %{buildroot}%{$python_sitelib}/%{modname}/
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/%{modname}
+%{python_sitelib}/%{modname}/
 %{python_sitelib}/%{modname}-%{version}*-info/
 
 %changelog

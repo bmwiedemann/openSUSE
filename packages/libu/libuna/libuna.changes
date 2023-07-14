@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 12 04:40:43 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20230710
+  * Changes to support UTF-16 stream unpaired surrogates
+
+-------------------------------------------------------------------
 Mon Jul  3 04:55:16 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20230702

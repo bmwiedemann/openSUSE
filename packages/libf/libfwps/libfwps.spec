@@ -18,7 +18,7 @@
 
 Name:           libfwps
 %define lname	libfwps1
-Version:        20230202
+Version:        20230711
 Release:        0
 Summary:        Library for Windows Property Store data types
 License:        LGPL-3.0-or-later
@@ -39,7 +39,7 @@ BuildRequires:  pkgconfig(libcthreads) >= 20220102
 BuildRequires:  pkgconfig(libfdatetime) >= 20220112
 BuildRequires:  pkgconfig(libfguid) >= 20220113
 BuildRequires:  pkgconfig(libfole) >= 20220115
-BuildRequires:  pkgconfig(libuna) >= 20220611
+BuildRequires:  pkgconfig(libuna) >= 20230710
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
 

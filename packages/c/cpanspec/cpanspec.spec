@@ -18,7 +18,7 @@
 
 %define cpan_name cpanspec
 Name:           cpanspec
-Version:        1.83.00.1674496263.ba76ec9
+Version:        1.84.00.1688930749.8cd1dcd
 Release:        0
 Summary:        Generate a SUSE spec file for a CPAN module
 License:        Artistic-1.0 OR GPL-1.0-or-later

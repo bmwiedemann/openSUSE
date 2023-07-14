@@ -18,7 +18,7 @@
 
 %define cpan_name XS-Parse-Keyword
 Name:           perl-XS-Parse-Keyword
-Version:        0.33
+Version:        0.34
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        XS functions to assist in parsing keyword syntax
@@ -31,7 +31,7 @@ BuildRequires:  perl(ExtUtils::CBuilder)
 BuildRequires:  perl(ExtUtils::CChecker) >= 0.11
 BuildRequires:  perl(ExtUtils::ParseXS) >= 3.16
 BuildRequires:  perl(Module::Build) >= 0.400400
-BuildRequires:  perl(Test::More) >= 0.88
+BuildRequires:  perl(Test2::V0)
 %{perl_requires}
 
 %description
@@ -50,14 +50,14 @@ requiring changes or at least a rebuild of any module that depends on it.
 %autosetup  -n %{cpan_name}-%{version}
 
 %build
-perl Build.PL installdirs=vendor optimize="%{optflags}"
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor optimize="%{optflags}"
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files

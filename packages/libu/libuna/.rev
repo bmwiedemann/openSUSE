@@ -169,4 +169,13 @@ Summer 2013 libyal refresh for opensuse 13.1 (forwarded request 184991 from greg
     <comment>- Update to release 20230702</comment>
     <requestid>1096505</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>fb72eceec876f56bd84910971423cbd1</srcmd5>
+    <version>20230710</version>
+    <time>1689175661</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20230710
+  * Changes to support UTF-16 stream unpaired surrogates</comment>
+    <requestid>1098271</requestid>
+  </revision>
 </revisionlist>

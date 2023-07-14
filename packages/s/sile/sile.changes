@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jul 11 11:50:46 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 0.14.10
+ * Features
+  - cli: Allow more than one input document
+  - i18n: Add localized strings for Cantonese and Chinese
+  - packages: Add document class styling in autodoc
+  - packages: Provide API for registering raw handlers linked to packages
+ * Bug Fixes:
+  - build: Avoid build artifacts being listed for installation
+  - core: Avoid stack overflow in Harfbuzz module
+  - outputters: Setup --makedeps to play along without explicit --output
+  - packages: Converters package no longer worked after 0.13.0
+  - packages: Correct chord line height and chord font use
+
+-------------------------------------------------------------------
 Wed Apr 12 03:01:23 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
 
 update: 0.14.8 -> 0.14.9

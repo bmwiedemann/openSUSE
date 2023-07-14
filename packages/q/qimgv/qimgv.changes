@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jul 03 22:22:39 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.0.3a+git20230615.e2675f1:
+  * Update build-package.yml
+  * Exiv2::AnyError was removed
+  * toggleScalingFilter now toggles configured filter instead of bilinear
+  * Modify build-package.yaml
+  * Modify build-package.yml
+  * Modify build-package.yml
+
+-------------------------------------------------------------------
+Thu May 18 00:14:39 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version 1.0.3a+git20230407.22a8f2e:
+  * debug printouts / wheel test
+  * [Settings] add trackpadDetection toggle #337
+  * [DirectoryManager] make folder sorting optional
+  * upd donate links
+  * [thumbnailview] reduce calls to loadVisibleThumbnails()
+  * [thumbnailview] fix incorrect preload areas
+
+-------------------------------------------------------------------
 Tue Jan 03 18:25:09 UTC 2023 - scott.bradnick@suse.com
 
 - Update to version 1.0.3a+git20221107.8ad0a11:

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 27 19:08:03 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
+
+- Fix builds on kernel 6.4 (boo#1212761)
+  File "fixes_for_kernel_6.4.patch" added. 
+
+-------------------------------------------------------------------
 Wed Jun 14 02:18:18 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
 
 - Turn build of VBoxSDL back on

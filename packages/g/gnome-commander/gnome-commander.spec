@@ -17,15 +17,13 @@
 
 
 Name:           gnome-commander
-Version:        1.16.0
+Version:        1.16.1
 Release:        0
 Summary:        A file manager for the GNOME desktop environment
 License:        GPL-2.0-or-later
 Group:          Productivity/File utilities
 URL:            http://gcmd.github.io/
 Source:         https://download.gnome.org/sources/gnome-commander/1.16/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 96f706fa7833af79e01625c0118b36f6c83c7d44.patch luc14n0@opensuse.org -- Do not install the static libgcmd library
-Patch0:         https://gitlab.gnome.org/GNOME/gnome-commander/-/commit/96f706fa7833af79e01625c0118b36f6c83c7d44.patch
 
 %if 0%{?suse_version} < 1550
 BuildRequires:  gcc11
@@ -97,7 +95,7 @@ find %{buildroot}%{_datadir} -size 0 -delete
 
 %files
 %license COPYING
-%doc NEWS README.md
+%doc NEWS README.md AUTHORS TODO
 %{_datadir}/help/C/%{name}
 %{_datadir}/metainfo/org.gnome.%{name}.appdata.xml
 %{_bindir}/*
@@ -109,10 +107,6 @@ find %{buildroot}%{_datadir} -size 0 -delete
 %{_mandir}/man1/%{name}.1%{ext_man}
 %{_datadir}/icons/hicolor/scalable/apps/gnome-commander-symbolic.svg
 %{_datadir}/icons/hicolor/scalable/apps/gnome-commander.svg
-
-%files devel
-%doc AUTHORS TODO
-%{_includedir}/%{name}/
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/internal_viewer_hacking.txt
 %{_datadir}/%{name}/keys.txt

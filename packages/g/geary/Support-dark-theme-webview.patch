@@ -13,10 +13,10 @@ better to keep these DRY
  ui/composer-web-view.css | 8 ++------
  1 file changed, 2 insertions(+), 6 deletions(-)
 
-Index: geary-43.0/ui/composer-web-view.css
+Index: geary-44.0/ui/composer-web-view.css
 ===================================================================
---- geary-43.0.orig/ui/composer-web-view.css
-+++ geary-43.0/ui/composer-web-view.css
+--- geary-44.0.orig/ui/composer-web-view.css
++++ geary-44.0/ui/composer-web-view.css
 @@ -12,12 +12,8 @@ body {
    font-size: medium !important;
  }
@@ -63,10 +63,10 @@ Index: geary-43.0/ui/composer-web-view.css
  body > div#geary-signature:focus-within,
  body > div#geary-quote:focus-within {
    outline: 1px dashed #ccc !important;
-Index: geary-43.0/src/client/accounts/accounts-signature-web-view.vala
+Index: geary-44.0/src/client/accounts/accounts-signature-web-view.vala
 ===================================================================
---- geary-43.0.orig/src/client/accounts/accounts-signature-web-view.vala
-+++ geary-43.0/src/client/accounts/accounts-signature-web-view.vala
+--- geary-44.0.orig/src/client/accounts/accounts-signature-web-view.vala
++++ geary-44.0/src/client/accounts/accounts-signature-web-view.vala
 @@ -12,18 +12,23 @@ public class Accounts.SignatureWebView :
  
  
@@ -91,11 +91,11 @@ Index: geary-43.0/src/client/accounts/accounts-signature-web-view.vala
      }
  
  }
-Index: geary-43.0/ui/org.gnome.Geary.gresource.xml
+Index: geary-44.0/ui/org.gnome.Geary.gresource.xml
 ===================================================================
---- geary-43.0.orig/ui/org.gnome.Geary.gresource.xml
-+++ geary-43.0/ui/org.gnome.Geary.gresource.xml
-@@ -47,6 +47,7 @@
+--- geary-44.0.orig/ui/org.gnome.Geary.gresource.xml
++++ geary-44.0/ui/org.gnome.Geary.gresource.xml
+@@ -49,6 +49,7 @@
      <file compressed="true" preprocess="xml-stripblanks">gtk/help-overlay.ui</file>
      <file compressed="true" preprocess="xml-stripblanks">password-dialog.glade</file>
      <file compressed="true" preprocess="xml-stripblanks">problem-details-dialog.ui</file>
@@ -103,10 +103,10 @@ Index: geary-43.0/ui/org.gnome.Geary.gresource.xml
      <file compressed="true">signature-web-view.js</file>
      <file compressed="true">geary.css</file>
      <file compressed="true">single-key-shortcuts.css</file>
-Index: geary-43.0/ui/signature-web-view.css
+Index: geary-44.0/ui/signature-web-view.css
 ===================================================================
 --- /dev/null
-+++ geary-43.0/ui/signature-web-view.css
++++ geary-44.0/ui/signature-web-view.css
 @@ -0,0 +1,6 @@
 +@media (prefers-color-scheme: dark) {
 +  body {
@@ -114,10 +114,10 @@ Index: geary-43.0/ui/signature-web-view.css
 +    background-color: #353535;
 +  }
 +}
-Index: geary-43.0/ui/conversation-web-view.css
+Index: geary-44.0/ui/conversation-web-view.css
 ===================================================================
---- geary-43.0.orig/ui/conversation-web-view.css
-+++ geary-43.0/ui/conversation-web-view.css
+--- geary-44.0.orig/ui/conversation-web-view.css
++++ geary-44.0/ui/conversation-web-view.css
 @@ -52,6 +52,24 @@ body {
    height: auto !important;
  }

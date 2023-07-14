@@ -16,22 +16,18 @@
 #
 
 
-%define srcversion 6.3
-%define patchversion 6.3.9
+%define srcversion 6.4
+%define patchversion 6.4.2
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
 
-%if 0%{?suse_version} > 1320 || ( 0%{?suse_version} == 1315 && 0%{?sle_version} >= 120300 )
-%define dtc_symbols 1
-%endif
-
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,klp-symbols,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           dtb-aarch64
-Version:        6.3.9
+Version:        6.4.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g0df701d
+Release:        <RELEASE>.gb97b894
 %else
 Release:        0
 %endif
@@ -41,11 +37,7 @@ Group:          System/Boot
 URL:            https://www.kernel.org/
 ExclusiveArch:  aarch64
 BuildRequires:  cpp
-%if 0%{?dtc_symbols}
 BuildRequires:  dtc >= 1.4.3
-%else
-BuildRequires:  dtc >= 1.4.0
-%endif
 BuildRequires:  xz
 Requires:       kernel = %version
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
@@ -420,9 +412,7 @@ SRCDIR=$PWD/$source
 mkdir pp
 PPDIR=$PWD/pp
 export DTC_FLAGS="-R 4 -p 0x1000"
-%if 0%{?dtc_symbols}
 DTC_FLAGS="$DTC_FLAGS -@"
-%endif
 
 cd $source/arch/arm64/boot/dts
 for dts in allwinner/*.dts altera/*.dts amazon/*.dts amd/*.dts amlogic/*.dts apm/*.dts apple/*.dts arm/*.dts broadcom/*.dts cavium/*.dts exynos/*.dts freescale/*.dts hisilicon/*.dts lg/*.dts marvell/*.dts mediatek/*.dts nvidia/*.dts qcom/*.dts renesas/*.dts rockchip/*.dts socionext/*.dts sprd/*.dts xilinx/*.dts ; do

@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 %global webapps_dir /srv/www/webapps
 
 %global hyperkitty_pkgname   HyperKitty
@@ -32,17 +33,17 @@
 %global hyperkitty_services hyperkitty-qcluster.service hyperkitty-runjob-daily.service hyperkitty-runjob-daily.timer hyperkitty-runjob-hourly.service hyperkitty-runjob-hourly.timer hyperkitty-runjob-minutely.service hyperkitty-runjob-minutely.timer hyperkitty-runjob-monthly.service hyperkitty-runjob-monthly.timer hyperkitty-runjob-quarter-hourly.service hyperkitty-runjob-quarter-hourly.timer hyperkitty-runjob-weekly.service hyperkitty-runjob-weekly.timer hyperkitty-runjob-yearly.service hyperkitty-runjob-yearly.timer
 
 %if 0%{?suse_version} >= 1550
-# Newest python supported by mailman is Python 3.9 -- https://gitlab.com/mailman/mailman/-/issues/936
-%define pythons python39
-%define mypython python39
-%define __mypython %{__python39}
-%define mypython_sitelib %{python39_sitelib}
+# Newest python supported by mailman is Python 3.11
+%define pythons python311
+%define mypython python311
+%define __mypython %{__python311}
+%define mypython_sitelib %{python311_sitelib}
 %else
 %{?sle15_python_module_pythons}
 %define pythons python311
-%define mypython python3
-%define __mypython %{__python3}
-%define mypython_sitelib %{python3_sitelib}
+%define mypython python311
+%define __mypython %{__python311}
+%define mypython_sitelib %{python311_sitelib}
 %endif
 
 Name:           python-HyperKitty
@@ -70,30 +71,33 @@ Patch0:         hyperkitty-settings.patch
 # PATCH-FIX-UPSTREAM fix-elasticsearch8.patch gl#mailman/hyperkitty#468
 Patch1:         fix-elasticsearch8.patch
 #
+BuildRequires:  %{python_module django-compressor >= 1.3}
+BuildRequires:  %{python_module Whoosh}
 BuildRequires:  %{python_module django-debug-toolbar >= 2.2}
+BuildRequires:  %{python_module django-extensions >= 1.3.7}
+BuildRequires:  %{python_module django-gravatar2 >= 1.0.6}
 BuildRequires:  %{python_module isort}
 BuildRequires:  %{python_module libsass}
+BuildRequires:  %{python_module mailmanclient >= 3.3.2}
 BuildRequires:  %{python_module mistune >= 2.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module xapian-haystack >= 2.1.0}
 BuildRequires:  acl
 BuildRequires:  fdupes
 BuildRequires:  openssl
 BuildRequires:  python-rpm-macros
 BuildRequires:  rsync
+BuildRequires:  sassc
 BuildRequires:  sudo
 BuildArch:      noarch
 %if 0%{?suse_version} >= 1550
 # use the real python3 primary for rpm pythondistdeps.py
 BuildRequires:  python3-packaging
-BuildRequires:  sassc
 %endif
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 1.11}
 BuildRequires:  %{python_module Whoosh >= 2.5.7}
 BuildRequires:  %{python_module beautifulsoup4 >= 4.3.2}
-BuildRequires:  %{python_module django-compressor >= 1.3}
-BuildRequires:  %{python_module django-extensions >= 1.3.7}
-BuildRequires:  %{python_module django-gravatar2 >= 1.0.6}
 BuildRequires:  %{python_module django-haystack >= 2.8.0}
 BuildRequires:  %{python_module django-mailman3 >= 1.3.8}
 BuildRequires:  %{python_module django-q >= 1.3.9}
@@ -101,7 +105,6 @@ BuildRequires:  %{python_module djangorestframework >= 3.0.0}
 BuildRequires:  %{python_module elasticsearch}
 BuildRequires:  %{python_module flufl.lock}
 BuildRequires:  %{python_module lxml}
-BuildRequires:  %{python_module mailmanclient >= 3.3.2}
 BuildRequires:  %{python_module mistune}
 BuildRequires:  %{python_module networkx >= 1.9.1}
 BuildRequires:  %{python_module pytest-django}
@@ -117,6 +120,7 @@ A web interface to access GNU Mailman v3 archives.
 %package -n %{hyperkitty_pkgname}
 Summary:        A web interface to access GNU Mailman v3 archives
 Requires:       %{mypython}-Django >= 1.11
+Requires:       %{mypython}-Whoosh
 Requires:       %{mypython}-django-compressor >= 1.3
 Requires:       %{mypython}-django-debug-toolbar >= 2.2
 Requires:       %{mypython}-django-extensions >= 1.3.7
@@ -162,7 +166,7 @@ This package holds the web interface.
 %package -n %{hyperkitty_pkgname}-web-uwsgi
 Summary:        HyperKitty - uwsgi configuration
 Requires:       %{hyperkitty_pkgname}-web
-%if 0%{suse_version} >= 1550
+%if 0%{suse_version} >= 1550 || 0%{?sle_version} >= 150500
 Requires:       %{mypython}-uwsgi-python3
 %else
 Requires:       uwsgi-python3
@@ -218,7 +222,7 @@ install -d -m 0755 \
 # Copy static files
 rsync -a build_static_files/static %{buildroot}%{hyperkitty_basedir}
 # Remove the directory
-rm -rf %{buildroot}%{python_sitelib}/build_static_files
+%python_expand rm -rf %{buildroot}%{$python_sitelib}/build_static_files
 
 rsync -a example_project/* %{buildroot}%{hyperkitty_basedir}
 chmod -x %{buildroot}%{hyperkitty_basedir}/wsgi.py

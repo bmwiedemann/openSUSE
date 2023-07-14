@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%define srcname scikit_image
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -25,32 +26,34 @@
 %bcond_with test
 %endif
 Name:           python-scikit-image%{psuffix}
-Version:        0.19.3
+Version:        0.21.0
 Release:        0
 Summary:        Collection of algorithms for image processing in Python
 License:        BSD-3-Clause
 URL:            https://scikit-image.org/
-Source0:        https://files.pythonhosted.org/packages/source/s/scikit-image/scikit-image-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM skimage-fix-module-install.patch -- gh#scikit-image/scikit-image#6428
-Patch0:         skimage-fix-module-install.patch
+Source0:        https://files.pythonhosted.org/packages/source/s/scikit-image/%{srcname}-%{version}.tar.gz
 BuildRequires:  %{python_module Cython >= 0.29.21}
 BuildRequires:  %{python_module devel >= 3.7}
-BuildRequires:  %{python_module numpy-devel >= 1.17.0}
+BuildRequires:  %{python_module meson-python}
+BuildRequires:  %{python_module numpy-devel >= 1.21.1}
 BuildRequires:  %{python_module packaging >= 20}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pythran}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  freeimage-devel
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
-Requires:       python-Pillow >= 6.1.0
+Requires:       python-Pillow >= 9.0.1
 Requires:       python-PyWavelets >= 1.1.1
-Requires:       python-imageio >= 2.4.1
-Requires:       python-networkx >= 2.2
-Requires:       python-numpy >= 1.17.0
-Requires:       python-packaging >= 20.0
-Requires:       python-scipy >= 1.4.1
-Requires:       python-tifffile >= 2019.7.26
+Requires:       python-imageio >= 2.7
+Requires:       python-lazy-loader >= 0.2
+Requires:       python-networkx >= 2.8
+Requires:       python-numpy >= 1.21.1
+Requires:       python-packaging >= 21.0
+Requires:       python-scipy >= 1.8
+Requires:       python-tifffile >= 2022.8.12
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-QtPy
@@ -79,32 +82,23 @@ It is available free of charge and free of restriction.
 
 %prep
 %if !%{with test}
-%autosetup -p1 -n scikit-image-%{version}
-#remove shebang
-sed -i '1 {\@usr/bin/env@ d}' skimage/*/setup.py skimage/future/graph/setup.py
+%autosetup -p1 -n %{srcname}-%{version}
+sed -Ei "1{s@/usr/bin/env python@%{_bindir}/python3@}" ./skimage/_build_utils/*.py
 %else
 %setup -q -c scikit-image-%{version}-test -D -T
 %endif
 
 %build
 %if !%{with test}
-%python_build
+%pyproject_wheel
 %endif
 
 %install
 %if !%{with test}
-%python_install
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
-
-%python_clone -a %{buildroot}%{_bindir}/skivi
-%endif
-
-%if !%{with test}
-%post
-%python_install_alternative skivi
-
-%postun
-%python_uninstall_alternative skivi
+%pyproject_install
+%{python_expand %fdupes %{buildroot}%{$python_sitearch}
+chmod -x %{buildroot}%{$python_sitearch}/skimage/measure/{__init__,_find_contours}.py
+}
 %endif
 
 %if %{with test}
@@ -113,6 +107,13 @@ sed -i '1 {\@usr/bin/env@ d}' skimage/*/setup.py skimage/future/graph/setup.py
 donttest+="test_wrap_around"
 # fails randomly on all platforms
 donttest+=" or test_structural_similarity_dtype"
+# https://github.com/scikit-image/scikit-image/issues/7036
+donttest+=" or test_analytical_moments_calculation"
+# https://github.com/scikit-image/scikit-image/issues/7051
+donttest+=" or test_ellipse_parameter_stability"
+# Another floating point flaky test
+donttest+=" or test_clear_border_non_binary_out"
+export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
 %pytest_arch -v --pyargs skimage -n auto -k "not ($donttest)"
 %endif
 
@@ -120,7 +121,6 @@ donttest+=" or test_structural_similarity_dtype"
 %files %{python_files}
 %license LICENSE.txt
 %doc CONTRIBUTORS.txt TODO.txt
-%python_alternative %{_bindir}/skivi
 %{python_sitearch}/skimage/
 %{python_sitearch}/scikit_image-%{version}*-info
 %endif

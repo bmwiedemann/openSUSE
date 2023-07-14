@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jul  3 07:27:16 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20230701
+  + fix mandoc warnings about unnecessary markup.
+  + improve parameter check in tparm_setup()
+- Extend compiled in fall back terminals with xterm-256color
+  and ms-terminal (the first is now a days more common and second
+  one is useful for ssh connections to MS(tm))
+
+-------------------------------------------------------------------
+Mon Jun 26 08:57:42 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20230624
+  + fixes for out-of-memory condition (report by "eaglegai").
+- Add ncurses patch 20230625
+  + adjust man/make_sed.sh to work with dates as the third field of TH.
+  + fixes for out-of-memory condition (report by "eaglegai").
+
+-------------------------------------------------------------------
 Mon Jun 19 07:43:18 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20230617

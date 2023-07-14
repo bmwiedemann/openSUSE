@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sun Jul  9 12:02:44 UTC 2023 - Bernd Ritter <comrad@posteo.de>
+
+- Update to version 1.12.0
+  * Support for external fmtlib versions 10.x (#2694). Thanks @H1X4Dev and @mguludag.
+  * Better support for std::format (#2359, #2544, #2680, #2688). Thanks @eli-b , @sylveon and @bachittle.
+  * Added new qt color sink. Logs to QTextEdit widget with some nice colors.
+  * Update #include to a deprecated fmt header (#2545) .Thanks @kromain.
+  * Fixes and impovements to dup_filter_sink (#2549, #2563). Thanks @zydxhs and @zhuyadong.
+  * Fix unnecessary empty backtrace begin/end logs (#2568). Thanks @koldi.
+  * Fixed variable name in msvc_sink (#2573). Thanks @naddu77.
+  * Add system includes (SPDLOG_SYSTEM_INCLUDES) cmake option (#2575). Thanks @dpayne.
+  * Improve dequeue of the async queue (@2587, #2588 ). Thanks @alokpr.
+  * Fix tcp_client sink for FreeBSD (#2590). Thanks @segoon.
+  * Support linux/musl libc (#2589). Thanks @kraj.
+  * Support newlib C library configurations without tm_gmtoff field (#2600). Thanks @igrr.
+  * Fix type of event id in win_eventlog_sink (#2598). Thanks @Tagl.
+  * Fix -Wshadow warnings in spdlog::sinks::dist_sink (#2599). Thanks @robinlinden.
+  * Spelling corrections (#2606, #2732). Thanks @albert-github and @zencatalyst.
+  * Add sync() function to file_helper (#2343). Thanks @espkk.
+  * Add a trivial callback_sink (#2610). Thanks @maghorbani.
+  * Fix unexpected delimiter at start of line in to_hex formatter (#2627). Thanks @starsunyzl.
+  * Fix MinGW build issue on example (#2642). Thanks @zEuS0390.
+  * Add optional TID definition to the systemd sink (#2619). Thanks @chardin-cpi.
+  * Added apply_logger_env_levels() (#2648, #2649). Thanks @afshinpir.
+  * Support utf8 in msvc_sink (#2651). Thanks @Demonese.
+  * Better handling of utf to wchar (66407f5).
+  * Use catch v3 for tests (#2656, (#2659). Thanks @xvitaly and @seker.
+  * New kafka sink (#2655). Thanks @vbirds and @SpriteOvO.
+  * Fix os namespace in systemd_sink.h (#2668). Thanks @MyNameIsLame.
+  * Enable systemd_sink tests in linux pipeline (#2669). Thanks @MyNameIsLame.
+  * Fix stdout_sink_base::log's fflush() behaviour inconsistency (#2646). Thanks @25077667.
+  * Fix for missing pthread_threadid_np in macOS < 10.6 and PowerPC (#2715). Thanks @barracuda156.
+  * Fix ringbuffer_sink moving warning (#2722). Thanks @jamesruan.
+  * Update INSTALL doc (#2775). Thanks @7starsea.
+  * Fix warning in qt_sinks.h (#2781). Thanks @dayfixer.
+  * Remove IPv4 limitation from tcp_client (#2790). Thanks @Simon-Janos.
+  * Fix android sink when message is not loggable (#2801). Thanks @lucasrangit.
+- Removed three patches after update update to 1.12.0 includes these
+  * patch 0ca574ae168820da0268b3ec7607ca7b33024d05.patch removed
+  * patch v1.11.0_removed_brackets_for_fmt_10.diff removed
+  * patch tt4g-fix-2735.diff removed
+
+  
+
+-------------------------------------------------------------------
 Sat May 20 12:51:48 UTC 2023 - Bernd Ritter <comrad@posteo.de>
 
 - Applied three patches from upstream after update to dependency fmt 1.10 broke test in daily_file_sink #2735

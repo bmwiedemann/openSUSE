@@ -142,4 +142,14 @@
     <comment></comment>
     <requestid>997978</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5c3b2837952db3182f07c9dc92eb3882</srcmd5>
+    <version>1.0+git4</version>
+    <time>1689175588</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0+git4:
+  * Handle uppercase filesystem labels in combustion.rules as well
+  * Update README.md to explain the current mechanism of firstboot_happened</comment>
+    <requestid>1098144</requestid>
+  </revision>
 </revisionlist>

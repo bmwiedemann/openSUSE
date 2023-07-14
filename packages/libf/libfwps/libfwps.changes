@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 12 04:12:57 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20230711
+  * New APIs: Moved path string to separate functions
+  * Python bindings were updated
+
+-------------------------------------------------------------------
 Sun Feb  5 20:07:29 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to relesae 20230202

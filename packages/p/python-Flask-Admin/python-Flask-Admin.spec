@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 Name:           python-Flask-Admin
 Version:        1.6.1
 Release:        0
@@ -24,8 +23,11 @@ Summary:        Extensible admin interface framework for Flask
 License:        BSD-3-Clause
 URL:            https://github.com/flask-admin/flask-admin/
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Admin/Flask-Admin-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Flask-BabelEx has been firmly deprecated, switch to Babel
+# directly.
+Patch0:         switch-to-babel.patch
 BuildRequires:  %{python_module Flask >= 0.7}
-BuildRequires:  %{python_module Flask-BabelEx}
+BuildRequires:  %{python_module Flask-Babel}
 BuildRequires:  %{python_module Flask-SQLAlchemy}
 BuildRequires:  %{python_module Pillow >= 3.3.2}
 BuildRequires:  %{python_module PyYAML}
@@ -75,7 +77,7 @@ rm -f flask_admin/tests/test_form_upload.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -k 'not test_model and not test_inline_form_base_class'
+%pytest -k 'not test_model and not test_inline_form_base_class and not test_safe_redirect'
 
 %files %{python_files}
 %license LICENSE

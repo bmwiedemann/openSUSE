@@ -48,7 +48,7 @@ Requires:       gcc
 Recommends:     clang
 Recommends:     git
 Recommends:     pcre
-ExclusiveArch:  %{ix86} x86_64 armv7l armv7hl aarch64 ppc64le
+ExclusiveArch:  %{ix86} x86_64 armv7l armv7hl aarch64 ppc64le riscv64
 # Needs node 12 for flag --unhandled-rejections=strict, but it's not
 # strictly needed (it's used to test the Nim JS compiler, so we can
 # skip it and run tests without this compiler target afterwards)
@@ -151,7 +151,7 @@ cat << EOT >> tests_to_skip
 EOT
 %endif
 
-%ifarch aarch64 armv7l armv7hl ppc64le
+%ifarch aarch64 armv7l armv7hl ppc64le riscv64
 cat << EOT >> tests_to_skip
   # fails because it includes immintrin.h
   tests/misc/tsizeof4.nim
@@ -179,6 +179,29 @@ cat << EOT >> tests_to_skip
   # deactivate all tests that require node, as node version in
   # SLE and Leap 15.1 is either too old or not available at all
   tests/misc/trunner.nim
+EOT
+%endif
+
+%if 0%{?qemu_user_space_build}
+cat << EOT >> tests_to_skip
+  # valgrind is not compatible with QEMU user-space emulation,
+  # skip all test using it
+  tests/views/tsplit_into_openarray.nim
+  tests/destructor/tnewruntime_strutils.nim
+  tests/destructor/tv2_raise.nim
+  tests/valgrind/tleak_arc.nim
+  tests/valgrind/tbasic_valgrind.nim
+  tests/arc/tunref_cycle.nim
+  tests/arc/tcustomtrace.nim
+  tests/arc/tcaseobj.nim
+  tests/arc/t14472.nim
+  tests/arc/tasyncleak4.nim
+  tests/arc/thavlak_orc_stress.nim
+  tests/arc/torc_selfcycles.nim
+  tests/arc/tfuncobj.nim
+  tests/arc/tasyncleak3.nim
+  tests/arc/tasyncorc.nim
+  tests/arc/tcaseobjcopy.nim
 EOT
 %endif
 

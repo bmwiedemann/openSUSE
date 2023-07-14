@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTTP-Date
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-HTTP-Date
-Version:        6.05
-Release:        0
 %define cpan_name HTTP-Date
-Summary:        HTTP::Date - date conversion routines
+Name:           perl-HTTP-Date
+Version:        6.06
+Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+Summary:        HTTP::Date - date conversion routines
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Time::Local) >= 1.28
@@ -112,7 +110,8 @@ The function is able to parse the following formats:
  "Feb  3  1994"      -- Unix 'ls -l' format
  "Feb  3 17:03"      -- Unix 'ls -l' format
 
- "11-15-96  03:52PM" -- Windows 'dir' format
+ "11-15-96  03:52PM"   -- Windows 'dir' format
+ "11-15-1996  03:52PM" -- Windows 'dir' format with four-digit year
 
 The parser ignores leading and trailing whitespace. It also allow the
 seconds to be missing and the month to be numerical in most formats.
@@ -133,12 +132,11 @@ Same as time2str(), but returns a "YYYY-MM-DD hh:mm:ssZ"-formatted string
 representing Universal Time.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -name "*.sh" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -149,7 +147,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes CONTRIBUTORS README.md
 %license LICENSE
 

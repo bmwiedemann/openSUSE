@@ -47,4 +47,14 @@
 - drop python-django-request-no-mock.patch (upstream)</comment>
     <requestid>1061729</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>de03b471b2378f32600653e185393eb3</srcmd5>
+    <version>1.6.3</version>
+    <time>1689175646</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.3:
+  * Confirms support for Django 4.2.
+  * Adds a missing migration with HTTP status codes.</comment>
+    <requestid>1098212</requestid>
+  </revision>
 </revisionlist>

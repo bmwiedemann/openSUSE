@@ -922,4 +922,25 @@
 </comment>
     <requestid>1095411</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>ffbaf8c94c1151f9b07c137e6f44be0f</srcmd5>
+    <version>41.0.2</version>
+    <time>1689175580</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 41.0.2:
+  * Fixed bugs in creating and parsing SSH certificates where
+    critical options with values were handled incorrectly.
+    Certificates are now created correctly and parsing accepts
+    correct values as well as the previously generated
+    invalid forms with a warning. In the next release, support
+    for parsing these invalid forms will be removed.
+
+- remove patch remove_python_3_6_deprecation_warning.patch as the
+  warning was already removed upstream
+
+- Add no-pytest_benchmark.patch, which remove dependency on
+  pytest-benchmark and coveralls (We don't need no benchmarking
+  and coverage measurement; bsc#1213005).</comment>
+    <requestid>1098185</requestid>
+  </revision>
 </revisionlist>

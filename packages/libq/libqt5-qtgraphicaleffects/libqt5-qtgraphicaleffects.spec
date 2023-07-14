@@ -48,6 +48,9 @@ handling.
 %prep
 %autosetup -p1 -n %{tar_version}
 
+# '/' in QML dependencies is broken, replace with a dot
+sed -i 's#QtGraphicalEffects/private#QtGraphicalEffects\.private#' src/effects/qmldir
+
 %build
 %if %{qt5_snapshot}
 #force the configure script to generate the forwarding headers (it checks whether .git directory exists)

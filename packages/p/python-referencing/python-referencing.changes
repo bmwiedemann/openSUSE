@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 06 10:57:29 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.29.1:
+  * Update pre-commit hooks.
+  * Minor rewording of the caching section and give it a
+    subsection.
+  * Bump suite from `cb57930` to `9335e4a`
+  * [pre-commit.ci] pre-commit autoupdate
+  * Bump suite from `445c8ee` to `cb57930`
+  * Bump suite from `f6fa54d` to `445c8ee`
+  * Don't use nox.session.create_tmp.
+
+-------------------------------------------------------------------
 Thu Jun 01 05:26:32 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.29.0:

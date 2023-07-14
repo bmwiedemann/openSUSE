@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 10 07:03:35 UTC 2023 - emiliano.langella@suse.com
+
+- Update to version 4.4.0+git0.eb5513d:
+  * update version info and year
+  * regexp_x functions should be immutable
+
+-------------------------------------------------------------------
 Thu Jun 01 13:02:42 UTC 2023 - emiliano.langella@suse.com
 
 - Update to version VERSION_4.3.0+git0.fac8b9c:

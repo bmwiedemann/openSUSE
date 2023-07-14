@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jul  6 16:01:21 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.76.4:
+  + Fix build failure on Android with `statx()` support
+  + Bugs fixed:
+    - glib-compile-schemas failed on directory name with no Latin
+      symbols
+    - Build failure due to statx fields with NDK r25.c
+    - glib-compile-resources: Fix non-ASCII arg parsing on Windows
+    - glib: reset errno to 0 when futex() returns EAGAIN
+    - Avoid stack overflow in gspawn on macOS
+    - glocalfileinfo: Fix incorrect use of struct
+      statx.st_mtimensec on Android
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue May 23 16:14:57 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.76.3:

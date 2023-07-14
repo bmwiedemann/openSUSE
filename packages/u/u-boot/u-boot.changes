@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jul 11 11:34:07 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Add starfivevisionfive2 flavor
+- Bump opensbi dependency to 1.3
+
+-------------------------------------------------------------------
+Tue Jul 11 10:14:05 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- 2023.07 has been released with a -rc6 leftover, so remove it
+  from Makefile to have the right version displayed on boot
+
+-------------------------------------------------------------------
+Tue Jul 11 10:02:36 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2023.07:
+  * Full changelog available at:
+    https://source.denx.de/u-boot/u-boot/-/compare/v2023.04...v2023.07
+
+-------------------------------------------------------------------
+Wed May  3 09:52:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add keyring for gpg validation
+
+-------------------------------------------------------------------
 Mon Apr 24 12:32:54 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update ATF BL31 name for rk3288 as well
@@ -3567,36 +3591,34 @@ Wed Nov 09 22:55:09 UTC 2011 - joop.boonen@opensuse.org
 - Used the Meego panda u-boot as a base
 
 -------------------------------------------------------------------
-Fri Feb 18 00:00:00 UTC 2011 - raghuveer.murthy@ti.com> 
+Fri Feb 18 00:00:00 UTC 2011 - <raghuveer.murthy@ti.com> 
 - 2010.09-MeeGo  
 - Fix for u-boot fails to compile on armv7hl, BMC#13140  
   
 -------------------------------------------------------------------
-Thu Nov 18 00:00:00 UTC 2010 - peter.j.zhu@intel.com> 
+Thu Nov 18 00:00:00 UTC 2010 - <peter.j.zhu@intel.com> 
 - 2010.09-MeeGo  
 - Don't build against i586, BMC#10159  
   
 -------------------------------------------------------------------
-Tue Oct 10 00:00:00 UTC 2010 - nm@ti.com> 
+Tue Oct 10 00:00:00 UTC 2010 - <nm@ti.com> 
 - 2010.09.rc1-MeeGo  
 - Added option to enable boot.scr generation and copy  
   
 -------------------------------------------------------------------
-Mon Oct 04 00:00:00 UTC 2010 - nm@ti.com> 
+Mon Oct 04 00:00:00 UTC 2010 - <nm@ti.com> 
 - 2010.09.rc1-MeeGo  
 - Update to 2010.09  
   
 -------------------------------------------------------------------
-Wed Sep 14 00:00:00 UTC 2010 - nm@ti.com> 
+Wed Sep 14 00:00:00 UTC 2010 - <nm@ti.com> 
 - 2010.09.rc1-MeeGo  
 - Update to 2010.09.rc1  
 - MeeGo customization  
 - Enabled PandaBoard, Beagleboard build  
   
 -------------------------------------------------------------------
-Wed Mar 31 00:00:00 UTC 2010 - silvan.calarco@mambasoft.it> 
+Wed Mar 31 00:00:00 UTC 2010 - <silvan.calarco@mambasoft.it> 
 - 2009.11.1-1mamba  
 - update to 2009.11.1
-  
--------------------------------------------------------------------
-Wed Mar 31 00:00:00 UTC 2010 - 
+

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jul 08 16:04:31 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1688832263.576c710:
+  * consoles/{serial_screen,virtio_terminal}: Add hint about testing
+  * t/22-svirt.t: Rename console name
+  * svirt: Fix comments for ssh-virtsh-serial constants
+  * Use tempfile TMPDIR option
+  * Use a tempfile template to easily identify tempfiles
+  * Apply best practices to Dockerfiles
+  * git subrepo pull (merge) external/os-autoinst-common
+
+-------------------------------------------------------------------
 Wed Jul 05 20:43:12 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1688579291.d13a461:

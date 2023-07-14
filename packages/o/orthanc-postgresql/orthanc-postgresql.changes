@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul 11 13:54:11 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- version 5.1 
+  * Optimization of LookupResources mainly used in tools/find, C-Find and QIDO-RS.
+
+- version 5.0
+  * Compatibility with Orthanc SDK 1.12.0 (communications between the
+    Orthanc core and the database plugin using Google Protocol Buffers)
+  * Upgraded dependencies for static builds (notably on Windows and LSB):
+    - openssl 3.1.0
+  * psql114.patch removed (included in source)
+  
+-------------------------------------------------------------------
 Sun May  9 10:12:43 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - Version 4.0 (no changelog)

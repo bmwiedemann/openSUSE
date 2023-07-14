@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jul  2 08:35:49 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add upstream fixbuild.patch to build with gcc-13
+
+-------------------------------------------------------------------
+Tue Apr 18 07:47:33 UTC 2023 - mpluskal@suse.com
+
+- Update to version 0.18.2.2:
+  * cryptonote core/protocol: don't drop peers for soft offenses
+  * Fixed deadlock and crash when syncing with full dataset on Windows
+  * build: prepare v0.18.2.2
+  * wallet2: fix infinite loop in fake out selection
+  * p2p: do not log to global when re-blocking a subnet
+  * p2p: avoid spam blocking ipv4 addresses in a blocked subnet
+  * build: prepare v0.18.2.1
+  * Add a size limit for tx_extra in tx pool
+  * verRctNonSemanticsSimpleCached: fix fragility
+  * device: Add ledger Stax device id to device detection
+  * workflows: update dependencies to fix warnings
+
+-------------------------------------------------------------------
 Mon Mar  6 08:20:45 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.18.2.0:

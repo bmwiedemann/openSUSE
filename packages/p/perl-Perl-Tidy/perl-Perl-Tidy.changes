@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sun Jul  2 03:07:10 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20230701
+   see /usr/share/doc/packages/perl-Perl-Tidy/CHANGES.md
+
+  ## 2023 07 01
+      - Issue git #121. Added parameters -xbt, or --extended-block-tightness,
+        and -xbtl=s, or --extended-block-tightness-list=s, to allow
+        certain small code blocks to have internal spacing controlled by
+        -bbt=n rather than -bt=n. The man pages have details.
+      - Issue git #118. A warning will be issued if a duplicate format-skipping
+        starting marker is seen within a format-skipping section. The same
+        applies to duplicate code-skipping starting markers within code-skipping
+        sections.
+      - Issue git #116. A new flag --valign-if-unless, -viu, was added to
+        allow postfix 'unless' terms to align with postfix 'if' terms.  The
+        default remains not to do this.
+      - Fixed git #115. In the two most recent CPAN releases, when the
+        Perl::Tidy module was called with the source pointing to a file,
+        but no destination specified, the output went to the standard
+        output instead of to a file with extension ``.tdy``, as it should
+        have.  This has been fixed.
+      - Fixed git #110, add missing documentation for new options
+        -cpb and -bfvt=n. These work in version 20230309 but the pod
+        documentation was missing and has been added.
+      - Fixed an undefined reference message when running with
+        --dump-block-summary on a file without any subs or other
+        selected block types.
+      - Add parameter -ipc, or --ignore-perlcritic-comments.  Perltidy, by
+        default, will look for side comments beginning with ``## no critic`` and
+        ignore their lengths when making line break decisions, even if the user
+        has not set ``-iscl``.  The reason is that an unwanted line break can
+        make these special comments ineffective in controlling ``perlcritic``.
+        The parameter -ipc can be set if, for some reason, this is not wanted.
+      - Some minor issues with continuation indentation have been fixed.
+        Most scripts will remain unchanged.  The main change is that block
+        comments which occur just before a closing brace, bracket or paren
+        now have an indentation which is independent of the existance of
+        an optional comma or semicolon.  Previously, adding or deleting
+        an optional trailing comma could cause their indentation to jump.
+        Also, indentation of comments within ternary statements has been
+        improved. For additonal details see:
+        https://github.com/perltidy/perltidy/blob/master/docs/ci_update.md
+      - This version was stress-tested for many cpu hours with random
+        input parameters. No failures to converge, internal fault checks,
+        undefined variable references or other irregularities were seen.
+      - This version runs several percent faster than the previous release
+        on large files.
+
+-------------------------------------------------------------------
 Thu Mar  9 03:07:14 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 20230309

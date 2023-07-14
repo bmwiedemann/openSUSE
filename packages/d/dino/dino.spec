@@ -25,7 +25,7 @@
 %endif
 
 Name:           dino
-Version:        0.4.2
+Version:        0.4.3
 Release:        0
 Summary:        Modern Jabber/XMPP Client using GTK+/Vala
 License:        GPL-3.0-only

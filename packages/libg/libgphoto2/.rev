@@ -1618,4 +1618,12 @@
 - added %bcond_with vusb in case anyone needs a test drive</comment>
     <requestid>1082394</requestid>
   </revision>
+  <revision rev="136" vrev="3">
+    <srcmd5>0e1d2ff56be064468843b4aefd5d158c</srcmd5>
+    <version>2.5.30</version>
+    <time>1689083786</time>
+    <user>anag+factory</user>
+    <comment>- drop lockdev support (boo#1212801) (forwarded request 1097916 from lnussel)</comment>
+    <requestid>1097929</requestid>
+  </revision>
 </revisionlist>

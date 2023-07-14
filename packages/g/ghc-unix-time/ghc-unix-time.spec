@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.4.9
+Version:        0.4.10
 Release:        0
 Summary:        Unix time parser/formatter and utilities
 License:        BSD-3-Clause
@@ -44,6 +44,8 @@ BuildRequires:  ghc-hspec-devel
 BuildRequires:  ghc-hspec-prof
 BuildRequires:  ghc-old-locale-devel
 BuildRequires:  ghc-old-locale-prof
+BuildRequires:  ghc-template-haskell-devel
+BuildRequires:  ghc-template-haskell-prof
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-time-prof
 %endif

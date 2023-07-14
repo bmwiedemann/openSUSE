@@ -31,6 +31,7 @@ Source:         https://github.com/google/or-tools/archive/refs/tags/v%{version}
 Patch5:         0001-Only-add-relevant-directories-to-sample-RUNPATHs.patch
 Patch6:         0002-Only-add-relevant-directories-to-flatzinc-library-ex.patch
 Patch7:         0003-Only-add-relevant-directories-to-sat_solver-RUNPATHs.patch
+Patch8:         0001-base-Remove-AbslStringify.patch
 BuildRequires:  abseil-cpp-devel >= 20230105.0
 BuildRequires:  cmake >= 3.18
 BuildRequires:  fdupes

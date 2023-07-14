@@ -19,4 +19,14 @@
   * Minor bugfixes</comment>
     <requestid>1094817</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9627142a74aacea048b7575c67cec762</srcmd5>
+    <version>0.1.6</version>
+    <time>1688999996</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.5:
+  * ui: device: Show address if name is empty 
+  * agent: Display pincode in a modal #14</comment>
+    <requestid>1097861</requestid>
+  </revision>
 </revisionlist>

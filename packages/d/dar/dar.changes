@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul  3 08:40:44 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.7.10:
+  * displaying the slicing information about the archive of reference
+    stored within a isolated catalogue when using -l and -q options
+  * cleanup code from obsolete and unused readdir_r invocation
+  * fixing display bug in dar_manager (shell_interaction class of libdar)
+  * fixing python binding build system with John Goerzen's proposal
+  * replacing the deprecated PYBIND11_OVERLOAD_* by PYBIND11_OVERRIDE_*
+    equivalents
+
+-------------------------------------------------------------------
 Thu Jun 15 09:42:57 UTC 2023 - Avinesh Kumar <avinesh.kumar@suse.com>
 
 - update to 2.7.9:

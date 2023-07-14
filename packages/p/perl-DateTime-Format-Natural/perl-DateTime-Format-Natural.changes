@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun 21 03:06:14 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.17
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+
+  1.17  2023-06-20  <schubiger@cpan.org>
+   - Merged development version to stable.
+   - Minor tweak.
+  1.16_01  2023-06-18  <schubiger@cpan.org>
+   - Fix parse_datetime_duration doesn't understand hours
+     with no minutes, anymore. [github #19 - Giovanni Pensa]
+
+-------------------------------------------------------------------
 Sun Feb  5 03:07:32 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.16

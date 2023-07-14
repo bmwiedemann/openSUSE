@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 22 03:07:15 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.888
+   see /usr/share/doc/packages/perl-MCE/Changes
+
+  1.888 Wed Jun 21 17:00:00 EST 2023
+
+    * Fix typos caught by lintian. Thank you, Étienne Mollier.
+
+-------------------------------------------------------------------
 Sat Jun 10 03:06:39 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.887

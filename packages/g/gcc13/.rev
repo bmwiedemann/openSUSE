@@ -125,4 +125,22 @@
 - Update riscv-atomic.patch from the version committed upstream.</comment>
     <requestid>1088374</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>461f53a4b7d1dcdb908bfa7ee42aee42</srcmd5>
+    <version>13.1.1+git7552</version>
+    <time>1689083765</time>
+    <user>anag+factory</user>
+    <comment>- Bump to f9781fcf733ca3afe5b5811afd8ecbb18d9d3a11, git7552
+- Remove gcc13-pr110334.patch again as it breaks libreoffice build.
+
+- Bump to a533ded17fb13cbbb2fa5133ecd470360f66c5cf, git7489.
+- Add gcc13-pr110334.patch to fix missed optimization in Skia
+  resulting in Firefox crashes when building with LTO.  [boo#1212101]
+
+- Raise architecture levels for ALP.  [PED-153]
+  * Raise POWER architecture baseline to power9.  [PED-2005]
+  * Raise x86-64 architecture baseline to x86-64-v2 for ALP.  [PED-252]
+  * Delay raising s390x architecture baseline to z14.  [PED-253]</comment>
+    <requestid>1097918</requestid>
+  </revision>
 </revisionlist>

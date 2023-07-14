@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jul 09 19:28:44 UTC 2023 - Tina Müller <tina.mueller@suse.com>
+
+- Update to version 1.84.00.1688930749.8cd1dcd:
+  * v1.84.00
+  * Fix code for Module::Build(::Tiny) (#46)
+  * Exlude scripts/ from removing executable bit (#45)
+  * Ignore toml and yml files (#43)
+
+-------------------------------------------------------------------
 Mon Jan 23 17:54:28 UTC 2023 - Tina Müller <tina.mueller@suse.com>
 
 - Update to version 1.83.00.1674496263.ba76ec9:

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jul 10 13:01:56 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.75.2:
+  * Add pagename completion by words in "Jump to"
+  * Let tasklist window remember selection state
+  * Let tasklist window use a search bar
+  * Add count in tasklist window
+  * Fix auto-collapse in page index for child nodes
+  * Fix import of gtkspellcheck
+  * Make spellcheck more robust for page reload
+  * Fix bug in insert screenshot
+  * Add scrollbar to custom tool window
+  * Fix config dirs for portable install
+  * Use environment variable for XDG_TEMPLATES_DIR
+  * Fix links to anchors on export
+  * Fix bug in copy-paste of interwiki links
+  * Updated diagrameditor and sequencediagrameditor plugins to generate SVG
+  * Add keybinding for cutting the current line(s)
+  * Fix fullscreen headerbar visibility
+
+-------------------------------------------------------------------
 Wed Jan 18 14:34:38 UTC 2023 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Added missing dependency on typelib-1_0-Gtk-3_0 (bsc#1188958)

@@ -2,7 +2,7 @@ Index: uucp-1.07/uucp.texi
 ===================================================================
 --- uucp-1.07.orig/uucp.texi
 +++ uucp-1.07/uucp.texi
-@@ -4230,7 +4230,7 @@ may be sent to the remote system upon re
+@@ -4232,7 +4232,7 @@ may be sent to the remote system upon re
  
  @table @code
  
@@ -11,7 +11,7 @@ Index: uucp-1.07/uucp.texi
  @findex speed in sys file
  @item baud @var{number}
  @findex baud in sys file
-@@ -5119,7 +5119,7 @@ the port name is taken as the device.  D
+@@ -5121,7 +5121,7 @@ the port name is taken as the device.  D
  dependent.  On Unix, a modem or direct connection might be something
  like @file{/dev/ttyd0}; a TLI port might be @file{/dev/inet/tcp}.
  
@@ -20,7 +20,7 @@ Index: uucp-1.07/uucp.texi
  @findex speed in port file
  @item baud @var{number} [ modem and direct only ]
  @findex baud in port file
-@@ -5129,7 +5129,7 @@ name, then all ports which match the spe
+@@ -5131,7 +5131,7 @@ name, then all ports which match the spe
  the speed is not specified here and is not specified by the system, the
  natural speed of the port will be used by default.
  

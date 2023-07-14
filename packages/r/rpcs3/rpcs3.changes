@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Mon Jul 03 11:32:58 UTC 2023 - i@guoyunhe.me
+
+- Update to version 0.0.28~git20230702:
+  * cellSpurs: Implement ShutdownTaskset and WorkloadFlagReceiver2
+  * Update dependencies
+  * Input: update buttons on pressure button toggle
+  * Input: fix multibutton mousepress (sticks only)
+  * Input: fix multibutton mousepress (buttons only)
+  * Input: Add tooltips for button mapping
+  * Fix some warning
+  * vk/rsx: Fix build errors and warnings
+  * vk: Get rid of some spammy debug code
+  * vk: Minor refactor to make early-exit branches trivial and easier to read
+  * vk: Fix some regressions in synchronization2 behavior
+  * vk: Fix GPU hang
+  * vk: Restructure gpu labels and add them as an event backend
+  * vk: Use pipeline barriers for proper event sync
+
+-------------------------------------------------------------------
+Fri Jun 30 15:01:23 UTC 2023 - i@guoyunhe.me
+
+- Update to version 0.0.28~git20230629:
+  * Qt: Save UI settings and geometry safely on closeEvent
+  * System.cpp: Do not hold the watchdog forever for PPU LLVM compilation cancel
+  * Remove overlay hack for PPU LLVM OVL precompilation
+  * Empty kill and init callback before calling them
+  * PPU LLVM: Implement SELF precompilation
+  * PPU LLVM: Precompile all disc game data including PRX etc
+  * Savestate/IDM: Do not save unsavable containers
+  * Fix Create PPU Cache
+  * RB3MidiGuitar.cpp: Support 5-Fret play
+  * input/overlays: add option to lock overlay input to player one
+  * Constify
+  * Dump extensions info to the log
+  * vk: Fix a bunch of corner cases when syncing GPU and host memory
+  * vk: Add explicit sync when doing copy_image_to_buffer
+  * Add flags to handle sync domain with v2 events
+  * Properly enable synchronization2 feature
+  * Silence logspam about unused parameter
+  * Silence log spam about copy ellision
+  * Qt: remove obsolete shortcut
+  * Qt: use shortcut instead of hardcoded keypress event
+  * welcome_dialog: remove weird window close event
+  * Make stopping emulation not pause or crash UI
+  * Fix properly RSX replay thread stop bug
+  * about_dialog: Add new testers
+  * Qt: Add RPCS3 Discord & Wiki to About Dialog
+  * settings: Display rendering result of 100% resolution scale
+  * Qt: Add Create RPCS3 shortcuts to Wecome Dialog
+  * Qt: Make welcome dialog accessible through F1 or Help menu
+  * Qt: Fix memory leak in welcome dialog
+  * Qt: Allow to drop RAP&PKG together
+  * Qt: Always set QEvent::isAccepted is drag&drop events
+  * Qt: Do not require to close games when adding new disc game directories
+  * sys_fs: Fixed up one of sys_fs_unmount()'s error codes to match real system behavior
+  * sys_fs: Implemented get_normalized_path()
+  * fs: Add get_parent_dir_view
+  * File.cpp: revert get_parent_dir change
+  * Try to fix build
+  * Workaround for old compilers
+  * vk: Update async compute (fast) to use the new sync API
+  * vk: Reimplement events using synchronization2 extension
+  * Utilities/Memory Viewer: Improve image viewer
+  * Utilities/Memory Viewer: Add G8 and G32MAX image formats
+  * Utilities/Memory Viewer: Add PageDown/PageUp scrolling
+  * Utilities/Memory Viewer: Fix memory leak
+  * Debugger/RSX: Add shortcut for RSX semaphores
+  * Utilities/Memory Viewer: Add auto-refresh mode
+  * asm.hpp: Fix mul_saturate
+
+-------------------------------------------------------------------
 Wed Jun 21 15:08:13 UTC 2023 - i@guoyunhe.me
 
 - Update to version 0.0.28~git20230620:

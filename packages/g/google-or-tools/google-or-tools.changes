@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul  9 21:21:56 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with latest protobuf, add
+  0001-base-Remove-AbslStringify.patch
+
+-------------------------------------------------------------------
 Thu May 11 00:30:26 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 9.6:

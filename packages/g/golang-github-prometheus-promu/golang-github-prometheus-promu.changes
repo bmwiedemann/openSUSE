@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jul 04 10:41:07 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.15.0:
+  * Release v0.15.0
+  * Bump golang.org/x/oauth2 from 0.8.0 to 0.9.0
+  * Update common Prometheus files
+  * Bump go.uber.org/atomic from 1.10.0 to 1.11.0
+  * Update build
+  * Add linux/riscv64 to default platforms
+  * Bump github.com/prometheus/common from 0.39.0 to 0.42.0
+  * Bump golang.org/x/oauth2 from 0.5.0 to 0.6.0
+  * Bump github.com/prometheus/common from 0.37.0 to 0.39.0
+  * Bump golang.org/x/oauth2 from 0.2.0 to 0.5.0
+  * Bump golang.org/x/net from 0.2.0 to 0.7.0
+  * Use unmarshalstrict
+
+-------------------------------------------------------------------
 Wed Mar 22 10:28:44 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - rework spec file to use obscpio

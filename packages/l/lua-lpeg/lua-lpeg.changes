@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 11 11:23:08 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 1.1.0
+ * No change log from upstream and no usage of a git forge so that's it...
+
+-------------------------------------------------------------------
 Wed Jan 25 10:52:05 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
 
 - Opencode %make_build to prevent build failure when not defined.

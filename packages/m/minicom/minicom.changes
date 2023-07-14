@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 10 10:36:43 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
+
+- drop lockdev support (boo#1212801)
+
+-------------------------------------------------------------------
 Tue May 24 09:12:51 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not recommend lang package: the lang package has smarter

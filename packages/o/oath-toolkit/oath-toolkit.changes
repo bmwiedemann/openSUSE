@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul  9 12:03:29 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6.8
+  * libpskc: Fixes for recent libxmlsec releases.
+  * pam_oath: Provide fallback pam_modutil_getpwnam implementation.
+  * pam_oath: Don't fail authentication when pam_modutil_getpwnam
+   doesn't ** know the user when usersfile don't include ${USER}
+   or ${HOME}.
+  * pam_oath: Self-test improvements.
+
+-------------------------------------------------------------------
 Tue Aug  2 20:39:41 UTC 2022 - Torsten Gruner <simmphonie@opensuse.org>
 
 - Use %_pam_moduledir instead of hardcoding %{_lib}/security

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jul 10 05:12:03 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.4.13:
+  * Update mapping for python-slugify
+  * Update mapping socketio to python-socketio
+  * Add mapping for python-constraint
+  * Mitigation for dependency confusion (bsc#1212933, CVE-2023-31543)
+  * enh: include airflow mapping
+  * Mapping Telegram to python-telegram-bot
+  * added => and ~= support through the "mode" option
+- Don't use greedy globs in %files.
+- Switch to pyproject macros.
+- Skip more tests that require network access.
+- Drop unneeded Requires on setuptools.
+
+-------------------------------------------------------------------
 Tue Jun 13 08:57:42 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

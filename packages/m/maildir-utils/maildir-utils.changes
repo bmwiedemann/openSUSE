@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 10 05:26:12 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.10.5:
+  * in single-window mode, restore point after quitting headers-mode
+  * check the part-type in Multipart (avoids an error in verifying
+    unsigned messages with a signed attachment)
+
+-------------------------------------------------------------------
 Fri Jun 23 05:57:53 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.10.4:

@@ -1,0 +1,46 @@
+diff -ruN /root/oscbuild/build-root/home/abuild/rpmbuild/BUILD/Clementine-bbda59a5f347a75bbecde0b1928e03942e367850/CMakeLists.txt Clementine-bbda59a5f347a75bbecde0b1928e03942e367850.ix86.build/CMakeLists.txt
+--- /root/oscbuild/build-root/home/abuild/rpmbuild/BUILD/Clementine-bbda59a5f347a75bbecde0b1928e03942e367850/CMakeLists.txt	2023-07-10 02:28:08.454149341 -0400
++++ Clementine-bbda59a5f347a75bbecde0b1928e03942e367850.ix86.build/CMakeLists.txt	2023-07-10 02:16:45.660314923 -0400
+@@ -77,6 +77,8 @@
+ pkg_check_modules(LIBXML libxml-2.0)
+ pkg_check_modules(LIBSPOTIFY libspotify>=12.1.45)
+ pkg_check_modules(TAGLIB taglib)
++pkg_check_modules(ABSL_LOG_INTERNAL_MESSAGE REQUIRED absl_log_internal_message)
++pkg_check_modules(ABSL_LOG_INTERNAL_CHECK_OP REQUIRED absl_log_internal_check_op)
+ 
+ if (WIN32)
+   find_package(ZLIB REQUIRED)
+@@ -439,6 +441,11 @@
+   set(MYGPOQT5_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/libmygpo-qt5/src)
+ endif()
+ 
++set(ABSL_LIBS 
++  ${ABSL_LOG_INTERNAL_MESSAGE_LIBRARIES}
++  ${ABSL_LOG_INTERNAL_CHECK_OP_LIBRARIES}
++)
++
+ # Qocoa
+ add_subdirectory(3rdparty/qocoa)
+ 
+diff -ruN /root/oscbuild/build-root/home/abuild/rpmbuild/BUILD/Clementine-bbda59a5f347a75bbecde0b1928e03942e367850/ext/clementine-tagreader/CMakeLists.txt Clementine-bbda59a5f347a75bbecde0b1928e03942e367850.ix86.build/ext/clementine-tagreader/CMakeLists.txt
+--- /root/oscbuild/build-root/home/abuild/rpmbuild/BUILD/Clementine-bbda59a5f347a75bbecde0b1928e03942e367850/ext/clementine-tagreader/CMakeLists.txt	2023-07-10 02:28:08.454149341 -0400
++++ Clementine-bbda59a5f347a75bbecde0b1928e03942e367850.ix86.build/ext/clementine-tagreader/CMakeLists.txt	2023-07-10 02:17:14.737415093 -0400
+@@ -29,6 +29,7 @@
+   libclementine-tagreader
+   Qt5::Core
+   Qt5::Network
++  ${ABSL_LIBS}
+   z
+ )
+ 
+diff -ruN /root/oscbuild/build-root/home/abuild/rpmbuild/BUILD/Clementine-bbda59a5f347a75bbecde0b1928e03942e367850/src/CMakeLists.txt Clementine-bbda59a5f347a75bbecde0b1928e03942e367850.ix86.build/src/CMakeLists.txt
+--- /root/oscbuild/build-root/home/abuild/rpmbuild/BUILD/Clementine-bbda59a5f347a75bbecde0b1928e03942e367850/src/CMakeLists.txt	2023-07-10 02:28:08.458149493 -0400
++++ Clementine-bbda59a5f347a75bbecde0b1928e03942e367850.ix86.build/src/CMakeLists.txt	2023-07-10 02:17:36.770248731 -0400
+@@ -1303,6 +1303,7 @@
+   ${QTIOCOMPRESSOR_LIBRARIES}
+   ${CMAKE_THREAD_LIBS_INIT}
+   ${SQLITE_LIBRARIES}
++  ${ABSL_LIBS}
+ 
+   Qocoa
+   z

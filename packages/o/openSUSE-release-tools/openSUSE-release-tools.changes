@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jul 11 08:57:47 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230711.3bf8fdf:
+  * Fix review_mode being set from a str and not from the enum
+
+-------------------------------------------------------------------
+Mon Jul 10 09:04:07 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230710.395857d:
+  * Remove unused variable
+  * Convert namedtuples into a typed NamedTuples
+  * Raise a concrete exception type, not the generic exception base class
+  * ReviewBot: convert REVIEW_CHOICES into an enum
+  * Add some type hints
+
+-------------------------------------------------------------------
+Mon Jul 10 07:36:23 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230710.b1b5536:
+  * Update SLE Micro to 5.5
+
+-------------------------------------------------------------------
 Tue Jul 04 09:50:57 UTC 2023 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20230704.bb6afc9:

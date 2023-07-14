@@ -42,4 +42,12 @@
   - wtmpdb last: Implement -x, -d, -i and -w options</comment>
     <requestid>1094677</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8e6a8eb9b6f7b01a9ea6b68de3c19465</srcmd5>
+    <version>0.7.1</version>
+    <time>1689175600</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1097971</requestid>
+  </revision>
 </revisionlist>

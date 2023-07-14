@@ -17,20 +17,14 @@
 
 
 Name:           spdlog
-%define lname	libspdlog1_11
-%define sover	1.11
-Version:        1.11.0
+%define lname	libspdlog1_12
+%define sover	1.12
+Version:        1.12.0
 Release:        0
 Summary:        C++ logging library
 License:        MIT
 URL:            https://github.com/gabime/spdlog
-Source0:        https://github.com/gabime/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 0ca574ae168820da0268b3ec7607ca7b33024d05.patch
-Patch0:         0ca574ae168820da0268b3ec7607ca7b33024d05.patch
-# PATCH-FIX-UPSTREAM v1.11.0_removed_brackets_for_fmt_10.diff
-Patch1:         v1.11.0_removed_brackets_for_fmt_10.diff
-# PATCH-FIX-UPSTREAM tt4g-fix-2735.diff
-Patch2:         tt4g-fix-2735.diff
+Source0:        https://github.com/gabime/%{name}/archive/refs/tags/v%{version}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  cmake >= 3.10
 %if 0%{?suse_version} > 1500
@@ -40,7 +34,7 @@ BuildRequires:  gcc8-c++
 %endif
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  (pkgconfig(catch2) >= 2.13.4 with pkgconfig(catch2) < 3)
+BuildRequires:  (pkgconfig(catch2) >= 3)
 BuildRequires:  pkgconfig(fmt) >= 8.0.0
 BuildRequires:  pkgconfig(libsystemd)
 

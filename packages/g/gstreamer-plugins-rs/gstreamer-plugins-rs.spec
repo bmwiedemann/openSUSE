@@ -29,7 +29,7 @@
 %endif
 
 Name:           gstreamer-plugins-rs
-Version:        0.10.6
+Version:        0.10.9
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -42,7 +42,7 @@ Source3:        cargo_config
 Source4:        gstreamer-plugins-rs.appdata.xml
 
 BuildRequires:  cargo-c
-BuildRequires:  cargo-packaging
+BuildRequires:  cargo-packaging >= 1.2.0+3
 BuildRequires:  clang
 # Disable csound for now, bring issue upstream
 #BuildRequires:  csound-devel
@@ -104,7 +104,7 @@ cp %{SOURCE3} .cargo/config
 %build
 # Disable csound for now, bring issue upstream
 #export CSOUND_LIB_DIR=%%{_libdir}
-export RUSTFLAGS="%{__rustflags}"
+export RUSTFLAGS="%{build_rustflags}"
 
 %meson \
 	--default-library=shared \
@@ -119,7 +119,7 @@ export RUSTFLAGS="%{__rustflags}"
 %meson_build
 
 %install
-export RUSTFLAGS="%{__rustflags}"
+export RUSTFLAGS="%{build_rustflags}"
 %meson_install
 mkdir -p %{buildroot}%{_datadir}/appdata
 cp %{SOURCE4} %{buildroot}%{_datadir}/appdata/

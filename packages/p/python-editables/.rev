@@ -15,4 +15,22 @@
     <comment></comment>
     <requestid>1081937</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f5817a44eaefd5b3864dfe8645b05fe7</srcmd5>
+    <version>0.4</version>
+    <time>1689175577</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert to multibuild to break a build cycle
+- update to version 0.4:
+  * Add a new add_to_subpackage method
+  * Add type annotations
+  * Internal admin: Switch to nox for automation
+  * Internal admin: Switch to ruff for linting
+  * Internal admin: Switch from setuptools to flit_core
+- drop skip_python2 and require python &gt;= 3.7
+- drop setuptools and requires pip and flit-core to build the rpm
+- add pytest as a build requirement and run the tests
+</comment>
+    <requestid>1098095</requestid>
+  </revision>
 </revisionlist>

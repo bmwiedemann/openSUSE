@@ -17,32 +17,20 @@
 
 
 %define oldpython python
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-M2Crypto
-Version:        0.38.0
+Version:        0.39.0
 Release:        0
 Summary:        Crypto and SSL toolkit for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://gitlab.com/m2crypto/m2crypto
 Source0:        https://files.pythonhosted.org/packages/source/M/M2Crypto/M2Crypto-%{version}.tar.gz
-Source1:        https://files.pythonhosted.org/packages/source/M/M2Crypto/M2Crypto-%{version}.tar.gz.asc
+Source1:        M2Crypto-%{version}.tar.gz.asc
 Source99:       python-M2Crypto.keyring
-# PATCH-FIX-UPSTREAM CVE-2020-25657-Bleichenbacher-attack.patch bsc#1178829 mcepl@suse.com
-# Mitigate the Bleichenbacher timing attacks in the RSA decryption API
-Patch0:         CVE-2020-25657-Bleichenbacher-attack.patch
-# PATCH-FIX-UPSTREAM https://gitlab.com/m2crypto/m2crypto/-/merge_requests/271
-Patch1:         openssl-stop-parsing-header.patch
-# Patch-FIX-OPENSUSE add test skips for openssl 3.x
-Patch2:         https://src.fedoraproject.org/rpms/m2crypto/raw/d7be0dd83ee5a414544d99dcc62cde4ad5998f0c/f/m2crypto-0.38-ossl3-tests.patch
-# PATCH-FIX-UPSTREAM https://gitlab.com/m2crypto/m2crypto/-/merge_requests/284
-Patch3:         openssl-adapt-tests-for-3.1.0.patch
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module parameterized}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module typing}
-BuildRequires:  %{python_module xml}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  openssl
 BuildRequires:  openssl-devel
@@ -93,20 +81,21 @@ Documentation for the Crypto and SSL toolkit for Python
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 %python_expand ls -l %{buildroot}%{$python_sitearch}/M2Crypto/*.so*
 export PYTEST_ADDOPTS="--import-mode=append"
-%pytest_arch tests
+%pyunittest_arch tests
 
 %files %{python_files}
 %doc CHANGES LICENCE README.rst
-%{python_sitearch}/*
+%{python_sitearch}/M2Crypto
+%{python_sitearch}/M2Crypto-%{version}*-info
 
 %files -n %{name}-doc
 %doc doc/*.rst

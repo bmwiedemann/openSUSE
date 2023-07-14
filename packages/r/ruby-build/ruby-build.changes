@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 10 21:41:22 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20230710.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20230710
+  * Bump up the latest versions of OpenSSL by @hsbt in #2216
+
+-------------------------------------------------------------------
 Thu Jun 15 10:59:46 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20230615.

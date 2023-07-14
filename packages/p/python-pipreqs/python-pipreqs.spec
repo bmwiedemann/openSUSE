@@ -1,7 +1,7 @@
 #
 # spec file for package python-pipreqs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,22 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pipreqs
-Version:        0.4.10
+Version:        0.4.13
 Release:        0
 Summary:        Pip requirements generator based on imports in project
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/bndr/pipreqs
 Source:         https://files.pythonhosted.org/packages/source/p/pipreqs/pipreqs-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-docopt
-Requires:       python-setuptools
 Requires:       python-yarg
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module docopt}
@@ -49,16 +49,16 @@ Pip requirements.txt generator based on imports in project.
 chmod a-x pipreqs/pipreqs.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pipreqs
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # Ignore tests that require network access
-%pytest -k 'not (test_get_imports_info or test_ignored_directory or test_init or test_init_overwrite or teset_init_savepath or test_omit_version)'
+%pytest -k 'not (test_get_imports_info or test_ignored_directory or test_init or test_init_overwrite or teset_init_savepath or test_omit_version or test_clean or test_dynamic_version)'
 
 %post
 %python_install_alternative pipreqs
@@ -70,6 +70,7 @@ chmod a-x pipreqs/pipreqs.py
 %doc AUTHORS.rst README.rst
 %license LICENSE
 %python_alternative %{_bindir}/pipreqs
-%{python_sitelib}/*
+%{python_sitelib}/pipreqs
+%{python_sitelib}/pipreqs-%{version}.dist-info
 
 %changelog

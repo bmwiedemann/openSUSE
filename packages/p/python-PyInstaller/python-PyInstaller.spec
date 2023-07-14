@@ -21,7 +21,7 @@
 %bcond_without  test
 %define modname PyInstaller
 Name:           python-PyInstaller
-Version:        5.6.2
+Version:        5.13.0
 Release:        0
 Summary:        Bundle a Python application and all its dependencies into a single package
 License:        GPL-2.0-only
@@ -33,10 +33,10 @@ BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(zlib)
+Requires:       python-altgraph
 Requires:       python-devel
-Requires:       python-macholib >= 1.8
-Requires:       python-pefile >= 2017.8.1
-Requires:       python-setuptools
+Requires:       python-pyinstaller-hooks-contrib >= 2021.4
+Requires:       python-setuptools >= 42.0.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     upx
@@ -46,26 +46,18 @@ BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module QtAwesome}
 BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module altgraph}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module docutils}
-BuildRequires:  %{python_module macholib >= 1.8}
 BuildRequires:  %{python_module opengl}
-BuildRequires:  %{python_module pefile >= 2017.8.1}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pycountry}
-BuildRequires:  %{python_module pyinstaller-hooks-contrib}
+BuildRequires:  %{python_module pyinstaller-hooks-contrib >= 2021.4}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module qt5}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  upx
-%if %{with python2}
-BuildRequires:  python-dis3
-%endif
-%endif
-%ifpython2
-Requires:       python-dis3
 %endif
 %python_subpackages
 

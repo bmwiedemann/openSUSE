@@ -16,9 +16,8 @@
 #
 
 
-%{?sle15_python_module_pythons}
 Name:           python-ujson
-Version:        5.7.0
+Version:        5.8.0
 Release:        0
 Summary:        JSON encoder and decoder for Python
 License:        BSD-3-Clause
@@ -32,11 +31,12 @@ BuildRequires:  double-conversion-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
+%{?sle15_python_module_pythons}
 %python_subpackages
 
 %description
 An ultrafast JSON encoder and decoder written in pure C with
-bindings for Python 2.7 and 3.5+
+bindings for Python 2.7 and 3.8+
 
 %prep
 %setup -q -n ujson-%{version}

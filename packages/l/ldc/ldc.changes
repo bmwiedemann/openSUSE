@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Jul  7 08:32:51 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.32.2:
+  * Big news
+    - New command-line option --fwarn-stack-size=<threshold> with
+      LLVM 13+. (#4378)
+    - New command-line option --fsplit-stack for incremental stack
+      allocations, see https://llvm.org/docs/SegmentedStacks.html. (#4379)
+      - New UDA ldc.attributes.noSplitStack disables it on a per-function
+        basis. (#4382)
+    - New command-line option --indent for the timetrace2txt tool.
+      (#4391)
+  * Bug fixes
+    - Fix potentially huge compile slowdowns with -g and LLVM 15+.
+      (#4354, #4393)
+    - Treat all LLVM warnings as regular warnings (e.g., errors
+      with -w). Requires LLVM 13+. (#4384)
+- Skipped 1.32.1:
+  * Big news
+    - The prebuilt Linux packages are now generated on a Ubuntu 20.04
+      box, so the min required glibc version has been raised from
+      2.26 to 2.31. (#4367)
+  * Bug fixes
+    - Fix empty ldc.gccbuiltins_* modules with LLVM 15+.
+      (#4347, #4350)
+    - Fix v1.31 regression wrt. potentially wrong constant pointer
+      offsets. (#4362, #4365)
+    - Windows: Fix v1.32 regression wrt. leaking Throwable.info
+      backtraces. (#4369)
+    - Fix C assert calls for newlib targets. (#4351)
+
+-------------------------------------------------------------------
+Fri Jul  7 06:25:04 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Do not use %{_includedir}/d to be able to install/use multiple
+  D compilers in parallel - boo#1212913
+
+-------------------------------------------------------------------
 Fri Apr 21 12:52:58 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add specific conflict from runtime-devel to the old/previous

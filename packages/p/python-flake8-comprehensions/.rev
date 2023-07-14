@@ -122,4 +122,13 @@
   * Support Python 3.12.</comment>
     <requestid>1094121</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>06a4f0be8fb1ccafbb848886fe6eb3ca</srcmd5>
+    <version>3.14.0</version>
+    <time>1689175629</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.14.0:
+  * Drop Python 3.7 support.</comment>
+    <requestid>1098178</requestid>
+  </revision>
 </revisionlist>

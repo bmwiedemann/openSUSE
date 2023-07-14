@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  6 11:19:37 UTC 2023 - ecsos <ecsos@opeensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Oct  6 03:45:34 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Update dependency version of graphql-core

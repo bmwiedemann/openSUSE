@@ -17,9 +17,8 @@
 #
 
 
-%{?sle15_python_module_pythons}
 Name:           python-rich
-Version:        13.4.1
+Version:        13.4.2
 Release:        0
 Summary:        A Python library for rich text and beautiful formatting in the terminal
 License:        MIT
@@ -32,21 +31,22 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pygments >= 2.13.0}
 BuildRequires:  %{python_module typing_extensions >= 4.0.0 if %python-base < 3.9}
-BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module pytest}
-# /SECTION
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-markdown-it-py >= 2.2.0
 Requires:       python-pygments >= 2.13.0
 Suggests:       python-ipywidgets >= 7.5.1
+BuildArch:      noarch
+%{?sle15_python_module_pythons}
+# SECTION test requirements
+BuildRequires:  %{python_module pytest}
+# /SECTION
 %if 0%{?python_version_nodots} < 39
 Requires:       python-typing_extensions >= 4.0.0
 %endif
 %if 0%{?python_version_nodots} < 37
 Requires:       python-dataclasses >= 0.7
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %description

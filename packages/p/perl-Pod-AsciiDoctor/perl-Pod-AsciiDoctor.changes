@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul  4 03:07:08 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.101003
+   see /usr/share/doc/packages/perl-Pod-AsciiDoctor/Changes
+
+  0.101003    2023-07-03
+
+      - avoid packaging *.old files.
+          - https://github.com/shlomif/Pod-AsciiDoctor/issues/2
+          - Thanks to @perlpunk
+
+-------------------------------------------------------------------
 Thu May  4 12:24:23 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - updated to 0.101002

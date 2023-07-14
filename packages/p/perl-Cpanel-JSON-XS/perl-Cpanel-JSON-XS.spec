@@ -18,7 +18,7 @@
 
 %define cpan_name Cpanel-JSON-XS
 Name:           perl-Cpanel-JSON-XS
-Version:        4.36
+Version:        4.37
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        CPanel fork of JSON::XS, fast and correct serializing
@@ -49,7 +49,7 @@ and vice versa.
 %prep
 %autosetup  -n %{cpan_name}-%{version}
 
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"

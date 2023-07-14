@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Lingua-EN-Sentence
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Lingua-EN-Sentence
 Name:           perl-Lingua-EN-Sentence
-Version:        0.33
+Version:        0.34
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Split text into sentences
@@ -50,14 +50,14 @@ recognised but not 'mrs.'
 %autosetup  -n %{cpan_name}-%{version}
 
 %build
-perl Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files

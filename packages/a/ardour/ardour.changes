@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 12 11:13:01 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 7.5.0. See https://ardour.org/whatsnew.html
+  New features:
+  * Tempo Map Editing
+  * Saving I/O Connections Per Device
+  * Sections Elements
+  * Loaded plugins can now be renamed in the processor box
+  * Some of the supported control surfaces now get activated
+    automatically upon connection to USB MIDI ports
+
+-------------------------------------------------------------------
 Sat Apr 29 17:47:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 7.4.0. See https://ardour.org/whatsnew.html

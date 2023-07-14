@@ -68,4 +68,12 @@
 - Opencode %make_build to prevent build failure when not defined.</comment>
     <requestid>1061039</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f0ba21f7d52399d3def8f736d4cad815</srcmd5>
+    <version>1.1.0</version>
+    <time>1689083845</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1098145</requestid>
+  </revision>
 </revisionlist>

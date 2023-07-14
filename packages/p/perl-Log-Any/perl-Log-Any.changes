@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun 27 03:07:17 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.716
+   see /usr/share/doc/packages/perl-Log-Any/Changes
+
+  1.716     2023-06-26 14:14:46-05:00 America/Chicago
+
+    [Added]
+
+    - Added a parameter to show stack trace arguments when using the
+      WithStackTrace proxy. Since these arguments may contain sensitive
+      information, they are now removed by default. Thanks @sam-ng and
+      @GrantStreetGroup for submitting this patch! [Github #97]
+
+-------------------------------------------------------------------
 Fri May  5 03:07:05 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.715

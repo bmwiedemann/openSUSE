@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jul  3 11:31:10 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update persistent to version 2.14.5.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Wed Jun 28 18:54:31 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update persistent to version 2.14.5.1.
+  ## 2.14.5.1
+
+  * [#1496](https://github.com/yesodweb/persistent/pull/1496)
+      * Fixes name shadowing error at the generated `keyFromRecordM` function.
+  * [#1505](https://github.com/yesodweb/persistent/pull/1505)
+      * Fixes the comment line parsing rule so that accommodates paragraph breaks.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:52 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

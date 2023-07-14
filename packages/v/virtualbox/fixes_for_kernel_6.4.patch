@@ -1,0 +1,47 @@
+Index: VirtualBox-7.0.8/src/VBox/Additions/linux/sharedfolders/regops.c
+===================================================================
+--- VirtualBox-7.0.8.orig/src/VBox/Additions/linux/sharedfolders/regops.c
++++ VirtualBox-7.0.8/src/VBox/Additions/linux/sharedfolders/regops.c
+@@ -179,7 +179,11 @@ static size_t vbsf_iov_iter_count(struct
+ {
+     size_t              cbRet = 0;
+     size_t              cLeft = iter->nr_segs;
++#if RTLNX_VER_MIN(6, 4, 0)
++    struct iovec const *iov   = iter_iov(iter);
++#else
+     struct iovec const *iov   = iter->iov;
++#endif
+     while (cLeft-- > 0) {
+         cbRet += iov->iov_len;
+         iov++;
+@@ -295,8 +299,12 @@ void vbsf_iov_iter_revert(struct vbsf_io
+     }
+ 
+     while (cbRewind > 0) {
+-        struct iovec const *pIov  = --iter->iov;
+-        size_t const        cbSeg = pIov->iov_len;
++#if RTLNX_VER_MIN(6, 4, 0)
++    	struct iovec const *pIov  = --iter_iov(iter);
++#else
++    	struct iovec const *pIov  = --iter->iov;
++#endif
++   	size_t const        cbSeg = pIov->iov_len;
+         iter->nr_segs++;
+ 
+         Assert((uintptr_t)pIov >= (uintptr_t)iter->iov_org);
+@@ -2399,9 +2407,13 @@ static size_t vbsf_iter_max_span_of_page
+ # if RTLNX_VER_MIN(3,16,0)
+     if (iter_is_iovec(iter) || (VBSF_GET_ITER_TYPE(iter) & ITER_KVEC)) {
+ # endif
++#if RTLNX_VER_MIN(6, 4, 0)
++        const struct iovec *pCurIov    = iter_iov(iter);
++#else
+         const struct iovec *pCurIov    = iter->iov;
+-        size_t              cLeft      = iter->nr_segs;
+-        size_t              cPagesSpan = 0;
++#endif
++	size_t              cLeft      = iter->nr_segs;
++	size_t              cPagesSpan = 0;
+ 
+         /* iovect and kvec are identical, except for the __user tagging of iov_base. */
+         AssertCompileMembersSameSizeAndOffset(struct iovec, iov_base, struct kvec, iov_base);

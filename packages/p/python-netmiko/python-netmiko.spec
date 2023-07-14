@@ -1,7 +1,7 @@
 #
 # spec file for package python-netmiko
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-netmiko
 Version:        4.1.2
 Release:        0
@@ -30,11 +29,15 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
+Requires:       python-ntc-templates
 Requires:       python-paramiko >= 2.6.0
 Requires:       python-pyserial
 Requires:       python-scp >= 0.13.2
+Requires:       python-setuptools
 Requires:       python-tenacity
 Requires:       python-textfsm >= 1.1.2
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
@@ -89,6 +92,7 @@ sed -i -e '/^#!\//, 1d' \
 %python_alternative %{_bindir}/netmiko-cfg
 %python_alternative %{_bindir}/netmiko-grep
 %python_alternative %{_bindir}/netmiko-show
-%{python_sitelib}/*
+%{python_sitelib}/netmiko
+%{python_sitelib}/netmiko-%{version}*-info
 
 %changelog

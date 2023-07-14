@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 10 12:13:31 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Feb 27 03:01:54 UTC 2023 - John Vandenberg <jayvdb@gmail.com>
 
 - Add pr_159.patch for testing under Python 3.11

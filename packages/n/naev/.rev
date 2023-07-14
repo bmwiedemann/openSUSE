@@ -117,4 +117,12 @@
   * Fixed potential memory issues on some platforms (forwarded request 1082276 from Kieltux)</comment>
     <requestid>1082282</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e126f7da82a16dd8cf4fe16a5ed66384</srcmd5>
+    <version>0.10.6</version>
+    <time>1689175633</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1098179</requestid>
+  </revision>
 </revisionlist>

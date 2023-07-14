@@ -147,4 +147,17 @@
   * Improve B033 (duplicate set items)</comment>
     <requestid>1092178</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c74e6303658046ef9edf6bde56f34b99</srcmd5>
+    <version>23.7.10</version>
+    <time>1689175644</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 23.7.10:
+  * Add B034: re.sub/subn/split must pass flags/count/maxsplit as
+    keyword arguments.
+  * Fix a crash and several test failures on Python 3.12, all
+    relating to the B907 * check.
+  * Declare support for Python 3.12.</comment>
+    <requestid>1098207</requestid>
+  </revision>
 </revisionlist>

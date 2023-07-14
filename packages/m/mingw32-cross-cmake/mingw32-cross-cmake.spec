@@ -17,7 +17,7 @@
 
 
 Name:           mingw32-cross-cmake
-Version:        1.1.2
+Version:        1.1.3
 Release:        0
 Summary:        Cross build support for CMake
 License:        BSD-3-Clause
@@ -54,7 +54,7 @@ with cross compiled binaries.
 mkdir -p %{buildroot}%{_rpmmacrodir}
 cp %{SOURCE1} %{buildroot}%{_rpmmacrodir}/macros.mingw32-cmake
 mkdir -p %{buildroot}%{_bindir}
-ln -s ../lib/mingw32-scripts %{buildroot}%{_bindir}/mingw32-cmake
+ln -s %{_libexecdir}/mingw32-scripts %{buildroot}%{_bindir}/mingw32-cmake
 
 # cmake support
 install -m 0755 %{SOURCE2} %{buildroot}%{_rpmconfigdir}

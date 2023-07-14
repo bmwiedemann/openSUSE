@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Wed Jul  5 10:49:41 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.10.9:
+  + Fixed:
+    - mp4mux/fmp4mux: Fix byte order in Opus extension box.
+    - webrtcsrc: Add twcc extension to the codec-preferences when
+      present.
+    - webrtcsink: Don't try using cudaconvert if it is not present.
+    - mccparse: Don't offset the first timecode to a zero PTS.
+    - Correctly use MPL as license specifier instead of MPL-2 for
+      plugins that compile with GStreamer < 1.20.
+  + Added: fallbackswitch: Add stop-on-eos property.
+- Changes from version 0.10.8:
+  + Fixed:
+    - fmp4mux:
+      . Use updated start PTS when checking if a stream is filled
+        instead of a stale one.
+      . Fix various issues with stream gaps, especially in the
+        beginning.
+      . Fix waiting in live pipelines.
+    - uriplaylistbin: Prevent deadlocks during property
+      notifications.
+    - webrtcsink: Fix panics during twcc-stats callback and related
+      issues.
+    - awstranscriber: Handle stream disconts correctly.
+    - roundedcorners: Fix caps negotiation to not use I420 if a
+      border radius is configured.
+    - whipsink: Use the correct pad template to request pads from
+      the internal webrtcbin.
+    - fallbacksrc: Don't apply fallback audio caps to the main
+      stream.
+    - webrtcsrc: Fix caps handling during transceiver creation.
+  + Changed: rtpgccbwe: Improve packet handling.
+- Changes from version 0.10.7:
+  + Fixed:
+    - ffv1dec: Drop rank until the implementation is
+      feature-complete.
+    - spotifyaudiosrc: Check cached credentials before use and fix
+      usage of credentials cache.
+    - tttocea608: Specify raw CEA608 field.
+    - gtk4paintablesink: Fix compilation on non-Linux UNIX systems.
+    - webrtcsrc: Don't set stun-server to the empty string if none
+      was set.
+    - webrtcsink: Abort statistics collection before stopping the
+      signaller.
+    - rtpgccbwe: Don't process empty lists.
+  + Changed:
+    - ndi: Update to libloading 0.8.
+    - aws: Update to AWS SDK 0.55/0.27.
+    - webrtcsink: Order pads by serial number.
+    - Update to async-tungstenite 0.22.
+  + Added: webrtcsink/webrtcsrc: Add request-encoded-filter signal
+    to add support for inserting custom filters between
+    encoder/payloader or depayloader/decoder. This allows
+    interacting with the "insertable streams" API from Chrome.
+- Disable cargo audit service for now, something is not working
+  correctly in the service.
+- Use %build_rustflags instead of the deprecated
+  %__default_rustflags macro. Requires at least cargo-packaging
+  1.2.0+3.
+
+-------------------------------------------------------------------
 Wed Apr 12 11:50:33 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.10.6:

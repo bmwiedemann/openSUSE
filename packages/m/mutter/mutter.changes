@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul  6 18:10:34 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.3:
+  + Ensure preferred monitor mode is always included.
+  + Avoid rapidly toggling dynamic max render time.
+  + Fix dynamic max render time blocking with direct scanout.
+  + Misc. bug fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Jun 05 07:34:52 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 44.2:

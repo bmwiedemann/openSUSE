@@ -24,28 +24,37 @@ Summary:        Python wrapper around NXP LIBUSBSIO library
 License:        BSD-3-Clause
 URL:            https://www.nxp.com/design/software/development-software/library-for-windows-macos-and-ubuntu-linux:LIBUSBSIO
 Source:         https://files.pythonhosted.org/packages/source/l/libusbsio/libusbsio-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+Source2:        https://www.nxp.com/downloads/en/libraries/libusbsio-%{version}-src.zip
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
-BuildRequires:  libudev1
-BuildRequires:  libusb
 # /SECTION
 BuildRequires:  %{python_module setuptools >= 42.0}
 BuildRequires:  %{python_module wheel >= 0.36.2}
-BuildRequires:  fdupes
 BuildRequires:  dos2unix
+BuildRequires:  fdupes
+BuildRequires:  unzip
+BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(libusb-1.0)
 %python_subpackages
 
 %description
 Python wrapper around NXP LIBUSBSIO library
 
 %prep
-%setup -q -n libusbsio-%{version}
+%setup -q -n libusbsio-%{version} -b 2
+rm -f libusbsio/bin/*/libusbsio*
 
 %build
+pushd ../libusbsio-%{version}-src
+export CFLAGS="%{optflags}"
+%make_build
+popd
+mkdir -p libusbsio/bin/linux_$(uname -m)
+cp ../libusbsio-%{version}-src/bin/linux_$(uname -m)/libusbsio*.so libusbsio/bin/linux_$(uname -m)
 %pyproject_wheel
 dos2unix README.md
 

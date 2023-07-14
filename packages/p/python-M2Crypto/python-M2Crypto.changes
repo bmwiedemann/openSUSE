@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Jul  4 19:21:57 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.39.0:
+  - SUPPORT FOR PYTHON 2 HAS BEEN DEPRECATED AND IT WILL BE
+    COMPLETELY REMOVED IN THE NEXT RELEASE.
+  - Remove dependency on parameterized and use unittest.subTest
+    instead.
+  - Upgrade embedded six.py module to 1.16.0 (really tiny
+    inconsequential changes).
+  - Make tests working on MacOS again (test_bio_membuf: Use fork)
+  - Use OpenSSL_version_num() instead of unrealiable parsing of
+    .h file.
+  - Mitigate the Bleichenbacher timing attacks in the RSA
+    decryption API (CVE-2020-25657)
+  - Add functionality to extract EC key from public key + Update
+    tests
+  - Worked around compatibility issues with OpenSSL 3.*
+  - Support for Twisted has been deprecated (they have their own
+    SSL support anyway).
+  - Generate TAP while testing.
+  - Stop using GitHub for testing.
+  - Accept a small deviation from time in the testsuite (for
+    systems with non-standard HZ kernel parameter).
+  - Use the default BIO.__del__ rather tha overriding in BIO.File
+    (avoid a memleak).
+  - Resolve "X509_Name.as_der() method from X509.py -> class
+    X509_Name caused segmentation fault"
+- Remove upstreamed patches:
+  - CVE-2020-25657-Bleichenbacher-attack.patch
+  - m2crypto-0.38-ossl3-tests.patch
+  - openssl-adapt-tests-for-3.1.0.patch
+  - openssl-stop-parsing-header.patch
+  - timeout_300hz.patch
+
+-------------------------------------------------------------------
+Tue Jun 27 10:51:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- add timeout_300hz.patch to accept a small deviation from time
+  in the testsuite (bsc#1212757)
+
+-------------------------------------------------------------------
 Thu Mar 16 10:35:33 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Adapt tests for OpenSSL v3.1.0

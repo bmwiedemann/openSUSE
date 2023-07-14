@@ -172,4 +172,13 @@ use private glib API but implement a share memory mkstemp</comment>
     <comment>- Replace transitional %usrmerged macro with regular version check (boo#1206798) (forwarded request 1051492 from lnussel)</comment>
     <requestid>1057034</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e8ce05e9e1901367b544826219c0e66e</srcmd5>
+    <version>2.27</version>
+    <time>1689083788</time>
+    <user>anag+factory</user>
+    <comment>- Fix big endian cast problems to be able to read commands
+  and ansers (blogctl) as well as passphrases (blogd)</comment>
+    <requestid>1097973</requestid>
+  </revision>
 </revisionlist>

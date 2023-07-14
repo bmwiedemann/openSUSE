@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jul 10 21:10:45 UTC 2023 - malcolmlewis@opensuse.org
+
+- Update to version 0.8.0.10.git+a247baf:
+  * rasdaemon: Add support for the CXL AER correctable errors.
+  * rasdaemon: Add support for the CXL AER uncorrectable errors.
+  * rasdaemon: Add support for the CXL poison events.
+  * rasdaemon: Move definition for BIT and BIT_ULL to a common
+    file.
+  * rasdaemon: fix table create if some cpus are offline.
+  * rasdaemon: Fix poll() on per_cpu trace_pipe_raw blocks
+    indefinitely.
+  * ras-mc-ctl: add option to exclude old events from reports.
+  * configure.ac: fix bashisms.
+  * ci.yml: fix workflow to build rasdaemon.
+  * ChangeLog: do some minor updates.
+  * labels/asrock: add X399D8A-2T.
+  * Convert README to markdown format.
+
+-------------------------------------------------------------------
 Wed Feb 01 13:35:51 UTC 2023 - malcolmlewis@opensuse.org
 
 - Update to version 0.7.0.7.git+24204af:

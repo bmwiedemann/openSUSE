@@ -62,7 +62,7 @@ Recommends:     xorg-x11-server-wayland
 %endif
 Recommends:     swaybar
 Recommends:     swaynag
-Requires:       xdg-desktop-portal-wlr
+Recommends:     xdg-desktop-portal-wlr
 
 %description
 "SirCmpwn's Wayland window manager" is a work in progress i3-compatible window

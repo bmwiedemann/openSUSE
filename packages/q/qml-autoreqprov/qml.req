@@ -53,6 +53,11 @@ foundDependency() {
 
 # TODO: Get exit status of qmlimportscanner
 while read import min; do
+	# For imports without minor version like "import org.kde.kirigami 2",
+	# the minor version is reported as 255. Treat that as 0 instead.
+	if [ $min -eq 255 ]; then
+		min=0
+	fi
 	foundDependency "qt${qtver}qmlimport(${import})" "$min"
 done < <(grep -vE '/designer/.*\.qml' | xargs -r "$importscanner" -qmlFiles | jq -r '.[] | select(.type == "module") | .name + " " + .version' | gawk 'match($2, /^([0-9]+)\.([0-9]+)$/, ver) { printf "%s.%d %d\n", $1, ver[1], ver[2]; }')
 

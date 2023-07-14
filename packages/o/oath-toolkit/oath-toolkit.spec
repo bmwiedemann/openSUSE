@@ -1,7 +1,7 @@
 #
 # spec file for package oath-toolkit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{!?_pam_moduledir: %define _pam_moduledir /%{_lib}/security}
 Name:           oath-toolkit
-Version:        2.6.7
+Version:        2.6.8
 Release:        0
 Summary:        Toolkit for one-time password authentication systems
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later

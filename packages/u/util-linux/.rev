@@ -2480,4 +2480,12 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
   both util-linux and kernel fixes (gh#util-linux/util-linux#2287) (forwarded request 1094801 from favogt)</comment>
     <requestid>1094821</requestid>
   </revision>
+  <revision rev="272" vrev="2">
+    <srcmd5>4b5950f1f84ed47533d8309b1c1596c0</srcmd5>
+    <version>2.39</version>
+    <time>1689175601</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1097977</requestid>
+  </revision>
 </revisionlist>

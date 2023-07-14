@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jul  8 20:35:13 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.8.0:
+  * Added
+    + Build wheel for Python 3.12 beta (built against 3.12.0b2) (#594)
+      @hugovk
+  * Changed
+    + Drop support for Python 3.7 (#595) @hugovk
+  * Fixed
+    + Include BSD-3-Clause and TCL license text (#584) @musicinmybrain
+
+-------------------------------------------------------------------
 Sat Jun 10 17:33:30 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

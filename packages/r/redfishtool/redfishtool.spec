@@ -1,7 +1,7 @@
 #
 # spec file for package redfishtool
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,6 +28,7 @@ Source:         https://github.com/DMTF/Redfishtool/archive/%{version}.tar.gz#/%
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
+Requires:       python3-dateutils
 Requires:       python3-requests
 BuildArch:      noarch
 

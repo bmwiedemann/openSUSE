@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 11 14:19:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.3:
+  * Confirms support for Django 4.2.
+  * Adds a missing migration with HTTP status codes.
+
+-------------------------------------------------------------------
 Sat Jan 28 09:48:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.2:

@@ -17,8 +17,8 @@
 # needssslcertforbuild
 
 
-%define srcversion 6.3
-%define patchversion 6.3.9
+%define srcversion 6.4
+%define patchversion 6.4.2
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -112,9 +112,9 @@ Name:           kernel-zfcpdump
 Summary:        The IBM System Z zfcpdump Kernel
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.3.9
+Version:        6.4.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g0df701d
+Release:        <RELEASE>.gb97b894
 %else
 Release:        0
 %endif
@@ -134,8 +134,9 @@ BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-devel
 %endif
-%if 0%{?suse_version} > 1310
 BuildRequires:  hmaccalc
+%if 0%{?suse_version} > 1500
+BuildRequires:  jq
 %endif
 BuildRequires:  libopenssl-devel
 BuildRequires:  modutils
@@ -244,10 +245,10 @@ Obsoletes:      microcode_ctl < 1.18
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-0df701dd2c208f4843cf219b4b26b533ada9bd34
-Provides:       kernel-srchash-0df701dd2c208f4843cf219b4b26b533ada9bd34
+Provides:       kernel-%build_flavor-base-srchash-b97b89494481f3409297e494e466bdd42b1311ab
+Provides:       kernel-srchash-b97b89494481f3409297e494e466bdd42b1311ab
 # END COMMON DEPS
-Provides:       %name-srchash-0df701dd2c208f4843cf219b4b26b533ada9bd34
+Provides:       %name-srchash-b97b89494481f3409297e494e466bdd42b1311ab
 %obsolete_rebuilds %name
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
@@ -505,10 +506,6 @@ cd linux-%srcversion
 	--vanilla \
 %endif
 	%_sourcedir/series.conf .. $SYMBOLS
-%if 0%{?usrmerged}
-# fix MODLIB so kmps install to /usr
-sed -ie 's,/lib/modules/,%{kernel_module_directory}/,' Makefile scripts/depmod.sh
-%endif
 
 cd %kernel_build_dir
 
@@ -1349,8 +1346,8 @@ Obsoletes:      microcode_ctl < 1.18
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-0df701dd2c208f4843cf219b4b26b533ada9bd34
-Provides:       kernel-srchash-0df701dd2c208f4843cf219b4b26b533ada9bd34
+Provides:       kernel-%build_flavor-base-srchash-b97b89494481f3409297e494e466bdd42b1311ab
+Provides:       kernel-srchash-b97b89494481f3409297e494e466bdd42b1311ab
 
 %obsolete_rebuilds %name-base
 %ifarch %ix86
@@ -1583,6 +1580,9 @@ Requires:       kernel-devel%variant = %version-%source_rel
 Recommends:     make
 Recommends:     gcc
 Recommends:     perl
+%if 0%{?suse_version} > 1500
+Requires:       jq
+%endif
 # for objtool
 Requires:	libelf-devel
 Supplements:    packageand(%name:kernel-devel%variant)

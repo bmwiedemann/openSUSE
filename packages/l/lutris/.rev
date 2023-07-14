@@ -420,4 +420,12 @@
 - Drop fix-float-str-concat.patch</comment>
     <requestid>1087508</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>1b5f8ad1e060079795aa1dcf48b61543</srcmd5>
+    <version>0.5.13</version>
+    <time>1689175695</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1098366</requestid>
+  </revision>
 </revisionlist>

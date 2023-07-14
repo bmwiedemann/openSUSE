@@ -105,4 +105,16 @@
     <comment></comment>
     <requestid>1096281</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f121555e2438d56db6e1d25c240c929c</srcmd5>
+    <version>2.11.6</version>
+    <time>1689175643</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.11.6:
+  * handle multipart/form-data correctly for more than one file and with params/data
+  * keywords not handled correctly at command level
+  * added after openapi review
+  * added deprecated processing, now shows version</comment>
+    <requestid>1098206</requestid>
+  </revision>
 </revisionlist>

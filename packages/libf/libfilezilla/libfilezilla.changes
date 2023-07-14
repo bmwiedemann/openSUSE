@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul 12 05:17:46 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.44.0
+  * New features:
+    - Exportable hash accumulator state
+    - Add for RSA key support for JWS
+    - JWT creation
+    - Conversion functions from X.509 private keys to JWK
+  * Bugfixes and minor changes:
+    - Added logging when certificate is untrusted by system trust store
+- Changes from 0.43.0
+  * New features:
+    - Added fz::tls_layer::generate_cert_from_csr
+  * Bugfixes and minor changes:
+    - fz::event_loop performance improvements when timers are in use
+
+-------------------------------------------------------------------
 Sat Jun  3 09:23:21 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.42.2

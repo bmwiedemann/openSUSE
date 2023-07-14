@@ -27,6 +27,8 @@ Source:         https://nice.freedesktop.org/releases/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM libnice-port-gupnp-igd-bump.patch -- Port to new gupnp-igd
 Patch1:         libnice-port-gupnp-igd-bump.patch
+# PATCH-FIX-UPSTREAM 4b63250c.patch -- agent/meson: Replace filename with basename
+Patch2:         https://gitlab.freedesktop.org/libnice/libnice/-/commit/4b63250c.patch
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig

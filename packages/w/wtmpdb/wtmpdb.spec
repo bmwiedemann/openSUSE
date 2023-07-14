@@ -18,12 +18,12 @@
 
 %define lname   libwtmpdb0
 Name:           wtmpdb
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
-Summary:        Reports last logged in users and system reboots
+Summary:        Database for recording the last logged in users and system reboots
 License:        BSD-2-Clause
 URL:            https://github.com/thkukuk/wtmpdb
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/thkukuk/wtmpdb/releases/download/v0.7.1/%{name}-%{version}.tar.xz
 BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -32,33 +32,42 @@ BuildRequires:  pkgconfig(pam)
 BuildRequires:  pkgconfig(sqlite3)
 Requires(post): pam-config
 Requires(postun):pam-config
+# Split provide for last
+Provides:       util-linux:/usr/bin/last
 
 %description
-pam_wtmpdb and wtmpdb are Y2038 safe versions of wtmp and the last utility. pam_wtmpdb collects all data in a sqlite3 database and wtmpdb creates boot and shutdown entries or formats and prints the contents of the wtmp database.
+pam_wtmpdb and wtmpdb are Y2038-safe versions of wtmp and the last
+utility. pam_wtmpdb collects all data in a sqlite3 database and the
+wtmpdb utility creates boot and shutdown entries or formats and
+prints the contents of the wtmp database.
 
 %package -n %{lname}
 Summary:        PAM module to store login and logout of users
 
 %description -n %{lname}
-The libwtmpdb provides various interfaces to read, write or modify the wtmpdb database.
+The libwtmpdb provides various interfaces to read, write or modify
+the wtmpdb database.
 
 %package devel
 Summary:        Development files for libwtmpdb
 Requires:       %{lname} = %{version}
 
 %description devel
-This package contains all necessary include files and libraries needed
-to develop applications that needs to read, write or modify the wtmpdb database.
+This package contains all necessary include files and libraries
+needed to develop applications that needs to read, write or modify
+the wtmpdb database.
 
 %prep
-%setup -q
+%autosetup
 
 %build
-%meson -Dman=true
+%meson -Dman=true -Dcompat-symlink=true
 %meson_build
 
 %install
 %meson_install
+mkdir -p %{buildroot}%{_mandir}/man1
+echo ".so wtmpdb.8" > %{buildroot}%{_mandir}/man1/last.1
 
 %check
 %meson_test
@@ -86,6 +95,7 @@ fi
 
 %files
 %license LICENSE
+%{_bindir}/last
 %{_bindir}/wtmpdb
 %{_unitdir}/wtmpdb-update-boot.service
 %{_unitdir}/wtmpdb-rotate.service
@@ -93,6 +103,7 @@ fi
 %{_tmpfilesdir}/wtmpdb.conf
 %{_pam_moduledir}/pam_wtmpdb.so
 %ghost %{_localstatedir}/lib/wtmpdb
+%{_mandir}/man1/last.1%{?ext_man}
 %{_mandir}/man8/wtmpdb.8%{?ext_man}
 %{_mandir}/man8/pam_wtmpdb.8%{?ext_man}
 

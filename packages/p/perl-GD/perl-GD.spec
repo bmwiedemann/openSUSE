@@ -18,10 +18,10 @@
 
 %define cpan_name GD
 Name:           perl-GD
-Version:        2.76
+Version:        2.78
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Summary:        Perl interface to the gd2 graphics library
+Summary:        Perl interface to the libgd graphics library
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RU/RURBAN/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -32,10 +32,7 @@ BuildRequires:  perl(ExtUtils::Constant) >= 0.22
 BuildRequires:  perl(ExtUtils::PkgConfig)
 BuildRequires:  perl(Test::Fork) >= 0.02
 BuildRequires:  perl(Test::More) >= 0.88
-Recommends:     perl(ExtUtils::Constant) >= 0.23
-Recommends:     perl(ExtUtils::PkgConfig)
-Recommends:     perl(Test::Fork) >= 0.02
-Recommends:     perl(Test::More) >= 0.88
+BuildRequires:  perl(Test::NoWarnings) >= 1.00
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  gd-devel >= 2.0.28
@@ -51,7 +48,7 @@ files.
 %prep
 %autosetup  -n %{cpan_name}-%{version} -p1
 
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"

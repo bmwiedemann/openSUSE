@@ -26,6 +26,7 @@
 %endif
 %define         github_user corenting
 %define         short_name immutabledict
+%{?sle15_python_module_pythons}
 Name:           python-%{short_name}%{psuffix}
 Version:        2.2.5
 Release:        0

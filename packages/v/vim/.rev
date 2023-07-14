@@ -7155,4 +7155,12 @@ always built-in because vim has direct perl dependencies anyway.
   * Cursor not adjusted when near top or bottom of window and 'splitkeep'</comment>
     <requestid>1093248</requestid>
   </revision>
+  <revision rev="352" vrev="2">
+    <srcmd5>2e7295495e6c2fbe641ce9f6322a86f1</srcmd5>
+    <version>9.0.1632</version>
+    <time>1689175595</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1098182</requestid>
+  </revision>
 </revisionlist>

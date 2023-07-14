@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 11 14:10:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.7.10:
+  * Add B034: re.sub/subn/split must pass flags/count/maxsplit as
+    keyword arguments.
+  * Fix a crash and several test failures on Python 3.12, all
+    relating to the B907 * check.
+  * Declare support for Python 3.12.
+
+-------------------------------------------------------------------
 Sun Jun 11 09:17:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.6.5:

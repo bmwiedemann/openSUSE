@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Jul 10 08:22:47 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 23.07.00:
+  * lib: fwts_version.h - update to V23.07.00
+  * debian: update changelog
+  * debian: fix lintian errors and warnings
+  * debian: fix debuild fail for the not installed files
+  * debian: update compat level and standards version
+  * ACPICA: Update to version 20230628
+  * fwts_acpica: Remove unused variable "context"
+  * acpi/wmi: Fix bug when counting WMI methods
+  * acpi/wmi: Check if the mandatory block query method exists
+  * acpi/wmi: Add WMI GUID for the dell-wmi-ddv driver
+  * Increase number of max semaphores to fix OOM crashes on some systems
+  * lib: fwts_acpi_object_eval: sync up the AML exceptions from ACPICA
+  * uefi: esrt: update the LastAttemptStatus values to UEFI spec 2.10
+  * acpi: mpam: fix build fail on bionic
+  * fwts-test: sync up with test with resource specific data
+  * acpi: mpam: test with resource specific data for interconnect location type
+  * fwts-test: sync up with adding the mpam tests
+  * acpi: mpam: add test for ACPI MPAM table
+  * fwts-test: sync up aest modify the dumping raw data
+  * acpi: aest: modify the dumping raw data without noisy info
+  * lib: fwts_dump_data: add library function for dumping all raw data with prefix
+  * lib: fwts_dump_data: add function for simply dump raw data
+  * auto-packager: mkpackage.sh: remove the control hook
+  * lib: make the return types consistent
+  * debian: control: modify newer dkms dependency
+  * debian: control: update uploader
+  * lib: fwts_oops: fix the WARN_ON warnings in kernel not found
+  * cppcheck: fix the cppcheck source link error
+  * fwts-test: sync up the removing ARM specific for ebbr
+  * lib: framework: remvoe ARM specific for ebbr
+
+-------------------------------------------------------------------
 Wed May 24 07:10:41 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 23.05.00:

@@ -1,7 +1,7 @@
 #
 # spec file for package fake-gcs-server
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,16 +21,16 @@
 %global provider_prefix github.com/fsouza/fake-gcs-server/fakestorage
 %global import_path     %{provider_prefix}
 Name:           fake-gcs-server
-Version:        1.32.2
+Version:        1.45.2
 Release:        0
 Summary:        Google Cloud Storage emulator & testing library
 License:        BSD-2-Clause
 URL:            https://github.com/fsouza/fake-gcs-server
 Source0:        https://github.com/fsouza/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
+BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  xz
-BuildRequires:  fdupes
 %{go_nostrip}
 %{go_provides}
 

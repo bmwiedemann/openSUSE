@@ -1,4 +1,4 @@
-From f871287c2816f989f8d61ac4e3ef4efedbd473d5 Mon Sep 17 00:00:00 2001
+From e8c616bd70a9b1bc9a087c9832c9ee2c77e51806 Mon Sep 17 00:00:00 2001
 From: Guillaume Gardet <guillaume.gardet@arm.com>
 Date: Wed, 5 Apr 2023 14:25:29 +0200
 Subject: [PATCH] Kconfig: add btrfs to distro boot
@@ -13,10 +13,10 @@ Signed-off-by: Matthias Brugger <mbrugger@suse.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/boot/Kconfig b/boot/Kconfig
-index ad035695a4..f462ab0e88 100644
+index a643a3d128..d180dd2a9c 100644
 --- a/boot/Kconfig
 +++ b/boot/Kconfig
-@@ -838,6 +838,7 @@ config DISTRO_DEFAULTS
+@@ -875,6 +875,7 @@ config DISTRO_DEFAULTS
  	select CMD_SYSBOOT
  	select HUSH_PARSER
  	select SYS_LONGHELP

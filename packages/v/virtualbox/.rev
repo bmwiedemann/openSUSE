@@ -2469,4 +2469,12 @@ Linux hosts and guests: fix for building kernel modules against Linux 5.0. Thank
     <comment></comment>
     <requestid>1093157</requestid>
   </revision>
+  <revision rev="260" vrev="6">
+    <srcmd5>a33db1056094cf4b48051b4449ce4954</srcmd5>
+    <version>7.0.8</version>
+    <time>1689083802</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1095690</requestid>
+  </revision>
 </revisionlist>

@@ -21,7 +21,7 @@
 %define _rpm_macros_dir %{_rpmconfigdir}/macros.d
 
 Name:           mingw64-cross-wine
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Wine cross runtime
 License:        GPL-2.0-or-later
@@ -67,9 +67,9 @@ mkdir -p %{buildroot}%{_rpm_macros_dir}
 cp %{_sourcedir}/macros %{buildroot}%{_rpm_macros_dir}/macros.mingw64-cross-wine
 cp %{_sourcedir}/wine.sh %{buildroot}%{_rpmconfigdir}/mingw64-cross-wine-wine.sh
 mkdir -p %{buildroot}%{_bindir}
-ln -s ../lib/mingw64-scripts %{buildroot}%{_bindir}/mingw64-cross-wine-init
-ln -s ../lib/mingw64-scripts %{buildroot}%{_bindir}/mingw64-cross-wine-run
-ln -s ../lib/mingw64-scripts %{buildroot}%{_bindir}/mingw64-cross-wine-start-session
+ln -s %{_libexecdir}/mingw64-scripts %{buildroot}%{_bindir}/mingw64-cross-wine-init
+ln -s %{_libexecdir}/mingw64-scripts %{buildroot}%{_bindir}/mingw64-cross-wine-run
+ln -s %{_libexecdir}/mingw64-scripts %{buildroot}%{_bindir}/mingw64-cross-wine-start-session
 
 %if %{?_with_dns}
 %post

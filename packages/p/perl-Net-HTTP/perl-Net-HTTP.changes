@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun 17 03:07:47 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.23
+   see /usr/share/doc/packages/perl-Net-HTTP/Changes
+
+  6.23      2023-06-16 11:46:01Z
+      - Don't treat HTTP header names as case sensitive in test (GH#81) (Olaf
+        Alders)
+
+-------------------------------------------------------------------
 Sat Jan 22 03:07:01 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.22

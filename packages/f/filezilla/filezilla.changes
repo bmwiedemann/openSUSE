@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jul 12 05:18:30 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.65.0
+  * New features:
+    - Comparative search can now also be used if sorted by path
+  * Bugfixes and minor changes:
+    - Fixed an issue in comparative search in directories with
+      uppercase letters
+- Changes from 3.65.0-rc1
+  * Bugfixes and minor changes:
+    - Fixed potential crashes
+    - Updated to libfilezilla 0.44.0
+
+-------------------------------------------------------------------
 Sat Jun  3 09:17:39 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.64.0

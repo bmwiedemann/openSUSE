@@ -1,0 +1,139 @@
+Description: lintian detects some issues with these manpages
+Author: Thorsten Alteholz <debian@alteholz.de>
+Index: uucp-1.07/contrib/uurate.man
+===================================================================
+---
+ uucico.8 |    6 +++---
+ uucp.1   |    4 ++--
+ uustat.1 |   12 ++++++------
+ uux.1    |    4 ++--
+ uuxqt.8  |    2 +-
+ 5 files changed, 14 insertions(+), 14 deletions(-)
+
+--- uucico.8
++++ uucico.8	2019-01-12 18:51:27.927352540 +0000
+@@ -58,7 +58,7 @@ If a call fails,
+ .I uucico
+ will normally refuse to retry the
+ call until a certain (configurable) amount of time
+-has passed.  This may be overriden by the
++has passed.  This may be overridden by the
+ .B -f,
+ .B --force,
+ or
+@@ -180,11 +180,11 @@ After calling out (to a particular syste
+ .B \-\-system,
+ or 
+ .B \-S
+-is specifed, or to all systems which have work when just
++is specified, or to all systems which have work when just
+ .B \-r1
+ or
+ .B \-\-master
+-is specifed), begin an endless loop as with
++is specified), begin an endless loop as with
+ .B \-\-loop.
+ .TP 5
+ .B \-q, \-\-nouuxqt
+--- uucp.1
++++ uucp.1	2019-01-12 18:52:26.547350782 +0000
+@@ -69,10 +69,10 @@ removed before being processed by the
+ .I uucico
+ (8) daemon, the copy will fail.  The files must be readable by the
+ .I uucico
+-(8) daemon, and by the invoking user.
++(8) daemon, and by the invoking user.   This is the default.
+ .TP 5
+ .B \-C, \-\-copy
+-Copy local source files to the spool directory.  This is the default.
++Copy local source files to the spool directory.
+ .TP 5
+ .B \-d, \-\-directories
+ Create all necessary directories when doing the copy.  This is the
+--- uustat.1
++++ uustat.1	2019-01-12 18:51:27.927352540 +0000
+@@ -406,7 +406,7 @@ Print a help message and exit.
+ .SH EXAMPLES
+ .br
+ .nf
+-uustat --all
++uustat \-\-all
+ .fi
+ Display status of all jobs.  A sample output line is as follows:
+ .br
+@@ -443,7 +443,7 @@ options may be used to control which job
+ 
+ .br
+ .nf
+-uustat --executions
++uustat \-\-executions
+ .fi
+ Display status of queued up execution requests.  A sample output line
+ is as follows:
+@@ -474,7 +474,7 @@ options may be used to control which req
+ 
+ .br
+ .nf
+-uustat --list
++uustat \-\-list
+ .fi
+ Display status for all systems with queued up commands.  A sample
+ output line is as follows:
+@@ -491,7 +491,7 @@ and the status of that conversation.
+ 
+ .br
+ .nf
+-uustat --status
++uustat \-\-status
+ .fi
+ Display conversation status for all remote systems.  A sample output
+ line is as follows:
+@@ -511,7 +511,7 @@ also displays the time when the next cal
+ 
+ .br
+ .nf
+-uustat --ps
++uustat \-\-ps
+ .fi
+ Display the status of all processes holding UUCP locks.  The output
+ format is system dependent, as
+@@ -523,7 +523,7 @@ simply invokes
+ .br
+ .in +0.5i
+ .nf
+-uustat --command rmail --older-than 168 --kill-all --no-list --mail --notify --comment "Queued for over 1 week"
++uustat \-\-command rmail \-\-older\-than 168 \-\-kill\-all \-\-no\-list \-\-mail \-\-notify \-\-comment "Queued for over 1 week"
+ .fi
+ .in -0.5i
+ This will kill all
+--- uux.1
++++ uux.1	2019-01-12 18:51:27.931352540 +0000
+@@ -204,7 +204,7 @@ Print a help message and exit.
+ .SH EXAMPLES
+ .br
+ .nf
+-uux -z - sys1!rmail user1
++uux \-z \- sys1!rmail user1
+ .fi
+ Execute the command ``rmail user1'' on the system sys1, giving it as
+ standard input whatever is given to
+@@ -215,7 +215,7 @@ as standard input.  If a failure occurs,
+ 
+ .br
+ .nf
+-uux 'diff -c sys1!~user1/file1 sys2!~user2/file2 >!file.diff'
++uux 'diff \-c sys1!~user1/file1 sys2!~user2/file2 >!file.diff'
+ .fi
+ Fetch the two named files from system sys1 and system sys2 and execute
+ .I diff
+--- uuxqt.8
++++ uuxqt.8	2019-01-12 18:51:27.931352540 +0000
+@@ -43,7 +43,7 @@ Only execute requests for the specified
+ .br
+ .in +0.5i
+ .nf
+-uuxqt --command rmail
++uuxqt \-\-command rmail
+ .fi
+ .in -0.5i
+ .TP 5

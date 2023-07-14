@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 26 15:33:05 UTC 2023 - Thomas Renninger <trenn@suse.de>
+
+- Add python3-dateutils dependency to fix:
+  File "/usr/lib/python3.10/site-packages/redfishtoollib/redfishtoolTransport.py", line 44, in <module>
+    from dateutil import parser
+  ModuleNotFoundError: No module named 'dateutil'
+
+-------------------------------------------------------------------
 Sat Mar  6 12:24:00 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.1.5

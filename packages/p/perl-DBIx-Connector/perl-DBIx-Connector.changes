@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul  3 03:06:57 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.59
+   see /usr/share/doc/packages/perl-DBIx-Connector/Changes
+
+  0.59  Sun 02 Jul 2023
+        - Fix for Windows t/load.t failures
+
+-------------------------------------------------------------------
 Tue Aug 30 03:06:10 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.58

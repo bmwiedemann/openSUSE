@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Jul 10 18:30:18 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.3.1:
+  * Bug fix: Added kernel specializations for
+    awkward_ListOffsetArray_reduce_local_nextparents_64
+    [gh#scikit-hep/awkward#2572].
+- Changes from version 2.3.0:
+  * New features:
+    - LayoutBuilder in Numba [gh#scikit-hep/awkward#2408].
+    - Move string features into core [gh#scikit-hep/awkward#2547].
+    - Add new __list__ parameter for list-based array types
+      [gh#scikit-hep/awkward#2549].
+    - Deprecate string behavior classes
+      [gh#scikit-hep/awkward#2528].
+    - Apply retroactive deprecations [gh#scikit-hep/awkward#2566].
+  * Bug fixes and performance
+    - support dict-likes in form.from_dict, convert fields to list
+      [gh#scikit-hep/awkward#2548].
+    - check validity error properly [gh#scikit-hep/awkward#2550].
+    - string broadcasting [gh#scikit-hep/awkward#2552].
+    - make C++ LayoutBuilder API consistent with the Numba's
+      [gh#scikit-hep/awkward#2553].
+    - convert unknown-length to index in
+      ListOffsetArray.to_RegularArray
+      [gh#scikit-hep/awkward#2560].
+    - prefer known to unknown lengths in broadcasting
+      [gh#scikit-hep/awkward#2561].
+    - broadcasting of regular strings
+      [gh#scikit-hep/awkward#2564].
+    - restore NEP-18 overloads for concatenate and where
+      [gh#scikit-hep/awkward#2567].
+- Require python-awkward-cpp >= 21, python >= 3.8
+
+-------------------------------------------------------------------
 Sat Jul  1 20:49:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.4:

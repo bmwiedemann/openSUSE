@@ -954,8 +954,17 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %core %{_bindir}/ipcs
 %core %{_bindir}/irqtop
 %core %{_bindir}/isosize
+
+%if 0%{?suse_version} >= 1699
+# last provided by wtmpdb, btmp support dropped
+%exclude %{_bindir}/last
+%exclude %{_bindir}/lastb
+%else
 %core %{_bindir}/last
 %core %{_bindir}/lastb
+%endif
+# 0%{?suse_version} >= 1699
+
 %core %{_bindir}/line
 %core %{_bindir}/look
 
@@ -1052,6 +1061,12 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 
 %exclude %{_datadir}/bash-completion/completions/uuidd
 
+# wtmpdb
+%if 0%{?suse_version} >= 1699
+%exclude %{_datadir}/bash-completion/completions/last
+%exclude %{_datadir}/bash-completion/completions/lastb
+%endif
+
 # tty-tools package
 %exclude %{_datadir}/bash-completion/completions/wall
 %exclude %{_datadir}/bash-completion/completions/write
@@ -1143,8 +1158,16 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %core %{_mandir}/man1/hexdump.1.gz
 %core %{_mandir}/man1/ipcrm.1.gz
 %core %{_mandir}/man1/ipcs.1.gz
+
+%if 0%{?suse_version} >= 1699
+%exclude %{_mandir}/man1/last.1.gz
+%exclude %{_mandir}/man1/lastb.1.gz
+%else
 %core %{_mandir}/man1/last.1.gz
 %core %{_mandir}/man1/lastb.1.gz
+%endif
+# 0%{?suse_version} >= 1699
+
 %core %{_mandir}/man1/line.1.gz
 %core %{_mandir}/man1/login.1.gz
 %core %{_mandir}/man1/look.1.gz

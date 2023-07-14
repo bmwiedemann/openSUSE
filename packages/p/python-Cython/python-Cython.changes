@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jul 10 19:03:16 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up SPEC file.
+
+-------------------------------------------------------------------
+Sat Jul  8 20:26:51 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- update to version 0.29.36:
+  * Async generators lost their return value in PyPy. (Github issue
+    :issue:`5465`)
+  * The outdated C macro _PyGC_FINALIZED() is no longer used in
+    Py3.9+.
+  * The deprecated Py_OptimizeFlag is no longer used in Python
+    3.9+. (Github issue :issue:`5343`)
+  * Using the global __debug__ variable but not assertions could lead
+    to compile errors.
+  * The broken HTML template support was removed from Tempita. (Github
+    issue :issue:`3309`)
+
+-------------------------------------------------------------------
 Sat May 27 21:05:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.29.35:

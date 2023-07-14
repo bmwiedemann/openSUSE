@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 11 12:51:13 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.0+git4:
+  * Handle uppercase filesystem labels in combustion.rules as well
+  * Update README.md to explain the current mechanism of firstboot_happened
+
+-------------------------------------------------------------------
 Thu Aug 18 12:57:27 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.0+git2:

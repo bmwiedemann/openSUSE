@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  6 17:37:10 UTC 2023 - Joan Torres <joan.torres@suse.com>
+
+- Recommend xdg-desktop-portal-wlr instead of requires.
+
+------------------------------------------------------------------
 Tue Apr 11 20:31:02 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add dee032d0a0ecd958c902b88302dc59703d703c7f.patch: ipc: add

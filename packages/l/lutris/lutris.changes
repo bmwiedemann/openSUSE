@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 12 11:51:43 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Let package also build for Leap
+  - add %{?sle15_python_module_pythons}
+  - make some other adjustments so we can build for Leap
+  
+-------------------------------------------------------------------
 Wed May 17 06:51:38 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.13:

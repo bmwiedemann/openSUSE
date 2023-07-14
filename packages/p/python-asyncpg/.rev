@@ -101,4 +101,21 @@
     <comment></comment>
     <requestid>1096814</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e1172c553b52d923a4ff6278d83ccaae</srcmd5>
+    <version>0.28.0</version>
+    <time>1689175629</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.28.0:
+  * Minor fixes and improvements.
+  * Do not try to cleanup statements (#981)
+  * Add Pool.is_closing() method (#973)
+  * Fix test_tls_version for LibreSSL (#974)
+  * Handle environments without home dir (#1011)
+  * fix: salt and iterations parsing for scram (#1026)
+  * Add support for target_session_attrs (#987)
+  * Add support for READ UNCOMMITTED (#1039)
+  * Update benchmarks, add psycopg3 (#1042)</comment>
+    <requestid>1098177</requestid>
+  </revision>
 </revisionlist>

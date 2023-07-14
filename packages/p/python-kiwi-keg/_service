@@ -2,8 +2,8 @@
   <service name="obs_scm" mode="manual">
     <param name="url">git@github.com:SUSE-Enceladus/keg.git</param>
     <param name="scm">git</param>
-    <param name="version">2.0.3</param>
-    <param name="revision">v2.0.3</param>
+    <param name="version">2.1.0</param>
+    <param name="revision">v2.1.0</param>
     <param name="filename">keg</param>
     <param name="changesgenerate">enable</param>
     <param name="extract">package/python-kiwi-keg.spec</param>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 11 02:41:40 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.12.3:
+  * Fix crash on spaces in directory names #184
+
+-------------------------------------------------------------------
 Wed Jul  5 07:58:55 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.12.2:

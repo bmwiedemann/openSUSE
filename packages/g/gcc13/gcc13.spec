@@ -200,7 +200,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        13.1.1+git7364
+Version:        13.1.1+git7552
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -2649,6 +2649,10 @@ amdgcn-amdhsa,\
 	--enable-fix-cortex-a53-843419 \
 %endif
 %if "%{TARGET_ARCH}" == "powerpc64le"
+%if %{suse_version} >= 1600
+	--with-cpu=power9 \
+	--with-tune=power9 \
+%else
 %if %{suse_version} >= 1350
 	--with-cpu=power8 \
 	--with-tune=power9 \
@@ -2659,6 +2663,7 @@ amdgcn-amdhsa,\
 %else
 	--with-cpu=power7 \
 	--with-tune=power7 \
+%endif
 %endif
 %endif
 %if %{suse_version} > 1500
@@ -2688,34 +2693,53 @@ amdgcn-amdhsa,\
 	--with-long-double-128 \
 %endif
 %if "%{TARGET_ARCH}" == "i586"
+%if %{suse_version} >= 1600 && !0%{?is_opensuse}
+	--with-arch-32=x86-64-v2 \
+%else
 %if 0%{?sle_version:%sle_version} >= 150000
 	--with-arch-32=x86-64 \
 %else
 	--with-arch-32=i586 \
+%endif
 %endif
 	--with-tune=generic \
 %endif
 %if "%{TARGET_ARCH}" == "x86_64"
 %ifnarch %{disable_multilib_arch}
 	--enable-multilib \
+%if %{suse_version} >= 1600 && !0%{?is_opensuse}
+	--with-arch-32=x86-64-v2 \
+%else
 	--with-arch-32=x86-64 \
+%endif
+%endif
+%if %{suse_version} >= 1600 && !0%{?is_opensuse}
+	--with-arch=x86-64-v2 \
 %endif
 	--with-tune=generic \
 %endif
 %if "%{TARGET_ARCH}" == "s390"
+%if %{suse_version} >= 1600
+        --with-tune=zEC12 --with-arch=z196 \
+%else
 %if %{suse_version} >= 1310
         --with-tune=zEC12 --with-arch=z196 \
 %else
 	--with-tune=z9-109 --with-arch=z900 \
+%endif
 %endif
 	--with-long-double-128 \
 	--enable-decimal-float \
 %endif
 %if "%{TARGET_ARCH}" == "s390x"
+%if %{suse_version} >= 1600
+        --with-tune=zEC12 --with-arch=z196 \
+%else
 %if %{suse_version} >= 1310
         --with-tune=zEC12 --with-arch=z196 \
 %else
 	--with-tune=z9-109 --with-arch=z900 \
+%endif
 %endif
 	--with-long-double-128 \
 	--enable-decimal-float \

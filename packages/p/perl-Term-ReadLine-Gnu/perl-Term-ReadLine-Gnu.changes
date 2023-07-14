@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jul  2 03:08:09 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.46
+   see /usr/share/doc/packages/perl-Term-ReadLine-Gnu/Changes
+
+  1.46  2023-07-01
+  	- Reproduce Term::ReadLine::Stub’s behavior for ornaments (#17)
+  	    - The Perl debugger uses these control sequences for online help
+  	    - fetch the control sequences for outputting bold text as the
+  	      current Term::ReadLine does
+          - let new() fail on multiple instantiation (#16)
+          - suppress warning errors on clang
+              - add prototype on every function declaration
+              - use ANSI-C style port definition even for XS code
+          - make clean removes `*.dSYM` for macOS
+          - INSTALL.md: update content
+              - add install procedure using packages
+              - update and remove old descriptions
+
+-------------------------------------------------------------------
 Mon Nov 28 03:08:36 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.45

@@ -17,7 +17,7 @@
 
 
 Name:           bluetuith
-Version:        0.1.5
+Version:        0.1.6
 Release:        0
 Summary:        A TUI bluetooth manager for Linux
 License:        MIT

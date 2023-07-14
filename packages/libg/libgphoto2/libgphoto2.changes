@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 10 11:01:53 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
+
+- drop lockdev support (boo#1212801)
+
+-------------------------------------------------------------------
 Mon Apr 24 07:19:55 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - libgphoto2-enable-vusb-ptp.patch: enable virtual PTP camera in vusb

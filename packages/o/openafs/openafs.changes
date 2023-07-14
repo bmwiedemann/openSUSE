@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 10 10:24:31 UTC 2023 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- update to official openafs-1.8.10
+- remove obsolete patches:
+  * 7a3ad3bc.diff
+  * b885159.diff
+  * f6fbb85.diff 
+  * 4cf7a9a.diff
+
+-------------------------------------------------------------------
 Tue May 30 12:21:37 UTC 2023 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
 
 - remove obsolete macro-call %{stop_on_removal} from spec-file

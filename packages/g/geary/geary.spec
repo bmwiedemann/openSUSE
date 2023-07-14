@@ -17,7 +17,7 @@
 
 
 Name:           geary
-Version:        43.0
+Version:        44.0
 Release:        0
 Summary:        An email reader for the GNOME desktop
 License:        BSD-2-Clause AND CC-BY-3.0 AND LGPL-2.1-or-later
@@ -30,8 +30,6 @@ Source0:        %{name}-%{version}.tar.xz
 Patch0:         Support-GNOME-42-dark-theme-preference.patch
 # PATCH-FEATURE-OPENSUSE Support-dark-theme-webview.patch -- Support dark mode for email bodies
 Patch1:         Support-dark-theme-webview.patch
-# PATCH-FIX-UPSTREAM Fix-build-newer-vala.patch -- Fix build with newer vala
-Patch2:         Fix-build-newer-vala.patch
 
 BuildRequires:  fdupes
 BuildRequires:  itstool
@@ -60,7 +58,7 @@ BuildRequires:  pkgconfig(icu-uc) >= 60
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(javascriptcoregtk-4.1)
 BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(libhandy-1) >= 1.2.1
+BuildRequires:  pkgconfig(libhandy-1) >= 1.6.0
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.24.0
 BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.24.0
 BuildRequires:  pkgconfig(libsecret-1) >= 0.11

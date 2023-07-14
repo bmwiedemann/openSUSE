@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jul 12 10:41:24 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add patches
+  * improved-pipe.patch
+  * manpage.patch
+  * option-to-not-force-hw-control.patch
+  * spelling.patch
+  * uucp-1.07-locking.patch
+    - Use ioctl TIOCEXCL as well as flock LOCK_EX|LOCK_NB
+      to make locking work on the open serial device
+  * wait-for-correct-parent.patch
+- Port patches
+  * uucp-1.07.dif
+  * uucp-texinfo-5.0.patch
+
+-------------------------------------------------------------------
+Mon Jul 10 10:32:17 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
+
+- drop lockdev support (boo#1212801, removed uucp-1.07-lockdev.patch)
+
+-------------------------------------------------------------------
 Mon Jan 16 13:47:43 UTC 2023 - Stefan Schubert <schubi@suse.com>
 
 - Migration of PAM settings to /usr/lib/pam.d. 

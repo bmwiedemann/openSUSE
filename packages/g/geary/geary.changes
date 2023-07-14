@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jul  5 15:56:31 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.0:
+  + New conversation list
+  + Reworked headerbar
+  + Fix network detection issues
+  + Suspend engine on system suspend
+  + Numerous user interface translation updates
+  + Numerous bug fixes and user interface improvements
+  + Updated translations.
+- Drop Fix-build-newer-vala.patch: fixed upstream.
+- Rebase patches with quilt.
+
+-------------------------------------------------------------------
 Wed Apr 19 08:56:31 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add Fix-build-newer-vala.patch: client: Add missing

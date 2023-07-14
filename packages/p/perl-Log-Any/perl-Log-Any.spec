@@ -18,7 +18,7 @@
 
 %define cpan_name Log-Any
 Name:           perl-Log-Any
-Version:        1.715
+Version:        1.716
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Bringing loggers and listeners together

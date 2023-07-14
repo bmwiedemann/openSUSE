@@ -16,17 +16,17 @@
 #
 
 
-%define awkward_cpp_version 18
+%define awkward_cpp_version 21
 %{?sle15_python_module_pythons}
 Name:           python-awkward
-Version:        2.2.4
+Version:        2.3.1
 Release:        0
 Summary:        Manipulate arrays of complex data structures as easily as Numpy
 License:        BSD-3-Clause
 URL:            https://awkward-array.org/
 # SourceRepository: https://github.com/scikit-hep/awkward
 Source0:        https://files.pythonhosted.org/packages/source/a/awkward/awkward-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling >= 1.10.0}
 BuildRequires:  %{python_module pip}
@@ -83,6 +83,7 @@ rm -r %{buildroot}%{$python_sitelib}/awkward/_connect/rdataframe/include
 }
 
 %check
+export PYTEST_DEBUG_TEMPROOT=$(mktemp -d -p ./)
 %pytest -n auto --ignore tests-cuda/
 
 %files %{python_files}

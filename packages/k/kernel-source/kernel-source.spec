@@ -16,8 +16,8 @@
 #
 
 
-%define srcversion 6.3
-%define patchversion 6.3.9
+%define srcversion 6.4
+%define patchversion 6.4.2
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -30,9 +30,9 @@
 %endif
 
 Name:           kernel-source
-Version:        6.3.9
+Version:        6.4.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g0df701d
+Release:        <RELEASE>.gb97b894
 %else
 Release:        0
 %endif
@@ -49,7 +49,7 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-0df701dd2c208f4843cf219b4b26b533ada9bd34
+Provides:       %name-srchash-b97b89494481f3409297e494e466bdd42b1311ab
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
@@ -134,6 +134,9 @@ Recommends:     bc
 Recommends:     bison
 Recommends:     flex
 Recommends:     libelf-devel
+%if 0%{?suse_version} > 1500
+Recommends:     jq
+%endif
 Recommends:     openssl-devel
 # pahole needed for BTF
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
@@ -233,10 +236,6 @@ fi
 cd linux-%kernelrelease-vanilla
 %_sourcedir/apply-patches --vanilla %_sourcedir/series.conf %my_builddir %symbols
 rm -f $(find . -name ".gitignore")
-%if 0%{?usrmerged}
-# fix MODLIB so kmps install to /usr
-sed -ie 's,/lib/modules/,%{kernel_module_directory}/,' Makefile scripts/depmod.sh
-%endif
 # Hardlink duplicate files automatically (from package fdupes).
 %fdupes $PWD
 cd ..
@@ -249,10 +248,6 @@ rm -f $(find . -name ".gitignore")
 if [ -f %_sourcedir/localversion ] ; then
     cat %_sourcedir/localversion > localversion
 fi
-%if 0%{?usrmerged}
-# fix MODLIB so kmps install to /usr
-sed -ie 's,/lib/modules/,%{kernel_module_directory}/,' Makefile scripts/depmod.sh
-%endif
 # Hardlink duplicate files automatically (from package fdupes).
 %fdupes $PWD
 cd ..

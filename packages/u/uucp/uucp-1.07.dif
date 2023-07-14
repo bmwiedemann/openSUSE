@@ -14,6 +14,7 @@
  uucico.8      |    4 +
  uucico.c      |    3 +
  uuconv.1      |   74 +++++++++++++++++++++++++++++++++
+ uuconv.c      |    2
  uucp.1        |    4 +
  uucp.texi     |   50 +++++++++++-----------
  uulog.1       |  128 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -25,7 +26,7 @@
  uuto.1        |   36 ++++++++++++++++
  uux.1         |    4 +
  uuxqt.8       |    4 +
- 26 files changed, 695 insertions(+), 83 deletions(-)
+ 27 files changed, 696 insertions(+), 84 deletions(-)
 
 --- .pkgextract
 +++ .pkgextract	2017-04-04 15:40:58.880817467 +0000
@@ -461,7 +462,7 @@
  
  #if HAVE_SYS_PARAM_H
  #include <sys/param.h>
-@@ -1018,6 +1019,45 @@ static struct sbaud_table
+@@ -1026,6 +1027,45 @@ static struct sbaud_table
  #ifdef B4000000
    { B4000000, 4000000 },
  #endif
@@ -507,7 +508,7 @@
    { B0, 0 }
  };
  
-@@ -2559,16 +2599,40 @@ fsysdep_conn_read (qconn, zbuf, pclen, c
+@@ -2574,16 +2614,40 @@ fsysdep_conn_read (qconn, zbuf, pclen, c
  	  else
  	    csleepchars = MAX_INPUT - 10;
  
@@ -550,7 +551,7 @@
  	      /* Some versions of select take a pointer to an int,
  		 while some take a pointer to an fd_set.  I just cast
  		 the arguments to a generic pointer, and assume that
-@@ -3066,7 +3130,7 @@ fsysdep_conn_io (qconn, zwrite, pcwrite,
+@@ -3081,7 +3145,7 @@ fsysdep_conn_io (qconn, zwrite, pcwrite,
                   we don't need to use the catch stuff, since we know
                   that HAVE_RESTARTABLE_SYSCALLS is 0.  */
  	      usset_signal (SIGALRM, usalarm, TRUE, (boolean *) NULL);
@@ -711,6 +712,17 @@
 +.RS 5
 +.B info uucp 'Invoking uuconv'
 +.RE
+--- uuconv.c
++++ uuconv.c	2013-05-08 12:49:06.000000000 +0000
+@@ -676,7 +676,7 @@
+     {
+       if ((*pz)[0] != '-' && pz != pzarg)
+ 	fprintf (e, " ");
+-      fprintf (e, *pz);
++      fprintf (e, "%s", *pz);
+     }
+ }
+ 
 --- uucp.1
 +++ uucp.1	2017-04-04 15:40:58.884817393 +0000
 @@ -1,4 +1,6 @@

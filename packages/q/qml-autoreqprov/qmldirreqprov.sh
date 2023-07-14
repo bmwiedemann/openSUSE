@@ -54,7 +54,8 @@ while read file; do
 	fi
 
 	if [[ $requires ]]; then
-		gawk '$1 == depends && match($2, /^([0-9]+)\.([0-9]+)$/, ver) { printf "qt'${qtver}'qmlimport(%s.%d) >= %d", $2, ver[1], ver[2]; }' "$file"
+		# TODO: Handle "auto" as version. This could generate versionless qmlimport(Foo.Bar.2) for each exported major version.
+		gawk '$1 == "depends" && match($3, /^([0-9]+)\.([0-9]+)$/, ver) { printf "qt'${qtver}'qmlimport(%s.%d) >= %d\n", $2, ver[1], ver[2]; }' "$file"
 	fi
 
 	if [[ $provides ]]; then
@@ -76,7 +77,7 @@ while read file; do
 			fi
 
 			plugins+=("${location}/${pluginname}")
-		done < <(awk '$1 == "plugin" { printf "lib%s.so %s\n", $2, $3; }' "$file")
+		done < <(awk '$1 == "plugin" { printf "lib%s.so %s\n", $2, $3; } $1 == "optional" && $2 == "plugin" { printf "lib%s.so %s\n", $3, $4; }' "$file")
 
 		if [ ${#plugins[@]} -eq 0 ]; then
 			# No plugins?

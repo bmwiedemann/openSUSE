@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 10 09:32:57 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up SPEC file.
+
+-------------------------------------------------------------------
+Thu Jul  6 12:04:46 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Sun Sep 18 10:42:55 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 4.1.2:

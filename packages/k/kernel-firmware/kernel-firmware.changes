@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Jul 08 17:19:33 UTC 2023 - tiwai@suse.com
+
+- Update to version 20230707 (git commit d3f66064cf43):
+  * Partially revert "amdgpu: DMCUB updates for DCN 3.1.4 and 3.1.5"
+  * linux-firmware: update firmware for mediatek bluetooth chip (MT7922)
+  * linux-firmware: update firmware for MT7922 WiFi device
+  * linux-firmware: Update firmware file for Intel Bluetooth AX203
+  * linux-firmware: Update firmware file for Intel Bluetooth AX203
+  * linux-firmware: Update firmware file for Intel Bluetooth AX211
+  * linux-firmware: Update firmware file for Intel Bluetooth AX211
+  * linux-firmware: Update firmware file for Intel Bluetooth AX210
+  * linux-firmware: Update firmware file for Intel Bluetooth AX200
+  * linux-firmware: Update firmware file for Intel Bluetooth AX201
+  * Fix qcom ASoC tglp WHENCE entry
+  * check_whence: Check link targets are valid
+  * iwlwifi: add new FWs from core80-39 release
+  * iwlwifi: update cc/Qu/QuZ firmwares for core80-39 release
+  * qcom: Add Audio firmware for SC8280XP X13s
+  * Makefile, copy-firmware: support xz/zstd compressed firmware
+  * copy-firmware: silence the last shellcheck warnings
+  * copy-firmware: drop obsolete backticks, quote
+  * copy-firmware: tweak sed invocation
+  * copy-firmware: quote deskdir and dirname
+  * check_whence: error if symlinks are in-tree
+  * check_whence: error if File: is actually a link
+  * check_whence: strip quotation marks
+  * linux-firmware: wilc1000: update WILC1000 firmware to v16.0
+  * ice: update ice DDP wireless_edge package to 1.3.10.0
+  * amdgpu: DMCUB updates for DCN 3.1.4 and 3.1.5
+- Update aliases
+
+-------------------------------------------------------------------
 Thu Jun 22 08:07:54 UTC 2023 - tiwai@suse.com
 
 - Update to version 20230620 (git commit 045b2136a619):

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jul 11 10:38:18 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Convert to multibuild to break a build cycle
+
+-------------------------------------------------------------------
+Mon Jul 10 09:59:29 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 0.4:
+  * Add a new add_to_subpackage method
+  * Add type annotations
+  * Internal admin: Switch to nox for automation
+  * Internal admin: Switch to ruff for linting
+  * Internal admin: Switch from setuptools to flit_core
+- drop skip_python2 and require python >= 3.7
+- drop setuptools and requires pip and flit-core to build the rpm
+- add pytest as a build requirement and run the tests
+
+-------------------------------------------------------------------
 Fri Apr 21 12:24:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

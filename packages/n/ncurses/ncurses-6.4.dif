@@ -366,11 +366,11 @@
  scanf.3				scanf.3
  ttys.5				ttys.4
 --- man/ncurses.3x
-+++ man/ncurses.3x	2023-01-23 13:00:47.039268881 +0000
-@@ -139,6 +139,10 @@ after the shell environment variable \fB
++++ man/ncurses.3x	2023-07-03 07:58:55.716619576 +0000
+@@ -136,6 +136,10 @@ after the shell environment variable \fB
+ \fB@TSET@(1)\fP is usually responsible for doing this.
  [See \fBterminfo\fP(\*n) for further details.]
  .SS Datatypes
- .PP
 +Beware: the terminal your program is running may or may not have
 +the features you expect. Ncurses makes no attempt to check available
 +features in advance. This is upon the programmer.

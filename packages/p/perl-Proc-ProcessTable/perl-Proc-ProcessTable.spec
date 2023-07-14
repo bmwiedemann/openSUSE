@@ -18,7 +18,7 @@
 
 %define cpan_name Proc-ProcessTable
 Name:           perl-Proc-ProcessTable
-Version:        0.635
+Version:        0.636
 Release:        0
 #Upstream: Artistic-2.0
 License:        (Artistic-1.0 OR GPL-1.0-or-later) AND GPL-2.0-only

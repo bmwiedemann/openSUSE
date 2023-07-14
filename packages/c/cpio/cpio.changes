@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Jul 10 14:52:48 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Backport upstream fix for --no-absolute-filenames --make-directories
+  * fix-operation-no-absolute-filenames.patch
+
+-------------------------------------------------------------------
+Fri Jun 23 13:02:55 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 2.14:
+  * New option --ignore-dirnlink
+    Valid in copy-out mode, it instructs cpio to ignore the actual number of
+    links reported for each directory member and always store 2 instead.
+  * Changes in --reproducible option
+    The --reproducible option implies --ignore-dirlink.  In other words, it is
+    equivalent to --ignore-devno --ignore-dirnlink --renumber-inodes.
+  * Use GNU ls algorithm for deciding timestamp format in -tv mode
+  * Fix cpio header verification.
+  * Fix handling of device numbers on copy out.
+  * Fix calculation of CRC in copy-out mode.
+  * Rewrite the fix for CVE-2015-1197.
+  * Fix combination of --create --append --directory.
+  * Fix appending to archives bigger than 2G.
+- Refresh patches:
+  * cpio-open_nonblock.patch
+  * cpio-dev_number.patch
+  * cpio-default_tape_dev.patch
+  * cpio-pattern-file-sigsegv.patch
+- Remove patches:
+  * cpio-revert-CVE-2015-1197-fix.patch
+  * fix-CVE-2021-38185.patch
+  * fix-CVE-2021-38185_2.patch
+  * fix-CVE-2021-38185_3.patch
+
+-------------------------------------------------------------------
 Tue Dec 27 10:29:29 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 11 03:38:05 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.23.0:
+  * Added the 2023 PDG data table file, now default.
+  * Version 13 of package CSV data files: Since PDG 2023
+    information is now the default.
+  * Removed superseded data files from 2018-2020.
+
+-------------------------------------------------------------------
 Mon Jul  3 11:02:10 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.22.1:

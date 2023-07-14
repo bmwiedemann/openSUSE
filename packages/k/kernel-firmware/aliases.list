@@ -26,6 +26,7 @@ ambassador: pci:v000010B6d00001001sv*sd*bc*sc*i*
 ambassador: pci:v000010B6d00001002sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d*sv*sd*bc03sc00i00*
 amdgpu: pci:v00001002d*sv*sd*bc03sc80i00*
+amdgpu: pci:v00001002d*sv*sd*bc12sc00i00*
 amdgpu: pci:v00001002d00001304sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00001305sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00001306sv*sd*bc*sc*i*
@@ -710,9 +711,11 @@ ccp: pci:v00001022d00001468sv*sd*bc*sc*i*
 ccp: pci:v00001022d00001486sv*sd*bc*sc*i*
 ccp: pci:v00001022d000014CAsv*sd*bc*sc*i*
 ccp: pci:v00001022d00001537sv*sd*bc*sc*i*
+ccp: pci:v00001022d0000156Esv*sd*bc*sc*i*
 ccp: pci:v00001022d000015C7sv*sd*bc*sc*i*
 ccp: pci:v00001022d000015DFsv*sd*bc*sc*i*
 ccp: pci:v00001022d00001649sv*sd*bc*sc*i*
+ccp: pci:v00001022d000017E0sv*sd*bc*sc*i*
 cpia2: usb:v0553p0100d*dc*dsc*dp*ic*isc*ip*in*
 cpia2: usb:v0553p0140d*dc*dsc*dp*ic*isc*ip*in*
 cpia2: usb:v0553p0151d*dc*dsc*dp*ic*isc*ip*in*
@@ -2763,6 +2766,7 @@ iwlwifi: pci:v00008086d0000A370sv*sd000040A4bc*sc*i*
 iwlwifi: pci:v00008086d0000A370sv*sd00004234bc*sc*i*
 iwlwifi: pci:v00008086d0000A370sv*sd000042A4bc*sc*i*
 iwlwifi: pci:v00008086d0000A840sv*sd*bc*sc*i*
+iwlwifi: pci:v00008086d0000E440sv*sd*bc*sc*i*
 kaweth: usb:v03E8p0008d*dc*dsc*dp*ic*isc*ip*in*
 kaweth: usb:v04BBp0901d*dc*dsc*dp*ic*isc*ip*in*
 kaweth: usb:v0506p03E8d*dc*dsc*dp*ic*isc*ip*in*
@@ -4921,6 +4925,7 @@ rtl8xxxu: usb:v0846pF001d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0B05p17ABd*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0B05p17BAd*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0B05p18F0d*dc*dsc*dp*icFFiscFFipFFin*
+rtl8xxxu: usb:v0B05p18F1d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDAp0179d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDAp018Ad*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDAp0724d*dc*dsc*dp*icFFiscFFipFFin*
@@ -4929,6 +4934,7 @@ rtl8xxxu: usb:v0BDAp1E1Ed*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDAp2005d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDAp2E2Ed*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDAp317Fd*dc*dsc*dp*icFFiscFFipFFin*
+rtl8xxxu: usb:v0BDAp318Bd*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDAp5088d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDAp8170d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDAp8176d*dc*dsc*dp*icFFiscFFipFFin*
@@ -4948,6 +4954,7 @@ rtl8xxxu: usb:v0BDAp8724d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDApB711d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDApB720d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDApF179d*dc*dsc*dp*icFFiscFFipFFin*
+rtl8xxxu: usb:v0BDApF192d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0BDApFFEFd*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0DF6p0052d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v0DF6p005Cd*dc*dsc*dp*icFFiscFFipFFin*
@@ -4992,6 +4999,7 @@ rtl8xxxu: usb:v4856p0091d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v7392p7811d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v7392p7822d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v7392pA611d*dc*dsc*dp*icFFiscFFipFFin*
+rtl8xxxu: usb:v7392pB722d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:v7392pB811d*dc*dsc*dp*icFFiscFFipFFin*
 rtl8xxxu: usb:vCDABp8010d*dc*dsc*dp*icFFiscFFipFFin*
 rtw89_pci: pci:v000010ECd00008852sv*sd*bc*sc*i*
@@ -5220,6 +5228,8 @@ snd_soc_avs: pci:v00008086d0000A2F0sv*sd*bc*sc*i*
 snd_soc_avs: pci:v00008086d0000A3F0sv*sd*bc*sc*i*
 snd_soc_catpt: acpi*:INT33C8%3A*
 snd_soc_catpt: acpi*:INT3438%3A*
+snd_soc_sc8280xp: of:N*T*Cqcom,sc8280xp-sndcard
+snd_soc_sc8280xp: of:N*T*Cqcom,sc8280xp-sndcardC*
 snd_soc_skl: pci:v00008086d000002C8sv*sd*bc*sc*i*
 snd_soc_skl: pci:v00008086d000006C8sv*sd*bc*sc*i*
 snd_soc_skl: pci:v00008086d00003198sv*sd*bc*sc*i*

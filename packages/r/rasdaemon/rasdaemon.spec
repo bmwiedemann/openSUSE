@@ -17,7 +17,7 @@
 
 
 Name:           rasdaemon
-Version:        0.7.0.7.git+24204af
+Version:        0.8.0.10.git+a247baf
 Release:        0
 Summary:        Utility to receive RAS error tracings
 License:        GPL-2.0-only
@@ -82,7 +82,7 @@ mv %{buildroot}%{_sysconfdir}/sysconfig/rasdaemon %{buildroot}/%{_fillupdir}/sys
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog README TODO
+%doc AUTHORS ChangeLog README.md TODO
 %{_sbindir}/rasdaemon
 %{_sbindir}/ras-mc-ctl
 %{_sbindir}/rcrasdaemon

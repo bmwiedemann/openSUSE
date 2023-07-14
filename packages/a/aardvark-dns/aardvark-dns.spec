@@ -28,8 +28,6 @@ Source2:        cargo_config
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 # Disable this line if you wish to support all platforms.
-# In most situations, you will likely only target tier1 arches for user facing components.
-ExclusiveArch:  %{rust_tier1_arches}
 
 %description
 Aardvark-dns is an authoritative dns server for A/AAAA container records.

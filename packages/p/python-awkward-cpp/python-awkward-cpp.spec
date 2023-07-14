@@ -17,7 +17,7 @@
 
 
 Name:           python-awkward-cpp
-Version:        18
+Version:        21
 Release:        0
 Summary:        CPU kernels and compiled extensions for Awkward Array
 License:        BSD-3-Clause
@@ -25,7 +25,7 @@ URL:            https://awkward-array.org/
 # SourceRepository:  https://github.com/scikit-hep/awkward/awkward-cpp
 Source0:        https://files.pythonhosted.org/packages/source/a/awkward-cpp/awkward-cpp-%{version}.tar.gz
 Source99:       awkward-cpp.rpmlintrc
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pybind11-devel}
 BuildRequires:  %{python_module scikit-build-core-pyproject >= 0.2}

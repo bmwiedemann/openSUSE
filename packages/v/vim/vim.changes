@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul  9 05:47:19 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Use app icon generated from vimlogo.eps in source tarball; add
+  higher res icons of sizes 128, 256, and 512px as png sources.
+  Our current icons deviate from upstream flatpaks for example.
+
+-------------------------------------------------------------------
 Thu Jun 15 09:29:01 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 9.0.1632, fixes the following problems

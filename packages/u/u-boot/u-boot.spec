@@ -170,9 +170,9 @@
 %define is_armv7 1
 %define binext .img
 %endif
-%if "%target" == "qemu-riscv64" || "%target" == "qemu-riscv64smode" || "%target" == "sifiveunleashed" || "%target" == "sifiveunmatched"
+%if "%target" == "qemu-riscv64" || "%target" == "qemu-riscv64smode" || "%target" == "sifiveunleashed" || "%target" == "sifiveunmatched" || "%target" == "starfivevisionfive2"
 %define is_riscv64 1
-%if "%target" == "sifiveunleashed" || "%target" == "sifiveunmatched"
+%if "%target" == "sifiveunleashed" || "%target" == "sifiveunmatched" || "%target" == "starfivevisionfive2"
 %define binext .itb
 %endif
 %endif
@@ -180,7 +180,7 @@
 %define is_ppc 1
 %endif
 # archive_version differs from version for RC version only
-%define archive_version 2023.04
+%define archive_version 2023.07
 %if "%{target}" == ""
 ExclusiveArch:  do_not_build
 %else
@@ -210,7 +210,7 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 %endif
-Version:        2023.04
+Version:        2023.07
 Release:        0
 Summary:        The U-Boot firmware for the %target platform
 License:        GPL-2.0-only
@@ -219,6 +219,7 @@ URL:            http://www.denx.de/wiki/U-Boot
 Source:         http://ftp.denx.de/pub/u-boot/u-boot-%{archive_version}.tar.bz2
 Source1:        http://ftp.denx.de/pub/u-boot/u-boot-%{archive_version}.tar.bz2.sig
 Source2:        arndale-bl1.img
+Source99:       u-boot.keyring
 Source300:      u-boot-rpmlintrc
 Source900:      update_git.sh
 # Patches: start
@@ -324,8 +325,8 @@ BuildRequires:  zynqmp-dts
 # For mountpoint
 Requires(post): util-linux
 %endif
-%if "%{name}" == "u-boot-sifiveunleashed" || "%{name}" == "u-boot-sifiveunmatched"
-BuildRequires:  opensbi >= 0.9
+%if "%{name}" == "u-boot-sifiveunleashed" || "%{name}" == "u-boot-sifiveunmatched" || "%{name}" == "u-boot-starfivevisionfive2"
+BuildRequires:  opensbi >= 1.3
 %endif
 %if %x_loader == 1
 Obsoletes:      x-loader-%target
@@ -387,6 +388,8 @@ This package contains documentation for U-Boot firmware.
 %prep
 %setup -q -n u-boot-%{archive_version}
 %autopatch -p1
+# 2023.07 has been released with a -rc6 leftover
+sed -i 's/-rc6//g' Makefile
 
 %build
 %if %tools_only
@@ -408,7 +411,7 @@ export SCP=/dev/null
 export BL31=%{_datadir}/arm-trusted-firmware-sun50i_h616/bl31.bin
 export SCP=/dev/null
 %endif
-%if "%{name}" == "u-boot-sifiveunleashed" || "%{name}" == "u-boot-sifiveunmatched"
+%if "%{name}" == "u-boot-sifiveunleashed" || "%{name}" == "u-boot-sifiveunmatched" || "%{name}" == "u-boot-starfivevisionfive2"
 export OPENSBI=%{_datadir}/opensbi/opensbi.bin
 %endif
 
@@ -560,7 +563,7 @@ echo -e "\nkernel_address=0x11000000" >> %{buildroot}%{uboot_dir}/ubootconfig.tx
 %if "%{name}" == "u-boot-rpi4" || "%{name}" == "u-boot-rpiarm64"
 echo -e "# Boot in AArch64 mode\narm_64bit=1" > %{buildroot}%{uboot_dir}/ubootconfig.txt
 %endif
-%if "%{name}" == "u-boot-sifiveunleashed" || "%{name}" == "u-boot-sifiveunmatched"
+%if "%{name}" == "u-boot-sifiveunleashed" || "%{name}" == "u-boot-sifiveunmatched" || "%{name}" == "u-boot-starfivevisionfive2"
 install -D -m 0644 spl/u-boot-spl.bin %{buildroot}%{uboot_dir}/u-boot-spl.bin
 %endif
 

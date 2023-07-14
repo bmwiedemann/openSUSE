@@ -16,11 +16,9 @@
 #
 
 
-%define skip_python2 1
-%define skip_python36 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-django-upgrade
-Version:        1.13.0
+Version:        1.14.0
 Release:        0
 Summary:        Automatically upgrade your Django projects
 License:        MIT
