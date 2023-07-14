@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jun  1 13:15:48 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.4.5
+  * Nested rules keyword "With"
+  * Added rule flags NoMapped and NoParent which will cause the
+    rule to skip mapped readings or cohorts with a dependency
+    parent.
+  * Cmdline flag --dep-absolute will cause dependency to be
+    written with globally unique cohort IDs
+  * Section headers can now have rule flags, which will then
+    apply to all rules in that section.
+  * Cmdline flag -B will inhibit and trim whitespace
+    between/after cohorts.
+  * Cmdline flag -T will delimit based on a regex of non-CG data.
+  * Environment variables CG3_DEFAULT and CG3_OVERRIDE can set
+    and override CG-3 cmdline parameters.
+
+-------------------------------------------------------------------
 Fri Oct  7 21:36:34 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.3.9

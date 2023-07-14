@@ -1,7 +1,7 @@
 #
 # spec file for package cg3
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           cg3
 %define lname	libcg3-1
-Version:        1.3.9
+Version:        1.4.5
 Release:        0
 Summary:        VISL Constraint Grammar implementation
 License:        BSD-3-Clause AND GPL-2.0-or-later AND GPL-3.0-or-later AND MIT
@@ -31,6 +31,7 @@ Source:         https://github.com/GrammarSoft/cg3/releases/download/v%version/%
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_headers-devel
+BuildRequires:  sqlite3-devel
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(icu-uc)
 Requires:       perl(Digest::SHA1)
