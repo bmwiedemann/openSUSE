@@ -384,4 +384,12 @@
   /etc/unixODBC not /etc</comment>
     <requestid>987377</requestid>
   </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>70a4a0afe32764c2286d235c936de4a4</srcmd5>
+    <version>2.3.11</version>
+    <time>1689341739</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1098343</requestid>
+  </revision>
 </revisionlist>

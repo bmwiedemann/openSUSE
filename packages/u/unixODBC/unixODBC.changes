@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 12 10:17:40 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Add missing requires for glibc-locale-base, required for utf16 codec
+  (bsc#1213242)
+
+-------------------------------------------------------------------
 Thu Jul  7 08:30:08 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Add unixODC-etc-location.patch:

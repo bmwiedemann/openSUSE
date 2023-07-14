@@ -39,6 +39,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 # bsc#1062860: to stay feature complete
 Recommends:     psqlODBC
+# for the utf-16 codec, not part of glibc
+Requires:       glibc-locale-base
 
 %package -n libodbc2
 Summary:        Open Database Connectivity API
