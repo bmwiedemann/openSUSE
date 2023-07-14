@@ -36,7 +36,10 @@ Wrapper to confine quilt with nsjail
 %setup -q -n %{name}-%{version}
 
 %build
-# nothing to build
+# Fix squilt on Tumbleweed
+%if 0%{?suse_version} > 1500
+sed -i -e 's@/etc/nsswitch@/usr/etc/nsswitch@g' squilt
+%endif
 
 %install
 install -Dm 0755 squilt %{buildroot}%{_bindir}/squilt

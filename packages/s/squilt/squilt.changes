@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 10 14:50:22 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Fix squilt fixed /etc path to /usr/etc on Tumbleweed
+
+-------------------------------------------------------------------
 Wed Feb 22 16:18:43 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Fix spec file: remove noarch, add ExclusiveArch in line with dependencies
