@@ -35,6 +35,8 @@ Patch10:        xosview-1.19-appdef.patch
 Patch11:        xosview-1.16-diskstat.patch
 # PATCH-FIX-SUSE: allow more than one maybe not exsting lmstemp resource entry
 Patch12:        xosview-1.21-lmstemp.patch
+# PATCH-FIX-SUSE: The numbers seen in temp*_label might not continuously growing
+Patch13:        xosview-1.24-coretemp-labels.patch
 BuildRequires:  autoconf
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -61,6 +63,7 @@ and, if desired, netpacket statistics in a graphical manner.
 %patch10  -b .appdef
 %patch11  -b .diskstat
 %patch12  -b .lmst
+%patch13  -b .coretemp
 %patch0   -b .p0
 
 %build

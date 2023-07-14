@@ -439,4 +439,13 @@ the other licenses are consolidated into the GPL license of the derived binary (
   * xosview-1.21-lmstemp.patch</comment>
     <requestid>1094802</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>4d250f84402d954ba70b0492a886ec84</srcmd5>
+    <version>1.24</version>
+    <time>1689341767</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch xosview-1.24-coretemp-labels.patch
+  * The CPU numbers seen in temp*_label might not continuously growing</comment>
+    <requestid>1098637</requestid>
+  </revision>
 </revisionlist>
