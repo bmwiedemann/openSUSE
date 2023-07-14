@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 12 18:49:34 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 12.17.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Fri Apr 28 05:25:49 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Correct Requires on python-typing_extensions. 

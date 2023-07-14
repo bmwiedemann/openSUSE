@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-storage-blob
-Version:        12.16.0
+Version:        12.17.0
 Release:        0
 Summary:        Microsoft Azure Storage Blob Client Library for Python
 License:        MIT
@@ -36,14 +36,14 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-common >= 1.1.5
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.26.0
+Requires:       python-azure-core >= 1.28.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-azure-storage-common < 3.0.0
 Requires:       python-azure-storage-common >= 2.1.0
 Requires:       python-azure-storage-nspkg >= 3.0.0
 Requires:       python-cryptography >= 2.1.4
 Requires:       python-isodate >= 0.6.1
-Requires:       (python-typing_extensions >= 4.0.1 if python-base < 3.11)
+Requires:       (python-typing_extensions >= 4.3.0)
 %if "%{python_flavor}" == "python2"
 Requires:       python-futures
 %endif

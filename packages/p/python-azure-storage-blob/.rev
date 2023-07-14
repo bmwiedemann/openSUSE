@@ -253,4 +253,16 @@
     <comment>- Correct Requires on python-typing_extensions.</comment>
     <requestid>1083380</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>ef2004a7bf216853782859b571431024</srcmd5>
+    <version>12.17.0</version>
+    <time>1689346428</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.17.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1098417 from glaubitz)</comment>
+    <requestid>1098535</requestid>
+  </revision>
 </revisionlist>
