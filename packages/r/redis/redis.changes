@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jul 12 14:10:43 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- redis 7.0.12:
+  * (CVE-2022-24834) A specially crafted Lua script executing in Redis can trigger
+    a heap overflow in the cjson and cmsgpack libraries, and result in heap
+    corruption and potentially remote code execution. The problem exists in all
+    versions of Redis with Lua scripting support, starting from 2.6, and affects
+    only authenticated and authorized users. (bsc#1213193)
+  * (CVE-2023-36824) Extracting key names from a command and a list of arguments
+    may, in some cases, trigger a heap overflow and result in reading random heap
+    memory, heap corruption and potentially remote code execution. Specifically:
+    using COMMAND GETKEYS* and validation of key names in ACL rules. (bsc#1213249)
+  * Re-enable downscale rehashing while there is a fork child
+  * Fix possible hang in HRANDFIELD, SRANDMEMBER, ZRANDMEMBER when used with <count>
+  * Improve fairness issue in RANDOMKEY, HRANDFIELD, SRANDMEMBER, ZRANDMEMBER,
+    SPOP, and eviction
+  * Fix WAIT to be effective after a blocked module command being unblocked
+  * Avoid unnecessary full sync after master restart in a rare case
+
+-------------------------------------------------------------------
 Fri May 19 11:23:43 UTC 2023 - Jiri Srain <jsrain@suse.com>
 
 - refresh redis-hashes from upstream source
