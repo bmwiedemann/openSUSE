@@ -1406,4 +1406,12 @@ self, run_tests_report, expected_parse_results=None, msg=None)
     <comment></comment>
     <requestid>1081639</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>16e40b2e7908df384ba0765886925f9d</srcmd5>
+    <version>3.1.0</version>
+    <time>1689341736</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1098329</requestid>
+  </revision>
 </revisionlist>
