@@ -1,7 +1,7 @@
 #
 # spec file for package z
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2009 - 2014 Pascal Bleser pascal.bleser@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           z
-Version:        2.7.3
+Version:        2.7.4
 Release:        0
 Summary:        Frontend for compressing and uncompressing
 License:        GPL-2.0-only
