@@ -1,7 +1,7 @@
 #
 # spec file for package libshumate
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define soname libshumate-%{somajor}_%{sominor}-1
 
 Name:           libshumate
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
 Summary:        C library providing a GtkWidget to display maps
 License:        LGPL-2.1-or-later
