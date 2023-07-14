@@ -19144,6 +19144,7 @@ unsorted:
   - openQA-munin 
   - openQA-python-scripts 
   - openQA-single-instance 
+  - openQA-single-instance-nginx 
   - openQA-worker 
   - openSUSE-Addon-NonOss-release 
   - openSUSE-EULAs 
@@ -23330,6 +23331,7 @@ unsorted:
   - python310-azure-keyvault-nspkg 
   - python310-azure-keyvault-secrets 
   - python310-azure-loganalytics 
+  - python310-azure-maps-render 
   - python310-azure-maps-route 
   - python310-azure-media-nspkg 
   - python310-azure-media-videoanalyzer-edge 
@@ -25965,6 +25967,7 @@ unsorted:
   - python310-sybil 
   - python310-sympy 
   - python310-synr 
+  - python310-syrupy 
   - python310-system-hotkey310 
   - python310-system_hotkey 
   - python310-systemd 
@@ -26781,6 +26784,7 @@ unsorted:
   - python311-azure-keyvault-nspkg 
   - python311-azure-keyvault-secrets 
   - python311-azure-loganalytics 
+  - python311-azure-maps-render 
   - python311-azure-maps-route 
   - python311-azure-media-nspkg 
   - python311-azure-media-videoanalyzer-edge 
@@ -29278,6 +29282,7 @@ unsorted:
   - python311-sybil 
   - python311-sympy 
   - python311-synr 
+  - python311-syrupy 
   - python311-system-hotkey310 
   - python311-system_hotkey 
   - python311-systemd 
@@ -30137,6 +30142,7 @@ unsorted:
   - python39-azure-keyvault-nspkg 
   - python39-azure-keyvault-secrets 
   - python39-azure-loganalytics 
+  - python39-azure-maps-render 
   - python39-azure-maps-route 
   - python39-azure-media-nspkg 
   - python39-azure-media-videoanalyzer-edge 
@@ -32770,6 +32776,7 @@ unsorted:
   - python39-sybil 
   - python39-sympy 
   - python39-synr 
+  - python39-syrupy 
   - python39-system-hotkey310 
   - python39-system_hotkey 
   - python39-systemd 
