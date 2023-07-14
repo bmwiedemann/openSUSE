@@ -539,4 +539,14 @@ See changelog in:
     <comment></comment>
     <requestid>1093262</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>43fb6e4b7a2999e6ebcd979f17550926</srcmd5>
+    <version>3.12.2</version>
+    <time>1689341750</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.12.2:
+  * add GetRegistryClient method
+  * chore(deps): bump oras.land/oras-go from 1.2.2 to 1.2.3</comment>
+    <requestid>1098565</requestid>
+  </revision>
 </revisionlist>

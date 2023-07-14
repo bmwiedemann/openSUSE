@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 13 19:40:08 UTC 2023 - dmueller@suse.com
+
+- Update to version 3.12.2:
+  * add GetRegistryClient method
+  * chore(deps): bump oras.land/oras-go from 1.2.2 to 1.2.3
+
+-------------------------------------------------------------------
 Thu Jun 15 06:23:40 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 3.12.1:
