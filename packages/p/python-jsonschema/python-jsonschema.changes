@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jul 14 05:28:43 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- upgrade to 4.18.3:
+  no changelog available, only a diff:
+  https://github.com/python-jsonschema/jsonschema/compare/v4.18.2...v4.18.3
+
+-------------------------------------------------------------------
+Thu Jul 13 04:52:36 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- upgrade to 4.18.2:
+  * Fix an additional regression with the deprecated
+    jsonschema.RefResolver and pointer resolution.
+
+-------------------------------------------------------------------
+Wed Jul 12 10:39:42 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- upgrade to 4.18.1:
+  * Fix a regression with jsonschema.RefResolver based resolution
+    when used in combination with a custom validation dialect (via
+    jsonschema.validators.create).
+-------------------------------------------------------------------
 Thu Jul  6 09:34:43 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 4.18.0
