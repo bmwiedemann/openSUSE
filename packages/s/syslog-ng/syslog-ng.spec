@@ -379,7 +379,7 @@ export AM_YFLAGS=-d
 %if %{with python}
 	--enable-python				\
 	--with-python=%{py_ver}			\
-        --with-python-packages=system           \
+        --with-python-packages=none           \
 %else
 	--disable-python			\
 %endif
