@@ -399,4 +399,24 @@ feat: use _service files to automate fetching sources</comment>
 - More translations</comment>
     <requestid>1077947</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>ab0901e2111bb97085311511e998b01b</srcmd5>
+    <version>1.17.1</version>
+    <time>1689341759</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 1.17.1
+  * Fix mypy warnings
+  * Return empty program_name and window_title in get_active_window_xprop() when
+    xprop results are unexpected (Resolves:
+    https://bugzilla.redhat.com/show_bug.cgi?id=2215466)
+  * Translation update from Weblate
+
+- New option commit_invalid_mode: Choose what happens when a character not in
+  valid input characters is typed
+- Fix a problem in C/POSIX and invalid locales: Use lower() on LC_MESSAGES only
+  if it is a string and not None
+- Use IBus.PreeditFocusMode.COMMIT and make sure the input is cleared and the UI
+  updated when the focus changes (forwarded request 1098624 from hillwood)</comment>
+    <requestid>1098626</requestid>
+  </revision>
 </revisionlist>
