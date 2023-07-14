@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jul 11 17:50:52 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.19.11 (released 2023-07-11) includes a security fix to the
+  net/http package, as well as bug fixes to cgo, the cover tool,
+  the go command, the runtime, and the go/printer package.
+  Refs boo#1200441 go1.19 release tracking
+  CVE-2023-29406
+  * go#61075 go#60374 boo#1213229 security: fix CVE-2023-29406 net/http: insufficient sanitization of Host header
+  * go#60351 cmd/go: go mod tidy introduces ambiguous imports in pruned modules
+  * go#60637 cmd/pprof: skip TestDisasm flaky failures on linux/arm64
+  * go#60697 cmd/go: go list fails with submodules which have test-only dependencies
+  * go#60710 cmd/go: go list -export -e outputs errors to stderr and has non-zero exit code
+  * go#60844 runtime: SIGSEGV in race + coverage mode
+  * go#60948 runtime: goroutines that stop after calling runtime.RaceDisable break race detector
+  * go#61054 runtime: TestWindowsStackMemory flakes on windows-386-2016
+
+-------------------------------------------------------------------
 Tue Jun  6 19:13:57 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.19.10 (released 2023-06-06) includes four security fixes to
