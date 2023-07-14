@@ -1,7 +1,7 @@
 #
 # spec file for package libdispatch
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,14 +75,14 @@ export CC=clang
 export CXX=clang++
 # clang doesn't have 'auto'
 # aarch64 specific flag
-%ifarch aarch64
+%ifarch aarch64 riscv64
 export CFLAGS="%{optflags} -Wno-unused-command-line-argument"
 %else
 export CFLAGS="%{optflags}"
 %endif
 CFLAGS=${CFLAGS/-flto=auto/-flto}
 
-%ifarch aarch64
+%ifarch aarch64 riscv64
 export CXXFLAGS="%{optflags} -Wno-unused-command-line-argument"
 %else
 export CXXFLAGS="%{optflags}"
