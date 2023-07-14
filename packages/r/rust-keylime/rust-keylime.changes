@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Jul 14 07:31:23 UTC 2023 - aplanas@suse.com
+
+- Update to version 0.2.2+git.1689256829.3d2b627:
+  * Bump version to 0.2.2
+  * build(deps): bump tempfile from 3.5.0 to 3.6.0
+  * removing SIGINT stop signals from Dockerfiles and systemd service, as well as adding SIGTERM to IMA emulator as shutdown signal
+
+-------------------------------------------------------------------
+Wed Jul 12 14:17:39 UTC 2023 - aplanas@suse.com
+
+- Update to version 0.2.1+git.1689167094.67ce0cf:
+  * cargo: Bump serde to version 1.0.166
+  * build(deps): bump libc from 0.2.142 to 0.2.147
+  * adding release Dockerfiles in 3 flavours: fedora, distroless and wolfi
+  * hash: add more configurable hash algorithm for public key digest
+  * cargo: Update clap to version 4.3.11
+  * cargo: Bump tokio crate version to 1.28.2
+  * Add an example of IMA policy
+  * main: Gracefully shutdown on SIGTERM or SIGINT
+  * cargo: Bump proc-macro2 crate version
+  * revocation: Parse revocation actions flexibly
+  * crypto: Add unit tests for x509 functions
+  * crypto: Make internal functions private
+  * config: Add unit test for the list to files mapping
+  * config: Make trusted_client_ca to accept lists
+  * lib: Implement parser for lists from config file
+  * build(deps): bump openssl from 0.10.48 to 0.10.55
+  * Add secure mount sanity test to packit testing.
+  * [packit] Do not let COPR project expire
+
+-------------------------------------------------------------------
 Wed Jun  7 09:08:22 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Recommends the IMA Policy subpackage only if SELinux is configured
