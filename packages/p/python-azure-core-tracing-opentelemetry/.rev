@@ -32,4 +32,16 @@
 - Update BuildRequires and Requires from setup.py (forwarded request 890388 from glaubitz)</comment>
     <requestid>890748</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8296ebc80447d3ae2547d95f78478eb2</srcmd5>
+    <version>1.0.0b10</version>
+    <time>1689346427</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b10
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update BuildRequires and Requires from setup.py (forwarded request 1098416 from glaubitz)</comment>
+    <requestid>1098534</requestid>
+  </revision>
 </revisionlist>
