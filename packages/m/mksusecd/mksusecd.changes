@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Thu Jul 13 16:52:52 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#66
+- add --volume1 option to allow setting separate labels for both
+  ISO file systems (bsc#1213185)
+- 2.11
+
+--------------------------------------------------------------------
 Tue Mar 21 17:21:28 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mksusecd#65
