@@ -49,7 +49,7 @@
 %endif
 
 Name:           osc
-Version:        1.1.4
+Version:        1.2.0
 Release:        0
 Summary:        Command-line client for the Open Build Service
 License:        GPL-2.0-or-later
@@ -119,7 +119,7 @@ Recommends:     xdg-utils
 Provides:       %{use_python_pkg}-osc
 
 %description
-OpenSUSE Commander is a command-line client for the Open Build Service.
+openSUSE Commander is a command-line client for the Open Build Service.
 
 See http://en.opensuse.org/openSUSE:OSC, as well as
 http://en.opensuse.org/openSUSE:Build_Service_Tutorial
@@ -145,7 +145,7 @@ PYTHONPATH=. argparse-manpage \
     --function=get_parser \
     --project-name=osc \
     --prog=osc \
-    --description="OpenSUSE Commander" \
+    --description="openSUSE Commander" \
     --author="Contributors to the osc project. See the project's GIT history for the complete list." \
     --url="https://github.com/openSUSE/osc/"
 %endif
