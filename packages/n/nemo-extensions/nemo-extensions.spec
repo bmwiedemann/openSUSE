@@ -1,7 +1,7 @@
 #
 # spec file for package nemo-extensions
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ Source:         https://github.com/linuxmint/%{name}/archive/%{version}.tar.gz#/
 Patch4:         nemo-share-prevent-privilege-escalation.patch
 # PATCH-FIX-UPSTREAM FTBFS-setuptools-61.0.patch -- fix build with setuptools 61.0
 Patch5:         FTBFS-setuptools-61.0.patch
+# PATCH-FIX-OPENSUSE fix-hwcaps.patch bsc#1212482
+Patch6:         fix-hwcaps.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext-runtime
 BuildRequires:  gnome-common

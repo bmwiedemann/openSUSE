@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 11 06:10:53 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add fix-hwcaps.patch to fix the issue with Segmentation
+  fault with libpython3_11-1_0-x86-64-v3
+  (bsc#1212482)
+-------------------------------------------------------------------
 Mon Oct  3 02:50:43 UTC 2022 - Marguerite Su <i@marguerite.su>
 
 - add FTBFS-setuptools-61.0.patch
