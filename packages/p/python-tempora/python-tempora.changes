@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jul 12 22:50:07 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * require 3.8 or later
+  * Changelog got renamed to NEWS
+
+- update to version 5.5.0:
+  * Features
+    + Stopwatch now uses time.monotonic.
+
+- changes from version 5.4.0:
+  * Features
+    + Require Python 3.8 or later.
+
+- changes from version 5.3.0:
+  * #24: Removed use of datetime.utc** functions deprecated in Python
+     3.12.
+
+-------------------------------------------------------------------
 Thu May  4 21:03:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.2.2:

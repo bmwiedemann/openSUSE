@@ -22,15 +22,14 @@
 %else
 %bcond_with libalternatives
 %endif
-%{?sle15_python_module_pythons}
 Name:           python-tempora
-Version:        5.2.2
+Version:        5.5.0
 Release:        0
 Summary:        Objects and routines pertaining to date and time (tempora)
 License:        MIT
 URL:            https://github.com/jaraco/tempora
 Source:         https://files.pythonhosted.org/packages/source/t/tempora/tempora-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module jaraco.functools >= 1.20}
 BuildRequires:  %{python_module pip}
@@ -46,6 +45,7 @@ BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-jaraco.functools >= 1.20
 Requires:       python-pytz
 BuildArch:      noarch
+%{?sle15_python_module_pythons}
 %if %{with libalternatives}
 BuildRequires:  alts
 Requires:       alts
@@ -93,7 +93,7 @@ donttest="tempora.parse_timedelta"
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGES.rst README.rst docs/*rst
+%doc NEWS.rst README.rst docs/*rst
 %python_alternative %{_bindir}/calc-prorate
 %{python_sitelib}/tempora
 %{python_sitelib}/tempora-%{version}.dist-info
