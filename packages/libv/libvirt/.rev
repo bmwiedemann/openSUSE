@@ -4365,4 +4365,23 @@ StandardGroups in rpmlint package.
     <comment>- spec: Don't move apparmor profiles to modular daemon subpackages</comment>
     <requestid>1093000</requestid>
   </revision>
+  <revision rev="378" vrev="1">
+    <srcmd5>f149bfe8e0faec1c30f1991b567db154</srcmd5>
+    <version>9.5.0</version>
+    <time>1689455697</time>
+    <user>dimstar_suse</user>
+    <comment>- libxl: Improve handling of errors across migration phases
+  bsc#1213186
+- apparmor: Support local overrides in all profiles and abstractions
+  spec: Don't replace /etc/apparmor.d/&lt;profile&gt; on package upgrade
+  spec: No longer package empty /etc/apparmor.d/local/* files
+  bsc#1211472
+- Update to libvirt 9.5.0
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v9-5-0-2023-07-03
+  - Add upstream commit 5f7f6ceb47 to fix builds on Leap 15.x
+  - Drop downstream commit adding SUSE-specific migration
+    parameters</comment>
+    <requestid>1098574</requestid>
+  </revision>
 </revisionlist>

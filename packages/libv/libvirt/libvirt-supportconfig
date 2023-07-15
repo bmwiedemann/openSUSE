@@ -3,7 +3,6 @@
 # Name:        Supportconfig Plugin for libvirt
 # Description: Gathers important troubleshooting information
 #              about libvirt
-# Author:      Jim Fehlig <jfehlig@suse.com>
 #############################################################
 
 RCFILE="/usr/lib/supportconfig/resources/scplugin.rc"

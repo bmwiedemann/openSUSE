@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jul 13 20:07:10 UTC 2023 - James Fehlig <jfehlig@suse.com>
+
+- libxl: Improve handling of errors across migration phases
+  bsc#1213186
+- apparmor: Support local overrides in all profiles and abstractions
+  spec: Don't replace /etc/apparmor.d/<profile> on package upgrade
+  spec: No longer package empty /etc/apparmor.d/local/* files
+  bsc#1211472
+
+-------------------------------------------------------------------
+Thu Jul  6 16:09:49 UTC 2023 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 9.5.0
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v9-5-0-2023-07-03
+  - Add upstream commit 5f7f6ceb47 to fix builds on Leap 15.x
+  - Drop downstream commit adding SUSE-specific migration
+    parameters
+
+-------------------------------------------------------------------
 Tue Jun 13 22:28:33 UTC 2023 - James Fehlig <jfehlig@suse.com>
 
 - spec: Don't move apparmor profiles to modular daemon subpackages
