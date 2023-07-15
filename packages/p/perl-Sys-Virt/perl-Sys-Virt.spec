@@ -25,7 +25,6 @@ License:        ClArtistic OR GPL-2.0-or-later
 Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/Sys-Virt
 Source:         %{cpan_name}-%{version}.tar.gz
-Patch0:         suse-set-migration-constraints.patch
 # Build
 BuildRequires:  libvirt-devel >= %{version}
 BuildRequires:  perl(ExtUtils::CBuilder)
@@ -58,7 +57,6 @@ virtualization containers to be managed with a consistent API.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
-%patch0 -p1
 
 %build
 %{__perl} Build.PL installdirs=vendor
