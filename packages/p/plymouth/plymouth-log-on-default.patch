@@ -1,6 +1,6 @@
-diff -Nura plymouth-0.9.5~git20220801.eb1b893/src/libply/ply-buffer.c plymouth-0.9.5~git20220801.eb1b893_new/src/libply/ply-buffer.c
---- plymouth-0.9.5~git20220801.eb1b893/src/libply/ply-buffer.c	2022-04-15 16:39:24.000000000 +0800
-+++ plymouth-0.9.5~git20220801.eb1b893_new/src/libply/ply-buffer.c	2022-08-04 16:27:35.810694440 +0800
+diff -Nura plymouth-22.02.122+180.b1d5aa9/src/libply/ply-buffer.c plymouth-22.02.122+180.b1d5aa9_new/src/libply/ply-buffer.c
+--- plymouth-22.02.122+180.b1d5aa9/src/libply/ply-buffer.c	2022-11-28 18:33:06.000000000 +0800
++++ plymouth-22.02.122+180.b1d5aa9_new/src/libply/ply-buffer.c	2023-07-12 22:25:31.095721303 +0800
 @@ -46,6 +46,10 @@
  #define PLY_BUFFER_MAX_BUFFER_CAPACITY (255 * 4096)
  #endif
@@ -33,11 +33,11 @@ diff -Nura plymouth-0.9.5~git20220801.eb1b893/src/libply/ply-buffer.c plymouth-0
  void
  ply_buffer_remove_bytes (ply_buffer_t *buffer,
                           size_t        bytes_to_remove)
-@@ -205,6 +223,38 @@
+@@ -206,6 +224,37 @@
+         buffer->data[buffer->size] = '\0';
  }
  
- void
-+ply_buffer_append_log_bytes (ply_buffer_t *buffer,
++void ply_buffer_append_log_bytes (ply_buffer_t *buffer,
 +                             const void   *bytes_in,
 +                             size_t        length)
 +{
@@ -47,7 +47,7 @@ diff -Nura plymouth-0.9.5~git20220801.eb1b893/src/libply/ply-buffer.c plymouth-0
 +
 +    const uint8_t *bytes = bytes_in;
 +
-+    if (length > PLY_BUFFER_MAX_BUFFER_CAPACITY) 
++    if (length > PLY_BUFFER_MAX_BUFFER_CAPACITY)
 +    {
 +        bytes += length - (PLY_BUFFER_MAX_BUFFER_CAPACITY - 1);
 +        length = (PLY_BUFFER_MAX_BUFFER_CAPACITY - 1);
@@ -68,13 +68,12 @@ diff -Nura plymouth-0.9.5~git20220801.eb1b893/src/libply/ply-buffer.c plymouth-0
 +    buffer->data[buffer->size] = '\0';
 +}
 +
-+void
+ void
  ply_buffer_append_from_fd (ply_buffer_t *buffer,
                             int           fd)
- {
-diff -Nura plymouth-0.9.5~git20220801.eb1b893/src/libply/ply-buffer.h plymouth-0.9.5~git20220801.eb1b893_new/src/libply/ply-buffer.h
---- plymouth-0.9.5~git20220801.eb1b893/src/libply/ply-buffer.h	2022-04-15 16:39:24.000000000 +0800
-+++ plymouth-0.9.5~git20220801.eb1b893_new/src/libply/ply-buffer.h	2022-08-04 16:27:35.810694440 +0800
+diff -Nura plymouth-22.02.122+180.b1d5aa9/src/libply/ply-buffer.h plymouth-22.02.122+180.b1d5aa9_new/src/libply/ply-buffer.h
+--- plymouth-22.02.122+180.b1d5aa9/src/libply/ply-buffer.h	2022-11-27 00:45:52.000000000 +0800
++++ plymouth-22.02.122+180.b1d5aa9_new/src/libply/ply-buffer.h	2023-07-12 22:20:11.765612637 +0800
 @@ -35,6 +35,10 @@
                                const void   *bytes,
                                size_t        number_of_bytes);
@@ -86,93 +85,41 @@ diff -Nura plymouth-0.9.5~git20220801.eb1b893/src/libply/ply-buffer.h plymouth-0
  void ply_buffer_append_from_fd (ply_buffer_t *buffer,
                                  int           fd);
  #define ply_buffer_append(buffer, format, args ...)                             \
-diff -Nura plymouth-0.9.5~git20220801.eb1b893/src/main.c plymouth-0.9.5~git20220801.eb1b893_new/src/main.c
---- plymouth-0.9.5~git20220801.eb1b893/src/main.c	2022-08-02 21:28:28.000000000 +0800
-+++ plymouth-0.9.5~git20220801.eb1b893_new/src/main.c	2022-08-04 17:37:22.768631505 +0800
-@@ -1225,8 +1225,7 @@
+diff -Nura plymouth-22.02.122+180.b1d5aa9/src/main.c plymouth-22.02.122+180.b1d5aa9_new/src/main.c
+--- plymouth-22.02.122+180.b1d5aa9/src/main.c	2023-06-08 10:49:58.000000000 +0800
++++ plymouth-22.02.122+180.b1d5aa9_new/src/main.c	2023-07-12 22:38:56.846042006 +0800
+@@ -1283,8 +1283,7 @@
          }
  
          /* do not let any tty opened where we could write after deactivate */
 -        if (ply_kernel_command_line_has_argument ("plymouth.debug"))
 -                ply_logger_close_file (ply_logger_get_error_default ());
-+        ply_logger_close_file (ply_logger_get_error_default ());
++	ply_logger_close_file (ply_logger_get_error_default ());
  }
  
  static void
-@@ -1853,77 +1852,42 @@
+@@ -1916,6 +1915,7 @@
          state->is_attached = false;
  }
  
--static void
--check_verbosity (state_t *state)
-+static void initialize_debug (state_t *state)
++#if 0
+ static void
+ check_verbosity (state_t *state)
  {
--        char *stream;
--
--        ply_trace ("checking if tracing should be enabled");
--
--        if (!debug_buffer_path)
--                debug_buffer_path = ply_kernel_command_line_get_key_value ("plymouth.debug=file:");
--
--        stream = ply_kernel_command_line_get_key_value ("plymouth.debug=stream:");
--        if (stream != NULL || debug_buffer_path != NULL ||
--            ply_kernel_command_line_has_argument ("plymouth.debug")) {
--                int fd;
--
--                ply_trace ("tracing should be enabled!");
--                if (!ply_is_tracing ())
--                        ply_toggle_tracing ();
--
--                if (debug_buffer == NULL)
--                        debug_buffer = ply_buffer_new ();
--
--                if (stream != NULL) {
--                        ply_trace ("streaming debug output to %s instead of screen", stream);
--                        fd = open (stream, O_RDWR | O_NOCTTY | O_CREAT, 0600);
--
--                        if (fd < 0)
--                                ply_trace ("could not stream output to %s: %m", stream);
--                        else
--                                ply_logger_set_output_fd (ply_logger_get_error_default (), fd);
--                        free (stream);
--                } else {
--                        const char *device;
--                        char *file;
--
--                        device = state->default_tty;
--
--                        ply_trace ("redirecting debug output to %s", device);
--
--                        if (strncmp (device, "/dev/", strlen ("/dev/")) == 0)
--                                file = strdup (device);
--                        else
--                                asprintf (&file, "/dev/%s", device);
+@@ -1988,6 +1988,45 @@
+                                        debug_buffer);
+         }
+ }
++#endif
++
++static void initialize_debug (state_t *state)
++{
 +    if (!ply_is_tracing ())
 +        ply_toggle_tracing ();
- 
--                        fd = open (file, O_RDWR | O_APPEND);
++
 +    if (debug_buffer == NULL)
 +        debug_buffer = ply_buffer_new ();
- 
--                        if (fd < 0)
--                                ply_trace ("could not redirected debug output to %s: %m", device);
--                        else
--                                ply_logger_set_output_fd (ply_logger_get_error_default (), fd);
--
--                        free (file);
--                }
--        } else {
--                ply_trace ("tracing shouldn't be enabled!");
--        }
--
--        if (debug_buffer != NULL) {
--                if (debug_buffer_path == NULL) {
--                        if (state->mode == PLY_BOOT_SPLASH_MODE_SHUTDOWN ||
--                            state->mode == PLY_BOOT_SPLASH_MODE_REBOOT)
--                                debug_buffer_path = strdup (PLYMOUTH_LOG_DIRECTORY "/plymouth-shutdown-debug.log");
--                        else
--                                debug_buffer_path = strdup (PLYMOUTH_LOG_DIRECTORY "/plymouth-debug.log");
--                }
++
 +    char *stream = ply_kernel_command_line_get_key_value ("plymouth.debug=stream:");
 +    if (stream != NULL)
 +    {
@@ -194,45 +141,46 @@ diff -Nura plymouth-0.9.5~git20220801.eb1b893/src/main.c plymouth-0.9.5~git20220
 +        else
 +            debug_buffer_path = strdup (PLYMOUTH_LOG_DIRECTORY "/plymouth-debug.log");
 +    }
- 
--                ply_logger_add_filter (ply_logger_get_error_default (),
--                                       (ply_logger_filter_handler_t)
--                                       on_error_message,
--                                       debug_buffer);
--        }
++
 +    if (debug_buffer != NULL)
 +    {
-+          ply_logger_add_filter (ply_logger_get_error_default (), 
-+                                 (ply_logger_filter_handler_t) on_error_message, 
++          ply_logger_add_filter (ply_logger_get_error_default (),
++                                 (ply_logger_filter_handler_t) on_error_message,
 +                                 debug_buffer);
 +    }
- }
++}
  
  static void
-@@ -2007,7 +1971,7 @@
+ check_logging (state_t *state)
+@@ -2074,8 +2113,10 @@
+                         ply_trace ("going to go with '%s'", state->default_tty);
                  }
          }
- 
--        check_verbosity (state);
+-
++#if 0
+         check_verbosity (state);
++#endif
 +        initialize_debug (state);
          check_logging (state);
  
          ply_trace ("source built on %s", __DATE__);
-@@ -2033,7 +1997,7 @@
+@@ -2101,7 +2142,10 @@
                    const void   *bytes,
                    size_t        number_of_bytes)
  {
--        ply_buffer_append_bytes (debug_buffer, bytes, number_of_bytes);
++#if 0
+         ply_buffer_append_bytes (debug_buffer, bytes, number_of_bytes);
++#endif
 +        ply_buffer_append_log_bytes (debug_buffer, bytes, number_of_bytes);
  }
  
  static void
-@@ -2156,7 +2120,7 @@
+@@ -2224,7 +2268,7 @@
          bool should_help = false;
          bool no_boot_log = false;
          bool no_daemon = false;
 -        bool debug = false;
 +        bool debug = true;
          bool ignore_serial_consoles = false;
+         bool graphical_boot = false;
          bool attach_to_session;
-         ply_daemon_handle_t *daemon_handle = NULL;

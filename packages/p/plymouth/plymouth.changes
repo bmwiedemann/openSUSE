@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Jul 10 12:18:29 UTC 2023 - Cliff Zhao <qzhao@suse.com>
+
+- Update to 22.02.122+94.4bd41a3:
+  * Port build system to Meson;
+  * device-manager: Support kernels with CONFIG_VT=n;
+  * Fix terminal crash;
+  * terminal: Add API for flushing input buffer;
+  * device-manager: Only wait for device timeout for framebuffer devices;
+  * scripts: Update keymap-render script to handle xkb keymaps too;
+  * drm: Add support for new /dev/input feature;
+  * frame-buffer: Add support for new /dev/input feature;
+  * src: Hide console text when splash is requested;
+  * script: adds a new native GetCapslockState function to lib-plymouth;
+- Add plymouth-adapts-xkbommon.patch:
+  xkbommon in openSUSE install to a specify location, this modify to make
+  plymouth adapt with it to build.
+- Rebase plymouth-crash-avoid-on-keyboard-remove-input-handler.patch:
+  To fit with the update.
+- Rebase plymouth-disable-fedora-logo.patch:
+  To fit with the update.
+- Rebase plymouth-log-on-default.patch:
+  To fit with the update.
+- Update plymouth.spec:
+  To fit with the update.
+  Make plymouth use Tumbleweed/Leap's logo instead of upstream's.
+- Drop plymouth-manpages.patch:
+  openSUSE fix the problem in other side, "man 1 plymouth" and
+  "man 8 plymouth" all works withouth this patch (bnc#871419).
+
+-------------------------------------------------------------------
 Mon May 22 10:32:49 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Proporly list services as parameters to
@@ -18,15 +48,15 @@ Wed Oct 26 07:12:23 UTC 2022 - Cliff Zhao <qzhao@suse.com>
 - Update to version 22.02.122+94.4bd41a3:
   * plugins: label-freetype: Fixes calculation of line width.
   * plugins: label-freetype: Fix font alignment.
-  * populate-initrd: Install label-freetype plugin into initrd if 
+  * populate-initrd: Install label-freetype plugin into initrd if
     available.
   * plugins: Add FreeType-based label plugin.
   * ply-label: Don't crash if label plugin fails.
   * details: Don't replay boot buffer on serial consoles.
   * main: Add "reload" command.
-  * ply-device-manager: Add plymouth.force-frame-buffer-on-boot 
+  * ply-device-manager: Add plymouth.force-frame-buffer-on-boot
     parameter, allow to choose force framebuffer mode.
-  * systemd: Add mkinitcpio support to 
+  * systemd: Add mkinitcpio support to
     plymouth-switch-root-initramfs.service.
   * Rebase plymouth-only_use_fb_for_cirrus_bochs.patch;
     for build success.
@@ -47,7 +77,7 @@ Thu Oct  6 11:20:28 UTC 2022 - Cliff Zhao <qzhao@suse.com>
 - Update to version 22.02.122+77.c09c651:
   * ply-device-manager: Move verify_drm_device() higher up in the
     file.
-  * ply-device-manager: Also ignore SimpleDRM devs in coldplug 
+  * ply-device-manager: Also ignore SimpleDRM devs in coldplug
     enumeration path
   * Rebase plymouth-only_use_fb_for_cirrus_bochs.patch.
 
@@ -77,7 +107,7 @@ Wed Aug  31 14:31:39 UTC 2022 - Cliff Zhao <qzhao@suse.com>
 
 - Update to version 22.02.122+70.614d2db:
   drm: ignore non-desktop outputs
-  It doesn't make sense to display a boot screen on virtual reality 
+  It doesn't make sense to display a boot screen on virtual reality
   headsets.
 
 -------------------------------------------------------------------

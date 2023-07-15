@@ -1,0 +1,181 @@
+diff -Nura plymouth-22.02.122+180.b1d5aa9/meson.build plymouth-22.02.122+180.b1d5aa9_new/meson.build
+--- plymouth-22.02.122+180.b1d5aa9/meson.build	2023-01-17 12:10:48.000000000 +0800
++++ plymouth-22.02.122+180.b1d5aa9_new/meson.build	2023-07-12 12:44:44.005586635 +0800
+@@ -88,6 +88,9 @@
+ )
+ config_h_inc = include_directories('.')
+ 
++# xkbcommmon header files install position changed in openSUSE
++xkbcommon_h_inc = xkbcommon_dep.get_pkgconfig_variable('includedir')
++
+ # Subdirectories
+ subdir('images')
+ subdir('po')
+diff -Nura plymouth-22.02.122+180.b1d5aa9/src/libply-splash-core/meson.build plymouth-22.02.122+180.b1d5aa9_new/src/libply-splash-core/meson.build
+--- plymouth-22.02.122+180.b1d5aa9/src/libply-splash-core/meson.build	2022-11-28 18:33:06.000000000 +0800
++++ plymouth-22.02.122+180.b1d5aa9_new/src/libply-splash-core/meson.build	2023-07-12 13:47:24.191559213 +0800
+@@ -38,7 +38,7 @@
+   libply_splash_core_sources,
+   dependencies: libply_splash_core_public_deps + libply_splash_core_private_deps,
+   c_args: libply_splash_core_cflags,
+-  include_directories: config_h_inc,
++  include_directories: [config_h_inc, xkbcommon_h_inc],
+   version: plymouth_soversion,
+   install: true,
+ )
+diff -Nura plymouth-22.02.122+180.b1d5aa9/src/libply-splash-graphics/meson.build plymouth-22.02.122+180.b1d5aa9_new/src/libply-splash-graphics/meson.build
+--- plymouth-22.02.122+180.b1d5aa9/src/libply-splash-graphics/meson.build	2022-11-27 00:45:52.000000000 +0800
++++ plymouth-22.02.122+180.b1d5aa9_new/src/libply-splash-graphics/meson.build	2023-07-12 12:47:06.293507068 +0800
+@@ -27,7 +27,7 @@
+   libply_splash_graphics_sources,
+   dependencies: libply_splash_graphics_deps,
+   c_args: libply_splash_graphics_cflags,
+-  include_directories: config_h_inc,
++  include_directories: [config_h_inc, xkbcommon_h_inc],
+   version: plymouth_soversion,
+   install: true,
+ )
+diff -Nura plymouth-22.02.122+180.b1d5aa9/src/meson.build plymouth-22.02.122+180.b1d5aa9_new/src/meson.build
+--- plymouth-22.02.122+180.b1d5aa9/src/meson.build	2023-01-17 12:10:48.000000000 +0800
++++ plymouth-22.02.122+180.b1d5aa9_new/src/meson.build	2023-07-12 12:46:14.453171724 +0800
+@@ -33,7 +33,7 @@
+   dependencies: plymouthd_deps,
+   c_args: plymouthd_cflags,
+   export_dynamic: true,
+-  include_directories: config_h_inc,
++  include_directories: [config_h_inc, xkbcommon_h_inc],
+   install: true,
+   install_dir: get_option('sbindir'),
+ )
+diff -Nura plymouth-22.02.122+180.b1d5aa9/src/plugins/controls/label-freetype/meson.build plymouth-22.02.122+180.b1d5aa9_new/src/plugins/controls/label-freetype/meson.build
+--- plymouth-22.02.122+180.b1d5aa9/src/plugins/controls/label-freetype/meson.build	2022-11-27 00:45:52.000000000 +0800
++++ plymouth-22.02.122+180.b1d5aa9_new/src/plugins/controls/label-freetype/meson.build	2023-07-12 12:50:00.551634310 +0800
+@@ -6,7 +6,7 @@
+     libply_splash_core_dep,
+     libply_splash_graphics_dep,
+   ],
+-  include_directories: config_h_inc,
++  include_directories: [config_h_inc, xkbcommon_h_inc],
+   name_prefix: '',
+   install: true,
+   install_dir: plymouth_plugin_path,
+diff -Nura plymouth-22.02.122+180.b1d5aa9/src/plugins/controls/label-pango/meson.build plymouth-22.02.122+180.b1d5aa9_new/src/plugins/controls/label-pango/meson.build
+--- plymouth-22.02.122+180.b1d5aa9/src/plugins/controls/label-pango/meson.build	2022-11-27 00:45:52.000000000 +0800
++++ plymouth-22.02.122+180.b1d5aa9_new/src/plugins/controls/label-pango/meson.build	2023-07-12 12:48:43.638136777 +0800
+@@ -8,7 +8,7 @@
+     libply_splash_core_dep,
+     libply_splash_graphics_dep,
+   ],
+-  include_directories: config_h_inc,
++  include_directories: [config_h_inc, xkbcommon_h_inc],
+   name_prefix: '',
+   install: true,
+   install_dir: plymouth_plugin_path,
+diff -Nura plymouth-22.02.122+180.b1d5aa9/src/plugins/renderers/drm/meson.build plymouth-22.02.122+180.b1d5aa9_new/src/plugins/renderers/drm/meson.build
+--- plymouth-22.02.122+180.b1d5aa9/src/plugins/renderers/drm/meson.build	2022-11-27 00:45:52.000000000 +0800
++++ plymouth-22.02.122+180.b1d5aa9_new/src/plugins/renderers/drm/meson.build	2023-07-12 13:54:44.834359051 +0800
+@@ -5,7 +5,7 @@
+     libply_splash_core_dep,
+     libdrm_dep,
+   ],
+-  include_directories: config_h_inc,
++  include_directories: [config_h_inc, xkbcommon_h_inc],
+   name_prefix: '',
+   install: true,
+   install_dir: plymouth_plugin_path / 'renderers',
+diff -Nura plymouth-22.02.122+180.b1d5aa9/src/plugins/renderers/frame-buffer/meson.build plymouth-22.02.122+180.b1d5aa9_new/src/plugins/renderers/frame-buffer/meson.build
+--- plymouth-22.02.122+180.b1d5aa9/src/plugins/renderers/frame-buffer/meson.build	2022-11-27 00:45:52.000000000 +0800
++++ plymouth-22.02.122+180.b1d5aa9_new/src/plugins/renderers/frame-buffer/meson.build	2023-07-12 13:53:58.530064834 +0800
+@@ -4,7 +4,7 @@
+     libply_dep,
+     libply_splash_core_dep,
+   ],
+-  include_directories: config_h_inc,
++  include_directories: [config_h_inc, xkbcommon_h_inc],
+   name_prefix: '',
+   install: true,
+   install_dir: plymouth_plugin_path / 'renderers',
+diff -Nura plymouth-22.02.122+180.b1d5aa9/src/plugins/splash/details/meson.build plymouth-22.02.122+180.b1d5aa9_new/src/plugins/splash/details/meson.build
+--- plymouth-22.02.122+180.b1d5aa9/src/plugins/splash/details/meson.build	2022-11-27 00:45:52.000000000 +0800
++++ plymouth-22.02.122+180.b1d5aa9_new/src/plugins/splash/details/meson.build	2023-07-12 13:49:53.648508853 +0800
+@@ -4,7 +4,7 @@
+     libply_splash_core_dep,
+     libply_splash_graphics_dep,
+   ],
+-  include_directories: config_h_inc,
++  include_directories: [config_h_inc, xkbcommon_h_inc],
+   name_prefix: '',
+   install: true,
+   install_dir: plymouth_plugin_path,
+diff -Nura plymouth-22.02.122+180.b1d5aa9/src/plugins/splash/fade-throbber/meson.build plymouth-22.02.122+180.b1d5aa9_new/src/plugins/splash/fade-throbber/meson.build
+--- plymouth-22.02.122+180.b1d5aa9/src/plugins/splash/fade-throbber/meson.build	2022-11-27 00:45:52.000000000 +0800
++++ plymouth-22.02.122+180.b1d5aa9_new/src/plugins/splash/fade-throbber/meson.build	2023-07-12 12:50:48.887945382 +0800
+@@ -10,7 +10,7 @@
+     '-DPLYMOUTH_BACKGROUND_START_COLOR=@0@'.format(get_option('background-start-color-stop')),
+     '-DPLYMOUTH_BACKGROUND_END_COLOR=@0@'.format(get_option('background-end-color-stop')),
+   ],
+-  include_directories: config_h_inc,
++  include_directories: [config_h_inc, xkbcommon_h_inc],
+   name_prefix: '',
+   install: true,
+   install_dir: plymouth_plugin_path,
+diff -Nura plymouth-22.02.122+180.b1d5aa9/src/plugins/splash/script/meson.build plymouth-22.02.122+180.b1d5aa9_new/src/plugins/splash/script/meson.build
+--- plymouth-22.02.122+180.b1d5aa9/src/plugins/splash/script/meson.build	2022-11-27 00:45:52.000000000 +0800
++++ plymouth-22.02.122+180.b1d5aa9_new/src/plugins/splash/script/meson.build	2023-07-12 13:52:52.754646902 +0800
+@@ -49,7 +49,7 @@
+   c_args: [
+     '-DPLYMOUTH_LOGO_FILE="@0@"'.format(plymouth_logo_file),
+   ],
+-  include_directories: config_h_inc,
++  include_directories: [config_h_inc, xkbcommon_h_inc],
+   name_prefix: '',
+   install: true,
+   install_dir: plymouth_plugin_path,
+diff -Nura plymouth-22.02.122+180.b1d5aa9/src/plugins/splash/space-flares/meson.build plymouth-22.02.122+180.b1d5aa9_new/src/plugins/splash/space-flares/meson.build
+--- plymouth-22.02.122+180.b1d5aa9/src/plugins/splash/space-flares/meson.build	2022-11-27 00:45:52.000000000 +0800
++++ plymouth-22.02.122+180.b1d5aa9_new/src/plugins/splash/space-flares/meson.build	2023-07-12 13:51:24.641087030 +0800
+@@ -7,7 +7,7 @@
+   c_args: [
+     '-DPLYMOUTH_LOGO_FILE="@0@"'.format(plymouth_logo_file),
+   ],
+-  include_directories: config_h_inc,
++  include_directories: [config_h_inc, xkbcommon_h_inc],
+   name_prefix: '',
+   install: true,
+   install_dir: plymouth_plugin_path,
+diff -Nura plymouth-22.02.122+180.b1d5aa9/src/plugins/splash/text/meson.build plymouth-22.02.122+180.b1d5aa9_new/src/plugins/splash/text/meson.build
+--- plymouth-22.02.122+180.b1d5aa9/src/plugins/splash/text/meson.build	2022-11-27 00:45:52.000000000 +0800
++++ plymouth-22.02.122+180.b1d5aa9_new/src/plugins/splash/text/meson.build	2023-07-12 13:49:05.472202743 +0800
+@@ -4,7 +4,7 @@
+     libply_splash_core_dep,
+     libply_splash_graphics_dep,
+   ],
+-  include_directories: config_h_inc,
++  include_directories: [config_h_inc, xkbcommon_h_inc],
+   name_prefix: '',
+   install: true,
+   install_dir: plymouth_plugin_path,
+diff -Nura plymouth-22.02.122+180.b1d5aa9/src/plugins/splash/tribar/meson.build plymouth-22.02.122+180.b1d5aa9_new/src/plugins/splash/tribar/meson.build
+--- plymouth-22.02.122+180.b1d5aa9/src/plugins/splash/tribar/meson.build	2022-11-27 00:45:52.000000000 +0800
++++ plymouth-22.02.122+180.b1d5aa9_new/src/plugins/splash/tribar/meson.build	2023-07-12 13:52:09.810374034 +0800
+@@ -3,7 +3,7 @@
+   dependencies: [
+     libply_splash_core_dep,
+   ],
+-  include_directories: config_h_inc,
++  include_directories: [config_h_inc, xkbcommon_h_inc],
+   name_prefix: '',
+   install: true,
+   install_dir: plymouth_plugin_path,
+diff -Nura plymouth-22.02.122+180.b1d5aa9/src/plugins/splash/two-step/meson.build plymouth-22.02.122+180.b1d5aa9_new/src/plugins/splash/two-step/meson.build
+--- plymouth-22.02.122+180.b1d5aa9/src/plugins/splash/two-step/meson.build	2022-11-27 00:45:52.000000000 +0800
++++ plymouth-22.02.122+180.b1d5aa9_new/src/plugins/splash/two-step/meson.build	2023-07-12 13:50:43.232823908 +0800
+@@ -8,7 +8,7 @@
+     '-DPLYMOUTH_BACKGROUND_START_COLOR=@0@'.format(get_option('background-start-color-stop')),
+     '-DPLYMOUTH_BACKGROUND_END_COLOR=@0@'.format(get_option('background-end-color-stop')),
+   ],
+-  include_directories: config_h_inc,
++  include_directories: [config_h_inc, xkbcommon_h_inc],
+   name_prefix: '',
+   install: true,
+   install_dir: plymouth_plugin_path,
