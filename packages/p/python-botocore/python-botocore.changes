@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Tue Jul 11 12:06:56 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.31.2:
+  * bugfix:s3: Fix s3 presigned URLs for operations with query components (`#2962
+    <https://github.com/boto/botocore/issues/2962>`__)
+  * api-change:``cognito-idp``: API model updated in Amazon Cognito
+- from version 1.31.1
+  * api-change:``dms``: Releasing DMS Serverless. Adding support for PostgreSQL 15.x as source and
+    target endpoint. Adding support for DocDB Elastic Clusters with sharded collections, PostgreSQL
+    datatype mapping customization and disabling hostname validation of the certificate authority in
+    Kafka endpoint settings
+  * api-change:``glue``: This release enables customers to create new Apache Iceberg tables and
+    associated metadata in Amazon S3 by using native AWS Glue CreateTable operation.
+  * api-change:``logs``: Add CMK encryption support for CloudWatch Logs Insights query result data
+  * api-change:``medialive``: This release enables the use of Thumbnails in AWS Elemental MediaLive.
+  * api-change:``mediatailor``: The AWS Elemental MediaTailor SDK for Channel Assembly has added
+    support for EXT-X-CUE-OUT and EXT-X-CUE-IN tags to specify ad breaks in HLS outputs, including
+    support for EXT-OATCLS, EXT-X-ASSET, and EXT-X-CUE-OUT-CONT accessory tags.
+- from version 1.31.0
+  * api-change:``ec2``: Add Nitro Enclaves support on DescribeInstanceTypes
+  * api-change:``location``: This release adds support for authenticating with Amazon Location
+    Service's Places & Routes APIs with an API Key. Also, with this release developers can publish
+    tracked device position updates to Amazon EventBridge.
+  * api-change:``outposts``: Added paginator support to several APIs. Added the ISOLATED enum value
+    to AssetState.
+  * api-change:``quicksight``: This release includes below three changes: small multiples axes
+    improvement, field based coloring, removed required trait from Aggregation function for
+    TopBottomFilter.
+  * api-change:``rds``: Updates Amazon RDS documentation for creating DB instances and creating
+    Aurora global clusters.
+  * bugfix:configprovider: Fix bug when deep copying config value store where overrides were not
+    preserved
+  * enhancement:configprovider: Always use shallow copy of session config value store for clients
+  * feature:configuration: Configure the endpoint URL in the shared configuration file or via an
+    environment variable for a specific AWS service or all AWS services.
+- from version 1.30.1
+  * api-change:``comprehendmedical``: Update to Amazon Comprehend Medical documentation.
+  * api-change:``connect``: GetMetricDataV2 API: Channels filters do not count towards overall
+    limitation of 100 filter values.
+  * api-change:``kms``: Added Dry Run Feature to cryptographic and cross-account mutating KMS APIs
+    (14 in all). This feature allows users to test their permissions and parameters before making the
+    actual API call.
+  * api-change:``mgn``: This release introduces the Global view feature and new Replication state
+    APIs.
+  * api-change:``securityhub``: Documentation updates for AWS Security Hub
+- from version 1.30.0
+  * feature:Useragent: Update User-Agent header format
+  * api-change:``batch``: This feature allows customers to use AWS Batch with Linux with ARM64 CPU
+    Architecture and X86_64 CPU Architecture with Windows OS on Fargate Platform.
+  * api-change:``sagemaker``: SageMaker Inference Recommender now accepts new fields
+    SupportedEndpointType and ServerlessConfiguration to support serverless endpoints.
+- from version 1.29.165
+  * api-change:``amp``: AWS SDK service model  generation tool version upgrade.
+  * api-change:``ecs``: Added new field  "credentialspecs" to the ecs task definition to support gMSA
+    of windows/linux in both domainless and domain-joined mode
+  * api-change:``ivs``: Corrects the HTTP response code in the generated docs for PutMetadata and
+    DeleteRecordingConfiguration APIs.
+  * api-change:``mediaconvert``: This release includes improved color handling of overlays and
+    general updates to user documentation.
+  * api-change:``sagemaker``: This release adds support for rolling deployment in SageMaker Inference.
+  * api-change:``transfer``: Add outbound Basic authentication support to AS2 connectors
+  * api-change:``verifiedpermissions``: This release corrects several broken links in the
+    documentation.
+- from version 1.29.164
+  * api-change:``appstream``: This release introduces app block builder, allowing customers to
+    provision a resource to package applications into an app block
+  * api-change:``chime``: The Amazon Chime SDK APIs in the Chime namespace are no longer supported.
+    Customers should use APIs in the dedicated Amazon Chime SDK namespaces: ChimeSDKIdentity,
+    ChimeSDKMediaPipelines, ChimeSDKMeetings, ChimeSDKMessaging, and ChimeSDKVoice.
+  * api-change:``cleanrooms``: This release adds support for the OR operator in RSQL join match
+    conditions and the ability to control which operators (AND, OR) are allowed in a join match
+    condition.
+  * api-change:``dynamodb``: This release adds ReturnValuesOnConditionCheckFailure parameter to
+    PutItem, UpdateItem, DeleteItem, ExecuteStatement, BatchExecuteStatement and ExecuteTransaction
+    APIs. When set to ALL_OLD,  API returns a copy of the item as it was when a conditional write failed
+  * api-change:``gamelift``: Amazon GameLift now supports game builds that use the Amazon Linux 2023
+    (AL2023) operating system.
+  * api-change:``glue``: This release adds support for AWS Glue Crawler with Iceberg Tables, allowing
+    Crawlers to discover Iceberg Tables in S3 and register them in Glue Data Catalog for query engines
+    to query against.
+  * api-change:``sagemaker``: Adding support for timeseries forecasting in the CreateAutoMLJobV2 API.
+
+-------------------------------------------------------------------
 Thu Jun 29 10:28:56 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update 1.29.163:
