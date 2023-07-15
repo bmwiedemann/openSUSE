@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Jul 12 22:53:41 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * require python >=3.8
+  * Changelog got renamed to NEWS
+
+- update to version 24.2.0:
+  * Features
+    + Require Python 3.8 or later.
+
+- changes from version 24.1.1:
+  * Bugfixes
+    + Restore support for reading from a config file (with regression
+      test). (#638)
+
+- changes from version 24.1.0:
+  * Bugfixes
+    + Avoid logging warning when no config file is present. (#635)
+    + Include all operations in the error message if no operation was
+      supplied. (#636)
+  * Improved Documentation
+    + Correct name of macOS backend in README. (#637)
+
+- changes from version 24.0.0:
+  * #633: Added diagnose command with basic support.
+  * #487: Removed keyring.backends.OS_X module.
+  * #593: Removed keyring.util.properties module.
+
+- changes from version 23.14.0:
+  * #623: On macOS, warn the user when keychain property is indicated,
+    as that value can't be honored (macOS API no longer supports
+    indicating the target keychain).
+
+-------------------------------------------------------------------
 Fri Apr 21 12:27:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

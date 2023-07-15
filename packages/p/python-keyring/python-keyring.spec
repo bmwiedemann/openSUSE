@@ -24,15 +24,14 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?sle15_python_module_pythons}
 Name:           python-keyring%{psuffix}
-Version:        23.13.1
+Version:        24.2.0
 Release:        0
 Summary:        System keyring service access from Python
 License:        MIT
 URL:            https://github.com/jaraco/keyring
 Source:         https://files.pythonhosted.org/packages/source/k/keyring/keyring-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 56}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
@@ -40,17 +39,18 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-SecretStorage >= 3.2
-%if 0%{python_version_nodots} < 310
-Requires:       python-importlib-resources
-%endif
 Requires:       python-jaraco.classes
 Requires:       python-jeepney >= 0.4.2
-%if 0%{python_version_nodots} < 312
-Requires:       python-importlib-metadata >= 4.11.4
-%endif
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
+%{?sle15_python_module_pythons}
+%if 0%{python_version_nodots} < 310
+Requires:       python-importlib-resources
+%endif
+%if 0%{python_version_nodots} < 312
+Requires:       python-importlib-metadata >= 4.11.4
+%endif
 %if %{with test}
 BuildRequires:  %{python_module keyring = %{version}}
 BuildRequires:  %{python_module pytest >= 3.5}
@@ -92,7 +92,7 @@ sed -i '/^#!/d' keyring/cli.py
 %python_uninstall_alternative keyring
 
 %files %{python_files}
-%doc README.rst CHANGES.rst
+%doc README.rst NEWS.rst
 %license LICENSE
 %python_alternative %{_bindir}/keyring
 %{python_sitelib}/keyring-%{version}*-info
