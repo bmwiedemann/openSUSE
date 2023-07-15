@@ -1030,4 +1030,15 @@
     running on a terminal (forwarded request 1079562 from dirkmueller)</comment>
     <requestid>1079847</requestid>
   </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>22958d3631e9abb49e8e7d6c1c811a8f</srcmd5>
+    <version>6.24.10</version>
+    <time>1689455702</time>
+    <user>dimstar_suse</user>
+    <comment>- (Re)add patch tcsh-6.24.10-history-merge.dif
+  * which is port of an old patch as the problem was not gone
+  * Make it possible to merge current history with already
+    written history</comment>
+    <requestid>1098668</requestid>
+  </revision>
 </revisionlist>

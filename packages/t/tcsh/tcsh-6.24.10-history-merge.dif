@@ -1,0 +1,60 @@
+---
+ sh.hist.c |   22 +++++++++++++++++-----
+ 1 file changed, 17 insertions(+), 5 deletions(-)
+
+--- sh.hist.c
++++ sh.hist.c	2023-07-13 09:18:13.149624778 +0000
+@@ -105,7 +105,7 @@ hremove(struct Hist *hp)
+ 
+ /* Prune length of history list to specified size by history variable. */
+ PG_STATIC void
+-discardExcess(int hlen)
++discardExcess(int hlen, int mflg)
+ {
+     struct Hist *hp, *np;
+     if (histTail == NULL) {
+@@ -116,13 +116,13 @@ discardExcess(int hlen)
+      * the list is still too long scan the whole list as before.  But only do a
+      * full scan if the list is more than 6% (1/16th) too long. */
+     while (histCount > (unsigned)hlen && (np = Histlist.Hnext)) {
+-        if (eventno - np->Href >= hlen || hlen == 0)
++        if ((eventno - np->Href >= hlen || hlen == 0) && !mflg)
+             hremove(np), hfree(np);
+         else
+             break;
+     }
+     while (histCount > (unsigned)hlen && (np = histTail) != &Histlist) {
+-        if (eventno - np->Href >= hlen || hlen == 0)
++        if (eventno - np->Href >= hlen || hlen == 0 || mflg)
+             hremove(np), hfree(np);
+         else
+             break;
+@@ -148,7 +148,7 @@ savehist(
+ 	return;
+     if (sp)
+         (void) enthist(++eventno, sp, 1, mflg, histlen);
+-    discardExcess(histlen);
++    discardExcess(histlen, mflg);
+ }
+ 
+ #define USE_JENKINS_HASH 1
+@@ -1404,6 +1404,18 @@ loadhist(Char *fname, int mflg)
+ void
+ sethistory(int n)
+ {
++    int mflg = 0;
++    struct varent *shist;
++
++    if ((shist = adrof(STRsavehist)) != NULL && shist->vec != NULL) {
++	size_t i;
++	for (i = 1; shist->vec[i]; i++) {
++	    if (eq(shist->vec[i], STRmerge)) {
++		mflg++;
++		break;
++	    }
++	}
++    }
+     histlen = n;
+-    discardExcess(histlen);
++    discardExcess(histlen, mflg);
+ }

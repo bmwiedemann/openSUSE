@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 14 11:29:02 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- (Re)add patch tcsh-6.24.10-history-merge.dif
+  * which is port of an old patch as the problem was not gone
+  * Make it possible to merge current history with already
+    written history
+
+-------------------------------------------------------------------
 Sat Apr 15 09:32:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.24.10:
