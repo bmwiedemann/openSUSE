@@ -1,4 +1,106 @@
 -------------------------------------------------------------------
+Tue Jul 11 22:20:22 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.12.0b4:
+  - gh-issue-102988: CVE-2023-27043 (bsc#1210638): Prevent
+    :func:`email.utils.parseaddr` and
+    :func:`email.utils.getaddresses` from returning the realname
+    portion of an invalid RFC2822 email header in the email
+    address portion of the 2-tuple returned after being parsed by
+    :class:`email._parseaddr.AddressList`.
+  - gh-issue-106396: When the format specification of an
+    f-string expression is empty, the parser now generates an
+    empty :class:`ast.JoinedStr` node for it instead of an
+    one-element :class:`ast.JoinedStr` with an empty string
+    :class:`ast.Constant`.
+  - gh-issue-106145: Make ``end_lineno`` and ``end_col_offset``
+    required on ``type_param`` ast nodes.
+  - gh-issue-105979: Fix crash in :func:`!_imp.get_frozen_object`
+    due to improper exception handling.
+  - gh-issue-98931: Ensure custom :exc:`SyntaxError` error
+    messages are raised for invalid imports with multiple
+    targets. Patch by Pablo Galindo
+  - gh-issue-105908: Fixed bug where :gh:`99111` breaks future
+    import ``barry_as_FLUFL`` in the Python REPL.
+  - gh-issue-105340: Include the comprehension iteration
+    variable in ``locals()`` inside a module- or class-scope
+    comprehension.
+  - gh-issue-105486: Change the repr of ``ParamSpec`` list of
+    args in ``types.GenericAlias``.
+  - gh-issue-101006: Improve error handling when read
+    :mod:`marshal` data.
+  - gh-issue-106524: Fix crash in :func:`!_sre.template` with
+    templates containing invalid group indices.
+  - gh-issue-106510: Improve debug output for atomic groups in
+    regular expressions.
+  - gh-issue-106503: Fix ref cycle in
+    :class:`!asyncio._SelectorSocketTransport` by removing
+    ``_write_ready`` in ``close``.
+  - gh-issue-105497: Fix flag mask inversion when unnamed flags
+    exist.
+  - gh-issue-90876: Prevent :mod:`multiprocessing.spawn` from
+    failing to *import* in environments where ``sys.executable``
+    is ``None``.  This regressed in 3.11 with the addition of
+    support for path-like objects in multiprocessing.
+  - gh-issue-106292: Check for an instance-dict
+    cached value in the :meth:`__get__` method of
+    :func:`functools.cached_property`. This better matches the
+    pre-3.12 behavior and improves compatibility for users
+    subclassing :func:`functools.cached_property` and adding a
+    :meth:`__set__` method.
+  - gh-issue-106330: Fix incorrect matching of empty paths in
+    :meth:`pathlib.PurePath.match`. This bug was introduced in
+    Python 3.12.0 beta 1.
+  - gh-issue-102541: Make pydoc.doc catch bad module ImportError
+    when output stream is not None.
+  - gh-issue-106152: Added PY_THROW event hook for
+    :mod:`cProfile` for generators
+  - gh-issue-106075: Added `asyncio.taskgroups.__all__` to
+    `asyncio.__all__` for export in star imports.
+  - gh-issue-105987: Fix crash due to improper reference counting
+    in :mod:`asyncio` eager task factory internal routines.
+  - gh-issue-105974: Fix bug where a :class:`typing.Protocol`
+    class that had one or more non-callable members would
+    raise :exc:`TypeError` when :func:`issubclass` was called
+    against it, even if it defined a custom ``__subclasshook__``
+    method. The behaviour in Python 3.11 and lower -- which has
+    now been restored -- was not to raise :exc:`TypeError` in
+    these situations if a custom ``__subclasshook__`` method was
+    defined. Patch by Alex Waygood.
+  - gh-issue-96145: Reverted addition of ``json.AttrDict``.
+  - gh-issue-105497: Fix flag inversion when alias/mask members
+    exist.
+  - gh-issue-104554: Add RTSPS scheme support in urllib.parse
+  - gh-issue-94777: Fix hanging :mod:`multiprocessing`
+    ``ProcessPoolExecutor`` when a child process crashes while
+    data is being written in the call queue.
+  - gh-issue-106232: Make timeit doc command lines compatible
+    with Windows by using double quotes for arguments.  This
+    works on linux and macOS also.
+  - gh-issue-101634: When running the Python test suite with
+    ``-jN`` option, if a worker stdout cannot be decoded from
+    the locale encoding report a failed testn so the exitcode is
+    non-zero. Patch by Victor Stinner.
+  - gh-issue-106118: Fix compilation for platforms without
+    :data:`!O_CLOEXEC`. The issue was introduced with Python
+    3.12b1 in :gh:`103295`. Patch by Erlend Aasland.
+  - gh-issue-104692: Include ``commoninstall`` as a prerequisite
+    for ``bininstall``
+    This ensures that ``commoninstall`` is completed before
+    ``bininstall`` is started when parallel builds are used (``make
+    -j install``), and so the ``python3`` symlink is only installed
+    after all standard library modules are installed.
+  - gh-issue-106359: Argument Clinic now explicitly forbids
+    "kwarg splats" in function calls used as annotations.
+  - gh-issue-105227: The new :c:func:`PyType_GetDict` provides
+    the dictionary for the given type object that is normally
+    exposed by ``cls.__dict__``. Normally it's sufficient to
+    use :c:member:`~PyTypeObject.tp_dict`, but for the static
+    builtin types :c:member:`!tp_dict` is now always ``NULL``.
+    :c:func:`!PyType_GetDict()` provides the correct dict object
+    instead.
+
+-------------------------------------------------------------------
 Wed Jun 28 19:59:03 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.12.0b3:
