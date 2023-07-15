@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 14 11:44:38 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.4
+  * bridge: mdb: added underlay destination IP support, UDP
+    destination port support, destination VNI support, source VNI
+    support, outgoing interface support
+  * macvlan: added the "bclim" parameter
+
+-------------------------------------------------------------------
 Thu May  4 07:20:24 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to release 6.3:
