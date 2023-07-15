@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul  6 07:37:46 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.50.0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Drop patches for issues fixed upstream
+  + acc_update-argcomplete.patch
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Wed May 24 07:01:14 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

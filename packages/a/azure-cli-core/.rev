@@ -472,4 +472,18 @@
     <comment></comment>
     <requestid>1089370</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>19995d1a75bc662f1d72c3e6e0f04ece</srcmd5>
+    <version>2.50.0</version>
+    <time>1689455716</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.50.0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Drop patches for issues fixed upstream
+  + acc_update-argcomplete.patch
+- Update Requires from setup.py</comment>
+    <requestid>1098823</requestid>
+  </revision>
 </revisionlist>
