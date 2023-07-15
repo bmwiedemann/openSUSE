@@ -87,6 +87,7 @@
     <package name="live-add-yast-repos"/>
     <package name="jdupes"/>
     <package name="netcfg"/>
+    <package name="openssl"/>
     <package name="openSUSE-build-key"/>
     <package name="openSUSE-release"/>
     <package name="openSUSE-release-appliance-docker"/>
