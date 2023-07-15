@@ -2160,4 +2160,13 @@ New Features
     <comment>- rebuild bind-utils on libuv updates (bsc#1212090)</comment>
     <requestid>1097046</requestid>
   </revision>
+  <revision rev="198" vrev="3">
+    <srcmd5>27c03e1a07f94740627e6277577e8927</srcmd5>
+    <version>9.18.16</version>
+    <time>1689455693</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable dnstap support
+</comment>
+    <requestid>1098555</requestid>
+  </revision>
 </revisionlist>

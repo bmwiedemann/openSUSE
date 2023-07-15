@@ -75,11 +75,13 @@ Source70:       bind.conf
 # configuation file for systemd-sysusers
 Source72:       named.conf
 Patch56:        bind-ldapdump-use-valid-host.patch
+BuildRequires:  fstrm-devel
 BuildRequires:  libcap-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libtool
 BuildRequires:  openssl
 BuildRequires:  pkgconfig
+BuildRequires:  protobuf-c
 BuildRequires:  python3
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-ply
@@ -282,6 +284,7 @@ export LDFLAGS="-pie"
 	--disable-isc-spnego \
 	--enable-fixed-rrset \
 	--enable-filter-aaaa \
+        --enable-dnstap \
 %if %{with_systemd}
         --with-systemd \
 %endif
@@ -581,6 +584,7 @@ fi
 %{_bindir}/dnssec-signzone
 %{_bindir}/dnssec-verify
 %{_bindir}/dnssec-cds
+%{_bindir}/dnstap-read
 %{_sbindir}/ddns-confgen
 %{_sbindir}/rndc
 %{_sbindir}/rndc-confgen
@@ -620,6 +624,7 @@ fi
 %{_mandir}/man1/named-compilezone.1%{ext_man}
 %{_mandir}/man1/named-journalprint.1%{ext_man}
 %{_mandir}/man1/nsec3hash.1%{ext_man}
+%{_mandir}/man1/dnstap-read.1%{ext_man}
 %{_mandir}/man5/rndc.conf.5%{ext_man}
 %{_mandir}/man8/ddns-confgen.8%{ext_man}
 %{_mandir}/man8/rndc.8%{ext_man}

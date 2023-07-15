@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 13 15:00:12 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Enable dnstap support
+
+-------------------------------------------------------------------
 Thu Jul  6 07:16:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - rebuild bind-utils on libuv updates (bsc#1212090) 
