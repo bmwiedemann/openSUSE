@@ -1773,4 +1773,12 @@ Use capabilities for capture. bsc#957624</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1094359</requestid>
   </revision>
+  <revision rev="206" vrev="1">
+    <srcmd5>ca5594b9fd8d56c9140a4e0ae30454d7</srcmd5>
+    <version>4.0.7</version>
+    <time>1689455662</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1098481</requestid>
+  </revision>
 </revisionlist>

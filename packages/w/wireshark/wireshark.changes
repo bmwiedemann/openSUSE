@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 13 07:15:15 UTC 2023 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 4.0.7:
+  * Kafka dissector crash
+  * iSCSI dissector crash
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-4.0.7.html
+
+-------------------------------------------------------------------
 Thu May 25 07:44:12 UTC 2023 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.0.6:
