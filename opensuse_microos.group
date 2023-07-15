@@ -1252,6 +1252,7 @@
     <package name="libfreehand-0_1-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libfreetype6" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="libfribidi0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
+    <package name="libfstrm0" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libftdi1-2" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:patterns-microos-desktop-kde -->
     <package name="libfuse2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="libfuse3-3" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
