@@ -656,4 +656,36 @@ This makes it possible to use Ignition also on bare metal (e.g. when dumping ima
 - Fix S/390 build in 0001-ignore-missing-qemu-blockdev.patch</comment>
     <requestid>1070759</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>7b76857c84d36e71b390b5074f9f1c7a</srcmd5>
+    <version>2.16.2</version>
+    <time>1689455695</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.16.2:
+  * dracut: make hv_utils module optional
+  * Fix build on 32-bit systems
+  * Doc updates
+  * build(deps) updates
+  * providers/qemu: read modprobe path from distro package
+  * Add support for Hyper-V platform
+  * internal/exec: don't relabel a mountpoint that already exists
+  * internal/exec/util: check if unit exists before disabling
+  * Dockerfile.validate: update to Fedora 38
+  * generate: simplify build of doc generator
+  * platform: allow provider fetch to save files to write from files stage
+  * templates: update CI ratchet procedure for Butane spec stabilization
+  * go.mod: add deep-copy package
+  * providers: rename noop to metal
+  * platform: drop function pointer indirection for fetch method
+  * providers: add Config wrapper structs for cmdline and system providers
+  * internal: empty out providers base package
+  * internal: move provider registrations out of platforms package
+  * templates/stabilize-checklist: disable tests using exp Butane config
+  * providers/vmware: rename some structs
+  * internal: move stage registration into a separate package
+  * platform: avoid needless function pointer indirection in methods
+  * tests: port to xfsprogs 5.19+
+  * test: ShellCheck fixes</comment>
+    <requestid>1098572</requestid>
+  </revision>
 </revisionlist>

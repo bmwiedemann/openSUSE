@@ -17,7 +17,7 @@
 
 
 Name:           ignition
-Version:        2.15.0
+Version:        2.16.2
 Release:        0
 Summary:        First boot installer and configuration tool
 License:        Apache-2.0
