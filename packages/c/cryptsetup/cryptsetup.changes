@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 13 09:46:24 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- luksFormat: Handle system with low memory and no swap space [bsc#1211079]
+  * Check for physical memory available also in PBKDF benchmark.
+  * Try to avoid OOM killer on low-memory systems without swap.
+  * Use only half of detected free memory on systems without swap.
+  * Add patches:
+    - cryptsetup-Check-for-physical-memory-available-also-in-PBKDF-be.patch
+    - cryptsetup-Try-to-avoid-OOM-killer-on-low-memory-systems-withou.patch
+    - cryptsetup-Use-only-half-of-detected-free-memory-on-systems-wit.patch
+
+-------------------------------------------------------------------
 Wed Jun 14 08:07:56 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Enable running the regression test suite.

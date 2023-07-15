@@ -29,6 +29,10 @@ Source0:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.6/cryptsetu
 Source1:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.6/cryptsetup-%{version}.tar.sign
 Source2:        baselibs.conf
 Source3:        cryptsetup.keyring
+#PATCH-FIX-UPSTREAM bsc#1211079 luksFormat: handle system with low memory and no swap space
+Patch0:         cryptsetup-Check-for-physical-memory-available-also-in-PBKDF-be.patch
+Patch1:         cryptsetup-Try-to-avoid-OOM-killer-on-low-memory-systems-withou.patch
+Patch2:         cryptsetup-Use-only-half-of-detected-free-memory-on-systems-wit.patch
 BuildRequires:  device-mapper-devel
 BuildRequires:  libjson-c-devel
 BuildRequires:  libpwquality-devel
