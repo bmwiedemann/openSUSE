@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 14 13:04:16 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.14
+  * socket: make HX_addrport_split work on portless bracketed hostspec
+
+-------------------------------------------------------------------
 Wed Jun 21 08:17:08 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.13

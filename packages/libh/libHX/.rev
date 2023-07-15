@@ -573,4 +573,12 @@ Try submission again, hoping that the service validator is updated on the server
     <comment>- Update to release 4.13</comment>
     <requestid>1095517</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>ac134edca1dccbd720dd60702c70ba32</srcmd5>
+    <version>4.14</version>
+    <time>1689455707</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.14</comment>
+    <requestid>1098679</requestid>
+  </revision>
 </revisionlist>
