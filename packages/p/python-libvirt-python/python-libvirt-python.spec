@@ -24,7 +24,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-libvirt-python
 URL:            https://libvirt.org/
-Version:        9.4.0
+Version:        9.5.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -71,7 +71,7 @@ export CFLAGS="%{optflags}"
 %pytest_arch
 
 %files %{python_files}
-%doc README COPYING COPYING.LESSER examples/
+%doc README COPYING examples/
 %{python_sitearch}/libvirt*
 %{python_sitearch}/libvirt_python-%{version}*info
 %pycache_only %{python_sitearch}/__pycache__/libvirt*
