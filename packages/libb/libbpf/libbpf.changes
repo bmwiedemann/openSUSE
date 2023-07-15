@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 14 05:04:50 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- update to v1.2.2:
+  * fix a regression in perf tool caused by libbpf resetting its custom
+    catch-all SEC() handler on explicit bpf_program__set_type() call
+  * fix possible double-free in USDT-related libbpf code, which happens when
+    libbpf runs out of space in __bpf_usdt_specs map due to having too many
+    unique USDT specs
+
+-------------------------------------------------------------------
 Tue May  2 08:03:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.0:
