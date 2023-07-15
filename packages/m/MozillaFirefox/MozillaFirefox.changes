@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 13 13:30:20 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 115.0.2
+  * Fixed a bug with displaying a caret in the text editor on some websites
+    (bmo#1840804)
+  * Fixed a bug with broken audio rendering on some websites (bmo#1841982)
+  * Fixed a bug with patternTransform translate using the wrong units
+    (bmo#1840746)
+  MFSA 2023-26 (bsc#1213230)
+  * CVE-2023-3600 (bmo#1839703)
+    Use-after-free in workers
+
+-------------------------------------------------------------------
 Fri Jul  7 19:39:30 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - Mozilla Firefox 115.0.1
