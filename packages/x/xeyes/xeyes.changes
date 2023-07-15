@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 14 07:40:47 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.3.0
+  * This release adds a -biblicallyAccurate option for extra
+    amusement.
+
+-------------------------------------------------------------------
 Thu Aug 11 07:58:31 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec-file (move license to %%licensedir)

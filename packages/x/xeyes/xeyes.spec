@@ -1,7 +1,7 @@
 #
 # spec file for package xeyes
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           xeyes
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        A follow the mouse X demo
 License:        X11
 Group:          System/X11/Utilities
 URL:            https://xorg.freedesktop.org/
-Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.bz2
+Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)

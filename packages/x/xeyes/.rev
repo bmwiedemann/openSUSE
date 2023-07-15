@@ -78,4 +78,14 @@
     <comment></comment>
     <requestid>998300</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ef825069dca3736f59d0d07cfa594e92</srcmd5>
+    <version>1.3.0</version>
+    <time>1689455700</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.0
+  * This release adds a -biblicallyAccurate option for extra
+    amusement.</comment>
+    <requestid>1098629</requestid>
+  </revision>
 </revisionlist>
