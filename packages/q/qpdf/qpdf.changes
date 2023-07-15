@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 13 11:54:16 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 11.5.0:
+  * When copying the same page more than once, ensure that annotations
+    are copied and not shared among multiple pages.
+  * Add new method Buffer::copy and deprecate Buffer copy constructor
+    and assignment operator. Buffer copies are expensive and should be
+    done explicitly.
+  * The source code was reformatted to 100 columns instead of 80.
+    Numerous cosmetic changes and changes suggested by clang-tidy were made.
+
+-------------------------------------------------------------------
 Wed Jun  7 12:28:31 UTC 2023 - pgajdos@suse.com
 
 - version update to 11.4.0
