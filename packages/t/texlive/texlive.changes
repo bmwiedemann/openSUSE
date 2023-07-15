@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 14 09:41:00 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- The rungs lua script belongs to texlive-scripts(-bin) only
+
+-------------------------------------------------------------------
 Tue Jun 13 13:02:15 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Skip obsolete suse_version 1230 as well as superfluous defattr 

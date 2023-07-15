@@ -19,7 +19,7 @@
 %define texlive_version  2023
 %define texlive_previous 2022
 %define texlive_release  20230311
-%define texlive_noarch   208
+%define texlive_noarch   209
 %define texlive_source   texlive-20230311-source
 %define biber_version    2.19
 
@@ -4785,7 +4785,8 @@ popd
 %else
     for scr in \
 %endif
-	%{_texmfdistdir}/scripts/texlive/rungs.tlu
+	%{_texmfdistdir}/scripts/texlive/rungs.tlu \
+	%{_texmfdistdir}/scripts/texlive/rungs.lua
     do
 	test -e %{buildroot}/$scr || continue
 	ed %{buildroot}/${scr} <<-'EOF'
@@ -5111,7 +5112,6 @@ fi
 %files dvipdfmx-bin
 %{_bindir}/dvipdfm
 %{_bindir}/dvipdfmx
-%{_bindir}/rungs
 %{_bindir}/dvipdft
 %{_bindir}/ebb
 %{_bindir}/extractbb

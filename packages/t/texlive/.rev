@@ -1098,4 +1098,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1094096</requestid>
   </revision>
+  <revision rev="90" vrev="93">
+    <srcmd5>3279e24c9ba3d939121fc9fac715f363</srcmd5>
+    <version>unknown</version>
+    <time>1689455704</time>
+    <user>dimstar_suse</user>
+    <comment>- The rungs lua script belongs to texlive-scripts(-bin) only</comment>
+    <requestid>1098678</requestid>
+  </revision>
 </revisionlist>
