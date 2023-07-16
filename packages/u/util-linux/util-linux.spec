@@ -114,6 +114,8 @@ Patch4:         util-linux-bash-completion-su-chsh-l.patch
 Patch5:         util-linux-fix-tests-with-64k-pagesize.patch
 # https://github.com/util-linux/util-linux/pull/2331
 Patch6:         0001-libmount-fix-sync-options-between-context-and-fs-str.patch
+# https://github.com/util-linux/util-linux/pull/2373
+Patch7:         0001-Revert-libblkid-try-LUKS2-first-when-probing.patch
 BuildRequires:  audit-devel
 BuildRequires:  bc
 BuildRequires:  binutils-devel

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 13 06:33:54 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Add patch to detect MD array as container of LUKS properly
+  (boo#1213227, gh#util-linux/util-linux#2373):
+  * 0001-Revert-libblkid-try-LUKS2-first-when-probing.patch
+
+-------------------------------------------------------------------
 Mon Jul 10 13:29:25 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - No longer provide last and lastb on Tumbleweed. last is provided by
