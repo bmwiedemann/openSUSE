@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul 14 10:01:09 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Be leaner with the build deps:
+  + Do not buildrequire python-pip and -wheel: being part of ring0
+    we have to be extra careful.
+  + Use python_build/python_install instead of
+    pyproject_wheel/pyproject_install.
+
+-------------------------------------------------------------------
+Thu Jun 29 07:26:32 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
+
+- Set pythons for Leap and Tumbleweed
+
+-------------------------------------------------------------------
 Tue Jun  6 18:22:01 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.1.1:
