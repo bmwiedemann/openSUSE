@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 12 12:25:55 UTC 2023 - lnussel@suse.de
+
+- Update to version 20230712:
+  * Add more prjconf macros
+  * update comment about _lto_cflags
+  * drop %usrmerged macro (boo#1206798)
+  * Fix SLE sbat macros used on Leap (bsc#1198458)
+
+-------------------------------------------------------------------
 Mon Sep 26 12:46:42 UTC 2022 - lnussel@suse.de
 
 - Update to version 20220926:

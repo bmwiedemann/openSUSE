@@ -256,4 +256,16 @@
   * Fix bug not using custom name for summary and description in language packages (boo#1137381)</comment>
     <requestid>1006105</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>b2443a140b49d653bab33319fa12b51f</srcmd5>
+    <version>20230712</version>
+    <time>1689521310</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20230712:
+  * Add more prjconf macros
+  * update comment about _lto_cflags
+  * drop %usrmerged macro (boo#1206798)
+  * Fix SLE sbat macros used on Leap (bsc#1198458)</comment>
+    <requestid>1098358</requestid>
+  </revision>
 </revisionlist>

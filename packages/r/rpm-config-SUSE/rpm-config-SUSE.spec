@@ -1,7 +1,7 @@
 #
 # spec file for package rpm-config-SUSE
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2018 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           rpm-config-SUSE
-Version:        20220926
+Version:        20230712
 Release:        0
 Summary:        SUSE specific RPM configuration files
 License:        GPL-2.0-or-later
@@ -45,11 +45,6 @@ sed -e 's/@suse_version@/%{?suse_version}%{!?suse_version:0}/' \
     -e 's/@ul_version@/%{?ul_version}%{!?ul_version:0}/' \
     -e '/@is_opensuse@%{?is_opensuse:nomatch}/d' \
     -e 's/@is_opensuse@/%{?is_opensuse}%{!?is_opensuse:0}/' \
-%if 0%{?usrmerged}
-    -e 's/@usrmerged@/%{?usrmerged}/' \
-%else
-    -e '/@usrmerged@/d' \
-%endif
 %if 0%{?is_opensuse}
     -e '/@sle_version@%{?sle_version:nomatch}/d' \
     -e 's/@sle_version@/%{?sle_version}%{!?sle_version:0}/' \
@@ -65,20 +60,6 @@ cat <<EOF > macros.d/macros.opensuse
 %%_binarychangelogtrim 0,$(date -d "Jan 1 UTC 3 years ago" +%s),10
 EOF
 %endif
-
-cat <<EOF > macros.d/macros.sbat
-# Common SBAT values for secure boot
-# https://github.com/rhboot/shim/blob/main/SBAT.md
-
-%if 0%{?is_opensuse}
-%%sbat_distro          opensuse
-%%sbat_distro_summary  The openSUSE Project
-%else
-%%sbat_distro          sle
-%%sbat_distro_summary  SUSE Linux Enterprise
-%endif
-%%sbat_distro_url      mailto:security@suse.de
-EOF
 
 %install
 # Install SUSE vendor macros and rpmrc
