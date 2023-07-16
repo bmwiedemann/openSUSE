@@ -22,7 +22,7 @@
 # The seperation is required to minimize unnecessary build cycles.
 %define 	_name audit
 Name:           audit-secondary
-Version:        3.0.9
+Version:        3.1.1
 Release:        0
 Summary:        Linux kernel audit subsystem utilities
 License:        GPL-2.0-or-later
@@ -258,6 +258,7 @@ fi
 %attr(644,root,root) %{_mandir}/man5/ausearch-expression.5.gz
 %attr(644,root,root) %{_mandir}/man8/auvirt.8.gz
 %attr(644,root,root) %{_mandir}/man8/augenrules.8.gz
+%attr(644,root,root) %{_mandir}/man8/audisp-af_unix.8.gz
 %if 0%{?suse_version} < 1550
 /sbin/auditctl
 /sbin/auditd
@@ -276,6 +277,7 @@ fi
 %attr(755,root,root) %{_bindir}/aulastlog
 %attr(755,root,root) %{_bindir}/ausyscall
 %attr(755,root,root) %{_sbindir}/aureport
+%attr(755,root,root) %{_sbindir}/audisp-af_unix
 %attr(755,root,root) %{_bindir}/auvirt
 %dir %attr(750,root,root) %{_sysconfdir}/audit
 %attr(750,root,root) %dir %{_sysconfdir}/audit/plugins.d

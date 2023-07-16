@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Jul  3 08:34:22 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.1.1:
+  * Add user friendly keywords for signals to auditctl
+  * In ausearch, parse up URINGOP and DM_CTRL records
+  * Harden auparse to better handle corrupt logs
+  * Fix a CFLAGS propogation problem in the common directory
+  * Move the audispd af_unix plugin to a standalone program 
+
+-------------------------------------------------------------------
+Thu May  4 12:58:06 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Add _multibuild to define additional spec files as additional
+  flavors.
+  Eliminates the need for source package links in OBS.
+
+-------------------------------------------------------------------
+Mon Feb 20 14:13:06 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.1:
+  * Disable ProtectControlGroups in auditd.service by default
+  * Fix rule checking for exclude filter
+  * Make audit_rule_syscallbyname_data work correctly outside of auditctl
+  * Add new record types
+  * Add io_uring support
+  * Add support for new FANOTIFY record fields
+  * Add keyword, this-hour, to ausearch/report start/end options
+  * Add Requires.private to audit.pc file
+  * Try to interpret OPENAT2 fields correctly
+
+-------------------------------------------------------------------
 Tue Dec 27 10:21:56 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)
