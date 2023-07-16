@@ -1,0 +1,208 @@
+<buildinfo project="Devel:Kernel:stable" repository="standard" downloadurl="http://download.suse.de/ibs">
+  <arch>x86_64</arch>
+  <debuginfo>1</debuginfo>
+  <subpack>kernel-default</subpack>
+  <subpack>kernel-default-devel</subpack>
+  <subpack>kernel-default-extra</subpack>
+  <subpack>kernel-default-vdso</subpack>
+  <bdep name="liblua5_4-5" preinstall="1" notmeta="1" version="5.4.6" release="1.46" arch="x86_64" hdrmd5="215092f3b9788e833f0a56d345ecaff2" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="aaa_base" preinstall="1" notmeta="1" version="84.87+git20230329.b39efbc" release="1.4" arch="x86_64" hdrmd5="40d26d16f91bce0c24682a4350af3db5" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="filesystem" preinstall="1" notmeta="1" version="84.87" release="12.1" arch="x86_64" hdrmd5="90c43fd93bc3e3084c58148ff7c9a648" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="attr" preinstall="1" notmeta="1" version="2.5.1" release="1.423" arch="x86_64" hdrmd5="5d84d4daecbd21a5b3b62c07c76c889f" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="bash" preinstall="1" notmeta="1" version="5.2.15" release="8.84" arch="x86_64" hdrmd5="faed6a0fea297e36628f564ffe590f55" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="bash-sh" preinstall="1" version="5.2.15" release="8.84" arch="noarch" hdrmd5="c05b64ea61a5ac8f05f4200a42559139" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="coreutils" preinstall="1" version="9.3" release="1.85" arch="x86_64" hdrmd5="bb20b2cd8c865b44a60272da10a44bad" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="diffutils" preinstall="1" notmeta="1" version="3.10" release="1.59" arch="x86_64" hdrmd5="7e951654e14f45b3ae8f7fcd6f55f734" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="fillup" preinstall="1" notmeta="1" version="1.42" release="279.4" arch="x86_64" hdrmd5="bd75eb15b28f4051d521ab22795d2286" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="glibc" preinstall="1" notmeta="1" version="2.37" release="4.43" arch="x86_64" hdrmd5="d409d342ed7bd79fd43b5d320b469f46" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="grep" preinstall="1" notmeta="1" version="3.11" release="1.2" arch="x86_64" hdrmd5="3757c8d331cdf02276ab1850c3055a64" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="pam" preinstall="1" notmeta="1" version="1.5.3" release="1.68" arch="x86_64" hdrmd5="4d6afb7e4fdfb82245614793bbbcb3c9" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="permissions" preinstall="1" notmeta="1" version="1699_20230602" release="1.27" arch="x86_64" hdrmd5="23b119779a8ee81066874b0a9416f698" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="rpm" preinstall="1" notmeta="1" version="4.18.0" release="5.31" arch="x86_64" hdrmd5="592c5c62a8f00913408f48f4954ae805" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="rpm-config-SUSE" preinstall="1" notmeta="1" version="20220926" release="1.4" arch="noarch" hdrmd5="a983c39701f2a013d776343ee9891e58" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="sed" preinstall="1" notmeta="1" version="4.9" release="2.7" arch="x86_64" hdrmd5="ca9875eba8bb7bbd41837c1fffae365d" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="tar" preinstall="1" notmeta="1" version="1.34" release="10.7" arch="x86_64" hdrmd5="7b281ed9aacdcc5f78384712ea6a8b58" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libbz2-1" preinstall="1" notmeta="1" version="1.0.8" release="5.169" arch="x86_64" hdrmd5="ec8745849dfd6e791d12236cefab1204" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libgcc_s1" preinstall="1" notmeta="1" version="13.1.1+git7364" release="1.48" arch="x86_64" hdrmd5="2434c9ccf107768b822633e365202e32" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libncurses6" preinstall="1" notmeta="1" version="6.4.20230617" release="15.16" arch="x86_64" hdrmd5="de18c02344fcc8956dde13bbdac367b4" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libreadline8" preinstall="1" notmeta="1" version="8.2" release="2.225" arch="x86_64" hdrmd5="befc0166d562133688771f539d5cf79f" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libz1" preinstall="1" notmeta="1" version="1.2.13" release="4.73" arch="x86_64" hdrmd5="ef1fa6392754d11997e02681f96aa17c" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libselinux1" preinstall="1" notmeta="1" version="3.5" release="3.27" arch="x86_64" hdrmd5="1ffa2c620ea21685cb4eee3a60d6ba73" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libgcrypt20" preinstall="1" notmeta="1" version="1.10.2" release="2.52" arch="x86_64" hdrmd5="05ba2a07624dbe826d29e2afe11706dc" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libgpg-error0" preinstall="1" notmeta="1" version="1.47" release="1.108" arch="x86_64" hdrmd5="a7dfd20d6d4907872b85b15ab06fad31" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="liblzma5" preinstall="1" notmeta="1" version="5.4.3" release="1.79" arch="x86_64" hdrmd5="324b2e4a6361a9dbbb69e93e11ba13db" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libcap2" preinstall="1" notmeta="1" version="2.69" release="1.66" arch="x86_64" hdrmd5="9cc7cdb524274c0b3da3d6c0fe23564b" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libacl1" preinstall="1" notmeta="1" version="2.3.1" release="2.285" arch="x86_64" hdrmd5="74f12861ada62b83df820b6892d886c3" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libattr1" preinstall="1" notmeta="1" version="2.5.1" release="1.423" arch="x86_64" hdrmd5="436474df9ae3d520705f69d0e8f13d7d" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libpopt0" preinstall="1" notmeta="1" version="1.19" release="1.231" arch="x86_64" hdrmd5="1551e0f25db33a848d831f9436bc7fd6" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libelf1" preinstall="1" notmeta="1" version="0.189" release="3.76" arch="x86_64" hdrmd5="1c5ccd99d1df7153fef239467b0b4a74" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libzstd1" preinstall="1" notmeta="1" version="1.5.5" release="3.55" arch="x86_64" hdrmd5="f51232803d41ededcac1eda103a4fdf0" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libpcre2-8-0" preinstall="1" notmeta="1" version="10.42" release="3.183" arch="x86_64" hdrmd5="cf2fe5751a662bef2f55761198954883" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="util-linux" vminstall="1" version="2.39" release="1.10" arch="x86_64" hdrmd5="89e2a9d6cab33a38b4d6bf300e1363f3" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libmount1" vminstall="1" version="2.39" release="1.10" arch="x86_64" hdrmd5="f98afb4820f209190f71ea2a794fdff9" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="perl-base" vminstall="1" version="5.36.1" release="1.24" arch="x86_64" hdrmd5="d15198b1af001af1e1e9d017baa2f4ef" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libdb-4_8" vminstall="1" notmeta="1" version="4.8.30" release="42.9" arch="x86_64" hdrmd5="ffb36acf1785032cdea0927929461433" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libblkid1" vminstall="1" version="2.39" release="1.10" arch="x86_64" hdrmd5="5cb92a52ab4cbf1bac8e532bd63239f8" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libuuid1" vminstall="1" version="2.39" release="1.10" arch="x86_64" hdrmd5="f70640b59a2e9ffb43304b7818c0df61" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libsmartcols1" vminstall="1" version="2.39" release="1.10" arch="x86_64" hdrmd5="5b62210322be7cd0f41ade51669a9419" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libcrypt1" vminstall="1" version="4.4.35" release="1.1" arch="x86_64" hdrmd5="8ee16c0dffa0ffefb0e8f6aa52d0cf91" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="kernel-obs-build" vminstall="1" notmeta="1" version="6.3.9" release="1.17" arch="x86_64" hdrmd5="3661aa4fd376d237752be7f1a9b1cde9" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="bc" version="1.07.1" release="4.452" arch="x86_64" hdrmd5="e813346cd68173f234fe404ceb46146e" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="bison" version="3.8.2" release="3.233" arch="x86_64" hdrmd5="c3e3562004a48c43419368aca9261ecb" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="fdupes" version="2.2.1" release="1.240" arch="x86_64" hdrmd5="c06a5ca73aead457581191d8184cfe97" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="flex" version="2.6.4" release="6.415" arch="x86_64" hdrmd5="331aeb994a7f125dde7ffa9db6909829" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="hmaccalc" version="0.9.14" release="2.471" arch="x86_64" hdrmd5="6800a6f31003d6916325076eb910ecc5" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="jq" version="1.6" release="3.9" arch="x86_64" hdrmd5="f32982bf3744ce2f6671b9d74c036f70" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libopenssl-devel" version="3.1.1" release="2.11" arch="noarch" hdrmd5="54effe6612cff23213305c9ea122ff26" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="openssl" version="3.1.1" release="2.11" arch="noarch" hdrmd5="581c34e127e127d77583524d8cf42631" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="pesign-obs-integration" version="10.2+git20230612.4699910" release="2.1" arch="x86_64" hdrmd5="70bec52b7eb3a89dac2136c8ae7a802e" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="dwarves" version="1.25" release="1.2" arch="x86_64" hdrmd5="f6f5dfadeff6afe7badc41756a84bf34" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libelf-devel" version="0.189" release="3.76" arch="x86_64" hdrmd5="fd919719d29a670bccca828b99dfe907" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="elfutils" version="0.189" release="3.76" arch="x86_64" hdrmd5="7bacadd96c504ad4ba44b4f2e5f82860" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="zstd" version="1.5.5" release="3.55" arch="x86_64" hdrmd5="a4ad63ecdf9d35224cf5ecd7cb3c0691" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="rpm-build" version="4.18.0" release="5.31" arch="x86_64" hdrmd5="5435bd950a8ffdf95015f99dea6a13d1" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="gcc-PIE" version="13" release="1.168" arch="x86_64" hdrmd5="9b04c0d66f289cb7cbe3565790f46b87" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="kmod" version="30" release="5.1" arch="x86_64" hdrmd5="8d5049bd7331ac946dab27df18fa873d" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="m4" version="1.4.18" release="7.251" arch="x86_64" hdrmd5="468a33c93c99f5775830781612229454" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libgmp10" version="6.2.1" release="4.364" arch="x86_64" hdrmd5="de6485b51ecd9d26cb0f1a5096dd2d50" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libstdc++6" version="13.1.1+git7364" release="1.48" arch="x86_64" hdrmd5="8d5bf8858da7ef4d31d242c3c49666ef" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libfl-devel" version="2.6.4" release="6.415" arch="x86_64" hdrmd5="0e8b17bd735c32287bd2a1140e0d1593" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="mozilla-nss" version="3.90" release="1.2" arch="x86_64" hdrmd5="001c63deb6a34f4cf0e999a1bcbd2196" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="mozilla-nspr" version="4.35" release="1.16" arch="x86_64" hdrmd5="e40d70ea2795c84142bc2b784da3d802" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libjq1" version="1.6" release="3.9" arch="x86_64" hdrmd5="ac2afd3c9240228067cd50cb9b4ef63f" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="pkgconf-pkg-config" version="1.8.0" release="2.183" arch="x86_64" hdrmd5="e8a481328df6bf763239eab70db10a57" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libopenssl3" version="3.1.1" release="2.9" arch="x86_64" hdrmd5="9c72c0fc7d0e6e0d37d1f554bda345a0" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libopenssl-3-devel" version="3.1.1" release="2.9" arch="x86_64" hdrmd5="7f2d9ec16592aa9f007a38b02ac90d9a" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="openssl-3" version="3.1.1" release="2.9" arch="x86_64" hdrmd5="950076f8f52ce259912b963ceb96cf16" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="mozilla-nss-tools" version="3.90" release="1.2" arch="x86_64" hdrmd5="b3635b75e34645e7c5216b43c3a9bb62" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="fipscheck" version="1.7.0" release="1.211" arch="x86_64" hdrmd5="ff0c5620678d035c63328a3d2eda4e04" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="pesign" version="116" release="1.10" arch="x86_64" hdrmd5="2d694c7d930b043fbb57ebfa28570de5" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="suse-module-tools" version="16.0.32" release="1.1" arch="x86_64" hdrmd5="b0fcb0813bae9740c4e02a370d28aa05" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="python310-base" version="3.10.12" release="1.4" arch="x86_64" hdrmd5="e1aec7c20cb42c752b7464fba7b88444" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libbpf1" version="1.2.0" release="1.2" arch="x86_64" hdrmd5="7898c801a14199b060e816c0f57678ee" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libdwarves1" version="1.25" release="1.2" arch="x86_64" hdrmd5="9610046282d5431a928897e1bf1ef586" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="glibc-devel" version="2.37" release="4.43" arch="x86_64" hdrmd5="0694e30d0386f19b692da82721817bb4" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libdw1" version="0.189" release="3.76" arch="x86_64" hdrmd5="531559a31931aeafa67f3df1cb8e4c51" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libasm1" version="0.189" release="3.76" arch="x86_64" hdrmd5="ef8fc22bc0ee75b7f6bfd3cd58f60b57" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="findutils" version="4.9.0" release="2.192" arch="x86_64" hdrmd5="cd7d3205608f29706e00d9f39fda7668" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="xz" version="5.4.3" release="1.79" arch="x86_64" hdrmd5="4fb86077af5b0dc2fd14aa271bae7e8c" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="gcc" version="13" release="1.168" arch="x86_64" hdrmd5="1a41853d9e6deee988efa7b0dcda1d7f" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="cpio" version="2.13" release="5.204" arch="x86_64" hdrmd5="1fc842e54aa87438c48e3f2f42ee9949" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="make" version="4.4.1" release="2.129" arch="x86_64" hdrmd5="d9e4074bcb153cc24b3aedc4b3084e38" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="bzip2" version="1.0.8" release="5.169" arch="x86_64" hdrmd5="d15bd37a55dc5aa025b0abafb4da9436" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="file" version="5.44" release="2.79" arch="x86_64" hdrmd5="aa892572891470bc252c0847a5a8c71f" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="binutils" version="2.40" release="5.33" arch="x86_64" hdrmd5="1e4bf50e76d57ddf6cb394ba5a09da0c" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="gawk" version="5.2.2" release="2.62" arch="x86_64" hdrmd5="4c3735f99b0a1e2f8ef4809cf03c3af4" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="patch" version="2.7.6" release="6.278" arch="x86_64" hdrmd5="4cf1ccce9019eca23528608c7c07fb9e" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="which" version="2.21" release="5.292" arch="x86_64" hdrmd5="da12908b83bcb0b55a9ad7721de73b33" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="glibc-locale-base" version="2.37" release="4.43" arch="x86_64" hdrmd5="b251981d5a1cd71087f70dfab0f403f5" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="dwz" version="0.15" release="2.229" arch="x86_64" hdrmd5="720a4e4e1c974239cd3c3f4bce2f34bb" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="systemd-rpm-macros" version="24" release="1.21" arch="noarch" hdrmd5="070828150b359e9cc72fc43950340253" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="librpmbuild9" version="4.18.0" release="5.31" arch="x86_64" hdrmd5="c861330e5e91284d3610aeed5fdadcc3" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="debugedit" version="5.0" release="5.227" arch="x86_64" hdrmd5="ce1865ea46b205f386d8a03e097d735d" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="gcc13-PIE" version="13.1.1+git7364" release="1.48" arch="x86_64" hdrmd5="426b0c621532b36fe16e6facb3608a28" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="rpm-build-perl" version="4.18.0" release="5.31" arch="x86_64" hdrmd5="3b9e124d585947d4e5970f99a751178c" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="python-rpm-packaging" version="20210526+a18ca48" release="1.261" arch="noarch" hdrmd5="47554a60a3f24d87bd432c7cdceedfa6" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libfl2" version="2.6.4" release="6.415" arch="x86_64" hdrmd5="115aeebc323dea53f00b77ab8ae086ac" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libfreebl3" version="3.90" release="1.2" arch="x86_64" hdrmd5="689675aefa26e0d20179cf59d8e59b3a" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libsoftokn3" version="3.90" release="1.2" arch="x86_64" hdrmd5="4c3527b7733210a9830886c97c8ba758" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libonig5" version="6.9.8" release="1.15" arch="x86_64" hdrmd5="fba9be6581ea616fa7d9794508d101b9" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="pkgconf-m4" version="1.8.0" release="2.183" arch="noarch" hdrmd5="8714cb4343d2eeb2abb84a08abc7d688" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="pkgconf" version="1.8.0" release="2.183" arch="x86_64" hdrmd5="beeb3c703da67408952b3a71c752c4b8" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="crypto-policies" version="20230420.3d08ae7" release="1.54" arch="noarch" hdrmd5="f997400300ff78fb046c2551599ad3ab" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libfipscheck1" version="1.7.0" release="1.211" arch="x86_64" hdrmd5="ec76517cfde261bc03c64b09e522cb6f" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libefivar1" version="38" release="1.32" arch="x86_64" hdrmd5="bb96fd129b07451f23165fe322311786" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="sysuser-shadow" version="3.1" release="5.251" arch="noarch" hdrmd5="9fd262f3d4c0950ee21341c25c5bdd78" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libpython3_10-1_0" version="3.10.12" release="1.4" arch="x86_64" hdrmd5="32796fd11d1a8a7e6a7996bd239d46ee" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libexpat1" version="2.5.0" release="2.203" arch="x86_64" hdrmd5="75a7f2f8edcffeb49c95163e8c17c11b" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libffi8" version="3.4.4" release="1.220" arch="x86_64" hdrmd5="55e47e607a658e966e9a7887956746a0" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libmpdec3" version="2.5.1" release="2.372" arch="x86_64" hdrmd5="1bce08461151913727bddea875f6da58" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="linux-glibc-devel" version="6.4" release="1.4" arch="x86_64" hdrmd5="d4e562872462a856f13d5ae169146d6e" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libxcrypt-devel" version="4.4.35" release="1.1" arch="x86_64" hdrmd5="8427e7edda1452d19665efc3ee944655" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libmagic1" version="5.44" release="2.79" arch="x86_64" hdrmd5="633af0fcbc8b51030a58d80631acd200" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libaudit1" version="3.0.9" release="1.178" arch="x86_64" hdrmd5="e79a2fc57bcc86adfa3a803690bcadd1" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libcap-ng0" version="0.8.3" release="2.77" arch="x86_64" hdrmd5="934c33b11bda99635df692d8d38cafaa" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libeconf0" version="0.5.2" release="1.139" arch="x86_64" hdrmd5="2ed8f8db098313fcfe039bc2023755f7" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libutempter0" version="1.2.1" release="1.94" arch="x86_64" hdrmd5="905733337a21e4df40b04690cfe04028" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libfdisk1" version="2.39" release="1.10" arch="x86_64" hdrmd5="2304baff007ca6e53f08b45908ab1ad6" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="gcc13" version="13.1.1+git7364" release="1.48" arch="x86_64" hdrmd5="138d4565e98b967afbea848f3f9a6045" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="cpp" version="13" release="1.168" arch="x86_64" hdrmd5="e5bbe3c2c600bc075df76f39bb384348" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libseccomp2" version="2.5.4" release="2.260" arch="x86_64" hdrmd5="9f266f49c909e526b0b6057e0d943109" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libctf-nobfd0" version="2.40" release="5.33" arch="x86_64" hdrmd5="58b29e84236f135fbd3f0931baaf5eb1" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libctf0" version="2.40" release="5.33" arch="x86_64" hdrmd5="74f945a58eccecc4c0a39b302ddb2eb9" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="update-alternatives" version="1.21.8" release="2.61" arch="x86_64" hdrmd5="ce6b337a9d219dc17c2fb04e2340bd1d" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libmpfr6" version="4.2.0" release="3.26" arch="x86_64" hdrmd5="5e63ca64768f081597991fba4aea1244" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="python310-packaging" version="23.1" release="2.90" arch="noarch" hdrmd5="5e11e7894ac3e7112212238fc12fe71c" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="python-rpm-macros" version="20230609.6fe8111" release="2.21" arch="noarch" hdrmd5="467f71d9a5adf820900ede0c01931d3d" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="system-user-root" version="20190513" release="2.324" arch="noarch" hdrmd5="0da330fbcf9fd54d3797ae25dd61f643" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="compat-usrmerge-tools" version="84.87" release="5.349" arch="x86_64" hdrmd5="9015aee464de04477ed9298c3c14c8cc" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="terminfo-base" version="6.4.20230617" release="15.16" arch="x86_64" hdrmd5="3ad0905e0c772b70c091d902c6eee8bc" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libsqlite3-0" version="3.42.0" release="1.3" arch="x86_64" hdrmd5="1f6bce6768a48bb2848b66e43c885fac" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libpkgconf3" version="1.8.0" release="2.183" arch="x86_64" hdrmd5="b0aaa4f3cdf6c686703be77e90102ece" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="chkstat" version="1699_20230602" release="1.27" arch="x86_64" hdrmd5="2ec6de3461edbd924404ce1f3e90f11f" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="permissions-config" version="1699_20230602" release="1.27" arch="noarch" hdrmd5="cf70207a578e47433509dd59ee318e92" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="file-magic" version="5.44" release="2.79" arch="noarch" hdrmd5="4407405f8b492049c4c50c374865192c" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="system-group-hardware" version="20170617" release="24.354" arch="noarch" hdrmd5="2e057d7eccae263b4550d9e4a2850ddc" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libmpc3" version="1.3.1" release="1.215" arch="x86_64" hdrmd5="d17cc377f2dd192f698beeaeefae46b8" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libisl23" version="0.26" release="1.122" arch="x86_64" hdrmd5="52f8ea215a0c32ee3b8be3ed6fe62849" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="cpp13" version="13.1.1+git7364" release="1.48" arch="x86_64" hdrmd5="8b19787667cd585fb18e935a5cd89dd2" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libasan8" version="13.1.1+git7364" release="1.48" arch="x86_64" hdrmd5="d78be04157793d8115541a2e97eea338" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libatomic1" version="13.1.1+git7364" release="1.48" arch="x86_64" hdrmd5="2695ee38189b9d99351e536aba2301b1" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libgomp1" version="13.1.1+git7364" release="1.48" arch="x86_64" hdrmd5="9ce38729ba6d397d353fb62a76a4b307" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libhwasan0" version="13.1.1+git7364" release="1.48" arch="x86_64" hdrmd5="3d88324105cc439802cadcf3aede62ef" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libitm1" version="13.1.1+git7364" release="1.48" arch="x86_64" hdrmd5="f435495162a3ba6d855e90a1fa20130b" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="liblsan0" version="13.1.1+git7364" release="1.48" arch="x86_64" hdrmd5="9543f7d597b68ab88332d6f0ee56ea5d" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libtsan2" version="13.1.1+git7364" release="1.48" arch="x86_64" hdrmd5="9eeb80c40194a7aae76bcf5cf38e085f" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libubsan1" version="13.1.1+git7364" release="1.48" arch="x86_64" hdrmd5="3483f53809f08f90acdd7c5a57f695ee" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="zlib-devel" version="1.2.13" release="4.73" arch="x86_64" hdrmd5="ce2884855b161ee72456d62acb3d0067" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libzstd-devel" version="1.5.5" release="3.55" arch="x86_64" hdrmd5="45fe373688364e102804fcc6b83d551e" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="gzip" version="1.12" release="3.200" arch="x86_64" hdrmd5="30179bae0e08fc8d2dc23d9996860f53" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="mozilla-nss-certs" version="3.90" release="1.2" arch="x86_64" hdrmd5="4ab2514ffa7d5fae1a72f7a45c3152c3" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="shadow" version="4.13" release="6.96" arch="x86_64" hdrmd5="48e443fdb256fa87641c5d1103ef8edf" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libsemanage2" version="3.5" release="1.178" arch="x86_64" hdrmd5="35bac053c1b96272ade04dd19c54dc30" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libsubid4" version="4.13" release="6.96" arch="x86_64" hdrmd5="ffd07b55fb003d8a9bf6a8416ed21935" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="login_defs" version="4.13" release="6.96" arch="noarch" hdrmd5="3dcb51fe2daf56953c15777b48c1967b" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libsepol2" version="3.5" release="1.184" arch="x86_64" hdrmd5="9887ac63011262162208104796dc36a6" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libsemanage-conf" version="3.5" release="1.178" arch="x86_64" hdrmd5="9ae281fe721692a63ca2ebe820848410" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="gdb" notmeta="1" version="13.2" release="1.1" arch="x86_64" hdrmd5="85fb0b5b7b2f8d96fd60e79a6712c85a" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="vim" notmeta="1" version="9.0.1632" release="1.1" arch="x86_64" hdrmd5="b862ef214ec5034251488f3903f63d3d" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="strace" notmeta="1" version="6.4" release="1.2" arch="x86_64" hdrmd5="8dea26627816c45e39e8651a18181754" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="less" notmeta="1" version="633" release="2.29" arch="x86_64" hdrmd5="48524d6db3e335ad7faf54fda46b7497" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="perl" notmeta="1" version="5.36.1" release="1.24" arch="x86_64" hdrmd5="5fcf8185bca6fb17182a73c999780b38" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="build-mkbaselibs" notmeta="1" version="20230628" release="1.1" arch="noarch" hdrmd5="f335b361ef0db387c349f7128c82b90c" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="compat-usrmerge-build" notmeta="1" version="84.87" release="5.349" arch="x86_64" hdrmd5="7a68fec8745a1f2cffdadbe84524e8d8" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="brp-check-suse" notmeta="1" version="84.87+git20230324.8680ce4" release="1.4" arch="x86_64" hdrmd5="13319d085c3363c98b95ac1c7630153d" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="post-build-checks" notmeta="1" version="84.87+git20230328.de7e9df" release="1.1" arch="noarch" hdrmd5="f9748fcaa2f76b21403b761f92cfc1ee" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="build-compare" notmeta="1" version="20230617T171717.50241a8" release="1.5" arch="noarch" hdrmd5="d2a2c7d0055ab91f729b0f1119fdf1d8" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="suse-module-tools-scriptlets" notmeta="1" version="16.0.32" release="1.1" arch="x86_64" hdrmd5="cbb2ce963c4d43c924d4a93ede5123f9" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="babeltrace" notmeta="1" version="1.5.8" release="3.26" arch="x86_64" hdrmd5="01b6f150271fe7abb0073e28132fa046" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libsource-highlight4" notmeta="1" version="3.1.9" release="5.28" arch="x86_64" hdrmd5="cbad973bcb5a6ac850d9245639f1bbd8" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="alts" notmeta="1" version="1.2+30.a5431e9" release="1.2" arch="x86_64" hdrmd5="83ec3cb83b14158e1f41a8e612f5924b" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="vim-data-common" notmeta="1" version="9.0.1632" release="1.1" arch="noarch" hdrmd5="65e6d4d425119e5a294175f5660c025a" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="xxd" notmeta="1" version="9.0.1632" release="1.1" arch="x86_64" hdrmd5="b468eda2389d3a65af376aba7a731bc0" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="ncurses-utils" notmeta="1" version="6.4.20230617" release="15.16" arch="x86_64" hdrmd5="0428637bb179ff9e717baeba5895d374" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libgdbm6" notmeta="1" version="1.23" release="1.317" arch="x86_64" hdrmd5="bd8e81e43102db4f3df17e9289924e70" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libgdbm_compat4" notmeta="1" version="1.23" release="1.317" arch="x86_64" hdrmd5="634b62c42496ba9a014bb4b7989f3c3e" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="aaa_base-malloccheck" notmeta="1" version="84.87+git20230329.b39efbc" release="1.4" arch="x86_64" hdrmd5="fd92f79d53fa541e29265a4889429208" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libglib-2_0-0" notmeta="1" version="2.76.3" release="1.3" arch="x86_64" hdrmd5="e02cd3804fb1b277d0950fbf6ee4388d" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libgmodule-2_0-0" notmeta="1" version="2.76.3" release="1.3" arch="x86_64" hdrmd5="cb498cf0602663b6f37a3c16378c6a00" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libalternatives1" notmeta="1" version="1.2+30.a5431e9" release="1.2" arch="x86_64" hdrmd5="e2d93a4d3982c41df2d16b20f941f460" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libdebuginfod1" notmeta="1" version="0.189" release="3.1" arch="x86_64" hdrmd5="4e6350cb3cca733adfe3288fa08ef019" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libcurl4" notmeta="1" version="8.1.2" release="1.1" arch="x86_64" hdrmd5="5d08590bae29420850b1774fbfe103ee" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libldap2" notmeta="1" version="2.6.4" release="2.1" arch="x86_64" hdrmd5="6a18a45adf7ce45b12138ad56520d7d3" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libbrotlidec1" notmeta="1" version="1.0.9" release="3.6" arch="x86_64" hdrmd5="11e74982c898863b95a62ddb32aa0502" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libidn2-0" notmeta="1" version="2.3.4" release="1.7" arch="x86_64" hdrmd5="a3acd77299b738ec93ed290614cd8e0b" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libssh4" notmeta="1" version="0.10.5" release="1.3" arch="x86_64" hdrmd5="8fca0392e95166e6207b0126cc059e25" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libnghttp2-14" notmeta="1" version="1.54.0" release="1.1" arch="x86_64" hdrmd5="21ba2e9005cd40918163f8a420925316" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libpsl5" notmeta="1" version="0.21.2" release="1.11" arch="x86_64" hdrmd5="0cc9321f3d38493fa50ddd548cbaa62b" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libsasl2-3" notmeta="1" version="2.1.28" release="5.3" arch="x86_64" hdrmd5="c11cfdffc364764a70c893c18af81184" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libbrotlicommon1" notmeta="1" version="1.0.9" release="3.6" arch="x86_64" hdrmd5="c3a0f01e51e66eea2f7b590e853ec637" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libunistring5" notmeta="1" version="1.1" release="2.2" arch="x86_64" hdrmd5="6b6323c99d714d080dc4a670347864a5" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libssh-config" notmeta="1" version="0.10.5" release="1.3" arch="x86_64" hdrmd5="d1dddbad15e38ead63ed67453b3ebcbb" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="krb5-mini" notmeta="1" version="1.20.1" release="6.5" arch="x86_64" hdrmd5="3f6d758fbcf923e1370c706ab6a1aa25" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libcom_err2" notmeta="1" version="1.47.0" release="1.2" arch="x86_64" hdrmd5="5f0cfff1b5adbe03158fea75c6421986" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="libverto1" notmeta="1" version="0.3.2" release="3.1" arch="x86_64" hdrmd5="aef76e0a871fdfb679452a3137612c92" project="SUSE:Factory:Head" repository="standard"/>
+  <bdep name="lua54" notmeta="1" version="5.4.6" release="1.46" arch="x86_64" hdrmd5="fdfddf9794edb69253ebe60c98663e3b" project="SUSE:Factory:Head" repository="standard"/>
+  <path project="Devel:Kernel:stable" repository="standard" url="http://download.suse.de/ibs/Devel:/Kernel:/stable/standard/"/>
+  <path project="SUSE:Factory:Head" repository="standard" url="http://download.suse.de/ibs/SUSE:/Factory:/Head/standard/"/>
+</buildinfo>
