@@ -319,4 +319,13 @@
     <comment></comment>
     <requestid>1090199</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>01c481ab453d5ab76bafb58cf7f17267</srcmd5>
+    <version>23.5</version>
+    <time>1689614633</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.5:
+  * s7: various small bugs and optimizations.</comment>
+    <requestid>1098908</requestid>
+  </revision>
 </revisionlist>

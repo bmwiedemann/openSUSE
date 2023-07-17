@@ -27,7 +27,7 @@
 %bcond_with jack
 %endif
 Name:           snd
-Version:        23.4
+Version:        23.5
 Release:        0
 Summary:        Sound File Editor
 License:        LGPL-2.1-or-later
