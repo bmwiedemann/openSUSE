@@ -261,4 +261,22 @@
     <comment>- add sle15_python_module_pythons (jsc#PED-68)</comment>
     <requestid>1084939</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2f917216016e4db6d0d2b484ef308b03</srcmd5>
+    <version>3.2.0</version>
+    <time>1689614567</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.2.0:
+  * Typehint for function `from_path` no longer enforce
+    `PathLike` as its first argument
+  * Minor improvement over the global detection reliability
+  * Introduce function `is_binary` that relies on main
+    capabilities, and optimized to detect binaries
+  * Propagate `enable_fallback` argument throughout `from_bytes`,
+    `from_path`, and `from_fp` that allow a deeper control over
+    the detection (default True)
+  * Edge case detection failure where a file would contain 'very-
+    long' camel cased word (Issue #289)</comment>
+    <requestid>1098807</requestid>
+  </revision>
 </revisionlist>
