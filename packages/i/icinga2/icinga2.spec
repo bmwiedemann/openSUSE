@@ -99,7 +99,7 @@ Group:          System/Monitoring
 %else
 %endif
 Name:           icinga2
-Version:        2.13.7
+Version:        2.13.8
 Release:        %{revision}%{?dist}
 URL:            https://www.icinga.com/
 Source:         https://github.com/Icinga/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
