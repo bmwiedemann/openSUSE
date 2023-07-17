@@ -1,7 +1,7 @@
 #
 # spec file for package ledger
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,21 @@
 
 
 Name:           ledger
-Version:        3.2.1
+Version:        3.3.2
 Release:        0
 Summary:        Double-entry accounting system with a command-line reporting interface
 License:        BSD-3-Clause
 Group:          Productivity/Office/Finance
 URL:            https://github.com/ledger/ledger
 Source:         https://github.com/ledger/ledger/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         ledger-cmakelists.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Fix-compilation-with-Boost-1.76.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  libboost_date_time-devel >= 1.49.0
-BuildRequires:  libboost_filesystem-devel >= 1.49.0
-BuildRequires:  libboost_iostreams-devel >= 1.49.0
-BuildRequires:  libboost_regex-devel >= 1.49.0
-BuildRequires:  libboost_system-devel >= 1.49.0
-BuildRequires:  libboost_test-devel >= 1.49.0
+BuildRequires:  libboost_date_time-devel >= 1.72.0
+BuildRequires:  libboost_filesystem-devel >= 1.72.0
+BuildRequires:  libboost_iostreams-devel >= 1.72.0
+BuildRequires:  libboost_regex-devel >= 1.72.0
+BuildRequires:  libboost_system-devel >= 1.72.0
+BuildRequires:  libboost_test-devel >= 1.72.0
 BuildRequires:  mpfr-devel
 BuildRequires:  python3-base
 BuildRequires:  utfcpp-devel
