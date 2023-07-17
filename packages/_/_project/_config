@@ -1643,7 +1643,7 @@ BuildFlags: onlybuild:aspell
 BuildFlags: onlybuild:at-spi2-core
 BuildFlags: onlybuild:attr
 BuildFlags: onlybuild:audit
-BuildFlags: onlybuild:audit-secondary
+BuildFlags: onlybuild:audit:audit-secondary
 BuildFlags: onlybuild:augeas
 BuildFlags: onlybuild:autoconf
 BuildFlags: onlybuild:autoconf-archive
