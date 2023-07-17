@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jul  8 20:34:19 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * remove github tar-ball, tests are again included in pypi tar-ball
+  * switched from setuptools to poetry
+
+- update to version 4.8.0:
+  * Feature: Allow retrieve multiple documents by document ID using
+    Table.get(doc_ids=[...]) (see pull request 504).
+
+- changes from version 4.7.1:
+  * Improvement: Improve typing annotations (see pull request 477).
+  * Improvement: Fix some typos in the documentation (see pull request
+    479 and pull request 498).
+
+-------------------------------------------------------------------
 Tue Mar 22 08:34:06 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to  4.7.0

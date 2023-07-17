@@ -1,7 +1,7 @@
 #
 # spec file for package python-tinydb
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,30 +19,30 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-tinydb
-Version:        4.7.0
+Version:        4.8.0
 Release:        0
 Summary:        A document-oriented database
 License:        MIT
 Group:          Productivity/Databases/Servers
 URL:            https://github.com/msiemens/tinydb
 Source:         https://files.pythonhosted.org/packages/source/t/tinydb/tinydb-%{version}.tar.gz
-# https://github.com/msiemens/tinydb/issues/324
-Source1:        https://github.com/msiemens/tinydb/archive/refs/tags/v%{version}.tar.gz#/tinydb-%{version}-gh.tar.gz
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
-#BuildRequires:  %%{python_module typing-extensions >= 3.10 if %%python-base < 3.7}
-%if 0%{suse_version} < 1550
-# For submission to 15.4, which still has not the boolean rpm requirements support in prjconf
-BuildRequires:  %{python_module typing-extensions >= 3.10}
-%endif
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
+#BuildRequires:  %%{python_module typing-extensions >= 3.10 if %%python-base < 3.7}
+%if 0%{?suse_version} < 1550
+# For submission to 15.4, which still has not the boolean rpm requirements support in prjconf
+BuildRequires:  %{python_module typing-extensions >= 3.10}
+%endif
 %if 0%{?python_version_nodots} < 37
 Requires:       python-typing-extensions >= 3.10
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -55,14 +55,12 @@ external database server.
 %setup -q -n tinydb-%{version}
 chmod a-x LICENSE
 dos2unix LICENSE
-# only extract tests, use the sdist for the rest. We could use poetry-core and the github archive only if it wasn't for SLE/Leap
-tar -zx -C .. -f %{SOURCE1} tinydb-%{version}/tests
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
