@@ -1,7 +1,7 @@
 #
 # spec file for package autofs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,6 +60,8 @@ Patch105:       autofs-5-1-3-fix-unset-tsd-group-name-handling.patch
 # bsc#1175238 - Use /usr/etc/nsswitch.conf if /etc/nsswitch.conf is not available
 Patch106:       autofs-nsswitch-usr-etc.patch
 Patch107:       autofs-Test-TCP-request-correctly-in-nfs_get_info.patch
+# bsc#1207881 - Obsolete and incorrect manual page details for autofs(8)
+Patch108:       autofs-suse-manpage-remove-initdir.patch
 BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  cyrus-sasl-devel
@@ -111,6 +113,7 @@ cp %{SOURCE5} .
 %patch105 -p1
 %patch106 -p1
 %patch107 -p1
+%patch108 -p1
 
 %build
 autoreconf -fiv
