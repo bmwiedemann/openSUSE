@@ -239,4 +239,12 @@
     <comment>- Update to release 3.15.0</comment>
     <requestid>1091792</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>5dc8ee11c1baebcd977f99d424ad9c3a</srcmd5>
+    <version>3.15.1</version>
+    <time>1689614571</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.15.1</comment>
+    <requestid>1098827</requestid>
+  </revision>
 </revisionlist>
