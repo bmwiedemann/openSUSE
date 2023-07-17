@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 15 20:33:43 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.6
+  * New configuration option debug to increase log verbosity
+  * Reduced default log verbosity: PostSRSd no longer prints
+    messages for mail addresses which need no rewrite
+
+-------------------------------------------------------------------
 Tue Jun 27 04:49:49 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.0.5
