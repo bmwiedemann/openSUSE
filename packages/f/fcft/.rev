@@ -198,4 +198,13 @@
     required version of Harfbuzz has been increased to 5.2.</comment>
     <requestid>1005678</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fc10b021dde93a928e98e1bb53f5de6f</srcmd5>
+    <version>3.1.6</version>
+    <time>1689614587</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.1.6:
+  * Updated bundled nanosvg.</comment>
+    <requestid>1098717</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package fcft
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libname libfcft4
 Name:           fcft
-Version:        3.1.5
+Version:        3.1.6
 Release:        0
 Summary:        A library for font loading and glyph rasterization using FreeType/pixman
 License:        MIT
@@ -38,7 +38,7 @@ BuildRequires:  pkgconfig(freetype2) >= 2.12
 BuildRequires:  pkgconfig(harfbuzz) >= 5.2
 BuildRequires:  pkgconfig(libutf8proc)
 BuildRequires:  pkgconfig(pixman-1)
-BuildRequires:  pkgconfig(tllist)
+BuildRequires:  pkgconfig(tllist) >= 1.0.1
 
 %description
 fcft is a font loading and glyph rasterization library built on-top
