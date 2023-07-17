@@ -17,7 +17,7 @@
 
 
 Name:           vit
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        Visual Interactive Taskwarrior full-screen terminal interface
 License:        MIT

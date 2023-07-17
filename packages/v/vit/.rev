@@ -114,4 +114,14 @@ their configuration.
     definitions</comment>
     <requestid>1082340</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2b2f427be0552dc59907ee3fa0f0c3ef</srcmd5>
+    <version>2.3.1</version>
+    <time>1689614590</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.3.1
+  * fix: urwid.str_util import fails on some distros
+    gh#vit-project/vit#339</comment>
+    <requestid>1098726</requestid>
+  </revision>
 </revisionlist>

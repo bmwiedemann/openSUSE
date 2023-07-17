@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 14 18:44:48 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to 2.3.1
+  * fix: urwid.str_util import fails on some distros
+    gh#vit-project/vit#339
+
+-------------------------------------------------------------------
 Mon Apr 24 03:35:41 UTC 2023 - Mia Herkt <mia@0x0.st>
 
 - Update to 2.3.0
