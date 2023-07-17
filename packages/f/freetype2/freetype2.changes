@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Jul 15 14:36:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.13.1:
+  * New function  `FT_Get_Default_Named_Instance` to get the
+    index of the default named instance of an OpenType Variation
+    Font. A new load flag `FT_LOAD_NO_SVG` to make FreeType ignore
+    glyphs in an 'SVG ' table.
+  * New function  `FT_GlyphSlot_AdjustWeight` to adjust
+    the glyph weight either  horizontally or  vertically.
+    This is part of the `ftsynth.h` header file
+  * TrueType interpreter  version 38 (also known  as
+    'Infinality') has been deactivated; the value  of
+    `TT_INTERPRETER_VERSION_38` is now the same as
+    `TT_INTERPRETER_VERSION_40`.
+  * Switching named instances on and  off in Variation Fonts
+    was buggy if the design coordinates didn't change.
+- drop enable-infinality-subpixel-hinting.patch (obsolete, infinality
+  is deactivated)
+
+-------------------------------------------------------------------
 Thu May 25 08:20:04 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not limit ftdump conflict to < version-release, but only to

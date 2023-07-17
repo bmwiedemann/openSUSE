@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jul 15 14:39:02 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.13.1:
+  * `ftbench` has a new  command-line option  `-a`  to
+    apply design coordinates.
+  *  `ftview` can now flip SVG rendering on and off using the
+    'Z' key.
+  * `ftmulti` it  is  now possible  to toggle  the  fill
+    rule  and overlap flag  used for  rendering glyphs using  the 'F3'
+    and 'F4' keys,  respectively. Toggling the anti-aliased  mode
+    has been changed to the 'TAB' key.
+
+-------------------------------------------------------------------
 Thu May  4 11:35:04 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add _multibuild to define 2nd spec file as additional flavor.
