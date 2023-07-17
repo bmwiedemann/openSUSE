@@ -1,7 +1,7 @@
 #
 # spec file for package movit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,18 @@
 
 %define _sonum  8
 Name:           movit
-Version:        1.6.3
+Version:        1.7.0
 Release:        0
 Summary:        GPU video filter library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://movit.sesse.net
+URL:            https://movit.sesse.net
 Source0:        %{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM movit-1.6.0-versioned-shaderdir.patch -- Make shader directory versioned
-Patch0:         movit-1.6.0-versioned-shaderdir.patch
 BuildRequires:  libtool
 BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(egl)
-BuildRequires:  pkgconfig(eigen3)
+BuildRequires:  pkgconfig(eigen3) >= 3.4.0
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(sdl2)
@@ -50,9 +48,11 @@ transitions, facilitating real-time HD video editing.
 %package -n libmovit%{_sonum}
 Summary:        GPU video filter library
 Group:          System/Libraries
-Requires:       %{name}%{_sonum}-data
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
+# Shaders used to be split; Ensure upgrade path until Leap 15.5 EOL (Dec. 2024).
+Provides:       %{name}%{_sonum}-data = %{version}
+Obsoletes:      %{name}%{_sonum}-data < %{version}
 
 %description -n libmovit%{_sonum}
 Movit is a library for video filters. It uses the GPU present in many
@@ -73,24 +73,8 @@ transitions, facilitating real-time HD video editing.
 
 This package contains the development files (library and header files).
 
-%package -n     movit%{_sonum}-data
-Summary:        Data files for the Movit GPU video filter library
-Group:          Development/Libraries/C and C++
-Provides:       %{name}-data = %{version}
-Obsoletes:      %{name}-data < %{version}
-BuildArch:      noarch
-
-%description -n movit%{_sonum}-data
-Movit is a library for video filters. It uses the GPU present in many
-computers to accelerate computation of common filters and
-transitions, facilitating real-time HD video editing.
-
-This package contains the architecture-independent data files (GLSL
-fragment shaders).
-
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 # For SLE12, force use of GCC 7
@@ -98,9 +82,7 @@ test -x "$(type -p gcc-7)" && export CC=gcc-7
 test -x "$(type -p g++-7)" && export CXX=g++-7
 
 ./autogen.sh
-%configure \
-  --disable-static \
-  --with-shaderdir="%{_datadir}/%{name}%{_sonum}"
+%configure --disable-static
 
 make %{?_smp_mflags} TESTS=
 
@@ -115,10 +97,6 @@ rm %{buildroot}%{_libdir}/libmovit.la
 %license COPYING
 %doc README NEWS
 %{_libdir}/libmovit.so.*
-
-%files -n movit%{_sonum}-data
-%license COPYING
-%{_datadir}/movit%{_sonum}/
 
 %files devel
 %license COPYING
