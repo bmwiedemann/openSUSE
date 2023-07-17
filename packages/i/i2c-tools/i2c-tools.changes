@@ -5,6 +5,11 @@ Tue Jul  4 15:07:28 UTC 2023 - Fabian Vogt <fvogt@suse.com>
   originally meant to (boo#1212837)
 
 -------------------------------------------------------------------
+Thu Jun  8 06:24:12 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
+
+- Enable build for s390 and s390x
+
+-------------------------------------------------------------------
 Tue Jul 27 13:30:03 UTC 2021 - Jean Delvare <jdelvare@suse.com>
 
 - Update to version 4.3:

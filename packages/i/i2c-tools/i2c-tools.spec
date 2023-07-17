@@ -36,7 +36,7 @@ Source1:        https://www.kernel.org/pub/software/utils/i2c-tools/%{name}-%{ve
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
-ExcludeArch:    s390 s390x
+# ExcludeArch:    s390 s390x
 
 %description
 This package contains a heterogeneous set of I2C tools for Linux: a bus
