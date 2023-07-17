@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 15 17:21:54 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag 0.12.5.5907
+  * Addressed CVE-2022-33025 [boo#1200898],
+    CVE-2023-36271 [boo#1212709], CVE-2023-36272 [boo#1212707],
+    CVE-2023-36273 [boo#1212706], CVE-2023-36274 [boo#1212705]
+- Delete 0001-bits-change-bit_copy_chain.patch,
+  0001-fix-obj_flush_hdlstream-GH-497.patch (merged)
+
+-------------------------------------------------------------------
 Fri Aug 19 15:13:22 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-bits-change-bit_copy_chain.patch,

@@ -131,4 +131,15 @@
   [CVE-2022-35164] [boo#1202553]</comment>
     <requestid>998213</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0a5a1634aed83a6fb82304bd0f2c32c5</srcmd5>
+    <version>0.12.5.5907</version>
+    <time>1689614607</time>
+    <user>anag+factory</user>
+    <comment>- Update to tag 0.12.5.5907
+  * Addressed CVE-2022-33025 [boo#1200898],
+    CVE-2023-36271 [boo#1212709], CVE-2023-36272 [boo#1212707],
+    CVE-2023-36273 [boo#1212706], CVE-2023-36274 [boo#1212705]</comment>
+    <requestid>1098839</requestid>
+  </revision>
 </revisionlist>

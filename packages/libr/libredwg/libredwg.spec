@@ -1,7 +1,7 @@
 #
 # spec file for package libredwg
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,17 @@
 
 %define lname	libredwg0
 Name:           libredwg
-Version:        0.12.5
+Version:        0.12.5.5907
 Release:        0
 Summary:        A library to handle DWG files
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.gnu.org/software/libredwg/
 #Git-Clone:	https://github.com/LibreDWG/libredwg/
-Source:         https://ftp.gnu.org/pub/gnu/libredwg/%name-%version.tar.gz
-Source2:        https://ftp.gnu.org/pub/gnu/libredwg/%name-%version.tar.gz.sig
+#Source:         https://ftp.gnu.org/pub/gnu/libredwg/%name-%version.tar.xz
+Source:         https://github.com/LibreDWG/libredwg/releases/download/%version/libredwg-%version.tar.xz
 Source3:        http://savannah.gnu.org/people/viewgpg.php?user_id=101103#/%name.keyring
 Source4:        %name-rpmlintrc
-Patch1:         0001-bits-change-bit_copy_chain.patch
-Patch2:         0001-fix-obj_flush_hdlstream-GH-497.patch
 BuildRequires:  pkg-config
 
 %description
@@ -40,8 +38,10 @@ OpenDWG libraries. DWG is the native file format of AutoCAD.
 %package tools
 Summary:        Command line utilities for handling DWG file
 Group:          Productivity/File utilities
+%if 0%{?suse_version} < 1599
 Requires(post): %install_info_prereq
 Requires(preun):%install_info_prereq
+%endif
 # Both packages ship a %%_bindir/dwg2dxf
 Conflicts:      libdxfrw-tools
 
@@ -96,6 +96,7 @@ rm -fv "$b/usr/share/dwgadd.example" "$b/usr/share/load_dwg.py" "$b/usr/share/ma
 %_bindir/dxf*
 %_mandir/man?/*.1%{?ext_man}
 %_infodir/LibreDWG.info*%{?ext_info}
+%_datadir/libredwg/
 
 %files devel
 %license COPYING
