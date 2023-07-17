@@ -2025,4 +2025,30 @@ New upstream release</comment>
   * Convert embedded files to bytearray a bit smarter</comment>
     <requestid>1092923</requestid>
   </revision>
+  <revision rev="196" vrev="1">
+    <srcmd5>d998552086ebfd23df7a6464fd59c391</srcmd5>
+    <version>23.07.0</version>
+    <time>1689614566</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.07.0:
+  core:
+  * Fix reading of utf8-with-bom files
+  * Fix crash if CERT_ExtractPublicKey doesn't return a public
+    key
+  * Fix rendering of some malformed documents. Issue #1395
+  * Allow for stream compression and compress font streams in
+    forms Remove method Hints::getPageRanges
+  qt5:
+  * Fix crash when overprint preview is enabled
+  * Don't fail signature basics tests if backend is not
+    configured
+  qt6:
+  * Fix crash when overprint preview is enabled
+  * Don't fail signature basics tests if backend is not
+    configured
+  utils:
+  * pdfsig: Allow showung and selecting signature backend
+  * pdfsig: Describe signature dump format in manual page</comment>
+    <requestid>1098804</requestid>
+  </revision>
 </revisionlist>
