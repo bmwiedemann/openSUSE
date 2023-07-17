@@ -17,14 +17,16 @@
 
 
 Name:           python-cloup
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        Option groups, constraints, subcommand sections and help themes for Click
 License:        BSD-3-Clause
 URL:            https://github.com/janLuke/cloup
 Source:         https://files.pythonhosted.org/packages/source/c/cloup/cloup-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module click >= 8.0}
@@ -44,10 +46,10 @@ constraints, subcommand sections and help themes.
 %autosetup -n cloup-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
