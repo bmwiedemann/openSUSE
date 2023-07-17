@@ -17,10 +17,10 @@
 
 
 %global rustflags -Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2
-%global _dashed_version 20230408-112425-69ae8472
+%global _dashed_version 20230712-072601-f4abf8fd
 
 Name:           wezterm
-Version:        20230408.112425.69ae8472
+Version:        20230712.072601.f4abf8fd
 Release:        0
 Summary:        GPU-accelerated cross-platform terminal emulator and multiplexer
 URL:            https://github.com/wez/wezterm
