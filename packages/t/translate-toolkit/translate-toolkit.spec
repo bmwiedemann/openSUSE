@@ -29,7 +29,7 @@
 
 %define binaries_and_manpages %{shrink:\
     poclean pocompile poconflicts podebug pofilter pogrep pomerge porestructure posegment poswap poterminology \
-    build_firefox.sh junitmsgfmt pretranslate \
+    build_firefox.sh pretranslate \
     csv2po csv2tbx dtd2po flatxml2po html2po ical2po idml2po ini2po json2po \
     moz2po mozfunny2prop mozlang2po odf2xliff oo2po oo2xliff php2po phppo2pypo \
     po2csv po2dtd po2flatxml po2html po2ical po2idml po2ini po2json po2moz po2mozlang po2oo \
@@ -38,16 +38,16 @@
     tbx2po tiki2po ts2po txt2po web2py2po xliff2odf xliff2oo xliff2po yaml2po}
 %define binaries %{shrink: %binaries_and_manpages\
     pocommentclean pocompendium pocount pomigrate2 popuretext poreencode posplit prop2mozfunny \
-    build_tmdb buildxpi.py get_moz_enUS.py pydiff tmserver}
+    build_tmdb buildxpi.py get_moz_enUS.py pydiff tmserver junitmsgfmt}
 %define manpages translatetoolkit %binaries_and_manpages
 
 Name:           translate-toolkit%{psuffix}
-Version:        3.8.6
+Version:        3.9.2
 Release:        0
 Summary:        Tools and API to assist with translation and software localization
 License:        GPL-2.0-or-later
 URL:            https://toolkit.translatehouse.org/
-Source:         %{modname}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/t/%{modname}/%{modname}-%{version}.tar.gz
 Patch0:         xliff-xsd-no-network.patch
 Patch1:         sphinx-intersphinx.patch
 BuildRequires:  %{python_module Levenshtein >= 0.12}
@@ -109,6 +109,7 @@ BuildRequires:  %{python_module pyparsing >= 3.0.9}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module translate-toolkit = %{version}}
 BuildRequires:  %{python_module xml}
+BuildRequires:  %{python_module syrupy}
 BuildRequires:  gaupol
 %endif
 %python_subpackages
