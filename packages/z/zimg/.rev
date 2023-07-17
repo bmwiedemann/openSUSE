@@ -483,4 +483,18 @@
     <comment></comment>
     <requestid>976644</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>c524588f4a87a3c1a78fc42dbc50a2d6</srcmd5>
+    <version>3.0.5</version>
+    <time>1689614558</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.0.5
+ * colorspace: add ST.428-1 (gamma 2.6) transfer function
+ * depth: fix AVX-512 integer to float border handling (introduced in 2.6)
+ * depth: fix NEON dither border handling (introduced in 3.0)
+ * graph: fix clipping in alpha premultiplication (introduced in 3.0)
+ * x86: optimizations for AMD Zen4 processors
+- Drop e29571.patch</comment>
+    <requestid>1098722</requestid>
+  </revision>
 </revisionlist>

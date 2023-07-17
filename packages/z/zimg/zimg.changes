@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 14 17:48:12 UTC 2023 - Mia Herkt <mia@0x0.st>
+
+- Update to 3.0.5
+ * colorspace: add ST.428-1 (gamma 2.6) transfer function
+ * depth: fix AVX-512 integer to float border handling (introduced in 2.6)
+ * depth: fix NEON dither border handling (introduced in 3.0)
+ * graph: fix clipping in alpha premultiplication (introduced in 3.0)
+ * x86: optimizations for AMD Zen4 processors
+- Drop e29571.patch
+
+-------------------------------------------------------------------
 Fri May  6 09:28:56 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 3.0.4
