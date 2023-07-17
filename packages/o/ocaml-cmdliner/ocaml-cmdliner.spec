@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-parmap
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 Name:           ocaml-cmdliner
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 License:        ISC
@@ -26,7 +26,7 @@ Group:          Development/Languages/OCaml
 Source:         %name-%version.tar.xz
 BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20220222
+BuildRequires:  ocaml-rpm-macros >= 20230101
 
 %description
 Cmdliner is a module for the declarative definition of command line interfaces.

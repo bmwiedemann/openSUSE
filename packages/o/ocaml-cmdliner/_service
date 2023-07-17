@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-cmdliner</param>
-    <param name="revision">2c370b7ca519473584c04a3c4f89683f3cc0aad0</param>
+    <param name="revision">f82e27a18f32d140b3e18d0632e88797652ad95f</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/dbuenzli/cmdliner.git</param>
