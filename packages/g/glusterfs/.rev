@@ -305,4 +305,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1093590</requestid>
   </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>cecc980fd6e131adc2ecec3874d4a41a</srcmd5>
+    <version>11.0</version>
+    <time>1689614574</time>
+    <user>anag+factory</user>
+    <comment>- Add 0001-glusterfs-fix-heap-buffer-overflow-on-startup.patch</comment>
+    <requestid>1098829</requestid>
+  </revision>
 </revisionlist>

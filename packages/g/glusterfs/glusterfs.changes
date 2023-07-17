@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul  5 09:28:08 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-glusterfs-fix-heap-buffer-overflow-on-startup.patch
+
+-------------------------------------------------------------------
 Sat Jun 10 13:29:09 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Disable IO_uring for now [boo#1210894]

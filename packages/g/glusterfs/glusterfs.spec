@@ -28,6 +28,7 @@ URL:            https://www.gluster.org/
 #Git-Clone:	https://github.com/fvzwieten/lsgvt
 Source:         https://download.gluster.org/pub/gluster/glusterfs/11/%version/glusterfs-%version.tar.gz
 Patch1:         0001-socket-only-issue-IPPROTO_IPV6-setsockopt-calls-on-A.patch
+Patch2:         0001-glusterfs-fix-heap-buffer-overflow-on-startup.patch
 BuildRequires:  acl-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -150,7 +151,6 @@ links.
 %build
 %define _lto_cflags %nil
 ./autogen.sh
-# https://github.com/gluster/glusterfs/issues/3947
 %configure \
 	--without-tcmalloc \
 	--disable-linux-io_uring \
