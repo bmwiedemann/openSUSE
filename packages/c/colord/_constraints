@@ -1,8 +1,5 @@
 <constraints>
   <hardware>
-    <disk>
-      <size unit="G">4</size>
-    </disk>
     <physicalmemory>
       <size unit="M">8000</size>
     </physicalmemory>
@@ -11,6 +8,7 @@
     <conditions>
       <arch>armv6l</arch>
       <arch>armv7l</arch>
+      <arch>aarch64</arch>
     </conditions>
      <hardware>
      <physicalmemory>
@@ -25,6 +23,16 @@
      <hardware>
      <physicalmemory>
         <size unit="M">7250</size>
+     </physicalmemory>
+    </hardware>
+  </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>s390x</arch>
+    </conditions>
+     <hardware>
+     <physicalmemory>
+        <size unit="M">2000</size>
      </physicalmemory>
     </hardware>
   </overwrite>
