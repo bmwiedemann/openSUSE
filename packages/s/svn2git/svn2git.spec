@@ -17,12 +17,12 @@
 
 
 Name:           svn2git
-Version:        1.0.16
+Version:        1.0.18
 Release:        0
 Summary:        Importer for one time conversion from SVN to Git
 License:        GPL-3.0-only
 Group:          Development/Tools/Version Control
-URL:            http://github.com/svn-all-fast-export/svn2git
+URL:            https://github.com/svn-all-fast-export/%{name}
 Source0:        https://github.com/svn-all-fast-export/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  subversion-devel
