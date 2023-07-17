@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Jul 15 17:04:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.13.0:
+  * *OpenCV*: Improve OpenCV support -- errors, version, half
+  * *IBA*: Improve error message for IBA::ocio functions
+  * *exif*: Convert paramvalue string to integer when needed
+  * *exr*: Correction to dwa vs zip logic when outputting OpenEXR
+  * *ico*: Heap-buffer-overflow
+  * *jpeg*: Fix density calculation  for jpeg output
+  * *jpeg2000*: Better pixel type promotion logic
+  * *psd*: Prevent simultaneous psd thumbnail reads from clashing
+  * *strutil.h*: Ensure proper constexpr of string hashing
+  * *build* Fix use of OIIO_LOCAL_DEPS_PATH
+  * *build* Fix fmt vs gcc warning that had version typo
+  * *tests*: Fix missing simd test due to copy paste typo
+  * *docs*: Update CONTRIBUTING and SECURITY #3852
+  * *docs*: ImageInput and ImageOutput docs updated to Python 3.
+  * *docs*: Many fixes to python code examples
+  * *docs*: Update mail list URL
+  * *docs*: Fix explanation of raw:Exposure config hint
+  * *docs*: Document use of the DCO which is now required for all
+
+-------------------------------------------------------------------
 Fri Jun  2 15:09:20 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to 2.4.12.0:
