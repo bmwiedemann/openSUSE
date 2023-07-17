@@ -20,7 +20,7 @@
 %define modnamedown fanficfare
 %define skip_python2 1
 Name:           python-fanficfare
-Version:        4.21.0
+Version:        4.25.0
 Release:        0
 Summary:        Tool for making eBooks from stories on fanfiction and other web sites
 License:        GPL-3.0-only
@@ -39,13 +39,15 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-Brotli
 Requires:       python-beautifulsoup4
 Requires:       python-chardet
 Requires:       python-cloudscraper
 Requires:       python-html2text
 Requires:       python-html5lib
+Requires:       python-requests
 Requires:       python-requests-file
-Requires:       python-setuptools
+Requires:       python-urllib3
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
