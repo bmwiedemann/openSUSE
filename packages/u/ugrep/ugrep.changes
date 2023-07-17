@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul 15 16:25:25 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.12.3:
+  * Fixed a potential pattern match issue in the new v3.12
+    optimizations
+
+-------------------------------------------------------------------
 Tue Jul 11 05:26:40 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.12.2:
