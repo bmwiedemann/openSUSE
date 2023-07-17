@@ -1148,4 +1148,83 @@
 </comment>
     <requestid>1070710</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>da514964517f40516e81cb319c571af7</srcmd5>
+    <version>4.25.0</version>
+    <time>1689614576</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.25.0:
+  - Fix for make_firstimage_cover causing embedded image to also
+    use cover.jpg.
+  - adapter_wuxiaworldxyz: Paginated TOC
+  - Add use_workskin option for AO3 (&amp; squidgeworld). PR#967,
+    thanks niacdoial
+  - Make Rejects List Note column orderable.
+  - fix_relative_text_links fix for #anchors doesn't handle '.'
+    in id. Fixes #966 refer #952
+  - AO3 Check for hidden work after login.
+  - adapter_storiesonlinenet: Login now has a hidden token. -
+    #962 Thanks, mvlcek
+  - Allow for href='' in fix_relative_text_links processing.
+- Update to 4.24.0:
+  - Fix wuxiaworld.xyz specific setting section
+  - Fix force_cover_image when already in story
+  - AO3: Apparently minor change to chapter end note HTML. #956
+  - wuxiaworld.co -&gt; wuxiaworld.xyz changes most data collection
+    #953
+  - Fix Update Always metadata in BG logic
+  - fix_relative_text_links: Keep #anchor links if target also in
+    chapter. See #952
+  - Add order_chapters_by_date option for literotica.com, used to
+    be hard coded.
+  - Add force_update_epub_always option to update when EPUB has
+    more chapters than source. See #950 #949 #942.
+- Update to 4.23.0:
+  - Change force_img_referer to force_img_self_referer_regexp See
+    #940 #941
+  - adapter_deviantartcom: Another detect login string. #947
+  - Show INI highlighting under [storyUrl] sections
+  - Update translations.
+  - adapter_quotevcom: Some stories have no comments.
+  - Don't try to set seriesUrl when no series (Anthologies)
+  - Add force_img_referer optional feature. Closes #940
+  - Add static include_in_* when double quoted.
+  - Set Calibre Series URL link (calibre versions &gt; 6.14)
+- Update to 4.22.0:
+  - Fix for custom columns [storyUrl] sections. And still work
+    for Anthologies.
+  - AO3: Better fix for always_reload_first_chapter vs
+    use_view_full_work, fixes #932
+  - adapter_fictionmaniatv: Site change for status, fixes #931
+  - Remove doubled doreplacements/removeallentities from
+    author(etc)HTML processing.
+  - Remove inline ads, only seen with flaresolverr so far
+  - Changes to wattpad API mapping chapter URLs to story URLs.
+  - adapter_ficbooknet: Fix for site change.
+  - adapter_wattpadcom: Fix accidentally hardcoding a story in.
+  - adapter_thehookupzonenet: Fix changed date format
+  - Remove site: sugarquill.net - Site retired
+  - Remove site: fanfic.potterheadsanonymous.com - No DNS, broken
+    ~3 years
+  - Remove site: www.looselugs.com - No DNS, broken ~3 years
+  - Remove site: themaplebookshelf.com - No DNS, broken ~18
+    months
+  - Remove site: www.ik-eternal.net - No DNS, broken ~18 months
+  - Remove site: www.wraithbait.com - SSL expired +1yr, broken ~3
+    years
+  - Remove site: csi-forensics.com - SSL expired +1yr, broken ~3
+    years
+  - Remove site: archive.shriftweb.org broken ~4 years
+  - Remove site: trekiverse.org broken ~3 years
+  - Remove site: buffygiles.velocitygrass.com broken ~3 years
+  - Remove site: www.qaf-fic.com broken ~3 years
+  - Remove site: sword.borderline-angel.com broken ~3 years
+  - Remove site: www.andromeda-web.com broken ~3 years
+  - Remove site: tasteofpoison.inkubation.net broken ~3 years
+  - Remove site: merlinfic.dtwins.co.uk 'This site has been
+    removed due to PHP compatibility issues.'
+- Fix Requires: brotli -&gt; Brotli
+</comment>
+    <requestid>1098808</requestid>
+  </revision>
 </revisionlist>
