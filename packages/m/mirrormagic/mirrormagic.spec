@@ -17,14 +17,14 @@
 
 
 Name:           mirrormagic
-Version:        3.1.0
+Version:        3.3.0
 Release:        0
 Summary:        Puzzle game where you steer a beam of light using mirrors
 License:        GPL-2.0-only
 Group:          Amusements/Games/Logic
 URL:            https://www.artsoft.org/mirrormagic/
 Source0:        https://www.artsoft.org/RELEASES/unix/%{name}/%{name}-%{version}-linux.tar.gz
-Source1:        %{name}-icons.tar
+Source1:        %{name}-icons.tar.gz
 Source2:        %{name}.desktop
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -46,7 +46,7 @@ It was first released as "Mindbender" in the year 1989 on the Amiga
 C64 game "Deflektor".
 
 %prep
-%setup -q -b 1
+%autosetup -b 1
 
 rm -rfv lib mirrormagic
 find . -name "*.orig" -delete
