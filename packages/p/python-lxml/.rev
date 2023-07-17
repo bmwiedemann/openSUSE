@@ -969,4 +969,15 @@ Send to Staging:E.
     <comment></comment>
     <requestid>1084802</requestid>
   </revision>
+  <revision rev="102" vrev="8">
+    <srcmd5>dfa51f9899d74c6af4cb2023b726e87a</srcmd5>
+    <version>4.9.2</version>
+    <time>1689614557</time>
+    <user>anag+factory</user>
+    <comment>- Add ISO-Schematron-schema-optional.patch and
+  remove-ISO-Schematron-schema.patch to remove non-free RNG
+  schema file (bsc#1213351).
+</comment>
+    <requestid>1098714</requestid>
+  </revision>
 </revisionlist>

@@ -36,6 +36,12 @@ Patch1:         skip-test-under-libxml2-2.10.4.patch
 # PATCH-FIX-OPENSUSE Skip a test under libxml2 2.11.1+
 # https://bugs.launchpad.net/lxml/+bug/2018522
 Patch2:         skip-test-under-libxml2-2.11.1.patch
+# PATCH-FIX-UPSTREAM ISO-Schematron-schema-optional.patch lp#2024343 mcepl@suse.com
+# Make ISO Schematron RNG validation schemes optional and then remove it gh#lxml/lxml@4bfab2c82196
+Patch3:         ISO-Schematron-schema-optional.patch
+# PATCH-FIX-UPSTREAM remove-ISO-Schematron-schema.patch gl#fedora/legal/fedora-license-data/-#154 mcepl@suse.com
+# Actually remove the schema
+Patch4:         remove-ISO-Schematron-schema.patch
 BuildRequires:  %{python_module Cython >= 0.29.7}
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module cssselect >= 0.9.1}
