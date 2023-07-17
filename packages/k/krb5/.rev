@@ -1525,4 +1525,38 @@ Administrator experience:
     <comment></comment>
     <requestid>1084720</requestid>
   </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>1e6db514d1b2e61fedb6c6e4f31df15c</srcmd5>
+    <version>1.21.1</version>
+    <time>1689614574</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.121.1 (CVE-2023-36054):
+  * Fix potential uninitialized pointer free in kadm5 XDR parsing
+    [CVE-2023-36054].
+  * Added a credential cache type providing compatibility with
+    the macOS 11 native credential cache.
+  * libkadm5 will use the provided krb5_context object to read
+    configuration values, instead of creating its own.
+  * Added an interface to retrieve the ticket session key
+    from a GSS context.
+  * The KDC will no longer issue tickets with RC4 or triple-DES
+    session keys unless explicitly configured with the new
+    allow_rc4 or allow_des3 variables respectively.
+  * The KDC will assume that all services can handle aes256-sha1
+    session keys unless the service principal has a
+    session_enctypes string attribute.
+  * Support for PAC full KDC checksums has been added to
+    mitigate an S4U2Proxy privilege escalation attack.
+  * The PKINIT client will advertise a more modern set
+    of supported CMS algorithms.
+  * Removed unused code in libkrb5, libkrb5support,
+    and the PKINIT module.
+  * Modernized the KDC code for processing TGS requests,
+    the code for encrypting and decrypting key data,
+    the PAC handling code, and the GSS library packet
+    parsing and composition code.
+  * Improved the test framework's detection of memory
+    errors in daemon processes when used with asan.</comment>
+    <requestid>1098841</requestid>
+  </revision>
 </revisionlist>
