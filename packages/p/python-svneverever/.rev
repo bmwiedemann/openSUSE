@@ -25,4 +25,17 @@
     <comment></comment>
     <requestid>1029588</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4f1920c71b5dda8b382447c16e8d291a</srcmd5>
+    <version>1.7.2</version>
+    <time>1689614694</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.7.2:
+  * Actions: Create pull requests from pre-commit autoupdate
+    output
+  * Drop support for end-of-life Python &lt;=3.6
+  * Pin GitHub Actions to specific commits for security
+  * Handle use of non-root repository path gracefully (fixes #74)</comment>
+    <requestid>1098911</requestid>
+  </revision>
 </revisionlist>

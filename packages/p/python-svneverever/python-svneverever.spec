@@ -21,7 +21,7 @@
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-svneverever
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        Tool collecting path entries across SVN history
 License:        GPL-3.0-only

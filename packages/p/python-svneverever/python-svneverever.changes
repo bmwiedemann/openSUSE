@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jul 16 09:03:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.2:
+  * Actions: Create pull requests from pre-commit autoupdate
+    output
+  * Drop support for end-of-life Python <=3.6
+  * Pin GitHub Actions to specific commits for security
+  * Handle use of non-root repository path gracefully (fixes #74)
+
+-------------------------------------------------------------------
 Mon Oct 17 13:44:03 UTC 2022 - pgajdos@suse.com
 
 - version update to 1.7.1
