@@ -117,7 +117,7 @@ This plugin is required to read PostScript documents
 %build
 %global _libqt5_qmake %{_libqt5_qmake} -makefile %{name}.pro
 %{_libqt5_bindir}/lrelease translations/*.ts
-%qmake5 PLUGIN_INSTALL_PATH=%{_libdir}/%{name}
+%qmake5 PLUGIN_INSTALL_PATH=%{_libdir}/%{name} "CONFIG += c++17"
 %make_build
 
 %install
