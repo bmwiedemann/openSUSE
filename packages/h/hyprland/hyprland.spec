@@ -20,14 +20,13 @@
 %bcond_without devel
 
 Name:           hyprland
-Version:        0.26.0
+Version:        0.27.0
 Release:        0
 Summary:        Dynamic tiling Wayland compositor
 License:        BSD-3-Clause
 URL:            https://hyprland.org/
 Source0:        %{name}-%{version}.tar.xz
-Patch1:         0001-meson-fix-hyprland.pc-install-location.patch
-Patch2:         0002-fix-patched-wlroots-build.patch
+Patch1:         0002-fix-patched-wlroots-build.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++ >= 11
 BuildRequires:  git
@@ -118,7 +117,7 @@ rm %{buildroot}/%{_libdir}/libwlroots.a %{buildroot}/%{_libdir}/pkgconfig/wlroot
 %if %{with devel}
 %files devel
 %{_includedir}/%{name}
-%{_libdir}/pkgconfig/%{name}.pc
+%{_datadir}/pkgconfig/%{name}.pc
 %endif
 
 %changelog

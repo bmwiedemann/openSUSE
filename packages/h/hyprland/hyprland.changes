@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Fri Jul 14 16:38:11 UTC 2023 - Florian "sp1rit" <packaging@sp1rit.anonaddy.me>
+
+- Dropped 0001-meson-fix-hyprland.pc-install-location.patch. It
+  turns out, /usr/share/pkgconfig was the right directory after all.
+- Updated to version 0.27.0:
+  + Sup y'all, new Hyprland update dropped :)
+    Shoutout to grandma
+  + New features:
+    * Add support for smart splitting (#2676)
+    * Allow setting alpha value for ignorezero layer rule (#2477)
+    * feat: add ipc set title window event (#2419)
+    * feat: add lockactivegroup dispatcher (#2478)
+    * feat: add variable to customize locked group border color
+      (#2507)
+    * gestures: add workspace_swipe_use_r
+    * noxwl: add missing stubs
+    * pluginapi: add configReloaded event
+    * rules: add nodim
+    * rules: add stayfocused
+    * screenshader: add output uniform
+    * xwayland: add force_zero_scaling
+    * xwayland: add nearest neighbor filtering as an opt
+  + Fixes:
+    * Fix crash when screen size is 0x0 (#2523)
+    * Fix fractional scale updates in some cases (#2447)
+    * chore: fix typos (#2463)
+    * config: fix floating rules with floating-by-rule windows
+    * config: fix reading touchpad values to non-touchpad per-device
+      cfgs
+    * config: minor path handling fixes
+    * configmgr: fix idiotic comparisons in device configs
+    * fix updating revision in wlroots.wrap
+    * format: fix hooksystem
+    * gradient: fix warn
+    * groupbar fixes (#2630)
+    * groupbar: fix damage calcs
+    * groupbar: fix vram leak
+    * internal: minor style fixes
+    * layout: minor style fixes
+    * lockgroups fix (#2636)
+    * main: fix segfault when -c is given with no other arguments
+      (#2470)
+    * opengl: fix invalid tex references to tex-less shader
+    * plugins: fix config value usage in init
+    * screenshader: fix uniform variable checks (#2513)
+    * screenshot fix (#2640)
+    * swipe: fix mixup of r/m
+    * texture: fix styling
+    * xwayland: fix minor force_zero_scaling bugs
+    * xwaylandmanager: fixup style
+  + Other:
+    * Avoid passing control unix socket descriptors to children
+      (#2656)
+    * Cleanup compositor deadcode (#2657)
+    * Close socket2 client descriptor on hangup (#2654)
+    * Implement pass binds (#2503)
+    * Keep new mapped layer's alpha zero if the workspace has a
+      fullscreen window (#2686)
+    * Make movetoworkspace register previous workspace (#2436)
+    * Partial revert of Commit 302ec13: (#2539)
+    * Reloads animated decoration values set on window rules (#2594)
+    * Reloads dynamic window rules (#2585)
+    * Reuse same ID when reconnecting monitor, otherwise use minimum
+      available ID (#2666)
+    * Update ISSUE_GUIDELINES.md faq link to the wiki (#2424)
+    * Xdg config home support (#2047)
+    * [hyprctl] Expose the special workspace id and name of the
+      monitor (#2392)
+    * animationmgr: warp on equal start and goal
+    * calculate zoom_center based on monitor scale (#2482)
+    * compositor: don't set dim percent on disabled dim
+    * compositor: move group members properly in
+      moveWindowToWorkspaceSafe
+    * crashreporter: log tag
+    * damage: account for popups in getFullWindowBoundingBox
+    * eventmanager: drop obsoleted ignore events flag (#2660)
+    * events: remove old comment
+    * gamma: use wlr's new gamma manager event
+    * hyprctl: recalc layout on setprop
+    * includes: move workspace protocol header to includes
+    * input: force focus on movefocus
+    * input: remove old redundant code
+    * input: schedule frame on mouse move
+    * input: update surface input on changeworkspace
+    * internal: damage window on change group
+    * internal: make borderSize prop overridable
+    * internal: properly set monitor props on special windows
+    * keybinds: remove old todo
+    * layout: improve time restraints in window drag
+    * layout: set pseudo to float size in new window
+    * layouts: make aware of borderSize prop
+    * monitor desc default workspace (#2673)
+    * monitor desc default workspace but working now (#2678)
+    * monitor desc support (#2670)
+    * props: bump ver to 0.27.0
+    * render: move lastFrameDamage to CMonitor
+    * render: resize subsurfaces with size resizes
+    * renderer: damage decos on damageWindow
+    * screencopy: send original damage, avoid extents
+    * shader: init uniforms to -1
+    * shader: remove useless comment
+    * shadow: drop useless damageEntire()
+    * toplevelexport: ignore defunct windows
+    * window: recalc on deco remove
+    * xwayland: disconnect events on destroy
+    * xwayland: remove spaces from output names
+    * xwayland: send zero scaling to xwayland if enabled
+    * zoom: multiply by scale only on mouseZoomUseMouse (#2495)
+
+-------------------------------------------------------------------
 Tue May 30 09:11:41 UTC 2023 - Florian "sp1rit" <packaging@sp1rit.anonaddy.me>
 
 - Added "devel" package required to build Hyprland plugins.
