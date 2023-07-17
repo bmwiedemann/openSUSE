@@ -259,4 +259,16 @@ It does NOT conflict with python38 standard library (see upstream description)</
   * Added type annotation for ``Distribution.read_text``.</comment>
     <requestid>1084915</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>4d666c709992279b0c71e02a872bd159</srcmd5>
+    <version>6.8.0</version>
+    <time>1689614568</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.8.0:
+  * Require Python 3.8 or later.
+  * #453: When inferring top-level names that are importable for
+    distributions in ``package_distributions``, now symlinks to
+    other directories are honored.</comment>
+    <requestid>1098809</requestid>
+  </revision>
 </revisionlist>

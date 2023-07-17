@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 15 15:01:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.8.0:
+  * Require Python 3.8 or later.
+  * #453: When inferring top-level names that are importable for
+    distributions in ``package_distributions``, now symlinks to
+    other directories are honored.
+
+-------------------------------------------------------------------
 Thu May  4 21:32:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.6.0:
