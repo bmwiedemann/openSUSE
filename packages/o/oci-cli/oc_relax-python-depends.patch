@@ -1,7 +1,7 @@
-diff -Nru oci-cli-3.29.2.orig/requirements.txt oci-cli-3.29.2/requirements.txt
---- oci-cli-3.29.2.orig/requirements.txt	2023-06-28 00:37:36.000000000 +0200
-+++ oci-cli-3.29.2/requirements.txt	2023-06-29 14:08:48.758204203 +0200
-@@ -2,44 +2,44 @@
+diff -Nru oci-cli-3.29.3.orig/requirements.txt oci-cli-3.29.3/requirements.txt
+--- oci-cli-3.29.3.orig/requirements.txt	2023-07-12 22:26:06.000000000 +0200
++++ oci-cli-3.29.3/requirements.txt	2023-07-14 09:05:52.819152183 +0200
+@@ -2,47 +2,47 @@
  # (https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format),
  # you may need to use the --extra-index-url option instead.
  
@@ -12,13 +12,13 @@ diff -Nru oci-cli-3.29.2.orig/requirements.txt oci-cli-3.29.2/requirements.txt
  cffi>=1.9.1
 -click==8.0.4
 -coverage==4.5.2
--cryptography>=3.2.1,<40.0.0
+-cryptography>=3.2.1,<42.0.0
 -httpsig-cffi==15.0.0
 -Jinja2==3.0.3
 -jmespath==0.10.0
 -ndg-httpsclient==0.4.2
 -mock==2.0.0
--oci==2.105.0
+-oci==2.106.0
 -packaging==20.2
 -pluggy==0.13.0
 -py==1.10.0
@@ -38,7 +38,7 @@ diff -Nru oci-cli-3.29.2.orig/requirements.txt oci-cli-3.29.2/requirements.txt
 +jmespath>=0.10.0
 +ndg-httpsclient>=0.4.2
 +mock>=2.0.0
-+oci>=2.105.0
++oci>=2.106.0
 +packaging>=20.2
 +pluggy>=0.13.0
 +py>=1.10.0
@@ -51,8 +51,10 @@ diff -Nru oci-cli-3.29.2.orig/requirements.txt oci-cli-3.29.2/requirements.txt
 +pytest-cov>=2.5.1
 +python-dateutil>=2.5.3
  pytz>=2016.10
--requests==2.21.0
-+requests>=2.21.0
+-requests==2.21.0; python_version == '3.6'
+-requests==2.31.0; python_version > '3.6'
++requests>=2.21.0; python_version >= '3.6'
++requests>=2.31.0; python_version > '3.6'
  six>=1.15.0
 -sphinx==3.3.0
 -sphinx-rtd-theme==0.4.3
@@ -80,32 +82,39 @@ diff -Nru oci-cli-3.29.2.orig/requirements.txt oci-cli-3.29.2/requirements.txt
 +prompt-toolkit>=3.0.29
  setuptools>65.5.1; python_version > '3.6'
 -setuptools==59.6.0; python_version == '3.6'
-\ No newline at end of file
 +setuptools>=59.6.0; python_version >= '3.6'
-diff -Nru oci-cli-3.29.2.orig/setup.py oci-cli-3.29.2/setup.py
---- oci-cli-3.29.2.orig/setup.py	2023-06-28 00:37:36.000000000 +0200
-+++ oci-cli-3.29.2/setup.py	2023-06-29 14:08:07.717216704 +0200
+ # this is required because of python 3.6 requests dependency version bound
+-urllib3<=1.26.15
+\ No newline at end of file
++urllib3<=1.26.15
+diff -Nru oci-cli-3.29.3.orig/setup.py oci-cli-3.29.3/setup.py
+--- oci-cli-3.29.3.orig/setup.py	2023-07-12 22:26:06.000000000 +0200
++++ oci-cli-3.29.3/setup.py	2023-07-14 09:05:19.578980577 +0200
 @@ -30,23 +30,23 @@
      readme = f.read()
  
  requires = [
--    'oci==2.105.0',
-+    'oci>=2.105.0',
+-    'oci==2.106.0',
++    'oci>=2.106.0',
      'arrow>=1.0.0',
      'certifi',
 -    'click==8.0.4',
-+    'click>=8.0.4',
-     'cryptography>=3.2.1,<40.0.0',
+-    'cryptography>=3.2.1,<42.0.0',
 -    'jmespath==0.10.0',
+-    'python-dateutil>=2.5.3,<3.0.0',
++    'click>=8.0.4',
++    'cryptography>=3.2.1',
 +    'jmespath>=0.10.0',
-     'python-dateutil>=2.5.3,<3.0.0',
++    'python-dateutil>=2.5.3',
      'pytz>=2016.10',
      'six>=1.15.0',
 -    'terminaltables==3.1.0',
-+    'terminaltables>=3.1.0',
-     'pyOpenSSL>=17.5.0,<24.0.0',
-     'PyYAML>=5.4,<=6',
+-    'pyOpenSSL>=17.5.0,<24.0.0',
+-    'PyYAML>=5.4,<=6',
 -    'prompt-toolkit==3.0.29'
++    'terminaltables>=3.1.0',
++    'pyOpenSSL>=17.5.0',
++    'PyYAML>=5.4',
 +    'prompt-toolkit>=3.0.29'
  ]
  
