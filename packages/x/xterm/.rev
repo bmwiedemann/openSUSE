@@ -1790,4 +1790,22 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     missing glyphs (forwarded request 1092344 from dirkmueller)</comment>
     <requestid>1092476</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>945dee1fce1e0d99fdc6e6f912664fae</srcmd5>
+    <version>384</version>
+    <time>1689614573</time>
+    <user>anag+factory</user>
+    <comment>- update to 384:
+  * exclude  ASCII  space  from  showMissingGlyphs,  since a few
+    bitmap fonts lack this
+  * correct   a   step   in   rendering  double-width  characters
+    with bitmap-fonts
+  * fixes for ReGIS-related problems:
+    * mimic  an  undocumented  hardware  VT340 feature
+      which handles color initialization with incomplete parameters.
+    * handle whitespace between operator/operands for
+      color values.
+    * reset ReGIS-context when resetting graphics in RIS. (forwarded request 1098806 from dirkmueller)</comment>
+    <requestid>1098828</requestid>
+  </revision>
 </revisionlist>

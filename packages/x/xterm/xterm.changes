@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jul 15 14:57:12 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 384:
+  * exclude  ASCII  space  from  showMissingGlyphs,  since a few
+    bitmap fonts lack this
+  * correct   a   step   in   rendering  double-width  characters
+    with bitmap-fonts
+  * fixes for ReGIS-related problems:
+    * mimic  an  undocumented  hardware  VT340 feature
+      which handles color initialization with incomplete parameters.
+    * handle whitespace between operator/operands for
+      color values.
+    * reset ReGIS-context when resetting graphics in RIS.
+
+-------------------------------------------------------------------
 Sun Jun 11 15:06:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 382:
