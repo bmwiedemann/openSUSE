@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  7 07:07:07 UTC 2023 - ohering@suse.de
+
+- Update to version 3.2
+  see included CHANGES.md for details
+
+-------------------------------------------------------------------
 Sun May 21 21:21:21 UTC 2023 - ohering@suse.de
 
 - JaneStreet libraries are 64bit, this pkg depends on them (v2)
