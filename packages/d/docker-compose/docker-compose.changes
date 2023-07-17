@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jul 11 13:36:01 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.20.0:
+  * ci: speed up a couple Dockerfile targets w/ cache mount
+  * build(deps): bump github.com/docker/buildx from 0.11.0 to
+    0.11.1
+  * test: fix process leak in wait e2e test
+  * Apply no-deps before we select and mutate target service
+  * support `attach`
+  * build(deps): bump github.com/opencontainers/image-spec
+  * build(deps): bump gotest.tools/v3 from 3.4.0 to 3.5.0
+  * build(deps): bump github.com/docker/docker
+  * deps: bump docker/cli-docs-tool to v0.6.0
+  * build(deps): bump google.golang.org/grpc from 1.56.0 to 1.56.2
+  * fix(secrets): file permission value does not comply with spec
+  * when --index is not set select first service container
+  * network: fix random missing network when service has more than
+    one
+  * don't use unitialized cli to setup DryRunClient
+  * fix some comments
+  * add support of --builder and BUILDX_BUILDER
+  * Add `docker compose wait`
+
+-------------------------------------------------------------------
 Fri Jun 30 04:43:25 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.19.1:
