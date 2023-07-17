@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue Jul  4 13:14:08 UTC 2023 - Thomas Blume <thomas.blume@suse.com>
+
+- Upgrade to rsyslog 8.2306.0
+  * 2023-06-09: mmnormalize bugfix: if msg cannot be parsed, parser chain is stopped
+  * 2023-06-08: Add new global config option "libcapng.default"
+  * 2023-06-08: imjournal: Add FileCreateMode module parameter
+  * 2023-04-17: core bugfix: potential segfault on busy systems
+  * 2023-05-11: GNUTls Driver: Fix memory leaks in gtlsInitCred
+  * 2023-05-24: CI: update base ubuntu image for github actions
+  * 2023-05-16: OMHIREDIS::ADDED:: New support for 'stream' mode
+  * 2023-05-17: OMHIREDIS::ADDED:: new tests for existing functionalities
+  * 2023-04-25: OMHIREDIS::FIXED:: Correctly suspend module in case of failure
+  * 2023-05-17: OMHIREDIS::FIXED:: Synchronously try to authenticate
+  * 2023-04-25: IMHIREDIS::ADDED:: New support for 'stream' mode
+  * 2023-04-25: REDIS::ADDED:: Implement tests for imhiredis module
+  * 2023-04-12: IMHIREDIS::CLEAN:: various improvements and fixes
+     ### CHANGED
+    - [IMHIREDIS] factorize code for different modes
+    - [IMHIREDIS] Clean and improve logging lines
+    - [IMHIREDIS] Poll extinction state less frequently for main thread (less aggresive)
+    - [IMHIREDIS] Set 'key' action parameter to REQUIRED
+    - [IMHIREDIS] Use known message length instead of calculating it when
+      enqueuing message
+     ### ADDED
+    - [IMHIREDIS] Missing redis replies' types in enumeration
+     ### FIXED
+    - [IMHIREDIS] Correctly initialize instance object, especially for redisNodesList
+    - [IMHIREDIS] Correctly print input mode's value in logs when set incorrectly
+  * 2023-05-17: tests: mmexternal-SegFault-empty-jroot-vg.sh: fix typo
+  * 2023-03-21: modify testbench test to detect wrong imptcp truncation
+  * 2023-03-21: imptcp bugfix: spam log on oversize message
+  * 2023-03-23: core/bugfix: using $uuid msg prop can deadlock rsyslog on shutdown
+  * 2023-03-13: Remove halted LGTM badges on README
+  * 2023-02-16: Do not preserve capabilities when changing credentials
+  * 2023-01-23: CI/QA: do compile test both with NDEBUG set/unset
+  * 2023-01-23: Fixed wrong type conversion in cstrLen() for debug mode as well
+  * 2023-01-18: core/template: implement negative position.to
+  * 2023-01-18: CI: fix github CodeQL settings
+  * 2023-01-17: Remove CAP_DAC_OVERRIDE if privileges dropped
+  * 2023-01-17: Adjust the capability set
+  * 2023-01-13: substring function: enhancement and hardening
+  * 2023-01-11: omfile: add action parameters "rotation.*"
+  * 2023-01-11: CI: use newer version of zookeeper
+  * 2023-01-09: ffaup fix : memory corruption with concurrent workers
+  * 2023-01-02: openssl: fix undefined reference to CRYPTO_set_id_callback
+  * 2022-12-30: testbench: add test for invalid json template generation
+  * 2022-12-30: core bugfix: template system may generate invalid json
+  * 2022-12-28: Fixed wrong type conversion in cstrLen()
+  * 2022-12-08: Add CodeQL workflow for GitHub code scanning
+
+-------------------------------------------------------------------
 Tue Dec 27 13:18:37 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

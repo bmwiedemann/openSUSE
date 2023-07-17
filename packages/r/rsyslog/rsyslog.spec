@@ -1,7 +1,7 @@
 #
 # spec file for package rsyslog
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 # drop this with next release when doc tarball version lines up
-%define rsyslog_major 8.2212
+%define rsyslog_major 8.2306
 %define rsyslog_patch 0
 Name:           rsyslog
 Summary:        The enhanced syslogd for Linux and Unix
