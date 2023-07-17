@@ -17,25 +17,18 @@
 
 
 Name:           foot
-Version:        1.14.0
+Version:        1.15.0
 Release:        0
 Summary:        A Wayland terminal emulator
 License:        MIT
 URL:            https://codeberg.org/dnkl/foot
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch1:         0000-fix-scroll-damage-crash.patch
-Patch2:         0001-fix-crash-when-reflowing-alt-screen.patch
-Patch3:         0002-ensure-scroll-region-endpoint-is-valid-after-a-window-resize.patch
-Patch4:         https://codeberg.org/dnkl/foot/commit/a2db3cdd5b3b6ce0b782b5ee51d174f4b4890f26.patch#/0003-keep-empty-bottom-scroll-margin-empty-after-resize.patch
-Patch5:         https://codeberg.org/dnkl/foot/commit/8859e134efa422d50e53c0bbb0e83d07ddf66091.patch#/0004-fix-non-utf8-complaint.patch
-Patch6:         https://codeberg.org/dnkl/foot/commit/72bc0acfbd4b002ebf26d65368bb65601452353e.patch#/0005-fix-wayland-protocols-1.32.patch
 Requires:       terminfo
 Requires:       utempter
-BuildRequires:  meson >= 0.58
+BuildRequires:  meson >= 0.59
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  scdoc
-BuildRequires:  utempter-devel
 BuildRequires:  pkgconfig(fcft) < 4.0.0
 BuildRequires:  pkgconfig(fcft) >= 3.0.1
 BuildRequires:  pkgconfig(fontconfig)
@@ -86,7 +79,9 @@ users an easy way to theme foot.
 	-Dime=true \
 	-Dterminfo=enabled \
 	-Dtests=false \
-	-Dthemes=true
+	-Dthemes=true \
+	-Dutmp-backend=libutempter \
+	-Dutmp-default-helper-path=%{_libexecdir}/utempter/utempter
 %meson_build
 
 %install

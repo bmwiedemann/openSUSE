@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Jul 14 15:49:39 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.15.0:
+  * foot.ini options:
+    * Added csd.double-click-to-maximize option. Defaults to "yes".
+    * Added touch.long-press-delay option.
+    * Renamed main.utempter option to main.utmp-helper. main.utempter is still
+      recognized, but will log a deprecation warning.
+    * Changed default main.dpi-aware value from "auto" to "no", and "auto" is
+      no longer an allowed value.
+    * Default theme is now "starlight".
+    * Changed default key-bindings.show-urls-launch from Ctrl-Shift-U to
+      Ctrl-Shift-O.
+    * Changed default key-bindings.unicode-input from none to Ctrl-Shift-U.
+  * Implemented support fractional scaling on compositors that implement
+    the fractional-scale-v1 Wayland protocol. This also changes how fonts
+    are scaled to be based on the output scale factor configured in
+    the compositor rather than the output's DPI. To restore
+    the original behavior, set main.dpi-aware to "yes".
+  * Implemented support server side cursor shapes on compositors that implement
+    the cursor-shape-v1 Wayland protocol.
+  * Implemented support for touchscreen input.
+  * Implemented XTQMODKEYS query (CSI ? Pp m).
+  * Added new themes - aeroroot, ayu-mirage, srcery, starlight.
+  * Fixed incorrect icon in dock and window switcher on GNOME.
+  * Fixed various bugs in sixel output.
+  * Fixed various crashes when resizing or scrolling.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.15.0 for more details.
+- Patches:
+  * Drop 0000-fix-scroll-damage-crash.patch
+  * Drop 0001-fix-crash-when-reflowing-alt-screen.patch
+  * Drop 0002-ensure-scroll-region-endpoint-is-valid-after-a-window-resize.patch
+  * Drop 0003-keep-empty-bottom-scroll-margin-empty-after-resize.patch
+  * Drop 0004-fix-non-utf8-complaint.patch
+  * Drop 0005-fix-wayland-protocols-1.32.patch
+
+-------------------------------------------------------------------
 Mon Jul  3 15:58:29 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
 
 - Add patch 0005-fix-wayland-protocols-1.32.patch.
