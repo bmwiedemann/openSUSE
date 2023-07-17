@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-mccs
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-mccs
-Version:        1.1+14
+Version:        1.1+16
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Stripped-down version of mccs with OCaml bindings
@@ -29,7 +29,7 @@ Patch0:         %name.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20220409
+BuildRequires:  ocaml-rpm-macros >= 20230101
 BuildRequires:  ocamlfind(cudf)
 
 %description
