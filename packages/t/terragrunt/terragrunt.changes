@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul 18 09:13:18 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.48.3:
+  * Added handling of no outputs in render-json execution (#2635)
+
+-------------------------------------------------------------------
+Tue Jul 18 04:49:58 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.48.2:
+  * fix: include missing param in parsing cache key construction
+    (#2518)
+  * [skip ci] Removing former Grunts (#2640)
+  * Update scripts.html (#2638)
+
+-------------------------------------------------------------------
 Thu Jul 06 07:19:36 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.48.1:
