@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul 16 11:03:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.22:
+  * Add CPython 3.12.0b3
+  * Add Cinder 3.10 and Cinder configure patches
+
+-------------------------------------------------------------------
 Wed Jun 21 14:40:56 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.3.21
 
 - Update to 2.3.21

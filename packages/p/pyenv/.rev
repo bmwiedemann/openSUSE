@@ -250,4 +250,14 @@
     <comment></comment>
     <requestid>1094464</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>dedc9bb06a858256eefbae0652e7c0ed</srcmd5>
+    <version>2.3.22</version>
+    <time>1689710047</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.22:
+  * Add CPython 3.12.0b3
+  * Add Cinder 3.10 and Cinder configure patches</comment>
+    <requestid>1098932</requestid>
+  </revision>
 </revisionlist>
