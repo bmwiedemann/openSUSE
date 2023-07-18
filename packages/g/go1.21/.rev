@@ -16,4 +16,15 @@
   Refs boo#1212669</comment>
     <requestid>1095300</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7d9b134d5220d5d152c3d2c878cfc8ba</srcmd5>
+    <version>1.21rc3</version>
+    <time>1689710037</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.21rc3 (released 2023-07-14) is a release candidate version of
+  go1.21 cut from the master branch at the revision tagged
+  go1.21rc3.
+  Refs boo#1212475 go1.21 release tracking (forwarded request 1098741 from jfkw)</comment>
+    <requestid>1098742</requestid>
+  </revision>
 </revisionlist>

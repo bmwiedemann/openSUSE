@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 14 17:02:03 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.21rc3 (released 2023-07-14) is a release candidate version of
+  go1.21 cut from the master branch at the revision tagged
+  go1.21rc3.
+  Refs boo#1212475 go1.21 release tracking
+
+-------------------------------------------------------------------
 Fri Jun 23 22:34:10 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.21+ change default GOTOOLCHAIN=auto to local to prevent go
