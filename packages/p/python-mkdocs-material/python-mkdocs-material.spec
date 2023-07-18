@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mkdocs-material
-Version:        9.1.18
+Version:        9.1.19
 Release:        0
 Summary:        Material theme for mkdocs
 License:        MIT
