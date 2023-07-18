@@ -18,7 +18,7 @@
 
 %define lname	liblnk1
 Name:           liblnk
-Version:        20230205
+Version:        20230716
 Release:        0
 Summary:        Library and tools to access the Windows Shortcut File (LNK) format
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -44,9 +44,9 @@ BuildRequires:  pkgconfig(libcthreads) >= 20220102
 BuildRequires:  pkgconfig(libfdatetime) >= 20220112
 BuildRequires:  pkgconfig(libfguid) >= 20220113
 BuildRequires:  pkgconfig(libfole) >= 20220115
-BuildRequires:  pkgconfig(libfwps) >= 20230202
-BuildRequires:  pkgconfig(libfwsi) >= 20230114
-BuildRequires:  pkgconfig(libuna) >= 20220611
+BuildRequires:  pkgconfig(libfwps) >= 20230711
+BuildRequires:  pkgconfig(libfwsi) >= 20230710
+BuildRequires:  pkgconfig(libuna) >= 20230710
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
 
