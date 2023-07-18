@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Jul 16 11:04:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.15.4:
+  * lfunan(lfunetaquo([12,1;13*12,1]),1) -> stack overflow
+  * FpM_intersect could return a Flm
+  * 3- ifac_isprime could be called on input with tiny
+    divisors
+  * nfcompositum could return non-monic polynomials
+  * gammamellininvinit(vector(9,i,1)) -> SEGV
+  * incorrect sanity check in rnfeltdown ("not in base
+    field")
+  * precision loss in gammamellininv
+  * [pthread] parselect could crash
+  * rare infinite loop in ellsaturation
+  * quadunitindex(8461,2)->1 instead of 3
+  * chinese(Mod(1,3)*(x^2+x+2),Mod(1,5)*(x-1))->incorrect
+    leading term
+  * lindep([0,x]) -> SEGV
+  * [libpari] RgX_div_by_X_x: wrong variable number
+  * MS 14- hyperellratpoints(2*x^3+x^2-x,1000) -> wrong result
+  * ellisogeny over a nf -> inconsistent variables error
+  * w=3;quadgen(5) -> print x instead of w
+  * FpX_convol: wrong result for mixed degree
+  * 18- mateigen(,1): eigenvalues were given as t_VEC or
+    t_COL. Use t_COL.
+  * ellcard over small finite field: potential oo-loop
+- add pari.keyring for source integrity validation
+
+-------------------------------------------------------------------
 Mon Apr 17 06:01:18 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to 2.15.3

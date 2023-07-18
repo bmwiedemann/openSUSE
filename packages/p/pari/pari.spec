@@ -28,7 +28,7 @@ power series, algebraic numbers, and transcendental functions.\
 %global sover 8
 %global lname   libpari-gmp-tls%sover
 Name:           pari
-Version:        2.15.3
+Version:        2.15.4
 Release:        0
 Summary:        Computer Algebra System for computations in Number Theory
 License:        GPL-2.0-only
@@ -37,7 +37,8 @@ URL:            https://pari.math.u-bordeaux.fr
 #Git-Clone:     https://pari.math.u-bordeaux.fr/git/pari.git
 #Git-Web:       https://pari.math.u-bordeaux.fr/cgi-bin/gitweb.cgi
 Source0:        %url/pub/pari/unix/pari-%version.tar.gz
-Source2:        %url/pub/pari/unix/pari-%version.tar.gz.asc
+Source1:        %url/pub/pari/unix/pari-%version.tar.gz.asc
+Source2:        pari.keyring
 BuildRequires:  fltk-devel
 BuildRequires:  gmp-devel
 BuildRequires:  pkg-config
