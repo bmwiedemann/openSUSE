@@ -20,4 +20,16 @@
 (🤖: Submission of fake-gcs-server via https://src.opensuse.org/pool/fake-gcs-server/pulls/1 by mcepl)</comment>
     <requestid>1098374</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>98c9156692c8230fb2f42a0c8f66da94</srcmd5>
+    <version>1.45.2</version>
+    <time>1689710854</time>
+    <user>dimstar_suse</user>
+    <comment>Use %autosetup.
+
+Also put packaging files under the control of git.
+
+(🤖: Submission of fake-gcs-server via https://src.opensuse.org/pool/fake-gcs-server/pulls/3 by mcepl)</comment>
+    <requestid>1099102</requestid>
+  </revision>
 </revisionlist>

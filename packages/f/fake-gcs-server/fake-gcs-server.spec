@@ -38,7 +38,7 @@ BuildRequires:  xz
 fake-gcs-server provides an emulator for Google Cloud Storage API. It can be used as a library in Go projects and/or as a standalone binary/Docker image.
 
 %prep
-%setup -q -a1
+%autosetup -p1 -a1
 
 %build
 %goprep %{import_path}
