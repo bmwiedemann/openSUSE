@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 18 16:42:38 UTC 2023 - cloud-devel@suse.de
+
+- update to version 4.5.0
+  - Retry on ilo state error
+  - Update master for stable/2023.1
+  - Update pep8 dep hacking to latest: v6
+  - Exclude all files starting with . from flake8 tests
+  - Add TransferProtocolType for any general error that mentions it
+  - Handle TransferMethod in vmedia insertion
+  - Handle non-default language for registries
+
+-------------------------------------------------------------------
 Mon Mar  6 15:52:38 UTC 2023 - cloud-devel@suse.de
 
 - update to version 4.4.2

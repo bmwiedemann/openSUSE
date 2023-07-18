@@ -230,4 +230,19 @@
   - Fix volume deletion on newer iDRACs</comment>
     <requestid>1069690</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b3c0242683e1654ac896ee76e6c386ec</srcmd5>
+    <version>4.5.0</version>
+    <time>1689710949</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 4.5.0
+  - Retry on ilo state error
+  - Update master for stable/2023.1
+  - Update pep8 dep hacking to latest: v6
+  - Exclude all files starting with . from flake8 tests
+  - Add TransferProtocolType for any general error that mentions it
+  - Handle TransferMethod in vmedia insertion
+  - Handle non-default language for registries</comment>
+    <requestid>1099311</requestid>
+  </revision>
 </revisionlist>
