@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jul 16 10:53:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1.0-post.3:
+  * Update permissions in publishing workflow to allow publishing
+    of files to GitHub releases
+  * Use `package` and `wheel_build_env` to speed up tests as this
+    is a pure Python package. See the tox docs for more detail.
+  * Use PyPI trusted publishing instead of manual token
+    authentication
+  * You can now configure `retry_spec` and `timeout_spec` at the
+    endpoint level. Calls to endpoints may override the endpoint-
+    level configuration when necessary.
+
+-------------------------------------------------------------------
 Mon Dec 19 21:25:05 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - version 7.0.0

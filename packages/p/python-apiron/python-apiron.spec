@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019-2022 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 %define skip_python36 1
 %define modname apiron
 Name:           python-%{modname}
-Version:        7.0.0
+Version:        7.1.0.post3
 Release:        0
 Summary:        Apiron helps you cook a tasty client for RESTful APIs
 License:        MIT

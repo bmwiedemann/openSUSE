@@ -45,4 +45,21 @@
     <comment></comment>
     <requestid>1043910</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1986a3a0aaae5a145a121aa61bf6ff4e</srcmd5>
+    <version>7.1.0.post3</version>
+    <time>1689710044</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.1.0-post.3:
+  * Update permissions in publishing workflow to allow publishing
+    of files to GitHub releases
+  * Use `package` and `wheel_build_env` to speed up tests as this
+    is a pure Python package. See the tox docs for more detail.
+  * Use PyPI trusted publishing instead of manual token
+    authentication
+  * You can now configure `retry_spec` and `timeout_spec` at the
+    endpoint level. Calls to endpoints may override the endpoint-
+    level configuration when necessary.</comment>
+    <requestid>1098925</requestid>
+  </revision>
 </revisionlist>
