@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun 13 14:00:33 UTC 2023 - Christian Goll <cgoll@suse.com>
+
+- update to 1.1.9 with following changes:
+  * Remove warning about unknown xino=on option from fuse-overlayfs, introduced
+    in 1.1.8.
+  * Ignore extraneous warning from fuse-overlayfs about a readonly /proc.
+  * Fix dropped "n" characters on some platforms in definition file stored as
+    part of SIF metadata.
+  * Remove duplicated group ids.
+  * Fix not being able to handle multiple entries in LD_PRELOAD when binding
+    fakeroot into container during apptainer startup for --fakeroot with
+    fakeroot command.
+
+-------------------------------------------------------------------
 Thu Apr 27 12:59:22 UTC 2023 - Christian Goll <cgoll@suse.com>
 
 - Included a fix for CVE-2023-30549 which is a vulnerability in setuid-root
