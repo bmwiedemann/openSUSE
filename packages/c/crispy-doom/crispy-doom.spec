@@ -17,7 +17,7 @@
 
 
 Name:           crispy-doom
-Version:        5.12.0
+Version:        6.0
 Release:        0
 Summary:        Higher resolution DOOM/Heretic/Hexen/Strife source port
 License:        GPL-2.0-or-later
