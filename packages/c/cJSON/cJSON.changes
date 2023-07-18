@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jul 16 19:13:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.16:
+  * Add an option for ENABLE_CJSON_VERSION_SO in CMakeLists.txt
+  * Add cmake_policy to CMakeLists.txt
+  * Add cJSON_SetBoolValue
+  * Add meson documentation
+  * Fix memory leak in merge_patch
+  * Fix conflicting target names 'uninstall'
+  * Bump cmake version to 3.0 and use new version syntax
+  * Print int without decimal places
+  * Fix 'cjson_utils-static' target not exist
+  * Add allocate check for replace_item_in_object
+  * Fix a null pointer crash in cJSON_ReplaceItemViaPointer
+
+-------------------------------------------------------------------
 Wed Aug 25 11:45:18 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7.15

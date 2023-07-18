@@ -23,4 +23,23 @@
     <comment></comment>
     <requestid>914589</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>062b25b121089fb5916944f6c4942a75</srcmd5>
+    <version>1.7.16</version>
+    <time>1689710097</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.16:
+  * Add an option for ENABLE_CJSON_VERSION_SO in CMakeLists.txt
+  * Add cmake_policy to CMakeLists.txt
+  * Add cJSON_SetBoolValue
+  * Add meson documentation
+  * Fix memory leak in merge_patch
+  * Fix conflicting target names 'uninstall'
+  * Bump cmake version to 3.0 and use new version syntax
+  * Print int without decimal places
+  * Fix 'cjson_utils-static' target not exist
+  * Add allocate check for replace_item_in_object
+  * Fix a null pointer crash in cJSON_ReplaceItemViaPointer</comment>
+    <requestid>1098986</requestid>
+  </revision>
 </revisionlist>

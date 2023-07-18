@@ -1,7 +1,7 @@
 #
 # spec file for package cJSON
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %global sover   1
 %global libname libcjson%{sover}
 Name:           cJSON
-Version:        1.7.15
+Version:        1.7.16
 Release:        0
 Summary:        JSON parser library written in ANSI C
 License:        MIT
