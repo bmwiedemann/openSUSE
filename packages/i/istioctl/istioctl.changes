@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Mon Jul 17 04:59:39 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.18.1:
+  * Automator: update proxy@release-1.18 in
+    istio/istio@release-1.18 (#46007)
+  * Automator: update ztunnel@release-1.18 in
+    istio/istio@release-1.18 (#46000)
+  * Automator: update istio/client-go@release-1.18 dependency in
+    istio/istio@release-1.18 (#45996)
+  * Automator: update common-files@release-1.18 in
+    istio/istio@release-1.18 (#45995)
+  * Update image from (#45958)
+  * [release-1.18] prevent port conflict with sidecar static
+    listener like 15021 15090 (#45966)
+  * [release-1.18] Set inject true for compatibility tests (#45928)
+  * Automator: update ztunnel@release-1.18 in
+    istio/istio@release-1.18 (#45948)
+  * Add release note for #45632 (#45927)
+  * [release-1.18] Fix health probe port overwrite (#45873)
+  * Automator: update istio/client-go@release-1.18 dependency in
+    istio/istio@release-1.18 (#45938)
+  * Automator: update common-files@release-1.18 in
+    istio/istio@release-1.18 (#45936)
+  * Automator: update ztunnel@release-1.18 in
+    istio/istio@release-1.18 (#45892)
+  * Automator: update common-files@release-1.18 in
+    istio/istio@release-1.18 (#45875)
+  * Automator: update istio/client-go@release-1.18 dependency in
+    istio/istio@release-1.18 (#45876)
+  * [release-1.18] Fix bug report include option not working as
+    expected (#45860)
+  * Automator: update istio/client-go@release-1.18 dependency in
+    istio/istio@release-1.18 (#45857)
+  * [release-1.18] Fix a potential nil panic of endpointindex
+    (#45808)
+  * Automator: update proxy@release-1.18 in
+    istio/istio@release-1.18 (#45834)
+  * Automator: update proxy@release-1.18 in
+    istio/istio@release-1.18 (#45771)
+  * Automator: update proxy@release-1.18 in
+    istio/istio@release-1.18 (#45769)
+  * Automator: update proxy@release-1.18 in
+    istio/istio@release-1.18 (#45747)
+  * gcp metadata: compute GCPClusterURL from metadata (#45741)
+  * Fix auth header syntax (#45711)
+  * Automator: update ztunnel@release-1.18 in
+    istio/istio@release-1.18 (#45702)
+  * Bump github.com/lestrrat-go/jwx from 1.2.25 to 1.2.26 (#45684)
+  * Automator: update common-files@release-1.18 in
+    istio/istio@release-1.18 (#45690)
+  * Automator: update istio/client-go@release-1.18 dependency in
+    istio/istio@release-1.18 (#45660)
+  * Automator: update proxy@release-1.18 in
+    istio/istio@release-1.18 (#45667)
+  * prow: move to use WI for auth_header in private (#45609)
+  * Automator: update proxy@release-1.18 in
+    istio/istio@release-1.18 (#45587)
+  * Automator: update ztunnel@release-1.18 in
+    istio/istio@release-1.18 (#45579)
+  * Automator: update istio/client-go@release-1.18 dependency in
+    istio/istio@release-1.18 (#45570)
+  * Automator: update common-files@release-1.18 in
+    istio/istio@release-1.18 (#45569)
+  * [release-1.18] improve accesslog mode e2e tests (#45519)
+  * Update BASE_VERSION to 1.18-2023-06-15T19-02-54 (#45495)
+  * [release-1.18] cherry-pick: add debug info when generating
+    certs for workloads (#45194)
+  * [release-1.18] Update min supported k8s version to 1.24
+    (#45444)
+  * Automator: update proxy@release-1.18 in
+    istio/istio@release-1.18 (#45450)
+  * Automator: update istio/client-go@release-1.18 dependency in
+    istio/istio@release-1.18 (#45381)
+  * [release-1.18] Check the disabled status when adding a log
+    provider (#45373)
+  * Change to use Node instead of RawMeta (#45359)
+  * [release-1.18] Fix istioctl pc secret cert validity not
+    accurate (#45343)
+  * Add rolling update max unavailable to CNI chart to speed up
+    deploys (cherry pick to release-1.18) (#44934)
+  * Fix Telemetry disablement matching (#45303)
+  * Fix invalid XDS configuration for wildcard Ingress HTTP path
+    (#44898) (#45168)
+  * Adding LRS support (#45165)
+  * [release-1.18] Certificate Revocation List support (#45130)
+  * [release-1.18]Manual cherry-pick of 44481 and 44775 (#45081)
+  * precise-errorcode-debuggen (#45164)
+  * Automator: update ztunnel@release-1.18 in
+    istio/istio@release-1.18 (#45333)
+  * Automator: update istio/client-go@release-1.18 dependency in
+    istio/istio@release-1.18 (#45326)
+  * Automator: update common-files@release-1.18 in
+    istio/istio@release-1.18 (#45325)
+
+-------------------------------------------------------------------
 Tue Jun 13 06:13:18 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.18.0:
