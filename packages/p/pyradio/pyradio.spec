@@ -18,7 +18,7 @@
 
 
 Name:           pyradio
-Version:        0.9.2.11
+Version:        0.9.2.13
 Release:        0
 Summary:        Curses based internet radio player
 License:        MIT
