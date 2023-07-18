@@ -1,7 +1,7 @@
 #
 # spec file for package kea
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,41 +16,43 @@
 #
 
 
-%define asiodns_sover 24
-%define asiolink_sover 40
-%define cc_sover 39
-%define cfgclient_sover 36
-%define cryptolink_sover 28
-%define d2srv_sover 16
-%define database_sover 35
-%define dhcppp_sover 54
-%define dhcp_ddns_sover 29
-%define dhcpsrv_sover 69
-%define dnspp_sover 30
-%define eval_sover 39
-%define exceptions_sover 13
-%define hooks_sover 57
-%define http_sover 42
-%define log_sover 35
-%define mysql_sover 38
-%define pgsql_sover 36
-%define process_sover 40
-%define stats_sover 18
+%define asiodns_sover 35
+%define asiolink_sover 56
+%define cc_sover 54
+%define cfgclient_sover 51
+%define cryptolink_sover 38
+%define d2srv_sover 30
+%define database_sover 48
+%define dhcppp_sover 73
+%define dhcp_ddns_sover 41
+%define dhcpsrv_sover 89
+%define dnspp_sover 42
+%define eval_sover 52
+%define exceptions_sover 23
+%define hooks_sover 77
+%define http_sover 56
+%define log_sover 48
+%define mysql_sover 53
+%define pgsql_sover 53
+%define process_sover 57
+%define stats_sover 29
+%define tcp_sover 5
 %define util_io_sover 0
-%define util_sover 52
+%define util_sover 68
 %if 0%{?suse_version} >= 1500
 %bcond_without regen_files
 %else
 %bcond_with    regen_files
 %endif
 Name:           kea
-Version:        2.2.0
+Version:        2.4.0
 Release:        0
 Summary:        Dynamic Host Configuration Protocol daemon
 License:        MPL-2.0
 Group:          Productivity/Networking/Boot/Servers
 URL:            https://kea.isc.org/
-#Git-Clone:	https://github.com/isc-projects/kea
+#Git-Clone:     https://gitlab.isc.org/isc-projects/kea
+#Github is out of date / abandoned(?)
 Source:         https://ftp.isc.org/isc/kea/%version/kea-%version.tar.gz
 Source2:        https://ftp.isc.org/isc/kea/%version/kea-%version.tar.gz.asc
 # https://www.isc.org/pgpkey/
@@ -284,6 +286,13 @@ Group:          System/Libraries
 %description -n libkea-stats%stats_sover
 One of the many libraries the Kea DHCP server is composed of.
 
+%package -n libkea-tcp%tcp_sover
+Summary:        Kea TCP library
+Group:          System/Libraries
+
+%description -n libkea-tcp%tcp_sover
+One of the many libraries the Kea DHCP server is composed of.
+
 %package -n libkea-util-io%util_io_sover
 Summary:        Kea I/O utility function library
 Group:          System/Libraries
@@ -328,6 +337,7 @@ Requires:       libkea-mysql%mysql_sover = %version
 Requires:       libkea-pgsql%pgsql_sover = %version
 Requires:       libkea-process%process_sover = %version
 Requires:       libkea-stats%stats_sover = %version
+Requires:       libkea-tcp%tcp_sover = %version
 Requires:       libkea-util%util_sover = %version
 Requires:       libkea-util-io%util_io_sover = %version
 # Bundy DHCP and Kea share the same origin, so conflict
@@ -368,6 +378,7 @@ cat <<-EOF >"$b/%_unitdir/kea.service"
 	[Service]
 	Type=forking
 	Environment=KEA_PIDFILE_DIR=%_rundir/%name
+        RuntimeDirectory=kea
 	ExecStart=%_sbindir/keactrl start
 	ExecReload=%_sbindir/keactrl reload
 	ExecStop=%_sbindir/keactrl stop
@@ -446,6 +457,8 @@ systemd-tmpfiles --create kea.conf || :
 %postun -n libkea-process%process_sover -p /sbin/ldconfig
 %post   -n libkea-stats%stats_sover -p /sbin/ldconfig
 %postun -n libkea-stats%stats_sover -p /sbin/ldconfig
+%post   -n libkea-tcp%tcp_sover -p /sbin/ldconfig
+%postun -n libkea-tcp%tcp_sover -p /sbin/ldconfig
 %post   -n libkea-util-io%util_io_sover -p /sbin/ldconfig
 %postun -n libkea-util-io%util_io_sover -p /sbin/ldconfig
 %post   -n libkea-util%util_sover -p /sbin/ldconfig
@@ -531,6 +544,9 @@ systemd-tmpfiles --create kea.conf || :
 
 %files -n libkea-stats%stats_sover
 %_libdir/libkea-stats.so.%stats_sover.*
+
+%files -n libkea-tcp%tcp_sover
+%_libdir/libkea-tcp.so.%tcp_sover.*
 
 %files -n libkea-util-io%util_io_sover
 %_libdir/libkea-util-io.so.%util_io_sover.*

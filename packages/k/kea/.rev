@@ -98,4 +98,12 @@
 AFAICT these packages aren't needed for generating the docs and the official documentation doesn't mention them as requirements. Especially elinks would be nice to remove as it isn't available in Leap/SLE. If there is a reason these are required feel free to decline this request. (forwarded request 1043789 from jcronenberg)</comment>
     <requestid>1043790</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1216c68800464fc13af199c36698f398</srcmd5>
+    <version>2.4.0</version>
+    <time>1689710028</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1098689</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Jul  6 13:57:08 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Add RuntimeDirectory to kea.service
+- Update to release 2.4.0
+  Breaking Changes:
+  * Both MySQL and PostgreSQL database schemas were updated to
+    accommodate DHCPv6 Bulk Leasequery support.
+  * The values accepted by `operation-target` used in
+    `reservation-*` commands have been renamed: primary ->
+    memory, alternate -> database.
+  * Kea DHCPv4 server can now handle multiple `vivco-suboptions`
+    options with different enterprise IDs and multiple vendor
+    options.
+  * The Discovery of Network-designated Resolvers (DNR) options
+    have been implemented for both DHCPv4 and DHCPv6. The options
+    allow configuration.
+  * Template classes mechanism, similar to spawning classes in
+    ISC DHCP, has been implemented.
+  * Kea now keeps leases for a period of time after they are
+    released.
+  * An address reserved in a global reservation must now lie
+    within the range of the subnet or shared-network selected by
+    Kea.
+  * It is now possible to add an "empty" host reservation without
+    any attribute.
+  * kea-dhcp4 now supports the `offer-lifetime` parameter to
+    allow the temporary allocation of leases during DHCPOFFER.
+  * Added support for Secure Zero Touch Provisioning options, per
+    RFC8572.
+  * The kea-dhcp6 `prefix-len` and `pd-pools` list now checks the
+    prefix lengths correctly.
+  * The preferred lifetime is now calculated as 0.625 *
+    `valid-lifetime` unless explicitly specified.
+  * The link selection suboption is now optional.
+  * See /usr/share/doc/kea/ChangeLog in the kea-doc package for
+    details.
+
+-------------------------------------------------------------------
 Wed Dec 14 14:51:33 UTC 2022 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Separate documentation into kea-doc package
