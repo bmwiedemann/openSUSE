@@ -51,4 +51,20 @@
   the Go toolchain. (forwarded request 1098450 from jfkw)</comment>
     <requestid>1098451</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>890e8880e8b57b34459fee8899d43ace</srcmd5>
+    <version>0.52.0</version>
+    <time>1689710958</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.52.0:
+  * Pull request 269: Retry request for stale H3 clients.
+  * Pull request 268: AG-23887-upd-quic-go
+  * all: imp header setting
+  * add https-server-name option to usage output
+  * change default Server header of HTTPS server to 'dnsproxy'
+  * make Server header for DoH server configurable
+  * Pull request 266: fix-golangci-lint
+  * Pull request 265: upd-specs (forwarded request 1099324 from VaiTon)</comment>
+    <requestid>1099326</requestid>
+  </revision>
 </revisionlist>

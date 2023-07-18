@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul 18 18:23:51 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.52.0:
+  * Pull request 269: Retry request for stale H3 clients.
+  * Pull request 268: AG-23887-upd-quic-go
+  * all: imp header setting
+  * add https-server-name option to usage output
+  * change default Server header of HTTPS server to 'dnsproxy'
+  * make Server header for DoH server configurable
+  * Pull request 266: fix-golangci-lint
+  * Pull request 265: upd-specs
+
+-------------------------------------------------------------------
 Mon Jul 03 15:00:47 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.51.0:
