@@ -1,7 +1,7 @@
 #
 # spec file for package python-PySDL2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,14 @@
 
 %define         X_display         ":98"
 Name:           python-PySDL2
-Version:        0.9.14
+Version:        0.9.16
 Release:        0
 Summary:        Python ctypes wrapper around SDL2
 License:        SUSE-Public-Domain
 URL:            https://github.com/py-sdl/py-sdl2
 Source:         https://files.pythonhosted.org/packages/source/P/PySDL2/PySDL2-%{version}.tar.gz
-Source99:       python-PySDL2.rpmlintrc
 # PATCH-FIX-OPENSUSE fix-tests.patch to make test work in chroot env without access to /dev/input
 Patch0:         fix-tests.patch
-# PATCH-FIX-UPSTREAM fix-version_test.patch gh#py-sdl/py-sdl2#248
-Patch1:         fix-version_test.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

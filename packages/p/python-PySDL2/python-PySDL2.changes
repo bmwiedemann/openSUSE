@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Jul 16 06:08:53 UTC 2023 - munix9@googlemail.com
+
+- Update to 0.9.16:
+  * Updated to wrap new functions and constants in SDL 2.28.0.
+  * Added a new method to sdl2.ext.Renderer, Renderer.rcopy(), for
+    drawing textures to the renderer with relative alignment.
+  * Added a new module, sdl2.ext.input for processing common SDL
+    input events in a Pythonic manner.
+  * Added a new function sdl2.ext.quit_requested() for checking
+    whether an SDL event queue contains any sdl2.SDL_QUIT events.
+
+- Update to 0.9.15:
+  * Updated to wrap new functions and constants in SDL 2.26.0.
+  * Added a new module sdl2.ext.mouse for showing/hiding/moving/
+    retrieving the mouse cursor and querying the current state of
+    the mouse buttons.
+  * Added indexing/unpacking support to the sdl2.ext.Point and
+    sdl2.ext.Rect classes and their float equivalents.
+  * Updated sdl2.ext.SpriteFactory.from_image() to allow passing
+    PIL.Image.Image objects directly.
+  * Improved sdl2.ext.Texture performance.
+  * Fixed a bug preventing SDL Points and Rects from being used
+    as srcrect or dstrect for sdl2.ext.Renderer.copy().
+  * Added a binding for SDL_ResetHint, which was added in SDL
+    2.24.0 but got missed in PR #246.
+
+- Adjust fix-tests.patch
+- Remove fix-version_test.patch (fixed upstream)
+- Remove python-PySDL2.rpmlintrc (obsolete)
+
+-------------------------------------------------------------------
 Sat Nov 26 14:51:13 UTC 2022 - munix9@googlemail.com
 
 - Add fix-version_test.patch (gh#py-sdl/py-sdl2#248):

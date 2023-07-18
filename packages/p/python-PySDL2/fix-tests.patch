@@ -1,105 +1,17 @@
-Index: PySDL2-0.9.14/sdl2/test/conftest.py
-===================================================================
---- PySDL2-0.9.14.orig/sdl2/test/conftest.py
-+++ PySDL2-0.9.14/sdl2/test/conftest.py
-@@ -13,7 +13,8 @@ SKIP_ANNOYING = os.getenv("PYSDL2_ALL_TE
- def with_sdl():
-     sdl2.SDL_ClearError()
-     ret = sdl2.SDL_Init(sdl2.SDL_INIT_VIDEO | sdl2.SDL_INIT_TIMER)
--    assert sdl2.SDL_GetError() == b""
+--- a/sdl2/test/hidapi_test.py
++++ b/sdl2/test/hidapi_test.py
+@@ -38,10 +38,12 @@ def test_SDL_hid_device_change_count(hid
+ 
+ def test_SDL_hid_enumerate(hidapi_setup):
+     devices = sdl2.SDL_hid_enumerate(0, 0)
+-    assert SDL_GetError() == b""
 +    # Ignore errors like Unable to open /dev/input/...
-+    # assert sdl2.SDL_GetError() == b""
-     assert ret == 0
-     yield
-     sdl2.SDL_Quit()
-Index: PySDL2-0.9.14/sdl2/test/audio_test.py
-===================================================================
---- PySDL2-0.9.14.orig/sdl2/test/audio_test.py
-+++ PySDL2-0.9.14/sdl2/test/audio_test.py
-@@ -23,7 +23,8 @@ def with_sdl_audio():
-     sdl2.SDL_Quit()
-     sdl2.SDL_ClearError()
-     ret = sdl2.SDL_Init(sdl2.SDL_INIT_VIDEO | sdl2.SDL_INIT_AUDIO)
--    assert sdl2.SDL_GetError() == b""
-+    # Ignore errors like Unable to open /dev/input/...
-+    # assert sdl2.SDL_GetError() == b""
-     assert ret == 0
-     yield
-     sdl2.SDL_Quit()
-Index: PySDL2-0.9.14/sdl2/test/hints_test.py
-===================================================================
---- PySDL2-0.9.14.orig/sdl2/test/hints_test.py
-+++ PySDL2-0.9.14/sdl2/test/hints_test.py
-@@ -9,7 +9,8 @@ from sdl2.stdinc import SDL_TRUE, SDL_FA
- def with_sdl():
-     sdl2.SDL_ClearError()
-     ret = sdl2.SDL_Init(sdl2.SDL_INIT_VIDEO)
--    assert sdl2.SDL_GetError() == b""
-+    # Ignore errors like Unable to open /dev/input/...
-+    # assert sdl2.SDL_GetError() == b""
-     assert ret == 0
-     yield
-     sdl2.SDL_Quit()
-Index: PySDL2-0.9.14/sdl2/test/sdlmixer_test.py
-===================================================================
---- PySDL2-0.9.14.orig/sdl2/test/sdlmixer_test.py
-+++ PySDL2-0.9.14/sdl2/test/sdlmixer_test.py
-@@ -32,7 +32,8 @@ def with_sdl_mixer():
-     # Initialize SDL2 with video and audio subsystems
-     sdl2.SDL_ClearError()
-     ret = sdl2.SDL_Init(sdl2.SDL_INIT_VIDEO | sdl2.SDL_INIT_AUDIO)
--    assert sdl2.SDL_GetError() == b""
-+    # Ignore errors like Unable to open /dev/input/...
-+    # assert sdl2.SDL_GetError() == b""
-     assert ret == 0
-     # Initialize SDL_mixer and open an audio device
-     flags = (
-Index: PySDL2-0.9.14/sdl2/test/touch_test.py
-===================================================================
---- PySDL2-0.9.14.orig/sdl2/test/touch_test.py
-+++ PySDL2-0.9.14/sdl2/test/touch_test.py
-@@ -18,7 +18,8 @@ def with_sdl():
-     sdl2.SDL_SetHint(sdl2.SDL_HINT_MOUSE_TOUCH_EVENTS, b"1")
-     sdl2.SDL_ClearError()
-     ret = sdl2.SDL_Init(sdl2.SDL_INIT_VIDEO)
--    assert sdl2.SDL_GetError() == b""
-+    # Ignore errors like Unable to open /dev/input/...
-+    # assert sdl2.SDL_GetError() == b""
-     assert ret == 0
-     yield
-     sdl2.SDL_Quit()
-@@ -86,4 +87,4 @@ def test_SDL_GetTouchFinger():
-             assert finger.contents.id >= 0
-             assert 0 <= finger.contents.x <= 1
-             assert 0 <= finger.contents.y <= 1
--                
-\ No newline at end of file
-+                
-Index: PySDL2-0.9.14/sdl2/test/sdl_test.py
-===================================================================
---- PySDL2-0.9.14.orig/sdl2/test/sdl_test.py
-+++ PySDL2-0.9.14/sdl2/test/sdl_test.py
-@@ -40,7 +40,8 @@ def test_SDL_Init():
- def test_SDL_InitSubSystem():
-     sdl2.SDL_ClearError()
-     ret = sdl2.SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO)
--    assert sdl2.SDL_GetError() == b""
-+    # Ignore errors like Unable to open /dev/input/...
-+    # assert sdl2.SDL_GetError() == b""
-     assert ret == 0
-     # Test initializing an additional subsystem
-     assert sdl2.SDL_WasInit(0) & SDL_INIT_TIMER != SDL_INIT_TIMER
-Index: PySDL2-0.9.14/sdl2/test/video_test.py
-===================================================================
---- PySDL2-0.9.14.orig/sdl2/test/video_test.py
-+++ PySDL2-0.9.14/sdl2/test/video_test.py
-@@ -194,7 +194,8 @@ def test_SDL_VideoInitQuit():
-     # Test with default driver
-     assert sdl2.SDL_WasInit(0) & sdl2.SDL_INIT_VIDEO != sdl2.SDL_INIT_VIDEO
-     ret = sdl2.SDL_VideoInit(None)
--    assert sdl2.SDL_GetError() == b""
-+    # Ignore errors like Unable to open /dev/input/...
-+    # assert sdl2.SDL_GetError() == b""
-     assert ret == 0
-     assert sdl2.SDL_GetCurrentVideoDriver() # If initialized, should be string
-     sdl2.SDL_VideoQuit()
++    #assert SDL_GetError() == b""
+     if devices != None:
+         sdl2.SDL_hid_free_enumeration(devices)
+-        assert SDL_GetError() == b""
++        # Ignore errors like Unable to open /dev/input/...
++        #assert SDL_GetError() == b""
+ 
+ 
+ @pytest.mark.skip("not implemented")
