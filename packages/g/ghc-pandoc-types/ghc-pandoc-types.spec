@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.23
+Version:        1.23.0.1
 Release:        0
 Summary:        Types for representing a structured document
 License:        GPL-2.0-only
@@ -50,8 +50,8 @@ ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-HUnit-prof
-BuildRequires:  ghc-string-qq-devel
-BuildRequires:  ghc-string-qq-prof
+BuildRequires:  ghc-template-haskell-devel
+BuildRequires:  ghc-template-haskell-prof
 BuildRequires:  ghc-test-framework-devel
 BuildRequires:  ghc-test-framework-hunit-devel
 BuildRequires:  ghc-test-framework-hunit-prof

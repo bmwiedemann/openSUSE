@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul  7 05:47:26 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-types to version 1.23.0.1.
+  [1.23.0.1]
+
+    * Allow aeson 2.2.
+
+    * Remove dependency on string-qq (recbecca skinner).
+
+-------------------------------------------------------------------
 Thu Mar 30 17:07:49 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
