@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 17 14:20:09 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.35.0:
+  * feat: Add archive-file externals
+  * fix: Never consider localhost.localdomain in /etc/hosts as the FQDN
+  * feat: Add support for HCP Vault Secrets
+  * chore: Miscellaneous fixes
+
+-------------------------------------------------------------------
 Tue Jul  4 17:01:14 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.34.3:
