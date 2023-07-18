@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jul 16 10:57:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.24:
+  * Add exit codes for an IBM Z OS, named 'zos'
+  * Goreleaser pipeline to build more archs and make release
+    workflow more reliable
+  * AWS module try to use AWS_VAULT when AWS_PROFILE is not set
+  * Use altermative prompt from python venv
+  * Background tasks should use --no-optional-locks to prevent
+    issues with other tools running at the same time.
+  * Add "git branch" symbol to gitlite module (if git mode is not
+    "compact")
+
+-------------------------------------------------------------------
 Mon Mar 20 11:56:20 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.22.1:

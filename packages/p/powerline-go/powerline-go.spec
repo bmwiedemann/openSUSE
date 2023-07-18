@@ -17,7 +17,7 @@
 
 
 Name:           powerline-go
-Version:        1.22.1
+Version:        1.24
 Release:        0
 Summary:        A Powerline like prompt for Bash, ZSH and Fish
 License:        GPL-3.0-or-later
@@ -25,8 +25,8 @@ Group:          System/Console
 URL:            https://github.com/justjanne/powerline-go
 Source0:        https://github.com/justjanne/powerline-go/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) = 1.17
 BuildRequires:  golang-packaging
+BuildRequires:  golang(API) = 1.20
 %{go_nostrip}
 
 %description
