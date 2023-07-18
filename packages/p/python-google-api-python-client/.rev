@@ -813,4 +813,12 @@ eplacement for google-api-python-client, follow our naming convention</comment>
     <comment></comment>
     <requestid>1096398</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>689f96d62e37cff09c0cbd8d3f98716c</srcmd5>
+    <version>2.93.0</version>
+    <time>1689710933</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1099260</requestid>
+  </revision>
 </revisionlist>
