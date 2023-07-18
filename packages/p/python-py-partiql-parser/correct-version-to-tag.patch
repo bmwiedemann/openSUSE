@@ -1,0 +1,12 @@
+Index: py-partiql-parser-0.3.4/pyproject.toml
+===================================================================
+--- py-partiql-parser-0.3.4.orig/pyproject.toml
++++ py-partiql-parser-0.3.4/pyproject.toml
+@@ -1,6 +1,6 @@
+ [project]
+ name = "py-partiql-parser"
+-version = "0.3.3"
++version = "0.3.4"
+ description = "Pure Python PartiQL Parser"
+ readme = "README.md"
+ keywords = ["pypartiql", "parser"]

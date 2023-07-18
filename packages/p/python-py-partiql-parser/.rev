@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f2d41bfc49d2acd25d17011829407b90</srcmd5>
+    <version>0.3.4</version>
+    <time>1689710110</time>
+    <user>dimstar_suse</user>
+    <comment>- Initial release of 0.3.4
+- Add patch correct-packages-decl.patch:
+  * Specify all packages in pyproject.toml.
+- Add patch correct-version-to-tag.patch:
+  * Version is tagged, but pyproject.toml was not updated.</comment>
+    <requestid>1099007</requestid>
+  </revision>
+</revisionlist>
