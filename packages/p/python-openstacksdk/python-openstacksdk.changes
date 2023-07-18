@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Tue Jul 18 16:44:09 UTC 2023 - cloud-devel@suse.de
+
+- update to version 1.3.1
+  - Use custom warnings everywhere
+  - update rackspace profile to specify identity version
+  - Fix broken python3.6 support
+  - tests: Ignore our own deprecation warnings
+  - Use custom warnings, not logging.warning
+  - Prepare for hacking 6.x
+  - Removing region Lon1. Updating block_storage_api_version. Adding image_format.
+  - Add share network resource to shared file system
+  - Remove "feature/r1" override from manila job
+  - Blackify openstack.message
+  - Add missing `force` parameter
+  - Blackify openstack.container_infrastructure_management
+  - cloud: create_server: fix scheduler_hints/group
+  - config: Load additional options for v3multifactor
+  - Remove usage of deprecated `sre_constants` module
+  - fix docstrings refering to volume attachments instead of server migrations
+  - Add link to image sharing api docs
+  - add extended neutron job
+  - Include "security_groups" to "Port" query parameters
+  - config: Split 'OS_AUTH_METHODS'
+  - pre-commit: Enable black
+  - tox: Disable E501
+  - Revert "Revert "Add "security_group_ids" to Port's query parameters""
+  - Add 'callback' to 'wait_for_delete', 'wait_for_status'
+  - docs: Replace/remove shade-specific docs
+  - Rework zuul config
+  - Add share access rules to shared file system
+  - Blackify openstack.object_store
+  - Update master for stable/2023.1
+  - Blackify openstack.load_balancer
+  - cloud: Rename shade-specific method
+  - Blackify openstack.placement
+  - Add BGPVPN to SDK
+  - cloud: Remove '_ShadeAdapter'
+  - Add Cleura acceptance tests
+  - compute: Add Server.restore, restore_server proxy method
+  - Blackify openstack.key_manager
+  - Add support for Ironic node shard attribute
+  - Blackify openstack.instance_ha
+  - compute: Adds shelve-offload support
+  - Add block storage summary support
+  - Adding support for glance cache-queue Command
+  - Blackify openstack.cloud
+  - Drop legacy job that is always failing
+  - Add find_share() for shared file system share resource
+  - Blackify openstack.clustering
+  - Add share snapshot instance resource
+  - cloud: Remove ClusteringCloudMixin
+  - tests: Use uuid, not randint
+  - FWAAS: add Computed summary field to FirewallRule
+  - utils: Add 'supports_version'
+  - Use pre-commit for 'pep8' tox target, bump versions
+  - Blackify openstack.baremetal, openstack.baremetal_introspection
+  - Migrate warnings to openstack.warnings
+  - Add support for glance cache
+  - add a new vendor profile for the Swiss Open Telekom Cloud
+  - Add export location resource to shared file system
+  - Blackify openstack.image
+  - Adds SDK support for ``glance cache-delete``
+  - Fix Accept header for deleting Octavia load balancers
+  - Blackify openstack.workflow
+  - Added neutron fields to share network resource.
+  - Blackify openstack.network
+  - Blackify openstack.compute (tests)
+  - Allow key overrides in create and fetch methods
+  - Ignore black version bump
+  - Blackify openstack.dns
+  - Microversion 2.91: Support specifying destination host to unshelve
+  - Bump black to 23.3.0
+  - image: Don't envelope properties
+  - cloud: Move identity-related helpers
+  - ironic: Add support for Introspection Rules
+  - Blackify openstack.accelerator
+  - Change python3 jobs template to latest version
+  - Add resize/extend share actions.
+  - Blackify openstack.database
+  - Blackify everything else
+  - Blackify openstack.orchestration
+  - Blackify openstack.compute
+  - Fix typo
+  - support None as expected status in wait_for_status
+  - Add share network subnet resource to shared file system
+  - Adds Support for ``glance cache-clear``
+  - modify ovh and ovh-us vendor config
+  - Add share instances to shared file systems
+  - Adds support for node hardware inventory
+  - Implement acceptance test job
+  - fix connection.Connection finalizer
+  - Add image metadef_resource_type into the registry
+  - Blackify openstack.block_storage
+  - Prepare acceptance tests for real clouds
+  - nit: Correct name of variable
+  - tests: Isolate tests from OS_CLOUD
+  - ssh key change
+  - Remove unnecessary quotes
+  - tests: Silence warning
+  - Add Designate (DNS) zone share API
+  - Blackify openstack.identity
+  - Ignore blackify changes
+  - Blackify openstack.shared_file_system
+
+-------------------------------------------------------------------
 Mon Mar  6 15:57:16 UTC 2023 - cloud-devel@suse.de
 
 - update to version 1.0.1

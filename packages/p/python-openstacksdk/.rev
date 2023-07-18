@@ -488,4 +488,41 @@
   - Add missing block storage v2 'find_*' methods</comment>
     <requestid>1069740</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>4b4767d73f96da9608f51eca469cf231</srcmd5>
+    <version>1.3.1</version>
+    <time>1689710950</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 1.3.1
+  - Use custom warnings everywhere
+  - update rackspace profile to specify identity version
+  - Fix broken python3.6 support
+  - tests: Ignore our own deprecation warnings
+  - Use custom warnings, not logging.warning
+  - Prepare for hacking 6.x
+  - Removing region Lon1. Updating block_storage_api_version. Adding image_format.
+  - Add share network resource to shared file system
+  - Remove &quot;feature/r1&quot; override from manila job
+  - Blackify openstack.message
+  - Add missing `force` parameter
+  - Blackify openstack.container_infrastructure_management
+  - cloud: create_server: fix scheduler_hints/group
+  - config: Load additional options for v3multifactor
+  - Remove usage of deprecated `sre_constants` module
+  - fix docstrings refering to volume attachments instead of server migrations
+  - Add link to image sharing api docs
+  - add extended neutron job
+  - Include &quot;security_groups&quot; to &quot;Port&quot; query parameters
+  - config: Split 'OS_AUTH_METHODS'
+  - pre-commit: Enable black
+  - tox: Disable E501
+  - Revert &quot;Revert &quot;Add &quot;security_group_ids&quot; to Port's query parameters&quot;&quot;
+  - Add 'callback' to 'wait_for_delete', 'wait_for_status'
+  - docs: Replace/remove shade-specific docs
+  - Rework zuul config
+  - Add share access rules to shared file system
+  - Blackify openstack.object_store
+  - Update master for stable/2023.1</comment>
+    <requestid>1099314</requestid>
+  </revision>
 </revisionlist>

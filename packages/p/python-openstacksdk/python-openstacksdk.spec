@@ -18,13 +18,13 @@
 
 %define with_tests 0
 Name:           python-openstacksdk
-Version:        1.0.1
+Version:        1.3.1
 Release:        0
 Summary:        An SDK for building applications to work with OpenStack
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/openstacksdk
-Source0:        https://files.pythonhosted.org/packages/source/o/openstacksdk/openstacksdk-1.0.1.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/o/openstacksdk/openstacksdk-1.3.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyYAML >= 3.13
 BuildRequires:  python3-appdirs >= 1.3.0
@@ -121,7 +121,7 @@ The openstacksdk is a collection of libraries for building
 applications to work with OpenStack clouds.
 
 %prep
-%autosetup -p1 -n openstacksdk-1.0.1
+%autosetup -p1 -n openstacksdk-1.3.1
 %py_req_cleanup
 sed -i -e 's,coverage.*,,' test-requirements.txt || true
 sed -i -e "s,'sphinx.ext.intersphinx'\,,," doc/source/conf.py
@@ -132,7 +132,7 @@ rm openstack/tests/unit/test_stats.py
 
 %build
 %py3_build
-PBR_VERSION=1.0.1 %sphinx_build -b html doc/source doc/build/html
+PBR_VERSION=1.3.1 %sphinx_build -b html doc/source doc/build/html
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
