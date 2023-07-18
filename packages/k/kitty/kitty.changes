@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jul 17 14:30:33 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.29.1
+  * A new value for background_image_layout to scale the background image while
+    preserving its aspect ratio. Also have centered images work even for images
+    larger than the window size (#6458)
+  * Fix a regression that caused using unicode placeholders to display images to
+    break and also partially offscreen images to sometimes be slightly
+    distorted (#6467)
+  * macOS: Fix a regression that caused rendering to hang when transitioning to
+    full screen with macos_colorspace set to default (#6435)
+  * macOS: Fix a regression causing burn-in of text when resizing semi-transparent
+    OS windows (#6439)
+  * macOS: Add a new value titlebar-and-corners for hide_window_decorations that
+    emulates the behavior of hide_window_decorations yes in older versions of kitty
+  * macOS: Fix a regression in the previous release that caused
+    hide_window_decorations = yes to prevent window from being resizable (#6436)
+  * macOS: Fix a regression that caused the titlebar to be translucent even for
+    non-translucent windows (#6450)
+  * GNOME: Fix wayland_titlebar_color not being applied until the color is changed
+    at least once (#6447)
+  * Remote control launch: Fix --env not implemented when using --cwd=current with
+    the SSH kitten (#6438)
+  * Allow using a custom OS window icon on X11 as well as macOS (#6475)
+
+-------------------------------------------------------------------
 Mon Jul 10 15:55:28 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Adding kitty-rpmlintrc as a source file
