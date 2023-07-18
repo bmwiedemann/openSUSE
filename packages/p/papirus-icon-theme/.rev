@@ -500,4 +500,41 @@
   * Vroid Studio #3368</comment>
     <requestid>1069310</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>4b003610097c39f0a99784c844fd53e3</srcmd5>
+    <version>20230601</version>
+    <time>1689710041</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 20230601:
+  Added icons:
+  * Adobe Reader (Flathub) #2007
+  * Baidu Netdisk (Flathub) #2007
+  * Chatterino #3378
+  * Dream Logical World (Steam) #3393
+  * Enpass (Flathub) #2007
+  * Feather (Flathub) #2007
+  * GB Studio (Flathub) #2007
+  * Gluon Scene Builder (Flathub) #2007
+  * Godot 3 (Flathub) #2007
+  * Jellyfin Server (Flathub) #2007
+  * JupyterLab Desktop (Flathub) #2007
+  * Koodo Reader (Flathub) #2007
+  * memento (Flathub) #2007
+  * Micro Text Editor (Flathub) #2007
+  * Pop_Shop! (see
+    https://github.com/PapirusDevelopmentTeam/papirus-icon-
+    theme/issues/3423#issuecomment-1568569943) #3423 #3442
+  * Protégé (Flathub) #2007
+  * Proton VPN (Flathub) #2007 #3438
+  * Puddletag (Flathub) #2007
+  * Pulsar  #2007 #3361 #3394
+  * Remote Viewer (virt-viewer) (Flathub) #2007
+  * RetroArch (Steam) #3422
+  * Ripcord (Flathub) #2007
+  * Roccat-tools (Flathub) #2007
+  * Safe Eyes (Flathub) #2007
+  * SoapUI Open Source (Flathub) #2007
+  * Stretchly (Flathub) #2007</comment>
+    <requestid>1098926</requestid>
+  </revision>
 </revisionlist>
