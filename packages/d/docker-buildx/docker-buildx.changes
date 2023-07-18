@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jul 18 18:54:25 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.11.2:
+  * vendor: github.com/moby/buildkit
+    v0.12.1-0.20230717122532-faa0cc7da353
+  * vendor: github.com/tonistiigi/fsutil
+    v0.0.0-20230629203738-36ef4d8c0dbb
+  * vendor: github.com/xeipuuv/gojsonpointer
+    v0.0.0-20190905194746-02993c407bfb
+  * tests: set a dedicated buildx config dir for each worker
+  * ci: run docker-container tests in parallel
+  * tests: share single docker between docker-container backends
+  * vendor: update buildkit to master@2d91ddcceedc
+  * k8s: fix missing kubeconfig check from endpoint
+  * build: mark result handle build as internal
+  * util/imagetools: remove unused Resolver.ImageConfig
+  * hack(generated-files): bump golang image to bookworm
+  * update go to 1.20.6
+  * hack: force go version to 1.20.5
+  * vendor: github.com/docker/docker@24.0 36e9e79
+
+-------------------------------------------------------------------
 Thu Jul 06 06:56:26 UTC 2023 - kastl@b1-systems.de
 
 - fix wrong version output by using the git tag as the commit hash
