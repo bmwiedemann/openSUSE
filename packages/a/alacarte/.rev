@@ -558,4 +558,12 @@
     <comment>New stable release (forwarded request 983878 from iznogood)</comment>
     <requestid>983912</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>897c73b6743507b93424ffae3d4cc115</srcmd5>
+    <version>3.44.3</version>
+    <time>1689710944</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1099304</requestid>
+  </revision>
 </revisionlist>
