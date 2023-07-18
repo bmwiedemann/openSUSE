@@ -486,4 +486,41 @@ Please use same ADI as https://build.opensuse.org/request/show/918731
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1096602</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>c6cec4d42bc53d97ffe0a5778c3d4820</srcmd5>
+    <version>1.11.36</version>
+    <time>1689710952</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.11.36
+## 🔒 Security
+ * Fixes for [CVE-2023-37259](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=CVE-2023-37259) / [GHSA-c9vx-2g7w-rp65](https://github.com/matrix-org/matrix-react-sdk/security/advisories/GHSA-c9vx-2g7w-rp65)
+## 🦖 Deprecations
+ * Deprecate customisations in favour of Module API ([\#25736](https://github.com/vector-im/element-web/pull/25736)). Fixes vector-im/element-web#25733.
+## ✨ Features
+ * OIDC: store initial screen in session storage  ([\#25688](https://github.com/vector-im/element-web/pull/25688)). Fixes vector-im/element-web#25656. Contributed by @kerryarchibald.
+ * Allow default_server_config as a fallback config ([\#25682](https://github.com/vector-im/element-web/pull/25682)). Contributed by @ShadowRZ.
+ * OIDC: remove auth params from url after login attempt ([\#25664](https://github.com/vector-im/element-web/pull/25664)). Contributed by @kerryarchibald.
+ * feat(faq): remove keyboard shortcuts button ([\#9342](https://github.com/matrix-org/matrix-react-sdk/pull/9342)). Fixes vector-im/element-web#22625. Contributed by @gefgu.
+ * GYU: Update banner ([\#11211](https://github.com/matrix-org/matrix-react-sdk/pull/11211)). Fixes vector-im/element-web#25530. Contributed by @justjanne.
+ * Linkify mxc:// URLs as links to your media repo ([\#11213](https://github.com/matrix-org/matrix-react-sdk/pull/11213)). Fixes vector-im/element-web#6942.
+ * OIDC: Log in ([\#11199](https://github.com/matrix-org/matrix-react-sdk/pull/11199)). Fixes vector-im/element-web#25657. Contributed by @kerryarchibald.
+ * Handle all permitted url schemes in linkify ([\#11215](https://github.com/matrix-org/matrix-react-sdk/pull/11215)). Fixes vector-im/element-web#4457 and vector-im/element-web#8720.
+ * Autoapprove Element Call oidc requests ([\#11209](https://github.com/matrix-org/matrix-react-sdk/pull/11209)). Contributed by @toger5.
+ * Allow creating knock rooms ([\#11182](https://github.com/matrix-org/matrix-react-sdk/pull/11182)). Contributed by @charlynguyen.
+ * Expose and pre-populate thread ID in devtools dialog ([\#10953](https://github.com/matrix-org/matrix-react-sdk/pull/10953)).
+ * Hide URL preview if it will be empty ([\#9029](https://github.com/matrix-org/matrix-react-sdk/pull/9029)).
+ * Change wording from avatar to profile picture ([\#7015](https://github.com/matrix-org/matrix-react-sdk/pull/7015)). Fixes vector-im/element-meta#1331. Contributed by @aaronraimist.
+ * Quick and dirty devtool to explore state history ([\#11197](https://github.com/matrix-org/matrix-react-sdk/pull/11197)).
+ * Consider more user inputs when calculating zxcvbn score ([\#11180](https://github.com/matrix-org/matrix-react-sdk/pull/11180)).
+ * GYU: Account Notification Settings ([\#11008](https://github.com/matrix-org/matrix-react-sdk/pull/11008)). Fixes vector-im/element-web#24567. Contributed by @justjanne.
+ * Compound Typography pass ([\#11103](https://github.com/matrix-org/matrix-react-sdk/pull/11103)). Fixes vector-im/element-web#25548.
+ * OIDC: navigate to authorization endpoint ([\#11096](https://github.com/matrix-org/matrix-react-sdk/pull/11096)). Fixes vector-im/element-web#25574. Contributed by @kerryarchibald.
+## 🐛 Bug Fixes
+ * Fix read receipt sending behaviour around thread roots ([\#3600](https://github.com/matrix-org/matrix-js-sdk/pull/3600)).
+ * Fix missing metaspace notification badges ([\#11269](https://github.com/matrix-org/matrix-react-sdk/pull/11269)). Fixes vector-im/element-web#25679.
+ * Make checkboxes less rounded ([\#11224](https://github.com/matrix-org/matrix-react-sdk/pull/11224)). Contributed by @andybalaam.
+ * GYU: Fix issues with audible keywords without activated mentions ([\#11218](https://github.com/matrix-org/matrix-react-sdk/pull/11218)). Contributed by @justjanne.
+ * PosthogAnalytics unwatch settings on logout ([\#11207](https://github.com/matrix-org/matrix-react-sdk/pull/11207)). Fixes vector-im/element-web#25703.</comment>
+    <requestid>1099308</requestid>
+  </revision>
 </revisionlist>
