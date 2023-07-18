@@ -534,4 +534,23 @@
   - Add Python3 antelope unit tests</comment>
     <requestid>1055986</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>3777ae2761b589ee1feaf2fc7c70b79a</srcmd5>
+    <version>6.2.0</version>
+    <time>1689710949</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 6.2.0
+  - Replace deprecated assertAlmostEquals method
+  - Fix compatibility with Python 3.8
+  - Moves supported python runtimes from version 3.8 to 3.10
+  - Bump bandit
+  - strutils: update string_to_bytes
+  - Implement zoneinfo support to drop dependency to pytz
+  - Add netutils.get_my_ipv6()
+  - Use the new openstack-python3-jobs template
+  - Revert &quot;Moves supported python runtimes from version 3.8 to 3.10&quot;
+  - Update units for current SI prefixes
+  - Update master for stable/2023.1</comment>
+    <requestid>1099312</requestid>
+  </revision>
 </revisionlist>

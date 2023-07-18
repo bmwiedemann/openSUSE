@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jul 18 16:41:01 UTC 2023 - cloud-devel@suse.de
+
+- update to version 6.2.0
+  - Replace deprecated assertAlmostEquals method
+  - Fix compatibility with Python 3.8
+  - Moves supported python runtimes from version 3.8 to 3.10
+  - Bump bandit
+  - strutils: update string_to_bytes
+  - Implement zoneinfo support to drop dependency to pytz
+  - Add netutils.get_my_ipv6()
+  - Use the new openstack-python3-jobs template
+  - Revert "Moves supported python runtimes from version 3.8 to 3.10"
+  - Update units for current SI prefixes
+  - Update master for stable/2023.1
+
+-------------------------------------------------------------------
 Thu Dec  1 10:44:25 UTC 2022 - cloud-devel@suse.de
 
 - update to version 6.1.0
