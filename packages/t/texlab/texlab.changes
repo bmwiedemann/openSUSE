@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jul  9 13:55:55 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Disable checks temporarily until a patched version comes
+
+-------------------------------------------------------------------
+Sun Jul  9 09:30:12 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Update to version 5.7.0
+  * Add symbol support for thmtools
+  * Add texlab.findenvironments command to return the list of environments containing a position
+  * Show inlay hints for labels after the command instead of inside the argument
+  * Prevent adding trailing newline after formating with latexmk
+  * Improving `\paragraph` parsing
+
+-------------------------------------------------------------------
 Mon May  8 03:55:14 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 5.5.1:
