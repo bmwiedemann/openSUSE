@@ -7823,6 +7823,7 @@ unsorted:
   - hyprland-devel 
   - hyprland-protocols-devel 
   - hyprpaper 
+  - hyprshot 
   - i18nspector 
   - i2c-tools 
   - i2pd 
@@ -14003,7 +14004,7 @@ unsorted:
   - libpoppler-qt5-devel 
   - libpoppler-qt6-3 
   - libpoppler-qt6-devel 
-  - libpoppler129-32bit 
+  - libpoppler130-32bit 
   - libportal-devel 
   - libportal-gtk3-devel 
   - libportal-gtk4-devel 
@@ -15832,6 +15833,8 @@ unsorted:
   - libxls-devel 
   - libxls-tools 
   - libxlsreader8 
+  - libxlsxwriter-devel 
+  - libxlsxwriter5 
   - libxmi0 
   - libxml++-2_6-2 
   - libxml++-3_0-1-32bit 
@@ -17526,7 +17529,6 @@ unsorted:
   - motv 
   - mousepad-devel 
   - movit-devel 
-  - movit8-data 
   - mozaddon-devel 
   - mozilla-jss 
   - mozilla-nspr-32bit 
@@ -25136,6 +25138,9 @@ unsorted:
   - python310-pscript 
   - python310-psutil 
   - python310-psychtoolbox 
+  - python310-psycopg 
+  - python310-psycopg-c 
+  - python310-psycopg-pool 
   - python310-psycopg2 
   - python310-psycopg2cffi 
   - python310-ptpython 
@@ -28501,6 +28506,9 @@ unsorted:
   - python311-psautohint 
   - python311-pscript 
   - python311-psychtoolbox 
+  - python311-psycopg 
+  - python311-psycopg-c 
+  - python311-psycopg-pool 
   - python311-psycopg2 
   - python311-psycopg2cffi 
   - python311-ptpython 
@@ -31945,6 +31953,9 @@ unsorted:
   - python39-pscript 
   - python39-psutil 
   - python39-psychtoolbox 
+  - python39-psycopg 
+  - python39-psycopg-c 
+  - python39-psycopg-pool 
   - python39-psycopg2 
   - python39-psycopg2cffi 
   - python39-ptpython 
@@ -44974,6 +44985,7 @@ unsorted:
   - unionfs-fuse 
   - unique-factory-devel 
   - unison 
+  - unison-doc 
   - unison-text 
   - unit-api 
   - unit-api-javadoc 
@@ -45426,6 +45438,8 @@ unsorted:
   - wayland-devel-32bit 
   - wayland-protocols-devel 
   - waylock 
+  - waynergy 
+  - waynergy-kde 
   - wayshot 
   - wayvnc 
   - wbg 
