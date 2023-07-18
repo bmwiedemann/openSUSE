@@ -7,4 +7,15 @@
     <comment></comment>
     <requestid>1092490</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6911ba3c6af3f02c11a0e0e71c89dc83</srcmd5>
+    <version>2.0.3</version>
+    <time>1689710045</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.3:
+  * Fixed a ``KeyError`` that could occur when using ``ttl`` with
+    ``maxsize``.
+  * Dropped ``typing-extensions`` dependency in Python 3.11+.</comment>
+    <requestid>1098927</requestid>
+  </revision>
 </revisionlist>
