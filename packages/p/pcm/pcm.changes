@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jul 16 11:01:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 202307:
+  * pcm-memory and grafana dashboard: support CXL bandwidth
+    monitoring on Sapphire Rapids
+  * pcm-raw: support collection for MSR and PCICFG (CSR)
+    registers in csv format
+  * pcm-mmio: support dumps for memory regions
+  * pcm-raw: additional CPU model/steppings supported (CPX, SPR)
+  * pcm-pcicfg: support PCICFG register lookup/search by device
+    ID
+  * documentation updates (how to run under non-root user, CXL
+    monitoring, pcm-accel IAA, DSA, QAT, pcm-raw register
+    monitoring)
+  * bug fixes
+
+-------------------------------------------------------------------
 Thu Apr 20 10:22:11 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim R/TM signs as per
