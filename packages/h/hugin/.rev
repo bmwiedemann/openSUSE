@@ -631,4 +631,12 @@
 - Remove xdg-data.patch (accepted upstream) (forwarded request 1045237 from pevik)</comment>
     <requestid>1046474</requestid>
   </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>d0163bfb8ae1c4fd2d916af99d03ffde</srcmd5>
+    <version>2022.0.0</version>
+    <time>1689710837</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix_build_with_exiv2_0-28.pach, fixing build with exiv2-0.28 (forwarded request 1096982 from tux93)</comment>
+    <requestid>1099040</requestid>
+  </revision>
 </revisionlist>
