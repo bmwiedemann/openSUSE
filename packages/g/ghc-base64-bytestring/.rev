@@ -134,4 +134,12 @@ This fixes gh-4.</comment>
     <comment>update for ghc-9.4.4</comment>
     <requestid>1075775</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>33f92236621ad5c9cd9a18cf5cbbe8e1</srcmd5>
+    <version>1.2.1.0</version>
+    <time>1689710058</time>
+    <user>dimstar_suse</user>
+    <comment>version update</comment>
+    <requestid>1098947</requestid>
+  </revision>
 </revisionlist>
