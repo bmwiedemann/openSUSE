@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Jul 16 14:00:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.7.0:
+  * Runtime support for Python 3.7 has been removed. Formatting
+    3.7 code will still be supported until further notice (#3765)
+  * Fix a bug where an illegal trailing comma was added to return
+    type annotations using PEP 604 unions (#3735)
+  * Fix several bugs and crashes where comments in stub files
+    were removed or mishandled under some circumstances (#3745)
+  * Fix a crash with multi-line magic comments like `type:
+    ignore` within parentheses
+  * Fix error in AST validation when _Black_ removes trailing
+    whitespace in a type comment
+  * Remove patching of Click that mitigated errors on Python 3.6
+    with `LANG=C` (#3768)
+  * Add support for the new PEP 695 syntax in Python 3.12 (#3703)
+  * Speed up _Black_ significantly when the cache is full (#3751)
+  * Avoid importing `IPython` in a case where we wouldn't need it
+    (#3748)
+  * Use aware UTC datetimes internally, avoids deprecation
+    warning on Python 3.12 (#3728)
+  * Change verbose logging to exactly mirror _Black_'s logic for
+    source discovery (#3749)
+
+-------------------------------------------------------------------
 Thu Jun 22 15:25:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - limit to newer python versions, older are no longer needed

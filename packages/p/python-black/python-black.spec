@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-black
-Version:        23.3.0
+Version:        23.7.0
 Release:        0
 Summary:        A code formatter written in, and written for Python
 License:        MIT
@@ -27,7 +27,7 @@ Source:         https://files.pythonhosted.org/packages/source/b/black/black-%{v
 BuildRequires:  %{python_module aiohttp >= 3.3.2}
 BuildRequires:  %{python_module aiohttp_cors}
 BuildRequires:  %{python_module attrs >= 18.1.0}
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module click >= 8.0.0}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatch_vcs}
@@ -55,12 +55,6 @@ Requires:       python-tomli >= 1.1.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
-%if 0%{?python_version_nodots} < 37
-Requires:       python-dataclasses
-%endif
-%if 0%{?python_version_nodots} < 38
-Requires:       python-typed-ast >= 1.4.2
-%endif
 %if 0%{?python_version_nodots} < 310
 Requires:       python-typing_extensions >= 3.10.0.0
 %endif
