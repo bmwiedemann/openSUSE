@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul  9 20:00:22 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update cabal-plan to version 0.7.3.0 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Wed Jun 21 11:40:42 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update cabal-plan to version 0.7.3.0 revision 1.
