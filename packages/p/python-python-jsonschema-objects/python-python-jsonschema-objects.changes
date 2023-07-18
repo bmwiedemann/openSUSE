@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 11 13:18:57 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.4.2
+  * Handle removed markdown version_info
+  * fix nested oneOf resolution with different schema types
+- Drop merged pso-markdown-version.patch
+- Pin jsonschema version to < 4.18, not supported yet
+
+-------------------------------------------------------------------
 Fri Aug 26 17:24:20 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Add pso-markdown-version.patch
