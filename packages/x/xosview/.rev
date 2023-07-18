@@ -448,4 +448,13 @@ the other licenses are consolidated into the GPL license of the derived binary (
   * The CPU numbers seen in temp*_label might not continuously growing</comment>
     <requestid>1098637</requestid>
   </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>0765779415484d569630f598feb67eff</srcmd5>
+    <version>1.24</version>
+    <time>1689710883</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch xosview-1.24-coretemp-pkg.patch
+  * Avoid crash on disabled cores in a second CPU package</comment>
+    <requestid>1099191</requestid>
+  </revision>
 </revisionlist>

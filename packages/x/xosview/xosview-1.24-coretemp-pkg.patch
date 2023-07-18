@@ -1,0 +1,55 @@
+From 0af72a3cba4f55a7aa58ac2988cda6c3a1fe2a36 Mon Sep 17 00:00:00 2001
+From: "Dr. Werner Fink" <werner@suse.de>
+Date: Mon, 17 Jul 2023 14:01:26 +0200
+Subject: [PATCH] Update MeterMaker.cc -- count always CPU cores
+
+I've here an INTEL cpu which shows 12 cores on pkg 0 but have a pkg 1 without any enabled cores:
+
+find /sys/devices/platform/coretemp.*/ -name 'temp*_label' -o -type d
+/sys/devices/platform/coretemp.0/
+/sys/devices/platform/coretemp.0/hwmon
+/sys/devices/platform/coretemp.0/hwmon/hwmon3
+/sys/devices/platform/coretemp.0/hwmon/hwmon3/power
+/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp2_label
+/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp3_label
+/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp4_label
+/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp5_label
+/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp6_label
+/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp7_label
+/sys/devices/platform/coretemp.0/power
+/sys/devices/platform/coretemp.1/
+/sys/devices/platform/coretemp.1/power
+
+this commit avoids a SIGSEGV if average or maximum is used as coretempDisplayType
+---
+ linux/MeterMaker.cc | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git linux/MeterMaker.cc linux/MeterMaker.cc
+index bd9f0e9..0238947 100644
+--- linux/MeterMaker.cc
++++ linux/MeterMaker.cc
+@@ -189,14 +189,18 @@ void MeterMaker::makeMeters(void){
+       do {
+         if (pkgCount > 1)
+           snprintf(name, 8, "CPU%d", pkg);
+-        push(new CoreTemp(_xos, name, caption, pkg, -1));
++	coreCount = CoreTemp::countCores(pkg);
++        if (coreCount > 0)
++	  push(new CoreTemp(_xos, name, caption, pkg, -1));
+       } while (++pkg < pkgCount);
+     }
+     else if ( strncmp(displayType, "maximum", 1) == 0 ) {
+       do {
+         if (pkgCount > 1)
+           snprintf(name, 8, "CPU%d", pkg);
+-        push(new CoreTemp(_xos, name, caption, pkg, -2));
++        coreCount = CoreTemp::countCores(pkg);
++	if (coreCount > 0)
++	  push(new CoreTemp(_xos, name, caption, pkg, -2));
+       } while (++pkg < pkgCount);
+     }
+     else {
+-- 
+2.41.0
+

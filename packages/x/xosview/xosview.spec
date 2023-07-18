@@ -37,6 +37,8 @@ Patch11:        xosview-1.16-diskstat.patch
 Patch12:        xosview-1.21-lmstemp.patch
 # PATCH-FIX-SUSE: The numbers seen in temp*_label might not continuously growing
 Patch13:        xosview-1.24-coretemp-labels.patch
+# PATCH-FIX-SUSE: Avoid crash on missing/disabled cores in CPU package
+Patch14:        xosview-1.24-coretemp-pkg.patch
 BuildRequires:  autoconf
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -64,6 +66,7 @@ and, if desired, netpacket statistics in a graphical manner.
 %patch11  -b .diskstat
 %patch12  -b .lmst
 %patch13  -b .coretemp
+%patch14  -b .cpupkg
 %patch0   -b .p0
 
 %build

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 18 06:48:23 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch xosview-1.24-coretemp-pkg.patch
+  * Avoid crash on disabled cores in a second CPU package 
+
+-------------------------------------------------------------------
 Fri Jul 14 09:06:16 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch xosview-1.24-coretemp-labels.patch
