@@ -30,15 +30,13 @@
 %define soversion 2
 %endif
 Name:           zlib-ng%{?compat_suffix}
-Version:        2.1.2
+Version:        2.1.3
 Release:        0
 Summary:        Zlib replacement with SIMD optimizations
 License:        Zlib
 URL:            https://github.com/zlib-ng/zlib-ng
 Source0:        https://github.com/zlib-ng/zlib-ng/archive/refs/tags/%{version}.tar.gz#/zlib-ng-%{version}.tar.gz
 Source1:        baselibs.conf
-# https://github.com/zlib-ng/zlib-ng/pull/1526 - boo#1212735
-Patch1:         1526.patch
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
