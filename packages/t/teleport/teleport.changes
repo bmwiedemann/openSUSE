@@ -1,10 +1,71 @@
 -------------------------------------------------------------------
+Mon Jul 17 05:32:22 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 13.2.2:
+  * Release 13.2.2 (#29161)
+  * [v13] Allow login and port to be specified when using `tsh
+    config` to generate openssh configs (#29113)
+  * fix mutualtls textarea (#29091)
+  * Reduce embedding period to 20 minutes (#29153)
+  * Edit forScopes configurations and edit guides (#28742)
+  * [v13] assist: support recording non-interactive forwarded
+    sessions (#29137)
+  * [v13] Docs: Refresh Azure AD SSO Guide (#29138)
+  * upload completer: suppress stack trace for access denied errors
+    (#29078)
+  * [v13] tsh recordings export session-id desc update (#29128)
+  * [v13] [docs] add proxy_service.trust_x_forwarded_for option
+    (#29117)
+  * [v13] [doc] database labels reference (#29118)
+  * [v13] Allow relative file URIs to `sqlite` (#29130)
+  * [v13] v13.2.2 Assist backports (#29125)
+  * Extend DatabaseSessionStart posthog event (#28931) (#29106)
+  * [v13] resolveNetworkAddress: Listen for `close` instead of
+    `exit`; Fix FailedApp theme (#29108)
+  * [v13] [Assist] UI tweaks (#29067)
+  * docs: version update (#29096)
+  * Remove session condition from Firestore events query (#29114)
+  * [v13] Allow configuring number of parallel execution workers
+    (#29061)
+  * chore: Bump Buf to v1.24.0 (#29120)
+  * tsh play error handling (#29077)
+  * Minor clarifications in the Azure AD guide (#28802)
+  * [v13] helm: Add ingress support (#29084)
+  * [v13] Encode URI for `sqlite` properly (#29099)
+  * DeployService IAM Configure: unescape arguments (#29044)
+  * Log the value of EventsBufferSize instead of the pointer
+    address (#29082)
+  * Added 07/13 Upcoming Releases Update (#29064)
+  * [v13] chore: Bump Go to 1.20.6 (#29073)
+  * [v13] fix: suppress search events (#29063)
+  * [v13] update database and kube name validation (#29035)
+  * [v13] Add more details about specifying a CA pin (#28886)
+  * [v13] assist: fix flaky assist test (#29051)
+  * Correct the clock passed to `dynamicCredsConfig` (#29058)
+  * Document backend_write_requests_total (#28980)
+  * [v13] DeployService: use teleport-ent image for ent clusters
+    (#29045)
+  * docs: proxy peering out of preview (#29037)
+  * Add usage-based feature values for Device Trust (#28919)
+    (#28964)
+  * [v13] Add an option to bootstrap database service to `teleport
+    discovery boostrap` (#29002)
+  * [v13] [Assist] Only parse messages from Assist as markdown
+    (#28911)
+  * [v13] Deduplicate resources for `tsh request search` when
+    `replicas>1` (#28889)
+  * [v13] Update `e` ref to enable PagerDuty plugin (#28986)
+  * [v13] Add `ProxyGroup` support to reverse tunnels (#28930)
+  * Docs: Update/Refresh OneLogin SSO guide (#28444) (#28768)
+  * Add test that verifies sessions are unaffected by Auth restarts
+    (#29000)
+
+-------------------------------------------------------------------
 Thu Jul 13 04:57:33 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 13.2.1:
   * Release 13.2.1. (#29021)
-  * [v13] Dont allow cloud tenants to update certain cluster
-    networking config fields (#28992)
+  * [v13] Dont allow cloud tenants to update certain cluster networking config fields (#28992)
   * Ignore SIGQUIT in exec sessions. (#29020)
   * fix operator crashing on first startup (#29013)
   * Fix Azure join for identities across resource groups (#28961)
