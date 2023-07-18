@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jul 18 13:53:42 UTC 2023 - Stefan Weiberg <opensuse@hibiki.eu>
+
+- Fix spec to require go >= 1.18
+
+-------------------------------------------------------------------
+Tue Jul 18 13:42:50 UTC 2023 - Stefan Weiberg <opensuse@hibiki.eu>
+
+- Update to version 1.30.0:
+  * 1.30.0 Release (#1672)
+  * Feat add ns generation (#1667)
+  * Feat: add read only containers support (#1670)
+  * test: add functional tests for read only fs support
+  * test: add unit-test for read only fs support
+  * feat: add read only fs support
+  * fix: remove lower case of the host generation
+  * fix missing image pull secrets
+
+-------------------------------------------------------------------
 Thu Jun 29 07:03:43 UTC 2023 - opensuse@hibiki.eu
 
 - Update to version 1.28.0:
