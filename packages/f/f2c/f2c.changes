@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 18 07:50:08 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- riscv-no-fpu-excp.patch: RISC-V does not support any FPU exceptions
+
+-------------------------------------------------------------------
 Thu Jul  7 18:51:06 UTC 2022 - Matthias Eliasson <elimat@opensuse.org>
 
 - update to version 20210928

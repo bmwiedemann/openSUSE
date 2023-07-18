@@ -1,7 +1,7 @@
 #
 # spec file for package f2c
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ Source4:        https://www.netlib.org/f2c/fc
 Patch0:         f2c-20110801.patch
 Patch1:         libf2c-20110801-format-security.patch
 Patch2:         f2c-20180821.patch
+Patch3:         riscv-no-fpu-excp.patch
 BuildRequires:  tcsh
 BuildRequires:  unzip
 
@@ -64,6 +65,7 @@ unzip -qq %{SOURCE1} -d libf2c
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 # Set library soversion
 sed -i "s/@SOVER@/%{sover}/" libf2c/makefile.u
