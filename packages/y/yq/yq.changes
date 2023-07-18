@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 18 14:38:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.34.2:
+  * Bumped depedencies
+- update to 4.34.1:
+  * Added shell output format
+  * Fixed nil pointer dereference
+  * Bumped dependency versions
+
+-------------------------------------------------------------------
 Fri Apr 14 17:03:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.33.3:
