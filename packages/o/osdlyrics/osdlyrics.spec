@@ -17,7 +17,7 @@
 
 
 Name:           osdlyrics
-Version:        0.5.13
+Version:        0.5.14
 Release:        0
 Summary:        A third-party lyrics display program
 License:        GPL-3.0-or-later

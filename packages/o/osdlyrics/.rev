@@ -89,4 +89,15 @@
     <comment></comment>
     <requestid>1065986</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>240f3b835a7b4347c986ac38e80836a3</srcmd5>
+    <version>0.5.14</version>
+    <time>1689710900</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 0.5.14
+  * Fix Chinese encodings
+  * Fix proxy-password config
+  * Fix sources in the default search (forwarded request 1099194 from hillwood)</comment>
+    <requestid>1099197</requestid>
+  </revision>
 </revisionlist>
