@@ -1,0 +1,78 @@
+-------------------------------------------------------------------
+Mon May 29 00:34:07 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 30:
+  * preserve mtime when copying files (#1026)
+  * Bound cursor position when selecting file (#1247)
+  * Expand tilde during autocompletion (#1246)
+  * Refactor pager commands & synchronous shell commands (#1243)
+  * LF_CONFIG_HOME environment variable  (#1253)
+  * Support custom colors for `drawbox` characters (#1251)
+  * Support modifiers in special key mappings (#1248)
+  * Fix count when parsing `bottom` command (#1240)
+  * Add `jumps` command for displaying the jump list (#1233)
+  * Separate filter from selections in the ui ruler (#1223)
+  * Prevent scrolling to bottom when selecting files (#1222)
+
+-------------------------------------------------------------------
+Fri May 12 21:45:24 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 29:
+  * allow previews of up to 5MB per line
+  * Validate `selmode` setting (#1206)
+  * Fix statusbar spacing (#1205)
+  * add 'ruler' to completion
+  * Customizable statusline, df (#1168)
+  * Fix crash when sorting files in a directory (#1204)
+  * Simplify edge calculation when scrolling down (#1194)
+  * Use $VISUAL for the `e` command instead of $EDITOR (#1197)
+  * Make `:maps` work on Windows and add `:cmaps`. (#1201)
+  * Add support for moving to a specific line (#1196)
+  * lfrc.example: Add mkdir, add "show execution result" (#1188)
+  * add file operations to non-features in readme
+  * Make the `:doc` command work even if `lf` is not in the PATH,
+    add `lf` environment variable (#1176)
+  * Export count as a variable when running commands (#1187)
+  * Completion: always insert longest match (#1184)
+  * Fix infinite loop in listMatches (#1183)
+  * Support custom line number colors (#1177)
+  * Display zero when relativenumber is enabled (#1171)
+  * Use tcell constants for drawbox (#1170)
+  * Improve preview loading message flickering (#1154)
+  * Enhance rename prompt (#1162)
+  * Avoid refreshing previews for async shell commands (#1164)
+  * add errors for unexpected boolean option values
+  * add 'true/false' syntax for boolean options
+  * Fix width used for line numbers (#1151)
+  * Refactor code for printing directories (#1150)
+  * Update file info after reload command (#1149)
+  * Delete stale dircache entry during rename (#1138)
+  * `invert-below` command to substitute for visual mode (#1101)
+  * Navigate cmd history with up/down (#1112)
+  * Option to change look of cursors in parent dirs, rename an
+    option. (#1106)
+  * Fix documentation for dironly/dirpreviews options (#1105)
+  * Allow separate styles for cursor in normal and preview
+    panes, simplify `tagfmt` and `errorfmt` (#1086)
+  * Refresh preview even if selection doesn't change (#1074)
+  * Add example to hiddenfiles documentation (#1073)
+  * Disallow exiting from `rename:` mode with backspace (#1060)
+  * Bind Ctrl+MouseWheel to scroll up/down (#1051)
+  * Make `lfcd` examples safer for people who alias `lf` to
+    `lfcd` (#1049)
+
+-------------------------------------------------------------------
+Tue Mar 07 15:21:41 UTC 2023 - Joshua Smith <jsmithfpv@disroot.org>
+
+- Update to version 28.1:
+  * revert dim colors for previews
+  * add the current example open command to the doc
+  * Avoids flicker during open (#991)
+  * export lf_width and lf_height as env variables
+  * load file info after init (#994)
+  * Sixel patch (#1)
+
+-------------------------------------------------------------------
+Tue Mar  7 15:18:48 UTC 2023 - Joshua Smith <jsmithfpv@disroot.org>
+
+- Initial commit for lf 28.1 for openSUSE

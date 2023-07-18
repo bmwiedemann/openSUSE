@@ -1,0 +1,5 @@
+<package name="lf" project="openSUSE:Factory">
+  <title>lf</title>
+  <description>Terminal file manager (with sixel support)</description>
+  <devel project="utilities" package="lf"/>
+</package>
