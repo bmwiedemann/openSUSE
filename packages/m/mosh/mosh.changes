@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 17 07:10:08 UTC 2023 - Flavio Castelli <fcastelli@suse.com>
+
+- Fix building with protobuf 23.3: this version of protobuf doesn't support
+  C++11 anymore. A workaround has to be used at build time, see GitHub
+  https://github.com/mobile-shell/mosh/issues/1278
+
+-------------------------------------------------------------------
 Thu Oct 27 14:12:48 UTC 2022 - Pavel Dostál <pdostal@suse.com>
 
 - Update to version 1.4.0:

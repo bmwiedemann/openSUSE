@@ -1,7 +1,7 @@
 #
 # spec file for package mosh
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Flavio Castelli.
 #
 # All modifications and additions to the file contributed by third parties
@@ -53,6 +53,9 @@ especially over Wi-Fi, cellular, and long-distance links.
 sed -i '1s@^#!.*env perl@#!/usr/bin/perl@' scripts/mosh.pl
 
 %build
+%if 0%{?suse_version} >= 1500
+export CPPFLAGS=-std=c++17
+%endif
 autoreconf -fi
 %configure \
   --enable-completion \

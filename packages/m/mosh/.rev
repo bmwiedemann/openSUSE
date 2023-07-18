@@ -226,4 +226,15 @@
     <comment></comment>
     <requestid>1031578</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>af9554dc07177087de01bb67656dbccc</srcmd5>
+    <version>1.4.0</version>
+    <time>1689710839</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix building with protobuf 23.3: this version of protobuf doesn't support
+  C++11 anymore. A workaround has to be used at build time, see GitHub
+  https://github.com/mobile-shell/mosh/issues/1278
+</comment>
+    <requestid>1099038</requestid>
+  </revision>
 </revisionlist>
