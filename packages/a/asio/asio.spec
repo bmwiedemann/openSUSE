@@ -17,7 +17,7 @@
 
 
 Name:           asio
-Version:        1.26.0
+Version:        1.28.0
 Release:        0
 Summary:        A cross-platform C++ library for network and low-level I/O programming
 License:        BSD-3-Clause

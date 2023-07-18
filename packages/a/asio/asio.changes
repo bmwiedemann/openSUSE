@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Jul 16 18:43:49 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.28:
+  * Added missing handler tracking source location support to 
+    awaitable<>-based coroutine's ability to co_await asynchronous
+    operations packaged as function objects.
+  * Add missing handler tracking source location support to
+    co_composed.
+  * Fixed suppression of spurious 'potential null dereference'
+    warnings, to work with older compilers.
+  * Fixed a bug where passing the deprecated const_buffers_1 and
+    mutable_buffers_1 types to asio::buffer() would result in the
+    contiguous iterator overloads being incorrectly chosen.
+  * Fixed compatibility between buffered stream wrappers and
+    move-constructible streams, such as ssl::stream<>.
+  * Marked ip::address_v4::to_ulong as deprecated in the documentation.
+  * Fixed shadowed variable warnings.
+  * Fixed basic_socket_acceptor::async_accept concept requirement
+    checking to be compatible with lambdas that have a deduced return
+    type.
+  * Fixed a feature detection macro used in use_future's compatibility
+    traits.
+  * Fixed as_tuple compatibility with legacy completion tokens.
+  * Fixed redirect_error compatibility with new completion tokens.
+  * Fixed a potential, Windows-specific program termination due to
+    exceptions that should have been allowed to escape from a destructor.
+  * Fixed this_coro to prevent inadvertent co_await of boolean
+    expressions.
+  * Fixed result handling in experimental::use_coro implementation.
+  * Fixed variadic template emulation for is_async_operation and
+    completion_signature_of.
+  * Fixed incorrect reuse of a moved-from result in experimental::promise.
+  * Fixed experimental::coro use with custom allocators.
+  * Fixed clean up of internal I/O object structures when using io_uring.
+  * Use cached offset when seeking a file with seek_cur on Windows.
+  * Added immediate completion to asynchronous operation requirements.
+  * Added any_completion_handler<>, co_composed, and immediate completion
+    support to the documentation overview.
+  * Added buffer literals to the documentation.
+  * Added a link to the Asio debugger extensions repository. 
+
+-------------------------------------------------------------------
 Wed Feb 15 14:13:35 UTC 2023 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Use secure URLs (HTTPS)
