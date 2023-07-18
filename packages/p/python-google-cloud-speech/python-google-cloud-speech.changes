@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 18 10:13:11 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.21.0
+  * Add `model` and `language_codes` fields in `RecognitionConfig`
+    message + enable default `_` recognizer (#524)
+- from version 2.20.1
+  * Add async context manager return types (#522)
+
+-------------------------------------------------------------------
 Tue Jun 20 09:40:24 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.20.0

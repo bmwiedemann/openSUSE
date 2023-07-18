@@ -184,4 +184,12 @@
   * python-google-cloud-speech-no-mock.patch (forwarded request 1095634 from glaubitz)</comment>
     <requestid>1095649</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8ef2eeba19a66eecb51c2b5b5ef0d8c7</srcmd5>
+    <version>2.21.0</version>
+    <time>1689710935</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1099262</requestid>
+  </revision>
 </revisionlist>
