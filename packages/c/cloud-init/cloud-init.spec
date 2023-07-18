@@ -26,6 +26,7 @@ Url:            https://github.com/canonical/cloud-init
 Group:          System/Management
 Source0:        %{name}-%{version}.tar.gz
 Source1:        rsyslog-cloud-init.cfg
+Source2:        hidesensitivedata
 Patch1:        datasourceLocalDisk.patch
 # FIXME (lp#1849296)
 Patch2:        cloud-init-break-resolv-symlink.patch
@@ -37,6 +38,9 @@ Patch4:        cloud-init-no-tempnet-oci.patch
 Patch5:        cloud-init-fix-ca-test.patch
 # FIXME (lp#1812117)
 Patch6:        cloud-init-write-routes.patch
+Patch7:        cloud-init-cve-2023-1786-redact-instance-data-json-main.patch
+# FIXME https://github.com/canonical/cloud-init/pull/2148
+Patch8:        cloud-init-power-rhel-only.patch
 BuildRequires:  fdupes
 BuildRequires:  filesystem
 # pkg-config is needed to find correct systemd unit dir
@@ -50,6 +54,7 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-Jinja2
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-configobj >= 5.0.2
+BuildRequires:  python3-flake8
 BuildRequires:  python3-httpretty
 BuildRequires:  python3-jsonpatch
 BuildRequires:  python3-jsonschema
@@ -84,7 +89,6 @@ Requires:       python3-oauthlib
 Requires:       python3-pyserial
 Requires:       python3-PyYAML
 Requires:       python3-requests
-Requires:       python3-responses
 Requires:       python3-serial
 Requires:       python3-setuptools
 Requires:       python3-xml
@@ -142,6 +146,8 @@ Documentation and examples for cloud-init tools
 %patch4
 %patch5
 %patch6
+%patch7
+%patch8
 
 # patch in the full version to version.py
 version_pys=$(find . -name version.py -type f)
@@ -154,6 +160,7 @@ python3 setup.py build
 
 %check
 make unittest
+make flake8
 
 %install
 python3 setup.py install --root=%{buildroot} --prefix=%{_prefix} --install-lib=%{python3_sitelib} --init-system=%{initsys}
@@ -185,6 +192,8 @@ mkdir -p %{buildroot}/%{_sysconfdir}/rsyslog.d
 mkdir -p %{buildroot}/usr/lib/udev/rules.d/
 cp -a %{SOURCE1} %{buildroot}/%{_sysconfdir}/rsyslog.d/21-cloudinit.conf
 mv %{buildroot}/lib/udev/rules.d/66-azure-ephemeral.rules %{buildroot}/usr/lib/udev/rules.d/
+mkdir -p %{buildroot}%{_sbindir}
+install -m 755 %{SOURCE2} %{buildroot}%{_sbindir}
 
 # remove debian/ubuntu specific profile.d file (bnc#779553)
 rm -f %{buildroot}%{_sysconfdir}/profile.d/Z99-cloud-locale-test.sh
@@ -193,6 +202,9 @@ rm -f %{buildroot}%{_sysconfdir}/profile.d/Z99-cloud-locale-test.sh
 rm %{buildroot}/%{_sysconfdir}/cloud/templates/*.debian.*
 rm %{buildroot}/%{_sysconfdir}/cloud/templates/*.redhat.*
 rm %{buildroot}/%{_sysconfdir}/cloud/templates/*.ubuntu.*
+
+%post
+/usr/sbin/hidesensitivedata
 
 # remove duplicate files
 %if 0%{?suse_version}
@@ -205,6 +217,7 @@ rm %{buildroot}/%{_sysconfdir}/cloud/templates/*.ubuntu.*
 %{_bindir}/cloud-id
 %{_bindir}/cloud-init
 %{_bindir}/cloud-init-per
+%{_sbindir}/hidesensitivedata
 %dir %{_sysconfdir}/cloud
 %dir %{_sysconfdir}/cloud/clean.d
 %{_sysconfdir}/cloud/clean.d/README

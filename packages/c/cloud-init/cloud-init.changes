@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jul  6 12:06:22 UTC 2023 - Robert Schweikert <rjschwei@suse.com>
+
+- Update cloud-init-write-routes.patch (bsc#1212879)
+  + Add necessary import statement
+- Enable flake8 linting, fix up patches
+  + cloud-init-cve-2023-1786-redact-instance-data-json-main.patch
+  + cloud-init-power-rhel-only.patch
+  + cloud-init-write-routes.patch
+  + datasourceLocalDisk.patch
+
+-------------------------------------------------------------------
+Thu Apr 27 12:22:11 UTC 2023 - Robert Schweikert <rjschwei@suse.com>
+
+- Add cloud-init-power-rhel-only.patch (bsc#1210273)
+  + Config module cc_refresh_rmc_and_interface is implemented such that
+    it will only work on RH distros. Set the module availability accordingly.
+
+-------------------------------------------------------------------
+Tue Apr 11 18:48:30 UTC 2023 - Robert Schweikert <rjschwei@suse.com>
+
+- Sensitive data exposure (bsc#1210277, CVE-2023-1786)
+  + Add hidesensitivedata 
+  + Add cloud-init-cve-2023-1786-redact-inst-data.patch
+  + Do not expose sensitive data gathered from the CSP
+
+-------------------------------------------------------------------
 Thu Feb 23 13:38:43 UTC 2023 - Robert Schweikert <rjschwei@suse.com>
 
 - Update to version 23.1
@@ -1642,7 +1668,7 @@ Wed Jun  2 12:13:54 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
 
 - Add cloud-init-log-file-mode.patch (bsc#1183939)
   + Change log file creation mode to 640
-- Add cloud-init-no-pwd-in-log.patch (bsc#1184758)
+- Add cloud-init-no-pwd-in-log.patch (bsc#1184758, CVE-2021-3429)
   + Do not write the generated password to the log file
 - Add cloud-init-purge-cache-py-ver-change.patch
 

@@ -1081,4 +1081,12 @@
   + disk_setup: use byte string when purging the partition table (#2012)</comment>
     <requestid>1068502</requestid>
   </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>8924ccaa835284a9f8b58b14f1d5f3a8</srcmd5>
+    <version>23.1</version>
+    <time>1689710024</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1098540</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,15 @@
          if bring_up:
 --- cloudinit/distros/opensuse.py.orig
 +++ cloudinit/distros/opensuse.py
-@@ -238,6 +238,143 @@ class Distro(distros.Distro):
+@@ -15,6 +15,7 @@ from cloudinit import log as logging
+ from cloudinit import subp, util
+ from cloudinit.distros import rhel_util as rhutil
+ from cloudinit.distros.parsers.hostname import HostnameConf
++from cloudinit.net import ipv4_mask_to_net_prefix
+ from cloudinit.settings import PER_INSTANCE
+ 
+ LOG = logging.getLogger(__name__)
+@@ -238,6 +239,144 @@ class Distro(distros.Distro):
              conf.set_hostname(hostname)
              util.write_file(filename, str(conf), 0o644)
  
@@ -72,10 +80,10 @@
 +                        )
 +                        continue
 +                    if (
-+                           dest == 'default' and
-+                           has_default_route and
-+                           gateway == seen_default_gateway
-+                        ):
++                            dest == 'default'
++                            and has_default_route
++                            and gateway == seen_default_gateway
++                    ):
 +                        dest_info = dest
 +                        if gateway:
 +                            dest_info = ' '.join([dest, gateway, '-', '-'])
@@ -138,9 +146,10 @@
 +                        for route in device_config.get('routes', []):
 +                            config_routes += self._render_route_string(route)
 +                        if config_routes:
-+                            route_file = '/etc/sysconfig/network/ifroute-{}'.format(
-+                                device_name
-+                            )
++                            route_file = \
++                                '/etc/sysconfig/network/ifroute-{}'.format(
++                                    device_name
++                                )
 +                            util.write_file(route_file, config_routes)
 +                    except Exception:
 +                        # the parser above epxects another level of nesting
