@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 14 18:45:26 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Apply "CVE-2023-35936.patch" to fix an arbitrary file write issue
+  that was possible when using PDF output or --extract-media with
+  untrusted input. [bsc#1213066, CVE-2023-35936]
+
+-------------------------------------------------------------------
 Wed Jun  7 04:32:42 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update pandoc to version 3.1.3.

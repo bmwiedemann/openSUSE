@@ -26,6 +26,7 @@ Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Patch1:         CVE-2023-35936.patch
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Glob-devel
 BuildRequires:  ghc-Glob-prof
@@ -229,7 +230,7 @@ Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
 This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
-%autosetup -n %{pkg_name}-%{version}
+%autosetup -p1 -n %{pkg_name}-%{version}
 
 %build
 %ghc_lib_build
