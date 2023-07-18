@@ -1,0 +1,5 @@
+<package name="python-3.11-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed BCI Python 3.11 Container Image</title>
+  <description>Python 3.11 development environment based on the SLE Base Container Image.</description>
+  <devel project="devel:BCI:Tumbleweed" package="python-3.11-image"/>
+</package>
