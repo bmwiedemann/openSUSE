@@ -17,15 +17,13 @@
 
 
 Name:           cjose
-Version:        0.6.1
+Version:        0.6.2.2
 Release:        0
 Summary:        C library implementing the Javascript Object Signing and Encryption (JOSE)
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            https://github.com/cisco/cjose
-Source:         https://github.com/cisco/cjose/archive/%{version}.tar.gz
-Patch0:         cjose-ck_assert_bin_eq.patch
-Patch1:         cjose-0.6.1-concatkdf.patch
+URL:            https://github.com/OpenIDC/cjose
+Source:         https://github.com/OpenIDC/cjose/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(check) >= 0.9.4
