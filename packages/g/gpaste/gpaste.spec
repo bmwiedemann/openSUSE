@@ -20,7 +20,7 @@
 %global __requires_exclude typelib\\(Clutter|St\\)
 %global alt_name GPaste
 Name:           gpaste
-Version:        43.2+6
+Version:        44.1
 Release:        0
 Summary:        Clipboard management system for GNOME
 License:        BSD-2-Clause
