@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 10 13:09:58 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.2:
+  * Made use of pep-673 ``Self`` type for method chained methods
+    such as .CacheRegion.configure and .ProxyBackend.wrap
+
+-------------------------------------------------------------------
 Mon May 29 16:38:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.1:
