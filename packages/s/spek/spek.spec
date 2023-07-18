@@ -1,7 +1,7 @@
 #
 # spec file for package spek
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,13 @@
 
 
 Name:           spek
-Version:        0.8.4
+Version:        0.8.5
 Release:        0
 Summary:        Tool for audio spectrum analysis and visualization
 License:        GPL-3.0-only
 Group:          Productivity/Multimedia/Sound/Utilities
-URL:            http://spek.cc/
+URL:            https://www.spek.cc/
 Source:         https://github.com/alexkay/spek/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 232.patch -- Replace deprecated FFmpeg APIs to support FFmpeg 5.x
-Patch0:         https://patch-diff.githubusercontent.com/raw/alexkay/spek/pull/232.patch
-
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -36,9 +33,13 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  wxGTK-devel
+%if 0%{?suse_version} > 1500
+BuildRequires:  ffmpeg-5-mini-devel
+%else
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
+%endif
 
 %description
 Spek helps to analyse your audio files by showing their spectrogram.
@@ -57,8 +58,7 @@ Features:
 %autosetup -p1
 
 %build
-# Workaround upstreams issue https://github.com/alexkay/spek/issues/149
-export CXXFLAGS="$CXXFLAGS -std=gnu++11 -Wall -Wextra -I/usr/include/ffmpeg"
+export CXXFLAGS="%{optflags} $(pkg-config --cflags-only-I libavutil)"
 ./autogen.sh
 %configure
 %make_build

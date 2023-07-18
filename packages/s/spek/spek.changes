@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jul 16 08:23:56 UTC 2023 - munix9@googlemail.com
+
+- Update to version 0.8.5:
+  * Update translations
+  * Fix audio decoding
+  * Fix decoding for m4a and ogg
+  * Bump the required FFmpeg library versions
+  * Replace deprecated FFmpeg APIs to support FFmpeg 5.x
+  * Implement $XDG_CONFIG_HOME on Unix systems
+
+- Use ffmpeg-5 for Factory/Tumbleweed
+- Remove 232.patch (fixed upstream)
+
+-------------------------------------------------------------------
 Tue Dec 13 09:13:23 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 232.patch: Replace deprecated FFmpeg APIs to support FFmpeg
