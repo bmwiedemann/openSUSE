@@ -131,4 +131,12 @@
   * Added VerifyConnectivity RPC (#388) (forwarded request 1089812 from glaubitz)</comment>
     <requestid>1089817</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5ec81f1240451c0b3c7ca5a03b1a8b68</srcmd5>
+    <version>2.18.0</version>
+    <time>1689710937</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1099264</requestid>
+  </revision>
 </revisionlist>

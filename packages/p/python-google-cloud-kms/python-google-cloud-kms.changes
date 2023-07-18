@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 18 10:08:17 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.18.0
+  * Add interoperable symmetric encryption system (#396)
+  * Add async context manager return types (#398)
+
+-------------------------------------------------------------------
 Tue May 30 12:41:34 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.17.0
