@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 12 15:35:58 UTC 2023 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Fix Requires for python-python-magic:
+  correct pypi name of the required package is python-magic
+  and one more python- is prepended.
+
+-------------------------------------------------------------------
 Sun May  7 09:18:42 UTC 2023 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Version 2.0.18

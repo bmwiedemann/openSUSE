@@ -45,7 +45,7 @@ Requires:       eremaea = %{version}
 Requires:       python-Django >= 1.10
 Requires:       python-cmdln
 Requires:       python-djangorestframework >= 3.7.0
-Requires:       python-magic
+Requires:       python-python-magic
 Requires:       python-requests
 Requires:       python-requests-toolbelt
 Requires(post): update-alternatives
