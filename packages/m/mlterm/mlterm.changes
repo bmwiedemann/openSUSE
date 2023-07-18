@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 13 14:36:09 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
+
+- Disable wayland backend on 15.4 - fails to build.
+
+-------------------------------------------------------------------
 Fri Jun 23 10:47:40 UTC 2023 - pgajdos@suse.com
 
 - version update to 3.9.3

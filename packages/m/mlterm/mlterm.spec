@@ -17,7 +17,13 @@
 
 
 %global _configure ../configure
+%if 0%{?sle_version} && 0%{?sle_version} < 150500
+%global do_wayland 0
+%global flavors with-gui=sdl2 with-gtk=3.0
+%else
+%global do_wayland 1
 %global flavors with-gui=wayland with-gui=sdl2 with-gtk=3.0
+%endif
 Name:           mlterm
 Version:        3.9.3
 Release:        0
@@ -36,12 +42,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  scim-devel
 BuildRequires:  uim-devel
 BuildRequires:  update-desktop-files
-%if 0%{?sle_version} && 0%{?sle_version} <= 150400
-BuildRequires:  pkgconfig(fcitx)
-%else
-BuildRequires:  pkgconfig(Fcitx5Core)
-BuildRequires:  pkgconfig(Fcitx5GClient)
-%endif
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(fribidi)
@@ -54,12 +54,20 @@ BuildRequires:  pkgconfig(libssh2)
 BuildRequires:  pkgconfig(m17n-core)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(vte-2.91)
-BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wordcut)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xkbcommon)
 Requires:       %{name}-common = %{version}-%{release}
 Provides:       locale(xorg-x11:ja;ko;zh;ar;he)
+%if 0%{?sle_version} && 0%{?sle_version} <= 150400
+BuildRequires:  pkgconfig(fcitx)
+%else
+BuildRequires:  pkgconfig(Fcitx5Core)
+BuildRequires:  pkgconfig(Fcitx5GClient)
+%endif
+%if %{do_wayland}
+BuildRequires:  pkgconfig(wayland-client)
+%endif
 
 %description
 Mlterm is a multilingual terminal emulator for the X Window System and Wayland.
@@ -213,7 +221,7 @@ pushd $i
   --with-imagelib=gdk-pixbuf \
   --enable-optimize-redrawing \
   --$i
-make -O %{?_smp_mflags}
+%make_build -O
 popd
 done
 
@@ -230,7 +238,9 @@ install -D -m644 "contrib/icon/%{name}-icon.svg" \
 install -D -m644 "contrib/icon/%{name}-icon-trans.svg" \
   "%{buildroot}%{_datadir}/pixmaps/mlclient.svg"
 
+%if %{do_wayland}
 ln -s %{_mandir}/man1/mlterm.1 %{buildroot}%{_mandir}/man1/mlterm-wl.1
+%endif
 cp -a %{buildroot}%{_mandir}/man1/mlterm.1 %{buildroot}%{_mandir}/man1/mlterm-sdl2.1
 
 mv %{buildroot}%{_libdir}/mlterm/mlterm/mlterm-zoom \
@@ -242,18 +252,20 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n %{name}-common -p /sbin/ldconfig
 
 %files
-%attr(555,root,tty) %{_bindir}/mlterm
+%if %{do_wayland}
 %attr(555,root,tty) %{_bindir}/mlterm-wl
+%{_mandir}/man?/mlterm-wl.?.gz
+%{_libdir}/mlterm/libim-kbd-wl.so
+%{_libdir}/mlterm/libim-skk-wl.so
+%endif
+%attr(555,root,tty) %{_bindir}/mlterm
 %{_bindir}/mlterm-zoom
 %{_mandir}/man?/mlterm.?.gz
-%{_mandir}/man?/mlterm-wl.?.gz
 %{_datadir}/applications/%{name}.desktop
 %dir %{_sysconfdir}/X11/mlterm/
 %config %{_sysconfdir}/X11/mlterm/*
 %{_libdir}/mlterm/libim-kbd.so
-%{_libdir}/mlterm/libim-kbd-wl.so
 %{_libdir}/mlterm/libim-skk.so
-%{_libdir}/mlterm/libim-skk-wl.so
 %{_libdir}/mlterm/libathena.so
 %{_libdir}/mlterm/libmotif.so
 %{_libdir}/mlterm/libmozmodern.so
