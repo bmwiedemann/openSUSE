@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 10 10:12:41 UTC 2023 - Lars Vogdt <lars@linux-schulserver.de>
+
+- update to 1.98.10
+  + remove openSUSE Leap 15.3
+  + add openSUSE Leap 15.6 & 16.0 (fixes bsc#1212196)
+  + add SLE-15-SP6 and SLE-16
+  + add Tumbleweed 2024 
+
+-------------------------------------------------------------------
 Tue Mar 28 10:22:13 UTC 2023 - Lars Vogdt <lars@linux-schulserver.de>
 
 - update to 1.98.9

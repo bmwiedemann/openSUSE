@@ -188,4 +188,12 @@ Package might get out as maintenance update for 13.2 (see bnc#904170) after acce
     <comment>Version 1.98.9 - let's remove outdated distributions and update the changes entry to contain a missing entry. </comment>
     <requestid>1074985</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>dae4ed719116a4d893a01f22fae2bd46</srcmd5>
+    <version>1.98.10</version>
+    <time>1689710848</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1099081</requestid>
+  </revision>
 </revisionlist>
