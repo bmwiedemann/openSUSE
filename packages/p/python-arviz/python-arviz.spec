@@ -18,7 +18,7 @@
 
 %define modname arviz
 Name:           python-arviz
-Version:        0.15.1
+Version:        0.16.0
 Release:        0
 Summary:        Exploratory analysis of Bayesian models
 License:        Apache-2.0
