@@ -22,8 +22,11 @@ LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.reference="%%REGISTRY%%/%%TAGPREFIX%%/virt-exportserver:%%PKG_VERSION%%.%RELEASE%"
 # endlabelprefix
 
-RUN zypper -n install kubevirt-virt-exportserver shadow tar && \
-    zypper clean -a && \
-    useradd -u 1001 --create-home -s /bin/bash virt-exportserver
-USER 1001
+RUN zypper -n install \
+        kubevirt-virt-exportserver \
+        system-user-qemu \
+        tar && \
+    zypper clean -a
+
+USER 107
 ENTRYPOINT [ "/usr/bin/virt-exportserver" ]
