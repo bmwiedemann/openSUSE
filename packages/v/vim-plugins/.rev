@@ -427,4 +427,12 @@
     <comment>- add vim table mode 4.7.6.1 (forwarded request 1074885 from lnussel)</comment>
     <requestid>1074890</requestid>
   </revision>
+  <revision rev="49" vrev="56">
+    <srcmd5>310f00c598e0501d1999842b052bf497</srcmd5>
+    <version>unknown</version>
+    <time>1689710905</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1099198</requestid>
+  </revision>
 </revisionlist>

@@ -22,8 +22,7 @@
 %define align_version_orig	37-43
 %define align_version		37.43
 %define a_version		2.18
-%define bufexplorer_version	7.4.25
-%define bufexplorer_version_orig v.%{bufexplorer_version}
+%define bufexplorer_version	7.4.26
 %define calendar_version	2.5
 %define colorsel_version	20110107
 %define colorschemes_version	1.0
@@ -70,7 +69,7 @@ Group:          Productivity/Text/Editors
 URL:            http://www.vim.org/
 Source0:        https://github.com/vim-scripts/Align/archive/refs/tags/%{align_version_orig}.tar.gz#/vimplugin-align-%{align_version}.tar.gz
 Source1:        https://github.com/vim-scripts/a.vim/archive/refs/tags/%{a_version}.tar.gz#/vimplugin-a-%{a_version}.tar.gz
-Source2:        https://github.com/jlanzarotta/bufexplorer/archive/refs/tags/%{bufexplorer_version_orig}.tar.gz#/bufexplorer-%{bufexplorer_version}.tar.gz
+Source2:        https://github.com/jlanzarotta/bufexplorer/archive/refs/tags/v%{bufexplorer_version}.tar.gz#/bufexplorer-%{bufexplorer_version}.tar.gz
 Source3:        https://github.com/vim-scripts/calendar.vim--Matsumoto/archive/refs/tags/%{calendar_version}.tar.gz#/calendar.vim--Matsumoto-%{calendar_version}.tar.gz
 Source4:        https://github.com/vim-scripts/colorsel.vim/archive/refs/tags/%{colorsel_version}.tar.gz#/vimplugin-colorsel-%{colorsel_version}.tar.gz
 Source5:        vimplugin-colorschemes-%{colorschemes_version}.tar.bz2
@@ -762,7 +761,6 @@ cat > vim-table-mode-%{table_mode_version}/.rsync-filter <<EOF
 - /VimFlavor.lock
 - /youtube.png
 EOF
-# END EXCLUDES
 
 cat > tlib_vim-%{tlib_version}/.rsync-filter <<EOF
 - /addon-info.json
@@ -916,7 +914,7 @@ fi \
 
 %files -n vim-plugin-bufexplorer
 %defattr(-,root,root,0755)
-%license bufexplorer-%{bufexplorer_version_orig}/LICENSE
+%license bufexplorer-%{bufexplorer_version}/LICENSE
 %vimplugin_dir/doc/bufexplorer.txt
 %vimplugin_dir/plugin/bufexplorer.vim
 
