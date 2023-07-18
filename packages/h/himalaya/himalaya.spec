@@ -17,12 +17,12 @@
 
 
 Name:           himalaya
-Version:        latest~0
+Version:        0.8.4~0
 Release:        0
 Summary:        Command-line interface for email management
 License:        MIT
 Group:          Productivity/Networking/Email/Clients
-URL:            https://github.com/soywod/himalaya
+URL:            https://pimalaya.org/himalaya
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config

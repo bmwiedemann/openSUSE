@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Jul 18 16:39:30 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.4:
+  * Fixed windows releases due to cargo deps typo.
+
+-------------------------------------------------------------------
+Tue Jul 18 15:31:39 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.3:
+  * Fix windows releases due to coredump crate compilation error.
+  * Fix macos releases due to macos 12 System Integrity Protection.
+
+-------------------------------------------------------------------
+Tue Jul 18 14:55:41 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.2:
+  Changed:
+  * Made the code async using the tokio async runtime.
+  * On Linux, made the kernel keyring the default one (the one based on keyutils).
+  Fixed:
+  * Fixed the way folder aliases are resolved. In some case, aliases were
+    resolved CLI side and lib side, which led to alias errors sourcehut#95.
+
+-------------------------------------------------------------------
+Fri Jun 23 09:53:20 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.1:
+  Added:
+  * Implemented OAuth 2.0 refresh token flow for IMAP and SMTP,
+    which means that access tokens are now automatically refreshed
+    and is transparent for users.
+  * Added imap-oauth2-redirect-host and smtp-oauth2-redirect-host
+    options to customize the redirect server host name (default: localhost).
+  * Added imap-oauth2-redirect-port and smtp-oauth2-redirect-port
+    options to customize the redirect server port (default: 9999).
+  * Added email-listing-datetime-fmt to customize envelopes datetime
+    format. See format spec here.
+  * Added email-listing-local-datetime to transform envelopes datetime's
+    timezone to the user's local one. For example, if the user's local
+    is set to UTC, the envelope date 2023-06-15T09:00:00+02:00
+    becomes 2023-06-15T07:00:00-00:00.
+  Fixed:
+  * Fixed missing < and > around Message-ID and In-Reply-To headers.
+
+-------------------------------------------------------------------
 Fri Jun  9 13:14:42 UTC 2023 - Gus Kenion <gkenion@suse.com>
 
 - Update to 0.8.0:
