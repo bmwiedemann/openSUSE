@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 18 10:11:02 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.11.2
+  * Add async context manager return types (#496)
+
+-------------------------------------------------------------------
 Tue Jun 20 09:53:38 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.11.1
