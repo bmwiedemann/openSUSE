@@ -46,4 +46,13 @@
     <comment></comment>
     <requestid>924823</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>634d0f278f1d97997d06e1006b6595d7</srcmd5>
+    <version>1.4.1</version>
+    <time>1689710842</time>
+    <user>dimstar_suse</user>
+    <comment>- fix build failure by using pkg-config to get protobuf settings
+  (pink-pony-1.4.1-protobuf.diff)</comment>
+    <requestid>1099046</requestid>
+  </revision>
 </revisionlist>

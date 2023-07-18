@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 17 08:07:31 UTC 2023 - Ludwig Nussel <lnussel@suse.de>
+
+- fix build failure by using pkg-config to get protobuf settings
+  (pink-pony-1.4.1-protobuf.diff)
+
+-------------------------------------------------------------------
 Mon Oct 11 13:57:34 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patch:

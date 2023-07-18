@@ -1,7 +1,7 @@
 #
 # spec file for package pink-pony
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,17 +20,15 @@ Name:           pink-pony
 Version:        1.4.1
 Release:        0
 Summary:        3D racing game with ponies
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Amusements/Games/Action/Arcade
-Url:            http://code.google.com/p/pink-pony/
+URL:            http://code.google.com/p/pink-pony/
 Source0:        http://pink-pony.googlecode.com/files/pink-pony-%{version}.tar.gz
 Patch0:         datadir.patch
 Patch1:         script.patch
 Patch2:         pink-pony-1.4.1.diff
-# PATCH-FIX-UPSTREAM -- libraries changed in openexr 3.1
-%if 0%{?suse_version} > 1500
 Patch3:         0001-Fix-compile-issues-caused-by-Imath-being-moved-out-o.patch
-%endif
+Patch4:         pink-pony-1.4.1-protobuf.diff
 BuildRequires:  DevIL-devel
 BuildRequires:  SDL-devel
 BuildRequires:  SDL_mixer-devel
@@ -38,15 +36,15 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  ftgl-devel
 BuildRequires:  ilmbase-devel
 BuildRequires:  libsigc++2-devel
-BuildRequires:  protobuf-devel
 BuildRequires:  scons
 BuildRequires:  pkgconfig(libglfw)
+BuildRequires:  pkgconfig(protobuf)
 
 Requires:       pink-pony-data = %version
 
 %package data
 Summary:        3D racing game with ponies - data files
-License:        GPL-3.0+ and CC-BY-SA-3.0 and CC-BY-3.0 and OFL-1.1 and CC0-1.0
+License:        CC-BY-3.0 AND CC-BY-SA-3.0 AND GPL-3.0-or-later AND OFL-1.1 AND CC0-1.0
 Group:          Amusements/Games/Action/Arcade
 BuildArch:      noarch
 Requires:       pink-pony = %version
@@ -55,13 +53,13 @@ Requires:       pink-pony = %version
 Pink Pony is a Tron­-like multiplayer racing­ game. You control
 little ponies that leave a trail of flowers everywhere they step.
 You have to evade these trails and force other ponies into them.
-The last pony standing wins the game. 
+The last pony standing wins the game.
 
 %description data
 Pink Pony is a Tron­-like multiplayer racing­ game. You control
 little ponies that leave a trail of flowers everywhere they step.
 You have to evade these trails and force other ponies into them.
-The last pony standing wins the game. 
+The last pony standing wins the game.
 
  This package contains architecture-independent game data
 
@@ -89,9 +87,6 @@ cp -r resources/* %buildroot/usr/share/pink-pony
 desktop-file-install \
   --dir %{buildroot}%{_datadir}/applications           \
   install/pink-pony.desktop
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,-)
