@@ -324,4 +324,25 @@ Filter out -flto= flag for arm7 see cryptopp issue#865</comment>
 - Update to 8.7.0</comment>
     <requestid>994251</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>2f246ec2ef0355f9821635ee809ca333</srcmd5>
+    <version>8.8.0</version>
+    <time>1689710094</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.8.0:
+  * minor release, recompile of programs required
+  * expanded community input and support
+  * 88 unique contributors as of this release
+  * fix crash in cryptest.exe when invoked with no options
+  * fix crash in library due to GCC removing live code
+  * fix RSA with key size 16 may provide an invalid key
+  * fix failure to build on 32-bit x86
+  * fix failure to build on iPhone Simulator for arm64
+  * fix failure to build on Windows arm64
+  * test for SSSE3 before using the ISA
+  * fix include of  when using MSVC
+  * improve performance of CRC32C_Update_SSE42 for x86-64
+  * update documentation</comment>
+    <requestid>1098984</requestid>
+  </revision>
 </revisionlist>

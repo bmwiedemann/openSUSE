@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jul 16 18:55:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.8.0:
+  * minor release, recompile of programs required
+  * expanded community input and support
+  * 88 unique contributors as of this release
+  * fix crash in cryptest.exe when invoked with no options
+  * fix crash in library due to GCC removing live code
+  * fix RSA with key size 16 may provide an invalid key
+  * fix failure to build on 32-bit x86
+  * fix failure to build on iPhone Simulator for arm64
+  * fix failure to build on Windows arm64
+  * test for SSSE3 before using the ISA
+  * fix include of  when using MSVC
+  * improve performance of CRC32C_Update_SSE42 for x86-64
+  * update documentation
+
+-------------------------------------------------------------------
 Wed Aug 10 04:17:28 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Enable SSE2 to fix i586 build
