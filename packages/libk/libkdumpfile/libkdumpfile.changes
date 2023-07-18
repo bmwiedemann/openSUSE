@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 17 10:04:11 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
+
+- Upgrade to libkdumpfile version 0.5.2
+  * Full support for 32-bit Arm.
+  * ERASEINFO in the file.eraseinfo.raw attribute.
+
+-------------------------------------------------------------------
 Fri Apr 21 07:43:17 UTC 2023 - Petr Tesařík <petr@tesarici.cz>
 
 - Remove compatibility with SLE12 before SP3.
