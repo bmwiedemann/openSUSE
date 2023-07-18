@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jul 18 04:50:17 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.15.3:
+  * Prepare for v0.15.3 release
+  * Update README.md
+  * k8s.NewClient: Initialize Helm action configuration
+  * Revert "Create a separate RESTClientGetter for Helm client"
+  * Partly revert "connectivity: enable IPv6 test fort per-endpoint
+    routing"
+  * chore(deps): update dependency kubernetes-sigs/kind to v0.20.0
+  * fix(deps): update github.com/cilium/tetragon/pkg/k8s digest to
+    6f694cf
+  * connectivity: Wait for test-conn-disrupt-server deployment
+  * connectivity: Fix usage of src/dst clients in test-conn-disrupt
+  * connectivity: Use readiness probe for test-conn-disrupt-server
+  * fix(deps): update module helm.sh/helm/v3 to v3.12.2
+  * fix(deps): update all go dependencies main
+  * .github/workflows: let renovate update kind version
+  * chore(deps): update docker/setup-buildx-action action to v2.9.1
+  * Update stable release to v0.15.2
+
+-------------------------------------------------------------------
 Thu Jul 13 04:46:17 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.15.2:
