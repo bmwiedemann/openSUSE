@@ -66,4 +66,12 @@
     <comment></comment>
     <requestid>1085862</requestid>
   </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>c29d5e3a312362661d64509b7e557f04</srcmd5>
+    <version>0.4.1</version>
+    <time>1689710115</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove BuildRequires on setuptools_scm_git_archive.</comment>
+    <requestid>1099034</requestid>
+  </revision>
 </revisionlist>

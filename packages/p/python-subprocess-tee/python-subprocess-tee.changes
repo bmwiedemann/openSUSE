@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 17 07:05:58 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove BuildRequires on setuptools_scm_git_archive. 
+
+-------------------------------------------------------------------
 Fri May  5 18:13:11 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add patch
