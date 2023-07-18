@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 18 09:09:11 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.13.4:
+  * Faster search for common search patterns, such as a set of
+    words, using SIMD AVX and neon/AArch64 intrinsics
+
+-------------------------------------------------------------------
 Sat Jul 15 16:25:25 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.12.3:
