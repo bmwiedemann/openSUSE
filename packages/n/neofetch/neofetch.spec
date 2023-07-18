@@ -1,8 +1,8 @@
 #
 # spec file for package neofetch
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2017 Malcolm J Lewis <malcolmlewis@opensuse.org>
+# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2017-2023 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ URL:            https://github.com/dylanaraps/neofetch
 Source0:        https://github.com/dylanaraps/%{name}/archive/%{version}.tar.gz
 # PATCH-FIX-SUSE Fix E: env-script-interpreter
 Patch0:         fix-shebang.patch
+# PATCH-FIX-UPSTREAM -- bmwiedemann - Smoothen Tumbleweed Logo
+Patch1:         https://github.com/dylanaraps/neofetch/pull/2342.patch
 Recommends:     maim
 Recommends:     w3m-inline-image
 BuildArch:      noarch
@@ -42,8 +44,7 @@ There are over 50 config options to mess around with and there's the `print_info
 function and friends which let you add your own custom info.
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 # Placeholder, no build required.
