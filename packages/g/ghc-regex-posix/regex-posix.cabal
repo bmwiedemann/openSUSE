@@ -1,7 +1,7 @@
 cabal-version:          1.12
 name:                   regex-posix
 version:                0.96.0.1
-x-revision:             1
+x-revision:             2
 
 build-type:             Simple
 license:                BSD3
@@ -24,8 +24,9 @@ extra-source-files:
   cbits/myfree.h
 
 tested-with:
-  GHC == 9.4.1
-  GHC == 9.2.2
+  GHC == 9.6.2
+  GHC == 9.4.5
+  GHC == 9.2.8
   GHC == 9.0.2
   GHC == 8.10.7
   GHC == 8.8.4
@@ -47,7 +48,7 @@ source-repository head
 source-repository this
   type:     git
   location: https://github.com/hvr/regex-base.git
-  tag:      v0.96.0.1-r1
+  tag:      v0.96.0.1-r2
 
 flag _regex-posix-clib
   manual: False
@@ -89,7 +90,7 @@ library
   build-depends: regex-base == 0.94.*
                , base       >= 4.3 && < 5
                , containers >= 0.4 && < 0.7
-               , bytestring >= 0.9 && < 0.12
+               , bytestring >= 0.9 && < 0.13
                , array      >= 0.3 && < 0.6
 
   if impl(ghc < 8)
