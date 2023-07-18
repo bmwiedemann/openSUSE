@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Jul 18 11:16:50 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.18.0:
+  * fix(up): skip deploy properly if deploy and depencencies are
+    empty (#3814) (#3817)
+  * feat: add `--wait` flag for `okteto preview destroy` (#3776)
+  * fix: context switch regression (#3798)
+  * feat: add okteto preview `sleep|wake` command (#3570)
+  * Execute `okteto destroy --remote` successfully when there is no
+    okteto manifest found (#3721)
+  * Mount ssh agent in remote deploy (#3755)
+  * add dev mode annotation (sync or hybrid) (#3771)
+  * reduce namespace name (#3790)
+  * Compute hash for divert annotation to limit the size of the
+    annotation (#3787)
+  * feat(build): expand image before build (#3784)
+  * add implementation to retrieve cmap variables when running in
+    remote (#3766)
+  * [Hybrid] Warn on unused fields but don't fail (#3764)
+  * Update go to 1.20 (#3779)
+  * Always sync okteto manifest (#3753)
+  * add envs from manifest to local process (#3754)
+  * Add "scope" to the `okteto preview deploy` command metric
+    (#3765)
+  * Jlopezbarb/fix-security-issues (#3762)
+  * chore: improve create pid error msg (#3757)
+  * Remove git credentials from debug logs (#3747)
+  * fix: wrong registry hostname parse as url (#3743)
+
+-------------------------------------------------------------------
 Wed Jul 05 14:39:44 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.17.0:
