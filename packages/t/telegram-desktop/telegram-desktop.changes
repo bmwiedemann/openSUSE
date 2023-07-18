@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 17 13:14:40 UTC 2023 - Илья Индиго <ilya@ilya.cf>
+
+- Updated to 4.8.4.
+  * Added BuildRequires: libboost_program_options-devel, fmt,
+    gobject-introspection-1.0.
+  * Removed BuildRequires: libQt6Core5Compat6, libQt6QuickWidgets6,
+    libQt6WaylandCompositor6.
+  * Fixed calls using openssl 1.1.1.
+  * Fixed opening links on Linux.
+  * Fixed main window focus from notifications with disabled animations.
+
+-------------------------------------------------------------------
 Mon May  1 07:47:52 UTC 2023 - Andrey Gankov <gav@qsolution.ru>
 
 - Update to 4.8.1:

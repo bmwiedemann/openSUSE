@@ -41,7 +41,7 @@
 %define qt_major_version 6
 
 Name:           telegram-desktop
-Version:        4.8.1
+Version:        4.8.4
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -91,6 +91,7 @@ BuildRequires:  gcc-c++
 %endif
 %endif
 BuildRequires:  glibc-devel
+BuildRequires:  libboost_program_options-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  liblz4-devel
 BuildRequires:  libwebrtc_audio_processing-devel
@@ -110,10 +111,8 @@ BuildRequires:  cmake(Qt%{qt_major_version}Network)
 BuildRequires:  cmake(Qt%{qt_major_version}OpenGL)
 BuildRequires:  cmake(Qt%{qt_major_version}Qml)
 BuildRequires:  cmake(Qt%{qt_major_version}Quick)
-BuildRequires:  cmake(Qt%{qt_major_version}QuickWidgets)
 BuildRequires:  cmake(Qt%{qt_major_version}Svg)
 BuildRequires:  cmake(Qt%{qt_major_version}WaylandClient)
-BuildRequires:  cmake(Qt%{qt_major_version}WaylandCompositor)
 BuildRequires:  cmake(Qt%{qt_major_version}Widgets)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcomposite)
@@ -127,7 +126,6 @@ BuildRequires:  pkgconfig(xtst)
 BuildRequires:  qt%{qt_major_version}-gui-private-devel
 BuildRequires:  qt%{qt_major_version}-waylandclient-private-devel
 BuildRequires:  qt%{qt_major_version}-widgets-private-devel
-BuildRequires:  cmake(Qt%{qt_major_version}Core5Compat)
 BuildRequires:  cmake(Qt%{qt_major_version}OpenGLWidgets)
 %else
 BuildRequires:  libQt5Gui-private-headers-devel
@@ -136,11 +134,13 @@ BuildRequires:  pkgconfig(dbusmenu-qt%{qt_major_version})
 %endif
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(expat)
+BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gbm)
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(glibmm-2.68)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.76
+BuildRequires:  pkgconfig(glibmm-2.68) >= 2.76
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(hunspell)
@@ -169,7 +169,7 @@ BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(minizip)
 BuildRequires:  pkgconfig(mtdev)
 BuildRequires:  pkgconfig(openal)
-BuildRequires:  pkgconfig(openssl)
+BuildRequires:  libopenssl-1_1-devel
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(opusfile)
 BuildRequires:  pkgconfig(opusurl)
