@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jul 16 12:04:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.3:
+  * l10n: Update translations
+  * Revert "dark mode: Delegate to libxapp"
+  * l10n: Update POT
+  * l10n: Update translations
+  * xed (3.4.0) victoria; urgency=medium
+  * Save correct window size on exit
+  * dark mode: Delegate to libxapp
+  * Fix build.
+  * l10n: Update POT
+
+-------------------------------------------------------------------
 Tue Dec  6 14:24:36 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.8:
