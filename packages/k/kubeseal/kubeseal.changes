@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Jul 17 11:46:08 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.23.0:
+  * Release notes for v0.23.0 (#1271)
+  * Create a FAQ document for Sealed Secrets public documentation
+    (#1269)
+  * Bump golang.org/x/crypto from 0.10.0 to 0.11.0 (#1268)
+  * Add missing document seperator (#1260)
+  * Create a cryptography document for Sealed Secrets public
+    documentation (#1267)
+  * Validate existing Sealed Secrets (#1266)
+  * added support policy to readme (#1265)
+  * Create index for Sealed Secrets public documentation (#1264)
+  * Enable full linter support for golangci-lint (#1262)
+  * Add option to patch secrets instead of clobbering them (#1259)
+  * Add option for custom annotations and labels on sealing
+    keypairs (#1250)
+  * Improve CLI UX error message while service is not found (#1256)
+  * Bump github.com/onsi/ginkgo/v2 from 2.10.0 to 2.11.0 (#1254)
+  * Bump k8s.io/code-generator from 0.27.2 to 0.27.3 (#1255)
+  * Getting started page (#1253)
+  * Draft: Update minikube K8S versions (#1251)
+  * Fix networkpolicy port + add egress (#1243)
+  * add --log-info-stdout to chart (#1238)
+  * Bump github.com/prometheus/client_golang from 1.15.1 to 1.16.0
+    (#1247)
+  * Bump golang.org/x/crypto from 0.9.0 to 0.10.0 (#1248)
+  * Bump k8s.io/client-go from 0.27.2 to 0.27.3 (#1244)
+  * Add namespaced roles support to Helm chart (#1240)
+  * Carvel release 0.22.0 (#1242)
+  * Helm chart release 0.22.0 (#1241)
+
+-------------------------------------------------------------------
 Fri Jun 16 05:16:45 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.22.0:
