@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Jul 15 18:49:10 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 2.0.3
+  * Version number was not updated in 2.0.2, so let's go for 2.0.3
+    now :/
+
+- Update to version 2.0.2
+  * Update copyright year
+  * Fix critical when unblocking autohide
+  * Revert "Fix critical when unblocking autohide"
+  * Propagate the focus-out GtkEntry event
+  * Refactor verve_spawn_command_line()
+  * Fix g_thread_create_full deprecation
+  * Fix GtkAlignment deprecations
+  * Fix GtkMisc deprecations
+  * Fix GtkColorButton deprecations
+  * Fix XfceTitledDialog and GtkStock deprecations
+  * Fix Gtk[HV]Box deprecations
+  * Fix critical when unblocking autohide
+  * Port to PCRE2 (#11)
+  * Update `.gitignore`
+  * Fix previous commit
+  * build: Fix intltool lock file problem during make distcheck
+  * build: Decrease make log level
+  * build: Add GLib requirement
+  * Update COPYING
+  * Fix compilation warnings
+  * autoconf: Some updates
+  * Update `.gitignore`
+  * Translation Updates
+
+- Remove _service file
+
+-------------------------------------------------------------------
 Mon Dec 28 15:20:26 UTC 2020 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 2.0.1
