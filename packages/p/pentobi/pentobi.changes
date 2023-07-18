@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul 16 11:00:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 23.1:
+  * Overwriting game file on Android with shorter file created
+    corrupted file.
+
+-------------------------------------------------------------------
 Thu Mar  9 06:40:14 UTC 2023 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - ExclusiveArch because of pkgconfig(Qt6WebView) availability.
