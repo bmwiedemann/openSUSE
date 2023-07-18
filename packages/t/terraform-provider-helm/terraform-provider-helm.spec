@@ -35,6 +35,9 @@
 %ifarch ppc64le
 %define terraformarch   ppc64le
 %endif
+%ifarch riscv64
+%define terraformarch   riscv64
+%endif
 %ifarch s390x
 %define terraformarch   s390x
 %endif
