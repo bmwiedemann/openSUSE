@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 17 14:36:33 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20230717.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20230717
+  * Follow truffleruby dev standalones rename by @eregon in #2219
+
+-------------------------------------------------------------------
 Mon Jul 10 21:41:22 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20230710.
