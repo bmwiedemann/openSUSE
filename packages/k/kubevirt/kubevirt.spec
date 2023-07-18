@@ -29,6 +29,9 @@ Source2:        kubevirt_containers_meta.service
 Source3:        %{url}/releases/download/v%{version}/disks-images-provider.yaml
 Source100:      %{name}-rpmlintrc
 Patch1:         0001-Fix-qemu-system-lookup.patch
+Patch2:         0002-ksm-Access-sysfs-from-the-host-filesystem.patch
+Patch3:         0003-Virtiofs-Remove-duplicated-functional-tests.patch
+Patch4:         0004-tests-leave-some-space-for-metadata-on-the-backend-P.patch
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig

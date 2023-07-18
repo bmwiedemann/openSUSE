@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 14 05:22:41 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Access ksm sysfs from the host filesystem
+  0002-ksm-Access-sysfs-from-the-host-filesystem.patch
+- Remove duplicated virtiofs tests
+  0003-Virtiofs-Remove-duplicated-functional-tests.patch
+- Fix SCSI Persistent Reservations tests
+  0004-tests-leave-some-space-for-metadata-on-the-backend-P.patch
+
+-------------------------------------------------------------------
 Wed Jul 12 07:54:37 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Update to version 1.0.0
