@@ -9,14 +9,13 @@ common/sw-update/http-downloader.h:16:47: error: 'uint64_t' was not declared in 
 
 Signed-off-by: Jiri Slaby <jslaby@suse.cz>
 ---
- common/sw-update/http-downloader.h | 1 +
- 1 file changed, 1 insertion(+)
+ common/sw-update/http-downloader.h            |    1 +
+ third-party/rsutils/include/rsutils/version.h |    1 +
+ 2 files changed, 2 insertions(+)
 
-diff --git a/common/sw-update/http-downloader.h b/common/sw-update/http-downloader.h
-index 16b2f4f8..c88a86db 100644
 --- a/common/sw-update/http-downloader.h
 +++ b/common/sw-update/http-downloader.h
-@@ -6,6 +6,7 @@
+@@ -7,6 +7,7 @@
  #include <string>
  #include <functional>
  #include <vector>
@@ -24,6 +23,13 @@ index 16b2f4f8..c88a86db 100644
  
  namespace rs2
  {
--- 
-2.35.3
-
+--- a/third-party/rsutils/include/rsutils/version.h
++++ b/third-party/rsutils/include/rsutils/version.h
+@@ -3,6 +3,7 @@
+ 
+ #pragma once
+ 
++#include <cstdint>
+ #include <string>
+ #include <iosfwd>
+ 

@@ -9,7 +9,7 @@ And not to home of a random (abuild) user.
 
 --- a/tools/realsense-viewer/CMakeLists.txt
 +++ b/tools/realsense-viewer/CMakeLists.txt
-@@ -262,7 +262,7 @@ install(
+@@ -253,7 +253,7 @@ install(
  )
  #https://cmake.org/cmake/help/latest/command/install.html
  install(DIRECTORY presets/
