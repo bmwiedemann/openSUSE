@@ -638,4 +638,14 @@ last submission had wrong tar ball for unknown reason</comment>
   * Unify _multibuild handling and do it like OBS</comment>
     <requestid>1096177</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>c3b8f640015d27f4bf7fd2c4210386bb</srcmd5>
+    <version>0.32</version>
+    <time>1689710908</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.32:
+  * Add autonumbering patch/source lines
+  * Fix handling of packages with neither *.spec nor _multibuild</comment>
+    <requestid>1099210</requestid>
+  </revision>
 </revisionlist>

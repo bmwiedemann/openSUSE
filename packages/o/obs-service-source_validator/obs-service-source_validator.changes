@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 18 08:59:37 UTC 2023 - dmueller@suse.com
+
+- Update to version 0.32:
+  * Add autonumbering patch/source lines
+  * Fix handling of packages with neither *.spec nor _multibuild
+
+-------------------------------------------------------------------
 Fri Jun 30 16:51:18 UTC 2023 - dmueller@suse.com
 
 - Update to version 0.31:
