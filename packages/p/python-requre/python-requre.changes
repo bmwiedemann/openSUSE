@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 17 07:00:01 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove BuildRequires on setuptools_scm_git_archive.
+- Switch to pyproject macros.
+- Add missing Requires on update-alternatives.
+- Stop using greedy globs in %files.
+
+-------------------------------------------------------------------
 Mon Jun 20 06:04:36 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.8.2:

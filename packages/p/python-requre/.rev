@@ -28,4 +28,15 @@
 - Add GitPython to {Build,}Requires</comment>
     <requestid>983847</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e6d859aa48b71165d286204cbb7fa925</srcmd5>
+    <version>0.8.2</version>
+    <time>1689710114</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove BuildRequires on setuptools_scm_git_archive.
+- Switch to pyproject macros.
+- Add missing Requires on update-alternatives.
+- Stop using greedy globs in %files.</comment>
+    <requestid>1099033</requestid>
+  </revision>
 </revisionlist>
