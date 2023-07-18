@@ -10,9 +10,9 @@ that we can see more important warnings.
 
 --- a/CMake/unix_config.cmake
 +++ b/CMake/unix_config.cmake
-@@ -2,8 +2,8 @@ message(STATUS "Setting Unix configurati
+@@ -10,8 +10,8 @@ macro(os_set_flags)
+     #set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_BUILD_TYPE})
  
- macro(os_set_flags)
      set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 -    set(CMAKE_C_FLAGS   "${CMAKE_C_FLAGS}   -pedantic -g -D_DEFAULT_SOURCE")
 -    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pedantic -g -Wno-missing-field-initializers")
