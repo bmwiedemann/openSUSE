@@ -25,6 +25,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://pycodestyle.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/p/pycodestyle/pycodestyle-%{version}.tar.gz
+Patch01:        testsuite_fixes.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes

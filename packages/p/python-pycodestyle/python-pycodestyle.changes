@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 18 11:27:38 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Add patch to fix testsuite with python 3.11.4 and 3.12
+  testsuite_fixes.patch 
+
+-------------------------------------------------------------------
 Tue May  9 05:08:31 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons
