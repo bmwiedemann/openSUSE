@@ -17,7 +17,7 @@
 
 
 Name:           kompose
-Version:        1.28.0
+Version:        1.30.0
 Release:        0
 Summary:        Go from Docker Compose to Kubernetes
 License:        Apache-2.0
@@ -27,8 +27,7 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  golang-packaging
-# kompose README says go 1.6, but vendored apimachinery requires 1.13 to build
-BuildRequires:  golang(API) >= 1.13
+BuildRequires:  golang(API) >= 1.18
 # necessary for SLE15, Leap 15, Tumbleweed and some archs (no problem for other releases as well)
 BuildRequires:  python3-PyYAML
 #!BuildIgnore:  python2-PyYAML
