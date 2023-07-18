@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon Jul 17 07:08:41 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 3.10.7.0
+  * Runtime
+    + Setting the minimum buffer size should have the desired
+      effect now, and not be overwritten. NOTE: the value returned
+      by min_buffer_size() is not intended to indicate the actual
+      buffer size. Header Payload Demod was the only block
+      attempting to use this value, and was corrected.
+    + Use a set to store thread group (more efficient)
+    + Message Debug can now output via the logging system
+    + The field prefs.singleton is no longer externally exposed
+      (was unintentional)
+    + PMT dict can be generated more easily using pmt::dict_from_mapping()
+  * GRC
+    + Save changes under all exit conditions (a couple were
+      previously missed)
+    + Prevent silent Generate/Run failures for unsaved flowgraphs
+  * gr-analog
+    + C++ code generation for Quadrature Demod
+    + Add max_gain parameter for AGC
+  * gr-blocks
+    + Probe Rate adds a name parameter, for clearer logging
+    + Selector has a new "sync" more that consumes the same number
+      of items from all inputs. Default is now to consume as many
+      items as possible from the active input, and no more than
+      that many items from other inputs. The previous behavior was,
+      well, broken.
+    + Throttle reset item count on restart, to avoid long delays
+  * gr-digital
+    + Constellation Encoder and Decoder: constellation can be
+      changed at runtime
+  * gr-filter
+    + Filter design tool: multiple improvements in bounds checking
+      and exception handling
+    + Filter design tool: update QMessageBox to work in Qt5
+  * gr-network
+    + Multiple memory management errors fixed in UDP Source/Sink
+      and TCP Sink
+  * gr-soapy
+    + Better AGC and gain behavior in RTL, AirspyHF and SDRPlay
+      blocks
+    + Support bias controls in RTL and SDRPlay blocks
+  * gr-uhd
+    + Remove possibility of infinite recursion for network
+      overruns
+    + Support fmtlib v10
+    + RFNoC: bindings and block yml for Vector IIR, Replay and
+      Log Power blocks
+    + RFNoC: add S16 format to RX Streamer
+  * gr-vocoder
+    + Support additional codec2 modes
+  * Modtool
+    + Don't override user-defined CMAKE_INSTALL_PREFIX
+
+-------------------------------------------------------------------
 Sun Apr 30 07:55:28 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Enable lto for arm 

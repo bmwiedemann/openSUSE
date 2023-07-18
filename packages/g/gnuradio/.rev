@@ -541,4 +541,12 @@
     <comment>- Enable lto for arm</comment>
     <requestid>1083720</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>de0c0241c3f2c6e70c30dea7e1cc3c03</srcmd5>
+    <version>3.10.7.0</version>
+    <time>1689710895</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1099189</requestid>
+  </revision>
 </revisionlist>
