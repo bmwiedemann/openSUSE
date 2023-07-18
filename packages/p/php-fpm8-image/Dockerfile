@@ -1,0 +1,65 @@
+# SPDX-License-Identifier: MIT
+#!BuildTag: opensuse/bci/php-fpm:8
+#!BuildTag: opensuse/bci/php-fpm:8-%RELEASE%
+
+FROM opensuse/tumbleweed:latest
+
+MAINTAINER openSUSE (https://www.opensuse.org/)
+
+# Define labels according to https://en.opensuse.org/Building_derived_containers
+# labelprefix=org.opensuse.bci.php-fpm
+LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI PHP-FPM 8"
+LABEL org.opencontainers.image.description="PHP-FPM 8 container based on the openSUSE Tumbleweed Base Container Image."
+LABEL org.opencontainers.image.version="8"
+LABEL org.opencontainers.image.url="https://www.opensuse.org"
+LABEL org.opencontainers.image.created="%BUILDTIME%"
+LABEL org.opencontainers.image.vendor="openSUSE Project"
+LABEL org.opencontainers.image.source="%SOURCEURL%"
+LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bci/php-fpm:8-%RELEASE%"
+LABEL org.openbuildservice.disturl="%DISTURL%"
+LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime"
+LABEL org.opensuse.release-stage="released"
+
+# endlabelprefix
+
+RUN set -euo pipefail; zypper -n in php8 php8-cli php-composer2 php8-curl php8-zip php8-zlib php8-phar php8-mbstring php8-fpm; zypper -n clean; rm -rf /var/log/*
+ENV PHP_VERSION="%%php_version%%"
+ENV PHP_INI_DIR="/etc/php8/"
+ENV PHPIZE_DEPS="php8-devel awk make"
+ENV COMPOSER_VERSION="%%composer_version%%"
+
+ENTRYPOINT ["docker-php-entrypoint"]
+CMD ["php-fpm"]
+COPY docker-php-source docker-php-entrypoint docker-php-ext-configure docker-php-ext-enable docker-php-ext-install /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-php-*
+WORKDIR /srv/www/htdocs
+
+RUN set -euo pipefail; \
+	cd /etc/php8/fpm/; \
+        test -e php-fpm.d/www.conf.default && cp -p php-fpm.d/www.conf.default php-fpm.d/www.conf; \
+        test -e php-fpm.conf.default && cp -p php-fpm.conf.default php-fpm.conf; \
+	{ \
+		echo '[global]'; \
+		echo 'error_log = /proc/self/fd/2'; \
+		echo; echo '; https://github.com/docker-library/php/pull/725#issuecomment-443540114'; echo 'log_limit = 8192'; \
+		echo; \
+		echo '[www]'; \
+		echo '; if we send this to /proc/self/fd/1, it never appears'; \
+		echo 'access.log = /proc/self/fd/2'; \
+		echo; \
+		echo 'clear_env = no'; \
+		echo; \
+		echo '; Ensure worker stdout and stderr are sent to the main error log.'; \
+		echo 'catch_workers_output = yes'; \
+		echo 'decorate_workers_output = no'; \
+	} | tee php-fpm.d/docker.conf; \
+	{ \
+		echo '[global]'; \
+		echo 'daemonize = no'; \
+	} | tee php-fpm.d/zz-docker.conf
+
+# Override stop signal to stop process gracefully
+# https://github.com/php/php-src/blob/17baa87faddc2550def3ae7314236826bc1b1398/sapi/fpm/php-fpm.8.in#L163
+STOPSIGNAL SIGQUIT
+
+EXPOSE 9000
