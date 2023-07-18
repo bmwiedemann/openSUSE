@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  7 09:47:33 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update servant to version 0.19.1 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:08:12 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
