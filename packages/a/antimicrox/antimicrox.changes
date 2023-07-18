@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul  7 16:20:20 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.3.4
+  * Update translations: Portugese(Brazil), Russian,
+    Norwegian Bokmal
+  * Add translations: Swedish
+  * Fix and refactor adding default autoprofile
+  * Fix GUI does not recognize super + action
+  * Fix /dev/uinput static device node access pull
+  * Fix building for SDL version between 2.0.12 and 2.0.16
+
+-------------------------------------------------------------------
 Mon Jan 30 19:53:38 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.3.3
