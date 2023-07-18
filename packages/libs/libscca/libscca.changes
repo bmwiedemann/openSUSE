@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul 16 13:40:13 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20230716
+  * Unspecified updates to format support and Python bindings
+
+-------------------------------------------------------------------
 Tue Jan  3 15:57:49 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add missing Require on libbfio-devel.
