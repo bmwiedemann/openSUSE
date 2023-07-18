@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 18 04:49:52 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.64.1:
+  * Pass correct output file (#1391)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.4.7 to
+    0.4.8 (#1389)
+  * Port UI to bubbletea (#1385)
+
+-------------------------------------------------------------------
 Fri Jul 14 05:26:47 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.64.0:

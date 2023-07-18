@@ -19,7 +19,7 @@
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 
 Name:           grype
-Version:        0.64.0
+Version:        0.64.1
 Release:        0
 Summary:        A vulnerability scanner for container images and filesystems
 License:        Apache-2.0
@@ -42,7 +42,7 @@ go build \
    -mod=vendor \
    -buildmode=pie \
    -ldflags="-X github.com/anchore/grype/internal/version.version=%{version} -X github.com/anchore/grype/internal/version.buildDate=$BUILD_DATE" \
-   -o bin/grype .
+   -o bin/grype ./cmd/grype/
 
 %install
 # Install the binary.
