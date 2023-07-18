@@ -1,7 +1,7 @@
 #
 # spec file for package duperemove
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define samename btrfs-extent-same
 Name:           duperemove
-Version:        0.11.3
+Version:        0.12
 Release:        0
 Summary:        Software to find duplicate extents in files and remove them
 License:        GPL-2.0-only
@@ -58,15 +58,15 @@ make %{?_smp_mflags} CFLAGS="%{optflags} -fcommon"
 
 %files -n %{samename}
 %defattr(-, root, root)
-%{_sbindir}/%{samename}
+%{_bindir}/%{samename}
 %{_mandir}/man?/%{samename}.8%{ext_man}
 
 %files
 %defattr(-, root, root)
 %doc LICENSE README.md
-%{_sbindir}/duperemove
-%{_sbindir}/hashstats
-%{_sbindir}/show-shared-extents
+%{_bindir}/duperemove
+%{_bindir}/hashstats
+%{_bindir}/show-shared-extents
 %{_mandir}/man?/%{name}.8%{ext_man}
 %{_mandir}/man?/hashstats.8%{ext_man}
 %{_mandir}/man?/show-shared-extents.8%{ext_man}
