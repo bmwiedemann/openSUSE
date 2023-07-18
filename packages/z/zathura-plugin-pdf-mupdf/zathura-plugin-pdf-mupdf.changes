@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jul 15 22:25:26 UTC 2023 - llyyr <llyyr.public@gmail.com>
+
+- Fix build by adding libcurl to BuildRequires
+
+-------------------------------------------------------------------
 Sat Mar 11 09:38:14 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Allow build on leap 15.5

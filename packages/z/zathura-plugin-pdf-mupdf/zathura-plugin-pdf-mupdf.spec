@@ -39,6 +39,7 @@ BuildRequires:  pkgconfig(jbig2dec)
 BuildRequires:  jbig2dec-devel
 %endif
 BuildRequires:  pkgconfig(lept)
+BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(mujs)
