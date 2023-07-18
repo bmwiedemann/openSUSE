@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1092056</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>00730bf17e6b39c01065c9f7d183d9a7</srcmd5>
+    <version>1.6.4</version>
+    <time>1689710052</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.4:
+  * Allow to override build date with SOURCE_DATE_EPOCH
+  * l10n: Update translations</comment>
+    <requestid>1098942</requestid>
+  </revision>
 </revisionlist>

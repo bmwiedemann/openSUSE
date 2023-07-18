@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul 16 12:05:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.4:
+  * Allow to override build date with SOURCE_DATE_EPOCH
+  * l10n: Update translations
+
+-------------------------------------------------------------------
 Sat Jun 10 17:58:10 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Update to version 1.6.3:
