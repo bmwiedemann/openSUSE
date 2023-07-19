@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-ipdb
 Version:        0.13.13
 Release:        0

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 19 05:58:50 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Sun Mar 19 16:27:57 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.13.13
