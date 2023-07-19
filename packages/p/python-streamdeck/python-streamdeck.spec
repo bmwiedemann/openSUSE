@@ -29,6 +29,7 @@ BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+Requires:       libhidapi-libusb0
 %python_subpackages
 
 %description
