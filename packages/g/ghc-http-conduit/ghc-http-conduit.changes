@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 17 23:04:32 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update http-conduit to version 2.3.8.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Fri Jun  9 08:19:08 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update http-conduit to version 2.3.8.2.
