@@ -25,7 +25,7 @@ LABEL org.opensuse.release-stage="released"
 
 # endlabelprefix
 
-RUN set -euo pipefail; zypper -n in --no-recommends postgresql15-server distribution-release; zypper -n clean; rm -rf /var/log/*
+RUN set -euo pipefail; zypper -n in --no-recommends postgresql15-server; zypper -n clean; rm -rf /var/log/*
 ENV LANG="en_US.utf8"
 ENV PG_MAJOR="15"
 ENV PG_VERSION="%%pg_version%%"
