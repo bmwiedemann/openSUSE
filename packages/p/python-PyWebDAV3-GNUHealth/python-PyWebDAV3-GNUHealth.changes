@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 15 06:21:23 UTC 2023 - Axel Braun <axel.braun@gmx.de>
+
+- version 0.12.0
+  * Include version and README.rst in MANIFEST.in
+  * Fix encoding issues in Thunderbird
+  * Enforce str - utf8, not Bytes
+
+-------------------------------------------------------------------
 Thu Nov 22 20:57:50 UTC 2018 - Axel Braun <axel.braun@gmx.de>
 
 - vewrsion 0.10.3

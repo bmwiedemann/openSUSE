@@ -15,4 +15,16 @@
     <comment></comment>
     <requestid>651226</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7d78491d8f46ba0fbbef65a00a6eb8f1</srcmd5>
+    <version>0.12.0</version>
+    <time>1689786618</time>
+    <user>anag+factory</user>
+    <comment>- version 0.12.0
+  * Include version and README.rst in MANIFEST.in
+  * Fix encoding issues in Thunderbird
+  * Enforce str - utf8, not Bytes
+</comment>
+    <requestid>1099338</requestid>
+  </revision>
 </revisionlist>

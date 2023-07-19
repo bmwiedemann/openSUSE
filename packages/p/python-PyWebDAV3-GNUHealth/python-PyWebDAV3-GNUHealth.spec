@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyWebDAV3-GNUHealth
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,13 @@
 %define         skip_python2 1
 %bcond_without  test
 Name:           python-PyWebDAV3-GNUHealth
-Version:        0.10.3
+Version:        0.12.0
 Release:        0
 %define ltmsver 0.13
 Summary:        WebDAV library for Python - GNU Health port
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Web/Servers
-Url:            http://health.gnu.org
+URL:            https://health.gnu.org
 Source0:        https://files.pythonhosted.org/packages/source/P/PyWebDAV3-GNUHealth/PyWebDAV3-GNUHealth-%{version}.tar.gz
 Source1:        http://www.webdav.org/neon/litmus/litmus-%{ltmsver}.tar.gz
 BuildRequires:  %{python_module devel}
@@ -43,8 +43,8 @@ Obsoletes:      %{oldpython}-PyWebDAV < %{version}
 Provides:       %{oldpython}-PyWebDAV = %{version}
 %endif
 BuildArch:      noarch
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 
 %python_subpackages
 
@@ -91,7 +91,8 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/py
 
 %files %{python_files}
 %defattr(-,root,root,-)
-%doc README doc/Changes doc/LICENSE doc/TODO
+%license doc/LICENSE
+%doc README.rst doc/Changes doc/TODO
 %python_alternative %{_bindir}/davserver
 %{python_sitelib}/*
 
