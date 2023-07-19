@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul 16 18:47:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.2:
+  * Fixed #269, Decoding doesn't work when compiled with mingw64.
+
+-------------------------------------------------------------------
 Thu Jan  5 19:11:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.1:

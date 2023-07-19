@@ -18,7 +18,7 @@
 
 %define so_ver 2
 Name:           CharLS
-Version:        2.4.1
+Version:        2.4.2
 Release:        0
 Summary:        A JPEG-LS library
 License:        BSD-3-Clause
