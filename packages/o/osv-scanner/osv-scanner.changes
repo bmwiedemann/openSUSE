@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul 19 06:29:55 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.3.6:
+  * Prepare for v1.3.6 Release (#447)
+  * Adjusting GitHub actions (#446)
+  * chore(deps): update dependency jekyll-feed to v0.17.0 (#438)
+  * go.mod: upgrade to golang.org/x/vuln@v1.0.0 (#443)
+  * Fix PURLToPackage function and move it (#439)
+  * Update README.md (#440)
+  * chore(deps): update dependency jekyll-feed to v0.17.0 (#422)
+  * chore(deps): update workflows (#429)
+  * fix(deps): update osv-scanner minor (#430)
+  * update govulncheck integration (#431)
+
+-------------------------------------------------------------------
 Wed Jun 28 06:19:46 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.3.5:
