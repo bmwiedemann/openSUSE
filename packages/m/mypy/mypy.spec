@@ -19,11 +19,11 @@
 %{?sle15_python_module_pythons}
 %bcond_without test
 %define skip_python2 1
-%define typed_ast_version 1.5.8.6
-%define types_psutil_version 5.9.5.12
-%define types_setuptools_version 67.7.0.1
+%define typed_ast_version 1.5.8.7
+%define types_psutil_version 5.9.5.15
+%define types_setuptools_version 68.0.0.2
 Name:           mypy
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT
@@ -143,7 +143,9 @@ fi
 donttest+=" or teststubtest"
 # gh#python/mypy#15221
 donttest+=" or testMathOps or testFloatOps"
-%pytest -n auto -k "not (testallexcept ${donttest} ${$python_donttest})"
+# fails on Python 3.11.4, see gh#python/mypy#15446. Patch db5b5af1201fff03465b0684d16b6489a62a3d78 does not apply clean, better wait for a new upstream version
+donttest+=" or PEP561Suite"
+%pytest -n auto -k "not (testallexcept ${donttest} ${$python_donttest})" -x
 %endif
 
 %post

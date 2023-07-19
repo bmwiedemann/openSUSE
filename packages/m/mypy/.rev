@@ -548,4 +548,14 @@
 </comment>
     <requestid>1094247</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>0857326a210867668293fbdb907e445d</srcmd5>
+    <version>1.4.1</version>
+    <time>1689786647</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.4.1
+- disable pep561 tests, as they fail on Python 3.11.4, see https://github.com/python/mypy/issues/15446
+</comment>
+    <requestid>1099368</requestid>
+  </revision>
 </revisionlist>
