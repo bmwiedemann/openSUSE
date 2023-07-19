@@ -33,6 +33,7 @@ Patch1:         libyajl-optflags.patch
 Patch2:         libyajl-lib_suffix.patch
 Patch3:         libyajl-pkgconfig.patch
 Patch4:         libyajl-CVE-2022-24795.patch
+Patch5:         libyajl-CVE-2023-33460.patch
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  doxygen

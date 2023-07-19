@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul  7 21:27:27 UTC 2023 - James Fehlig <jfehlig@suse.com>
+
+- add libyajl-CVE-2023-33460.patch (CVE-2023-33460, bsc#1212928)
+
+-------------------------------------------------------------------
 Mon May 22 21:27:50 UTC 2023 - Jiri Srain <jsrain@suse.com> 
 
 - update the upstream source URL
