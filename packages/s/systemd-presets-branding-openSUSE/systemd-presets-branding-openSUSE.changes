@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 21 21:07:11 UTC 2023 - James Fehlig <jfehlig@suse.com>
+
+- enable the various libvirt modular daemons (boo#1212195)
+
+-------------------------------------------------------------------
 Fri Jun  2 10:21:17 UTC 2023 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - fix drkonqi entry, should end with .service
