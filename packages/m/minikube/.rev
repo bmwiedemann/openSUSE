@@ -619,4 +619,26 @@
   * Mark VMware driver as unsupported  #16233</comment>
     <requestid>1077453</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>8bafd7c32b28a4dcc3c6ef529fe3badd</srcmd5>
+    <version>1.31.0</version>
+    <time>1689786623</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.31.0:
+  * Add back VMware driver support #16796
+  * `docker-env` supports the containerd runtime (experimental)
+    #15452 #16761
+  * Automatically renew expired kubeadm certs #16249
+  * New addon inspektor-gadget #15869
+  * Major Improvements:
+  * VM drivers: Fix all images getting removed on stop/start (40%
+    start speedup) #16655
+  * Addon registry: Add support for all architectures #16577
+  * QEMU: Fix failing to interact with cluster after upgrading
+    QEMU version #16853
+  * macOS/QEMU: Auto unblock bootpd from firewall if blocking
+    socket_vmnet network #16714 #16789
+  * `minikube cp` supports providing directory as a target #15519</comment>
+    <requestid>1099341</requestid>
+  </revision>
 </revisionlist>
