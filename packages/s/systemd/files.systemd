@@ -3,9 +3,7 @@
 #
 %config(noreplace) %{_sysconfdir}/systemd/journald.conf
 %config(noreplace) %{_sysconfdir}/systemd/logind.conf
-%config(noreplace) %{_sysconfdir}/systemd/sleep.conf
 %config(noreplace) %{_sysconfdir}/systemd/system.conf
-%config(noreplace) %{_sysconfdir}/systemd/timesyncd.conf
 %config(noreplace) %{_sysconfdir}/systemd/user.conf
 %dir %{_binfmtdir}
 %if %{without bootstrap}
@@ -48,7 +46,6 @@
 %dir %{_systemd_util_dir}/rpm
 %dir %{_systemd_util_dir}/system-preset
 %dir %{_systemd_util_dir}/system-shutdown
-%dir %{_systemd_util_dir}/system-sleep
 %dir %{_systemd_util_dir}/user
 %dir %{_systemd_util_dir}/user-generators
 %dir %{_systemd_util_dir}/user-preset
@@ -85,11 +82,9 @@
 %doc %{_tmpfilesdir}/README
 %exclude %{_sysconfdir}/sysctl.conf
 %ghost %attr(0444,root,root) %config(noreplace) %{_sysconfdir}/machine-id
-%ghost %attr(0600,root,root) %{_localstatedir}/lib/systemd/random-seed
 %ghost %config(noreplace) %{_sysconfdir}/X11/xorg.conf.d/00-keyboard.conf
 %ghost %config(noreplace) %{_sysconfdir}/locale.conf
 %ghost %config(noreplace) %{_sysconfdir}/machine-info
-%ghost %config(noreplace) %{_sysconfdir}/vconsole.conf
 %ghost %dir %attr(2755, root, systemd-journal) %{_localstatedir}/log/journal
 %ghost %{_localstatedir}/lib/systemd/catalog/database
 %license LICENSE.GPL2
@@ -177,20 +172,17 @@
 %{_datadir}/dbus-1/system-services/org.freedesktop.login1.service
 %{_datadir}/dbus-1/system-services/org.freedesktop.systemd1.service
 %{_datadir}/dbus-1/system-services/org.freedesktop.timedate1.service
-%{_datadir}/dbus-1/system-services/org.freedesktop.timesync1.service
 %{_datadir}/dbus-1/system.d/org.freedesktop.hostname1.conf
 %{_datadir}/dbus-1/system.d/org.freedesktop.locale1.conf
 %{_datadir}/dbus-1/system.d/org.freedesktop.login1.conf
 %{_datadir}/dbus-1/system.d/org.freedesktop.systemd1.conf
 %{_datadir}/dbus-1/system.d/org.freedesktop.timedate1.conf
-%{_datadir}/dbus-1/system.d/org.freedesktop.timesync1.conf
 %{_datadir}/pkgconfig/systemd.pc
 %{_datadir}/polkit-1/actions/org.freedesktop.hostname1.policy
 %{_datadir}/polkit-1/actions/org.freedesktop.locale1.policy
 %{_datadir}/polkit-1/actions/org.freedesktop.login1.policy
 %{_datadir}/polkit-1/actions/org.freedesktop.systemd1.policy
 %{_datadir}/polkit-1/actions/org.freedesktop.timedate1.policy
-%{_datadir}/polkit-1/actions/org.freedesktop.timesync1.policy
 %{_datadir}/systemd/kbd-model-map
 %{_datadir}/systemd/language-fallback-map
 %if %{without bootstrap}
@@ -292,10 +284,8 @@
 %{_mandir}/man5/org.freedesktop.systemd1.5.gz
 %{_mandir}/man5/org.freedesktop.timedate1.5.gz
 %{_mandir}/man5/os-release.5.gz
-%{_mandir}/man5/sleep.conf.d.5.gz
 %{_mandir}/man5/sysctl.d.5.gz
 %{_mandir}/man5/system.conf.d.5.gz
-%{_mandir}/man5/systemd-sleep.conf.5.gz
 %{_mandir}/man5/systemd-system.conf.5.gz
 %{_mandir}/man5/systemd-user-runtime-dir.5.gz
 %{_mandir}/man5/systemd-user.conf.5.gz
@@ -321,13 +311,10 @@
 %{_mandir}/man5/systemd.timer.5.gz
 %{_mandir}/man5/systemd.unit.5.gz
 %{_mandir}/man5/sysusers.d.5.gz
-%{_mandir}/man5/timesyncd.conf.5.gz
-%{_mandir}/man5/timesyncd.conf.d.5.gz
 %{_mandir}/man5/tmpfiles.d.5.gz
 %{_mandir}/man5/user-runtime-dir@.service.5.gz
 %{_mandir}/man5/user.conf.d.5.gz
 %{_mandir}/man5/user@.service.5.gz
-%{_mandir}/man5/vconsole.conf.5.gz
 %{_mandir}/man7/bootup.7.gz
 %{_mandir}/man7/daemon.7.gz
 %{_mandir}/man7/file-hierarchy.7.gz
@@ -365,13 +352,8 @@
 %{_mandir}/man8/systemd-environment-d-generator.8.gz
 %{_mandir}/man8/systemd-getty-generator.8.gz
 %{_mandir}/man8/systemd-halt.service.8.gz
-%{_mandir}/man8/systemd-hibernate-resume-generator.8.gz
-%{_mandir}/man8/systemd-hibernate-resume.8.gz
-%{_mandir}/man8/systemd-hibernate-resume@.service.8.gz
-%{_mandir}/man8/systemd-hibernate.service.8.gz
 %{_mandir}/man8/systemd-hostnamed.8.gz
 %{_mandir}/man8/systemd-hostnamed.service.8.gz
-%{_mandir}/man8/systemd-hybrid-sleep.service.8.gz
 %{_mandir}/man8/systemd-journald-audit.socket.8.gz
 %{_mandir}/man8/systemd-journald-dev-log.socket.8.gz
 %{_mandir}/man8/systemd-journald-varlink@.socket.8.gz
@@ -386,21 +368,11 @@
 %{_mandir}/man8/systemd-logind.8.gz
 %{_mandir}/man8/systemd-logind.service.8.gz
 %{_mandir}/man8/systemd-machine-id-commit.service.8.gz
-%{_mandir}/man8/systemd-mkswap@.service.8.gz
 %{_mandir}/man8/systemd-poweroff.service.8.gz
-%{_mandir}/man8/systemd-quotacheck.8.gz
-%{_mandir}/man8/systemd-quotacheck.service.8.gz
-%{_mandir}/man8/systemd-random-seed.8.gz
-%{_mandir}/man8/systemd-random-seed.service.8.gz
 %{_mandir}/man8/systemd-reboot.service.8.gz
-%{_mandir}/man8/systemd-remount-fs.8.gz
-%{_mandir}/man8/systemd-remount-fs.service.8.gz
 %{_mandir}/man8/systemd-run-generator.8.gz
 %{_mandir}/man8/systemd-shutdown.8.gz
-%{_mandir}/man8/systemd-sleep.8.gz
 %{_mandir}/man8/systemd-socket-proxyd.8.gz
-%{_mandir}/man8/systemd-suspend-then-hibernate.service.8.gz
-%{_mandir}/man8/systemd-suspend.service.8.gz
 %{_mandir}/man8/systemd-sysctl.8.gz
 %{_mandir}/man8/systemd-sysctl.service.8.gz
 %{_mandir}/man8/systemd-sysext.8.gz
@@ -412,8 +384,6 @@
 %{_mandir}/man8/systemd-time-wait-sync.service.8.gz
 %{_mandir}/man8/systemd-timedated.8.gz
 %{_mandir}/man8/systemd-timedated.service.8.gz
-%{_mandir}/man8/systemd-timesyncd.8.gz
-%{_mandir}/man8/systemd-timesyncd.service.8.gz
 %{_mandir}/man8/systemd-tmpfiles-clean.service.8.gz
 %{_mandir}/man8/systemd-tmpfiles-clean.timer.8.gz
 %{_mandir}/man8/systemd-tmpfiles-setup.service.8.gz
@@ -424,8 +394,6 @@
 %{_mandir}/man8/systemd-update-utmp.service.8.gz
 %{_mandir}/man8/systemd-user-sessions.8.gz
 %{_mandir}/man8/systemd-user-sessions.service.8.gz
-%{_mandir}/man8/systemd-vconsole-setup.8.gz
-%{_mandir}/man8/systemd-vconsole-setup.service.8.gz
 %{_mandir}/man8/systemd-xdg-autostart-generator.8.gz
 %endif
 %{_modprobedir}/systemd.conf
@@ -439,37 +407,29 @@
 %{_sysconfdir}/xdg/systemd/user
 %{_sysctldir}/99-sysctl.conf
 %{_systemd_user_env_generator_dir}/30-systemd-environment-d-generator
-%{_systemd_util_dir}/ntp-units.d/80-systemd-timesync.list
 %{_systemd_util_dir}/rpm/fixlet-systemd-post.sh
 %{_systemd_util_dir}/system-preset/99-default.preset
 %{_systemd_util_dir}/systemd
 %{_systemd_util_dir}/systemd-binfmt
 %{_systemd_util_dir}/systemd-boot-check-no-failures
 %{_systemd_util_dir}/systemd-cgroups-agent
-%{_systemd_util_dir}/systemd-hibernate-resume
 %{_systemd_util_dir}/systemd-hostnamed
 %{_systemd_util_dir}/systemd-journald
 %{_systemd_util_dir}/systemd-localed
 %{_systemd_util_dir}/systemd-logind
-%{_systemd_util_dir}/systemd-quotacheck
-%{_systemd_util_dir}/systemd-random-seed
-%{_systemd_util_dir}/systemd-remount-fs
 %{_systemd_util_dir}/systemd-reply-password
 %{_systemd_util_dir}/systemd-shutdown
-%{_systemd_util_dir}/systemd-sleep
 %{_systemd_util_dir}/systemd-socket-proxyd
 %{_systemd_util_dir}/systemd-sulogin-shell
 %{_systemd_util_dir}/systemd-sysctl
 %{_systemd_util_dir}/systemd-sysroot-fstab-check
 %{_systemd_util_dir}/systemd-time-wait-sync
 %{_systemd_util_dir}/systemd-timedated
-%{_systemd_util_dir}/systemd-timesyncd
 %{_systemd_util_dir}/systemd-update-done
 %{_systemd_util_dir}/systemd-update-helper
 %{_systemd_util_dir}/systemd-update-utmp
 %{_systemd_util_dir}/systemd-user-runtime-dir
 %{_systemd_util_dir}/systemd-user-sessions
-%{_systemd_util_dir}/systemd-vconsole-setup
 %{_systemd_util_dir}/systemd-xdg-autostart-condition
 %{_systemd_util_dir}/user-generators/systemd-xdg-autostart-generator
 %{_systemd_util_dir}/user-preset/90-systemd.preset
@@ -497,11 +457,9 @@
 %{_systemd_util_dir}/user/xdg-desktop-autostart.target
 %{_systemdgeneratordir}/systemd-debug-generator
 %{_systemdgeneratordir}/systemd-getty-generator
-%{_systemdgeneratordir}/systemd-hibernate-resume-generator
 %{_systemdgeneratordir}/systemd-run-generator
 %{_systemdgeneratordir}/systemd-system-update-generator
 %{_sysusersdir}/systemd-journal.conf
-%{_sysusersdir}/systemd-timesync.conf
 %{_tmpfilesdir}/credstore.conf
 %{_tmpfilesdir}/journal-nocow.conf
 %{_tmpfilesdir}/provision.conf
@@ -542,8 +500,6 @@
 %{_unitdir}/getty@.service
 %{_unitdir}/graphical.target
 %{_unitdir}/halt.target
-%{_unitdir}/hibernate.target
-%{_unitdir}/hybrid-sleep.target
 %{_unitdir}/initrd-cleanup.service
 %{_unitdir}/initrd-fs.target
 %{_unitdir}/initrd-parse-etc.service
@@ -583,15 +539,12 @@
 %{_unitdir}/serial-getty@.service
 %{_unitdir}/shutdown.target
 %{_unitdir}/sigpwr.target
-%{_unitdir}/sleep.target
 %{_unitdir}/slices.target
 %{_unitdir}/smartcard.target
 %{_unitdir}/sockets.target
 %{_unitdir}/sockets.target.wants/systemd-journald-dev-log.socket
 %{_unitdir}/sockets.target.wants/systemd-journald.socket
 %{_unitdir}/sound.target
-%{_unitdir}/suspend-then-hibernate.target
-%{_unitdir}/suspend.target
 %{_unitdir}/swap.target
 %{_unitdir}/sys-fs-fuse-connections.mount
 %{_unitdir}/sys-kernel-config.mount
@@ -612,7 +565,6 @@
 %{_unitdir}/sysinit.target.wants/systemd-journal-flush.service
 %{_unitdir}/sysinit.target.wants/systemd-journald.service
 %{_unitdir}/sysinit.target.wants/systemd-machine-id-commit.service
-%{_unitdir}/sysinit.target.wants/systemd-random-seed.service
 %{_unitdir}/sysinit.target.wants/systemd-sysctl.service
 %{_unitdir}/sysinit.target.wants/systemd-sysusers.service
 %{_unitdir}/sysinit.target.wants/systemd-tmpfiles-setup.service
@@ -630,10 +582,7 @@
 %{_unitdir}/systemd-boot-check-no-failures.service
 %{_unitdir}/systemd-exit.service
 %{_unitdir}/systemd-halt.service
-%{_unitdir}/systemd-hibernate-resume@.service
-%{_unitdir}/systemd-hibernate.service
 %{_unitdir}/systemd-hostnamed.service
-%{_unitdir}/systemd-hybrid-sleep.service
 %{_unitdir}/systemd-journal-catalog-update.service
 %{_unitdir}/systemd-journal-flush.service
 %{_unitdir}/systemd-journald-audit.socket
@@ -648,25 +597,17 @@
 %{_unitdir}/systemd-logind.service
 %{_unitdir}/systemd-machine-id-commit.service
 %{_unitdir}/systemd-poweroff.service
-%{_unitdir}/systemd-quotacheck.service
-%{_unitdir}/systemd-random-seed.service
-%{_unitdir}/systemd-reboot.service
-%{_unitdir}/systemd-remount-fs.service
-%{_unitdir}/systemd-suspend-then-hibernate.service
-%{_unitdir}/systemd-suspend.service
 %{_unitdir}/systemd-sysctl.service
 %{_unitdir}/systemd-sysext.service
 %{_unitdir}/systemd-sysusers.service
 %{_unitdir}/systemd-time-wait-sync.service
 %{_unitdir}/systemd-timedated.service
-%{_unitdir}/systemd-timesyncd.service
 %{_unitdir}/systemd-tmpfiles-clean.service
 %{_unitdir}/systemd-tmpfiles-clean.timer
 %{_unitdir}/systemd-tmpfiles-setup.service
 %{_unitdir}/systemd-update-done.service
 %{_unitdir}/systemd-update-utmp.service
 %{_unitdir}/systemd-user-sessions.service
-%{_unitdir}/systemd-vconsole-setup.service
 %{_unitdir}/time-set.target
 %{_unitdir}/time-sync.target
 %{_unitdir}/timers.target

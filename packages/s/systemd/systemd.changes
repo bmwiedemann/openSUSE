@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jul 18 08:54:44 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Import commit 2dac0aff9ced1eca0cd11c24e264b33095ee5a5e (merge of v253.7)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/6458c066547eaadf0e9709e441ea36ad03faa860...2dac0aff9ced1eca0cd11c24e264b33095ee5a5e
+
+-------------------------------------------------------------------
+Tue Jul 11 13:32:04 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Import commit 6458c066547eaadf0e9709e441ea36ad03faa860 (merge of v253.6)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/07bb12a282b0ea378850934c4a76008b448b8bad...6458c066547eaadf0e9709e441ea36ad03faa860
+
+- Drop 5002-Revert-core-service-when-resetting-PID-also-reset-kn.patch, it's
+  been backported to v253.6.
+
+-------------------------------------------------------------------
+Tue Jul 11 12:56:59 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Move a bunch of files from systemd to udev. These are pretty useless without
+  block devices.
+
+-------------------------------------------------------------------
 Mon Jul  3 15:16:38 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Split off sd-boot into separate "systemd-boot" subpackage
@@ -811,6 +836,7 @@ Wed Jun  1 07:20:05 UTC 2022 - Franck Bui <fbui@suse.com>
   This includes the following bug fixes:
 
     - upstream commit e6b169418369abbc88c8f622e02e1d704a23d4ef (bsc#1137373 bsc#1181658 bsc#1194708 bsc#1195157 bsc#1197570)
+    - upstream commit 3a3b022d2cc112803ea7b9beea98bbcad110368a (bsc#1212434)
 
   * Rebased 0001-conf-parser-introduce-early-drop-ins.patch
 

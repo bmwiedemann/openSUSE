@@ -6692,4 +6692,25 @@ handle manual pages that consist only of a .so directive such as
     <comment>- Split off sd-boot into separate &quot;systemd-boot&quot; subpackage</comment>
     <requestid>1096633</requestid>
   </revision>
+  <revision rev="397" vrev="1">
+    <srcmd5>34ca57d1ae4ec90c9d8f4678d67d4fa0</srcmd5>
+    <version>253.7</version>
+    <time>1689786610</time>
+    <user>anag+factory</user>
+    <comment>- Import commit 2dac0aff9ced1eca0cd11c24e264b33095ee5a5e (merge of v253.7)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/6458c066547eaadf0e9709e441ea36ad03faa860...2dac0aff9ced1eca0cd11c24e264b33095ee5a5e
+
+- Import commit 6458c066547eaadf0e9709e441ea36ad03faa860 (merge of v253.6)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/07bb12a282b0ea378850934c4a76008b448b8bad...6458c066547eaadf0e9709e441ea36ad03faa860
+- Drop 5002-Revert-core-service-when-resetting-PID-also-reset-kn.patch, it's
+  been backported to v253.6.
+
+- Move a bunch of files from systemd to udev. These are pretty useless without
+  block devices.
+
+    - upstream commit 3a3b022d2cc112803ea7b9beea98bbcad110368a (bsc#1212434)</comment>
+    <requestid>1099230</requestid>
+  </revision>
 </revisionlist>
