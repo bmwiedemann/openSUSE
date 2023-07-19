@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-ogr
 Version:        0.45.0
 Release:        0
@@ -25,9 +23,11 @@ Summary:        One API for multiple git forges
 License:        MIT
 URL:            https://github.com/packit-service/ogr
 Source:         https://files.pythonhosted.org/packages/source/o/ogr/ogr-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools_scm_git_archive}
+BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Deprecated
@@ -58,10 +58,10 @@ One API for multiple git forges.
 %setup -q -n ogr-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -70,6 +70,7 @@ One API for multiple git forges.
 %files %{python_files}
 %doc CHANGELOG.md README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/ogr
+%{python_sitelib}/ogr-%{version}.dist-info
 
 %changelog

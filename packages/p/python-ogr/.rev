@@ -44,4 +44,33 @@
     <comment></comment>
     <requestid>1095771</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ac03023148453ce755d342600f6d6e5f</srcmd5>
+    <version>0.45.0</version>
+    <time>1689786636</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.45.0:
+  * OGR now supports PyGithub &gt;= 1.58.
+  * OGR now understands a few community-hosted GitLab instances that could
+    not be determined automatically from the hostname.
+  * Fixes an issue with project-&gt;service mapping where the service with an
+    url not containing the service type wasn't matched.
+  * A bug in ogr resulting in returning only first page of pull requests
+    for Pagure has been fixed.
+  * ogr now raises `GitForgeInternalError` rather than `PagureAPIException`
+    when getting 50x response from the Pagure API.
+  * `CommitComment.comment` has been deprecated in favour of
+    `CommitComment.body` to make the naming consistent across objects.
+  * ogr now requires Python 3.9 or later.
+  * Using the method `users_with_write_access` you can generate the set of
+    users that have write access to the project and the method
+    `has_write_access(user)` you can find out if the user has write access
+    to the project.
+  * We have implemented the closed_by property for the Pagure pull request
+    for getting the login of the account that closed the pull request.
+- Switch to pyproject macros.
+- Stop using greedy globs in %files.
+- Drop BuildRequires on setuptools_scm_git_archive.</comment>
+    <requestid>1099353</requestid>
+  </revision>
 </revisionlist>
