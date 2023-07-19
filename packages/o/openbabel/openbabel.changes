@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 18 08:29:25 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Skip problematic tests and increase timeout on riscv64
+
+-------------------------------------------------------------------
 Fri Aug 26 20:05:18 UTC 2022 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Don't define %upstream version from %version: %upstream_version

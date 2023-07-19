@@ -1,7 +1,7 @@
 #
 # spec file for package openbabel
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -151,7 +151,7 @@ biochemistry, or related areas.
 %postun -n libopenbabel%{abiver} -p /sbin/ldconfig
 
 %check
-%ifarch aarch64 %{power64}
+%ifarch aarch64 %{power64} riscv64
   # See gh#openbabel/openbabel/266, gh#openbabel/openbabel#2246
   %define test_filter --exclude-regex "(test_regressions_1|test_regressions_221|test_regressions_228|inchiSteffen_PubChem.smi_Test|pytest_sym|pybindtest_obconv_writers|pybindtest_bindings)"
 %else
@@ -164,6 +164,9 @@ biochemistry, or related areas.
       %define test_filter --exclude-regex "pybindtest_obconv_writers"
     %endif
   %endif
+%endif
+%ifarch riscv64
+%global test_filter --timeout 3000 %{?test_filter}
 %endif
 
 %ctest %{?test_filter}
