@@ -28,7 +28,7 @@
 # plugin for Ansible package
 %define pythons python3
 Name:           python-ara
-Version:        1.5.8
+Version:        1.6.1
 Release:        0
 Summary:        ARA Records Ansible
 License:        GPL-3.0-or-later
@@ -44,7 +44,7 @@ Requires:       python-pbr >= 2.0.0
 Requires:       python-requests >= 2.14.2
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-Recommends:     python-Django >= 2.1.5
+Recommends:     python-Django >= 3.2
 Recommends:     python-django-cors-headers
 Recommends:     python-django-filter
 Recommends:     python-djangorestframework >= 3.9.1
@@ -101,7 +101,7 @@ ara-manage test ara
 %python_uninstall_alternative ara-manage
 
 %files %{python_files}
-%doc README.rst
+%doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/ara
 %python_alternative %{_bindir}/ara-manage
