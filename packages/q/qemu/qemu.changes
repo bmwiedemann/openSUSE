@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 12 10:58:05 UTC 2023 - dfaggioli@suse.com
+
+- Update to version 8.0.3:
+  * See full log: https://lists.nongnu.org/archive/html/qemu-stable/2023-07/msg00086.html
+  * Security issues fixed:
+    - 9pfs: prevent opening special files (CVE-2023-2861) 
+    - vhost-vdpa (CVE-2023-3301)
+  * Use the official xkb name for Arabic layout, not the
+    legacy synonym (bsc#1212966)
+  * [openSUSE][RPM] Update to version 8.0.3
+
+-------------------------------------------------------------------
 Fri Jun 30 15:03:37 UTC 2023 - dfaggioli@suse.com
 
 - Patches added (first one is relevant for boo#1197298 and bsc#1212768):
