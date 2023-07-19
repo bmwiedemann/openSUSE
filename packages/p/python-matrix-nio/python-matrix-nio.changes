@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Jul 18 19:23:16 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.20.2:
+  - Miscellaneous Tasks
+    - Upgrade dependencies
+    - Various test, formatting, type hinting fixes
+    - Update GitHub Workflow Actions versions for CI
+    - [#384] Add content to built-with-nio
+    - Remove the usage of the imp module
+    - Fix our import order
+    - Fix a bunch of typos
+    - Remove key re-sharing
+    - Remove some unnecessary test code
+    - Add poetry to the test requirements
+    - Style fixes
+    - Sort our imports
+  - Bug Fixes
+    - [#335] Default to the configured request timeout when
+      syncing
+    - [#354] Fix first_sync_filter parameter of
+      AsyncClient.sync_forever
+    - [#357] Element exports keys without required fields
+    - [#396] Fix timeline->limited being required
+    - Fix Python 3.11 compatibility
+    - Fix import sequence errors.
+    - Exclude tests/data/ from pre-commit workflow.
+    - Only accept forwarded room keys from our own trusted
+      devices
+  - Documentation
+    - Mention that room key backups are unsupported.
+    - Add matrix-webhook to built-with-nio
+    - Add matrix-asgi to built-with-nio
+  - Features
+    - Add mxc URI parameter to AsyncClient.download and deprecate
+      server_name and media_id.
+  - Refactor
+    - Clean up and make a bunch of tests more consistent
+  - Styling
+    - Add config for pre-commit.
+    - Fix formatting using black and isort.
+    - Convert from str.format to f-strings.
+  - Testing
+    - Update test for AsyncClient.download.
+    - Fix our async tests
+
+-------------------------------------------------------------------
 Wed Feb 16 16:10:31 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Initial packaging effort for matrix-nio 0.19.0.
