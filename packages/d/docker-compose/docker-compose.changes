@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Jul 19 14:01:30 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.20.2:
+  * watch: move sync logic into separate package
+  * pkg/compose: RunOneOffContainer: don't use NewStartOptions()
+  * trace: instrument `compose up` at a high-level
+  * check secret target is an absolute windows path
+  * build: do not attempt to push unnamed service images
+  * test: do not run watch e2e tests in parallel
+  * test: skip watch e2e test on macOS for the moment
+  * only check if a dependency is required when something
+    unexpected happens
+  * add support of depends_on.required attribute
+
+-------------------------------------------------------------------
+Wed Jul 19 04:24:04 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.20.1:
+  * go.mod: github.com/docker/docker v24.0.5-dev (tip of 24 release
+    branch)
+  * go.mod: github.com/docker/buildx v0.11.2
+  * go.mod: github.com/moby/buildkit v0.12.0
+  * test: speed up the e2e test suite
+  * update go to go1.20.6
+  * go.mod: github.com/docker/docker 8443a06149b5 (v24.0.5-dev)
+    (#10810)
+  * watch: add end-to-end test (#10801)
+  * bump buildkit to version
+    v0.11.0-rc3.0.20230620112432-2d91ddcceedc (#10794)
+  * build(deps): bump github.com/docker/cli from
+    24.0.2+incompatible to 24.0.4+incompatible (#10799)
+
+-------------------------------------------------------------------
 Tue Jul 11 13:36:01 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.20.0:
