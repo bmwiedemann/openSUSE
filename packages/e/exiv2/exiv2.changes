@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  7 21:44:18 UTC 2023 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- add exiv2-metadata-null-checks.patch fixes gwenview crashes and
+  other apps https://github.com/Exiv2/exiv2/issues/2638
+
+-------------------------------------------------------------------
 Fri Jun 30 16:44:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add a x86-64-v3 build, remove 32bit build (not used)

@@ -27,6 +27,8 @@ URL:            https://exiv2.org/
 Source0:        https://github.com/Exiv2/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Patch0:         exiv2-build-date.patch
+# PATCH-FIX-UPSTREAM exiv2-metadata-null-checks.patch - Check if the metadata is NULL
+Patch1:         exiv2-metadata-null-checks.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 %if 0%{?suse_version} < 1600
