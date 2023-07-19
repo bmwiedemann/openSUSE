@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 17 07:56:32 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Add BuildRequires on python-packaging to fix build.
+
+-------------------------------------------------------------------
 Tue May 23 06:25:06 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add patches to avoid bogus errors in post-build checks:

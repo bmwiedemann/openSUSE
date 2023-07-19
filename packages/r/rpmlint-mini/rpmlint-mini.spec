@@ -42,6 +42,7 @@ Patch3:         0002-validate-Support-version-1.5.patch
 BuildRequires:  checkbashisms
 # the main package rpmlint's python3 runtime requirements do not necessarily match our target flavor
 BuildRequires:  %{python_flavor}-base
+BuildRequires:  %{python_flavor}-packaging
 BuildRequires:  %{python_flavor}-pybeam
 BuildRequires:  %{python_flavor}-pyenchant
 BuildRequires:  %{python_flavor}-python-magic
