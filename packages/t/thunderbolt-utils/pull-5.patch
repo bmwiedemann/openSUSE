@@ -1,0 +1,138 @@
+From e7c51d2dde402d4bc9ce23ec51e845c9a833439e Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Wed, 19 Jul 2023 10:01:57 +0200
+Subject: [PATCH] lstbt: fix crash when {sysfs}/vendor etc. is absent
+
+With Linux 6.3.9, I observed:
+
+```
+cat: /sys/bus/thunderbolt/devices/0-0/vendor: No such file or directory
+cat: /sys/bus/thunderbolt/devices/0-0/device: No such file or directory
+Segmentation fault (core dumped)
+```
+---
+ lib/helpers.c | 13 ++++++++-----
+ lib/helpers.h |  5 +++++
+ lib/lstbt.c   |  9 +++++----
+ lib/lstbt_r.c | 18 +++++++++++-------
+ lib/lstbt_v.c |  9 +++++----
+ 5 files changed, 34 insertions(+), 20 deletions(-)
+
+diff --git a/lib/helpers.c b/lib/helpers.c
+index f1f7247..bf4fc75 100644
+--- a/lib/helpers.c
++++ b/lib/helpers.c
+@@ -652,11 +652,14 @@ void dump_vdid(const char *router)
+ 
+ 	snprintf(did_path, sizeof(did_path), "cat %s%s/device", tbt_sysfs_path, router);
+ 	did = do_bash_cmd(did_path);
+-
+-	printf("ID %04x:%04x ", strtouh(vid), strtouh(did));
+-
+-	free(vid);
+-	free(did);
++	if (vid != NULL && did != NULL)
++		printf("ID %04x:%04x ", strtouh(vid), strtouh(did));
++	else
++		printf("ID -- ");
++	if (vid != NULL)
++		free(vid);
++	if (did != NULL)
++		free(did);
+ }
+ 
+ /* Dump the generation of the router */
+diff --git a/lib/helpers.h b/lib/helpers.h
+index a3af187..b0081f1 100644
+--- a/lib/helpers.h
++++ b/lib/helpers.h
+@@ -76,3 +76,8 @@ int __main(char *domain, char *depth, char *device, bool retimer, bool tree,
+ 	   u8 verbose);
+ char** ameliorate_args(int argc, char **argv);
+ bool is_input_printable(int argc, char **argv);
++
++static inline const char *znul(const char *s)
++{
++	return s != NULL ? s : "";
++}
+diff --git a/lib/lstbt.c b/lib/lstbt.c
+index 8575efe..a070d47 100644
+--- a/lib/lstbt.c
++++ b/lib/lstbt.c
+@@ -40,10 +40,11 @@ static void dump_name(const char *router)
+ 	snprintf(d_path, sizeof(d_path), "cat %s%s/device_name", tbt_sysfs_path, router);
+ 	device = do_bash_cmd(d_path);
+ 
+-	printf("%s %s ", vendor, device);
+-
+-	free(vendor);
+-	free(device);
++	printf("%s %s ", znul(vendor), znul(device));
++	if (vendor != NULL)
++		free(vendor);
++	if (device != NULL)
++		free(device);
+ }
+ 
+ static bool dump_router(const char *router)
+diff --git a/lib/lstbt_r.c b/lib/lstbt_r.c
+index 5304bb1..242b554 100644
+--- a/lib/lstbt_r.c
++++ b/lib/lstbt_r.c
+@@ -78,9 +78,9 @@ static void dump_retimer_nvm_version(const char *retimer)
+ 		 retimer);
+ 
+ 	ver = do_bash_cmd(path);
+-	printf("NVM %s\n", ver);
+-
+-	free(ver);
++	printf("NVM %s\n", znul(ver));
++	if (ver != NULL)
++		free(ver);
+ }
+ 
+ /* Dumps the retimer */
+@@ -124,12 +124,16 @@ static bool dump_retimer(const char *retimer)
+ 	snprintf(did_path, sizeof(did_path), "cat %s%s/device", tbt_sysfs_path, retimer);
+ 	did = do_bash_cmd(did_path);
+ 
+-	printf("ID %04x:%04x ", strtouh(vid), strtouh(did));
++	if (vid != NULL && did != NULL)
++		printf("ID %04x:%04x ", strtouh(vid), strtouh(did));
++	else
++		printf("-- ");
+ 
+ 	dump_retimer_nvm_version(retimer);
+-
+-	free(vid);
+-	free(did);
++	if (vid != NULL)
++		free(vid);
++	if (did != NULL)
++		free(did);
+ 	free(router);
+ 
+ 	return true;
+diff --git a/lib/lstbt_v.c b/lib/lstbt_v.c
+index 0b73169..8edc43a 100644
+--- a/lib/lstbt_v.c
++++ b/lib/lstbt_v.c
+@@ -37,10 +37,11 @@ static void dump_name(const char *router)
+ 	snprintf(d_path, sizeof(d_path), "cat %s%s/device_name", tbt_sysfs_path, router);
+ 	device = do_bash_cmd(d_path);
+ 
+-	printf("%s %s ", vendor, device);
+-
+-	free(vendor);
+-	free(device);
++	printf("%s: %s %s ", router, znul(vendor), znul(device));
++	if (vendor != NULL)
++		free(vendor);
++	if (device != NULL)
++		free(device);
+ }
+ 
+ static void dump_spaces(u64 spaces)
+-- 
+2.41.0
+
