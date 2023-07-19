@@ -213,4 +213,12 @@ See: http://lists.opensuse.org/archive/opensuse-factory/2014-03/msg00332.html</c
     <comment>update for ghc-9.4.4</comment>
     <requestid>1075788</requestid>
   </revision>
+  <revision rev="27" vrev="6">
+    <srcmd5>fa790e507a633141e60a49f9e157a8f2</srcmd5>
+    <version>0.8.2.8</version>
+    <time>1689786666</time>
+    <user>anag+factory</user>
+    <comment>version update</comment>
+    <requestid>1099452</requestid>
+  </revision>
 </revisionlist>
