@@ -96,7 +96,9 @@ This package includes some plugins for the RabbitMQ server.
 Summary:        RabbitMQ AMQP language bindings for Erlang
 Group:          Development/Libraries/Other
 Requires:       erlang
+Provides:       erlang-amqp_client = %{version}
 Provides:       erlang-gen_server2 = %{version}
+Provides:       erlang-rabbit_common = %{version}
 
 %description -n erlang-rabbitmq-client
 RabbitMQ is an implementation of an AMQP broker. AMQP is an emerging

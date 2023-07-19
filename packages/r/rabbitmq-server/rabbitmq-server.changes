@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 18 16:51:49 UTC 2023 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Improve erlang-rabbitmq-client Provides:
+  The package provides two erlang applications: amqp_client and rabbit_common
+  which are expected to be Required as erlang-%{appname}
+
+-------------------------------------------------------------------
 Mon Jun  5 15:44:43 UTC 2023 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 3.12.0
