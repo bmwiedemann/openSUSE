@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Wed Jul 19 13:12:44 UTC 2023 - Florian <packaging@sp1rit.anonaddy.me>
+
+- Updated to version 0.27.2:
+  + Minor patch to fix nested sessions and screencopy crashes.
+  + New features:
+    - Add bringWindowToTop function to IHyprLayout (#2747)
+  + Fixes:
+    - no_xwayland: fix redef
+  + Other:
+    - keybinds: movegroupwindow-improvement (#2740)
+    - render: set refresh to 0 for both wl and x11 backends
+    - screencopy: guard region buffer values in frameDamage
+    - screencopy: improve shm handling
+    - screencopy: use wlr_buffer api for shm copies
+
+-------------------------------------------------------------------
+Tue Jul 18 21:15:46 UTC 2023 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
+
+- Updated to version 0.27.1:
+  + Minor update to fix some crash issues and stuff
+  + New features:
+    - background: add mascot versions
+    - build: add asan enable status flag
+    - issues: add form templates
+    - keybinds: add movegroupwindow
+    - windowrules: add border size rule
+  + Fixes:
+    - fix: handle window change directions in fullscreen (#2728)
+    - idle: fix reverse flag for new idle protocol
+    - massive-fix (#2725)
+  + Other:
+    - Allow empty args in hyprctl dispatch (#2724)
+    - Avoid connected monitor reusing unavailable ID (#2731)
+    - Dwindle: Make resize more intuitive (#2681)
+    - Make bind modmask case-insensitive (#2714)
+    - deps: update wlroots (#2734)
+    - idle: implement new protocol
+    - internal: Protocol C++ Wraps + XDGOutput impl (#2733)
+    - internal: Remove herobrine
+    - layout: recalc window on dynamic rule update
+    - layout: recalculate monitor instead of window in
+	  updateDynamicRules
+    - monitor: disconnect bind on disconnect
+    - monitor: unplug all callbacks in ~dtor
+    - move/resize window (#2706)
+    - only return 0 when using -h (#2738)
+    - renderer: use correct wlr sample func
+    - screencopy: nullcheck for empty buffer
+    - update group decos (#2705)
+    - xwayland: guard monitor validity in xwayland scale overriding
+
+-------------------------------------------------------------------
 Fri Jul 14 16:38:11 UTC 2023 - Florian "sp1rit" <packaging@sp1rit.anonaddy.me>
 
 - Dropped 0001-meson-fix-hyprland.pc-install-location.patch. It
