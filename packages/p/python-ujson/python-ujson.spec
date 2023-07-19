@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-ujson
 Version:        5.8.0
 Release:        0
@@ -31,7 +32,7 @@ BuildRequires:  double-conversion-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
-%{?sle15_python_module_pythons}
+
 %python_subpackages
 
 %description

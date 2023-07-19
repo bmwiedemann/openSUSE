@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 19 07:08:39 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- %{?sle15_python_module_pythons} must at begnning to work.
+
+-------------------------------------------------------------------
 Sat Jul  8 20:35:13 UTC 2023 - Arun Persaud <arun@gmx.de>
 
 - update to version 5.8.0:
