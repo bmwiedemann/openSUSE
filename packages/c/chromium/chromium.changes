@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Jul 19 09:23:32 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 115.0.5790.98
+  * Security: The Storage, Service Worker, and Communication APIs
+    are now partitioned in third-party contexts to prevent certain
+    types of side-channel cross-site tracking
+  * HTTPS: Automatically and optimistically upgrade all main-frame
+    navigations to HTTPS, with fast fallback to HTTP.
+  * CSS: accept multiple values of the display property
+  * CSS: support boolean context style container queries
+  * CSS: support scroll-driven animations
+  * Increase the maximum size of a WebAssembly.Module() on the main
+    thread to 8 MB
+  * FedCM: Support credential management mediation requirements for
+    auto re-authentication
+  * Deprecate the document.domain setter
+  * Deprecate mutation events
+  * Security fixes (boo#1213462):
+    CVE-2023-3727: Use after free in WebRTC
+    CVE-2023-3728: Use after free in WebRTC
+    CVE-2023-3730: Use after free in Tab Groups
+    CVE-2023-3732: Out of bounds memory access in Mojo
+    CVE-2023-3733: Inappropriate implementation in WebApp Installs
+    CVE-2023-3734: Inappropriate implementation in Picture In Picture
+    CVE-2023-3735: Inappropriate implementation in Web API Permission Prompts
+    CVE-2023-3736: Inappropriate implementation in Custom Tabs
+    CVE-2023-3737: Inappropriate implementation in Notifications
+    CVE-2023-3738: Inappropriate implementation in Autofill
+    CVE-2023-3740: Insufficient validation of untrusted input in Themes
+    Various fixes from internal audits, fuzzing and other initiatives
+- drop chromium-113-typename.patch
+- add chromium-115-skia-include.patch
+- add chromium-115-verify_name_match-include.patch
+- add chromium-115-lp155-typename.patch
+- Add chromium-115-Qt-moc-version.patch: support Qt5 & Qt6 without
+  built-in copy of shim
+
+-------------------------------------------------------------------
 Tue Jun 27 07:39:29 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 114.0.5735.198 (boo#1212755):

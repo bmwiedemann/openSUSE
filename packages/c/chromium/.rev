@@ -4631,4 +4631,12 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 * CVE-2023-3422: Use after free in Guest View </comment>
     <requestid>1095537</requestid>
   </revision>
+  <revision rev="388" vrev="1">
+    <srcmd5>e672aa6b563fbf3e71f281ddbc88bcf9</srcmd5>
+    <version>115.0.5790.98</version>
+    <time>1689786673</time>
+    <user>anag+factory</user>
+    <comment>Chromium 115.0.5790.98 with security fixes (boo#1213462)</comment>
+    <requestid>1099469</requestid>
+  </revision>
 </revisionlist>

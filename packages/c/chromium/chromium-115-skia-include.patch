@@ -1,0 +1,25 @@
+From: Andreas Stieger <Andreas.Stieger@gmx.de>
+Date: Wed, 21 Jun 2023 01:16:53 +0200
+Subject: [PATCH] fix include for std::pow
+Upstream: meh
+
+[ 1587s] ../skia/ext/skcolorspace_trfn.cc:36:16: error: no member named 'pow' in namespace 'std'
+[ 1587s]   alpha = std::pow(alpha_to_ginv, g);
+[ 1587s]           ~~~~~^
+[ 1587s] ../skia/ext/skcolorspace_trfn.cc:44:30: error: no member named 'pow' in namespace 'std'
+[ 1587s]   float alpha_to_ginv = std::pow(alpha, 1 / f.g);
+[ 1587s]                         ~~~~~^
+[ 1587s] 2 errors generated.
+
+Index: chromium-115.0.5790.32/skia/ext/skcolorspace_trfn.cc
+===================================================================
+--- chromium-115.0.5790.32.orig/skia/ext/skcolorspace_trfn.cc
++++ chromium-115.0.5790.32/skia/ext/skcolorspace_trfn.cc
+@@ -3,6 +3,7 @@
+ // found in the LICENSE file.
+ 
+ #include "skia/ext/skcolorspace_trfn.h"
++#include <cmath>
+ 
+ namespace skia {
+ 
