@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 18 18:53:34 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 0.14.5:
+  * Update docstrings to clarify sanitation and use of wildcards
+  * Make sure to close the local file on errors
+
+-------------------------------------------------------------------
 Thu Jul  6 12:09:19 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
