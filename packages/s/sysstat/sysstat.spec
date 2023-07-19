@@ -44,7 +44,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  sed
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(systemd)
 Requires:       procmail
 Requires:       xz
 %{?systemd_ordering}
@@ -91,6 +90,8 @@ export LFLAGS="-L. -lsyscom"
 export history="60"
 export sadc_options="-S ALL"
 %configure \
+           --with-systemdsystemunitdir=%{_unitdir} \
+           --with-systemdsleepdir=%{_systemd_util_dir}/system-sleep \
            --enable-install-cron \
            --disable-silent-rules \
            --enable-nls \
@@ -151,6 +152,7 @@ rm -f /etc/cron.d/sysstat || :
 %{_mandir}/man8/*
 %exclude %{_mandir}/man1/isag*
 %dir %{_sysconfdir}/sysstat
+%dir %{_systemd_util_dir}/system-sleep
 %config(noreplace) %{_sysconfdir}/sysstat/sysstat
 %attr(644,root,root) %config(noreplace) %{_sysconfdir}/sysstat/sysstat.ioconf
 %{_bindir}/cifsiostat
@@ -167,7 +169,7 @@ rm -f /etc/cron.d/sysstat || :
 %{_unitdir}/sysstat-collect.timer
 %{_unitdir}/sysstat-summary.service
 %{_unitdir}/sysstat-summary.timer
-%{_prefix}/lib/systemd/system-sleep/sysstat.sleep
+%{_systemd_util_dir}/system-sleep/sysstat.sleep
 %dir %{_localstatedir}/log/sa
 %{_sbindir}/rcsysstat
 

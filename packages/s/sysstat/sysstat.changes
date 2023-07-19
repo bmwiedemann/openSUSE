@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 18 08:31:18 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Drop the build dependency on systemd. This was not really necessary and it
+  decreases the number of build deps from 207 to 189.
+
+-------------------------------------------------------------------
 Tue May 23 18:36:01 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Security fix: (CVE-2023-33204, bsc#1211507)
