@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 12 12:52:48 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- Replace distribution-release with openSUSE-release and openSUSE-release-appliance-docker
+
+-------------------------------------------------------------------
+Mon Jul 10 10:06:53 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- Remove perl from the base image, rpm doesn't require it
+
+-------------------------------------------------------------------
 Fri Jun 23 15:33:33 UTC 2023 - Dirk Mueller <dmueller@suse.com>
 
 - label capitalization and related cleanups
