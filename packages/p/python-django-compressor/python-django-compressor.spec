@@ -19,12 +19,14 @@
 %{?sle15_python_module_pythons}
 %define mod_name django_compressor
 Name:           python-django-compressor
-Version:        4.3.1
+Version:        4.4
 Release:        0
 Summary:        Python module to compress linked/inline JavaScript/CSS to cached files
 License:        Apache-2.0 AND BSD-3-Clause AND MIT
 URL:            https://github.com/django-compressor/django-compressor
 Source:         https://files.pythonhosted.org/packages/source/d/%{mod_name}/%{mod_name}-%{version}.tar.gz
+#PATCH-FIX-UPSTREAM https://github.com/django-compressor/django-compressor/pull/1196 Add LazyScriptNamePrefixedUrl.lstrip to fix tests
+Patch:          lstrip.patch
 BuildRequires:  %{python_module Brotli >= 1.0.6}
 BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module Jinja2}
@@ -64,11 +66,8 @@ template tag.
 
 %prep
 %setup -q -n %{mod_name}-%{version}
+%autopatch -p1
 sed -i '1{/env python/d}' compressor/tests/precompiler.py
-# Fix broken tests related to jijna2
-# gh#django-compressor/django-compressor#1139
-# gh#django-compressor/django-compressor@bcdd21956a84
-sed -i '/jinja2.ext.with_/d' compressor/tests/test_offline.py
 
 %build
 %python_build

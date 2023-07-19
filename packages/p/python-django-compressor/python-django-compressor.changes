@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 18 08:25:44 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.4
+  * Full list of changes from v4.3.1 <https://github.com/django-compressor/django-compressor/compare/4.3.1...4.4>
+  * Officially support Django 4.2
+- Add upstream patch lstrip.patch
+
+-------------------------------------------------------------------
 Sun Jun 18 16:31:47 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Use sle15_python_module_pythons
