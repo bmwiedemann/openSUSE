@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jul 19 04:26:25 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230718T210538Z:
+  * fix: with --purge flag ignore path validation errors (#4636)
+  * Support mc top net (#4626)
+  * Fixing misleading usage help for mc anonymous set-json (#4621)
+  * run gofumpt -extra on all source files (#4634)
+  * Ensure `--airgap` is available on all support commands (#4633)
+  * Added `endpoint` and `version` attributes to KMS details
+    (#4591)
+  * Rename mc replicate diff as mc replicate backlog  (#4568)
+  * allow purge to happen on quorum lost objects (#4629)
+
+-------------------------------------------------------------------
 Wed Jul 12 06:39:54 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 20230711T233044Z:
