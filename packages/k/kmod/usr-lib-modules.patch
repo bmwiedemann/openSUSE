@@ -12,30 +12,30 @@ move kernel modules to /usr while others can keep them in /lib.
 
 Signed-off-by: Michal Suchanek <msuchanek@suse.de>
 ---
- Makefile.am                          |   3 +-
- configure.ac                         |   7 ++
- libkmod/libkmod.c                    |   6 +-
- man/Makefile.am                      |   1 +
- man/depmod.d.xml                     |   6 +-
- man/depmod.xml                       |   4 +-
- man/modinfo.xml                      |   2 +-
- man/modprobe.xml                     |   2 +-
- man/modules.dep.xml                  |   6 +-
- testsuite/module-playground/Makefile |   2 +-
- testsuite/setup-rootfs.sh            | 109 +++++++++++++++------------
- testsuite/test-depmod.c              |  16 ++--
- testsuite/test-testsuite.c           |   8 +-
- tools/depmod.c                       |   6 +-
- tools/kmod.c                         |   1 +
- tools/modinfo.c                      |   4 +-
- tools/modprobe.c                     |   4 +-
- tools/static-nodes.c                 |   6 +-
- 18 files changed, 108 insertions(+), 85 deletions(-)
+ Makefile.am                          |    3 
+ configure.ac                         |    7 ++
+ libkmod/libkmod.c                    |    6 -
+ man/Makefile.am                      |    1 
+ man/depmod.d.xml                     |    6 -
+ man/depmod.xml                       |    4 -
+ man/modinfo.xml                      |    2 
+ man/modprobe.xml                     |    2 
+ man/modules.dep.xml                  |    6 -
+ testsuite/module-playground/Makefile |    2 
+ testsuite/setup-rootfs.sh            |  109 +++++++++++++++++++----------------
+ testsuite/test-depmod.c              |   16 ++---
+ testsuite/test-testsuite.c           |    8 +-
+ tools/depmod.c                       |   13 +++-
+ tools/kmod.c                         |    1 
+ tools/modinfo.c                      |    4 -
+ tools/modprobe.c                     |    4 -
+ tools/static-nodes.c                 |    6 -
+ 18 files changed, 116 insertions(+), 84 deletions(-)
 
-diff --git a/Makefile.am b/Makefile.am
-index 246d4f5b138f..b25a95cfe266 100644
---- a/Makefile.am
-+++ b/Makefile.am
+Index: kmod-30/Makefile.am
+===================================================================
+--- kmod-30.orig/Makefile.am
++++ kmod-30/Makefile.am
 @@ -20,6 +20,7 @@ AM_CPPFLAGS = \
  	-I$(top_srcdir) \
  	-DSYSCONFDIR=\""$(sysconfdir)"\" \
@@ -44,7 +44,7 @@ index 246d4f5b138f..b25a95cfe266 100644
  	${zlib_CFLAGS}
  
  AM_CFLAGS = $(OUR_CFLAGS)
-@@ -245,7 +246,7 @@ EXTRA_DIST += testsuite/setup-rootfs.sh
+@@ -247,7 +248,7 @@ EXTRA_DIST += testsuite/setup-rootfs.sh
  MODULE_PLAYGROUND = testsuite/module-playground
  ROOTFS = testsuite/rootfs
  ROOTFS_PRISTINE = $(top_srcdir)/testsuite/rootfs-pristine
@@ -53,10 +53,10 @@ index 246d4f5b138f..b25a95cfe266 100644
  
  build-module-playground:
  	$(AM_V_GEN)if test "$(top_srcdir)" != "$(top_builddir)"; then \
-diff --git a/configure.ac b/configure.ac
-index a74d3baf0a42..f5947dd7b446 100644
---- a/configure.ac
-+++ b/configure.ac
+Index: kmod-30/configure.ac
+===================================================================
+--- kmod-30.orig/configure.ac
++++ kmod-30/configure.ac
 @@ -83,6 +83,12 @@ AC_ARG_WITH([rootlibdir],
          [], [with_rootlibdir=$libdir])
  AC_SUBST([rootlibdir], [$with_rootlibdir])
@@ -78,11 +78,11 @@ index a74d3baf0a42..f5947dd7b446 100644
  	sysconfdir:		${sysconfdir}
  	libdir:			${libdir}
  	rootlibdir:		${rootlibdir}
-diff --git a/libkmod/libkmod.c b/libkmod/libkmod.c
-index 75fc8be3fadc..8a0b2f243b30 100644
---- a/libkmod/libkmod.c
-+++ b/libkmod/libkmod.c
-@@ -209,7 +209,7 @@ static int log_priority(const char *priority)
+Index: kmod-30/libkmod/libkmod.c
+===================================================================
+--- kmod-30.orig/libkmod/libkmod.c
++++ kmod-30/libkmod/libkmod.c
+@@ -209,7 +209,7 @@ static int log_priority(const char *prio
  	return 0;
  }
  
@@ -91,7 +91,7 @@ index 75fc8be3fadc..8a0b2f243b30 100644
  
  static char *get_kernel_release(const char *dirname)
  {
-@@ -231,14 +231,14 @@ static char *get_kernel_release(const char *dirname)
+@@ -231,14 +231,14 @@ static char *get_kernel_release(const ch
  /**
   * kmod_new:
   * @dirname: what to consider as linux module's directory, if NULL
@@ -108,10 +108,10 @@ index 75fc8be3fadc..8a0b2f243b30 100644
   *                vector if configuration should not be read. This array must
   *                be null terminated.
   *
-diff --git a/man/Makefile.am b/man/Makefile.am
-index ad07c30bbd24..1a9a92f9c224 100644
---- a/man/Makefile.am
-+++ b/man/Makefile.am
+Index: kmod-30/man/Makefile.am
+===================================================================
+--- kmod-30.orig/man/Makefile.am
++++ kmod-30/man/Makefile.am
 @@ -22,6 +22,7 @@ CLEANFILES = $(dist_man_MANS)
  	else \
  		sed -e '/@PREFIX@/d' $< ; \
@@ -120,10 +120,10 @@ index ad07c30bbd24..1a9a92f9c224 100644
  	$(XSLT) \
  		-o $@ \
  		--nonet \
-diff --git a/man/depmod.d.xml b/man/depmod.d.xml
-index 431ebca6654b..2583a8d8a5fc 100644
---- a/man/depmod.d.xml
-+++ b/man/depmod.d.xml
+Index: kmod-30/man/depmod.d.xml
+===================================================================
+--- kmod-30.orig/man/depmod.d.xml
++++ kmod-30/man/depmod.d.xml
 @@ -70,7 +70,7 @@
          </term>
          <listitem>
@@ -151,10 +151,10 @@ index 431ebca6654b..2583a8d8a5fc 100644
              over any likenamed module already provided by the kernel.
            </para>
          </listitem>
-diff --git a/man/depmod.xml b/man/depmod.xml
-index 3b0097184fd7..9d9cf195a355 100644
---- a/man/depmod.xml
-+++ b/man/depmod.xml
+Index: kmod-30/man/depmod.xml
+===================================================================
+--- kmod-30.orig/man/depmod.xml
++++ kmod-30/man/depmod.xml
 @@ -80,7 +80,7 @@
      </para>
      <para> <command>depmod</command> creates a list of module dependencies by
@@ -173,10 +173,10 @@ index 3b0097184fd7..9d9cf195a355 100644
              but in a staging area, you can specify a
              <replaceable>basedir</replaceable> which is prepended to the
              directory name.  This <replaceable>basedir</replaceable> is
-diff --git a/man/modinfo.xml b/man/modinfo.xml
-index 9fe0324a2527..d48c64560e9d 100644
---- a/man/modinfo.xml
-+++ b/man/modinfo.xml
+Index: kmod-30/man/modinfo.xml
+===================================================================
+--- kmod-30.orig/man/modinfo.xml
++++ kmod-30/man/modinfo.xml
 @@ -54,7 +54,7 @@
        <command>modinfo</command> extracts information from the Linux Kernel
        modules given on the command line.  If the module name is not a filename,
@@ -186,10 +186,10 @@ index 9fe0324a2527..d48c64560e9d 100644
        directory is searched, as is also done by
        <citerefentry><refentrytitle>modprobe</refentrytitle><manvolnum>8</manvolnum></citerefentry>
        when loading kernel modules.
-diff --git a/man/modprobe.xml b/man/modprobe.xml
-index db39c7a18bb7..2c5ede617e23 100644
---- a/man/modprobe.xml
-+++ b/man/modprobe.xml
+Index: kmod-30/man/modprobe.xml
+===================================================================
+--- kmod-30.orig/man/modprobe.xml
++++ kmod-30/man/modprobe.xml
 @@ -78,7 +78,7 @@
        is no difference between _ and - in module names (automatic
        underscore conversion is performed).
@@ -199,10 +199,10 @@ index db39c7a18bb7..2c5ede617e23 100644
        the modules and other files, except for the optional
        configuration files in the
        <filename>/etc/modprobe.d</filename> directory
-diff --git a/man/modules.dep.xml b/man/modules.dep.xml
-index ed633694ec9e..9130ec392089 100644
---- a/man/modules.dep.xml
-+++ b/man/modules.dep.xml
+Index: kmod-30/man/modules.dep.xml
+===================================================================
+--- kmod-30.orig/man/modules.dep.xml
++++ kmod-30/man/modules.dep.xml
 @@ -34,8 +34,8 @@
    </refnamediv>
  
@@ -223,10 +223,10 @@ index ed633694ec9e..9130ec392089 100644
        It is used by kmod tools such as <command>modprobe</command> and
        libkmod.
      </para>
-diff --git a/testsuite/module-playground/Makefile b/testsuite/module-playground/Makefile
-index e6045b0dd932..a7ab09bea2bf 100644
---- a/testsuite/module-playground/Makefile
-+++ b/testsuite/module-playground/Makefile
+Index: kmod-30/testsuite/module-playground/Makefile
+===================================================================
+--- kmod-30.orig/testsuite/module-playground/Makefile
++++ kmod-30/testsuite/module-playground/Makefile
 @@ -47,7 +47,7 @@ endif
  
  else
@@ -236,10 +236,10 @@ index e6045b0dd932..a7ab09bea2bf 100644
  KVER ?= `uname -r`
  ifeq ($(FAKE_BUILD),)
      FAKE_BUILD=0
-diff --git a/testsuite/setup-rootfs.sh b/testsuite/setup-rootfs.sh
-index 8b13a40f2cae..abc3790715db 100755
---- a/testsuite/setup-rootfs.sh
-+++ b/testsuite/setup-rootfs.sh
+Index: kmod-30/testsuite/setup-rootfs.sh
+===================================================================
+--- kmod-30.orig/testsuite/setup-rootfs.sh
++++ kmod-30/testsuite/setup-rootfs.sh
 @@ -16,6 +16,19 @@ create_rootfs() {
  	cp -r "$ROOTFS_PRISTINE" "$ROOTFS"
  	find "$ROOTFS" -type d -exec chmod +w {} \;
@@ -385,10 +385,10 @@ index 8b13a40f2cae..abc3790715db 100755
      )
  
  attach_sha256_array=(
-diff --git a/testsuite/test-depmod.c b/testsuite/test-depmod.c
-index 93606947f18a..870f2667862b 100644
---- a/testsuite/test-depmod.c
-+++ b/testsuite/test-depmod.c
+Index: kmod-30/testsuite/test-depmod.c
+===================================================================
+--- kmod-30.orig/testsuite/test-depmod.c
++++ kmod-30/testsuite/test-depmod.c
 @@ -27,7 +27,7 @@
  
  #define MODULES_UNAME "4.4.4"
@@ -398,7 +398,7 @@ index 93606947f18a..870f2667862b 100644
  static noreturn int depmod_modules_order_for_compressed(const struct test *t)
  {
  	const char *progname = ABS_TOP_BUILDDIR "/tools/depmod";
-@@ -55,8 +55,8 @@ DEFINE_TEST(depmod_modules_order_for_compressed,
+@@ -55,8 +55,8 @@ DEFINE_TEST(depmod_modules_order_for_com
  	});
  
  #define MODULES_OUTDIR_ROOTFS TESTSUITE_ROOTFS "test-depmod/modules-outdir"
@@ -436,7 +436,7 @@ index 93606947f18a..870f2667862b 100644
  static noreturn int depmod_search_order_external_first(const struct test *t)
  {
  	const char *progname = ABS_TOP_BUILDDIR "/tools/depmod";
-@@ -191,7 +191,7 @@ DEFINE_TEST(depmod_search_order_external_first,
+@@ -191,7 +191,7 @@ DEFINE_TEST(depmod_search_order_external
  	});
  
  #define SEARCH_ORDER_EXTERNAL_LAST_ROOTFS TESTSUITE_ROOTFS "test-depmod/search-order-external-last"
@@ -445,7 +445,7 @@ index 93606947f18a..870f2667862b 100644
  static noreturn int depmod_search_order_external_last(const struct test *t)
  {
  	const char *progname = ABS_TOP_BUILDDIR "/tools/depmod";
-@@ -218,7 +218,7 @@ DEFINE_TEST(depmod_search_order_external_last,
+@@ -218,7 +218,7 @@ DEFINE_TEST(depmod_search_order_external
  	});
  
  #define SEARCH_ORDER_OVERRIDE_ROOTFS TESTSUITE_ROOTFS "test-depmod/search-order-override"
@@ -454,11 +454,11 @@ index 93606947f18a..870f2667862b 100644
  static noreturn int depmod_search_order_override(const struct test *t)
  {
  	const char *progname = ABS_TOP_BUILDDIR "/tools/depmod";
-diff --git a/testsuite/test-testsuite.c b/testsuite/test-testsuite.c
-index 56e73609f204..903a0102105e 100644
---- a/testsuite/test-testsuite.c
-+++ b/testsuite/test-testsuite.c
-@@ -64,7 +64,7 @@ static int testsuite_rootfs_fopen(const struct test *t)
+Index: kmod-30/testsuite/test-testsuite.c
+===================================================================
+--- kmod-30.orig/testsuite/test-testsuite.c
++++ kmod-30/testsuite/test-testsuite.c
+@@ -64,7 +64,7 @@ static int testsuite_rootfs_fopen(const
  	char s[100];
  	int n;
  
@@ -467,7 +467,7 @@ index 56e73609f204..903a0102105e 100644
  	if (fp == NULL)
  		return EXIT_FAILURE;;
  
-@@ -89,7 +89,7 @@ static int testsuite_rootfs_open(const struct test *t)
+@@ -89,7 +89,7 @@ static int testsuite_rootfs_open(const s
  	char buf[100];
  	int fd, done;
  
@@ -476,7 +476,7 @@ index 56e73609f204..903a0102105e 100644
  	if (fd < 0)
  		return EXIT_FAILURE;
  
-@@ -121,12 +121,12 @@ static int testsuite_rootfs_stat_access(const struct test *t)
+@@ -121,12 +121,12 @@ static int testsuite_rootfs_stat_access(
  {
  	struct stat st;
  
@@ -491,10 +491,10 @@ index 56e73609f204..903a0102105e 100644
  		ERR("stat failed: %m\n");
  		return EXIT_FAILURE;
  	}
-diff --git a/tools/depmod.c b/tools/depmod.c
-index 2d4cf75fdfee..9aa350c5f8d6 100644
---- a/tools/depmod.c
-+++ b/tools/depmod.c
+Index: kmod-30/tools/depmod.c
+===================================================================
+--- kmod-30.orig/tools/depmod.c
++++ kmod-30/tools/depmod.c
 @@ -911,7 +911,7 @@ struct vertex;
  struct mod {
  	struct kmod_module *kmod;
@@ -504,7 +504,7 @@ index 2d4cf75fdfee..9aa350c5f8d6 100644
  	char *uncrelpath; /* same as relpath but ending in .ko */
  	struct kmod_list *info_list;
  	struct kmod_list *dep_sym_list;
-@@ -3024,11 +3024,11 @@ static int do_depmod(int argc, char *argv[])
+@@ -3024,12 +3024,21 @@ static int do_depmod(int argc, char *arg
  	}
  
  	cfg.dirnamelen = snprintf(cfg.dirname, PATH_MAX,
@@ -513,16 +513,25 @@ index 2d4cf75fdfee..9aa350c5f8d6 100644
  				  root ?: "", cfg.kversion);
  
  	cfg.outdirnamelen = snprintf(cfg.outdirname, PATH_MAX,
--				     "%s/lib/modules/%s",
 +				     "%s" MODULE_PREFIX "/lib/modules/%s",
++				     out_root ?: (root ?: ""), cfg.kversion);
++	struct stat sb;
++	if (stat(cfg.dirname, &sb) != 0) {
++	cfg.dirnamelen = snprintf(cfg.dirname, PATH_MAX,
++				  "%s/lib/modules/%s",
++				  root ?: "", cfg.kversion);
++	cfg.outdirnamelen = snprintf(cfg.outdirname, PATH_MAX,
+ 				     "%s/lib/modules/%s",
  				     out_root ?: (root ?: ""), cfg.kversion);
++	}
  
  	if (optind == argc)
-diff --git a/tools/kmod.c b/tools/kmod.c
-index 28aefb463492..76f52fcae921 100644
---- a/tools/kmod.c
-+++ b/tools/kmod.c
-@@ -114,6 +114,7 @@ static int kmod_config(int argc, char *argv[])
+ 		all = 1;
+Index: kmod-30/tools/kmod.c
+===================================================================
+--- kmod-30.orig/tools/kmod.c
++++ kmod-30/tools/kmod.c
+@@ -114,6 +114,7 @@ static int kmod_config(int argc, char *a
  {
  	unsigned i;
  	printf("{\"prefix\":\"" PREFIX "\""
@@ -530,10 +539,10 @@ index 28aefb463492..76f52fcae921 100644
  			",\"module_compression\":[");
  	for(i = 0; compressions[i]; i++) {
  		printf("%s\"%s\"", i ? "," : "", compressions[i]);
-diff --git a/tools/modinfo.c b/tools/modinfo.c
-index d0aab200af4e..c10ce7ec5ef3 100644
---- a/tools/modinfo.c
-+++ b/tools/modinfo.c
+Index: kmod-30/tools/modinfo.c
+===================================================================
+--- kmod-30.orig/tools/modinfo.c
++++ kmod-30/tools/modinfo.c
 @@ -367,7 +367,7 @@ static void help(void)
  		"\t-m, --modname               Handle argument as module name instead of alias or filename\n"
  		"\t-F, --field=FIELD           Print only provided FIELD\n"
@@ -543,7 +552,7 @@ index d0aab200af4e..c10ce7ec5ef3 100644
  		"\t-V, --version               Show version\n"
  		"\t-h, --help                  Show this help\n",
  		program_invocation_short_name);
-@@ -462,7 +462,7 @@ static int do_modinfo(int argc, char *argv[])
+@@ -462,7 +462,7 @@ static int do_modinfo(int argc, char *ar
  			}
  			kversion = u.release;
  		}
@@ -552,11 +561,11 @@ index d0aab200af4e..c10ce7ec5ef3 100644
  			 root, kversion);
  		dirname = dirname_buf;
  	}
-diff --git a/tools/modprobe.c b/tools/modprobe.c
-index 2a2ae21f5370..a36d3186901e 100644
---- a/tools/modprobe.c
-+++ b/tools/modprobe.c
-@@ -142,7 +142,7 @@ static void help(void)
+Index: kmod-30/tools/modprobe.c
+===================================================================
+--- kmod-30.orig/tools/modprobe.c
++++ kmod-30/tools/modprobe.c
+@@ -146,7 +146,7 @@ static void help(void)
  		"\t-n, --show                  Same as --dry-run\n"
  
  		"\t-C, --config=FILE           Use FILE instead of default search paths\n"
@@ -565,7 +574,7 @@ index 2a2ae21f5370..a36d3186901e 100644
  		"\t-S, --set-version=VERSION   Use VERSION instead of `uname -r`\n"
  
  		"\t-s, --syslog                print to syslog, not stderr\n"
-@@ -970,7 +970,7 @@ static int do_modprobe(int argc, char **orig_argv)
+@@ -983,7 +983,7 @@ static int do_modprobe(int argc, char **
  			kversion = u.release;
  		}
  		snprintf(dirname_buf, sizeof(dirname_buf),
@@ -574,11 +583,11 @@ index 2a2ae21f5370..a36d3186901e 100644
  				kversion);
  		dirname = dirname_buf;
  	}
-diff --git a/tools/static-nodes.c b/tools/static-nodes.c
-index 8d2356da73f3..868af3b58ac7 100644
---- a/tools/static-nodes.c
-+++ b/tools/static-nodes.c
-@@ -212,15 +212,15 @@ static int do_static_nodes(int argc, char *argv[])
+Index: kmod-30/tools/static-nodes.c
+===================================================================
+--- kmod-30.orig/tools/static-nodes.c
++++ kmod-30/tools/static-nodes.c
+@@ -212,15 +212,15 @@ static int do_static_nodes(int argc, cha
  		goto finish;
  	}
  
@@ -597,6 +606,3 @@ index 8d2356da73f3..868af3b58ac7 100644
  				kernel.release);
  			ret = EXIT_FAILURE;
  		}
--- 
-2.41.0
-

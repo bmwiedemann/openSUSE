@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul 16 15:55:38 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Edit usr-lib-modules.patch to /lib/modules provide fallback
+  behavior for successfully running `make modules_install` in
+  pristine tarballs.
+
+-------------------------------------------------------------------
 Fri Jun 30 16:39:17 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix up usrmerge patches to make the feature configurable (boo#1212835)

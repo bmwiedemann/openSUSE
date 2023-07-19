@@ -689,4 +689,16 @@ testsuite still needs zstd command, the library can do without.</comment>
 - Refresh no-stylesheet-download.patch (forwarded request 1096182 from michals)</comment>
     <requestid>1096217</requestid>
   </revision>
+  <revision rev="76" vrev="6">
+    <srcmd5>65a8ad3472873c84acb72e2b15eb6609</srcmd5>
+    <version>30</version>
+    <time>1689786579</time>
+    <user>anag+factory</user>
+    <comment>- Edit usr-lib-modules.patch to /lib/modules provide fallback
+  behavior for successfully running `make modules_install` in
+  pristine tarballs.
+
+Kernel:stable/kernel-source#kernel-default succeeds with this</comment>
+    <requestid>1098992</requestid>
+  </revision>
 </revisionlist>
