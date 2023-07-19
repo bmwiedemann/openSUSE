@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jul 19 04:53:41 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.20.0:
+  * Fixed infinite loop when removing macros with `%` in the name. (#244)
+  * Added a possibility to undefine system macros by setting a macro value
+    to `None` in the `macros` argument of the `Specfile` constructor. (#244)
+  * Fixed a bug in processing options of `%prep` macros. For instance, when
+    a quoted string appeared inside an expression expansion, it could lead
+    to improper parsing, rendering the spec file invalid after accessing
+    the options. (#253)
+  * Parsing has been optimized so that even spec files with hundreds of
+    thousands of lines can be processed in reasonable time. (#240)
+- Drop setuptools_scm_git_archive BuildRequires.
+- Don't need to skip Python 3.8.
+
+-------------------------------------------------------------------
 Mon May 29 09:50:26 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to version 0.18.0: 

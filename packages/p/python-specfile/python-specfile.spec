@@ -16,16 +16,14 @@
 #
 
 
-%define skip_python38 1
 Name:           python-specfile
-Version:        0.18.0
+Version:        0.20.0
 Release:        0
 Summary:        A library for parsing and manipulating RPM spec files
 License:        MIT
 URL:            https://github.com/packit/specfile
 Source:         https://files.pythonhosted.org/packages/source/s/specfile/specfile-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm_git_archive}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
