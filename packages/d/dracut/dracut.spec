@@ -25,7 +25,7 @@
 %endif
 
 Name:           dracut
-Version:        059+suse.447.g9d1fc722
+Version:        059+suse.476.g5e324584
 Release:        0
 Summary:        Event driven initramfs infrastructure
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -342,7 +342,6 @@ fi
 %{dracutlibdir}/modules.d/01systemd-pstore
 %{dracutlibdir}/modules.d/01systemd-repart
 %{dracutlibdir}/modules.d/01systemd-resolved
-%{dracutlibdir}/modules.d/01systemd-rfkill
 %{dracutlibdir}/modules.d/01systemd-sysctl
 %{dracutlibdir}/modules.d/01systemd-sysext
 %{dracutlibdir}/modules.d/01systemd-sysusers
@@ -364,7 +363,6 @@ fi
 %{dracutlibdir}/modules.d/35connman
 %{dracutlibdir}/modules.d/35network-legacy
 %{dracutlibdir}/modules.d/35network-manager
-%{dracutlibdir}/modules.d/35network-wicked
 %{dracutlibdir}/modules.d/40network
 %{dracutlibdir}/modules.d/45ifcfg
 %{dracutlibdir}/modules.d/45url-lib

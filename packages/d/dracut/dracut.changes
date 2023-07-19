@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Jul 17 06:09:58 UTC 2023 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.476.g5e324584:
+  This is the 2nd backport of the most important fixes and features from the upstream master branch,
+  while the release date of version 060 is still undefined.
+
+  Features:
+  * feat(network-wicked): remove module
+  * feat(systemd-rfkill): remove module
+  * feat(livenet): add memory size check depending on live image size
+  * feat(nvmf): add code for parsing the NBFT
+
+  Fixes:
+  * fix(systemd-sysext): handle confexts and correct extensions search path
+  * fix(modsign): load keys to correct keyring
+  * fix(dmsquash-live-autooverlay): specify filesystemtype when it is already known
+  * fix(fs-lib): remove quoting form the first argument of the e2fsck call
+  * fix(Makefile): remove leftover rpm build rules
+  * fix(Makefile): no longer upload to kernel.org
+  * fix(nvmf): support /etc/nvme/config.json
+  * fix(nvmf): install 8021q module unconditionally
+  * fix(install.d): respect even more kernel-install vars, plus style fixes
+  * fix(install.d): respect more kernel-install env variables
+  * fix(dracut.sh): also prevent fsfreeze for tmpfs
+  * fix(dmsquash-live): allow other fstypes
+  * fix(bluetooth): make bluetooth rules more strict
+  * fix(bluetooth): add missing files
+  * fix(bluetooth): include it if Appearance matches the value assigned for keyboard
+  * fix(btrfs): do not require module via cmdline when --no-kernel
+  * fix(btrfs): add missing cmdline function
+
+  Other:
+  * refactor(dracut-init.sh): remove redundant "dracut" from "dracut module" prints
+  * refactor(virtiofs): remove exit after die
+  * build: remove rpm spec file and build rules
+  * docs: remove rd.lvm.snapsize and rd.lvm.snapshot
+  * chore(gentoo.conf): remove examples to avoid confusion
+  * chore: remove git2spec.pl, it is no longer used
+
+-------------------------------------------------------------------
 Tue Jun 20 07:23:31 UTC 2023 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.447.g9d1fc722:
