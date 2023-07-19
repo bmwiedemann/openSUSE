@@ -1,7 +1,7 @@
 #
 # spec file for package ppc64-diag
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://github.com/power-ras/ppc64-diag
 Source0:        https://github.com/power-ras/ppc64-diag/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 #PATCH-FIX-OPENSUSE - ppc64-diag.varunused.patch - fix unused variables
 Patch1:         ppc64-diag.varunused.patch
+#PATCH-FIX-UPSTREAM - 0001-rtas_errd-Handle-multiple-platform-dumps.patch - store multiple dumps
+Patch2:         rtas_errd-Handle-multiple-platform-dumps.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
