@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jul 16 18:49:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.8.1:
+  * Fixed characters in weekly view.
+  * Fixed import for iCal files with empty description
+  * Fixed handling of note files edited outside calcurse
+  * Fixed handling of recurrent open-ended appointments
+  * Default description for items with empty descriptions
+  * The PasswordCommand option can now be used to manage passwords
+    in an external program and is the new recommended way of
+    storing passwords for calcurse-caldav
+
+-------------------------------------------------------------------
 Thu Jul 21 19:26:38 UTC 2022 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 4.8.0
