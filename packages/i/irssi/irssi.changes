@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 19 14:23:43 UTC 2023 - Ailin Nemui <ailin.nemui@gmail.com>
+
+- add perl-ntype.patch, fixes broken scripting during run-time
+  with perl 5.37 and later (#1474)
+
+-------------------------------------------------------------------
 Fri Mar 31 04:43:43 UTC 2023 - Ailin Nemui <ailin.nemui@gmail.com>
 
 - update to 1.4.4
