@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul 16 11:40:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.15.6:
+  * Harden ``get_module_part()`` against ``"."``.
+  * Avoid expensive list/tuple multiplication operations that
+    would result in ``MemoryError``.
+ 
+-------------------------------------------------------------------
 Mon May 15 16:15:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.15.5:
