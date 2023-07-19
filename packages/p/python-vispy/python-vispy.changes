@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jul 19 04:42:21 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.13.0:
+  * Switch MarkersVisual scaling option to string "fixed", "scene", or
+    "visual"
+  * Add early-termination optimization to attenuated mip
+  * Add `InstancedMeshVisual` for faster and easier rendering of repeated
+    meshes
+  * Instanced mesh example
+  * Use QNativeEventGesture for touchpad gesture input
+  * Fix TypeError with pinch-to-zoom 
+- Replace setuptools_scm_git_archive BuildRequires with setuptools_scm.
+
+-------------------------------------------------------------------
 Tue Mar 21 13:12:42 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - We don't need six module any more.

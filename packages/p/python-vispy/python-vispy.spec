@@ -18,7 +18,7 @@
 
 %bcond_without  ext_deps
 Name:           python-vispy
-Version:        0.12.2
+Version:        0.13.0
 Release:        0
 Summary:        Interactive visualization in Python
 License:        BSD-3-Clause
@@ -28,7 +28,7 @@ BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm_git_archive}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-notebook-filesystem
@@ -118,6 +118,6 @@ cd vispy/testing
 %doc *.rst *.md
 %license LICENSE.txt
 %{python_sitearch}/vispy
-%{python_sitearch}/vispy-%{version}*-info
+%{python_sitearch}/vispy-%{version}.dist-info
 
 %changelog
