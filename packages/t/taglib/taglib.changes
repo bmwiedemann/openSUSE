@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 12 14:20:57 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 1.13.1:
+  * Fixed parsing of TXXX frames without description.
+  * Detect MP4 atoms with invalid length or type.
+  * Do not miss ID3v2 frames when an extended header is present.
+  * Use property "DISCSUBTITLE" for ID3v2 "TSST" frame.
+  * Build system improvements: Use absolute path for macOS dylib install name,
+    support --define-prefix when using pkg-config, fixed minimum required
+    CppUnit version.
+  * Code clean up using clang-tidy.
+
+-------------------------------------------------------------------
 Thu Nov 17 21:40:14 UTC 2022 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 1.13:

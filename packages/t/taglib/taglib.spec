@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %bcond_with tests
 %endif
 Name:           taglib%{psuffix}
-Version:        1.13
+Version:        1.13.1
 Release:        0
 Summary:        Audio Meta-Data Library
 License:        LGPL-2.1-or-later AND MPL-1.1
