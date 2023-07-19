@@ -30,6 +30,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.openexr.com/
 Source0:        https://github.com/openexr/openexr/archive/v%{version}.tar.gz
 Source2:        baselibs.conf
+# PATCH-FIX-UPSTREAM - https://github.com/AcademySoftwareFoundation/openexr/issues/1460
+Patch0:         1488.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
@@ -171,6 +173,10 @@ export LD_LIBRARY_PATH="%{buildroot}/%{_libdir}"
 %ifarch ppc64le
 # bsc#1205885
 EXCLUDE_REGEX='testMultiTiledPartThreading'
+%endif
+%ifarch aarch64
+# https://github.com/AcademySoftwareFoundation/openexr/issues/1460
+EXCLUDE_REGEX='DWA[AB]Compression'
 %endif
 %ctest --exclude-regex "$EXCLUDE_REGEX" --timeout 3600
 %endif

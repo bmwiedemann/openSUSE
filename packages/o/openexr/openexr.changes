@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 18 08:08:13 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix regression on non-SSE architectures 
+  https://github.com/AcademySoftwareFoundation/openexr/issues/1460:
+  * 1488.patch
+- Also disable 'DWA[AB]Compression' test on aarch64 as the patch
+  above fixes the issue for all targets, except aarch64
+
+-------------------------------------------------------------------
 Tue Jun 27 11:38:56 UTC 2023 - pgajdos@suse.com
 
 - version update to 3.1.9

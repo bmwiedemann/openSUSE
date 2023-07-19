@@ -826,4 +826,16 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
     . OSS-fuzz 59382 Heap-buffer-overflow in internal_huf_decompress</comment>
     <requestid>1095758</requestid>
   </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>3e57bb12e8bb7cb045f9d2a8eab24483</srcmd5>
+    <version>3.1.9</version>
+    <time>1689786591</time>
+    <user>anag+factory</user>
+    <comment>- Add patch to fix regression on non-SSE architectures 
+  https://github.com/AcademySoftwareFoundation/openexr/issues/1460:
+  * 1488.patch
+- Also disable 'DWA[AB]Compression' test on aarch64 as the patch
+  above fixes the issue for all targets, except aarch64 (forwarded request 1099245 from Guillaume_G)</comment>
+    <requestid>1099246</requestid>
+  </revision>
 </revisionlist>
