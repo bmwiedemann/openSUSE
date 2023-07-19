@@ -75,7 +75,11 @@ cd CPP/7zip/Bundles/Alone2
 %ifarch %ix86
 %make_build -f ../../cmpl_gcc_x86.mak MY_ASM=uasm
 %else
+%ifarch aarch64
+%make_build -f ../../cmpl_gcc_arm64.mak MY_ASM=gcc
+%else
 %make_build -f ../../cmpl_gcc.mak
+%endif
 %endif
 %endif
 
@@ -86,7 +90,11 @@ install -Dm 755 CPP/7zip/Bundles/Alone2/b/g_x64/7zz %{buildroot}%{_bindir}/7zz
 %ifarch %ix86
 install -Dm 755 CPP/7zip/Bundles/Alone2/b/g_x86/7zz %{buildroot}%{_bindir}/7zz
 %else
+%ifarch aarch64
+install -Dm 755 CPP/7zip/Bundles/Alone2/b/g_arm64/7zz %{buildroot}%{_bindir}/7zz
+%else
 install -Dm 755 CPP/7zip/Bundles/Alone2/b/g/7zz %{buildroot}%{_bindir}/7zz
+%endif
 %endif
 %endif
 # Create links the executables provided by p7zip
