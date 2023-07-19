@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Tue Jul 18 22:43:11 UTC 2023 - jkowalczyk@suse.com
+
+- Initial package version 1.0.0:
+  * internal/scan: print the summary even when there are no findings
+  * cmd,internal/govulncheck: change protocol version to v1.0.0
+  * cmd,internal: remove experimental reference
+  * internal/govulncheck: improve documentation
