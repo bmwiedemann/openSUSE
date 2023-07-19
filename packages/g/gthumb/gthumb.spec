@@ -29,6 +29,8 @@ Source0:        https://download.gnome.org/sources/gthumb/3.12/%{name}-%{version
 Patch0:         https://gitlab.gnome.org/GNOME/gthumb/-/commit/da0d3f22.patch
 # PATCH-FIX-UPSTREAM 3376550a.patch -- exiv2: added support for version 0.28
 Patch1:         https://gitlab.gnome.org/GNOME/gthumb/-/commit/3376550a.patch
+# PATCH-FIX-UPSTREAM c97a8aaa.patch desktop background: fixed when using the dark color scheme
+Patch2:         https://gitlab.gnome.org/GNOME/gthumb/-/commit/c97a8aaa.patch
 
 BuildRequires:  AppStream
 BuildRequires:  bison
@@ -62,6 +64,7 @@ BuildRequires:  pkgconfig(json-glib-1.0) >= 0.15.0
 BuildRequires:  pkgconfig(lcms2) >= 2.6
 BuildRequires:  pkgconfig(libbrasero-burn3) >= 3.2.0
 BuildRequires:  pkgconfig(libheif) >= 1.11
+BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libraw) >= 0.14
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.34.0

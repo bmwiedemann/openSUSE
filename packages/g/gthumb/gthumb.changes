@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 14 13:42:16 UTC 2023 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Add pkgconfig(libjxl) BuildRequires: enable JPEG XL image
+  support.
+- Add c97a8aaa.patch: desktop background: fixed when using the dark
+  color scheme
+
+-------------------------------------------------------------------
 Mon Jul  3 08:49:26 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 3376550a.patch: exiv2: added support for version 0.28.

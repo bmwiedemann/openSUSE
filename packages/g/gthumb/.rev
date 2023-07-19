@@ -948,4 +948,12 @@
     <comment></comment>
     <requestid>1096966</requestid>
   </revision>
+  <revision rev="114" vrev="5">
+    <srcmd5>19384363d828480a2bc89932e5f12cff</srcmd5>
+    <version>3.12.2</version>
+    <time>1689786634</time>
+    <user>anag+factory</user>
+    <comment>Enable JPEG XL image  support; and add c97a8aaa.patch to fix desktop background when using the dark  color scheme.</comment>
+    <requestid>1099348</requestid>
+  </revision>
 </revisionlist>
