@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.8.3
+Version:        0.8.4
 Release:        0
 Summary:        High-resolution clock functions: monotonic, realtime, cputime
 License:        BSD-3-Clause

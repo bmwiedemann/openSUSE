@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 17 10:33:17 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update clock to version 0.8.4.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:06:12 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
