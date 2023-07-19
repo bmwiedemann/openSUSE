@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 12 12:52:48 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- Replace distribution-release with openSUSE-release and openSUSE-release-appliance-docker
+
+-------------------------------------------------------------------
 Fri Jun 23 15:33:33 UTC 2023 - Dirk Mueller <dmueller@suse.com>
 
 - label capitalization and related cleanups
