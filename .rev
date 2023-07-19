@@ -588,4 +588,12 @@ additions, including new UTF-8 compose sequences for:
   * Buffer overflows in InitExt.c (boo#1212102, CVE-2023-3138)</comment>
     <requestid>1093353</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>7871feab568e5d67db2e70f4e80cc9d2</srcmd5>
+    <version>1.8.6</version>
+    <time>1689786577</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1098898</requestid>
+  </revision>
 </revisionlist>

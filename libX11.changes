@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jul 15 14:44:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.6:
+  * InitExt.c: Add bounds checks for extension request,
+    event, & error codes
+  * Fixes CVE-2023-3138: X servers could return values from
+    XQueryExtension that would cause Xlib to write entries
+    out-of-bounds of the arrays to store them, though this
+    would only overwrite other parts of the Display
+    struct, not outside the bounds allocated for that
+    structure.
+- drop U_InitExt.c-Add-bounds-checks-for-extension-request-ev.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Jun 12 13:14:03 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_InitExt.c-Add-bounds-checks-for-extension-request-ev.patch
