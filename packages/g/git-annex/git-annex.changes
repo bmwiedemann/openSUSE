@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Mon Jun 26 15:55:00 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20230626.
+  git-annex (10.20230626) upstream; urgency=medium
+
+    * Split out two new commands, git-annex pull and git-annex push.
+      Those plus a git commit are equivilant to git-annex sync.
+      (Note that the new commands default to syncing content, unless
+      annex.synccontent is explicitly set to false.)
+    * assist: New command, which is the same as git-annex sync but with
+      new files added and content transferred by default.
+    * sync: Started a transition to --content being enabled by default.
+      When used without --content or --no-content, warn about the upcoming
+      transition, and suggest using one of the options, or setting
+      annex.synccontent.
+    * sync: Added -g as a short option for --no-content.
+    * Many commands now quote filenames that contain unusual characters the
+      same way that git does, to avoid exposing control characters to the
+      terminal.
+    * Support core.quotePath, which can be set to false to display utf8
+      characters as-is in filenames.
+    * Control characters in non-filename data coming from the repository or
+      other possible untrusted sources are filtered out of the display of many
+      commands. When the command output is intended for use in scripting,
+      control characters are only filtered out when displaying to the
+      terminal.
+    * find, findkeys, examinekey: When outputting to a terminal and --format
+      is not used, quote control characters. Output to a pipe is unchanged.
+      (Similar to the behavior of GNU find.)
+    * addurl --preserve-filename now rejects filenames that contain other
+      control characters, besides the escape sequences it already rejected.
+    * init: Avoid autoenabling special remotes that have control characters
+      in their names.
+    * Support core.sharedRepository=0xxx at long last.
+    * Support --json and --json-error-messages in many more commands
+      (addunused, configremote, dead, describe, dropunused, enableremote,
+      expire, fix, importfeed, init, initremote, log, merge, migrate, reinit,
+      reinject, rekey, renameremote, rmurl, semitrust, setpresentkey, trust,
+      unannex, undo, uninit, untrust, unused, upgrade)
+    * importfeed: Support -J
+    * importfeed: Support --json-progress
+    * httpalso: Support being used with special remotes that use chunking.
+    * Several significant speedups to importing large trees from special
+      remotes. Imports that took over an hour now take only a few minutes.
+    * Cache negative lookups of global numcopies and mincopies.
+      Speeds up eg git-annex sync --content by up to 50%.
+    * Speed up sync in an adjusted branch by avoiding re-adjusting the branch
+      unncessarily, particularly when it is adjusted with --hide-missing
+      or --unlock-present.
+    * config: Added the --show-origin and --for-file options.
+    * config: Support annex.numcopies and annex.mincopies.
+    * whereused: Fix display of branch:file when run in a subdirectory.
+    * enableremote: Support enableremote of a git remote (that was previously
+      set up with initremote) when additional parameters such as autoenable=
+      are passed.
+    * configremote: New command, currently limited to changing autoenable=
+      setting of a special remote.
+    * Honor --force option when operating on a local git remote.
+    * When a nonexistant file is passed to a command and
+      --json-error-messages is enabled, output a JSON object indicating the
+      problem. (But git ls-files --error-unmatch still displays errors about
+      such files in some situations.)
+    * Bug fix: Create .git/annex/, .git/annex/fsckdb,
+      .git/annex/sentinal, .git/annex/sentinal.cache, and
+      .git/annex/journal/* with permissions configured by core.sharedRepository.
+    * Bug fix: Lock files were created with wrong modes for some combinations
+      of core.sharedRepository and umask.
+    * initremote: Avoid creating a remote that is not encrypted when gpg is
+      broken.
+    * log: When --raw-date is used, display only seconds from the epoch, as
+      documented, omitting a trailing "s" that was included in the output
+      before.
+    * addunused: Displays the names of the files that it adds.
+    * reinject: Fix support for operating on multiple pairs of files and keys.
+    * sync: Fix buggy handling of --no-pull and --no-push when syncing
+      --content. With --no-pull, avoid downloading content, and with
+      --no-push avoid uploading content. This was done before, but
+      inconsistently.
+    * uninit: Avoid buffering the names of all annexed files in memory.
+    * Fix bug in -z handling of trailing NUL in input.
+    * version: Avoid error message when entire output is not read.
+    * Fix excessive CPU usage when parsing yt-dlp (or youtube-dl) progress
+      output fails.
+    * Use --progress-template with yt-dlp to fix a failure to parse
+      progress output when only an estimated total size is known.
+    * When yt-dlp is available, default to using it in preference to
+      youtube-dl. Using youtube-dl is now deprecated, and git-annex no longer
+      tries to parse its output to display download progress
+    * Improve resuming interrupted download when using yt-dlp or youtube-dl.
+    * assistant: Add dotfiles to git by default, unless annex.dotfiles
+      is configured, the same as git-annex add does.
+    * assistant --autostop: Avoid crashing when ~/.config/git-annex/autostart
+      lists a directory that it cannot chdir to.
+    * Fix display when run with -J1.
+    * assistant: Fix a crash when a small file is deleted immediately after
+      being created.
+    * repair: Fix handling of git ref names on Windows.
+    * repair: Fix a crash when .git/annex/journal/ does not exist.
+    * Support building with optparse-applicative 0.18.1
+      (Thanks, Peter Simons)
+
+- Drop "0001-Adapt-code-to-optparse-applicative-0.18.1-and-later.patch",
+  which has become obsolete.
+
+-------------------------------------------------------------------
 Wed Jun 21 14:52:10 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Apply "0001-Adapt-code-to-optparse-applicative-0.18.1-and-later.patch"

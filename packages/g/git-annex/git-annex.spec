@@ -17,14 +17,13 @@
 
 
 Name:           git-annex
-Version:        10.20230407
+Version:        10.20230626
 Release:        0
 Summary:        Manage files with git, without checking their contents into git
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND BSD-2-Clause AND MIT AND GPL-2.0-only
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://github.com/opensuse-haskell/git-annex/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         0001-persistent-2.12.0.1-include-the-code-from-persistent.patch
-Patch1:         0001-Adapt-code-to-optparse-applicative-0.18.1-and-later.patch
 BuildRequires:  bash-completion
 BuildRequires:  chrpath
 BuildRequires:  curl
