@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 19 11:11:29 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.6.2:
+  * chore: update the way the LTS images are built (#8953)
+  * chore:  configure minikube to a static version in github ci
+    (#8951) (#8954)
+
+-------------------------------------------------------------------
 Thu Jul 06 06:56:02 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.6.1:
