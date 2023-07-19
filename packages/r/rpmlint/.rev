@@ -4503,4 +4503,12 @@ oddjob-gpupdate isn't blocked)</comment>
   * dbus-services: remove no longer packaged mumble-server (bsc#1209338)</comment>
     <requestid>1090476</requestid>
   </revision>
+  <revision rev="452" vrev="1">
+    <srcmd5>a5a1fcef3780a12b4238e7787c8b712c</srcmd5>
+    <version>2.4.0+git20230713.dfa31c7</version>
+    <time>1689786607</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1098552</requestid>
+  </revision>
 </revisionlist>

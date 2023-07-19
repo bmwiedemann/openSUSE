@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jul 13 14:45:17 UTC 2023 - wolfgang.frisch@suse.com
+
+- Update to version 2.4.0+git20230713.dfa31c7:
+  * bsc#1213292: adjust timesync1 dbus whitelisting
+  * spellcheck: Set lang to en_US when it's C
+  * SpecCheck: Allow macros for special comments
+  * rpmdiff: handle script argument with argparse
+  * PythonCheck: Handle extras in req check
+  * PythonCheck: Use packaging to parse deps strings
+  * PythonCheck: Ignore python_version in requirements
+  * PythonCheck: Support complex python requirements
+  * SpecCheck: Check for NULL char in all lines
+  * rpmdiff: adjust for rpm-4.19.0 API changes
+  * DocCheck: adjust for rpm-4.19.0 API changes
+  * dbus-services: drop whitelisting that was never put into production
+  * openSUSE/users-groups: transmission
+  * Releasing rpmlint as pre-commit hook
+
+-------------------------------------------------------------------
 Fri Jun 02 10:38:20 UTC 2023 - matthias.gerstner@suse.com
 
 - Update to version 2.4.0+git20230602.89901a92:
