@@ -228,4 +228,12 @@
     <comment>- Add %{?sle15_python_module_pythons}</comment>
     <requestid>1092370</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7c717001593eda68644566df5102c923</srcmd5>
+    <version>1.28.1</version>
+    <time>1689786661</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1099404</requestid>
+  </revision>
 </revisionlist>

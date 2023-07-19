@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Wed Jul 19 05:44:19 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.28.1
+  - Redis: Add support for redis.asyncio (#1933)
+  - Make sure each task that is started by Celery Beat has its own trace. (#2249)
+  - Add Sampling Decision to Trace Envelope Header (#2239)
+  - Do not add trace headers (sentry-trace and baggage) to HTTP requests to Sentry (#2240)
+  - Prevent adding sentry-trace header multiple times (#2235)
+  - Skip distributions with incomplete metadata (#2231)
+  - Remove stale.yml (#2245)
+  - Django: Fix 404 Handler handler being labeled as "generic ASGI request" (#1277)
+- Update to 1.28.0
+  - Add support for cron jobs in ARQ integration (#2088)
+  - Backpressure handling prototype (#2189)
+  - Add "replay" context to event payload (#2234)
+  - Update test Django app to be compatible for Django 4.x (#1794)
+- Update to 1.27.1
+  + Add Starlette/FastAPI template tag for adding Sentry tracing information (#2225)
+    - By adding {{ sentry_trace_meta }} to your Starlette/FastAPI Jinja2 templates
+      we will include   Sentry trace information as a meta tag in the rendered HTML
+      to allow your frontend to pick up and continue the trace started in the backend.
+  - Fixed generation of baggage when a DSC is already in propagation context (#2232)
+  - Handle explicitly passing None for trace_configs in aiohttp (#2230)
+  - Support newest Starlette versions (#2227)
+- Update to 1.27.0
+  - Support for SQLAlchemy 2.0 (#2200)
+  - Add instrumentation of aiohttp client requests (#1761)
+  + Add Django template tag for adding Sentry tracing information (#2222)
+    - By adding {{ sentry_trace_meta }} to your Django templates we will include Sentry trace
+      information as a meta tag in the rendered HTML to allow your frontend to pick up and
+      continue the trace started in the backend.
+  - Update Flask HTML meta helper (#2203)
+  - Take trace ID always from propagation context (#2209)
+  - Fix trace context in event payload (#2205)
+  - Use new top level API in trace_propagation_meta (#2202)
+  - Do not overwrite existing baggage on outgoing requests (#2191, #2214)
+  - Set the transaction/span status from an OTel span (#2115)
+  - Fix propagation of OTel NonRecordingSpan (#2187)
+  - Fix TaskLockedException handling in Huey integration (#2206)
+  - Add message format configuration arguments to Loguru integration (#2208)
+  - Profiling: Add client reports for profiles (#2207)
+  - CI: Fix CI (#2220)
+  - Dependencies: Bump checkouts/data-schemas from 7fdde87 to 1b85152 (#2218)
+  - Dependencies: Bump mypy from 1.3.0 to 1.4.1 (#2194)
+  - Docs: Change API doc theme (#2210)
+  - Docs: Allow (some) autocompletion for top-level API (#2213)
+  - Docs: Revert autocomplete hack (#2224)
+- Update to 1.26.0
+  - Tracing without performance (#2136)
+  - Load tracing information from environment (#2176)
+  - Auto-enable HTTPX integration if HTTPX installed (#2177)
+  - Support for SOCKS proxies (#1050)
+  - Wrap parse_url calls in capture_internal_exceptions (#2162)
+  - Run 2.7 tests in CI again (#2181)
+  - Crons: Do not support sub-minute cron intervals (#2172)
+  - Profile: Add function name to profiler frame cache (#2164)
+  - Dependencies: bump checkouts/data-schemas from 0ed3357 to 7fdde87 (#2165)
+  - Update changelog (#2163)
+- Update to 1.25.1
+  - Fix parse_url (#2161)
+    Our URL sanitization used in multiple integrations broke with the recent Python security update.
+    If you started seeing ValueErrors with "'Filtered' does not appear to be an IPv4 or IPv6
+    address", this release fixes that. See the original issue for more context.
+  - Better version parsing in integrations (#2152)
+    We now properly support all integration versions that conform to PEP 440.
+    This replaces our naïve version parsing that wouldn't accept versions
+    such as 2.0.0rc1 or 2.0.5.post1.
+  - Align HTTP status code as span data field http.response.status_code (#2113)
+  - Do not encode cached value to determine size (#2143)
+  - Fix using unittest.mock whenever available (#1926)
+  - Fix 2.7 common tests (#2145)
+  - Bump actions/stale from 6 to 8 (#1978)
+  - Bump black from 22.12.0 to 23.3.0 (#1984)
+  - Bump mypy from 1.2.0 to 1.3.0 (#2110)
+  - Bump sphinx from 5.3.0 to 7.0.1 (#2112)
+- Update to 1.25.0
+  - Support urllib3>=2.0.0 (#2148)
+    We're now supporting urllib3's new major version, 2.0.0.
+    If you encounter issues (e.g. some of your dependencies not supporting
+    the new urllib3 version yet) you might consider pinning the urllib3 version
+    to <2.0.0 manually in your project. Check out the the urllib3 migration guide for details.
+  - Auto-retry tests on failure (#2134)
+  - Correct importlib.metadata check in test_modules (#2149)
+  - Fix distribution name normalization (PEP-0503) (#2144)
+  - Fix functions_to_trace typing (#2141)
+- Drop mock.patch beecause no more need.
+
+-------------------------------------------------------------------
 Sun Jun 11 13:22:50 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

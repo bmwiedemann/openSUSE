@@ -19,14 +19,13 @@
 # nothing provides python2-venusian >= 1.0 needed by python2-pyramid
 %{?sle15_python_module_pythons}
 Name:           python-sentry-sdk
-Version:        1.24.0
+Version:        1.28.1
 Release:        0
 Summary:        Python SDK for Sentry.io
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/getsentry/sentry-python
 Source0:        https://github.com/getsentry/sentry-python/archive/%{version}/sentry-python-%{version}.tar.gz
-Patch1:         mock.patch
 BuildRequires:  %{python_module Django >= 1.8}
 BuildRequires:  %{python_module Flask >= 0.11}
 BuildRequires:  %{python_module SQLAlchemy >= 1.2}
@@ -38,29 +37,36 @@ BuildRequires:  %{python_module celery >= 3}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module executing}
 BuildRequires:  %{python_module falcon >= 1.4}
+BuildRequires:  %{python_module grpcio >= 1.21.1}
 BuildRequires:  %{python_module httpx >= 0.16.0}
+BuildRequires:  %{python_module loguru >= 0.5}
 BuildRequires:  %{python_module pymongo >= 3.1}
 BuildRequires:  %{python_module rq >= 0.6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module starlette >= 0.19.1}
 BuildRequires:  %{python_module tornado >= 5}
-# upstream use %%{python_module urllib3 >= 1.26.11}
-BuildRequires:  %{python_module urllib3 >= 1.25.10}
+BuildRequires:  %{python_module urllib3 >= 1.26.11}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module Werkzeug}
+BuildRequires:  %{python_module PySocks}
 BuildRequires:  %{python_module eventlet}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module ipdb}
 BuildRequires:  %{python_module jsonschema >= 3.2.0}
 BuildRequires:  %{python_module pyramid}
 BuildRequires:  %{python_module pyrsistent >= 0.16.0}
 BuildRequires:  %{python_module pytest-cov >= 2.8.1}
-BuildRequires:  %{python_module pytest-forked >= 1.1.3}
+BuildRequires:  %{python_module pytest-forked >= 1.4.0}
 BuildRequires:  %{python_module pytest-localserver >= 0.5.0}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module tox}
+BuildRequires:  %{python_module tox >= 3.7.0}
+# /SECTION
+# SECTION test requirements - which rise up buildtime error or missing in openSUSE
+#BuildRequires:  %%{python_module pytest-watch >= 4.2.0}
+#BuildRequires:  %%{python_module responses}
 # /SECTION
 # SECTION extra requirements - which rise up buildtime error or missing in openSUSE
 #BuildRequires:  %%{python_module pyspark >= 2.4.4}
@@ -85,13 +91,15 @@ Requires:       python-celery >= 3
 Requires:       python-certifi
 Requires:       python-executing
 Requires:       python-falcon >= 1.4
+Requires:       python-grpcio >= 1.21.1
 Requires:       python-httpx >= 0.16.0
 Requires:       python-jsonschema
+Requires:       python-loguru >= 0.5
 Requires:       python-pymongo >= 3.1
 Requires:       python-rq >= 0.6
 Requires:       python-starlette >= 0.19.1
 Requires:       python-tornado >= 5
-Requires:       python-urllib3 >= 1.10.0
+Requires:       python-urllib3 >= 1.26.11
 # SECTION extra requirements - which rise up buildtime error or missing in openSUSE
 #Requires:       python-sanic >= 0.8
 #Requires:       python-apache-beam >= 2.12
