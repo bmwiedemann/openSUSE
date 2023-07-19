@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 18 09:05:26 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.18.4:
+  no changelog available, only a diff:
+  https://github.com/python-jsonschema/jsonschema/compare/v4.18.3...v4.18.4
+
+-------------------------------------------------------------------
 Fri Jul 14 05:28:43 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - upgrade to 4.18.3:
