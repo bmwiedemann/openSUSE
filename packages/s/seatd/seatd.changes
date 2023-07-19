@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 19 09:37:07 UTC 2023 - llyyr <llyyr.public@gmail.com>
+
+- Update to 0.8.0
+  * noop: Return seat0 as the seat name
+  * noop: Additional open flags for `open(2)`
+  * noop: initialize initial_setup
+  * drm: Support drm-subtree drivers on FreeBSD
+  * man: document SEATD_VTBOUND
+  * man: add missing arg in -n syntax
+
+-------------------------------------------------------------------
 Fri Jun 23 05:49:32 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.7.0:
