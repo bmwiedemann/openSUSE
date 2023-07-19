@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 14 04:58:38 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Add python3-setuptools as a runtime requirement of python3-setools
+  (boo#1213305)
+
+-------------------------------------------------------------------
 Wed Apr 26 11:17:30 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 4.4.2:
