@@ -17,7 +17,7 @@
 
 
 Name:           libwebp
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Library and tools for the WebP graphics format
 License:        BSD-3-Clause
@@ -28,9 +28,6 @@ Source:         https://storage.googleapis.com/downloads.webmproject.org/release
 Source2:        https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-%version.tar.gz.asc
 Source3:        %name.keyring
 Source4:        baselibs.conf
-
-# PATCH-FIX-UPSTREAM libwebp-double-free.patch bsc#1210212 CVE-2023-1999 xwang@suse.com -- Avoid a double free
-Patch0:         libwebp-double-free.patch
 
 BuildRequires:  giflib-devel
 BuildRequires:  pkgconfig
