@@ -1,7 +1,7 @@
 #
 # spec file for package poco
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define sover  92
+%define sover  94
 # disabled for now as 4 of them fail
 %bcond_with tests
 Name:           poco
-Version:        1.12.2
+Version:        1.12.4
 Release:        0
 Summary:        C++ Framework for Network-based Applications
 License:        BSL-1.0

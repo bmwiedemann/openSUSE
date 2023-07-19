@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jul 18 18:56:03 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.12.4
+  * Fix SocketReactor - 100 % CPU usage on single-core system
+- Update to version 1.12.3
+  * Poco::format receives empty Vector<Any>
+  * v1.12.0 and v1.12.1 Poco::Any compile problem
+  * DateTimeFormatter creates invalid ISO8601 string
+  * bindImplLOB zero size (or NULL) HY104 "Invalid precision value"
+  * Poco 1.12.2 - Building DataMySQL still fails (issue #3689)
+  * Fix optional JSON support for MySQL
+  * Poco::Util::Application VxWorks main is incorrect
+  * Fixed converting/correcting pre-gregorian dates (#3723).
+  * aix system NumberFormatter.cpp build error
+  * SocketImpl::available()
+
+-------------------------------------------------------------------
 Sun Sep 18 10:57:23 UTC 2022 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.12.2
