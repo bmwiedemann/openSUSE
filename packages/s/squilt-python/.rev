@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>082e40c0afc602303a0497073d5f09ea</srcmd5>
+    <version>20230719.dde2b0b</version>
+    <time>1689786693</time>
+    <user>anag+factory</user>
+    <comment>Package the Python version of squilt, which is more maintainable</comment>
+    <requestid>1099470</requestid>
+  </revision>
+</revisionlist>
