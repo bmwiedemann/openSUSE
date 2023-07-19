@@ -166,7 +166,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20230717</value>
+    <value>20230718</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -329,8 +329,6 @@ products:
   - distrobox-packaging-image:
     - x86_64
   - cups-image:
-    - x86_64
-  - go1.17-devel-container:
     - x86_64
   - go1.18-devel-container:
     - x86_64
