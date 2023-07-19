@@ -8878,6 +8878,7 @@ unsorted:
   - kcalutils 
   - kcalutils-devel 
   - kcalutils-lang 
+  - kccmp 
   - kchmviewer 
   - kclock 
   - kclock-lang 
@@ -9843,6 +9844,10 @@ unsorted:
   - leveldb-devel 
   - leveldb-devel-static 
   - levmar-devel 
+  - lf 
+  - lf-bash-completion 
+  - lf-fish-completion 
+  - lf-zsh-completion 
   - lha 
   - lhasa-devel 
   - lib2geom-devel 
@@ -11335,7 +11340,7 @@ unsorted:
   - libcryptmount-devel 
   - libcrypto50 
   - libcryptopp-devel 
-  - libcryptopp8_7_0 
+  - libcryptopp8_8_0 
   - libcryptsetup-devel 
   - libcryptsetup12-32bit 
   - libcryptui-devel 
@@ -12133,7 +12138,7 @@ unsorted:
   - libgnt-devel 
   - libgnt0 
   - libgnuastro17 
-  - libgnuradio-3_10_6 
+  - libgnuradio-3_10_7 
   - libgnuradio-funcube-devel 
   - libgnuradio-funcube3_10_0 
   - libgnuradio-iqbalance-devel 
@@ -12766,28 +12771,29 @@ unsorted:
   - libkdstatemachineeditor_view1 
   - libkdumpfile-devel 
   - libkdumpfile10 
-  - libkea-asiodns24 
-  - libkea-asiolink40 
-  - libkea-cc39 
-  - libkea-cfgclient36 
-  - libkea-cryptolink28 
-  - libkea-d2srv16 
-  - libkea-database35 
-  - libkea-dhcp++54 
-  - libkea-dhcp_ddns29 
-  - libkea-dhcpsrv69 
-  - libkea-dns++30 
-  - libkea-eval39 
-  - libkea-exceptions13 
-  - libkea-hooks57 
-  - libkea-http42 
-  - libkea-log35 
-  - libkea-mysql38 
-  - libkea-pgsql36 
-  - libkea-process40 
-  - libkea-stats18 
+  - libkea-asiodns35 
+  - libkea-asiolink56 
+  - libkea-cc54 
+  - libkea-cfgclient51 
+  - libkea-cryptolink38 
+  - libkea-d2srv30 
+  - libkea-database48 
+  - libkea-dhcp++73 
+  - libkea-dhcp_ddns41 
+  - libkea-dhcpsrv89 
+  - libkea-dns++42 
+  - libkea-eval52 
+  - libkea-exceptions23 
+  - libkea-hooks77 
+  - libkea-http56 
+  - libkea-log48 
+  - libkea-mysql53 
+  - libkea-pgsql53 
+  - libkea-process57 
+  - libkea-stats29 
+  - libkea-tcp5 
   - libkea-util-io0 
-  - libkea-util52 
+  - libkea-util68 
   - libkea1_5 
   - libkeccak-devel 
   - libkeccak1 
@@ -14054,6 +14060,7 @@ unsorted:
   - libprotobuf-mutator0 
   - libprotobuf-nanopb0 
   - libprotobuf23_4_0-32bit 
+  - libprotobuf3_21_12 
   - libprotobuf3_21_12-32bit 
   - libprotoc23_4_0 
   - libprotoc23_4_0-32bit 
@@ -14396,7 +14403,7 @@ unsorted:
   - librealsense 
   - librealsense-devel 
   - librealsense-examples 
-  - librealsense2_53 
+  - librealsense2_54 
   - librecad 
   - librecad-parts 
   - librecode3 
@@ -17912,7 +17919,6 @@ unsorted:
   - mybatis 
   - mybatis-javadoc 
   - mybatis-parent 
-  - mycroft-core 
   - mygnuhealth 
   - mygnuhealth-doc 
   - mylvmbackup 
@@ -24149,7 +24155,6 @@ unsorted:
   - python310-flasgger 
   - python310-flask-jwt-extended 
   - python310-flask-oidc 
-  - python310-flask-peewee 
   - python310-flask-restx 
   - python310-flatbuffers 
   - python310-flatdict 
@@ -24857,6 +24862,7 @@ unsorted:
   - python310-netpbmfile 
   - python310-netutils 
   - python310-networkx 
+  - python310-nh3 
   - python310-nibabel 
   - python310-nilearn 
   - python310-nine 
@@ -25161,6 +25167,7 @@ unsorted:
   - python310-py-espeak-ng 
   - python310-py-moneyed 
   - python310-py-multihash 
+  - python310-py-partiql-parser 
   - python310-py-radix 
   - python310-py-ubjson 
   - python310-py-vapid 
@@ -25946,6 +25953,7 @@ unsorted:
   - python310-stomp.py 
   - python310-stomper 
   - python310-straight-plugin 
+  - python310-streamdeck 
   - python310-streamz 
   - python310-strict-rfc3339 
   - python310-strictyaml 
@@ -27576,7 +27584,6 @@ unsorted:
   - python311-flasgger 
   - python311-flask-jwt-extended 
   - python311-flask-oidc 
-  - python311-flask-peewee 
   - python311-flask-restx 
   - python311-flatbuffers 
   - python311-flatdict 
@@ -28238,6 +28245,7 @@ unsorted:
   - python311-netpbmfile 
   - python311-netutils 
   - python311-networkx 
+  - python311-nh3 
   - python311-nibabel 
   - python311-nilearn 
   - python311-nine 
@@ -28526,6 +28534,7 @@ unsorted:
   - python311-py-espeak-ng 
   - python311-py-moneyed 
   - python311-py-multihash 
+  - python311-py-partiql-parser 
   - python311-py-radix 
   - python311-py-ubjson 
   - python311-py-vapid 
@@ -29030,6 +29039,7 @@ unsorted:
   - python311-requre 
   - python311-resampy 
   - python311-resolvelib 
+  - python311-responses 
   - python311-respx 
   - python311-restructuredtext_lint 
   - python311-restview 
@@ -29263,6 +29273,7 @@ unsorted:
   - python311-stomp.py 
   - python311-stomper 
   - python311-straight-plugin 
+  - python311-streamdeck 
   - python311-streamz 
   - python311-strict-rfc3339 
   - python311-strictyaml 
@@ -29442,6 +29453,7 @@ unsorted:
   - python311-url-normalize 
   - python311-urlextract 
   - python311-urlgrabber 
+  - python311-urllib3_1 
   - python311-urwid 
   - python311-usbsdmux 
   - python311-user-agents 
@@ -30967,7 +30979,6 @@ unsorted:
   - python39-flasgger 
   - python39-flask-jwt-extended 
   - python39-flask-oidc 
-  - python39-flask-peewee 
   - python39-flask-restx 
   - python39-flatbuffers 
   - python39-flatdict 
@@ -31672,6 +31683,7 @@ unsorted:
   - python39-netpbmfile 
   - python39-netutils 
   - python39-networkx 
+  - python39-nh3 
   - python39-nibabel 
   - python39-nilearn 
   - python39-nine 
@@ -31976,6 +31988,7 @@ unsorted:
   - python39-py-espeak-ng 
   - python39-py-moneyed 
   - python39-py-multihash 
+  - python39-py-partiql-parser 
   - python39-py-radix 
   - python39-py-ubjson 
   - python39-py-vapid 
@@ -32761,6 +32774,7 @@ unsorted:
   - python39-stomp.py 
   - python39-stomper 
   - python39-straight-plugin 
+  - python39-streamdeck 
   - python39-streamz 
   - python39-strict-rfc3339 
   - python39-strictyaml 
@@ -44970,6 +44984,7 @@ unsorted:
   - unbound-devel 
   - unbound-munin 
   - unclutter 
+  - unclutter-xfixes 
   - uncommons-maths 
   - uncommons-maths-javadoc 
   - uncrustify 
