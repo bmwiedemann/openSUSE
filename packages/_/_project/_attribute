@@ -117,7 +117,7 @@
   poo#132686: '20230715'
   poo#132755: '20230717'
   poo#132962: '20230718'
-</value>
+  poo#131024: '20230718'</value>
   </attribute>
   <attribute namespace="OSRT" name="Config">
     <value># restricts what stagings the staging-bot will use, when available, for --try-strategies
@@ -166,7 +166,7 @@ rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-brandin
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20230718</value>
+    <value>20230719</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
