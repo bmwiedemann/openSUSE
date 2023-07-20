@@ -1710,4 +1710,11 @@ Main motivation is to have the license files in MicroOS also in /usr/, not in /e
     <user>dimstar_suse</user>
     <comment>no kernel-default-base on s390x</comment>
   </revision>
+  <revision rev="240" vrev="238">
+    <srcmd5>b08b3a0a01035c90016f72369757b17f</srcmd5>
+    <version>unknown</version>
+    <time>1689858039</time>
+    <user>dimstar_suse</user>
+    <comment>Make sure we have suse-module-rpm-scriptlets on the disk - not the alternative</comment>
+  </revision>
 </revisionlist>
