@@ -7054,6 +7054,7 @@ unsorted:
   - gotestsum 
   - gource 
   - goverlay 
+  - govulncheck 
   - goxel 
   - gp2c 
   - gpa 
@@ -8575,7 +8576,6 @@ unsorted:
   - jlatexmath 
   - jlatexmath-fop 
   - jlatexmath-javadoc 
-  - jless 
   - jlex 
   - jlfgr 
   - jline 
@@ -8635,7 +8635,6 @@ unsorted:
   - jpcre2-devel 
   - jpegoptim 
   - jpnevulator 
-  - jq 
   - jrosetta 
   - jrtplib-devel 
   - js-technology-fonts 
@@ -10061,26 +10060,26 @@ unsorted:
   - libOsiCbc3 
   - libOsiClp1 
   - libPDAL13 
-  - libPocoActiveRecord92 
-  - libPocoCppParser92 
-  - libPocoCrypto92 
-  - libPocoData92 
-  - libPocoDataMySQL92 
-  - libPocoDataODBC92 
-  - libPocoDataSQLite92 
-  - libPocoEncodings92 
-  - libPocoFoundation92 
-  - libPocoJSON92 
-  - libPocoJWT92 
-  - libPocoMongoDB92 
-  - libPocoNet92 
-  - libPocoNetSSL92 
-  - libPocoPDF92 
-  - libPocoPrometheus92 
-  - libPocoRedis92 
-  - libPocoUtil92 
-  - libPocoXML92 
-  - libPocoZip92 
+  - libPocoActiveRecord94 
+  - libPocoCppParser94 
+  - libPocoCrypto94 
+  - libPocoData94 
+  - libPocoDataMySQL94 
+  - libPocoDataODBC94 
+  - libPocoDataSQLite94 
+  - libPocoEncodings94 
+  - libPocoFoundation94 
+  - libPocoJSON94 
+  - libPocoJWT94 
+  - libPocoMongoDB94 
+  - libPocoNet94 
+  - libPocoNetSSL94 
+  - libPocoPDF94 
+  - libPocoPrometheus94 
+  - libPocoRedis94 
+  - libPocoUtil94 
+  - libPocoXML94 
+  - libPocoZip94 
   - libQCSXCAD0 
   - libQCoro5Core0 
   - libQCoro5DBus0 
@@ -12729,7 +12728,6 @@ unsorted:
   - libjpgalleg44-devel 
   - libjpgalleg4_4 
   - libjq-devel 
-  - libjq1 
   - libjrtp3_11_1 
   - libjson-c-devel 
   - libjson-c-doc 
@@ -34369,6 +34367,7 @@ unsorted:
   - sbt-launcher-javadoc 
   - sc 
   - sc-controller 
+  - sc-im 
   - sca-appliance-agent 
   - sca-appliance-broker 
   - sca-appliance-common 
@@ -34945,6 +34944,7 @@ unsorted:
   - squidGuard-doc 
   - squidview 
   - squilt 
+  - squilt-python 
   - squirrel 
   - squirrel-devel 
   - squirrel-doc 
@@ -35244,7 +35244,6 @@ unsorted:
   - system-user-prometheus 
   - system-user-uuidd 
   - system-user-velociraptor 
-  - systemd-boot 
   - systemd-default-settings-branding-SLE-Micro 
   - systemd-default-settings-branding-upstream 
   - systemd-devel 
@@ -44332,6 +44331,7 @@ unsorted:
   - thunarx-python 
   - thunarx-python-doc 
   - thunderbolt-user-space 
+  - thunderbolt-utils 
   - tibetan-machine-uni-fonts 
   - tidy 
   - tidy-doc 
