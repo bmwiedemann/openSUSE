@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 19 14:02:37 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update clientsession to version 0.9.2.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Tue Jul 18 15:00:46 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update clientsession to version 0.9.2.0.
