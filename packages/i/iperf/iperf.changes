@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 20 12:01:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.14 (bsc#1213430, CVE-2023-38403):
+  * fixes a memory allocation hazard that allowed a remote user to
+    crash an iperf3 process
+  * see
+    https://downloads.es.net/pub/iperf/esnet-secadv-2023-0001.txt.asc
+
+-------------------------------------------------------------------
 Tue Mar  7 07:26:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.13:
