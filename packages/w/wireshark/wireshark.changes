@@ -2,8 +2,8 @@
 Thu Jul 13 07:15:15 UTC 2023 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.0.7:
-  * Kafka dissector crash
-  * iSCSI dissector crash
+  * CVE-2023-3648: Kafka dissector crash (boo#1213319).
+  * CVE-2023-3649: iSCSI dissector crash (boo#1213318).
 - Further features, bug fixes and updated protocol support as listed in:
   https://www.wireshark.org/docs/relnotes/wireshark-4.0.7.html
 
