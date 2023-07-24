@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 21 13:09:06 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Use older protobuf (protobuf21) to fix build
+
+-------------------------------------------------------------------
 Mon Oct 17 08:07:43 UTC 2022 - pgajdos@suse.com
 
 - python-six is not required

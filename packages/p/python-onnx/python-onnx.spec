@@ -39,7 +39,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  protobuf-devel
+BuildRequires:  protobuf21-devel
 BuildRequires:  python-rpm-macros
 Requires:       libonnx == %version
 Requires:       libonnx_proto == %version
