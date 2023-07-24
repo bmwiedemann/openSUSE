@@ -3141,7 +3141,7 @@ BuildFlags: onlybuild:xrdb
 BuildFlags: onlybuild:xset
 BuildFlags: onlybuild:xsetroot
 BuildFlags: onlybuild:xterm
-BuildFlags: onlybuild:xtrans
+BuildFlags: onlybuild:xtrans   
 BuildFlags: onlybuild:xvfb-run
 BuildFlags: onlybuild:xxhash
 BuildFlags: onlybuild:xz
