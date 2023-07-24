@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jul 21 20:56:50 UTC 2023 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 1.2.3:
+  + New:
+    - Xorriso backend for optical media.
+    - Onedrive for Business Support.
+  + Fix:
+    - Warn rather than fail on op-not-supported restore errors.
+    - Fixes #701 - unable to resume full backup to B2.
+    - Added option --no-check-remote to skip checking the   remote
+      manifest.  The default is to check.
+    - Fixes #686 - PCA backend does not unseal volumes.
+    - Encoding errors when logging.
+    - Onedrive may hang indefinitely.
+
+-------------------------------------------------------------------
 Thu Jan 26 19:15:31 UTC 2023 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 1.2.2:
