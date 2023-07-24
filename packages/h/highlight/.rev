@@ -753,4 +753,14 @@
   * Updated astyle lib to version 3.3.</comment>
     <requestid>1088740</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>f838ce99feea581f5f7cfce2f88dfe2e</srcmd5>
+    <version>4.7</version>
+    <time>1690215119</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.7:
+  * Updated astyle lib to version 3.4.1.
+  * CLI: Fixed member variable initialization.</comment>
+    <requestid>1099149</requestid>
+  </revision>
 </revisionlist>
