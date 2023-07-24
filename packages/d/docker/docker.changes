@@ -2,7 +2,7 @@
 Fri Jul  7 21:29:05 UTC 2023 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 24.0.4-ce. See upstream changelog online at
-  <https://docs.docker.com/engine/release-notes/24.0/#2404>.
+  <https://docs.docker.com/engine/release-notes/24.0/#2404>. bsc#1213500
 
 -------------------------------------------------------------------
 Fri Jul  7 02:35:02 UTC 2023 - Aleksa Sarai <asarai@suse.com>
@@ -30,7 +30,8 @@ Wed Jun 14 13:02:01 UTC 2023 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 24.0.2-ce. See upstream changelog online at
   <https://docs.docker.com/engine/release-notes/24.0/#2402>. bsc#1212368
-  bsc#1210797
+  * Includes the upstreamed fix for the mount table pollution issue.
+    bsc#1210797
 - Add Recommends for docker-buildx, and add /usr/lib/docker/cli-plugins as
   being provided by this package.
 - Rebase patches:
