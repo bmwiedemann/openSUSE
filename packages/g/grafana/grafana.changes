@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Jul 11 10:44:31 UTC 2023 - marius.kittler@suse.com
+
+- Update to version 10.0.2:
+  * Features and enhancements
+    - Alerting: Add limit query parameter to Loki-based ASH api,
+      drop default limit from 5000 to 1000, extend visible time
+      range for new ASH UI.
+    - Alerting: Allow selecting the same custom group when swapping
+      folders.
+    - Alerting: Move rule UID from Loki stream labels into log
+      lines.
+    - Explore: Clean up query subscriptions when a query is
+      canceled.
+  * Bug fixes
+    - Logs: Fix wrong before and after texts in log context.
+    - Alerting: Add file and rule_group query params in request for
+      filtering the res….
+    - Alerting: Convert 'Both' type Prometheus queries to 'Range'
+      in migration.
+    - Alerting: Display correct results when using different
+      filters on alerting panels.
+    - Alerting: Fix HA alerting membership sync.
+    - Alerting: Fix unique violation when updating rule group with
+      title chains/cycles.
+    - Dashboard: Fix issue where a panel with a description and a
+      cached response displays 2 info icons.
+    - Elasticsearch: Make it compatible with the new log context
+      functionality.
+    - Fix: Change getExistingDashboardByTitleAndFolder to get
+      dashboard by title, not slug.
+    - LogContext: Fix filtering out log lines with the same entry.
+    - Login: Fix footer from displaying under the login box.
+    - Navigation: Fix toolbar actions flickering on mobile.
+    - Variables: Detect a name for duplicated variable.
+    - XYChart: Ensure color scale is field-local and synced with
+      data updates.
+    - XYChart: Fix axis range and scale overrides.
+  * Plugin development fixes & changes
+    - Grafana UI: Fix behaviour regression on Tooltip component.
+
+-------------------------------------------------------------------
 Fri Jun 23 08:56:03 UTC 2023 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to version 10.0.1:
