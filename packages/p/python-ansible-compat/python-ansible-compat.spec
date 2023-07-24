@@ -24,14 +24,13 @@
 %endif
 
 Name:           python-ansible-compat
-Version:        4.1.2
+Version:        4.1.5
 Release:        0
 Summary:        Compatibility shim for Ansible 2.9 and newer
 License:        MIT
 URL:            https://github.com/ansible-community/ansible-compat
 Source:         https://files.pythonhosted.org/packages/source/a/ansible-compat/ansible-compat-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm_git_archive}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -70,7 +69,8 @@ Facilitate working with various versions of Ansible 2.9 and newer.
 %pytest -k 'not (test_runtime_example or test_require_collection_no_cache_dir or test_upgrade_collection or test_install_collection_dest or test_install_collection or test_require_collection or test_require_collection_wrong_version or test_prerun_reqs_v2 or test_prerun_reqs_v1 or test_prepare_environment_with_collections or test_runtime_require_module)' -W ignore:'There is no current event loop'
 
 %files %{python_files}
-%{python_sitelib}/ansible_compat*
+%{python_sitelib}/ansible_compat
+%{python_sitelib}/ansible_compat-%{version}.dist-info
 %doc README.md
 %license LICENSE
 

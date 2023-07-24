@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jul 21 12:08:15 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- releases 4.1.3 and 4.1.4 were yanked
+- update to 4.1.5:
+  * Bugfixes
+    - Fix find roles inside collection repository (#297) @ajinkyau
+    - Enable packit rpm packaging (#292) @ssbarnea
+
+-------------------------------------------------------------------
+Fri Jul 21 07:02:13 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on setuptools_scm_git_archive.
+- Do not use a glob in %files
+
+-------------------------------------------------------------------
 Thu Jun  1 12:53:48 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 4.1.2:
