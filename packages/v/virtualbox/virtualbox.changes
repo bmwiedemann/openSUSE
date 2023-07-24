@@ -1,8 +1,49 @@
 -------------------------------------------------------------------
+Thu July 19 15:24:39 UTC 2023 - Larry Rainey <llrainey15@gmail.com>
+
+-  VirtualBox 7.0.10 (released July 18 2023)
+
+This is a maintenance release. The following items were fixed and/or added:
+
+    OCI: Introduced general improvements
+    VMM: Fixed a bug while walking page tables while executing nested VMs causing flooding of the release log as a consequence (Intel hosts only, bug #21551)
+    GUI: Added general improvements
+    TPM: Fixed a crash when a VM has a TPM version 1.2 configured (bug #21622)
+    3D: Initial support for OpenGL 4.1
+    3D: Fixed various graphics issues with Windows 11 guests (bugs #21136, #21515)
+    Guest Control/VBoxManage: Fixed parameter "--ignore-orphaned-processes"
+    Guest Control/VBoxManage: Fixed behavior of how handling argument 0 for a started guest process works: One can now explicitly specify it with the newly added option "--arg0". This will effectively restore the behavior of former VirtualBox versions
+    Audio: Also use the PulseAudio backend when pipewire-pulse is running instead of falling back to ALSA (bug #21575)
+    NAT: Adjusted UDP proxy timeout from 18-21 to 21-24 range to respect intended 20 second timeout (bug #21560)
+    Linux Host: Added initial support for Indirect Branch Tracking (bug #21435)
+    Linux Host: Added initial support for kernel 6.5 (NOTE: Guest Additions do not support kernel 6.5 yet)
+    Linux Host and Guest: Improved condition check when kernel modules need to be signed
+    Linux Host and Guest: Added initial support for RHEL 8.8 (bug #21692), 8.9 (bug #21690) and 9.3 (bugs #21598 and #21671) kernels
+    Linux Guest Additions: Fixed issue when kernel modules were rebuilt on each boot when guest system has no X11 installed
+    Linux Guest Additions: Added initial support for kernel 6.4
+    Linux Guest Additions: Fixed issue when vboxvideo module reloading caused kernel panic in some guests (bug #21740)
+    Linux Guest Additions: Introduced general improvements in the installer area
+    Windows Guest Additions: Introduced general improvements in graphics drivers area 
+
+    removed "fixes_for_kernel_6.4.patch" as this is fixed upstream
+
+    Fix issue with kernel on newer CPU (boo#1212209)
+
+-------------------------------------------------------------------
 Tue Jun 27 19:08:03 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>
 
 - Fix builds on kernel 6.4 (boo#1212761)
-  File "fixes_for_kernel_6.4.patch" added. 
+ 
+bash ./virtualbox-patch-source.sh VirtualBox-7.0.10.tar.bz2
+tar xjf VirtualBox-7.0.10.tar.bz2
+cd VirtualBox-7.0.10
+mkdir patches
+mkpatch
+cd ..
+osc status
+osc add VirtualBox-7.0.10-patched.tar.bz2
+osc status
+cd -File "fixes_for_kernel_6.4.patch" added. 
 
 -------------------------------------------------------------------
 Wed Jun 14 02:18:18 UTC 2023 - Larry Finger <Larry.Finger@gmail.com>

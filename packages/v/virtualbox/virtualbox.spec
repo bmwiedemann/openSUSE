@@ -49,7 +49,7 @@
 %endif
 # ********* If the VB version exceeds 6.1.x, notify the libvirt maintainer!!
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        7.0.8
+Version:        7.0.10
 Release:        0
 Summary:        %{package_summary}
 License:        GPL-2.0-or-later
@@ -165,8 +165,6 @@ Patch37:        fix_7.0.6_locking_problems.patch
 # Support python 3.11
 Patch38:        python311.patch
 Patch39:        fix_sdl_build.patch
-# Fix build on kernel 6.4
-Patch40:        fixes_for_kernel_6.4.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}
@@ -220,6 +218,7 @@ BuildRequires:  lzfse-devel
 BuildRequires:  pulseaudio-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
+BuildRequires:  rpm
 BuildRequires:  sed
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
@@ -488,7 +487,6 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %patch37 -p1
 %patch38 -p1
 %patch39 -p1
-%patch40 -p1
 
 ### Documents for virtualbox main package ###
 %if %{main_package}

@@ -1,8 +1,8 @@
-Index: VirtualBox-7.0.8/configure
+Index: VirtualBox-7.0.10/configure
 ===================================================================
---- VirtualBox-7.0.8.orig/configure
-+++ VirtualBox-7.0.8/configure
-@@ -1189,21 +1189,19 @@ check_sdl()
+--- VirtualBox-7.0.10.orig/configure
++++ VirtualBox-7.0.10/configure
+@@ -1191,21 +1191,19 @@ check_sdl()
        fail
      fi
    else
@@ -27,7 +27,7 @@ Index: VirtualBox-7.0.8/configure
  #undef main
  extern "C" int main(int argc, char** argv)
  {
-@@ -1219,7 +1217,7 @@ extern "C" int main(int argc, char** arg
+@@ -1221,7 +1219,7 @@ extern "C" int main(int argc, char** arg
  }
  EOF
      [ -n "$INCSDL" ] && I_INCSDL=`prefix_I "$INCSDL"`
@@ -36,8 +36,8 @@ Index: VirtualBox-7.0.8/configure
        if test_execute; then
          cnf_append "LIB_SDK_LIBSDL_SDL"     "`strip_l "$LIBSDL"`"
          cnf_append "SDK_LIBSDL_LIBPATH"     "`strip_L "$LIBSDL"`"
-@@ -2961,11 +2959,8 @@ if [ $ONLY_ADDITIONS -eq 0 ]; then
-   [ $WITH_LIBTPMS -eq 1 ] && check_libtpms
+@@ -3015,11 +3013,8 @@ if [ $ONLY_ADDITIONS -eq 0 ]; then
+   [ $WITH_LIBLZMA -eq 1 ] && check_liblzma
    [ "$OS" != "darwin"  ] && check_png
    [ $OSE -eq 0 -a "$OS" = "linux" ] && check_pam
 -  if [ $WITH_SDL -eq 1 ]; then
@@ -50,10 +50,10 @@ Index: VirtualBox-7.0.8/configure
    [ $WITH_SDL_TTF -eq 1 -a $OSE -eq 0 ] && check_sdl_ttf
    [ $WITH_X11    -eq 1 ] && check_x
    # TODO check for xcomposite-dev (X11/extensions/Xcomposite.h, additions only)
-Index: VirtualBox-7.0.8/src/VBox/Frontends/VBoxSDL/Makefile.kmk
+Index: VirtualBox-7.0.10/src/VBox/Frontends/VBoxSDL/Makefile.kmk
 ===================================================================
---- VirtualBox-7.0.8.orig/src/VBox/Frontends/VBoxSDL/Makefile.kmk
-+++ VirtualBox-7.0.8/src/VBox/Frontends/VBoxSDL/Makefile.kmk
+--- VirtualBox-7.0.10.orig/src/VBox/Frontends/VBoxSDL/Makefile.kmk
++++ VirtualBox-7.0.10/src/VBox/Frontends/VBoxSDL/Makefile.kmk
 @@ -51,7 +51,7 @@ if !defined(VBOX_WITH_HARDENING) || "$(K
    PROGRAMS += VBoxSDL
   endif

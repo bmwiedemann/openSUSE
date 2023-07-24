@@ -1,20 +1,20 @@
-Index: VirtualBox-7.0.8/configure
+Index: VirtualBox-7.0.10/configure
 ===================================================================
---- VirtualBox-7.0.8.orig/configure
-+++ VirtualBox-7.0.8/configure
-@@ -2137,7 +2137,7 @@ extern "C" int main(void)
+--- VirtualBox-7.0.10.orig/configure
++++ VirtualBox-7.0.10/configure
+@@ -2178,7 +2178,7 @@ extern "C" int main(void)
  }
  EOF
    found=
--  SUPPYTHONLIBS="python2.7 python2.6 python3.1 python3.2 python3.3 python3.4 python3.4m python3.5 python3.5m python3.6 python3.6m python3.7 python3.7m python3.8 python3.8m python3.9 python3.9m python3.10 python3.10m"
-+  SUPPYTHONLIBS="python2.7 python2.6 python3.1 python3.2 python3.3 python3.4 python3.4m python3.5 python3.5m python3.6 python3.6m python3.7 python3.7m python3.8 python3.8m python3.9 python3.9m python3.10 python3.10m python3.11 python3.11m"
+-  SUPPYTHONLIBS="python2.7 python2.6 python3.1 python3.2 python3.3 python3.4 python3.4m python3.5 python3.5m python3.6 python3.6m python3.7 python3.7m python3.8 python3.9 python3.10 python3.11 python3.12"
++  SUPPYTHONLIBS="python2.7 python2.6 python3.1 python3.2 python3.3 python3.4 python3.4m python3.5 python3.5m python3.6 python3.6m python3.7 python3.7m python3.8 python3.9 python3.10 python3.11 python3.12 python3.11 python3.11m"
    for p in $PYTHONDIR; do
      for d in $SUPPYTHONLIBS; do
        for b in lib/x86_64-linux-gnu lib/i386-linux-gnu lib64 lib/64 lib; do
-Index: VirtualBox-7.0.8/src/VBox/Installer/linux/routines.sh
+Index: VirtualBox-7.0.10/src/VBox/Installer/linux/routines.sh
 ===================================================================
---- VirtualBox-7.0.8.orig/src/VBox/Installer/linux/routines.sh
-+++ VirtualBox-7.0.8/src/VBox/Installer/linux/routines.sh
+--- VirtualBox-7.0.10.orig/src/VBox/Installer/linux/routines.sh
++++ VirtualBox-7.0.10/src/VBox/Installer/linux/routines.sh
 @@ -444,7 +444,7 @@ maybe_run_python_bindings_installer() {
      # the VirtualBox API bindings. Needs to prevent double installs which waste
      # quite a bit of time.
@@ -24,16 +24,3 @@ Index: VirtualBox-7.0.8/src/VBox/Installer/linux/routines.sh
          if [ "`$p -c 'import sys
  if sys.version_info >= (2, 6) and (sys.version_info < (3, 0) or sys.version_info >= (3, 3)):
      print(\"test\")' 2> /dev/null`" != "test" ]; then
-Index: VirtualBox-7.0.8/src/libs/xpcom18a4/python/Makefile.kmk
-===================================================================
---- VirtualBox-7.0.8.orig/src/libs/xpcom18a4/python/Makefile.kmk
-+++ VirtualBox-7.0.8/src/libs/xpcom18a4/python/Makefile.kmk
-@@ -753,7 +753,7 @@ ifdef VBOX_PYTHONDEF_INC
-   # TODO: ASSUMING that we don't need a different headers for pymalloc
-   #       ('m' builds < 3.8) and CRT malloc.
-   #
--  VBOX_PYTHON_LIMITED_API_VER := $(firstword $(foreach ver, 35 36 38 39 310   34 33 \
-+  VBOX_PYTHON_LIMITED_API_VER := $(firstword $(foreach ver, 35 36 38 39 310 311   34 33 \
-   	,$(if-expr defined(VBOX_PYTHON$(ver)_INC),$(ver),)$(if-expr defined(VBOX_PYTHON$(ver)M_INC),$(ver)M,)))
-   ifneq ($(VBOX_PYTHON_LIMITED_API_VER),)
-    DLLS += VBoxPython3

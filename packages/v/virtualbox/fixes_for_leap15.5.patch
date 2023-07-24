@@ -1,8 +1,16 @@
-Index: VirtualBox-7.0.8/src/VBox/Additions/linux/drm/vbox_drv.h
+Index: VirtualBox-7.0.10/src/VBox/Additions/linux/drm/vbox_drv.h
 ===================================================================
---- VirtualBox-7.0.8.orig/src/VBox/Additions/linux/drm/vbox_drv.h
-+++ VirtualBox-7.0.8/src/VBox/Additions/linux/drm/vbox_drv.h
-@@ -166,9 +166,9 @@
+--- VirtualBox-7.0.10.orig/src/VBox/Additions/linux/drm/vbox_drv.h
++++ VirtualBox-7.0.10/src/VBox/Additions/linux/drm/vbox_drv.h
+@@ -39,6 +39,7 @@
+ # pragma once
+ #endif
+ 
++
+ #include <linux/version.h>
+ 
+ /* iprt/linux/version.h copy - start */
+@@ -166,9 +167,9 @@
  # include <drm/drm_device.h>
  # include <drm/drm_ioctl.h>
  # include <drm/drm_fourcc.h>
@@ -15,20 +23,28 @@ Index: VirtualBox-7.0.8/src/VBox/Additions/linux/drm/vbox_drv.h
  # include <drm/drm_vblank.h>
  #else /* < 5.5.0 || RHEL < 8.3 || SLES < 15-SP3 */
  # include <drm/drmP.h>
-@@ -198,9 +198,7 @@
+@@ -198,15 +199,15 @@
  # include <drm/ttm/ttm_resource.h>
  #endif
  
--#if RTLNX_VER_MIN(6,0,0) || RTLNX_RHEL_MAJ_PREREQ(9,2)
+-#if RTLNX_VER_MIN(6,0,0) || RTLNX_RHEL_RANGE(8,8, 8,99) || RTLNX_RHEL_MAJ_PREREQ(9,2)
++#if RTLNX_VER_MIN(5,14,0) || RTLNX_RHEL_RANGE(8,8, 8,99) || RTLNX_RHEL_MAJ_PREREQ(9,2)
  # include <drm/drm_framebuffer.h>
 -#endif
  
  #include "vboxvideo_guest.h"
  #include "vboxvideo_vbe.h"
-Index: VirtualBox-7.0.8/src/VBox/Additions/linux/drm/vbox_drv.c
+ #include "hgsmi_ch_setup.h"
+ 
+ #include "product-generated.h"
++#endif
+ 
+ #if RTLNX_VER_MAX(4,12,0) && !RTLNX_RHEL_MAJ_PREREQ(7,5)
+ static inline void drm_gem_object_put_unlocked(struct drm_gem_object *obj)
+Index: VirtualBox-7.0.10/src/VBox/Additions/linux/drm/vbox_drv.c
 ===================================================================
---- VirtualBox-7.0.8.orig/src/VBox/Additions/linux/drm/vbox_drv.c
-+++ VirtualBox-7.0.8/src/VBox/Additions/linux/drm/vbox_drv.c
+--- VirtualBox-7.0.10.orig/src/VBox/Additions/linux/drm/vbox_drv.c
++++ VirtualBox-7.0.10/src/VBox/Additions/linux/drm/vbox_drv.c
 @@ -52,7 +52,7 @@
  
  /** Detect whether kernel mode setting is OFF. */
@@ -47,10 +63,10 @@ Index: VirtualBox-7.0.8/src/VBox/Additions/linux/drm/vbox_drv.c
  	.irq_handler = vbox_irq_handler,
  #endif
  	.name = DRIVER_NAME,
-Index: VirtualBox-7.0.8/src/VBox/Additions/linux/drm/vbox_irq.c
+Index: VirtualBox-7.0.10/src/VBox/Additions/linux/drm/vbox_irq.c
 ===================================================================
---- VirtualBox-7.0.8.orig/src/VBox/Additions/linux/drm/vbox_irq.c
-+++ VirtualBox-7.0.8/src/VBox/Additions/linux/drm/vbox_irq.c
+--- VirtualBox-7.0.10.orig/src/VBox/Additions/linux/drm/vbox_irq.c
++++ VirtualBox-7.0.10/src/VBox/Additions/linux/drm/vbox_irq.c
 @@ -205,21 +205,11 @@ int vbox_irq_init(struct vbox_private *v
  {
  	INIT_WORK(&vbox->hotplug_work, vbox_hotplug_worker);
@@ -73,15 +89,13 @@ Index: VirtualBox-7.0.8/src/VBox/Additions/linux/drm/vbox_irq.c
 -#endif
  	flush_work(&vbox->hotplug_work);
  }
-Index: VirtualBox-7.0.8/src/VBox/Additions/linux/drm/vbox_ttm.c
+Index: VirtualBox-7.0.10/src/VBox/Additions/linux/drm/vbox_ttm.c
 ===================================================================
---- VirtualBox-7.0.8.orig/src/VBox/Additions/linux/drm/vbox_ttm.c
-+++ VirtualBox-7.0.8/src/VBox/Additions/linux/drm/vbox_ttm.c
-@@ -321,16 +321,7 @@ static struct ttm_tt *vbox_ttm_tt_create
- #if RTLNX_VER_MAX(5,10,0) && !RTLNX_RHEL_RANGE(8,5, 8,99)
- 	tt->func = &vbox_tt_backend_func;
+--- VirtualBox-7.0.10.orig/src/VBox/Additions/linux/drm/vbox_ttm.c
++++ VirtualBox-7.0.10/src/VBox/Additions/linux/drm/vbox_ttm.c
+@@ -323,18 +323,10 @@ static struct ttm_tt *vbox_ttm_tt_create
  #endif
--#if RTLNX_VER_MIN(5,19,0) || RTLNX_RHEL_MAJ_PREREQ(9,2)
+ #if RTLNX_VER_MIN(5,19,0) || RTLNX_RHEL_RANGE(8,8, 8,99) || RTLNX_RHEL_MAJ_PREREQ(9,2)
  	if (ttm_tt_init(tt, bo, page_flags, ttm_write_combined, 0)) {
 -#elif RTLNX_VER_MIN(5,11,0) || RTLNX_RHEL_RANGE(8,5, 8,99)
 -	if (ttm_tt_init(tt, bo, page_flags, ttm_write_combined)) {
@@ -94,7 +108,12 @@ Index: VirtualBox-7.0.8/src/VBox/Additions/linux/drm/vbox_ttm.c
  		kfree(tt);
  		return NULL;
  	}
-@@ -628,11 +619,7 @@ int vbox_bo_create(struct drm_device *de
+-
++#endif
+ 	return tt;
+ }
+ 
+@@ -628,11 +620,7 @@ int vbox_bo_create(struct drm_device *de
  	drm_vma_node_reset(&vboxbo->bo.base.vma_node);
  #endif
  
@@ -106,24 +125,10 @@ Index: VirtualBox-7.0.8/src/VBox/Additions/linux/drm/vbox_ttm.c
  			  ttm_bo_type_device, &vboxbo->placement,
  #if RTLNX_VER_MAX(4,17,0) && !RTLNX_RHEL_MAJ_PREREQ(7,6) && !RTLNX_SUSE_MAJ_PREREQ(15,1) && !RTLNX_SUSE_MAJ_PREREQ(12,5) && !defined(SUSE_SLE12)
  			  align >> PAGE_SHIFT, false, NULL, acc_size,
-Index: VirtualBox-7.0.8/src/libs/openssl-3.0.7/Config.kmk
+Index: VirtualBox-7.0.10/src/VBox/Additions/linux/drm/vbox_fb.c
 ===================================================================
---- VirtualBox-7.0.8.orig/src/libs/openssl-3.0.7/Config.kmk
-+++ VirtualBox-7.0.8/src/libs/openssl-3.0.7/Config.kmk
-@@ -247,9 +247,6 @@ ifneq ($(KBUILD_TARGET),win)
-  TEMPLATE_LibCrypto_ASFLAGS.amd64   = -m64
-  TEMPLATE_LibCrypto_ASDEFS          = $(NO_SUCH_VARIABLE)
-  TEMPLATE_LibCrypto_ASDEFS.darwin   = OPENSSL_MANGLE_ASM
-- if "$(VBOX_AS_VERSION)" != "" && "$(VBOX_AS_VERSION)" vlt "GNU assembler version 2.20"
--  TEMPLATE_LibCrypto_ASFLAGS.solaris = -include $(VBOX_PATH_OPENSSL)/crypto/old-solaris-asm-trick.h
-- endif
- endif
- 
- TEMPLATE_LibCrypto_DEFS = \
-Index: VirtualBox-7.0.8/src/VBox/Additions/linux/drm/vbox_fb.c
-===================================================================
---- VirtualBox-7.0.8.orig/src/VBox/Additions/linux/drm/vbox_fb.c
-+++ VirtualBox-7.0.8/src/VBox/Additions/linux/drm/vbox_fb.c
+--- VirtualBox-7.0.10.orig/src/VBox/Additions/linux/drm/vbox_fb.c
++++ VirtualBox-7.0.10/src/VBox/Additions/linux/drm/vbox_fb.c
 @@ -47,6 +47,7 @@
  #include <drm/drm_crtc.h>
  #include <drm/drm_fb_helper.h>
@@ -132,10 +137,10 @@ Index: VirtualBox-7.0.8/src/VBox/Additions/linux/drm/vbox_fb.c
  
  #include <VBoxVideo.h>
  
-Index: VirtualBox-7.0.8/src/VBox/Additions/linux/drm/vbox_mode.c
+Index: VirtualBox-7.0.10/src/VBox/Additions/linux/drm/vbox_mode.c
 ===================================================================
---- VirtualBox-7.0.8.orig/src/VBox/Additions/linux/drm/vbox_mode.c
-+++ VirtualBox-7.0.8/src/VBox/Additions/linux/drm/vbox_mode.c
+--- VirtualBox-7.0.10.orig/src/VBox/Additions/linux/drm/vbox_mode.c
++++ VirtualBox-7.0.10/src/VBox/Additions/linux/drm/vbox_mode.c
 @@ -39,10 +39,8 @@
  #include "vbox_drv.h"
  #include <linux/export.h>
@@ -148,17 +153,17 @@ Index: VirtualBox-7.0.8/src/VBox/Additions/linux/drm/vbox_mode.c
  # include <drm/drm_plane_helper.h>
  #endif
 @@ -53,6 +51,7 @@
- #if RTLNX_VER_MIN(6,0,0) || RTLNX_RHEL_MAJ_PREREQ(9,2)
+ #if RTLNX_VER_MIN(6,0,0) || RTLNX_RHEL_RANGE(8,8, 8,99) || RTLNX_RHEL_MAJ_PREREQ(9,2)
  # include <drm/drm_edid.h>
  #endif
 +#include <drm/drm_edid.h>
  
  #include "VBoxVideo.h"
  
-Index: VirtualBox-7.0.8/src/VBox/Frontends/VBoxSDL/VBoxSDL.cpp
+Index: VirtualBox-7.0.10/src/VBox/Frontends/VBoxSDL/VBoxSDL.cpp
 ===================================================================
---- VirtualBox-7.0.8.orig/src/VBox/Frontends/VBoxSDL/VBoxSDL.cpp
-+++ VirtualBox-7.0.8/src/VBox/Frontends/VBoxSDL/VBoxSDL.cpp
+--- VirtualBox-7.0.10.orig/src/VBox/Frontends/VBoxSDL/VBoxSDL.cpp
++++ VirtualBox-7.0.10/src/VBox/Frontends/VBoxSDL/VBoxSDL.cpp
 @@ -710,7 +710,7 @@ static const char *keyModToStr(unsigned
          RT_CASE_RET_STR(KMOD_NUM);
          RT_CASE_RET_STR(KMOD_CAPS);

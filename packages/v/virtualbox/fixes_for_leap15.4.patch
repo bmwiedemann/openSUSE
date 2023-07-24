@@ -1,7 +1,7 @@
-Index: VirtualBox-7.0.8/src/VBox/Frontends/VBoxSDL/VBoxSDL.cpp
+Index: VirtualBox-7.0.10/src/VBox/Frontends/VBoxSDL/VBoxSDL.cpp
 ===================================================================
---- VirtualBox-7.0.8.orig/src/VBox/Frontends/VBoxSDL/VBoxSDL.cpp
-+++ VirtualBox-7.0.8/src/VBox/Frontends/VBoxSDL/VBoxSDL.cpp
+--- VirtualBox-7.0.10.orig/src/VBox/Frontends/VBoxSDL/VBoxSDL.cpp
++++ VirtualBox-7.0.10/src/VBox/Frontends/VBoxSDL/VBoxSDL.cpp
 @@ -710,7 +710,7 @@ static const char *keyModToStr(unsigned
          RT_CASE_RET_STR(KMOD_NUM);
          RT_CASE_RET_STR(KMOD_CAPS);
