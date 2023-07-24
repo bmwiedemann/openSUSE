@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 18 12:40:31 UTC 2023 - FSchreiner@suse.com
+
+- Update to version 0.10.40:
+  * [dist] updated debian changelog
+  * Add Python 3.12 to GitHub Actions
+  * Switch from ConfigParser.readfp to ConfigParser.read_string
+
+-------------------------------------------------------------------
 Wed Jul 05 17:01:56 UTC 2023 - dmueller@suse.com
 
 - Update to version 0.10.39:

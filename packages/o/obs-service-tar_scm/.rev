@@ -1448,4 +1448,14 @@ Mon Feb  13 15:52:19 GMT 2012 - aspiers@suse.com
   * updated KankuFile to Tumbleweed and removed python2 tests</comment>
     <requestid>1096990</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>3aefd3b19e38ceb678353688715ec7b6</srcmd5>
+    <version>0.10.40</version>
+    <time>1690215147</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.10.40:
+  * Switch from ConfigParser.readfp to ConfigParser.read_string
+</comment>
+    <requestid>1099496</requestid>
+  </revision>
 </revisionlist>
