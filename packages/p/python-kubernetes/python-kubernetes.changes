@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 19 06:15:59 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- version update to 27.2.0
+  * too many changes, please refer to the CHANGELOG.md in documentation OR at
+  https://github.com/kubernetes-client/python/blob/v27.2.0/CHANGELOG.md
+
+-------------------------------------------------------------------
 Tue May 16 10:22:32 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - changes to fix unresolvable/failing package build for SLE-15-SP4, https://build.suse.de/request/show/297283 :

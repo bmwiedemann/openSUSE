@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-kubernetes
-Version:        26.1.0
+Version:        27.2.0
 Release:        0
 Summary:        Kubernetes python client
 License:        Apache-2.0
