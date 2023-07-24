@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-pyzstd
-Version:        0.15.6
+Version:        0.15.9
 Release:        0
 Summary:        Python bindings to Zstandard (zstd) compression library
 License:        BSD-3-Clause

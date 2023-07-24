@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jul 20 20:40:20 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 0.15.9
+  - ZstdFile class related changes:
+    * Add SeekableZstdFile class, it's a subclass of ZstdFile, supports
+    Zstandard Seekable Format.
+    * Add mode argument to ZstdFile.flush() method, now it can flush
+    a zstd frame.
+    * Add read_size and write_size arguments to ZstdFile.__init__()
+    method, can work with Network File Systems better.
+    * Optimize ZstdFile performance to C language level.
+- Changes from 0.15.7
+  - ZstdDict class changes:
+    * Fix these advanced compression parameters may be ignored when
+    loading a dictionary: windowLog, hashLog, chainLog, searchLog,
+    minMatch, targetLength, strategy, enableLongDistanceMatching,
+    ldmHashLog, ldmMinMatch, ldmBucketSizeLog, ldmHashRateLog,
+    and some non-public parameters.
+    * When compressing, load undigested dictionary instead of digested
+    dictionary by default. Loading again an undigested is slower, see
+    differences.
+    * Add .as_prefix attribute. Can use zstd as a patching engine.
+
+-------------------------------------------------------------------
 Tue Jun 27 13:03:38 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
