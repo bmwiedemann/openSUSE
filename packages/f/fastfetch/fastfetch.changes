@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Jul 21 07:30:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.2:
+  * Support terminator terminal version detection (Linux,
+    Terminal)
+  * Support `pkgtool` package manager detection (Linux, Packages)
+  * Support `Far` shell version detection (Windows, Shell)
+  * Fix ConEmu terminal detection in some special cases (Windows,
+    Terminal, #488)
+  * Fix incorrect Host on M2 Mac Studio with M2 Max CPU (macOS,
+    Host, #490)
+  * Support KDE / LXQT / MATE / Cinnamon wallpaper detection
+    (Wallpaper, Linux)
+  * Support QTerminal version & terminal font detection
+  * Support MATE Terminal version & terminal font detection
+  * Set `--pipe true` automatically if stdout is not a tty
+  * Detect new macs released on WWDC 2023 (macOS, Host)
+  * Count cached memory as free memory (FreeBSD, Memory)
+  * Support sound detection (FreeBSD, Sound)
+  * Fix `--logo-padding-left` doesn't work when `--logo-padding-
+    top` is set (Logo)
+  * Fix KDE version detection on Fedora (DE)
+  * Include limits.h when needed (Linux, #472)
+  * Fix Windows drives detection in WSL (Linux, Disk)
+  * Fix crash on newer wayland desktops (Linux, Display, #477)
+
+-------------------------------------------------------------------
 Mon Jun 12 09:20:12 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update to version 1.11.3:
