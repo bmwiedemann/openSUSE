@@ -31,6 +31,7 @@ Source1:        http://aubio.org/pub/%{name}-%{version}.tar.bz2.asc
 Patch0:         cdfe9ce.patch
 # PATCH-FIX-UPSTREAM https://github.com/aubio/aubio/commit/8a05420.patch -- [source_avcodec] define FF_API_LAVF_AVCTX for libavcodec > 59, thx @berolinux (closes gh-353)
 Patch1:         8a05420.patch
+Patch2:         waflib_deprecated.patch
 
 Source99:       baselibs.conf
 BuildRequires:  alsa-devel

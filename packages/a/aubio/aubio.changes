@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jul 16 09:16:44 UTC 2023 - Edgar Aichinger <edogawa@aon.at>
+
+- Add waflib_deprecated.patch (fixes TW compilation)
+
+-------------------------------------------------------------------
 Thu May  4 11:19:21 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add _multibuild to define 2nd spec file as additional flavor.
