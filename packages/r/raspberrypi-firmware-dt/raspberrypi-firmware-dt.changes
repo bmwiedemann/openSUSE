@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 18 11:25:24 UTC 2023 - Ivan Ivanov <ivan.ivanov@suse.com>
+
+- Update 0001-ARM-dts-bcm27xx-Use-better-name-for-spidev.patch description
+
+-------------------------------------------------------------------
+Mon Jul 17 14:40:37 UTC 2023 - Ivan Ivanov <ivan.ivanov@suse.com>
+
+- Use compatible string which is supported by spidev module (bsc#1212791):
+  * 0001-ARM-dts-bcm27xx-Use-better-name-for-spidev.patch
+
+-------------------------------------------------------------------
 Tue May 30 07:28:41 UTC 2023 - Ivan Ivanov <ivan.ivanov@suse.com>
 
 - Enable 3.5mm jack socket stereo audio (bsc#1209314):

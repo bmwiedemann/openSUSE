@@ -31,6 +31,7 @@ Source4:        enable-bt-overlay.dts
 Source5:        smbios-overlay.dts
 Source100:      get-from-git.sh
 Patch0:         0001-ARM-dts-bcm2711-rpi-Reuse-bcm2836-vchiq-driver.patch
+Patch1:         0001-ARM-dts-bcm27xx-Use-better-name-for-spidev.patch
 Requires:       raspberrypi-firmware
 BuildRequires:  dtc
 BuildRequires:  raspberrypi-firmware
