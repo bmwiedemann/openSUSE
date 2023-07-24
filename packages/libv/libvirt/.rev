@@ -4384,4 +4384,13 @@ StandardGroups in rpmlint package.
     parameters</comment>
     <requestid>1098574</requestid>
   </revision>
+  <revision rev="379" vrev="2">
+    <srcmd5>51e37df2b0f2d6af325465be75f3e212</srcmd5>
+    <version>9.5.0</version>
+    <time>1690215104</time>
+    <user>anag+factory</user>
+    <comment>CVE-2023-3750: storage: Fix returning of locked objects from
+'virStoragePoolObjListSearch' (bsc#1213447)</comment>
+    <requestid>1099805</requestid>
+  </revision>
 </revisionlist>

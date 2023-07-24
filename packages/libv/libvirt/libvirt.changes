@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 20 21:44:18 UTC 2023 - James Fehlig <jfehlig@suse.com>
+
+- CVE-2023-3750: storage: Fix returning of locked objects from
+  'virStoragePoolObjListSearch'
+  bsc#1213447
+
+-------------------------------------------------------------------
 Thu Jul 13 20:07:10 UTC 2023 - James Fehlig <jfehlig@suse.com>
 
 - libxl: Improve handling of errors across migration phases
