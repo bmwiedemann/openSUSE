@@ -132,6 +132,9 @@ Patch78:        openssl-1_1-Fixed-conditional-statement-testing-64-and-256-bytes
 Patch79:        openssl-1_1-Fix-AES-GCM-on-Power-8-CPUs.patch
 #PATCH-FIX-OPENSUSE bsc#1205042 Set OpenSSL 3.0 as the default openssl
 Patch80:        openssl-1_1-openssl-config.patch
+# PATCH-FIX-UPSTREAM: bsc#1213487 CVE-2023-3446 DH_check() excessive time with over sized modulus
+Patch81:        openssl-CVE-2023-3446.patch
+Patch82:        openssl-CVE-2023-3446-test.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
 Provides:       ssl
