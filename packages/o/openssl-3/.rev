@@ -127,4 +127,12 @@
   * Remove Provides: openssl(cli) - it's managed by meta package</comment>
     <requestid>1095607</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>14b050a6771a69db781f26e049e03239</srcmd5>
+    <version>3.1.1</version>
+    <time>1690215096</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1099669</requestid>
+  </revision>
 </revisionlist>
