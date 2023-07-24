@@ -24,6 +24,7 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-keyring%{psuffix}
 Version:        24.2.0
 Release:        0
@@ -44,7 +45,7 @@ Requires:       python-jeepney >= 0.4.2
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
-%{?sle15_python_module_pythons}
+
 %if 0%{python_version_nodots} < 310
 Requires:       python-importlib-resources
 %endif
