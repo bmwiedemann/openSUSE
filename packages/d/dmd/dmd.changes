@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Jul 20 20:05:43 UTC 2023 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to version 2.104.2
+  * DMD Compiler regression fixes:
+    - [REG2.102] Cannot use traits(getAttributes) with overloaded template
+    - ImportC: ICE on nested C initializer 2
+  * DMD Compiler bug fixes:
+    - Segmentation fault on mixin template + using unknown type
+    - "alias this" not properly dereferenced when the object being looked up is a field of a type
+    - error: instantiated from here: maxElement!("a.a", A[])
+  * Druntime regression fixes:
+    - "Warning: cannot inline function" in core.lifetime
+- Changes from version 2.204.1
+  * DMD Compiler regression fixes:
+    - [REG2.101.0] Appending deprecated structs in deprecated function causes deprecation message
+    - [REG 2.103.0] ICE: dip1021 memory corruption
+    - ICE on failed alias this attempt on pointer expression
+    - [REG 2.103.0] address of a __traits(getOverloads) item is not converted to a delegate anymore
+  * DMD Compiler bug fixes:
+    - Segfault for function contract -preview=dip1021
+    - ICE: Invalid array access for invalid interface definition
+    - ImportC: ICE on nested C initializer
+    - segfault when printing scope inference failure
+    - ICE: dip1021 asserts on typeof(null) parameter
+  * Phobos regression fixes:
+    - std.range.slide fails in dmd-2.104.0
+    - std.algorithm.maxElement no longer works with array of BigInt
+- Changes from version 2.104.0
+  * Compiler changes:
+    - Better error message when attribute inference fails down the call stack
+    - Using ; as an empty statement has been turned into an error
+    - Using in parameters with non extern(D)/extern(C++) functions is deprecated
+    - in ref on parameters has been deprecated in favor of -preview=in
+    - Throwing qualified objects is now deprecated
+    - User Defined Attributes now parse Template Arguments
+  * Library changes:
+    - Better static assert messages for std.algorithm.comparison.clamp
+    - std.typecons.Rebindable now supports all types
+  * Tools changes:
+    - rdmd supports -shared
+  * Dub changes:    
+    - Add new properties 'cSourcePaths' and 'cImportPaths' to SDL/JSON
+    - The way packages are stored internally has changed
+- Changes from version 2.103.1
+  * Compiler changes:
+    - Deprecate invalid special token sequences inside token strings
+  * DMD Compiler regression fixes:
+    - Header generation wrongfully outputs constructor bodies
+    - Typing invalid mnemonic in asm{} block segfault
+  * DMD Compiler bug fixes:
+    - Segmentation fault in CppMangleVisitor.headOfType
+    - Assertion failure in CppMangleVisitor.template_args
+    - Segfault for malformed static if in imported template
+  * Druntime regression fixes:
+    - [REG 2.103] Throwing while in a deep callstack causes memory corruption
+
+-------------------------------------------------------------------
 Sun Apr 16 17:15:51 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.103.0

@@ -16,10 +16,10 @@
 #
 
 
-%define sover	0_103
+%define sover	0_104
 %define bootstrap_with_gdmd 1
 Name:           dmd
-Version:        2.103.0
+Version:        2.104.2
 Release:        0
 Summary:        D Programming Language 2.0
 License:        BSL-1.0
