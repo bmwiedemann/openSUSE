@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Thu Jul 20 20:54:15 UTC 2023 - Boris Manojlovic <boris@steki.net>
+
+- updated to latest upstream release 6.0.19
+- this version fixes CVE-2023-29454 bsc#1213338
+- New Features and Improvements
+  + ZBXNEXT-8497 Removed unnecessary JavaScript preprocessing in discovery rules in Kubernetes templates
+  + ZBXNEXT-8465 Updated JavaScript scripts in Kubernetes templates
+  + ZBXNEXT-8467 Updated max supported TimescaleDB version to 2.11
+  + ZBXNEXT-7072 Fixed hintbox to be automatically closed when target element disappears
+  + ZBXNEXT-8294 Added filters of node labels and annotations for Kubelet discovery
+    in Kubernetes cluster state template
+  + ZBXNEXT-8199 Added Google cloud platform monitoring template
+  + ZBXNEXT-8330 Updated plugin support with defaults support for Zabbix agent 2
+  + ZBXNEXT-8357 Improved proxy history housekeeping when data older than ProxyOfflineBuffer is being constantly received
+  + ZBXNEXT-8142 Added ability to import configuration files with a UTF-8 Byte order mark
+  + ZBXNEXT-8209 Added Azure CosmosDB for MongoDB template
+  + ZBXNEXT-8078 Removed unnecessary new line for each element in an array when exporting YAML templates
+  + ZBXNEXT-8273 Implemented support for relative Include paths in the config file, based on its current directory
+  + ZBXNEXT-8391 Added container healthcheck metric in Docker by Zabbix agent 2 template
+  + ZBXNEXT-8354 Added pids_stats to docker.container_stats key in Zabbix agent 2
+- Bug Fixes
+  + ZBX-22987 Fixed inefficient URL schema validation
+  + ZBX-21859 Fixed active checks occasionally not being executed on Zabbix agent 2 if checks
+    for a plugin have long and short update intervals
+  + ZBX-21892 Fixed wrong fs type returned by vfs.fs.get for file systems with identical mount point
+  + ZBX-22941 Prevented clearing of the user macro secret values on inherited host prototypes as
+    the result of user macros modifications on the parent host prototype of a template
+  + ZBX-22695 Fixed eventlog duplicate timestamps
+  + ZBX-22903 Fixed scale calculation for Graph and Graph (classic) widgets
+  + ZBX-22148 Fixed the crash when updating a webhook to JavaScript that cannot be compiled
+  + ZBX-22868 Fixed Zabbix agent 2 plugin Defaults when hardcoded value is provided
+  + ZBX-22399 Added TLS and Default parameters support to MQTT plugin for Zabbix agent 2
+  + ZBX-20280 Fixed page selection in a dashboard after refresh
+  + ZBX-22883 Fixed occasional crash of user parameters on Windows when using Zabbix agent 2 with UserParameterDir defined
+  + ZBX-22805 Increased memory allocation limit for JavaScript execution from 64M to 512M
+  + ZBX-22798 Fixed incorrect output of vfs.file.contents when reading frequently modified file
+  + ZBX-21573 Optimized preprocessing steps in the AWS EC2 by HTTP template
+  + ZBX-16326 Fixed displaying of the first and last data points on the graphs
+  + ZBX-22467 Fixed missing bracket in a trigger event name in Windows templates
+  + ZBX-22738 Fixed flickering debug info while editing empty dashboards
+  + ZBX-22231 Removed host and interface macros resolution from HTTP proxy fields in items,
+    item prototype and discovery rule test dialogues
+  + ZBX-21194 Fixed filter form submission upon pressing Enter key in Safari
+  + ZBX-22762 Fixed race condition in Zabbix agent 2 when reading filesystem
+  + ZBX-21804 Removed requirement for write permissions on hosts, host groups, triggers, discovery rules,
+    discovery checks and proxies when creating or updating actions
+  + ZBX-22243 Fixed navigation away from edited dashboard without user confirmation
+  + ZBX-22418 Fixed popup form fields overlapping labels when textarea width is resized
+  + ZBX-19590 Changed count_foreach to add 0 when no data are in the requested period
+  + ZBX-22681 Fixed wrongly displayed Revert button for text macros in host, template and host prototype clone forms
+  + ZBX-22594 Fixed fatal error when a request contains invalid authentication parameters
+  + ZBX-22397 Fixed disabled input field text color in Safari
+  + ZBX-21593 Optimized preprocessing steps in the templates PostgreSQL by Zabbix agent and PostgreSQL by Zabbix agent 2
+  + ZBX-22470 Fixed hang on logging when establishing an encrypted connection in Zabbix agent 2
+  + ZBX-20263 Prevented the ability to link two or more templates with matching item keys to a host or template;
+    improved the check for double template linkage and related error messages
+  + ZBX-22571 Fixed "service not equal" action condition not working as expected
+  + ZBX-22644 Fixed Graph widget not showing all problems for multiple items with dataset aggregation enabled
+  + ZBX-22698 Fixed spelling mistakes in the templates
+  + ZBX-21883 Changed Select map field of the Map widget to multiselect
+  + ZBX-22989 Silenced null-dereference warnings for duktape
+  + ZBX-22720 Dropped support for custom geomap HTML attribution text
+  + ZBX-22604 Added new replica mismatch metrics to Kubernetes cluster state template, updated triggers
+  + ZBX-22475 Fixed regex in preprocessing parameter for Jenkins template
+  + ZBX-21910 Fixed JavaScript in Kubernetes nodes template
+  + ZBX-22773 Made NodeAddress use ListenIP and ListenPort if not specified
+  + ZBX-21613 Fixed broken database upgrade if more than one Zabbix server at the same time on one database is started
+  + ZBX-22688 Fixed AlertScriptPath not allowing links
+  + ZBX-22029 Fixed preprocessing step in Pods discovery for Kubernetes kubelet template
+  + ZBX-22234 Fixed incorrect SNMPINDEX offset retrieval in SNMP discovery
+  + ZBX-22141 Fixed attaching multiple templates with proc.get item key to one host and fixed spelling in description
+  + ZBX-22285 Fixed honoring of the excludeSearch parameter in API
+  + ZBX-20604 Fixed UserParameterDir behavior for UserParameter calls
+  + ZBX-22732 Fixed description of ATAN2 mathematical function
+  + ZBX-22664 Fixed user macros with regex context being resynced without any changes
+  + ZBX-22661 Fixed templated dashboard display in Monitoring Hosts Dashboards
+  + ZBX-21599 Optimised preprocessing steps and added dashboard in the TiDB TiKV by HTTP template
+  + ZBX-21598 Optimised preprocessing steps and added dashboard in the TiDB PD by HTTP template
+  + ZBX-21600 Optimised preprocessing steps and added dashboard in the TiDB by HTTP template
+  + ZBX-22386 Fixed encoding of HTML entities in the user interface
+  + ZBX-22714 Fixed signature for mqtt.get key in Standard items popup
+  + ZBX-21397 Fixed preprocessing step in discovery for Kubernetes kubelet template
+  + ZBX-20202 Improved tablespace handling to support Oracle multitenant architecture in Oracle by ODBC template
+  + ZBX-22713 Fixed Zabbix server compilation problem for NetBSD
+  + ZBX-21795 Fixed unhandled timeout in Telnet
+  + ZBX-21801 Fixed helper positioning when sorting Header and Query fields in item configuration form
+  + ZBX-22238 Fixed non-writable hostgroup appearance in template, host and host prototype clone forms
+  + ZBX-22192 Fixed valid widget name being reset when other widget fields are invalid
+  + ZBX-21871 Switched for the changes in users of user group API object to be audit logged
+    as updates in groups of user API objects
+  + ZBX-22461 Fixed incorrect sortable item positioning in Safari
+  + ZBX-22469 Fixed SLI calculation for services having multiple alarms per second
+  + ZBX-22859 Fixed validation of input parameters in action configuration form
+ 
+
+-------------------------------------------------------------------
 Mon May 15 16:46:46 UTC 2023 - Boris Manojlovic <boris@steki.net>
 
 - updated to latest upstream release 6.0.17
