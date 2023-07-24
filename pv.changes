@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jul 17 21:18:13 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.7.0
+  * The "--size" option now accepts "@filename" to use the size
+    of another file.
+  * New "--bits" option to show bit count instead of byte count.
+  * New "--average-rate-window" option, to set the window over
+    which the average rate is calculated, also used for ETA.
+  * The "--watchfd" option will now show relative filenames, if
+    they are under the current directory.
+  * Add burst rate limit to transfer, so rate limits are not
+    broken by bursty traffic.
+  * Corrected elapsed time display to show as D:HH:MM:SS after 1
+    day, like the ETA does.
+
+-------------------------------------------------------------------
 Fri Nov  5 19:58:05 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.6.20

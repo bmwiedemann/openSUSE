@@ -1,7 +1,7 @@
 #
 # spec file for package pv
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pv
-Version:        1.6.20
+Version:        1.7.0
 Release:        0
 Summary:        PipeViewer - Monitor the Progress of Data through Pipes
 License:        Artistic-2.0
@@ -59,7 +59,6 @@ will be until completion.
 
 %files -f %name.lang
 %license doc/COPYING
-%doc README doc/NEWS
 %_bindir/pv
 %_mandir/man1/pv.1%ext_man
 
