@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global _lto_cflags %nil
 Name:           vhs
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        CLI video recorder
 URL:            https://github.com/charmbracelet/vhs

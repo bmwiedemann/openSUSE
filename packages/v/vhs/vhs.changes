@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul 20 19:25:44 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 0.6.0:
+  * examples: glow.tape
+  * feat: add Apple Symbols font fallback for braille characters
+  * feat: add alt + shift modifiers (#316)
+  * feat(deps): bump golang.org/x/crypto from 0.8.0 to 0.10.0 (#328)
+  * add note on TypingSpeed for new users in `demo.tape` (#327)
+  * docs: fix CursorBlink example sizing
+  * docs: Set CursorBlink examples
+  * feat: setting to control cursor blinking (#324)
+  * fix: hint linguist to highlight tape files as elixir
+  * fix: set color in fish shell using correct syntax
+
+-------------------------------------------------------------------
 Sun Jun 18 00:57:46 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Update to version 0.5.0:
