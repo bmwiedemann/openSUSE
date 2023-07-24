@@ -87,4 +87,14 @@ Requires SR#908927</comment>
 </comment>
     <requestid>1056943</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9f76c5aa5a1f297313efc4c83c6c697c</srcmd5>
+    <version>1.8.1</version>
+    <time>1690215977</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.8.1
+  * allow connection options designating files to be selected as files
+</comment>
+    <requestid>1099939</requestid>
+  </revision>
 </revisionlist>

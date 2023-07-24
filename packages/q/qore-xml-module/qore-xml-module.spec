@@ -16,7 +16,7 @@
 #
 
 
-%global mod_ver 1.8.0
+%global mod_ver 1.8.1
 
 %{?_datarootdir: %global mydatarootdir %_datarootdir}
 %{!?_datarootdir: %global mydatarootdir /usr/share}
