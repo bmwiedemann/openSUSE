@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Jul 19 22:24:56 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to 4.1.27:
+  * restore missing <PAUSE> function
+  * fix and simplify navtex timing recovery logic
+  * add TEN_TEN field to log.adif file
+  * add CTRL-P as pause/break equivalent keystroke
+  * FSQ: improved s/n and squelch processing
+. faster acting squelch open/close
+. modified s/n evaluator
+  * improved s/n and squelch processing
+    + squelch opens and closes faster
+    + better s/n estimator
+  * EQSL submission: always submit last dated log entry independent 
+    of sort order
+  * wfonly fix: segmentation fault during startup, NULL control
+  * enable https queries in callook.info
+  * Miscellaneous gcc cleanup
+  * allow user to specify which avatar image to use for ifkp/thor
+    transmission
+    + recommend files be located in default <fldigi_files>/avatar/ folder
+    + file format may be gif, jpeg or png
+    + order of default file use:
+      . <configured file name>.png [PNG, jpg, JPG, jpeg, JPEG, gif]
+      . <operator call>.png
+      . <station call>.png
+    + trailing callsign modifiers will be removed from the file
+      name i.e. AE5ZA/QRP is reduced to AE5ZA
+    + different avatar can be used for IFKP and THOR
+    + configuration items are clickable images on both IFKP and THOR
+      configuration tabs.
+    + image files no longer restricted to 59x74 format.
+  * Set contest start nbr XMLRPC
+    + add set contest start number xmlrpc method, update counter
+      and current contest number
+
+-------------------------------------------------------------------
 Fri Mar 17 17:16:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.1.26:
