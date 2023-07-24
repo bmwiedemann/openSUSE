@@ -715,4 +715,41 @@
     <comment></comment>
     <requestid>1094238</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>8c0b8d067cf35dc1668f5aa9600a10ab</srcmd5>
+    <version>1.55.1</version>
+    <time>1690215122</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.55.1:
+  * Fix memory leak
+    This commit fixes memory leak that happens when
+    PUSH_PROMISE or HEADERS frame cannot be sent, and
+    nghttp2_on_stream_close_callback fails with a fatal error.
+    For example, if GOAWAY frame has been received, a 
+    HEADERS frame that opens new stream cannot be sent.
+    This issue has already been made public via CVE-2023-35945
+    by envoyproxy/envoy project.  During embargo period, the
+    patch to fix this bug was accidentally submitted to
+    nghttp2/nghttp2 repository [2]. And they decided to
+    disclose CVE early.  I was notified just 1.5 hours
+    before disclosure.  I had no time to respond.
+    PoC described in [1] is quite simple, but I think it is
+    not enough to trigger this bug.  While it is true that
+    receiving GOAWAY prevents a client from opening new stream,
+    and nghttp2 enters error handling branch, in order to cause
+    the memory leak, nghttp2_session_close_stream function
+    must return a fatal error.
+    NGHTTP2_ERR_NOMEM, as its name suggests, indicates out of
+    memory.  It is unlikely that a process gets short of
+    memory with this simple PoC scenario unless application
+    does something memory heavy processing.
+  * NGHTTP2_ERR_CALLBACK_FAILURE is returned from application
+    defined callback function (nghttp2_on_stream_close_callback, in
+    this case), which indicates something fatal happened inside a
+    callback, and a connection must be closed immediately without
+    any further action.  As nghttp2_on_stream_close_error_callback
+    documentation says, any error code other than 0 or
+    NGHTTP2_ERR_CALLBACK_FAILURE is treated as fatal</comment>
+    <requestid>1099190</requestid>
+  </revision>
 </revisionlist>

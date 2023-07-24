@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Jul 15 15:11:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.55.1:
+  * Fix memory leak
+    This commit fixes memory leak that happens when
+    PUSH_PROMISE or HEADERS frame cannot be sent, and
+    nghttp2_on_stream_close_callback fails with a fatal error.
+    For example, if GOAWAY frame has been received, a 
+    HEADERS frame that opens new stream cannot be sent.
+    This issue has already been made public via CVE-2023-35945
+    by envoyproxy/envoy project.  During embargo period, the
+    patch to fix this bug was accidentally submitted to
+    nghttp2/nghttp2 repository [2]. And they decided to
+    disclose CVE early.  I was notified just 1.5 hours
+    before disclosure.  I had no time to respond.
+    PoC described in [1] is quite simple, but I think it is
+    not enough to trigger this bug.  While it is true that
+    receiving GOAWAY prevents a client from opening new stream,
+    and nghttp2 enters error handling branch, in order to cause
+    the memory leak, nghttp2_session_close_stream function
+    must return a fatal error.
+    NGHTTP2_ERR_NOMEM, as its name suggests, indicates out of
+    memory.  It is unlikely that a process gets short of
+    memory with this simple PoC scenario unless application
+    does something memory heavy processing.
+  * NGHTTP2_ERR_CALLBACK_FAILURE is returned from application
+    defined callback function (nghttp2_on_stream_close_callback, in
+    this case), which indicates something fatal happened inside a
+    callback, and a connection must be closed immediately without
+    any further action.  As nghttp2_on_stream_close_error_callback
+    documentation says, any error code other than 0 or
+    NGHTTP2_ERR_CALLBACK_FAILURE is treated as fatal
+    error code.  More specifically, it is treated as if
+    NGHTTP2_ERR_CALLBACK_FAILURE is returned.  I guess that
+    envoy returns
+    NGHTTP2_ERR_CALLBACK_FAILURE or other error code which is
+    translated into NGHTTP2_ERR_CALLBACK_FAILURE.
+    https://github.com/envoyproxy/envoy/security/advisories/GHSA-
+    jfxv-29pc-x22r
+
+-------------------------------------------------------------------
 Tue Jun 20 20:48:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.54.0:
