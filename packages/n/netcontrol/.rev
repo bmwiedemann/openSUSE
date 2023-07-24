@@ -198,4 +198,16 @@
   [- 0001-virsh-iface-list-not-working-as-expected-bsc-1029201.patch]</comment>
     <requestid>900198</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>0c7a15ecabc83235da57e4b900daa326</srcmd5>
+    <version>0.3.2</version>
+    <time>1690215112</time>
+    <user>anag+factory</user>
+    <comment>- Fix EOF handling in xml-reader to avoid `virsh iface-*` commands 
+  hang on aarch64 (bsc#1213349)
+  [+ 0001-xml-reader-fix-xml_getc-and-xml_ungetc.patch,
+   + 0002-xml-reader-allow-uppercase-for-lt-gt-and-amp-expansi.patch]
+</comment>
+    <requestid>1099929</requestid>
+  </revision>
 </revisionlist>

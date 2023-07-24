@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 21 15:06:25 UTC 2023 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Fix EOF handling in xml-reader to avoid `virsh iface-*` commands 
+  hang on aarch64 (bsc#1213349)
+  [+ 0001-xml-reader-fix-xml_getc-and-xml_ungetc.patch,
+   + 0002-xml-reader-allow-uppercase-for-lt-gt-and-amp-expansi.patch]
+
+-------------------------------------------------------------------
 Tue Jun 15 15:48:36 UTC 2021 - Marius Tomaschewski <mt@suse.com>
 
 - version 0.3.2

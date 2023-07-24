@@ -1,7 +1,7 @@
 #
 # spec file for package netcontrol
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,8 @@ License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/System
 Source0:        %{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
+Patch1:         0001-xml-reader-fix-xml_getc-and-xml_ungetc.patch
+Patch2:         0002-xml-reader-allow-uppercase-for-lt-gt-and-amp-expansi.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?suse_version} >= 1310
 BuildRequires:  autoconf
@@ -102,6 +104,8 @@ Authors:
 
 %prep
 %setup -q
+%patch1 -p1
+%patch2 -p1
 
 %build
 export CFLAGS="-W -Wall $RPM_OPT_FLAGS"
