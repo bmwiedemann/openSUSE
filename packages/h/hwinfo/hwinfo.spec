@@ -17,7 +17,7 @@
 
 
 Name:           hwinfo
-Version:        23.1
+Version:        23.2
 %define lname	libhd%(echo "%version" | perl -pe 's{\\D.*}{}')
 Release:        0
 Summary:        Hardware Library
