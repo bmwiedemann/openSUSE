@@ -1,7 +1,7 @@
 #
 # spec file for package tcmu-runner
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@
 %bcond_with tcmalloc
 
 Name:           tcmu-runner
-Version:        1.6.0
+Version:        1.6.2
 Release:        0
 Summary:        A userspace daemon that handles the LIO TCM-User backstore
 License:        Apache-2.0
@@ -43,7 +43,6 @@ Group:          System/Management
 URL:            https://github.com/open-iscsi/%{name}
 Source:         %{name}-%{version}.tar.xz
 Patch1:         %{name}-handler_file-add-libtcmu.patch
-Patch2:         %{name}-remove-handler-path-install-prefix.patch
 Patch3:         %{name}-fix-i586-size_t-error.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  cmake
@@ -146,7 +145,6 @@ Development header(s) and lib(s) for developing against libtcmu.
 %prep
 %setup
 %patch1 -p1
-%patch2 -p1
 %patch3 -p1
 
 %build

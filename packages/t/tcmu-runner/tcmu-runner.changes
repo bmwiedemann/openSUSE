@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 11 20:05:15 UTC 2023 - lduncan@suse.com
+
+- Update to version 1.6.2:
+  * Bump version to 1.6.2
+  * tcmur_device: skip reporting events if the device is closed
+  * Bump version to 1.6.1
+  * tcmur_device: fix racy between reopening devices and reporting events
+  Also, remove patch no longer needed ,since SUSE RPM macros have
+  been updated (bsc#1212636):
+  * tcmu-runner-remove-handler-path-install-prefix.patch
+
+-------------------------------------------------------------------
 Fri Oct 14 16:14:17 UTC 2022 - lduncan@suse.com
 
 - Update to version 1.6.0 from upstream:
