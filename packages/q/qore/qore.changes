@@ -1,10 +1,40 @@
 -------------------------------------------------------------------
+Fri Jul 21 18:57:45 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Fix qore-stdlib configuration
+
+-------------------------------------------------------------------
+Tue Jul 18 08:05:16 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update to 1.16.1
+  * Add include/qore/macros-riscv.h to include_HEADERS
+  * fixed a bug in parse_datasource() parsing option values
+  * added support for a new DBI driver method
+  * Feature/4684 jdbc drivers 
+  * fixed setting connection status to OK 
+  * allow auth headers to be set with WebSocket client connect
+  * fixed a deadlock when the WebSocketClient goes out of scope
+  * allow data provider hierarchy to be browsed
+  * use delayed observable classes from factories
+  * Schema module does not report changes with negative verbose values
+  * added support for MS SQL Server DBs with the DataProvider
+  * ensure that exception attributes from ping errors
+  * Make more PowerPC platforms use the PowerPC macros 
+  * added generic search capabilities to DbDataProvider 
+  * fixed a bug in hash assignments in HashDataType 
+  * fixed ws client data providers to allow initialization
+  * fixed a bug reloading certs on running listeners
+  * added missing transaction flag to connection info for data
+  * fixed connection options
+  * allow handler information to be returned 
+
+-------------------------------------------------------------------
 Tue Jan 24 19:36:36 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Remove buildroot from mydatarootdir 
 
 -------------------------------------------------------------------
-Mon Jan 16 16:04:43 UTC 2023 - Sarah Kriesch <ada.lovelace@gmx.de>
+Mon Jan 16 16:04:43 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Update to 1.13.0
   * implemented support for including REST path args
