@@ -22,6 +22,7 @@
 %else
 %bcond_with libalternatives
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-tempora
 Version:        5.5.0
 Release:        0
@@ -45,7 +46,7 @@ BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-jaraco.functools >= 1.20
 Requires:       python-pytz
 BuildArch:      noarch
-%{?sle15_python_module_pythons}
+
 %if %{with libalternatives}
 BuildRequires:  alts
 Requires:       alts

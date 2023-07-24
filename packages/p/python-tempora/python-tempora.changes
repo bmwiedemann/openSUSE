@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 19 09:02:01 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- %{?sle15_python_module_pythons} must be at beginning to work.
+
+-------------------------------------------------------------------
 Wed Jul 12 22:50:07 UTC 2023 - Arun Persaud <arun@gmx.de>
 
 - specfile:
