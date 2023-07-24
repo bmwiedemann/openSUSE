@@ -6330,4 +6330,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.4.3 and LOCKDOWN enabled (in the last submission, the patches were still commented by mistake, so now for real)</comment>
     <requestid>1098277</requestid>
   </revision>
+  <revision rev="697" vrev="1">
+    <srcmd5>bad1f8bd4a89abd5cfe250c5f8b4b715</srcmd5>
+    <version>6.4.4</version>
+    <time>1690215129</time>
+    <user>anag+factory</user>
+    <comment>6.4.4 and other fixes</comment>
+    <requestid>1099687</requestid>
+  </revision>
 </revisionlist>

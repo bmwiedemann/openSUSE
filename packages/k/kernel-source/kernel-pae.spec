@@ -18,7 +18,7 @@
 
 
 %define srcversion 6.4
-%define patchversion 6.4.3
+%define patchversion 6.4.4
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -112,9 +112,9 @@ Name:           kernel-pae
 Summary:        Kernel with PAE Support
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.4.3
+Version:        6.4.4
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g5ab030f
+Release:        <RELEASE>.g919c802
 %else
 Release:        0
 %endif
@@ -245,10 +245,10 @@ Obsoletes:      microcode_ctl < 1.18
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-5ab030f1f07fd96746960bce337ec62fc11b6a9a
-Provides:       kernel-srchash-5ab030f1f07fd96746960bce337ec62fc11b6a9a
+Provides:       kernel-%build_flavor-base-srchash-919c802ada31ab19f558e20f85131383e507193e
+Provides:       kernel-srchash-919c802ada31ab19f558e20f85131383e507193e
 # END COMMON DEPS
-Provides:       %name-srchash-5ab030f1f07fd96746960bce337ec62fc11b6a9a
+Provides:       %name-srchash-919c802ada31ab19f558e20f85131383e507193e
 %ifarch %ix86
 Provides:       kernel-bigsmp = 2.6.17
 Obsoletes:      kernel-bigsmp <= 2.6.17
@@ -1372,8 +1372,8 @@ Obsoletes:      microcode_ctl < 1.18
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-5ab030f1f07fd96746960bce337ec62fc11b6a9a
-Provides:       kernel-srchash-5ab030f1f07fd96746960bce337ec62fc11b6a9a
+Provides:       kernel-%build_flavor-base-srchash-919c802ada31ab19f558e20f85131383e507193e
+Provides:       kernel-srchash-919c802ada31ab19f558e20f85131383e507193e
 
 %ifarch %ix86
 Provides:       kernel-vmi-base = 2.6.38

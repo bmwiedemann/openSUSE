@@ -24,10 +24,10 @@ Name:           kernel-syms
 Summary:        Kernel Symbol Versions (modversions)
 License:        GPL-2.0-only
 Group:          Development/Sources
-Version:        6.4.3
+Version:        6.4.4
 %if %using_buildservice
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g5ab030f
+Release:        <RELEASE>.g919c802
 %else
 Release:        0
 %endif
@@ -52,7 +52,7 @@ Requires:       kernel-pae-devel = %version-%source_rel
 %endif
 Requires:       pesign-obs-integration
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-5ab030f1f07fd96746960bce337ec62fc11b6a9a
+Provides:       %name-srchash-919c802ada31ab19f558e20f85131383e507193e
 Provides:       multiversion(kernel)
 Source:         README.KSYMS
 Requires:       kernel-devel%variant = %version-%source_rel
