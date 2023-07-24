@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 18 21:49:01 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- release 0.5
+  * This release mainly affects the build & distribution process -
+    the primary change to the installed contents is the removal of
+    some no-longer needed variables from the pthread-stubs.pc file.
+
+-------------------------------------------------------------------
 Wed Mar 15 09:51:54 UTC 2017 - sndirsch@suse.com
 
 - release 0.4

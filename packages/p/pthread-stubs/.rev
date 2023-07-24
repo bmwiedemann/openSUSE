@@ -27,4 +27,15 @@
     work correctly in the presence of pthread-stubs.</comment>
     <requestid>479464</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1830eca2dcc74a27447dfffec36f14d3</srcmd5>
+    <version>0.5</version>
+    <time>1690215133</time>
+    <user>anag+factory</user>
+    <comment>- release 0.5
+  * This release mainly affects the build &amp; distribution process -
+    the primary change to the installed contents is the removal of
+    some no-longer needed variables from the pthread-stubs.pc file.</comment>
+    <requestid>1099346</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package pthread-stubs
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,7 +20,7 @@
 %define name_archive libpthread-stubs
 
 Name:           pthread-stubs
-Version:        0.4
+Version:        0.5
 Release:        0
 BuildRequires:  pkg-config
 
@@ -28,13 +28,13 @@ BuildRequires:  pkg-config
 #BuildRequires:  automake
 #BuildRequires:  libtool
 
-Url:            http://xorg.freedesktop.org/
+URL:            http://xorg.freedesktop.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        The X Protocol
 License:        MIT
-Group:          Development/Libraries/X11 
+Group:          Development/Libraries/X11
 #Source URL:    http://xcb.freedesktop.org/dist/
-Source:         %{name_archive}-%{version}.tar.bz2
+Source:         %{name_archive}-%{version}.tar.xz
 
 %description
 The pthread-stubs for for X development
