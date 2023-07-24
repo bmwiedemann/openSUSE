@@ -1644,4 +1644,43 @@ So all in all: this fixes the build failures for openSUSE Tumblewee (forwarded r
     <comment></comment>
     <requestid>1090577</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>065948f207988ae20cbfb8f514ed2345</srcmd5>
+    <version>9.3p2</version>
+    <time>1690215107</time>
+    <user>anag+factory</user>
+    <comment>- Update to openssh 9.3p2
+  * No changes for askpass, see main package changelog for
+    details
+- Update to openssh 9.3p2 (bsc#1213504, CVE-2023-38408):
+  Security
+  ========
+  Fix CVE-2023-38408 - a condition where specific libaries loaded via
+  ssh-agent(1)'s PKCS#11 support could be abused to achieve remote
+  code execution via a forwarded agent socket if the following
+  conditions are met:
+  * Exploitation requires the presence of specific libraries on
+    the victim system.
+  * Remote exploitation requires that the agent was forwarded
+    to an attacker-controlled system.
+  Exploitation can also be prevented by starting ssh-agent(1) with an
+  empty PKCS#11/FIDO allowlist (ssh-agent -P '') or by configuring
+  an allowlist that contains only specific provider libraries.
+  This vulnerability was discovered and demonstrated to be exploitable
+  by the Qualys Security Advisory team. 
+ 
+  In addition to removing the main precondition for exploitation,
+  this release removes the ability for remote ssh-agent(1) clients
+  to load PKCS#11 modules by default (see below).
+  Potentially-incompatible changes
+  --------------------------------
+   * ssh-agent(8): the agent will now refuse requests to load PKCS#11
+     modules issued by remote clients by default. A flag has been added
+     to restore the previous behaviour &quot;-Oallow-remote-pkcs11&quot;.
+     Note that ssh-agent(8) depends on the SSH client to identify
+     requests that are remote. The OpenSSH &gt;=8.9 ssh(1) client does
+     this, but forwarding access to an agent socket using other tools
+     may circumvent this restriction. (forwarded request 1099810 from simotek)</comment>
+    <requestid>1099856</requestid>
+  </revision>
 </revisionlist>

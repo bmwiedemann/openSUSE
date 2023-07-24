@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 21 05:13:56 UTC 2023 - Simon Lees <sflees@suse.de>
+
+- Update to openssh 9.3p2
+  * No changes for askpass, see main package changelog for
+    details
+
+-------------------------------------------------------------------
 Sun May 28 09:16:44 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - openssh-askpass-gnome: require only openssh-clients, not the full
