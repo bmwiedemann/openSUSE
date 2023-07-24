@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Jul 20 20:38:02 UTC 2023 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to 1.33.0 
+  * Add collection of c sources and headers to dub by @cschlote in #2544
+  * update version to v1.32.0-beta.1 by @ibuclaw in #2609
+  * Don't depend on the whole of Vibe.d for the test_registry by @Geod24 in #2612
+  * Upgrade dependencies by @Geod24 in #2613
+  * Make all static library exports contribute to dlls on Windows by @rikkimax in #2614
+  * Revert "Make all static library exports contribute to dlls on Windows" by @Geod24 in #2616
+  * PackageManager: Store packages hierarchically, by version by @Geod24 in #2610
+  * add pr_info GitHub actions run by @WebFreak001 in #2586
+  * try to fix pr_info permissions problem by @WebFreak001 in #2621
+  * fix pr_info_post file paths by @WebFreak001 in #2622
+  * update version to v1.32.0-rc.1 by @ibuclaw in #2625
+  * merge stable by @ibuclaw in #2628
+  * update version to v1.32.1-beta.1 by @ibuclaw in #2631
+  * update version to v1.32.1 by @ibuclaw in #2634
+
+-------------------------------------------------------------------
+Wed May  3 07:29:25 UTC 2023 - Deepthi Yadabettu Venkatachala <deepthi.venkatachala@suse.com>
+
+- Update to 1.32.1
+  * Implement --color=auto|always|never, fix #2410 by @WebFreak001 
+    in #2552
+  * update version to v1.31.0-beta.1 by @ibuclaw in #2555
+  * Remove GeneratorSettings.direct as it is never set by @Geod24 in #2559
+  * Fix various DDOC warnings by @Geod24 in #2558
+  * Don't assume the cache path is relative to CWD by @Geod24 in #2557
+  * replace std.variant with std.sumtype by @WebFreak001 in #2550
+  * add markdown documentation generator to gen_man.d by @WebFreak001 
+    in #2563
+  * update version to v1.31.0-rc.1 by @ibuclaw in #2565
+  * Fix typo in subpackage license warning by @zyedidia in #2576
+  * merge stable by @ibuclaw in #2578
+  * fix man page generator by @WebFreak001 in #2571
+  * fix typo(s) by @WebFreak001 in #2564
+  * Add betterC support - fixes #1636 by @etcimon in #2581
+  * merge stable by @ibuclaw in #2591
+  * Add OpenBSD package to README.md by @ibara in #2592
+  * Fix #2574: Suggest alternative spelling when a command is mistyped by 
+    @elvodqa in #2593
+  * improve warning messages, especially with ~branch by @WebFreak001 in #2585
+  * reintroduce dmd-latest to CI runner by @WebFreak001 in #2594
+  * merge stable by @ibuclaw in #2595
+  * make build names much smaller by @WebFreak001 in #2589
+  * Make getDUBExePath returns a NativePath by @Geod24 in #2604
+ 
+-------------------------------------------------------------------
 Thu Nov 17 12:59:32 UTC 2022 - Chris Josten <chris+suse@netsoj.nl>
 
 - Update to 1.29.0
