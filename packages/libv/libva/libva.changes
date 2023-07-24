@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 21 06:44:01 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.19.0:
+  * add: Add mono_chrome to VAEncSequenceParameterBufferAV1
+  * add: Enable support for license acquisition of multiple protected
+    playbacks
+  * fix: use secure_getenv instead of getenv
+  * trace: Improve and add VA trace log for AV1 encode
+  * trace: Unify va log message, replace va_TracePrint with va_TraceMsg.
+
+-------------------------------------------------------------------
 Thu Apr 27 11:19:52 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - reintroduce propagate-dpy.patch (regression fix), since the issue
