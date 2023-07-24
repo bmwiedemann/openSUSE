@@ -1,0 +1,48 @@
+diff -Nur orig-rygel-0.42.3/subprojects/gssdp-1.2.wrap rygel-0.42.3/subprojects/gssdp-1.2.wrap
+--- orig-rygel-0.42.3/subprojects/gssdp-1.2.wrap	2023-04-22 20:51:10.000000000 +0200
++++ rygel-0.42.3/subprojects/gssdp-1.2.wrap	2023-07-19 11:56:43.132653123 +0200
+@@ -3,6 +3,6 @@
+ revision = master
+ depth = 1
+  
+-[provides]
+-dependency_name = gssdp-1.2
++[provide]
++dependency_names = gssdp-1.2
+ 
+diff -Nur orig-rygel-0.42.3/subprojects/gupnp-1.2.wrap rygel-0.42.3/subprojects/gupnp-1.2.wrap
+--- orig-rygel-0.42.3/subprojects/gupnp-1.2.wrap	2023-04-22 20:51:10.000000000 +0200
++++ rygel-0.42.3/subprojects/gupnp-1.2.wrap	2023-07-19 11:56:58.012901055 +0200
+@@ -3,6 +3,6 @@
+ revision = master
+ depth = 1
+ 
+-[provides]
+-dependency_name = gupnp-1.2
++[provide]
++dependency_names = gupnp-1.2
+ 
+diff -Nur orig-rygel-0.42.3/subprojects/gupnp-av-1.0.wrap rygel-0.42.3/subprojects/gupnp-av-1.0.wrap
+--- orig-rygel-0.42.3/subprojects/gupnp-av-1.0.wrap	2023-04-22 20:51:10.000000000 +0200
++++ rygel-0.42.3/subprojects/gupnp-av-1.0.wrap	2023-07-19 11:57:23.470001501 +0200
+@@ -3,6 +3,6 @@
+ revision = master
+ depth = 1
+  
+-[provides]
+-dependency_name = gupnp-av-1.0
++[provide]
++dependency_names = gupnp-av-1.0
+ 
+diff -Nur orig-rygel-0.42.3/subprojects/gupnp-dlna-2.0.wrap rygel-0.42.3/subprojects/gupnp-dlna-2.0.wrap
+--- orig-rygel-0.42.3/subprojects/gupnp-dlna-2.0.wrap	2023-04-22 20:51:10.000000000 +0200
++++ rygel-0.42.3/subprojects/gupnp-dlna-2.0.wrap	2023-07-19 11:57:16.846554238 +0200
+@@ -3,6 +3,6 @@
+ revision = master
+ depth = 1
+ 
+-[provides]
+-dependency_name = gupnp-dlna-2.0, gupnp-dlna-gst-2.0
++[provide]
++dependency_names = gupnp-dlna-2.0, gupnp-dlna-gst-2.0
+ 
