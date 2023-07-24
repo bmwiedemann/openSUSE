@@ -17,7 +17,7 @@
 
 
 Name:           foot
-Version:        1.15.0
+Version:        1.15.1
 Release:        0
 Summary:        A Wayland terminal emulator
 License:        MIT
@@ -108,8 +108,8 @@ mv %{buildroot}/%{_datadir}/terminfo/f/foot-direct %{buildroot}/%{_datadir}/term
 %{_mandir}/man1/footclient.1.gz
 %{_mandir}/man5/foot.ini.5.gz
 %{_mandir}/man7/foot-ctlseqs.7.gz
-%{_userunitdir}/foot-server@.service
-%{_userunitdir}/foot-server@.socket
+%{_userunitdir}/foot-server.service
+%{_userunitdir}/foot-server.socket
 
 %files extra-terminfo
 %{_datadir}/terminfo/f/foot-extra

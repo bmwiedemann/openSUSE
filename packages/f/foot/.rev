@@ -411,4 +411,20 @@
   * Drop 0005-fix-wayland-protocols-1.32.patch</comment>
     <requestid>1098718</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>59aac086b54f51b5aa9456aeef6ef486</srcmd5>
+    <version>1.15.1</version>
+    <time>1690215949</time>
+    <user>anag+factory</user>
+    <comment>- Update to v1.15.1:
+  * Background transparency (alpha) is now disabled in fullscreened windows.
+  * systemd service and socket units of foot-server are no longer instanced
+    on the WAYLAND_DISPLAY env var. They are now singletons and part of
+    the standard graphical-session.target. This also means the socket path
+    does not incorporate the WAYLAND_DISPLAY value. The list of socket paths
+    that footclient tries to connect to has been updated accordingly.
+  * Fixed various bugs related to fractional scaling, font sizes, and more.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.15.1 for more details.</comment>
+    <requestid>1099851</requestid>
+  </revision>
 </revisionlist>

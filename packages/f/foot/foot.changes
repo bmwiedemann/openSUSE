@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul 21 07:11:08 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.15.1:
+  * Background transparency (alpha) is now disabled in fullscreened windows.
+  * systemd service and socket units of foot-server are no longer instanced
+    on the WAYLAND_DISPLAY env var. They are now singletons and part of
+    the standard graphical-session.target. This also means the socket path
+    does not incorporate the WAYLAND_DISPLAY value. The list of socket paths
+    that footclient tries to connect to has been updated accordingly.
+  * Fixed various bugs related to fractional scaling, font sizes, and more.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.15.1 for more details.
+
+-------------------------------------------------------------------
 Fri Jul 14 15:49:39 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to v1.15.0:
