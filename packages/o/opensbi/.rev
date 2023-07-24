@@ -150,4 +150,15 @@
   * Bring back no-map DT property for reserved memory nodes (forwarded request 1095418 from Andreas_Schwab)</comment>
     <requestid>1095419</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>83d540cab73662104d0ca88911bcc8e7</srcmd5>
+    <version>1.3.1</version>
+    <time>1690215887</time>
+    <user>anag+factory</user>
+    <comment>- Update to opensbi 1.3.1
+  * ACLINT driver fix for disabled CPUs
+  * SBI PMU fix for out-of-bound access
+  * Designware GPIO driver (forwarded request 1099547 from Andreas_Schwab)</comment>
+    <requestid>1099548</requestid>
+  </revision>
 </revisionlist>
