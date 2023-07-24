@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 21 20:49:06 UTC 2023 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.40.4:
+  + Fix a bug in JavaScript reading variable arguments in a call.
+
+-------------------------------------------------------------------
 Wed Jun 28 16:41:25 UTC 2023 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.40.3 (boo#1212863):
