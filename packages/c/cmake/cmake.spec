@@ -44,9 +44,9 @@
 %else
 %bcond_with full
 %endif
-%define shortversion 3.26
+%define shortversion 3.27
 Name:           cmake%{?psuffix}
-Version:        3.26.4
+Version:        3.27.0
 Release:        0
 Summary:        Cross-platform make system
 License:        BSD-3-Clause
@@ -63,8 +63,6 @@ Source99:       README.SUSE
 Patch0:         cmake-fix-ruby-test.patch
 # Search for python interpreters from newest to oldest rather then picking up /usr/bin/python as first choice
 Patch1:         feature-suse-python-interp-search-order.patch
-Patch2:         cmake-fix-png-include-dir.patch
-Patch3:         glibc-236.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -158,6 +156,7 @@ export CXXFLAGS="$CFLAGS"
     --docdir=/share/doc/packages/cmake \
     --mandir=/share/man \
     --system-libs \
+    --no-system-cppdap \
 %if %{with mini}
     --no-system-curl \
     --no-system-nghttp2 \

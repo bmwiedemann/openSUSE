@@ -2094,4 +2094,12 @@ Adjust cmake-gui.spec so it uses 2.8.12.1 (forwarded request 208241 from sumski)
     <comment>- rebuild cmake-full on libuv updates (bsc#1212090)</comment>
     <requestid>1097048</requestid>
   </revision>
+  <revision rev="237" vrev="1">
+    <srcmd5>2ee0db2766bbe35d4e7c56378cf12c48</srcmd5>
+    <version>3.27.0</version>
+    <time>1690215108</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1099857</requestid>
+  </revision>
 </revisionlist>

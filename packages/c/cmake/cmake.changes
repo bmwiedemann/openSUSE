@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jul 18 20:29:18 UTC 2023 - Christoph G <foss@grueninger.de>
+
+- Update to 3.27.0
+  * “cmake(1)” now supports interactive debugging of the CMake language.
+    See the “–debugger” option.
+  * The “SKIP_LINTING” source file property was added to suppress
+    target-wide code checks on specific sources.
+  * The “COMPILE_ONLY” generator expression was added to specify
+    compilation usage requirements without any linking requirements.
+  * The “FindCUDA” module, which has been deprecated since CMake 3.10,
+    has been removed by policy “CMP0146”.
+  * The “FindPythonInterp” and “FindPythonLibs” modules, which have been
+    deprecated since CMake 3.12, have been removed by policy “CMP0148”.
+    Port projects to “FindPython3”, “FindPython2”, or “FindPython”.
+  * “cmake –build $dir –verbose” will now print the working directory
+    and command line used to perform the build.
+- Debug feature introduces new dependency to cppdap which is not
+  yet packaged. Thus we use cppdap code provided by CMake.
+- Drop cmake-fix-png-include-dir.patch and glibc-236.patch as they
+  are included in this release
+
+-------------------------------------------------------------------
 Thu Jul  6 07:16:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - rebuild cmake-full on libuv updates (bsc#1212090)
