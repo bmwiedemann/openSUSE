@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-hangul
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ibus-hangul
-Version:        1.5.4
+Version:        1.5.5
 Release:        0
 Summary:        The Hangul engine for IBus input platform
 License:        GPL-2.0-or-later
@@ -34,8 +34,8 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(ibus-1.0)
 BuildRequires:  pkgconfig(libhangul)
 BuildRequires:  pkgconfig(python3)
-Requires:       python3-gobject
 Requires:       ibus
+Requires:       python3-gobject
 # Make sure there is a font available. Pango 1.44 requires
 # a scalable font. However, since scalable-font-ko does not
 # pull the current default Korean font, Noto Sans KR, thereby
