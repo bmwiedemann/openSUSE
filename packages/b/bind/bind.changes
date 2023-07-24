@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jul 19 10:34:30 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 9.18.17
+  Feature Changes:
+  * If a response from an authoritative server has its RCODE set to
+    FORMERR and contains an echoed EDNS COOKIE option that was
+    present in the query, named now retries sending the query to
+    the same server without an EDNS COOKIE option.
+  * The relaxed QNAME minimization mode now uses NS records. This
+    reduces the number of queries named makes when resolving, as it
+    allows the non-existence of NS RRsets at non-referral nodes to
+    be cached in addition to the normally cached referrals.
+
+  Bug Fixes:
+  * The ability to read HMAC-MD5 key files, which was accidentally
+    lost in BIND 9.18.8, has been restored.
+  * Several minor stability issues with the catalog zone
+    implementation have been fixed.
+
+-------------------------------------------------------------------
 Thu Jul 13 15:00:12 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Enable dnstap support
