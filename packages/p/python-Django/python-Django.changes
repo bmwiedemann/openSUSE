@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 18 12:50:29 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream sanitize_address.patch
+  * fixes build with yet another CPython upstream fix (bsc#1210638)
+
+-------------------------------------------------------------------
 Mon Jul 10 09:28:42 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 4.2.3 (bsc#1212742, CVE-2023-36053)
