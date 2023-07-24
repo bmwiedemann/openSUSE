@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jul 21 06:07:38 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.15.4:
+  * Prepare for v0.15.4 release
+  * connectivity: add xfrm error check for IPsec conn disrupt test
+  * connectivity: generalize upgrade test
+  * chore(deps): update docker.io/library/busybox:stable-glibc
+    docker digest to 7338d0c
+  * kind: Configure external targets inside the cluster
+  * connectivity: Add an error log exception
+  * connectivity: Add flags to override CA bundle secret
+  * connectivity: Bump test-conn-disrupt img to v0.0.4
+  * Update stable release to v0.15.3
+
+-------------------------------------------------------------------
 Tue Jul 18 04:50:17 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.15.3:
