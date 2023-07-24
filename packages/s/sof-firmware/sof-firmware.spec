@@ -20,14 +20,14 @@
 %define _firmwaredir /lib/firmware
 %endif
 
-%define sofversion  2.2.5
-%define tplgversion 2.2.5
+%define sofversion  2.2.6
+%define tplgversion 2.2.6
 
 Name:           sof-firmware
 Summary:        Firmware data files for SOF Drivers
 License:        BSD-3-Clause
 Group:          Hardware/Other
-Version:        2.2.5
+Version:        2.2.6
 Release:        0
 URL:            https://www.sofproject.org/
 BuildRequires:  fdupes
@@ -102,7 +102,7 @@ ln -s sof-tplg-v%{tplgversion} %{buildroot}%{_firmwaredir}/intel/sof-tplg
 %fdupes -s %{buildroot}
 
 %files
-%license LICENCE.*
+%license LICENCE.* Notice.NXP
 %doc README.*
 %{_firmwaredir}/*
 
