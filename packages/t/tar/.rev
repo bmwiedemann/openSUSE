@@ -630,4 +630,12 @@
   * go-testsuite-test-hang.patch</comment>
     <requestid>1068196</requestid>
   </revision>
+  <revision rev="81" vrev="11">
+    <srcmd5>b305f2175783fca360991c68286c33f7</srcmd5>
+    <version>1.34</version>
+    <time>1690215098</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1099736</requestid>
+  </revision>
 </revisionlist>
