@@ -18,7 +18,7 @@
 
 
 %undefine _build_create_debug
-%global openssl_version 1.1.1n
+%global openssl_version 1.1.1t
 %global softfloat_version b64af41c3276f
 %if 0%{?suse_version} < 1599
 %bcond_with build_riscv64
@@ -27,16 +27,17 @@
 %endif
 
 Name:           ovmf
-Version:        202302
+Version:        202305
 Release:        0
 Summary:        Open Virtual Machine Firmware
 License:        BSD-2-Clause-Patent
 Group:          System/Emulators/PC
 URL:            https://github.com/tianocore/edk2
-Source0:        edk2-stable%{version}.tar.gz
-Source1:        https://www.openssl.org/source/openssl-%{openssl_version}.tar.gz
-Source111:      https://www.openssl.org/source/openssl-%{openssl_version}.tar.gz.asc
+Source0:        edk2-edk2-stable%{version}.tar.gz
+Source1:        https://www.openssl.org/source/old/1.1.1/openssl-%{openssl_version}.tar.gz
+Source111:      https://www.openssl.org/source/old/1.1.1/openssl-%{openssl_version}.tar.gz.asc
 Source112:      openssl.keyring
+Source113:      openssl.keyring.README
 Source2:        README
 Source3:        SLES-UEFI-CA-Certificate-2048.crt
 Source4:        openSUSE-UEFI-CA-Certificate-2048.crt
@@ -46,6 +47,8 @@ Source6:        berkeley-softfloat-3-%{softfloat_version}.tar.xz
 Source7:        descriptors.tar.xz
 # oniguruma: https://github.com/kkos/oniguruma,  "src" directory only
 Source8:        oniguruma-v6.9.4_mark1-src.tar.xz
+# public-mipi-sys-t: https://github.com/MIPI-Alliance/public-mipi-sys-t
+Source9:        public-mipi-sys-t-1.1-edk2.tar.gz
 Source100:      %{name}-rpmlintrc
 Source101:      gdb_uefi.py.in
 Source102:      gen-key-enrollment-iso.sh
@@ -57,19 +60,14 @@ Patch4:         %{name}-set-fixed-enroll-time.patch
 Patch5:         %{name}-disable-brotli.patch
 Patch6:         %{name}-ignore-spurious-GCC-12-warning.patch
 # Bug 1205978 - Got Page-Fault exception when VM is booting with edk2-stable202211 ovmf
-Patch7:         %{name}-Revert-OvmfPkg-PlatformInitLib-reorder-PlatformQemuU.patch
-Patch8:         %{name}-Revert-OvmfPkg-PlatformInitLib-Add-PlatformReservati.patch
-Patch9:         %{name}-Revert-OvmfPkg-PlatformInitLib-Add-PlatformAddHobCB.patch
-Patch10:        %{name}-Revert-OvmfPkg-PlatformInitLib-Add-PlatformGetLowMem.patch
-Patch11:        %{name}-Revert-OvmfPkg-PlatformInitLib-Add-PlatformScanE820-.patch
-Patch12:        %{name}-Revert-OvmfPkg-PlatformInitLib-dynamic-mmio-window-s.patch
+Patch7:         %{name}-Revert-OvmfPkg-PlatformInitLib-dynamic-mmio-window-s.patch
 # Bug 1207095 - ASSERT [ArmCpuDxe] /home/abuild/rpmbuild/BUILD/edk2-edk2-stable202211/ArmPkg/Library/DefaultExceptionHandlerLib/AArch64/DefaultExceptionHandler.c(333): ((BOOLEAN)(0==1))
-Patch13:        %{name}-Revert-ArmVirtPkg-make-EFI_LOADER_DATA-non-executabl.patch
+Patch8:         %{name}-Revert-ArmVirtPkg-make-EFI_LOADER_DATA-non-executabl.patch
 # Bug 1205613 - L3: win 2k22 UEFI xen VMs cannot boot in xen after upgrade
-Patch14:        %{name}-Revert-OvmfPkg-OvmfXen-Set-PcdFSBClock.patch
+Patch9:         %{name}-Revert-OvmfPkg-OvmfXen-Set-PcdFSBClock.patch
 # Bug 1209266 - OVMF firmware hangs when booting SEV or SEV-ES guest
-Patch15:        %{name}-Revert-OvmfPkg-PlatformPei-Update-ReserveEmuVariable.patch
-Patch16:        ovmf-riscv64-missing-memcpy.patch
+Patch10:        %{name}-Revert-OvmfPkg-PlatformPei-Update-ReserveEmuVariable.patch
+Patch11:        ovmf-riscv64-missing-memcpy.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -88,27 +86,19 @@ BuildRequires:  qemu-arm >= 3.0.0
 BuildRequires:  qemu-ipxe
 BuildRequires:  qemu-x86 >= 3.0.0
 BuildRequires:  unzip
-%ifarch x86_64
+%ifnarch aarch64
 BuildRequires:  cross-aarch64-binutils
 BuildRequires:  cross-aarch64-gcc%{gcc_version}
+%endif
+%ifnarch x86_64
+BuildRequires:  cross-x86_64-binutils
+BuildRequires:  cross-x86_64-gcc%{gcc_version}
+%endif
+%ifnarch riscv64
 %if %{with build_riscv64}
 BuildRequires:  cross-riscv64-binutils
 BuildRequires:  cross-riscv64-gcc%{gcc_version}
 %endif
-%endif
-%ifarch aarch64
-BuildRequires:  cross-x86_64-binutils
-BuildRequires:  cross-x86_64-gcc%{gcc_version}
-%if %{with build_riscv64}
-BuildRequires:  cross-riscv64-binutils
-BuildRequires:  cross-riscv64-gcc%{gcc_version}
-%endif
-%endif
-%ifarch riscv64
-BuildRequires:  cross-x86_64-binutils
-BuildRequires:  cross-x86_64-gcc%{gcc_version}
-BuildRequires:  cross-aarch64-binutils
-BuildRequires:  cross-aarch64-gcc%{gcc_version}
 %endif
 # Only build on the architectures with
 #  1. cross-compilers, 2. iasl, 3. qemu-arm and qemu-x86
@@ -215,11 +205,6 @@ rm -rf $PKG_TO_REMOVE
 %patch9 -p1
 %patch10 -p1
 %patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl
@@ -237,6 +222,11 @@ tar -xf %{SOURCE7}
 # add oniguruma
 pushd MdeModulePkg/Universal/RegularExpressionDxe/oniguruma
 tar -xf %{SOURCE8} --strip 1
+popd
+
+# add public-mipi-sys-t
+pushd MdePkg/Library/MipiSysTLib/mipisyst
+tar -xf %{SOURCE9} --strip 1
 popd
 
 chmod +x %{SOURCE102}
@@ -615,7 +605,8 @@ install -m 0644 X64/*.efi %{buildroot}/%{_datadir}/ovmf/
 install -m 0644 AARCH64/*.efi %{buildroot}/%{_datadir}/ovmf/
 %endif
 %ifarch riscv64
-install -m 0644 RISCV64/*.efi %{buildroot}/%{_datadir}/ovmf/
+# Nothing there yet
+#install -m 0644 RISCV64/*.efi %{buildroot}/%{_datadir}/ovmf/
 %endif
 
 %if %{without build_riscv64}
@@ -625,7 +616,9 @@ rm %{buildroot}%{_datadir}/qemu/firmware/*-riscv64*.json
 %files
 %doc README
 %dir %{_datadir}/ovmf/
+%ifnarch riscv64
 %{_datadir}/ovmf/*.efi
+%endif
 %{_datadir}/ovmf/*.sh
 
 %files tools

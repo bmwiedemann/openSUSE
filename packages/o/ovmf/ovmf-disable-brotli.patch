@@ -14,11 +14,11 @@ Signed-off-by: Gary Lin <glin@suse.com>
  MdeModulePkg/MdeModulePkg.dsc  | 1 -
  3 files changed, 5 deletions(-)
 
-diff --git a/BaseTools/Source/C/GNUmakefile b/BaseTools/Source/C/GNUmakefile
-index 8c191e0c3817..3eae824a1c31 100644
---- a/BaseTools/Source/C/GNUmakefile
-+++ b/BaseTools/Source/C/GNUmakefile
-@@ -48,7 +48,6 @@ all: makerootdir subdirs
+Index: edk2-edk2-stable202305/BaseTools/Source/C/GNUmakefile
+===================================================================
+--- edk2-edk2-stable202305.orig/BaseTools/Source/C/GNUmakefile
++++ edk2-edk2-stable202305/BaseTools/Source/C/GNUmakefile
+@@ -51,7 +51,6 @@ all: makerootdir subdirs
  LIBRARIES = Common
  VFRAUTOGEN = VfrCompile/VfrLexer.h
  APPLICATIONS = \
@@ -26,13 +26,13 @@ index 8c191e0c3817..3eae824a1c31 100644
    VfrCompile \
    EfiRom \
    GenFfs \
-diff --git a/MdeModulePkg/MdeModulePkg.dec b/MdeModulePkg/MdeModulePkg.dec
-index 148395511034..07952103e6e2 100644
---- a/MdeModulePkg/MdeModulePkg.dec
-+++ b/MdeModulePkg/MdeModulePkg.dec
-@@ -24,9 +24,6 @@ [Defines]
- [Includes]
+Index: edk2-edk2-stable202305/MdeModulePkg/MdeModulePkg.dec
+===================================================================
+--- edk2-edk2-stable202305.orig/MdeModulePkg/MdeModulePkg.dec
++++ edk2-edk2-stable202305/MdeModulePkg/MdeModulePkg.dec
+@@ -26,9 +26,6 @@
    Include
+   Test/Mock/Include
  
 -[Includes.Common.Private]
 -  Library/BrotliCustomDecompressLib/brotli/c/include
@@ -40,11 +40,11 @@ index 148395511034..07952103e6e2 100644
  [LibraryClasses]
    ##  @libraryclass  Defines a set of methods to reset whole system.
    ResetSystemLib|Include/Library/ResetSystemLib.h
-diff --git a/MdeModulePkg/MdeModulePkg.dsc b/MdeModulePkg/MdeModulePkg.dsc
-index 132fb36d954c..1c9313227b37 100644
---- a/MdeModulePkg/MdeModulePkg.dsc
-+++ b/MdeModulePkg/MdeModulePkg.dsc
-@@ -445,7 +445,6 @@ [Components.IA32, Components.X64, Components.AARCH64]
+Index: edk2-edk2-stable202305/MdeModulePkg/MdeModulePkg.dsc
+===================================================================
+--- edk2-edk2-stable202305.orig/MdeModulePkg/MdeModulePkg.dsc
++++ edk2-edk2-stable202305/MdeModulePkg/MdeModulePkg.dsc
+@@ -453,7 +453,6 @@
    MdeModulePkg/Universal/EbcDxe/EbcDebuggerConfig.inf
  
  [Components.IA32, Components.X64, Components.ARM, Components.AARCH64]
@@ -52,6 +52,3 @@ index 132fb36d954c..1c9313227b37 100644
    MdeModulePkg/Library/LzmaCustomDecompressLib/LzmaCustomDecompressLib.inf
    MdeModulePkg/Library/VarCheckUefiLib/VarCheckUefiLib.inf
    MdeModulePkg/Core/Dxe/DxeMain.inf {
--- 
-2.29.2
-
