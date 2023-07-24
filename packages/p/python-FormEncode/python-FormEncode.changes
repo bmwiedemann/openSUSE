@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 18 02:48:07 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Clean up Python 2 leftovers.
+- Switch to pyproject macros.
+- Drop BuildRequires on setuptools_scm_git_archive
+
+-------------------------------------------------------------------
 Fri Apr 21 12:20:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

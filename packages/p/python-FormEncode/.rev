@@ -148,4 +148,14 @@
     <comment></comment>
     <requestid>1082041</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>094cfca47f0329b53866eb27d4f4467f</srcmd5>
+    <version>2.0.1</version>
+    <time>1690215120</time>
+    <user>anag+factory</user>
+    <comment>- Clean up Python 2 leftovers.
+- Switch to pyproject macros.
+- Drop BuildRequires on setuptools_scm_git_archive</comment>
+    <requestid>1099155</requestid>
+  </revision>
 </revisionlist>

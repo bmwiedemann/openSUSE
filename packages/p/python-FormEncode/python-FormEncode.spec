@@ -16,9 +16,6 @@
 #
 
 
-%define oldpython python
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
 %{?sle15_python_module_pythons}
 Name:           python-FormEncode
 Version:        2.0.1
@@ -29,20 +26,17 @@ Group:          Development/Languages/Python
 URL:            http://formencode.org
 Source:         https://files.pythonhosted.org/packages/source/F/FormEncode/FormEncode-%{version}.tar.gz
 BuildRequires:  %{python_module dnspython}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycountry}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools_scm_git_archive}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six
 BuildArch:      noarch
-%ifpython2
-Provides:       %{oldpython}-formencode = %{version}
-Obsoletes:      %{oldpython}-formencode < %{version}
-%endif
 %python_subpackages
 
 %description
@@ -54,10 +48,10 @@ for filling and generating forms.
 %setup -q -n FormEncode-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 rm %{buildroot}%{_prefix}/LICENSE.txt
 # trick find-lang.sh into finding the translation files
 %python_expand mv %{buildroot}%{$python_sitelib}/formencode/{i18n,locale}
