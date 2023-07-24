@@ -17,6 +17,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-rich
 Version:        13.4.2
 Release:        0
@@ -37,7 +38,7 @@ Requires:       python-markdown-it-py >= 2.2.0
 Requires:       python-pygments >= 2.13.0
 Suggests:       python-ipywidgets >= 7.5.1
 BuildArch:      noarch
-%{?sle15_python_module_pythons}
+
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
