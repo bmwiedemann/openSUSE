@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul 18 14:41:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.17.0:
+  * Implement `LPOS` #207, `LMPOP` #184, and `BLMPOP` #183
+  * Implement `ZMPOP` #191, `BZMPOP` #186
+  * Fix incorrect error msg for group not found #210
+  * fix: use same server_key within pipeline when issued watch
+    issue with ZRANGE and ZRANGESTORE with BYLEX #214
+  * Implemented support for `JSON.MSET` #174, `JSON.MERGE` #181
+  * Add support for version for async FakeRedis #205
+  * Updated how to test django_rq #204
+
+-------------------------------------------------------------------
 Sat Jul  1 20:33:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.15.0:
