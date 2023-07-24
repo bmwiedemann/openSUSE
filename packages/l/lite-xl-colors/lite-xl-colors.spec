@@ -1,7 +1,7 @@
 #
 # spec file for package lite-xl-colors
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 %define programname lite-xl
 Name:           lite-xl-colors
-Version:        git20221219.b3a9cdd
+Version:        git20230412.000e6aa
 Release:        0
 Summary:        Additional colors for %{programname}
 License:        MIT
@@ -36,18 +36,14 @@ Color themes for the Lite XL text editor, originally forked from the lite colors
 
 %install
 mkdir -p %{buildroot}%{_datadir}/%{programname}/colors
-mkdir -p %{buildroot}%{_datadir}/doc/%{name}
 install -D -m644 colors/* %{buildroot}%{_datadir}/%{programname}/colors
-install -D -m644 LICENSE %{buildroot}%{_datadir}/doc/%{name}/LICENSE
-install -D -m644 README.md %{buildroot}%{_datadir}/doc/%{name}/README.md
 
 %files
+%doc README.md
+%license LICENSE
 %dir %{_datadir}/%{programname}
 %dir %{_datadir}/%{programname}/colors
-%dir %{_datadir}/doc/%{name}
 %{_datadir}/%{programname}/colors/*
-%{_datadir}/doc/%{name}/LICENSE
-%{_datadir}/doc/%{name}/README.md
 
 %changelog
 

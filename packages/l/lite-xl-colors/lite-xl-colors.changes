@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jul 12 16:51:12 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version git20230412.000e6aa:
+  * Add rose-pine themes (#22)
+  * Sort README
+  * Add everforest Theme (#21)
+
+-------------------------------------------------------------------
+Wed Apr 19 14:43:29 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Updating doc to live in packages subdir
+- Updating licenses.md location
+
+-------------------------------------------------------------------
+Mon Jan 09 22:33:13 UTC 2023 - scott.bradnick@suse.com
+
+- Update to version git20230109.540cf42:
+  * Added jb-fleet preview image
+  * Add Jetbrains Fleet theme (#18)
+
+-------------------------------------------------------------------
 Fri Dec 30 20:20:16 UTC 2022 - scott.bradnick@suse.com
 
 - Update to version git20221219.b3a9cdd:
