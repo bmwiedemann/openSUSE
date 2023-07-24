@@ -665,4 +665,19 @@
   - CVE-2007-4559-filter-tarfile_extractall.patch</comment>
     <requestid>1095863</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>b5d2e888c920d6c80ee212c90263ddb5</srcmd5>
+    <version>3.10.12</version>
+    <time>1690215152</time>
+    <user>anag+factory</user>
+    <comment>- Add gh-78214-marshal_stabilize_FLAG_REF.patch to marshal.c for
+  stabilizing FLAG_REF usage (required for reproduceability;
+  bsc#1213463).
+- (bsc#1210638, CVE-2023-27043) Add
+  CVE-2023-27043-email-parsing-errors.patch, which detects email
+  address parsing errors and returns empty tuple to indicate the
+  parsing error (old API).
+</comment>
+    <requestid>1099501</requestid>
+  </revision>
 </revisionlist>

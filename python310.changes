@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul 19 11:15:39 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add gh-78214-marshal_stabilize_FLAG_REF.patch to marshal.c for
+  stabilizing FLAG_REF usage (required for reproduceability;
+  bsc#1213463).
+
+-------------------------------------------------------------------
+Tue Jul 11 07:35:18 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- (bsc#1210638, CVE-2023-27043) Add
+  CVE-2023-27043-email-parsing-errors.patch, which detects email
+  address parsing errors and returns empty tuple to indicate the
+  parsing error (old API).
+
+-------------------------------------------------------------------
 Wed Jun 28 16:57:46 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.10.12:

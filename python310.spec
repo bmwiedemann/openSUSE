@@ -168,7 +168,14 @@ Patch35:        fix_configure_rst.patch
 Patch36:        support-expat-CVE-2022-25236-patched.patch
 # PATCH-FIX-UPSTREAM bpo-37596-make-set-marshalling.patch bsc#1211765 mcepl@suse.com
 # Make `set` and `frozenset` marshalling deterministic
-Patch39:        bpo-37596-make-set-marshalling.patch
+Patch38:        bpo-37596-make-set-marshalling.patch
+# PATCH-FIX-UPSTREAM gh-78214-marshal_stabilize_FLAG_REF.patch bsc#1213463 mcepl@suse.com
+# marshal: Stabilize FLAG_REF usage
+Patch39:        gh-78214-marshal_stabilize_FLAG_REF.patch
+# # PATCH-FIX-UPSTREAM CVE-2023-27043-email-parsing-errors.patch bsc#1210638 mcepl@suse.com
+# # Detect email address parsing errors and return empty tuple to
+# # indicate the parsing error (old API)
+# Patch40:        CVE-2023-27043-email-parsing-errors.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -440,6 +447,7 @@ other applications.
 %endif
 %patch35 -p1
 %patch36 -p1
+%patch38 -p1
 %patch39 -p1
 
 # drop Autoconf version requirement
