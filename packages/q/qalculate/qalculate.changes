@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Jul 21 08:02:53 UTC 2023 - pgajdos@suse.com
+
+- version update to 4.7.0
+  * Support for custom default angle unit, e.g. turn, arcsec, arcmin
+  * Append default angle unit (instead of always radians) when converting
+    value without unit to angle unit
+  * More consistent addition and removal of angle unit from function arguments
+  * Always interpret ./, .*, and .^ as entrywise operators if user intention is unclear
+  * Change order of operations to place entrywise and ordinary operators on
+    the same precedence level
+  * Add function, kron(), for Kronecker product, and constants for Pauli matrices
+  * Add radius to planets dataset and update other properties
+  * Support replacement of unknown variables within variable values
+  * Fix besselj(0, 0)
+  * Fix incomplete calculation in tan() with try exact approximation
+  * Fix 0/0=0 equality (do not return true) and output of 2/0 (and similar)
+  * Fixes and improvements for newtonsolve() and secantsolve()
+  * Fix segfault when MathStructure is deleted after Calculator, and in destructor
+    of calculated DynamicVariable (called from Calculator destructor)
+  * Do not save mode on exit if "-defaults" command line switch where used (CLI)
+  * Allow multiple actions for keyboard shortcuts (GTK, Qt)
+  * Add toggle precision, and min, max, or min and max decimals to available
+    shortcut and button actions (GTK, Qt)
+  * Add option to exclude units for unformatted ASCII copy (GTK, Qt)
+  * Add optional value to copy result action, allowing expression copy and
+    formatting selection (GTK, Qt)
+  * Fix copy unformatted ASCII when local digit group separator is same as selected
+    decimal separator (GTK, Qt)
+  * Add option to automatically copy result (Qt)
+  * Always set (primary) selection clipboard contents when whole expression is
+    selected or selection is cleared, e.g. after calculation (Qt)
+  * Improve support dark mode and high contrast modes, and change default style
+    to Fusion, on Windows (Qt)
+  * Minor bug fixes and feature enhancements
+
+-------------------------------------------------------------------
 Thu Apr 20 09:20:06 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 4.6.1:
