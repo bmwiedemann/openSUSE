@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 20 11:25:20 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- openssl.patch: use openssl library for MD5 calculation instead
+  of relying on libmd. libmd is not in Ring0
+- require Perl 5.28.1 or later
+
+-------------------------------------------------------------------
+Wed Jun  7 11:15:53 UTC 2023 - pgajdos@suse.com
+
+- version update to 1.21.22
+  https://git.dpkg.org/cgit/dpkg/dpkg.git/tree/debian/changelog
+
+-------------------------------------------------------------------
 Thu May  4 14:28:36 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Add _multibuild to define additional spec files as additional

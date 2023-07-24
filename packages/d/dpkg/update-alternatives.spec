@@ -17,7 +17,7 @@
 
 
 Name:           update-alternatives
-Version:        1.21.8
+Version:        1.21.22
 Release:        0
 Summary:        Maintain symbolic links determining default commands
 License:        GPL-2.0-or-later
@@ -27,10 +27,13 @@ Source0:        https://ftp.debian.org/debian/pool/main/d/dpkg/dpkg_%{version}.t
 Source3:        sensible-editor
 Patch0:         update-alternatives-suse.patch
 Patch1:         update-alternatives-slavetomaster.patch
+Patch2:         openssl.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
+BuildRequires:  openssl-devel
+BuildRequires:  perl >= 5.28.1
 BuildRequires:  pkgconfig
 Provides:       alternatives = %{version}
 

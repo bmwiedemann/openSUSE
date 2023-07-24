@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 20 11:25:20 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- openssl.patch: use openssl library for MD5 calculation instead
+  of relying on libmd. libmd is not in Ring0
+- require Perl 5.28.1 or later
+
+-------------------------------------------------------------------
 Thu May  4 14:28:36 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Add _multibuild to define additional spec files as additional

@@ -17,7 +17,7 @@
 
 
 Name:           dpkg
-Version:        1.21.8
+Version:        1.21.22
 Release:        0
 Summary:        Debian package management system
 License:        GPL-2.0-or-later
@@ -30,15 +30,17 @@ Patch1:         update-alternatives-suse.patch
 # PATCH-FIX-SUSE: tar of Leap 42.{2,3} does not recognize --sort=name, --clamp-mtime options
 Patch2:         drop-tar-option.patch
 Patch3:         ncurses-fix.patch
+Patch4:         openssl.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  gpg2
 BuildRequires:  libbz2-devel
-BuildRequires:  libmd-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
+BuildRequires:  openssl-devel
+BuildRequires:  perl >= 5.28.1
 BuildRequires:  po4a >= 0.59
 BuildRequires:  update-alternatives
 BuildRequires:  xz-devel
@@ -89,6 +91,7 @@ Libraries and header files for dpkg.
 %patch2 -p1
 %endif
 %patch3 -p1
+%patch4 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -98,7 +101,8 @@ export CFLAGS="%{?build_cflags:%build_cflags}%{?!build_cflags:%optflags}"
     --disable-silent-rules \
     --with-libselinux \
     --localstatedir=%{_localstatedir}/lib \
-    --with-admindir=%{_localstatedir}/lib/dpkg
+    --with-admindir=%{_localstatedir}/lib/dpkg \
+    --docdir=%{_docdir}/%{name}
 
 # configure somehow does not detect architecture correctly in OBS (bnc#469337), so
 # let's do an awful hack and fix it in config.h
@@ -157,11 +161,9 @@ exit 0
 
 %files
 %license COPYING
-%doc ABOUT-NLS AUTHORS doc/triggers.txt NEWS README* THANKS TODO debian/changelog
+%{_docdir}/%{name}
 %{_mandir}/man*/*
 %exclude %{_mandir}/man*/update-alternatives*
-%exclude %{_datadir}/doc/dpkg/*.txt
-%exclude %{_datadir}/doc/dpkg/README*
 %dir %{_sysconfdir}/dpkg
 %config(noreplace) %{_sysconfdir}/dpkg/*
 %{_bindir}/*
