@@ -24,7 +24,8 @@ Summary:        Pytest plugin for testing console scripts
 License:        MIT
 URL:            https://github.com/kvas-it/pytest-console-scripts
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-console-scripts/pytest-console-scripts-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest >= 4.0.0
@@ -49,19 +50,24 @@ much as possible.
 %autosetup -n pytest-console-scripts-%{version} -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+%if 0%{?suse_version} > 1500
 sed -i 's:env python:env python3:' tests/test_run_scripts.py
+%else
+sed -i 's:env python:env python%{python_bin_suffix}:' tests/test_run_scripts.py
+%endif
 %pytest
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/pytest_console_scripts
+%{python_sitelib}/pytest_console_scripts-%{version}*-info
 
 %changelog

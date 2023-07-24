@@ -108,4 +108,13 @@
   * Install-time dependencies have been fixed.</comment>
     <requestid>1090270</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>78fab410c3dfbc93fd344650b0e63969</srcmd5>
+    <version>1.4.1</version>
+    <time>1690215886</time>
+    <user>anag+factory</user>
+    <comment>- Fix build error for Leap.
+</comment>
+    <requestid>1099550</requestid>
+  </revision>
 </revisionlist>
