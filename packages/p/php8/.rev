@@ -545,4 +545,16 @@
   % php-systzdata-v23.patch (refreshed)</comment>
     <requestid>1094682</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>0f7f03d31f959388a16653d9b738bd87</srcmd5>
+    <version>8.2.8</version>
+    <time>1690215137</time>
+    <user>anag+factory</user>
+    <comment>- version update to 8.2.8
+  * This is a bug fix release.
+  * https://www.php.net/ChangeLog-8.php#8.2.8
+- modified patches
+  % php-sort-filelist-phar.patch (refreshed)</comment>
+    <requestid>1099444</requestid>
+  </revision>
 </revisionlist>

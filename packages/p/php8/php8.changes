@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 17 08:18:22 UTC 2023 - pgajdos@suse.com
+
+- version update to 8.2.8
+  * This is a bug fix release.
+  * https://www.php.net/ChangeLog-8.php#8.2.8
+- modified patches
+  % php-sort-filelist-phar.patch (refreshed)
+
+-------------------------------------------------------------------
 Thu Jun 22 13:49:44 UTC 2023 - pgajdos@suse.com
 
 - version update to 8.2.7
