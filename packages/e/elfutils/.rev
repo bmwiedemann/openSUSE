@@ -1080,4 +1080,12 @@ Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
     <comment></comment>
     <requestid>1085694</requestid>
   </revision>
+  <revision rev="109" vrev="4">
+    <srcmd5>7dd5f1b654a11846a0e7979d3a6be44a</srcmd5>
+    <version>0.189</version>
+    <time>1690215101</time>
+    <user>anag+factory</user>
+    <comment>Make installation of debuginfod-client more consistent, along with debuginfod-profile, with software/packages that have debuginfod support. (forwarded request 1099351 from luc14n0)</comment>
+    <requestid>1099743</requestid>
+  </revision>
 </revisionlist>

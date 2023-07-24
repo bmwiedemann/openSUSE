@@ -71,7 +71,6 @@ Summary:        Library for build-id HTTP ELF/DWARF server
 Group:          System/Libraries
 Conflicts:      libdebuginfod1-dummy = %{version}
 License:        GPL-2.0-or-later OR LGPL-3.0-or-later
-Recommends:     debuginfod-profile
 
 %description -n libdebuginfod1
 The libdebuginfod1 package contains shared libraries
@@ -94,6 +93,21 @@ to create applications to use the debuginfod service.
 Summary:        Command line client for build-id HTTP ELF/DWARF server
 Group:          Development/Tools/Building
 Conflicts:      debuginfod-dummy-client = %{version}
+# Without DEBUGINFOD_URLS being set debuginfod-find won't work. Provide it,
+# by default, so even general users benefit from automatic debuginfo
+# installation.
+Requires:       config(debuginfod-profile)
+#
+# Client-side supported tools, based on:
+#   https://sourceware.org/elfutils/Debuginfod.html
+#
+Supplements:    binutils
+Supplements:    bpftrace-tools
+Supplements:    elfutils
+Supplements:    gdb
+Supplements:    perf
+Supplements:    systemd-coredump
+Supplements:    valgrind
 
 %description -n debuginfod-client
 The elfutils-debuginfod-client package contains a command-line frontend.

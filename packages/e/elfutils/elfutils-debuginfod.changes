@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 12 01:05:48 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Replace libdebuginfo1 sub-package's debuginfod-profile Recommends
+  with config(debuginfod-profile) Requires, but on the debuginfod-\
+  client sub-package, instead. And add binutils, bpftrace-tools,
+  elfutils, gdb, perf, systemd-coredump, and valgrind Supplements
+  to debuginfod-client sub-package. This should make installation
+  of debuginfod-client more consistent, along with debuginfod-\
+  profile, with software/packages that have debuginfod support.
+
+-------------------------------------------------------------------
 Tue Mar  7 12:36:01 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Fix file listing for 15.x builds.
