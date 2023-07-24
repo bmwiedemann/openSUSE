@@ -84,4 +84,15 @@
 - Update Requires from setup.py (forwarded request 1089990 from glaubitz)</comment>
     <requestid>1090010</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d7bf995cfa97b778bf8d0918cddcb208</srcmd5>
+    <version>4.0.1</version>
+    <time>1690215965</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 4.0.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1099867 from glaubitz)</comment>
+    <requestid>1099911</requestid>
+  </revision>
 </revisionlist>

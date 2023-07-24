@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-costmanagement
-Version:        4.0.0
+Version:        4.0.1
 Release:        0
 Summary:        Microsoft Azure Cost Management Client Library
 License:        MIT
