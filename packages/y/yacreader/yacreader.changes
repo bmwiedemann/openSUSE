@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 21 17:54:19 UTC 2023 - Xu Zhao <i@xuzhao.net>
+
+- Update to 9.13.1
+  * Fix crash when dropping comics in sublists
+- Version 9.13.0
+  * Avoid showing stale information in the server config
+    dialog by updating the connection information
+    when the dialog is opened.
+  * Add new metadata support, it improves compatibility
+    with ComicInfo.xml
+
+-------------------------------------------------------------------
 Tue Feb 28 04:12:49 UTC 2023 - Xu Zhao <i@xuzhao.net>
 
 - Update to 9.11.0
