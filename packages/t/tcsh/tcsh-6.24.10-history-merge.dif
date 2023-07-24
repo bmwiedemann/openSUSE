@@ -1,60 +1,87 @@
 ---
- sh.hist.c |   22 +++++++++++++++++-----
- 1 file changed, 17 insertions(+), 5 deletions(-)
+ sh.hist.c |    5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
 --- sh.hist.c
-+++ sh.hist.c	2023-07-13 09:18:13.149624778 +0000
-@@ -105,7 +105,7 @@ hremove(struct Hist *hp)
++++ sh.hist.c	2023-07-21 12:21:55.518480015 +0000
+@@ -64,7 +64,7 @@ static	void	hfree	(struct Hist *);
  
- /* Prune length of history list to specified size by history variable. */
- PG_STATIC void
--discardExcess(int hlen)
-+discardExcess(int hlen, int mflg)
- {
-     struct Hist *hp, *np;
-     if (histTail == NULL) {
-@@ -116,13 +116,13 @@ discardExcess(int hlen)
-      * the list is still too long scan the whole list as before.  But only do a
-      * full scan if the list is more than 6% (1/16th) too long. */
-     while (histCount > (unsigned)hlen && (np = Histlist.Hnext)) {
--        if (eventno - np->Href >= hlen || hlen == 0)
-+        if ((eventno - np->Href >= hlen || hlen == 0) && !mflg)
-             hremove(np), hfree(np);
-         else
-             break;
-     }
-     while (histCount > (unsigned)hlen && (np = histTail) != &Histlist) {
--        if (eventno - np->Href >= hlen || hlen == 0)
-+        if (eventno - np->Href >= hlen || hlen == 0 || mflg)
-             hremove(np), hfree(np);
-         else
-             break;
-@@ -148,7 +148,7 @@ savehist(
- 	return;
-     if (sp)
-         (void) enthist(++eventno, sp, 1, mflg, histlen);
--    discardExcess(histlen);
-+    discardExcess(histlen, mflg);
- }
+ /* #define DEBUG_HIST 1 */
  
- #define USE_JENKINS_HASH 1
-@@ -1404,6 +1404,18 @@ loadhist(Char *fname, int mflg)
- void
- sethistory(int n)
- {
-+    int mflg = 0;
-+    struct varent *shist;
+-static const int fastMergeErase = 1;
++static int fastMergeErase = 1;
+ static unsigned histCount = 0;		/* number elements on history list */
+ static int histlen = 0;
+ static struct Hist *histTail = NULL;     /* last element on history list */
+@@ -1321,6 +1321,7 @@ rechist(Char *xfname, int ref)
+ 	}
+ 
+ 	if (merge) {
++	    fastMergeErase = 0;	/* Was true, now false to merge even with full history list */
+ 	    jmp_buf_t osetexit;
+ 	    if (lock) {
+ #ifndef WINNT_NATIVE
+@@ -1393,7 +1394,7 @@ loadhist(Char *fname, int mflg)
+     /* During history merging (enthist sees mflg set), we disable management of
+      * Hnum and Href (because fastMergeErase is true).  So now reset all the
+      * values based on the final ordering of the history list. */
+-    if (mflg) {
++    if (mflg /* && fastMergeErase */) {
+ 	int n = eventno;
+         struct Hist *hp = &Histlist;
+         while ((hp = hp->Hnext))
+--- tests/history.at
++++ tests/history.at	2023-07-24 07:53:41.471413277 +0000
+@@ -218,6 +218,52 @@ dnl savehist) set to 0 instead of 1.
+ 
+ AT_CLEANUP()
+ 
++AT_SETUP([History merge])
++dnl Check if history merge really works out
 +
-+    if ((shist = adrof(STRsavehist)) != NULL && shist->vec != NULL) {
-+	size_t i;
-+	for (i = 1; shist->vec[i]; i++) {
-+	    if (eq(shist->vec[i], STRmerge)) {
-+		mflg++;
-+		break;
-+	    }
-+	}
-+    }
-     histlen = n;
--    discardExcess(histlen);
-+    discardExcess(histlen, mflg);
- }
++AT_DATA([hist-merge.csh],
++[[set histfile=test.history histdup=prev history=(6 "%h TIME %R\n")
++set savehist=(6 merge)
++printf "'%s' %s\n" "$histdup" "$history"
++history -c
++: 1
++: 2
++: 3
++: 4
++: 5
++history -S
++: a
++: b
++: c
++: d
++: e
++history -S
++history -L
++history 6
++]])
++
++AT_CHECK([tcsh -f -q -i < hist-merge.csh], ,
++[> 'prev' 6 %h TIME %R\n
++    24 TIME : b
++    25 TIME : c
++    26 TIME : d
++    27 TIME : e
++    28 TIME history -S
++    29 TIME history 6
++> exit
++],)
++
++dnl In broken case we see the former history instead
++dnl > 'prev' 6 %h TIME %R\n
++dnl    24 TIME : 4
++dnl    25 TIME : 3
++dnl    26 TIME : 2
++dnl    27 TIME : 1
++dnl    28 TIME history -S
++dnl    29 TIME history 6
++dnl > exit
++
++AT_CLEANUP()
+ 
+ dnl
+ dnl	History faults

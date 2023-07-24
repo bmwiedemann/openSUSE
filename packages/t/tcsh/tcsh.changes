@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 24 08:12:01 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Extend tcsh-6.24.10-history-merge.dif
+  * Add a test case 
+
+-------------------------------------------------------------------
+Fri Jul 21 09:19:02 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Modify tcsh-6.24.10-history-merge.dif
+  * Skip workaround but disable fastMergeErase instead to really be
+    able to merge currently history with history file (bsc#1213484) 
+
+-------------------------------------------------------------------
 Fri Jul 14 11:29:02 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - (Re)add patch tcsh-6.24.10-history-merge.dif

@@ -1041,4 +1041,17 @@
     written history</comment>
     <requestid>1098668</requestid>
   </revision>
+  <revision rev="94" vrev="3">
+    <srcmd5>0e5b49c58ea3a6522e14ed78d0ff6801</srcmd5>
+    <version>6.24.10</version>
+    <time>1690215116</time>
+    <user>anag+factory</user>
+    <comment>- Extend tcsh-6.24.10-history-merge.dif
+  * Add a test case 
+
+- Modify tcsh-6.24.10-history-merge.dif
+  * Skip workaround but disable fastMergeErase instead to really be
+    able to merge currently history with history file (bsc#1213484)</comment>
+    <requestid>1100325</requestid>
+  </revision>
 </revisionlist>
