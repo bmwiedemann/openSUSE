@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 21 15:35:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.19.0:
+  * add: Add support for VAConfigAttribEncHEVCBlockSizes &
+    VAConfigAttribEncHEVCFeatures for hevcencode.
+  * meson: guard code introduced after libva 1.xx release
+  * meson: libva-xyz should be same version as detected libva
+  * configure: libva-xyz should be same version as detected libva
+  * fix: scan num limitation.
+  * fix: pic_order_cnt_lsb to accept larger GOP
+
+-------------------------------------------------------------------
 Mon May 29 19:30:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.18.2:
