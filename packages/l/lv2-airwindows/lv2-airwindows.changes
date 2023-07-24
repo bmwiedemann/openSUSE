@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 21 22:28:09 UTC 2023 - Hannes Braun <apple.hannes@gmail.com>
+
+- Update to new upstream release 20.0
+  * New plugins: BitShiftPan, BrightAmbience, BrightAmbience2, BrightAmbience3,
+    ClipSoftly, Console0Channel, Console0Buss, EQ, PitchNasty, SampleDelay,
+    Spiral2
+  * Improve description for Verbity
+  * Make sources C99 compliant
+
+-------------------------------------------------------------------
 Mon Apr  3 15:39:32 UTC 2023 - Hannes Braun <apple.hannes@gmail.com>
 
 - Update to new upstream release 18.0
