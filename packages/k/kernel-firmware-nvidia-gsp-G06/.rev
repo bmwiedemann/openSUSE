@@ -59,4 +59,12 @@
     <comment>update firmware to version 535.54.03</comment>
     <requestid>1093938</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b9f86c2d151e338776e0d0b0b251f137</srcmd5>
+    <version>535.86.05</version>
+    <time>1690215869</time>
+    <user>anag+factory</user>
+    <comment>update firmware to version 535.86.05</comment>
+    <requestid>1099546</requestid>
+  </revision>
 </revisionlist>
