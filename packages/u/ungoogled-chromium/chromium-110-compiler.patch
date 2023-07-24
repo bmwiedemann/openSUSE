@@ -7,11 +7,11 @@ Subject: [PATCH] Disable various compiler configs
  build/config/compiler/BUILD.gn | 134 +++++----------------------------
  1 file changed, 17 insertions(+), 117 deletions(-)
 
-Index: chromium-114.0.5735.90/build/config/compiler/BUILD.gn
+Index: chromium-115.0.5790.32/build/config/compiler/BUILD.gn
 ===================================================================
---- chromium-114.0.5735.90.orig/build/config/compiler/BUILD.gn
-+++ chromium-114.0.5735.90/build/config/compiler/BUILD.gn
-@@ -289,9 +289,7 @@ config("compiler") {
+--- chromium-115.0.5790.32.orig/build/config/compiler/BUILD.gn
++++ chromium-115.0.5790.32/build/config/compiler/BUILD.gn
+@@ -302,9 +302,7 @@ config("compiler") {
  
    configs += [
      # See the definitions below.
@@ -21,7 +21,7 @@ Index: chromium-114.0.5735.90/build/config/compiler/BUILD.gn
      ":compiler_codegen",
      ":compiler_deterministic",
    ]
-@@ -540,37 +538,6 @@ config("compiler") {
+@@ -570,37 +568,6 @@ config("compiler") {
      ldflags += [ "-Wl,-z,keep-text-section-prefix" ]
    }
  
@@ -59,7 +59,7 @@ Index: chromium-114.0.5735.90/build/config/compiler/BUILD.gn
    # C11/C++11 compiler flags setup.
    # ---------------------------
    if (is_linux || is_chromeos || is_android || (is_nacl && is_clang) ||
-@@ -1346,46 +1313,6 @@ config("compiler_deterministic") {
+@@ -1436,46 +1403,6 @@ config("compiler_deterministic") {
      }
    }
  
@@ -106,7 +106,7 @@ Index: chromium-114.0.5735.90/build/config/compiler/BUILD.gn
    # Tells the compiler not to use absolute paths when passing the default
    # paths to the tools it invokes. We don't want this because we don't
    # really need it and it can mess up the goma cache entries.
-@@ -1404,27 +1331,6 @@ config("compiler_deterministic") {
+@@ -1494,27 +1421,6 @@ config("compiler_deterministic") {
    }
  }
  
@@ -134,7 +134,7 @@ Index: chromium-114.0.5735.90/build/config/compiler/BUILD.gn
  config("rustc_revision") {
    if (rustc_revision != "") {
      # Similar to the above config, this is here so that all files get recompiled
-@@ -1714,7 +1620,7 @@ config("chromium_code") {
+@@ -1804,7 +1710,7 @@ config("chromium_code") {
        defines = [ "_HAS_NODISCARD" ]
      }
    } else {
@@ -143,7 +143,7 @@ Index: chromium-114.0.5735.90/build/config/compiler/BUILD.gn
      if (treat_warnings_as_errors) {
        cflags += [ "-Werror" ]
  
-@@ -1723,10 +1629,6 @@ config("chromium_code") {
+@@ -1813,10 +1719,6 @@ config("chromium_code") {
        # well.
        ldflags = [ "-Werror" ]
      }
@@ -154,7 +154,7 @@ Index: chromium-114.0.5735.90/build/config/compiler/BUILD.gn
  
      if (treat_warnings_as_errors) {
        # Turn rustc warnings into the "deny" lint level, which produce compiler
-@@ -1744,16 +1646,6 @@ config("chromium_code") {
+@@ -1834,16 +1736,6 @@ config("chromium_code") {
        "__STDC_FORMAT_MACROS",
      ]
  
@@ -171,7 +171,7 @@ Index: chromium-114.0.5735.90/build/config/compiler/BUILD.gn
      if (is_apple) {
        cflags_objc = [ "-Wimplicit-retain-self" ]
        cflags_objcc = [ "-Wimplicit-retain-self" ]
-@@ -2122,7 +2014,8 @@ config("default_stack_frames") {
+@@ -2212,7 +2104,8 @@ config("default_stack_frames") {
  }
  
  # Default "optimization on" config.
@@ -181,7 +181,7 @@ Index: chromium-114.0.5735.90/build/config/compiler/BUILD.gn
    if (is_win) {
      if (chrome_pgo_phase != 2) {
        # Favor size over speed, /O1 must be before the common flags.
-@@ -2181,7 +2074,8 @@ config("optimize") {
+@@ -2271,7 +2164,8 @@ config("optimize") {
  }
  
  # Turn off optimizations.
@@ -191,7 +191,7 @@ Index: chromium-114.0.5735.90/build/config/compiler/BUILD.gn
    if (is_win) {
      cflags = [
        "/Od",  # Disable optimization.
-@@ -2221,7 +2115,8 @@ config("no_optimize") {
+@@ -2311,7 +2205,8 @@ config("no_optimize") {
  # Turns up the optimization level. On Windows, this implies whole program
  # optimization and link-time code generation which is very expensive and should
  # be used sparingly.
@@ -201,7 +201,7 @@ Index: chromium-114.0.5735.90/build/config/compiler/BUILD.gn
    if (is_nacl && is_nacl_irt) {
      # The NaCl IRT is a special case and always wants its own config.
      # Various components do:
-@@ -2254,7 +2149,8 @@ config("optimize_max") {
+@@ -2344,7 +2239,8 @@ config("optimize_max") {
  #
  # TODO(crbug.com/621335) - rework how all of these configs are related
  # so that we don't need this disclaimer.
@@ -211,7 +211,7 @@ Index: chromium-114.0.5735.90/build/config/compiler/BUILD.gn
    if (is_nacl && is_nacl_irt) {
      # The NaCl IRT is a special case and always wants its own config.
      # Various components do:
-@@ -2280,7 +2176,8 @@ config("optimize_speed") {
+@@ -2370,7 +2266,8 @@ config("optimize_speed") {
    }
  }
  
@@ -221,7 +221,7 @@ Index: chromium-114.0.5735.90/build/config/compiler/BUILD.gn
    cflags = [ "-O1" ] + common_optimize_on_cflags
    rustflags = [ "-Copt-level=1" ]
    ldflags = common_optimize_on_ldflags
-@@ -2405,7 +2302,8 @@ config("win_pdbaltpath") {
+@@ -2495,7 +2392,8 @@ config("win_pdbaltpath") {
  }
  
  # Full symbols.
@@ -231,17 +231,17 @@ Index: chromium-114.0.5735.90/build/config/compiler/BUILD.gn
    rustflags = []
    if (is_win) {
      if (is_clang) {
-@@ -2548,7 +2446,8 @@ config("symbols") {
+@@ -2638,7 +2536,8 @@ config("symbols") {
  # Minimal symbols.
  # This config guarantees to hold symbol for stack trace which are shown to user
  # when crash happens in unittests running on buildbot.
 -config("minimal_symbols") {
 +config("minimal_symbols") { }
 +config("xminimal_symbols") {
+   rustflags = []
    if (is_win) {
      # Functions, files, and line tables only.
-     cflags = []
-@@ -2622,7 +2521,8 @@ config("minimal_symbols") {
+@@ -2723,7 +2622,8 @@ config("minimal_symbols") {
  # This configuration contains function names only. That is, the compiler is
  # told to not generate debug information and the linker then just puts function
  # names in the final debug information.

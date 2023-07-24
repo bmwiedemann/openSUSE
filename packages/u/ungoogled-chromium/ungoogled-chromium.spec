@@ -69,6 +69,7 @@
 %else
 %define ffmpeg_version 58
 %endif
+%bcond_without chromedriver
 # Package names
 %if %{with is_beta}
 %define chromedriver_name %{name}-chromedriver
@@ -78,7 +79,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           ungoogled-chromium%{n_suffix}
-Version:        114.0.5735.198
+Version:        115.0.5790.98
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -126,9 +127,12 @@ Patch210:       chromium-110-system-libffi.patch
 Patch211:       gcc13-fix.patch
 Patch214:       chromium-113-webview-namespace.patch
 Patch215:       chromium-113-webauth-include-variant.patch
-Patch216:       chromium-113-typename.patch
 Patch217:       chromium-114-workaround_clang_bug-structured_binding.patch
 Patch218:       chromium-114-lld-argument.patch
+Patch219:       chromium-115-skia-include.patch
+Patch220:       chromium-115-verify_name_match-include.patch
+Patch221:       chromium-115-lp155-typename.patch
+Patch222:       chromium-115-Qt-moc-version.patch
 %if 0%{?sle_version} == 150400
 Patch300:       chromium-114-revert-av1enc-lp154.patch
 %endif
@@ -344,6 +348,7 @@ BuildRequires:  gcc%{gcc_version}-c++
 %description
 Chromium is the open-source project behind Google Chrome. We invite you to join us in our effort to help build a safer, faster, and more stable way for all Internet users to experience the web, and to create a powerful platform for developing a new generation of web applications.
 
+%if %{with chromedriver}
 %package -n %{chromedriver_name}
 Summary:        WebDriver for Google Chrome/Chromium
 License:        BSD-3-Clause
@@ -355,6 +360,7 @@ Conflicts:      chromedriver
 
 %description -n %{chromedriver_name}
 WebDriver is an open source tool for automated testing of webapps across many browsers. It provides capabilities for navigating to web pages, user input, JavaScript execution, and more. ChromeDriver is a standalone server which implements WebDriver's wire protocol for Chromium. It is being developed by members of the Chromium and WebDriver teams.
+%endif
 
 %prep
 %setup -q -n %{rname}-%{version}
@@ -404,8 +410,8 @@ ln -sfn %{_bindir}/$PYTHON $HOME/bin/python
 export PATH="$HOME/bin/:$PATH"
 
 # qt
-%if %{with qt}
-export PATH="$PATH:%{_libdir}/qt5/bin"
+%if %{with qt6}
+ln -s %{?_qt6_libexecdir}/moc $HOME/bin/moc-qt6
 %endif
 
 # use our wrapper (disabled)
@@ -424,10 +430,10 @@ keeplibs=(
     base/third_party/valgrind
     base/third_party/xdg_mime
     base/third_party/xdg_user_dirs
+    buildtools/third_party/eu-strip
     buildtools/third_party/libc++
     buildtools/third_party/libc++abi
     buildtools/third_party/libunwind
-    buildtools/third_party/eu-strip
     chrome/third_party/mozilla_security_manager
     courgette/third_party
     net/third_party/mozilla_security_manager
@@ -468,13 +474,13 @@ keeplibs=(
     third_party/ced
     third_party/cld_3
     third_party/closure_compiler
+    third_party/content_analysis_sdk
     third_party/cpuinfo
     third_party/crashpad
     third_party/crashpad/crashpad/third_party/lss
     third_party/crashpad/crashpad/third_party/zlib
     third_party/crc32c
     third_party/cros_system_api
-    third_party/content_analysis_sdk
     third_party/dav1d
     third_party/dawn
     third_party/dawn/third_party
@@ -496,8 +502,8 @@ keeplibs=(
     third_party/devtools-frontend/src/front_end/third_party/puppeteer
     third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/mitt
     third_party/devtools-frontend/src/front_end/third_party/wasmparser
-    third_party/devtools-frontend/src/third_party
     third_party/devtools-frontend/src/test/unittests/front_end/third_party/i18n
+    third_party/devtools-frontend/src/third_party
     third_party/distributed_point_functions
     third_party/dom_distiller_js
     third_party/eigen3
@@ -527,9 +533,9 @@ keeplibs=(
     third_party/libaddressinput
     third_party/libaom
     third_party/libaom/source/libaom/third_party/fastfeat
+    third_party/libaom/source/libaom/third_party/SVT-AV1
     third_party/libaom/source/libaom/third_party/vector
     third_party/libaom/source/libaom/third_party/x86inc
-    third_party/libaom/source/libaom/third_party/SVT-AV1
     third_party/libgav1
     third_party/libjingle
     third_party/libphonenumber
@@ -571,9 +577,9 @@ keeplibs=(
     third_party/pdfium/third_party/bigint
     third_party/pdfium/third_party/freetype
     third_party/pdfium/third_party/lcms
+    third_party/pdfium/third_party/libopenjpeg
     third_party/pdfium/third_party/libtiff
     third_party/pdfium/third_party/skia_shared
-    third_party/pdfium/third_party/libopenjpeg
     third_party/perfetto
     third_party/perfetto/protos/third_party/chromium
     third_party/pffft
@@ -583,6 +589,7 @@ keeplibs=(
     third_party/private_membership
     third_party/protobuf
     third_party/pthreadpool
+    third_party/puffin
     third_party/pyjson5
     third_party/pyyaml
     third_party/qcms
@@ -912,10 +919,12 @@ ninja -v %{?_smp_mflags} -C %{outputdir} chrome chromedriver
 
 %install
 bash %{SOURCE105} -s %{buildroot} -l %{_libdir} %{!?with_system_icu:-i true} -o %{outputdir}
+%if %{with chromedriver}
 # chromedriver
 # ungoogled-chromium patch doesn't generate .unstripped
 cp -a %{outputdir}/chromedriver %{buildroot}%{_libdir}/chromium/chromedriver
 ln -s %{_libdir}/chromium/chromedriver %{buildroot}%{_bindir}/chromedriver
+%endif
 # link to browser plugin path.  Plugin patch doesn't work. Why?
 mkdir -p %{buildroot}%{_libdir}/browser-plugins
 ln -s %{_libdir}/browser-plugins %{buildroot}%{_libdir}/chromium/plugins
@@ -955,8 +964,10 @@ install -Dm 0644 %{SOURCE104} %{buildroot}%{_datadir}/icons/hicolor/symbolic/app
 %{_bindir}/chromium
 %{_mandir}/man1/chromium-browser.1%{?ext_man}
 
+%if %{with chromedriver}
 %files -n %{chromedriver_name}
 %{_libdir}/chromium/chromedriver
 %{_bindir}/chromedriver
+%endif
 
 %changelog

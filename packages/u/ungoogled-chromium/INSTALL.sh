@@ -13,7 +13,7 @@ SHLIB_PERMS="755"
 PROGNAME="chrome"
 PACKAGE="chromium-browser"
 MENUNAME="Chromium Web Browser"
-CHANNEL="stable"
+CHANNEL="beta"
 INSTALLDIR="${LIBDIR}/chromium"
 
 install -m 755 -d \
