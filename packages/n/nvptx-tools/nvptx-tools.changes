@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Jul 21 12:00:05 UTC 2023 - rguenther@suse.com
+
+- Update to version 1.0+git.20230718.bbb6fe6:
+  * Document "Program Instrumentation: Sanitizers" in 'README-development'
+  * run: Move 'cuModuleGetFunction' for '__main' out of 'compile_file'
+  * run: Plug 'compile_file' memory leaks
+  * run: Localize 'cuda_lib'
+  * as: Localize 'collect_wait'
+  * as: Don't 'unlink (NULL)'
+  * as: Don't use an obstack for 'ptxas' invocation [#1]
+  * ld: Remove unused '#include "obstack.h"' [#1]
+  * ld, nm: Stop 'using namespace std;'
+  * run: For auto '--stack-size', consider free instead of total device memory [#8]
+  * ld: Support archives appearing as input files
+  * ld: Don't reject empty archives
+  * ld: Make resolving of '-l'ibraries a separate step
+  * ld: Verify no NUL-separated parts for 'process_refs_defs'
+  * ld: Fix undefined behavior reading objects from archives
+  * ld: Document padding of objects in archives
+  * as: Plug 'alloc_stmt' memory leak
+  * as: Plug 'read_file' memory leak
+  * as: Plug 'tokenize' memory leak
+  * as: Conceptually simplify capture of preamble '.target' directive's argument
+  * 'test/GLOBAL_FUNCTION_DECL_f.s': 'f' is '.extern', not '.visible' [#38]
+
+-------------------------------------------------------------------
 Tue Mar 21 21:44:49 UTC 2023 - mliska@suse.cz
 
 - Start using tar_scm OBS server for a tarball.
