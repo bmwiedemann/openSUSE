@@ -2,8 +2,8 @@
   <service mode="disabled" name="obs_scm">
     <param name="url">https://github.com/slavfox/Cozette.git</param>
     <param name="scm">git</param>
-    <param name="revision">6fda7d9</param>
-    <param name="match-tag">v.1.19.0</param>
+    <param name="revision">4d99930</param>
+    <param name="match-tag">v.1.21.0</param>
     <param name="versionrewrite-pattern">v.(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="versionformat">@PARENT_TAG@</param>
