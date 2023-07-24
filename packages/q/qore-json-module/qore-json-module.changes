@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jul 22 11:00:41 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.orh>
+
+- Update %{module_api} for json api checks
+
+-------------------------------------------------------------------
 Fri Jan  6 17:09:09 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Update to 1.8.2 because of updated qore
