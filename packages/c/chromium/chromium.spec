@@ -1,5 +1,5 @@
 #
-# spec file for package chromium
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2023 Callum Farmer <gmbr3@opensuse.org>
@@ -79,7 +79,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        115.0.5790.98
+Version:        115.0.5790.102
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -127,12 +127,15 @@ Patch210:       chromium-110-system-libffi.patch
 Patch211:       gcc13-fix.patch
 Patch214:       chromium-113-webview-namespace.patch
 Patch215:       chromium-113-webauth-include-variant.patch
-Patch217:       chromium-114-workaround_clang_bug-structured_binding.patch
+Patch217:       chromium-115-workaround_clang_bug-structured_binding.patch
 Patch218:       chromium-114-lld-argument.patch
 Patch219:       chromium-115-skia-include.patch
 Patch220:       chromium-115-verify_name_match-include.patch
 Patch221:       chromium-115-lp155-typename.patch
 Patch222:       chromium-115-Qt-moc-version.patch
+Patch223:       chromium-115-emplace_back_on_vector-c++20.patch
+Patch224:       chromium-115-compiler-SkColor4f.patch
+Patch225:       chromium-115-add_BoundSessionRefreshCookieFetcher::Result.patch
 %if 0%{?sle_version} == 150400
 Patch300:       chromium-114-revert-av1enc-lp154.patch
 %endif

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jul 23 11:55:15 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 115.0.5790.102:
+  * stability fix
+- Add build fixes on Leap:
+  * chromium-115-emplace_back_on_vector-c++20.patch
+  * chromium-115-compiler-SkColor4f.patch
+  * chromium-115-workaround_clang_bug-structured_binding.patch
+  * chromium-115-add_BoundSessionRefreshCookieFetcher::Result.patch
+- adjust chromium-115-lp155-typename.patch
+- drop chromium-114-workaround_clang_bug-structured_binding.patch
+
+-------------------------------------------------------------------
 Wed Jul 19 09:23:32 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 115.0.5790.98
