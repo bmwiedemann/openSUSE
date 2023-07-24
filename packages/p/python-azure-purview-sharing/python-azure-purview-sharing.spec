@@ -16,14 +16,14 @@
 #
 
 
-%define realversion 1.0.0b2
+%define realversion 1.0.0b3
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-purview-sharing
-Version:        1.0.0~b2
+Version:        1.0.0~b3
 Release:        0
 Summary:        Microsoft Azure Purview Sharing Client Library for Python
 License:        MIT
