@@ -5,7 +5,7 @@
 #
 # When a package creates a system account, it should use the following macros:
 #
-# add %sysusers_requires in the package section
+# add %?sysusers_requires in the package section
 #
 # add "%sysusers_generate_pre <source file> <account> [<config>]" to build section
 #

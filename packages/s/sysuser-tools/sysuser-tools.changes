@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 17 17:17:17 UTC 2023 - olaf@aepfle.de
+
+- Add "quilt setup" friendly hint to %sysusers_requires usage
+  It is not required to have sysuser-tools installed when working
+  with a pkg source which uses sysuser-tools at build time.
+
+-------------------------------------------------------------------
 Tue Sep  6 15:49:48 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use append so if a pre file already exists it isn't overridden
