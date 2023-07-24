@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 22 11:03:58 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update %{module_api} for yaml api checks
+- Fix build with new qore (1.16.1)
+
+-------------------------------------------------------------------
 Sun Jan  8 19:13:56 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Update to version 0.7.3 for qore 1.0.14
