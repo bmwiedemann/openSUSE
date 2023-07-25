@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 20 19:38:26 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 1.1.16 (2023-03-09)
+  * Downgrade logging level for version detection (#57)
+  * Modify test
+- Drop fix-tests.patch
+
+-------------------------------------------------------------------
 Mon Mar  6 17:10:10 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add fix-tests.patch to make tests work with latest packaging module

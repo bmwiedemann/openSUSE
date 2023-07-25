@@ -17,14 +17,12 @@
 
 
 Name:           python-openwrt-luci-rpc
-Version:        1.1.12
+Version:        1.1.16
 Release:        0
 Summary:        Module for interacting with OpenWrt Luci RPC interface
 License:        Apache-2.0
 URL:            https://github.com/fbradyirl/openwrt-luci-rpc
 Source:         https://files.pythonhosted.org/packages/source/o/openwrt-luci-rpc/openwrt-luci-rpc-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE fix-tests.patch
-Patch0:         fix-tests.patch
 BuildRequires:  %{python_module click >= 6.0}
 BuildRequires:  %{python_module packaging >= 19.1}
 BuildRequires:  %{python_module requests >= 2.21}
