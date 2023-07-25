@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Wed Jun 14 08:34:27 UTC 2023 - Christian Goll <cgoll@suse.com>
+
+- update to 1.2.0 with following changes:
+  * binary is built reproducible which disables plugins
+  * Create the current working directory in a container when it doesn't exist.
+    This restores behavior as it was before singularity 3.6.0. As a result,
+    using --no-mount home won't have any effect when running apptainer from a
+    home directory and will require --no-mount home,cwd to avoid mounting that
+    directory.
+  * Handle current working directory paths containing symlinks both on the host
+    and in a container but pointing to different destinations. If detected, the
+    current working directory is not mounted when the destination directory in
+    the container exists.
+  * Destination mount points are now sorted by shortest path first to ensure
+    that a user bind doesn't override a previous bind path when set in
+    arbitrary order on the CLI. This is also applied to image binds.
+  * When the kernel supports unprivileged overlay mounts in a user namespace,
+    the container will be constructed by default using an overlay instead of an
+    underlay layout for bind mounts. A new --underlay action option can be used
+    to prefer underlay instead of overlay.
+  * sessiondir maxsize in apptainer.conf now defaults to 64 MiB for new
+    installations. This is an increase from 16 MiB in prior versions.
+  * The apptainer cache is now architecture aware, so the same home directory
+    cache can be shared by machines with different architectures.
+  * Overlay is blocked on the panfs filesystem, allowing sandbox directories to
+    be run from panfs without error.
+  * Lookup and store user/group information in stage one prior to entering any
+    namespaces, to fix an issue with winbind not correctly looking up
+    user/group information when using user namespaces.
+- New features / functionalities
+  * Support for unprivileged encryption of SIF files using gocryptfs.  This is
+    not compatible with privileged encryption, so containers encrypted by root
+    need to be rebuilt by an unprivileged user.
+  * Templating support for definition files. Users can now define variables in
+    definition files via a matching pair of double curly brackets. Variables of
+    the form {{ variable }} will be replaced by a value defined either by a
+    variable=value entry in the %arguments section of the definition file or
+    through new build options --build-arg or --build-arg-file.
+  * Add a new instance run command that will execute the runscript when an
+    instance is initiated instead of executing the startscript.
+  * The sign and verify commands now support signing and verification with
+    non-PGP key material by specifying the path to a private key via the --key
+    flag.
+  * The verify command now supports verification with X.509 certificates by
+    specifying the path to a certificate via the --certificate flag. By
+    default, the system root certificate pool is used as trust anchors unless
+    overridden via the --certificate-roots flag. A pool of intermediate
+    certificates that are not trust anchors, but can be used to form a
+    certificate chain, can also be specified via the
+    --certificate-intermediates flag.
+  * Support for online verification checks of X.509 certificates using OCSP
+    protocol via the new verify --ocsp-verify option.
+  * The instance stats command displays the resource usage every second. The
+    --no-stream option disables this interactive mode and shows the
+    point-in-time usage.
+  * Instances are now started in a cgroup by default, when run as root or when
+    unified cgroups v2 with systemd as manager is configured. This allows
+    apptainer instance stats to be supported by default when possible.
+  * The instance start command now accepts an optional --app <name> argument
+    which invokes a start script within the %appstart <name> section in the
+    definition file. The instance stop command still only requires the instance
+    name.
+  * The instance name is now available inside an instance via the new
+    APPTAINER_INSTANCE environment variable.
+  * The --no-mount flag now accepts the value bind-paths to disable mounting of
+    all bind path entries in apptainer.conf.
+    Support for DOCKER_HOST parsing when using docker-daemon://
+    DOCKER_USERNAME and DOCKER_PASSWORD supported without APPTAINER_ prefix.
+    Add new Linux capabilities CAP_PERFMON, CAP_BPF, and CAP_CHECKPOINT_RESTORE.
+  * The remote get-login-password command allows users to retrieve a remote's
+    token. This enables piping the secret directly into docker login while
+    preventing it from showing up in a shell's history.
+  * Define EUID in %environment alongside UID.
+  * In --rocm mode, the whole of /dev/dri is now bound into the container when
+    --contain is in use. This makes /dev/dri/render devices available, required
+    for later ROCm versions.
+
+-------------------------------------------------------------------
 Tue Jun 13 14:00:33 UTC 2023 - Christian Goll <cgoll@suse.com>
 
 - update to 1.1.9 with following changes:

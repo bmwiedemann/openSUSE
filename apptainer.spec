@@ -20,12 +20,13 @@
 %define _buildshell /bin/bash
 
 %global squashfuse_version 0.1.105
+#%%define vers_suffix -rc.1
 
 Summary:        Application and environment virtualization
 License:        BSD-3-Clause-LBNL
 Group:          Productivity/Clustering/Computing
 Name:           apptainer
-Version:        1.1.9
+Version:        1.2.0
 Release:        0
 # https://spdx.org/licenses/BSD-3-Clause-LBNL.html
 URL:            https://apptainer.org
@@ -47,7 +48,7 @@ BuildRequires:  cryptsetup
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  git
-BuildRequires:  go >= 1.17
+BuildRequires:  go >= 1.19
 BuildRequires:  libuuid-devel
 BuildRequires:  make
 BuildRequires:  openssl-devel
@@ -67,6 +68,9 @@ BuildRequires:  pkgconfig(liblzma)
 %endif
 Requires:       squashfs
 Recommends:     fuse2fs
+# Needed for container decryption in userspace, upstream rpms include this
+# but factory should have this seperately
+Recommends:     gocryptfs
 PreReq:         permissions
 
 # there's no golang for ppc64, ppc64le does not have non pie builds
@@ -87,7 +91,7 @@ containers that can be used across host environments.
 %setup -b 10 -n squashfuse-%{squashfuse_version}
 %patch -P 10 -p1
 %endif
-%setup -q -n %{name}-%{version}
+%setup -q -n %{name}-%{version}%{?vers_suffix}
 cp %{S:1} %{S:2} %{S:3} %{S:4} %{S:5} .
 
 %build
@@ -119,7 +123,8 @@ tar xzf %{S:9}
         --sharedstatedir=%{_sharedstatedir} \
         --mandir=%{_mandir} \
         --infodir=%{_infodir} \
-        --without-suid
+        --without-suid \
+        --reproducible
 
 %make_build -C builddir V=""
 
