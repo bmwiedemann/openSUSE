@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul  4 09:17:55 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Rework lua(meta)tex/context resource findings
+
+-------------------------------------------------------------------
+Mon Jun  5 09:37:48 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add requirement in invoice2 for siunitx as shown upstream 
+
+-------------------------------------------------------------------
 Fri May  5 11:34:32 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch context_shell-escape.dif
