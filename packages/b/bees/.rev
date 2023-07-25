@@ -72,4 +72,12 @@
 - add avoid-swap.patch to fix build with gcc 13</comment>
     <requestid>1077138</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3c051e45b6986eaa88eb07e5ba4b1312</srcmd5>
+    <version>0.10</version>
+    <time>1690278673</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1100400</requestid>
+  </revision>
 </revisionlist>
