@@ -1,7 +1,7 @@
 #
 # spec file for package oddjob
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020 Stasiek Michalski <stasiek@michalski.cc>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,6 +16,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%{!?_pam_moduledir:%global _pam_moduledir /%{_lib}/security}
 
 Name:           oddjob
 Version:        0.34.7
@@ -76,12 +78,9 @@ at login-time.
 %make_build
 
 %install
-%make_install
+%make_install libsecuritydir="%{_pam_moduledir}"
 rm -f %{buildroot}%{_libdir}/security/*.la
 rm -f %{buildroot}%{_libdir}/security/*.a
-
-mkdir -p %{buildroot}/%{_lib}/security
-mv %{buildroot}%{_libdir}/security/*.so %{buildroot}/%{_lib}/security/
 
 rm -f %{buildroot}%{_libdir}/*.la
 
@@ -119,7 +118,7 @@ touch -r src/oddjob-mkhomedir.conf.in  %{buildroot}%{_sysconfdir}/dbus-1/system.
 %doc src/mkhomedirfor src/mkmyhomedir
 %dir %{_libexecdir}/%{name}
 %{_libexecdir}/%{name}/mkhomedir
-/%{_lib}/security/pam_oddjob_mkhomedir.so
+%{_pam_moduledir}/pam_oddjob_mkhomedir.so
 %{_mandir}/*/pam_oddjob_mkhomedir.*
 %{_mandir}/*/oddjob-mkhomedir.*
 %{_mandir}/*/oddjobd-mkhomedir.*
