@@ -219,4 +219,12 @@
     <comment>without old source (forwarded request 1100358 from mslacken)</comment>
     <requestid>1100359</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d7429f7c7195a0eba413a65f9b24f88c</srcmd5>
+    <version>1.2.1</version>
+    <time>1690370691</time>
+    <user>anag+factory</user>
+    <comment>updated vendor.tar.gz (forwarded request 1100790 from mslacken)</comment>
+    <requestid>1100792</requestid>
+  </revision>
 </revisionlist>

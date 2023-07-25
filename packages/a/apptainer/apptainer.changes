@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 26 07:33:42 UTC 2023 - Christian Goll <cgoll@suse.com>
+
+- updated to 1.2.1 to fix CVE-2023-38496 although not relevant as package is 
+  compiled with setuid
+
+-------------------------------------------------------------------
 Wed Jun 14 08:34:27 UTC 2023 - Christian Goll <cgoll@suse.com>
 
 - update to 1.2.0 with following changes:
