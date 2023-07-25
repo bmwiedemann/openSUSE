@@ -33,4 +33,12 @@
   %sysusers_create_inline is deprecated and will go away soon. (forwarded request 1094118 from fbui)</comment>
     <requestid>1094250</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>731e57b8276ea656de81680264e2ccb1</srcmd5>
+    <version>0~ch634</version>
+    <time>1690278646</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 0~ch640 (0ca18d072)</comment>
+    <requestid>1100210</requestid>
+  </revision>
 </revisionlist>

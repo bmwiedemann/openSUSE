@@ -17,7 +17,7 @@
 
 
 Name:           solanum
-Version:        0~ch560
+Version:        0~ch634
 Release:        0
 Summary:        Scalable IRCv3.2 compliant chat daemon
 License:        GPL-2.0-or-later
@@ -44,11 +44,7 @@ Obsoletes:      charybdis
 %description
 Solanum is an IRCv3.2 compatible chat server. It is a continuation of the
 Charybdis server and has good documentation and ease of configuration.
-
-Charybdis was used on various networks either as itself, or as
-the basis of a customized IRC server implementation. One such
-customization is ircd-seven which powers Freenode, the largest IRC
-network in the world.
+It is used by Libera, the largest (as of 2023) IRC network in the world.
 
 %prep
 %autosetup -p1 -n %name-%version

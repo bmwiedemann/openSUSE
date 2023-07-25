@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jul 23 19:31:34 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 0~ch640 (0ca18d072)
+  * Add umode +I to allow users to hide their idle time
+  * Make +R play nicely with +z
+  * Note that messages caught in +g/+G are discarded
+  * m_shedding: plugin for user shedding based on oftc-hybrid
+  * Add ACCOUNTEXTBAN ISUPPORT token
+
+-------------------------------------------------------------------
 Tue Jun 20 15:40:08 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Convert %sysusers_create_inline into %sysusers_create_package
