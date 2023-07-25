@@ -11,4 +11,17 @@
   * Version is tagged, but pyproject.toml was not updated.</comment>
     <requestid>1099007</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dcc3835a172571c7b81aafc6a59ead3e</srcmd5>
+    <version>0.3.5</version>
+    <time>1690278555</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.3.5:
+  * Packaging improvements: Include source-files in the release
+- Drop patch correct-packages-decl.patch:
+  * Included upstream.
+- Drop patch correct-version-to-tag.patch:
+  * No longer required.</comment>
+    <requestid>1099608</requestid>
+  </revision>
 </revisionlist>

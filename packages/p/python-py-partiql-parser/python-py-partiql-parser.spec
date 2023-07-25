@@ -17,16 +17,12 @@
 
 
 Name:           python-py-partiql-parser
-Version:        0.3.4
+Version:        0.3.5
 Release:        0
 Summary:        Pure Python PartiQL Parser
 License:        MIT
 URL:            https://github.com/getmoto/py-partiql-parser
 Source:         https://github.com/getmoto/py-partiql-parser/archive/refs/tags/%{version}.tar.gz#/py-partiql-parser-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#getmoto/py-partiql-parser#3
-Patch0:         correct-packages-decl.patch
-# PATCH-FIX-OPENSUSE https://github.com/getmoto/py-partiql-parser/issues/4
-Patch1:         correct-version-to-tag.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 59.0.0}
