@@ -32,10 +32,9 @@
 %define skip_python2 1
 %define plugver 5
 %bcond_with    ceph
-%bcond_without libc_semaphore
 
 Name:           %{pname}%{psuffix}
-Version:        5.5.5
+Version:        5.6.1
 Release:        0
 Summary:        An eXtended Root Daemon
 License:        LGPL-3.0-or-later
@@ -44,27 +43,22 @@ URL:            http://xrootd.org/
 Source0:        http://xrootd.org/download/v%{version}/xrootd-%{version}.tar.gz
 Source1:        xrootd-user.conf
 Source100:      xrootd-rpmlintrc
-# PATCH0 [Python] Modernize build system https://github.com/xrootd/xrootd/pull/2025; patch rebased for current version
-Patch0:         xrootd-modernize-python-builds.patch
 # PATCH-FEATURE-OPENSUSE Hardening patches
 Patch100:       harden_cmsd@.service.patch
+# PATCH-FEATURE-OPENSUSE Hardening patches
 Patch101:       harden_frm_purged@.service.patch
+# PATCH-FEATURE-OPENSUSE Hardening patches
 Patch102:       harden_frm_xfrd@.service.patch
+# PATCH-FEATURE-OPENSUSE Hardening patches
 Patch103:       harden_xrootd@.service.patch
 BuildRequires:  ca-certificates
 BuildRequires:  cmake >= 3.0
-BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  graphviz
-BuildRequires:  graphviz-gd
-BuildRequires:  graphviz-gnome
-BuildRequires:  ncurses-devel
+BuildRequires:  glibc-devel >= 2.21
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  python-rpm-macros
 BuildRequires:  readline-devel
-BuildRequires:  swig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(fuse)
@@ -73,17 +67,13 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(zlib)
-%if %{with libc_semaphore}
-BuildRequires:  glibc-devel >= 2.21
-%else
-BuildRequires:  glibc-devel
-%endif
 %if %{with ceph}
 BuildRequires:  librados-devel
 BuildRequires:  libradosstriper-devel
 %endif
 BuildRequires:  pkgconfig(libtirpc)
 %if %{with python3}
+BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -94,6 +84,9 @@ BuildRequires:  xrootd-private-devel = %{version}
 BuildRequires:  xrootd-server-devel  = %{version}
 %define python_subpackage_only 1
 %python_subpackages
+%else
+BuildRequires:  doxygen
+BuildRequires:  graphviz-gnome
 %endif
 
 %description
@@ -208,9 +201,6 @@ XRootD mount tool.
 %package        libs
 Summary:        XRootD core libraries
 Group:          System/Libraries
-%if %{with libc_semaphore}
-Requires:       glibc >= 2.21
-%endif
 
 %description    libs
 The XROOTD project gives access to data repositories.
@@ -302,21 +292,21 @@ This package provides python3 bindings for xrootd.
 
 %prep
 %autosetup -p1 -n %{pname}-%{version}
+# Unfortunately, python packaging changes faster than most projects
+# can keep up with, so we have to mangle their scripts
+# https://github.com/xrootd/xrootd/issues/2062
+sed -i -e '/CMAKE_INSTALL_RPATH/ s/cmake_args += .*/cmake_args += [""]/' bindings/python/setup.py
 
 %build
 %if %{with python3}
-# Create a version file so that python packages get the right version info;
-# this should not be needed when tagged version 5.6 is packaged
-echo %{version} > VERSION
-
-# cmake cannot inherit the right includedirs when running python builds; specify manually
-export CFLAGS="%{optflags} -I%{_includedir}/%{pname} -I%{_includedir}/%{pname}/private"
-export CXXFLAGS=${CFLAGS}
 # https://github.com/xrootd/xrootd/issues/2032
 %ifarch %ix86
 export LDFLAGS+=" -Wno-error=odr"
 %endif
+# Only build the bindings. This is done when 'pip wheel' is called from the bindings directory
+pushd bindings/python
 %pyproject_wheel
+popd
 
 %else
 
@@ -324,7 +314,7 @@ export LDFLAGS+=" -Wno-error=odr"
 %cmake \
    -DBUILD_PYTHON:BOOL=OFF \
    -DENABLE_CEPH:BOOL=%{with ceph} \
-   -DUSE_LIBC_SEMAPHORE:BOOL=%{with libc_semaphore}
+   -DUSE_LIBC_SEMAPHORE:BOOL=ON
 
 %cmake_build
 doxygen ../Doxyfile
@@ -332,15 +322,13 @@ doxygen ../Doxyfile
 
 %install
 %if %{with python3}
-
+pushd bindings/python
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}/
 
 %else
 
 %cmake_install
-test -e doxydoc/html && cp -pr doxydoc/html %{buildroot}%{_docdir}/%{pname}/
-
 rm -rf %{buildroot}%{_sysconfdir}/%{pname}/*
 
 mkdir -p %{buildroot}%{_var}/log/%{pname}
@@ -354,7 +342,8 @@ install -Dm 0644 packaging/common/client.conf %{buildroot}%{_sysconfdir}/%{pname
 install -p -Dm 0644 packaging/common/xrootd.logrotate %{buildroot}%{_sysconfdir}/logrotate.d/xrootd-server
 install -Dm 0644 packaging/common/client-plugin.conf.example %{buildroot}%{_sysconfdir}/xrootd/client.plugins.d/client-plugin.conf.example
 
-install -Dm 644 README %{buildroot}%{_docdir}/%{pname}/README
+install -Dm 644 README.md %{buildroot}%{_docdir}/%{pname}/README.md
+cp -pr build/doxydoc/html %{buildroot}%{_docdir}/%{pname}/
 
 chmod -x %{buildroot}%{_datadir}/%{pname}/utils/XrdCmsNotify.pm
 
