@@ -961,4 +961,16 @@
     <comment>🤖: Submission of trivy via https://src.opensuse.org/pool/trivy/pulls/3 by dirkmueller</comment>
     <requestid>1096591</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>f263e3f5111e1b177daba4adcc6c3782</srcmd5>
+    <version>0.43.1</version>
+    <time>1690278600</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.43.1
+
+
+
+(🤖: Submission of trivy via https://src.opensuse.org/pool/trivy/pulls/4 by dirkmueller)</comment>
+    <requestid>1099718</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jul 13 08:47:12 UTC 2023 - dmueller@suse.com
+
+- Update to version 0.43.1:
+  * chore(deps): Update defsec to v0.90.3 (#4793)
+  * chore(deps): bump google.golang.org/protobuf from 1.30.0 to 1.31.0 (#4752)
+  * chore(deps): bump alpine from 3.18.0 to 3.18.2 (#4748)
+  * chore(deps): bump github.com/alicebob/miniredis/v2 from 2.30.3 to 2.30.4 (#4758)
+  * docs(image): fix the comment on the soft/hard link (#4740)
+  * check Type when filling pkgs in vulns (#4776)
+  * feat: add support of linux/ppc64le and linux/s390x architectures for Install.sh script (#4770)
+  * chore(deps): bump modernc.org/sqlite from 1.20.3 to 1.23.1 (#4756)
+  * fix(rocky): add architectures support for advisories (#4691)
+  * chore(deps): bump github.com/opencontainers/image-spec (#4751)
+  * chore(deps): bump github.com/package-url/packageurl-go (#4754)
+  * chore(deps): bump golang.org/x/sync from 0.2.0 to 0.3.0 (#4750)
+  * chore(deps): bump github.com/tetratelabs/wazero from 1.2.0 to 1.2.1 (#4755)
+  * chore(deps): bump github.com/testcontainers/testcontainers-go (#4759)
+  * fix: documentation about reseting trivy image (#4733)
+  * fix(suse): Add openSUSE Leap 15.5 eol date as well (#4744)
+  * fix: update Amazon Linux 1 EOL (#4761)
+- drop eol-dates.patch (all upstream)
+
+-------------------------------------------------------------------
 Mon Jul 03 13:22:20 UTC 2023 - dmueller@suse.com
 
 - Update to version 0.43.0:
