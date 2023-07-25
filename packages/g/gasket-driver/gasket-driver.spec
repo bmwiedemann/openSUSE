@@ -11,8 +11,10 @@
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
-#
+
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
 
 #===
 # Packaging Notes:
@@ -43,8 +45,8 @@ Source1:        group.conf
 Source2:        preamble
 Source3:        gasket-driver-rpmlintrc
 BuildRequires:  %kernel_module_package_buildreqs
-BuildRequires:  sysuser-tools
 BuildRequires:  pesign-obs-integration
+BuildRequires:  sysuser-tools
 Requires:       %{name}-kmp
 %sysusers_requires
 
@@ -57,7 +59,16 @@ Requires:       %{name}-kmp
 # https://github.com/google/gasket-driver/pull/10
 # https://github.com/google/gasket-driver/commit/a87c105c14e826dafd4b25c36fa7c7c657a7ad03.patch
 # PATCH-FIX-OPENSUSE fix-for-backported-dma-buf-ns.patch gh#google/gasket-driver!10
-Patch0: fix-for-backported-dma-buf-ns.patch
+Patch0:         fix-for-backported-dma-buf-ns.patch
+
+# The function signature for `class_create()` was changed in kernels >= 6.4.x to only accept a
+# single argument (see kernel commit #dcfbb67).
+# This patch conditionally modifies how `class_create()` is called depending on the kernel version.
+# See:
+# https://github.com/google/gasket-driver/pull/13
+# https://github.com/google/gasket-driver/commit/83cbe8264fc63511e4e6250f2426749951a340c8.patch
+# PATCH-FIX-OPENSUSE fix-kernel-gte-6.4.patch gh#google/gasket-driver!13
+Patch1:         fix-kernel-gte-6.4.patch
 
 # This directive instructs the build service to temporarily save the project's
 # certificate as %%_sourcedir/_projectcert.crt. See:
@@ -74,15 +85,20 @@ Patch0: fix-for-backported-dma-buf-ns.patch
 
 %description
 The Coral Gasket Driver allows usage of the Coral EdgeTPU on Linux systems.
-The driver contains two modules: 
+The driver contains two modules:
 - Gasket (Google ASIC Software, Kernel Extensions, and Tools) is a top level driver
   for lightweight communication with Google ASICs.
 - Apex refers to the EdgeTPU v1.
 
-# This magic "KMP" subpackage is documented in 
+
+
+
+
+# This magic "KMP" subpackage is documented in
 # https://en.opensuse.org/Kernel_Module_Packages#Specfile_mechanisms
+
 %package KMP
-Summary:        Gasket Driver kernel modules  
+Summary:        Gasket Driver kernel modules
 Group:          System/Kernel
 
 %description KMP
@@ -93,10 +109,13 @@ The Linux Kernel Module Package for the Coral Gasket Driver.
 mkdir -p obj
 
 # The `DMA_BUF` module namespace has been backported to the 5.14 kernel used
-# in Leap 15.5, so apply the relevant patch. 
+# in Leap 15.5, so apply the relevant patch.
 %if 0%{?sle_version} == 150500
 %patch0 -p1
 %endif
+
+# Apply patches without conditions.
+%patch1 -p1
 
 %build
 # Build the kernel modules.
@@ -118,7 +137,7 @@ export INSTALL_MOD_DIR=updates
 for flavor in %flavors_to_build; do
        make -C %{kernel_source $flavor} modules_install M=$PWD/obj/$flavor
 done
-# Install the system group used by the driver. 
+# Install the system group used by the driver.
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 0644 %{SOURCE1} -D %{buildroot}%{_sysusersdir}/group-apex.conf
 # Install the udev rules defined in the module source.
@@ -136,4 +155,3 @@ export BRP_PESIGN_COMPRESS_MODULE="xz"
 %{_udevrulesdir}/70-apex.rules
 
 %changelog
-

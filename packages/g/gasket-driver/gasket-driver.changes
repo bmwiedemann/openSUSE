@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 19 23:18:19 UTC 2023 - Chris Bradbury <opensuse@chrbrd.com>
+
+- Add `fix-kernel-gte-6.4.patch`. 
+
+-------------------------------------------------------------------
 Thu May 11 19:12:53 UTC 2023 - Chris Bradbury <obs@chrbrd.com>
 
 - Add `fix-for-backported-dma-buf-ns.patch`.
