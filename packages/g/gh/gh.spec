@@ -19,7 +19,7 @@
 %define goflags "-buildmode=pie -trimpath -mod=vendor -modcacherw"
 %define sname cli
 Name:           gh
-Version:        2.31.0
+Version:        2.32.1
 Release:        0
 Summary:        The official CLI for GitHub
 License:        MIT
@@ -28,8 +28,8 @@ Source0:        https://github.com/cli/cli/archive/v%{version}.tar.gz#/%{sname}-
 Source1:        vendor.tar.gz
 BuildRequires:  fish
 BuildRequires:  git-core
-BuildRequires:  golang(API) >= 1.18
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.18
 Requires:       git-core
 
 %description

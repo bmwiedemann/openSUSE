@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Tue Jul 25 06:00:17 UTC 2023 - pdostal@suse.com
+
+- Update to version 2.32.1:
+  * Use asciisanitization package from go-gh (#7745)
+  * Do not make reviewer update request if there are no reviewer changes (#7730)
+  * Fix pr checks command for GHES versions older than 3.9 (#7725)
+  * Use filepath.Clean to sanitize path for archive downloads (#7720)
+  * Sanitize file contents before displaying them (#7694)
+  * Do not add auth token to redirect requests which do not have the same host as the inital request. (#7692)
+
+-------------------------------------------------------------------
+Wed Jul 12 08:39:44 UTC 2023 - pdostal@suse.com
+
+- Update to version 2.32.0:
+  * add gh cache to Actions explainer
+  * Clean up style nits and simplify some logic
+  * fix typo
+  * remove stray print
+  * docs: example of setting multiple vars using stdin
+  * Add --branch-repo flag
+  * Add --verify-tag to release edit command (#7646)
+  * make IDs cyan, add prompter test
+  * Do not interpret "branch" placeholder in `api` command when `GH_REPO` is set (#7626)
+  * Always show created gist privacy status. (#7645)
+  * Use SmartBaseRepoFunc for api command (#7594)
+  * Add check description to pr checks output (#7451)
+  * fix pr create crash on interactive milestone selection
+  * build(deps): bump google.golang.org/grpc from 1.49.0 to 1.53.0
+  * split org/repo graphql queries, better tests
+  * refactor graphql query a bit
+  * add rs check tests
+  * fix merge errors
+  * misc cleanup
+  * add ruleset check command
+  * initial view tests
+  * list test updates
+  * update bypass response and parents logic, tests
+  * update tests, add rules to view command
+  * interactive ruleset selection, move shared logic
+  * gracefully handle missing admin:org scope
+  * don't allow both --repo and --org, add docs
+  * split ruleset types by API type
+  * allow getting parents, move list to shared package
+  * basic ruleset view works
+  * updates, initial list test
+  * refactor and support org rulesets
+  * GQL query works but it's messy
+  * wip
+  * start on rs list
+  * start writing up structs for rules API payloads
+  * WIP compute branch, call API
+  * start on gh rs
+  * build(deps): bump github.com/henvic/httpretty from 0.1.1 to 0.1.2 (#7657)
+  * Rewrite issue develop command to fix numerous issues
+  * Ensure gist edit request body matches desired schema (#7635)
+  * Automatically fetch new branches created with issue develop (#7589)
+  * Support --server-port behavior with conn details
+  * Update httpretty to released version (#7654)
+  * gh run cancel needs input validation
+  * Add tenancy support (#7636)
+  * Add title to iteration and milestone fields for projects (#7621)
+  * Change how remotes are treated during `pr create` when repo is forked  (#7330)
+  * Small tweaks to auth refresh remove-scopes and reset-scopes flags (#7631)
+  * Don't deduplicate checks that stem from different events (#7618)
+  * Add cli test to remove multiple scopes at once
+  * Refactor as per review
+  * Fix commit order
+  * Add test for fill first flag
+  * Add fill-first option to create pr
+  * Add option to remove file from gist (#7560)
+  * Remove old code paths and improve code comments for repo sync (#7610)
+  * Early exit repo sync if merge-upstream requires workflow scope
+  * Add remove/reset to auth refresh
+  * typo
+  * create cache commands
+  * Return error on no-browser option if repo don't exists
+
+-------------------------------------------------------------------
 Thu Jun 22 07:40:00 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Remove obsolete constructs from spec file
