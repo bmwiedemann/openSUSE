@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 20 13:54:06 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.64.2:
+  * fix: vulnerabilities should be printed when `--fail-on` fails
+    (#1395)
+  * chore: bump yardstick to address PyYAML cython compatibility
+    issues (#1394)
+  * Refactor integ test to table test (#1390)
+
+-------------------------------------------------------------------
 Tue Jul 18 04:49:52 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.64.1:
