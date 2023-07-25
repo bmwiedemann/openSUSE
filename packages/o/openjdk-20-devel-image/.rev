@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>1097016</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>79f51dcb9be3783c0e3b56b1ec9214c7</srcmd5>
+    <version>unknown</version>
+    <time>1690278704</time>
+    <user>dimstar_suse</user>
+    <comment>- Build only on 64 bit arches as JAVA_HOME is hard coded to /usr/lib64</comment>
+    <requestid>1100557</requestid>
+  </revision>
 </revisionlist>
