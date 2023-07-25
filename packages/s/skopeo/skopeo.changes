@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Jul 10 09:00:07 UTC 2023 - danish.prakash@suse.com
+
+- Update to version 1.13.0:
+  * Bump to v1.13.0
+  * proxy: Policy verification of OCI Image before pulling
+  * Update module github.com/opencontainers/image-spec to v1.1.0-rc4
+  * Update module github.com/containers/common to v0.55.1
+  * Update module github.com/containers/common to v0.54.0
+  * Update module github.com/containers/image/v5 to v5.26.0
+  * [CI:BUILD] RPM: fix ELN builds
+  * Update module github.com/containers/storage to v1.47.0
+  * Packit: easier to read distro conditionals
+  * Update dependency golangci/golangci-lint to v1.53.3
+  * Help Renovate manage the golangci-lint version
+  * Minor: Cleanup renovate configuration
+  * Update dependency containers/automation_images to v20230614
+  * Update module golang.org/x/term to v0.9.0
+  * [CI:BUILD] Packit: add jobs for downstream Fedora package builds
+  * Update module github.com/sirupsen/logrus to v1.9.3
+  * Update dependency containers/automation_images to v20230601
+  * Update golang.org/x/exp digest to 2e198f4
+  * Update github.com/containers/image/v5 digest to e14c1c5
+  * Update module github.com/stretchr/testify to v1.8.4
+  * Update module github.com/stretchr/testify to v1.8.3
+  * Update dependency containers/automation_images to v20230517
+  * Update module github.com/sirupsen/logrus to v1.9.2
+  * Update module github.com/docker/distribution to v2.8.2+incompatible
+  * Trigger an update of the ostree_ext container image
+  * Update c/image with https://github.com/containers/image/pull/1944
+  * Update module github.com/containers/common to v0.53.0
+  * Update module golang.org/x/term to v0.8.0
+  * Update dependency containers/automation_images to v20230426
+  * Update golang.org/x/exp digest to 47ecfdc
+  * Emphasize the semantics of --preserve-digests a tiny bit
+  * Improve the static build documentation a tiny bit
+  * Bump to v1.12.1-dev
+
+-------------------------------------------------------------------
 Thu Apr 20 13:07:17 UTC 2023 - danish.prakash@suse.com
 
 - Update to version 1.12.0:
