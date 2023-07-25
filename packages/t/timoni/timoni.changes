@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Jul 24 04:59:37 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.11.0:
+  * test: add get instance case
+  * test: add quoted instance test
+  * fix: unquote instance name
+  * Update the module structure doc to match minimal
+  * Publish init module to `ghcr.io/stefanprodan/timoni/minimal`
+  * Add healthz endpoint
+  * Use minimal module for `timoni mod init`
+  * Add minimal module example
+  * Update Redis to 7.0.12 and use image digest
+  * Add local dev setup
+  * Fix bundle build test flake Reset flags to avoid test failures
+    of `timoni bundle build`
+  * Bump the ci group with 2 updates
+  * Colorize bundle lint
+  * Colorize status
+  * Added missing 'return if err' check
+  * Added coloring to inspect resources
+  * Changed to use color.Output & color.Error
+  * Refactored colorize
+  * Prettier and more colorized output
+  * Added completion on installed instances & --namespace
+  * Add stale resources to the dry run output
+
+-------------------------------------------------------------------
 Sat Jul 08 19:36:44 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.10.0:
