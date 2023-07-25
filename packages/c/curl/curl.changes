@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Jul 19 06:22:14 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 8.2.0 [bsc#1213237, CVE-2023-32001]
+  * Security fix:
+    - CVE-2023-32001: fopen race condition
+  * Changes:
+    - curl: add --ca-native and --proxy-ca-native
+    - curl: add --trace-ids
+    - CURLOPT_MAIL_RCPT_ALLOWFAILS: replace CURLOPT_MAIL_RCPT_ALLLOWFAILS
+    - haproxy: add --haproxy-clientip flag to set client IPs
+    - lib: add CURLINFO_CONN_ID and CURLINFO_XFER_ID 
+  * Bugfixes:
+    - cf-socket: don't bypass fclosesocket callback if cancelled before connect
+    - cf-socket: skip getpeername()/getsockname for TFTP
+    - curl: count uploaded data to stop at the originally given size
+    - curl: return error when asked to use an unsupported HTTP version
+    - http2: fix crash in handling stream weights
+    - http2: send HEADER & DATA together if possible
+    - http3/ngtcp2: upload EAGAIN handling
+    - http: rectify the outgoing Cookie: header field size check
+    - hyper: fix EOF handling on input
+    - imap: Provide method to disable SASL if it is advertised
+    - libssh2: provide error message when setting host key type fails
+    - libssh2: use custom memory functions
+    - ngtcp2: assigning timeout, but value is overwritten before used
+    - quiche: avoid NULL deref in debug logging
+    - sectransp: fix EOF handling
+    - system.h: remove __IBMC__/__IBMCPP__ guards and apply to all z/OS compiles
+    - timeval: use CLOCK_MONOTONIC_RAW if available
+    - tls13-ciphers.d: include Schannel
+    - tool_easysrc.h: correct `easysrc_perform` for `CURL_DISABLE_LIBCURL_OPTION`
+    - tool_operate: allow cookie lines up to 8200 bytes
+    - tool_parsecfg: accept line lengths up to 10M
+    - tool_writeout_json: fix encoding of control characters
+    - transfer: clear credentials when redirecting to absolute URL
+    - urlapi: have *set(PATH) prepend a slash if one is missing
+    - urlapi: scheme must start with alpha
+    - vtls: avoid memory leak if sha256 call fails
+    - websocket-cb: example doing WebSocket download using callback
+    - ws: make the curl_ws_meta() return pointer a const 
+
+-------------------------------------------------------------------
 Tue May 30 09:08:35 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 8.1.2:
