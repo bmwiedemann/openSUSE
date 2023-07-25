@@ -278,4 +278,14 @@ Resubmitting in the hope that all bots and maintainers pick it up this time. The
     <comment></comment>
     <requestid>1082115</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b5b154e67ec3dd139c8db934e3d5d4f6</srcmd5>
+    <version>2.6.0</version>
+    <time>1690277374</time>
+    <user>anag+factory</user>
+    <comment>- Require wxWidgets &gt;= 3.1.6
+  * Add PrusaSlicer-drop-wx3.0.patch
+  * gh#prusa3d/PrusaSlicer#11026, gh#prusa3d/PrusaSlicer#11027 (forwarded request 1099890 from bnavigator)</comment>
+    <requestid>1099891</requestid>
+  </revision>
 </revisionlist>

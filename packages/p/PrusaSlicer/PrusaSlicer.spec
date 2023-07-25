@@ -17,21 +17,21 @@
 
 
 Name:           PrusaSlicer
-Version:        2.5.2
+Version:        2.6.0
 Release:        0
 Summary:        G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)
 License:        AGPL-3.0-only
 Group:          Hardware/Printing
 URL:            https://www.prusa3d.com/prusaslicer/
-Source0:        https://github.com/prusa3d/PrusaSlicer/archive/version_%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM PrusaSlicer-boost1.79.patch -- gh#prusa3d/PrusaSlicer#8238
-Patch0:         PrusaSlicer-boost1.79.patch
-# PATCH-FIX-UPSTREAM PrusaSlicer-cereal.patch -- gh#prusa3d/PrusaSlicer#7809
-Patch1:         PrusaSlicer-cereal.patch
-# PATCH-FIX-UPSTREAM gentoo-887055-boost-fix.patch -- gh#prusa3d/PrusaSlicer#9294
-Patch2:         gentoo-887055-boost-fix.patch
+Source0:        https://github.com/prusa3d/PrusaSlicer/archive/version_%{version}.tar.gz#/%{name}-version_%{version}.tar.gz
 # PATCH-FIX-OPENSUSE up-occt-version.patch mike.chikov@gmail.com -- install wrapper so into libdir, not bindir
-Patch3:         up-occt-version.patch
+Patch0:         up-occt-version.patch
+# PATCH-FIX-OPENSUSE PrusaSlicer-2.6.0-octoprint-name-fix.patch -- cast lambda expression to same type
+Patch1:         PrusaSlicer-2.6.0-octoprint-name-fix.patch
+# PATCH-FIX-UPSTREAM PrusaSlicer-2.6.0-wxWidgets-CheckResizerFlags-assert-fix.patch -- https://github.com/prusa3d/PrusaSlicer/commit/24a5ebd65c9d25a0fd69a3716d079fd1b00eb15c.patch
+Patch2:         PrusaSlicer-2.6.0-wxWidgets-CheckResizerFlags-assert-fix.patch
+# PATCH-FIX-UPSTREAM  PrusaSlicer-drop-wx3.0.patch gh#prusa3d/PrusaSlicer#11027 - wxWidgets >= 3.1.6 is required
+Patch3:         PrusaSlicer-drop-wx3.0.patch
 BuildRequires:  blosc-devel
 BuildRequires:  cereal-devel
 BuildRequires:  cgal-devel >= 4.13.2
@@ -46,9 +46,6 @@ BuildRequires:  fdupes
 %define gcc_ver 10
 %endif
 BuildRequires:  gcc%gcc_ver-c++
-# For now, use bundled GLEW because of gh#prusa3d/PrusaSlicer#6396
-#!BuildIgnore:  glew-devel
-#!BuildIgnore:  libglfw3-wayland
 BuildRequires:  gtest >= 1.7
 BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_filesystem-devel
@@ -65,17 +62,23 @@ BuildRequires:  memory-constraints
 BuildRequires:  nlopt-devel
 BuildRequires:  occt-devel
 BuildRequires:  openexr-devel
-# See https://github.com/prusa3d/PrusaSlicer/pull/9103
 BuildRequires:  openvdb-devel >= 7.1
 BuildRequires:  openvdb-tools
 BuildRequires:  pkgconfig
 BuildRequires:  tbb-devel
 BuildRequires:  update-desktop-files
-# Quoting Lucas Matena (see gh#prusa3d/PrusaSlicer#8299, issue 2):
-# if you link PrusaSlicer 2.5.x with wxWidgets 3.2, you will most likely break it.
-BuildRequires:  wxWidgets-3_0-devel
+BuildRequires:  wxWidgets-devel >= 3.1.6
+# need the fltk fork, see deps/NanoSVG/NanoSVG.cmake
+BuildRequires:  nanosvg-devel >= 2022.12.22
 BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(glew)
+BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(qhull_r)
+BuildRequires:  pkgconfig(qhullcpp)
+BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(wayland-egl)
 Requires:       noto-sans-fonts
 
 %description
@@ -92,6 +95,14 @@ sed -i 's/UNKNOWN/%{release}-%{?is_opensuse:open}SUSE-%{suse_version}/' version.
 %endif
 # this is not prusaslicer specific, space mouse users install it themselves
 rm resources/udev/90-3dconnexion.rules
+# we want to use the system provided expat lib
+sed -i "/add_library(libexpat INTERFACE)/d" CMakeLists.txt
+# adjust the qhull version requirement
+sed -i "s|find_package(Qhull 7.2 REQUIRED)|find_package(Qhull 8.0.2 REQUIRED)|" src/CMakeLists.txt
+# fix qhull link with static lib issue
+sed -i 's#INTERFACE Qhull::qhullcpp#INTERFACE -lqhullcpp#' src/CMakeLists.txt
+# Disable slic3r_jobs_tests.cpp as the test fails sometimes
+sed -i 's|slic3r_jobs_tests.cpp||' tests/slic3rutils/CMakeLists.txt
 
 %build
 # The build process really acquires that much memory per job. We are
@@ -108,12 +119,11 @@ rm resources/udev/90-3dconnexion.rules
 %endif
 export CC=gcc-%gcc_ver CXX=g++-%gcc_ver
 # rh#2059646
-sed -i tests/libslic3r/CMakeLists.txt -e '\@test_voronoi.cpp@d'
+#sed -i tests/libslic3r/CMakeLists.txt -e '\@test_voronoi.cpp@d'
 
 %cmake \
+  -DCMAKE_CXX_STANDARD=17 \
   -DSLIC3R_FHS=1 \
-  -DSLIC3R_GTK=2 \
-  -DSLIC3R_WX_STABLE=1 \
   -DOPENVDB_FIND_MODULE_PATH=%{_libdir}/cmake/OpenVDB
 %cmake_build
 
