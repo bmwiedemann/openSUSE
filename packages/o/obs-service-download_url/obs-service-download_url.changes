@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 24 06:20:30 UTC 2023 - adrian@suse.de
+
+- Update to version 0.2.0:
+  * BREAKING CHANGE: enable sslvalidation by default
+  * Fix filename option
+  * added new parameter "download-manifest" for bulk downloads
+
+-------------------------------------------------------------------
 Mon Aug 23 13:53:50 UTC 2021 - Enrico Belleri <idesmi@protonmail.com>
 
 - replace mentions of curl with wget

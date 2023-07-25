@@ -46,4 +46,15 @@
     <comment></comment>
     <requestid>918871</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>65effb30102ec382263a837e541b3253</srcmd5>
+    <version>0.2.0</version>
+    <time>1690278652</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.2.0:
+  * BREAKING CHANGE: enable sslvalidation by default
+  * Fix filename option
+  * added new parameter &quot;download-manifest&quot; for bulk downloads</comment>
+    <requestid>1100253</requestid>
+  </revision>
 </revisionlist>
