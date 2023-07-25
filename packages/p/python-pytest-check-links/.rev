@@ -80,4 +80,17 @@
   * Update for recommended usage of CheckLinks</comment>
     <requestid>1085127</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1e0d883e91f7e3e13a051f7fbb235dd3</srcmd5>
+    <version>0.9.0</version>
+    <time>1690278682</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.0:
+  * Support Python 3.8-3.12 and Handle Flaky Tests #110
+  * Update ruff #106
+  * Use local coverage #105
+  * Switch to pytester in tests
+  * Add more linting #100</comment>
+    <requestid>1100441</requestid>
+  </revision>
 </revisionlist>
