@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Thu Jul 20 05:47:54 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 13.2.3:
+  * Release 13.2.3 (#29308)
+  * v13: dronegen: Switch linux-based push builds to GitHub
+    (#29297)
+  * [v13] Fix nil user group entries. (#29326)
+  * [v13] update discovery labels (#29269)
+  * Remove access list gRPC service from OSS, introduce
+    owner/member checks. (#29289)
+  * [v13] ALPN handshake test to account "unadvertised ALPN" error
+    (#29312)
+  * Upsert ServerInfos from discovery service (#27475) (#29277)
+  * [v13] Restores default API endpoint for PagerDuty plugin
+    (#29295)
+  * [v13] Record os_build_supplemental in the DeviceProfile
+    (#29263)
+  * v13: [ci] Change macOS GHA runner to `macos-latest-xl-arm64`
+    (#29282)
+  * [v13] Docs: clarify the value of 'host' key where needed
+    (#28800)
+  * [v13] Add an audit event for creating provisioning tokens
+    (#29105)
+  * Fix proxy protocol support for Kube access flow (#29268)
+    (#29274)
+  * AWS DBs Heartbeat: return IAM status (#28952) (#29196)
+  * Add the AccessList to the cache. (#29270)
+  * update config reference docs (#29236)
+  * [v13] Introduce AccessList gRPC service and calls. (#29255)
+  * [v13] Add ServerInfo and label API (#29237)
+  * docs: update github sso instructions for self-hosted to use new
+    parameters (#29258)
+  * Clean up access list protos, add in conversion functions tests.
+    (#29254)
+  * Access list backend service and marshal/unmarshal. (#29253)
+  * [v13] Introduce Access List internal object. (#29252)
+  * Fix reference to azure identity in GCP app (#29209)
+  * Introduce the Access List object. (#29251)
+  * add semicolon (#29154)
+  * docs: update version (#29217)
+  * Define the GetDevicesUsage RPC (#29089) (#29227)
+  * Fix certbot installation in AMI (#29103)
+  * upgrader monitoring and alerts (#28951) (#29206)
+  * [v13] Document --port and --login in `tsh config` (#29199)
+  * [v13] Allow custom enroll token expiration time (#29213)
+  * [v13] provide warning on tsh sso login with Teleport user
+    specified (#29221)
+  * [v13] Fix lint warning, make these unordered lists (#29160)
+  * Support non-gogo objects for auth service events. (#29207)
+  * Add ServerInfo type (#25281) (#29162)
+  * [v13] Clarify API GetDatabases vs GetDatabaseServers (#29136)
+  * [v13] Add assist fields to configuration reference (#29110)
+
+-------------------------------------------------------------------
 Mon Jul 17 05:32:22 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 13.2.2:
