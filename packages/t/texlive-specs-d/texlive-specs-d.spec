@@ -19,8 +19,8 @@
 %define texlive_version  2023
 %define texlive_previous 2022
 %define texlive_release  20230311
-%define texlive_noarch   201
-%define biber_version    2.18
+%define texlive_noarch   209
+%define biber_version    2.19
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -146,11 +146,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biolett-bst-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/bibtex/biolett-bst/README.txt
 
 %files -n texlive-biolett-bst
-%defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/bst/biolett-bst/biolett.bst
 
 %package -n texlive-bitelist
@@ -230,12 +228,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bitelist-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/bitelist/README
 %{_texmfdistdir}/doc/generic/bitelist/bitelist.pdf
 
 %files -n texlive-bitelist
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/bitelist/bitedemo.tex
 %{_texmfdistdir}/tex/generic/bitelist/bitelist.sty
 
@@ -363,7 +359,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bithesis-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bithesis/README.md
 %{_texmfdistdir}/doc/latex/bithesis/bithesis.pdf
 %{_texmfdistdir}/doc/latex/bithesis/contributing-zh.md
@@ -371,7 +366,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bithesis/dtx-style.sty
 
 %files -n texlive-bithesis
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bithesis/bitart.cls
 %{_texmfdistdir}/tex/latex/bithesis/bitbeamer.cls
 %{_texmfdistdir}/tex/latex/bithesis/bitbook.cls
@@ -450,12 +444,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bitpattern-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bitpattern/README.md
 %{_texmfdistdir}/doc/latex/bitpattern/bitpattern.pdf
 
 %files -n texlive-bitpattern
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bitpattern/bitpattern.sty
 
 %package -n texlive-bitset
@@ -532,12 +524,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bitset-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bitset/README.md
 %{_texmfdistdir}/doc/latex/bitset/bitset.pdf
 
 %files -n texlive-bitset
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/bitset/bitset.sty
 
 %package -n texlive-bitter
@@ -696,14 +686,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-bitter-fonts
 
 %files -n texlive-bitter-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/bitter/OFL.txt
 %{_texmfdistdir}/doc/fonts/bitter/README
 %{_texmfdistdir}/doc/fonts/bitter/bitter-samples.pdf
 %{_texmfdistdir}/doc/fonts/bitter/bitter-samples.tex
 
 %files -n texlive-bitter
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/enc/dvips/bitter/bttr_6upxhe.enc
 %{_texmfdistdir}/fonts/enc/dvips/bitter/bttr_72jdjw.enc
 %{_texmfdistdir}/fonts/enc/dvips/bitter/bttr_azarls.enc
@@ -759,7 +747,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/bitter/bitter.sty
 
 %files -n texlive-bitter-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-bitter
 %{_datadir}/fontconfig/conf.avail/58-texlive-bitter.conf
 %{_datadir}/fontconfig/conf.avail/55-texlive-bitter.conf
@@ -845,13 +832,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bizcard-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bizcard/bizcard.pdf
 %{_texmfdistdir}/doc/latex/bizcard/bizex.pdf
 %{_texmfdistdir}/doc/latex/bizcard/bizex.tex
 
 %files -n texlive-bizcard
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bizcard/bizcard.sty
 
 %package -n texlive-bjfuthesis
@@ -941,7 +926,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bjfuthesis-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bjfuthesis/LICENSE
 %{_texmfdistdir}/doc/latex/bjfuthesis/README.md
 %{_texmfdistdir}/doc/latex/bjfuthesis/bjfuthesis.layout
@@ -971,7 +955,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bjfuthesis/example/thesis.tex
 
 %files -n texlive-bjfuthesis
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bjfuthesis/bjfuthesis.cls
 
 %package -n texlive-blacklettert1
@@ -1067,14 +1050,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-blacklettert1-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/blacklettert1/COPYING
 %{_texmfdistdir}/doc/fonts/blacklettert1/INSTALL
 %{_texmfdistdir}/doc/fonts/blacklettert1/README
 %{_texmfdistdir}/doc/fonts/blacklettert1/blacklettert1.pdf
 
 %files -n texlive-blacklettert1
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/tfm/public/blacklettert1/tfrak.tfm
 %{_texmfdistdir}/fonts/tfm/public/blacklettert1/tfrakls.tfm
 %{_texmfdistdir}/fonts/tfm/public/blacklettert1/tgoth.tfm
@@ -1159,12 +1140,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-blindtext-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/blindtext/README
 %{_texmfdistdir}/doc/latex/blindtext/blindtext.pdf
 
 %files -n texlive-blindtext
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/blindtext/blindtext.sty
 
 %package -n texlive-blkarray
@@ -1244,13 +1223,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-blkarray-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/blkarray/README
 %{_texmfdistdir}/doc/latex/blkarray/blkarray.pdf
 %{_texmfdistdir}/doc/latex/blkarray/blkarray.tex
 
 %files -n texlive-blkarray
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/blkarray/blkarray.sty
 
 %package -n texlive-blochsphere
@@ -1330,7 +1307,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-blochsphere-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/blochsphere/LICENSE
 %{_texmfdistdir}/doc/latex/blochsphere/README.md
 %{_texmfdistdir}/doc/latex/blochsphere/blochsphere.pdf
@@ -1338,7 +1314,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/blochsphere/example.tex
 
 %files -n texlive-blochsphere
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/blochsphere/blochsphere.sty
 
 %package -n texlive-block
@@ -1412,12 +1387,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-block-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/block/block.pdf
 %{_texmfdistdir}/doc/latex/block/block.tex
 
 %files -n texlive-block
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/block/block.sty
 
 %package -n texlive-blockdraw_mp
@@ -1488,7 +1461,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-blockdraw_mp-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/metapost/blockdraw_mp/README
 %{_texmfdistdir}/doc/metapost/blockdraw_mp/blockdraw_mp.pdf
 %{_texmfdistdir}/doc/metapost/blockdraw_mp/blockdraw_mp.tex
@@ -1498,7 +1470,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/metapost/blockdraw_mp/tighttoc.sty
 
 %files -n texlive-blockdraw_mp
-%defattr(-,root,root,755)
 %{_texmfdistdir}/metapost/blockdraw_mp/blockdraw.mp
 %{_texmfdistdir}/metapost/blockdraw_mp/bonddemo.mp
 %{_texmfdistdir}/metapost/blockdraw_mp/bondgraph.mp
@@ -1583,7 +1554,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-blopentype-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/luatex/blopentype/DEPENDS.txt
 %{_texmfdistdir}/doc/luatex/blopentype/README.md
 %{_texmfdistdir}/doc/luatex/blopentype/blopentype.md
@@ -1591,7 +1561,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/luatex/blopentype/blottest.tex
 
 %files -n texlive-blopentype
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/luatex/blopentype/blot-base.lua
 %{_texmfdistdir}/tex/luatex/blopentype/blot-files.tex
 %{_texmfdistdir}/tex/luatex/blopentype/blot-fonts.lua
@@ -1669,13 +1638,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bloques-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bloques/README
 %{_texmfdistdir}/doc/latex/bloques/example.pdf
 %{_texmfdistdir}/doc/latex/bloques/example.tex
 
 %files -n texlive-bloques
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bloques/bloques.sty
 
 %package -n texlive-blowup
@@ -1753,7 +1720,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-blowup-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/blowup/README.md
 %{_texmfdistdir}/doc/latex/blowup/blowup-ex1.pdf
 %{_texmfdistdir}/doc/latex/blowup/blowup-ex1.tex
@@ -1770,7 +1736,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/blowup/blowup.pdf
 
 %files -n texlive-blowup
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/blowup/blowup.sty
 
 %package -n texlive-blox
@@ -1845,12 +1810,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-blox-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/blox/README
 %{_texmfdistdir}/doc/latex/blox/blox.pdf
 
 %files -n texlive-blox
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/blox/blox.sty
 
 %package -n texlive-bmstu
@@ -1969,7 +1932,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bmstu-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bmstu/README.md
 %{_texmfdistdir}/doc/latex/bmstu/examples/bmstu-examples.pdf
 %{_texmfdistdir}/doc/latex/bmstu/examples/bmstu-examples.tex
@@ -1979,7 +1941,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bmstu/manifest.txt
 
 %files -n texlive-bmstu
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bmstu/bmstu-appendix.sty
 %{_texmfdistdir}/tex/latex/bmstu/bmstu-biblio.sty
 %{_texmfdistdir}/tex/latex/bmstu/bmstu-defabbr.sty
@@ -2126,14 +2087,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bmstu-iu8-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bmstu-iu8/README.md
 %{_texmfdistdir}/doc/latex/bmstu-iu8/bmstu-example.pdf
 %{_texmfdistdir}/doc/latex/bmstu-iu8/bmstu-example.tex
 %{_texmfdistdir}/doc/latex/bmstu-iu8/bmstu.png
 
 %files -n texlive-bmstu-iu8
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bmstu-iu8/01-IU8-base.sty
 %{_texmfdistdir}/tex/latex/bmstu-iu8/02-IU8-construction.sty
 %{_texmfdistdir}/tex/latex/bmstu-iu8/03-IU8-numbering.sty
@@ -2230,14 +2189,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bnumexpr-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bnumexpr/README.md
 %{_texmfdistdir}/doc/latex/bnumexpr/bnumexpr.pdf
 %{_texmfdistdir}/doc/latex/bnumexpr/bnumexpr.tex
 %{_texmfdistdir}/doc/latex/bnumexpr/bnumexprchanges.tex
 
 %files -n texlive-bnumexpr
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bnumexpr/bnumexpr.sty
 
 %package -n texlive-bodegraph
@@ -2312,7 +2269,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bodegraph-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bodegraph/README
 %{_texmfdistdir}/doc/latex/bodegraph/bodegraph.pdf
 %{_texmfdistdir}/doc/latex/bodegraph/bodegraph.tex
@@ -2494,7 +2450,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bodegraph/gnuplot/bodegraph/95.table
 
 %files -n texlive-bodegraph
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bodegraph/bodegraph.sty
 
 %package -n texlive-bodeplot
@@ -2578,12 +2533,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bodeplot-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bodeplot/README.md
 %{_texmfdistdir}/doc/latex/bodeplot/bodeplot.pdf
 
 %files -n texlive-bodeplot
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bodeplot/bodeplot.sty
 
 %package -n texlive-bohr
@@ -2659,13 +2612,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bohr-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bohr/README
 %{_texmfdistdir}/doc/latex/bohr/bohr_en.pdf
 %{_texmfdistdir}/doc/latex/bohr/bohr_en.tex
 
 %files -n texlive-bohr
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bohr/bohr.sty
 
 %package -n texlive-boisik
@@ -2789,7 +2740,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-boisik-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/boisik/README
 %{_texmfdistdir}/doc/fonts/boisik/example/boisik-idiot.pdf
 %{_texmfdistdir}/doc/fonts/boisik/example/boisik-idiot.tex
@@ -2802,7 +2752,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/boisik/example/testfont.tex
 
 %files -n texlive-boisik
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/source/public/boisik/bskarr10.mf
 %{_texmfdistdir}/fonts/source/public/boisik/bskarrows.mf
 %{_texmfdistdir}/fonts/source/public/boisik/bskbase.mf
@@ -2991,7 +2940,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-boites-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/boites/Makefile
 %{_texmfdistdir}/doc/latex/boites/README
 %{_texmfdistdir}/doc/latex/boites/README.docu
@@ -3001,7 +2949,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/boites/ligne_qui_ondule_sur_la_gauche.eps
 
 %files -n texlive-boites
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/boites/boites.sty
 %{_texmfdistdir}/tex/latex/boites/boites_exemples.sty
 
@@ -3075,12 +3022,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bold-extra-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bold-extra/bold-extra.pdf
 %{_texmfdistdir}/doc/latex/bold-extra/bold-extra.tex
 
 %files -n texlive-bold-extra
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bold-extra/bold-extra.sty
 
 %package -n texlive-boldtensors
@@ -3153,12 +3098,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-boldtensors-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/boldtensors/boldtensors.pdf
 %{_texmfdistdir}/doc/latex/boldtensors/boldtensors.tex
 
 %files -n texlive-boldtensors
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/boldtensors/boldtensors.sty
 
 %package -n texlive-bondgraph
@@ -3230,7 +3173,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bondgraph-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bondgraph/License.txt
 %{_texmfdistdir}/doc/latex/bondgraph/README
 %{_texmfdistdir}/doc/latex/bondgraph/bondgraph_arrows.tex
@@ -3238,7 +3180,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bondgraph/bondgraph_example.tex
 
 %files -n texlive-bondgraph
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bondgraph/bondgraph.sty
 
 %package -n texlive-bondgraphs
@@ -3318,13 +3259,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bondgraphs-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bondgraphs/Makefile
 %{_texmfdistdir}/doc/latex/bondgraphs/README
 %{_texmfdistdir}/doc/latex/bondgraphs/bondgraphs.pdf
 
 %files -n texlive-bondgraphs
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bondgraphs/bondgraphs.sty
 
 %package -n texlive-book-of-common-prayer
@@ -3417,13 +3356,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-book-of-common-prayer-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/book-of-common-prayer/README.md
 %{_texmfdistdir}/doc/latex/book-of-common-prayer/book-of-common-prayer.pdf
 %{_texmfdistdir}/doc/latex/book-of-common-prayer/book-of-common-prayer.tex
 
 %files -n texlive-book-of-common-prayer
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/book-of-common-prayer/book-of-common-prayer.sty
 
 %package -n texlive-bookcover
@@ -3503,7 +3440,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bookcover-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bookcover/README
 %{_texmfdistdir}/doc/latex/bookcover/bookcover-example1.pdf
 %{_texmfdistdir}/doc/latex/bookcover/bookcover-example1.tex
@@ -3530,7 +3466,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bookcover/figures/bookcover-trimming.pdf
 
 %files -n texlive-bookcover
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bookcover/bookcover.cls
 
 %package -n texlive-bookdb
@@ -3602,13 +3537,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bookdb-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/bibtex/bookdb/README
 %{_texmfdistdir}/doc/bibtex/bookdb/bookdb.pdf
 %{_texmfdistdir}/doc/bibtex/bookdb/bookdb.tex
 
 %files -n texlive-bookdb
-%defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/bst/bookdb/bookdb.bst
 
 %package -n texlive-bookest
@@ -3689,7 +3622,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bookest-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bookest/README
 %{_texmfdistdir}/doc/latex/bookest/bookestdoc-en.pdf
 %{_texmfdistdir}/doc/latex/bookest/bookestdoc-en.tex
@@ -3697,7 +3629,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bookest/bookestdoc-it.tex
 
 %files -n texlive-bookest
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bookest/bookest.cls
 
 %package -n texlive-bookhands
@@ -3929,7 +3860,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-bookhands-fonts
 
 %files -n texlive-bookhands-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/bookhands/README.PRW
 %{_texmfdistdir}/doc/fonts/bookhands/allsqrcaps.pdf
 %{_texmfdistdir}/doc/fonts/bookhands/auncial-README
@@ -3988,7 +3918,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/bookhands/uncial/allfont.tex
 
 %files -n texlive-bookhands
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/afm/public/bookhands/sqrc10.afm
 %{_texmfdistdir}/fonts/afm/public/bookhands/sqrcb10.afm
 %{_texmfdistdir}/fonts/map/dvips/bookhands/sqrcaps.map
@@ -4260,7 +4189,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/bookhands/uncial.sty
 
 %files -n texlive-bookhands-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-bookhands
 %{_datadir}/fontconfig/conf.avail/58-texlive-bookhands.conf
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-bookhands/encodings.dir
@@ -4342,12 +4270,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-booklet-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/booklet/README
 %{_texmfdistdir}/doc/latex/booklet/booklet.pdf
 
 %files -n texlive-booklet
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/booklet/bkltprnt.sty
 %{_texmfdistdir}/tex/latex/booklet/booklet.sty
 
@@ -4616,7 +4542,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-bookman-fonts
 
 %files -n texlive-bookman
-%defattr(-,root,root,755)
 %{_texmfdistdir}/dvips/bookman/config.ubk
 %{_texmfdistdir}/fonts/afm/adobe/bookman/pbkd8a.afm
 %{_texmfdistdir}/fonts/afm/adobe/bookman/pbkdi8a.afm
@@ -4809,7 +4734,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/bookman/ts1ubk.fd
 
 %files -n texlive-bookman-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-bookman
 %{_datadir}/fontconfig/conf.avail/58-texlive-bookman.conf
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-bookman/encodings.dir
@@ -4903,13 +4827,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bookmark-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bookmark/README.md
 %{_texmfdistdir}/doc/latex/bookmark/bookmark-example.tex
 %{_texmfdistdir}/doc/latex/bookmark/bookmark.pdf
 
 %files -n texlive-bookmark
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bookmark/bkm-dvipdfm-2019-12-03.def
 %{_texmfdistdir}/tex/latex/bookmark/bkm-dvipdfm.def
 %{_texmfdistdir}/tex/latex/bookmark/bkm-dvips-2019-12-03.def
@@ -4998,7 +4920,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bookshelf-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bookshelf/MANIFEST
 %{_texmfdistdir}/doc/latex/bookshelf/README.md
 %{_texmfdistdir}/doc/latex/bookshelf/VERSION
@@ -5008,7 +4929,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bookshelf/test.tex
 
 %files -n texlive-bookshelf
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bookshelf/bookshelf.cls
 
 %package -n texlive-booktabs
@@ -5083,12 +5003,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-booktabs-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/booktabs/README
 %{_texmfdistdir}/doc/latex/booktabs/booktabs.pdf
 
 %files -n texlive-booktabs
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/booktabs/booktabs.sty
 
 %package -n texlive-booktabs-de
@@ -5143,7 +5061,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-booktabs-de
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/booktabs-de/README-DE
 %{_texmfdistdir}/doc/latex/booktabs-de/booktabs-de.dtx
 %{_texmfdistdir}/doc/latex/booktabs-de/booktabs-de.ins
@@ -5202,7 +5119,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-booktabs-fr
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/booktabs-fr/README
 %{_texmfdistdir}/doc/latex/booktabs-fr/f-booktabs.dtx
 %{_texmfdistdir}/doc/latex/booktabs-fr/f-booktabs.pdf
@@ -5285,12 +5201,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-boolexpr-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/boolexpr/README
 %{_texmfdistdir}/doc/latex/boolexpr/boolexpr.pdf
 
 %files -n texlive-boolexpr
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/boolexpr/boolexpr.sty
 
 %package -n texlive-boondox
@@ -5439,13 +5353,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-boondox-fonts
 
 %files -n texlive-boondox-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/boondox/README
 %{_texmfdistdir}/doc/fonts/boondox/boondox-doc.pdf
 %{_texmfdistdir}/doc/fonts/boondox/boondox-doc.tex
 
 %files -n texlive-boondox
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/map/dvips/boondox/boondox.map
 %{_texmfdistdir}/fonts/tfm/public/boondox/BOONDOX-b-cal.tfm
 %{_texmfdistdir}/fonts/tfm/public/boondox/BOONDOX-b-calo.tfm
@@ -5499,7 +5411,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/boondox/uboondoxuprscr.fd
 
 %files -n texlive-boondox-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-boondox
 %{_datadir}/fontconfig/conf.avail/58-texlive-boondox.conf
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-boondox/encodings.dir
@@ -5584,11 +5495,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bophook-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bophook/bophook.pdf
 
 %files -n texlive-bophook
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bophook/bophook.sty
 
 %package -n texlive-borceux
@@ -5664,7 +5573,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-borceux-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/borceux/Diagram_Mode_d_Emploi
 %{_texmfdistdir}/doc/generic/borceux/Diagram_Read_Me
 %{_texmfdistdir}/doc/generic/borceux/README
@@ -5675,7 +5583,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/generic/borceux/compatibility/OldMultipleArrows
 
 %files -n texlive-borceux
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/borceux/Diagram
 %{_texmfdistdir}/tex/generic/borceux/MaxiDiagram
 %{_texmfdistdir}/tex/generic/borceux/MicroDiagram
@@ -5761,7 +5668,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bosisio-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bosisio/README
 %{_texmfdistdir}/doc/latex/bosisio/accenti.html
 %{_texmfdistdir}/doc/latex/bosisio/accenti.pdf
@@ -5783,7 +5689,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bosisio/sobolev.pdf
 
 %files -n texlive-bosisio
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bosisio/accenti.sty
 %{_texmfdistdir}/tex/latex/bosisio/dblfont.sty
 %{_texmfdistdir}/tex/latex/bosisio/envmath.sty
@@ -5869,12 +5774,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-boxedminipage-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/boxedminipage/README
 %{_texmfdistdir}/doc/latex/boxedminipage/boxedminipage.pdf
 
 %files -n texlive-boxedminipage
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/boxedminipage/boxedminipage.sty
 %{_texmfdistdir}/tex/latex/boxedminipage/boxedminipage2e.sty
 
@@ -5961,12 +5864,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-boxhandler-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/boxhandler/README
 %{_texmfdistdir}/doc/latex/boxhandler/boxhandler.pdf
 
 %files -n texlive-boxhandler
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/boxhandler/boxhandler.sty
 
 %package -n texlive-bpchem
@@ -6041,12 +5942,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bpchem-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bpchem/README.md
 %{_texmfdistdir}/doc/latex/bpchem/bpchem.pdf
 
 %files -n texlive-bpchem
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bpchem/bpchem.sty
 
 %package -n texlive-bpolynomial
@@ -6120,7 +6019,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bpolynomial-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/metapost/bpolynomial/CHANGES
 %{_texmfdistdir}/doc/metapost/bpolynomial/README
 %{_texmfdistdir}/doc/metapost/bpolynomial/TODO
@@ -6129,7 +6027,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/metapost/bpolynomial/examples.mp
 
 %files -n texlive-bpolynomial
-%defattr(-,root,root,755)
 %{_texmfdistdir}/metapost/bpolynomial/bpolynomial.mp
 
 %package -n texlive-br-lex
@@ -6209,14 +6106,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-br-lex-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/br-lex/README.md
 %{_texmfdistdir}/doc/latex/br-lex/brlex-doc.pdf
 %{_texmfdistdir}/doc/latex/br-lex/leis-exemplo.pdf
 %{_texmfdistdir}/doc/latex/br-lex/leis-exemplo.tex
 
 %files -n texlive-br-lex
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/br-lex/br-lex.cls
 
 %package -n texlive-bracketkey
@@ -6291,7 +6186,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bracketkey-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bracketkey/Malva.pdf
 %{_texmfdistdir}/doc/latex/bracketkey/Malva.tex
 %{_texmfdistdir}/doc/latex/bracketkey/README
@@ -6299,7 +6193,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bracketkey/bracketkey.tex
 
 %files -n texlive-bracketkey
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bracketkey/bracketkey.sty
 
 %package -n texlive-braids
@@ -6373,14 +6266,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-braids-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/braids/README.txt
 %{_texmfdistdir}/doc/latex/braids/braids.pdf
 %{_texmfdistdir}/doc/latex/braids/braids.tex
 %{_texmfdistdir}/doc/latex/braids/braids_code.pdf
 
 %files -n texlive-braids
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/braids/braids.sty
 %{_texmfdistdir}/tex/latex/braids/tikzlibrarybraids.code.tex
 
@@ -6456,7 +6347,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-braille-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/braille/README
 %{_texmfdistdir}/doc/latex/braille/braille.html
 %{_texmfdistdir}/doc/latex/braille/braillegif1.gif
@@ -6467,7 +6357,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/braille/summary.tex
 
 %files -n texlive-braille
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/braille/braille.sty
 
 %package -n texlive-braket
@@ -6542,12 +6431,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-braket-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/braket/braket.pdf
 %{_texmfdistdir}/doc/latex/braket/braket.tex
 
 %files -n texlive-braket
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/braket/braket.sty
 
 %package -n texlive-brandeis-dissertation
@@ -6627,12 +6514,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-brandeis-dissertation-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/brandeis-dissertation/README.txt
 %{_texmfdistdir}/doc/latex/brandeis-dissertation/brandeis-dissertation.pdf
 
 %files -n texlive-brandeis-dissertation
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/brandeis-dissertation/brandeis-dissertation.cls
 
 %package -n texlive-brandeis-problemset
@@ -6732,7 +6617,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-brandeis-problemset-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/brandeis-problemset/LICENSE.txt
 %{_texmfdistdir}/doc/latex/brandeis-problemset/README.md
 %{_texmfdistdir}/doc/latex/brandeis-problemset/brandeis-problemset.pdf
@@ -6741,7 +6625,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/brandeis-problemset/example.tex
 
 %files -n texlive-brandeis-problemset
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/brandeis-problemset/brandeis-problemset.cls
 %{_texmfdistdir}/tex/latex/brandeis-problemset/brandeis-problemset.sty
 
@@ -6825,12 +6708,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-brandeis-thesis-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/brandeis-thesis/README.txt
 %{_texmfdistdir}/doc/latex/brandeis-thesis/brandeis-thesis.pdf
 
 %files -n texlive-brandeis-thesis
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/brandeis-thesis/brandeis-thesis.cls
 
 %package -n texlive-breakcites
@@ -6904,13 +6785,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-breakcites-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/breakcites/README
 %{_texmfdistdir}/doc/latex/breakcites/breakcites.pdf
 %{_texmfdistdir}/doc/latex/breakcites/breakcites.tex
 
 %files -n texlive-breakcites
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/breakcites/breakcites.sty
 
 %package -n texlive-breakurl
@@ -6987,12 +6866,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-breakurl-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/breakurl/README
 %{_texmfdistdir}/doc/latex/breakurl/breakurl.pdf
 
 %files -n texlive-breakurl
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/breakurl/breakurl.sty
 
 %package -n texlive-bredzenie
@@ -7065,13 +6942,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bredzenie-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bredzenie/README
 %{_texmfdistdir}/doc/latex/bredzenie/bredzenie.pdf
 %{_texmfdistdir}/doc/latex/bredzenie/bredzenie.tex
 
 %files -n texlive-bredzenie
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bredzenie/bredzenie.sty
 
 %package -n texlive-breqn
@@ -7161,7 +7036,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-breqn-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/breqn/CHANGES.md
 %{_texmfdistdir}/doc/latex/breqn/README.md
 %{_texmfdistdir}/doc/latex/breqn/breqn.pdf
@@ -7169,7 +7043,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/breqn/mathstyle.pdf
 
 %files -n texlive-breqn
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/breqn/breqn.sty
 %{_texmfdistdir}/tex/latex/breqn/cmbase.sym
 %{_texmfdistdir}/tex/latex/breqn/flexisym.sty
@@ -7248,12 +7121,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bropd-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bropd/README
 %{_texmfdistdir}/doc/latex/bropd/bropd.pdf
 
 %files -n texlive-bropd
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bropd/bropd.sty
 
 %package -n texlive-brushscr
@@ -7364,7 +7235,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-brushscr-fonts
 
 %files -n texlive-brushscr-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/brushscr/AAA_readme.tex
 %{_texmfdistdir}/doc/fonts/brushscr/Makefile
 %{_texmfdistdir}/doc/fonts/brushscr/README
@@ -7374,7 +7244,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/brushscr/sample.tex
 
 %files -n texlive-brushscr
-%defattr(-,root,root,755)
 %{_texmfdistdir}/dvips/brushscr/config.pbsi
 %{_texmfdistdir}/fonts/afm/public/brushscr/BrushScriptX-Italic.afm
 %{_texmfdistdir}/fonts/map/dvips/brushscr/pbsi.map
@@ -7387,7 +7256,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/brushscr/t1pbsi.fd
 
 %files -n texlive-brushscr-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-brushscr
 %{_datadir}/fontconfig/conf.avail/58-texlive-brushscr.conf
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-brushscr/encodings.dir
@@ -7469,12 +7337,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bubblesort-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bubblesort/README.md
 %{_texmfdistdir}/doc/latex/bubblesort/bubblesort.pdf
 
 %files -n texlive-bubblesort
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bubblesort/bubblesort.sty
 
 %package -n texlive-buctthesis
@@ -7587,13 +7453,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-buctthesis-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/xelatex/buctthesis/README.md
 %{_texmfdistdir}/doc/xelatex/buctthesis/buctthesis.pdf
 %{_texmfdistdir}/doc/xelatex/buctthesis/manual.sty
 
 %files -n texlive-buctthesis
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/xelatex/buctthesis/buctcover.cls
 %{_texmfdistdir}/tex/xelatex/buctthesis/buctthesis.cls
 
@@ -7668,7 +7532,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bullcntr-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bullcntr/00readme.txt
 %{_texmfdistdir}/doc/latex/bullcntr/README
 %{_texmfdistdir}/doc/latex/bullcntr/bullcntr-man.pdf
@@ -7678,7 +7541,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bullcntr/manifest.txt
 
 %files -n texlive-bullcntr
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bullcntr/bullcntr.sty
 %{_texmfdistdir}/tex/latex/bullcntr/bullenum.sty
 
@@ -7787,13 +7649,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bundledoc-doc
-%defattr(-,root,root,755)
 %{_mandir}/man1/arlatex.1*
 %{_mandir}/man1/bundledoc.1*
 %{_texmfdistdir}/doc/support/bundledoc/README
 
 %files -n texlive-bundledoc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/scripts/bundledoc/arlatex
 %{_texmfdistdir}/scripts/bundledoc/bundledoc
 %{_texmfdistdir}/tex/latex/bundledoc/miktex.cfg
@@ -7904,11 +7764,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-burmese-fonts
 
 %files -n texlive-burmese-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/burmese/burmguide.pdf
 
 %files -n texlive-burmese
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/map/dvips/burmese/burmese.map
 %{_texmfdistdir}/fonts/tfm/public/burmese/burm.tfm
 %verify(link) %{_texmfdistdir}/fonts/type1/public/burmese/burm.pfb
@@ -7916,7 +7774,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/burmese/ubirm.fd
 
 %files -n texlive-burmese-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-burmese
 %{_datadir}/fontconfig/conf.avail/58-texlive-burmese.conf
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-burmese/encodings.dir
@@ -8020,7 +7877,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-businesscard-qrcode-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/xelatex/businesscard-qrcode/README.md
 %{_texmfdistdir}/doc/xelatex/businesscard-qrcode/examples/example.pdf
 %{_texmfdistdir}/doc/xelatex/businesscard-qrcode/examples/example.tex
@@ -8039,7 +7895,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/xelatex/businesscard-qrcode/screenshots/texstudio_d30266.jpg
 
 %files -n texlive-businesscard-qrcode
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/xelatex/businesscard-qrcode/businesscard-qrcode.cls
 
 %package -n texlive-bussproofs
@@ -8116,7 +7971,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bussproofs-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bussproofs/BussGuide2.pdf
 %{_texmfdistdir}/doc/latex/bussproofs/BussGuide2.tex
 %{_texmfdistdir}/doc/latex/bussproofs/README.txt
@@ -8124,7 +7978,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bussproofs/testbp2.tex
 
 %files -n texlive-bussproofs
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bussproofs/bussproofs.sty
 
 %package -n texlive-bussproofs-extra
@@ -8198,14 +8051,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bussproofs-extra-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bussproofs-extra/LICENSE.txt
 %{_texmfdistdir}/doc/latex/bussproofs-extra/README.md
 %{_texmfdistdir}/doc/latex/bussproofs-extra/bpextra.sty
 %{_texmfdistdir}/doc/latex/bussproofs-extra/bussproofs-extra.pdf
 
 %files -n texlive-bussproofs-extra
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bussproofs-extra/bussproofs-extra.sty
 
 %package -n texlive-bxbase
@@ -8291,7 +8142,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bxbase-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bxbase/LICENSE
 %{_texmfdistdir}/doc/latex/bxbase/README-ja.md
 %{_texmfdistdir}/doc/latex/bxbase/README.md
@@ -8299,7 +8149,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bxbase/bxbase-ja.tex
 
 %files -n texlive-bxbase
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxbase/bxbase.def
 %{_texmfdistdir}/tex/latex/bxbase/bxbase.sty
 %{_texmfdistdir}/tex/latex/bxbase/bxtoolbox-ext.def
@@ -8385,7 +8234,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bxcalc-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bxcalc/LICENSE
 %{_texmfdistdir}/doc/latex/bxcalc/README-ja.md
 %{_texmfdistdir}/doc/latex/bxcalc/README.md
@@ -8397,7 +8245,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bxcalc/sample-bxcalc.tex
 
 %files -n texlive-bxcalc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxcalc/bxcalc.sty
 %{_texmfdistdir}/tex/latex/bxcalc/bxcalcize.sty
 %{_texmfdistdir}/tex/latex/bxcalc/bxcalcux.sty
@@ -8482,7 +8329,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bxcjkjatype-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bxcjkjatype/LICENSE
 %{_texmfdistdir}/doc/latex/bxcjkjatype/README-ja.md
 %{_texmfdistdir}/doc/latex/bxcjkjatype/README.md
@@ -8492,7 +8338,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bxcjkjatype/sample-bxcjkjatype.tex
 
 %files -n texlive-bxcjkjatype
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxcjkjatype/bxcjkjatype.sty
 
 %package -n texlive-bxdpx-beamer
@@ -8565,14 +8410,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bxdpx-beamer-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bxdpx-beamer/LICENSE
 %{_texmfdistdir}/doc/latex/bxdpx-beamer/README.md
 %{_texmfdistdir}/doc/latex/bxdpx-beamer/sample/test-framezoom.tex
 %{_texmfdistdir}/doc/latex/bxdpx-beamer/sample/test-navisymbol.tex
 
 %files -n texlive-bxdpx-beamer
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxdpx-beamer/bxdpx-beamer.sty
 
 %package -n texlive-bxdvidriver
@@ -8651,12 +8494,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bxdvidriver-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bxdvidriver/LICENSE
 %{_texmfdistdir}/doc/latex/bxdvidriver/README.md
 
 %files -n texlive-bxdvidriver
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxdvidriver/bxdvidriver.sty
 
 %package -n texlive-bxeepic
@@ -8728,14 +8569,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bxeepic-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bxeepic/LICENSE
 %{_texmfdistdir}/doc/latex/bxeepic/README
 %{_texmfdistdir}/doc/latex/bxeepic/sample-bxeepic.pdf
 %{_texmfdistdir}/doc/latex/bxeepic/sample-bxeepic.tex
 
 %files -n texlive-bxeepic
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxeepic/bxdpxp2e.def
 %{_texmfdistdir}/tex/latex/bxeepic/bxeepic.sty
 
@@ -8810,12 +8649,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bxenclose-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bxenclose/LICENSE
 %{_texmfdistdir}/doc/latex/bxenclose/README.md
 
 %files -n texlive-bxenclose
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxenclose/bxenclose.sty
 
 %package -n texlive-bxghost
@@ -8890,12 +8727,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bxghost-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bxghost/LICENSE
 %{_texmfdistdir}/doc/latex/bxghost/README.md
 
 %files -n texlive-bxghost
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxghost/bxghost-lib.sty
 %{_texmfdistdir}/tex/latex/bxghost/bxghost.sty
 
@@ -8972,7 +8807,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bxjaholiday-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bxjaholiday/LICENSE
 %{_texmfdistdir}/doc/latex/bxjaholiday/README.md
 %{_texmfdistdir}/doc/latex/bxjaholiday/bxjaholiday-ja.pdf
@@ -8981,7 +8815,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bxjaholiday/bxjaholiday.tex
 
 %files -n texlive-bxjaholiday
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxjaholiday/bxjaholiday.sty
 
 %package -n texlive-bxjalipsum
@@ -9056,14 +8889,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bxjalipsum-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bxjalipsum/LICENSE
 %{_texmfdistdir}/doc/latex/bxjalipsum/README.md
 %{_texmfdistdir}/doc/latex/bxjalipsum/sample-bxjalipsum-1.tex
 %{_texmfdistdir}/doc/latex/bxjalipsum/sample-bxjalipsum-2.tex
 
 %files -n texlive-bxjalipsum
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxjalipsum/bxjalipsum.sty
 
 %package -n texlive-bxjaprnind
@@ -9140,7 +8971,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bxjaprnind-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bxjaprnind/LICENSE
 %{_texmfdistdir}/doc/latex/bxjaprnind/README-ja.md
 %{_texmfdistdir}/doc/latex/bxjaprnind/README.md
@@ -9150,7 +8980,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bxjaprnind/sample-bxjaprnind.tex
 
 %files -n texlive-bxjaprnind
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxjaprnind/bxjaprnind.sty
 
 %package -n texlive-bxjatoucs
@@ -9229,12 +9058,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bxjatoucs-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bxjatoucs/LICENSE
 %{_texmfdistdir}/doc/latex/bxjatoucs/README.md
 
 %files -n texlive-bxjatoucs
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/tfm/public/bxjatoucs/bxjatoucs-cid.tfm
 %{_texmfdistdir}/fonts/tfm/public/bxjatoucs/bxjatoucs-jis.tfm
 %{_texmfdistdir}/tex/latex/bxjatoucs/bxjatoucs.sty
@@ -9351,7 +9178,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bxjscls-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bxjscls/LICENSE
 %{_texmfdistdir}/doc/latex/bxjscls/README-ja.md
 %{_texmfdistdir}/doc/latex/bxjscls/README.md
@@ -9360,7 +9186,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bxjscls/bxjscls.pdf
 
 %files -n texlive-bxjscls
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxjscls/bxjsarticle.cls
 %{_texmfdistdir}/tex/latex/bxjscls/bxjsbook.cls
 %{_texmfdistdir}/tex/latex/bxjscls/bxjscjkcat.sty
@@ -9447,12 +9272,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bxnewfont-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bxnewfont/LICENSE
 %{_texmfdistdir}/doc/latex/bxnewfont/README.md
 
 %files -n texlive-bxnewfont
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxnewfont/bxnewfont.sty
 
 %package -n texlive-bxorigcapt
@@ -9526,14 +9349,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bxorigcapt-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bxorigcapt/LICENSE
 %{_texmfdistdir}/doc/latex/bxorigcapt/README.md
 %{_texmfdistdir}/doc/latex/bxorigcapt/bxorigcapt.pdf
 %{_texmfdistdir}/doc/latex/bxorigcapt/bxorigcapt.tex
 
 %files -n texlive-bxorigcapt
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxorigcapt/bxorigcapt.sty
 
 %package -n texlive-bxpapersize
@@ -9614,12 +9435,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bxpapersize-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bxpapersize/LICENSE
 %{_texmfdistdir}/doc/latex/bxpapersize/README.md
 
 %files -n texlive-bxpapersize
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxpapersize/bxpapersize.sty
 
 %package -n texlive-bxpdfver
@@ -9696,14 +9515,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bxpdfver-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bxpdfver/LICENSE
 %{_texmfdistdir}/doc/latex/bxpdfver/README-ja.md
 %{_texmfdistdir}/doc/latex/bxpdfver/README.md
 %{_texmfdistdir}/doc/latex/bxpdfver/sample-bxpdfver.tex
 
 %files -n texlive-bxpdfver
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxpdfver/bxpdfver.sty
 
 %package -n texlive-bxtexlogo
@@ -9783,14 +9600,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bxtexlogo-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bxtexlogo/LICENSE
 %{_texmfdistdir}/doc/latex/bxtexlogo/README.md
 %{_texmfdistdir}/doc/latex/bxtexlogo/bxtexlogo-sample.pdf
 %{_texmfdistdir}/doc/latex/bxtexlogo/bxtexlogo-sample.tex
 
 %files -n texlive-bxtexlogo
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxtexlogo/bxtexlogo.sty
 
 %package -n texlive-bxwareki
@@ -9869,14 +9684,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bxwareki-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bxwareki/LICENSE
 %{_texmfdistdir}/doc/latex/bxwareki/README.md
 %{_texmfdistdir}/doc/latex/bxwareki/bxwareki.pdf
 %{_texmfdistdir}/doc/latex/bxwareki/bxwareki.tex
 
 %files -n texlive-bxwareki
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bxwareki/bxwareki-cd.def
 %{_texmfdistdir}/tex/latex/bxwareki/bxwareki.sty
 %{_texmfdistdir}/tex/latex/bxwareki/bxwareki2019.def
@@ -9955,12 +9768,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-byo-twemojis-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/byo-twemojis/README.md
 %{_texmfdistdir}/doc/latex/byo-twemojis/byo-twemojis.pdf
 
 %files -n texlive-byo-twemojis
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/byo-twemojis/byo-twemojis.sty
 
 %package -n texlive-byrne
@@ -10039,13 +9850,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-byrne-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/metapost/byrne/README
 %{_texmfdistdir}/doc/metapost/byrne/byrne-latex.pdf
 %{_texmfdistdir}/doc/metapost/byrne/byrne-latex.tex
 
 %files -n texlive-byrne
-%defattr(-,root,root,755)
 %{_texmfdistdir}/metapost/byrne/byrne.mp
 %{_texmfdistdir}/tex/latex/byrne/byrne.sty
 
@@ -10121,14 +9930,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bytefield-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bytefield/README
 %{_texmfdistdir}/doc/latex/bytefield/bf-example.pdf
 %{_texmfdistdir}/doc/latex/bytefield/bf-example.tex
 %{_texmfdistdir}/doc/latex/bytefield/bytefield.pdf
 
 %files -n texlive-bytefield
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bytefield/bytefield.sty
 
 %package -n texlive-c-pascal
@@ -10204,7 +10011,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-c-pascal-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/c-pascal/README.eng
 %{_texmfdistdir}/doc/generic/c-pascal/README.pol
 %{_texmfdistdir}/doc/generic/c-pascal/demo1.tex
@@ -10214,7 +10020,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/generic/c-pascal/prog/sun.c
 
 %files -n texlive-c-pascal
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/c-pascal/cap.tex
 %{_texmfdistdir}/tex/generic/c-pascal/cap_c.tex
 %{_texmfdistdir}/tex/generic/c-pascal/cap_comm.tex
@@ -10288,11 +10093,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-c90-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/enc/c90/c90.pdf
 
 %files -n texlive-c90
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/enc/dvips/c90/c90.enc
 
 %package -n texlive-cabin
@@ -10773,7 +10576,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-cabin-fonts
 
 %files -n texlive-cabin-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/cabin/AUTHORS.txt
 %{_texmfdistdir}/doc/fonts/cabin/CONTRIBUTORS.txt
 %{_texmfdistdir}/doc/fonts/cabin/DESCRIPTION.en_us.html
@@ -10786,7 +10588,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/cabin/requirements.txt
 
 %files -n texlive-cabin
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/enc/dvips/cabin/cbn_5xld5w.enc
 %{_texmfdistdir}/fonts/enc/dvips/cabin/cbn_fp7bit.enc
 %{_texmfdistdir}/fonts/enc/dvips/cabin/cbn_hau3x5.enc
@@ -11185,7 +10986,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/cabin/cabin.sty
 
 %files -n texlive-cabin-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-cabin
 %{_datadir}/fontconfig/conf.avail/58-texlive-cabin.conf
 %{_datadir}/fontconfig/conf.avail/55-texlive-cabin.conf
@@ -11302,13 +11102,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-cachepic-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/cachepic/README
 %{_texmfdistdir}/doc/latex/cachepic/cachepic.pdf
 %{_texmfdistdir}/doc/latex/cachepic/cachepic.tex
 
 %files -n texlive-cachepic
-%defattr(-,root,root,755)
 %{_texmfdistdir}/scripts/cachepic/cachepic.cmd
 %{_texmfdistdir}/scripts/cachepic/cachepic.tlu
 %{_texmfdistdir}/tex/latex/cachepic/cachepic.sty
@@ -11470,7 +11268,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-caladea-fonts
 
 %files -n texlive-caladea-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/caladea/Caladea-Regular.pdf
 %{_texmfdistdir}/doc/fonts/caladea/LICENSE-2.0
 %{_texmfdistdir}/doc/fonts/caladea/README
@@ -11478,7 +11275,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/caladea/samples.tex
 
 %files -n texlive-caladea
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/enc/dvips/caladea/cld_cb3g7n.enc
 %{_texmfdistdir}/fonts/enc/dvips/caladea/cld_fjy5hl.enc
 %{_texmfdistdir}/fonts/enc/dvips/caladea/cld_prieif.enc
@@ -11539,7 +11335,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/caladea/caladea.sty
 
 %files -n texlive-caladea-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-caladea
 %{_datadir}/fontconfig/conf.avail/58-texlive-caladea.conf
 %{_datadir}/fontconfig/conf.avail/55-texlive-caladea.conf
@@ -11627,12 +11422,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-calcage-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/calcage/README
 %{_texmfdistdir}/doc/latex/calcage/calcage.pdf
 
 %files -n texlive-calcage
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/calcage/calcage.sty
 
 %package -n texlive-calctab
@@ -11715,13 +11508,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-calctab-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/calctab/README
 %{_texmfdistdir}/doc/latex/calctab/calctab_manual.pdf
 %{_texmfdistdir}/doc/latex/calctab/calctab_manual.tex
 
 %files -n texlive-calctab
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/calctab/calctab.sty
 
 %package -n texlive-calculation
@@ -11804,12 +11595,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-calculation-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/calculation/README
 %{_texmfdistdir}/doc/latex/calculation/calculation.pdf
 
 %files -n texlive-calculation
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/calculation/calculation.sty
 
 %package -n texlive-calculator
@@ -11886,12 +11675,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-calculator-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/calculator/README.md
 %{_texmfdistdir}/doc/latex/calculator/calculator.pdf
 
 %files -n texlive-calculator
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/calculator/calculator.sty
 %{_texmfdistdir}/tex/latex/calculator/calculus.sty
 
@@ -11965,12 +11752,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-calligra-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/calligra/README
 %{_texmfdistdir}/doc/latex/calligra/testfont.pdf
 
 %files -n texlive-calligra
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/source/public/calligra/callig15.mf
 %{_texmfdistdir}/fonts/source/public/calligra/calligra.mf
 %{_texmfdistdir}/fonts/tfm/public/calligra/callig15.tfm
@@ -12074,17 +11859,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-calligra-type1-fonts
 
 %files -n texlive-calligra-type1-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/calligra-type1/README
 
 %files -n texlive-calligra-type1
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/afm/public/calligra-type1/callig15.afm
 %{_texmfdistdir}/fonts/map/dvips/calligra-type1/calligra.map
 %verify(link) %{_texmfdistdir}/fonts/type1/public/calligra-type1/callig15.pfb
 
 %files -n texlive-calligra-type1-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-calligra-type1
 %{_datadir}/fontconfig/conf.avail/58-texlive-calligra-type1.conf
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-calligra-type1/encodings.dir
@@ -12164,14 +11946,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-callouts-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/callouts/A319neo.jpg
 %{_texmfdistdir}/doc/latex/callouts/README.md
 %{_texmfdistdir}/doc/latex/callouts/callouts.pdf
 %{_texmfdistdir}/doc/latex/callouts/callouts.tex
 
 %files -n texlive-callouts
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/callouts/callouts.sty
 
 %package -n texlive-calrsfs
@@ -12242,13 +12022,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-calrsfs-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/calrsfs/README
 %{_texmfdistdir}/doc/latex/calrsfs/calrsfs.pdf
 %{_texmfdistdir}/doc/latex/calrsfs/calrsfs.tex
 
 %files -n texlive-calrsfs
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/calrsfs/OMSrsfs.fd
 %{_texmfdistdir}/tex/latex/calrsfs/calrsfs.sty
 
@@ -12323,7 +12101,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-cals-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/cals/README
 %{_texmfdistdir}/doc/latex/cals/cals.pdf
 %{_texmfdistdir}/doc/latex/cals/examples/bididemo.pdf
@@ -12454,7 +12231,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/cals/test/visual_tables/test_40_span.tex
 
 %files -n texlive-cals
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/cals/cals.sty
 
 %package -n texlive-calxxxx-yyyy
@@ -12530,7 +12306,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-calxxxx-yyyy-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/calxxxx-yyyy/README
 %{_texmfdistdir}/doc/latex/calxxxx-yyyy/cal2023-2040_DE.pdf
 %{_texmfdistdir}/doc/latex/calxxxx-yyyy/cal2023-2040_DK.pdf
@@ -12538,7 +12313,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/calxxxx-yyyy/calxxxx-yyyy-doc.pdf
 
 %files -n texlive-calxxxx-yyyy
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/calxxxx-yyyy/calxxxx-yyyy-doc.tex
 %{_texmfdistdir}/tex/latex/calxxxx-yyyy/calxxxx-yyyy.tex
 
@@ -12611,12 +12385,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-cancel-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/cancel/cancel.pdf
 %{_texmfdistdir}/doc/latex/cancel/cancel.tex
 
 %files -n texlive-cancel
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/cancel/cancel.sty
 
 %package -n texlive-canoniclayout
@@ -12691,12 +12463,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-canoniclayout-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/canoniclayout/README.txt
 %{_texmfdistdir}/doc/latex/canoniclayout/canoniclayout.pdf
 
 %files -n texlive-canoniclayout
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/canoniclayout/canoniclayout.sty
 
 %package -n texlive-cantarell
@@ -13707,14 +13477,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-cantarell-fonts
 
 %files -n texlive-cantarell-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/cantarell/CHANGES
 %{_texmfdistdir}/doc/fonts/cantarell/README
 %{_texmfdistdir}/doc/fonts/cantarell/cantarell-samples.pdf
 %{_texmfdistdir}/doc/fonts/cantarell/cantarell.pdf
 
 %files -n texlive-cantarell
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/enc/dvips/cantarell/a_2jvscy.enc
 %{_texmfdistdir}/fonts/enc/dvips/cantarell/a_334zia.enc
 %{_texmfdistdir}/fonts/enc/dvips/cantarell/a_3al2dj.enc
@@ -14627,7 +14395,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/cantarell/cantarell.sty
 
 %files -n texlive-cantarell-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-cantarell
 %{_datadir}/fontconfig/conf.avail/58-texlive-cantarell.conf
 %{_datadir}/fontconfig/conf.avail/55-texlive-cantarell.conf
@@ -14716,12 +14483,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-capt-of-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/capt-of/README
 %{_texmfdistdir}/doc/latex/capt-of/capt-of.pdf
 
 %files -n texlive-capt-of
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/capt-of/capt-of.sty
 
 %package -n texlive-captcont
@@ -14799,14 +14564,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-captcont-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/captcont/README
 %{_texmfdistdir}/doc/latex/captcont/captcont.pdf
 %{_texmfdistdir}/doc/latex/captcont/ltxdoc.cfg
 %{_texmfdistdir}/doc/latex/captcont/test.tex
 
 %files -n texlive-captcont
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/captcont/captcont.sty
 
 %package -n texlive-captdef
@@ -14881,13 +14644,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-captdef-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/captdef/captdef.pdf
 %{_texmfdistdir}/doc/latex/captdef/captdef.tex
 %{_texmfdistdir}/doc/latex/captdef/miscdoc.sty
 
 %files -n texlive-captdef
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/captdef/captdef.sty
 
 %package -n texlive-caption
@@ -14990,7 +14751,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-caption-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/caption/CHANGELOG
 %{_texmfdistdir}/doc/latex/caption/README
 %{_texmfdistdir}/doc/latex/caption/SUMMARY
@@ -15002,7 +14762,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/caption/subcaption.pdf
 
 %files -n texlive-caption
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/caption/bicaption.sty
 %{_texmfdistdir}/tex/latex/caption/caption-ams-smf.sto
 %{_texmfdistdir}/tex/latex/caption/caption-beamer.sto
@@ -15107,14 +14866,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-carbohydrates-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/carbohydrates/README
 %{_texmfdistdir}/doc/latex/carbohydrates/carbohydrates_en.pdf
 %{_texmfdistdir}/doc/latex/carbohydrates/carbohydrates_en.tex
 %{_texmfdistdir}/doc/latex/carbohydrates/test.tex
 
 %files -n texlive-carbohydrates
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/carbohydrates/carbohydrates.sty
 
 %package -n texlive-carlisle
@@ -15200,13 +14957,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-carlisle-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/carlisle/README.txt
 %{_texmfdistdir}/doc/latex/carlisle/ltx1.tex
 %{_texmfdistdir}/doc/latex/carlisle/ltxtable.pdf
 
 %files -n texlive-carlisle
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/carlisle/dotlessj.sty
 %{_texmfdistdir}/tex/latex/carlisle/ltxtable.sty
 %{_texmfdistdir}/tex/latex/carlisle/plain.sty
@@ -15534,7 +15289,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-carlito-fonts
 
 %files -n texlive-carlito-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/carlito/Carlito-Regular.pdf
 %{_texmfdistdir}/doc/fonts/carlito/LICENSE
 %{_texmfdistdir}/doc/fonts/carlito/README
@@ -15542,7 +15296,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/carlito/carlito-samples.tex
 
 %files -n texlive-carlito
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/enc/dvips/carlito/crlt_7oxnun.enc
 %{_texmfdistdir}/fonts/enc/dvips/carlito/crlt_diffle.enc
 %{_texmfdistdir}/fonts/enc/dvips/carlito/crlt_du3rrv.enc
@@ -15765,7 +15518,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/carlito/carlito.sty
 
 %files -n texlive-carlito-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-carlito
 %{_datadir}/fontconfig/conf.avail/58-texlive-carlito.conf
 %{_datadir}/fontconfig/conf.avail/55-texlive-carlito.conf
@@ -15883,11 +15635,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-carolmin-ps-fonts
 
 %files -n texlive-carolmin-ps-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/carolmin-ps/README
 
 %files -n texlive-carolmin-ps
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/afm/public/carolmin-ps/cmin10.afm
 %{_texmfdistdir}/fonts/afm/public/carolmin-ps/cmin17.afm
 %{_texmfdistdir}/fonts/afm/public/carolmin-ps/cmin7.afm
@@ -15903,7 +15653,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %verify(link) %{_texmfdistdir}/fonts/type1/public/carolmin-ps/cminb7.pfb
 
 %files -n texlive-carolmin-ps-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-carolmin-ps
 %{_datadir}/fontconfig/conf.avail/58-texlive-carolmin-ps.conf
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-carolmin-ps/encodings.dir
@@ -15994,7 +15743,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-cartonaugh-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/cartonaugh/README.md
 %{_texmfdistdir}/doc/latex/cartonaugh/cartonaugh-example.pdf
 %{_texmfdistdir}/doc/latex/cartonaugh/cartonaugh-example.tex
@@ -16009,7 +15757,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/cartonaugh/test/cartonaugh-terms.tex
 
 %files -n texlive-cartonaugh
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/cartonaugh/cartonaugh.lua
 %{_texmfdistdir}/tex/latex/cartonaugh/cartonaugh.sty
 
@@ -16084,14 +15831,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-cascade-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/cascade/README.md
 %{_texmfdistdir}/doc/latex/cascade/cascade-french.pdf
 %{_texmfdistdir}/doc/latex/cascade/cascade-french.tex
 %{_texmfdistdir}/doc/latex/cascade/cascade.pdf
 
 %files -n texlive-cascade
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/cascade/cascade.sty
 
 %package -n texlive-cascadia-code
@@ -16319,14 +16064,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-cascadia-code-fonts
 
 %files -n texlive-cascadia-code-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/cascadia-code/LICENSE
 %{_texmfdistdir}/doc/fonts/cascadia-code/README
 %{_texmfdistdir}/doc/fonts/cascadia-code/cascadia-code-samples.pdf
 %{_texmfdistdir}/doc/fonts/cascadia-code/cascadia-code-samples.tex
 
 %files -n texlive-cascadia-code
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/enc/dvips/cascadia-code/a_5rnmoj.enc
 %{_texmfdistdir}/fonts/enc/dvips/cascadia-code/a_i3ioen.enc
 %{_texmfdistdir}/fonts/enc/dvips/cascadia-code/a_lzhlbi.enc
@@ -16459,7 +16202,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/cascadia-code/cascadia-code.sty
 
 %files -n texlive-cascadia-code-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-cascadia-code
 %{_datadir}/fontconfig/conf.avail/58-texlive-cascadia-code.conf
 %{_datadir}/fontconfig/conf.avail/55-texlive-cascadia-code.conf
@@ -16560,7 +16302,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-cascadilla-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/cascadilla/LICENSE.txt
 %{_texmfdistdir}/doc/latex/cascadilla/README
 %{_texmfdistdir}/doc/latex/cascadilla/example.pdf
@@ -16568,7 +16309,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/cascadilla/exampleref.bib
 
 %files -n texlive-cascadilla
-%defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/bst/cascadilla/cascadilla.bst
 %{_texmfdistdir}/tex/latex/cascadilla/cascadilla.cls
 
@@ -16643,13 +16383,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-cases-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/cases/README
 %{_texmfdistdir}/doc/latex/cases/cases.pdf
 %{_texmfdistdir}/doc/latex/cases/cases.tex
 
 %files -n texlive-cases
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/cases/cases.sty
 
 %package -n texlive-casyl
@@ -16721,13 +16459,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-casyl-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/casyl/README
 %{_texmfdistdir}/doc/latex/casyl/casyldoc.pdf
 %{_texmfdistdir}/doc/latex/casyl/casyldoc.tex
 
 %files -n texlive-casyl
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/source/public/casyl/casyll10.mf
 %{_texmfdistdir}/fonts/tfm/public/casyl/casyll10.tfm
 %{_texmfdistdir}/tex/latex/casyl/casyltex.sty
@@ -16804,12 +16540,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-catchfile-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/catchfile/README.md
 %{_texmfdistdir}/doc/latex/catchfile/catchfile.pdf
 
 %files -n texlive-catchfile
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/catchfile/catchfile.sty
 
 %package -n texlive-catchfilebetweentags
@@ -16888,12 +16622,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-catchfilebetweentags-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/catchfilebetweentags/README
 %{_texmfdistdir}/doc/latex/catchfilebetweentags/catchfilebetweentags.pdf
 
 %files -n texlive-catchfilebetweentags
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/catchfilebetweentags/catchfilebetweentags.sty
 
 %package -n texlive-catcodes
@@ -16971,13 +16703,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-catcodes-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/catcodes/README
 %{_texmfdistdir}/doc/generic/catcodes/SrcFILEs.txt
 %{_texmfdistdir}/doc/generic/catcodes/catcodes.pdf
 
 %files -n texlive-catcodes
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/catcodes/actcodes.sty
 %{_texmfdistdir}/tex/generic/catcodes/catchdq.sty
 %{_texmfdistdir}/tex/generic/catcodes/catcodes.RLS
@@ -17054,14 +16784,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-catechis-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/catechis/CHANGES
 %{_texmfdistdir}/doc/latex/catechis/README
 %{_texmfdistdir}/doc/latex/catechis/catechis.pdf
 %{_texmfdistdir}/doc/latex/catechis/lppl.txt
 
 %files -n texlive-catechis
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/catechis/catechis.sty
 
 %package -n texlive-catoptions
@@ -17141,12 +16869,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-catoptions-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/catoptions/README
 %{_texmfdistdir}/doc/latex/catoptions/catoptions-guide.tex
 
 %files -n texlive-catoptions
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/catoptions/catoptions-guide.cfg
 %{_texmfdistdir}/tex/latex/catoptions/catoptions.sty
 
@@ -17222,7 +16948,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-causets-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/causets/README.md
 %{_texmfdistdir}/doc/latex/causets/causet_tikz_example1.pdf
 %{_texmfdistdir}/doc/latex/causets/causet_tikz_example1.tex
@@ -17232,7 +16957,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/causets/causets.tex
 
 %files -n texlive-causets
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/causets/causets.sty
 
 %package -n texlive-cbcoptic
@@ -17331,14 +17055,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-cbcoptic-fonts
 
 %files -n texlive-cbcoptic-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/cbcoptic/README
 %{_texmfdistdir}/doc/latex/cbcoptic/coptfont.pdf
 %{_texmfdistdir}/doc/latex/cbcoptic/testcop.tex
 %{_texmfdistdir}/doc/latex/cbcoptic/testcopOK.pdf
 
 %files -n texlive-cbcoptic
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/source/public/cbcoptic/coptbase.mf
 %{_texmfdistdir}/fonts/source/public/cbcoptic/copti.mf
 %{_texmfdistdir}/fonts/source/public/cbcoptic/copto.mf
@@ -17351,7 +17073,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/cbcoptic/prnthyph.sty
 
 %files -n texlive-cbcoptic-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-cbcoptic
 %{_datadir}/fontconfig/conf.avail/58-texlive-cbcoptic.conf
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-cbcoptic/encodings.dir
@@ -18412,14 +18133,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-cbfonts-fonts
 
 %files -n texlive-cbfonts-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/cbfonts/README
 %{_texmfdistdir}/doc/fonts/cbfonts/cbgreek.pdf
 %{_texmfdistdir}/doc/fonts/cbfonts/cbgreek.tex
 %{_texmfdistdir}/doc/fonts/cbfonts/grmn1000table.pdf
 
 %files -n texlive-cbfonts
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/enc/dvips/cbfonts/CB.enc
 %{_texmfdistdir}/fonts/enc/dvips/cbfonts/gmtr.enc
 %{_texmfdistdir}/fonts/map/dvips/cbfonts/cbgreek-full.map
@@ -21344,7 +21063,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %verify(link) %{_texmfdistdir}/fonts/type1/public/cbfonts/gttu3583.pfb
 
 %files -n texlive-cbfonts-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-cbfonts
 %{_datadir}/fontconfig/conf.avail/58-texlive-cbfonts.conf
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-cbfonts/encodings.dir
@@ -22374,13 +22092,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-cbfonts-fd-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/cbfonts-fd/README
 %{_texmfdistdir}/doc/fonts/cbfonts-fd/cbfonts-fd.pdf
 %{_texmfdistdir}/doc/fonts/cbfonts-fd/manifest.txt
 
 %files -n texlive-cbfonts-fd
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/cbfonts-fd/lgrcmr.fd
 %{_texmfdistdir}/tex/latex/cbfonts-fd/lgrcmro.fd
 %{_texmfdistdir}/tex/latex/cbfonts-fd/lgrcmss.fd
@@ -22504,11 +22220,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-cc-pl-fonts
 
 %files -n texlive-cc-pl-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/cc-pl/README
 
 %files -n texlive-cc-pl
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/map/dvips/cc-pl/ccpl.map
 %{_texmfdistdir}/fonts/source/public/cc-pl/fic_mic.mf
 %{_texmfdistdir}/fonts/source/public/cc-pl/pccsc10.mf
@@ -22546,7 +22260,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %verify(link) %{_texmfdistdir}/fonts/type1/public/cc-pl/pcti10.pfb
 
 %files -n texlive-cc-pl-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-cc-pl
 %{_datadir}/fontconfig/conf.avail/58-texlive-cc-pl.conf
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-cc-pl/encodings.dir
@@ -22636,12 +22349,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-ccaption-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/ccaption/README
 %{_texmfdistdir}/doc/latex/ccaption/ccaption.pdf
 
 %files -n texlive-ccaption
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/ccaption/ccaption.sty
 
 %package -n texlive-ccfonts
@@ -22716,13 +22427,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-ccfonts-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/ccfonts/LICENSE
 %{_texmfdistdir}/doc/latex/ccfonts/README
 %{_texmfdistdir}/doc/latex/ccfonts/ccfonts.pdf
 
 %files -n texlive-ccfonts
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/ccfonts/ccfonts.sty
 %{_texmfdistdir}/tex/latex/ccfonts/t1ccr.fd
 %{_texmfdistdir}/tex/latex/ccfonts/ts1ccr.fd
@@ -22831,13 +22540,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-ccicons-fonts
 
 %files -n texlive-ccicons-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/ccicons/FONTLOG.txt
 %{_texmfdistdir}/doc/fonts/ccicons/OFL.txt
 %{_texmfdistdir}/doc/latex/ccicons/ccicons.pdf
 
 %files -n texlive-ccicons
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/enc/dvips/ccicons/ccicons-u.enc
 %{_texmfdistdir}/fonts/map/dvips/ccicons/ccicons.map
 %verify(link) %{_texmfdistdir}/fonts/opentype/public/ccicons/ccicons.otf
@@ -22846,7 +22553,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/ccicons/ccicons.sty
 
 %files -n texlive-ccicons-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-ccicons
 %{_datadir}/fontconfig/conf.avail/58-texlive-ccicons.conf
 %{_datadir}/fontconfig/conf.avail/55-texlive-ccicons.conf
@@ -22927,12 +22633,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-cclicenses-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/cclicenses/README
 %{_texmfdistdir}/doc/latex/cclicenses/cclicenses_short.pdf
 
 %files -n texlive-cclicenses
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/cclicenses/cclicenses.sty
 
 %package -n texlive-ccool
@@ -23019,13 +22723,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-ccool-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/ccool/README.md
 %{_texmfdistdir}/doc/latex/ccool/ccool.bib
 %{_texmfdistdir}/doc/latex/ccool/ccool.pdf
 
 %files -n texlive-ccool
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/ccool/ccool.sty
 
 %package -n texlive-cd
@@ -23099,7 +22801,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-cd-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/cd/CD.tex
 %{_texmfdistdir}/doc/latex/cd/CDlist.tex
 %{_texmfdistdir}/doc/latex/cd/README
@@ -23110,7 +22811,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/cd/slimCDlist.tex
 
 %files -n texlive-cd
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/cd/cd.cls
 
 %package -n texlive-cd-cover
@@ -23184,12 +22884,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-cd-cover-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/cd-cover/README
 %{_texmfdistdir}/doc/latex/cd-cover/cd-cover.pdf
 
 %files -n texlive-cd-cover
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/cd-cover/cd-cover.cls
 
 %package -n texlive-cdcmd
@@ -23263,7 +22961,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-cdcmd-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/cdcmd/README.md
 %{_texmfdistdir}/doc/latex/cdcmd/cdcmd-cn.pdf
 %{_texmfdistdir}/doc/latex/cdcmd/cdcmd-cn.tex
@@ -23271,7 +22968,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/cdcmd/cdcmd.pdf
 
 %files -n texlive-cdcmd
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/cdcmd/cdcmd.sty
 
 %package -n texlive-cdpbundl
@@ -23363,7 +23059,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-cdpbundl-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/cdpbundl/00readme.txt
 %{_texmfdistdir}/doc/latex/cdpbundl/Makefile
 %{_texmfdistdir}/doc/latex/cdpbundl/README
@@ -23373,7 +23068,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/cdpbundl/manifest.txt
 
 %files -n texlive-cdpbundl
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/cdpbundl/articoletteracdp.cls
 %{_texmfdistdir}/tex/latex/cdpbundl/cdpaddon.sty
 %{_texmfdistdir}/tex/latex/cdpbundl/cdpbabel.sty
@@ -23455,11 +23149,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-cell-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/cell/README
 
 %files -n texlive-cell
-%defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/bst/cell/cell.bst
 %{_texmfdistdir}/tex/latex/cell/cell.sty
 
@@ -23538,13 +23230,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-cellprops-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/cellprops/LICENSE
 %{_texmfdistdir}/doc/latex/cellprops/README.md
 %{_texmfdistdir}/doc/latex/cellprops/cellprops.pdf
 
 %files -n texlive-cellprops
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/cellprops/cellprops.sty
 
 %package -n texlive-cellspace
@@ -23628,13 +23318,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-cellspace-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/cellspace/README
 %{_texmfdistdir}/doc/latex/cellspace/cellspace.pdf
 %{_texmfdistdir}/doc/latex/cellspace/cellspace.tex
 
 %files -n texlive-cellspace
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/cellspace/cellspace.sty
 
 %package -n texlive-celtic
@@ -23704,14 +23392,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-celtic-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/celtic/README
 %{_texmfdistdir}/doc/latex/celtic/celtic.pdf
 %{_texmfdistdir}/doc/latex/celtic/celtic_code.pdf
 %{_texmfdistdir}/doc/latex/celtic/celtic_doc.tex
 
 %files -n texlive-celtic
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/celtic/tikzlibraryceltic.code.tex
 
 %package -n texlive-censor
@@ -23788,13 +23474,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-censor-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/censor/README
 %{_texmfdistdir}/doc/latex/censor/censor.pdf
 %{_texmfdistdir}/doc/latex/censor/censor.tex
 
 %files -n texlive-censor
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/censor/censor.sty
 
 %package -n texlive-centeredline
@@ -23869,11 +23553,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-centeredline-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/centeredline/README.md
 
 %files -n texlive-centeredline
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/centeredline/centeredline.sty
 
 %package -n texlive-centerlastline
@@ -23947,12 +23629,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-centerlastline-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/centerlastline/README
 %{_texmfdistdir}/doc/latex/centerlastline/centerlastline.pdf
 
 %files -n texlive-centerlastline
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/centerlastline/centerlastline.sty
 
 %package -n texlive-cesenaexam
@@ -24034,7 +23714,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-cesenaexam-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/cesenaexam/Makefile
 %{_texmfdistdir}/doc/latex/cesenaexam/README.md
 %{_texmfdistdir}/doc/latex/cesenaexam/cesenaexam.pdf
@@ -24042,7 +23721,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/cesenaexam/cesenaexam_example.tex
 
 %files -n texlive-cesenaexam
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/cesenaexam/cesenaexam.cls
 %{_texmfdistdir}/tex/latex/cesenaexam/cesenaexam.sty
 
@@ -24165,14 +23843,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-cfr-initials-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/cfr-initials/README
 %{_texmfdistdir}/doc/latex/cfr-initials/cfr-initials.pdf
 %{_texmfdistdir}/doc/latex/cfr-initials/cfr-initials.tex
 %{_texmfdistdir}/doc/latex/cfr-initials/manifest.txt
 
 %files -n texlive-cfr-initials
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/cfr-initials/Acorn.sty
 %{_texmfdistdir}/tex/latex/cfr-initials/AnnSton.sty
 %{_texmfdistdir}/tex/latex/cfr-initials/ArtNouv.sty
@@ -25184,7 +24860,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-cfr-lm-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/cfr-lm/README
 %{_texmfdistdir}/doc/fonts/cfr-lm/cfr-lm.pdf
 %{_texmfdistdir}/doc/fonts/cfr-lm/cfr-lm.tex
@@ -25193,7 +24868,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/cfr-lm/manifest.txt
 
 %files -n texlive-cfr-lm
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/enc/dvips/cfr-lm/dotdigits-clm.enc
 %{_texmfdistdir}/fonts/enc/dvips/cfr-lm/t1-clm.enc
 %{_texmfdistdir}/fonts/map/dvips/cfr-lm/clm.map
@@ -26150,7 +25824,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-changebar-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/changebar/CATALOG
 %{_texmfdistdir}/doc/latex/changebar/MANIFEST
 %{_texmfdistdir}/doc/latex/changebar/README
@@ -26158,7 +25831,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/changebar/changebar.pdf
 
 %files -n texlive-changebar
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/changebar/changebar.sty
 
 %package -n texlive-changelayout
@@ -26234,13 +25906,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-changelayout-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/changelayout/README
 %{_texmfdistdir}/doc/latex/changelayout/changelayout-guide.pdf
 %{_texmfdistdir}/doc/latex/changelayout/changelayout-guide.tex
 
 %files -n texlive-changelayout
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/changelayout/changelayout.sty
 
 %package -n texlive-changelog
@@ -26315,7 +25985,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-changelog-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/changelog/LICENSE.txt
 %{_texmfdistdir}/doc/latex/changelog/README.md
 %{_texmfdistdir}/doc/latex/changelog/changelog.pdf
@@ -26325,7 +25994,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/changelog/screenshot.png
 
 %files -n texlive-changelog
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/changelog/changelog.sty
 
 %package -n texlive-changepage
@@ -26402,12 +26070,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-changepage-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/changepage/README
 %{_texmfdistdir}/doc/latex/changepage/changepage.pdf
 
 %files -n texlive-changepage
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/changepage/changepage.sty
 %{_texmfdistdir}/tex/latex/changepage/chngpage.sty
 
@@ -26493,7 +26159,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-changes-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/changes/README
 %{_texmfdistdir}/doc/latex/changes/changes.english.pdf
 %{_texmfdistdir}/doc/latex/changes/changes.english.withcode.pdf
@@ -26763,7 +26428,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/changes/userdoc/usepackage_xcolor_changes_in.tex
 
 %files -n texlive-changes
-%defattr(-,root,root,755)
 %{_texmfdistdir}/scripts/changes/pyMergeChanges.py
 %{_texmfdistdir}/tex/latex/changes/changes.sty
 
@@ -26836,11 +26500,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-chappg-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/chappg/chappg.pdf
 
 %files -n texlive-chappg
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/chappg/chappg.sty
 
 %prep
