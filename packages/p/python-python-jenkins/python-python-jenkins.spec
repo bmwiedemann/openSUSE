@@ -36,6 +36,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests-mock >= 1.4}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module testscenarios}
+BuildRequires:  %{python_module urllib3 < 2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  openssl-devel
@@ -46,6 +47,7 @@ Requires:       python-multi_key_dict
 Requires:       python-pbr
 Requires:       python-requests
 Requires:       python-six >= 1.3.0
+Requires:       python-urllib3 < 2
 Provides:       python-jenkins = %{version}
 Obsoletes:      python-jenkins < %{version}
 BuildArch:      noarch

@@ -165,4 +165,12 @@
   * Use underpining parts of LegacyVersion pre-removal.</comment>
     <requestid>1079857</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>09b0c5220a4da12874c44602b217fe56</srcmd5>
+    <version>1.8.0</version>
+    <time>1690278650</time>
+    <user>dimstar_suse</user>
+    <comment>- Pin {Build,}Requires on urllib3 to &lt; 2.</comment>
+    <requestid>1100252</requestid>
+  </revision>
 </revisionlist>
