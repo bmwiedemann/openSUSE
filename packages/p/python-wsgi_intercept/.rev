@@ -244,4 +244,14 @@
     <comment></comment>
     <requestid>1035266</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>5065487bed0aeafbe0486470cc06956d</srcmd5>
+    <version>1.12.1</version>
+    <time>1690278691</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.12.1:
+  * Pin urllib3 to &lt; 2.0.0 (#70)
+- Switch to pyproject macros</comment>
+    <requestid>1100515</requestid>
+  </revision>
 </revisionlist>

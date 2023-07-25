@@ -1,7 +1,7 @@
 #
 # spec file for package python-wsgi_intercept
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-wsgi_intercept
-Version:        1.11.0
+Version:        1.12.1
 Release:        0
 Summary:        Library for installing a WSGI application in place of a real URI for testing
 License:        MIT
@@ -26,14 +25,17 @@ URL:            https://github.com/cdent/python3-wsgi-intercept
 Source:         https://files.pythonhosted.org/packages/source/w/wsgi_intercept/wsgi_intercept-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module httplib2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 2.4}
 BuildRequires:  %{python_module requests >= 2.0.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
-BuildRequires:  %{python_module urllib3 >= 1.11.0}
+BuildRequires:  %{python_module urllib3 >= 1.11.0 with %python-urllib3 < 2}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six
+Requires:       python-urllib3 < 2
 Recommends:     python-requests >= 2.0.1
 BuildArch:      noarch
 %python_subpackages
@@ -49,10 +51,10 @@ can avoid spawning multiple processes or threads to test your Web app.
 %setup -q -n wsgi_intercept-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand rm -r %{buildroot}%{$python_sitelib}/wsgi_intercept/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -63,7 +65,7 @@ export WSGI_INTERCEPT_SKIP_NETWORK=true
 %files %{python_files}
 %doc README
 %license LICENSE
-%{python_sitelib}/wsgi_intercept-%{version}-*.egg-info
 %{python_sitelib}/wsgi_intercept
+%{python_sitelib}/wsgi_intercept-%{version}.dist-info
 
 %changelog
