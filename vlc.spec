@@ -111,7 +111,7 @@ BuildConflicts: lua >= 5.4
 BuildRequires:  pkgconfig(libudev) >= 142
 BuildRequires:  pkgconfig(smbclient)
 %if 0%{?is_opensuse}
-BuildRequires:  pkgconfig(libplacebo)
+BuildRequires:  pkgconfig(libplacebo) < 6.292.0
 %endif
 #BuildRequires:  slang-devel
 BuildRequires:  speex-devel >= 1.0.5
@@ -140,9 +140,9 @@ BuildRequires:  pkgconfig(libmtp) >= 1.0.0
 %if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(libnfs)
 %endif
+BuildRequires:  (pkgconfig(libpostproc) with pkgconfig(libpostproc) < 56)
 BuildRequires:  (pkgconfig(libswscale) with pkgconfig(libswscale) < 6)
 BuildRequires:  pkgconfig(libnotify)
-BuildRequires:  (pkgconfig(libpostproc) with pkgconfig(libpostproc) < 56)
 BuildRequires:  pkgconfig(libpulse) >= 1.0
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
 BuildRequires:  pkgconfig(libsystemd)
