@@ -935,4 +935,12 @@ Bugfixes
     <comment>Don't unconditionally Obsolete podman-cni-config, ensure clean upgrade path (forwarded request 1095941 from danishprakash)</comment>
     <requestid>1095943</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>350c57e7eca662df6566932eb8850510</srcmd5>
+    <version>4.6.0</version>
+    <time>1690277029</time>
+    <user>anag+factory</user>
+    <comment>Update to version 4.6.0 (forwarded request 1099907 from danishprakash)</comment>
+    <requestid>1100062</requestid>
+  </revision>
 </revisionlist>

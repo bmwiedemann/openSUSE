@@ -18,7 +18,7 @@
 %{!?_user_tmpfilesdir: %global _user_tmpfilesdir %{_datadir}/user-tmpfiles.d}
 %define project        github.com/containers/podman
 Name:           podman
-Version:        4.5.1
+Version:        4.6.0
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
@@ -105,6 +105,19 @@ Conflicts:      moby-engine
 This package installs a script named docker that emulates the Docker CLI by
 executes podman commands, it also creates links between all Docker CLI man
 pages and %{name}.
+
+%package -n %{name}sh
+Summary: Confined login and user shell using %{name}
+Requires: %{name} = %{version}
+Provides: %{name}-shell = {version}
+Provides: %{name}-%{name}sh = %{version}
+
+%description -n %{name}sh
+%{name}sh provides a confined login and user shell with access to volumes and
+capabilities specified in user quadlets.
+
+It is a symlink to %{_bindir}/%{name} and execs into the `%{name}sh` container
+when `%{_bindir}/%{name}sh is set as a login shell or set as os.Args[0].
 
 %build
 # Build podman
@@ -196,6 +209,11 @@ install -D -m 0644 %{SOURCE2} %{buildroot}%{_docdir}/%{name}/README.SUSE
 %{_user_tmpfilesdir}/podman-docker.conf
 %dir %{_user_tmpfilesdir}
 %endif
+
+%files -n %{name}sh
+%license LICENSE
+%doc README.md CONTRIBUTING.md install.md transfer.md
+%{_bindir}/%{name}sh
 
 %post docker
 %tmpfiles_create %{_tmpfilesdir}/podman-docker.conf

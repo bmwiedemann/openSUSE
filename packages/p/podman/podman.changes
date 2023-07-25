@@ -1,4 +1,537 @@
 -------------------------------------------------------------------
+Fri Jul 21 05:26:20 UTC 2023 - danish.prakash@suse.com
+
+- Update to version 4.6.0:
+  * Bump to v4.6.0
+  * Update release notes for v4.6.0
+  * Ensure that we appropriately warn that TCP is insecure
+  * CI: remove build without cgo task
+  * libpod: use io.Writer vs io.WriteCloser for attach streams
+  * top: do not depend on ps(1) in container
+  * api: fix doc for default ps_args
+  * Add more tests for liveness probes with default hostname & named ports
+  * Fix TCP probes when the optional host field is not given
+  * Add support for using port names in Kubernetes health probes
+  * [CI:DOCS] fix command incorrect in windows
+  * [CI:DOCS] Reformat and reorder table with --userns options
+  * [CI:DOCS] Better document the default value of --userns
+  * Add missing return after utils.InternalServerError()
+  * Fix markdown in docs for podman-network-create
+  * Fix multiple filter options logic for `podman volume ls `
+  * Should be checking tmpfs versus type not source
+  * Use constants for mount types
+  * Fix `podman container prune` docs for `--filter`
+  * docs: podman-build --network add slirp and pasta
+  * docs: podman run --network mention comma separted names
+  * network create: document --internal better
+  * pkg/specgen: fix support for --rootfs on FreeBSD
+  * systests: quadlet: fixes for RHEL8
+  * Fix windows installer
+  * Podmansh: Better error, increase timeout to 30s
+  * Emergency gating-test fixes for RHEL8
+  * Packit: remove pre-sync action
+  * [CI:DOCS] Update RELEASE_NOTES.md with Makefile change
+  * Bump to v4.6.0-dev
+  * Bump to v4.6.0-rc2
+  * Makefile: `package` -> `rpm`
+  * Update release notes
+  * system tests: refactor registry code
+  * machine start: qemu: wait for SSH readiness
+  * machine start: qemu: adjust backoffs
+  * auto update: fix usage of --authfile
+  * [CI:BUILD] Packit: downstream task action fix
+  * Fix container errors not being sent via pod removal API
+  * netavark: macvlan networks keep custom nameservers
+  * add hostname to network alias
+  * libpod: set cid network alias in setupContainer()
+  * Fix: cgroup is not set: internal libpod error after os reboot
+  * test/e2e: wait for socket
+  * api: fix slow version endpoint
+  * manifest inspect: support authentication
+  * libpod: don't make a broken symlink for /etc/mtab on FreeBSD
+  * make --syslog errors non fatal
+  * Fixes typo in the path where quadlet looks for files
+  * [CI:DOCS] uidmap man pages: fix corrupt italics
+  * [CI:DOCS] podman-system-service.1.md: document systemd usage
+  * Use bytes size consistently instead of human size
+  * bugfix: do not try to parse empty ranges
+  * pkg/specgen: properly identify image OS on FreeBSD
+  * [CI:DOCS] Document support of pod security context IDs
+  * pkg/specgen: add support for 'podman run --init' on FreeBSD
+  * Remove 'inspecting object' from inspect errors
+  * Fix readonly=false failure
+  * pkg/specgen: Add support for Linux emulation on FreeBSD
+  * Fix up podmansh man page
+  * Pass in correct cwd value for hooks exe
+  * specgen: honor --device-cgroup-rule with a new user namespace
+  * specgen, rootless: raise error with --device-cgroup-rule
+  * make image listing more resilient
+  * Trim whitespace from unit files while parsing
+  * play.go: remove volumes on down -f
+  * Vendor c/common v0.55.2
+  * system service: unset listen fds on tcp
+  * [CI:DOCS] [Release Notes]: add static routes
+  * [CI:DOCS] tag podmansh as tech preview in RELEASE_NOTES.md
+  * [CI:DOCS] uidmap man pages: fix corrupt tables
+  * libpod: use new libcontainer BlockIO constructors
+  * Bump to v4.6.0-dev
+  * Bump to v4.6.0-rc1
+  * Bump to v4.6.1-dev
+  * Bump to v4.6.0
+  * Release notes for v4.6.0
+  * Update Release Notes for v4.5.1
+  * rootless: use default_rootless_network_cmd config
+  * tests: fix "Storing signatures" check
+  * Fixes for vendoring Buildah
+  * Make Podman/Buildah use same DecryptConfig/EncryptConfig funcs
+  * Do not use deprecated hook functions from c/common
+  * Bump c/storage to v1.48.0, c/image to v5.26.1, c/common to v0.55.1, buildah to v1.31.0
+  * pasta: Remove some leftover code from pasta bats tests
+  * pasta: Fix pasta tests to work on hosts with multiple interfaces
+  * fix(command): ignore `--format` in `podman search --list-tags`
+  * Use /proc/self/gid_map as intended, not uid_map
+  * podman machine start: fix ready service
+  * Makefile: don't rely on the non-standard -r flag for ln
+  * cmd/podman, pkg/domain/infra: sockets should live in /var/run on FreeBSD
+  * cmd/podman/system: add API server support on FreeBSD
+  * pasta: Create /etc/hosts entries for pods using pasta networking
+  * RPM: Fix koji and ELN issues
+  * Cirrus: Update operating branch
+  * system tests: add and use _prefetch
+  * pkg/api: BufferedResponseWriter flush correctly
+  * pkg/api: top return error to client
+  * container wait: support health states
+  * [CI:DOCS] Fix example on PublishPort
+  * container wait API: use string slice instead of state slice
+  * podman wait: update man page
+  * StopContainer(): ignore one more conmon warning
+  * run,create: modify `--env-merge` behavior for non-existent vars
+  * use libnetwork/slirp4netns from c/common
+  * update c/common to latest
+  * e2e: use parallel-safe /dev subdirectories
+  * [CI:BUILD] Help Renovate manage the golangci-lint version
+  * systests: test instrumentation
+  * compat API create/pull: fix error handling
+  * compat API push: fix error handling
+  * GetSafeIPAddress(): discourage its use
+  * libpod: write /etc/{hosts,resolv.conf} once
+  * e2e: fix one of the many log flakes
+  * cmd, push: expose --compression-level
+  * vendor: bump containers/common
+  * compat API container create: handle platform parameter
+  * refactor(machine): remove hard code
+  * vendor in latests containers/common
+  * fix(machine): throw `connect: connection refused` after set proxy
+  * [CI:BUILD] Packit: cleanups
+  * Add console mode to podman machine
+  * e2e: kube test: specify expected exit code
+  * e2e --authfile test: fix test condition
+  * chore(deps): update dependency setuptools to v68
+  * make lint: re-enable revive
+  * make lint: re-enable ginkgolinter
+  * make lint: enable rowserrcheck
+  * make lint: enable wastedassign
+  * make lint: enable mirror
+  * bump golangci-lint to v1.53.3
+  * auto update: restart instead of stop+start
+  * cmd/podman/root.go: fix help document issue of the image store
+  * vendor: bump c/storage to v1.46.2-0.20230616083707-cc0d208e5e1c
+  * podman: add support for splitting imagestore
+  * network create --ip-range allow for custom range
+  * fix(ssh): start machine failed to start with exit status 255
+  * remote wait: fix "removed" condition
+  * [CI:DOCS] Fix service_destinations description in podman man page
+  * quadlet should exit non zero on failures
+  * fix(deps): update module golang.org/x/tools to v0.10.0
+  * e2e: GetSafeIPAddress() replaces GetRandomIPAddress
+  * pasta: use code from c/common
+  * Add support for setting autoupdate in quadlet
+  * New command: podmansh
+  * vendor: update c/common to latest
+  * Add quadlet container support for Mask,Umask options
+  * libpod: make conmon always log to syslog
+  * Document how to get secret mounts working on RHEL8
+  * Verify podman pull dup image only prints id once
+  * Vendor in latests containers/common
+  * Apply suggestions from code review
+  * Revert "rootlessport: exclude storage drivers via build tags"
+  * filters: use new FilterID function from c/common
+  * logformatter: ignore 'TOP-LEVEL' headings
+  * test/e2e: fix network ID test
+  * update c/{common,image,storage} to latest
+  * [CI:DOCS] clarify supported transports in manifest push
+  * [CI:DOCS] podman-push: rm confusion on supported transports
+  * container wait: indicate timeout in error
+  * network-create: document new bclim option
+  * fix(deps): update module golang.org/x/text to v0.10.0
+  * libpod: Podman info output more network information
+  * fix(deps): update module golang.org/x/term to v0.9.0
+  * quadlet: adjust container unit documentation
+  * e2e: GetRandomIPAddress(): parallelize
+  * Makefile: add support for 'make help' on FreeBSD
+  * criu: return error when checking for min version
+  * Update docs/source/markdown/podman-systemd.unit.5.md
+  * 250-systemd.bats: remove outdated comment
+  * github: add issue type as link to podman-desktop
+  * Add WorkingDir support to quadlet
+  * rootlessport: exclude storage drivers via build tags
+  * Add ability to set static routes
+  * test/upgrade: correctly share mounts between host and container
+  * Update common, image, and storage deps
+  * Fix system service manpage name in API Documentation
+  * style(specgen): omit nil check
+  * fix(specgen): index out of range when unmask=[]
+  * Makefile to force a shell when running command
+  * cirrus,ci: default to overlay for debian env
+  * Quadlet: Add support for --sysctl flag
+  * chore(deps): update dependency requests-mock to ~=1.11.0
+  * Ignore spurious warnings when killing containers
+  * Makefile: don't hard-code the path for bash
+  * fix(deps): update module github.com/burntsushi/toml to v1.3.2
+  * GHA: Fix bad job-names & links in monitoring emails
+  * podman-registry: simpler, safer invocations
+  * Ensure our mutexes handle recursive locking properly
+  * Fix an expected error message from pod removal
+  * Fix a race removing multiple containers in the same pod
+  * Discard errors when a pod is already removed
+  * Change Inherit to use a pointer to a container
+  * e2e: add ginkgo decorators to address flakes
+  * filters: better handling of id=
+  * fix(deps): update module github.com/onsi/gomega to v1.27.8
+  * refactor: improve get ssh path duplicate code
+  * logformatter: better recognition of ginkgo test names
+  * Address review feedback and add manpage notes
+  * Add support for SecurityLabelNested flag in quadlet
+  * fix(deps): update module github.com/burntsushi/toml to v1.3.1
+  * `system locks` now reports held locks
+  * fix(deps): update module github.com/mattn/go-sqlite3 to v1.14.17
+  * Add a new hidden command, podman system locks
+  * Add number of free locks to `podman info`
+  * Include lock number in pod/container/volume inspect
+  * fix ignition config creation
+  * Makefile binaries target adopted for Mac and Win
+  * fix(deps): update github.com/crc-org/vfkit digest to 3d57f09
+  * logformatter: proper status color for failed tests
+  * pasta: Test handling of unknown protocols
+  * pasta: Correct handling of unknown protocols
+  * Quadlet - add support for Pull key in .container
+  * fix(deps): update module github.com/sirupsen/logrus to v1.9.3
+  * Add default ulimit test for gen kube
+  * feat: add insecure registry troubleshooting solution
+  * fix(deps): update module golang.org/x/tools to v0.9.3
+  * fix(deps): update module github.com/coreos/stream-metadata-go to v0.4.2
+  * e2e: GetPort(): safer allocation of random ports
+  * The removeContainer function now accepts a struct
+  * Revert "test/e2e: fix "podman run ipcns ipcmk container test""
+  * Add a test for removing dependencies with rm -fa
+  * Revert "ginkgo-v2 cleanup workaround for #18180"
+  * Fix a deadlock when removing pods
+  * Pods now return what containers were removed with them
+  * Make RemoveContainer return containers and pods removed
+  * Add an API for removing a container and dependencies
+  * systests: fixes for coping with extra systemd image
+  * libpod: fix timezone handling
+  * fix(deps): update github.com/godbus/dbus/v5 digest to 7623695
+  * fix(deps): update module golang.org/x/tools to v0.9.2
+  * test/system: quadlet use correct systemd restart policy
+  * systests: minimize race-condition window
+  * systests: fix improper backgrounding of run_podman
+  * set max ulimits for rootless on each start
+  * Fix: display online_cpus in compat REST API
+  * fix(deps): update module github.com/onsi/ginkgo/v2 to v2.9.6
+  * systests: fix race in quadlet tests
+  * fix(deps): update module github.com/burntsushi/toml to v1.3.0
+  * e2e: make BuildImage parallel-safe
+  * completion: fix panic in simplePathJoinUnix()
+  * Update module github.com/stretchr/testify to v1.8.4
+  * authfile.md: add default path of file for Windows/macOS.
+  * Update module github.com/rootless-containers/rootlesskit to v1.1.1
+  * hack: fix typo in hack/podman-registry
+  * man pages and command help: clean up descriptions
+  * RPM: bump gvisor-tap-vsock subpackage and fix packit scripts
+  * Man pages: fix broken tables
+  * test/e2e: add regression testing for comma-containing labels
+  * fix: volume create filters
+  * fix: move filter flags from StringSliceVar to StringArrayVar
+  * pkg/rootless: correctly handle proxy signals on reexec
+  * [CI:BUILD] Packit: set propose-downstream action type to pre-sync
+  * [CI:DOCS] fix Quadlet man page rendering
+  * Quadlet: kube: use ExecStopPost
+  * Quadlet: kube: add ExitCodePropagation field
+  * kube play: exit-code propagation
+  * prune exit codes only when container doesn't exist
+  * podman: Add pasta to podman info
+  * Revert "test/system/255-auto-update.bats: add debug logs"
+  * Quadlet - add support for PodmanArgs to all groups
+  * [CI:BUILD] Packit: add jobs for downstream Fedora package builds
+  * In a concurrent removal test, don't remove concurrently with builds
+  * Consolidate error handling in Runtime.removeContainer
+  * Consolidate error handling in Container.cleanupStorage
+  * Fix reporting errors on container unmount
+  * TEMPORARY(?) instrumentation for unlinkat-ebusy
+  * pkginstaller: bump Qemu to version 8.0.0
+  * Support podman --remote when Containerfile is not in context directory
+  * chore(deps): update dependency requests to ~=2.31.0
+  * fix: podman event --filter volume=vol-name should compare the event name with volume name
+  * fix(deps): update module github.com/docker/docker to v24
+  * wait: look for exit code in stopped state
+  * network create/update: allow dns servers comma separated
+  * source code comments and docs: fix typos, language, Markdown layout
+  * Increase download progress to 80ch
+  * chore(deps): update dependency setuptools to ~=67.8.0
+  * podman: Added find slirp4netns binary file from helper_binaries_dir [NO NEW TESTS NEEDED]
+  * fix(deps): update module github.com/sirupsen/logrus to v1.9.2
+  * stats: get mem limit from the cgroup
+  * quadlet tests: enable device.volume test
+  * quadlet tests: remove unused socketactivated.container
+  * fix(deps): update module github.com/stretchr/testify to v1.8.3
+  * Correct markdown in docs
+  * fix(deps): update module github.com/onsi/gomega to v1.27.7
+  * [CI:DOCS] Improve security in mysql examples
+  * Cirrus: Record the buildah version for reference
+  * test/e2e: do not call setenforce
+  * Fix discombobulated kubernetes support table
+  * run: ignore PODMAN_USERNS with --pod
+  * Add --configmap to podman-remote kube play
+  * compat: accept tag in /images/create?fromSrc
+  * fix HTMLSpan warnings
+  * generate systemd: error on init containers
+  * Remove future tense from man pages
+  * compat,build: pull must accept string
+  * Cirrus: Add support for `[CI:NEXT]`
+  * Cirrus: Remove support for `[CI:COPR]` magic
+  * system tests: add precision timestamps
+  * Makefile: add ginkgo FOCUS/FOCUS_FILE options
+  * e2e: refactor and document serialization
+  * machine: fix default connection URL to use 127.0.0.1
+  * e2e: serialize gpg tests
+  * Document podman-machine-default behavior
+  * e2e: fix more test races (missing "wait")
+  * fix(deps): update module github.com/openshift/imagebuilder to v1.2.5
+  * fix(deps): update module github.com/onsi/ginkgo/v2 to v2.9.5
+  * Fix documentation of `--network-cmd-path` CLI option
+  * Skip rhel-release branch unnecessary CI tasks
+  * test/e2e: dedup Before/AfterEach nodes
+  * remote-save: fix permissions and dir formats
+  * Set machine docker.sock according to rootful flag
+  * Fix handling of .containenv on tmpfs
+  * Do not include image annotations when building spec
+  * build(deps): bump github.com/docker/distribution
+  * Kube Play - Support multi-doc YAML files for configmap argument
+  * system tests: instrument, to try to catch unlinkat-ebusy
+  * test: check restart policy of init containers
+  * Update sigstore/rekor after https://github.com/sigstore/rekor/pull/1469
+  * issue template: mention `su`
+  * e2e: logs test: fix flakes
+  * fix(deps): update module github.com/containernetworking/plugins to v1.3.0
+  * e2e: stop podman.service test: wait for server
+  * logformatter: handle podman-machine test logs
+  * fix(deps): update module golang.org/x/tools to v0.9.1
+  * [CI:DOCS] Disable Dependabot in favor of Renovate
+  * Ensure the consistent setting of the HOME env variable on container start
+  * Quadlet system tests - fix socket notification
+  * sqlite: disable WAL mode
+  * system tests: timeoutize quadlet, systemd
+  * test: update README for integration tests
+  * libpod/Container.rootFsSize(): use recorded image sizes
+  * quadlet: support `HostName`
+  * e2e: fix race in a play-kube test
+  * Fix preference of user quadlets directories
+  * fix(deps): update module golang.org/x/tools to v0.9.0
+  * fix(deps): update module golang.org/x/net to v0.10.0
+  * Check on client side for Containerfile, if none specified
+  * build(deps): bump github.com/docker/docker
+  * Buildah treadmill: several fixes
+  * fix(deps): update github.com/containers/common digest to 3e93a76
+  * chore(deps): update dependency docker to ~=6.1.0
+  * Update docs/source/markdown/podman-systemd.unit.5.md
+  * fix(deps): update github.com/containers/common digest to bc15b04
+  * fix: initContainer restart policy overridden by pod
+  * fix(deps): update module golang.org/x/sync to v0.2.0
+  * chore(deps): update dependency requests to ~=2.30.0
+  * ginkgo json output: only in CI, not on laptop runs
+  * Allow user quadlets to be stored under /etc
+  * fix(deps): update github.com/containers/common digest to ea87b34
+  * libpod: do not Cleanup() more than once
+  * compat container create: match duplicate mounts correctly
+  * Update podman-completion.1.md
+  * fix(deps): update github.com/containers/buildah digest to e925b58
+  * Run generate.CompleteSpec() for initContainers as well
+  * fix(deps): update module github.com/onsi/ginkgo/v2 to v2.9.4
+  * remote: return better connect error
+  * Add missing man page links for Docker man pages
+  * Replace egrep/fgrep with grep -E/-F
+  * remote: exec inspect update exec session status
+  * fix(deps): update github.com/digitalocean/go-qemu digest to f035778
+  * fix(deps): update github.com/godbus/dbus/v5 digest to 6cc540d
+  * fix(deps): update github.com/containers/buildah digest to f353690
+  * fix(deps): update module github.com/onsi/ginkgo/v2 to v2.9.3
+  * MVP for Podman Machine with AppleHV
+  * e2e tests: try writing & preserving ginkgo json artifacts
+  * vendor: bump buildah to v1.30.1-0.20230501124043-3908816d5310
+  * bindings, build: don't pass invalid platform in case of none
+  * Revert "logformatter: anchors: link to test summary, not name"
+  * More cleanup: volumes: do not export to stdout
+  * e2e test cleanup
+  * Update kube gen & play to use pod restart policy
+  * Add {{.Restarts}} to podman pod ps
+  * Add {{.Restarts}} to podman ps
+  * Add --restart flag to pod create
+  * history: correctly set tags
+  * fix(deps): update module github.com/moby/term to v0.5.0
+  * Makefile: do not run machine test in parallel
+  * pkg/machine/e2e: switch to GinkgoWriter
+  * api: fix parsing filters
+  * ginkgo-v2 cleanup workaround for #18180
+  * test/e2e: fix custom timing reporting
+  * logformatter: anchors: link to test summary, not name
+  * WIP: logformatter: handle ginkgo v2 logs
+  * test/e2e: unshare --rootless-netns cleanup slirp4netns
+  * test/e2e: run system reset test serial
+  * test/e2e: fix CleanupVolume/Secrets()
+  * ginkgo v2: fix new Skip() behavior
+  * test/e2e: fix pause tests to unpause before cleanup()
+  * ginkgo v2: drop localbenchmarks
+  * test/e2e: switch to GinkgoWriter
+  * test/e2e: unset CONTAINERS_CONF before Cleanup()
+  * ginkgo: run on all cores
+  * test/e2e: fix Cleanup()
+  * test/e2e: fix "podman run ipcns ipcmk container test"
+  * test/e2e: actually check for cleanup errors
+  * Lower e2e timeout to not waste time when it hangs
+  * test/e2e: containers.conf tests add missing Wait()
+  * ginkgo v2: remove CurrentGinkgoTestDescription()
+  * ginkgo v2: remove deprecated flags
+  * update to ginkgo v2
+  * test/e2e: do not remove CNI directory
+  * e2e: login_logout: use unique authfile for each test
+  * Fix clashing subuid
+  * [CI:DOCS] troubleshooting: fix subuid example
+  * manifest, push: use source as destination if not specified
+  * Update github.com/moby/term digest to 0564e01
+  * Add name-generation test
+  * Implement machine provider selection
+  * libpod: improve errors management in cleanupStorage
+  * libpod: report unmount idmapped rootfs errors
+  * test: do not wait 10 seconds before killing myyaml
+  * podman: simplify code with a switch
+  * test: fix typo
+  * build(deps): bump github.com/docker/docker
+  * swagger: fix Info name conflict
+  * Nightly dependency treadmill: remove
+  * Update short description for disconnect cmd
+  * windows: podman save allow the use of stdout
+  * Update c/common and avoid setting umask
+  * Cirrus: Update CI VM Image to F38/37
+  * Cirrus: Run code validation on rawhide
+  * Fix rand.Seed() deprecation in golang 1.20
+  * Add sha256: to images history id for docker compatibility
+  * Support systemd optional prefix '-' for devices.
+  * Fix a copy/paste error in an error message
+  * chore(deps): update dependency requests to ~=2.29.0
+  * Fix simple typo in podman-network-create.md
+  * e2e cleanup: push with auth: add error checks
+  * e2e: remove "-it" from podman run & exec
+  * pkg/machine: rework RemoveConnection()
+  * machine: qemu only remove connection after confirmation
+  * Add file swith for pre-exec
+  * system reset: show graphRoot/runRoot before removal
+  * fix manifest annotate help
+  * Netavark userns test: give aardvark time to come up
+  * sqlite: move first read into a transaction
+  * Recover from failed podman machine start
+  * rootless: support joining contianers that use host ns
+  * auto-update: return errors when checking for updates
+  * [skip-ci] Update dawidd6/action-send-mail action to v3.7.2
+  * fix(deps): update github.com/containers/common digest to 46c4463
+  * Add user mode networking feature to Windows
+  * system/reset.go: help: fix typo
+  * e2e create same-IP: try to fix flake
+  * system tests: safer container-stop signaling
+  * Revert "Resolve symlink path for qemu directory if possible"
+  * ps: --format {{.State}} match docker output
+  * test/system/260-sdnotify.bats: fix test flake
+  * [CI:DOCS] Quadlet: clarify overriding user/system services
+  * Eliminate transient container deps from wslkerninst
+  * Wording
+  * fix(deps): update github.com/containers/common digest to 5547996
+  * cmd/podman/pods: omit superfluous runtime.NumCPU call
+  * support `--digestfile` for remote push
+  * e2e: skip journald test if journald is unavailable
+  * Cirrus: Enable testing on Fedora rawhide
+  * [CI:BUILD] Cirrus: remove copr rpm build task
+  * chore(deps): update dependency setuptools to ~=67.7.0
+  * Cirrus: Drop benchmarks artifacts
+  * test/e2e: correctly reap service process
+  * test/e2e: add missing options to remote service
+  * test/e2e: fix incorrect usage of CreateTempDirInTempDir()
+  * test/e2e: "podman-remote send correct path to copier" do not leak file
+  * test/e2e: fix network create flake due same subnet
+  * test/e2e: fix SkipIfNotActive()
+  * test/e2e: do not try to use docker as rootless
+  * test/e2e: do not leak "hello" file
+  * podman-remote logs: handle server error correctly
+  * test/e2e: use custom network config v2
+  * rename ImagePushReport to ImagePushStream
+  * Specify format to buildah before commit
+  * Add eBPF snooper that traces the entire fork/exec graph of podman
+  * libpod: stop containers with --restart=always
+  * test: fix race when listing cgroups
+  * compat: Translate `noprune` into ImageRemoveOptions.NoPrune
+  * [CI:DOCS] Update RELEASE_PROCESS.md
+  * hyperv: add podman socket mapping
+  * e2e networking test: better way to get host IP
+  * Updated system test to be easier to read
+  * bindings tests: bail out early on image errors
+  * libpod: fix TestPostDeleteHooks do not depend on version
+  * chore(deps): update dependency setuptools to v67
+  * fix(deps): update module github.com/containers/libhvee to v0.0.5
+  * e2e: quadlet uses PODMAN env for podman binary path
+  * Fixes format inconsistencies with docker for certain history fields
+  * Makefile: do not prefix /etc
+  * libpod: configureNetNS() tear down on errors
+  * libpod: rootlessNetNs.Cleanup() fix error message
+  * HyperV: wait on stop
+  * build(deps): bump github.com/docker/docker
+  * Makefile: include `release-artifacts` target
+  * Enabled network over vsock
+  * fix(deps): update module github.com/microsoft/go-winio to v0.6.1
+  * fix(deps): update module github.com/opencontainers/runtime-spec to v1.1.0-rc.2
+  * fix remote start --filter
+  * Update API reference to include v4.5
+  * Add missing security options to /info response
+  * Add mention of redir to doc `rootless.md`
+  * fix(deps): update module github.com/vbauerster/mpb/v8 to v8.4.0
+  * docs(readme): add status badges and remove hardcoded release info
+  * Don't use bytes.NewBuffer to read data
+  * Add support for HVSOCK on hyperv
+  * docs: update network tutorial with netavark DHCP support
+  * bump main to v4.6.0-dev
+  * Remove disused test/install
+  * Return title fields as a list
+  * [CI:BUILD] Packit: Initial Enablement
+  * Quadlet - do not set log-driver by default
+  * system tests: address COPY-hardlink flake
+  * chore(deps): update registry.centos.org/centos/centos docker tag to v8
+  * system tests: fix race in kube-play read-only
+  * chore(deps): update dependency docker to v6
+  * CI: enable sqlite system tests
+  * test: enable test_wait_next_exit
+  * Update dependency PyYAML to v6
+  * test/e2e/systemd_activate_test.go: simplify test
+  * Update docker.io/library/golang Docker tag to v1.20
+  * api: auth: fix nil deref
+  * Update dependency requests-mock to ~=1.10.0
+  * Update dependency requests to ~=2.28.2
+  * fix: Document removing anonymous volumes at create
+  * Use a sane polling interval in WaitContainerDocker
+  * podman: added the --out option for capturing formatted output emitted by various commands
+  * Renovate: Ensure release-note-none label is added
+  * Renovate: Update ignore paths
+  * *: migrate image registry to registry.k8s.io
+  * Do not display the resource limits warning message
+
+-------------------------------------------------------------------
 Thu Jun 29 09:19:01 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
 
 - Don't unconditionally Obsolete podman-cni-config, ensure clean upgrade path.
