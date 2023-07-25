@@ -112,4 +112,20 @@
     <comment></comment>
     <requestid>1057796</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d81c36952ae8481aa9e7f179d97bb89f</srcmd5>
+    <version>9.0.3</version>
+    <time>1690276971</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 9.0.3
+  * drop autotools
+  * apple: Fix compatibility version and current version of meson
+           build to be compatible with autotools build
+  * pkgconfig: Depend on opengl when built with libglvnd
+  * pkgconfig: Drop unneeded lines from autotools build
+  * pkgconfig: meson build should match autotools requires
+  * Remove deprecated register in C++17
+- switch to meson build</comment>
+    <requestid>1100361</requestid>
+  </revision>
 </revisionlist>

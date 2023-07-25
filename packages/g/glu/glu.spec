@@ -18,7 +18,7 @@
 
 Name:           glu
 %define lname	libGLU1
-Version:        9.0.2
+Version:        9.0.3
 Release:        0
 Summary:        OpenGL utility library
 License:        SGI-B-2.0
@@ -31,7 +31,7 @@ Source:         https://mesa.freedesktop.org/archive/glu/%{name}-%{version}.tar.
 Source1:        baselibs.conf
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc-c++
-BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gl)
 
@@ -88,15 +88,11 @@ compiling programs with GLU.
 %setup -q
 
 %build
-if [ ! -e configure ]; then
-	NOCONFIGURE=1 ./autogen.sh;
-fi;
-%configure --disable-static
-make %{?_smp_mflags}
+%meson -Ddefault_library=shared
+%meson_build
 
 %install
-make install DESTDIR="%buildroot"
-rm -f "%buildroot/%_libdir"/*.la
+%meson_install
 
 %post -n %lname -p /sbin/ldconfig
 

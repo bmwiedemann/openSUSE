@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 24 09:17:26 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 9.0.3
+  * drop autotools
+  * apple: Fix compatibility version and current version of meson
+           build to be compatible with autotools build
+  * pkgconfig: Depend on opengl when built with libglvnd
+  * pkgconfig: Drop unneeded lines from autotools build
+  * pkgconfig: meson build should match autotools requires
+  * Remove deprecated register in C++17
+- switch to meson build
+
+-------------------------------------------------------------------
 Sun Jan  8 12:42:47 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
 
 - amend SUSE-SGI-FreeB-2.0 to SPDX's SGI-B-2.0
