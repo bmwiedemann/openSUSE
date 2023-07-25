@@ -211,4 +211,12 @@
     <comment></comment>
     <requestid>1099096</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a1ec6ad3b5b3c6d993b8704bafc7fdc2</srcmd5>
+    <version>1.2.0</version>
+    <time>1690278663</time>
+    <user>dimstar_suse</user>
+    <comment>without old source (forwarded request 1100358 from mslacken)</comment>
+    <requestid>1100359</requestid>
+  </revision>
 </revisionlist>
