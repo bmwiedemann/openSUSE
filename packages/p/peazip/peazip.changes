@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul 20 14:06:08 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 9.3.0:
+  BACKEND
+    * 7z 23.01 (Linux, macOS, Windows)
+    * Pea 1.13
+  FILE MANAGER
+    * Added column to display file-level comment in archives (default hidden)
+    * While browsing an archive, the information popup (clicking on status bar) shows if the archive type can be edited in PeaZip
+    * Updated Themes
+  EXTRACTION and ARCHIVING
+    * Added checkbox to manually set RAR binary for Custom / RAR compression format
+    * Various fixes
+
+-------------------------------------------------------------------
 Tue Apr 25 21:03:05 UTC 2023 - C J <c.j@tuta.io>
 
 - Update to 9.2.0:

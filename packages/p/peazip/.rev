@@ -1062,4 +1062,23 @@
 </comment>
     <requestid>1082932</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>9b712243db2f6af8bc8b55ee7d233407</srcmd5>
+    <version>9.3.0</version>
+    <time>1690278627</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 9.3.0:
+  BACKEND
+    * 7z 23.01 (Linux, macOS, Windows)
+    * Pea 1.13
+  FILE MANAGER
+    * Added column to display file-level comment in archives (default hidden)
+    * While browsing an archive, the information popup (clicking on status bar) shows if the archive type can be edited in PeaZip
+    * Updated Themes
+  EXTRACTION and ARCHIVING
+    * Added checkbox to manually set RAR binary for Custom / RAR compression format
+    * Various fixes
+</comment>
+    <requestid>1099754</requestid>
+  </revision>
 </revisionlist>
