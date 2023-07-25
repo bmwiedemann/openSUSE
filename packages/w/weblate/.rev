@@ -167,4 +167,37 @@
     <comment></comment>
     <requestid>1084001</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f56f312073972d1d955ccef2f94f1979</srcmd5>
+    <version>4.18.2</version>
+    <time>1690278594</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.18.2
+  * Added support for browsing changes for a individual string.
+  * Fixed plurals handling in automatic translation from other components.
+  * Added keyboard shortcut Alt+Enter to submit string as a suggestion.
+  * Improved performance of translation memory.
+  * Added add-on to customize XML output.
+  * Format string checks now also detects duplicated formats.
+  * Improved search performance for some specially formatted strings.
+  * Celery beat is now storing the tasks schedule in the database.
+  * Dropped support for VCS integration settings deprecated in 4.14.
+  * Added support for Bitbucket Server pull requests.
+  * Improved conflicts handling in gettext PO files.
+  * Added plurals support to automatic suggestions.
+  * Allow to filter on language in reports.
+  * Dropped deprecated command cleanup_celery.
+  * Fixed private project visibility for some teams.
+  * Added support for Ed25519 SSH key.
+  * Improved API error messages on permission denied.
+  * Reduced false positives of the XML checks.
+  * Avoiding signing-out user in some rate-limits.
+  * Support for automatic update of screenshots from a repository.
+  * Added dark theme; browser-following and manual setting are
+    available.
+  * More changes, see https://github.com/WeblateOrg/weblate/releases
+- Add opensuse use-old-html-theme.patch and upstream pyparsing.patch
+- Add one more hunk to skip-test_ocr.patch</comment>
+    <requestid>1099725</requestid>
+  </revision>
 </revisionlist>

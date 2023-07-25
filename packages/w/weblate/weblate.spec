@@ -22,7 +22,7 @@
 %define _name Weblate
 %define skip_python310 1
 Name:           weblate
-Version:        4.14.2
+Version:        4.18.2
 Release:        0
 Summary:        Web-based translation tool
 License:        GPL-3.0-or-later
@@ -33,11 +33,16 @@ Source1:        https://dl.cihar.com/weblate/%{_name}-%{version}.tar.xz.asc
 # Fingerprint 63CB 1DF1 EF12 CF2A C0EE 5A32 9C27 B313 42B7 511D
 # https://cihar.com/.well-known/openpgpkey/hu/wmxth3chu9jfxdxywj1skpmhsj311mzm
 Source2:        %{name}.keyring
-# PATCH-FIX-UPSTREAM skip-test_ocr.patch gh#WeblateOrg/weblate#8931 mcepl@suse.com
-# skip failing test_ocr
-Patch0:         skip-test_ocr.patch
+# PATCH-FIX-OPENSUSE skip-test_ocr.patch gh#WeblateOrg/weblate#8931 mcepl@suse.com, mmachova@suse.com
+# skip failing test_ocr and test_ocr_backend
+# most probably some issue on our side
+Patch:          skip-test_ocr.patch
+# PATCH-FIX-OPENSUSE mmachova@suse.com Use older, yet still supported html theme (for consistency and because the newer one isn't packaged yet).
+Patch:          use-old-html-theme.patch
+# PATCH-FIX-UPSTREAM https://github.com/WeblateOrg/weblate/commit/fedbd8e6e50cf982295567f833b3348609c10fa6 chore(deps): update dependency pyparsing to >=3.0.7,<3.2
+Patch:          pyparsing.patch
 BuildRequires:  bitstream-vera
-BuildRequires:  borgbackup >= 1.1.11
+BuildRequires:  borgbackup >= 1.2.1
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  git-review >= 1.27.0
@@ -45,110 +50,116 @@ BuildRequires:  git-svn
 BuildRequires:  gpg2
 BuildRequires:  graphviz
 BuildRequires:  graphviz-gd
-BuildRequires:  mercurial >= 5.2
+BuildRequires:  mercurial >= 6.2
 BuildRequires:  postgresql
 BuildRequires:  postgresql-contrib
 BuildRequires:  postgresql-server
 BuildRequires:  procps
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Cython >= 0.29.14
-BuildRequires:  python3-Django >= 3.2
-BuildRequires:  python3-GitPython >= 2.1.15
+BuildRequires:  python3-Django >= 4.2
+BuildRequires:  python3-GitPython >= 3.1.0
 BuildRequires:  python3-Levenshtein
 BuildRequires:  python3-Pillow >= 9.0.0
 BuildRequires:  python3-Pygments >= 2.6.0
 BuildRequires:  python3-Sphinx >= 1.8
-BuildRequires:  python3-aeidon >= 1.9
-BuildRequires:  python3-bleach >= 3.1.1
-BuildRequires:  python3-boto3 >= 1.15.0
-BuildRequires:  python3-celery >= 5.0.3
+BuildRequires:  python3-aeidon >= 1.10
+BuildRequires:  python3-boto3 >= 1.25.0
+BuildRequires:  python3-celery >= 5.2.3
 BuildRequires:  python3-chardet
 BuildRequires:  python3-charset-normalizer >= 2.0.12
+BuildRequires:  python3-crispy-bootstrap3
 BuildRequires:  python3-cssselect >= 1.2
 BuildRequires:  python3-dbm
-BuildRequires:  python3-diff_match_patch = 20200713
+BuildRequires:  python3-diff_match_patch = 20230430
 BuildRequires:  python3-django-appconf >= 1.0.3
 BuildRequires:  python3-django-auth-ldap >= 1.3.0
-BuildRequires:  python3-django-crispy-forms >= 1.9.0
-BuildRequires:  python3-django-filter >= 2.4.0
-BuildRequires:  python3-django-redis >= 4.11.0
+BuildRequires:  python3-django-celery-beat >= 2.4.0
+BuildRequires:  python3-django-cors-headers >= 3.13.0
+BuildRequires:  python3-django-crispy-forms >= 2.0
+BuildRequires:  python3-django-filter >= 21.1
+BuildRequires:  python3-django-redis >= 5.0.0
 BuildRequires:  python3-django_compressor >= 2.4
-BuildRequires:  python3-djangorestframework >= 3.11
-BuildRequires:  python3-filelock >= 3.7
+BuildRequires:  python3-djangorestframework >= 3.14.0
+BuildRequires:  python3-filelock >= 3.12
 BuildRequires:  python3-fluent
 BuildRequires:  python3-gobject >= 3.34.0
 BuildRequires:  python3-gobject-Gdk
 BuildRequires:  python3-gobject-cairo
-BuildRequires:  python3-google-cloud-translate >= 3.0.0
+BuildRequires:  python3-google-cloud-translate >= 3.8.0
 BuildRequires:  python3-hiredis >= 1.0.1
 BuildRequires:  python3-html2text >= 2019.8.11
 BuildRequires:  python3-httpretty
-BuildRequires:  python3-iniparse = 0.5
+BuildRequires:  python3-iniparse >= 0.5
 BuildRequires:  python3-jsonschema >= 4.5
 BuildRequires:  python3-lxml >= 4.9.1
 BuildRequires:  python3-misaka >= 2.1.0
+BuildRequires:  python3-nh3 >= 0.2.3
 BuildRequires:  python3-openpyxl >= 2.6.0
-BuildRequires:  python3-packaging >= 20.5
+BuildRequires:  python3-packaging >= 22
 BuildRequires:  python3-phply >= 1.2.5
 BuildRequires:  python3-psycopg2 >= 2.7.7
 BuildRequires:  python3-pyahocorasick >= 1.4
 BuildRequires:  python3-pycairo >= 1.15.3
 BuildRequires:  python3-pyicumessageformat >= 1.0.0
-BuildRequires:  python3-pyparsing >= 3.0.7
+BuildRequires:  python3-pyparsing >= 3.1.0
 BuildRequires:  python3-python-akismet >= 0.4.2
 BuildRequires:  python3-python-dateutil >= 2.8.1
 BuildRequires:  python3-python-redis-lock >= 3.6.0
 BuildRequires:  python3-python3-saml >= 1.2.1
 BuildRequires:  python3-pytz
 BuildRequires:  python3-rapidfuzz >= 2.6.0
-BuildRequires:  python3-requests >= 2.26.0
+BuildRequires:  python3-requests >= 2.31.0
 BuildRequires:  python3-responses >= 0.10.1
-BuildRequires:  python3-ruamel.yaml >= 0.16.0
+BuildRequires:  python3-ruamel.yaml >= 0.17.2
 BuildRequires:  python3-selenium
 BuildRequires:  python3-sentry-sdk >= 1.6
 BuildRequires:  python3-setuptools >= 40.3.0
-BuildRequires:  python3-siphashc >= 1.2
+BuildRequires:  python3-siphashc >= 2.1
 BuildRequires:  python3-social-auth-app-django >= 5.0.0
 BuildRequires:  python3-social-auth-core >= 4.3.0
 BuildRequires:  python3-sphinx-jsonschema
 BuildRequires:  python3-sphinx_rtd_theme
+BuildRequires:  python3-sphinxcontrib-copybutton
 BuildRequires:  python3-sphinxcontrib-httpdomain
+BuildRequires:  python3-sphinxext-opengraph
 BuildRequires:  python3-tesserocr >= 2.3.0
-BuildRequires:  python3-translation-finder >= 2.14
+BuildRequires:  python3-translation-finder >= 2.15
 BuildRequires:  python3-user-agents >= 2.0
 BuildRequires:  python3-weblate-language-data >= 2022.7
-BuildRequires:  python3-weblate-schemas = 2022.1
-BuildRequires:  python3-zeep >= 3.2.0
+BuildRequires:  python3-weblate-schemas = 2023.3
+BuildRequires:  python3-zeep >= 4.1.0
 BuildRequires:  tesseract-ocr-traineddata-english
 BuildRequires:  tesseract-ocr-traineddata-orientation_and_script_detection
-BuildRequires:  translate-toolkit >= 3.7.2
+BuildRequires:  translate-toolkit >= 3.9.2
 BuildRequires:  typelib(Pango) >= 1.0
 BuildRequires:  typelib(PangoCairo) >= 1.0
 BuildRequires:  user(wwwrun)
-Requires:       borgbackup >= 1.1.11
+Requires:       borgbackup >= 1.2.1
 Requires:       cron
 Requires:       git
 Requires:       gpg2
 Requires:       postgresql
 Requires:       postgresql-contrib
 Requires:       python3-Cython >= 0.29.14
-Requires:       python3-Django >= 3.2
-Requires:       python3-GitPython >= 2.1.15
+Requires:       python3-Django >= 4.2
+Requires:       python3-GitPython >= 3.1.0
 Requires:       python3-Levenshtein
 Requires:       python3-Pillow >= 9.0.0
 Requires:       python3-Pygments >= 2.6.0
-Requires:       python3-bleach >= 3.1.1
-Requires:       python3-celery >= 5.0.3
+Requires:       python3-celery >= 5.2.3
 Requires:       python3-charset-normalizer >= 2.0.12
 Requires:       python3-cssselect >= 1.2
-Requires:       python3-diff_match_patch = 20200713
+Requires:       python3-diff_match_patch = 20230430
 Requires:       python3-django-appconf >= 1.0.3
-Requires:       python3-django-crispy-forms >= 1.9.0
-Requires:       python3-django-filter >= 2.4.0
-Requires:       python3-django-redis >= 4.11.0
+Requires:       python3-django-celery-beat >= 2.4.0
+Requires:       python3-django-cors-headers >= 3.13.0
+Requires:       python3-django-crispy-forms >= 2.0
+Requires:       python3-django-filter >= 21.1
+Requires:       python3-django-redis >= 5.0.0
 Requires:       python3-django_compressor >= 2.4
-Requires:       python3-djangorestframework >= 3.11
-Requires:       python3-filelock >= 3.7
+Requires:       python3-djangorestframework >= 3.14.0
+Requires:       python3-filelock >= 3.12
 Requires:       python3-fluent
 Requires:       python3-gobject >= 3.34.0
 Requires:       python3-gobject-Gdk
@@ -158,51 +169,52 @@ Requires:       python3-html2text >= 2019.8.11
 Requires:       python3-jsonschema >= 4.5
 Requires:       python3-lxml >= 4.9.1
 Requires:       python3-misaka >= 2.1.0
+Requires:       python3-nh3 >= 0.2.3
 Requires:       python3-openpyxl >= 2.6.0
-Requires:       python3-packaging >= 20.5
+Requires:       python3-packaging >= 22
 Requires:       python3-psycopg2 >= 2.7.7
 Requires:       python3-pyahocorasick >= 1.4
 Requires:       python3-pycairo >= 1.15.3
 Requires:       python3-pyicumessageformat >= 1.0.0
-Requires:       python3-pyparsing >= 3.0.7
+Requires:       python3-pyparsing >= 3.1.0
 Requires:       python3-python-dateutil >= 2.8.1
 Requires:       python3-python-redis-lock >= 3.6.0
 Requires:       python3-rapidfuzz >= 2.6.0
-Requires:       python3-requests >= 2.26.0
+Requires:       python3-requests >= 2.31.0
 Requires:       python3-sentry-sdk >= 1.6
 Requires:       python3-setuptools >= 40.3.0
-Requires:       python3-siphashc >= 1.2
+Requires:       python3-siphashc >= 2.1
 Requires:       python3-social-auth-app-django >= 5.0.0
 Requires:       python3-social-auth-core >= 4.3.0
-Requires:       python3-translation-finder >= 2.14
+Requires:       python3-translation-finder >= 2.15
 Requires:       python3-user-agents >= 2.0
 Requires:       python3-weblate-language-data >= 2022.7
-Requires:       python3-weblate-schemas = 2022.1
-Requires:       translate-toolkit >= 3.7.2
+Requires:       python3-weblate-schemas = 2023.3
+Requires:       translate-toolkit >= 3.9.2
 Requires:       ((apache2 and apache2-mod_wsgi) or (nginx and uwsgi))
 Requires:       typelib(Pango) >= 1.0
 Requires:       typelib(PangoCairo) >= 1.0
 Requires(pre):  user(wwwrun)
-Recommends:     borgbackup >= 1.1.9
+Recommends:     borgbackup >= 1.2.1
 Recommends:     git-review >= 1.27.0
 Recommends:     git-svn
-Recommends:     mercurial >= 5.2
-Recommends:     python3-aeidon >= 1.9
-Recommends:     python3-boto3 >= 1.15.0
+Recommends:     mercurial >= 6.2
+Recommends:     python3-aeidon >= 1.10
+Recommends:     python3-boto3 >= 1.25.0
 # optional feature from aeidon is used
 Recommends:     python3-chardet
 Recommends:     python3-django-auth-ldap >= 1.3.0
 Recommends:     python3-docutils
-Recommends:     python3-google-cloud-translate >= 3.0.0
-Recommends:     python3-iniparse = 0.5
+Recommends:     python3-google-cloud-translate >= 3.8.0
+Recommends:     python3-iniparse >= 0.5
 Recommends:     python3-phply >= 1.2.5
 Recommends:     python3-python-akismet >= 0.4.2
 Recommends:     python3-python-memcached
 Recommends:     python3-python3-saml >= 1.2.1
 Recommends:     python3-pytz
-Recommends:     python3-ruamel.yaml >= 0.16.0
+Recommends:     python3-ruamel.yaml >= 0.17.2
 Recommends:     python3-tesserocr >= 2.3.0
-Recommends:     python3-zeep >= 3.2.0
+Recommends:     python3-zeep >= 4.1.0
 Recommends:     tesseract-ocr-traineddata-english
 Recommends:     tesseract-ocr-traineddata-orientation_and_script_detection
 BuildArch:      noarch

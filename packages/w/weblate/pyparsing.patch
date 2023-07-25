@@ -1,0 +1,30 @@
+From fedbd8e6e50cf982295567f833b3348609c10fa6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michal=20=C4=8Ciha=C5=99?= <michal@cihar.com>
+Date: Tue, 27 Jun 2023 14:46:01 +0200
+Subject: [PATCH] chore(deps): update dependency pyparsing to >=3.0.7,<3.2
+
+---
+ requirements.txt         | 2 +-
+ weblate/checks/parser.py | 9 +++------
+ 2 files changed, 4 insertions(+), 7 deletions(-)
+
+diff --git a/weblate/checks/parser.py b/weblate/checks/parser.py
+index 9173de20a63a..d0a4b7e04ebf 100644
+--- a/weblate/checks/parser.py
++++ b/weblate/checks/parser.py
+@@ -46,12 +46,9 @@ class RawQuotedString(QuotedString):
+     def __init__(self, quote_char, esc_char="\\"):
+         super().__init__(quote_char, esc_char=esc_char, convert_whitespace_escapes=True)
+         # unlike the QuotedString this replaces only escaped quotes and not all chars
+-        self.escCharReplacePattern = (
+-            re.escape(esc_char)
+-            + "(["
+-            + re.escape(quote_char)
+-            + re.escape(esc_char)
+-            + "])"
++        self.unquote_scan_re = re.compile(
++            rf"({'|'.join(re.escape(k) for k in self.ws_map)})|({re.escape(self.escChar)}[{re.escape(quote_char)}{re.escape(esc_char)}])|(\n|.)",
++            flags=self.flags,
+         )
+ 
+ 
