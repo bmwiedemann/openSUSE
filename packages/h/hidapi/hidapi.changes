@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul 20 09:37:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.0:
+  * general: add `hid_get_report_descriptor` API function (#451)
+  * libusb: fix crash in hid_enumerate() caused by a stale device
+    handle (#526)
+  * fixes (mostly error handling) of issues found by
+    Coverity Scan (#552/#554/#555/#559/#560/#561)
+  * various fixes and improvements
+
+-------------------------------------------------------------------
 Sat Jan 21 10:04:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.13.1:
