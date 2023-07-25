@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jul 19 16:33:36 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.5
+  * Add Insert/ExtractBlock, BroadcastBlock/Lane, NumBlocks
+  * Add integer Le/Ge and [Neg]MulAdd, extend DemoteTo/PromoteTo
+  * Add Leading/TrailingZeroCount, HighestSetBitIndex, ReverseBits
+  * Add MaskedLoadOr, tuple Get/Set/Create, ReduceSum,
+    WidenMulPairwiseAdd
+  * Add [ZeroExtend]ResizeBitCast, BitwiseIfThenElse,
+    Find[Known]LastTrue
+  * Add AESRoundInv, AESKeyGenAssist
+  * Add contrib/math Atan2/SinCos, contrib/unroller
+  * Add fp16/bf16 support (Armv8, SVE, RVV), HWY_DYNAMIC_POINTER
+  * Add OrderedTruncate2To, Per4LaneBlockShuffle,
+    TwoTablesLookupLanes
+  * Add SlideUp/Down[Blocks/Lanes], Slide1Up/Down, ReverseLaneBytes
+  * Add SetBeforeFirst, SetAtOrBefore/AfterFirst, SetOnlyFirst
+  * Add 8-bit Reverse2/4/8, Shl/Shr, RotateRight, Reverse, Mul
+  * Add 8/16-bit DupEven/Odd, TableLookupLanes
+  * Add F64 ApproximateReciprocal[Sqrt], 32/64-bit SaturatedAdd/Sub
+
+-------------------------------------------------------------------
 Wed May 24 09:10:51 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update memory limiter from 900 to 1400/process.

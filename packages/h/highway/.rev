@@ -95,4 +95,12 @@
     <comment>- Update memory limiter from 900 to 1400/process.</comment>
     <requestid>1088804</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>876e65eb6bc9a11495c0509502947805</srcmd5>
+    <version>1.0.5</version>
+    <time>1690277022</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.0.5</comment>
+    <requestid>1099559</requestid>
+  </revision>
 </revisionlist>
