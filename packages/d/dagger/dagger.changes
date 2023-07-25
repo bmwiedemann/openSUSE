@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Jul 20 04:50:48 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.6.4:
+  * Prepare v0.6.4 release (#5486)
+  * Add missing release notes (#5483)
+  * Deprecate exitCode (#5481)
+  * Update python dependencies (#5480)
+  * Fix coroutines not showing in Python reference docs (#5477)
+  * inline tui: show run duration at the end (#5476)
+  * core: attempt to deflake container image load compat test.
+    (#5473)
+  * stabilize container hostnames against SessionID (#5474)
+  * core: Add test for local imports across sessions (#5471)
+  * core: support optionally setting explicit mediatypes (#5467)
+  * Improve releasing during 0.6.3 (#5408)
+  * core: add include/exclude name to host dir copy name (#5469)
+  * build(deps): bump github.com/google/go-containerregistry
+    (#5460)
+  * build(deps): bump golang.org/x/mod in /internal/mage (#5466)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.5.2 to
+    5.7.0 (#5459)
+  * build(deps): bump golang.org/x/text from 0.10.0 to 0.11.0
+    (#5458)
+  * Start working on a code generation tool (#5422)
+  * Fix VERSION variable for CLI install instructions (#5453)
+  * build(deps): bump google.golang.org/grpc (#5411)
+  * Fix corner case where WithDirectory included wrong contents.
+    (#5448)
+  * Container: add `withFocus`, `withoutFocus` (#5364)
+  * Fix .mjs docs lint and format (#5435)
+  * Cookbook: integrating with a docker engine (#5421)
+  * Update 723462-use-secrets.md (#5409)
+  * Add `File.sync` (#5416)
+  * Add `Directory.sync` (#5414)
+  * Replace `ExitCode` usage with `Sync` (#5418)
+  * Replace deprecated API fields (#5419)
+  * core: Remove unimplemented git fields (#5410)
+  * core: Optimize *.WithDirectory and *.WithFile via MergeOp.
+    (#5400)
+
+-------------------------------------------------------------------
 Wed Jul 05 05:39:50 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.6.3:
