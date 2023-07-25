@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Jul 20 08:59:30 UTC 2023 - mrueckert@suse.de
+
+- Update to version 1.63.1:
+  * Version v1.63.1
+  * build: add new sponsors page to docs
+  * Start v1.63.1-DEV development
+  * docs: no need to disable 2FA for Mail.ru Cloud anymore
+  * box: fix reconnect failing with HTTP 400 Bad Request
+  * webdav: nextcloud chunking: add more guidance for the user to check the config
+  * operations: fix .rclonelink files not being converted back to symlinks
+  * local: fix partial directory read for corrupted filesystem
+  * smb: fix "Statfs failed: bucket or container name is needed" when mounting
+  * docs: drive: Fix step 4 in "Making your own client_id"
+  * docs: update the number of providers supported
+  * docs: remove old donate page
+  * webdav: nextcloud: fix must use /dav/files/USER endpoint not /webdav error
+  * docs: update contact page on website
+  * operations: fix deadlock when using lsd/ls with --progress - Fixes #7102
+  * dirtree: fix performance with large directories of directories and --fast-list
+  * build: fix macos builds for versions < 12
+  * docs: dropbox get client id, clarify you need to click a button
+  * docs: website: replace google analytics with plausible analytics
+  * docs: rename donate page to sponsor page and rework
+  * docs: fixed typo in exclude example in filtering docs (#7097)
+- drop fix-nextcloud-chunked.patch:
+  included in update
+
+-------------------------------------------------------------------
 Fri Jul  7 02:49:40 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - Avoid duplication in the %build section for the pie ppc64 case.
