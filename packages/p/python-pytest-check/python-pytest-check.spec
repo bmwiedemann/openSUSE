@@ -1,7 +1,7 @@
 #
-# spec file for package python-pytest_check
+# spec file for package python-pytest-check
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,26 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pytest-check
-Version:        1.0.5
+Version:        2.2.0
 Release:        0
 Summary:        A pytest plugin that allows multiple failures per test
 License:        MIT
 URL:            https://github.com/okken/pytest-check
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-check/pytest_check-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module base >= 3.6}
-BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module flit-core >= 2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 6}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-pytest >= 6
 BuildArch:      noarch
 %python_subpackages
 
 %description
 A pytest plugin that allows multiple failures per test. A rewrite of pytest-expect
-
 
 %prep
 %setup -q -n pytest_check-%{version}
