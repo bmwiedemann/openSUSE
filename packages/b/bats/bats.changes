@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Jul 16 18:41:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10.0:
+  * add `${BATS_TEST_TAGS[@]}` for querying the tags during a
+    test
+  * print tags on failing tests
+  * test for negative arguments to `--jobs`
+  * add tests for `--formatter cat`
+  * test coverage in CI
+  * Support for rush as alternative to GNU parallel
+  * add `bats_pipe` helper function for `run` that executes `\|`
+    as pipes
+  * publish docker images to ghcr.io (additionally to Dockerhub)
+  * clarify use cases of `--formatter cat`
+  * fix `run` with options overwriting the value of `i`
+  * fix `${BATS_TEST_NAMES[@]}` containing only `--tags` instead
+    of test name since Bats v1.8.0
+  * fix `run --keep-empty-lines` counting trailing ` ` as
+    (empty) new line
+  * fix short flag unpacker creating bogus command lines with
+    valued flags
+  * fix formatter becoming confused with retries
+  * fix `--gather-test-outputs-in` fails on tests with `/`
+  * fix overriding `date` breaks `--timing`
+
+-------------------------------------------------------------------
 Tue Feb 14 09:42:03 UTC 2023 - Avinesh Kumar <avinesh.kumar@suse.com>
 
 - Update to version 1.9.0:
