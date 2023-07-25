@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jul 22 18:38:42 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.32.2:
+  + Fix using wrong data folder when starting profile through
+    browser
+  + Fix sendto in flatpak environment
+  + Support HEIF files with HIF extension
+  + Fix meta-data being written in a loop
+  + Fix detecting false mtime changes
+  + Fix broken aspect ratio of thumbnail when using external
+    editors
+  + Fix critical when exporting file with no exposure date
+  + Fix minor leak in Flickr and Google authenticators
+  + Enable C&P of paths in profile editor
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue May  9 21:15:54 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.32.1:
