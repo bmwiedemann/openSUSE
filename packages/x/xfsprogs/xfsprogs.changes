@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jul 20 08:45:36 UTC 2023 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to 6.4.0:
+  - xfs_db: expose the flag in rmapbt keys
+  - xfs_repair: warn about unwritten bits set in rmap btree keys
+  - xfs_repair: check low keys of rmap btrees
+  - xfs_repair: always perform extended xattr checks on uncertain inodes
+  - xfs_repair: fix messaging when fixing imap due to sparse cluster
+  - xfs_repair: fix messaging in longform_dir2_entry_check_data
+  - xfs_repair: fix messaging when shortform_dir2_junk is called
+  - xfs_repair: don't log inode problems without printing resolution
+  - xfs_repair: don't spray correcting imap all by itself
+  - libxcmd: Fix crash due to missing return value check on add_command()
+  - xfs_db: make the hash command print the dirent hash
+  - xfs_db: Add new cmd to create dirents and xattrs that induce dahash collisions
+  - mkfs: deprecate the ascii-ci feature
+  - xfs_db: fix metadump name obfuscation for ascii-ci filesystems
+  - libxfs: kernel sync
+
+-------------------------------------------------------------------
 Mon May 22 19:51:34 UTC 2023 - Anthony Iliopoulos <ailiop@suse.com>
 
 - update to 6.3.0:
