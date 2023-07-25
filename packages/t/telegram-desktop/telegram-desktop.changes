@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 20 08:07:41 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Relax _constraints for Arm targets
+- Disable neon on armv7 since the build of libyuv breaks with
+  neon on armv7 and some armv7 SoC does not include neon anyway
+
+-------------------------------------------------------------------
 Mon Jul 17 13:14:40 UTC 2023 - Илья Индиго <ilya@ilya.cf>
 
 - Updated to 4.8.4.

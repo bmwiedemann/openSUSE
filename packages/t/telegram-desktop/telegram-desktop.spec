@@ -269,6 +269,9 @@ mkdir -p out/Release
 cd out/Release
 cmake -G Ninja \
        -DCMAKE_BUILD_TYPE=Release \
+%ifarch armv7l armv7hl
+       -DTG_OWT_ARCH_ARMV7_USE_NEON=OFF \
+%endif
        -DTG_OWT_SPECIAL_TARGET=linux \
        -DTG_OWT_LIBJPEG_INCLUDE_PATH=/usr/include \
        -DTG_OWT_OPENSSL_INCLUDE_PATH=/usr/include/openssl \
