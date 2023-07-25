@@ -1,7 +1,7 @@
 #
-# spec file for package python-django-crispy-forms
+# spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,41 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+# Multibuild: break cycles with crispy-bootstrap{3,4,5}
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %define mod_name django-crispy-forms
-Name:           python-%{mod_name}
-Version:        1.14.0
+Name:           python-%{mod_name}%{psuffix}
+Version:        2.0
 Release:        0
 Summary:        Django DRY Forms
 License:        MIT
 URL:            https://github.com/maraujop/django-crispy-forms
 Source:         https://files.pythonhosted.org/packages/source/d/%{mod_name}/%{mod_name}-%{version}.tar.gz
-BuildRequires:  %{python_module Django >= 2.2}
-BuildRequires:  %{python_module pytest-django}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 2.2
+%if %{with test}
+BuildRequires:  %{python_module %{mod_name} = %{version}}
+BuildRequires:  %{python_module Django >= 3.2}
+BuildRequires:  %{python_module crispy-bootstrap3}
+BuildRequires:  %{python_module crispy-bootstrap4}
+BuildRequires:  %{python_module crispy-bootstrap5}
+BuildRequires:  %{python_module pytest-django}
+BuildRequires:  %{python_module pytest}
+%endif
+Requires:       python-Django >= 3.2
+Recommends:     python-crispy-bootstrap3
+Recommends:     python-crispy-bootstrap4
+Recommends:     python-crispy-bootstrap5
 BuildArch:      noarch
 %python_subpackages
 
@@ -46,23 +64,28 @@ Django.
 %setup -q -n %{mod_name}-%{version}
 
 %build
-%python_build
+%if !%{with test}
+%pyproject_wheel
+%endif
 
 %install
-%python_install
-%{python_expand rm -r %{buildroot}%{$python_sitelib}/crispy_forms/tests/
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%if !%{with test}
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
-export DJANGO_SETTINGS_MODULE=crispy_forms.tests.test_settings
+%if %{with test}
+export DJANGO_SETTINGS_MODULE=tests.test_settings
 export PYTHONPATH=${PWD}
-# test_keepcontext_context_manager started failing in 1.14.0
-%pytest -rs crispy_forms/tests/ -k 'not test_keepcontext_context_manager'
+%pytest -rs tests/
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %license LICENSE.txt
 %doc CONTRIBUTORS.txt README.rst
 %{python_sitelib}/*crispy[-_]forms*/
+%endif
 
 %changelog

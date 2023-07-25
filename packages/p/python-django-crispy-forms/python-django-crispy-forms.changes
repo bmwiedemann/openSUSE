@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jun 13 12:09:31 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to v2.0
+  * Removed all Bootstrap template packs. These template packs are now available as standalone packages.
+    To upgrade, install the required template pack and add it to your INSTALLED_APPS setting.
+    * See python-crispy-bootstrap3, python-crispy-bootstrap4 and python-crispy-bootstrap5
+  * Removed uni-form template pack. Uni-Form specific classes previously added to every template pack 
+    e.g. textInput are now removed.
+  * The form_style attribute of FormHelper is removed.
+  * The form_style positional argument to render_field() is removed.
+  * The form_style positional argument to the render() method of all LayoutObjects is removed.
+  * Widespread use of the |safe in crispy-form templates is removed. Audit for html input in your forms
+    especially for Field and Prepended/Appended text. To retain the previous behaviour mark text as safe
+    in your project code using mark_safe().
+  * Dropped support for Django 2.2.
+  * Added support for Django 4.1 and 4.2.
+  * Added support for Python 3.11.
+  * More changes, see https://github.com/django-crispy-forms/django-crispy-forms/releases
+- Convert to multibuild because of the template packs
+
+-------------------------------------------------------------------
 Thu Aug 25 00:18:04 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v1.14.0
