@@ -1,10 +1,10 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-ctypes</param>
-    <param name="revision">a9345c589051788d2e6efab716ca0510641543e1</param>
+    <param name="revision">8a7fd3d08c9a3a5b43febd06c74a3c3dc6fb5bab</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
-    <param name="url">https://github.com/avsm/ocaml-ctypes.git</param>
+    <param name="url">https://github.com/yallop/ocaml-ctypes.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
     <param name="versionrewrite-pattern">v(.*)</param>

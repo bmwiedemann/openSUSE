@@ -32,7 +32,7 @@ ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 
 %define     pkg ocaml-ctypes
 Name:           %pkg%nsuffix
-Version:        0.20.1
+Version:        0.21.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Combinators for binding to C libraries without writing any C
@@ -41,7 +41,7 @@ Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/ctypes
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml
-BuildRequires:  ocaml-dune >= 2.8
+BuildRequires:  ocaml-dune >= 2.9
 BuildRequires:  ocaml-rpm-macros >= 20230101
 BuildRequires:  ocamlfind(bigarray-compat)
 BuildRequires:  ocamlfind(bisect_ppx)
