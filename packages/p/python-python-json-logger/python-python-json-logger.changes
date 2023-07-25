@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul 20 13:09:51 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up the SPEC file.
+- Switch to %pyproject_* macros.
+
+-------------------------------------------------------------------
+Wed Jul 19 13:18:33 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Wed May  3 09:09:17 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.7:

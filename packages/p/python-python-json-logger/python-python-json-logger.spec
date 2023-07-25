@@ -16,8 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-python-json-logger
 Version:        2.0.7
 Release:        0
@@ -26,9 +25,10 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/madzak/python-json-logger
 Source:         https://files.pythonhosted.org/packages/source/p/python-json-logger/python-json-logger-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-setuptools
 BuildArch:      noarch
 %python_subpackages
 
@@ -36,13 +36,14 @@ BuildArch:      noarch
 A python library adding a json log formatter.
 
 %prep
-%setup -q -n python-json-logger-%{version}
+%autosetup -p1 -n python-json-logger-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pyunittest discover -v
@@ -50,6 +51,7 @@ A python library adding a json log formatter.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/python_json_logger-%{version}*-info
+%{python_sitelib}/pythonjsonlogger
 
 %changelog

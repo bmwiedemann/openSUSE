@@ -80,4 +80,15 @@
     longer, but it's EOL so upgrade)</comment>
     <requestid>1084222</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>9401fb7a76763f50bd7d9a52e40a596a</srcmd5>
+    <version>2.0.7</version>
+    <time>1690278552</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up the SPEC file.
+- Switch to %pyproject_* macros.
+
+- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1099747</requestid>
+  </revision>
 </revisionlist>
