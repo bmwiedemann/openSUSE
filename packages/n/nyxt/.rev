@@ -29,4 +29,12 @@ These issues are now fixed with a patch, hence this new submission.</comment>
     <comment>Update to version 3.4.0</comment>
     <requestid>1097989</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ba2de7b6e0ff8d2f6a6625242678065a</srcmd5>
+    <version>3.5.0</version>
+    <time>1690278666</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 3.5.0</comment>
+    <requestid>1100367</requestid>
+  </revision>
 </revisionlist>
