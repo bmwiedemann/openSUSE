@@ -18,15 +18,14 @@
 
 %bcond_with test
 %{?sle15_python_module_pythons}
-%define pversion 3.0.0b3
 Name:           python-Cython3
-Version:        3.0.0~b3
+Version:        3.0.0
 Release:        0
 Summary:        The Cython compiler for writing C extensions for the Python language
 License:        Apache-2.0
 URL:            https://cython.org/
 # SourceRepository: https://github.com/cython/cython
-Source:         https://files.pythonhosted.org/packages/source/C/Cython/Cython-%{pversion}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/C/Cython/Cython-%{version}.tar.gz
 Source1:        python-Cython-rpmlintrc
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
@@ -53,7 +52,7 @@ functions and declaring C types on variables and class attributes. This
 allows the compiler to generate very efficient C code from Cython code.
 
 %prep
-%setup -q -n Cython-%{pversion}
+%setup -q -n Cython-%{version}
 # Fix non-executable scripts
 sed -i "s|^#!.*||" Cython/Debugger/{libpython,Cygdb}.py cython.py
 
@@ -94,7 +93,7 @@ $python runtests.py -v
 %python_alternative %{_bindir}/cython
 %python_alternative %{_bindir}/cythonize
 %{python_sitearch}/Cython/
-%{python_sitearch}/Cython-%{pversion}.dist-info
+%{python_sitearch}/Cython-%{version}.dist-info
 %{python_sitearch}/cython.py*
 %pycache_only %{python_sitearch}/__pycache__/cython*.py*
 %{python_sitearch}/pyximport/
