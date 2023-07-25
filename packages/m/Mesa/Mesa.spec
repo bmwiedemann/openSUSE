@@ -42,7 +42,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 23.1.3
+%define _version 23.1.4
 %define with_opencl 0
 %define with_rusticl 0
 %define with_vulkan 0
@@ -123,7 +123,7 @@
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        23.1.3
+Version:        23.1.4
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -144,7 +144,6 @@ Patch58:        u_dep_xcb.patch
 Patch100:       U_fix-mpeg1_2-decode-mesa-20.2.patch
 Patch200:       u_fix-build-on-ppc64le.patch
 Patch400:       n_stop-iris-flicker.patch
-Patch800:       u_fix-glx-context-opengl-4.5.patch
 %ifarch %{ix86} x86_64
 BuildRequires:  DirectX-Headers
 %endif
@@ -779,7 +778,6 @@ rm -rf docs/README.{VMS,WIN32,OS2}
 %patch100 -p1
 %patch200 -p1
 %patch400 -p1
-%patch800 -p1
 
 # Remove requires to vulkan libs from baselibs.conf on platforms
 # where vulkan build is disabled; ugly ...

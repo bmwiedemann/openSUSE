@@ -5341,4 +5341,14 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
 - -Dxmlconfig=enabled now also needs -Dexpat=enabled as dependancy</comment>
     <requestid>1094791</requestid>
   </revision>
+  <revision rev="482" vrev="354">
+    <srcmd5>298b13f237ddada737d254d4fe5d09da</srcmd5>
+    <version>unknown</version>
+    <time>1690276975</time>
+    <user>anag+factory</user>
+    <comment>- Update to bugfix release 23.1.4 
+  --&gt; https://docs.mesa3d.org/relnotes/23.1.4.html
+- supersedes u_fix-glx-context-opengl-4.5.patch</comment>
+    <requestid>1100408</requestid>
+  </revision>
 </revisionlist>

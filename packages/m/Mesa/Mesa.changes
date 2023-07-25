@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 24 09:36:23 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to bugfix release 23.1.4 
+  --> https://docs.mesa3d.org/relnotes/23.1.4.html
+- supersedes u_fix-glx-context-opengl-4.5.patch
+
+-------------------------------------------------------------------
 Fri Jun 23 07:24:59 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to bugfix release 23.1.3
