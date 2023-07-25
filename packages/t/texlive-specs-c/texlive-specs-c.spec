@@ -19,8 +19,8 @@
 %define texlive_version  2023
 %define texlive_previous 2022
 %define texlive_release  20230311
-%define texlive_noarch   201
-%define biber_version    2.18
+%define texlive_noarch   209
+%define biber_version    2.19
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -149,13 +149,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bbding-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bbding/README
 %{_texmfdistdir}/doc/latex/bbding/bbding.pdf
 %{_texmfdistdir}/doc/latex/bbding/bbding10.org
 
 %files -n texlive-bbding
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/source/public/bbding/bbding10.mf
 %{_texmfdistdir}/fonts/tfm/public/bbding/bbding10.tfm
 %{_texmfdistdir}/tex/latex/bbding/Uding.fd
@@ -274,14 +272,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bbm-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/bbm/README
 %{_texmfdistdir}/doc/fonts/bbm/gfbatch.batch
 %{_texmfdistdir}/doc/fonts/bbm/mfbatch.batch
 %{_texmfdistdir}/doc/fonts/bbm/test.tex
 
 %files -n texlive-bbm
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/source/public/bbm/bbm10.mf
 %{_texmfdistdir}/fonts/source/public/bbm/bbm12.mf
 %{_texmfdistdir}/fonts/source/public/bbm/bbm17.mf
@@ -448,12 +444,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bbm-macros-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bbm-macros/README
 %{_texmfdistdir}/doc/latex/bbm-macros/bbm.pdf
 
 %files -n texlive-bbm-macros
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bbm-macros/bbm.sty
 %{_texmfdistdir}/tex/latex/bbm-macros/ubbm.fd
 %{_texmfdistdir}/tex/latex/bbm-macros/ubbmss.fd
@@ -541,13 +535,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bbold-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bbold/INSTALL
 %{_texmfdistdir}/doc/latex/bbold/README
 %{_texmfdistdir}/doc/latex/bbold/bbold.pdf
 
 %files -n texlive-bbold
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/source/public/bbold/bbbase.mf
 %{_texmfdistdir}/fonts/source/public/bbold/bbgreekl.mf
 %{_texmfdistdir}/fonts/source/public/bbold/bbgreeku.mf
@@ -683,13 +675,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-bbold-type1-fonts
 
 %files -n texlive-bbold-type1-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/bbold-type1/README
 %{_texmfdistdir}/doc/fonts/bbold-type1/test.pdf
 %{_texmfdistdir}/doc/fonts/bbold-type1/test.tex
 
 %files -n texlive-bbold-type1
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/afm/public/bbold-type1/bbold10.afm
 %{_texmfdistdir}/fonts/afm/public/bbold-type1/bbold5.afm
 %{_texmfdistdir}/fonts/afm/public/bbold-type1/bbold7.afm
@@ -699,7 +689,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %verify(link) %{_texmfdistdir}/fonts/type1/public/bbold-type1/bbold7.pfb
 
 %files -n texlive-bbold-type1-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-bbold-type1
 %{_datadir}/fontconfig/conf.avail/58-texlive-bbold-type1.conf
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-bbold-type1/encodings.dir
@@ -816,13 +805,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-bboldx-fonts
 
 %files -n texlive-bboldx-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/bboldx/Bboldx-doc.pdf
 %{_texmfdistdir}/doc/fonts/bboldx/Bboldx-doc.tex
 %{_texmfdistdir}/doc/fonts/bboldx/README
 
 %files -n texlive-bboldx
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/afm/public/bboldx/BBOLDX-Bold.afm
 %{_texmfdistdir}/fonts/afm/public/bboldx/BBOLDX-Regular.afm
 %{_texmfdistdir}/fonts/afm/public/bboldx/BBOLDX-Thin.afm
@@ -838,7 +825,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/bboldx/bboldx.sty
 
 %files -n texlive-bboldx-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-bboldx
 %{_datadir}/fontconfig/conf.avail/58-texlive-bboldx.conf
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-bboldx/encodings.dir
@@ -919,7 +905,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bchart-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bchart/CHANGES.txt
 %{_texmfdistdir}/doc/latex/bchart/LICENSE.txt
 %{_texmfdistdir}/doc/latex/bchart/README.md
@@ -927,7 +912,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bchart/bchart.tex
 
 %files -n texlive-bchart
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bchart/bchart.sty
 
 %package -n texlive-bclogo
@@ -1011,7 +995,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bclogo-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bclogo/LISEZ-MOI
 %{_texmfdistdir}/doc/latex/bclogo/README
 %{_texmfdistdir}/doc/latex/bclogo/bclogo-doc.pdf
@@ -1027,7 +1010,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bclogo/syracuse.tex
 
 %files -n texlive-bclogo
-%defattr(-,root,root,755)
 %{_texmfdistdir}/metapost/bclogo/bc-attention.mp
 %{_texmfdistdir}/metapost/bclogo/bc-aux-301.mp
 %{_texmfdistdir}/metapost/bclogo/bc-bombe.mp
@@ -1400,7 +1382,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamer-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamer/AUTHORS.md
 %{_texmfdistdir}/doc/latex/beamer/CHANGELOG.md
 %{_texmfdistdir}/doc/latex/beamer/LICENSE.md
@@ -1475,7 +1456,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/beamer/solutions/short-talks/speaker_introduction-ornate-2min.fr.tex
 
 %files -n texlive-beamer
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamer/beamer.cls
 %{_texmfdistdir}/tex/latex/beamer/beamerarticle.sty
 %{_texmfdistdir}/tex/latex/beamer/beamerbasearticle.sty
@@ -1690,7 +1670,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamer-fuberlin-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamer-fuberlin/Changes
 %{_texmfdistdir}/doc/latex/beamer-fuberlin/README
 %{_texmfdistdir}/doc/latex/beamer-fuberlin/README.doc
@@ -1700,7 +1679,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/beamer-fuberlin/exampleTheme.tex
 
 %files -n texlive-beamer-fuberlin
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamer-fuberlin/FUbeamer.cls
 %{_texmfdistdir}/tex/latex/beamer-fuberlin/beamercolorthemeBerlinFU.sty
 %{_texmfdistdir}/tex/latex/beamer-fuberlin/beamerfontthemeBerlinFU.sty
@@ -1782,7 +1760,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamer-rl-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/lualatex/beamer-rl/Example-of-use-ar.pdf
 %{_texmfdistdir}/doc/lualatex/beamer-rl/Example-of-use-ar.tex
 %{_texmfdistdir}/doc/lualatex/beamer-rl/Example-of-use-en.pdf
@@ -1790,7 +1767,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/lualatex/beamer-rl/README.txt
 
 %files -n texlive-beamer-rl
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/lualatex/beamer-rl/beamer-rl.cls
 %{_texmfdistdir}/tex/lualatex/beamer-rl/pgfpages-rl.sty
 %{_texmfdistdir}/tex/lualatex/beamer-rl/translator-basic-dictionary-Arabic.dict
@@ -1851,7 +1827,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamer-tut-pt
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamer-tut-pt/AnnArbor1.ps
 %{_texmfdistdir}/doc/latex/beamer-tut-pt/AnnArbor2.ps
 %{_texmfdistdir}/doc/latex/beamer-tut-pt/CambridgeUS1.ps
@@ -1951,7 +1926,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamer-verona-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamer-verona/README.md
 %{_texmfdistdir}/doc/latex/beamer-verona/beamer-verona-default.pdf
 %{_texmfdistdir}/doc/latex/beamer-verona/beamer-verona-default.tex
@@ -1961,7 +1935,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/beamer-verona/plato-aristotle.jpg
 
 %files -n texlive-beamer-verona
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamer-verona/beamerthemeVerona.sty
 
 %package -n texlive-beamer2thesis
@@ -2046,7 +2019,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamer2thesis-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamer2thesis/README
 %{_texmfdistdir}/doc/latex/beamer2thesis/beamer2thesis.pdf
 %{_texmfdistdir}/doc/latex/beamer2thesis/beamer2thesis.tex
@@ -2059,7 +2031,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/beamer2thesis/license
 
 %files -n texlive-beamer2thesis
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamer2thesis/beamer2thesis.jpg
 %{_texmfdistdir}/tex/latex/beamer2thesis/beamercolorthemetorinoth.sty
 %{_texmfdistdir}/tex/latex/beamer2thesis/beamerfontthemetorinoth.sty
@@ -2141,7 +2112,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamerappendixnote-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamerappendixnote/README.md
 %{_texmfdistdir}/doc/latex/beamerappendixnote/beamerappendixnote.pdf
 %{_texmfdistdir}/doc/latex/beamerappendixnote/build.sh
@@ -2153,7 +2123,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/beamerappendixnote/example-longnote.tex
 
 %files -n texlive-beamerappendixnote
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamerappendixnote/beamerappendixnote.sty
 
 %package -n texlive-beameraudience
@@ -2229,11 +2198,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beameraudience-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beameraudience/README
 
 %files -n texlive-beameraudience
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beameraudience/beameraudience.sty
 
 %package -n texlive-beamerauxtheme
@@ -2309,7 +2276,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamerauxtheme-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamerauxtheme/LICENSE
 %{_texmfdistdir}/doc/latex/beamerauxtheme/README.md
 %{_texmfdistdir}/doc/latex/beamerauxtheme/example-content.ltx
@@ -2323,7 +2289,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/beamerauxtheme/example-outer-twolines.tex
 
 %files -n texlive-beamerauxtheme
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamerauxtheme/beamerinnerthemesimplelines.sty
 %{_texmfdistdir}/tex/latex/beamerauxtheme/beamerouterthemesidebarwithminiframes.sty
 %{_texmfdistdir}/tex/latex/beamerauxtheme/beamerouterthemesplitwithminiframes.sty
@@ -2407,7 +2372,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamercolorthemeowl-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamercolorthemeowl/Makefile
 %{_texmfdistdir}/doc/latex/beamercolorthemeowl/README.md
 %{_texmfdistdir}/doc/latex/beamercolorthemeowl/beamercolorthemeowl.pdf
@@ -2427,7 +2391,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/beamercolorthemeowl/ex/readme.jpg
 
 %files -n texlive-beamercolorthemeowl
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamercolorthemeowl/beamercolorthemeowl.sty
 
 %package -n texlive-beamerdarkthemes
@@ -2503,7 +2466,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamerdarkthemes-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamerdarkthemes/README
 %{_texmfdistdir}/doc/latex/beamerdarkthemes/beamerdarkthemesuserguide.pdf
 %{_texmfdistdir}/doc/latex/beamerdarkthemes/beamerdarkthemesuserguide.tex
@@ -2528,7 +2490,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/beamerdarkthemes/makemagpie.sh
 
 %files -n texlive-beamerdarkthemes
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamerdarkthemes/beamercolorthemecormorant.sty
 %{_texmfdistdir}/tex/latex/beamerdarkthemes/beamercolorthemefrigatebird.sty
 %{_texmfdistdir}/tex/latex/beamerdarkthemes/beamercolorthememagpie.sty
@@ -2620,14 +2581,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamerposter-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamerposter/README
 %{_texmfdistdir}/doc/latex/beamerposter/beamerposter.pdf
 %{_texmfdistdir}/doc/latex/beamerposter/beamerposter.tex
 %{_texmfdistdir}/doc/latex/beamerposter/example.tex
 
 %files -n texlive-beamerposter
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamerposter/beamerposter.sty
 %{_texmfdistdir}/tex/latex/beamerposter/beamerthemeAachen.sty
 %{_texmfdistdir}/tex/latex/beamerposter/beamerthemeI6dv.sty
@@ -2707,7 +2666,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamersubframe-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamersubframe/README
 %{_texmfdistdir}/doc/latex/beamersubframe/beamersubframe-append.pdf
 %{_texmfdistdir}/doc/latex/beamersubframe/beamersubframe-append.svg
@@ -2717,7 +2675,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/beamersubframe/bsf-example.tex
 
 %files -n texlive-beamersubframe
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamersubframe/beamersubframe.sty
 
 %package -n texlive-beamerswitch
@@ -2807,7 +2764,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamerswitch-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamerswitch/README.md
 %{_texmfdistdir}/doc/latex/beamerswitch/beamerswitch-example-article.pdf
 %{_texmfdistdir}/doc/latex/beamerswitch/beamerswitch-example-handout.pdf
@@ -2817,7 +2773,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/beamerswitch/beamerswitch.pdf
 
 %files -n texlive-beamerswitch
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamerswitch/beamerswitch.cls
 
 %package -n texlive-beamertheme-arguelles
@@ -2917,14 +2872,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamertheme-arguelles-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamertheme-arguelles/LICENSE
 %{_texmfdistdir}/doc/latex/beamertheme-arguelles/README.md
 %{_texmfdistdir}/doc/latex/beamertheme-arguelles/demo/demo-arguelles.pdf
 %{_texmfdistdir}/doc/latex/beamertheme-arguelles/demo/demo-arguelles.tex
 
 %files -n texlive-beamertheme-arguelles
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamertheme-arguelles/beamercolorthemeArguelles.sty
 %{_texmfdistdir}/tex/latex/beamertheme-arguelles/beamerfontthemeArguelles.sty
 %{_texmfdistdir}/tex/latex/beamertheme-arguelles/beamerinnerthemeArguelles.sty
@@ -3015,7 +2968,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamertheme-cuerna-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamertheme-cuerna/README
 %{_texmfdistdir}/doc/latex/beamertheme-cuerna/beamertheme-cuerna.pdf
 %{_texmfdistdir}/doc/latex/beamertheme-cuerna/pictures/bluesimplex.png
@@ -3026,7 +2978,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/beamertheme-cuerna/template.tex
 
 %files -n texlive-beamertheme-cuerna
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamertheme-cuerna/beamercolorthemeCuerna.sty
 %{_texmfdistdir}/tex/latex/beamertheme-cuerna/beamercolorthemebluesimplex.sty
 %{_texmfdistdir}/tex/latex/beamertheme-cuerna/beamercolorthemebrick.sty
@@ -3106,7 +3057,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamertheme-detlevcm-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamertheme-detlevcm/FS-img1.png
 %{_texmfdistdir}/doc/latex/beamertheme-detlevcm/FS-img2.png
 %{_texmfdistdir}/doc/latex/beamertheme-detlevcm/FS-img3.png
@@ -3116,7 +3066,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/beamertheme-detlevcm/beamertheme-detlevcm.tex
 
 %files -n texlive-beamertheme-detlevcm
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamertheme-detlevcm/beamercolorthemeETII.sty
 %{_texmfdistdir}/tex/latex/beamertheme-detlevcm/beamerfontthemeDetlevCM.sty
 %{_texmfdistdir}/tex/latex/beamertheme-detlevcm/beamerouterthemeDetlevCM.sty
@@ -3196,7 +3145,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamertheme-epyt-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamertheme-epyt/README
 %{_texmfdistdir}/doc/latex/beamertheme-epyt/epyt-demo-cn.pdf
 %{_texmfdistdir}/doc/latex/beamertheme-epyt/epyt-demo-cn.tex
@@ -3204,7 +3152,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/beamertheme-epyt/epyt-demo.tex
 
 %files -n texlive-beamertheme-epyt
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamertheme-epyt/beamerthemeepyt.sty
 
 %package -n texlive-beamertheme-focus
@@ -3288,7 +3235,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamertheme-focus-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamertheme-focus/CHANGELOG.md
 %{_texmfdistdir}/doc/latex/beamertheme-focus/LICENSE.md
 %{_texmfdistdir}/doc/latex/beamertheme-focus/README.md
@@ -3305,7 +3251,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/beamertheme-focus/focus-logo.pdf
 
 %files -n texlive-beamertheme-focus
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamertheme-focus/beamercolorthemefocus.sty
 %{_texmfdistdir}/tex/latex/beamertheme-focus/beamerfontthemefocus.sty
 %{_texmfdistdir}/tex/latex/beamertheme-focus/beamerinnerthemefocus.sty
@@ -3380,13 +3325,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamertheme-light-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamertheme-light/README
 %{_texmfdistdir}/doc/latex/beamertheme-light/beamertheme-light-example.pdf
 %{_texmfdistdir}/doc/latex/beamertheme-light/beamertheme-light-example.tex
 
 %files -n texlive-beamertheme-light
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamertheme-light/beamertheme-light.sty
 
 %package -n texlive-beamertheme-metropolis
@@ -3472,7 +3415,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamertheme-metropolis-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamertheme-metropolis/README.md
 %{_texmfdistdir}/doc/latex/beamertheme-metropolis/demo.bib
 %{_texmfdistdir}/doc/latex/beamertheme-metropolis/demo.pdf
@@ -3480,7 +3422,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/beamertheme-metropolis/metropolistheme.pdf
 
 %files -n texlive-beamertheme-metropolis
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamertheme-metropolis/beamercolorthememetropolis-highcontrast.sty
 %{_texmfdistdir}/tex/latex/beamertheme-metropolis/beamercolorthememetropolis.sty
 %{_texmfdistdir}/tex/latex/beamertheme-metropolis/beamerfontthememetropolis.sty
@@ -3579,7 +3520,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamertheme-npbt-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamertheme-npbt/LICENSE
 %{_texmfdistdir}/doc/latex/beamertheme-npbt/README
 %{_texmfdistdir}/doc/latex/beamertheme-npbt/example/NPBT_exsamle.pdf
@@ -3587,7 +3527,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/beamertheme-npbt/header.tex
 
 %files -n texlive-beamertheme-npbt
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamertheme-npbt/beamercolorthemeNPBT_EUFOM.sty
 %{_texmfdistdir}/tex/latex/beamertheme-npbt/beamercolorthemeNPBT_FOM.sty
 %{_texmfdistdir}/tex/latex/beamertheme-npbt/beamercolorthemeNPBT_FOM_ifes.sty
@@ -3680,13 +3619,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamertheme-phnompenh-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamertheme-phnompenh/README
 %{_texmfdistdir}/doc/latex/beamertheme-phnompenh/beamerthemePhnomPenh.pdf
 %{_texmfdistdir}/doc/latex/beamertheme-phnompenh/beamerthemePhnomPenh.tex
 
 %files -n texlive-beamertheme-phnompenh
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamertheme-phnompenh/beamerthemePhnomPenh.sty
 
 %package -n texlive-beamertheme-pure-minimalistic
@@ -3774,7 +3711,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamertheme-pure-minimalistic-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamertheme-pure-minimalistic/LICENSE
 %{_texmfdistdir}/doc/latex/beamertheme-pure-minimalistic/README.md
 %{_texmfdistdir}/doc/latex/beamertheme-pure-minimalistic/beamertheme-pure-minimalistic-demo.pdf
@@ -3786,7 +3722,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/beamertheme-pure-minimalistic/logos/institute_logo_darkmode.png
 
 %files -n texlive-beamertheme-pure-minimalistic
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamertheme-pure-minimalistic/beamercolorthemepureminimalistic.sty
 %{_texmfdistdir}/tex/latex/beamertheme-pure-minimalistic/beamerfontthemepureminimalistic.sty
 %{_texmfdistdir}/tex/latex/beamertheme-pure-minimalistic/beamerinnerthemepureminimalistic.sty
@@ -3870,7 +3805,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamertheme-saintpetersburg-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamertheme-saintpetersburg/README.md
 %{_texmfdistdir}/doc/latex/beamertheme-saintpetersburg/SaintPetersburg.pdf
 %{_texmfdistdir}/doc/latex/beamertheme-saintpetersburg/example.pdf
@@ -3885,7 +3819,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/beamertheme-saintpetersburg/figures/standing-wave-period.eps
 
 %files -n texlive-beamertheme-saintpetersburg
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamertheme-saintpetersburg/beamercolorthemeSaintPetersburg.sty
 %{_texmfdistdir}/tex/latex/beamertheme-saintpetersburg/beamerfontthemeSaintPetersburg.sty
 %{_texmfdistdir}/tex/latex/beamertheme-saintpetersburg/beamerthemeSaintPetersburg.sty
@@ -3961,14 +3894,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamertheme-simpledarkblue-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamertheme-simpledarkblue/LICENSE
 %{_texmfdistdir}/doc/latex/beamertheme-simpledarkblue/README.md
 %{_texmfdistdir}/doc/latex/beamertheme-simpledarkblue/beamertheme-simpledarkblue-sample.pdf
 %{_texmfdistdir}/doc/latex/beamertheme-simpledarkblue/beamertheme-simpledarkblue-sample.tex
 
 %files -n texlive-beamertheme-simpledarkblue
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamertheme-simpledarkblue/beamercolorthemeSimpleDarkBlue.sty
 %{_texmfdistdir}/tex/latex/beamertheme-simpledarkblue/beamerfontthemeSimpleDarkBlue.sty
 %{_texmfdistdir}/tex/latex/beamertheme-simpledarkblue/beamerthemeSimpleDarkBlue.sty
@@ -4045,14 +3976,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamertheme-simpleplus-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamertheme-simpleplus/LICENSE
 %{_texmfdistdir}/doc/latex/beamertheme-simpleplus/README.md
 %{_texmfdistdir}/doc/latex/beamertheme-simpleplus/beamertheme-simpleplus-sample.pdf
 %{_texmfdistdir}/doc/latex/beamertheme-simpleplus/beamertheme-simpleplus-sample.tex
 
 %files -n texlive-beamertheme-simpleplus
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamertheme-simpleplus/beamercolorthemeSimplePlus.sty
 %{_texmfdistdir}/tex/latex/beamertheme-simpleplus/beamerfontthemeSimplePlus.sty
 %{_texmfdistdir}/tex/latex/beamertheme-simpleplus/beamerinnerthemeSimplePlus.sty
@@ -4129,13 +4058,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamertheme-tcolorbox-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamertheme-tcolorbox/README.md
 %{_texmfdistdir}/doc/latex/beamertheme-tcolorbox/beamertheme-tcolorbox-doc.pdf
 %{_texmfdistdir}/doc/latex/beamertheme-tcolorbox/beamertheme-tcolorbox-doc.tex
 
 %files -n texlive-beamertheme-tcolorbox
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamertheme-tcolorbox/beamerinnerthemetcolorbox.sty
 
 %package -n texlive-beamertheme-trigon
@@ -4228,7 +4155,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamertheme-trigon-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamertheme-trigon/README.md
 %{_texmfdistdir}/doc/latex/beamertheme-trigon/frames.tex
 %{_texmfdistdir}/doc/latex/beamertheme-trigon/library.jpg
@@ -4239,7 +4165,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/beamertheme-trigon/trigontheme.pdf
 
 %files -n texlive-beamertheme-trigon
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamertheme-trigon/beamercolorthemetrigon.sty
 %{_texmfdistdir}/tex/latex/beamertheme-trigon/beamerfontthemetrigon.sty
 %{_texmfdistdir}/tex/latex/beamertheme-trigon/beamerinnerthemetrigon.sty
@@ -4322,14 +4247,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamertheme-upenn-bc-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamertheme-upenn-bc/README
 %{_texmfdistdir}/doc/latex/beamertheme-upenn-bc/beamerBCstyle.pdf
 %{_texmfdistdir}/doc/latex/beamertheme-upenn-bc/beamerBCstyle.tex
 %{_texmfdistdir}/doc/latex/beamertheme-upenn-bc/beamerPENNstyle.pdf
 
 %files -n texlive-beamertheme-upenn-bc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamertheme-upenn-bc/beamercolorthemegoeagles.sty
 %{_texmfdistdir}/tex/latex/beamertheme-upenn-bc/beamercolorthemepenn.sty
 
@@ -4411,7 +4334,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamerthemeamurmaple-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamerthemeamurmaple/LICENSE
 %{_texmfdistdir}/doc/latex/beamerthemeamurmaple/README.md
 %{_texmfdistdir}/doc/latex/beamerthemeamurmaple/beamer-amurmaple-doc.pdf
@@ -4422,7 +4344,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/beamerthemeamurmaple/logo.png
 
 %files -n texlive-beamerthemeamurmaple
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamerthemeamurmaple/beamerthemeAmurmaple.sty
 
 %package -n texlive-beamerthemejltree
@@ -4478,7 +4399,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamerthemejltree
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamerthemejltree/beamerthemeJLTree.sty
 
 %package -n texlive-beamerthemelalic
@@ -4557,14 +4477,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamerthemelalic-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamerthemelalic/LICENSE
 %{_texmfdistdir}/doc/latex/beamerthemelalic/README.md
 %{_texmfdistdir}/doc/latex/beamerthemelalic/beamerthemelalic-exemplo.pdf
 %{_texmfdistdir}/doc/latex/beamerthemelalic/beamerthemelalic-exemplo.tex
 
 %files -n texlive-beamerthemelalic
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamerthemelalic/beamercolorthemelalic.sty
 %{_texmfdistdir}/tex/latex/beamerthemelalic/beamerfontthemelalic.sty
 %{_texmfdistdir}/tex/latex/beamerthemelalic/beamerinnerthemelalic.sty
@@ -4642,11 +4560,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamerthemenirma-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamerthemenirma/README
 
 %files -n texlive-beamerthemenirma
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamerthemenirma/beamerthemenirma.sty
 
 %package -n texlive-beamerthemenord
@@ -4720,7 +4636,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beamerthemenord-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beamerthemenord/README.md
 %{_texmfdistdir}/doc/latex/beamerthemenord/beamerthemeNord.pdf
 %{_texmfdistdir}/doc/latex/beamerthemenord/beamerthemeNord.tex
@@ -4738,7 +4653,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/beamerthemenord/screenshots/light-usage.png
 
 %files -n texlive-beamerthemenord
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beamerthemenord/beamercolorthemeNord.sty
 %{_texmfdistdir}/tex/latex/beamerthemenord/beamerfontthemeNord.sty
 %{_texmfdistdir}/tex/latex/beamerthemenord/beamerthemeNord.sty
@@ -4813,7 +4727,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bearwear-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bearwear/README.md
 %{_texmfdistdir}/doc/latex/bearwear/baer.png
 %{_texmfdistdir}/doc/latex/bearwear/bearwear-doc.tex
@@ -4825,7 +4738,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bearwear/ulrike.pdf
 
 %files -n texlive-bearwear
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bearwear/bearwear.sty
 
 %package -n texlive-beaulivre
@@ -4925,13 +4837,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beaulivre-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beaulivre/DEPENDS.txt
 %{_texmfdistdir}/doc/latex/beaulivre/LICENSE
 %{_texmfdistdir}/doc/latex/beaulivre/README.md
 
 %files -n texlive-beaulivre
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beaulivre/beaulivre.cls
 
 %package -n texlive-beebe
@@ -4991,7 +4901,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beebe
-%defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/bib/beebe/epodd.bib
 %{_texmfdistdir}/bibtex/bib/beebe/font.bib
 %{_texmfdistdir}/bibtex/bib/beebe/printing-history.bib
@@ -5080,12 +4989,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-begingreek-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/begingreek/README.txt
 %{_texmfdistdir}/doc/latex/begingreek/begingreek.pdf
 
 %files -n texlive-begingreek
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/begingreek/begingreek.sty
 
 %package -n texlive-begriff
@@ -5156,14 +5063,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-begriff-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/begriff/COPYING
 %{_texmfdistdir}/doc/latex/begriff/README
 %{_texmfdistdir}/doc/latex/begriff/examples.pdf
 %{_texmfdistdir}/doc/latex/begriff/examples.tex
 
 %files -n texlive-begriff
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/begriff/begriff.sty
 
 %package -n texlive-beilstein
@@ -5265,7 +5170,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beilstein-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beilstein/BJNANO_Technical_Handbook.pdf
 %{_texmfdistdir}/doc/latex/beilstein/CHANGELOG.md
 %{_texmfdistdir}/doc/latex/beilstein/README.md
@@ -5276,7 +5180,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/beilstein/scheme2.pdf
 
 %files -n texlive-beilstein
-%defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/bst/beilstein/bjnano.bst
 %{_texmfdistdir}/tex/latex/beilstein/beilstein.cls
 
@@ -5380,11 +5283,9 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-belleek-fonts
 
 %files -n texlive-belleek-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/belleek/README
 
 %files -n texlive-belleek
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/map/dvips/belleek/belleek.map
 %verify(link) %{_texmfdistdir}/fonts/truetype/public/belleek/blex.ttf
 %verify(link) %{_texmfdistdir}/fonts/truetype/public/belleek/blsy.ttf
@@ -5394,7 +5295,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %verify(link) %{_texmfdistdir}/fonts/type1/public/belleek/rblmi.pfb
 
 %files -n texlive-belleek-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-belleek
 %{_datadir}/fontconfig/conf.avail/58-texlive-belleek.conf
 %{_datadir}/fontconfig/conf.avail/55-texlive-belleek.conf
@@ -5484,7 +5384,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bengali-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/bengali/README
 %{_texmfdistdir}/doc/fonts/bengali/bengdoc.bn
 %{_texmfdistdir}/doc/fonts/bengali/bengdoc.pdf
@@ -5493,7 +5392,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/bengali/manifest.txt
 
 %files -n texlive-bengali
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/source/public/bengali/bn.mf
 %{_texmfdistdir}/fonts/source/public/bengali/bnbanjon.mf
 %{_texmfdistdir}/fonts/source/public/bengali/bndigit.mf
@@ -5704,14 +5602,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-bera-fonts
 
 %files -n texlive-bera-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/bera/LICENSE
 %{_texmfdistdir}/doc/fonts/bera/README
 %{_texmfdistdir}/doc/fonts/bera/bera.pdf
 %{_texmfdistdir}/doc/fonts/bera/bera.txt
 
 %files -n texlive-bera
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/afm/public/bera/fveb8a.afm
 %{_texmfdistdir}/fonts/afm/public/bera/fver8a.afm
 %{_texmfdistdir}/fonts/afm/public/bera/fvmb8a.afm
@@ -5815,7 +5711,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/bera/ts1fvs.fd
 
 %files -n texlive-bera-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-bera
 %{_datadir}/fontconfig/conf.avail/58-texlive-bera.conf
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-bera/encodings.dir
@@ -6158,7 +6053,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-berenisadf-fonts
 
 %files -n texlive-berenisadf-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/berenisadf/COPYING
 %{_texmfdistdir}/doc/fonts/berenisadf/COPYING.unix
 %{_texmfdistdir}/doc/fonts/berenisadf/Makefile.source
@@ -6174,7 +6068,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/berenisadf/ybd.nam
 
 %files -n texlive-berenisadf
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/afm/arkandis/berenisadf/ybdb.afm
 %{_texmfdistdir}/fonts/afm/arkandis/berenisadf/ybdbc.afm
 %{_texmfdistdir}/fonts/afm/arkandis/berenisadf/ybdbci.afm
@@ -6423,7 +6316,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/berenisadf/ts1ybdj.fd
 
 %files -n texlive-berenisadf-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-berenisadf
 %{_datadir}/fontconfig/conf.avail/58-texlive-berenisadf.conf
 %{_datadir}/fontconfig/conf.avail/55-texlive-berenisadf.conf
@@ -6517,12 +6409,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-besjournals-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/bibtex/besjournals/README
 %{_texmfdistdir}/doc/bibtex/besjournals/besjournals.dbj
 
 %files -n texlive-besjournals
-%defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/bst/besjournals/besjournals.bst
 
 %package -n texlive-bestpapers
@@ -6602,7 +6492,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bestpapers-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/bibtex/bestpapers/Makefile
 %{_texmfdistdir}/doc/bibtex/bestpapers/README
 %{_texmfdistdir}/doc/bibtex/bestpapers/bestpapers-guide.pdf
@@ -6611,7 +6500,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/bibtex/bestpapers/typography.bib
 
 %files -n texlive-bestpapers
-%defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/bst/bestpapers/bestpapers-export.bst
 %{_texmfdistdir}/bibtex/bst/bestpapers/bestpapers.bst
 
@@ -6689,12 +6577,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-betababel-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/betababel/betatest.pdf
 %{_texmfdistdir}/doc/latex/betababel/betatest.tex
 
 %files -n texlive-betababel
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/betababel/betababel.sty
 
 %package -n texlive-beton
@@ -6765,12 +6651,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-beton-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/beton/beton.pdf
 %{_texmfdistdir}/doc/latex/beton/legal.txt
 
 %files -n texlive-beton
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/beton/beton.sty
 
 %package -n texlive-beuron
@@ -6885,7 +6769,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-beuron-fonts
 
 %files -n texlive-beuron-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/beuron/Literatur.bib
 %{_texmfdistdir}/doc/fonts/beuron/README
 %{_texmfdistdir}/doc/fonts/beuron/beuron-de.pdf
@@ -6894,7 +6777,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/beuron/beuron-en.tex
 
 %files -n texlive-beuron
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/map/dvips/beuron/beuron.map
 %verify(link) %{_texmfdistdir}/fonts/opentype/public/beuron/Beuron-Regular.otf
 %verify(link) %{_texmfdistdir}/fonts/opentype/public/beuron/BeuronCondensed-Regular.otf
@@ -6914,7 +6796,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/beuron/t1beuron.fd
 
 %files -n texlive-beuron-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-beuron
 %{_datadir}/fontconfig/conf.avail/58-texlive-beuron.conf
 %{_datadir}/fontconfig/conf.avail/55-texlive-beuron.conf
@@ -7029,7 +6910,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bewerbung-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bewerbung/Foto.pdf
 %{_texmfdistdir}/doc/latex/bewerbung/README
 %{_texmfdistdir}/doc/latex/bewerbung/README_DE
@@ -7044,7 +6924,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bewerbung/titlepage.inc
 
 %files -n texlive-bewerbung
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bewerbung/argetabelle.cls
 %{_texmfdistdir}/tex/latex/bewerbung/bewerbung-cv-casual.sty
 %{_texmfdistdir}/tex/latex/bewerbung/bewerbung-cv-classic.sty
@@ -7125,12 +7004,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bez123-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bez123/README
 %{_texmfdistdir}/doc/latex/bez123/bez123.pdf
 
 %files -n texlive-bez123
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bez123/bez123.sty
 %{_texmfdistdir}/tex/latex/bez123/multiply.sty
 
@@ -7210,13 +7087,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bezierplot-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/lualatex/bezierplot/README
 %{_texmfdistdir}/doc/lualatex/bezierplot/bezierplot-doc.pdf
 %{_texmfdistdir}/doc/lualatex/bezierplot/bezierplot-doc.tex
 
 %files -n texlive-bezierplot
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/lualatex/bezierplot/bezierplot.lua
 %{_texmfdistdir}/tex/lualatex/bezierplot/bezierplot.sty
 
@@ -7345,7 +7220,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bfh-ci-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bfh-ci/DEMO-BFHBeamer-Sidebar.pdf
 %{_texmfdistdir}/doc/latex/bfh-ci/DEMO-BFHBeamer-Sidebar.tex
 %{_texmfdistdir}/doc/latex/bfh-ci/DEMO-BFHBeamer.pdf
@@ -7366,7 +7240,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bfh-ci/README.md
 
 %files -n texlive-bfh-ci
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bfh-ci/beamercolorthemeBFH.sty
 %{_texmfdistdir}/tex/latex/bfh-ci/beamerfontthemeBFH.sty
 %{_texmfdistdir}/tex/latex/bfh-ci/beamerinnerthemeBFH.sty
@@ -7525,7 +7398,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bgteubner-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bgteubner/01b.png
 %{_texmfdistdir}/doc/latex/bgteubner/02b.png
 %{_texmfdistdir}/doc/latex/bgteubner/ChangeLog
@@ -7625,7 +7497,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bgteubner/vorwort.tex
 
 %files -n texlive-bgteubner
-%defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/bst/bgteubner/bgteuabbr.bst
 %{_texmfdistdir}/bibtex/bst/bgteubner/bgteuabbr2.bst
 %{_texmfdistdir}/bibtex/bst/bgteubner/bgteupln.bst
@@ -7765,14 +7636,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-bguq-fonts
 
 %files -n texlive-bguq-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/bguq/INSTALL.txt
 %{_texmfdistdir}/doc/fonts/bguq/Makefile
 %{_texmfdistdir}/doc/fonts/bguq/README
 %{_texmfdistdir}/doc/fonts/bguq/bguq-doc.pdf
 
 %files -n texlive-bguq
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/map/dvips/bguq/bguq.map
 %{_texmfdistdir}/fonts/source/public/bguq/bguq.mf
 %{_texmfdistdir}/fonts/source/public/bguq/bguq10.mf
@@ -7817,7 +7686,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/bguq/bguq.sty
 
 %files -n texlive-bguq-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-bguq
 %{_datadir}/fontconfig/conf.avail/58-texlive-bguq.conf
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-bguq/encodings.dir
@@ -7928,7 +7796,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bhcexam-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/xelatex/bhcexam/README-zh.md
 %{_texmfdistdir}/doc/xelatex/bhcexam/README.md
 %{_texmfdistdir}/doc/xelatex/bhcexam/examples/To7VxKXpZaOWO5Qq9qzeZGtlwYTwJ5KF.jpg
@@ -7942,7 +7809,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/xelatex/bhcexam/examples/qrcode.png
 
 %files -n texlive-bhcexam
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/xelatex/bhcexam/BHCexam.cls
 
 %package -n texlive-bib-fr
@@ -8014,12 +7880,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bib-fr-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/bibtex/bib-fr/CHANGELOG
 %{_texmfdistdir}/doc/bibtex/bib-fr/README
 
 %files -n texlive-bib-fr
-%defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/bst/bib-fr/abbrv-fr.bst
 %{_texmfdistdir}/bibtex/bst/bib-fr/abbrvnat-fr.bst
 %{_texmfdistdir}/bibtex/bst/bib-fr/alpha-fr.bst
@@ -8120,7 +7984,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bib2gls-doc
-%defattr(-,root,root,755)
 %{_mandir}/man1/bib2gls.1*
 %{_mandir}/man1/convertgls2bib.1*
 %{_texmfdistdir}/doc/support/bib2gls/CHANGES
@@ -8196,7 +8059,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/support/bib2gls/examples/vegetables.bib
 
 %files -n texlive-bib2gls
-%defattr(-,root,root,755)
 %{_texmfdistdir}/scripts/bib2gls/bib2gls.jar
 %{_texmfdistdir}/scripts/bib2gls/bib2gls.sh
 %{_texmfdistdir}/scripts/bib2gls/convertgls2bib.jar
@@ -8289,7 +8151,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bibarts-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bibarts/COPYING
 %{_texmfdistdir}/doc/latex/bibarts/README.txt
 %{_texmfdistdir}/doc/latex/bibarts/ba-short.pdf
@@ -8298,7 +8159,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bibarts/bibarts.tex
 
 %files -n texlive-bibarts
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bibarts/bibarts.sty
 
 %package -n texlive-bibcop
@@ -8386,7 +8246,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bibcop-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/bibtex/bibcop/DEPENDS.txt
 %{_texmfdistdir}/doc/bibtex/bibcop/LICENSE.txt
 %{_texmfdistdir}/doc/bibtex/bibcop/README.md
@@ -8395,7 +8254,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_mandir}/man1/bibcop.1*
 
 %files -n texlive-bibcop
-%defattr(-,root,root,755)
 %{_texmfdistdir}/scripts/bibcop/bibcop.pl
 %{_texmfdistdir}/tex/latex/bibcop/bibcop.sty
 
@@ -8461,7 +8319,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biber
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/bibtex/biber/biber.pdf
 
 %package -n texlive-biber-ms
@@ -8533,11 +8390,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biber-ms-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/bibtex/biber-ms/biber-ms.pdf
 
 %files -n texlive-biber-ms
-%defattr(-,root,root,755)
 %{_texmfdistdir}/source/bibtex/biber-ms/Changes
 %{_texmfdistdir}/source/bibtex/biber-ms/README.biber-ms-linux
 %{_texmfdistdir}/source/bibtex/biber-ms/README.biber-ms-macos
@@ -8618,12 +8473,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bibexport-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/bibtex/bibexport/README
 %{_texmfdistdir}/doc/bibtex/bibexport/bibexport.pdf
 
 %files -n texlive-bibexport
-%defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/bst/bibexport/expcites.bst
 %{_texmfdistdir}/bibtex/bst/bibexport/expkeys.bst
 %{_texmfdistdir}/bibtex/bst/bibexport/export.bst
@@ -8703,7 +8556,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bibhtml-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/bibtex/bibhtml/LICENCE
 %{_texmfdistdir}/doc/bibtex/bibhtml/README
 %{_texmfdistdir}/doc/bibtex/bibhtml/bibhtml
@@ -8715,7 +8567,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/bibtex/bibhtml/style.css
 
 %files -n texlive-bibhtml
-%defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/bst/bibhtml/abbrvhtml.bst
 %{_texmfdistdir}/bibtex/bst/bibhtml/alphahtml.bst
 %{_texmfdistdir}/bibtex/bst/bibhtml/alphahtmldate.bst
@@ -8956,7 +8807,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex/CHANGES.md
 %{_texmfdistdir}/doc/latex/biblatex/README
 %{_texmfdistdir}/doc/latex/biblatex/biber/bltxml/biblatex-examples.bltxml
@@ -9118,7 +8968,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex/examples/biblatex-examples.bltxml
 
 %files -n texlive-biblatex
-%defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/bib/biblatex/biblatex/biblatex-examples.bib
 %{_texmfdistdir}/bibtex/bst/biblatex/biblatex.bst
 %{_texmfdistdir}/tex/latex/biblatex/bbx/alphabetic-verb.bbx
@@ -9330,7 +9179,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-abnt-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-abnt/CHANGELOG.md
 %{_texmfdistdir}/doc/latex/biblatex-abnt/NBR10520-2002.bib
 %{_texmfdistdir}/doc/latex/biblatex-abnt/NBR10520-2002.tex
@@ -9349,7 +9197,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-abnt/texlive.sh
 
 %files -n texlive-biblatex-abnt
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-abnt/abnt-ibid.bbx
 %{_texmfdistdir}/tex/latex/biblatex-abnt/abnt-ibid.cbx
 %{_texmfdistdir}/tex/latex/biblatex-abnt/abnt-numeric.bbx
@@ -9442,11 +9289,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-ajc2020unofficial-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-ajc2020unofficial/README.md
 
 %files -n texlive-biblatex-ajc2020unofficial
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-ajc2020unofficial/ajc2020unofficial.bbx
 %{_texmfdistdir}/tex/latex/biblatex-ajc2020unofficial/ajc2020unofficial.cbx
 
@@ -9519,7 +9364,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-anonymous-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-anonymous/README
 %{_texmfdistdir}/doc/latex/biblatex-anonymous/biblatex-anonymous.pdf
 %{_texmfdistdir}/doc/latex/biblatex-anonymous/biblatex-anonymous.tex
@@ -9527,7 +9371,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-anonymous/makefile
 
 %files -n texlive-biblatex-anonymous
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-anonymous/biblatex-anonymous.sty
 
 %package -n texlive-biblatex-apa
@@ -9634,7 +9477,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-apa-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-apa/README
 %{_texmfdistdir}/doc/latex/biblatex-apa/biblatex-apa-test-citations.bib
 %{_texmfdistdir}/doc/latex/biblatex-apa/biblatex-apa-test-references.bib
@@ -9644,7 +9486,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-apa/biblatex-apa.tex
 
 %files -n texlive-biblatex-apa
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-apa/american-apa.lbx
 %{_texmfdistdir}/tex/latex/biblatex-apa/apa.bbx
 %{_texmfdistdir}/tex/latex/biblatex-apa/apa.cbx
@@ -9777,7 +9618,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-apa6-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-apa6/README
 %{_texmfdistdir}/doc/latex/biblatex-apa6/biblatex-apa6-test-citations.bib
 %{_texmfdistdir}/doc/latex/biblatex-apa6/biblatex-apa6-test-references.bib
@@ -9787,7 +9627,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-apa6/biblatex-apa6.tex
 
 %files -n texlive-biblatex-apa6
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-apa6/american-apa6.lbx
 %{_texmfdistdir}/tex/latex/biblatex-apa6/apa6.bbx
 %{_texmfdistdir}/tex/latex/biblatex-apa6/apa6.cbx
@@ -10251,7 +10090,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-archaeology-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-archaeology/README.htm
 %{_texmfdistdir}/doc/latex/biblatex-archaeology/README.md
 %{_texmfdistdir}/doc/latex/biblatex-archaeology/biblatex-archaeology-example.bib
@@ -10308,7 +10146,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-archaeology/example/zaes-example.pdf
 
 %files -n texlive-biblatex-archaeology
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-archaeology/UKenglish-aefkw.lbx
 %{_texmfdistdir}/tex/latex/biblatex-archaeology/UKenglish-archa.lbx
 %{_texmfdistdir}/tex/latex/biblatex-archaeology/UKenglish-archaeology.lbx
@@ -10772,14 +10609,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-arthistory-bonn-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-arthistory-bonn/README.md
 %{_texmfdistdir}/doc/latex/biblatex-arthistory-bonn/arthistory-bonn-examples.bib
 %{_texmfdistdir}/doc/latex/biblatex-arthistory-bonn/arthistory-bonn.pdf
 %{_texmfdistdir}/doc/latex/biblatex-arthistory-bonn/arthistory-bonn.tex
 
 %files -n texlive-biblatex-arthistory-bonn
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-arthistory-bonn/arthistory-bonn-english.lbx
 %{_texmfdistdir}/tex/latex/biblatex-arthistory-bonn/arthistory-bonn-german.lbx
 %{_texmfdistdir}/tex/latex/biblatex-arthistory-bonn/arthistory-bonn.bbx
@@ -10862,13 +10697,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-bath-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-bath/README.md
 %{_texmfdistdir}/doc/latex/biblatex-bath/biblatex-bath.bib
 %{_texmfdistdir}/doc/latex/biblatex-bath/biblatex-bath.pdf
 
 %files -n texlive-biblatex-bath
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-bath/bath.bbx
 %{_texmfdistdir}/tex/latex/biblatex-bath/bath.cbx
 %{_texmfdistdir}/tex/latex/biblatex-bath/bath.dbx
@@ -10946,7 +10779,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-bookinarticle-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-bookinarticle/README
 %{_texmfdistdir}/doc/latex/biblatex-bookinarticle/documentation/biblatex-bookinarticle-crossref.pdf
 %{_texmfdistdir}/doc/latex/biblatex-bookinarticle/documentation/biblatex-bookinarticle.dot
@@ -10959,7 +10791,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-bookinarticle/makefile
 
 %files -n texlive-biblatex-bookinarticle
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-bookinarticle/biblatex-bookinarticle.sty
 
 %package -n texlive-biblatex-bookinother
@@ -11033,7 +10864,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-bookinother-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-bookinother/README
 %{_texmfdistdir}/doc/latex/biblatex-bookinother/documentation/biblatex-bookinother.pdf
 %{_texmfdistdir}/doc/latex/biblatex-bookinother/documentation/biblatex-bookinother.tex
@@ -11070,7 +10900,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-bookinother/makefile
 
 %files -n texlive-biblatex-bookinother
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-bookinother/bookinother.bbx
 %{_texmfdistdir}/tex/latex/biblatex-bookinother/bookinother.dbx
 
@@ -11146,14 +10975,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-bwl-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-bwl/Changes
 %{_texmfdistdir}/doc/latex/biblatex-bwl/doc/bwl-FU.bib
 %{_texmfdistdir}/doc/latex/biblatex-bwl/doc/bwl-FU.pdf
 %{_texmfdistdir}/doc/latex/biblatex-bwl/doc/bwl-FU.tex
 
 %files -n texlive-biblatex-bwl
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-bwl/bwl-FU.bbx
 %{_texmfdistdir}/tex/latex/biblatex-bwl/bwl-FU.cbx
 
@@ -11237,7 +11064,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-caspervector-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-caspervector/ChangeLog.txt
 %{_texmfdistdir}/doc/latex/biblatex-caspervector/README.txt
 %{_texmfdistdir}/doc/latex/biblatex-caspervector/caspervector-ay.pdf
@@ -11248,7 +11074,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-caspervector/latexmkrc
 
 %files -n texlive-biblatex-caspervector
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-caspervector/blx-caspervector-base.def
 %{_texmfdistdir}/tex/latex/biblatex-caspervector/blx-caspervector-gbk.def
 %{_texmfdistdir}/tex/latex/biblatex-caspervector/blx-caspervector-utf8.def
@@ -11311,7 +11136,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-cheatsheet
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-cheatsheet/README
 %{_texmfdistdir}/doc/latex/biblatex-cheatsheet/biblatex-cheatsheet.pdf
 %{_texmfdistdir}/doc/latex/biblatex-cheatsheet/biblatex-cheatsheet.tex
@@ -11396,7 +11220,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-chem-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-chem/README.md
 %{_texmfdistdir}/doc/latex/biblatex-chem/biblatex-chem-acs.pdf
 %{_texmfdistdir}/doc/latex/biblatex-chem/biblatex-chem-acs.tex
@@ -11411,7 +11234,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-chem/biblatex-chem.tex
 
 %files -n texlive-biblatex-chem
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-chem/chem-acs.bbx
 %{_texmfdistdir}/tex/latex/biblatex-chem/chem-acs.cbx
 %{_texmfdistdir}/tex/latex/biblatex-chem/chem-angew.bbx
@@ -11537,7 +11359,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-chicago-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-chicago/README
 %{_texmfdistdir}/doc/latex/biblatex-chicago/RELEASE
 %{_texmfdistdir}/doc/latex/biblatex-chicago/biblatex-chicago.pdf
@@ -11563,7 +11384,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-chicago/notes-test.bib
 
 %files -n texlive-biblatex-chicago
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-chicago/biblatex-chicago.sty
 %{_texmfdistdir}/tex/latex/biblatex-chicago/chicago-authordate-trad.bbx
 %{_texmfdistdir}/tex/latex/biblatex-chicago/chicago-authordate-trad.cbx
@@ -11677,7 +11497,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-claves-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-claves/README
 %{_texmfdistdir}/doc/latex/biblatex-claves/documentation/biblatex-claves-ref.bib
 %{_texmfdistdir}/doc/latex/biblatex-claves/documentation/biblatex-claves.bib
@@ -11688,7 +11507,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-claves/makefile
 
 %files -n texlive-biblatex-claves
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-claves/claves.bbx
 %{_texmfdistdir}/tex/latex/biblatex-claves/claves.dbx
 
@@ -11774,7 +11592,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-cv-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-cv/README.md
 %{_texmfdistdir}/doc/latex/biblatex-cv/biblatex-cv.bib
 %{_texmfdistdir}/doc/latex/biblatex-cv/biblatex-cv.pdf
@@ -11783,7 +11600,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-cv/cv.tex
 
 %files -n texlive-biblatex-cv
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-cv/american-cv.lbx
 %{_texmfdistdir}/tex/latex/biblatex-cv/biblatex-cv.bbx
 %{_texmfdistdir}/tex/latex/biblatex-cv/biblatex-cv.cbx
@@ -11876,7 +11692,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-dw-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-dw/CHANGES
 %{_texmfdistdir}/doc/latex/biblatex-dw/LIESMICH
 %{_texmfdistdir}/doc/latex/biblatex-dw/README
@@ -11899,7 +11714,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-dw/examples/examples-dw.bib
 
 %files -n texlive-biblatex-dw
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-dw/bbx/authortitle-dw.bbx
 %{_texmfdistdir}/tex/latex/biblatex-dw/bbx/footnote-dw.bbx
 %{_texmfdistdir}/tex/latex/biblatex-dw/bbx/standard-dw.bbx
@@ -11982,11 +11796,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-enc-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-enc/README
 
 %files -n texlive-biblatex-enc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-enc/enc.bbx
 %{_texmfdistdir}/tex/latex/biblatex-enc/enc.cbx
 
@@ -12201,7 +12013,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-ext-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-ext/CHANGES.md
 %{_texmfdistdir}/doc/latex/biblatex-ext/README.md
 %{_texmfdistdir}/doc/latex/biblatex-ext/biblatex-ext-examples.bib
@@ -12209,7 +12020,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-ext/biblatex-ext.tex
 
 %files -n texlive-biblatex-ext
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-ext/biblatex-ext-oa-doiapi.sty
 %{_texmfdistdir}/tex/latex/biblatex-ext/biblatex-ext-oa.sty
 %{_texmfdistdir}/tex/latex/biblatex-ext/biblatex-ext-oasymb-l3draw.sty
@@ -12377,7 +12187,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-fiwi-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-fiwi/README
 %{_texmfdistdir}/doc/latex/biblatex-fiwi/biblatex-fiwi.pdf
 %{_texmfdistdir}/doc/latex/biblatex-fiwi/biblatex-fiwi.tex
@@ -12394,7 +12203,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-fiwi/examples.bib
 
 %files -n texlive-biblatex-fiwi
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-fiwi/fiwi-yearbeginning.bbx
 %{_texmfdistdir}/tex/latex/biblatex-fiwi/fiwi.bbx
 %{_texmfdistdir}/tex/latex/biblatex-fiwi/fiwi.cbx
@@ -12505,7 +12313,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-gb7714-2015-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-gb7714-2015/README.md
 %{_texmfdistdir}/doc/latex/biblatex-gb7714-2015/biblatex-gb7714-2015-preamble.tex
 %{_texmfdistdir}/doc/latex/biblatex-gb7714-2015/biblatex-gb7714-2015.pdf
@@ -12515,7 +12322,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-gb7714-2015/makeall.py
 
 %files -n texlive-biblatex-gb7714-2015
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/chinese-erj.bbx
 %{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/chinese-erj.cbx
 %{_texmfdistdir}/tex/latex/biblatex-gb7714-2015/gb7714-1987.bbx
@@ -12621,13 +12427,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-german-legal-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-german-legal/README.md
 %{_texmfdistdir}/doc/latex/biblatex-german-legal/biblatex-german-legal.pdf
 %{_texmfdistdir}/doc/latex/biblatex-german-legal/biblatex-german-legal.tex
 
 %files -n texlive-biblatex-german-legal
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-german-legal/german-legal-book.bbx
 %{_texmfdistdir}/tex/latex/biblatex-german-legal/german-legal-book.cbx
 
@@ -12754,7 +12558,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-gost-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-gost/README.md
 %{_texmfdistdir}/doc/latex/biblatex-gost/biblatex-gost-examples.bib
 %{_texmfdistdir}/doc/latex/biblatex-gost/biblatex-gost-examples.pdf
@@ -12765,7 +12568,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-gost/ltxdockit.cls
 
 %files -n texlive-biblatex-gost
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-gost/american-gost.lbx
 %{_texmfdistdir}/tex/latex/biblatex-gost/biblatex-gost.dbx
 %{_texmfdistdir}/tex/latex/biblatex-gost/biblatex-gost.def
@@ -12887,13 +12689,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-historian-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-historian/README.txt
 %{_texmfdistdir}/doc/latex/biblatex-historian/historian.bib
 %{_texmfdistdir}/doc/latex/biblatex-historian/historian.pdf
 
 %files -n texlive-biblatex-historian
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-historian/historian.bbx
 %{_texmfdistdir}/tex/latex/biblatex-historian/historian.cbx
 %{_texmfdistdir}/tex/latex/biblatex-historian/historian.lbx
@@ -12979,7 +12779,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-ieee-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-ieee/README.md
 %{_texmfdistdir}/doc/latex/biblatex-ieee/biblatex-ieee-alphabetic.pdf
 %{_texmfdistdir}/doc/latex/biblatex-ieee/biblatex-ieee-alphabetic.tex
@@ -12988,7 +12787,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-ieee/biblatex-ieee.tex
 
 %files -n texlive-biblatex-ieee
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-ieee/ieee-alphabetic.bbx
 %{_texmfdistdir}/tex/latex/biblatex-ieee/ieee-alphabetic.cbx
 %{_texmfdistdir}/tex/latex/biblatex-ieee/ieee.bbx
@@ -13067,13 +12865,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-ijsra-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-ijsra/README.md
 %{_texmfdistdir}/doc/latex/biblatex-ijsra/biblatex-ijsra.pdf
 %{_texmfdistdir}/doc/latex/biblatex-ijsra/biblatex-ijsra.tex
 
 %files -n texlive-biblatex-ijsra
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-ijsra/ijsra.bbx
 %{_texmfdistdir}/tex/latex/biblatex-ijsra/ijsra.cbx
 
@@ -13178,14 +12974,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-iso690-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-iso690/README.md
 %{_texmfdistdir}/doc/latex/biblatex-iso690/biblatex-iso690-examples.bib
 %{_texmfdistdir}/doc/latex/biblatex-iso690/biblatex-iso690.pdf
 %{_texmfdistdir}/doc/latex/biblatex-iso690/biblatex-iso690.tex
 
 %files -n texlive-biblatex-iso690
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-iso690/bulgarian-iso.lbx
 %{_texmfdistdir}/tex/latex/biblatex-iso690/czech-iso.lbx
 %{_texmfdistdir}/tex/latex/biblatex-iso690/english-iso.lbx
@@ -13282,14 +13076,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-jura2-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-jura2/README.md
 %{_texmfdistdir}/doc/latex/biblatex-jura2/biblatex-jura2.tex
 %{_texmfdistdir}/doc/latex/biblatex-jura2/biblatex_jura2.pdf
 %{_texmfdistdir}/doc/latex/biblatex-jura2/mylit.bib
 
 %files -n texlive-biblatex-jura2
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-jura2/jura2.bbx
 %{_texmfdistdir}/tex/latex/biblatex-jura2/jura2.cbx
 
@@ -13365,14 +13157,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-juradiss-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-juradiss/Changes
 %{_texmfdistdir}/doc/latex/biblatex-juradiss/README
 %{_texmfdistdir}/doc/latex/biblatex-juradiss/biblatex-juradiss.pdf
 %{_texmfdistdir}/doc/latex/biblatex-juradiss/biblatex-juradiss.tex
 
 %files -n texlive-biblatex-juradiss
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-juradiss/biblatex-juradiss.bbx
 %{_texmfdistdir}/tex/latex/biblatex-juradiss/biblatex-juradiss.cbx
 %{_texmfdistdir}/tex/latex/biblatex-juradiss/biblatex-juradiss.dbx
@@ -13450,13 +13240,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-license-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-license/README.md
 %{_texmfdistdir}/doc/latex/biblatex-license/biblatex-license.pdf
 %{_texmfdistdir}/doc/latex/biblatex-license/biblatex-license.tex
 
 %files -n texlive-biblatex-license
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-license/biblatex-license.sty
 
 %package -n texlive-biblatex-lncs
@@ -13531,14 +13319,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-lncs-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-lncs/LICENSE
 %{_texmfdistdir}/doc/latex/biblatex-lncs/README.md
 %{_texmfdistdir}/doc/latex/biblatex-lncs/biblatex-lncs-test.bib
 %{_texmfdistdir}/doc/latex/biblatex-lncs/biblatex-lncs-test.tex
 
 %files -n texlive-biblatex-lncs
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-lncs/lncs.bbx
 %{_texmfdistdir}/tex/latex/biblatex-lncs/lncs.cbx
 %{_texmfdistdir}/tex/latex/biblatex-lncs/lncs.dbx
@@ -13616,7 +13402,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-lni-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-lni/CHANGELOG.md
 %{_texmfdistdir}/doc/latex/biblatex-lni/LICENSE
 %{_texmfdistdir}/doc/latex/biblatex-lni/LNI-examples.bib
@@ -13625,7 +13410,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-lni/README.md
 
 %files -n texlive-biblatex-lni
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-lni/LNI-english.lbx
 %{_texmfdistdir}/tex/latex/biblatex-lni/LNI-ngerman.lbx
 %{_texmfdistdir}/tex/latex/biblatex-lni/LNI.bbx
@@ -13715,7 +13499,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-luh-ipw-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-luh-ipw/README
 %{_texmfdistdir}/doc/latex/biblatex-luh-ipw/biblatex-luh-ipw-preamble.tex
 %{_texmfdistdir}/doc/latex/biblatex-luh-ipw/biblatex-luh-ipw-print.tex
@@ -13724,7 +13507,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-luh-ipw/de-biblatex-luh-ipw.tex
 
 %files -n texlive-biblatex-luh-ipw
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-luh-ipw/bbx/authoryear-luh-ipw.bbx
 %{_texmfdistdir}/tex/latex/biblatex-luh-ipw/bbx/standard-luh-ipw.bbx
 %{_texmfdistdir}/tex/latex/biblatex-luh-ipw/bbx/verbose-inote-luh-ipw.bbx
@@ -13813,7 +13595,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-manuscripts-philology-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-manuscripts-philology/README
 %{_texmfdistdir}/doc/latex/biblatex-manuscripts-philology/documentation/biblatex-manuscripts-philology-example.bib
 %{_texmfdistdir}/doc/latex/biblatex-manuscripts-philology/documentation/biblatex-manuscripts-philology-example.pdf
@@ -13824,7 +13605,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-manuscripts-philology/makefile
 
 %files -n texlive-biblatex-manuscripts-philology
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-manuscripts-philology/english-manuscripts.lbx
 %{_texmfdistdir}/tex/latex/biblatex-manuscripts-philology/french-manuscripts.lbx
 %{_texmfdistdir}/tex/latex/biblatex-manuscripts-philology/italian-manuscripts.lbx
@@ -13918,7 +13698,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-mla-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-mla/CHANGES
 %{_texmfdistdir}/doc/latex/biblatex-mla/README
 %{_texmfdistdir}/doc/latex/biblatex-mla/doc/biblatex-mla.pdf
@@ -13931,7 +13710,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-mla/doc/handbook9_messy.bib
 
 %files -n texlive-biblatex-mla
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-mla/american-mla.lbx
 %{_texmfdistdir}/tex/latex/biblatex-mla/english-mla.lbx
 %{_texmfdistdir}/tex/latex/biblatex-mla/italian-mla.lbx
@@ -14022,7 +13800,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-morenames-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-morenames/README
 %{_texmfdistdir}/doc/latex/biblatex-morenames/documentation/biblatex-morenames.pdf
 %{_texmfdistdir}/doc/latex/biblatex-morenames/documentation/biblatex-morenames.tex
@@ -14041,7 +13818,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-morenames/makefile
 
 %files -n texlive-biblatex-morenames
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-morenames/morenames.bbx
 %{_texmfdistdir}/tex/latex/biblatex-morenames/morenames.dbx
 
@@ -14275,7 +14051,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-ms-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-ms/CHANGES.md
 %{_texmfdistdir}/doc/latex/biblatex-ms/README
 %{_texmfdistdir}/doc/latex/biblatex-ms/biber/bltxml/biblatex-examples-ms.bltxml
@@ -14440,7 +14215,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-ms/examples/biblatex-examples-ms.bltxml
 
 %files -n texlive-biblatex-ms
-%defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/bib/biblatex-ms/biblatex/biblatex-examples-ms.bib
 %{_texmfdistdir}/bibtex/bst/biblatex-ms/biblatex-ms.bst
 %{_texmfdistdir}/tex/latex/biblatex-ms/bbx/alphabetic-ms.bbx
@@ -14630,7 +14404,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-multiple-dm-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-multiple-dm/README
 %{_texmfdistdir}/doc/latex/biblatex-multiple-dm/biblatex-multiple-dm.pdf
 %{_texmfdistdir}/doc/latex/biblatex-multiple-dm/biblatex-multiple-dm.tex
@@ -14638,7 +14411,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-multiple-dm/makefile
 
 %files -n texlive-biblatex-multiple-dm
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-multiple-dm/biblatex-multiple-dm.sty
 %{_texmfdistdir}/tex/latex/biblatex-multiple-dm/multiple-dm.bbx
 %{_texmfdistdir}/tex/latex/biblatex-multiple-dm/multiple-dm.dbx
@@ -14715,14 +14487,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-musuos-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-musuos/README
 %{_texmfdistdir}/doc/latex/biblatex-musuos/biblatex-musuos.pdf
 %{_texmfdistdir}/doc/latex/biblatex-musuos/biblatex-musuos.tex
 %{_texmfdistdir}/doc/latex/biblatex-musuos/musuos-bsp.bib
 
 %files -n texlive-biblatex-musuos
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-musuos/german-musuos.lbx
 %{_texmfdistdir}/tex/latex/biblatex-musuos/musuos.bbx
 %{_texmfdistdir}/tex/latex/biblatex-musuos/musuos.cbx
@@ -14798,14 +14568,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-nature-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-nature/README.md
 %{_texmfdistdir}/doc/latex/biblatex-nature/biblatex-nature.bib
 %{_texmfdistdir}/doc/latex/biblatex-nature/biblatex-nature.pdf
 %{_texmfdistdir}/doc/latex/biblatex-nature/biblatex-nature.tex
 
 %files -n texlive-biblatex-nature
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-nature/nature.bbx
 %{_texmfdistdir}/tex/latex/biblatex-nature/nature.cbx
 
@@ -14880,13 +14648,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-nejm-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-nejm/README
 %{_texmfdistdir}/doc/latex/biblatex-nejm/biblatex-nejm.pdf
 %{_texmfdistdir}/doc/latex/biblatex-nejm/biblatex-nejm.tex
 
 %files -n texlive-biblatex-nejm
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-nejm/nejm.bbx
 %{_texmfdistdir}/tex/latex/biblatex-nejm/nejm.cbx
 
@@ -14963,13 +14729,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-nottsclassic-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-nottsclassic/README.md
 %{_texmfdistdir}/doc/latex/biblatex-nottsclassic/nottsclassic.pdf
 %{_texmfdistdir}/doc/latex/biblatex-nottsclassic/nottsclassic.tex
 
 %files -n texlive-biblatex-nottsclassic
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-nottsclassic/nottsclassic-english.lbx
 %{_texmfdistdir}/tex/latex/biblatex-nottsclassic/nottsclassic.bbx
 %{_texmfdistdir}/tex/latex/biblatex-nottsclassic/nottsclassic.cbx
@@ -15051,7 +14815,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-opcit-booktitle-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-opcit-booktitle/README
 %{_texmfdistdir}/doc/latex/biblatex-opcit-booktitle/documentation/biblatex-opcit-booktitle-example.bib
 %{_texmfdistdir}/doc/latex/biblatex-opcit-booktitle/documentation/biblatex-opcit-booktitle-example.pdf
@@ -15063,7 +14826,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-opcit-booktitle/makefile
 
 %files -n texlive-biblatex-opcit-booktitle
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-opcit-booktitle/biblatex-opcit-booktitle.sty
 
 %package -n texlive-biblatex-oxref
@@ -15184,7 +14946,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-oxref-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-oxref/README.md
 %{_texmfdistdir}/doc/latex/biblatex-oxref/oxalph-doc.pdf
 %{_texmfdistdir}/doc/latex/biblatex-oxref/oxalph-doc.tex
@@ -15198,7 +14959,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-oxref/oxyear-doc.tex
 
 %files -n texlive-biblatex-oxref
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-oxref/american-oxref.lbx
 %{_texmfdistdir}/tex/latex/biblatex-oxref/british-oxref.lbx
 %{_texmfdistdir}/tex/latex/biblatex-oxref/english-oxref.lbx
@@ -15324,13 +15084,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-philosophy-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-philosophy/README
 %{_texmfdistdir}/doc/latex/biblatex-philosophy/biblatex-philosophy.pdf
 %{_texmfdistdir}/doc/latex/biblatex-philosophy/examples.zip
 
 %files -n texlive-biblatex-philosophy
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-philosophy/english-philosophy.lbx
 %{_texmfdistdir}/tex/latex/biblatex-philosophy/french-philosophy.lbx
 %{_texmfdistdir}/tex/latex/biblatex-philosophy/italian-philosophy.lbx
@@ -15420,14 +15178,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-phys-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-phys/README.md
 %{_texmfdistdir}/doc/latex/biblatex-phys/biblatex-phys.bib
 %{_texmfdistdir}/doc/latex/biblatex-phys/biblatex-phys.pdf
 %{_texmfdistdir}/doc/latex/biblatex-phys/biblatex-phys.tex
 
 %files -n texlive-biblatex-phys
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-phys/phys.bbx
 %{_texmfdistdir}/tex/latex/biblatex-phys/phys.cbx
 %{_texmfdistdir}/tex/latex/biblatex-phys/phys.dbx
@@ -15506,13 +15262,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-publist-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-publist/README
 %{_texmfdistdir}/doc/latex/biblatex-publist/biblatex-publist.pdf
 %{_texmfdistdir}/doc/latex/biblatex-publist/biblatex-publist.tex
 
 %files -n texlive-biblatex-publist
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-publist/publist.bbx
 %{_texmfdistdir}/tex/latex/biblatex-publist/publist.cbx
 %{_texmfdistdir}/tex/latex/biblatex-publist/publist.dbx
@@ -15590,14 +15344,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-readbbl-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-readbbl/Changes
 %{_texmfdistdir}/doc/latex/biblatex-readbbl/README
 %{_texmfdistdir}/doc/latex/biblatex-readbbl/biblatex-readbbl.pdf
 %{_texmfdistdir}/doc/latex/biblatex-readbbl/biblatex-readbbl.tex
 
 %files -n texlive-biblatex-readbbl
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-readbbl/biblatex-readbbl.sty
 
 %package -n texlive-biblatex-realauthor
@@ -15670,7 +15422,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-realauthor-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-realauthor/README
 %{_texmfdistdir}/doc/latex/biblatex-realauthor/documentation/biblatex-realauthor.pdf
 %{_texmfdistdir}/doc/latex/biblatex-realauthor/documentation/biblatex-realauthor.tex
@@ -15681,7 +15432,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-realauthor/makefile
 
 %files -n texlive-biblatex-realauthor
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-realauthor/realauthor.bbx
 %{_texmfdistdir}/tex/latex/biblatex-realauthor/realauthor.dbx
 
@@ -15778,7 +15528,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-sbl-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-sbl/README.md
 %{_texmfdistdir}/doc/latex/biblatex-sbl/biblatex-sbl-examples.pdf
 %{_texmfdistdir}/doc/latex/biblatex-sbl/biblatex-sbl-examples.tex
@@ -15791,7 +15540,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-sbl/sbl-paper.tex
 
 %files -n texlive-biblatex-sbl
-%defattr(-,root,root,755)
 %{_texmfdistdir}/makeindex/biblatex-sbl/sbl-paper-bibleref.ist
 %{_texmfdistdir}/tex/latex/biblatex-sbl/american-sbl.lbx
 %{_texmfdistdir}/tex/latex/biblatex-sbl/biblatex-sbl.def
@@ -15874,7 +15622,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-science-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-science/LICENSE.md
 %{_texmfdistdir}/doc/latex/biblatex-science/README.md
 %{_texmfdistdir}/doc/latex/biblatex-science/biblatex-science.bib
@@ -15882,7 +15629,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-science/biblatex-science.tex
 
 %files -n texlive-biblatex-science
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-science/science.bbx
 %{_texmfdistdir}/tex/latex/biblatex-science/science.cbx
 
@@ -15965,7 +15711,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-shortfields-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-shortfields/README
 %{_texmfdistdir}/doc/latex/biblatex-shortfields/documentation/biblatex-shortfields-example.pdf
 %{_texmfdistdir}/doc/latex/biblatex-shortfields/documentation/biblatex-shortfields-example.tex
@@ -15977,7 +15722,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-shortfields/makefile
 
 %files -n texlive-biblatex-shortfields
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-shortfields/biblatex-shortfields.sty
 
 %package -n texlive-biblatex-socialscienceshuberlin
@@ -16053,14 +15797,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-socialscienceshuberlin-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-socialscienceshuberlin/README.md
 %{_texmfdistdir}/doc/latex/biblatex-socialscienceshuberlin/socialscienceshuberlin-examples.bib
 %{_texmfdistdir}/doc/latex/biblatex-socialscienceshuberlin/socialscienceshuberlin.pdf
 %{_texmfdistdir}/doc/latex/biblatex-socialscienceshuberlin/socialscienceshuberlin.tex
 
 %files -n texlive-biblatex-socialscienceshuberlin
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-socialscienceshuberlin/german-socialscienceshuberlin.lbx
 %{_texmfdistdir}/tex/latex/biblatex-socialscienceshuberlin/socialscienceshuberlin.bbx
 %{_texmfdistdir}/tex/latex/biblatex-socialscienceshuberlin/socialscienceshuberlin.cbx
@@ -16140,7 +15882,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-software-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-software/Changes
 %{_texmfdistdir}/doc/latex/biblatex-software/LICENSE
 %{_texmfdistdir}/doc/latex/biblatex-software/README.md
@@ -16157,7 +15898,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-software/swentries.tex
 
 %files -n texlive-biblatex-software
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-software/english-software.lbx
 %{_texmfdistdir}/tex/latex/biblatex-software/french-software.lbx
 %{_texmfdistdir}/tex/latex/biblatex-software/software-biblatex.sty
@@ -16239,7 +15979,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-source-division-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-source-division/README
 %{_texmfdistdir}/doc/latex/biblatex-source-division/biblatex-source-division.bib
 %{_texmfdistdir}/doc/latex/biblatex-source-division/biblatex-source-division.pdf
@@ -16248,7 +15987,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-source-division/makefile
 
 %files -n texlive-biblatex-source-division
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-source-division/biblatex-source-division.sty
 
 %package -n texlive-biblatex-spbasic
@@ -16324,7 +16062,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-spbasic-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-spbasic/Changes
 %{_texmfdistdir}/doc/latex/biblatex-spbasic/README
 %{_texmfdistdir}/doc/latex/biblatex-spbasic/biblatex-spbasic.bib
@@ -16332,7 +16069,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-spbasic/biblatex-spbasic.tex
 
 %files -n texlive-biblatex-spbasic
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-spbasic/biblatex-spbasic.bbx
 %{_texmfdistdir}/tex/latex/biblatex-spbasic/biblatex-spbasic.cbx
 %{_texmfdistdir}/tex/latex/biblatex-spbasic/biblatex-spbasic.lbx
@@ -16410,7 +16146,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-subseries-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-subseries/README
 %{_texmfdistdir}/doc/latex/biblatex-subseries/documentation/biblatex-subseries-example.bib
 %{_texmfdistdir}/doc/latex/biblatex-subseries/documentation/biblatex-subseries-example.pdf
@@ -16421,7 +16156,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-subseries/makefile
 
 %files -n texlive-biblatex-subseries
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-subseries/subseries.bbx
 %{_texmfdistdir}/tex/latex/biblatex-subseries/subseries.dbx
 
@@ -16514,14 +16248,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-swiss-legal-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-swiss-legal/README
 %{_texmfdistdir}/doc/latex/biblatex-swiss-legal/biblatex-swiss-legal.pdf
 %{_texmfdistdir}/doc/latex/biblatex-swiss-legal/doc_source/biblatex-swiss-legal.bib
 %{_texmfdistdir}/doc/latex/biblatex-swiss-legal/doc_source/biblatex-swiss-legal.tex
 
 %files -n texlive-biblatex-swiss-legal
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-swiss-legal/biblatex-swiss-legal-base.bbx
 %{_texmfdistdir}/tex/latex/biblatex-swiss-legal/biblatex-swiss-legal-base.cbx
 %{_texmfdistdir}/tex/latex/biblatex-swiss-legal/biblatex-swiss-legal-bibliography.bbx
@@ -16615,13 +16347,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-trad-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-trad/README.md
 %{_texmfdistdir}/doc/latex/biblatex-trad/biblatex-trad.pdf
 %{_texmfdistdir}/doc/latex/biblatex-trad/biblatex-trad.tex
 
 %files -n texlive-biblatex-trad
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-trad/trad-abbrv.bbx
 %{_texmfdistdir}/tex/latex/biblatex-trad/trad-abbrv.cbx
 %{_texmfdistdir}/tex/latex/biblatex-trad/trad-alpha.bbx
@@ -16704,7 +16434,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-true-citepages-omit-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-true-citepages-omit/README
 %{_texmfdistdir}/doc/latex/biblatex-true-citepages-omit/biblatex-true-citepages-omit-example.pdf
 %{_texmfdistdir}/doc/latex/biblatex-true-citepages-omit/biblatex-true-citepages-omit-example.tex
@@ -16716,7 +16445,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-true-citepages-omit/makefile
 
 %files -n texlive-biblatex-true-citepages-omit
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-true-citepages-omit/biblatex-true-citepages-omit.sty
 
 %package -n texlive-biblatex-unified
@@ -16791,7 +16519,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-unified-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-unified/JournalUnifiedStyleSheet2007.pdf
 %{_texmfdistdir}/doc/latex/biblatex-unified/LICENSE
 %{_texmfdistdir}/doc/latex/biblatex-unified/README.md
@@ -16803,7 +16530,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex-unified/unified-test.tex
 
 %files -n texlive-biblatex-unified
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-unified/unified.bbx
 %{_texmfdistdir}/tex/latex/biblatex-unified/unified.cbx
 
@@ -16879,12 +16605,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex-vancouver-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex-vancouver/LICENSE
 %{_texmfdistdir}/doc/latex/biblatex-vancouver/README
 
 %files -n texlive-biblatex-vancouver
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex-vancouver/vancouver.bbx
 %{_texmfdistdir}/tex/latex/biblatex-vancouver/vancouver.cbx
 
@@ -16962,7 +16686,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblatex2bibitem-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblatex2bibitem/LICENSE.txt
 %{_texmfdistdir}/doc/latex/biblatex2bibitem/README.md
 %{_texmfdistdir}/doc/latex/biblatex2bibitem/biblatex2bibitem-examples.bib
@@ -16978,7 +16701,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblatex2bibitem/biblatex2bibitem-new.pdf
 
 %files -n texlive-biblatex2bibitem
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblatex2bibitem/biblatex2bibitem.sty
 
 %package -n texlive-bibleref
@@ -17055,7 +16777,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bibleref-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bibleref/CHANGES
 %{_texmfdistdir}/doc/latex/bibleref/README
 %{_texmfdistdir}/doc/latex/bibleref/bibleref.pdf
@@ -17067,7 +16788,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bibleref/samples/sample.pdf
 
 %files -n texlive-bibleref
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bibleref/bibleref-xidx.sty
 %{_texmfdistdir}/tex/latex/bibleref/bibleref.sty
 
@@ -17142,7 +16862,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bibleref-french-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bibleref-french/Lacroux-Bible.pdf
 %{_texmfdistdir}/doc/latex/bibleref-french/README
 %{_texmfdistdir}/doc/latex/bibleref-french/bible.bib
@@ -17155,7 +16874,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bibleref-french/test.tex
 
 %files -n texlive-bibleref-french
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bibleref-french/bibleref-french.sty
 
 %package -n texlive-bibleref-german
@@ -17232,7 +16950,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bibleref-german-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bibleref-german/CHANGES
 %{_texmfdistdir}/doc/latex/bibleref-german/LIESMICH
 %{_texmfdistdir}/doc/latex/bibleref-german/README
@@ -17245,7 +16962,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bibleref-german/en-bibleref-german.tex
 
 %files -n texlive-bibleref-german
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bibleref-german/bibleref-german.sty
 
 %package -n texlive-bibleref-lds
@@ -17322,12 +17038,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bibleref-lds-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bibleref-lds/README
 %{_texmfdistdir}/doc/latex/bibleref-lds/bibleref-lds.pdf
 
 %files -n texlive-bibleref-lds
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bibleref-lds/bibleref-lds.sty
 
 %package -n texlive-bibleref-mouth
@@ -17404,12 +17118,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bibleref-mouth-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bibleref-mouth/README
 %{_texmfdistdir}/doc/latex/bibleref-mouth/bibleref-mouth.pdf
 
 %files -n texlive-bibleref-mouth
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bibleref-mouth/bibleref-mouth.sty
 
 %package -n texlive-bibleref-parse
@@ -17485,13 +17197,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bibleref-parse-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bibleref-parse/README
 %{_texmfdistdir}/doc/latex/bibleref-parse/bibleref-parse.pdf
 %{_texmfdistdir}/doc/latex/bibleref-parse/bibleref-parse.tex
 
 %files -n texlive-bibleref-parse
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bibleref-parse/bibleref-parse.sty
 
 %package -n texlive-bibletext
@@ -17564,14 +17274,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bibletext-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bibletext/LICENSE
 %{_texmfdistdir}/doc/latex/bibletext/README.md
 %{_texmfdistdir}/doc/latex/bibletext/bibletext.pdf
 %{_texmfdistdir}/doc/latex/bibletext/bibletext.tex
 
 %files -n texlive-bibletext
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bibletext/bibletext.sty
 
 %package -n texlive-biblist
@@ -17643,7 +17351,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biblist-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biblist/README
 %{_texmfdistdir}/doc/latex/biblist/biblist.bst-dist
 %{_texmfdistdir}/doc/latex/biblist/biblist.gde
@@ -17651,7 +17358,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biblist/biblist.tex
 
 %files -n texlive-biblist
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biblist/biblist.sty
 
 %package -n texlive-bibtex
@@ -17737,7 +17443,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bibtex-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/bibtex/base/README
 %{_texmfdistdir}/doc/bibtex/base/btxbst.doc
 %{_texmfdistdir}/doc/bibtex/base/btxdoc.bib
@@ -17748,7 +17453,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_mandir}/man1/bibtex.1*
 
 %files -n texlive-bibtex
-%defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/bib/base/xampl.bib
 %{_texmfdistdir}/bibtex/bst/base/abbrv.bst
 %{_texmfdistdir}/bibtex/bst/base/acm.bst
@@ -17836,7 +17540,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bibtex8-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/bibtex8/00bibtex8-history.txt
 %{_texmfdistdir}/doc/bibtex8/00bibtex8-readme.txt
 %{_texmfdistdir}/doc/bibtex8/csfile.txt
@@ -17844,7 +17547,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_mandir}/man1/bibtex8.1*
 
 %files -n texlive-bibtex8
-%defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/csf/base/88591lat.csf
 %{_texmfdistdir}/bibtex/csf/base/88591sca.csf
 %{_texmfdistdir}/bibtex/csf/base/README.TEXLIVE
@@ -17934,7 +17636,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bibtexperllibs
-%defattr(-,root,root,755)
 %{_texmfdistdir}/scripts/bibtexperllibs/BibTeX/Parser.pm
 %{_texmfdistdir}/scripts/bibtexperllibs/BibTeX/Parser/Author.pm
 %{_texmfdistdir}/scripts/bibtexperllibs/BibTeX/Parser/Entry.pm
@@ -18000,7 +17701,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bibtexu
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/bibtexu/README
 %{_texmfdistdir}/doc/bibtexu/examples/test.bbl
 %{_texmfdistdir}/doc/bibtexu/examples/test.bib
@@ -18086,7 +17786,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bibtopic-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bibtopic/README
 %{_texmfdistdir}/doc/latex/bibtopic/articles.bib
 %{_texmfdistdir}/doc/latex/bibtopic/bibtopic.pdf
@@ -18094,7 +17793,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bibtopic/sample.tex
 
 %files -n texlive-bibtopic
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bibtopic/bibtopic.sty
 
 %package -n texlive-bibtopicprefix
@@ -18168,13 +17866,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bibtopicprefix-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bibtopicprefix/README
 %{_texmfdistdir}/doc/latex/bibtopicprefix/bibtopicprefix.pdf
 %{_texmfdistdir}/doc/latex/bibtopicprefix/bibtopicprefix.xml
 
 %files -n texlive-bibtopicprefix
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bibtopicprefix/bibtopicprefix.sty
 
 %package -n texlive-bibunits
@@ -18252,13 +17948,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bibunits-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bibunits/README
 %{_texmfdistdir}/doc/latex/bibunits/bibtexall
 %{_texmfdistdir}/doc/latex/bibunits/bibunits.pdf
 
 %files -n texlive-bibunits
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bibunits/bibunits.sty
 
 %package -n texlive-bidi
@@ -18527,7 +18221,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bidi-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/xelatex/bidi/README
 %{_texmfdistdir}/doc/xelatex/bidi/bidi-bibitem.pdf
 %{_texmfdistdir}/doc/xelatex/bidi/bidi-doc.pdf
@@ -18554,7 +18247,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/xelatex/bidi/test3-wrapfig.tex
 
 %files -n texlive-bidi
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/xelatex/bidi/adjmulticol-xetex-bidi.def
 %{_texmfdistdir}/tex/xelatex/bidi/algorithm2e-xetex-bidi.def
 %{_texmfdistdir}/tex/xelatex/bidi/amsart-xetex-bidi.def
@@ -18792,7 +18484,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bidi-atbegshi-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/xelatex/bidi-atbegshi/README
 %{_texmfdistdir}/doc/xelatex/bidi-atbegshi/bidi-atbegshi-doc.pdf
 %{_texmfdistdir}/doc/xelatex/bidi-atbegshi/bidi-atbegshi-doc.tex
@@ -18806,7 +18497,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/xelatex/bidi-atbegshi/test-foreground-RTL.tex
 
 %files -n texlive-bidi-atbegshi
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/xelatex/bidi-atbegshi/bidi-atbegshi.sty
 
 %package -n texlive-bidicontour
@@ -18880,7 +18570,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bidicontour-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/xelatex/bidicontour/README
 %{_texmfdistdir}/doc/xelatex/bidicontour/bidicontour-doc.pdf
 %{_texmfdistdir}/doc/xelatex/bidicontour/bidicontour-doc.tex
@@ -18890,7 +18579,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/xelatex/bidicontour/bidicontour-example-outline.tex
 
 %files -n texlive-bidicontour
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/xelatex/bidicontour/bidicontour.sty
 
 %package -n texlive-bidihl
@@ -18961,7 +18649,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bidihl-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/xelatex/bidihl/README
 %{_texmfdistdir}/doc/xelatex/bidihl/bidihl-doc.pdf
 %{_texmfdistdir}/doc/xelatex/bidihl/bidihl-doc.tex
@@ -18969,7 +18656,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/xelatex/bidihl/test-bidihl.tex
 
 %files -n texlive-bidihl
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/xelatex/bidihl/bidihl.sty
 
 %package -n texlive-bidipagegrid
@@ -19042,13 +18728,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bidipagegrid-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/xelatex/bidipagegrid/README
 %{_texmfdistdir}/doc/xelatex/bidipagegrid/bidipagegrid-doc.pdf
 %{_texmfdistdir}/doc/xelatex/bidipagegrid/bidipagegrid-doc.tex
 
 %files -n texlive-bidipagegrid
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/xelatex/bidipagegrid/bidipagegrid.sty
 
 %package -n texlive-bidipresentation
@@ -19131,14 +18815,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bidipresentation-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/xelatex/bidipresentation/README
 %{_texmfdistdir}/doc/xelatex/bidipresentation/fig-1.pdf
 %{_texmfdistdir}/doc/xelatex/bidipresentation/sample.pdf
 %{_texmfdistdir}/doc/xelatex/bidipresentation/sample.tex
 
 %files -n texlive-bidipresentation
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/xelatex/bidipresentation/bidiprescolors.cfg
 %{_texmfdistdir}/tex/xelatex/bidipresentation/bidipresentation.cls
 
@@ -19212,14 +18894,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bidishadowtext-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/xelatex/bidishadowtext/bidishadowtext-demo.pdf
 %{_texmfdistdir}/doc/xelatex/bidishadowtext/bidishadowtext-demo.tex
 %{_texmfdistdir}/doc/xelatex/bidishadowtext/bidishadowtext-doc.pdf
 %{_texmfdistdir}/doc/xelatex/bidishadowtext/bidishadowtext-doc.tex
 
 %files -n texlive-bidishadowtext
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/xelatex/bidishadowtext/bidishadowtext.sty
 
 %package -n texlive-bigfoot
@@ -19303,7 +18983,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bigfoot-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bigfoot/COPYING
 %{_texmfdistdir}/doc/latex/bigfoot/Makefile
 %{_texmfdistdir}/doc/latex/bigfoot/README
@@ -19312,7 +18991,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bigfoot/suffix.pdf
 
 %files -n texlive-bigfoot
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bigfoot/bigfoot.sty
 %{_texmfdistdir}/tex/latex/bigfoot/perpage.sty
 %{_texmfdistdir}/tex/latex/bigfoot/suffix.sty
@@ -19386,12 +19064,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bigintcalc-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bigintcalc/README.md
 %{_texmfdistdir}/doc/latex/bigintcalc/bigintcalc.pdf
 
 %files -n texlive-bigintcalc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/bigintcalc/bigintcalc.sty
 
 %package -n texlive-bigints
@@ -19464,7 +19140,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bigints-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bigints/Makefile
 %{_texmfdistdir}/doc/latex/bigints/README
 %{_texmfdistdir}/doc/latex/bigints/bigints.forlisting
@@ -19473,7 +19148,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bigints/perso.ist
 
 %files -n texlive-bigints
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bigints/bigints.sty
 
 %package -n texlive-bilingualpages
@@ -19545,11 +19219,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bilingualpages-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bilingualpages/README.md
 
 %files -n texlive-bilingualpages
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bilingualpages/bilingualpages.sty
 
 %package -n texlive-binarytree
@@ -19626,7 +19298,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-binarytree-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/binarytree/README
 %{_texmfdistdir}/doc/latex/binarytree/binarytree.pdf
 %{_texmfdistdir}/doc/latex/binarytree/examples/binarytree-ex1.pdf
@@ -19640,7 +19311,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/binarytree/examples/btree-5_up_0,0,0_3729359_7458719_655360_0.7_0.7_-lrr-x--_-llrr-x--_-rll-x--_-rrll-x--.pdf
 
 %files -n texlive-binarytree
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/binarytree/binarytree.sty
 
 %package -n texlive-binomexp
@@ -19714,12 +19384,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-binomexp-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/binomexp/README
 %{_texmfdistdir}/doc/latex/binomexp/binomexp.pdf
 
 %files -n texlive-binomexp
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/binomexp/binomexp.sty
 
 %package -n texlive-biochemistry-colors
@@ -19796,13 +19464,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biochemistry-colors-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biochemistry-colors/Biochemistry-colors.pdf
 %{_texmfdistdir}/doc/latex/biochemistry-colors/Biochemistry-colors.xls
 %{_texmfdistdir}/doc/latex/biochemistry-colors/README.txt
 
 %files -n texlive-biochemistry-colors
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biochemistry-colors/Biochemistry-colors.sty
 
 %package -n texlive-biocon
@@ -19882,7 +19548,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-biocon-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/biocon/COPYING
 %{_texmfdistdir}/doc/latex/biocon/INSTALL
 %{_texmfdistdir}/doc/latex/biocon/README
@@ -19896,7 +19561,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/biocon/source.tex
 
 %files -n texlive-biocon
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/biocon/biocon-old.sty
 %{_texmfdistdir}/tex/latex/biocon/biocon.sty
 
