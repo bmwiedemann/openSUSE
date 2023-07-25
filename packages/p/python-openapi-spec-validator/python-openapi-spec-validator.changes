@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul 25 06:08:29 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.6.0:
+  * Compatibility with jsonschema 4.18, jsonschema-spec 0.2 and
+    openapi-schema-validator 0.6 #202
+  * spec_url parameter of spec validator is deprecated. Use base_uri
+    instead. #202
+  * Drop python 3.7 support #226
+  * Update SupportsValidation protocol #232
+  * allow path item ref fix #210
+  * openapi 3.1 schema update #213
+
+-------------------------------------------------------------------
 Tue Jun 13 12:11:25 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

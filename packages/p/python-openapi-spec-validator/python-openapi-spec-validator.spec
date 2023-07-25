@@ -18,23 +18,23 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-openapi-spec-validator
-Version:        0.5.6
+Version:        0.6.0
 Release:        0
 Summary:        Python module for validating OpenAPI Specs against Swagger and OAS3
 License:        Apache-2.0
 URL:            https://github.com/p1c2u/openapi-spec-validator
 Source:         https://github.com/p1c2u/openapi-spec-validator/archive/%{version}.tar.gz#/openapi-spec-validator-%{version}-gh.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Provides:       python-openapi_spec_validator
 Requires:       python-importlib-resources
-Requires:       python-jsonschema-spec >= 0.1.1
+Requires:       python-jsonschema >= 4.18
+Requires:       python-jsonschema-spec >= 0.2.3
 Requires:       python-lazy-object-proxy >= 1.7.1
-Requires:       python-openapi-schema-validator >= 0.4.2
-Requires:       (python-jsonschema >= 4.0.0 with python-jsonschema < 4.18)
+Requires:       python-openapi-schema-validator >= 0.6.0
 %if %{python_version_nodots} < 39
 Requires:       python-importlib-resources >= 5.8.0
 %endif
@@ -43,8 +43,8 @@ Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module importlib-resources >= 5.8.0 if %python-base < 3.9}
-BuildRequires:  %{python_module jsonschema >= 4.0.0 with %python-jsonschema < 4.18}
-BuildRequires:  %{python_module jsonschema-spec >= 0.1.1}
+BuildRequires:  %{python_module jsonschema >= 4.18}
+BuildRequires:  %{python_module jsonschema-spec >= 0.2.3}
 BuildRequires:  %{python_module lazy-object-proxy >= 1.7.1}
 BuildRequires:  %{python_module openapi-schema-validator >= 0.4.2}
 BuildRequires:  %{python_module pytest}
