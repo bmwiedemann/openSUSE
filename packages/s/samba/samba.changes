@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Jul 19 14:35:34 UTC 2023 - Noel Power <nopower@suse.com>
+
+- Update to 4.18.5
+  * CVE-2022-2127: lm_resp_len not checked properly in
+    winbindd_pam_auth_crap_send; (bso#15072); (bsc#1213174).
+  * CVE-2023-34966: Samba Spotlight mdssvc RPC Request Infinite
+    Loop Denial-of-Service Vulnerability; (bso#15340); (bsc#1213173).
+  * CVE-2023-34967: Samba Spotlight mdssvc RPC Request Type
+    Confusion Denial-of-Service Vulnerability; (bso#15341); (bsc#1213172).
+  * CVE-2023-34968: Spotlight server-side Share Path Disclosure;
+    (bso#15388); (bsc#1213171).
+  * CVE-2023-3347: Samba doesn't require SMB2+ signing if
+    `server signing = mandatory` is set; (bso#15397); (bsc#1213170).
+  * secure channel faulty since Windows 10/11 update 07/2023;
+    (bso#15418); (bsc#1213384).
+
+-------------------------------------------------------------------
+Thu Jul  6 15:30:58 UTC 2023 - Noel Power <nopower@suse.com>
+
+- Update to 4.18.4
+  * Backport --pidl-developer fixes; (bso#15404).
+  * Named crashes on DLZ zone update; (bso#14030).
+  * smbcacls and smbcquotas do not check // before the server;
+    (bso#2312).
+  * cli_list loops 100% CPU against pre-lanman2 servers;
+    (bso#15382).
+  * smbclient leaks fds with showacls; (bso#15391).
+  * smbd returns NOT_FOUND when creating files on a r/o
+    filesystem; (bso#15402).
+  * NSS_WRAPPER_HOSTNAME doesn't match NSS_WRAPPER_HOSTS entry
+    and causes test timeouts; (bso#15355).
+  * net ads lookup (with unspecified realm) fails; (bso#15384).
+  * Register Samba processes with GPFS; (bso#15381).
+  * Python tarfile extraction needs change to avoid a warning
+    (CVE-2007-4559 mitigation); (bso#15390).
+  * The winbind child segfaults when listing users with `winbind
+    scan trusted domains = yes`; (bso#15398).
+  * Remove comments about deprecated 'write cache size';
+    (bso#15383).
+  * smbget memory leak if failed to download files recursively;
+    (bso#15403).
+
+-------------------------------------------------------------------
 Thu Jun  1 08:48:25 UTC 2023 - Noel Power <nopower@suse.com>
 
 - Update to 4.18.3
