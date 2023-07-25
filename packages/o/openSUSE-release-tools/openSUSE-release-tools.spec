@@ -20,7 +20,7 @@
 %define source_dir openSUSE-release-tools
 %define announcer_filename factory-package-news
 Name:           openSUSE-release-tools
-Version:        20230721.5bc933b
+Version:        20230721.2396b32
 Release:        0
 Summary:        Tools to aid in staging and release work for openSUSE/SUSE
 License:        GPL-2.0-or-later AND MIT
@@ -58,6 +58,10 @@ Requires:       python3-pycurl
 Requires:       python3-python-dateutil
 Requires:       python3-pyxdg
 Requires:       python3-requests
+# typing extensions are needed on SLE & Leap
+%if 0%{?suse_version} <= 1500
+Requires:       python3-typing_extensions
+%endif
 
 # bs_mirrorfull
 Requires:       perl-Net-SSLeay

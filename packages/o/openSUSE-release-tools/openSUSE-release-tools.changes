@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Jul 21 15:20:17 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230721.2396b32:
+  * docs/staging: remove obsolete references
+  * Add backup server URL and update source map
+
+-------------------------------------------------------------------
+Fri Jul 21 15:18:49 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230721.2d37d5b:
+  * gocd: enable Leap 15.6 checkers
+  * Revert temporary fixups, these are working now
+  * Add a simple smoke test launching all scripts with --help
+  * Require typing_extensions on SLE & Leap
+  * Fallback import Literal & TypedDict from typing_extension
+
+-------------------------------------------------------------------
+Fri Jul 21 15:17:21 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230721.3301485:
+  * Add BCI repo publishing bot
+
+-------------------------------------------------------------------
 Fri Jul 21 11:07:00 UTC 2023 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20230721.5bc933b:
