@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           mingw64-cross-cmake
-Version:        1.1.3
+Version:        1.1.4
 Release:        0
 Summary:        Cross build support for CMake
 License:        BSD-3-Clause
