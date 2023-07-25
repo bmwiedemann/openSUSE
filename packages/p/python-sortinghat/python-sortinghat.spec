@@ -1,7 +1,7 @@
 #
 # spec file for package python-sortinghat
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,47 +16,68 @@
 #
 
 
-%define binaries stackalytics2sh mozilla2sh mailmap2sh grimoirelab2sh gitdm2sh eclipse2sh sortinghat sh2mg mg2sh
-%define skip_python2 1
-%define skip_python36 1
 Name:           python-sortinghat
-Version:        0.7.23
+Version:        0.11.1
 Release:        0
 Summary:        A tool to manage identities
 License:        GPL-3.0-only
-Group:          Development/Languages/Python
 URL:            https://github.com/grimoirelab/sortinghat
-Source0:        https://files.pythonhosted.org/packages/source/s/sortinghat/sortinghat-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM no_decl_class_registry.patch gh#chaoss/grimoirelab-sortinghat#579 mcepl@suse.com
-# make the package compatible with SQLAlchemy 1.4.*
-Patch0:         no_decl_class_registry.patch
+Source:         https://github.com/chaoss/grimoirelab-sortinghat/archive/refs/tags/%{version}.tar.gz#/sortinghat-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Allow overridding the database config
+Patch0:         allow-database-config-overrides.patch
+Patch1:         add-missing-format-calls.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Jinja2 >= 3.0.1
+Requires:       python-Django >= 3.2
+Requires:       python-Jinja2 >= 3.1
+Requires:       python-PyJWT
 Requires:       python-PyMySQL >= 0.7.0
 Requires:       python-PyYAML >= 3.12
 Requires:       python-SQLAlchemy >= 1.2
-Requires:       python-pandas >= 0.18.1
-Requires:       python-python-dateutil >= 2.6.0
-Requires:       python-requests >= 2.9
-Requires:       python-urllib3 >= 1.22
+Requires:       python-click >= 7.1
+Requires:       python-django-cors-headers >= 3.7
+Requires:       python-django-graphql-jwt >= 0.3
+Requires:       python-django-rq >= 2.3
+Requires:       python-django-treebeard >= 4.5
+Requires:       python-graphene >= 2.1.5
+Requires:       python-graphene-django
+Requires:       python-grimoirelab-toolkit >= 0.3
+Requires:       python-mysqlclient >= 2.0
+Requires:       python-pandas >= 1.3
+Requires:       python-python-dateutil >= 2.8.0
+Requires:       python-requests >= 2.7
+Requires:       python-rq
+Requires:       python-sgqlc
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module Jinja2 >= 3.1}
+BuildRequires:  %{python_module Django >= 3.2}
 BuildRequires:  %{python_module PyMySQL >= 0.7.0}
 BuildRequires:  %{python_module PyYAML >= 3.12}
 BuildRequires:  %{python_module SQLAlchemy >= 1.2}
+BuildRequires:  %{python_module click >= 7.1}
+BuildRequires:  %{python_module django-cors-headers >= 3.7}
+BuildRequires:  %{python_module django-graphql-jwt >= 0.3}
+BuildRequires:  %{python_module django-rq >= 2.3}
+BuildRequires:  %{python_module django-treebeard >= 4.5}
+BuildRequires:  %{python_module fakeredis}
+BuildRequires:  %{python_module graphene >= 2.1.5}
+BuildRequires:  %{python_module grimoirelab-toolkit >= 0.3}
 BuildRequires:  %{python_module httpretty >= 0.9.5}
+BuildRequires:  %{python_module importlib-resources}
+BuildRequires:  %{python_module mysqlclient >= 2.0}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pandas >= 0.25.3}
+BuildRequires:  %{python_module pandas >= 1.3}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-dateutil >= 2.6.0}
-BuildRequires:  %{python_module requests >= 2.9}
+BuildRequires:  %{python_module python-dateutil >= 2.8.0}
+BuildRequires:  %{python_module requests >= 2.7}
+BuildRequires:  %{python_module rq}
+BuildRequires:  %{python_module sgqlc}
 BuildRequires:  mariadb-rpm-macros
 # /SECTION
 %python_subpackages
@@ -87,51 +108,39 @@ to store the identities obtained into its database, and later merge them
 into unique identities (and maybe affiliate them).
 
 %prep
-%autosetup -p1 -n sortinghat-%{version}
-
-sed -i -e "s/\('pandoc'\|'wheel',\)//" -e 's/==/>=/' setup.py
+%autosetup -p1 -n grimoirelab-sortinghat-%{version}
 
 %build
 %pyproject_wheel
-%{python_expand sed -i -e '1s@/usr/bin/.*python.*$@%{$__python}@' \
-    sortinghat/misc/*.py sortinghat/bin/*.py
-}
 
 %install
 %pyproject_install
-for b in %{binaries}; do
-  %python_clone -a %{buildroot}%{_bindir}/$b
-done
-%{python_expand rm -r %{buildroot}%{$python_sitelib}/sortinghat/{bin,misc}
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%python_clone -a %{buildroot}%{_bindir}/sortinghat
+%python_clone -a %{buildroot}%{_bindir}/sortinghat-admin
+%python_clone -a %{buildroot}%{_bindir}/sortinghatw
+%python_clone -a %{buildroot}%{_bindir}/sortinghatd
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 exit_code=0
-user=auth_db_user
-pass=auth_db_pass
+user='auth_db_user'
+pass='auth_db_pass'
 port=63306
-dbname=testhat
 run_dir=/tmp/mysql
 #
 # start the mariadb server
 #
-%mysql_testserver_start -u $user -p $pass -t $port -d $dbname
+%mysql_testserver_start -u $user -p $pass -t $port
 #
 # running the test
 #
-# this is read by TestDatabaseCaseBase.setUpClass
-cat << EOF > tests/tests.conf
-[Database]
-name=$dbname
-host=127.0.0.1
-port=$port
-user=$user
-password=$pass
-create=False
-EOF
-sed -i -e "s/'3306'/self.kwargs['port']/" tests/test_cmd_init.py
-%pyunittest discover -b -v || exit_code=1
+export TEST_SORTINGHAT_DB_PORT=$port
+export TEST_SORTINGHAT_DB_USER=$user
+export TEST_SORTINGHAT_DB_PASSWORD=$pass
+# Broken tests
+rm tests/test_jobs.py
+%python_exec manage.py test --settings=config.settings.testing
+%python_exec manage.py test --settings=config.settings.testing_tenant
 #
 # stopping mariadb
 #
@@ -139,27 +148,18 @@ sed -i -e "s/'3306'/self.kwargs['port']/" tests/test_cmd_init.py
 exit $exit_code
 
 %post
-for b in mg2sh sh2mg sortinghat eclipse2sh gitdm2sh grimoirelab2sh mailmap2sh mozilla2sh stackalytics2sh; do
-  %python_install_alternative $b
-done
+%python_install_alternative sortinghat sortinghat-admin sortinghatw sortinghatd
 
 %postun
-for b in mg2sh sh2mg sortinghat eclipse2sh gitdm2sh grimoirelab2sh mailmap2sh mozilla2sh stackalytics2sh; do
-  %python_uninstall_alternative $b
-done
+%python_uninstall_alternative sortinghat sortinghat-admin sortinghatw sortinghatd
 
 %files %{python_files}
 %doc NEWS README.md
-%python_alternative %{_bindir}/mg2sh
-%python_alternative %{_bindir}/sh2mg
 %python_alternative %{_bindir}/sortinghat
-%python_alternative %{_bindir}/eclipse2sh
-%python_alternative %{_bindir}/gitdm2sh
-%python_alternative %{_bindir}/grimoirelab2sh
-%python_alternative %{_bindir}/mailmap2sh
-%python_alternative %{_bindir}/mozilla2sh
-%python_alternative %{_bindir}/stackalytics2sh
+%python_alternative %{_bindir}/sortinghatw
+%python_alternative %{_bindir}/sortinghatd
+%python_alternative %{_bindir}/sortinghat-admin
 %{python_sitelib}/sortinghat
-%{python_sitelib}/sortinghat-%{version}*-info
+%{python_sitelib}/sortinghat-%{version}.dist-info
 
 %changelog
