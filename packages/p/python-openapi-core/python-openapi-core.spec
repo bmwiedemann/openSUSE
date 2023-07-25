@@ -17,13 +17,13 @@
 
 
 Name:           python-openapi-core
-Version:        0.16.6
+Version:        0.18.0
 Release:        0
 Summary:        Client- and server-side support for the OpenAPI Specification v3
 License:        BSD-3-Clause
 URL:            https://github.com/p1c2u/openapi-core
 Source:         https://github.com/p1c2u/openapi-core/archive/%{version}.tar.gz#/openapi-core-%{version}-gh.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
@@ -33,26 +33,28 @@ BuildRequires:  %{python_module Django >= 3.0}
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module WebOb}
 BuildRequires:  %{python_module Werkzeug}
+BuildRequires:  %{python_module aiohttp}
+BuildRequires:  %{python_module asgiref >= 2.6}
 BuildRequires:  %{python_module falcon >= 3.0}
 BuildRequires:  %{python_module isodate}
-BuildRequires:  %{python_module jsonschema-spec >= 0.1.1}
+BuildRequires:  %{python_module jsonschema >= 4.18}
+BuildRequires:  %{python_module jsonschema-spec >= 0.2.3}
 BuildRequires:  %{python_module more-itertools}
-BuildRequires:  %{python_module openapi-schema-validator >= 0.3.0 with %python-openapi-schema-validator < 0.5}
-BuildRequires:  %{python_module openapi-spec-validator >= 0.5.0 with %python-openapi-spec-validator < 0.6}
+BuildRequires:  %{python_module openapi-schema-validator >= 0.6.0}
+BuildRequires:  %{python_module openapi-spec-validator >= 0.6.0}
 BuildRequires:  %{python_module parse}
-BuildRequires:  %{python_module pathable >= 0.4.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module responses}
 # /SECTION
 Requires:       python-Werkzeug
+Requires:       python-asgiref >= 3.6
 Requires:       python-isodate
-Requires:       python-jsonschema-spec >= 0.1.1
+Requires:       python-jsonschema >= 4.18
+Requires:       python-jsonschema-spec >= 0.2.3
 Requires:       python-more-itertools
+Requires:       python-openapi-schema-validator >= 0.6.0
+Requires:       python-openapi-spec-validator >= 0.6.0
 Requires:       python-parse
-Requires:       python-pathable >= 0.4.0
-Requires:       python-typing-extensions >= 4.3.0
-Requires:       (python-openapi-schema-validator >= 0.3.0 with python-openapi-schema-validator < 0.5)
-Requires:       (python-openapi-spec-validator >= 0.5.0 with python-openapi-spec-validator < 0.6)
 BuildArch:      noarch
 %python_subpackages
 

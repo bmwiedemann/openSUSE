@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Jul 25 06:10:38 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.18.0:
+  * Compatibility with jsonschema 4.18, jsonschema-spec 0.2,
+    openapi-schema-validator 0.6 and openapi-spec-validator 0.6 #597
+  * spec_url parameter of Spec.from_dict is deprecated. Use base_uri
+    instead. #597
+  * ref_resolver_handlers parameter of Spec.from_dict is deprecated. Use
+    handlers instead. #597
+  * Drop python 3.7 support #595
+  * Format validators ignore other types and pass (in accordance with the
+    specification) #597
+  * shortcuts high level public api expose #465
+  * ParametersError context property deprecated #462
+  * Spec.create deprecated #463
+  * Validators refactor #457
+  * Webhooks support #470
+  * Rename UnmarshalContext to ValidationContext #472
+  * Fix PATH_PARAMETER_PATTERN for DRF default value pattern. #468
+  * Fix falcon response data none #471
+  * Shortcuts backward compatible #482
+  * RequestValidator and ResponseValidator backward compatibility #487
+  * Fix flask decorator function return other types #489
+  * Fix integration Request Response factories check types fix #490
+  * Fix Requests request dont allow fragments #491
+  * Fix openapi packages update and tests #498
+  * unmarshallers integration tests #497
+  * Unmarshallers and validators refactor #508
+  * Shortcuts refactor #517
+  * Media type deserializers refactor #518
+  * Schema unmarshalling/validation returns Invalid* exception (InvalidData,
+    InvalidParameter, InvalidRequestBody, InvalidHeader). Use __cause__
+    property to get root cause exception.
+  * InvalidSecurity exception renamed to SecurityNotFound
+
+-------------------------------------------------------------------
 Tue Jun 20 17:32:29 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Revert to 0.16.x branch
