@@ -19,7 +19,7 @@
 %define hardcode_pci_list 0
 
 %if %{undefined kernel_module_directory}
-%if 0%{?usrmerged}
+%if 0%{?suse_version} >= 1550
 %define kernel_module_directory /usr/lib/modules
 %else
 %define kernel_module_directory /lib/modules

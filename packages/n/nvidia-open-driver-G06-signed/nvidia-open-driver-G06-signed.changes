@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 24 15:37:51 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
+
+- Replace transitional %usrmerged macro with regular version check (boo#1206798)
+
+-------------------------------------------------------------------
 Wed Jul 19 13:41:49 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 535.86.05 
