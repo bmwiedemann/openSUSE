@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 24 04:59:11 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230721T204427Z:
+  * Enabled option to show node and bucket metrics (#4632)
+  * admin-info: Include delete markers count (#4642)
+  * fix replicate update to check for older role ARN (#4640)
+  * properly report bandwidth if not configured (#4641)
+  * fix: remove count flag and show the byteRate for support top
+    net (#4639)
+  * fix: Enable byHost filtering by supplying server host list
+    (#4637)
+
+-------------------------------------------------------------------
 Wed Jul 19 04:26:25 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 20230718T210538Z:
