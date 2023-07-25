@@ -667,4 +667,41 @@
     <comment>- Update to version 0.115.1: (forwarded request 1096660 from jfkw)</comment>
     <requestid>1096852</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>18a7b736ab9072b939d41f5f2368c59f</srcmd5>
+    <version>0.115.4</version>
+    <time>1690278628</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.115.4:
+  * Fix broken handling of legacy taxonomyTerm in disableKinds
+  * commands: Move testscript into its correct place
+  * publisher: Improve class collector for dynamic classes
+  * Fix cache busting setup
+  * commands: Delay server builds after the watcher is set up
+  * Create hugo_stats.json if it's mounted but does not exists
+  * Re-instate disableLiveReload as a config option (and not just a flag)
+  * common/htime: Fix localization of abbreviated month names
+  * Improve error messages for PostCSS etc.
+  * Fix setting config from env with complex (e.g. YAML) strings
+  * Fix for data mounts in sub folders
+
+- Update to version 0.115.3:
+  * Improve behavior of defaultContentLanguageInSubdir when only the default language is enabled
+  * Return error when .Render is invoked without arg
+  * js: Pass tsconfig.json to esBuild
+  * tpl/collections: Fix WordCount (etc.) regression in Where, Sort, Delimit
+  * config/allconfig: Update timeout description
+  * docs: Refresh docs.json
+
+- Update to version 0.115.2:
+  * snap: Allow access to AWS, Azure, and GCS config/credentials
+  * snap: Update metadata and security.exec.osEnv
+  * Make imageConfig work with modules
+  * Restore language.disabled config
+  * Fix hugo mod vendor for modules with hugo.toml
+  * Fix static content files multilingual root regression
+  * Fix defaultContentLanguageInSubdir with only 1 language
+  * config: Expand default security.exec.osEnv policy (forwarded request 1099769 from jfkw)</comment>
+    <requestid>1099770</requestid>
+  </revision>
 </revisionlist>
