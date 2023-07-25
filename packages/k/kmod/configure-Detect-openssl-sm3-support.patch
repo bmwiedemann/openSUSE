@@ -1,0 +1,35 @@
+From 90446ff0273775ee20762bb892fd3e901c8eb8ac Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Mon, 17 Jul 2023 21:23:51 +0200
+Subject: [PATCH] configure: Detect openssl sm3 support
+
+Older openssl versions do not support sm3. The code has an option to
+disable the sm3 hash but the lack of openssl support is not detected
+automatically.
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ configure.ac | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index a1e64e190d2f..5a582cb5a2af 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -148,6 +148,13 @@ AS_IF([test "x$with_openssl" != "xno"], [
+ 	PKG_CHECK_MODULES([libcrypto], [libcrypto >= 1.1.0])
+ 	AC_DEFINE([ENABLE_OPENSSL], [1], [Enable openssl for modinfo.])
+ 	module_signatures="PKCS7 $module_signatures"
++	AC_COMPILE_IFELSE([AC_LANG_SOURCE([[#include <openssl/ssl.h>
++		int nid = NID_sm3;]])], [
++		AC_MSG_NOTICE([openssl supports sm3])
++	], [
++		AC_MSG_NOTICE([openssl sm3 support not detected])
++		CPPFLAGS="$CPPFLAGS -DOPENSSL_NO_SM3"
++	])
+ ], [
+ 	AC_MSG_NOTICE([openssl support not requested])
+ ])
+-- 
+2.41.0
+

@@ -701,4 +701,12 @@ testsuite still needs zstd command, the library can do without.</comment>
 Kernel:stable/kernel-source#kernel-default succeeds with this</comment>
     <requestid>1098992</requestid>
   </revision>
+  <revision rev="77" vrev="7">
+    <srcmd5>1e984126ee2948f5b026a714aeee2a5d</srcmd5>
+    <version>30</version>
+    <time>1690276973</time>
+    <user>anag+factory</user>
+    <comment>Update our patchstack with the latest upstream submission attempts</comment>
+    <requestid>1100406</requestid>
+  </revision>
 </revisionlist>

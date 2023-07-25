@@ -1,71 +1,97 @@
-From 9d4c3adcd051408a9a4489984be73f9c06b938ab Mon Sep 17 00:00:00 2001
+From 88f6d08df8082f4dbe2407bef59de85290360e88 Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
 Date: Tue, 12 Jan 2021 16:54:46 +0100
-Subject: [PATCH 2/9] libkmod, depmod: Load modprobe.d, depmod.d from
- $prefix/lib.
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Subject: [PATCH 2/7] libkmod, depmod: Load modprobe.d, depmod.d from
+ ${prefix}/lib.
 
 There is an ongoing effort to limit use of files outside of /usr (or
-$prefix on general). Currently all modprobe.d paths are hardcoded to
-outside of $prefix. Teach kmod to load modprobe.d from $prefix/lib.
+${prefix} on general). Currently all modprobe.d paths are hardcoded to
+outside of $prefix. Teach kmod to load modprobe.d from ${prefix}/lib.
 
 On some distributions /usr/lib and /lib are the same directory because
 of a compatibility symlink, and it is possible to craft configuration
 files with sideeffects that would behave differently when loaded twice.
 However, the override semantic ensures that one 'overrides' the other,
 and only one configuration file of the same name is loaded from any of
-the seach directories.
+the search directories.
 
-Cc: Marcus Rückert <mrueckert@suse.com>
-Cc: Takashi Iwai <tiwai@suse.com>
-Cc: Dominique Leuenberger <dimstar@opensuse.org>
 Signed-off-by: Michal Suchanek <msuchanek@suse.de>
 ---
+v2: Fix commit message typo
+v3: Fix modprobe.d path list in code comment
+v5: Add distconfdir
+---
  Makefile.am        | 1 +
- libkmod/libkmod.c  | 3 ++-
+ configure.ac       | 5 +++++
+ libkmod/libkmod.c  | 7 ++++---
  man/Makefile.am    | 9 +++++++--
  man/depmod.d.xml   | 1 +
  man/modprobe.d.xml | 1 +
  tools/depmod.c     | 1 +
- 6 files changed, 13 insertions(+), 3 deletions(-)
+ 7 files changed, 20 insertions(+), 5 deletions(-)
 
 diff --git a/Makefile.am b/Makefile.am
-index 0e4877074f40..e7313fa8a33e 100644
+index ac47ea625e71..a03846d02b9c 100644
 --- a/Makefile.am
 +++ b/Makefile.am
 @@ -19,6 +19,7 @@ AM_CPPFLAGS = \
  	-include $(top_builddir)/config.h \
  	-I$(top_srcdir) \
  	-DSYSCONFDIR=\""$(sysconfdir)"\" \
-+	-DPREFIX=\""$(prefix)"\" \
++	-DDISTCONFDIR=\""$(distconfdir)"\" \
  	${zlib_CFLAGS}
  
  AM_CFLAGS = $(OUR_CFLAGS)
+diff --git a/configure.ac b/configure.ac
+index a74d3baf0a42..18206ccdb607 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -78,6 +78,10 @@ AC_COMPILE_IFELSE(
+ # --with-
+ #####################################################################
+ 
++AC_ARG_WITH([distconfdir], AS_HELP_STRING([--with-distconfdir=DIR], [directory to search for distribution configuration files]),
++        [], [with_distconfdir='${prefix}/lib'])
++AC_SUBST([distconfdir], [$with_distconfdir])
++
+ AC_ARG_WITH([rootlibdir],
+         AS_HELP_STRING([--with-rootlibdir=DIR], [rootfs directory to install shared libraries]),
+         [], [with_rootlibdir=$libdir])
+@@ -303,6 +307,7 @@ AC_MSG_RESULT([
+ 
+ 	prefix:			${prefix}
+ 	sysconfdir:		${sysconfdir}
++	distconfdir:		${distconfdir}
+ 	libdir:			${libdir}
+ 	rootlibdir:		${rootlibdir}
+ 	includedir:		${includedir}
 diff --git a/libkmod/libkmod.c b/libkmod/libkmod.c
-index 7c2b889d713e..75fc8be3fadc 100644
+index 7c2b889d713e..bc05a1873edf 100644
 --- a/libkmod/libkmod.c
 +++ b/libkmod/libkmod.c
 @@ -65,6 +65,7 @@ static const char *default_config_paths[] = {
  	SYSCONFDIR "/modprobe.d",
  	"/run/modprobe.d",
  	"/usr/local/lib/modprobe.d",
-+	PREFIX "/lib/modprobe.d",
++	DISTCONFDIR "/modprobe.d",
  	"/lib/modprobe.d",
  	NULL
  };
-@@ -237,7 +238,7 @@ static char *get_kernel_release(const char *dirname)
+@@ -237,9 +238,9 @@ static char *get_kernel_release(const char *dirname)
   *                to load from user-defined configuration parameters such as
   *                alias, blacklists, commands (install, remove). If NULL
   *                defaults to /etc/modprobe.d, /run/modprobe.d,
 - *                /usr/local/lib/modprobe.d and /lib/modprobe.d. Give an empty
-+ *                /usr/local/lib/modprobe.d and PREFIX/lib/modprobe.d. Give an empty
-  *                vector if configuration should not be read. This array must
-  *                be null terminated.
+- *                vector if configuration should not be read. This array must
+- *                be null terminated.
++ *                /usr/local/lib/modprobe.d, DISTCONFDIR/modprobe.d, and
++ *                /lib/modprobe.d. Give an empty vector if configuration should
++ *                not be read. This array must be null terminated.
   *
+  * Create kmod library context. This reads the kmod configuration
+  * and fills in the default values.
 diff --git a/man/Makefile.am b/man/Makefile.am
-index 11514d52a190..ad07c30bbd24 100644
+index 11514d52a190..2fea8e46bf2f 100644
 --- a/man/Makefile.am
 +++ b/man/Makefile.am
 @@ -17,9 +17,14 @@ EXTRA_DIST = $(MAN5:%.5=%.xml) $(MAN8:%.8=%.xml)
@@ -73,10 +99,10 @@ index 11514d52a190..ad07c30bbd24 100644
  
  %.5 %.8: %.xml
 -	$(AM_V_XSLT)$(XSLT) \
-+	$(AM_V_XSLT)if [ -n '$(prefix)' ] ; then \
-+		sed -e 's|@PREFIX@|$(prefix)|g' $< ; \
++	$(AM_V_XSLT)if [ '$(distconfdir)' != '/lib' ] ; then \
++		sed -e 's|@DISTCONFDIR@|$(distconfdir)|g' $< ; \
 +	else \
-+		sed -e '/@PREFIX@/d' $< ; \
++		sed -e '/@DISTCONFDIR@/d' $< ; \
 +	fi | \
 +	$(XSLT) \
  		-o $@ \
@@ -86,38 +112,38 @@ index 11514d52a190..ad07c30bbd24 100644
 -		http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl $<
 +		http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl -
 diff --git a/man/depmod.d.xml b/man/depmod.d.xml
-index 8d3d821cddc8..431ebca6654b 100644
+index 8d3d821cddc8..f282a39cc840 100644
 --- a/man/depmod.d.xml
 +++ b/man/depmod.d.xml
 @@ -40,6 +40,7 @@
  
    <refsynopsisdiv>
      <para><filename>/lib/depmod.d/*.conf</filename></para>
-+    <para><filename>@PREFIX@/lib/depmod.d/*.conf</filename></para>
++    <para><filename>@DISTCONFDIR@/depmod.d/*.conf</filename></para>
      <para><filename>/usr/local/lib/depmod.d/*.conf</filename></para>
      <para><filename>/run/depmod.d/*.conf</filename></para>
      <para><filename>/etc/depmod.d/*.conf</filename></para>
 diff --git a/man/modprobe.d.xml b/man/modprobe.d.xml
-index 0ab3e9110a7e..e8a91d7668af 100644
+index 0ab3e9110a7e..2bf6537f07e6 100644
 --- a/man/modprobe.d.xml
 +++ b/man/modprobe.d.xml
 @@ -41,6 +41,7 @@
  
    <refsynopsisdiv>
      <para><filename>/lib/modprobe.d/*.conf</filename></para>
-+    <para><filename>@PREFIX@/lib/modprobe.d/*.conf</filename></para>
++    <para><filename>@DISTCONFDIR@/modprobe.d/*.conf</filename></para>
      <para><filename>/usr/local/lib/modprobe.d/*.conf</filename></para>
      <para><filename>/run/modprobe.d/*.conf</filename></para>
      <para><filename>/etc/modprobe.d/*.conf</filename></para>
 diff --git a/tools/depmod.c b/tools/depmod.c
-index 364b7d4faa9e..a9349b20ee9c 100644
+index 553659755194..aada5ac57902 100644
 --- a/tools/depmod.c
 +++ b/tools/depmod.c
 @@ -54,6 +54,7 @@ static const char *default_cfg_paths[] = {
  	SYSCONFDIR "/depmod.d",
  	"/run/depmod.d",
  	"/usr/local/lib/depmod.d",
-+	PREFIX "/lib/depmod.d",
++	DISTCONFDIR "/depmod.d",
  	"/lib/depmod.d",
  	NULL
  };

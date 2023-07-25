@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 17 17:54:54 UTC 2023 - Michal Suchanek <msuchanek@suse.de>
+
+- Use pkgconfig for kmod configuration.
+  * Delete kmod-Add-config-command-to-show-compile-time-configu.patch
+  * Add kmod-Add-pkgconfig-file-with-kmod-compile-time-confi.patch,
+    Provide-fallback-for-successfully-running-make-modules_install.patch
+    compat-module_directory-module_prefix.patch.
+- Refresh usr-lib-modprobe.patch, usr-lib-modules.patch.
+- Add configure-Detect-openssl-sm3-support.patch to
+  fix build with older openssl without SM3 support.
+
+-------------------------------------------------------------------
 Sun Jul 16 15:55:38 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Edit usr-lib-modules.patch to /lib/modules provide fallback

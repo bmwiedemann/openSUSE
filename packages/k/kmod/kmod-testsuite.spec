@@ -47,9 +47,12 @@ Patch10:        testsuite-Move-setup-rootfs-logic-from-Makefile-to-s.patch
 Patch11:        depmod-Introduce-outdir-option.patch
 Patch12:        testsuite-Handle-different-sysconfdir.patch
 Patch13:        testsuite-depmod-use-defines-for-the-rootfs-lib_modu.patch
-Patch14:        kmod-Add-config-command-to-show-compile-time-configu.patch
+Patch14:        kmod-Add-pkgconfig-file-with-kmod-compile-time-confi.patch
 Patch15:        usr-lib-modules.patch
 Patch16:        no-stylesheet-download.patch
+Patch17:        Provide-fallback-for-successfully-running-make-modules_install.patch
+Patch18:        compat-module_directory-module_prefix.patch
+Patch19:        configure-Detect-openssl-sm3-support.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
@@ -95,7 +98,7 @@ export LDFLAGS="-Wl,-z,relro,-z,now"
 	--includedir="%_includedir/kmod" \
 	--with-rootlibdir="%_libdir" \
 %if 0%{?suse_version} > 1500
-	--with-module-prefix="%_prefix" \
+	--with-module-directory="%_prefix/lib/modules" \
 %endif
 	--bindir="%_bindir"
 %make_build KDIR="%kdir"

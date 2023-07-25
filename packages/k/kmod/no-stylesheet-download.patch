@@ -1,7 +1,7 @@
-From cd775d005f7d36395ef554d128c849fac5430f37 Mon Sep 17 00:00:00 2001
+From b46c23e46ad9b19d74362eb3528404293bb03d12 Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
 Date: Mon, 6 Sep 2021 14:52:35 +0200
-Subject: [PATCH 9/9] Do not download the docbook stylesheet during build, use
+Subject: [PATCH 5/7] Do not download the docbook stylesheet during build, use
  local copy instead.
 
 Signed-off-by: Michal Suchanek <msuchanek@suse.de>
@@ -10,7 +10,7 @@ Signed-off-by: Michal Suchanek <msuchanek@suse.de>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/man/Makefile.am b/man/Makefile.am
-index 1a9a92f9c224..6b89400e9d39 100644
+index f550091a216a..a8ddb8bfd0ed 100644
 --- a/man/Makefile.am
 +++ b/man/Makefile.am
 @@ -28,4 +28,4 @@ CLEANFILES = $(dist_man_MANS)

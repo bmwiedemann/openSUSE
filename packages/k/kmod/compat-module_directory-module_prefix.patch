@@ -1,0 +1,91 @@
+From 004a365112b56402cca5d0097fccb74d38490aeb Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Mon, 17 Jul 2023 12:56:45 +0200
+Subject: [PATCH 7/7] compat: module_directory -> module_prefix
+
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ Makefile.am  |  1 +
+ configure.ac | 10 ++++++++++
+ tools/kmod.c | 15 +++++++++++++++
+ 3 files changed, 26 insertions(+)
+
+diff --git a/Makefile.am b/Makefile.am
+index 1d51a43d68ba..e0df13c589bc 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -20,6 +20,7 @@ AM_CPPFLAGS = \
+ 	-I$(top_srcdir) \
+ 	-DSYSCONFDIR=\""$(sysconfdir)"\" \
+ 	-DDISTCONFDIR=\""$(distconfdir)"\" \
++	-DMODULE_PREFIX=\""$(module_prefix)"\" \
+ 	-DMODULE_DIRECTORY=\""$(module_directory)"\" \
+ 	${zlib_CFLAGS}
+ 
+diff --git a/configure.ac b/configure.ac
+index 602d3d3dbdf1..a1e64e190d2f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -96,6 +96,15 @@ AC_ARG_WITH([module_directory],
+         [], [with_module_directory=/lib/modules])
+ AC_SUBST([module_directory], [$with_module_directory])
+ 
++case $module_directory in
++	/lib/modules)
++	with_module_prefix=""
++	AC_SUBST([module_prefix], [$with_module_prefix]);;
++	*/lib/modules) with_module_prefix=$(dirname $with_module_directory)
++	with_module_prefix=$(dirname $with_module_prefix)
++	AC_SUBST([module_prefix], [$with_module_prefix]);;
++esac
++
+ AC_ARG_WITH([zstd],
+ 	AS_HELP_STRING([--with-zstd], [handle Zstandard-compressed modules @<:@default=disabled@:>@]),
+ 	[], [with_zstd=no])
+@@ -324,6 +333,7 @@ AC_MSG_RESULT([
+ 
+ 	module_directory:	${module_directory}
+ 	prefix:			${prefix}
++	module_prefix:		${module_prefix}
+ 	sysconfdir:		${sysconfdir}
+ 	distconfdir:		${distconfdir}
+ 	libdir:			${libdir}
+diff --git a/tools/kmod.c b/tools/kmod.c
+index 55689c075ab1..1ab62e86116e 100644
+--- a/tools/kmod.c
++++ b/tools/kmod.c
+@@ -37,9 +37,11 @@ static const struct option options[] = {
+ };
+ 
+ static const struct kmod_cmd kmod_cmd_help;
++static const struct kmod_cmd kmod_cmd_config;
+ 
+ static const struct kmod_cmd *kmod_cmds[] = {
+ 	&kmod_cmd_help,
++	&kmod_cmd_config,
+ 	&kmod_cmd_list,
+ 	&kmod_cmd_static_nodes,
+ 
+@@ -95,6 +97,19 @@ static const struct kmod_cmd kmod_cmd_help = {
+ 	.help = "Show help message",
+ };
+ 
++static int kmod_config(int argc, char *argv[])
++{
++	printf("{\"module_prefix\":\"" MODULE_PREFIX "\"}\n");
++
++	return EXIT_SUCCESS;
++}
++
++static const struct kmod_cmd kmod_cmd_config = {
++	.name = "config",
++	.cmd = kmod_config,
++	.help = "Show compile time options in JSON",
++};
++
+ static int handle_kmod_commands(int argc, char *argv[])
+ {
+ 	const char *cmd;
+-- 
+2.41.0
+
