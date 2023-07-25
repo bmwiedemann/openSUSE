@@ -17,13 +17,13 @@
 
 
 Name:           yambar
-Version:        1.9.0+g34
+Version:        1.10.0
 Release:        0
 Summary:        Modular statusbar for X11 and Wayland
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://codeberg.org/dnkl/yambar
-Source:         %{name}-%{version}.tar.xz
+Source:         https://codeberg.org/dnkl/yambar/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  meson >= 0.59
@@ -59,7 +59,7 @@ BuildRequires:  pkgconfig(yaml-0.1)
 Simplistic and highly configurable status panel for X and Wayland.
 
 %prep
-%setup -q
+%setup -q -n %{name}
 
 %package devel
 Summary:        Development files for %{name}

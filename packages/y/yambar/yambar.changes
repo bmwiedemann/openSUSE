@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Jul 20 09:09:52 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove _service file
+- Update to version 1.10.0
+  * Field width tag format option
+  * river: support for ‘layout’ events.
+  * dwl: support for specifying name of tags
+  * i3/sway: extend option sort; use native to sort numbered workspaces only.
+  * modules/dwl: handle the appid status
+  * battery: also show estimation for time to full
+  * on-click: tilde expansion
+  * script: tilde expansion of path.
+  * disk-io: interval renamed to poll-interval
+  * mem: interval renamed to poll-interval
+  * battery/network/script: poll-interval unit changed from seconds to milliseconds.
+  * all modules: minimum poll interval changed from 500ms to 250ms.
+  * network: do not use IPv6 link-local
+  * Build failures for certain combinations of enabled and disabled plugins.
+  * Documentation for the cpu module; interval has been renamed to poll-interval.
+  * battery: module was not thread safe.
+  * dwl module reporting only the last part of the title
+  * i3/sway: regression; persistent workspaces shown twice.
+  * pipewire: use roundf() instead of ceilf() for more accuracy
+  * Crash when a yaml anchor has a value that already exists in the target yaml node.
+  * battery: Fix time conversion in battery estimation
+  * battery: poll timeout being reset when receiving irrelevant udev notification (leading to battery status never updating, in worst case).
+
+-------------------------------------------------------------------
 Mon Jan 23 01:33:44 UTC 2023 - socvirnyl.estela@gmail.com
 
 - Update to version 1.9.0+g34:

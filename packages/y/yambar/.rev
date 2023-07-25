@@ -109,4 +109,36 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1061959</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b988df28488e5fc3a6da8b591fd0a224</srcmd5>
+    <version>1.10.0</version>
+    <time>1690278576</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove _service file
+- Update to version 1.10.0
+  * Field width tag format option
+  * river: support for ‘layout’ events.
+  * dwl: support for specifying name of tags
+  * i3/sway: extend option sort; use native to sort numbered workspaces only.
+  * modules/dwl: handle the appid status
+  * battery: also show estimation for time to full
+  * on-click: tilde expansion
+  * script: tilde expansion of path.
+  * disk-io: interval renamed to poll-interval
+  * mem: interval renamed to poll-interval
+  * battery/network/script: poll-interval unit changed from seconds to milliseconds.
+  * all modules: minimum poll interval changed from 500ms to 250ms.
+  * network: do not use IPv6 link-local
+  * Build failures for certain combinations of enabled and disabled plugins.
+  * Documentation for the cpu module; interval has been renamed to poll-interval.
+  * battery: module was not thread safe.
+  * dwl module reporting only the last part of the title
+  * i3/sway: regression; persistent workspaces shown twice.
+  * pipewire: use roundf() instead of ceilf() for more accuracy
+  * Crash when a yaml anchor has a value that already exists in the target yaml node.
+  * battery: Fix time conversion in battery estimation
+  * battery: poll timeout being reset when receiving irrelevant udev notification (leading to battery status never updating, in worst case).
+</comment>
+    <requestid>1099700</requestid>
+  </revision>
 </revisionlist>
