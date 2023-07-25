@@ -20,7 +20,7 @@
 %global build_tests (0%{?suse_version} > 1500 || 0%{?sle_version} > 150300)
 %define soversion 3
 Name:           sonivox
-Version:        3.6.11
+Version:        3.6.12
 Release:        0
 Summary:        Fork of the AOSP 'platform_external_sonivox' project
 License:        Apache-2.0
@@ -79,8 +79,7 @@ Development files for the sonivox library.
 %install
 %cmake_install
 
-%post -n libsonivox%{soversion} -p /sbin/ldconfig
-%postun -n libsonivox%{soversion} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libsonivox%{soversion}
 
 %files -n libsonivox%{soversion}
 %license LICENSE
