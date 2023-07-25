@@ -1,7 +1,7 @@
 #
 # spec file for package lucene
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,7 +61,6 @@ BuildRequires:  git
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javacc
 BuildRequires:  javapackages-local
-BuildRequires:  jtidy
 BuildRequires:  junit
 BuildRequires:  regexp
 BuildRequires:  zip
@@ -514,7 +513,7 @@ Apache Lucene Java Test Framework.
 %patch5 -p1
 
 %build
-export CLASSPATH=$(build-classpath commons-digester jtidy junit regexp)
+export CLASSPATH=$(build-classpath commons-digester junit regexp)
 export OPT_JAR_LIST=:
 %{ant} \
   -Djavacc.home=%{_bindir}/javacc \

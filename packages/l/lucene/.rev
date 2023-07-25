@@ -243,4 +243,12 @@
     <comment>sync changes with sle</comment>
     <requestid>979130</requestid>
   </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>e06271fbe014eabeb3e83a91b5467b20</srcmd5>
+    <version>8.5.0</version>
+    <time>1690278698</time>
+    <user>dimstar_suse</user>
+    <comment>Don't depend on jtidy</comment>
+    <requestid>1100554</requestid>
+  </revision>
 </revisionlist>

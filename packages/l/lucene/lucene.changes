@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 24 19:46:27 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Do not depend on jtidy, since it is not used during build
+
+-------------------------------------------------------------------
 Sun Mar 20 16:11:33 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
