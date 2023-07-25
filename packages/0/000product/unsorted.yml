@@ -1893,6 +1893,7 @@ unsorted:
   - cargo1.68 
   - cargo1.69 
   - cargo1.70 
+  - cargo1.71 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -2918,7 +2919,6 @@ unsorted:
   - debugbreak 
   - debugbreak-devel 
   - debugedit 
-  - debuginfod-client 
   - debuginfod-dummy-client 
   - decentxml 
   - decentxml-javadoc 
@@ -9519,6 +9519,7 @@ unsorted:
   - kubie 
   - kubie-bash-completion 
   - kubie-fish-completion 
+  - kubo 
   - kubrick 
   - kubrick-lang 
   - kucero 
@@ -13905,7 +13906,7 @@ unsorted:
   - libphdi-devel 
   - libphdi-tools 
   - libphdi1 
-  - libphobos2-0_103 
+  - libphobos2-0_104 
   - libphobos2-ldc102 
   - libphonenumber-devel 
   - libphysfs-devel 
@@ -17103,6 +17104,7 @@ unsorted:
   - mercurial-extension-hg-git 
   - mercurial-lang 
   - mercurial-tests 
+  - meshlab 
   - meslo-lg-fonts 
   - meson 
   - meson-test 
@@ -18709,6 +18711,7 @@ unsorted:
   - nvmetcli 
   - nvptx-tools 
   - nvtop 
+  - nwg-dock-hyprland 
   - nwg-launchers 
   - nxtvepg 
   - nyancat 
@@ -34237,6 +34240,7 @@ unsorted:
   - rust1.68 
   - rust1.69 
   - rust1.70 
+  - rust1.71 
   - rustscan 
   - rustup 
   - rxp 
@@ -35037,6 +35041,7 @@ unsorted:
   - stp 
   - stp-devel 
   - strawberry 
+  - streamdeck-ui 
   - streamlink 
   - stress-ng 
   - stress-ng-bash-completion 
@@ -35193,6 +35198,7 @@ unsorted:
   - sxhkd 
   - sxiv 
   - syft 
+  - symbols-only-nerd-fonts 
   - symmetrica-devel 
   - sympol 
   - sympol-devel 
