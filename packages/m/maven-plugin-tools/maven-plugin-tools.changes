@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 24 21:05:56 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0004-Remove-dependency-on-jtidy.patch
+
+-------------------------------------------------------------------
 Fri May  5 08:28:11 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Add _multibuild to define 2nd spec file as additional flavor.

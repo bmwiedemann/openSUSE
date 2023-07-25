@@ -56,4 +56,12 @@
     <comment>multibuild</comment>
     <requestid>1084985</requestid>
   </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>9905905c803e866fe272fc0cb534c999</srcmd5>
+    <version>3.6.0</version>
+    <time>1690278703</time>
+    <user>dimstar_suse</user>
+    <comment>Don't depend on jtidy</comment>
+    <requestid>1100556</requestid>
+  </revision>
 </revisionlist>

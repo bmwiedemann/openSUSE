@@ -388,7 +388,7 @@
 +</plugin>
 --- maven-plugin-tools-3.6.0/maven-plugin-plugin/src/main/filtered-resources/META-INF/maven/plugin.xml	1970-01-01 01:00:00.000000000 +0100
 +++ maven-plugin-tools-3.6.0/maven-plugin-plugin/src/main/filtered-resources/META-INF/maven/plugin.xml	2019-11-25 11:05:03.978261704 +0100
-@@ -0,0 +1,1062 @@
+@@ -0,0 +1,1056 @@
 +<?xml version="1.0" encoding="UTF-8"?>
 +<plugin>
 +  <name>${project.name}</name>
@@ -1166,12 +1166,6 @@
 +      <artifactId>maven-plugin-tools-generators</artifactId>
 +      <type>jar</type>
 +      <version>3.6.0</version>
-+    </dependency>
-+    <dependency>
-+      <groupId>net.sf.jtidy</groupId>
-+      <artifactId>jtidy</artifactId>
-+      <type>jar</type>
-+      <version>r938</version>
 +    </dependency>
 +    <dependency>
 +      <groupId>xerces</groupId>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 24 21:05:56 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0004-Remove-dependency-on-jtidy.patch
+
+-------------------------------------------------------------------
 Fri May 13 09:17:09 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build with modello 2.0.0

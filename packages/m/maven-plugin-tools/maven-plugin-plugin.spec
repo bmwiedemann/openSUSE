@@ -28,6 +28,7 @@ Source0:        http://repo2.maven.org/maven2/org/apache/maven/plugin-tools/%{ba
 Patch0:         0001-Avoid-duplicate-MOJO-parameters.patch
 Patch1:         0002-Deal-with-nulls-from-getComment.patch
 Patch2:         0003-Port-to-plexus-utils-3.0.24.patch
+Patch3:         0004-Remove-dependency-on-jtidy.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  unzip
@@ -78,6 +79,7 @@ API documentation for %{name}.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %pom_remove_plugin -r :maven-enforcer-plugin
 

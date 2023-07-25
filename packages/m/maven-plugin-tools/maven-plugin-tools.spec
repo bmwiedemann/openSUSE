@@ -28,6 +28,7 @@ Source1:        %{name}-build.tar.xz
 Patch0:         0001-Avoid-duplicate-MOJO-parameters.patch
 Patch1:         0002-Deal-with-nulls-from-getComment.patch
 Patch2:         0003-Port-to-plexus-utils-3.0.24.patch
+Patch3:         0004-Remove-dependency-on-jtidy.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-cli
 BuildRequires:  atinject
@@ -38,7 +39,6 @@ BuildRequires:  guava
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  jdom2
-BuildRequires:  jtidy
 BuildRequires:  junit
 BuildRequires:  maven-lib
 BuildRequires:  maven-reporting-api
@@ -157,6 +157,7 @@ API documentation for %{name}.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %pom_remove_plugin -r :maven-enforcer-plugin
 
@@ -168,6 +169,8 @@ API documentation for %{name}.
 %pom_xpath_remove "pom:dependency[pom:scope='test']"
 
 %pom_change_dep org.easymock:easymock:: :::test maven-plugin-tools-annotations
+
+%pom_remove_dep net.sf.jtidy:jtidy maven-plugin-tools-generators
 
 %{mvn_package} :maven-plugin-tools __noinstall
 %{mvn_package} :maven-script __noinstall
@@ -184,7 +187,6 @@ build-jar-repository -s lib \
 	guava/guava \
 	guice/google-guice-no_aop \
 	jdom2/jdom2 \
-	jtidy \
 	junit \
 	maven/maven-artifact \
 	maven/maven-compat \
