@@ -16,7 +16,7 @@
 #
 
 Name:           UltimateDailyWallpaper
-Version:        3.2.4
+Version:        3.3.1
 Release:        0
 Summary:        A wallpaper changer and downloader
 License:        GPL-3.0+

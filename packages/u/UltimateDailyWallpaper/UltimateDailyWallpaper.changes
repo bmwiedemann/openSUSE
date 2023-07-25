@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jul 24 15:29:16 UTC 2023 - Patrice Coni <patrice.coni-dev@yandex.com>
+
+- Update to version 3.3.1
+    * Fixed bug: error while updating wallpaper
+    * Language files updated
+
+-------------------------------------------------------------------
+Fri Jul 21 19:14:55 UTC 2023 - Patrice Coni <patrice.coni-dev@yandex.com>
+
+- Update to version 3.3.0
+    * Fixed bug: wallpaper changes unwanted
+    * Language files updated
+    * Improving the stability of the application
+    * New sequence of the database query
+    * New: Wallpaper only changes once a day e.g. after a reboot
+
+-------------------------------------------------------------------
 Sun Jul  2 18:12:47 UTC 2023 - Patrice Coni <patrice.coni-dev@yandex.com>
 
 - Update to version 3.2.4
