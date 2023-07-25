@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 19 18:56:24 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.7.0:
+  * supports shallow clone and shallow repositories
+  * Simplify custom pluggable allocator (breaking change)
+  * repo: honor environment variables for more scenarios
+  * Introduce timeouts on sockets
+  * some performance improvements and bug fixes
+
+-------------------------------------------------------------------
 Wed Apr 12 16:35:36 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 1.6.4:
