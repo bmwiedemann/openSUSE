@@ -37,6 +37,7 @@ BuildRequires:  ncurses-devel
 BuildRequires:  tar
 BuildRequires:  tre-devel
 Requires:       lua
+Suggests:       par_text
 ExclusiveArch:  x86_64 %{ix86}
 Suggests:       par_text
 
@@ -62,9 +63,9 @@ export CFLAGS="%{optflags} -fcommon"
 # According to the debian/rules:
 # The vim tests harness is not solid, let's skip them for the moment.
 # Upstream mentioned the possibility of phasing them out entirely.
-make -C test/core
+%make_build -C test/core
 # No busted yet make -C test/lua
-make -C test/vis
+%make_build -C test/vis
 
 %files
 %{_bindir}/vis*
