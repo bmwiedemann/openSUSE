@@ -1,7 +1,7 @@
 #
 # spec file for package HepMC
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,16 +20,17 @@
 
 %define so_main 3
 %define libmain libHepMC3-%{so_main}
-%define so_search 4
+%define so_search 5
 %define libsearch libHepMC3search%{so_search}
 Name:           HepMC
-Version:        3.2.5
+Version:        3.2.6
 Release:        0
 Summary:        An event record for High Energy Physics Monte Carlo Generators in C++
 # PATCH-FEATURE-OPENSUSE HepMC-disable-doxygen-html-timestamp.patch badshah400@gmail.com -- Disable timestamps in doxygen generated HTML footers
 Patch0:         HepMC-disable-doxygen-html-timestamp.patch
 # Note: pybind11 (BSD-3-Clause) is bundled but not used because we use the system packaged pybind11
-License:        GPL-3.0-or-later
+# bxzstr (bundled) uses MPL-2.0
+License:        GPL-3.0-or-later AND MPL-2.0
 URL:            http://hepmc.web.cern.ch/hepmc/
 Source:         http://hepmc.web.cern.ch/hepmc/releases/%{name}3-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
@@ -54,7 +55,7 @@ HEPEVT, the Fortran HEP standard, are supported.
 
 %package -n %{libmain}
 Summary:        Main shared library for HepMC
-License:        GPL-3.0-or-later
+License:        GPL-3.0-or-later AND MPL-2.0
 Obsoletes:      libHepMC3-1 < %{version}
 Provides:       %{name}3 = %{version}
 
@@ -67,7 +68,7 @@ This package provides the main shared library for HepMC3.
 
 %package -n %{libsearch}
 Summary:        Shared library for HepMC search
-License:        GPL-3.0-or-later
+License:        GPL-3.0-or-later AND MPL-2.0
 Obsoletes:      libHepMC3-1 < %{version}
 
 %description -n %{libsearch}
@@ -79,7 +80,7 @@ This package provides the shared library for HepMC3 searches.
 
 %package devel
 Summary:        Header files for HepMC
-License:        GPL-3.0-or-later
+License:        GPL-3.0-or-later AND MPL-2.0
 Requires:       %{libmain} = %{version}
 Requires:       %{libsearch} = %{version}
 Recommends:     %{name}-doc = %{version}
@@ -96,6 +97,7 @@ developing with HepMC.
 %package doc
 Summary:        API documentation for HepMC
 License:        GPL-3.0-or-later
+BuildArch:      noarch
 
 %description doc
 The HepMC package is an object oriented event record written in C++
@@ -145,8 +147,6 @@ popd
 
 %fdupes %{buildroot}%{_docdir}/%{name}3/
 
-# Temporarily disable tests for i586 until tolerance issues are sorted out
-%ifnarch %ix86
 %check
 %{python_expand # For all python flavors
 export PYTHON=$python
@@ -154,7 +154,6 @@ pushd ../${PYTHON}_build
 %ctest
 popd
 }
-%endif
 
 %post   -n %{libmain} -p /sbin/ldconfig
 %postun -n %{libmain} -p /sbin/ldconfig

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Jul 10 16:54:59 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.2.6:
+  * Deprecated the set_cross_section function with double in
+    favour of those with vector of doubles.
+  * Better Doxygen documentation for code
+  * Improvements in ReaderFactory that should help detect the file
+    type more successfully.
+  * Multiple optimizations inspired by clang-tidy
+  * The Attributes are now set to be parsed after calls to
+    from_string or set_value
+  * API breaking changes in the search module: pass by const
+    reference
+  * Update python bindings
+  * Modernisation of cmake
+  * Fix output value of ReaderLHEF::read_event
+  * Better documentation for standalone examples
+  * Adds a protobuf-based HepMC3::Reader/Writer
+  * Update pybind11 headers to fix python 3.11.
+  * License update.
+  * Make the R/W plugins transparent - the set/get functions call
+    the handled object
+- Adapt shared lib name to SO version bump (4->5) for
+  libHepMC3search.
+- License update: bundled bxzstr is MPL-2.0.
+- Re-enable testing for i586.
+- Make doc package noarch.
+
+-------------------------------------------------------------------
 Sat Nov  5 06:22:44 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Disable pythia interface, pythia now includes HepMC interface by
