@@ -36,4 +36,21 @@
     <comment>- Remove unneeded {Build,}Requires on python-mock.</comment>
     <requestid>962307</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f345a59113f4a2bc19888291991970ad</srcmd5>
+    <version>1.2.0</version>
+    <time>1690278683</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.0:
+  * Add 'liveserver' and 'liveclient' fixtures (closes #24).
+  * Added 'command_makemigrations' fixture.
+  * Added 'conf_app_name' fixture (see #17).
+  * Fixture 'template_context' now accepts a username.
+  * Dropped support for Django 1.7.
+  * Dropped support for Py2. Py3.6+ specific syntax is
+    introduced. Code update may be required.
+  * Introduced new 'check_migrations' fixture.
+- drop django_4.patch (upstream)</comment>
+    <requestid>1100442</requestid>
+  </revision>
 </revisionlist>

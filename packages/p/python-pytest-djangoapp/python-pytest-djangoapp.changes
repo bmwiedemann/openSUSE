@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul 24 18:55:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Add 'liveserver' and 'liveclient' fixtures (closes #24).
+  * Added 'command_makemigrations' fixture.
+  * Added 'conf_app_name' fixture (see #17).
+  * Fixture 'template_context' now accepts a username.
+  * Dropped support for Django 1.7.
+  * Dropped support for Py2. Py3.6+ specific syntax is
+    introduced. Code update may be required.
+  * Introduced new 'check_migrations' fixture.
+- drop django_4.patch (upstream)
+
+-------------------------------------------------------------------
 Thu Mar 17 05:37:40 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded {Build,}Requires on python-mock. 

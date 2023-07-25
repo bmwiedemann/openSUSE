@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-djangoapp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,15 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-pytest-djangoapp
-Version:        0.15.2
+Version:        1.2.0
 Release:        0
 Summary:        Pytest plugin for Django pluggable application testing
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/idlesign/pytest-djangoapp
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-djangoapp/pytest-djangoapp-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM django_4.patch gh#idlesign/pytest-djangoapp#23 mcepl@suse.com
-# this patch makes things totally awesome
-Patch0:         django_4.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
