@@ -18,12 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-metadata
-Version:        2.0.4
+Version:        3.0.0
 Release:        0
 Summary:        Pytest plugin for test session metadata
 License:        MPL-2.0
 URL:            https://github.com/pytest-dev/pytest-metadata
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-metadata/pytest_metadata-%{version}.tar.gz
+BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module wheel}

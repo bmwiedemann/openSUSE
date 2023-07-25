@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 24 19:09:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.0:
+  * Group CLI options
+  * Switch to Hatch
+  * Use `pytest.stash` internally instead of `_metadata`
+  * Simplify code
+
+-------------------------------------------------------------------
 Tue May  9 13:10:34 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons
