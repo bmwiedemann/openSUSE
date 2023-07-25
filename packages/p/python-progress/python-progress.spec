@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-progress
 Version:        1.6
 Release:        0
@@ -50,6 +50,7 @@ Progress bars for Python.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/progress
+%{python_sitelib}/progress-%{version}*-info
 
 %changelog
