@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jul 20 08:39:13 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 0.6.6
+  + Avoid cleaning the temp directory when calling tpm_test
+  + firstboot/fde: use functions as the aliases for bootloader
+    functions
+  + firstboot/fde: always regenerate initrd
+  + firstboot/fde: use authorized policy by default
+  + Support devices other than the root partition
+- Drop upstreamed patches
+  + fde-tools-avoid-cleaning-temp-dir.patch
+  + fde-tools-fix-bootloader-func.patch
+  + fde-tools-force-dracut.patch
+  + fde-tools-enable-authpol-in-firstboot.patch
+
+-------------------------------------------------------------------
 Thu Jul 13 06:57:46 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add fde-tools-enable-authpol-in-firstboot.patch to enable
