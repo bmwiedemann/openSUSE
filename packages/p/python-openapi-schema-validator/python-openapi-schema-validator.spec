@@ -18,24 +18,25 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-openapi-schema-validator
-Version:        0.4.4
+Version:        0.6.0
 Release:        0
 Summary:        OpenAPI schema validator for Python
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/p1c2u/openapi-schema-validator
 Source:         https://github.com/p1c2u/openapi-schema-validator/archive/%{version}.tar.gz#/openapi-schema-validator-%{version}-gh.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Provides:       python-openapi_schema_validator = %{version}-%{release}
+Requires:       python-jsonschema >= 4.18
+Requires:       python-jsonschema-specifications >= 2023.5
 Requires:       python-rfc3339-validator
-Requires:       (python-jsonschema >= 4 with python-jsonschema < 4.18)
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module jsonschema >= 4 with %python-jsonschema < 4.18}
+BuildRequires:  %{python_module jsonschema >= 4.18}
+BuildRequires:  %{python_module jsonschema-specifications >= 2023.5}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module rfc3339-validator}
 # /SECTION
@@ -48,7 +49,7 @@ is an extended subset of the JSON Schema Specification
 Wright Draft 00.
 
 %prep
-%setup -q -n openapi-schema-validator-%{version}
+%autosetup -p1 -n openapi-schema-validator-%{version}
 sed -i 's:tool.pytest.ini_options:hide:' pyproject.toml
 
 %build

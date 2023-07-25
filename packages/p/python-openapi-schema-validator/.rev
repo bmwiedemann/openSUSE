@@ -55,4 +55,19 @@
     <comment></comment>
     <requestid>1093052</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>60a72e82b6a540cf9604153e990e00c5</srcmd5>
+    <version>0.6.0</version>
+    <time>1690278694</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.0:
+  * Compatibility with jsonschema 4.18 #72
+  * Python 3.7 support dropped #84
+  * OAS30Validator no longer accept read and write properties. Use
+    OASReadValidator and OAS30WriteValidator instead. #85
+  * Formats raise error for other types fix #67
+  * Format validators ignore other types and pass (in accordance with the
+    specification)</comment>
+    <requestid>1100537</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 25 06:06:43 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.6.0:
+  * Compatibility with jsonschema 4.18 #72
+  * Python 3.7 support dropped #84
+  * OAS30Validator no longer accept read and write properties. Use
+    OASReadValidator and OAS30WriteValidator instead. #85
+  * Formats raise error for other types fix #67
+  * Format validators ignore other types and pass (in accordance with the
+    specification)
+
+-------------------------------------------------------------------
 Tue Jun 13 12:13:08 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
