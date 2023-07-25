@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jul 20 13:53:32 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.150.0:
+  * Bump dependencies (#6830)
+  * Update release notes for 0.150 (#6829)
+  * Free up disk space in release workflow before building binaries
+    (#6827)
+  * Remove mockery config from dockerignore (#6828)
+  * Update measurement id for GA
+  * Bump mockery from 2.30.17 to 2.32.0 (#6819)
+  * remove duplicate
+  * Release notes for 0.150.0
+  * Regenerate mocks
+  * Migrate to mockery v2
+  * Bundle dependabot updates
+  * Updated links with both blog posts
+  * Add announcement for transfer to new Github Organisation
+  * Bump dependencies (#6803)
+  * Add manual push-build-image workflow
+  * Update image repository to ECR in workflows
+  * Add ECR publish workflow
+  * Update description on image repo
+  * Prepare for next development iteration
+
+-------------------------------------------------------------------
 Thu Jul 13 04:49:53 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.149.0:
