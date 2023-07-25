@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 19 09:41:46 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 1372f9eb.patch: build: Fix wrap file syntax. Fix Meson 1.2
+  compatibility.
+
+-------------------------------------------------------------------
 Wed Oct 12 09:47:25 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.12.0:

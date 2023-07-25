@@ -1,7 +1,7 @@
 #
 # spec file for package gupnp-tools
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            http://www.gupnp.org/
 # Disabled for now, using source service
 #Source0:        https://download.gnome.org/sources/gupnp-tools/0.10/%%{name}-%%{version}.tar.xz
 Source0:        %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 1372f9eb.patch -- build: Fix wrap file syntax
+Patch0:         https://gitlab.gnome.org/GNOME/gupnp-tools/-/commit/1372f9eb.patch
 
 BuildRequires:  fdupes
 BuildRequires:  meson
