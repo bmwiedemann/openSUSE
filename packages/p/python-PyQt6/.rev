@@ -121,4 +121,12 @@ in order to avoid conflicts like boo#1192300</comment>
     <comment></comment>
     <requestid>1092338</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>eb93b0ca2c8d96fe6399b056dcfe8eab</srcmd5>
+    <version>6.5.1</version>
+    <time>1690278619</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1099759</requestid>
+  </revision>
 </revisionlist>

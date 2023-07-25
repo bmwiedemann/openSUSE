@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 20 10:57:34 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.5.1
+  * Added support for QPermission and related classes and methods.
+  * Added the max_workers argument to uic.compileUiDir() to specify 
+    the maximum number of worker processes to use when compiling 
+    the .ui files in a directory.
+  * pyuic6 will now compile all the .ui files in a directory if the 
+    name of the directory is passed instead of a .ui file.
+  * Added the --max-workers command line option to pyuic6.
+
+-------------------------------------------------------------------
 Sat Jun 10 10:48:35 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
