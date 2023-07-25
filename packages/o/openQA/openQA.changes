@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jul 24 06:08:45 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1690178908.b9e03ab:
+  * tests: Improve failure when comparing expected image results fails
+  * Display line breaks in data tables
+  * Add X-Forwarded-Proto to nginx config
+  * Update docs/WritingTests.asciidoc
+  * Update docs/WritingTests.asciidoc
+  * Document custom rsync command examples for TESTPOOLSERVER
+  * docs: Make multi-machine related code sections directly executable
+  * Enhance Python test docs
+  * Don't use apache specific www group in fetchneedles
+  * Make the job ID copying easier
+  * Make the restart and reschedule buttons visually distinguishable
+  * Avoid accidental re-triggering of products
+  * Allow to partially re-schedule a product from a job
+  * Fix re-triggering scheduled products with falsy required params
+
+-------------------------------------------------------------------
 Mon Jul 17 13:46:50 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1689360748.edd4aa1:
