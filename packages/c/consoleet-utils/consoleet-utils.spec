@@ -1,7 +1,7 @@
 #
 # spec file for package consoleet-utils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           consoleet-utils
-Version:        1.1
+Version:        1.2
 Release:        0
 Summary:        Utilities for manipulating terminal fonts and colors
-License:        GPL-3.0-or-later and MIT
+License:        GPL-3.0-or-later AND MIT
 Group:          Productivity/Other
 URL:            https://inai.de/projects/consoleet/
 #Git-Clone:     https://codeberg.org/consoleet/consoleet-utils
 Source:         https://inai.de/files/consoleet/%name-%version.tar.zst
 Source2:        https://inai.de/files/consoleet/%name-%version.tar.asc
 Source3:        %name.keyring
-Patch1:         libhx.patch
 BuildRequires:  automake
 BuildRequires:  gcc-c++
-BuildRequires:  zstd
 BuildRequires:  pkgconfig >= 0.21
+BuildRequires:  zstd
 BuildRequires:  pkgconfig(libHX) >= 3.22
 Conflicts:      hxtools < 20200310
 Obsoletes:      vfontas < 20221121
@@ -51,7 +50,6 @@ blocks, setting it apart from scalers like xBRZ or potrace.
 %if 0%{?suse_version} < 1550
 %setup -Tcq
 pushd .. && tar --use=zstd -xf %{S:0} && popd
-%patch -P 1 -p1
 %else
 %autosetup -p1
 %endif

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jul 23 15:48:04 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2
+  * palcomp: support for tint via new "hsltint", "lchtint" or
+    "hueset" subcommands (this allows for generating Amber/Green
+    CRT looks and then some)
+  * palcomp: brightness manipulatino support with "litadd",
+    "litmul", "litset"
+  * palcomp: auxiliary helper commands: "b0", "fg", "bg", "stat"
+  * palcomp: new starting palette "win"
+- Drop libhx.patch
+
+-------------------------------------------------------------------
 Thu Dec  1 10:51:10 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Add libhx.patch
