@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-doctestplus%{psuffix}
-Version:        0.12.1
+Version:        0.13.0
 Release:        0
 Summary:        Pytest plugin with advanced doctest features
 License:        BSD-3-Clause

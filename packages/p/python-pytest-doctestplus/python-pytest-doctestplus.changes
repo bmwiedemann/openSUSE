@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 24 18:57:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.0:
+  * Compatibility with pytest 7.4 with respect to
+    ``norecursedirs`` handling. [#201]
+  * Respect ``--doctest-continue-on-failure`` flag. [#197]
+  * Report doctests raising skip exceptions as skipped. [#196]
+
+-------------------------------------------------------------------
 Thu May  4 22:39:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.12.1:
