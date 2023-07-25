@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 19 14:04:08 UTC 2023 - Aleksa Sarai <asarai@suse.com>
+
+- Update to runc v1.1.8. Upstream changelog is available from
+  <https://github.com/opencontainers/runc/releases/tag/v1.1.8>.
+
+-------------------------------------------------------------------
 Thu Apr 27 09:43:31 UTC 2023 - Aleksa Sarai <asarai@suse.com>
 
 - Update to runc v1.1.7. Upstream changelog is available from
