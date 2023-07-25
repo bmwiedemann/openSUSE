@@ -16,7 +16,7 @@
 #
 
 
-%define timestamp 20220429
+%define timestamp 20221219
 Name:           artifacts
 Version:        %{timestamp}
 Release:        0
