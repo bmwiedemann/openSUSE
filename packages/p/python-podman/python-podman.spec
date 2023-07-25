@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-podman%{psuffix}
-Version:        4.5.1
+Version:        4.6.0
 Release:        0
 Summary:        A library to interact with a Podman server
 License:        Apache-2.0
@@ -34,16 +34,18 @@ Group:          Development/Languages/Python
 URL:            https://github.com/containers/podman-py
 Source:         https://github.com/containers/podman-py/archive/refs/tags/v%{version}.tar.gz#./podman-%{version}.tar.gz
 BuildRequires:  %{python_module pbr}
-BuildRequires:  %{python_module pytoml}
-BuildRequires:  %{python_module pyxdg}
-BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module tomli >= 1.2.3 if python-base < 3.11}
+BuildRequires:  %{python_module pyxdg >= 0.26}
+BuildRequires:  %{python_module requests >= 2.24}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pytoml
+Requires:       (python-tomli >= 1.2.3 if python-base < 3.11)
 Requires:       python-pyxdg
 Requires:       python-requests
-Requires:       python-urllib3 < 2.0
+Requires:       python-urllib3
 BuildArch:      noarch
 %if %{with test}
 # SECTION test requirements
@@ -69,11 +71,11 @@ A library to interact with a Podman server
 %autosetup -n podman-py-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %if !%{with test}
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -87,7 +89,7 @@ A library to interact with a Podman server
 %doc README.md
 %license LICENSE
 %{python_sitelib}/podman/
-%{python_sitelib}/podman-*.egg-info/
+%{python_sitelib}/podman-%{version}.dist-info/
 %endif
 
 %changelog

@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Jul 24 13:21:26 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- use new Build macros
+- update constraints on BuildRequires
+  * drop constraint for urllib3 < 2
+  * add constraint on requests and pyxdg 
+- follow upstream and use new tomli (for python < 3.11) instead of
+  pytoml
+
+-------------------------------------------------------------------
+Mon Jul 24 13:11:26 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.6.0:
+  * Bump version to 4.5.0 by @umohnani8 in #263
+  * chore(deps): update dependency containers/automation_images to
+    v20230426 by @renovate in #259
+  * chore(deps): update dependency urllib3 to v2 by @renovate in
+    #265
+  * [skip-ci] Update tim-actions/get-pr-commits action to v1.3.0 by
+    @renovate in #268
+  * chore(deps): update dependency containers/automation_images to
+    v20230517 by @renovate in #270
+  * Streaming support for PodsManager.stats API by @RazCrimson in
+    #266
+  * Minor text fixes in contributing.md by @umohnani8 in #278
+  * Swap renovate dep. update. PR assignments by @cevich in #279
+  * chore(deps): update dependency containers/automation_images to
+    v20230601 by @renovate in #280
+  * Update Makefile to emulate readthedocs automation by @umohnani8
+    in #282
+  * [CI:BUILD] Packit: initial enablement by @lsm5 in #242
+  * chore(deps): update dependency containers/automation_images to
+    v20230614 by @renovate in #286
+  * Packit: remove .packit.sh by @lsm5 in #288
+  * Fix catching errors in the response body of containers/prune by
+    @francisbergin in #290
+  * Fix pod prune error explanation string by @francisbergin in
+    #291
+  * Refactor Makefile to support tox / MacOS Ventura by @jwhonce in
+    #285
+  * Switch HTTPConnection from http.client to urllib3.connection by
+    @dcermak in #283
+  * Keep main branch version ahead of release branches by @lsm5 in
+    #289
+  * [CI:BUILD] RPM: Cleanup by @lsm5 in #296
+  * Includes the possibility to use the 'listTags' parameter in
+    image search endpoint by @apozsuse in #295
+  * Update dependency fixtures to ~=4.1.0 by @renovate in #297
+  * Update fixtures to not be tied to a version by @umohnani8 in
+    #300
+  * Fix passing filters to networks prune by @francisbergin in #298
+
+-------------------------------------------------------------------
 Sat Jun  3 15:58:00 UTC 2023 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Require pytoml

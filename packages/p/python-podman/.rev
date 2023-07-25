@@ -99,4 +99,12 @@
     <comment></comment>
     <requestid>1090826</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7befc1efcf8ba2d5b2075530b6416ef6</srcmd5>
+    <version>4.6.0</version>
+    <time>1690278687</time>
+    <user>dimstar_suse</user>
+    <comment>update to 4.6.0 (forwarded request 1100396 from ojkastl_buildservice)</comment>
+    <requestid>1100448</requestid>
+  </revision>
 </revisionlist>
