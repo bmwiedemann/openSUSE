@@ -16,15 +16,17 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-pytest-flake8-path
-Version:        1.3.0
+Version:        1.5.0
 Release:        0
 Summary:        A pytest fixture for testing flake8 plugins
 License:        MIT
 URL:            https://github.com/adamchainz/pytest-flake8-path
 Source:         https://github.com/adamchainz/pytest-flake8-path/archive/%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
 # SECTION test requirements
 BuildRequires:  %{python_module flake8}
 BuildRequires:  %{python_module pytest}
@@ -42,10 +44,10 @@ A pytest fixture for testing flake8 plugins.
 %autosetup -p1 -n pytest-flake8-path-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

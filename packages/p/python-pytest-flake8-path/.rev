@@ -8,4 +8,14 @@
 https://github.com/adamchainz/flake8-comprehensions/blob/main/requirements/requirements.in#L3</comment>
     <requestid>1070358</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a3e87debf317587401b8be53d86a500e</srcmd5>
+    <version>1.5.0</version>
+    <time>1690278684</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.0:
+  * Drop Python 3.7 support.
+  * Support Python 3.12.</comment>
+    <requestid>1100445</requestid>
+  </revision>
 </revisionlist>
