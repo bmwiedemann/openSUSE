@@ -1,7 +1,7 @@
 #
 # spec file for package nuosu-fonts
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define src_name NuosuSIL
 Name:           nuosu-fonts
-Version:        2.200
+Version:        2.300
 Release:        0
 Summary:        SIL Yi Font
 License:        OFL-1.1
