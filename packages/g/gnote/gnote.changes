@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 22 08:59:42 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.1:
+  + New Features: Limit tab max width and add tab scroll.
+  + Fixes: Fix occasional crash when renaming link.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar 20 09:21:47 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.0:
