@@ -1,4 +1,132 @@
 -------------------------------------------------------------------
+Wed Jul 19 12:00:00 UTC 2023 - cunix@mail.de
+
+- Update to 4.1.1
+
+  Added:
+  * 3.x compatibility for animation loop mode
+
+  Changed:
+  * Allow unbundling brotli to use system library
+  * Check parameter validity in "Object::set_script"
+  * Focus current node after connecting
+  * Sort project tags before saving
+  * Project converter: Use same rendering driver as Project Manager
+  * Take eye offset into account for depth in StandardMaterial3D
+
+  Fixed:
+  * build with "use_sowrap=no" and various warnings/errors
+  * "Camera2D.rotating" not being converted and reversed properly
+  * 3D viewport grid disappearing on scene tab changes
+  * "tween_property" on "Basis" to properly update its value
+  * dropping files from "res://" to "res://"
+  * Do not change a node unique name to the same name
+  * Emit "history_changed" on merged UndoRedo actions
+  * Cursor behavior for multiselect in Tree while holding CTRL
+  * Invalid minimum size for translated messages in option button
+  * Fallback logic of "OS::shell_show_in_file_manage"`
+  * Avoid freeze when interacting with menus on Wayland
+  * "move_to_trash" wrongly reporting files as not found
+  * Threading bug in Vulkan rendering device
+
+- "xkb_loaded.patch" dropped: accepted upstream
+
+-------------------------------------------------------------------
+Fri Jul 7 12:00:00 UTC 2023 - cunix@mail.de
+
+- Update to 4.1
+
+  Added:
+  * Platform-specific CA bundles
+  * "Center View" button in 2D editor
+  * Proper snapping to tile polygon editor
+  * Ability to look-at in 3D model-space
+  * Move control points button to Path3D Editor
+  * "TRANS_SPRING" mode to "Tween"
+  * Frame delta smoothing option
+  * Square fill mode to GradientTexture2D
+  * "ProjectSettings.set_as_basic()" and "ProjectSettings.set_as_internal()"
+    exposed  to scripting
+  * Let user scripts disable thread safety checks
+  * multi-window for code and shader editors
+  * Remember snapping options per-project
+  * Project tags
+  * Make create folder popup support nested folders
+  * Relative path support for "EditorPlugin.add_autoload_singleton"
+  * Export options for EditorExportPlugins
+  * Editor support for icons of custom, scripted, and GDExtension classes
+  * Backwards compatibility system for GDExtension
+  * GDExtensions allowed to add editor plugins
+  * GDExtension "@since" attribute
+  * Boolean operators for all Variant types
+  * Static variables in GDScript
+  * Multiline cells in "Tree"
+  * horizontal/vertical "custom_step" editor property for "ScrollContainer"
+  * "screen_get_pixel" method
+  * Vertical icon alignment for buttons
+  * All auto-wrap modes in "TextEdit" exposed
+  * Tab stops support in "Label" and "RichTextLabel"
+  * "Window.get_window_id()"
+  * Method to check if native window is focused
+  * Support for extending GLTF with more texture formats and support WebP
+  * non-standard OBJ vertex entries supported
+  * NavigationAgent path postprocessing and pathfinding algorithm options exposed
+  * "audio/general/text_to_speech" project setting to enable/disable TTS
+  * Default error handler for X11 to avoid crashes
+  * Shader cache for GLES3
+  * Vulkan pipeline caching
+  * NoiseTexture3D
+  * "EXPOSURE" and "LIGHT_IS_DIRECTIONAL" built-in for spatial shaders
+  * Option for ButtonGroups to be unpressed
+
+  Changed:
+  * Node processing refactored to allow Scene multi-threading
+  * Node children management optimized
+  * Replace invalid characters in node names by underscores
+      instead of removing them
+  * Remove constrained view in the 2D editor
+  * Reorganize context menu in FileSystem dock
+  * Preserve scene unique names when saving branch as scene
+  * Allow showing messages from threads in "Editor Log"
+  * Store sensitive export options in dedicated credentials file
+  * Rework GDExtension interface from a struct to loading function pointers
+  * Make "TextureButton" and "Button" update on texture change
+  * Use defined key mapping for closing popups and dialogs
+  * Disable texture format import overrides by default
+  * Navigation mesh edge connections optional
+  * Disable weak crypto and TLS versions
+  * Propagate previously unused "NOTIFICATION_WORLD_2D_CHANGED",
+      make CanvasItem/CollisionObject2D use it
+  * Rework particle turbulence
+  * (Re-)Implement "Light3D.shadow_reverse_cull_face"
+
+  Fixed:
+  * 3D viewport front/rear axis and "Focus" button
+  * AudioListener2D ignoring rotation for positional audio
+  * Trim when importing WAV
+  * Invalid 2D global position when read outside tree
+  * "View Owners" dialog not acknowledging that some resources aren't scenes
+  * Avoid error spam on first opening of a not yet imported project
+  * GDExtension Variant type conversion
+  * GDScript access to identifiers that are reserved keywords
+  * Ensure that controls update all their sizing information when required
+  * Input: just pressed and released with short presses
+  * Sliding window problem
+  * Temporary file permissions
+
+  and much more:
+  https://downloads.tuxfamily.org/godotengine/4.1/Godot_v4.1-stable_changelog_chrono.txt
+
+- "certs_fallback.patch" dropped:
+    godot is now aware of openSUSE certs in
+    "/var/lib/ca-certificates/ca-bundle.pem"
+
+- "tinyexr_thirdparty_upstream.patch" dropped:
+    bundled tinyexr 1.0.5 has patch applied
+
+- "xkb_loaded.patch" added for x11 build failure with "use_sowrap=no"
+
+-------------------------------------------------------------------
 Mon May 22 12:00:00 UTC 2023 - cunix@mail.de
 
 - Update to 4.0.3

@@ -21,10 +21,15 @@
 %define faster_build 0
 
 %define _buildshell /bin/bash
+# not needed anymore since 4.1
 %define ca_bundle %{_localstatedir}/lib/ca-certificates/ca-bundle.pem
 
+# building with default gcc 7.5 fails since 4.1 on Leap
+# https://github.com/godotengine/godot/issues/79352
+%define compiler_version_leap 10
+
 Name:           godot
-Version:        4.0.3
+Version:        4.1.1
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -32,15 +37,16 @@ Group:          Development/Tools/Other
 URL:            https://godotengine.org/
 Source0:        https://downloads.tuxfamily.org/godotengine/%{version}/%{name}-%{version}-stable.tar.xz
 Source1:        https://downloads.tuxfamily.org/godotengine/%{version}/%{name}-%{version}-stable.tar.xz.sha256
-# Use system certificates as fallback for certificates
-Patch0:         certs_fallback.patch
-# Heap-buffer-overflow in bundled tinyexr
-Patch1:         tinyexr_thirdparty_upstream.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
+%if %{suse_version} > 1500
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
+%else
+BuildRequires:  gcc%{compiler_version_leap}
+BuildRequires:  gcc%{compiler_version_leap}-c++
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  scons
@@ -49,6 +55,7 @@ BuildRequires:  yasm-devel
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(libpcre2-32)
 BuildRequires:  pkgconfig(libpulse)
@@ -86,6 +93,8 @@ BuildRequires:  pkgconfig(freetype2) >= 2.10.2
 # Using bundled freetype2 throws build errors, if
 #   we don't use bundled libpng and zlib as well.
 BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libbrotlicommon)
+BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  glslang-devel
 BuildRequires:  mbedtls-devel < 3
 BuildRequires:  pkgconfig(graphite2)
@@ -132,20 +141,20 @@ Provides:       bundled(Tangent_Space_Normal_Maps)
 Provides:       bundled(amd-fsr) = 1.0.2
 Provides:       bundled(astcenc) = 4.4.0
 Provides:       bundled(basis_universal) = 1.16.4
-Provides:       bundled(brotli)
 Provides:       bundled(cvtt)
 Provides:       bundled(doctest) = 2.4.11
 Provides:       bundled(etcpak) = 1.0
-Provides:       bundled(glad) = 2.0.2
+Provides:       bundled(glad) = 2.0.4
 Provides:       bundled(google-droid-fonts)
 Provides:       bundled(hqx)
-Provides:       bundled(icu4c) = 72.1
+Provides:       bundled(icu4c) = 73.1
 Provides:       bundled(ifaddrs-android)
 Provides:       bundled(jpeg-compressor) = 2.00
 Provides:       bundled(meshoptimizer)
 Provides:       bundled(minimp3)
-Provides:       bundled(msdfgen) = 1.9.2
+Provides:       bundled(msdfgen) = 1.10
 Provides:       bundled(noto-sans-fonts)
+Provides:       bundled(nvapi) = R525
 Provides:       bundled(oidn) = 1.9.2
 Provides:       bundled(openxr) = 1.0.26
 Provides:       bundled(pcg)
@@ -153,17 +162,17 @@ Provides:       bundled(polyclipping)
 Provides:       bundled(polypartition)
 Provides:       bundled(pvrtccompressor)
 Provides:       bundled(smaz)
-Provides:       bundled(spirv-reflect) = sdk-1.3.231.1
+Provides:       bundled(spirv-reflect) = sdk-1.3.250.0
 Provides:       bundled(stb)
 Provides:       bundled(thorvg) = 0.9.0
-Provides:       bundled(tinyexr) = 1.0.1
+Provides:       bundled(tinyexr) = 1.0.5
 Provides:       bundled(vhacd)
-Provides:       bundled(volk) = sdk-1.3.231.1
-Provides:       bundled(vulkan) = sdk-1.3.231.1
+Provides:       bundled(volk) = sdk-1.3.250.0
+Provides:       bundled(vulkan) = sdk-1.3.250.0
 Provides:       bundled(yuv2rgb)
 
 # Can be unbundled if packaged
-Provides:       bundled(recastnavigation)
+Provides:       bundled(recastnavigation) = 1.6.0
 Provides:       bundled(squish) = 1.15
 Provides:       bundled(xatlas)
 
@@ -176,14 +185,15 @@ Provides:       bundled(embree) = 3.13.5
 
 %if 0%{?suse_version} > 1500
 %else
-Provides:       bundled(glslang) = 11.12.0
+Provides:       bundled(brotli)
+Provides:       bundled(glslang) = 12.2.0
 # see comments for freetype2, libpng and zlib Factory BuildRequires
-Provides:       bundled(freetype2) = 2.12.1
+Provides:       bundled(freetype2) = 2.13.0
 Provides:       bundled(graphite) = 1.3.14
-Provides:       bundled(harfbuzz) = 6.0.0
+Provides:       bundled(harfbuzz) = 7.3.0
 
 Provides:       bundled(libpng) = 1.6.38
-Provides:       bundled(libzstd)
+Provides:       bundled(libzstd) = 1.5.5
 Provides:       bundled(zlib)
 %if 0%{?sle_version} < 150200
 Provides:       bundled(mbedtls) = 2.28.3
@@ -230,8 +240,6 @@ Bash command line completion support for %{name} and %{name}-runner
 
 %prep
 %setup -q -n %{name}-%{version}-stable
-%patch0 -p1
-%patch1 -p1
 
 cp thirdparty/README.md thirdparty_README.md
 
@@ -242,7 +250,8 @@ if [[ -z "$(desktop-file-validate misc/dist/linux/org.godotengine.Godot.desktop)
  then
   # desktop-file-utils version >= 0.25
   echo desktop-file-utils is up to date and recognizes PrefersNonDefaultGPU.
-  # rpmlint complains nevertheless (on Tumbleweed). A false negative?
+  # rpmlint complains nevertheless with older rpmlint-mini.
+  # Tumbleweed is fixed with update of rpmlint-mini.
   # see https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html#recognized-keys
   # Perhaps because rpmlint-mini includes as of today (18.09.2020)
   # desktop-file-utils-0.24 while we checked for available default version >= 0.25
@@ -277,7 +286,7 @@ unbundle_libs=('certs' 'libogg' 'libtheora' 'libvorbis' \
 
 # Unbundle more libs for Tumbleweed
 %if %{suse_version} > 1500
-unbundle_libs+=('freetype' 'glslang' 'graphite' 'harfbuzz' 'libpng' 'mbedtls' 'zlib' 'zstd')
+unbundle_libs+=('brotli' 'freetype' 'glslang' 'graphite' 'harfbuzz' 'libpng' 'mbedtls' 'zlib' 'zstd')
 %else
 # Unbundle more libs for coming Leap
 %if 0%{?sle_version} >= 150200 && 0%{?is_opensuse}
@@ -296,12 +305,23 @@ done
 mkdir -pv thirdparty/certs
 touch thirdparty/certs/ca-certificates.crt
 
+use_sowrap="use_sowrap=no "
 rm -rf thirdparty/linuxbsd_headers
+
+%if %{suse_version} > 1500
+%define ccflags %{optflags}
+compiler=""
+linkflags=""
+%else
+%define ccflags %{optflags} -fPIE
+compiler="CC=gcc-%{compiler_version_leap}  CXX=g++-%{compiler_version_leap}"
+linkflags="LINKFLAGS=-pie"
+%endif
 
 %define build_args_common %{?_smp_mflags} \\\
         progress=no verbose=yes udev=yes use_lto=1 \\\
-        use_static_cpp=no CCFLAGS='%{optflags}' \\\
-        system_certs_path=%{ca_bundle} use_sowrap=no $system_libs
+        use_static_cpp=no CCFLAGS='%{ccflags}' $linkflags $compiler \\\
+        system_certs_path=%{ca_bundle} $use_sowrap $system_libs
 
 %ifarch aarch64 %arm
 # Disable unsupported features - https://github.com/godotengine/godot/issues/48297#issuecomment-829165296
