@@ -501,4 +501,12 @@
     <comment>Map the upstream license fdl tag to newer GFDL-1.3.or-later (bsc#1210680)</comment>
     <requestid>1082679</requestid>
   </revision>
+  <revision rev="52" vrev="55">
+    <srcmd5>1e20012129fbed82042fa31c86c0fec5</srcmd5>
+    <version>unknown</version>
+    <time>1690277005</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1099427</requestid>
+  </revision>
 </revisionlist>
