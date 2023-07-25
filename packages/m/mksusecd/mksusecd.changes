@@ -1,4 +1,20 @@
 --------------------------------------------------------------------
+Mon Jul 24 17:45:16 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/mksusecd#67
+- allow --instsys option for Live media
+- calculate EFI boot image size correctly
+- if initrd/kernel are in two different location on the medium,
+  update in both locations
+- isohybrid: remove outdated 1024 cylinders warning
+- default to GPT if source ISO uses it
+- add --signature-file option and rewrite signature embedding
+- fix --instsys option handling (bsc#1213606)
+- add --rescue option to allow modifying the rescue system
+- update man page
+- 2.12
+
+--------------------------------------------------------------------
 Thu Jul 13 16:52:52 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/mksusecd#66
