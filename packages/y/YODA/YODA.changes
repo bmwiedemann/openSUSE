@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jul 11 08:06:31 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.9.8:
+  * Fix Cython matching of optional Booleans in ROOT conversion
+    functions.
+  * Introducing matplotlib based plotting: standalone Python
+    scripts are generated that contain the logic to produce a
+    plot. These script do not depend on YODA and should hence be
+    sharable with people that have no YODA.  Python3 and
+    matplotlib are required. The numerical data	associated with
+    individual curves is outsourced to a {name}__data.py script to
+    aide legibility.
+  * Fix bug in yodamerge to handle files with inconsistent AOs
+  * Add CXXFLAGS and LDFLAGS propagation to the Python-extension
+  	build script.
+  * Enable Cython auto-conversion of all C++ strings to Python
+	  native str for v2 and v3, removing extensive encode()/decode()
+	  calls.
+  * Add binreloc-based libPath() and dataPath() functions,
+    including in Python.
+- Drop YODA-correct-python-platlib.patch: fixed upstream.
+- Split out new package, YODA-matplotlib-style, that installs a
+  style file to produce YODA styled plots using matplotlib. 
+- autoconf >= 2.71 now required (update BuildRequires).
+
+-------------------------------------------------------------------
 Sun Oct 23 10:12:58 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.9.7

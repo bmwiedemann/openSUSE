@@ -1,7 +1,7 @@
 #
 # spec file for package YODA
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define ver 1.9.7
+%define ver 1.9.8
 %define so_name lib%{name}-%(echo %{ver} | tr '.' '_')
 Name:           YODA
 Version:        %{ver}
@@ -25,10 +25,9 @@ Summary:        A small set of data analysis classes for MC event generator vali
 License:        GPL-2.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://yoda.hepforge.org/
-Source:         http://www.hepforge.org/archive/yoda/%{name}-%{version}.tar.bz2
+Source:         https://www.hepforge.org/archive/yoda/%{name}-%{version}.tar.bz2
 Patch0:         sover.diff
-# PATCH-FEATURE-OPENSUSE YODA-correct-python-platlib.patch badshah400@gmail.com -- Ensure correct python platlib ($prefix/lib64/) is used consistently across multiple python versions
-Patch1:         YODA-correct-python-platlib.patch
+BuildRequires:  autoconf >= 2.71
 BuildRequires:  bash-completion
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -84,6 +83,7 @@ This package provides the source files for development with %{name}.
 Summary:        A small set of data analysis classes for MC event generator validation analyses
 Group:          Development/Libraries/C and C++
 Requires:       %{so_name} = %{version}
+Recommends:     %{name}-matplotlib-style = %{version}
 
 %description devel
 YODA is a small set of data analysis (specifically histogramming)
@@ -97,6 +97,7 @@ Summary:        A small set of data analysis classes for MC event generator vali
 Group:          Development/Libraries/Python
 Requires:       %{so_name} = %{version}
 Provides:       python-%{name} = %{version}
+Recommends:     %{name}-matplotlib-style = %{version}
 
 %description -n python3-%{name}
 YODA is a small set of data analysis (specifically histogramming)
@@ -104,6 +105,15 @@ classes being developed by MCnet members as a lightweight common
 system for MC event generator validation analyses.
 
 This package provides the python binidings for %{name}.
+
+%package matplotlib-style
+Summary:        Matplotlib style file for YODA styled plots
+Requires:       python3-matplotlib
+BuildArch:      noarch
+
+%description matplotlib-style
+This package provides a style file that may be used with matplotlib to produce
+YODA styled plots.
 
 %prep
 %autosetup -p1
@@ -148,6 +158,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libYODA.so
 %{_libdir}/pkgconfig/yoda.pc
 %{_includedir}/%{name}/
+
+%files matplotlib-style
+%{_datadir}/YODA/
 
 %files -n python3-%{name}
 %{python3_sitearch}/yoda/
