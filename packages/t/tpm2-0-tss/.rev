@@ -447,4 +447,17 @@ This should be handled together with sr#769061</comment>
     <comment></comment>
     <requestid>1066193</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>f3036b727e8003cecc1ec3928a585290</srcmd5>
+    <version>4.0.1</version>
+    <time>1690276970</time>
+    <user>anag+factory</user>
+    <comment>Require openssl-3 over openssl-1 to assist migration of applications to newer openssl-3.
+
+Alternately we might need to have two copies of the package for openssl-3 and openssl-1, but
+we have to transition to just openssl-3 at some point.
+
+This is required for Kanidm as it requires openssl-3 and tpm2-0-tss. (forwarded request 1100221 from firstyear)</comment>
+    <requestid>1100357</requestid>
+  </revision>
 </revisionlist>

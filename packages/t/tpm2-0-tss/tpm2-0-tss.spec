@@ -36,7 +36,7 @@ BuildRequires:  libgcrypt-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  pkgconfig(libopenssl)
+BuildRequires:  pkgconfig(libopenssl) >= 3
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(uuid)
 # The same user is employed by trousers (and was employed by the old

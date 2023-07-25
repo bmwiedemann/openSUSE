@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 24 02:34:00 UTC 2023 - William Brown <william.brown@suse.com>
+
+- Require openssl-3 over openssl-1 to assist migration of applications
+  to newer openssl-3.
+
+-------------------------------------------------------------------
 Thu Feb 16 14:41:06 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Drop 0001-tss2_rc-ensure-layer-number-is-in-bounds.patch as was
