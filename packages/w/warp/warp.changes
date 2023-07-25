@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Fri Jul 21 08:09:52 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add Conflicts: ghc-wai-app-static as it installs the same binary
+  called 'warp' into /usr/bin/ as this app.
+
+-------------------------------------------------------------------
+Wed Jul 12 10:24:34 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.
