@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Jul 20 04:50:20 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.28.0:
+  * Update README to point download link to 0.28.0
+  * Update docs for release 0.28.0
+  * Update the helm reference
+  * Update helm chart to 4.0.26 to use gitops 0.28.0
+  * Update javascript library version to 0.28.0
+  * remove dropdown on Sources table with extentable object (#3854)
+  * Update
+    website/docs/progressive-delivery/progressive-delivery-flagger-install.mdx
+  * docs: Fix link
+  * docs: Remove deleted item from sidebar
+  * Update prog delivery page
+  * Edit install page
+  * Edit manual gating page
+  * Alphabetize docs sections
+  * Make prog delivery section
+  * update website readme
+  * Moved versions to a separate page instead of navbar dropdown
+  * Update docs for weave-gitops-enterprise 0.27.0 release (#3828)
+  * Enhance types in checkbox actions for EE terraform sync/suspend
+    all (#3834)
+  * Allow for custom actions for data table checkboxes (#3829)
+  * Implement trigger for workflow_dispatch on release/merge to
+    main branch
+  * disabled snyk checks for both PRs and main
+  * Update javascript library version to 0.27.1-rc.1
+
+-------------------------------------------------------------------
 Thu Jul 06 14:19:20 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.27.0:
