@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 24 13:21:21 UTC 2023 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- Allow to edit the NIS master server databases instead of the
+  local ones, relying on the --prefix argument added to several
+  commands in the "shadow" package (bsc#1206627).
+- 4.6.3
+
+-------------------------------------------------------------------
 Wed Jun  7 16:22:59 UTC 2023 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Write the users when using AutoYaST on an installed system
