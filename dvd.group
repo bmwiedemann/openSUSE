@@ -1918,7 +1918,6 @@
     <package name="libgiomm-2_4-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgiomm-2_68-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgirepository-1_0-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libgit2-1_6" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="libgjs0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgle3" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libglib-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2439,7 +2438,6 @@
     <package name="libprojectM3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libprotobuf-c1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libprotobuf-lite23_4_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libprotobuf-lite3_21_12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libprotobuf23_4_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libproxy1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libproxy1-config-gnome3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3547,7 +3545,6 @@
     <package name="python311-authres" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python311-base" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="python311-bcrypt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="python311-cached-property" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-certifi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python311-cffi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python311-chardet" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
@@ -3634,7 +3631,6 @@
     <package name="python311-pycryptodome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python311-pycups" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python311-pycurl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="python311-pygit2" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-pyinotify" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python311-pylibmc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python311-pymemcache" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->

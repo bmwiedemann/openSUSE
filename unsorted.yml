@@ -322,6 +322,7 @@ unsorted:
   - XSStrike 
   - XyGrib 
   - YODA-devel 
+  - YODA-matplotlib-style 
   - ZArchive 
   - ZArchive-devel 
   - a2jmidid 
@@ -7454,6 +7455,7 @@ unsorted:
   - guile-cairo-devel 
   - guile-charting 
   - guile-devel 
+  - guile-fibers 
   - guile-gcrypt 
   - guile-git 
   - guile-gnutls 
@@ -9499,6 +9501,10 @@ unsorted:
   - kubernetes1.27-scheduler 
   - kubescape 
   - kubeseal 
+  - kubesec 
+  - kubesec-bash-completion 
+  - kubesec-fish-completion 
+  - kubesec-zsh-completion 
   - kubespy 
   - kubetap 
   - kubeval 
@@ -9941,7 +9947,7 @@ unsorted:
   - libHYPRE_2_20_0-gnu-openmpi3-hpc 
   - libHYPRE_2_20_0-gnu-openmpi4-hpc 
   - libHepMC3-3 
-  - libHepMC3search4 
+  - libHepMC3search5 
   - libHepMC4 
   - libICE-devel 
   - libICE-devel-32bit 
@@ -10502,7 +10508,7 @@ unsorted:
   - libXxf86vm-devel 
   - libXxf86vm-devel-32bit 
   - libXxf86vm1-32bit 
-  - libYODA-1_9_7 
+  - libYODA-1_9_8 
   - libZXing3-32bit 
   - liba2ps1 
   - liba52-0-32bit 
@@ -12080,6 +12086,7 @@ unsorted:
   - libgiomm-2_4-1-32bit 
   - libgirara-gtk3-3 
   - libgirepository-1_0-1-32bit 
+  - libgit2-1_7 
   - libgit2-devel 
   - libgit2-glib-1_0-0 
   - libgit2-glib-devel 
@@ -13343,6 +13350,8 @@ unsorted:
   - libmysqlcppconn8-devel 
   - libmysqlcppconn9 
   - libnanomsg6 
+  - libnanosvg0 
+  - libnanosvgrast0 
   - libnauty-2_8_6 
   - libnbcompat-devel 
   - libnbcompat0 
@@ -14054,6 +14063,7 @@ unsorted:
   - libproj25 
   - libprotobuf-c-devel 
   - libprotobuf-lite23_4_0-32bit 
+  - libprotobuf-lite3_21_12 
   - libprotobuf-lite3_21_12-32bit 
   - libprotobuf-mutator-devel 
   - libprotobuf-mutator0 
@@ -18093,6 +18103,7 @@ unsorted:
   - nanomsg-devel 
   - nanopb-devel 
   - nanopb-source 
+  - nanosvg-devel 
   - nanoxml 
   - nanoxml-javadoc 
   - nanoxml-lite 
@@ -18394,6 +18405,7 @@ unsorted:
   - noisetorch 
   - nomacs 
   - nomacs-lang 
+  - nomino 
   - non-ntk-devel 
   - non-ntk-fluid 
   - noping 
@@ -21857,6 +21869,7 @@ unsorted:
   - poco-devel 
   - podman-docker 
   - podman-remote 
+  - podmansh 
   - podofo 
   - poedit 
   - poedit-lang 
@@ -23804,6 +23817,9 @@ unsorted:
   - python310-crashtest 
   - python310-crayons 
   - python310-crcmod 
+  - python310-crispy-bootstrap3 
+  - python310-crispy-bootstrap4 
+  - python310-crispy-bootstrap5 
   - python310-crochet 
   - python310-cron-descriptor 
   - python310-croniter 
@@ -23916,6 +23932,7 @@ unsorted:
   - python310-django-bootstrap4 
   - python310-django-braces 
   - python310-django-cacheops 
+  - python310-django-celery-beat 
   - python310-django-ckeditor 
   - python310-django-classy-tags 
   - python310-django-codemod 
@@ -27100,6 +27117,7 @@ unsorted:
   - python311-buttplug 
   - python311-bytecode 
   - python311-cPyparsing 
+  - python311-cached-property 
   - python311-cachelib 
   - python311-cachetools 
   - python311-cachey 
@@ -27248,6 +27266,9 @@ unsorted:
   - python311-crashtest 
   - python311-crayons 
   - python311-crcmod 
+  - python311-crispy-bootstrap3 
+  - python311-crispy-bootstrap4 
+  - python311-crispy-bootstrap5 
   - python311-crochet 
   - python311-cron-descriptor 
   - python311-croniter 
@@ -27351,6 +27372,7 @@ unsorted:
   - python311-django-bootstrap4 
   - python311-django-braces 
   - python311-django-cacheops 
+  - python311-django-celery-beat 
   - python311-django-ckeditor 
   - python311-django-classy-tags 
   - python311-django-codemod 
@@ -28622,6 +28644,7 @@ unsorted:
   - python311-pygame-devel 
   - python311-pygeos 
   - python311-pygerrit2 
+  - python311-pygit2 
   - python311-pyglet 
   - python311-pygments-ansi-color 
   - python311-pygments-pytest 
@@ -30628,6 +30651,9 @@ unsorted:
   - python39-crashtest 
   - python39-crayons 
   - python39-crcmod 
+  - python39-crispy-bootstrap3 
+  - python39-crispy-bootstrap4 
+  - python39-crispy-bootstrap5 
   - python39-crochet 
   - python39-cron-descriptor 
   - python39-croniter 
@@ -30740,6 +30766,7 @@ unsorted:
   - python39-django-bootstrap4 
   - python39-django-braces 
   - python39-django-cacheops 
+  - python39-django-celery-beat 
   - python39-django-ckeditor 
   - python39-django-classy-tags 
   - python39-django-codemod 
@@ -45439,6 +45466,8 @@ unsorted:
   - warewulf4-ipxe 
   - warewulf4-overlay 
   - warewulf4-slurm 
+  - warp 
+  - warp-lang 
   - warpinator 
   - warpinator-lang 
   - warzone2100 
