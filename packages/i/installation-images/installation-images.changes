@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Wed Jul 19 16:21:22 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#650
+- add ca-certificates-mozilla to rescue system (bsc#1213480)
+- 17.90
+
+--------------------------------------------------------------------
 Thu Jun 22 13:55:09 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#649
