@@ -367,4 +367,12 @@
     <comment>Reintroduce change, sync with openssl 3.0</comment>
     <requestid>1095763</requestid>
   </revision>
+  <revision rev="39" vrev="21">
+    <srcmd5>8c7f7f98a8bd302607ce2874ff5e508d</srcmd5>
+    <version>1.0.2u</version>
+    <time>1690278587</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1099702</requestid>
+  </revision>
 </revisionlist>

@@ -128,6 +128,8 @@ Patch99:        openssl-CVE-2023-0465.patch
 Patch100:       openssl-CVE-2023-0466.patch
 # PATCH-FIX-UPSTREAM: bsc#1211430, CVE-2023-2650 Possible DoS translating ASN.1 object identifiers
 Patch101:       openssl-CVE-2023-2650.patch
+# PATCH-FIX-UPSTREAM: bsc#1213487 CVE-2023-3446 DH_check() excessive time with over sized modulus
+Patch102:       openssl-CVE-2023-3446.patch
 # steam patches
 Patch150:       openssl-fix-cpuid_setup.patch
 # compat patches to build with soversion 10 (bsc#1175429)
@@ -292,6 +294,7 @@ testing framework and utilities.
 %patch99 -p1
 %patch100 -p1
 %patch101 -p1
+%patch102 -p1
 
 # clean up patching leftovers
 find . -name '*.orig' -delete
