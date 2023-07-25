@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 19 11:46:35 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Fix build on riscv64
+- Build with %{optflags}
+
+-------------------------------------------------------------------
 Sun Jul 16 11:56:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.3:

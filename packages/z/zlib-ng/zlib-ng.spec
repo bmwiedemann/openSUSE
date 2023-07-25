@@ -78,12 +78,13 @@ developing application that use %{name}.
 # 32-bit Arm requires to set soft/hard float
 %cmake \
 %ifarch %{arm}
-  -DCMAKE_C_FLAGS=-mfloat-abi=hard \
+  -DCMAKE_C_FLAGS="%{optflags} -mfloat-abi=hard" \
 %endif
 %if %{with zlib_compat}
   -DZLIB_COMPAT=ON \
 %endif
   -DINSTALL_LIB_DIR=%{_libdir} \
+  -DWITH_RVV=OFF \
   -DWITH_GTEST=OFF
 %cmake_build
 
