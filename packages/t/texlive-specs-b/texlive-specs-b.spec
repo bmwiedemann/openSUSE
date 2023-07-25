@@ -19,8 +19,8 @@
 %define texlive_version  2023
 %define texlive_previous 2022
 %define texlive_release  20230311
-%define texlive_noarch   201
-%define biber_version    2.18
+%define texlive_noarch   209
+%define biber_version    2.19
 
 #!BuildIgnore:          texlive
 #!BuildIgnore:          texlive-scripts
@@ -131,7 +131,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-around-the-bend
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/around-the-bend/AroundTheBend.pdf
 %{_texmfdistdir}/doc/generic/around-the-bend/AroundTheBend.tex
 %{_texmfdistdir}/doc/generic/around-the-bend/README
@@ -999,7 +998,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-arphic-fonts
 
 %files -n texlive-arphic-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/arphic/arphic-sampler.pdf
 %{_texmfdistdir}/doc/fonts/arphic/arphic-sampler.tex
 %{_texmfdistdir}/doc/fonts/arphic/bkaiu/README
@@ -1008,7 +1006,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/arphic/gkaiu/README
 
 %files -n texlive-arphic
-%defattr(-,root,root,755)
 %{_texmfdistdir}/dvips/arphic/config.bkaiu
 %{_texmfdistdir}/dvips/arphic/config.bsmiu
 %{_texmfdistdir}/dvips/arphic/config.gbsnu
@@ -2571,7 +2568,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/fonts/vf/arphic/gkaimp/gkaimp32.vf
 
 %files -n texlive-arphic-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-arphic
 %{_datadir}/fontconfig/conf.avail/58-texlive-arphic.conf
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-arphic/encodings.dir
@@ -3066,7 +3062,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-arphic-ttf-fonts
 
 %files -n texlive-arphic-ttf-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/arphic-ttf/ANNOUNCE.Big5
 %{_texmfdistdir}/doc/fonts/arphic-ttf/ANNOUNCE.GB
 %{_texmfdistdir}/doc/fonts/arphic-ttf/ARPHICPL.big5
@@ -3081,14 +3076,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/arphic-ttf/release.txt
 
 %files -n texlive-arphic-ttf
-%defattr(-,root,root,755)
 %verify(link) %{_texmfdistdir}/fonts/truetype/public/arphic-ttf/bkai00mp.ttf
 %verify(link) %{_texmfdistdir}/fonts/truetype/public/arphic-ttf/bsmi00lp.ttf
 %verify(link) %{_texmfdistdir}/fonts/truetype/public/arphic-ttf/gbsn00lp.ttf
 %verify(link) %{_texmfdistdir}/fonts/truetype/public/arphic-ttf/gkai00mp.ttf
 
 %files -n texlive-arphic-ttf-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-arphic-ttf
 %{_datadir}/fontconfig/conf.avail/58-texlive-arphic-ttf.conf
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-arphic-ttf/encodings.dir
@@ -3175,12 +3168,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-arraycols-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/arraycols/README.md
 %{_texmfdistdir}/doc/latex/arraycols/arraycols.pdf
 
 %files -n texlive-arraycols
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/arraycols/arraycols.sty
 
 %package -n texlive-arrayjobx
@@ -3257,7 +3248,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-arrayjobx-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/arrayjobx/README
 %{_texmfdistdir}/doc/generic/arrayjobx/arrayjob.pdf
 %{_texmfdistdir}/doc/generic/arrayjobx/arrayjob.tex
@@ -3265,7 +3255,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/generic/arrayjobx/arrayjobx.tex
 
 %files -n texlive-arrayjobx
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/arrayjobx/arrayjob.sty
 %{_texmfdistdir}/tex/generic/arrayjobx/arrayjobx.sty
 
@@ -3346,13 +3335,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-arraysort-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/arraysort/Makefile
 %{_texmfdistdir}/doc/latex/arraysort/README
 %{_texmfdistdir}/doc/latex/arraysort/arraysort.pdf
 
 %files -n texlive-arraysort
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/arraysort/arraysort.sty
 
 %package -n texlive-arsclassica
@@ -3430,7 +3417,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-arsclassica-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/arsclassica/ArsClassica.pdf
 %{_texmfdistdir}/doc/latex/arsclassica/ArsClassica.tex
 %{_texmfdistdir}/doc/latex/arsclassica/Bibliography.bib
@@ -3451,7 +3437,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/arsclassica/arsclassica-settings.tex
 
 %files -n texlive-arsclassica
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/arsclassica/arsclassica.sty
 
 %package -n texlive-articleingud
@@ -3524,14 +3509,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-articleingud-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/articleingud/README
 %{_texmfdistdir}/doc/latex/articleingud/articleingud.pdf
 %{_texmfdistdir}/doc/latex/articleingud/plantilla.tex
 %{_texmfdistdir}/doc/latex/articleingud/template.tex
 
 %files -n texlive-articleingud
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/articleingud/articleingud.cls
 
 %package -n texlive-arvo
@@ -3691,14 +3674,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-arvo-fonts
 
 %files -n texlive-arvo-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/arvo/LICENSE.TXT
 %{_texmfdistdir}/doc/fonts/arvo/README
 %{_texmfdistdir}/doc/fonts/arvo/arvo-samples.pdf
 %{_texmfdistdir}/doc/fonts/arvo/arvo-samples.tex
 
 %files -n texlive-arvo
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/enc/dvips/arvo/a_6czsg4.enc
 %{_texmfdistdir}/fonts/enc/dvips/arvo/a_fibvii.enc
 %{_texmfdistdir}/fonts/enc/dvips/arvo/a_fin2th.enc
@@ -3758,7 +3739,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/arvo/TS1Arvo-TLF.fd
 
 %files -n texlive-arvo-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-arvo
 %{_datadir}/fontconfig/conf.avail/58-texlive-arvo.conf
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-arvo/encodings.dir
@@ -3842,14 +3822,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-arydshln-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/arydshln/README
 %{_texmfdistdir}/doc/latex/arydshln/arydshln-man.pdf
 %{_texmfdistdir}/doc/latex/arydshln/arydshln-man.tex
 %{_texmfdistdir}/doc/latex/arydshln/arydshln.pdf
 
 %files -n texlive-arydshln
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/arydshln/arydshln.sty
 
 %package -n texlive-asaetr
@@ -3924,7 +3902,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-asaetr-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/asaetr/MANIFEST
 %{_texmfdistdir}/doc/latex/asaetr/asaetr.bib
 %{_texmfdistdir}/doc/latex/asaetr/asaetr.pdf
@@ -3932,7 +3909,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/asaetr/cmcscsl10.mf
 
 %files -n texlive-asaetr
-%defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/bst/asaetr/asaetr.bst
 %{_texmfdistdir}/tex/latex/asaetr/asaesub.sty
 %{_texmfdistdir}/tex/latex/asaetr/asaetr.cls
@@ -4030,17 +4006,14 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-asana-math-fonts
 
 %files -n texlive-asana-math-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/asana-math/FontLog.txt
 %{_texmfdistdir}/doc/fonts/asana-math/README
 
 %files -n texlive-asana-math
-%defattr(-,root,root,755)
 %verify(link) %{_texmfdistdir}/fonts/opentype/public/asana-math/Asana-Math.otf
 %{_texmfdistdir}/fonts/truetype/public/asana-math/ASANA.TTC
 
 %files -n texlive-asana-math-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-asana-math
 %{_datadir}/fontconfig/conf.avail/58-texlive-asana-math.conf
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-asana-math/encodings.dir
@@ -4141,19 +4114,16 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-asapsym-fonts
 
 %files -n texlive-asapsym-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/asapsym/README.md
 %{_texmfdistdir}/doc/fonts/asapsym/asapsym.pdf
 
 %files -n texlive-asapsym
-%defattr(-,root,root,755)
 %verify(link) %{_texmfdistdir}/fonts/opentype/omnibus-type/asapsym/Asap-Symbol.otf
 %{_texmfdistdir}/tex/generic/asapsym/asapsym-generic.tex
 %{_texmfdistdir}/tex/latex/asapsym/asapsym.sty
 %{_texmfdistdir}/tex/plain/asapsym/asapsym.code.tex
 
 %files -n texlive-asapsym-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-asapsym
 %{_datadir}/fontconfig/conf.avail/58-texlive-asapsym.conf
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-asapsym/encodings.dir
@@ -4238,14 +4208,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-ascelike-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/ascelike/README
 %{_texmfdistdir}/doc/latex/ascelike/ascexmpl.bib
 %{_texmfdistdir}/doc/latex/ascelike/ascexmpl.pdf
 %{_texmfdistdir}/doc/latex/ascelike/ascexmpl.tex
 
 %files -n texlive-ascelike
-%defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/bst/ascelike/ascelike.bst
 %{_texmfdistdir}/tex/latex/ascelike/ascelike.cls
 
@@ -4302,7 +4270,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-ascii-chart
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/support/ascii-chart/ascii.pdf
 %{_texmfdistdir}/doc/support/ascii-chart/ascii.tex
 
@@ -4413,18 +4380,15 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-ascii-font-fonts
 
 %files -n texlive-ascii-font-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/ascii-font/README.TEXLIVE
 
 %files -n texlive-ascii-font
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/map/dvips/ascii-font/ascii.map
 %{_texmfdistdir}/fonts/tfm/public/ascii-font/ASCII.tfm
 %verify(link) %{_texmfdistdir}/fonts/type1/public/ascii-font/ASCII.pfb
 %{_texmfdistdir}/tex/latex/ascii-font/ascii.sty
 
 %files -n texlive-ascii-font-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-ascii-font
 %{_datadir}/fontconfig/conf.avail/58-texlive-ascii-font.conf
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-ascii-font/encodings.dir
@@ -4507,14 +4471,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-asciilist-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/asciilist/AsciiDocList.example
 %{_texmfdistdir}/doc/latex/asciilist/AsciiList.example
 %{_texmfdistdir}/doc/latex/asciilist/README.md
 %{_texmfdistdir}/doc/latex/asciilist/asciilist.pdf
 
 %files -n texlive-asciilist
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/asciilist/asciilist.sty
 
 %package -n texlive-ascmac
@@ -4625,13 +4587,11 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-ascmac-fonts
 
 %files -n texlive-ascmac-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/ascmac/LICENSE
 %{_texmfdistdir}/doc/latex/ascmac/README.md
 %{_texmfdistdir}/doc/latex/ascmac/ascmac.pdf
 
 %files -n texlive-ascmac
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/map/dvips/ascmac/ascmac.map
 %{_texmfdistdir}/fonts/source/public/ascmac/ascgrp.mf
 %{_texmfdistdir}/fonts/source/public/ascmac/ascii.mf
@@ -4647,7 +4607,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/ascmac/tascmac.sty
 
 %files -n texlive-ascmac-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-ascmac
 %{_datadir}/fontconfig/conf.avail/58-texlive-ascmac.conf
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-ascmac/encodings.dir
@@ -4728,13 +4687,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-askinclude-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/askinclude/README.md
 %{_texmfdistdir}/doc/latex/askinclude/askinclude.bib
 %{_texmfdistdir}/doc/latex/askinclude/askinclude.pdf
 
 %files -n texlive-askinclude
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/askinclude/askinclude.sty
 
 %package -n texlive-askmaps
@@ -4809,13 +4766,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-askmaps-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/askmaps/README
 %{_texmfdistdir}/doc/latex/askmaps/askmaps.pdf
 %{_texmfdistdir}/doc/latex/askmaps/askmaps.tex
 
 %files -n texlive-askmaps
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/askmaps/askmaps.sty
 
 %package -n texlive-asmeconf
@@ -4942,7 +4897,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-asmeconf-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/asmeconf/README.md
 %{_texmfdistdir}/doc/latex/asmeconf/asmeconf-sample.bib
 %{_texmfdistdir}/doc/latex/asmeconf/asmeconf-template.pdf
@@ -4965,7 +4919,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/asmeconf/sample-figure-2b.pdf
 
 %files -n texlive-asmeconf
-%defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/bst/asmeconf/asmeconf.bst
 %{_texmfdistdir}/tex/latex/asmeconf/asmeconf.cls
 
@@ -5087,7 +5040,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-asmejour-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/asmejour/README.md
 %{_texmfdistdir}/doc/latex/asmejour/asmejour-sample.bib
 %{_texmfdistdir}/doc/latex/asmejour/asmejour-template.pdf
@@ -5102,7 +5054,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/asmejour/sample-figure-2b.pdf
 
 %files -n texlive-asmejour
-%defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/bst/asmejour/asmejour.bst
 %{_texmfdistdir}/tex/latex/asmejour/asmejour.cls
 
@@ -5229,12 +5180,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-aspectratio-fonts
 
 %files -n texlive-aspectratio-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/aspectratio/ar.pdf
 %{_texmfdistdir}/doc/latex/aspectratio/ar.tex
 
 %files -n texlive-aspectratio
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/map/dvips/aspectratio/aspectratio.map
 %{_texmfdistdir}/fonts/source/public/aspectratio/ar10.mf
 %{_texmfdistdir}/fonts/source/public/aspectratio/ar12.mf
@@ -5295,7 +5244,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/aspectratio/ar.sty
 
 %files -n texlive-aspectratio-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-aspectratio
 %{_datadir}/fontconfig/conf.avail/58-texlive-aspectratio.conf
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-aspectratio/encodings.dir
@@ -5390,7 +5338,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-assignment-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/assignment/Changelog
 %{_texmfdistdir}/doc/latex/assignment/LICENSE
 %{_texmfdistdir}/doc/latex/assignment/README
@@ -5398,7 +5345,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/assignment/assignment.tex
 
 %files -n texlive-assignment
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/assignment/assignment.cls
 
 %package -n texlive-assoccnt
@@ -5473,7 +5419,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-assoccnt-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/assoccnt/README
 %{_texmfdistdir}/doc/latex/assoccnt/assoccnt_doc.pdf
 %{_texmfdistdir}/doc/latex/assoccnt/assoccnt_doc.tex
@@ -5481,7 +5426,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/assoccnt/assoccnt_example.tex
 
 %files -n texlive-assoccnt
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/assoccnt/assoccnt.sty
 
 %package -n texlive-association-matrix
@@ -5564,7 +5508,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-association-matrix-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/association-matrix/DEPENDS.txt
 %{_texmfdistdir}/doc/latex/association-matrix/LICENCE
 %{_texmfdistdir}/doc/latex/association-matrix/README.md
@@ -5572,7 +5515,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/association-matrix/association-matrix.tex
 
 %files -n texlive-association-matrix
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/association-matrix/association-matrix.sty
 
 %package -n texlive-asternote
@@ -5644,13 +5586,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-asternote-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/asternote/README.md
 %{_texmfdistdir}/doc/latex/asternote/asternote.pdf
 %{_texmfdistdir}/doc/latex/asternote/asternote.tex
 
 %files -n texlive-asternote
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/asternote/asternote.sty
 
 %package -n texlive-astro
@@ -5723,12 +5663,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-astro-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/astro/astrosym.tex
 %{_texmfdistdir}/doc/fonts/astro/astrosym.txt
 
 %files -n texlive-astro
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/source/public/astro/astrosym.cal
 %{_texmfdistdir}/fonts/source/public/astro/astrosym.cmn
 %{_texmfdistdir}/fonts/source/public/astro/astrosym.mac
@@ -5819,14 +5757,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-asyfig-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/asyfig/README
 %{_texmfdistdir}/doc/latex/asyfig/asyfig.pdf
 %{_texmfdistdir}/doc/latex/asyfig/example/frf.asy
 %{_texmfdistdir}/doc/latex/asyfig/example/test-asyfig.tex
 
 %files -n texlive-asyfig
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/asyfig/asyalign.sty
 %{_texmfdistdir}/tex/latex/asyfig/asyfig.sty
 %{_texmfdistdir}/tex/latex/asyfig/asyprocess.sty
@@ -5931,7 +5867,6 @@ fi
 %install_info --info-dir=%{_infodir} %{_infodir}/asymptote.info
 
 %files -n texlive-asymptote-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/asymptote/CAD.pdf
 %{_texmfdistdir}/doc/asymptote/TeXShopAndAsymptote.pdf
 %{_texmfdistdir}/doc/asymptote/asy-latex.pdf
@@ -6275,7 +6210,6 @@ fi
 %{_mandir}/man1/xasy.1*
 
 %files -n texlive-asymptote
-%defattr(-,root,root,755)
 %{_texmfdistdir}/asymptote/CAD.asy
 %{_texmfdistdir}/asymptote/GUI/ContextWindow.py
 %{_texmfdistdir}/asymptote/GUI/CustMatTransform.py
@@ -6518,7 +6452,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-asymptote-by-example-zh-cn
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/support/asymptote-by-example-zh-cn/README
 %{_texmfdistdir}/doc/support/asymptote-by-example-zh-cn/asymptote-by-example-zh-cn.pdf
 %{_texmfdistdir}/doc/support/asymptote-by-example-zh-cn/src/asy.bib
@@ -6596,7 +6529,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-asymptote-faq-zh-cn
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/support/asymptote-faq-zh-cn/README
 %{_texmfdistdir}/doc/support/asymptote-faq-zh-cn/asymptote-faq-zh-cn.pdf
 %{_texmfdistdir}/doc/support/asymptote-faq-zh-cn/src/asy-faq.tex
@@ -6719,7 +6651,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-asymptote-manual-zh-cn
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/support/asymptote-manual-zh-cn/README
 %{_texmfdistdir}/doc/support/asymptote-manual-zh-cn/asymptote-manual-zh-cn.pdf
 %{_texmfdistdir}/doc/support/asymptote-manual-zh-cn/src/CDlabel.asy
@@ -6844,12 +6775,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-asypictureb-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/asypictureb/README
 %{_texmfdistdir}/doc/latex/asypictureb/asypictureB.pdf
 
 %files -n texlive-asypictureb
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/asypictureb/asypictureB.sty
 
 %package -n texlive-atbegshi
@@ -6926,14 +6855,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-atbegshi-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/atbegshi/README.md
 %{_texmfdistdir}/doc/latex/atbegshi/atbegshi-example1.tex
 %{_texmfdistdir}/doc/latex/atbegshi/atbegshi-example2.tex
 %{_texmfdistdir}/doc/latex/atbegshi/atbegshi.pdf
 
 %files -n texlive-atbegshi
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/atbegshi/atbegshi.sty
 
 %package -n texlive-atenddvi
@@ -7014,12 +6941,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-atenddvi-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/atenddvi/README.md
 %{_texmfdistdir}/doc/latex/atenddvi/atenddvi.pdf
 
 %files -n texlive-atenddvi
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/atenddvi/atenddvi-2019-12-11.sty
 %{_texmfdistdir}/tex/latex/atenddvi/atenddvi.sty
 
@@ -7093,13 +7018,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-atendofenv-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/atendofenv/LICENSE
 %{_texmfdistdir}/doc/latex/atendofenv/README.md
 %{_texmfdistdir}/doc/latex/atendofenv/atendofenv.pdf
 
 %files -n texlive-atendofenv
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/atendofenv/atendofenv.sty
 
 %package -n texlive-atkinson
@@ -7403,7 +7326,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-atkinson-fonts
 
 %files -n texlive-atkinson-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/atkinson/Atkinson-Hyperlegible-Font-License-2020-1104.pdf
 %{_texmfdistdir}/doc/fonts/atkinson/BIA_AtkinsonHyerlegible-Specimen_200210.pdf
 %{_texmfdistdir}/doc/fonts/atkinson/README
@@ -7411,7 +7333,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/atkinson/atkinson-samples.tex
 
 %files -n texlive-atkinson
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/enc/dvips/atkinson/atksn_2covbz.enc
 %{_texmfdistdir}/fonts/enc/dvips/atkinson/atksn_2hyoa7.enc
 %{_texmfdistdir}/fonts/enc/dvips/atkinson/atksn_cvs3iv.enc
@@ -7617,7 +7538,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/atkinson/atkinson.sty
 
 %files -n texlive-atkinson-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-atkinson
 %{_datadir}/fontconfig/conf.avail/58-texlive-atkinson.conf
 %{_datadir}/fontconfig/conf.avail/55-texlive-atkinson.conf
@@ -7721,12 +7641,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-attachfile-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/attachfile/README
 %{_texmfdistdir}/doc/latex/attachfile/attachfile.pdf
 
 %files -n texlive-attachfile
-%defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/bib/attachfile/attachfile.bib
 %{_texmfdistdir}/tex/latex/attachfile/attachfile.sty
 
@@ -7826,13 +7744,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-attachfile2-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/attachfile2/README.md
 %{_texmfdistdir}/doc/latex/attachfile2/attachfile2.pdf
 %{_mandir}/man1/pdfatfi.1*
 
 %files -n texlive-attachfile2
-%defattr(-,root,root,755)
 %{_texmfdistdir}/scripts/attachfile2/pdfatfi.pl
 %{_texmfdistdir}/tex/latex/attachfile2/atfi-dvipdfmx.def
 %{_texmfdistdir}/tex/latex/attachfile2/atfi-dvips.def
@@ -7912,12 +7828,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-atveryend-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/atveryend/README.md
 %{_texmfdistdir}/doc/latex/atveryend/atveryend.pdf
 
 %files -n texlive-atveryend
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/atveryend/atveryend.sty
 
 %package -n texlive-aucklandthesis
@@ -7991,13 +7905,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-aucklandthesis-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/aucklandthesis/README.TEXLIVE
 %{_texmfdistdir}/doc/latex/aucklandthesis/README.txt
 %{_texmfdistdir}/doc/latex/aucklandthesis/template.tex
 
 %files -n texlive-aucklandthesis
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/aucklandthesis/aucklandthesis.cls
 
 %package -n texlive-augie
@@ -8110,7 +8022,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-augie-fonts
 
 %files -n texlive-augie-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/augie/README.augie
 %{_texmfdistdir}/doc/latex/augie/augie.txt
 %{_texmfdistdir}/doc/latex/augie/other/Augie___.pfm
@@ -8118,7 +8029,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/augie/vtex/augie.ali
 
 %files -n texlive-augie
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/afm/public/augie/augie___.afm
 %{_texmfdistdir}/fonts/map/dvips/augie/augie.map
 %{_texmfdistdir}/fonts/tfm/public/augie/augie7t.tfm
@@ -8135,7 +8045,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/augie/ts1augie.fd
 
 %files -n texlive-augie-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-augie
 %{_datadir}/fontconfig/conf.avail/58-texlive-augie.conf
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-augie/encodings.dir
@@ -8255,14 +8164,12 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-auncial-new-fonts
 
 %files -n texlive-auncial-new-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/auncial-new/README
 %{_texmfdistdir}/doc/fonts/auncial-new/auncial.pdf
 %{_texmfdistdir}/doc/fonts/auncial-new/tryauncial.pdf
 %{_texmfdistdir}/doc/fonts/auncial-new/tryauncial.tex
 
 %files -n texlive-auncial-new
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/afm/public/auncial-new/auncl10.afm
 %{_texmfdistdir}/fonts/afm/public/auncial-new/aunclb10.afm
 %{_texmfdistdir}/fonts/map/dvips/auncial-new/auncial.map
@@ -8275,7 +8182,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/auncial-new/b1auncl.fd
 
 %files -n texlive-auncial-new-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-auncial-new
 %{_datadir}/fontconfig/conf.avail/58-texlive-auncial-new.conf
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-auncial-new/encodings.dir
@@ -8417,12 +8323,10 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-aurical-fonts
 
 %files -n texlive-aurical-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/aurical/aurical.pdf
 %{_texmfdistdir}/doc/latex/aurical/aurical.tex
 
 %files -n texlive-aurical
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/afm/public/aurical/AmiciLogo.afm
 %{_texmfdistdir}/fonts/afm/public/aurical/AmiciLogoBold.afm
 %{_texmfdistdir}/fonts/afm/public/aurical/AmiciLogoBoldRslant.afm
@@ -8504,7 +8408,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/aurical/aurical.sty
 
 %files -n texlive-aurical-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-aurical
 %{_datadir}/fontconfig/conf.avail/58-texlive-aurical.conf
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-aurical/encodings.dir
@@ -8606,12 +8509,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-aurl-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/aurl/README.md
 %{_texmfdistdir}/doc/latex/aurl/aurltest.tex
 
 %files -n texlive-aurl
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/aurl/aurl.sty
 
 %package -n texlive-authoraftertitle
@@ -8683,13 +8584,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-authoraftertitle-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/authoraftertitle/README.md
 %{_texmfdistdir}/doc/latex/authoraftertitle/authoraftertitle.pdf
 %{_texmfdistdir}/doc/latex/authoraftertitle/authoraftertitle.tex
 
 %files -n texlive-authoraftertitle
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/authoraftertitle/authoraftertitle.sty
 
 %package -n texlive-authorarchive
@@ -8776,7 +8675,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-authorarchive-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/authorarchive/CHANGELOG.md
 %{_texmfdistdir}/doc/latex/authorarchive/LICENSE
 %{_texmfdistdir}/doc/latex/authorarchive/README.md
@@ -8803,7 +8701,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/authorarchive/examples/brucker-authorarchive-2016.tex
 
 %files -n texlive-authorarchive
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/authorarchive/authorarchive.sty
 
 %package -n texlive-authordate
@@ -8879,7 +8776,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-authordate-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/bibtex/authordate/README
 %{_texmfdistdir}/doc/bibtex/authordate/authordate1.ltx
 %{_texmfdistdir}/doc/bibtex/authordate/authordate2.ltx
@@ -8888,7 +8784,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/bibtex/authordate/testadb.ltx
 
 %files -n texlive-authordate
-%defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/bst/authordate/authordate1.bst
 %{_texmfdistdir}/bibtex/bst/authordate/authordate2.bst
 %{_texmfdistdir}/bibtex/bst/authordate/authordate3.bst
@@ -8976,7 +8871,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-authorindex-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/authorindex/COPYING
 %{_texmfdistdir}/doc/latex/authorindex/NEWS
 %{_texmfdistdir}/doc/latex/authorindex/README
@@ -8984,7 +8878,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/authorindex/authorindex.tex
 
 %files -n texlive-authorindex
-%defattr(-,root,root,755)
 %{_texmfdistdir}/scripts/authorindex/authorindex
 %{_texmfdistdir}/tex/latex/authorindex/authorindex.sty
 
@@ -9072,7 +8965,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-auto-pst-pdf-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/auto-pst-pdf/README.txt
 %{_texmfdistdir}/doc/latex/auto-pst-pdf/auto-pst-pdf.pdf
 %{_texmfdistdir}/doc/latex/auto-pst-pdf/example-psfrag.tex
@@ -9080,7 +8972,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/auto-pst-pdf/example.tex
 
 %files -n texlive-auto-pst-pdf
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/auto-pst-pdf/auto-pst-pdf.sty
 
 %package -n texlive-auto-pst-pdf-lua
@@ -9161,14 +9052,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-auto-pst-pdf-lua-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/auto-pst-pdf-lua/Changes
 %{_texmfdistdir}/doc/latex/auto-pst-pdf-lua/README
 %{_texmfdistdir}/doc/latex/auto-pst-pdf-lua/auto-pst-pdf-lua-doc.pdf
 %{_texmfdistdir}/doc/latex/auto-pst-pdf-lua/auto-pst-pdf-lua-doc.tex
 
 %files -n texlive-auto-pst-pdf-lua
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/auto-pst-pdf-lua/auto-pst-pdf-lua.sty
 
 %package -n texlive-autoaligne
@@ -9242,12 +9131,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-autoaligne-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/autoaligne/README
 %{_texmfdistdir}/doc/generic/autoaligne/autoaligne-fr.pdf
 
 %files -n texlive-autoaligne
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/autoaligne/autoaligne-fr.tex
 %{_texmfdistdir}/tex/generic/autoaligne/autoaligne.sty
 %{_texmfdistdir}/tex/generic/autoaligne/autoaligne.tex
@@ -9323,7 +9210,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-autoarea-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/autoarea/ANNOUNCE.txt
 %{_texmfdistdir}/doc/latex/autoarea/README
 %{_texmfdistdir}/doc/latex/autoarea/autodemo/README.autodemo
@@ -9334,7 +9220,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/autoarea/autodemo/autodemo.tex
 
 %files -n texlive-autoarea
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/autoarea/autoarea.sty
 
 %package -n texlive-autobreak
@@ -9412,12 +9297,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-autobreak-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/autobreak/README.md
 %{_texmfdistdir}/doc/latex/autobreak/autobreak.pdf
 
 %files -n texlive-autobreak
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/autobreak/autobreak.sty
 
 %package -n texlive-autofancyhdr
@@ -9490,12 +9373,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-autofancyhdr-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/autofancyhdr/LICENSE
 %{_texmfdistdir}/doc/latex/autofancyhdr/README.md
 
 %files -n texlive-autofancyhdr
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/autofancyhdr/autofancyhdr.sty
 
 %package -n texlive-automata
@@ -9569,14 +9450,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-automata-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/metapost/automata/README
 %{_texmfdistdir}/doc/metapost/automata/example.mp
 %{_texmfdistdir}/doc/metapost/automata/example.pdf
 %{_texmfdistdir}/doc/metapost/automata/example.tex
 
 %files -n texlive-automata
-%defattr(-,root,root,755)
 %{_texmfdistdir}/metapost/automata/automata.mp
 
 %package -n texlive-autonum
@@ -9653,7 +9532,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-autonum-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/autonum/README
 %{_texmfdistdir}/doc/latex/autonum/autonum.pdf
 %{_texmfdistdir}/doc/latex/autonum/test-autonum.pdf
@@ -9661,7 +9539,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/autonum/test-freeze.tex
 
 %files -n texlive-autonum
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/autonum/autonum.sty
 
 %package -n texlive-autopdf
@@ -9740,12 +9617,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-autopdf-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/autopdf/README.txt
 %{_texmfdistdir}/doc/latex/autopdf/autopdf.pdf
 
 %files -n texlive-autopdf
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/autopdf/autopdf.sty
 
 %package -n texlive-autopuncitems
@@ -9821,13 +9696,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-autopuncitems-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/lualatex/autopuncitems/README.md
 %{_texmfdistdir}/doc/lualatex/autopuncitems/autopuncitems.pdf
 %{_texmfdistdir}/doc/lualatex/autopuncitems/autopuncitems.tex
 
 %files -n texlive-autopuncitems
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/lualatex/autopuncitems/autopuncitems.lua
 %{_texmfdistdir}/tex/lualatex/autopuncitems/autopuncitems.sty
 
@@ -9895,7 +9768,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-autosp
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/autosp/README
 %{_texmfdistdir}/doc/generic/autosp/barsant2.aspc
 %{_texmfdistdir}/doc/generic/autosp/barsant2.pdf
@@ -9980,12 +9852,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-auxhook-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/auxhook/README.md
 %{_texmfdistdir}/doc/latex/auxhook/auxhook.pdf
 
 %files -n texlive-auxhook
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/auxhook/auxhook.sty
 
 %package -n texlive-avantgar
@@ -10221,7 +10091,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-avantgar-fonts
 
 %files -n texlive-avantgar
-%defattr(-,root,root,755)
 %{_texmfdistdir}/dvips/avantgar/config.uag
 %{_texmfdistdir}/fonts/afm/adobe/avantgar/pagd8a.afm
 %{_texmfdistdir}/fonts/afm/adobe/avantgar/pagdo8a.afm
@@ -10386,7 +10255,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/avantgar/ts1uag.fd
 
 %files -n texlive-avantgar-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-avantgar
 %{_datadir}/fontconfig/conf.avail/58-texlive-avantgar.conf
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-avantgar/encodings.dir
@@ -10477,12 +10345,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-avremu-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/avremu/README
 %{_texmfdistdir}/doc/latex/avremu/avremu.pdf
 
 %files -n texlive-avremu
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/avremu/avr.binary.tex
 %{_texmfdistdir}/tex/latex/avremu/avr.bitops.tex
 %{_texmfdistdir}/tex/latex/avremu/avr.draw.tex
@@ -10569,14 +10435,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-awesomebox-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/awesomebox/LICENSE
 %{_texmfdistdir}/doc/latex/awesomebox/README.md
 %{_texmfdistdir}/doc/latex/awesomebox/awesomebox.pdf
 %{_texmfdistdir}/doc/latex/awesomebox/awesomebox.tex
 
 %files -n texlive-awesomebox
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/awesomebox/awesomebox.sty
 
 %package -n texlive-axessibility
@@ -10662,7 +10526,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-axessibility-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/axessibility/README
 %{_texmfdistdir}/doc/latex/axessibility/axessibility.pdf
 %{_texmfdistdir}/doc/latex/axessibility/axessibilityExampleAlignA.tex
@@ -10671,7 +10534,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/axessibility/axessibilityExampleSingleLineT.tex
 
 %files -n texlive-axessibility
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/axessibility/axessibility.lua
 %{_texmfdistdir}/tex/latex/axessibility/axessibility.sty
 
@@ -10761,7 +10623,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-axodraw2-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/axodraw2/AUTHORS
 %{_texmfdistdir}/doc/latex/axodraw2/COPYING
 %{_texmfdistdir}/doc/latex/axodraw2/ChangeLog
@@ -10773,7 +10634,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_mandir}/man1/axohelp.1*
 
 %files -n texlive-axodraw2
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/axodraw2/axodraw2.sty
 
 %package -n texlive-b1encoding
@@ -10847,12 +10707,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-b1encoding-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/b1encoding/README
 %{_texmfdistdir}/doc/latex/b1encoding/b1encoding.pdf
 
 %files -n texlive-b1encoding
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/enc/dvips/b1encoding/TeXB1.enc
 %{_texmfdistdir}/tex/latex/b1encoding/b1cmr.fd
 %{_texmfdistdir}/tex/latex/b1encoding/b1enc.def
@@ -11392,12 +11250,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/babel/README.md
 %{_texmfdistdir}/doc/latex/babel/babel.pdf
 
 %files -n texlive-babel
-%defattr(-,root,root,755)
 %{_texmfdistdir}/makeindex/babel/bbglo.ist
 %{_texmfdistdir}/makeindex/babel/bbind.ist
 %{_texmfdistdir}/tex/generic/babel/UKenglish.sty
@@ -12216,12 +12072,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-albanian-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-albanian/README.md
 %{_texmfdistdir}/doc/generic/babel-albanian/albanian.pdf
 
 %files -n texlive-babel-albanian
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-albanian/albanian.ldf
 
 %package -n texlive-babel-azerbaijani
@@ -12297,12 +12151,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-azerbaijani-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-azerbaijani/README
 %{_texmfdistdir}/doc/generic/babel-azerbaijani/azerbaijani.pdf
 
 %files -n texlive-babel-azerbaijani
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-azerbaijani/azerbaijani.ldf
 
 %package -n texlive-babel-basque
@@ -12373,11 +12225,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-basque-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-basque/basque.pdf
 
 %files -n texlive-babel-basque
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-basque/basque.ldf
 
 %package -n texlive-babel-belarusian
@@ -12448,12 +12298,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-belarusian-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-belarusian/README.md
 %{_texmfdistdir}/doc/generic/babel-belarusian/belarusian.pdf
 
 %files -n texlive-babel-belarusian
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-belarusian/belarusian.ldf
 
 %package -n texlive-babel-bosnian
@@ -12525,12 +12373,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-bosnian-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-bosnian/README
 %{_texmfdistdir}/doc/generic/babel-bosnian/bosnian.pdf
 
 %files -n texlive-babel-bosnian
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-bosnian/bosnian.ldf
 
 %package -n texlive-babel-breton
@@ -12604,11 +12450,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-breton-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-breton/breton.pdf
 
 %files -n texlive-babel-breton
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-breton/breton.ldf
 
 %package -n texlive-babel-bulgarian
@@ -12680,12 +12524,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-bulgarian-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-bulgarian/README
 %{_texmfdistdir}/doc/generic/babel-bulgarian/bulgarian.pdf
 
 %files -n texlive-babel-bulgarian
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-bulgarian/bulgarian.ldf
 
 %package -n texlive-babel-catalan
@@ -12758,11 +12600,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-catalan-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-catalan/catalan.pdf
 
 %files -n texlive-babel-catalan
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-catalan/catalan.ldf
 
 %package -n texlive-babel-croatian
@@ -12835,11 +12675,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-croatian-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-croatian/croatian.pdf
 
 %files -n texlive-babel-croatian
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-croatian/croatian.ldf
 
 %package -n texlive-babel-czech
@@ -12912,11 +12750,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-czech-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-czech/czech.pdf
 
 %files -n texlive-babel-czech
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-czech/czech.ldf
 
 %package -n texlive-babel-danish
@@ -12990,12 +12826,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-danish-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-danish/README.md
 %{_texmfdistdir}/doc/generic/babel-danish/danish.pdf
 
 %files -n texlive-babel-danish
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-danish/danish.ldf
 
 %package -n texlive-babel-dutch
@@ -13070,12 +12904,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-dutch-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-dutch/README.md
 %{_texmfdistdir}/doc/generic/babel-dutch/dutch.pdf
 
 %files -n texlive-babel-dutch
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-dutch/afrikaans.ldf
 %{_texmfdistdir}/tex/generic/babel-dutch/dutch.ldf
 
@@ -13157,12 +12989,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-english-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-english/README
 %{_texmfdistdir}/doc/generic/babel-english/english.pdf
 
 %files -n texlive-babel-english
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-english/UKenglish.ldf
 %{_texmfdistdir}/tex/generic/babel-english/USenglish.ldf
 %{_texmfdistdir}/tex/generic/babel-english/american.ldf
@@ -13242,11 +13072,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-esperanto-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-esperanto/esperanto.pdf
 
 %files -n texlive-babel-esperanto
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-esperanto/esperanto.ldf
 
 %package -n texlive-babel-estonian
@@ -13319,12 +13147,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-estonian-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-estonian/README.txt
 %{_texmfdistdir}/doc/generic/babel-estonian/estonian.pdf
 
 %files -n texlive-babel-estonian
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-estonian/estonian.ldf
 
 %package -n texlive-babel-finnish
@@ -13396,12 +13222,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-finnish-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-finnish/README.md
 %{_texmfdistdir}/doc/generic/babel-finnish/finnish.pdf
 
 %files -n texlive-babel-finnish
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-finnish/finnish.ldf
 
 %package -n texlive-babel-french
@@ -13479,14 +13303,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-french-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-french/README.md
 %{_texmfdistdir}/doc/generic/babel-french/frenchb-doc.pdf
 %{_texmfdistdir}/doc/generic/babel-french/frenchb-doc.tex
 %{_texmfdistdir}/doc/generic/babel-french/frenchb.pdf
 
 %files -n texlive-babel-french
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-french/acadian.ldf
 %{_texmfdistdir}/tex/generic/babel-french/canadien.ldf
 %{_texmfdistdir}/tex/generic/babel-french/francais.ldf
@@ -13563,12 +13385,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-friulan-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-friulan/README.txt
 %{_texmfdistdir}/doc/generic/babel-friulan/friulan.pdf
 
 %files -n texlive-babel-friulan
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-friulan/friulan.ldf
 
 %package -n texlive-babel-galician
@@ -13640,13 +13460,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-galician-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-galician/galician.pdf
 %{_texmfdistdir}/doc/generic/babel-galician/glbst.tex
 %{_texmfdistdir}/doc/generic/babel-galician/glromidx.tex
 
 %files -n texlive-babel-galician
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-galician/galician.ldf
 
 %package -n texlive-babel-georgian
@@ -13721,11 +13539,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-georgian-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-georgian/README
 
 %files -n texlive-babel-georgian
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-georgian/georgian.ldf
 %{_texmfdistdir}/tex/generic/babel-georgian/georgian.sty
 %{_texmfdistdir}/tex/generic/babel-georgian/georgiancaps.tex
@@ -13810,13 +13626,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-german-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-german/README
 %{_texmfdistdir}/doc/generic/babel-german/germanb.pdf
 %{_texmfdistdir}/doc/generic/babel-german/ngermanb.pdf
 
 %files -n texlive-babel-german
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-german/austrian.ldf
 %{_texmfdistdir}/tex/generic/babel-german/german.ldf
 %{_texmfdistdir}/tex/generic/babel-german/germanb.ldf
@@ -13899,7 +13713,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-greek-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-greek/README.md
 %{_texmfdistdir}/doc/generic/babel-greek/athnum.pdf
 %{_texmfdistdir}/doc/generic/babel-greek/babel-greek-doc.html
@@ -13919,7 +13732,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/generic/babel-greek/usage.tex
 
 %files -n texlive-babel-greek
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-greek/athnum.sty
 %{_texmfdistdir}/tex/generic/babel-greek/greek.ldf
 %{_texmfdistdir}/tex/generic/babel-greek/grmath.sty
@@ -14030,14 +13842,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-hebrew-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-hebrew/00readme.heb
 %{_texmfdistdir}/doc/generic/babel-hebrew/heb209.pdf
 %{_texmfdistdir}/doc/generic/babel-hebrew/hebinp.pdf
 %{_texmfdistdir}/doc/generic/babel-hebrew/hebrew.pdf
 
 %files -n texlive-babel-hebrew
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-hebrew/8859-8.def
 %{_texmfdistdir}/tex/generic/babel-hebrew/cp1255.def
 %{_texmfdistdir}/tex/generic/babel-hebrew/cp862.def
@@ -14142,11 +13952,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-hungarian-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-hungarian/README
 
 %files -n texlive-babel-hungarian
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-hungarian/magyar.ldf
 
 %package -n texlive-babel-icelandic
@@ -14219,12 +14027,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-icelandic-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-icelandic/README.md
 %{_texmfdistdir}/doc/generic/babel-icelandic/icelandic.pdf
 
 %files -n texlive-babel-icelandic
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-icelandic/icelandic.ldf
 
 %package -n texlive-babel-indonesian
@@ -14298,12 +14104,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-indonesian-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-indonesian/README
 %{_texmfdistdir}/doc/generic/babel-indonesian/indonesian.pdf
 
 %files -n texlive-babel-indonesian
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-indonesian/bahasa.ldf
 %{_texmfdistdir}/tex/generic/babel-indonesian/bahasai.ldf
 %{_texmfdistdir}/tex/generic/babel-indonesian/indon.ldf
@@ -14382,11 +14186,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-interlingua-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-interlingua/interlingua.pdf
 
 %files -n texlive-babel-interlingua
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-interlingua/interlingua.ldf
 
 %package -n texlive-babel-irish
@@ -14459,11 +14261,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-irish-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-irish/irish.pdf
 
 %files -n texlive-babel-irish
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-irish/irish.ldf
 
 %package -n texlive-babel-italian
@@ -14534,12 +14334,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-italian-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-italian/README.txt
 %{_texmfdistdir}/doc/generic/babel-italian/italian.pdf
 
 %files -n texlive-babel-italian
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-italian/italian.ldf
 
 %package -n texlive-babel-japanese
@@ -14613,7 +14411,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-japanese-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-japanese/README.md
 %{_texmfdistdir}/doc/generic/babel-japanese/babel-japanese-sample.pdf
 %{_texmfdistdir}/doc/generic/babel-japanese/babel-japanese-sample.tex
@@ -14622,7 +14419,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/generic/babel-japanese/japanese.tex
 
 %files -n texlive-babel-japanese
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-japanese/japanese.ldf
 
 %package -n texlive-babel-kurmanji
@@ -14699,11 +14495,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-kurmanji-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-kurmanji/kurmanji.pdf
 
 %files -n texlive-babel-kurmanji
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-kurmanji/kurmanji.ldf
 
 %package -n texlive-babel-latin
@@ -14780,12 +14574,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-latin-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-latin/README
 %{_texmfdistdir}/doc/generic/babel-latin/latin.pdf
 
 %files -n texlive-babel-latin
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-latin/classiclatin.ldf
 %{_texmfdistdir}/tex/generic/babel-latin/ecclesiasticlatin.ldf
 %{_texmfdistdir}/tex/generic/babel-latin/ecclesiasticlatin.lua
@@ -14861,12 +14653,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-latvian-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-latvian/README.md
 %{_texmfdistdir}/doc/generic/babel-latvian/latvian.pdf
 
 %files -n texlive-babel-latvian
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-latvian/latvian.ldf
 
 %package -n texlive-babel-lithuanian
@@ -14938,12 +14728,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-lithuanian-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-lithuanian/README.md
 %{_texmfdistdir}/doc/generic/babel-lithuanian/babel-lithuanian.pdf
 
 %files -n texlive-babel-lithuanian
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-lithuanian/lithuanian.ldf
 
 %package -n texlive-babel-macedonian
@@ -15015,12 +14803,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-macedonian-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-macedonian/README.md
 %{_texmfdistdir}/doc/generic/babel-macedonian/macedonian.pdf
 
 %files -n texlive-babel-macedonian
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-macedonian/macedonian.ldf
 
 %package -n texlive-babel-malay
@@ -15094,12 +14880,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-malay-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-malay/README
 %{_texmfdistdir}/doc/generic/babel-malay/malay.pdf
 
 %files -n texlive-babel-malay
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-malay/bahasam.ldf
 %{_texmfdistdir}/tex/generic/babel-malay/malay.ldf
 %{_texmfdistdir}/tex/generic/babel-malay/melayu.ldf
@@ -15175,11 +14959,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-norsk-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-norsk/norsk.pdf
 
 %files -n texlive-babel-norsk
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-norsk/norsk.ldf
 
 %package -n texlive-babel-occitan
@@ -15250,12 +15032,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-occitan-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-occitan/README
 %{_texmfdistdir}/doc/generic/babel-occitan/occitan.pdf
 
 %files -n texlive-babel-occitan
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-occitan/occitan.ldf
 
 %package -n texlive-babel-piedmontese
@@ -15328,11 +15108,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-piedmontese-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-piedmontese/piedmontese.pdf
 
 %files -n texlive-babel-piedmontese
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-piedmontese/piedmontese.ldf
 
 %package -n texlive-babel-polish
@@ -15406,12 +15184,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-polish-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-polish/README.md
 %{_texmfdistdir}/doc/generic/babel-polish/polish.pdf
 
 %files -n texlive-babel-polish
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-polish/polish-compat.ldf
 %{_texmfdistdir}/tex/generic/babel-polish/polish.ldf
 
@@ -15489,12 +15265,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-portuges-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-portuges/README.md
 %{_texmfdistdir}/doc/generic/babel-portuges/portuges.pdf
 
 %files -n texlive-babel-portuges
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-portuges/brazil.ldf
 %{_texmfdistdir}/tex/generic/babel-portuges/brazilian.ldf
 %{_texmfdistdir}/tex/generic/babel-portuges/portuges.ldf
@@ -15570,12 +15344,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-romanian-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-romanian/README.md
 %{_texmfdistdir}/doc/generic/babel-romanian/romanian.pdf
 
 %files -n texlive-babel-romanian
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-romanian/romanian.ldf
 
 %package -n texlive-babel-romansh
@@ -15647,11 +15419,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-romansh-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-romansh/romansh.pdf
 
 %files -n texlive-babel-romansh
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-romansh/romansh.ldf
 
 %package -n texlive-babel-russian
@@ -15725,12 +15495,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-russian-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-russian/README.md
 %{_texmfdistdir}/doc/generic/babel-russian/russianb.pdf
 
 %files -n texlive-babel-russian
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-russian/russianb.ldf
 
 %package -n texlive-babel-samin
@@ -15807,11 +15575,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-samin-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-samin/samin.pdf
 
 %files -n texlive-babel-samin
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-samin/samin.ldf
 
 %package -n texlive-babel-scottish
@@ -15884,11 +15650,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-scottish-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-scottish/scottish.pdf
 
 %files -n texlive-babel-scottish
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-scottish/scottish.ldf
 
 %package -n texlive-babel-serbian
@@ -15960,12 +15724,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-serbian-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-serbian/README.md
 %{_texmfdistdir}/doc/generic/babel-serbian/serbian.pdf
 
 %files -n texlive-babel-serbian
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-serbian/serbian.ldf
 
 %package -n texlive-babel-serbianc
@@ -16037,12 +15799,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-serbianc-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-serbianc/README.md
 %{_texmfdistdir}/doc/generic/babel-serbianc/serbianc.pdf
 
 %files -n texlive-babel-serbianc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-serbianc/serbianc.ldf
 
 %package -n texlive-babel-slovak
@@ -16115,11 +15875,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-slovak-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-slovak/slovak.pdf
 
 %files -n texlive-babel-slovak
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-slovak/slovak.ldf
 
 %package -n texlive-babel-slovenian
@@ -16192,12 +15950,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-slovenian-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-slovenian/README.md
 %{_texmfdistdir}/doc/generic/babel-slovenian/slovene.pdf
 
 %files -n texlive-babel-slovenian
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-slovenian/slovene.ldf
 
 %package -n texlive-babel-sorbian
@@ -16272,13 +16028,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-sorbian-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-sorbian/README.md
 %{_texmfdistdir}/doc/generic/babel-sorbian/lsorbian.pdf
 %{_texmfdistdir}/doc/generic/babel-sorbian/usorbian.pdf
 
 %files -n texlive-babel-sorbian
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-sorbian/lsorbian.ldf
 %{_texmfdistdir}/tex/generic/babel-sorbian/usorbian.ldf
 
@@ -16355,12 +16109,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-spanish-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-spanish/README.md
 %{_texmfdistdir}/doc/generic/babel-spanish/spanish.pdf
 
 %files -n texlive-babel-spanish
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-spanish/romanidx.sty
 %{_texmfdistdir}/tex/generic/babel-spanish/spanish.ldf
 
@@ -16432,12 +16184,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-swedish-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-swedish/README.md
 %{_texmfdistdir}/doc/generic/babel-swedish/swedish.pdf
 
 %files -n texlive-babel-swedish
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-swedish/swedish.ldf
 
 %package -n texlive-babel-thai
@@ -16511,11 +16261,9 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-thai-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-thai/thai.pdf
 
 %files -n texlive-babel-thai
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-thai/lthenc.def
 %{_texmfdistdir}/tex/generic/babel-thai/thai.ldf
 %{_texmfdistdir}/tex/generic/babel-thai/tis620.def
@@ -16589,12 +16337,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-turkish-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-turkish/README.md
 %{_texmfdistdir}/doc/generic/babel-turkish/turkish.pdf
 
 %files -n texlive-babel-turkish
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-turkish/turkish.ldf
 
 %package -n texlive-babel-ukrainian
@@ -16667,12 +16413,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-ukrainian-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-ukrainian/README.md
 %{_texmfdistdir}/doc/generic/babel-ukrainian/ukraineb.pdf
 
 %files -n texlive-babel-ukrainian
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-ukrainian/ukraineb.ldf
 
 %package -n texlive-babel-vietnamese
@@ -16743,13 +16487,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-vietnamese-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-vietnamese/README
 %{_texmfdistdir}/doc/generic/babel-vietnamese/uvnenc.tex
 %{_texmfdistdir}/doc/generic/babel-vietnamese/vietnamese.pdf
 
 %files -n texlive-babel-vietnamese
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-vietnamese/vietnamese.ldf
 
 %package -n texlive-babel-welsh
@@ -16821,12 +16563,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babel-welsh-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/babel-welsh/README
 %{_texmfdistdir}/doc/generic/babel-welsh/welsh.pdf
 
 %files -n texlive-babel-welsh
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/babel-welsh/welsh.ldf
 
 %package -n texlive-babelbib
@@ -16902,7 +16642,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-babelbib-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/bibtex/babelbib/ChangeLog
 %{_texmfdistdir}/doc/bibtex/babelbib/Makefile
 %{_texmfdistdir}/doc/bibtex/babelbib/README
@@ -16915,7 +16654,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/bibtex/babelbib/tugboat-babelbib.pdf
 
 %files -n texlive-babelbib
-%defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/bst/babelbib/bababbr3-fl.bst
 %{_texmfdistdir}/bibtex/bst/babelbib/bababbr3-lf.bst
 %{_texmfdistdir}/bibtex/bst/babelbib/bababbr3.bst
@@ -17036,12 +16774,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-background-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/background/README
 %{_texmfdistdir}/doc/latex/background/background.pdf
 
 %files -n texlive-background
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/background/background.sty
 
 %package -n texlive-backnaur
@@ -17114,12 +16850,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-backnaur-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/backnaur/README
 %{_texmfdistdir}/doc/latex/backnaur/backnaur.pdf
 
 %files -n texlive-backnaur
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/backnaur/backnaur.sty
 
 %package -n texlive-baekmuk
@@ -17209,20 +16943,17 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-baekmuk-fonts
 
 %files -n texlive-baekmuk-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/baekmuk/COPYRIGHT
 %{_texmfdistdir}/doc/fonts/baekmuk/COPYRIGHT.ks
 %{_texmfdistdir}/doc/fonts/baekmuk/README.md
 
 %files -n texlive-baekmuk
-%defattr(-,root,root,755)
 %verify(link) %{_texmfdistdir}/fonts/truetype/public/baekmuk/batang.ttf
 %verify(link) %{_texmfdistdir}/fonts/truetype/public/baekmuk/dotum.ttf
 %verify(link) %{_texmfdistdir}/fonts/truetype/public/baekmuk/gulim.ttf
 %verify(link) %{_texmfdistdir}/fonts/truetype/public/baekmuk/hline.ttf
 
 %files -n texlive-baekmuk-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-baekmuk
 %{_datadir}/fontconfig/conf.avail/58-texlive-baekmuk.conf
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-baekmuk/encodings.dir
@@ -17302,7 +17033,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bagpipe-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/bagpipe/BlackDonald.pdf
 %{_texmfdistdir}/doc/generic/bagpipe/BlackDonald.tex
 %{_texmfdistdir}/doc/generic/bagpipe/Bonnets.pdf
@@ -17320,7 +17050,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/generic/bagpipe/quickref.tex
 
 %files -n texlive-bagpipe
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/bagpipe/bagpipe.ini
 %{_texmfdistdir}/tex/generic/bagpipe/bagpipe.tex
 %{_texmfdistdir}/tex/generic/bagpipe/bagpipex.ini
@@ -17420,20 +17149,17 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-bangla-fonts
 
 %files -n texlive-bangla-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bangla/README
 %{_texmfdistdir}/doc/latex/bangla/bangla.pdf
 %{_texmfdistdir}/doc/latex/bangla/bangla.tex
 
 %files -n texlive-bangla
-%defattr(-,root,root,755)
 %verify(link) %{_texmfdistdir}/fonts/truetype/public/bangla/fontkalpurush.ttf
 %verify(link) %{_texmfdistdir}/fonts/truetype/public/bangla/fontshimanto.ttf
 %{_texmfdistdir}/tex/latex/bangla/bangla.sty
 %{_texmfdistdir}/tex/latex/bangla/banglamap.tex
 
 %files -n texlive-bangla-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-bangla
 %{_datadir}/fontconfig/conf.avail/58-texlive-bangla.conf
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-bangla/encodings.dir
@@ -17544,12 +17270,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bangorcsthesis-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bangorcsthesis/README
 %{_texmfdistdir}/doc/latex/bangorcsthesis/bangorcsthesis.pdf
 
 %files -n texlive-bangorcsthesis
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bangorcsthesis/bangorcsthesis.cls
 
 %package -n texlive-bangorexam
@@ -17640,12 +17364,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bangorexam-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bangorexam/README.txt
 %{_texmfdistdir}/doc/latex/bangorexam/bangorexam.pdf
 
 %files -n texlive-bangorexam
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bangorexam/bangorexam.cls
 
 %package -n texlive-bangtex
@@ -17728,14 +17450,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bangtex-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bangtex/README.bangtex
 %{_texmfdistdir}/doc/latex/bangtex/manual.tex
 %{_texmfdistdir}/doc/latex/bangtex/samplett.tex
 %{_texmfdistdir}/doc/latex/bangtex/samptex.tex
 
 %files -n texlive-bangtex
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/source/public/bangtex/bang10.mf
 %{_texmfdistdir}/fonts/source/public/bangtex/bangbase.mf
 %{_texmfdistdir}/fonts/source/public/bangtex/bangconso.mf
@@ -17860,7 +17580,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bankstatement-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bankstatement/201412.csv
 %{_texmfdistdir}/doc/latex/bankstatement/README.md
 %{_texmfdistdir}/doc/latex/bankstatement/bankstatement-example.pdf
@@ -17871,7 +17590,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bankstatement/stmlogo.jpg
 
 %files -n texlive-bankstatement
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bankstatement/bankstatement.cls
 %{_texmfdistdir}/tex/latex/bankstatement/csv-camt.def
 %{_texmfdistdir}/tex/latex/bankstatement/csv-mt940.def
@@ -17954,7 +17672,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-barcodes-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/barcodes/README
 %{_texmfdistdir}/doc/latex/barcodes/bcfaq.tex
 %{_texmfdistdir}/doc/latex/barcodes/changes
@@ -17968,7 +17685,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/barcodes/wlitf.vpl
 
 %files -n texlive-barcodes
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/source/public/barcodes/wlc11.mf
 %{_texmfdistdir}/fonts/source/public/barcodes/wlc128.mf
 %{_texmfdistdir}/fonts/source/public/barcodes/wlc39.mf
@@ -18067,7 +17783,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bardiag-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bardiag/README
 %{_texmfdistdir}/doc/latex/bardiag/bardiag.pdf
 %{_texmfdistdir}/doc/latex/bardiag/bardiag.tex
@@ -18122,7 +17837,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/latex/bardiag/src/9.tex
 
 %files -n texlive-bardiag
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bardiag/barddoc.sty
 %{_texmfdistdir}/tex/latex/bardiag/bardiag.bar
 %{_texmfdistdir}/tex/latex/bardiag/bardiag.cfg
@@ -18199,13 +17913,11 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-barr-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/generic/barr/README
 %{_texmfdistdir}/doc/generic/barr/diaxydoc.pdf
 %{_texmfdistdir}/doc/generic/barr/diaxydoc.tex
 
 %files -n texlive-barr
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/generic/barr/diagxy.tex
 
 %package -n texlive-barracuda
@@ -18279,7 +17991,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-barracuda-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/luatex/barracuda/INSTALL.txt
 %{_texmfdistdir}/doc/luatex/barracuda/LICENSE.txt
 %{_texmfdistdir}/doc/luatex/barracuda/PLANNER.txt
@@ -18350,7 +18061,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/luatex/barracuda/test/test-upc/002-upca.tex
 
 %files -n texlive-barracuda
-%defattr(-,root,root,755)
 %{_texmfdistdir}/scripts/barracuda/barracuda.lua
 %{_texmfdistdir}/scripts/barracuda/lib-barcode/brcd-barcode.lua
 %{_texmfdistdir}/scripts/barracuda/lib-barcode/brcd-code128.lua
@@ -18453,7 +18163,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bartel-chess-fonts-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/bartel-chess-fonts/README
 %{_texmfdistdir}/doc/fonts/bartel-chess-fonts/other-sources/CGA.mf
 %{_texmfdistdir}/doc/fonts/bartel-chess-fonts/other-sources/agfa.mf
@@ -18496,7 +18205,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/bartel-chess-fonts/other-sources/turnboard.mf
 
 %files -n texlive-bartel-chess-fonts
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/source/public/bartel-chess-fonts/elch-bishop.mf
 %{_texmfdistdir}/fonts/source/public/bartel-chess-fonts/elch-blackfield.mf
 %{_texmfdistdir}/fonts/source/public/bartel-chess-fonts/elch-chbase.mf
@@ -18641,14 +18349,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bashful-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/bashful/Makefile
 %{_texmfdistdir}/doc/latex/bashful/README
 %{_texmfdistdir}/doc/latex/bashful/bashful.pdf
 %{_texmfdistdir}/doc/latex/bashful/bashful.tex
 
 %files -n texlive-bashful
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/bashful/bashful.sty
 
 %package -n texlive-basicarith
@@ -18724,14 +18430,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-basicarith-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/basicarith/CHANGES
 %{_texmfdistdir}/doc/latex/basicarith/README
 %{_texmfdistdir}/doc/latex/basicarith/basicarith.pdf
 %{_texmfdistdir}/doc/latex/basicarith/lppl.txt
 
 %files -n texlive-basicarith
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/basicarith/basicarith.sty
 
 %package -n texlive-baskervald
@@ -18899,7 +18603,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-baskervald-fonts
 
 %files -n texlive-baskervald-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/baskervald/COPYING
 %{_texmfdistdir}/doc/fonts/baskervald/NOTICE.txt
 %{_texmfdistdir}/doc/fonts/baskervald/README
@@ -18908,7 +18611,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/baskervald/manifest.txt
 
 %files -n texlive-baskervald
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/afm/arkandis/baskervald/ybvb8a.afm
 %{_texmfdistdir}/fonts/afm/arkandis/baskervald/ybvbi8a.afm
 %{_texmfdistdir}/fonts/afm/arkandis/baskervald/ybvh8a.afm
@@ -18984,7 +18686,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/baskervald/ts1ybvw.fd
 
 %files -n texlive-baskervald-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-baskervald
 %{_datadir}/fontconfig/conf.avail/58-texlive-baskervald.conf
 %verify(not md5 size mtime) %{_datadir}/fonts/texlive-baskervald/encodings.dir
@@ -19657,7 +19358,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-baskervaldx-fonts
 
 %files -n texlive-baskervaldx-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/baskervaldx/COPYING
 %{_texmfdistdir}/doc/fonts/baskervaldx/NOTICE.txt
 %{_texmfdistdir}/doc/fonts/baskervaldx/README
@@ -19666,7 +19366,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/baskervaldx/baskervaldxmatheg-crop.pdf
 
 %files -n texlive-baskervaldx
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/afm/public/baskervaldx/Baskervaldx-Bol.afm
 %{_texmfdistdir}/fonts/afm/public/baskervaldx/Baskervaldx-BolIta.afm
 %{_texmfdistdir}/fonts/afm/public/baskervaldx/Baskervaldx-Ita.afm
@@ -20234,7 +19933,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/baskervaldx/baskervaldx.fontspec
 
 %files -n texlive-baskervaldx-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-baskervaldx
 %{_datadir}/fontconfig/conf.avail/58-texlive-baskervaldx.conf
 %{_datadir}/fontconfig/conf.avail/55-texlive-baskervaldx.conf
@@ -20873,7 +20571,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %reconfigure_fonts_scriptlets -n texlive-baskervillef-fonts
 
 %files -n texlive-baskervillef-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/fonts/baskervillef/FONTLOG.txt
 %{_texmfdistdir}/doc/fonts/baskervillef/OFL-FAQ.txt
 %{_texmfdistdir}/doc/fonts/baskervillef/OFL.txt
@@ -20882,7 +20579,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/fonts/baskervillef/baskervillef-doc.tex
 
 %files -n texlive-baskervillef
-%defattr(-,root,root,755)
 %{_texmfdistdir}/fonts/enc/dvips/baskervillef/zba_23ismr.enc
 %{_texmfdistdir}/fonts/enc/dvips/baskervillef/zba_2hmbf5.enc
 %{_texmfdistdir}/fonts/enc/dvips/baskervillef/zba_2j2bbt.enc
@@ -21399,7 +21095,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/tex/latex/baskervillef/omlzbami.fd
 
 %files -n texlive-baskervillef-fonts
-%defattr(-,root,root,755)
 %dir %{_datadir}/fonts/texlive-baskervillef
 %{_datadir}/fontconfig/conf.avail/58-texlive-baskervillef.conf
 %{_datadir}/fontconfig/conf.avail/55-texlive-baskervillef.conf
@@ -21488,14 +21183,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-basque-book-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/basque-book/README
 %{_texmfdistdir}/doc/latex/basque-book/basque-book.pdf
 %{_texmfdistdir}/doc/latex/basque-book/basque-book_EUS.pdf
 %{_texmfdistdir}/doc/latex/basque-book/basque-book_EUS.tex
 
 %files -n texlive-basque-book
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/basque-book/basque-book.cls
 
 %package -n texlive-basque-date
@@ -21569,12 +21262,10 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-basque-date-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/latex/basque-date/README
 %{_texmfdistdir}/doc/latex/basque-date/basque-date.pdf
 
 %files -n texlive-basque-date
-%defattr(-,root,root,755)
 %{_texmfdistdir}/tex/latex/basque-date/basque-date.sty
 
 %package -n texlive-bath-bst
@@ -21646,7 +21337,6 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bath-bst-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/bibtex/bath-bst/README.md
 %{_texmfdistdir}/doc/bibtex/bath-bst/bath-bst-v1.bib
 %{_texmfdistdir}/doc/bibtex/bath-bst/bath-bst-v1.pdf
@@ -21655,7 +21345,6 @@ VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 %{_texmfdistdir}/doc/bibtex/bath-bst/bath-bst.pdf
 
 %files -n texlive-bath-bst
-%defattr(-,root,root,755)
 %{_texmfdistdir}/bibtex/bst/bath-bst/bath.bst
 %{_texmfdistdir}/bibtex/bst/bath-bst/bathx.bst
 
@@ -21726,14 +21415,12 @@ test -d /var/run/texlive || exit 0
 VERBOSE=false %{_texmfdistdir}/texconfig/update || :
 
 %files -n texlive-bbcard-doc
-%defattr(-,root,root,755)
 %{_texmfdistdir}/doc/metapost/bbcard/README.TEXLIVE
 %{_texmfdistdir}/doc/metapost/bbcard/README.bbcard
 %{_texmfdistdir}/doc/metapost/bbcard/README.calendar
 %{_texmfdistdir}/doc/metapost/bbcard/README.scorecard
 
 %files -n texlive-bbcard
-%defattr(-,root,root,755)
 %{_texmfdistdir}/metapost/bbcard/bbcard.mp
 %{_texmfdistdir}/metapost/bbcard/breakwidth.mp
 %{_texmfdistdir}/metapost/bbcard/calendar.mp
