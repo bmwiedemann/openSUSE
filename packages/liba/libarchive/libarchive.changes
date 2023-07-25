@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 24 06:36:59 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- update to 3.7.0
+  * bsdunzip port from FreeBSD
+  * fix 2 year 2038 issues
+
+-------------------------------------------------------------------
 Fri Dec 23 07:57:09 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.6.2 (bsc#1205629, CVE-2022-36227)

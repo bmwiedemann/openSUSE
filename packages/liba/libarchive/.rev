@@ -404,4 +404,14 @@ The COPYING file shows that the package is predominantly BSD-2-Clause licensed (
     <comment></comment>
     <requestid>1045504</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>d079233f75ad17a7f0a09859be0cc9cb</srcmd5>
+    <version>3.7.0</version>
+    <time>1690276972</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.7.0
+  * bsdunzip port from FreeBSD
+  * fix 2 year 2038 issues</comment>
+    <requestid>1100374</requestid>
+  </revision>
 </revisionlist>

@@ -30,7 +30,7 @@
 %bcond_without	ext2fs
 %endif
 Name:           libarchive
-Version:        3.6.2
+Version:        3.7.0
 Release:        0
 Summary:        Utility and C library to create and read several different streaming archive formats
 License:        BSD-2-Clause
@@ -188,6 +188,7 @@ sed -i -e '/Libs.private/d' %{buildroot}%{_libdir}/pkgconfig/libarchive.pc
 %{_bindir}/bsdcat
 %{_bindir}/bsdcpio
 %{_bindir}/bsdtar
+%{_bindir}/bsdunzip
 %{_mandir}/man1/*
 %{_mandir}/man5/*
 
