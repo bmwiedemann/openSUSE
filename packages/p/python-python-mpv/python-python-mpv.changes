@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jul 23 04:43:23 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.0.4
+  * Add missing fields to MpvEventEndFile
+  * Add field "playlist_entry_id" to MpvEventEndFile
+  * Add 'self' to mouse function
+  * Replace xvfbwrapper with PyVirtualDisplay
+  * Add __version__ field to module
+
+-------------------------------------------------------------------
 Mon Feb 27 14:53:53 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Add version requirement for setuptools

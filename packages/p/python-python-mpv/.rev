@@ -207,4 +207,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1069667</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>791228b44bcb286f6935115d5471ec23</srcmd5>
+    <version>1.0.4</version>
+    <time>1690370602</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.0.4
+  * Add missing fields to MpvEventEndFile
+  * Add field &quot;playlist_entry_id&quot; to MpvEventEndFile
+  * Add 'self' to mouse function
+  * Replace xvfbwrapper with PyVirtualDisplay
+  * Add __version__ field to module
+</comment>
+    <requestid>1100097</requestid>
+  </revision>
 </revisionlist>
