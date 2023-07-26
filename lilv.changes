@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 24 11:56:27 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Actually package the __pycache__ that appears when building using
+  meson 1.2.0.
+
+-------------------------------------------------------------------
+Fri Jul 21 13:17:47 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Avoid  __pycache__ directory with meson 1.2.0 
+
+-------------------------------------------------------------------
 Mon Dec 26 11:45:08 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to 0.24.20

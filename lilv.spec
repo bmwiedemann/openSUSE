@@ -1,7 +1,7 @@
 #
 # spec file for package lilv
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -127,6 +127,7 @@ rmdir %{buildroot}%{_sysconfdir}/bash_completion.d
 %endif
 
 %files -n python3-lilv
-%{python3_sitelib}/lilv.py
+%{python_sitelib}/*.py
+%pycache_only %{python_sitelib}/__pycache__
 
 %changelog
