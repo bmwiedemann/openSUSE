@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 24 18:58:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.2:
+  * Bump tools and deps
+  * Bump deps and tools
+  * Add 3.12 support
+  * Add ruff
+
+-------------------------------------------------------------------
 Thu May  4 22:50:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8.1:

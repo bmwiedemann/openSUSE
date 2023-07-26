@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-env
-Version:        0.8.1
+Version:        0.8.2
 Release:        0
 Summary:        Pytest plugin to add environment variables
 License:        MIT
 Group:          Development/Languages/Python
-URL:            https://github.com/MobileDynasty/pytest-env
+URL:            https://github.com/pytest-dev/pytest-env
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-env/pytest_env-%{version}.tar.gz
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module pip}
