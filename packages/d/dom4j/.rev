@@ -197,4 +197,12 @@ SPDX (forwarded request 110717 from babelworx)</comment>
     <comment>sync changes with sle</comment>
     <requestid>978879</requestid>
   </revision>
+  <revision rev="27" vrev="37">
+    <srcmd5>13dee6f8c4214a78f45ed5aca9f24eb4</srcmd5>
+    <version>1.6.1</version>
+    <time>1690370519</time>
+    <user>anag+factory</user>
+    <comment>Don't depend on jtidy</comment>
+    <requestid>1100553</requestid>
+  </revision>
 </revisionlist>

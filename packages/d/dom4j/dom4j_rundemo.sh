@@ -26,9 +26,6 @@ echo
 echo SAXDOMDemo
 echo ./run.sh samples.dom.SAXDOMDemo xml/contents.xml
 echo
-echo JTidyDemo
-echo ./run.sh samples.JTidyDemo $XMLFMTOPS readme.html
-echo
 echo VisitorDemo
 echo ./run.sh samples.VisitorDemo xml/cdata.xml
 echo
@@ -103,7 +100,6 @@ JAVA=$JAVA_HOME/bin/java
 CLASSPATH=`build-classpath \
 dom4j \
 xpp2 \
-jtidy \
 fop \
 xerces-j2 \
 msv-relaxngDatatype \

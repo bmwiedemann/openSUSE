@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 24 19:38:26 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Do not depend on jtidy, since it is not used during build
+
+-------------------------------------------------------------------
 Wed Mar 30 09:56:14 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Build against the standalone JavaEE modules unconditionally

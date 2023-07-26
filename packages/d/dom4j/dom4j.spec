@@ -1,7 +1,7 @@
 #
 # spec file for package dom4j
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,7 +55,6 @@ BuildRequires:  java-devel >= 1.6
 BuildRequires:  javapackages-local
 BuildRequires:  javapackages-tools
 BuildRequires:  jaxen-bootstrap >= 1.1
-BuildRequires:  jtidy
 BuildRequires:  junit
 BuildRequires:  junitperf
 BuildRequires:  relaxngDatatype
@@ -164,7 +163,6 @@ ln -sf $(build-classpath jaxme/jaxmexs)
 ln -sf $(build-classpath xalan-j2)
 ln -sf $(build-classpath xalan-j2-serializer)
 ln -sf $(build-classpath jaxme/jaxmejs)
-ln -sf $(build-classpath jtidy)
 ln -sf $(build-classpath isorelax)
 ln -sf $(build-classpath jaxme/jaxme2)
 ln -sf $(build-classpath xerces-j2)
