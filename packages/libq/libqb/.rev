@@ -340,4 +340,13 @@
 - doxygen2man: Fix function parameter alignment (gh#ClusterLabs/libqb#468) (forwarded request 1093858 from yan_gao)</comment>
     <requestid>1093859</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>5de31e262bd19fc1cfb88123ff95c8a6</srcmd5>
+    <version>2.0.8+20230721.002171b</version>
+    <time>1690370526</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.0.8+20230721.002171b (v2.0.8):
+- log: fix potential overflow with long log messages (gh#ClusterLabs/libqb#490) (forwarded request 1100597 from yan_gao)</comment>
+    <requestid>1100598</requestid>
+  </revision>
 </revisionlist>
