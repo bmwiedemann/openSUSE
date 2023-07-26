@@ -175,4 +175,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1097551</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9c12a84aa33d9a5de645b910ec74d305</srcmd5>
+    <version>6.5.2</version>
+    <time>1690370564</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.5.2 (forwarded request 1099849 from krop)</comment>
+    <requestid>1100001</requestid>
+  </revision>
 </revisionlist>
