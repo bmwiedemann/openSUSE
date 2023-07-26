@@ -175,4 +175,12 @@
     <comment>Update subpackages requirements</comment>
     <requestid>1097619</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>1f740f01ca447bcfe873534ac0fa0c30</srcmd5>
+    <version>6.5.2</version>
+    <time>1690370549</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.5.2 (forwarded request 1099849 from krop)</comment>
+    <requestid>1099986</requestid>
+  </revision>
 </revisionlist>
