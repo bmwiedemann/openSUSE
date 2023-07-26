@@ -1907,4 +1907,11 @@
     <comment>submit new version 4.6.4</comment>
     <requestid>1100675</requestid>
   </revision>
+  <revision rev="259" vrev="2">
+    <srcmd5>c96e42f95155af0a78592ec3aed91825</srcmd5>
+    <version>4.6.2</version>
+    <time>1690375386</time>
+    <user>anag+factory</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1213681</comment>
+  </revision>
 </revisionlist>
