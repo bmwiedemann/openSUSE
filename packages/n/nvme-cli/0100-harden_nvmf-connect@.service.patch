@@ -26,4 +26,5 @@ Signed-off-by: Daniel Wagner <dwagner@suse.de>
 +RestrictRealtime=true
  Type=simple
  Environment="CONNECT_ARGS=%i"
- ExecStart=/bin/sh -c "@SBINDIR@/nvme connect-all --quiet `/bin/echo -e '${CONNECT_ARGS}'`"
+ ExecStart=/bin/sh -c "@SBINDIR@/nvme connect-all --context=autoconnect --quiet `/bin/echo -e '${CONNECT_ARGS}'`"
+
