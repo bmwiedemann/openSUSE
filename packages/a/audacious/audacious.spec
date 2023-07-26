@@ -45,10 +45,12 @@ Recommends:     %{name}-plugins-extra >= %{aud_plugin_ver_min}
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6Widgets)
+Requires:       cmake(Qt6Svg)
 %else
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Widgets)
+Requires:       cmake(Qt5Svg)
 %endif
 
 %description

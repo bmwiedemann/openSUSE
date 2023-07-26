@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jul 23 13:02:31 UTC 2023 - Christoph G <foss@grueninger.de>
+
+- Require Qt(5/6)Svg, otherwise the Qt version does not show icons.
+
+-------------------------------------------------------------------
 Sun Jun 11 13:22:41 UTC 2023 - Christoph G <foss@grueninger.de>
 
 - Update to version 4.3.1:
