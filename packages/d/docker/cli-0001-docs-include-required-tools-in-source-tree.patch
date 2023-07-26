@@ -156,10 +156,9 @@ Signed-off-by: Aleksa Sarai <asarai@suse.de>
  create mode 100644 vendor/gopkg.in/yaml.v3/yamlh.go
  create mode 100644 vendor/gopkg.in/yaml.v3/yamlprivateh.go
 
-diff --git a/docs/generate/go.mod b/docs/generate/go.mod
-deleted file mode 100644
-index d62ff455713a..000000000000
---- a/docs/generate/go.mod
+Index: docker-cli-24.0.5_ce/docs/generate/go.mod
+===================================================================
+--- docker-cli-24.0.5_ce.orig/docs/generate/go.mod
 +++ /dev/null
 @@ -1,13 +0,0 @@
 -module github.com/docker/cli/docs/generate
@@ -175,10 +174,9 @@ index d62ff455713a..000000000000
 -//)
 -//
 -//replace github.com/docker/cli v0.0.0+incompatible => ../../
-diff --git a/docs/generate/tools.go b/docs/generate/tools.go
-deleted file mode 100644
-index 47510bc49a89..000000000000
---- a/docs/generate/tools.go
+Index: docker-cli-24.0.5_ce/docs/generate/tools.go
+===================================================================
+--- docker-cli-24.0.5_ce.orig/docs/generate/tools.go
 +++ /dev/null
 @@ -1,8 +0,0 @@
 -//go:build tools
@@ -189,11 +187,10 @@ index 47510bc49a89..000000000000
 -import (
 -	_ "github.com/docker/cli-docs-tool"
 -)
-diff --git a/import.go b/import.go
-new file mode 100644
-index 000000000000..16ef6ef60c0e
+Index: docker-cli-24.0.5_ce/import.go
+===================================================================
 --- /dev/null
-+++ b/import.go
++++ docker-cli-24.0.5_ce/import.go
 @@ -0,0 +1,17 @@
 +// This is only used to define inports we need for doc generation.
 +
@@ -212,10 +209,9 @@ index 000000000000..16ef6ef60c0e
 +	_ "github.com/spf13/cobra/doc"
 +	_ "github.com/spf13/pflag"
 +)
-diff --git a/man/go.mod b/man/go.mod
-deleted file mode 100644
-index 4615c7c9a59b..000000000000
---- a/man/go.mod
+Index: docker-cli-24.0.5_ce/man/go.mod
+===================================================================
+--- docker-cli-24.0.5_ce.orig/man/go.mod
 +++ /dev/null
 @@ -1,15 +0,0 @@
 -module github.com/docker/cli/man
@@ -233,10 +229,9 @@ index 4615c7c9a59b..000000000000
 -//)
 -//
 -//replace github.com/docker/cli v0.0.0+incompatible => ../
-diff --git a/man/tools.go b/man/tools.go
-deleted file mode 100644
-index 3cafe6533aff..000000000000
---- a/man/tools.go
+Index: docker-cli-24.0.5_ce/man/tools.go
+===================================================================
+--- docker-cli-24.0.5_ce.orig/man/tools.go
 +++ /dev/null
 @@ -1,11 +0,0 @@
 -//go:build tools
@@ -250,10 +245,10 @@ index 3cafe6533aff..000000000000
 -	_ "github.com/spf13/cobra/doc"
 -	_ "github.com/spf13/pflag"
 -)
-diff --git a/scripts/docs/generate-man.sh b/scripts/docs/generate-man.sh
-index 6afed3fa8708..1e12a95e9c9a 100755
---- a/scripts/docs/generate-man.sh
-+++ b/scripts/docs/generate-man.sh
+Index: docker-cli-24.0.5_ce/scripts/docs/generate-man.sh
+===================================================================
+--- docker-cli-24.0.5_ce.orig/scripts/docs/generate-man.sh
++++ docker-cli-24.0.5_ce/scripts/docs/generate-man.sh
 @@ -1,35 +1,22 @@
  #!/usr/bin/env bash
  
@@ -300,10 +295,10 @@ index 6afed3fa8708..1e12a95e9c9a 100755
  
  mkdir -p man/man1
  (set -x ; /tmp/gen-manpages --root "." --target "$(pwd)/man/man1")
-diff --git a/scripts/docs/generate-md.sh b/scripts/docs/generate-md.sh
-index a947bb969673..0af86843bbe4 100755
---- a/scripts/docs/generate-md.sh
-+++ b/scripts/docs/generate-md.sh
+Index: docker-cli-24.0.5_ce/scripts/docs/generate-md.sh
+===================================================================
+--- docker-cli-24.0.5_ce.orig/scripts/docs/generate-md.sh
++++ docker-cli-24.0.5_ce/scripts/docs/generate-md.sh
 @@ -1,36 +1,23 @@
  #!/usr/bin/env bash
  
@@ -348,10 +343,10 @@ index a947bb969673..0af86843bbe4 100755
  
  # yaml generation on docs repo needs the cli.md file: https://github.com/docker/cli/pull/3924#discussion_r1059986605
  # but markdown generation docker.md atm. While waiting for a fix in cli-docs-tool
-diff --git a/scripts/docs/generate-yaml.sh b/scripts/docs/generate-yaml.sh
-index 4d0006e43e79..7d98e161df5d 100755
---- a/scripts/docs/generate-yaml.sh
-+++ b/scripts/docs/generate-yaml.sh
+Index: docker-cli-24.0.5_ce/scripts/docs/generate-yaml.sh
+===================================================================
+--- docker-cli-24.0.5_ce.orig/scripts/docs/generate-yaml.sh
++++ docker-cli-24.0.5_ce/scripts/docs/generate-yaml.sh
 @@ -1,33 +1,20 @@
  #!/usr/bin/env bash
  
@@ -394,10 +389,10 @@ index 4d0006e43e79..7d98e161df5d 100755
  
  mkdir -p docs/yaml
  set -x
-diff --git a/vendor.mod b/vendor.mod
-index 93b252033bb8..694d6bb790e9 100644
---- a/vendor.mod
-+++ b/vendor.mod
+Index: docker-cli-24.0.5_ce/vendor.mod
+===================================================================
+--- docker-cli-24.0.5_ce.orig/vendor.mod
++++ docker-cli-24.0.5_ce/vendor.mod
 @@ -8,7 +8,9 @@ go 1.18
  
  require (
@@ -406,7 +401,7 @@ index 93b252033bb8..694d6bb790e9 100644
  	github.com/creack/pty v1.1.18
 +	github.com/docker/cli-docs-tool v0.5.1
  	github.com/docker/distribution v2.8.2+incompatible
- 	github.com/docker/docker v24.0.2+incompatible
+ 	github.com/docker/docker v24.0.5-0.20230718221249-d4a26c153000+incompatible // v24.0.5-dev
  	github.com/docker/docker-credential-helpers v0.7.0
 @@ -67,6 +69,7 @@ require (
  	github.com/prometheus/common v0.37.0 // indirect
@@ -422,11 +417,11 @@ index 93b252033bb8..694d6bb790e9 100644
  	google.golang.org/protobuf v1.28.1 // indirect
 +	gopkg.in/yaml.v3 v3.0.1 // indirect
  )
-diff --git a/vendor.sum b/vendor.sum
-index 15bc7cd703d3..55870c81da53 100644
---- a/vendor.sum
-+++ b/vendor.sum
-@@ -85,6 +85,7 @@ github.com/cockroachdb/logtags v0.0.0-20190617123548-eb05cc24525f/go.mod h1:i/u9
+Index: docker-cli-24.0.5_ce/vendor.sum
+===================================================================
+--- docker-cli-24.0.5_ce.orig/vendor.sum
++++ docker-cli-24.0.5_ce/vendor.sum
+@@ -85,6 +85,7 @@ github.com/cockroachdb/logtags v0.0.0-20
  github.com/containerd/containerd v1.6.21 h1:eSTAmnvDKRPWan+MpSSfNyrtleXd86ogK9X8fMWpe/Q=
  github.com/containerd/containerd v1.6.21/go.mod h1:apei1/i5Ux2FzrK6+DM/suEsGuK/MeVOfy8tR2q7Wnw=
  github.com/coreos/go-systemd/v22 v22.3.2/go.mod h1:Y58oyj3AT4RCenI/lSvhwexgC+NSVTIJ3seZv2GcEnc=
@@ -434,7 +429,7 @@ index 15bc7cd703d3..55870c81da53 100644
  github.com/cpuguy83/go-md2man/v2 v2.0.2/go.mod h1:tgQtvFlXSQOSOSIRvRPT7W67SCa46tRHOmNcaadrF8o=
  github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
  github.com/creack/pty v1.1.18 h1:n56/Zwd5o6whRC5PMGretI4IdRLlmBXYNjScPaBgsbY=
-@@ -93,6 +94,8 @@ github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSs
+@@ -93,6 +94,8 @@ github.com/davecgh/go-spew v1.1.0/go.mod
  github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
  github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
  github.com/denisenkom/go-mssqldb v0.0.0-20191128021309-1d7a30a10f73/go.mod h1:xbL0rPBG9cCiLr28tMa8zpbdarY27NDyej4t/EjAShU=
@@ -443,7 +438,7 @@ index 15bc7cd703d3..55870c81da53 100644
  github.com/docker/distribution v2.7.1+incompatible/go.mod h1:J2gT2udsDAN96Uj4KfcMRqY0/ypR+oyYUYmja8H+y+w=
  github.com/docker/distribution v2.8.2+incompatible h1:T3de5rq0dB1j30rp0sA2rER+m322EBzniBPB6ZIzuh8=
  github.com/docker/distribution v2.8.2+incompatible/go.mod h1:J2gT2udsDAN96Uj4KfcMRqY0/ypR+oyYUYmja8H+y+w=
-@@ -350,6 +353,7 @@ github.com/rivo/uniseg v0.2.0 h1:S1pD9weZBuJdFmowNwbpi7BJ8TNftyUImj/0WQi72jY=
+@@ -350,6 +353,7 @@ github.com/rivo/uniseg v0.2.0 h1:S1pD9we
  github.com/rivo/uniseg v0.2.0/go.mod h1:J6wj4VEh+S6ZtnVlnTBMWIodfgj8LQOQFoIToxlJtxc=
  github.com/rogpeppe/fastuuid v1.2.0/go.mod h1:jVj6XXZzXRy/MSR5jhDC/2q6DgLz+nrA6LYCDYWNEvQ=
  github.com/rogpeppe/go-internal v1.3.0/go.mod h1:M8bDsm7K2OlrFYOpmOWEs/qY81heoFRclV5y23lUDJ4=
@@ -451,19 +446,17 @@ index 15bc7cd703d3..55870c81da53 100644
  github.com/russross/blackfriday/v2 v2.1.0/go.mod h1:+Rmxgy9KzJVeS9/2gXHxylqXiyQDYRxCVz55jmeOWTM=
  github.com/sirupsen/logrus v1.0.6/go.mod h1:pMByvHTf9Beacp5x1UXfOR9xyW/9antXMhjMPG0dEzc=
  github.com/sirupsen/logrus v1.2.0/go.mod h1:LxeOpSwHxABJmUn/MG1IvRgCAasNZTLOkJPxbbu5VWo=
-diff --git a/vendor/github.com/cpuguy83/go-md2man/v2/.gitignore b/vendor/github.com/cpuguy83/go-md2man/v2/.gitignore
-new file mode 100644
-index 000000000000..30f97c3d73ab
+Index: docker-cli-24.0.5_ce/vendor/github.com/cpuguy83/go-md2man/v2/.gitignore
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/cpuguy83/go-md2man/v2/.gitignore
++++ docker-cli-24.0.5_ce/vendor/github.com/cpuguy83/go-md2man/v2/.gitignore
 @@ -0,0 +1,2 @@
 +go-md2man
 +bin
-diff --git a/vendor/github.com/cpuguy83/go-md2man/v2/Dockerfile b/vendor/github.com/cpuguy83/go-md2man/v2/Dockerfile
-new file mode 100644
-index 000000000000..7181c5306f41
+Index: docker-cli-24.0.5_ce/vendor/github.com/cpuguy83/go-md2man/v2/Dockerfile
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/cpuguy83/go-md2man/v2/Dockerfile
++++ docker-cli-24.0.5_ce/vendor/github.com/cpuguy83/go-md2man/v2/Dockerfile
 @@ -0,0 +1,20 @@
 +ARG GO_VERSION=1.18
 +ARG GO_IMAGE=golang:${GO_VERSION}
@@ -485,11 +478,10 @@ index 000000000000..7181c5306f41
 +FROM scratch
 +COPY --from=build /go/src/github.com/cpuguy83/go-md2man/go-md2man /go-md2man
 +ENTRYPOINT ["/go-md2man"]
-diff --git a/vendor/github.com/cpuguy83/go-md2man/v2/LICENSE.md b/vendor/github.com/cpuguy83/go-md2man/v2/LICENSE.md
-new file mode 100644
-index 000000000000..1cade6cef6a1
+Index: docker-cli-24.0.5_ce/vendor/github.com/cpuguy83/go-md2man/v2/LICENSE.md
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/cpuguy83/go-md2man/v2/LICENSE.md
++++ docker-cli-24.0.5_ce/vendor/github.com/cpuguy83/go-md2man/v2/LICENSE.md
 @@ -0,0 +1,21 @@
 +The MIT License (MIT)
 +
@@ -512,11 +504,10 @@ index 000000000000..1cade6cef6a1
 +LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 +OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 +SOFTWARE.
-diff --git a/vendor/github.com/cpuguy83/go-md2man/v2/Makefile b/vendor/github.com/cpuguy83/go-md2man/v2/Makefile
-new file mode 100644
-index 000000000000..437fc9997926
+Index: docker-cli-24.0.5_ce/vendor/github.com/cpuguy83/go-md2man/v2/Makefile
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/cpuguy83/go-md2man/v2/Makefile
++++ docker-cli-24.0.5_ce/vendor/github.com/cpuguy83/go-md2man/v2/Makefile
 @@ -0,0 +1,35 @@
 +GO111MODULE ?= on
 +LINTER_BIN ?= golangci-lint
@@ -553,11 +544,10 @@ index 000000000000..437fc9997926
 +vendor: mod
 +	@go mod vendor -v
 +
-diff --git a/vendor/github.com/cpuguy83/go-md2man/v2/README.md b/vendor/github.com/cpuguy83/go-md2man/v2/README.md
-new file mode 100644
-index 000000000000..0e30d341483c
+Index: docker-cli-24.0.5_ce/vendor/github.com/cpuguy83/go-md2man/v2/README.md
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/cpuguy83/go-md2man/v2/README.md
++++ docker-cli-24.0.5_ce/vendor/github.com/cpuguy83/go-md2man/v2/README.md
 @@ -0,0 +1,15 @@
 +go-md2man
 +=========
@@ -574,11 +564,10 @@ index 000000000000..0e30d341483c
 +
 +We use go modules to manage dependencies.
 +As such you must be using at lest go1.11.
-diff --git a/vendor/github.com/cpuguy83/go-md2man/v2/go-md2man.1.md b/vendor/github.com/cpuguy83/go-md2man/v2/go-md2man.1.md
-new file mode 100644
-index 000000000000..16d1133aa1de
+Index: docker-cli-24.0.5_ce/vendor/github.com/cpuguy83/go-md2man/v2/go-md2man.1.md
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/cpuguy83/go-md2man/v2/go-md2man.1.md
++++ docker-cli-24.0.5_ce/vendor/github.com/cpuguy83/go-md2man/v2/go-md2man.1.md
 @@ -0,0 +1,23 @@
 +go-md2man 1 "January 2015" go-md2man "User Manual"
 +==================================================
@@ -603,11 +592,10 @@ index 000000000000..16d1133aa1de
 +# HISTORY
 +  January 2015, Originally compiled by Brian Goff( cpuguy83@gmail.com )
 +
-diff --git a/vendor/github.com/cpuguy83/go-md2man/v2/md2man.go b/vendor/github.com/cpuguy83/go-md2man/v2/md2man.go
-new file mode 100644
-index 000000000000..6078864a3cd9
+Index: docker-cli-24.0.5_ce/vendor/github.com/cpuguy83/go-md2man/v2/md2man.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/cpuguy83/go-md2man/v2/md2man.go
++++ docker-cli-24.0.5_ce/vendor/github.com/cpuguy83/go-md2man/v2/md2man.go
 @@ -0,0 +1,51 @@
 +package main
 +
@@ -660,11 +648,10 @@ index 000000000000..6078864a3cd9
 +		os.Exit(1)
 +	}
 +}
-diff --git a/vendor/github.com/cpuguy83/go-md2man/v2/md2man/md2man.go b/vendor/github.com/cpuguy83/go-md2man/v2/md2man/md2man.go
-new file mode 100644
-index 000000000000..b48005673455
+Index: docker-cli-24.0.5_ce/vendor/github.com/cpuguy83/go-md2man/v2/md2man/md2man.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/cpuguy83/go-md2man/v2/md2man/md2man.go
++++ docker-cli-24.0.5_ce/vendor/github.com/cpuguy83/go-md2man/v2/md2man/md2man.go
 @@ -0,0 +1,14 @@
 +package md2man
 +
@@ -680,11 +667,10 @@ index 000000000000..b48005673455
 +		[]blackfriday.Option{blackfriday.WithRenderer(renderer),
 +			blackfriday.WithExtensions(renderer.GetExtensions())}...)
 +}
-diff --git a/vendor/github.com/cpuguy83/go-md2man/v2/md2man/roff.go b/vendor/github.com/cpuguy83/go-md2man/v2/md2man/roff.go
-new file mode 100644
-index 000000000000..be2b3436062d
+Index: docker-cli-24.0.5_ce/vendor/github.com/cpuguy83/go-md2man/v2/md2man/roff.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/cpuguy83/go-md2man/v2/md2man/roff.go
++++ docker-cli-24.0.5_ce/vendor/github.com/cpuguy83/go-md2man/v2/md2man/roff.go
 @@ -0,0 +1,336 @@
 +package md2man
 +
@@ -1022,27 +1008,24 @@ index 000000000000..be2b3436062d
 +		w.Write([]byte{'\\', text[i]}) // nolint: errcheck
 +	}
 +}
-diff --git a/vendor/github.com/docker/cli-docs-tool/.dockerignore b/vendor/github.com/docker/cli-docs-tool/.dockerignore
-new file mode 100644
-index 000000000000..c8c323c89663
+Index: docker-cli-24.0.5_ce/vendor/github.com/docker/cli-docs-tool/.dockerignore
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/docker/cli-docs-tool/.dockerignore
++++ docker-cli-24.0.5_ce/vendor/github.com/docker/cli-docs-tool/.dockerignore
 @@ -0,0 +1,2 @@
 +/coverage.txt
 +/example/docs
-diff --git a/vendor/github.com/docker/cli-docs-tool/.gitignore b/vendor/github.com/docker/cli-docs-tool/.gitignore
-new file mode 100644
-index 000000000000..c8c323c89663
+Index: docker-cli-24.0.5_ce/vendor/github.com/docker/cli-docs-tool/.gitignore
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/docker/cli-docs-tool/.gitignore
++++ docker-cli-24.0.5_ce/vendor/github.com/docker/cli-docs-tool/.gitignore
 @@ -0,0 +1,2 @@
 +/coverage.txt
 +/example/docs
-diff --git a/vendor/github.com/docker/cli-docs-tool/.golangci.yml b/vendor/github.com/docker/cli-docs-tool/.golangci.yml
-new file mode 100644
-index 000000000000..6c6557176b28
+Index: docker-cli-24.0.5_ce/vendor/github.com/docker/cli-docs-tool/.golangci.yml
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/docker/cli-docs-tool/.golangci.yml
++++ docker-cli-24.0.5_ce/vendor/github.com/docker/cli-docs-tool/.golangci.yml
 @@ -0,0 +1,37 @@
 +run:
 +  timeout: 10m
@@ -1081,11 +1064,10 @@ index 000000000000..6c6557176b28
 +    - linters:
 +        - revive
 +      text: "stutters"
-diff --git a/vendor/github.com/docker/cli-docs-tool/Dockerfile b/vendor/github.com/docker/cli-docs-tool/Dockerfile
-new file mode 100644
-index 000000000000..f0e2739faa7c
+Index: docker-cli-24.0.5_ce/vendor/github.com/docker/cli-docs-tool/Dockerfile
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/docker/cli-docs-tool/Dockerfile
++++ docker-cli-24.0.5_ce/vendor/github.com/docker/cli-docs-tool/Dockerfile
 @@ -0,0 +1,86 @@
 +# syntax=docker/dockerfile:1
 +
@@ -1173,11 +1155,10 @@ index 000000000000..f0e2739faa7c
 +
 +FROM scratch AS test-coverage
 +COPY --from=test /tmp/coverage.txt /coverage.txt
-diff --git a/vendor/github.com/docker/cli-docs-tool/LICENSE b/vendor/github.com/docker/cli-docs-tool/LICENSE
-new file mode 100644
-index 000000000000..d64569567334
+Index: docker-cli-24.0.5_ce/vendor/github.com/docker/cli-docs-tool/LICENSE
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/docker/cli-docs-tool/LICENSE
++++ docker-cli-24.0.5_ce/vendor/github.com/docker/cli-docs-tool/LICENSE
 @@ -0,0 +1,202 @@
 +
 +                                 Apache License
@@ -1381,11 +1362,10 @@ index 000000000000..d64569567334
 +   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 +   See the License for the specific language governing permissions and
 +   limitations under the License.
-diff --git a/vendor/github.com/docker/cli-docs-tool/README.md b/vendor/github.com/docker/cli-docs-tool/README.md
-new file mode 100644
-index 000000000000..4d5ee6474f8f
+Index: docker-cli-24.0.5_ce/vendor/github.com/docker/cli-docs-tool/README.md
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/docker/cli-docs-tool/README.md
++++ docker-cli-24.0.5_ce/vendor/github.com/docker/cli-docs-tool/README.md
 @@ -0,0 +1,67 @@
 +[![PkgGoDev](https://img.shields.io/badge/go.dev-docs-007d9c?logo=go&logoColor=white&style=flat-square)](https://pkg.go.dev/github.com/docker/cli-docs-tool)
 +[![Test Status](https://img.shields.io/github/actions/workflow/status/docker/cli-docs-tool/test.yml?branch=main&label=test&logo=github&style=flat-square)](https://github.com/docker/cli-docs-tool/actions?query=workflow%3Atest)
@@ -1454,11 +1434,10 @@ index 000000000000..4d5ee6474f8f
 +
 +Want to contribute? Awesome! You can find information about contributing to
 +this project in the [CONTRIBUTING.md](/.github/CONTRIBUTING.md)
-diff --git a/vendor/github.com/docker/cli-docs-tool/annotation/annotation.go b/vendor/github.com/docker/cli-docs-tool/annotation/annotation.go
-new file mode 100644
-index 000000000000..021846af6e07
+Index: docker-cli-24.0.5_ce/vendor/github.com/docker/cli-docs-tool/annotation/annotation.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/docker/cli-docs-tool/annotation/annotation.go
++++ docker-cli-24.0.5_ce/vendor/github.com/docker/cli-docs-tool/annotation/annotation.go
 @@ -0,0 +1,25 @@
 +// Copyright 2021 cli-docs-tool authors
 +//
@@ -1485,11 +1464,10 @@ index 000000000000..021846af6e07
 +	// DefaultValue specifies the default value for a flag.
 +	DefaultValue = "docs.default-value"
 +)
-diff --git a/vendor/github.com/docker/cli-docs-tool/clidocstool.go b/vendor/github.com/docker/cli-docs-tool/clidocstool.go
-new file mode 100644
-index 000000000000..d4aeaba3f126
+Index: docker-cli-24.0.5_ce/vendor/github.com/docker/cli-docs-tool/clidocstool.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/docker/cli-docs-tool/clidocstool.go
++++ docker-cli-24.0.5_ce/vendor/github.com/docker/cli-docs-tool/clidocstool.go
 @@ -0,0 +1,123 @@
 +// Copyright 2017 cli-docs-tool authors
 +//
@@ -1614,11 +1592,10 @@ index 000000000000..d4aeaba3f126
 +	}
 +	return aliases
 +}
-diff --git a/vendor/github.com/docker/cli-docs-tool/clidocstool_md.go b/vendor/github.com/docker/cli-docs-tool/clidocstool_md.go
-new file mode 100644
-index 000000000000..73d05c8a722a
+Index: docker-cli-24.0.5_ce/vendor/github.com/docker/cli-docs-tool/clidocstool_md.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/docker/cli-docs-tool/clidocstool_md.go
++++ docker-cli-24.0.5_ce/vendor/github.com/docker/cli-docs-tool/clidocstool_md.go
 @@ -0,0 +1,271 @@
 +// Copyright 2021 cli-docs-tool authors
 +//
@@ -1891,11 +1868,10 @@ index 000000000000..73d05c8a722a
 +func mdReplaceNewline(s string) string {
 +	return nlRegexp.ReplaceAllString(s, "<br>")
 +}
-diff --git a/vendor/github.com/docker/cli-docs-tool/clidocstool_yaml.go b/vendor/github.com/docker/cli-docs-tool/clidocstool_yaml.go
-new file mode 100644
-index 000000000000..f6ae6b853bfc
+Index: docker-cli-24.0.5_ce/vendor/github.com/docker/cli-docs-tool/clidocstool_yaml.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/docker/cli-docs-tool/clidocstool_yaml.go
++++ docker-cli-24.0.5_ce/vendor/github.com/docker/cli-docs-tool/clidocstool_yaml.go
 @@ -0,0 +1,433 @@
 +// Copyright 2017 cli-docs-tool authors
 +//
@@ -2330,11 +2306,10 @@ index 000000000000..f6ae6b853bfc
 +func (s byName) Len() int           { return len(s) }
 +func (s byName) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }
 +func (s byName) Less(i, j int) bool { return s[i].Name() < s[j].Name() }
-diff --git a/vendor/github.com/docker/cli-docs-tool/docker-bake.hcl b/vendor/github.com/docker/cli-docs-tool/docker-bake.hcl
-new file mode 100644
-index 000000000000..4a5f44f83018
+Index: docker-cli-24.0.5_ce/vendor/github.com/docker/cli-docs-tool/docker-bake.hcl
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/docker/cli-docs-tool/docker-bake.hcl
++++ docker-cli-24.0.5_ce/vendor/github.com/docker/cli-docs-tool/docker-bake.hcl
 @@ -0,0 +1,51 @@
 +// Copyright 2021 cli-docs-tool authors
 +//
@@ -2387,11 +2362,10 @@ index 000000000000..4a5f44f83018
 +  target = "license-update"
 +  output = ["."]
 +}
-diff --git a/vendor/github.com/docker/cli-docs-tool/markdown.go b/vendor/github.com/docker/cli-docs-tool/markdown.go
-new file mode 100644
-index 000000000000..32849236ed9c
+Index: docker-cli-24.0.5_ce/vendor/github.com/docker/cli-docs-tool/markdown.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/docker/cli-docs-tool/markdown.go
++++ docker-cli-24.0.5_ce/vendor/github.com/docker/cli-docs-tool/markdown.go
 @@ -0,0 +1,87 @@
 +// Copyright 2017 cli-docs-tool authors
 +//
@@ -2480,11 +2454,10 @@ index 000000000000..32849236ed9c
 +	}
 +	return mdLine, customID
 +}
-diff --git a/vendor/github.com/russross/blackfriday/v2/.gitignore b/vendor/github.com/russross/blackfriday/v2/.gitignore
-new file mode 100644
-index 000000000000..75623dcccbb7
+Index: docker-cli-24.0.5_ce/vendor/github.com/russross/blackfriday/v2/.gitignore
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/russross/blackfriday/v2/.gitignore
++++ docker-cli-24.0.5_ce/vendor/github.com/russross/blackfriday/v2/.gitignore
 @@ -0,0 +1,8 @@
 +*.out
 +*.swp
@@ -2494,11 +2467,10 @@ index 000000000000..75623dcccbb7
 +_test*
 +markdown
 +tags
-diff --git a/vendor/github.com/russross/blackfriday/v2/.travis.yml b/vendor/github.com/russross/blackfriday/v2/.travis.yml
-new file mode 100644
-index 000000000000..b0b525a5a8e1
+Index: docker-cli-24.0.5_ce/vendor/github.com/russross/blackfriday/v2/.travis.yml
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/russross/blackfriday/v2/.travis.yml
++++ docker-cli-24.0.5_ce/vendor/github.com/russross/blackfriday/v2/.travis.yml
 @@ -0,0 +1,17 @@
 +sudo: false
 +language: go
@@ -2517,11 +2489,10 @@ index 000000000000..b0b525a5a8e1
 +  - diff -u <(echo -n) <(gofmt -d -s .)
 +  - go tool vet .
 +  - go test -v ./...
-diff --git a/vendor/github.com/russross/blackfriday/v2/LICENSE.txt b/vendor/github.com/russross/blackfriday/v2/LICENSE.txt
-new file mode 100644
-index 000000000000..2885af3602d8
+Index: docker-cli-24.0.5_ce/vendor/github.com/russross/blackfriday/v2/LICENSE.txt
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/russross/blackfriday/v2/LICENSE.txt
++++ docker-cli-24.0.5_ce/vendor/github.com/russross/blackfriday/v2/LICENSE.txt
 @@ -0,0 +1,29 @@
 +Blackfriday is distributed under the Simplified BSD License:
 +
@@ -2552,11 +2523,10 @@ index 000000000000..2885af3602d8
 +> LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
 +> ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 +> POSSIBILITY OF SUCH DAMAGE.
-diff --git a/vendor/github.com/russross/blackfriday/v2/README.md b/vendor/github.com/russross/blackfriday/v2/README.md
-new file mode 100644
-index 000000000000..d9c08a22fc54
+Index: docker-cli-24.0.5_ce/vendor/github.com/russross/blackfriday/v2/README.md
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/russross/blackfriday/v2/README.md
++++ docker-cli-24.0.5_ce/vendor/github.com/russross/blackfriday/v2/README.md
 @@ -0,0 +1,335 @@
 +Blackfriday
 +[![Build Status][BuildV2SVG]][BuildV2URL]
@@ -2893,11 +2863,10 @@ index 000000000000..d9c08a22fc54
 +   [BuildV2URL]: https://travis-ci.org/russross/blackfriday
 +   [PkgGoDevV2SVG]: https://pkg.go.dev/badge/github.com/russross/blackfriday/v2
 +   [PkgGoDevV2URL]: https://pkg.go.dev/github.com/russross/blackfriday/v2
-diff --git a/vendor/github.com/russross/blackfriday/v2/block.go b/vendor/github.com/russross/blackfriday/v2/block.go
-new file mode 100644
-index 000000000000..dcd61e6e35bc
+Index: docker-cli-24.0.5_ce/vendor/github.com/russross/blackfriday/v2/block.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/russross/blackfriday/v2/block.go
++++ docker-cli-24.0.5_ce/vendor/github.com/russross/blackfriday/v2/block.go
 @@ -0,0 +1,1612 @@
 +//
 +// Blackfriday Markdown Processor
@@ -4511,11 +4480,10 @@ index 000000000000..dcd61e6e35bc
 +	}
 +	return string(anchorName)
 +}
-diff --git a/vendor/github.com/russross/blackfriday/v2/doc.go b/vendor/github.com/russross/blackfriday/v2/doc.go
-new file mode 100644
-index 000000000000..57ff152a0568
+Index: docker-cli-24.0.5_ce/vendor/github.com/russross/blackfriday/v2/doc.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/russross/blackfriday/v2/doc.go
++++ docker-cli-24.0.5_ce/vendor/github.com/russross/blackfriday/v2/doc.go
 @@ -0,0 +1,46 @@
 +// Package blackfriday is a markdown processor.
 +//
@@ -4563,11 +4531,10 @@ index 000000000000..57ff152a0568
 +//       github.com/shurcooL/sanitized_anchor_name.
 +//       Otherwise, users of sanitized_anchor_name will get anchor names
 +//       that are incompatible with those generated by blackfriday.
-diff --git a/vendor/github.com/russross/blackfriday/v2/entities.go b/vendor/github.com/russross/blackfriday/v2/entities.go
-new file mode 100644
-index 000000000000..a2c3edb691c8
+Index: docker-cli-24.0.5_ce/vendor/github.com/russross/blackfriday/v2/entities.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/russross/blackfriday/v2/entities.go
++++ docker-cli-24.0.5_ce/vendor/github.com/russross/blackfriday/v2/entities.go
 @@ -0,0 +1,2236 @@
 +package blackfriday
 +
@@ -6805,11 +6772,10 @@ index 000000000000..a2c3edb691c8
 +	"&zwj;":                             true,
 +	"&zwnj;":                            true,
 +}
-diff --git a/vendor/github.com/russross/blackfriday/v2/esc.go b/vendor/github.com/russross/blackfriday/v2/esc.go
-new file mode 100644
-index 000000000000..6ab60102c9bf
+Index: docker-cli-24.0.5_ce/vendor/github.com/russross/blackfriday/v2/esc.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/russross/blackfriday/v2/esc.go
++++ docker-cli-24.0.5_ce/vendor/github.com/russross/blackfriday/v2/esc.go
 @@ -0,0 +1,70 @@
 +package blackfriday
 +
@@ -6881,11 +6847,10 @@ index 000000000000..6ab60102c9bf
 +	unesc := html.UnescapeString(string(text))
 +	escapeHTML(w, []byte(unesc))
 +}
-diff --git a/vendor/github.com/russross/blackfriday/v2/html.go b/vendor/github.com/russross/blackfriday/v2/html.go
-new file mode 100644
-index 000000000000..cb4f26e30fd5
+Index: docker-cli-24.0.5_ce/vendor/github.com/russross/blackfriday/v2/html.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/russross/blackfriday/v2/html.go
++++ docker-cli-24.0.5_ce/vendor/github.com/russross/blackfriday/v2/html.go
 @@ -0,0 +1,952 @@
 +//
 +// Blackfriday Markdown Processor
@@ -7839,11 +7804,10 @@ index 000000000000..cb4f26e30fd5
 +	}
 +	r.lastOutputLen = buf.Len()
 +}
-diff --git a/vendor/github.com/russross/blackfriday/v2/inline.go b/vendor/github.com/russross/blackfriday/v2/inline.go
-new file mode 100644
-index 000000000000..d45bd941726e
+Index: docker-cli-24.0.5_ce/vendor/github.com/russross/blackfriday/v2/inline.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/russross/blackfriday/v2/inline.go
++++ docker-cli-24.0.5_ce/vendor/github.com/russross/blackfriday/v2/inline.go
 @@ -0,0 +1,1228 @@
 +//
 +// Blackfriday Markdown Processor
@@ -9073,11 +9037,10 @@ index 000000000000..d45bd941726e
 +func normalizeURI(s []byte) []byte {
 +	return s // TODO: implement
 +}
-diff --git a/vendor/github.com/russross/blackfriday/v2/markdown.go b/vendor/github.com/russross/blackfriday/v2/markdown.go
-new file mode 100644
-index 000000000000..58d2e4538c62
+Index: docker-cli-24.0.5_ce/vendor/github.com/russross/blackfriday/v2/markdown.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/russross/blackfriday/v2/markdown.go
++++ docker-cli-24.0.5_ce/vendor/github.com/russross/blackfriday/v2/markdown.go
 @@ -0,0 +1,950 @@
 +// Blackfriday Markdown Processor
 +// Available at http://github.com/russross/blackfriday
@@ -10029,11 +9992,10 @@ index 000000000000..58d2e4538c62
 +	}
 +	return out[a : b+1]
 +}
-diff --git a/vendor/github.com/russross/blackfriday/v2/node.go b/vendor/github.com/russross/blackfriday/v2/node.go
-new file mode 100644
-index 000000000000..04e6050ceeae
+Index: docker-cli-24.0.5_ce/vendor/github.com/russross/blackfriday/v2/node.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/russross/blackfriday/v2/node.go
++++ docker-cli-24.0.5_ce/vendor/github.com/russross/blackfriday/v2/node.go
 @@ -0,0 +1,360 @@
 +package blackfriday
 +
@@ -10395,11 +10357,10 @@ index 000000000000..04e6050ceeae
 +func dumpString(ast *Node) string {
 +	return dumpR(ast, 0)
 +}
-diff --git a/vendor/github.com/russross/blackfriday/v2/smartypants.go b/vendor/github.com/russross/blackfriday/v2/smartypants.go
-new file mode 100644
-index 000000000000..3a220e94247d
+Index: docker-cli-24.0.5_ce/vendor/github.com/russross/blackfriday/v2/smartypants.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/russross/blackfriday/v2/smartypants.go
++++ docker-cli-24.0.5_ce/vendor/github.com/russross/blackfriday/v2/smartypants.go
 @@ -0,0 +1,457 @@
 +//
 +// Blackfriday Markdown Processor
@@ -10858,11 +10819,10 @@ index 000000000000..3a220e94247d
 +		w.Write(text[mark:])
 +	}
 +}
-diff --git a/vendor/github.com/spf13/cobra/doc/README.md b/vendor/github.com/spf13/cobra/doc/README.md
-new file mode 100644
-index 000000000000..8e07baae3307
+Index: docker-cli-24.0.5_ce/vendor/github.com/spf13/cobra/doc/README.md
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/spf13/cobra/doc/README.md
++++ docker-cli-24.0.5_ce/vendor/github.com/spf13/cobra/doc/README.md
 @@ -0,0 +1,17 @@
 +# Documentation generation
 +
@@ -10881,11 +10841,10 @@ index 000000000000..8e07baae3307
 +### `InitDefaultCompletionCmd`
 +
 +You may call `cmd.InitDefaultCompletionCmd()` to document the default autocompletion command.
-diff --git a/vendor/github.com/spf13/cobra/doc/man_docs.go b/vendor/github.com/spf13/cobra/doc/man_docs.go
-new file mode 100644
-index 000000000000..b8c15ce88543
+Index: docker-cli-24.0.5_ce/vendor/github.com/spf13/cobra/doc/man_docs.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/spf13/cobra/doc/man_docs.go
++++ docker-cli-24.0.5_ce/vendor/github.com/spf13/cobra/doc/man_docs.go
 @@ -0,0 +1,246 @@
 +// Copyright 2013-2023 The Cobra Authors
 +//
@@ -11133,11 +11092,10 @@ index 000000000000..b8c15ce88543
 +	}
 +	return buf.Bytes()
 +}
-diff --git a/vendor/github.com/spf13/cobra/doc/man_docs.md b/vendor/github.com/spf13/cobra/doc/man_docs.md
-new file mode 100644
-index 000000000000..3709160f34f0
+Index: docker-cli-24.0.5_ce/vendor/github.com/spf13/cobra/doc/man_docs.md
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/spf13/cobra/doc/man_docs.md
++++ docker-cli-24.0.5_ce/vendor/github.com/spf13/cobra/doc/man_docs.md
 @@ -0,0 +1,31 @@
 +# Generating Man Pages For Your Own cobra.Command
 +
@@ -11170,11 +11128,10 @@ index 000000000000..3709160f34f0
 +```
 +
 +That will get you a man page `/tmp/test.3`
-diff --git a/vendor/github.com/spf13/cobra/doc/md_docs.go b/vendor/github.com/spf13/cobra/doc/md_docs.go
-new file mode 100644
-index 000000000000..c4a27c00935b
+Index: docker-cli-24.0.5_ce/vendor/github.com/spf13/cobra/doc/md_docs.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/spf13/cobra/doc/md_docs.go
++++ docker-cli-24.0.5_ce/vendor/github.com/spf13/cobra/doc/md_docs.go
 @@ -0,0 +1,156 @@
 +// Copyright 2013-2023 The Cobra Authors
 +//
@@ -11332,11 +11289,10 @@ index 000000000000..c4a27c00935b
 +	}
 +	return nil
 +}
-diff --git a/vendor/github.com/spf13/cobra/doc/md_docs.md b/vendor/github.com/spf13/cobra/doc/md_docs.md
-new file mode 100644
-index 000000000000..1659175cfdab
+Index: docker-cli-24.0.5_ce/vendor/github.com/spf13/cobra/doc/md_docs.md
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/spf13/cobra/doc/md_docs.md
++++ docker-cli-24.0.5_ce/vendor/github.com/spf13/cobra/doc/md_docs.md
 @@ -0,0 +1,115 @@
 +# Generating Markdown Docs For Your Own cobra.Command
 +
@@ -11453,11 +11409,10 @@ index 000000000000..1659175cfdab
 +	return "/commands/" + strings.ToLower(base) + "/"
 +}
 +```
-diff --git a/vendor/github.com/spf13/cobra/doc/rest_docs.go b/vendor/github.com/spf13/cobra/doc/rest_docs.go
-new file mode 100644
-index 000000000000..2cca6fd778de
+Index: docker-cli-24.0.5_ce/vendor/github.com/spf13/cobra/doc/rest_docs.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/spf13/cobra/doc/rest_docs.go
++++ docker-cli-24.0.5_ce/vendor/github.com/spf13/cobra/doc/rest_docs.go
 @@ -0,0 +1,186 @@
 +// Copyright 2013-2023 The Cobra Authors
 +//
@@ -11645,11 +11600,10 @@ index 000000000000..2cca6fd778de
 +	}
 +	return string(res)
 +}
-diff --git a/vendor/github.com/spf13/cobra/doc/rest_docs.md b/vendor/github.com/spf13/cobra/doc/rest_docs.md
-new file mode 100644
-index 000000000000..3041c573ab01
+Index: docker-cli-24.0.5_ce/vendor/github.com/spf13/cobra/doc/rest_docs.md
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/spf13/cobra/doc/rest_docs.md
++++ docker-cli-24.0.5_ce/vendor/github.com/spf13/cobra/doc/rest_docs.md
 @@ -0,0 +1,114 @@
 +# Generating ReStructured Text Docs For Your Own cobra.Command
 +
@@ -11765,11 +11719,10 @@ index 000000000000..3041c573ab01
 +    return fmt.Sprintf(":ref:`%s <%s>`", name, ref)
 +}
 +```
-diff --git a/vendor/github.com/spf13/cobra/doc/util.go b/vendor/github.com/spf13/cobra/doc/util.go
-new file mode 100644
-index 000000000000..0aaa07a166d8
+Index: docker-cli-24.0.5_ce/vendor/github.com/spf13/cobra/doc/util.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/spf13/cobra/doc/util.go
++++ docker-cli-24.0.5_ce/vendor/github.com/spf13/cobra/doc/util.go
 @@ -0,0 +1,52 @@
 +// Copyright 2013-2023 The Cobra Authors
 +//
@@ -11823,11 +11776,10 @@ index 000000000000..0aaa07a166d8
 +func (s byName) Len() int           { return len(s) }
 +func (s byName) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }
 +func (s byName) Less(i, j int) bool { return s[i].Name() < s[j].Name() }
-diff --git a/vendor/github.com/spf13/cobra/doc/yaml_docs.go b/vendor/github.com/spf13/cobra/doc/yaml_docs.go
-new file mode 100644
-index 000000000000..2b26d6ec0f3e
+Index: docker-cli-24.0.5_ce/vendor/github.com/spf13/cobra/doc/yaml_docs.go
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/spf13/cobra/doc/yaml_docs.go
++++ docker-cli-24.0.5_ce/vendor/github.com/spf13/cobra/doc/yaml_docs.go
 @@ -0,0 +1,175 @@
 +// Copyright 2013-2023 The Cobra Authors
 +//
@@ -12004,11 +11956,10 @@ index 000000000000..2b26d6ec0f3e
 +
 +	return result
 +}
-diff --git a/vendor/github.com/spf13/cobra/doc/yaml_docs.md b/vendor/github.com/spf13/cobra/doc/yaml_docs.md
-new file mode 100644
-index 000000000000..172e61d12145
+Index: docker-cli-24.0.5_ce/vendor/github.com/spf13/cobra/doc/yaml_docs.md
+===================================================================
 --- /dev/null
-+++ b/vendor/github.com/spf13/cobra/doc/yaml_docs.md
++++ docker-cli-24.0.5_ce/vendor/github.com/spf13/cobra/doc/yaml_docs.md
 @@ -0,0 +1,112 @@
 +# Generating Yaml Docs For Your Own cobra.Command
 +
@@ -12122,11 +12073,10 @@ index 000000000000..172e61d12145
 +	return "/commands/" + strings.ToLower(base) + "/"
 +}
 +```
-diff --git a/vendor/gopkg.in/yaml.v3/LICENSE b/vendor/gopkg.in/yaml.v3/LICENSE
-new file mode 100644
-index 000000000000..2683e4bb1f24
+Index: docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/LICENSE
+===================================================================
 --- /dev/null
-+++ b/vendor/gopkg.in/yaml.v3/LICENSE
++++ docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/LICENSE
 @@ -0,0 +1,50 @@
 +
 +This project is covered by two different licenses: MIT and Apache.
@@ -12178,11 +12128,10 @@ index 000000000000..2683e4bb1f24
 +WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 +See the License for the specific language governing permissions and
 +limitations under the License.
-diff --git a/vendor/gopkg.in/yaml.v3/NOTICE b/vendor/gopkg.in/yaml.v3/NOTICE
-new file mode 100644
-index 000000000000..866d74a7ad79
+Index: docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/NOTICE
+===================================================================
 --- /dev/null
-+++ b/vendor/gopkg.in/yaml.v3/NOTICE
++++ docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/NOTICE
 @@ -0,0 +1,13 @@
 +Copyright 2011-2016 Canonical Ltd.
 +
@@ -12197,11 +12146,10 @@ index 000000000000..866d74a7ad79
 +WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 +See the License for the specific language governing permissions and
 +limitations under the License.
-diff --git a/vendor/gopkg.in/yaml.v3/README.md b/vendor/gopkg.in/yaml.v3/README.md
-new file mode 100644
-index 000000000000..08eb1babddfa
+Index: docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/README.md
+===================================================================
 --- /dev/null
-+++ b/vendor/gopkg.in/yaml.v3/README.md
++++ docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/README.md
 @@ -0,0 +1,150 @@
 +# YAML support for the Go language
 +
@@ -12353,11 +12301,10 @@ index 000000000000..08eb1babddfa
 +  - 4
 +```
 +
-diff --git a/vendor/gopkg.in/yaml.v3/apic.go b/vendor/gopkg.in/yaml.v3/apic.go
-new file mode 100644
-index 000000000000..ae7d049f182a
+Index: docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/apic.go
+===================================================================
 --- /dev/null
-+++ b/vendor/gopkg.in/yaml.v3/apic.go
++++ docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/apic.go
 @@ -0,0 +1,747 @@
 +// 
 +// Copyright (c) 2011-2019 Canonical Ltd
@@ -13106,11 +13053,10 @@ index 000000000000..ae7d049f182a
 +//}
 +//
 +//
-diff --git a/vendor/gopkg.in/yaml.v3/decode.go b/vendor/gopkg.in/yaml.v3/decode.go
-new file mode 100644
-index 000000000000..0173b6982e84
+Index: docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/decode.go
+===================================================================
 --- /dev/null
-+++ b/vendor/gopkg.in/yaml.v3/decode.go
++++ docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/decode.go
 @@ -0,0 +1,1000 @@
 +//
 +// Copyright (c) 2011-2019 Canonical Ltd
@@ -14112,11 +14058,10 @@ index 000000000000..0173b6982e84
 +func isMerge(n *Node) bool {
 +	return n.Kind == ScalarNode && n.Value == "<<" && (n.Tag == "" || n.Tag == "!" || shortTag(n.Tag) == mergeTag)
 +}
-diff --git a/vendor/gopkg.in/yaml.v3/emitterc.go b/vendor/gopkg.in/yaml.v3/emitterc.go
-new file mode 100644
-index 000000000000..0f47c9ca8add
+Index: docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/emitterc.go
+===================================================================
 --- /dev/null
-+++ b/vendor/gopkg.in/yaml.v3/emitterc.go
++++ docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/emitterc.go
 @@ -0,0 +1,2020 @@
 +//
 +// Copyright (c) 2011-2019 Canonical Ltd
@@ -16138,11 +16083,10 @@ index 000000000000..0f47c9ca8add
 +	//emitter.indention = true
 +	return true
 +}
-diff --git a/vendor/gopkg.in/yaml.v3/encode.go b/vendor/gopkg.in/yaml.v3/encode.go
-new file mode 100644
-index 000000000000..de9e72a3e638
+Index: docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/encode.go
+===================================================================
 --- /dev/null
-+++ b/vendor/gopkg.in/yaml.v3/encode.go
++++ docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/encode.go
 @@ -0,0 +1,577 @@
 +//
 +// Copyright (c) 2011-2019 Canonical Ltd
@@ -16721,11 +16665,10 @@ index 000000000000..de9e72a3e638
 +		failf("cannot encode node with unknown kind %d", node.Kind)
 +	}
 +}
-diff --git a/vendor/gopkg.in/yaml.v3/parserc.go b/vendor/gopkg.in/yaml.v3/parserc.go
-new file mode 100644
-index 000000000000..268558a0d632
+Index: docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/parserc.go
+===================================================================
 --- /dev/null
-+++ b/vendor/gopkg.in/yaml.v3/parserc.go
++++ docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/parserc.go
 @@ -0,0 +1,1258 @@
 +//
 +// Copyright (c) 2011-2019 Canonical Ltd
@@ -17985,11 +17928,10 @@ index 000000000000..268558a0d632
 +	parser.tag_directives = append(parser.tag_directives, value_copy)
 +	return true
 +}
-diff --git a/vendor/gopkg.in/yaml.v3/readerc.go b/vendor/gopkg.in/yaml.v3/readerc.go
-new file mode 100644
-index 000000000000..b7de0a89c462
+Index: docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/readerc.go
+===================================================================
 --- /dev/null
-+++ b/vendor/gopkg.in/yaml.v3/readerc.go
++++ docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/readerc.go
 @@ -0,0 +1,434 @@
 +// 
 +// Copyright (c) 2011-2019 Canonical Ltd
@@ -18425,11 +18367,10 @@ index 000000000000..b7de0a89c462
 +	parser.buffer = parser.buffer[:buffer_len]
 +	return true
 +}
-diff --git a/vendor/gopkg.in/yaml.v3/resolve.go b/vendor/gopkg.in/yaml.v3/resolve.go
-new file mode 100644
-index 000000000000..64ae888057a5
+Index: docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/resolve.go
+===================================================================
 --- /dev/null
-+++ b/vendor/gopkg.in/yaml.v3/resolve.go
++++ docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/resolve.go
 @@ -0,0 +1,326 @@
 +//
 +// Copyright (c) 2011-2019 Canonical Ltd
@@ -18757,11 +18698,10 @@ index 000000000000..64ae888057a5
 +	}
 +	return time.Time{}, false
 +}
-diff --git a/vendor/gopkg.in/yaml.v3/scannerc.go b/vendor/gopkg.in/yaml.v3/scannerc.go
-new file mode 100644
-index 000000000000..ca0070108f4e
+Index: docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/scannerc.go
+===================================================================
 --- /dev/null
-+++ b/vendor/gopkg.in/yaml.v3/scannerc.go
++++ docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/scannerc.go
 @@ -0,0 +1,3038 @@
 +//
 +// Copyright (c) 2011-2019 Canonical Ltd
@@ -21801,11 +21741,10 @@ index 000000000000..ca0070108f4e
 +	}
 +	return true
 +}
-diff --git a/vendor/gopkg.in/yaml.v3/sorter.go b/vendor/gopkg.in/yaml.v3/sorter.go
-new file mode 100644
-index 000000000000..9210ece7e972
+Index: docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/sorter.go
+===================================================================
 --- /dev/null
-+++ b/vendor/gopkg.in/yaml.v3/sorter.go
++++ docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/sorter.go
 @@ -0,0 +1,134 @@
 +//
 +// Copyright (c) 2011-2019 Canonical Ltd
@@ -21941,11 +21880,10 @@ index 000000000000..9210ece7e972
 +	}
 +	panic("not a number")
 +}
-diff --git a/vendor/gopkg.in/yaml.v3/writerc.go b/vendor/gopkg.in/yaml.v3/writerc.go
-new file mode 100644
-index 000000000000..b8a116bf9a22
+Index: docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/writerc.go
+===================================================================
 --- /dev/null
-+++ b/vendor/gopkg.in/yaml.v3/writerc.go
++++ docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/writerc.go
 @@ -0,0 +1,48 @@
 +// 
 +// Copyright (c) 2011-2019 Canonical Ltd
@@ -21995,11 +21933,10 @@ index 000000000000..b8a116bf9a22
 +	emitter.buffer_pos = 0
 +	return true
 +}
-diff --git a/vendor/gopkg.in/yaml.v3/yaml.go b/vendor/gopkg.in/yaml.v3/yaml.go
-new file mode 100644
-index 000000000000..8cec6da48d3e
+Index: docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/yaml.go
+===================================================================
 --- /dev/null
-+++ b/vendor/gopkg.in/yaml.v3/yaml.go
++++ docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/yaml.go
 @@ -0,0 +1,698 @@
 +//
 +// Copyright (c) 2011-2019 Canonical Ltd
@@ -22699,11 +22636,10 @@ index 000000000000..8cec6da48d3e
 +	}
 +	return false
 +}
-diff --git a/vendor/gopkg.in/yaml.v3/yamlh.go b/vendor/gopkg.in/yaml.v3/yamlh.go
-new file mode 100644
-index 000000000000..7c6d00770619
+Index: docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/yamlh.go
+===================================================================
 --- /dev/null
-+++ b/vendor/gopkg.in/yaml.v3/yamlh.go
++++ docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/yamlh.go
 @@ -0,0 +1,807 @@
 +//
 +// Copyright (c) 2011-2019 Canonical Ltd
@@ -23512,11 +23448,10 @@ index 000000000000..7c6d00770619
 +
 +	document *yaml_document_t // The currently emitted document.
 +}
-diff --git a/vendor/gopkg.in/yaml.v3/yamlprivateh.go b/vendor/gopkg.in/yaml.v3/yamlprivateh.go
-new file mode 100644
-index 000000000000..e88f9c54aecb
+Index: docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/yamlprivateh.go
+===================================================================
 --- /dev/null
-+++ b/vendor/gopkg.in/yaml.v3/yamlprivateh.go
++++ docker-cli-24.0.5_ce/vendor/gopkg.in/yaml.v3/yamlprivateh.go
 @@ -0,0 +1,198 @@
 +// 
 +// Copyright (c) 2011-2019 Canonical Ltd
@@ -23716,10 +23651,10 @@ index 000000000000..e88f9c54aecb
 +	return 0
 +
 +}
-diff --git a/vendor/modules.txt b/vendor/modules.txt
-index 1baed2ba4d14..c3e1679730a4 100644
---- a/vendor/modules.txt
-+++ b/vendor/modules.txt
+Index: docker-cli-24.0.5_ce/vendor/modules.txt
+===================================================================
+--- docker-cli-24.0.5_ce.orig/vendor/modules.txt
++++ docker-cli-24.0.5_ce/vendor/modules.txt
 @@ -18,9 +18,17 @@ github.com/containerd/containerd/errdefs
  github.com/containerd/containerd/log
  github.com/containerd/containerd/pkg/userns
@@ -23738,14 +23673,14 @@ index 1baed2ba4d14..c3e1679730a4 100644
  # github.com/docker/distribution v2.8.2+incompatible
  ## explicit
  github.com/docker/distribution
-@@ -224,12 +232,16 @@ github.com/prometheus/procfs/internal/util
+@@ -224,12 +232,16 @@ github.com/prometheus/procfs/internal/ut
  # github.com/rivo/uniseg v0.2.0
  ## explicit; go 1.12
  github.com/rivo/uniseg
 +# github.com/russross/blackfriday/v2 v2.1.0
 +## explicit
 +github.com/russross/blackfriday/v2
- # github.com/sirupsen/logrus v1.9.0
+ # github.com/sirupsen/logrus v1.9.3
  ## explicit; go 1.13
  github.com/sirupsen/logrus
  # github.com/spf13/cobra v1.7.0
@@ -23755,7 +23690,7 @@ index 1baed2ba4d14..c3e1679730a4 100644
  # github.com/spf13/pflag v1.0.5
  ## explicit; go 1.12
  github.com/spf13/pflag
-@@ -391,6 +403,9 @@ google.golang.org/protobuf/types/known/timestamppb
+@@ -391,6 +403,9 @@ google.golang.org/protobuf/types/known/t
  # gopkg.in/yaml.v2 v2.4.0
  ## explicit; go 1.15
  gopkg.in/yaml.v2
@@ -23765,6 +23700,3 @@ index 1baed2ba4d14..c3e1679730a4 100644
  # gotest.tools/v3 v3.4.0
  ## explicit; go 1.13
  gotest.tools/v3/assert
--- 
-2.41.0
-

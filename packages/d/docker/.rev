@@ -1299,4 +1299,13 @@ delete request for docker-image-migrator was submitted in parallel.</comment>
     <comment></comment>
     <requestid>1099610</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>3418825d743dc6604730ab198367a124</srcmd5>
+    <version>24.0.5_ce</version>
+    <time>1690370525</time>
+    <user>anag+factory</user>
+    <comment>- update to Docker 24.0.5-ce. See upstream changelong online at
+  &lt;https://docs.docker.com/engine/release-notes/24.0/#2405&gt;. bsc#1213229</comment>
+    <requestid>1100698</requestid>
+  </revision>
 </revisionlist>
