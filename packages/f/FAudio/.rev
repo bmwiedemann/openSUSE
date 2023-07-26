@@ -360,4 +360,23 @@
     <comment></comment>
     <requestid>1072808</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2887da9ebdf114d4f7be522a2bbe0a7a</srcmd5>
+    <version>23.07</version>
+    <time>1690370540</time>
+    <user>anag+factory</user>
+    <comment>- update to 23.07:
+  * FACT: When parsing SoundBanks, explicitly update the read
+    offset for each data region
+  * XNA_Song: Fix possible truncation of total seconds when
+    opening QOA files
+  * Xbox GDK support is now considered Ready to Ship
+  * UWP support is now deprecated and will be removed in FAudio
+    24.01
+  * XNA_Song now supports QOA input files
+  * FACT: Add support for `WAVEBANKSTREAMING_INVALIDCONTENT`
+    notifications
+  * Added FilterWetDryMixEXT extension</comment>
+    <requestid>1099949</requestid>
+  </revision>
 </revisionlist>
