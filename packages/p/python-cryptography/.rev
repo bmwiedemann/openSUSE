@@ -943,4 +943,12 @@
   and coverage measurement; bsc#1213005).</comment>
     <requestid>1098185</requestid>
   </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>42273c9b30549482fbdad5b93317c619</srcmd5>
+    <version>41.0.2</version>
+    <time>1690370547</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1100618</requestid>
+  </revision>
 </revisionlist>

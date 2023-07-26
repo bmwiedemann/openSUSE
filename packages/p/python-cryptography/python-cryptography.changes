@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Tue Jul 11 13:44:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- update to 41.0.2:
+- update to 41.0.2 (bsc#1213378, CVE-2023-38325):
   * Fixed bugs in creating and parsing SSH certificates where
     critical options with values were handled incorrectly.
     Certificates are now created correctly and parsing accepts
