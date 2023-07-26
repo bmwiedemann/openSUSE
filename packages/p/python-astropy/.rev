@@ -1559,4 +1559,12 @@
 - Remove unbundling of cfitsio -- gh#astropy/astropy#14311</comment>
     <requestid>1096299</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>466c4282787955c0f6ebbbb8c0061f71</srcmd5>
+    <version>5.3.1</version>
+    <time>1690370605</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1100172</requestid>
+  </revision>
 </revisionlist>
