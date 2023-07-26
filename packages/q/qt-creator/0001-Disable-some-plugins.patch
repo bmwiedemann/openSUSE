@@ -15,7 +15,7 @@ which was never accepted upstream [1]
  1 file changed, 2 deletions(-)
 
 diff --git a/src/plugins/CMakeLists.txt b/src/plugins/CMakeLists.txt
-index 4b6e3c43..c78bb33c 100644
+index 4fd8b65..59557a8 100644
 --- a/src/plugins/CMakeLists.txt
 +++ b/src/plugins/CMakeLists.txt
 @@ -7,7 +7,6 @@ add_subdirectory(serialterminal)
@@ -26,7 +26,7 @@ index 4b6e3c43..c78bb33c 100644
  add_subdirectory(welcome)
  
  # Level 2: (only depends on Level 1 and below)
-@@ -40,7 +39,6 @@ add_subdirectory(vcsbase)
+@@ -41,7 +40,6 @@ add_subdirectory(vcsbase)
  # Level 5:
  add_subdirectory(bazaar)
  add_subdirectory(beautifier)
@@ -34,6 +34,3 @@ index 4b6e3c43..c78bb33c 100644
  add_subdirectory(clearcase)
  add_subdirectory(cvs)
  add_subdirectory(designer)
--- 
-2.32.0
-

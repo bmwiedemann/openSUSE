@@ -181,4 +181,12 @@ The package is now offering Qt5 and Qt6 flavors and shall replace libqt5-creator
   * 0001-QmlDesigner-Fix-puppet-build-after-quick3d-private-A.patch</comment>
     <requestid>1093448</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>40e66f2e3a4161f3f2bc85d8ca91e859</srcmd5>
+    <version>11.0.0</version>
+    <time>1690370598</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1100048</requestid>
+  </revision>
 </revisionlist>

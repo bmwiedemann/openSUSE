@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 20 15:17:45 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Use a mirror to download sources for all Qt packages. Upstream
+  servers are very slow since a couple weeks.
+- Update to 11.0.0:
+  https://www.qt.io/blog/qt-creator-11-released
+
+-------------------------------------------------------------------
 Thu Jun 15 14:20:32 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 10.0.2:

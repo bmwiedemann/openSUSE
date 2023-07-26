@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 10.0.2
-%define short_version 10.0
+%define real_version 11.0.0
+%define short_version 11.0
 %define tar_name qt-creator-opensource-src
 %define tar_suffix %{nil}
 #
@@ -39,7 +39,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 # Private QML imports
-%global __requires_exclude qmlimport\\((CameraGeometry|GridGeometry|HelperWidgets|LightUtils|LineGeometry|MouseArea3D|QtQuickDesignerColorPalette|QtQuickDesignerTheme|SelectionBoxGeometry|StudioControls|StudioTheme).*
+%global __requires_exclude qt6qmlimport\\((CameraGeometry|GridGeometry|HelperWidgets|LightUtils|LineGeometry|MaterialToolBarAction|MouseArea3D|QtQuickDesignerColorPalette|QtQuickDesignerTheme|SelectionBoxGeometry|StudioControls|StudioFonts|StudioTheme|TextureToolBarAction|ToolBar|WebFetcher).*
 
 # Has mocks for quite a few components, which are only pulled in when actually used
 %global __requires_exclude_from %{_datadir}/qtcreator/qml/qmlpuppet/
@@ -50,7 +50,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 Name:           %{pkgname_prefix}-creator
-Version:        10.0.2
+Version:        11.0.0
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -60,7 +60,7 @@ Summary:        Integrated Development Environment targeting Qt apps
 # many files are dual licensed 'LGPL-3.0-only or (GPL-2.0-or-later OR GPL-3.0-or-later + KDE Free Qt Foundation option)', we'll use LGPL-3.0-only for these files
 License:        BSD-3-Clause AND GPL-3.0-only AND GPL-3.0-with-Qt-Company-Qt-exception-1.1 AND (LGPL-2.1-only OR LGPL-3.0-only) AND LGPL-3.0-only
 URL:            https://www.qt.io/product/development-tools
-Source:         https://download.qt.io/official_releases/qtcreator/%{short_version}/%{real_version}%{tar_suffix}/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
+Source:         https://www.nic.funet.fi/pub/mirrors/download.qt-project.org/official_releases/qtcreator/%{short_version}/%{real_version}%{tar_suffix}/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source1:        qt-creator-rpmlintrc
 # Patches 0-10 are upstream changes
 # Patches 11-20 are openSUSE changes

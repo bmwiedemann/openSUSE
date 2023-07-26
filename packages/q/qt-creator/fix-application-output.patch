@@ -9,13 +9,13 @@ Workaround: set QT_LOGGING_TO_CONSOLE and QT_FORCE_STDERR_LOGGING
  src/app/main.cpp | 3 +++
  1 file changed, 3 insertions(+)
 
-Index: qt-creator-opensource-src-9.0.1/src/app/main.cpp
-===================================================================
---- qt-creator-opensource-src-9.0.1.orig/src/app/main.cpp
-+++ qt-creator-opensource-src-9.0.1/src/app/main.cpp
-@@ -470,6 +470,10 @@ int main(int argc, char **argv)
-             {{"LD_PRELOAD", "", Utils::EnvironmentItem::Unset}});
-     }
+diff --git a/src/app/main.cpp b/src/app/main.cpp
+index d4c4a47..1f1ddc8 100644
+--- a/src/app/main.cpp
++++ b/src/app/main.cpp
+@@ -519,6 +519,10 @@ int main(int argc, char **argv)
+     restoreEnvVarFromSquish("SQUISH_SHELL_ORIG_DYLD_LIBRARY_PATH", "DYLD_LIBRARY_PATH");
+     restoreEnvVarFromSquish("SQUISH_ORIG_DYLD_FRAMEWORK_PATH", "DYLD_FRAMEWORK_PATH");
  
 +    // Force Qt to log to stderr
 +    Utils::Environment::modifySystemEnvironment(
