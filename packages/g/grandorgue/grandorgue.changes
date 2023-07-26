@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jul 23 13:47:18 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 3.12.2.
+  Changelog: https://github.com/GrandOrgue/grandorgue/releases/tag/3.12.2-1
+  - Fixed size of the Organ Settings Dialog https://github.com/GrandOrgue/grandorgue/issues/1415
+  - Fixed an incorrect dialog window icon
+  - Fixed absence of the Help button on the Organ Setting dialog https://github.com/GrandOrgue/grandorgue/issues/1416
+  - Fixed displaying buttons if the manual is not visible https://github.com/GrandOrgue/grandorgue/issues/1566
+  - Changed the default value of the CombinationsStoreNonDisplayedDrawstops ODF settings to false
+  - Fixed capability of running on MacOs 11.3
+  - Fixed "The device does not support requested channel count" error when using an USB audio card on MacOS https://github.com/GrandOrgue/grandorgue/issues/1550
+
+-------------------------------------------------------------------
 Tue Jun  6 18:46:16 UTC 2023 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 3.12.1.
