@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul 20 08:34:44 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Use a mirror to download sources for all Qt packages. Upstream
+  servers are very slow since a couple weeks.
+- Update to 6.5.2
+  * https://www.qt.io/blog/qt-6.5.2-released-1
+- Drop patches, merged upstream:
+  * 0001-Schannel-Reject-certificate-not-signed-by-a-configur.patch
+  * 0001-Ssl-Copy-the-on-demand-cert-loading-bool-from-defaul.patch
+  * 0001-tabbar-fix.patch
+- Add patch:
+  * CVE-2023-38197-qtbase-6.5.diff (boo#1213326, CVE-2023-38197)
+
+-------------------------------------------------------------------
 Fri Jun 30 15:13:07 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update subpackages requirements
