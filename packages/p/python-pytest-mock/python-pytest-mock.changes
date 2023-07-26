@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 24 19:10:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.11.1:
+  * Fixed introspection for failed ``assert_has_calls``
+  * Updated type annotations for ``mocker.patch`` and
+    ``mocker.spy`` (`#364`_).
+
+-------------------------------------------------------------------
 Fri Apr 21 12:31:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

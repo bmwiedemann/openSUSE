@@ -266,4 +266,15 @@
     <comment></comment>
     <requestid>1082432</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>486d1a675aa062e478dc0b0bdc8b472a</srcmd5>
+    <version>3.11.1</version>
+    <time>1690370502</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.11.1:
+  * Fixed introspection for failed ``assert_has_calls``
+  * Updated type annotations for ``mocker.patch`` and
+    ``mocker.spy`` (`#364`_).</comment>
+    <requestid>1100451</requestid>
+  </revision>
 </revisionlist>

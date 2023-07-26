@@ -16,10 +16,9 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-pytest-mock
-Version:        3.10.0
+Version:        3.11.1
 Release:        0
 Summary:        Thin-wrapper around the mock package for easier use with pytest
 License:        MIT
