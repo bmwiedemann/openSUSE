@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jul 11 17:50:52 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.20.6 (released 2023-07-11) includes a security fix to the
+  net/http package, as well as bug fixes to the compiler, cgo, the
+  cover tool, the go command, the runtime, and the crypto/ecdsa,
+  go/build, go/printer, net/mail, and text/template packages.
+  Refs boo#1206346 go1.20 release tracking.
+  CVE-2023-29406
+  * go#61076 go#60374 boo#1213229 security: fix CVE-2023-29406 net/http: insufficient sanitization of Host header
+  * go#60352 cmd/go: go mod tidy introduces ambiguous imports in pruned modules
+  * go#60535 runtime: TLS slot index over 64 and crash
+  * go#60675 cmd/compile: internal compiler error: out of range for go.shape.int64
+  * go#60698 cmd/go: go list fails with submodules which have test-only dependencies
+  * go#60744 crypto/ecdsa: P521 ecdsa.Verify panics with malformed message
+  * go#60754 cmd/go: panic: LoadImport called with empty package path when listing GOROOT/test/*.go
+  * go#60760 runtime: checkdead fires due to suspected race in the Go runtime when GOMAXPROCS=1 on AWS
+  * go#60802 text/template: key/value assignment is reversed within range loop
+  * go#60845 runtime: SIGSEGV in race + coverage mode
+  * go#60849 cmd/go: go test deadlocked without enforcing timeouts when killed with ^C
+  * go#60874 net/mail: mail.ReadMessage in 1.20 cannot parse mbox headers
+  * go#60875 net/mail: characters allowed in RFC 5322 are invalid while parsing email header
+  * go#60927 x/tools/go/analysis/unitchecker: TestVetStdlib failures
+  * go#60947 crypto/x509: TestSystemVerify/EKULeafValid fails on LUCI
+  * go#60949 runtime: goroutines that stop after calling runtime.RaceDisable break race detector
+  * go#61055 runtime: TestWindowsStackMemory flakes on windows-386-2016
+
+-------------------------------------------------------------------
 Tue Jun  6 19:13:57 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.20.5 (released 2023-06-06) includes four security fixes to
