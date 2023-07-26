@@ -25,6 +25,8 @@ URL:            https://gitlab.gnome.org/World/dLeyna
 Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM dLeyna-no-python-shebang.patch -- Do not carry /usr/bin/python shebang in python module files
 Patch0:         dLeyna-no-python-shebang.patch
+# PATCH-FIX-UPSTREAM 61d24fdc.patch dimstar@opensuse.org -- Fix typos for Meson 1.2 compatibility
+Patch1:         https://gitlab.gnome.org/World/dLeyna/-/commit/61d24fdc.patch
 
 BuildRequires:  docutils
 BuildRequires:  meson >= 0.54.0
@@ -116,6 +118,7 @@ management and an IPC abstraction API.
 %{python_sitelib}/dLeyna/mediaconsole.py
 %{python_sitelib}/dLeyna/rendererconsole.py
 %{python_sitelib}/dLeyna/upload_sync_controller.py
+%{python_sitelib}/dLeyna/__pycache__/
 
 %files devel
 %{_includedir}/dleyna-1.0/
