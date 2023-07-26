@@ -139,4 +139,22 @@
     <comment></comment>
     <requestid>1082447</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>cb4ab428ac600b2a15c576871618e21c</srcmd5>
+    <version>2.0.2</version>
+    <time>1690370507</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.2:
+  * Removed support for Python &lt; 3.7.
+  * Applied pyupgrade --py37-plus.
+  * Minimal mypy fixes and dropped Python 2 support code.
+  * Migrated packaging to hatch.
+  * Dropped deprecated APIs of old makegateway names.
+  * Removed py testing dependency.
+  * Explicitly pass encoding when opening files in the gateway
+    to get rid of warnings when using PYTHONWARNDEFAULTENCODING=1 (#195).
+  * Fixed error when loading source code files from a path
+    containing non-ascii characters.</comment>
+    <requestid>1100466</requestid>
+  </revision>
 </revisionlist>

@@ -18,17 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-execnet
-Version:        1.9.0
+Version:        2.0.2
 Release:        0
 Summary:        Rapid multi-Python deployment
 License:        MIT
 Group:          Development/Libraries/Python
 URL:            https://github.com/pytest-dev/execnet
 Source0:        https://files.pythonhosted.org/packages/source/e/execnet/execnet-%{version}.tar.gz
+BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module py}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  procps
 BuildRequires:  python-rpm-macros
@@ -48,15 +48,12 @@ API targetting the following uses:
 
 %prep
 %setup -q -n execnet-%{version}
-sed -i "1d" execnet/script/shell.py execnet/script/socketserver.py
 
 %build
-%python_build
-# fix non-executable-script error
-sed -i "1d" execnet/script/shell.py execnet/script/socketserver.py
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -64,8 +61,8 @@ sed -i "1d" execnet/script/shell.py execnet/script/socketserver.py
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGELOG.rst README.rst
+%doc README.rst
 %{python_sitelib}/execnet
-%{python_sitelib}/execnet-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/execnet-%{version}.dist-info
 
 %changelog

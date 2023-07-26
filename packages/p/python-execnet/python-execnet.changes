@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul 24 20:13:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.2:
+  * Removed support for Python < 3.7.
+  * Applied pyupgrade --py37-plus.
+  * Minimal mypy fixes and dropped Python 2 support code.
+  * Migrated packaging to hatch.
+  * Dropped deprecated APIs of old makegateway names.
+  * Removed py testing dependency.
+  * Explicitly pass encoding when opening files in the gateway
+    to get rid of warnings when using PYTHONWARNDEFAULTENCODING=1 (#195).
+  * Fixed error when loading source code files from a path
+    containing non-ascii characters.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:24:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
