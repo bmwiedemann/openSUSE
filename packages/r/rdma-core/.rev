@@ -597,4 +597,12 @@
   - Revert-Update-kernel-headers.patch</comment>
     <requestid>1088781</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>db587fe444dbfebbbb28a503ae79739b</srcmd5>
+    <version>47.0</version>
+    <time>1690370529</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1100645</requestid>
+  </revision>
 </revisionlist>
