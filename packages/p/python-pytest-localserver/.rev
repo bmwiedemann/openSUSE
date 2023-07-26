@@ -63,4 +63,16 @@
     in the classifiers)</comment>
     <requestid>1084891</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>644f48d8060806a866d6d726c91b3160</srcmd5>
+    <version>0.8.0</version>
+    <time>1690370501</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.8.0:
+  * Improve deployment workflow to use trusted publishing and
+    upload to Test PyPI first
+  * Remove a bunch of obsolete code
+  * Clean up the smtp module's driver code</comment>
+    <requestid>1100447</requestid>
+  </revision>
 </revisionlist>

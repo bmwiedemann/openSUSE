@@ -22,7 +22,7 @@
 %bcond_with extras
 %{?sle15_python_module_pythons}
 Name:           python-pytest-localserver
-Version:        0.7.1
+Version:        0.8.0
 Release:        0
 Summary:        Plugin for py.test to test server connections locally
 License:        MIT

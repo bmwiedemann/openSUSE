@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 24 19:05:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.0:
+  * Improve deployment workflow to use trusted publishing and
+    upload to Test PyPI first
+  * Remove a bunch of obsolete code
+  * Clean up the smtp module's driver code
+
+-------------------------------------------------------------------
 Thu May  4 22:19:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.7.1:
