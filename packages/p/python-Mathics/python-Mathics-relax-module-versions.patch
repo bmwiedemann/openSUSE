@@ -1,0 +1,30 @@
+Index: Mathics3-6.0.1/setup.py
+===================================================================
+--- Mathics3-6.0.1.orig/setup.py
++++ Mathics3-6.0.1/setup.py
+@@ -64,9 +64,9 @@ elif sys.version_info[:2] == (3, 6):
+         sys.exit(-1)
+ else:
+     INSTALL_REQUIRES += [
+-        "numpy<=1.24",
++        "numpy",
+         "llvmlite",
+-        "sympy>=1.8, < 1.12",
++        "sympy>=1.8",
+         "pillow >= 9.2",
+     ]
+ 
+Index: Mathics3-6.0.1/Mathics3.egg-info/requires.txt
+===================================================================
+--- Mathics3-6.0.1.orig/Mathics3.egg-info/requires.txt
++++ Mathics3-6.0.1/Mathics3.egg-info/requires.txt
+@@ -1,7 +1,7 @@
+ Mathics-Scanner>=1.3.0
+-numpy<=1.24
++numpy
+ llvmlite
+-sympy<1.12,>=1.8
++sympy>=1.8
+ pillow>=9.2
+ mpmath>=1.2.0
+ palettable

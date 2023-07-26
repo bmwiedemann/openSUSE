@@ -39,6 +39,8 @@ Summary:        A general-purpose computer algebra system
 License:        Apache-2.0 AND BSD-3-Clause AND GPL-3.0-only AND MIT
 URL:            https://mathics.github.io/
 Source0:        https://github.com/Mathics3/mathics-core/releases/download/%{version}/%{pyname}-%{version}.tar.gz
+# PATCH-FEATURE-OPENSUSE python-Mathics-relax-module-versions.patch gh#mathics-core/issues#881 badshah400@gmail.com -- Relax upper limits on sympy and numpy to get packages building for Tumbleweed
+Patch0:         python-Mathics-relax-module-versions.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Django >= 1.8}
 BuildRequires:  %{python_module colorama}
@@ -65,6 +67,7 @@ Requires:       python-sympy >= 1.10.1
 Requires:       (python-Pillow >= 9.2 if python-base >= 3.7)
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+Recommends:     python-scikit-image >= 0.17
 %if %{with test}
 # SECTION For tests
 BuildRequires:  %{python_module Mathics}
@@ -76,6 +79,7 @@ BuildRequires:  %{python_module llvmlite}
 BuildRequires:  %{python_module palettable}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module scikit-image >= 0.17}
 # /SECTION
 %endif
 Provides:       python-Mathics3 = %{version}
@@ -95,9 +99,6 @@ do
 done
 popd
 
-# Fix incorrect required version for numpy in egg-info
-sed -i "s/numpy<=1.24/numpy<1.25/" setup.py Mathics3.egg-info/requires.txt
-
 %build
 %if %{without test}
 export USE_CYTHON=1
@@ -116,7 +117,8 @@ export USE_CYTHON=1
 %check
 # Home page tests require django server up and running, test_gudermannian needs network access
 # test_image: https://github.com/Mathics3/mathics-core/issues/837
-%pytest_arch -k 'not (test_home_page or test_gudermannian or test_image)'
+# test_calculus: https://github.com/Mathics3/mathics-core/issues/881
+%pytest_arch -k 'not (test_home_page or test_gudermannian or test_image or test_calculus)'
 %endif
 
 %if %{without test}

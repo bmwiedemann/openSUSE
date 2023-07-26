@@ -5,6 +5,9 @@ Tue Apr 11 07:11:25 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
   python-scipy.
 - Add necessary Requires: python-requests, python-Cython,
   python-Pillow.
+- Add python-Mathics-relax-module-versions.patch: relax sympy and
+  numpy upper limits on requirements as the otherwise unsupported
+  sympy 1.12 and numpy 1.24.2 are in Tumbleweed.
 
 -------------------------------------------------------------------
 Tue Mar 14 10:37:24 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
