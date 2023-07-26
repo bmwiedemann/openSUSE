@@ -1,7 +1,7 @@
 #
 # spec file for package man
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,8 @@ Patch8:         man-db-2.9.4.patch
 # PATCH-FEATURE-OPENSUSE -- Add documentation about man0 section (header files)
 Patch9:         man-db-2.6.3-man0.dif
 Patch10:        man-db-2.9.4-alternitive.dif
-Patch11:        harden_man-db.service.patch
+# PATCH-FEATURE-OPENSUSE -- Propose to read man pages online
+Patch12:        man-propose-online.patch
 BuildRequires:  automake
 BuildRequires:  flex
 BuildRequires:  gdbm-devel
@@ -107,7 +108,7 @@ printer (using groff).
 %patch9 -b .p9
 %patch10 -b .libalernative
 rm -f configure
-%patch11 -p1 -b .p11
+%patch12 -p1 -b .p12
 
 %build
 %global optflags %{optflags} -funroll-loops -pipe -Wall

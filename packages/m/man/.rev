@@ -938,4 +938,17 @@
 - drop man-db-2.7.1-firefox.dif (upstream)</comment>
     <requestid>998765</requestid>
   </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>1ee55eaf0baed5f4e2089655adc838dc</srcmd5>
+    <version>2.10.2</version>
+    <time>1690370520</time>
+    <user>anag+factory</user>
+    <comment>- Remove harden_man-db.service.patch as already done upstream 
+  at the end of the service file man-db.service
+
+- Add man-propose-online.patch: if patch was not found locally,
+  propose to read it online, offering a URL where it could possibly
+  be found.</comment>
+    <requestid>1100562</requestid>
+  </revision>
 </revisionlist>

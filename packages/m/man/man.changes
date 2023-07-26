@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May 25 06:37:13 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Remove harden_man-db.service.patch as already done upstream 
+  at the end of the service file man-db.service
+
+-------------------------------------------------------------------
+Mon Apr  3 14:39:03 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add man-propose-online.patch: if patch was not found locally,
+  propose to read it online, offering a URL where it could possibly
+  be found.
+
+-------------------------------------------------------------------
 Tue Aug 23 06:13:49 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Corrrect some offsets of patch hunks
