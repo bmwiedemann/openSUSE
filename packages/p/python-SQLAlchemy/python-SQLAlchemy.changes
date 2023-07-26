@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 25 18:42:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.19:
+  * Various bugfixes, see
+  https://docs.sqlalchemy.org/en/20/changelog/changelog_20.html#change-2.0.19 
+
+-------------------------------------------------------------------
 Mon Jun 19 20:22:29 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.16:
