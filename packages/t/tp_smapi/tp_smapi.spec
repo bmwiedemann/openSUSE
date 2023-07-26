@@ -1,7 +1,7 @@
 #
 # spec file for package tp_smapi
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,21 +15,23 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           tp_smapi
 Summary:        IBM ThinkPad hardware functions driver
 Version:        0.43
-Release:        1
+Release:        0
 License:        GPL-2.0-or-later
 Group:          System/Kernel
-Url:            https://github.com/linux-thinkpad/tp_smapi
+URL:            https://github.com/linux-thinkpad/tp_smapi
 Source:         tp_smapi-%{version}.tar.gz
+Patch0:         kernel_64.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %kernel_module_package_buildreqs
 BuildRequires:  kernel-source
 BuildRequires:  kernel-syms
 BuildRequires:  module-init-tools
 ExclusiveArch:  %ix86 x86_64
-Requires:	kernel-desktop
+Requires:       kernel-desktop
 
 %suse_kernel_module_package -p -n tp_smapi kdump um
 
@@ -41,6 +43,7 @@ and direct access to the embedded controller.
 
 %prep
 %setup -n tp_smapi-%{version}
+%patch0 -p2
 set -- *
 mkdir source
 mv "$@" source/
