@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 24 18:40:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.21.1:
+  * Output a proper error message when an invalid
+    ``asyncio_mode`` is selected.
+  * Extend warning message about unclosed event loops with
+    additional possible cause.
+  * Previously, some tests reported "skipped" or "xfailed" as a
+    result. Now all tests report a "success" result.
+
+-------------------------------------------------------------------
 Thu May  4 22:36:44 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.21.0:

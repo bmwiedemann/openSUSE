@@ -159,4 +159,18 @@ required by mycroft-core</comment>
     up and tearing down the event_loop fixture.</comment>
     <requestid>1084898</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1802c37b46016341b31359ad8ad4cfca</srcmd5>
+    <version>0.21.1</version>
+    <time>1690370499</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.21.1:
+  * Output a proper error message when an invalid
+    ``asyncio_mode`` is selected.
+  * Extend warning message about unclosed event loops with
+    additional possible cause.
+  * Previously, some tests reported &quot;skipped&quot; or &quot;xfailed&quot; as a
+    result. Now all tests report a &quot;success&quot; result.</comment>
+    <requestid>1100438</requestid>
+  </revision>
 </revisionlist>
