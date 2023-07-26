@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  5 08:17:39 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Move data_dir from /var/mpi-selector to /etc/mpi-selector to solve ALP issues
+- Auto-migrate registered MPI from the old to the new directory
+- Update mpi-selector-perl_path.patch to fix perl path in mpi-selector-menu
+
+-------------------------------------------------------------------
 Tue Jun  3 11:24:34 CEST 2014 - pth@suse.de
 
 - Update to OFED 3.12 final.

@@ -1,7 +1,7 @@
 #
 # spec file for package mpi-selector
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,15 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define old_datadir %{_localstatedir}
+%define data_dir    %{_sysconfdir}
+
 Name:           mpi-selector
-Url:            http://www.openfabrics.org
+URL:            http://www.openfabrics.org
 Summary:        Tool to provide defaults for which MPI implementation to use
 Version:        1.0.3
 Release:        0
@@ -28,7 +31,9 @@ Patch3:         mpi-selector-perl_path.patch
 Patch4:         mpi-selector-no_bang_line.patch
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  automake autoconf libtool
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
 %{perl_requires}
 
 %description
@@ -41,24 +46,37 @@ The default can be changed easily via the mpi-selector command --
 editing of shell startup files is not required.
 
 %prep
-%setup -q 
-%patch3
+%setup -q
+%patch3 -p1
 %patch4
 
 %build
-%configure --with-shell-startup-dir=/etc/profile.d
+%configure --with-shell-startup-dir=/etc/profile.d --localstatedir=%{data_dir}
 make
 
 %install
 make DESTDIR=%{buildroot} install
+mkdir -p %{buildroot}%{data_dir}/%{name}/data
+
+%post
+if [ $1 == 2 ]; then
+    # During update, migrate file from older path if necessary
+    if [ -d "%{old_datadir}/%{name}/data" ]; then
+	mv -u %{old_datadir}/%{name}/data/* %{data_dir}/%{name}/data
+	rm -Rf %{old_datadir}/%{name}/data/
+    fi
+fi
 
 %files
 %defattr(-, root, root, -)
-%doc README LICENSE
+%doc README
+%license LICENSE
 %{_bindir}/mpi-selector
 %{_bindir}/mpi-selector-menu
 %{_mandir}/man1/mpi-selector.*
 %{_mandir}/man1/mpi-selector-menu.*
 %config %attr(644,root,root) /etc/profile.d/*
+%dir %{data_dir}/%{name}
+%dir %{data_dir}/%{name}/data
 
 %changelog
