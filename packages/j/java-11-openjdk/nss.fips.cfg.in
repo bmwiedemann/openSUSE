@@ -4,3 +4,5 @@ nssSecmodDirectory = @NSS_SECMOD@
 nssDbMode = readOnly
 nssModule = fips
 
+attributes(*,CKO_SECRET_KEY,CKK_GENERIC_SECRET)={ CKA_SIGN=true }
+

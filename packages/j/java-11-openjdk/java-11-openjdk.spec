@@ -37,8 +37,8 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       19
-%global buildver        7
+%global updatever       20
+%global buildver        8
 %global openjdk_repo    jdk11u
 %global openjdk_tag     jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}.%{interimver}.%{updatever}%{?patchver:.%{patchver}}-%{buildver}
@@ -210,7 +210,6 @@ Patch12:        adlc-parser.patch
 # Fix: implicit-pointer-decl
 Patch13:        implicit-pointer-decl.patch
 #
-Patch14:        system-crypto-policy.patch
 Patch15:        system-pcsclite.patch
 Patch16:        missing-return.patch
 Patch17:        nss-security-provider.patch
@@ -488,7 +487,6 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch10 -p1
 %patch12 -p1
 %patch13 -p1
-%patch14 -p1
 
 %if %{with_system_pcsc}
 %patch15 -p1
