@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 18 08:06:15 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add upstream patches to fix build with meson 1.2.0:
+  + a10c57bd.patch: Add missing "s" to wrap file syntax.
+  + 884639bd.patch: properly spell [provide] in *.wrap files.
+
+-------------------------------------------------------------------
 Sat Jul  1 16:33:43 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.6.4:

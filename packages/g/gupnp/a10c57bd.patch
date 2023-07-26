@@ -1,0 +1,23 @@
+From a10c57bd32fbd0dc59eb6703454360ea564e2ffc Mon Sep 17 00:00:00 2001
+From: Jens Georg <mail@jensge.org>
+Date: Sun, 9 Jul 2023 21:49:47 +0200
+Subject: [PATCH] build: Add missing "s" to wrap file syntax
+
+---
+ subprojects/gssdp-1.6.wrap | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/subprojects/gssdp-1.6.wrap b/subprojects/gssdp-1.6.wrap
+index 8adc1a2..ac1de18 100644
+--- a/subprojects/gssdp-1.6.wrap
++++ b/subprojects/gssdp-1.6.wrap
+@@ -4,5 +4,5 @@ revision = master
+ depth = 1
+  
+ [provide]
+-dependency_name = gssdp-1.6
++dependency_names = gssdp-1.6
+ 
+-- 
+GitLab
+

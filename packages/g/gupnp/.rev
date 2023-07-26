@@ -651,4 +651,12 @@ Fix CVE-2021-33516 ( boo#1186590 ) (forwarded request 896477 from susnux)</comme
 New stable release</comment>
     <requestid>1096873</requestid>
   </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>f2df6369dad016dfa6f08033904ba96d</srcmd5>
+    <version>1.6.4</version>
+    <time>1690370488</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1099349</requestid>
+  </revision>
 </revisionlist>

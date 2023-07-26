@@ -29,6 +29,10 @@ Group:          Development/Libraries/C and C++
 URL:            http://www.gupnp.org/
 Source0:        https://download.gnome.org/sources/gupnp/1.6/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
+# PATCH-FIX-UPSTREAM 884639bd.patch dimstar@opensuse.org -- properly spell [provide] in *.wrap files.
+Patch0:         884639bd.patch
+# PATCH-FIX-UPSTREAM a10c57bd.patch dimstar@opensuse.org -- Add missing "s" to wrap file syntax.
+Patch1:         a10c57bd.patch
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  meson >= 0.54.0
