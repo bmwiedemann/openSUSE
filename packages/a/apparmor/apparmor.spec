@@ -699,6 +699,7 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %files -n pam_apparmor
 %defattr(444,root,root,755)
 %attr(555,root,root) %{_pamdir}/pam_apparmor.so
+%doc changehat/pam_apparmor/README
 %endif
 
 %if %{with tomcat}

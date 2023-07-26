@@ -2614,4 +2614,13 @@ so you might want to pick this SR into Staging:O (forwarded request 953283 from 
     for the full upstream changelog (forwarded request 1094654 from cboltz)</comment>
     <requestid>1094655</requestid>
   </revision>
+  <revision rev="194" vrev="2">
+    <srcmd5>1e62ee4aef3c90264124958ebfc6215e</srcmd5>
+    <version>3.1.6</version>
+    <time>1690370527</time>
+    <user>anag+factory</user>
+    <comment>- Add pam_apparmor README, referenced from online cha-apparmor-pam.html
+  documentation (bsc#1213472) (forwarded request 1100592 from dmdiss)</comment>
+    <requestid>1100613</requestid>
+  </revision>
 </revisionlist>

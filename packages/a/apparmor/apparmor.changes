@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 25 09:28:33 UTC 2023 - David Disseldorp <ddiss@suse.com>
+
+- Add pam_apparmor README, referenced from online cha-apparmor-pam.html
+  documentation (bsc#1213472)
+
+-------------------------------------------------------------------
 Thu Jun 22 11:16:52 UTC 2023 - Christian Boltz <suse-beta@cboltz.de>
 
 - update to AppArmor 3.1.6
