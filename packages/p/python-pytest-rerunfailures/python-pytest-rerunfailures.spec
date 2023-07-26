@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-pytest-rerunfailures
-Version:        11.1.2
+Version:        12.0
 Release:        0
 Summary:        A pytest plugin to re-run tests
 License:        MPL-2.0
@@ -30,7 +28,7 @@ BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools >= 40.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pytest >= 6.0
+Requires:       python-pytest >= 6.2
 Requires:       python-setuptools >= 40.0
 BuildArch:      noarch
 # SECTION test requirements
