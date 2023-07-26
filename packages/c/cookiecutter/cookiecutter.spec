@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           cookiecutter
-Version:        2.1.1
+Version:        2.2.3
 Release:        0
 Summary:        A command-line utility that creates projects from project templates
 License:        BSD-3-Clause
@@ -64,12 +64,15 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.18.0}
 # /SECTION
 # SECTION Documentation requirements
-BuildRequires:  %{python_module Sphinx}
-BuildRequires:  %{python_module sphinx-click}
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-myst-parser
+BuildRequires:  python3-sphinx-autodoc-typehints
+BuildRequires:  python3-sphinx-click
+BuildRequires:  python3-sphinxcontrib-apidoc
 %if 0%{?sle_version} == 150300
-BuildRequires:  %{python_module commonmark}
+BuildRequires:  python3-commonmark
 %endif
-BuildRequires:  %{python_module recommonmark}
+BuildRequires:  python3-recommonmark
 # /SECTION
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
 Provides:       cookiecutter = %{version}-%{release}
@@ -104,7 +107,7 @@ rm setup.cfg
 %build
 %python_build
 pushd docs
-make %{?_smp_mflags} html
+sphinx-build -b html -d .build/doctrees . _build/html
 rm _build/html/.buildinfo
 popd
 
