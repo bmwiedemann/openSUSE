@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jul 24 10:38:53 UTC 2023 - trenn@suse.de
+
+- Fix: ipmitool duplicates the timestamp (bsc#1213390)
+A    Fix-time-format-for-sel-list-v.patch
+- Remove: Make-IANA-PEN-download-configurable (is mainline)
+D 0006-Make-IANA-PEN-download-configurable-fix-uninitalized.patch
+- Update to version 1.8.19.13.gbe11d94:
+  * configure.ac: allow disabling registry downloads
+  * lan: channel: Fix set alert on/off
+  * make: use correct docdir variable provided by autotools
+  * Do not require the IANA PEN registry file
+  * configure.ac: fix readline static build
+  * Update github actions for modern OSes
+  * Update macos target name in github actions
+  * delloem: Fix the unalign bug in arm64
+  * lanplus: Realloc the msg if the payload_length gets updated
+  * fru print: Add area checksum verification
+  * fru: Add decoder for multirec system mgmt records
+  * Fix enterprise-numbers URL
+  * Update issue templates
+
+-------------------------------------------------------------------
 Wed Sep 07 03:06:48 UTC 2022 - trenn@suse.de
 
 - Update to version 1.8.19.0.g19d7878:

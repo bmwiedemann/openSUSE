@@ -17,7 +17,7 @@
 
 
 Name:           ipmitool
-Version:        1.8.19.0.g19d7878
+Version:        1.8.19.13.gbe11d94
 Release:        0
 Summary:        Utility for IPMI Control
 License:        BSD-3-Clause
@@ -32,7 +32,7 @@ Patch2:         0002-Fix-file-permissions.patch
 Patch3:         0003-Cleanup-and-compiler-issues-only-no-functional-chang.patch
 Patch4:         0004-Adjust-SUSE-paths.patch
 Patch5:         0005-HPM-x-compatibility-message-is-DEBUG-only.patch
-Patch6:         0006-Make-IANA-PEN-download-configurable-fix-uninitalized.patch
+Patch6:         Fix-time-format-for-sel-list-v.patch
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
 BuildRequires:  readline-devel
@@ -79,7 +79,8 @@ autoreconf -fiv
 # file-security: enables more security checks on files
 %configure               \
   --enable-file-security \
-  --enable-intf-usb
+  --enable-intf-usb \
+  --enable-registry-download=no
 make %{?_smp_mflags}
 
 %install
