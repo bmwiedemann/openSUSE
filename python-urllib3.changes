@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 25 18:33:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.4:
+  * Added support for union operators to ``HTTPHeaderDict``
+  * Added ``BaseHTTPResponse`` to ``urllib3.__all__`` (`#3078
+  * Fixed ``urllib3.connection.HTTPConnection`` to raise the
+    ``http.client.connect`` audit event to have the same behavior
+    as the standard library HTTP client
+  * Relied on the standard library for checking hostnames in
+    supported PyPy releases
+
+-------------------------------------------------------------------
 Wed Jul  5 11:42:20 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Disable test_deprecated_no_scheme so it needs network connection to

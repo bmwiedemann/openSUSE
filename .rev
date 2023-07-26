@@ -705,4 +705,19 @@
 </comment>
     <requestid>1096959</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>d2e3e4ec7d23092c627b8342e21600cb</srcmd5>
+    <version>2.0.4</version>
+    <time>1690370534</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.0.4:
+  * Added support for union operators to ``HTTPHeaderDict``
+  * Added ``BaseHTTPResponse`` to ``urllib3.__all__`` (`#3078
+  * Fixed ``urllib3.connection.HTTPConnection`` to raise the
+    ``http.client.connect`` audit event to have the same behavior
+    as the standard library HTTP client
+  * Relied on the standard library for checking hostnames in
+    supported PyPy releases</comment>
+    <requestid>1100699</requestid>
+  </revision>
 </revisionlist>
