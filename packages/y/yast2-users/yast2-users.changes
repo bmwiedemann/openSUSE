@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 25 11:04:17 UTC 2023 - Michal Filka <mfilka@suse.com>
+
+- bsc#1211583
+  - do not pre-fill non-sense user password when going back after
+    importing user
+- 4.6.4
+
+-------------------------------------------------------------------
 Mon Jul 24 13:21:21 UTC 2023 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Allow to edit the NIS master server databases instead of the
