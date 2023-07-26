@@ -143,4 +143,16 @@
   * Delay raising s390x architecture baseline to z14.  [PED-253]</comment>
     <requestid>1097918</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ec200f9ff76b458880227605e0890619</srcmd5>
+    <version>13.1.1+git7597</version>
+    <time>1690370491</time>
+    <user>anag+factory</user>
+    <comment>- Bump to 9aac37ab8a7b919a89c6d64bc7107a8436996e93, git7597
+  * GCC 13.2 RC1
+- Add rpmlint filter for SLE12 complaining about invalid licenses.
+
+- Also handle -static-pie in the default-PIE specs</comment>
+    <requestid>1099831</requestid>
+  </revision>
 </revisionlist>

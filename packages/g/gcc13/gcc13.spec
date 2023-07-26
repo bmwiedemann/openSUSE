@@ -200,7 +200,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        13.1.1+git7552
+Version:        13.1.1+git7597
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -3050,7 +3050,7 @@ done
 # The spec for the PIE subpackage
 cat > %{buildroot}/%{libsubdir}/defaults.spec <<EOF
 *default_spec:
-%%{pie|fpic|fPIC|fpie|fPIE|no-pie|fno-pic|fno-PIC|fno-pie|fno-PIE|shared|static|nostdlib|nodefaultlibs|nostartfiles:;:-fPIE}%%{fno-pic|fno-PIC|fno-pie|fno-PIE|pie|no-pie|shared|static|nostdlib|nodefaultlibs|nostartfiles:;: -pie}
+%%{pie|fpic|fPIC|fpie|fPIE|no-pie|fno-pic|fno-PIC|fno-pie|fno-PIE|shared|static|static-pie|nostdlib|nodefaultlibs|nostartfiles:;:-fPIE}%%{fno-pic|fno-PIC|fno-pie|fno-PIE|pie|no-pie|shared|static|static-pie|nostdlib|nodefaultlibs|nostartfiles:;: -pie}
 EOF
 
 %if 0%{?run_tests:1}

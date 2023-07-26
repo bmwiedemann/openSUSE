@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 20 09:04:51 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Bump to 9aac37ab8a7b919a89c6d64bc7107a8436996e93, git7597
+  * GCC 13.2 RC1
+- Add rpmlint filter for SLE12 complaining about invalid licenses.
+
+-------------------------------------------------------------------
+Tue Jul 11 14:33:29 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Also handle -static-pie in the default-PIE specs
+
+-------------------------------------------------------------------
 Mon Jul 10 08:12:40 UTC 2023 - Richard Biener <rguenther@suse.com>
 
 - Bump to f9781fcf733ca3afe5b5811afd8ecbb18d9d3a11, git7552
