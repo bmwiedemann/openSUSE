@@ -107,4 +107,17 @@
 - Switch to single spec version build for PSP</comment>
     <requestid>1084408</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>8f12557688cb5a8e21a3ff64f751f243</srcmd5>
+    <version>1.24.0</version>
+    <time>1690370537</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.24.0:
+  * Dropped Python 3.7 support
+  * Bumped meson version requirement from 0.53.0 to 0.56.0
+  * Various cairo dependency updates for the Windows wheel build
+  * Various code cleanups :pr:`306`
+  * Added Python 3.12 Windows wheels</comment>
+    <requestid>1100692</requestid>
+  </revision>
 </revisionlist>
