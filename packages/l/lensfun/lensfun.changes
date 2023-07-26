@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 22 08:48:49 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.3.4
+  Check https://github.com/lensfun/lensfun/releases/tag/v0.3.4 for
+  the list of new cameras and lenses supported.
+  * Port apps/setup.py from Python distutils
+  * CMake: Numerous backports from master
+
+-------------------------------------------------------------------
 Tue Mar  1 07:52:11 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.3.3:

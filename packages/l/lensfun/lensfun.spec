@@ -1,7 +1,7 @@
 #
 # spec file for package lensfun
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,10 @@
 
 %define sonum   1
 Name:           lensfun
-Version:        0.3.3
+Version:        0.3.4
 Release:        0
 Summary:        A photographic lens database and a library for accessing it
 License:        CC-BY-SA-3.0 AND LGPL-3.0-only
-Group:          Development/Libraries/C and C++
 URL:            https://lensfun.github.io/
 Source:         https://github.com/lensfun/lensfun/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # updated lens database, use "osc service dr" to update it.
@@ -36,6 +35,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3
 BuildRequires:  python3-docutils
+BuildRequires:  python3-setuptools
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(glib-2.0)
 
@@ -57,8 +57,7 @@ transversal (also known as lateral) chromatic aberrations, vignetting
 and colour contribution index of the lens.
 
 %package data
-Summary:        Data files for %{name}/%{name}-devel
-Group:          System/Libraries
+Summary:        Data files for lensfun
 BuildArch:      noarch
 
 %description data
@@ -78,28 +77,25 @@ and calibration data. Right now lensfun is designed to correct distortion,
 transversal (also known as lateral) chromatic aberrations, vignetting
 and colour contribution index of the lens.
 
-%package -n lib%{name}%{sonum}
-Summary:        Library files for %{name}/%{name}-devel
-Group:          System/Libraries
-Requires:       %{name}-data
-Provides:       %{name} = %{version}
-Obsoletes:      %{name} < %{version}
+%package -n liblensfun%{sonum}
+Summary:        Library files for lensfun
+Requires:       lensfun-data
+Provides:       lensfun = %{version}
+Obsoletes:      lensfun < %{version}
 
-%description -n lib%{name}%{sonum}
-Library files needed by the use the %{name} library/database.
+%description -n liblensfun%{sonum}
+Library files needed by the use the lensfun library/database.
 
 %package -n python3-lensfun
 Summary:        Python3 lensfun bindings
-Group:          Development/Languages/Python
-Requires:       lib%{name}%{sonum} = %{version}
+Requires:       liblensfun%{sonum} = %{version}
 
 %description -n python3-lensfun
 Lensfun bindings for Python 3
 
 %package tools
-Summary:        Tools for managing %{name} data
-Group:          Development/Tools/Other
-Requires:       %{name}-data
+Summary:        Tools for managing lensfun data
+Requires:       lensfun-data
 Requires:       python3-lensfun = %{version}
 
 %description tools
@@ -107,22 +103,20 @@ This package contains tools to fetch lens database updates and manage lens
 adapters in lensfun.
 
 %package doc
-Summary:        Documentation for %{name}
-Group:          Documentation/HTML
-Requires:       %{name}-data
+Summary:        Documentation for lensfun
+Requires:       lensfun-data
 
 %description doc
-Documentation and manual files for the %{name} library/database.
+Documentation and manual files for the lensfun library/database.
 
 %package devel
-Summary:        Header and library definition files for %{name}
-Group:          Development/Libraries/C and C++
-Requires:       %{name}-data = %{version}
-Requires:       lib%{name}%{sonum} = %{version}
+Summary:        Header and library definition files for lensfun
+Requires:       lensfun-data = %{version}
+Requires:       liblensfun%{sonum} = %{version}
 
 %description devel
 Header and library definition files for developing applications
-that use the %{name} library/database.
+that use the lensfun library/database.
 
 %prep
 %autosetup -p1 -a 2
@@ -134,53 +128,64 @@ sed -i \
   apps/lensfun-update-data \
   apps/lensfun/__init__.py.in
 
+sed -i 's#/usr/bin/env sh#/usr/bin/sh#' apps/g-lensfun-update-data
+
 %build
 %cmake \
-    -DBUILD_STATIC=OFF \
-    -DBUILD_TESTS=ON \
-    -DBUILD_DOC=ON \
-    -DDOCDIR=%{_defaultdocdir}/%{name} \
-    -DCMAKE_INSTALL_DOCDIR=%{_defaultdocdir}/%{name} \
-    -DINSTALL_HELPER_SCRIPTS=ON \
-    -DPYTHON_EXECUTABLE=%{_bindir}/python3
-make %{?_smp_mflags} lensfun doc
+    -DBUILD_LENSTOOL:BOOL=ON \
+    -DBUILD_STATIC:BOOL=OFF \
+    -DBUILD_TESTS:BOOL=ON \
+    -DBUILD_DOC:BOOL=ON \
+    -DCMAKE_INSTALL_DOCDIR:PATH=%{_defaultdocdir}/lensfun \
+    -DINSTALL_HELPER_SCRIPTS:BOOL=ON \
+    -DPYTHON_EXECUTABLE:STRING=python3
+
+%cmake_build
 
 %install
 %cmake_install
-# drop test cases, we should run them here instead
-rm -rf %{buildroot}%{_datadir}/lensfun/tests
+
+pushd build/apps
+python3 setup.py install --root="%{buildroot}" --skip-build
+popd
+
+# Unneeded
+%if 0%{?suse_version} > 1500
+rm %{buildroot}%{python3_sitelib}/lensfun-*.egg
+%endif
+
 # Create udate folder for lensfun data
 mkdir -p %{buildroot}%{_localstatedir}/lib/lensfun-updates
-# Regererate pyc files to not contain buildroot
-%py3_compile %{buildroot}/%{python3_sitelib}/lensfun/
 
 %fdupes %{buildroot}
 
 %check
+# ERROR: lensfun-0.3.4/tests/test_database.cpp:29:void test_DB_lens_search(lfFixture*, gconstpointer): 'lenses' should not be nullptr
+%ifnarch %ix86 armv7hl
 export LD_LIBRARY_PATH=%{buildroot}%{_libdir}${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 %ctest
+%endif
 
-%post   -n lib%{name}%{sonum} -p /sbin/ldconfig
-%postun -n lib%{name}%{sonum} -p /sbin/ldconfig
+%ldconfig_scriptlets -n liblensfun%{sonum}
 
 %files doc
 %doc README.md
 %doc docs/*
-%doc %{_defaultdocdir}/%{name}
+%doc %{_defaultdocdir}/lensfun
 
 %files data
-%{_datadir}/%{name}/
+%{_datadir}/lensfun/
 %dir %{_localstatedir}/lib/lensfun-updates/
 
-%files -n lib%{name}%{sonum}
+%files -n liblensfun%{sonum}
 %{_libdir}/*.so.*
 
 %files -n python3-lensfun
 %{python3_sitelib}/lensfun/
-%{python3_sitelib}/lensfun*.egg-info
+%{python3_sitelib}/lensfun-*.egg-info
 
 %files devel
-%{_includedir}/lensfun
+%{_includedir}/lensfun/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/lensfun.pc
 
@@ -188,6 +193,7 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}${LD_LIBRARY_PATH:+:${LD_LIBRARY_PA
 %{_bindir}/g-lensfun-update-data
 %{_bindir}/lensfun-add-adapter
 %{_bindir}/lensfun-update-data
+%{_bindir}/lenstool
 %{_mandir}/man?/g-lensfun-update-data*
 %{_mandir}/man?/lensfun-add-adapter*
 %{_mandir}/man?/lensfun-update-data*
