@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 25 18:29:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.24.0:
+  * Dropped Python 3.7 support
+  * Bumped meson version requirement from 0.53.0 to 0.56.0
+  * Various cairo dependency updates for the Windows wheel build
+  * Various code cleanups :pr:`306`
+  * Added Python 3.12 Windows wheels
+
+-------------------------------------------------------------------
 Tue Apr 25 12:00:14 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Switch to single spec version build for PSP
