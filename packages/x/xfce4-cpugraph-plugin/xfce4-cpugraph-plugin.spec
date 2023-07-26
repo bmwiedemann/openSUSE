@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package xfce4-cpugraph-plugin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define plugin cpugraph
 %bcond_with git
 Name:           xfce4-%{plugin}-plugin
-Version:        1.2.7
+Version:        1.2.8
 Release:        0
 Summary:        CPU Graph Plugin for the Xfce Panel
 License:        GPL-2.0-or-later
@@ -31,10 +31,12 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= 4.16.0
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.16.0
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.17.2
+BuildRequires:  pkgconfig(libxfconf-0) >= 4.12.0
 %if %{with git}
 BuildRequires:  xfce4-dev-tools
 %endif

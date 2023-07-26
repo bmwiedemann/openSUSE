@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Wed Jul 26 07:36:44 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.1.13, partial changes:
+  * CloudFront: create_distribution() now correctly handles a single alias
+  * CloudFront - CustomOrigins now have default timeouts if not supplied
+  * IOTData: publish() can now handle non-Unicode bytes
+  * RDS: Automated snapshots now have the appropriate SnapshotType
+  * CloudFront: create_invalidation() now behaves correctly when supplying a
+    single Path
+  * CodeBuild: create_project() now accepts all ServiceRole ARN's, not just
+    ARN's that end in /service-role/
+  * DynamoDB now supports ProjectionExpressions on (nested) lists
+  * EC2: create_flow_logs() now allows different LogDestinations for a
+    single ResourceId
+  * EC2: create_volume() now supports the Throughput-parameter
+  * ECR: put_image() now correctly overwrites tags on images with multiple tags
+  * Lambda: delete_layer_version() now also accepts function ARNs
+  * RDS: Further improve Global Cluster behaviour
+  * S3: GET/PUT requests now return Access-Control headers, if a CORS
+    configuration has been set
+  * S3: put_bucket_lifecycle_configuration() now supports multiple Transitions
+  * SESv2: create_contact_list() now correctly reads Topics with special
+    characters
+  * SESv2: send_email() now correctly reads raw emails
+  * Organizations: create_policy() now supports the Tags-parameter
+  * RDS: creation times of all objects are now in UTC
+  * Redshift: creation times of all objects are now in UTC
+  * S3: Bucket names are now global, meaning they have to be unique across
+    accounts
+  * S3: select_object_content() now supports None-values
+  * SecretsManager - update_secret() now supports the Description-parameter
+  * SNS: Topics are no longer accessible across regions (only across accounts)
+  * SQS: Requests and responses in JSON-format are now supported
+  * Core: The `date`-header is now returned for all operations
+  * EC2: create_route() now takes the `VpcEndpointId`-parameter into account
+  * S3: aligned checksum calculation with how AWS behaves
+  * S3: copy_object() now behaves correctly when copying objects in
+    encrypted buckets
+  * S3: put_object_legal_hold() now takes the VersionId-parameter into account
+  * S3: put_object_retention() now takes the VersionId-parameter into account
+  * SNS: Topics can now be accessed across accounts
+  * Kinesis: Improve calculations on stream limits
+  * EC2: Improve logic behind describe_image_attribute()
+  * S3: Various improvements to the logic behind copy_object()
+  * Scheduler: update_schedule() now supports the GroupName-parameter
+  * SNS: MessageDeduplicationId is now forwarded to SQS queues
+  * EC2: replace_route() now supports the NetworkInterfaceId-parameter
+  * S3: copy_object() now adds a checksum to a copied object if requested
+  * SES: Templates now allow a single curly brace, and no longer assume
+    it's part of a variable
+  * STS: assume_role() now stores the AccessKey in the requesting account
+  * DynamoDB: update_item() now supports number-sets in the
+    AttributeUpdates-parameter
+  * DynamoDB: query() - The KeyConditionExpression now allows enclosing the
+    sort key condition in brackets
+  * EC2: assign_private_ip_addresses() now supports the
+    PrivateIpAddresses-argument
+  * ECR: put_image() now supports the imageManifestMediaType parameter
+  * Logs: put_subscription_filter() now supports KinesisStream destinations
+  * RDS: describe_db_clusters() now supports filtering by db-cluster-id and
+    engine
+  * SQS: Improvements in the deduplication-logic
+  * RDS: describe_db_clusters() now accepts an ARN as identifier
+  * SecretsManager now supports partial ARN's
+  * Athena: Now automatically creates the default WorkGroup called `primary`
+  * CognitoIDP: the ID-token now uses the key cognito:username
+  * EC2: describe_security_group_rules() now provides the correct value
+    for the IsEgress-parameter
+  * IOT: delete_certificate() now supports the forceDelete-parameter
+  * CognitoIDP: The idToken now contains the cognito:groups attribute
+  * DynamoDB: scan() now respects the Projection-attribute of a GSI/LSI
+  * KMS: encrypt(), decrypt(), re_encrypt() now accept aliases as arguments
+  * KMS: list_aliases() now supports the KeyId-parameter
+  * Lambda: FIFO Queues are now supported event sources
+  * DynamoDB: create_table() now deals correctly with non-key attributes
+    supplied as part of the KeySchema
+  * CognitoIDP: admin_update_user_attributes() now checks for duplicate emails
+  * ECS: create_cluster() now supports the parameters configuration,
+    capacityProviders, defaultCapacityProviderStrategy
+  * ECS: delete_cluster() now marks the cluster as INACTIVE, rather than
+    removing it outright, in-line with how AWS behaves
+  * ECS: run_task() no longer crashes when providing launchType=FARGATE
+  * ECS now has improved tagging-support
+  * Kinesis now supports the streamARN-parameter for all arguments
+  * S3: Improved bucket policy enforcement
+  * Batch: register_job_definition() now supports type="multinode"
+  * EC2: describe_launch_template_versions() now supports $Latest and
+    $Default versions
+  * ECS: start_task() now supports the tags-parameter
+  * S3: put_bucket_logging() now actually logs incoming requests, when enabled
+  * SES: Fixed a bug where the service was not region-aware, i.e. all
+    resources were shared across regions
+  * SES: improved parser support for email templates
+  * RDS: create_db_instance() now supports the PreferredMaintenanceWindow
+    and PreferredBackupWindow-parameters
+
+-------------------------------------------------------------------
 Sat Jan 21 10:38:55 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.1.0

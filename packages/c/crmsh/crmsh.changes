@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul 25 09:31:23 UTC 2023 - nicholas.yang@suse.com
+
+- Update to version 4.5.0+20230725.5d35bb6c:
+  * Dev: spec: Adjust spec file for Fedora
+  * Dev: spec: Rewrite SPEC file to use modern pip+wheel and don't use deprecated setup.py
+
+-------------------------------------------------------------------
+Mon Jul 24 08:21:30 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230724.6495aa19:
+  * Dev: behave: add a function test for the previous change
+  * Fix: upgradeutil: support the change of path of upgrade_seq in crmsh-4.5 (bsc#1213050)
+
+-------------------------------------------------------------------
 Thu Jul 13 09:16:00 UTC 2023 - XinLiang <XLiang@suse.com>
 
 - Dev: spec: Define python3_sitelib if it is not defined 

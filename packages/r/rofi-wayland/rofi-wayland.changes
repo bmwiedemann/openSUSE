@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 24 12:26:52 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Update to version 1.7.5+wayland2+git.1690115482.ff2338c:
+  * Set -dev version
+  * Wayland: Apply scaling to cursor surface
+  * [IconFetcher] Apply scaling when loading images and icons
+- Update service file to use wayland2 naming and obs_scm
+
+-------------------------------------------------------------------
 Tue May 30 13:31:10 UTC 2023 - mcepl@suse.com
 
 - Update to version 1.7.5+wayland1+git.1679493688.d06095b:

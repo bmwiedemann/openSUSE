@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Tue Jun 13 06:20:24 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 20230605:
+ * HEADSUP: if you previously used -e pidfile to record the pid of a
+   running scamper process, there is a good chance that the pidfile is
+   owned by root.  scamper now attempts to write this file using the uid
+   that started scamper, and will not be able to write it if scamper is
+   not started by root (it should not be, rather the scamper binary
+   should be setuid root).  Please delete the existing pidfile, or change
+   its ownership, prior to restarting scamper, or scamper will not start.
+ * scamper:
+  * write a process ID that the user that started scamper can kill
+    in the pidfile when using privsep.
+  * when using privsep, exit the unprivileged process if the privileged
+    process exits (is killed)
+  * run as real uid from the start of scamper, for both privsep and
+    not-privsep.
+  * fix bug where attempting to open an unsupported datalink would
+    leave a freed scamper_fd_t in the fd_tree and fd_list, leading to
+    a crash.
+  * fix double free triggered when a user provides an invalid dealias
+    command.
+  * fix memory leak if the payload was specified twice to ping or trace
+  * rework pollfunc selection logic, use kqueue/epoll by default.
+  * remove _malloc_options = "AJ" as this only works on unsupported
+    versions of FreeBSD.
+  * add additional paramaters to attach command to allow the user
+    to override list and cycle parameters, documented in manual page.
+  * catch EAGAIN/EINTR from select/kqueue/epoll to allow gdb to attach
+    and detach without flagging errors.
+  * for DNS replies for host command, record reply flags and rcode.
+  * add support for SOA and NS queries in host.
+  * add a JSON output for host measurements.
+  * do not let scamper emit warts to a tty.  check for isatty in
+    configure.
+  * only allow -O and -z to be specified multiple times in a trace command
+  * only allow -O to be specified multiple times in a ping command
+  * split command parsing logic out from task probing logic.  add
+    fuzzing cradle for parsing logic for all measurement types, and
+    basic unit tests for dealias, ping, and trace parsing logic.
+  * autodetect output type by file extension if output type is not
+    explicitly specified on the command line.
+ * libscamperfile:
+  * remove all struct definitions from libscamperfile (e.g.
+    scamper_trace, scamper_ping, scamper_addr, etc).  provide typedefs
+    for each (scamper_trace_t) and _get() functions that return the
+    field requested.  This change will allow hopefully allow
+    libscamperfile's version to stabilize.  all scamper utilities now
+    use these get functions.
+  * shift some functions that were previously implemented in
+    libscamperfile into the one place they were used, if they were only
+    used in (for example scamper / sc_analysis_dump / other scamper
+    utility).  delete other functions that were not used anywhere in
+    the public scamper release.
+ * libscamperctrl:
+  * fix bug by ensuring line_off is always valid after the read.
+  * catch EAGAIN from select.
+  * add kqueue support.
+  * add scamper_attp_* routines to allow applications to specify
+    list and cycle parameters.
+  * for scamper_inst_do, take a parameter to keep with each task.
+  * add scamper_task_getparam function to get the parameter.
+  * add scamper_task_getcmd function to get the command associated with a task.
+  * use TYPE_FATAL instead of TYPE_ERR in application callback when
+    scamper_inst_read encounters a fatal error, only use TYPE_ERR when
+    scamper does not accept a command.
+ * sc_prefixprober:
+  * new driver to conduct measurements (ping, trace, tracelb) to an
+    address in each prefix.
+ * sc_ally:
+  * use scamper_file_t outfiles, add ability to write gz/bz2/xz files.
+  * ask for cycle-start and cycle-stop records, write them out.
+  * improve use of libscamperctrl.
+ * sc_hoiho:
+  * add support for VP geohints, document.
+  * silence -Wshadow.
+  * silence warnings related to assignments that are not used.
+ * sc_ipiddump:
+  * fix memory leak when user specifies invalid command line options.
+ * sc_filterpolicy:
+  * ask for cycle-start and cycle-stop records, write them out.
+  * improve use of libscamperctrl.
+ * sc_pinger:
+  * signal done to get cycle stop record.
+  * improve use of libscamperctrl.
+  * document remote socket option.
+ * sc_prefixscan:
+  * use scamper_file_t outfiles, add ability to write gz/bz2/xz files.
+  * ask for cycle-start and cycle-stop records, write them out.
+  * improve use of libscamperctrl.
+ * sc_remoted:
+  * catch EAGAIN from select.
+ * sc_speedtrap:
+  * ask for cycle-start and cycle-stop records, write them out.
+  * improve use of libscamperctrl.
+ * sc_uptime:
+  * silence -Wshadow.
+  * silence warnings related to assignments that are not used.
+  * fix memory leak in up_reboots_doone.
+ * sc_warts2json:
+  * fix memory leak with cycle start/stop records.
+  * emit json for host records.
+ * sc_wartscat:
+  * fix ability to write compressed warts files.
+- update to version 20230323:
+ * libscamperfile:
+  * add ability for scamper and all utilities to read warts and arts
+    files compressed with bzip2 and xz, if libbz2 and liblzma are found
+    by configure.
+  * add ability for scamper and all utilities to write warts files
+    compressed with gzip, bzip2, and xz, if zlib, libbz2, and liblzma
+    are found by configure.
+  * tidy up libscamperfile code.
+ * misc:
+  * silence -Wsign-compare and -Wtype-limits
+  * tidy usage statements for sc_uptime and sc_tbitpmtud
+  * document use of '-' to read from stdin and write to stdout
+    in sc_wartsfilter.1
+
+-------------------------------------------------------------------
 Tue Mar  7 09:28:35 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version 20230302:

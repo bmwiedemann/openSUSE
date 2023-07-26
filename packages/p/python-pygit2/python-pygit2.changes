@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jul 25 14:29:15 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.12.2:
+  + Update wheels to bundle libssh2 1.11.0 and OpenSSL 3.0.9.
+    Remove obsolete Remote.save().
+- Changes from version 1.12.1:
+  + Fix segfault in signature when encoding is incorrect.
+  + Typing improvements.
+  + Update wheels to libgit2 v1.6.4.
+- Changes from version 1.12.0:
+  + Upgrade to libgit2 v1.6.3.
+  + Update Linux wheels to bundle OpenSSL 3.0.8.
+  + Downgrade Linux wheels to manylinux2014.
+  + New ConflictCollection.__contains__.1
+  + New Repository.references.iterator(...).
+  + New favor, flags and file_flags optional arguments for
+    Repository.merge(...).
+  + New keep_all and paths optional arguments for
+    Repository.stash(...).
+  + New Respository.state().
+  + Improve Repository.write_archive(...) performance.
+  + Sync type annotations.
+- Drop support-libgit2-1.6.patch: fixed upstream.
+- Add support-libgit2-1.7.patch: support libgit2 1.7.0.
+
+-------------------------------------------------------------------
 Tue Mar 21 07:13:27 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add support-libgit2-1.6.patch to make it work with the latest

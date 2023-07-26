@@ -16,10 +16,10 @@
 #
 
 
-%define sdk_version 1.3.0
+%define sdk_version 1.5.1
 Name:           picotool
 URL:            https://github.com/raspberrypi/picotool
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Tool to inspect RP2040 binaries
 License:        BSD-3-Clause
@@ -34,7 +34,7 @@ Source1:        https://github.com/raspberrypi/pico-sdk/archive/%{sdk_version}.t
 Picotool is a tool for inspecting RP2040 binaries, and interacting with RP2040 devices when they are in BOOTSEL mode.
 
 %prep
-%setup -q -a 1
+%autosetup -a 1
 
 %build
 %cmake -DPICO_SDK_PATH="../pico-sdk-%{sdk_version}"

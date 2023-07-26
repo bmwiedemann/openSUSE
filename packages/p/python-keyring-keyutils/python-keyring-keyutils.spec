@@ -1,7 +1,7 @@
 #
 # spec file for package python-keyring-keyutils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,10 +24,15 @@ Summary:        A python-keyring backend for the kernel keyring
 License:        MIT
 URL:            https://github.com/marcus-h/python-keyring-keyutils
 Source:         keyring-keyutils-%{version}.tar.gz
-
+# PATCH-FIX-UPSTREAM keyring-util-properties.patch gh#jaraco/keyring#593 mcepl@suse.com
+# this patch makes things totally awesome
+Patch0:         keyring-util-properties.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module jaraco.classes}
 BuildRequires:  %{python_module keyring}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  keyutils-devel
 BuildRequires:  python-rpm-macros
@@ -47,13 +52,13 @@ keyring. In particular, this package ships
 [2] https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/keyutils.git
 
 %prep
-%setup -q -n keyring-keyutils-%{version}
+%autosetup -p1 -n keyring-keyutils-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -75,6 +80,6 @@ gcc -Wall -o skip_test_key_too_large_serial skip_test_key_too_large_serial.c
 %doc README.md README_osc.md
 %license LICENSE
 %{python_sitearch}/keyutils
-%{python_sitearch}/keyring_keyutils-%{version}-py*.egg-info
+%{python_sitearch}/keyring_keyutils-%{version}*-info
 
 %changelog

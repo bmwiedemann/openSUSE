@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 26 09:41:24 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.2.2
+  * Added additional information about cacheZones
+  * Added a diagram for the order of module directives
+
+-------------------------------------------------------------------
 Tue Jan  4 16:44:35 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 0.1.18+g41 (3c6cf41)

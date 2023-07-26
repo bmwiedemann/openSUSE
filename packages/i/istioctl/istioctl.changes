@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jul 25 17:22:24 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.18.2:
+  * Add validation of workload entry identity (#117)
+  * Bump proxy version (#122)
+  * Automator: update proxy@release-1.18 in
+    istio/istio@release-1.18 (#46039)
+  * Automator: update proxy@release-1.18 in
+    istio/istio@release-1.18 (#46025)
+  * Fix nil map for cluster builder (#46024)
+  * fix concurrent map access in endpoint metadata (#44473)
+    (#46021)
+  * fix conflict (#46017)
+  * Exit if sds socket not found (#45941) (#46014)
+
+-------------------------------------------------------------------
 Mon Jul 17 04:59:39 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.18.1:

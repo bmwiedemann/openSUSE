@@ -1,7 +1,7 @@
 #
 # spec file for package python-ijson
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ijson
-Version:        3.1.4
+Version:        3.2.3
 Release:        0
 Summary:        Iterative JSON parser with a standard Python iterator interface
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/ICRAR/ijson
 Source:         https://files.pythonhosted.org/packages/source/i/ijson/ijson-%{version}.tar.gz
-# https://github.com/ICRAR/ijson/pull/26
-Source1:        https://raw.githubusercontent.com/ICRAR/ijson/master/tests_asyncio.py
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -40,7 +38,6 @@ Iterative JSON parser with a standard Python iterator interface.
 
 %prep
 %setup -q -n ijson-%{version}
-cp %{SOURCE1} .
 
 %build
 export CFLAGS="%{optflags}"

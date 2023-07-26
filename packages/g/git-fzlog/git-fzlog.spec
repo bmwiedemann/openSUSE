@@ -17,17 +17,17 @@
 
 
 Name:           git-fzlog
-Version:        20230630.55521ba
+Version:        20230725.997a813
 Release:        0
 Summary:        Git log and patch viewer and fuzzy searcher
-License:        AGPL-3.0-or-later    
+License:        AGPL-3.0-or-later
 URL:            https://github.com/asdil12/git-fzlog
 Source:         %{name}-%{version}.tar.gz
 BuildArch:      noarch
 Requires:       bash
-Requires:       git
 Requires:       bat
 Requires:       fzf
+Requires:       git
 
 %description
 Git log and patch viewer and fuzzy searcher.
@@ -48,4 +48,3 @@ install -D -m 0755 ./%{name} %{buildroot}%{_bindir}/%{name}
 %{_bindir}/%{name}
 
 %changelog
-

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 25 19:12:49 UTC 2023 - Matthias Bach <marix@marix.org> - 2.7.0
+
+- Update to 2.7.0
+  * Extract aliases from cheat sheet and youtube
+  * Fix extracting translations from emojiterra
+  * Update EMOJI_DATA with new aliases and translations
+
+-------------------------------------------------------------------
 Wed Jun 28 09:38:08 UTC 2023 - Matthias Bach <marix@marix.org> - 2.6.0
 
 - Update to 2.6.0

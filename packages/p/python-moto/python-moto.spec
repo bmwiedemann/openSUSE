@@ -17,7 +17,7 @@
 
 
 Name:           python-moto
-Version:        4.1.0
+Version:        4.1.13
 Release:        0
 Summary:        Library to mock out tests based on AWS
 License:        Apache-2.0
@@ -65,6 +65,7 @@ BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
 BuildRequires:  %{python_module jsondiff >= 1.1.2}
 BuildRequires:  %{python_module jsonpickle}
 BuildRequires:  %{python_module openapi-spec-validator >= 0.2.8}
+BuildRequires:  %{python_module py-partiql-parser}
 BuildRequires:  %{python_module pyparsing >= 3.0.7}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
@@ -148,6 +149,11 @@ donttest+=" or (test_server and test_appsync_list_tags_for_resource)"
 donttest+=" or (test_server and test_s3_server_post_to_bucket_redirect)"
 donttest+=" or (test_multiple_accounts_server and test_with_custom_request_header)"
 donttest+=" or test_invoke_function_from_sqs_exception"
+donttest+=" or test_docker_is_running_and_available"
+donttest+=" or test_s3_server_post_cors_multiple_origins"
+donttest+=" or test_invoke_function_from_sqs_fifo_queue"
+donttest+=" or test_invoke_function_from_sqs_queue"
+donttest+=" or test_failed_job or test_failed_dependencies"
 # 32-bit platforms can't handle dates beyond 2038
 [ $(getconf LONG_BIT) -eq 32 ] && donttest+=" or test_list_pipelines_created_after"
 # see Makefile

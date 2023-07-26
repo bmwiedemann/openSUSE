@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jul 26 06:47:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.3:
+  * Fixed several issues in the ``yajl2_c`` backend
+    and its async generators that were only made apparent
+    when running it with PyPy and/or a CPython debug build (#101).
+  * Adapted ``yajl2_c`` async generators to work against PyPy 
+    shortcomings
+  * Fixed compilation and ``async`` support
+    of the ``yajl2_c`` backend in pyhthon 3.12 (#98).
+  * Check ``IJSON_BUILD_YAJL2C`` environment variable
+    when building ijson to force/skip building the 
+    ``yajl2_c`` backend (#102).
+  * Added support for Python 3.12.
+  * Fixed a memory leak in the ``yajl2_c`` backend
+    triggered only when the underlying ``yajl`` functions
+    reported a failure (#97).
+  * New ``ijson.dump`` command-line utility
+  * Fixed bug in ``yajl2_c`` backend introduced in 3.1.2
+    where random crashes could occur due to an unsafe reference decrement
+    when constructing the parse/items/kvitems generators (#66).
+  * Mark Python 3.10 and 3.11 as explicitly supported.
+- drop tests_asyncio.py source - this comes in the tarball now
+
+-------------------------------------------------------------------
 Sun Jun 11 12:39:17 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

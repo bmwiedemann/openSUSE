@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 25 03:25:45 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 2.28.1:
+  * fix: ensure hypenated exceptions are respected
+  * fix: allow hypenated words in `Vale.Terms`
+  * test: fix inline scope cases
+  * refactor: validate `scope`
+
+-------------------------------------------------------------------
 Tue Jul 04 21:17:01 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 2.28.0:

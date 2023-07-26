@@ -1,0 +1,8 @@
+<package name="swayimg" project="openSUSE:Factory">
+  <title>Image viewer for sway/wayland </title>
+  <description>Swayimg is a lightweight image viewer for Wayland display servers.
+
+In a Sway compatible mode, the viewer creates an &quot;overlay&quot; above the currently active window, which gives the illusion that you are opening the image directly in a terminal window.</description>
+  <devel project="X11:Wayland" package="swayimg"/>
+  <url>https://github.com/artemsen/swayimg</url>
+</package>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul 23 14:53:28 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 2023.7.0
+  * Login with device enabled for self-host
+  * Added new forwarder (Forward Email)
+  * Add collection name to title attribute
+  * Define card brand according to its number
+
+-------------------------------------------------------------------
 Thu Jun 22 17:00:22 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 2023.5.1
   * Fix bug when the user selects a region it will set baseUrl in environment service

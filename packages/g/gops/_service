@@ -3,7 +3,7 @@
     <param name="url">https://github.com/google/gops.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v0.3.25</param>
+    <param name="revision">v0.3.27</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>

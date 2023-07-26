@@ -18,7 +18,7 @@
 
 %define cpan_name CPAN-Perl-Releases
 Name:           perl-CPAN-Perl-Releases
-Version:        5.20230703
+Version:        5.20230720
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Mapping Perl releases on CPAN to the location of the tarballs
@@ -28,6 +28,8 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(CPAN::Perl::Releases) = 5.20230720
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description

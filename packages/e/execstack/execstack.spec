@@ -1,7 +1,7 @@
 #
 # spec file for package execstack
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #               2014 Wolfgang Rosenauer
 #
 # All modifications and additions to the file contributed by third parties
@@ -37,6 +37,7 @@ Patch0:         Add-PL_ARCH-for-AArch64.patch
 Patch1:         prelink_update_fsf_address.patch
 # bypass where gcc linker do not add the GNU_STACK default header in elf file
 Patch2:         prelink_add_no_execstack_for_ppc64.patch
+Patch3:         riscv64-support-for-execstack.patch
 
 BuildRequires:  git
 BuildRequires:  libelf-devel
@@ -63,6 +64,7 @@ with or without executable stack.
 %ifarch ppc64
 %patch2 -p1
 %endif
+%patch3 -p1
 
 %build
 sed -i -e '/^prelink_LDADD/s/$/ -lpthread/' src/Makefile.{am,in}

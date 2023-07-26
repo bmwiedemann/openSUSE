@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jul 26 04:29:48 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.3.8:
+  * add print in the cli to which version the kubescape was update
+    (#1295)
+  * feat: add build.ps1
+  * fix: yamlhandler error handling
+  * tests(fixhandler): remove tests of an unexported sanitization
+    method
+  * docs(fixhandler): follow Go Doc comments convention in
+    sanitization func
+  * refactor(fixhandler): sanitize YAML inside ApplyFixToContent
+  * tests(fixhandler): fail test if unable to open test data file
+  * style(fixhandler): newlines and spacing
+  * support related objects (#1272)
+  * allow adding a fw name when running all (#1286)
+  * fix: --- kubescape fix
+  * cache control inputs
+  * Remove website folder
+  * fix: stuck spinner
+  * initial implementation of OpenTelemetry metrics collection
+    (#1269)
+  * time-based cached policies
+
+-------------------------------------------------------------------
 Thu Jul 06 09:33:50 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.3.7:

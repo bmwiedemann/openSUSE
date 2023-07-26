@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 25 13:20:17 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.1.2:
+  * Small release with one bug fix to allow specifying 0 for --bus, and some minor documentation edits.
+
+- bump SDK to latest 1.5.1 to support newer boards
+
+-------------------------------------------------------------------
 Wed Feb 15 13:02:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.1:

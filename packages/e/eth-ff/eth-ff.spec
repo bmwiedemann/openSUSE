@@ -16,13 +16,13 @@
 #
 
 
-%define git_ver .0.e2d1dd8cde0e
+%define git_ver .0.b537315d36c7
 
 %define pseudo_opt %{_prefix}/lib/eth-tools/
 %define ethsysconfdir %{_sysconfdir}/eth-tools/
 
 Name:           eth-ff
-Version:        11.3.0.0
+Version:        11.5.0.0
 Release:        0
 Summary:        Intel Ethernet Fabric Suite basic tools and libraries for fabric management
 License:        BSD-3-Clause OR GPL-2.0-only
@@ -32,7 +32,6 @@ Source0:        %{name}-%{version}%{git_ver}.tar.gz
 Source1:        eth-ff.rpmlintrc
 Patch1:         eth-ff-suse-build-fixes.patch
 Patch2:         eth-ff-add-shebang-for-exp-files.patch
-Patch3:         topology-fix-support-for-disabled-MD5-authentication.patch
 BuildRequires:  gcc-c++
 BuildRequires:  infiniband-diags-devel
 BuildRequires:  libexpat-devel
@@ -72,7 +71,6 @@ Contains tools for managing fabric on a management node.
 %setup -q -n  %{name}-%{version}%{git_ver}
 %patch1
 %patch2
-%patch3
 
 %build
 export RPM_OPT_FLAGS="$RPM_OPT_FLAGS -Wno-address-of-packed-member"

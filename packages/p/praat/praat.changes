@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jul 21 18:32:36 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.3.11:
+  * VowelEditor: repaired a bug by which the VowelEditor wouldn’t
+    start up if an incorrect marks file had previously been
+    specified.
+  * OTMulti: vertical constraint names support newlines and
+    disharmonies.
+  * Text windows are one tab plus 84.5 characters wide.
+  * Table: Get all values in column....
+  * Undocumented alpha support for Praat notebooks.
+  * Formulas: correlation (vec1#, vec2#), vertical$ (for
+    formatting string arrays).
+  * Scripting: readFile#, readFile##.
+
+-------------------------------------------------------------------
 Thu May  4 14:03:40 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.3.10:

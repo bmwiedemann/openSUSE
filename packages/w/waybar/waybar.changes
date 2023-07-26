@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jul 25 23:35:19 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Use upstream tarball. Remove service files.
+
+-------------------------------------------------------------------
+Tue Jul 18 15:14:26 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.20:
+  * Fixed build warnings #2282
+  * hyprland/window: Add .hidden CSS class, account for hidden & fullscreen windows #2270
+  * Unbreak modules without DBus #2284
+  * hyprland/window: Fix no info with separate-outputs=true #2286
+  * fix, default to true, sway/workspaces: warp-on-scroll #2293
+  * clock: handle timezone changes (again) #2296
+  * hyprland/window expose more data #2294
+  * App Icons for hyprland/window #2303
+  * hyprland/window: Fix overlap with .hidden class from default style #2307
+  * hyprland/window: rename .hidden to .swallowing (and fix grouped windows) #2308
+  * backlight: do not convert percent to string in fmt #2317
+  * hyprland/backend: Fix JSON parser runtime error #2321
+  * Fix wrong name for {name} #2306
+  * Ensure signal is disconnected in destructor #2324
+  * hyprland/language: Differentiating keyboard layout variants #2326
+  * hyprland/window remove duplicate empty css #2318
+
+-------------------------------------------------------------------
 Tue Jul  4 21:32:57 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Update to version 0.9.19:

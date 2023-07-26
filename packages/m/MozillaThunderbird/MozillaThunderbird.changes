@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 25 06:56:46 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 102.13.1
+  MFSA 2023-28
+  * CVE-2023-3417 (bmo#1835582)
+    File Extension Spoofing using the Text Direction Override Character
+
+-------------------------------------------------------------------
 Fri Jul  7 12:47:11 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 102.13.0

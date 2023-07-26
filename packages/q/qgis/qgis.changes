@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 25 06:35:09 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 3.32.0:
+  https://changelog.qgis.org/en/qgis/version/3.32/
+- Drop upstream patch:
+  * qgis-3.30.0_include_fix.patch
+
+-------------------------------------------------------------------
 Fri Jul  7 06:41:39 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patch to build with exiv2 0.28+ - boo#1212936

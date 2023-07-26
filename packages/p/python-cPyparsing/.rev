@@ -66,4 +66,12 @@
   * Fix deprecation warning</comment>
     <requestid>1085340</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e51ef414833ffc5ad89a724ba3af86dc</srcmd5>
+    <version>2.4.7.2.1.2</version>
+    <time>1690370700</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1100795</requestid>
+  </revision>
 </revisionlist>

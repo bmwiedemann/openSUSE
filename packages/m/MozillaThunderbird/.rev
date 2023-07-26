@@ -4905,4 +4905,15 @@ I cannot test locally unfortunately.
 - mozilla-llvm16.patch has been applied upstream, remove it here</comment>
     <requestid>1097755</requestid>
   </revision>
+  <revision rev="313" vrev="1">
+    <srcmd5>1862277aa25a9ede1a4f0acf0adde16d</srcmd5>
+    <version>102.13.1</version>
+    <time>1690370678</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Thunderbird 102.13.1
+  MFSA 2023-28
+  * CVE-2023-3417 (bmo#1835582)
+    File Extension Spoofing using the Text Direction Override Character</comment>
+    <requestid>1100766</requestid>
+  </revision>
 </revisionlist>

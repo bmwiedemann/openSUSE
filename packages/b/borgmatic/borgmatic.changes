@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Jul 21 06:57:16 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 1.8.0:
+  * BREAKING: For the "borgmatic borg" action, instead of
+    implicitly injecting repository/archive into the resulting Borg
+    command-line, pass repository to Borg via an environment
+    variable and make archive available for explicit use in your
+    commands.
+  * Fix an error when running "borg key export" through borgmatic.
+  * Fix an error when dumping a database and the "exclude_nodump"
+    option is set.
+  * Add "check_i_know_what_i_am_doing" option to bypass Borg
+    confirmation prompt when running "check --repair".
+  * When merging two configuration files, error gracefully if the
+    two files do not adhere to the same format.
+  * Remove configuration sections ("location:", "storage:",
+    "hooks:" etc.), while still keeping deprecated support for
+    them. Now, all options are at the same level, and you don't
+    need to worry about commenting/uncommenting section headers
+    when you change an option (if you remove your sections first).
+  * BREAKING: The retention prefix and the consistency prefix
+    can no longer have different values (unless one is not set).
+  * BREAKING: The storage umask and the hooks umask can no longer
+    have different values (unless one is not set).
+  * BREAKING: Flags like "--config" that previously took multiple
+    values now need to be given once per value, e.g.
+    "--config first.yaml --config second.yaml" instead of
+    "--config first.yaml second.yaml". This prevents argument
+    parsing errors on ambiguous commands.
+  * BREAKING: Remove the deprecated (and silently ignored)
+    "--successful" flag on the "list" action, as newer versions
+    of Borg list successful (non-checkpoint) archives by default.
+  * All deprecated configuration option values now generate
+    warning logs.
+  * Remove the deprecated (and non-functional) "--excludes"
+    flag in favor of excludes within configuration.
+  * Fix an error when logging too-long command output during
+    error handling. Now, long command output is truncated
+    before logging.
+
+-------------------------------------------------------------------
 Thu Jun 29 07:57:14 UTC 2023 - Jan Baier <jbaier@suse.com>
 
 - update to 1.7.15

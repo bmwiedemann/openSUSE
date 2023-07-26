@@ -60,6 +60,7 @@ Requires:       python3-importlib-metadata
 Requires:       python3-netaddr >= 0.7.18
 Requires:       python3-oslo.i18n >= 3.15.3
 Requires:       python3-requests >= 2.18.0
+Requires:       python3-urllib3 < 2
 Requires:       python3-rfc3986 >= 1.2.0
 Requires:       python3-stevedore >= 1.20.0
 %if 0%{?suse_version}

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 24 15:31:42 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to fix build failures with Exiv 0.28:
+  * 0001-change-exiv2-AutoPtr-to-unique_ptr.patch
+  * 0002-add-support-for-exiv-0.28.0-errors.patch
+
+-------------------------------------------------------------------
 Fri Apr 22 01:05:49 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.8

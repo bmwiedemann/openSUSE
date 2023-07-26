@@ -822,4 +822,12 @@ all changed Requires/Buildrequires seem to be available
   - Make tests backward compat with cliff' older versions</comment>
     <requestid>1084313</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>7bc9a0cef0a1570f9121adf4db620b0e</srcmd5>
+    <version>9.1.1</version>
+    <time>1690370663</time>
+    <user>anag+factory</user>
+    <comment>- restrict to urllib3 1.x</comment>
+    <requestid>1100700</requestid>
+  </revision>
 </revisionlist>

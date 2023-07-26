@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul 18 08:27:09 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
+
+- Remove the following patches as they are already part of the new release
+  * 0000-unreleased-changelog.patch
+  * 0001-decoded-len-unused.patch
+  * 0002-include-stdc-predef.patch
+  * 0003-clang-fixes-on-changelog.patch
+  * 0004-pkgbuild-on-changelog.patch
+  * 0005-clang-plus-notification-stack-fix.patch
+- Update to 1.4.1
+  * Compilation errors with clang 15.x
+  * Notifications initially positioned outside the screen not being visible after being moved up in the notification stack.
+    
+-------------------------------------------------------------------
 Fri Jun 16 13:13:42 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Add the following patches:

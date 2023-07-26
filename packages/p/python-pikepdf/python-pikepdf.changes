@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jul 25 10:44:56 UTC 2023 - ecsos <ecsos@openssue.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
+Mon Jul 24 07:47:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.2.1:
+  * Support for Python 3.7 is dropped.
+  * Added Page.form_xobjects, which returns all Form XObjects that
+    are used in a page 
+  * Fixed an issue with extracting images that were compressed
+    with multiple compression filters 
+  * Improved Object.repr() to avoid printing the entire contents
+    of large object trees such as those in PDFs with structural
+    element trees.
+  * Fixed error when attempting to convert XMP metadata to
+    DocumentInfo when the author was omitted.
+  * Added a method to add items to the document table of contents.
+  * Adjusted stream preview (with __repr__) so it does not attempt
+    to decompress very long
+  * Removed uses of deprecated function datetime.utcnow()
+  * Adjusted timeline of potentially flaky hypothesis test.
+  * PyPy 3.10 is now supported on some platforms.
+  * PyPy 3.8 support will be dropped in the next major release
+
+-------------------------------------------------------------------
 Wed May 10 06:39:40 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.2.8.post1:

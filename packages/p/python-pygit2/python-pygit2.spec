@@ -19,14 +19,14 @@
 
 %define skip_python2 1
 Name:           python-pygit2
-Version:        1.11.1
+Version:        1.12.2
 Release:        0
 Summary:        Python bindings for libgit2
 License:        GPL-2.0-only
 URL:            https://github.com/libgit2/pygit2
 Source:         https://files.pythonhosted.org/packages/source/p/pygit2/pygit2-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM support-libgit2-1.6.patch gh#libgit2/pygit2#1200
-Patch0:         support-libgit2-1.6.patch
+# PATCH-FIX-UPSTREAM support-libgit2-1.7.patch https://github.com/libgit2/pygit2/commit/1473e8eb6eb59dc7521dcd5f8a4c9390e9b53223
+Patch0:         support-libgit2-1.7.patch
 BuildRequires:  %{python_module cached-property}
 BuildRequires:  %{python_module cffi >= 1.4.0}
 BuildRequires:  %{python_module devel}

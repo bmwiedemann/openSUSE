@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jul 23 07:20:33 UTC 2023 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.2.8
+  * Update authors
+  * Add option to enable / disable SMT statistics (disabled by default)
+  * Migrate to Xfconf
+  * Move settings functions into namespace
+  * Require Xfconf library
+  * Add 24px icon, cleanup SVG metadata
+  * Update copyright year
+  * Display detailed CPU load on Linux
+  * Improve tooltip
+  * build: Add GLib requirement
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sat Dec 24 08:15:26 UTC 2022 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.2.7

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul 25 13:14:12 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230725.c6c492e:
+  * rephrase README
+  * Keep backup of legacy files as .rpmsave
+  * Use cdn-o-o instead of downloadcontentcdn-o-o
+  * openSUSE-repos adaptation of CDN
+  * improve comment on Leap16 handling
+  * Build -Leap16 on ALP/TW like build env
+  * correct flavor of Leap16
+  * Add Leap 16.0 definitions
+
+-------------------------------------------------------------------
 Thu Feb 09 12:48:24 UTC 2023 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20230209.87a5e9e:

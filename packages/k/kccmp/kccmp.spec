@@ -16,7 +16,7 @@
 #
 
 Name:           kccmp
-Version:        v1.0.0
+Version:        1.0.0
 Release:        0
 Summary:        Tool for kernel configurations comparison
 License:        GPL-2.0-only

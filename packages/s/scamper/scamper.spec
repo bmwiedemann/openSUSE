@@ -18,7 +18,7 @@
 
 
 Name:           scamper
-Version:        20230302
+Version:        20230605
 Release:        0
 Summary:        Parallel Internet measurement utility
 License:        GPL-2.0-only
@@ -42,15 +42,16 @@ fragmentation required message is not returned to establish the PMTU
 to the next point in the network, followed by a TTL limited search to
 infer where the failure appears to occur.
 
-%package -n libscamperfile5
+%package -n libscamperfile6
 Summary:        File access library for scamper's binary dump format
 Group:          System/Libraries
 Obsoletes:      libscamperfile1 < %{version}
 Obsoletes:      libscamperfile2 < %{version}
 Obsoletes:      libscamperfile3 < %{version}
 Obsoletes:      libscamperfile4 < %{version}
+Obsoletes:      libscamperfile5 < %{version}
 
-%description -n libscamperfile5
+%description -n libscamperfile6
 Scamper is a program that is able to conduct Internet measurement
 tasks to large numbers of IPv4 and IPv6 addresses, in parallel, to
 fill a specified packets-per-second rate. Currently, it supports the
@@ -63,7 +64,7 @@ files that scamper can produce in certain modes.
 %package -n libscamperfile-devel
 Summary:        Development headers for scamper's binary dump file access library
 Group:          Development/Libraries/Other
-Requires:       libscamperfile5 = %{version}-%{release}
+Requires:       libscamperfile6 = %{version}-%{release}
 
 %description -n libscamperfile-devel
 Scamper is a program that is able to conduct Internet measurement
@@ -75,11 +76,12 @@ alias resolution, some parts of tbit, sting, and neighbour discovery.
 This package contains development headers and other ancillary files for the
 libscamperfile library.
 
-%package -n libscamperctrl1
+%package -n libscamperctrl2
 Summary:        Control library for scamper
 Group:          System/Libraries
+Obsoletes:      libscamperctl1 < %{version}
 
-%description -n libscamperctrl1
+%description -n libscamperctrl2
 Scamper is a program that is able to conduct Internet measurement
 tasks to large numbers of IPv4 and IPv6 addresses, in parallel, to
 fill a specified packets-per-second rate. Currently, it supports the
@@ -92,7 +94,7 @@ with a collection of scamper instances.
 %package -n libscamperctrl-devel
 Summary:        Development headers for scamper's control library
 Group:          Development/Libraries/Other
-Requires:       libscamperctrl1 = %{version}-%{release}
+Requires:       libscamperctrl2 = %{version}-%{release}
 
 %description -n libscamperctrl-devel
 Scamper is a program that is able to conduct Internet measurement
@@ -115,10 +117,10 @@ make %{?_smp_mflags}
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post   -n libscamperfile5 -p /sbin/ldconfig
-%post   -n libscamperctrl1 -p /sbin/ldconfig
-%postun -n libscamperfile5 -p /sbin/ldconfig
-%postun -n libscamperctrl1 -p /sbin/ldconfig
+%post   -n libscamperfile6 -p /sbin/ldconfig
+%post   -n libscamperctrl2 -p /sbin/ldconfig
+%postun -n libscamperfile6 -p /sbin/ldconfig
+%postun -n libscamperctrl2 -p /sbin/ldconfig
 
 %files
 %license COPYING
@@ -127,7 +129,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man1/*
 %{_mandir}/man5/*
 
-%files -n libscamperfile5
+%files -n libscamperfile6
 %{_libdir}/libscamperfile.so.*
 
 %files -n libscamperfile-devel
@@ -135,7 +137,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libscamperfile.so
 %{_mandir}/man3/*
 
-%files -n libscamperctrl1
+%files -n libscamperctrl2
 %{_libdir}/libscamperctrl.so.*
 
 %files -n libscamperctrl-devel

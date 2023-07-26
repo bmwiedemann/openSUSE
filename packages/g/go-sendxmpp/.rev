@@ -95,4 +95,13 @@
   * Remove trailing newlines in interactive mode.</comment>
     <requestid>1096417</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2f2004fbe24e259c5357d554f61d2829</srcmd5>
+    <version>0.6.1</version>
+    <time>1690370671</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.6.1:
+  * Properly close connection to server.</comment>
+    <requestid>1100735</requestid>
+  </revision>
 </revisionlist>

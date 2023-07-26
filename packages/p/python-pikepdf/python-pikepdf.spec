@@ -17,10 +17,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-pikepdf
-Version:        6.2.8.post1
+Version:        8.2.1
 Release:        0
 Summary:        Read and write PDFs with Python, powered by qpdf
 License:        MPL-2.0
@@ -30,32 +29,32 @@ Source:         https://files.pythonhosted.org/packages/source/p/pikepdf/pikepdf
 ## SECTION test requirements
 BuildRequires:  %{python_module Pillow >= 9.0.0}
 BuildRequires:  %{python_module attrs >= 20.2.0}
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module hypothesis >= 5.0}
+BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module hypothesis >= 6.36}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module lxml >= 4.0}
 BuildRequires:  %{python_module packaging}
-BuildRequires:  %{python_module psutil >= 5}
-BuildRequires:  %{python_module pybind11 >= 2.10.0}
+BuildRequires:  %{python_module psutil >= 5.9}
+BuildRequires:  %{python_module pybind11 >= 2.10.1}
 BuildRequires:  %{python_module pybind11-devel >= 2.10.0}
-BuildRequires:  %{python_module pytest >= 6.0.0}
-BuildRequires:  %{python_module pytest-cov >= 2.10.1}
+BuildRequires:  %{python_module pytest >= 6.2.5}
+BuildRequires:  %{python_module pytest-cov >= 3.0.0}
 BuildRequires:  %{python_module pytest-forked}
 BuildRequires:  %{python_module pytest-helpers-namespace >= 2019.1.8}
 # Upstream use pytest-timeout >= 1.4.2
-BuildRequires:  %{python_module pytest-timeout}
-BuildRequires:  %{python_module pytest-xdist >= 1.28}
-BuildRequires:  %{python_module python-dateutil >= 2.8.0}
+BuildRequires:  %{python_module pytest-timeout >= 2.1.0}
+BuildRequires:  %{python_module pytest-xdist >= 2.5.0}
+BuildRequires:  %{python_module python-dateutil >= 2.8.1}
 #BuildRequires:  %%{python_module python-xmp-toolkit >= 2.0.1}
-BuildRequires:  %{python_module setuptools >= 50}
-BuildRequires:  %{python_module setuptools_scm >= 4.1}
+BuildRequires:  %{python_module setuptools >= 61}
 #BuildRequires:  %%{python_module wheel >= 0.35}
 ## /SECTION
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  libjpeg8-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libqpdf) >= 11.1.1
+BuildRequires:  pkgconfig(libqpdf) >= 11.5.0
 Requires:       python-Pillow >= 9.0.0
 Requires:       python-lxml >= 4.0
 Requires:       python-packaging
@@ -80,7 +79,7 @@ export CFLAGS="%{optflags}"
 
 %files %{python_files}
 %license LICENSE.txt
-%doc README.md docs/*/*.rst
+%doc README.md
 %{python_sitearch}/pikepdf/
 %{python_sitearch}/pikepdf-%{version}-py%{python_version}.egg-info/
 

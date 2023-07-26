@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 24 08:24:27 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- riscv64-support-for-execstack.patch: Add support for riscv64
+- Add-PL_ARCH-for-AArch64.patch: Fix typo
+
+-------------------------------------------------------------------
 Fri Dec  3 07:34:40 UTC 2021 - Dominik Gedon <dominik.gedon@suse.com>
 
 - fix package description

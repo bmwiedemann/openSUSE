@@ -492,4 +492,12 @@
     precedence than &lt;&lt; in calc, which differs from C.</comment>
     <requestid>1090155</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>3158a5f1842c51fd70f38f818c251867</srcmd5>
+    <version>2.14.2.0</version>
+    <time>1690370630</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1100578</requestid>
+  </revision>
 </revisionlist>

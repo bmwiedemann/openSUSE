@@ -1,13 +1,26 @@
 -------------------------------------------------------------------
+Wed Jul 19 07:44:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.7.2.1.2:
+  * Fix incremental parsing.
+- update to 2.4.7.2.1.0:
+  * Improves incremental parsing to improve performance even when
+    the two parsed strings share only a common prefix rather than
+    one being a full prefix of the other.
+- update to 2.4.7.2.0.0:
+  * Adds incremental parsing mode, enabled via
+    `ParserElement.enableIncremental()`.
+
+-------------------------------------------------------------------
 Sun May  7 18:54:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.7.1.2.1
-  * Fix deprecation warning 
+  * Fix deprecation warning
 
 -------------------------------------------------------------------
 Thu Oct 27 22:07:48 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to v2.4.7.1.2.0 
+- Update to v2.4.7.1.2.0
   * Add packrat_context
 
 -------------------------------------------------------------------

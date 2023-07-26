@@ -24,6 +24,9 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            http://siyanpanayotov.com/project/viewnior/
 Source0:        https://github.com/hellosiyan/Viewnior/archive/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM -- Exiv 0.28 support - https://github.com/hellosiyan/Viewnior/pull/130
+Patch0:         0001-change-exiv2-AutoPtr-to-unique_ptr.patch
+Patch1:         0002-add-support-for-exiv-0.28.0-errors.patch
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.43.0
 BuildRequires:  ninja
@@ -31,7 +34,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(exiv2)
 BuildRequires:  pkgconfig(gtk+-2.0)
-Recommends:     %{name}-lang
 
 %description
 Viewnior is an image viewer program with a minimal interface.
@@ -48,7 +50,7 @@ Its features are:
 %lang_package
 
 %prep
-%setup -q -n Viewnior-%{name}-%{version}
+%autosetup -p1 -n Viewnior-%{name}-%{version}
 # fix spurious executable perms
 chmod 0644 AUTHORS COPYING NEWS src/* data/icons/scalable/apps/viewnior.svg
 
@@ -60,16 +62,6 @@ chmod 0644 AUTHORS COPYING NEWS src/* data/icons/scalable/apps/viewnior.svg
 %meson_install
 %find_lang %{name} %{?no_lang_C}
 %suse_update_desktop_file -r -G "Elegant Image Viewer" %{name} Graphics Viewer GTK
-
-%if 0%{?suse_version} && 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
 
 %files
 %license COPYING

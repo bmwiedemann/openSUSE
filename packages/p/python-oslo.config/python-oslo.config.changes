@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 25 19:51:46 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- restrict to urllib3 1.x 
+
+-------------------------------------------------------------------
 Wed May  3 12:22:46 UTC 2023 - cloud-devel@suse.de
 
 - update to version 9.1.1

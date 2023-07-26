@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 25 08:11:55 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Drop sphinx doctrees for reproducible build results
+
+-------------------------------------------------------------------
 Fri Jun  9 06:15:53 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

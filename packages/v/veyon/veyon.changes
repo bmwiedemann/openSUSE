@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Jul 16 22:53:25 UTC 2023 - andy great <andythe_great@pm.me>
+
+- Update to 4.8.1.
+  * Fix build with libproc2
+
+- Update to 4.8.0.
+  * Core:
+    * User interface style is now configurable and uses Qt's Fusion
+      style per default
+    * Added VNC tight encoding support resulting in lower network bandwidth
+      requirements when using image quality levels other than Highest
+    * Image quality for both monitoring mode and remote control
+      views is now configurable
+  * Master:
+    * Improve style of global toolbar to better match selected user
+      interface style
+    * Show user logon time in new column in Locations & computers
+      panel
+  * Plugins:
+    * Demo: added adaptive image quality control to meet certain
+      bandwidth limitations e.g. in Wi-fi environments
+    * WebAPI: added Qt 6 support
+    * WebAPI: added "/session" API endpoint
+  * Linux:
+    * Fixed fullscreen switching for lock widget and fullscreen
+      demo mode
+
+-------------------------------------------------------------------
 Wed Apr 26 13:17:40 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Replace xorg-x11-devel BuildRequire by pkgconfig(...)

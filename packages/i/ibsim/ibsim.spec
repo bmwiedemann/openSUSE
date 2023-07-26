@@ -1,7 +1,7 @@
 #
 # spec file for package ibsim
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define git_ver .0.4588897b0f42
+%define git_ver .0.db9c0e46bf23
 
 Name:           ibsim
-Version:        0.11
+Version:        0.12
 Release:        0
 Summary:        InfiniBand fabric simulator for management
 License:        BSD-2-Clause OR GPL-2.0-only

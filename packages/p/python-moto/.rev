@@ -199,4 +199,41 @@
     <comment></comment>
     <requestid>1063333</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2c5529b63cd1e1b156966343814a828f</srcmd5>
+    <version>4.1.13</version>
+    <time>1690370677</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.1.13, partial changes:
+  * CloudFront: create_distribution() now correctly handles a single alias
+  * CloudFront - CustomOrigins now have default timeouts if not supplied
+  * IOTData: publish() can now handle non-Unicode bytes
+  * RDS: Automated snapshots now have the appropriate SnapshotType
+  * CloudFront: create_invalidation() now behaves correctly when supplying a
+    single Path
+  * CodeBuild: create_project() now accepts all ServiceRole ARN's, not just
+    ARN's that end in /service-role/
+  * DynamoDB now supports ProjectionExpressions on (nested) lists
+  * EC2: create_flow_logs() now allows different LogDestinations for a
+    single ResourceId
+  * EC2: create_volume() now supports the Throughput-parameter
+  * ECR: put_image() now correctly overwrites tags on images with multiple tags
+  * Lambda: delete_layer_version() now also accepts function ARNs
+  * RDS: Further improve Global Cluster behaviour
+  * S3: GET/PUT requests now return Access-Control headers, if a CORS
+    configuration has been set
+  * S3: put_bucket_lifecycle_configuration() now supports multiple Transitions
+  * SESv2: create_contact_list() now correctly reads Topics with special
+    characters
+  * SESv2: send_email() now correctly reads raw emails
+  * Organizations: create_policy() now supports the Tags-parameter
+  * RDS: creation times of all objects are now in UTC
+  * Redshift: creation times of all objects are now in UTC
+  * S3: Bucket names are now global, meaning they have to be unique across
+    accounts
+  * S3: select_object_content() now supports None-values
+  * SecretsManager - update_secret() now supports the Description-parameter
+  * SNS: Topics are no longer accessible across regions (only across accounts)</comment>
+    <requestid>1100771</requestid>
+  </revision>
 </revisionlist>

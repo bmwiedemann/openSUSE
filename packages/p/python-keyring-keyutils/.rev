@@ -26,4 +26,13 @@ A more detailed announcement can be found on the factory ml [2].
     <comment></comment>
     <requestid>1097946</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c2f4d1e6450dd4462a677e9e9038d432</srcmd5>
+    <version>0.1.1</version>
+    <time>1690370622</time>
+    <user>anag+factory</user>
+    <comment>- Add keyring-util-properties.patch fixing incompatibility with
+  keyring 23.9.0 (gh#marcus-h/python-keyring-keyutils!3).</comment>
+    <requestid>1100329</requestid>
+  </revision>
 </revisionlist>

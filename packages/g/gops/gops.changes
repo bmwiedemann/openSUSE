@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jul 25 15:00:21 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) >= 1.17 to match go.mod
+  * Add basic %check to run packaged executable binary --help
+
+-------------------------------------------------------------------
+Tue Jul 25 09:17:09 UTC 2023 - andrea.manzini@suse.com
+
+- Update to version 0.3.27:
+  * cmd/shared: add 'off' option to setgc (#201)
+  * bump build deps
+  * go.mod: bump to Go 1.17
+  * Migrate gops to use spf13/cobra for command execution
+  * vendor: include cobra
+  * internal/cmd: Move code here from the main package
+
+-------------------------------------------------------------------
 Fri Jul 08 19:46:17 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 0.3.25:

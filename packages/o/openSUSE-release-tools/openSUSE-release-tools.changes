@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 25 14:33:21 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230725.2253789:
+  * project-installcheck.py: Don't include ignored errors in rebuildpacs.yaml
+
+-------------------------------------------------------------------
 Fri Jul 21 15:20:17 UTC 2023 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20230721.2396b32:

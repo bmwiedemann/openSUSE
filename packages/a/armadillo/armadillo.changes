@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 21 18:16:22 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 12.6.0:
+  * Faster multiplication of dense vectors by sparse matrices (and
+    vice versa).
+  * Faster eigs_sym() and eigs_gen().
+  * Faster conv() and conv2() when using OpenMP.
+  * More efficient move constructors in dense vector classes.
+  * Added diags() and spdiags() for generating band matrices from
+    set of vectors.
+
+-------------------------------------------------------------------
 Mon Jun 19 06:06:00 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 12.4.1:

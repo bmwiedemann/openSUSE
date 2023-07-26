@@ -1,7 +1,7 @@
 #
 # spec file for package nginx-module-vts
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define project_name nginx-module-vts
 Name:           nginx-module-vts
-Version:        0.1.18+g41
+Version:        0.2.2
 Release:        0
 Summary:        Nginx virtual host traffic status module
 License:        BSD-2-Clause
 Group:          Productivity/Networking/Web/Proxy
 URL:            https://github.com/vozlt/nginx-module-vts
-Source:         %name-%version.tar.xz
+Source:         https://github.com/vozlt/nginx-module-vts/archive/refs/tags/v%version.tar.gz
 BuildRequires:  nginx-source
 BuildRequires:  pcre-devel
 %ngx_conditionals

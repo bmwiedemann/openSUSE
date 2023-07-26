@@ -634,4 +634,12 @@ to Staging:F with it</comment>
     <comment></comment>
     <requestid>1094611</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>72be0115254936e5052823aba753a25a</srcmd5>
+    <version>22.3.17</version>
+    <time>1690370614</time>
+    <user>anag+factory</user>
+    <comment>correct typo in changelog</comment>
+    <requestid>1100206</requestid>
+  </revision>
 </revisionlist>

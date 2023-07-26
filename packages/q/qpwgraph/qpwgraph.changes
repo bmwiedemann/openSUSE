@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jul 17 19:34:29 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.5.1:
+  * Fix segfault on initialisation that was affecting Qt5 builds.
+
+-------------------------------------------------------------------
+Sun Jul 16 15:15:29 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.5.0:
+  * Completely refactored the internal PipeWire node registry
+    logic, just to have unique node names, as seen fit to purpose
+    to solve an old undefined behaviour to positioning and Patchbay
+    persistence of multiple nodes with the very same and exact
+    name.
+  * Fix the main PipeWire registry thread-safety, into a two-level
+    critical section, hopefully preventing the race-conditions that
+    are the suspected cause to some rare crashes.
+
+-------------------------------------------------------------------
 Mon Jul 10 19:24:48 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.4.5:

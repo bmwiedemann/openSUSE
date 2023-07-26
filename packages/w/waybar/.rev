@@ -803,4 +803,30 @@
     <comment></comment>
     <requestid>1096866</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>d134bff0e1a564626487b02654199533</srcmd5>
+    <version>0.9.20</version>
+    <time>1690370667</time>
+    <user>anag+factory</user>
+    <comment>- Use upstream tarball. Remove service files.
+- Update to 0.9.20:
+  * Fixed build warnings #2282
+  * hyprland/window: Add .hidden CSS class, account for hidden &amp; fullscreen windows #2270
+  * Unbreak modules without DBus #2284
+  * hyprland/window: Fix no info with separate-outputs=true #2286
+  * fix, default to true, sway/workspaces: warp-on-scroll #2293
+  * clock: handle timezone changes (again) #2296
+  * hyprland/window expose more data #2294
+  * App Icons for hyprland/window #2303
+  * hyprland/window: Fix overlap with .hidden class from default style #2307
+  * hyprland/window: rename .hidden to .swallowing (and fix grouped windows) #2308
+  * backlight: do not convert percent to string in fmt #2317
+  * hyprland/backend: Fix JSON parser runtime error #2321
+  * Fix wrong name for {name} #2306
+  * Ensure signal is disconnected in destructor #2324
+  * hyprland/language: Differentiating keyboard layout variants #2326
+  * hyprland/window remove duplicate empty css #2318
+</comment>
+    <requestid>1100748</requestid>
+  </revision>
 </revisionlist>

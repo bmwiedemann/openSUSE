@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 25 12:45:18 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to 0.12
+  - Increase LFT size to 48K
+  - Support NDR when parsing enhance ibnetdiscover
+  - Enable IsLinkSpeedNDRSupported bit in PortInfo
+  - Assume QDR speed when port speed is 0
+
+-------------------------------------------------------------------
 Mon Aug 23 15:12:43 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to 0.11

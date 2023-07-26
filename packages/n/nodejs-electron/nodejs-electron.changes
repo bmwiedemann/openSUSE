@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 22 21:18:28 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- New upstream release 22.3.17
+  * Security fixes: CVE-2023-3422, CVE-2023-3421, CVE-2023-3420.
+
+-------------------------------------------------------------------
+Sun Jul 16 15:29:22 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+- Add mojom-python3.12-imp.patch and Partial-migration-from-imp-to-importlib.patch to fix ftbfs on Rawhide
+
+-------------------------------------------------------------------
 Wed Jun 21 19:37:40 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 22.3.14
   * Security fixes for WebRTC: CVE-2023-3215, CVE-2023-0698, CVE-2023-0932

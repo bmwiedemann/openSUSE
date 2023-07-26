@@ -24,7 +24,7 @@ Name:           qgis-ltr
 %else
 Name:           qgis
 %endif
-Version:        3.30.3
+Version:        3.32.0
 Release:        0
 Summary:        A Geographic Information System (GIS)
 License:        GPL-2.0-only
@@ -38,10 +38,8 @@ Source3:        qgis_sample_data.zip
 Patch1:         fix-fastcgi-include.patch
 # PATCH-FIX-UPSTREAM - scan for pdal-config instead of pdal in cmake
 Patch2:         qgis-fix-cmake-findpdal.patch
-# PATCH-FIX-UPSTREAM - add missing include file https://github.com/qgis/QGIS/issues/52526
-Patch3:         qgis-3.30.0_include_fix.patch
 # PATCH-FIX-UPSTREAM - https://github.com/qgis/QGIS/issues/53700#issuecomment-1623365356
-Patch4:         exiv2-0.28.patch
+Patch3:         exiv2-0.28.patch
 BuildRequires:  FastCGI-devel
 BuildRequires:  PDAL-devel
 BuildRequires:  bison >= 2.4
