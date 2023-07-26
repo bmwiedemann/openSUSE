@@ -17,7 +17,7 @@
 
 
 Name:           nftables
-Version:        1.0.7
+Version:        1.0.8
 Release:        0
 Summary:        Userspace utility to access the nf_tables packet filter
 License:        GPL-2.0-only
@@ -28,6 +28,7 @@ URL:            https://netfilter.org/projects/nftables/
 Source:         http://ftp.netfilter.org/pub/%name/%name-%version.tar.xz
 Source2:        http://ftp.netfilter.org/pub/%name/%name-%version.tar.xz.sig
 Source3:        %name.keyring
+Patch1:         0001-Revert-py-replace-distutils-with-setuptools.patch
 BuildRequires:  asciidoc
 BuildRequires:  bison
 BuildRequires:  flex
@@ -38,7 +39,7 @@ BuildRequires:  python3-base
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(libmnl) >= 1.0.4
-BuildRequires:  pkgconfig(libnftnl) >= 1.2.5
+BuildRequires:  pkgconfig(libnftnl) >= 1.2.6
 BuildRequires:  pkgconfig(xtables) >= 1.6.1
 
 %description

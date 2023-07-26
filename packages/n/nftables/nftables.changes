@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jul 14 11:56:43 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.8
+  * Support for setting meta and ct mark from other fields in
+    rules, e.g. set meta mark to ip dscp header field.
+  * Enhacements for -o/--optimize to deal with NAT statements, to
+    compact masquerade statements.
+  * Support for stateful statements in anonymous maps, such as
+    counters.
+  * Support for resetting stateful expressions in sets, maps and
+    elements, e.g. counters.
+  * broute support to short-circuit bridge logic from the bridge
+    prerouting hook and pass up packets to the local IP stack.
+  * JSON support for table and chain comments.
+- Added 0001-Revert-py-replace-distutils-with-setuptools.patch
+
+-------------------------------------------------------------------
 Mon Mar 13 20:47:53 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.0.7
