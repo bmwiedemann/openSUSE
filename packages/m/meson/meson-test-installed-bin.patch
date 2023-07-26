@@ -1,7 +1,7 @@
 Index: meson-1.0.1/run_tests.py
 ===================================================================
---- meson-1.0.1.orig/run_tests.py
-+++ meson-1.0.1/run_tests.py
+--- a/run_tests.py
++++ b/run_tests.py
 @@ -196,18 +196,10 @@ def get_meson_script() -> str:
      Also used by run_unittests.py to determine what meson to run when not
      running in-process (which is the default).

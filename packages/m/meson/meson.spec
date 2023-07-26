@@ -35,7 +35,7 @@
 %bcond_with     setuptools
 %bcond_without  mono
 Name:           meson%{name_ext}
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0
@@ -256,11 +256,12 @@ ln -s /usr/bin/g++-12 bin/c++
 ln -s /usr/bin/g++-12 bin/g++
 ln -s /usr/bin/gcc-12 bin/cc
 ln -s /usr/bin/gcc-12 bin/gcc
-export PATH="$(pwd)/bin:${PATH}"
+export PATH="${PWD}/bin:${PATH}"
 c++ --version
 
 # Fix shebang in test cases getting executed by ninja
-%python_expand find test\ cases -type f -name "*.py" -exec sed -i "1s@#!.*python.*@#!$(realpath %{_bindir}/$python)@" {} +
+%python_expand find test\ cases -type f -name "*.py" \
+    -exec sed -i "1s@#!.*python.*@#!$(realpath %{_bindir}/$python)@" {} +
 %endif
 
 export LANG=C.UTF-8

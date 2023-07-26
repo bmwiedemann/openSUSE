@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Jul 17 00:10:47 UTC 2023 - Luciano Santos <luc14n0@opensuse.org>
+
+- Update to version 1.2.0:
+  + This release bring many new features.
+  + Added Metrowerks C/C++ toolchains. Note that the implementation
+    is somewhat experimental yet.
+  + Added str.splitlines method that can be used to split a string
+    into an array of lines.
+  + declare_dependency has a new extra_files keyword, to add extra
+    files to a target.
+  + Added a new '--genvslite' option for use with 'meson setup
+    ...'.
+  + gnome.generate_gir() now accepts the env kwarg which lets you
+    set environment variables.
+  + More data in introspection files.
+  + Machine objects get kernel and subsystem properties.
+  + default_options and override_options may now be dictionaries.
+  + New override of find_program('meson').
+  + Python module can now compile bytecode.
+  + rust.bindgen allows passing extra arguments to rustc. This
+    may be necessary to pass extra cfgs or to change warning
+    levels.
+  + Support for defining crate names of Rust dependencies in Rust
+    targets.
+  + A machine file may be used to pass extra arguments to clang
+    in a bindgen call.
+  + Add a link_with keyword to rust.test(). This can already be
+    worked around by creating declare_dependency() objects to pass
+    to the dependencies keyword, but this cuts out the middle man.
+  + Rust now supports the b_ndebug option. Which controls the
+    debug_assertions cfg, which in turn controls debug_assert!()
+    macro.
+  + Wildcards in list of tests to run. The meson test command now
+    accepts wildcards in the list of test names.
+  + New for the generation of Visual Studio vcxproj projects.
+  + For more details about all those changes, please visit:
+    https://mesonbuild.com/Release-notes-for-1-2-0.html
+- Refresh patches with Quilt.
+
+-------------------------------------------------------------------
 Fri Jul 14 10:01:09 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Be leaner with the build deps:
