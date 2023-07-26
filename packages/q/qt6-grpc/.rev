@@ -28,4 +28,12 @@
   * 0003-Add-missing-memory-include.patch</comment>
     <requestid>1097103</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5f7651a9f3bb4262ed6d7b6a9aa7c6d7</srcmd5>
+    <version>6.5.2</version>
+    <time>1690370554</time>
+    <user>anag+factory</user>
+    <comment>Qt 6.5.2 (forwarded request 1099849 from krop)</comment>
+    <requestid>1099990</requestid>
+  </revision>
 </revisionlist>

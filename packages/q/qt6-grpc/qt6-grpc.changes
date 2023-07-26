@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 20 08:50:52 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.5.2
+  * https://www.qt.io/blog/qt-6.5.2-released-1
+
+-------------------------------------------------------------------
 Thu Jul  6 10:43:38 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Request protobuf < 22 (QTBUG-114833)
