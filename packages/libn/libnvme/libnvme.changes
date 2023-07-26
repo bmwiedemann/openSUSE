@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Jul 21 12:54:56 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Label __pycache__ directory because meson 1.2.0 starts to install
+  the precompiled files.
+
+-------------------------------------------------------------------
+Thu Jul 06 09:40:01 UTC 2023 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to version 1.5:
+  * fabrics: Relax match on well known disc ctrl lookup
+  * tree: Ignore NULL address pointer for phy slot lookup
+  * fabrics: Filter discovery ctrls out during application context check
+  * util: Add ignored error code
+  * json: Use memory block allocated by realloc() instead printbuf
+  * tree: Add PCI physical slot number for controller
+  * tree: Use nvme_ipaddrs_eq() to compare IP addresses
+  * fabrics: Add EADDRNOTAVAIL error mapping
+  * fabrics: filter out subsystems with non-matching application string
+  * libnvme: add 'application' setting to nvme_root
+  * libnvme: add 'application' setting to the subsystem
+  * util: rename ipaddrs_eq() to nvme_ipaddrs_eq() and make public.
+  * util: Add ipaddrs_eq() to check whether two IP addresses are equal
+  * ioctl: fix RAE bit on last Get Log Page command
+  * fabrics: check genctr after getting discovery entries
+  * fabrics: handle /dev/nvme-fabrics read failure
+  * fabrics: fix potential invalid memory access in __nvmf_supported_option()
+  * Python: Fix crash during garbage collection
+  * mi: Add nvme_mi_ctrl_id to retrieve controller ID
+  * ioctl: Explicitly initialize all members of struct nvme_ns_mgmt_args
+  * ioctl: io management send, receive args fix
+  * Python: Add NBFT support
+  * tree: Fix offset argument check in nvme_bytes_to_lba
+  * nbft: add NBFT v1.0 table support
+  * types: Add IO command set specific field on nsmgmt
+  * fabrics: Do not pass unsupported options to kernel
+  * types: Add ns-mgmt host software specified fields
+  * types.h: Add FDP related Status Code
+  * tree: Fix argument check in nvme_bytes_to_lba
+
+-------------------------------------------------------------------
 Fri Mar 31 15:38:35 UTC 2023 - Daniel Wagnrer <daniel.wagner@suse.com>
 
 - Update to version 1.4:

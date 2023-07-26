@@ -19,7 +19,7 @@
 %define sover 1
 
 Name:           libnvme
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        Linux-native nvme device management library
 License:        LGPL-2.1-or-later
@@ -113,5 +113,6 @@ export KBUILD_BUILD_TIMESTAMP=@${SOURCE_DATE_EPOCH:-$(date +%s)}
 %{python3_sitearch}/libnvme/*.so
 %{python3_sitearch}/libnvme/__init__.py
 %{python3_sitearch}/libnvme/nvme.py
+%pycache_only %{python3_sitearch}/libnvme/__pycache__
 
 %changelog
