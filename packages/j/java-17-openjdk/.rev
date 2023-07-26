@@ -183,4 +183,12 @@
     <comment>bsc#1211679</comment>
     <requestid>1088910</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>c712bd3329709779a8b6ddf875e8a7bd</srcmd5>
+    <version>17.0.8.0</version>
+    <time>1690370509</time>
+    <user>anag+factory</user>
+    <comment>July 2023 CPU</comment>
+    <requestid>1100540</requestid>
+  </revision>
 </revisionlist>
