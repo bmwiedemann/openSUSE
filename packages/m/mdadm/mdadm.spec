@@ -197,7 +197,7 @@ install -m 644 %{S:2} %{buildroot}%{_fillupdir}/
 install -d %{buildroot}%{_systemdshutdowndir}
 install -d %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcmdmonitor
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 	mkdir -p %{buildroot}/sbin
 	ln -s %{_sbindir}/mdadm %{buildroot}/sbin/mdadm
 	ln -s %{_sbindir}/mdmon %{buildroot}/sbin/mdmon
@@ -230,7 +230,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcmdmonitor
 %doc Software-RAID.HOWTO/Software-RAID.HOWTO*{.txt,.html}
 %doc %{_mandir}/man?/*
 %{_sbindir}/*
-%if !0%{?usrmerged}
+%if 0%{?suse_version} < 1550
 /sbin/mdadm
 /sbin/mdmon
 %endif

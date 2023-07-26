@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 24 15:31:30 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
+
+- mdadm.spec: replace transitional %usrmerged macro with regular
+  version check (boo#1206798)
+
+-------------------------------------------------------------------
 Fri May 26 02:29:42 UTC 2023 - Coly Li <colyli@suse.de>
 
 - Grow: fix possible memory leak (bsc#1208618)
