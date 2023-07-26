@@ -17,7 +17,7 @@
 
 
 Name:           rofi-wayland
-Version:        1.7.5+wayland1+git.1679493688.d06095b
+Version:        1.7.5+wayland2+git.1690115482.ff2338c
 Release:        0
 Summary:        A window switcher, run dialog and dmenu replacement
 License:        MIT
