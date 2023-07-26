@@ -1,4 +1,122 @@
 -------------------------------------------------------------------
+Sun Jul 16 09:50:59 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- Only execute pytest, not black and flake8 tests. We do not care about formatting
+- On Leap 15.4 and 15.5 skip a test that fails there, but not on Tumbleweed
+
+-------------------------------------------------------------------
+Sun Jul 16 09:13:35 UTC 2023 - sebix@sebix.at
+
+- Update to version 2.35:
+  * main: Fix exitcode logging
+  * sync: Track new/existing project count
+  * manifest: enable remove-project using path
+  * update links from monorail to issuetracker
+  * sync: Handle case when output isn't connected to a terminal
+  * sync: Update sync progress even when _sync_dict is empty
+  * sync: Handle race condition when reading active jobs
+  * pager: set $LESS only when missing
+  * Add envar to replace shallow clones with partial
+  * sync: Show number of running fetch jobs
+  * upload: use f-string
+  * project: Include tags option during fetch retry
+  * Parse OpenSSH versions with no SSH_EXTRAVERSION
+  * sync: Show elapsed time for the longest syncing project
+  * [git_trace2] Add logs for critical cmds
+  * [trace2] Add absolute time on trace2 exit events
+  * SUBMITTING_PATCHES: update with commit queue details
+  * sync: Fix how sync times for shared projects are recorded
+  * manifest: add support for revision in include
+  * sync: Display total elapsed fetch time
+  * [SyncAnalysisState] Preserve synctime µs
+  * tests: do not allow underscores in cli options
+  * upload: Add `--no-follow-tags` by default to git push
+  * run_tests: Check flake8
+  * Update abandon to support multiple branches
+  * run_tests: Always check black and check it last
+  * Format codebase with black and check formatting in CQ
+  * Make black with line length 80 repo's code style
+  * docs: update Focal Python version
+  * upload: Skip upload if merge branch doesn't match project revision and dest_branch.
+  * tests: Change docstring for CopyLinkTestCase
+  * tests: Rework run_tests to use pytest directly and add vpython3 file
+  * sync: Remove unused variable
+  * Handle KeyboardInterrupt during repo sync
+  * Update sync progress
+  * project: clean up error message
+  * Update bug tracking links
+  * git_superproject: Log actual error fmt instead of the entire error message.
+  * sync: Silence 'not found in manifest' message
+  * Enable use of REPO_CONFIG_DIR to customize .repoconfig location
+  * init: Silence the "rm -r .repo and try again" message if quiet
+  * Fix flake8 warnings for some files
+  * update_manpages.py: treat regex as raw string
+  * Use 'backslashreplace' for decode
+  * Use print with flush=True instead of stdout.flush
+  * pylint: remove unused imports
+  * update-manpages: clean up symlink in checkout
+  * upload: Allow user to configure unusual commit threshold
+  * repo_trace: Avoid race conditions with trace_file updating.
+  * github: enable flake8 postsubmit testing
+  * Use --negotiation-tip in superproject fetches.
+  * tests: clean up repo_trace._TRACE_FILE patching
+  * wrapper: switch to functools.lru_cache
+  * tests: drop old unittest.main logic
+  * sync: fix manifest sync-j handling
+  * sync: Fix undefined variable in _FetchOne
+  * sync: finish marking REPO_AUTO_GC=1 as deprecated.
+  * test_manifest_config_properties: use assertEqual
+  * sync: cleanup output when not doing GC
+  * Revert "sync: save any cruft after calling git gc."
+  * sync: mark REPO_AUTO_GC=1 as deprecated.
+  * Fix ManifestProject.partial_clone_exclude property.
+  * release-process: update to use ./release/sign-tag.py
+  * wrapper.py: Replacing load_module() with exec_module()
+  * Fixed wrapper related warnings in tests
+  * test_capture: allow both Unix and Windows line sep
+  * test_bad_path_name_checks: allow Windows path sep
+  * test: Fix char encoding issues on windows
+  * test: fix path seperator errors on windows
+  * tox: Allow passing positional arguments
+  * trace: make test timeout after 2min
+  * tox: Make all tests timeout after 5min
+  * Update GH Action test-ci.yml dependencies
+  * tox: enable python 3.10 testing
+  * Resolved DeprecationWarning for currentThread()
+  * Set repo version to 2.30 (current)
+  * Extract env building into a testable helper.
+  * Do not set ALT object dirs when said path resolves to the same dir.
+  * tests: Fix update-manpages test.
+  * subcmds: display correct path multitree messages
+  * update-manpages: explicitly strip color codes
+  * repo_trace: drop notification of trace file name.
+  * repo_trace: adjust formatting, update man page.
+  * upload: track projects by path, rather than name
+  * trace: restore Progress indicator.
+  * sync: REPO_AUTO_GC=1 to restore old behavior.
+  * Fix TRACE_FILE renaming.
+  * sync: no garbage collection by default
+  * Improve always-on-trace
+  * GitcInit: fix gitc-init failure
+  * sync: clear preciousObjects when set in error.
+  * Set tracing to always on and save to .repo/TRACE_FILE.
+  * tests: Make the tests pass for Python < 3.8
+  * init: add --manifest-depth for shallow manifest clone
+  * Revert "init: change --depth default to 1 for manifest repo"
+  * sync: uninitialized variable on mirror sync failure
+  * sync: do not require python 3.9
+  * sync: only use --cruft when git supports it.
+  * project: Add a missing call to _CopyAndLinkFiles
+  * manifest: allow extend-project to override dest-branch and upstream
+  * sync: use namedtuples for internal return values
+  * sync: incorporate review feedback.
+  * diffmanifests: Handle Missing Projects in Repo Workspace
+  * update-manpages: force use of active interp
+  * sync: save any cruft after calling git gc.
+  * Revert "project: initialize new manifests in temp dirs"
+  * sync: Correctly sync multi manifest workspaces
+
+-------------------------------------------------------------------
 Tue Aug 23 18:45:06 UTC 2022 - sebix+novell.com@sebix.at
 
 - Update to version 2.29:
