@@ -4865,4 +4865,13 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
     <comment>- fixed aarch64 build</comment>
     <requestid>1097966</requestid>
   </revision>
+  <revision rev="416" vrev="3">
+    <srcmd5>25c7284b3bae0b2bd2993798f3f8b67e</srcmd5>
+    <version>8.12</version>
+    <time>1690370600</time>
+    <user>anag+factory</user>
+    <comment>- wine.desktop: launch the .exe with the current working directory
+  bsc#1213439</comment>
+    <requestid>1100036</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 21 19:37:26 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- wine.desktop: launch the .exe with the current working directory
+  bsc#1213439
+
+-------------------------------------------------------------------
 Mon Jul 10 12:57:45 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - fixed aarch64 build

@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=wine %f
+Exec=wine start /unix %f
 Name=Wine
 NoDisplay=true
 Name[af]=Wyn
