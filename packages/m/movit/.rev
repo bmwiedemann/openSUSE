@@ -168,4 +168,13 @@
     <comment></comment>
     <requestid>1098845</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>488b98a25032a355c9d450f297bf157b</srcmd5>
+    <version>1.7.1</version>
+    <time>1690370604</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.7.1: Fix a bug when compiling in shaders,
+  that could cause errors with certain shader compilers.</comment>
+    <requestid>1100170</requestid>
+  </revision>
 </revisionlist>

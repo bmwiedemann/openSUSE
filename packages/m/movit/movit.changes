@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 22 20:36:21 UTC 2023 - antoine.belvire@opensuse.org
+
+- Update to version 1.7.1: Fix a bug when compiling in shaders,
+  that could cause errors with certain shader compilers.
+
+-------------------------------------------------------------------
 Sat Jul 15 18:23:27 UTC 2023 - antoine.belvire@opensuse.org
 
 - Update to version 1.7.0:

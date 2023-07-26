@@ -18,7 +18,7 @@
 
 %define _sonum  8
 Name:           movit
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        GPU video filter library
 License:        GPL-2.0-or-later
