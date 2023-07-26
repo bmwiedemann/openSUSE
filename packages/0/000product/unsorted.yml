@@ -11090,7 +11090,7 @@ unsorted:
   - libcairo2-32bit 
   - libcaja-extension1 
   - libcal3d12 
-  - libcalc2_14_1_6 
+  - libcalc2_14_2_0 
   - libcalcium0 
   - libcallaudio0_1-0 
   - libcallback1 
@@ -12086,7 +12086,6 @@ unsorted:
   - libgiomm-2_4-1-32bit 
   - libgirara-gtk3-3 
   - libgirepository-1_0-1-32bit 
-  - libgit2-1_7 
   - libgit2-devel 
   - libgit2-glib-1_0-0 
   - libgit2-glib-devel 
@@ -14688,9 +14687,9 @@ unsorted:
   - libscalapack2_2_1_0-gnu-openmpi4-hpc-devel 
   - libscalapack2_2_1_0-gnu-openmpi4-hpc-devel-static 
   - libscamperctrl-devel 
-  - libscamperctrl1 
+  - libscamperctrl2 
   - libscamperfile-devel 
-  - libscamperfile5 
+  - libscamperfile6 
   - libscca-devel 
   - libscca-tools 
   - libscca1 
@@ -22803,7 +22802,6 @@ unsorted:
   - python3-rgw 
   - python3-rpmconf 
   - python3-rrdtool 
-  - python3-rust2rpm 
   - python3-saharaclient 
   - python3-seccomp 
   - python3-senlinclient 
@@ -27117,7 +27115,6 @@ unsorted:
   - python311-buttplug 
   - python311-bytecode 
   - python311-cPyparsing 
-  - python311-cached-property 
   - python311-cachelib 
   - python311-cachetools 
   - python311-cachey 
@@ -28644,7 +28641,6 @@ unsorted:
   - python311-pygame-devel 
   - python311-pygeos 
   - python311-pygerrit2 
-  - python311-pygit2 
   - python311-pyglet 
   - python311-pygments-ansi-color 
   - python311-pygments-pytest 
@@ -34260,8 +34256,6 @@ unsorted:
   - rust 
   - rust-bindgen 
   - rust-cbindgen 
-  - rust-packaging 
-  - rust-srpm-macros 
   - rust1.66 
   - rust1.67 
   - rust1.68 
@@ -35193,6 +35187,7 @@ unsorted:
   - swayidle-bash-completion 
   - swayidle-fish-completion 
   - swayidle-zsh-completion 
+  - swayimg 
   - swaylock 
   - swaylock-bash-completion 
   - swaylock-fish-completion 
