@@ -285,4 +285,12 @@
 - Refresh openucx-s390x-support.patch</comment>
     <requestid>1075600</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>cf1aef19ef8d514582a7df929459bf46</srcmd5>
+    <version>1.14.1</version>
+    <time>1690370530</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1100646</requestid>
+  </revision>
 </revisionlist>

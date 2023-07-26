@@ -20,7 +20,7 @@
 %define version_suf %{nil}
 
 Name:           openucx
-Version:        1.14.0
+Version:        1.14.1
 Release:        0
 Summary:        Communication layer for Message Passing (MPI)
 License:        BSD-3-Clause
