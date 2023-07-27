@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Syntax-Keyword-Try
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,25 @@
 
 %define cpan_name Syntax-Keyword-Try
 Name:           perl-Syntax-Keyword-Try
-Version:        0.28
+Version:        0.290.0
 Release:        0
+%define cpan_version 0.29
+Provides:       perl(Syntax::Keyword::Try) = 0.290.0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Try/catch/finally syntax for perl
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/P/PE/PEVANS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/P/PE/PEVANS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::CBuilder)
 BuildRequires:  perl(Module::Build) >= 0.400400
-BuildRequires:  perl(Test::More) >= 0.88
+BuildRequires:  perl(Test2::V0)
 BuildRequires:  perl(XS::Parse::Keyword) >= 0.06
 BuildRequires:  perl(XS::Parse::Keyword::Builder) >= 0.06
 Requires:       perl(XS::Parse::Keyword) >= 0.06
+Provides:       perl(Syntax::Keyword::Try::Deparse) = 0.290.0
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -53,17 +57,17 @@ the core feature on those supported perl versions, falling back to
 'Syntax::Keyword::Try' on older perls.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
-perl Build.PL installdirs=vendor optimize="%{optflags}"
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor optimize="%{optflags}"
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
