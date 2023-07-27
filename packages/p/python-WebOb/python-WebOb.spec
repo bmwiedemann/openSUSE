@@ -66,7 +66,7 @@ sed -i 's/worker.isAlive/worker.is_alive/' tests/conftest.py
 
 %build
 %python_build
-PYTHONPATH=./src sphinx-build -b html docs build/sphinx/html && rm build/sphinx/html/.buildinfo
+PYTHONPATH=./src sphinx-build -b html docs build/sphinx/html && rm -r build/sphinx/html/.{buildinfo,doctrees}
 
 %install
 %python_install

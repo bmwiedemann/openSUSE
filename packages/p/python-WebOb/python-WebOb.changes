@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 26 07:20:55 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Drop sphinx doctrees for reproducible builds
+
+-------------------------------------------------------------------
 Wed May  3 11:20:42 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Use sphinx-build and do not depend on removed build_sphinx

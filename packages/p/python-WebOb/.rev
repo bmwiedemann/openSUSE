@@ -400,4 +400,14 @@
     <comment></comment>
     <requestid>1084282</requestid>
   </revision>
+  <revision rev="36" vrev="7">
+    <srcmd5>7b8968c7254ef67e8bbca1bdec4f2225</srcmd5>
+    <version>1.8.7</version>
+    <time>1690469409</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1100758 from bmwiedemann
+
+Drop sphinx doctrees for reproducible builds</comment>
+    <requestid>1100879</requestid>
+  </revision>
 </revisionlist>
