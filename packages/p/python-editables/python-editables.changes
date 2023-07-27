@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 25 18:42:18 UTC 2023 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 0.5:
+  * Fix a bug that broke importlib.invalidate_caches
+
+-------------------------------------------------------------------
 Tue Jul 11 10:38:18 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Convert to multibuild to break a build cycle

@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-editables%{psuffix}
-Version:        0.4
+Version:        0.5
 Release:        0
 Summary:        Editable installations
 License:        MIT
