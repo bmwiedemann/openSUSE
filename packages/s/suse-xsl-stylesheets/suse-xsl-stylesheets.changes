@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 26 15:08:15 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.92.0
+
+- Update 2.92.0
+  - Add <phrase role="style:..."> support by @tomschr in #548
+  - Missing xsl:attribute to create "lang" attribute by @tomschr in #550
+  - Fix "Request for a label of unexpected element" by @tomschr in #554
+  - Fix #524: Add footnote template in mode=xref-to by @tomschr in #553
+  - Implement JSON-LD by @tomschr in #552
+
+-------------------------------------------------------------------
 Fri May 12 08:07:51 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.91.2
 
 - Update 2.91.2
