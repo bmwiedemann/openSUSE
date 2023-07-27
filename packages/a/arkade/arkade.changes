@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 26 12:51:43 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.9.25:
+  * Comment out kubestr due to invalid release
+  * Fix tests for new K0s format
+  * Add test for existing K0s app
+  * Bump github.com/cheggaaa/pb/v3 from 3.1.2 to 3.1.4
+  * update readme
+  * fix eksctl installation & tests
+  * fix tests for kubens
+  * fix helm for darwin arm
+
+-------------------------------------------------------------------
 Thu Jul 06 09:42:21 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.9.24:
