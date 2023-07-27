@@ -18,13 +18,15 @@
 
 %define lname libkeccak1
 Name:           libkeccak
-Version:        1.3.1.2
+Version:        1.4
 Release:        0
 Summary:        Keccak family hashing library, including SHA-3
 License:        ISC
 Group:          Development/Libraries/C and C++
-URL:            https://github.com/maandree/libkeccak
-Source:         https://github.com/maandree/libkeccak/archive/refs/tags/%version.tar.gz
+URL:            https://codeberg.org/maandree/libkeccak
+Source:         https://codeberg.org/maandree/libkeccak/archive/%version.tar.gz
+BuildRequires:  c_compiler
+BuildRequires:  make
 
 %description
 libkeccak is a bit-oriented lanewise implementation of the Keccak
@@ -61,10 +63,10 @@ sensitive data, and HMAC.
 A subset of Keccak was specified by NIST as SHA-3 (Secure Hash Algorithm 3).
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %name
 
 %build
-%make_build CFLAGS="%optflags" LDFLAGS="" LDOPTIMISE=""
+%make_build CC="%__cc" CFLAGS="%optflags" LDFLAGS="" LDOPTIMISE=""
 
 %install
 mkdir -p %buildroot%_libdir
