@@ -1,7 +1,7 @@
 #
 # spec file for package ldap-yp-tools
 #
-# Copyright (c) 2022 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           ldap-yp-tools
 Version:        1.13
 Release:        0
 Summary:        LDAP YP Tools
-License:        BSD-2-Clause 
+License:        BSD-2-Clause
 Group:          Applications/Internet
-Url:            https://downloads.sourceforge.net/project/%{name}/
+URL:            https://downloads.sourceforge.net/project/%{name}/
 Source:         https://downloads.sourceforge.net/project/%{name}/%{name}-%{version}/%{name}-%{version}.tar.gz
 Patch0:         ldap-yp-tools-1.13.dif
 BuildRequires:  openldap2-devel
@@ -35,8 +35,6 @@ Requires:       perl(URI)
 
 %description
 LDAP equivalents of yp tools ypcat, ypmatch and chsh
-
-%debug_package
 
 %prep
 %setup -q
