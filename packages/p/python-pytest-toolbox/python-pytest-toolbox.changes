@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 27 12:48:15 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Wed Nov 30 12:02:27 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove python_module macro definition
