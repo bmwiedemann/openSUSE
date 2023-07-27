@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jul 26 14:57:47 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.42.0.1:
+  - Work with SQLite compiled with
+    SQLITE_OMIT_DEPRECATED. Connection.setprofile() was changed
+    from using the deprecated sqlite3_profile to sqlite3_trace_v2
+    giving the same results. When including the amalgamation,
+    SQLITE_OMIT_DEPRECATED is defined. (APSW issue 443)
+  - Shell updates adding various commands to match the SQLite
+    shell, as well as code and documentation improvements. (APSW
+    issue 397)
+  - Added Connection.read() and apsw.ext.dbinfo() to provide
+    information from the database and journal/wal files. The
+    shell command .dbinfo displays it.
+  - Added apsw.vfs_details(). The shell command .vfslist displays
+    it.
+  - Implemented VFS method xCurrentTimeInt64. The default SQLite
+    VFS no longer provide xCurrentTime (floating point version)
+    if SQLITE_OMIT_DEPRECATED is defined, so this is needed for
+    inheritance to work. (APSW issue 451)
+  - Backwards incompatible change: VFS If you override
+    xCurrentTime, then you will need to override
+    xCurrentTimeInt64 in the same way, or exclude
+    xCurrentTimeInt64 in VFS, or use iVersion of 1.
+  - speedtest now shows summary statistics, and improved help
+    text. (APSW issue 444)
+- Clean up the SPEC file, use %pyproject_* macros instead.
+- Make the test suite pass again (gh#rogerbinns/apsw#462).
+
+-------------------------------------------------------------------
 Tue Jun 20 12:17:34 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

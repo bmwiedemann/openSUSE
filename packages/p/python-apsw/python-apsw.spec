@@ -18,15 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-apsw
-Version:        3.42.0.0
+Version:        3.42.0.1
 Release:        0
 Summary:        Another Python SQLite Wrapper
 License:        Zlib
 Group:          Development/Libraries/Python
 URL:            https://github.com/rogerbinns/apsw/
-Source:         https://github.com/rogerbinns/apsw/archive/%{version}.tar.gz
+Source:         https://github.com/rogerbinns/apsw/archive/refs/tags/%{version}.tar.gz#/apsw-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(sqlite3) >= 3.42
@@ -39,29 +41,34 @@ being a minimal layer over SQLite attempting just to translate the
 complete SQLite API into Python.
 
 %prep
-%setup -q -n apsw-%{version}
+%autosetup -p1 -n apsw-%{version}
+
+# See the discussion on gh#rogerbinns/apsw#462
+cat << EOF >setup.apsw
+[build_ext]
+use_system_sqlite_config = true
+EOF
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-#%%python_build
-%{python_expand $python setup.py build --enable-all-extensions --enable=load_extension}
+%pyproject_wheel
+%python_exec setup.py build_test_extension
 
 %install
-%python_install
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# python setup.py test is in this case very complicated home-brewn,
-# and using unittest, so it shouldn't be affected by changes in
-# setuptools.
-export CFLAGS="%{optflags} -fno-strict-aliasing"
-%{python_expand $python setup.py build_ext --inplace
-$python setup.py test
-$python setup.py clean
+# gh#rogerbinns/apsw#462
+# We cannot use %%pyunittest_arch here, see the ticket for the discussion
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch} PYTHONDONTWRITEBYTECODE=1
+$python -m apsw.tests -v
 }
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitearch}/*
+%{python_sitearch}/apsw
+%{python_sitearch}/apsw-%{version}*-info
 
 %changelog
