@@ -93,7 +93,7 @@ Documentation and help files for %{name}.
 %build
 %pyproject_wheel
 # Build HTML documentation
-sphinx-build doc/sphinx/source build/sphinx/html && rm build/sphinx/html/.buildinfo
+sphinx-build doc/sphinx/source build/sphinx/html && rm -r build/sphinx/html/.{buildinfo,doctrees}
 # .. and the manual pages
 sphinx-build -b man doc/sphinx/source build/sphinx/man
 

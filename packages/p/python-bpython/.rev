@@ -128,4 +128,14 @@
   build manual pages.</comment>
     <requestid>1088563</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>608059cae9006894c66b11ff0de9b442</srcmd5>
+    <version>0.24</version>
+    <time>1690469507</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1100750 from bmwiedemann
+
+Drop sphinx doctrees for reproducible builds</comment>
+    <requestid>1100877</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 26 06:58:24 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Drop sphinx doctrees for reproducible builds
+
+-------------------------------------------------------------------
 Tue May 23 08:55:21 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Stop calling setup.py build_sphinx, switch to sphinx-build, and also
