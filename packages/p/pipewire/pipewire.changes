@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Tue Jul 25 08:19:55 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add code in the spec file to modify the patch file 
+  reduce-meson-dependency.patch (used to build in SLE/Leap) so that
+  we don't need to rebase it manually for every version update.
+- Use gcc 11 in SLE/Leap since gcc 9 fails to build 0.3.75 with
+  ../spa/include/spa/utils/cleanup.h:52:13: error: dereferencing pointer to incomplete type ‘DIR’ {aka ‘struct __dirstream’}
+     52 |  __typeof__(*(ptr)) *_old_value = spa_steal_ptr(ptr); \
+
+-------------------------------------------------------------------
+Sun Jul 23 01:16:45 UTC 2023 - llyyr <llyyr.public@gmail.com>
+
+- Update to version 0.3.75:
+  * Highlights
+    - Link permissions between nodes are now enforced. This avoids 
+      potential portal managed screencast nodes to link to the
+      camera even though it was not assigned permissions to do so
+      by the session manager.
+    - Libcamera and v4l2 devices now have properties so that 
+      duplicates can be filtered out by the session manager.
+    - A bug with draining was fixed where a buffer would be marked 
+      EMPTY and would not play when it contained drained samples.
+    - Many fixes and improvements.
+  * PipeWire
+    - Permissions for links between nodes are now enforced. The
+      link will now check that the owner clients of the nodes can
+      see each other before allowing the link. This avoids
+      screensharing clients to accidentally being linked to the
+      camera nodes by the session manager. A side effect is that
+      patchbay tools will no longer be able to link portal managed
+      screencast nodes to the camera, for this we need a new
+      permission for those patchbay clients.
+    - The stream.rules/filter.rules are now evaluated when
+      connecting the stream/filter so that more properties can be
+      matched.
+    - Move some internal events from the context to the nodes to
+      better handle per-node threads in the future.
+    - The thread-loop will now signal when the thread is started.
+  * modules
+    - A timestamp workaround in module-raop was reverted because it 
+      does not work in all cases. Instead latency was increased to 
+      1.5 seconds, which also makes the problematic device in 
+      question work.
+    - The profiler module was reworked a bit to use the new node 
+      realtime events. It should now also handle dynamically added
+      and removed drivers.
+    - The module-rt now does the rtkit calls from a separate thread 
+      so that it does not block the main thread. This could cause 
+      deadlocks during startup in some cases.
+  * SPA
+    - Atomic operation macros were move from internal pipewire API
+      to public API.
+    - The video-info structure now has a new 
+      SPA_VIDEO_FLAG_MODIFIER_FIXATION_REQUIRED flag to instruct
+      the application to fixate the modifiers. This simplifies some
+      logic in applications a lot.
+    - The libcamera and v4l2 nodes now have properties to enumerate 
+      the device id they are using. This can be used to match v4l2
+      devices and libcamera devices and filter out duplicates.
+    - A bug with draining was fixed where a buffer would be marked 
+      EMPTY and would not
+
+-------------------------------------------------------------------
 Wed Jul 12 10:03:52 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 0.3.74:

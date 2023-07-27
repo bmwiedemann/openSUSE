@@ -60,7 +60,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        0.3.74
+Version:        0.3.75
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -75,8 +75,8 @@ BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 %if 0%{?suse_version} <= 1500
-BuildRequires:  gcc9
-BuildRequires:  gcc9-c++
+BuildRequires:  gcc11
+BuildRequires:  gcc11-c++
 %endif
 BuildRequires:  graphviz
 BuildRequires:  meson >= 0.59.4
@@ -379,13 +379,14 @@ JACK libraries.
 %prep
 %autosetup -N
 %if %{?pkg_vcmp:%{pkg_vcmp meson <= 0.61.0}}
+sed -ie "s/version : '0.3.72'/version : '%{version}'/" %{P:0}
 %patch0 -p1
 %endif
 
 %build
 %if %{pkg_vcmp gcc < 8}
-export CC=gcc-9
-export CXX=g++-9
+export CC=gcc-11
+export CXX=g++-11
 %endif
 %meson \
     -Ddocs=enabled \
