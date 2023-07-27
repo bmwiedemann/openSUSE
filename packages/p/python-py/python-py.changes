@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 25 14:23:03 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Skip tests failing with pytest 7.4, they don't matter
+  * failure comes from py.core, which has low usage
+  * https://github.com/pytest-dev/py/issues/288
+  * according to that this code is not used in Tumbleweed anyway
+
+-------------------------------------------------------------------
 Fri Apr 21 12:30:10 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

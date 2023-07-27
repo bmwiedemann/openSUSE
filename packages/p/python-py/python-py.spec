@@ -85,7 +85,9 @@ rm -r py/_vendored_packages
 export LANG=en_US.UTF-8
 # In addition to PR 222, there are other tests failing due to changes in pytest 5 & 6
 # https://github.com/pytest-dev/py/issues/209
-%pytest -k 'not (test_getdimensions or test_format_excinfo or test_excinfo_repr or test_excinfo_str or test_syntaxerror_rerepresentation or test_len or test_power or test_comments)'
+# another failing tests with pytest 7.4: https://github.com/pytest-dev/pytest/commit/cc23ec91d042ee15145b890aea04e96f6e831101 https://github.com/pytest-dev/pytest/commit/0a20452f78a2f5401cf0fc05dad04c8aeee170d7
+# ...but the failure comes from py.core, which was integrated to pytest long ago and will probably be dropped soon: https://github.com/pytest-dev/py/issues/288
+%pytest -k 'not (test_getdimensions or test_format_excinfo or test_excinfo_repr or test_excinfo_str or test_syntaxerror_rerepresentation or test_len or test_power or test_comments or test_repr_traceback or test_traceback_getcrashentry)'
 %endif
 
 %if !%{with test}
