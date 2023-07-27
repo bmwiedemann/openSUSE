@@ -7495,6 +7495,7 @@ unsorted:
   - gv 
   - gvfs-devel 
   - gvim 
+  - gvisor-tap-vsock 
   - gwenhywfar 
   - gwenhywfar-devel 
   - gwenhywfar-gwenbuild 
@@ -11099,7 +11100,7 @@ unsorted:
   - libcairo2-32bit 
   - libcaja-extension1 
   - libcal3d12 
-  - libcalc2_14_2_1 
+  - libcalc2_14_2_2 
   - libcalcium0 
   - libcallaudio0_1-0 
   - libcallback1 
@@ -18733,6 +18734,7 @@ unsorted:
   - nvmetcli 
   - nvptx-tools 
   - nvtop 
+  - nwg-displays 
   - nwg-dock-hyprland 
   - nwg-launchers 
   - nxtvepg 
@@ -24557,7 +24559,6 @@ unsorted:
   - python310-jupyterlab 
   - python310-jupyterlab-pygments 
   - python310-jupyterlab-server 
-  - python310-jupyterlab-server-openapi 
   - python310-jupyterlab-server-test 
   - python310-jupyterlab-templates 
   - python310-jupyterlab-widgets 
@@ -27960,7 +27961,6 @@ unsorted:
   - python311-jupyterlab 
   - python311-jupyterlab-pygments 
   - python311-jupyterlab-server 
-  - python311-jupyterlab-server-openapi 
   - python311-jupyterlab-server-test 
   - python311-jupyterlab-templates 
   - python311-jupyterlab-widgets 
@@ -31388,7 +31388,6 @@ unsorted:
   - python39-jupyterlab 
   - python39-jupyterlab-pygments 
   - python39-jupyterlab-server 
-  - python39-jupyterlab-server-openapi 
   - python39-jupyterlab-server-test 
   - python39-jupyterlab-templates 
   - python39-jupyterlab-widgets 
