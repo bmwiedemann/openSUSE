@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Kit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,16 @@
 #
 
 
-Name:           perl-Test-Kit
-Version:        2.15
-Release:        0
 %define cpan_name Test-Kit
-Summary:        Build custom test packages with only the features you want
+Name:           perl-Test-Kit
+Version:        2.160.0
+Release:        0
+%define cpan_version 2.16
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/K/KA/KAORU/%{cpan_name}-%{version}.tar.gz
+Summary:        Build custom test packages with only the features you want
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/K/KA/KAORU/%{cpan_name}-%{cpan_version}.tar.gz
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Hook::LexWrap)
@@ -43,6 +42,8 @@ Requires:       perl(Hook::LexWrap)
 Requires:       perl(Import::Into)
 Requires:       perl(Module::Runtime)
 Requires:       perl(Sub::Delete)
+Provides:       perl(Test::Kit) = 2.160.0
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -57,11 +58,11 @@ trivial change to include Test::FailWarnings in all of your tests, and
 there is no danger that you forget to include it in a new test.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -72,7 +73,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 %license LICENSE
 
