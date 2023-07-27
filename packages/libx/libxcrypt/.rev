@@ -228,4 +228,13 @@
   * Fix build with MinGW-w(32|64). (forwarded request 1096332 from dirkmueller)</comment>
     <requestid>1096704</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8fce5697d19e0b7e74f70bd1be354f99</srcmd5>
+    <version>4.4.36</version>
+    <time>1690469432</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.4.36
+  * Fix left over bits failing with Perl v5.38.0 (forwarded request 1099082 from Andreas_Schwab)</comment>
+    <requestid>1099083</requestid>
+  </revision>
 </revisionlist>
