@@ -1,4 +1,273 @@
 -------------------------------------------------------------------
+Sun Jul 23 17:18:43 UTC 2023 - llyyr.public@gmail.com
+
+- Update to version 0.36.0+git.20230723.60a26324:
+  * Update VERSION
+  * Release 0.36.0
+  * Revert "vo_gpu_next: use pl_dispatch_info_move to avoid useless data copy"
+  * ao_pipewire: for_each_sink: properly check termination condition
+  * DOCS/vo: clarify dmabuf-wayland a bit
+  * vo_dmabuf_wayland: correctly handle force-window
+  * player/video: check for forced eof
+  * vd_lavc: respect vd-lavc-software-fallback opt
+  * vo_vaapi: restore hardware video decoding
+  * vo_vaapi: fix segfault in draw_osd
+  * ao_pipewire: use native buffersize by default
+  * terminal-unix: fix not listening on input after being foregrounded
+  * osc: don't add margins to osc-deadzonesize
+  * DOCS: clarify screenshot window and screenshot-sw
+  * vo_drm: remove VOCTRL_SCREENSHOT_WIN
+  * screenshot: implement screenshot-window in sw for most VOs
+  * screenshot: clarify software screenshot logic
+  * image_writer: use proper specifier for int64_t
+  * {zsh,bash}-completion: run mpv with --no-config
+  * bash-completion: do not complete removed options
+  * zsh-completion: do not complete removed options
+  * zimg: fix broken sig_peak handling
+  * image_writer: move tag_csp check into image_writer_flexible_csp()
+  * image_writer: replace sprintf usage
+  * image_writer: share some code between write_lavc and write_avif
+  * image_writer: error check avif-pixfmt option
+  * image_writer: fix still-picture option for AVIF
+  * image_writer: remove duplicate packet writing code
+  * TOOLS: remove obsolete travisCI-related scripts
+  * wayland_common: remove questionable gcd impl and global state
+  * wayland: don't treat tiled and maximized windows the same
+  * wayland: add locked_size convenience shorthand
+  * builtin.conf: add --hdr-contrast-recovery to gpu-hq
+  * vo_gpu_next: add --hdr-contrast-recovery/smoothness
+  * builtin.conf: unset default languages in libmpv and encode profiles
+  * vd_lavc: repeatedly attempt to fallback if hwdec fails in receive_frame
+  * wayland: handle modifier keys correctly
+  * vo_gpu_next: add --target-contrast option
+  * loadfile: make get_audio_lang function static
+  * DOCS/release-policy.md: add additional advice
+  * loadfile: compute audio lang for sub selection when using lavfi-complex
+  * wayland: wrap resize requests in prepare_resize
+  * sd_ass: fix converted subtitles having too-wide borders
+  * sd_ass: don't reconfigure ass on every frame
+  * player: set default cache dir on macOS
+  * DOCS/mpv: clarify the location of cache/state files
+  * path-win: implement cache directories
+  * DOCS/interface-changes: document change in ctrl+h behaviour
+  * vd_lavc: map `hwdec=yes` to `hwdec=auto-safe`
+  * vd_lavc: add `drm` and `drm-copy` to the `auto-safe` list
+  * input: update ctrl+h to toggle `auto-safe` rather than `auto`
+  * vd_lavc: try other hwdecs when falling back after an hwdec failure
+
+-------------------------------------------------------------------
+Fri Jul 14 16:54:20 UTC 2023 - mia@0x0.st
+
+- Update to version 0.35.1+git.20230714.1f683401:
+  * vo_dmabuf_wayland: error out if compositor doesn't support the format
+  * build: make dmabuf-wayland a build option and require drm
+  * console: sort the output from the `help` command
+  * player: delete watch later redirect entries again
+  * wayland: use xdg_surface_set_window_geometry
+  * Revert "wayland_gl: wait until resize to create egl_window"
+  * vo_dmabuf_wayland: guard in destroy_osd_buffers
+  * vo_dmabuf_wayland: stop lazy loading hwdec
+  * vo_dmabuf_wayland: don't try to get pts without frame->current
+  * draw_bmp: ensure last slice is less than total width (again)
+  * vo_dmabuf_wayland: add osd support
+  * vo_dmabuf_wayland: init wl_list at the top of preinit
+  * vo_dmabuf_wayland: stop guarding viewport interfaces
+  * video/image_writer: check for write errors
+  * video/image_writer: fix file leak in error path
+  * wscript: add 1.32 protocols to sources
+  * stats.lua: set sans-serif as default font
+  * wayland: add xdg_toplevel.wm_capabilities handler
+  * wayland: add support for suspended toplevel state
+  * wayland: add cursor-shape-v1 support
+  * vd_lavc: fix delay_queue for videos with frames < max_delay_queue
+  * vd_lavc: prefer d3d11va-copy over dxva2-copy
+  * vo_wlshm: bail out of resize if width/height is 0
+  * wayland: fix memory leak with multiple monitors
+  * player: delete watch_later file after successful load
+  * json: unify json_parse depth to MAX_JSON_DEPTH=50
+  * terminal-unix: better error detection logic
+  * TOOLS/idet: fix some outdated cli syntax
+  * demux_playlist: sort files before directories
+  * demux_playlist: add option to control recursive directory loading
+  *  TOOLS/lua/autoload: allow extending ext sets from script-opts
+  * various: correctly ignore cache files with --no-config
+  * vo_gpu/vo_gpu_next: enable gpu shader and icc cache by default
+  * vo_gpu: fix some cache related memory leaks
+  * player: add --input-cursor-passthrough option
+  * TOOLS/lua/autoload: avoid unnecessary playlist manipulation, performance
+  * wscript: bump required libplacebo-next version to 5.266
+  * vo_gpu_next: remove synchronization from info_callback
+  * vo_gpu_next: use pl_dispatch_info_move to avoid useless data copy
+  * ci/msys2: double down on running meson through python3.11
+  * vo_x11: don't rely on XFree to free calloc-ed data
+  * vo_x11: check for calloc() failure
+  * win32: add support for drag-and-drop option
+  * options: add no to drag-and-drop
+  * test/meson: explicitly specify lavf dependency
+  * player/screenshot: add "screenshot" logger
+  * video/image_writer: add avif screenshot support
+  * options: drop unnecessary casts
+  * options: use designated initializer
+  * vd_lavc: do inline string array initialisation for hwdec_api
+  * vd_lavc: let the user provide a priority list of hwdecs to consider
+  * osdep: remove erroneous POLLERR emulation
+  * wayland: remove erroneous POLLERR usage
+  * image_writer: respect jpeg-quality when using ffmpeg for writing
+  * image_writer: remove unused struct fields
+  * mp_image: abort on av_buffer_ref() failure
+  * loadfile: fix leak due to setting NULL parent
+  * hwdec: fix undeclared identifier in mediacodec_embed
+  * vo_drm: fix null dereference and using closed fd
+  * github/workflows: do not copyback files from freebsd VM
+  * github/workflows: bump freebsd VM memory size to 8GB
+  * hwdec: do not add hwdec device if it failed to create
+  * vd_lavc: check if av_device_ref is available
+  * ci/msys2: switch to Python 3.11 to fix crashes during build
+  * loadfile: insert missing parentheses
+  * osc: add toggle for forced-only subs
+  * loadfile: expose auto-forced-only when printing stream info
+  * command: add sub-forced-only-cur prop
+  * command: report auto-forced-only flag in track desc
+  * sub: rewrite auto-forced-only support
+  * player: add more precise sub fallback options
+  * options: default slang to auto
+  * loadfile: support "auto" as a language option
+  * loadfile: use mp_match_lang_single
+  * loadfile: take a const char* in match_lang
+  * loadfile: short-circuit early on null stream language
+  * osdep: add mp_get_user_langs
+  * osdep: move cfstr<->cstr conversions to a new apple_utils.c file
+  * misc: add language-matching utilities
+  * options: set subs-with-matching-audio to off by default
+  * vo: hwdec: prioritise `drmprime` over `drmprime_overlay`
+  * ad_lavc: check for allocation failure
+  * vo_gpu_next: add --corner-rounding option
+  * vo_gpu_next: add missing --gamut-mapping-mode options
+  * ao_pipewire: bump dependency to 0.3.48
+  * ao_wasapi: use client name instead of hardcoded string
+  * ao_wasapi: remove infinite loop hack in AOCONTROL_UPDATE_STREAM_TITLE
+  * demux/demux_lavf: avoid leaking AVFormatContext during demux_open_lavf
+  * vo_dmabuf_wayland: drop linux-dmabuf-v2 (again)
+  * wayland: bump wayland-protocols to 1.25
+  * wayland: bump required version to 1.20
+  * DOCS: fix admonition typo
+  * vo_dmabuf_wayland: update the image of pending buffers
+  * vo_dmabuf_wayland: use a minimum of 15 buffers
+  * ci: use a different mirror for freetype
+  * player: add drag-and-drop option
+  * wayland: avoid misleading log messages on drag/drop
+  * ci/mingw: add dlltool to the meson crossfile
+  * mpv.desktop: add Russian translation for GenericName
+  * ci/mingw: remove cache
+  * ci/mingw: update dependencies versions
+  * ci/msys2: enable egl-angle-lib
+  * github/workflows/build.yml: install ca-certificates package on msys2
+  * bootstrap.py: update waf to 2.0.25
+  * DOCS/mpv: add an example for applying profiles to certain paths
+  * player: don't load unwanted files after 519e56f
+  * hwdec_cuda: bump required headers version for timeline semaphores
+  * hwdec_cuda: clear vulkan semaphore fd after passing ownership to cuda
+  * hwdec_vulkan: respect probing flag when logging during init
+  * vulkan: don't assume all ra_ctx implementations have a swapchain
+  * hwdec_cuda: remove usage of deprecated libplacebo sync API
+  * video/out/android: assert WinID value before use
+  * path: handle URLs consistently in mp_basename
+  * lua: read_options: find script-opts prefix at index 1 exactly
+  * demux/demux_lavf: strip URL parameters before matching extension
+  * hwdec_vulkan: enable AV1 support if available
+  * hwdec_vulkan: check for the correct libplacebo version
+  * vo: hwdec_aimagereader: fix compile
+  * hwdec_vulkan: simplify requirement checks for Vulkan interop
+  * vo/vulkan: do not define zero sized array
+  * hwdec_vulkan: account for vulkan frames now using presentation size
+  * f_hwtransfer: disable vulkan multiplane images when uploading from cuda
+  * hwdec_vulkan: use bwdif_vulkan as deinterlacing auto filter
+  * vo: vulkan: request additional extensions and features for ffmpeg
+  * hwdec_vulkan: add Vulkan HW Interop
+  * vo: hwdec: Pass the ra_ctx to hwdecs instead of just the ra
+  * vo_gpu_next: fix to allow using dllimport
+  * vo_gpu_next: respect `gl->flipped`
+  * opengl: move `ra_gl_ctx_params.flipped` to `struct GL`
+  * vo: make mp_frame_perf thread safe
+  * vo_gpu_next: add size guard for pass->num_samples
+  * vo_gpu_next: synchronize voctrl_performance_data access
+  * vo_gpu_next: fix off by one in info_callback
+  * vo_dmabuf_wayland: rewrite around wl_list
+  * vo_gpu_next: fix build on older libplacebo
+  * vo_gpu_next: update to new libplacebo gamut mapping API
+  * vo_gpu_next: remove --tone-mapping-crosstalk
+  * context_drm_egl: check for non-existant drm in uninit
+  * player: improve diagnostics around writing watch_later files
+  * path: let configdir also override "cache" and "state" paths
+  * path: simplify "cache" and "state" fallback
+  * player: always try to detect subtitle language from file name
+  * ra_d3d11: change how messages are ignored during texture size lookup
+  * wayland: improve guessing when mpv is focused
+  * demux/demux_lavf: pass-through mime_type
+  * demux/demux_lavf: pass-through filename for HLS
+  * Revert "demux/demux_lavf: pass dummy filename when an HLS mimetype is detected"
+  * demux/demux_lavf: pass dummy filename when an HLS mimetype is detected
+  * vo_gpu_next: allow to use ICC profile luminance value
+  * mp_image: use the ffmpeg interlaced frame flags where available
+  * ao_oss: return actual OSS playing state
+  * player: use XDG_CACHE_HOME by default
+  * player: use XDG_STATE_HOME for watch_later
+  * path: expand internal path selection API to allow for additional types
+  * osdep: separate out macos paths from path-unix.c
+  * DOCS/options: document required parameter for --x11-name
+  * meson: bump required version to 0.62
+  * wayland: add support for wl_surface.preferred_buffer_scale
+  * options: read config file as stream
+  * ci: switch to lua51 for MSYS build
+  * ci: use auto detection for lua library version for MSYS
+  * charset_conv: fix memory corruption in mp_iconv_to_utf8
+  * sub: fix UPDATE_SUB_HARD for converted and external subtitles
+  * console.lua: add a script-opt for the border size
+  * vo_gpu_next: fixes to allow using dllimport
+  * ao_pipewire: clarify --pipewire-buffer=native
+  * ao_pulse: clarify --pulse-buffer=native
+  * ao_pipewire: let sound server determine latency
+  * ao_pipewire: give sound server more flexibility for buffers
+  * hwdec_drmprime: support rpi4_8 and rpi4_10 formats
+  * ytdl_hook: fix clip start and end
+  * libmpv: fix file name in documentation
+  * meson: use the new build_options method
+  * wayland: correctly scale configure_bounds
+  * player/screenshot: avoid non-sRGB spaces with --screenshot-tag-csp=no
+  * video/out/gpu: Fix compilation warning of out of bound access
+  * mp_image: always add AV_FRAME_DATA_DOVI_METADATA when present
+  * ci: add a workflow that lints commit messages
+  * auto_profiles: try to distinguish invalid properties better
+  * auto_profiles.lua: apply profiles when conditions are truthy
+  * osc: skip rendering when osd_dimensions are 0
+  * win32: follow Windows settings and update dark mode state
+  * d3d11: retry device creation without debug, if SDK is not available
+  * build: add check for eglext_angle.h when checking for ANGLE
+  * context_angle: include eglext_angle.h explicitly
+  * DOCS/input: fix typo
+  * auto_profiles: check for non-existent properties
+  * various: fix various typos in the code base
+  * various: fix typos
+  * demux_lavf: update to handle deprecation of `io_close`
+  * ci: bump cache version to rebuild libplacebo
+  * ci/mingw: require libplacebo-next
+  * build: add an option to control gpu-next
+  * ci/mingw: update meson
+  * meson: fix libplacebo-next version comparison
+  * vo_gpu_next: drop various PL_API_VER checks
+  * wscript: bump libplacebo-next required version to 5.264
+  * meson: bump libplacebo-next required version to 5.264
+  * player/screenshot: add filename return field
+  * player: set playlist title to media title if not set already
+  * Revert "player: set playlist title to media title if not set already"
+  * meson: rst2pdf handle dependency file
+  * TOOLS/docutils-wrapper: handle commands without depfile
+  * TOOLS/docutils-wrapper: properly propagate failures
+  * TOOLS/docutils-wrapper: gracefully remove non-existing files
+  * DOCS/lua: fix typo
+  * options: enable scripts related opts also with cplugins.
+
+-------------------------------------------------------------------
 Sat Mar 18 00:08:11 UTC 2023 - mia@0x0.st
 
 - Update to version 0.35.1+git.20230315.e1727553:

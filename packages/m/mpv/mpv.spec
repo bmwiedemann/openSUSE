@@ -22,7 +22,7 @@
 %define _waf_ver 2.0.24
 %define lname   libmpv2
 Name:           mpv
-Version:        0.35.1+git.20230315.e1727553
+Version:        0.36.0+git.20230723.60a26324
 Release:        0
 Summary:        Advanced general-purpose multimedia player
 License:        GPL-2.0-or-later
@@ -209,6 +209,8 @@ myopts=" -Dbuild-date=false"
 %if 0%{?suse_version} <= 1500
 myopts+=" -Dpipewire=disabled"
 %endif
+# Needs libavutil >= 58.11.100 (unreleased as of 2023-07-14)
+myopts+=" -Dvulkan-interop=disabled"
 %meson \
   -Dlibmpv=true \
   -Dmanpage-build=enabled \
