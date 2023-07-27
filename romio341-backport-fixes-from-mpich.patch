@@ -1,0 +1,40 @@
+commit fd5991044167b2bf87b656ef7c5fed89dc69f234
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Wed Jul 26 09:55:50 2023 +0200
+
+    romio341: backport fixes from mpich
+    
+    Fix compilation issues when NDEBUG is set
+    
+    Signed-off-by: Nicolas Morey <nmorey@suse.com>
+
+diff --git 3rd-party/romio341/mpl/src/sock/mpl_sockaddr.c 3rd-party/romio341/mpl/src/sock/mpl_sockaddr.c
+index c0e991c68d85..147bffad799d 100644
+--- 3rd-party/romio341/mpl/src/sock/mpl_sockaddr.c
++++ 3rd-party/romio341/mpl/src/sock/mpl_sockaddr.c
+@@ -140,6 +140,7 @@ int MPL_get_sockaddr_direct(int type, MPL_sockaddr_t * p_addr)
+         return 0;
+     } else {
+         assert(0);
++        return -1;
+     }
+ }
+ 
+@@ -209,7 +210,7 @@ void MPL_set_listen_attr(int use_loopback, int max_conn)
+ int MPL_listen(int sock_fd, unsigned short port)
+ {
+     MPL_sockaddr_t addr;
+-    int ret;
++    int ret = 0;
+ 
+     if (_use_loopback) {
+         MPL_get_sockaddr_direct(MPL_SOCKADDR_LOOPBACK, &addr);
+@@ -234,7 +235,7 @@ int MPL_listen(int sock_fd, unsigned short port)
+ int MPL_listen_anyport(int sock_fd, unsigned short *p_port)
+ {
+     MPL_sockaddr_t addr;
+-    int ret;
++    int ret = 0;
+ 
+     if (_use_loopback) {
+         MPL_get_sockaddr_direct(MPL_SOCKADDR_LOOPBACK, &addr);

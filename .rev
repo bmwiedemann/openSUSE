@@ -22,4 +22,12 @@ as the default openmpi implementation is still openmpi4.</comment>
     <comment></comment>
     <requestid>1031840</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f6dad7c61e945ae9fe98bf1d914306ea</srcmd5>
+    <version>5.0.0</version>
+    <time>1690469579</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1101003</requestid>
+  </revision>
 </revisionlist>
