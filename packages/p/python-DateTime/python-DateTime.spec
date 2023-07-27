@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-DateTime
-Version:        5.1
+Version:        5.2
 Release:        0
 Summary:        Zope DateTime data type
 License:        ZPL-2.1

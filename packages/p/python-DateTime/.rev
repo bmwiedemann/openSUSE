@@ -62,4 +62,14 @@
   * Add missing ``python_requires`` to ``setup.py``.</comment>
     <requestid>1084453</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7db9f96e595ec87cf6745899ccf65627</srcmd5>
+    <version>5.2</version>
+    <time>1690469449</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.2:
+  * Cast int to float in compare methods.
+  * Fix compare methods between DateTime instances and None.</comment>
+    <requestid>1100472</requestid>
+  </revision>
 </revisionlist>

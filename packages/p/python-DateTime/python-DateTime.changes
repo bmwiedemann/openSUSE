@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 24 20:22:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2:
+  * Cast int to float in compare methods.
+  * Fix compare methods between DateTime instances and None.
+
+-------------------------------------------------------------------
 Wed May  3 15:43:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.1:
