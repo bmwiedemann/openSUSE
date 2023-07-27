@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jul 26 12:56:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15.0:
+  * Like a cyberpunk phoenix whose intertube veins are made of
+    pure honey and blueberry juic, 0.15.0 introduces
+    the new `beartype.claw` API.
+  * When you call import hooks published by the `beartype.claw`
+    API, you enable **hybrid runtime-static type-checking.**
+  * For many of you: "Yes. That is what this means." Pure-static
+    type-checkers lie to you about everything, require
+    maintaining fragile and unreadable `type: ignore[...]` and
+    `pyright: ignore[...]` comment chatter throughout your once-
+    pristine codebase, and fail to enforce anything at test- or
+    runtime. In other words, they (mostly) suck; we should all
+    stop using them, because they (mostly) fail at their core
+    mandate.
+
+-------------------------------------------------------------------
 Sun Jun 11 09:26:13 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.14.1:

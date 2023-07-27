@@ -125,4 +125,25 @@
     clutching a Bengal plushy.</comment>
     <requestid>1092181</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ca36d42898dfed9f9f24eaedf42da748</srcmd5>
+    <version>0.15.0</version>
+    <time>1690469503</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.15.0:
+  * Like a cyberpunk phoenix whose intertube veins are made of
+    pure honey and blueberry juic, 0.15.0 introduces
+    the new `beartype.claw` API.
+  * When you call import hooks published by the `beartype.claw`
+    API, you enable **hybrid runtime-static type-checking.**
+  * For many of you: &quot;Yes. That is what this means.&quot; Pure-static
+    type-checkers lie to you about everything, require
+    maintaining fragile and unreadable `type: ignore[...]` and
+    `pyright: ignore[...]` comment chatter throughout your once-
+    pristine codebase, and fail to enforce anything at test- or
+    runtime. In other words, they (mostly) suck; we should all
+    stop using them, because they (mostly) fail at their core
+    mandate.</comment>
+    <requestid>1100856</requestid>
+  </revision>
 </revisionlist>
