@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Jul 26 10:31:32 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update: `BuildRequires:  go >= 1.20.6`
+- Update: `BuildRequires:  golang(API) = 1.20`
+
+- Update to version 1.25.12:
+  * [release-1.25] releng/go: Bump images, versions and deps to use Go 1.20.6
+  * Fix the converts an empty string to nil.
+  * Add unit tests for parallel StatefulSet create & delete
+  * Parallel StatefulSet pod create & delete
+  * Refactor StatefulSet controller update logic
+  * [release-1.25] releng/go: Update images, deps and version to go 1.20.5
+  * Only declare job as finished after removing all finalizers
+  * Hide numberOfMissedSchedules as an algorithm internal number
+  * Update schedule logic to properly calculate missed schedules
+  * kubeadm: set priority for "system-node-critical" Pods
+  * Make etcd component status consistent with health probes
+  * Fix deadlock in ready test
+  * fix the existing problem (0 SerialNumber in all certificate) as part of this PR in a separate commit
+  * update serial number to a valid non-zero number in ca certificate
+  * deps: Bump to cAdvisor v0.45.1
+  * Fix the wrong status returned from `RunPreFilterPlugins`
+  * Fix the git-repo test error caused by the correct use of loop variables
+  * kubeadm: remove function pointer comparison in phase test
+  * Add node check to vSphere cloud provider
+  * Adding additional validations to queried endpoint list iteration.
+  * test server side apply patch
+  * don't process unsupported loadbalancers with mixed protocols
+  * make MixedProtocolNotSupported public
+
+-------------------------------------------------------------------
 Wed Jun 21 04:45:30 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update: `BuildRequires:  go >= 1.19.10`
