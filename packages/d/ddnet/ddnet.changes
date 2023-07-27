@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Wed Jul 26 17:12:46 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 17.1.1:
+  * [Editor] Autosave copy of map periodically to auto folder
+    (ed_autosave_interval, ed_autosave_max)
+  * [Client] Improved framerate consistency with cl_refresh_rate
+  * [Client] Add prediction of draggers
+  * [Client] "bind x" shows what command the key x runs
+  * [Client] Fix switch prediction on solo server
+  * [Client] Use icons for refresh and connect buttons in
+    server browser
+  * [Client] Replace country server filter fullscreen popup with
+    smaller popup
+  * [Client] Remove snd_rate and cl_threadsoundloading from
+    settings menu
+  * [Client] Support dragging demo player controls to move them
+  * [Client] Show error instead of replacing existing demo
+    when renaming
+  * [Client] Improve demo slice popup
+  * [Client] Add "No server selected" message to server details
+  * [Client] Show GPU info in asserts
+  * [Client] Improve color picker popups
+  * [Client] Improve scrollbar option UI and settings
+  * [Client] When all DDNet filter entries selected, deselect
+    with right click
+  * [Client] Fix crash with binds
+  * [Editor] Add play/stop button and duration label for sounds
+  * [Editor] Make server settings editor height adjustable by
+    dragging
+  * [Editor] Fix filling switch layer not setting switch number 0
+  * [Server&Client] Add logappend setting to keep growing the
+    same log file (on by default)
+  * [Server] Allow rcon users access to reserved slots
+    (username:password)
+  * [Server] Add /unsolo and /undeep practice commands
+  * [Server] Fix crash with super
+  * [Server] Fix crash with dbg_dummies
+  * [Server] Disallow multiple emotes in the same tick
+  * [Server] Split emoticon sending into nearby and global players
+  * [Server] Fix MySQL crashes
+- Changes in version 17.0.3:
+  * [Client] Condensed team killfeed
+  * [Client] Improved friends list UI
+  * [Client] Improved line input and IME support
+  * [Editor] Add proof mode for menu backgrounds
+  * [Client] Fix cl_show_others_alpha not used in places where
+    it can be
+  * [Client] Show error message popup on assertion error in
+    client and when client fails to launch
+  * [Client] Multiple broadcast rendering fixes
+  * [Client] Add the DDNet git hash and "is steam" to the
+    crash file
+  * [Client] Fix client crash on team kill message with
+    invalid team
+  * [Client] Fix client crash when spectating on server with
+    missing game info
+  * [Client] Fix several issues with the text rendering
+  * [Client] Highlight 0XF game type
+  * [Client] Quit client when existing config file cannot be
+    loaded, add restart command to client
+  * [Client] Fix client crash/hang when launching without data
+    directory
+  * [Client] Add missing attribute shield entities for front and
+    switch layers
+  * [Editor] Improve layout of new folder, map details and
+    event popups
+  * [Editor] Improve editor file browser button layout when
+    screen width is low
+  * [Editor] Fix transparency in grass_main
+  * [Editor] Don't render switch number and delay for tiles
+    where they are unused
+  * [Editor] Make envelope editor resizeable by dragging
+  * [Editor] Move some buttons into menus
+  * [Server] Fix time score
+  * [Server] Fix swapping with dragger beams and plasmas
+  * [Server] Fix hook prediction
+  * [Server] Allow using rescue (/r) on health pickup
+  * [Server] Add client_score_kind field to serverinfo
+
+-------------------------------------------------------------------
 Mon Apr 10 20:18:49 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 16.9:
