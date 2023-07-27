@@ -47,4 +47,14 @@
     <comment></comment>
     <requestid>807685</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>7a656f8fa2e3d8921d7b9e106453db50</srcmd5>
+    <version>0.22.0</version>
+    <time>1690469574</time>
+    <user>anag+factory</user>
+    <comment>- Switch to setuptools_scm, rather than setuptools_scm_git_archive.
+- Switch to pyproject macros.
+- Stop using greedy globs in %files.</comment>
+    <requestid>1100995</requestid>
+  </revision>
 </revisionlist>

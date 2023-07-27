@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyOCD
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,22 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyOCD
 Version:        0.22.0
 Release:        0
 Summary:        CMSIS-DAP debugger for python
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/mbedmicro/pyOCD
 Source:         https://files.pythonhosted.org/packages/source/p/pyocd/pyocd-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools_scm_git_archive}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-usb
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Provides:       python-pyocd = %{version}
 Obsoletes:      python-pyocd < %{version}
 BuildArch:      noarch
@@ -45,10 +44,10 @@ On-chip debugger and flasher tool for ARM microcontrollers.
 %setup -q -n pyocd-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pyocd
 %python_clone -a %{buildroot}%{_bindir}/pyocd-flashtool
 %python_clone -a %{buildroot}%{_bindir}/pyocd-gdbserver
@@ -72,6 +71,7 @@ On-chip debugger and flasher tool for ARM microcontrollers.
 %python_alternative %{_bindir}/pyocd-flashtool
 %python_alternative %{_bindir}/pyocd-gdbserver
 %python_alternative %{_bindir}/pyocd-tool
-%{python_sitelib}/*
+%{python_sitelib}/pyocd
+%{python_sitelib}/pyocd-%{version}.dist-info
 
 %changelog
