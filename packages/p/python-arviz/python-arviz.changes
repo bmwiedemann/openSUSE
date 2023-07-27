@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 26 16:05:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.16.1:
+  * Fix Numba deprecation errors and incorrect nopython usage
+  * Rerun Numba notebook
+
+-------------------------------------------------------------------
 Sun Jul 16 11:01:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.16.0:
