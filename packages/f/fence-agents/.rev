@@ -994,4 +994,27 @@
   Adapt agent_list in spec file</comment>
     <requestid>1085754</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>11068e5619bd80860bc2477207bd8daf</srcmd5>
+    <version>4.12.1+git.1690196437.64f62dbb</version>
+    <time>1690469474</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.12.1+git.1690196437.64f62dbb:
+  * fencing: use EC_OK
+  * fencing: add error message for EC_GENERIC_ERROR
+  * fence_ipmilan: fix typo in description (#553)
+  * doc: add fa-dev-guide to README
+  * doc: add fa-dev-guide
+  * spec: remove rhel7/centos7 specific Reqs/BuildReqs and BR for python-novaclient and python-keystoneclient which arent needed anymore
+  * fence_eaton_ssh: new fence agent for Eaton ePDU G3 over SSH (#549)
+  * azure_fence: use correct credential_scope and profile for stack hub
+  * fence_azure_arm: add stack cloud support
+  * fence_ibm_powervs: improved performance (#542)
+  * Revert &quot;fence_scsi: fail monitor action when it's unable to change state of device&quot;
+  * spec: Migrate to SPDX license
+  * fence_scsi: fail monitor action when it's unable to change state of device
+  * Revert &quot;Adds earlyexit parameter to power_cycle_instance for fence_gce&quot;
+  * fence_scsi: Add support for space-separated devices and update in meta-data</comment>
+    <requestid>1100830</requestid>
+  </revision>
 </revisionlist>

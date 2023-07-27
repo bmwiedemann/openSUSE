@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jul 25 09:21:24 UTC 2023 - varkoly@suse.com
+
+- Update to version 4.12.1+git.1690196437.64f62dbb:
+  * fencing: use EC_OK
+  * fencing: add error message for EC_GENERIC_ERROR
+  * fence_ipmilan: fix typo in description (#553)
+  * doc: add fa-dev-guide to README
+  * doc: add fa-dev-guide
+  * spec: remove rhel7/centos7 specific Reqs/BuildReqs and BR for python-novaclient and python-keystoneclient which arent needed anymore
+  * fence_eaton_ssh: new fence agent for Eaton ePDU G3 over SSH (#549)
+  * azure_fence: use correct credential_scope and profile for stack hub
+  * fence_azure_arm: add stack cloud support
+  * fence_ibm_powervs: improved performance (#542)
+  * Revert "fence_scsi: fail monitor action when it's unable to change state of device"
+  * spec: Migrate to SPDX license
+  * fence_scsi: fail monitor action when it's unable to change state of device
+  * Revert "Adds earlyexit parameter to power_cycle_instance for fence_gce"
+  * fence_scsi: Add support for space-separated devices and update in meta-data
+
+-------------------------------------------------------------------
 Tue May  9 14:37:59 UTC 2023 - Peter Varkoly <varkoly@suse.com>
 
 - Include IBM Cloud VPC fence agent (jsc#PED-3626)
