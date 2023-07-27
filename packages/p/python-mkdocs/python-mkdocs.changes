@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jul 27 04:38:25 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.5.0:
+  * very long changelog that can be found here:
+    https://github.com/mkdocs/mkdocs/releases/tag/1.5.0
+  * Bug fixes
+    - Relative paths in the nav can traverse above the root
+      Regression in 1.2 - relative paths in the nav could no longer
+      traverse above the site's root and were truncated to the
+      root. Although such traversal is discouraged and produces a
+      warning, this was a documented behavior. The behavior is now
+      restored.
+    - MkDocs can accept the config from stdin
+      This can be used for config overrides on the fly. See updated
+      section at the bottom of Configuration Inheritance.
+      The command to use this is mkdocs build -f -. In previous
+      versions doing this led to an error.
+
+-------------------------------------------------------------------
 Thu Jul  6 13:16:33 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 1.4.3:
