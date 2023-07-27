@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jul 25 11:05:58 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.5:
+  + appsink: add missing make_writable call
+  + audioaggregator: Do not post message before being constructed
+  + decodebin3:
+    - Prevent a critical warning when reassigning output slots
+    - Fix slot input linking when the associated stream has changed
+    - Remove spurious input locking during parsebin reconfiguration
+  + urisourcebin: Set source element to READY before querying it
+  + gl/viv-fb: meson build updates
+  + plugins: fix compiler warnings with GLib >= 2.76
+  + subtitleoverlay: fix mutex error if sink caps is not video
+  + video:
+    - timecode: Add support for framerates lower than 1fps
+    - accept timecode of 119.88 (120/1.001) FPS
+    - cannot attach time code meta when frame rate is 119.88
+      (120000/1001)
+  + videodecoder: fix copying buffer metas
+- Rebase reduce-required-meson.patch.
+
+-------------------------------------------------------------------
 Mon Jun 26 14:18:54 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.22.4:
