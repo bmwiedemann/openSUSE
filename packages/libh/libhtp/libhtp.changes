@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 27 08:56:06 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Update to version 0.5.45
+  * log: resist allocation failure
+  * support HTTP Bearer authentication
+
+-------------------------------------------------------------------
 Tue Jun 20 07:19:24 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Update to version 0.5.44
