@@ -61,4 +61,15 @@
 </comment>
     <requestid>1068403</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fa938580c784996de7cfdae169c4bb62</srcmd5>
+    <version>0.12.2</version>
+    <time>1690469512</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.12.2:
+  * Support Cython 3.0 (#199)
+  * Stop building wheels for PyPy 3.9 and PyPy 3.10, which
+    stopped working for some reason (#199)</comment>
+    <requestid>1100893</requestid>
+  </revision>
 </revisionlist>
