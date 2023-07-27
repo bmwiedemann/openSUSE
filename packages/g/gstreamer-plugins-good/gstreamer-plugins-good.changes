@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jul 25 11:10:54 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.5:
+  + adaptivedemux2: Fix early seeking
+  + hlsdemux2:
+    - Ensure processed webvtt ends with empty new line
+    - Don't set a referer when updating playlists
+  + matroska: demux: Strip signal byte when encrypted
+  + rtspsrc: Fix crash when is-live=false
+  + gtk: Fix critical caused by pointer movement when stream is
+    getting ready
+  + qt6: Set sampler filtering method, fixes bad quality with
+    qml6glsink and gstqt6d3d11
+  + qtdemux: opus: set entry as sampled
+  + v4l2src: handle resolution change when buffers are copied
+  + v4l2videodec:
+    - Fix handling of initial gaps
+    - correctly register v4l2mpeg2dec
+    - replace custom QUERY_CAPS handling with getcaps callback
+  + videoflip:
+    - update orientation tag in auto mode
+    - fix critical when tag list is not writable
+- Rebase reduce-required-meson.patch.
+- Pass qt-egl=disabled to meson, we are not ready for this feature
+  yet.
+
+-------------------------------------------------------------------
 Mon Jun 26 14:23:55 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.22.4:

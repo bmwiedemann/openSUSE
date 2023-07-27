@@ -26,7 +26,7 @@
 %define gst_branch 1.0
 
 Name:           gstreamer-plugins-good
-Version:        1.22.4
+Version:        1.22.5
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -182,6 +182,7 @@ export PYTHON=%{_bindir}/python3
 	-Drpicamsrc=disabled \
 	-Dv4l2-probe=true \
 	-Dqt6=disabled \
+	-Dqt-egl=disabled \
 	%{nil}
 %meson_build
 
