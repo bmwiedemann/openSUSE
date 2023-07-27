@@ -32,4 +32,14 @@
   * no upstream changelog available</comment>
     <requestid>1096321</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6bb66bfc03987f22c1e7bb2d74583d71</srcmd5>
+    <version>1.7</version>
+    <time>1690469511</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.7:
+  * python 3.11 enablement
+  * improved apidocs, improved README</comment>
+    <requestid>1100892</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ConfigArgParse
-Version:        1.5.5
+Version:        1.7
 Release:        0
 Summary:        A drop-in replacement for argparse
 License:        MIT

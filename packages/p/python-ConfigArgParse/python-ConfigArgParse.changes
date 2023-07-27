@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 26 15:58:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7:
+  * python 3.11 enablement
+  * improved apidocs, improved README
+
+-------------------------------------------------------------------
 Sat Jul  1 20:41:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.5:
