@@ -115,7 +115,7 @@ BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(netcdf)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openssl)
-BuildRequires:  pkgconfig(protobuf) >= 2.6.0
+BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(sqlite3)
 %if %{with nlohmann}
 BuildRequires:  pkgconfig(nlohmann_json)
@@ -218,6 +218,10 @@ sed -Ei "1{s|#!/usr/bin/env python3|#!/usr/bin/python3|}" Clients/CommandLineExe
        -DCMAKE_SKIP_RPATH:BOOL=OFF \
 %endif
        -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
+       -DVTK_IGNORE_CMAKE_CXX11_CHECKS:BOOL=ON \
+       -DCMAKE_CXX_EXTENSIONS:BOOL=OFF \
+       -DCMAKE_CXX_STANDARD=17 \
+       -DCMAKE_CXX_STANDARD_REQUIRED:BOOL=ON \
        -DPARAVIEW_USE_VTKM:BOOL=OFF \
        -DPARAVIEW_USE_QT:BOOL=ON \
        -DPARAVIEW_USE_PYTHON:BOOL=ON \
