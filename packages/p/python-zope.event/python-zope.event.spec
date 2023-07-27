@@ -60,7 +60,7 @@ This package contains documentation files for %{name}.
 # raises DistributionNotFound for zope.event, hence build doc directly
 # from source in order to avoid the need for an external doc package
 export PYTHONPATH=$(pwd)/src
-sphinx-build -b html docs build/sphinx/html && rm build/sphinx/html/.buildinfo
+sphinx-build -b html docs build/sphinx/html && rm -r build/sphinx/html/.{buildinfo,doctrees}
 
 %install
 %python_install

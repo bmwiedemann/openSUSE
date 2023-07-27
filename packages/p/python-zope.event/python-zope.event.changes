@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 26 07:28:32 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Drop sphinx doctrees for reproducible builds
+
+-------------------------------------------------------------------
 Tue May 30 16:19:12 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Switch documentation to be within the main package.
