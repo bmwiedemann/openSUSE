@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 25 12:35:44 UTC 2023 - peter czanik <peter@czanik.hu>
+
+- update to version 4.3.0
+  * OpenTelemetry support
+  * BPF support to accelerate UDP source
+  * logscale destination
+  * scl.conf moved from /etc/syslog-ng
+  * use pcre2 instead of pcre
+- change BuildRequires from pcre-devel to pcre2-devel
+- add BuildRrequires for OpenTelemetry and BPF
+
+-------------------------------------------------------------------
 Fri Jul 14 07:59:11 UTC 2023 - peter czanik <peter@czanik.hu>
 
 - fix Python packaging 

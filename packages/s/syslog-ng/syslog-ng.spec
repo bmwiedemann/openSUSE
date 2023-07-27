@@ -34,6 +34,15 @@
 %bcond_with	mqtt
 %endif
 
+# OpenTelemetry and BPF dependencies only in TW
+%if 0%{?suse_version} > 1500
+%bcond_without  otel
+%bcond_without	bpf
+%else
+%bcond_with     otel
+%bcond_with	bpf
+%endif
+
 # missing dependencies on SLES 15
 %if 0%{?sle_version} >= 150000 && !0%{?is_opensuse}
 %bcond_with	dbi
@@ -67,7 +76,7 @@
 %bcond_with	mongodb
 %bcond_with	amqp
 Name:           syslog-ng
-Version:        4.2.0
+Version:        4.3.0
 Release:        0
 Summary:        Enhanced system logging daemon
 License:        GPL-2.0-only
@@ -88,7 +97,7 @@ BuildRequires:  libnet-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libtool
 BuildRequires:  net-snmp-devel
-BuildRequires:  pcre-devel
+BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  tcpd-devel
@@ -147,6 +156,17 @@ BuildRequires:  python3-urllib3
 BuildRequires:  python3-websocket-client
 %endif
 
+%if %{with bpf}
+BuildRequires:  bpftool
+BuildRequires:  clang13
+BuildRequires:  libbpf-devel
+%endif
+
+%if %{with otel}
+BuildRequires:  grpc-devel
+BuildRequires:  protobuf-devel
+%endif
+
 %description
 syslog-ng is an enhanced log daemon, supporting a wide range of input and
 output methods: syslog, unstructured text, message queues, databases (SQL
@@ -163,11 +183,11 @@ Key features:
  * hand on messages for further processing using message queues (like
    AMQP), files or databases (like PostgreSQL or MongoDB).
 
-%package -n libevtlog-4_2-0
+%package -n libevtlog-4_3-0
 Summary:        Syslog-ng event logger library runtime
 Group:          System/Libraries
 
-%description -n libevtlog-4_2-0
+%description -n libevtlog-4_3-0
 The EventLog library provides an alternative to the simple syslog()
 API provided on UNIX systems. Compared to syslog, EventLog adds
 structured messages.
@@ -230,6 +250,22 @@ Requires:       %{name} = %{version}
 %description redis
 This package provides the libredis module providing support for
 logging to a redis destination.
+
+%package opentelemetry
+Summary:        OpenTelemetry support for syslog-ng
+Group:          System/Daemons
+Requires:       %{name} = %{version}
+
+%description opentelemetry
+This package provides OpenTelemetry support for syslog-ng
+
+%package bpf
+Summary:        Faster UDP log collection for syslog-ng
+Group:          System/Daemons
+Requires:       %{name} = %{version}
+
+%description bpf
+This package provides faster UDP log collection for syslog-ng using bpf
 
 %package python
 Summary:        Python destination support for syslog-ng
@@ -328,6 +364,8 @@ export CFLAGS="%{optflags}"
 
 export AM_YFLAGS=-d
 
+export BPFTOOL=/usr/sbin/bpftool
+
 %configure \
 	--prefix=%{_prefix}			\
 	--enable-ipv6				\
@@ -343,6 +381,13 @@ export AM_YFLAGS=-d
 	--without-compile-date			\
 	--enable-ssl				\
         --enable-afsnmp                         \
+%if %{with otel}
+        --enable-cpp                            \
+        --enable-grpc                           \
+%endif
+%if %{with bpf}
+        --enable-ebpf                           \
+%endif
 	--disable-native			\
 %if %{with mqtt}
 	--enable-mqtt				\
@@ -516,8 +561,8 @@ chmod 640 "${additional_sockets#/}"
 #
 %{service_del_postun syslog-ng.service}
 
-%post -n libevtlog-4_2-0 -p /sbin/ldconfig
-%postun -n libevtlog-4_2-0 -p /sbin/ldconfig
+%post -n libevtlog-4_3-0 -p /sbin/ldconfig
+%postun -n libevtlog-4_3-0 -p /sbin/ldconfig
 
 %files
 ##
@@ -594,11 +639,11 @@ chmod 640 "${additional_sockets#/}"
 %dir %{_datadir}/syslog-ng/include/scl/mariadb/
 %dir %{_datadir}/syslog-ng/include/scl/python/
 %dir %{_datadir}/syslog-ng/include/scl/splunk/
+%dir %{_datadir}/syslog-ng/include/scl/logscale/
 %dir %{_datadir}/syslog-ng/xsd
 %dir %{_sysconfdir}/syslog-ng
 %dir %{_sysconfdir}/syslog-ng/conf.d
 %config(noreplace) %{_sysconfdir}/syslog-ng/syslog-ng.conf
-%config(noreplace) %{_sysconfdir}/syslog-ng/scl.conf
 %{_unitdir}/syslog-ng.service
 %dir %{_localstatedir}/lib/syslog-ng
 %attr(0755,root,root) %dir %ghost %{syslog_ng_rundir}
@@ -697,10 +742,12 @@ chmod 640 "${additional_sockets#/}"
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/mariadb/audit.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/python/python-modules.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/splunk/splunk.conf
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/logscale/logscale.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/smart-multi-line.fsm
 %attr(644,root,root) %{_datadir}/syslog-ng/xsd/*
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl.conf
 
-%files -n libevtlog-4_2-0
+%files -n libevtlog-4_3-0
 %{_libdir}/libevtlog-*.so.*
 
 %files snmp
@@ -722,6 +769,20 @@ chmod 640 "${additional_sockets#/}"
 %files sql
 %dir %{_libdir}/syslog-ng
 %attr(755,root,root) %{_libdir}/syslog-ng/libafsql.so
+
+%endif
+
+%if %{with otel}
+
+%files opentelemetry
+%attr(755,root,root) %{_libdir}/syslog-ng/libotel.so
+
+%endif
+
+%if %{with bpf}
+
+%files bpf
+%attr(755,root,root) %{_libdir}/syslog-ng/libebpf.so
 
 %endif
 
