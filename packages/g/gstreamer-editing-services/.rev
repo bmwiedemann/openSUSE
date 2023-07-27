@@ -410,4 +410,21 @@
     <comment></comment>
     <requestid>1096152</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>721d26f20fb8e531d7903c5c9f1d25d2</srcmd5>
+    <version>1.22.5</version>
+    <time>1690469470</time>
+    <user>anag+factory</user>
+    <comment>NOTE - Needs meson 1.2 - so please rebase the staging if needed.
+
+- Update to version 1.22.5:
+  + ges: some fixes for 32-bit systems
+  + ges, nle: Avoid setting state or sending query when
+    constructing objects
+- Rebase reduce-required-meson.patch.
+- Use ldconfig_scriptlets macro.
+- Package pycache files now built and installed with new meson 1.2.
+</comment>
+    <requestid>1101046</requestid>
+  </revision>
 </revisionlist>

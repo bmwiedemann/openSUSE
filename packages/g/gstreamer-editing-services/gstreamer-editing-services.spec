@@ -20,7 +20,7 @@
 %define _name gst-editing-services
 
 Name:           gstreamer-editing-services
-Version:        1.22.4
+Version:        1.22.5
 Release:        0
 Summary:        GStreamer Editing Services
 License:        LGPL-2.0-or-later AND LGPL-2.1-or-later
@@ -164,8 +164,7 @@ editing-related applications.
 %install
 %meson_install
 
-%post -n libges-1_0-0 -p /sbin/ldconfig
-%postun -n libges-1_0-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libges-1_0-0
 
 %files
 %license COPYING
@@ -177,6 +176,7 @@ editing-related applications.
 %dir %{python3_sitelib}/gi
 %dir %{python3_sitelib}/gi/overrides
 %{python3_sitelib}/gi/overrides/GES.py
+%{python3_sitelib}/gi/overrides/__pycache__/
 
 %files -n libges-1_0-0
 %license COPYING

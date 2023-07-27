@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul 25 11:25:03 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.5:
+  + ges: some fixes for 32-bit systems
+  + ges, nle: Avoid setting state or sending query when
+    constructing objects
+- Rebase reduce-required-meson.patch.
+
+-------------------------------------------------------------------
+Sat Jul 22 12:11:16 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Use ldconfig_scriptlets macro.
+- Package pycache files now built and installed with new meson 1.2.
+
+-------------------------------------------------------------------
 Mon Jun 26 14:47:30 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.22.4:
