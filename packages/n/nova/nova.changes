@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 27 04:28:37 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 3.7.0:
+  * Bump k8s.io/client-go from 0.27.2 to 0.27.3 (#229)
+  * Allow custom timeout when fetching container tags (#235)
+  * Update quickstart.md (#228)
+  * Bump github.com/spf13/viper from 1.15.0 to 1.16.0 (#226)
+  * Bump github.com/stretchr/testify from 1.8.3 to 1.8.4 (#227)
+
+-------------------------------------------------------------------
 Wed May 31 04:53:25 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 3.6.5:
