@@ -19,13 +19,13 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-openai
-Version:        0.26.2
+Version:        0.27.8
 Release:        0
 Summary:        OpenAI bindings for python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/openai/openai-python
-Source:         openai-python-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/o/openai/openai-%{version}.tar.gz
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry}
@@ -55,7 +55,7 @@ You can find usage examples for the OpenAI Python library in
  https://github.com/openai/openai-cookbook/.
 
 %prep
-%autosetup -p1 -n openai-python-%{version}
+%autosetup -p1 -n openai-%{version}
 
 %build
 %pyproject_wheel
