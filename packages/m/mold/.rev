@@ -495,4 +495,23 @@
     fixed. (627bf7c)</comment>
     <requestid>1072308</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>493d3e0e44f3fe397d7b46307271752b</srcmd5>
+    <version>2.0.0</version>
+    <time>1690469564</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.0.0
+  * License changed to MIT.
+  * Previously, mold could not produce an object file with more than 65520 sections
+    using the --relocatable option. Now the bug has been fixed. (2e8bd0b)
+  * mold now interprets -undefined as a synonym for --undefined instead of -u
+    ndefined. This seems inconsistent, as -ufoo is generally treated as -u foo
+    (which is an alias for --undefined foo), but this is the behavior of the GNU
+    linkers and LLVM lld, so we prioritize compatibility over consistency.
+  * -nopie is now handled as a synonym for --no-pie.
+  * [RISC-V] R_RISCV_SET_ULEB128 and R_RISCV_SUB_ULEB128 relocation types are now
+    supported (4bffe26, 1ac5fe7)
+  * [PPC64] R_PPC64_REL32 relocation type is now supported. (ebd780e)</comment>
+    <requestid>1100863</requestid>
+  </revision>
 </revisionlist>
