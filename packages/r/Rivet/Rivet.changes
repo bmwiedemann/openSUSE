@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Tue Jul 11 04:00:30 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.8:
+  * Append extra newlines to plugin sources in batched rivet-build.
+  * Add ability to control the specific plugin library paths for
+    analyses to be loaded from, via new programmatic set and get
+    methods on AnalysisLoader and a new RIVET_ANALYSIS_PLUGINS
+    environment variable.
+  * Remove support for custom ASCII event-file formats.
+  * Use an immediate call to HepMC3::deduce_reader() in the file
+    and stream opening; drop local attempts to deduce the file
+    format.
+  * Require HepMC3 >= 3.2.0
+  * Add variations on the discard/select utility functions to
+    (particularly) discard single elements by equality rather than
+    needing to provide a function.
+  * Fixes in MC_TAU_Decay plot file, courtesy of George Marsden
+  * Provide an implicit cast for FourVector and derived classes to
+    PseudoJet, to avoid the incorrect conversion by PJ's template
+    constructor.
+  * Fix unit for Zjj inclusive runs in ATLAS_2017_I1627873
+  * ATLAS_2019_I1746286: fix generator ctau description in the
+    info file.
+  * Fix memory leaks in binreloc.c and the merging-related method
+    in AnalysisHandler.
+  * Fix CMS_2015_I1346843 to allow FSR photons from muon decays
+  * Add example analysis demonstrating use of an ONNX neural net.
+  * Change/correct DressedLeptons behaviour to accept photons from
+    prompt muons and taus. (Return to 2.x behaviour, accidentally
+    reverted.)
+  * Update ParticleIdUtils content to match latest MCUtils.
+    Includes a serious speed-up (6x!) in PID digit decoding!
+  * Allow linspace() and aspace() to make reversed edge-sets with
+    start > end.
+  * Add powspace() and powdbnspace() uniform-spacing functions for
+    power laws, and a generic _fnspace() function for any
+    transform/inverse function-pair.
+  * Fix couting of raw vs tmp histos when checking
+    self-consistency of output file.
+  * Replace regex_match with reg_search to pick up substring
+    matches, too.
+  * Fix bug in DELPHI_2011_I890503 and OPAL_2003_I599181, where
+    the wrong decay chain was checked for weak decays.
+  * Change configure script to use the --rpath=no option to
+    fastjet-config, removing fragile path-hacking.
+    build script.
+  * Add reentrant marker to MC_DILEPTON.info
+  * Make logger thread safe(r) by making ColorMap and LevelMap
+  * thread_local.
+  * Extend RivetLWTNN.hh to allow use of lwt::LightweightGraph
+  * Enable Cython autoconversion from C++ strings to the
+    appropriate str type for Python v2 and v3, eliminating many
+    noisy and fragile explicit encode()/decode() calls.
+  * Analyses of new experiments (long list, see
+    /usr/share/doc/packages/Rivet-devel/ChangeLog).
+- Drop Rivet-correct-python-platlib.patch: fixed upstream.
+- ExcludeArch %ix86: i586 error due to conversion from
+  `long long` to `size_t`.
+
+-------------------------------------------------------------------
 Sun Oct 23 18:41:35 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.1.7:

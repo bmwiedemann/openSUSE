@@ -16,7 +16,7 @@
 #
 
 
-%define ver 3.1.7
+%define ver 3.1.8
 %define so_name lib%{name}-%(echo %{ver} | tr '.' '_')
 Name:           Rivet
 Version:        %{ver}
@@ -24,11 +24,9 @@ Release:        0
 Summary:        A toolkit for validation of Monte Carlo event generators
 License:        GPL-2.0-only
 URL:            https://rivet.hepforge.org/
-Source:         http://www.hepforge.org/archive/rivet/%{name}-%{version}.tar.gz
+Source:         https://www.hepforge.org/archive/rivet/%{name}-%{version}.tar.gz
 Patch0:         sover.diff
-# PATCH-FEATURE-OPENSUSE Rivet-correct-python-platlib.patch badshah400@gmail.com -- Use consistent platlib across multiple python versions
-Patch1:         Rivet-correct-python-platlib.patch
-BuildRequires:  HepMC-devel >= 3.0
+BuildRequires:  HepMC-devel >= 3.2
 BuildRequires:  YODA-devel >= 1.8.0
 BuildRequires:  bash-completion
 BuildRequires:  doxygen
@@ -47,6 +45,8 @@ BuildRequires:  texlive-latex-bin
 BuildRequires:  yaml-cpp-devel
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(zlib)
+# i586 error due to conversion from `long long` to `size_t`
+ExcludeArch:    %ix86
 
 %description
 The Rivet project (Robust Independent Validation of Experiment and
@@ -164,7 +164,7 @@ export PYTHON_VERSION=%{py3_ver}
 %make_build
 
 %install
-export PYTHONPATH+=':%{buildroot}%{_libdir}/python%{py3_ver}/site-packages'
+export PYTHONPATH+=':%{buildroot}%{python3_sitearch}'
 %make_install
 
 # SECTION Remove rpaths from config binaries and pkgconfig file
@@ -187,7 +187,7 @@ mv %{buildroot}/etc/bash_completion.d/rivet-completion %{buildroot}%{_datadir}/b
 %fdupes %{buildroot}%{_datadir}/Rivet/
 
 %check
-export PYTHONPATH+=':%{buildroot}%{_libdir}/python%{py3_ver}/site-packages'
+export PYTHONPATH+=':%{buildroot}%{python3_sitearch}'
 %make_build check
 
 %post -n %{so_name} -p /sbin/ldconfig
@@ -203,23 +203,33 @@ export PYTHONPATH+=':%{buildroot}%{_libdir}/python%{py3_ver}/site-packages'
 %files devel
 %license COPYING
 %doc AUTHORS ChangeLog NEWS
-%{_bindir}/rivet-config
+%{_bindir}/rivet-build
 %{_bindir}/rivet-buildplugin
+%{_bindir}/rivet-config
 %{_includedir}/%{name}/
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/rivet.pc
-
-%files -n python3-%{name}
-%license COPYING
-%{_bindir}/*
-%exclude %{_bindir}/rivet-config
-%exclude %{_bindir}/rivet-buildplugin
-%{python3_sitearch}/rivet/
-%{_datadir}/bash-completion/completions/*
 
 %files plugins
 %license COPYING
 %config %{_sysconfdir}/ld.so.conf.d/%{name}-plugins.conf
 %{_libdir}/%{name}/
+
+%files -n python3-%{name}
+%license COPYING
+%{_bindir}/make-plots
+%{_bindir}/rivet
+%{_bindir}/rivet-cmphistos
+%{_bindir}/rivet-diffhepdata
+%{_bindir}/rivet-diffhepdata-all
+%{_bindir}/rivet-findid
+%{_bindir}/rivet-merge
+%{_bindir}/rivet-mkanalysis
+%{_bindir}/rivet-mkhtml
+%{_bindir}/rivet-mkhtml-mpl
+%{_bindir}/rivet-mkvaldir
+%{_bindir}/rivet-which
+%{python3_sitearch}/rivet/
+%{_datadir}/bash-completion/completions/*
 
 %changelog
