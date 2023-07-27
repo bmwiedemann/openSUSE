@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jul 26 11:37:46 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 1.26.5
+    - Reworked the pairing process when using a smartphone as card reader.
+      Both devices involved in pairing must be updated to version 1.26.5.
+      Pairing AusweisApp 1.26.5 with older versions is not supported.
+    - Progress is now also shown on the smartphone when using it as a card reader.
+    - Enabled keyboard mode by default when using smartphone as a card reader.
+    - When using keyboard mode on a smartphone as a card reader, showing the
+      permissions can now be re-enabled in settings at any time.
+    - Added a monochrome icon on Android.
+    - Added handling for <Command> + <W> on macOS.
+    - Removed the update function on macOS in favor of the Mac App Store.
+    - Minor bug fixes and optimizations.
+    - Fixed documentation for installation in corporate networks
+      on macOS when configuring the setup wizard.
+    - Optimized the size of the Android SDK.
+    - Updated OpenSSL to version 3.0.9.
+- Add qt6-core-private-devel to BuildRequires
+
+-------------------------------------------------------------------
 Sat Apr 29 09:03:40 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
