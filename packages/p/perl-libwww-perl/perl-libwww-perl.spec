@@ -18,12 +18,13 @@
 
 %define cpan_name libwww-perl
 Name:           perl-libwww-perl
-Version:        6.71
+Version:        6.720.0
 Release:        0
+%define cpan_version 6.72
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        The World-Wide Web library for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -73,6 +74,30 @@ Requires:       perl(URI) >= 1.10
 Requires:       perl(URI::Escape)
 Requires:       perl(WWW::RobotRules) >= 6
 Requires:       perl(parent) >= 0.217
+Provides:       perl(LWP) = 6.720.0
+Provides:       perl(LWP::Authen::Basic) = 6.720.0
+Provides:       perl(LWP::Authen::Digest) = 6.720.0
+Provides:       perl(LWP::Authen::Ntlm) = 6.720.0
+Provides:       perl(LWP::ConnCache) = 6.720.0
+Provides:       perl(LWP::Debug) = 6.720.0
+Provides:       perl(LWP::Debug::TraceHTTP) = 6.720.0
+Provides:       perl(LWP::DebugFile) = 6.720.0
+Provides:       perl(LWP::MemberMixin) = 6.720.0
+Provides:       perl(LWP::Protocol) = 6.720.0
+Provides:       perl(LWP::Protocol::cpan) = 6.720.0
+Provides:       perl(LWP::Protocol::data) = 6.720.0
+Provides:       perl(LWP::Protocol::file) = 6.720.0
+Provides:       perl(LWP::Protocol::ftp) = 6.720.0
+Provides:       perl(LWP::Protocol::gopher) = 6.720.0
+Provides:       perl(LWP::Protocol::http) = 6.720.0
+Provides:       perl(LWP::Protocol::loopback) = 6.720.0
+Provides:       perl(LWP::Protocol::mailto) = 6.720.0
+Provides:       perl(LWP::Protocol::nntp) = 6.720.0
+Provides:       perl(LWP::Protocol::nogo) = 6.720.0
+Provides:       perl(LWP::RobotUA) = 6.720.0
+Provides:       perl(LWP::Simple) = 6.720.0
+Provides:       perl(LWP::UserAgent) = 6.720.0
+%define         __perllib_provides /bin/true
 %{perl_requires}
 # MANUAL BEGIN
 Recommends:     perl(LWP::Protocol::https) >= 6.06
@@ -82,7 +107,7 @@ Recommends:     perl(LWP::Protocol::https) >= 6.06
 The World-Wide Web library for Perl
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

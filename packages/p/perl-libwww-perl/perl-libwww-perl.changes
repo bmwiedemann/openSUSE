@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 18 03:07:20 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.72
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+
+  6.72      2023-07-17 22:01:19Z
+      - Don't mangle protocol scheme and don't require it to be valid if
+        implementor is already known (GH#436) (mwgamera)
+
+-------------------------------------------------------------------
 Wed Jun 21 03:08:23 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.71
