@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Jul 26 11:03:03 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update: `BuildRequires:  go >= 1.20.6`
+- Update to version 1.27.4:
+  * [release-1.27] releng/go: Bump images, versions and deps to use Go 1.20.6
+  * Fix the converts an empty string to nil.
+  * Add unit tests for parallel StatefulSet create & delete
+  * Parallel StatefulSet pod create & delete
+  * Refactor StatefulSet controller update logic
+  * Only declare job as finished after removing all finalizers
+  * Automated cherry pick of #118716 upstream release 1.27 (#118911)
+  * Hide numberOfMissedSchedules as an algorithm internal number
+  * Update schedule logic to properly calculate missed schedules
+  * Automated cherry pick of #118805: test comment should match the code in podgc (#118913)
+  * call ./hack/update-vendor.sh
+  * kubeadm: remove function pointer comparison in phase test
+  * CHANGELOG-1.27: Add note for AWS in-tree provider removal
+  * Updating the nodeAffinity of gated pods having nil affinity should be allowed
+  * fix the existing problem (0 SerialNumber in all certificate) as part of this PR in a separate commit
+  * update serial number to a valid non-zero number in ca certificate
+  * Delete CRDs created during field validation tests.
+  * kubectl explain should work for both cluster and namespace resources and without a GET method
+  * always execute condition for wait.PollUntilContextTimeout with immediate=true
+  * Review remarks to improve HandlePodCleanups in kubelet
+  * Fix the deletion of rejected pods
+  * Unset gated pod info timestamp in addToActiveQ
+  * deps: Bump to cAdvisor v0.47.2
+  * Make etcd component status consistent with health probes
+  * e2e storage: terminate worker quietly on test completion
+  * Fix flaky persistent volumes e2e test
+  * Set the node-ips annotation correctly with CloudDualStackNodeIPs
+  * Fix the git-repo test error caused by the correct use of loop variables
+  * dra scheduler plugin test: fix loopvar bug and "reserve" expected data
+  * Add node check to vSphere cloud provider
+  * Adding additional validations to queried endpoint list iteration.
+
+-------------------------------------------------------------------
 Wed Jun 21 05:02:05 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update: `BuildRequires:  go >= 1.20.5`
