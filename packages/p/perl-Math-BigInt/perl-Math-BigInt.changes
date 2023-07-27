@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jul 15 03:08:21 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.999839
+   see /usr/share/doc/packages/perl-Math-BigInt/CHANGES
+
+  1.999839 2023-07-14
+
+   * Update documentation. Remove/update obsolete URLs.
+
+   * Fix CPAN RT #148953 regarding loss of precision when using "log" in
+     "bignum". The issue was related to broken upgrading and downgrading in
+     Math::BigFloat.
+
+-------------------------------------------------------------------
 Sat Apr  1 03:07:57 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.999838
