@@ -129,4 +129,12 @@
   *  Allow XML documents to be streamed with –xml-item-depth</comment>
     <requestid>1087126</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>117aeb2f1219a90e91760b3b365d2d71</srcmd5>
+    <version>3.2.2</version>
+    <time>1690469586</time>
+    <user>anag+factory</user>
+    <comment>- switch to wheels and opt into SLE15 python311 stack</comment>
+    <requestid>1101039</requestid>
+  </revision>
 </revisionlist>

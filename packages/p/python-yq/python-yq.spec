@@ -16,7 +16,7 @@
 #
 
 
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-yq
 Version:        3.2.2
 Release:        0
@@ -24,7 +24,8 @@ Summary:        Command-line YAML processor - jq wrapper for YAML documents
 License:        Apache-2.0
 URL:            https://github.com/kislyuk/yq
 Source:         https://files.pythonhosted.org/packages/source/y/yq/yq-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       jq
@@ -52,10 +53,10 @@ yq: Command-line YAML processor - jq wrapper for YAML documents
 sed -i "/setup_requires/d" setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/yq
 %python_clone -a %{buildroot}%{_bindir}/xq
 %python_clone -a %{buildroot}%{_bindir}/tomlq
