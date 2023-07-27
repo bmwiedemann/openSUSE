@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2004-2005 The Trustees of Indiana University and Indiana
 #                         University Research and Technology
 #                         Corporation.  All rights reserved.
@@ -114,7 +114,7 @@ ExclusiveArch:  do_not_build
 %global hpc_openmpi_pack_version %{hpc_openmpi_dep_version}
 %endif
 
-%define git_ver rc7.80.978620415822
+%define git_ver rc12.0.5f7566c4b9af
 
 #############################################################################
 #
@@ -134,8 +134,11 @@ Source2:        openmpi5-rpmlintrc
 Source3:        macros.hpc-openmpi
 Source4:        mpivars.sh
 Source5:        mpivars.csh
+Patch1:         romio341-backport-fixes-from-mpich.patch
 Provides:       mpi
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+# Exclude 32b archs
+ExcludeArch:    %{arm} %ix86
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -149,6 +152,8 @@ BuildRequires:  libtool
 # net-tools is required to run hostname
 BuildRequires:  net-tools
 BuildRequires:  python3
+BuildRequires:  python3-Sphinx >= 4.2.0
+BuildRequires:  python3-recommonmark
 %if 0%{?testsuite}
 BuildArch:      noarch
 BuildRequires:  %{package_name} = %{version}
@@ -399,6 +404,7 @@ echo with HPC
 echo without HPC
 %endif
 %setup -q -n  openmpi-%{version}%{git_ver}
+%patch1
 
 # Live patch the VERSION file
 sed -i -e 's/^greek=.*$/greek=%{git_ver}/' -e 's/^repo_rev=.*$/repo_rev=%{version}%{git_ver}/' \
@@ -418,7 +424,7 @@ export HOSTNAME=OBS
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %{?with_hpc:%hpc_debug}
 # Remove .gitmodules so autogen.pl does not try to run git commands
-rm -f .gitmodules
+find . -name .gitmodules -delete
 ./autogen.pl --force --no-3rdparty libevent,hwloc
 %if %{with hpc}
 %{hpc_setup}
@@ -683,7 +689,6 @@ fi
 %dir %{mpi_datadir}/prte/amca-param-sets/
 %{mpi_datadir}/prte/amca-param-sets/example.conf
 %{mpi_datadir}/prte/help-*.txt
-%{mpi_datadir}/prte/openmpi-valgrind.supp
 
 %files %{!?with_hpc:libs}%{?with_hpc:-n lib%{name}}
 %defattr(-,root,root)
@@ -736,6 +741,7 @@ fi
 %files docs
 %defattr(-, root, root, -)
 %{mpi_mandir}
+%{mpi_prefix}/share/doc/
 
 %files macros-devel
 %defattr(-,root,root,-)
