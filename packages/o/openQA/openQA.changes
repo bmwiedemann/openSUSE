@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 26 21:46:36 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1690300398.6c9149e:
+  * Use regular single quotes in javascript code
+  * docs: Fix firewalld service setup commands
+  * docs: Use 'trusted' firewall zone same as in setup instructions
+  * docs: Use consistent singe-ticks in python code example
+
+-------------------------------------------------------------------
 Mon Jul 24 06:08:45 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1690178908.b9e03ab:
