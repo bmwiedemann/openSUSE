@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 27 06:07:58 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.12.0:
+  * Job scheduler
+- Refresh patch add-missing-format-calls.patch.
+
+-------------------------------------------------------------------
 Thu Jul 20 05:47:36 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.11.1, changes include:

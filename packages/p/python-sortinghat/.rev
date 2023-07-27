@@ -90,4 +90,14 @@
   * Email affiliation error (#793)</comment>
     <requestid>1099626</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>030c1604aa68f72352a04d27e7bf96f8</srcmd5>
+    <version>0.12.0</version>
+    <time>1690469563</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.12.0:
+  * Job scheduler
+- Refresh patch add-missing-format-calls.patch.</comment>
+    <requestid>1100980</requestid>
+  </revision>
 </revisionlist>
