@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 26 07:25:22 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Drop sphinx doctrees for reproducible builds
+
+-------------------------------------------------------------------
 Tue May  9 13:38:14 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons
