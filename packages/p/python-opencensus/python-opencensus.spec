@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,8 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%bcond_without python2
 Name:           python-opencensus%{psuffix}
-Version:        0.11.0
+Version:        0.11.2
 Release:        0
 Summary:        A stats collection and distributed tracing framework
 License:        Apache-2.0
@@ -48,10 +47,6 @@ BuildRequires:  %{python_module opencensus >= %{version}}
 BuildRequires:  %{python_module opencensus-context >= 0.1.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module retrying}
-%if %{with python2}
-BuildRequires:  python-mock
-BuildRequires:  python-unittest2
-%endif
 %endif
 %python_subpackages
 
