@@ -47,4 +47,14 @@
   * Bugfix: modernize python versions (keep py27)</comment>
     <requestid>939992</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>8c3056c09a4b21c20f0d83fd2b539cf7</srcmd5>
+    <version>0.6.0</version>
+    <time>1690469607</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1101068 from ecsos
+
+- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1101080</requestid>
+  </revision>
 </revisionlist>
