@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jul 25 18:17:14 UTC 2023 - Tina Müller <tina.mueller@suse.com>
+
+- Added versions to 'Provides' lines after fixing a bug in cpanspec
+
+-------------------------------------------------------------------
+Sun Jul 16 03:07:48 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.0209
+   see /usr/share/doc/packages/perl-XML-LibXML/Changes
+
+  2.0209  2023-07-15
+      - t/35huge_mode.t: fix test with libxml2 2.11
+          - thanks to Dominique Martinet
+      - Add clearer reference to using cloneNode to extract node with namespaces
+          - thanks to Timothy Legge
+      - initialize xmlValidCtxt
+          - thanks to Alexander Bluhm
+
+-------------------------------------------------------------------
 Sat Oct  1 03:07:58 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.0208

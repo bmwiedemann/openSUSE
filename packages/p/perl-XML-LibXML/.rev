@@ -618,4 +618,22 @@ newSVpvn() call. (forwarded request 122259 from k0da)</comment>
     <comment></comment>
     <requestid>1007972</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>97be1d8155d726c2e5be4c3e4b2842e9</srcmd5>
+    <version>2.0209</version>
+    <time>1690469427</time>
+    <user>anag+factory</user>
+    <comment>- Added versions to 'Provides' lines after fixing a bug in cpanspec
+- updated to 2.0209
+   see /usr/share/doc/packages/perl-XML-LibXML/Changes
+  2.0209  2023-07-15
+      - t/35huge_mode.t: fix test with libxml2 2.11
+          - thanks to Dominique Martinet
+      - Add clearer reference to using cloneNode to extract node with namespaces
+          - thanks to Timothy Legge
+      - initialize xmlValidCtxt
+          - thanks to Alexander Bluhm
+</comment>
+    <requestid>1100826</requestid>
+  </revision>
 </revisionlist>
