@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul 26 14:46:17 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- The lftp_wrapper script has been deprecated over 1.5 years ago.
+  It's time to remove it from the package. [jsc#SLE-17861]
+
+- Dropped patches:
+  * 0004-Include-config.h-to-detect-gnulib-macros.patch
+  * add-deprecation-warning-to-lftp-wrapper.patch
+
+- Refreshed patches:
+  * 0002-Add-content-of-lftp-compat-addfiles.patch.patch
+  * 0005-Add-the-wrapper-code-to-the-Makefile-in-order-to-bui.patch
+  * lftp-default-ssl-cipher.patch
+
+-------------------------------------------------------------------
 Mon Nov 22 09:35:04 UTC 2021 - Peter Simons <psimons@suse.com>
 
 - Deprecate the lftp_wrapper script. It is still available as an

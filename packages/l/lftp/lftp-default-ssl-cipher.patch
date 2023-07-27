@@ -1,8 +1,8 @@
-Index: lftp-4.6.2/src/lftp_ssl.cc
+Index: lftp-4.9.2/src/lftp_ssl.cc
 ===================================================================
---- lftp-4.6.2.orig/src/lftp_ssl.cc
-+++ lftp-4.6.2/src/lftp_ssl.cc
-@@ -814,7 +814,7 @@ lftp_ssl_openssl_instance::lftp_ssl_open
+--- lftp-4.9.2.orig/src/lftp_ssl.cc	2023-07-26 15:02:13.137732427 +0000
++++ lftp-4.9.2/src/lftp_ssl.cc	2023-07-26 15:02:18.009732905 +0000
+@@ -874,7 +874,7 @@ lftp_ssl_openssl_instance::lftp_ssl_open
        }
     }
     SSL_CTX_set_options(ssl_ctx, options);

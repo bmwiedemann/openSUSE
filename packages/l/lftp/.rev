@@ -748,4 +748,13 @@ the underlying buffer would always contain a NUL-terminated string.
     <comment>Deprecate lftp_wrapper [SLE-19631].</comment>
     <requestid>932975</requestid>
   </revision>
+  <revision rev="79" vrev="3">
+    <srcmd5>df337cb31749e32d733283d1a42a534f</srcmd5>
+    <version>4.9.2</version>
+    <time>1690469513</time>
+    <user>anag+factory</user>
+    <comment>- The lftp_wrapper script has been deprecated over 1.5 years ago.
+  It's time to remove it from the package. [jsc#SLE-17861]</comment>
+    <requestid>1100890</requestid>
+  </revision>
 </revisionlist>
