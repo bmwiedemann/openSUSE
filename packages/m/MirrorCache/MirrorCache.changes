@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 20 07:08:51 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.061:
+  * Add support of some parameters in ini file (#397)
+  * Fix html mirror report (#394)
+
+-------------------------------------------------------------------
 Thu Jun 15 06:46:53 UTC 2023 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.060:
