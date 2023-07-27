@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 27 03:10:03 UTC 2023 - Richard Rahl <rrahl0@proton.me>
+
+- update to 1.0.128+nmu5:
+  * Update PureOS bootstrap script
+  * Improve error message when tar fails
+  * fixes bug when http_proxy is unset
+  * fallback if mounting /proc fails
+  * defaulting to merged-usr on newer suites
+
+-------------------------------------------------------------------
 Wed Dec  7 22:28:32 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.128:

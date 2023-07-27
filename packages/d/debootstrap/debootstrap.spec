@@ -1,7 +1,7 @@
 #
 # spec file for package debootstrap
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2012 Frank Lichtenheld <frank@lichtenheld.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,8 +23,9 @@ Release:        0
 Summary:        Bootstrap a basic Debian system
 License:        MIT
 URL:            https://salsa.debian.org/installer-team/debootstrap
-Source:         %{url}/-/archive/%{version}/%{name}-%{version}.tar.bz2
+Source:         %{url}/-/archive/%{version}+nmu5/%{name}-%{version}+nmu5.tar.bz2
 Patch0:         %{name}-norootforbuild.patch
+Requires:       binutils
 Requires:       wget
 Recommends:     gpg2
 BuildArch:      noarch
@@ -37,7 +38,7 @@ unpacking them into a directory which can eventually be chrooted
 into.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{version}+nmu5
 
 %build
 # Nothing to build.
