@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul 25 09:22:06 UTC 2023 - varkoly@suse.com
+
+- Update to version 4.12.0+git50.5c26404e:
+  * Filesystem: fix incorrect variable name for signal_delay default in metadata
+  * Delay: remove statement about defaulting to "startdelay" value if not specified
+  * Filesystem: dont use boolean type for non-boolean parameters
+  * Filesystem: list_mounts: fix mount command output parsing
+  * Delay: increase stop, status and monitor timeouts to 40s to avoid failing with default values
+  * Filesystem: improve stop-action and allow setting term/kill signals and signal_delay for large filesystems
+  * findif.sh: fix table parameter so it uses main table by default
+  * mysql: fix promotion_score bouncing between ~3600 and 1 on demoted nodes
+  * spec: Migrate to SPDX license
+  * Filesystem: create systemd drop-in for network filesystems
+
+-------------------------------------------------------------------
 Mon May 01 12:24:36 UTC 2023 - varkoly@suse.com
 
 - Update to version 4.12.0+git30.7fd7c8fa:
