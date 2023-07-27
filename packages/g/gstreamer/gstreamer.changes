@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Jul 25 11:02:08 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.5:
+  + Highlighted bugfixes:
+    - Security fixes for the RealMedia demuxer
+    - vaapi decoders, postproc: Disable DMAbuf from caps
+      negotiation to fix garbled video in some cases
+    - decodebin3, playbin3, parsebin fixes, especially for stream
+      reconfiguration
+    - hlsdemux2: fix early seeking; don't pass referer when
+      updating playlists; webvtt fixes
+    - gtk: Fix critical caused by pointer movement when stream is
+      getting ready
+    - qt6: Set sampler filtering method, fixes bad quality with
+      qml6glsink and gstqt6d3d11
+    - v4l2src: handle resolution change when buffers are copied
+    - videoflip: update orientation tag in auto mode
+    - video timecode: Add support for framerates lower than 1fps
+      and accept 119.88 (120/1.001) fps
+    - webrtcsink: fixes for x264enc and NVIDIA encoders
+    - cerbero: Pull ninja from system if possible, avoid spurious
+      bootstrap of cmake
+    - packages: Recipe updates for ffmpeg, libsoup, orc
+    - various bug fixes, memory leak fixes, and other stability and
+      reliability improvements
+  + gstreamer:
+    - taglist, plugins: fix compiler warnings with GLib >= 2.76
+    - tracerutils: allow casting parameter types
+    - inputselector: fix playing variable is never set
+- Rebase patch.
+
+-------------------------------------------------------------------
 Mon Jun 26 14:13:11 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.22.4:
