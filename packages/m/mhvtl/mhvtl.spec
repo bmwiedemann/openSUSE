@@ -26,7 +26,7 @@
 
 Name:           mhvtl
 URL:            http://sites.google.com/site/linuxvtl2/
-Version:        1.70_release+865.af13081a1ae5
+Version:        1.71_release+903.d3ec98550dc3
 Release:        0
 Requires:       mhvtl-kmp
 Requires:       module-init-tools
@@ -46,11 +46,11 @@ License:        GPL-2.0-only
 Group:          System/Daemons
 Source:         %{name}-%{version}.tar.xz
 Source2:        %{name}.preamble
-Patch1:         %{name}-fix-queuecomand-args.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_ordering}
 
 %{?!_systemdgeneratordir:%define _systemdgeneratordir %{_prefix}/lib/systemd/system-generators}
+%{?!_firmware_path:%define _firmware_path %{_prefix}/lib/firmware}
 
 %if 0%{buildkmp} == 1
 %suse_kernel_module_package -n %{name} -p %{S:2} kdump ec2 um
@@ -79,12 +79,11 @@ through to user-space daemons.
 
 %prep
 %setup -qn %{name}-%{version}
-%patch1 -p1
 
 %build
 make MHVTL_HOME_PATH=%{mhvtl_home_dir} VERSION=%{version} \
 	SYSTEMD_GENERATOR_DIR=%{_systemdgeneratordir} \
-	SYSTEMD_SERVICE_DIR=%{_unitdir}
+	SYSTEMD_SERVICE_DIR=%{_unitdir} FIRMWAREDIR=%{_firmware_path}
 %if 0%{buildkmp} == 1
 for flavor in %flavors_to_build; do
 	make -C kernel config.h
@@ -100,7 +99,7 @@ done
 %make_install \
 	MHVTL_HOME_PATH=%{mhvtl_home_dir} VERSION=%{version}_release LIBDIR=%{_libdir} \
 	SYSTEMD_GENERATOR_DIR=%{_systemdgeneratordir} \
-	SYSTEMD_SERVICE_DIR=%{_unitdir}
+	SYSTEMD_SERVICE_DIR=%{_unitdir} FIRMWAREDIR=%{_firmware_path}
 %fdupes %{buildroot}/%{_prefix}
 %if 0%{buildkmp} == 1
 export INSTALL_MOD_PATH=%{buildroot}
@@ -149,20 +148,25 @@ fi
 %{_bindir}/vtllibrary
 %{_bindir}/vtltape
 %{_bindir}/generate_device_conf
+%{_bindir}/mhvtl_kernel_mod_build
 %{_bindir}/generate_library_contents
 %{_libdir}/libvtlscsi.so
 %{_libdir}/libvtlcart.so
+%dir %{_firmware_path}
+%dir %{_firmware_path}/mhvtl
+%{_firmware_path}/mhvtl/mhvtl_kernel.tgz
 %dir %{_sysconfdir}/mhvtl
-%config %{_sysconfdir}/mhvtl/mhvtl.conf
-%config %{_sysconfdir}/mhvtl/device.conf
-%config %{_sysconfdir}/mhvtl/library_contents.10
-%config %{_sysconfdir}/mhvtl/library_contents.30
+%config(noreplace) %{_sysconfdir}/mhvtl/mhvtl.conf
+%config(noreplace) %{_sysconfdir}/mhvtl/device.conf
+%config(noreplace) %{_sysconfdir}/mhvtl/library_contents.10
+%config(noreplace) %{_sysconfdir}/mhvtl/library_contents.30
 %{_systemdgeneratordir}/
 %{_unitdir}/mhvtl-load-modules.service
 %{_unitdir}/mhvtl.target
 %{_unitdir}/vtltape@.service
 %{_unitdir}/vtllibrary@.service
 %dir %{mhvtl_home_dir}
+%ghost %{mhvtl_home_dir}/*
 %defattr(644,root,root)
 %{_mandir}/man1/vtlcmd.1%{ext_man}
 %{_mandir}/man1/vtllibrary.1%{ext_man}
@@ -176,6 +180,7 @@ fi
 %{_mandir}/man1/update_device.conf.1%{ext_man}
 %{_mandir}/man1/generate_device_conf.1%{ext_man}
 %{_mandir}/man1/generate_library_contents.1%{ext_man}
+%{_mandir}/man1/mhvtl_kernel_mod_build.1%{ext_man}
 %{_mandir}/man5/device.conf.5%{ext_man}
 %{_mandir}/man5/library_contents.5%{ext_man}
 %{_mandir}/man5/mhvtl.conf.5%{ext_man}

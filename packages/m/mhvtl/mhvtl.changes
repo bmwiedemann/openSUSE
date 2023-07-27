@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed Jul 26 16:01:08 UTC 2023 - lduncan@suse.com
+
+- Besides lots of bug fixes, the main visible change is the
+  addition of the mhvtl_kernel_mod_build script, which uses
+  a tarball of the modules sources in /lib/firmware/mhvtl_kernel.tgz
+  to build the kernel module. This adds a new script, new
+  firmware file, and a new man page.
+- Details about the update to version 1.71_release+903.d3ec98550dc3:
+  * Fix issue with DEFINE_SEMAPHORE in kernel module
+  * only call fflush() while in debug mode.
+  * Add used, but undeclared variable fg into vtltape::processMessageQ() function
+  * vtltape: Clean up after media mount failure
+  * Make send_msg_and_log() a macro - so the logging reads more logical
+  * test_lbp.sh : Fix misleading comments in script
+  * Move 'test_lbp.sh' into scripts directory
+  * Improve usability of test_lbp.sh
+  * gitignore: mhvtl_kernel.tgz is built at build time. Add to ignore
+  * mhvtl.spec: Bump version to 1.7-1
+  * Vagrant: Update the vagrant OS versions
+  * Pre-package mhvtk.ko source into the binary distribution.
+  * Expecting an unsigned 32bit int but cast as a signed 32bit int
+  * Remove duplication of application encryption structure
+  * Log information of AKAD/UKAD being sent from application
+  * Error logging macro - include line number in error log
+  * Make raspberryPi malloc() issue work-around a compile time depend on
+    ARM CPU type
+  * work around raspberryPi (32bit) malloc crash
+  * Initialise 'barcode' to NULL
+  * Cleanup 32bit vs 64bit compile warnings regarding variable sizes
+  * Rename struct 'encryption' to 'app_encryption_state'
+  * Remove dead getCommand() prototype
+  * mhvtl.ko: Bump mhvtl.ko version
+  * mhvtl.ko: Migrate printk() to pr_* calls
+  * Improve error message if kernel-devel is not installed
+  * SSC default emulation: Completing LTO-8 media support
+  * Set selinux ACL on systemd startup scripts
+  * Kernel build: remove blank line at end of script
+  * Fix kernel issue with queuecommand_lck
+  * mhvtl.ko: Change initator id from 15 to -1
+  * Change minimum clock size to 1 byte to prevent data loss when
+    writing files to tape devices that are on the block size boundaries
+  * vagrant mount doesn't like hard symlinks - use soft symlink instead
+  * Ultrium: Add support for Extended Inquiry Data VPD page
+  * Add support for INQUIRY_DATA_HAS_CHANGED
+  * SPC Inquiry: Dump SCSI Inquiry VPD pages
+  * Improve hex_dump() to print any ascii chars.
+  * add_lu() Clean up code to use fprintf() instead of write()
+  * Close the gap where lu is not ready to accept commands
+- This update also removes the need for patch (removed), since
+  it's fixed upstream:
+  * mhvtl-fix-queuecomand-args.patch
+
+-------------------------------------------------------------------
 Tue Jan  3 17:59:10 UTC 2023 - Lee Duncan <lduncan@suse.com>
 
 - Handle the fact that version 15.5 of our kernel back-ported
