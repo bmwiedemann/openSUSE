@@ -75,4 +75,12 @@
   *  Fix Negotiate header regex pattern to avoid DoS affected patterns</comment>
     <requestid>939991</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9a53becb8a401f69f82f14296fad6656</srcmd5>
+    <version>0.14.0</version>
+    <time>1690469601</time>
+    <user>anag+factory</user>
+    <comment>- tag for python 3.11 to have a matching module for python311-requests</comment>
+    <requestid>1101049</requestid>
+  </revision>
 </revisionlist>
