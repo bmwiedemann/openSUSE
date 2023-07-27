@@ -52,6 +52,8 @@ URL:            https://github.com/ComplianceAsCode/content
 Packager:       SUSE Security Team <security@suse.de>
 %endif
 Source:         https://github.com/ComplianceAsCode/content/archive/v%{version}.tar.gz
+# upstream fix, will be in 0.69
+Patch1:         0001-Revert-fix-aide-remediations-add-crontabs.patch
 
 # explicit require what is needed by the detection logic in the scripts
 Requires:       coreutils
@@ -190,6 +192,7 @@ Note that the included profiles are community supplied and not officially suppor
 
 %prep
 %setup -q -n content-%version
+%autopatch -p1
 
 %build
 cd build

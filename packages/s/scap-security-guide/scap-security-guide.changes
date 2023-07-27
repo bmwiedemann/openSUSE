@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 27 06:58:41 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- 0001-Revert-fix-aide-remediations-add-crontabs.patch:
+  revert patch that breaks the SLE hardening (bsc#1213691)
+
+-------------------------------------------------------------------
 Thu Jun 15 15:40:16 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - updated to 0.1.68 (jsc#ECO-3319)

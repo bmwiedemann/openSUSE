@@ -1,0 +1,90 @@
+From 8f31dae05cc55de178f3038587ca0d6ff5d12b69 Mon Sep 17 00:00:00 2001
+From: Eduardo Barretto <eduardo.barretto@canonical.com>
+Date: Thu, 29 Jun 2023 12:14:35 +0200
+Subject: [PATCH] Revert "fix: aide/remediations: add crontabs"
+
+This reverts commit ac8389e3ddab599f6f5bf7465636817fb8dbbf3e.
+Fixes #10725
+---
+ .../aide/aide_periodic_cron_checking/ansible/shared.yml     | 6 +++---
+ .../aide/aide_periodic_cron_checking/bash/shared.sh         | 1 -
+ .../aide/aide_periodic_cron_checking/bash/ubuntu.sh         | 1 -
+ .../aide/aide_scan_notification/ansible/shared.yml          | 6 +++---
+ .../aide/aide_scan_notification/bash/shared.sh              | 1 -
+ 5 files changed, 6 insertions(+), 9 deletions(-)
+
+diff --git a/linux_os/guide/system/software/integrity/software-integrity/aide/aide_periodic_cron_checking/ansible/shared.yml b/linux_os/guide/system/software/integrity/software-integrity/aide/aide_periodic_cron_checking/ansible/shared.yml
+index 7d4063bda2..d60c2e5464 100644
+--- a/linux_os/guide/system/software/integrity/software-integrity/aide/aide_periodic_cron_checking/ansible/shared.yml
++++ b/linux_os/guide/system/software/integrity/software-integrity/aide/aide_periodic_cron_checking/ansible/shared.yml
+@@ -5,10 +5,10 @@
+ # disruption = low
+ - name: "Ensure AIDE is installed"
+   package:
+-    name:
+-      - aide
+-      - crontabs
++    name: "{{ item }}"
+     state: present
++  with_items:
++    - aide
+ 
+ - name: Set cron package name - RedHat
+   set_fact:
+diff --git a/linux_os/guide/system/software/integrity/software-integrity/aide/aide_periodic_cron_checking/bash/shared.sh b/linux_os/guide/system/software/integrity/software-integrity/aide/aide_periodic_cron_checking/bash/shared.sh
+index a4dac78100..dfa5c1b6c8 100644
+--- a/linux_os/guide/system/software/integrity/software-integrity/aide/aide_periodic_cron_checking/bash/shared.sh
++++ b/linux_os/guide/system/software/integrity/software-integrity/aide/aide_periodic_cron_checking/bash/shared.sh
+@@ -1,7 +1,6 @@
+ # platform = Red Hat Virtualization 4,multi_platform_fedora,multi_platform_ol,multi_platform_rhel,multi_platform_sle
+ 
+ {{{ bash_package_install("aide") }}}
+-{{{ bash_package_install("crontabs") }}}
+ 
+ if ! grep -q "{{{ aide_bin_path }}} --check" /etc/crontab ; then
+     echo "05 4 * * * root {{{ aide_bin_path }}} --check" >> /etc/crontab
+diff --git a/linux_os/guide/system/software/integrity/software-integrity/aide/aide_periodic_cron_checking/bash/ubuntu.sh b/linux_os/guide/system/software/integrity/software-integrity/aide/aide_periodic_cron_checking/bash/ubuntu.sh
+index 00bd493ac7..719fd764af 100644
+--- a/linux_os/guide/system/software/integrity/software-integrity/aide/aide_periodic_cron_checking/bash/ubuntu.sh
++++ b/linux_os/guide/system/software/integrity/software-integrity/aide/aide_periodic_cron_checking/bash/ubuntu.sh
+@@ -1,7 +1,6 @@
+ # platform = multi_platform_ubuntu
+ 
+ {{{ bash_package_install("aide") }}}
+-{{{ bash_package_install("crontabs") }}}
+ 
+ # AiDE usually adds its own cron jobs to /etc/cron.daily. If script is there, this rule is
+ # compliant. Otherwise, we copy the script to the /etc/cron.weekly
+diff --git a/linux_os/guide/system/software/integrity/software-integrity/aide/aide_scan_notification/ansible/shared.yml b/linux_os/guide/system/software/integrity/software-integrity/aide/aide_scan_notification/ansible/shared.yml
+index 45db52bf23..2f734940a6 100644
+--- a/linux_os/guide/system/software/integrity/software-integrity/aide/aide_scan_notification/ansible/shared.yml
++++ b/linux_os/guide/system/software/integrity/software-integrity/aide/aide_scan_notification/ansible/shared.yml
+@@ -7,10 +7,10 @@
+ 
+ - name: "Ensure AIDE is installed"
+   package:
+-    name:
+-      - aide
+-      - crontabs
++    name: "{{ item }}"
+     state: present
++  with_items:
++    - aide
+ 
+ - name: "{{{ rule_title }}}"
+   cron:
+diff --git a/linux_os/guide/system/software/integrity/software-integrity/aide/aide_scan_notification/bash/shared.sh b/linux_os/guide/system/software/integrity/software-integrity/aide/aide_scan_notification/bash/shared.sh
+index b71b1ec967..f2b7d62a0b 100644
+--- a/linux_os/guide/system/software/integrity/software-integrity/aide/aide_scan_notification/bash/shared.sh
++++ b/linux_os/guide/system/software/integrity/software-integrity/aide/aide_scan_notification/bash/shared.sh
+@@ -1,7 +1,6 @@
+ # platform = multi_platform_all
+ 
+ {{{ bash_package_install("aide") }}}
+-{{{ bash_package_install("crontabs") }}}
+ {{{ bash_instantiate_variables("var_aide_scan_notification_email") }}}
+ 
+ CRONTAB=/etc/crontab
+-- 
+2.35.3
+

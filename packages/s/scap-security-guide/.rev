@@ -317,4 +317,13 @@ Setting up scap-security-guide (0.1.56-30.1) ... (forwarded request 896944 from 
 - scap-security-guide-UnicodeEncodeError-character-fix.patch: fixed upstream (forwarded request 1093440 from msmeissn)</comment>
     <requestid>1093441</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>4d6bf4c0fd33d7ce7932f4a1cc333a93</srcmd5>
+    <version>0.1.68</version>
+    <time>1690469581</time>
+    <user>anag+factory</user>
+    <comment>- 0001-Revert-fix-aide-remediations-add-crontabs.patch:
+  revert patch that breaks the SLE hardening (bsc#1213691)</comment>
+    <requestid>1101012</requestid>
+  </revision>
 </revisionlist>
