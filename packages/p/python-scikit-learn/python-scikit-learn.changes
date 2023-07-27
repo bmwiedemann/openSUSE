@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jul 25 08:39:12 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.3.0
+  * We are in the process of introducing a new way to route metadata 
+    such as sample_weight throughout the codebase, which would 
+    affect how meta-estimators such as pipeline.Pipeline and 
+    model_selection.GridSearchCV route metadata.
+  * Originally hosted in the scikit-learn-contrib repository, 
+    cluster.HDBSCAN has been adopted into scikit-learn.
+  * A new category encoding strategy preprocessing.TargetEncoder 
+    encodes the categories based on a shrunk estimate of the average 
+    target values for observations belonging to that category.
+  * The classes tree.DecisionTreeClassifier and tree.DecisionTreeRegressor 
+    now support missing values.
+  * model_selection.ValidationCurveDisplay is now available to plot 
+    results from model_selection.validation_curve
+  * The class ensemble.HistGradientBoostingRegressor supports the 
+    Gamma deviance loss function via loss="gamma".
+  * Similarly to preprocessing.OneHotEncoder, the class preprocessing.OrdinalEncoder 
+    now supports aggregating infrequent categories into a single 
+    output for each feature.
+  * More changes, see https://scikit-learn.org/stable/whats_new/v1.3.html
+
+-------------------------------------------------------------------
 Sat Jun 10 17:37:09 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
