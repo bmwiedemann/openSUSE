@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Jul 26 10:50:38 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update: `BuildRequires:  go >= 1.20.6`
+- Update: `BuildRequires:  golang(API) = 1.20`
+
+- Update to version 1.26.7:
+  * [release-1.26] releng/go: Bump images, versions and deps to use Go 1.20.6
+  * Fix the converts an empty string to nil.
+  * Add unit tests for parallel StatefulSet create & delete
+  * Parallel StatefulSet pod create & delete
+  * Refactor StatefulSet controller update logic
+  * Only declare job as finished after removing all finalizers
+  * Cherry pick of #118716 upstream release 1.26 (#118912)
+  * Hide numberOfMissedSchedules as an algorithm internal number
+  * Update schedule logic to properly calculate missed schedules
+  * kubeadm: set priority for "system-node-critical" Pods
+  * Automated cherry pick of #118805: test comment should match the code in podgc (#118914)
+  * call ./hack/update-vendor.sh
+  * kubeadm: remove function pointer comparison in phase test
+  * Make etcd component status consistent with health probes
+  * Fix deadlock in ready test
+  * fix the existing problem (0 SerialNumber in all certificate) as part of this PR in a separate commit
+  * update serial number to a valid non-zero number in ca certificate
+  * deps: Bump to cAdvisor v0.46.1
+  * AWS: fix code for picking region from zone
+  * Fix the git-repo test error caused by the correct use of loop variables
+  * dra scheduler plugin test: fix loopvar bug and "reserve" expected data
+  * don't process unsupported loadbalancers with mixed protocols
+  * make MixedProtocolNotSupported public
+  * Add node check to vSphere cloud provider
+  * Set permissions on volume before publishing update
+  * Adding additional validations to queried endpoint list iteration.
+
+-------------------------------------------------------------------
 Wed Jun 21 04:55:08 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update: `BuildRequires:  go >= 1.19.10`
