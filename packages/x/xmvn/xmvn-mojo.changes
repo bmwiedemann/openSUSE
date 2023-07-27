@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 24 19:21:09 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * UUID.patch
+    + avoid generating random UUIDs, which makes reproducible build
+      impossible (bsc#1162112)
+
+-------------------------------------------------------------------
 Wed May  3 09:26:56 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 4.2.0

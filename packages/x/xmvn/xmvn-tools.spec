@@ -27,6 +27,7 @@ Group:          Development/Tools/Building
 URL:            https://fedora-java.github.io/xmvn/
 Source0:        https://github.com/fedora-java/xmvn/releases/download/%{version}/%{parent}-%{version}.tar.xz
 Source1:        %{parent}-build.tar.xz
+Patch0:         UUID.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-compress
 BuildRequires:  atinject

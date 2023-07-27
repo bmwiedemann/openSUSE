@@ -26,6 +26,7 @@ License:        Apache-2.0
 Group:          Development/Tools/Building
 URL:            https://fedora-java.github.io/xmvn/
 Source0:        https://github.com/fedora-java/%{parent}/releases/download/%{version}/%{parent}-%{version}.tar.xz
+Patch0:         UUID.patch
 BuildRequires:  javapackages-local
 BuildRequires:  xmvn-resolve
 BuildRequires:  mvn(org.apache.maven.plugins:maven-compiler-plugin)

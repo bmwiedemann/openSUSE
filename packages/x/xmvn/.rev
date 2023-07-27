@@ -111,4 +111,12 @@
     <comment>multibuild</comment>
     <requestid>1084820</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>33d5e1c821e1a689f8656b1e4da8f602</srcmd5>
+    <version>4.2.0</version>
+    <time>1690469517</time>
+    <user>anag+factory</user>
+    <comment>bsc#1162112 - reproducible uuid generation</comment>
+    <requestid>1100452</requestid>
+  </revision>
 </revisionlist>
