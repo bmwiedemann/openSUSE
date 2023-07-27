@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 21 10:17:36 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.56.3:
+  + This is a security release for bug glgo#GNOME/librsvg#996.
+    - glgo#GNOME/librsvg#996: Fix arbitrary file read when href has
+      special characters.
+    - glgo#GNOME/librsvg#998: Fix cascade for symbol elements being
+      referenced from use elements.
+
+-------------------------------------------------------------------
 Wed Jun 21 06:22:07 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %build_rustflags instead of the deprecated
