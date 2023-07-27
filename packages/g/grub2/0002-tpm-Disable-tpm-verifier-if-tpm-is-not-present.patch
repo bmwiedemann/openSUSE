@@ -94,23 +94,28 @@ Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
 +}
 --- a/grub-core/commands/tpm.c
 +++ b/grub-core/commands/tpm.c
-@@ -311,6 +311,8 @@
+@@ -311,16 +311,19 @@
  
  GRUB_MOD_INIT (tpm)
  {
+-  grub_verifier_register (&grub_tpm_verifier);
+-
+   cmd = grub_register_extcmd ("tpm_record_pcrs", grub_tpm_record_pcrs, 0,
+ 			      N_("LIST_OF_PCRS"),
+ 			      N_("Snapshot one or more PCR values and record them in an EFI variable."),
+ 			      grub_tpm_record_pcrs_options);
 +  if (!grub_tpm_present())
 +    return;
-   grub_verifier_register (&grub_tpm_verifier);
- 
-   cmd = grub_register_extcmd ("tpm_record_pcrs", grub_tpm_record_pcrs, 0,
-@@ -321,6 +323,8 @@
++  grub_verifier_register (&grub_tpm_verifier);
+ }
  
  GRUB_MOD_FINI (tpm)
  {
+-  grub_verifier_unregister (&grub_tpm_verifier);
+   grub_unregister_extcmd (cmd);
 +  if (!grub_tpm_present())
 +    return;
-   grub_verifier_unregister (&grub_tpm_verifier);
-   grub_unregister_extcmd (cmd);
++  grub_verifier_unregister (&grub_tpm_verifier);
  }
 --- a/include/grub/tpm.h
 +++ b/include/grub/tpm.h

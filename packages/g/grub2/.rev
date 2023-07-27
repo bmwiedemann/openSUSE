@@ -2553,4 +2553,12 @@ pretty much the same. The main user visible changes are
   upstream git)</comment>
     <requestid>1089792</requestid>
   </revision>
+  <revision rev="297" vrev="54">
+    <srcmd5>9623cbe5c73113c2af0ddd825fc99bfd</srcmd5>
+    <version>2.06</version>
+    <time>1690469401</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1100800</requestid>
+  </revision>
 </revisionlist>

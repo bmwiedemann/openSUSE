@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 26 03:04:25 UTC 2023 - Michael Chang <mchang@suse.com>
+
+- Fix error message "unknown command tpm_record_pcrs" with encrypted boot and
+  no tpm device present (bsc#1213547)
+  * 0002-tpm-Disable-tpm-verifier-if-tpm-is-not-present.patch 
+
+-------------------------------------------------------------------
 Tue May 30 11:03:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add 0001-fs-ext2-Ignore-checksum-seed-incompat-feature.patch,
