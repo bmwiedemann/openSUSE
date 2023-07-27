@@ -129,4 +129,12 @@ New dependecy of python-Pyramid</comment>
   * Add preliminary support for Python 3.12a5.</comment>
     <requestid>1085137</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>c0d54536bdf743562f67b7f13b4e1c5d</srcmd5>
+    <version>6.0.1</version>
+    <time>1690469401</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1100793</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 26 07:31:38 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Drop sphinx doctrees for reproducible builds
+
+-------------------------------------------------------------------
 Fri May  5 14:24:11 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.0.1:
