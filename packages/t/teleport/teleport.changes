@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Thu Jul 27 06:27:58 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 13.2.5:
+  * Release 13.2.5 (#29668)
+  * [docs] Fixes ACM helm example (#29573)
+
+-------------------------------------------------------------------
+Thu Jul 27 04:42:16 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 13.2.4:
+  * Release 13.2.4 (#29663)
+  * [v13] Add support for Amazon Linux 2023 to installer script and
+    Discover UI (#29654)
+  * fix (#29577)
+  * Clarify auto upgrades docs (#29211) (#29507)
+  * [v13] Add device owner and trusted device IDs to protos
+    (#29639)
+  * [v13] Allow creating a admin `ClusterRoleBinding` (#29559)
+  * Update Operator CRDs and add a Lint check to prevent drifts
+    (#29554)
+  * Fix NPD when the table status has an unspecified billing mode
+    (#29634)
+  * Update e (#29637)
+  * [v13] Port and refactor Mattermost from teleport-plugins
+    (#28989) (#29549)
+  * Remove upgrade suggestion alerts (#29631)
+  * Speed up Auth initialization (#29257) (#29571)
+  * Add CLI options for OpenSearch autodiscovery config. (#28147)
+  * [v13] feat: Login Rule support for email.local and
+    regexp.replace (#29611)
+  * [v13] Vendors in  `jira` access plugin source (#29548)
+  * Athena: Support maxUniqueDaysInSingleBatch (#29604)
+  * Switch to upstream x/crypto (#28929) (#29601)
+  * Add --silent flag to teleport node configure command (#29587)
+  * feat(tctl): make `--type` parameter required for `auth crl`
+    command (#29591)
+  * [v13] etcd client pool (#29586)
+  * [v13] Describe using dynamic resources for DB Service HA
+    (#29542)
+  * [v13] update tsh db resource selection (#29163)
+  * [v13] Changes to ordered and unordered lists for lint warnings
+    (#29265)
+  * [v13] Docs: Update OIDC SSO Guide (#29408)
+  * [v13] Displays warning when SSO is used and username specified
+    (#29504)
+  * docs: update chart v12 migration to remove footgun (#29564)
+  * Defer setting up enhanced recording until after PAM has
+    completed (#29578)
+  * [v13] Document DynamoDB backend billing_mode option (#29359)
+  * adds public web addresses to self-signed cert (#29568)
+  * Add api ver to path in opsgenie client (#29553)
+  * docs: version update (#29492)
+  * Fix GCP joining for Machine ID in v13 (#29563)
+  * [v13] Athena: accept events without timestamp (#29383)
+  * athena: support dynamo keyset for migration (#29452)
+  * Display friendlier errors when an invalid login is provided
+    (#29273) (#29473)
+  * feat: support resource requests via tctl
+  * [v13] Docs: Jamf Pro  (#29534)
+  * bump e on v13 (#29537)
+  * docs: minor updates for setting up TLS on Windows Server 2012R2
+    (#29327)
+  * Fix a panic in the S3 uploader (#29470)
+  * [v13] Introduce the `UpdateAndSwapUser` function (#29477)
+  * web: clean up auth connector page (#29404)
+  * [v13] Add billing_mode option to the DynamoDB backend so
+    pay_per_request or provisioned billing can be configured
+    (#29351)
+  * [v13] Change how we cache the keys in backend.Reporter (#29330)
+  * [v13] `GenerateToken` should call `CreateToken` not
+    `UpsertToken` (#29391)
+  * Remove dependency of etcd from tctl (#29377) (#29394)
+  * EC2 Instance Connect Endpoint: add aws metadata to Nodes
+    (#29316) (#29407)
+  * [v13] add onboarding survey (#29397)
+  * Update e (#29400)
+  * Filter out cluster ID in Connect logs (#29387)
+  * [v13] Use the examples directory for example plugin code
+    (#29152)
+  * Remove gateways on logout (#29388)
+  * [v13] fix database dynamic labels (#29373)
+  * tctl: fix error reporting when server is down (#29322)
+  * Add Connect ads to tsh login and tsh proxy db (#29302)
+  * [v13] Moves tsh login browser parameter as env var (#29287)
+  * add saml apps to webui apps list (#28041) (#29371)
+  * Add in user login state. (#29365)
+  * Add GCP instances client (#28561) (#29333)
+  * Add discovery-side label reconciler (#27476) (#29334)
+  * [v13] tctl users add: Point towards `users update` on
+    AlreadyExists err (#29343)
+  * Make prettier a dev dep of root package.json (#29355)
+
+-------------------------------------------------------------------
 Thu Jul 20 05:47:54 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 13.2.3:
