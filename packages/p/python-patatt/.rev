@@ -61,4 +61,13 @@
 - add keyring for validation</comment>
     <requestid>1090245</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>0cbf5e5367a2c2ea8ea1da670e7b7e3a</srcmd5>
+    <version>0.6.3</version>
+    <time>1690469576</time>
+    <user>anag+factory</user>
+    <comment>- use %{?sle15_python_module_pythons}
+- drop py2 pieces</comment>
+    <requestid>1100999</requestid>
+  </revision>
 </revisionlist>
