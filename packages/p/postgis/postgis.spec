@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,14 @@
 %define         main_version 3.2
 
 Name:           %{pg_name}-%{ext_name}
-Version:        3.2.4
+Version:        3.2.5
 Release:        0
 Summary:        Geographic Information Systems Extensions to PostgreSQL
 License:        GPL-2.0-or-later
 Group:          Productivity/Databases/Servers
 URL:            https://postgis.net/
 Source0:        https://download.osgeo.org/postgis/source/%{ext_name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM adapt the test warnings to fulfill tests
 Patch0:         patch-tests-results.patch
 BuildRequires:  %{pg_name}-llvmjit-devel
 BuildRequires:  %{pg_name}-server-devel
