@@ -48,4 +48,16 @@ Following https://opensuse.github.io/scm-staging/user_guide.html pt 4
 (🤖: Submission of python-cloup via https://src.opensuse.org/pool/python-cloup/pulls/3 by VaiTon)</comment>
     <requestid>1099717</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d2ad0c4f7258f6b6f9fc832400412890</srcmd5>
+    <version>3.0.0</version>
+    <time>1690469510</time>
+    <user>anag+factory</user>
+    <comment>Update to 3.0.0
+
+
+
+(🤖: Submission of python-cloup via https://src.opensuse.org/pool/python-cloup/pulls/4 by dirkmueller)</comment>
+    <requestid>1100894</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           python-cloup
-Version:        2.1.2
+Version:        3.0.0
 Release:        0
 Summary:        Option groups, constraints, subcommand sections and help themes for Click
 License:        BSD-3-Clause
