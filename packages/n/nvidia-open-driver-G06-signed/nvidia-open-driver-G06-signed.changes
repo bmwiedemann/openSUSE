@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 25 12:56:34 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- require one-time renamed package kernel-firmware-nvidia-gspx-G06
+  from now on (boo#1212724)
+
+-------------------------------------------------------------------
 Mon Jul 24 15:37:51 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
 
 - Replace transitional %usrmerged macro with regular version check (boo#1206798)

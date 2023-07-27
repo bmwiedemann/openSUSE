@@ -127,4 +127,13 @@
     <comment></comment>
     <requestid>1100434</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>19446780916d44b9685373b2628415b7</srcmd5>
+    <version>535.86.05</version>
+    <time>1690469453</time>
+    <user>anag+factory</user>
+    <comment>- require one-time renamed package kernel-firmware-nvidia-gspx-G06
+  from now on (boo#1212724)</comment>
+    <requestid>1100623</requestid>
+  </revision>
 </revisionlist>
