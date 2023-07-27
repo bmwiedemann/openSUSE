@@ -26,15 +26,15 @@ URL:            https://github.com/openSUSE/fde-tools
 Source:         https://github.com/openSUSE/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        fde-tools.service
 Patch:          fde-tools-firstboot-alp-snapshot.patch
+Patch1:         fde-tools-handle-authorized-policy-failure.patch
 BuildRequires:  help2man
 BuildRequires:  openssl >= 0.9.8
 BuildRequires:  tpm2-0-tss-devel
 BuildRequires:  pkgconfig(libcryptsetup)
 BuildRequires:  pkgconfig(libfido2)
 Requires:       cryptsetup
-Requires:       pcr-oracle >= 0.4.5
-# Requires:	tpm2.0-tools
 Requires:       mokutil
+Requires:       pcr-oracle >= 0.4.5
 ExclusiveArch:  aarch64 s390x ppc64le x86_64 riscv64
 
 %package -n fde-firstboot

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 27 06:23:22 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add fde-tools-handle-authorized-policy-failure.patch handle the
+  failure of authorized policy creation
+
+-------------------------------------------------------------------
 Thu Jul 20 08:39:13 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to version 0.6.6
