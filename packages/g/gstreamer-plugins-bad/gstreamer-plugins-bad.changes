@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 25 11:09:02 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.5:
+  + d3d11bufferpool: Fix heavy CPU usage in case of fixed-size pool
+  + jpegparser: jpegdecoder: Don't pollute bus and comply with spec
+  + plugins: fix compiler warnings with GLib >= 2.76
+  + webrtcbin: Prevent critical warning when creating an additional
+    data channel
+  + webrtcstats: Properly report IceCandidate type
+- Rebase reduce-required-meson.patch.
+
+-------------------------------------------------------------------
 Mon Jun 26 14:36:10 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.22.4:
