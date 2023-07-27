@@ -33,6 +33,8 @@ Source:         https://github.com/pyqtgraph/pyqtgraph/archive/refs/tags/pyqtgra
 Patch1:         no-sphinx-qt-doc.patch
 # https://github.com/pyqtgraph/pyqtgraph/issues/2645
 Patch2:         2748.patch
+# https://github.com/pyqtgraph/pyqtgraph/pull/2760
+Patch3:         py3114.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module numpy >= 1.17}
 BuildRequires:  %{python_module pydata-sphinx-theme}
@@ -89,8 +91,7 @@ Documentation and help files for %{name}
 
 %prep
 %setup -q -n pyqtgraph-pyqtgraph-%{version}
-%patch1 -p1
-%patch2 -p1
+%autopatch -p1
 # Fix rpmlint
 chmod a-x pyqtgraph/examples/Symbols.py
 # only a handful of example scripts have interpreter lines, remove all, they don't have executable bits

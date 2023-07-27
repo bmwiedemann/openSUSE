@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 19 11:45:16 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream patch py3114.patch to fix build with Python 3.11.4+
+
+-------------------------------------------------------------------
 Tue Jun 20 09:20:04 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - update to version 0.13.3:
