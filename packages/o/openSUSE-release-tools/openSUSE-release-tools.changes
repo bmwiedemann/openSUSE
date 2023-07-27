@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 26 06:24:25 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230726.2a0b30a:
+  * gocd: Run BCI RepoPublisher at 9:23 daily
+  * gocd: Add missing directory to BCI RepoPublisher pipeline
+
+-------------------------------------------------------------------
 Tue Jul 25 14:33:21 UTC 2023 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20230725.2253789:
