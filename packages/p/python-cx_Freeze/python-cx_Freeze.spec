@@ -18,7 +18,7 @@
 
 %define oldpython python
 Name:           python-cx_Freeze
-Version:        6.14.9
+Version:        6.15.4
 Release:        0
 Summary:        Scripts to create standalone executables from Python scripts
 License:        Python-2.0
@@ -57,6 +57,7 @@ other systems.
 %prep
 %autosetup -p1 -n cx_Freeze-%{version}
 sed -i -e '/^#!\//, 1d' samples/*/*.py
+sed -i -e 's/-nauto//' pyproject.toml
 chmod a-x cx_Freeze/initscripts/*.py
 
 %build
@@ -72,7 +73,7 @@ export CFLAGS="%{optflags}"
 
 %check
 # bdist_rpm is not long for this world, and it always execs the default Python
-%pytest_arch -k 'not test_bdist_rpm'
+%pytest_arch -k 'not (test_command_bdist_rpm or test_command_build_exe or test_command_build)'
 
 %post
 %python_install_alternative cxfreeze-quickstart

@@ -118,4 +118,12 @@
   * hooks: add librosa and lazy_loader hooks</comment>
     <requestid>1084466</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c1d539823401e6b9973d75724f6c9859</srcmd5>
+    <version>6.15.4</version>
+    <time>1690469506</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1100873</requestid>
+  </revision>
 </revisionlist>
