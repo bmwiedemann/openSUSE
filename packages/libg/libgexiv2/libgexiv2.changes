@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 26 08:01:44 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.14.2:
+  + Make compatible with exiv2 0.28 or later.
+  + Fix double free if creation of meta-data fails.
+  + Fix floating point compare in tests.
+- Drop patches fixed upstream:
+  + 06adc8fb70cb8c77c0cd364195d8251811106ef8.patch
+  + fix-32bit-compat.patch
+
+-------------------------------------------------------------------
 Fri Jun 30 07:42:43 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop baselibs.conf: the biarch module is not used anymore.
