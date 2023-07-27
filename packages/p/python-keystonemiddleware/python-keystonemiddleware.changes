@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jul 26 06:53:18 UTC 2023 - cloud-devel@suse.de
+
+- update to version 10.4.0
+  - Update master for stable/2023.1
+  - tox: Trivial formatting changes
+  - Make tox.ini tox 4.0.0 compatible/fix gate
+  - Remove six
+  - Bump hacking to 6.0.x
+
+-------------------------------------------------------------------
+Thu Jun 15 20:45:45 UTC 2023 - cloud-devel@suse.de
+
+- update to version 10.3.0
+  - OAuth 2.0 Mutual-TLS Support
+  - Add missing doc requirements
+  - Add timeout for requests
+
+-------------------------------------------------------------------
 Mon Mar  6 15:55:47 UTC 2023 - cloud-devel@suse.de
 
 - update to version 10.2.0

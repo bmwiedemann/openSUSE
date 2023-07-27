@@ -295,4 +295,22 @@ update to version 4.9.0
   - Imported Translations from Zanata</comment>
     <requestid>1073020</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a59a0b4636c027d9e770e0e03d62898d</srcmd5>
+    <version>10.4.0</version>
+    <time>1690469446</time>
+    <user>anag+factory</user>
+    <comment>- update to version 10.4.0
+  - Update master for stable/2023.1
+  - tox: Trivial formatting changes
+  - Make tox.ini tox 4.0.0 compatible/fix gate
+  - Remove six
+  - Bump hacking to 6.0.x
+
+- update to version 10.3.0
+  - OAuth 2.0 Mutual-TLS Support
+  - Add missing doc requirements
+  - Add timeout for requests</comment>
+    <requestid>1100749</requestid>
+  </revision>
 </revisionlist>
