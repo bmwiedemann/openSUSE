@@ -500,4 +500,18 @@
     <comment></comment>
     <requestid>1100578</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>bcc7edef933595b7761eb9feb16395ed</srcmd5>
+    <version>2.14.2.1</version>
+    <time>1690469567</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2.14.2.1:
+  * Added cal/fnv_tool.cal, a calc resource file defining:
+    find_fnv_prime(bits)
+    deprecated_fnv0(bits,fnv_prime,string)
+    fnv_offset_basis(bits,fnv_prime)
+    fnv1a_style_hash(bits,fnv_prime,prev_hash,string)
+  * Fixed sorted order of cal/README.</comment>
+    <requestid>1100981</requestid>
+  </revision>
 </revisionlist>

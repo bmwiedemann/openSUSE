@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul 27 06:27:22 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.14.2.1:
+  * Added cal/fnv_tool.cal, a calc resource file defining:
+    find_fnv_prime(bits)
+    deprecated_fnv0(bits,fnv_prime,string)
+    fnv_offset_basis(bits,fnv_prime)
+    fnv1a_style_hash(bits,fnv_prime,prev_hash,string)
+  * Fixed sorted order of cal/README.
+
+-------------------------------------------------------------------
 Sat Jul 22 11:59:05 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Update to 2.14.2.0:
