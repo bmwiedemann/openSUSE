@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 25 11:17:10 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.5:
+  + vaapidecode,vaapipostproc: Disable DMAbuf from caps negotiation
+- Rebase reduce-required-meson.patch.
+
+-------------------------------------------------------------------
 Mon Jun 26 14:38:38 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.22.4:
