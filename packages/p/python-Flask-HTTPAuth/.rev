@@ -58,4 +58,19 @@
     <comment></comment>
     <requestid>920704</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5cada5c3e87f5ad54e4f2bff80cc6b27</srcmd5>
+    <version>4.8.0</version>
+    <time>1690469578</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.8.0:
+  * Changes to handle breaking changes in Flask/Werkzeug 2.3 #160
+  * Replace itsdangerous with pyjwt in examples #157
+  * Fallback to latin-1 encoding for credentials when utf-8 fails #151
+  * Add MD5-Sess algorithm for Digest auth
+  * Add qop=auth option for Digest auth (thanks Edward!)
+  * Do not read the request body #138
+- Switch to pyproject and pytest macros.</comment>
+    <requestid>1100994</requestid>
+  </revision>
 </revisionlist>

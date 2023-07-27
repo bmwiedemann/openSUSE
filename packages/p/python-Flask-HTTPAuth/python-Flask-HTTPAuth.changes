@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 27 07:15:25 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.8.0:
+  * Changes to handle breaking changes in Flask/Werkzeug 2.3 #160
+  * Replace itsdangerous with pyjwt in examples #157
+  * Fallback to latin-1 encoding for credentials when utf-8 fails #151
+  * Add MD5-Sess algorithm for Digest auth
+  * Add qop=auth option for Digest auth (thanks Edward!)
+  * Do not read the request body #138
+- Switch to pyproject and pytest macros.
+
+-------------------------------------------------------------------
 Tue Sep 14 11:55:17 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro
