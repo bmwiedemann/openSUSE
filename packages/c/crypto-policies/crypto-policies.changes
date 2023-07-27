@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jul 14 14:59:06 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- BSI.pol: Added a new BSI policy for BSI TR 02102* (jsc#PED-4933)
+  derived from NEXT.pol
+
+-------------------------------------------------------------------
+Thu Jul 13 06:36:20 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 20230614.5f3458e:
+  * policies: impose old OpenSSL groups order for all back-ends
+  * Rebase patches:
+    - crypto-policies-revert-rh-allow-sha1-signatures.patch
+    - crypto-policies-supported.patch
+
+-------------------------------------------------------------------
 Thu May 25 11:28:12 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - FIPS: Enable to set the kernel FIPS mode with fips-mode-setup

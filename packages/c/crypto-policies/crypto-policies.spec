@@ -22,7 +22,7 @@
 %bcond_with manbuild
 %global _python_bytecompile_extra 0
 Name:           crypto-policies
-Version:        20230420.3d08ae7
+Version:        20230614.5f3458e
 Release:        0
 Summary:        System-wide crypto policies
 License:        LGPL-2.1-or-later
@@ -35,6 +35,8 @@ Source3:        update-crypto-policies.8.gz
 Source4:        fips-mode-setup.8.gz
 Source5:        fips-finish-install.8.gz
 Source6:        crypto-policies-rpmlintrc
+# BSI TR-02102 encoded for jsc#PED-4933 (customer request to have BSI TR-02102 policies)
+Source7:        BSI.pol
 %if %{without manbuild}
 #PATCH-FIX-OPENSUSE Manpages build cycles and dependencies
 # To reduce the build dependencies in Ring0, we have to compile the
@@ -58,7 +60,7 @@ BuildRequires:  python3-base >= 3.6
 BuildRequires:  asciidoc
 %endif
 %if %{with testsuite}
-# The following buildrequires are needed for the testsuite
+# The following packages are needed for the testsuite
 BuildRequires:  bind
 BuildRequires:  gnutls >= 3.6.0
 BuildRequires:  java-devel
@@ -92,12 +94,16 @@ such as SSL/TLS libraries.
 %package scripts
 Summary:        Tool to switch between crypto policies
 Requires:       %{name} = %{version}-%{release}
+Recommends:     grubby
 
 %description scripts
 This package provides a tool update-crypto-policies, which applies
 the policies provided by the crypto-policies package. These can be
 either the pre-built policies from the base package or custom policies
 defined in simple policy definition files.
+
+The package also provides a tool fips-mode-setup, which can be used
+to enable or disable the system FIPS mode.
 
 %prep
 %autosetup -p1 -n fedora-%{name}-%{version}
@@ -111,6 +117,9 @@ find -name sequoia.py -delete
 
 %build
 export OPENSSL_CONF=''
+sed -i "s/MIN_RSA_DEFAULT = .*/MIN_RSA_DEFAULT = 'RequiredRSASize'/" \
+    python/policygenerators/openssh.py
+grep "MIN_RSA_DEFAULT = 'RequiredRSASize'" python/policygenerators/openssh.py
 %make_build
 
 %install
@@ -124,6 +133,10 @@ mkdir -p -m 755 %{buildroot}%{_sysconfdir}/crypto-policies/policies/modules/
 mkdir -p -m 755 %{buildroot}%{_bindir}
 
 make DESTDIR=%{buildroot} DIR=%{_datarootdir}/crypto-policies MANDIR=%{_mandir} %{?_smp_mflags} install
+
+# BSI.pol
+install -c -m 644 %{SOURCE7} %{buildroot}/%{_datarootdir}/crypto-policies/policies/
+
 install -p -m 644 default-config %{buildroot}%{_sysconfdir}/crypto-policies/config
 touch %{buildroot}%{_sysconfdir}/crypto-policies/state/current
 touch %{buildroot}%{_sysconfdir}/crypto-policies/state/CURRENT.pol
@@ -168,7 +181,7 @@ install -p -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/crypto-policies
 %check
 %if %{with testsuite}
 export OPENSSL_CONF=''
-%make_build test || :
+%make_build test test-install test-fips-setup || :
 %endif
 
 %post -p <lua>

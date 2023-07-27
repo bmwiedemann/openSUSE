@@ -16,7 +16,7 @@ Index: fedora-crypto-policies-20230420.3d08ae7/update-crypto-policies.8.txt
 +* NSS library (NSS, SSL, TLS) (Not supported)
  
 -* OpenJDK (java-tls, SSL, TLS)
-+* OpenJDK (java-tls, SSL, TLS) (Supported only for java-1_8_0-openjdk and java-11-openjdk)
++* OpenJDK (java-tls, SSL, TLS) (Supported)
  
 -* Libkrb5 (krb5, kerberos)
 +* Libkrb5 (krb5, kerberos) (Not supported)
