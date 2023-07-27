@@ -19,7 +19,7 @@
 
 #!BuildIgnore: post-build-checks
 
-%define patchversion 6.4.4
+%define patchversion 6.4.6
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -44,7 +44,7 @@ BuildRequires:  util-linux
 %endif
 %endif
 %endif
-BuildRequires:  kernel%kernel_flavor-srchash-919c802ada31ab19f558e20f85131383e507193e
+BuildRequires:  kernel%kernel_flavor-srchash-55520bc826c5b1d40857ed0536eb87438cb95192
 
 %if 0%{?rhel_version}
 BuildRequires:  kernel
@@ -56,9 +56,9 @@ BuildRequires:  dracut
 Summary:        package kernel and initrd for OBS VM builds
 License:        GPL-2.0-only
 Group:          SLES
-Version:        6.4.4
+Version:        6.4.6
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g919c802
+Release:        <RELEASE>.g55520bc
 %else
 Release:        0
 %endif

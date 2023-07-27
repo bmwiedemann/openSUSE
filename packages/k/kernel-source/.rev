@@ -6338,4 +6338,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.4.4 and other fixes</comment>
     <requestid>1099687</requestid>
   </revision>
+  <revision rev="698" vrev="1">
+    <srcmd5>63196bdd7654e149a01e8341e1f77371</srcmd5>
+    <version>6.4.6</version>
+    <time>1690469388</time>
+    <user>anag+factory</user>
+    <comment>6.4.6 (incl. ZenBleed CVE fix) &amp; 6.4.5 and r8169 fixes</comment>
+    <requestid>1100518</requestid>
+  </revision>
 </revisionlist>
