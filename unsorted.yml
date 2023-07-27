@@ -6458,6 +6458,7 @@ unsorted:
   - git-doc 
   - git-filter-repo 
   - git-fzlog 
+  - git-interactive-rebase-tool 
   - git-lfs 
   - git-merge-changelog 
   - git-mr 
@@ -7203,7 +7204,6 @@ unsorted:
   - grub2-x86_64-efi-debug 
   - grub2-x86_64-efi-extras 
   - grub2-x86_64-xen-extras 
-  - grubby 
   - grype 
   - gscan2pdf 
   - gscan2pdf-lang 
@@ -8978,6 +8978,7 @@ unsorted:
   - kernel-docs-html 
   - kernel-firmware 
   - kernel-firmware-nvidia-gsp-G06 
+  - kernel-firmware-nvidia-gspx-G06 
   - kernel-install-tools 
   - kernel-kvmsmall 
   - kernel-kvmsmall-devel 
@@ -9088,9 +9089,7 @@ unsorted:
   - kio_perldoc 
   - kio_perldoc-lang 
   - kirigami 
-  - kirigami-addons 
   - kirigami-addons-devel 
-  - kirigami-addons-lang 
   - kirigami-devel 
   - kirigami-gallery 
   - kirigami-gallery-lang 
@@ -10325,7 +10324,7 @@ unsorted:
   - libQuotient0_6 
   - libRaTools0 
   - libRecast1 
-  - libRivet-3_1_7 
+  - libRivet-3_1_8 
   - libSDL-1_2-0-32bit 
   - libSDL2-2_0-0-32bit 
   - libSDL2_Pango4 
@@ -11090,7 +11089,7 @@ unsorted:
   - libcairo2-32bit 
   - libcaja-extension1 
   - libcal3d12 
-  - libcalc2_14_2_0 
+  - libcalc2_14_2_1 
   - libcalcium0 
   - libcallaudio0_1-0 
   - libcallback1 
@@ -11677,7 +11676,7 @@ unsorted:
   - libevt-devel 
   - libevt-tools 
   - libevt1 
-  - libevtlog-4_2-0 
+  - libevtlog-4_3-0 
   - libevtlog-devel 
   - libevtlog0 
   - libevtx-devel 
@@ -14244,6 +14243,7 @@ unsorted:
   - libqt5-qtnetworkauth-devel 
   - libqt5-qtnetworkauth-examples 
   - libqt5-qtnetworkauth-private-headers-devel 
+  - libqt5-qtpbfimageformat 
   - libqt5-qtpdf-devel 
   - libqt5-qtpdf-examples 
   - libqt5-qtpdf-imports 
@@ -35240,11 +35240,13 @@ unsorted:
   - syslinux-debuginfo-x86_64 
   - syslinux-x86_64 
   - syslog-ng 
+  - syslog-ng-bpf 
   - syslog-ng-curl 
   - syslog-ng-devel 
   - syslog-ng-geoip 
   - syslog-ng-java 
   - syslog-ng-mqtt 
+  - syslog-ng-opentelemetry 
   - syslog-ng-python 
   - syslog-ng-python-modules 
   - syslog-ng-redis 

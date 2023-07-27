@@ -523,6 +523,7 @@
     <package name="grub2-snapper-plugin" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:expansion -->
     <package name="grub2-systemd-sleep-plugin" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="grub2-x86_64-efi" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
+    <package name="grubby" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="gsettings-backend-dconf" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="gsettings-desktop-schemas" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
     <package name="gsettings-desktop-schemas-lang" supportstatus="unsupported"/> <!-- reason: opensuse_microos:MicroOS-release -->
