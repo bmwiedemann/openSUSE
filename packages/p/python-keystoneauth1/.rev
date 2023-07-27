@@ -343,4 +343,27 @@ update to version 2.12.0
   - Fix linters and bindep on jammy</comment>
     <requestid>1073019</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>44fc69f163b911271293a7b8f046447a</srcmd5>
+    <version>5.2.1</version>
+    <time>1690469446</time>
+    <user>anag+factory</user>
+    <comment>- update to version 5.2.1
+  - Remove last reference to the python six package
+  - Fix up some packaging metadata
+  - Make v3oidcpassword send client_id
+  - Add RFC required headers and data to the request
+
+- update to version 5.2.0
+  - Replace abc.abstractproperty with property and abc.abstractmethod
+  - setup.cfg: Restore python_requires after a typo
+  - Remove six
+  - New auth plugin v3oidcdeviceauthz
+  - Update master for stable/zed
+  - Switch to 2023.1 Python3 unit tests and generic template name
+  - Update master for stable/2023.1
+  - OAuth 2.0 Mutual-TLS Support
+  - Allow federation to work with unversioned auth_url</comment>
+    <requestid>1099313</requestid>
+  </revision>
 </revisionlist>

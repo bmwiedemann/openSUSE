@@ -17,13 +17,13 @@
 
 
 Name:           python-keystoneauth1
-Version:        5.1.2
+Version:        5.2.1
 Release:        0
 Summary:        OpenStack authenticating tools
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/keystoneauth
-Source0:        https://files.pythonhosted.org/packages/source/k/keystoneauth1/keystoneauth1-5.1.2.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/k/keystoneauth1/keystoneauth1-5.2.1.tar.gz
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-betamax
@@ -59,7 +59,6 @@ Requires:       python3-oauthlib
 Requires:       python3-os-service-types >= 1.2.0
 Requires:       python3-requests >= 2.14.2
 Requires:       python3-requests-kerberos
-Requires:       python3-six >= 1.10.0
 Requires:       python3-stevedore >= 1.20.0
 
 %description -n python3-keystoneauth1

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jul 18 16:39:22 UTC 2023 - cloud-devel@suse.de
+
+- update to version 5.2.1
+  - Remove last reference to the python six package
+  - Fix up some packaging metadata
+  - Make v3oidcpassword send client_id
+  - Add RFC required headers and data to the request
+
+-------------------------------------------------------------------
+Mon Jul 17 21:07:53 UTC 2023 - cloud-devel@suse.de
+
+- update to version 5.2.0
+  - Replace abc.abstractproperty with property and abc.abstractmethod
+  - setup.cfg: Restore python_requires after a typo
+  - Remove six
+  - New auth plugin v3oidcdeviceauthz
+  - Update master for stable/zed
+  - Switch to 2023.1 Python3 unit tests and generic template name
+  - Update master for stable/2023.1
+  - OAuth 2.0 Mutual-TLS Support
+  - Allow federation to work with unversioned auth_url
+
+-------------------------------------------------------------------
 Mon Mar  6 15:53:59 UTC 2023 - cloud-devel@suse.de
 
 - update to version 5.1.2
