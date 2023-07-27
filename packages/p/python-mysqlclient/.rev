@@ -204,4 +204,12 @@
 - Use sle15_python_module_pythons</comment>
     <requestid>1095252</requestid>
   </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>7e88bebfced8c265379411d3f26f6146</srcmd5>
+    <version>2.1.1</version>
+    <time>1690469411</time>
+    <user>anag+factory</user>
+    <comment>- Drop sphinx doctrees for reproducible builds</comment>
+    <requestid>1100880</requestid>
+  </revision>
 </revisionlist>

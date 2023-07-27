@@ -72,7 +72,7 @@ This package adds Python 3 support and bug fixes to MySQLdb1.
 %if !%{with test}
 %python_build
 
-sphinx-build -b html doc build/sphinx/html && rm build/sphinx/html/.buildinfo
+sphinx-build -b html doc build/sphinx/html && rm -r build/sphinx/html/.{buildinfo,doctrees}
 %endif
 
 %check
