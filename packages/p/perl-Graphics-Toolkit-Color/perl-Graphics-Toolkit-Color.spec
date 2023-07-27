@@ -18,12 +18,14 @@
 
 %define cpan_name Graphics-Toolkit-Color
 Name:           perl-Graphics-Toolkit-Color
-Version:        1.08
+Version:        1.90.0
 Release:        0
+%define cpan_version 1.09
+Provides:       perl(Graphics::Toolkit::Color) = 1.90.0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Color palette creation helper
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/L/LI/LICHTKIND/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/L/LI/LICHTKIND/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -32,13 +34,19 @@ BuildRequires:  perl(Carp) >= 1.35
 BuildRequires:  perl(Test::More) >= 1.3
 BuildRequires:  perl(Test::Warn) >= 0.30
 Requires:       perl(Carp) >= 1.35
+Provides:       perl(Graphics::Toolkit::Color::Constant) = 1.90.0
+Provides:       perl(Graphics::Toolkit::Color::Value) = 1.90.0
+Provides:       perl(Graphics::Toolkit::Color::Value::HSL) = 1.90.0
+Provides:       perl(Graphics::Toolkit::Color::Value::RGB) = 1.90.0
+Provides:       perl(Graphics::Toolkit::Color::Value::Util) = 1.90.0
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
 Read only color holding objects with no additional dependencies. Create
 them in many different ways (see section _CONSTRUCTOR_). Access its values
-via methods from section _GETTER_ or create related color objects via
-methods listed under _METHODS_.
+via methods from section _GETTER_ or measure differences and create related
+color objects via methods listed under _METHODS_.
 
 Humans access colors on hardware level (eye) in RGB, on cognition level in
 HSL (brain) and on cultural level (language) with names. Having easy access
@@ -46,7 +54,7 @@ to all three and some color math should enable you to get the color palette
 you desire quickly.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
