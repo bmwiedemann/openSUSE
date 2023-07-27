@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Jul 26 10:12:51 UTC 2023 - ecsos@opensuse.org
+
+- Update to version 2.8.3+git.1689949088.0d81144c:
+  * Backport go 1.20.6 to 2.8 (#9944)
+  * Docs : fix promtal typo (#9951) (#9965)
+  * Remove ./tools/fetch-tags invocation from Makefile (#8854) (#9946)
+  * [release-2.8.x] Adding 3 existing maintainers, and our newest one: Ashwanth! (#9744)
+  * query-scheduler: fix query distribution in SSD mode (#9471) (#9637)
+  * [release-2.8.x] Fix Ruler remote write panic (#9695)
+  * [release-2.8.x] prepare changelog for 2.8 release (#8818)
+  * [release-2.8.x] Fix duplicate label values from ingester streams (#9631)
+  * [release-2.8.x] Querier: configurable writeback queue bytes size (#9605)
+  * [release-2.8.x] docs: add memberlist section to the configuration page (#9453)
+  * Promtail: Break on iterate journal failure (#9155) (#9403)
+  * [release-2.8.x] Promtail: Prevent logging errors on normal shutdown (#9402)
+  * Add missing release notes for 2.8.2 (#9389) (#9390)
+
+-------------------------------------------------------------------
+Wed Jul 26 10:11:13 UTC 2023 - ecsos@opensuse.org
+
+- Update to version 2.8.2+git.1683111662.9f809eda:
+  * Pin manifest plugin version (#9381)
+  * Revert "Bump dskit from 528d8a7 to 1725bcc (#9184) (#9250)" (#9382)
+  * Add signature missing to drone pipeline (#9377)
+  * Upgrade to latest security release: go1.20.4 (#9370) (#9375)
+  * [release-2.8.x] Promtail: Add `decompression` configuration (#9350)
+  * Bump dskit from 528d8a7 to 1725bcc (#9184) (#9250)
+  * [release-2.8.x] Mark template as draft to unpublish. (#9286)
+  * Finalize 2.8.1 changelog and release notes (#9269)
+
+-------------------------------------------------------------------
+Wed Jul 26 10:09:25 UTC 2023 - ecsos@opensuse.org
+
+- Update to version 2.8.1+git.1682367724.dd763dcf:
+  * [release-2.8.x] Upgrade alpine 3.16.4 -> 3.16.5 (#9268)
+  * Update CHANGELOG and release notes (#9241)
+  * [release-2.8.x] Prevent redis client from incorrectly choosing cluster mode with local address (#9187)
+  * [release-2.8.x] Update helm and jsonnet for 2.8 release (#9003) (#9145)
+  * [release-2.8.x] expiration: do not drop index if period is a zero value (#9158)
+  * [release-2.8.x] Bump go from 1.20.1 -> 1.20.3 (#9106) (#9116)
+  * [release-2.8.x] Add journald support to Promtail amd64 binary builds (#9104)
+  * Fix CHANGELOG link (#9054)
+  * [release-2.8.x] These features did not make the release (#9043)
+  * [release-2.8.x] add 2.8 release date (#9017)
+  * [release-2.8.x] Add 2.8 release notes (#9014)
+  * [release-2.8.x] Align common instance_addr with memberlist advertise_addr (#9006)
+
+-------------------------------------------------------------------
 Wed Apr 12 06:35:23 UTC 2023 - ecsos@opensuse.org
 
 - Update to version 2.8.0+git.1680557182.90888a0c:
