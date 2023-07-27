@@ -1,7 +1,7 @@
 #
 # spec file for package python-keystoneclient
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           python-keystoneclient
-Version:        4.5.0
+Version:        5.1.0
 Release:        0
 Epoch:          0
 Summary:        Client library for OpenStack Identity API
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-keystoneclient
-Source0:        https://files.pythonhosted.org/packages/source/p/python-keystoneclient/python-keystoneclient-4.5.0.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/python-keystoneclient/python-keystoneclient-5.1.0.tar.gz
 BuildRequires:  openssl
 BuildRequires:  openstack-macros
 BuildRequires:  python3-debtcollector >= 1.2.0
@@ -53,6 +53,7 @@ Requires:       python3-oslo.config >= 5.2.0
 Requires:       python3-oslo.i18n >= 3.15.3
 Requires:       python3-oslo.serialization >= 2.18.0
 Requires:       python3-oslo.utils >= 3.33.0
+Requires:       python3-packaging >= 20.4
 Requires:       python3-requests >= 2.14.2
 Requires:       python3-stevedore >= 1.20.0
 
@@ -71,7 +72,7 @@ Documentation for the client library for interacting with Openstack
 Identity API.
 
 %prep
-%autosetup -p1 -n python-keystoneclient-4.5.0
+%autosetup -p1 -n python-keystoneclient-5.1.0
 %py_req_cleanup
 # disable intersphinx - no network access during build
 echo "intersphinx_mapping = {}" >> doc/source/conf.py
@@ -88,7 +89,7 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %{py3_install}
 
 %check
-python3 -m stestr.cli run
+%{openstack_stestr_run}
 
 %files -n python3-keystoneclient
 %doc README.rst

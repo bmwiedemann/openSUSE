@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jul 26 16:21:03 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1.0:
+  * Switch to 2023.1 Python3 unit tests and generic template name
+  * fix: remove error python2 defense code
+  * Bump tox minversion to 3.18.0
+  * Update python testing as per zed cycle teting runtime
+
+-------------------------------------------------------------------
+Wed Jul 26 16:20:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1.0:
+  * Switch to 2023.1 Python3 unit tests and generic template name
+  * Update master for stable/zed
+  * 5.0.1
+  * fix: remove error python2 defense code
+  * 5.0.0
+  * Bump tox minversion to 3.18.0
+  * Update python testing as per zed cycle teting runtime
+
+-------------------------------------------------------------------
 Tue May 24 21:21:59 UTC 2022 - cloud-devel@suse.de
 
 - update to version 4.5.0

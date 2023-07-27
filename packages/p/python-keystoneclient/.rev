@@ -692,4 +692,25 @@
 - update to version 4.3.0</comment>
     <requestid>979078</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>29af5026f6f77a8af049e19131c61519</srcmd5>
+    <version>5.1.0</version>
+    <time>1690469447</time>
+    <user>anag+factory</user>
+    <comment>- update to 5.1.0:
+  * Switch to 2023.1 Python3 unit tests and generic template name
+  * fix: remove error python2 defense code
+  * Bump tox minversion to 3.18.0
+  * Update python testing as per zed cycle teting runtime
+
+- update to 5.1.0:
+  * Switch to 2023.1 Python3 unit tests and generic template name
+  * Update master for stable/zed
+  * 5.0.1
+  * fix: remove error python2 defense code
+  * 5.0.0
+  * Bump tox minversion to 3.18.0
+  * Update python testing as per zed cycle teting runtime</comment>
+    <requestid>1100899</requestid>
+  </revision>
 </revisionlist>
