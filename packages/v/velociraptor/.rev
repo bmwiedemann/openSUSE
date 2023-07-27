@@ -71,4 +71,12 @@ causing crashes in libbpfgo.</comment>
   building against 16 causes errors</comment>
     <requestid>1085933</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>218fdb78fb0e4ac51268b22992ca4392</srcmd5>
+    <version>unknown</version>
+    <time>1690469591</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1101044</requestid>
+  </revision>
 </revisionlist>

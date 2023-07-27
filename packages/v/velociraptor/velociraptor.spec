@@ -110,11 +110,11 @@ BuildRequires:  libzstd-devel
 BuildRequires:  llvm16
 BuildRequires:  zlib-devel
 %endif
-Requires:       group(velociraptor)
-Requires:       user(velociraptor)
 ExclusiveArch:  x86_64 ppc64le aarch64 s390x
 %if %{build_server}
 BuildRequires:  sysuser-tools
+Requires:       group(velociraptor)
+Requires:       user(velociraptor)
 %{?sysusers_requires}
 %endif
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 18 09:31:19 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- require the group / user only in the server build
+
+-------------------------------------------------------------------
 Wed May 10 00:49:09 UTC 2023 - jeffm@suse.com
 
 - Update to version 0.6.7.5~git81.01be570:
