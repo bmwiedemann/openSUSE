@@ -70,6 +70,7 @@ BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(wayland-protocols)
 Requires:       kirigami2
+Requires:       kirigami-addons
 Requires:       libqt5-qtquickcontrols2
 Requires:       plasma-framework-components
 # kdeconnect-openssh-8.8.patch needs https://github.com/libfuse/sshfs/pull/269,
