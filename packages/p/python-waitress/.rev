@@ -294,4 +294,14 @@
     <comment></comment>
     <requestid>1093051</requestid>
   </revision>
+  <revision rev="30" vrev="6">
+    <srcmd5>2d6bdef621f764b9f15f34450d450cdd</srcmd5>
+    <version>2.1.2</version>
+    <time>1690469408</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1100756 from bmwiedemann
+
+Drop sphinx doctrees for reproducible builds</comment>
+    <requestid>1100878</requestid>
+  </revision>
 </revisionlist>

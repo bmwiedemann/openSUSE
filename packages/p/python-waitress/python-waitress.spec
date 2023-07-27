@@ -127,7 +127,7 @@ This package contains documentation files for %{name}.
 cp %{SOURCE1} docs/
 
 %build
-sphinx-build -b html docs build/sphinx/html && rm build/sphinx/html/.buildinfo
+sphinx-build -b html docs build/sphinx/html && rm -r build/sphinx/html/.{buildinfo,doctrees}
 
 %files %{python_files}
 %license LICENSE.txt

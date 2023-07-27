@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 26 07:18:05 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Drop sphinx doctrees for reproducible builds
+
+-------------------------------------------------------------------
 Sat Jun 10 09:00:11 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Fix build error for waitress:doc
