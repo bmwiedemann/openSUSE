@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 27 07:50:37 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Add pytest74.patch to fix tests with pytest 7.4+
+
+-------------------------------------------------------------------
 Fri Apr 21 12:26:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

@@ -29,6 +29,8 @@ Source:         https://files.pythonhosted.org/packages/source/h/html5lib/html5l
 Patch0:         pytest6.patch
 # https://github.com/html5lib/html5lib-python/issues/541
 Patch1:         python-html5lib-no-mock.patch
+# PATCH-FIX-UPSTREAM https://github.com/html5lib/html5lib-python/pull/570 adapt testsuite to changes in pytest 7.4
+Patch2:         pytest74.patch
 BuildRequires:  %{python_module Genshi}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pytest >= 4.0}
