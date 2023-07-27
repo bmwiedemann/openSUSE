@@ -25,6 +25,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pallets-eco/blinker/
 Source:         https://files.pythonhosted.org/packages/source/b/blinker/blinker-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE no-stdpy-pyc.patch bsc#[0-9]+ mcepl@suse.com
+# Persuade Sphinx not to generate *.pyc files
+Patch0:         no-stdpy-pyc.patch
 BuildRequires:  %{python_module Pallets-Sphinx-Themes}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module pip}

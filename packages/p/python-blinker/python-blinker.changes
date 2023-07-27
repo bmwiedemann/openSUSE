@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 26 22:09:11 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add no-stdpy-pyc.patch which makes Sphinx not to generate
+  *.pyc files for the Python interpreter it uses for generating
+  documentation.
+
+-------------------------------------------------------------------
 Tue May  9 06:25:49 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 1.6.2:

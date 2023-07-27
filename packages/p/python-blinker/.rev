@@ -178,4 +178,15 @@
 </comment>
     <requestid>1085626</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>584efd9991d371f323d16e0462062e8b</srcmd5>
+    <version>1.6.2</version>
+    <time>1690469392</time>
+    <user>anag+factory</user>
+    <comment>- Add no-stdpy-pyc.patch which makes Sphinx not to generate
+  *.pyc files for the Python interpreter it uses for generating
+  documentation.
+</comment>
+    <requestid>1100942</requestid>
+  </revision>
 </revisionlist>

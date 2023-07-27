@@ -1,0 +1,18 @@
+---
+ docs/conf.py |    5 +++++
+ 1 file changed, 5 insertions(+)
+
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -1,6 +1,11 @@
++import sys
++
+ from pallets_sphinx_themes import get_version
+ from pallets_sphinx_themes import ProjectLink
+ 
++# https://stackoverflow.com/q/34025113/164233
++sys.dont_write_bytecode = True
++
+ project = "Blinker"
+ copyright = "2010 Jason Kirtland"
+ release, version = get_version("blinker", placeholder=None)
