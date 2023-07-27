@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Mon Jul 24 20:22:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.5:
+  * Added a bit more \`project\_urls\`
+  * Check for github action updates monthly
+  * Improve handling nosec for multi-line strings
+  * Improve detecting SQL injections in f-strings
+  * Correct build status badge in README
+  * Fix breaking build due to new tox
+  * DOC: Add explanation on how to use pre-commit with config
+    file
+  * Add official Python 3.11 support
+  * remove py2 exec example in docs
+  * Typo fix
+  * [docs] Mention \`exclude\_dirs\` option available in TOML and
+    YAML
+  * Fix AttributeError on detect of tuple assign condition
+  * Fix json and yaml formatters to respect num lines
+  * Fixup some invalid pickle testing
+  * Pass correct number of arguments to match the \`%s\`
+    placeholders.
+  * Remove python 2 reference in docs
+  * Fix filename of B202 in docs
+  * weak\_cryptographic\_key assumes positional arg
+  * Check for deprecated TLS 1.1
+  * Adding tarfile.extractall() plugin with examples
+  * Fix issue #453 jinja2 template select\_autoescape when using
+    jinja2.select\_autoescape
+  * Fix a false positive condition yaml\_load
+  * Add case for global exec
+  * Docs for request without timeout has dead link
+  * Blacklist pandas read\_pickle and add functional test for it
+  * Enhancement Proposal: Plugin "assert\_used" config-skip
+    snippet
+  * Add end\_col\_offset if available
+  * Fix reading the number argument from config file
+  * add jsonpickle deserialization blacklist
+  * Add some missing curve types
+  * Remove invalid checking on hashlib
+  * Avoid redundant message if debug on
+  * Update version of dependency-review-action
+  * Add releases link in "Version control integration"
+  * Add another bad example of yaml load
+  * Specify semver range for Python 3.11
+  * Make small fixes in docs
+  * Test plugin listing incorrectly pointing b612 to plugin ref
+    of b1022
+  * Close the <b> tag in HTML formatter
+  * Add dependency review action
+  * Update action versions in Actions workflows (#890)
+  * Add Discord link to README
+  * Add myself to sponsor list
+  * Test against Python 3.11
+  * Corrected documentation on configuration
+  * Remove redundant pip line
+  * Removal of ghugo
+  * Adding logging.config.listen() plugin with examples
+  * Add a Discord link to the docs
+  * Add request for feedback via 👍
+  * Remove redundant word Bandit in titles of sections
+  * Add license and contributing links to docs
+  * Fix for build breaks in format job
+  * add check for "requests" calls without timeout
+  * Fix up B109 and B111 removed plugins docs
+  * Replace \`toml\` with \`tomli\`
+  * Make use of rich for the progress bar
+  * Add doc for hashlib plugin
+  * Add the httpx module check for verify
+  * Indiciate hash type in message
+  * Remove blacklist call check for os.tempnam
+  * Removal of blacklist call B309 httpsconnection
+  * Add classifier to indicate Py3 only
+  * Fix line range using Python 3.8 end\_lineno
+  * Group location line with code output
+  * Use a constant for weak hashes
+  * Bad link to screen shot
+  * Add an example screen shot of Bandit to README
+
+-------------------------------------------------------------------
 Thu Oct 27 11:16:40 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove not needed python-six dependency
