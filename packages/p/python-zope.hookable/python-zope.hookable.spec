@@ -74,7 +74,7 @@ rm -rf zope.hookable.egg-info
 %build
 %if !%{with test}
 %python_build
-sphinx-build -b html docs build/sphinx/html && rm build/sphinx/html/.buildinfo build/sphinx/html/objects.inv
+sphinx-build -b html docs build/sphinx/html && rm -r build/sphinx/html/.{buildinfo,doctrees} build/sphinx/html/objects.inv
 %endif
 
 %install
