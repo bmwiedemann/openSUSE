@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 27 12:44:56 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.4.0
+  * New Resolution system. You can configure a relative resolution
+    for the launcher but also for every game.
+- Update to version 3.3.0
+  * Added Support for Keen 1 version 1.34
+  * Added Support for Keen 6 version 1.50
+- Drop not longer needed patch:
+  * 0001-build-resolve-compile-error-with-gcc-13.patch
+
+-------------------------------------------------------------------
 Tue Mar 28 09:18:57 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-build-resolve-compile-error-with-gcc-13.patch

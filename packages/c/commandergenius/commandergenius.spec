@@ -17,7 +17,7 @@
 
 
 Name:           commandergenius
-Version:        3.2.0
+Version:        3.4.0
 Release:        0
 Summary:        An open clone of the Commander Keen engines
 License:        GPL-2.0-only
@@ -26,7 +26,6 @@ URL:            http://clonekeenplus.sf.net/
 #Git-Clone:     https://gitlab.com/Dringgstein/Commander-Genius
 Source:         https://gitlab.com/Dringgstein/Commander-Genius/-/archive/v%version/Commander-Genius-v%version.tar.bz2
 Patch1:         fix-icons.patch
-Patch2:         0001-build-resolve-compile-error-with-gcc-13.patch
 BuildRequires:  boost-devel
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
