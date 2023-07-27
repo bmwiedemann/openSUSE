@@ -161,6 +161,9 @@ Patch35:        support-expat-CVE-2022-25236-patched.patch
 # PATCH-FIX-UPSTREAM 98437-sphinx.locale._-as-gettext-in-pyspecific.patch gh#python/cpython#98366 mcepl@suse.com
 # this patch makes things totally awesome
 Patch37:        98437-sphinx.locale._-as-gettext-in-pyspecific.patch
+# PATCH-FIX-UPSTREAM gh-78214-marshal_stabilize_FLAG_REF.patch bsc#1213463 mcepl@suse.com
+# marshal: Stabilize FLAG_REF usage
+Patch39:        gh-78214-marshal_stabilize_FLAG_REF.patch
 # PATCH-FIX-UPSTREAM 99366-patch.dict-can-decorate-async.patch bsc#[0-9]+ mcepl@suse.com
 # Patch for gh#python/cpython#98086
 Patch40:        99366-patch.dict-can-decorate-async.patch
@@ -425,6 +428,7 @@ other applications.
 %endif
 %patch35 -p1
 %patch37 -p1
+%patch39 -p1
 %patch40 -p1
 %if 0%{?sle_version} && 0%{?sle_version} <= 150500
 %patch41 -p1

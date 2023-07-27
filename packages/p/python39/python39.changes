@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 19 11:15:39 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add gh-78214-marshal_stabilize_FLAG_REF.patch to marshal.c for
+  stabilizing FLAG_REF usage (required for reproduceability;
+  bsc#1213463).
+
+-------------------------------------------------------------------
+Fri Jul 14 10:25:54 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Revert faulty fix for CVE-2023-27043 (gh#python/cpython#106669)
+
+-------------------------------------------------------------------
 Fri Jun 30 20:23:43 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Add downport-Sphinx-features.patch to make documentation

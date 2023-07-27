@@ -899,4 +899,16 @@
     lock.</comment>
     <requestid>1096213</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>c1c6c4d51e643eee41fdbe121d68b2c6</srcmd5>
+    <version>3.9.17</version>
+    <time>1690469391</time>
+    <user>anag+factory</user>
+    <comment>- Add gh-78214-marshal_stabilize_FLAG_REF.patch to marshal.c for
+  stabilizing FLAG_REF usage (required for reproduceability;
+  bsc#1213463).
+- Revert faulty fix for CVE-2023-27043 (gh#python/cpython#106669)
+</comment>
+    <requestid>1100886</requestid>
+  </revision>
 </revisionlist>
