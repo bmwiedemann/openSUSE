@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Sat Jul 15 15:04:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.4.0:
+  *  Added
+    :func:`ExceptionInfo.from_exception()
+    <pytest.ExceptionInfo.from_exception>`, a simpler way to
+    create an :class:`~pytest.ExceptionInfo` from an exception.
+    This can replace :func:`ExceptionInfo.from_exc_info()
+    <pytest.ExceptionInfo.from_exc_info()>` for most uses.
+  * Update test log report annotation
+    to named tuple and fixed inconsistency in docs for
+    :hook:`pytest_report_teststatus` hook.
+  * When an exception traceback to be
+    displayed is completely filtered out (by mechanisms such as
+    ``__tracebackhide__``, internal frames, and similar), now
+    only the exception string and the following message are
+    shown:
+      "All traceback entries are hidden. Pass `--full-trace` to see
+      hidden and internal frames.".
+  * Improved verbose output (``-vv``)
+    of ``skip`` and ``xfail`` reasons by performing text wrapping
+    while leaving a clear margin for progress output.
+  * Added ``TerminalReporter.wrap_write()`` as a helper for that.
+  * Added handling of ``%f``
+    directive to print microseconds in log format options, such
+    as ``log-date-format``.
+  * Added the underlying exception to the cache provider's path
+    creation and write warning messages.
+  * Added warning when :confval:`testpaths` is set, but paths are
+    not found by glob.
+    In this case, pytest will fall back to searching from the
+    current directory.
+  * When `--confcutdir` is not
+    specified, and there is no config file present, the conftest
+    cutoff directory (`--confcutdir`) is now set to the
+    :ref:`rootdir <rootdir>`.
+  * Previously in such cases, `conftest.py` files would be probed
+    all the way to the root directory of the filesystem.
+  * If you are badly affected by this change, consider adding an
+    empty config file to your desired cutoff directory, or
+    explicitly set `--confcutdir`.
+  * The :confval:`norecursedirs`
+    check is now performed in a :hook:`pytest_ignore_collect`
+    implementation, so plugins can affect it.
+  * If after updating to this version you see that your
+    `norecursedirs` setting is not being respected,
+  * it means that a conftest or a plugin you use has a bad
+    `pytest_ignore_collect` implementation.
+  * Most likely, your hook returns `False` for paths it does not
+    want to ignore which ends the processing and doesn't allow
+    other plugins, including pytest itself, to ignore the path.
+  * The fix is to return `None` instead of `False` for paths your
+    hook doesn't want to ignore.
+  * :func:`caplog.set_level()
+    <pytest.LogCaptureFixture.set_level>` and
+    :func:`caplog.at_level() <pytest.LogCaptureFixture.at_level>`
+    will temporarily enable the requested ``level`` if ``level``
+    was disabled globally via ``logging.disable(LEVEL)``.
+
+-------------------------------------------------------------------
 Mon Jun 19 20:12:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.3.2:
