@@ -91,4 +91,14 @@
   * Add support for Pytest’s ``--header`` option (thanks @wiresv)</comment>
     <requestid>1084892</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>60dc88ea7c25c689968e1604a89ce3d5</srcmd5>
+    <version>0.9.7</version>
+    <time>1690469610</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1101070 from ecsos
+
+- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1101083</requestid>
+  </revision>
 </revisionlist>
