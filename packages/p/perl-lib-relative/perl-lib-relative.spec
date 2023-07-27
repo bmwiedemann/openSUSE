@@ -1,7 +1,7 @@
 #
 # spec file for package perl-lib-relative
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,21 @@
 
 %define cpan_name lib-relative
 Name:           perl-lib-relative
-Version:        1.001
+Version:        1.2.0
 Release:        0
+%define cpan_version 1.002
+Provides:       perl(lib::relative) = 1.2.0
 License:        Artistic-2.0
 Summary:        Add paths relative to the current file to @INC
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/D/DB/DBOOK/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/D/DB/DBOOK/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(File::Temp) >= 0.19
 BuildRequires:  perl(Test::More) >= 0.88
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -55,7 +58,7 @@ For cases where this module cannot be loaded beforehand, the last section
 of the "SYNOPSIS" can be copy-pasted into a file to perform the same task.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -70,7 +73,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CONTRIBUTING.md prereqs.yml README
+%doc Changes CONTRIBUTING.md README
 %license LICENSE
 
 %changelog

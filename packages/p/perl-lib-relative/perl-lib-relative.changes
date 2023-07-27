@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 24 03:09:04 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.002
+   see /usr/share/doc/packages/perl-lib-relative/Changes
+
+  1.002     2023-07-23 21:17:44 EDT
+    - Fix checking whether symlinks are available for testing on Win32 and msys (#4, genio)
+
+-------------------------------------------------------------------
 Thu Jun 16 03:09:18 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.001
