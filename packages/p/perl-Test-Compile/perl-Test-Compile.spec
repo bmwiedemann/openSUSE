@@ -18,7 +18,7 @@
 
 %define cpan_name Test-Compile
 Name:           perl-Test-Compile
-Version:        3.2.2
+Version:        3.3.1
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Assert that your Perl files compile OK
@@ -34,6 +34,9 @@ BuildRequires:  perl(parent) >= 0.225
 BuildRequires:  perl(version) >= 0.77
 Requires:       perl(Exporter) >= 5.68
 Requires:       perl(parent) >= 0.225
+Provides:       perl(Test::Compile) = 3.3.1
+Provides:       perl(Test::Compile::Internal) = 3.3.1
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -60,14 +63,14 @@ all Perl files in a module distribution:
 %autosetup  -n %{cpan_name}-v%{version}
 
 %build
-perl Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
