@@ -1645,4 +1645,22 @@
   * LVM-activate: failover with missing PVs</comment>
     <requestid>1083864</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>7af858921b9ffc8f6f242ee117bbcf1e</srcmd5>
+    <version>4.12.0+git50.5c26404e</version>
+    <time>1690469428</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.12.0+git50.5c26404e:
+  * Filesystem: fix incorrect variable name for signal_delay default in metadata
+  * Delay: remove statement about defaulting to &quot;startdelay&quot; value if not specified
+  * Filesystem: dont use boolean type for non-boolean parameters
+  * Filesystem: list_mounts: fix mount command output parsing
+  * Delay: increase stop, status and monitor timeouts to 40s to avoid failing with default values
+  * Filesystem: improve stop-action and allow setting term/kill signals and signal_delay for large filesystems
+  * findif.sh: fix table parameter so it uses main table by default
+  * mysql: fix promotion_score bouncing between ~3600 and 1 on demoted nodes
+  * spec: Migrate to SPDX license
+  * Filesystem: create systemd drop-in for network filesystems</comment>
+    <requestid>1100831</requestid>
+  </revision>
 </revisionlist>
