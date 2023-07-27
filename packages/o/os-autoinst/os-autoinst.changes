@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 26 22:03:15 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1690288691.492e561:
+  * Revert "Use tempfile TMPDIR option"
+  * Make it possible to run more than one python test module
+  * Update Perl::Tidy to 20230701
+  * lockapi: add timeout parameter to barrier_wait()
+  * consoles/{serial_screen,virtio_terminal}: Add hint about testing
+
+-------------------------------------------------------------------
 Tue Jul 18 18:20:22 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1689704414.b3077ad:
