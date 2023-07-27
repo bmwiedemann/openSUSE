@@ -74,4 +74,12 @@
     <comment></comment>
     <requestid>1100208</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3541c6048de9178dd1238415f5f4f078</srcmd5>
+    <version>2023.7.1</version>
+    <time>1690469523</time>
+    <user>anag+factory</user>
+    <comment>mrueckert wrote (1100934),please add the missing newlines,,https://en.opensuse.org/openSUSE:Creating_a_changes_file_(RPM)</comment>
+    <requestid>1100959</requestid>
+  </revision>
 </revisionlist>

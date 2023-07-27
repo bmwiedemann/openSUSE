@@ -1,5 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 26 20:19:05 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 2023.7.1
+  * Remove sensitive data from memory when reloading the application
+
+-------------------------------------------------------------------
 Sun Jul 23 14:53:28 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
 - New upstream release 2023.7.0
   * Login with device enabled for self-host
   * Added new forwarder (Forward Email)
@@ -8,23 +15,27 @@ Sun Jul 23 14:53:28 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 -------------------------------------------------------------------
 Thu Jun 22 17:00:22 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
 - New upstream release 2023.5.1
   * Fix bug when the user selects a region it will set baseUrl in environment service
 - Revert build_rustflags hack (boo#1212226)
 
 -------------------------------------------------------------------
 Mon Jun 12 15:08:13 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
 - Replace deprecated rust-packaging with cargo-packaging (boo#1211624)
 - Fix unresolvable build on Fedora
 
 -------------------------------------------------------------------
 Wed May 31 17:04:02 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
 - New upstream release 2023.5.0
   * Updated interface for selecting self-hosted environment
 - Add SingleMainWindow to .desktop file.
 
 -------------------------------------------------------------------
 Wed Apr 26 20:36:50 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
 - New upstream release 2023.4.0
   * Send service refactor
   * Updated help links
@@ -34,22 +45,26 @@ Wed Apr 26 20:36:50 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 -------------------------------------------------------------------
 Fri Apr  7 09:59:54 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
 - New upstream release 2023.3.2
   * Copy send link fix
 
 -------------------------------------------------------------------
 Tue Mar 28 04:57:18 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
 - New upstream release 2023.3.1
   * Fix Vault Items with null Folder Value not Handled Correctly
 
 -------------------------------------------------------------------
 Wed Mar 22 19:34:04 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
 - New upstream release 2023.3.0
   * Restyle generator panel to be panel-like and avoid overflowing
 - Use obs-scm service for downloading clean tarball and package node vendor separately.
 
 -------------------------------------------------------------------
 Sat Feb 18 21:37:59 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
 - Remove use of local-npm-proxy and cleanup tarball from prebuilt blobs
   * remove-esbuild-version-check.patch
 - Replace argon2-browser which was not built from source with node-argon2
@@ -64,6 +79,7 @@ Sat Feb 18 21:37:59 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 -------------------------------------------------------------------
 Fri Feb 17 16:37:23 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
 - New upstream release 2023.2.0
   * Expand passwordless login support to desktop and add login with device option
   * Add login request notifications
@@ -73,6 +89,7 @@ Fri Feb 17 16:37:23 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 -------------------------------------------------------------------
 Wed Jan 11 16:23:02 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
 - New upstream release 2023.1.0
   * Bug fix for password generator not updating after settings change
   * Re-order settings for browser integrations
@@ -88,17 +105,20 @@ Wed Jan 11 16:23:02 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 -------------------------------------------------------------------
 Wed Jan  4 23:57:58 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
 - Fix npm crash causing broken RPMs (missing files) getting built
 - Correct wrong cpu tuning for rust code on ix86
 - Remove hardcoded list of architectures from desktop_native-rust-arch.patch
 
 -------------------------------------------------------------------
 Wed Dec 14 20:57:18 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+
 - New upstream release 2022.12.0
   * no changelog given by upstream
 
 -------------------------------------------------------------------
 Tue Nov 29 19:59:27 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+
 - New upstream release 2022.11.0
   * Updated login flow that splits username and master password into separate pages
   * Updated styles for selects and form groups for accessibility
@@ -109,11 +129,13 @@ Tue Nov 29 19:59:27 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 -------------------------------------------------------------------
 Mon Oct 24 17:15:24 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+
 - New upstream release 2022.10.1
   * Correct a visual bug involving truncation of ciphers.
 
 -------------------------------------------------------------------
 Thu Oct 13 12:25:47 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+
 - New upstream release 2022.10.0
   * DuckDuckGo browser integration
   * Added DuckDuckGo to forwarded email providers list
@@ -125,20 +147,24 @@ Thu Oct 13 12:25:47 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 -------------------------------------------------------------------
 Mon Oct  3 05:14:00 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+
 - Fix unsatisfiable requirment on Fedora
 
 -------------------------------------------------------------------
 Thu Sep 15 17:14:43 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 2022.9.1
+
 - New upstream release 2022.9.1
   * no user-visible changes
 
 -------------------------------------------------------------------
 Wed Sep  7 18:48:17 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 2022.9.0
+
 - New upstream release 2022.9.0
   * Major rewrite of the application in Rust.
 
 -------------------------------------------------------------------
 Fri Aug 12 21:42:04 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 2022.8.1
+
 - New upstream release 2022.8.1
   * Add ability to delete user account
 - New upstream release 2022.8.0
@@ -150,21 +176,25 @@ Fri Aug 12 21:42:04 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 2022.8.1
 
 -------------------------------------------------------------------
 Tue Jul 12 05:04:31 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 2022.6.2
+
 - New upstream release 2022.6.2
   * No user-visible changes
 
 -------------------------------------------------------------------
 Wed Jun 29 17:31:20 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 2022.6.0
+
 - New upstream release 2022.6.0
   * Vault timeout fix that requires a minimum of 1 min lockout
 
 -------------------------------------------------------------------
 Sat Jun  4 14:43:35 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+
 - Do not use electron-builder, instead install dependencies manually
 - Replace remove-postinstallscript.patch with more comprehensive remove-unnecessary-deps.patch to trim down unnecessary vendored deps
 
 -------------------------------------------------------------------
 Thu Jun  2 09:39:47 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 2022.05.0
+
 - New upstream URL and changed tarball structure (upstream migrated to monorepo)
 - New upstream release
   * no changelog provided
@@ -183,15 +213,18 @@ Thu Jun  2 09:39:47 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 2022.05.
 
 -------------------------------------------------------------------
 Sun May 29 16:16:00 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+
 - Remove spurious `prebuild-install` copy and other dev files from the package.
 
 -------------------------------------------------------------------
 Mon May  2 14:14:41 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+
 - [LEGAL] Do not use vendored app-builder binary which has no corresponding source
 - Patch electron-rebuild to remove unused lzma-native dependency
 
 -------------------------------------------------------------------
 Mon Apr 25 20:44:01 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 1.33.0
+
 - New upstream release
   * Accessibility update on “Generator” to announce slider element when clicked with assistive technologies
 - Update jslib
@@ -200,19 +233,23 @@ Mon Apr 25 20:44:01 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 1.33.0
 
 -------------------------------------------------------------------
 Fri Apr  8 16:14:13 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+
 - Remove remove-windows-security-credentials.patch and replace it with a proper fix
 
 -------------------------------------------------------------------
 Thu Apr  7 17:47:46 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+
 - Use woff font instead of woff2 because woff2 support removed in Electron 18
 - Mark package as binary compatible with Electron 17.0 – 18.x
 
 -------------------------------------------------------------------
 Thu Mar 17 12:00:59 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com>
+
 - Disallow installing on earlier electron version than the one the RPM was built with.
 
 -------------------------------------------------------------------
 Wed Mar 16 19:54:35 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 1.32.0
+
 - New upstream release
   * Introduce captcha upon 5 failed login attempts
 - Update jslib
@@ -221,6 +258,7 @@ Wed Mar 16 19:54:35 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 1.32.0
 
 -------------------------------------------------------------------
 Tue Feb 15 16:28:44 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 1.31.3
+
 - New upstream release
   * No user visible changes.
 - Update jslib
@@ -230,6 +268,7 @@ Tue Feb 15 16:28:44 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 1.31.3
 
 -------------------------------------------------------------------
 Sun Feb 13 15:42:36 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 1.31.2
+
 - Add Security-upgrade-keytar.patch
   * SNYK-JS-SIMPLEGET-2361683 / CVE-2022-0355
     Exposure of Sensitive Information to an Unauthorized Actor in NPM simple-get prior to 4.0.1.
@@ -245,12 +284,14 @@ Sun Feb 13 15:42:36 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 1.31.2
 
 -------------------------------------------------------------------
 Sat Feb 12 11:42:32 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 1.31.2
+
 - New upstream release
   * No user visible changes.
 - Update jslib
 
 -------------------------------------------------------------------
 Fri Feb 11 20:43:36 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 1.31.1
+
 - New upstream release
   * No user visible changes.
 - Update jslib
@@ -259,6 +300,7 @@ Fri Feb 11 20:43:36 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 1.31.1
 
 -------------------------------------------------------------------
 Fri Feb 11 14:47:01 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 1.31.0
+
 - New upstream release
   * Account switching!
   * Icon updates
@@ -280,6 +322,7 @@ Fri Feb 11 14:47:01 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 1.31.0
 
 -------------------------------------------------------------------
 Fri Jan 28 15:25:25 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 1.30.0
+
 - Clean up spec file
 - Adjust bump-node-to-16.patch to more closely match upstream and avoid dependency mismatch
 - Use nodejs-electron-devel instead of providing vendored headers
@@ -291,6 +334,7 @@ Fri Jan 28 15:25:25 UTC 2022 - Bruno Pitrus <brunopitrus@hotmail.com> - 1.30.0
 
 -------------------------------------------------------------------
 Tue Dec 28 00:00:00 UTC 2021 - Bruno Pitrus <brunopitrus@hotmail.com> - 1.30.0
+
 - Initial version
 - Inspired by the Arch Linux package by prozum
 - Bump node version to 16 per upstream commit https://github.com/bitwarden/desktop/commit/5865f08b37d688ee057e82dd7acf90641b1978f5
