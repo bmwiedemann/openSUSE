@@ -142,4 +142,11 @@
     <comment></comment>
     <requestid>1099915</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>669d819ec1f12b6ffe263a839ed40c0b</srcmd5>
+    <version>1.4</version>
+    <time>1690460004</time>
+    <user>anag+factory</user>
+    <comment>https://bugzilla.suse.com/show_bug.cgi?id=1213712</comment>
+  </revision>
 </revisionlist>
