@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jul 27 06:30:45 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.9:
+  * Bugfixes
+    - PICARD-2011 - "RuntimeError: dictionary changed size during
+      iteration" in metadatabox
+    - PICARD-2685 - Moving files between tracks looses AcoustID
+      fingerprint and ReplayGain tags
+    - PICARD-2689 - If the first dragged element is not visible an
+      empty rectangle is shown during drag
+  * Improvements
+    - PICARD-2680 - Modal first use and file save confirmation dialogs
+    - PICARD-2681 - Revise wording of first use and file save
+      confirmation dialogs
+
+-------------------------------------------------------------------
 Mon Jun 19 18:51:36 UTC 2023 - Benjamin Greiner <code@bnavigator.de>
 
 - Remove obsolete python-sip (v4) module from BuildRequires
