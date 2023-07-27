@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 25 12:42:51 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.0.1
+  * Continue with the ever shifting sands of pytest APIs, this time 
+    appeasing warnings from pytest 7 that when fixed break compatibility 
+    with pytest 6.
+- Drop python-sybil-fix-ordering.diff
+- Add pytest74.patch to support pytest 7.4
+
+-------------------------------------------------------------------
 Tue Jun 13 11:23:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - tag sle15 for new python stack

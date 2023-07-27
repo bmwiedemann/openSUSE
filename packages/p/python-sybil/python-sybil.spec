@@ -18,13 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sybil
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        Automated testing of examples in documentation
 License:        MIT
 URL:            https://github.com/cjw296/sybil
 Source:         https://files.pythonhosted.org/packages/source/s/sybil/sybil-%{version}.tar.gz
-Patch0:         python-sybil-fix-ordering.diff
+#PATCH-FIX-UPSTREAM https://github.com/simplistix/sybil/commit/df0d221c1d9da1454a5ef7fd72675d8d43b96eb0 Deal with more pytest internals changing
+Patch:          pytest74.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 6.2}
 BuildRequires:  %{python_module setuptools-git}
