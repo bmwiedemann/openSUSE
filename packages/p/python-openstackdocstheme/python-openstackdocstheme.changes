@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 17 21:04:30 UTC 2023 - cloud-devel@suse.de
+
+- update to version 3.1.1
+  - Remove errant character
+  - Replace ampersand with HTML characters
+  - Remove nested 'li'
+  - Remove invalid attributes
+  - Remove 'type' attribute of <script> element
+
+-------------------------------------------------------------------
 Mon Mar  6 15:37:43 UTC 2023 - cloud-devel@suse.de
 
 - update to version 3.1.0

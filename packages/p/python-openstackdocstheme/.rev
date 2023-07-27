@@ -346,4 +346,17 @@
   - Only hide top-level duplicated title</comment>
     <requestid>1073025</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>a5ae40be86942024287f0710f34509df</srcmd5>
+    <version>3.1.1</version>
+    <time>1690469444</time>
+    <user>anag+factory</user>
+    <comment>- update to version 3.1.1
+  - Remove errant character
+  - Replace ampersand with HTML characters
+  - Remove nested 'li'
+  - Remove invalid attributes
+  - Remove 'type' attribute of &lt;script&gt; element</comment>
+    <requestid>1099139</requestid>
+  </revision>
 </revisionlist>
