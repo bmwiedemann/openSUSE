@@ -17,7 +17,7 @@
 
 
 %define rev 5096047f90a1f6a74ceb250aef6243e144170f92
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-pybluez
 Version:        0.23+git%{rev}
 Release:        0

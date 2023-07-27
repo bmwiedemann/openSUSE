@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 27 08:26:16 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Fri Feb 25 20:36:44 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Deduplicate files in python_sitearch.
