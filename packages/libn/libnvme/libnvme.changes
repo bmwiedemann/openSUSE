@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 27 13:10:34 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Fix build with meson 1.2.0 
+
+-------------------------------------------------------------------
 Fri Mar 31 15:38:35 UTC 2023 - Daniel Wagnrer <daniel.wagner@suse.com>
 
 - Update to version 1.4:

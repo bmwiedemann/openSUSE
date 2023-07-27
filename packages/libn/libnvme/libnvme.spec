@@ -113,5 +113,6 @@ export KBUILD_BUILD_TIMESTAMP=@${SOURCE_DATE_EPOCH:-$(date +%s)}
 %{python3_sitearch}/libnvme/*.so
 %{python3_sitearch}/libnvme/__init__.py
 %{python3_sitearch}/libnvme/nvme.py
+%pycache_only %{python3_sitearch}/libnvme/__pycache__
 
 %changelog
