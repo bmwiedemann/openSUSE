@@ -128,4 +128,12 @@
 </comment>
     <requestid>1098033</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>94c931b8f6ab1da9d305bc00cade9ae8</srcmd5>
+    <version>21</version>
+    <time>1690469603</time>
+    <user>anag+factory</user>
+    <comment>- mark as python311 on sle15 as it requires &gt;= 3.8</comment>
+    <requestid>1101047</requestid>
+  </revision>
 </revisionlist>

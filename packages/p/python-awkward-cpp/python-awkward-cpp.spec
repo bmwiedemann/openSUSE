@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-awkward-cpp
 Version:        21
 Release:        0
