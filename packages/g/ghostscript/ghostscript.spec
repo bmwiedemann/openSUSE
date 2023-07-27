@@ -65,6 +65,17 @@ Patch102:       CVE-2023-28879.patch
 # and https://bugzilla.suse.com/show_bug.cgi?id=1212711
 # "permission validation mishandling for pipe devices (with the %pipe% prefix or the | pipe character prefix)"
 Patch103:       CVE-2023-36664.patch
+# Patch104 CVE-2023-38559.patch is for Ghostscript-9.56.1 from
+# https://git.ghostscript.com/?p=ghostpdl.git;a=commitdiff;h=d81b82c70bc1
+# that fixes CVE-2023-38559
+# "out of bounds read devn_pcx_write_rle() could result in DoS"
+# see https://bugzilla.suse.com/show_bug.cgi?id=1213637
+# and https://bugs.ghostscript.com/show_bug.cgi?id=706897
+# which is in base/gdevdevn.c the same issue
+# "ordering in if expression to avoid out-of-bounds access"
+# as the already fixed CVE-2020-16305 in devices/gdevpcx.c
+# see https://bugs.ghostscript.com/show_bug.cgi?id=701819
+Patch104:       CVE-2023-38559.patch
 BuildRequires:  freetype2-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  liblcms2-devel
@@ -281,6 +292,17 @@ This package contains the development files for Ghostscript.
 # and https://bugzilla.suse.com/show_bug.cgi?id=1212711
 # "permission validation mishandling for pipe devices (with the %pipe% prefix or the | pipe character prefix)"
 %patch103
+# Patch104 CVE-2023-38559.patch is for Ghostscript-9.56.1 from
+# https://git.ghostscript.com/?p=ghostpdl.git;a=commitdiff;h=d81b82c70bc1
+# that fixes CVE-2023-38559
+# "out of bounds read devn_pcx_write_rle() could result in DoS"
+# see https://bugzilla.suse.com/show_bug.cgi?id=1213637
+# and https://bugs.ghostscript.com/show_bug.cgi?id=706897
+# which is in base/gdevdevn.c the same issue
+# "ordering in if expression to avoid out-of-bounds access"
+# as the already fixed CVE-2020-16305 in devices/gdevpcx.c
+# see https://bugs.ghostscript.com/show_bug.cgi?id=701819
+%patch104
 # Remove patch backup files to avoid packaging
 # cf. https://build.opensuse.org/request/show/581052
 rm -f Resource/Init/*.ps.orig

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 26 09:35:33 UTC 2023 - Johannes Meixner <jsmeix@suse.com>
+
+- CVE-2023-38559.patch fixes CVE-2023-38559
+  "out of bounds read devn_pcx_write_rle() could result in DoS"
+  see bsc#1213637
+  and https://bugs.ghostscript.com/show_bug.cgi?id=706897
+  which is in base/gdevdevn.c the same issue
+  "ordering in if expression to avoid out-of-bounds access"
+  as the already fixed CVE-2020-16305 in devices/gdevpcx.c
+  see https://bugs.ghostscript.com/show_bug.cgi?id=701819
+
+-------------------------------------------------------------------
 Tue Jul  4 06:16:33 UTC 2023 - Johannes Meixner <jsmeix@suse.com>
 
 - CVE-2023-36664.patch fixes CVE-2023-36664
