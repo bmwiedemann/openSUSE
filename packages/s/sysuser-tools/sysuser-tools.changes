@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 18 18:18:18 UTC 2023 - olaf@aepfle.de
+
+- Version 3.2
+- update sysusers_requires to request sysuser-shadow 3.2
+- Use TAB consistently for indention in sysusers2shadow.sh
+- This pkg needs to follow behavior which is described in sysusers.d(5).
+  Always create a system group of the same name as the system user,
+  even if the user already exists. (bsc#1205161, bsc#1207778, bsc#1213240)
+
+-------------------------------------------------------------------
 Mon Jul 17 17:17:17 UTC 2023 - olaf@aepfle.de
 
 - Add "quilt setup" friendly hint to %sysusers_requires usage
@@ -14,6 +24,12 @@ Tue Sep  6 15:49:48 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 Tue Feb  1 12:58:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - invoke bash for bash scripts (bsc#1195391) 
+
+-------------------------------------------------------------------
+Fri Nov 26 09:43:02 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Disable systemd-sysuser on SLE15 to stay compatible
+  (disable-systemd-sysusers.patch)
 
 -------------------------------------------------------------------
 Wed Sep  8 09:12:05 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>

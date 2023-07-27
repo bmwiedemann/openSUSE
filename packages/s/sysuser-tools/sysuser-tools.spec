@@ -17,7 +17,7 @@
 
 
 Name:           sysuser-tools
-Version:        3.1
+Version:        3.2
 Release:        0
 Summary:        Auto provides for system users
 License:        MIT
@@ -27,6 +27,7 @@ Source1:        sysusers.attr
 Source2:        sysusers-generate-pre
 Source3:        macros.sysusers
 Source4:        sysusers2shadow.sh
+Patch:          disable-systemd-sysusers.patch
 BuildArch:      noarch
 Requires:       sysuser-shadow
 #!BuildIgnore:  sysuser-shadow
@@ -56,6 +57,9 @@ and groups from it like systemd-sysusers would do.
 
 %prep
 %setup -qcT
+%if 0%{?suse_version} <= 1500
+patch < %_sourcedir/disable-systemd-sysusers.patch %_sourcedir/sysusers2shadow.sh
+%endif
 
 %build
 
