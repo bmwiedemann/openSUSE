@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Jul 25 11:34:26 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.10.11:
+  + fallbackswitch:
+    - Change the threshold for trailing buffers
+    - Fix pad health calculation and notifies
+  + fmp4mux: Fix draining in chunk mode if keyframes are too late
+  + webrtcsink:
+    - fix pipeline when input caps contain max-framerate
+    - Configure only 4 threads for x264enc
+    - Translate force-keyunit events to force-IDR action signal for
+      NVIDIA encoders
+    - Set config-interval=-1 and aggregate-mode=zero-latency on
+      rtph264pay and rtph265pay
+    - Set VP8/VP9 payloader based on payloader element factory name
+- Update to version 0.10.10:
+  + webrtcsink:
+    - Avoid panic on unprepare from an async tokio context
+    - Use correct property types for nvvideoconvert
+  + webrtc/signalling: fix race condition in message ordering
+  + livesync:
+    - Wait for the end timestamp of the previous buffer before
+      looking at queue
+    - Improve EOS handling
+  + videofx: Minimize dependencies of the image crate
+  + togglerecord:
+    - Clip segment before calculating timestamp/duration
+    - Error out if main stream buffer has no valid running time
+
+-------------------------------------------------------------------
 Wed Jul  5 10:49:41 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.10.9:

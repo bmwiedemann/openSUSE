@@ -6,7 +6,7 @@
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
-    <param name="revision">refs/tags/0.10.9</param>
+    <param name="revision">refs/tags/0.10.11</param>
 <!--    <param name="changesgenerate">enable</param> -->
     <param name="scm">git</param>
   </service>
@@ -19,5 +19,8 @@
   <service name="cargo_vendor" mode="manual">
   <param name="srcdir">gst-plugins-rs</param>
   <param name="update">true</param>
+  </service>
+  <service name="cargo_audit" mode="manual">
+  <param name="srcdir">gst-plugins-rs</param>
   </service>
 </services>

@@ -29,7 +29,7 @@
 %endif
 
 Name:           gstreamer-plugins-rs
-Version:        0.10.9
+Version:        0.10.11
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
