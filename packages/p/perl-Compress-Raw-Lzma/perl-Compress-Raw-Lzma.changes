@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Jul 26 03:07:05 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.206
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+
+    2.206 25July 2023
+      * 2.206
+        Tue, 25 Jul 2023 16:24:23 +0100
+        e4ceaeac2d96b3c1cf0830549c857a5909778e35
+      * Add instructions to deal with build failure on Ubuntu/Debian
+        https://github.com/pmqs/Compress-Raw-Lzma/issues/7
+        Tue, 18 Jul 2023 09:17:53 +0100
+        b2d20bb04a940f29e743b83396253794cde33a2d
+    2.205 16 July 2023
+      * 2.205
+        Sun, 16 Jul 2023 16:27:25 +0100
+        0a62359512bc744b92b2ab5006cda4fb11288e91
+      * Test::More isn't warns in Perl 5.38
+        Sun, 9 Jul 2023 22:14:20 +0100
+        b1618e085c274c8c60256cb0517bbf86ea790007
+      * perl 5.38
+        Sun, 9 Jul 2023 22:13:15 +0100
+        e590230d24b6b4e5bac7056d143cd1fff6e45481
+      * add on workflow_dispatch
+        Fri, 9 Jun 2023 16:33:15 +0100
+        7839cc6e574f400ed58e89f8944f4e5c2b960a98
+      * update action/checkout version
+        Wed, 8 Feb 2023 22:30:51 +0000
+        419479d0974fa40a9a91d0f47c433a8196896893
+
+-------------------------------------------------------------------
 Thu Feb  9 03:06:48 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.204

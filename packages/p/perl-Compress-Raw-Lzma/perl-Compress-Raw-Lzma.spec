@@ -18,15 +18,18 @@
 
 %define cpan_name Compress-Raw-Lzma
 Name:           perl-Compress-Raw-Lzma
-Version:        2.204
+Version:        2.206.0
 Release:        0
+%define cpan_version 2.206
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Low-Level Interface to lzma compression library
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/P/PM/PMQS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/P/PM/PMQS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Compress::Raw::Lzma) = 2.206.0
+%define         __perllib_provides /bin/true
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  xz
@@ -50,9 +53,9 @@ parameter. If you want to compress/uncompress to a single buffer, and have
 when you create the compression/decompression object.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
