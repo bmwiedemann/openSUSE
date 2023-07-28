@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 27 14:43:15 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- 1.5.5
+  * Add download_mirror_policy_option, opt-out option, used
+    by default in product-builder
+
+-------------------------------------------------------------------
 Wed Feb  8 13:21:31 UTC 2023 - Adrian Schröter <adrian@suse.de>
 
 - 1.5.4
