@@ -1,7 +1,7 @@
 #
 # spec file for package gramps
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %global __requires_exclude typelib\\(GtkosxApplication\\)|typelib\\(Gtkspell\\)|typelib\\(GConf\\)
 Name:           gramps
-Version:        5.1.5
+Version:        5.1.6
 Release:        0
 Summary:        Genealogical Research Software
 License:        GPL-2.0-or-later

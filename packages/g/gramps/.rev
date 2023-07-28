@@ -558,4 +558,12 @@ Does it make sense to actually use &quot;Suggests:&quot;? I do not find a way to
   + Updated translations.</comment>
     <requestid>953051</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>0163c4f3da478e8f60895af6b5289ea4</srcmd5>
+    <version>5.1.6</version>
+    <time>1690575625</time>
+    <user>dimstar_suse</user>
+    <comment>Version update: 5.1.5 -&gt; 5.1.6</comment>
+    <requestid>1101123</requestid>
+  </revision>
 </revisionlist>
