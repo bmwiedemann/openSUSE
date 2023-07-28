@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 25 08:29:57 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.3.7
+  * OpenSSL3: don't quit if legacy provider is unavailable
+
+-------------------------------------------------------------------
 Wed May  3 16:10:27 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.3.6. No changelog.

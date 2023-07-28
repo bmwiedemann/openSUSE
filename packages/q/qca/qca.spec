@@ -38,7 +38,7 @@ ExclusiveArch:  do_not_build
 %define _soversion 2
 %bcond_without pkcs11
 Name:           qca%{pkgname_suffix}
-Version:        2.3.6
+Version:        2.3.7
 Release:        0
 Summary:        Qt Cryptographic Architecture 2
 License:        LGPL-2.1-or-later
