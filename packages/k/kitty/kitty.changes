@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 27 06:36:40 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.29.2:
+  * Detect .tex and Makefiles as plain text files (#6492)
+  * unicode_input kitten: Fix scrolling over multiple screens not working (#6497)
+
+-------------------------------------------------------------------
 Mon Jul 17 14:30:33 UTC 2023 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 0.29.1
