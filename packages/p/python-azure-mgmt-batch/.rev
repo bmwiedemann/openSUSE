@@ -136,4 +136,18 @@
 - Update Requires from setup.py (forwarded request 1037890 from glaubitz)</comment>
     <requestid>1038680</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d2582b5484616e86352df47b32bf518b</srcmd5>
+    <version>17.1.0</version>
+    <time>1690575602</time>
+    <user>dimstar_suse</user>
+    <comment>- use proper boolean requires for ranged requirements
+
+- New upstream release
+  + Version 17.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py</comment>
+    <requestid>1101106</requestid>
+  </revision>
 </revisionlist>

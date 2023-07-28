@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul 27 16:38:05 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- use proper boolean requires for ranged requirements
+
+-------------------------------------------------------------------
+Mon Jul 24 09:48:04 UTC 2023 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 17.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Thu Nov 24 12:50:02 UTC 2022 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
