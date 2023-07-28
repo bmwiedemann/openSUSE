@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-cognitiveservices
-Version:        13.4.0
+Version:        13.5.0
 Release:        0
 Summary:        Microsoft Azure Cognitive Services Management Client Library
 License:        MIT
@@ -35,13 +35,11 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-azure-common < 2.0.0
-Requires:       python-azure-common >= 1.1
-Requires:       python-azure-mgmt-core < 2.0.0
-Requires:       python-azure-mgmt-core >= 1.3.2
 Requires:       python-azure-mgmt-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-msrest >= 0.7.1
+Requires:       (python-azure-common >= 1.1 with python-azure-common < 2.0.0)
+Requires:       (python-azure-mgmt-core >= 1.3.2 with python-azure-mgmt-core < 2.0.0)
 Requires:       (python-typing_extensions >= 4.3.0 if python-base < 3.8)
 Conflicts:      python-azure-sdk <= 2.0.0
 

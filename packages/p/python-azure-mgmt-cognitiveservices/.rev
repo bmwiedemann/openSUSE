@@ -154,4 +154,26 @@
 - Update Requires from setup.py (forwarded request 1066122 from glaubitz)</comment>
     <requestid>1066153</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ea47ba43a54fdcfec48a0c2a9ec1bf76</srcmd5>
+    <version>13.5.0</version>
+    <time>1690575616</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 13.5.0:
+  * Added operation group ModelsOperations
+  * Added operation group UsagesOperations
+  * Model AccountModel has a new parameter is_default_version
+  * Model AccountModel has a new parameter skus
+  * Model AccountModel has a new parameter source
+  * Model AccountProperties has a new parameter abuse_penalty
+  * Model CommitmentPlanProperties has a new parameter
+    provisioning_issues
+  * Model Deployment has a new parameter sku
+  * Model DeploymentModel has a new parameter source
+  * Model DeploymentProperties has a new parameter rate_limits
+  * Model DeploymentProperties has a new parameter
+    version_upgrade_option
+  * Model UsageListResult has a new parameter next_link</comment>
+    <requestid>1101110</requestid>
+  </revision>
 </revisionlist>
