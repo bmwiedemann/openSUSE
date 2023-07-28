@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jul 27 14:32:09 UTC 2023 - lnussel@suse.com
+
+- Update to version 1+git20230727.a0e666f:
+  * Set and honor $SYSTEMD_ESP_PATH
+  * rpm-script: don't remove kernel on reinstalls
+
+-------------------------------------------------------------------
+Wed Jul 26 16:22:10 UTC 2023 - lnussel@suse.com
+
+- Update to version 1+git20230726.a994d2e:
+  * Fix installing extra kernels in MicroOS
+  * Replace file triggers with scriptlet
+  * Fix cleanup of rollback files
+  * Don't install unchanged files
+  * Add is-bootable and list-kernels commands
+  * Add ARCHITECTURE.md which explains how the setup works
+  * Add default loader config when installed
+
+-------------------------------------------------------------------
 Mon Jul 17 09:16:02 UTC 2023 - lnussel@suse.com
 
 - Update to version 1+git20230717.dac075e:

@@ -7,4 +7,14 @@
     <comment>new package</comment>
     <requestid>1099410</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0c669e662f7185c4f1346c0c43200a9f</srcmd5>
+    <version>1+git20230727.a0e666f</version>
+    <time>1690575605</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1+git20230727.a0e666f:
+  * Set and honor $SYSTEMD_ESP_PATH
+  * rpm-script: don't remove kernel on reinstalls (forwarded request 1101095 from lnussel)</comment>
+    <requestid>1101096</requestid>
+  </revision>
 </revisionlist>
