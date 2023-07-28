@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 12 06:51:49 UTC 2023 - Johannes Segitz <jsegitz@suse.com>
+
+- Make home directories read only instead of hiding them completely
+  (bsc#1212692)
+
+-------------------------------------------------------------------
 Thu Jun 22 21:05:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.8:
