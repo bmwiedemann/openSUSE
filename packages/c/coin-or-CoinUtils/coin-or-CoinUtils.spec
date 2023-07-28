@@ -19,7 +19,7 @@
 %define soversion 3
 
 Name:           coin-or-CoinUtils
-Version:        2.11.6
+Version:        2.11.9
 Release:        0
 Summary:        COIN-OR Utilities
 Group:          Productivity/Scientific/Math
@@ -78,4 +78,3 @@ rm %{buildroot}/%{_docdir}/%{name}/{AUTHORS,LICENSE}
 %{_libdir}/pkgconfig/coinutils.pc
 
 %changelog
-
