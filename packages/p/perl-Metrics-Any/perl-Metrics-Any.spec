@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Metrics-Any
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,31 @@
 
 %define cpan_name Metrics-Any
 Name:           perl-Metrics-Any
-Version:        0.09
+Version:        0.100.0
 Release:        0
+%define cpan_version 0.10
+Provides:       perl(Metrics::Any) = 0.100.0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Abstract collection of monitoring metrics
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/P/PE/PEVANS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/P/PE/PEVANS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(List::Util) >= 1.29
 BuildRequires:  perl(Module::Build) >= 0.400400
-BuildRequires:  perl(Test::Fatal)
-BuildRequires:  perl(Test::More) >= 0.88
+BuildRequires:  perl(Test2::V0)
 Requires:       perl(List::Util) >= 1.29
+Provides:       perl(Metrics::Any::Adapter) = 0.100.0
+Provides:       perl(Metrics::Any::Adapter::File) = 0.100.0
+Provides:       perl(Metrics::Any::Adapter::Null) = 0.100.0
+Provides:       perl(Metrics::Any::Adapter::Stderr) = 0.100.0
+Provides:       perl(Metrics::Any::Adapter::Tee) = 0.100.0
+Provides:       perl(Metrics::Any::Adapter::Test) = 0.100.0
+Provides:       perl(Metrics::Any::AdapterBase::Stored) = 0.100.0
+Provides:       perl(Metrics::Any::Collector) = 0.100.0
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -58,17 +68,17 @@ reporting (as well as to write code which does not itself depend on the
 code required to perform that reporting).
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
-perl Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files

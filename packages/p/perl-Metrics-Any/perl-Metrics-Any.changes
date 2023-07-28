@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul  8 03:07:38 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.10
+   see /usr/share/doc/packages/perl-Metrics-Any/Changes
+
+  0.10    2023-07-07
+          [CHANGES]
+           * Swap all of the unit tests from Test::More to Test2::V0
+
+-------------------------------------------------------------------
 Tue Nov 29 03:07:37 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.09
