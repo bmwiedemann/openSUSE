@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 27 08:14:49 UTC 2023 - dfaggioli@suse.com
+
+- Fix bsc#1179993, bsc#1181740, bsc#1213001
+- Patches added:
+  * hw/ide/piix: properly initialize the BMIBA register
+  * ui/vnc-clipboard: fix infinite loop in inflate_buffer (CVE-2023-3255)
+
+-------------------------------------------------------------------
 Wed Jul 12 10:58:05 UTC 2023 - dfaggioli@suse.com
 
 - Update to version 8.0.3:

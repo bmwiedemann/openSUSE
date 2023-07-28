@@ -3403,4 +3403,16 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
     <comment></comment>
     <requestid>1099120</requestid>
   </revision>
+  <revision rev="257" vrev="2">
+    <srcmd5>37beefcebed93930a54d766d8a77bec8</srcmd5>
+    <version>8.0.3</version>
+    <time>1690575578</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix bsc#1179993, bsc#1181740, bsc#1213001
+- Patches added:
+  * hw/ide/piix: properly initialize the BMIBA register
+  * ui/vnc-clipboard: fix infinite loop in inflate_buffer (CVE-2023-3255)
+</comment>
+    <requestid>1101031</requestid>
+  </revision>
 </revisionlist>
