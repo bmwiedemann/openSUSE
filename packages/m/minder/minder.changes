@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 20 17:34:34 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
+
+- Update to 1.15.2:
+  * Added support for embedding image path in Quick Entry.
+  * Updated Italian translation (thanks to @albanobattistella)
+  * Code cleanup
+  * Fixed issues with exported images including selection.
+  * Fixed issue with importing OPML files (thanks to Ygor Mutti).
+  * Fixed issue with undo/redo of Unicode characters.
+  * Fixed issues with exporting to Outliner format.
+
+-------------------------------------------------------------------
 Sun Feb 20 15:58:15 UTC 2022 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 1.14.0:
