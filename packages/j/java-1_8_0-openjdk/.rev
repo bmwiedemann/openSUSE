@@ -746,4 +746,12 @@
     <comment>April 2023 CPU</comment>
     <requestid>1084346</requestid>
   </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>ae726f967665cadddeff1cf85691a672</srcmd5>
+    <version>1.8.0.372</version>
+    <time>1690575591</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1101125</requestid>
+  </revision>
 </revisionlist>
