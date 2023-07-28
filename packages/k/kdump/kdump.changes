@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jul 28 14:39:14 UTC 2023 - Jiri Bohac <jbohac@suse.com>
+
+upgrade to version 1.9.5
+  * SELinux: temporary hack for bsc#1213721
+
+-------------------------------------------------------------------
+Thu Jul 27 17:59:54 UTC 2023 - Jiri Bohac <jbohac@suse.com>
+
+- upgrade to version 1.9.4
+  * fix FADUMP initramfs when not created by mkdumprd
+  * FADUMP: let dracut de-duplicate initrd by preserving modification times
+  * mkdumprd: only regenerate FADUMP initrds when needed
+  * mkdumprd: exit when destination not writable (transactional updates)
+  * mkdumprd: don't call update-bootloader
+
+-------------------------------------------------------------------
 Wed Jun 28 10:00:07 UTC 2023 - Jiri Bohac <jbohac@suse.com>
 
 - upgrade to version 1.9.3

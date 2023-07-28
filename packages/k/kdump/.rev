@@ -1217,4 +1217,20 @@ URL-decode the target URL. (forwarded request 234827 from ptesarik)</comment>
 - refreshed calibrate values</comment>
     <requestid>1096604</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>666c1261e4f2636f18f19f09280e459b</srcmd5>
+    <version>1.9.5</version>
+    <time>1690575592</time>
+    <user>dimstar_suse</user>
+    <comment>upgrade to version 1.9.5
+  * SELinux: temporary hack for bsc#1213721
+
+- upgrade to version 1.9.4
+  * fix FADUMP initramfs when not created by mkdumprd
+  * FADUMP: let dracut de-duplicate initrd by preserving modification times
+  * mkdumprd: only regenerate FADUMP initrds when needed
+  * mkdumprd: exit when destination not writable (transactional updates)
+  * mkdumprd: don't call update-bootloader</comment>
+    <requestid>1101210</requestid>
+  </revision>
 </revisionlist>
