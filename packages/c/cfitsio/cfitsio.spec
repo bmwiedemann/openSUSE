@@ -1,7 +1,7 @@
 #
 # spec file for package cfitsio
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define so_ver 10
 Name:           cfitsio
-Version:        4.2.0
+Version:        4.3.0
 Release:        0
 Summary:        Library for manipulating FITS data files
 License:        ISC
@@ -58,6 +58,7 @@ Obsoletes:      libcfitsio-doc <= 3.280
 # libcfitsio-devel-doc was last used in openSUSE 13.1 (version 3.350)
 Provides:       libcfitsio-devel-doc = %{version}
 Obsoletes:      libcfitsio-devel-doc <= 3.350
+BuildArch:      noarch
 
 %description devel-doc
 This package contains documentation for the cfitsio library.

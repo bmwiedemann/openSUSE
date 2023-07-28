@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Jul 26 16:00:20 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.3.0:
+  * Bug fix to fits_make_hist[d] that was introduced in 4.2.0.
+  * Added overflow checking for case of reading images with 8-byte
+    float values into 4-byte float arrays.
+  * fits_write_key_longstr now handles case of writing a long
+    keyword in combination with a long keyword value string.
+  * Add conversion of French locale comma-to-period in corner
+    cases appearing in ffr2e and ffd2e functions.
+  * Increased the precision when writing version number to
+    User-Agent strings for http connections.  This is needed to
+    fully conform to 3-field version string format.
+  * Bug fix to GTIOVERLAP() calculator function, which was being
+    treated as a boolean value in expressions, and is now
+    correctly treated as a floating point result.
+  * Bug fix to ARRAY() calculator function, which caused a memory
+    overflow error
+  * Enhancement to the ARRAY function, such that ARRAY(V,d) can
+    apply new dimensions to V, as long as the total number of
+    array/vector elements does not change.
+  * Enhancement of long string keyword read/write functions to
+    fully conform with FITS standard specifications for multi-line
+    value and comment strings. Two new functions have been added
+    to implement this: fits_get_key_com_strlen and
+    fits_read_string_key_com.
+- Make doc package noarch.
+
+-------------------------------------------------------------------
 Sun Dec 11 21:51:12 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 4.2.0:
