@@ -101,4 +101,12 @@ now with fixed empty debuginfo extraction</comment>
     <comment>- Add %{?sle15_python_module_pythons}</comment>
     <requestid>1092220</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>f94e63acfc2f2901974ddf6aef159967</srcmd5>
+    <version>0.13.1</version>
+    <time>1690575590</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1101065</requestid>
+  </revision>
 </revisionlist>
