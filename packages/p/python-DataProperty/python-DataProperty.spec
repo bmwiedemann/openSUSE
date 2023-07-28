@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-DataProperty
-Version:        0.55.1
+Version:        1.0.1
 Release:        0
 Summary:        Python library for extract property from data
 License:        MIT

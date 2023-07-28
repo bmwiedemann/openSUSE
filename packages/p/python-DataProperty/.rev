@@ -82,4 +82,23 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1089045</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>436204c75044b10c2371cb15468ab464</srcmd5>
+    <version>1.0.1</version>
+    <time>1690575615</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.1:
+  * Fix `ColumnDataProperty.merge` method
+  * Add `DataPropertyMatrix` to the package root
+  * Improve type annotations
+  * Drop support for Python 3.6
+  * Modify to use `pypa/build` for package build
+  * Update `[build-system]`
+  * Add `zip_safe=False`
+  * Add `__all__` to `__init__.py`
+  * Improve type annotations
+  * Remove a deprecated function: `set_log_level`
+  * Remove `is_multibyte_str` function</comment>
+    <requestid>1101109</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jul 27 16:44:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.1:
+  * Fix `ColumnDataProperty.merge` method
+  * Add `DataPropertyMatrix` to the package root
+  * Improve type annotations
+  * Drop support for Python 3.6
+  * Modify to use `pypa/build` for package build
+  * Update `[build-system]`
+  * Add `zip_safe=False`
+  * Add `__all__` to `__init__.py`
+  * Improve type annotations
+  * Remove a deprecated function: `set_log_level`
+  * Remove `is_multibyte_str` function
+
+-------------------------------------------------------------------
 Thu May 18 14:51:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.55.1
