@@ -227,4 +227,15 @@
     <comment>updated vendor.tar.gz (forwarded request 1100790 from mslacken)</comment>
     <requestid>1100792</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>dfb3a2975dab0f176e2d57bbd7cb29ac</srcmd5>
+    <version>1.2.2</version>
+    <time>1690575638</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.2.2 with following changes:
+  * Fix $APPTAINER_MESSAGELEVEL to correctly set the logging level.
+  * Fix build failures when in setuid mode and unprivileged user namespaces are
+    unavailable and the --fakeroot option is not selected. (forwarded request 1101200 from mslacken)</comment>
+    <requestid>1101201</requestid>
+  </revision>
 </revisionlist>

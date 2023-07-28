@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 28 13:39:30 UTC 2023 - Christian Goll <cgoll@suse.com>
+
+- updated to 1.2.2 with following changes:
+  * Fix $APPTAINER_MESSAGELEVEL to correctly set the logging level.
+  * Fix build failures when in setuid mode and unprivileged user namespaces are
+    unavailable and the --fakeroot option is not selected.
+
+-------------------------------------------------------------------
 Wed Jul 26 07:33:42 UTC 2023 - Christian Goll <cgoll@suse.com>
 
 - updated to 1.2.1 to fix CVE-2023-38496 although not relevant as package is 
