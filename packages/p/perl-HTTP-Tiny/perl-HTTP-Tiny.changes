@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 12 03:07:00 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.088
+   see /usr/share/doc/packages/perl-HTTP-Tiny/Changes
+
+  0.088     2023-07-11 08:52:54-04:00 America/New_York
+
+      [DOCS]
+
+      - Update metadata to point to new Perl-Toolchain-Gang repository.
+
+-------------------------------------------------------------------
 Mon Jul  3 11:27:12 UTC 2023 - Lars Vogdt <lars@linux-schulserver.de>
 
 - updated to 0.086
