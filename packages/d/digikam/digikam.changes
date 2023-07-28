@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 28 05:34:21 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 8.1.0:
+  https://www.digikam.org/news/2023-07-09-8.1.0_release_announcement/
+- Drop patch, merged upstream:
+  * 0001-fix-broken-compilation-with-Exiv2-0.28-missing-heade.patch
+
+-------------------------------------------------------------------
 Tue Jul  4 06:56:45 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add patch:

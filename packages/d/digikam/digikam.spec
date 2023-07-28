@@ -16,11 +16,11 @@
 #
 
 
-%define soversion 8_0_0
+%define soversion 8_1_0
 %bcond_without released
 %bcond_with    apidocs
 Name:           digikam
-Version:        8.0.0
+Version:        8.1.0
 Release:        0
 Summary:        A KDE Photo Manager
 License:        GPL-2.0-or-later
@@ -30,7 +30,6 @@ Source0:        https://download.kde.org/stable/%{name}/%{version}/digiKam-%{ver
 Source1:        https://download.kde.org/stable/%{name}/%{version}/digiKam-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 %endif
-Patch0:         0001-fix-broken-compilation-with-Exiv2-0.28-missing-heade.patch
 # QtWebEngine is not available on ppc and zSystems
 ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{riscv}
 BuildRequires:  QtAV-devel >= 1.12
@@ -241,9 +240,9 @@ sed -i 's#KF5::AkonadiCore#KPim5::AkonadiCore#' core/utilities/extrasupport/addr
 
 %files -n libdigikamcore%{soversion}
 %license LICENSES/*
-%{_kf5_libdir}/libdigikamcore.so.8.0.0
-%{_kf5_libdir}/libdigikamdatabase.so.8.0.0
-%{_kf5_libdir}/libdigikamgui.so.8.0.0
+%{_kf5_libdir}/libdigikamcore.so.%{version}
+%{_kf5_libdir}/libdigikamdatabase.so.%{version}
+%{_kf5_libdir}/libdigikamgui.so.%{version}
 
 %files lang -f %{name}.lang
 

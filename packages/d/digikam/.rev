@@ -1855,4 +1855,12 @@ General : Update internal Libraw to snapshot 202110
     <comment>Exiv 0.28 fixes</comment>
     <requestid>1096679</requestid>
   </revision>
+  <revision rev="215" vrev="1">
+    <srcmd5>a0b19a3a5f4c97b4f0b5da5717d70faf</srcmd5>
+    <version>8.1.0</version>
+    <time>1690575628</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1101149</requestid>
+  </revision>
 </revisionlist>
