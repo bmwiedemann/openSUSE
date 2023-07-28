@@ -25,4 +25,12 @@ The conflict with mariadb is still a problem. Debian solved this by making maria
     <comment>rocksDB 8.1.1</comment>
     <requestid>1081792</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>629b7ed10bb7263463ee20ca6aa33f8a</srcmd5>
+    <version>8.3.2</version>
+    <time>1690575607</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1101090</requestid>
+  </revision>
 </revisionlist>

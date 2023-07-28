@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jul 27 13:10:54 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 8.3.2
+  * Bug Fixes:
+      Reduced cases of illegally using Env::Default() during static destruction by never destroying the internal PosixEnv itself
+- update to 8.3.1
+  * Performance Improvements:
+      Fixed higher read QPS during DB::Open() reading files created prior to #11406, 
+- update to 8.3.0
+  * New Features:
+      Introduced a new option block_protection_bytes_per_key, which can be used to enable per key-value integrity protection for in-memory blocks in block cache 
+      Improve the operational safety of publishing a DB or SST files to many hosts by using different block cache hash seeds on different hosts.
+      Introduced a new option CompactionOptionsFIFO::file_temperature_age_thresholds that allows FIFO compaction to compact files to different temperatures based on key age 
+      Added a new ticker stat to count how many times RocksDB detected a corruption while verifying a block checksum: BLOCK_CHECKSUM_MISMATCH_COUNT.
+      New statistics rocksdb.file.read.db.open.micros that measures read time of block-based SST tables or blob files during db open.
+      New statistics tickers for various iterator seek behaviors and relevant filtering, as *_LEVEL_SEEK_*. (#11460)
+  * Public API Changes:
+      EXPERIMENTAL: Add new API DB::ClipColumnFamily to clip the key in CF to a certain range. It will physically deletes all keys outside the range including tombstones.
+      Add MakeSharedCache() construction functions to various cache Options objects, and deprecated the NewWhateverCache() functions with long parameter lists.
+      Changed the meaning of various Bloom filter stats (prefix vs. whole key), with iterator-related filtering only being tracked in the new *_LEVEL_SEEK_*. stats. (#11460)
+  * Behavior changes:
+      For x86, CPU features are no longer detected at runtime nor in build scripts, but in source code using common preprocessor defines. 
+      This will likely unlock some small performance improvements on some newer hardware, but could hurt performance of the kCRC32c checksum, 
+      which is no longer the default, on some "portable" builds. See PR #11419 for details.
+  * Bug Fixes:
+      Delete an empty WAL file on DB open if the log number is less than the min log number to keep
+      Delete temp OPTIONS file on DB open if there is a failure to write it out or rename it
+  * Performance Improvements:
+      Improved the I/O efficiency of prefetching SST metadata by recording more information in the DB manifest. 
+
+-------------------------------------------------------------------
 Fri Apr 21 12:55:27 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - RocksDB 8.1.1

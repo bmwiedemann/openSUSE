@@ -20,9 +20,9 @@
 %define lib_name librocksdb8
 %bcond_with jemalloc
 Name:           rocksdb
-Version:        8.1.1
+Version:        8.3.2
 Release:        0
-Summary:        A library that provides an embeddable, persistent key-value store for fast storage
+Summary:        Library for embeddable, persistent and fast key-value store
 License:        (Apache-2.0 OR GPL-2.0-only) AND BSD-2-Clause
 URL:            https://rocksdb.org/
 Source:         https://github.com/facebook/rocksdb/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -101,7 +101,7 @@ the RocksDB library.
 # which is build in library in debug mode and adds some overhead.
 # Warnings: https://github.com/facebook/rocksdb/issues/11043
 %cmake \
-    -DPORTABLE=ON \
+    -DPORTABLE=1 \
     -DFAIL_ON_WARNINGS=OFF \
 %if !%{with jemalloc}
     -DWITH_JEMALLOC=0 \
