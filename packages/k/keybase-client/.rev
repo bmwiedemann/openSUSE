@@ -225,4 +225,13 @@
 </comment>
     <requestid>1060798</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9f9d6aa46fb1c0f6e31109ab6f0cfa89</srcmd5>
+    <version>6.2.2</version>
+    <time>1690575622</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to version 6.2.2
+  * No change log provided</comment>
+    <requestid>1101115</requestid>
+  </revision>
 </revisionlist>

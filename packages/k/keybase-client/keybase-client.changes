@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 27 18:51:39 UTC 2023 - Matthias Bach <marix@marix.org> - 6.2.2
+
+- Upgrade to version 6.2.2
+  * No change log provided
+
+-------------------------------------------------------------------
 Wed Jan 25 07:52:35 UTC 2023 - Matthias Bach <marix@marix.org> - 6.0.2
 
 - Limit parallel test execution as that seems to cause failing
