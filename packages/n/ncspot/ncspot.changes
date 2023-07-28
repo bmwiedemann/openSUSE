@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jul 27 14:49:09 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 0.13.4
+  Features
+  * Add save current command
+  * Add add command for adding song to playlist
+  Maintenance
+  * Improve release build options
+  * Fix: Forward mouse events inside layout
+  * Refactor: remove unused screenchange variable
+  * Update documentation: recommend Ueberzug++
+  * Sort Artists Ignoring "The"
+  * Fix: Gracefully handle local files
+  * Fix: Speed up context menu by fetching album only once
+
+-------------------------------------------------------------------
 Sat Jun 17 12:52:24 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
 
 - Update to version 0.13.3

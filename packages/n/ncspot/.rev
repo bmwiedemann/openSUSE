@@ -107,4 +107,14 @@ Update to version 0.13.2</comment>
     <comment></comment>
     <requestid>1093584</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>40d37b1fb36c89481f3b063f55a43234</srcmd5>
+    <version>0.13.4</version>
+    <time>1690575617</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1101103 from jlkDE
+
+&quot;Update to version 0.13.4&quot;</comment>
+    <requestid>1101104</requestid>
+  </revision>
 </revisionlist>
