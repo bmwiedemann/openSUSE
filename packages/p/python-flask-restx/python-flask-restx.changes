@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jul 28 04:44:48 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.1.0:
+  * Update Swagger-UI to latest version to fix several security
+    vulnerabiltiies.
+  * Fix minor bug introduced in 1.0.5 that changed the behaviour of how
+    flask-restx propagates exceptions. (#512)
+  * Add support for Python 3.11 (requires update to invoke ^2.0.0)
+  * Fix compatibility with upcoming release of Flask 2.3+. (#485)
+  * Fix compatibility issue with werkzeug 2.1.0 (#423)
+  * Drop support for python <3.7
+- Drop patches merged_pr_463.patch, redirect.patch and werkzeug.patch.
+- Add patch support-new-werkzeug.patch:
+  * Support Werkzeug 2.35.
+- Switch to pyproject macros.
+- Stop using greedy globs in %files.
+- Remove Python 2 leftovers.
+
+-------------------------------------------------------------------
 Wed Oct  5 22:35:03 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Add upstream patch merged_pr_463.patch to support Werkzeug 2.2.

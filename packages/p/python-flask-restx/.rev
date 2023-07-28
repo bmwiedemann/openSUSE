@@ -75,4 +75,26 @@
     <comment></comment>
     <requestid>1008311</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b1bde87f6d0b3fc3530d584a067eb5e9</srcmd5>
+    <version>1.1.0</version>
+    <time>1690575627</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.0:
+  * Update Swagger-UI to latest version to fix several security
+    vulnerabiltiies.
+  * Fix minor bug introduced in 1.0.5 that changed the behaviour of how
+    flask-restx propagates exceptions. (#512)
+  * Add support for Python 3.11 (requires update to invoke ^2.0.0)
+  * Fix compatibility with upcoming release of Flask 2.3+. (#485)
+  * Fix compatibility issue with werkzeug 2.1.0 (#423)
+  * Drop support for python &lt;3.7
+- Drop patches merged_pr_463.patch, redirect.patch and werkzeug.patch.
+- Add patch support-new-werkzeug.patch:
+  * Support Werkzeug 2.35.
+- Switch to pyproject macros.
+- Stop using greedy globs in %files.
+- Remove Python 2 leftovers.</comment>
+    <requestid>1101124</requestid>
+  </revision>
 </revisionlist>

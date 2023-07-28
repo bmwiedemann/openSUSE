@@ -1,7 +1,7 @@
 #
 # spec file for package python-flask-restx
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,46 +16,40 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
 Name:           python-flask-restx
-Version:        0.5.1
+Version:        1.1.0
 Release:        0
 Summary:        Framework for fast, easy and documented API development with Flask
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
-#PATCH-FIX-UPSTREAM https://github.com/python-restx/flask-restx/pull/423 Handle change to Werkzeug 2.1.0 change to Request.get_json().
-Patch0:         werkzeug.patch
-#PATCH-FIX-UPSTREAM https://github.com/python-restx/flask-restx/pull/427 Handle Werkzeug 2.1.0 change to Response.autocorrect_location_header.
-Patch1:         redirect.patch
-#PATCH-FIX-UPSTREAM https://github.com/python-restx/flask-restx/pull/463 Fix missing parse_rule method
-Patch2:         merged_pr_463.patch
 URL:            https://github.com/python-restx/flask-restx
 Source:         https://github.com/python-restx/flask-restx/archive/%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#python-restx/flask-restx#552
+Patch0:         support-new-werkzeug.patch
 BuildRequires:  %{python_module Faker}
 BuildRequires:  %{python_module Flask}
+BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module aniso8601}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module blinker}
 BuildRequires:  %{python_module jsonschema}
+BuildRequires:  %{python_module jsonschema}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-flask}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
+BuildRequires:  %{python_module q}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tzlocal}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %{with python2}
-BuildRequires:  python2-enum34
-%endif
 Requires:       python-Flask
+Requires:       python-Werkzeug
 Requires:       python-aniso8601
 Requires:       python-jsonschema
 Requires:       python-pytz
-%ifpython2
-Requires:       python2-enum34
-%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -67,23 +61,23 @@ It provides a coherent collection of decorators and tools to describe your API a
 its documentation properly using Swagger.
 
 %prep
-%setup -q -n flask-restx-%{version}
-%autopatch -p1
+%autosetup -p1 -n flask-restx-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# gh#python-restx/flask-restx#411 for LoggingTest.test_override_app_level
-%pytest -k 'not (URLTest or EmailTest or test_handle_non_api_error or test_override_app_level)'
+# URLTest and EmailTest require network
+%pytest -k 'not (URLTest or EmailTest)'
 
 %files %{python_files}
 %doc README.rst CONTRIBUTING.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/flask_restx
+%{python_sitelib}/flask_restx-%{version}.dist-info
 
 %changelog
