@@ -729,4 +729,41 @@ mostly-working synapse than nothing at all) and the package has been update to
     - Improve performance of backfill requests by performing</comment>
     <requestid>1097110</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>d5f0cd85a55470e62dd65c1f3e0078e8</srcmd5>
+    <version>1.88.0</version>
+    <time>1690575595</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to _multibuild
+
+- Update to 1.88.0
+  This release
+  - raises the minimum supported version of Python to 3.8, as
+    Python 3.7 is now end-of-life, and
+  - removes deprecated config options related to worker deployment.
+  See the upgrade notes for more information.
+  https://github.com/matrix-org/synapse/blob/release-v1.88/docs/upgrade.md#upgrading-to-v1880
+  - Features
+    - Add not_user_type param to the list accounts admin API.
+      (#15844)
+  - Bugfixes
+    - Revert &quot;Stop writing to column user_id of tables profiles and
+      user_filters&quot;, which was introduced in Synapse 1.88.0rc1.
+      (#15953)
+    - Pin pydantic to ^=1.7.4 to avoid backwards-incompatible API
+      changes from the 2.0.0 release. Contributed by @PaarthShah.
+      (#15862)
+    - Correctly resize thumbnails with pillow version &gt;=10.
+      (#15876)
+  - Improved Documentation
+    - Fixed header levels on the Admin API &quot;Users&quot; documentation
+      page. Contributed by @sumnerevans at @beeper. (#15852)
+    - Remove deprecated worker_replication_host,
+      worker_replication_http_port and worker_replication_http_tls
+      configuration options. (#15872)
+  - Deprecations and Removals
+    - Remove deprecated worker_replication_host,
+      worker_replication_http_port and worker_replication_http_tls</comment>
+    <requestid>1101105</requestid>
+  </revision>
 </revisionlist>

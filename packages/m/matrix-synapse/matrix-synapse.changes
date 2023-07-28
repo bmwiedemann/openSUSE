@@ -1,4 +1,225 @@
 -------------------------------------------------------------------
+Wed Jul 26 12:32:53 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- switch to _multibuild
+
+-------------------------------------------------------------------
+Tue Jul 18 14:17:11 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.88.0
+  This release
+
+  - raises the minimum supported version of Python to 3.8, as
+    Python 3.7 is now end-of-life, and
+  - removes deprecated config options related to worker deployment.
+
+  See the upgrade notes for more information.
+  https://github.com/matrix-org/synapse/blob/release-v1.88/docs/upgrade.md#upgrading-to-v1880
+
+  - Features
+    - Add not_user_type param to the list accounts admin API.
+      (#15844)
+  - Bugfixes
+    - Revert "Stop writing to column user_id of tables profiles and
+      user_filters", which was introduced in Synapse 1.88.0rc1.
+      (#15953)
+    - Pin pydantic to ^=1.7.4 to avoid backwards-incompatible API
+      changes from the 2.0.0 release. Contributed by @PaarthShah.
+      (#15862)
+    - Correctly resize thumbnails with pillow version >=10.
+      (#15876)
+  - Improved Documentation
+    - Fixed header levels on the Admin API "Users" documentation
+      page. Contributed by @sumnerevans at @beeper. (#15852)
+    - Remove deprecated worker_replication_host,
+      worker_replication_http_port and worker_replication_http_tls
+      configuration options. (#15872)
+  - Deprecations and Removals
+    - Remove deprecated worker_replication_host,
+      worker_replication_http_port and worker_replication_http_tls
+      configuration options. See the upgrade notes for more
+      details. (#15860)
+    - Remove support for Python 3.7 and hence for Debian Buster.
+      (#15851, #15892, #15893, #15917)
+  - Internal Changes
+    - Add foreign key constraint to event_forward_extremities.
+      (#15751, #15907)
+    - Add read/write style cross-worker locks. (#15782)
+    - Stop writing to column user_id of tables profiles and
+      user_filters. (#15787)
+    - Use lower isolation level when cleaning old presence stream
+      data to avoid serialization errors. (#15826)
+    - Add tracing to media /upload code paths. (#15850, #15888)
+    - Add a timeout that aborts any Postgres statement taking more
+      than 1 hour. (#15853)
+    - Fix the devenv up configuration which was ignoring the config
+      overrides. (#15854)
+    - Optimised cleanup of old entries in device_lists_stream.
+      (#15861)
+    - Update the Matrix clients link in the It works! Synapse is
+      running landing page. (#15874)
+    - Fix building Synapse with the nightly Rust compiler. (#15906)
+    - Add Server to Access-Control-Expose-Headers header. (#15908)
+
+-------------------------------------------------------------------
+Wed Jul  5 09:53:07 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.87.0
+  Please note that this will be the last release of Synapse that is
+  compatible with Python 3.7 and earlier. This is due to Python 3.7
+  now having reached End of Life; see our deprecation policy for
+  more details.
+
+  - Features
+    - Improve /messages response time by avoiding backfill when we
+      already have messages to return. (#15737)
+    - Add spam checker module API for logins. (#15838)
+  - Bugfixes
+    - Pin pydantic to ^1.7.4 to avoid backwards-incompatible API
+      changes from the 2.0.0 release. Resolves #15858. Contributed
+      by @PaarthShah. (#15862)
+    - Fix a long-standing bug where media files were served in an
+      unsafe manner. Contributed by @joshqou. (#15680)
+    - Avoid invalidating a cache that was just prefilled. (#15758)
+    - Fix requesting multiple keys at once over federation, related
+      to MSC3983. (#15770)
+    - Fix joining rooms through aliases where the alias server
+      isn't a real homeserver. Contributed by @tulir @ Beeper.
+      (#15776)
+    - Fix a bug in push rules handling leading to an invalid (per
+      spec) is_user_mention rule sent to clients. Also fix wrong
+      rule names for is_user_mention and is_room_mention. (#15781)
+    - Fix a bug introduced in 1.57.0 where the wrong table would be
+      locked on updating database rows when using SQLite as the
+      database backend. (#15788)
+    - Fix Sytest environmental variable evaluation in CI. (#15804)
+    - Fix forgotten rooms missing from initial sync after rejoining
+      them. Contributed by Nico from Famedly. (#15815)
+    - Fix sqlite user_filters upgrade introduced in v1.86.0.
+      (#15817)
+  - Improved Documentation
+    - Document looping_call() functionality that will wait for the
+      given function to finish before scheduling another. (#15772)
+    - Fix a typo in the Admin API. (#15805)
+    - Fix typo in MSC number in faster remote room join
+      architecture doc. (#15812)
+  - Deprecations and Removals
+    - Remove experimental MSC2716 implementation to incrementally
+      import history into existing rooms. (#15748)
+  - Internal Changes
+    - Split out 2022 changes from the changelog so the rendered
+      version in GitHub doesn't timeout as much. (#15846)
+    - Replace EventContext fields prev_group and delta_ids with
+      field state_group_deltas. (#15233)
+    - Regularly try to send transactions to other servers after
+      they failed instead of waiting for a new event to be
+      available before trying. (#15743)
+    - Fix requesting multiple keys at once over federation, related
+      to MSC3983. (#15755)
+    - Allow for the configuration of max request retries and
+      min/max retry delays in the matrix federation client.
+      (#15783)
+    - Switch from matrix:// to matrix-federation:// scheme for
+      internal Synapse routing of outbound federation traffic.
+      (#15806)
+    - Fix harmless exceptions being printed when running the port
+      DB script. (#15814)
+  - Updates to locked dependencies
+    - Bump attrs from 22.2.0 to 23.1.0. (#15801)
+    - Bump cryptography from 40.0.2 to 41.0.1. (#15800)
+    - Bump ijson from 3.2.0.post0 to 3.2.1. (#15802)
+    - Bump phonenumbers from 8.13.13 to 8.13.14. (#15798)
+    - Bump ruff from 0.0.265 to 0.0.272. (#15799)
+    - Bump ruff from 0.0.272 to 0.0.275. (#15833)
+    - Bump serde_json from 1.0.96 to 1.0.97. (#15797)
+    - Bump serde_json from 1.0.97 to 1.0.99. (#15832)
+    - Bump towncrier from 22.12.0 to 23.6.0. (#15831)
+    - Bump types-opentracing from 2.4.10.4 to 2.4.10.5. (#15830)
+    - Bump types-setuptools from 67.8.0.0 to 68.0.0.0. (#15835)
+
+-------------------------------------------------------------------
+Tue Jun 20 23:00:07 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.86.0
+  - Features
+    - Stable support for MSC3882 to allow an existing
+      device/session to generate a login token for use on a new
+      device/session. (#15388)
+    - Support resolving a room's canonical alias via the module
+      API. (#15450)
+    - Enable support for MSC3952: intentional mentions. (#15520)
+    - Experimental MSC3861 support: delegate auth to an OIDC
+      provider. (#15582)
+    - Add Synapse version deploy annotations to Grafana dashboard
+      which enables easy correlation between behavior changes
+      witnessed in a graph to a certain Synapse version and nail
+      down regressions. (#15674)
+    - Add a catch-all * to the supported relation types when
+      redacting an event and its related events. This is an update
+      to MSC3912 implementation. (#15705)
+    - Speed up /messages by backfilling in the background when
+      there are no backward extremities where we are directly
+      paginating. (#15710)
+    - Expose a metric reporting the database background update
+      status. (#15740)
+  - Bugfixes
+    - Fix an error when having workers of different versions
+      running. (#15774)
+    - Correctly clear caches when we delete a room. (#15609)
+    - Check permissions for enabling encryption earlier during room
+      creation to avoid creating broken rooms. (#15695)
+  - Improved Documentation
+    - Simplify query to find participating servers in a room.
+      (#15732)
+  - Internal Changes
+    - Log when events are (maybe unexpectedly) filtered out of
+      responses in tests. (#14213)
+    - Read from column full_user_id rather than user_id of tables
+      profiles and user_filters. (#15649)
+    - Add support for tracing functions which return Awaitables.
+      (#15650)
+    - Cache requests for user's devices over federation. (#15675)
+    - Add fully qualified docker image names to Dockerfiles.
+      (#15689)
+    - Remove some unused code. (#15690)
+    - Improve type hints. (#15694, #15697)
+    - Update docstring and traces on maybe_backfill() functions.
+      (#15709)
+    - Add context for when/why to use the long_retries option when
+      sending Federation requests. (#15721)
+    - Removed some unused fields. (#15723)
+    - Update federation error to more plainly explain we can only
+      authorize our own membership events. (#15725)
+    - Prevent the latest_deps and twisted_trunk daily GitHub
+      Actions workflows from running on forks of the codebase.
+      (#15726)
+    - Improve performance of user directory search. (#15729)
+    - Remove redundant table join with room_memberships when doing
+      a is_host_joined()/is_host_invited() call (membership is
+      already part of the current_state_events). (#15731)
+    - Remove superfluous room_memberships join from background
+      update. (#15733)
+    - Speed up typechecking CI. (#15752)
+    - Bump minimum supported Rust version to 1.60.0. (#15768)
+  - Updates to locked dependencies
+    - Bump importlib-metadata from 6.1.0 to 6.6.0. (#15711)
+    - Bump library/redis from 6-bullseye to 7-bullseye in /docker.
+      (#15712)
+    - Bump log from 0.4.18 to 0.4.19. (#15761)
+    - Bump phonenumbers from 8.13.11 to 8.13.13. (#15763)
+    - Bump pyasn1 from 0.4.8 to 0.5.0. (#15713)
+    - Bump pydantic from 1.10.8 to 1.10.9. (#15762)
+    - Bump pyo3-log from 0.8.1 to 0.8.2. (#15759)
+    - Bump pyopenssl from 23.1.1 to 23.2.0. (#15765)
+    - Bump regex from 1.7.3 to 1.8.4. (#15769)
+    - Bump sentry-sdk from 1.22.1 to 1.25.0. (#15714)
+    - Bump sentry-sdk from 1.25.0 to 1.25.1. (#15764)
+    - Bump serde from 1.0.163 to 1.0.164. (#15760)
+    - Bump types-jsonschema from 4.17.0.7 to 4.17.0.8. (#15716)
+    - Bump types-pyopenssl from 23.1.0.2 to 23.2.0.0. (#15766)
+    - Bump types-requests from 2.31.0.0 to 2.31.0.1. (#15715)
+
+-------------------------------------------------------------------
 Thu Jun  8 17:49:10 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.85.2

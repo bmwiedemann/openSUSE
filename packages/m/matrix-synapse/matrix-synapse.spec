@@ -24,25 +24,25 @@
 %global Pillow_version                9.4.0
 %global PyYAML_version                6.0
 %global Twisted_version               22.10.0
-%global attrs_version                 22.2.0
+%global attrs_version                 23.1.0
 %global bcrypt_version                4.0.1
 %global bleach_version                5.0.1
 %global canonicaljson_version         2.0.0
-%global cryptography_version          40.0.2
+%global cryptography_version          41.0.1
 %global immutabledict_version         2.2.4
 %global idna_version                  3.4
-%global ijson_version                 3.1.4
+%global ijson_version                 3.2.0
 %global jsonschema_version            4.17.3
 %global matrix_common_version         1.3.0
 %global matrix_common_max_version     2
 %global msgpack_version               1.0.5
 %global netaddr_version               0.8.0
-# TODO: 8.13.11
+# TODO: 8.13.14
 %global phonenumbers_version          8.13.5
 %global prometheus_client_version     0.17.0
 %global psutil_version                2.0.0
 %global pyOpenSSL_version             23.0.0
-%global pyasn1_version                0.4.8
+%global pyasn1_version                0.5.0
 # TODO 0.3.0
 %global pyasn1_modules_version        0.2.8
 %global pymacaroons_version           0.13.0
@@ -59,9 +59,10 @@
 %global psycopg2_version              2.9.6
 # TODO             7.3.1
 %global pysaml2_version               7.2.1
-%global Authlib_version               1.2.0
+%global Authlib_version               1.2.1
+# TODO             4.9.3
 %global lxml_version                  4.9.2
-%global sentry_sdk_version            1.22.1
+%global sentry_sdk_version            1.25.1
 %global PyJWT_version                 2.4.0
 %global jaeger_client_version         4.8.0
 %global opentracing_version           2.4.0
@@ -154,7 +155,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.85.2
+Version:        1.88.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
