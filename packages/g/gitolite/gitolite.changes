@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 21 15:23:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.13:
+  * remove the "description" file on new repos, to fix a bug
+    created by an optimisation made 6 years ago in 3.6.8 (and
+    was caught only in 2022 or so!)
+
+-------------------------------------------------------------------
 Wed Feb  3 22:20:34 UTC 2021 - chris@computersalat.de
 
 - fix for boo#1181130
