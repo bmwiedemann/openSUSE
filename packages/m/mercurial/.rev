@@ -1598,4 +1598,41 @@
     <comment></comment>
     <requestid>1091840</requestid>
   </revision>
+  <revision rev="185" vrev="1">
+    <srcmd5>25f5a8d4e745f9929c61a13505223bac</srcmd5>
+    <version>6.5</version>
+    <time>1690654186</time>
+    <user>dimstar_suse</user>
+    <comment>- Mercurial 6.5 
+Regularly scheduled major release
+As usual, a lot of patches don't make it to this list since they're more internal.
+  - New Features
+    * Improved Python 3.12 compatiblity
+    * configitems: enable changegroup3 by default (unless using infinitepush)
+    * extras: expose 'retained_extras' for extensions to extend
+    * stabletailgraph: implement stable-tail sort
+    * stabletailgraph: naive version of leap computation
+    * bundle: introduce a &quot;v3&quot; spec
+    * clone-bundles: add a basic first version of automatic bundle generation
+    * clone-bundles: garbage collect older bundle when generating new ones
+    * clone-bundles: only regenerate the clone bundle when cached ration is low
+    * clone-bundles: also control automation based on absolute number 
+      of revisions
+    * clone-bundles: add a configuration to control auto-generation on changes
+    * clone-bundles: introduce a command to refresh bundle
+    * clone-bundles: add a command to clear all bundles
+    * clone-bundles: add an option to generate bundles in the background
+    * clonebundles: add support for inline (streaming) clonebundles
+    * clonebundles: adds a auto-generate.serve-inline option
+    * match: add `filepath:` pattern to match an exact filepath relative to 
+      the root
+    * hgweb: add &quot;children&quot; into the JSON template for a changeset
+    * hgweb: add support to explicitly access hidden changesets
+    * pull: add --remote-hidden option and pass it through peer creation
+    * hidden: add support for --remote-hidden to HTTP peer
+    * hidden: support passing --hidden with `serve --stdio`
+    * hidden: add support to explicitly access hidden changesets with 
+      SSH peers (forwarded request 1101192 from develop7)</comment>
+    <requestid>1101193</requestid>
+  </revision>
 </revisionlist>

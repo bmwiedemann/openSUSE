@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Fri Jul 28 12:20:30 UTC 2023 - Andrei Dziahel <develop7@develop7.info>
+
+- Mercurial 6.5 
+
+Regularly scheduled major release
+
+As usual, a lot of patches don't make it to this list since they're more internal.
+
+  - New Features
+    * Improved Python 3.12 compatiblity
+    * configitems: enable changegroup3 by default (unless using infinitepush)
+    * extras: expose 'retained_extras' for extensions to extend
+    * stabletailgraph: implement stable-tail sort
+    * stabletailgraph: naive version of leap computation
+    * bundle: introduce a "v3" spec
+    * clone-bundles: add a basic first version of automatic bundle generation
+    * clone-bundles: garbage collect older bundle when generating new ones
+    * clone-bundles: only regenerate the clone bundle when cached ration is low
+    * clone-bundles: also control automation based on absolute number 
+      of revisions
+    * clone-bundles: add a configuration to control auto-generation on changes
+    * clone-bundles: introduce a command to refresh bundle
+    * clone-bundles: add a command to clear all bundles
+    * clone-bundles: add an option to generate bundles in the background
+    * clonebundles: add support for inline (streaming) clonebundles
+    * clonebundles: adds a auto-generate.serve-inline option
+    * match: add `filepath:` pattern to match an exact filepath relative to 
+      the root
+    * hgweb: add "children" into the JSON template for a changeset
+    * hgweb: add support to explicitly access hidden changesets
+    * pull: add --remote-hidden option and pass it through peer creation
+    * hidden: add support for --remote-hidden to HTTP peer
+    * hidden: support passing --hidden with `serve --stdio`
+    * hidden: add support to explicitly access hidden changesets with 
+      SSH peers
+    * perf: introduce a `perf::stream-locked-section` command
+    * perf: add a function to find a stream version generator
+    * perf: add support for stream-v3 during benchmark
+    * perf: add a perf::stream-generate command
+    * perf: add a perf::stream-consume
+    * cli: make debugnodemap capable of inspecting an arbitrary nodemap
+    * rust: configure MSRV in Clippy
+    * rhg: make `rhg files` work if `ui.relative-files=true` is specified
+    * rhg: support `rhg files` with `ui.relative-paths=false`
+    * rhg: support `status --print0`
+    * tree-manifest: allow `debugupgraderepo` to run on tree manifest repo
+    * library: enable runpy invocation on mercurial package
+    * library: incorporate demandimport into runpy invocation
+    * exchange: allow passing no includes/excludes to `pull()`
+
+  - New Experimental Features
+
+    * stream-clone: add an experimental v3 version of the protocol
+    * stream-clone: support streamv3 on the cli [hg bundle]
+
+  - Bug Fixes
+    * mail: add a missing argument to properly override starttls
+    * bundle: include required phases when saving a bundle (issue6794)
+    * outgoing: fix common-heads computation from `missingroots` argument
+    * strip: do not include internal changeset in the strip backup
+    * bundle: abort if the user request bundling of internal changesets
+    * bundle: prevent implicit bundling of internal changeset
+    * encoding: avoid quadratic time complexity when json-encoding 
+      non-UTF8 strings
+    * sha1dc: Make sure SHA1DC_BIGENDIAN is set on Darwin/PowerPC
+    * zstd: hack include order to ensure that our zstd.h is found
+    * dirstate: better error messages when dirstate is corrupted
+    * stream-clone: avoid opening a revlog in case we do not need it
+    * treemanifest: make `updatecaches` update the nodemaps for all directories
+    * rust-hg-core: move from `ouroboros` to `self_cell`
+    * rust-dependencies: switch from `users` to `whoami`
+    * dirstate-v2: actually fix the dirstate-v2 upgrade race
+    * dirstate: avoid leaking disk space in `hg debugrebuilddirstate`
+    * clonebundles: add warning if auto-generate is enabled without formats
+    * win32mbcs: unbyteify some strings for py3 support
+    * rust-revlog: fix incorrect results with NULL_NODE prefixes
+    * rust-revlog: fix RevlogEntry.data() for NULL_REVISION
+
+  - Backwards Compatibility Changes
+    * infinitepush: aggressively deprecated infinite push
+    * narrow: indicated the default of 'Yes' when confirming 
+      auto-remove-includes
+
+  - Internal API Changes 
+    * Store walk was reworked to fix small race conditions in stream-clone and
+      greatly improve its API robustness and flexibility.
+
+  - Miscellaneous 
+    * Typechecking support was improved in a lot of places
+    * Removed more useless compat code for now unsupported Python versions
+    * Sped up zstd usage in Rust contexts
+    * revlog: add an exception hint when processing LFS flags without 
+      the extension
+    * ui: keep the progress bar around when writing if stdout is not a tty
+    * transaction: use a ".bck" extension for all backup file
+
+-------------------------------------------------------------------
 Thu Jun  8 22:16:56 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 6.4.4
