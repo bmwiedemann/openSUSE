@@ -16,15 +16,15 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-duet
-Version:        0.2.8
+Version:        0.2.9
 Release:        0
 Summary:        A simple future-based async library for python
 License:        Apache-2.0
 URL:            https://github.com/google/duet
 Source:         https://files.pythonhosted.org/packages/source/d/duet/duet-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing_extensions}
