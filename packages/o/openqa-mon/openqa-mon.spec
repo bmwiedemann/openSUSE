@@ -17,7 +17,7 @@
 
 
 Name:           openqa-mon
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 Summary:        CLI monitoring utility for openQA
 License:        GPL-3.0-or-later

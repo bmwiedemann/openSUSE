@@ -3,11 +3,11 @@
     <param name="url">https://github.com/grisu48/openqa-mon.git</param>
     <param name="scm">git</param>
     <param name="revision">main</param>
-    <param name="version">v1.0.1</param>
+    <param name="version">v1.1.0</param>
 	<param name="versionrewrite-pattern">v(.*)</param>
   </service>
-  <service name="tar" mode="localonly"/>
-  <service name="recompress" mode="localonly">
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
     <param name="compression">gz</param>
   </service>

@@ -64,4 +64,17 @@
 * Show job progress in Refresh line (openqa-revtui) (forwarded request 1075831 from ph03nix)</comment>
     <requestid>1076567</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c2c20ecf6e96c3d183573882d58faaec</srcmd5>
+    <version>1.1.0</version>
+    <time>1690654208</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0
+* [openqa-mon] Add reconnect handler for RabbitMQ (#115)
+* [openqa-revtui[ Add ability to open all visible URLs in browser (https://github.com//pull/113) by @asmorodskyi
+* [openqa-revtui] Refresh cloned jobs (#123)
+* [openqa-revtui] Don't open more than 10 links unless explicitly stated (#123)
+* Bump dependency versions (forwarded request 1101177 from ph03nix)</comment>
+    <requestid>1101211</requestid>
+  </revision>
 </revisionlist>

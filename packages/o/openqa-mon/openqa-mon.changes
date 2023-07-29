@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 28 08:36:47 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Update to version 1.1.0
+* [openqa-mon] Add reconnect handler for RabbitMQ (#115)
+* [openqa-revtui[ Add ability to open all visible URLs in browser (https://github.com//pull/113) by @asmorodskyi
+* [openqa-revtui] Refresh cloned jobs (#123)
+* [openqa-revtui] Don't open more than 10 links unless explicitly stated (#123)
+* Bump dependency versions
+
+-------------------------------------------------------------------
 Thu Mar 30 13:47:25 UTC 2023 - Felix Niederwanger <felix.niederwanger@suse.com>
 
 - Update to version 1.0.1
