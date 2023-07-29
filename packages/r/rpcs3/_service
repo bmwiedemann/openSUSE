@@ -11,7 +11,7 @@
     <param name="exclude">3rdparty/libpng/libpng</param>
     <param name="exclude">3rdparty/libsdl-org</param>
     <param name="exclude">3rdparty/libusb</param>
-    <param name="exclude">3rdparty/llvm</param>
+    <param name="exclude">3rdparty/llvm/llvm</param>
     <param name="exclude">3rdparty/XAudio2Redist</param>
     <param name="exclude">3rdparty/zlib/zlib</param>
     <param name="exclude">*.bat</param>

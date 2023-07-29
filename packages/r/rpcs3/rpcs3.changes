@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Fri Jul 21 14:31:06 UTC 2023 - i@guoyunhe.me
+
+- Update to version 0.0.28~git20230721:
+  * Fix log data loss on force application shutdown
+  * File.h: Implement fs::error::xdev
+  * Qt: Fix saved log filename
+  * sys_fs: use path instead of u8path
+  * Create Missing Paths for Dev_USB/HDD0 and mms
+  * SPU LLVM: Use get_known_bits() in SHUFB
+  * SPU LLVM: Handle SHUFB special cases with a lookup table - Needs 3 instructions to handle the special cases, since x86 lacks an 8 bit simd shift instruction
+
+-------------------------------------------------------------------
+Tue Jul 18 15:26:28 UTC 2023 - i@guoyunhe.me
+
+- Update to version 0.0.28~git20230718:
+  * Qt: Exit And Save Log - toolbar action (#14212)
+  * Fix default renderer when creating a brand new config
+  * Savestates/sys_fs: Utilize fs::file::get_id to fix an old bug
+  * Implement fs::file::get_id()
+  * Implement PPU usleep control setting hack
+  * Qt: Minor fixup
+  * Qt: Cache drag-and-drop result when moving it
+  * Qt: Restrict file types for drag-and-drop
+  * ecdsa: tiny optimization for key and curve
+  * ecdsa: clean up some code
+  * PPU LLVM: Allow to abort OVL analysis in the middle
+  * PPU LLVM: Improve precompilation time
+  * Qt/patches: highlight faulty lines in patch creator
+  * Patches: improve location logging of some invalid nodes
+  * Patches: do not allow empty patch names
+  * Patches: fix logging for locations of node iterators
+  * Patches: validate yml patch offset values
+  * Qt: add validator to patch creator offset lineedit
+  * Patches: Fix potential RPCS3 crashes due to invalid patches
+  * PPU/Debugger: View the currently used CR field content in register panel
+  * Qt: ignore Qt::Key_unknown when parsing key sequences
+  * vk: Don't load depth-stencil textures on the transfer queue
+  * Make compile with msvc, clang and gcc on Windows
+  * macOS CI: add Homebrew and Qt caches
+  * rsx: Don't assert when surface and texture cache overlap lockable memory
+  * rsx: Preserve the texcoord transform around destructive modifications
+  * Force inherit BDVD/PS3_GAME across game updates (#14159)
+  * rsx: Fix AMD shader codegen
+  * SPU/PPU Debugger: Add decimal mode to registers panel
+  * sys_fs: Fix log levels
+  * Write config.yml if it doesn't exist or is empty on boot
+  * rsx: Fix projected coordinates calculation again
+  * rsx: Fix the default shadow codegen path
+  * Fix typo
+  * rsx: Reimplement projected texturing
+  * SPU: Remove wrong clamp in MFC_Size
+  * LV2: Log allocated guest VM addresses
+  * logs: Add manual set log level with RegEx
+  * Logs re-enable on Emu.Kill() fixup
+  * Fix spu_thread::dump_callstack_list regression
+  * Debug fixes
+  * Qt: Use detailed text for install message
+  * Home menu: improve Anisotropic Filter Override value labels
+  * Home menu: add optional special label overrides
+  * Home menu: set vblank step size to 30
+  * Home menu: move advanced video options to advanced menu
+  * build-mac: Enable Discord Rich Presence for Mac Users
+  * SPU: Fix static interpreter requirement with interrupts
+  * Only silence logging during gameplay
+  * memory viewer: Add RegEx instruction searching mode
+  * Implement PPU LV2 debug
+  * UX: Option to pause emulation when RPCS3 is not focused
+  * [simd.hpp] Fix gv_fmafs
+  * PPU LLVM/RawSPU: Implement MMIO violation elimination pass
+  * rsx: Fine-tune the subimage view bezel dimensions
+  * rsx: Fix AA factor calculation
+  * rsx: Fill section dimensions when converting atlas op to copy op
+  * build-mac: Improve build time for macOS
+  * sys_usbd: Implement support for Santroller devices
+  * Clamp MSAA sampling weights to avoid clipping
+  * CI: Ignore FAudio submodule in windows builds
+  * rsx: Wrap MSAA coordinates before texelFetch
+  * vm_native.cpp: Workaround for rpcs3_vm_sparse.tmp crashes
+  * rsx: Fix virtual coordinate clamping
+  * vk: Disable anisotropy if the anisotropic level is meaningless
+  * rsx: Fix shader interpreter
+  * rsx: Fix shader interpreter compilation
+  * rsx: Fix vp codegen when unrestricted depth range extension is absent
+  * vk/gl: Fix debug overlay stats
+  * rsx: Fix sampled descriptor address corruption
+  * rsx: Insert missing texture barrier
+  * rsx: Force compatibility checks when applying fast-path optimizations
+  * rsx: Properly fill in the cyclic ref field for framebuffer references
+  * rsx: Use designated initializer for the dangerous copy_region_descriptor type
+  * vk: Fix namespace pollution in sync module
+  * rsx: Formatting and tidying changes
+  * rsx: Lower single-image-blit to a scaled coordinate fetch
+  * rsx: Trivially detect single-image-blit transfer operations
+  * vk: Do not clear memory if we're going to overwrite it with a copy anyway
+  * rsx: Implement atlas trivialization pass
+  * rsx: Implement GPU copy ellision through coordinate transform
+  * rsx: Minor optimization to speed up texture state sync a bit given the larger structure in use now
+  * rsx: Fix shader compilation when texture ops are referenced
+  * rsx: Rework texture coordinate handling to support clamping and a more sane scale-bias setup
+  * rsx: Fix fragment program codegen
+  * rsx: Migrate vertex fetch out of the cpp file
+  * rsx: Switch common codegen to use the glsl scripts
+  * rsx: Add the glsl files
+
+-------------------------------------------------------------------
 Mon Jul 03 11:32:58 UTC 2023 - i@guoyunhe.me
 
 - Update to version 0.0.28~git20230702:
