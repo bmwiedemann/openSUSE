@@ -17,7 +17,7 @@
 
 
 Name:           pv
-Version:        1.7.0
+Version:        1.7.18
 Release:        0
 Summary:        PipeViewer - Monitor the Progress of Data through Pipes
 License:        Artistic-2.0

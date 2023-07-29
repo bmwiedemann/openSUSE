@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 28 11:42:58 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.7.18
+  * New "--sync" option to flush cache to disk after every write
+  * New "--direct-io" option to bypass cache
+
+-------------------------------------------------------------------
 Mon Jul 17 21:18:13 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.7.0
