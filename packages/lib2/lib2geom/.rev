@@ -23,4 +23,18 @@
     <comment></comment>
     <requestid>1069530</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e67ca253444fe194a6ebb0d8ea98c0eb</srcmd5>
+    <version>1.3.0</version>
+    <time>1690654197</time>
+    <user>dimstar_suse</user>
+    <comment>- add skip_failing_tests.diff to fix instable intersection tests
+- Update to version 1.3
+  * In-place expansion of bounding boxes
+  * Enhancements to the Path class
+  * See the full release notes
+    https://gitlab.com/inkscape/lib2geom/-/releases/1.3
+</comment>
+    <requestid>1101121</requestid>
+  </revision>
 </revisionlist>

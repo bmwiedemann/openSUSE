@@ -17,13 +17,13 @@
 
 
 %define __builder ninja
-%define sonum 1_2_0
-%define sover 1.2.0
+%define sonum 1_3_0
+%define sover 1.3.0
 %define libname lib2geom%{sonum}
 %define develname 2geom
-%define short_version 1.2.2
+%define short_version 1.3
 Name:           lib2geom
-Version:        1.2.2
+Version:        1.3.0
 Release:        0
 Summary:        Easy to use 2D geometry library in C++
 License:        LGPL-2.1-only AND MPL-1.1
@@ -32,6 +32,8 @@ Group:          System/Libraries
 Source0:        %{url}/-/archive/%{short_version}/%{name}-%{short_version}.tar.gz
 # PATCH-FIX-OPENSUSE
 Patch1:         fix-pkgconfig-libdir-path.patch
+# PATCH-FIX-UPSTREAM fix instable tests, https://gitlab.com/inkscape/lib2geom/-/issues/67
+Patch2:         skip_failing_tests.diff
 BuildRequires:  cmake >= 2.6
 BuildRequires:  gcc-c++
 BuildRequires:  glib2
