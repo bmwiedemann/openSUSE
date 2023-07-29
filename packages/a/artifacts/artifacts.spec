@@ -29,11 +29,12 @@ Source1:        https://github.com/ForensicArtifacts/artifacts/releases/download
 # Key 0xD9625E5D7AD0177E by Joachim Metz https://github.com/joachimmetz
 Source2:        %{name}.keyring
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+#BuildRequires:  python-rpm-macros
+#BuildRequires:  python3-packaging
 # security:forensics is now only supporting python 3.7 or newer
-BuildRequires:  python3-setuptools > 3.7
-BuildRequires:  python3-base >= 3.7
-BuildRequires:  python3-packaging > 3.7
+BuildRequires:  python311-setuptools
+BuildRequires:  python311-base
+
 BuildArch:      noarch
 
 %description
@@ -64,10 +65,10 @@ themselves and not use these Python modules.
 %setup -q -n artifacts-%{timestamp}
 
 %build
-%python3_build
+%python311_build
 
 %install
-%python3_install
+%python311_install
 %fdupes %{buildroot}%{python3_sitelib}
 # these are installed to the wrong dir by %{name}
 rm %{buildroot}/usr/share/doc/%{name}/ACKNOWLEDGEMENTS
@@ -82,7 +83,7 @@ rm %{buildroot}/usr/share/doc/%{name}/README
 
 %files validator
 %license LICENSE
-%{python3_sitelib}/artifacts*
+%{python311_sitelib}/artifacts*
 %{_bindir}/validator.py
 %{_bindir}/stats.py
 
