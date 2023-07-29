@@ -47,7 +47,7 @@ This package contains HTML documentation for %{name}.
 
 %build
 %python_build
-python3 -m sphinx docs/source docs/build/html && rm docs/build/html/.buildinfo
+python3 -m sphinx docs/source docs/build/html && rm -r docs/build/html/.{buildinfo,doctrees}
 
 %install
 %python_install

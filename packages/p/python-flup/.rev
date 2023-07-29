@@ -100,4 +100,12 @@
 - Don't use greedy wildcards in %files.</comment>
     <requestid>1088574</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>6d7e84a43644b465d3c8cfe6832ddda2</srcmd5>
+    <version>1.0.3.dev20161029</version>
+    <time>1690654210</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1101209</requestid>
+  </revision>
 </revisionlist>

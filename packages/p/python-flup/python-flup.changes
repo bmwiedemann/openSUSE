@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 28 12:56:13 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Drop sphinx doctrees for reproducible builds
+
+-------------------------------------------------------------------
 Tue May 23 09:27:10 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Run spec-cleaner.
