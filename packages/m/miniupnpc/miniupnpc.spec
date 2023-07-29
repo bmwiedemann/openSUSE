@@ -1,7 +1,7 @@
 #
 # spec file for package miniupnpc
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define soname 17
-%bcond_without python2
 Name:           miniupnpc
-Version:        2.2.4
+Version:        2.2.5
 Release:        0
 Summary:        Universal Plug'n'Play (UPnP) Client
 License:        BSD-3-Clause
@@ -82,15 +80,6 @@ Device (IGD) specifications.
 
 %else
 
-%package -n python2-miniupnpc
-Summary:        Universal Plug'n'Play (UPnP) Client Module for Python
-Group:          Development/Libraries/Python
-Requires:       libminiupnpc%{soname} = %{version}-%{release}
-
-%description -n python2-miniupnpc
-The MiniUPnP project offers software which supports the UPnP Internet Gateway
-Device (IGD) specifications.
-
 %package -n python3-miniupnpc
 Summary:        Universal Plug'n'Play (UPnP) Client Module for Python
 Group:          Development/Libraries/Python
@@ -140,13 +129,6 @@ chmod -x %{buildroot}%{_mandir}/man3/miniupnpc.3.gz
 %{_includedir}/miniupnpc/
 %{_libdir}/libminiupnpc.so
 %{_libdir}/pkgconfig/miniupnpc.pc
-
-%if %{with python2} && ! 0%{?python_subpackage_only}
-%files -n python2-miniupnpc
-%doc Changelog.txt README
-%license LICENSE
-%{python2_sitearch}/miniupnpc*
-%endif
 
 %files %{python_files miniupnpc}
 %doc Changelog.txt README
