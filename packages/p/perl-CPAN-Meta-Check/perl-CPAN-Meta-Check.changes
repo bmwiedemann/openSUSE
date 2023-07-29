@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 22 03:06:09 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.018
+   see /usr/share/doc/packages/perl-CPAN-Meta-Check/Changes
+
+  0.018     2023-07-21 16:23:58+02:00 Europe/Brussels
+            - Fix version requirement for CPAN::Meta::Prereqs
+            - Move issue tracker to github
+
+-------------------------------------------------------------------
 Wed Jan  4 03:06:48 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.017

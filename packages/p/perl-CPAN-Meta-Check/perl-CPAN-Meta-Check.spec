@@ -18,12 +18,14 @@
 
 %define cpan_name CPAN-Meta-Check
 Name:           perl-CPAN-Meta-Check
-Version:        0.017
+Version:        0.18.0
 Release:        0
+%define cpan_version 0.018
+Provides:       perl(CPAN::Meta::Check) = 0.18.0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Verify requirements in a CPAN::Meta object
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/L/LE/LEONT/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/L/LE/LEONT/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -36,6 +38,7 @@ BuildRequires:  perl(Test::More) >= 0.88
 Requires:       perl(CPAN::Meta::Prereqs) >= 2.132830
 Requires:       perl(CPAN::Meta::Requirements) >= 2.121000
 Requires:       perl(Module::Metadata) >= 1.000023
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -43,7 +46,7 @@ This module verifies if requirements described in a CPAN::Meta object are
 present.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
