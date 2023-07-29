@@ -18,15 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-randomly
-Version:        3.12.0
+Version:        3.13.0
 Release:        0
 Summary:        Pytest plugin to randomly order tests and control random.seed
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-randomly
 Source:         https://github.com/pytest-dev/pytest-randomly/archive/%{version}.tar.gz#/pytest-randomly-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM: https://github.com/pytest-dev/pytest-randomly/commit/d663e203db254f7e310e4de0e4622e5596860698.patch
-Patch1:         fix-tests-pytest-73.patch
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-importlib-metadata >= 3.6.0
@@ -68,10 +67,10 @@ Features:
 %autosetup -p1 -n pytest-randomly-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
