@@ -16,6 +16,8 @@
 #
 
 
+%{?sle15_python_module_pythons}
+
 %define lname   libvslvm1
 Name:           libvslvm
 Version:        20221025
