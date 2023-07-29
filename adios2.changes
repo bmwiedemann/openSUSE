@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Mon Jul 27 00:00:00 UTC 2023 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 2.9.0
+
+- Fixes mvapich2 build installation prefix.
+- In devel package add conflict to old adios pkg.
+
+-------------------------------------------------------------------
+Mon Jul 10 00:00:00 UTC 2023 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 2.9.0
+
+- Added "0003-cmake-evpath-namespace-modules-install-dir.patch" which
+  namespaces the installation directory of the module files.
+- Moved .so files to the shlib package.
+
+-------------------------------------------------------------------
+Mon Apr 10 00:00:00 UTC 2023 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 2.9.0
+
+- Generated pkg for version 2.9.0
