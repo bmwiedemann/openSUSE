@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>827fd3e5ebd3ea61d22bc42d9d598ac8</srcmd5>
+    <version>2.9.0</version>
+    <time>1690654205</time>
+    <user>dimstar_suse</user>
+    <comment>Resolved conflicted file between adios and adios2-devel.</comment>
+    <requestid>1101269</requestid>
+  </revision>
+</revisionlist>
