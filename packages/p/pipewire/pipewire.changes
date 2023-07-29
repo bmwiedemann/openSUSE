@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Jul 28 10:35:03 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.3.76:
+  * Highlights
+    - Fix a regression that would cause the MPV pipewire backend
+      to fail because of a spurious thread-loop signal.
+    - Fix a crash when DBus is not found.
+    - ALSA hires timestamps are now disabled by default.
+    - Some more fixes and improvements.
+  * PipeWire
+    - A new option was added to pw-thread-loop to signal when the
+      thread starts.
+    - This is only used in module-rt to avoid regressions in mpv.
+      (#3374)
+    - Fix a compilation problem.
+    - Stream flags now only set the properties when not already
+      set. This fixes a regression with node autoconnect. (#3382)
+  * Tools
+    - pw-cat will now stop when the stream is disconnected. (#2731)
+    - Improve the pw-cat man page, mention that stdin/stdout
+      handling is only on raw data.
+  * modules
+    - module-rt will now not crash when dbus is not available but
+      error out as before.
+    - A new VBAN (vb-audio.com) sender and receiver was added.
+      (#3380)
+  * SPA
+    - Add an option in audioconvert to disable volume updates.
+      (#3361)
+    - ALSA hires timestamps are disabled by default because many
+      drivers seem to give wrong timestamps and cause extra delay.
+  * bluetooth
+    - LE Audio support is now enabled by default when liblc3 is
+      available now that bluez has support for detecting the
+      hardware features.
+
+-------------------------------------------------------------------
 Tue Jul 25 08:19:55 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add code in the spec file to modify the patch file 
@@ -16,7 +53,7 @@ Sun Jul 23 01:16:45 UTC 2023 - llyyr <llyyr.public@gmail.com>
     - Link permissions between nodes are now enforced. This avoids 
       potential portal managed screencast nodes to link to the
       camera even though it was not assigned permissions to do so
-      by the session manager.
+      by the session manager (boo#1213682).
     - Libcamera and v4l2 devices now have properties so that 
       duplicates can be filtered out by the session manager.
     - A bug with draining was fixed where a buffer would be marked 
