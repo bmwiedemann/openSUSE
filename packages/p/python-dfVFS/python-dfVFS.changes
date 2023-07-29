@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 28 22:11:04 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- use %{?sle_python_module_pythons} to select python versions 
+
+-------------------------------------------------------------------
 Wed Apr  5 21:38:26 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
 
 - re-enable %check section as the built-in tests now all pass

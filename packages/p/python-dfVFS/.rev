@@ -479,4 +479,13 @@ Move from python 2 to python 3</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1078816</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>3664ff1877be821d7dd77a5072c6953d</srcmd5>
+    <version>0~20221224</version>
+    <time>1690654222</time>
+    <user>dimstar_suse</user>
+    <comment>- use %{?sle_python_module_pythons} to select python versions 
+</comment>
+    <requestid>1101263</requestid>
+  </revision>
 </revisionlist>

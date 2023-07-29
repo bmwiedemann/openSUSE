@@ -14,10 +14,8 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+%{?sle_python_module_pythons}
 
-
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %define timestamp 20221224
 Name:           python-dfVFS
 Version:        0~%{timestamp}
