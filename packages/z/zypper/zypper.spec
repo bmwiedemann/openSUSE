@@ -42,11 +42,14 @@ Requires:       augeas >= 1.10.0
 # required for documentation
 BuildRequires:  rubygem(asciidoctor)
 
+# TUI library which is built and shipped with libzypp-devel
+BuildRequires:  libzypp-tui-devel >= 1
+
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Command line software manager using libzypp
 License:        GPL-2.0-or-later
 Group:          System/Packages
-Version:        1.14.61
+Version:        1.14.62
 Release:        0
 Source:         %{name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
