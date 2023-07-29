@@ -24,7 +24,7 @@
 %define viewvc_dir /srv/viewvc
 #
 Name:           viewvc
-Version:        1.3.0~dev20230104
+Version:        1.3.0~dev20230511
 Release:        0
 Summary:        Browse a Subversion Repository with a Web Browser
 License:        BSD-2-Clause
