@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul 21 05:08:58 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update skylighting to version 0.13.4.1.
+  ## 0.13.4.1
+
+    * Update syntax definitions: ada, bash, cmake, css, html, isocpp, java,
+      javascript, kotlin, latex, makefile, markdown, php, python, qml, r,
+      sass, scss, typescript, zsh.
+
+    * Don't require word boundary at end of Int, Float, HlCHex, HlCOct (#170).
+      KDE does not.  This fixes things like `7L` in R.
+
+-------------------------------------------------------------------
 Fri Jul  7 05:49:44 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update skylighting to version 0.13.4.
