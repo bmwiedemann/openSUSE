@@ -1,6 +1,8 @@
---- a/src/preferences.cpp
-+++ b/src/preferences.cpp
-@@ -384,11 +384,7 @@ void Preferences::reset() {
+Index: smplayer-23.6.0/src/preferences.cpp
+===================================================================
+--- smplayer-23.6.0.orig/src/preferences.cpp
++++ smplayer-23.6.0/src/preferences.cpp
+@@ -417,11 +417,7 @@ void Preferences::reset() {
  	resize_method = Never;
  
  #if STYLE_SWITCHING
@@ -12,7 +14,7 @@
  #endif
  
  	center_window = false;
-@@ -456,7 +452,7 @@ void Preferences::reset() {
+@@ -494,7 +490,7 @@ void Preferences::reset() {
  	allow_video_movement = false;
  
  	gui = "DefaultGUI";
@@ -21,7 +23,7 @@
  
  
  #if USE_MINIMUMSIZE
-@@ -614,7 +610,7 @@ void Preferences::reset() {
+@@ -664,7 +660,7 @@ void Preferences::reset() {
  
  #ifdef CHECK_UPGRADED
  	smplayer_stable_version = "";
@@ -30,9 +32,11 @@
  #endif
  #ifdef FONTCACHE_DIALOG
  	smplayer_version = "";
---- a/src/prefgeneral.cpp
-+++ b/src/prefgeneral.cpp
-@@ -574,6 +574,9 @@ void PrefGeneral::setVO( QString vo_driv
+Index: smplayer-23.6.0/src/prefgeneral.cpp
+===================================================================
+--- smplayer-23.6.0.orig/src/prefgeneral.cpp
++++ smplayer-23.6.0/src/prefgeneral.cpp
+@@ -664,6 +664,9 @@ void PrefGeneral::setVO( QString vo_driv
  }
  
  void PrefGeneral::setAO( QString ao_driver ) {

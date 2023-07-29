@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 28 12:31:56 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 23.6:
+  * Fix the issue of YouTube playback limited to 720p.
+  * Update mpv and mplayer.
+  * New option in preferences to keep the playback speed for all videos.
+  * Other bug fixes.
+
+-------------------------------------------------------------------
 Mon Jul 25 22:33:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.7.0:
