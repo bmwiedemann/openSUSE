@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Jul 28 08:54:52 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 8.2.1:
+  * Bugfixes:
+    - cfilters: rename close/connect functions to avoid clashes
+    - ciphers.d: put URL in first column
+    - cmake: add 'libcurlu'/'libcurltool' for unit tests
+    - cmake: update ngtcp2 detection
+    - configure: check for nghttp2_session_get_stream_local_window_size
+    - docs: mark two TLS options for TLS, not SSL
+    - docs: provide more see also for cipher options
+    - hostip: return IPv6 first for localhost resolves
+    - http2: fix regression on upload EOF handling
+    - http: VLH, very large header test and fixes
+    - libcurl-errors.3: add CURLUE_OK
+    - os400: correct EXPECTED_STRING_LASTZEROTERMINATED
+    - quiche: fix lookup of transfer at multi
+    - quiche: fix segfault and other things
+    - rustls: update rustls-ffi 0.10.0
+    - socks: print ipv6 address within brackets
+    - src/mkhelp: strip off escape sequences
+    - tool: fix tool_seek_cb build when SIZEOF_CURL_OFF_T > SIZEOF_OFF_T
+    - transfer: do not clear the credentials on redirect to absolute URL
+    - unittest: remove unneeded *_LDADD
+    - websocket: rename arguments/variables to match docs
+
+-------------------------------------------------------------------
 Wed Jul 19 06:22:14 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 8.2.0 [bsc#1213237, CVE-2023-32001]
