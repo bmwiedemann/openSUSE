@@ -17,7 +17,7 @@
 
 
 Name:           wireless-regdb
-Version:        20230601
+Version:        20230721
 Release:        0
 Summary:        802.11 regulatory domain database
 License:        ISC
