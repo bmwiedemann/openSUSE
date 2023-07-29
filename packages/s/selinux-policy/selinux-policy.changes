@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 28 14:49:04 UTC 2023 - filippo.bonazzi@suse.com
+
+- Update to version 20230728:
+  * Allow kdump_t to manage symlinks under kdump_var_lib_t (bsc#1213721)
+  * allow haveged to manage tmpfs directories (bsc#1213594)
+
+-------------------------------------------------------------------
 Thu Jun 22 12:14:15 UTC 2023 - jsegitz@suse.com
 
 - Update to version 20230622:
