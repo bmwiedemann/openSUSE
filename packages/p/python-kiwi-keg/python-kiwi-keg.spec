@@ -25,7 +25,7 @@
 
 %define         skip_python2 1
 Name:           python-kiwi-keg
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 URL:            https://github.com/SUSE-Enceladus/keg
 Summary:        KEG - Image Composition Tool
@@ -53,8 +53,10 @@ BuildRequires:  alts
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %endif
+%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
 Provides:       python3-kiwi-keg = %version
 Obsoletes:      python3-kiwi-keg < %version
+%endif
 
 %python_subpackages
 

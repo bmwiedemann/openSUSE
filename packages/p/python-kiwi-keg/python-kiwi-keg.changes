@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jul 28 15:36:31 UTC 2023 - jgleissner@suse.com
+
+- Update to version 2.1.1:
+  * Bump version: 2.1.0 → 2.1.1
+  * compose_kiwi_description: generate custom XML files
+  * compose_kiwi_description: fix JSON serialization error
+  * Provide python3-kiwi-keg only for primary flavor
+  * Improve publish-to-pypy GitHub CI workflow
+  * Improve GitHub CI testing workflow
+  * Makefile: minor fixes
+  * Restructure tox.ini
+  * Minor cleanup
+  * Regenerate docbook source
+
+-------------------------------------------------------------------
 Mon Jul 10 11:22:03 UTC 2023 - jgleissner@suse.com
 
 - Update to version 2.1.0:

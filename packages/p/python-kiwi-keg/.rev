@@ -23,4 +23,22 @@
     <comment></comment>
     <requestid>1097930</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c8559436c86cd637337133d91e983cdf</srcmd5>
+    <version>2.1.1</version>
+    <time>1690654214</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.1:
+  * Bump version: 2.1.0 → 2.1.1
+  * compose_kiwi_description: generate custom XML files
+  * compose_kiwi_description: fix JSON serialization error
+  * Provide python3-kiwi-keg only for primary flavor
+  * Improve publish-to-pypy GitHub CI workflow
+  * Improve GitHub CI testing workflow
+  * Makefile: minor fixes
+  * Restructure tox.ini
+  * Minor cleanup
+  * Regenerate docbook source (forwarded request 1101221 from jgleissner)</comment>
+    <requestid>1101243</requestid>
+  </revision>
 </revisionlist>
