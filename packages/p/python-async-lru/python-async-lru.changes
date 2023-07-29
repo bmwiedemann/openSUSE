@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul 29 09:02:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.4:
+  * Fixed an error when there are pending tasks while calling
+    ``.cache_clear()``.
+
+-------------------------------------------------------------------
 Sun Jul 16 10:56:19 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.3:
