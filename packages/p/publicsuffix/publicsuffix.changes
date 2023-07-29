@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 28 08:44:52 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20230717:
+  * Domains are removed `hidora.com`, `users.scale.virtualcloud.com.br`, `clicketcloud.com` (#1598)
+  * Add storipress.app (#1583)
+
+-------------------------------------------------------------------
 Mon Jul 10 08:17:58 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20230709:
