@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 21 07:43:38 UTC 2023 - pgajdos@suse.com
+
+- version update to 2023.2
+  * DONT_INCLUDE now affects \usepackage but not \input
+  * support \usepackage[xindy]{imakeidx} for sorting accents
+  * support babel main language option
+  * support hyphenat package
+
+-------------------------------------------------------------------
 Fri Jan 20 17:26:50 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023:

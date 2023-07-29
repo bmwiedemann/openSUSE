@@ -460,4 +460,12 @@ A    latex2html-share-dir.diff</comment>
   * update for latest pdftocairo (forwarded request 1060012 from dirkmueller)</comment>
     <requestid>1060350</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>4f0f3d5c2df87e55059b389bf452264a</srcmd5>
+    <version>2023.2</version>
+    <time>1690654201</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1101163</requestid>
+  </revision>
 </revisionlist>
