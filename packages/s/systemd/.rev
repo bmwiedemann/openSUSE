@@ -6713,4 +6713,30 @@ handle manual pages that consist only of a .so directive such as
     - upstream commit 3a3b022d2cc112803ea7b9beea98bbcad110368a (bsc#1212434)</comment>
     <requestid>1099230</requestid>
   </revision>
+  <revision rev="398" vrev="2">
+    <srcmd5>b7e7389cd5c821c23c301449487172c7</srcmd5>
+    <version>253.7</version>
+    <time>1690654203</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop 0003-strip-the-domain-part-from-etc-hostname-when-setting.patch
+  /etc/hostname is supposed to contain the static host name of the system. This
+  patch was used to work around cases where users incorrectly save the FQDN
+  instead. However this is incorrect and not consistent with what
+  systemd-hostnamed does and what other distributions do. Also assuming that
+  /etc/hostname will contain the system host name only removes any ambiguities
+  since the host name can contain a period.
+  /etc/hosts is usually where one sets the domain name by aliasing the host name
+  to the FQDN.
+  Note that the installer used to save the FQDN in /etc/hostname but this has
+  been fixed since several years now (bsc#972463).
+
+- systemd-homed is no more considered as experimental
+  It's been moved to its own dedicated sub-package &quot;systemd-homed&quot;.
+
+- systemd-userdb is no more considered as experimental (jsc#PED-2668)
+  As such it's been moved to the main package.
+
+    - upstream commit 3a3b022d2cc112803ea7b9beea98bbcad110368a (bsc#1212434 bsc#1213575)</comment>
+    <requestid>1101213</requestid>
+  </revision>
 </revisionlist>

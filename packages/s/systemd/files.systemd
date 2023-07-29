@@ -123,6 +123,7 @@
 %{_bindir}/systemd-umount
 %{_bindir}/timedatectl
 %if %{without bootstrap}
+%{_bindir}/userdbctl
 %{_datadir}/bash-completion/completions/busctl
 %{_datadir}/bash-completion/completions/hostnamectl
 %{_datadir}/bash-completion/completions/journalctl
@@ -261,6 +262,7 @@
 %{_mandir}/man1/systemd-umount.1.gz
 %{_mandir}/man1/systemd.1.gz
 %{_mandir}/man1/timedatectl.1.gz
+%{_mandir}/man1/userdbctl.1.gz
 %{_mandir}/man5/binfmt.d.5.gz
 %{_mandir}/man5/dnssec-trust-anchors.d.5.gz
 %{_mandir}/man5/environment.d.5.gz
@@ -394,6 +396,8 @@
 %{_mandir}/man8/systemd-update-utmp.service.8.gz
 %{_mandir}/man8/systemd-user-sessions.8.gz
 %{_mandir}/man8/systemd-user-sessions.service.8.gz
+%{_mandir}/man8/systemd-userdbd.8.gz
+%{_mandir}/man8/systemd-userdbd.service.8.gz
 %{_mandir}/man8/systemd-xdg-autostart-generator.8.gz
 %endif
 %{_modprobedir}/systemd.conf
@@ -430,6 +434,9 @@
 %{_systemd_util_dir}/systemd-update-utmp
 %{_systemd_util_dir}/systemd-user-runtime-dir
 %{_systemd_util_dir}/systemd-user-sessions
+%if %{without bootstrap}
+%{_systemd_util_dir}/systemd-userdbd
+%endif
 %{_systemd_util_dir}/systemd-xdg-autostart-condition
 %{_systemd_util_dir}/user-generators/systemd-xdg-autostart-generator
 %{_systemd_util_dir}/user-preset/90-systemd.preset
@@ -608,6 +615,10 @@
 %{_unitdir}/systemd-update-done.service
 %{_unitdir}/systemd-update-utmp.service
 %{_unitdir}/systemd-user-sessions.service
+%if %{without bootstrap}
+%{_unitdir}/systemd-userdbd.service
+%{_unitdir}/systemd-userdbd.socket
+%endif
 %{_unitdir}/time-set.target
 %{_unitdir}/time-sync.target
 %{_unitdir}/timers.target

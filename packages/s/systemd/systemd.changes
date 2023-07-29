@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Jul 28 14:40:48 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- Drop 0003-strip-the-domain-part-from-etc-hostname-when-setting.patch
+
+  /etc/hostname is supposed to contain the static host name of the system. This
+  patch was used to work around cases where users incorrectly save the FQDN
+  instead. However this is incorrect and not consistent with what
+  systemd-hostnamed does and what other distributions do. Also assuming that
+  /etc/hostname will contain the system host name only removes any ambiguities
+  since the host name can contain a period.
+
+  /etc/hosts is usually where one sets the domain name by aliasing the host name
+  to the FQDN.
+
+  Note that the installer used to save the FQDN in /etc/hostname but this has
+  been fixed since several years now (bsc#972463).
+
+-------------------------------------------------------------------
+Tue Jul 25 06:30:55 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- systemd-homed is no more considered as experimental
+
+  It's been moved to its own dedicated sub-package "systemd-homed".
+
+-------------------------------------------------------------------
+Mon Jul 24 14:29:35 UTC 2023 - Franck Bui <fbui@suse.com>
+
+- systemd-userdb is no more considered as experimental (jsc#PED-2668)
+
+  As such it's been moved to the main package.
+
+-------------------------------------------------------------------
 Tue Jul 18 08:54:44 UTC 2023 - Franck Bui <fbui@suse.com>
 
 - Import commit 2dac0aff9ced1eca0cd11c24e264b33095ee5a5e (merge of v253.7)
@@ -836,7 +868,7 @@ Wed Jun  1 07:20:05 UTC 2022 - Franck Bui <fbui@suse.com>
   This includes the following bug fixes:
 
     - upstream commit e6b169418369abbc88c8f622e02e1d704a23d4ef (bsc#1137373 bsc#1181658 bsc#1194708 bsc#1195157 bsc#1197570)
-    - upstream commit 3a3b022d2cc112803ea7b9beea98bbcad110368a (bsc#1212434)
+    - upstream commit 3a3b022d2cc112803ea7b9beea98bbcad110368a (bsc#1212434 bsc#1213575)
 
   * Rebased 0001-conf-parser-introduce-early-drop-ins.patch
 
