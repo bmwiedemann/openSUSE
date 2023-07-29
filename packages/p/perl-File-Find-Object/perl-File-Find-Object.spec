@@ -18,7 +18,7 @@
 
 %define cpan_name File-Find-Object
 Name:           perl-File-Find-Object
-Version:        0.3.7
+Version:        0.3.8
 Release:        0
 License:        Artistic-2.0
 Summary:        An object oriented File::Find replacement
@@ -30,7 +30,7 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Class::XSAccessor)
 BuildRequires:  perl(File::TreeCreate)
-BuildRequires:  perl(Module::Build) >= 0.280000
+BuildRequires:  perl(Module::Build) >= 0.28
 BuildRequires:  perl(Test::File) >= 1.993
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(parent)
@@ -50,17 +50,18 @@ function, but setting a callback is still possible.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-perl Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
