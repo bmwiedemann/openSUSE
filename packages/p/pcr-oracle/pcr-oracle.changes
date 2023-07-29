@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 26 14:06:43 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add libtss2-tcti-device0 as the default TCTI interface to avoid
+  the following error:
+  Esys_Initialize() Initialize default tcti. ErrorCode (0x000a000a) 
+
+-------------------------------------------------------------------
 Tue Jul  4 07:44:10 UTC 2023 - Olaf Kirch <okir@suse.com>
 
 - Added a _service file

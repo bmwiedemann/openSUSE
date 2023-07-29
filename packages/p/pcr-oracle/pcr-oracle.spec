@@ -27,6 +27,7 @@ URL:            https://github.com/okirch/pcr-oracle
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  libopenssl-devel >= 0.9.8
 BuildRequires:  tpm2-0-tss-devel
+Requires:       libtss2-tcti-device0
 ExclusiveArch:  x86_64 aarch64 ppc64le riscv64
 
 %description
