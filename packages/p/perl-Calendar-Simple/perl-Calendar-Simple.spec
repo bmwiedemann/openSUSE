@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Calendar-Simple
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,17 @@
 
 %define cpan_name Calendar-Simple
 Name:           perl-Calendar-Simple
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
-Summary:        Perl extension to create simple calendars
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Perl extension to create simple calendars
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DA/DAVECROSS/%{cpan_name}-v%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Module::Build) >= 0.420000
+BuildRequires:  perl(Module::Build) >= 0.42
 Recommends:     perl(DateTime)
 %{perl_requires}
 
@@ -37,17 +37,16 @@ A very simple module that exports one function called 'calendar'.
 
 %prep
 %autosetup  -n %{cpan_name}-v%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-perl Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
