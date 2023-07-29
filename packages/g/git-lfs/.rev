@@ -108,4 +108,12 @@
 - we need a vendor tarball now</comment>
     <requestid>1041187</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ef5033c6527cbf97d3f3a9b0a2b4810b</srcmd5>
+    <version>3.4.0</version>
+    <time>1690654240</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1101303</requestid>
+  </revision>
 </revisionlist>
