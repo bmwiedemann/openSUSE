@@ -4511,4 +4511,14 @@ oddjob-gpupdate isn't blocked)</comment>
     <comment></comment>
     <requestid>1098552</requestid>
   </revision>
+  <revision rev="453" vrev="1">
+    <srcmd5>13b2b26d86e17cdc5a319bb11e7b5726</srcmd5>
+    <version>2.4.0+git20230727.0fd5122</version>
+    <time>1690654198</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.0+git20230727.0fd5122:
+  * whitelists: adjust package for systemd-homed components (bsc#1213692)
+</comment>
+    <requestid>1101145</requestid>
+  </revision>
 </revisionlist>

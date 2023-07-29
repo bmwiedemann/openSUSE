@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 27 14:51:53 UTC 2023 - filippo.bonazzi@suse.com
+
+- Update to version 2.4.0+git20230727.0fd5122:
+  * whitelists: adjust package for systemd-homed components (bsc#1213692)
+
+-------------------------------------------------------------------
 Thu Jul 13 14:45:17 UTC 2023 - wolfgang.frisch@suse.com
 
 - Update to version 2.4.0+git20230713.dfa31c7:
