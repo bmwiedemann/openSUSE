@@ -52,4 +52,14 @@
     <comment></comment>
     <requestid>1093820</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>802731bfac3f756342724c40acdeebd2</srcmd5>
+    <version>1.61</version>
+    <time>1690654242</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.61:
+  * De-minimize window (if minimized) and set focus after drag n'
+    drop of file</comment>
+    <requestid>1101310</requestid>
+  </revision>
 </revisionlist>
