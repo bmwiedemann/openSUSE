@@ -1,7 +1,7 @@
 #
 # spec file for package harminv
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,19 @@
 #
 
 
-Name:           harminv
-Version:        1.4.1
-Release:        0
 %define somajor 3
+Name:           harminv
+Version:        1.4.2
+Release:        0
 Summary:        Solver for the problem of harmonic inversion
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Electronics
-Url:            https://github.com/stevengj/harminv
+URL:            https://github.com/stevengj/harminv
 Source0:        https://github.com/stevengj/harminv/releases/download/v%{version}/harminv-%{version}.tar.gz
 BuildRequires:  blas-devel
 BuildRequires:  gcc-fortran
 BuildRequires:  lapack-devel
 BuildRequires:  pkgconfig
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%define FORTRAN_COMPILER gfortran
 
 %description
 Harminv is a program to solve the problem of harmonic inversion — given
@@ -75,28 +73,25 @@ export CFLAGS="%{optflags} -fPIC"
 export CXXFLAGS="%{optflags} -fPIC"
 export FFLAGS="%{optflags} -fPIC"
 %configure --enable-shared --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n libharminv%{somajor} -p /sbin/ldconfig
-
 %postun -n libharminv%{somajor} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
-%doc COPYING NEWS.md README.md
+%license COPYING
+%doc NEWS.md README.md
 %{_bindir}/*
 %{_mandir}/man1/*
 
 %files -n libharminv%{somajor}
-%defattr(-,root,root)
 %{_libdir}/libharminv.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/libharminv.so
 %{_libdir}/pkgconfig/*
 %{_includedir}/*
