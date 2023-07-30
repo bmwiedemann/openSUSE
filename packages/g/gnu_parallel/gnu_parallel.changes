@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 29 21:31:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 20230722:
+  * Time functions (e.g. yyyymmdd($secs) ) can now take secs
+    since epoch as argument.
+  * Bug fixes and man page updates.
+
+-------------------------------------------------------------------
 Fri May  5 09:47:59 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20230422

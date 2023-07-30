@@ -711,4 +711,12 @@
     <comment>- Update to release 20230422</comment>
     <requestid>1085024</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>c54e1f556bed2c45ce14cb9b093f6820</srcmd5>
+    <version>20230722</version>
+    <time>1690743477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1101343</requestid>
+  </revision>
 </revisionlist>
