@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 26 15:24:55 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.0.2:
+  * Change testing to facilitate openSUSE Tumbleweed distribution
+    which uses Sympy 1.12 (gh#Mathics3/mathics-core#881).
+- Drop python-Mathics-relax-module-versions.patch: No longer
+  required as upstream has removed numpy and scipy upper limits
+  from requirements.
+- Re-enable test_calculus.
+
+-------------------------------------------------------------------
 Tue Apr 11 07:11:25 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop some unnecessary Requires: python-recordclass,

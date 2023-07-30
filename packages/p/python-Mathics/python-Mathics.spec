@@ -32,15 +32,13 @@
 %define skip_python311 1
 %define pyname Mathics3
 Name:           python-Mathics%{psuffix}
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        A general-purpose computer algebra system
 # Mathics itself is licensed as GPL-3.0 but it includes third-party software with MIT, BSD-3-Clause, and Apache-2.0 Licensing; also includes data from wikipedia licensed under CC-BY-SA-3.0 and GFDL-1.3
 License:        Apache-2.0 AND BSD-3-Clause AND GPL-3.0-only AND MIT
 URL:            https://mathics.github.io/
 Source0:        https://github.com/Mathics3/mathics-core/releases/download/%{version}/%{pyname}-%{version}.tar.gz
-# PATCH-FEATURE-OPENSUSE python-Mathics-relax-module-versions.patch gh#mathics-core/issues#881 badshah400@gmail.com -- Relax upper limits on sympy and numpy to get packages building for Tumbleweed
-Patch0:         python-Mathics-relax-module-versions.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Django >= 1.8}
 BuildRequires:  %{python_module colorama}
@@ -117,8 +115,7 @@ export USE_CYTHON=1
 %check
 # Home page tests require django server up and running, test_gudermannian needs network access
 # test_image: https://github.com/Mathics3/mathics-core/issues/837
-# test_calculus: https://github.com/Mathics3/mathics-core/issues/881
-%pytest_arch -k 'not (test_home_page or test_gudermannian or test_image or test_calculus)'
+%pytest_arch -k 'not (test_home_page or test_gudermannian or test_image)'
 %endif
 
 %if %{without test}
