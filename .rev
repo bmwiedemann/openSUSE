@@ -412,4 +412,16 @@ as requested by Michel</comment>
   * fix version compare logic, using the newest candidate now</comment>
     <requestid>1074194</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>9855e9efbddc061359e410564ef0ad55</srcmd5>
+    <version>1.4.14</version>
+    <time>1690743438</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.4.14
+  * Introduce DOWNLOAD_MIRROR_POLICY option, enabled by default!
+    =&gt; can lead to build failures on inconsistent package build
+       states
+  * Joliet format only on main medium</comment>
+    <requestid>1101100</requestid>
+  </revision>
 </revisionlist>

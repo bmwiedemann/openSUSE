@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 27 14:38:16 UTC 2023 - Adrian Schröter <adrian@suse.de>
+
+- 1.4.14
+  * Introduce DOWNLOAD_MIRROR_POLICY option, enabled by default!
+    => can lead to build failures on inconsistent package build
+       states
+  * Joliet format only on main medium
+
+-------------------------------------------------------------------
 Fri Mar 24 12:53:48 UTC 2023 - Adrian Schröter <adrian@suse.de>
 
 - 1.4.13
