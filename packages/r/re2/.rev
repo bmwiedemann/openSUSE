@@ -451,4 +451,12 @@
     <comment>fix changelog typo</comment>
     <requestid>1070510</requestid>
   </revision>
+  <revision rev="53" vrev="54">
+    <srcmd5>10c15a8bec3d9e9a4939a36ffce02eed</srcmd5>
+    <version>MACRO</version>
+    <time>1690743436</time>
+    <user>dimstar_suse</user>
+    <comment>re2 2023-07-01. Previously broke qtwebengine, see SR#1101063</comment>
+    <requestid>1101067</requestid>
+  </revision>
 </revisionlist>
