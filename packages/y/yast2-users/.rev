@@ -1914,4 +1914,12 @@
     <user>anag+factory</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1213681</comment>
   </revision>
+  <revision rev="260" vrev="2">
+    <srcmd5>3b0d03e3eea266f97286338a2b2c776e</srcmd5>
+    <version>4.6.4</version>
+    <time>1690743472</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade again, -firstboot is fixed</comment>
+    <requestid>1101323</requestid>
+  </revision>
 </revisionlist>
