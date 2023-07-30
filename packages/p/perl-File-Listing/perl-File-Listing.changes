@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 13 03:06:13 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.16
+   see /usr/share/doc/packages/perl-File-Listing/Changes
+
+  6.16      2023-07-12 15:22:25 -0600
+    - Support dosftp listings with four-digit years (gh#3, gh#26)
+
+-------------------------------------------------------------------
 Mon Apr 18 03:13:16 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.15
