@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 29 00:48:53 UTC 2023 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Update to v0.54.0
+  * skips multiple versions, reference
+    https://github.com/pennersr/django-allauth/commits/0.54.0
+- Patch out test which cannot run without template files (missing-template-in-test.patch)
+
+-------------------------------------------------------------------
 Sun Jun 25 08:25:56 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Use sle15_python_module_pythons

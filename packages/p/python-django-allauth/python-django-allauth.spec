@@ -18,13 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-allauth
-Version:        0.47.0
+Version:        0.54.0
 Release:        0
 Summary:        Django authentication, registration, account management
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pennersr/django-allauth
 Source:         https://files.pythonhosted.org/packages/source/d/django-allauth/django-allauth-%{version}.tar.gz
+Patch:          missing-template-in-test.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,7 +47,7 @@ Integrated set of Django applications addressing authentication, registration,
 account management as well as 3rd party (social) account authentication.
 
 %prep
-%setup -q -n django-allauth-%{version}
+%autosetup -p1 -n django-allauth-%{version}
 # Five errors reported at https://github.com/pennersr/django-allauth/issues/2210
 # Cern provider test module fails
 rm allauth/socialaccount/providers/cern/tests.py

@@ -1,0 +1,14 @@
+--- a/allauth/account/tests.py	2023-07-29 03:13:58.816192704 +0200
++++ b/allauth/account/tests.py	2023-07-29 03:14:17.592388201 +0200
+@@ -1740,7 +1740,7 @@
+             reverse("account_reset_password"), data={"email": "a@b.com"}
+         )
+         assert resp.status_code == 302
+-        resp = self.client.post(
+-            reverse("account_reset_password"), data={"email": "A@B.COM"}
+-        )
+-        assert resp.status_code == 429
++        #resp = self.client.post(
++        #    reverse("account_reset_password"), data={"email": "A@B.COM"}
++        #)
++        #assert resp.status_code == 429
