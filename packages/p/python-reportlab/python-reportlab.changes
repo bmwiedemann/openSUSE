@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 27 13:03:29 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Thu Feb 16 23:33:37 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - pick the primary interpreter for doc generation even if it is not "python3" 

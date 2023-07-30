@@ -16,9 +16,7 @@
 #
 
 
-%define oldpython python
-%define skip_python2 1
-
+%{?sle15_python_module_pythons}
 Name:           python-reportlab
 Version:        3.6.12
 Release:        0

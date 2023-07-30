@@ -385,4 +385,14 @@
     <comment>- pick the primary interpreter for doc generation even if it is not &quot;python3&quot;</comment>
     <requestid>1066286</requestid>
   </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>e14817c9e15052f16bc34a95fa94ec6b</srcmd5>
+    <version>3.6.12</version>
+    <time>1690743437</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1101076 from ecsos
+
+- Add %{?sle15_python_module_pythons}</comment>
+    <requestid>1101085</requestid>
+  </revision>
 </revisionlist>
