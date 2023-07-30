@@ -28,7 +28,9 @@ Summary:        Jupyter Event System library
 License:        BSD-3-Clause
 URL:            https://github.com/jupyter/jupyter_events
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter_events/jupyter_events-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+# PATCH-FIX-UPSTREAM jupyter_events-pr80-jsonschema-referencing.patch gh#jupyter/jupyter_events#80
+Patch0:         jupyter_events-pr80-jsonschema-referencing.patch
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling >= 1.5}
 BuildRequires:  %{python_module pip}
 BuildRequires:  alts
@@ -36,22 +38,24 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       alts
 Requires:       python-PyYAML >= 5.3
+Requires:       python-jsonschema-format-nongpl >= 4.18
 Requires:       python-python-json-logger >= 2.0.4
+Requires:       python-referencing
 Requires:       python-rfc3339-validator
 Requires:       python-rfc3986-validator >= 0.1.1
 Requires:       python-traitlets >= 5.3
-Requires:       (python-jsonschema-format-nongpl >= 3.2.0 with python-jsonschema-format-nongpl < 4.18)
 Provides:       python-jupyter_events = %{version}-%{release}
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module rfc3339-validator}
 BuildRequires:  %{python_module PyYAML >= 5.3}
 BuildRequires:  %{python_module click}
-BuildRequires:  %{python_module jsonschema-format-nongpl >= 3.2.0 with %python-jsonschema-format-nongpl < 4.18}
+BuildRequires:  %{python_module jsonschema-format-nongpl >= 4.18}
 BuildRequires:  %{python_module pytest >= 7}
 BuildRequires:  %{python_module pytest-asyncio >= 0.19.0}
 BuildRequires:  %{python_module pytest-console-scripts}
 BuildRequires:  %{python_module python-json-logger >= 2.0.4}
+BuildRequires:  %{python_module referencing}
 BuildRequires:  %{python_module rfc3986-validator >= 0.1.1}
 BuildRequires:  %{python_module rich}
 BuildRequires:  %{python_module traitlets >= 5.3}
@@ -67,8 +71,7 @@ these events.
 
 %prep
 %autosetup -p1 -n jupyter_events-%{version}
-# gh#pypa/hatch#801, gh#rpm-software-management/rpmlint#1043, gh#jupyter/jupyter_events#70
-sed -i -e 's/--color=yes//' -e '/jsonschema/ s/\[.*\]//' pyproject.toml
+sed -i -e 's/--color=yes//' pyproject.toml
 
 %build
 %pyproject_wheel

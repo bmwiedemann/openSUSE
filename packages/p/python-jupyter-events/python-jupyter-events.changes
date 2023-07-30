@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jul 30 15:30:25 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Add jupyter_events-pr80-jsonschema-referencing.patch
+  * gh#jupyter/jupyter_events#80
+  * Avoid test suite errors in consuming packages because of
+    jsonschema DeprecationWarning
+- Remove workaround for rpmlint parser crash
+
+-------------------------------------------------------------------
+Wed Jul 19 20:47:32 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Unpin jsonschema: nbformat has been fixed, the jupyter ecosystem
+  can work with jsonschema 4.18 now (asdf-format is still blocked
+  but not on the dependency chain for jupyter packages).
+
+-------------------------------------------------------------------
 Thu Jul 13 12:53:46 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Restrict to jsonschema < 4.18 in order to resolve conflicts with

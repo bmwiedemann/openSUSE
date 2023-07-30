@@ -49,4 +49,16 @@
   other jupyter packages</comment>
     <requestid>1098539</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>eb4bd3f974a2f7e6c536c48fab488f19</srcmd5>
+    <version>0.6.3</version>
+    <time>1690743505</time>
+    <user>dimstar_suse</user>
+    <comment>- Add jupyter_events-pr80-jsonschema-referencing.patch
+  * gh#jupyter/jupyter_events#80
+  * Avoid test suite errors in consuming packages because of
+    jsonschema DeprecationWarning
+- Remove workaround for rpmlint parser crash (forwarded request 1101393 from bnavigator)</comment>
+    <requestid>1101394</requestid>
+  </revision>
 </revisionlist>
