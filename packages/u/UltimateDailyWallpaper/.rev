@@ -70,4 +70,15 @@ pgcsw</comment>
 </comment>
     <requestid>1100427</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>79aa6625a83618d4106c9ef24ebb2042</srcmd5>
+    <version>3.3.2</version>
+    <time>1690743479</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.3.2
+   * Improvements in mainwindow.cpp
+   * Language files updated
+</comment>
+    <requestid>1101372</requestid>
+  </revision>
 </revisionlist>
