@@ -17,7 +17,7 @@
 
 
 Name:           yast2-firstboot
-Version:        4.6.0
+Version:        4.6.1
 Release:        0
 Summary:        YaST2 - Initial System Configuration
 License:        GPL-2.0-only
@@ -46,6 +46,9 @@ PreReq:         %fillup_prereq
 Recommends:     (icewm if libyui-qt)
 Supplements:    autoyast(firstboot)
 BuildArch:      noarch
+
+# New API for Y2Users::CommitConfig
+Conflicts:      yast2-users < 4.6.3
 
 %description
 The YaST firstboot utility runs after installation is completed.  It

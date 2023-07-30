@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 27 08:28:30 UTC 2023 - José Iván López González <jlopez@suse.com>
+
+- Adapt users client to the changes in yast2-users (related to
+  bsc#1206627).
+- 4.6.1
+
+-------------------------------------------------------------------
+Mon Mar 13 09:42:19 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
+
+- Removed unnecessary executable flag from several files
+  (bsc#1209094)
+
+-------------------------------------------------------------------
 Fri Mar 03 14:44:07 UTC 2023 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.6.0 (bsc#1208913)
