@@ -88,4 +88,25 @@
   * Support for Python 3.5</comment>
     <requestid>948264</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4fc8ac123b754fe06b9b87b0da9090ab</srcmd5>
+    <version>5.0.1</version>
+    <time>1690743476</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.1
+  * Fixed
+    - Add back missing key option in type hints for deprecated fast_* functions
+- Update to 5.0.0
+  * Added
+    - Added the map option to all try_* functions to enable very fast conversions of lists or other iterables (issues #61, #63 and #67)
+    - Added try_array to enable very fast conversions directly to numpy arrays (issues #62 and #65)
+  * Changed
+    - Move to a model where the return code is a value or error instead of a model where one has to check the error state after getting a value (issue #66)
+    - Significantly simplified the type annotations (by 4000+ lines!)
+  * Fixed
+    - Increased code coverage and fixed missing headers in codecov reaport (issue #64)
+- Add %{?sle15_python_module_pythons}
+- Ensure that SLE-15 uses gcc-12.</comment>
+    <requestid>1101334</requestid>
+  </revision>
 </revisionlist>

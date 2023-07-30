@@ -1,7 +1,7 @@
 #
 # spec file for package python-fastnumbers
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-fastnumbers
-Version:        3.2.1
+Version:        5.0.1
 Release:        0
 Summary:        Drop-in replacement for Python's int and float
 License:        MIT
@@ -30,8 +29,16 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing-extensions}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if 0%{?suse_version} <= 1500
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
+%else
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
+%endif
 # SECTION test requirements
 BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest >= 5}
 BuildRequires:  python3-testsuite
 # /SECTION
@@ -53,6 +60,10 @@ fastnumbers is a Python module with three objectives:
 %setup -q -n fastnumbers-%{version}
 
 %build
+%if 0%{?suse_version} <= 1500
+export CC=gcc-12
+export CXX=g++-12
+%endif
 export CFLAGS="%{optflags}"
 %python_build
 
@@ -68,6 +79,7 @@ pytest-%{$python_bin_suffix}
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/fastnumbers
+%{python_sitearch}/fastnumbers-%{version}*-info
 
 %changelog
