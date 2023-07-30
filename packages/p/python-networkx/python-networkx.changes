@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jul 27 11:55:11 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- update to 3.1
+  * Better syncing between G._succ and G._adj for directed G. And 
+    slightly better speed from all the core adjacency data structures.
+  * If your code sets G._succ or G._adj to new dictionary-like objects, 
+    you no longer have to set them both. Setting either will ensure 
+    the other is set as well.
+  * If you use the presence of the attribute _adj as a criteria for 
+    the object being a Graph instance, that code may need updating.
+  * We have added an experimental plugin feature, which let users 
+    choose alternate backends like GraphBLAS, CuGraph for computation.
+  * Improved integration with the general Scientific Python ecosystem.
+  * New drawing feature (module and tests) from NetworkX graphs to 
+    the TikZ library of TeX/LaTeX.
+  * Added an improved subgraph isomorphism algorithm called VF2++.
+  * OrderedGraph and other Ordered classes are replaced by Graph 
+    because Python dicts (and thus networkx graphs) now maintain order.
+  * The attrs keyword argument will be replaced with keyword only 
+    arguments source, target, name, key and link for 
+    json_graph/node_link functions.
+  * Supports Python 3.8, 3.9, 3.10, and 3.11.
+  * Stopped building PDF version of docs
+  * Use Ruff for linting
+
+-------------------------------------------------------------------
 Tue Jun 13 11:08:24 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

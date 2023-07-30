@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-networkx
-Version:        2.8.8
+Version:        3.1
 Release:        0
 Summary:        Python package for the study of complex networks
 License:        BSD-3-Clause
