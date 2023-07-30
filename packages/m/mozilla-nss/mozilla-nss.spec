@@ -359,6 +359,9 @@ cp -L  bin/certutil \
 # copy man-pages
 mkdir -p %{buildroot}%{_mandir}/man1/
 cp -L  %{_builddir}/nss-%{version}/nss/doc/nroff/* %{buildroot}%{_mandir}/man1/
+# Fix conflict with perl-PAR-Packer which has a pp-exe in _bindir
+mkdir -p %{buildroot}%{_mandir}/man7/
+mv %{buildroot}%{_mandir}/man1/pp.1 %{buildroot}%{_mandir}/man7/pp.7
 # copy unsupported tools
 cp -L  bin/atob \
        bin/btoa \
@@ -459,7 +462,6 @@ fi
 %{_libdir}/libnssutil3.so
 %{_libdir}/libsmime3.so
 %{_libdir}/libssl3.so
-#%%{_libdir}/libnsssqlite3.so
 
 %files devel
 %defattr(644, root, root, 755)

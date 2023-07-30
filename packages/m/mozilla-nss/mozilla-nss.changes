@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 28 16:29:26 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Fix file conflict for pp manual page [bsc#1213281]
+
+-------------------------------------------------------------------
 Tue Jul  4 08:20:31 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.90
@@ -3724,4 +3729,3 @@ Sat Mar 19 13:36:51 CET 2005 - stark@suse.de
 Tue Mar  8 09:16:59 CET 2005 - stark@suse.de
 
 - initial standalone package
-

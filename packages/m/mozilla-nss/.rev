@@ -2989,4 +2989,12 @@
                   package changes</comment>
     <requestid>1096951</requestid>
   </revision>
+  <revision rev="205" vrev="2">
+    <srcmd5>03f2a23d1773eb11f1aef3bbe347d3ee</srcmd5>
+    <version>3.90</version>
+    <time>1690743451</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1101298</requestid>
+  </revision>
 </revisionlist>
