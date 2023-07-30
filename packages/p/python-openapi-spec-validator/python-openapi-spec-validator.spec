@@ -30,11 +30,10 @@ BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Provides:       python-openapi_spec_validator
-Requires:       python-importlib-resources
-Requires:       python-jsonschema >= 4.18
-Requires:       python-jsonschema-spec >= 0.2.3
-Requires:       python-lazy-object-proxy >= 1.7.1
-Requires:       python-openapi-schema-validator >= 0.6.0
+Requires:       (python-jsonschema >= 4.18 with python-jsonschema < 5)
+Requires:       (python-jsonschema-spec >= 0.2.3 with python-jsonschema-spec < 0.3)
+Requires:       (python-lazy-object-proxy >= 1.7.1 with python-lazy-object-proxy < 2)
+Requires:       (python-openapi-schema-validator >= 0.6.0 with python-openapi-schema-validator < 0.7)
 %if %{python_version_nodots} < 39
 Requires:       python-importlib-resources >= 5.8.0
 %endif
@@ -43,10 +42,10 @@ Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module importlib-resources >= 5.8.0 if %python-base < 3.9}
-BuildRequires:  %{python_module jsonschema >= 4.18}
-BuildRequires:  %{python_module jsonschema-spec >= 0.2.3}
-BuildRequires:  %{python_module lazy-object-proxy >= 1.7.1}
-BuildRequires:  %{python_module openapi-schema-validator >= 0.4.2}
+BuildRequires:  %{python_module jsonschema >= 4.18 with %python-jsonschema < 5}
+BuildRequires:  %{python_module jsonschema-spec >= 0.2.3 with %python-jsonschema-spec < 0.3}
+BuildRequires:  %{python_module lazy-object-proxy >= 1.7.1 with %python-lazy-object-proxy < 2}
+BuildRequires:  %{python_module openapi-schema-validator >= 0.6.0 with %python-openapi-schema-validator < 0.7}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
