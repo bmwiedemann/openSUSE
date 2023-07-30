@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jul 30 09:50:06 UTC 2023 - Jan Baier <jbaier@suse.com>
+
+- update to 13.4
+  - Fix: Setting tree lines drawn incorrectly for RTL languages (#11070)
+  - Fix #11043: Don't choose toolbar dropdown option if focus is lost (#11044)
+  - Fix #10917: Pay loan interest before generating statistics (#11040)
+  - Fix #11016: Use after free in network invalid packet error path (#11022)
+  - Fix #10987: Double-close of dropdown stopped land-info tool working as default (#11000)
+
+-------------------------------------------------------------------
 Mon Jun 12 08:25:32 UTC 2023 - Jan Baier <jbaier@suse.com>
 
 - update to 13.3
