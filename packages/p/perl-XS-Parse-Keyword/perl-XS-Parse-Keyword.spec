@@ -18,12 +18,14 @@
 
 %define cpan_name XS-Parse-Keyword
 Name:           perl-XS-Parse-Keyword
-Version:        0.34
+Version:        0.360.0
 Release:        0
+%define cpan_version 0.36
+Provides:       perl(XS::Parse::Keyword) = 0.360.0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        XS functions to assist in parsing keyword syntax
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/P/PE/PEVANS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/P/PE/PEVANS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -32,6 +34,10 @@ BuildRequires:  perl(ExtUtils::CChecker) >= 0.11
 BuildRequires:  perl(ExtUtils::ParseXS) >= 3.16
 BuildRequires:  perl(Module::Build) >= 0.400400
 BuildRequires:  perl(Test2::V0)
+Provides:       perl(XS::Parse::Infix) = 0.360.0
+Provides:       perl(XS::Parse::Infix::Builder) = 0.360.0
+Provides:       perl(XS::Parse::Keyword::Builder) = 0.360.0
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -47,7 +53,7 @@ evolving and subject to change. Later versions may break ABI compatibility,
 requiring changes or at least a rebuild of any module that depends on it.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Build.PL --installdirs=vendor optimize="%{optflags}"

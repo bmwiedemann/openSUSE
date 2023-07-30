@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jul 21 03:11:07 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.36
+   see /usr/share/doc/packages/perl-XS-Parse-Keyword/Changes
+
+  0.36    2023-07-20
+          [BUGFIXES]
+           * Remember to also call `op_scope()` after `block_end()` if the
+             XPK_FLAG_BLOCKSCOPE flag is set
+
+  0.35    2023-07-19
+          [CHANGES]
+           * Added XPK_INTRO_MY, to call `intro_my()`
+           * Added XPK_FLAG_BLOCKSCOPE to wrap a block_start()+block_end()
+             around a syntax construction
+           * Renamed XPK_PARENSCOPE to XPK_PARENS, etc..
+           * Adjusted documentation of XS::Parse::Infix for release of
+             Perl v5.38
+
+-------------------------------------------------------------------
 Thu Jun 15 03:11:03 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.34
