@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jul 16 08:09:41 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.2:
+  * Don't forget L3i when defining filters for multiple levels of
+    caches with hwloc_topology_set_cache/icache_types_filter().
+  * Fix object total_memory after hwloc_topology_insert_group_object().
+  * Fix the (non-yet) exporting in synthetic description for
+    complex memory hierarchies with memory-side caches, etc.
+  * Fix some default size attributes when building synthetic
+    topologies.
+  * Fix size units in hwloc-annotate.
+  * Improve bitmap reallocation error management in many functions.
+  * Documentation improvements 
+
+-------------------------------------------------------------------
 Tue Jun 20 20:22:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.9.1:
