@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 28 19:03:30 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- build with older re2 on Tumbleweed, the upcoming re2 2023-07-01
+  breaks qtwebengine 
+
+-------------------------------------------------------------------
 Thu May 25 15:01:57 UTC 2023 - christophe@krop.fr
 
 - Update to version 5.15.14:

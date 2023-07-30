@@ -895,4 +895,12 @@ of the last blockers as we're still waiting for an upstream fix. (forwarded requ
     <comment></comment>
     <requestid>1089188</requestid>
   </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>5ce2f831802b0a12447e6b4e249ac187</srcmd5>
+    <version>5.15.14</version>
+    <time>1690743443</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1101256</requestid>
+  </revision>
 </revisionlist>
