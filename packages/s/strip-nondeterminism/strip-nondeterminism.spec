@@ -17,18 +17,18 @@
 
 
 Name:           strip-nondeterminism
-Version:        1.12.0
+Version:        1.13.1
 Release:        0
 Summary:        A tool for stripping non-deterministic information
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/Perl
 URL:            https://anonscm.debian.org/git/reproducible/strip-nondeterminism.git
+#Bug-Database: https://salsa.debian.org/reproducible-builds/strip-nondeterminism/-/issues
 Source:         https://reproducible-builds.org/_lfs/releases/strip-nondeterminism/strip-nondeterminism-%{version}.tar.bz2
 Source1:        https://reproducible-builds.org/_lfs/releases/strip-nondeterminism/strip-nondeterminism-%{version}.tar.bz2.asc
 Source2:        rpmmacros
 Source3:        strip-all-nondeterminism
 Source4:        %{name}.keyring
-Patch0:         https://salsa.debian.org/reproducible-builds/strip-nondeterminism/-/commit/f1017c67.patch
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl-base

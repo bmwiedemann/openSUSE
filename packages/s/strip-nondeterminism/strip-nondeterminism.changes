@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 28 16:19:49 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Update to version 1.13.1
+  * Update pyzip regex for latest file(1).
+  * Set upstream metadata fields: Bug-Database, Bug-Submit.
+  * dh_strip_nondeterminism: use get_non_binnmu_date_epoch() when available.
+  * Add a lintian overrides for some false positive tags.
+  * Do not fail on JAR archives containing invalid members with a .jar
+    extension.
+- Drop upstream f1017c67.patch
+
+-------------------------------------------------------------------
 Wed Jan 11 11:53:54 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add f1017c67.patch: Support the magic format as returned by file
@@ -76,4 +88,3 @@ Sun Jan  1 00:00:51 UTC 2017 - bwiedemann@suse.com
 Tue Mar  8 16:08:31 UTC 2016 - bwiedemann@suse.com
 
 - initial package version 0.016
-
