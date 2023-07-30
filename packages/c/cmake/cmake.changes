@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 28 18:41:34 UTC 2023 - Christoph G <foss@grueninger.de>
+
+- Update to 3.27.1
+  * cmComputeLinkInformation: track OBJECT library dependencies
+  * cmTarget: Restore Fortran_PREPROCESS property initialization
+  * FindOpenSSL: Prefer OPENSSL_ROOT_DIR only if non-empty
+  * CTest: Fix regression in calculating test timeout
+
+-------------------------------------------------------------------
 Tue Jul 18 20:29:18 UTC 2023 - Christoph G <foss@grueninger.de>
 
 - Update to 3.27.0
