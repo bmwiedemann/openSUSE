@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jul 26 06:21:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.5.18:
+  * Updated the .ga TLD server. (Closes: #1037288)
+  * Added new recovered IPv4 allocations.
+  * Removed the delegation of 43.0.0.0/8 to JPNIC.
+  * Removed 12 new gTLDs which are no longer active.
+  * Improved the man page source, courtesy of Bjarni Ingi
+    Gislason.
+  * Added the .edu.za SLD server.
+  * Updated the .alt.za SLD server.
+  * Added the -ru and -su NIC handles servers.
+
+-------------------------------------------------------------------
 Thu May 18 13:12:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.5.17:

@@ -1,8 +1,8 @@
-Index: whois-5.5.16/mkpasswd.c
+Index: whois-5.5.18/mkpasswd.c
 ===================================================================
---- whois-5.5.16.orig/mkpasswd.c
-+++ whois-5.5.16/mkpasswd.c
-@@ -17,10 +17,7 @@
+--- whois-5.5.18.orig/mkpasswd.c
++++ whois-5.5.18/mkpasswd.c
+@@ -19,10 +19,7 @@
   */
  
  /* for crypt, snprintf and strcasecmp */
@@ -13,12 +13,12 @@ Index: whois-5.5.16/mkpasswd.c
  
  /* System library */
  #include <stdio.h>
-Index: whois-5.5.16/whois.c
+Index: whois-5.5.18/whois.c
 ===================================================================
---- whois-5.5.16.orig/whois.c
-+++ whois-5.5.16/whois.c
-@@ -7,9 +7,6 @@
-  * (at your option) any later version.
+--- whois-5.5.18.orig/whois.c
++++ whois-5.5.18/whois.c
+@@ -9,9 +9,6 @@
+  * SPDX-License-Identifier: GPL-2.0-or-later
   */
  
 -/* for AI_IDN */
@@ -27,11 +27,11 @@ Index: whois-5.5.16/whois.c
  /* System library */
  #include <stdio.h>
  #include <stdlib.h>
-Index: whois-5.5.16/Makefile
+Index: whois-5.5.18/Makefile
 ===================================================================
---- whois-5.5.16.orig/Makefile
-+++ whois-5.5.16/Makefile
-@@ -69,7 +69,7 @@ else
+--- whois-5.5.18.orig/Makefile
++++ whois-5.5.18/Makefile
+@@ -70,7 +70,7 @@ else
  mkpasswd_LDADD += -lcrypt
  endif
  
