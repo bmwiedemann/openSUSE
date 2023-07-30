@@ -19,13 +19,13 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           gpxsee
-Version:        13.4
-Release:        1
+Version:        13.5
+Release:        2
 Summary:        GPS log file visualization and analysis tool
 License:        GPL-3.0-only
 Group:          Productivity/Graphics/Viewers
 Url:            http://www.gpxsee.org
-Source0:        GPXSee-%{version}.tar.gz
+Source0:        https://github.com/tumic0/GPXSee/archive/%{version}/GPXSee-%{version}.tar.gz
 
 BuildRequires:  gcc-c++
 BuildRequires:  make

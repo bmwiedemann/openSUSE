@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul 30 11:40:20 CEST 2023 - tumic@cbox.cz
+
+- Update to version 13.5
+  * Added graph pinch zooming.
+  * Display one-way street info in IMG maps.
+  * Use 512px tiles in Mapsforge maps rendering.
+
+-------------------------------------------------------------------
 Sat Jun 10 09:59:25 CEST 2023 - tumic@cbox.cz
 
 - Update to version 13.4

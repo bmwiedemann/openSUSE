@@ -1,3 +1,11 @@
+gpxsee (13.5) stable; urgency=low
+
+  * Added graph pinch zooming.
+  * Display one-way street info in IMG maps.
+  * Use 512px tiles in Mapsforge maps rendering.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sun, 30 Jul 2023 11:45:38 +0200
+
 gpxsee (13.4) stable; urgency=low
 
   * Extended Mapsforge render themes support.
