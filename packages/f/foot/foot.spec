@@ -17,7 +17,7 @@
 
 
 Name:           foot
-Version:        1.15.1
+Version:        1.15.2
 Release:        0
 Summary:        A Wayland terminal emulator
 License:        MIT
@@ -78,6 +78,7 @@ users an easy way to theme foot.
 	-Dgrapheme-clustering=enabled \
 	-Dime=true \
 	-Dterminfo=enabled \
+	-Dterminfo-base-name=foot-extra \
 	-Dtests=false \
 	-Dthemes=true \
 	-Dutmp-backend=libutempter \
@@ -87,8 +88,6 @@ users an easy way to theme foot.
 %install
 %meson_install
 rm -r %{buildroot}/%{_datadir}/doc/%{name}/
-mv %{buildroot}/%{_datadir}/terminfo/f/foot %{buildroot}/%{_datadir}/terminfo/f/foot-extra
-mv %{buildroot}/%{_datadir}/terminfo/f/foot-direct %{buildroot}/%{_datadir}/terminfo/f/foot-extra-direct
 
 %files
 %license LICENSE

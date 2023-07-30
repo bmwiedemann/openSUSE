@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jul 30 17:16:33 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.15.2:
+  * foot.ini options:
+    * Added tweak.bold-text-in-bright-amount option.
+  * Fixed various crashes related to copy-paste, font sizes, wayland support
+    of compositor, and more.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.15.2 for more details.
+
+-------------------------------------------------------------------
 Fri Jul 21 07:11:08 UTC 2023 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to v1.15.1:
