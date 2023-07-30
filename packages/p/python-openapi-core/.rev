@@ -229,4 +229,12 @@
     InvalidParameter, InvalidRequestBody, InvalidHeader). Use __cause__</comment>
     <requestid>1100539</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>cd9420a524a0d3f951e475a6824bba8b</srcmd5>
+    <version>0.18.0</version>
+    <time>1690743481</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1101373</requestid>
+  </revision>
 </revisionlist>

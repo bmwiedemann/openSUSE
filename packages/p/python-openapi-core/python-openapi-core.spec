@@ -33,28 +33,31 @@ BuildRequires:  %{python_module Django >= 3.0}
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module WebOb}
 BuildRequires:  %{python_module Werkzeug}
-BuildRequires:  %{python_module aiohttp}
-BuildRequires:  %{python_module asgiref >= 2.6}
+BuildRequires:  %{python_module aiohttp >= 3}
+BuildRequires:  %{python_module asgiref >= 3.6.0}
 BuildRequires:  %{python_module falcon >= 3.0}
 BuildRequires:  %{python_module isodate}
-BuildRequires:  %{python_module jsonschema >= 4.18}
-BuildRequires:  %{python_module jsonschema-spec >= 0.2.3}
+BuildRequires:  %{python_module jsonschema >= 4.18.0 with %python-jsonschema < 5}
+BuildRequires:  %{python_module jsonschema-spec >= 0.2.3 with %python-jsonschema-spec < 0.3}
 BuildRequires:  %{python_module more-itertools}
-BuildRequires:  %{python_module openapi-schema-validator >= 0.6.0}
-BuildRequires:  %{python_module openapi-spec-validator >= 0.6.0}
+BuildRequires:  %{python_module multidict >= 6.0.4}
+BuildRequires:  %{python_module openapi-schema-validator >= 0.6 with %python-openapi-schema-validator < 0.7}
+BuildRequires:  %{python_module openapi-spec-validator >= 0.6 with %python-openapi-spec-validator < 0.7}
 BuildRequires:  %{python_module parse}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module responses}
 # /SECTION
 Requires:       python-Werkzeug
-Requires:       python-asgiref >= 3.6
+Requires:       python-asgiref >= 3.6.0
 Requires:       python-isodate
-Requires:       python-jsonschema >= 4.18
-Requires:       python-jsonschema-spec >= 0.2.3
 Requires:       python-more-itertools
 Requires:       python-openapi-schema-validator >= 0.6.0
 Requires:       python-openapi-spec-validator >= 0.6.0
 Requires:       python-parse
+Requires:       (python-jsonschema >= 4.18.0 with python-jsonschema < 5)
+Requires:       (python-jsonschema-spec >= 0.2.3 with python-jsonschema-spec < 0.3)
+Requires:       (python-openapi-schema-validator >= 0.6 with python-openapi-schema-validator < 0.7)
+Requires:       (python-openapi-spec-validator >= 0.6 with python-openapi-spec-validator < 0.7)
 BuildArch:      noarch
 %python_subpackages
 
