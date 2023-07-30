@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul  8 03:08:58 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.70
+   see /usr/share/doc/packages/perl-Test-Differences/Changes
+
+  0.70   2023-07-07
+      - Stop pointless use of taint-mode in tests, so tests pass when perl is
+        built without taint support
+
+-------------------------------------------------------------------
 Sat Jan  8 03:08:57 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.69
