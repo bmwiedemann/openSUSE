@@ -6303,4 +6303,12 @@
     Use-after-free in workers</comment>
     <requestid>1098544</requestid>
   </revision>
+  <revision rev="405" vrev="1">
+    <srcmd5>8fb000aac55867bc633f63a8862228ee</srcmd5>
+    <version>115.0.3</version>
+    <time>1690743458</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1101322</requestid>
+  </revision>
 </revisionlist>
