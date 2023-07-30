@@ -16,9 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 %define modname dtfabric
-%define skip_python2 1
 Name:           python-dtfabric
 Version:        20221218
 Release:        0
@@ -28,12 +27,14 @@ Group:          Development/Languages/Python
 URL:            https://github.com/libyal/dtfabric
 Source:         https://github.com/libyal/dtfabric/releases/download/%{version}/dtfabric-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildArch:      noarch
+Requires:       python-PyYAML
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -43,10 +44,10 @@ dtFabric, or data type fabric, is a project to manage data types and structures,
 %setup -q -n %{modname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/validate-definitions.py
 # setup.py install helpfully installs files where it shouldn’t
 rm -rv %{buildroot}%{_datadir}/doc/%{modname}
@@ -68,6 +69,7 @@ rm -rv %{buildroot}%{_datadir}/doc/%{modname}
 %license LICENSE
 %doc ACKNOWLEDGEMENTS AUTHORS README
 %python_alternative %{_bindir}/validate-definitions.py
-%{python_sitelib}/*
+%{python_sitelib}/dtfabric
+%{python_sitelib}/dtfabric-%{version}*-info
 
 %changelog

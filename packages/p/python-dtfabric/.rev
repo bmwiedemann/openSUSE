@@ -55,4 +55,14 @@
     * Auto-generated</comment>
     <requestid>1056191</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>1cb6ecd43fe51909dd7d886dfba160fc</srcmd5>
+    <version>20221218</version>
+    <time>1690743478</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up SPEC file.
+- use %sle15_python_module_pythons
+</comment>
+    <requestid>1101369</requestid>
+  </revision>
 </revisionlist>

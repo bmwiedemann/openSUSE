@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jul 30 07:15:31 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Clean up SPEC file.
+
+-------------------------------------------------------------------
+Sun Jul 30 02:52:20 UTC 2023 - Greg Freemyer <Greg.Freemyer@gmail.com>
+
+- use %sle15_python_module_pythons
+
+-------------------------------------------------------------------
 Wed Jan  4 16:47:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 20221218:
