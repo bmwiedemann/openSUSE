@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Jul 31 12:49:52 UTC 2023 - maiku.fabian@gmail.com
+
+- Include inscript2 input methods only for suse_version < 1550
+  i.e. do not include it on Tumbleed anymore. Because Tumbleweed
+  has m17n-db-1.8.2 which has the inscript2 input methods already.
+
+-------------------------------------------------------------------
+Sun Jul 30 11:23:12 UTC 2023 - maiku.fabian@gmail.com
+
+- Update to 2.23.2
+- Move self._gsettings.connect('changed', self.on_gsettings_value_changed)
+  in __init__() *after* defining self._set_get_functions
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/454)
+  (Resolves: https://bugzilla.redhat.com/show_bug.cgi?id=2171140)
+- Translation update from Weblate (ar 100%)
+- Update emoji annotations from CLDR
+
+-------------------------------------------------------------------
+Mon Jul 03 20:05:11 UTC 2023 - maiku.fabian@gmail.com
+
+- Update to 2.23.1
+- Translation update from Weblate (pl 100%)
+- Adapt some test cases to changes in enchant
+
+-------------------------------------------------------------------
+Thu Jun 29 14:31:58 UTC 2023 - maiku.fabian@gmail.com
+
+- Update to 2.23.0
+- Translation update from Weblate (de 100%, ka 100%, nl 100%, sv 100%, uk 100%)
+- configure.ac: add a warning about not using /usr/local as the prefix
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/444)
+- Add an option to convert language specific digits to ASCII
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/445)
+- Strip entered autosettings value for boolean values
+- Update emoji annotations from CLDR
+
+-------------------------------------------------------------------
 Tue May 09 11:02:33 UTC 2023 - maiku.fabian@gmail.com
 
 - Update to 2.22.5

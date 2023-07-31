@@ -17,7 +17,7 @@
 
 
 Name:           ibus-typing-booster
-Version:        2.22.5
+Version:        2.23.2
 Release:        0
 Summary:        An input completion utility
 License:        GPL-3.0-or-later
@@ -94,12 +94,14 @@ input method to speedup typing.
 
 %prep
 %setup -q
+%if 0%{?suse_version} < 1550
 ##extract inscript2 maps
 tar xzf %{SOURCE1}
+%endif
 
 %build
 export PYTHON=%{_bindir}/python3
-%configure --disable-static --disable-additional --libexecdir=%{_libdir}/ibus
+%configure --disable-static --libexecdir=%{_libdir}/ibus
 make %{?_smp_mflags}
 
 %install
@@ -109,10 +111,12 @@ gzip -n --force --best %{buildroot}/%{_datadir}/%{name}/data/*.{txt,json} \
     %{buildroot}/%{_datadir}/%{name}/data/annotations/*.xml \
     %{buildroot}/%{_datadir}/%{name}/data/annotationsDerived/*.xml
 
+%if 0%{?suse_version} < 1550
 #install inscript2 keymaps
 test -d %{buildroot}%{_datadir}/m17n/icons || mkdir -p %{buildroot}%{_datadir}/m17n/icons
 cp -p inscript2/IM/* %{buildroot}%{_datadir}/m17n/
 cp -p inscript2/icons/* %{buildroot}%{_datadir}/m17n/icons
+%endif
 
 %suse_update_desktop_file -i -u emoji-picker GTK Utility
 
@@ -214,9 +218,11 @@ fi
 %{_libdir}/ibus/ibus-setup-typing-booster
 %{_datadir}/applications/*.desktop
 %{_datadir}/glib-2.0/schemas/org.freedesktop.ibus.engine.typing-booster.gschema.xml
+%if 0%{?suse_version} < 1550
 %dir %{_datadir}/m17n
 %{_datadir}/m17n/*.mim
 %dir %{_datadir}/m17n/icons
 %{_datadir}/m17n/icons/*.png
+%endif
 
 %changelog
