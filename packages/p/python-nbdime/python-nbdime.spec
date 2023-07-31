@@ -56,8 +56,7 @@ BuildRequires:  jupyter-rpm-macros
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module jupyter-server-test}
-# resolver issues: jupyter-events requires jsonschema < 4.18
-BuildRequires:  %{python_module jsonschema < 4.18}
+BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module pytest >= 3.6}
 BuildRequires:  %{python_module pytest-mock}

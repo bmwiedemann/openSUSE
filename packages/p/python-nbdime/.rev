@@ -127,4 +127,14 @@
   issues</comment>
     <requestid>1099187</requestid>
   </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>af251781f2a8d272f765e8ee2b2b83cc</srcmd5>
+    <version>unknown</version>
+    <time>1690809871</time>
+    <user>maxlin_factory</user>
+    <comment>- Unpin jsonschema: nbformat has been fixed, jupyter-events could
+  be unpinned
+</comment>
+    <requestid>1101422</requestid>
+  </revision>
 </revisionlist>
