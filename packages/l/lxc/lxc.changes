@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 31 10:43:32 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.3:
+  * Fix nftables syntax for IPv6 NAT
+  * Added support for squashfs OCI images
+  * Fixes when running LXC with io_uring
+  + detailed changelog at https://discuss.linuxcontainers.org/t/lxc-5-0-3-lts-has-been-released/17708
+
+-------------------------------------------------------------------
 Tue May  2 14:49:45 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 5.0.2:

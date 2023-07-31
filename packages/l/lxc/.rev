@@ -926,4 +926,16 @@
     <comment></comment>
     <requestid>1087230</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>d5f843e7730ec18a6d212e36ac034d10</srcmd5>
+    <version>5.0.3</version>
+    <time>1690809882</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 5.0.3:
+  * Fix nftables syntax for IPv6 NAT
+  * Added support for squashfs OCI images
+  * Fixes when running LXC with io_uring
+  + detailed changelog at https://discuss.linuxcontainers.org/t/lxc-5-0-3-lts-has-been-released/17708</comment>
+    <requestid>1101506</requestid>
+  </revision>
 </revisionlist>
