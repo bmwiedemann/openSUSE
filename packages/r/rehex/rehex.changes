@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Jul 31 06:17:56 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.60.1:
+  New features:
+  * Add data histogram tool (#140).
+  * Monitor for open files being externally modified and allow
+    reloading (#124).
+  * Add "Delete comment and children" context menu command to
+    delete a comment and any comments encapsulated by it (#198).
+  * Allow dragging tabs between windows or out to new ones.
+  Quality of life improvements:
+  * Use virtual offsets in "Select range" dialog.
+  * Don't re-open files to save when there are no changes (#193).
+  * Improve performance when large numbers of comments are defined.
+  * Open original file when passed a rehex-meta file on the command line (#207).
+  Character set handling:
+  * Add <charset = "XXX"> syntax to templates (#184).
+  * Add character set option to text search (#182, #200).
+  * Add IBM codepage 866 and Windows-1251 (#208).
+  Binary templates:
+  * Expose current array index as ArrayIndex when expanding arrays
+    of structs in templates (#191).
+  * Fix true/false not being usable inside template functions/structs (#197).
+  * Add new ReadString(), SPrintf(), SetComment(), StringLengthBytes(),
+    ArrayPush(), ArrayPop() and OffsetOf() template function.
+  * Fix repeated execution of the same switch() block in a template (#202).
+  * Add 'private' variables to template language.
+  * Fix template format strings that expand to further format tokens.
+  * Fix template error when converting a float to an int.
+  * Remember recently selected templates (#183).
+  * Implement lexical variable scoping in templates and allow functions
+    to access global variables defined above them (#190).
+  * Add "Apply template from cursor" option to binary template tool.
+  Bug fixes:
+  * Fix crash when running rehex for the first time on some systems (#194).
+  * Correctly draw insert cursor over highlighted data and at the end of the file (#196).
+  * Fix cases where the strings tool would appear to run forever with an empty file.
+  * Remove strings from the strings panel when they are deleted from the file.
+  * Fix crash when attempting to open a directory/bundle on macOS.
+
+-------------------------------------------------------------------
 Fri Nov  4 13:21:23 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 - Use the default lua version (currently 5.4): buildrequire
   lua-busted instead of lua53-busted, which then fails to run

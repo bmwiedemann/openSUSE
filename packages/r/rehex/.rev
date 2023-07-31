@@ -84,4 +84,41 @@
   * Fix some undefined behaviour issues.</comment>
     <requestid>1033527</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1a8146c20166e59f072fdee4aee3dfef</srcmd5>
+    <version>0.60.1</version>
+    <time>1690809896</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 0.60.1:
+  New features:
+  * Add data histogram tool (#140).
+  * Monitor for open files being externally modified and allow
+    reloading (#124).
+  * Add &quot;Delete comment and children&quot; context menu command to
+    delete a comment and any comments encapsulated by it (#198).
+  * Allow dragging tabs between windows or out to new ones.
+  Quality of life improvements:
+  * Use virtual offsets in &quot;Select range&quot; dialog.
+  * Don't re-open files to save when there are no changes (#193).
+  * Improve performance when large numbers of comments are defined.
+  * Open original file when passed a rehex-meta file on the command line (#207).
+  Character set handling:
+  * Add &lt;charset = &quot;XXX&quot;&gt; syntax to templates (#184).
+  * Add character set option to text search (#182, #200).
+  * Add IBM codepage 866 and Windows-1251 (#208).
+  Binary templates:
+  * Expose current array index as ArrayIndex when expanding arrays
+    of structs in templates (#191).
+  * Fix true/false not being usable inside template functions/structs (#197).
+  * Add new ReadString(), SPrintf(), SetComment(), StringLengthBytes(),
+    ArrayPush(), ArrayPop() and OffsetOf() template function.
+  * Fix repeated execution of the same switch() block in a template (#202).
+  * Add 'private' variables to template language.
+  * Fix template format strings that expand to further format tokens.
+  * Fix template error when converting a float to an int.
+  * Remember recently selected templates (#183).
+  * Implement lexical variable scoping in templates and allow functions
+    to access global variables defined above them (#190).</comment>
+    <requestid>1101459</requestid>
+  </revision>
 </revisionlist>
