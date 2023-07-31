@@ -1717,4 +1717,11 @@ Main motivation is to have the license files in MicroOS also in /usr/, not in /e
     <user>dimstar_suse</user>
     <comment>Make sure we have suse-module-rpm-scriptlets on the disk - not the alternative</comment>
   </revision>
+  <revision rev="241" vrev="239">
+    <srcmd5>9cb0cf66fe63cbcbadf363b82cbef1ff</srcmd5>
+    <version>unknown</version>
+    <time>1690779610</time>
+    <user>maxlin_factory</user>
+    <comment>product-buidler 1.4.14 new introduces DOWNLOAD_MIRROR_POLICY and was enabled by default, however it break ftp-tree build when it found 2 chromedriver in the same repo, set DOWNLOAD_MIRROR_POLICY to false for now until we address it as packaging issue or an BS issue</comment>
+  </revision>
 </revisionlist>
