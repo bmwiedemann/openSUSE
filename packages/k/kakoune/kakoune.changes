@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul 31 06:00:45 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2023.07.29:
+  * <a-u> and <a-U> now undo/redo selection changes; the previous
+    meaning of moving in history tree has been moved to <c-j> and <c-k>
+  * %exp{...} expansions provide flexible quoting for expanded
+    strings (as double quoted strings)
+  * <c-g> cancels the current operation and goes back to the main
+    event loop, this provides an escape hatch when Kakoune seems
+    to hang due to a costly operation
+  * show-matching -previous highlighter will fall back onto the
+    character preceeding the cursor
+- Remove 894e44fdbff4221549d358faa4a73ea43e1283a5.patch
+
+-------------------------------------------------------------------
 Sun Apr  2 12:00:45 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add upstream bug fix patch: Fix new gcc errors for missing types.

@@ -17,14 +17,13 @@
 
 
 Name:           kakoune
-Version:        2022.10.31
+Version:        2023.07.29
 Release:        0
 Summary:        A code editor heavily inspired by Vim
 License:        Unlicense
 Group:          Productivity/Text/Editors
 URL:            https://kakoune.org/
 Source:         https://github.com/mawww/kakoune/releases/download/v%{version}/kakoune-%{version}.tar.bz2
-Patch:          https://github.com/mawww/kakoune/commit/894e44fdbff4221549d358faa4a73ea43e1283a5.patch
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 12
