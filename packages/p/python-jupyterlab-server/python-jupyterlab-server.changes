@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jul 30 15:55:31 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Drop jupyterlab_server-ignore-jsonschema-deprecation.patch
+
+-------------------------------------------------------------------
+Sat Jul 29 22:10:28 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.24.0
+  * add lab config for copy absolute path #405 (@pauky)
+  * Requirements updates
+- Disable openapi subpackage: gh#jupyterlab/jupyterlab_server#400
+- Ignore jsonschema deprecation 
+  * Add jupyterlab_server-ignore-jsonschema-deprecation.patch
+
+-------------------------------------------------------------------
+Thu Jul 20 07:07:33 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Raise upper pin for openapi-spec-validator
+  * gh#jupyterlab/jupyterlab_server#403
+
+-------------------------------------------------------------------
 Tue Jun 13 17:56:08 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.23.0

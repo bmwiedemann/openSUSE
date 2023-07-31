@@ -25,8 +25,10 @@
 %bcond_with test
 %endif
 
+# https://github.com/jupyterlab/jupyterlab_server/issues/400
+%bcond_with openapi
 Name:           python-jupyterlab-server%{psuffix}
-Version:        2.23.0
+Version:        2.24.0
 Release:        0
 Summary:        Server components for JupyterLab and JupyterLab-like applications
 License:        BSD-3-Clause
@@ -85,15 +87,16 @@ limited scope.
 Summary:        The jupyterlab_server[test] requirements
 Requires:       python-Werkzeug
 Requires:       python-ipykernel
-Requires:       python-jupyterlab-server-openapi = %{version}
 Requires:       python-pytest >= 7
 Requires:       python-pytest-console-scripts
 Requires:       python-pytest-jupyter-server >= 0.6.2
 Requires:       python-pytest-timeout
 Requires:       python-requests-mock
-Requires:       (python-openapi-spec-validator >= 0.5.1 with python-openapi-spec-validator < 0.6)
+Requires:       (python-openapi-spec-validator >= 0.5.1 with python-openapi-spec-validator < 0.7)
 #Requires:       python-sphinxcontrib-spelling
 Requires:       python-strict-rfc3339
+Requires:       python-jupyterlab-server = %{version}
+%{?_with_openapi:Requires:       python-jupyterlab-server-openapi = %{version}}
 
 %description test
 Metapackage for the jupyterlab_server[test] requirement specifier
@@ -124,6 +127,14 @@ sed -i 's/--color=yes//' pyproject.toml
 %if %{with test}
 %check
 export PYTHONDONTWRITEBYTECODE=1
+%if !%{with openapi}
+ignoretests=" --ignore tests/test_labapp.py"
+ignoretests+=" --ignore tests/test_listings_api.py"
+ignoretests+=" --ignore tests/test_settings_api.py"
+ignoretests+=" --ignore tests/test_themes_api.py"
+ignoretests+=" --ignore tests/test_translation_api.py"
+ignoretests+=" --ignore tests/test_workspaces_api.py"
+%endif
 %{python_expand # https://github.com/jupyterlab/jupyterlab_server/issues/390
 $python -m venv build/testenv --system-site-packages
 for p in \
@@ -132,7 +143,7 @@ for p in \
 do
   build/testenv/bin/pip install --use-pep517 --no-build-isolation --disable-pip-version-check $p
 done
-build/testenv/bin/python -m pytest -v
+build/testenv/bin/python -m pytest -v $ignoretests
 }
 %endif
 
@@ -146,8 +157,10 @@ build/testenv/bin/python -m pytest -v
 %files %{python_files test}
 %license LICENSE
 
+%if %{with openapi}
 %files %{python_files openapi}
 %license LICENSE
+%endif
 %endif
 
 %changelog
