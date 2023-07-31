@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 19 20:43:29 UTC 2023 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.9.1
+  * Fix deprecation warning when importing from jsonschema #368
+    (@eladkal)
+  * Unpin jsonschema
+
+-------------------------------------------------------------------
 Sun Jul  9 12:09:42 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Like many other packages, jsonschema 4.18 breaks nbformat.

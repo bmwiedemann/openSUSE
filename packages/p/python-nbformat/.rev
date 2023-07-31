@@ -224,4 +224,16 @@
     <comment>go (forwarded request 1097822 from bnavigator)</comment>
     <requestid>1097823</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>38a913636e07ba7e8fc47e9b409e8d7b</srcmd5>
+    <version>5.9.1</version>
+    <time>1690809874</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 5.9.1
+  * Fix deprecation warning when importing from jsonschema #368
+    (@eladkal)
+  * Unpin jsonschema
+</comment>
+    <requestid>1101423</requestid>
+  </revision>
 </revisionlist>

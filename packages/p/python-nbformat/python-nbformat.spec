@@ -18,7 +18,7 @@
 
 %bcond_without libalternatives
 Name:           python-nbformat
-Version:        5.9.0
+Version:        5.9.1
 Release:        0
 Summary:        The Jupyter Notebook format
 License:        BSD-3-Clause
@@ -33,9 +33,9 @@ BuildRequires:  fdupes
 BuildRequires:  nodejs
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-fastjsonschema
+Requires:       python-jsonschema > 2.6
 Requires:       python-jupyter_core
 Requires:       python-traitlets >= 5.1
-Requires:       (python-jsonschema > 2.6 with python-jsonschema < 4.18)
 Provides:       python-jupyter_nbformat = %{version}-%{release}
 Obsoletes:      python-jupyter_nbformat < %{version}
 BuildArch:      noarch
@@ -48,7 +48,7 @@ Requires(postun):update-alternatives
 %endif
 # SECTION test requirements
 BuildRequires:  %{python_module fastjsonschema}
-BuildRequires:  %{python_module jsonschema > 2.6 with %python-jsonschema < 4.18}
+BuildRequires:  %{python_module jsonschema > 2.6}
 BuildRequires:  %{python_module jupyter_core}
 BuildRequires:  %{python_module pep440}
 BuildRequires:  %{python_module pytest}
