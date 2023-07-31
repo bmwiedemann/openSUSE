@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul 31 04:14:13 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.16.0:
+  * Features:
+    - pwsh: Support vi command mode indicator.
+    - shlvl: add repeat_offset for repeated symbol.
+    - update the nushell init file and make it valid module 
+      and overlay.
+  * Bug Fixes:
+    - bash: Clear out completed jobs before counting NUM_JOBS.
+    - rprompt: remove lprompt modules from $all again.
+  * Performance Improvements:
+    - git_status: query git stash count via gitoxide.
+
+-------------------------------------------------------------------
 Tue Jun  6 17:47:23 UTC 2023 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 1.15.0:
