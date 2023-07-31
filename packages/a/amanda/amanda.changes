@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 28 08:53:07 UTC 2023 - pgajdos@suse.com
+
+- version update to 3.5.4
+  * Fixed: arg checking for runtar.c (CVE-2023-30577) [bsc#1213701]
+- modified patches
+  % amanda-2.6.1p1-avoid-perl-provides.patch (refreshed)
+
+-------------------------------------------------------------------
 Mon Jul  3 11:16:07 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Fix the user owner of the files in /usr from amanda to root, bsc#1172572

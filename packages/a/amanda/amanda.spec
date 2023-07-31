@@ -19,7 +19,7 @@
 %define amanda_group amanda
 %define upstreamver tag-community-%{version}
 Name:           amanda
-Version:        3.5.3
+Version:        3.5.4
 Release:        0
 Summary:        Network Disk Archiver
 License:        GPL-3.0-or-later

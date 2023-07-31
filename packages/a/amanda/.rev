@@ -64,4 +64,12 @@ aware of the risks and this is still in usage</comment>
     <comment>- Fix the user owner of the files in /usr from amanda to root, bsc#1172572 (forwarded request 1096531 from dspinella)</comment>
     <requestid>1096532</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b40af18ffb3092b16d46f70334d13187</srcmd5>
+    <version>3.5.4</version>
+    <time>1690809879</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>1101484</requestid>
+  </revision>
 </revisionlist>
