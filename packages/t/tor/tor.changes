@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul 30 07:33:04 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- tor 0.4.7.14:
+  *  bugfix affecting vanguards (onion service), and minor fixes
+  
+-------------------------------------------------------------------
 Fri Mar 10 08:27:57 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Enable support for scrypt()
