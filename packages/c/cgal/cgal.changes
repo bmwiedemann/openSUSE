@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 31 06:06:33 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.6:
+  * See https://github.com/CGAL/cgal/releases/tag/v5.6
+
+-------------------------------------------------------------------
+Mon Jul 31 06:05:33 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 5.5.3:
+  * https://github.com/CGAL/cgal/issues?q=sort%3Aupdated-desc+label%3AMerged_in_5.5.2+-label%3AMerged_in_5.5.1
+
+-------------------------------------------------------------------
 Sun Apr  2 09:03:11 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Use gcc11-c++ for openSUSE Leap, enables building

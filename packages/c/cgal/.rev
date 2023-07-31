@@ -283,4 +283,16 @@
     <comment></comment>
     <requestid>1076831</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>fe2bc429bdce5bd51398e2e138593075</srcmd5>
+    <version>5.6</version>
+    <time>1690809898</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 5.6:
+  * See https://github.com/CGAL/cgal/releases/tag/v5.6
+
+- Update to 5.5.3:
+  * https://github.com/CGAL/cgal/issues?q=sort%3Aupdated-desc+label%3AMerged_in_5.5.2+-label%3AMerged_in_5.5.1</comment>
+    <requestid>1101456</requestid>
+  </revision>
 </revisionlist>

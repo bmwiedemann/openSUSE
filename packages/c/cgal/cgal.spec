@@ -23,7 +23,7 @@
 #@TODO : ask for rename and take into account the obsolete existant thing. like libcgal deps
 %define _sourcename CGAL
 Name:           cgal
-Version:        5.5.2
+Version:        5.6
 Release:        0
 Summary:        Computational Geometry Algorithms Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -50,7 +50,6 @@ BuildRequires:  gcc11-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-
 
 %description
 CGAL provides geometric algorithms in a C++ library.
