@@ -175,4 +175,12 @@ bmake is similar to GNU make, even though the syntax for the advanced features s
     <comment></comment>
     <requestid>900298</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f2d007336ff5e899e9b61e63d96745bf</srcmd5>
+    <version>20230723</version>
+    <time>1690809860</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>1101385</requestid>
+  </revision>
 </revisionlist>

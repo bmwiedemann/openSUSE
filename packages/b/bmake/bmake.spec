@@ -1,7 +1,7 @@
 #
 # spec file for package bmake
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,14 @@
 #
 
 
+# Building Fedora packages in OBS
+%{!?ext_man: %define ext_man .gz}
+%if 0%{?fedora_version}
+%global debug_package %{nil}
+%endif
+
 Name:           bmake
-Version:        20200606
+Version:        20230723
 Release:        0
 Summary:        The NetBSD make(1) tool
 License:        BSD-2-Clause AND BSD-3-Clause AND BSD-4-Clause
@@ -41,13 +47,11 @@ bmake is similar to GNU make, even though the syntax for the advanced features
 supported in Makefiles is very different.
 
 %prep
-%setup -q -n %{name}
-%patch0 -p1
-%patch1
+%autosetup -p1 -n %{name}
 
 %build
 unset MAKEFLAGS
-env CFLAGS="%{optflags}" \
+env CFLAGS="%{optflags} -g" \
 ./boot-strap -o Linux \
   --prefix="%{_prefix}" \
   --sysconfdir="%{_sysconfdir}" \
@@ -63,7 +67,6 @@ env CFLAGS="%{optflags}" \
   --install-prefix="%{_prefix}" \
   --install-destdir=%{buildroot} \
   op=install
-mv "%{buildroot}%{_mandir}/cat1" "%{buildroot}%{_mandir}/man1"
 
 %check
 ./boot-strap op=test

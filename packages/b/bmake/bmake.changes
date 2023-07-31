@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 26 06:30:49 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 20230723:
+  - There were many changes, like really many. See ChangeLog
+    which has been packaged for the list of them.
+
+-------------------------------------------------------------------
+Wed Jul 26 06:21:23 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Refresh patches, remove %patchN construct.
+
+-------------------------------------------------------------------
 Wed Jun 16 04:11:59 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update bmake-env-script-interpreter.diff to switch to interpreter
