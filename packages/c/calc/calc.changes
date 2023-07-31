@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 31 06:14:35 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.14.2.2:
+  * Removed references to obsolete Email addresses.
+  * macOS Darwin defaults LCC to "cc".
+
+-------------------------------------------------------------------
 Thu Jul 27 06:27:22 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.14.2.1:

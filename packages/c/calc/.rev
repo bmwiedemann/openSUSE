@@ -514,4 +514,14 @@
   * Fixed sorted order of cal/README.</comment>
     <requestid>1100981</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>7eb31e10ce8369f0f449c70ce3797b15</srcmd5>
+    <version>2.14.2.2</version>
+    <time>1690809912</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 2.14.2.2:
+  * Removed references to obsolete Email addresses.
+  * macOS Darwin defaults LCC to &quot;cc&quot;.</comment>
+    <requestid>1101458</requestid>
+  </revision>
 </revisionlist>
