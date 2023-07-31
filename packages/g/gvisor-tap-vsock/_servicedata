@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/containers/gvisor-tap-vsock.git</param>
+              <param name="changesrevision">9b06a0431d8906868b1962167d4aa90690eed51d</param></service></servicedata>
