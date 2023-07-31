@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 24 12:54:31 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- Fix base image naming in description label
+
+-------------------------------------------------------------------
 Fri Jun 23 15:33:33 UTC 2023 - Dirk Mueller <dmueller@suse.com>
 
 - label capitalization and related cleanups
