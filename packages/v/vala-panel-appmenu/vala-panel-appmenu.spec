@@ -1,7 +1,7 @@
 #
 # spec file for package vala-panel-appmenu
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,13 +45,13 @@ BuildRequires:  pkgconfig(gthread-2.0) >= 2.52.0
 BuildRequires:  pkgconfig(gtk+-2.0) >= 2.24
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(harfbuzz)
+BuildRequires:  pkgconfig(libmatepanelapplet-4.0)
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.2
 BuildRequires:  pkgconfig(libxfce4panel-2.0)
 BuildRequires:  pkgconfig(libxfconf-0)
 BuildRequires:  pkgconfig(systemd)
-BuildRequires:  pkgconfig(libmatepanelapplet-4.0)
 BuildRequires:  pkgconfig(vala-panel) >= 0.3.7
-%if "bamf" == "%backend"
+%if "bamf" == "%{backend}"
 BuildRequires:  pkgconfig(libbamf3) >= 0.5.0
 %else
 BuildRequires:  pkgconfig(libwnck-3.0) >= 3.4.8
@@ -62,9 +62,9 @@ This is Global Menu plugin for using with Xfce Panel, MATE Panel
 and Vala Panel.
 
 %package -n budgie-appmenu-applet
-Summary: Application Menu plugin for budgie
+Summary:        Application Menu plugin for budgie
 Group:          System/GUI/Other
-Supplements: budgie
+Supplements:    budgie
 
 %description -n budgie-appmenu-applet
 This is Global Menu plugin for using with BUDGIE Panel.
@@ -153,20 +153,20 @@ com.canonical.AppMenu.Registrar provider
 # FIXME: consider using %%lang_package macro
 Summary:        Languages for package vala-panel-appmenu
 Group:          System/Localization
+Suggests:       mate-applet-appmenu = %{version}
+Suggests:       vala-panel-plugin-appmenu = %{version}
 Suggests:       xfce4-panel-plugin-appmenu = %{version}
-Supplements:    (bundle-lang-other and xfce4-panel-plugin-appmenu)
 Supplements:    (bundle-lang-other and mate-applet-appmenu)
 Supplements:    (bundle-lang-other and vala-panel-plugin-appmenu)
+Supplements:    (bundle-lang-other and xfce4-panel-plugin-appmenu)
 Provides:       %{name}-lang-all = %{version}
-Provides:       xfce4-panel-plugin-appmenu-lang = %{version}
-Provides:       xfce4-panel-plugin-appmenu-lang-all = %{version}
 Provides:       mate-applet-appmenu-lang = %{version}
 Provides:       mate-applet-appmenu-lang-all = %{version}
 Provides:       vala-panel-plugin-appmenu-lang = %{version}
 Provides:       vala-panel-plugin-appmenu-lang-all = %{version}
+Provides:       xfce4-panel-plugin-appmenu-lang = %{version}
+Provides:       xfce4-panel-plugin-appmenu-lang-all = %{version}
 BuildArch:      noarch
-Suggests:       mate-applet-appmenu = %{version}
-Suggests:       vala-panel-plugin-appmenu = %{version}
 
 %description lang
 Provides translations to the packages xfce4-panel-plugin-appmenu,
@@ -220,7 +220,7 @@ This is Global Menu plugin for using with Vala Panel.
 %build
 export CFLAGS="$CFLAGS -I/usr/include/harfbuzz"
 export CXXFLAGS="$CXXFLAGS -I/usr/include/harfbuzz"
-%meson -Dwm_backend=%backend -Dregistrar=enabled
+%meson -Dwm_backend=%{backend} -Dregistrar=enabled
 %meson_build
 
 %install
@@ -230,79 +230,71 @@ rm -rf %{buildroot}%{_datadir}/{appmenu-gtk-module,vala-panel-appmenu}/doc
 %find_lang %{name}
 
 %post -n libappmenu-gtk2-parser0 -p /sbin/ldconfig
+
 %postun -n libappmenu-gtk2-parser0 -p /sbin/ldconfig
 
 %post -n libappmenu-gtk3-parser0 -p /sbin/ldconfig
-%postun -n libappmenu-gtk3-parser0 -p /sbin/ldconfig
 
-%postun -n appmenu-gtk-module-common
-%glib2_gsettings_schema_postun
-%systemd_user_post
+%postun -n libappmenu-gtk3-parser0 -p /sbin/ldconfig
 
 %post -n appmenu-gtk-module-common
 %glib2_gsettings_schema_post
-%systemd_user_postun
+%systemd_user_postun appmenu-gtk-module.service
 
-%postun -n appmenu-gtk2-module
-%gtk2_immodule_postun
+%postun -n appmenu-gtk-module-common
+%glib2_gsettings_schema_postun
+%systemd_user_post appmenu-gtk-module.service
 
 %post -n appmenu-gtk2-module
 %gtk2_immodule_post
 
-%postun -n appmenu-gtk3-module
-%gtk3_immodule_postun
+%postun -n appmenu-gtk2-module
+%gtk2_immodule_postun
 
 %post -n appmenu-gtk3-module
 %gtk3_immodule_post
 
-%postun -n vala-panel-plugin-appmenu
-%glib2_gsettings_schema_postun
+%postun -n appmenu-gtk3-module
+%gtk3_immodule_postun
 
 %post -n vala-panel-plugin-appmenu
 %glib2_gsettings_schema_post
 
+%postun -n vala-panel-plugin-appmenu
+%glib2_gsettings_schema_postun
+
 %files -n appmenu-gtk3-module
-%defattr(-,root,root)
 %{_libdir}/gtk-3.0/modules/libappmenu-gtk-module.so
 
 %files -n appmenu-gtk2-module
-%defattr(-,root,root)
 %{_libdir}/gtk-2.0/modules/libappmenu-gtk-module.so
 
 %files lang -f %{name}.lang
-%defattr(-,root,root)
 
 %files -n libappmenu-gtk-parser-devel
-%defattr(-,root,root)
 %{_includedir}/appmenu-gtk-parser
 
 %files -n libappmenu-gtk2-parser0
-%defattr(-,root,root)
 %{_libdir}/libappmenu-gtk2-parser.so.0
 %{_libdir}/libappmenu-gtk2-parser.so.0.7
 
 %files -n libappmenu-gtk2-parser-devel
-%defattr(-,root,root)
 %{_libdir}/libappmenu-gtk2-parser.so
 %{_libdir}/pkgconfig/appmenu-gtk2-parser.pc
 
 %files -n libappmenu-gtk3-parser0
-%defattr(-,root,root)
 %{_libdir}/libappmenu-gtk3-parser.so.0
 %{_libdir}/libappmenu-gtk3-parser.so.0.7
 
 %files -n libappmenu-gtk3-parser-devel
-%defattr(-,root,root)
 %{_libdir}/libappmenu-gtk3-parser.so
 %{_libdir}/pkgconfig/appmenu-gtk3-parser.pc
 
 %files -n appmenu-gtk-module-common
-%defattr(-,root,root)
 %{_datadir}/glib-2.0/schemas/org.appmenu.gtk-module.gschema.xml
 %{_userunitdir}/appmenu-gtk-module.service
 
 %files -n appmenu-registrar
-%defattr(-,root,root)
 %dir %{_libexecdir}/vala-panel
 %{_libexecdir}/vala-panel/appmenu-registrar
 %{_datadir}/dbus-1/services/com.canonical.AppMenu.Registrar.service
@@ -313,14 +305,12 @@ rm -rf %{buildroot}%{_datadir}/{appmenu-gtk-module,vala-panel-appmenu}/doc
 %{_libdir}/budgie-desktop/plugins/budgie-appmenu-plugin
 
 %files -n xfce4-panel-plugin-appmenu
-%defattr(-,root,root)
 %doc README.md
 %license LICENSE
 %{_libdir}/xfce4/panel/plugins/libappmenu-xfce.so
 %{_datadir}/xfce4/panel/plugins/appmenu.desktop
 
 %files -n mate-applet-appmenu
-%defattr(-,root,root)
 %doc README.md
 %license LICENSE
 %dir %{_libdir}/mate-panel/
@@ -330,7 +320,6 @@ rm -rf %{buildroot}%{_datadir}/{appmenu-gtk-module,vala-panel-appmenu}/doc
 %{_datadir}/mate-panel/applets/org.vala-panel.appmenu.mate-panel-applet
 
 %files -n vala-panel-plugin-appmenu
-%defattr(-,root,root)
 %doc README.md
 %license LICENSE
 %dir %{_libdir}/vala-panel
