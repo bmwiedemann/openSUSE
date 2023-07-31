@@ -24,7 +24,7 @@
 %define devname lib%{name}-%{sorel}-devel
 %define typelibname typelib-1_0-Aravis-%{api}
 Name:           aravis
-Version:        0.8.26
+Version:        0.8.27
 Release:        0
 Summary:        Glib/gobject based library implementing a Genicam interface
 License:        LGPL-2.1-or-later
