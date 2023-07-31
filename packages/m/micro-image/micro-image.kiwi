@@ -20,7 +20,7 @@
         <labels>
           <suse_label_helper:add_prefix prefix="org.opensuse.bci.micro">
             <label name="org.opencontainers.image.title" value="openSUSE Tumbleweed BCI openSUSE Tumbleweed Micro"/>
-            <label name="org.opencontainers.image.description" value="A micro environment for containers based on the SLE Base Container Image."/>
+            <label name="org.opencontainers.image.description" value="A micro environment for containers based on the openSUSE Tumbleweed Base Container Image."/>
             <label name="org.opencontainers.image.version" value="%OS_VERSION_ID_SP%.%RELEASE%"/>
             <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
             <label name="org.opencontainers.image.vendor" value="openSUSE Project"/>

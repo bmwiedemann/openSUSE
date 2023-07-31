@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 24 12:54:31 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- Fix base image naming in description label
+
+-------------------------------------------------------------------
 Wed Jul 12 12:52:48 UTC 2023 - Dirk Mueller <dmueller@suse.com>
 
 - Replace distribution-release with openSUSE-release and openSUSE-release-appliance-docker
