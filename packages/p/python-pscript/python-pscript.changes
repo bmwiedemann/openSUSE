@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 31 06:13:34 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Stop using greedy globs in %files.
+- Switch to %pytest from invoke.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Tue Oct  4 23:20:51 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to 0.7.7 

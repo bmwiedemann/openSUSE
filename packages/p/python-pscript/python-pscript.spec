@@ -1,7 +1,7 @@
 #
 # spec file for package python-pscript
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define modname pscript
 Name:           python-pscript
 Version:        0.7.7
@@ -25,12 +24,13 @@ Summary:        Python to JavaScript compiler
 License:        BSD-2-Clause
 URL:            https://github.com/flexxui/pscript
 Source:         https://github.com/flexxui/%{modname}/archive/v%{version}/%{modname}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module invoke}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  nodejs
@@ -42,22 +42,23 @@ PScript is a Python to JavaScript compiler, and is also the name of the subset
 of Python that this compiler supports.
 
 %prep
-%setup -q -n %{modname}-%{version}
+%autosetup -p1 -n %{modname}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# the tests actually do not invoke themselves
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} invoke-%{$python_bin_suffix} test --unit
+%pytest pscript/tests
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pscript
+%{python_sitelib}/pscript_legacy
+%{python_sitelib}/pscript-%{version}.dist-info
 
 %changelog

@@ -90,4 +90,14 @@
     <comment></comment>
     <requestid>1008171</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>724f89c068fef732faca8e1800f0d0ce</srcmd5>
+    <version>0.7.7</version>
+    <time>1690809887</time>
+    <user>maxlin_factory</user>
+    <comment>- Stop using greedy globs in %files.
+- Switch to %pytest from invoke.
+- Switch to pyproject macros.</comment>
+    <requestid>1101457</requestid>
+  </revision>
 </revisionlist>
