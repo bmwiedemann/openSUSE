@@ -16,15 +16,15 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-natsort
-Version:        8.2.0
+Version:        8.4.0
 Release:        0
 Summary:        Natural sorting in Python
 License:        MIT
 URL:            https://github.com/SethMMorton/natsort
 Source:         https://files.pythonhosted.org/packages/source/n/natsort/natsort-%{version}.tar.gz
+BuildRequires:  %{python_module fastnumbers >= 5.0.1}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pytest >= 4.3}
 BuildRequires:  %{python_module pytest-mock}
@@ -36,8 +36,9 @@ Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-PyICU >= 1.0.0
-Recommends:     python-fastnumbers >= 2.0.0
+Recommends:     python-fastnumbers >= 5.0.1
 BuildArch:      noarch
+%{?sle15_python_module_pythons}
 %python_subpackages
 
 %description

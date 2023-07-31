@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Jul 10 16:16:15 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+- Fix BuildReuquires Versions.
+
+-------------------------------------------------------------------
+Sat Jul  8 20:28:50 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- update to version 8.4.0:
+  * Changed
+    + The changelog now only explictly exists in the repository (issue
+      #162)
+  * Fixed
+    + Inputs with spaces near adjascent to the extension are now
+      sorted correctly for os_sorted on Windows (issues #165 and #166)
+
+- changes from version 8.3.1:
+  * Fixed
+    + Broken test found on FreeBSD. This change has no effect outside
+      fixing tests (issue #161)
+
+- changes from version 8.3.0:
+  * Added
+    + The PRESORT option to the ns enum to attain consistent sort
+      order in certain corner cases (issue #149)
+    + Logic to ensure None and NaN are sorted in a consistent order
+      (issue #149)
+    + Explict Python 3.11 support
+  * Changed
+    + Only convert to str if necessary in os_sorted (@Dobatymo, issues
+      #157 and #158)
+    + Attempt to use new fastnumbers functionality if available
+    + Move non-API documentation to the GitHub wiki
+  * Removed
+    + Support for EOL Python 3.6
+
+-------------------------------------------------------------------
 Tue Jun 13 08:58:39 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
