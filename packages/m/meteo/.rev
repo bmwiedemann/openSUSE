@@ -122,4 +122,12 @@
     <comment>- Update to new release (forwarded request 929663 from awissu)</comment>
     <requestid>929664</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c76cfb05e6ab64b5606063c22bafc79b</srcmd5>
+    <version>0.9.9.2</version>
+    <time>1690809848</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1101252</requestid>
+  </revision>
 </revisionlist>

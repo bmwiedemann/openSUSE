@@ -17,7 +17,7 @@
 
 
 Name:           meteo
-Version:        0.9.9.1
+Version:        0.9.9.2
 Release:        0
 Summary:        Program to show the weather forecast of the next hours and days
 License:        GPL-3.0-or-later
@@ -32,17 +32,17 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  vala
 BuildRequires:  pkgconfig(appindicator3-0.1)
-BuildRequires:  pkgconfig(champlain-0.12)
-BuildRequires:  pkgconfig(clutter-1.0)
-BuildRequires:  pkgconfig(clutter-gtk-1.0)
-BuildRequires:  pkgconfig(geocode-glib-1.0)
+#BuildRequires:  pkgconfig(champlain-0.12)
+#BuildRequires:  pkgconfig(clutter-1.0)
+#BuildRequires:  pkgconfig(clutter-gtk-1.0)
+#BuildRequires:  pkgconfig(geocode-glib-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libsoup-2.4) > 2.54.1
 BuildRequires:  pkgconfig(webkit2gtk-4.0)
 Recommends:     %{name}-lang
-Provides:       weather = %{version}
-Obsoletes:      weather < %{version}
+Provides:       meteo = %{version}
+Obsoletes:      meteo < %{version}
 
 %description
 A program which displays current weather, with information about temperature,
