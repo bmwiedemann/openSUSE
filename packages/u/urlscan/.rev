@@ -186,4 +186,13 @@
     docs for the various flavoured sub packages?</comment>
     <requestid>1092579</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5e8960c4673735c51df87c06f75b38cc</srcmd5>
+    <version>1.0.1</version>
+    <time>1690809913</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 1.0.1:
+  * Add man page to package (forwarded request 1100917 from dirkmueller)</comment>
+    <requestid>1101495</requestid>
+  </revision>
 </revisionlist>
