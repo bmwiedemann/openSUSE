@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 31 11:01:29 UTC 2023 - Antoine Ginies <aginies@suse.com>
+
+- version 2.1.2:
+   * by default don't create virtio input devices using the configuration
+    file as this overwrites scenario default values and can cause some
+    issues.
+
+-------------------------------------------------------------------
 Mon Jun 19 16:54:38 UTC 2023 - Antoine Ginies <aginies@suse.com>
 
 - version 2.1.1:
