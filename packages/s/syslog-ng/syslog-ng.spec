@@ -76,7 +76,7 @@
 %bcond_with	mongodb
 %bcond_with	amqp
 Name:           syslog-ng
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Summary:        Enhanced system logging daemon
 License:        GPL-2.0-only
@@ -640,6 +640,7 @@ chmod 640 "${additional_sockets#/}"
 %dir %{_datadir}/syslog-ng/include/scl/python/
 %dir %{_datadir}/syslog-ng/include/scl/splunk/
 %dir %{_datadir}/syslog-ng/include/scl/logscale/
+%dir %{_datadir}/syslog-ng/include/scl/opensearch/
 %dir %{_datadir}/syslog-ng/xsd
 %dir %{_sysconfdir}/syslog-ng
 %dir %{_sysconfdir}/syslog-ng/conf.d
@@ -743,6 +744,7 @@ chmod 640 "${additional_sockets#/}"
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/python/python-modules.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/splunk/splunk.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/logscale/logscale.conf
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/opensearch/opensearch.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/smart-multi-line.fsm
 %attr(644,root,root) %{_datadir}/syslog-ng/xsd/*
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl.conf
