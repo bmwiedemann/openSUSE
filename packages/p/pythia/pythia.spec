@@ -1,7 +1,7 @@
 #
 # spec file for package pythia
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define ver 8307
+%define ver 8310
 %define soname lib%{name}8
 Name:           pythia
-Version:        8.307
+Version:        8.310
 Release:        0
 Summary:        A simulation program for particle collisions at very high energies
 License:        GPL-2.0-or-later
@@ -204,12 +204,13 @@ popd
 %files devel
 %doc AUTHORS GUIDELINES CODINGSTYLE README
 %license COPYING
+%config %{_sysconfdir}/profile.d/%{name}.*
 %{_bindir}/pythia8-config
 %{_includedir}/Pythia8/
 %{_includedir}/Pythia8Plugins/
-%config %{_sysconfdir}/profile.d/%{name}.*
-%{_docdir}/%{name}/xmldoc/
 %{_docdir}/%{name}/pdfdata/
+%{_docdir}/%{name}/settings/
+%{_docdir}/%{name}/xmldoc/
 
 %files doc
 %dir %{_docdir}/%{name}

@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Wed Jul 26 22:12:11 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 8.310:
+  * Production of quarkonia is now available via the simple
+    timelike shower, see Onia Showers for details.
+  * Added a new feature that allows producing user-defined
+    resonances in hadronic rescattering. Newly added particles can
+    be produced as resonances if they set varWidth = on.
+  * A number of changes have been made to the heavy ion machinery.
+  * Included possibility to sample intermediate photon virtuality
+    also for externally provided events using built-in photon flux
+    for protons.
+  * Included possibility to generate DIS events with a
+    (anti-)neutrino beam.
+  * The TopRecoilHook, formerly available separately, has now been
+    integrated into the SimpleTimeShower.
+  * Introduced a new use plugin system, see Plugins for details.
+  * The arguments to the setSigmaPtr method are now shared
+    pointers. Additionally, addSigmaPtr has been introduced with
+    the previous behaviour of setSigmaPtr, and the new setSigmaPtr
+    overrides all previously added pointers.
+  * A similar change has been made for the setResonancePtr method
+    with the addition of the addResonancePtr method.
+  * The new Logger class now handles printing such as
+    initialization information and diagnostic messages. For more
+    information about this class, see the Logging page.
+  * The new BeamSetup class has been introduced to handle the beam
+    configuration, including initializing and changing beam
+    identities, kinematics and parton distributions.
+  * Modified interface to LHAPDF6 to allow for multi-threading.
+  * Updated the Python interface to use pybind11 version 2.10.4
+    which is compatible with Python 3.11.
+  * Fix for the Python interface working with gcc13.
+  * Fixed a bug in the Python interface which prevented main162.py
+    from running correctly when passing a custom function for
+    initialization.
+  * Updated the Lambda_b0 lifetime to c*tau = 0.44 mm. The value
+    was rounded to two significant digits since PDG and HFLAV do
+    not quite agree to three digits.
+  * Included several small fixes in response to running an LLVM
+    static code analysis.
+  * Fixed out-of-range access when calling Hist::getYMin and
+    Hist::getYMax for a histogram that has not been booked.
+  * Fixed BeamRemnants:unresolvedHadron option that was broken and
+    had no effect since 8.307.
+  * Removed use of simple-template-ids in SusyLesHouches.h to make
+    compliant with C++20.
+  * Fixed dipole sorting behaviour in ColourReconnection which
+    resulted in an ordering that depended on the current memory
+    state of the program.
+  * Changed the default for Parallelism:balanceLoad to on and
+    updated the documentation. This ensures each thread will
+    always generate the same number of events.
+  * Added the += notation for settings vectors, as well as the
+    include = fileName directive, which allows for additional
+    settings files to be directly read in.
+  * Fixed a bug in the bookkeeping the number of hadrons in the
+    string fragmentation.
+- Major rebase of pythia-remove-rpaths.patch for updated version.
+
+-------------------------------------------------------------------
 Sun Feb 27 23:05:39 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 8.307:

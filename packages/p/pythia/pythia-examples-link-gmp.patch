@@ -1,8 +1,8 @@
-Index: pythia8307/examples/Makefile
+Index: pythia8310/examples/Makefile
 ===================================================================
---- pythia8307.orig/examples/Makefile
-+++ pythia8307/examples/Makefile
-@@ -99,7 +99,7 @@ endif
+--- pythia8310.orig/examples/Makefile
++++ pythia8310/examples/Makefile
+@@ -107,7 +107,7 @@ endif
  # FASTJET3.
  main71 main72 main75 main81 main82 main83: $(PYTHIA) $$@.cc
  ifeq ($(FASTJET3_USE),true)
@@ -11,7 +11,7 @@ Index: pythia8307/examples/Makefile
  else
  	$(error Error: $@ requires FASTJET3)
  endif
-@@ -108,7 +108,7 @@ endif
+@@ -116,7 +116,7 @@ endif
  main74: $(PYTHIA) $$@.cc
  ifeq ($(FASTJET3_USE),true)
  	$(CXX) $@.cc -o $@ -w $(CXX_COMMON) $(FASTJET3_INCLUDE)\
@@ -20,7 +20,7 @@ Index: pythia8307/examples/Makefile
  else
  	$(error Error: $@ requires FASTJET3)
  endif
-@@ -117,7 +117,7 @@ endif
+@@ -125,7 +125,7 @@ endif
  main84: $(PYTHIA) $$@.cc
  ifeq ($(FASTJET3_USE)$(HEPMC3_USE),truetrue)
  	$(CXX) $@.cc -o $@ -w $(CXX_COMMON) $(FASTJET3_INCLUDE)\

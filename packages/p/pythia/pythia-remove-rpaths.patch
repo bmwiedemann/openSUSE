@@ -1,7 +1,7 @@
-Index: pythia8307/Makefile
+Index: pythia8310/Makefile
 ===================================================================
---- pythia8307.orig/Makefile
-+++ pythia8307/Makefile
+--- pythia8310.orig/Makefile
++++ pythia8310/Makefile
 @@ -36,7 +36,11 @@ LOCAL_TMP=tmp
  LOCAL_MKDIRS:=$(shell mkdir -p $(LOCAL_TMP) $(LOCAL_LIB))
  CXX_COMMON:=-I$(LOCAL_INCLUDE) $(CXX_COMMON)
@@ -15,26 +15,22 @@ Index: pythia8307/Makefile
  
  # PYTHIA.
  OBJECTS=$(patsubst $(LOCAL_SRC)/%.cc,$(LOCAL_TMP)/%.o,\
-@@ -118,9 +122,15 @@ $(LOCAL_TMP)/LHAPowheg.o: $(LOCAL_INCLUD
- $(LOCAL_LIB)/libpythia8powheg%sh.so: $(POWHEG_BIN)%sh;
- $(LOCAL_LIB)/libpythia8powheg%.so: $(POWHEG_BIN)% $(LOCAL_TMP)/LHAPowheg.o\
- 	$(LOCAL_LIB)/libpythia8$(LIB_SUFFIX)
+@@ -124,7 +128,11 @@ $(LOCAL_LIB)/libpythia8powheg%.so: $(POW
+ 	$(LOCAL_TMP)/LHAPowheg.o $(LOCAL_LIB)/libpythia8$(LIB_SUFFIX)
+ 	$(CXX) $(LOCAL_TMP)/LHAPowheg.o -o $@ $(CXX_COMMON) $(CXX_SHARED)\
+ 	 $(CXX_SONAME)$(notdir $@) -Llib -lpythia8\
 +ifneq ($(DISABLE_RPATH),true)
- 	ln -s $< $(notdir $<); $(CXX) $(notdir $<) $(LOCAL_TMP)/LHAPowheg.o\
- 	 -o $@ $(CXX_COMMON) $(CXX_SHARED) -Llib -lpythia8\
- 	 $(CXX_SONAME)$(notdir $@) -Wl,-rpath,$(POWHEG_BIN); rm $(notdir $<)
+ 	 -Wl,-rpath,../lib:$(POWHEG_BIN) -L$(POWHEG_BIN) -l$*
 +else
-+	ln -s $< $(notdir $<); $(CXX) $(notdir $<) $(LOCAL_TMP)/LHAPowheg.o\
-+	 -o $@ $(CXX_COMMON) $(CXX_SHARED) -Llib -lpythia8\
-+	 $(CXX_SONAME)$(notdir $@); rm $(notdir $<)
++	 -L$(POWHEG_BIN) -l$*
 +endif
- 
- # MG5 matrix element plugins.
- mg5mes:
-Index: pythia8307/configure
+ $(LOCAL_LIB)/libpythia8powhegHooks.so: $(LOCAL_TMP)/PowhegHooks.o\
+ 	$(LOCAL_LIB)/libpythia8$(LIB_SUFFIX)
+ 	$(CXX) $< -o $@ $(CXX_COMMON) $(CXX_SHARED) $(CXX_SONAME)$(notdir $@)\
+Index: pythia8310/configure
 ===================================================================
---- pythia8307.orig/configure
-+++ pythia8307/configure
+--- pythia8310.orig/configure
++++ pythia8310/configure
 @@ -30,6 +30,7 @@ Configuration options.
  --help            : Print this help message (also -h, --h, and -help).
  --enable-debug    : Turn on debugging and disable optimization.
@@ -68,10 +64,10 @@ Index: pythia8307/configure
  CXX=$CXX
  CXX_COMMON=$CXX_COMMON
  CXX_SHARED=$CXX_SHARED
-Index: pythia8307/plugins/mg5mes/Makefile
+Index: pythia8310/plugins/mg5mes/Makefile
 ===================================================================
---- pythia8307.orig/plugins/mg5mes/Makefile
-+++ pythia8307/plugins/mg5mes/Makefile
+--- pythia8310.orig/plugins/mg5mes/Makefile
++++ pythia8310/plugins/mg5mes/Makefile
 @@ -28,7 +28,11 @@ LOCAL_DIRS:=$(subst $(LOCAL_TMP)/,,$(wil
  LOCAL_MKDIRS:=$(shell mkdir -p $(LOCAL_TMP) $(TOP_LIB))
  LOCAL_MKDIRS:=$(foreach DIR,$(LOCAL_DIRS),$(shell mkdir -p $(LOCAL_TMP)/$(DIR)))
@@ -85,10 +81,10 @@ Index: pythia8307/plugins/mg5mes/Makefile
  PYTHIA=$(TOP_LIB)/libpythia8$(LIB_SUFFIX)
  
  # Set the wrapper, determine the objects and targets.
-Index: pythia8307/plugins/python/Makefile
+Index: pythia8310/plugins/python/Makefile
 ===================================================================
---- pythia8307.orig/plugins/python/Makefile
-+++ pythia8307/plugins/python/Makefile
+--- pythia8310.orig/plugins/python/Makefile
++++ pythia8310/plugins/python/Makefile
 @@ -27,7 +27,11 @@ LOCAL_TMP=tmp
  LOCAL_INCLUDE=include
  LOCAL_MKDIRS:=$(shell mkdir -p $(LOCAL_TMP) $(TOP_LIB))
@@ -102,7 +98,7 @@ Index: pythia8307/plugins/python/Makefile
  PYTHIA=$(TOP_LIB)/libpythia8$(LIB_SUFFIX)
  
  # Determine the headers.
-@@ -69,9 +73,15 @@ $(LOCAL_TMP)/%.o: $(LOCAL_SRC)/%.cpp
+@@ -76,9 +80,15 @@ $(LOCAL_TMP)/%.o: $(LOCAL_SRC)/%.cpp $(L
  
  # Build the library.
  $(TOP_LIB)/pythia8.so: $(PYTHIA) $(HEADERS) $(OBJECTS)
@@ -118,10 +114,10 @@ Index: pythia8307/plugins/python/Makefile
  
  # Clean.
  clean:
-Index: pythia8307/examples/Makefile
+Index: pythia8310/examples/Makefile
 ===================================================================
---- pythia8307.orig/examples/Makefile
-+++ pythia8307/examples/Makefile
+--- pythia8310.orig/examples/Makefile
++++ pythia8310/examples/Makefile
 @@ -26,14 +26,13 @@ ifneq ("$(wildcard ../lib/libpythia8.*)"
    PREFIX_INCLUDE=../include
  endif
@@ -138,32 +134,3 @@ Index: pythia8307/examples/Makefile
  endif
  
  ################################################################################
-@@ -143,16 +142,14 @@ else
- 	$(error Error: $@ requires ROOT)
- endif
- main92: $(PYTHIA) $$@.cc main92.so
--	$(CXX) $@.cc main92.so -o $@ -w $(CXX_COMMON) -Wl,-rpath,./\
--	 `$(ROOT_CONFIG) --cflags --glibs`
-+	$(CXX) $@.cc main92.so -o $@ -w $(CXX_COMMON)
- 
- # RIVET with optional ROOT (if RIVET, use C++14).
- main93: $(PYTHIA) $$@.cc $(if $(filter true,$(ROOT_USE)),main93.so)
- ifeq ($(RIVET_USE),true)
--	$(CXX) $@.cc -o $@ -w $(CXX_COMMON:c++11=c++14) -Wl,-rpath,./\
--	 $(if $(filter true,$(ROOT_USE)),main93.so -DPY8ROOT\
-+	$(CXX) $@.cc -o $@ -w $(CXX_COMMON:c++11=c++14) -DPY8ROOT\
-          $(ROOT_LIB) `$(ROOT_CONFIG) --cflags --glibs`)\
--	 $(RIVET_RPATH) `$(RIVET_BIN)$(RIVET_CONFIG) --cppflags --libs`
-+	 `$(RIVET_BIN)$(RIVET_CONFIG) --cppflags --libs`
- else
- 	$(error Error: $@ requires RIVET)
- endif
-@@ -161,7 +158,7 @@ endif
- main111: $(PYTHIA) $$@.cc
- ifeq ($(RIVET_USE),true)
- 	$(CXX) $@.cc -o $@ -w $(CXX_COMMON:c++11=c++14) -DRIVET \
--	 `$(RIVET_BIN)$(RIVET_CONFIG) --cppflags --libs` $(RIVET_RPATH)
-+	 `$(RIVET_BIN)$(RIVET_CONFIG) --cppflags --libs`
- else
- 	$(CXX) $@.cc -o $@ -w $(CXX_COMMON)
- endif
