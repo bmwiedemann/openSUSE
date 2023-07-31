@@ -2496,4 +2496,12 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
     <comment></comment>
     <requestid>1098505</requestid>
   </revision>
+  <revision rev="274" vrev="1">
+    <srcmd5>8f19fc907b8c658bbb2dafd3a0ad2e49</srcmd5>
+    <version>2.39.1</version>
+    <time>1690809844</time>
+    <user>maxlin_factory</user>
+    <comment>Readded patch because of https://build.opensuse.org/request/show/1100707#status-history-20975903 (forwarded request 1101224 from goldwynr)</comment>
+    <requestid>1101236</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jul 28 14:47:15 UTC 2023 - Goldwyn Rodrigues <rgoldwyn@suse.com>
+
+- Re-add 0001-Revert-libblkid-try-LUKS2-first-when-probing.patch
+  because the patch is not in 2.39.1
+
+-------------------------------------------------------------------
+Wed Jul 26 01:22:20 UTC 2023 - Neil Brown <nfbrown@suse.com>
+
+- Upgrade to version 2.39.1
+  (bsc#1213328)
+   Various bug fixes including problem with parsing mount options.
+- Dropped upstreamed patches:
+    0001-Revert-libblkid-try-LUKS2-first-when-probing.patch
+    0001-libmount-fix-sync-options-between-context-and-fs-str.patch
+    util-linux-fix-tests-with-64k-pagesize.patch
+
+-------------------------------------------------------------------
 Thu Jul 13 06:33:54 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Add patch to detect MD array as container of LUKS properly

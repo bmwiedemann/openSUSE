@@ -85,7 +85,7 @@ Group:          Development/Languages/Python
 %endif
 # ulbuild == python
 
-Version:        2.39
+Version:        2.39.1
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://www.kernel.org/pub/linux/utils/util-linux/
@@ -109,13 +109,10 @@ Patch0:         make-sure-sbin-resp-usr-sbin-are-in-PATH.diff
 Patch1:         libmount-print-a-blacklist-hint-for-unknown-filesyst.patch
 Patch2:         Add-documentation-on-blacklisted-modules-to-mount-8-.patch
 # PATCH-FIX-SUSE util-linux-bash-completion-su-chsh-l.patch bsc1172427 -- Fix "su -s" bash completion.
-Patch4:         util-linux-bash-completion-su-chsh-l.patch
-# PATCH-FIX-UPSTREAM util-linux-fix-tests-with-64k-pagesize.patch -- fadvise: fix tests with 64k pagesize
-Patch5:         util-linux-fix-tests-with-64k-pagesize.patch
-# https://github.com/util-linux/util-linux/pull/2331
-Patch6:         0001-libmount-fix-sync-options-between-context-and-fs-str.patch
+Patch3:         util-linux-bash-completion-su-chsh-l.patch
 # https://github.com/util-linux/util-linux/pull/2373
-Patch7:         0001-Revert-libblkid-try-LUKS2-first-when-probing.patch
+Patch4:         0001-Revert-libblkid-try-LUKS2-first-when-probing.patch
+
 BuildRequires:  audit-devel
 BuildRequires:  bc
 BuildRequires:  binutils-devel
