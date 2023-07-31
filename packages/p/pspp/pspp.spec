@@ -26,7 +26,7 @@
 %define _disable_ld_as_needed 1
 %endif
 Name:           pspp
-Version:        1.4.1
+Version:        1.6.2
 Release:        0
 Summary:        A program for statistical analysis of sampled data
 License:        GPL-3.0-or-later
@@ -35,7 +35,6 @@ URL:            https://www.gnu.org/software/pspp/
 Source0:        https://ftp.gnu.org/pub/gnu/pspp/pspp-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/pub/gnu/pspp/pspp-%{version}.tar.gz.sig
 Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=245#/%{name}.keyring
-Source3:        https://translationproject.org/PO-files/lt/pspp-%{version}.lt.po
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?fedora} 
@@ -54,20 +53,19 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cairo-devel
 BuildRequires:  desktop-file-utils
-BuildRequires:  gettext
+BuildRequires:  gettext >= 0.20
 BuildRequires:  gsl-devel >= 1.12
 BuildRequires:  gtk3-devel >= 3.22
+BuildRequires:  gtksourceview4-devel
 BuildRequires:  libtool
 BuildRequires:  libxml2-devel
 BuildRequires:  m4
 BuildRequires:  pango-devel
-BuildRequires:  perl(base)
-BuildRequires:  perl(ExtUtils::MakeMaker)
-BuildRequires:  perl(Text::Diff)
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(appstream)
 BuildRequires:  pkgconfig(gtksourceview-3.0)
 BuildRequires:  postgresql-devel
+BuildRequires:  python3-devel >= 3.4
 BuildRequires:  readline-devel
 BuildRequires:  spread-sheet-widget-devel >= 0.6
 BuildRequires:  texinfo
@@ -146,7 +144,6 @@ This subpackage contains development documentation for PSPP.
 
 %prep
 %setup -q -n pspp-%{version}
-cp -f %{SOURCE3} po/lt.po
 
 %build
 export SUSE_ASNEEDED=0
@@ -165,7 +162,7 @@ make html
 %install
 %make_install
 %if 0%{?suse_version}
-%suse_update_desktop_file -r org.fsf.%{name} Education Math
+%suse_update_desktop_file -r org.gnu.%{name} Education Math
 %endif
 cp -r ./doc/pspp.html/ ./doc/pspp-dev.html/ %{buildroot}%{_datadir}/doc/pspp/
 
@@ -241,13 +238,15 @@ fi
 %{_bindir}/pspp-output
 %defattr(644,root,root,755)
 %{_infodir}/pspp*
+%dir %{_infodir}/screenshots
+%{_infodir}/screenshots/*.png
 %dir %{_libdir}/pspp/
 %{_libdir}/pspp/*.so
 %{_datadir}/pspp
 %exclude %dir %{_datadir}/pspp/tests
 %exclude %{_datadir}/pspp/tests/testsuite.log
-%{_datadir}/icons/hicolor/scalable/apps/pspp.svg
-%{_datadir}/icons/hicolor/16x16/apps/pspp.png
+%{_datadir}/icons/hicolor/scalable/apps/org.gnu.pspp.svg
+%{_datadir}/icons/hicolor/16x16/apps/org.gnu.pspp.png
 %{_datadir}/icons/hicolor/16x16/mimetypes/application-x-spss-por.png
 %{_datadir}/icons/hicolor/16x16/mimetypes/application-x-spss-sav.png
 %{_datadir}/icons/hicolor/16x16/mimetypes/application-x-spss-sps.png
@@ -260,24 +259,24 @@ fi
 %{_datadir}/icons/hicolor/24x24/mimetypes/application-x-spss-sav.png
 %{_datadir}/icons/hicolor/24x24/mimetypes/application-x-spss-sps.png
 %{_datadir}/icons/hicolor/24x24/mimetypes/application-x-spss-zsav.png
-%{_datadir}/icons/hicolor/256x256/apps/pspp.png
+%{_datadir}/icons/hicolor/256x256/apps/org.gnu.pspp.png
 %{_datadir}/icons/hicolor/256x256/mimetypes/application-x-spss-por.png
 %{_datadir}/icons/hicolor/256x256/mimetypes/application-x-spss-sav.png
 %{_datadir}/icons/hicolor/256x256/mimetypes/application-x-spss-sps.png
 %{_datadir}/icons/hicolor/256x256/mimetypes/application-x-spss-zsav.png
-%{_datadir}/icons/hicolor/32x32/apps/pspp.png
+%{_datadir}/icons/hicolor/32x32/apps/org.gnu.pspp.png
 %{_datadir}/icons/hicolor/32x32/mimetypes/application-x-spss-por.png
 %{_datadir}/icons/hicolor/32x32/mimetypes/application-x-spss-sav.png
 %{_datadir}/icons/hicolor/32x32/mimetypes/application-x-spss-sps.png
 %{_datadir}/icons/hicolor/32x32/mimetypes/application-x-spss-zsav.png
-%{_datadir}/icons/hicolor/48x48/apps/pspp.png
+%{_datadir}/icons/hicolor/48x48/apps/org.gnu.pspp.png
 %{_datadir}/icons/hicolor/48x48/mimetypes/application-x-spss-por.png
 %{_datadir}/icons/hicolor/48x48/mimetypes/application-x-spss-sav.png
 %{_datadir}/icons/hicolor/48x48/mimetypes/application-x-spss-sps.png
 %{_datadir}/icons/hicolor/48x48/mimetypes/application-x-spss-zsav.png
-%{_datadir}/mime/packages/pspp.xml
-%{_datadir}/applications/org.fsf.pspp.desktop
-%{_datadir}/appdata/org.fsf.pspp.metainfo.xml
+%{_datadir}/mime/packages/org.gnu.pspp.xml
+%{_datadir}/applications/org.gnu.pspp.desktop
+%{_datadir}/appdata/org.gnu.pspp.metainfo.xml
 %if 0%{?mandriva_version} 
 %doc %{_mandir}/man1/pspp.1.xz
 %doc %{_mandir}/man1/psppire.1.xz

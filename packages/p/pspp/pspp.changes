@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sat Jul 22 08:41:49 UTC 2023 - Klaus Kämpf <kkaempf@suse.com>
+
+- Update to 1.6.2
+  * Previously, numeric variables defaulted to "scale" measurement
+    level.  Now, the default is "unknown", with a better guess chosen
+    based on heuristics the first time the data is read.
+
+  * Bug fixes.
+
+- Update to 1.6.1
+  * The SET command now supports LEADZERO for controlling output of a
+    leading zero in F, COMMA, and DOT format.
+
+  * Bug fixes and translation updates.
+
+- Update to 1.6.0
+  * In the Kruskal-Wallis test, a misleading result could occur
+    if the lower bound specified by the user was in fact higher
+    than the upper bound specified.  This has been fixed.
+
+  * The DEFINE, MATRIX, MCONVERT, and MATRIX DATA commands are now
+    implemented.
+
+  * An error in the displayed signficance of oneway anova
+    contrasts tests has been corrected.
+
+  * Added Drag-N-Drop in output view.
+
+  * The Explore GUI dialog supports the "Plots" subdialog. Boxplots,
+    Q-Q Plots and Spreadlevel plots are now also available via the GUI.
+
+  * The graphical user interface for importing spreadsheets has been
+    improved.
+    The new interface provides the user with a preview of the data to
+    be imported and interactive methods to select the desired ranges.
+
+  * The user manual, in its Info and HTML versions, now includes
+    graphical output examples and screenshots.
+
+  * New command SHOW SYSTEM to easily print system information useful
+    in bug reports.
+
+  * Output improvements:
+    - New drivers for output to TeX source files and to PNG files.
+    - Table output styles may now be set with the new option
+      --table-look and the new SET TLOOK command.
+    - New driver option "trim" to remove empty space from PDF,
+      PostScript, SVG, and PNG output files.
+    - The PDF output driver now adds an outline to allow PDF viewers
+      to display as a "table of contents" for the file.
+    - The HTML output driver has a new option "bare".
+
+  * New features in pspp-output:
+    - New --table-look and --nth-commands options.
+    - New get-table-look and convert-table-look commands.
+
+-------------------------------------------------------------------
 Thu Apr 28 18:59:04 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - use https:// for Source urls 
