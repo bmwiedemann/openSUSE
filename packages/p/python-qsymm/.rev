@@ -23,4 +23,15 @@
     <comment>- skip python 3.6 (no scipy available)</comment>
     <requestid>872006</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>4f3bb3251ca26e22202bb6e9df103ef4</srcmd5>
+    <version>1.3.0</version>
+    <time>1690809888</time>
+    <user>maxlin_factory</user>
+    <comment>- Add patch support-sympy-1.12.patch:
+  * Support sympy 1.12.
+- Switch to pyproject macros.
+- Skip a truculent test.</comment>
+    <requestid>1101478</requestid>
+  </revision>
 </revisionlist>

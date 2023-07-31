@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 31 07:40:42 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-sympy-1.12.patch:
+  * Support sympy 1.12.
+- Switch to pyproject macros.
+- Skip a truculent test.
+
+-------------------------------------------------------------------
 Sat Feb 13 18:26:02 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python 3.6 (no scipy available) 
