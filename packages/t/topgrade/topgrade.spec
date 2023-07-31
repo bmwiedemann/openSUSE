@@ -17,7 +17,7 @@
 
 
 Name:           topgrade
-Version:        11.0.2
+Version:        12.0.2
 Release:        0
 Summary:        Upgrade all the things
 License:        GPL-3.0-only
@@ -27,6 +27,7 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source2:        cargo_config
 BuildRequires:  cargo-packaging
+BuildRequires:  zstd
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description

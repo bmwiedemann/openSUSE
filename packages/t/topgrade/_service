@@ -4,7 +4,7 @@
         <param
             name="versionformat">@PARENT_TAG@</param>
         <param name="scm">git</param>
-        <param name="revision">v11.0.2</param>
+        <param name="revision">v12.0.2</param>
         <param
             name="match-tag">*</param>
         <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
@@ -24,5 +24,7 @@
         <param
             name="srcdir">topgrade</param>
         <param name="compression">zst</param>
+        <param name="update">true</param>
     </service>
+    <service mode="disabled" name="cargo_audit"/>
 </services>
