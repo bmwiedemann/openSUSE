@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul 31 04:07:19 UTC 2023 - william.brown@suse.com
+
+- Update to version 20230731:
+  * Update aliases from GHSA OSV export (#1734)
+  * Assigned RUSTSEC-2023-0048 to intaglio (#1733)
+  * Add advisory for unsoundness in intaglio symbol interners (#1732)
+  * Assigned RUSTSEC-2023-0047 to lmdb-rs (#1730)
+  * report unsoundness of lmdb-rs (#1724)
+  * Fix typos (#1729)
+  * Bump rustsec-admin to 0.8.6 (#1728)
+  * Update aliases from GHSA OSV export (#1727)
+  * Update RUSTSEC-2021-0145.md with stable IsTerminal (#1725)
+  * Assigned RUSTSEC-2023-0046 to cyfs-base (#1723)
+
+-------------------------------------------------------------------
 Tue Jul 11 00:47:33 UTC 2023 - william.brown@suse.com
 
 - Update to version 20230711:
