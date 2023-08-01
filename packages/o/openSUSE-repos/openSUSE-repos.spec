@@ -66,7 +66,7 @@ Name:           openSUSE-repos
 %else
 Name:           openSUSE-repos-%{theme}
 %endif
-Version:        20230725.c6c492e
+Version:        20230731.a018a46
 Release:        0
 Summary:        openSUSE package repositories
 License:        MIT

@@ -63,4 +63,16 @@
     <comment></comment>
     <requestid>1100752</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>93f11a69c5a982216074962ce70a613b</srcmd5>
+    <version>20230731.a018a46</version>
+    <time>1690892141</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 20230731.a018a46:
+  * Use HTTP - When you use https, you have the tls handshake overhead
+    and you get redirected to only-https mirrors.
+    Also http by default enables systems with experimental ssl setup.
+  * Update README.md with text from the news-o-o article</comment>
+    <requestid>1101535</requestid>
+  </revision>
 </revisionlist>

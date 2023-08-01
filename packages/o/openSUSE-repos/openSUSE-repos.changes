@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 31 10:13:52 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230731.a018a46:
+  * Use HTTP - When you use https, you have the tls handshake overhead
+    and you get redirected to only-https mirrors.
+    Also http by default enables systems with experimental ssl setup.
+  * Update README.md with text from the news-o-o article
+
+-------------------------------------------------------------------
 Tue Jul 25 13:14:12 UTC 2023 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20230725.c6c492e:
