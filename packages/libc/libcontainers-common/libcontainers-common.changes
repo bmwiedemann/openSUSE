@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 31 06:17:22 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- Disable CNI related configs on ALP (bsc#1213556)
+  (https://github.com/containers/podman/issues/19327)
+
+-------------------------------------------------------------------
 Tue Jun 27 14:18:18 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
 
 - Remove unused grep requirement

@@ -132,6 +132,12 @@ cat >>%{SOURCE5} <<EOL
 %{_sysconfdir}/zypp/credentials.d/SCCcredentials:%{_sysconfdir}/zypp/credentials.d/SCCcredentials
 EOL
 
+# Disable CNI related configs on ALP (bsc#1213556)
+# https://github.com/containers/podman/issues/19327
+%if 0%{suse_version} >= 1600 && !0%{?is_opensuse}
+sed -i 's/cni_plugin_dirs = .*/\# cni_plugin_dirs = []/g' %{SOURCE9}
+%endif
+
 cd common-%{commonver}
 %make_build docs
 cd ..
