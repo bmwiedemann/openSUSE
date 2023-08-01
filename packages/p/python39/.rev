@@ -911,4 +911,14 @@
 </comment>
     <requestid>1100886</requestid>
   </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>b1f30e2e81a0168934061849801dbc6a</srcmd5>
+    <version>3.9.17</version>
+    <time>1690892134</time>
+    <user>maxlin_factory</user>
+    <comment>- Add bpo-37596-make-set-marshalling.patch making marshalling of
+  `set` and `frozenset` deterministic (bsc#1211765).
+</comment>
+    <requestid>1101338</requestid>
+  </revision>
 </revisionlist>

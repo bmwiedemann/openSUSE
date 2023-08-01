@@ -161,6 +161,9 @@ Patch35:        support-expat-CVE-2022-25236-patched.patch
 # PATCH-FIX-UPSTREAM 98437-sphinx.locale._-as-gettext-in-pyspecific.patch gh#python/cpython#98366 mcepl@suse.com
 # this patch makes things totally awesome
 Patch37:        98437-sphinx.locale._-as-gettext-in-pyspecific.patch
+# PATCH-FIX-UPSTREAM bpo-37596-make-set-marshalling.patch bsc#1211765 mcepl@suse.com
+# Make `set` and `frozenset` marshalling deterministic
+Patch38:        bpo-37596-make-set-marshalling.patch
 # PATCH-FIX-UPSTREAM gh-78214-marshal_stabilize_FLAG_REF.patch bsc#1213463 mcepl@suse.com
 # marshal: Stabilize FLAG_REF usage
 Patch39:        gh-78214-marshal_stabilize_FLAG_REF.patch
@@ -410,7 +413,6 @@ other applications.
 %prep
 %setup -q -n %{tarname}
 %patch02 -p1
-
 %patch06 -p1
 %patch07 -p1
 %patch08 -p1
@@ -428,6 +430,7 @@ other applications.
 %endif
 %patch35 -p1
 %patch37 -p1
+%patch38 -p1
 %patch39 -p1
 %patch40 -p1
 %if 0%{?sle_version} && 0%{?sle_version} <= 150500

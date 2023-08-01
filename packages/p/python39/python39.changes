@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 29 20:18:14 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add bpo-37596-make-set-marshalling.patch making marshalling of
+  `set` and `frozenset` deterministic (bsc#1211765).
+
+-------------------------------------------------------------------
 Wed Jul 19 11:15:39 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Add gh-78214-marshal_stabilize_FLAG_REF.patch to marshal.c for
