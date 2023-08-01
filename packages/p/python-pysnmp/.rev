@@ -159,4 +159,27 @@
     <comment>- Fix build without python2</comment>
     <requestid>784881</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>792b5477d84472489419fbab938ba83f</srcmd5>
+    <version>5.0.28</version>
+    <time>1690897092</time>
+    <user>maxlin_factory</user>
+    <comment>- Switch to lextudio releases, and upgrade to 5.0.28:
+  * Fixed SNMP engine ID generation on Windows.
+  * SNMPv3 crypto operations that require external dependencies
+    made dependent on the optional external
+    package -- pysnmpcrypto.
+  * Added Slim class and simplified some examples.
+  * Fixed a #SNMP demo compatibility issue.
+  * Fixed passwordToKeySHA.
+  * Enabled Python 3.11 support.
+  * Switched to pyasn1/pyasn1 package.
+  * Removed legacy paddings in v3 packets.
+  * Changed web site to pysnmp.com.
+  * Inherited all changes made by Splunk team.
+- Switch to pyproject macros.
+- Add patch support-new-pyasn1.patch:
+  * Support pyasn1 0.5.0.</comment>
+    <requestid>1101627</requestid>
+  </revision>
 </revisionlist>

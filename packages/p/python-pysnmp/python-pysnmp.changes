@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Aug  1 06:20:01 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to lextudio releases, and upgrade to 5.0.28:
+  * Fixed SNMP engine ID generation on Windows.
+  * SNMPv3 crypto operations that require external dependencies
+    made dependent on the optional external
+    package -- pysnmpcrypto.
+  * Added Slim class and simplified some examples.
+  * Fixed a #SNMP demo compatibility issue.
+  * Fixed passwordToKeySHA.
+  * Enabled Python 3.11 support.
+  * Switched to pyasn1/pyasn1 package.
+  * Removed legacy paddings in v3 packets.
+  * Changed web site to pysnmp.com.
+  * Inherited all changes made by Splunk team.
+- Switch to pyproject macros.
+- Add patch support-new-pyasn1.patch:
+  * Support pyasn1 0.5.0.
+
+-------------------------------------------------------------------
 Sat Mar 14 09:11:57 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
