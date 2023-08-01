@@ -506,6 +506,7 @@ FileProvides: /usr/sbin/showconsole blog
 FileProvides: /usr/bin/chattr e2fsprogs
 FileProvides: /usr/bin/regina Regina-REXX
 FileProvides: /usr/bin/rexx Regina-REXX
+FileProvides: /usr/bin/festival festival
 
 # Set preferences for above list - work with negative prefers, in order to be able to catch no-longer existing ones
 Prefer: bash-sh
