@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug  1 10:18:40 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.36.1:
+  * fix: Make detection of mackup config dir more robust
+  * fix: Ensure that templates cannot modify each other's data
+  * chore: Move core packages back to internal
+
+-------------------------------------------------------------------
+Tue Aug  1 10:17:11 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.36.0:
+  * feat: Add .chezmoiexternals directory for multiple externals
+  * fix: Respect setting diff.pager to the empty string as disabling the pager
+  * feat: Add undocumented mackup command
+  * chore: Update dependencies
+
+-------------------------------------------------------------------
 Mon Jul 17 14:20:09 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.35.0:
