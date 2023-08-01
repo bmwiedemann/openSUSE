@@ -16,11 +16,6 @@
 #
 
 
-%ifarch aarch64 %{arm}
-# Workaround until fixed upstream - https://github.com/simsong/bulk_extractor/issues/360
-%define _lto_cflags %{nil}
-%endif
-
 Name:           bulk_extractor
 Version:        2.0.0
 Release:        0
@@ -30,6 +25,10 @@ Group:          Productivity/File utilities
 URL:            https://github.com/simsong/bulk_extractor/wiki/Introducing-bulk_extractor
 Source:         https://github.com/simsong/bulk_extractor/releases/download/v2.0.0/bulk_extractor-2.0.0.tar.gz
 Patch1:         gcc13.diff
+# https://github.com/dfxml-working-group/dfxml_cpp/issues/15
+Patch2:         cpuid-check.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  java-devel
@@ -53,6 +52,7 @@ as features that are more common tend to be more important.
 %autosetup -p1
 
 %build
+autoreconf -fi
 %configure
 %make_build
 
