@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-dns-lexicon
-Version:        3.11.7
+Version:        3.12.0
 Release:        0
 Summary:        DNS record manipulation utility
 License:        MIT

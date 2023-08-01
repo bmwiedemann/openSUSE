@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 31 12:33:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.12.0:
+  * Add `duckdns` provider (experimental support) (#1533)
+  * Add `dnsservices` provider (#1603)
+  * Add `flexibleengine` provider (#1600)
+  * Official support for Python 3.11
+  * Upgrade API version used for `azure` provider (#1606)
+  * Various fixes for documentation (#1488 #1458 #1601 #1605)
+  * Fix check for extra dependencies (#1568)
+
+-------------------------------------------------------------------
 Sat Jul  1 09:03:45 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
