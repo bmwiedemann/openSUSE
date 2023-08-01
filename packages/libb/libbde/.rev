@@ -152,4 +152,12 @@
     <comment>add missing libbfio-devel</comment>
     <requestid>1046572</requestid>
   </revision>
+  <revision rev="20" vrev="4">
+    <srcmd5>0efb4f8c2ab562ccc1a4f65df7e9ca1a</srcmd5>
+    <version>20221031</version>
+    <time>1690897087</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>1101589</requestid>
+  </revision>
 </revisionlist>
