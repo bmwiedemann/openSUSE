@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Aug 01 10:30:23 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.86.1:
+  * fix: default image source name to user input (#1979)
+
+-------------------------------------------------------------------
+Tue Aug 01 10:17:13 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.86.0:
+  * chore(deps): update stereoscope to
+    d1f3d766295ed3c8362ac1be68070e2a1dba4d03 (#1975)
+  * chore: update to latest commit in tools-golang (#1969)
+  * Guess unpinned versions in python requirements.txt (#1966)
+  * chore(deps): bump github.com/vifraa/gopom from 0.2.1 to 0.2.2
+    (#1965)
+  * Fix panic condition on docker pull failure (#1968)
+  * bump JSON schema to account for simplified python env markers
+    (#1967)
+  * feat: support top-level SPDX package and graph (#1934)
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.8.0 to
+    5.8.1 (#1959)
+  * Add cataloger for Swift Package Manager. (#1919)
+  * chore(deps): update stereoscope to
+    d515761c6ca2743a67d7d08053db69235ae76d1d (#1953)
+  * chore(deps): bump github.com/docker/docker (#1955)
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.7.0 to
+    5.8.0 (#1951)
+  * Introduce indexed embedded CPE dictionary (#1897)
+  * chore(deps): bump github.com/gookit/color from 1.5.3 to 1.5.4
+    (#1949)
+  * Add support for parsing .NET assemblies (#1943)
+  * docs: capture artifactory dev settings from 1895 (#1947)
+  * remove build binary and add explicit git ignore
+  * docs: update docs with new docker specific instructions (#1941)
+  * remove jotframe UI (#1932)
+  * fix: remove indirect dependency of circl v1.1.0 (#1940)
+  * chore: move wait before iteration to guarantee read before tea
+    (#1931)
+
+-------------------------------------------------------------------
 Thu Jul 13 04:49:43 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.85.0:
