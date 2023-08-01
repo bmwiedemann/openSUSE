@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 31 12:32:38 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.4:
+  * Fixed the output format of /proc/diskstats
+  * Fixed an issue with cpuset path tracking when used with containerd
+
+-------------------------------------------------------------------
 Tue Feb 28 16:36:27 UTC 2023 - Callum Farmer <gmbr3@opensuse.org>
 
 - Correct BR from python3-jinja2 to python3-Jinja2, fixes

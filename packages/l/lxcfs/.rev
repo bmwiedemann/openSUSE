@@ -170,4 +170,14 @@
     <comment></comment>
     <requestid>1068302</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>badc1e0b1bbb197a138aa75ef1b34085</srcmd5>
+    <version>5.0.4</version>
+    <time>1690892144</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 5.0.4:
+  * Fixed the output format of /proc/diskstats
+  * Fixed an issue with cpuset path tracking when used with containerd</comment>
+    <requestid>1101531</requestid>
+  </revision>
 </revisionlist>
