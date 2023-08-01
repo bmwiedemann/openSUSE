@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jul 21 03:09:47 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.059
+   see /usr/share/doc/packages/perl-PAR-Packer/Changes
+
+  1.059  2023-07-20
+  - correctly propagate the exit value of a packed executable
+    Get the exit value from perl_destruct() instead of perl_run().
+    These may be different, e.g. if the value of $? is set in an END block.
+  - clean up tests a bit
+  - set up GitHub CI and add cpanfile (for CI only)
+  - check more return codes in myldr/*.c
+
+-------------------------------------------------------------------
+Tue Jun 13 03:07:27 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.058
+   see /usr/share/doc/packages/perl-PAR-Packer/Changes
+
+-------------------------------------------------------------------
 Wed Nov 30 03:07:14 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.057

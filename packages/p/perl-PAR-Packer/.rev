@@ -232,4 +232,23 @@
     <comment></comment>
     <requestid>1042831</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ac904c05518ac2b2282e883d70772ec2</srcmd5>
+    <version>1.59.0</version>
+    <time>1690892135</time>
+    <user>maxlin_factory</user>
+    <comment>- updated to 1.059
+   see /usr/share/doc/packages/perl-PAR-Packer/Changes
+  1.059  2023-07-20
+  - correctly propagate the exit value of a packed executable
+    Get the exit value from perl_destruct() instead of perl_run().
+    These may be different, e.g. if the value of $? is set in an END block.
+  - clean up tests a bit
+  - set up GitHub CI and add cpanfile (for CI only)
+  - check more return codes in myldr/*.c
+- updated to 1.058
+   see /usr/share/doc/packages/perl-PAR-Packer/Changes
+</comment>
+    <requestid>1101153</requestid>
+  </revision>
 </revisionlist>

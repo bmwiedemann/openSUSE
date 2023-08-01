@@ -1,7 +1,7 @@
 #
 # spec file for package perl-PAR-Packer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name PAR-Packer
 Name:           perl-PAR-Packer
-Version:        1.057
+Version:        1.59.0
 Release:        0
+%define cpan_version 1.059
+Provides:       perl(PAR::Packer) = 1.59.0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        PAR Packager
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/R/RS/RSCHUPP/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/R/RS/RSCHUPP/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -45,6 +47,16 @@ Requires:       perl(IO::Compress::Gzip)
 Requires:       perl(Module::ScanDeps) >= 1.21
 Requires:       perl(PAR) >= 1.016
 Requires:       perl(PAR::Dist) >= 0.22
+Provides:       perl(App::Packer::PAR) = 0.91
+Provides:       perl(PAR::Filter) = 0.03
+Provides:       perl(PAR::Filter::Bleach)
+Provides:       perl(PAR::Filter::Bytecode)
+Provides:       perl(PAR::Filter::Obfuscate)
+Provides:       perl(PAR::Filter::PatchContent)
+Provides:       perl(PAR::Filter::PodStrip)
+Provides:       perl(PAR::StrippedPARL::Base) = 0.975
+Provides:       perl(pp) = 0.992
+%define         __perllib_provides /bin/true
 Recommends:     perl(Module::Signature)
 Recommends:     perl(Tk)
 Recommends:     perl(Tk::ColoredButton)
@@ -65,8 +77,9 @@ have been stripped from the PAR distribution and are now distributed as the
 compiler.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version}
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
