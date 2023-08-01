@@ -116,6 +116,7 @@ export LDFLAGS="-Wl,-z,relro,-z,now -fPIE -pie"
 
 %check
 %make_build check
+chmod -x support/*
 
 %install
 %make_install
@@ -167,7 +168,7 @@ done
 
 %files
 %license COPYING
-%doc NEWS.md README.md tech_report.tex
+%doc NEWS.md README.md tech_report.tex support/
 %{_unitdir}/rsyncd@.service
 %{_unitdir}/rsyncd.service
 %{_unitdir}/rsyncd.socket
