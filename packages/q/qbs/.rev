@@ -177,4 +177,12 @@ Initial import of qbs 1.10.1
     <comment>Update to 2.0.2</comment>
     <requestid>1093968</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7aac506f885f60522dc78f313e1e44bd</srcmd5>
+    <version>2.1.0</version>
+    <time>1690892158</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>1101542</requestid>
+  </revision>
 </revisionlist>

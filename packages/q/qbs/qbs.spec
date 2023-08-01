@@ -18,7 +18,7 @@
 
 
 Name:           qbs
-Version:        2.0.2
+Version:        2.1.0
 Release:        0
 Summary:        Build tool for software projects
 # Legal:
@@ -91,7 +91,6 @@ This package contains examples to show different qbs usages.
 %{qt6_install}
 
 # Cleanup
-rm %{buildroot}%{_libexecdir}/qbs/dmgbuild
 rm -r %{buildroot}%{_qt6_sharedir}/qbs/python
 
 # E: version-control-internal-file
