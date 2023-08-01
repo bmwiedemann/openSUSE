@@ -41,4 +41,16 @@
     <comment></comment>
     <requestid>971081</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>020a584cfb83900c0836762adcf590dd</srcmd5>
+    <version>1.0.1</version>
+    <time>1690897095</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to 1.0.1:
+  * Switch to pysnmp-lextudio, a maintained fork of PySNMP.
+- Drop patch python-snimpy-disable-IPv6-tests.diff, no longer required.
+- Use pyproject macros.
+- Stop using greedy globs in %files.</comment>
+    <requestid>1101629</requestid>
+  </revision>
 </revisionlist>

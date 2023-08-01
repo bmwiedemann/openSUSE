@@ -1,7 +1,7 @@
 #
 # spec file for package python-snimpy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2016-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,33 +17,30 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global skip_python2 1
 Name:           python-snimpy
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Interactive SNMP tool
 License:        ISC
-Group:          Development/Languages/Python
 URL:            https://github.com/vincentbernat/snimpy
 Source:         https://files.pythonhosted.org/packages/source/s/snimpy/snimpy-%{version}.tar.gz
-Patch0:         python-snimpy-disable-IPv6-tests.diff
 BuildRequires:  %{python_module cffi >= 1.0.0}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module vcversioner}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  libsmi-devel
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module cffi >= 1.0.0}
-BuildRequires:  %{python_module pycryptodomex}
-BuildRequires:  %{python_module pysnmp >= 4}
+BuildRequires:  %{python_module pysnmp >= 5}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 # /SECTION
 Requires:       python-cffi >= 1.0.0
-Requires:       python-pycryptodomex
-Requires:       python-pysnmp >= 4
+Requires:       python-pysnmp >= 5
 Requires:       python-setuptools
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -72,23 +69,20 @@ details. Here are some "features":
  * when something goes wrong, you get an exception
 
 %prep
-%setup -q -n snimpy-%{version}
-%patch0 -p1
+%autosetup -p1 -n snimpy-%{version}
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 %python_clone -a %{buildroot}%{_bindir}/snimpy
 %python_clone -a %{buildroot}%{_mandir}/man1/snimpy.1
 
 %check
-# https://github.com/vincentbernat/snimpy/issues/98
-sed -i 's:import mock:from unittest import mock:' tests/test_{basictypes,main}.py
-%python_exec -m unittest discover tests -v
+%pytest_arch
 
 %post
 %python_install_alternative snimpy snimpy.1
@@ -101,6 +95,7 @@ sed -i 's:import mock:from unittest import mock:' tests/test_{basictypes,main}.p
 %doc AUTHORS.rst README.rst
 %python_alternative %{_bindir}/snimpy
 %python_alternative %{_mandir}/man1/snimpy.1%{ext_man}
-%{python_sitearch}/snimpy*
+%{python_sitearch}/snimpy
+%{python_sitearch}/snimpy-%{version}.dist-info
 
 %changelog
