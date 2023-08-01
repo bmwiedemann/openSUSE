@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug  1 08:46:57 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- update to 23.4.0
+  * Support Python 3.11
+  * Auto-allow host for SSH connection
+
+-------------------------------------------------------------------
 Tue Feb 21 12:39:36 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 23.2.0
