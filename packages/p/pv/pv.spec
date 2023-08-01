@@ -17,7 +17,7 @@
 
 
 Name:           pv
-Version:        1.7.18
+Version:        1.7.24
 Release:        0
 Summary:        PipeViewer - Monitor the Progress of Data through Pipes
 License:        Artistic-2.0
@@ -25,8 +25,8 @@ Group:          System/Base
 URL:            http://ivarch.com/programs/pv.shtml
 
 #Git-Clone:     https://github.com/a-j-wood/pv
-Source:         http://ivarch.com/programs/sources/%name-%version.tar.bz2
-Source2:        http://ivarch.com/programs/sources/%name-%version.tar.bz2.txt
+Source:         http://ivarch.com/programs/sources/%name-%version.tar.gz
+Source2:        http://ivarch.com/programs/sources/%name-%version.tar.gz.txt#/%name-%version.tar.gz.asc
 Source3:        %name.keyring
 BuildRequires:  gcc
 BuildRequires:  gettext
