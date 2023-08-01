@@ -1,7 +1,7 @@
 #
 # spec file for package python-autoflake
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,9 +24,10 @@ License:        MIT
 URL:            https://github.com/myint/autoflake
 Source:         https://files.pythonhosted.org/packages/source/a/autoflake/autoflake-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyflakes >= 1.1.0}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml >= 0.10.2}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pyflakes >= 1.1.0
@@ -52,10 +53,10 @@ autoflake also removes useless pass statements.
 sed -i '1{/env python/d}' autoflake.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/autoflake
 %fdupes %{buildroot}%{$python_sitelib}
 

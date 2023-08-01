@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 31 18:49:08 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Remove upstreamed patch rm_assert_failing_310.patch.
+
+-------------------------------------------------------------------
 Mon Sep 12 08:00:46 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - reenable build for python38, issue got fixed in current release 

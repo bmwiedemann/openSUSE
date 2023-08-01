@@ -86,4 +86,13 @@
   * added option to remove RHS also when removing unused variables (#92)</comment>
     <requestid>1002737</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>d7086d7d4f662bc269d1bd4b6a6831f4</srcmd5>
+    <version>1.5.3</version>
+    <time>1690892174</time>
+    <user>maxlin_factory</user>
+    <comment>- Remove upstreamed patch rm_assert_failing_310.patch.
+</comment>
+    <requestid>1101580</requestid>
+  </revision>
 </revisionlist>
