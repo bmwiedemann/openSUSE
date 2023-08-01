@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 31 11:56:59 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.16.6:
+  * Fix crash related to invalid UTF-8 on a link line
+  * Fix splitting long lines in input fields
+
+-------------------------------------------------------------------
 Tue Jun 27 15:12:47 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.16.5:

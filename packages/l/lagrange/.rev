@@ -560,4 +560,14 @@
   * Changed where new tabs are placed with the regular &quot;New Tab&quot; command.</comment>
     <requestid>1095650</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>3627c50e899ca2538e316bf46438bfa8</srcmd5>
+    <version>1.16.6</version>
+    <time>1690892142</time>
+    <user>maxlin_factory</user>
+    <comment>- update to 1.16.6:
+  * Fix crash related to invalid UTF-8 on a link line
+  * Fix splitting long lines in input fields</comment>
+    <requestid>1101520</requestid>
+  </revision>
 </revisionlist>
