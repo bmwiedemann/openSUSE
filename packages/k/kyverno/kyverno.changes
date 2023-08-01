@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Aug 01 10:00:11 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.10.2:
+  * release 1.10.2 (#7928)
+  * bug: add severity and category in cluster policy report (#7828)
+    (#7922)
+  * refactor: remove obsolete structs from CLI (#6802)
+    (cherry-pick) (#7921)
+  * feat: add events for successful generation (#7550) (#7804)
+  * cherry-pick #7888 (#7920)
+  * Feat: cloneList rule validation (#7823) (#7914)
+  * refactor: remove manual keychain refresh from client (#7806)
+    (#7917)
+  * cherry-pick #7774 (#7915)
+  * fix(policy chart): Skip DELETE requests on policies using deny
+    statements (#7883) (#7900)
+  * Modified annotation matching during rollback (#7752) (#7894)
+  * fix log level (#7877) (#7881)
+  * Added log message for API call failures (#7834), cherry picked
+    (#7880)
+  * feat(chart) Add configurations for cleanup jobs and webhooks
+    (#7871) (#7875)
+  * policy validation: fix assignment to entry in nil map (#7874)
+    (#7876)
+  * feat: skip schema validation for CRD (#7869) (#7873)
+  * fix: namespace label matching for Namespace (#7837) (#7870)
+  * fix: ignore tekton/pipeline (#7858) (#7863)
+  * fix type confusion in policy validation (#7857) (#7862)
+  * feat: enable operator boolean comparison (#7847) (#7860)
+  * Add nodeSelector for cleanupJob CronJob resources (#7851)
+    (#7855)
+  * cherry-pick kyverno#7810 (#7822)
+  * cherry-pick #7800 (#7819)
+  * feat: allow pod labels for cleanup jobs (#7808) (#7809)
+  * fix: aggregated admission report not updated correctly (#7798)
+    (#7799)
+  * Update Chart README migration guide with 1.10.1 updates (#7770)
+
+-------------------------------------------------------------------
 Thu Jul 06 08:37:04 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.10.1:
