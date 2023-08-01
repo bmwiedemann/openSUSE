@@ -1,7 +1,7 @@
 #
 # spec file for package iio-sensor-proxy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           iio-sensor-proxy
-Version:        3.4
+Version:        3.5
 Release:        0
 Summary:        Proxy for IIO and input subsystems
 License:        GPL-3.0-only
@@ -59,24 +59,22 @@ This package contains the documentation for %{name}.
 
 %install
 %meson_install
-mkdir -p %{buildroot}%{_datadir}/dbus-1/system.d
-mv %{buildroot}%{_sysconfdir}/dbus-1/system.d/net.hadess.SensorProxy.conf %{buildroot}%{_datadir}/dbus-1/system.d
 
 %pre
-%service_add_pre %{name}.service
+%service_add_pre iio-sensor-proxy.service
 
 %preun
-%service_del_preun %{name}.service
+%service_del_preun iio-sensor-proxy.service
 
 %post
 %udev_hwdb_update
 %udev_rules_update
-%service_add_post %{name}.service
+%service_add_post iio-sensor-proxy.service
 
 %postun
 %udev_hwdb_update
 %udev_rules_update
-%service_del_postun %{name}.service
+%service_del_postun iio-sensor-proxy.service
 
 %files
 %{_bindir}/monitor-sensor
