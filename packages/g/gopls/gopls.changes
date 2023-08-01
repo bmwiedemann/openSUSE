@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Mon Jul 31 14:45:07 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.13.0:
+  * gopls: update go.mod for v0.13.0-pre.3
+  * gopls/internal/lsp/source: Add SuggestedFix for embeddirective Analyzer
+  * gopls/internal/lsp/cache: keep analysis progress reports on one line
+  * gopls: update go.mod and go.sum for v0.13.0-pre.2
+  * gopls/internal/lsp/cache: fast-path for type-checking active packages
+  * gopls/internal/lsp/cache: fix use of time.NewTimer instead of NewTicker
+  * gopls: fix tests that depend on log sequencing
+  * gopls: update go.mod and go.sum for v0.13.0
+  * gopls/internal/lsp/debug: update debug version for v0.13.0
+  * all: update codereview.cfg for gopls-release-branch.0.13
+  * gopls/internal/lsp/cache: use correct metadata in resolveImportGraph
+  * gopls/internal/lsp/cache: fix incorrect check for active package
+  * gopls/internal/lsp/source: highlight deprecated symbols
+  * gopls/internal/lsp: don't recompute diagnostics during code actions
+  * gopls/internal/lsp/cache: memoize active packages after every operation
+  * gopls/internal/regtest/bench: add benchmarks for codeactions
+  * gopls/internal/lsp/cache: fix boundary cond in parseCache age eviction
+  * gopls/internal/lsp/cache: purge Analysis.Results earlier
+  * gopls/internal/lsp/cache: limit parallelism
+  * gopls/internal/lsp/cache: move purgeFuncBodies into the parse cache
+  * gopls/internal/lsp/cache: used time-based eviction in parseCache
+  * gopls/internal/lsp/frob: document another restriction
+  * go/types/objectpath: avoid sorting methods for gopls
+  * gopls/internal/lsp/cache: UX improvements for analysis
+  * gopls/internal/lsp/cache: better panic if metadata invariant is broken
+  * gopls/internal/lsp/cache: frob: a fast encoder with gob-like powers
+  * gopls/internal/lsp: don't awaitLoaded inside resolveImportGraph
+  * gopls/internal/lsp: fix a latent bug in orphaned file reloading
+  * gopls/internal/lsp/source/typerefs: optimize getPackageHandles
+  * gopls/internal/lsp: only diagnose one package per file
+  * gopls/protocol/generate: upgrade generating LSP stubs
+  * gopls/internal/lsp/debug: display Analysis.Run times
+  * gopls/internal: update LSP support
+  * gopls/internal/lsp/source: fix spurious "unexpected var object" error
+  * gopls/internal/regtest/bench: add a test simulating typing
+  * gopls/internal/regtest/bench: add an 'oracle' benchmark repo
+  * gopls/internal/regtest/bench: clean up profile flags
+  * gopls/internal/regtest/workspace: fix TestQuickFix_AddGoWork for go1.21
+  * gopls: commands to start/stop profiling, and a new benchmark metric
+  * gopls/internal/lsp/source: put context first in extracted functions
+  * gopls/internal/lsp/source/completion: avoid duplicates from variants
+  * gopls/internal/lsp: make gopls.start_debugging open browser
+  * gopls/internal/lsp/filecache: increase idle GC period to 6 hours
+  * gopls/internal/lsp/source/completion: honor usePlaceholders
+  * gopls/internal/lsp/source/completion: placeholders for type params
+  * gopls/internal/regtest/marker: skip addgowork.txt
+  * gopls/internal/lsp/source/xrefs: include refs to methods of generics
+  * gopls/internal/lsp/source: ignore objectpath error in rename
+  * gopls: remove dead code
+  * gopls/internal/lsp/cache: plumb analysis URLs to client
+  * gopls/doc/contributing.md: document error handling strategies
+  * gopls/internal/lsp/source/typerefs: move test into _test.go
+  * gopls/internal/lsp/filecache: reduce GC frequency
+  * gopls/internal/lsp/cmd: list bug reports in 'gopls bug'
+  * gopls/internal/lsp/cache: don't panic when import fails during analysis
+  * gopls/internal/lsp/cache: don't record edges to invalid packages
+  * gopls/internal/lsp/cache: remove ITVs from shared import graph
+
+-------------------------------------------------------------------
 Mon Jun 26 14:35:38 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 0.12.4:

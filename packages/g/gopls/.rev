@@ -7,4 +7,12 @@
     <comment>New package gopls (pronounced &quot;Go please&quot;) version 0.12.4 is the official Go language server developed by the Go team. It provides IDE features to any LSP-compatible editor.</comment>
     <requestid>1095451</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>751e552644c2e2cae408190f2e338ffa</srcmd5>
+    <version>0.13.0</version>
+    <time>1690892172</time>
+    <user>maxlin_factory</user>
+    <comment>- Update to version 0.13.0: (forwarded request 1101555 from jfkw)</comment>
+    <requestid>1101561</requestid>
+  </revision>
 </revisionlist>
