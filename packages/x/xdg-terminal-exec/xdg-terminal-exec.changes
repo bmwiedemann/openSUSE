@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Mon Jul 31 12:33:33 UTC 2023 - mcepl@suse.com
+
+- Update to version 20230731+git.6426085:
+  * fix shellcheck warnings, fixes #20
+
+-------------------------------------------------------------------
+Mon Jul 31 06:34:31 UTC 2023 - mcepl@suse.com
+
+- Update to version 20230725+git.97162b5:
+  * Update xdg-terminal-exec
+  * replace bloated xargs -0/IFS sorcery with more compact and
+    clean eval/set magic
+  * Use ASCII chars as candidates for delimiter, fixes #12
+  * Fix errors during tests
+  * xdg-terminal-exec: add missed $ to CHAR variable
+  * Fixes for missing executable and empty data dirs
+  * account for explicitly empty EXECARG, construct_argv
+    function, update doc
+- Enable tests.
+
+-------------------------------------------------------------------
+Thu Feb 23 13:24:23 UTC 2023 - rbrown@suse.com
+
+- Update to version 20230223+git.c70f178:
+  * Add support for /usr/etc configurations
+
+-------------------------------------------------------------------
+Thu Feb 23 12:13:45 UTC 2023 - Richard Brown <rbrown@suse.com>
+
+- Initial Packaging, to be used by MicroOS Desktop and forks 
