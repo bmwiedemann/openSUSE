@@ -68,6 +68,7 @@ This package contains the openldap module for the Qore Programming Language.
 This module exposes functionality from the openldap library as a Qore API.
 
 %if 0%{?suse_version}
+%debug_package
 %endif
 
 %package doc

@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>1100399</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ecabd23561bb9a64d2b3789a5230d516</srcmd5>
+    <version>1.2.3</version>
+    <time>1690892159</time>
+    <user>maxlin_factory</user>
+    <comment>- Add debug package
+</comment>
+    <requestid>1101562</requestid>
+  </revision>
 </revisionlist>
