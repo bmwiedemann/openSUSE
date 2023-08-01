@@ -209,4 +209,12 @@ Mon Feb  25 10:22:24 UTC 2019 - dakechi@suse.com
     <comment>New version of salt-shaptools released</comment>
     <requestid>897229</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>49a298668ee6ae649506862759a7be9f</srcmd5>
+    <version>0.3.18+git.1690200022.db379c1</version>
+    <time>1690892152</time>
+    <user>maxlin_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1101541</requestid>
+  </revision>
 </revisionlist>
