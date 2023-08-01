@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jul 29 08:26:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.4:
+  * Remove obsolete rhash_timer functions (API breaking change)
+  * Increment LibRHash soname version on Linux and Unix
+  * Support leading and trailing spaces in a file names
+  * Changed the simple file format to fit the sfv format
+  * Bugfix: Fix slash usage with wilcards on Windows
+  * Print the algorithms being calculated on -vv
+  * Renamed --maxdepth option to --max-depth
+  * Supported escaping of special characters in file paths
+  * New printf-format directive '%d' to print file directory
+  * New option --unverified to print unverified files
+  * New option --missing to print missing files
+
+-------------------------------------------------------------------
 Sat Jun 18 13:23:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.3:
