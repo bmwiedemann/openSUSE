@@ -41,6 +41,7 @@
       <productinfo name="LINGUAS">af ar be_BY bg br ca cy el et ga gl gu_IN he hi_IN hr ka km ko lt mk nn pa_IN rw sk sl sr_CS ss st tg th tr uk ve vi xh zu </productinfo>
       <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE-Addon-NonOss/20230801/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
+      <productoption name="DOWNLOAD_MIRROR_POLICY">false</productoption>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="REPO_LOCATION"></productoption>
