@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 28 08:20:41 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Support multiple watchdogs in the domain schema
+  0005-Support-multiple-watchdogs-in-the-domain-schema.patch
+- Fix leaking file descriptor
+  0006-isolation-close-file-when-exits.patch
+- Fix volume detach on hotplug attachment pod delete
+  0007-Fix-volume-detach-on-hotplug-attachment-pod-delete.patch
+
+-------------------------------------------------------------------
 Fri Jul 14 05:22:41 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Access ksm sysfs from the host filesystem

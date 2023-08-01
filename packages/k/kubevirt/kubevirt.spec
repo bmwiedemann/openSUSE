@@ -32,6 +32,9 @@ Patch1:         0001-Fix-qemu-system-lookup.patch
 Patch2:         0002-ksm-Access-sysfs-from-the-host-filesystem.patch
 Patch3:         0003-Virtiofs-Remove-duplicated-functional-tests.patch
 Patch4:         0004-tests-leave-some-space-for-metadata-on-the-backend-P.patch
+Patch5:         0005-Support-multiple-watchdogs-in-the-domain-schema.patch
+Patch6:         0006-isolation-close-file-when-exits.patch
+Patch7:         0007-Fix-volume-detach-on-hotplug-attachment-pod-delete.patch
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
