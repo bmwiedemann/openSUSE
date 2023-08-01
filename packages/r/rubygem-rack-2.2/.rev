@@ -47,4 +47,12 @@ See installed CHANGELOG.md for more changes</comment>
   * Support underscore in host names for Rack 2.2 (https://github.com/rack/rack/pull/2071) (forwarded request 1084068 from krauselukas)</comment>
     <requestid>1090442</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>35728e6b1f55ffd33a8db8dcda705f9a</srcmd5>
+    <version>2.2.8</version>
+    <time>1690897102</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>1101642</requestid>
+  </revision>
 </revisionlist>
