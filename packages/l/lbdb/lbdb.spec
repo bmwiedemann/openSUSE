@@ -17,7 +17,7 @@
 
 
 Name:           lbdb
-Version:        0.51.1
+Version:        0.52.1
 Release:        0
 Summary:        Address Database for mutt
 License:        GPL-2.0-or-later

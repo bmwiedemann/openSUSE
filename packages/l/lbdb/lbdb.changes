@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul 31 12:25:51 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.52.1:
+  * Fix version information.
+  * The m_inmail DB is now located by default in
+  * $XDG_DATA_HOME/lbdb/m_inmail.db.  For backward compatibility
+    an already existing $HOME/.lbdb/m_inmail.utf-8 file is used as
+    first* preference
+  * Add $XDG_CONFIG_HOME/lbdb/config as additional ldbdrc file
+    location, and $XDG_CONFIG_HOME/lbdb/ldap.rc as additional
+    ldaprc file location
+  * lbdb-fetchaddr: discard stdin at the end to avoid problems
+    with tee(1) and command substitution
+
+-------------------------------------------------------------------
 Wed Jun 28 08:32:01 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.51.1:
