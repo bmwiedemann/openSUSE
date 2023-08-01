@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Mon Jul 31 05:52:03 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version jdk8u382 (icedtea-3.28.0)
+  * July 2023 CPU
+  * CVEs
+    + CVE-2023-22045, bsc#1213481
+    + CVE-2023-22049, bsc#1213482
+  * Security fixes
+    + JDK-8298676: Enhanced Look and Feel
+    + JDK-8300596: Enhance Jar Signature validation
+    + JDK-8304468: Better array usages
+    + JDK-8305312: Enhanced path handling
+  * Import of OpenJDK 8 u382 build 05
+    + JDK-8072678: Wrong exception messages in
+      java.awt.color.ICC_ColorSpace
+    + JDK-8151460: Metaspace counters can have inconsistent values
+    + JDK-8152432: Implement setting jtreg @requires properties
+      vm.flavor, vm.bits, vm.compMode
+    + JDK-8185736: missing default exception handler in calls to
+      rethrow_Stub
+    + JDK-8186801: Add regression test to test mapping based
+      charsets (generated at build time)
+    + JDK-8215105: java/awt/Robot/HiDPIScreenCapture/
+      /ScreenCaptureTest.java: Wrong Pixel Color
+    + JDK-8241311: Move some charset mapping tests from closed to
+      open
+    + JDK-8263059: security/infra/java/security/cert/
+      /CertPathValidator/certification/ComodoCA.java fails due to
+      revoked cert
+    + JDK-8268558: [TESTBUG] Case 2 in
+      TestP11KeyFactoryGetRSAKeySpec is skipped
+    + JDK-8271199: Mutual TLS handshake fails signing client
+      certificate with custom sensitive PKCS11 key
+    + JDK-8276841: Add support for Visual Studio 2022
+    + JDK-8277881: Missing SessionID in TLS1.3 resumption in
+      compatibility mode
+    + JDK-8278851: Correct signer logic for jars signed with
+      multiple digest algorithms
+    + JDK-8282345: handle latest VS2022 in abstract_vm_version
+    + JDK-8282600: SSLSocketImpl should not use user_canceled
+      workaround when not necessary
+    + JDK-8285515: (dc) DatagramChannel.disconnect fails with
+      "Invalid argument" on macOS 12.4
+    + JDK-8289301: P11Cipher should not throw out of bounds
+      exception during padding
+    + JDK-8293232: Fix race condition in pkcs11 SessionManager
+    + JDK-8293815: P11PSSSignature.engineUpdate should not print
+      debug messages during normal operation
+    + JDK-8295530: Update Zlib Data Compression Library to Version
+      1.2.13
+    + JDK-8298108: Add a regression test for JDK-8297684
+    + JDK-8298271: java/security/SignedJar/spi-calendar-provider/
+      /TestSPISigned.java failing on Windows
+    + JDK-8301119: Support for GB18030-2022
+    + JDK-8301400: Allow additional characters for GB18030-2022
+      support
+    + JDK-8302791: Add specific ClassLoader object to Proxy
+      IllegalArgumentException message
+    + JDK-8303028: Update system property for Java SE specification
+      maintenance version
+    + JDK-8303462: Bump update version of OpenJDK: 8u382
+    + JDK-8304760: Add 2 Microsoft TLS roots
+    + JDK-8305165: [8u] ServiceThread::nmethods_do is not called to
+      keep nmethods from being zombied while in the queue
+    + JDK-8305681: Allow additional characters for GB18030-2022
+      (Level 2) support
+    + JDK-8305975: Add TWCA Global Root CA
+    + JDK-8307134: Add GTS root CAs
+    + JDK-8307310: Backport the tests for JDK-8058969 and
+      JDK-8039271 to the OpenJDK8
+    + JDK-8307531: [aarch64] JDK8 single-step debugging is
+      extremely slow
+    + JDK-8310947: gb18030-2000 not selectable with
+      LANG=zh_CN.GB18030 after JDK-8301119
+
+-------------------------------------------------------------------
 Wed May  3 13:31:26 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version jdk8u372 (icedtea-3.27.0)

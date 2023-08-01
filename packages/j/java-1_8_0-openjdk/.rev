@@ -754,4 +754,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1101125</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>f15e630366b46bfb4929773ca8c98ddc</srcmd5>
+    <version>1.8.0.382</version>
+    <time>1690892128</time>
+    <user>maxlin_factory</user>
+    <comment>July 2023 CPU</comment>
+    <requestid>1101435</requestid>
+  </revision>
 </revisionlist>
