@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 31 16:03:50 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Use 'manual' keyword in the _service file instead of deprecated
+  'disabled'.
+
+-------------------------------------------------------------------
 Sat Jul  1 09:28:03 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Clean up SPEC file.

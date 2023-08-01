@@ -33,4 +33,16 @@
     <comment>🤖: Submission of par_text via https://src.opensuse.org/pool/par_text/pulls/1 by scm-staging-bot</comment>
     <requestid>1096556</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>8491c5f6fdc6188286a5cb8ddd7e6b49</srcmd5>
+    <version>1.53.0+git.1584347654.eb0590f</version>
+    <time>1690892166</time>
+    <user>maxlin_factory</user>
+    <comment>Use 'manual' keyword in the _service file instead of deprecated 'disabled'.
+
+
+
+(🤖: Submission of par_text via https://src.opensuse.org/pool/par_text/pulls/2 by mcepl)</comment>
+    <requestid>1101559</requestid>
+  </revision>
 </revisionlist>
