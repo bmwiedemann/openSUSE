@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 31 15:34:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- pin to urllib3 < 2 for the testsuite
+
+-------------------------------------------------------------------
 Wed Sep 28 21:27:49 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to version 0.8.0

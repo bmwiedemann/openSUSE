@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>1006894</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>ffa2fb514f15c52cbbecf5b815151f99</srcmd5>
+    <version>0.8.0</version>
+    <time>1690892174</time>
+    <user>maxlin_factory</user>
+    <comment>- pin to urllib3 &lt; 2 for the testsuite</comment>
+    <requestid>1101558</requestid>
+  </revision>
 </revisionlist>

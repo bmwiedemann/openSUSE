@@ -1,7 +1,7 @@
 #
 # spec file for package python-gns3fy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -39,6 +39,7 @@ BuildRequires:  %{python_module pydantic >= 1.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.22}
 BuildRequires:  %{python_module requests-mock}
+BuildRequires:  %{python_module urllib3 < 2}
 # /SECTION
 %python_subpackages
 
