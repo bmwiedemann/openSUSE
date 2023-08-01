@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug  1 08:33:40 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 23.5.0
+  * Allow to query host and os details
+  * Add linting for Python 3.11
+  * Remove console output from ssh connection tests
+  * Fasten the CI by using a short timeout for SSH connection tests
+  * CI parameter to SSH connection for automatic skip of user input
+  * Set TLS minimum version, avoid version protocols
+
+-------------------------------------------------------------------
 Mon Mar  6 12:13:45 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 23.2.0:

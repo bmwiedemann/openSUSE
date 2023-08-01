@@ -22,14 +22,17 @@
 %define skip_python36 1
 %define skip_python39 1
 Name:           python-python-gvm
-Version:        23.2.0
+Version:        23.5.0
 Release:        0
 Summary:        Library to communicate with remote servers over GMP or OSP
 License:        GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/greenbone/python-gvm
 Source:         https://files.pythonhosted.org/packages/source/p/python_gvm/python_gvm-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-defusedxml >= 0.6.0
@@ -55,16 +58,15 @@ Greenbone Management Protocol (GMP) and Open Scanner Protocol (OSP).
 %setup -q -n python_gvm-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 # Remove tests from sitelib
 %python_expand rm -rf %{buildroot}%{$python_sitelib}/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-rm -v tests/connections/test_unix_socket_connection.py tests/connections/test_ssh_connection.py
 %pytest
 
 %files %{python_files}
