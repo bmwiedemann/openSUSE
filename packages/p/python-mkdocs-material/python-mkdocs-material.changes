@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug  1 10:01:13 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 9.1.21:
+  * Fixed MkDocs 1.4 compat issue in social plugin (9.1.20
+    regression)
+
+-------------------------------------------------------------------
 Thu Jul 27 11:07:13 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 9.1.20:
