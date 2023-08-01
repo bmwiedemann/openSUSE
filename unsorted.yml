@@ -14584,7 +14584,7 @@ unsorted:
   - librfxencode0 
   - librgw-devel 
   - librgw2 
-  - librhash0 
+  - librhash1 
   - librime-devel 
   - librime-lua 
   - librime-private-devel 
@@ -25408,6 +25408,7 @@ unsorted:
   - python310-pysmi 
   - python310-pysndfile 
   - python310-pysnmp 
+  - python310-pysnmpcrypto 
   - python310-pysofaconventions 
   - python310-pysolr 
   - python310-pyspnego 
@@ -25839,7 +25840,6 @@ unsorted:
   - python310-setuptools-version-command 
   - python310-setuptools-wheel 
   - python310-setuptools_scm 
-  - python310-setuptools_scm_git_archive 
   - python310-sfs 
   - python310-sge-pygame 
   - python310-sgmllib3k 
@@ -28760,6 +28760,7 @@ unsorted:
   - python311-pysmi 
   - python311-pysndfile 
   - python311-pysnmp 
+  - python311-pysnmpcrypto 
   - python311-pysofaconventions 
   - python311-pysolr 
   - python311-pyspnego 
@@ -29169,7 +29170,6 @@ unsorted:
   - python311-setuptools-version-command 
   - python311-setuptools-wheel 
   - python311-setuptools_scm 
-  - python311-setuptools_scm_git_archive 
   - python311-sfs 
   - python311-sge-pygame 
   - python311-sgmllib3k 
@@ -32236,6 +32236,7 @@ unsorted:
   - python39-pysmi 
   - python39-pysndfile 
   - python39-pysnmp 
+  - python39-pysnmpcrypto 
   - python39-pysofaconventions 
   - python39-pysolr 
   - python39-pyspnego 
@@ -32666,7 +32667,6 @@ unsorted:
   - python39-setuptools-version-command 
   - python39-setuptools-wheel 
   - python39-setuptools_scm 
-  - python39-setuptools_scm_git_archive 
   - python39-sfs 
   - python39-sge-pygame 
   - python39-sgmllib3k 
@@ -34050,6 +34050,8 @@ unsorted:
   - rhythmbox 
   - rhythmbox-devel 
   - rhythmbox-lang 
+  - rhythmbox-plugin-alternative-toolbar 
+  - rhythmbox-plugin-alternative-toolbar-lang 
   - rime 
   - rime-plum 
   - rime-schema-all 
@@ -45781,6 +45783,7 @@ unsorted:
   - xdg-desktop-portal-hyprland 
   - xdg-desktop-portal-lxqt 
   - xdg-desktop-portal-wlr 
+  - xdg-terminal-exec 
   - xdg-utils-cxx-devel 
   - xdiskusage 
   - xditview 

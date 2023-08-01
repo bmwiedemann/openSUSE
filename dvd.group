@@ -726,7 +726,6 @@
     <package name="grub2-systemd-sleep-plugin" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="grub2-x86_64-efi" supportstatus="unsupported"/> <!-- reason: dvd:grub2-x86_64-efi -->
     <package name="grub2-x86_64-xen" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-xen_server -->
-    <package name="grubby" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gsettings-backend-dconf" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gsettings-desktop-schemas" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gsettings-desktop-schemas-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
