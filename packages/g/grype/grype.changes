@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Aug 01 10:17:23 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.65.0:
+  * chore(deps): update Syft to v0.86.1 (#1410)
+  * chore(deps): bump github.com/docker/docker (#1402)
+  * chore(deps): bump github.com/hashicorp/go-getter from 1.7.1 to
+    1.7.2 (#1406)
+  * chore: bump quality gate label dataset (#1404)
+  * feat: implement secondary sorting for default json output
+    (#1403)
+  * feat: update table sort to be name, version, type, severity,
+    vulnerability (#1400)
+  * chore: in quality tests, only colorize quality output if in a
+    tty (#1398)
+  * chore(deps): bump github.com/gookit/color from 1.5.3 to 1.5.4
+    (#1396)
+
+-------------------------------------------------------------------
 Thu Jul 20 13:54:06 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.64.2:
