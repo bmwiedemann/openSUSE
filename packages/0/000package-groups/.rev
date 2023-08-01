@@ -1724,4 +1724,11 @@ Main motivation is to have the license files in MicroOS also in /usr/, not in /e
     <user>maxlin_factory</user>
     <comment>product-buidler 1.4.14 new introduces DOWNLOAD_MIRROR_POLICY and was enabled by default, however it break ftp-tree build when it found 2 chromedriver in the same repo, set DOWNLOAD_MIRROR_POLICY to false for now until we address it as packaging issue or an BS issue</comment>
   </revision>
+  <revision rev="242" vrev="240">
+    <srcmd5>35b30545871aee82180b30e4e56d3a14</srcmd5>
+    <version>unknown</version>
+    <time>1690912734</time>
+    <user>maxlin_factory</user>
+    <comment>set download_mirror_policy to false for NonFree ftp-tree because of THE-doc</comment>
+  </revision>
 </revisionlist>

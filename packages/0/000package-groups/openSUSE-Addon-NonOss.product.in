@@ -80,6 +80,7 @@
                flavor="ftp"
                sourcemedia="2"
                mediastyle="tumbleweed"
+		download_mirror_policy="false"
                use_required="true" 
                use_recommended="true" 
                use_undecided="true"
