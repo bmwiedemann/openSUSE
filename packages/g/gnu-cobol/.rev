@@ -27,4 +27,12 @@
 - Disable lto to avoid test failure (forwarded request 858446 from alois)</comment>
     <requestid>887440</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>0af025d53f14090df39de3494cf0134d</srcmd5>
+    <version>3.1.2</version>
+    <time>1690987840</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1101916</requestid>
+  </revision>
 </revisionlist>

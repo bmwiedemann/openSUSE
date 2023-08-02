@@ -42,11 +42,14 @@ BuildRequires:  pkgconfig(ncurses) >= 5.4
 Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
 Provides:       opencobol = %{version}
+Provides:       libcob-devel = %{version}
+Obsoletes:      libcob-devel <= 3.1.2
 
 %description
 GnuCOBOL (formerly OpenCOBOL) is a COBOL compiler.
 cobc translates COBOL to executable using intermediate C sources,
 providing full access to nearly all C libraries.
+
 
 %package -n libcob%{sover}
 Summary:        GnuCOBOL shared library
@@ -58,16 +61,6 @@ GnuCOBOL (formerly OpenCOBOL) is a COBOL compiler.
 cobc translates COBOL to executable using intermediate C sources,
 providing full access to nearly all C libraries.
 
-%package -n libcob-devel
-Summary:        Include files for the GnuCOBOL shared library
-License:        LGPL-3.0-or-later
-Group:          Development/Languages/Other
-Requires:       libcob%{sover} = %{version}
-
-%description -n libcob-devel
-GnuCOBOL (formerly OpenCOBOL) is a COBOL compiler.
-cobc translates COBOL to executable using intermediate C sources,
-providing full access to nearly all C libraries.
 
 %prep
 %autosetup -p1 -n gnucobol-%{version}
@@ -104,6 +97,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/gnucobol
 %{_infodir}/gnucobol.info%{?ext_info}
 %{_libdir}/gnucobol
+%{_libdir}/libcob.so
+%{_includedir}/libcob.h
+%{_includedir}/libcob
 %{_mandir}/man1/cob-config.1%{ext_info}
 %{_mandir}/man1/cobc.1%{ext_info}
 %{_mandir}/man1/cobcrun.1%{ext_info}
@@ -112,9 +108,5 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING.LESSER
 %{_libdir}/libcob.so.%{sover}*
 
-%files -n libcob-devel
-%{_includedir}/libcob.h
-%{_includedir}/libcob
-%{_libdir}/libcob.so
 
 %changelog
