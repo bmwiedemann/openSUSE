@@ -17,7 +17,7 @@
 
 
 Name:           python-swifter
-Version:        1.3.4
+Version:        1.4.0
 Release:        0
 Summary:        Tool to speed up pandas calculations
 License:        MIT
@@ -28,28 +28,20 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-bleach >= 3.1.1
-Requires:       python-cloudpickle >= 0.2.2
 Requires:       python-dask-dataframe >= 2.10.0
-Requires:       python-ipywidgets >= 7.0.0
 Requires:       python-pandas >= 1.0
-Requires:       python-parso > 0.4
 Requires:       python-psutil >= 5.6.6
 Requires:       python-tqdm >= 4.33.0
+Suggests:       python-ipywidgets >= 7.0.0
 Suggests:       python-ray >= 1.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module bleach >= 3.1.1}
-BuildRequires:  %{python_module cloudpickle >= 0.2.2}
 BuildRequires:  %{python_module dask-dataframe >= 2.10.0}
 BuildRequires:  %{python_module ipywidgets >= 7.0.0}
 BuildRequires:  %{python_module pandas >= 1.0}
-BuildRequires:  %{python_module parso > 0.4}
 BuildRequires:  %{python_module psutil >= 5.6.6}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-# Not available
-#BuildRequires:  %%{python_module ray >= 1.0}
 BuildRequires:  %{python_module tqdm >= 4.33.0}
 # /SECTION
 %python_subpackages

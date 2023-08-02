@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug  1 08:59:00 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.4.0
+  * Significantly reduced core dependencies of swifter library.
+  * Removed deprecated loffset parameter
+  * Updated README to be more readable for darkmode users
+
+-------------------------------------------------------------------
 Fri Jun  2 03:20:27 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Stop skipping Python 3.11. 
