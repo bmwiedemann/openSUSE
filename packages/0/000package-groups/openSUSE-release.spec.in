@@ -35,6 +35,7 @@ Suggests:       java-11-openjdk
 Suggests:       mariadb
 Suggests:       mariadb-client
 Suggests:       openSUSE-build-key
+Suggests:       openSUSE-repos-Tumbleweed
 Suggests:       openssl-1_1
 # https://progress.opensuse.org/issues/121960
 Suggests:       procps < 4

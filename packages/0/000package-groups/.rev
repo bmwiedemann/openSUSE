@@ -1731,4 +1731,15 @@ Main motivation is to have the license files in MicroOS also in /usr/, not in /e
     <user>maxlin_factory</user>
     <comment>set download_mirror_policy to false for NonFree ftp-tree because of THE-doc</comment>
   </revision>
+  <revision rev="243" vrev="241">
+    <srcmd5>948841977a4432b114ad683408220695</srcmd5>
+    <version>unknown</version>
+    <time>1690987669</time>
+    <user>dimstar_suse</user>
+    <comment>Suggests openSUSE-repos-Leap on Leap
+
+* Consistencty with TW. This was mostly done to ensure
+  that Tumbleweed does not end up with openSUSE-repos-MicroOS</comment>
+    <requestid>1101963</requestid>
+  </revision>
 </revisionlist>

@@ -31,6 +31,7 @@ Requires(post): coreutils
 Suggests:       branding-openSUSE
 Suggests:       distribution-logos-openSUSE-MicroOS
 Suggests:       openSUSE-build-key
+Suggests:       openSUSE-repos-MicroOS
 Conflicts:      distribution-release
 Conflicts:      kernel < 4.4
 Provides:       distribution-release
