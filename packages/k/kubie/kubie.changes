@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Aug 01 10:07:22 UTC 2023 - kastl@b1-systems.de
+
+- BuildRequire rust >= 1.67 to avoid failing builds
+- Update to version 0.21.0:
+  * Version 0.21.0
+  * Bump dirs from 2.0.2 to 5.0.1 (#139)
+  * Bump clap from 3.2.25 to 4.3.19 (#137)
+  * Bump signal-hook from 0.3.15 to 0.3.17 (#138)
+  * Bump serde from 1.0.171 to 1.0.178 (#136)
+  * Bump tempfile from 3.6.0 to 3.7.0 (#135)
+  * Create dependabot.yml
+  * nits
+  * fix build/clippy issues
+  * feat: add export feature (#125)
+  * Use ubuntu-latest instead of ubuntu-20.04
+  * Update actions/checkout to v3
+
+-------------------------------------------------------------------
 Thu Jul 13 04:46:28 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.20.1:
