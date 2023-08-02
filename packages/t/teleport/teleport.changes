@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Wed Aug 02 07:11:14 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 13.3.0:
+  * Release 13.3.0 (#29796)
+  * ALPN upgrade with custom X-Teleport-Upgrade header (#29683)
+    (#29829)
+  * [v13] Link to example Login Rules from Login Rules guide
+    (#29802)
+  * [v13] Vendors Discord plugin source into Teleport (#29841)
+  * refactor(services): skip ad validation for rds proxy mssql
+    (#29233)
+  * fix race condition where a headless watcher subscriber would
+    overwrite a more recent update. (#29617) (#29838)
+  * [v13] Explain how to start new services on an agent (#29653)
+  * docs: include gke in Kube Discovery config list (#29758)
+  * [v13] fix tsh db connect with active mysql cert (#29826)
+  * [v13] Fix tsh db login exact db name (#29825)
+  * bump e ref (#29821)
+  * [v13] docs: simplify Terraform sections and convert to steps.
+    (#29714)
+  * Update e (#29817)
+  * add backwards compatibility for listing apps (#29816)
+  * display survey for existing users (#29378) (#29713)
+  * assist: add classification code and emit even on execution
+    (#28492) (#29811)
+  * [v13] Long living approval  (#29754)
+  * assist: Refactor token counting (#29753)
+  * Fix data race in TestAuth_RegisterUsingToken (#29756)
+  * [v13] update e ref (#29747)
+  * [v13][tctl] Adds option to write tarred `tctl auth sign` output
+    to stdout (#29666)
+  * docs: document strings.split for Login Rules (#29748)
+  * use correct session recording mode in session start and end
+    events (#29584) (#29689)
+  * docs: update version (#29723)
+  * helm: add azure support (#29734)
+  * [v13] Add shield alert icon (#29570)
+  * Bump Helm version in the buildbox (#29739)
+  * docs: Content fixes regarding SOC 2 (#29740)
+  * [v13] Fix Kubernetes Legacy Proxy heartbeats (#29738)
+  * Add GCP VM auto-discovery (#28562) (#29612)
+  * Hold Auth init lock for the duration of initialization (#29706)
+  * update e ref (#29719)
+  * [v13] docs: include mfa session option for ssh access control
+    (#29602)
+  * [v13] Postgres backend and Azure session storage backport
+    (#29705)
+  * Fix `create_host_user_mode` role reference (#29707)
+  * [v13] [Docs] Test and edit How to contribute to documentation
+    topic (#29642)
+  * bump docs to 13.2.3 (#29691)
+  * Update SQL Server guides to mention `sqlcmd` as default CLI
+    (#29543) (#29644)
+  * Added 07/27 Upcoming Releases Update (#29696)
+  * chore: Bump Buf to v1.25.0 (#29701)
+  * Fix MachineID not working behind L7 LB (#29692) (#29700)
+  * fix: Drop custom OS checking in device authn (#29629)
+  * Attempt to deflake TestLockInForce (#29681)
+
+-------------------------------------------------------------------
 Thu Jul 27 06:27:58 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 13.2.5:
