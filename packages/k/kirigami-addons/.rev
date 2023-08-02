@@ -47,4 +47,12 @@
     <comment>Update to 0.9.0 (forwarded request 1096488 from krop)</comment>
     <requestid>1096497</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>37759a3775bcdcc6c56b8ee3e9f857b2</srcmd5>
+    <version>0.10.0</version>
+    <time>1690987696</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.10.0</comment>
+    <requestid>1101790</requestid>
+  </revision>
 </revisionlist>
