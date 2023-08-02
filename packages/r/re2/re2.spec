@@ -16,7 +16,7 @@
 #
 
 
-%global longver 2023-07-01
+%global longver 2023-08-01
 %global shortver %(echo %{longver}|sed 's|-||g')
 %define libname libre2-11
 Name:           re2
@@ -28,7 +28,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/google/re2
 Source0:        %{url}/archive/%{longver}/%{name}-%{longver}.tar.gz
 Source99:       baselibs.conf
-BuildRequires:  cmake >= 3.10.2
+BuildRequires:  cmake >= 3.13
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(absl)
 BuildRequires:  pkgconfig(icu-uc)

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 31 16:41:06 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2023-08-01:
+  * Stop using std::map<std::string, Prefilter*>
+  * Avoid expanding counted repetitions of empty-width ops
+  * build infrastructure fixes
+
+-------------------------------------------------------------------
 Sat Jul  1 17:57:47 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - update to 2023-07-01:
