@@ -2113,4 +2113,12 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
 - Enabled KUserFeedback, since new KDE privacy policy now complies. See https://invent.kde.org/websites/kde-org/-/commit/71992cc8a177c959706088d02413c1a97f989749</comment>
     <requestid>1095138</requestid>
   </revision>
+  <revision rev="216" vrev="1">
+    <srcmd5>bc7c1a7cfca36aaa3ad723c072d3a688</srcmd5>
+    <version>5.27.7</version>
+    <time>1690987739</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.7(.1)</comment>
+    <requestid>1101853</requestid>
+  </revision>
 </revisionlist>

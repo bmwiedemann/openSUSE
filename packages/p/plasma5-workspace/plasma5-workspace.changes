@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Aug  1 20:07:29 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix line wrapping of "100 %" in OSDs (kde#469576):
+  * 0001-OSD-Fix-size-calculation-for-progress-value.patch
+
+-------------------------------------------------------------------
+Tue Aug  1 11:19:31 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.7
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.7
+- Changes since 5.27.6:
+  * libtaskmanager: fix unable to change order of launchers (kde#472812)
+  * Reorder removals to ensure launcher url is deallocated after last use
+  * Fix crash in LauncherTasksModel::Private::requestRemoveLauncherFromActivities (kde#472378)
+  * libtaskmanager: skip empty appId when matching '*.appId.desktop' (kde#472576,kde#428559)
+  * Do not write empty path to desktop file (kde#433304)
+  * Fix crash in TasksModel::move (kde#472524)
+  * kcm/region_language: fix enum order (kde#472108)
+  * kcms/region_language: Read from $LANGUAGE in options model
+  * kcms/region_language: Improve isSupportedLanguage detection
+  * kcms/region_language: Chop off the UTF-8 codepoint again
+  * kcms/region_language: Check if the language setting is default as well
+  * kcms/region_language: Simplify the language settings read
+  * kcms/region_language: Read the LANGUAGE environment variable for the default language value
+  * TriangleMouseFilter: remove unnecessary return
+  * TriangleMouseFilter: make `resendHoverEvents` actually work
+  * TriangleMouseFilter: fix incorrect handling of hover events and inactive state (kde#467426)
+  * TriangularMouseFilter: Filter event everytime when there was no movement at all
+  * Improve responsiveness of triangular filter
+  * shell: move `forceActiveFocus` to `PanelView`
+  * applets/mediacontroller: use PauseAnimation to delay showing busy indicator
+  * applets/mediacontroller: remove duplicate opacity animation
+  * applets/notifications: add workaround for QTBUG-100392 (kde#468180)
+  * Notifications: Also try X-SnapInstanceName for desktop file resolution
+  * libtaskmanager: fix a potential leak
+
+-------------------------------------------------------------------
 Sat Jun 24 20:37:55 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Mark org.kde.userfeedback.kcm as internal QML import
