@@ -1,9 +1,10 @@
-diff -Naur FreeFileSync_11.29_Source_orig/FreeFileSync/Source/Makefile FreeFileSync_11.29_Source/FreeFileSync/Source/Makefile
---- FreeFileSync_11.29_Source_orig/FreeFileSync/Source/Makefile	2022-12-16 20:32:28.000000000 +0100
-+++ FreeFileSync_11.29_Source/FreeFileSync/Source/Makefile	2022-12-25 16:32:44.158452802 +0100
-@@ -3,9 +3,9 @@
+Index: FreeFileSync-12.5/FreeFileSync/Source/Makefile
+===================================================================
+--- FreeFileSync-12.5.orig/FreeFileSync/Source/Makefile
++++ FreeFileSync-12.5/FreeFileSync/Source/Makefile
+@@ -3,9 +3,9 @@ exeName = FreeFileSync_$(shell arch)
  
- CXXFLAGS += -std=c++2b -pipe -DWXINTL_NO_GETTEXT_MACRO -I../.. -I../../zenXml -include "zen/i18n.h" -include "zen/warn_static.h" \
+ CXXFLAGS += -std=c++23 -pipe -DWXINTL_NO_GETTEXT_MACRO -I../.. -I../../zenXml -include "zen/i18n.h" -include "zen/warn_static.h" \
             -Wall -Wfatal-errors -Wmissing-include-dirs -Wswitch-enum -Wcast-align -Wnon-virtual-dtor -Wno-unused-function -Wshadow -Wno-maybe-uninitialized \
 -           -O3 -DNDEBUG `wx-config --cxxflags --debug=no` -pthread
 +           -O3 -DNDEBUG `wx-config --cxxflags --debug=no` -pthread -fpie
@@ -13,7 +14,7 @@ diff -Naur FreeFileSync_11.29_Source_orig/FreeFileSync/Source/Makefile FreeFileS
  
  
  CXXFLAGS  += `pkg-config --cflags openssl`
-@@ -17,9 +17,10 @@
+@@ -17,9 +17,10 @@ LDFLAGS += `pkg-config --libs   libcurl`
  CXXFLAGS  += `pkg-config --cflags libssh2`
  LDFLAGS += `pkg-config --libs   libssh2`
  
@@ -26,12 +27,13 @@ diff -Naur FreeFileSync_11.29_Source_orig/FreeFileSync/Source/Makefile FreeFileS
  
  #support for SELinux (optional)
  SELINUX_EXISTING=$(shell pkg-config --exists libselinux && echo YES)
-diff -Naur FreeFileSync_11.29_Source_orig/FreeFileSync/Source/RealTimeSync/Makefile FreeFileSync_11.29_Source/FreeFileSync/Source/RealTimeSync/Makefile
---- FreeFileSync_11.29_Source_orig/FreeFileSync/Source/RealTimeSync/Makefile	2022-12-16 20:32:28.000000000 +0100
-+++ FreeFileSync_11.29_Source/FreeFileSync/Source/RealTimeSync/Makefile	2022-12-25 16:33:54.050236000 +0100
-@@ -3,14 +3,15 @@
+Index: FreeFileSync-12.5/FreeFileSync/Source/RealTimeSync/Makefile
+===================================================================
+--- FreeFileSync-12.5.orig/FreeFileSync/Source/RealTimeSync/Makefile
++++ FreeFileSync-12.5/FreeFileSync/Source/RealTimeSync/Makefile
+@@ -3,14 +3,15 @@ exeName = RealTimeSync_$(shell arch)
  
- CXXFLAGS += -std=c++2b -pipe -DWXINTL_NO_GETTEXT_MACRO -I../../.. -I../../../zenXml -include "zen/i18n.h" -include "zen/warn_static.h" \
+ CXXFLAGS += -std=c++23 -pipe -DWXINTL_NO_GETTEXT_MACRO -I../../.. -I../../../zenXml -include "zen/i18n.h" -include "zen/warn_static.h" \
             -Wall -Wfatal-errors -Wmissing-include-dirs -Wswitch-enum -Wcast-align -Wnon-virtual-dtor -Wno-unused-function -Wshadow -Wno-maybe-uninitialized \
 -           -O3 -DNDEBUG `wx-config --cxxflags --debug=no` -pthread
 +           -O3 -DNDEBUG `wx-config --cxxflags --debug=no` -pthread -fpie
@@ -49,9 +51,10 @@ diff -Naur FreeFileSync_11.29_Source_orig/FreeFileSync/Source/RealTimeSync/Makef
  
  cppFiles=
  cppFiles+=application.cpp
-diff -Naur FreeFileSync_11.29_Source_orig/libssh2/libssh2_wrap.h FreeFileSync_11.29_Source/libssh2/libssh2_wrap.h
---- FreeFileSync_11.29_Source_orig/libssh2/libssh2_wrap.h	2022-12-16 20:32:30.000000000 +0100
-+++ FreeFileSync_11.29_Source/libssh2/libssh2_wrap.h	2022-12-25 16:37:16.545609654 +0100
+Index: FreeFileSync-12.5/libssh2/libssh2_wrap.h
+===================================================================
+--- FreeFileSync-12.5.orig/libssh2/libssh2_wrap.h
++++ FreeFileSync-12.5/libssh2/libssh2_wrap.h
 @@ -20,6 +20,22 @@
      #error libssh2_sftp.h header guard changed
  #endif
@@ -75,9 +78,10 @@ diff -Naur FreeFileSync_11.29_Source_orig/libssh2/libssh2_wrap.h FreeFileSync_11
  //fix libssh2 64-bit warning mess: https://github.com/libssh2/libssh2/pull/96
  #undef libssh2_userauth_password
  inline int libssh2_userauth_password(LIBSSH2_SESSION* session, const std::string& username, const std::string& password)
-diff -Naur FreeFileSync_11.29_Source_orig/zen/ring_buffer.h FreeFileSync_11.29_Source/zen/ring_buffer.h
---- FreeFileSync_11.29_Source_orig/zen/ring_buffer.h	2022-12-16 20:32:30.000000000 +0100
-+++ FreeFileSync_11.29_Source/zen/ring_buffer.h	2022-12-25 16:37:57.073486335 +0100
+Index: FreeFileSync-12.5/zen/ring_buffer.h
+===================================================================
+--- FreeFileSync-12.5.orig/zen/ring_buffer.h
++++ FreeFileSync-12.5/zen/ring_buffer.h
 @@ -8,6 +8,7 @@
  #define RING_BUFFER_H_01238467085684139453534
  

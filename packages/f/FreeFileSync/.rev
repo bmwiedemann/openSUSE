@@ -175,4 +175,23 @@ It would be nice to have this application available in the default repos. </comm
 </comment>
     <requestid>1095755</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c7b9cb33f0efa27f7abae0f3918a8a9f</srcmd5>
+    <version>12.5</version>
+    <time>1690987858</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 12.5:
+  * Merge logs of individual steps (comparison, manual operation, sync)
+  * Show total percentage in progress dialog header
+  * Log and report errors during cleanup or exception handling
+  * Skip folder traversal if existence check fails for other side of the pair
+  * Automatically adapt batch options to prevent hanging a non-interactive process (Windows)
+  * Support path lists for external applications: %item_paths%, %local_paths%, %item_names%, %parent_paths%
+  * Create directory lock files with hidden attribute
+  * Don't clear other side when right-clicking file selection
+  * Fixed passive FTP when using different IP than control connection
+  * Work around FTP servers silently renaming unsupported characters of temporary file
+</comment>
+    <requestid>1101985</requestid>
+  </revision>
 </revisionlist>

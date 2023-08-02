@@ -1,28 +1,27 @@
-diff -ru a/FreeFileSync/Source/ui/gui_generated.cpp b/FreeFileSync/Source/ui/gui_generated.cpp
---- a/FreeFileSync/Source/ui/gui_generated.cpp	2023-06-20 10:23:07.000000000 +0200
-+++ b/FreeFileSync/Source/ui/gui_generated.cpp	2023-06-28 08:56:38.529499152 +0200
-@@ -108,13 +108,14 @@
-     m_menuItemHelp = new wxMenuItem( m_menuHelp, wxID_HELP, wxString( _("&View help") ) + wxT('\t') + wxT("F1"), wxEmptyString, wxITEM_NORMAL );
-     m_menuHelp->Append( m_menuItemHelp );
+diff -ru orig/FreeFileSync/Source/ui/gui_generated.cpp mod/FreeFileSync/Source/ui/gui_generated.cpp
+--- orig/FreeFileSync/Source/ui/gui_generated.cpp	2023-07-21 15:28:49.000000000 +0200
++++ mod/FreeFileSync/Source/ui/gui_generated.cpp	2023-08-02 14:27:08.425812785 +0200
+@@ -108,13 +108,13 @@
+ 	m_menuItemHelp = new wxMenuItem( m_menuHelp, wxID_HELP, wxString( _("&View help") ) + wxT('\t') + wxT("F1"), wxEmptyString, wxITEM_NORMAL );
+ 	m_menuHelp->Append( m_menuItemHelp );
  
--    m_menuHelp->AppendSeparator();
-+    //m_menuHelp->AppendSeparator();
+-	m_menuHelp->AppendSeparator();
++	//m_menuHelp->AppendSeparator();
  
-     m_menuItemCheckVersionNow = new wxMenuItem( m_menuHelp, wxID_ANY, wxString( _("&Check for updates now") ), wxEmptyString, wxITEM_NORMAL );
--    m_menuHelp->Append( m_menuItemCheckVersionNow );
-+    // disable update/auto update actions for packaged version (they are only hidden, to not break any code and keep the patch small)
-+    //m_menuHelp->Append( m_menuItemCheckVersionNow );
+ 	m_menuItemCheckVersionNow = new wxMenuItem( m_menuHelp, wxID_ANY, wxString( _("&Check for updates now") ) , wxEmptyString, wxITEM_NORMAL );
+-	m_menuHelp->Append( m_menuItemCheckVersionNow );
++	//m_menuHelp->Append( m_menuItemCheckVersionNow );
  
-     m_menuItemCheckVersionAuto = new wxMenuItem( m_menuHelp, wxID_ANY, wxString( _("Check &automatically once a week") ), wxEmptyString, wxITEM_CHECK );
--    m_menuHelp->Append( m_menuItemCheckVersionAuto );
-+    //m_menuHelp->Append( m_menuItemCheckVersionAuto );
-     m_menuItemCheckVersionAuto->Check( true );
+ 	m_menuItemCheckVersionAuto = new wxMenuItem( m_menuHelp, wxID_ANY, wxString( _("Check &automatically once a week") ) , wxEmptyString, wxITEM_CHECK );
+-	m_menuHelp->Append( m_menuItemCheckVersionAuto );
++	//m_menuHelp->Append( m_menuItemCheckVersionAuto );
+ 	m_menuItemCheckVersionAuto->Check( true );
  
-     m_menuHelp->AppendSeparator();
-diff -ru a/FreeFileSync/Source/ui/main_dlg.cpp b/FreeFileSync/Source/ui/main_dlg.cpp
---- a/FreeFileSync/Source/ui/main_dlg.cpp	2023-06-20 10:23:07.000000000 +0200
-+++ b/FreeFileSync/Source/ui/main_dlg.cpp	2023-06-28 08:57:07.697666495 +0200
-@@ -945,7 +945,7 @@
+ 	m_menuHelp->AppendSeparator();
+diff -ru orig/FreeFileSync/Source/ui/main_dlg.cpp mod/FreeFileSync/Source/ui/main_dlg.cpp
+--- orig/FreeFileSync/Source/ui/main_dlg.cpp	2023-07-21 15:28:49.000000000 +0200
++++ mod/FreeFileSync/Source/ui/main_dlg.cpp	2023-08-02 14:27:26.222583175 +0200
+@@ -955,7 +955,7 @@
      updateGui();
  
      //register regular check for update on next idle event
@@ -31,9 +30,9 @@ diff -ru a/FreeFileSync/Source/ui/main_dlg.cpp b/FreeFileSync/Source/ui/main_dlg
  
      //asynchronous call to wxWindow::Dimensions(): fix superfluous frame on right and bottom when FFS is started in fullscreen mode
      Bind(wxEVT_IDLE, &MainDialog::onLayoutWindowAsync, this);
-diff -ru a/FreeFileSync/Source/ui/version_check.cpp b/FreeFileSync/Source/ui/version_check.cpp
---- a/FreeFileSync/Source/ui/version_check.cpp	2023-06-20 10:23:07.000000000 +0200
-+++ b/FreeFileSync/Source/ui/version_check.cpp	2023-06-28 08:58:01.869976507 +0200
+diff -ru orig/FreeFileSync/Source/ui/version_check.cpp mod/FreeFileSync/Source/ui/version_check.cpp
+--- orig/FreeFileSync/Source/ui/version_check.cpp	2023-07-21 15:28:49.000000000 +0200
++++ mod/FreeFileSync/Source/ui/version_check.cpp	2023-08-02 14:27:41.709340094 +0200
 @@ -84,7 +84,8 @@
          return false;
  
