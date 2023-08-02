@@ -225,4 +225,38 @@
   * Dropped support of end of life Python version 3.6</comment>
     <requestid>1084213</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4563af6378349c4bd7e2a4075bc3b788</srcmd5>
+    <version>1.1.0</version>
+    <time>1690987853</time>
+    <user>dimstar_suse</user>
+    <comment>- disable test_json broken with latest mariadb (11.0)
+- update to 1.1.0:
+  * Remove redundant wheel dep from pyproject.toml by @mgorny in #1099
+  * ci: Fix black options by @methane in #1109
+  * Remove unused function by @methane in #1108
+  * Expose Cursor.warning_count by @Nothing4You in #1056
+  * Add constants and tests related to query timeouts by @Nothing4You in #1033
+  * Fix SSCursor raising query timeout error on wrong query on MySQL DB by @Nothing4You in #1035
+  * Make Cursor an iterator by @sanchezg in #995
+  * ci: Update CodeQL workflow by @methane in #1110
+  * Use Ruff instead of flake8 by @methane in #1112
+  * Use Codecov instead of coveralls. by @methane in #1113
+  * optionfile: Replace _ with - by @methane in #1114
+  * Cursor.fetchall() always return list. by @methane in #1115
+  * Fix LOAD DATA LOCAL INFILE write EOF packet on closed connection. by @methane in #1116
+  * Deprecate Cursor.Error access by @methane in #1117
+  * Run pyupgrade by @methane in #1118
+  * Add collation option and set_character_set() to Connection by @methane in #1119
+  * CI: Run Django test by @methane in #1121
+  * Release v1.1.0rc1 by @methane in #1122
+  * Bump mariadb version by @grooverdan in #1123
+  * Configure Renovate by @renovate in #1124
+  * Make charset=&quot;utf8&quot; use utf8mb4. by @methane in #1127
+  * Add codecov.yml by @methane in #1128
+  * Release v1.1.0rc2 by @methane in #1129
+  * Release v1.1.0 by @methane in #1130
+</comment>
+    <requestid>1101976</requestid>
+  </revision>
 </revisionlist>

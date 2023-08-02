@@ -23,10 +23,9 @@
 %bcond_with tests
 %endif
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
 Name:           python-PyMySQL
-Version:        1.0.3
+Version:        1.1.0
 Release:        0
 Summary:        Pure Python MySQL Driver
 License:        MIT
@@ -59,7 +58,7 @@ by simply changing the import statements in the Django MySQL backend and running
 its unit tests as well as running it against the MySQLdb and myconnpy unit tests.
 
 %prep
-%setup -q -n PyMySQL-%{version}
+%autosetup -p1 -n PyMySQL-%{version}
 # remove unwanted shebang
 sed -i '1 { /^#!/ d }' pymysql/tests/thirdparty/test_MySQLdb/*.py
 
@@ -97,7 +96,8 @@ EOF
 #
 export USER="$dbuser"
 export PASSWORD="$dbuserpw"
-%pytest pymysql/tests  -k 'not test_stored_procedures' || exit_code=1
+# test_json is broken for mariadb 11.0.2
+%pytest pymysql/tests  -k 'not (test_stored_procedures or test_json)' || exit_code=1
 #
 # stopping mariadb
 #
@@ -108,6 +108,7 @@ exit $exit_code
 %files %{python_files}
 %license LICENSE
 %doc CHANGELOG.md README.md
-%{python_sitelib}/*
+%{python_sitelib}/pymysql
+%{python_sitelib}/PyMySQL-%{version}*-info
 
 %changelog
