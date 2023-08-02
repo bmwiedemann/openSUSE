@@ -2258,6 +2258,7 @@ unsorted:
   - cockpit-storaged 
   - cockpit-tukit 
   - cockpit-ws 
+  - codec2 
   - codec2-devel 
   - codec2-examples 
   - codehaus-parent 
@@ -4261,6 +4262,8 @@ unsorted:
   - fusesmb 
   - fusesource-pom 
   - fusion-icon 
+  - futuresql-qt5-devel 
+  - futuresql-qt6-devel 
   - fuzzel 
   - fuzzel-fish-completion 
   - fuzzel-zsh-completion 
@@ -11283,9 +11286,8 @@ unsorted:
   - libcmuclmtk0 
   - libcnotify-devel 
   - libcnotify1 
-  - libcob-devel 
   - libcob4 
-  - libcodec2-1_1-32bit 
+  - libcodec2-1_2-32bit 
   - libcogl-gles2-20 
   - libcollectdclient-devel 
   - libcollectdclient1 
@@ -11954,6 +11956,8 @@ unsorted:
   - libfuse2-32bit 
   - libfusn-devel 
   - libfusn1 
+  - libfuturesql5-0 
+  - libfuturesql6-0 
   - libfuzzy-devel 
   - libfuzzy2 
   - libfvalue-devel 
@@ -13938,7 +13942,8 @@ unsorted:
   - libpkcs11-helper1-32bit 
   - libpkgconf-devel 
   - libplacebo-devel 
-  - libplacebo264-32bit 
+  - libplacebo292-32bit 
+  - libplacebo5-devel 
   - libplanarity0 
   - libplank1 
   - libplayerctl2 
@@ -15547,7 +15552,7 @@ unsorted:
   - libvsapm-tools 
   - libvsapm1 
   - libvsg-devel 
-  - libvsg13 
+  - libvsg14 
   - libvsgImGui-devel 
   - libvsgImGui0 
   - libvsgXchange-devel 
@@ -17418,7 +17423,6 @@ unsorted:
   - molsketch-devel 
   - molsketch-doc 
   - monero-devel 
-  - monero-gui 
   - monero-utils 
   - monerod 
   - mongolian-fonts 
@@ -17664,14 +17668,14 @@ unsorted:
   - mpich-ofi-gnu-hpc-devel 
   - mpich-ofi-gnu-hpc-devel-static 
   - mpich-ofi-gnu-hpc-macros-devel 
-  - mpich-ofi_4_0_2-gnu-hpc 
-  - mpich-ofi_4_0_2-gnu-hpc-devel 
-  - mpich-ofi_4_0_2-gnu-hpc-devel-static 
-  - mpich-ofi_4_0_2-gnu-hpc-macros-devel 
-  - mpich_4_0_2-gnu-hpc 
-  - mpich_4_0_2-gnu-hpc-devel 
-  - mpich_4_0_2-gnu-hpc-devel-static 
-  - mpich_4_0_2-gnu-hpc-macros-devel 
+  - mpich-ofi_4_1_2-gnu-hpc 
+  - mpich-ofi_4_1_2-gnu-hpc-devel 
+  - mpich-ofi_4_1_2-gnu-hpc-devel-static 
+  - mpich-ofi_4_1_2-gnu-hpc-macros-devel 
+  - mpich_4_1_2-gnu-hpc 
+  - mpich_4_1_2-gnu-hpc-devel 
+  - mpich_4_1_2-gnu-hpc-devel-static 
+  - mpich_4_1_2-gnu-hpc-macros-devel 
   - mpitests 
   - mpitests-mpich 
   - mpitests-mpich-gnu-hpc 
@@ -19219,7 +19223,6 @@ unsorted:
   - openSUSE-release-usb-kde 
   - openSUSE-release-usb-x11 
   - openSUSE-repos-MicroOS 
-  - openSUSE-repos-Tumbleweed 
   - openSUSE-signkey-cert 
   - openSUSEway 
   - openafs-authlibs 
@@ -19870,7 +19873,6 @@ unsorted:
   - patterns-kde-devel_kde_frameworks 
   - patterns-kde-devel_qt5 
   - patterns-kde-devel_qt6 
-  - patterns-kde-kde_telepathy 
   - patterns-kubernetes-container_runtime_kubernetes 
   - patterns-kubernetes-kubeadm 
   - patterns-kubernetes-kubernetes_utilities 
@@ -21758,6 +21760,7 @@ unsorted:
   - plotutils-doc 
   - plowshare 
   - plplay 
+  - plplay5 
   - plplot-common 
   - plplot-devel 
   - plplot-doc 
@@ -23730,15 +23733,6 @@ unsorted:
   - python310-chest 
   - python310-cinemagoer 
   - python310-circuitbreaker 
-  - python310-cirq 
-  - python310-cirq-aqt 
-  - python310-cirq-core 
-  - python310-cirq-core-contrib 
-  - python310-cirq-google 
-  - python310-cirq-ionq 
-  - python310-cirq-pasqal 
-  - python310-cirq-rigetti 
-  - python310-cirq-web 
   - python310-ciscoconfparse 
   - python310-cl 
   - python310-cleo 
@@ -27184,14 +27178,6 @@ unsorted:
   - python311-chest 
   - python311-cinemagoer 
   - python311-circuitbreaker 
-  - python311-cirq 
-  - python311-cirq-aqt 
-  - python311-cirq-core 
-  - python311-cirq-google 
-  - python311-cirq-ionq 
-  - python311-cirq-pasqal 
-  - python311-cirq-rigetti 
-  - python311-cirq-web 
   - python311-ciscoconfparse 
   - python311-cl 
   - python311-cleo 
@@ -30560,15 +30546,6 @@ unsorted:
   - python39-chest 
   - python39-cinemagoer 
   - python39-circuitbreaker 
-  - python39-cirq 
-  - python39-cirq-aqt 
-  - python39-cirq-core 
-  - python39-cirq-core-contrib 
-  - python39-cirq-google 
-  - python39-cirq-ionq 
-  - python39-cirq-pasqal 
-  - python39-cirq-rigetti 
-  - python39-cirq-web 
   - python39-ciscoconfparse 
   - python39-cl 
   - python39-cleo 

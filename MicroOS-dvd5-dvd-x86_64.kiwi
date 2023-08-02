@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20230801" schemaversion="4.1">
+<image name="OBS__MicroOS___20230802" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20230801</productvar>
+      <productvar name="VERSION">20230802</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230801,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20230802,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230801/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20230802/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -953,7 +953,7 @@
       <repopackage name="libclucene-contribs-lib1"/>
       <repopackage name="libclucene-core1"/>
       <repopackage name="libclucene-shared1"/>
-      <repopackage name="libcodec2-1_1"/>
+      <repopackage name="libcodec2-1_2"/>
       <repopackage name="libcollection4"/>
       <repopackage name="libcolord-gtk4-1"/>
       <repopackage name="libcolord2"/>
@@ -1551,7 +1551,7 @@
       <repopackage name="libpixman-1-0"/>
       <repopackage name="libpkcs11-helper1"/>
       <repopackage name="libpkgconf3"/>
-      <repopackage name="libplacebo264"/>
+      <repopackage name="libplacebo292"/>
       <repopackage name="libplist-2_0-4"/>
       <repopackage name="libply-splash-core5"/>
       <repopackage name="libply-splash-graphics5"/>
