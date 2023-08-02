@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul 25 13:45:41 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- revert previous change; back to orgiginal name 
+  kernel-firmware-nvidia-gsp-G06 since we need a separate source
+  package :-(
+
+-------------------------------------------------------------------
+Tue Jul 25 12:45:57 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- one-time rename to kernel-firmware-nvidia-gspx-G06 to workaround
+  multiversioned package update (boo#1212724)
+
+-------------------------------------------------------------------
 Wed Jul 19 14:01:36 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - update firmware to version 535.86.05
