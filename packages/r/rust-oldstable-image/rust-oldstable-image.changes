@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 26 09:38:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- oldstable is rust 1.70 now
+
+-------------------------------------------------------------------
 Wed Jul 12 12:55:01 UTC 2023 - Dirk Mueller <dmueller@suse.com>
 
 - Remove distribution-release from the package list, it is inherited from the base image
