@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  2 09:28:03 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add magic-file-5.45.patch: fix test suite with file 5.45
+  (gh#ahupp/python-magic#290).
+
+-------------------------------------------------------------------
 Fri Apr 21 12:32:16 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

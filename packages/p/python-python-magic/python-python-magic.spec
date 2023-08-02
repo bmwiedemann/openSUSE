@@ -28,6 +28,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/ahupp/python-magic
 Source:         https://github.com/ahupp/python-magic/archive/%{version}.tar.gz
 Patch0:         https://github.com/ahupp/python-magic/commit/4ffcd591.patch
+Patch1:         magic-file-5.45.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module xml}
