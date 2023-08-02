@@ -1,7 +1,7 @@
 #
 # spec file for package cage
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           cage
-Version:        0.1.4+39.a81ab70
+Version:        0.1.5+0.83ffc57
 Release:        0
 Summary:        Wayland Kiosk
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://www.hjdskes.nl/projects/cage/
 Source:         %{name}-%{version}.tar.gz
-Patch0:         https://patch-diff.githubusercontent.com/raw/Hjdskes/cage/pull/244.patch#/cage-wlroots-016-compat.patch
 BuildRequires:  meson >= 0.43.0
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc
@@ -39,7 +38,6 @@ A Wayland Kiosk.
 
 %prep
 %setup -q -n %{name}-%{version}
-%patch0 -p1
 
 %build
 %meson

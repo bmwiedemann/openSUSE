@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 31 05:46:16 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.1.5:
+  * Implement the following protocols: wlr-output-management-unstable-v1,
+    virtual-keyboard-unstable-v1, wlr-virtual-pointer-unstable-v1,
+    single-pixel-buffer-v1, presentation-time, viewporter.
+  * Use wlroots' scene-graph API, which should improve performance.
+  * Fall back to lower resolutions when the preferred output
+    mode cannot be used.
+- Drop cage-wlroots-016-compat.patch
+
+-------------------------------------------------------------------
 Thu Dec  1 12:01:57 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.1.4+39.a81ab70
