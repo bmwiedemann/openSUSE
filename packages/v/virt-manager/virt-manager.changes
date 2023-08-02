@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 31 11:01:58 MDT 2023 - carnold@suse.com
+
+- bsc#1213790 - Application tab in virt-manager is collapsed,
+  therefore I can't read anything
+  virtman-fix-inspection-apps-window.patch
+
+-------------------------------------------------------------------
 Tue Jun 13 16:48:17 MDT 2023 - carnold@suse.com
 
 - bsc#1212195 - libvirtd crashes when virt-manager connects

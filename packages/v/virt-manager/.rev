@@ -1926,4 +1926,12 @@
     <comment>The new libvirt modular daemons on a fresh install are not found by virt-manager and it therefore will not start. It is part of bsc#1212195</comment>
     <requestid>1093153</requestid>
   </revision>
+  <revision rev="244" vrev="10">
+    <srcmd5>44f5072bba3e76c6c4df965a24609623</srcmd5>
+    <version>4.1.0</version>
+    <time>1690987687</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1213790 - Application tab in virt-manager is collapsed</comment>
+    <requestid>1101566</requestid>
+  </revision>
 </revisionlist>
