@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jul 27 13:10:16 UTC 2023 - miika.alikirri@suse.com
+
+- Update to version 0.0.8~git0.a915cfd:
+  * Fixed arch specific esbuild depedency issues
+  * remove wasm check
+  * add deps for release
+  * use esbuild by default and update spec
+  * Port to typescript
+  * Support global cockpit dark theme
+  * Updated sources to work with the new dependencies
+  * Update dependencies and build process to match latest cockpit
+  * Translated using Weblate (Georgian)
+  * Added translation using Weblate (Georgian)
+  * Fix name in metainfo (bsc#1203653)
+  * Add mapping for more patch levels
+  * Handle tukitd service problems
+  * Fix pot/po generation
+  * Translated using Weblate (Chinese (China) (zh_CN))
+  * Translated using Weblate (Japanese)
+
+-------------------------------------------------------------------
 Fri Aug 05 13:16:27 UTC 2022 - jtomasiak@suse.com
 
 - Update to version 0.0.3~git28.b446f50:

@@ -1,7 +1,7 @@
 #
 # spec file for package cockpit-tukit
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cockpit-tukit
-Version:        0.0.3~git28.b446f50
+Version:        0.0.8~git0.a915cfd
 Release:        0%{?dist}
 Summary:        Cockpit module for Transactional Update
 License:        LGPL-2.1-or-later
@@ -49,14 +49,16 @@ Cockpit module for Transactional Update
 %setup -q -n %{name}-%{version}
 %patch0 -p1
 rm -f package-lock.json
-local-npm-registry %{_sourcedir} install --with=dev --legacy-peer-deps || ( find ~/.npm/_logs -name '*-debug.log' -print0 | xargs -0 cat; false)
+rm -rf node_modules
+local-npm-registry %{_sourcedir} install --with=dev || ( find ~/.npm/_logs -name '*-debug.log' -print0 | xargs -0 cat; false)
 
 %build
-cp -r %{_datadir}/cockpit/devel/lib src/lib
+mkdir -p pkg
+cp -r %{_datadir}/cockpit/devel/lib pkg/lib
 NODE_ENV=production npm run build
 
 %install
-%make_install
+PREFIX=/usr DESTDIR=%{buildroot} make install
 appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/metainfo/*
 
 # drop source maps, they are large and just for debugging
@@ -64,7 +66,7 @@ find %{buildroot}%{_datadir}/cockpit/ -name '*.map' | xargs --no-run-if-empty rm
 
 %files
 %doc README.md
-%license LICENSE dist/index.js.LICENSE.txt.gz
+%license LICENSE dist/index.js.LEGAL.txt dist/index.css.LEGAL.txt
 %{_datadir}/cockpit
 %{_datadir}/metainfo/*
 
