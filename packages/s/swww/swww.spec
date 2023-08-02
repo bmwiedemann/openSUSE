@@ -26,7 +26,7 @@
 
 
 Name:           swww
-Version:        0.7.3
+Version:        0.8.1
 Release:        0
 Summary:        Wallpaper daemon for Wayland
 License:        GPL-3.0-only
