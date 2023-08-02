@@ -1174,4 +1174,12 @@
     <comment>update to 3.6.5</comment>
     <requestid>1093468</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>947f6d50edd4379b36be8e5830b95cad</srcmd5>
+    <version>3.6.6</version>
+    <time>1690987838</time>
+    <user>dimstar_suse</user>
+    <comment>See changelog</comment>
+    <requestid>1101913</requestid>
+  </revision>
 </revisionlist>

@@ -20,7 +20,7 @@
 %global __requires_exclude qmlimport\\((KStarsLiteEnums|TelescopeLiteEnums).*
 %bcond_without released
 Name:           kstars
-Version:        3.6.5
+Version:        3.6.6
 Release:        0
 Summary:        Desktop Planetarium
 # Note for legal: the Apache licensed files in the tarball are for the
@@ -35,10 +35,6 @@ Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.x
 Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 %endif
-# PATCH-FIX-UPSTREAM https://invent.kde.org/education/kstars/-/commit/0626a7914042a84cd299e9d584f879605c5918dc
-Patch0:         fix-status.patch
-# PATCH-FIX-UPSTREAM https://invent.kde.org/education/kstars/-/commit/06eea8e05690f8ac8efa0b7a64c7bf5687127c0b
-Patch1:         fix-list.patch
 %if 0%{?suse_version} < 1590
 BuildRequires:  gcc11-c++
 %else

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Aug  2 08:18:37 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.6.6:
+  * Add histogram stretch controls to fitstab
+  * Bugfix parking for darks and bias frames
+  * Fix bug computing histograms for float/double images
+  * Add histogram tooltips
+  * Refactoring capture module
+  * Speedup scheduler with large number of jobs
+  * Scheduler option for repeating the entire schedule
+  * HiPS FITS Viewer overlay
+  * Analyze/Capture stats were using default StellarSolver values. Now HFRProfiles.
+  * Retire classic scheduler algorithm
+- Drop upstreamed patches:
+  * fix-list.patch
+  * fix-status.patch 
+
+-------------------------------------------------------------------
 Sun Jun  4 12:06:15 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.6.5:
