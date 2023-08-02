@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug  1 11:19:15 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.7
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.7
+- Changes since 5.27.6:
+  * applets/kickoff: add blocker to prevent focus change in search view (kde#466192)
+  * Kickoff: Fix grid view key nav in mirrored layout
+  * Update Unicode data for emojier to 15.0
+  * applets/taskmanager: use hardcoded value
+  * applets/taskmanager: make PauseAnimation wait longer (kde#470135)
+  * desktoppackage: activate panel on "Activate Panel Widget" shortcut pressed (kde#455398)
+  * kaccess: Use kcfg files of kcm
+  * kcms/access: Match kcfg default values to old defaults/kaccess
+
+-------------------------------------------------------------------
 Tue Jun 20 17:15:03 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.6
