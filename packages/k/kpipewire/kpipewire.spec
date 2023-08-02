@@ -21,7 +21,7 @@
 %{!?_plasma5_bugfix: %global _plasma5_bugfix %{version}}
 %bcond_without released
 Name:           kpipewire
-Version:        5.27.6
+Version:        5.27.7
 Release:        0
 Summary:        PipeWire integration for KDE Plasma
 License:        LGPL-2.0-only AND LGPL-3.0-only
@@ -99,6 +99,7 @@ Requires:       %{name}-imports = %{version}
 Requires:       libKPipeWire%{_sover} = %{version}
 Requires:       libKPipeWireDmaBuf%{_sover} = %{version}
 Requires:       libKPipeWireRecord%{_sover} = %{version}
+Requires:       pkgconfig(epoxy)
 Requires:       pkgconfig(libpipewire-0.3)
 
 %description devel
