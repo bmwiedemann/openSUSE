@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug  1 11:18:54 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.7
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.7
+- Changes since 5.27.6:
+  * gpu/nvidia: Discover data fields based on headers (kde#470474)
+
+-------------------------------------------------------------------
 Tue Jun 20 17:15:01 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.6
