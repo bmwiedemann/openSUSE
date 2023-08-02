@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug  2 07:00:50 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.0.5:
+  * ``Pagination.next()`` enforces ``max_per_page``.
+  * Improve type hint for ``get_or_404`` return value to be non-optional.
+  * Fix type hint for ``get_or_404`` return value.
+  * Fix type hints for pyright (used by VS Code Pylance extension).
+  * Show helpful errors when mistakenly using multiple ``SQLAlchemy``
+    instances for the same app, or without calling ``init_app``
+  * Fix issue with getting the engine associated with a model that uses
+    polymorphic table inheritance.
+- Update URL.
+
+-------------------------------------------------------------------
 Sun Jun 11 14:16:45 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

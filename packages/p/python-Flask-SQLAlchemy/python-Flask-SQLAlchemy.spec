@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-SQLAlchemy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Flask-SQLAlchemy
-Version:        3.0.2
+Version:        3.0.5
 Release:        0
 Summary:        SQLAlchemy support for Flask
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/mitsuhiko/flask-sqlalchemy
-Source:         https://files.pythonhosted.org/packages/source/F/Flask-SQLAlchemy/Flask-SQLAlchemy-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/f/flask_sqlalchemy/flask_sqlalchemy-%{version}.tar.gz
 # BR krb5 - the test suite fails with krb5-mini (and users in any case will only ever get krb5, never krb5-mini)
 BuildRequires:  krb5
-BuildRequires:  %{python_module pdm-pep517}
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -46,7 +45,7 @@ BuildRequires:  %{python_module pytest}
 Adds SQLAlchemy support to your Flask application.
 
 %prep
-%setup -q -n Flask-SQLAlchemy-%{version}
+%autosetup -p1 -n flask_sqlalchemy-%{version}
 
 %build
 %pyproject_wheel
@@ -61,7 +60,7 @@ Adds SQLAlchemy support to your Flask application.
 %files %{python_files}
 %license LICENSE.rst
 %doc CHANGES.rst README.rst
-%{python_sitelib}/flask_sqlalchemy/
-%{python_sitelib}/Flask[-_]SQLAlchemy-%{version}.dist-info/
+%{python_sitelib}/flask_sqlalchemy
+%{python_sitelib}/flask_sqlalchemy-%{version}.dist-info
 
 %changelog

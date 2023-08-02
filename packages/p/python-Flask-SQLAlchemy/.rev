@@ -172,4 +172,21 @@
     <comment></comment>
     <requestid>1092484</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>db1fd898d81e027dbfadb66b9a820d15</srcmd5>
+    <version>3.0.5</version>
+    <time>1690987803</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.5:
+  * ``Pagination.next()`` enforces ``max_per_page``.
+  * Improve type hint for ``get_or_404`` return value to be non-optional.
+  * Fix type hint for ``get_or_404`` return value.
+  * Fix type hints for pyright (used by VS Code Pylance extension).
+  * Show helpful errors when mistakenly using multiple ``SQLAlchemy``
+    instances for the same app, or without calling ``init_app``
+  * Fix issue with getting the engine associated with a model that uses
+    polymorphic table inheritance.
+- Update URL.</comment>
+    <requestid>1101893</requestid>
+  </revision>
 </revisionlist>
