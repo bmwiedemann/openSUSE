@@ -30,7 +30,7 @@ Mon Jun 26 14:23:55 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.22.4:
   + flacparse: Avoid integer overflow in available data check for
-    image tags.
+    image tags (boo#1213128, CVE-2023-37327).
   + flvmux: use the correct timestamp to calculate wait times.
   + isomp4: Fix (E)AC-3 channel count handling.
   + jpegdec: fixes related to interlaced jpeg.
