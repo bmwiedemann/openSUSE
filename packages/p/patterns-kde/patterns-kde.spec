@@ -19,7 +19,7 @@
 %bcond_with betatest
 
 Name:           patterns-kde
-Version:        20230403
+Version:        20230801
 Release:        0
 Summary:        Patterns for Installation (kde devel)
 License:        MIT
@@ -758,43 +758,6 @@ KDE Office
 
 ################################################################################
 
-%package kde_telepathy
-%pattern_kdedesktop
-Summary:        KDE Telepathy
-Group:          Metapackages
-Provides:       patterns-openSUSE-kde_telephony = %{version}
-Provides:       pattern() = kde_telepathy
-Provides:       pattern-extends() = kde4
-Provides:       pattern-icon() = package_network
-Provides:       pattern-order() = 2560
-Obsoletes:      patterns-openSUSE-kde_telephony < %{version}
-Requires:       ktp-accounts-kcm
-Requires:       ktp-auth-handler
-Requires:       ktp-common-internals
-Requires:       ktp-icons
-Requires:       ktp-kded-module
-Requires:       signon-kwallet-extension
-Requires:       signon-plugin-oauth2
-Requires:       signon-plugins
-Requires:       signon-ui
-Requires:       signond
-Recommends:     ktp-approver
-Recommends:     ktp-contact-list
-Recommends:     ktp-desktop-applets
-Recommends:     ktp-text-ui
-Suggests:       ktp-contact-runner
-Suggests:       ktp-filetransfer-handler
-Suggests:       ktp-send-file
-
-%description kde_telepathy
-KDE Applications - Telepathy
-
-%files kde_telepathy
-%dir %{_defaultdocdir}/patterns
-%{_defaultdocdir}/patterns/kde_telepathy.txt
-
-################################################################################
-
 %package kde_utilities
 %pattern_kdedesktop
 Summary:        KDE Utilities
@@ -906,7 +869,7 @@ Graphical YaST user interfaces for the KDE desktop.
 mkdir -p %{buildroot}/%{_defaultdocdir}/patterns/
 for i in devel_kde_frameworks devel_qt5 devel_qt6 kde kde_plasma kde_pim \
     kde_edutainment kde_games kde_ide kde_imaging kde_internet kde_multimedia \
-    kde_office kde_telepathy kde_utilities kde_utilities_opt kde_yast; do
+    kde_office kde_utilities kde_utilities_opt kde_yast; do
     echo "This file marks the pattern $i to be installed." \
         >"%{buildroot}/%{_defaultdocdir}/patterns/$i.txt"
 done

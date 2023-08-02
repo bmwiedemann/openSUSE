@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug  1 10:35:37 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Drop the telepathy pattern.
+  The telepathy modules are now officially unmaintained upstream
+  and won't be released anymore.
+
+-------------------------------------------------------------------
 Mon Apr  3 10:38:08 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add the qt6-grpc and qt6-location devel packages to the Qt6

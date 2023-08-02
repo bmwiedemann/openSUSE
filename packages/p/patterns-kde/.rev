@@ -301,4 +301,12 @@ This also handles TW properly. (forwarded request 653860 from lslezak)</comment>
     <comment>Update to 6.5.0 (forwarded request 1077258 from Vogtinator)</comment>
     <requestid>1077317</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>aa571bf6414996da4fafdc999ce8b53e</srcmd5>
+    <version>20230801</version>
+    <time>1690987696</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1101715</requestid>
+  </revision>
 </revisionlist>
