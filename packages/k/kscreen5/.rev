@@ -1203,4 +1203,12 @@ If possible, please copy to 13.2 - many thanks!
     <comment>Plasma 5.27.6. plasma5-sdk needed a workaround. On aarch64 something is broken with breeze5-icons, I'm optimistic and triggered a rebuild. (forwarded request 1094155 from Vogtinator)</comment>
     <requestid>1094181</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>f71b27c66958e623524a8c8f2dfc42f3</srcmd5>
+    <version>5.27.7</version>
+    <time>1690987712</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.7(.1)</comment>
+    <requestid>1101807</requestid>
+  </revision>
 </revisionlist>
