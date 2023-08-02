@@ -119,4 +119,12 @@
     <comment>bsc#1162112 - reproducible uuid generation</comment>
     <requestid>1100452</requestid>
   </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>d332defd37a8826aa6fe2fc6bb87fa24</srcmd5>
+    <version>4.2.0</version>
+    <time>1690987850</time>
+    <user>dimstar_suse</user>
+    <comment>Try to make the split packages UUIDs unique</comment>
+    <requestid>1101926</requestid>
+  </revision>
 </revisionlist>

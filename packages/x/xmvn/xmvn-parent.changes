@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug  2 09:46:49 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * UUID.patch
+    + try to assure unique UUID for each of the split packages.
+
+-------------------------------------------------------------------
 Mon Jul 24 19:21:09 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
