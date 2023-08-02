@@ -1,7 +1,7 @@
 #
 # spec file for package ckermit
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        A Combined Serial and Network Communication Software Package
 License:        BSD-3-Clause
 Group:          Hardware/Modem
-Url:            http://www.kermitproject.org/
+URL:            http://www.kermitproject.org/
 Source0:        ftp://ftp.kermitproject.org/kermit/archives/cku302.tar.gz
 Patch0:         decl-definition-conflict.patch
 # PATCH-FIX-UPSTREAM time_and_file_failure.patch
@@ -34,9 +34,6 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  zsh
 %else
 BuildRequires:  termcap
-%endif
-%if 0%{?suse_version} >= 1130 || 0%{?fedora_version} || 0%{?mandriva_version}
-BuildRequires:  lockdev-devel
 %endif
 
 %description

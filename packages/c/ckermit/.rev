@@ -77,4 +77,12 @@
     <comment>Fixed time and file failure via time_and_file_failure.patch</comment>
     <requestid>682636</requestid>
   </revision>
+  <revision rev="11" vrev="15">
+    <srcmd5>bd7f2a023784afd72bc003834783cb74</srcmd5>
+    <version>9.0.302</version>
+    <time>1690987857</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1101990</requestid>
+  </revision>
 </revisionlist>

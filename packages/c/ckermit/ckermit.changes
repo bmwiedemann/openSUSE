@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 10 10:34:44 UTC 2023 - Ludwig Nussel <lnussel@suse.com>
+
+- drop lockdev support (boo#1212801)
+
+-------------------------------------------------------------------
 Thu Mar  7 19:51:40 UTC 2019 - Joop Boonen <joop.boonen@opensuse.org>
 
 - Fixed time and file failure via time_and_file_failure.patch 
