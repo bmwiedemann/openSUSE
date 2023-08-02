@@ -18,23 +18,25 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-zarr
-Version:        2.13.3
+Version:        2.16.0
 Release:        0
 Summary:        An implementation of chunked, compressed, N-dimensional arrays for Python
 License:        MIT
 URL:            https://github.com/zarr-developers/zarr-python
 Source:         https://files.pythonhosted.org/packages/source/z/zarr/zarr-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools >= 38.6.0}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 64.0.0}
 BuildRequires:  %{python_module setuptools_scm > 1.5.4}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Needs full python stdlib, base is not enough
 Requires:       python >= 3.8
 Requires:       python-asciitree
-Requires:       python-dbm
 Requires:       python-fasteners
 Requires:       python-numcodecs >= 0.6.4
-Requires:       python-numpy >= 1.7
+Requires:       python-numpy >= 1.20
+Suggests:       python-dbm
 Suggests:       python-fsspec >= 0.8.4
 Suggests:       python-ipytree
 Suggests:       python-msgpack
@@ -47,7 +49,7 @@ BuildRequires:  %{python_module fasteners}
 BuildRequires:  %{python_module fsspec >= 0.8.4}
 BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module numcodecs >= 0.6.4}
-BuildRequires:  %{python_module numpy >= 1.7}
+BuildRequires:  %{python_module numpy >= 1.20}
 BuildRequires:  %{python_module pytest}
 # Needs full python stdlib, base is not enough
 BuildRequires:  %{pythons} >= 3.8
@@ -62,11 +64,11 @@ An implementation of chunked, compressed, N-dimensional arrays for Python.
 
 %build
 export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
-%python_build
+%pyproject_wheel
 
 %install
 export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -74,7 +76,7 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 
 %files %{python_files}
 %doc README.md
-%license LICENSE
+%license LICENSE.txt
 %{python_sitelib}/zarr
 %{python_sitelib}/zarr-%{version}*-info
 
