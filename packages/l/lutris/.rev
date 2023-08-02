@@ -428,4 +428,12 @@
     <comment></comment>
     <requestid>1098366</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>f4e85dfe50de5f92ef99606382aee885</srcmd5>
+    <version>0.5.13</version>
+    <time>1690987860</time>
+    <user>dimstar_suse</user>
+    <comment>- boo#1213440: Add recommends for ca-certificates-steamtricks</comment>
+    <requestid>1102015</requestid>
+  </revision>
 </revisionlist>

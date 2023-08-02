@@ -57,6 +57,8 @@ Requires:       python%{_py}-gobject-Gdk
 Requires:       python%{_py}-lxml
 Requires:       python%{_py}-requests
 Requires:       xrandr
+# boo#1213440
+Recommends:     ca-certificates-steamtricks
 Recommends:     python%{_py}-distro
 Recommends:     winetricks
 BuildArch:      noarch

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug  2 13:35:05 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- boo#1213440: Add recommends for ca-certificates-steamtricks
+
+-------------------------------------------------------------------
 Wed Jul 12 11:51:43 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Let package also build for Leap
