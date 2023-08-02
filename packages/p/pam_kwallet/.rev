@@ -1012,4 +1012,12 @@ This version removes the unneeded ldconfig call.</comment>
     <comment>Plasma 5.27.6. plasma5-sdk needed a workaround. On aarch64 something is broken with breeze5-icons, I'm optimistic and triggered a rebuild. (forwarded request 1094155 from Vogtinator)</comment>
     <requestid>1094195</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>baeae130b83e13f4a795a55de635d54f</srcmd5>
+    <version>5.27.7</version>
+    <time>1690987724</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.7(.1)</comment>
+    <requestid>1101820</requestid>
+  </revision>
 </revisionlist>
