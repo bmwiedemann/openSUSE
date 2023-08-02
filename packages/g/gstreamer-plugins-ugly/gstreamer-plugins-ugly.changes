@@ -2,7 +2,8 @@
 Tue Jul 25 11:14:56 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.22.5:
-  + rmdemux: add some integer overflow checks
+  + rmdemux: add some integer overflow checks (bsc#1213750,
+    CVE-2023-38104, bsc#1213751, CVE-2023-38103).
 - Rebase reduce-required-meson.patch.
 
 -------------------------------------------------------------------
