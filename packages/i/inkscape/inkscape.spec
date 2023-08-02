@@ -16,23 +16,21 @@
 #
 
 
-%define _version 1.2.2_2022-12-01_b0a8486541
+%define _version 1.3_2023-07-21_0e150ed6c4
 
 Name:           inkscape
-Version:        1.2.2
+Version:        1.3
 Release:        0
 Summary:        Vector Illustration Program
 License:        GPL-3.0-only
 URL:            https://inkscape.org/
 
-Source:         https://inkscape.org/gallery/item/37360/inkscape-%{version}.tar.xz#/inkscape-%{_version}.tar.xz
+Source:         https://inkscape.org/gallery/item/42328/inkscape-%{version}.tar.xz#/inkscape-%{_version}.tar.xz
 # openSUSE palette file
 Source1:        openSUSE.gpl
 Source2:        inkscape-split-extensions-extra.py
 Source98:       https://media.inkscape.org/media/resources/sigs/inkscape-%{_version}.tar.xz.sig
 Source99:       https://inkscape.org/~MarcJeanmougin/gpg#/%name.keyring
-# PATCH-FIX-UPSTREAM 0001-Fix-build-with-GCC13.patch -- Fix build with GCC13
-Patch0:         0001-Fix-build-with-GCC13.patch
 
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel
@@ -46,6 +44,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  intltool
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_headers-devel
+BuildRequires:  libboost_stacktrace-devel
 BuildRequires:  liblcms2-devel
 BuildRequires:  libpoppler-glib-devel
 BuildRequires:  libxslt-devel
@@ -59,7 +58,7 @@ BuildRequires:  python3-gobject-devel
 BuildRequires:  python3-xml
 BuildRequires:  readline-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(2geom) >= 1.2.2
+BuildRequires:  pkgconfig(2geom) >= 1.3.0
 BuildRequires:  pkgconfig(GraphicsMagick++)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)
@@ -173,8 +172,6 @@ export CXX=g++-10
 %install
 %ninja_install -C build
 
-# Only useful for translators.
-rm %{buildroot}%{_datadir}/inkscape/extensions/genpofiles.sh
 # Packaging/distribution info.
 rm %{buildroot}%{_datadir}/inkscape/extensions/{LICENSE.txt,MANIFEST.in,README.md,TESTING.md,CONTRIBUTING.md}
 # Test framework.
@@ -184,7 +181,7 @@ rm %{buildroot}%{_datadir}/inkscape/extensions/tox.ini        \
 rm -rf %{buildroot}%{_datadir}/inkscape/extensions/.pytest_cache
 # extensions/doc
 rm -rf %{buildroot}%{_datadir}/inkscape/extensions/docs
-rm %{buildroot}%{_datadir}/inkscape/extensions/{.darglint,.pre-commit-config.yaml,inkscape.extension.schema,poetry.lock,pyproject.toml}
+rm %{buildroot}%{_datadir}/inkscape/extensions/{.darglint,.pre-commit-config.yaml,package-readme.md,poetry.lock,pyproject.toml}
 
 install -Dpm 0644 %{SOURCE1} %{buildroot}%{_datadir}/inkscape/palettes/
 
@@ -205,6 +202,7 @@ python3 %{SOURCE2} %{buildroot}%{_datadir}/inkscape/extensions "%%{_datadir}/ink
 %{_bindir}/*
 %dir %{_libdir}/inkscape
 %{_libdir}/inkscape/lib%{name}_base.so
+%{_libdir}/inkscape/lib%{name}_base.so.*
 %{_datadir}/applications/*Inkscape.desktop
 %{_datadir}/icons/hicolor/*/apps/*Inkscape.png
 %{_datadir}/icons/hicolor/*/apps/*Inkscape.svg
@@ -215,7 +213,6 @@ python3 %{SOURCE2} %{buildroot}%{_datadir}/inkscape/extensions "%%{_datadir}/ink
 %{_datadir}/inkscape/examples/
 %dir %{_datadir}/inkscape/extensions/
 %{_datadir}/inkscape/extensions/svg_fonts/
-%{_datadir}/inkscape/extensions/xaml2svg/
 %{_datadir}/inkscape/extensions/*.xsl*
 %{_datadir}/inkscape/extensions/colors.xml
 %{_datadir}/inkscape/extensions/Poly3DObjects/
@@ -226,9 +223,12 @@ python3 %{SOURCE2} %{buildroot}%{_datadir}/inkscape/extensions "%%{_datadir}/ink
 %{_datadir}/inkscape/extensions/jessyInk_core_mouseHandler_zoomControl.js
 %{_datadir}/inkscape/extensions/jessyink_video.svg
 %{_datadir}/inkscape/extensions/fontfix.conf
-%{_datadir}/inkscape/extensions/inkscape.extension.rng
 %{_datadir}/inkscape/extensions/seamless_pattern.svg
 %{_datadir}/inkscape/extensions/raster_output_jpg.svg
+%dir %{_datadir}/inkscape/extensions/icons
+%{_datadir}/inkscape/extensions/icons/businesscard_landscape.svg
+%{_datadir}/inkscape/extensions/icons/dvd_box.svg
+%{_datadir}/inkscape/extensions/icons/seamless_pattern.svg
 %{_datadir}/inkscape/attributes/
 %{_datadir}/inkscape/branding/
 %dir %{_datadir}/bash-completion/
