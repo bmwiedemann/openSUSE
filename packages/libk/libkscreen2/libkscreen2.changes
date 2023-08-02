@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug  1 11:19:03 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.7
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.7
+- Changes since 5.27.6:
+  * make sure kscreen-doctor exits when using --dpms
+  * Guard the deprecated Output::setPrimary (kde#471195)
+
+-------------------------------------------------------------------
 Tue Jun 20 17:15:02 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.6
