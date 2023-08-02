@@ -912,4 +912,12 @@
 - Make the backend-subpackages &quot;noarch&quot;. (forwarded request 1096810 from munix9)</comment>
     <requestid>1096837</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>b78f9e394d8b6a675c738a1d0dc44eab</srcmd5>
+    <version>5.27.7</version>
+    <time>1690987784</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.27.7(.1)</comment>
+    <requestid>1101827</requestid>
+  </revision>
 </revisionlist>
