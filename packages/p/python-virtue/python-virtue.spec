@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-virtue
-Version:        2023.7.4
+Version:        2023.7.5
 Release:        0
 Summary:        After trial comes virtue. A test runner for good
 License:        MIT
