@@ -16,4 +16,29 @@
   * fixes case when npm is stalling when package is not found</comment>
     <requestid>911538</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c64af4fabafaa8d67d0a43a450910835</srcmd5>
+    <version>1.0.1</version>
+    <time>1690987675</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.1
+  * update dependencies
+  * no longer shows paths for tarballs served by the proxy
+  * works with latest nodejs
+- 0001-Allow-the-user-to-provide-their-own-npm-command-by-m.patch:
+  dropped, upstreamed
+
+- Revert Requires: back to npm-default. If we need support for
+  Fedora to have something else, we can do this another way
+  https://en.opensuse.org/openSUSE:Build_Service_prjconf#Substitute
+
+- Allow the user to override `node` and `npm` commands in PATH.
+  This is useful if one wants to eg. use Electron to run npm.
+  * add 0001-Allow-the-user-to-provide-their-own-npm-command-by-m.patch
+- Change Requires: npm-default to Requires: npm.
+  npm-default is already prefered by the prjconf,
+  this works with any version of npm,
+  and Fedora does not have npm-default.</comment>
+    <requestid>1101713</requestid>
+  </revision>
 </revisionlist>
