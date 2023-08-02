@@ -16,10 +16,8 @@
 #
 
 
-%global rustflags -Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2
-
 Name:           kanidm
-Version:        1.1.0~alpha12~git0.bcdbb18
+Version:        1.1.0~beta13~git2.5d1e2f9
 Release:        0
 Summary:        A identity management service and clients.
 License:        ( Apache-2.0 OR BSL-1.0 ) AND ( Apache-2.0 OR ISC OR MIT ) AND ( Apache-2.0 OR MIT ) AND ( Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT ) AND ( CC0-1.0 OR Apache-2.0 ) AND ( MIT OR Apache-2.0 OR Zlib ) AND ( Unlicense OR MIT ) AND ( Zlib OR Apache-2.0 OR MIT ) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND ISC AND MIT AND MPL-2.0 AND MPL-2.0+
@@ -28,13 +26,15 @@ Source:         kanidm-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source2:        cargo_config
 
-ExcludeArch:    %ix86 s390x ppc ppc64 ppc64le armhfp armv6l armv7l armv7hl
-
-BuildRequires:  cargo
+BuildRequires:  cargo-packaging
+BuildRequires:  libselinux-devel
 BuildRequires:  libudev-devel
+BuildRequires:  llvm-clang >= 13
 BuildRequires:  pam-devel
-BuildRequires:  rust >= 1.64.0
+BuildRequires:  rust >= 1.69.0
 BuildRequires:  sqlite-devel
+BuildRequires:  tpm2-0-tss-devel
+# BuildRequires:  tpm2-openssl
 BuildRequires:  zstd
 
 %if 0%{?rhel} > 7 || 0%{?fedora}
@@ -42,16 +42,13 @@ BuildRequires:  openssl-devel
 BuildRequires:  systemd
 %{?systemd_requires}
 %else
-BuildRequires:  pkgconfig(openssl)
+BuildRequires:  libopenssl-3-devel
 %endif
 
 Requires:       %{name}-clients
 Requires:       %{name}-unixd-clients
 
-#### START BUNDLE METADATA
-### See cargo lock2rpmprovides
-# currently not needed in suse.
-#### END BUNDLE METADATA
+ExclusiveArch:  %{rust_tier1_arches}
 
 %description
 An identity management platform written in rust that supports RADIUS, SSH Key management
@@ -76,6 +73,8 @@ Server for kanidm providing the main authentication and identity service
 Summary:        Client nsswitch/pam/ssh integration for consuming kanidm
 License:        MPL-2.0
 Requires:       %{name}-clients
+Requires:       system-user-tss
+Requires:       tpm2.0-tools
 
 %description unixd-clients
 A localhost resolver and libraries that allow a system to resolve posix
@@ -88,7 +87,6 @@ License:        MPL-2.0
 %description docs
 Documentation for using and configuring Kanidm.
 
-
 %define configdir %{_sysconfdir}/%{name}
 
 %prep
@@ -97,21 +95,21 @@ Documentation for using and configuring Kanidm.
 
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
+
 # Remove exec bits to prevent an issue in fedora shebang checking
 find vendor -type f -name \*.rs -exec chmod -x '{}' \;
 
 %build
-export RUSTFLAGS="%{rustflags}"
-# Allow building on older compliers with deps that have newer features.
-# export RUSTC_BOOTSTRAP=1
-
-# Set our build profile
+# Set our build profile, this will autodetect our cpu flags
 export KANIDM_BUILD_PROFILE=release_suse_generic
-cargo build --offline --release
-# Now, move the completions to easier to install locations.
-# mkdir %{_builddir}/%{name}-%{version}/target/release/_completions
-# cp %{_builddir}/%{name}-%{version}/target/release/build/*/out/_kanidm* %{_builddir}/%{name}-%{version}/target/release/_completions/
-# cp %{_builddir}/%{name}-%{version}/target/release/build/*/out/kanidm*.bash %{_builddir}/%{name}-%{version}/target/release/_completions/
+# Show linking info for debugging
+# export RUSTC_LOG='rustc_codegen_ssa::back::link=info'
+# Dump the target features of this cpu.
+rustc --print target-cpus
+# Override buildflags, we want to use clang + lld here. It's much better/faster than bfd.
+%define build_rustflags -C linker=clang -C link-arg=-fuse-ld=/usr/lib/rustlib/%{_arch}-unknown-linux-gnu/bin/gcc-ld/ld.lld -C debuginfo=2 -C incremental=false
+
+%{cargo_build} --features=kanidm_unix_int/tpm,kanidm_unix_int/selinux
 
 %install
 install -D -d -m 0755 %{buildroot}%{_sysconfdir}
@@ -130,8 +128,6 @@ install -D -d -m 0755 %{buildroot}/%_lib/security
 install -D -d -m 0755 %{buildroot}%{_datadir}/kanidm
 install -D -d -m 0755 %{buildroot}%{_datadir}/kanidm/docs/
 install -D -d -m 0755 %{buildroot}%{_datadir}/kanidm/ui/
-install -D -d -m 0755 %{buildroot}%{_datadir}/kanidm/ui/pkg
-install -D -d -m 0755 %{buildroot}%{_datadir}/kanidm/ui/pkg/external
 
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/kanidmd %{buildroot}%{_sbindir}/kanidmd
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/kanidm %{buildroot}%{_bindir}/kanidm
@@ -150,7 +146,7 @@ install -m 0644 %{_builddir}/%{name}-%{version}/target/release/libpam_kanidm.so 
 install -m 0644 %{_builddir}/%{name}-%{version}/platform/opensuse/kanidmd.service %{buildroot}%{_unitdir}/kanidmd.service
 install -m 0644 %{_builddir}/%{name}-%{version}/platform/opensuse/kanidm-unixd.service %{buildroot}%{_unitdir}/kanidm-unixd.service
 install -m 0644 %{_builddir}/%{name}-%{version}/platform/opensuse/kanidm-unixd-tasks.service %{buildroot}%{_unitdir}/kanidm-unixd-tasks.service
-install -m 0640 %{_builddir}/%{name}-%{version}/examples/server.toml %{buildroot}%{configdir}/server.toml
+install -m 0644 %{_builddir}/%{name}-%{version}/examples/server.toml %{buildroot}%{configdir}/server.toml
 
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions/_kanidmd   %{buildroot}%{_sysconfdir}/zsh_completion.d/_kanidmd
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions/_kanidm   %{buildroot}%{_sysconfdir}/zsh_completion.d/_kanidm
@@ -165,15 +161,7 @@ install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/build/completions/kanidm_ssh_authorizedkeys.bash %{buildroot}%{_sysconfdir}/bash_completion.d/kanidm_ssh_authorizedkeys.sh
 
 cp -r %{_builddir}/%{name}-%{version}/book/src/ %{buildroot}%{_datadir}/kanidm/docs/
-
-## TODO: Add /usr/share/kanidm/ui/pkg
-install -m 0644 %{_builddir}/%{name}-%{version}/server/web_ui/pkg/style.css %{buildroot}%{_datadir}/kanidm/ui/pkg/style.css
-install -m 0644 %{_builddir}/%{name}-%{version}/server/web_ui/pkg/kanidmd_web_ui.js %{buildroot}%{_datadir}/kanidm/ui/pkg/kanidmd_web_ui.js
-install -m 0644 %{_builddir}/%{name}-%{version}/server/web_ui/pkg/kanidmd_web_ui_bg.wasm %{buildroot}%{_datadir}/kanidm/ui/pkg/kanidmd_web_ui_bg.wasm
-install -m 0644 %{_builddir}/%{name}-%{version}/server/web_ui/pkg/package.json %{buildroot}%{_datadir}/kanidm/ui/pkg/package.json
-install -m 0644 %{_builddir}/%{name}-%{version}/server/web_ui/pkg/external/bootstrap.min.css %{buildroot}%{_datadir}/kanidm/ui/pkg/external/bootstrap.min.css
-install -m 0644 %{_builddir}/%{name}-%{version}/server/web_ui/pkg/external/bootstrap.bundle.min.js %{buildroot}%{_datadir}/kanidm/ui/pkg/external/bootstrap.bundle.min.js
-install -m 0644 %{_builddir}/%{name}-%{version}/server/web_ui/pkg/external/confetti.js %{buildroot}%{_datadir}/kanidm/ui/pkg/external/confetti.js
+cp -r %{_builddir}/%{name}-%{version}/server/web_ui/pkg %{buildroot}%{_datadir}/kanidm/ui/pkg
 
 ## End install
 
