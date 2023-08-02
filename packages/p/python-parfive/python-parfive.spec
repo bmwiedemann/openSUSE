@@ -1,7 +1,7 @@
 #
 # spec file for package python-parfive
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,35 +16,36 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
-%define         skip_python36 1
 Name:           python-parfive
-Version:        1.3.0
+Version:        2.0.2
 Release:        0
 Summary:        A HTTP and FTP parallel file downloader
 License:        MIT
 URL:            https://parfive.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/p/parfive/parfive-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module aioftp >= 0.17.1}
+BuildRequires:  %{python_module aiofiles}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-localserver}
 BuildRequires:  %{python_module pytest-socket}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module tqdm}
+BuildRequires:  %{python_module tqdm >= 4.27.0}
 # /SECTION
 Requires:       python-aiohttp
 Requires:       python-tqdm
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+Recommends:     python-aiofiles
 Recommends:     python-aioftp
 BuildArch:      noarch
 
@@ -57,13 +58,13 @@ feedback to the user about the downloads in progress. It also
 provides an interface for inspecting any failed downloads.
 
 %prep
-%setup -q -n parfive-%{version}
+%autosetup -p1 -n parfive-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/parfive
 
@@ -80,7 +81,8 @@ provides an interface for inspecting any failed downloads.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/parfive
+%{python_sitelib}/parfive-%{version}.dist-info
 %python_alternative %{_bindir}/parfive
 
 %changelog
