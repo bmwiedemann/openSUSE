@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug  1 11:18:27 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.7
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.7
+- Changes since 5.27.6:
+  * rpm-ostree: Improve search and filter logic (kde#468162)
+  * Fix SteamOS dbus path
+
+-------------------------------------------------------------------
 Tue Jun 20 17:14:58 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.6
