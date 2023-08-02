@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Jul 26 09:02:02 UTC 2023 - marius.kittler@suse.com
+
+- Update to version 10.0.3:
+  * Features and enhancements
+    - Alerting: Sort NumberCaptureValues in EvaluationString.
+    - Alerting: No longer silence paused alerts during legacy
+      migration.
+    - Auth: Add support for custom signing keys in auth.azure_ad.
+  * Bug fixes
+    - Alerting: Fix edit / view of webhook contact point when no
+      authorization is set.
+    - AzureMonitor: Set timespan in Logs Portal URL link.
+    - Plugins: Only configure plugin proxy transport once.
+    - Elasticsearch: Fix multiple max depth flatten of multi-level
+      objects.
+    - Elasticsearch: Fix histogram colors in backend mode.
+    - Alerting: Fix state in expressions footer.
+    - AppChromeService: Fixes update to breadcrumb parent URL.
+    - Elasticsearch: Fix using multiple indexes with comma
+      separated string.
+    - Alerting: Fix Alertmanager change detection for receivers
+      with secure settings.
+    - Transformations: Fix extractFields throwing Error if one
+      value is undefined or null.
+    - XYChart: Point size editor should reflect correct default.
+    - Annotations: Fix database lock while updating annotations.
+    - TimePicker: Fix issue with previous fiscal quarter not
+      parsing correctly.
+    - AzureMonitor: Correctly build multi-resource queries for
+      Application Insights components.
+    - AzureMonitor: Fix metric names for multi-resources.
+    - Logs: Do not insert log-line into log-fields in json
+      download.
+    - Loki: Fix wrong query expression with inline comments.
+
+-------------------------------------------------------------------
 Tue Jul 11 10:44:31 UTC 2023 - marius.kittler@suse.com
 
 - Update to version 10.0.2:
