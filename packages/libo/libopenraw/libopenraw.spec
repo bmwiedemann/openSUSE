@@ -17,7 +17,7 @@
 
 
 Name:           libopenraw
-Version:        0.3.4
+Version:        0.3.7
 Release:        0
 Summary:        A library to decode digital camera RAW files
 License:        LGPL-2.1-or-later
@@ -30,11 +30,12 @@ Source2:        %{name}.keyring
 Source3:        vendor.tar.xz
 Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM 03f8270d6bb255ca6618505e83169ab9d95ccef1.patch -- Include stdint.h where needed
-Patch0:         03f8270d6bb255ca6618505e83169ab9d95ccef1.patch
+#Patch0:         03f8270d6bb255ca6618505e83169ab9d95ccef1.patch
 
 BuildRequires:  autoconf >= 2.69
 BuildRequires:  cargo
 BuildRequires:  gcc-c++
+BuildRequires:  libboost_test-devel >= 1.60.0
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig
 BuildRequires:  rust
@@ -42,11 +43,6 @@ BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.21
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.5.0
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_test-devel >= 1.60.0
-%else
-BuildRequires:  boost-devel >= 1.60.0
-%endif
 
 %description
 libopenraw is a library that aim at decoding digital camera RAW files.
@@ -82,20 +78,24 @@ Requires:       libopenraw9 = %{version}-%{release}
 libopenraw is a library that aim at decoding digital camera RAW files.
 
 %prep
-%autosetup -a3 -p1
-mv vendor lib/mp4/
-cd lib/mp4
-sed -i 's/byteorder = "1.2.1"/byteorder = "1.2.2"/' mp4parse/Cargo.toml
+%autosetup -p1
+%{?
+pushd lib/mp4
+cargo vendor -s Cargo.toml -s mp4parse/Cargo.toml -s mp4parse_capi/Cargo.toml
 mkdir .cargo
-cat <<EOF >> .cargo/config.toml
+cat << _EOF_ >> .cargo/config.toml
 [source.crates-io]
 replace-with = "vendored-sources"
 
 [source.vendored-sources]
 directory = "vendor"
-EOF
+_EOF_
+tar -cf %_sourcedir/%name-%version-mp4.tar vendor .cargo
+popd
+}
 
 %build
+autoconf -f
 %configure --disable-static
 %make_build
 

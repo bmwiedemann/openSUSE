@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Aug  2 06:40:36 UTC 2023 - Dave Plater <davejplater@gmail.com>
+
+- Update to version 0.3.7 and remove incorporated patch:
+  03f8270d6bb255ca6618505e83169ab9d95ccef1.patch
+- Fix build using %prep from Gentoo and autoconf
+- Upstream changes:
+   *Bug fixes:
+    Fix a crash when rendering Leica M Monochron DNG files.
+    Preserve the raw data photometric interpretation when
+    decompressing raw data.
+    Properly decode uncompressed big endian 16 bit raw data from
+    Pentax PEF. Issue #2. Including PENTAX *ist DS. #2
+    Added missing MPL-2.0 license to tarball. #15
+    Fix build issue with Rust 1.70.
+    Fix offline Rust build from tarball.
+    Fix a missing include with gcc 13. Issue #12.
+   *New features:
+    The Rust crates are vendored for the tarball. Note: resulting
+    tarball is bigger.
+   *Camera support:
+    [ a * denote that static WB coefficients have been included, unless DNG ]
+    Added Leica M11 Monochrom, Q3.
+    [ a * denote that static WB coefficients have been included, unless DNG ]
+    Added coefficients for Canon R8* and R50*.
+    Added coefficients for Panasonic S5M2*.
+    Added Panasonic GF8*.
+    Added Sony ZV-E1*, ILME-FX30*.
+   *Other:
+    Updated Exif tags.
+
+-------------------------------------------------------------------
 Mon Apr 10 21:06:06 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 03f8270d6bb255ca6618505e83169ab9d95ccef1.patch: Include
