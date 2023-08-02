@@ -17,7 +17,7 @@
  AC_TYPE_SIZE_T
 --- file-5.42/src/file.h
 +++ file-5.42/src/file.h	2022-06-13 08:34:50.347521415 +0000
-@@ -709,4 +709,12 @@ static const char *rcsid(const char *p)
+@@ -726,4 +726,12 @@ static const char *rcsid(const char *p)
  #define __RCSID(a)
  #endif
  

@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Jul 31 09:44:14 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch file-5.45-type_t.dif
+  * Partly upstream check of type_t is wide on 32bit systems
+  * Extend (auto)configure to enable wide type_t type if possible
+
+-------------------------------------------------------------------
+Fri Jul 28 11:51:24 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- On 32bit systems define _TIME_BITS=64 to make it build
+
+-------------------------------------------------------------------
+Fri Jul 28 09:48:53 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Update to 5.45:
+  * PR/465: psrok1: Avoid muslc asctime_r crash
+  * add SIMH tape format support
+  * bump the max size of the elf section notes to be read to 128K
+    and make it configurable
+  * PR/415: Fix decompression with program returning empty
+  * PR/408: fix -p with seccomp
+  * PR/412: fix MinGW compilation
+- Remove upstream patch dc71304b.patch
+- Modify patches
+  * file-5.17-option.dif
+  * file-5.19-biorad.dif
+  * file-5.19-zip2.0.dif
+  * file-5.22-elf.dif
+  * file-secure_getenv.patch
+- Port and rename patch file-5.44.dif now file-5.45.dif
+
+-------------------------------------------------------------------
 Thu May  4 14:15:38 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Add _multibuild to define additional spec files as additional

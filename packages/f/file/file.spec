@@ -34,7 +34,7 @@ Obsoletes:      file-64bit
 %endif
 #
 # Set Version also in python-magic.spec
-Version:        5.44
+Version:        5.45
 Release:        0
 Summary:        A Tool to Determine File Types
 License:        BSD-2-Clause
@@ -44,7 +44,7 @@ Source2:        baselibs.conf
 Source3:        file-rpmlintrc
 Source4:        https://www.astron.com/pub/file/file-%{version}.tar.gz.asc
 Source5:        file.keyring
-Patch0:         file-5.44.dif
+Patch0:         file-5.45.dif
 Patch1:         file-5.19-misc.dif
 Patch4:         file-4.24-autoconf.dif
 Patch5:         file-5.14-tex.dif
@@ -63,8 +63,8 @@ Patch31:        file-5.19-biorad.dif
 Patch32:        file-5.19-clicfs.dif
 Patch37:        file-secure_getenv.patch
 Patch39:        file-5.28-btrfs-image.dif
-# PATCH-FIX-UPSTREAM
-Patch42:        dc71304b.patch
+# PATCH-FIX-UPSTREAM: Support max time_t on 32bit
+Patch42:        file-5.45-type_t.dif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %global         _sysconfdir /etc
 %global         magicdir    %{_datadir}/file
@@ -109,7 +109,7 @@ to develop applications that require the magic "file" interface.
 
 %prep
 %setup -q -n file-%{version}
-%patch42 -p0
+%patch42 -p0 -b .t_t
 %patch1  -p0 -b .misc
 %patch4  -p0 -b .conf
 %patch5  -p0 -b .tex

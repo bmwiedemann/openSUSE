@@ -2,11 +2,9 @@
  magic/Magdir/archive |    5 +++++
  1 file changed, 5 insertions(+)
 
-Index: magic/Magdir/archive
-===================================================================
---- magic/Magdir/archive.orig
-+++ magic/Magdir/archive
-@@ -1504,6 +1504,11 @@
+--- magic/Magdir/archive
++++ magic/Magdir/archive	2023-07-28 09:40:12.243809381 +0000
+@@ -1622,6 +1622,11 @@
  0	string		PK\x07\x08PK\x03\x04	Zip multi-volume archive data, at least PKZIP v2.50 to extract
  !:mime	application/zip
  !:ext zip/cbz
@@ -16,5 +14,5 @@ Index: magic/Magdir/archive
 +!:mime	application/unknown+zip
 +!:ext zip/cbz
  
- # Zip archives (Greg Roelofs, c/o zip-bugs@wkuvx1.wku.edu)
- 0	string		PK\005\006	Zip archive data (empty)
+ # Android APK file (Zip archive)
+ 0	string		PK\003\004

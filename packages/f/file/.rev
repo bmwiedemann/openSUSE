@@ -1625,4 +1625,33 @@ SPDX format (forwarded request 126065 from babelworx)</comment>
     <comment></comment>
     <requestid>1084807</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>d511deb9d27e1e4205ab73ebdc08b214</srcmd5>
+    <version>5.45</version>
+    <time>1690987668</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch file-5.45-type_t.dif
+  * Partly upstream check of type_t is wide on 32bit systems
+  * Extend (auto)configure to enable wide type_t type if possible
+
+- On 32bit systems define _TIME_BITS=64 to make it build
+
+- Update to 5.45:
+  * PR/465: psrok1: Avoid muslc asctime_r crash
+  * add SIMH tape format support
+  * bump the max size of the elf section notes to be read to 128K
+    and make it configurable
+  * PR/415: Fix decompression with program returning empty
+  * PR/408: fix -p with seccomp
+  * PR/412: fix MinGW compilation
+- Remove upstream patch dc71304b.patch
+- Modify patches
+  * file-5.17-option.dif
+  * file-5.19-biorad.dif
+  * file-5.19-zip2.0.dif
+  * file-5.22-elf.dif
+  * file-secure_getenv.patch
+- Port and rename patch file-5.44.dif now file-5.45.dif</comment>
+    <requestid>1101521</requestid>
+  </revision>
 </revisionlist>
