@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Aug  1 11:18:57 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.7
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.7
+- Changes since 5.27.6:
+  * Add closed window checks in restacking requests
+  * Add closed window checks in some window activation code paths
+  * x11: Sync frame extents in X11 native pixels (kde#471132)
+  * backends/drm: handle mismatching stride with CPU copying (kde#471517)
+  * scene: Pad damage if scale factor is fractional
+  * locale1: fix use-after-free in xkb_keymap creation
+  * effects: Make OpenGL context current before deleting framebuffer (kde#444665,kde#471139)
+  * plugins/backgroundcontrast,blur: ensure the effect is only applied behind the window (kde#469625)
+  * input: don't crash if the internal handle is nullptr (kde#471285)
+
+-------------------------------------------------------------------
 Tue Jun 20 17:15:01 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.6
