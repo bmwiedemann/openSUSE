@@ -13,7 +13,7 @@ Index: nss/lib/softoken/pkcs11c.c
  #include "seccomon.h"
  #include "secitem.h"
  #include "secport.h"
-@@ -4922,6 +4923,88 @@ pairwise_signverify_mech (CK_SESSION_HAN
+@@ -4934,6 +4935,88 @@ pairwise_signverify_mech (CK_SESSION_HAN
      return crv;
  }
  
@@ -102,7 +102,7 @@ Index: nss/lib/softoken/pkcs11c.c
  /*
   * FIPS 140-2 pairwise consistency check utilized to validate key pair.
   *
-@@ -5268,6 +5351,30 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
+@@ -5280,6 +5363,30 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
          }
      }
  

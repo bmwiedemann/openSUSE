@@ -42,7 +42,7 @@ Index: nss/lib/freebl/blapi.h
 ===================================================================
 --- nss.orig/lib/freebl/blapi.h
 +++ nss/lib/freebl/blapi.h
-@@ -1759,17 +1759,17 @@ extern void BL_Unload(void);
+@@ -1859,17 +1859,17 @@ extern void BL_Unload(void);
  /**************************************************************************
   *  Verify a given Shared library signature                               *
   **************************************************************************/
@@ -63,7 +63,7 @@ Index: nss/lib/freebl/blapi.h
  
  /*********************************************************************/
  extern const SECHashObject *HASH_GetRawHashObject(HASH_HashType hashType);
-@@ -1791,6 +1791,9 @@ extern SECStatus EC_CopyParams(PLArenaPo
+@@ -1891,6 +1891,9 @@ extern SECStatus EC_CopyParams(PLArenaPo
   */
  extern int EC_GetPointSize(const ECParams *params);
  
@@ -865,7 +865,7 @@ Index: nss/lib/freebl/loader.h
  
      /* Version 3.013 came to here */
  
-@@ -834,6 +834,9 @@ struct FREEBLVectorStr {
+@@ -912,6 +912,9 @@ struct FREEBLVectorStr {
  
      /* Add new function pointers at the end of this struct and bump
       * FREEBL_VERSION at the beginning of this file. */
@@ -887,7 +887,7 @@ Index: nss/lib/freebl/manifest.mn
  	$(NULL)
  
  MPI_HDRS = mpi-config.h mpi.h mpi-priv.h mplogic.h mpprime.h logtab.h mp_gf2m.h
-@@ -187,6 +188,7 @@ ALL_HDRS =  \
+@@ -189,6 +190,7 @@ ALL_HDRS =  \
  	shsign.h \
  	vis_proto.h \
  	seed.h \
@@ -1654,15 +1654,10 @@ Index: nss/lib/freebl/ldvector.c
 ===================================================================
 --- nss.orig/lib/freebl/ldvector.c
 +++ nss/lib/freebl/ldvector.c
-@@ -375,9 +375,12 @@ static const struct FREEBLVectorStr vect
-     /* End of version 3.024 */
-     ChaCha20_InitContext,
-     ChaCha20_CreateContext,
--    ChaCha20_DestroyContext
-+    ChaCha20_DestroyContext,
+@@ -432,6 +432,8 @@ static const struct FREEBLVectorStr vect
+     SHAKE_256_Hash,
  
-     /* End of version 3.025 */
-+
+     /* End of version 3.026 */
 +    /* SUSE patch: Goes last */
 +    BL_FIPSRepeatIntegrityCheck
  };

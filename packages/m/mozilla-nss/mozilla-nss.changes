@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Jul 29 11:50:48 UTC 2023 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.91
+  * bmo#1837431 - Implementation of the HW support check for ADX instruction
+  * bmo#1836925 - Removing the support of Curve25519
+  * bmo#1839795 - Fix comment about the addition of ticketSupportsEarlyData
+  * bmo#1839327 - Adding args to enable-legacy-db build
+  * bmo#1835357 - dbtests.sh failure in "certutil dump keys with explicit
+                  default trust flags"
+  * bmo#1837617 - Initialize flags in slot structures
+  * bmo#1835425 - Improve the length check of RSA input to avoid heap overflow
+  * bmo#1829112 - Followup Fixes
+  * bmo#1784253 - avoid processing unexpected inputs by checking for
+                  m_exptmod base sign
+  * bmo#1826652 - add a limit check on order_k to avoid infinite loop
+  * bmo#1834851 - Update HACL* to commit 5f6051d2
+  * bmo#1753026 - add SHA3 to cryptohi and softoken
+  * bmo#1753026 - HACL SHA3
+  * bmo#1836781 - Disabling ASM C25519 for A but X86_64
+- removed upstreamed patch nss-fix-bmo1836925.patch
+
+-------------------------------------------------------------------
 Fri Jul 28 16:29:26 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - Fix file conflict for pp manual page [bsc#1213281]
