@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Jul 31 11:47:45 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.92.1
+
+- Update 2.92.1
+  - Implement Qualtrics ratings #551:
+    * generate.qualtrics.div (default 0)
+      When this parameter is set to 1, the empty div
+      container is created.
+
+    * qualtrics.id (default "qualtrics_container")
+      The default id to reference in Qualtrics. Any
+      non-empty value will be used.
+      This parameter should normally not changed.
+
+   Keep in mind, only when $generate.qualtrics.div != 0
+   AND $qualtrics.id != '' are set that the empty <div> is
+   generated. This avoids a <div id=""> container.
+
+  - Improve Qualtrics implementation #556:
+    * Add qualtrics-feedback.js parameter
+    * Add the file "qualtrics-feedback.js".
+    * ATM, if generate.qualtrics.div != 0 and qualtrics-feedback.js == '', we fallback to a hardcoded
+      implementation.
+      TODO: remove it once the file implementation is stable
+    * If the file needs to be customized, this should be the content:
+
+      <html xmlns="http://www.w3.org/1999/xhtml">
+         <!--BEGIN QUALTRICS WEBSITE FEEDBACK SNIPPET-->
+         <script type='text/javascript'><![CDATA[... add your content here ...]]></script>
+         <div id='ZN_8qZUmklKYbBqAYe'><!--DO NOT REMOVE-CONTENTS PLACED HERE--></div>
+         <!--END WEBSITE FEEDBACK SNIPPET-->
+      </html>
+
+
+-------------------------------------------------------------------
 Wed Jul 26 15:08:15 UTC 2023 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.92.0
 
 - Update 2.92.0
