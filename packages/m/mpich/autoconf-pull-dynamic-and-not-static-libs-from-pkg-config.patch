@@ -1,4 +1,4 @@
-commit d0a81cafec8aa4fa668417cb641626a7c3f61c10
+commit cb75aa30781468b7cfa2f691d931c9113f7a2c74
 Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 Date:   Thu Apr 1 10:11:45 2021 +0200
 
@@ -7,10 +7,10 @@ Date:   Thu Apr 1 10:11:45 2021 +0200
     Signed-off-by: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 diff --git confdb/aclocal_libs.m4 confdb/aclocal_libs.m4
-index 50d6a8b4cbce..9b769d0fc401 100644
+index 6a1552461de4..61940d3bad96 100644
 --- confdb/aclocal_libs.m4
 +++ confdb/aclocal_libs.m4
-@@ -108,12 +108,12 @@ dnl PAC_LIB_DEPS(library_name, library_pc_path)
+@@ -214,12 +214,12 @@ dnl PAC_LIB_DEPS(library_name, library_pc_path)
  dnl library_pc_path is the path to the library pkg-config directory
  AC_DEFUN([PAC_LIB_DEPS],[
  if test "x$2" != "x"; then

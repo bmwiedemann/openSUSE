@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Tue Jul 25 12:50:03 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to 4.1.2
+  - Update UCX module to includes fixes for building with GCC 13
+  - Update libfabric module to 1.18.0 with additional fixes for building
+    with recent versions of LLVM/Clang
+  - Fix compiler wrapper scripts to be compatible with CUDA memory hooks
+  - Fix MPIX_WAITALL_ENQUEUE to make a copy of the input request array
+  - Fix bug in MPI_ALLREDUCE that could result in ranks receiving
+    different floating point values
+  - Fix potential deadlock when progressing RMA windows
+  - Fix potential crash in MPI_REDUCE with non-zero root and MPI_IN_PLACE
+  - Fix potential crash during probe with libfabric CXI provider
+  - Fix MPI_PARRIVED when the partitioned request is inactive
+  - Fix potential bug when an attribute delete callback deletes another
+    attribute on the same object
+  - Fix build issue in ROMIO Lustre driver
+  - Improve Fortran 2008 binding support detection during configure
+  - Report an error if collective tuning json file fails to open
+  - Several fixes for testsuite programs and build configuration
+  - Update embedded UCX module to 1.13.1. Fixes a build issue with
+    binutils >= 2.39.
+  - Update yaksa module. Support explicit NVCC setting by the user. Fixes
+    a build issue when there is no libtool available in PATH.
+  - Fix ch4:ucx initialization when configured with
+    --enable-ch4-vci-method=implicit.
+  - Fix potential error handler leak during MPI_SESSION_FINALIZE
+  - Fix value of MPI_UNDEFINED in mpif.h binding
+  - Fix MPI_IALLTOALLW with MPI_IN_PLACE
+  - Fix send attribute handling in IPC path
+  - Fix a bug in persistent MPI_ALLGATHER
+  - Fix tests for use with non-MPICH libraries
+  - Add missing MPI_T_ERR_NOT_ACCESSIBLE error code
+  - Fix manpages for MPIX functions
+  - Thread-cs in ch4 changed to per-vci.
+  - Testsuite (test/mpi) is configured separately from mpich configure.
+  - Added options in autogen to accelerate CI builds, including using pre-built
+    sub-modules. Added -yaksa-depth option to generate shallower yaksa pup code
+    for faster build and smaller binaries.
+  - Support singleton init using hydra.
+  - Generate mpi.mod Fortran interfaces using Python 3. For many compilers,
+    including gfortran, flags such as -fallow-mismatched-args is no longer
+    necessary.
+  - Fixed message queue debugger interface in ch4.
+  - PMI (src/pmi) is refactored as a subdir and can be separately distributed.
+  - Added MPIX_Comm_get_failed.
+  - Experimental MPIX stream API to enable explicit thread contexts.
+  - Experimental MPIX gpu enqueue API. It currently only supports CUDA streams.
+  - Delays GPU resource allocation in yaksa.
+  - CH3 nemesis ofi netmod is removed.
+  - New collective algorithms. All collective algorithms are listed in
+    src/mpi/coll/coll_algorithms.txt
+  - Removed hydra2. We will port unique features of hydra2, including
+    tree-launching, to hydra in the future release.
+  - Added in-repository wiki documentation.
+  - Added stream workq to support optimizations for enqueue operations.
+  - Better support for large count APIs by eliminating type conversion issues.
+  - Hydra now uses libpmi (src/pmi) for handling PMI messages.
+  - Many bug fixes and enhancements.
+- Refresh autogen-only-deal-with-json-yaksa-if-enabled.patch
+
+-------------------------------------------------------------------
 Tue Oct 25 08:20:20 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Revert use of internal PMIx and hwloc library
