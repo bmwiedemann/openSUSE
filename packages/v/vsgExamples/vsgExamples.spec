@@ -19,7 +19,7 @@
 %define addprofile 1
 
 Name:           vsgExamples
-Version:        1.0.5
+Version:        1.0.6
 Release:        0
 Summary:        3D graphics toolkit
 License:        MIT
