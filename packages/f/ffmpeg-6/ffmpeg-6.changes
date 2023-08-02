@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 31 09:05:39 UTC 2023 - llyyr <llyyr.public@gmail.com>
+
+- Bump required libplacebo version to v6.292.0 or newer for TW
+- Temporarily demote deprecation errors to deprecation warnings
+  for vf_libplacebo
+- Add upstream patches to fix build with libplacebo v6:
+  * 0001-avfilter-vf_libplacebo-remove-deprecated-field.diff
+
+-------------------------------------------------------------------
 Mon Apr 10 09:08:08 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Reset fixed leftover value for BUILD_ORIG

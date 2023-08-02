@@ -104,6 +104,7 @@ Patch2:         ffmpeg-new-coder-errors.diff
 Patch3:         ffmpeg-codec-choice.diff
 Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
+Patch6:         0001-avfilter-vf_libplacebo-remove-deprecated-field.diff
 Patch10:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
 
@@ -185,7 +186,11 @@ BuildRequires:  pkgconfig(vdpau)
 BuildRequires:  pkgconfig(vidstab) >= 0.98
 %endif
 %if %{with vulkan}
-BuildRequires:  pkgconfig(libplacebo) >= 4.192.0
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150200
+BuildRequires:  pkgconfig(libplacebo) >= 6.292.0
+%else
+BuildRequires:  (pkgconfig(libplacebo) >= 4.192.0 with pkgconfig (libplacebo) < 6.292.0)
+%endif
 BuildRequires:  pkgconfig(shaderc)
 BuildRequires:  pkgconfig(vulkan) >= 1.2.189
 %endif
@@ -524,7 +529,18 @@ from libav should depend on these private headers which are expected to
 break compatibility without any notice.
 
 %prep
-%autosetup -a6 -p1 -n %_name-%version
+%setup -a6 -n %_name-%version
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch10 -p1
+%patch91 -p1
+# Remove when packaging ffmpeg 6.1
+if pkg-config --atleast-version 6 libplacebo; then
+%patch6 -p1
+fi
 
 %build
 %ifarch %ix86 %arm

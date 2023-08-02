@@ -15,4 +15,12 @@
     <comment>- Reset fixed leftover value for BUILD_ORIG</comment>
     <requestid>1078242</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>30f8ee844c5fcfe1c8e1a45ee787e9dc</srcmd5>
+    <version>6.0</version>
+    <time>1690987680</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump required libplacebo version to v6.292.0 or newer for TW</comment>
+    <requestid>1101527</requestid>
+  </revision>
 </revisionlist>
