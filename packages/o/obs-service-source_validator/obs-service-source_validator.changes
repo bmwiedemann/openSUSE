@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 01 15:41:05 UTC 2023 - dmueller@suse.com
+
+- Update to version 0.33:
+  * 20-files-present-and-referenced: Check for files in *.obscpio
+  * 20-files-present-and-referenced: Use correct variable
+
+-------------------------------------------------------------------
 Tue Jul 18 08:59:37 UTC 2023 - dmueller@suse.com
 
 - Update to version 0.32:

@@ -648,4 +648,14 @@ last submission had wrong tar ball for unknown reason</comment>
   * Fix handling of packages with neither *.spec nor _multibuild</comment>
     <requestid>1099210</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>94bfff6a64dae0cae475299333db0e08</srcmd5>
+    <version>0.33</version>
+    <time>1690987814</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.33:
+  * 20-files-present-and-referenced: Check for files in *.obscpio
+  * 20-files-present-and-referenced: Use correct variable</comment>
+    <requestid>1101772</requestid>
+  </revision>
 </revisionlist>
