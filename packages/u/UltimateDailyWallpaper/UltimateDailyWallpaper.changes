@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug  1 07:09:17 UTC 2023 - Patrice Coni <patrice.coni-dev@yandex.com>
+
+- Update to version 3.3.3
+   * Bug fixed: The wallpaper does not change after 
+                the internet connection was reconnected
+   * Cancel button in Settings user interface selected as default
+   * Language files updated
+
+-------------------------------------------------------------------
 Sun Jul 30 08:43:38 UTC 2023 - Patrice Coni <patrice.coni-dev@yandex.com>
 
 - Update to version 3.3.2
