@@ -1034,4 +1034,12 @@ Fixes:
 </comment>
     <requestid>1074110</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c3e8110664f532cd5bdf4d584f54de9e</srcmd5>
+    <version>6.292.0</version>
+    <time>1690987678</time>
+    <user>dimstar_suse</user>
+    <comment>Update to v6.292.0</comment>
+    <requestid>1097449</requestid>
+  </revision>
 </revisionlist>
