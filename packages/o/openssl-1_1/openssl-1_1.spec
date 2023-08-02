@@ -41,7 +41,7 @@
 %define _rname  openssl
 Name:           openssl-1_1
 # Don't forget to update the version in the "openssl" meta-package!
-Version:        1.1.1u
+Version:        1.1.1v
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 License:        OpenSSL
@@ -132,9 +132,8 @@ Patch78:        openssl-1_1-Fixed-conditional-statement-testing-64-and-256-bytes
 Patch79:        openssl-1_1-Fix-AES-GCM-on-Power-8-CPUs.patch
 #PATCH-FIX-OPENSUSE bsc#1205042 Set OpenSSL 3.0 as the default openssl
 Patch80:        openssl-1_1-openssl-config.patch
-# PATCH-FIX-UPSTREAM: bsc#1213487 CVE-2023-3446 DH_check() excessive time with over sized modulus
-Patch81:        openssl-CVE-2023-3446.patch
-Patch82:        openssl-CVE-2023-3446-test.patch
+# PATCH-FIX-SUSE bsc#1213517 Dont pass zero length input to EVP_Cipher
+Patch81:        openssl-dont-pass-zero-length-input-to-EVP_Cipher.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
 Provides:       ssl

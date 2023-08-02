@@ -24,8 +24,10 @@
  tools/c_rehash.in                          |    6 ++--
  23 files changed, 71 insertions(+), 68 deletions(-)
 
---- a/Configurations/descrip.mms.tmpl
-+++ b/Configurations/descrip.mms.tmpl
+Index: openssl-1.1.1v/Configurations/descrip.mms.tmpl
+===================================================================
+--- openssl-1.1.1v.orig/Configurations/descrip.mms.tmpl
++++ openssl-1.1.1v/Configurations/descrip.mms.tmpl
 @@ -142,8 +142,8 @@ INSTALL_SHLIBS={- join(", ", map { "-\n\
  INSTALL_ENGINES={- join(", ", map { "-\n\t".$_.".EXE" } @{$unified_info{install}->{engines}}) -}
  INSTALL_PROGRAMS={- join(", ", map { "-\n\t".$_.".EXE" } @{$unified_info{install}->{programs}}) -}
@@ -37,8 +39,10 @@
  {- output_on() if $disabled{apps}; "" -}
  
  APPS_OPENSSL={- use File::Spec::Functions;
---- a/Configurations/unix-Makefile.tmpl
-+++ b/Configurations/unix-Makefile.tmpl
+Index: openssl-1.1.1v/Configurations/unix-Makefile.tmpl
+===================================================================
+--- openssl-1.1.1v.orig/Configurations/unix-Makefile.tmpl
++++ openssl-1.1.1v/Configurations/unix-Makefile.tmpl
 @@ -140,8 +140,8 @@ INSTALL_SHLIB_INFO={- join(" ", map { "\
  INSTALL_ENGINES={- join(" ", map { dso($_) } @{$unified_info{install}->{engines}}) -}
  INSTALL_PROGRAMS={- join(" ", map { $_.$exeext } @{$unified_info{install}->{programs}}) -}
@@ -82,8 +86,10 @@
  
  generate_crypto_bn:
  	( cd $(SRCDIR); $(PERL) crypto/bn/bn_prime.pl > crypto/bn/bn_prime.h )
---- a/Configure
-+++ b/Configure
+Index: openssl-1.1.1v/Configure
+===================================================================
+--- openssl-1.1.1v.orig/Configure
++++ openssl-1.1.1v/Configure
 @@ -35,7 +35,7 @@ my $usage="Usage: Configure [no-<cipher>
  #               directories bin, lib, include, share/man, share/doc/openssl
  #               This becomes the value of INSTALLTOP in Makefile
@@ -93,8 +99,10 @@
  #               If it's a relative directory, it will be added on the directory
  #               given with --prefix.
  #               This becomes the value of OPENSSLDIR in Makefile and in C.
---- a/INSTALL
-+++ b/INSTALL
+Index: openssl-1.1.1v/INSTALL
+===================================================================
+--- openssl-1.1.1v.orig/INSTALL
++++ openssl-1.1.1v/INSTALL
 @@ -296,7 +296,7 @@
                     be undesirable if small executable size is an objective.
  
@@ -104,11 +112,13 @@
                     Typically OpenSSL will automatically load a system config
                     file which configures default ssl options.
  
---- a/NEWS
-+++ b/NEWS
-@@ -5,6 +5,9 @@
-   This file gives a brief overview of the major changes between each OpenSSL
-   release. For more details please read the CHANGES file.
+Index: openssl-1.1.1v/NEWS
+===================================================================
+--- openssl-1.1.1v.orig/NEWS
++++ openssl-1.1.1v/NEWS
+@@ -10,6 +10,9 @@
+       o Fix excessive time spent checking DH q parameter value (CVE-2023-3817)
+       o Fix DH_check() excessive time with over sized modulus (CVE-2023-3446)
  
 +  IMPORTANT: For compatibility with OpenSSL 3.0, the OpenSSL master
 +  configuration file openssl.cnf has been renamed to openssl-1_1.cnf.
@@ -116,8 +126,10 @@
    Major changes between OpenSSL 1.1.1t and OpenSSL 1.1.1u [30 May 2023]
  
        o Mitigate for very slow `OBJ_obj2txt()` performance with gigantic
---- a/VMS/openssl_utils.com.in
-+++ b/VMS/openssl_utils.com.in
+Index: openssl-1.1.1v/VMS/openssl_utils.com.in
+===================================================================
+--- openssl-1.1.1v.orig/VMS/openssl_utils.com.in
++++ openssl-1.1.1v/VMS/openssl_utils.com.in
 @@ -8,7 +8,7 @@ $	OPENSSL		:== $OSSL$EXE:OPENSSL'v'
  $
  $	IF F$TYPE(PERL) .EQS. "STRING"
@@ -127,8 +139,10 @@
  $	ELSE
  $	    WRITE SYS$ERROR "NOTE: no perl => no C_REHASH"
  $	ENDIF
---- a/apps/CA.pl.in
-+++ b/apps/CA.pl.in
+Index: openssl-1.1.1v/apps/CA.pl.in
+===================================================================
+--- openssl-1.1.1v.orig/apps/CA.pl.in
++++ openssl-1.1.1v/apps/CA.pl.in
 @@ -113,10 +113,10 @@ sub run
  
  
@@ -144,8 +158,10 @@
      exit 0;
  }
  if ($WHAT eq '-newcert' ) {
---- a/apps/build.info
-+++ b/apps/build.info
+Index: openssl-1.1.1v/apps/build.info
+===================================================================
+--- openssl-1.1.1v.orig/apps/build.info
++++ openssl-1.1.1v/apps/build.info
 @@ -73,7 +73,7 @@ IF[{- !$disabled{apps} -}]
    GENERATE[progs.h]=progs.pl $(APPS_OPENSSL)
    DEPEND[progs.h]=../configdata.pm
@@ -157,8 +173,10 @@
 +  SOURCE[CA-1_1.pl]=CA.pl.in
 +  SOURCE[tsget-1_1.pl]=tsget.in
  ENDIF
---- a/apps/tsget.in
-+++ b/apps/tsget.in
+Index: openssl-1.1.1v/apps/tsget.in
+===================================================================
+--- openssl-1.1.1v.orig/apps/tsget.in
++++ openssl-1.1.1v/apps/tsget.in
 @@ -47,7 +47,7 @@ sub create_curl {
      $curl->setopt(CURLOPT_VERBOSE, 1) if $options{d};
      $curl->setopt(CURLOPT_FAILONERROR, 1);
@@ -168,8 +186,10 @@
  
      # Options for POST method.
      $curl->setopt(CURLOPT_UPLOAD, 1);
---- a/doc/HOWTO/certificates.txt
-+++ b/doc/HOWTO/certificates.txt
+Index: openssl-1.1.1v/doc/HOWTO/certificates.txt
+===================================================================
+--- openssl-1.1.1v.orig/doc/HOWTO/certificates.txt
++++ openssl-1.1.1v/doc/HOWTO/certificates.txt
 @@ -16,7 +16,7 @@ Certificate authorities should read http
  In all the cases shown below, the standard configuration file, as
  compiled into openssl, will be used.  You may find it in /etc/,
@@ -179,8 +199,10 @@
  You can specify a different configuration file using the
  '-config {file}' argument with the commands shown below.
  
---- a/doc/man1/CA.pl.pod
-+++ b/doc/man1/CA.pl.pod
+Index: openssl-1.1.1v/doc/man1/CA.pl.pod
+===================================================================
+--- openssl-1.1.1v.orig/doc/man1/CA.pl.pod
++++ openssl-1.1.1v/doc/man1/CA.pl.pod
 @@ -2,16 +2,16 @@
  
  =head1 NAME
@@ -283,8 +305,10 @@
  
  can be used and the B<OPENSSL_CONF> environment variable changed to point to
  the correct path of the configuration file.
---- a/doc/man1/ca.pod
-+++ b/doc/man1/ca.pod
+Index: openssl-1.1.1v/doc/man1/ca.pod
+===================================================================
+--- openssl-1.1.1v.orig/doc/man1/ca.pod
++++ openssl-1.1.1v/doc/man1/ca.pod
 @@ -698,7 +698,7 @@ the database has to be kept in memory.
  The B<ca> command really needs rewriting or the required functionality
  exposed at either a command or interface level so a more friendly utility
@@ -303,8 +327,10 @@
  L<config(5)>, L<x509v3_config(5)>
  
  =head1 COPYRIGHT
---- a/doc/man1/rehash.pod
-+++ b/doc/man1/rehash.pod
+Index: openssl-1.1.1v/doc/man1/rehash.pod
+===================================================================
+--- openssl-1.1.1v.orig/doc/man1/rehash.pod
++++ openssl-1.1.1v/doc/man1/rehash.pod
 @@ -6,7 +6,7 @@ Original text by James Westby, contribut
  =head1 NAME
  
@@ -340,8 +366,10 @@
  uses the B<openssl> program to compute the hashes and
  fingerprints. If not found in the user's B<PATH>, then set the
  B<OPENSSL> environment variable to the full pathname.
---- a/doc/man1/tsget.pod
-+++ b/doc/man1/tsget.pod
+Index: openssl-1.1.1v/doc/man1/tsget.pod
+===================================================================
+--- openssl-1.1.1v.orig/doc/man1/tsget.pod
++++ openssl-1.1.1v/doc/man1/tsget.pod
 @@ -35,7 +35,7 @@ line.
  The tool sends the following HTTP request for each timestamp request:
  
@@ -360,8 +388,10 @@
  OpenSSL utility. Either option B<-C> or option B<-P> must be given in case of
  HTTPS. (Optional)
  
---- a/doc/man1/verify.pod
-+++ b/doc/man1/verify.pod
+Index: openssl-1.1.1v/doc/man1/verify.pod
+===================================================================
+--- openssl-1.1.1v.orig/doc/man1/verify.pod
++++ openssl-1.1.1v/doc/man1/verify.pod
 @@ -75,7 +75,7 @@ The file should contain one or more cert
  A directory of trusted certificates. The certificates should have names
  of the form: hash.0 or have symbolic links to them of this
@@ -371,8 +401,10 @@
  create symbolic links to a directory of certificates.
  
  =item B<-no-CAfile>
---- a/doc/man1/x509.pod
-+++ b/doc/man1/x509.pod
+Index: openssl-1.1.1v/doc/man1/x509.pod
+===================================================================
+--- openssl-1.1.1v.orig/doc/man1/x509.pod
++++ openssl-1.1.1v/doc/man1/x509.pod
 @@ -932,7 +932,7 @@ The hash algorithm used in the B<-subjec
  before OpenSSL 1.0.0 was based on the deprecated MD5 algorithm and the encoding
  of the distinguished name. In OpenSSL 1.0.0 and later it is based on a
@@ -382,8 +414,10 @@
  
  =head1 COPYRIGHT
  
---- a/doc/man3/OPENSSL_config.pod
-+++ b/doc/man3/OPENSSL_config.pod
+Index: openssl-1.1.1v/doc/man3/OPENSSL_config.pod
+===================================================================
+--- openssl-1.1.1v.orig/doc/man3/OPENSSL_config.pod
++++ openssl-1.1.1v/doc/man3/OPENSSL_config.pod
 @@ -15,7 +15,7 @@ OPENSSL_config, OPENSSL_no_config - simp
  
  =head1 DESCRIPTION
@@ -393,8 +427,10 @@
  reads from the application section B<appname>. If B<appname> is NULL then
  the default section, B<openssl_conf>, will be used.
  Errors are silently ignored.
---- a/doc/man3/SSL_CTX_load_verify_locations.pod
-+++ b/doc/man3/SSL_CTX_load_verify_locations.pod
+Index: openssl-1.1.1v/doc/man3/SSL_CTX_load_verify_locations.pod
+===================================================================
+--- openssl-1.1.1v.orig/doc/man3/SSL_CTX_load_verify_locations.pod
++++ openssl-1.1.1v/doc/man3/SSL_CTX_load_verify_locations.pod
 @@ -63,7 +63,7 @@ If more than one CA certificate with the
  extension must be different (e.g. 9d66eef0.0, 9d66eef0.1 etc). The search
  is performed in the ordering of the extension number, regardless of other
@@ -413,8 +449,10 @@
  
  =head1 SEE ALSO
  
---- a/doc/man5/config.pod
-+++ b/doc/man5/config.pod
+Index: openssl-1.1.1v/doc/man5/config.pod
+===================================================================
+--- openssl-1.1.1v.orig/doc/man5/config.pod
++++ openssl-1.1.1v/doc/man5/config.pod
 @@ -7,7 +7,7 @@ config - OpenSSL CONF library configurat
  =head1 DESCRIPTION
  
@@ -424,8 +462,10 @@
  and in a few other places like B<SPKAC> files and certificate extension
  files for the B<x509> utility. OpenSSL applications can also use the
  CONF library for their own purposes.
---- a/include/internal/cryptlib.h
-+++ b/include/internal/cryptlib.h
+Index: openssl-1.1.1v/include/internal/cryptlib.h
+===================================================================
+--- openssl-1.1.1v.orig/include/internal/cryptlib.h
++++ openssl-1.1.1v/include/internal/cryptlib.h
 @@ -51,7 +51,7 @@ typedef struct app_mem_info_st APP_INFO;
  typedef struct mem_st MEM;
  DEFINE_LHASH_OF(MEM);
@@ -435,8 +475,10 @@
  
  # ifndef OPENSSL_SYS_VMS
  #  define X509_CERT_AREA          OPENSSLDIR
---- a/test/recipes/80-test_ca.t
-+++ b/test/recipes/80-test_ca.t
+Index: openssl-1.1.1v/test/recipes/80-test_ca.t
+===================================================================
+--- openssl-1.1.1v.orig/test/recipes/80-test_ca.t
++++ openssl-1.1.1v/test/recipes/80-test_ca.t
 @@ -27,27 +27,27 @@ plan tests => 5;
   SKIP: {
       $ENV{OPENSSL_CONFIG} = '-config "'.srctop_file("test", "CAss.cnf").'"';
@@ -470,8 +512,10 @@
          'creating new pre-certificate');
  }
  
---- a/tools/build.info
-+++ b/tools/build.info
+Index: openssl-1.1.1v/tools/build.info
+===================================================================
+--- openssl-1.1.1v.orig/tools/build.info
++++ openssl-1.1.1v/tools/build.info
 @@ -1,5 +1,5 @@
  {- our $c_rehash_name =
 -       $config{target} =~ /^(VC|vms)-/ ? "c_rehash.pl" : "c_rehash";
@@ -479,8 +523,10 @@
     "" -}
  IF[{- !$disabled{apps} -}]
    SCRIPTS={- $c_rehash_name -}
---- a/tools/c_rehash.in
-+++ b/tools/c_rehash.in
+Index: openssl-1.1.1v/tools/c_rehash.in
+===================================================================
+--- openssl-1.1.1v.orig/tools/c_rehash.in
++++ openssl-1.1.1v/tools/c_rehash.in
 @@ -8,7 +8,7 @@
  # in the file LICENSE in the source distribution or at
  # https://www.openssl.org/source/license.html
