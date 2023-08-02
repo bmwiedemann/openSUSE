@@ -391,6 +391,7 @@ Patch3201:      647d3d2.patch
 Patch3202:      mojom-python3.12-imp.patch
 # https://src.fedoraproject.org/rpms/qt6-qtwebengine/blob/rawhide/f/Partial-migration-from-imp-to-importlib.patch
 Patch3203:      Partial-migration-from-imp-to-importlib.patch
+Patch3204:      re2-11-StringPiece.patch
 
 %if %{with clang}
 BuildRequires:  clang

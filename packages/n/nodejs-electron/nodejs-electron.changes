@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 31 18:00:30 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Add backported re2-11-StringPiece.patch to fix FTBFS.
+
+-------------------------------------------------------------------
 Sat Jul 22 21:18:28 UTC 2023 - Bruno Pitrus <brunopitrus@hotmail.com>
 - New upstream release 22.3.17
   * Security fixes: CVE-2023-3422, CVE-2023-3421, CVE-2023-3420.
