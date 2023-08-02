@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug  1 11:39:05 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.22
+  * Add PEP621/631 support.
+  * Exposed matplotlib unit formatter
+  * Add new SI prefixes: ronna-, ronto-, quetta-, quecto-.
+  * multiple numpy compat fixes
+  * Parse '°' along with previous text, rather than adding a space,
+    allowing, eg 'Δ°C' as a unit.
+  * Drop Python 3.8 compatability following NEP-29.
+  * Drop NumPy < 1.21 following NEP-29.
+  * Migrated fully to pyproject.toml.
+
+-------------------------------------------------------------------
 Wed Jan  4 20:05:35 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.20.1:
