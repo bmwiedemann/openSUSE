@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Tue Aug 01 12:05:22 UTC 2023 - valentin.lefebvre@suse.com
+
+- Update to version v2.0.6:
+  * Release v2.0.6
+  * Fix recursive Hex.State call during application start (#982)
+  * Bump to v2.0.6-dev
+  * Release v2.0.5
+  * Default to trusted for already persisted organizations
+  * Bump to v2.0.5-dev
+  * Release v2.0.4
+  * Simplify loading of repos_key config
+  * Fix trust lookup for organizations
+  * Bump to v2.0.4-dev
+  * Release v2.0.3
+  * Add trusted_mirror_url config (#956)
+  * Remove :ssh application dependency (#977)
+  * Fixes for hexpm ecto.load
+  * Format
+  * Bump to v2.0.3-dev
+  * Release v2.0.2
+  * Fixes for Elixir 1.15.0 (#974)
+  * Remove hex.install private task
+  * Bump to v2.0.2-dev
+  * Release v2.0.1
+  * Fix organization owner prompt during publish (#967)
+  * Fix pre-release test
+  * Vendor hex_solver v0.2.2
+  * Fix mix deps.get
+  * Vendor hex_solver v0.2.1
+  * Fully remove deps outside of :test env
+  * Remove unused function
+  * Converge requirements from different sources (#960)
+  * Bump to v2.0.1-dev
+  * Release v2.0.0
+  * lock => the lock in solver failure messages
+  * only: :test deps
+  * Update CI (#957)
+  * Use hex deps (#955)
+  * Add :logger to :extra_applications (#954)
+  * Do not override locked deps
+  * Fix dependency repo in mix.lock
+  * New solver (#953)
+  * Fix small typo in `retire` documentation (#952)
+  * Bump elixir requirement to ~> 1.5 (#950)
+  * Document hex owner.add --level option
+  * Fix docs about `repository` permission (#948)
+  * Extract common docs to Hex.Package (#945)
+  * Bump to v2.0.0-dev (#943)
+  * Fix deps on Elixir 1.0 (#942)
+  * Retry fetch requests using different inet (#384) - Make IPv6-only/NAT64 work (#940)
+  * Add rebar3 build for OTP 22 (#939)
+  * Another attempt at fixing opening in browser on Windows
+  * Fix opening up docs on Windows, closes #937
+  * Bump to v1.0.2-dev
+
+-------------------------------------------------------------------
 Tue May 03 08:46:37 UTC 2022 - mvetter@suse.com
 
 - Update to version v1.0.1:
