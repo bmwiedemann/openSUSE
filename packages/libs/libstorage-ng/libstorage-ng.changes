@@ -1,4 +1,43 @@
 --------------------------------------------------------------------
+Tue Aug 1 14:04:41 UTC 2023 - aschnell@suse.com
+
+- Translated using Weblate (Czech) (bsc#1149754)
+- 4.5.133
+
+--------------------------------------------------------------------
+Mon Jul 31 22:30:55 UTC 2023 - aschnell@suse.com
+
+- Translated using Weblate (Japanese) (bsc#1149754)
+- 4.5.132
+
+--------------------------------------------------------------------
+Mon Jul 31 18:26:11 UTC 2023 - aschnell@suse.com
+
+- Translated using Weblate (Slovak) (bsc#1149754)
+- 4.5.131
+
+--------------------------------------------------------------------
+Mon Jul 31 14:36:10 UTC 2023 - freek@opensuse.org
+
+- Translated using Weblate (Dutch) (bsc#1149754)
+- 4.5.130
+
+--------------------------------------------------------------------
+Mon Jul 31 12:00:37 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#943
+- updated pot and po files
+- 4.5.129
+
+--------------------------------------------------------------------
+Mon Jul 31 11:12:10 UTC 2023 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#942
+- support no-automount partition flag
+- fixed include guard
+- 4.5.128
+
+--------------------------------------------------------------------
 Wed Jul 19 08:47:37 UTC 2023 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#941
