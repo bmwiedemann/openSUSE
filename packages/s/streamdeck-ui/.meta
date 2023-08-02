@@ -13,5 +13,5 @@ Key Features
     Auto Reconnect: Automatically and gracefully reconnects, in the case the device is unplugged and replugged in.
     Import/Export: Supports saving and restoring Stream Deck configuration.
 </description>
-  <devel project="devel:languages:python" package="streamdeck-ui"/>
+  <devel project="hardware" package="streamdeck-ui"/>
 </package>

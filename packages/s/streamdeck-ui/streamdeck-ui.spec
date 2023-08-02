@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define pythons python3
 
 Name:           streamdeck-ui
@@ -29,23 +30,24 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
 # SECTION test requirements
 BuildRequires:  python3-CairoSVG >= 2.5.2
-BuildRequires:  python3-filetype >= 1.0.10
 BuildRequires:  python3-Pillow >= 9.4.0
+BuildRequires:  python3-filetype >= 1.0.10
 BuildRequires:  python3-pynput >= 1.7.6
-BuildRequires:  python3-python-xlib >= 0.33
 BuildRequires:  python3-pyside6 >= 6.4.2
+BuildRequires:  python3-python-xlib >= 0.33
 BuildRequires:  python3-streamdeck >= 0.9.3
 # /SECTION
 BuildRequires:  fdupes
-BuildRequires:	udev
+BuildRequires:  udev
 Requires:       python3-CairoSVG >= 2.5.2
-Requires:       python3-filetype >= 1.0.10
 Requires:       python3-Pillow >= 9.4.0
+Requires:       python3-evdev >= 1.3
+Requires:       python3-filetype >= 1.0.10
 Requires:       python3-pynput >= 1.7.6
 Requires:       python3-pyside6 >= 6.4.2
 Requires:       python3-python-xlib >= 0.33
+Requires:       python3-setuptools
 Requires:       python3-streamdeck >= 0.9.3
-Requires:       python3-evdev >= 1.3
 BuildArch:      noarch
 
 %description
@@ -62,7 +64,6 @@ A service, Web Interface, and UI for interacting with your computer using a Stre
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 install -D -m0644 %{S:1} %{buildroot}%{_udevrulesdir}/70-streamdeck.rules
-
 
 %files
 %{_bindir}/streamdeck
