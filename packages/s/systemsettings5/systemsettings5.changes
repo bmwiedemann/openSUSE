@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug  1 11:19:46 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.7
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.27.7
+- Changes since 5.27.6:
+  * Properly show the custom header widget when started with non-QML KCMs
+
+-------------------------------------------------------------------
 Tue Jun 20 17:15:07 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.6
