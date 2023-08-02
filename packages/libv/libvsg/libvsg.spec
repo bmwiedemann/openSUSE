@@ -17,12 +17,12 @@
 
 
 %define _check 0
-%define _vsg_so_nr 13
+%define _vsg_so_nr 14
 %define rname VulkanSceneGraph
 %define glslang_version 20230222+git.e4075496
 
 Name:           libvsg
-Version:        1.0.7
+Version:        1.0.8
 Release:        0
 Summary:        3D graphics toolkit
 License:        MIT
