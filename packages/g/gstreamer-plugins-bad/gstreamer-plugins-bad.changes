@@ -20,7 +20,7 @@ Mon Jun 26 14:36:10 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
   + decklink: Correctly handle SDK strings on macOS and free
     strings after usage on Linux.
   + dvdspu: Make sure enough data is allocated for the available
-    data.
+    data (bsc#1213126, CVE-2023-37329).
   + fdkaacdec: Support up to 5 rear channels.
   + h265parse: Fix framerate handling.
   + kmssink: Add STM32 LTDC and NXP i.MX8M Plus LCDIFv3
