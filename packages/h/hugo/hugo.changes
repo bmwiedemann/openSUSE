@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 01 14:42:06 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 0.116.1:
+  * Fix module config watch regression
+  * deps: Fix Chroma dependency version
+
+-------------------------------------------------------------------
 Mon Jul 31 13:22:19 UTC 2023 - jkowalczyk@suse.com
 
 - Update to version 0.116.0:

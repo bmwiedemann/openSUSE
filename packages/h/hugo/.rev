@@ -738,4 +738,14 @@
   * deps: Upgrade github.com/yuin/goldmark v1.5.4 =&gt; v1.5.5 (forwarded request 1101545 from jfkw)</comment>
     <requestid>1101550</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>58843a6b808974830db76eb20df31e39</srcmd5>
+    <version>0.116.1</version>
+    <time>1690987799</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.116.1:
+  * Fix module config watch regression
+  * deps: Fix Chroma dependency version (forwarded request 1101784 from jfkw)</comment>
+    <requestid>1101786</requestid>
+  </revision>
 </revisionlist>
