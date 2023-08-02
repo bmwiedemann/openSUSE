@@ -41,4 +41,14 @@
 </comment>
     <requestid>1039086</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2bf298953b7d39878653a96129dd1ee3</srcmd5>
+    <version>1.5.0</version>
+    <time>1690987806</time>
+    <user>dimstar_suse</user>
+    <comment>- Add pytest-metadata-3.patch to make it compatible with
+  pytest-metadata 3.0.0 gh#numirias/pytest-json-report#90
+</comment>
+    <requestid>1101889</requestid>
+  </revision>
 </revisionlist>

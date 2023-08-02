@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-json-report
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        A pytest plugin to report test results as JSON files
 License:        MIT
 URL:            https://github.com/numirias/pytest-json-report
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-json-report/pytest-json-report-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM pytest-metadata-3.patch gh#numirias/pytest-json-report#90
+Patch0:         pytest-metadata-3.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements

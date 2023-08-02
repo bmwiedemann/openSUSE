@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  2 06:39:01 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add pytest-metadata-3.patch to make it compatible with
+  pytest-metadata 3.0.0 gh#numirias/pytest-json-report#90
+
+-------------------------------------------------------------------
 Wed Nov 30 10:54:12 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove python_module macro definition
