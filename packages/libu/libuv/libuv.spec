@@ -18,7 +18,7 @@
 
 %define somajor 1
 Name:           libuv
-Version:        1.44.2
+Version:        1.46.0
 Release:        0
 Summary:        Asychronous I/O support library
 License:        MIT

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul 20 19:47:45 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
+
+- Switched keyring from Jameson Nash (vtjnash) to Santiago Gimeno
+  (santigimeno)
+- Update to 1.46.0:
+  * Add some more iouring backend fs ops
+  * work around io_uring IORING_OP_CLOSE bug
+
+- Updates in version 1.45.0:
+  * introduce io_uring support
+  * give thread pool threads an 8 MB stack
+  * change execution order of timers
+
+-------------------------------------------------------------------
 Fri Sep 23 12:56:12 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - skip testsuite on qemu_user_mode emulated builds, no chance
