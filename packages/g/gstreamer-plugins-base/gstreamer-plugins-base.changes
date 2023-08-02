@@ -36,11 +36,16 @@ Mon Jun 26 14:18:54 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
   + opus: Fix potential crash when getting unexpected channel
     position.
   + streamsynchronizer: reset eos on STREAM_START.
-  + subparse: Look for the closing > of a tag after the opening <.
+  + subparse: Look for the closing > of a tag after the opening < 
+    (bsc#1213131, CVE-2023-37328)
   + video: convertframe: Add D3D11 specific conversion path.
   + videometa: Only validate the alignment only when it contains
     some info.
   + video-blend: Fix linking error with C++.
+  + Fixes FLAC file parsing integer overflow remote code execution
+    vulnerability (bsc#1213128, CVE-2023-37327)
+  + Fixes PGS file parsing heap-based buffer overflow remote code
+    execution vulnerability (bsc#1213126, CVE-2023-37329)
 - Rebase reduce-required-meson.patch.
 
 -------------------------------------------------------------------
