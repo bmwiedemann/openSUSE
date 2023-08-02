@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug  1 13:02:20 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 1.5.1:
+  * Bug fixes
+    - Bugfix (regression in 1.5.0): Make it possible to treat
+      ExtraScriptValue as a path. This lets some plugins still work
+      despite the breaking change.
+    - Bugfix (regression in 1.5.0): Prevent errors for special
+      setups that have 3 conflicting files, such as index.html,
+      index.md and README.md (#3314)
+
+-------------------------------------------------------------------
 Thu Jul 27 04:38:25 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 1.5.0:
