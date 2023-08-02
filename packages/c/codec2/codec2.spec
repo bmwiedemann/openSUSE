@@ -16,25 +16,21 @@
 #
 
 
-%define libname lib%{name}-1_1
+%define libname lib%{name}-1_2
 Name:           codec2
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        Low bit rate speech codec
-# octave and asterisk directories contain GPL-2.0 licensed code but its not
-# used build, only used in examples subpackage.
+# octave/plot_fsk_demod_stats.py is GPL-3.0-or-later, unused
 License:        LGPL-2.1-only
 Group:          Productivity/Hamradio/Other
 URL:            https://rowetel.com/codec2.html
-Source:         https://github.com/drowe67/codec2/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        %{name}-rpmlintrc
+Source:         https://github.com/drowe67/codec2/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source2:        baselibs.conf
-BuildRequires:  cmake
-BuildRequires:  gcc-c++
+Patch0:         codec2-1.2.0-install-binaries.patch
+BuildRequires:  c++_compiler
+BuildRequires:  cmake >= 3.13
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(samplerate)
-BuildRequires:  pkgconfig(speex)
-BuildRequires:  pkgconfig(speexdsp)
 
 %description
 Codec 2 is a speech codec designed for communications quality speech
@@ -42,7 +38,6 @@ between 700 and 3200 bit/s.
 
 %package -n %{libname}
 Summary:        Low bit rate speech codec
-License:        LGPL-2.1-only
 Group:          System/Libraries
 
 %description -n %{libname}
@@ -51,7 +46,6 @@ between 700 and 3200 bit/s.
 
 %package devel
 Summary:        Development library for codec2
-License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 
@@ -61,27 +55,31 @@ between 700 and 3200 bit/s.
 
 %package examples
 Summary:        Example code for Codec 2
-License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          Productivity/Hamradio/Other
-Requires:       %{name}-devel = %{version}
 BuildArch:      noarch
 
 %description examples
 Example code for Codec 2, including test voices and matlab/octave files.
 
 %prep
-%autosetup
+%autosetup -p1
+rm -rf octave/
 
 %build
 %cmake \
-  -DINSTALL_EXAMPLES=TRUE \
   -DUNITTEST=FALSE
 %cmake_build
 
 %install
 %cmake_install
+mkdir -p %{buildroot}%{_datadir}/%{name}
+cp -rv raw wav %{buildroot}%{_datadir}/%{name}/
 
 %ldconfig_scriptlets -n %{libname}
+
+%files
+%license COPYING
+%{_bindir}/*
 
 %files -n %{libname}
 %license COPYING
@@ -89,6 +87,7 @@ Example code for Codec 2, including test voices and matlab/octave files.
 %{_libdir}/libcodec2.so.*
 
 %files devel
+%license COPYING
 %{_includedir}/*
 %dir %{_libdir}/cmake/codec2
 %{_libdir}/cmake/codec2/codec2-config-relwithdebinfo.cmake
@@ -97,6 +96,7 @@ Example code for Codec 2, including test voices and matlab/octave files.
 %{_libdir}/pkgconfig/%{name}.pc
 
 %files examples
-%{_datadir}/%{name}/
+%license COPYING
+%{_datadir}/%{name}
 
 %changelog

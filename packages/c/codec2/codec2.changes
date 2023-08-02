@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 31 21:17:06 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.2.0
+  * sources reorganized upstream
+- package the command binaries
+  codec2-1.2.0-install-binaries.patch
+
+-------------------------------------------------------------------
 Thu Jun 15 21:10:13 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 1.1.1
