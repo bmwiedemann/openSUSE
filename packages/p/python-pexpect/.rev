@@ -352,4 +352,13 @@
     <comment></comment>
     <requestid>1081996</requestid>
   </revision>
+  <revision rev="42" vrev="11">
+    <srcmd5>fb66b2434524cda1f95f84dc01dd058b</srcmd5>
+    <version>4.8.0</version>
+    <time>1690987673</time>
+    <user>dimstar_suse</user>
+    <comment>- Clean up the SPEC file
+</comment>
+    <requestid>1101543</requestid>
+  </revision>
 </revisionlist>

@@ -28,9 +28,10 @@ Patch0:         no-python-binary.patch
 # Newer asyncio / python 3.11 support
 Patch1:         https://github.com/pexpect/pexpect/pull/715.patch
 Patch2:         https://github.com/pexpect/pexpect/pull/684.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module ptyprocess}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 # For test command calls
 # For bash validation
 BuildRequires:  bash
@@ -60,30 +61,31 @@ find examples -type f -name "*.py" -exec chmod 644 {} \;
 sed -i '1 {/^#!/d}' pexpect/FSM.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
+echo "set enable-bracketed-paste off" > .inputrc
+export INPUTRC=$(readlink -f .inputrc) TRAVIS=true
+# test_pager_as_cat - needs manpages that would pull extra deps
+# test_interrupt, test_multiple_interrupts - hangs under linux-user emulation
 # test_bash https://github.com/pexpect/pexpect/issues/568
 # test_large_stdout_stream - random
-# test_pager_as_cat - needs manpages that would pull extra deps
 # test_spawn_uses_env - seen failed on s390x
 # test_forced_terminate - seen failed on armv7l
 # test_interact_escape_None - seen failed on s390x
-# test_interrupt, test_multiple_interrupts - hangs under linux-user emulation
 # test_existing_spawn - fails under linux-user emulation
 # test_existing_spawn fails on s390x - gh#pexpect/pexpect#750
-%pytest -k "not (test_bash or test_large_stdout_stream or test_pager_as_cat or test_spawn_uses_env or test_forced_terminate or test_interact_escape_None or test_existing_spawn %{?qemu_user_space_build: or test_interrupt or test_multiple_interrupts})"
+%pytest -k "not (test_pager_as_cat %{?qemu_user_space_build: or test_interrupt or test_multiple_interrupts})"
 
 %files %{python_files}
 %license LICENSE
-%doc doc/
-%doc examples/
-%{python_sitelib}/pexpect/
-%{python_sitelib}/pexpect-%{version}-py*.egg-info
+%doc doc examples
+%{python_sitelib}/pexpect
+%{python_sitelib}/pexpect-%{version}*-info
 
 %changelog
