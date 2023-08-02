@@ -18,10 +18,9 @@
 
 %define cpan_name Business-ISBN-Data
 Name:           perl-Business-ISBN-Data
-Version:        20230719.1.0
+Version:        20230729.1.0
 Release:        0
-%define cpan_version 20230719.001
-Provides:       perl(Business::ISBN::Data) = 20230719.1.0
+%define cpan_version 20230729.001
 License:        Artistic-2.0
 Summary:        Data pack for Business::ISBN
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -32,6 +31,7 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
 BuildRequires:  perl(Test::More) >= 1
+Provides:       perl(Business::ISBN::Data) = 20230729.1.0
 %define         __perllib_provides /bin/true
 %{perl_requires}
 
