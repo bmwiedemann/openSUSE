@@ -1,0 +1,11 @@
+<package name="futuresql" project="openSUSE:Factory">
+  <title>Library for accessing SQLite</title>
+  <description>A library for accessing SQLite (and other databases) in Qt projects without
+blocking.
+
+It also features a migration system and automatic result deserialization.
+
+</description>
+  <devel project="KDE:Qt6" package="futuresql"/>
+  <url>https://www.kde.org</url>
+</package>
