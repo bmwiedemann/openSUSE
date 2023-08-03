@@ -1,7 +1,7 @@
 #
 # spec file for package system-config-printer
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -155,9 +155,16 @@ automatically configured when plugged on the computer.
 %patch100 -p1
 
 %build
+if pkg-config --exists "cups"; then
 %configure \
         --with-udev-rules \
         --with-systemdsystemunitdir=%{_unitdir}
+else
+%configure \
+        --with-cups-serverbin-dir='/usr/lib/cups/' \
+        --with-udev-rules \
+        --with-systemdsystemunitdir=%{_unitdir}
+fi
 
 %install
 %make_install dbusdir=%{_datadir}/dbus-1/system.d/

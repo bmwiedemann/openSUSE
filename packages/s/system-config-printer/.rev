@@ -839,4 +839,12 @@
     <comment>- Fix printer icon location/type, needed due to changes in Adwaita. (forwarded request 1073123 from iznogood)</comment>
     <requestid>1073244</requestid>
   </revision>
+  <revision rev="103" vrev="3">
+    <srcmd5>d30dfb8a31598aa236382126ff9919ee</srcmd5>
+    <version>1.5.18</version>
+    <time>1691076441</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1101929</requestid>
+  </revision>
 </revisionlist>
