@@ -134,7 +134,7 @@
 %endif
 
 Name:           go1.19
-Version:        1.19.11
+Version:        1.19.12
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause

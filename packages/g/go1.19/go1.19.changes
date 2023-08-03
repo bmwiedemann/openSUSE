@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug  1 20:35:02 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.19.12 (released 2023-08-01) includes a security fix to the
+  crypto/tls package, as well as bug fixes to the assembler and the
+  compiler.
+  Refs boo#1200441 go1.19 release tracking
+  CVE-2023-29409
+  * go#61579 go#61460 boo#1213880 security: fix CVE-2023-29409 crypto/tls: restrict RSA keys in certificates to <= 8192 bits
+  * go#61319 cmd/compile: ppc64le: sign extension issue in go 1.21rc2
+  * go#61448 net: TestInterfaceArrivalAndDepartureZoneCache is broken on linux-arm64
+  * go#61470 cmd/compile: failed to make Go on riscv64 CPU with numa
+
+-------------------------------------------------------------------
 Tue Jul 11 17:50:52 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.19.11 (released 2023-07-11) includes a security fix to the
