@@ -326,4 +326,22 @@ Setting up scap-security-guide (0.1.56-30.1) ... (forwarded request 896944 from 
   revert patch that breaks the SLE hardening (bsc#1213691)</comment>
     <requestid>1101012</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>05b93415c42bb710804449d1e0548ab3</srcmd5>
+    <version>0.1.69</version>
+    <time>1691076631</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.1.69 (jsc#ECO-3319)
+  - Introduce a JSON build manifest (#10761)
+  - Introduce a script to compare ComplianceAsCode versions (#10768)
+  - Introduce CCN profiles for RHEL9 (#10860)
+  - Map rules to components (#10609)
+  - products/anolis23: supports Anolis OS 23 (#10548)
+  - Render components to HTML (#10709)
+  - Store rendered control files (#10656)
+  - Test and use rules to components mapping (#10693)
+  - Use distributed product properties (#10554)
+- 0001-Revert-fix-aide-remediations-add-crontabs.patch: removed, upstream</comment>
+    <requestid>1102115</requestid>
+  </revision>
 </revisionlist>

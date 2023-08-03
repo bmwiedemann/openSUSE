@@ -42,18 +42,15 @@
 %endif
 
 Name:           scap-security-guide
-Version:        0.1.68
+Version:        0.1.69
 Release:        0
 Summary:        XCCDF files for SUSE Linux and openSUSE
 License:        BSD-3-Clause
 Group:          Productivity/Security
 URL:            https://github.com/ComplianceAsCode/content
 %if "%{_vendor}" == "debbuild"
-Packager:       SUSE Security Team <security@suse.de>
 %endif
 Source:         https://github.com/ComplianceAsCode/content/archive/v%{version}.tar.gz
-# upstream fix, will be in 0.69
-Patch1:         0001-Revert-fix-aide-remediations-add-crontabs.patch
 
 # explicit require what is needed by the detection logic in the scripts
 Requires:       coreutils
@@ -192,7 +189,6 @@ Note that the included profiles are community supplied and not officially suppor
 
 %prep
 %setup -q -n content-%version
-%autopatch -p1
 
 %build
 cd build
@@ -234,6 +230,7 @@ cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
          -DSSG_PRODUCT_WRLINUX8=OFF \
          -DSSG_PRODUCT_WRLINUX1019=OFF \
          -DSSG_PRODUCT_ANOLIS8=OFF \
+         -DSSG_PRODUCT_ANOLIS23=OFF \
          ../
 make
 
