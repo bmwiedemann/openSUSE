@@ -21,7 +21,7 @@
 %define _kf5_appstreamdir %{_kf5_sharedir}/appdata
 %endif
 Name:           labplot-kf5
-Version:        2.10.0
+Version:        2.10.1
 Release:        0
 Summary:        KDE Framework 5 data analysis and visualization application
 License:        GPL-2.0-or-later
