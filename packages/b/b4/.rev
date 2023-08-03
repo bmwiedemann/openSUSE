@@ -511,4 +511,12 @@
   * ez-trailers: don't crash when there are no follow-ups received</comment>
     <requestid>1095311</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>b5a210cb58824f0f5c5c1bee608e7150</srcmd5>
+    <version>0.12.3</version>
+    <time>1691076637</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1102126</requestid>
+  </revision>
 </revisionlist>
