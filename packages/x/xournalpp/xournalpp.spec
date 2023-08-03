@@ -17,15 +17,15 @@
 
 
 Name:           xournalpp
-Version:        1.1.3
+Version:        1.2.0
 Release:        0
 Summary:        Notetaking software designed around a tablet
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://github.com/xournalpp/xournalpp
 Source0:        https://github.com/xournalpp/xournalpp/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM xournalpp-include.patch -- Add missing include
-Patch0:         xournalpp-include.patch
+# PATCH-FIX-UPSTREAM xournalpp-return.patch -- Fix control reaches end of non-void function
+Patch0:         xournalpp-return.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -43,6 +43,7 @@ BuildRequires:  pkgconfig(poppler-glib)
 BuildRequires:  pkgconfig(portaudiocpp)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(zlib)
+BuildRequires:  pkgconfig(gtksourceview-4)
 Recommends:     webp-pixbuf-loader
 Recommends:     tex(scontents.tex)
 Recommends:     tex(standalone.tex)
@@ -84,9 +85,6 @@ It supports pen input, e.g. Wacom tablets.
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/metainfo/*.appdata.xml
 %{_datadir}/mime/packages/*.xml
-%dir %{_datadir}/mimelnk
-%dir %{_datadir}/mimelnk/application
-%{_datadir}/mimelnk/application/*.desktop
 %dir %{_datadir}/thumbnailers
 %{_datadir}/thumbnailers/*.thumbnailer
 %{_datadir}/xournalpp/

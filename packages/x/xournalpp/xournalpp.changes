@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug  2 06:11:10 UTC 2023 - thod_@gmx.de
+
+- update to 1.2.0:
+  * Added PDF text selection tools
+  * Added Setsquare Tool and Compass Tool
+  * Many more changes; for the full list, see
+    https://github.com/xournalpp/xournalpp/blob/release-1.2/CHANGELOG.md
+- remove xournalpp-include.patch, fixed upstream
+- Add xournalpp-return.patch: Fix control reaches end of non-void function
+
+-------------------------------------------------------------------
 Wed Apr 26 13:24:19 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add xournalpp-include.patch: Add missing include exposed by
