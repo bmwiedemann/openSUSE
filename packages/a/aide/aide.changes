@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug  3 08:40:38 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.18.6:
+    * Fix double free() during report generation
+    * Improve handling of ACL errors
+
+-------------------------------------------------------------------
 Mon Jul  3 08:30:54 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.18.5:

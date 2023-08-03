@@ -17,7 +17,7 @@
 
 
 Name:           aide
-Version:        0.18.5
+Version:        0.18.6
 Release:        0
 Summary:        Advanced Intrusion Detection Environment
 License:        GPL-2.0-or-later
