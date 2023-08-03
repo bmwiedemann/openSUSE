@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Aug 02 07:53:35 UTC 2023 - aplanas@suse.com
+
+- Add BSD-3-Clause license
+- Update to version v7.4.0 (CVE-2023-38200, bsc#1213310):
+  * Monthly release (7.4.0)
+  * codestyle: Fix tsa_rfc3161.py and have it pyright checked
+  * installer.sh: support Anolis OS whose ID is anolis
+  * tpm_util: Add the BSD license to the file due to functions from TPM 2 code
+  * codestyle: Have pyright check keylime/da directory
+  * docs: add missing options for verifier, remove vactivate
+  * codestyle: Have pyright check mba/elchecking/ except for example.py
+  * registrar_common: fix style complain
+  * registrar_common: fix missing select and sock
+  * Changes to script create_runtime_policy.sh, fixes #1426
+  * tenant: non-zero exit code in case of error
+  * mba: making MBA policy parser and checker pluggable
+  * create_runtime_policy: fix bash typo
+  * Extend Registrar SSL socket to be non-blocking
+  * Several improvements for the "create_runtime_policy.sh" script
+  * tpm_util: Replace a logger.error with an Exception in case of invalid signature
+  * tpm_util: Remove useless comparison of always identical hashes
+  * tests: Disable Packit CI on Rawhide due to infra issues
+  * adding kubectl to tenant docker image
+
+-------------------------------------------------------------------
 Wed Jul 12 14:14:35 UTC 2023 - aplanas@suse.com
 
 - Drop migrations_use_sa_text_for_raw_SQL.patch, merged upstream
