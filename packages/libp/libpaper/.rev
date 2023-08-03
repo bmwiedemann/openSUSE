@@ -64,4 +64,14 @@
 </comment>
     <requestid>1080490</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>89f683881c2501514cd089d726c65e79</srcmd5>
+    <version>2.1.1</version>
+    <time>1691076444</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.1:
+  * This release fixes the -N flag of paperconf.
+</comment>
+    <requestid>1101982</requestid>
+  </revision>
 </revisionlist>
