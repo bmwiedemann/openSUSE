@@ -1,7 +1,22 @@
 -------------------------------------------------------------------
+Wed Aug 02 12:12:14 UTC 2023 - tiwai@suse.com
+
+- Update to version 20230731 (git commit 253cc179d849):
+  * amdgpu: Update DMCUB for DCN314 & Yellow Carp
+  * ice: add LAG-supporting DDP package
+  * i915: Update MTL DMC to v2.13
+  * i915: Update ADLP DMC to v2.20
+  * cirrus: Add CS35L41 firmware for Dell Oasis Models
+  * copy-firmware: Fix linking directories when using compression
+  * copy-firmware: Fix test: unexpected operator
+  * qcom: sc8280xp: LENOVO: remove directory sym link
+  * qcom: sc8280xp: LENOVO: Remove execute bits
+
+-------------------------------------------------------------------
 Mon Jul 24 14:47:26 UTC 2023 - tiwai@suse.com
 
 - Update to version 20230724 (git commit 59fbffa9ec8e):
+  including the amd-ucode update for "ZenBleed" (CVE-2023-20593, bsc#1213286)
   * amdgpu: update VCN 4.0.0 firmware
   * amdgpu: add initial SMU 13.0.10 firmware
   * amdgpu: add initial SDMA 6.0.3 firmware
