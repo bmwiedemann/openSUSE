@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Aug  1 19:25:15 UTC 2023 - Martin Liška <martin.liska@hey.com>
+
+* Add use-FORTIFY_SOURCE-from-distribution.patch and use FS settings from distribution
+(we use either =2 or =3).
+
+-------------------------------------------------------------------
+Tue Aug  1 01:27:35 UTC 2023 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Update to 2021.10.0:
+  * Since C++17, parallel algorithms and Flow Graph nodes are allowed to accept
+    pointers to the member functions and member objects as the user-provided
+    callables.
+  * Added missed member functions, such as assignment operators and swap function,
+    to the concurrent_queue and concurrent_bounded_queue containers.
+
+-------------------------------------------------------------------
 Thu Jun 15 08:34:01 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2021.9.0:

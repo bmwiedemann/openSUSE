@@ -2,6 +2,7 @@
 # spec file for package tbb
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2023 Alessandro de Oliveira Faria (A.K.A. CABELO)
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -40,7 +41,7 @@
 %bcond_with python3
 %endif
 Name:           tbb
-Version:        2021.9.0
+Version:        2021.10.0
 Release:        0
 Summary:        Threading Building Blocks (TBB)
 License:        Apache-2.0
@@ -51,6 +52,7 @@ Source99:       tbb-rpmlintrc
 # PATCH-FIX-OPENSUSE cmake-remove-include-path.patch -- openCV include error
 Patch2:         cmake-remove-include-path.patch
 Patch4:         add-cmake-check-for-libatomic-requirement-when-build.patch
+Patch5:         use-FORTIFY_SOURCE-from-distribution.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
