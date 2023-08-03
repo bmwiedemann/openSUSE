@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug  3 06:29:11 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-pkg_resources.patch:
+  * Stop using pkg_resources.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Tue May  9 13:39:14 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - add sle15_python_module_pythons

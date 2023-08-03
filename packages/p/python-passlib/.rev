@@ -226,4 +226,14 @@
     <comment></comment>
     <requestid>1085831</requestid>
   </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>735b51c4e2d8828a9b0bc363525f73a9</srcmd5>
+    <version>1.7.4</version>
+    <time>1691076565</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch no-pkg_resources.patch:
+  * Stop using pkg_resources.
+- Switch to pyproject macros.</comment>
+    <requestid>1102111</requestid>
+  </revision>
 </revisionlist>

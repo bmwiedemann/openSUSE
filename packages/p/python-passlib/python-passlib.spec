@@ -32,10 +32,13 @@ Version:        1.7.4
 Release:        0
 Summary:        Password hashing framework supporting over 20 schemes
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://foss.heptapod.net/python-libs/passlib
 Source:         https://files.pythonhosted.org/packages/source/p/passlib/passlib-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Posted to https://foss.heptapod.net/python-libs/passlib/-/issues/185
+Patch0:         no-pkg_resources.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
@@ -64,14 +67,14 @@ found in %{_sysconfdir}/shadow, and provide password hashing for
 applications.
 
 %prep
-%setup -q -n passlib-%{version}
+%autosetup -p1 -n passlib-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -87,7 +90,7 @@ applications.
 %license LICENSE
 %doc README
 %{python_sitelib}/passlib
-%{python_sitelib}/passlib-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/passlib-%{version}.dist-info
 %endif
 
 %changelog
