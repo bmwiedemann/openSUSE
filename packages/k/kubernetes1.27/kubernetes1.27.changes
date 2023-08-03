@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug  1 12:55:16 UTC 2023 - Egbert Eich <eich@suse.com>
+
+- Restore the correct content of the  kublet wrapper script (boo#1213829).
+
+-------------------------------------------------------------------
 Wed Jul 26 11:03:03 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update: `BuildRequires:  go >= 1.20.6`
