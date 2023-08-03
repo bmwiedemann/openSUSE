@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Jul 31 10:14:57 UTC 2023 - llyyr.public@gmail.com
+
+- Remove waf build: removed upstream
+- Make meson a hard requirement now
+- Bump libplacebo requirement to 6.292.0 for Tumbleweed
+- Add patch 0001-Revert-meson-bump-required-version-to-0.62.patch
+  to lower meson requirement for Leap
+- Update to version 0.36.0+git.20230730.1bbc7a2c:
+  * ao_sndio: use sio_flush() to improve controls responsiveness
+  * draw_bmp: fix overflowing coordinates in mark_rcs
+  * Revert "audio: add AOCONTROL_UPDATE_MEDIA_ROLE"
+  * Revert "ao_pipewire: handle AOCONTROL_UPDATE_MEDIA_ROLE"
+  * meson: look for linux/input-event-codes.h with libwayland flags
+  * version.py: fix build date
+  * options: restore old default sub selection behavior
+  * vo_gpu_next: fix assertion on wayland
+  * vo_gpu_next: delay swapchain submit until flip_frame()
+  * path-win: move state directory to %LOCALAPPDATA%
+  * path-win: add subdirectory for cache
+  * Revert "ci/msys2: double down on running meson through python3.11"
+  * ad_spdif: fix segfault due to early deallocation
+  * test: enhance libmpv test
+  * player/video: check for track and decoder existence
+  * video_writer: fix gamma for YUV screenshots
+  * image_writer: log pixfmt conversion
+  * encode_lavc: fix leak of codecpar
+  * zimg: fix abort on subsampled input with odd heights
+  * demux_mkv: add missing space to log msg
+  * build: remove unneeded libdl requirement for vaapi
+  * build: refactor vaapi handling
+  * ci/mingw: reduce git clone depth to 1
+  * ci/mingw: use ccache
+  * ci/mingw: disable fail-fast
+  * ci/mingw: check if binary is runnable before packaging
+  * language-posix: as a fallback, treat "C" as "en"
+  * msg: print MSGL_WARN and higher error messages to stderr
+  * build: vaapi-x-egl is not used anywhere, remove it
+  * build: vaapi-egl should explicitly depend on egl
+  * build: vaapi-drm and vaapi-wayland do not depend on egl
+  * ci/mingw: update luajit to fix i686 crashes
+  * wayland: restore xkb_keysym_to_utf8 handling
+  * build: internally rename gl-wayland to egl-wayland
+  * waf: remove waf as a build system
+
+-------------------------------------------------------------------
 Sun Jul 23 17:18:43 UTC 2023 - llyyr.public@gmail.com
 
 - Update to version 0.36.0+git.20230723.60a26324:

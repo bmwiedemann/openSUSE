@@ -19,27 +19,24 @@
 #
 
 
-%define _waf_ver 2.0.24
 %define lname   libmpv2
 Name:           mpv
-Version:        0.36.0+git.20230723.60a26324
+Version:        0.36.0+git.20230730.1bbc7a2c
 Release:        0
 Summary:        Advanced general-purpose multimedia player
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            http://mpv.io
 Source:         %{name}-%{version}.tar.xz
-Source1:        https://waf.io/waf-%{_waf_ver}
 Source2:        %{name}.changes
 # PATCH-FIX-OPENSUSE do not require equal libav versions, obs rebuilds as needed
 Patch0:         mpv-make-ffmpeg-version-check-non-fatal.patch
+Patch1:         0001-Revert-meson-bump-required-version-to-0.62.patch
 BuildRequires:  bash
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libjpeg-devel
 BuildRequires:  linux-kernel-headers
-%if 0%{?suse_version} > 1500
 BuildRequires:  meson >= 0.60.3
-%endif
 # Needed any lua to convert the bash-completion
 BuildRequires:  lua
 BuildRequires:  perl
@@ -116,22 +113,27 @@ Conflicts:      mpv-plugin-mpris < 0.4
 # Obsoletion of mplayer2 that is dead for 2 years now
 Provides:       mplayer2 = 20140101
 Obsoletes:      mplayer2 < 20140101
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
-BuildRequires:  pkgconfig(libplacebo) >= 4.157
+# Use libplacebo v5.264 for Leap 15.5
+%if 0%{?sle_version} >= 150400 && 0%{?is_opensuse}
+BuildRequires:  (pkgconfig(libplacebo) >= 5 with pkgconfig(libplacebo) < 6.292.0)
+%endif
+# Use libplacebo v6.292 for Tumbleweed
+%if 0%{?suse_version} >= 1550
+BuildRequires:  pkgconfig(libplacebo) >= 6.292.0
 %endif
 %if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(mujs)
 %endif
 BuildRequires:  pkgconfig(libva-wayland) >= 1.1.0
 BuildRequires:  pkgconfig(vulkan) >= 1.0.61
-BuildRequires:  pkgconfig(wayland-client) >= 1.15.0
-BuildRequires:  pkgconfig(wayland-cursor) >= 1.15.0
+BuildRequires:  pkgconfig(wayland-client) >= 1.20.0
+BuildRequires:  pkgconfig(wayland-cursor) >= 1.20.0
 BuildRequires:  pkgconfig(wayland-egl) >= 9.0.0
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.15
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.25
 BuildRequires:  pkgconfig(wayland-scanner)
 BuildRequires:  pkgconfig(wayland-server)
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
-BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.19
+BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.48
 %endif
 # JIT for lua.
 %ifarch aarch64 %{ix86} x86_64
@@ -191,10 +193,7 @@ features.
 %prep
 %setup -q
 %patch0 -p1
-
-# As we downloaded specific waf version we need to put and prepare it in place.
-cp -f %{SOURCE1} waf
-chmod a+x waf
+%patch1 -p1
 
 # I hate UNKNOWN so lets put decent info there.
 MODIFIED="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{SOURCE2}")"
@@ -202,7 +201,6 @@ DATE="$(date -d "$MODIFIED" "+%%b %%e %%Y")"
 sed -i "s|UNKNOWN|$DATE|g;s|VERSION|\"%{version}\"|g" common/version.c
 
 %build
-%if 0%{?suse_version} > 1500
 # We don't want to rebuild all the time.
 myopts=" -Dbuild-date=false"
 # Disable pipwire for Leap because of build error
@@ -254,59 +252,12 @@ myopts+=" -Dvulkan-interop=disabled"
   -Dwasapi=disabled \
   -Dwin32-internal-pthreads=disabled \
   ${myopts}
-
 %meson_build
-%else
-# SDL: disable as it is pointless to have on Linux, it is Windows/OS X fallback.
-myopts="--disable-sdl2"
-# We don't want to rebuild all the time.
-myopts+=" --disable-build-date"
-# Debug just adds -g and we do that over optflags anyway.
-myopts+=" --disable-debug"
-# Disable pipwire for Leap because of build error
-%if 0%{?suse_version} <= 1500
-myopts+=" --disable-pipewire"
-%endif
-# Vulkan support needs recent libplacebo
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150300
-myopts+=" --enable-vulkan"
-%endif
-export CFLAGS="%{optflags}"
-python3 ./waf configure \
-  --prefix="%{_prefix}"              \
-  --bindir="%{_bindir}"              \
-  --mandir="%{_mandir}"              \
-  --libdir="%{_libdir}"              \
-  --docdir="%{_docdir}/%{name}"      \
-  --confdir="%{_sysconfdir}/%{name}" \
-  --enable-cdda                      \
-  --enable-dvdnav                    \
-  --enable-libmpv-shared             \
-  --enable-manpage-build             \
-  --enable-libarchive                \
-  --enable-dvbin                     \
-  --enable-drm                       \
-  --enable-x11                       \
-  --enable-openal                    \
-  --enable-wayland                   \
-  --enable-gl-wayland                \
-  --enable-gl-x11                    \
-  --enable-egl-x11                   \
-  --enable-egl-drm                   \
-  --enable-zimg                      \
-  ${myopts}
-
-python3 ./waf build --verbose %{?_smp_mflags}
-%endif
 
 %install
-%if 0%{?suse_version} > 1500
 %meson_install
 install -dm755 %{buildroot}%{_defaultdocdir}
 mv %{buildroot}%{_datadir}/doc/mpv %{buildroot}%{_defaultdocdir}/%{name}
-%else
-python3 ./waf --destdir=%{buildroot} install
-%endif
 
 install -D -m 0644 etc/input.conf %{buildroot}%{_sysconfdir}/%{name}/input.conf
 install -D -m 0644 etc/mpv.conf %{buildroot}%{_sysconfdir}/%{name}/mpv.conf

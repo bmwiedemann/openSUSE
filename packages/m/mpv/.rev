@@ -2028,4 +2028,53 @@
     <comment></comment>
     <requestid>1100906</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>fb51bbe9acbd546dc82c58c85f2c1553</srcmd5>
+    <version>0.36.0+git.20230730.1bbc7a2c</version>
+    <time>1691076454</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove waf build: removed upstream
+- Make meson a hard requirement now
+- Bump libplacebo requirement to 6.292.0 for Tumbleweed
+- Add patch 0001-Revert-meson-bump-required-version-to-0.62.patch
+  to lower meson requirement for Leap
+- Update to version 0.36.0+git.20230730.1bbc7a2c:
+  * ao_sndio: use sio_flush() to improve controls responsiveness
+  * draw_bmp: fix overflowing coordinates in mark_rcs
+  * Revert &quot;audio: add AOCONTROL_UPDATE_MEDIA_ROLE&quot;
+  * Revert &quot;ao_pipewire: handle AOCONTROL_UPDATE_MEDIA_ROLE&quot;
+  * meson: look for linux/input-event-codes.h with libwayland flags
+  * version.py: fix build date
+  * options: restore old default sub selection behavior
+  * vo_gpu_next: fix assertion on wayland
+  * vo_gpu_next: delay swapchain submit until flip_frame()
+  * path-win: move state directory to %LOCALAPPDATA%
+  * path-win: add subdirectory for cache
+  * Revert &quot;ci/msys2: double down on running meson through python3.11&quot;
+  * ad_spdif: fix segfault due to early deallocation
+  * test: enhance libmpv test
+  * player/video: check for track and decoder existence
+  * video_writer: fix gamma for YUV screenshots
+  * image_writer: log pixfmt conversion
+  * encode_lavc: fix leak of codecpar
+  * zimg: fix abort on subsampled input with odd heights
+  * demux_mkv: add missing space to log msg
+  * build: remove unneeded libdl requirement for vaapi
+  * build: refactor vaapi handling
+  * ci/mingw: reduce git clone depth to 1
+  * ci/mingw: use ccache
+  * ci/mingw: disable fail-fast
+  * ci/mingw: check if binary is runnable before packaging
+  * language-posix: as a fallback, treat &quot;C&quot; as &quot;en&quot;
+  * msg: print MSGL_WARN and higher error messages to stderr
+  * build: vaapi-x-egl is not used anywhere, remove it
+  * build: vaapi-egl should explicitly depend on egl
+  * build: vaapi-drm and vaapi-wayland do not depend on egl
+  * ci/mingw: update luajit to fix i686 crashes
+  * wayland: restore xkb_keysym_to_utf8 handling
+  * build: internally rename gl-wayland to egl-wayland
+  * waf: remove waf as a build system
+</comment>
+    <requestid>1101532</requestid>
+  </revision>
 </revisionlist>
