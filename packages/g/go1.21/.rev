@@ -27,4 +27,15 @@
   Refs boo#1212475 go1.21 release tracking (forwarded request 1098741 from jfkw)</comment>
     <requestid>1098742</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4dce029cddd245d64b56e89df761a72a</srcmd5>
+    <version>1.21rc4</version>
+    <time>1691076504</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.21rc4 (released 2023-08-02) is a release candidate version of
+  go1.21 cut from the master branch at the revision tagged
+  go1.21rc4.
+  Refs boo#1212475 go1.21 release tracking (forwarded request 1102035 from jfkw)</comment>
+    <requestid>1102036</requestid>
+  </revision>
 </revisionlist>
