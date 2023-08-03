@@ -55,4 +55,13 @@
     <comment></comment>
     <requestid>1100843</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>a6c7b2eba71a3ecf1a50c36f48eb5951</srcmd5>
+    <version>1.26.7</version>
+    <time>1691076473</time>
+    <user>dimstar_suse</user>
+    <comment>- Restore the correct content of the  kublet wrapper script (boo#1213829).
+</comment>
+    <requestid>1102002</requestid>
+  </revision>
 </revisionlist>
