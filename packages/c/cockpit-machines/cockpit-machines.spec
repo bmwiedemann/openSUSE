@@ -17,7 +17,7 @@
 
 
 Name:           cockpit-machines
-Version:        292
+Version:        295
 Release:        0
 Summary:        Cockpit user interface for virtual machines
 License:        LGPL-2.1-or-later AND MIT
@@ -28,7 +28,6 @@ Source:         https://github.com/cockpit-project/cockpit-machines/archive/refs
 Source10:       package-lock.json
 Source11:       node_modules.spec.inc
 %include %_sourcedir/node_modules.spec.inc
-Patch1:         1088.patch
 Patch10:        hide-docs.patch
 Patch11:        load-css-overrides.patch
 BuildArch:      noarch
@@ -61,10 +60,7 @@ Cockpit component for managing virtual machines.
 If "virt-install" is installed, you can also create new virtual machines.
 
 %prep
-%setup
-%patch1 -p1
-%patch10 -p1
-%patch11 -p1
+%autosetup -p1
 rm -f package-lock.json
 local-npm-registry %{_sourcedir} install --with=dev --legacy-peer-deps || ( find ~/.npm/_logs -name '*-debug.log' -print0 | xargs -0 cat; false)
 
