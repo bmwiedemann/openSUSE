@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug  2 07:50:07 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Fix check-tag test failled
+  [0001-ro-MD-ro-to-get-make-check-to-succeed.patch]
+- Version update to 0.6.4
+  Replace the word of 'master' to 'primary'
+  trivial update
+  Stop shipping ChangeLog
+  Fix build issue for docs
+
+-------------------------------------------------------------------
 Wed May 19 15:24:07 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Specify -std=gnu99 in order to be able to build with older
