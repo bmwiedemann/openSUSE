@@ -96,4 +96,25 @@
 </comment>
     <requestid>1099562</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c6a3ec092b96c6c1462c8780a7804a19</srcmd5>
+    <version>115.0.5790.102</version>
+    <time>1691076519</time>
+    <user>dimstar_suse</user>
+    <comment>- ungoogled-chromium 115.0.5790.102:
+  * stability fix
+- Add build fixes on Leap:
+  * chromium-115-emplace_back_on_vector-c++20.patch
+  * chromium-115-compiler-SkColor4f.patch
+  * chromium-115-workaround_clang_bug-structured_binding.patch
+  * chromium-115-add_BoundSessionRefreshCookieFetcher::Result.patch
+- adjust chromium-115-lp155-typename.patch
+- drop chromium-114-workaround_clang_bug-structured_binding.patch
+- Specify re2 build dependency in a way that makes Leap packages
+  build in devel project and in Maintenance 
+- Add conflicts to chormedriver
+- change chromedriver package name
+</comment>
+    <requestid>1102076</requestid>
+  </revision>
 </revisionlist>

@@ -20,7 +20,6 @@
 
 %define rname chromium
 %define outputdir out
-%bcond_with is_beta # CHANNEL SWITCH
 # bsc#1108175
 %define __provides_exclude ^lib.*\\.so.*$
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
@@ -50,11 +49,12 @@
 %bcond_with ffmpeg_51
 %bcond_with qt6
 %endif
-%bcond_with system_avif
 # LLVM version
 %define llvm_version 15
 # GCC version
 %define gcc_version 12
+%bcond_with is_beta # CHANNEL SWITCH
+%bcond_with system_avif
 # Compiler
 %bcond_without clang
 # Chromium built with GCC 11 and LTO enabled crashes (boo#1194055)
@@ -69,7 +69,6 @@
 %else
 %define ffmpeg_version 58
 %endif
-%bcond_without chromedriver
 # Package names
 %if %{with is_beta}
 %define chromedriver_name %{name}-chromedriver
@@ -79,7 +78,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           ungoogled-chromium%{n_suffix}
-Version:        115.0.5790.98
+Version:        115.0.5790.102
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -127,15 +126,15 @@ Patch210:       chromium-110-system-libffi.patch
 Patch211:       gcc13-fix.patch
 Patch214:       chromium-113-webview-namespace.patch
 Patch215:       chromium-113-webauth-include-variant.patch
-Patch217:       chromium-114-workaround_clang_bug-structured_binding.patch
+Patch217:       chromium-115-workaround_clang_bug-structured_binding.patch
 Patch218:       chromium-114-lld-argument.patch
 Patch219:       chromium-115-skia-include.patch
 Patch220:       chromium-115-verify_name_match-include.patch
 Patch221:       chromium-115-lp155-typename.patch
 Patch222:       chromium-115-Qt-moc-version.patch
-%if 0%{?sle_version} == 150400
-Patch300:       chromium-114-revert-av1enc-lp154.patch
-%endif
+Patch223:       chromium-115-emplace_back_on_vector-c++20.patch
+Patch224:       chromium-115-compiler-SkColor4f.patch
+Patch225:       chromium-115-add_BoundSessionRefreshCookieFetcher::Result.patch
 BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
@@ -273,6 +272,9 @@ Obsoletes:      chromium-ffmpeg < %{version}
 Obsoletes:      chromium-ffmpegsumo < %{version}
 # no 32bit supported and it takes ages to build
 ExclusiveArch:  x86_64 aarch64 riscv64
+%if 0%{?sle_version} == 150400
+Patch300:       chromium-114-revert-av1enc-lp154.patch
+%endif
 %if 0%{?suse_version} <= 1500
 BuildRequires:  pkgconfig(glproto)
 %endif
@@ -344,23 +346,22 @@ BuildRequires:  gcc%{gcc_version}
 BuildRequires:  gcc%{gcc_version}-c++
 %endif
 %endif
+%if 0%{?suse_version} < 1699
+BuildRequires:  pkgconfig(re2) = 10.0.0
+%endif
 
 %description
 Chromium is the open-source project behind Google Chrome. We invite you to join us in our effort to help build a safer, faster, and more stable way for all Internet users to experience the web, and to create a powerful platform for developing a new generation of web applications.
 
-%if %{with chromedriver}
-%package -n %{chromedriver_name}
+%package %{chromedriver_name}
 Summary:        WebDriver for Google Chrome/Chromium
 License:        BSD-3-Clause
 Requires:       %{name} = %{version}
-%if %{with is_beta}
 Provides:       chromedriver = %{version}-%{release}
 Conflicts:      chromedriver
-%endif
 
-%description -n %{chromedriver_name}
+%description %{chromedriver_name}
 WebDriver is an open source tool for automated testing of webapps across many browsers. It provides capabilities for navigating to web pages, user input, JavaScript execution, and more. ChromeDriver is a standalone server which implements WebDriver's wire protocol for Chromium. It is being developed by members of the Chromium and WebDriver teams.
-%endif
 
 %prep
 %setup -q -n %{rname}-%{version}
@@ -919,12 +920,10 @@ ninja -v %{?_smp_mflags} -C %{outputdir} chrome chromedriver
 
 %install
 bash %{SOURCE105} -s %{buildroot} -l %{_libdir} %{!?with_system_icu:-i true} -o %{outputdir}
-%if %{with chromedriver}
 # chromedriver
 # ungoogled-chromium patch doesn't generate .unstripped
 cp -a %{outputdir}/chromedriver %{buildroot}%{_libdir}/chromium/chromedriver
 ln -s %{_libdir}/chromium/chromedriver %{buildroot}%{_bindir}/chromedriver
-%endif
 # link to browser plugin path.  Plugin patch doesn't work. Why?
 mkdir -p %{buildroot}%{_libdir}/browser-plugins
 ln -s %{_libdir}/browser-plugins %{buildroot}%{_libdir}/chromium/plugins
@@ -964,10 +963,9 @@ install -Dm 0644 %{SOURCE104} %{buildroot}%{_datadir}/icons/hicolor/symbolic/app
 %{_bindir}/chromium
 %{_mandir}/man1/chromium-browser.1%{?ext_man}
 
-%if %{with chromedriver}
-%files -n %{chromedriver_name}
+%files %{chromedriver_name}
+%license LICENSE
 %{_libdir}/chromium/chromedriver
 %{_bindir}/chromedriver
-%endif
 
 %changelog

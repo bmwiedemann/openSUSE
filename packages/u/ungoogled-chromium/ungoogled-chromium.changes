@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Aug  2 17:19:49 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
+
+- ungoogled-chromium 115.0.5790.102:
+  * stability fix
+- Add build fixes on Leap:
+  * chromium-115-emplace_back_on_vector-c++20.patch
+  * chromium-115-compiler-SkColor4f.patch
+  * chromium-115-workaround_clang_bug-structured_binding.patch
+  * chromium-115-add_BoundSessionRefreshCookieFetcher::Result.patch
+- adjust chromium-115-lp155-typename.patch
+- drop chromium-114-workaround_clang_bug-structured_binding.patch
+- Specify re2 build dependency in a way that makes Leap packages
+  build in devel project and in Maintenance 
+
+-------------------------------------------------------------------
+Wed Aug  2 14:27:12 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
+
+- Add conflicts to chormedriver
+
+-------------------------------------------------------------------
+Wed Aug  2 14:21:04 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
+
+- change chromedriver package name
+
+-------------------------------------------------------------------
 Wed Jul 19 09:48:12 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
 
 - ungoogled-chromium 115.0.5790.56
