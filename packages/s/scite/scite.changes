@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug  2 23:55:31 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.3.7:
+  * Add discover.properties property to enable
+    command.discover.properties which is now disabled by default
+    as a security measure since command.discover.properties may
+    perform any command silently and automatically and can be set
+    in local properties for a shared directory or downloaded
+    project. Bug #2387.
+  * Add ZoomFactor property that may be displayed in status bar.
+  * Remove nimrod.properties file as it has been superseded by
+    nim.properties.
+
+-------------------------------------------------------------------
 Sat Jun 10 17:37:37 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.3.6:
