@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  3 06:27:57 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Fix leaking tickers
+  0008-fix-ticker-leak.patch
+
+-------------------------------------------------------------------
 Fri Jul 28 08:20:41 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Support multiple watchdogs in the domain schema

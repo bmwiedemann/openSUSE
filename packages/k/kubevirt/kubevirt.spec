@@ -35,6 +35,7 @@ Patch4:         0004-tests-leave-some-space-for-metadata-on-the-backend-P.patch
 Patch5:         0005-Support-multiple-watchdogs-in-the-domain-schema.patch
 Patch6:         0006-isolation-close-file-when-exits.patch
 Patch7:         0007-Fix-volume-detach-on-hotplug-attachment-pod-delete.patch
+Patch8:         0008-fix-ticker-leak.patch
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
