@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  3 11:02:39 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add cpp17.patch to build in newer version of absl
+  gh#facebook/pyre2#25
+
+-------------------------------------------------------------------
 Wed May 19 09:09:13 UTC 2021 - pgajdos@suse.com
 
 - use %pytest_arch macro in %check

@@ -25,4 +25,14 @@
     <comment></comment>
     <requestid>894284</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>a416ba7887e4cad68b7070869c3ed0ba</srcmd5>
+    <version>1.0.7</version>
+    <time>1691076642</time>
+    <user>dimstar_suse</user>
+    <comment>- Add cpp17.patch to build in newer version of absl
+  gh#facebook/pyre2#25
+</comment>
+    <requestid>1102151</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-fb-re2
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-fb-re2
 Version:        1.0.7
 Release:        0
@@ -25,6 +24,8 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/facebook/pyre2
 Source:         https://github.com/facebook/pyre2/archive/v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM cpp17.patch gh#facebook/pyre2#25
+Patch0:         cpp17.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -38,7 +39,7 @@ BuildRequires:  re2-devel
 Python wrapper for Google's RE2
 
 %prep
-%setup -q -n pyre2-%{version}
+%autosetup -p1 -n pyre2-%{version}
 
 %build
 export CFLAGS="%{optflags}"
@@ -54,6 +55,9 @@ export CFLAGS="%{optflags}"
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/_re2*.so
+%{python_sitearch}/re2.py
+%{python_sitearch}/fb_re2-%{version}*-info
+%pycache_only %{python_sitearch}/__pycache__
 
 %changelog
