@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug  2 07:35:04 UTC 2023 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 4.2.4
+  + Bugfixes
+    * Fixed a regression in Django 4.2 that caused a crash of
+      QuerySet.aggregate() with aggregates referencing window
+      functions
+    * Fixed a regression in Django 4.2 that caused a crash when
+      grouping by a reference in a subquery
+    * Fixed a regression in Django 4.2 that caused aggregation over
+      query that uses explicit grouping by multi-valued annotations to
+      group against the wrong columns
+
+-------------------------------------------------------------------
 Tue Jul 18 12:50:29 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream sanitize_address.patch
