@@ -1,7 +1,7 @@
 #
 # spec file for package profanity
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           profanity
-Version:        0.13.1
+Version:        0.14.0
 Release:        0
 Summary:        Console-based XMPP client
 License:        SUSE-GPL-3.0+-with-openssl-exception
@@ -40,7 +40,7 @@ BuildRequires:  ncurses-devel
 BuildRequires:  python3-devel
 BuildRequires:  readline-devel
 BuildRequires:  sqlite3-devel >= 3.22.0
-Requires:       libstrophe0 >= 0.11.0
+Requires:       libstrophe0 >= 0.12.3
 Requires:       profanity-binary = %{version}
 
 %description

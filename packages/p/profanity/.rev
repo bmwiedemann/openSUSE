@@ -556,4 +556,41 @@
     asynchronously (#1759, #1760)</comment>
     <requestid>1010279</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>e8a788ae5db67effb96e6ca9a9599db5</srcmd5>
+    <version>0.14.0</version>
+    <time>1691076491</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.0:
+  * Introduce new `/privacy` command (#1836, #1870)
+  *`/os` -&gt; `/privacy os`
+  *`/privacy logging`
+  * Fix crash when using NetBSD curses implementation (#1769)
+  * Fix OMEMO autodetection in autotools (#1865)
+  * Add ability to completely turn logs off (#1857)
+  * Extend /pgp command to make key exchange procedure easier (#1850)
+  *Used by PSI and Pidgin as well.
+  * Add ability to download and install plugins directly (#1842)
+  *`/plugins install`
+  * Improvements for /executable and /avatar code (#1845)
+  * Add ability to disable avatar publishing (#1843)
+  * Fix /plugins update (#1840)
+  * Improve logging (#1835)
+  * Add feature that can warn you when another client logs in (#1827)
+  *`/account set &lt;account&gt; session_alarm &lt;max_sessions&gt;`
+  * Don't add the same command twice to history (#1829)
+  * Improve manpage to inform users about encryption (#1823)
+  * Fix possible crash in PGP/OX (#1823)
+  * Add nickname support for /roster remove (#1826)
+  * Fix JID display in titlebar (#1816)
+  * Allow setting client identification (#1815)
+  *`/account set &lt;account&gt; clientid`
+  * Add /statusbar tabmode actlist (#1813)
+  * Fix color name in batman theme (#1810)
+  * Fix empty window after reconnect (#1556)
+  * Support passing flags to editor (#1801)
+  * OTR and PGP fixes (#1802)
+  * Adapt to g_string_free glib 2.75.3 change (#1799)</comment>
+    <requestid>1102110</requestid>
+  </revision>
 </revisionlist>
