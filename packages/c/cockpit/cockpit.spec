@@ -50,7 +50,7 @@ Summary:        Web Console for Linux servers
 License:        LGPL-2.1-or-later
 URL:            https://cockpit-project.org/
 
-Version:        293
+Version:        296
 Release:        0
 Source0:        cockpit-%{version}.tar
 Source1:        cockpit.pam
@@ -68,6 +68,13 @@ Patch5:         storage-btrfs.patch
 # SLE Micro specific patches
 Patch101:       hide-pcp.patch
 Patch102:       0002-selinux-temporary-remove-setroubleshoot-section.patch
+# For anything based on SLES 15 codebase (including Leap, SLE Micro)
+Patch103:       0004-leap-gnu18-removal.patch
+
+# Use Python bridge on non-stable versions
+%if 0%{?fedora} >= 39
+%define cockpit_enable_python 1
+%endif
 
 # Experimental Python support
 %if !%{defined cockpit_enable_python}
@@ -107,10 +114,11 @@ Patch102:       0002-selinux-temporary-remove-setroubleshoot-section.patch
 %endif
 
 # Ship custom SELinux policy (but not for cockpit-appstream)
-%if 0%{?rhel} >= 9 || 0%{?fedora} || 0%{?suse_version}
+%if 0%{?rhel} >= 9 || 0%{?fedora} || 0%{?suse_version} >= 1600 || 0%{?is_smo}
 %if "%{name}" == "cockpit"
 %define selinuxtype targeted
 %define selinux_configure_arg --enable-selinux-policy=%{selinuxtype}
+%define with_selinux 1
 %endif
 %endif
 
@@ -166,9 +174,11 @@ BuildRequires: gdb
 # For documentation
 BuildRequires: xmlto
 
+%if 0%{?with_selinux}
 BuildRequires:  selinux-policy
 BuildRequires:  selinux-policy-%{selinuxtype}
 BuildRequires:  selinux-policy-devel
+%endif
 
 # for rebuilding nodejs bits
 BuildRequires: npm
@@ -224,9 +234,14 @@ BuildRequires:  python3-tox-current-env
 %patch101 -p1
 %patch102 -p1
 %endif
+# For anything based on SLES 15 codebase (including Leap, SLEM)
+%if 0%{?suse_version} == 1500
+%patch103 -p1
+%endif
 
 cp %SOURCE1 tools/cockpit.pam
 #
+rm -rf node_modules package-lock.json
 local-npm-registry %{_sourcedir} install --also=dev --legacy-peer-deps
 
 %build
@@ -253,8 +268,10 @@ autoreconf -fvi -I tools
     --disable-ssh \
 %endif
 
+%if 0%{?with_selinux}
 make -f /usr/share/selinux/devel/Makefile cockpit.pp
 bzip2 -9 cockpit.pp
+%endif
 
 %make_build
 
@@ -280,11 +297,13 @@ rm -f %{buildroot}/%{_libdir}/cockpit/*.so
 install -D -p -m 644 AUTHORS COPYING README.md %{buildroot}%{_docdir}/cockpit/
 
 # selinux
+%if 0%{?with_selinux}
 install -D -m 644 %{name}.pp.bz2 %{buildroot}%{_datadir}/selinux/packages/%{selinuxtype}/%{name}.pp.bz2
 install -D -m 644 -t %{buildroot}%{_mandir}/man8 selinux/%{name}_session_selinux.8cockpit
 install -D -m 644 -t %{buildroot}%{_mandir}/man8 selinux/%{name}_ws_selinux.8cockpit
 # create this directory in the build root so that %ghost sees the desired mode
 install -d -m 700 %{buildroot}%{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/%{name}
+%endif
 
 # SUSE branding
 mkdir -p %{buildroot}%{_datadir}/cockpit/branding/suse
@@ -372,8 +391,7 @@ rm -f %{buildroot}/%{_libdir}/security/pam_*
 rm -f %{buildroot}/usr/bin/cockpit-bridge
 rm -f %{buildroot}%{_libexecdir}/cockpit-ssh
 rm -f %{buildroot}%{_datadir}/metainfo/cockpit.appdata.xml
-rm -rf %{buildroot}%{python3_sitelib}/cockpit/
-rm -rf %{buildroot}%{python3_sitelib}/cockpit-%{version}.dist-info/
+rm -rf %{buildroot}%{python3_sitelib}/cockpit*
 %endif
 
 # when not building optional packages, remove their files
@@ -474,8 +492,7 @@ system on behalf of the web based user interface.
 %{_bindir}/cockpit-bridge
 %{_libexecdir}/cockpit-askpass
 %if %{cockpit_enable_python}
-%{python3_sitelib}/%{name}/
-%{python3_sitelib}/%{name}-%{version}.dist-info/
+%{python3_sitelib}/%{name}*
 %endif
 
 %package doc
@@ -540,8 +557,10 @@ Summary: Cockpit Web Service
 Requires: glib-networking
 Requires: openssl
 Requires: glib2 >= 2.50.0
+%if 0%{?with_selinux}
 Requires: (selinux-policy >= %{_selinux_policy_version} if selinux-policy-%{selinuxtype})
 Requires(post): (policycoreutils if selinux-policy-%{selinuxtype})
+%endif
 Conflicts: firewalld < 0.6.0-1
 Recommends: sscg >= 2.3
 Recommends: system-logos
@@ -610,10 +629,12 @@ authentication via sssd/FreeIPA.
 %{_libexecdir}/cockpit-certificate-helper
 %{?suse_version:%verify(not mode) }%attr(4750, root, cockpit-wsinstance) %{_libexecdir}/cockpit-session
 %{_datadir}/cockpit/branding
+%if 0%{?with_selinux}
 %{_datadir}/selinux/packages/%{selinuxtype}/%{name}.pp.bz2
 %{_mandir}/man8/%{name}_session_selinux.8cockpit.*
 %{_mandir}/man8/%{name}_ws_selinux.8cockpit.*
 %ghost %{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/%{name}
+%endif
 
 %pre ws
 getent group cockpit-ws >/dev/null || groupadd -r cockpit-ws
