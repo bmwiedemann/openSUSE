@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Wed Aug  2 10:29:08 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to 1.5.2: 
+  * API
+    - 41c4b1f Fixed #ifdef ENABLE_AEAD_API_PREVIEW (#2603).
+    - b3a21e1 SRT version raised to 1.5.2.
+    - c0d9fcd Restored resetlogfa(..) in udt.h. Reverting #2558, although udt.h is not the official SRT API.
+    - 87de405 Added ENABLE_AEAD_API_PREVIEW build option to enable AEAD API.
+    - 60d1237 Crypto mode 'auto' implemented for listener (#2574).
+    - 27e7d8d Socket Options: do not allow AES GCM if TSBPD is disabled.
+    - 3e4561e Add GCM to the SRT API.
+  * Core Functionality
+    - 3cefede Correct remaining endianness issues
+    - 30e7ccd Minor fix of variable shadowing.
+    - 6fcff6d Fixed various compiler warnings on various platforms (#2679).
+    - 59cde53 Fixed FEC Emergency resize crash (#2717).
+    - 2fcd3d4 Fix crypto mode auto for listener sender (#2711).
+    - b010763 Fixed typos in MBedTLS where it referred to GnuTLS (#2699).
+    - a991767 Fix peer filter config being rejected because of endianness
+    - 1cffd2f Added rejection handshake sent to the peer in rendezvous mode (#2667).
+    - f57ba89 Added missing thread watchdog ticks in 3 thread loop (#2669).
+    - e8d0533 Fixed old ENABLE_AEAD_PREVIEW.
+    - 599c1fb Reworked the CRcvBuffer::dropMessage(..) function (#2661).
+    - 7948772 Removed duplicate lines (#2660).
+    - 3ffc93f Fixed CRcvBuffer::dropMessage (#2657).
+    - e9a3955 Fixed guard for rcv-rexmit fields (#1859).
+    - 22e97f8 Fixed warnings and removed redundant includes (#2658).
+    - c83c31b Reduce frequency of the decryption failure log (#2602).
+    - 21b55a2 Disabled warnings various platforms and fixed C++20 Windows build (#2411).
+    - 65bef37 Set CLOSING state when closing a socket (#2643).
+    - 02cba9e Drop undecrypted packet based on sequence number (#2654).
+    - 6d774dd Fixed invalid ASSERT checking outdated object in haicrypt (#2652).
+    - 8db35de Refaxed and fixed multiplexer reusage (#2608).
+    - 6c92a13 Fix crash when enable heavy log and socket id less than 10 (#2619).
+    - 64dedef CodeQL: operation requires 22 bytes.
+    - 0c583f8 CodeQL warning: checking NULL after new.
+    - b8962b4 Fixed PKTINFO case that was failing for IPv4+IPv6 bound sockets (#2630).
+    - a42a39f Fixed wrong null-safety condition check in haicrypt (#2616).
+    - 30f6f6b Removed extra redundant condition checks (#2615).
+    - 5f02310 Fix negative id when wrap around
+    - f533716 Fixed reject reason by a caller if connection is UNSECURE (#2622).
+    - 04e8dbc Fixed default reject reason for a listener callback (#2605).
+    - 0b9d583 AEAD: don't break a connection on decrypt failure.
+    - 6db28dc RCV Buffer Refax: added some utils and simplifications (#2522).
+    - 5889a2c AES-GCM payload length check (#2591).
+    - 45232ad Allow fileCC in group mode
+    - 98b1b00 Added extraction of IP_PKTINFO when reading (#456).
+    - de9fc45 Fix CRcvBuffer last position in getTimespan_ms (#2579).
+    - 38b4211 Remove use variable length array (#2279).
+    - 78dd987 Fixed missing DROPREQ for LOSSREPORT that partially predates ACK (#2498).
+    - 4090b25 Reject caller to caller connection (#2562).
+    - 0a835ea Refax: moved removal of one seq from fresh loss list to a separate function (#2521).
+    - 19af5d1 Obtain ConnectionLock while sending crypto keys.
+    - 3d517cf Fixed a warning: member referenced before initialized (#2433).
+    - fc82eac Refax: remove usage of LOGF/HLOGF (#2566).
+    - 637d439 Refax: removed m_iRcvLastSkipAck and its dependencies (#2546).
+    - 6c52f2d Pass std::string by const ref where possible.
+    - 6d62096 Applied clang-format on md5.cpp and md5.h.
+    - 2c48cba MD5: Removed null pointer subtraction (may have undefined behavior).
+    - ae39052 Fixed rendezvous connection in the Non Blocking Mode (#2548).
+    - 0138898 Fixed cloning the RX crypto context (AEAD)
+    - be1ccf5 Moved KM refresh in packUniqueData() (#2541).
+    - f864cec Fixed TARGET_OS_MAC not defined. Wrong include order.
+    - 432f2d8 fix CSndBuffer parameter incorrect in AES GCM mode
+    - cbfa812 Refax/postfix: further fixes after last refax changes (#2528)
+    - e082f30 Fixed validation of input parameters in srt_connect (#2520).
+    - 932e5bd Cleanup of bonding conditionals and unused code (#2525).
+    - f477b51 Fixed connected peer address recording (#2526)
+    - b76c8b2 Fixed CRcvBuffer::getAvailSize() may jump around. (#2490)
+    - 71c3e40 Refax: safety improvements for RCV loss list and closing state (#2517)
+    - 491e6e8 Extract RCV buffer insertion handling to a separate function (#2500).
+    - 258a858 Refax: added size cache to the group container (#2510).
+    - 2fd1363 Refax: improve logging and code readability around specific logging (#2511).
+    - f7a024a Refax: removed the synconmsg property and its handling in the group (#2509)
+    - 53735e1 Don't consider tool old ACK as IPE, it' may caused by network.
+    - d26bbf7 Fixed a false alarm: ACK ERROR...(diff -1)
+    - 0f6e7c7 Fixed the inconsistency between getFirstLostSeq() and ackDataUpTo() (#2488)
+    - ea86302 Reduced calls to steady_clock::now() from two to one.
+    - 8e9958a Reject if SRT_MAGIC_CODE is not set in the HS induction response.
+    - 8e67aa7 Tune logs of group members adding and removing.
+    - c01c646 Fixed AES-GCM support check.
+-------------------------------------------------------------------
 Sun Jan  8 10:30:37 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.5.1:
