@@ -1,7 +1,7 @@
 #
 # spec file for package libwebcam
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,37 +22,34 @@ Version:        0.2.5
 Release:        0
 Summary:        A library for user-space configuration of the uvcvideo driver
 License:        GPL-3.0+
-Group:          System/Libraries
 Url:            http://sourceforge.net/projects/libwebcam/
-Source0:        http://downloads.sourceforge.net/%{name}/%{name}-src-%{version}.tar.gz
+Source0:        http://downloads.sourceforge.net/%name/%name-src-%version.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  kernel-devel
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(udev)
+BuildRequires:  systemd-rpm-macros
 
 %description
 Libwebcam provides a user-space library for interaction with the uvcvideo
 kernel driver. One could use this library to manipulate settings for one
 or many UVC-type webcams found attached on a single computer.
 
-%package     -n %{name}%{so_ver}
-Group:          System/Libraries
+%package     -n %name%so_ver
 License:        LGPL-3.0+
 Summary:        A library for user-space configuration of the uvcvideo driver
 
-%description -n %{name}%{so_ver}
+%description -n %name%so_ver
 Libwebcam provides a user-space library for interaction with the uvcvideo
 kernel driver. One could use this library to manipulate settings for one
 or many UVC-type webcams found attached on a single computer.
 
 %package        devel
 Summary:        Development files for libwebcam
-Group:          Development/Libraries
 License:        LGPL-3.0+
-Requires:       %{name}%{so_ver} = %{version}
+Requires:       %name%so_ver = %version
 
 %description    devel
 Libwebcam provides a user-space library for interaction with the uvcvideo
@@ -63,7 +60,6 @@ This package contains development files for libwebcam.
 
 %package     -n uvcdynctrl
 Summary:        Command line interface to libwebcam
-Group:          Productivity/Multimedia/Other
 License:        GPL-3.0+
 Requires:       udev
 
@@ -75,42 +71,50 @@ or many UVC-type webcams found attached on a single computer.
 This package contains command line interface to libwebcam.
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -p1
 
 %build
+tee uvcdynctrl/udev/rules/80-uvcdynctrl.rules <<__EOR__
+ACTION=="add", SUBSYSTEM=="video4linux", DRIVERS=="uvcvideo", RUN+="%_libexecdir/uvcdynctrl.sh"
+__EOR__
 %cmake
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
-rm -rf %{buildroot}%{_libdir}/*.a
+rm -rf %buildroot%_libdir/*.a
 # fix up after dirty tarball
-find %{buildroot} -name '*~' -exec rm -f '{}' \;
-mkdir -p %{buildroot}%{_prefix}/lib
-mv %{buildroot}/lib/udev %{buildroot}%{_prefix}/lib/udev
+find %buildroot -name '*~' -exec rm -fv '{}' +
+mkdir -vp %buildroot%_libexecdir %buildroot%_udevrulesdir
+mv -t %buildroot%_udevrulesdir %buildroot/lib/udev/rules.d/*.rules
+mv %buildroot/lib/udev/uvcdynctrl %buildroot%_libexecdir/uvcdynctrl.sh
+rm -rfv %buildroot/lib
 
-%post -n %{name}%{so_ver} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %name%so_ver
 
-%postun -n %{name}%{so_ver} -p /sbin/ldconfig
+%post -n uvcdynctrl
+%udev_rules_update
+
+%postun -n uvcdynctrl
+%udev_rules_update
 
 %files -n uvcdynctrl
-%defattr(-,root,root,-)
-%doc uvcdynctrl/README uvcdynctrl/COPYING
-%{_bindir}/uvcdynctrl*
-%{_datadir}/uvcdynctrl
-%{_datadir}/man/man1/*
-%{_prefix}/lib/udev/uvcdynctrl
-%{_udevrulesdir}/*.rules
+%license uvcdynctrl/COPYING
+%doc uvcdynctrl/README
+%_bindir/uvcdynctrl*
+%_datadir/uvcdynctrl
+%_datadir/man/man1/*
+%_libexecdir/uvcdynctrl.sh
+%_udevrulesdir/*.rules
 
-%files -n %{name}%{so_ver}
-%defattr(-,root,root,-)
-%doc libwebcam/README libwebcam/COPYING libwebcam/COPYING.LESSER
-%{_libdir}/*.so.*
+%files -n %name%so_ver
+%license libwebcam/COPYING libwebcam/COPYING.LESSER
+%doc libwebcam/README
+%_libdir/*.so.*
 
 %files devel
-%defattr(-,root,root,-)
-%{_includedir}/*.h
-%{_libdir}/*.so
-%{_libdir}/pkgconfig/*.pc
+%_includedir/*.h
+%_libdir/*.so
+%_libdir/pkgconfig/*.pc
 
 %changelog
