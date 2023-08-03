@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug  2 14:31:28 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.12.3:
+  * Improve TCP-connection establishment (#221)
+  * Handle case where the server doesn't provide the bind feature (#224)
+  * Fix configure script for non-bash shells (#218)
+  * Parse JID's according to RFC7622 (#219)
+  * Fix potential memory leak in internal DNS resolver (#219)
+  * Fix potential memory leaks in xmpp_conn_set_cafile() and xmpp_conn_set_capath() (#219)
+  * Internal improvements (#219)
+
+-------------------------------------------------------------------
 Mon Aug  8 10:38:35 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.12.2:

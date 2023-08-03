@@ -242,4 +242,19 @@
   * libstrophe-0.12-stream-management-fix.patch</comment>
     <requestid>993746</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3d706760f2df697327a0b1db1fd60aba</srcmd5>
+    <version>0.12.3</version>
+    <time>1691076490</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.12.3:
+  * Improve TCP-connection establishment (#221)
+  * Handle case where the server doesn't provide the bind feature (#224)
+  * Fix configure script for non-bash shells (#218)
+  * Parse JID's according to RFC7622 (#219)
+  * Fix potential memory leak in internal DNS resolver (#219)
+  * Fix potential memory leaks in xmpp_conn_set_cafile() and xmpp_conn_set_capath() (#219)
+  * Internal improvements (#219)</comment>
+    <requestid>1102032</requestid>
+  </revision>
 </revisionlist>
