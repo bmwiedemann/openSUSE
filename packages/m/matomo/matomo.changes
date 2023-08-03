@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug  1 15:11:45 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.15.1
+  * matomo-org/matomo
+    - #21039 There are unnecessary extra spaces in the generated campaign builder URL
+    - #21007 Fix tag cloud visualization failing on formatted values
+    - #21063 Some advanced options in tracking code generator do no longer work
+
+-------------------------------------------------------------------
 Fri Jul  7 05:14:46 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.15.0
