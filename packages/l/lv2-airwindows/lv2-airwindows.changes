@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug  2 14:21:24 UTC 2023 - Hannes Braun <apple.hannes@gmail.com>
+
+- Update to new upstream release 22.0
+  * New plugins: Console8BussHype, Console8BussIn, Console8BussOut,
+    Console8ChannelHype, Console8ChannelIn, Console8ChannelOut,
+    Console8LiteBuss, Console8LiteChannel, Console8SubHype, Console8SubIn,
+    Console8SubOut, EverySlew, GlitchShifter, GoldenSlew, LilAmp, PlatinumSlew
+
+-------------------------------------------------------------------
 Fri Jul 21 22:28:09 UTC 2023 - Hannes Braun <apple.hannes@gmail.com>
 
 - Update to new upstream release 20.0
