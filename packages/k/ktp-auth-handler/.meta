@@ -1,5 +1,0 @@
-<package name="ktp-auth-handler" project="openSUSE:Factory">
-  <title>Provide UI/KWallet Integration For Passwords and SSL Errors on Account Connect</title>
-  <description></description>
-  <devel project="KDE:Applications" package="ktp-auth-handler"/>
-</package>
