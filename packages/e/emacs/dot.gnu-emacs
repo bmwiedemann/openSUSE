@@ -26,6 +26,11 @@
 (if (and (file-exists-p "~/.inhibit-splash-screen")
 	 (boundp 'inhibit-splash-screen))
   (setq-default inhibit-splash-screen t))
+;; MELPA
+(require 'package)
+(add-to-list 'package-archives
+	     '("melpa" . "https://melpa.org/packages/"))
+;;(package-initialize)
 ;;
 ;; Debuging only
 ;; -------------
@@ -153,7 +158,7 @@
       ;; (A few changes on ispell)
       (setq ispell-highlight-face 'underline);)
   ;;
-  ;; Geomtry and layout
+  ;; Geometry and layout
   ;;
 ; (setq initial-frame-alist 
 ;   '((vertical-scroll-bars . right) (height . 34) (width . 80)))
@@ -534,5 +539,9 @@
 ;;
 ;; Translate DEL to `C-h'.
 ; (keyboard-translate ?\C-? ?\C-h)
+;;
+;; Use minibuffer for aking GPG passphrase
+;;(setq epa-pinentry-mode 'loopback)
+;;(pinentry-start)
 ;;;;;;;;;;
 ;; the end

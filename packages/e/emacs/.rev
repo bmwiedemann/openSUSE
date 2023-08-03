@@ -1778,4 +1778,41 @@ Now one could consider building emacs with gsettings support (both debian and fe
     <comment>- don't create ghosted files (forwarded request 1072440 from dirkmueller)</comment>
     <requestid>1072521</requestid>
   </revision>
+  <revision rev="174" vrev="1">
+    <srcmd5>bd86410893006a875f6dd3d5a7c430a7</srcmd5>
+    <version>29.1</version>
+    <time>1691076437</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to GNU Emacs version 29.1
+  * Official tree-sitter support
+  * EGlot, the Language Server Client
+  * Use-package a declarative configuration tool finally in
+  * Better long line support
+  * Native SQLite Support
+  * Changing the init directory
+    You can now instruct Emacs to read its initialization from
+    another directory from the command line.
+- Use natively compiled lisp files only for GTK variant as every
+  binary has its own hash keys for the eln location as well as for
+  the eln native compiled lisp files
+- Port rmailgen.el and .gnu-emacs to 29.1
+- Remove the old patches now upstream
+  * 01a4035c.patch
+  * 3c1693d0.patch
+  * CVE-2022-48338.patch
+  * CVE-2022-48339.patch
+  * d3209119.patch
+  * d48bb487.patch
+- Port and rename patch emacs-28.1.dif which is now emacs-29.1.dif
+- Port the patches
+  * emacs-24.1-ps-mule.patch
+  * emacs-24.3-iconic.patch
+  * emacs-24.3-x11r7.patch
+  * emacs-24.4-glibc.patch
+  * emacs-24.4-nonvoid.patch
+  * emacs-24.4-ps-bdf.patch
+  * emacs-25.1-custom-fonts.patch
+  * emacs-25.2-ImageMagick7.patch</comment>
+    <requestid>1101919</requestid>
+  </revision>
 </revisionlist>

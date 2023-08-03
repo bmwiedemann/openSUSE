@@ -1,49 +1,51 @@
 ---
  Makefile.in                     |    7 +-
- configure                       |    6 --
  configure.ac                    |    6 --
  doc/man/etags.1                 |   20 ++++----
- lib-src/Makefile.in             |    6 +-
+ lib-src/Makefile.in             |    4 -
  lib-src/pop.c                   |    1 
- lib/Makefile.in                 |    2 
  lisp/cmuscheme.el               |    3 -
  lisp/international/mule-cmds.el |    1 
  lisp/net/ange-ftp.el            |    8 +--
  lisp/site-load.el               |   45 ++++++++++++++++++
  lisp/speedbar.el                |    1 
- lisp/textmodes/ispell.el        |   82 ++++++++++++++++++++++++++++++++-
+ lisp/textmodes/ispell.el        |   88 +++++++++++++++++++++++++++++++++---
  site-lisp/term/func-keys.el     |   33 +++++++++++++
  site-lisp/term/gnome.el         |   97 ++++++++++++++++++++++++++++++++++++++++
  site-lisp/term/kvt.el           |   97 ++++++++++++++++++++++++++++++++++++++++
  site-lisp/term/linux.el         |   79 ++++++++++++++++++++++++++++++++
  site-lisp/term/locale.el        |   13 +++++
- 18 files changed, 475 insertions(+), 32 deletions(-)
+ 16 files changed, 472 insertions(+), 31 deletions(-)
 
 --- Makefile.in
-+++ Makefile.in	2020-08-11 10:21:15.194072175 +0000
-@@ -519,11 +519,11 @@ install-arch-dep: src install-arch-indep
++++ Makefile.in	2023-08-01 08:29:04.813378495 +0000
+@@ -614,7 +614,7 @@ install-arch-dep: src install-arch-indep
  	umask 022; ${MKDIR_P} "$(DESTDIR)${bindir}"
  	$(MAKE) -C lib-src install
  ifeq (${ns_self_contained},no)
 -	${INSTALL_PROGRAM} $(INSTALL_STRIP) src/emacs${EXEEXT} "$(DESTDIR)${bindir}/$(EMACSFULL)"
 +	${INSTALL_PROGRAM} $(INSTALL_STRIP) src/emacs${EXEEXT} "$(DESTDIR)${bindir}/$(EMACS)"
- ifeq (${DUMPING},pdumper)
- 	${INSTALL_DATA} src/emacs.pdmp "$(DESTDIR)${libexecdir}/emacs/${version}/${configuration}"/emacs.pdmp
+ ifeq (${HAVE_BE_APP},yes)
+ 	${INSTALL_PROGRAM} $(INSTALL_STRIP) src/Emacs "$(DESTDIR)${prefix}/apps/Emacs"
+ endif
+@@ -624,7 +624,7 @@ ifeq (${HAVE_BE_APP},yes)
+ endif
+ 	${INSTALL_DATA} src/emacs.pdmp "$(DESTDIR)${libexecdir}/emacs/${version}/${configuration}"/emacs-${EMACS_PDMP}
  endif
 -	-chmod 755 "$(DESTDIR)${bindir}/$(EMACSFULL)"
 +	-chmod 755 "$(DESTDIR)${bindir}/$(EMACS)"
  ifndef NO_BIN_LINK
  	rm -f "$(DESTDIR)${bindir}/$(EMACS)"
  	cd "$(DESTDIR)${bindir}" && $(LN_S_FILEONLY) "$(EMACSFULL)" "$(EMACS)"
-@@ -712,6 +712,7 @@ install-man:
+@@ -811,6 +811,7 @@ install-man:
  	umask 022; ${MKDIR_P} "$(DESTDIR)${man1dir}"
- 	thisdir=`/bin/pwd`; \
+ 	thisdir=`pwd -P`; \
  	cd ${mansrcdir}; \
 +	cp ctags.1 gnuctags.1; \
  	for page in *.1; do \
  	  test "$$page" = ChangeLog.1 && continue; \
  	  dest=`echo "$${page}" | sed -e 's/\.1$$//' -e '$(TRANSFORM)'`.1; \
-@@ -843,7 +844,7 @@ uninstall: uninstall-$(NTDIR) uninstall-
+@@ -942,7 +943,7 @@ uninstall: uninstall-$(NTDIR) uninstall-
  	   for page in *.1; do \
  	     rm -f "$(DESTDIR)${man1dir}"/`echo "$${page}" | sed -e 's/\.1$$//' -e '$(TRANSFORM)'`.1$$ext; done; \
  	 fi)
@@ -52,24 +54,9 @@
  	(if cd "$(DESTDIR)${icondir}"; then \
  	   rm -f hicolor/*x*/apps/"${EMACS_NAME}.png" \
  	     "hicolor/scalable/apps/${EMACS_NAME}.svg" \
-|--- configure
-|+++ configure	2020-08-11 10:17:21.102266456 +0000
-|@@ -10750,10 +10750,8 @@ fi
-| LD_SWITCH_X_SITE_RPATH=
-| if test "${x_libraries}" != NONE; then
-|   if test -n "${x_libraries}"; then
-|-    LD_SWITCH_X_SITE=-L`$as_echo "$x_libraries" | sed -e 's/:/ -L/g'`
-|-    LD_SWITCH_X_SITE_RPATH=-Wl,-rpath,`
-|-      $as_echo "$x_libraries" | sed -e 's/:/ -Wl,-rpath,/g'
-|-    `
-|+    LD_SWITCH_X_SITE="-L ${x_libraries%%:*}"
-|+    LD_SWITCH_X_SITE_RPATH="-Wl,-rpath-link,${x_libraries%%:*}"
-|   fi
-|   x_default_search_path=""
-|   x_search_path=${x_libraries}
 --- configure.ac
-+++ configure.ac	2020-08-11 10:17:21.102266456 +0000
-@@ -1832,10 +1832,8 @@ fi
++++ configure.ac	2023-08-01 08:20:12.115169895 +0000
+@@ -1958,10 +1958,8 @@ fi
  LD_SWITCH_X_SITE_RPATH=
  if test "${x_libraries}" != NONE; then
    if test -n "${x_libraries}"; then
@@ -83,7 +70,7 @@
    x_default_search_path=""
    x_search_path=${x_libraries}
 --- doc/man/etags.1
-+++ doc/man/etags.1	2020-08-11 10:17:21.102266456 +0000
++++ doc/man/etags.1	2023-08-01 08:20:12.115169895 +0000
 @@ -7,7 +7,7 @@
  ..
  
@@ -167,8 +154,8 @@
  .B \-h, \-H, \-\-help
  Print usage information.  Followed by one or more \-\-language=LANG
 --- lib-src/Makefile.in
-+++ lib-src/Makefile.in	2020-08-11 10:31:37.642931244 +0000
-@@ -134,7 +136,7 @@ MKDIR_P = @MKDIR_P@
++++ lib-src/Makefile.in	2023-08-01 08:20:12.115169895 +0000
+@@ -144,7 +144,7 @@ HAIKU_CFLAGS=@HAIKU_CFLAGS@
  CLIENTW = @CLIENTW@
  
  # Things that a user might actually run, which should be installed in bindir.
@@ -177,7 +164,7 @@
                 ebrowse${EXEEXT}
  
  # Things that Emacs runs internally, or during the build process,
-@@ -382,7 +382,7 @@ etags${EXEEXT}: ${etags_deps}
+@@ -403,7 +403,7 @@ etags${EXEEXT}: ${etags_deps}
  ## etags.o files on top of each other.
  ## FIXME?
  ## Can't we use a wrapper that calls 'etags --ctags'?
@@ -187,7 +174,7 @@
  
  ebrowse${EXEEXT}: ${srcdir}/ebrowse.c ${srcdir}/../lib/min-max.h $(NTLIB) \
 --- lib-src/pop.c
-+++ lib-src/pop.c	2020-08-11 10:17:21.102266456 +0000
++++ lib-src/pop.c	2023-08-01 08:20:12.115169895 +0000
 @@ -26,6 +26,7 @@ along with GNU Emacs.  If not, see <http
  #ifdef MAIL_USE_POP
  
@@ -197,8 +184,8 @@
  #include "ntlib.h"
  #undef _WIN32_WINNT
 --- lisp/cmuscheme.el
-+++ lisp/cmuscheme.el	2020-08-11 10:17:21.106266385 +0000
-@@ -231,7 +231,8 @@ is run).
++++ lisp/cmuscheme.el	2023-08-01 08:20:12.115169895 +0000
+@@ -232,7 +232,8 @@ is run).
  			 (read-string "Run Scheme: " scheme-program-name)
  			 scheme-program-name)))
    (if (not (comint-check-proc "*scheme*"))
@@ -209,7 +196,7 @@
  			   (scheme-start-file (car cmdlist)) (cdr cmdlist)))
  	(inferior-scheme-mode)))
 --- lisp/international/mule-cmds.el
-+++ lisp/international/mule-cmds.el	2020-08-11 10:17:21.106266385 +0000
++++ lisp/international/mule-cmds.el	2023-08-01 08:20:12.115169895 +0000
 @@ -39,6 +39,7 @@
  
  (defvar mule-keymap
@@ -219,7 +206,7 @@
      (define-key map "r" 'revert-buffer-with-coding-system)
      (define-key map "F" 'set-file-name-coding-system)
 --- lisp/net/ange-ftp.el
-+++ lisp/net/ange-ftp.el	2020-08-11 10:17:21.106266385 +0000
++++ lisp/net/ange-ftp.el	2023-08-01 08:20:12.119169821 +0000
 @@ -5076,7 +5076,7 @@ NEWNAME should be the name to give the n
  ;  "If a host matches this regexp then it is assumed to be running VOS.")
  ;
@@ -257,7 +244,7 @@
  
  (defun ange-ftp-add-cms-host (host)
 --- lisp/site-load.el
-+++ lisp/site-load.el	2020-08-11 10:17:21.106266385 +0000
++++ lisp/site-load.el	2023-08-01 08:20:12.119169821 +0000
 @@ -0,0 +1,45 @@
 +;;;;
 +;;; emacs-27.1/lisp/site-load.el
@@ -305,8 +292,8 @@
 +
 +;;; site-load.el ends here
 --- lisp/speedbar.el
-+++ lisp/speedbar.el	2020-08-11 10:17:21.106266385 +0000
-@@ -732,6 +732,7 @@ If you want to change this while speedba
++++ lisp/speedbar.el	2023-08-01 08:20:12.119169821 +0000
+@@ -727,6 +727,7 @@ If you want to change this while speedba
  
      ;; Navigation.
      (define-key map "n" 'speedbar-next)
@@ -315,7 +302,7 @@
      (define-key map "\M-n" 'speedbar-restricted-next)
      (define-key map "\M-p" 'speedbar-restricted-prev)
 --- lisp/textmodes/ispell.el
-+++ lisp/textmodes/ispell.el	2020-08-11 10:30:39.847965024 +0000
++++ lisp/textmodes/ispell.el	2023-08-01 08:20:12.119169821 +0000
 @@ -191,13 +191,15 @@ Must be greater than 1."
    :type 'integer)
  
@@ -339,7 +326,7 @@
    "Program invoked by \\[ispell-word] and \\[ispell-region] commands."
    :type 'string
    :set (lambda (symbol value)
-@@ -1396,6 +1398,78 @@ The variable `ispell-library-directory'
+@@ -1418,6 +1420,78 @@ The variable `ispell-library-directory'
  
    ;; Define commands in menu in opposite order you want them to appear.
    (let ((map (make-sparse-keymap "Spell")))
@@ -419,7 +406,7 @@
        `(menu-item ,(purecopy "Change Dictionary...") ispell-change-dictionary
  		  :help ,(purecopy "Supply explicit dictionary file name")))
 --- site-lisp/term/func-keys.el
-+++ site-lisp/term/func-keys.el	2020-08-11 10:17:21.106266385 +0000
++++ site-lisp/term/func-keys.el	2023-08-01 08:20:12.119169821 +0000
 @@ -0,0 +1,33 @@
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;;; term/func-keys.el for site-lisp path
@@ -455,7 +442,7 @@
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;; Ende von func-keys.el
 --- site-lisp/term/gnome.el
-+++ site-lisp/term/gnome.el	2020-08-11 10:17:21.106266385 +0000
++++ site-lisp/term/gnome.el	2023-08-01 08:20:12.119169821 +0000
 @@ -0,0 +1,97 @@
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;;; term/gnomw.el for site-lisp path
@@ -555,7 +542,7 @@
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;; Ende von gnomw.el
 --- site-lisp/term/kvt.el
-+++ site-lisp/term/kvt.el	2020-08-11 10:17:21.106266385 +0000
++++ site-lisp/term/kvt.el	2023-08-01 08:20:12.119169821 +0000
 @@ -0,0 +1,97 @@
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;;; term/kvt.el for site-lisp path
@@ -655,7 +642,7 @@
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;; Ende von kvt.el
 --- site-lisp/term/linux.el
-+++ site-lisp/term/linux.el	2020-08-11 10:17:21.106266385 +0000
++++ site-lisp/term/linux.el	2023-08-01 08:20:12.119169821 +0000
 @@ -0,0 +1,79 @@
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;;; term/linux.el for site-lisp path
@@ -737,7 +724,7 @@
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;; Ende von linux.el
 --- site-lisp/term/locale.el
-+++ site-lisp/term/locale.el	2020-08-11 10:17:21.106266385 +0000
++++ site-lisp/term/locale.el	2023-08-01 08:20:12.119169821 +0000
 @@ -0,0 +1,13 @@
 +;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 +;;; term/locale.el for site-lisp path

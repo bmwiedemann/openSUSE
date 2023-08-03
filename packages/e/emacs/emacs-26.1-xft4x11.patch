@@ -4,7 +4,7 @@
 
 --- lwlib/xlwmenu.c
 +++ lwlib/xlwmenu.c	2018-06-15 05:50:45.749287186 +0000
-@@ -1894,21 +1894,18 @@ XlwMenuInitialize (Widget request, Widge
+@@ -2118,21 +2118,18 @@ XlwMenuInitialize (Widget request, Widge
  				   gray_width, gray_height,
  				   (unsigned long)1, (unsigned long)0, 1);
  

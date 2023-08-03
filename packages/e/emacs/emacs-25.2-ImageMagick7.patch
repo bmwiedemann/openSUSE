@@ -1,13 +1,13 @@
 Index: emacs-25.2/configure.ac
 ===================================================================
 ---
- emacs-26.1/configure.ac |    2 +-
- emacs-26.1/src/image.c  |   12 ++++++++++++
+ emacs-29.1/configure.ac |    2 +-
+ emacs-29.1/src/image.c  |   12 ++++++++++++
  2 files changed, 13 insertions(+), 1 deletion(-)
 
---- emacs-27.1/configure.ac
-+++ emacs-27.1/configure.ac	2020-08-11 09:59:04.349950601 +0000
-@@ -2603,7 +2603,7 @@ if test "${HAVE_X11}" = "yes" || test "$
+--- emacs-29.1/configure.ac
++++ emacs-29.1/configure.ac	2023-08-01 07:15:12.274827913 +0000
+@@ -2884,7 +2884,7 @@ if test "${HAVE_X11}" = "yes" || test "$
      else
         ## 6.3.5 is the earliest version known to work; see Bug#17339.
         ## 6.8.2 makes Emacs crash; see Bug#13867.
@@ -16,9 +16,9 @@ Index: emacs-25.2/configure.ac
      fi
  
      if test $HAVE_IMAGEMAGICK = yes; then
---- emacs-27.1/src/image.c
-+++ emacs-27.1/src/image.c	2020-08-11 09:49:35.500181432 +0000
-@@ -9005,7 +9005,11 @@ imagemagick_compute_animated_image (Magi
+--- emacs-29.1/src/image.c
++++ emacs-29.1/src/image.c	2023-08-01 07:20:54.484555078 +0000
+@@ -10207,7 +10207,11 @@ imagemagick_compute_animated_image (Magi
        PixelWand **source, **dest;
        size_t source_width, source_height;
        ssize_t source_left, source_top;
@@ -30,7 +30,7 @@ Index: emacs-25.2/configure.ac
        DisposeType dispose;
        ptrdiff_t lines = 0;
  
-@@ -9070,7 +9074,11 @@ imagemagick_compute_animated_image (Magi
+@@ -10272,7 +10276,11 @@ imagemagick_compute_animated_image (Magi
  	      if (dispose == BackgroundDispose || PixelGetAlpha (source[x]))
  		{
  		  PixelGetMagickColor (source[x], &pixel);
@@ -42,7 +42,7 @@ Index: emacs-25.2/configure.ac
  		}
  	    }
  	  PixelSyncIterator (dest_iterator);
-@@ -9115,7 +9123,11 @@ imagemagick_load_image (struct frame *f,
+@@ -10317,7 +10325,11 @@ imagemagick_load_image (struct frame *f,
    MagickWand *image_wand;
    PixelIterator *iterator;
    PixelWand **pixels, *bg_wand = NULL;
@@ -52,5 +52,5 @@ Index: emacs-25.2/configure.ac
    MagickPixelPacket  pixel;
 +#endif
    Lisp_Object image;
+ #ifndef DONT_CREATE_TRANSFORMED_IMAGEMAGICK_IMAGE
    Lisp_Object value;
-   Lisp_Object crop;
