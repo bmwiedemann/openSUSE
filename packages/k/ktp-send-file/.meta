@@ -1,5 +1,0 @@
-<package name="ktp-send-file" project="openSUSE:Factory">
-  <title>A File manager plugin to launch a file transfer job with a specified contact</title>
-  <description>A File manager plugin to launch a file transfer job with a specified contact</description>
-  <devel project="KDE:Applications" package="ktp-send-file"/>
-</package>
