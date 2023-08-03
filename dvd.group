@@ -1891,7 +1891,7 @@
     <package name="libgc1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libgcab-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libgcc_s1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libgccjit0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="libgccjit0" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libgcin-im-client1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgck-1-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgck-2-2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2700,6 +2700,7 @@
     <package name="libtowitoko2" supportstatus="unsupported"/> <!-- reason: dvd:pcsc-towitoko -->
     <package name="libtpms0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libtracker-sparql-3_0-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libtree-sitter0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libts0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libtsan2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libtss2-esys0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -2801,6 +2802,7 @@
     <package name="libwebkit2gtk-4_0-37" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libwebkit2gtk-4_1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libwebp7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libwebpdecoder3" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libwebpdemux2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwebpmux3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwebrtc_audio_processing1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
