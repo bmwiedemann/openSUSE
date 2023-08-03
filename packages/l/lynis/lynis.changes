@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug  3 12:56:11 UTC 2023 - Robert Frohl <rfrohl@suse.com>
+
+- Update to 3.0.9:
+  * Changed
+    - DBS-1820 - Added newer style format for Mongo authorization setting
+    - FILE-6410 - Locations added for plocate
+    - SSH-7408 - Only test Compression if sshd version < 7.4
+    - Improved fetching timestamp
+    - Minor changes such as typos
+
+-------------------------------------------------------------------
 Tue May 17 14:00:34 UTC 2022 - Robert Frohl <rfrohl@suse.com>
 
 - Update to 3.0.8:
