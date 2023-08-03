@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Thu Aug  3 11:31:29 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Run TeX-auto-generate-global in emacs only once if auctex or
+  TeXLive becomes updated to generate all auto lisp files. 
+
+-------------------------------------------------------------------
+Wed Aug  2 11:11:34 UTC 2023 - Dr. Werner Fink <werner@suse.de>
+
+- Update to 13.2
+  • AUCTeX no longer refuses to insert dollar sign when you type ‘$’ at
+    point where AUCTeX thinks the current math mode didn’t start with
+    dollar(s).  AUCTeX assumes the user knows that it isn’t in math
+    mode actually.
+    You can keep the former behavior by enabling the new customize
+    option ‘TeX-refuse-unmatched-dollar’.
+  * AUCTeX supports completion-at-point of macro and environment
+    arguments in LaTeX buffers.  The responsible function recognizes
+    the argument position and extracts the corresponding candidates
+    from the variables ‘TeX-symbol-list’ and ‘LaTeX-environment-list’.
+  * AUCTeX underlines the argument of macros which produce underlined
+    text in the final product with ‘font-latex-underline-face’.  The
+    corresponding keyword class is called ‘underline-command’.  See the
+    section for fontification of macros if you dislike this feature and
+    wish to deactivate it.
+  * Support for the Sioyek document viewer is added.
+  * AUCTeX now requires GNU Emacs 25.1 or higher.
+  * AUCTeX tracks the change in Emacs where initial inputs in the
+    minibuffer during queries are getting phased out.  Queries for the
+    mandatory arguments of macros and environments are adjusted where
+    applicable.  The value which will be used after hitting ‘RET’
+    without other input is shown in the prompt in parentheses prefixed
+    with ‘default’.  For this change the signature of the function
+    ‘TeX-arg-length’ is altered.  The old argument list was:
+         (defun TeX-arg-length (optional &optional prompt
+                                         initial-input definition default)
+    whereas the new one is:
+         (defun TeX-arg-length (optional &optional prompt
+                                         default initial-input definition)
+    Note the position change of ‘DEFAULT’.
+  * Indenting of conditionals is improved.  Code inside constructs like
+    ‘\ifx . \else . \fi’ is correctly indented.  An interface for style
+    files is also introduced which can add their macros to the
+    indentation engine.  Check the file ‘algpseudocode.el’ for an
+    example.
+  * You can optionally enable indent inside square brackets ‘[]’ by new
+    user options ‘TeX-indent-open-delimiters’ and
+    ‘TeX-indent-close-delimiters’.
+  * Now ‘tex-buf.el’ is merged into ‘tex.el’ and no longer exists.  If
+    your personal code has ‘(require 'tex-buf)’, one of the following
+    prescriptions would serve.
+      1. Remove ‘(require 'tex-buf)’.
+      2. Replace it with ‘(require 'tex)’.
+      3. Replace it with ‘(require 'latex)’.
+  * When you edit a document divided into multiple files, auto parsed
+    information for all sub files are saved under ‘auto’ subdirectory
+    at master directory when ‘TeX-parse-self’ and ‘TeX-auto-save’
+    options are enabled.  Now you can have support ‘.el’ file saved
+    under ‘auto’ subdirectory of each directory of the sub file when
+    the sub files aren’t located at the master directory.
+    To achieve that, set new user option ‘TeX-auto-save-aggregate’ to
+    ‘nil’.
+  * There was another hook where former dynamic free variables could be
+    used.  The usage was invalidated at version 13.1, by introduction
+    of lexical binding over AUCTeX.
+    The functions in ‘TeX-region-hook’ could access the free variables
+    ‘master-buffer’ and ‘orig-buffer’.  Those are now named
+    ‘TeX-region-master-buffer’ and ‘TeX-region-orig-buffer’,
+    respectively.
+
+-------------------------------------------------------------------
 Thu Apr 13 09:23:22 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch auctex-13.1-expand.patch

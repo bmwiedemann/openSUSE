@@ -16,11 +16,13 @@
 #
 
 
+%bcond_with     tex4auto
+%define tlversion 2023
+%if %{undefined ext_el}
+%define ext_el    .gz
+%endif
+
 Name:           emacs-auctex
-BuildRequires:  emacs-x11
-BuildRequires:  ghostscript_any
-BuildRequires:  texlive
-BuildRequires:  texlive-latex
 Obsoletes:      ge_auc
 Provides:       auc-tex
 Provides:       auctex
@@ -29,12 +31,18 @@ Requires:       emacs
 Requires:       texlive-latex
 Requires:       texlive-tools
 Supplements:    (texlive and emacs)
+BuildRequires:  emacs-x11
 BuildRequires:  makeinfo
 BuildRequires:  texinfo
+%if %{with tex4auto}
+BuildRequires:  ghostscript_any
+BuildRequires:  texlive
 BuildRequires:  texlive-collection-latexextra
+BuildRequires:  texlive-latex
 BuildRequires:  texlive-tex
 BuildRequires:  texlive-texinfo
-Version:        13.1
+%endif
+Version:        13.2
 Release:        0
 Summary:        AUC TeX: An Emacs Extension
 License:        GPL-3.0-or-later
@@ -42,6 +50,7 @@ Group:          Productivity/Editors/Emacs
 Source0:        https://ftp.gnu.org/pub/gnu/auctex/auctex-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/pub/gnu/auctex/auctex-%{version}.tar.gz.sig
 Source2:        auctex.keyring
+Source3:        auctex-%{version}-auto-TL-%{tlversion}.tar.xz
 URL:            https://www.gnu.org/software/auctex
 # Allows to select printer instance
 # PATCH-FEATURE-UPSTREAM dvips.patch
@@ -65,6 +74,7 @@ you cannot use this package for XEmacs.
 
 %define _sitedir %{_datadir}/emacs/site-lisp
 %define _aucdir  %{_sitedir}/auctex
+%define _smp_mflags -j1
 
 %prep
 %setup -n auctex-%{version}
@@ -87,7 +97,7 @@ you cannot use this package for XEmacs.
 	--with-texmf-dir=%{_datadir}/texmf	\
 	--with-doc-dir=/tmp/auctex/doc/preview	\
 	--with-tex-dir=/tmp/auctex/latex/preview
-    find , -name '*.elc' | xargs -r rm -f
+    find . -name '*.elc' | xargs -r rm -f
     %make_build
     %{__make} %{_make_output_sync} -C doc clean
     %{__make} %{_make_output_sync} -C doc %{?_smp_mflags}
@@ -98,15 +108,28 @@ you cannot use this package for XEmacs.
     export LC_CTYPE=ISO-8859-1
     mkdir -p %{buildroot}%{_sitedir}/site-start.d
     %make_install DESTDIR=%{buildroot}
-    rm -rf %{buildroot}%{_aucdir}/auto
-    pushd %{buildroot}%{_aucdir}/
-	emacs --no-site -batch -L %{buildroot}%{_sitedir}/auctex 		\
+    pushd %{buildroot}%{_aucdir}/auto/
+%if %{with tex4auto}
+	cwd
+	echo "Run the command TeX-auto-generate-global in mini buffer"
+	emacs-gtk --no-site -L %{buildroot}%{_sitedir}/auctex 		\
 	    --eval '(setq TeX-lisp-directory "%{buildroot}%{_aucdir}")'		\
 	    --eval '(setq TeX-auto-global "%{buildroot}%{_aucdir}/auto")'	\
-	    -l %{buildroot}%{_sitedir}/tex-site.el -f TeX-auto-generate-global
+	    -l %{buildroot}%{_sitedir}/tex-site.el
+	exit 1
+%else
+	TLVERSION=$(rpm -q --qf '%%{VERSION}' -f /etc/texmf)
+	if test %{tlversion} -eq ${TLVERSION%%%%.*}
+	then
+	    tar --use-compress-program=xz -xf %{S:3}
+	    touch %{buildroot}%{_aucdir}/auto/.nosearch
+	else
+	    echo Rerun with %%bcond_without tex4auto to generate new
+	    echo auctex-%{version}-auto-TL-${TLVERSION%%%%.*}.tar.xz
+	    exit 1
+	fi
+%endif
     popd
-    touch %{buildroot}%{_aucdir}/auto/.nosearch
-    find %{buildroot}%{_aucdir}/auto/ -name '*.elc' | xargs -r rm -f
     cat <<-EOF > %{buildroot}%{_sitedir}/suse-start-auctex.el
 	;;; suse-start-auctex.el
 	;;
@@ -155,7 +178,9 @@ done
 %doc %{_infodir}/*.info*.gz
 %{_aucdir}/*.el
 %{_aucdir}/*.elc
-%{_aucdir}/auto/*.el
+%{_aucdir}/auto/*.el%{ext_el}
+%{_aucdir}/auto/*.elc
+%{_aucdir}/auto/.nosearch
 %{_aucdir}/images/*.xpm
 %{_aucdir}/style/*.el
 %{_aucdir}/style/*.elc

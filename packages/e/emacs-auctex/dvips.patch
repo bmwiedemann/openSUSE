@@ -4,7 +4,7 @@
 
 --- tex.el
 +++ tex.el	2022-09-10 15:13:15.964170324 +0000
-@@ -423,7 +423,7 @@ string."
+@@ -429,7 +429,7 @@ string."
  ;; TeX-print-command.
  
  (defcustom TeX-print-command

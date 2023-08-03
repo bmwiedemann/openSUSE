@@ -470,4 +470,41 @@
 - Add keyring</comment>
     <requestid>1079094</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>b0eace42930acdb4a39bf70a366edcd4</srcmd5>
+    <version>13.2</version>
+    <time>1691076647</time>
+    <user>dimstar_suse</user>
+    <comment>- Run TeX-auto-generate-global in emacs only once if auctex or
+  TeXLive becomes updated to generate all auto lisp files. 
+
+- Update to 13.2
+  • AUCTeX no longer refuses to insert dollar sign when you type ‘$’ at
+    point where AUCTeX thinks the current math mode didn’t start with
+    dollar(s).  AUCTeX assumes the user knows that it isn’t in math
+    mode actually.
+    You can keep the former behavior by enabling the new customize
+    option ‘TeX-refuse-unmatched-dollar’.
+  * AUCTeX supports completion-at-point of macro and environment
+    arguments in LaTeX buffers.  The responsible function recognizes
+    the argument position and extracts the corresponding candidates
+    from the variables ‘TeX-symbol-list’ and ‘LaTeX-environment-list’.
+  * AUCTeX underlines the argument of macros which produce underlined
+    text in the final product with ‘font-latex-underline-face’.  The
+    corresponding keyword class is called ‘underline-command’.  See the
+    section for fontification of macros if you dislike this feature and
+    wish to deactivate it.
+  * Support for the Sioyek document viewer is added.
+  * AUCTeX now requires GNU Emacs 25.1 or higher.
+  * AUCTeX tracks the change in Emacs where initial inputs in the
+    minibuffer during queries are getting phased out.  Queries for the
+    mandatory arguments of macros and environments are adjusted where
+    applicable.  The value which will be used after hitting ‘RET’
+    without other input is shown in the prompt in parentheses prefixed
+    with ‘default’.  For this change the signature of the function
+    ‘TeX-arg-length’ is altered.  The old argument list was:
+         (defun TeX-arg-length (optional &amp;optional prompt
+                                         initial-input definition default)</comment>
+    <requestid>1102168</requestid>
+  </revision>
 </revisionlist>
