@@ -938,6 +938,9 @@ Prefer: libpulse0-32bit libsane1-32bit -pipewire-pulseaudio
 Prefer: vtk-java
 Prefer: eclipse-swt
 
+# have choice for pkgconfig(libplacebo) >= 4.157: libplacebo-devel libplacebo5-devel
+Prefer: -libplacebo5-devel
+
 # wine comes in various flavors by now, we pick the unflavored ones
 Prefer: wine-32bit wine-devel-32bit wine-devel
 
