@@ -158,4 +158,20 @@
   * go#61055 runtime: TestWindowsStackMemory flakes on windows-386-2016</comment>
     <requestid>1098261</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4026a0d380de759b8f96f0a3cde59a7b</srcmd5>
+    <version>1.20.7</version>
+    <time>1691076431</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.20.7 (released 2023-08-01) includes a security fix to the
+  crypto/tls package, as well as bug fixes to the assembler and the
+  compiler.
+  Refs boo#1206346 go1.20 release tracking
+  CVE-2023-29409
+  * go#61580 go#61460 boo#1213880 security: fix CVE-2023-29409 crypto/tls: restrict RSA keys in certificates to &lt;= 8192 bits
+  * go#61320 cmd/compile: ppc64le: sign extension issue in go 1.21rc2
+  * go#61449 net: TestInterfaceArrivalAndDepartureZoneCache is broken on linux-arm64
+  * go#61471 cmd/compile: failed to make Go on riscv64 CPU with numa (forwarded request 1101871 from jfkw)</comment>
+    <requestid>1101873</requestid>
+  </revision>
 </revisionlist>

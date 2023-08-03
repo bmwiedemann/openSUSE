@@ -1,11 +1,24 @@
 -------------------------------------------------------------------
+Tue Aug  1 20:35:02 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.20.7 (released 2023-08-01) includes a security fix to the
+  crypto/tls package, as well as bug fixes to the assembler and the
+  compiler.
+  Refs boo#1206346 go1.20 release tracking
+  CVE-2023-29409
+  * go#61580 go#61460 boo#1213880 security: fix CVE-2023-29409 crypto/tls: restrict RSA keys in certificates to <= 8192 bits
+  * go#61320 cmd/compile: ppc64le: sign extension issue in go 1.21rc2
+  * go#61449 net: TestInterfaceArrivalAndDepartureZoneCache is broken on linux-arm64
+  * go#61471 cmd/compile: failed to make Go on riscv64 CPU with numa
+
+-------------------------------------------------------------------
 Tue Jul 11 17:50:52 UTC 2023 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.20.6 (released 2023-07-11) includes a security fix to the
   net/http package, as well as bug fixes to the compiler, cgo, the
   cover tool, the go command, the runtime, and the crypto/ecdsa,
   go/build, go/printer, net/mail, and text/template packages.
-  Refs boo#1206346 go1.20 release tracking.
+  Refs boo#1206346 go1.20 release tracking
   CVE-2023-29406
   * go#61076 go#60374 boo#1213229 security: fix CVE-2023-29406 net/http: insufficient sanitization of Host header
   * go#60352 cmd/go: go mod tidy introduces ambiguous imports in pruned modules
