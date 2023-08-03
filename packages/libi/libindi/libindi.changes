@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug  1 06:30:49 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.0.3:
+  * Simplify RTL-SDR driver for bug #558
+  * Update ioptronv3.cpp
+  * Fix leaks last blob on driver restart
+
+-------------------------------------------------------------------
 Fri Jun  2 06:06:15 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.0.2:

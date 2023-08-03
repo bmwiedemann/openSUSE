@@ -617,4 +617,12 @@
 * PLL: Treat ERR messages as out-of-bound warnings</comment>
     <requestid>1090744</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>d271d1e11beeb09685fe504ddedde668</srcmd5>
+    <version>2.0.3</version>
+    <time>1691076636</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.0.3</comment>
+    <requestid>1102131</requestid>
+  </revision>
 </revisionlist>
