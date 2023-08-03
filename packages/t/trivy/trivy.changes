@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Aug 03 11:21:12 UTC 2023 - dmueller@suse.com
+
+- Update to version 0.44.0:
+  * feat(repo): support local repositories (#4890)
+  * bump go-dep-parser (#4893)
+  * fix(misconf): add missing fields to proto (#4861)
+  * fix: remove trivy-db package replacement (#4877)
+  * chore(test): bump the integration test timeout to 15m (#4880)
+  * chore(deps): Update defsec to v0.91.0 (#4886)
+  * chore: update CODEOWNERS (#4871)
+  * feat(vuln): support vulnerability status (#4867)
+  * feat(misconf): Support custom URLs for policy bundle (#4834)
+  * refactor: replace with sortable packages (#4858)
+  * docs: correct license scanning sample command (#4855)
+  * fix(report): close the file (#4842)
+  * feat(nodejs): add support for include-dev-deps flag for yarn (#4812)
+  * feat(misconf): Add support for independently enabling libraries (#4070)
+  * feat(secret): add secret config file for cache calculation (#4837)
+  * Fix a link in gitlab-ci.md (#4850)
+  * fix(flag): use globalstar to skip directories (#4854)
+  * chore(deps): bump github.com/docker/docker from v23.0.5+incompatible to v23.0.7-0.20230714215826-f00e7af96042+incompatible (#4849)
+  * fix(license): using common way for splitting licenses (#4434)
+  * fix(containerd): Use img platform in exporter instead of strict host platform (#4477)
+  * remove govulndb (#4783)
+  * fix(java): inherit licenses from parents (#4817)
+  * refactor: add allowed values for CLI flags (#4800)
+  * add example regex to allow rules (#4827)
+  * feat(misconf): Support custom data for rego policies for cloud (#4745)
+  * docs: correcting the trivy k8s tutorial (#4815)
+  * feat(cli): add --tf-exclude-downloaded-modules flag (#4810)
+  * fix(sbom): cyclonedx recommendations should include fixed versions for each package (#4794)
+  * feat(misconf): enable --policy flag to accept directory and files both (#4777)
+  * feat(python): add license fields (#4722)
+  * fix: support trivy k8s-version on k8s sub-command (#4786)
+
+-------------------------------------------------------------------
 Thu Jul 13 08:47:12 UTC 2023 - dmueller@suse.com
 
 - Update to version 0.43.1:
