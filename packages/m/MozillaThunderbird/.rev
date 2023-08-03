@@ -4916,4 +4916,35 @@ I cannot test locally unfortunately.
     File Extension Spoofing using the Text Direction Override Character</comment>
     <requestid>1100766</requestid>
   </revision>
+  <revision rev="314" vrev="1">
+    <srcmd5>426f4de36bfb0caf497ca263203a9701</srcmd5>
+    <version>102.14.0</version>
+    <time>1691076567</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 102.14.0
+  MFSA 2023-32 (bsc#1213746)
+  * CVE-2023-4045 (bmo#1833876)
+    Offscreen Canvas could have bypassed cross-origin restrictions
+  * CVE-2023-4046 (bmo#1837686)
+    Incorrect value used during WASM compilation
+  * CVE-2023-4047 (bmo#1839073)
+    Potential permissions request bypass via clickjacking
+  * CVE-2023-4048 (bmo#1841368)
+    Crash in DOMParser due to out-of-memory conditions
+  * CVE-2023-4049 (bmo#1842658)
+    Fix potential race conditions when releasing platform objects
+  * CVE-2023-4050 (bmo#1843038)
+    Stack buffer overflow in StorageManager
+  * CVE-2023-4054 (bmo#1840777)
+    Lack of warning when opening appref-ms files
+  * CVE-2023-4055 (bmo#1782561)
+    Cookie jar overflow caused unexpected cookie jar state
+  * CVE-2023-4056 (bmo#1820587, bmo#1824634, bmo#1839235,
+    bmo#1842325, bmo#1843847)
+    Memory safety bugs fixed in Firefox 116, Firefox ESR 115.1,
+    Firefox ESR 102.14, Thunderbird 115.1, and Thunderbird 102.14
+
+  * CVE-2023-3417 (bmo#1835582, boo#1213658)</comment>
+    <requestid>1102113</requestid>
+  </revision>
 </revisionlist>
