@@ -16,6 +16,8 @@
 #
 
 
+%define pythons python3
+%{?sle15_python_module_pythons}
 Name:           b4
 Version:        0.12.3
 Release:        0
@@ -24,15 +26,16 @@ License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://git.kernel.org/pub/scm/utils/b4/b4.git
 Source0:        https://github.com/mricon/b4/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module dkimpy >= 1.0.5}
+BuildRequires:  %{python_module dnspython >= 2.0.0}
+BuildRequires:  %{python_module patatt >= 0.5}
+BuildRequires:  %{python_module requests >= 2.24.0}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  git-filter-repo >= 2.30
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-dkimpy >= 1.0.5
-BuildRequires:  python3-dnspython >= 2.0.0
-BuildRequires:  python3-patatt >= 0.5
-BuildRequires:  python3-requests >= 2.24.0
-BuildRequires:  python3-setuptools
 Requires:       git-core
 Requires:       git-filter-repo >= 2.30
 Requires:       python3-dkimpy
@@ -60,14 +63,14 @@ rm -rf patatt
 sed -i.old '1{/#!.*/d}' b4/*.py
 
 %build
-%python3_build
+%python_build
 
 %install
-%python3_install
-%fdupes %{buildroot}%{python3_sitelib}
+%python_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-python3 setup.py check
+%python_exec setup.py check
 export PYTHONPATH="./"
 THEIRS=`%{buildroot}/%{_bindir}/b4 --version`
 OURS=`sed -n "s/__VERSION__ = '\(.*\)'/\1/p" b4/__init__.py`
