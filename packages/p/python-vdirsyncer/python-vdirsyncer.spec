@@ -37,6 +37,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(systemd)
+Requires:       python-aiohttp
 Requires:       python-aiostream
 Requires:       python-atomicwrites >= 0.1.7
 Requires:       python-click >= 5.0

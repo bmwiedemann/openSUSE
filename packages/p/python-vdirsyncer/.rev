@@ -213,4 +213,12 @@
     <comment>- fix and reenable tests</comment>
     <requestid>1084913</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>9b18a5392efc92a5ee6ee6744d6df6de</srcmd5>
+    <version>0.19.0</version>
+    <time>1691076658</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1102201</requestid>
+  </revision>
 </revisionlist>
