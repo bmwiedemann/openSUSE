@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug  3 06:31:46 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.14.3.0:
+  * The Darwin specific ${DARWIN_ARCH}, thay by default was unset,
+    is now the ${ARCH_CFLAGS} Makefile variable.  Comments about
+    various "-arch name" have been moved to the ${ARCH_CFLAGS} area.
+  * Improved the output of the calcinfo rule by adding echos
+    of various uname values as well as some top Makefile variables.
+  * Fixed the BUGS file with respect to using `make debug`.
+  * Added a final ls of `debug.out` for `make debug`.
+
+-------------------------------------------------------------------
 Mon Jul 31 06:14:35 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.14.2.2:

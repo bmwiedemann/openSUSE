@@ -524,4 +524,19 @@
   * macOS Darwin defaults LCC to &quot;cc&quot;.</comment>
     <requestid>1101458</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>0f4b62dd6af3a39a58f338a8c1297f73</srcmd5>
+    <version>2.14.3.0</version>
+    <time>1691076632</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.14.3.0:
+  * The Darwin specific ${DARWIN_ARCH}, thay by default was unset,
+    is now the ${ARCH_CFLAGS} Makefile variable.  Comments about
+    various &quot;-arch name&quot; have been moved to the ${ARCH_CFLAGS} area.
+  * Improved the output of the calcinfo rule by adding echos
+    of various uname values as well as some top Makefile variables.
+  * Fixed the BUGS file with respect to using `make debug`.
+  * Added a final ls of `debug.out` for `make debug`.</comment>
+    <requestid>1102112</requestid>
+  </revision>
 </revisionlist>
