@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 25 00:20:47 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update emojis to version 0.1.3.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/emojis-0.1.3/src/changelog.md
+
+-------------------------------------------------------------------
 Thu Mar 30 17:06:42 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.
