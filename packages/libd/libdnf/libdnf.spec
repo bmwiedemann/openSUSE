@@ -34,7 +34,7 @@
 %define devname %{name}-devel
 
 Name:           libdnf
-Version:        0.70.1
+Version:        0.70.2
 Release:        0
 Summary:        Library providing C and Python APIs atop libsolv
 License:        LGPL-2.1-or-later

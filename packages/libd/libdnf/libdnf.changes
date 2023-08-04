@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug  1 07:48:04 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to 0.70.2:
+  * Support "proxy=none" in main config (RhBug:2155713)
+  * Fix #1558: Don't assume inclusion of cstdint
+  * Disconnect monitors in dnf_repo_loader_finalize() (RhBug:2070153) 
+
+-------------------------------------------------------------------
 Tue May 30 07:51:43 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.70.1:
