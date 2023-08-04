@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug  2 10:01:17 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Reduce memory constraints for riscv64
+
+-------------------------------------------------------------------
 Fri May  5 09:06:57 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
 
 - Tune _constraints for various architectures.
