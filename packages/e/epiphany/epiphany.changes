@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 31 09:36:10 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 44.6:
+  + Hide "Search the Web for" context menu item in web app mode.
+  + Fix Save Password? permission requests, broken since 44.4.
+  + Fix unencoded % characters in URLs causing session to fail to
+    save.
+  + Fix web views not being destroyed when window is closed.
+  + Hopefully fix crash in ephy_sqlite_connection_create_statement.
+
+-------------------------------------------------------------------
 Fri Jun 30 14:17:31 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.5:

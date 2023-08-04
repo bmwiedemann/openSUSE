@@ -17,7 +17,7 @@
 
 
 Name:           epiphany
-Version:        44.5
+Version:        44.6
 Release:        0
 Summary:        GNOME Web Browser
 License:        GPL-3.0-or-later
