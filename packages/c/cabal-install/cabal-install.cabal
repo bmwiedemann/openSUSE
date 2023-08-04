@@ -2,7 +2,7 @@ Cabal-Version:      2.2
 
 Name:               cabal-install
 Version:            3.8.1.0
-x-revision: 3
+x-revision: 4
 Synopsis:           The command-line interface for Cabal and Hackage.
 Description:
     The \'cabal\' command-line program simplifies the process of managing
@@ -235,7 +235,7 @@ library
       if os(windows)
         build-depends: windns      >= 0.1.0 && < 0.2
       else
-        build-depends: resolv      >= 0.1.1 && < 0.2
+        build-depends: resolv      >= 0.1.1 && < 0.3
 
     if os(windows)
       -- newer directory for symlinks
