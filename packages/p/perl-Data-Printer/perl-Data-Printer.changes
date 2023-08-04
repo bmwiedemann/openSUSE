@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jul 31 03:08:13 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.001001
+   see /usr/share/doc/packages/perl-Data-Printer/Changes
+
+  1.1.1   2023-07-30
+      BUG FIXES:
+          - explicitly mentions that native perl classes (perl 5.38) do not
+             have internals.
+          - 'quiet' now returns the data properly when return_value is 'pass'.
+          - cope with import and unimport in perl 5.39 UNIVERSAL (Graham Knop)
+          - fix tie issue (thank you Curtis 'Ovid' Poe for reporting and
+            Leon Timmermans for providing a patch)
+          - doc fixes and improvements (Matthias Muth, Elvin Aslanov)
+
+-------------------------------------------------------------------
 Fri Dec 23 03:07:02 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.001000
