@@ -22,7 +22,7 @@ Fri Feb 24 21:42:37 UTC 2023 - Eugene Popov <popov895@ukr.net>
 -------------------------------------------------------------------
 Mon Dec 12 11:00:12 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
-- Do not apply vlc.a52.patch if liba52 is < 0.8.0
+- Do not apply vlc.a52.patch if liba52 is > 0.8.0
 - Avoid ugly _FORTIFY_SOURCE redefinition warnings
 
 -------------------------------------------------------------------
