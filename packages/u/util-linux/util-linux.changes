@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug  2 07:36:09 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
+
+- Disable last and lastb for ALP, too.
+
+-------------------------------------------------------------------
 Fri Jul 28 14:47:15 UTC 2023 - Goldwyn Rodrigues <rgoldwyn@suse.com>
 
 - Re-add 0001-Revert-libblkid-try-LUKS2-first-when-probing.patch

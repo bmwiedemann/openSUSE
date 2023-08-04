@@ -2504,4 +2504,12 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
     <comment>Readded patch because of https://build.opensuse.org/request/show/1100707#status-history-20975903 (forwarded request 1101224 from goldwynr)</comment>
     <requestid>1101236</requestid>
   </revision>
+  <revision rev="275" vrev="2">
+    <srcmd5>ed55e3ab501a45c7531df40a4ac6d8ae</srcmd5>
+    <version>2.39.1</version>
+    <time>1691154156</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable last and lastb for ALP, too. (forwarded request 1101899 from kukuk)</comment>
+    <requestid>1101918</requestid>
+  </revision>
 </revisionlist>
