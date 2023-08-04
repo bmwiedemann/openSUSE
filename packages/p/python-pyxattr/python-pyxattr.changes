@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 27 12:54:45 UTC 2023 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Nov 30 12:13:40 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 0.7.2

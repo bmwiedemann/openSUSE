@@ -16,10 +16,9 @@
 #
 
 
-%define skip_python2 1
 %global mod_name pyxattr
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define github_url https://github.com/iustin/%{mod_name}/releases/download
+%{?sle15_python_module_pythons}
 Name:           python-%{mod_name}
 Version:        0.7.2
 Release:        0
