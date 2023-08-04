@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Aug  4 04:25:01 UTC 2023 - Godfrey Chung <godfrey.chung@acs.com.hk>
+
+- Updated to version 1.1.10.
+  * Add the following readers support:
+    ACR40U ICC Reader
+    SCR FW_Upgrade
+    ACR1552 1S CL Reader
+    ACR1552 CL Reader
+    ACR1552 USB FW_Upgrade
+  * Enable ACR1552U-M1 (composite device) as multi-slot reader.
+  * Enable the 2nd interface of ACR1552U-M1 as SAM slot.
+  * Fix missing initialization in get_end_points().
+  * Update _usbDevice.has_interrupt in get_end_points().
+  * Initialize multislot for interrupt endpoint only in OpenUSBByName().
+  * Simplify the code for delaying the write operation.
+  * Allow ACR38 or the reader which needs write delay in WriteUSB().
+  * Check the packet size to avoid infinite loop in WriteUSB().
+  * Use #pragma pack(1) for all platforms in src/ifdhandler.c.
+- Replaced acsccid-1.1.9-libhal.patch with acsccid-1.1.10-libhal.patch.
+- Replaced acsccid-1.1.9-polling-thread.patch with
+  acsccid-1.1.10-polling-thread.patch.
+- Replaced acsccid-1.1.9-polling-unplug.patch with
+  acsccid-1.1.10-polling-unplug.patch.
+- Replaced acsccid-1.1.9-libusb-1.0.8.patch with
+  acsccid-1.1.10-libusb-1.0.8.patch.
+
+-------------------------------------------------------------------
 Fri Mar 24 02:52:13 UTC 2023 - Godfrey Chung <godfrey.chung@acs.com.hk>
 
 - Updated to version 1.1.9.

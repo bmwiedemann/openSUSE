@@ -1,7 +1,7 @@
 #
 # spec file for package pcsc-acsccid
 #
-# Copyright (c) 2023 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2023 Advanced Card Systems Ltd.
 #
 # All modifications and additions to the file contributed by third parties
@@ -42,7 +42,7 @@ BuildRequires:  pkg-config
 %if 0%{?suse_version} >= 1140
 BuildRequires:  pkgconfig(udev)
 %endif
-Version:        1.1.9
+Version:        1.1.10
 Release:        0
 URL:            http://acsccid.sourceforge.net/
 Summary:        PCSC Driver for ACS CCID Based Smart Card Readers
@@ -51,14 +51,14 @@ Group:          Productivity/Security
 Source:         http://downloads.sourceforge.net/%{_name}/%{_name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
 %if 0%{?sles_version} == 11
-# PATCH-FIX-SLE acsccid-1.1.9-libhal.patch godfrey.chung@acs.com.hk -- Fix the compatibility with libhal.
-Patch0:         %{_name}-1.1.9-libhal.patch
-# PATCH-FIX-SLE acsccid-1.1.9-polling-thread.patch godfrey.chung@acs.com.hk -- Add polling thread support for slot status.
-Patch1:         %{_name}-1.1.9-polling-thread.patch
-# PATCH-FIX-SLE acsccid-1.1.9-polling-unplug.patch godfrey.chung@acs.com.hk -- Let pcsc-lite delay the polling if the reader is unplugged.
-Patch2:         %{_name}-1.1.9-polling-unplug.patch
-# PATCH-FIX-SLE acsccid-1.1.9-libusb-1.0.8.patch godfrey.chung@acs.com.hk -- Fix the compatibility with libusb 1.0.8.
-Patch3:         %{_name}-1.1.9-libusb-1.0.8.patch
+# PATCH-FIX-SLE acsccid-1.1.10-libhal.patch godfrey.chung@acs.com.hk -- Fix the compatibility with libhal.
+Patch0:         %{_name}-1.1.10-libhal.patch
+# PATCH-FIX-SLE acsccid-1.1.10-polling-thread.patch godfrey.chung@acs.com.hk -- Add polling thread support for slot status.
+Patch1:         %{_name}-1.1.10-polling-thread.patch
+# PATCH-FIX-SLE acsccid-1.1.10-polling-unplug.patch godfrey.chung@acs.com.hk -- Let pcsc-lite delay the polling if the reader is unplugged.
+Patch2:         %{_name}-1.1.10-polling-unplug.patch
+# PATCH-FIX-SLE acsccid-1.1.10-libusb-1.0.8.patch godfrey.chung@acs.com.hk -- Fix the compatibility with libusb 1.0.8.
+Patch3:         %{_name}-1.1.10-libusb-1.0.8.patch
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       pcsc-lite >= %{pcsc_lite_ver}
@@ -87,6 +87,8 @@ Enhances:       modalias(usb:v072FpB117d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072FpB000d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072FpB501d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072FpB504d*dc*dsc*dp*ic*isc*ip*)
+Enhances:       modalias(usb:v072FpB506d*dc*dsc*dp*ic*isc*ip*)
+Enhances:       modalias(usb:v072FpB505d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp90D2d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp8306d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp2011d*dc*dsc*dp*ic*isc*ip*)
@@ -147,6 +149,9 @@ Enhances:       modalias(usb:v072Fp2213d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp222Cd*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp220Cd*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp2258d*dc*dsc*dp*ic*isc*ip*)
+Enhances:       modalias(usb:v072Fp2303d*dc*dsc*dp*ic*isc*ip*)
+Enhances:       modalias(usb:v072Fp2308d*dc*dsc*dp*ic*isc*ip*)
+Enhances:       modalias(usb:v072Fp2302d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp2301d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp2300d*dc*dsc*dp*ic*isc*ip*)
 Enhances:       modalias(usb:v072Fp0102d*dc*dsc*dp*ic*isc*ip*)
