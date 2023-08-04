@@ -160,11 +160,7 @@ mv genfile bin
 cd -
 
 %check
-%if !0%{?qemu_user_space_build:1}
-# Checks disabled in qemu because of races happening when we emulate
-# multi-threaded programs
 %make_build check || { cat tests/testsuite.log; exit 1; }
-%endif
 
 %install
 %make_install DESTDIR=%{buildroot}

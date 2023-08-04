@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 25 13:54:28 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Run testsuite also on qemu build
+
+-------------------------------------------------------------------
 Thu Jul 20 09:57:28 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update tests-skip-time01-on-32bit-time_t.patch to not run test
