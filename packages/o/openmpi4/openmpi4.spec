@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2004-2005 The Trustees of Indiana University and Indiana
 #                         University Research and Technology
 #                         Corporation.  All rights reserved.
@@ -42,8 +42,8 @@
 # % define build_static_devel 1
 
 %global pname openmpi
-%global vers 4.1.4
-%define _vers 4_1_4
+%global vers 4.1.5
+%define _vers 4_1_5
 %define m_f_ver 4
 %bcond_with ringdisabled
 
@@ -124,7 +124,7 @@ ExclusiveArch:  do_not_build
 %{bcond_with hwloc}
 %endif
 
-%define git_ver .0.ffb0adcdd677
+%define git_ver .0.42b829b3b319
 
 #############################################################################
 #
