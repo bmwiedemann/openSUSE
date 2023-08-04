@@ -5351,4 +5351,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
 - supersedes u_fix-glx-context-opengl-4.5.patch</comment>
     <requestid>1100408</requestid>
   </revision>
+  <revision rev="483" vrev="355">
+    <srcmd5>8a17fcc03b6696c88cb4c0d87b06c051</srcmd5>
+    <version>unknown</version>
+    <time>1691154175</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to bugfix release 23.1.5
+  --&gt; https://docs.mesa3d.org/relnotes/23.1.4.html</comment>
+    <requestid>1102149</requestid>
+  </revision>
 </revisionlist>
