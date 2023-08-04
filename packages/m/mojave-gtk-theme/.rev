@@ -140,4 +140,13 @@
   * Render and dpi enhancements #236</comment>
     <requestid>1094769</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3f72ce7597e47b9e63f7e964fd932888</srcmd5>
+    <version>20230804</version>
+    <time>1691154240</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20230804:
+  * Add NixOS icon #238</comment>
+    <requestid>1102295</requestid>
+  </revision>
 </revisionlist>
