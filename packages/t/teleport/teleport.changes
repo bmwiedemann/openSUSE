@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Aug 04 06:29:52 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 13.3.1:
+  * Release 13.3.1 (#30016)
+  * Update e (#30012)
+  * [v13] [Mattermost] Lax requiring recipients and set raw
+    recipients on cfg init  (#30009)
+  * Fix `tool.tsh.common.TestKube/list_kube` flaky test (#29998)
+  * Added Prometheus metric for created access requests (#29761)
+    (#29991)
+  * Fix rough edges with usage script (#29982)
+  * Add Prometheus metrics to Kubernetes Access (#29363) (#29970)
+  * pgbk: ensure TOASTed values in the change feed (#29975)
+  * [v13] WebDiscover: Enable auto deploy and skip IAM policy
+    screen on condition (#29978)
+  * [v13] WebDiscover: Partially implement auto deploy database
+    server view (#28629)
+  * Hardware Key Support docs - additional troubleshooting info
+    (#29147) (#29956)
+  * Use enum to describe `IAMPolicyStatus` instead of a bool
+    (#29721) (#29951)
+  * [v13] ci: Fix post-release calling update-ami-ids (#29886)
+  * [v13] Add Kubernetes/Helm instructions to the RDS guide
+    (#29920)
+  * terraform-agent-pool: Fix token provisioning and add expiry
+    (#29943)
+  * fix: Bump libcrypto version in pkgconfig files (#29947)
+  * [v13] Add Headless Polling to Teleport Connect (#28975)
+  * [v13] docs: add client tools download section (#29891)
+  * propagate tctl verbose flag (#29870)
+  * docs: update version (#29884)
+  * [v13] Postgres and Azure Blob Storage backend docs (#29912)
+  * Add support for deleting proxy resources to tctl (#29903)
+  * chore: Bump openssl to 3.0.10 (#29876) (#29908)
+  * [v13] chore: Bump Go to 1.20.7 (#29904)
+  * web: Ignore .swc directory when computing web SHA (#29897)
+  * Postgres: reduce logging level for individual messages.
+    (#29847)
+  * [v13] Add docs on how to impersonate Kubernetes ServiceAccounts
+    (#29868)
+  * lib/teleterm TestStart: Increase timeout, improve error
+    handling (#29852)
+
+-------------------------------------------------------------------
 Wed Aug 02 07:11:14 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 13.3.0:
