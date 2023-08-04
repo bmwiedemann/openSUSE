@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug  3 14:53:38 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- IT MEANS THAT bsc#1210638 STILL HAS NOT BEEN FIXED!
+- Add Revert-gh105127-left-tests.patch (gh#python/cpython!106941)
+  partially reverting CVE-2023-27043-email-parsing-errors.patch,
+  because of the regression in gh#python/cpython#106669.
+- (bsc#1210638, CVE-2023-27043) Add
+  CVE-2023-27043-email-parsing-errors.patch, which detects email
+  address parsing errors and returns empty tuple to indicate the
+  parsing error (old API). (The patch is faulty,
+  gh#python/cpython#106669, but upstream decided not to just
+  revert it).
+
+-------------------------------------------------------------------
 Wed Jun 28 16:57:46 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.8.17:

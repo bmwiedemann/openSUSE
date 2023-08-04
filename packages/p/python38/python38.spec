@@ -179,6 +179,14 @@ Patch38:        98437-sphinx.locale._-as-gettext-in-pyspecific.patch
 # PATCH-FIX-UPSTREAM 99366-patch.dict-can-decorate-async.patch bsc#[0-9]+ mcepl@suse.com
 # Patch for gh#python/cpython#98086
 Patch41:        99366-patch.dict-can-decorate-async.patch
+# PATCH-FIX-UPSTREAM CVE-2023-27043-email-parsing-errors.patch bsc#1210638 mcepl@suse.com
+# Detect email address parsing errors and return empty tuple to
+# indicate the parsing error (old API), from gh#python/cpython!105127
+# Patch carries a REGRESSION (gh#python/cpython#106669), so it has been also partially REVERTED
+Patch42:        CVE-2023-27043-email-parsing-errors.patch
+# PATCH-FIX-UPSTREAM Revert-gh105127-left-tests.patch bsc#1210638 mcepl@suse.com
+# Partially revert previous patch
+Patch43:        Revert-gh105127-left-tests.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -452,6 +460,8 @@ other applications.
 %patch37 -p1
 %patch38 -p1
 %patch41 -p1
+%patch42 -p1
+%patch43 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
