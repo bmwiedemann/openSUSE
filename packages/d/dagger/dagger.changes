@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Fri Aug 04 06:25:36 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.0 (no releases between 0.6.4 and 0.8.0):
+  * Create release notes for Engine & CLI v0.8.0 (#5563)
+  * Add cookbook examples on error handling (#5538)
+  * docs: updated CLI code snippet with latest API reference
+    (#5554)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.7.0 to
+    5.8.1 (#5545)
+  * feat: Elixir codegen improvement (#5526)
+  * docs: Added FAQ entries for upgrading/uninstalling (#5515)
+  * build(deps): bump github.com/tidwall/gjson from 1.14.4 to
+    1.15.0 (#5543)
+  * build(deps): bump clsx from 1.2.1 to 2.0.0 in /website (#5549)
+  * build(deps): bump google.golang.org/grpc from 1.55.0 to 1.57.0
+    (#5541)
+  * update golang.org/x/sys v0.0.0-20220811171246-fbc7d0a398ab to
+    0.1.0 (#5528)
+  * build(deps-dev): bump @trivago/prettier-plugin-sort-imports
+    (#5546)
+  * build(deps): bump golang.org/x/oauth2 from 0.9.0 to 0.10.0
+    (#5547)
+  * build(deps): bump sass from 1.63.6 to 1.64.2 in /website
+    (#5550)
+  * Python: restructure internal packages and modules (#5558)
+  * Centralize graphql server in the engine runner (#5415)
+  * feat: add support _EXPERIMENTAL_DAGGER_CLI_BIN to rust (#5534)
+  * feat: check version compatibility (#5315)
+  * Node.js: Fix returning lists of objects (#5523)
+  * auth: always pass bearer auth related requests to docker auth
+    provider. (#5524)
+  * Node.js: Export `Client` as a named export, instead of default
+    (#5517)
+  * Python: add status updates during automatic provisioning
+    (#5522)
+  * feat: improve engine session loading logging (#5488)
+  * Revert "docs: cookbook: mount directories as secrets (#5502)"
+    (#5519)
+  * docs: cookbook: mount directories as secrets (#5502)
+  * feat: implement `host.setSecretFile()` to securely set binary
+    files as secrets (#5500)
+  * Python: Remove sync client (#5514)
+  * engine: fix publish (#5516)
+  * Remove API deprecations (#5512)
+  * Rename `id` argument in `Container.withRootfs` (#5513)
+  * Add missing types of changes: Breaking, Removed & Security
+    (#5510)
+  * Python: Enforce keyword usage for optional arguments (#5508)
+  * engine: bump alpine image to fix dns resolution error (#5470)
+  * Add release notes fragment instructions (#5501)
+  * core: add test for cache volumes w/ submounts. (#5491)
+  * Improve releasing during v0.6.4 (#5490)
+  * chore: update AppendAnonymousGitLabels (#5487)
+
+-------------------------------------------------------------------
 Thu Jul 20 04:50:48 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.6.4:
