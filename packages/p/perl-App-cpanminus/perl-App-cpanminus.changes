@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 31 03:06:01 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.7047
+   see /usr/share/doc/packages/perl-App-cpanminus/Changes
+
+  1.7047  2023-07-29 22:59:16 PDT
+     [Bug Fix]
+        - Upgrade fatpacked CPAN::Meta::Check to 0.018 (#662)
+
+-------------------------------------------------------------------
 Thu Apr 28 03:06:11 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.7046
