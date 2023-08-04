@@ -212,7 +212,6 @@ rm -f %{buildroot}/%{_infodir}/dir
 %endif
 
 %check
-%if ! 0%{?qemu_user_space_build}
 %if 0%{?suse_version}
 make %{?_smp_mflags} check
 %else
@@ -226,7 +225,6 @@ mv Test/E01options.ztst Test/E01options.ztst.mvd
     mv Y*.ztst skipped )
 %endif
   ZTST_verbose=0 make test
-%endif
 %endif
 
 %preun

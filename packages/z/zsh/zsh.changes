@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug  3 10:28:02 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Enable testsuite in qemu build
+
+-------------------------------------------------------------------
 Tue Feb 28 16:40:02 UTC 2023 - Paolo Perego <paolo.perego@suse.com>
 
 - Disabled zsh-sh subpackage generation for Leap 15.4 to prevent an error when
