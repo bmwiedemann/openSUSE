@@ -117,4 +117,16 @@
 - 1299.patch: fixes build with new PF5</comment>
     <requestid>1093480</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>1cf880fc260e9ca7ddd33c54ef295387</srcmd5>
+    <version>73</version>
+    <time>1691154183</time>
+    <user>dimstar_suse</user>
+    <comment>- New version 73. Changes since 70 include,
+  * show time of container's latest checkpoint
+  * Bug fixes and translation updates
+  * Add manifest condition for the Python bridge
+- 1299.patch: included in release and deleted here</comment>
+    <requestid>1102175</requestid>
+  </revision>
 </revisionlist>

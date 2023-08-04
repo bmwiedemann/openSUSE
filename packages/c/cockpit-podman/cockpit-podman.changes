@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug  3 12:01:39 UTC 2023 - Adam Majer <adam.majer@suse.de>
+
+- New version 73. Changes since 70 include,
+  * show time of container's latest checkpoint
+  * Bug fixes and translation updates
+  * Add manifest condition for the Python bridge
+- 1299.patch: included in release and deleted here
+
+-------------------------------------------------------------------
 Fri Jun 16 10:18:09 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - New version 70. Changes since 53 include,
