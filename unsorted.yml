@@ -20303,7 +20303,6 @@ unsorted:
   - perl-DBIx-ContextualFetch 
   - perl-DBIx-Simple 
   - perl-DBIx-Transaction 
-  - perl-DBM-Deep 
   - perl-DNS-LDNS 
   - perl-Daemon-Generic 
   - perl-Dancer2 
@@ -20424,7 +20423,6 @@ unsorted:
   - perl-Eval-Closure 
   - perl-Eval-LineNumbers 
   - perl-Event 
-  - perl-Exception-Base 
   - perl-Exception-Class 
   - perl-Expect 
   - perl-Export-Attrs 
@@ -20607,7 +20605,6 @@ unsorted:
   - perl-IRI 
   - perl-Ima-DBI 
   - perl-Image-Info 
-  - perl-Image-Sane 
   - perl-Image-Size 
   - perl-Import-Into 
   - perl-Importer 
@@ -20707,10 +20704,7 @@ unsorted:
   - perl-Math-Random-ISAAC 
   - perl-Math-Round 
   - perl-Memoize-ExpireLRU 
-  - perl-Menlo 
-  - perl-Menlo-Legacy 
   - perl-Meta-Builder 
-  - perl-Method-Signatures 
   - perl-Method-Signatures-Simple 
   - perl-Metrics-Any 
   - perl-Minion 
@@ -20777,7 +20771,6 @@ unsorted:
   - perl-Moose 
   - perl-Moose-Autobox 
   - perl-MooseX-Aliases 
-  - perl-MooseX-App 
   - perl-MooseX-App-Cmd 
   - perl-MooseX-ArrayRef 
   - perl-MooseX-Attribute-ENV 
@@ -20789,7 +20782,6 @@ unsorted:
   - perl-MooseX-Daemonize 
   - perl-MooseX-Declare 
   - perl-MooseX-Getopt 
-  - perl-MooseX-GlobRef 
   - perl-MooseX-Has-Options 
   - perl-MooseX-HasDefaults 
   - perl-MooseX-InsideOut 
@@ -21007,8 +20999,6 @@ unsorted:
   - perl-Role-Tiny 
   - perl-Rose-Object 
   - perl-Router-Simple 
-  - perl-SDL 
-  - perl-SGML-Parser-OpenSP 
   - perl-SGMLS 
   - perl-SOAP-Lite 
   - perl-SQL-Abstract 
@@ -21117,7 +21107,6 @@ unsorted:
   - perl-Task-Kensho-Scalability 
   - perl-Task-Kensho-Testing 
   - perl-Task-Kensho-XML 
-  - perl-Task-Moose 
   - perl-Task-Weaken 
   - perl-Template-GD 
   - perl-Template-Plugin-Filter-ANSIColor 
@@ -21135,7 +21124,6 @@ unsorted:
   - perl-Term-UI 
   - perl-Test-API 
   - perl-Test-Alien-CPP 
-  - perl-Test-Assert 
   - perl-Test-Base 
   - perl-Test-CChecker 
   - perl-Test-CPAN-Meta 
