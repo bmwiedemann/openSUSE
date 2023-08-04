@@ -94,4 +94,15 @@ pgcsw</comment>
 </comment>
     <requestid>1101652</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7d2ffd9d9d0d273a303ffe3deddde8e5</srcmd5>
+    <version>3.3.4</version>
+    <time>1691154268</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.3.4
+   * Bug fixed: Wallpaper changes undesirably after reconnecting to the internet
+   * Language files updated
+</comment>
+    <requestid>1102300</requestid>
+  </revision>
 </revisionlist>
