@@ -271,4 +271,16 @@
 - Add parrot icon emoji</comment>
     <requestid>1067033</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>0554e6f5ae675a165aca6c2b3ca27f18</srcmd5>
+    <version>1.4.20</version>
+    <time>1691154239</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.20
+ * Reduce preedit flicker
+ * Remove xml:lang=&quot;en&quot; from the screenshot in appdata.xml
+ * Use ibus_text_new_from_string (string) instead of ibus_text_new_from_static_string (string) in ibus_m17n_engine_commit_string()
+ * Add missing g_free (buf) in ibus_m17n_mtext_to_utf8()</comment>
+    <requestid>1102259</requestid>
+  </revision>
 </revisionlist>

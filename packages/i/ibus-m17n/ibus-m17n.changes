@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug  4 04:26:10 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
+
+- Update to 1.4.20
+ * Reduce preedit flicker
+ * Remove xml:lang="en" from the screenshot in appdata.xml
+ * Use ibus_text_new_from_string (string) instead of ibus_text_new_from_static_string (string) in ibus_m17n_engine_commit_string()
+ * Add missing g_free (buf) in ibus_m17n_mtext_to_utf8()
+
+-------------------------------------------------------------------
 Tue Feb 21 14:38:35 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
 
 update: 1.4.17 -> 1.4.19
