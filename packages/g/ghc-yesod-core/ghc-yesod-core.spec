@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.6.24.3
+Version:        1.6.24.4
 Release:        0
 Summary:        Creation of type-safe, RESTful web applications
 License:        MIT

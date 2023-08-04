@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 26 10:47:01 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update yesod-core to version 1.6.24.4.
+  ## 1.6.24.4
+
+  * Fix test-suite compilation error for GHC >= 9.0.1 [#1812](https://github.com/yesodweb/yesod/pull/1812)
+
+-------------------------------------------------------------------
 Thu Jul 13 03:24:33 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update yesod-core to version 1.6.24.3.
