@@ -14,7 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-%{?sle_python_module_pythons}
+%{?sle15_python_module_pythons}
 
 %define timestamp 20221224
 Name:           python-dfVFS
