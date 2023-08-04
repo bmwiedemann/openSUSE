@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug  1 10:27:36 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 4.4.3:
+  * Fix compilation with Cython 3.0.0.
+  * Improve man pages.
+  * Remove neverallow options in sediff.
+  * Add -r option to seinfoflow to get flows into the source type.
+  * Reject a rule with no permissions as invalid policy.
+
+-------------------------------------------------------------------
 Fri Jul 14 04:58:38 UTC 2023 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Add python3-setuptools as a runtime requirement of python3-setools
