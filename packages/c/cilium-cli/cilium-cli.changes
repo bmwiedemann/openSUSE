@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Aug 03 17:42:29 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.15.5:
+  * Prepare for v0.15.5 release
+  * Update stable release to v0.15.4
+  * fix(deps): update all go dependencies main
+  * renovate: Don't update golang.org/x/exp
+  * fix: Changed regex to include capital letters.
+  * clustermesh status: improve error reporting when not ready
+  * clustermesh status: validate expected number of clusters
+  * clustermesh status: consistent output order
+  * clustermesh status: fix not ready message
+  * clustermesh status: drop wait logic from
+    ClusterMeshConnectivity
+  * clustermesh status: always check deployment status
+  * clustermesh status: remove redundant service check
+  * clustermesh status: drop skip service check parameter
+  * wait: always log error upon the first failure
+  * Update the error log exceptions
+  * gha: configure routing mode in external-workloads workflow
+  * dockerfile: include CA certificates
+  * fix(deps): update module github.com/cilium/cilium to v1.14.0
+  * chore(deps): update dependency cilium/cilium to v1.14.0
+  * metrics: Set first retrieved metrics to 0 if absent
+  * kind: Run every 2 hours
+  * kind: Upload all the sysdumps
+  * connectivity: Hide --flush-ct
+  * fix(cli-example): optimize the example of the 'install' command
+    line.
+  * connectivity: Special inconclusive result treatment for ping
+    command
+  * fix(deps): update github.com/cilium/tetragon/pkg/k8s digest to
+    d51b96d
+  * connectivity: Fix fetching of XFRM counters
+  * fix(deps): update all go dependencies main
+  * fix(deps): update module github.com/cilium/cilium to
+    v1.14.0-snapshot.6
+
+-------------------------------------------------------------------
 Fri Jul 21 06:07:38 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.15.4:
