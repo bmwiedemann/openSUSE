@@ -23,6 +23,7 @@
 ExclusiveArch:  do_not_build
 %endif
 
+# Each openSUSE release package has a suggests for openSUSE-repos-$flavor.
 %global flavor @BUILD_FLAVOR@%nil
 
 %if 0%{?is_opensuse} && 0%{?suse_version} >= 1550
@@ -66,7 +67,7 @@ Name:           openSUSE-repos
 %else
 Name:           openSUSE-repos-%{theme}
 %endif
-Version:        20230731.a018a46
+Version:        20230804.41e41a9
 Release:        0
 Summary:        openSUSE package repositories
 License:        MIT
@@ -76,6 +77,9 @@ Source:         openSUSE-repos-%{version}.tar.xz
 #boo#1203715
 BuildRequires:  -post-build-checks
 Requires:       zypper
+# Ensure we install matching packages on given distribution
+# openSUSE-release has suggest on particular theme based on distribution
+Suggests:       openSUSE-repos-%{theme}-NVIDIA
 Conflicts:      otherproviders(openSUSE-repos)
 Provides:       openSUSE-repos
 %if "%{?theme}" == "Tumbleweed"
@@ -93,6 +97,27 @@ Obsoletes:      openSUSE-repos-LeapMicro
 
 %description
 Definitions for openSUSE repository management via zypp-services
+
+%package NVIDIA
+Summary:        openSUSE NVIDIA repository definitions
+Requires:       openSUSE-repos
+Supplements:    modalias(pci:v000010DEd*sv*sd*bc03sc*i*)
+Provides:       openSUSE-repos-NVIDIA
+%if "%{?theme}" == "Tumbleweed"
+Obsoletes:      openSUSE-repos-Leap-NVIDIA
+Obsoletes:      openSUSE-repos-LeapMicro-NVIDIA
+%endif
+%if "%{?theme}" == "MicroOS"
+Obsoletes:      openSUSE-repos-Leap-NVIDIA
+Obsoletes:      openSUSE-repos-LeapMicro-NVIDIA
+%endif
+%if "%{?theme}" == "Leap16"
+Obsoletes:      openSUSE-repos-Leap-NVIDIA
+Obsoletes:      openSUSE-repos-LeapMicro-NVIDIA
+%endif
+
+%description NVIDIA
+Definitions for NVIDIA repository management via zypp-services
 
 %files
 
@@ -140,6 +165,16 @@ Definitions for openSUSE repository management via zypp-services
 %endif
 %endif
 
+%if "0%{?with_nvidia}"
+%files NVIDIA
+%dir %{_datadir}/zypp/local/service/NVIDIA
+%dir %{_datadir}/zypp/local/service/NVIDIA/repo
+%ghost %{_datadir}/zypp/local/service/NVIDIA/repo/repoindex.xml
+%{_datadir}/zypp/local/service/NVIDIA/repo/nvidia-%{branding}-repoindex.xml
+%ghost %{_sysconfdir}/zypp/services.d/openSUSE.service
+%{_datadir}/zypp/local/service/NVIDIA/repo/nvidia-%{branding}-repoindex.xml
+%endif
+
 %prep
 %setup -q -n openSUSE-repos-%{version}
 
@@ -149,6 +184,7 @@ Definitions for openSUSE repository management via zypp-services
 %install
 
 mkdir -p %{buildroot}%{_datadir}/zypp/local/service/openSUSE/repo
+mkdir -p %{buildroot}%{_datadir}/zypp/local/service/NVIDIA/repo
 mkdir -p %{buildroot}%{_sysconfdir}/zypp/vars.d/
 
 # Setup for primary arches
@@ -178,6 +214,10 @@ install opensuse-%{branding}-repoindex.xml -pm 0644 %{buildroot}%{_datadir}/zypp
 %else
 install opensuse-%{branding}-ports-repoindex.xml -pm 0644 %{buildroot}%{_datadir}/zypp/local/service/openSUSE/repo
 %endif
+%endif
+
+%if "0%{?with_nvidia}"
+install nvidia-%{branding}-repoindex.xml -pm 0644 %{buildroot}%{_datadir}/zypp/local/service/NVIDIA/repo
 %endif
 
 %ifarch %{ix86}
@@ -241,15 +281,15 @@ ln -sf opensuse-%{branding}-ports-repoindex.xml %{_datadir}/zypp/local/service/o
 %endif
 %endif
 
-# Disable all non-zypp-service managed repos with default fileanmes
+# Disable all non-zypp-service managed repos with default filenames
 
 for repo_file in \
 repo-backports-debug-update.repo repo-oss.repo repo-backports-update.repo \
 repo-sle-debug-update.repo repo-debug-non-oss.repo repo-sle-update.repo \
 repo-debug.repo repo-source.repo repo-debug-update.repo repo-update.repo \
 repo-debug-update-non-oss.repo repo-update-non-oss.repo repo-non-oss.repo \
-openSUSE-*-0.repo download.opensuse.org-oss.repo download.opensuse.org-tumbleweed.repo \
-repo-openh264.repo; do
+download.opensuse.org-oss.repo download.opensuse.org-non-oss.repo download.opensuse.org-tumbleweed.repo \
+repo-openh264.repo openSUSE-*-0.repo; do
   if [ -f %{_sysconfdir}/zypp/repos.d/$repo_file ]; then
     echo "Content of $repo_file will be newly managed by zypp-services."
     echo "Storing old copy as {_sysconfdir}/zypp/repos.d/$repo_file.rpmsave"
@@ -260,12 +300,39 @@ done
 # We hereby declare that running this will not influence existing transaction
 ZYPP_READONLY_HACK=1 zypper addservice %{_datadir}/zypp/local/service/openSUSE openSUSE
 
+%if "0%{?with_nvidia}"
+%post NVIDIA
+ln -sf nvidia-%{branding}-repoindex.xml %{_datadir}/zypp/local/service/NVIDIA/repo/repoindex.xml
+
+# Disable user-defined with default filename from wiki
+# https://en.opensuse.org/SDB:NVIDIA_drivers#Zypper
+for repo_file in NVIDIA.repo ; do
+  if [ -f %{_sysconfdir}/zypp/repos.d/$repo_file ]; then
+    echo "Content of $repo_file will be newly managed by zypp-services."
+    echo "Storing old copy as {_sysconfdir}/zypp/repos.d/$repo_file.rpmsave"
+    mv %{_sysconfdir}/zypp/repos.d/$repo_file %{_sysconfdir}/zypp/repos.d/$repo_file.rpmsave
+  fi
+done
+
+# We hereby declare that running this will not influence existing transaction
+ZYPP_READONLY_HACK=1 zypper addservice %{_datadir}/zypp/local/service/NVIDIA NVIDIA
+%endif
+
 %postun
 if [ "$1" = 0 ] ; then
   # We hereby declare that running this will not influence existing transaction
   ZYPP_READONLY_HACK=1 zypper removeservice openSUSE
   if [ -L "%{_datadir}/zypp/local/service/openSUSE/repo/repoindex.xml" ] ; then
     rm -f %{_datadir}/zypp/local/service/openSUSE/repo/repoindex.xml
+  fi
+fi
+
+%postun NVIDIA
+if [ "$1" = 0 ] ; then
+  # We hereby declare that running this will not influence existing transaction
+  ZYPP_READONLY_HACK=1 zypper removeservice NVIDIA
+  if [ -L "%{_datadir}/zypp/local/service/NVIDIA/repo/repoindex.xml" ] ; then
+    rm -f %{_datadir}/zypp/local/service/NVIDIA/repo/repoindex.xml
   fi
 fi
 

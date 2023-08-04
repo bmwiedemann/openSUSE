@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 04 09:12:36 UTC 2023 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20230804.41e41a9:
+  * Add NVIDIA repo. Issue #28
+  * Add supplements for all NVIDIA cards
+  * Add NVIDIA obsoletes for migration from Leap 15
+  * Add spec comment about suggests in release package
+  * Add download.opensuse.org-non-oss.repo in legacy backup list
+
+-------------------------------------------------------------------
 Mon Jul 31 10:13:52 UTC 2023 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20230731.a018a46:
