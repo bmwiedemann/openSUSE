@@ -17,7 +17,7 @@
 
 
 Name:           gupnp-tools
-Version:        0.12.0
+Version:        0.12.1
 Release:        0
 Summary:        UPnP tools to test and debug UPnP devices and control points
 License:        GPL-2.0-or-later
@@ -26,8 +26,6 @@ URL:            http://www.gupnp.org/
 # Disabled for now, using source service
 #Source0:        https://download.gnome.org/sources/gupnp-tools/0.10/%%{name}-%%{version}.tar.xz
 Source0:        %{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 1372f9eb.patch -- build: Fix wrap file syntax
-Patch0:         https://gitlab.gnome.org/GNOME/gupnp-tools/-/commit/1372f9eb.patch
 
 BuildRequires:  fdupes
 BuildRequires:  meson

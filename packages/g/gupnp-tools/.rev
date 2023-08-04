@@ -348,4 +348,14 @@
     <comment></comment>
     <requestid>1100043</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>98707c90dc2cfa10e99ce6ff01135f67</srcmd5>
+    <version>0.12.1</version>
+    <time>1691154235</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1101995 from iznogood
+
+New stable rel</comment>
+    <requestid>1102253</requestid>
+  </revision>
 </revisionlist>
