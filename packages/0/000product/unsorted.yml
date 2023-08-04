@@ -7498,7 +7498,6 @@ unsorted:
   - gv 
   - gvfs-devel 
   - gvim 
-  - gvisor-tap-vsock 
   - gwenhywfar 
   - gwenhywfar-devel 
   - gwenhywfar-gwenbuild 
@@ -13643,7 +13642,7 @@ unsorted:
   - libopenmpi_1_10_7-gnu-hpc 
   - libopenmpi_2_1_6-gnu-hpc 
   - libopenmpi_3_1_6-gnu-hpc 
-  - libopenmpi_4_1_4-gnu-hpc 
+  - libopenmpi_4_1_5-gnu-hpc 
   - libopenmpi_5_0_0-gnu-hpc 
   - libopenmpt-devel 
   - libopenmpt-modplug-devel 
@@ -19192,6 +19191,8 @@ unsorted:
   - openSUSE-release-usb-kde 
   - openSUSE-release-usb-x11 
   - openSUSE-repos-MicroOS 
+  - openSUSE-repos-MicroOS-NVIDIA 
+  - openSUSE-repos-Tumbleweed-NVIDIA 
   - openSUSE-signkey-cert 
   - openSUSEway 
   - openafs-authlibs 
@@ -19363,12 +19364,12 @@ unsorted:
   - openmpi_3_1_6-gnu-hpc-docs 
   - openmpi_3_1_6-gnu-hpc-macros-devel 
   - openmpi_3_1_6-gnu-hpc-testsuite 
-  - openmpi_4_1_4-gnu-hpc 
-  - openmpi_4_1_4-gnu-hpc-devel 
-  - openmpi_4_1_4-gnu-hpc-devel-static 
-  - openmpi_4_1_4-gnu-hpc-docs 
-  - openmpi_4_1_4-gnu-hpc-macros-devel 
-  - openmpi_4_1_4-gnu-hpc-testsuite 
+  - openmpi_4_1_5-gnu-hpc 
+  - openmpi_4_1_5-gnu-hpc-devel 
+  - openmpi_4_1_5-gnu-hpc-devel-static 
+  - openmpi_4_1_5-gnu-hpc-docs 
+  - openmpi_4_1_5-gnu-hpc-macros-devel 
+  - openmpi_4_1_5-gnu-hpc-testsuite 
   - openmpi_5_0_0-gnu-hpc 
   - openmpi_5_0_0-gnu-hpc-devel 
   - openmpi_5_0_0-gnu-hpc-devel-static 
