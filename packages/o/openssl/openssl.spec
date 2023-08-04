@@ -1,7 +1,7 @@
 #
 # spec file for package openssl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _sonum  3
 Name:           openssl
-Version:        3.1.1
+Version:        3.1.2
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 # Yes there is no license but to not confuse people keep it aligned to the pkg
@@ -53,9 +53,9 @@ Requires:       libopenssl-%{_sonum}-devel = %{version}
 Requires:       pkgconfig
 Obsoletes:      openssl-devel < %{version}
 Provides:       openssl-devel = %{version}
-Provides:       pkgconfig(libssl) = %{version}
-Provides:       pkgconfig(libopenssl) = %{version}
 Provides:       pkgconfig(libcrypto) = %{version}
+Provides:       pkgconfig(libopenssl) = %{version}
+Provides:       pkgconfig(libssl) = %{version}
 Provides:       pkgconfig(openssl) = %{version}
 
 %description -n libopenssl-devel
