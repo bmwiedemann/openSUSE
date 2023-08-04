@@ -17,7 +17,7 @@
 
 
 Name:           combustion
-Version:        1.0+git4
+Version:        1.1+git0
 Release:        0
 Summary:        System for initial configuration of appliances
 License:        GPL-2.0-or-later

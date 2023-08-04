@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 03 07:32:20 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.1+git0:
+  * Add option to run the script in the prepare phase as well
+  * Add compatibility for ignition-kargs-helper
+  * Populate /dev/shm/combustion/ in the --prepare stage
+  * Small README.md improvements
+  * combustion.rules: Match /module/qemu_fw_cfg instead of the namespace within
+
+-------------------------------------------------------------------
 Tue Jul 11 12:51:13 UTC 2023 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.0+git4:
