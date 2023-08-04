@@ -25,7 +25,7 @@
 %endif
 
 Name:           dracut
-Version:        059+suse.476.g5e324584
+Version:        059+suse.488.g81715832
 Release:        0
 Summary:        Event driven initramfs infrastructure
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -43,9 +43,9 @@ BuildRequires:  rust
 BuildRequires:  pkgconfig(libkmod)
 BuildRequires:  pkgconfig(systemd) >= 219
 Requires:       %{_bindir}/get_kernel_version
-Requires:       awk
 Requires:       bash
 Requires:       coreutils
+Requires:       gawk
 Requires(post): coreutils
 Requires:       cpio
 Requires:       elfutils

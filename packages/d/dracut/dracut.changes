@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Aug 02 06:32:08 UTC 2023 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.488.g81715832:
+  This is the 3rd backport of the most important fixes and features from the upstream master branch,
+  while the release date of version 060 is still undefined.
+
+  * fix(systemd-udevd): add missing override paths
+  * fix(systemd-journald): add systemd-sysusers dependency
+  * fix(base): correct handling of quiet in loginit
+  * chore(suse): require gawk instead of awk
+  * refactor(install): log about missing firmware only once
+  * fix(integrity): do not require ls
+  * fix(dracut-init.sh): `module_check` method ignores `forced` option
+  * fix(man): add missing initrd-root-device.target to flow chart
+  * fix(dracut-init.sh): use the local _ret variable
+  * fix(dracut.sh): use gawk for strtonum
+  * fix(man): remove duplicate entry
+
+-------------------------------------------------------------------
 Mon Jul 17 06:09:58 UTC 2023 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.476.g5e324584:
