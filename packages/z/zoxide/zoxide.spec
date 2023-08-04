@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           zoxide
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        A smarter cd command
 License:        MIT

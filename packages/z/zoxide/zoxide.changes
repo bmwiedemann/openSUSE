@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug  4 07:01:38 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.2:
+  Added:
+  * Short option -a for zoxide query --all.
+  Fixed:
+  * PowerShell: use global scope for variables / functions.
+
+-------------------------------------------------------------------
 Sun May  7 17:26:44 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.1:
