@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Thu Aug 03 17:46:49 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.29.0:
+  * Update README to point download link to 0.29.0
+  * Update docs for release 0.29.0
+  * Update the helm reference
+  * Update helm chart to 4.0.27 to use gitops 0.29.0
+  * Update javascript library version to 0.29.0
+  * Bump semver from 5.7.1 to 5.7.2 in /website
+  * update upgrade fluxga docs to get ready for v0.29 release
+    (#3905)
+  * Verified sources (#3887)
+  * Bump word-wrap from 1.2.3 to 1.2.5
+  * Update javascript library version to 0.29.0-rc.1
+  * ad docs and dashboard for indexer RED metrics (#3892)
+  * Update old /releases link with new
+    /enterprise/getting-started/releases-enterprise/ url
+  * refactor primary kinds function to support testing
+  * simplified test to remove flux/v2 package dep
+  * Update core/clustersmngr/cluster/delegating_cache.go
+  * use controller-runtime v0.14
+  * upgrade flux v2 dependencies
+  * add kind to source ref in tests
+  * test description edit
+  * remove source sync from img update automations
+  * sync + suspend img update automations + tests in backend and
+    ui, along with an additional ui change to checkbox actions that
+    re-disables buttons when removing all checked items
+  * updated dashboard without indexer writes colum
+  * removed indexer writes as not yet covered
+  * added section for indexer and store writes
+  * added indexer and datastore read metrics documentation
+  * large info should never be empty (#3879)
+  * Suspend/resume/reconcile Image Repositories (#3831)
+  * Fix links on Releases page (#3882)
+  * update External Secrets docs
+  * update docs feedback
+  * fix: Renamed parameter to better communicate usage
+  * fix: Add missing OCIRepository CRD
+  * Add missing sync tests to cover all source objects.
+  * Add `HelmChart` to known object Kinds when getting Flux objects
+    for syncing.
+  * Remove Flux version from /v1/version response and page footers
+    (#3876)
+  * Update tagline
+  * Create component for info in top right of detail pages, and
+    prevent x-overflow on main content (#3857)
+  * Tweaking dependabot to just raise PRs for security updates not
+    version updates. More info in
+    https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file#open-pull-requests-limit
+  * docs: add missing entry for v0.28.0 release notes Lauri added
+    an extra line to the release notes.
+  * docs: Add v0.28.0 Release Notes
+  * enabled dependabot with daily schedule and eng teams as
+    reviewers
+  * update feedback
+  * Update docs feedback
+  * update external secrets creation
+
+-------------------------------------------------------------------
 Thu Jul 20 04:50:20 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.28.0:
