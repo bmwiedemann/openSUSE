@@ -35,6 +35,7 @@ BuildRequires:  cairo-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(xft)

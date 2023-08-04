@@ -54,4 +54,13 @@ Resubmitted after correcting the license tag to GPL-2.0+
     <comment></comment>
     <requestid>970442</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>47ec70d2e6845f2e67f667320d65a5a6</srcmd5>
+    <version>1.3.1001</version>
+    <time>1691154189</time>
+    <user>dimstar_suse</user>
+    <comment>- fix TW compilation by adding BuildRequires: pkgconfig(gl)
+</comment>
+    <requestid>1102339</requestid>
+  </revision>
 </revisionlist>
