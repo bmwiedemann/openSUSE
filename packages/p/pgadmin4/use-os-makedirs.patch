@@ -3,16 +3,20 @@ Subject: Use os.makedirs instead of os.mkdir
 
 So parent directories are created if needed
 
-Index: pgadmin4-4.19/web/pgadmin/setup/data_directory.py
+---
+ web/pgadmin/setup/data_directory.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: pgadmin4-7.4/web/pgadmin/setup/data_directory.py
 ===================================================================
---- pgadmin4-4.19.orig/web/pgadmin/setup/data_directory.py
-+++ pgadmin4-4.19/web/pgadmin/setup/data_directory.py
-@@ -13,7 +13,7 @@ from flask import current_app
+--- pgadmin4-7.4.orig/web/pgadmin/setup/data_directory.py
++++ pgadmin4-7.4/web/pgadmin/setup/data_directory.py
+@@ -18,7 +18,7 @@ FAILED_CREATE_DIR = \
  
  def _create_directory_if_not_exists(_path):
      if _path and not os.path.exists(_path):
 -        os.mkdir(_path)
 +        os.makedirs(_path)
+         return True
  
- 
- def create_app_data_directory(config):
+     return False

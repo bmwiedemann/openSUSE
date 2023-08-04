@@ -1,0 +1,22 @@
+Index: pgadmin4-7.4/web/pgadmin/misc/cloud/azure/__init__.py
+===================================================================
+--- pgadmin4-7.4.orig/web/pgadmin/misc/cloud/azure/__init__.py
++++ pgadmin4-7.4/web/pgadmin/misc/cloud/azure/__init__.py
+@@ -30,7 +30,7 @@ from azure.identity import AzureCliCrede
+ from azure.mgmt.resource import ResourceManagementClient
+ from azure.mgmt.subscription import SubscriptionClient
+ from azure.mgmt.rdbms.postgresql_flexibleservers.models import \
+-    NameAvailabilityRequest
++    CheckNameAvailabilityRequest
+ 
+ MODULE_NAME = 'azure'
+ 
+@@ -354,7 +354,7 @@ class Azure:
+         """
+         postgresql_client = self._get_azure_client('postgresql')
+         res = postgresql_client.check_name_availability.execute(
+-            NameAvailabilityRequest(
++            CheckNameAvailabilityRequest(
+                 name=cluster_name,
+                 type='Microsoft.DBforPostgreSQL/flexibleServers'))
+         res = res.__dict__

@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Mon Jul 31 07:23:54 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.4, extremely large list of changes, partially chosen:
+  * Make Statistics, Dependencies, Dependants tabs closable and the user
+    can add them back using the 'Add panel' option.
+  * Added support for Logical Replication.
+  * Implemented runtime using NWjs to open pgAdmin4 in a standalone window
+    instead of the system tray and web browser.
+  * Added Quick Search functionality for menu items and help articles.
+  * Added publication and subscription support in Schema Diff.
+  * Use cheroot as the default production server for pgAdmin4.
+  * Show the login roles that are members of a group role be shown when
+    examining a group role.
+  * Added '--replace' option in Import server to replace the list of
+    servers with the newly imported one.
+  * Added zoom scaling options with keyboard shortcuts in runtime.
+  * Use schema qualification while accessing the catalog objects.
+  * Make the 'Save Data Changes' icon to be more intuitive.
+  * Improve code coverage and API test cases for Server module.
+  * Added support to set auto width of columns by content size in the data 
+    output window.
+  * Added support to connect PostgreSQL servers via Kerberos authentication.
+  * Added "IF NOT EXISTS" clause while creating tables and partition tables
+    which is convenient while using the ERD tool.
+  * Added browse button to select the binary path in the Preferences.
+  * Added Grant Wizard option under Package node.
+  * Added support to launch PSQL for the connected database server.
+  * Added window maximize/restore functionality for properties dialog.
+  * Added support to set the binary path for the different database server
+    versions.
+  * Added OS, Browser, Configuration details in the About dialog.
+  * Added support for rotating the pgAdmin log file on the basis of size
+    and age.
+  * Added RESQL/MSQL test cases for Table and its child nodes.
+  * Updated Flask-Security-Too to the latest v4.
+  * Added a mechanism to detect a corrupt/broken config database file.
+  * Highlighted long running queries on the dashboards.
+  * Added support for Reassign/Drop Owned for login roles.
+  * Do not block the query editor window when running a query.
+  * Added support for OAuth 2 authentication.
+  * Added option to provide maximum width of the column when 'Resize by
+    data?’ option in the preferences is set to True.
+  * Added support to copy SQL from main window to query tool.
+  * Added support for formatted JSON viewer/editor when interacting with
+    data in a JSON column.
+  * Rename the "Resize by data?" to "Columns sized by" and disabled the
+    'Maximum column width' button if 'Columns sized by' is set to
+    'Column data'.
+  * Added support for the truncate table with restart identity.
+  * Make code folding case insensitive in the code mirror.
+  * Added database and server information on the Maintenance process watcher
+    dialog.
+  * Allow the referenced table to be the same as the local table in one to
+    many relationship for ERD Tool.
+  * Set PSQLRC and PSQL_HISTORY env vars to apt. user storage path in the
+    server mode.
+  * Added support for OWNED BY Clause for sequences.
+  * Revisit all the CREATE and DROP DDL's to add appropriate 'IF EXISTS',
+    'CASCADE' and 'CREATE OR REPLACE'.
+  * Added support for indent guides in the browser tree.
+  * Added support for advanced table fields like the foreign key, primary key in the ERD tool.
+  * Added support to allow tables to be dragged to ERD Tool.
+  * Added index creation when generating SQL in the ERD tool.
+  * Added support for authentication via the webserver (REMOTE_USER).
+  * Added support to enable/disable rules.
+  * Added support of Aggregate and Operator node in view-only mode.
+  * Ensure that users should be able to modify the REMOTE_USER environment
+    variable as per their environment by introducing the new config
+    parameter WEBSERVER_REMOTE_USER.
+  * Added support for Two-factor authentication for improving security.
+  * Added support to disable the auto-discovery of the database servers.
+  * Replace Flask-BabelEx with Flask-Babel.
+  * Upgrade Flask to version 2.
+  * Added support to import/export server groups and servers from GUI.
+  * Added support to open SQL help, Dialog help, and online help in an
+    external web browser.
+  * Rename the menu 'Disconnect Server' to 'Disconnect from server'.
+  * Added capability to deploy PostgreSQL servers on Amazon RDS.
+  * Rename the menu 'Disconnect Database' to 'Disconnect from database'.
+  * Added transaction start time to Server activity sessions view.
+  * Added support for unique keys in ERD.
+  * Added status bar to the Query Tool.
+  * Ensure that row numbers should be visible in view when scrolling
+    horizontally.
+  * Relocate GIS Viewer Button to the Left Side of the Results Table.
+  * Added capability to deploy PostgreSQL servers on EDB BigAnimal.
+  * Added options 'Ignore owner' and 'Ignore whitespace' to the schema diff
+    panel.
+  * Added support for Azure AD OAUTH2 authentication.
+  * Ensure the database and schema restriction controls are not shown as a
+    drop-down.
+  * Added the ability to resize columns on dashboard tables.
+  * PG 15 compatibility issues fixed.
+  * Added capability to deploy PostgreSQL servers on Microsoft Azure.
+  * Added support for visualise the graph using a Line chart in the query tool.
+  * Added option to trigger autocomplete on key press in the query tool.
+  * Allow users to delete files/folders from the storage manager.
+  * Allow users to search within the file/storage manager.
+  * Added support for visualizing the graphs using Stacked Line, Bar, and
+    Stacked Bar charts in the query tool.
+  * Added support for visualise the graph using a Pie chart in the query tool.
+  * Removing dynamic module loading and replacing it with static loading.
+  * Added support to show all background processes in separate panel.
+  * Added support to create triggers from existing trigger functions in EPAS.
+  * Remove the SQL files for the unsupported versions of the database server.
+  * Fixed improper parsing of HTTP requests in Pallets Werkzeug v2.1.0
+    and below (CVE-2022-29361).
+- Drop patches remove_simplejson_dep.patch, fix-python-lib.patch and 
+  0001-Fix-bug-ValueError-unsupported-format-character-D.patch
+- Add patch support-new-werkzeug.patch and support-new-azure-mgmt-rdbms.patch:
+  * Support changes among our dependencies.
+
+-------------------------------------------------------------------
+Sat Feb 11 16:50:03 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Remove dependency on python-simplejson
+  (gh#pgadmin-org/pgadmin4#5853).
+
+-------------------------------------------------------------------
 Wed Jun  9 10:06:10 UTC 2021 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Add 0001-Fix-bug-ValueError-unsupported-format-character-D.patch
