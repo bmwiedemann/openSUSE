@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  3 03:24:41 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Change the bash-completion directory (bsc#1213855)
+  * grub2-change-bash-completion-dir.patch 
+
+-------------------------------------------------------------------
 Wed Jul 26 03:04:25 UTC 2023 - Michael Chang <mchang@suse.com>
 
 - Fix error message "unknown command tpm_record_pcrs" with encrypted boot and

@@ -508,6 +508,8 @@ Patch982:       0002-kern-ieee1275-init-Extended-support-in-Vec5.patch
 Patch990:       0001-fs-ext2-Ignore-checksum-seed-incompat-feature.patch
 Patch991:       0001-fs-ext2-Ignore-the-large_dir-incompat-feature.patch
 
+Patch992:       grub2-change-bash-completion-dir.patch
+
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
 %ifnarch s390x
@@ -1365,7 +1367,7 @@ fi
 %endif
 %dir /boot/%{name}
 %ghost %attr(600, root, root) /boot/%{name}/grub.cfg
-%{_sysconfdir}/bash_completion.d/grub
+%{_datadir}/bash-completion/completions/grub
 %config(noreplace) %{_sysconfdir}/default/grub
 %dir %{_sysconfdir}/grub.d
 %{_sysconfdir}/grub.d/README
