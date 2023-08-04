@@ -159,4 +159,15 @@
 </comment>
     <requestid>1098684</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>ac37226d6f03227a5cc1a82a3ff9b46c</srcmd5>
+    <version>3.12.0b4</version>
+    <time>1691154225</time>
+    <user>dimstar_suse</user>
+    <comment>- IT MEANS THAT bsc#1210638 STILL HAS NOT BEEN FIXED!
+- Add Revert-gh105127-left-tests.patch (gh#python/cpython!106941)
+  partially reverting CVE-2023-27043-email-parsing-errors.patch,
+  because of the regression in gh#python/cpython#106669.</comment>
+    <requestid>1102238</requestid>
+  </revision>
 </revisionlist>

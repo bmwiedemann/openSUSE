@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug  3 14:13:30 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- IT MEANS THAT bsc#1210638 STILL HAS NOT BEEN FIXED!
+- Add Revert-gh105127-left-tests.patch (gh#python/cpython!106941)
+  partially reverting CVE-2023-27043-email-parsing-errors.patch,
+  because of the regression in gh#python/cpython#106669.
+
+-------------------------------------------------------------------
 Tue Jul 11 22:20:22 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.12.0b4:
