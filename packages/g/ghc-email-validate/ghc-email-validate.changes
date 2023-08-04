@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 26 21:13:11 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update email-validate to version 2.3.2.19.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:06:42 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.3.2.18
+Version:        2.3.2.19
 Release:        0
 Summary:        Email address validation
 License:        BSD-3-Clause
@@ -40,8 +40,6 @@ ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-QuickCheck-prof
-BuildRequires:  ghc-doctest-devel
-BuildRequires:  ghc-doctest-prof
 BuildRequires:  ghc-hspec-devel
 BuildRequires:  ghc-hspec-prof
 %endif
