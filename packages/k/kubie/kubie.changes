@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 03 17:42:26 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.21.1:
+  * Version 0.21.1
+  * export: prevent temporary file from being deleted on exit
+  * Bump serde from 1.0.179 to 1.0.180 (#146)
+  * Bump anyhow from 1.0.71 to 1.0.72 (#141)
+  * Bump serde_json from 1.0.102 to 1.0.104 (#144)
+  * Bump serde from 1.0.178 to 1.0.179 (#143)
+  * Bump serde_yaml from 0.8.26 to 0.9.25 (#145)
+  * Bump attohttpc from 0.24.1 to 0.26.0 (#142)
+
+-------------------------------------------------------------------
 Tue Aug 01 10:07:22 UTC 2023 - kastl@b1-systems.de
 
 - BuildRequire rust >= 1.67 to avoid failing builds
