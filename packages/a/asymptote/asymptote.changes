@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun 24 12:24:02 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.86
+  * Terminate phase1 of simplex method once a zero-cost solution
+    is found.
+  * Fix bug in XDR reads due to uninitialized variable.
+  * Add high-resolution clock; update FFT support.
+- Add 0001-Fix-without-lsp-issue-379.patch
+
+-------------------------------------------------------------------
 Sat Nov 19 22:16:05 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.83

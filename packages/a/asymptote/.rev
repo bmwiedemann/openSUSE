@@ -15,4 +15,17 @@
     <comment>- Update to release 2.83</comment>
     <requestid>1036849</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c02fe358266a70da3257d078eda17096</srcmd5>
+    <version>2.86</version>
+    <time>1691154237</time>
+    <user>dimstar_suse</user>
+    <comment>Update to release 2.86
+  * Terminate phase1 of simplex method once a zero-cost solution
+    is found.
+  * Fix bug in XDR reads due to uninitialized variable.
+  * Add high-resolution clock; update FFT support.
+- Add 0001-Fix-without-lsp-issue-379.patch</comment>
+    <requestid>1102266</requestid>
+  </revision>
 </revisionlist>
