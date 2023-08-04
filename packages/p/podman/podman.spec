@@ -26,7 +26,6 @@ Group:          System/Management
 URL:            https://%{project}
 Source0:        %{name}-%{version}.tar.xz
 Source1:        podman.conf
-Source2:        README.SUSE.SLES
 BuildRequires:  bash-completion
 BuildRequires:  device-mapper-devel
 BuildRequires:  fdupes
@@ -49,6 +48,8 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
 Recommends:     apparmor-abstractions
 Recommends:     apparmor-parser
+# requirement for `podman machine`
+Recommends:     gvisor-tap-vsock
 Requires:       catatonit >= 0.1.7
 # prefer Podman's new network stack on ALP
 %if 0%{suse_version} >= 1600 && !0%{?is_opensuse}
@@ -139,13 +140,9 @@ rm %{buildroot}%{_user_tmpfilesdir}/podman-docker.conf
 %endif
 
 # Add podman modprobe.d drop-in config
+# https://bugzilla.redhat.com/show_bug.cgi?id=1703261
 mkdir -p %{buildroot}%{_prefix}/lib/modules-load.d
 install -m 0644 -t %{buildroot}%{_prefix}/lib/modules-load.d/ %{SOURCE1}
-
-# README.SUSE is SLES specifc currently
-%if !0%{?is_opensuse}
-install -D -m 0644 %{SOURCE2} %{buildroot}%{_docdir}/%{name}/README.SUSE
-%endif
 
 %fdupes %{buildroot}/%{_datadir}
 %fdupes %{buildroot}/%{_systemd_util_dir}

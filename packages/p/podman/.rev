@@ -943,4 +943,12 @@ Bugfixes
     <comment>Update to version 4.6.0 (forwarded request 1099907 from danishprakash)</comment>
     <requestid>1100062</requestid>
   </revision>
+  <revision rev="110" vrev="2">
+    <srcmd5>ae4b8761dc73f8d19bf391b1d9dfd4cc</srcmd5>
+    <version>4.6.0</version>
+    <time>1691154188</time>
+    <user>dimstar_suse</user>
+    <comment>Discard outdated README.SUSE.SLES (forwarded request 1102180 from danishprakash)</comment>
+    <requestid>1102183</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  3 13:05:43 UTC 2023 - Danish Prakash <danish.prakash@suse.com>
+
+- Discard outdated README.SUSE.SLES
+- Recommend gvisor-tap-vsock, required for `podmand machine`
+
+-------------------------------------------------------------------
 Fri Jul 21 05:26:20 UTC 2023 - danish.prakash@suse.com
 
 - Update to version 4.6.0:
