@@ -436,4 +436,12 @@
     <comment>- Update to release 2.28.1</comment>
     <requestid>1096336</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>5c10ab55a17213da3b04f9b83ff991e5</srcmd5>
+    <version>2.28.2</version>
+    <time>1691154169</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.28.2</comment>
+    <requestid>1102049</requestid>
+  </revision>
 </revisionlist>
