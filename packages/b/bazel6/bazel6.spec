@@ -22,12 +22,12 @@
 %define shortver 6
 
 Name:           bazel%{shortver}
-Version:        6.2.1
+Version:        6.3.1
 Release:        0
 Summary:        Tool for the automation of building and testing of software
 License:        Apache-2.0
 Group:          Development/Tools/Building
-URL:            http://bazel.io/
+URL:            https://bazel.build/
 Source0:        https://github.com/bazelbuild/bazel/releases/download/%{version}/%{shortname}-%{version}-dist.zip
 Source1:        https://github.com/bazelbuild/bazel/releases/download/%{version}/%{shortname}-%{version}-dist.zip.sig
 Source2:        abseil-missing-stdint.patch
