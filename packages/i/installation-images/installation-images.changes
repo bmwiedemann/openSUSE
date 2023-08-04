@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Thu Aug 3 11:25:48 UTC 2023 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#652
+- add reset-rzg2l-usbphy-ctrl module (bsc#1213805)
+- 17.91
+
+--------------------------------------------------------------------
 Wed Jul 19 16:21:22 UTC 2023 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#650
