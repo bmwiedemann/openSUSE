@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug  2 23:45:58 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.3.6:
+  * Redraw calltip after showing as didn't update when size of new
+    text exactly same as previous. Feature #1486.
+  * On Qt, for IMEs, update micro focus when selection changes.
+    This may move the location of IME popups to align with the
+    caret.
+  * On Qt, implement replacement for IMEs which may help with
+    actions like reconversion. This is similar to
+    delete-surrounding on GTK. 
+
+-------------------------------------------------------------------
 Sat Jun 10 17:32:37 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.3.5:
