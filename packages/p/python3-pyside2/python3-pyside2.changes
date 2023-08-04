@@ -1,7 +1,10 @@
 -------------------------------------------------------------------
 Mon Jun 19 13:45:19 UTC 2023 - Dmitry Roshchin <dmitry_r@opensuse.org>
 
-- Update to version 5.15.10
+- Update to version 5.15.10:
+  * Error "Internal C++ object already deleted." when
+    using QWidget::nativeParentWidget() has been fixed.
+  * A crash in QTextBlock.layout() has been fixed.
 - Fix python 3.11 compatibility, temporary blacklist signal_enum_test
   * python-3.11-compatibility.patch
 
