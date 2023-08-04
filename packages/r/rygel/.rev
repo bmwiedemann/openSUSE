@@ -763,4 +763,14 @@
     <comment></comment>
     <requestid>1099836</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>f3bcc4a9997735dec5376757281db319</srcmd5>
+    <version>0.42.4</version>
+    <time>1691154234</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1101992 from iznogood
+
+New stable rel</comment>
+    <requestid>1102252</requestid>
+  </revision>
 </revisionlist>

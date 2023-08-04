@@ -21,15 +21,13 @@
 %define typelibver 2_8
 
 Name:           rygel
-Version:        0.42.3
+Version:        0.42.4
 Release:        0
 Summary:        UPnP/DLNA home media server for GNOME
 License:        LGPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            http://live.gnome.org/Rygel
 Source0:        https://download.gnome.org/sources/rygel/0.42/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM meson-1_2-typo-fix.patch -- Fix typo exposed by meson 1.2
-Patch0:         meson-1_2-typo-fix.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel >= 1.33.4
