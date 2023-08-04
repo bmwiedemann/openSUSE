@@ -22,7 +22,7 @@
 %define man_suffix 3ssl
 Name:           openssl-3
 # Don't forget to update the version in the "openssl" meta-package!
-Version:        3.1.1
+Version:        3.1.2
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 License:        Apache-2.0
@@ -46,15 +46,8 @@ Patch6:         openssl-no-date.patch
 # Add crypto-policies support
 Patch7:         openssl-Add-support-for-PROFILE-SYSTEM-system-default-cipher.patch
 Patch8:         openssl-Override-default-paths-for-the-CA-directory-tree.patch
-# PATCH-FIX-OPENSUSE: Fix compiler error "initializer element is not constant" on s390
-Patch9:         openssl-z16-s390x.patch
 # PATCH-FIX-UPSTREAM: bsc#1209430 Upgrade OpenSSL from 3.0.8 to 3.1.0 in TW
-Patch10:        openssl-Add_support_for_Windows_CA_certificate_store.patch
-# PATCH-FIX-UPSTREAM: bsc#1213383 CVE-2023-2975 AES-SIV ignores empty data entries
-Patch11:        openssl-CVE-2023-2975.patch
-# PATCH-FIX-UPSTREAM: bsc#1213487 CVE-2023-3446 DH_check() excessive time with over sized modulus
-Patch12:        openssl-CVE-2023-3446.patch
-Patch13:        openssl-CVE-2023-3446-test.patch
+Patch9:         openssl-Add_support_for_Windows_CA_certificate_store.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
 Requires:       libopenssl3 = %{version}-%{release}
