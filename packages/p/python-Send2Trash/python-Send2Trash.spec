@@ -16,9 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # test scripts missing
 %define         oldpython python
+%{?sle15_python_module_pythons}
 Name:           python-Send2Trash
 Version:        1.8.0
 Release:        0
