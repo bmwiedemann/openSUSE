@@ -519,4 +519,12 @@
   only given with CC-BY-NC-SA-3.0, a non-commercial license</comment>
     <requestid>1096750</requestid>
   </revision>
+  <revision rev="51" vrev="54">
+    <srcmd5>bf878532d24ba695d0718b6445dba5a5</srcmd5>
+    <version>unknown</version>
+    <time>1691232882</time>
+    <user>dimstar_suse</user>
+    <comment>- Make texlive-iftex obsolete texlive-ifluatex from 2019 (boo#1211717)</comment>
+    <requestid>1102304</requestid>
+  </revision>
 </revisionlist>

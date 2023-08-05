@@ -19,7 +19,7 @@
 %define texlive_version  2023
 %define texlive_previous 2022
 %define texlive_release  20230311
-%define texlive_noarch   208
+%define texlive_noarch   209
 %define biber_version    2.19
 
 #!BuildIgnore:          texlive
@@ -69,7 +69,7 @@ BuildRequires:  xorg-x11-fonts-core
 BuildRequires:  xz
 BuildArch:      noarch
 Summary:        Meta package for l
-License:        GFDL-1.3-or-later and GPL-2.0-or-later and LGPL-2.1-or-later and LPPL-1.0 and OFL-1.1 and SUSE-Public-Domain and SUSE-TeX
+License:        GFDL-1.3-or-later AND GPL-2.0-or-later AND LGPL-2.1-or-later AND LPPL-1.0 AND OFL-1.1 AND SUSE-Public-Domain AND SUSE-TeX
 URL:            https://build.opensuse.org/package/show/Publishing:TeXLive/Meta
 Group:          Productivity/Publishing/TeX/Base
 Source0:        texlive-specs-l-rpmlintrc
@@ -11385,6 +11385,7 @@ License:        LPPL-1.0
 Summary:        Am I running under pdfTeX, XeTeX or LuaTeX?
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
+Obsoletes:      texlive-ifluatex <= 2019
 Requires(pre):  texlive-filesystem >= %{texlive_version}
 Requires(post): coreutils
 Requires(postun):coreutils
