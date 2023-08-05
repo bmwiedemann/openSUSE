@@ -509,4 +509,16 @@
     <comment></comment>
     <requestid>964528</requestid>
   </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>d1e5a607b20e8bad22e030fb23117133</srcmd5>
+    <version>1.2.8</version>
+    <time>1691232835</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1102116 from JonathanKang
+
+- Add nm-vpnc-editor-interface-name.patch: properties: Don't set
+  interface name as empty string by default
+  (glgo#GNOME/NetworkManager-vpnc/commit/f4df2db6c, bsc#1213769).</comment>
+    <requestid>1102255</requestid>
+  </revision>
 </revisionlist>

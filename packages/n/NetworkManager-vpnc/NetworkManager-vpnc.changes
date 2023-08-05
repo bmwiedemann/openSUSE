@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug  3 06:45:33 UTC 2023 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add nm-vpnc-editor-interface-name.patch: properties: Don't set
+  interface name as empty string by default
+  (glgo#GNOME/NetworkManager-vpnc/commit/f4df2db6c, bsc#1213769).
+
+-------------------------------------------------------------------
 Fri Mar 11 21:01:15 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.2.8:

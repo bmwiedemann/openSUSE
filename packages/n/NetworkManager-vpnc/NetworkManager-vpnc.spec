@@ -24,6 +24,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Networking/System
 URL:            http://www.gnome.org/projects/NetworkManager
 Source0:        http://download.gnome.org/sources/NetworkManager-vpnc/1.2/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM nm-vpnc-editor-interface-name.patch glgo#GNOME/NetworkManager-vpnc/commit/f4df2db6c, bsc#1213769 sckang@suse.com -- properties: Don't set interface name as empty string by default
+Patch0:         nm-vpnc-editor-interface-name.patch
 
 BuildRequires:  intltool
 BuildRequires:  libxml2-tools
