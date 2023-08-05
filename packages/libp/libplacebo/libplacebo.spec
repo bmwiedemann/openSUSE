@@ -18,7 +18,7 @@
 
 %define sover   292
 Name:           libplacebo
-Version:        6.292.0
+Version:        6.292.1
 Release:        0
 Summary:        Library for GPU-accelerated video/image rendering primitives
 License:        LGPL-2.1-or-later

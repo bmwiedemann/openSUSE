@@ -1042,4 +1042,12 @@ Fixes:
     <comment>Update to v6.292.0</comment>
     <requestid>1097449</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>fc906759fc73c1fd082177a04b9953d5</srcmd5>
+    <version>6.292.1</version>
+    <time>1691232886</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102340</requestid>
+  </revision>
 </revisionlist>
