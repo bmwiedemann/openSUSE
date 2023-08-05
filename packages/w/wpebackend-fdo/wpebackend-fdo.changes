@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug  2 13:31:43 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to version 1.14.2
+  + Reverted a change introduced in 1.14.1 which introduced crashes
+    both with WebKitGTK and WPE running under Wayland in some
+    configurations.
+  + Fix a crash caused by wrong assertion, which was typically
+    triggered in debug builds when using the NVidia drivers.
+- Update to version 1.14.1:
+  + Fix WebKit no longer repainting after provisional navigation
+    wit PSON enabled.
+  + Fix graphics buffer leaks by always freeing them in buffer
+    destroy listener callbacks.
+
+-------------------------------------------------------------------
 Tue Oct  4 19:49:48 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.14.0:

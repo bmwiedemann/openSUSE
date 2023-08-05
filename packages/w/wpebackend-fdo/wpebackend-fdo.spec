@@ -1,7 +1,7 @@
 #
 # spec file for package wpebackend-fdo
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover 1
 
 Name:           wpebackend-fdo
-Version:        1.14.0
+Version:        1.14.2
 Release:        0
 Summary:        A WPE backend designed for Linux desktop systems
 License:        BSD-2-Clause
