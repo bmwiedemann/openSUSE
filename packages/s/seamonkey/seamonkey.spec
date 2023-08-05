@@ -72,9 +72,9 @@ BuildRequires:  clang-devel >= 5
 %endif
 Provides:       web_browser
 Provides:       browser(npapi)
-Version:        2.53.16
+Version:        2.53.17
 Release:        0
-%define releasedate 20230331000000
+%define releasedate 20230804000000
 Summary:        An integrated web browser, composer, mail/news client, and IRC client
 License:        MPL-2.0
 Group:          Productivity/Networking/Web/Browsers
@@ -219,7 +219,7 @@ cd mozilla
 
 cp %{SOURCE12} GNUmakefile
 
-%patch1 -p2
+%patch1 -p1
 %patch3 -p2
 %patch4 -p1
 %patch5 -p0
@@ -415,10 +415,6 @@ rm -f $RPM_BUILD_ROOT%{progdir}/dictionaries/*
 #INSTALL APPDATA FILES
 mkdir -p %{buildroot}%{_datadir}/appdata
 install -m0644 -t %{buildroot}%{_datadir}/appdata/ $RPM_BUILD_DIR/*.appdata.xml
-
-%clean
-rm -rf $RPM_BUILD_ROOT
-rm -rf %{_tmppath}/translations.*
 
 %files -f seamonkey.lang
 %defattr(-,root,root)
