@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug  3 18:38:22 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.18.6:
+  * Set a jsonschema specific user agent when automatically
+    retrieving remote references (which is deprecated).
+
+-------------------------------------------------------------------
+Thu Aug  3 17:44:21 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- update to 4.18.5:
+  * Declare support for Py3.12
+
+-------------------------------------------------------------------
 Tue Jul 18 09:05:26 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - update to 4.18.4:
