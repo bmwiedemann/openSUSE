@@ -1,7 +1,7 @@
 #
 # spec file for package gmp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{!?make_build: %define make_build make %{?_smp_mflags}}
 Name:           gmp
-Version:        6.2.1
+Version:        6.3.0
 Release:        0
 Summary:        A library for calculating huge numbers
 License:        (GPL-2.0-or-later OR LGPL-3.0-or-later) AND GPL-3.0-or-later
@@ -30,7 +30,6 @@ Source2:        %{name}.keyring
 Source3:        baselibs.conf
 # revert change causing bsc#1179751
 Patch1:         gmp-6.2.1-arm64-invert_limb.patch
-Patch2:         gmp-6.2.1-CVE-2021-43618.patch
 BuildRequires:  fipscheck
 BuildRequires:  gcc-c++
 BuildRequires:  m4
@@ -79,7 +78,6 @@ huge numbers (integer and floating point).
 %prep
 %setup -q
 %patch1
-%patch2 -p1
 
 %build
 export CFLAGS="%{optflags} -fexceptions"

@@ -544,4 +544,33 @@ discover that breaks ...
   malformed input to mpz_inp_raw.  [bsc#1192717, CVE-2021-43618]</comment>
     <requestid>931707</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>cca59a8826cfeeaeffae623b060ee5d4</srcmd5>
+    <version>6.3.0</version>
+    <time>1691232900</time>
+    <user>dimstar_suse</user>
+    <comment>- GMP 6.3.0
+  * A possible overflow of type int is avoided for mpz_cmp on huge operands.
+  * A possible error condition when a malformed file is read with mpz_inp_raw
+    is now correctly handled.
+  * New public function mpz_prevprime, companion of the existing mpz_nextprime.
+  * New documented pointer types mpz_ptr, mpz_srcptr, and similar for other
+    GMP types. Refer to the manual for full list and suggested usage. These
+    types have been present in gmp.h at least since GMP-4.0, but previously
+    not advertised to users.
+  * Support for 64-bit Arm under Macos.
+  * Support for the loongarch64 CPU family.
+  * Support for building with LTO, link-time optimisations.
+  * New special code for base = 2 in mpz_powm reduces the average time for
+    the functions that test primality.
+  * Speedup for the function mpz_nextprime on large operands.
+  * Speedup for multiplications (some sizes only) thanks to new internal
+    functions to compute small negacyclic products.
+  * Special assembly code for IBM z13 and later &quot;mainframe&quot; CPUs, resulting
+    in a huge speedup.
+  * Improved assembly for several 64-bit x86 CPUs, Risc-V, 64-bit Arm.
+- Removed gmp-6.2.1-CVE-2021-43618.patch which is included in the
+  new release.</comment>
+    <requestid>1102324</requestid>
+  </revision>
 </revisionlist>
