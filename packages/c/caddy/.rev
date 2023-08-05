@@ -119,4 +119,154 @@
     <comment></comment>
     <requestid>1083957</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f2f8306cea1697657b0ede351fcd0547</srcmd5>
+    <version>2.7.2</version>
+    <time>1691232962</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.7.2:
+  * reverseproxy: Fix hijack ordering which broke websockets (#5679)
+  * httpcaddyfile: Fix `string does not match ~[]E` error (#5675)
+  * encode: Fix infinite recursion (#5672)
+  * caddyhttp: Make use of `http.ResponseController` (#5654)
+  * go.mod: Upgrade dependencies esp. smallstep/certificates
+  * core: Allow loopback hosts for admin endpoint (fix #5650) (#5664)
+  * httpcaddyfile: Allow `hostnames` &amp; logger name overrides for log directive (#5643)
+  * reverseproxy: Connection termination cleanup (#5663)
+  * go.mod: Use quic-go 0.37.1
+  * reverseproxy: Export ipVersions type (#5648)
+  * go.mod: Use latest CertMagic (v0.19.1)
+  * caddyhttp: Preserve original error (fix #5652)
+  * fileserver: add lazy image loading (#5646)
+  * go.mod: Update quic-go to v0.37.0, bump to Go 1.20 minimum (#5644)
+  * core: Refine mutex during reloads (fix #5628) (#5645)
+  * go.mod: update quic-go to v0.36.2 (#5636)
+  * fileserver: Tweak grid view of browse template
+  * fileserver: add `export-template` sub-command to `file-server` (#5630)
+  * caddyfile: Fix comparing if two tokens are on the same line (#5626)
+  * caddytls: Reuse certificate cache through reloads (#5623)
+  * Minor tweaks to security.md
+  * reverseproxy: Pointer receiver
+  * caddyhttp: Trim dot/space only on Windows (fix #5613)
+  * update quic-go to v0.36.1 (#5611)
+  * caddyconfig: Specify config adapter for HTTP loader (close #5607)
+  * core: Embed net.UDPConn to gain optimizations (#5606)
+  * chore: remove deprecated property `rlcp` in goreleaser config (#5608)
+  * core: Skip `chmod` for abstract unix sockets (#5596)
+  * core: Add optional unix socket file permissions (#4741)
+  * reverseproxy: Honor `tls_except_port` for active health checks (#5591)
+  * Appease linter
+  * Fix compile on Windows, hopefully
+  * core: Properly preserve unix sockets (fix  #5568)
+  * go.mod: Upgrade CertMagic for hotfix
+  * go.mod: Upgrade some dependencies
+  * chore: upgrade otel (#5586)
+  * go.mod: Update quic-go to v0.36.0 (#5584)
+  * reverseproxy: weighted_round_robin load balancing policy (#5579)
+  * reverseproxy: Experimental streaming timeouts (#5567)
+  * chore: remove refs of deprecated io/ioutil (#5576)
+  * headers: Allow `&gt;` to defer shortcut for replacements (#5574)
+  * caddyhttp: Support custom network for HTTP/3 (#5573)
+  * reverseproxy: Fix parsing of source IP in case it's an ipv6 address (#5569)
+  * fileserver: browse: Better grid layout (#5564)
+  * caddytls: Clarify some JSON config docs
+  * cmd: Implement storage import/export (#5532)
+  * go.mod: Upgrade quic-go to 0.35.1
+  * update quic-go to v0.35.0 (#5560)
+  * templates: Add `readFile` action that does not evaluate templates (#5553)
+  * caddyfile: Track import name instead of modifying filename (#5540)
+  * core: Use SO_REUSEPORT_LB on FreeBSD (#5554)
+  * caddyfile: Do not replace import tokens if they are part of a snippet (#5539)
+  * fileserver: Don't set Etag if mtime is 0 or 1 (close #5548) (#5550)
+  * fileserver: browse: minor tweaks for grid view, dark mode (#5545)
+  * fileserver: Only set Etag if not already set (fix #5546) (#5547)
+  * fileserver: Fix file browser breadcrumb font (#5543)
+  * caddyhttp: Fix h3 shutdown (#5541)
+  * fileserver: More filetypes for browse icons
+  * fileserver: Fix file browser footer in grid mode (#5536)
+  * cmd: Avoid spammy log messages (fix #5538)
+  * httpcaddyfile: Sort Caddyfile slice
+  * caddyhttp: Implement named routes, `invoke` directive (#5107)
+  * rewrite: use escaped path, fix #5278 (#5504)
+  * headers: Add &gt; Caddyfile shortcut for enabling defer (#5535)
+  * go.mod: Upgrade several dependencies
+  * reverseproxy: Expand port ranges to multiple upstreams in CLI + Caddyfile (#5494)
+  * fileserver: Use EscapedPath for browse (#5534)
+  * caddyhttp: Refactor cert Managers (fix #5415) (#5533)
+  * Slightly more helpful error message
+  * caddytls: Check for nil ALPN; close #5470 (#5473)
+  * cmd: Reduce spammy logs from --watch
+  * caddyhttp: Add a getter for Server.name (#5531)
+  * caddytls: Configurable fallback SNI (#5527)
+  * caddyhttp: Update quic's TLS configs after reload (#5517) (fix #4849)
+  * Add doc comment about changing admin endpoint
+  * feature: watch include directory (#5521)
+  * chore: remove deprecated linters (#5525)
+  * go.mod: Upgrade CertMagic again
+  * go.mod: Upgrade CertMagic
+  * reverseproxy: Optimize base case for least_conn and random_choose policies (#5487)
+  * reverseproxy: Fix active health check header canonicalization, refactor (#5446)
+  * reverseproxy: Add `fallback` for some policies, instead of always random (#5488)
+  * logging: Actually honor the SoftStart parameter
+  * logging: Soft start for net writer (close #5520)
+  * fastcgi: Fix `capture_stderr` (#5515)
+  * acmeserver: Configurable `resolvers`, fix smallstep deprecations (#5500)
+  * go.mod: Update some dependencies
+  * logging: Add traceID field to access logs when tracing is active (#5507)
+  * caddyhttp: Impl `ResponseWriter.Unwrap()`, prep for Go 1.20's `ResponseController` (#5509)
+  * reverseproxy: Fix reinitialize upstream healthy metrics (#5498)
+  * fix some comments (#5508)
+  * templates: Add `fileStat` function (#5497)
+  * caddyfile: Stricter parsing, error for brace on new line (#5505)
+  * core: Return default logger if no modules loaded
+  * celmatcher: Implement `pkix.Name` conversion to string (#5492)
+  * chore: Adjustments to CI caching (#5495)
+  * reverseproxy: Remove deprecated `lookup_srv` (#5396)
+  * cmd: Support `'` quotes in envfile parsing (#5437)
+  * Update contributing guidelines (#5466)
+  * caddyhttp: Serve http2 when listener wrapper doesn't return *tls.Conn (#4929)
+  * reverseproxy: Add `query` and `client_ip_hash` lb policies (#5468)
+  * cmd: Create pidfile before config load (close #5477)
+  * fileserver: Add color-scheme meta tag (#5475)
+  * build(deps): bump actions/setup-go from 3 to 4 (#5474)
+  * proxyprotocol: Add PROXY protocol support to `reverse_proxy`, add HTTP listener wrapper (#5424)
+  * reverseproxy: Add mention of which half a copyBuffer err comes from (#5472)
+  * caddyhttp: Log request body bytes read (#5461)
+  * log: Make sink logs encodable (#5441)
+  * caddytls: Eval replacer on automation policy subjects (#5459)
+  * headers: Support deleting all headers as first op (#5464)
+  * replacer: Add HTTP time format (#5458)
+  * reverseproxy: Header up/down support for CLI command (#5460)
+  * caddyhttp: Determine real client IP if trusted proxies configured (#5104)
+  * httpcaddyfile: Adjust path matcher sorting to solve for specificity (#5462)
+  * caddytls: Zero out throttle window first (#5443)
+  * ci: add `--yes` to cosign arguments (#5440)
+  * reverseproxy: Reset Content-Length to prevent FastCGI from hanging (#5435)
+  * caddytls: Allow on-demand w/o ask for internal-only
+  * caddytls: Require 'ask' endpoint for on-demand TLS
+  * fileserver: New file browse template (#5427)
+  * go.mod: Upgrade dependencies
+  * tracing: Support autoprop from OTEL_PROPAGATORS (#5147)
+  * caddyhttp: Enable 0-RTT QUIC (#5425)
+  * encode: flush status code when hijacked. (#5419)
+  * fileserver: Remove trailing slash on fs filenames (#5417)
+  * core: Eliminate unnecessary shutdown delay on Unix (#5413)
+  * caddyhttp: Fix `vars_regexp` matcher with placeholders (#5408)
+  * context: Rename func to `AppIfConfigured` (#5397)
+  * reverseproxy: allow specifying ip version for dynamic `a` upstream (#5401)
+  * ci/cd: ship tarballs with vendored deps (#5403)
+  * caddyfile: Fix heredoc fuzz crasher, drop trailing newline (#5404)
+  * caddyfile: Implement heredoc support (#5385)
+  * cmd: Expand cobra support, add short flags (#5379)
+  * ci: Update minimum Go version to 1.19
+  * go.mod: Upgrade quic-go to v0.33.0 (Go 1.19 min)
+  * reverseproxy: refactor HTTP transport layer (#5369)
+  * caddytls: Relax the warning for on-demand (#5384)
+  * cmd: Strict unmarshal for validate (#5383)
+  * caddyfile: Implement variadics for import args placeholders (#5249)
+  * cmd: make `caddy fmt` hints more clear (#5378)
+  * cmd: Adjust documentation for commands (#5377)
+- BuildRequires: golang(API) &gt;= 1.20 for guic-go bump (forwarded request 1102430 from elimat)</comment>
+    <requestid>1102432</requestid>
+  </revision>
 </revisionlist>
