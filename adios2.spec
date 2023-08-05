@@ -1,5 +1,5 @@
 #
-# spec file for package adios2
+# spec file
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -19,7 +19,7 @@
 %define flavor @BUILD_FLAVOR@%{nil}
 %define major_ver 2
 %define minor_ver 9
-%define patch_ver 0
+%define patch_ver 1
 # Name the suffix of the pkg
 %if "%{flavor}" != "%{nil}"
   %define pkg_suffix -%{flavor}
@@ -66,22 +66,23 @@ Summary:        The Adaptable IO System (ADIOS2)
 License:        Apache-2.0
 Group:          Productivity/Scientific/Other
 URL:            https://adios2.readthedocs.io/en/release/
-Source0:        adios2-v%{version}.tar.gz
+Source0:        ADIOS2-%{version}.tar.gz
 Source1:        adios2-rpmlintrc
 # https://github.com/ornladios/ADIOS2/pull/3585
 Patch0:         0001-cmake-set-correct-soname.patch
 # https://github.com/ornladios/ADIOS2/pull/3586
 Patch1:         0002-fix-test-post-install.patch
-# https://github.com/ornladios/ADIOS2/pull/3689
-Patch2:         0003-cmake-evpath-namespace-modules-install-dir.patch
+Patch2:         0003-fix-adios2_evpath_modules.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  libbz2-devel
+BuildRequires:  libffi-devel
 BuildRequires:  liblz4-devel
 BuildRequires:  ninja
 BuildRequires:  zlib-devel
+Requires:       libffi
 Requires:       python3
 ExcludeArch:    %{ix86}
 # mpi4py pkg (Not MPI-4)
