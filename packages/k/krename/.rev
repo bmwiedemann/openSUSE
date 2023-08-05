@@ -346,4 +346,12 @@
     <comment>Add fix for exiv 0.28</comment>
     <requestid>1096668</requestid>
   </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>7ff62b7a34a439f1c84df848be9a4a4b</srcmd5>
+    <version>5.0.2</version>
+    <time>1691232908</time>
+    <user>dimstar_suse</user>
+    <comment>Added podofo 0.10 support</comment>
+    <requestid>1102390</requestid>
+  </revision>
 </revisionlist>

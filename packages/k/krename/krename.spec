@@ -33,6 +33,9 @@ Patch1:         remove-gplv2-code.diff
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150400
 Patch2:         0001-Fix-build-with-exiv2-0.28-raise-minimum-to-0.27.patch
 %endif
+# PATCH-FIX-UPSTREAM -- podofo 0.10 support
+Patch3:         0001-Support-podofo-0.10.patch
+Patch4:         0002-cmake-Improve-FindPoDoFo.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  freetype2-devel
 BuildRequires:  libexiv2-devel

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug  4 13:26:36 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Add patches:
+  * 0001-Support-podofo-0.10.patch
+  * 0002-cmake-Improve-FindPoDoFo.patch
+
+-------------------------------------------------------------------
 Tue Jul  4 06:37:49 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Add patch:
