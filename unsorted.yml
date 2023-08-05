@@ -2740,6 +2740,7 @@ unsorted:
   - csync2 
   - ctdb 
   - ctdb-pcp-pmda 
+  - ctop 
   - ctris 
   - cttop 
   - cudd-devel 
@@ -22877,7 +22878,6 @@ unsorted:
   - python310-Flask 
   - python310-Flask-Admin 
   - python310-Flask-Babel 
-  - python310-Flask-BabelEx 
   - python310-Flask-Bootstrap 
   - python310-Flask-Caching 
   - python310-Flask-Compress 
@@ -26360,7 +26360,6 @@ unsorted:
   - python311-Flask 
   - python311-Flask-Admin 
   - python311-Flask-Babel 
-  - python311-Flask-BabelEx 
   - python311-Flask-Bootstrap 
   - python311-Flask-Caching 
   - python311-Flask-Compress 
@@ -29689,7 +29688,6 @@ unsorted:
   - python39-Flask 
   - python39-Flask-Admin 
   - python39-Flask-Babel 
-  - python39-Flask-BabelEx 
   - python39-Flask-Bootstrap 
   - python39-Flask-Caching 
   - python39-Flask-Compress 
