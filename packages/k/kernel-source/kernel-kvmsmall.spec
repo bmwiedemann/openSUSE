@@ -18,7 +18,7 @@
 
 
 %define srcversion 6.4
-%define patchversion 6.4.6
+%define patchversion 6.4.8
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -112,9 +112,9 @@ Name:           kernel-kvmsmall
 Summary:        The Small Developer Kernel for KVM
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        6.4.6
+Version:        6.4.8
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g55520bc
+Release:        <RELEASE>.gc24ac79
 %else
 Release:        0
 %endif
@@ -135,9 +135,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc-devel
 %endif
 BuildRequires:  hmaccalc
-%if 0%{?suse_version} > 1500
-BuildRequires:  jq
-%endif
 BuildRequires:  libopenssl-devel
 BuildRequires:  modutils
 # Used to sign the kernel in the buildservice
@@ -245,10 +242,10 @@ Obsoletes:      microcode_ctl < 1.18
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-55520bc826c5b1d40857ed0536eb87438cb95192
-Provides:       kernel-srchash-55520bc826c5b1d40857ed0536eb87438cb95192
+Provides:       kernel-%build_flavor-base-srchash-c24ac79a6017521cded9f256f78ac3407cb3e579
+Provides:       kernel-srchash-c24ac79a6017521cded9f256f78ac3407cb3e579
 # END COMMON DEPS
-Provides:       %name-srchash-55520bc826c5b1d40857ed0536eb87438cb95192
+Provides:       %name-srchash-c24ac79a6017521cded9f256f78ac3407cb3e579
 %obsolete_rebuilds %name
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
 Source3:        kernel-source.rpmlintrc
@@ -1350,8 +1347,8 @@ Obsoletes:      microcode_ctl < 1.18
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-55520bc826c5b1d40857ed0536eb87438cb95192
-Provides:       kernel-srchash-55520bc826c5b1d40857ed0536eb87438cb95192
+Provides:       kernel-%build_flavor-base-srchash-c24ac79a6017521cded9f256f78ac3407cb3e579
+Provides:       kernel-srchash-c24ac79a6017521cded9f256f78ac3407cb3e579
 
 %obsolete_rebuilds %name-base
 %ifarch %ix86
@@ -1596,9 +1593,6 @@ Requires:       kernel-devel%variant = %version-%source_rel
 Recommends:     make
 Recommends:     gcc
 Recommends:     perl
-%if 0%{?suse_version} > 1500
-Requires:       jq
-%endif
 # for objtool
 Requires:	libelf-devel
 Supplements:    packageand(%name:kernel-devel%variant)
@@ -1709,7 +1703,7 @@ Provides:       cluster-md-kmp-preempt = %version-%release
 %endif
 %endif
 Enhances:	%name
-Supplements:	packageand(%name:%cluster-md-kmp-%build_flavor)
+Supplements:	packageand(%name:cluster-md-kmp-%build_flavor)
 Requires:       dlm-kmp-%build_flavor = %version-%release
 
 %description -n cluster-md-kmp-%build_flavor
@@ -1764,7 +1758,7 @@ Provides:       dlm-kmp-preempt = %version-%release
 %endif
 %endif
 Enhances:	%name
-Supplements:	packageand(%name:%dlm-kmp-%build_flavor)
+Supplements:	packageand(%name:dlm-kmp-%build_flavor)
 
 %description -n dlm-kmp-%build_flavor
 DLM stands for Distributed Lock Manager, a means to synchronize access to
@@ -1817,7 +1811,7 @@ Provides:       gfs2-kmp-preempt = %version-%release
 %endif
 %endif
 Enhances:	%name
-Supplements:	packageand(%name:%gfs2-kmp-%build_flavor)
+Supplements:	packageand(%name:gfs2-kmp-%build_flavor)
 Requires:       dlm-kmp-%build_flavor = %version-%release
 
 %description -n gfs2-kmp-%build_flavor
@@ -1870,7 +1864,7 @@ Provides:       kselftests-kmp-preempt = %version-%release
 %endif
 %endif
 Enhances:	%name
-Supplements:	packageand(%name:%kselftests-kmp-%build_flavor)
+Supplements:	packageand(%name:kselftests-kmp-%build_flavor)
 
 %description -n kselftests-kmp-%build_flavor
 This package contains kernel modules which are part of the upstream kernel
@@ -1938,7 +1932,7 @@ Provides:       ocfs2-kmp-preempt = %version-%release
 %endif
 %endif
 Enhances:	%name
-Supplements:	packageand(%name:%ocfs2-kmp-%build_flavor)
+Supplements:	packageand(%name:ocfs2-kmp-%build_flavor)
 Requires:       dlm-kmp-%build_flavor = %version-%release
 
 %description -n ocfs2-kmp-%build_flavor
@@ -1992,7 +1986,7 @@ Provides:       reiserfs-kmp-preempt = %version-%release
 %endif
 %endif
 Enhances:	%name
-Supplements:	packageand(%name:%reiserfs-kmp-%build_flavor)
+Supplements:	packageand(%name:reiserfs-kmp-%build_flavor)
 
 %description -n reiserfs-kmp-%build_flavor
 The reiserfs file system is no longer supported in SLE15.  This package

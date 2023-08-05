@@ -17,7 +17,7 @@
 
 
 %define srcversion 6.4
-%define patchversion 6.4.6
+%define patchversion 6.4.8
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -30,9 +30,9 @@
 %endif
 
 Name:           kernel-source
-Version:        6.4.6
+Version:        6.4.8
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g55520bc
+Release:        <RELEASE>.gc24ac79
 %else
 Release:        0
 %endif
@@ -49,7 +49,7 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-55520bc826c5b1d40857ed0536eb87438cb95192
+Provides:       %name-srchash-c24ac79a6017521cded9f256f78ac3407cb3e579
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        https://www.kernel.org/pub/linux/kernel/v6.x/linux-%srcversion.tar.xz
@@ -134,9 +134,6 @@ Recommends:     bc
 Recommends:     bison
 Recommends:     flex
 Recommends:     libelf-devel
-%if 0%{?suse_version} > 1500
-Recommends:     jq
-%endif
 Recommends:     openssl-devel
 # pahole needed for BTF
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
