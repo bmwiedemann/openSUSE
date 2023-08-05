@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug  3 11:27:50 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Run testsuite in qemu build
+
+-------------------------------------------------------------------
 Mon Jul 10 14:57:51 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.21.0

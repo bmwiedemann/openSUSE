@@ -277,9 +277,7 @@ rm -r %{buildroot}%{_libdir}/pkgconfig/gpgme*
 %endif
 
 %check
-%if ! 0%{?qemu_user_space_build}
 GPGME_DEBUG=2:mygpgme.log %make_build check skip=%{?qt_skip:%{qt_skip}} || cat $(find -name mygpgme.log -type f)
-%endif
 
 %if %{with qt}
 %ldconfig_scriptlets -n libqgpgme15
