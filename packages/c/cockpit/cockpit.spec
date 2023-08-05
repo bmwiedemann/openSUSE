@@ -50,7 +50,7 @@ Summary:        Web Console for Linux servers
 License:        LGPL-2.1-or-later
 URL:            https://cockpit-project.org/
 
-Version:        296
+Version:        297
 Release:        0
 Source0:        cockpit-%{version}.tar
 Source1:        cockpit.pam
@@ -71,8 +71,7 @@ Patch102:       0002-selinux-temporary-remove-setroubleshoot-section.patch
 # For anything based on SLES 15 codebase (including Leap, SLE Micro)
 Patch103:       0004-leap-gnu18-removal.patch
 
-# Use Python bridge on non-stable versions
-%if 0%{?fedora} >= 39
+%if 0%{?fedora} >= 38 || 0%{?rhel} >= 9
 %define cockpit_enable_python 1
 %endif
 

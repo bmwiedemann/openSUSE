@@ -17,7 +17,7 @@ Index: cockpit/pkg/kdump/manifest.json
 ===================================================================
 --- cockpit.orig/pkg/kdump/manifest.json
 +++ cockpit/pkg/kdump/manifest.json
-@@ -6,7 +6,7 @@
+@@ -5,7 +5,7 @@
      "tools": {
          "index": {
              "label": "Kernel dump",
@@ -30,7 +30,7 @@ Index: cockpit/pkg/networkmanager/manifest.json
 ===================================================================
 --- cockpit.orig/pkg/networkmanager/manifest.json
 +++ cockpit/pkg/networkmanager/manifest.json
-@@ -8,7 +8,7 @@
+@@ -7,7 +7,7 @@
          "index": {
              "label": "Networking",
              "order": 40,
@@ -43,7 +43,7 @@ Index: cockpit/pkg/packagekit/manifest.json
 ===================================================================
 --- cockpit.orig/pkg/packagekit/manifest.json
 +++ cockpit/pkg/packagekit/manifest.json
-@@ -8,7 +8,7 @@
+@@ -9,7 +9,7 @@
      "tools": {
          "index": {
              "label": "Software updates",
@@ -56,7 +56,7 @@ Index: cockpit/pkg/storaged/manifest.json
 ===================================================================
 --- cockpit.orig/pkg/storaged/manifest.json
 +++ cockpit/pkg/storaged/manifest.json
-@@ -8,7 +8,7 @@
+@@ -11,7 +11,7 @@
          "index": {
              "label": "Storage",
              "order": 30,
@@ -100,7 +100,7 @@ Index: cockpit/pkg/users/manifest.json
 ===================================================================
 --- cockpit.orig/pkg/users/manifest.json
 +++ cockpit/pkg/users/manifest.json
-@@ -7,7 +7,7 @@
+@@ -3,7 +3,7 @@
          "index": {
              "label": "Accounts",
              "order": 70,
@@ -109,20 +109,3 @@ Index: cockpit/pkg/users/manifest.json
                  {
                      "label": "Managing user accounts",
                      "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_systems_using_the_rhel_8_web_console/managing-user-accounts-in-the-web-console_system-management-using-the-rhel-8-web-console"
-Index: cockpit/pkg/shell/topnav.jsx
-===================================================================
---- cockpit.orig/pkg/shell/topnav.jsx
-+++ cockpit/pkg/shell/topnav.jsx
-@@ -119,9 +119,9 @@ export class TopNav extends React.Compon
-                 {cockpit.format(_("$0 documentation"), this.state.osRelease.NAME)}
-             </DropdownItem>);
- 
--        docItems.push(<DropdownItem key="cockpit-doc" href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_systems_using_the_rhel_8_web_console/index" target="blank" rel="noopener noreferrer" icon={<ExternalLinkAltIcon />}>
--            {_("Web Console")}
--        </DropdownItem>);
-+        // docItems.push(<DropdownItem key="cockpit-doc" href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_systems_using_the_rhel_8_web_console/index" target="blank" rel="noopener noreferrer" icon={<ExternalLinkAltIcon />}>
-+        //    {_("Web Console")}
-+        // </DropdownItem>);
- 
-         if (docs.length > 0)
-             docItems.push(<DropdownSeparator key="separator" />);

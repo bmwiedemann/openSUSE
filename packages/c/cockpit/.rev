@@ -301,4 +301,14 @@
 - 0004-leap-gnu18-removal.patch: added support for Leap thanks to Lubos</comment>
     <requestid>1099925</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>70050b8159749bb40018c9e40ab62be1</srcmd5>
+    <version>297</version>
+    <time>1691232887</time>
+    <user>dimstar_suse</user>
+    <comment>- new version 297:
+  - https://cockpit-project.org/blog/cockpit-297.html
+- hide-docs.patch: refreshed</comment>
+    <requestid>1102341</requestid>
+  </revision>
 </revisionlist>
