@@ -68,6 +68,7 @@ with Mesa, but meanwhile developed separately.
 Summary:        Development files for the GLU API
 Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
+Requires:       pkgconfig(gl)
 # O/P since 12.3
 Obsoletes:      Mesa-libGLU-devel < %version-%release
 Provides:       Mesa-libGLU-devel = %version-%release

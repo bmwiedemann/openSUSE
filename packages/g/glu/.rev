@@ -128,4 +128,13 @@
 - switch to meson build</comment>
     <requestid>1100361</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>af7027586cb2b39a7e3aec15d0d4f4c7</srcmd5>
+    <version>9.0.3</version>
+    <time>1691232886</time>
+    <user>dimstar_suse</user>
+    <comment>- devel package: added missing dep to Mesa GL devel package
+  (boo#1213976)</comment>
+    <requestid>1102330</requestid>
+  </revision>
 </revisionlist>
