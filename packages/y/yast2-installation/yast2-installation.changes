@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug  4 07:09:13 UTC 2023 - Michal Filka <mfilka@suse.com>
+
+- bsc#1213959
+  - Change status label properly when toggling status in the
+    "Previousy used repositories" dialog.
+- 4.6.6 
+
+-------------------------------------------------------------------
 Tue Jul 11 07:20:29 UTC 2023 - Ladislav Slezák <lslezak@suse.com>
 
 - Fixed yupdate script to properly run pre/post scripts
