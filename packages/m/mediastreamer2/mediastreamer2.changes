@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug  5 01:08:15 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- Add BuildRequires:  Mesa-libGL-devel
+  * fix build on tumbleweed
+
+-------------------------------------------------------------------
 Wed Jun 28 06:37:28 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.2.73 (no changelog)

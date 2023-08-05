@@ -47,6 +47,7 @@ BuildRequires:  libjpeg-turbo >= 2.0.0
 %if 0%{?fedora}
 BuildRequires:  turbojpeg-devel
 %endif
+BuildRequires:  Mesa-libGL-devel
 BuildRequires:  libpcap-devel
 BuildRequires:  libsrtp2-linphone-devel
 BuildRequires:  libv4l-devel
