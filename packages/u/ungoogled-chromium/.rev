@@ -117,4 +117,24 @@
 </comment>
     <requestid>1102076</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f74efc94d7ad2e6bc55f5a0878b11abf</srcmd5>
+    <version>115.0.5790.170</version>
+    <time>1691232922</time>
+    <user>dimstar_suse</user>
+    <comment>- ungoogled-chromium 115.0.5790.170 (boo#1213920)
+  * CVE-2023-4068: Type Confusion in V8
+  * CVE-2023-4069: Type Confusion in V8
+  * CVE-2023-4070: Type Confusion in V8
+  * CVE-2023-4071: Heap buffer overflow in Visuals
+  * CVE-2023-4072: Out of bounds read and write in WebGL
+  * CVE-2023-4073: Out of bounds memory access in ANGLE
+  * CVE-2023-4074: Use after free in Blink Task Scheduling
+  * CVE-2023-4075: Use after free in Cast
+  * CVE-2023-4076: Use after free in WebRTC
+  * CVE-2023-4077: Insufficient data validation in Extensions
+  * CVE-2023-4078: Inappropriate implementation in Extensions
+</comment>
+    <requestid>1102416</requestid>
+  </revision>
 </revisionlist>

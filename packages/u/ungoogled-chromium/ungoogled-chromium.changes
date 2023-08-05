@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Aug  4 11:33:29 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
+
+- ungoogled-chromium 115.0.5790.170 (boo#1213920)
+  * CVE-2023-4068: Type Confusion in V8
+  * CVE-2023-4069: Type Confusion in V8
+  * CVE-2023-4070: Type Confusion in V8
+  * CVE-2023-4071: Heap buffer overflow in Visuals
+  * CVE-2023-4072: Out of bounds read and write in WebGL
+  * CVE-2023-4073: Out of bounds memory access in ANGLE
+  * CVE-2023-4074: Use after free in Blink Task Scheduling
+  * CVE-2023-4075: Use after free in Cast
+  * CVE-2023-4076: Use after free in WebRTC
+  * CVE-2023-4077: Insufficient data validation in Extensions
+  * CVE-2023-4078: Inappropriate implementation in Extensions
+
+-------------------------------------------------------------------
 Wed Aug  2 17:19:49 UTC 2023 - Michał Szczepaniak <m.szczepaniak.000@gmail.com>
 
 - ungoogled-chromium 115.0.5790.102:

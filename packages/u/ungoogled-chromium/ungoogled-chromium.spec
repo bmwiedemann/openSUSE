@@ -78,7 +78,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           ungoogled-chromium%{n_suffix}
-Version:        115.0.5790.102
+Version:        115.0.5790.170
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
