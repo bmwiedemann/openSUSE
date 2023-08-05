@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug  4 04:14:29 UTC 2023 - William Brown <william.brown@suse.com>
+
+- Update to version 1.71.1
+- bsc#1213817 - CVE-2023-38497 - Cargo does not respect the umask
+  when extracting dependencies
+
+-------------------------------------------------------------------
 Mon Jul 17 02:20:27 UTC 2023 - William Brown <william.brown@suse.com>
 
 Version 1.71.0 (2023-07-13)

@@ -18,7 +18,7 @@
 
 
 %global version_suffix 1.71
-%global version_current 1.71.0
+%global version_current 1.71.1
 %global version_previous 1.70.0
 # This has to be kept lock step to the rust version.
 %global llvm_version 16
@@ -611,7 +611,7 @@ mkdir -p %{buildroot}%{_datadir}/cargo/registry
 
 # Remove completions
 rm -rf %{buildroot}%{_prefix}/src/etc/bash_completion.d
-rmdir %{buildroot}%{_prefix}/src/etc
+# rmdir %{buildroot}%{_prefix}/src/etc
 rm -rf %{buildroot}%{_sysconfdir}/bash_completion.d
 rm -rf %{buildroot}%{_datadir}/zsh
 
