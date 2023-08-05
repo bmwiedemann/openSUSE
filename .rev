@@ -123,4 +123,13 @@
     <comment>- Add %{?sle15_python_module_pythons}</comment>
     <requestid>1092248</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>165c1bac2ecc16fd182952f24acb167c</srcmd5>
+    <version>1.14.1</version>
+    <time>1691232897</time>
+    <user>dimstar_suse</user>
+    <comment>- Synchronize architectures where luajit is Required with those
+  where it is build (riscv64 ppc64 ppc64le s390x).</comment>
+    <requestid>1102379</requestid>
+  </revision>
 </revisionlist>
