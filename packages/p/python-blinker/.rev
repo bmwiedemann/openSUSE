@@ -189,4 +189,14 @@
 </comment>
     <requestid>1100942</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>ac191b3b367e664568c08da3390a693c</srcmd5>
+    <version>1.6.2</version>
+    <time>1691232898</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove no-stdpy-pyc.patch
+- Call directly to the sphinx module with the specific python
+  interpreter to avoid the usage of default python, bsc#1213698.</comment>
+    <requestid>1102380</requestid>
+  </revision>
 </revisionlist>

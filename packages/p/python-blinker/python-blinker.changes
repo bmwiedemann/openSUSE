@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 31 12:04:02 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove no-stdpy-pyc.patch
+- Call directly to the sphinx module with the specific python
+  interpreter to avoid the usage of default python, bsc#1213698.
+
+-------------------------------------------------------------------
 Wed Jul 26 22:09:11 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Add no-stdpy-pyc.patch which makes Sphinx not to generate

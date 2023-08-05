@@ -25,9 +25,6 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pallets-eco/blinker/
 Source:         https://files.pythonhosted.org/packages/source/b/blinker/blinker-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE no-stdpy-pyc.patch bsc#[0-9]+ mcepl@suse.com
-# Persuade Sphinx not to generate *.pyc files
-Patch0:         no-stdpy-pyc.patch
 BuildRequires:  %{python_module Pallets-Sphinx-Themes}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module pip}
@@ -75,7 +72,10 @@ This sub-package contains the HTML documentation.
 
 %{python_expand pushd docs
 export PYTHONPATH=%{buildroot}%{$python_sitelib}
-make html
+# Do not call "make html" directly because it'll use python3 by
+# default and that could produce .pyc files from different python
+# versions in the package bsc#1213698
+$python -m sphinx -M html . _build
 popd
 
 %fdupes %{buildroot}%{$python_sitelib}
