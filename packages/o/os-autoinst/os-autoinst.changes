@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Aug 05 05:47:40 UTC 2023 - okurz@suse.com
+
+- Update to version 4.6.1691146636.a00cbb0:
+  * Add unit test for save_storage
+  * Add full-stack test for `save_storage`
+  * Add 'NAME' to QEMU backend blocklist in check_vars_docu
+  * Document `save_storage` and 'SAVE_STORAGE_TIMEOUT'
+  * Add support for saving storage during test
+  * consoles: Mention VNC keyboard layout in errors
+  * os-autoinst-openvswitch: Fix running into timeout for slow network init
+  * os-autoinst-setup-multi-machine: Ensure correct default zone
+  * os-autoinst-setup-multi-machine: Use more common 'br0' as ethernet
+  * os-autoinst-setup-multi-machine: Make zone configurable
+  * os-autoinst-setup-multi-machine: Ensure IP forwarding
+  * os-autoinst-setup-multi-machine: Extract main function
+  * os-autoinst-setup-multi-machine: Add live-mode related steps
+  * Include os-autoinst-setup-multi-machine in doc+package
+  * Add multi-machine setup script
+
+-------------------------------------------------------------------
 Wed Aug 02 08:39:06 UTC 2023 - okurz@suse.com
 
 - Update to version 4.6.1690965531.f57286b:
