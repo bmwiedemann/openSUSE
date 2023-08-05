@@ -91,4 +91,14 @@
     <comment></comment>
     <requestid>1082109</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e781ada19a1ce2cd316dd9fbfcf67b98</srcmd5>
+    <version>44.2</version>
+    <time>1691232833</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1101497 from iznogood
+
+New stable rel</comment>
+    <requestid>1102251</requestid>
+  </revision>
 </revisionlist>
