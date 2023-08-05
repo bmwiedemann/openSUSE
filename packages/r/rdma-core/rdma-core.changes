@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug  3 15:03:33 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop patches adding support for cxgb3 (EOL, removed from kernel 5.5)
+  - cxgb3-fix-declaration-of-free_context.patch
+  - cxgb3-fix-support-for-new-uquery-API.patch
+  - Revert-libcxgb3-Remove-libcxgb3-from-rdma-core.patch
+  - Revert-Update-kernel-headers.patch
+- Update baselibs=.conf accordingly
+
+-------------------------------------------------------------------
 Mon Jul 24 07:54:40 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to v47.0

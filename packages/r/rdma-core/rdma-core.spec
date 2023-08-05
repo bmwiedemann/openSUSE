@@ -74,11 +74,7 @@ Source3:        prebuilt-pandoc.tgz
 Source4:        rdma-core-rpmlintrc
 Source5:        gen-pandoc.sh
 Source6:        get_build.py
-Patch0:         Revert-libcxgb3-Remove-libcxgb3-from-rdma-core.patch
-Patch1:         Revert-Update-kernel-headers.patch
-Patch2:         disable-rdma-interface-renaming.patch
-Patch3:         cxgb3-fix-declaration-of-free_context.patch
-Patch4:         cxgb3-fix-support-for-new-uquery-API.patch
+Patch0:         disable-rdma-interface-renaming.patch
 BuildRequires:  binutils
 BuildRequires:  cmake >= 2.8.11
 BuildRequires:  gcc
@@ -237,7 +233,6 @@ fast path operations.
 
 Device-specific plug-in ibverbs userspace drivers are included:
 
-- libcxgb3: Chelsio T3 iWARP HCA
 - libcxgb4: Chelsio T4 iWARP HCA
 - libefa: Amazon Elastic Fabric Adapter
 - libhfi1: Intel Omni-Path HFI
@@ -431,10 +426,6 @@ easy, object-oriented access to IB verbs.
 #Extract prebuilt pandoc file in the buildlib directory
 (cd buildlib && tar xf %{S:3})
 %patch0
-%patch1
-%patch2
-%patch3
-%patch4
 
 %build
 
