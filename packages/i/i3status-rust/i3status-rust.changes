@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug  4 10:45:58 UTC 2023 - Dawid Adam <nyslay@gmail.com>
+
+- Update to version 0.31.9:
+  * Add missing default net_cellular icon progression in the "none" icon set.
+  * Removed unused default icons in the "none" icon set.
+  * Defer icon lookup until formatting (see #1774)
+
+-------------------------------------------------------------------
 Fri Jun 30 15:07:58 UTC 2023 - nyslay@gmail.com
 
 - Update to version 0.31.8:
