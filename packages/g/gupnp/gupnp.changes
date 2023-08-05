@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 31 09:41:12 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.5:
+  + Fix build with meson 1.2
+- Drop patches fixed upstream:
+  + a10c57bd.patch
+  + 884639bd.patch
+
+-------------------------------------------------------------------
 Tue Jul 18 08:06:15 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add upstream patches to fix build with meson 1.2.0:
