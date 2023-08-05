@@ -16,12 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if !0%{?sle_version} || 0%{?sle_version} > 150300
-%define skip_python2 1
-%else
-%define         oldpython python
-%endif
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -31,6 +25,7 @@
 %bcond_with test
 %bcond_with wheel
 %endif
+%{?sle15_python_module_pythons}
 Name:           python-python-xlib%{psuffix}
 Version:        0.33
 Release:        0
