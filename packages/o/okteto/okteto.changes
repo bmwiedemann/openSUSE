@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 06 07:54:57 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.18.1:
+  * [Backport release-2.18] fix: compute build envs in local
+    (#3883)
+
+-------------------------------------------------------------------
 Tue Jul 18 11:16:50 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 2.18.0:
