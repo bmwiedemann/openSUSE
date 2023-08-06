@@ -17,17 +17,17 @@
 
 
 %define anypython python3dist
-%define pyver 0.4.0
-%define distver 0.4
+%define pyver 0.5.0
+%define distver 0.5
 Name:           python-jupyterlab-templates
 Version:        %{pyver}
 Release:        0
 Summary:        Templates for notebooks in JupyterLab
 License:        Apache-2.0
 URL:            https://github.com/finos/jupyterlab_templates
-Source:         https://files.pythonhosted.org/packages/py3/j/jupyterlab-templates/jupyterlab_templates-%{version}-py3-none-any.whl
+Source:         https://files.pythonhosted.org/packages/py3/j/jupyterlab_templates/jupyterlab_templates-%{version}-py3-none-any.whl
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module jupyterlab >= 3.5.0}
+BuildRequires:  %{python_module jupyterlab >= 4.0.0}
 BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -36,7 +36,7 @@ BuildRequires:  jupyter-jupyterlab-filesystem
 BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-jupyterlab-templates = %{version}
-Requires:       python-jupyterlab >= 3.5
+Requires:       python-jupyterlab >= 4.0
 Requires:       (python-notebook if python-jupyterlab >= 4)
 Conflicts:      jupyter-jupyterlab_templates < %{version}
 Provides:       python-jupyter_jupyterlab_templates = %{version}
@@ -49,7 +49,7 @@ Support for jupyter notebook templates in jupyterlab.
 
 %package     -n jupyter-jupyterlab-templates
 Summary:        Templates for notebooks in JupyterLab
-Requires:       jupyter-jupyterlab >= 1.0.0
+Requires:       jupyter-jupyterlab >= 4.0.0
 Requires:       %anypython(jupyterlab-templates) = %{distver}
 Provides:       jupyter-jupyterlab_templates = %{version}
 Obsoletes:      jupyter-jupyterlab_templates < %{version}
@@ -80,7 +80,7 @@ find  %{buildroot} -path '*/jupyterlab_templates-%{version}.dist-info/licenses' 
 
 %files -n jupyter-jupyterlab-templates
 %license licenses/*
-%_jupyter_config %{_jupyter_server_confdir}/jupyterlab_templates.json
+%{_jupyter_config} %{_jupyter_server_confdir}/jupyterlab_templates.json
 %{_jupyter_prefix}/labextensions/jupyterlab_templates
 %dir %{_jupyter_prefix}/notebook
 %{_jupyter_prefix}/notebook/jupyterlab_templates

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Aug  5 16:16:10 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * require jupyterlab >=4 (according to metadata in wheel)
+
+- update to version 0.5.0:
+  * Support JupyterLab 4
+  * Bump semver from 5.7.1 to 5.7.2 in /js
+  * Bump tough-cookie from 4.1.2 to 4.1.3 in /js
+
+- changes from version 0.4.1:
+  * fix lint
+  * add allowed_extensions setting
+  * switch from notebook handler to jupyter server handler
+  * Bump yaml from 2.2.1 to 2.2.2 in /js
+  * publish junit test results for js and python
+  * fix typo and capitalize repository links
+
+-------------------------------------------------------------------
 Tue Jun 13 20:48:53 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Jupyterlab 4 does not hard require notebook anymore:
