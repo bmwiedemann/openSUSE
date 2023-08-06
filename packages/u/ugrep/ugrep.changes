@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug  5 11:09:03 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.12.5:
+  * New --iglob and --glob-ignore-case options
+
+-------------------------------------------------------------------
 Tue Jul 18 09:09:11 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- update to 3.13.4:
+- update to 3.12.4:
   * Faster search for common search patterns, such as a set of
     words, using SIMD AVX and neon/AArch64 intrinsics
 

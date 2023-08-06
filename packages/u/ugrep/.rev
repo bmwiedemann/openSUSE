@@ -362,4 +362,12 @@
     <comment>ugrep 3.13.4</comment>
     <requestid>1099219</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>8becbbefc6612e9a1c3ebd89fc7c28ec</srcmd5>
+    <version>3.12.5</version>
+    <time>1691332176</time>
+    <user>dimstar_suse</user>
+    <comment>ugrep 3.12.5</comment>
+    <requestid>1102466</requestid>
+  </revision>
 </revisionlist>
