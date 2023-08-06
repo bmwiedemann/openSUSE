@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  4 21:21:36 UTC 2023 - Adam Majer <amajer@suse.com>
+
+- Adapt spec file to work nicer with containers, like no systemd
+- Fix build for SLE12
+
+-------------------------------------------------------------------
 Wed Jun 21 13:52:55 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - New upstream release 4.7.0

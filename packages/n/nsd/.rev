@@ -329,4 +329,13 @@ BUG FIXES:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1096942</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>2a907bb5c180d789caf8e571531e1b17</srcmd5>
+    <version>4.7.0</version>
+    <time>1691332214</time>
+    <user>dimstar_suse</user>
+    <comment>- Adapt spec file to work nicer with containers, like no systemd
+- Fix build for SLE12</comment>
+    <requestid>1102572</requestid>
+  </revision>
 </revisionlist>
