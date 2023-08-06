@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Aug  5 13:25:52 UTC 2023 - munix9@googlemail.com
+
+- Update to version 1.56.2:
+  * [WRR] backport (gh#grpc/grpc#33694) to 1.56
+    (gh#grpc/grpc#33698)
+  * [backport][iomgr][EventEngine] Improve server handling of
+    file descriptor exhaustion (gh#grpc/grpc#33667)
+- Switch build to pip/wheel.
+- Use system abseil with '-std=c++17' to prevent undefined symbol
+  eg. with python-grpcio-tools (_ZN3re23RE213GlobalReplaceEPNSt7__
+  cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKS0_N4absl12lts_
+  2023012511string_viewE)
+- Remove python-grpcio-disable-boring-ssl.patch, use
+  'export GRPC_BUILD_WITH_BORING_SSL_ASM=false' instead.
+
+-------------------------------------------------------------------
 Tue Jul  4 10:39:59 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Upstream only supports python >= 3.7, so adjust BuildRequires

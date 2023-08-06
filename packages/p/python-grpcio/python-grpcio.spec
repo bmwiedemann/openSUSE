@@ -21,18 +21,19 @@
 %define         skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-grpcio
-Version:        1.56.0
+Version:        1.56.2
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://grpc.io
 Source:         https://files.pythonhosted.org/packages/source/g/grpcio/grpcio-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM python-grpcio-disable-boring-ssl.patch gh#grpc/grpc#24498 badshah400@gmail.com -- Make enabling system ssl disable boring ssl; patch taken from upstream PR
-Patch0:         python-grpcio-disable-boring-ssl.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  abseil-cpp-devel
 BuildRequires:  ca-certificates
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -57,15 +58,18 @@ connected systems.
 
 %build
 %define _lto_cflags %{nil}
-export CFLAGS="%{optflags}"
-export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=true
-export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=true
+export GRPC_BUILD_WITH_BORING_SSL_ASM=false
+export GRPC_PYTHON_BUILD_SYSTEM_ABSL=true
 export GRPC_PYTHON_BUILD_SYSTEM_CARES=true
+export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=true
 export GRPC_PYTHON_BUILD_SYSTEM_RE2=true
-%python_build
+export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=true
+export GRPC_PYTHON_BUILD_WITH_CYTHON=true
+export GRPC_PYTHON_CFLAGS="%{optflags} -std=c++17"
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 # a symlink to the shared system certificates is used
 %python_expand ln -sf %{_localstatedir}/lib/ca-certificates/ca-bundle.pem %{buildroot}%{$python_sitearch}/grpc/_cython/_credentials/roots.pem
@@ -73,7 +77,7 @@ export GRPC_PYTHON_BUILD_SYSTEM_RE2=true
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitearch}/grpc/
-%{python_sitearch}/%{modname}-%{version}-py%{python_version}.egg-info/
+%{python_sitearch}/grpc
+%{python_sitearch}/%{modname}-%{version}.dist-info
 
 %changelog

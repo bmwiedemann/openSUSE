@@ -230,4 +230,20 @@
 </comment>
     <requestid>1096752</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>ce442d9ebde64e7854aa2ffcda647eb0</srcmd5>
+    <version>1.56.2</version>
+    <time>1691332215</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.56.2:
+- Switch build to pip/wheel.
+- Use system abseil with '-std=c++17' to prevent undefined symbol
+  eg. with python-grpcio-tools (_ZN3re23RE213GlobalReplaceEPNSt7__
+  cxx1112basic_stringIcSt11char_traitsIcESaIcEEERKS0_N4absl12lts_
+  2023012511string_viewE)
+- Remove python-grpcio-disable-boring-ssl.patch, use
+  'export GRPC_BUILD_WITH_BORING_SSL_ASM=false' instead.
+</comment>
+    <requestid>1102575</requestid>
+  </revision>
 </revisionlist>
