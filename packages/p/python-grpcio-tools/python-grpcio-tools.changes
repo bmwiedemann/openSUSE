@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Aug  5 13:25:52 UTC 2023 - munix9@googlemail.com
+
+- Update to version 1.56.2:
+  * [WRR] backport (gh#grpc/grpc#33694) to 1.56 (gh#grpc/grpc#33698)
+  * [backport][iomgr][EventEngine] Improve server handling of
+    file descriptor exhaustion (gh#grpc/grpc#33667)
+
+- Switch build to pip/wheel.
+
+-------------------------------------------------------------------
 Sun Jul  2 12:33:48 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

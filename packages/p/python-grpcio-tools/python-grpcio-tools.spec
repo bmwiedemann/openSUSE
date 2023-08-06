@@ -20,7 +20,7 @@
 %define         skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-grpcio-tools
-Version:        1.56.0
+Version:        1.56.2
 Release:        0
 Summary:        Protobuf code generator for gRPC
 License:        Apache-2.0
@@ -28,12 +28,15 @@ Group:          Development/Languages/Python
 URL:            https://grpc.io
 Source:         https://files.pythonhosted.org/packages/source/g/grpcio-tools/grpcio-tools-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 Requires:       python-grpcio >= %{version}
 Requires:       python-protobuf >= 3.5.0.post1
+Requires:       python-setuptools
 # SECTION test requirements
 BuildRequires:  %{python_module grpcio >= %{version}}
 BuildRequires:  %{python_module protobuf >= 3.5.0.post1}
@@ -52,10 +55,10 @@ sed -i "1{/\/usr\/bin\/env python/d}" grpc_tools/protoc.py
 %build
 %define _lto_cflags %{nil}
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -63,6 +66,7 @@ export CFLAGS="%{optflags}"
 
 %files %{python_files}
 %doc README.rst
-%{python_sitearch}/*
+%{python_sitearch}/grpc_tools
+%{python_sitearch}/grpcio_tools-%{version}.dist-info
 
 %changelog
