@@ -18,7 +18,7 @@
 
 %bcond_without libalternatives
 Name:           python-nbformat
-Version:        5.9.1
+Version:        5.9.2
 Release:        0
 Summary:        The Jupyter Notebook format
 License:        BSD-3-Clause

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Aug  5 16:29:03 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- update to version 5.9.2:
+  * Bugs fixed
+    + Fix version handling #372 (@blink1073)
+  * Maintenance and upkeep improvements
+    + Fix encoding warnings #371 (@blink1073)
+    + Update link to notebook security #370 (@blink1073)
+  * Documentation improvements
+    + Update link to notebook security #370 (@blink1073)
+
+-------------------------------------------------------------------
 Wed Jul 19 20:43:29 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.9.1
