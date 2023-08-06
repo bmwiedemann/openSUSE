@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 06 08:00:30 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 20230801T233057Z:
+  * update deps to latest packages and update CREDITS (#4649)
+  * add TTFB as part of 'mc admin trace' in pretty form (#4648)
+  * Do not allow registration of play cluster (#4647)
+
+-------------------------------------------------------------------
 Mon Jul 24 04:59:11 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 20230721T204427Z:
