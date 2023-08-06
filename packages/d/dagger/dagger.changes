@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Aug 06 07:55:27 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.8.1:
+  * Generate v0.8.1 release notes (#5580)
+  * engine: set version stamp on engine image builds (#5578)
+  * core: fix setting image config during multiplatform
+    export+publish (#5574)
+  * engine: fix telemetry writer to use the correct vertex (#5573)
+  * docs: Added pitfalls of host directories (#5509)
+  * fix dagger run not showing command progress (#5564)
+  * core: fix max file chunk size (#5570)
+  * docs: cookbook: mount directories as secrets after v.0.8.0
+    (#5520)
+
+-------------------------------------------------------------------
 Fri Aug 04 06:25:36 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.8.0 (no releases between 0.6.4 and 0.8.0):
