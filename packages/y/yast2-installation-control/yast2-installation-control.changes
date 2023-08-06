@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  4 13:03:33 UTC 2023 - Stefan Schubert <schubi@suse.com>
+
+- enable_systemd_boot: systemd_boot can be selected if UEFI is
+  available. (jsc#PED-1906)
+
+-------------------------------------------------------------------
 Fri Mar 03 14:44:07 UTC 2023 - Ladislav Slezák <lslezak@suse.cz>
 
 - Bump version to 4.6.0 (bsc#1208913)
