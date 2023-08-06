@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 06 07:52:20 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 1.58.0:
+  * Plug in the ErrorHandlers for JSON/color compatibility of http
+    lib logging (#812)
+
+-------------------------------------------------------------------
 Fri Aug 04 06:23:00 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 1.57.5:
