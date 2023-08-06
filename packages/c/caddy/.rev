@@ -269,4 +269,19 @@
 - BuildRequires: golang(API) &gt;= 1.20 for guic-go bump (forwarded request 1102430 from elimat)</comment>
     <requestid>1102432</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>bde2c5c06151f3e22fa433c27b9f51f7</srcmd5>
+    <version>2.7.3</version>
+    <time>1691332188</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.7.3:
+  * go.mod: Upgrade to quic-go v0.37.3
+  * cmd: Split unix sockets for admin endpoint addresses (#5696)
+  * reverseproxy: do not parse upstream address too early if it contains replaceble parts (#5695)
+  * caddyfile: check that matched key is not a substring of the replacement key (#5685)
+  * chore: use `--clean` instead of `--rm-dist` for goreleaser (#5691)
+  * go.mod: Upgrade quic-go to v0.37.2 (fix  #5680)
+  * fileserver: browse: Render SVG images in grid (forwarded request 1102520 from jfkw)</comment>
+    <requestid>1102521</requestid>
+  </revision>
 </revisionlist>

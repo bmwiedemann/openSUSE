@@ -27,7 +27,7 @@
 %endif
 
 Name:           caddy
-Version:        2.7.2
+Version:        2.7.3
 Release:        0
 Summary:        Fast, multi-platform web server with automatic HTTPS
 License:        Apache-2.0

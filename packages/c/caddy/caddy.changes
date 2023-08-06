@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug 06 01:06:42 UTC 2023 - jkowalczyk@suse.com
+
+- Update to version 2.7.3:
+  * go.mod: Upgrade to quic-go v0.37.3
+  * cmd: Split unix sockets for admin endpoint addresses (#5696)
+  * reverseproxy: do not parse upstream address too early if it contains replaceble parts (#5695)
+  * caddyfile: check that matched key is not a substring of the replacement key (#5685)
+  * chore: use `--clean` instead of `--rm-dist` for goreleaser (#5691)
+  * go.mod: Upgrade quic-go to v0.37.2 (fix  #5680)
+  * fileserver: browse: Render SVG images in grid
+
+-------------------------------------------------------------------
 Fri Aug 04 19:12:07 UTC 2023 - elimat@opensuse.org
 
 - Update to version 2.7.2:
