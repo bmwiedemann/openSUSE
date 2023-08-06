@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 06 07:56:46 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.65.1:
+  * fix: some hang conditions (#1414)
+  * chore(deps): update bootstrap tools to latest versions (#1413)
+
+-------------------------------------------------------------------
 Tue Aug 01 10:17:23 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.65.0:
