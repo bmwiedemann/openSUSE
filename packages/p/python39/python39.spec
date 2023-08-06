@@ -173,6 +173,14 @@ Patch40:        99366-patch.dict-can-decorate-async.patch
 # PATCH-FIX-OPENSUSE downport-Sphinx-features.patch mcepl@suse.com
 # Make documentation build with older Sphinx
 Patch41:        downport-Sphinx-features.patch
+# PATCH-FIX-UPSTREAM CVE-2023-27043-email-parsing-errors.patch bsc#1210638 mcepl@suse.com
+# Detect email address parsing errors and return empty tuple to
+# indicate the parsing error (old API), from gh#python/cpython!105127
+# Patch carries a REGRESSION (gh#python/cpython#106669), so it has been also partially REVERTED
+Patch42:        CVE-2023-27043-email-parsing-errors.patch
+# PATCH-FIX-UPSTREAM Revert-gh105127-left-tests.patch bsc#1210638 mcepl@suse.com
+# Partially revert previous patch
+Patch43:        Revert-gh105127-left-tests.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -436,6 +444,8 @@ other applications.
 %if 0%{?sle_version} && 0%{?sle_version} <= 150500
 %patch41 -p1
 %endif
+%patch42 -p1
+%patch43 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

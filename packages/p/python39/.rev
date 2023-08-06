@@ -921,4 +921,21 @@
 </comment>
     <requestid>1101338</requestid>
   </revision>
+  <revision rev="49" vrev="4">
+    <srcmd5>871f676d32431260776aa04e11545ce9</srcmd5>
+    <version>3.9.17</version>
+    <time>1691332154</time>
+    <user>dimstar_suse</user>
+    <comment>- IT MEANS THAT bsc#1210638 STILL HAS NOT BEEN FIXED!
+- Add Revert-gh105127-left-tests.patch (gh#python/cpython!106941)
+  partially reverting CVE-2023-27043-email-parsing-errors.patch,
+  because of the regression in gh#python/cpython#106669.
+- (bsc#1210638, CVE-2023-27043) Add
+  CVE-2023-27043-email-parsing-errors.patch, which detects email
+  address parsing errors and returns empty tuple to indicate the
+  parsing error (old API). (The patch is faulty,
+  gh#python/cpython#106669, but upstream decided not to just
+  revert it).</comment>
+    <requestid>1102236</requestid>
+  </revision>
 </revisionlist>
