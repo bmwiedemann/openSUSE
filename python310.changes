@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug  3 14:13:30 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add Revert-gh105127-left-tests.patch (gh#python/cpython!106941)
+  partially reverting CVE-2023-27043-email-parsing-errors.patch,
+  because of the regression in gh#python/cpython#106669.
+
+-------------------------------------------------------------------
 Wed Jul 19 11:15:39 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Add gh-78214-marshal_stabilize_FLAG_REF.patch to marshal.c for
