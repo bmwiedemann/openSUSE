@@ -487,4 +487,12 @@
   * New text editor (forwarded request 1092697 from bnavigator)</comment>
     <requestid>1092698</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d93b02470bcfafff3b12bd4d43a234b9</srcmd5>
+    <version>4.0.4</version>
+    <time>1691332185</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102510</requestid>
+  </revision>
 </revisionlist>

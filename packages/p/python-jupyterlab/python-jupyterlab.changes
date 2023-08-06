@@ -1,4 +1,106 @@
 -------------------------------------------------------------------
+Sat Aug  5 16:10:43 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.0.4:
+  * Enhancements made
+    + Recommend major versions for Lab 3/Lab 4 compatible extensions
+      #14908 (@JasonWeill)
+    + Improve upgrade extension script #14882 (@fcollonval)
+    + Adds rank to ICompletionProvider #14800 (@hbcarlos)
+    + Deprecates collaborative flag #14792 (@hbcarlos)
+  * Bugs fixed
+    + Fix semantic commands enabled status #14664 (@fcollonval)
+    + In defer mode render enough cells to fill the viewport #14865
+      (@fcollonval)
+    + Fix CodeMirror tooltip positioning and tooltip background #14858
+      (@krassowski)
+    + Removes context data from shared model #14771 (@hbcarlos)
+    + fix: out of order headings display in toc #14753 (@skyetim)
+    + fix: update blocked extensions uris #14846 (@emmanuel-ferdman)
+    + Fix CodeMirror theme selection background color #14841
+      (@AllanChain)
+    + Fix icon and theme/styles for grid in CSV/TSV viewer #14822
+      (@krassowski)
+    + Adds missing parameters to ICompleterProvider API #14809
+      (@hbcarlos)
+    + Adds this context when calling ICompletionProvider.modelFactory
+      #14812 (@hbcarlos)
+    + Emit changed signal from output area when an output is updated
+      #14785 (@bollwyvl)
+    + Improve typing to avoid bad usage of
+      context.contentsModel.content #14660 (@fcollonval)
+  * Maintenance and upkeep improvements
+    + Fix integration tests #14886 (@fcollonval)
+    + Bump stylelint from 14.16.1 to 15.10.1 #14802 (@dependabot[bot])
+    + Relax Event.IManager interface #14770 (@trungleduc)
+    + Bump word-wrap from 1.2.3 to 1.2.4 #14847 (@dependabot[bot])
+    + Add style validator #14795 (@krassowski)
+    + Bump semver from 7.3.8 to 7.5.2 #14750 (@dependabot[bot])
+  * Documentation improvements
+    + Recommend major versions for Lab 3/Lab 4 compatible extensions
+      #14908 (@JasonWeill)
+    + Update yarn link documentation #14902 (@gabalafou)
+    + Create JupyterLab 3.4.4 accessibility statement #14856
+      (@isabela-pf)
+    + Align copier version with the extension template #14899 (@jtpio)
+    + Bump stylelint from 14.16.1 to 15.10.1 #14802 (@dependabot[bot])
+    + Fix broken link to security model #14861 (@fcollonval)
+    + Improve examples #14726 (@fcollonval)
+
+- changes from version 4.0.3:
+  * Bugs fixed
+    + Fix incorrect CSS value for statusbar popover shadow #14789
+      (@krassowski)
+    + Fix indentation problem after multi-line Python function
+      definition #14748 (@FoSuCloud)
+    + Fix HTML lang being set to ‘default’ resulting in blind users
+      with screenreader reading everything in German #14705
+      (@andrii-i)
+    + Expose serverCapabilities, provides, and updateLogging #14712
+      (@krassowski)
+    + Fix kernel message deserialization #14721 (@davidbrochart)
+    + Ensure the kernel selector show the default kernel if notebook
+      does not have a valid assigned kernel #14693 (@echarles)
+    + Add a title to the Markdown Preview widget #14681 (@jtpio)
+  * Maintenance and upkeep improvements
+    + Separate LSP settings handling out to another plugin #14786
+      (@krassowski)
+    + fix changed username, pin pydantic<2 for CI #14780 (@bollwyvl)
+    + Clean up obsolete docker #14729 (@fcollonval)
+    + Port LSP connection manager fixes/enhancements #14714
+      (@krassowski)
+    + Drop StatusMessage which is dead code #14713 (@krassowski)
+    + Update requirements: conda != Python, jupyter-server over
+      notebook #14709 (@krassowski)
+    + Don’t list log file as changes when checking license header
+      #14700 (@fcollonval)
+    + Update branch configuration #14694 (@fcollonval)
+    + Update the jupyter labextension list compat message #14680
+      (@jtpio)
+  * Documentation improvements
+    + fix changed username, pin pydantic<2 for CI #14780 (@bollwyvl)
+    + fix: typo in param annotation #14745 (@emmanuel-ferdman)
+    + fix: typo in common extension points page #14727
+      (@emmanuel-ferdman)
+    + Fix docs for semantic commands registration #14718 (@jtpio)
+    + Ensure documentation switcher data always points to the latest
+      JSON. #14698 (@fcollonval)
+    + Update requirements: conda != Python, jupyter-server over
+      notebook #14709 (@krassowski)
+    + Set out expectations for good first issue label #14686
+      (@krassowski)
+    + Update branch configuration #14694 (@fcollonval)
+    + Update the jupyter labextension list compat message #14680
+      (@jtpio)
+    + Document more features for JupyterLab on Binder #14677
+      (@fcollonval)
+    + Fix copier command in documentation #14671 (@fcollonval)
+    + Update contributing.rst for Windows users #14666 (@coriegulik)
+  * Other merged PRs
+    + fix: typo in notifications settings documentation #14747
+      (@holzman)
+
+-------------------------------------------------------------------
 Sun Jun 11 21:35:15 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 4.0.2

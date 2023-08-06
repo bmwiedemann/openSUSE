@@ -18,7 +18,7 @@
 
 %define plainpython3dist python3dist
 Name:           python-jupyterlab
-Version:        4.0.2
+Version:        4.0.4
 Release:        0
 Summary:        Environment for interactive and reproducible computing
 License:        BSD-3-Clause
@@ -64,9 +64,9 @@ Requires:       (python-importlib-resources >= 1.4 if python-base < 3.9)
 Requires:       (python-jupyter_server >= 2.4.0 with python-jupyter_server < 3)
 Requires:       (python-jupyterlab_server >= 2.19.0 with python-jupyterlab_server < 3)
 Requires:       (python-tomli if python-base < 3.11)
+Suggests:       python-jupyter-collaboration >= 1
 Provides:       python-jupyter_jupyterlab = %{version}
 Obsoletes:      python-jupyter_jupyterlab < %{version}
-Suggests:       python-jupyter-collaboration >= 1
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module jupyterlab-server-test}
