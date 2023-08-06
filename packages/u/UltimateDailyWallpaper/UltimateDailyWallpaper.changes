@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug  5 15:00:08 UTC 2023 - Patrice Coni <patrice.coni-dev@yandex.com>
+
+- Update to version 3.3.5
+   * Bug fixed: Application crashes when trying to delete
+                outdated pictures.
+   * Language files updated
+
+-------------------------------------------------------------------
 Thu Aug  3 07:53:03 UTC 2023 - Patrice Coni <patrice.coni-dev@yandex.com>
 
 - Update to version 3.3.4

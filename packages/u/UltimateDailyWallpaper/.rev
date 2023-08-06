@@ -105,4 +105,16 @@ pgcsw</comment>
 </comment>
     <requestid>1102300</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3ef0c16e87dab9736eca8b7a95eb2171</srcmd5>
+    <version>3.3.5</version>
+    <time>1691332211</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.3.5
+   * Bug fixed: Application crashes when trying to delete
+                outdated pictures.
+   * Language files updated
+</comment>
+    <requestid>1102554</requestid>
+  </revision>
 </revisionlist>
