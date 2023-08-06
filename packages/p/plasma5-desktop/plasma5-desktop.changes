@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug  4 14:49:45 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.27.7.1:
+  * Panel: fix applet not returning focus after pressing applet shortcut (kde#472909)
+  * Migrate missing key handling/accessibility features from default CompactRepresentation
+
+-------------------------------------------------------------------
 Tue Aug  1 11:19:15 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.27.7
