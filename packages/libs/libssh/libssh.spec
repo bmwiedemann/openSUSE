@@ -128,6 +128,13 @@ make %{?_smp_mflags}
 install -d -m755 %{buildroot}%{_sysconfdir}/libssh
 install -m644 %{SOURCE3} %{buildroot}%{_sysconfdir}/libssh/libssh_client.config
 install -m644 %{SOURCE4} %{buildroot}%{_sysconfdir}/libssh/libssh_server.config
+
+# Fix incorrect include path, (boo#1211718).
+%if 0%{?suse_version} > 1600
+sed -i '/^Include/ s|/etc|/usr/etc|' %{buildroot}%{_sysconfdir}/libssh/libssh_client.config
+sed -i '/^Include/ s|/etc|/usr/etc|' %{buildroot}%{_sysconfdir}/libssh/libssh_server.config
+%endif
+
 %endif
 
 %check

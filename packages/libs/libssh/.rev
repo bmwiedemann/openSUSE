@@ -745,4 +745,12 @@ ProxyCommand parsing in ssh configuration files:
   * Solve incorrect parsing of ProxyCommand option</comment>
     <requestid>1085234</requestid>
   </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>c7892e4e00165249d760a2ca2ac19157</srcmd5>
+    <version>0.10.5</version>
+    <time>1691332166</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102457</requestid>
+  </revision>
 </revisionlist>
