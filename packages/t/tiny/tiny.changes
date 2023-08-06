@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Aug 05 12:49:01 UTC 2023 - socvirnyl.estela@gmail.com
+
+- Update to version 0.11.0+git7:
+  * Bug fixes and refactoring in key map implementation:
+  * Update CHANGELOG, initial config
+  * Rename 'run_command' key action to just 'command'
+  * Support tiny commands in keymap config (#410)
+  * Support italic and strikethrough attribute (#404) (#409)
+  * Fix tab config test with desktop-notifications feature (#408)
+  * Update deps, reword and format initial config, fix new lints
+  * Update changelog
+  * Update dependencies (#405)
+  * Config to set /ignore and /notify (#344)
+  * CHANGELOG: Add #403
+  * Implement bold, italic, underline, strikethrough rendering
+  * Added support for SASL EXTERNAL  (#363)
+  * Fix a few lints introduced with rustc 1.66.0
+  * CHANGELOG: Remove trailing ws, formatting
+  * Implement running shell commands for getting passwords (#315)
+  * Fix a bug when running $EDITOR on macOS 12
+  * Mention default macOS config path in README
+  * Update CHANGELOG with #395
+  * Allow QUIT and PART with a message (#395)
+
+-------------------------------------------------------------------
 Fri Jun  2 15:15:00 UTC 2023 - Soc Virnyl Estela <socvirnyl.estela@gmail.com>
 
 - Update vendored dependencies.
