@@ -234,4 +234,13 @@
   * No change log provided</comment>
     <requestid>1101115</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>7000bef1a1da23e9eaa62720a633eb84</srcmd5>
+    <version>6.2.2</version>
+    <time>1691332180</time>
+    <user>dimstar_suse</user>
+    <comment>- Update the Image dependency to address CVE-2023-29408 /
+  bsc#1213928. This is done via the new update-image-tiff.patch.</comment>
+    <requestid>1102488</requestid>
+  </revision>
 </revisionlist>

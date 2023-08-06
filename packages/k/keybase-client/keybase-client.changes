@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug  5 15:29:46 UTC 2023 - Matthias Bach <marix@marix.org> - 6.2.2
+
+- Update the Image dependency to address CVE-2023-29408 /
+  bsc#1213928. This is done via the new update-image-tiff.patch.
+
+-------------------------------------------------------------------
 Thu Jul 27 18:51:39 UTC 2023 - Matthias Bach <marix@marix.org> - 6.2.2
 
 - Upgrade to version 6.2.2
