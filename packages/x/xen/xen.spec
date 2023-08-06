@@ -165,6 +165,7 @@ Patch7:         64639e84-amd-fix-legacy-setting-of-SSBD-on-AMD-Family-17h.patch
 Patch8:         646b782b-PCI-pci_get_pdev-respect-segment.patch
 Patch9:         647dfb0e-x86-missing-unlock-in-microcode_update_helper.patch
 Patch10:        648863fc-AMD-IOMMU-Invalidate-All-check.patch
+Patch11:        64bea1b2-x86-AMD-Zenbleed.patch
 # EMBARGOED security fixes
 # libxc
 Patch301:       libxc-bitmap-long.patch

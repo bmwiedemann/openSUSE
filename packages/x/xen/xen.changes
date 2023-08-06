@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul 28 15:15:15 UTC 2023 - ohering@suse.de
+
+- Add more debug to libxc-sr-track-migration-time.patch
+  This is supposed to help with doing the math in case xl restore
+  fails with ERANGE as reported in bug#1209311
+
+-------------------------------------------------------------------
+Tue Jul 25 10:44:08 MDT 2023 - carnold@suse.com
+
+- bsc#1213616 - VUL-0: CVE-2023-20593: xen: x86/AMD: Zenbleed
+  (XSA-433)
+  64bea1b2-x86-AMD-Zenbleed.patch
+
+-------------------------------------------------------------------
 Thu Jul  6 13:41:00 CET 2023 - jbeulich@suse.com
 
 - Upstream bug fixes (bsc#1027519)

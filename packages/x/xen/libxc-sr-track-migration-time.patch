@@ -181,11 +181,12 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      uint32_t type;
 --- a/tools/libs/guest/xg_sr_restore.c
 +++ b/tools/libs/guest/xg_sr_restore.c
-@@ -884,6 +884,7 @@ static int restore(struct xc_sr_context
+@@ -884,6 +884,8 @@ static int restore(struct xc_sr_context
      struct xc_sr_rhdr rhdr;
      int rc, saved_rc = 0, saved_errno = 0;
  
 +    SUSEINFO("domid %u: %s %s start", ctx->domid, ctx->uuid, __func__);
++    DPRINTF("domid %u: max_pages %lx tot_pages %lx p2m_size %lx", ctx->domid, ctx->restore.max_pages, ctx->restore.tot_pages, ctx->restore.p2m_size);
      IPRINTF("Restoring domain");
  
      rc = setup(ctx);
