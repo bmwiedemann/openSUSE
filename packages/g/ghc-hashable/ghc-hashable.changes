@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 29 15:01:55 UTC 2023 - Peter Simons <psimons@suse.com>
+
+- Update hashable to version 1.4.3.0.
+  ## Version 1.4.3.0
+
+   * Export `defaultHashWithSalt` and `defaultHash`.
+   * Fix issue of tuples with 0 first component causing all-zero state.
+   * Change `hashInt` to mix bits more.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:06:55 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

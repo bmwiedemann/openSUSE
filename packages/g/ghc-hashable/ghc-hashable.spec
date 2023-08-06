@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.4.2.0
+Version:        1.4.3.0
 Release:        0
 Summary:        A class for types that can be converted to a hash value
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
@@ -65,6 +64,10 @@ hash value. This class exists for the benefit of hashing-based data structures.
 The package provides instances for basic types and a way to combine hash
 values.
 
+The 'Hashable' 'hash' values are not guaranteed to be stable across library
+versions, operating systems or architectures. For stable hashing use named
+hashes: SHA256, CRC32 etc.
+
 %package devel
 Summary:        Haskell %{pkg_name} library development files
 Requires:       %{name} = %{version}-%{release}
@@ -93,7 +96,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
