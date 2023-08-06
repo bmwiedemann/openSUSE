@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Aug 06 07:56:00 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 0.151.0:
+  * Add release notes for 0.151
+  * Bump dependencies (#6859)
+  * Support custom Ubuntu AMIs for EKS-managed nodegroups (#6850)
+  * Bump dependencies
+  * Fix error with tar in `Post Cache go-build and mod` step
+  * Fix setting link-time variables for release version
+  * Cleanup Flux Integration (#6836)
+  * Removing unused workflow
+  * Paginate DescribeInstanceTypeOfferings response (#6832)
+  * Add tests for PowerShell utils
+  * Support custom AMIs for self-managed Windows nodegroups
+  * Select one subnet for AZs where multiple are present and no VPC
+    config provided (#6814)
+  * Prepare for next development iteration (#6833)
+  * go fmt
+  * deprecated 1.22
+
+-------------------------------------------------------------------
 Thu Jul 20 13:53:32 UTC 2023 - kastl@b1-systems.de
 
 - Update to version 0.150.0:
