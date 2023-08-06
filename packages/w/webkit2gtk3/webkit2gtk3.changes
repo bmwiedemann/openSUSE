@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug  2 18:25:12 UTC 2023 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.40.5 (boo#1213905):
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2023-38133, CVE-2023-38572, CVE-2023-38592,
+    CVE-2023-38594, CVE-2023-38595, CVE-2023-38597,,
+    CVE-2023-38599,, CVE-2023-38600, CVE-2023-38611.
+
+-------------------------------------------------------------------
 Fri Jul 21 20:49:06 UTC 2023 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.40.4:
