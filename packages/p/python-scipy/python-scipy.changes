@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jul 27 13:31:24 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream intc.patch to fix gh#scipy/scipy#18603
+
+-------------------------------------------------------------------
+Tue Jul 25 10:04:04 UTC 2023 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.11.1
+  * Several scipy.sparse array API improvements, including sparse.sparray, 
+    a new public base class distinct from the older sparse.spmatrix class, 
+    proper 64-bit index support, and numerous deprecations paving the way 
+    to a modern sparse array experience.
+  * scipy.stats added tools for survival analysis, multiple hypothesis 
+    testing, sensitivity analysis, and working with censored data.
+  * A new function was added for quasi-Monte Carlo integration, and linear 
+    algebra functions det and lu now accept nD-arrays.
+  * An axes argument was added broadly to ndimage functions, facilitating 
+    analysis of stacked image data.
+
+-------------------------------------------------------------------
 Thu Jun 29 07:21:08 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Use sle15_python_module_pythons

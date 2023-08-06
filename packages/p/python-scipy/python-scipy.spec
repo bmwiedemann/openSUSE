@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 %global flavor @BUILD_FLAVOR@%{nil}
-%define _ver 1_10_1
+%define _ver 1_11_1
 %define shortname scipy
 %define pname python-%{shortname}
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
@@ -93,7 +93,7 @@ ExclusiveArch:  do_not_build
 # TODO explore debundling Boost for standard and hpc
 
 Name:           %{package_name}
-Version:        1.10.1
+Version:        1.11.1
 Release:        0
 Summary:        Scientific Tools for Python
 License:        BSD-3-Clause AND LGPL-2.0-or-later AND BSL-1.0
@@ -102,6 +102,8 @@ URL:            https://www.scipy.org
 Source0:        https://files.pythonhosted.org/packages/source/s/scipy/scipy-%{version}.tar.gz
 # Create with pooch: `python3 scipy-%{version}/scipy/datasets/_download_all.py scipy-datasets/scipy-data; tar czf scipy-datasets.tar.gz scipy-datasets`
 Source1:        scipy-datasets.tar.gz
+#PATCH-FIX-UPSTREAM https://github.com/scipy/scipy/commit/8501b7c2fb8a7121aeef94489ece988043c463d0 BUG: sparse.linalg: Cast index arrays to intc before calling SuperLU functions
+Patch:          intc.patch
 BuildRequires:  %{python_module Cython >= 0.29.32}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module meson-python >= 0.9.0}
@@ -262,6 +264,7 @@ donttest+=" or (TestPdist and test_pdist_jensenshannon_iris)"
 donttest+=" or (test_rotation and test_align_vectors_single_vector)"
 donttest+=" or (test_lobpcg and test_tolerance_float32)"
 donttest+=" or (test_iterative and test_maxiter_worsening)"
+donttest+=" or (test_resampling and test_bootstrap_alternative)"
 %ifarch %ix86
 donttest+=" or (test_solvers and test_solve_generalized_discrete_are)"
 # Skip the following tests that fail with GCC 13 due to the excess precision change:
