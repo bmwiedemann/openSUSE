@@ -7,8 +7,10 @@ Subject: [PATCH] Use FLAG_REF always for interned strings
  Python/marshal.c |    9 +++++++--
  1 file changed, 7 insertions(+), 2 deletions(-)
 
---- a/Python/marshal.c
-+++ b/Python/marshal.c
+Index: Python-3.10.12/Python/marshal.c
+===================================================================
+--- Python-3.10.12.orig/Python/marshal.c
++++ Python-3.10.12/Python/marshal.c
 @@ -298,9 +298,14 @@ w_ref(PyObject *v, char *flag, WFILE *p)
      if (p->version < 3 || p->hashtable == NULL)
          return 0; /* not writing object references */

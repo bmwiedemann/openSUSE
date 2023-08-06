@@ -172,10 +172,14 @@ Patch38:        bpo-37596-make-set-marshalling.patch
 # PATCH-FIX-UPSTREAM gh-78214-marshal_stabilize_FLAG_REF.patch bsc#1213463 mcepl@suse.com
 # marshal: Stabilize FLAG_REF usage
 Patch39:        gh-78214-marshal_stabilize_FLAG_REF.patch
-# # PATCH-FIX-UPSTREAM CVE-2023-27043-email-parsing-errors.patch bsc#1210638 mcepl@suse.com
-# # Detect email address parsing errors and return empty tuple to
-# # indicate the parsing error (old API)
-# Patch40:        CVE-2023-27043-email-parsing-errors.patch
+# PATCH-FIX-UPSTREAM CVE-2023-27043-email-parsing-errors.patch bsc#1210638 mcepl@suse.com
+# Detect email address parsing errors and return empty tuple to
+# indicate the parsing error (old API), from gh#python/cpython!105127
+# Patch carries a REGRESSION (gh#python/cpython#106669), so it has been also partially REVERTED
+Patch40:        CVE-2023-27043-email-parsing-errors.patch
+# PATCH-FIX-UPSTREAM Revert-gh105127-left-tests.patch bsc#1210638 mcepl@suse.com
+# Partially revert previous patch
+Patch41:        Revert-gh105127-left-tests.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -449,6 +453,8 @@ other applications.
 %patch36 -p1
 %patch38 -p1
 %patch39 -p1
+%patch40 -p1
+%patch41 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
