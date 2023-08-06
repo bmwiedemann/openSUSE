@@ -161,6 +161,8 @@ find . -type f "(" -name "*.so" -o -name "*.o" -o -name ".git*" -o \
 popd
 # Don't include abseil-cpp in sources
 rm -fr third_party/abseil-cpp/*
+# Don't include non-deterministic log in sources
+rm build/CMakeFiles/CMakeConfigureLog.yaml
 
 mkdir -p "%buildroot/%src_install_dir"
 cp -r * "%buildroot/%src_install_dir"

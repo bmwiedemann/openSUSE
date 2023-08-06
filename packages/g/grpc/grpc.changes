@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  3 15:25:03 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Don't include non-deterministic CMakeConfigureLog.yaml in sources
+  to fix reproducible builds
+
+-------------------------------------------------------------------
 Sat Jul 15 06:20:50 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.56.2
