@@ -567,4 +567,20 @@ https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/284#note_280561
   * Rework PDF annotations processing into a separate method.</comment>
     <requestid>1084473</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>0de7f834a2f0fa03f058697f17fb007e</srcmd5>
+    <version>242</version>
+    <time>1691332173</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-file-5.45.patch to fix compatibility with file version 5.45
+  https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/346
+- update to version 242:
+ - If the binwalk Python module is not available, ensure the user knows they
+   may be missing more differences in, for example, concatenated .cpio
+   archives.
+ - Factor out routine to generate a human-readable comments when
+   Python modules are missing.
+</comment>
+    <requestid>1102459</requestid>
+  </revision>
 </revisionlist>

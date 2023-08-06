@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Aug  5 07:58:48 UTC 2023 - Sebastian Wagner <sebix@sebix.at>
+
+- Add fix-file-5.45.patch to fix compatibility with file version 5.45
+  https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/346
+- update to version 242:
+ - If the binwalk Python module is not available, ensure the user knows they
+   may be missing more differences in, for example, concatenated .cpio
+   archives.
+ - Factor out routine to generate a human-readable comments when
+   Python modules are missing.
+
+-------------------------------------------------------------------
 Wed May  3 19:25:34 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 241:
