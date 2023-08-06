@@ -46,6 +46,7 @@
 %define with_wireshark     1
 %define with_libssh2       1
 %define with_numactl       1
+%define with_modular_daemons 1
 
 # A few optional bits off by default, we enable later
 %define with_numad         0
@@ -123,11 +124,6 @@
     %endif
 %endif
 
-%define with_modular_daemons 0
-%if 0%{?suse_version} > 1500
-    %define with_modular_daemons 1
-%endif
-
 # Force QEMU to run as qemu:qemu
 %define qemu_user          qemu
 %define qemu_group         qemu
@@ -144,7 +140,7 @@
 
 Name:           libvirt
 URL:            https://libvirt.org/
-Version:        9.5.0
+Version:        9.6.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -1168,27 +1164,20 @@ VIR_TEST_DEBUG=1 %meson_test -t 5 --no-suite syntax-check
 %define libvirt_daemon_systemd_postun_priv_restart() %service_del_postun %1.service %1-admin.socket %1.socket
 
 %pre daemon
-%if ! %{with_modular_daemons}
 %libvirt_daemon_systemd_pre_inet libvirtd
-%endif
 %libvirt_logrotate_pre libvirtd
 
 %post daemon
 %if %{with_apparmor}
 %apparmor_reload /etc/apparmor.d/usr.sbin.libvirtd
 %endif
-%if ! %{with_modular_daemons}
 %libvirt_daemon_systemd_post_inet libvirtd
-%endif
 
 %preun daemon
 %libvirt_daemon_systemd_preun_inet libvirtd
 
 %postun daemon
-# Handle restart/reload in posttrans
-%if ! %{with_modular_daemons}
 %libvirt_daemon_systemd_postun_inet libvirtd
-%endif
 
 %posttrans daemon
 %libvirt_logrotate_posttrans libvirtd
@@ -1197,37 +1186,8 @@ VIR_TEST_DEBUG=1 %meson_test -t 5 --no-suite syntax-check
 test -f %{_sysconfdir}/sysconfig/services && \
   test -z "$DISABLE_RESTART_ON_UPDATE" && . %{_sysconfdir}/sysconfig/services
 if test "$DISABLE_RESTART_ON_UPDATE" != yes && \
-  test "$DISABLE_RESTART_ON_UPDATE" != 1; then
-    # See if user has previously modified their install to
-    # tell libvirtd to use --listen
-    if grep -q -s -E '^LIBVIRTD_ARGS=.*--listen' %{_sysconfdir}/sysconfig/libvirtd; then
-        # Keep honouring --listen and *not* use systemd socket activation.
-        # Switching things might confuse management tools that expect the old
-        # style libvirtd
-        %{_bindir}/systemctl mask \
-                   libvirtd.socket \
-                   libvirtd-ro.socket \
-                   libvirtd-admin.socket \
-                   libvirtd-tls.socket \
-                   libvirtd-tcp.socket >/dev/null 2>&1 || :
-        %{_bindir}/systemctl try-restart libvirtd.service >/dev/null 2>&1 || :
-    else
-        # Old libvirtd owns the sockets and will delete them on
-        # shutdown. Can't use a try-restart as libvirtd will simply
-        # own the sockets again when it comes back up. Thus we must
-        # do this particular ordering, so that we get libvirtd
-        # running with socket activation in use
-        if  %{_bindir}/systemctl -q is-active libvirtd.service; then
-             %{_bindir}/systemctl stop libvirtd.service >/dev/null 2>&1 || :
-
-             %{_bindir}/systemctl try-restart \
-                    libvirtd.socket \
-                    libvirtd-ro.socket \
-                    libvirtd-admin.socket >/dev/null 2>&1 || :
-
-             %{_bindir}/systemctl start libvirtd.service >/dev/null 2>&1 || :
-        fi
-    fi
+    test "$DISABLE_RESTART_ON_UPDATE" != 1; then
+     %{_bindir}/systemctl try-restart libvirtd.service >/dev/null 2>&1 || :
 fi
 
 %pre daemon-common
@@ -1248,23 +1208,16 @@ fi
 %service_del_postun_without_restart libvirt-guests.service
 
 %pre daemon-proxy
-%if %{with_modular_daemons}
 %libvirt_daemon_systemd_pre_inet virtproxyd
-%endif
 
 %post daemon-proxy
-%if %{with_modular_daemons}
-    %libvirt_daemon_systemd_post_inet virtproxyd
-%endif
+%libvirt_daemon_systemd_post_inet virtproxyd
 
 %preun daemon-proxy
 %libvirt_daemon_systemd_preun_inet virtproxyd
 
 %postun daemon-proxy
-# Handle restart/reload in posttrans
-%if %{with_modular_daemons}
 %libvirt_daemon_systemd_postun_inet virtproxyd
-%endif
 
 %pre daemon-lock
 %libvirt_daemon_systemd_pre_priv virtlockd
@@ -1307,9 +1260,7 @@ fi
 %if %{with_firewalld_zone}
     %firewalld_reload
 %endif
-%if %{with_modular_daemons}
-    %libvirt_daemon_systemd_post virtnetworkd
-%endif
+%libvirt_daemon_systemd_post virtnetworkd
 
 %preun daemon-driver-network
 %libvirt_daemon_systemd_preun virtnetworkd
@@ -1318,9 +1269,7 @@ fi
 %if %{with_firewalld_zone}
     %firewalld_reload
 %endif
-%if %{with_modular_daemons}
-    %libvirt_daemon_systemd_postun_restart virtnetworkd
-%endif
+%libvirt_daemon_systemd_postun_restart virtnetworkd
 
 %post daemon-config-network
 # Install the default network if one doesn't exist
@@ -1334,81 +1283,61 @@ fi
 %libvirt_daemon_systemd_pre virtnwfilterd
 
 %post daemon-driver-nwfilter
-%if %{with_modular_daemons}
-    %libvirt_daemon_systemd_post virtnwfilterd
-%endif
+%libvirt_daemon_systemd_post virtnwfilterd
 
 %preun daemon-driver-nwfilter
 %libvirt_daemon_systemd_preun virtnwfilterd
 
 %postun daemon-driver-nwfilter
-%if %{with_modular_daemons}
-    %libvirt_daemon_systemd_postun_restart virtnwfilterd
-%endif
+%libvirt_daemon_systemd_postun_restart virtnwfilterd
 
 %pre daemon-driver-storage-core
 %libvirt_daemon_systemd_pre virtstoraged
 
 %post daemon-driver-storage-core
-%if %{with_modular_daemons}
-    %libvirt_daemon_systemd_post virtstoraged
-%endif
+%libvirt_daemon_systemd_post virtstoraged
 
 %preun daemon-driver-storage-core
 %libvirt_daemon_systemd_preun virtstoraged
 
 %postun daemon-driver-storage-core
-%if %{with_modular_daemons}
-    %libvirt_daemon_systemd_postun_restart virtstoraged
-%endif
+%libvirt_daemon_systemd_postun_restart virtstoraged
 
 %pre daemon-driver-interface
 %libvirt_daemon_systemd_pre virtinterfaced
 
 %post daemon-driver-interface
-%if %{with_modular_daemons}
-    %libvirt_daemon_systemd_post virtinterfaced
-%endif
+%libvirt_daemon_systemd_post virtinterfaced
 
 %preun daemon-driver-interface
 %libvirt_daemon_systemd_preun virtinterfaced
 
 %postun daemon-driver-interface
-%if %{with_modular_daemons}
-    %libvirt_daemon_systemd_postun_restart virtinterfaced
-%endif
+%libvirt_daemon_systemd_postun_restart virtinterfaced
 
 %pre daemon-driver-nodedev
 %libvirt_daemon_systemd_pre virtnodedevd
 
 %post daemon-driver-nodedev
-%if %{with_modular_daemons}
-    %libvirt_daemon_systemd_post virtnodedevd
-%endif
+%libvirt_daemon_systemd_post virtnodedevd
 
 %preun daemon-driver-nodedev
 %libvirt_daemon_systemd_preun virtnodedevd
 
 %postun daemon-driver-nodedev
-%if %{with_modular_daemons}
-    %libvirt_daemon_systemd_postun_restart virtnodedevd
-%endif
+%libvirt_daemon_systemd_postun_restart virtnodedevd
 
 %pre daemon-driver-secret
 %libvirt_daemon_systemd_pre virtsecretd
 
 %post daemon-driver-secret
-%if %{with_modular_daemons}
-    %libvirt_daemon_systemd_post virtsecretd
-%endif
+%libvirt_daemon_systemd_post virtsecretd
 
 %preun daemon-driver-secret
 %libvirt_daemon_systemd_preun virtsecretd
 
 %postun daemon-driver-secret
-%if %{with_modular_daemons}
-    %libvirt_daemon_systemd_postun_restart virtsecretd
-%endif
+%libvirt_daemon_systemd_postun_restart virtsecretd
 
 %pre daemon-driver-qemu
 %libvirt_daemon_systemd_pre virtqemud
@@ -1418,17 +1347,13 @@ fi
 %if %{with_apparmor}
 %apparmor_reload /etc/apparmor.d/usr.sbin.virtqemud
 %endif
-%if %{with_modular_daemons}
-    %libvirt_daemon_systemd_post virtqemud
-%endif
+%libvirt_daemon_systemd_post virtqemud
 
 %preun daemon-driver-qemu
 %libvirt_daemon_systemd_preun virtqemud
 
 %postun daemon-driver-qemu
-%if %{with_modular_daemons}
-    %libvirt_daemon_systemd_postun_restart virtqemud
-%endif
+%libvirt_daemon_systemd_postun_restart virtqemud
 
 %posttrans daemon-driver-qemu
 %libvirt_logrotate_posttrans libvirtd.qemu
@@ -1438,17 +1363,13 @@ fi
 %libvirt_logrotate_pre libvirtd.lxc
 
 %post daemon-driver-lxc
-%if %{with_modular_daemons}
-    %libvirt_daemon_systemd_post virtlxcd
-%endif
+%libvirt_daemon_systemd_post virtlxcd
 
 %preun daemon-driver-lxc
 %libvirt_daemon_systemd_preun virtlxcd
 
 %postun daemon-driver-lxc
-%if %{with_modular_daemons}
-    %libvirt_daemon_systemd_postun_restart virtlxcd
-%endif
+%libvirt_daemon_systemd_postun_restart virtlxcd
 
 %posttrans daemon-driver-lxc
 %libvirt_logrotate_posttrans libvirtd.lxc
@@ -1461,17 +1382,13 @@ fi
 %if %{with_apparmor}
 %apparmor_reload /etc/apparmor.d/usr.sbin.virtxend
 %endif
-%if %{with_modular_daemons}
-    %libvirt_daemon_systemd_post virtxend
-%endif
+%libvirt_daemon_systemd_post virtxend
 
 %preun daemon-driver-libxl
 %libvirt_daemon_systemd_preun virtxend
 
 %postun daemon-driver-libxl
-%if %{with_modular_daemons}
-    %libvirt_daemon_systemd_postun_restart virtxend
-%endif
+%libvirt_daemon_systemd_postun_restart virtxend
 
 %posttrans daemon-driver-libxl
 %libvirt_logrotate_posttrans libvirtd.libxl

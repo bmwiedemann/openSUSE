@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Aug  4 16:34:38 UTC 2023 - James Fehlig <jfehlig@suse.com>
+
+- Add upstream commit 3d2f3fb72b to fix max file limits in systemd
+  services
+
+-------------------------------------------------------------------
+Wed Aug  2 22:42:41 UTC 2023 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 9.6.0
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v9-6-0-2023-08-01
+  - jsc#PED-3725
+- spec: Unconditionally enable modular daemons
+- spec: Remove logic handling package upgrade from old libvirtd
+
+-------------------------------------------------------------------
 Thu Jul 20 21:44:18 UTC 2023 - James Fehlig <jfehlig@suse.com>
 
 - CVE-2023-3750: storage: Fix returning of locked objects from

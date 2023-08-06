@@ -4393,4 +4393,19 @@ StandardGroups in rpmlint package.
 'virStoragePoolObjListSearch' (bsc#1213447)</comment>
     <requestid>1099805</requestid>
   </revision>
+  <revision rev="380" vrev="1">
+    <srcmd5>060a1df64a9221168a05a19ec4c7c304</srcmd5>
+    <version>9.6.0</version>
+    <time>1691332162</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream commit 3d2f3fb72b to fix max file limits in systemd
+  services
+- Update to libvirt 9.6.0
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v9-6-0-2023-08-01
+  - jsc#PED-3725
+- spec: Unconditionally enable modular daemons
+- spec: Remove logic handling package upgrade from old libvirtd</comment>
+    <requestid>1102417</requestid>
+  </revision>
 </revisionlist>
