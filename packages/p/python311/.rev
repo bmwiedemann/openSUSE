@@ -908,4 +908,21 @@ C API
   - CVE-2007-4559-filter-tarfile_extractall.patch</comment>
     <requestid>1096536</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>9ae0f8a85ec956d596294751d2d4f416</srcmd5>
+    <version>3.11.4</version>
+    <time>1691332155</time>
+    <user>dimstar_suse</user>
+    <comment>- IT MEANS THAT bsc#1210638 STILL HAS NOT BEEN FIXED!
+- Add Revert-gh105127-left-tests.patch (gh#python/cpython!106941)
+  partially reverting CVE-2023-27043-email-parsing-errors.patch,
+  because of the regression in gh#python/cpython#106669.
+- (bsc#1210638, CVE-2023-27043) Add
+  CVE-2023-27043-email-parsing-errors.patch, which detects email
+  address parsing errors and returns empty tuple to indicate the
+  parsing error (old API). (The patch is faulty,
+  gh#python/cpython#106669, but upstream decided not to just
+  revert it).</comment>
+    <requestid>1102237</requestid>
+  </revision>
 </revisionlist>

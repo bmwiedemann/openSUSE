@@ -62,8 +62,8 @@ unchanged:
     .. doctest::
 -      :skipif: _tkinter is None
  
-        >>> tp = turtle.pos()
-        >>> tp
+       >>> tp = turtle.pos()
+       >>> tp
 @@ -380,13 +372,11 @@ Turtle motion
     unchanged.
  
@@ -265,24 +265,24 @@ unchanged:
     .. doctest::
 -      :skipif: _tkinter is None
  
-        >>> colormode()
-        1.0
+       >>> colormode()
+       1.0
 @@ -966,7 +932,6 @@ Color control
     with the newly set fillcolor.
  
     .. doctest::
 -      :skipif: _tkinter is None
  
-        >>> turtle.fillcolor("violet")
-        >>> turtle.fillcolor()
+       >>> turtle.fillcolor("violet")
+       >>> turtle.fillcolor()
 @@ -1005,7 +970,6 @@ Color control
     with the newly set colors.
  
     .. doctest::
 -      :skipif: _tkinter is None
  
-        >>> turtle.color("red", "green")
-        >>> turtle.color()
+       >>> turtle.color("red", "green")
+       >>> turtle.color()
 @@ -1022,7 +986,6 @@ Filling
  ~~~~~~~
  
@@ -297,8 +297,8 @@ unchanged:
     .. doctest::
 -      :skipif: _tkinter is None
  
-        >>> turtle.begin_fill()
-        >>> if turtle.filling():
+       >>> turtle.begin_fill()
+       >>> if turtle.filling():
 @@ -1057,7 +1019,6 @@ Filling
     above may be either all yellow or have some white regions.
  
@@ -361,8 +361,8 @@ unchanged:
     .. doctest::
 -      :skipif: _tkinter is None
  
-        >>> turtle.shape("circle")
-        >>> turtle.shapesize(5,2)
+       >>> turtle.shape("circle")
+       >>> turtle.shapesize(5,2)
 @@ -1259,7 +1213,6 @@ Appearance
     change the turtle's heading (direction of movement).
  
