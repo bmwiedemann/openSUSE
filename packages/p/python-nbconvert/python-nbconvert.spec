@@ -29,17 +29,16 @@
 %else
 %bcond_with libalternatives
 %endif
-
 # 7.6.0 gets abbreviated by pythondistdeps
-%define shortversion 7.6
+%define shortversion 7.7.3
 Name:           python-nbconvert%{psuffix}
-Version:        7.6.0
+Version:        7.7.3
 Release:        0
 Summary:        Conversion of Jupyter Notebooks
 License:        BSD-3-Clause AND MIT
 URL:            https://github.com/jupyter/nbconvert
 Source0:        https://files.pythonhosted.org/packages/source/n/nbconvert/nbconvert-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling >= 0.25}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
@@ -79,6 +78,7 @@ Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %endif
 %if %{with test}
+BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module ipywidgets >= 7}
 BuildRequires:  %{python_module nbconvert = %{version}}

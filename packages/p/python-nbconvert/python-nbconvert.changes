@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Aug  5 16:24:23 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- specfile
+  * require flaky for tests
+
+- update to version 7.7.3:
+  * Bugs fixed
+    + Restore pauses during webpdf render #2025 (@jstorrs)
+
+- changes from version 7.7.2:
+  * Bugs fixed
+    + Show a warning if an image has no alternative text #2024
+      (@brichet)
+
+- changes from version 7.7.1:
+  * Bugs fixed
+    + Restore 'media=print' option #2022 (@brichet)
+
+- changes from version 7.7.0:
+  * Enhancements made
+    + [Accessibility] some accessibility improvements #2021 (@brichet)
+    + Adopt playwright #2013 (@brichet)
+    + Update to Jupyterlab 4 #2012 (@brichet)
+  * Bugs fixed
+    + html: write image/svg+xml data as base64 and skip clean_html
+      #2018 (@jstorrs)
+    + Remove HTML escaping JSON-encoded widget state #1934 (@manzt)
+  * Maintenance and upkeep improvements
+    + Fix lint error #2010 (@blink1073)
+    + Support Python 3.8-3.12 #2008 (@blink1073)
+
+-------------------------------------------------------------------
 Tue Jun 20 18:19:24 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.6.0
