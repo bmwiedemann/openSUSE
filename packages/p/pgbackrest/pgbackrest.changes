@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Aug  7 06:11:25 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to version 2.47
+  * Bug Fixes:
+    + Preserve block incremental info in manifest during delta backup
+    + Fix block incremental file names in verify command
+    + Fix spurious automatic delta backup on backup from standby
+    + Skip recovery.signal for PostgreSQL >= 12 when recovery type=none
+    + Fix unique label generation for diff/incr backup
+    + Fix time-based archive expiration when no backups are expired
+  * Improvements:
+    + Improve performance of SFTP storage driver
+    + Add timezone offset to info command date/time output
+    + Centralize error handling for unsupported features
+  * Documentation Improvements:
+    + Clarify preference to install from packages in the user guide
+
+-------------------------------------------------------------------
 Sun May 28 19:30:47 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to version 2.46
