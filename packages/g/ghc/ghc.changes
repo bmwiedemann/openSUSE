@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug  6 16:34:18 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- remove post/postun base as is now handled in macros.ghc-extra 
+
+-------------------------------------------------------------------
 Wed May 24 14:10:46 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - add patch for Sphinx 7 release - sphinx7.patch

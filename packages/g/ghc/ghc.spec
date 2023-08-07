@@ -482,9 +482,6 @@ rm testghc/*
 
 $GHC --info
 
-%post base -p /sbin/ldconfig
-%postun base -p /sbin/ldconfig
-
 %transfiletriggerin compiler -- %{ghcliblib}/package.conf.d
 %ghc_pkg_recache
 %end
