@@ -1,6 +1,8 @@
---- a/share/CMakeLists.txt
-+++ b/share/CMakeLists.txt
-@@ -35,6 +35,15 @@ install(FILES ${GRAMMAR_FILES}
+Index: liblinphone-5.2.88/share/CMakeLists.txt
+===================================================================
+--- liblinphone-5.2.88.orig/share/CMakeLists.txt
++++ liblinphone-5.2.88/share/CMakeLists.txt
+@@ -30,6 +30,15 @@ set(GRAMMAR_FILES
  	PARENT_SCOPE
  )
  
@@ -16,8 +18,10 @@
  if(ENABLE_ASSETS)
  	set(SOUND_FILES
  		"${CMAKE_CURRENT_SOURCE_DIR}/hello16000.wav"
---- a/share/linphone.pc.in
-+++ b/share/linphone.pc.in
+Index: liblinphone-5.2.88/share/linphone.pc.in
+===================================================================
+--- liblinphone-5.2.88.orig/share/linphone.pc.in
++++ liblinphone-5.2.88/share/linphone.pc.in
 @@ -3,7 +3,7 @@ exec_prefix=@exec_prefix@
  libdir=@libdir@
  includedir=@includedir@

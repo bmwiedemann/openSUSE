@@ -20,11 +20,11 @@ depended on the indeterministic filesystem order.
  tools/genapixml.py | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: linphone-3.12.0/tools/genapixml.py
+Index: liblinphone-5.2.88/tools/genapixml.py
 ===================================================================
---- linphone-3.12.0.orig/tools/genapixml.py
-+++ linphone-3.12.0/tools/genapixml.py
-@@ -617,7 +617,7 @@ class Project:
+--- liblinphone-5.2.88.orig/tools/genapixml.py
++++ liblinphone-5.2.88/tools/genapixml.py
+@@ -655,7 +655,7 @@ class Project:
  		self.__discoverClasses()
  
  	def initFromDir(self, xmldir):

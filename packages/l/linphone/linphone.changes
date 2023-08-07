@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 12 06:09:29 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.2.75 (no changelog). This fixes boo#1212956.
+- Add set_current_version.patch.
+
+-------------------------------------------------------------------
 Fri May 19 21:11:26 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com> - 5.2.50
 
 - Update to version 5.2.50:

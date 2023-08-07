@@ -26,7 +26,7 @@
 %endif
 %define sover   10
 Name:           linphone
-Version:        5.2.50
+Version:        5.2.75
 Release:        0
 Summary:        Web Phone
 License:        AGPL-3.0-or-later
@@ -45,6 +45,7 @@ Patch2:         reproducible.patch
 Patch3:         linphone-link-soci-sqlite3.patch
 # PATCH-FIX-OPENSUSE linphone-build-jsoncpp.patch -- use pkgconfig to find jsoncpp and link against jsoncpp, not jsoncpp_object
 Patch4:         linphone-build-jsoncpp.patch
+Patch5:         set_current_version.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -75,11 +76,11 @@ BuildRequires:  soci-devel
 BuildRequires:  soci-sqlite3-devel
 BuildRequires:  xsd
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(bctoolbox) >= 5.0.0
+BuildRequires:  pkgconfig(bctoolbox) >= 5.2.73
 BuildRequires:  pkgconfig(belcard) >= 4.5.0
-BuildRequires:  pkgconfig(belle-sip) >= 5.0.0
+BuildRequires:  pkgconfig(belle-sip) >= 5.2.73
 BuildRequires:  pkgconfig(libavcodec) >= 51.0.0
-BuildRequires:  pkgconfig(libbzrtp) >= 5.0.0
+BuildRequires:  pkgconfig(libbzrtp) >= 5.2.73
 BuildRequires:  pkgconfig(libosip2)
 BuildRequires:  pkgconfig(libsasl2)
 BuildRequires:  pkgconfig(libswscale) >= 0.7.0
@@ -88,9 +89,9 @@ BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libupnp)
 BuildRequires:  pkgconfig(libv4l2) >= 0.8.4
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(mediastreamer) >= 5.0.0
+BuildRequires:  pkgconfig(mediastreamer) >= 5.2.73
 BuildRequires:  pkgconfig(opus)
-BuildRequires:  pkgconfig(ortp) >= 5.0.0
+BuildRequires:  pkgconfig(ortp) >= 5.2.73
 BuildRequires:  pkgconfig(speex) >= 1.1.6
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(xerces-c)
@@ -383,6 +384,6 @@ cp -a %{name} %{buildroot}%{_datadir}/gnome/help/%{name}/
 %{_libdir}/pkgconfig/%{name}.pc
 %{_datadir}/Linphone/
 %{_datadir}/LinphoneCxx/
-%{_datadir}/doc/lib%{name}-5.2.0/
+%{_datadir}/doc/lib%{name}-%{version}/
 
 %changelog

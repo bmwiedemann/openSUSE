@@ -1,34 +1,27 @@
-diff -Nraub liblinphone-5.0.22.ori/CMakeLists.txt liblinphone-5.0.22/CMakeLists.txt
---- liblinphone-5.0.22.ori/CMakeLists.txt	2021-09-09 23:33:57.000000000 -0400
-+++ liblinphone-5.0.22/CMakeLists.txt	2021-09-11 22:31:10.816277962 -0400
-@@ -207,7 +207,8 @@
+Index: liblinphone-5.2.75/CMakeLists.txt
+===================================================================
+--- liblinphone-5.2.75.orig/CMakeLists.txt
++++ liblinphone-5.2.75/CMakeLists.txt
+@@ -244,7 +244,8 @@ if(ENABLE_LDAP)
  endif()
  
  if (ENABLE_FLEXIAPI)
 -	find_package(jsoncpp REQUIRED)
-+	find_package(PkgConfig REQUIRED)
-+	pkg_check_modules(JSONCPP REQUIRED jsoncpp)
++  find_package(PkgConfig REQUIRED)
++  pkg_check_modules(JSONCPP REQUIRED jsoncpp)
  	set(HAVE_FLEXIAPI TRUE)
  endif()
  
-diff -Nraub liblinphone-5.0.22.ori/src/CMakeLists.txt liblinphone-5.0.22/src/CMakeLists.txt
---- liblinphone-5.0.22.ori/src/CMakeLists.txt	2021-09-09 23:33:57.000000000 -0400
-+++ liblinphone-5.0.22/src/CMakeLists.txt	2021-09-11 22:29:46.614904584 -0400
-@@ -589,7 +589,7 @@
- 		if (XCODE)
- 			target_link_libraries(linphone PRIVATE jsoncpp_static)
+Index: liblinphone-5.2.75/src/CMakeLists.txt
+===================================================================
+--- liblinphone-5.2.75.orig/src/CMakeLists.txt
++++ liblinphone-5.2.75/src/CMakeLists.txt
+@@ -740,7 +740,7 @@ if(ENABLE_SHARED)
+ 			# so we need static link on osx/ios
+ 			target_link_libraries(linphone PUBLIC jsoncpp_static)
  		else()
--			target_link_libraries(linphone PRIVATE jsoncpp_object)
-+			target_link_libraries(linphone PRIVATE jsoncpp)
- 		endif()
- 	endif()
- 
-@@ -640,7 +640,7 @@
- 		if (XCODE)
- 			target_link_libraries(linphone PRIVATE jsoncpp_static)
- 		else()
--			target_link_libraries(linphone PRIVATE jsoncpp_object)
-+			target_link_libraries(linphone PRIVATE jsoncpp)
+-			target_link_libraries(linphone PUBLIC jsoncpp_lib)
++			target_link_libraries(linphone PUBLIC jsoncpp)
  		endif()
  	endif()
  

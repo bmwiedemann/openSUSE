@@ -1,8 +1,8 @@
-Index: liblinphone-4.4.0/CMakeLists.txt
+Index: liblinphone-5.2.88/CMakeLists.txt
 ===================================================================
---- liblinphone-4.4.0.orig/CMakeLists.txt
-+++ liblinphone-4.4.0/CMakeLists.txt
-@@ -138,12 +138,7 @@ find_package(Sqlite3 REQUIRED)
+--- liblinphone-5.2.88.orig/CMakeLists.txt
++++ liblinphone-5.2.88/CMakeLists.txt
+@@ -174,12 +174,7 @@ find_package(XML2 REQUIRED)
  
  if (ENABLE_DB_STORAGE)
  	if(NOT DISABLE_SOCI_PACKAGE_SEARCH)
@@ -16,12 +16,11 @@ Index: liblinphone-4.4.0/CMakeLists.txt
  	else()
  		set(SOCI_FOUND YES)
  		set(SOCI_LIBRARIES soci_core)
-
-Index: liblinphone-4.4.0/src/CMakeLists.txt
+Index: liblinphone-5.2.88/src/CMakeLists.txt
 ===================================================================
---- liblinphone-4.4.0.orig/src/CMakeLists.txt
-+++ liblinphone-4.4.0/src/CMakeLists.txt
-@@ -60,11 +60,8 @@ if(ZLIB_FOUND)
+--- liblinphone-5.2.88.orig/src/CMakeLists.txt
++++ liblinphone-5.2.88/src/CMakeLists.txt
+@@ -70,11 +70,8 @@ if(ZLIB_FOUND)
  endif()
  if (ENABLE_DB_STORAGE)
  	if (SOCI_FOUND)
