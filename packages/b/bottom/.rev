@@ -167,4 +167,14 @@
   * #1220: Update documentation for features supporting human times.</comment>
     <requestid>1095314</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>213694c6b796837df155974a51fac530</srcmd5>
+    <version>0.9.4~0</version>
+    <time>1691414937</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1102585 from jlkDE
+
+Update to version 0.9.4</comment>
+    <requestid>1102586</requestid>
+  </revision>
 </revisionlist>

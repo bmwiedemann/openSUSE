@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Aug  6 14:46:52 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Update to version 0.9.4:
+  Bug Fixes:
+   * #1230: Fix core dump if the terminal is closed while bottom is
+     open.
+   * #1264: Fix ARC usage showing max system memory instead of max
+     ARC size.
+  Features:
+   * #1248: Add I/O counters from ZFS for Linux and FreeBSD.
+  Changes:
+   * #1236: Hide the battery tab selector if there is only one
+     battery detected.
+   * #1251: Make the charge meter take the entire width of the
+     battery widget.
+
+-------------------------------------------------------------------
 Mon Jun 26 05:37:15 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.3:
@@ -30,6 +47,11 @@ Sun May 14 09:13:50 UTC 2023 - Michael Vetter <mvetter@suse.com>
 - Update to 0.9.1:
   * #1148: Fix Gruvbox colour string being invalid when cache usage
     is enabled.
+
+-------------------------------------------------------------------
+Thu May 11 20:45:12 UTC 2023 - Jan-Luca Kiok <opensuse-packages@jlk.one>
+
+- Add memory build constraint
 
 -------------------------------------------------------------------
 Wed May 10 08:47:20 UTC 2023 - Michael Vetter <mvetter@suse.com>
