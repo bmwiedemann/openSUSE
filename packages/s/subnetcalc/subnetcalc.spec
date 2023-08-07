@@ -17,7 +17,7 @@
 
 
 Name:           subnetcalc
-Version:        2.4.21
+Version:        2.4.22
 Release:        0
 Summary:        IPv4/IPv6 Subnet Calculator
 License:        GPL-3.0-or-later

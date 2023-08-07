@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  7 09:11:47 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.4.22:
+  * Bugfix: Fixed wrong handling of 7th block in solicited node multicast address
+  * minor cleaup
+
+-------------------------------------------------------------------
 Tue Feb 21 13:04:05 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - split documentation in a separate package
