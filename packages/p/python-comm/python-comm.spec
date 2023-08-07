@@ -17,7 +17,7 @@
 
 
 Name:           python-comm
-Version:        0.1.3
+Version:        0.1.4
 Release:        0
 Summary:        Jupyter Python Comm implementation
 License:        BSD-3-Clause
@@ -27,10 +27,10 @@ BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module hatchling >= 1.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module traitlets >= 5.3}
+BuildRequires:  %{python_module traitlets >= 4}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-traitlets >= 5.3
+Requires:       python-traitlets >= 4
 BuildArch:      noarch
 %python_subpackages
 

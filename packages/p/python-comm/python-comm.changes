@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Aug  5 17:11:20 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * lowered traitlets dependency to >=4
+
+- update to version 0.1.4:
+  * Improvements
+    + Loosen dependency on traitlet so it is available in python 3.6
+      #16 (@vincent-grosbois)
+
+-------------------------------------------------------------------
 Tue Apr  4 14:56:38 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.1.3
