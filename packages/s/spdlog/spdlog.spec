@@ -26,6 +26,8 @@ License:        MIT
 URL:            https://github.com/gabime/spdlog
 Source0:        https://github.com/gabime/%{name}/archive/refs/tags/v%{version}.tar.gz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM 2827.patch -- Added missing square bracket to fix the level_to_string_view
+Patch0:         https://patch-diff.githubusercontent.com/raw/gabime/spdlog/pull/2827.patch
 BuildRequires:  cmake >= 3.10
 %if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++ >= 8
