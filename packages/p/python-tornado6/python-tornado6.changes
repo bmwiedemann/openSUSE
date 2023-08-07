@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Tue May 30 08:04:10 UTC 2023 - Dan Čermák <dcermak@suse.com>
 
-- New upstream release 6.3.2
+- New upstream release 6.3.2 (bsc#1211741, CVE-2023-28370)
   - Security improvements
     - Fixed an open redirect vulnerability in StaticFileHandler
       under certain configurations.
