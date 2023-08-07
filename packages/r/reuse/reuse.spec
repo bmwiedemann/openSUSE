@@ -18,7 +18,7 @@
 
 
 Name:           reuse
-Version:        1.1.2
+Version:        2.1.0
 Release:        0
 Summary:        A tool for compliance with the REUSE recommendations
 License:        Apache-2.0 AND CC-BY-SA-4.0 AND GPL-3.0-or-later AND CC0-1.0
@@ -29,7 +29,7 @@ BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  git
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3 >= 3.7
+BuildRequires:  python3 >= 3.8
 BuildRequires:  python3-Jinja2
 BuildRequires:  python3-binaryornot
 BuildRequires:  python3-boolean.py
@@ -38,7 +38,7 @@ BuildRequires:  python3-license-expression
 BuildRequires:  python3-pip
 BuildRequires:  python3-poetry
 BuildRequires:  python3-pytest
-Requires:       python3 >= 3.7
+Requires:       python3 >= 3.8
 Requires:       python3-Jinja2
 Requires:       python3-binaryornot
 Requires:       python3-boolean.py

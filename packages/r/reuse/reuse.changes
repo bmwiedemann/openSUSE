@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Tue Aug  1 21:32:01 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Update to 2.1.0:
+  * Added
+    + Detect SPDX snippet tags in files. (gh#fsfe/reuse-tool#699)
+    + More file types are recognised:
+      + Fennel (`.fnl`) (gh#fsfe/reuse-tool#638)
+      + CommonJS (`.cjs`) (gh#fsfe/reuse-tool#632)
+      + Qt .pro (`.pro`) (gh#fsfe/reuse-tool#632)
+      + Qt .pri (`.pri`) (gh#fsfe/reuse-tool#755)
+      + Qt .qrc (`.qrc`) (gh#fsfe/reuse-tool#755)
+      + Qt .qss(`.qss`) (gh#fsfe/reuse-tool#755)
+      + Qt .ui (`.ui`) (gh#fsfe/reuse-tool#755)
+      + Textile (`.textile`) (gh#fsfe/reuse-tool##712)
+      + Visual Studio Code workspace (`.code-workspace`) (gh#fsfe/reuse-tool#747)
+      + Application Resource Bundle (`.arb`) (gh#fsfe/reuse-tool#749)
+      + Svelte components (`.svelte`)
+      + AES encrypted files (`.aes`) (gh#fsfe/reuse-tool#758)
+      + Jakarte Server Page (`.jsp`) (gh#fsfe/reuse-tool#757)
+      + Clang format (`.clang-format`) (gh#fsfe/reuse-tool#632)
+      + Browserslist config (`.browserslist`)
+      + Prettier config (`.prettierrc`) and ignored files (`.prettierignore`)
+      + Flutter pubspec.lock (`pubspec.lock`) (gh#fsfe/reuse-tool#751)
+      + Flutter .metadata (`.metadata`) (gh#fsfe/reuse-tool#751)
+      + Terraform (`.tf`, `tfvars`) and HCL (`.hcl`). (gh#fsfe/reuse-tool#756)
+      + Typst (`.typ`)
+    + Added loglevel argument to pytest and skip one test if loglevel is too high
+      (gh#fsfe/reuse-tool#645).
+    + `--add-license-concluded`, `--creator-person`, and `--creator-organization`
+      added to `reuse spdx`. (gh#fsfe/reuse-tool#623)
+    + Additional license metadata for the Python package has been added. The actual
+      SPDX license expression remains the same:
+      `Apache-2.0 AND CC0-1.0 AND CC-BY-SA-4.0 AND GPL-3.0-or-later`.
+      (gh#fsfe/reuse-tool#733)
+    + Added `--contributor` option to `annotate`. (gh#fsfe/reuse-tool#669)
+    + Added `--json` flag to `lint` command (gh#fsfe/reuse-tool#654).
+    + `reuse.ReuseInfo` now has `copy` and `union` methods. (gh#fsfe/reuse-tool#759)
+    + `reuse.ReuseInfo` now stores information about the source from which the
+      information was gathered. (gh#fsfe/reuse-tool#654, gh#fsfe/reuse-tool#787)
+    + Added Ukrainian and Czech translations (gh#fsfe/reuse-tool#767)
+    + Added `--suppress-deprecation` to hide (verbose) deprecation warnings.
+      (gh#fsfe/reuse-tool#778)
+  * Changed
+    + Bumped SPDX license list to v3.20. (gh#fsfe/reuse-tool#692)
+    + `reuse.SpdxInfo` was renamed to `reuse.ReuseInfo`. It is now a (frozen)
+      dataclass instead of a namedtuple. This is only relevant if you're using reuse
+      as a library in Python. Other functions and methods were similarly renamed.
+      (gh#fsfe/reuse-tool#669)
+    + Sphinx documentation: Switched from RTD theme to Furo. (gh#fsfe/reuse-tool#673,
+      gh#fsfe/reuse-tool#716)
+    + Removed dependency on setuptools' `pkg_resources` to determine the installed
+      version of reuse. (gh#fsfe/reuse-tool#724)
+    + Bumped SPDX license list to v3.21. (gh#fsfe/reuse-tool#763)
+    + `Project.reuse_info_of` now returns a list of `ReuseInfo` objects instead of a
+      single one. This is because the source information is now stored alongside the
+      REUSE information. (gh#fsfe/reuse-tool#787)
+  * Deprecated
+    + Pending deprecation of aggregation of file sources. Presently, when copyright
+      and licensing information is defined both within e.g. the file itself and in
+      the DEP5 file, then the information is merged or aggregated for the purposes
+      of linting and BOM generation. In the future, this will no longer be the case
+     unless explicitly defined. The exact mechanism for this is not yet concrete,
+     but a `PendingDeprecationWarning` will be shown to the user to make them aware
+     of this. (gh#fsfe/reuse-tool#778)
+  * Removed
+    + Python 3.6 and 3.7 support has been dropped. (gh#fsfe/reuse-tool#673,
+      gh#fsfe/reuse-tool#759)
+    + Removed runtime and build time dependency on `setuptools`.
+      (gh#fsfe/reuse-tool#724)
+  * Fixed
+    + Fixed automatic generation of Sphinx documentation via readthedocs.io by
+      adding a `.readthedocs.yaml` configuration file (gh#fsfe/reuse-tool##648)
+    + Fixed a compatibility issue where reuse could not be installed (built) if
+      gettext is not installed. (gh#fsfe/reuse-tool##691)
+    + Translations are available in Docker images. (gh#fsfe/reuse-tool##701)
+    + Marked the `/data` directory in Docker containers as safe in Git, preventing
+      errors related to linting Git repositories. (gh#fsfe/reuse-tool##720)
+    + Repaired error when using Galician translations. (gh#fsfe/reuse-tool##719)
+- Version 2.0.0: This version was yanked.
+
+-------------------------------------------------------------------
 Wed Apr  5 00:22:48 UTC 2023 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to 1.1.2:
