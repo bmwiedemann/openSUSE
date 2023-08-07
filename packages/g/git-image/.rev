@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>1100636</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c441007cb24699070ca382d89162c259</srcmd5>
+    <version>2023</version>
+    <time>1691414965</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix base image naming in description label</comment>
+    <requestid>1102649</requestid>
+  </revision>
 </revisionlist>

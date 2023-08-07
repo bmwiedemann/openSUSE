@@ -20,7 +20,7 @@
         <labels>
           <suse_label_helper:add_prefix prefix="org.opensuse.application.git">
             <label name="org.opencontainers.image.title" value="openSUSE Tumbleweed openSUSE Tumbleweed with Git"/>
-            <label name="org.opencontainers.image.description" value="A micro environment with Git for containers based on the SLE Base Container Image."/>
+            <label name="org.opencontainers.image.description" value="A micro environment with Git based on the openSUSE Tumbleweed Base Container Image."/>
             <label name="org.opencontainers.image.version" value="%%git_version%%"/>
             <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
             <label name="org.opencontainers.image.vendor" value="openSUSE Project"/>
