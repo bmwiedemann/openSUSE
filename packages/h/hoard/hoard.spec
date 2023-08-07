@@ -17,7 +17,7 @@
 
 
 Name:           hoard
-Version:        1.3.1~0
+Version:        v.1.4.2~0
 Release:        0
 Summary:        CLI command organizer
 License:        MIT
