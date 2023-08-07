@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 01 12:00:23 UTC 2023 - nyslay@gmail.com
+
+- update to 3.52:
+  * IMPORTANT: the project has moved from setuptools to pyproject.toml and hatch
+  * IMPORTANT: gevent support is now deprecated and removed
+  * core: drop gevent support
+
+-------------------------------------------------------------------
 Fri Jun 30 15:06:00 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Clean up SPEC file.

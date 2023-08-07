@@ -18,13 +18,13 @@
 
 %define skip_python2 1
 Name:           python-py3status
-Version:        3.51
+Version:        3.52
 Release:        0
 Summary:        Python extensible i3status wrapper
 License:        BSD-3-Clause
 URL:            https://github.com/ultrabug/py3status
-Source:         https://files.pythonhosted.org/packages/source/p/py3status/py3status-%{version}.tar.gz
-BuildRequires:  %{python_module gevent >= 1.1}
+Source:         https://github.com/ultrabug/py3status/archive/3.52.tar.gz#/py3status-3.52.tar.gz
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pyudev >= 0.21.0}
@@ -36,7 +36,6 @@ Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     i3status
 Recommends:     python-dbus-python
-Recommends:     python-gevent >= 1.1
 Recommends:     python-pyudev >= 0.21.0
 Provides:       py3status = %{version}
 Obsoletes:      py3status < %{version}

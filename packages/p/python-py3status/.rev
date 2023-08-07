@@ -129,4 +129,12 @@
 </comment>
     <requestid>1096164</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>113c95177035f3447d6062efda0a1f73</srcmd5>
+    <version>3.52</version>
+    <time>1691414934</time>
+    <user>dimstar_suse</user>
+    <comment>Moving the package from d:l:p to here.</comment>
+    <requestid>1102577</requestid>
+  </revision>
 </revisionlist>
