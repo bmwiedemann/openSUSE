@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 11 16:31:05 UTC 2023 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 4.4.4:
+  * overflow check fix for parse_mpls.
+  * tcpreplay-edit: prevent L2 flooding of ipv6 unicast packets.
+  * CVE-2023-27786: bugs caused by strtok_r. (boo#1209416)
+  * CVE-2023-27783 reachable assert in tcpedit_dlt_cleanup
+    (boo#1209413)
+  * reachable assert in fast_edit_packet.
+
+-------------------------------------------------------------------
 Mon Jan  2 08:44:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.4.3:

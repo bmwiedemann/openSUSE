@@ -17,7 +17,7 @@
 
 
 Name:           tcpreplay
-Version:        4.4.3
+Version:        4.4.4
 Release:        0
 Summary:        Network analysis and testing tools
 License:        GPL-3.0-only

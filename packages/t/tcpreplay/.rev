@@ -115,4 +115,12 @@
   * Bug #745 remove autogen.sh from distribution tarballs (forwarded request 1046093 from dirkmueller)</comment>
     <requestid>1046100</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7dea896419b8d06c1486a1d2f3496b0c</srcmd5>
+    <version>4.4.4</version>
+    <time>1691414947</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102603</requestid>
+  </revision>
 </revisionlist>
