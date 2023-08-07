@@ -1,0 +1,37 @@
+From fc01a7f837d06ee9e92d02f13acb79c2b06e9e3c Mon Sep 17 00:00:00 2001
+From: Fushan Wen <qydwhotmail@gmail.com>
+Date: Fri, 4 Aug 2023 12:40:17 +0800
+Subject: [PATCH] shell: avoid potential crash when previous window is gone
+ before returning focus
+
+m_previousPlasmaWindow is bound to a window, and if a window is closed
+before `restorePreviousWindow` is called, there will be a crash. Use
+QPointer to track the window destruction.
+---
+ shell/shellcorona.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/shell/shellcorona.h b/shell/shellcorona.h
+index a3aff351a..db218d16e 100644
+--- a/shell/shellcorona.h
++++ b/shell/shellcorona.h
+@@ -14,6 +14,7 @@
+ 
+ #include <QDBusContext>
+ #include <QDBusVariant>
++#include <QPointer>
+ #include <QSet>
+ #include <QTimer>
+ 
+@@ -301,7 +302,7 @@ private:
+     KWayland::Client::PlasmaShell *m_waylandPlasmaShell;
+     // For getting the active window on Wayland
+     KWayland::Client::PlasmaWindowManagement *m_waylandWindowManagement = nullptr;
+-    KWayland::Client::PlasmaWindow *m_previousPlasmaWindow = nullptr;
++    QPointer<KWayland::Client::PlasmaWindow> m_previousPlasmaWindow;
+     bool m_closingDown : 1;
+     bool m_screenReorderInProgress = false;
+     QString m_testModeLayout;
+-- 
+2.41.0.windows.3
+

@@ -44,6 +44,7 @@ Source2:        plasma.keyring
 Source3:        xprop-kde-full-session.desktop
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-OSD-Fix-size-calculation-for-progress-value.patch
+Patch2:         0001-shell-avoid-potential-crash-when-previous-window-is-.patch
 # PATCHES 501-??? are PATCH-FIX-OPENSUSE
 Patch501:       0001-Use-qdbus-qt5.patch
 Patch502:       0001-Ignore-default-sddm-face-icons.patch

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug  6 03:12:23 UTC 2023 - Fusion Future <qydwhotmail@gmail.com>
+
+- Add patch to fix crash when closing popup on Wayland (kde#473054)
+  * 0001-shell-avoid-potential-crash-when-previous-window-is-.patch
+
+-------------------------------------------------------------------
 Tue Aug  1 20:07:29 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix line wrapping of "100 %" in OSDs (kde#469576):
