@@ -15,4 +15,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1099518</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ae5a2a80bfe41fedbd307cf1487ce437</srcmd5>
+    <version>unknown</version>
+    <time>1691414964</time>
+    <user>dimstar_suse</user>
+    <comment>- stable is rust 1.71 now</comment>
+    <requestid>1102647</requestid>
+  </revision>
 </revisionlist>
