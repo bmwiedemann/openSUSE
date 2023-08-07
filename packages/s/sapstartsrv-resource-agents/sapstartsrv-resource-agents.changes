@@ -1,5 +1,14 @@
 -------------------------------------------------------------------
-Wed May 17 14:27:51 UTC 2023 - abriel@suse.com
+Fri Aug  4 17:41:44 UTC 2023 - abriel@suse.com
+
+- Version bump to 0.9.3
+  * adapt fix for monitor/probe operation to detect a running
+    sapstartsrv process to run with python3-psutil version 5.2.2
+    or higher
+    (bsc#1210790)
+
+-------------------------------------------------------------------
+Wed May 24 16:41:49 UTC 2023 - abriel@suse.com
 
 - Version bump to 0.9.2
   * prevent systemd service race between sapping and sappong during
@@ -12,7 +21,7 @@ Wed May 17 14:27:51 UTC 2023 - abriel@suse.com
 - add python3-psutil as package requirement and as build
   requirement in case of testing
   needed for bsc#1210790
-  (jsc#PED-4418)
+  (jsc#PED-4418, jsc#PED-4499)
 
 -------------------------------------------------------------------
 Wed Sep 14 09:37:25 UTC 2022 - abriel@suse.com
