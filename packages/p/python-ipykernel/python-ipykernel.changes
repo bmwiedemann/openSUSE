@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Aug  5 16:08:00 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- update to version 6.25.0:
+  * Enhancements made
+    - feat: let display hook handle clear_output #1135
+      (@maartenbreddels)
+  * Bugs fixed
+    - Merge connection info into existing connection file if it
+      already exists #1133 (@jasongrout)
+  * Maintenance and upkeep improvements
+    - Clean up lint #1134 (@blink1073)
+
+- change from version 6.24.0:
+  * New features added
+    - Let get_parent decide the channel to get parent header
+      #1128 (@dby-tmwctw)
+  * Bugs fixed
+    - Bugfix: binary stdout/stderr handling #1129 (@arieleiz)
+
+-------------------------------------------------------------------
 Sun Jul  2 06:34:01 UTC 2023 - Ben Greiner <code@bnavigator.de>
 
 - Fix test suite hangs
