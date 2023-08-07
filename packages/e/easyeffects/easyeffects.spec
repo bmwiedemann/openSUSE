@@ -17,7 +17,7 @@
 
 
 Name:           easyeffects
-Version:        7.0.3
+Version:        7.0.6
 Release:        0
 Summary:        Audio effects for Pulseaudio applications
 License:        GPL-3.0-or-later
@@ -45,11 +45,10 @@ BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(lilv-0)
 BuildRequires:  pkgconfig(nlohmann_json)
 BuildRequires:  pkgconfig(rnnoise)
-BuildRequires:  pkgconfig(rubberband)
 BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(sigc++-3.0)
 BuildRequires:  pkgconfig(sndfile)
-
+BuildRequires:  pkgconfig(soundtouch)
 Requires:       dconf
 Recommends:     lv2-calf >= 0.90.1
 Recommends:     lv2-lsp-plugins
@@ -65,8 +64,6 @@ BuildArch:      noarch
 
 %description doc
 This package contains documentation of Audio effects for pipewire applications
-
-
 
 %lang_package
 
@@ -105,7 +102,7 @@ sed -i s/isystem/I/g $(gcc -dumpmachine)/*.ninja
 
 %files lang -f easyeffects.lang
 %exclude %{_datadir}/help/*/%{name}
-/usr/share/locale/*/LC_MESSAGES/easyeffects-news.mo
+%{_datadir}/locale/*/LC_MESSAGES/easyeffects-news.mo
 
 %files
 %{_bindir}/%{name}

@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Aug  6 19:18:19 UTC 2023 - Matthias Eliasson <elimat@opensuse.org>
+
+- update to release 7.0.6 
+- Features:
+  + An "Experimental Features" section was added to our preferences window.
+  + The native window of the LSP plugins can be used. This is an experimental feature intended only for advanced users. So expect some bugs.
+  + Fractional semitone values can now be used in the Pitch Shift effect.
+- Bug fixes:
+  + The input/output device dropdown in our PipeWire tab is updated when the system default device changes and Use Default is enabled. This fixes #1989
+
+-------------------------------------------------------------------
+Sun Aug  6 19:17:13 UTC 2023 - Matthias Eliasson <elimat@opensuse.org>
+
+- update to release 7.0.5 
+- Features:
+  + A new Level Meter plugin based on libebur128 has been added.
+  + The Pitch plugin now uses the library SoundTouch instead of Rubberband. Hopefully some of the mysterious crashes that were happening with Rubbernand are not going to happen anymore.
+  + Improved compatibility with recent PipeWire versions. More information at https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/3196
+- Bug fixes:
+  + Active Equalizer filters are not set to Bell type anymore when the number of bands changes.
+- Other notes:
+  + Rabberband is not a dependency anymore since it has been replaced by SoundTouch.
+
+-------------------------------------------------------------------
+Sun Aug  6 19:14:51 UTC 2023 - Matthias Eliasson <elimat@opensuse.org>
+
+- update to release 7.0.4
+- Features:
+  + The presets menu now asks for confirmation before saving/deleting a preset file.
+- Bug fixes:
+  + The plugin reset should not make its controls innefective anymore.
+- Other notes:
+  + Speex is no longer incorrectly listed as a build dependency (speexdsp is still a build dependency)
+  + RNNoise is no longer an autodependency. It is now required by default, if not available it must be explicitly disabled with -Denable-rnnoise=false
+ 
+-------------------------------------------------------------------
 Fri Apr 21 09:02:51 UTC 2023 - Boris Manojlovic <boris@steki.net>
 
 - update to latest release 7.0.3
