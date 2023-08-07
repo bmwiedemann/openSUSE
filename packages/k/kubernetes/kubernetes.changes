@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Aug  7 07:20:20 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Added support for tracking Kubernetes minor versions
+  (n-2) and (n-3) by introducing new fields and packages.
+  
+  Updates include: 
+  * kubernetes (baseversionminus2) - 1.25
+  * kubernetes (versionminus2) - 1.25.12
+  * kubernetes (baseverionminus3) - 1.24
+  * kubernetes (versionminus3) - 1.24.16
+  * Etcd (etcdversionminus2) - 3.5.6 
+  * Etcd (etcdversionminus3) - 3.5.6
+  * CoreDNS (corednsversionminus2) - 1.9.3
+  * CoreDNS (corednsversionminus3) - 1.8.6
+  * Added %packages and %files relative to k8s base minor
+    versions (n-2) and (n-3) for apiserver, controller-manager,
+    scheduler, proxy, etcd, and CoreDNS.
+
+-------------------------------------------------------------------
 Wed Jul 26 11:10:37 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Bump meta package versions:
