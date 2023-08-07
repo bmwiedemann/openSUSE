@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug  7 06:49:24 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove rhetorics and history lesson from description.
+
+-------------------------------------------------------------------
+Mon Aug  7 06:20:42 UTC 2023 - Dan Čermák <dcermak@suse.com>
+
+- Fix libnotmuch pkg description, fixes boo#1020067
+
+-------------------------------------------------------------------
 Sat Dec  3 15:05:50 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop build-dependency on libgcrypt-cavs: no longer existing with

@@ -399,4 +399,12 @@ From the NEWS file, this version reports the following:
     <comment></comment>
     <requestid>1039914</requestid>
   </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>d756aef8aa39095c25b6fbfda8c83a34</srcmd5>
+    <version>0.37</version>
+    <time>1691414951</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix libnotmuch pkg description, fixes boo#1020067</comment>
+    <requestid>1102631</requestid>
+  </revision>
 </revisionlist>

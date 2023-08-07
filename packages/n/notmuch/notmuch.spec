@@ -1,7 +1,7 @@
 #
 # spec file for package notmuch
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -73,33 +73,14 @@ BuildRequires:  go
 %endif
 
 %description
-Because dealing with your mail can be so much better.
+A global-search and tag-based email system that can be used from a terminal or
+from within a text editor. Notmuch provides a library interface so that its
+indexing/searching/tagging features can be integrated elsewhere.
 
-"Not much mail" is what Notmuch thinks about your email collection. Even if
-you receive 12000 messages per month or have on the order of millions of
-messages that you've been saving for decades. Regardless, Notmuch will be
-able to quickly search all of it. It's just plain not much mail.
-
-"Not much mail" is also what you should have in your inbox at any time.
-Notmuch gives you what you need, (tags and fast search), so that you can
-keep your inbox tamed and focus on what really matters in your life, (which
-is surely not email).
-
-Notmuch is an answer to Sup. Sup is a very good email program written by
-William Morgan (and others) and is the direct inspiration for Notmuch.
-Notmuch began as an effort to rewrite performance-critical pieces of Sup in
-C rather than ruby. From there, it grew into a separate project. One
-significant contribution Notmuch makes compared to Sup is the separation of
-the indexer/searcher from the user interface. (Notmuch provides a library
-interface so that its indexing/searching/tagging features can be integrated
-into any email program.)
-
-Notmuch is not much of an email program. It doesn't receive messages (no
-POP or IMAP support). It doesn't send messages (no mail composer, no
-network code at all). And for what it does do (email search) that work is
-provided by an external library, Xapian. So if Notmuch provides no user
-interface and Xapian does all the heavy lifting, then what's left here? Not
-much.
+Notmuch is not much of an email program. It does not receive messages
+(no POP or IMAP support), it does not send messages (no mail
+composer, no network code at all). It does email search, for which it
+uses the Xapian library.
 
 %package        devel
 Summary:        Development files for %{name}
@@ -120,7 +101,9 @@ This package contains the info pages for %{name}.
 Summary:        A shared library for %{name}
 
 %description -n libnotmuch%{libversion}
-The libnotmuch3 package contains shared libraries for %{name}.
+A global-search and tag-based email system which uses Xapian for indexing.
+
+The libnotmuch%{libversion} package contains shared libraries for %{name}.
 
 %if %{with python3}
 %package -n python3-%{name}
