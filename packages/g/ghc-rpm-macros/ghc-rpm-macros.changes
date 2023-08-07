@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug  6 14:34:29 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 2.5.3
+ * sync with upstream
+ * add post and postun action into ghc subpackages as opensuse
+ don't use filetriggers for ldconfig
+
+-------------------------------------------------------------------
 Sat Mar 18 18:33:27 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 2.5.2

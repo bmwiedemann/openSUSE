@@ -18,7 +18,7 @@
 
 %global without_hscolour 1
 Name:           ghc-rpm-macros
-Version:        2.5.2
+Version:        2.5.3
 Release:        0
 Summary:        RPM Macros for building packages for GHC
 License:        GPL-3.0-or-later
