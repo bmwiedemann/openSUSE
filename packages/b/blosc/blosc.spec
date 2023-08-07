@@ -1,7 +1,7 @@
 #
 # spec file for package blosc
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,10 +19,10 @@
 %define major   1
 %define libname lib%{name}%{major}
 Name:           blosc
-Version:        1.21.1
+Version:        1.21.4
 Release:        0
 Summary:        A blocking, shuffling and lossless compression library
-License:        MIT AND BSD-3-Clause AND BSD-2-Clause
+License:        BSD-2-Clause AND BSD-3-Clause AND MIT
 Group:          Productivity/Archiving/Compression
 URL:            https://www.blosc.org/
 Source:         https://github.com/Blosc/c-blosc/archive/v%{version}.tar.gz#/c-blosc-%{version}.tar.gz
@@ -83,13 +83,6 @@ for %{libname}.
 %install
 %cmake_install
 rm -rf %{buildroot}%{_libdir}/libblosc.a
-
-# Put .pc files in right directory
-if [ "%{_libdir}" != "%{_prefix}/lib" ] ; then
-mkdir -p %{buildroot}%{_libdir}
-mv %{buildroot}%{_prefix}/lib/pkgconfig %{buildroot}%{_libdir}/pkgconfig
-rm -d %{buildroot}%{_prefix}/lib
-fi
 
 %check
 export LD_PRELOAD="$LD_PRELOAD  %{buildroot}%{_libdir}/libblosc.so  %{buildroot}%{_libdir}/libblosc.so.%{major} `pwd`/build/blosc/libblosc_testing.so"

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug  4 19:02:49 UTC 2023 - Matthias Eliasson <elimat@opensuse.org>
+
+- Update to 1.21.4 
+  * Upgrade internal-complib zstd from 1.5.2 to 1.5.5.
+  * Zlib updated to 1.2.13.
+- remove fix of moving pkgconfig file to correct location, it have been fixed upstrem
+
+-------------------------------------------------------------------
 Fri Oct 22 10:43:11 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 1.21.1
