@@ -215,4 +215,19 @@
   * add configurable orientation of bars</comment>
     <requestid>1033470</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>394f3369b814c25b4819c3124befd6bc</srcmd5>
+    <version>0.9.0</version>
+    <time>1691414944</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.0:
+  new:
+  * glsl shader output
+  * windows operating system support
+  * gradient support in sdl output
+  breaking:
+  * some config options are now 0-100 instead of 0-1 due to windows
+    ini not supporting floats</comment>
+    <requestid>1102598</requestid>
+  </revision>
 </revisionlist>

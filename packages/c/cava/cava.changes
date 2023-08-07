@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug  6 19:08:53 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.0:
+  new:
+  * glsl shader output
+  * windows operating system support
+  * gradient support in sdl output
+  breaking:
+  * some config options are now 0-100 instead of 0-1 due to windows
+    ini not supporting floats
+
+-------------------------------------------------------------------
 Fri Nov  4 09:06:43 UTC 2022 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.8.3:
