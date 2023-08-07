@@ -17,7 +17,7 @@
 
 
 Name:           ocp
-Version:        0.2.105
+Version:        0.2.106
 Release:        0
 Summary:        Open Cubic Player for MOD/S3M/XM/IT/MIDI music files
 # Code is GPL-2.0-or-later, Graphics and animations are CC-BY-3.0
@@ -42,6 +42,7 @@ BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(libancient)
 BuildRequires:  pkgconfig(libcjson)
 BuildRequires:  pkgconfig(libdiscid)
+BuildRequires:  pkgconfig(libgme)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(mad)
