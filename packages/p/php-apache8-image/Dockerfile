@@ -28,7 +28,6 @@ ENV PHP_INI_DIR="/etc/php8/"
 ENV PHPIZE_DEPS="php8-devel awk make"
 ENV COMPOSER_VERSION="%%composer_version%%"
 ENV APACHE_CONFDIR="/etc/apache2"
-ENV APACHE_ENVVARS="/usr/sbin/envvars"
 
 ENTRYPOINT ["docker-php-entrypoint"]
 CMD ["apache2-foreground"]

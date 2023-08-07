@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>1100634</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>eeedc772f5e454e22a76bfc47885f48d</srcmd5>
+    <version>unknown</version>
+    <time>1691414966</time>
+    <user>dimstar_suse</user>
+    <comment>- drop setting of APACHE_ENVVARS as it no longer exists</comment>
+    <requestid>1102650</requestid>
+  </revision>
 </revisionlist>

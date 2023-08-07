@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 24 13:32:39 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- drop setting of APACHE_ENVVARS as it no longer exists
+
+-------------------------------------------------------------------
 Thu Jul 06 09:56:51 UTC 2023 - SUSE Update Bot <bci-internal@suse.de>
 
 - First version of the PHP-Apache 8 BCI
