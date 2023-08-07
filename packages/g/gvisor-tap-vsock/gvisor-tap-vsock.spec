@@ -1,5 +1,5 @@
 #
-# spec file for gvisor-tap-vsock
+# spec file for package gvisor-tap-vsock
 #
 # Copyright (c) 2023 SUSE LLC
 #
@@ -15,17 +15,18 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           gvisor-tap-vsock
-Version:        0.6.2
+Version:        0.7.0
 Release:        0
 Summary:        Go replacement for libslirp and VPNKit
 License:        Apache-2.0
 Group:          Systems/Networking
 URL:            https://github.com/containers/%{name}
 Source0:        gvisor-tap-vsock-%{version}.tar.xz
-BuildRequires:  golang-packaging
 BuildRequires:  gcc
 BuildRequires:  golang >= 1.16.6
+BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
 Provides:       gvproxy = %{version}-%{release}
 

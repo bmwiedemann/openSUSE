@@ -7,4 +7,12 @@
     <comment>First version of the gvisor-tap-vsock package</comment>
     <requestid>1101475</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8b35cc9f1a0fc92b20ea3ca9a1d7e9a5</srcmd5>
+    <version>0.7.0</version>
+    <time>1691415149</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.7.0 (forwarded request 1102169 from danishprakash)</comment>
+    <requestid>1102718</requestid>
+  </revision>
 </revisionlist>
