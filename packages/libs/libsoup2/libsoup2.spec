@@ -1,7 +1,7 @@
 #
 # spec file for package libsoup2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,10 +30,14 @@ Source99:       baselibs.conf
 Patch1:         libsoup-skip-tls_interaction-test.patch
 # PATCH-FIX-UPSTREAM libsoup2-extend-test-cert.patch boo#1102840 -- Fix tests after 2027
 Patch2:         libsoup2-extend-test-cert.patch
+# PATCH-FIX-UPSTREAM 4d12c3e5.patch -- lib: Add g_task_set_source_tag() everywhere
+Patch3:         https://gitlab.gnome.org/GNOME/libsoup/-/commit/4d12c3e5.patch
+# PATCH-FIX-UPSTREAM 48b3b611.patch -- lib: Add names to various GSources
+Patch4:         https://gitlab.gnome.org/GNOME/libsoup/-/commit/48b3b611.patch
+
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.50
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(gio-2.0) >= 2.58.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.58.0
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.58.0
@@ -118,7 +122,6 @@ Features:
 
 %prep
 %autosetup -p1 -n %{_name}-%{version}
-translation-update-upstream po libsoup
 
 %build
 %meson \
@@ -140,8 +143,7 @@ export G_TLS_GNUTLS_PRIORITY=NORMAL
 %meson_install
 %find_lang %{_name} %{?no_lang_C}
 
-%post   -n %{_name}-2_4-1 -p /sbin/ldconfig
-%postun -n %{_name}-2_4-1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{_name}-2_4-1
 
 %files -n %{_name}-2_4-1
 %license COPYING

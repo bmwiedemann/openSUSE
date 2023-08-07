@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 31 11:46:03 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add upstream bug fixes:
+  + 4d12c3e5.patch: lib: Add g_task_set_source_tag() everywhere
+  + 48b3b611.patch: lib: Add names to various GSources
+- Drop no longer valid translation-update-upstream BuildRequires
+  and macro.
+- Use ldconfig_scriptlets macro for post(un) handling.
+
+-------------------------------------------------------------------
 Wed Oct 12 09:32:22 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.74.3:

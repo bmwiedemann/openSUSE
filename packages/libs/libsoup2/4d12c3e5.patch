@@ -1,0 +1,191 @@
+From 4d12c3e5769952ad0bfa318f4569d90a9d9a5085 Mon Sep 17 00:00:00 2001
+From: Philip Withnall <pwithnall@endlessos.org>
+Date: Thu, 13 Apr 2023 12:25:37 +0100
+Subject: [PATCH] lib: Add g_task_set_source_tag() everywhere
+
+This makes it easier to identify what a `GTask` instance is when
+debugging a running process.
+
+Signed-off-by: Philip Withnall <pwithnall@endlessos.org>
+---
+ libsoup/soup-address.c                | 2 ++
+ libsoup/soup-client-input-stream.c    | 1 +
+ libsoup/soup-connection.c             | 2 ++
+ libsoup/soup-io-stream.c              | 1 +
+ libsoup/soup-multipart-input-stream.c | 1 +
+ libsoup/soup-proxy-resolver-wrapper.c | 1 +
+ libsoup/soup-request-file.c           | 1 +
+ libsoup/soup-request-http.c           | 1 +
+ libsoup/soup-request.c                | 1 +
+ libsoup/soup-session.c                | 3 +++
+ libsoup/soup-socket.c                 | 2 ++
+ 11 files changed, 16 insertions(+)
+
+diff --git a/libsoup/soup-address.c b/libsoup/soup-address.c
+index 574e982f2..bcd3e9e7f 100644
+--- a/libsoup/soup-address.c
++++ b/libsoup/soup-address.c
+@@ -1209,6 +1209,8 @@ soup_address_address_enumerator_next_async (GSocketAddressEnumerator  *enumerato
+ 	GTask *task;
+ 
+ 	task = g_task_new (enumerator, cancellable, callback, user_data);
++	g_task_set_source_tag (task, soup_address_address_enumerator_next_async);
++
+ 	if (!priv->sockaddr) {
+ 		soup_address_resolve_async (addr_enum->addr,
+ 					    g_main_context_get_thread_default (),
+diff --git a/libsoup/soup-client-input-stream.c b/libsoup/soup-client-input-stream.c
+index e73ec9e63..c5484501e 100644
+--- a/libsoup/soup-client-input-stream.c
++++ b/libsoup/soup-client-input-stream.c
+@@ -189,6 +189,7 @@ soup_client_input_stream_close_async (GInputStream        *stream,
+ 	GSource *source;
+ 
+ 	task = g_task_new (stream, cancellable, callback, user_data);
++	g_task_set_source_tag (task, soup_client_input_stream_close_async);
+ 	g_task_set_priority (task, priority);
+ 
+ 	if (close_async_ready (cistream->priv->msg, task) == G_SOURCE_CONTINUE) {
+diff --git a/libsoup/soup-connection.c b/libsoup/soup-connection.c
+index 1b9a4fee8..8d4fee8d1 100644
+--- a/libsoup/soup-connection.c
++++ b/libsoup/soup-connection.c
+@@ -418,6 +418,7 @@ soup_connection_connect_async (SoupConnection      *conn,
+ 
+ 	soup_socket_properties_push_async_context (priv->socket_props);
+ 	task = g_task_new (conn, cancellable, callback, user_data);
++	g_task_set_source_tag (task, soup_connection_connect_async);
+ 
+ 	soup_socket_connect_async_internal (priv->socket, cancellable,
+ 					    socket_connect_complete, task);
+@@ -546,6 +547,7 @@ soup_connection_start_ssl_async (SoupConnection      *conn,
+ 
+ 	soup_socket_properties_push_async_context (priv->socket_props);
+ 	task = g_task_new (conn, cancellable, callback, user_data);
++	g_task_set_source_tag (task, soup_connection_start_ssl_async);
+ 
+ 	soup_socket_handshake_async (priv->socket, priv->remote_uri->host,
+ 				     cancellable, start_ssl_completed, task);
+diff --git a/libsoup/soup-io-stream.c b/libsoup/soup-io-stream.c
+index 8daca38d6..3da1d614b 100644
+--- a/libsoup/soup-io-stream.c
++++ b/libsoup/soup-io-stream.c
+@@ -160,6 +160,7 @@ soup_io_stream_close_async (GIOStream           *stream,
+ 	GTask *task;
+ 
+ 	task = g_task_new (stream, cancellable, callback, user_data);
++	g_task_set_source_tag (task, soup_io_stream_close_async);
+ 	g_io_stream_close_async (SOUP_IO_STREAM (stream)->priv->base_iostream,
+ 				 io_priority, cancellable,
+ 				 close_async_complete, task);
+diff --git a/libsoup/soup-multipart-input-stream.c b/libsoup/soup-multipart-input-stream.c
+index 535dd6ec4..209eb9a32 100644
+--- a/libsoup/soup-multipart-input-stream.c
++++ b/libsoup/soup-multipart-input-stream.c
+@@ -528,6 +528,7 @@ soup_multipart_input_stream_next_part_async (SoupMultipartInputStream *multipart
+ 	g_return_if_fail (SOUP_IS_MULTIPART_INPUT_STREAM (multipart));
+ 
+ 	task = g_task_new (multipart, cancellable, callback, data);
++	g_task_set_source_tag (task, soup_multipart_input_stream_next_part_async);
+ 	g_task_set_priority (task, io_priority);
+ 
+ 	if (!g_input_stream_set_pending (stream, &error)) {
+diff --git a/libsoup/soup-proxy-resolver-wrapper.c b/libsoup/soup-proxy-resolver-wrapper.c
+index e07664ca9..e787ff095 100644
+--- a/libsoup/soup-proxy-resolver-wrapper.c
++++ b/libsoup/soup-proxy-resolver-wrapper.c
+@@ -92,6 +92,7 @@ soup_proxy_resolver_wrapper_lookup_async (GProxyResolver       *resolver,
+ 	SoupURI *source_uri;
+ 
+ 	task = g_task_new (resolver, cancellable, callback, user_data);
++	g_task_set_source_tag (task, soup_proxy_resolver_wrapper_lookup_async);
+ 	source_uri = soup_uri_new (uri);
+ 	g_task_set_task_data (task, source_uri, (GDestroyNotify) soup_uri_free);
+ 
+diff --git a/libsoup/soup-request-file.c b/libsoup/soup-request-file.c
+index c402a5b4c..6d3e9fa3b 100644
+--- a/libsoup/soup-request-file.c
++++ b/libsoup/soup-request-file.c
+@@ -301,6 +301,7 @@ soup_request_file_send_async (SoupRequest          *request,
+ 	GError *error = NULL;
+ 
+ 	task = g_task_new (request, cancellable, callback, user_data);
++	g_task_set_source_tag (task, soup_request_file_send_async);
+ 
+ 	if (!soup_request_file_ensure_file (file, cancellable, &error)) {
+ 		g_task_return_error (task, error);
+diff --git a/libsoup/soup-request-http.c b/libsoup/soup-request-http.c
+index 285f59d7a..a608d3a2d 100644
+--- a/libsoup/soup-request-http.c
++++ b/libsoup/soup-request-http.c
+@@ -140,6 +140,7 @@ soup_request_http_send_async (SoupRequest          *request,
+ 	g_return_if_fail (!SOUP_IS_SESSION_SYNC (session));
+ 
+ 	task = g_task_new (request, cancellable, callback, user_data);
++	g_task_set_source_tag (task, soup_request_http_send_async);
+ 	soup_session_send_async (session, http->priv->msg, cancellable,
+ 				 http_input_stream_ready_cb, task);
+ }
+diff --git a/libsoup/soup-request.c b/libsoup/soup-request.c
+index 61980c78a..6c11c32c4 100644
+--- a/libsoup/soup-request.c
++++ b/libsoup/soup-request.c
+@@ -177,6 +177,7 @@ soup_request_default_send_async (SoupRequest          *request,
+ 	GError *error = NULL;
+ 
+ 	task = g_task_new (request, cancellable, callback, user_data);
++	g_task_set_source_tag (task, soup_request_default_send_async);
+ 
+ 	stream = soup_request_send (request, cancellable, &error);
+ 	if (stream)
+diff --git a/libsoup/soup-session.c b/libsoup/soup-session.c
+index 83421ef9d..c74b1b886 100644
+--- a/libsoup/soup-session.c
++++ b/libsoup/soup-session.c
+@@ -4355,6 +4355,7 @@ soup_session_send_async (SoupSession         *session,
+ 
+ 	item->new_api = TRUE;
+ 	item->task = g_task_new (session, item->cancellable, callback, user_data);
++	g_task_set_source_tag (item->task, soup_session_send_async);
+ 	g_task_set_task_data (item->task, item, (GDestroyNotify) soup_message_queue_item_unref);
+ 
+ 	/* Do not check for cancellations as we do not want to
+@@ -4961,6 +4962,7 @@ soup_session_websocket_connect_async (SoupSession          *session,
+ 	soup_message_set_flags (msg, flags | SOUP_MESSAGE_NEW_CONNECTION);
+ 
+ 	task = g_task_new (session, cancellable, callback, user_data);
++	g_task_set_source_tag (task, soup_session_websocket_connect_async);
+ 	item = soup_session_append_queue_item (session, msg, TRUE, FALSE,
+ 					       websocket_connect_async_complete, task);
+ 	g_task_set_task_data (task, item, (GDestroyNotify) soup_message_queue_item_unref);
+@@ -5108,6 +5110,7 @@ soup_session_connect_async (SoupSession                       *session,
+         g_return_if_fail (uri != NULL);
+ 
+         task = g_task_new (session, cancellable, callback, user_data);
++        g_task_set_source_tag (task, soup_session_connect_async);
+ 
+         msg = soup_message_new_from_uri (SOUP_METHOD_HEAD, uri);
+         soup_message_set_flags (msg, SOUP_MESSAGE_NEW_CONNECTION);
+diff --git a/libsoup/soup-socket.c b/libsoup/soup-socket.c
+index 7ad484308..0ec451032 100644
+--- a/libsoup/soup-socket.c
++++ b/libsoup/soup-socket.c
+@@ -970,6 +970,7 @@ soup_socket_connect_async_internal (SoupSocket          *sock,
+ 
+ 	priv->connect_cancel = cancellable ? g_object_ref (cancellable) : g_cancellable_new ();
+ 	task = g_task_new (sock, priv->connect_cancel, callback, user_data);
++	g_task_set_source_tag (task, soup_socket_connect_async_internal);
+ 
+ 	client = new_socket_client (sock);
+ 	g_socket_client_connect_async (client,
+@@ -1536,6 +1537,7 @@ soup_socket_handshake_async (SoupSocket          *sock,
+ 	GError *error = NULL;
+ 
+ 	task = g_task_new (sock, cancellable, callback, user_data);
++	g_task_set_source_tag (task, soup_socket_handshake_async);
+ 
+ 	if (!soup_socket_setup_ssl (sock, ssl_host, cancellable, &error)) {
+ 		g_task_return_error (task, error);
+-- 
+GitLab
+
