@@ -1,7 +1,7 @@
 #
 # spec file for package jimtcl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,19 @@
 #
 
 
-%define libjim_name libjim0_81
-
+%define libjim_name libjim0_82
 Name:           jimtcl
-Version:        0.81
+Version:        0.82
 Release:        0
 Summary:        A small embeddable Tcl interpreter
 License:        BSD-2-Clause
 Group:          Development/Languages/Tcl
 URL:            http://jim.tcl.tk
 Source:         https://github.com/msteveb/jimtcl/archive/%{version}/%{name}-%{version}.tar.gz
+Patch0:         exclude_mtime_aiostat_test_on_32bit.patch
 BuildRequires:  asciidoc
 BuildRequires:  hostname
+BuildRequires:  libopenssl-devel
 
 %description
 Jim is an opensource small-footprint implementation of the Tcl programming
@@ -54,7 +55,13 @@ Group:          System/Libraries
 Jim is an opensource small-footprint implementation of the Tcl programming language.
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -N -n %{name}-%{version}
+# exclude aio-stat-1.1 mtime test on 32bit arch
+%ifarch i586 %arm
+%autopatch -p1
+%endif
+# exclude SSL test because build env does not have internet connectivity
+rm tests/ssl.test
 
 iconv --from=ISO-8859-1 --to=UTF-8 AUTHORS > AUTHORS.new ; mv AUTHORS.new AUTHORS
 iconv --from=ISO-8859-1 --to=UTF-8 LICENSE > LICENSE.new ; mv LICENSE.new LICENSE
@@ -66,45 +73,39 @@ export LD=ld
 export AR=ar
 export RANLIB=ranlib
 export STRIP=true
-%configure --full --shared --disable-option-checking
-make %{?_smp_mflags}
+%configure --shared --disable-option-checking
+
+%make_build
 
 %check
-make test
+%make_build test
 
 %install
 %make_install
 rm -rf %{buildroot}%{_prefix}/docs
-pushd %{buildroot}%{_libdir}/
-ln -s libjim.so.* libjim.so
-popd
 
 %post -n %{libjim_name} -p /sbin/ldconfig
-
 %postun -n %{libjim_name} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
 %license LICENSE
 %doc AUTHORS README
 %{_bindir}/jimsh
 %{_bindir}/jimdb
 
 %files -n %{libjim_name}
-%defattr(-,root,root,-)
 %license LICENSE
 %{_libdir}/libjim.so.*
-%dir %{_libdir}/jim
-%{_libdir}/jim/README.extensions
-%{_libdir}/jim/tcltest.tcl
 
 %files devel
-%defattr(-,root,root,-)
 %license LICENSE
 %doc DEVELOPING README.metakit README.namespaces README.oo README.utf-8 STYLE Tcl.html
 %{_includedir}/*
 %{_bindir}/build-jim-ext
 %{_libdir}/libjim.so
 %{_libdir}/pkgconfig/jimtcl.pc
+%dir %{_libdir}/jim
+%{_libdir}/jim/README.extensions
+%{_libdir}/jim/tcltest.tcl
 
 %changelog
