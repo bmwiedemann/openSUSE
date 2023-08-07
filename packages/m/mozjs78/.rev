@@ -98,4 +98,12 @@
     <comment>- added mozilla-python310.patch to build with Python 3.10</comment>
     <requestid>987761</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>1c8f95ad453683c8b6a17b5ce1714ffe</srcmd5>
+    <version>78.15.0</version>
+    <time>1691414972</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102708</requestid>
+  </revision>
 </revisionlist>
