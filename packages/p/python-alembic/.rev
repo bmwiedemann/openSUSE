@@ -1583,4 +1583,12 @@
     <comment>- tag sle15 build for new python</comment>
     <requestid>1092850</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>9c64b40000483448b66af4dad2daa232</srcmd5>
+    <version>1.11.1</version>
+    <time>1691414921</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1102506</requestid>
+  </revision>
 </revisionlist>
