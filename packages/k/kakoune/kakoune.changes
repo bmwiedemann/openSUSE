@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  7 06:35:06 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2023.08.05:
+  * Fix compilation errors on FreeBSD and MacOS using clang
+
+-------------------------------------------------------------------
 Mon Jul 31 06:00:45 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2023.07.29:

@@ -308,4 +308,13 @@
     <comment></comment>
     <requestid>1101490</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>dac752fd5b8956d48b068cd0e86c041a</srcmd5>
+    <version>2023.08.05</version>
+    <time>1691414952</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2023.08.05:
+  * Fix compilation errors on FreeBSD and MacOS using clang</comment>
+    <requestid>1102629</requestid>
+  </revision>
 </revisionlist>

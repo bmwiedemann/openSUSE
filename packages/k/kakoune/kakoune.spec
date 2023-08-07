@@ -17,7 +17,7 @@
 
 
 Name:           kakoune
-Version:        2023.07.29
+Version:        2023.08.05
 Release:        0
 Summary:        A code editor heavily inspired by Vim
 License:        Unlicense
