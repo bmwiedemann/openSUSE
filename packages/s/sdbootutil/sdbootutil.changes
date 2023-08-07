@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  7 07:38:45 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Only install the snapper plugin if sdbootutil is requested
+- Bypass git, owner is not available ATM
+
+-------------------------------------------------------------------
 Thu Jul 27 14:32:09 UTC 2023 - lnussel@suse.com
 
 - Update to version 1+git20230727.a0e666f:

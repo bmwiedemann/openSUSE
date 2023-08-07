@@ -1,4 +1,5 @@
 <services>
+<!-- Waiting for https://github.com/lnussel/sdbootutil/pull/9
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/lnussel/sdbootutil.git</param>
@@ -8,5 +9,6 @@
     <param name="extract">sdbootutil.spec</param>
   </service>
   <service name="set_version" mode="manual" />
+-->
   <service name="tar" mode="buildtime"/>
 </services>

@@ -17,4 +17,12 @@
   * rpm-script: don't remove kernel on reinstalls (forwarded request 1101095 from lnussel)</comment>
     <requestid>1101096</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>60fe0214ee537bb3be9edde11a97c96f</srcmd5>
+    <version>1+git20230727.a0e666f</version>
+    <time>1691414967</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102648</requestid>
+  </revision>
 </revisionlist>
