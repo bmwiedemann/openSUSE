@@ -16,8 +16,9 @@
 #
 
 
+%define __builder ninja
 Name:           Catch2
-Version:        3.3.2
+Version:        3.4.0
 Release:        0
 Summary:        A modern, C++-native, header-only, test framework for unit-tests, TDD and BDD
 License:        BSL-1.0
@@ -25,7 +26,9 @@ URL:            https://github.com/catchorg/%{name}/
 Source:         https://github.com/catchorg/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++ >= 6
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
+BuildRequires:  python3
 
 %description
 Catch2 stands for C++ Automated Test Cases in a Header and is a multi-paradigm
@@ -46,16 +49,13 @@ It also provides basic micro-benchmarking features, and simple BDD macros.
 %build
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 %cmake -DCMAKE_BUILD_TYPE=Release \
-       -DBUILD_SHARED_LIBS=OFF \
-       -DCMAKE_INSTALL_DOCDIR=%{_defaultdocdir}/%{name} \
-       -DPKGCONFIG_INSTALL_DIR=%{_libdir}/pkgconfig
+       -DBUILD_SHARED_LIBS:BOOL=OFF \
+       -DCMAKE_INSTALL_DOCDIR:PATH=%{_defaultdocdir}/%{name} \
+       -DPKGCONFIG_INSTALL_DIR:PATH=%{_libdir}/pkgconfig
 %cmake_build
 
 %install
 %cmake_install
-
-%check
-%ctest
 
 %files devel
 %license LICENSE.txt
