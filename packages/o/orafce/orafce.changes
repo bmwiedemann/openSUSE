@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Aug 07 07:39:21 UTC 2023 - emiliano.langella@suse.com
+
+- Update to version 4.5.0+git8.b3ad258:
+  * better comment
+  * fix issue reported by cppcheck, all tests passed
+  * test passed except pg 17
+  * fix
+  * code cleaning
+  * formatting
+  * use condition variable for synchronization of dbms_alert waiting on signal
+  * formatting
+  * typo
+  * prepare for 4.5.0
+  * detect different identity of pipe after wakeup
+  * fix issues reported by cppcheck
+  * decrease timeout as protection against deadlocks
+  * using ConditionVariables for synchronization dbms_pipe writer and dbms_pipe reader
+  * fix isses reported by cppcheck
+  * fix issues reported by cppcheck
+
+-------------------------------------------------------------------
 Mon Jul 10 07:03:35 UTC 2023 - emiliano.langella@suse.com
 
 - Update to version 4.4.0+git0.eb5513d:
