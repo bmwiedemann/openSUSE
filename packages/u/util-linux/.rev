@@ -2512,4 +2512,12 @@ Factory yet. (forwarded request 448848 from rudi_m)</comment>
     <comment>- Disable last and lastb for ALP, too. (forwarded request 1101899 from kukuk)</comment>
     <requestid>1101918</requestid>
   </revision>
+  <revision rev="276" vrev="3">
+    <srcmd5>d9a10071fc1638357902f3d3b1b6d6c8</srcmd5>
+    <version>2.39.1</version>
+    <time>1691414932</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102425</requestid>
+  </revision>
 </revisionlist>

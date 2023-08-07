@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  4 18:17:29 UTC 2023 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Re-add util-linux-fix-tests-with-64k-pagesize.patch because it is
+  not in 2.39.1
+
+-------------------------------------------------------------------
 Wed Aug  2 07:36:09 UTC 2023 - Thorsten Kukuk <kukuk@suse.com>
 
 - Disable last and lastb for ALP, too.

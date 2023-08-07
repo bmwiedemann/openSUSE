@@ -112,6 +112,8 @@ Patch2:         Add-documentation-on-blacklisted-modules-to-mount-8-.patch
 Patch3:         util-linux-bash-completion-su-chsh-l.patch
 # https://github.com/util-linux/util-linux/pull/2373
 Patch4:         0001-Revert-libblkid-try-LUKS2-first-when-probing.patch
+# PATCH-FIX-UPSTREAM util-linux-fix-tests-with-64k-pagesize.patch -- fadvise: fix tests with 64k pagesize
+Patch5:         util-linux-fix-tests-with-64k-pagesize.patch
 
 BuildRequires:  audit-devel
 BuildRequires:  bc
