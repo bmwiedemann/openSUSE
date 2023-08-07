@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Aug  4 10:15:33 UTC 2023 - Dawid Adam <nyslay@gmail.com>
+
+- Added
+  * Dug up a new, commissioned, raccoon icon.
+  * Turned on new subtitles and subtitles-slash icons.
+  * Cast a spell on new, commissioned, person-fairy and person-dress-fairy icons.
+  * Swapped in new, commissioned, swap and swap-arrows icons.
+  * Shone a light on a new lighthouse icon.
+  * Trotted out a new globe-pointer icon.
+  * Pointed to a selection of new arrow-*-to-*-arc and arrow-*-from-*-arc icons.
+  * Got up to get down with a new angles-up-down icon.
+  * Added the Threads brand icon.
+  * Added the twitter X brand icon.
+  * Added the Debian brand icon.
+- Changed
+  * Updated the Ubuntu brand icon.
+  * Added "types" to the package.json exports for TypeScript defintions in JS packages.
+- Fixed
+  * Fixed an issue with the classic light style of the arrow-down-wide-short icon.
+  * Fixed issue with the regular styles of the clone and copy icons.
+  * Fixed an issue with the hand-spock icon.
+  * Fixed an issue where the "heart" in the hand-holding-heart and other "hand/heart" icons where too heavy in the Thin style.
+  * Fixed a warning in Edge browser using createElementNS for svg elements.
+
+-------------------------------------------------------------------
 Wed Apr 19 07:49:02 UTC 2023 - Dawid Adam <nyslay@gmail.com>
 
 -Added
