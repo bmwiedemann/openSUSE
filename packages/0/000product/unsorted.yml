@@ -8647,6 +8647,7 @@ unsorted:
   - jpcre2-devel 
   - jpegoptim 
   - jpnevulator 
+  - jq 
   - jrosetta 
   - jrtplib-devel 
   - js-technology-fonts 
@@ -9383,22 +9384,34 @@ unsorted:
   - kuberlr 
   - kubernetes-apiserver 
   - kubernetes-apiserver-minus1 
+  - kubernetes-apiserver-minus2 
+  - kubernetes-apiserver-minus3 
   - kubernetes-client 
   - kubernetes-client-fish-completion 
   - kubernetes-controller-manager 
   - kubernetes-controller-manager-minus1 
+  - kubernetes-controller-manager-minus2 
+  - kubernetes-controller-manager-minus3 
   - kubernetes-coredns 
   - kubernetes-coredns-minus1 
+  - kubernetes-coredns-minus2 
+  - kubernetes-coredns-minus3 
   - kubernetes-etcd 
   - kubernetes-etcd-minus1 
+  - kubernetes-etcd-minus2 
+  - kubernetes-etcd-minus3 
   - kubernetes-kubeadm 
   - kubernetes-kubelet 
   - kubernetes-node-image-pause 
   - kubernetes-pause 
   - kubernetes-proxy 
   - kubernetes-proxy-minus1 
+  - kubernetes-proxy-minus2 
+  - kubernetes-proxy-minus3 
   - kubernetes-scheduler 
   - kubernetes-scheduler-minus1 
+  - kubernetes-scheduler-minus2 
+  - kubernetes-scheduler-minus3 
   - kubernetes1.20-apiserver 
   - kubernetes1.20-client 
   - kubernetes1.20-client-bash-completion 
@@ -12714,7 +12727,7 @@ unsorted:
   - libjbig2dec0 
   - libjcat-devel 
   - libjd0 
-  - libjim0_81 
+  - libjim0_82 
   - libjose-devel 
   - libjose0 
   - libjpeg62 
@@ -12727,6 +12740,7 @@ unsorted:
   - libjpgalleg44-devel 
   - libjpgalleg4_4 
   - libjq-devel 
+  - libjq1 
   - libjrtp3_11_1 
   - libjson-c-devel 
   - libjson-c-doc 
@@ -20299,7 +20313,6 @@ unsorted:
   - perl-Dancer2-Plugin-REST 
   - perl-Dancer2-Plugin-WebSocket 
   - perl-Data-Binary 
-  - perl-Data-Clone 
   - perl-Data-Compare 
   - perl-Data-Dump 
   - perl-Data-Dump-Streamer 
@@ -20527,7 +20540,6 @@ unsorted:
   - perl-HTML-Encoding 
   - perl-HTML-FillInForm 
   - perl-HTML-Form 
-  - perl-HTML-FormHandler 
   - perl-HTML-Format 
   - perl-HTML-FormatText-WithLinks 
   - perl-HTML-FromANSI-Tiny 
@@ -20729,7 +20741,6 @@ unsorted:
   - perl-Module-Metadata 
   - perl-Module-Path 
   - perl-Module-Pluggable 
-  - perl-Module-Reader 
   - perl-Module-Refresh 
   - perl-Module-Runtime 
   - perl-Module-Runtime-Conflicts 
@@ -34483,7 +34494,9 @@ unsorted:
   - scummvm-tools 
   - sd 
   - sd-mux-ctrl 
+  - sdbootutil 
   - sdbootutil-rpm-scriptlets 
+  - sdbootutil-snapper 
   - sdbus-cpp-devel 
   - sdbus-cpp-devel-doc 
   - sdbus-cpp-xml2cpp 
@@ -35235,6 +35248,7 @@ unsorted:
   - system-user-prometheus 
   - system-user-uuidd 
   - system-user-velociraptor 
+  - systemd-boot 
   - systemd-default-settings-branding-SLE-Micro 
   - systemd-default-settings-branding-upstream 
   - systemd-devel 
