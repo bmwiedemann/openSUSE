@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon May 22 10:32:49 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
-- Proporly list services as parameters to
+- Properly list services as parameters to
   %service_del_postun_without_restart: new versions mandate the
   parameters to further down the line eliminate errors. For the
   time being, the code does not care for the parameters.

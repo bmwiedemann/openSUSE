@@ -1107,4 +1107,12 @@ plymouth-branding-openSUSE (forwarded request 114125 from gary_lin)</comment>
     <user>dimstar_suse</user>
     <comment>osc copypac from project:openSUSE:Factory package:plymouth revision:121, using expand</comment>
   </revision>
+  <revision rev="124" vrev="7">
+    <srcmd5>f7c23864354d7e763be4bfc5e7406bab</srcmd5>
+    <version>22.02.122+94.4bd41a3</version>
+    <time>1691414938</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102678</requestid>
+  </revision>
 </revisionlist>
