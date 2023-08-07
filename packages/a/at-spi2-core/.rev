@@ -2631,4 +2631,15 @@
   + atk-adaptor: Fix handling of sockets in impl_GetChildren.</comment>
     <requestid>1089511</requestid>
   </revision>
+  <revision rev="104" vrev="2">
+    <srcmd5>bb71a16096b783e7020ad1f9be6b7339</srcmd5>
+    <version>2.48.3</version>
+    <time>1691414921</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1102084 from yfjiang
+
+- Support build environments like SLE 15 SP5 and Leap 15.5 which
+  had %{_distconfdir) not defined yet.</comment>
+    <requestid>1102516</requestid>
+  </revision>
 </revisionlist>

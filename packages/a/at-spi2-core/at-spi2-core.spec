@@ -16,6 +16,8 @@
 #
 
 
+%define atspiconfdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}
+
 Name:           at-spi2-core
 Version:        2.48.3
 Release:        0
@@ -143,10 +145,12 @@ The package contains a ATK/D-Bus bridge library.
 %find_lang %{name}
 %fdupes %{buildroot}%{_datadir}/gtk-doc/html/
 # Move autostart file to /usr/etc
-mkdir -p %{buildroot}%{_distconfdir}/xdg/autostart
-mkdir -p %{buildroot}%{_distconfdir}/xdg/Xwayland-session.d
+mkdir -p %{buildroot}%{atspiconfdir}/xdg/autostart
+mkdir -p %{buildroot}%{atspiconfdir}/xdg/Xwayland-session.d
+%if 0%{defined _distconfdir}
 mv %{buildroot}%{_sysconfdir}/xdg/autostart/* %{buildroot}%{_distconfdir}/xdg/autostart/
 mv %{buildroot}%{_sysconfdir}/xdg/Xwayland-session.d/* %{buildroot}%{_distconfdir}/xdg/Xwayland-session.d/
+%endif
 
 %ldconfig_scriptlets -n libatspi0
 %ldconfig_scriptlets -n libatk-1_0-0
@@ -155,9 +159,9 @@ mv %{buildroot}%{_sysconfdir}/xdg/Xwayland-session.d/* %{buildroot}%{_distconfdi
 %files
 %license COPYING
 %{_libexecdir}/at-spi2/
-%dir %{_distconfdir}/xdg/Xwayland-session.d
-%{_distconfdir}/xdg/Xwayland-session.d/00-at-spi
-%{_distconfdir}/xdg/autostart/at-spi-dbus-bus.desktop
+%dir %{atspiconfdir}/xdg/Xwayland-session.d
+%{atspiconfdir}/xdg/Xwayland-session.d/00-at-spi
+%{atspiconfdir}/xdg/autostart/at-spi-dbus-bus.desktop
 %{_userunitdir}/at-spi-dbus-bus.service
 %dir %{_datadir}/dbus-1/accessibility-services/
 %{_datadir}/dbus-1/accessibility-services/org.a11y.atspi.Registry.service
