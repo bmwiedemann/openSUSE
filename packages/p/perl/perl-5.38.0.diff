@@ -1,5 +1,5 @@
---- ./Configure.orig	2022-05-20 00:01:22.000000000 +0000
-+++ ./Configure	2022-06-23 11:49:51.734269721 +0000
+--- Configure.orig	2023-06-02 01:12:22.000000000 +0000
++++ Configure	2023-07-19 12:31:54.415128119 +0000
 @@ -114,7 +114,7 @@ paths="$paths /usr/5bin /etc /usr/gnu/bi
  paths="$paths /opt/gnu/bin /opt/new /opt/new/bin /opt/nbin"
  paths="$paths /sys5.3/bin /sys5.3/usr/bin /bsd4.3/bin /bsd4.3/usr/ucb"
@@ -9,7 +9,7 @@
  paths="$paths /sbin /usr/sbin /usr/libexec"
  paths="$paths /system/gnu_library/bin"
  
-@@ -1468,7 +1468,7 @@ loclibpth="/usr/local/lib /opt/local/lib
+@@ -1476,7 +1476,7 @@ loclibpth="/usr/local/lib /opt/local/lib
  loclibpth="$loclibpth /opt/gnu/lib /usr/GNU/lib /opt/GNU/lib"
  
  : general looking path for locating libraries
@@ -18,7 +18,7 @@
  glibpth="$glibpth /usr/ccs/lib /usr/ucblib /usr/local/lib"
  test -f /usr/shlib/libc.so && glibpth="/usr/shlib $glibpth"
  test -f /shlib/libc.so     && glibpth="/shlib $glibpth"
-@@ -2566,7 +2566,7 @@ uname
+@@ -2581,7 +2581,7 @@ uname
  zip
  "
  pth=`echo $PATH | sed -e "s/$p_/ /g"`
@@ -27,7 +27,7 @@
  for file in $loclist; do
  	eval xxx=\$$file
  	case "$xxx" in
-@@ -20594,14 +20594,20 @@ int main(int argc, char *argv[])
+@@ -20673,14 +20673,20 @@ int main(int argc, char *argv[])
  }
  EOCP
  	set try
@@ -48,7 +48,7 @@
  		i_db=$undef
  		case " $libs " in
  		*"-ldb "*)
-@@ -20639,7 +20645,7 @@ int main()
+@@ -20718,7 +20724,7 @@ int main()
  }
  #endif
  EOCP
@@ -57,7 +57,7 @@
  		if $compiler_warning try.out >>/dev/null 2>&1 ; then
  			db_hashtype='int'
  		else
-@@ -20679,7 +20685,7 @@ int main()
+@@ -20758,7 +20764,7 @@ int main()
  }
  #endif
  EOCP
@@ -66,7 +66,7 @@
  		if $compiler_warning try.out >>/dev/null 2>&1 ; then
  			db_prefixtype='int'
  		else
-@@ -25436,7 +25442,7 @@ passcat='$passcat'
+@@ -25564,7 +25570,7 @@ passcat='$passcat'
  patchlevel='$patchlevel'
  path_sep='$path_sep'
  perl5='$perl5'
@@ -75,8 +75,8 @@
  perl_patchlevel='$perl_patchlevel'
  perl_static_inline='$perl_static_inline'
  perl_thread_local='$perl_thread_local'
---- ./SuSE/SuSEconfig.perl.orig	2022-06-23 11:49:51.738269715 +0000
-+++ ./SuSE/SuSEconfig.perl	2022-06-23 11:49:51.738269715 +0000
+--- SuSE/SuSEconfig.perl.orig	2023-07-19 12:31:54.415128119 +0000
++++ SuSE/SuSEconfig.perl	2023-07-19 12:31:54.415128119 +0000
 @@ -0,0 +1,76 @@
 +#! /bin/bash
 +#
@@ -154,8 +154,8 @@
 +#
 +# end of file SuSEconfig.perl
 +#
---- ./SuSE/perllocal.SuSE.orig	2022-06-23 11:49:51.738269715 +0000
-+++ ./SuSE/perllocal.SuSE	2022-06-23 11:49:51.738269715 +0000
+--- SuSE/perllocal.SuSE.orig	2023-07-19 12:31:54.415128119 +0000
++++ SuSE/perllocal.SuSE	2023-07-19 12:31:54.415128119 +0000
 @@ -0,0 +1,83 @@
 +#!/usr/bin/perl
 +# Copyright (c) 1998 S.u.S.E. Gmbh Fuerth, Germany.  All rights reserved.
@@ -240,8 +240,8 @@
 +} else {
 +	print "SuSEconfig.perl: Can't write to file $Config{'installarchlib'}/perllocal.pod !\n\n";
 +}
---- ./SuSE/sysconfig.suseconfig-perl.orig	2022-06-23 11:49:51.738269715 +0000
-+++ ./SuSE/sysconfig.suseconfig-perl	2022-06-23 11:49:51.738269715 +0000
+--- SuSE/sysconfig.suseconfig-perl.orig	2023-07-19 12:31:54.415128119 +0000
++++ SuSE/sysconfig.suseconfig-perl	2023-07-19 12:31:54.415128119 +0000
 @@ -0,0 +1,8 @@
 +## Path:	System/SuSEconfig
 +## Type:	yesno
@@ -251,8 +251,8 @@
 +# May SuSEconfig modify your perllocal.pod? (yes/no)
 +#
 +CREATE_PERLLOCAL_POD="yes"
---- ./cpan/Compress-Raw-Zlib/config.in.orig	2021-04-29 14:35:34.000000000 +0000
-+++ ./cpan/Compress-Raw-Zlib/config.in	2022-06-23 11:49:51.734269721 +0000
+--- cpan/Compress-Raw-Zlib/config.in.orig	2023-05-26 01:05:34.000000000 +0000
++++ cpan/Compress-Raw-Zlib/config.in	2023-07-19 12:31:54.415128119 +0000
 @@ -16,9 +16,9 @@
  #    Setting the Gzip OS Code
  #
@@ -265,9 +265,9 @@
 +LIB             = /usr/lib
  OLD_ZLIB        = False
  GZIP_OS_CODE    = AUTO_DETECT
- 
---- ./cpan/Encode/bin/enc2xs.orig	2022-04-17 14:55:05.000000000 +0000
-+++ ./cpan/Encode/bin/enc2xs	2022-06-23 11:49:51.734269721 +0000
+ USE_ZLIB_NG     = False
+--- cpan/Encode/bin/enc2xs.orig	2022-05-28 15:29:53.000000000 +0000
++++ cpan/Encode/bin/enc2xs	2023-07-19 12:31:54.419128114 +0000
 @@ -1080,7 +1080,7 @@ sub make_configlocal_pm {
  	    $LocalMod{$enc} ||= $mod;
  	}
@@ -277,8 +277,8 @@
      $_ModLines = "";
      for my $enc ( sort keys %LocalMod ) {
          $_ModLines .=
---- ./cpan/ExtUtils-Install/lib/ExtUtils/Packlist.pm.orig	2020-12-28 16:57:43.000000000 +0000
-+++ ./cpan/ExtUtils-Install/lib/ExtUtils/Packlist.pm	2022-06-23 11:49:51.734269721 +0000
+--- cpan/ExtUtils-Install/lib/ExtUtils/Packlist.pm.orig	2023-05-26 01:05:34.000000000 +0000
++++ cpan/ExtUtils-Install/lib/ExtUtils/Packlist.pm	2023-07-19 12:31:54.419128114 +0000
 @@ -206,8 +206,11 @@ foreach my $key (sort(keys(%{$self->{dat
     {
     if (! -e $key)
@@ -293,8 +293,8 @@
        }
     }
  return(@missing);
---- ./cpan/File-Temp/lib/File/Temp.pm.orig	2020-12-28 16:57:43.000000000 +0000
-+++ ./cpan/File-Temp/lib/File/Temp.pm	2022-06-23 11:49:51.734269721 +0000
+--- cpan/File-Temp/lib/File/Temp.pm.orig	2020-12-28 16:57:43.000000000 +0000
++++ cpan/File-Temp/lib/File/Temp.pm	2023-07-19 12:31:54.419128114 +0000
 @@ -151,7 +151,7 @@ use Fcntl 1.03;
  use IO::Seekable;               # For SEEK_*
  use Errno;
@@ -304,8 +304,8 @@
  
  # pre-emptively load Carp::Heavy. If we don't when we run out of file
  # handles and attempt to call croak() we get an error message telling
---- ./cpan/Sys-Syslog/t/syslog.t.orig	2020-12-28 16:57:43.000000000 +0000
-+++ ./cpan/Sys-Syslog/t/syslog.t	2022-06-23 11:49:51.734269721 +0000
+--- cpan/Sys-Syslog/t/syslog.t.orig	2020-12-28 16:57:43.000000000 +0000
++++ cpan/Sys-Syslog/t/syslog.t	2023-07-19 12:31:54.419128114 +0000
 @@ -222,6 +222,7 @@ SKIP: {
          }
      }
@@ -314,8 +314,8 @@
          ok( $r, "setlogsock() should return true: '$r'" );
      }
  
---- ./cpan/libnet/lib/Net/Config.pm.orig	2022-04-24 20:29:00.000000000 +0000
-+++ ./cpan/libnet/lib/Net/Config.pm	2022-06-23 11:49:51.734269721 +0000
+--- cpan/libnet/lib/Net/Config.pm.orig	2023-05-26 01:05:34.000000000 +0000
++++ cpan/libnet/lib/Net/Config.pm	2023-07-19 12:31:54.419128114 +0000
 @@ -51,7 +51,7 @@ our %NetConfig = (
  {
  ## no critic (BuiltinFunctions::ProhibitStringyEval)
@@ -325,8 +325,8 @@
  
  {
  my %nc = (
---- ./ext/DynaLoader/hints/linux.pl.orig	2017-06-16 19:49:10.000000000 +0000
-+++ ./ext/DynaLoader/hints/linux.pl	2022-06-23 11:49:51.734269721 +0000
+--- ext/DynaLoader/hints/linux.pl.orig	2017-06-16 19:49:10.000000000 +0000
++++ ext/DynaLoader/hints/linux.pl	2023-07-19 12:31:54.419128114 +0000
 @@ -2,4 +2,7 @@
  # Some Linux releases like to hide their <nlist.h>
  $self->{CCFLAGS} = $Config{ccflags} . ' -I/usr/include/libelf'
@@ -335,8 +335,8 @@
 +# module, so add cccdlflags if we're going for a shared libperl
 +$self->{CCFLAGS} = ($self->{CCFLAGS} || $Config{ccflags}) . " $Config{cccdlflags}" if $Config{'useshrplib'} eq 'true';
  1;
---- ./ext/ODBM_File/Makefile.PL.orig	2019-02-18 09:59:22.000000000 +0000
-+++ ./ext/ODBM_File/Makefile.PL	2022-06-23 11:49:51.734269721 +0000
+--- ext/ODBM_File/Makefile.PL.orig	2019-02-18 09:59:22.000000000 +0000
++++ ext/ODBM_File/Makefile.PL	2023-07-19 12:31:54.419128114 +0000
 @@ -1,7 +1,7 @@
  use ExtUtils::MakeMaker;
  WriteMakefile(
@@ -346,8 +346,8 @@
      XSPROTOARG => '-noprototypes', 		# XXX remove later?
      VERSION_FROM => 'ODBM_File.pm', 
  );
---- ./ext/ODBM_File/hints/linux.pl.orig	2019-02-18 09:59:22.000000000 +0000
-+++ ./ext/ODBM_File/hints/linux.pl	2022-06-23 11:49:51.734269721 +0000
+--- ext/ODBM_File/hints/linux.pl.orig	2019-02-18 09:59:22.000000000 +0000
++++ ext/ODBM_File/hints/linux.pl	2023-07-19 12:31:54.419128114 +0000
 @@ -1,5 +1,5 @@
  # uses GDBM dbm compatibility feature - at least on SuSE 8.0
 -$self->{LIBS} = ['-lgdbm'];
@@ -355,8 +355,8 @@
  
  # Debian/Ubuntu have libgdbm_compat.so but not this file,
  # so linking may fail
---- ./hints/linux.sh.orig	2020-12-28 16:57:44.000000000 +0000
-+++ ./hints/linux.sh	2022-06-23 11:49:51.734269721 +0000
+--- hints/linux.sh.orig	2023-05-26 01:05:34.000000000 +0000
++++ hints/linux.sh	2023-07-19 12:31:54.419128114 +0000
 @@ -53,7 +53,7 @@ ignore_versioned_solibs='y'
  # BSD compatibility library no longer needed
  # 'kaffe' has a /usr/lib/libnet.so which is not at all relevant for perl.
@@ -448,8 +448,8 @@
  	;;
  esac
  EOCBU
---- ./installperl.orig	2022-02-24 02:35:27.000000000 +0000
-+++ ./installperl	2022-06-23 11:49:51.734269721 +0000
+--- installperl.orig	2022-05-28 15:29:53.000000000 +0000
++++ installperl	2023-07-19 12:31:54.419128114 +0000
 @@ -650,7 +650,7 @@ sub installlib {
      return if $name eq 'ExtUtils/MakeMaker/version/regex.pm';
  
@@ -459,8 +459,8 @@
  	  ($name =~ /^(.*)\.(?:pm|pod)$/ && $archpms{$1}) ||
  	  ($name =~ /^(.*)\.(?:h|lib)$/i && $Is_W32) ||
  	  $name=~/^Config_(heavy|git)\.pl\z/
---- ./lib/perl5db.pl.orig	2022-05-14 13:28:57.000000000 +0000
-+++ ./lib/perl5db.pl	2022-06-23 11:49:51.734269721 +0000
+--- lib/perl5db.pl.orig	2023-05-26 01:05:34.000000000 +0000
++++ lib/perl5db.pl	2023-07-19 12:31:54.419128114 +0000
 @@ -2369,6 +2369,8 @@ sub _DB__handle_run_command_in_pager_com
                  open( OUT, ">&STDOUT" )    # XXX: lost message
                  || _db_warn("Can't restore DB::OUT");
@@ -480,22 +480,9 @@
          # No pipes now.
          $obj->piped("");
      } ## end if ($piped)
---- ./t/porting/customized.dat.orig	2022-06-24 13:28:11.798796909 +0000
-+++ ./t/porting/customized.dat	2022-06-24 13:29:44.790630836 +0000
-@@ -26,8 +26,8 @@ Socket cpan/Socket/Socket.xs 146541e7deb
- Test::Harness cpan/Test-Harness/t/harness.t 38b13cfc479d37d91c104b97dd364a74dfde0f2f
- Win32API::File cpan/Win32API-File/File.pm 8fd212857f821cb26648878b96e57f13bf21b99e
- Win32API::File cpan/Win32API-File/File.xs beb870fed4490d2faa547b4a8576b8d64d1d27c5
--libnet cpan/libnet/lib/Net/Cmd.pm effaa3ba5c2ea320869d0c769aa206fb75d7dd89
--libnet cpan/libnet/lib/Net/Config.pm 0f60601c070988f06a89347df74350b2521f40f1
-+libnet cpan/libnet/lib/Net/Cmd.pm cb707222d9bb77c6024acccedc0289ca4c64a292
-+libnet cpan/libnet/lib/Net/Config.pm 937220a36660b7f1a61a75e707ade5b899478158
- libnet cpan/libnet/lib/Net/Domain.pm 9b4c8e8f5a5cc8ce112a3eb5d266baf951b50d50
- libnet cpan/libnet/lib/Net/FTP.pm 46580751a97ddf9fededd846dc16e6d90ecf1fa1
- libnet cpan/libnet/lib/Net/FTP/A.pm 0168df59404d9974b889fd8afb19b99c55f21fdc
---- ./utils/perlbug.PL.orig	2020-12-28 16:57:44.000000000 +0000
-+++ ./utils/perlbug.PL	2022-06-23 11:49:51.738269715 +0000
-@@ -1044,6 +1044,7 @@ sub _message_headers {
+--- utils/perlbug.PL.orig	2023-05-26 01:05:34.000000000 +0000
++++ utils/perlbug.PL	2023-07-19 12:31:54.419128114 +0000
+@@ -1066,6 +1066,7 @@ sub _message_headers {
      $headers{'Cc'}         = $cc        if ($cc);
      $headers{'Message-Id'} = $messageid if ($messageid);
      $headers{'Reply-To'}   = $from      if ($from);

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jul 19 14:34:43 CEST 2023 - mls@suse.de
+
+- Update to perl 5.38.0
+  * new "class" feature
+  * support for unicode 15.0
+  * defined-or and logical-or assignment default
+    expressions in signatures
+  * optimistic eval in patterns
+  * readline() no longer clears the stream error and eof flags
+  * "INIT" blocks no longer run after an "exit()" in "BEGIN"
+  * utf8::upgrade() keeps the undef value
+  * deprecation of ' as package name separator
+  * deprecation of the smart match operator
+  * PERL_USE_SAFE_PUTENV is now the default
+- Rebase perl-5.36.0.diff to perl-5.38.0.diff
+- Refresh perl_skip_flaky_tests_powerpc.patch
+
+-------------------------------------------------------------------
 Thu Jun  1 15:27:36 UTC 2023 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - update to perl 5.36.1 - maintenance release
