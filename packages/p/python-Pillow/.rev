@@ -649,4 +649,13 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
     <comment></comment>
     <requestid>1081810</requestid>
   </revision>
+  <revision rev="61" vrev="3">
+    <srcmd5>bc88755e003e3a6085a03eadf50876d5</srcmd5>
+    <version>9.5.0</version>
+    <time>1691414927</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Provides for python-PIL
+</comment>
+    <requestid>1101368</requestid>
+  </revision>
 </revisionlist>

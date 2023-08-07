@@ -49,6 +49,8 @@ BuildRequires:  pkgconfig(zlib)
 Requires:       python-olefile
 Obsoletes:      python-imaging < %{version}
 Provides:       python-imaging = %{version}
+Obsoletes:      python-PIL < %{version}
+Provides:       python-PIL = %{version}
 %if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(libopenjp2)
 %endif

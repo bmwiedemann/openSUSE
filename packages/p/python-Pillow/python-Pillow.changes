@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jul 30 06:54:47 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add Provides for python-PIL
+
+-------------------------------------------------------------------
 Fri Apr 21 12:20:55 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
