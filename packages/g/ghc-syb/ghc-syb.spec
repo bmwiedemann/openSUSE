@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.7.2.3
+Version:        0.7.2.4
 Release:        0
 Summary:        Scrap Your Boilerplate
 License:        BSD-3-Clause

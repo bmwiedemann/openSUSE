@@ -211,4 +211,12 @@
     <comment>update for ghc-9.4.4</comment>
     <requestid>1076060</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b735eedfa17122a587bb730ea7140892</srcmd5>
+    <version>0.7.2.4</version>
+    <time>1691414948</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1102606</requestid>
+  </revision>
 </revisionlist>
