@@ -31,6 +31,7 @@ Group:          Productivity/Networking/Web/Browsers
 URL:            http://elinks.or.cz/
 Source0:        https://github.com/rkd77/elinks/releases/download/v%{version}/elinks-%{version}.tar.xz
 Patch0:         0006-elinks-0.16.0-libidn2.patch
+Patch1:         perl-5.38.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gpm-devel
 %if %{with js}
@@ -66,8 +67,7 @@ and runs on a variety of platforms. Check the about page for a more complete
 description.
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch0 -p1
+%autosetup -n %{name}-%{version} -p1
 # Remove build time references so build-compare can do its work
 FAKE_BUILDTIME=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%H:%%M')
 FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%b %%e %%Y')
