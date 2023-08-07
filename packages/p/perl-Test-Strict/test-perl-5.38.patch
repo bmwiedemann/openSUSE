@@ -1,0 +1,108 @@
+From 8cc3a355b90db21b76374d3b563df3628b31d58c Mon Sep 17 00:00:00 2001
+From: James E Keenan <jkeenan@cpan.org>
+Date: Sat, 14 Jan 2023 22:42:22 +0000
+Subject: [PATCH] Don't simultaneously test -c and -v switches
+
+Up through perl-5.37.3, there was a bug in perl (see
+https://github.com/Perl/perl5/issues/20252#issuecomment-1236880872)
+which permitted simultaneous use of the '-c' and '-v' switches to the
+perl interpreter.  Once this bug was corrected, t/01all.t began to fail.
+As Test::Strict has many CPAN distributions depending on it, this test
+failure has had wide impact.
+
+This pull request modifies tests appropriately and has been tested on
+bleadperl (v5.37.7-134-g25948dfb24) and on perl-5.32.1, in both cases on
+threaded builds on FreeBSD-12.  Devel::Cover was not installed on
+bleadperl, hence t/04cover.t was skipped on that build.  Otherwise, all
+tests are passing.  In the course of testing, certain additions were
+made to .gitignore and MANIFEST.SKIP to get metadata-oriented tests to
+pass.
+
+NOTE:  In my git checkout I find the following file:
+
+        .git/hooksfsmonitor-watchman.sample
+
+This is deemed by 'file' to be a Perl executable.  As such, it is pushed
+onto the list of files tested by 'all_perl_files_ok()' at the start of
+t/01all.t.  This in turn means that in my 'git checkout' the count of
+tests is off by 2 and the test is reported to fail.
+
+        "Looks like you planned 59 tests but ran 61."
+
+Because the files in .git/hooks/ should not be included in the tarball,
+the count of tests is correct when run from the tarball.  I leave to the
+maintainer to determine how to square this circle.  You should probably
+check for the presence of a .git/ directory and exclude that directory
+from the list of directories passed to all_perl_files_ok().
+
+For https://github.com/manwar/Test-Strict/issues/32
+---
+ .gitignore    | 2 ++
+ MANIFEST.SKIP | 5 +++--
+ t/01all.t     | 4 +---
+ t/02fail.t    | 3 +--
+ 4 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/MANIFEST.SKIP b/MANIFEST.SKIP
+index 6dd7c05..03e0675 100644
+--- a/MANIFEST.SKIP
++++ b/MANIFEST.SKIP
+@@ -1,4 +1,5 @@
+-^\.git
++\.gitignore
++\.git/
+ maint
+ ^tags$
+ .last_cover_stats
+@@ -8,7 +9,7 @@ Makefile$
+ ^.*.bak
+ ^.*.old
+ ^t.*sessions
+-^cover_db
++cover_db/
+ ^.*\.log
+ ^.*\.swp$
+ ^.*~$
+diff --git a/t/01all.t b/t/01all.t
+index 6ff9f23..569354d 100644
+--- a/t/01all.t
++++ b/t/01all.t
+@@ -125,8 +125,6 @@ subtest perl_v5_12 => sub {
+   strict_ok($filename);
+ };
+ 
+-exit;
+-
+ {
+ 	my %data;
+ 	sub make_file {
+@@ -172,7 +170,7 @@ sub make_warning_files {
+ 
+   my ($fh2, $filename2) = tempfile( DIR => $tmpdir, SUFFIX => '.pl' );
+   print $fh2 <<'DUMMY';
+-#!/usr/bin/perl -vw
++#!/usr/bin/perl -w
+ use strict;
+ print "Hello world";
+ 
+diff --git a/t/02fail.t b/t/02fail.t
+index d4729cc..b0c8493 100644
+--- a/t/02fail.t
++++ b/t/02fail.t
+@@ -40,7 +40,6 @@ TODO: {
+   ok !Test::Strict::_strict_ok($fh1), 'use strict in print';
+ }
+ 
+-exit;
+ 
+ 
+ sub test1 {
+@@ -199,7 +198,7 @@ DUMMY
+ 
+   my ($fh2, $filename2) = tempfile( DIR => $tmpdir, SUFFIX => '.pl' );
+   print $fh2 <<'DUMMY';
+-#!/usr/bin/perl -vw
++#!/usr/bin/perl -w
+ use strict;
+ print "Hello world";
+ 

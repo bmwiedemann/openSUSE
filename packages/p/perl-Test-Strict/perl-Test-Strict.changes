@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug  3 12:57:32 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add test-perl-5.38.patch: Don't simultaneously test -c and -v
+  switches. Patch based on
+https://patch-diff.githubusercontent.com/raw/manwar/Test-Strict/pull/33.patch.
+
+-------------------------------------------------------------------
 Tue Jun 18 05:33:20 UTC 2019 - Stephan Kulow <coolo@please-enter-an-email-address>
 
 - updated to 0.52

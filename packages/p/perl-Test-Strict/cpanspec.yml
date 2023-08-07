@@ -4,7 +4,8 @@
 #sources:
 #  - source1
 #  - source2
-#patches:
+patches:
+  test-perl-5.38.patch: -p1 PATCH-FIX-UPSTREAM test-perl-5.38.patch gh#manwar/Test-Strict#33 -- Don't simultaneously test -c and -v switches
 #  foo.patch: -p1
 #  bar.patch:
 #preamble: |-

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Strict
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,21 @@
 #
 
 
+%define cpan_name Test-Strict
 Name:           perl-Test-Strict
 Version:        0.52
 Release:        0
-%define cpan_name Test-Strict
-Summary:        Check syntax, presence of use strict; and test coverage
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+Summary:        Check syntax, presence of use strict; and test coverage
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/MA/MANWAR/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+# PATCH-FIX-UPSTREAM test-perl-5.38.patch gh#manwar/Test-Strict#33 -- Don't simultaneously test -c and -v switches
+Patch0:         test-perl-5.38.patch
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
 BuildRequires:  perl(IO::Scalar)
 BuildRequires:  perl(Test::More) >= 1.00
 %{perl_requires}
@@ -53,11 +54,11 @@ paths are untainted with the following pattern: 'qr|^([-+@\w./:\\]+)$|'
 controlled by '$Test::Strict::UNTAINT_PATTERN'.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -68,7 +69,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 %license LICENSE
 

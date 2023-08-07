@@ -71,4 +71,15 @@
     <comment></comment>
     <requestid>710545</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>e7015f1ca8153fbb7d4d1d6e264e1e5f</srcmd5>
+    <version>0.52</version>
+    <time>1691414918</time>
+    <user>dimstar_suse</user>
+    <comment>- Add test-perl-5.38.patch: Don't simultaneously test -c and -v
+  switches. Patch based on
+https://patch-diff.githubusercontent.com/raw/manwar/Test-Strict/pull/33.patch.
+</comment>
+    <requestid>1102467</requestid>
+  </revision>
 </revisionlist>
