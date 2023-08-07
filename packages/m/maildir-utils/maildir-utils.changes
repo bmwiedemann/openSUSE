@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug  6 19:06:08 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.10.6:
+  * mu4e: clarify sortable fields in UI
+  * mu4e: fix mu4e-view-refresh
+  * guile: use the standard guile extension directory
+  * mu: expand file paths in command-line options (e.g.,
+    --maildir=~/Maildir) for shell that don't do so themselves (such as
+    bash)
+  * mu: set default batch-size to 50000 so we won't use too much memory
+    (the old default broke systems with limited memory)
+
+-------------------------------------------------------------------
 Mon Jul 10 05:26:12 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.10.5:

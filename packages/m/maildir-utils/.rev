@@ -654,4 +654,20 @@
     unsigned messages with a signed attachment)</comment>
     <requestid>1097858</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>18bc4788d95b7cab4b4576a8ae31969c</srcmd5>
+    <version>1.10.6</version>
+    <time>1691414946</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10.6:
+  * mu4e: clarify sortable fields in UI
+  * mu4e: fix mu4e-view-refresh
+  * guile: use the standard guile extension directory
+  * mu: expand file paths in command-line options (e.g.,
+    --maildir=~/Maildir) for shell that don't do so themselves (such as
+    bash)
+  * mu: set default batch-size to 50000 so we won't use too much memory
+    (the old default broke systems with limited memory)</comment>
+    <requestid>1102597</requestid>
+  </revision>
 </revisionlist>
