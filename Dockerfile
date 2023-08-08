@@ -25,7 +25,7 @@ LABEL org.opensuse.release-stage="released"
 
 # endlabelprefix
 
-RUN set -euo pipefail; zypper -n in --no-recommends go1.20 make git-core; zypper -n clean; rm -rf /var/log/*
+RUN set -euo pipefail; zypper -n in --no-recommends go1.20 go1.20-doc go1.20-race make git-core; zypper -n clean; rm -rf /var/log/*
 ENV GOLANG_VERSION="%%golang_version%%"
 ENV GOPATH="/go"
 ENV PATH="/go/bin:/usr/local/go/bin:/root/go/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
