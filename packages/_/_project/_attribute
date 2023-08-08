@@ -318,8 +318,8 @@ products:
   - minimal-image:
     - x86_64
   containerfile:
-  - openQA-devel-container:
-    - x86_64
+#  - openQA-devel-container:
+#    - x86_64
   - cdi-apiserver-container:
     - x86_64
   - cdi-cloner-container:
@@ -357,6 +357,8 @@ products:
   - keylime-control-plane-image:
     - x86_64
   - microos-docserv-image:
+    - x86_64
+  - nginx-image;
     - x86_64
   - nodejs-20-image:
     - x86_64

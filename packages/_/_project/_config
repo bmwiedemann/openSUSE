@@ -916,6 +916,10 @@ Prefer: -python310-jupyter-client7 -python311-jupyter-client7 -python39-jupyter-
 # Use the real package name
 Prefer: python38-vsts python39-vsts
 
+
+# have choice for container:opensuse/nginx:latest: container:opensuse-nginx-1.25 container:opensuse-nginx-image
+Prefer: -container:opensuse-nginx-1.25
+
 # have choice for pkgconfig(wlroots): wlroots-devel wlroots10-devel
 Prefer: -wlroots10-devel
 
