@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug  2 03:07:47 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.08
+   see /usr/share/doc/packages/perl-DateTime-Format-MySQL/Changes
+
+  0.08    2023-07-31
+
+  - Fix parsing microsecond < 100,000 off DateTime object by zero-padding
+
+-------------------------------------------------------------------
 Sun May 23 03:06:53 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.0701
