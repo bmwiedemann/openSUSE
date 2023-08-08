@@ -12,7 +12,8 @@ description: |-
 #no_testing: broken upstream
 sources:
   - perl-SDL.rpmlintrc
-#patches:
+patches:
+  https://patch-diff.githubusercontent.com/raw/PerlGameDev/SDL/pull/304.patch: -p1
 #  foo.patch: -p1
 #  bar.patch:
 preamble: |-
@@ -33,6 +34,8 @@ post_prep: |-
  # Remove hanging test. See: https://github.com/PerlGameDev/SDL/issues/289
  rm t/sdlx_controller_interface.t
  %endif
+ # core_video is deadlocking in OBS builds (no graphical interface available)
+ rm t/core_video.t
 #post_build: |-
 # rm unused.files
 #post_install: |-

@@ -26,6 +26,7 @@ URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/F/FR/FROGGS/%{cpan_name}-%{version}.tar.gz
 Source1:        perl-SDL.rpmlintrc
 Source2:        cpanspec.yml
+Patch0:         https://patch-diff.githubusercontent.com/raw/PerlGameDev/SDL/pull/304.patch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Alien::SDL) >= 1.446
@@ -66,7 +67,8 @@ emulators, and many popular games, including the award winning Linux port of
 "Civilization: Call To Power."
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version} -p1
+
 # MANUAL BEGIN
 %ifarch %arm ppc64 ppc64le s390x
 # Remove hanging test. See: https://github.com/PerlGameDev/SDL/issues/289
@@ -77,14 +79,14 @@ rm t/core_video.t
 # MANUAL END
 
 %build
-perl Build.PL installdirs=vendor optimize="%{optflags}"
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor optimize="%{optflags}"
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
