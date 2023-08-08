@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  8 15:07:21 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 0001-Adjust-require-exception-to-perl-5.37.8-wording.patch:
+  Fix build using Perl 5.38.
+
+-------------------------------------------------------------------
 Thu Jun 22 05:53:38 UTC 2017 - coolo@suse.com
 
 - updated to 0.003003

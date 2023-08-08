@@ -38,4 +38,14 @@
     <comment>1</comment>
     <requestid>506084</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>0297028d29438c93b50edf8d8cb296ae</srcmd5>
+    <version>0.003003</version>
+    <time>1691509406</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-Adjust-require-exception-to-perl-5.37.8-wording.patch:
+  Fix build using Perl 5.38.
+</comment>
+    <requestid>1102971</requestid>
+  </revision>
 </revisionlist>
