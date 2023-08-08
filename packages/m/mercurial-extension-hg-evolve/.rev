@@ -50,4 +50,12 @@
   * compatibility with Mercurial 6.4 (forwarded request 1074698 from develop7)</comment>
     <requestid>1074699</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7fb2feb7a9d76c2c797c28fa74271f49</srcmd5>
+    <version>11.0.2</version>
+    <time>1691502939</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102867</requestid>
+  </revision>
 </revisionlist>
