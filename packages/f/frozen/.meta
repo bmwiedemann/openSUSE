@@ -1,0 +1,5 @@
+<package name="frozen" project="openSUSE:Factory">
+  <title>frozen</title>
+  <description>A header-only, constexpr alternative to gperf for C++14 users </description>
+  <devel project="LibreOffice:Factory" package="frozen"/>
+</package>
