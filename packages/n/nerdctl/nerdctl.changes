@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Aug 08 12:58:24 UTC 2023 - andrea.manzini@suse.com
+
+- Update to version 1.5.0:
+  * fix: registry missing layer when concurrently push image
+  * update build dependencies
+  * feat: add `stats` command to `container`
+  * registry documentation update
+  * feat: adding support for lazy-pulling with soci in pull and run command
+  * Add network flag to nerdctl build
+  * Re-enable revive rules
+  * Add functionality to copy files into and out of stopped containers.
+  * Fix subnet overlapping
+  * fix compose lacking support for replicas = 0
+  * Fix minor typo in volume flags docs
+  * Fix flaky windows test
+  * Add metadata to volume create return
+  * Remove warning msg when inspect containers without task
+  * feat: add --volumes-from support in run command
+  * Fix the rule of port allocate when executing -p multiple times for one command
+  * Optimize for itoa operations
+  * fix the restart policy in kill
+  * refactor: container stats command
+  * fix update restart policy
+  * fix restart policy behaviour inconsistent
+  * Prevent timing flakyness for `--since/--until` in TestLogs.
+  * docs: fixed typo in command ref for nerdctl logs follow
+  * feat: support '--detach-keys' for 'nerdctl (run|start)'
+  * User docker compose v2 for docker-comppatible test
+  * Adding ability to inject secrets into compose build command
+  * Add `shm_size` service option support in Compose files
+  * Ignore dependencies for compose build and logs
+  * Sort OCI mounts for Docker compliance in nested mount scenario
+
+-------------------------------------------------------------------
 Mon May 22 06:05:24 UTC 2023 - danish.prakash@suse.com
 
 - Update to version 1.4.0:
