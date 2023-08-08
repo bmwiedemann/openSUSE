@@ -29,10 +29,10 @@ Co-authored-by: Lumír Balhar <frenzy.madness@gmail.com>
  Lib/test/test_sysconfig.py | 17 +++++++++++--
  3 files changed, 71 insertions(+), 4 deletions(-)
 
-Index: Python-3.12.0b1/Lib/site.py
+Index: Python-3.12.0rc1/Lib/site.py
 ===================================================================
---- Python-3.12.0b1.orig/Lib/site.py
-+++ Python-3.12.0b1/Lib/site.py
+--- Python-3.12.0rc1.orig/Lib/site.py
++++ Python-3.12.0rc1/Lib/site.py
 @@ -377,8 +377,15 @@ def getsitepackages(prefixes=None):
      return sitepackages
  
@@ -50,10 +50,10 @@ Index: Python-3.12.0b1/Lib/site.py
      for sitedir in getsitepackages(prefixes):
          if os.path.isdir(sitedir):
              addsitedir(sitedir, known_paths)
-Index: Python-3.12.0b1/Lib/sysconfig.py
+Index: Python-3.12.0rc1/Lib/sysconfig.py
 ===================================================================
---- Python-3.12.0b1.orig/Lib/sysconfig.py
-+++ Python-3.12.0b1/Lib/sysconfig.py
+--- Python-3.12.0rc1.orig/Lib/sysconfig.py
++++ Python-3.12.0rc1/Lib/sysconfig.py
 @@ -104,6 +104,11 @@ if os.name == 'nt':
  else:
      _INSTALL_SCHEMES['venv'] = _INSTALL_SCHEMES['posix_venv']
@@ -128,10 +128,10 @@ Index: Python-3.12.0b1/Lib/sysconfig.py
      if os.name == 'nt':
          # On Windows we want to substitute 'lib' for schemes rather
          # than the native value (without modifying vars, in case it
-Index: Python-3.12.0b1/Lib/test/test_sysconfig.py
+Index: Python-3.12.0rc1/Lib/test/test_sysconfig.py
 ===================================================================
---- Python-3.12.0b1.orig/Lib/test/test_sysconfig.py
-+++ Python-3.12.0b1/Lib/test/test_sysconfig.py
+--- Python-3.12.0rc1.orig/Lib/test/test_sysconfig.py
++++ Python-3.12.0rc1/Lib/test/test_sysconfig.py
 @@ -110,8 +110,19 @@ class TestSysConfig(unittest.TestCase):
          for scheme in _INSTALL_SCHEMES:
              for name in _INSTALL_SCHEMES[scheme]:

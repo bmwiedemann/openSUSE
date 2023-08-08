@@ -105,7 +105,7 @@
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.12.0b4
+Version:        3.12.0rc1
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -114,6 +114,7 @@ Source0:        https://www.python.org/ftp/python/%{folderversion}/%{tarname}.ta
 Source1:        https://www.python.org/ftp/python/%{folderversion}/%{tarname}.tar.xz.asc
 Source2:        baselibs.conf
 Source3:        README.SUSE
+Source4:        externally_managed.in
 Source7:        macros.python3
 Source8:        import_failed.py
 Source9:        import_failed.map
@@ -162,9 +163,6 @@ Patch34:        skip-test_pyobject_freed_is_freed.patch
 # PATCH-FIX-SLE fix_configure_rst.patch bpo#43774 mcepl@suse.com
 # remove duplicate link targets and make documentation with old Sphinx in SLE
 Patch35:        fix_configure_rst.patch
-# PATCH-FIX-UPSTREAM Revert-gh105127-left-tests.patch bsc#1210638 mcepl@suse.com
-# Partially revert previous patch
-Patch41:        Revert-gh105127-left-tests.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -433,7 +431,6 @@ other applications.
 %patch34 -p1
 # %%endif
 %patch35 -p1
-%patch41 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
@@ -707,6 +704,9 @@ rm %{buildroot}%{_libdir}/libpython3.so
 rm %{buildroot}%{_libdir}/pkgconfig/{python3,python3-embed}.pc
 %endif
 
+# PEP-0668 mark this as a distro maintained python
+sed -e 's,__PYTHONPREFIX__,%{python_pkg_name},' -e 's,__PYTHON__,python%{python_version},' < %{SOURCE4} > %{buildroot}%{sitedir}/EXTERNALLY-MANAGED
+
 # link shared library instead of static library that tools expect
 ln -s ../../libpython%{python_abi}.so %{buildroot}%{_libdir}/python%{python_version}/config-%{python_abi}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}/libpython%{python_abi}.so
 
@@ -902,6 +902,8 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 %{_mandir}/man1/python3.1%{?ext_man}
 %endif
 %{_mandir}/man1/python%{python_version}.1%{?ext_man}
+# PEP-0668
+%{sitedir}/EXTERNALLY-MANAGED
 # license text, not a doc because the code can use it at run-time
 %{sitedir}/LICENSE.txt
 # RPM macros

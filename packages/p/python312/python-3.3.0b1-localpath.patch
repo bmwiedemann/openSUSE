@@ -1,7 +1,7 @@
-Index: Python-3.12.0b1/Lib/site.py
+Index: Python-3.12.0rc1/Lib/site.py
 ===================================================================
---- Python-3.12.0b1.orig/Lib/site.py
-+++ Python-3.12.0b1/Lib/site.py
+--- Python-3.12.0rc1.orig/Lib/site.py
++++ Python-3.12.0rc1/Lib/site.py
 @@ -76,7 +76,7 @@ import _sitebuiltins
  import io
  
