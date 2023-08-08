@@ -17,16 +17,15 @@
 
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
-%define libname liborcus-0_17-0
+%define libname liborcus-0_18-0
 Name:           liborcus
-Version:        0.17.2
+Version:        0.18.1
 Release:        0
 Summary:        Spreadsheet file processing library
 License:        MPL-2.0
 URL:            https://gitlab.com/orcus/orcus/
 Source:         http://kohei.us/files/orcus/src/%{name}-%{version}.tar.xz
 Patch0:         no-std-filesystem.patch
-Patch1:         gcc13-fix.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  coreutils
@@ -34,8 +33,8 @@ BuildRequires:  libstdc++-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python3-xml
-BuildRequires:  pkgconfig(libixion-0.17)
-BuildRequires:  pkgconfig(mdds-2.0)
+BuildRequires:  pkgconfig(libixion-0.18)
+BuildRequires:  pkgconfig(mdds-2.1) >= 2.0.99
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} >= 1500
@@ -91,7 +90,6 @@ Python 3 bindings for %{name}.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
 %global optflags %optflags -fexcess-precision=fast

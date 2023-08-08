@@ -1,6 +1,8 @@
---- liborcus-0.17.2/doc_example/Makefile.am	2022-01-27 15:01:08.928870206 +0100
-+++ liborcus-0.17.2/doc_example/Makefile.am	2022-01-27 15:30:25.807283425 +0100
-@@ -56,7 +56,7 @@
+Index: liborcus-0.18.1/doc_example/Makefile.am
+===================================================================
+--- liborcus-0.18.1.orig/doc_example/Makefile.am
++++ liborcus-0.18.1/doc_example/Makefile.am
+@@ -56,7 +56,7 @@ SPDOC_LDADD = \
  spreadsheet_doc_1_SOURCES = \
  	spreadsheet_doc_1.cpp
  
@@ -9,7 +11,7 @@
  
  spreadsheet_doc_1_num_and_formula_SOURCES = \
  	spreadsheet_doc_1_num_and_formula.cpp
-@@ -75,7 +75,7 @@
+@@ -75,7 +75,7 @@ spreadsheet_doc_2_sheets_no_string_pool_
  
  spreadsheet_doc_2_sheets_no_string_pool_LDADD = \
  	../src/parser/liborcus-parser-@ORCUS_API_VERSION@.la \
@@ -18,9 +20,11 @@
  
  spreadsheet_doc_2_sheets_with_string_pool_SOURCES = \
  	spreadsheet_doc_2_sheets_with_string_pool.cpp
---- liborcus-0.17.2/doc_example/spreadsheet_doc_1.cpp	2022-01-27 15:01:08.928870206 +0100
-+++ liborcus-0.17.2/doc_example/spreadsheet_doc_1.cpp	2022-01-27 15:23:29.164819311 +0100
-@@ -7,13 +7,13 @@
+Index: liborcus-0.18.1/doc_example/spreadsheet_doc_1.cpp
+===================================================================
+--- liborcus-0.18.1.orig/doc_example/spreadsheet_doc_1.cpp
++++ liborcus-0.18.1/doc_example/spreadsheet_doc_1.cpp
+@@ -8,13 +8,13 @@
  
  #include <iostream>
  #include <cstdlib>
@@ -34,20 +38,22 @@
 -    std::filesystem::path input_dir = std::getenv("INPUTDIR");
 +    boost::filesystem::path input_dir = std::getenv("INPUTDIR");
  
-     // Instantiate a document, and wrap it with a factory.
+     //!code-start: instantiate
      spreadsheet::range_size_t ss{1048576, 16384};
-@@ -23,7 +23,7 @@
-     // Pass the factory to the document loader, and read the content from a file
-     // to populate the document.
-     orcus_ods loader(&factory);
--    loader.read_file(input_dir / "document.ods");
-+    loader.read_file((input_dir / "document.ods").string());
+@@ -28,7 +28,7 @@ int main()
  
-     // Now that the document is fully populated, access its content.
-     const ixion::model_context& model = doc.get_model_context();
---- liborcus-0.17.2/doc_example/spreadsheet_doc_1_num_and_formula.cpp	2022-01-27 15:01:08.928870206 +0100
-+++ liborcus-0.17.2/doc_example/spreadsheet_doc_1_num_and_formula.cpp	2022-01-27 15:23:04.532672399 +0100
-@@ -8,13 +8,13 @@
+     //!code-start: read-file
+     auto filepath = input_dir / "document.ods";
+-    loader.read_file(filepath.native());
++    loader.read_file(filepath.string());
+     //!code-end: read-file
+ 
+     //!code-start: model-context
+Index: liborcus-0.18.1/doc_example/spreadsheet_doc_1_num_and_formula.cpp
+===================================================================
+--- liborcus-0.18.1.orig/doc_example/spreadsheet_doc_1_num_and_formula.cpp
++++ liborcus-0.18.1/doc_example/spreadsheet_doc_1_num_and_formula.cpp
+@@ -9,13 +9,13 @@
  #include <ixion/cell.hpp>
  
  #include <iostream>
@@ -63,17 +69,19 @@
  
      // Instantiate a document, and wrap it with a factory.
      spreadsheet::range_size_t ss{1048576, 16384};
-@@ -24,7 +24,7 @@
-     // Pass the factory to the document loader, and read the content from a file
+@@ -26,7 +26,7 @@ int main()
      // to populate the document.
      orcus_ods loader(&factory);
--    loader.read_file(input_dir / "document.ods");
-+    loader.read_file((input_dir / "document.ods").string());
+     auto filepath = input_dir / "document.ods";
+-    loader.read_file(filepath.native());
++    loader.read_file(filepath.string());
      doc.recalc_formula_cells();
  
      // Now that the document is fully populated, access its content.
---- liborcus-0.17.2/doc_example/spreadsheet_doc_2.cpp	2022-01-27 15:01:08.928870206 +0100
-+++ liborcus-0.17.2/doc_example/spreadsheet_doc_2.cpp	2022-01-27 15:23:16.252742305 +0100
+Index: liborcus-0.18.1/doc_example/spreadsheet_doc_2.cpp
+===================================================================
+--- liborcus-0.18.1.orig/doc_example/spreadsheet_doc_2.cpp
++++ liborcus-0.18.1/doc_example/spreadsheet_doc_2.cpp
 @@ -2,7 +2,7 @@
  #include <orcus/spreadsheet/import_interface.hpp>
  #include <orcus/orcus_ods.hpp>
@@ -83,22 +91,25 @@
  #include <iostream>
  
  namespace ss = orcus::spreadsheet;
-@@ -33,11 +33,11 @@
+@@ -33,12 +33,12 @@ public:
  
  int main()
  {
 -    std::filesystem::path input_dir = std::getenv("INPUTDIR");
 +    boost::filesystem::path input_dir = std::getenv("INPUTDIR");
+     auto filepath = input_dir / "multi-sheets.ods";
  
      my_empty_import_factory factory;
      orcus::orcus_ods loader(&factory);
--    loader.read_file(input_dir / "multi-sheets.ods");
-+    loader.read_file((input_dir / "multi-sheets.ods").string());
+-    loader.read_file(filepath.native());
++    loader.read_file(filepath.string());
  
      return EXIT_SUCCESS;
  }
---- liborcus-0.17.2/doc_example/spreadsheet_doc_2_sheets_no_string_pool.cpp	2022-01-27 15:01:08.928870206 +0100
-+++ liborcus-0.17.2/doc_example/spreadsheet_doc_2_sheets_no_string_pool.cpp	2022-01-27 15:24:00.461005950 +0100
+Index: liborcus-0.18.1/doc_example/spreadsheet_doc_2_sheets_no_string_pool.cpp
+===================================================================
+--- liborcus-0.18.1.orig/doc_example/spreadsheet_doc_2_sheets_no_string_pool.cpp
++++ liborcus-0.18.1/doc_example/spreadsheet_doc_2_sheets_no_string_pool.cpp
 @@ -4,7 +4,7 @@
  
  #include <iostream>
@@ -108,22 +119,25 @@
  
  //!code-start: cell_value
  namespace ss = orcus::spreadsheet;
-@@ -108,11 +108,11 @@
+@@ -112,12 +112,12 @@ public:
  
  int main()
  {
 -    std::filesystem::path input_dir = std::getenv("INPUTDIR");
 +    boost::filesystem::path input_dir = std::getenv("INPUTDIR");
+     auto filepath = input_dir / "multi-sheets.ods";
  
      my_import_factory factory;
      orcus::orcus_ods loader(&factory);
--    loader.read_file(input_dir / "multi-sheets.ods");
-+    loader.read_file((input_dir / "multi-sheets.ods").string());
+-    loader.read_file(filepath.native());
++    loader.read_file(filepath.string());
  
      return EXIT_SUCCESS;
  }
---- liborcus-0.17.2/doc_example/spreadsheet_doc_2_sheets_with_formula.cpp	2022-01-27 15:01:08.928870206 +0100
-+++ liborcus-0.17.2/doc_example/spreadsheet_doc_2_sheets_with_formula.cpp	2022-01-27 15:22:40.052526392 +0100
+Index: liborcus-0.18.1/doc_example/spreadsheet_doc_2_sheets_with_formula.cpp
+===================================================================
+--- liborcus-0.18.1.orig/doc_example/spreadsheet_doc_2_sheets_with_formula.cpp
++++ liborcus-0.18.1/doc_example/spreadsheet_doc_2_sheets_with_formula.cpp
 @@ -6,7 +6,7 @@
  #include <memory>
  #include <unordered_map>
@@ -133,22 +147,25 @@
  
  namespace ss = orcus::spreadsheet;
  
-@@ -275,11 +275,11 @@
+@@ -279,12 +279,12 @@ public:
  
  int main()
  {
 -    std::filesystem::path input_dir = std::getenv("INPUTDIR");
 +    boost::filesystem::path input_dir = std::getenv("INPUTDIR");
+     auto filepath = input_dir / "multi-sheets.ods";
  
      my_import_factory factory;
      orcus::orcus_ods loader(&factory);
--    loader.read_file(input_dir / "multi-sheets.ods");
-+    loader.read_file((input_dir / "multi-sheets.ods").string());
+-    loader.read_file(filepath.native());
++    loader.read_file(filepath.string());
  
      return EXIT_SUCCESS;
  }
---- liborcus-0.17.2/doc_example/spreadsheet_doc_2_sheets_with_string_pool.cpp	2022-01-27 15:01:08.928870206 +0100
-+++ liborcus-0.17.2/doc_example/spreadsheet_doc_2_sheets_with_string_pool.cpp	2022-01-27 15:23:46.476922548 +0100
+Index: liborcus-0.18.1/doc_example/spreadsheet_doc_2_sheets_with_string_pool.cpp
+===================================================================
+--- liborcus-0.18.1.orig/doc_example/spreadsheet_doc_2_sheets_with_string_pool.cpp
++++ liborcus-0.18.1/doc_example/spreadsheet_doc_2_sheets_with_string_pool.cpp
 @@ -6,7 +6,7 @@
  #include <memory>
  #include <unordered_map>
@@ -158,17 +175,18 @@
  
  namespace ss = orcus::spreadsheet;
  
-@@ -189,11 +189,11 @@
+@@ -193,12 +193,12 @@ public:
  
  int main()
  {
 -    std::filesystem::path input_dir = std::getenv("INPUTDIR");
 +    boost::filesystem::path input_dir = std::getenv("INPUTDIR");
+     auto filepath = input_dir / "multi-sheets.ods";
  
      my_import_factory factory;
      orcus::orcus_ods loader(&factory);
--    loader.read_file(input_dir / "multi-sheets.ods");
-+    loader.read_file((input_dir / "multi-sheets.ods").string());
+-    loader.read_file(filepath.native());
++    loader.read_file(filepath.string());
  
      return EXIT_SUCCESS;
  }

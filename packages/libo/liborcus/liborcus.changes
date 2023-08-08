@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jun 29 09:12:39 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 0.18.1:
+  * sax parser:
+    * added support for optionally skipping multiple BOM's in the beginning of
+      XML stream.  This affects all XML-based file format filters such as
+      xls-xml (aka Excel 2003 XML).
+  * xml-map:
+    * fixed a bug where an XML document consisting of simple single-column
+      records were not properly converted to sheet data.
+  * xls-xml:
+    * fixed a bug where the filter would always pass border color even when it
+      was not set.
+  * buildsystem:
+    * added new configure switches --without-benchmark and --without-doc-example
+      to optinally skip building of these two directories.
+- Remove patch gcc13-fix.patch
+
+-------------------------------------------------------------------
 Fri Mar 10 13:57:17 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Use -fexcess-precision=fast in order to support GCC compiler:
