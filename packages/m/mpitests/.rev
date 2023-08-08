@@ -115,4 +115,12 @@
 - avoid using egrep, use grep -E to be compatible with newer grep versions</comment>
     <requestid>1007910</requestid>
   </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>05e1b679d7112d8dc23387c7d9b78c3b</srcmd5>
+    <version>3.2</version>
+    <time>1691502892</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102766</requestid>
+  </revision>
 </revisionlist>

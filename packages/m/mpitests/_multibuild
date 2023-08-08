@@ -16,6 +16,4 @@
   <package>mvapich2</package>
   <package>mvapich2-psm2-gnu-hpc</package>
   <package>mvapich2-psm2</package>
-  <package>mvapich2-psm-gnu-hpc</package>
-  <package>mvapich2-psm</package>
 </multibuild>

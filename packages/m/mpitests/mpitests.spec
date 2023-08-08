@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -110,19 +110,6 @@ ExcludeArch:    %{arm}
 ExclusiveArch:  do_not_build
 %endif
 ExcludeArch:    %{arm}
-%endif
-
-%if "%{flavor}" == "mvapich2-psm"
-ExclusiveArch:  %ix86 x86_64
-%endif
-
-%if "%{flavor}" == "mvapich2-psm-gnu-hpc"
-%if %{sles_pre_15}
-# Disable hpc builds for SLE12
-ExclusiveArch:  do_not_build
-%else
-ExclusiveArch:  %ix86 x86_64
-%endif
 %endif
 
 %if "%{flavor}" == "mvapich2-psm2"

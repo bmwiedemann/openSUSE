@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  7 17:04:05 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop support for TrueScale (bsc#1212146)
+
+-------------------------------------------------------------------
 Tue Oct  4 09:48:02 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Reenable LTO as it was not the real issue.
