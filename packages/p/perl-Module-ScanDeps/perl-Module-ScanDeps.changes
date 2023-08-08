@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Aug  5 03:07:50 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.33
+   see /usr/share/doc/packages/perl-Module-ScanDeps/Changes
+
+  1.33  2023-08-04
+  - Recognize Moose/Moo/Mouse style inheritance ("extends")
+    or composition ("with") statements.
+  - Add %Preload entries for known dependants of XS::Parse::Keyword.
+    Note: XS::Parse::Keyword is loaded from XS code, grep.metacpan.org
+    for calls of boot_xs_parse_keyword() in *.xs files.
+
+-------------------------------------------------------------------
 Thu Jul  6 03:08:25 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.32

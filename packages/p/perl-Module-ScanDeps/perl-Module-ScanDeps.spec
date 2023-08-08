@@ -18,12 +18,13 @@
 
 %define cpan_name Module-ScanDeps
 Name:           perl-Module-ScanDeps
-Version:        1.32
+Version:        1.330.0
 Release:        0
+%define cpan_version 1.33
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Recursively scan Perl code for dependencies
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/R/RS/RSCHUPP/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/R/RS/RSCHUPP/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -32,6 +33,9 @@ BuildRequires:  perl(Test::Requires)
 BuildRequires:  perl(version)
 Requires:       perl(Module::Metadata)
 Requires:       perl(version)
+Provides:       perl(Module::ScanDeps) = 1.330.0
+Provides:       perl(Module::ScanDeps::Cache)
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -63,7 +67,7 @@ Please see App::Packer::Frontend for detailed explanation on the structure
 returned by 'get_files'.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
