@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Aug  7 14:21:09 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
+
+- Security fix: (bsc#1213853, CVE-2023-3817)
+  * Fix excessive time spent checking DH q parameter value
+    (bsc#1213853, CVE-2023-3817). The function DH_check() performs
+    various checks on DH parameters. After fixing CVE-2023-3446 it
+    was discovered that a large q parameter value can also trigger
+    an overly long computation during some of these checks. A
+    correct q value, if present, cannot be larger than the modulus
+    p parameter, thus it is unnecessary to perform these checks if
+    q is larger than p. If DH_check() is called with such q parameter
+    value, DH_CHECK_INVALID_Q_VALUE return flag is set and the
+    computationally intensive checks are skipped.
+  * Add openssl-1_0-CVE-2023-3817.patch
+
+-------------------------------------------------------------------
 Thu Jul 20 07:48:20 UTC 2023 - Pedro Monreal <pmonreal@suse.com>
 
 - Security fix: [bsc#1213487, CVE-2023-3446]
