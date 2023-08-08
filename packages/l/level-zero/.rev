@@ -163,4 +163,12 @@
 </comment>
     <requestid>1092425</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fa19534aa96bb69e8dcbe0654247b126</srcmd5>
+    <version>1.13.1</version>
+    <time>1691502900</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1102783</requestid>
+  </revision>
 </revisionlist>
