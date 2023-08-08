@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  7 17:02:04 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop support for TrueScale (bsc#1212146)
+
+-------------------------------------------------------------------
 Tue Sep 13 13:51:49 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Add patch btl-openib-Add-support-for-newer-hardware.patch to support

@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2004-2005 The Trustees of Indiana University and Indiana
 #                         University Research and Technology
 #                         Corporation.  All rights reserved.
@@ -153,6 +153,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  flex
+BuildRequires:  libfabric-devel
 BuildRequires:  libibumad-devel
 BuildRequires:  libibverbs-devel
 BuildRequires:  libtool
@@ -184,11 +185,6 @@ BuildRequires:  suse-hpc
 Requires:       lib%{package_name} = %{version}
 %endif
 %hpc_requires
-%endif
-
-%ifarch %{ix86} x86_64
-BuildRequires:  infinipath-psm-devel
-BuildRequires:  libfabric-devel
 %endif
 
 %ifarch x86_64
@@ -452,9 +448,6 @@ export HOSTNAME=OBS
 %if 0%{?with_ucx}
            --with-ucx \
            --with-ucx-libdir=/usr/%_lib \
-%endif
-%ifarch %{ix86} x86_64
-           --with-psm \
 %endif
 %ifarch x86_64
            --with-psm2 \
