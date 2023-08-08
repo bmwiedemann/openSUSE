@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug  4 03:06:30 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.44
+   see /usr/share/doc/packages/perl-Image-Info/CHANGES
+
+  2023-08-03  Slaven Rezic  <slaven@rezic.de>
+      Release 1.44
+      Stable release with the change in 1.43_50
+  2023-07-25  Slaven Rezic  <slaven@rezic.de>
+      Release 1.43_50
+      Support for AVIF files (PR #12, thanks to Zefram and Michael Kroell)
+
+-------------------------------------------------------------------
 Tue Oct  4 03:06:24 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.43
