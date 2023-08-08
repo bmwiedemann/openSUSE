@@ -1,7 +1,7 @@
 #
 # spec file for package clusterssh
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,12 +21,13 @@ Name:           clusterssh
 Version:        4.16
 Release:        0
 Summary:        Multiplex SSH sessions onto many hosts using multiple terminals
-License:        GPL-1.0-or-later OR Artistic-1.0
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Productivity/Networking/SSH
 URL:            https://github.com/duncs/clusterssh/wiki
 Source:         https://github.com/duncs/clusterssh/archive/v%dullver.tar.gz
 Source2:        %name-rpmlintrc
 Patch1:         perl_shebang.patch
+Patch2:         https://patch-diff.githubusercontent.com/raw/duncs/clusterssh/pull/150.patch
 BuildArch:      noarch
 BuildRequires:  fdupes
 BuildRequires:  perl
