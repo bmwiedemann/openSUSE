@@ -149,4 +149,23 @@
     + Explicitly specify Canberra dependency #283</comment>
     <requestid>1089573</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ceb7a979f69d01446dd28857a8ef4d7a</srcmd5>
+    <version>1.6.4</version>
+    <time>1691502945</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.4:
+  Implemented enhancements:
+  * Open the app in-window if a tray process already exists #323
+  Fixed bugs:
+  * Preferences are not saved when the app is closed to tray #325
+  * Unintuitive behavior with both &quot;start in tray&quot; + &quot;close
+    to tray&quot; enabled, especially for GNOME #320
+  * WhatsApp Notification Sound Playing Continously #308
+  * Ubuntu 22.04.1 / Wayland / DEB Not saving settings #244
+  Closed issues:
+  * chrome extension #322
+  * App so slow on fedora linux #319</comment>
+    <requestid>1102903</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Aug  8 13:16:47 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6.4:
+  Implemented enhancements:
+  * Open the app in-window if a tray process already exists #323
+  Fixed bugs:
+  * Preferences are not saved when the app is closed to tray #325
+  * Unintuitive behavior with both "start in tray" + "close
+    to tray" enabled, especially for GNOME #320
+  * WhatsApp Notification Sound Playing Continously #308
+  * Ubuntu 22.04.1 / Wayland / DEB Not saving settings #244
+  Closed issues:
+  * chrome extension #322
+  * App so slow on fedora linux #319
+
+-------------------------------------------------------------------
 Mon May 29 12:54:17 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.6.3:

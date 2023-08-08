@@ -17,7 +17,7 @@
 
 
 Name:           whatsapp-for-linux
-Version:        1.6.3
+Version:        1.6.4
 Release:        0
 Summary:        WhatsApp for Linux
 License:        GPL-3.0-only
