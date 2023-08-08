@@ -18,7 +18,7 @@
 
 %define cpan_name local-lib
 Name:           perl-local-lib
-Version:        2.000024
+Version:        2.000029
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Create and use a local lib/ for perl modules with PERL5LIB

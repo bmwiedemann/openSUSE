@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Aug  7 22:35:54 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.000029:
+  - fix taint protection code to delete environment variables rather than
+    leaving them as an empty string.
+  - fix author test for CPAN.pm's bootstrapping process to work with new
+    versions
+- Changes from.version 2.000028
+  - fix skips in shell test when shell has unpredictable startup actions
+- Changes from version 2.000027:
+ - releasing as stable
+- Changes from version 2.000026:
+  - fix output redirection used in fish shell to work with newer versions
+  - fix optional function used on Win32 for finding the current directory
+- Changes from version 2.000025
+  - add documentation for --quiet option
+  - added --always option to always add requested directory to env vars, even
+    if they are already included
+  - improve shell test to be more resiliant against custom init scripts
+  - improved test diagnostics
+  - reorganized documentation for bootstrapping into a non-standard directory
+  - remove mentions of File::HomeDir from documentation, as it is no longer
+    used
+
+-------------------------------------------------------------------
 Tue Sep 14 20:03:17 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - refresh spec file, use cpanspec compatible build
