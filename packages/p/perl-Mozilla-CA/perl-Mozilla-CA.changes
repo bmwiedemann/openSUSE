@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Aug  8 03:08:15 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20230807
+   see /usr/share/doc/packages/perl-Mozilla-CA/Changes
+
+  20230807
+    - Prevent extra headers in tarball and make it reproducible
+
+  20230801
+    - Update from Mozilla repository to 2023-08-01
+    - Added certificates:
+      - BJCA Global Root CA1
+        sha256: f3896f88fe7c0a882766a7fa6ad2749fb57a7f3e98fb769c1fa7b09c2c44d5ae
+      - BJCA Global Root CA2
+        sha256: 574df6931e278039667b720afdc1600fc27eb66dd3092979fb73856487212882
+    - Removed certificates:
+      - E-Tugra Certification Authority
+        sha256: b0bfd52bb0d7d9bd92bf5d4dc13da255c02c542f378365ea893911f55e55f23c
+      - Hongkong Post Root CA 1
+        sha256: f9e67d336c51002ac054c632022d66dda2e7e3fff10ad061ed31d8bbb410cfb2
+      - Network Solutions Certificate Authority
+        sha256: 15f0ba00a3ac7af3ac884c072b1011a077bd77c097f40164b2f8598abd83860c
+      - Staat der Nederlanden EV Root CA
+        sha256: 4d2491414cfe956746ec4cefa6cf6f72e28a1329432f9d8a907ac4cb5dadc15a
+      - TrustCor ECA-1
+        sha256: 5a885db19c01d912c5759388938cafbbdf031ab2d48e91ee15589b42971d039c
+      - TrustCor RootCert CA-1
+        sha256: d40e9c86cd8fe468c1776959f49ea774fa548684b6c406f3909261f4dce2575c
+      - TrustCor RootCert CA-2
+        sha256: 0753e940378c1bd5e3836e395daea5cb839e5046f1bd0eae1951cf10fec7c965
+
+-------------------------------------------------------------------
 Wed Nov 23 17:30:33 UTC 2022 - Tina Müller <tina.mueller@suse.com>
 
 - Remove modifying of mk-ca-bundle.pl and update-cacert-file (not present
