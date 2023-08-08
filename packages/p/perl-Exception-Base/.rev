@@ -62,4 +62,13 @@
 - remove upstream Exception-Base-sprintf.patch</comment>
     <requestid>345667</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>748cc633670e85f86f5d3532d9f13337</srcmd5>
+    <version>0.2501</version>
+    <time>1691502922</time>
+    <user>dimstar_suse</user>
+    <comment>- fix deprecation warning with perl 5.38: fix_perl538.patch
+</comment>
+    <requestid>1102848</requestid>
+  </revision>
 </revisionlist>

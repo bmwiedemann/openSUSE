@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Exception-Base
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define cpan_name Exception-Base
 Name:           perl-Exception-Base
 Version:        0.2501
 Release:        0
-%define cpan_name Exception-Base
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Lightweight exceptions
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Exception-Base/
-Source0:        http://www.cpan.org/authors/id/D/DE/DEXTER/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/D/DE/DEXTER/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+# PATCH-FIX-UPSTREAM deprecated smartmatch operator https://github.com/dex4er/perl-Exception-Base/issues/5
+Patch0:         fix_perl538.patch
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Module::Build)
 BuildRequires:  perl(Test::Unit::Lite) >= 0.12
 %{perl_requires}
+# MANUAL BEGIN
+BuildRequires:  perl(Module::Build)
+# MANUAL END
 
 %description
 This class implements a fully OO exception mechanism similar to
@@ -72,21 +74,21 @@ interface)
   * some defaults (i.e. verbosity) can be different for different exceptions
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version} -p0
 
 %build
-%{__perl} Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes examples Incompatibilities LICENSE README README.md
+%doc Changes examples Incompatibilities README README.md
+%license LICENSE
 
 %changelog
