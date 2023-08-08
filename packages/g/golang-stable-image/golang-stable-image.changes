@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug  8 06:51:38 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- Add go-doc and go-race subpackages for developer convenience
+
+-------------------------------------------------------------------
 Wed Jul 12 12:55:01 UTC 2023 - Dirk Mueller <dmueller@suse.com>
 
 - Remove distribution-release from the package list, it is inherited from the base image
