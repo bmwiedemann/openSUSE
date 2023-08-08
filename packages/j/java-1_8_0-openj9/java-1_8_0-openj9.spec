@@ -26,18 +26,18 @@
 %global abs2rel perl -e %{script}
 %global syslibdir       %{_libdir}
 # Standard JPackage naming and versioning defines.
-%global updatever       362
-%global buildver        b09
+%global updatever       372
+%global buildver        b07
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk8/archive
-%global root_revision   eebde685ec08dbafdfcddad2782a823b8238a886
-%global root_branch     v0.36.0-release
+%global root_revision   dd0ccb1fb50617dafdd32fba6d39d174350cd39a
+%global root_branch     v0.38.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    f491bbf6f6f3f87bfd38a65055589125c13de555
-%global omr_branch      v0.36.1-release
+%global omr_revision    855813495c1a71ebc59eeebafc1a6cd4e791646e
+%global omr_branch      v0.38.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 0592661e480dd108a708689dc56bf1a427677645
-%global openj9_branch   v0.36.1-release
-%global openj9_tag      openj9-0.36.1
+%global openj9_revision d57d05932008a14605bf6cd729bb22dd6f49162c
+%global openj9_branch   v0.38.0-release
+%global openj9_tag      openj9-0.38.0
 # priority must be 6 digits in total
 %global priority        1801
 %global javaver         1.8.0
