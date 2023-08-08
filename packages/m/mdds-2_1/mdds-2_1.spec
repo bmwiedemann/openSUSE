@@ -22,7 +22,7 @@
 %define _apiver 2.1
 %define _oname mdds
 Name:           %{_oname}-2_1
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        A collection of multi-dimensional data structure and indexing algorithm
 License:        MIT
@@ -31,17 +31,16 @@ URL:            https://gitlab.com/mdds/mdds
 Source:         https://gitlab.com/mdds/mdds/-/archive/%{version}/mdds-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  libstdc++-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildArch:      noarch
 %if 0%{?suse_version} < 1500
-BuildRequires:  gcc11
-BuildRequires:  gcc11-c++
 BuildRequires:  boost-devel
+BuildRequires:  gcc7
+BuildRequires:  gcc7-c++
 %else
-BuildRequires:  gcc >= 11
-BuildRequires:  gcc-c++ >= 11
+BuildRequires:  gcc >= 7
+BuildRequires:  gcc-c++ >= 7
 BuildRequires:  libboost_headers-devel
 %endif
 
@@ -71,8 +70,8 @@ header-only library, with no shared library to link against.
 libtoolize --force --copy
 autoreconf -fi
 %if 0%{?suse_version} < 1500
-export CC=gcc-11
-export CXX=g++-11
+export CC="gcc-7"
+export CXX="g++-7"
 %endif
 %configure \
     --disable-silent-rules \
