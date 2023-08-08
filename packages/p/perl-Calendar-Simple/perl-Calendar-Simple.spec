@@ -18,7 +18,7 @@
 
 %define cpan_name Calendar-Simple
 Name:           perl-Calendar-Simple
-Version:        2.0.2
+Version:        2.0.3
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl extension to create simple calendars

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug  2 03:07:01 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.0.3
+   see /usr/share/doc/packages/perl-Calendar-Simple/Changes.md
+
+  ## [2.0.3] 2023-08-01
+
+  ### Added
+
+  - Improvements to `pcal`
+
+-------------------------------------------------------------------
 Fri Jul 28 03:06:09 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.0.2
