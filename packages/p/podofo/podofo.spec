@@ -1,7 +1,7 @@
 #
 # spec file for package podofo
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,28 @@
 #
 
 
-%define libver 0_9_8
+%define libver 2
+%bcond_with tools
 Name:           podofo
-Version:        0.9.8
+Version:        0.10.1
 Release:        0
 Summary:        Tools to work with PDF files
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/PDF
 URL:            http://podofo.sourceforge.net/
-Source0:        https://downloads.sourceforge.net/podofo/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://src.fedoraproject.org/rpms/podofo/tree/rawhide
-Patch0:         podofo-gcc12.patch
+Source0:        https://github.com/podofo/podofo/archive/%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE: manuals does not build
+Patch0:         podofo-tools_man.patch
 BuildRequires:  cmake >= 2.6
 BuildRequires:  doxygen
 BuildRequires:  fdupes
+%if 0%{?suse_version} <= 1500
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
+%else
+BuildRequires:  gcc
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  libboost_headers-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cppunit)
@@ -39,6 +46,7 @@ BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
@@ -71,9 +79,16 @@ This package contains development files for podofo library.
 echo "HTML_TIMESTAMP = NO" >> Doxyfile
 
 %build
+%if 0%{?suse_version} <= 1500
+export CC=gcc-12
+export CXX=g++-12
+%endif
 %cmake \
   -DWANT_FONTCONFIG=ON \
   -DWANT_BOOST=ON \
+   %if %{with tools}
+  -DPODOFO_BUILD_TOOLS=TRUE \
+  %endif
   -DPODOFO_BUILD_STATIC=OFF \
   -DPODOFO_USE_VISIBILITY=ON
 %cmake_build
@@ -87,7 +102,7 @@ doxygen
 
 # Install devel docs (do it manually to fix also rpmlint warning "files-duplicate" with %%fdupes)
 mkdir -p %{buildroot}%{_docdir}/libpodofo-devel
-install -pm 0644 AUTHORS COPYING.LIB ChangeLog FAQ.html README.html TODO %{buildroot}%{_docdir}/libpodofo-devel/
+install -pm 0644 AUTHORS.md CHANGELOG.md README.md TODO.md %{buildroot}%{_docdir}/libpodofo-devel/
 cp -a doc/html/ %{buildroot}%{_docdir}/libpodofo-devel/
 
 %fdupes -s %{buildroot}
@@ -97,12 +112,15 @@ cp -a doc/html/ %{buildroot}%{_docdir}/libpodofo-devel/
 
 %files
 %license COPYING
-%doc AUTHORS README.html
+%doc AUTHORS.md README.md
+%if %{with tools}
 %{_bindir}/*
 %{_mandir}/man1/podofo*.1%{?ext_man}
+%endif
 
 %files -n libpodofo%{libver}
 %license COPYING
+%{_libdir}/libpodofo.so.%{libver}
 %{_libdir}/libpodofo.so.%{version}
 
 %files -n libpodofo-devel
@@ -111,5 +129,7 @@ cp -a doc/html/ %{buildroot}%{_docdir}/libpodofo-devel/
 %{_includedir}/podofo/
 %{_libdir}/libpodofo.so
 %{_libdir}/pkgconfig/libpodofo.pc
+%dir %{_datadir}/podofo
+%{_datadir}/podofo/podofo-*.cmake
 
 %changelog

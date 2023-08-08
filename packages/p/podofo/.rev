@@ -370,4 +370,12 @@ drop patches upstreamed</comment>
   * podofo-CVE-2018-12983.patch (forwarded request 974851 from cgiboudeaux)</comment>
     <requestid>974857</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>59ce0203dd2fff049bcb62596e1bd9c5</srcmd5>
+    <version>0.10.1</version>
+    <time>1691502828</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1101041</requestid>
+  </revision>
 </revisionlist>
