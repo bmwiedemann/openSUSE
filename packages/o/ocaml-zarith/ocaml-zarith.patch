@@ -22,7 +22,7 @@
 +
 +(rule
 + (target Makefile)
-+ (deps configure config.guess env)
++ (deps configure env)
 + (action
 +  (bash "env %{read:env}  ./configure")))
 +
