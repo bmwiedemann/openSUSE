@@ -1742,4 +1742,11 @@ Main motivation is to have the license files in MicroOS also in /usr/, not in /e
   that Tumbleweed does not end up with openSUSE-repos-MicroOS</comment>
     <requestid>1101963</requestid>
   </revision>
+  <revision rev="244" vrev="242">
+    <srcmd5>e7009561193c5b7bd78ae5c58ea7cf7a</srcmd5>
+    <version>unknown</version>
+    <time>1691491264</time>
+    <user>dimstar_suse</user>
+    <comment>Re-enable mirror policy for x86_64</comment>
+  </revision>
 </revisionlist>
