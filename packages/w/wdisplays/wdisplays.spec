@@ -17,23 +17,23 @@
 
 
 Name:           wdisplays
-Version:        1.1
+Version:        1.1.1
 Release:        0%{?dist}
 Summary:        GUI display configurator for wlroots compositors
 
 License:        GPL-3.0-or-later
 URL:            https://github.com/artizirk/wdisplays
-Source:         https://github.com/artizirk/wdisplays/archive/refs/tags/%version.tar.gz
+Source:         https://github.com/artizirk/wdisplays/archive/1.1.1.tar.gz#/wdisplays-1.1.1.tar.gz
 
-BuildRequires: gcc
-BuildRequires: gtk3-devel
-BuildRequires: libepoxy-devel
-BuildRequires: meson
-BuildRequires: wayland-devel
-BuildRequires: wayland-protocols-devel
-BuildRequires: desktop-file-utils
+BuildRequires:  desktop-file-utils
+BuildRequires:  gcc
+BuildRequires:  gtk3-devel
+BuildRequires:  libepoxy-devel
+BuildRequires:  meson
+BuildRequires:  wayland-devel
+BuildRequires:  wayland-protocols-devel
 
-Requires:  hicolor-icon-theme
+Requires:       hicolor-icon-theme
 
 %description
 wdisplays is a graphical application for configuring displays in
@@ -59,14 +59,14 @@ desktop-file-install --dir %{buildroot}/%{_datadir}/applications \
     --remove-key=Version \
     --add-category=Settings --add-category=HardwareSettings \
     %{buildroot}/%{_datadir}/applications/network.cycles.%{name}.desktop
- 
+
 %files
 %{_bindir}/%{name}
 %{_datadir}/applications/*
 %{_datadir}/icons/*
- 
+
 %doc README.md
- 
+
 %license LICENSES/*
 
 %changelog
