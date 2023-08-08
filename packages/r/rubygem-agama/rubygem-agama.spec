@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-agama
-Version:        2.1
+Version:        3.devel43
 Release:        0
 %define mod_name agama
 %define mod_full_name %{mod_name}-%{version}
