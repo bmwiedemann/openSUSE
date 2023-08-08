@@ -1815,4 +1815,14 @@ Now one could consider building emacs with gsettings support (both debian and fe
   * emacs-25.2-ImageMagick7.patch</comment>
     <requestid>1101919</requestid>
   </revision>
+  <revision rev="175" vrev="2">
+    <srcmd5>042ddb55da6dfd1dc805114a180c512a</srcmd5>
+    <version>29.1</version>
+    <time>1691502844</time>
+    <user>dimstar_suse</user>
+    <comment>- Extend patch pdump.patch
+  * Make various emacs flavours find their pdmp files even if first
+    argument is simply named &quot;emacs&quot; (slack message, boo#1214008)</comment>
+    <requestid>1102651</requestid>
+  </revision>
 </revisionlist>

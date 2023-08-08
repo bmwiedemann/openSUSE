@@ -25,6 +25,8 @@
 %bcond_with     nativecomp
 %endif
 %bcond_without  cairo
+# This generates (after s/with/without/) all refcards below etc/refcards/
+# to be stored in emacs-<version>-pdf.tar.xz only once
 %bcond_with     tex4pdf
 %bcond_with     memmmap
 
@@ -532,14 +534,12 @@ for i in $(find site-lisp/ -name '*.el'); do
 done
 cp src/emacs emacs-nox
 cp src/emacs.pdmp emacs-nox.pdmp
-find -name '*.eln'
 make distclean
 #
 CFLAGS="$CFLAGS -DPDMP_BASE='\"emacs-x11\"'" ./configure ${COMP} ${PREFIX} ${X11} ${SYS} --with-dumping=pdumper
 %make_build
 cp src/emacs emacs-x11
 cp src/emacs.pdmp emacs-x11.pdmp
-find -name '*.eln'
 make distclean
 #
 CFLAGS="$CFLAGS -DPDMP_BASE='\"emacs-gtk\"'" ./configure ${COMP} ${PREFIX} ${GTK} ${SYS} --with-dumping=pdumper
