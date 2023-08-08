@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  7 16:57:40 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop support for obsolete TrueScale (bsc#1212146)
+
+-------------------------------------------------------------------
 Mon Dec  5 21:11:29 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Reduce constraints to match the actual requirement. Exaggerating

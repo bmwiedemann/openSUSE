@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,16 +38,6 @@ ExclusiveArch:  do_not_build
 %{bcond_with hpc}
 %endif
 
-%if "%{flavor}" == "psm"
-%define build_flavor psm
-%{bcond_with hpc}
-%endif
-%if "%{flavor}" == "psm-testsuite"
-%define build_flavor psm
-%define testsuite 1
-%{bcond_with hpc}
-%endif
-
 %if "%{flavor}" == "psm2"
 %define build_flavor psm2
 %{bcond_with hpc}
@@ -72,13 +62,6 @@ ExclusiveArch:  do_not_build
 %{bcond_without hpc}
 %endif
 
-%if "%flavor" == "gnu-hpc-psm"
-%define compiler_family gnu
-%undefine c_f_ver
-%define build_flavor psm
-%{bcond_without hpc}
-%endif
-
 %if "%flavor" == "gnu-hpc-psm2"
 %define compiler_family gnu
 %undefine c_f_ver
@@ -97,13 +80,6 @@ ExclusiveArch:  do_not_build
 %define c_f_ver 7
 %define testsuite 1
 %define build_flavor verbs
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu7-hpc-psm"
-%define compiler_family gnu
-%define c_f_ver 7
-%define build_flavor psm
 %{bcond_without hpc}
 %endif
 
@@ -128,13 +104,6 @@ ExclusiveArch:  do_not_build
 %{bcond_without hpc}
 %endif
 
-%if "%flavor" == "gnu8-hpc-psm"
-%define compiler_family gnu
-%define c_f_ver 8
-%define build_flavor psm
-%{bcond_without hpc}
-%endif
-
 %if "%flavor" == "gnu8-hpc-psm2"
 %define compiler_family gnu
 %define c_f_ver 8
@@ -156,13 +125,6 @@ ExclusiveArch:  do_not_build
 %{bcond_without hpc}
 %endif
 
-%if "%flavor" == "gnu9-hpc-psm"
-%define compiler_family gnu
-%define c_f_ver 9
-%define build_flavor psm
-%{bcond_without hpc}
-%endif
-
 %if "%flavor" == "gnu9-hpc-psm2"
 %define compiler_family gnu
 %define c_f_ver 9
@@ -181,13 +143,6 @@ ExclusiveArch:  do_not_build
 %define c_f_ver 10
 %define testsuite 1
 %define build_flavor verbs
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu10-hpc-psm"
-%define compiler_family gnu
-%define c_f_ver 10
-%define build_flavor psm
 %{bcond_without hpc}
 %endif
 
@@ -299,10 +254,6 @@ BuildRequires:  hwloc-devel
 %if %{with pmix}
 BuildRequires:  pmix-devel
 %endif
-%if "%{build_flavor}" == "psm" && %{with skip_hpc_build}
-ExclusiveArch:  %ix86 x86_64
-BuildRequires:  infinipath-psm-devel
-%endif
 %if "%{build_flavor}" == "psm2" && %{with skip_hpc_build}
 ExclusiveArch:  x86_64
 BuildRequires:  libpsm2-devel
@@ -335,9 +286,6 @@ is based on MPICH2 and MVICH.
 Summary:        OSU MVAPICH2 MPI package
 Group:          Development/Libraries/Parallel
 Requires:       %{name} = %{version}
-%if "%{build_flavor}" == "psm"
-Requires:       infinipath-psm-devel
-%endif
 %if "%{build_flavor}" == "psm2"
 Requires:       libpsm2-devel
 %endif
@@ -443,10 +391,6 @@ PERL_USE_UNSAFE_INC=1 ./autogen.sh
 %endif
 %if %{with pmix}
    --with-pmix=${_prefix} \
-%endif
-%if "%{build_flavor}" == "psm"
-   --with-device=ch3:psm \
-   --with-psm=/usr \
 %endif
 %if "%{build_flavor}" == "psm2"
    --with-device=ch3:psm \
