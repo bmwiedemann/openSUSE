@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTML-Selector-XPath
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,20 @@
 
 %define cpan_name HTML-Selector-XPath
 Name:           perl-HTML-Selector-XPath
-Version:        0.26
+Version:        0.280.0
 Release:        0
-Summary:        CSS Selector to XPath compiler
+%define cpan_version 0.28
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        CSS Selector to XPath compiler
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/C/CO/CORION/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/C/CO/CORION/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::Base)
+Provides:       perl(HTML::Selector::XPath) = 0.280.0
+%define         __perllib_provides /bin/true
 %{perl_requires}
 
 %description
@@ -36,7 +39,7 @@ HTML::Selector::XPath is a utility function to compile full set of CSS2 and
 partial CSS3 selectors to the equivalent XPath expression.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version}
 
 %build
 PERL_USE_UNSAFE_INC=1 perl Makefile.PL INSTALLDIRS=vendor
