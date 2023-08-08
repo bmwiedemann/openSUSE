@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Aug  3 04:01:39 UTC 2023 - Linnaea Lavia <linnaea@lavia.moe>
+
+- Update to version 0.9.22
+  + New features
+    - Empty passwords are no longer automatically passed through to sesman for authentication
+    - Don't try to listen on the scard socket if it isn't there
+    - The directory where PAM configuration files are installed can now be set with --with-pamconfdir
+    - Sesman can now be configured to ignore alternate shells passed from the client
+    - Allow longer UserWindowManager strings
+    - openSuSE Tumbleweed move to /usr/lib/pam.d is now supported in the installation scripts
+    - VNC backend session now supports extra mouse buttons 6, 7 and 8
+  + Bug fixes
+    - Minor documentation fixes
+    - Memory management fixes to list module
+    - Fix some noise when MP3/AAC are in use and some logging improvements
+    - Fix potential NULL dereferences in chansrv
+    - An erroneous free in the smartcard handling code has been removed
+    - Passwords are no longer left on the heap in sesman
+    - Set permissions on pcsc socket dir to owner only
+  + Security fixes
+    - CVE-2022-23468
+    - CVE-2022-23477
+    - CVE-2022-23478
+    - CVE-2022-23479
+    - CVE-2022-23480
+    - CVE-2022-23481
+    - CVE-2022-23482
+    - CVE-2022-23483
+    - CVE-2022-23484
+    - CVE-2022-23493
+- Drop upstreamed patches:
+    xrdp-CVE-2022-23468.patch
+    xrdp-CVE-2022-23477.patch
+    xrdp-CVE-2022-23478.patch
+    xrdp-CVE-2022-23479.patch
+    xrdp-CVE-2022-23480.patch
+    xrdp-CVE-2022-23481.patch
+    xrdp-CVE-2022-23482.patch
+    xrdp-CVE-2022-23483.patch
+    xrdp-CVE-2022-23484.patch
+    xrdp-CVE-2022-23493.patch
+    xrdp-make-pamconfdir-configurable.patch
+    xrdp-update-pam.d-path.patch
+
+-------------------------------------------------------------------
 Tue Jun  6 14:19:55 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not call %stop_on_removal and %restart_on_update in

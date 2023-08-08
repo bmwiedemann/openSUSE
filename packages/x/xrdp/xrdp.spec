@@ -22,7 +22,7 @@
 %endif
 
 Name:           xrdp
-Version:        0.9.20
+Version:        0.9.22.1
 Release:        0
 Summary:        Remote desktop protocol (RDP) server
 License:        Apache-2.0 AND GPL-2.0-or-later
@@ -44,30 +44,6 @@ Patch4:         xrdp-disable-8-bpp-vnc-support.patch
 Patch5:         xrdp-support-KillDisconnected-for-Xvnc.patch
 # PATCH-FIX-OPENSUSE xrdp-systemd-services.patch boo#1138954 boo#1144327 - fezhang@suse.com -- Let systemd handle the daemons
 Patch6:         xrdp-systemd-services.patch
-# PATCH-FIX-UPSTREAM xrdp-update-pam.d-path.patch bsc#1203468 - yu.daike@suse.com -- update install script to accommodate with pam.d path move
-Patch7:         xrdp-update-pam.d-path.patch
-# PATCH-FIX-UPSTREAM xrdp-CVE-2022-23468.patch bsc#1206300 - yu.daike@suse.com -- Buffer overflow in xrdp_login_wnd_create()
-Patch8:         xrdp-CVE-2022-23468.patch
-# PATCH-FIX-UPSTREAM xrdp-CVE-2022-23478.patch bsc#1206302 - yu.daike@suse.com -- Out of Bound Write in xrdp_mm_trans_process_drdynvc_chan
-Patch9:         xrdp-CVE-2022-23478.patch
-# PATCH-FIX-UPSTREAM xrdp-CVE-2022-23479.patch bsc#1206303 - yu.daike@suse.com -- Buffer overflow in xrdp_mm_chan_data_in() function
-Patch10:        xrdp-CVE-2022-23479.patch
-# PATCH-FIX-UPSTREAM xrdp-CVE-2022-23480.patch bsc#1206306 - yu.daike@suse.com -- Buffer overflow in devredir_proc_client_devlist_announce_req
-Patch11:        xrdp-CVE-2022-23480.patch
-# PATCH-FIX-UPSTREAM xrdp-CVE-2022-23481.patch bsc#1206307 - yu.daike@suse.com -- Out of Bound Read in xrdp_caps_process_confirm_active()
-Patch12:        xrdp-CVE-2022-23481.patch
-# PATCH-FIX-UPSTREAM xrdp-CVE-2022-23482.patch bsc#1206310 - yu.daike@suse.com -- Out of Bound Read in xrdp_sec_process_mcs_data_CS_CORE()
-Patch13:        xrdp-CVE-2022-23482.patch
-# PATCH-FIX-UPSTREAM xrdp-CVE-2022-23483.patch bsc#1206311 - yu.daike@suse.com -- Out of Bound Read in libxrdp_send_to_channel()
-Patch14:        xrdp-CVE-2022-23483.patch
-# PATCH-FIX-UPSTREAM xrdp-CVE-2022-23484.patch bsc#1206312 - yu.daike@suse.com -- Integer Overflow in xrdp_mm_process_rail_update_window_text()
-Patch15:        xrdp-CVE-2022-23484.patch
-# PATCH-FIX-UPSTREAM xrdp-CVE-2022-23493.patch bsc#1206313 - yu.daike@suse.com -- Out of Bound Read in xrdp_mm_trans_process_drdynvc_channel_close()
-Patch16:        xrdp-CVE-2022-23493.patch
-# PATCH-FIX-UPSTREAM xrdp-CVE-2022-23477.patch bsc#1206301 - yu.daike@suse.com -- Buffer over flow in audin_send_open() function
-Patch17:        xrdp-CVE-2022-23477.patch
-# PATCH-FIX-UPSTREAM xrdp-make-pamconfdir-configurable.patch gh#neutrinolabs/xrdp!2552 bsc#1208121 - yfjiang@suse.com -- Configure pam.d directory at build time
-Patch18:        xrdp-make-pamconfdir-configurable.patch
 
 # Keep SLE only patches on the bottom starting from patch number 1001
 # PATCH-FEATURE-SLE xrdp-avahi.diff bnc#586785 - hfiguiere@novell.com -- Add Avahi support.
@@ -130,18 +106,6 @@ This package contains libraries for the JPEG2000 codec for RDP.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
-%patch17 -p1
-%patch18 -p1
 %if 0%{?sle_version}
 %patch1001 -p1
 %patch1002 -p1
