@@ -138,4 +138,16 @@
     <comment></comment>
     <requestid>1085856</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b5718a104f971f90e38939896b930801</srcmd5>
+    <version>4.0.0rc5</version>
+    <time>1691502890</time>
+    <user>dimstar_suse</user>
+    <comment>- Add drop-assertpy-dep.patch to remove assertpy dependency
+- Add vendor-npm.patch to vendor npm build requirements
+- Update to 4.0.0rc5, compatible with python-pytest-metadata 3.0.0
+  (gh#pytest-dev/pytest-html#683)
+  - No release notes upstream</comment>
+    <requestid>1102826</requestid>
+  </revision>
 </revisionlist>

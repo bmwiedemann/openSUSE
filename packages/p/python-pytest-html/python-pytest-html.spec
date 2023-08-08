@@ -18,26 +18,33 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-html
-Version:        3.2.0
+Version:        4.0.0rc5
 Release:        0
 Summary:        Pytest plugin for generating HTML reports
 License:        MPL-2.0
 URL:            https://github.com/pytest-dev/pytest-html
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-html/pytest-html-%{version}.tar.gz
-BuildRequires:  %{python_module pytest >= 5.0}
-BuildRequires:  %{python_module pytest-metadata}
-BuildRequires:  %{python_module py}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+Source:         https://files.pythonhosted.org/packages/source/p/pytest-html/pytest_html-%{version}.tar.gz
+Source1:        node_modules.tar.gz
+# PATCH-FIX-OPENSUSE vendor-npm.patch
+Patch0:         vendor-npm.patch
+# PATCH-FIX-OPENSUSE drop-assertpy-dep.patch
+Patch1:         drop-assertpy-dep.patch
+BuildRequires:  %{python_module hatch-vcs}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  npm
 BuildRequires:  python-rpm-macros
-Requires:       python-ansi2html
-Requires:       python-py
-Requires:       python-pytest >= 5.0
-Requires:       python-pytest-metadata
+Requires:       python-Jinja2 >= 3.0.0
+Requires:       python-pytest >= 7.0.0
+Requires:       python-pytest-metadata >= 3.0.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module ansi2html}
+BuildRequires:  %{python_module Jinja2 >= 3.0.0}
+BuildRequires:  %{python_module beautifulsoup4}
+BuildRequires:  %{python_module pytest >= 7.0.0}
+BuildRequires:  %{python_module pytest-metadata >= 3.0.0}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-xdist}
@@ -48,18 +55,18 @@ BuildRequires:  %{python_module pytest-xdist}
 A plugin for pytest that generates a HTML report for test results.
 
 %prep
-%setup -q -n pytest-html-%{version}
+%autosetup -p1 -n pytest_html-%{version} -a1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export LANG=en_US.UTF-8
-%pytest
+%pytest --ignore testing/test_integration.py --ignore testing/test_e2e.py
 
 %files %{python_files}
 %license LICENSE
