@@ -1,7 +1,7 @@
 #
 # spec file
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -135,6 +135,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  flex
+BuildRequires:  libfabric-devel
 BuildRequires:  libibumad-devel
 BuildRequires:  libibverbs-devel
 BuildRequires:  libtool
@@ -169,11 +170,6 @@ BuildRequires:  suse-hpc
 Requires:       lib%{package_name} = %{version}
 %endif
 %hpc_requires
-%endif
-
-%ifarch %{ix86} x86_64
-BuildRequires:  infinipath-psm-devel
-BuildRequires:  libfabric-devel
 %endif
 
 %ifarch x86_64
@@ -443,9 +439,6 @@ chmod 644 NEWS
 %if 0%{?with_ucx}
            --with-ucx \
            --with-ucx-libdir=/usr/%_lib \
-%endif
-%ifarch %{ix86} x86_64
-           --with-psm \
 %endif
 %ifarch x86_64
            --with-psm2 \

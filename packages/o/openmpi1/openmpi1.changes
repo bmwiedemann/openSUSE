@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  7 17:02:04 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop support for TrueScale (bsc#1212146)
+
+-------------------------------------------------------------------
 Mon Jun 13 06:38:32 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Backport upstream patches to fix compilation with autoconf >= 2.70
