@@ -652,4 +652,12 @@ Remove ancient Obsoletes/provides (forwarded request 232571 from sumski)</commen
     <comment>Update to 0.26.12</comment>
     <requestid>1097533</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>77315e56365724666c5441c54803b6c9</srcmd5>
+    <version>0.26.13</version>
+    <time>1691508356</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.26.13</comment>
+    <requestid>1102910</requestid>
+  </revision>
 </revisionlist>

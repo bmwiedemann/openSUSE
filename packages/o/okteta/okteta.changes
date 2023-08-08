@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug  8 14:01:28 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.26.13
+  * Improved: translations
+  * Improved: Decoding table now displays some control chars as
+    escaped terms
+  * Improved: Decoding table now supports editing some chars as
+    escaped terms
+  * Improved: Structures tool now feeds some chars as escaped
+    terms to editor
+  * Improved: CMake Unity builds now possible
+  * Fixed: Structures tool stored edited primitive array
+    elements on bad offset
+  * Fixed: Structures tool now displays chars only as the
+    supported 7-bit ASCII
+
+-------------------------------------------------------------------
 Fri Jul  7 14:29:19 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.26.12
