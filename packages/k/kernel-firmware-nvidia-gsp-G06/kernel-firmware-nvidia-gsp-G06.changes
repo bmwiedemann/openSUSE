@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug  1 14:24:52 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
+
+- filter back to original name in rpmlintrc file
+
+-------------------------------------------------------------------
 Tue Jul 25 13:45:41 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - revert previous change; back to orgiginal name 
