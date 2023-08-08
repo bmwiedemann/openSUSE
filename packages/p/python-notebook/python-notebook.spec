@@ -91,9 +91,11 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-unixsocket}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module testpath}
+%if 0%{?suse_version} != 1600
 %ifnarch %{ix86}
 # pandoc package disabled build for ix86
 BuildRequires:  pandoc
+%endif
 %endif
 %endif
 %python_subpackages
