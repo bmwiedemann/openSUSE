@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mkdocs
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        Project documentation with Markdown
 License:        BSD-2-Clause
