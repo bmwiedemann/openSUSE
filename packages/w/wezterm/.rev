@@ -616,4 +616,14 @@
 </comment>
     <requestid>1098746</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>82608d2e874ee863704ae84264d07921</srcmd5>
+    <version>20230712.072601.f4abf8fd</version>
+    <time>1691502878</time>
+    <user>dimstar_suse</user>
+    <comment>Same as the SR#1102803. Forgot to check I was using cargo_build macro. Building correctly now :D
+- Fix build feature flags. Only use default + distro-defaults.
+</comment>
+    <requestid>1102804</requestid>
+  </revision>
 </revisionlist>

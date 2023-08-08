@@ -110,11 +110,11 @@ printf "%{version}" > .tag
 # export CFLAGS="%%optflags"
 # export CXXFLAGS="%%optflags"
 %if 0%{?suse_version} > 1500
-%{cargo_build} --all-features
+%{cargo_build} --no-default-features --features vendored-fonts,wayland,distro-defaults
 %else
 export CARGO_FEATURE_VENDORED=1
 export RUSTFLAGS='%{rustflags}'
-cargo build --offline --release --all-features
+cargo build --offline --release --no-default-features --features vendored-fonts,wayland,distro-defaults
 %endif
 
 %install
