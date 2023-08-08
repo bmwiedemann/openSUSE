@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Image-Sane
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RA/RATCLIFFE/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Patch0:         Image-Sane-5-Replace-deprecated-given-and-when-operators.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -55,6 +56,7 @@ Find out more about SANE at http://www.sane-project.org.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
+%patch0 -p1
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -name "*.sh" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build

@@ -7,7 +7,8 @@
 #sources:
 #  - source1
 #  - source2
-#patches:
+patches:
+  Image-Sane-5-Replace-deprecated-given-and-when-operators.patch: -p1
 #  foo.patch: -p1
 #  bar.patch:
 preamble: |-

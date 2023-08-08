@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  8 15:09:54 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add Image-Sane-5-Replace-deprecated-given-and-when-operators.patch:
+  Fix build using Perl 5.38.
+
+-------------------------------------------------------------------
 Thu Mar 19 15:23:03 UTC 2020 - malcolmlewis@opensuse.org
 
 - Add missing BuildRequires to complete all tests successfully.
