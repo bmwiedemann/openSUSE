@@ -15,4 +15,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1099510</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3454f321368f89717c5297ce070b2a8f</srcmd5>
+    <version>unknown</version>
+    <time>1691502918</time>
+    <user>dimstar_suse</user>
+    <comment>- Add go-doc and go-race subpackages for developer convenience</comment>
+    <requestid>1102821</requestid>
+  </revision>
 </revisionlist>
