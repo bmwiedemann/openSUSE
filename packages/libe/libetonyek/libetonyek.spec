@@ -1,7 +1,7 @@
 #
 # spec file for package libetonyek
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,11 +27,11 @@ Group:          Productivity/Publishing/Word
 URL:            https://wiki.documentfoundation.org/DLP/Libraries/libetonyek
 Source0:        http://dev-www.libreoffice.org/src/%{name}/%{name}-%{version}.tar.xz
 Patch0:         resolve-ambiguities.patch
+Patch1:         stdcxx17.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  glm-devel
 BuildRequires:  gperf
 BuildRequires:  help2man
@@ -42,12 +42,19 @@ BuildRequires:  xz
 BuildRequires:  pkgconfig(cppunit)
 BuildRequires:  pkgconfig(librevenge-0.0)
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(mdds-1.5)
+BuildRequires:  pkgconfig(mdds-2.1)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_headers-devel
 %else
 BuildRequires:  boost-devel
+%endif
+%if 0%{?suse_version} < 1500
+BuildRequires:  gcc7
+BuildRequires:  gcc7-c++
+%else
+BuildRequires:  gcc >= 7
+BuildRequires:  gcc-c++ >= 7
 %endif
 
 %description
@@ -95,8 +102,12 @@ This package contains tools to work with Apple Keynote presentations
 %build
 autoreconf -fvi
 export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden"
+%if 0%{?suse_version} < 1500
+export CC="gcc-7"
+export CXX="g++-7"
+%endif
 %configure \
-	--with-mdds="1.5" \
+	--with-mdds="2.1" \
 	--disable-silent-rules \
 	--disable-werror \
 	--disable-static \

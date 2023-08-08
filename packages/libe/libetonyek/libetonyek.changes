@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug  7 09:09:48 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Build against mdds-2.1
+- Added patch:
+  * stdcxx17.patch
+    + require C++17, since newer mdds needs it
+
+-------------------------------------------------------------------
 Wed Sep  8 06:52:33 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
