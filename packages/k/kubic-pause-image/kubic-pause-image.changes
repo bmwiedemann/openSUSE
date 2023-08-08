@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  7 11:08:07 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Add tags for version `3.9`, used by the upstream kubernetes release branch release-1.27
+  * https://github.com/kubernetes/kubernetes/blob/a1b127ca7a18e017deefdd6986d309df40e3ae52/build/dependencies.yaml#L155-L156
+
+-------------------------------------------------------------------
 Thu Jun 23 12:53:04 UTC 2022 - Fabian Vogt <fvogt@suse.com>
 
 - Add tags for 3.7 and 3.8. The latter isn't used yet but already
