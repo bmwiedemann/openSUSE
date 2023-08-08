@@ -17,8 +17,8 @@
 
 
 Name:           nco
-Version:        5.1.4
-%define  soname 5_1_4
+Version:        5.1.7
+%define  soname 5_1_7
 %define  major  5
 Release:        0
 Summary:        Suite of programs for manipulating NetCDF/HDF files

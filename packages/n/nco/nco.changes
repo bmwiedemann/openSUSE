@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug  1 22:44:54 UTC 2023 - Manfred Schwarb <manfred99@gmx.ch>
+
+- Update to version 5.1.7:
+  * simplifies netCDF codec invocation in ncremap/ncclimo,
+      and fixes two issues with Intel compilers
+- Update to version 5.1.6:
+  * further polishes vertical interpolation, further improves NCZarr safety,
+      and fixes minor ncremap issues, improves EAMxx support, adds basic
+      support for regridding Coupler history files, and employs CF Conventions,
+      where possible, on all input files regardless of whether they
+      claim to be CF-compliant.
+- Update to version 5.1.5:
+  * polishes the new vertical interpolation capabilities introduced in
+      5.1.3 and 5.1.4, improves the safety NCZarr operations,
+      and fixes minor ncremap bugs
+
+-------------------------------------------------------------------
 Sat Jan 28 00:28:01 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 5.1.4:
