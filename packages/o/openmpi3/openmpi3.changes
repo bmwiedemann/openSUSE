@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  7 17:02:04 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop support for TrueScale (bsc#1212146)
+
+-------------------------------------------------------------------
 Thu Nov  3 09:37:32 UTC 2022 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Add rmaps-simplify-the-lookup-for-the-binding-object-and-fix-for-hwloc-2.0.patch
