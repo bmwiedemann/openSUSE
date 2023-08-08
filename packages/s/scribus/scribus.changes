@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  7 12:17:33 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Disable AI PDF import support until scribus supports Podofo >= 0.10
+  (cf. https://bugs.scribus.net/view.php?id=16948)
+
+-------------------------------------------------------------------
 Tue Sep 20 10:46:04 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add poppler 22.09 compatibility patch:

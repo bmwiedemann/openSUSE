@@ -678,4 +678,12 @@
   * scribus-1.5.8-poppler-22.09.0.patch</comment>
     <requestid>1004934</requestid>
   </revision>
+  <revision rev="83" vrev="5">
+    <srcmd5>f491958303e42d9d853b9589d950752c</srcmd5>
+    <version>1.5.8</version>
+    <time>1691502851</time>
+    <user>dimstar_suse</user>
+    <comment>build without podofo on TW</comment>
+    <requestid>1102710</requestid>
+  </revision>
 </revisionlist>

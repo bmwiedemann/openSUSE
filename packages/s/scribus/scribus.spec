@@ -17,12 +17,16 @@
 #
 
 
+# Disable AI PDF import until scribus supports podofo 0.10
+# (https://bugs.scribus.net/view.php?id=16948)
+%if 0%{?suse_version} < 1550
+%bcond_without podofo
+%endif
 Name:           scribus
 Version:        1.5.8
 Release:        0
 Summary:        Page Layout and Desktop Publishing (DTP)
 License:        GPL-2.0-or-later
-Group:          Productivity/Publishing/Other
 URL:            https://www.scribus.net/
 # https://sourceforge.net/projects/scribus/files/scribus-devel/1.5.8/
 Source0:        %{name}-%{version}.tar.xz
@@ -53,7 +57,9 @@ BuildRequires:  libcdr-devel
 BuildRequires:  libfreehand-devel
 BuildRequires:  libmspub-devel
 BuildRequires:  libpagemaker-devel
+%if %{with podofo}
 BuildRequires:  libpodofo-devel
+%endif
 BuildRequires:  libqxp-devel
 BuildRequires:  librevenge-devel
 BuildRequires:  libtiff-devel
@@ -107,7 +113,6 @@ of color separations.
 
 %package doc
 Summary:        Documentation for Scribus
-Group:          Documentation/HTML
 
 %description doc
 This package provides the documentation for Scribus.
@@ -123,12 +128,15 @@ mkdir build
 pushd build
 cmake .. \
   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
-  -DWANT_DISTROBUILD=1 \
-  -DWANT_HUNSPELL=1 \
-  -DWANT_GRAPHICSMAGICK=1 \
-  -DWANT_CPP17=ON \
+  -DWANT_DISTROBUILD=TRUE \
+  -DWANT_HUNSPELL=TRUE \
+  -DWANT_GRAPHICSMAGICK=TRUE \
+  -DWANT_CPP17=TRUE \
 %if "%{_lib}" == "lib64"
-  -DWANT_LIB64=1
+  -DWANT_LIB64=TRUE \
+%endif
+%if %{without podofo}
+  -DWITH_PODOFO=FALSE
 %endif
 
 %cmake_build
