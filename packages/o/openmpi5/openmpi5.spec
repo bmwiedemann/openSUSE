@@ -182,10 +182,6 @@ Requires:       lib%{package_name} = %{version}
 %hpc_requires
 %endif
 
-%ifarch %{ix86} x86_64
-BuildRequires:  infinipath-psm-devel
-%endif
-
 %ifarch x86_64
 BuildRequires:  libnuma-devel
 BuildRequires:  libpsm2-devel
@@ -455,9 +451,6 @@ find . -name .gitmodules -delete
 %if 0%{?with_ucx}
            --with-ucx \
            --with-ucx-libdir=/usr/%_lib \
-%endif
-%ifarch %{ix86} x86_64
-           --with-psm \
 %endif
 %ifarch x86_64
            --with-psm2 \

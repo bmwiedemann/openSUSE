@@ -30,4 +30,12 @@ as the default openmpi implementation is still openmpi4.</comment>
     <comment></comment>
     <requestid>1101003</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>79bed467a8457db82a9ab0c8d319648e</srcmd5>
+    <version>5.0.0</version>
+    <time>1691502905</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102782</requestid>
+  </revision>
 </revisionlist>
