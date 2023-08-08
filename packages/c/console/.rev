@@ -57,4 +57,12 @@
     <comment>New stable release (forwarded request 1073068 from iznogood)</comment>
     <requestid>1073214</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1185dddb18fe7813c8865f967249d2e1</srcmd5>
+    <version>44.4</version>
+    <time>1691508357</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 1102569 from iznogood)</comment>
+    <requestid>1102937</requestid>
+  </revision>
 </revisionlist>
