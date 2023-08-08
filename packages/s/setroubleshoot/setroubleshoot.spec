@@ -1,7 +1,7 @@
 #
 # spec file for package setroubleshoot
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,36 +22,39 @@
 Summary:        Helps troubleshoot SELinux problems
 License:        GPL-2.0-or-later
 Name:           setroubleshoot
-Version:        3.3.30
-Release:        2%{?dist}
+Version:        3.3.31
+Release:        0
 URL:            https://gitlab.com/setroubleshoot/setroubleshoot
 Source0:        https://gitlab.com/setroubleshoot/setroubleshoot/-/archive/%{version}/setroubleshoot-%{version}.tar.gz
 Source1:        %{name}.tmpfiles
 Source2:        %{name}.sysusers
-Source3:	%{name}.logrotate
-Patch0:		setroubleshoot-desktop.patch
+Source3:        %{name}.logrotate
+Patch0:         setroubleshoot-desktop.patch
+Patch1:         remove-pip-from-makefile.patch
 # git format-patch -N 3.3.30
 # i=1; for j in 00*patch; do printf "Patch%04d: %s\n" $i $j; i=$((i+1));done
 BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  gcc
-BuildRequires:  gettext
-BuildRequires:  intltool
-BuildRequires:  libcap-ng-devel
-BuildRequires:  make
-BuildRequires:  python3
-BuildRequires:  python3-devel
 BuildRequires:  audit-devel >= 3.0.1
+BuildRequires:  automake
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  desktop-file-utils
+BuildRequires:  gcc
+BuildRequires:  gettext
 BuildRequires:  gtk2-devel
 BuildRequires:  gtk3-devel
+BuildRequires:  intltool
+BuildRequires:  libcap-ng-devel
 BuildRequires:  libnotify-devel
 BuildRequires:  libselinux-devel
+BuildRequires:  make
 BuildRequires:  polkit-devel
+BuildRequires:  python3
 BuildRequires:  python3-dasbus
+BuildRequires:  python3-devel
 BuildRequires:  python3-gobject
+BuildRequires:  python3-pip
 BuildRequires:  python3-selinux
+BuildRequires:  python3-setuptools
 # for the _tmpfilesdir macro
 BuildRequires:  systemd-rpm-macros
 # for the sysusers
@@ -66,8 +69,8 @@ Requires:       python3-gobject
 #Requires:       python3-libreport
 Requires(post): desktop-file-utils
 Requires(post): dbus-1
-Requires(postun): dbus-1
-Requires(postun): desktop-file-utils
+Requires(postun):dbus-1
+Requires(postun):desktop-file-utils
 
 BuildRequires:  xdg-utils
 Requires:       xdg-utils
@@ -144,7 +147,6 @@ install -D -m644 %{SOURCE3} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}-serve
 
 %find_lang %{name}
 
-
 %package doc
 Summary:        Setroubleshoot documentation
 Group:          Productivity/Security
@@ -164,13 +166,13 @@ Summary:        SELinux troubleshoot server
 Requires:       %{name}-plugins >= 3.3.10
 Requires:       audit >= 3.0.1
 Requires:       audit-libs-python3
-Requires:       python3-selinux  >= 2.1.5-1
-Requires:       python3-libxml2
-Requires:       python3-dbus-python
-Requires:       python3-rpm
-Requires:       python3-systemd >= 206-1
-Requires:       python3-gobject >= 3.11
 Requires:       policycoreutils-python-utils
+Requires:       python3-dbus-python
+Requires:       python3-gobject >= 3.11
+Requires:       python3-libxml2
+Requires:       python3-rpm
+Requires:       python3-selinux  >= 2.1.5-1
+Requires:       python3-systemd >= 206-1
 BuildRequires:  gettext
 BuildRequires:  intltool
 BuildRequires:  python3
@@ -178,7 +180,7 @@ BuildRequires:  python3-devel
 Requires:       dbus-1
 Requires:       polkit
 Requires:       python3-dasbus
-Recommends:	logrotate
+Recommends:     logrotate
 
 %description server
 Provides tools to help diagnose SELinux problems. When AVC messages
@@ -186,8 +188,8 @@ are generated an alert can be generated that will give information
 about the problem and help track its resolution. Alerts can be configured
 to user preference. The same tools can be run on existing log files.
 
-
 %pre server -f %{name}-server.pre
+%service_add_pre setroubleshootd.service
 
 %post server
 %if 0%{?suse_version}
@@ -195,9 +197,14 @@ to user preference. The same tools can be run on existing log files.
 %else
 /sbin/service auditd reload >/dev/null 2>&1 || :
 %endif
+%service_add_post setroubleshootd.service
 
 %postun server
 /sbin/service auditd reload >/dev/null 2>&1 || :
+%service_del_postun setroubleshootd.service
+
+%preun server
+%service_del_preun setroubleshootd.service
 
 %files server -f %{name}.lang
 %{_bindir}/sealert
@@ -257,6 +264,7 @@ to user preference. The same tools can be run on existing log files.
 %attr(750,root,root) %dir %{_sysconfdir}/audit
 %attr(750,root,root) %dir %{_sysconfdir}/audit/plugins.d
 %attr(640,root,root)%config %{_sysconfdir}/audit/plugins.d/sedispatch.conf
+%{_unitdir}/setroubleshootd.service
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}-server
 %{_datadir}/dbus-1/system-services/org.fedoraproject.Setroubleshootd.service
 %{_datadir}/dbus-1/system-services/org.fedoraproject.SetroubleshootPrivileged.service
@@ -267,11 +275,11 @@ to user preference. The same tools can be run on existing log files.
 %{_datadir}/dbus-1/system.d/org.fedoraproject.SetroubleshootFixit.conf
 %attr(0644,root,root) %{_tmpfilesdir}/%{name}.conf
 %attr(0644,root,root) %{_sysusersdir}/%{name}.conf
-%if 0%{?suse_version} 
+%if 0%{?suse_version}
 %ghost %attr(0711,setroubleshoot,setroubleshoot) %dir %{_rundir}/setroubleshoot
 %else
 %attr(0711,setroubleshoot,setroubleshoot) %dir %{_rundir}/setroubleshoot
-%endif 
+%endif
 %doc AUTHORS COPYING ChangeLog DBUS.md NEWS README TODO
 
 %changelog

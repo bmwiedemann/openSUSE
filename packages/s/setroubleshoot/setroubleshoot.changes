@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jun  7 13:16:23 UTC 2023 - Zdenek Kubala <zkubala@suse.cz>
+
+- Add patch remove-pip-from-makefile.patch to temp fix build error
+  caused by invoking `-m pip install` within build process by 
+  return to `setup.py install` - we do not allow network 
+  connection in secure build mode in OBS
+
+-------------------------------------------------------------------
+Tue Jan 24 10:43:16 UTC 2023 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to version 3.3.31:
+  * Add a screen reader label to the icon
+  * seapplet: avoid ValueError when parsing sealert.conf
+  * doc: Document performance related changes
+  * Decrease setroubleshootd priority and limit RAM utilization to 1GB
+- Add python3-setuptools and python3-pip to BuildRequires.
+
+-------------------------------------------------------------------
 Wed Dec  8 12:38:49 UTC 2022 - Zdenek Kubala <zkubala@suse.cz>
 
 - Small adjustments in a spec file for dirs and files
