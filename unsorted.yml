@@ -11477,10 +11477,10 @@ unsorted:
   - libdde-network-utils1 
   - libdde-wayland-client0 
   - libdde-wayland-server0 
-  - libdeal_II9_4_2 
-  - libdeal_II9_4_2-openmpi2 
-  - libdeal_II9_4_2-openmpi3 
-  - libdeal_II9_4_2-openmpi4 
+  - libdeal_II9_5_1 
+  - libdeal_II9_5_1-openmpi2 
+  - libdeal_II9_5_1-openmpi3 
+  - libdeal_II9_5_1-openmpi4 
   - libdebuginfod-devel 
   - libdebuginfod-dummy-devel 
   - libdebuginfod1-dummy 
@@ -20287,6 +20287,7 @@ unsorted:
   - perl-DBIx-ContextualFetch 
   - perl-DBIx-Simple 
   - perl-DBIx-Transaction 
+  - perl-DBM-Deep 
   - perl-DNS-LDNS 
   - perl-Daemon-Generic 
   - perl-Dancer2 
@@ -20762,6 +20763,7 @@ unsorted:
   - perl-Moose 
   - perl-Moose-Autobox 
   - perl-MooseX-Aliases 
+  - perl-MooseX-App 
   - perl-MooseX-App-Cmd 
   - perl-MooseX-ArrayRef 
   - perl-MooseX-Attribute-ENV 
@@ -20992,6 +20994,7 @@ unsorted:
   - perl-Rose-Object 
   - perl-Router-Simple 
   - perl-SDL 
+  - perl-SGML-Parser-OpenSP 
   - perl-SGMLS 
   - perl-SOAP-Lite 
   - perl-SQL-Abstract 
@@ -25783,6 +25786,7 @@ unsorted:
   - python310-securesystemslib 
   - python310-selection 
   - python310-selenium 
+  - python310-selinux 
   - python310-semanage 
   - python310-semantic_version 
   - python310-semver 
@@ -32597,6 +32601,7 @@ unsorted:
   - python39-securesystemslib 
   - python39-selection 
   - python39-selenium 
+  - python39-selinux 
   - python39-semanage 
   - python39-semantic_version 
   - python39-semver 
