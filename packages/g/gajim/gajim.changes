@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Aug  7 23:17:29 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.8.1:
+  * Add setting for default encryption.
+  * XMLConsole: Enable browsing sent stanzas in message input.
+  * Sort cprofile output after total time.
+  * Moderation: Handle unknown moderator JID.
+  * Preview: Always show preview widget.
+  * Preview: Add loading placeholder.
+  * Account page: Show our XMPP address.
+  * Idle: Raise poll interval.
+  * Search: Don't fail while closing if no chat has been loaded
+    before.
+  * Dataform: Correctly serialise multi list fields.
+  * Profile: Respect avatar/nickname privacy setting on
+    consecutive changes.
+  * Don’t forget ignored TLS errors from previous connects.
+  * App menu: Add missing mnemonic for Accounts menu.
+  * Gateway: Fix roster method call.
+  * Contacts: Fix supports_{audio,video} property.
+  * AvatarSelector: Fix crash on reset.
+  * CertificateBox: Catch exception if cert does not offer
+    extension.
+  * CreateGroupchatWindow: Improve handling of MUC service
+    availability.
+  * Preview: Show error if file saving directory is not available.
+  * SecurityLabels: Display labels for messages received with MAM.
+  * DataForm: Handle destroy correctly.
+  * ChatListRow: Always update group chat name.
+  * Fix showing MAM synch errors and show error text.
+  * OMEMOTrustManager: React correctly to connection changes.
+  * Fix interaction of GroupchatRoster and SearchView.
+  * Init plugin translation module later.
+  * GroupchatManage: Improve checks for joined state.
+  * Search: Restore group chat participants list to previous state
+    when closing search.
+
+-------------------------------------------------------------------
 Sat May 27 13:15:22 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.8.0:

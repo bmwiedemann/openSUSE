@@ -25,7 +25,7 @@
 %define pythons python310
 %endif
 Name:           gajim
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        XMPP client written in Python and GTK
 License:        GPL-3.0-only
@@ -86,7 +86,6 @@ Features:
 %prep
 %autosetup
 sed -i '/^Keywords/d' data/org.gajim.Gajim.desktop.in
-sed -i '1{/\/usr\/bin\/*/d;}' gajim/gajim_remote.py
 
 %build
 %pyproject_wheel

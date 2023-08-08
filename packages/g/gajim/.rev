@@ -508,4 +508,12 @@
     <comment>- Update to version 1.8.0.</comment>
     <requestid>1089317</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>eb577a712acbd43c75562180846829fa</srcmd5>
+    <version>1.8.1</version>
+    <time>1691502908</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8.1.</comment>
+    <requestid>1102882</requestid>
+  </revision>
 </revisionlist>
