@@ -2110,7 +2110,7 @@
     <package name="libiterm1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libitm1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_ide -->
     <package name="libiw30" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="libixion-0_17-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libixion-0_18-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libixml11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_multimedia -->
     <package name="libjack-devel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libjack0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_multimedia -->
@@ -2359,7 +2359,7 @@
     <package name="libopenssl3-32bit" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="libopus0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="liborc-0_4-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="liborcus-0_17-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="liborcus-0_18-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libosinfo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libosinfo-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libosinfo-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3782,6 +3782,7 @@
     <package name="ruby3.2-rubygem-addressable" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-aes_key_wrap" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-afm" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
+    <package name="ruby3.2-rubygem-agama" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-airbrussh" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-amq-protocol" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="ruby3.2-rubygem-arel" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
