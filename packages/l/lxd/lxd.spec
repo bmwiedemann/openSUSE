@@ -20,7 +20,7 @@
 %go_nostrip
 
 %define _buildshell /bin/bash
-%define import_path github.com/lxc/lxd
+%define import_path github.com/canonical/lxd
 
 %define lxd_datadir %{_datadir}/lxd
 %define lxd_ovmfdir %{lxd_datadir}/ovmf
@@ -34,14 +34,14 @@
 %endif
 
 Name:           lxd
-Version:        5.13
+Version:        5.16
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0
 Group:          System/Management
-URL:            https://linuxcontainers.org/lxd
-Source:         https://linuxcontainers.org/downloads/%{name}/%{name}-%{version}.tar.gz
-Source1:        https://linuxcontainers.org/downloads/%{name}/%{name}-%{version}.tar.gz.asc
+URL:            https://ubuntu.com/lxd
+Source:         https://github.com/canonical/lxd/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source1:        https://github.com/canonical/lxd/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source3:        %{name}-rpmlintrc
 Source4:        %{name}.sysusers

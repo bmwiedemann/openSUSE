@@ -475,4 +475,37 @@ seemed okay with the last submission. *fingers crossed*</comment>
     <comment></comment>
     <requestid>1093362</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>c8de42d432243b26c4f8e0adb1b7a5e1</srcmd5>
+    <version>5.16</version>
+    <time>1691502866</time>
+    <user>dimstar_suse</user>
+    <comment>- correct source0/1 urls
+
+- fix import path to the new upstream git repo
+- Update to 5.16. Full upstream changelogs are at
+  https://discourse.ubuntu.com/t/lxd-5-16-has-been-released/37150
+  Highlights:
+  + ISO volumes
+  + IPAM information
+  + selection of cluster groups when moving instances
+
+- update keyring 
+
+- Update to 5.15. Full upstream changelogs are at 
+  https://discuss.linuxcontainers.org/t/lxd-5-14-has-been-released/17259 and
+  https://discuss.linuxcontainers.org/t/lxd-5-15-has-been-released/17493
+  Highlights from 5.15:
+  + Non-UEFI support in LXD VMs (CSM)
+  + Instance rebuild
+  + Container pinning based on NUMA nodes
+  + User authentication information in API
+  Highlights from 5.14:
+  + Cluster auto-healing
+  + OIDC web authentication
+  + lxc publish --reuse
+  + Support for specifying the size of an LVM thinpool
+  + Total disk and memory reporting</comment>
+    <requestid>1102825</requestid>
+  </revision>
 </revisionlist>

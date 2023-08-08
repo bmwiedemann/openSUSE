@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue Aug  8 07:15:31 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- correct source0/1 urls
+
+-------------------------------------------------------------------
+Sun Jul 23 17:44:26 UTC 2023 - Richard Rahl <rrahl0@proton.me>
+
+- fix import path to the new upstream git repo
+- Update to 5.16. Full upstream changelogs are at
+  https://discourse.ubuntu.com/t/lxd-5-16-has-been-released/37150
+
+  Highlights:
+  + ISO volumes
+  + IPAM information
+  + selection of cluster groups when moving instances
+
+-------------------------------------------------------------------
+Sat Jul 15 15:28:06 UTC 2023 - Dirk Müller <dmueller@suse.com>
+
+- update keyring 
+
+-------------------------------------------------------------------
+Wed Jul  5 07:03:20 UTC 2023 - Richard Rahl <rrahl0@proton.me>
+
+- Update to 5.15. Full upstream changelogs are at 
+  https://discuss.linuxcontainers.org/t/lxd-5-14-has-been-released/17259 and
+  https://discuss.linuxcontainers.org/t/lxd-5-15-has-been-released/17493
+
+  Highlights from 5.15:
+  + Non-UEFI support in LXD VMs (CSM)
+  + Instance rebuild
+  + Container pinning based on NUMA nodes
+  + User authentication information in API
+
+  Highlights from 5.14:
+  + Cluster auto-healing
+  + OIDC web authentication
+  + lxc publish --reuse
+  + Support for specifying the size of an LVM thinpool
+  + Total disk and memory reporting
+
+-------------------------------------------------------------------
 Thu Jun 15 12:05:08 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix call to sysctl_apply: this macro takes a parameter.
