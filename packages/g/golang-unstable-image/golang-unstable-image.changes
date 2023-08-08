@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug  8 06:51:38 UTC 2023 - Dirk Mueller <dmueller@suse.com>
+
+- Add go-doc and go-race subpackages for developer convenience
+
+-------------------------------------------------------------------
 Thu Jul 20 09:35:46 UTC 2023 - SUSE Update Bot <bci-internal@suse.de>
 
 - First version of the Golang 1.21 BCI
