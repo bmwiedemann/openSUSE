@@ -20,7 +20,7 @@
 %define lib_crypto libmbedcrypto14
 %define lib_x509   libmbedx509-5
 Name:           mbedtls
-Version:        3.4.0
+Version:        3.4.1
 Release:        0
 Summary:        Libraries for crypto and SSL/TLS protocols
 License:        Apache-2.0

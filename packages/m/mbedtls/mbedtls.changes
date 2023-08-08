@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Aug 07 12:37:11 UTC 2023 - info@paolostivanin.com
+
+- Update to version 3.4.1:
+  * Update more test dependencies when using test-ca.key
+  * Update test dependencies when using test-ca.key
+  * Add _build/ and api/ to gitignore
+  * Clean the breathe-apidoc files with make clean
+  * Revert "Add exemption for make.bat in checks for tabs"
+  * Remove make.bat for documentation
+  * Improve docs Makefile to do full build
+  * Improve positioning of GENERATE_XML option
+  * Remove Exhale from requirements and regenerate
+  * Add exemption for make.bat in checks for tabs
+  * Ignore mbedtls macros causing warnings
+  * Add configuration for Read The Docs
+  * Add initial API doc configuration
+  * Tell Doxygen to generate XML
+  * Add space to appease doxygen bug
+  * Announce a release for Friday
+  * Prepare changelog for release
+  * Bump version to 3.4.1
+  * Write changelog entry for the test data update
+  * Update failing unit tests to use the moved data files
+  * Copy test certificates files from development
+  * Add changelog entry
+  * Support compilation using CLang on Windows
+
+-------------------------------------------------------------------
 Mon May 29 17:41:24 UTC 2023 - Arjen de Korte <suse+build@de-korte.org>
 
 - Remove obsolete CMake options as these are not used in 3.0+
