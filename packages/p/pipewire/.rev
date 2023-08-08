@@ -795,4 +795,41 @@ Build tested.
     <comment></comment>
     <requestid>1101198</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>3941205b7d1aaffa23186bc4dfb7fed5</srcmd5>
+    <version>0.3.77</version>
+    <time>1691502831</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.77:
+  * Highlights
+    - Fix a bug in ALSA source where the available number of
+      samples was miscaluclated and resulted in xruns in some
+      cases.
+    - A new L permission was added to make it possible to force a
+      link between nodes even when the nodes can't see eachother.
+    - The VBAN module now supports midi send and receive as well.
+    - Many cleanups and small fixes.
+  * PipeWire
+    - Global objects now only show permissions that apply to them.
+      The permissions required to perform various API calls are
+      documented.
+    - A new L permission was added to make it possible to force a
+      link between nodes even when the nodes can't see eachother.
+    - Config files need to end with .conf.
+    - The client.api is added the to global properties of a node.
+  * modules
+    - The VBAN module now supports midi send and receive as well.
+    - Fix module-profiler alignment and make sure we don't overrun
+      our buffers with many nodes.
+    - Protect libcanberra calls with a mutex because it is not
+      thread safe.
+  * SPA
+    - Support older compilers for spa_clear_ptr().
+    - Fix a bug in ALSA source where the available number of
+      samples was miscaluclated and resulted in xruns.
+    - Don't set inotify on /dev but on the videoX devices directly.
+      Setting inotify on /dev would cause a lot of spurious wakeups
+      and lock contention in the fsnotify subsystem on some</comment>
+    <requestid>1102630</requestid>
+  </revision>
 </revisionlist>

@@ -60,7 +60,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        0.3.76
+Version:        0.3.77
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
