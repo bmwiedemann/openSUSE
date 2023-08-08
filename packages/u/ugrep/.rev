@@ -370,4 +370,12 @@
     <comment>ugrep 3.12.5</comment>
     <requestid>1102466</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>e2aeb55177a25761a4d002aabe984e4d</srcmd5>
+    <version>3.12.6</version>
+    <time>1691502898</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1102773</requestid>
+  </revision>
 </revisionlist>

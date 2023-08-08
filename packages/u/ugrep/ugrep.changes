@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug  7 05:23:38 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.12.6:
+  * New option -S (--dereference-files) to follow symbolic links
+    only to files, not to directories, when using option -r for
+    recursive search.
+  * Updated default recursive search to strictly perform -r without
+    following any symbolic links.
+  * New option --index for fast index-based search with the new
+    ugrep-indexer tool.
+
+-------------------------------------------------------------------
 Sat Aug  5 11:09:03 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.12.5:
