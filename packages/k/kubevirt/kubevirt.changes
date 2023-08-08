@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug  8 06:02:05 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Run helper pod as qemu user
+  0009-tests-Run-helper-pod-as-qemu-107-user.patch
+- SCSI reservation: fix leftover mount and resource permissions
+  0010-Fix-PR-leftover-mount-and-perms.patch
+
+-------------------------------------------------------------------
 Thu Aug  3 06:27:57 UTC 2023 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Fix leaking tickers

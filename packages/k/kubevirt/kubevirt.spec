@@ -36,6 +36,8 @@ Patch5:         0005-Support-multiple-watchdogs-in-the-domain-schema.patch
 Patch6:         0006-isolation-close-file-when-exits.patch
 Patch7:         0007-Fix-volume-detach-on-hotplug-attachment-pod-delete.patch
 Patch8:         0008-fix-ticker-leak.patch
+Patch9:         0009-tests-Run-helper-pod-as-qemu-107-user.patch
+Patch10:        0010-Fix-PR-leftover-mount-and-perms.patch
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
