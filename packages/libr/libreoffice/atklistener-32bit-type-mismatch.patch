@@ -1,0 +1,71 @@
+From 469fc646ec782f42e42947f480d5931b97e686ab Mon Sep 17 00:00:00 2001
+From: Michael Weghorn <m.weghorn@posteo.de>
+Date: Fri, 7 Jul 2023 17:57:03 +0200
+Subject: gtk3 a11y: Use sal_Int32 consistently to fix i386 build
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+... after
+
+    commit 3b7db802731826b6cc3b55100470b0c61c1f2dfa
+    Date:   Thu May 4 10:06:14 2023 +0200
+
+        tdf#105404 [API CHANGE] add index to accessiblity change event
+
+Reported to fail like this:
+
+    /home/rene/LibreOffice/git/libreoffice-7-6/vcl/unx/gtk3/a11y/atklistener.cxx:164:6: error: no declaration matches 'void AtkListener::handleChildAdded(const com::sun::star::uno::Reference<com::sun::star::accessibility::XAccessibleContext>&, const com::sun::star::uno::Reference<com::sun::star::accessibility::XAccessible>&, sal_Int32)'
+      164 | void AtkListener::handleChildAdded(
+          |      ^~~~~~~~~~~
+    In file included from /home/rene/LibreOffice/git/libreoffice-7-6/vcl/unx/gtk3/a11y/atklistener.cxx:29:
+    /home/rene/LibreOffice/git/libreoffice-7-6/vcl/unx/gtk3/a11y/atklistener.hxx:54:10: note: candidate is: 'void AtkListener::handleChildAdded(const com::sun::star::uno::Reference<com::sun::star::accessibility::XAccessibleContext>&, const com::sun::star::uno::Reference<com::sun::star::accessibility::XAccessible>&, int)'
+       54 |     void handleChildAdded(
+          |          ^~~~~~~~~~~~~~~~
+
+Change-Id: I03caa5480ef133091ccd5c9ae682629cec3a789b
+Reviewed-on: https://gerrit.libreoffice.org/c/core/+/154190
+Tested-by: René Engelhard <rene@debian.org>
+Reviewed-by: René Engelhard <rene@debian.org>
+Tested-by: Jenkins
+---
+ vcl/unx/gtk3/a11y/atklistener.cxx | 2 +-
+ vcl/unx/gtk3/a11y/atklistener.hxx | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/vcl/unx/gtk3/a11y/atklistener.cxx b/vcl/unx/gtk3/a11y/atklistener.cxx
+index 854e43133112..b9a053d83a7b 100644
+--- a/vcl/unx/gtk3/a11y/atklistener.cxx
++++ b/vcl/unx/gtk3/a11y/atklistener.cxx
+@@ -207,7 +207,7 @@ void AtkListener::handleChildAdded(
+ void AtkListener::handleChildRemoved(
+     const uno::Reference< accessibility::XAccessibleContext >& rxParent,
+     const uno::Reference< accessibility::XAccessible>& rxChild,
+-    int nChildIndexHint)
++    sal_Int32 nChildIndexHint)
+ {
+     sal_Int32 nIndex = nChildIndexHint;
+     if (nIndex != -1 && (nIndex < 0 || nIndex >= static_cast<sal_Int32>(m_aChildList.size())))
+diff --git a/vcl/unx/gtk3/a11y/atklistener.hxx b/vcl/unx/gtk3/a11y/atklistener.hxx
+index 546c5e9456fb..e286f40e5a19 100644
+--- a/vcl/unx/gtk3/a11y/atklistener.hxx
++++ b/vcl/unx/gtk3/a11y/atklistener.hxx
+@@ -54,13 +54,13 @@ private:
+     void handleChildAdded(
+         const css::uno::Reference< css::accessibility::XAccessibleContext >& rxParent,
+         const css::uno::Reference< css::accessibility::XAccessible>& rxChild,
+-        int nIndexHint);
++        sal_Int32 nIndexHint);
+ 
+     // Process CHILD_EVENT notifications with a child removed
+     void handleChildRemoved(
+         const css::uno::Reference< css::accessibility::XAccessibleContext >& rxParent,
+         const css::uno::Reference< css::accessibility::XAccessible>& rxChild,
+-        int nIndexHint);
++        sal_Int32 nIndexHint);
+ 
+     // Process INVALIDATE_ALL_CHILDREN notification
+     void handleInvalidateChildren(
+-- 
+cgit v1.2.1
+

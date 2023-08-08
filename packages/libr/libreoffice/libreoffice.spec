@@ -49,7 +49,7 @@
 %endif
 %bcond_with firebird
 Name:           libreoffice
-Version:        7.5.4.2
+Version:        7.6.0.1
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -90,11 +90,11 @@ Source2005:     %{external_url}/a7983f859eafb2677d7ff386a023bc40-xsltml_2.1.2.zi
 Source2006:     https://dev-www.libreoffice.org/extern/8249374c274932a21846fa7629c2aa9b-officeotron-0.7.4-master.jar
 Source2007:     https://dev-www.libreoffice.org/extern/odfvalidator-0.9.0-RC2-SNAPSHOT-jar-with-dependencies-2726ab578664434a545f8379a01a9faffac0ae73.jar
 # PDFium is bundled everywhere
-Source2008:     %{external_url}/pdfium-5408.tar.bz2
+Source2008:     %{external_url}/pdfium-5778.tar.bz2
 # Single C file with patches from LO
 Source2009:     %{external_url}/dtoa-20180411.tgz
 # Skia is part of chromium and bundled everywhere as by google only way is monorepo way
-Source2010:     %{external_url}/skia-m103-b301ff025004c9cd82816c86c547588e6c24b466.tar.xz
+Source2010:     %{external_url}/skia-m111-a31e897fb3dcbc96b2b40999751611d029bf5404.tar.xz
 Source2012:     %{external_url}/libcmis-0.5.2.tar.xz
 # change user config dir name from ~/.libreoffice/3 to ~/.libreoffice/3-suse
 # to avoid BerkleyDB incompatibility with the plain build
@@ -115,18 +115,14 @@ Patch14:        use-fixmath-shared-library.patch
 Patch15:        fix-sdk-idl.patch
 # PATCH-FIX-SUSE Allow the use of old harfbuzz versions
 Patch16:        0002-Revert-Require-HarfBuzz-5.1.0.patch
-# LO-L3: FILEOPEN PPTX: extra paragraph after some 2-line text with link
-Patch17:        bsc1200085.patch
-# LO-L3: PPTX: shadow effect for table offset too far to the right
-Patch18:        bsc1204040.patch
-# LO-L3: Need to be able to set the default tab size for each text object
-Patch19:        bsc1198666.patch
 # Build with java 8
 Patch101:       0001-Revert-java-9-changes.patch
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
 Patch991:       libreoffice-no-destdircheck.patch
+# Fix build on i586
+Patch992:       atklistener-32bit-type-mismatch.patch
 BuildRequires:  %{name}-share-linker
 BuildRequires:  ant
 BuildRequires:  autoconf
@@ -150,6 +146,7 @@ BuildRequires:  fdupes
 BuildRequires:  flex >= 2.6.0
 BuildRequires:  flute
 BuildRequires:  fontforge
+BuildRequires:  frozen-devel
 BuildRequires:  glm-devel
 # Needed for tests
 BuildRequires:  google-carlito-fonts
@@ -224,7 +221,7 @@ BuildRequires:  pkgconfig(libmspub-0.1) >= 0.1
 BuildRequires:  pkgconfig(libmwaw-0.3) >= 0.3.21
 BuildRequires:  pkgconfig(libnumbertext) >= 1.0.6
 BuildRequires:  pkgconfig(libodfgen-0.1) >= 0.1.4
-BuildRequires:  pkgconfig(liborcus-0.17)
+BuildRequires:  pkgconfig(liborcus-0.18)
 BuildRequires:  pkgconfig(libpagemaker-0.0)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libpq)
@@ -240,7 +237,7 @@ BuildRequires:  pkgconfig(libwps-0.4) >= 0.4.11
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(libzmf-0.0)
-BuildRequires:  pkgconfig(mdds-2.0)
+BuildRequires:  pkgconfig(mdds-2.1)
 BuildRequires:  pkgconfig(mythes)
 BuildRequires:  pkgconfig(nspr) >= 4.8
 BuildRequires:  pkgconfig(nss) >= 3.9.3
@@ -463,7 +460,7 @@ Requires:       %{name}-base-drivers-firebird
 %ifarch %{ix86}
 Requires:       jre-32 >= 1.8
 %endif
-%ifarch x86_64 aarch64
+%ifarch x86_64 aarch64 riscv64
 Requires:       jre-64 >= 1.8
 %endif
 %endif
@@ -681,7 +678,7 @@ Requires:       %{name} = %{version}
 %ifarch %{ix86}
 Requires:       jre-32 >= 1.8
 %endif
-%ifarch x86_64 aarch64 ppc64le
+%ifarch x86_64 aarch64 ppc64le riscv64
 Requires:       jre-64 >= 1.8
 %endif
 
@@ -712,7 +709,7 @@ Requires(pre):  libreoffice = %{version}
 %ifarch %{ix86}
 Requires:       jre-32 >= 1.8
 %endif
-%ifarch x86_64 aarch64 ppc64le
+%ifarch x86_64 aarch64 ppc64le riscv64
 Requires:       jre-64 >= 1.8
 %endif
 
@@ -732,7 +729,7 @@ Requires(pre):  libreoffice = %{version}
 %ifarch %{ix86}
 Requires:       jre-32 >= 1.8
 %endif
-%ifarch x86_64 aarch64 ppc64le
+%ifarch x86_64 aarch64 ppc64le riscv64
 Requires:       jre-64 >= 1.8
 %endif
 
@@ -1046,11 +1043,9 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %if 0%{?suse_version} < 1550
 %patch16 -p1
 %endif
-%patch17 -p1
-%patch18 -p1
-%patch19 -p1
 %patch990 -p1
 %patch991 -p1
+%patch992 -p1
 
 # Disable some of the failing tests (some are random)
 %if 0%{?suse_version} < 1330

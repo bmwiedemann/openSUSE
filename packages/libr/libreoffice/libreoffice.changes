@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Aug  7 18:15:51 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * atklistener-32bit-type-mismatch.patch
+    + fix type mismatch on i586
+
+-------------------------------------------------------------------
+Mon Jul 24 11:04:08 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- Add missing dependencies on jre-64 for riscv64
+
+-------------------------------------------------------------------
+Thu Jul 13 12:37:59 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 7.6.0.1:
+  https://wiki.documentfoundation.org/ReleaseNotes/7.6
+  https://wiki.documentfoundation.org/Releases/7.6.0/RC1
+- Update bundled dependencies:
+  * pdfium-5408.tar.bz2 -> pdfium-5778.tar.bz2
+  * skia-m103-b301ff025004c9cd82816c86c547588e6c24b466.tar.xz ->
+      skia-m111-a31e897fb3dcbc96b2b40999751611d029bf5404.tar.xz
+- Removed upstreamed patches:
+  * bsc1198666.patch
+  * bsc1200085.patch
+  * bsc1204040.patch
+
+-------------------------------------------------------------------
 Mon Jun  5 08:47:04 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 7.5.4.2:

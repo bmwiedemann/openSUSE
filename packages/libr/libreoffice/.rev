@@ -3423,4 +3423,12 @@ Petr</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1092900</requestid>
   </revision>
+  <revision rev="279" vrev="1">
+    <srcmd5>69677b584aeb1fef026d583811444604</srcmd5>
+    <version>7.6.0.1</version>
+    <time>1691502854</time>
+    <user>dimstar_suse</user>
+    <comment>fix build on i586 ?</comment>
+    <requestid>1102769</requestid>
+  </revision>
 </revisionlist>
