@@ -4209,6 +4209,7 @@ unsorted:
   - frozen-bubble 
   - frozen-bubble-lang 
   - frozen-bubble-server 
+  - frozen-devel 
   - frr 
   - frr-devel 
   - fs-check 
@@ -13361,9 +13362,9 @@ unsorted:
   - libnbd-bash-completion 
   - libnbd-devel 
   - libnblib_gmx0 
-  - libnco-5_1_4 
+  - libnco-5_1_7 
   - libnco-devel 
-  - libnco_c++-5_1_4 
+  - libnco_c++-5_1_7 
   - libncurses5 
   - libncurses5-32bit 
   - libncurses6-32bit 
@@ -14003,7 +14004,7 @@ unsorted:
   - libpocketsphinx3 
   - libpocl2 
   - libpodofo-devel 
-  - libpodofo0_9_8 
+  - libpodofo2 
   - libpoke0 
   - libpolkit-agent-1-0-32bit 
   - libpolkit-gobject-1-0-32bit 
@@ -17069,8 +17070,6 @@ unsorted:
   - mdbook 
   - mdbtools 
   - mdbtools-devel 
-  - mdds-1_5-devel 
-  - mdds-2_0-devel 
   - mdds-2_1-devel 
   - meabo 
   - meanwhile-devel 
@@ -17668,8 +17667,6 @@ unsorted:
   - mpitests-mpich-ofi-gnu-hpc 
   - mpitests-mvapich2 
   - mpitests-mvapich2-gnu-hpc 
-  - mpitests-mvapich2-psm 
-  - mpitests-mvapich2-psm-gnu-hpc 
   - mpitests-mvapich2-psm2 
   - mpitests-mvapich2-psm2-gnu-hpc 
   - mpitests-openmpi1 
@@ -17891,14 +17888,6 @@ unsorted:
   - mvapich2-gnu-hpc-devel 
   - mvapich2-gnu-hpc-doc 
   - mvapich2-gnu-hpc-macros-devel 
-  - mvapich2-psm 
-  - mvapich2-psm-devel 
-  - mvapich2-psm-devel-static 
-  - mvapich2-psm-doc 
-  - mvapich2-psm-gnu-hpc 
-  - mvapich2-psm-gnu-hpc-devel 
-  - mvapich2-psm-gnu-hpc-doc 
-  - mvapich2-psm-gnu-hpc-macros-devel 
   - mvapich2-psm2 
   - mvapich2-psm2-devel 
   - mvapich2-psm2-devel-static 
@@ -17912,11 +17901,6 @@ unsorted:
   - mvapich2-psm2_2_3_7-gnu-hpc-devel-static 
   - mvapich2-psm2_2_3_7-gnu-hpc-doc 
   - mvapich2-psm2_2_3_7-gnu-hpc-macros-devel 
-  - mvapich2-psm_2_3_7-gnu-hpc 
-  - mvapich2-psm_2_3_7-gnu-hpc-devel 
-  - mvapich2-psm_2_3_7-gnu-hpc-devel-static 
-  - mvapich2-psm_2_3_7-gnu-hpc-doc 
-  - mvapich2-psm_2_3_7-gnu-hpc-macros-devel 
   - mvapich2_2_3_7-gnu-hpc 
   - mvapich2_2_3_7-gnu-hpc-devel 
   - mvapich2_2_3_7-gnu-hpc-devel-static 
@@ -20312,6 +20296,7 @@ unsorted:
   - perl-Dancer2-Plugin-REST 
   - perl-Dancer2-Plugin-WebSocket 
   - perl-Data-Binary 
+  - perl-Data-Clone 
   - perl-Data-Compare 
   - perl-Data-Dump 
   - perl-Data-Dump-Streamer 
@@ -20423,6 +20408,7 @@ unsorted:
   - perl-Eval-Closure 
   - perl-Eval-LineNumbers 
   - perl-Event 
+  - perl-Exception-Base 
   - perl-Exception-Class 
   - perl-Expect 
   - perl-Export-Attrs 
@@ -20538,6 +20524,7 @@ unsorted:
   - perl-HTML-Encoding 
   - perl-HTML-FillInForm 
   - perl-HTML-Form 
+  - perl-HTML-FormHandler 
   - perl-HTML-Format 
   - perl-HTML-FormatText-WithLinks 
   - perl-HTML-FromANSI-Tiny 
@@ -20605,6 +20592,7 @@ unsorted:
   - perl-IRI 
   - perl-Ima-DBI 
   - perl-Image-Info 
+  - perl-Image-Sane 
   - perl-Image-Size 
   - perl-Import-Into 
   - perl-Importer 
@@ -20704,6 +20692,8 @@ unsorted:
   - perl-Math-Random-ISAAC 
   - perl-Math-Round 
   - perl-Memoize-ExpireLRU 
+  - perl-Menlo 
+  - perl-Menlo-Legacy 
   - perl-Meta-Builder 
   - perl-Method-Signatures-Simple 
   - perl-Metrics-Any 
@@ -20735,6 +20725,7 @@ unsorted:
   - perl-Module-Metadata 
   - perl-Module-Path 
   - perl-Module-Pluggable 
+  - perl-Module-Reader 
   - perl-Module-Refresh 
   - perl-Module-Runtime 
   - perl-Module-Runtime-Conflicts 
@@ -20782,6 +20773,7 @@ unsorted:
   - perl-MooseX-Daemonize 
   - perl-MooseX-Declare 
   - perl-MooseX-Getopt 
+  - perl-MooseX-GlobRef 
   - perl-MooseX-Has-Options 
   - perl-MooseX-HasDefaults 
   - perl-MooseX-InsideOut 
@@ -20999,6 +20991,7 @@ unsorted:
   - perl-Role-Tiny 
   - perl-Rose-Object 
   - perl-Router-Simple 
+  - perl-SDL 
   - perl-SGMLS 
   - perl-SOAP-Lite 
   - perl-SQL-Abstract 
@@ -21107,6 +21100,7 @@ unsorted:
   - perl-Task-Kensho-Scalability 
   - perl-Task-Kensho-Testing 
   - perl-Task-Kensho-XML 
+  - perl-Task-Moose 
   - perl-Task-Weaken 
   - perl-Template-GD 
   - perl-Template-Plugin-Filter-ANSIColor 
@@ -21124,6 +21118,7 @@ unsorted:
   - perl-Term-UI 
   - perl-Test-API 
   - perl-Test-Alien-CPP 
+  - perl-Test-Assert 
   - perl-Test-Base 
   - perl-Test-CChecker 
   - perl-Test-CPAN-Meta 
@@ -23821,6 +23816,7 @@ unsorted:
   - python310-curtsies 
   - python310-cwcwidth 
   - python310-cx_Freeze 
+  - python310-cymem 
   - python310-cymruwhois 
   - python310-cytoolz 
   - python310-czifile 
@@ -25919,6 +25915,7 @@ unsorted:
   - python310-sphinxcontrib-towncrier 
   - python310-sphinxcontrib-trio 
   - python310-sphinxcontrib-websupport 
+  - python310-sphinxcontrib-youtube 
   - python310-sphinxext-opengraph 
   - python310-sphobjinv 
   - python310-spidev 
@@ -26190,6 +26187,7 @@ unsorted:
   - python310-waitress-doc 
   - python310-wakeonlan 
   - python310-warlock 
+  - python310-wasabi 
   - python310-watchdog 
   - python310-watchdog-doc 
   - python310-watchfiles 
@@ -27255,6 +27253,7 @@ unsorted:
   - python311-curtsies 
   - python311-cwcwidth 
   - python311-cx_Freeze 
+  - python311-cymem 
   - python311-cymruwhois 
   - python311-cytoolz 
   - python311-czifile 
@@ -29233,6 +29232,7 @@ unsorted:
   - python311-sphinxcontrib-towncrier 
   - python311-sphinxcontrib-trio 
   - python311-sphinxcontrib-websupport 
+  - python311-sphinxcontrib-youtube 
   - python311-sphinxext-opengraph 
   - python311-sphobjinv 
   - python311-spidev 
@@ -29496,6 +29496,7 @@ unsorted:
   - python311-waitress-doc 
   - python311-wakeonlan 
   - python311-warlock 
+  - python311-wasabi 
   - python311-watchdog 
   - python311-watchdog-doc 
   - python311-watchfiles 
@@ -30632,6 +30633,7 @@ unsorted:
   - python39-curtsies 
   - python39-cwcwidth 
   - python39-cx_Freeze 
+  - python39-cymem 
   - python39-cymruwhois 
   - python39-cytoolz 
   - python39-czifile 
@@ -32727,6 +32729,7 @@ unsorted:
   - python39-sphinxcontrib-towncrier 
   - python39-sphinxcontrib-trio 
   - python39-sphinxcontrib-websupport 
+  - python39-sphinxcontrib-youtube 
   - python39-sphinxext-opengraph 
   - python39-sphobjinv 
   - python39-spidev 
@@ -32997,6 +33000,7 @@ unsorted:
   - python39-waitress-doc 
   - python39-wakeonlan 
   - python39-warlock 
+  - python39-wasabi 
   - python39-watchdog 
   - python39-watchdog-doc 
   - python39-watchfiles 
@@ -34204,7 +34208,6 @@ unsorted:
   - ruby3.2-devel-extra 
   - ruby3.2-doc 
   - ruby3.2-doc-ri 
-  - ruby3.2-rubygem-agama 
   - rubygem-libguestfs 
   - rubygem-passenger-nginx 
   - runawk 
