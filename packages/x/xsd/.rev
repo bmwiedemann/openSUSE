@@ -73,4 +73,12 @@
 - Rebase xsdcxx-rename.patch (forwarded request 870798 from cgiboudeaux)</comment>
     <requestid>870799</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>0e8de2271a9397fadeac445df92617de</srcmd5>
+    <version>4.1.0</version>
+    <time>1691502846</time>
+    <user>dimstar_suse</user>
+    <comment>make builds reproducible</comment>
+    <requestid>1102653</requestid>
+  </revision>
 </revisionlist>

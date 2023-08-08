@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  7 08:25:23 UTC 2023 - Christophe Marin <christophe@krop.fr>
+
+- Use pre-generated pdf files to have reproducible builds.
+
+-------------------------------------------------------------------
 Wed Feb 10 08:34:07 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 4.1.0
