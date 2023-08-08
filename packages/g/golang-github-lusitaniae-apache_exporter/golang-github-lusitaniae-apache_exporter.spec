@@ -1,7 +1,7 @@
 #
 # spec file for package golang-github-lusitaniae-apache_exporter
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2019 João Cavalheiro <jcavalheiro@suse.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,9 @@
 
 
 %if 0%{?rhel}
+%if 0%{?rhel} == 8
 %global debug_package %{nil}
+%endif
 # Fix ERROR: No build ID note found in
 %undefine _missing_build_ids_terminate_build
 %endif
@@ -32,7 +34,7 @@
 %define	serviceuser   prometheus
 
 Name:           golang-github-lusitaniae-apache_exporter
-Version:        0.11.0
+Version:        1.0.0
 Release:        0
 Summary:        Apache Exporter for Prometheus
 License:        MIT
@@ -41,25 +43,26 @@ URL:            http://%{githubrepo}
 Source:         %{upstreamname}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        %{targetname}.service
+%if 0%{?suse_version} && %{with apparmor}
 Source3:        apparmor-usr.bin.%{targetname}
+%endif
 BuildRequires:  fdupes
+BuildRequires:  golang-github-prometheus-promu
 BuildRequires:  golang-packaging
-BuildRequires:  xz
 %if 0%{?rhel}
-BuildRequires:  golang >= 1.15
+BuildRequires:  golang >= 1.18
 Requires(pre):  shadow-utils
 %else
-BuildRequires:  golang(API) = 1.15
+BuildRequires:  golang(API) >= 1.19
 Requires(pre):  shadow
-%endif
 %if %{with apparmor}
 BuildRequires:  apparmor-abstractions
 BuildRequires:  apparmor-rpm-macros
 Recommends:     apparmor-abstractions
 %endif
+%endif
 ExcludeArch:    s390
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%{?systemd_requires}
+%{?systemd_ordering}
 
 %description
 Exports apache mod_status statistics via HTTP for Prometheus consumption.
@@ -69,15 +72,15 @@ Exports apache mod_status statistics via HTTP for Prometheus consumption.
 
 %build
 %goprep %{githubrepo}
-%gobuild -mod=vendor "" ...
+GOPATH=%{_builddir}/go promu build
 
 %install
-install -D -m0755 %{_builddir}/go/bin/%{upstreamname} %{buildroot}/%{_bindir}/%{targetname}
+install -D -m0755 %{_builddir}/%{upstreamname}-%{version}/%{upstreamname}-%{version} %{buildroot}/%{_bindir}/%{targetname}
 install -d -m 0755 %{buildroot}%{_unitdir}
 install -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}
 install -d -m 0755 %{buildroot}%{_sbindir}
 ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rc%{targetname}
-%if %{with apparmor}
+%if 0%{?suse_version} && %{with apparmor}
 # AppArmor profile
 mkdir -p %{buildroot}%{_sysconfdir}/apparmor.d
 install -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/apparmor.d/usr.bin.%{targetname}
@@ -101,9 +104,9 @@ getent passwd %{serviceuser} >/dev/null || %{_sbindir}/useradd -r -g %{serviceus
 %systemd_post %{targetname}.service
 %else
 %service_add_post %{targetname}.service
-%endif
 %if %{with apparmor}
 %apparmor_reload %{_sysconfdir}/apparmor.d/usr.bin.%{targetname}
+%endif
 %endif
 
 %preun
@@ -127,7 +130,7 @@ getent passwd %{serviceuser} >/dev/null || %{_sbindir}/useradd -r -g %{serviceus
 %{_bindir}/%{targetname}
 %{_unitdir}/%{targetname}.service
 %{_sbindir}/rc%{targetname}
-%if %{with apparmor}
+%if 0%{?suse_version} && %{with apparmor}
 %dir %{_sysconfdir}/apparmor.d
 %config %{_sysconfdir}/apparmor.d/usr.bin.%{targetname}
 %endif

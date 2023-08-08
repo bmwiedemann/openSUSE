@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jul 11 11:18:57 UTC 2023 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Upgrade to version 1.0.0 (jsc#PED-5405)
+  * Improved flag parsing
+  * Added support for custom headers
+- Build with Go 1.19
+- Build using promu
+- Add _service file
+- Fix sandboxing options
+
+- Upgrade to version 0.13.4
+  * Fix denial of service vulnerability
+    (CVE-2022-32149, bsc#1204501)
+
+- Upgrade to version 0.13.3
+  * Fix uncontrolled resource consumption
+    (CVE-2022-41723, bsc#1208270)
+
+- Upgrade to version 0.13.1
+  * Fix panic caused by missing flagConfig options
+  
+- Upgrade to version 0.13.0
+  * Fix authentication bypass vulnarability
+    (CVE-2022-46146, bsc#1208046)
+
+-------------------------------------------------------------------
 Sun Sep 25 14:12:03 UTC 2022 - Michael Ströder <michael@stroeder.com>
 
 - corrected comment in AppArmor profile
