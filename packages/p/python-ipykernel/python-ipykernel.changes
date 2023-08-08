@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug  7 17:17:39 UTC 2023 - Arun Persaud <arun@gmx.de>
+
+- update to version 6.25.1:
+  * Bugs fixed
+    + Modifying debugger to return the same breakpoints in 'debugInfo'
+      response as 'setBreakpoints' #1140 (@vaishnavi17)
+
+-------------------------------------------------------------------
 Sat Aug  5 16:08:00 UTC 2023 - Arun Persaud <arun@gmx.de>
 
 - update to version 6.25.0:
