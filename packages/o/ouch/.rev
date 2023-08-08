@@ -54,4 +54,25 @@
   * Add scoop install instructions to readme #323</comment>
     <requestid>1056759</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0f2fb69baa223acaaa0a12cbf352efdb</srcmd5>
+    <version>0.4.2~0</version>
+    <time>1691502911</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.2:
+  New Features:
+  * Add flags to configure the compression level
+    --level to precisely set the compression level #372
+    --fast and --slow #374
+  * Add --format option #341
+  Improvements:
+  * Multi-threaded compression for gzip and snappy using gzp #348
+  * Add ls as an alternative alias for listing #360
+  Bug Fixes:
+  * Fix decompression of zip archives with files larger than 4GB #354
+  * Fix handling of unknown extensions during decompression #355
+  * Remove remaining mentions of .lz that refers to the LZMA format #344
+  * Handle Zip when modification times are missing #433</comment>
+    <requestid>1102811</requestid>
+  </revision>
 </revisionlist>

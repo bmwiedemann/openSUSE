@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Aug  8 06:25:55 UTC 2023 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.2:
+  New Features:
+  * Add flags to configure the compression level
+    --level to precisely set the compression level #372
+    --fast and --slow #374
+  * Add --format option #341
+  Improvements:
+  * Multi-threaded compression for gzip and snappy using gzp #348
+  * Add ls as an alternative alias for listing #360
+  Bug Fixes:
+  * Fix decompression of zip archives with files larger than 4GB #354
+  * Fix handling of unknown extensions during decompression #355
+  * Remove remaining mentions of .lz that refers to the LZMA format #344
+  * Handle Zip when modification times are missing #433
+
+-------------------------------------------------------------------
 Sat Jan  7 11:39:00 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.4.1:
