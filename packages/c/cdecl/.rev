@@ -522,4 +522,12 @@
     <comment>- Update to release 14.2</comment>
     <requestid>1083834</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>3d332f53ab36af0a338a5bd9f5cee0cc</srcmd5>
+    <version>14.3</version>
+    <time>1691502927</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 14.3</comment>
+    <requestid>1102852</requestid>
+  </revision>
 </revisionlist>

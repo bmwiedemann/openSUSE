@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug  8 09:36:16 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 14.3
+  * Arrays with named sizes, e.g. ``explain void f(int n, int a[n])``
+  * Ding (\a) on no command match during TAB completion
+
+-------------------------------------------------------------------
 Sun Apr 30 14:39:15 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 14.2
