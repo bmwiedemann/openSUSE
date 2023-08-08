@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug  7 17:15:09 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.37.0:
+  * feat: Read personal mackup config files
+  * feat: Add support for Doppler
+  * feat: Extend re-add command to accept an optional list of targets
+  * fix: Avoid concurrent map access when evaluating multiple templates
+  * feat: Add isExecutable template function
+  * chore: Fix isExecutable tests on Windows
+  * chore: Update dependencies
+
+-------------------------------------------------------------------
 Tue Aug  1 10:18:40 UTC 2023 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.36.1:
