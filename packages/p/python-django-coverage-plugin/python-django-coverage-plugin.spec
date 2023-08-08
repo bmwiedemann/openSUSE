@@ -17,7 +17,7 @@
 
 
 Name:           python-django-coverage-plugin
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        Django template coveragepy plugin
 License:        Apache-2.0
