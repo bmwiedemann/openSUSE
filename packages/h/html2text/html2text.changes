@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug  2 15:23:20 UTC 2023 - Manfred Schwarb <manfred99@gmx.ch>
+
+- remove obsolete and misleading custom man page, use packaged version instead
+- use release tarball for build, as the tag version has no autoconf files included
+- Update to release 2.2.3
+  * HTMLParser: de-code entities in HREF targets
+  * format: kill sprintf usage
+- Update to release 2.2.2
+  * build-sys: ensure we link against libiconv when necessary
+- Update to release 2.2.1
+  * build-sys: fix making a release
+- Update to release 2.2.0
+  * several bug fixes
+  * Add back support for "-utf8" flag for backwards compatibility
+  * convert to autotools
+
+-------------------------------------------------------------------
 Mon Aug 29 07:24:06 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.1.1

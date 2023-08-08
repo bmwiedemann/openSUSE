@@ -1,7 +1,7 @@
 #
 # spec file for package html2text
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,41 +17,37 @@
 
 
 Name:           html2text
-Version:        2.1.1
+Version:        2.2.3
 Release:        0
-Summary:        HTML to ASCII Converter
+Summary:        HTML to text converter
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/HTML/Tools
 URL:            https://github.com/grobian/html2text
-Source0:        https://github.com/grobian/html2text/archive/refs/tags/v%{version}.tar.gz
-Source1:        html2text.1.gz
+Source:         https://github.com/grobian/html2text/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 Requires(post): update-alternatives
 Requires(preun):update-alternatives
 
 %description
-A tool for converting from HTML to ASCII. It can reasonably handle
-tables.
+A tool for converting from HTML to text. It can reasonably handle tables.
 
 %prep
 %autosetup
 
 %build
 %configure
-%make_build EXPLICIT="%{optflags}"
+%make_build
 
 %install
+%make_build install DESTDIR=%{buildroot}
 # To avoid conflicts with the python3-html2text package
-install -Dpm 0755 html2text \
-  %{buildroot}%{_bindir}/html2text-cpp
-install -Dpm 0644 %{SOURCE1} \
-  %{buildroot}%{_mandir}/man1/html2text-cpp.1.gz
-gzip html2textrc.5
-install -Dpm 0644 html2textrc.5.gz \
-  %{buildroot}%{_mandir}/man5/html2textrc.5.gz
+mv %{buildroot}%{_bindir}/html2text               %{buildroot}%{_bindir}/html2text-cpp
+ln -sf %{_sysconfdir}/alternatives/html2text      %{buildroot}%{_bindir}/html2text
+mv %{buildroot}%{_mandir}/man1/html2text.1        %{buildroot}%{_mandir}/man1/html2text-cpp.1
+ln -sf %{_sysconfdir}/alternatives/html2text.1.gz %{buildroot}%{_mandir}/man1/html2text.1.gz
 
-ln -s -f %{_sysconfdir}/alternatives/html2text %{buildroot}%{_bindir}/html2text
-ln -s -f %{_sysconfdir}/alternatives/html2text.1.gz %{buildroot}%{_mandir}/man1/html2text.1.gz
+%check
+%make_build check
 
 %post
 update-alternatives --install %{_bindir}/html2text html2text %{_bindir}/html2text-cpp 30 \
@@ -64,6 +60,7 @@ fi
 
 %files
 %license COPYING
+##%%doc ChangeLog.md
 %{_bindir}/html2text
 %{_bindir}/html2text-cpp
 %ghost %{_sysconfdir}/alternatives/html2text
