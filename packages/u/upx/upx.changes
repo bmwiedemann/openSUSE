@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  8 10:42:05 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.1
+  * ELF: handle shared libraries with more than 2 PT_LOAD segments
+
+-------------------------------------------------------------------
 Mon Jan 30 17:14:15 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.0.2
