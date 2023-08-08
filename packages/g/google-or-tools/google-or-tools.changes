@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug  8 11:36:35 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with re2 2023-07-01, add
+  0001-deps-bump-re2-to-2023-07-01.patch
+- Cleanup skipped tests
+
+-------------------------------------------------------------------
 Sun Jul  9 21:21:56 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with latest protobuf, add

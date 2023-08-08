@@ -32,6 +32,7 @@ Patch5:         0001-Only-add-relevant-directories-to-sample-RUNPATHs.patch
 Patch6:         0002-Only-add-relevant-directories-to-flatzinc-library-ex.patch
 Patch7:         0003-Only-add-relevant-directories-to-sat_solver-RUNPATHs.patch
 Patch8:         0001-base-Remove-AbslStringify.patch
+Patch9:         0001-deps-bump-re2-to-2023-07-01.patch
 BuildRequires:  abseil-cpp-devel >= 20230105.0
 BuildRequires:  cmake >= 3.18
 BuildRequires:  fdupes
@@ -133,19 +134,16 @@ rmdir %{buildroot}/%{python3_sitearch}/ortools/.libs
 %postun -n libortools_flatzinc%{sonum} -p /sbin/ldconfig
 
 %check
-# https://github.com/google/or-tools/issues/3461
-sed -i -e 's/max_time_in_seconds = 15.0/max_time_in_seconds = 30.0/' examples/python/prize_collecting_vrp_sat.py
 %if %{with tests}
-# Tests using e.g. SCIP are not skipped, exclude
+# Some tests using e.g. SCIP are not skipped, exclude
 # https://github.com/google/or-tools/issues/3261
-%define known_fail 'python.*mip|python_contrib.*|python_linear_solver_integer_programming_example|python_python_appointments|python_python_steel_mill_slab_sat|cxx_tests_issue173|python_tests_dual_loading|python_tests_pywraplp_test|python_linear_solver_model_builder_test'
+%define known_fail 'python_linear_solver_model_builder_test'
 %if %{__isa_bits} == 32
 %ctest --exclude-regex %{known_fail} || true
 %else
 echo "Run tests known to fail"
 %ctest --include-regex %{known_fail} || true
 echo "Run good tests"
-# More tests depending on SCIP
 %ctest --exclude-regex %{known_fail}
 %endif
 %endif
