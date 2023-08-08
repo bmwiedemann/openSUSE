@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jun 29 13:27:14 UTC 2023 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 0.18.1:
+  * fixed a 32-bit Linux build issue as discovered on Debian, due to a clash on
+  two 32-bit unsigned integer types being used with std::variant.
+- Update to 0.18.0:
+  * removed the formula_model_access interface from model_context, and switched
+    to using model_context directly everywhere.
+  * revised formula_tokens_t type to remove use of std::unique_ptr for each
+    formula_token instance.  This should improve memory locality when
+    iterating through an array of formula token values.  A similar change has
+    also been made to lexer_tokens_t and lexer_token types.
+  * added 41 built-in functions
+  * added support for multi-sheet references in Excel A1 and Excel R1C1
+    grammers.
+
+-------------------------------------------------------------------
 Thu Mar  2 10:52:36 UTC 2023 - Martin Liška <mliska@suse.cz>
 
 - Use -fexcess-precision=fast as GCC 13 changes the default

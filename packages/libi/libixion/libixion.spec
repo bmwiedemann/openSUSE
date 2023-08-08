@@ -17,9 +17,9 @@
 
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
-%define libname libixion-0_17-0
+%define libname libixion-0_18-0
 Name:           libixion
-Version:        0.17.0
+Version:        0.18.1
 Release:        0
 Summary:        Threaded multi-target formula parser & interpreter
 License:        MIT
@@ -34,7 +34,7 @@ BuildRequires:  libstdc++-devel
 BuildRequires:  libtool
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(mdds-2.0)
+BuildRequires:  pkgconfig(mdds-2.1)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(spdlog) >= 0.16.0
 %if 0%{?suse_version} > 1325
