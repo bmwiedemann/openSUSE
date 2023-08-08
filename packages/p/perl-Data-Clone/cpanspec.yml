@@ -3,3 +3,5 @@ post_prep:
  sed -i -e 's/use inc::Module::Install/use lib q[.];\nuse inc::Module::Install/' Makefile.PL
 sources:
  - perl-Data-Clone-rpmlintrc
+Patches:
+  perl-Data-Clone-perl-5.38.patch: -p1

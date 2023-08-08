@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug  8 15:05:25 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add perl-Data-Clone-perl-5.38.patch: Fix build using Perl 5.38.
+
+-------------------------------------------------------------------
 Tue Oct  3 08:14:03 UTC 2017 - coolo@suse.com
 
 - patch the Makefile to build with perl 5.26

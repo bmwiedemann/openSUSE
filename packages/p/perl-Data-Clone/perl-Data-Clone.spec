@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Data-Clone
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,12 +21,13 @@ Version:        0.004
 Release:        0
 %define cpan_name Data-Clone
 Summary:        Polymorphic data cloning
-License:        Artistic-1.0 or GPL-1.0+
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Data-Clone/
+URL:            http://search.cpan.org/dist/Data-Clone/
 Source0:        https://cpan.metacpan.org/authors/id/G/GF/GFUJI/%{cpan_name}-%{version}.tar.gz
 Source1:        perl-Data-Clone-rpmlintrc
 Source2:        cpanspec.yml
+Patch0:         perl-Data-Clone-perl-5.38.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -52,6 +53,7 @@ policy and Comparison to other cloning modules for details.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
+%patch -p1
 # MANUAL BEGIN
 sed -i -e 's/use inc::Module::Install/use lib q[.];\nuse inc::Module::Install/' Makefile.PL
 # MANUAL END
