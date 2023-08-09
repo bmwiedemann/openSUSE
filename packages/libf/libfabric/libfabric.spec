@@ -37,9 +37,6 @@ BuildRequires:  libnl3-devel
 BuildRequires:  libnuma-devel
 BuildRequires:  libpsm2-devel
 %endif
-%ifarch x86_64 %{ix86}
-BuildRequires:  infinipath-psm-devel
-%endif
 BuildRequires:  fdupes
 BuildRequires:  librdmacm-devel
 BuildRequires:  libtool
@@ -77,9 +74,6 @@ autoreconf -fi
 # defaults: with-dlopen and without-valgrind can be over-rode:
 %configure %{?_without_dlopen} %{?_with_valgrind} \
 	--enable-sockets --enable-verbs --enable-usnic \
-%ifarch x86_64 %{ix86}
-    --enable-psm \
-%endif
 %ifarch x86_64
     --enable-psm2 \
     --enable-psm3 \
