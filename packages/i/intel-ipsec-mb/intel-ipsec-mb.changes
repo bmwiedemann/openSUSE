@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Aug  8 23:23:50 UTC 2023 - Tomasz Kantecki <tomasz.kantecki@intel.com>
+
+- Update to v1.4:
+  * POLY1305 AVX2 with AVX-IFMA instructions added.
+  * Optimized GHASH component in AVX512 VAES (type2) AES-GCM implementation.
+  * Implemented a workaround for false load-block condition in SSE and AVX2 AES-GCM implementations.
+  * Removed AVX AES-GCM implementation, its API symbols map to the SSE implementation.
+  * QUIC header protection API added.
+  * QUIC AES-GCM-128/256 AEAD API added.
+  * Removed v0.53 (and older) compatibility symbol mapping (NO_COMPAT_IMB_API_053 not defined).
+  * ZUC AVX2-GFNI implementation added.
+  * SHA-NI instructions enabled to use in SHA1/224/256 direct API
+  * New API (imb_set_session) added to be used with burst API, helping speeding up the crypto scheduling.
+  * New API added to calculate IPAD/OPAD for SHAx-HMAC.
+  * New direct API added to calculate DES-CFB and AES-CFB-256 on a single block.
+- Fixed issues:
+  * MB_MGR corruption at initialization
+  * Performance scaling
+- More details at https://github.com/intel/intel-ipsec-mb/releases/tag/v1.4
+
+-------------------------------------------------------------------
 Wed Oct  5 12:38:24 UTC 2022 - Stephen Mcintyre <stephen.mcintyre@intel.com>
 
 - Update for release package v1.3
