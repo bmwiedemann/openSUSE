@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Aug  8 21:34:27 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 7.6.0.2:
+  https://wiki.documentfoundation.org/ReleaseNotes/7.6
+  https://wiki.documentfoundation.org/Releases/7.6.0/RC1
+- Update bundled dependencies:
+  * boost_1_80_0.tar.xz - > boost_1_82_0.tar.xz
+  * curl-8.0.1.tar.xz -> curl-8.1.2.tar.xz
+  * icu4c-72_1-data.zip ->  icu4c-73_2-data.zip
+  * icu4c-72_1-src.tgz -> icu4c-73_2-src.tgz
+  * libassuan-2.5.5.tar.bz2 -> libassuan-2.5.6.tar.bz2
+  * poppler-22.12.0.tar.xz -> poppler-23.06.0.tar.xz
+  * poppler-data-0.4.11.tar.gz -> poppler-data-0.4.12.tar.gz
+- New bundled dependencies:
+  * graphite2-minimal-1.3.14.tgz
+  * harfbuzz-8.0.0.tar.xz
+    + needed for SLE12-SP2, where harfbuzz is really old
+- Removed patches:
+  * atklistener-32bit-type-mismatch.patch
+    + integrated upstream
+  * fix_harfbuzz_on_sle12_sp5.patch
+    + not needed, since SLE12-SP5 uses now the bundled harfbuzz
+- Added patch:
+  * python34-no-f-strings.patch
+    + Applied on SLE12-SP5
+    + Do not format using F-strings, since it is python 3.6+ feature
+      and SLE12-SP5 has python 3.4
+- Refreshed patch:
+  * 0002-Revert-Require-HarfBuzz-5.1.0.patch
+
+-------------------------------------------------------------------
 Mon Aug  7 18:15:51 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

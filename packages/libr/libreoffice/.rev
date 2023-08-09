@@ -3431,4 +3431,12 @@ Petr</comment>
     <comment>fix build on i586 ?</comment>
     <requestid>1102769</requestid>
   </revision>
+  <revision rev="280" vrev="1">
+    <srcmd5>ad514749cb426dc54a12824415421fa4</srcmd5>
+    <version>7.6.0.2</version>
+    <time>1691594672</time>
+    <user>dimstar_suse</user>
+    <comment>7.6.0.2</comment>
+    <requestid>1103064</requestid>
+  </revision>
 </revisionlist>

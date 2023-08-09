@@ -16,6 +16,7 @@
 #
 
 
+%{!?aarch64:%global aarch64 aarch64 arm64 armv8}
 # extensions
 %define         numbertext_version 0.9.5
 # Urls
@@ -38,6 +39,7 @@
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 %bcond_without system_gpgme
 %bcond_without system_curl
+%bcond_without system_harfbuzz
 %else
 # Hack in the bundled libs to not pop up on requires/provides to avoid
 # faking libreoffice provide some system packages
@@ -46,10 +48,11 @@
 %global __requires_exclude ^libgpgmepp\\.so.*$
 %bcond_with system_gpgme
 %bcond_with system_curl
+%bcond_with system_harfbuzz
 %endif
 %bcond_with firebird
 Name:           libreoffice
-Version:        7.6.0.1
+Version:        7.6.0.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -75,7 +78,7 @@ Source452:      %{external_url}/90401bca927835b6fbae4a707ed187c8-nlpsolver-0.9.t
 # GPGME bundle list
 Source1000:     %{external_url}/gpgme-1.18.0.tar.bz2
 Source1001:     %{external_url}/libgpg-error-1.43.tar.bz2
-Source1002:     %{external_url}/libassuan-2.5.5.tar.bz2
+Source1002:     %{external_url}/libassuan-2.5.6.tar.bz2
 # Internal bundled stuff we can't remove
 # To build this we would pull cygwin; not worth it
 Source2001:     https://dev-www.libreoffice.org/extern/185d60944ea767075d27247c3162b3bc-unowinreg.dll
@@ -108,7 +111,6 @@ Patch6:         gcc11-fix-error.patch
 Patch9:         fix_math_desktop_file.patch
 Patch10:        fix_gtk_popover_on_3.20.patch
 Patch11:        fix_webp_on_sle12_sp5.patch
-Patch12:        fix_harfbuzz_on_sle12_sp5.patch
 # PATCH-FIX-SUSE use fixmath shared library
 Patch14:        use-fixmath-shared-library.patch
 # PATCH-FIX-SUSE Fix make distro-pack-install
@@ -121,8 +123,8 @@ Patch101:       0001-Revert-java-9-changes.patch
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
 Patch991:       libreoffice-no-destdircheck.patch
-# Fix build on i586
-Patch992:       atklistener-32bit-type-mismatch.patch
+# Fix build on sle12
+Patch992:       python34-no-f-strings.patch
 BuildRequires:  %{name}-share-linker
 BuildRequires:  ant
 BuildRequires:  autoconf
@@ -137,7 +139,7 @@ BuildRequires:  zlib-devel
 %if %{with system_curl}
 BuildRequires:  curl-devel >= 7.68.0
 %else
-Source2013:     %{external_url}/curl-8.0.1.tar.xz
+Source2013:     %{external_url}/curl-8.1.2.tar.xz
 %endif
 # Needed for tests
 BuildRequires:  dejavu-fonts
@@ -198,12 +200,17 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(graphite2) >= 0.9.3
 BuildRequires:  pkgconfig(gssrpc)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
-BuildRequires:  pkgconfig(harfbuzz) >= 0.9.42
-BuildRequires:  pkgconfig(harfbuzz-icu) >= 0.9.42
+%if %{with system_harfbuzz}
+BuildRequires:  pkgconfig(graphite2) >= 0.9.3
+BuildRequires:  pkgconfig(harfbuzz) >= 2.6.8
+BuildRequires:  pkgconfig(harfbuzz-icu) >= 2.6.8
+%else
+Source2025:     %{external_url}/harfbuzz-8.0.0.tar.xz
+Source2026:     %{external_url}/graphite2-minimal-1.3.14.tgz
+%endif
 BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(lcms2)
@@ -279,9 +286,9 @@ Provides:       %{name}-icon-theme-oxygen = %{version}
 Obsoletes:      %{name}-icon-theme-oxygen < %{version}
 %if 0%{?suse_version} < 1550
 # Too old boost on the system
-Source2020:     %{external_url}/boost_1_80_0.tar.xz
-Source2023:     %{external_url}/poppler-22.12.0.tar.xz
-Source2024:     %{external_url}/poppler-data-0.4.11.tar.gz
+Source2020:     %{external_url}/boost_1_82_0.tar.xz
+Source2023:     %{external_url}/poppler-23.06.0.tar.xz
+Source2024:     %{external_url}/poppler-data-0.4.12.tar.gz
 %else
 BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_filesystem-devel
@@ -293,8 +300,8 @@ BuildRequires:  pkgconfig(poppler-cpp)
 %endif
 %if 0%{?suse_version} < 1500
 # Too old icu on the system
-Source2021:     %{external_url}/icu4c-72_1-src.tgz
-Source2022:     %{external_url}/icu4c-72_1-data.zip
+Source2021:     %{external_url}/icu4c-73_2-src.tgz
+Source2022:     %{external_url}/icu4c-73_2-data.zip
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  libBox2D-devel
 BuildRequires:  libmysqlclient-devel
@@ -318,13 +325,13 @@ BuildConflicts: java-devel < 9
 BuildConflicts: java-headless < 9
 BuildRequires:  pkgconfig(libopenjp2)
 %endif
-# Dragonbox requires gcc11
-%if 0%{?suse_version} > 1550
-BuildRequires:  gcc >= 11
-BuildRequires:  gcc-c++ >= 11
+# Dragonbox requires C++17
+%if 0%{?is_opensuse} || 0%{?sle_version} >= 150000
+BuildRequires:  gcc >= 7
+BuildRequires:  gcc-c++ >= 7
 %else
-BuildRequires:  gcc11
-BuildRequires:  gcc11-c++
+BuildRequires:  gcc7
+BuildRequires:  gcc7-c++
 %endif
 %if 0%{?suse_version}
 # needed by python3_sitelib
@@ -457,12 +464,7 @@ Obsoletes:      %{name}-base-drivers-mysql
 %if %{with firebird}
 Requires:       %{name}-base-drivers-firebird
 %else
-%ifarch %{ix86}
-Requires:       jre-32 >= 1.8
-%endif
-%ifarch x86_64 aarch64 riscv64
-Requires:       jre-64 >= 1.8
-%endif
+Requires:       jre >= 1.8
 %endif
 
 %description base
@@ -675,12 +677,7 @@ Software Development Kit (SDK).
 Summary:        OfficeBean Java Bean component for LibreOffice
 Group:          Productivity/Office/Suite
 Requires:       %{name} = %{version}
-%ifarch %{ix86}
-Requires:       jre-32 >= 1.8
-%endif
-%ifarch x86_64 aarch64 ppc64le riscv64
-Requires:       jre-64 >= 1.8
-%endif
+Requires:       jre >= 1.8
 
 %description officebean
 With the OfficeBean, a developer can easily write Java applications,
@@ -706,12 +703,7 @@ Requires:       libreoffice-calc = %{version}
 Requires:       libreoffice-pyuno = %{version}
 Requires(pre):  libreoffice = %{version}
 # the watchWindow extension is written in java
-%ifarch %{ix86}
-Requires:       jre-32 >= 1.8
-%endif
-%ifarch x86_64 aarch64 ppc64le riscv64
-Requires:       jre-64 >= 1.8
-%endif
+Requires:       jre >= 1.8
 
 %description calc-extensions
 This package provides extensions for LibreOffice Calc:
@@ -726,12 +718,7 @@ Group:          Productivity/Office/Suite
 Requires:       libreoffice-writer = %{version}
 Requires(pre):  libreoffice = %{version}
 # the wiki extension is written in java
-%ifarch %{ix86}
-Requires:       jre-32 >= 1.8
-%endif
-%ifarch x86_64 aarch64 ppc64le riscv64
-Requires:       jre-64 >= 1.8
-%endif
+Requires:       jre >= 1.8
 
 %description writer-extensions
 This package provides extensions for LibreOffice Writer:
@@ -1035,7 +1022,6 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %if 0%{?suse_version} < 1500
 %patch10 -p1
 %patch11 -p1
-%patch12 -p1
 %patch101 -p1
 %endif
 %patch14 -p1
@@ -1045,7 +1031,9 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %endif
 %patch990 -p1
 %patch991 -p1
+%if 0%{?suse_version} < 1550
 %patch992 -p1
+%endif
 
 # Disable some of the failing tests (some are random)
 %if 0%{?suse_version} < 1330
@@ -1095,12 +1083,12 @@ ARCH_FLAGS="`echo %{optflags} -flifetime-dse=1 | sed -e 's/^-g /-g1 /g' -e 's/ -
 ARCH_FLAGS="`echo %{optflags} | sed -e 's/^-g /-g1 /g' -e 's/ -g / -g1 /g' -e 's/ -g$/ -g1/g'`"
 %endif
 CFLAGS="$ARCH_FLAGS"
-CXXFLAGS="$ARCH_FLAGS"
+CXXFLAGS="-std=c++17 $ARCH_FLAGS"
 export ARCH_FLAGS CFLAGS CXXFLAGS
 
-%if 0%{?suse_version} < 1550
-export CC=gcc-11
-export CXX=g++-11
+%if !0%{?is_opensuse} && 0%{?sle_version} < 150000
+export CC=gcc-7
+export CXX=g++-7
 %endif
 
 # Fake the epoch stuff in generated zip files
@@ -1203,6 +1191,13 @@ export NOCONFIGURE=yes
 %else
         --without-system-curl \
 %endif
+%if %{with system_harfbuzz}
+        --with-system-harfbuzz \
+        --with-system-graphite \
+%else
+        --without-system-harfbuzz \
+        --without-system-graphite \
+%endif
         --enable-evolution2 \
         --enable-dbus \
         --enable-ext-ct2n \
@@ -1217,7 +1212,16 @@ export NOCONFIGURE=yes
         --enable-symbols \
         --with-gdrive-client-secret="${google_default_client_secret}" \
         --with-gdrive-client-id="${google_default_client_id}" \
+%ifnarch s390x ppc64 ppc
         --enable-skia \
+%else
+        --disable-skia \
+%endif
+%ifarch %{aarch64}
+%if 0%{?suse_version} < 1550
+        --disable-pdfium \
+%endif
+%endif
         --with-libbase-jar=/usr/share/java/libbase.jar \
         --with-libxml-jar=/usr/share/java/libxml.jar \
         --with-flute-jar=/usr/share/java/flute.jar \
