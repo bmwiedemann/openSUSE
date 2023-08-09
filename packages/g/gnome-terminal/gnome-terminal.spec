@@ -18,7 +18,7 @@
 
 %bcond_without  nautilus_extension
 Name:           gnome-terminal
-Version:        3.48.1
+Version:        3.48.2
 Release:        0
 Summary:        GNOME Terminal
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -50,7 +50,7 @@ BuildRequires:  pkgconfig(libnautilus-extension-4)
 %endif
 BuildRequires:  pkgconfig(libpcre2-8) >= 10.00
 BuildRequires:  pkgconfig(uuid)
-BuildRequires:  pkgconfig(vte-2.91) >= 0.68.0
+BuildRequires:  pkgconfig(vte-2.91) >= 0.72.2
 BuildRequires:  pkgconfig(x11)
 Requires(pre):  filesystem
 

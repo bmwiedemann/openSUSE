@@ -2440,4 +2440,12 @@
     <comment></comment>
     <requestid>1079952</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>e8ac92b4f821c35103a682f9210ce2f2</srcmd5>
+    <version>3.48.2</version>
+    <time>1691594659</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 1102589 from iznogood)</comment>
+    <requestid>1102938</requestid>
+  </revision>
 </revisionlist>
