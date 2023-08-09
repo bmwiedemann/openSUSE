@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug  3 00:02:06 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.3.13:
+  * Fixed a bug introduced in 6.3.12 by which a link to a file
+    wasn’t found in external manual pages.
+
+-------------------------------------------------------------------
 Sat Jul 29 09:03:00 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.3.12:
