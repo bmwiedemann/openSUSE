@@ -35,8 +35,8 @@
 
 Name:           boinc-client
 %define rel_name        %{name}_release
-%define minor_version   7.22
-Version:        %{minor_version}.2
+%define minor_version   7.24
+Version:        %{minor_version}.0
 Release:        0
 Summary:        Client for Berkeley Open Infrastructure for Network Computing
 License:        GPL-3.0-or-later OR LGPL-3.0-or-later
@@ -82,7 +82,7 @@ Recommends:     boinc-client-lang = %{version}
 Recommends:     logrotate
 %if %{with manager}
 BuildRequires:  update-desktop-files
-BuildRequires:  wxWidgets-3_0-devel >= 3.0.2
+BuildRequires:  wxWidgets-3_2-devel >= 3.1.5
 %lang_package -n boinc-manager
 %endif
 %lang_package

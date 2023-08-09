@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug  8 10:00:26 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.24
+  * client: improve implementation of CPU throttling
+  * client: set Content-type of POST requests to text/xml
+
+-------------------------------------------------------------------
 Mon May 22 10:52:37 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.22.2
