@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Wed Aug 09 12:31:26 UTC 2023 - mrueckert@suse.de
+
+- Update to version 2.8.2+git0.61a0f576a: (boo#1214102)
+  * [RELEASE] Released version 2.8.2
+  * BUG/MINOR: http: skip leading zeroes in content-length values
+  * DOC: clarify the handling of URL fragments in requests
+  * REGTESTS: http-rules: verify that we block '#' by default for normalize-uri
+  * BUG/MINOR: h3: reject more chars from the :path pseudo header
+  * BUG/MINOR: h2: reject more chars from the :path pseudo header
+  * BUG/MINOR: h1: do not accept '#' as part of the URI component
+  * REGTESTS: http-rules: add accept-invalid-http-request for normalize-uri tests
+  * MINOR: h2: pass accept-invalid-http-request down the request parser
+  * MINOR: http: add new function http_path_has_forbidden_char()
+  * MINOR: ist: add new function ist_find_range() to find a character range
+  * BUG/MAJOR: http: reject any empty content-length header value
+  * BUG/MAJOR: h3: reject header values containing invalid chars
+  * REORG: http: move has_forbidden_char() from h2.c to http.h
+  * BUG/MAJOR: http-ana: Get a fresh trash buffer for each header value replacement
+  * BUILD: quic: fix wrong potential NULL dereference
+  * BUG/MINOR: quic: reappend rxbuf buffer on fake dgram alloc error
+  * BUG/MINOR: http-client: Don't forget to commit changes on HTX message
+  * BUG/MEDIUM: quic: consume contig space on requeue datagram
+  * BUG/MEDIUM: bwlim: Reset analyse expiration date when then channel analyse ends
+  * BUG/MEDIUM: h3: Be sure to handle fin bit on the last DATA frame
+  * BUG/MINOR: chunk: fix chunk_appendf() to not write a zero if buffer is full
+  * DOC: configuration: describe Td in Timing events
+  * BUG/MEDIUM: h3: Properly report a C-L header was found to the HTX start-line
+  * BUG/MINOR: ssl: OCSP callback only registered for first SSL_CTX
+  * MINOR: quic: Useless call to SSL_CTX_set_quic_method()
+  * MINOR: quic: Make ->set_encryption_secrets() be callable two times
+  * BUG/MEDIUM: listener: Acquire proxy's lock in relax_listener() if necessary
+  * BUG/MINOR: server-state: Avoid warning on 'file not found'
+  * BUG/MINOR: server-state: Ignore empty files
+  * BUG/MINOR: quic: Missing parentheses around PTO probe variable.
+  * BUG/MINOR: server: Don't warn on server resolution failure with init-addr none
+  * BUG/MINOR: init: set process' affinity even in foreground
+  * BUG/MINOR: cpuset: remove the bogus "proc" from the cpu_map struct
+  * BUG/MINOR: config: do not detect NUMA topology when cpu-map is configured
+  * MINOR: cpuset: add cpu_map_configured() to know if a cpu-map was found
+  * BUG/MINOR: h1-htx: Return the right reason for 302 FCGI responses
+  * BUG/MINOR: hlua: add check for lua_newstate
+  * BUILD: quic: fix warning during compilation using gcc-6.5
+  * CI: explicitely highlight VTest result section if there's something
+  * CI: add naming convention documentation
+  * BUG/MINOR: http: Return the right reason for 302
+  * BUG/MINOR: sample: Fix wrong overflow detection in add/sub conveters
+  * DOC: config: Fix fc_src description to state the source address is returned
+  * BUG/MEDIUM: hlua_fcn/queue: bad pop_wait sequencing
+  * BUG/MINOR: hlua: hlua_yieldk ctx argument should support pointers
+  * CLEANUP: quic: remove useless parameter 'key' from quic_packet_encrypt
+  * BUG/MEDIUM: quic: timestamp shared in token was using internal time clock
+  * BUG/MEDIUM: quic: missing check of dcid for init pkt including a token
+  * BUG/MINOR: quic: retry token remove one useless intermediate expand
+  * BUG/MEDIUM: quic: token IV was not computed using a strong secret
+  * BUG/MINOR: config: Remove final '\n' in error messages
+  * BUG/MINOR: hlua_fcn/queue: use atomic load to fetch queue size
+  * EXAMPLES: maintain haproxy 2.8 retrocompatibility for lua mailers script
+  * BUG/MINOR: sink/log: properly deinit srv in sink_new_from_logsrv()
+  * MINOR: hlua_fcn/mailers: handle timeout mail from mailers section
+  * BUG/MINOR: server: set rid default value in new_server()
+  * BUG/MINOR: sink: fix errors handling in cfg_post_parse_ring()
+  * BUG/MINOR: sink: invalid sft free in sink_deinit()
+  * BUG/MINOR: log: free errmsg on error in cfg_parse_log_forward()
+  * BUG/MINOR: log: fix multiple error paths in cfg_parse_log_forward()
+  * BUG/MINOR: log: fix missing name error message in cfg_parse_log_forward()
+  * BUG/MEDIUM: log: improper use of logsrv->maxlen for buffer targets
+  * MINOR: sink/api: pass explicit maxlen parameter to sink_write()
+  * BUG/MINOR: log: LF upsets maxlen for UDP targets
+  * BUG/MINOR: ring: maxlen warning reported as alert
+  * BUG/MINOR: ring: size warning incorrectly reported as fatal error
+  * BUG/MINOR: sink: missing sft free in sink_deinit()
+  * BUG/MINOR: http_ext: unhandled ERR_ABORT in proxy_http_parse_7239()
+  * BUG/MEDIUM: sink: invalid server list in sink_new_from_logsrv()
+  * BUG/MINOR: cache: A 'max-age=0' cache-control directive can be overriden by a s-maxage
+  * BUG/MINOR: tcp_sample: bc_{dst,src} return IP not INT
+  * DOC: ssl: Add ocsp-update troubleshooting clues and emphasize on crt-list only aspect
+  * DOC: ssl: Fix typo in 'ocsp-update' option
+
+-------------------------------------------------------------------
 Mon Jul 03 14:52:58 UTC 2023 - mrueckert@suse.de
 
 - Update to version 2.8.1+git0.a90123aa8:

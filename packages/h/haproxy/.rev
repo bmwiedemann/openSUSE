@@ -1357,4 +1357,12 @@
     <comment>- Update to version 2.8.1+git0.a90123aa8:</comment>
     <requestid>1096613</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>b909b703f5fda8775354699891797995</srcmd5>
+    <version>2.8.2+git0.61a0f576a</version>
+    <time>1691594799</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.8.2+git0.61a0f576a: (boo#1214102)</comment>
+    <requestid>1103151</requestid>
+  </revision>
 </revisionlist>
