@@ -222,4 +222,12 @@ part of summer 2013 libyal refresh for opensuse 13.1</comment>
     <comment>add missing libbfio-devel</comment>
     <requestid>1046576</requestid>
   </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>b7f2eb6ef3b863d8f71c4c1a15c5ae61</srcmd5>
+    <version>20221101</version>
+    <time>1691594709</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1102989</requestid>
+  </revision>
 </revisionlist>
