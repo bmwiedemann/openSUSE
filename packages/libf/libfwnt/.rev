@@ -120,4 +120,12 @@
     <comment>delete system-libs.patch</comment>
     <requestid>1038476</requestid>
   </revision>
+  <revision rev="16" vrev="3">
+    <srcmd5>a1c8d902eb7ee3179dab7b8364d5d0c8</srcmd5>
+    <version>20220922</version>
+    <time>1691594735</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1103019</requestid>
+  </revision>
 </revisionlist>
