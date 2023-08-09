@@ -16,8 +16,10 @@
 #
 
 
-Name:           libcaes
+%{?sle15_python_module_pythons}
+
 %define lname	libcaes1
+Name:           libcaes
 Version:        20230406
 Release:        0
 Summary:        Library for AES encryption
