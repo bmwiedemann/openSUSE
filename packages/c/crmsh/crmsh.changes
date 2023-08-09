@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug 08 22:45:16 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230809.ddb17a0b:
+  * Dev: github-workflows: do not build when push to a forked repo
+  * Fix: codecov: add token in plaintext
+  * Revert "Fix: codecov: specify token explicitly"
+  * Fix: userdir: Get the effictive user name instead of using getpass.getuser (bsc#1213821)
+
+-------------------------------------------------------------------
+Wed Jul 26 07:30:31 UTC 2023 - XLiang@suse.com
+
+- Update to version 4.5.0+20230726.6efcdd30:
+  * Dev: requirements: remove parallax
+
+-------------------------------------------------------------------
 Tue Jul 25 09:31:23 UTC 2023 - nicholas.yang@suse.com
 
 - Update to version 4.5.0+20230725.5d35bb6c:
