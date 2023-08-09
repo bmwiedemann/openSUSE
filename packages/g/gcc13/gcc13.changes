@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug  3 13:34:26 UTC 2023 - Richard Biener <rguenther@suse.com>
+
+- Bump to cc279d6c64562f05019e1d12d0d825f9391b5553, git7683
+  * Includes GCC 13.2 release
+  * Includes patch to fix broken testcase in libbacktrace, fixing
+    build problems on SLES 12
+
+-------------------------------------------------------------------
+Wed Aug  2 08:01:18 UTC 2023 - Andreas Schwab <schwab@suse.de>
+
+- gdcflags.patch: Use substituted GDCFLAGS
+- Filter out -Werror=return-type from D compile flags
+
+-------------------------------------------------------------------
 Thu Jul 20 09:04:51 UTC 2023 - Richard Biener <rguenther@suse.com>
 
 - Bump to 9aac37ab8a7b919a89c6d64bc7107a8436996e93, git7597

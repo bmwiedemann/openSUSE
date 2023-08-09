@@ -108,7 +108,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        13.1.1+git7597
+Version:        13.2.1+git7683
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -134,6 +134,7 @@ Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
 Patch18:        gcc10-amdgcn-llvm-as.patch
 Patch19:        gcc11-gdwarf-4-default.patch
 Patch20:        gcc11-amdgcn-disable-hot-cold-partitioning.patch
+Patch21:        gdcflags.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -338,6 +339,7 @@ ln -s newlib-4.3.0.20230120/newlib .
 %if %{suse_version} < 1550
 %patch19 -p1
 %endif
+%patch21 -p1
 %patch51
 %patch60 -p1
 %patch61 -p1
@@ -360,26 +362,42 @@ echo "This is a dummy package to provide a dependency." > README
 rm -rf obj-%{GCCDIST}
 mkdir obj-%{GCCDIST}
 cd obj-%{GCCDIST}
-RPM_OPT_FLAGS="$RPM_OPT_FLAGS -U_FORTIFY_SOURCE"
-RPM_OPT_FLAGS=`echo $RPM_OPT_FLAGS|sed -e 's/-fno-rtti//g' -e 's/-fno-exceptions//g' -e 's/-Wmissing-format-attribute//g' -e 's/-fstack-protector[^ ]*//g' -e 's/-ffortify=.//g' -e 's/-Wall//g' -e 's/-m32//g' -e 's/-m64//g'`
+# Filter out unwanted flags from $RPM_OPT_FLAGS
+optflags=
+optflags_d=
+for flag in $RPM_OPT_FLAGS; do
+  add_flag=
+  case $flag in
+    -U_FORTIFY_SOURCE|-D_FORTIFY_SOURCE=*) ;;
+    -fno-rtti|-fno-exceptions|-Wmissing-format-attribute|-fstack-protector*) ;;
+    -ffortify=*|-Wall|-m32|-m64) ;;
 %ifarch %ix86
-# -mcpu is superceded by -mtune but -mtune is not supported by
-# our bootstrap compiler.  -mcpu gives a warning that stops
-# the build process, so remove it for now.  Also remove all other
-# -march and -mtune flags.  They are superseeded by proper
-# default compiler settings now.
-RPM_OPT_FLAGS=`echo $RPM_OPT_FLAGS|sed -e 's/-mcpu=i.86//g' -e 's/-march=i.86//g' -e 's/-mtune=i.86//g'`
+    # -mcpu is superseded by -mtune but -mtune is not supported by
+    # our bootstrap compiler.  -mcpu gives a warning that stops
+    # the build process, so remove it for now.  Also remove all other
+    # -march and -mtune flags.  They are superseded by proper
+    # default compiler settings now.
+    -mcpu=i?86|-march=i?86|-mtune=i?86) ;;
 %endif
 %ifarch s390 s390x
-RPM_OPT_FLAGS=`echo $RPM_OPT_FLAGS|sed -e 's/-fsigned-char//g'`
-RPM_OPT_FLAGS=`echo $RPM_OPT_FLAGS|sed -e 's/-O1/-O2/g'`
+    -fsigned-char) ;;
+    -O1) add_flag=-O2 ;;
 %endif
 %if 0%{?gcc_target_arch:1}
-# Kill all -march/tune/cpu because that screws building the target libs
-RPM_OPT_FLAGS=`echo $RPM_OPT_FLAGS|sed -e 's/-m\(arch\|tune\|cpu\)=[^ ]*//g'`
+    # Kill all -march/tune/cpu because that screws building the target libs
+    -march=*|-mtune=*|-mcpu=*) ;;
 %endif
-# Replace 2 spaces by one finally
-RPM_OPT_FLAGS=`echo $RPM_OPT_FLAGS|sed -e 's/  / /g'`
+  *) add_flag=$flag ;;
+  esac
+  if test -n "$add_flag"; then
+    optflags+=" $add_flag"
+    case $add_flag in
+      # Filter out -Werror=return-type for D (only valid for C and C++)
+      -Werror=return-type) ;;
+      *) optflags_d+=" $add_flag" ;;
+    esac
+  fi
+done
 
 languages=c
 %if %{build_cp}
@@ -461,9 +479,12 @@ export GDC=gdc-11
 	CONFARGS="$CONFARGS --disable-libsanitizer"
 %endif
 
-CFLAGS="$RPM_OPT_FLAGS" CXXFLAGS="$RPM_OPT_FLAGS" XCFLAGS="$RPM_OPT_FLAGS" \
-TCFLAGS="$RPM_OPT_FLAGS" \
 ../configure \
+	CFLAGS="$optflags" \
+	CXXFLAGS="$optflags" \
+	XCFLAGS="$optflags" \
+	TCFLAGS="$optflags" \
+	GDCFLAGS="$optflags_d" \
 	--prefix=%{_prefix} \
 	--infodir=%{_infodir} \
 	--mandir=%{_mandir} \

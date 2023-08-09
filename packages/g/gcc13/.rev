@@ -155,4 +155,18 @@
 - Also handle -static-pie in the default-PIE specs</comment>
     <requestid>1099831</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>396fde77ea3e34e3ee8ca3fdfefcdd6d</srcmd5>
+    <version>13.2.1+git7683</version>
+    <time>1691594629</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to cc279d6c64562f05019e1d12d0d825f9391b5553, git7683
+  * Includes GCC 13.2 release
+  * Includes patch to fix broken testcase in libbacktrace, fixing
+    build problems on SLES 12
+
+- gdcflags.patch: Use substituted GDCFLAGS
+- Filter out -Werror=return-type from D compile flags</comment>
+    <requestid>1102636</requestid>
+  </revision>
 </revisionlist>
